@@ -2279,6 +2279,12 @@ CreateDecoder( vlc_object_t *p_parent, const struct vlc_input_decoder_cfg *cfg )
             return p_owner;
     }
 
+    /* A decoder that returns VLCDEC_RELOAD gets its block again, in a new
+     * decoder (DecoderThread_DecodeBlock); decoders that other modules load
+     * (transcode, mosaic...) don't */
+    var_Create(p_dec, "decoder-reload", VLC_VAR_BOOL);
+    var_SetBool(p_dec, "decoder-reload", true);
+
     /* Find a suitable decoder/packetizer module */
     decoder_Init(p_dec, &p_owner->dec_fmt_in, fmt);
     if (LoadDecoder(p_dec, cfg->sout != NULL, &p_owner->dec_fmt_in))

@@ -657,6 +657,9 @@ static int InitVideoDecCommon( decoder_t *p_dec )
         ( p_codec->id == AV_CODEC_ID_H264 || p_codec->id == AV_CODEC_ID_HEVC ||
           p_codec->id == AV_CODEC_ID_VP9 ) &&
         var_InheritBool( p_dec, "hw-dec" ) &&
+        /* the owner gives the block again to a reloaded decoder (only the
+         * decoders of an input do: not transcode's or mosaic's) */
+        var_GetBool( p_dec, "decoder-reload" ) &&
         /* set by a previous decoder of this stream that had no hardware */
         !( var_Type( p_dec, "avcodec-hw-first-failed" ) &&
            var_GetBool( p_dec, "avcodec-hw-first-failed" ) ) )
@@ -1789,7 +1792,11 @@ static int DecodeVideo( decoder_t *p_dec, block_t *p_block )
     decoder_sys_t *p_sys = p_dec->p_sys;
 
     if( p_block && p_sys->hw_first_reload && (p_block->i_flags & BLOCK_FLAG_TYPE_I) )
+    {
+        /* the pictures lavc still holds for reordering go out first */
+        DecodeVideoBlock( p_dec, NULL );
         return ReloadWithThreads( p_dec );
+    }
 
     /* Until the first picture format tells whether the hardware decodes, a
      * copy is decoded: the core gives the block intact to a decoder reloaded

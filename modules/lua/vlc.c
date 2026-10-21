@@ -40,6 +40,7 @@
 #include <vlc_arrays.h>
 #include <vlc_charset.h>
 #include <vlc_fs.h>
+#include <vlc_memstream.h>
 #include <vlc_services_discovery.h>
 #include <vlc_stream.h>
 
@@ -523,6 +524,154 @@ static int vlc_sd_probe_Open( vlc_object_t *obj )
     return r;
 }
 
+#ifdef _WIN32
+/* Lua opens its files with fopen(), which takes a path in the ANSI code
+ * page: in a folder whose name the code page can't write (C:\Users\<a name
+ * in another script>\...), no script nor module would open. VLC reads them
+ * itself (vlc_fopen takes UTF-8), and Lua loads the text or bytecode. */
+static int vlclua_loadlocal( lua_State *L, const char *path )
+{
+    FILE *f = vlc_fopen( path, "rb" );
+    if( f == NULL )
+    {
+        lua_pushfstring( L, "cannot open %s", path );
+        return LUA_ERRFILE;
+    }
+
+    char *buf = NULL;
+    size_t size = 0, allocated = 0;
+    for( ;; )
+    {
+        if( size == allocated )
+        {
+            allocated = allocated ? 2 * allocated : 65536;
+            char *grown = realloc( buf, allocated );
+            if( grown == NULL )
+            {
+                free( buf );
+                fclose( f );
+                lua_pushfstring( L, "cannot read %s", path );
+                return LUA_ERRMEM;
+            }
+            buf = grown;
+        }
+        size_t read = fread( buf + size, 1, allocated - size, f );
+        if( read == 0 )
+            break;
+        size += read;
+    }
+    const bool failed = ferror( f );
+    fclose( f );
+    if( failed )
+    {
+        free( buf );
+        lua_pushfstring( L, "cannot read %s", path );
+        return LUA_ERRFILE;
+    }
+
+    /* a first line like "#!/usr/bin/lua" isn't Lua (as luaL_loadfile) */
+    const char *data = buf;
+    if( size > 0 && data[0] == '#' )
+        while( size > 0 && *data != '\n' )
+        {
+            data++;
+            size--;
+        }
+
+    lua_pushfstring( L, "@%s", path );
+    int ret = luaL_loadbuffer( L, data, size, lua_tostring( L, -1 ) );
+    lua_remove( L, -2 ); /* the chunk name */
+    free( buf );
+    return ret;
+}
+
+/* require(): the files of package.path, read by vlclua_loadlocal (before
+ * Lua's own searcher, which would fail the same way) */
+static int vlclua_search_module( lua_State *L )
+{
+    const char *name = luaL_checkstring( L, 1 );
+    lua_getglobal( L, "package" );
+    lua_getfield( L, -1, "path" );
+    const char *templates = lua_tostring( L, -1 );
+    if( templates == NULL )
+        return 0;
+
+    char *file = strdup( name );
+    if( file == NULL )
+        return 0;
+    for( char *c = file; *c; c++ )
+        if( *c == '.' )
+            *c = DIR_SEP_CHAR;
+
+    int found = 0;
+    for( const char *t = templates; *t && !found; )
+    {
+        size_t len = strcspn( t, ";" );
+        struct vlc_memstream path;
+        vlc_memstream_open( &path );
+        for( size_t i = 0; i < len; i++ )
+            if( t[i] == '?' )
+                vlc_memstream_puts( &path, file );
+            else
+                vlc_memstream_putc( &path, t[i] );
+        t += len;
+        if( *t == ';' )
+            t++;
+        if( vlc_memstream_close( &path ) )
+            continue;
+        if( path.length == 0 )
+        {
+            free( path.ptr );
+            continue;
+        }
+
+        int ret = vlclua_loadlocal( L, path.ptr );
+        if( ret == LUA_OK )
+        {
+            lua_pushstring( L, path.ptr ); /* the loader's second argument */
+            found = 2;
+        }
+        else if( ret == LUA_ERRFILE )
+            lua_pop( L, 1 ); /* not there: the next one */
+        else
+        {
+            free( path.ptr );
+            free( file );
+            return luaL_error( L, "error loading module '%s':\n\t%s",
+                               name, lua_tostring( L, -1 ) );
+        }
+        free( path.ptr );
+    }
+    free( file );
+    return found;
+}
+
+/* (package on top of the stack) */
+static void vlclua_add_searcher( lua_State *L )
+{
+    lua_getfield( L, -1, "searchers" );
+    if( !lua_istable( L, -1 ) )
+    {
+        lua_pop( L, 1 );
+        return;
+    }
+    lua_rawgeti( L, -1, 2 );
+    const bool added = lua_tocfunction( L, -1 ) == vlclua_search_module;
+    lua_pop( L, 1 );
+    if( !added )
+    {
+        for( lua_Integer i = luaL_len( L, -1 ); i >= 2; i-- )
+        {
+            lua_rawgeti( L, -1, i );
+            lua_rawseti( L, -2, i + 1 );
+        }
+        lua_pushcfunction( L, vlclua_search_module );
+        lua_rawseti( L, -2, 2 );
+    }
+    lua_pop( L, 1 );
+}
+#endif
+
 static int vlclua_add_modules_path_inner( lua_State *L, const char *psz_path )
 {
     int count = 0;
@@ -603,6 +752,9 @@ int vlclua_add_modules_path( lua_State *L, const char *psz_filename )
     lua_getfield( L, -(count+1), "path" ); /* Get package.path */
     lua_concat( L, count+1 ); /* Concat vlc module paths and package.path */
     lua_setfield( L, -2, "path"); /* Set package.path */
+#ifdef _WIN32
+    vlclua_add_searcher( L );
+#endif
     lua_pop( L, 1 ); /* Pop the package module */
 
     vlclua_dir_list_free( ppsz_dir_list );
@@ -612,6 +764,16 @@ int vlclua_add_modules_path( lua_State *L, const char *psz_filename )
 /** Replacement for luaL_dofile, using VLC's input capabilities */
 int vlclua_dofile( vlc_object_t *p_this, lua_State *L, const char *curi )
 {
+#ifdef _WIN32
+    if( !strstr( curi, "://" ) || !strncasecmp( curi, "file://", 7 ) )
+    {
+        const char *path = strstr( curi, "://" ) ? curi + 7 : curi;
+        int ret = vlclua_loadlocal( L, path );
+        if( ret == LUA_OK )
+            ret = lua_pcall( L, 0, LUA_MULTRET, 0 );
+        return ret;
+    }
+#endif
     char *uri = ToLocaleDup( curi );
     if( !strstr( uri, "://" ) ) {
         int ret = luaL_dofile( L, uri );

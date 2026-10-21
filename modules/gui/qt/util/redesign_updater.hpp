@@ -106,6 +106,8 @@ public slots:
     // the staged update: in place now, and VLC opens again where it was
     void restartNow();
     void skipThisVersion();
+    // the banner closed; a download going on stops (the update stays
+    // available)
     void dismiss();
 
 signals:
@@ -135,8 +137,14 @@ private:
     bool m_dismissed = false;
     bool m_aboutOpen = false;
     bool m_helperStarted = false;
+    // the small update failed in this session: the installer instead
+    bool m_deltaFailed = false;
     // whether the folder of vlc.exe takes the update: -1 until checked
     mutable int m_writable = -1;
+    // the download going on (the answers of one cancelled are dropped),
+    // and how to stop its request
+    quint64 m_attempt = 0;
+    std::function<void()> m_cancel;
     double m_progress = 0;
     QString m_latestVersion;
     QString m_releaseTitle;

@@ -677,7 +677,9 @@ FocusScope {
 
                 function closeQueue() {
                     playlistVisibility.togglePlaylistVisibility()
-                    if (audioControls.visible)
+                    // the buttons of the music view (none with a video)
+                    const audioControls = playerSpecializationLoader.item?.audioControls ?? null
+                    if (audioControls && audioControls.visible)
                         audioControls.forceActiveFocus()
                     else
                         controlBar.forceActiveFocus()
@@ -993,7 +995,8 @@ FocusScope {
                 enabled: !Player.rendererManager.firewallAllowing
                 accent: true
                 text: Player.rendererManager.firewallAllowing ? qsTr("Waiting for Windows…")
-                                                               : qsTr("Allow on private networks")
+                      : Player.rendererManager.firewallPublic ? qsTr("Allow on public networks too")
+                      : qsTr("Allow on private networks")
                 onClicked: Player.rendererManager.allowFirewall()
             }
             RowLayout {

@@ -50,6 +50,11 @@ namespace {
 
 constexpr qsizetype maxListBytes = 6 * 1024 * 1024;
 constexpr qsizetype maxDownloadBytes = 8 * 1024 * 1024;
+// what a download may unpack to in all (a small archive can unpack to
+// gigabytes), and how many files of an archive are looked at, and unpacked
+constexpr qsizetype maxUnpackedBytes = 16 * 1024 * 1024;
+constexpr int maxArchiveEntries = 1000;
+constexpr int maxArchiveSubtitles = 64;
 // between two requests to the same service (they ask for one at a time)
 constexpr int requestGapMs = 600;
 
@@ -490,14 +495,15 @@ void searchYify(QObject *context, const Query &query, Done done)
 // What was downloaded
 
 #ifdef HAVE_ZLIB
-// inflates a gzip file (windowBits 16 + 15) or a raw deflate stream (-15)
-QByteArray inflateData(const QByteArray &data, int windowBits, qsizetype expected = 0)
+// inflates a gzip file (windowBits 16 + 15) or a raw deflate stream (-15);
+// empty when it unpacks to more than limit (it stops there)
+QByteArray inflateData(const QByteArray &data, int windowBits, qsizetype limit)
 {
     z_stream stream = {};
     if (inflateInit2(&stream, windowBits) != Z_OK)
         return {};
     QByteArray out;
-    out.reserve(expected > 0 ? expected : data.size() * 3);
+    out.reserve(std::min(limit, data.size() * 3));
     stream.next_in = reinterpret_cast<Bytef *>(const_cast<char *>(data.constData()));
     stream.avail_in = uInt(data.size());
     char buffer[65536];
@@ -510,10 +516,12 @@ QByteArray inflateData(const QByteArray &data, int windowBits, qsizetype expecte
         if (status != Z_OK && status != Z_STREAM_END)
             break;
         out.append(buffer, int(sizeof(buffer) - stream.avail_out));
-        if (out.size() > maxDownloadBytes * 4)
+        if (out.size() > limit)
             break;
     } while (status != Z_STREAM_END && (stream.avail_in > 0 || stream.avail_out == 0));
     inflateEnd(&stream);
+    if (out.size() > limit)
+        return {};
     return status == Z_STREAM_END || !out.isEmpty() ? out : QByteArray();
 }
 #endif
@@ -531,10 +539,14 @@ bool validUtf8(const QByteArray &data)
     return !utf8.hasError();
 }
 
-// The files of a zip archive: { name, data }, through its central directory
+// The files of a zip archive: { name, data }, through its central directory.
+// Only the subtitles are unpacked (the others have no data), each up to the
+// size it declares, and at most maxUnpackedBytes in all.
 QList<QPair<QString, QByteArray>> unzip(const QByteArray &zip)
 {
     QList<QPair<QString, QByteArray>> files;
+    qsizetype total = 0;
+    int unpackedFiles = 0;
     const auto u16 = [&zip](qsizetype at) { return qFromLittleEndian<quint16>(zip.constData() + at); };
     const auto u32 = [&zip](qsizetype at) { return qFromLittleEndian<quint32>(zip.constData() + at); };
     // the end of the central directory, in the last 64 KiB
@@ -549,7 +561,8 @@ QList<QPair<QString, QByteArray>> unzip(const QByteArray &zip)
         return files;
     const quint16 count = u16(end + 10);
     qsizetype at = u32(end + 16);
-    for (quint16 n = 0; n < count && at + 46 <= zip.size() && u32(at) == 0x02014b50; ++n)
+    for (quint16 n = 0; n < count && n < maxArchiveEntries && at + 46 <= zip.size()
+                        && u32(at) == 0x02014b50; ++n)
     {
         const quint16 method = u16(at + 10);
         const quint32 packed = u32(at + 20);
@@ -558,20 +571,29 @@ QList<QPair<QString, QByteArray>> unzip(const QByteArray &zip)
         const quint32 local = u32(at + 42);
         const QString name = QString::fromUtf8(zip.mid(at + 46, nameLength));
         at += 46 + nameLength + extraLength + commentLength;
-        if (name.endsWith(QLatin1Char('/')) || name.startsWith(QLatin1String("__MACOSX"))
-            || unpacked > quint32(maxDownloadBytes) || qsizetype(local) + 30 > zip.size()
-            || u32(local) != 0x04034b50)
+        if (name.endsWith(QLatin1Char('/')) || name.startsWith(QLatin1String("__MACOSX")))
             continue;
+        if (!isSubtitleName(name) || unpackedFiles >= maxArchiveSubtitles
+            || unpacked > quint32(maxDownloadBytes) || qsizetype(unpacked) > maxUnpackedBytes - total
+            || qsizetype(local) + 30 > zip.size() || u32(local) != 0x04034b50)
+        {
+            files.append({ name, QByteArray() });
+            continue;
+        }
         const qsizetype data = local + 30 + u16(local + 26) + u16(local + 28);
         if (data + qsizetype(packed) > zip.size())
             continue;
         const QByteArray raw = zip.mid(data, packed);
+        QByteArray content;
         if (method == 0)
-            files.append({ name, raw });
+            content = raw.left(unpacked);
 #ifdef HAVE_ZLIB
         else if (method == 8)
-            files.append({ name, inflateData(raw, -MAX_WBITS, unpacked) });
+            content = inflateData(raw, -MAX_WBITS, qsizetype(unpacked));
 #endif
+        ++unpackedFiles;
+        total += content.size();
+        files.append({ name, content });
     }
     return files;
 }
@@ -811,7 +833,7 @@ QByteArray subtitleOf(const QByteArray &download, const Result &result, const QS
     if (data.startsWith("\x1F\x8B"))
     {
 #ifdef HAVE_ZLIB
-        data = inflateData(data, 16 + MAX_WBITS);
+        data = inflateData(data, 16 + MAX_WBITS, maxUnpackedBytes);
 #else
         data.clear();
 #endif

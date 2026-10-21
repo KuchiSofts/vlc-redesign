@@ -68,6 +68,9 @@ public:
     Q_PROPERTY(bool firewallBlocked READ firewallBlocked NOTIFY firewallChanged FINAL)
     // waiting for Windows to add the rule
     Q_PROPERTY(bool firewallAllowing READ firewallAllowing NOTIFY firewallChanged FINAL)
+    // the network is a public one for Windows: the rule is then for the
+    // public networks too
+    Q_PROPERTY(bool firewallPublic READ firewallPublic NOTIFY firewallChanged FINAL)
     // the picture here too while it plays on the device (without the sound)
     Q_PROPERTY(bool displayHere READ displayHere WRITE setDisplayHere NOTIFY displayHereChanged FINAL)
     // the device playing can have the picture here too (a DLNA TV: its
@@ -87,7 +90,8 @@ public:
     // plays on the device of that row
     Q_INVOKABLE void select(int row);
     // asks Windows (administrator approval) to let the devices of the private
-    // networks connect to VLC, then casts again
+    // networks (and of the public ones, on one: firewallPublic) connect to
+    // VLC, then casts again
     Q_INVOKABLE void allowFirewall();
     // the device failed: casts to it again, from where the media is
     Q_INVOKABLE void retry();
@@ -112,6 +116,7 @@ public:
     bool rendererVideo() const;
     bool firewallBlocked() const;
     bool firewallAllowing() const;
+    bool firewallPublic() const;
     bool displayHere() const;
     void setDisplayHere(bool display);
     bool displayHereAvailable() const;

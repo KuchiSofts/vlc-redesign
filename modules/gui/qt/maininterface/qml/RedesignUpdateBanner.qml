@@ -87,13 +87,14 @@ Rectangle {
                 }
             }
 
-            // close: a × in the muted text colour, a round hover
+            // close: a × in the muted text colour, a round hover (it stops
+            // a download going on)
             T.Button {
                 id: closeButton
-                visible: !root.busy
+                visible: root.state !== RedesignUpdater.Preparing
                 implicitWidth: VLCStyle.dp(24, VLCStyle.scale)
                 implicitHeight: VLCStyle.dp(24, VLCStyle.scale)
-                Accessible.name: qsTr("Close")
+                Accessible.name: root.state === RedesignUpdater.Downloading ? qsTr("Cancel") : qsTr("Close")
                 onClicked: RedesignUpdater.dismiss()
                 background: Rectangle {
                     radius: width / 2

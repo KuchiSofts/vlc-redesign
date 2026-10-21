@@ -13,6 +13,7 @@
 #include "subtitle_finder.hpp"
 
 #include <QCryptographicHash>
+#include <QDateTime>
 #include <QDir>
 #include <QElapsedTimer>
 #include <QFile>
@@ -33,7 +34,9 @@
 #include <QtEndian>
 
 #include <algorithm>
+#include <atomic>
 #include <cmath>
+#include <memory>
 
 #ifdef _WIN32
 # include <windows.h>
@@ -56,10 +59,16 @@ namespace {
 
 const char keyMatch[] = "redesign/subtitle-match/";
 const char keyChoice[] = "redesign/subtitle-choice/";
+// the media of those two kept (their setting keys), the most recent last:
+// past maxRemembered, the oldest are forgotten
+const char keyRecent[] = "redesign/subtitle-recent";
+constexpr int maxRemembered = 500;
 // the services the user turned off ("redesign/subtitle-service/<id>")
 const char keyService[] = "redesign/subtitle-service/";
 constexpr qsizetype maxJsonBytes = 4 * 1024 * 1024;
 constexpr qsizetype maxSubtitleBytes = 8 * 1024 * 1024;
+// the downloads of media not played for that long leave the cache
+constexpr int cacheDays = 60;
 // the player has its tracks (and VLC its subtitles next to the file) then
 constexpr int startDelayMs = 1500;
 
@@ -287,6 +296,81 @@ QString choiceKey(const QString &mediaKey)
     return QString::fromLatin1(keyChoice) + settingKey(mediaKey);
 }
 
+// The title or subtitle of a media was kept: it is the most recent, and
+// the oldest past maxRemembered are forgotten (the settings don't grow
+// with every file ever played)
+void remember(QSettings *settings, const QString &mediaKey)
+{
+    QStringList recent;
+    if (settings->contains(QLatin1String(keyRecent)))
+        recent = settings->value(QLatin1String(keyRecent)).toStringList();
+    else
+    {
+        // (those kept before the list was)
+        QSet<QString> known;
+        for (const char *prefix : { keyMatch, keyChoice })
+        {
+            settings->beginGroup(QString::fromLatin1(prefix).chopped(1));
+            for (const QString &key : settings->childKeys())
+                if (!known.contains(key))
+                {
+                    known.insert(key);
+                    recent.append(key);
+                }
+            settings->endGroup();
+        }
+    }
+    const QString key = settingKey(mediaKey);
+    recent.removeAll(key);
+    recent.append(key);
+    while (recent.size() > maxRemembered)
+    {
+        const QString old = recent.takeFirst();
+        settings->remove(QString::fromLatin1(keyMatch) + old);
+        settings->remove(QString::fromLatin1(keyChoice) + old);
+    }
+    settings->setValue(QLatin1String(keyRecent), recent);
+}
+
+// The folders of the cache (one a media, named by its setting key) whose
+// newest file is older than cacheDays: deleted, but for keep's (on a worker
+// thread; attach() renews the file it uses)
+void pruneCache(const QString &root, const QString &keep)
+{
+    static const QRegularExpression keyRe(QStringLiteral("^[0-9a-f]{20}$"));
+    const QDateTime oldest = QDateTime::currentDateTime().addDays(-cacheDays);
+    for (const QFileInfo &folder : QDir(root).entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot))
+    {
+        if (folder.fileName() == keep || !keyRe.match(folder.fileName()).hasMatch())
+            continue;
+        QDateTime newest = folder.lastModified();
+        for (const QFileInfo &file : QDir(folder.filePath()).entryInfoList(QDir::Files))
+            newest = std::max(newest, file.lastModified());
+        if (newest < oldest)
+            QDir(folder.filePath()).removeRecursively();
+    }
+}
+
+// A part of a file name from a service's answer: only letters, digits, '_',
+// '.' and '-', without "..", not starting with a dot (nothing of a path)
+QString safeFileName(const QString &name)
+{
+    QString safe;
+    safe.reserve(name.size());
+    for (const QChar c : name)
+    {
+        const char16_t u = c.unicode();
+        const bool allowed = (u >= 'a' && u <= 'z') || (u >= 'A' && u <= 'Z') || (u >= '0' && u <= '9')
+                          || u == '_' || u == '.' || u == '-';
+        safe.append(allowed ? c : QLatin1Char('_'));
+    }
+    while (safe.contains(QLatin1String("..")))
+        safe.replace(QLatin1String(".."), QLatin1String("."));
+    if (safe.startsWith(QLatin1Char('.')))
+        safe[0] = QLatin1Char('_');
+    return safe.left(100);
+}
+
 const QSet<QString> &seriesClasses()
 {
     // television series, miniseries, animated series, web series,
@@ -324,6 +408,13 @@ SubtitleFinder::SubtitleFinder(qt_intf_t *intf, PlayerController *player,
     TrackListModel *tracks = m_player->getSubtitleTracks();
     connect(tracks, &QAbstractItemModel::rowsInserted, this, &SubtitleFinder::selectAdded);
     connect(tracks, &QAbstractItemModel::modelReset, this, &SubtitleFinder::selectAdded);
+}
+
+SubtitleFinder::~SubtitleFinder()
+{
+    // (noteFile() may still be called: it tells nobody then)
+    if (finderInstance() == this)
+        finderInstance() = nullptr;
 }
 
 QString SubtitleFinder::externalTitle(const char *trackId)
@@ -382,25 +473,23 @@ void SubtitleFinder::scanFolder()
     }
     free(paths);
 
-    QPointer<SubtitleFinder> self(this);
-    QThread *worker = QThread::create([self, folders]() {
-        QList<QPair<QString, QString>> found; // MRL, name
+    auto found = std::make_shared<QList<QPair<QString, QString>>>(); // MRL, name
+    QThread *worker = QThread::create([found, folders]() {
         for (const QString &folder : folders)
         {
             const QFileInfoList files = QDir(folder).entryInfoList(QDir::Files | QDir::Readable);
             for (const QFileInfo &file : files)
                 if (isSubtitleFile(file.fileName()))
-                    found.append({ fileMrl(file.absoluteFilePath()), file.fileName() });
-            if (found.size() > 500)
+                    found->append({ fileMrl(file.absoluteFilePath()), file.fileName() });
+            if (found->size() > 500)
                 break;
         }
-        if (self)
-            QMetaObject::invokeMethod(self.data(), [self, found]() {
-                if (!self)
-                    return;
-                for (const auto &file : found)
-                    noteFile(file.first, QStringLiteral("file"), file.second);
-            }, Qt::QueuedConnection);
+    });
+    // (by the finished signal, as HTTP answers: dropped if the finder is
+    // gone, which the worker can't tell)
+    connect(worker, &QThread::finished, this, [found]() {
+        for (const auto &file : *found)
+            noteFile(file.first, QStringLiteral("file"), file.second);
     });
     connect(worker, &QThread::finished, worker, &QObject::deleteLater);
     worker->start(QThread::LowPriority);
@@ -493,6 +582,7 @@ void SubtitleFinder::onInputChanged(bool hasInput)
     m_runs.clear();
     m_pending = 0;
     m_queue.clear();
+    ++m_downloadRevision;
     emit providersChanged();
     m_results.clear();
     m_loadingId.clear();
@@ -573,21 +663,26 @@ void SubtitleFinder::prepareMedia(std::function<void()> next)
         vlc_player_Unlock(player);
     }
 
-    QPointer<SubtitleFinder> self(this);
-    const QString path = m_media.path;
-    QThread *worker = QThread::create([self, path, revision, next]() {
+    struct Hashed
+    {
+        QString hash;
         qint64 size = 0;
-        const QString hash = path.isEmpty() ? QString() : openSubtitlesHash(path, &size);
-        if (self)
-            QMetaObject::invokeMethod(self.data(), [self, hash, size, revision, next]() {
-                if (!self || revision != self->m_revision)
-                    return;
-                self->m_media.hash = hash;
-                self->m_media.size = size;
-                self->m_media.key = !hash.isEmpty() ? hash + QLatin1Char(':') + QString::number(size)
-                                                    : self->m_media.url;
-                next();
-            }, Qt::QueuedConnection);
+    };
+    auto hashed = std::make_shared<Hashed>();
+    const QString path = m_media.path;
+    QThread *worker = QThread::create([hashed, path]() {
+        if (!path.isEmpty())
+            hashed->hash = openSubtitlesHash(path, &hashed->size);
+    });
+    // (by the finished signal: dropped if the finder is gone)
+    connect(worker, &QThread::finished, this, [this, hashed, revision, next]() {
+        if (revision != m_revision)
+            return;
+        m_media.hash = hashed->hash;
+        m_media.size = hashed->size;
+        m_media.key = !hashed->hash.isEmpty() ? hashed->hash + QLatin1Char(':') + QString::number(hashed->size)
+                                              : m_media.url;
+        next();
     });
     connect(worker, &QThread::finished, worker, &QObject::deleteLater);
     worker->start(QThread::LowPriority);
@@ -966,15 +1061,25 @@ void SubtitleFinder::querySubtitles()
     query.size = m_media.size;
     query.languages = m_preferences->wanted();
 
+    QStringList asked;
     for (const SubtitleProviders::Provider &provider : SubtitleProviders::providers())
+        if (serviceEnabled(provider.id) && (query.series ? provider.series : provider.movies))
+            asked.append(provider.id);
+    // all counted before any is asked: one can answer at once (nothing to
+    // ask it), and the search ends only with the last
+    m_pending = int(asked.size());
+    for (const QString &id : asked)
+        m_runs[id] = { true, 0, {} };
+    emit providersChanged();
+    if (asked.isEmpty())
     {
-        if (!serviceEnabled(provider.id) || (query.series ? !provider.series : !provider.movies))
-            continue;
-        ++m_pending;
-        m_runs[provider.id] = { true, 0, {} };
+        finishSearch();
+        return;
+    }
+    for (const QString &id : asked)
+    {
         QElapsedTimer timer;
         timer.start();
-        const QString id = provider.id;
         SubtitleProviders::search(this, id, query,
             [this, revision, id, timer](const QList<SubtitleProviders::Result> &results, const QString &error) {
                 if (revision != m_searchRevision)
@@ -983,10 +1088,9 @@ void SubtitleFinder::querySubtitles()
                         (long long)timer.elapsed(), error.isEmpty() ? "" : ", ", qtu(error));
                 onProviderDone(id, results, error);
             });
+        if (revision != m_searchRevision)
+            return; // (another search started from an answer)
     }
-    emit providersChanged();
-    if (m_pending == 0)
-        finishSearch();
 }
 
 void SubtitleFinder::onProviderDone(const QString &id, const QList<SubtitleProviders::Result> &results,
@@ -1253,6 +1357,8 @@ void SubtitleFinder::useTitle(int index)
     m_intf->mainSettings->setValue(matchKey(m_media.key),
                                    QStringList{ m_match.imdb, m_match.title, QString::number(m_match.year),
                                                 m_match.series ? QStringLiteral("series") : QStringLiteral("movie") });
+    remember(m_intf->mainSettings, m_media.key);
+    // (a download going on goes on: it is of this file all the same)
     m_titleResults.clear();
     emit titleResultsChanged();
     ++m_revision;
@@ -1278,7 +1384,12 @@ void SubtitleFinder::download(const QString &id, bool alongside)
         if (r.id == id)
             choice = &r;
     if (!choice)
+    {
+        // (one of a search since replaced) the next one waiting
+        if (m_loadingId.isEmpty())
+            downloadNext();
         return;
+    }
     if (!m_loadingId.isEmpty())
     {
         // after the one going on
@@ -1289,17 +1400,20 @@ void SubtitleFinder::download(const QString &id, bool alongside)
     const SubtitleProviders::Result result = *choice;
 
     char *cache = config_GetUserDir(VLC_CACHE_DIR);
-    const QString folder = QString::fromUtf8(cache ? cache : "") + QStringLiteral("/subtitles/")
-                           + settingKey(m_media.key);
+    const QString root = QString::fromUtf8(cache ? cache : "") + QStringLiteral("/subtitles");
+    // (no cache folder: nothing of the cache to clean up)
+    const QString pruneRoot = cache ? root : QString();
     free(cache);
+    const QString folder = root + QLatin1Char('/') + settingKey(m_media.key);
     // "<release>-<id>.<language>.<ext>": VLC reads the language from the name
     QString release = result.release;
-    release.replace(QRegularExpression(QStringLiteral(R"([\\/:*?"<>|\s]+)")), QStringLiteral("."));
+    release.replace(QRegularExpression(QStringLiteral(R"([\\/:*?"<>|\s\p{Cc}]+)")), QStringLiteral("."));
     release = release.left(80);
+    // (the id comes from the service's answer: nothing of a path in it)
     QString fileId = id;
     fileId.replace(QLatin1Char(':'), QLatin1Char('-'));
-    const QString stem = folder + QLatin1Char('/') + release + QLatin1Char('-') + fileId + QLatin1Char('.')
-                         + SubtitlePreferences::iso639_2(result.language);
+    const QString stem = folder + QLatin1Char('/') + release + QLatin1Char('-') + safeFileName(fileId)
+                         + QLatin1Char('.') + SubtitlePreferences::iso639_2(result.language);
 
     for (const QString &ext : { QStringLiteral("srt"), QStringLiteral("vtt"), QStringLiteral("ass"),
                                 QStringLiteral("ssa"), QStringLiteral("sub"), QStringLiteral("smi") })
@@ -1311,49 +1425,84 @@ void SubtitleFinder::download(const QString &id, bool alongside)
 
     m_loadingId = id;
     emit resultsChanged();
-    const quint64 revision = m_revision;
+    // (not m_revision: choosing another title doesn't stop the download)
+    const quint64 revision = ++m_downloadRevision;
+    const auto failed = [this](const QString &error) {
+        m_loadingId.clear();
+        emit resultsChanged();
+        setState(m_state, error);
+        emit downloadFailed(error);
+        downloadNext();
+    };
     HttpRequest request;
     request.url = result.url;
     request.timeoutMs = 30000;
     request.maxBytes = maxSubtitleBytes;
     request.headers = SubtitleProviders::downloadHeaders(result);
-    httpRequestAsync(this, request, [this, revision, id, result, folder, stem, alongside](const HttpResponse &reply) {
-        if (revision != m_revision)
+    httpRequestAsync(this, request, [this, revision, failed, id, result, folder, stem, pruneRoot,
+                                     alongside](const HttpResponse &reply) {
+        if (revision != m_downloadRevision)
             return;
-        m_loadingId.clear();
-        const auto failed = [this](const QString &error) {
-            emit resultsChanged();
-            setState(m_state, error);
-            emit downloadFailed(error);
-            if (!m_queue.isEmpty())
-            {
-                const QPair<QString, bool> next = m_queue.takeFirst();
-                download(next.first, next.second);
-            }
-        };
         if (!replyOk(reply, maxSubtitleBytes) || reply.body.isEmpty())
         {
             failed(reply.status == 0 ? qtr("No connection to the internet.")
                                      : qtr("The subtitle couldn't be downloaded (%1).").arg(reply.status));
             return;
         }
-        QString extension, error;
-        const QByteArray text = SubtitleProviders::subtitleOf(reply.body, result, m_media.name, &extension, &error);
-        if (text.isEmpty())
+        // Unpacked, converted and saved on a worker thread (an archive can
+        // be large); the answer comes back by the finished signal, dropped
+        // if the finder is gone
+        struct Saved
         {
-            failed(error);
-            return;
-        }
-        const QString file = stem + QLatin1Char('.') + extension;
-        QDir().mkpath(folder);
-        QSaveFile out(file);
-        if (!out.open(QIODevice::WriteOnly) || out.write(text) != text.size() || !out.commit())
-        {
-            failed(qtr("The subtitle couldn't be saved."));
-            return;
-        }
-        attach(file, id, result.language, true, alongside);
+            QString file;
+            QString error;
+        };
+        auto saved = std::make_shared<Saved>();
+        const QByteArray body = reply.body;
+        const QString videoName = m_media.name;
+        const QString keep = QFileInfo(folder).fileName();
+        QThread *worker = QThread::create([saved, body, result, videoName, folder, stem, pruneRoot, keep]() {
+            // the cache cleaned up once a session, as it grows
+            static std::atomic<bool> pruned { false };
+            if (!pruneRoot.isEmpty() && !pruned.exchange(true))
+                pruneCache(pruneRoot, keep);
+            QString extension;
+            const QByteArray text = SubtitleProviders::subtitleOf(body, result, videoName, &extension,
+                                                                  &saved->error);
+            if (text.isEmpty())
+                return;
+            const QString file = stem + QLatin1Char('.') + extension;
+            QDir().mkpath(folder);
+            QSaveFile out(file);
+            if (!out.open(QIODevice::WriteOnly) || out.write(text) != text.size() || !out.commit())
+            {
+                saved->error = qtr("The subtitle couldn't be saved.");
+                return;
+            }
+            saved->file = file;
+        });
+        connect(worker, &QThread::finished, this, [this, revision, failed, saved, id, result, alongside]() {
+            if (revision != m_downloadRevision)
+                return;
+            if (saved->file.isEmpty())
+            {
+                failed(saved->error.isEmpty() ? qtr("The subtitle couldn't be unpacked.") : saved->error);
+                return;
+            }
+            m_loadingId.clear();
+            attach(saved->file, id, result.language, true, alongside);
+        });
+        connect(worker, &QThread::finished, worker, &QObject::deleteLater);
+        worker->start(QThread::LowPriority);
     });
+}
+
+void SubtitleFinder::downloadNext()
+{
+    if (m_queue.isEmpty())
+        return;
+    const QPair<QString, bool> next = m_queue.takeFirst();
+    download(next.first, next.second);
 }
 
 void SubtitleFinder::attach(const QString &file, const QString &id, const QString &language, bool select,
@@ -1387,19 +1536,24 @@ void SubtitleFinder::attach(const QString &file, const QString &id, const QStrin
         m_selectHash = mrlHash(uri);
         m_selectAlongside = alongside;
     }
+    // used: it stays in the cache (pruneCache goes by the time of the files)
+    {
+        QFile used(file);
+        if (used.open(QIODevice::ReadWrite))
+            used.setFileTime(QDateTime::currentDateTime(), QFileDevice::FileModificationTime);
+    }
     // b_forced would take the place of the subtitle shown
     m_player->AddAssociatedMedia(SPU_ES, uri, select && !alongside, false, false);
     if (!m_loadedIds.contains(id))
         m_loadedIds.append(id);
     // shown again for this file next time, without looking online
     if (!m_media.key.isEmpty() && !alongside)
-        m_intf->mainSettings->setValue(choiceKey(m_media.key), QStringList{ file, id, language });
-    emit resultsChanged();
-    if (!m_queue.isEmpty())
     {
-        const QPair<QString, bool> next = m_queue.takeFirst();
-        download(next.first, next.second);
+        m_intf->mainSettings->setValue(choiceKey(m_media.key), QStringList{ file, id, language });
+        remember(m_intf->mainSettings, m_media.key);
     }
+    emit resultsChanged();
+    downloadNext();
 }
 
 // The subtitle chosen for this file last time, still in the cache

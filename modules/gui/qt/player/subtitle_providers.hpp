@@ -82,7 +82,8 @@ QList<QPair<QByteArray, QByteArray>> downloadHeaders(const Result &result);
 
 // The subtitle of what was downloaded: unpacked (gzip, zip), in UTF-8,
 // without the ads a service adds; its extension (srt, ass, vtt...). Empty,
-// with the reason, when it is not one
+// with the reason, when it is not one. Runs on any thread (SubtitleFinder
+// calls it on a worker one)
 QByteArray subtitleOf(const QByteArray &download, const Result &result, const QString &videoName,
                       QString *extension, QString *error);
 

@@ -24,9 +24,12 @@
 #include <QApplication>
 #include <QRegularExpression>
 #include <QSettings>
+#include <QThread>
 #include <QTimer>
 #include <QVector>
 #include <QHash>
+
+#include <memory>
 
 #include <vlc_common.h>
 #include <vlc_configuration.h>
@@ -103,17 +106,46 @@ static bool ruleLetsIn(INetFwRule *rule, const wchar_t *path, long port, long pr
     return lets;
 }
 
-/* Whether Windows Firewall lets the devices of the network connect to this
- * program on that TCP port (true when it can't tell). A TV reads the cast
- * media from VLC's own server: when blocked, it gives up at once. With the
- * firewall on and blocking by default, that takes a rule for VLC or the
- * port; Windows may not even ask (its notifications can be off). */
-static bool firewallAllows(long port)
+/* The name of the rule allowFirewall() adds */
+static const wchar_t firewallRuleName[] = L"VLC Redesign";
+
+/* Whether a rule is the one allowFirewall() adds (an inbound one, by its
+ * name), whatever it lets in */
+static bool isOwnRule(INetFwRule *rule)
 {
+    NET_FW_RULE_DIRECTION direction = NET_FW_RULE_DIR_OUT;
+    BSTR name = nullptr;
+    const bool own = SUCCEEDED(rule->get_Direction(&direction)) && direction == NET_FW_RULE_DIR_IN
+                  && SUCCEEDED(rule->get_Name(&name)) && name != nullptr && !wcscmp(name, firewallRuleName);
+    SysFreeString(name);
+    return own;
+}
+
+struct FirewallState
+{
+    // the devices can connect (true when it can't tell)
+    bool allows = true;
+    // a network connected now is public, and the firewall keeps them out
+    // there: the rule must be for the public networks too
+    bool publicNetwork = false;
+    // the rule of allowFirewall() is there (off, or not for this network):
+    // changed rather than added again
+    bool ruleExists = false;
+};
+
+/* Whether Windows Firewall lets the devices of the network connect to this
+ * program on that TCP port. A TV reads the cast media from VLC's own
+ * server: when blocked, it gives up at once. With the firewall on and
+ * blocking by default, that takes a rule for VLC or the port; Windows may
+ * not even ask (its notifications can be off). On a worker thread: it lists
+ * every rule of the firewall. */
+static FirewallState firewallState(long port)
+{
+    FirewallState state;
     wchar_t path[MAX_PATH];
     const DWORD length = GetModuleFileNameW(nullptr, path, MAX_PATH);
     if (length == 0 || length >= MAX_PATH)
-        return true;
+        return state;
 
     const HRESULT init = CoInitializeEx(nullptr, COINIT_APARTMENTTHREADED);
     bool allows = true;
@@ -142,7 +174,11 @@ static bool firewallAllows(long port)
                 break;
             }
             if (inbound == NET_FW_ACTION_BLOCK)
+            {
                 blocking = true;
+                if (type == NET_FW_PROFILE2_PUBLIC)
+                    state.publicNetwork = true;
+            }
         }
 
         if (blocking)
@@ -151,7 +187,9 @@ static bool firewallAllows(long port)
             INetFwRules *rules = nullptr;
             IUnknown *unknown = nullptr;
             IEnumVARIANT *it = nullptr;
-            if (profiles != 0 && SUCCEEDED(policy->get_Rules(&rules))
+            // (all of them, even when none can let anything in: whether
+            // the rule of allowFirewall() is there)
+            if (SUCCEEDED(policy->get_Rules(&rules))
              && SUCCEEDED(rules->get__NewEnum(&unknown))
              && SUCCEEDED(unknown->QueryInterface(IID_IEnumVARIANT, reinterpret_cast<void **>(&it))))
             {
@@ -166,6 +204,7 @@ static bool firewallAllows(long port)
                                                                 reinterpret_cast<void **>(&rule))))
                     {
                         allows = ruleLetsIn(rule, path, port, profiles);
+                        state.ruleExists = state.ruleExists || isOwnRule(rule);
                         rule->Release();
                     }
                     VariantClear(&item);
@@ -182,7 +221,8 @@ static bool firewallAllows(long port)
     }
     if (SUCCEEDED(init))
         CoUninitialize();
-    return allows;
+    state.allows = allows;
+    return state;
 }
 #endif
 
@@ -273,6 +313,13 @@ public:
 #ifdef _WIN32
         if (m_firewallProcess)
             CloseHandle(m_firewallProcess);
+        // the check going on runs the code of this module: done before
+        // it goes (its answer is dropped with the manager)
+        if (m_firewallThread)
+        {
+            m_firewallThread->wait();
+            delete m_firewallThread;
+        }
 #endif
         if (m_playerListener)
         {
@@ -494,12 +541,13 @@ public:
         checkFirewall();
     }
 
-    // can the device read from VLC (see firewallAllows)
+    // can the device read from VLC (see firewallState): asked on a worker
+    // thread, one check at a time, the last one asked counting
     void checkFirewall()
     {
-        Q_Q(RendererManager);
-        bool blocked = false;
+        const quint64 generation = ++m_firewallGeneration;
 #ifdef _WIN32
+        long port = 0;
         if (m_selectedItem)
         {
             // the port of the server the device reads from
@@ -508,14 +556,56 @@ public:
                                : !strcmp(type, "chromecast") ? "sout-chromecast-http-port"
                                : nullptr;
             if (option && config_FindConfig(option))
-                blocked = !firewallAllows(config_GetInt(option));
+                port = config_GetInt(option);
         }
-#endif
-        if (blocked == m_firewallBlocked)
+        if (port > 0)
+        {
+            if (m_firewallThread)
+            {
+                // once the one going on is done
+                m_firewallRecheck = true;
+                return;
+            }
+            auto result = std::make_shared<FirewallState>();
+            m_firewallThread = QThread::create([result, port]() { *result = firewallState(port); });
+            // (by the finished signal: dropped if the manager is gone)
+            QObject::connect(m_firewallThread, &QThread::finished, q_ptr, [this, result, generation]() {
+                m_firewallThread->deleteLater();
+                m_firewallThread = nullptr;
+                if (m_firewallRecheck)
+                {
+                    m_firewallRecheck = false;
+                    checkFirewall();
+                }
+                else if (generation == m_firewallGeneration)
+                    setFirewall(!result->allows, result->publicNetwork, result->ruleExists);
+            });
+            m_firewallThread->start(QThread::LowPriority);
             return;
-        m_firewallBlocked = blocked;
-        emit q->firewallChanged();
-        emit q->castStatusChanged();    // (its message)
+        }
+        m_firewallRecheck = false;
+#endif
+        Q_UNUSED(generation);
+        setFirewall(false, false, false);
+    }
+
+    void setFirewall(bool blocked, bool publicNetwork, bool ruleExists)
+    {
+        Q_Q(RendererManager);
+        const bool retry = m_retryWhenAllowed;
+        m_retryWhenAllowed = false;
+        m_firewallRuleExists = ruleExists;
+        if (blocked != m_firewallBlocked || publicNetwork != m_firewallPublic)
+        {
+            m_firewallBlocked = blocked;
+            m_firewallPublic = publicNetwork;
+            emit q->firewallChanged();
+            emit q->castStatusChanged();    // (its message)
+        }
+        // the rule added: the device gave up reading, it starts again from
+        // where it is
+        if (retry && !blocked && m_selectedItem)
+            q->retry();
     }
 
 #ifdef _WIN32
@@ -531,11 +621,10 @@ public:
         m_firewallAllowing = false;
         emit q->firewallChanged();
 
+        // (there now, unless the check says otherwise: not added twice)
+        m_firewallRuleExists = true;
+        m_retryWhenAllowed = true;
         checkFirewall();
-        if (m_firewallBlocked || !m_selectedItem)
-            return;
-        // the device gave up reading: it starts again from where it is
-        q->retry();
     }
 #endif
 
@@ -592,6 +681,13 @@ public:
 
     bool m_firewallBlocked = false;
     bool m_firewallAllowing = false;
+    // see FirewallState
+    bool m_firewallPublic = false;
+    bool m_firewallRuleExists = false;
+    // the last check asked (the answers of the others are dropped)
+    quint64 m_firewallGeneration = 0;
+    // cast again once the check says the device can connect (the rule added)
+    bool m_retryWhenAllowed = false;
     bool m_displayHere = false;
     RendererManager::CastStatus m_castStatus = RendererManager::CastIdle;
     // why it failed (see "renderer-state")
@@ -602,6 +698,9 @@ public:
 #ifdef _WIN32
     HANDLE m_firewallProcess = nullptr;
     QTimer m_firewallWait;
+    // the check going on, and whether to check again once it is done
+    QThread *m_firewallThread = nullptr;
+    bool m_firewallRecheck = false;
 #endif
     //remaining time in seconds
     unsigned m_scan_remain = 0;
@@ -856,6 +955,12 @@ bool RendererManager::firewallAllowing() const
     return d->m_firewallAllowing;
 }
 
+bool RendererManager::firewallPublic() const
+{
+    Q_D(const RendererManager);
+    return d->m_firewallPublic;
+}
+
 bool RendererManager::displayHereAvailable() const
 {
     Q_D(const RendererManager);
@@ -894,11 +999,16 @@ void RendererManager::allowFirewall()
     if (length == 0 || length >= MAX_PATH)
         return;
 
-    // A rule for this program, on the private and domain networks only.
+    // A rule for this program, on the private and domain networks, and on
+    // the public ones when this computer is on one (no rule of the others
+    // counts there). The rule there already is changed, not added again.
     // Windows asks for an administrator's approval (declined: nothing).
-    const std::wstring parameters =
-        L"advfirewall firewall add rule name=\"VLC Redesign\" dir=in action=allow program=\""
-        + std::wstring(path) + L"\" enable=yes profile=private,domain";
+    const std::wstring name = L"name=\"" + std::wstring(firewallRuleName) + L"\" dir=in ";
+    const std::wstring rule = L"action=allow program=\"" + std::wstring(path) + L"\" enable=yes profile="
+                            + (d->m_firewallPublic ? L"private,domain,public" : L"private,domain");
+    const std::wstring parameters = d->m_firewallRuleExists
+        ? L"advfirewall firewall set rule " + name + L"new " + rule
+        : L"advfirewall firewall add rule " + name + rule;
     SHELLEXECUTEINFOW info = {};
     info.cbSize = sizeof(info);
     info.fMask = SEE_MASK_NOCLOSEPROCESS;

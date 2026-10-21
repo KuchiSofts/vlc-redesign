@@ -30,7 +30,10 @@ struct HttpRequest
     QUrl url;
     QList<QPair<QByteArray, QByteArray>> headers;
     QByteArray body;
+    // of each step: connecting, sending, waiting for the answer, each read
     int timeoutMs = 30000;
+    // of the whole request, 0 for none: a slow download ends there
+    int deadlineMs = 0;
     qsizetype maxBytes = 2 * 1024 * 1024;
     // Called on the worker thread as the body arrives: the bytes received,
     // and the size the server announced (0 when unknown)
@@ -40,7 +43,11 @@ struct HttpRequest
 // Whether this build can perform requests at all.
 bool httpRequestSupported();
 
+// Stops a request: done then gets the error "Cancelled" (nothing happens
+// once it has ended)
+using HttpCancel = std::function<void()>;
+
 // Runs the request on a worker thread and calls done in the thread of
 // context. done is dropped if context is destroyed first.
-void httpRequestAsync(QObject* context, HttpRequest request,
-                      std::function<void(const HttpResponse&)> done);
+HttpCancel httpRequestAsync(QObject* context, HttpRequest request,
+                            std::function<void(const HttpResponse&)> done);

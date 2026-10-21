@@ -26,6 +26,9 @@
 #ifdef _WIN32
 # include <windows.h>
 # include <winhttp.h>
+# ifndef WINHTTP_ACCESS_TYPE_AUTOMATIC_PROXY
+#  define WINHTTP_ACCESS_TYPE_AUTOMATIC_PROXY 4
+# endif
 #endif
 
 namespace {
@@ -106,14 +109,23 @@ HttpResponse perform(const HttpRequest& request, RequestState& state)
         return response;
     }
     const QString cancelled = QStringLiteral("Cancelled");
+    const QDeadlineTimer deadline = request.deadlineMs > 0 ? QDeadlineTimer(request.deadlineMs)
+                                                           : QDeadlineTimer(QDeadlineTimer::Forever);
 
-    InternetHandle session(state, WinHttpOpen(L"VLC", WINHTTP_ACCESS_TYPE_DEFAULT_PROXY,
-                                              WINHTTP_NO_PROXY_NAME, WINHTTP_NO_PROXY_BYPASS, 0));
+    // The proxy of the system (its settings, or the script it names), as
+    // the browsers use; WinHTTP's own setting before Windows 8.1
+    HINTERNET opened = WinHttpOpen(L"VLC", WINHTTP_ACCESS_TYPE_AUTOMATIC_PROXY,
+                                   WINHTTP_NO_PROXY_NAME, WINHTTP_NO_PROXY_BYPASS, 0);
+    if (!opened)
+        opened = WinHttpOpen(L"VLC", WINHTTP_ACCESS_TYPE_DEFAULT_PROXY,
+                             WINHTTP_NO_PROXY_NAME, WINHTTP_NO_PROXY_BYPASS, 0);
+    InternetHandle session(state, opened);
     if (!session)
     {
         response.error = state.cancelled ? cancelled : lastError("WinHttpOpen");
         return response;
     }
+    // each step at most this long: a stalled read ends the request
     WinHttpSetTimeouts(session.handle, request.timeoutMs, request.timeoutMs,
                        request.timeoutMs, request.timeoutMs);
 
@@ -178,6 +190,11 @@ HttpResponse perform(const HttpRequest& request, RequestState& state)
         if (state.cancelled)
         {
             response.error = cancelled;
+            break;
+        }
+        if (deadline.hasExpired())
+        {
+            response.error = QStringLiteral("Timed out");
             break;
         }
         if (!WinHttpReadData(handle.handle, buffer, sizeof(buffer), &read))
@@ -273,14 +290,14 @@ private:
 };
 }
 
-void httpRequestAsync(QObject* context, HttpRequest request,
-                      std::function<void(const HttpResponse&)> done)
+HttpCancel httpRequestAsync(QObject* context, HttpRequest request,
+                            std::function<void(const HttpResponse&)> done)
 {
     RequestRegistry* const registry = RequestRegistry::instance();
     // the application quitting: no new request (done is dropped, as when
     // context goes away)
     if (registry && registry->isShutDown())
-        return;
+        return []() {};
 
     auto response = std::make_shared<HttpResponse>();
     auto state = std::make_shared<RequestState>();
@@ -304,4 +321,9 @@ void httpRequestAsync(QObject* context, HttpRequest request,
         });
     }
     thread->start();
+    // (the state goes with the request: nothing to stop once it has ended)
+    return [weak = std::weak_ptr<RequestState>(state)]() {
+        if (const auto alive = weak.lock())
+            alive->cancel();
+    };
 }

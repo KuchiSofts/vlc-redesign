@@ -46,6 +46,38 @@ const char latestReleaseApi[] = "https://api.github.com/repos/" VLC_REDESIGN_REP
 const char latestReleasePage[] = VLC_REDESIGN_REPO_URL "/releases/latest";
 const char keyLastCheck[] = "redesign/update-last-check";
 const char keySkipped[] = "redesign/update-skip";
+// each step of a download (a stalled read ends it), and the whole of it
+constexpr int downloadStepMs = 30 * 1000;
+constexpr int downloadDeadlineMs = 30 * 60 * 1000;
+
+#ifndef NDEBUG
+// for testing updates against a local server, not GitHub (debug builds only)
+QString testApi()
+{
+    return QString::fromUtf8(qgetenv("VLC_REDESIGN_UPDATE_API"));
+}
+#endif
+
+// What is downloaded comes from GitHub, over HTTPS (WinHTTP then follows
+// its redirects to its storage, never to plain HTTP)
+bool trustedUrl(const QString &address)
+{
+    const QUrl url(address);
+    const QString host = url.host().toLower();
+    if (url.isValid() && url.scheme() == QLatin1String("https") && url.userInfo().isEmpty()
+        && url.port(443) == 443
+        && (host == QLatin1String("github.com") || host == QLatin1String("api.github.com")
+            || host == QLatin1String("objects.githubusercontent.com")))
+        return true;
+#ifndef NDEBUG
+    // the test server's own files
+    const QUrl api(testApi());
+    return !api.host().isEmpty() && url.scheme() == api.scheme() && url.host() == api.host()
+           && url.port() == api.port();
+#else
+    return false;
+#endif
+}
 
 HttpRequest githubRequest(const QString &url, qsizetype maxBytes, int timeoutMs)
 {
@@ -269,7 +301,8 @@ bool RedesignUpdater::appFolderWritable() const
 
 bool RedesignUpdater::smallUpdate() const
 {
-    return !m_deltaUrl.isEmpty() && !m_sumsUrl.isEmpty() && appFolderWritable();
+    // (one that failed is not tried again: the installer then)
+    return !m_deltaFailed && !m_deltaUrl.isEmpty() && !m_sumsUrl.isEmpty() && appFolderWritable();
 }
 
 bool RedesignUpdater::canInstall() const
@@ -342,9 +375,11 @@ void RedesignUpdater::check(bool manual)
         return;
     }
     setState(Checking);
-    // for testing updates against a local server, not GitHub
-    const QByteArray api = qgetenv("VLC_REDESIGN_UPDATE_API");
-    const QString url = api.isEmpty() ? QString::fromLatin1(latestReleaseApi) : QString::fromUtf8(api);
+    QString url = QString::fromLatin1(latestReleaseApi);
+#ifndef NDEBUG
+    if (!testApi().isEmpty())
+        url = testApi();
+#endif
     httpRequestAsync(this, githubRequest(url, 1024 * 1024, 20000),
                      [this](const HttpResponse &response) {
         if (!response.error.isEmpty() || response.status == 0) {
@@ -389,6 +424,8 @@ void RedesignUpdater::onRelease(int status, const QByteArray &body)
         const QString name = a.value(QLatin1String("name")).toString();
         const QString url = a.value(QLatin1String("browser_download_url")).toString();
         const qint64 size = a.value(QLatin1String("size")).toInteger();
+        if (!trustedUrl(url))
+            continue;
         if (name.endsWith(QLatin1String("-win64-setup.exe"), Qt::CaseInsensitive)) {
             m_installerUrl = url;
             m_installerName = name;
@@ -420,8 +457,18 @@ void RedesignUpdater::skipThisVersion()
 
 void RedesignUpdater::dismiss()
 {
-    if (m_state == Downloading || m_state == Preparing)
+    if (m_state == Preparing)
         return;
+    if (m_state == Downloading) {
+        // the download stops (its answer is dropped): the update stays
+        // available
+        ++m_attempt;
+        if (m_cancel)
+            m_cancel();
+        m_cancel = {};
+        setProgress(0);
+        m_state = Available;
+    }
     m_dismissed = true;
     emit stateChanged();
 }
@@ -432,6 +479,7 @@ void RedesignUpdater::install()
         openReleasePage();
         return;
     }
+    ++m_attempt;
     setProgress(0);
     setState(Downloading);
     // Nothing is used unless it matches the checksum published with it
@@ -443,8 +491,11 @@ void RedesignUpdater::install()
 
 void RedesignUpdater::withChecksum(const QString &assetName, std::function<void(const QString &)> next)
 {
-    httpRequestAsync(this, githubRequest(m_sumsUrl, 64 * 1024, 30000),
-                     [this, assetName, next](const HttpResponse &response) {
+    const quint64 attempt = m_attempt;
+    m_cancel = httpRequestAsync(this, githubRequest(m_sumsUrl, 64 * 1024, 30000),
+                                [this, attempt, assetName, next](const HttpResponse &response) {
+        if (attempt != m_attempt)
+            return; // cancelled
         QString expected;
         if (response.error.isEmpty() && response.status == 200) {
             for (const QString &line : QString::fromUtf8(response.body).split('\n')) {
@@ -462,7 +513,9 @@ void RedesignUpdater::withChecksum(const QString &assetName, std::function<void(
     });
 }
 
-// The progress of a download, from its worker thread, at most once a percent
+// The progress of a download, from its worker thread, at most once a percent.
+// Posted to the application and the updater checked there: the worker can't
+// tell whether it is still alive.
 static std::function<void(qint64, qint64)> progressTo(RedesignUpdater *updater, qint64 announced,
                                                       std::function<void(double)> set)
 {
@@ -477,43 +530,55 @@ static std::function<void(qint64, qint64)> progressTo(RedesignUpdater *updater, 
         if (percent == *last)
             return;
         *last = percent;
-        if (target)
-            QMetaObject::invokeMethod(target.data(), [set, percent]() { set(percent / 100.0); },
-                                      Qt::QueuedConnection);
+        QMetaObject::invokeMethod(qApp, [target, set, percent]() {
+            if (target)
+                set(percent / 100.0);
+        }, Qt::QueuedConnection);
     };
 }
 
 void RedesignUpdater::downloadDelta(const QString &expectedSha256)
 {
+    const quint64 attempt = m_attempt;
     HttpRequest request = githubRequest(m_deltaUrl, std::max<qint64>(m_deltaSize, 1) + 4 * 1024 * 1024,
-                                        30 * 60 * 1000);
-    request.progress = progressTo(this, m_deltaSize, [this](double p) { setProgress(p); });
-    httpRequestAsync(this, std::move(request), [this, expectedSha256](const HttpResponse &response) {
+                                        downloadStepMs);
+    request.deadlineMs = downloadDeadlineMs;
+    request.progress = progressTo(this, m_deltaSize, [this, attempt](double p) {
+        if (attempt == m_attempt)
+            setProgress(p);
+    });
+    m_cancel = httpRequestAsync(this, std::move(request),
+                                [this, attempt, expectedSha256](const HttpResponse &response) {
+        if (attempt != m_attempt)
+            return; // cancelled
+        m_cancel = {};
         if (!response.error.isEmpty() || response.status != 200) {
             setState(Failed, qtr("The download failed. Check your connection and try again."));
             return;
         }
         setState(Preparing);
-        // Checked and written on a worker thread: the interface stays responsive
-        QPointer<RedesignUpdater> self(this);
+        // Checked and written on a worker thread: the interface stays
+        // responsive. The answer comes back by its finished signal, which
+        // is dropped if the updater is gone.
+        auto error = std::make_shared<QString>();
         const QByteArray delta = response.body;
         const QString dir = appDir();
         const QString version = m_latestVersion;
-        QThread *worker = QThread::create([self, delta, expectedSha256, dir, version]() {
-            QString error;
+        QThread *worker = QThread::create([error, delta, expectedSha256, dir, version]() {
             if (sha256Hex(delta) != expectedSha256)
-                error = qtr("The update doesn't match its checksum, so it wasn't used.");
+                *error = qtr("The update doesn't match its checksum, so it wasn't used.");
             else
-                error = stageDelta(delta, dir, version);
-            if (self)
-                QMetaObject::invokeMethod(self.data(), [self, error]() {
-                    if (!self)
-                        return;
-                    if (!error.isEmpty())
-                        self->setState(Failed, error);
-                    else
-                        self->setState(Ready);
-                }, Qt::QueuedConnection);
+                *error = stageDelta(delta, dir, version);
+        });
+        connect(worker, &QThread::finished, this, [this, error]() {
+            if (error->isEmpty()) {
+                setState(Ready);
+                return;
+            }
+            // the installer next time ("Update now" again), not the same
+            // small update
+            m_deltaFailed = true;
+            setState(Failed, *error);
         });
         connect(worker, &QThread::finished, worker, &QObject::deleteLater);
         worker->start(QThread::LowPriority);
@@ -606,6 +671,11 @@ void RedesignUpdater::findStagedUpdate()
     if (!ready.open(QIODevice::ReadOnly)) {
         // the helper of the last update, done
         QFile::remove(appDir() + QStringLiteral("/.update/vlc-redesign-update.exe"));
+        // an update left half written (VLC closed while it was prepared);
+        // not one another VLC is writing now
+        const QFileInfo staged(appDir() + QStringLiteral("/.update/staged"));
+        if (staged.isDir() && staged.lastModified().secsTo(QDateTime::currentDateTime()) > 3600)
+            QDir(staged.filePath()).removeRecursively();
         return;
     }
     const QString version = QString::fromUtf8(ready.readAll()).trimmed();
@@ -706,40 +776,49 @@ void RedesignUpdater::applyOnExit()
 
 void RedesignUpdater::downloadInstaller(const QString &expectedSha256)
 {
-    HttpRequest request = githubRequest(m_installerUrl, 512 * 1024 * 1024, 30 * 60 * 1000);
-    request.progress = progressTo(this, m_installerSize, [this](double p) { setProgress(p); });
-    httpRequestAsync(this, std::move(request), [this, expectedSha256](const HttpResponse &response) {
+    const quint64 attempt = m_attempt;
+    HttpRequest request = githubRequest(m_installerUrl, 512 * 1024 * 1024, downloadStepMs);
+    request.deadlineMs = downloadDeadlineMs;
+    request.progress = progressTo(this, m_installerSize, [this, attempt](double p) {
+        if (attempt == m_attempt)
+            setProgress(p);
+    });
+    m_cancel = httpRequestAsync(this, std::move(request),
+                                [this, attempt, expectedSha256](const HttpResponse &response) {
+        if (attempt != m_attempt)
+            return; // cancelled
+        m_cancel = {};
         if (!response.error.isEmpty() || response.status != 200) {
             setState(Failed, qtr("The download failed. Try again, or download it from the release page."));
             return;
         }
         setState(Preparing);
-        // Checked and saved on a worker thread: the interface stays responsive
-        QPointer<RedesignUpdater> self(this);
+        // Checked and saved on a worker thread: the interface stays
+        // responsive. The answer comes back by its finished signal, which
+        // is dropped if the updater is gone.
+        struct Saved { QString error, path; };
+        auto saved = std::make_shared<Saved>();
         const QByteArray body = response.body;
         const QString name = m_installerName;
-        QThread *worker = QThread::create([self, body, expectedSha256, name]() {
-            QString error, path;
+        QThread *worker = QThread::create([saved, body, expectedSha256, name]() {
             if (sha256Hex(body) != expectedSha256) {
-                error = qtr("The downloaded installer doesn't match its checksum, so it wasn't run.");
+                saved->error = qtr("The downloaded installer doesn't match its checksum, so it wasn't run.");
             } else {
                 const QString dir = QStandardPaths::writableLocation(QStandardPaths::TempLocation)
                                     + QStringLiteral("/vlc-redesign-update");
                 QDir().mkpath(dir);
-                path = dir + QLatin1Char('/') + name;
-                QFile file(path);
+                // (the name of the release's file, never a path)
+                saved->path = dir + QLatin1Char('/') + QFileInfo(name).fileName();
+                QFile file(saved->path);
                 if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate) || file.write(body) != body.size())
-                    error = qtr("The installer couldn't be saved to %1.").arg(QDir::toNativeSeparators(dir));
+                    saved->error = qtr("The installer couldn't be saved to %1.").arg(QDir::toNativeSeparators(dir));
             }
-            if (self)
-                QMetaObject::invokeMethod(self.data(), [self, error, path]() {
-                    if (!self)
-                        return;
-                    if (!error.isEmpty())
-                        self->setState(Failed, error);
-                    else
-                        self->launchInstaller(path);
-                }, Qt::QueuedConnection);
+        });
+        connect(worker, &QThread::finished, this, [this, saved]() {
+            if (!saved->error.isEmpty())
+                setState(Failed, saved->error);
+            else
+                launchInstaller(saved->path);
         });
         connect(worker, &QThread::finished, worker, &QObject::deleteLater);
         worker->start(QThread::LowPriority);

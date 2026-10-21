@@ -67,6 +67,7 @@ public:
 
     SubtitleFinder(qt_intf_t *intf, PlayerController *player, SubtitlePreferences *preferences,
                    QObject *parent = nullptr);
+    ~SubtitleFinder() override;
 
     State state() const { return m_state; }
     QString matchTitle() const;
@@ -163,6 +164,8 @@ private:
     void attach(const QString &file, const QString &id, const QString &language, bool select,
                 bool alongside = false);
     void download(const QString &id, bool alongside);
+    // the first of m_queue, if any
+    void downloadNext();
     // the secondary language shown too (SubtitlePreferences::showBoth)
     void ensureSecondary();
     QVariantMap bestOf(const QString &language) const;
@@ -194,6 +197,8 @@ private:
     bool m_selectAlongside = false;
     // downloads waiting for the one going on: { id, alongside }
     QList<QPair<QString, bool>> m_queue;
+    // the download going on (its answer is dropped once the media changed)
+    quint64 m_downloadRevision = 0;
     // the search going on (its answers after another starts are dropped)
     quint64 m_searchRevision = 0;
     QList<SubtitleProviders::Result> m_found;

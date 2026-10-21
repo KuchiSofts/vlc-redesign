@@ -1326,12 +1326,21 @@ static void Stop(audio_output_t *aout)
 
     assert(sys->stream != NULL);
 
+    /* Under the lock: the session thread plays the stream's blocks and runs
+     * its timer with it held (MMSessionMainloop). Stopped without it, the
+     * stream released its IAudioClient and freed its state under that
+     * thread: a crash in AudioSes when tracks change quickly. */
+    struct aout_stream_owner *owner = sys->stream;
     EnterMTA();
-    aout_stream_owner_Stop(sys->stream);
+    vlc_mutex_lock(&sys->lock);
+    aout_stream_owner_Stop(owner);
+    sys->stream = NULL;
+    vlc_mutex_unlock(&sys->lock);
     LeaveMTA();
 
-    aout_stream_owner_Delete(sys->stream);
-    sys->stream = NULL;
+    /* (it may be waiting for the stream's event, which goes now) */
+    SetEvent(sys->work_event);
+    aout_stream_owner_Delete(owner);
 }
 
 static void Close(vlc_object_t *);

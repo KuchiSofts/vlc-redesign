@@ -44,6 +44,8 @@ Updates without the installer: a few hundred kilobytes in the background, and a 
   left its Direct3D 11 device behind, with its driver's threads and memory (about a hundred threads on an NVIDIA
   card). A playlist of short clips reached 7,000 threads and closed after a few minutes. The device now goes with the
   video: the count stays flat, and VLC starts with 40% fewer threads. VLC 4's own nightly builds do the same.
+- **A crash when changing tracks quickly**: the Windows audio output was stopped while its thread still played the
+  stream (in VLC 4 itself), and VLC closed after a few seconds of skipping through short items.
 - **A video output that can't work here** (Direct3D 9 or OpenGL chosen in *Settings › Video*) showed no picture and
   kept a processor core busy trying again for every frame. The outputs that work are tried next.
 - **Folders named in another alphabet** (a Windows user name in Hebrew or Chinese, where VLC Redesign installs): the

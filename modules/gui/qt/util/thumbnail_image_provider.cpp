@@ -131,7 +131,9 @@ struct ThumbnailResponseState
 // is never cancelled: a frame the pointer has left behind still goes to the
 // cache, where a sweep back finds it. The frames of the seek bar are on a
 // grid, and while it is asked for, the frames around the pointer are
-// decoded ahead, one at a time.
+// decoded ahead, one at a time. A media whose frames take long to decode
+// (4K HEVC: the thumbnailer decodes in software) gets no decoding ahead and
+// one frame at a time, so that playback keeps the processor.
 class ThumbnailFrameCache : public std::enable_shared_from_this<ThumbnailFrameCache>
 {
 public:
@@ -225,6 +227,7 @@ private:
         double pos = 0;
         int width = 0;
         bool ahead = false;
+        qint64 started = 0;
         QImage image;
         std::vector<std::shared_ptr<ThumbnailResponseState>> waiters;
         quint64 lastUse = 0;
@@ -244,6 +247,14 @@ private:
     static constexpr int maxFrames = 240;
     // Decoding ahead stops when the seek bar was not asked for so long
     static constexpr qint64 aheadIdleMs = 4000;
+    // A frame of the seek bar taking longer on average makes its media heavy
+    static constexpr qint64 heavyMs = 150;
+
+    bool heavyLocked() const
+    {
+        return !m_seekMrl.isEmpty() && m_timedMrl == m_seekMrl && m_averageMs > heavyMs;
+    }
+    int maxRunningLocked() const { return heavyLocked() ? 1 : maxRunning; }
 
     static QString key(const QString &mrl, double pos, int width)
     {
@@ -290,6 +301,7 @@ private:
         {
             entry.state = Entry::Running;
             entry.ahead = ahead;
+            entry.started = m_clock.elapsed();
             ++m_running;
             if (ahead)
                 ++m_ahead;
@@ -310,18 +322,19 @@ private:
     {
         if (!m_preparser)
             return;
-        if (!m_wanted.isEmpty() && m_running < maxRunning)
+        const int limit = maxRunningLocked();
+        if (!m_wanted.isEmpty() && m_running < limit)
         {
             const auto it = m_entries.find(m_wanted);
             if (it != m_entries.end() && it->state == Entry::Idle)
                 submitLocked(it.key(), *it, false, outbox);
             m_wanted.clear();
         }
-        for (auto it = m_entries.begin(); it != m_entries.end() && m_running < maxRunning; ++it)
+        for (auto it = m_entries.begin(); it != m_entries.end() && m_running < limit; ++it)
             if (it->state == Entry::Idle && !it->waiters.empty())
                 submitLocked(it.key(), *it, false, outbox);
 
-        if (m_running >= maxRunning || m_ahead > 0 || m_seekMrl.isEmpty()
+        if (m_running >= limit || m_ahead > 0 || m_seekMrl.isEmpty() || heavyLocked()
             || m_clock.elapsed() - m_lastSeek > aheadIdleMs)
             return;
         // the nearest frame of the grid not decoded yet
@@ -375,6 +388,18 @@ private:
             {
                 if (it->ahead)
                     --m_ahead;
+                // how long the frames of this media take (an average over the last few)
+                if (!image.isNull())
+                {
+                    const qint64 ms = m_clock.elapsed() - it->started;
+                    if (m_timedMrl != it->mrl)
+                    {
+                        m_timedMrl = it->mrl;
+                        m_averageMs = ms;
+                    }
+                    else
+                        m_averageMs = (3 * m_averageMs + ms) / 4;
+                }
                 if (image.isNull() && status == -EINTR)
                     it->state = Entry::Idle;  // closing
                 else
@@ -419,6 +444,8 @@ private:
     int m_seekWidth = 0;
     int m_seekCenter = 0;
     qint64 m_lastSeek = 0;
+    QString m_timedMrl;
+    qint64 m_averageMs = 0;
     QElapsedTimer m_clock;
 };
 

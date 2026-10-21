@@ -111,6 +111,8 @@ public:
 public:
     Q_INVOKABLE void play();
     Q_INVOKABLE void pause();
+    // after pause(): play() starts a stopped media only
+    Q_INVOKABLE void resume();
     Q_INVOKABLE void stop();
     Q_INVOKABLE void next();
     Q_INVOKABLE void prev();

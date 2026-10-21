@@ -652,6 +652,13 @@ void PlaylistController::pause()
     vlc_playlist_Pause( d->m_playlist );
 }
 
+void PlaylistController::resume()
+{
+    Q_D(PlaylistController);
+    vlc_playlist_locker lock{ d->m_playlist };
+    vlc_playlist_Resume( d->m_playlist );
+}
+
 void PlaylistController::stop()
 {
     Q_D(PlaylistController);

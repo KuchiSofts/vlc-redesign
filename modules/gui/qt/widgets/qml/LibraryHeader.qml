@@ -119,10 +119,12 @@ T.ToolBar {
             delegate: Widgets.RedesignOptionItem {
                 required property var modelData
                 text: modelData.text
-                // the first option stands for the default order of the page
-                checked: (root.sort.criteria === modelData.criteria
-                          || (root.sort.criteria === "" && index === 0))
-                         && (root.sort.criteria === "" || root.sort.order === modelData.order)
+                // no criteria: the page sorts by its default one (the first),
+                // still in the order kept (a page kept in descending order
+                // shows "Title Z-A")
+                checked: (root.sort.criteria === "" ? root._sortOptions[0]?.criteria ?? ""
+                                                     : root.sort.criteria) === modelData.criteria
+                         && root.sort.order === modelData.order
                 required property int index
                 onTriggered: {
                     root.sort.criteria = modelData.criteria

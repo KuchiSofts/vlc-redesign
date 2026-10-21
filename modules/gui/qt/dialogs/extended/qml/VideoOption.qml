@@ -185,6 +185,8 @@ ColumnLayout {
             parent: choiceButton
             y: choiceButton.height + VLCStyle.dp(4, VLCStyle.scale)
             width: choiceButton.width
+            // (a template popup has no size of its own)
+            implicitHeight: implicitContentHeight + topPadding + bottomPadding
             padding: VLCStyle.dp(6, VLCStyle.scale)
             closePolicy: T.Popup.CloseOnEscape | T.Popup.CloseOnPressOutside
             background: Rectangle { color: root.c("#1B1B1B"); radius: VLCStyle.dp(6, VLCStyle.scale) }

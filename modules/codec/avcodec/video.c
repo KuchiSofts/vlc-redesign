@@ -134,6 +134,16 @@ typedef struct
     vlc_video_context *vctx_out;
     bool use_hwframes;
 
+    /* Hardware decoding first, with a single thread: each frame thread of
+     * lavc delays the pictures by one frame, which the hardware doesn't need,
+     * and a seek shows its picture that much later. When the hardware can't
+     * decode the stream, the decoder is reloaded with all its threads (see
+     * ReloadWithThreads), and fed the same block. */
+    bool hw_first;
+    bool hw_first_pending; /* the first picture format is still to come */
+    bool hw_first_failed;  /* no hardware: reload now, the block is intact */
+    bool hw_first_reload;  /* no hardware any more: reload at a key frame */
+
     // decoder output seen by lavc, regardless of texture padding
     unsigned decoder_width;
     unsigned decoder_height;
@@ -642,6 +652,26 @@ static int InitVideoDecCommon( decoder_t *p_dec )
 
     int max_thread_count;
     int i_thread_count = p_sys->b_hardware_only ? 1 : var_InheritInteger( p_dec, "avcodec-threads" );
+    p_sys->hw_first = false;
+    if( !p_sys->b_hardware_only && i_thread_count <= 0 &&
+        ( p_codec->id == AV_CODEC_ID_H264 || p_codec->id == AV_CODEC_ID_HEVC ||
+          p_codec->id == AV_CODEC_ID_VP9 ) &&
+        var_InheritBool( p_dec, "hw-dec" ) &&
+        /* set by a previous decoder of this stream that had no hardware */
+        !( var_Type( p_dec, "avcodec-hw-first-failed" ) &&
+           var_GetBool( p_dec, "avcodec-hw-first-failed" ) ) )
+    {
+        char *dev = var_InheritString( p_dec, "dec-dev" );
+        p_sys->hw_first = dev == NULL || strcmp( dev, "none" ) != 0;
+        free( dev );
+    }
+    p_sys->hw_first_pending = p_sys->hw_first;
+    p_sys->hw_first_failed = p_sys->hw_first_reload = false;
+    if( p_sys->hw_first )
+    {
+        msg_Dbg( p_dec, "trying hardware decoding with a single thread" );
+        i_thread_count = 1;
+    }
     if( i_thread_count <= 0 )
     {
         i_thread_count = vlc_GetCPUCount();
@@ -1744,7 +1774,53 @@ static int DecodeBlock( decoder_t *p_dec, block_t **pp_block )
     return b_error ? VLCDEC_ECRITICAL : VLCDEC_SUCCESS;
 }
 
+static int DecodeVideoBlock( decoder_t *, block_t * );
+
+/* The next decoder of this stream will use its threads (InitVideoDecCommon) */
+static int ReloadWithThreads( decoder_t *p_dec )
+{
+    if( var_Create( p_dec, "avcodec-hw-first-failed", VLC_VAR_BOOL ) == VLC_SUCCESS )
+        var_SetBool( p_dec, "avcodec-hw-first-failed", true );
+    return VLCDEC_RELOAD;
+}
+
 static int DecodeVideo( decoder_t *p_dec, block_t *p_block )
+{
+    decoder_sys_t *p_sys = p_dec->p_sys;
+
+    if( p_block && p_sys->hw_first_reload && (p_block->i_flags & BLOCK_FLAG_TYPE_I) )
+        return ReloadWithThreads( p_dec );
+
+    /* Until the first picture format tells whether the hardware decodes, a
+     * copy is decoded: the core gives the block intact to a decoder reloaded
+     * with its threads (VLCDEC_RELOAD) */
+    block_t *p_orig = NULL;
+    if( p_block && p_sys->hw_first_pending )
+    {
+        block_t *p_copy = block_Duplicate( p_block );
+        if( p_copy != NULL )
+        {
+            p_orig = p_block;
+            p_block = p_copy;
+        }
+    }
+
+    int ret = DecodeVideoBlock( p_dec, p_block );
+    if( p_sys->hw_first_failed )
+    {
+        if( p_orig != NULL )
+            return ReloadWithThreads( p_dec );
+        /* nothing to give again: the software decodes until a key frame */
+        p_sys->hw_first_failed = p_sys->hw_first_pending = false;
+        p_sys->hw_first_reload = true;
+        ret = VLCDEC_SUCCESS;
+    }
+    if( p_orig != NULL )
+        block_Release( p_orig );
+    return ret;
+}
+
+static int DecodeVideoBlock( decoder_t *p_dec, block_t *p_block )
 {
     decoder_sys_t *p_sys = p_dec->p_sys;
     block_t **pp_block = p_block ? &p_block : NULL /* drain signal */;
@@ -2041,6 +2117,28 @@ static int lavc_GetFrame(struct AVCodecContext *ctx, AVFrame *frame, int flags)
     return ret;
 }
 
+/* The hardware can't decode the stream, and with hw_first a single thread
+ * would decode it in software. For the first picture, nothing is decoded: the
+ * block goes intact to a decoder reloaded with its threads. Later (a new
+ * format the hardware refuses), the software decodes until the reload, at the
+ * next key frame. */
+static enum AVPixelFormat ffmpeg_HwFirstFallback( decoder_t *p_dec,
+                                                 enum AVPixelFormat swfmt )
+{
+    decoder_sys_t *p_sys = p_dec->p_sys;
+
+    if( !p_sys->hw_first )
+        return swfmt;
+    if( p_sys->hw_first_pending )
+    {
+        msg_Dbg( p_dec, "no hardware decoding: reloading with threads" );
+        p_sys->hw_first_failed = true;
+        return AV_PIX_FMT_NONE;
+    }
+    p_sys->hw_first_reload = true;
+    return swfmt;
+}
+
 static enum AVPixelFormat ffmpeg_GetFormat( AVCodecContext *p_context,
                                           const enum AVPixelFormat *pi_fmt )
 {
@@ -2156,7 +2254,7 @@ no_reuse:
     p_sys->level = p_context->level;
 
     if (!can_hwaccel)
-        return swfmt;
+        return ffmpeg_HwFirstFallback(p_dec, swfmt);
 
     const AVPixFmtDescriptor *src_desc = av_pix_fmt_desc_get(swfmt);
 
@@ -2183,10 +2281,13 @@ no_reuse:
         if (ret != VLC_SUCCESS)
             continue;
 
+        p_sys->hw_first_pending = false;
         return hwfmt;
     }
 
     /* Fallback to default behaviour */
+    if (ffmpeg_HwFirstFallback(p_dec, swfmt) == AV_PIX_FMT_NONE)
+        return AV_PIX_FMT_NONE;
     p_sys->pix_fmt = swfmt;
     return swfmt;
 }

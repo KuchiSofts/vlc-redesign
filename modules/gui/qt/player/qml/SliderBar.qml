@@ -20,6 +20,7 @@ import QtQuick.Templates as T
 import QtQuick.Layouts
 
 import VLC.Player
+import VLC.Playlist
 import VLC.Widgets as Widgets
 import VLC.Style
 import VLC.Util
@@ -27,6 +28,54 @@ import VLC.MainInterface
 
 T.ProgressBar {
     id: control
+
+    // Dragging the bar: playback pauses (no bursts of sound), the picture
+    // follows with key frame seeks, at most one per scrubTimer interval (a
+    // precise seek of a 4K HEVC video decodes seconds of frames), and the
+    // release seeks precisely, then plays again if it was playing
+    property bool _scrubbing: false
+    property bool _resumeAfterScrub: false
+    property real _scrubPending: -1
+    // where the press seeked: a drag starts past the system's drag distance
+    // (a click moves the pointer a pixel or two, and stays one seek)
+    property real _pressPosition: -1
+
+    Timer {
+        id: scrubTimer
+        interval: 150
+        onTriggered: {
+            if (control._scrubPending < 0)
+                return
+            Player.setPositionFast(control._scrubPending)
+            control._scrubPending = -1
+            restart()
+        }
+    }
+
+    function _scrubTo(position) {
+        if (!_scrubbing) {
+            _scrubbing = true
+            _resumeAfterScrub = Player.playingState === Player.PLAYING_STATE_PLAYING
+            if (_resumeAfterScrub)
+                MainPlaylistController.pause()
+        }
+        if (scrubTimer.running) {
+            _scrubPending = position
+        } else {
+            Player.setPositionFast(position)
+            scrubTimer.restart()
+        }
+    }
+
+    // returns whether playback has to start again
+    function _endScrub() {
+        scrubTimer.stop()
+        _scrubPending = -1
+        const resume = _scrubbing && _resumeAfterScrub
+        _scrubbing = false
+        _resumeAfterScrub = false
+        return resume
+    }
 
     property bool redesign: false
     readonly property real _hoveredScalingFactor: redesign ? 1.0 : 1.8
@@ -174,6 +223,7 @@ T.ProgressBar {
                 "pressControl": {
                     action: (position, forcePrecise) => {
                         control.forceActiveFocus()
+                        control._pressPosition = Helpers.clamp(position, 0., 1.)
                         fsm._seekToPosition(position, VLCStyle.dp(4, VLCStyle.scale) / control.width, forcePrecise)
                     },
                     target: fsmHeld
@@ -187,10 +237,24 @@ T.ProgressBar {
             transitions: ({
                 "moveControl": {
                     action: (position, forcePrecise) => {
-                        fsm._seekToPosition(position, VLCStyle.dp(2, VLCStyle.scale) / control.width, forcePrecise)
+                        position = Helpers.clamp(position, 0., 1.)
+                        // a click, not a drag yet: the press seeked there already
+                        if (!control._scrubbing
+                            && Math.abs(position - control._pressPosition) * control.width < Qt.styleHints.startDragDistance)
+                            return
+                        control.value = position
+                        control._scrubTo(position)
                     }
                 },
                 "releaseControl": {
+                    action: (position, forcePrecise) => {
+                        if (!control._scrubbing)
+                            return
+                        const resume = control._endScrub()
+                        fsm._seekToPosition(position, VLCStyle.dp(2, VLCStyle.scale) / control.width, forcePrecise)
+                        if (resume)
+                            MainPlaylistController.resume()
+                    },
                     target: fsmReleased
                 },
                 "inputChanged": {
@@ -203,6 +267,8 @@ T.ProgressBar {
             id: fsmHeldWrongInput
 
             function enter() {
+                // another media plays: no seek, nothing to resume
+                control._endScrub()
                 fsm._setPositionFromValue(Player.position)
             }
 

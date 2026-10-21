@@ -11,6 +11,6 @@
 // Version of the VLC Redesign build, compared with the GitHub releases by
 // the updater and read by extras/juxtopposed/make-release.ps1: bump it with
 // every release.
-#define VLC_REDESIGN_VERSION "0.2.3"
+#define VLC_REDESIGN_VERSION "0.2.4"
 #define VLC_REDESIGN_REPO "KuchiSofts/vlc-redesign"
 #define VLC_REDESIGN_REPO_URL "https://github.com/" VLC_REDESIGN_REPO

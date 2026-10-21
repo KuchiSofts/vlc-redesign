@@ -429,10 +429,14 @@ void MLBookmarkModel::updateMediaId(uint64_t revision, const QString &mediaUri)
         }
         if (valid)
         {
+            // the bookmarks were just listed: no refresh (a second query,
+            // and a reset inside this one)
             beginResetModel();
-            m_bookmarks = std::move(ctx.newBookmarks);
             m_currentMediaId = ctx.newMLid;
-            refresh(MLBOOKMARKMODEL_REFRESH);
+            if (m_currentMediaId != 0)
+                m_bookmarks = std::move(ctx.newBookmarks);
+            else
+                m_bookmarks.reset();
             endResetModel();
         }
     });

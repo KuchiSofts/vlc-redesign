@@ -28,15 +28,21 @@
 #include <vlc_picture.h>
 #include <vlc_preparser.h>
 
+#include <QDir>
 #include <QElapsedTimer>
 #include <QHash>
 #include <QImage>
 #include <QImageReader>
+#include <QThreadPool>
 #include <QUrl>
 #include <QUrlQuery>
 
 #include <algorithm>
 #include <vector>
+
+#ifdef _WIN32
+# include <windows.h>
+#endif
 
 namespace {
 
@@ -102,6 +108,26 @@ QImage toImage(vlc_object_t *obj, picture_t *picture, const QSize &requestedSize
     return image;
 }
 
+// Whether the media is not a local file: a share (\\server or a mapped
+// network drive) or a stream, where each frame reads the media again
+bool remoteMrl(const QString &mrl)
+{
+    const QUrl url(mrl);
+    if (!url.isLocalFile())
+        return true;
+#ifdef _WIN32
+    const QString path = QDir::toNativeSeparators(url.toLocalFile());
+    if (path.startsWith(QLatin1String("\\\\")))
+        return true;
+    if (path.size() >= 2 && path.at(1) == QLatin1Char(':'))
+    {
+        const wchar_t root[] = { wchar_t(path.at(0).unicode()), L':', L'\\', 0 };
+        return GetDriveTypeW(root) == DRIVE_REMOTE;
+    }
+#endif
+    return false;
+}
+
 } // anonymous namespace
 
 // The frame a response waits for: filled on any thread, read by Qt
@@ -113,7 +139,7 @@ struct ThumbnailResponseState
     QImage image;
     QString error;
 
-    void deliver(const QImage &frame)
+    void deliver(const QImage &frame, const QString &failure = QStringLiteral("No frame decoded"))
     {
         std::lock_guard<std::recursive_mutex> guard(lock);
         if (!response || delivered)
@@ -121,7 +147,7 @@ struct ThumbnailResponseState
         delivered = true;
         image = frame;
         if (frame.isNull())
-            error = QStringLiteral("No frame decoded");
+            error = failure;
         // queued: the response may still be in its constructor
         QMetaObject::invokeMethod(response, &QQuickImageResponse::finished, Qt::QueuedConnection);
     }
@@ -132,8 +158,10 @@ struct ThumbnailResponseState
 // cache, where a sweep back finds it. The frames of the seek bar are on a
 // grid, and while it is asked for, the frames around the pointer are
 // decoded ahead, one at a time. A media whose frames take long to decode
-// (4K HEVC: the thumbnailer decodes in software) gets no decoding ahead and
-// one frame at a time, so that playback keeps the processor.
+// (4K HEVC: the thumbnailer decodes in software) or fail (time out) gets no
+// decoding ahead and one frame at a time, so that playback keeps the
+// processor; so does a media on the network. A frame that failed is tried
+// again when asked for a while later.
 class ThumbnailFrameCache : public std::enable_shared_from_this<ThumbnailFrameCache>
 {
 public:
@@ -182,6 +210,8 @@ public:
             {
                 if (seek)
                 {
+                    if (mrl != m_seekMrl)
+                        m_seekRemote = remoteMrl(mrl);
                     m_seekMrl = mrl;
                     m_seekWidth = width;
                     m_seekCenter = qRound(pos * gridSteps);
@@ -196,6 +226,10 @@ public:
                     entry.width = width;
                 }
                 entry.lastUse = ++m_uses;
+                // a failure may not last (a share back, a file copied in full)
+                if (entry.state == Entry::Failed
+                    && m_clock.elapsed() - entry.failedAt > failedRetryMs)
+                    entry.state = Entry::Idle;
                 if (entry.state == Entry::Done || entry.state == Entry::Failed)
                     outbox.emplace_back(state, entry.image);
                 else
@@ -228,6 +262,7 @@ private:
         int width = 0;
         bool ahead = false;
         qint64 started = 0;
+        qint64 failedAt = 0;
         QImage image;
         std::vector<std::shared_ptr<ThumbnailResponseState>> waiters;
         quint64 lastUse = 0;
@@ -243,8 +278,12 @@ private:
 
     // Frames decoding at once, at most one of them ahead of the pointer
     static constexpr int maxRunning = 2;
-    // Frames kept: the grid of a media and some more (about 30 MB at 280 x 158)
-    static constexpr int maxFrames = 240;
+    // Frames kept: by their size (the grid of a media at 280 x 158 is about
+    // 26 MB), and a bound on the frames that have none (failed, waited for)
+    static constexpr qsizetype maxBytes = 48 * 1024 * 1024;
+    static constexpr int maxFrames = 1000;
+    // A frame that failed is tried again when asked for after this
+    static constexpr qint64 failedRetryMs = 30000;
     // Decoding ahead stops when the seek bar was not asked for so long
     static constexpr qint64 aheadIdleMs = 4000;
     // A frame of the seek bar taking longer on average makes its media heavy
@@ -311,6 +350,7 @@ private:
             vlc_preparser_req_Release(request);
         delete data;
         entry.state = Entry::Failed;
+        entry.failedAt = m_clock.elapsed();
         for (const auto &waiter : entry.waiters)
             outbox.emplace_back(waiter, QImage());
         entry.waiters.clear();
@@ -335,7 +375,7 @@ private:
                 submitLocked(it.key(), *it, false, outbox);
 
         if (m_running >= limit || m_ahead > 0 || m_seekMrl.isEmpty() || heavyLocked()
-            || m_clock.elapsed() - m_lastSeek > aheadIdleMs)
+            || m_seekRemote || m_clock.elapsed() - m_lastSeek > aheadIdleMs)
             return;
         // the nearest frame of the grid not decoded yet
         const auto tryStep = [&](int step) {
@@ -346,7 +386,7 @@ private:
             const auto it = m_entries.find(k);
             if (it != m_entries.end() && it->state != Entry::Idle)
                 return false;
-            if (it == m_entries.end() && m_entries.size() >= maxFrames)
+            if (it == m_entries.end() && (m_bytes >= maxBytes || m_entries.size() >= maxFrames))
                 return false;
             Entry &entry = m_entries[k];
             entry.mrl = m_seekMrl;
@@ -364,7 +404,7 @@ private:
     // The least recently asked frames go, never one decoding or waited for
     void evictLocked()
     {
-        while (m_entries.size() > maxFrames)
+        while (m_bytes > maxBytes || m_entries.size() > maxFrames)
         {
             auto oldest = m_entries.end();
             for (auto it = m_entries.begin(); it != m_entries.end(); ++it)
@@ -373,6 +413,7 @@ private:
                     oldest = it;
             if (oldest == m_entries.end())
                 break;
+            m_bytes -= oldest->image.sizeInBytes();
             m_entries.erase(oldest);
         }
     }
@@ -388,10 +429,14 @@ private:
             {
                 if (it->ahead)
                     --m_ahead;
-                // how long the frames of this media take (an average over the last few)
-                if (!image.isNull())
+                // how long the frames of this media take (an average over the
+                // last few); a failure counts as slow: a frame timing out
+                // after seconds makes the media heavy
+                if (!(image.isNull() && status == -EINTR))
                 {
-                    const qint64 ms = m_clock.elapsed() - it->started;
+                    qint64 ms = m_clock.elapsed() - it->started;
+                    if (image.isNull())
+                        ms = qMax(ms, 2 * heavyMs);
                     if (m_timedMrl != it->mrl)
                     {
                         m_timedMrl = it->mrl;
@@ -405,6 +450,9 @@ private:
                 else
                 {
                     it->state = image.isNull() ? Entry::Failed : Entry::Done;
+                    if (image.isNull())
+                        it->failedAt = m_clock.elapsed();
+                    m_bytes += image.sizeInBytes() - it->image.sizeInBytes();
                     it->image = image;
                 }
                 for (const auto &waiter : it->waiters)
@@ -436,11 +484,14 @@ private:
     vlc_preparser_t *m_preparser = nullptr;
     bool m_closed = false;
     QHash<QString, Entry> m_entries;
+    // the size of their frames
+    qsizetype m_bytes = 0;
     QString m_wanted;
     int m_running = 0;
     int m_ahead = 0;
     quint64 m_uses = 0;
     QString m_seekMrl;
+    bool m_seekRemote = false;
     int m_seekWidth = 0;
     int m_seekCenter = 0;
     qint64 m_lastSeek = 0;
@@ -502,41 +553,68 @@ private:
     std::shared_ptr<ThumbnailResponseState> m_state;
 };
 
-// Artwork of the media library: looked up and read on the thread of the
-// image loader, the response is ready when created
+// Artwork of the media library: looked up and read on a thread of the
+// provider's pool, not on the single thread of the image loader, where a
+// slow library or disk would hold every other image
 class ArtworkResponse : public QQuickImageResponse
 {
 public:
-    ArtworkResponse(vlc_object_t *obj, const QString &mrl, const QSize &requestedSize)
+    ArtworkResponse(QThreadPool *pool, vlc_object_t *obj, const QString &mrl,
+                    const QSize &requestedSize)
+        : m_state(std::make_shared<ThumbnailResponseState>())
     {
-        const QString path = artworkPath(obj, mrl);
-        if (!path.isEmpty())
-        {
-            QImageReader reader(path);
-            reader.setAutoTransform(true);
-            const QSize size = reader.size();
-            if (size.isValid() && (requestedSize.width() > 0 || requestedSize.height() > 0))
-            {
-                const QSize bound(requestedSize.width() > 0 ? requestedSize.width() : INT_MAX,
-                                  requestedSize.height() > 0 ? requestedSize.height() : INT_MAX);
-                if (size.width() > bound.width() || size.height() > bound.height())
-                    reader.setScaledSize(size.scaled(bound, Qt::KeepAspectRatio));
-            }
-            m_image = reader.read();
-        }
-        if (m_image.isNull())
-            m_error = QStringLiteral("No artwork for %1").arg(mrl);
-        QMetaObject::invokeMethod(this, &QQuickImageResponse::finished, Qt::QueuedConnection);
+        m_state->response = this;
+        const std::shared_ptr<ThumbnailResponseState> state = m_state;
+        pool->start(QRunnable::create([state, obj, mrl, requestedSize]() {
+            state->deliver(readArtwork(obj, mrl, requestedSize),
+                           QStringLiteral("No artwork for %1").arg(mrl));
+        }));
+    }
+
+    ~ArtworkResponse() override
+    {
+        std::lock_guard<std::recursive_mutex> guard(m_state->lock);
+        m_state->response = nullptr;
     }
 
     QQuickTextureFactory *textureFactory() const override
     {
-        return m_image.isNull() ? nullptr : QQuickTextureFactory::textureFactoryForImage(m_image);
+        std::lock_guard<std::recursive_mutex> guard(m_state->lock);
+        return m_state->image.isNull() ? nullptr
+                                       : QQuickTextureFactory::textureFactoryForImage(m_state->image);
     }
 
-    QString errorString() const override { return m_error; }
+    QString errorString() const override
+    {
+        std::lock_guard<std::recursive_mutex> guard(m_state->lock);
+        return m_state->error;
+    }
+
+    // The reading goes on; the engine needs finished() anyway
+    void cancel() override
+    {
+        m_state->deliver(QImage(), QStringLiteral("Canceled"));
+    }
 
 private:
+    static QImage readArtwork(vlc_object_t *obj, const QString &mrl, const QSize &requestedSize)
+    {
+        const QString path = artworkPath(obj, mrl);
+        if (path.isEmpty())
+            return {};
+        QImageReader reader(path);
+        reader.setAutoTransform(true);
+        const QSize size = reader.size();
+        if (size.isValid() && (requestedSize.width() > 0 || requestedSize.height() > 0))
+        {
+            const QSize bound(requestedSize.width() > 0 ? requestedSize.width() : INT_MAX,
+                              requestedSize.height() > 0 ? requestedSize.height() : INT_MAX);
+            if (size.width() > bound.width() || size.height() > bound.height())
+                reader.setScaledSize(size.scaled(bound, Qt::KeepAspectRatio));
+        }
+        return reader.read();
+    }
+
     static QString localPath(const vlc_ml_thumbnail_t &thumbnail)
     {
         if (thumbnail.i_status != VLC_ML_THUMBNAIL_STATUS_AVAILABLE || !thumbnail.psz_mrl)
@@ -567,8 +645,7 @@ private:
         return path;
     }
 
-    QImage m_image;
-    QString m_error;
+    std::shared_ptr<ThumbnailResponseState> m_state;
 };
 
 } // anonymous namespace
@@ -576,6 +653,8 @@ private:
 ThumbnailImageProvider::ThumbnailImageProvider(qt_intf_t *intf)
     : m_intf(intf)
 {
+    // a grid of covers asks for many at once: a few read together
+    m_artworkPool.setMaxThreadCount(2);
 }
 
 ThumbnailImageProvider::~ThumbnailImageProvider()
@@ -598,7 +677,7 @@ QQuickImageResponse *ThumbnailImageProvider::requestImageResponse(const QString 
     const QUrlQuery query { QUrl(id) };
     const QString mrl = decodeMrl(query.queryItemValue(QStringLiteral(URL_KEY)));
     if (query.hasQueryItem(QStringLiteral(ARTWORK_KEY)))
-        return new ArtworkResponse(VLC_OBJECT(m_intf), mrl, requestedSize);
+        return new ArtworkResponse(&m_artworkPool, VLC_OBJECT(m_intf), mrl, requestedSize);
     bool ok = false;
     const double position = query.queryItemValue(QStringLiteral(POSITION_KEY)).toDouble(&ok);
     const bool seek = query.hasQueryItem(QStringLiteral(SEEK_KEY));

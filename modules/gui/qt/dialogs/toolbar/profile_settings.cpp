@@ -33,12 +33,15 @@
 
 namespace {
 // Accounts, credentials, endpoints, file locations, remote control and process
-// integration are owned by the installation, never by a toolbar profile.
+// integration are owned by the installation, never by a toolbar profile. So
+// are the privacy choices: choosing a profile must not turn them back.
 const QSet<QString> globalKeys {
     "lastfm-username", "lastfm-password", "scrobbler-url", "http-proxy",
     "http-proxy-pwd", "logfile", "sub-autodetect-path", "input-record-path",
     "extraintf", "control", "file-logging", "one-instance",
-    "one-instance-when-started-from-file"
+    "one-instance-when-started-from-file",
+    "metadata-network-access", "save-recentplay", "qt:redesign/recentplay-filter",
+    "qt-privacy-ask"
 };
 
 const QStringList audioOptions {

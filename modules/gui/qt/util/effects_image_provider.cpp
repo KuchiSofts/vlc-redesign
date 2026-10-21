@@ -71,6 +71,9 @@ public:
     {
         //scale image to fit in the requested size
         QSize viewport = m_viewport.scaled(size, Qt::KeepAspectRatio);
+        // the blur mirrors the borders: a line of one pixel would divide by zero
+        if (viewport.width() < 2 || viewport.height() < 2)
+            return {};
         qreal xscale = viewport.width() / (qreal)m_viewport.width();
         qreal yscale = viewport.height() / (qreal)m_viewport.height();
 
@@ -241,6 +244,9 @@ public:
         if (thumbnail.width() > maxSide || thumbnail.height() > maxSide)
             thumbnail = thumbnail.scaled(target, Qt::KeepAspectRatio, Qt::SmoothTransformation);
         thumbnail = thumbnail.convertToFormat(QImage::Format_ARGB32_Premultiplied);
+        // A very long or tall artwork scales to a line of one pixel, which the
+        // mirrored borders of the blur divide by (any radius is fine from 2 on)
+        if (thumbnail.width() < 2 || thumbnail.height() < 2) return {};
 
         const int bytes = thumbnail.width() * thumbnail.height() * 4;
         unsigned char* rawSource = static_cast<unsigned char*>(malloc(bytes));

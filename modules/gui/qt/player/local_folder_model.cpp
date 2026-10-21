@@ -17,6 +17,7 @@
 #include <QDir>
 #include <QFileInfo>
 #include <QSet>
+#include <QThreadPool>
 
 #include <algorithm>
 
@@ -65,7 +66,16 @@ QUrl coreUrl(const QString& path)
 
 LocalFolderModel::LocalFolderModel(QObject* parent)
     : QAbstractListModel(parent)
+    , m_guard(std::make_shared<Guard>())
 {
+    m_guard->model = this;
+}
+
+LocalFolderModel::~LocalFolderModel()
+{
+    // a listing ending later finds no model
+    std::lock_guard<std::mutex> lock(m_guard->lock);
+    m_guard->model = nullptr;
 }
 
 void LocalFolderModel::setFolder(const QUrl& folder)
@@ -74,7 +84,11 @@ void LocalFolderModel::setFolder(const QUrl& folder)
         return;
     m_folder = folder;
     emit folderChanged();
-    reload();
+    // the entries of the previous folder go now, not when the listing ends
+    m_entries.clear();
+    ++m_generation;
+    updateRows();
+    startListing();
 }
 
 QUrl LocalFolderModel::parentFolder() const
@@ -103,7 +117,7 @@ void LocalFolderModel::setSearchPattern(const QString& pattern)
         return;
     m_searchPattern = pattern;
     emit searchPatternChanged();
-    reload();
+    updateRows();
 }
 
 void LocalFolderModel::setSortCriteria(const QString& criteria)
@@ -112,7 +126,7 @@ void LocalFolderModel::setSortCriteria(const QString& criteria)
         return;
     m_sortCriteria = criteria;
     emit sortChanged();
-    reload();
+    updateRows();
 }
 
 void LocalFolderModel::setSortOrder(Qt::SortOrder order)
@@ -121,7 +135,7 @@ void LocalFolderModel::setSortOrder(Qt::SortOrder order)
         return;
     m_sortOrder = order;
     emit sortChanged();
-    reload();
+    updateRows();
 }
 
 QUrl LocalFolderModel::folderOf(const QUrl& media)
@@ -133,34 +147,82 @@ QUrl LocalFolderModel::folderOf(const QUrl& media)
 
 void LocalFolderModel::reload()
 {
-    beginResetModel();
-    m_entries.clear();
-    if (m_folder.isLocalFile())
+    startListing();
+}
+
+void LocalFolderModel::startListing()
+{
+    if (m_listing)
     {
-        const QDir dir(m_folder.toLocalFile());
-        const QFileInfoList infos = dir.entryInfoList(QDir::AllDirs | QDir::Files | QDir::NoDotAndDotDot
-                                                      | QDir::Readable);
-        for (const QFileInfo& info : infos)
-        {
-            const bool isFolder = info.isDir();
-            if (!isFolder && !mediaSuffixes().contains(info.suffix().toLower()))
-                continue;
-            if (!m_searchPattern.isEmpty() && !info.fileName().contains(m_searchPattern, Qt::CaseInsensitive))
-                continue;
-            const QString path = info.absoluteFilePath();
-            const QString mrl = coreMrl(path);
-            m_entries.push_back({ info.fileName(), mrl, coreUrl(path, mrl), isFolder,
-                                  info.lastModified().toMSecsSinceEpoch() });
-        }
-        sortEntries();
+        m_relist = true;
+        return;
     }
+    if (!m_folder.isLocalFile())
+    {
+        onListed({});
+        return;
+    }
+    m_listing = true;
+    const QString path = m_folder.toLocalFile();
+    const std::shared_ptr<Guard> guard = m_guard;
+    QThreadPool::globalInstance()->start([guard, path]() {
+        const QVector<Entry> entries = listFolder(path);
+        std::lock_guard<std::mutex> lock(guard->lock);
+        if (LocalFolderModel* model = guard->model)
+            QMetaObject::invokeMethod(model, [model, entries]() {
+                model->m_listing = false;
+                // the folder changed or was reloaded meanwhile
+                if (model->m_relist)
+                {
+                    model->m_relist = false;
+                    model->startListing();
+                    return;
+                }
+                model->onListed(entries);
+            }, Qt::QueuedConnection);
+    });
+}
+
+QVector<LocalFolderModel::Entry> LocalFolderModel::listFolder(const QString& path)
+{
+    QVector<Entry> entries;
+    const QDir dir(path);
+    const QFileInfoList infos = dir.entryInfoList(QDir::AllDirs | QDir::Files | QDir::NoDotAndDotDot
+                                                  | QDir::Readable);
+    for (const QFileInfo& info : infos)
+    {
+        const bool isFolder = info.isDir();
+        if (!isFolder && !mediaSuffixes().contains(info.suffix().toLower()))
+            continue;
+        const QString filePath = info.absoluteFilePath();
+        const QString mrl = coreMrl(filePath);
+        entries.push_back({ info.fileName(), mrl, coreUrl(filePath, mrl), isFolder,
+                            info.lastModified().toMSecsSinceEpoch() });
+    }
+    return entries;
+}
+
+void LocalFolderModel::onListed(const QVector<Entry>& entries)
+{
+    m_entries = entries;
     ++m_generation;
-    endResetModel();
-    emit countChanged();
+    updateRows();
     loadLibraryData();
 }
 
-void LocalFolderModel::sortEntries()
+void LocalFolderModel::updateRows()
+{
+    beginResetModel();
+    m_rows.clear();
+    for (int i = 0; i < m_entries.size(); ++i)
+        if (m_searchPattern.isEmpty() || m_entries[i].name.contains(m_searchPattern, Qt::CaseInsensitive))
+            m_rows.push_back(i);
+    sortRows();
+    endResetModel();
+    emit countChanged();
+}
+
+void LocalFolderModel::sortRows()
 {
     // Folders first, then names the way people read them (2 before 10)
     QCollator collator;
@@ -170,7 +232,9 @@ void LocalFolderModel::sortEntries()
     const bool byWatched = m_sortCriteria == QLatin1String("unwatched");
     const bool descending = m_sortOrder == Qt::DescendingOrder;
     const auto played = [](const Entry& e) { return e.playCount > 0 || e.progress > 0.; };
-    std::sort(m_entries.begin(), m_entries.end(), [&](const Entry& a, const Entry& b) {
+    std::sort(m_rows.begin(), m_rows.end(), [&](int rowA, int rowB) {
+        const Entry& a = m_entries[rowA];
+        const Entry& b = m_entries[rowB];
         if (a.isFolder != b.isFolder)
             return a.isFolder;
         if (byWatched && played(a) != played(b))
@@ -195,20 +259,24 @@ void LocalFolderModel::loadLibraryData()
     if (!m_ml || m_entries.isEmpty())
         return;
 
-    // The MRLs the library stores (vlc_path2uri) of the media of the folder
-    std::vector<std::pair<int, QByteArray>> mrls;
+    // The MRLs the library stores (vlc_path2uri) of the media of the folder,
+    // all of them: the search only hides rows
+    std::vector<std::pair<int, QString>> mrls;
     for (int i = 0; i < m_entries.size(); ++i)
     {
         if (m_entries[i].isFolder || m_entries[i].mrl.isEmpty())
             continue;
-        mrls.emplace_back(i, m_entries[i].mrl.toUtf8());
+        mrls.emplace_back(i, m_entries[i].mrl);
     }
     if (mrls.empty())
         return;
 
+    // An answer goes to the entry of its MRL, wherever the sort or the
+    // search put its row meanwhile
     struct Result
     {
-        int row;
+        int entry;
+        QString mrl;
         double progress;
         unsigned playCount;
         int64_t id;
@@ -225,10 +293,10 @@ void LocalFolderModel::loadLibraryData()
     {
         for (const auto& entry : mrls)
         {
-            ml_unique_ptr<vlc_ml_media_t> media{ vlc_ml_get_media_by_mrl(ml, entry.second.constData()) };
+            ml_unique_ptr<vlc_ml_media_t> media{ vlc_ml_get_media_by_mrl(ml, qtu(entry.second)) };
             if (media)
-                ctx.results.push_back({ entry.first, media->f_progress, media->i_playcount,
-                                        media->i_id, media->b_is_favorite });
+                ctx.results.push_back({ entry.first, entry.second, media->f_progress,
+                                        media->i_playcount, media->i_id, media->b_is_favorite });
         }
     },
     // UI thread
@@ -238,9 +306,9 @@ void LocalFolderModel::loadLibraryData()
             return;
         for (const auto& result : ctx.results)
         {
-            if (result.row >= m_entries.size())
+            if (result.entry >= m_entries.size() || m_entries[result.entry].mrl != result.mrl)
                 continue;
-            Entry& entry = m_entries[result.row];
+            Entry& entry = m_entries[result.entry];
             entry.progress = result.progress > 0. ? result.progress : 0.;
             entry.playCount = result.playCount;
             entry.mlId = result.id;
@@ -250,25 +318,26 @@ void LocalFolderModel::loadLibraryData()
         {
             // the order depends on what was played
             beginResetModel();
-            sortEntries();
+            sortRows();
             endResetModel();
             return;
         }
-        emit dataChanged(index(0), index(m_entries.size() - 1),
-                         { ProgressRole, PlayCountRole, IsFavoriteRole, IsIndexedRole });
+        if (!m_rows.isEmpty())
+            emit dataChanged(index(0), index(m_rows.size() - 1),
+                             { ProgressRole, PlayCountRole, IsFavoriteRole, IsIndexedRole });
     });
 }
 
 int LocalFolderModel::rowCount(const QModelIndex& parent) const
 {
-    return parent.isValid() ? 0 : m_entries.size();
+    return parent.isValid() ? 0 : m_rows.size();
 }
 
 QVariant LocalFolderModel::data(const QModelIndex& index, int role) const
 {
-    if (!index.isValid() || index.row() >= m_entries.size())
+    if (!index.isValid() || index.row() >= m_rows.size())
         return {};
-    const Entry& entry = m_entries[index.row()];
+    const Entry& entry = m_entries[m_rows[index.row()]];
     switch (role)
     {
     case Qt::DisplayRole:
@@ -295,16 +364,16 @@ QVariant LocalFolderModel::data(const QModelIndex& index, int role) const
 
 MLItemId LocalFolderModel::mediaId(int row) const
 {
-    if (row < 0 || row >= m_entries.size() || m_entries[row].mlId <= 0)
+    if (row < 0 || row >= m_rows.size() || m_entries[m_rows[row]].mlId <= 0)
         return {};
-    return MLItemId(m_entries[row].mlId, VLC_ML_PARENT_UNKNOWN);
+    return MLItemId(m_entries[m_rows[row]].mlId, VLC_ML_PARENT_UNKNOWN);
 }
 
 void LocalFolderModel::setPlayed(int row, bool played)
 {
-    if (!m_ml || row < 0 || row >= m_entries.size() || m_entries[row].mlId <= 0)
+    if (!m_ml || row < 0 || row >= m_rows.size() || m_entries[m_rows[row]].mlId <= 0)
         return;
-    const int64_t id = m_entries[row].mlId;
+    const int64_t id = m_entries[m_rows[row]].mlId;
     m_ml->runOnMLThread(this,
     [id, played](vlc_medialibrary_t* ml)
     {
@@ -316,10 +385,10 @@ void LocalFolderModel::setPlayed(int row, bool played)
 
 void LocalFolderModel::setFavorite(int row, bool favorite)
 {
-    if (!m_ml || row < 0 || row >= m_entries.size() || m_entries[row].mlId <= 0)
+    if (!m_ml || row < 0 || row >= m_rows.size() || m_entries[m_rows[row]].mlId <= 0)
         return;
-    const int64_t id = m_entries[row].mlId;
-    m_entries[row].favorite = favorite;
+    const int64_t id = m_entries[m_rows[row]].mlId;
+    m_entries[m_rows[row]].favorite = favorite;
     emit dataChanged(index(row), index(row), { IsFavoriteRole });
     m_ml->runOnMLThread(this,
     [id, favorite](vlc_medialibrary_t* ml)

@@ -19,8 +19,10 @@
 #include "../../../../audio_filter/equalizer_presets.h"
 
 #include <QLocale>
+#include <algorithm>
 #include <cmath>
 #include <cstdlib>
+#include <limits>
 #include <vlc_aout.h>
 #include <vlc_configuration.h>
 #include <vlc_modules.h>
@@ -53,6 +55,19 @@ QString fromVlc(char* value)
 QStringList chainItems(const QString& chain)
 {
     return chain.split(':', Qt::SkipEmptyParts);
+}
+
+// The values a float option takes. VLC gives an option declared without a
+// range -FLT_MAX to FLT_MAX, which are no bounds: none then (infinite),
+// except no negative value when the default is not negative
+void floatBounds(const module_config_t* option, double* minimum, double* maximum)
+{
+    const bool ranged = option->min.f != option->max.f;
+    const double lowest = option->orig.f >= 0 ? 0. : -std::numeric_limits<double>::infinity();
+    *minimum = !ranged || option->min.f <= -std::numeric_limits<float>::max()
+             ? lowest : double(option->min.f);
+    *maximum = !ranged || option->max.f >= std::numeric_limits<float>::max()
+             ? std::numeric_limits<double>::infinity() : double(option->max.f);
 }
 
 QString presetBands(int index)
@@ -264,10 +279,17 @@ QVariantList AudioEffects::parameters(const QString& filter) const
                          {"value", readValue(name)}, {"default", defaultValue(name)}};
         if (CONFIG_CLASS(option->i_type) == CONFIG_ITEM_FLOAT) {
             item["type"] = "float";
-            if (option->min.f != option->max.f) {
-                item["minimum"] = option->min.f;
-                item["maximum"] = option->max.f;
-            }
+            // The sliders need both bounds: a side without one is taken
+            // from the default (twice it, at least 1)
+            double minimum = 0., maximum = 0.;
+            floatBounds(option, &minimum, &maximum);
+            const double span = std::max(std::fabs(double(option->orig.f)) * 2., 1.);
+            if (!std::isfinite(maximum))
+                maximum = std::max(span, minimum + 1.);
+            if (!std::isfinite(minimum))
+                minimum = std::min(-span, maximum - 1.);
+            item["minimum"] = minimum;
+            item["maximum"] = maximum;
         } else if (CONFIG_CLASS(option->i_type) == CONFIG_ITEM_BOOL) item["type"] = "bool";
         else item["type"] = "string";
         result << item;
@@ -336,8 +358,9 @@ bool AudioEffects::writeValue(const QString& name, const QVariant& value)
     int result = VLC_EGENERIC;
     if (CONFIG_CLASS(option->i_type) == CONFIG_ITEM_FLOAT) {
         const double number = value.toDouble();
-        if (std::isfinite(number) && (option->min.f == option->max.f ||
-                                      (number >= option->min.f && number <= option->max.f)))
+        double minimum = 0., maximum = 0.;
+        floatBounds(option, &minimum, &maximum);
+        if (std::isfinite(number) && number >= minimum && number <= maximum)
             result = var_SetFloat(aout, id.constData(), float(number));
     } else if (CONFIG_CLASS(option->i_type) == CONFIG_ITEM_BOOL)
         result = var_SetBool(aout, id.constData(), value.toBool());

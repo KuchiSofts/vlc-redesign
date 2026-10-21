@@ -38,6 +38,9 @@ class ControlbarProfileModel : public QAbstractListModel
     // Profiles added, renamed, deleted or chosen since they were last saved
     // or reloaded (Save of Customize Player)
     Q_PROPERTY(bool modified READ modified NOTIFY modifiedChanged FINAL)
+    // Set by Customize Player while it is open: its changes are not saved
+    // until its Save, and are dropped when VLC quits before that
+    Q_PROPERTY(bool editing READ editing WRITE setEditing NOTIFY editingChanged FINAL)
 
 public:
     explicit ControlbarProfileModel(QSettings* settings, QObject *parent = nullptr);
@@ -86,6 +89,8 @@ public:
     QString profileAccent() const;
     ControlbarProfile* currentModel() const;
     bool modified() const { return m_modified; }
+    bool editing() const { return m_editing; }
+    void setEditing(bool editing);
 
     // A copy of the profile (named after it when name is empty)
     ControlbarProfile* cloneProfile(const ControlbarProfile* profile, const QString& name = {});
@@ -136,6 +141,7 @@ signals:
     void selectedProfileChanged();
     void errorChanged();
     void modifiedChanged();
+    void editingChanged();
     void newProfileRequested();
 
     void selectedProfileControlListChanged(const QVector<int>& linearControlList);
@@ -147,6 +153,7 @@ private:
     QString m_lastError;
     bool m_skipNextApply = false;
     bool m_modified = false;
+    bool m_editing = false;
     bool m_newProfileRequested = false;
 
     struct Profile {

@@ -347,10 +347,12 @@ bool InterfaceWindowHandler::eventFilter(QObject*, QEvent* event)
         // which the fullscreen keys drive: let them leave it too, from any
         // view (the library gives its keys to its pages, not to the
         // hotkeys). In fullscreen the title bar and its button are hidden,
-        // so without this only F11 got out of it.
+        // so without this only F11 got out of it. Not while a text field or
+        // a focused item takes the keys: "f" or Esc in the search are its own.
         if (m_mainCtx->getUseGlobalShortcuts()
             && m_window && m_window->visibility() == QWindow::FullScreen
             && !(p_intf->p_mainPlayerController && p_intf->p_mainPlayerController->hasVideoOutput())
+            && !focusedItemTakesKeys()
             && isFullscreenKey(VLC_OBJECT(p_intf), qtEventToVLCKey(keyEvent)))
         {
             setInterfaceFullScreen(false);
@@ -641,6 +643,16 @@ bool InterfaceWindowHandler::applyKeyEvent(QKeyEvent * event) const
         return false;
     }
 
+    if (focusedItemTakesKeys())
+        return false;
+
+    event->accept();
+
+    return true;
+}
+
+bool InterfaceWindowHandler::focusedItemTakesKeys() const
+{
     QQuickItem * item = p_intf->p_compositor->activeFocusItem();
 
     // NOTE: When the item has visual focus we let it handle the key. When the item does not
@@ -649,17 +661,15 @@ bool InterfaceWindowHandler::applyKeyEvent(QKeyEvent * event) const
     {
         // Mouse focus is enough for text input; visualFocus only covers keyboard navigation.
         if (item->inherits("QQuickTextInput") || item->inherits("QQuickTextEdit"))
-            return false;
+            return true;
 
         QVariant visualFocus = QQmlProperty::read(item, "visualFocus", qmlContext(item));
         if (visualFocus.isValid())
         {
             if (visualFocus.toBool())
-                return false;
+                return true;
         }
     }
 
-    event->accept();
-
-    return true;
+    return false;
 }

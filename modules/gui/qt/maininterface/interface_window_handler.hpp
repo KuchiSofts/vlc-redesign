@@ -65,6 +65,7 @@ signals:
 
 private:
     bool applyKeyEvent(QKeyEvent * event) const;
+    bool focusedItemTakesKeys() const;
 
 protected:
     virtual void updateCSDWindowSettings();

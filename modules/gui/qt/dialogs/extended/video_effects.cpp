@@ -55,6 +55,24 @@ QString settingName(const QString& name)
     const module_config_t* option = config_FindConfig(id.constData());
     return option && option->psz_text ? qtr(option->psz_text) : name;
 }
+// The values a number option takes. VLC gives an option declared without a
+// range the extremes of its type (INT64_MIN to INT64_MAX, -FLT_MAX to
+// FLT_MAX), which are no bounds: none then (infinite), except no negative
+// value when the default is not negative (the thresholds of colorthres)
+void optionBounds(const module_config_t* option, double* minimum, double* maximum)
+{
+    const bool isFloat = CONFIG_CLASS(option->i_type) == CONFIG_ITEM_FLOAT;
+    const double fallback = (isFloat ? option->orig.f : double(option->orig.i)) >= 0
+                          ? 0. : -std::numeric_limits<double>::infinity();
+    const bool ranged = isFloat ? option->min.f != option->max.f : option->min.i != option->max.i;
+    const bool noMinimum = !ranged || (isFloat ? option->min.f <= -std::numeric_limits<float>::max()
+                                               : option->min.i == std::numeric_limits<int64_t>::min());
+    const bool noMaximum = !ranged || (isFloat ? option->max.f >= std::numeric_limits<float>::max()
+                                               : option->max.i == std::numeric_limits<int64_t>::max());
+    *minimum = noMinimum ? fallback : isFloat ? double(option->min.f) : double(option->min.i);
+    *maximum = noMaximum ? std::numeric_limits<double>::infinity()
+                         : isFloat ? double(option->max.f) : double(option->max.i);
+}
 }
 
 VideoEffects::VideoEffects(QObject* parent) : QObject(parent) {}
@@ -191,21 +209,27 @@ QVariantList VideoEffects::parameters(const QString& filter) const
         if (!option) continue;
         QVariantMap item{{"id", name}, {"name", qtr(option->psz_text ? option->psz_text : id.constData())},
                          {"value", readValue(name)}, {"default", defaultValue(name)}};
+        // No slider without both bounds: a field takes the value instead
+        double minimum = 0., maximum = 0.;
+        if (CONFIG_CLASS(option->i_type) == CONFIG_ITEM_FLOAT
+            || CONFIG_CLASS(option->i_type) == CONFIG_ITEM_INTEGER)
+            optionBounds(option, &minimum, &maximum);
+        const bool bounded = std::isfinite(minimum) && std::isfinite(maximum);
         switch (CONFIG_CLASS(option->i_type)) {
             case CONFIG_ITEM_FLOAT:
                 item["type"] = "float";
-                if (option->min.f != option->max.f) {
-                    item["minimum"] = option->min.f;
-                    item["maximum"] = option->max.f;
+                if (bounded) {
+                    item["minimum"] = minimum;
+                    item["maximum"] = maximum;
                 }
                 break;
             case CONFIG_ITEM_INTEGER:
                 // An integer with named values (the component to extract) is a choice
                 item["type"] = option->i_type == CONFIG_ITEM_RGB ? "color"
                              : option->list_count > 0 ? "choice" : "integer";
-                if (option->min.i != option->max.i) {
-                    item["minimum"] = qlonglong(option->min.i);
-                    item["maximum"] = qlonglong(option->max.i);
+                if (bounded) {
+                    item["minimum"] = qlonglong(minimum);
+                    item["maximum"] = qlonglong(maximum);
                 }
                 break;
             case CONFIG_ITEM_BOOL: item["type"] = "bool"; break;
@@ -279,17 +303,19 @@ bool VideoEffects::writeValue(const QString& name, const QVariant& value)
     }
     int result = VLC_EGENERIC;
     const auto cls = CONFIG_CLASS(option->i_type);
+    double minimum = 0., maximum = 0.;
+    if (cls == CONFIG_ITEM_FLOAT || cls == CONFIG_ITEM_INTEGER)
+        optionBounds(option, &minimum, &maximum);
     if (cls == CONFIG_ITEM_FLOAT) {
         const double number = value.toDouble();
-        if (std::isfinite(number) && (option->min.f == option->max.f ||
-                                      (number >= option->min.f && number <= option->max.f)))
+        if (std::isfinite(number) && number >= minimum && number <= maximum)
             result = var_SetFloat(vout, id.constData(), float(number));
     } else if (cls == CONFIG_ITEM_BOOL)
         result = var_SetBool(vout, id.constData(), value.toBool());
     else if (cls == CONFIG_ITEM_INTEGER) {
         bool ok = false;
         const qlonglong number = value.toLongLong(&ok);
-        if (ok && (option->min.i == option->max.i || (number >= option->min.i && number <= option->max.i)))
+        if (ok && double(number) >= minimum && double(number) <= maximum)
             result = var_SetInteger(vout, id.constData(), number);
     } else if (cls == CONFIG_ITEM_STRING) {
         const QString candidate = value.toString();

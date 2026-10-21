@@ -49,6 +49,7 @@ Controls.Popup {
         MainCtx.useGlobalShortcuts = false
         // Retain the current profile as the rollback point for Cancel/Escape.
         MainCtx.controlbarProfileModel.save(false)
+        MainCtx.controlbarProfileModel.editing = true
         closeButton.forceActiveFocus(Qt.PopupFocusReason)
         // "New profile" of a menu opened the editor: the name first
         if (MainCtx.controlbarProfileModel.takeNewProfileRequest())
@@ -60,6 +61,7 @@ Controls.Popup {
         namePrompt.close()
         deleteConfirmation.close()
         VLCStyle.customizing = false
+        MainCtx.controlbarProfileModel.editing = false
         if (!saved)
             MainCtx.controlbarProfileModel.reload()
         MainCtx.useGlobalShortcuts = previousGlobalShortcuts

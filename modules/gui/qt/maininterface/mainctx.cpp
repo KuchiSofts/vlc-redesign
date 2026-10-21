@@ -332,13 +332,16 @@ MainCtx::~MainCtx()
 {
     /* The hotkeys left are dropped; an action still running ends first (as
      * the callbacks it may call go below) */
+    m_hotkeysClosed->store(true);
     m_hotkeyThread->quit();
     if (!m_hotkeyThread->wait(QDeadlineTimer(3000)))
     {
-        /* it waits for something that waits for this thread: left to the
-         * end of the process rather than destroyed running */
+        /* it waits for something that waits for this thread: not destroyed
+         * running, but when it ends (its context goes with it); no hotkey
+         * runs after this one, the interface is gone by then */
         msg_Warn(p_intf, "hotkey action still running at exit");
         m_hotkeyThread->setParent(nullptr);
+        connect(m_hotkeyThread, &QThread::finished, m_hotkeyThread, &QObject::deleteLater);
     }
 
     /* Save states */
@@ -522,9 +525,9 @@ void MainCtx::loadPrefs(const bool callSignals)
     }
 
     /* "Never remember items matching" of the settings */
-    vlc::playlist::Media::historyFilter() = QRegularExpression(
+    vlc::playlist::Media::setHistoryFilter( QRegularExpression(
         getSettings()->value( "redesign/recentplay-filter" ).toString(),
-        QRegularExpression::CaseInsensitiveOption );
+        QRegularExpression::CaseInsensitiveOption ) );
 }
 
 void MainCtx::loadFromSettingsImpl(const bool callSignals)
@@ -630,8 +633,12 @@ void MainCtx::sendVLCHotkey(int vlcHotkey)
 void MainCtx::postHotkey(int vlcKey)
 {
     libvlc_int_t *libvlc = vlc_object_instance(p_intf);
-    QMetaObject::invokeMethod(m_hotkeyContext, [libvlc, vlcKey]() {
-        var_SetInteger(libvlc, "key-pressed", vlcKey);
+    const std::shared_ptr<std::atomic<bool>> closed = m_hotkeysClosed;
+    QMetaObject::invokeMethod(m_hotkeyContext, [libvlc, vlcKey, closed]() {
+        // the actions reach the interface (boss key, fullscreen): none once
+        // it closes
+        if (!closed->load())
+            var_SetInteger(libvlc, "key-pressed", vlcKey);
     }, Qt::QueuedConnection);
 }
 

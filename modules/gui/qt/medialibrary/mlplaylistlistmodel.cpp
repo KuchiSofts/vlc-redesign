@@ -220,6 +220,10 @@ void appendMediaIntoPlaylist(vlc_medialibrary_t* ml, int64_t playlistId, const s
 
     MLPlaylist * playlist = static_cast<MLPlaylist *> (item(row));
 
+    // a row not loaded yet has no item
+    if (!playlist)
+        return false;
+
     QString name = playlist->getName();
 
     static DialogsProvider * provider = DialogsProvider::getInstance();
@@ -259,6 +263,10 @@ void appendMediaIntoPlaylist(vlc_medialibrary_t* ml, int64_t playlistId, const s
 
     MLPlaylist * playlist = static_cast<MLPlaylist *> (item(row));
 
+    // a row not loaded yet has no item (a selection of all the playlists)
+    if (!playlist)
+        return;
+
     int64_t id = playlist->getId().id;
 
     m_mediaLib->runOnMLThread(this,
@@ -280,7 +288,13 @@ void appendMediaIntoPlaylist(vlc_medialibrary_t* ml, int64_t playlistId, const s
     if (index < 0 || index >= rowCount())
         return MLItemId();
 
-    return item(index)->getId();
+    const MLItem * playlist = item(index);
+
+    // a row not loaded yet has no item
+    if (!playlist)
+        return MLItemId();
+
+    return playlist->getId();
 }
 
 //-------------------------------------------------------------------------------------------------

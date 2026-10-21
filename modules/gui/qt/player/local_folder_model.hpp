@@ -13,6 +13,9 @@
 #include <QUrl>
 #include <QVector>
 
+#include <memory>
+#include <mutex>
+
 #include "medialibrary/medialib.hpp"
 #include "medialibrary/mlqmltypes.hpp"
 
@@ -52,6 +55,7 @@ public:
     Q_ENUM(Roles)
 
     explicit LocalFolderModel(QObject* parent = nullptr);
+    ~LocalFolderModel() override;
 
     QUrl folder() const { return m_folder; }
     void setFolder(const QUrl& folder);
@@ -105,12 +109,33 @@ private:
         int64_t mlId = 0;
         bool favorite = false;
     };
+    // The model for the listings still running, null once it is gone
+    struct Guard
+    {
+        std::mutex lock;
+        LocalFolderModel* model = nullptr;
+    };
+
     // Reads the progress and the play count of the media from the library
     void loadLibraryData();
-    void sortEntries();
+    // The rows of the entries matching the search, sorted
+    void updateRows();
+    void sortRows();
+    // Lists the folder on a thread of the pool: a network drive that does
+    // not answer would freeze the interface
+    void startListing();
+    void onListed(const QVector<Entry>& entries);
+    static QVector<Entry> listFolder(const QString& path);
 
+    // The folder as last listed, and the rows shown (indexes in it): the
+    // search and the sort work on it, without listing the folder again
     QVector<Entry> m_entries;
+    QVector<int> m_rows;
     MediaLib* m_ml = nullptr;
+    std::shared_ptr<Guard> m_guard;
+    // one listing at a time; another one asked meanwhile runs after it
+    bool m_listing = false;
+    bool m_relist = false;
     // Changes with each listing: older answers of the library are dropped
     quint64 m_generation = 0;
     QUrl m_folder;

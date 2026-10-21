@@ -11,12 +11,15 @@
 #include <vlc_configuration.h>
 #include <vlc_modules.h>
 
+#include "interface_language.hpp"
 #include "maininterface/mainctx.hpp"
 #include "qt.hpp"
 
 #include <QCoreApplication>
+#include <QDateTime>
 #include <QDesktopServices>
 #include <QDir>
+#include <QPointer>
 #include <QSettings>
 #include <QUrl>
 #include <QFileInfo>
@@ -44,10 +47,34 @@ bool ConfigModel::rescanPlugins()
         setError(qtr("The plugins can not be rescanned on this installation."));
         return false;
     }
-    if (!QProcess::startDetached(generator, { QDir::toNativeSeparators(folder + QStringLiteral("/plugins")) })) {
-        setError(qtr("The plugins could not be rescanned."));
-        return false;
-    }
+    // Waited for, without blocking, to tell whether it worked: it ends well
+    // even when it could not write the cache (a folder of Program Files
+    // without the rights), which is then older than the scan. Not a child of
+    // the model: closing the settings must not kill it.
+    const QString plugins = folder + QStringLiteral("/plugins");
+    const QDateTime started = QDateTime::currentDateTime();
+    const QPointer<ConfigModel> model(this);
+    auto *process = new QProcess;
+    connect(process, &QProcess::errorOccurred, process, [model, process](QProcess::ProcessError error) {
+        // a crash ends with finished()
+        if (error != QProcess::FailedToStart)
+            return;
+        if (model)
+            model->setError(qtr("The plugins could not be rescanned."));
+        process->deleteLater();
+    });
+    connect(process, &QProcess::finished, process,
+            [model, process, plugins, started](int exitCode, QProcess::ExitStatus status) {
+        process->deleteLater();
+        // (the time of a file may be rounded to 2 s)
+        const QFileInfo cache(plugins + QStringLiteral("/plugins.dat"));
+        if (status == QProcess::NormalExit && exitCode == 0 && cache.exists()
+            && cache.lastModified() >= started.addSecs(-2))
+            return;
+        if (model)
+            model->setError(qtr("The plugins could not be rescanned: the folder of VLC may need administrator rights."));
+    });
+    process->start(generator, { QDir::toNativeSeparators(plugins) });
     return true;
 }
 
@@ -72,9 +99,15 @@ void ConfigModel::resetAll()
     config_ResetAll();
     config_SaveConfigFile(p_intf);
     getSettings()->clear();
-    p_intf->preferencesResetPending = true;
+    // Not preferencesResetPending: the interface goes on with the defaults it
+    // reloads, and its state is saved at exit as usual (the old dialog sets
+    // it only until VLC restarts or the restart is declined)
     m_ctx->reloadPrefs();
     m_ctx->reloadFromSettings();
+#ifdef _WIN32
+    // the language of the interface is not a setting (registry, portable file)
+    setInterfaceLanguage(QStringLiteral("auto"));
+#endif
     reload();
 }
 

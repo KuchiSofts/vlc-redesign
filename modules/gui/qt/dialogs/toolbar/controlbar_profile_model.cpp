@@ -43,7 +43,14 @@ ControlbarProfileModel::ControlbarProfileModel(QSettings* settings, QObject *par
 
     // To make the QML player controlbars update when model is Reset
     connect(this, &QAbstractListModel::modelReset, this, &ControlbarProfileModel::selectedProfileChanged);
-    connect(qApp, &QCoreApplication::aboutToQuit, this, [this] { save(); });
+    connect(qApp, &QCoreApplication::aboutToQuit, this, [this] {
+        // Customize Player still open: its changes are dropped as by its
+        // Cancel (it saved the profiles when it opened)
+        if (m_editing)
+            reload();
+        else
+            save();
+    });
 
     // When all profiles are removed, insert defaults:
     // Maybe add a dedicate button for this purpose and don't allow removing all profiles ?
@@ -346,6 +353,14 @@ void ControlbarProfileModel::setError(const QString &error)
         return;
     m_lastError = error;
     emit errorChanged();
+}
+
+void ControlbarProfileModel::setEditing(bool editing)
+{
+    if (m_editing == editing)
+        return;
+    m_editing = editing;
+    emit editingChanged();
 }
 
 void ControlbarProfileModel::setModified(bool modified)

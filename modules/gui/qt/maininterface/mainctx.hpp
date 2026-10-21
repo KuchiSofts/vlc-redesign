@@ -31,6 +31,9 @@
 #include <QQuickItem>
 #include <QTimer>
 
+#include <atomic>
+#include <memory>
+
 Q_MOC_INCLUDE( "dialogs/toolbar/controlbar_profile_model.hpp" )
 Q_MOC_INCLUDE( "util/csdbuttonmodel.hpp" )
 Q_MOC_INCLUDE( "playlist/playlist_controller.hpp" )
@@ -536,6 +539,9 @@ protected:
      * enable its window), the interface would freeze */
     QThread* m_hotkeyThread = nullptr;
     QObject* m_hotkeyContext = nullptr;
+    // Set when the interface closes, read by the hotkeys still queued (shared:
+    // the thread may outlive the interface)
+    std::shared_ptr<std::atomic<bool>> m_hotkeysClosed = std::make_shared<std::atomic<bool>>(false);
     void postHotkey(int vlcKey);
 
 public slots:

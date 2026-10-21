@@ -21,6 +21,7 @@
 #include <QObject>
 #include <QQuickAsyncImageProvider>
 #include <QString>
+#include <QThreadPool>
 
 #include <memory>
 #include <mutex>
@@ -57,6 +58,9 @@ private:
     std::mutex m_lock;
     // Created on first use
     std::shared_ptr<ThumbnailFrameCache> m_cache;
+    // Reads the artwork of the media library; waited for when the provider
+    // goes (the reading uses the interface)
+    QThreadPool m_artworkPool;
 };
 
 class VLCThumbnail : public QObject

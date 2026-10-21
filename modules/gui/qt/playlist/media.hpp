@@ -23,6 +23,8 @@
 #include <QString>
 #include <QStringList>
 
+#include <mutex>
+
 #include "util/qt_dirs.hpp"
 #include "util/shared_input_item.hpp"
 
@@ -47,16 +49,23 @@ public:
 
     // "Never remember items matching" of the settings (a regular
     // expression): the items whose address or name matches are not saved in
-    // the history, nor their position
-    static QRegularExpression &historyFilter()
+    // the history, nor their position. Set on the UI thread, read by the
+    // threads of the media library too: a copy is taken under the lock
+    static void setHistoryFilter(const QRegularExpression &filter)
     {
-        static QRegularExpression filter;
-        return filter;
+        std::lock_guard<std::mutex> guard(historyFilterLock());
+        historyFilterValue() = filter;
+    }
+
+    static QRegularExpression historyFilter()
+    {
+        std::lock_guard<std::mutex> guard(historyFilterLock());
+        return historyFilterValue();
     }
 
     void applyHistoryFilter()
     {
-        const QRegularExpression &filter = historyFilter();
+        const QRegularExpression filter = historyFilter();
         if (!ptr || filter.pattern().isEmpty() || !filter.isValid())
             return;
         char *uri = input_item_GetURI(ptr.get());
@@ -119,6 +128,18 @@ public:
     }
 
 private:
+    static std::mutex &historyFilterLock()
+    {
+        static std::mutex lock;
+        return lock;
+    }
+
+    static QRegularExpression &historyFilterValue()
+    {
+        static QRegularExpression filter;
+        return filter;
+    }
+
     SharedInputItem ptr;
 };
 

@@ -40,6 +40,56 @@ Updates without the installer: a few hundred kilobytes in the background, and a 
   shortened, and the part before couldn't be reached (VLC 4's `:start-time`). It now seeks there, without the
   *Continue where you left off?* card.
 - A binding loop in the keyboard shortcut dialog's layout.
+- **Memory and threads growing with every video**: each video opened (the next item of a playlist, the next episode)
+  left its Direct3D 11 device behind, with its driver's threads and memory (about a hundred threads on an NVIDIA
+  card). A playlist of short clips reached 7,000 threads and closed after a few minutes. The device now goes with the
+  video: the count stays flat, and VLC starts with 40% fewer threads. VLC 4's own nightly builds do the same.
+- **A video output that can't work here** (Direct3D 9 or OpenGL chosen in *Settings › Video*) showed no picture and
+  kept a processor core busy trying again for every frame. The outputs that work are tried next.
+- **Folders named in another alphabet** (a Windows user name in Hebrew or Chinese, where VLC Redesign installs): the
+  Lua scripts didn't load from there (YouTube and other links, artwork from the web, the services of the sidebar).
+- **Hardware decoding first** didn't hold for conversions (casting with subtitles, mosaics): without a hardware decoder
+  they lost the picture. It now only applies to playback.
+- **Casting**:
+  - Stop or Next as the Chromecast paused could freeze the player.
+  - A TV that was off was reported as having refused, after a long wait for every step.
+  - A TV that joined an MP4 or Ogg stream from its start got its header twice and could refuse it.
+  - A subtitle chosen for a sound cast restarted the TV's stream.
+  - A Chromecast found over IPv6 hid its working address.
+  - Stopping one media also cut the end of the next ones.
+  - *Allow* in the cast panel on a Public network asked again and again: it now allows public networks too (the
+    button says so) and never adds the rule twice. The firewall check no longer holds up the interface.
+- **Subtitles from the services**:
+  - An archive could unpack to gigabytes: only its subtitles are unpacked now, 16 MB at most, away from the
+    interface.
+  - A file name from a service could point outside the cache.
+  - A subtitle stayed "loading" when another title was chosen.
+  - A search could end before every service had answered.
+  - The cache keeps the last 500 media, and drops subtitles unused for 60 days.
+- **Updates**: a stalled download waited 30 minutes, and couldn't be cancelled. Now each step waits 30 seconds, and the
+  card's × cancels it. Downloads follow the system's proxy, only HTTPS files from GitHub are used, and a small update
+  that failed isn't tried again: the installer is.
+- **Interface**:
+  - In fullscreen, "f" or Esc typed in the library search left fullscreen.
+  - The folder panel froze while a network drive didn't answer; it is listed in the background now.
+  - *Favorite* on all the playlists crashed with more than a hundred of them.
+  - Closing VLC while customizing the player saved what *Cancel* would have dropped.
+  - Choosing another toolbar profile changed the privacy settings.
+  - *Reset all* forgot the window's place at exit.
+  - The OpenSubtitles password showed in clear text in the subtitle association dialog.
+  - Tab typed a tab in the one-line fields instead of moving on.
+  - Left or Esc in the queue card lost the focus.
+  - The minimize, maximize and close buttons answered at their old place after the title bar changed.
+  - Scrolling Settings over the equalizer changed its bands.
+  - About couldn't scroll in a small window.
+  - Some effect options showed sliders from −9 quintillion to 9 quintillion.
+- **Lighter and smoother**: the Customize outlines, about 220 hidden editors on the first Settings search keystroke,
+  the dialogs kept after closing, the track menus of the toolbar previews and both layouts of each folder entry are no
+  longer built for nothing. The music waveform is analysed once per file (it was once per slider, hidden ones
+  included), the mini player's bar seeks by key frames while dragged, and seek bar previews skip network files and
+  keep 48 MB at most.
+- Windows: VLC Redesign needs Windows 10 version 1809 or later (as Qt 6.8 does). The installer says so, and on an older
+  Windows `vlc.exe` shows a message instead of nothing.
 
 ### Technical
 
@@ -51,6 +101,13 @@ Updates without the installer: a few hundred kilobytes in the background, and a 
   didn't change is the same from one release to the next.
 - The download reports its progress (`HttpRequest::progress`), and the hidden `--redesign-resume-time` option reopens
   the media at a time.
+- Direct3D 11: the DirectComposition visual lets go of the swapchain when the display closes, `UpdateStaging()`
+  releases the staging textures of the format before, and `ReleaseD3D11PictureSys()` clears what it releases.
+  `vout_wrapper.c` tries the other outputs after a forced one fails; `src/input/decoder.c` marks its decoders as
+  reloadable (`decoder-reload`), which avcodec's hardware-first path needs; `modules/lua/vlc.c` reads the scripts and
+  their `require`d modules with `vlc_fopen` on Windows.
+- `HttpRequest` has a deadline for the whole request besides the timeout of each step, and `httpRequestAsync()` returns
+  a function that cancels it.
 
 ---
 

@@ -134,6 +134,8 @@ typedef struct vout_display_sys_t
     /* Chroma of the pictures given to prepare, set when opening and on a
      * format update: the textures are laid out for it */
     vlc_fourcc_t             pictureChroma = 0;
+    /* the picture prepared doesn't fit them: the last frame stays */
+    bool                     skipDisplay = false;
 
     int                      log_level = 1;
 
@@ -409,7 +411,11 @@ static int UpdateStaging(vout_display_t *vd, const video_format_t *fmt)
     if (!sys->use_staging_texture)
         return VLC_SUCCESS;
 
-    /* we need a staging texture */
+    /* we need a staging texture; the one of the format before goes (each
+     * texture and view left would keep the device, and the threads of its
+     * driver, alive) */
+    ReleaseD3D11PictureSys(&sys->stagingSys);
+    sys->stagingSys = {};
     ID3D11Texture2D *textures[DXGI_MAX_SHADER_VIEW] = {0};
     video_format_t texture_fmt = *vd->source;
     texture_fmt.i_width  = sys->picQuad.generic.i_width;
@@ -430,6 +436,9 @@ static int UpdateStaging(vout_display_t *vd, const video_format_t *fmt)
                                 textures, 0, sys->stagingSys.renderSrc))
     {
         msg_Err(vd, "Failed to allocate the staging shader view");
+        for (unsigned plane = 0; plane < DXGI_MAX_SHADER_VIEW; plane++)
+            if (textures[plane])
+                textures[plane]->Release();
         return VLC_EGENERIC;
     }
 
@@ -907,20 +916,6 @@ static void PreparePicture(vout_display_t *vd, picture_t *picture,
     VLC_UNUSED(date);
     vout_display_sys_t *sys = static_cast<vout_display_sys_t *>(vd->sys);
 
-    /* While video filters are switched, a picture of the former format can
-     * still come: its planes do not fit the textures (copying them overruns
-     * the mapped memory and the device is removed), and a GPU chroma picture
-     * may have no textures. Keep the last frame instead. */
-    const bool gpuPicture = is_d3d11_opaque(picture->format.i_chroma);
-    if (gpuPicture ? picture->context == nullptr
-                   : (is_d3d11_opaque(sys->pictureChroma) ||
-                      picture->format.i_chroma != sys->pictureChroma))
-    {
-        msg_Dbg(vd, "skipping a %4.4s picture, the textures are set up for %4.4s",
-                (const char *)&picture->format.i_chroma, (const char *)&sys->pictureChroma);
-        return;
-    }
-
     if (sys->picQuad.generic.textureFormat->formatTexture == DXGI_FORMAT_UNKNOWN)
     {
         D3D11_MAPPED_SUBRESOURCE mappedResource;
@@ -1123,6 +1118,22 @@ static void Prepare(vout_display_t *vd, picture_t *picture,
 {
     vout_display_sys_t *sys = static_cast<vout_display_sys_t *>(vd->sys);
 
+    /* While video filters are switched, a picture of the former format can
+     * still come: its planes do not fit the textures (copying them overruns
+     * the mapped memory and the device is removed), and a GPU chroma picture
+     * may have no textures. Keep the last frame shown instead (nothing is
+     * drawn: starting to render clears the target). */
+    const bool gpuPicture = is_d3d11_opaque(picture->format.i_chroma);
+    sys->skipDisplay = gpuPicture ? picture->context == nullptr
+                                  : (is_d3d11_opaque(sys->pictureChroma) ||
+                                     picture->format.i_chroma != sys->pictureChroma);
+    if (sys->skipDisplay)
+    {
+        msg_Dbg(vd, "skipping a %4.4s picture, the textures are set up for %4.4s",
+                (const char *)&picture->format.i_chroma, (const char *)&sys->pictureChroma);
+        return;
+    }
+
     d3d11_device_lock( sys->d3d_dev );
     if ( sys->startEndRenderingCb( sys->outside_opaque, true ))
     {
@@ -1157,6 +1168,8 @@ static void Display(vout_display_t *vd, picture_t *picture)
     vout_display_sys_t *sys = static_cast<vout_display_sys_t *>(vd->sys);
     VLC_UNUSED(picture);
 
+    if (sys->skipDisplay)
+        return;
     d3d11_device_lock( sys->d3d_dev );
     sys->swapCb(sys->outside_opaque);
     d3d11_device_unlock( sys->d3d_dev );
@@ -1804,6 +1817,7 @@ static void Direct3D11DestroyResources(vout_display_t *vd)
     sys->regionQuad.Reset();
 
     ReleaseD3D11PictureSys(&sys->stagingSys);
+    sys->stagingSys = {};
 
     D3D11_ReleaseVertexShader(&sys->flatVShader);
     D3D11_ReleaseVertexShader(&sys->projectionVShader);
@@ -1949,7 +1963,7 @@ static int Direct3D11MapSubpicture(vout_display_t *vd, int *subpicture_region_co
             if ((*region)[i] == NULL) {
                 msg_Err(vd, "Failed to create %dx%d picture for OSD",
                         r->p_picture->format.i_width, r->p_picture->format.i_height);
-                d3dquad->Reset();
+                delete d3dquad;
                 i++;
                 continue;
             }

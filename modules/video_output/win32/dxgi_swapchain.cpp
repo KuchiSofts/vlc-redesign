@@ -423,6 +423,14 @@ dxgi_swapchain *DXGI_CreateLocalSwapchainHandleDComp(vlc_object_t *o, void* dcom
 
 void DXGI_LocalSwapchainCleanupDevice( dxgi_swapchain *display )
 {
+    /* The visual of the interface would keep the swapchain, and through it
+     * the device and the threads of its driver, long after the display is
+     * gone: one more for every video played */
+    if (display->swapchainSurfaceType == SWAPCHAIN_SURFACE_DCOMP && display->dxgiswapChain.Get())
+    {
+        display->swapchainSurface.dcomp.visual->SetContent(nullptr);
+        display->swapchainSurface.dcomp.device->Commit();
+    }
     delete display;
 }
 

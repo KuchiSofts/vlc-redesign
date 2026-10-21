@@ -91,16 +91,22 @@ void AcquireD3D11PictureSys(picture_sys_d3d11_t *p_sys)
 
 void ReleaseD3D11PictureSys(picture_sys_d3d11_t *p_sys)
 {
+    /* (cleared: released again later, as a quad's Reset() then its
+     * destructor do, it releases nothing twice) */
     for (int i=0; i<DXGI_MAX_SHADER_VIEW; i++) {
         if (p_sys->renderSrc[i])
             p_sys->renderSrc[i]->Release();
+        p_sys->renderSrc[i] = NULL;
         if (p_sys->texture[i])
             p_sys->texture[i]->Release();
+        p_sys->texture[i] = NULL;
     }
     if (p_sys->processorInput)
         p_sys->processorInput->Release();
+    p_sys->processorInput = NULL;
     if (p_sys->processorOutput)
         p_sys->processorOutput->Release();
+    p_sys->processorOutput = NULL;
 }
 
 /* map texture planes to resource views */
@@ -148,7 +154,9 @@ int D3D11_AllocateResourceView(struct vlc_logger *obj, ID3D11Device *d3ddevice,
     {
         while (--i >= 0)
         {
-            renderSrc[i]->Release();
+            /* (none for the planes the format doesn't have) */
+            if (renderSrc[i])
+                renderSrc[i]->Release();
             renderSrc[i] = NULL;
         }
         return VLC_EGENERIC;

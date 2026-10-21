@@ -56,7 +56,8 @@ Controls.Popup {
                 onClicked: {
                     root.close()
                     if (index === 0) DialogsProvider.sleepTimerDialog()
-                    else DialogsProvider.prefsDialog()
+                    // the menu of the player: its settings
+                    else DialogsProvider.prefsDialogSection("playback")
                 }
             }
         }

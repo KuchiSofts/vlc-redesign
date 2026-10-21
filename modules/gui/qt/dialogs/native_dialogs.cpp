@@ -123,6 +123,13 @@ void DialogsProvider::prefsDialog()
     else
         nativePrefsDialog();
 }
+void DialogsProvider::prefsDialogSection(const QString &category)
+{
+    if( p_intf->p_mi )
+        emit preferencesSectionRequested(category);
+    else
+        nativePrefsDialog();
+}
 void DialogsProvider::firstRunDialog() { emit setupRequested(); }
 
 void DialogsProvider::nativeEffectsDialog(int page)

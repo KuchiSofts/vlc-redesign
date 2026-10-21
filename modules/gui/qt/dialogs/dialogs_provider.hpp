@@ -222,6 +222,8 @@ public slots:
                                               const QMessageBox::StandardButton defaultButton = QMessageBox::NoButton,
                                               const QMessageBox::Icon icon = QMessageBox::NoIcon);
     void prefsDialog();
+    // the settings at one of their pages ("subtitles", "audio", "video"...)
+    void prefsDialogSection(const QString &category);
     void nativePrefsDialog();
     void nativeEffectsDialog(int page = 0);
     void playerMenuDialog();
@@ -306,6 +308,7 @@ public:
 
 signals:
     void preferencesRequested();
+    void preferencesSectionRequested(const QString &category);
     void playerMenuRequested();
     void sleepTimerRequested();
     void audioVisualizationRequested();

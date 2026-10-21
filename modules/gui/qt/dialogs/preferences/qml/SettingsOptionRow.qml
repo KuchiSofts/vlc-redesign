@@ -95,6 +95,11 @@ Item {
         case "mouse-hide-timeout":
             return range(seq(0, 10000, 500), [{ value: 0, text: qsTr("0 s") }, { value: 5000, text: qsTr("5 s") },
                                                { value: 10000, text: qsTr("10s") }], 0, 10000)
+        case "sub-position":
+            // percent of the picture, above (or below) the usual place
+            return range(seq(-20, 60, 10), [{ value: -20, text: qsTr("Lower") },
+                                            { value: 0, text: qsTr("Usual") },
+                                            { value: 60, text: qsTr("Higher") }], -20, 60)
         case "sub-delay":
             // tenths of seconds
             return range(seq(-50, 50, 10), [{ value: -50, text: qsTr("-5 s") }, { value: 0, text: qsTr("0 s") },

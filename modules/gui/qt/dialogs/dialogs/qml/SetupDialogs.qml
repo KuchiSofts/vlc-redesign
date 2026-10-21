@@ -31,6 +31,13 @@ Item {
     Connections {
         target: DialogsProvider
         function onPreferencesRequested() { root.show(preferences) }
+        function onPreferencesSectionRequested(category) {
+            preferences.requestedCategory = category
+            if (preferences.item)
+                preferences.item.openSettings(category)
+            else
+                preferences.active = true
+        }
         function onShortcutsRequested() { root.show(shortcuts) }
         function onNetworkStreamRequested() { root.show(networkStream) }
         function onAboutRequested() { root.show(about) }
@@ -54,10 +61,12 @@ Item {
     }
     Loader {
         id: preferences
+        // the page asked for (a menu's Preferences: the page of what it is about)
+        property string requestedCategory: "general"
         anchors.fill: parent
         active: false
         source: "qrc:/qt/qml/VLC/Dialogs/SettingsDialog.qml"
-        onLoaded: { item.parent = root; item.openSettings("general") }
+        onLoaded: { item.parent = root; item.openSettings(requestedCategory) }
     }
     Loader {
         id: shortcuts

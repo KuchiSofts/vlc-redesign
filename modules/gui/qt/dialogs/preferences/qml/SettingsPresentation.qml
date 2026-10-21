@@ -200,7 +200,8 @@ readonly property var items: ({
         "compressor-makeup-gain": [qsTr("Effects"), qsTr("Compressor makeup gain"), "", null, { hidden: true }],
         // Subtitles page of the design
         "spu": [qsTr("Tracks & Languages"), qsTr("Enable subtitles"), "", null, { info: true }],
-        "sub-language": [qsTr("Tracks & Languages"), qsTr("Preferred language"), "", { "": qsTr("Automatic") }, { info: true }],
+        // the default and secondary languages of SettingsSubtitleLanguages set it
+        "sub-language": [qsTr("Tracks & Languages"), qsTr("Preferred language"), "", { "": qsTr("Automatic") }, { info: true, hidden: true }],
         "subsdec-encoding": [qsTr("Tracks & Languages"), qsTr("Text encoding"), "", { "": qsTr("Automatic") }, { info: true }],
         "sub-autodetect-file": [qsTr("Loading Subtitles"), qsTr("Load subtitle files automatically"), "", null, { info: true }],
         "sub-autodetect-fuzzy": [qsTr("Loading Subtitles"), qsTr("File name matching"), "", null, { info: true }],
@@ -225,7 +226,9 @@ readonly property var items: ({
         // the opacity of VLC follows the kept one below while Background is Box
         "freetype-background-opacity": [qsTr("Appearance"), qsTr("Background opacity"), "opacity", null, { info: false, hidden: true }],
         "redesign/subtitle-background-opacity": [qsTr("Appearance"), qsTr("Background opacity"), "opacity", null, { info: false }],
-        "sub-margin": [qsTr("Appearance"), qsTr("Vertical position"), "", null, { info: false }],
+        // in percent of the picture (also Shift+Up and Shift+Down while
+        // playing): the subtitles shown move as it does
+        "sub-position": [qsTr("Appearance"), qsTr("Vertical position"), "slider", null, { info: true }],
         "sub-delay": [qsTr("Timing"), qsTr("Subtitle delay"), "slider", null, { info: false }],
         "osd": [qsTr("On-Screen Messages"), qsTr("Show feedback for shortcuts"), "", null, { info: true }],
         "osd-duration": [qsTr("On-Screen Messages"), qsTr("Show feedback for"), "slider", null, { info: false }],

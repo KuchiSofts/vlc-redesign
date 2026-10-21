@@ -21,6 +21,8 @@
 #include <vlc_configuration.h>
 #include <vlc_modules.h>
 #include <vlc_plugin.h>
+#include <vlc_player.h>
+#include <vlc_vout.h>
 
 #ifdef _WIN32
 # include <windows.h>
@@ -177,6 +179,22 @@ QVariantList presetChoices(const QString &key, const QVariant &current)
             add(current, qtr("%1 px wide").arg(current.toLongLong()));
     }
     return choices;
+}
+
+// The subtitles shown move at once with the position chosen (sub-position
+// of the videos playing), before it is kept
+void showSubtitlePosition(MainCtx *ctx, int64_t position)
+{
+    if (!ctx || !ctx->getIntf() || !ctx->getIntf()->p_player)
+        return;
+    size_t count = 0;
+    vout_thread_t **vouts = vlc_player_vout_HoldAll(ctx->getIntf()->p_player, &count);
+    for (size_t i = 0; i < count; ++i)
+    {
+        var_SetInteger(vouts[i], "sub-position", position);
+        vout_Release(vouts[i]);
+    }
+    free(vouts);
 }
 
 // A module in a list of modules ("equalizer:compressor")
@@ -845,6 +863,8 @@ bool ConfigModel::setValue(const QString &key, const QVariant &value)
         const bool wasDirty = dirty();
         entry.staged = normalized;
         notifyEntry(i);
+        if (key == QLatin1String("sub-position"))
+            showSubtitlePosition(m_ctx, normalized.toLongLong());
         if (key == QLatin1String("pitch-shift"))
             setFilter(QStringLiteral("scaletempo_pitch"), normalized.toFloat() != 0.f);
         // Size values: the size of the other way back to its default (both
@@ -917,6 +937,8 @@ void ConfigModel::cancel()
             continue;
         entry.staged = entry.current;
         notifyEntry(i);
+        if (entry.key == QLatin1String("sub-position"))
+            showSubtitlePosition(m_ctx, entry.current.toLongLong());
     }
     if (wasDirty)
         emit dirtyChanged();

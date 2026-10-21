@@ -119,7 +119,9 @@ Item {
             }
 
             Repeater {
-                model: PlayerListModel.model
+                // none made while the strip they are shown in is hidden (the
+                // bar of the player is edited in place)
+                model: previewArea.visible ? PlayerListModel.model : 0
 
                 delegate: RowLayout {
                     id: layout

@@ -27,6 +27,9 @@ Controls.Button {
         color: !control.enabled ? "#292929"
              : control.primary ? VLCStyle.redesign.accent
              : control.down || control.hovered ? "#303030" : "#1b1b1b"
+        // reached with the keyboard: outlined as the toggles are
+        border.width: control.visualFocus ? 2 : 0
+        border.color: "#eaeaea"
     }
     // Figma: the text box (its advance rounded up) centred in the button
     contentItem: Item {

@@ -146,8 +146,17 @@ Item {
                     }
                 }
                 Controls.Button {
+                    id: themeButton
                     anchors.fill: parent
-                    background: Item {}
+                    // reached with the keyboard: the tile outlined
+                    background: Rectangle {
+                        width: 124
+                        height: 124
+                        radius: 23
+                        color: "transparent"
+                        border.width: themeButton.visualFocus ? 2 : 0
+                        border.color: "#eaeaea"
+                    }
                     contentItem: Item {}
                     Accessible.name: modelData.title
                     onClicked: root.themeRequested(modelData.index)
@@ -296,8 +305,15 @@ Item {
                     }
                 }
                 Controls.Button {
+                    id: accentButton
                     anchors.fill: parent
-                    background: Item {}
+                    // reached with the keyboard: the disc outlined
+                    background: Rectangle {
+                        radius: width / 2
+                        color: "transparent"
+                        border.width: accentButton.visualFocus ? 2 : 0
+                        border.color: "#eaeaea"
+                    }
                     contentItem: Item {}
                     Accessible.name: qsTr("Accent color %1").arg(index + 1)
                     onClicked: root.accentRequested(modelData)

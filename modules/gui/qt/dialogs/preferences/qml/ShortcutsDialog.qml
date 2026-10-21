@@ -501,15 +501,17 @@ Widgets.RedesignDialog {
                 text: qsTr("Action")
                 color: VLCStyle.redesign.color("#6B6B6B", "#555555")
             }
-            // "Frame 503": Action 488 wide, Hotkey 332, then Global Hotkey
+            // "Frame 503": Action 488 wide, Hotkey 332, then Global Hotkey;
+            // in a narrower window, moved with the fields under them (the
+            // Hotkey field by half the width lost, the Global one by all)
             FigmaText {
-                x: VLCStyle.dp(488, VLCStyle.scale)
+                x: VLCStyle.dp(488, VLCStyle.scale) - Math.round((root.preferredWidth - root.width) / 2)
                 width: VLCStyle.dp(332, VLCStyle.scale)
                 text: qsTr("Hotkey")
                 color: VLCStyle.redesign.color("#6B6B6B", "#555555")
             }
             FigmaText {
-                x: VLCStyle.dp(488 + 332, VLCStyle.scale)
+                x: VLCStyle.dp(488 + 332, VLCStyle.scale) - Math.round(root.preferredWidth - root.width)
                 text: qsTr("Global Hotkey")
                 color: VLCStyle.redesign.color("#6B6B6B", "#555555")
             }

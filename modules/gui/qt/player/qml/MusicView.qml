@@ -32,6 +32,8 @@ FocusScope {
     property real topPadding
     property real bottomPadding
     property url coverSource
+    // where the focus goes back from the queue
+    readonly property Item audioControls: centerContent.audioControls
 
     readonly property bool lyricsMode: MainCtx.lyricsMode
     readonly property bool lyricsLayoutActive: lyricsMode && Player.hasLyrics

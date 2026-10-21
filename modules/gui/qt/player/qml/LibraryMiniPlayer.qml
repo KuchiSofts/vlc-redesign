@@ -114,7 +114,42 @@ T.Control {
             value: Player.position
             enabled: Player.seekable
             Accessible.name: qsTr("Playback position")
-            onMoved: Player.position = value
+            // Dragged: key frame seeks, at most one every 150 ms (a precise
+            // seek decodes up to seconds of frames), the release precisely,
+            // as SliderBar does
+            onMoved: {
+                if (!pressed) {
+                    Player.position = value
+                    return
+                }
+                fastSeekTimer.pending = value
+                fastSeekTimer.moved = true
+                if (!fastSeekTimer.running)
+                    fastSeekTimer.start()
+            }
+            onPressedChanged: {
+                if (pressed)
+                    return
+                fastSeekTimer.stop()
+                fastSeekTimer.pending = -1
+                // (a click moves it on release, still pressed)
+                if (fastSeekTimer.moved)
+                    Player.position = value
+                fastSeekTimer.moved = false
+            }
+            Timer {
+                id: fastSeekTimer
+                property real pending: -1
+                property bool moved: false
+                interval: 150
+                onTriggered: {
+                    if (pending < 0 || !seek.pressed)
+                        return
+                    Player.setPositionFast(pending)
+                    pending = -1
+                    restart()
+                }
+            }
             Keys.onLeftPressed: Player.jumpBwd()
             Keys.onRightPressed: Player.jumpFwd()
             // Figma: the track radius 6 #090909, the fill 2 inside, radius 4,

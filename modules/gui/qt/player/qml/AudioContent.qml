@@ -39,6 +39,7 @@ MouseArea {
     property url coverSource
     property alias coverImage: cover
     property alias lyricsPanel: lyricsLoader
+    readonly property alias audioControls: audioControls
 
     readonly property ColorContext colorContext: ColorContext {
         id: centerTheme
@@ -185,8 +186,18 @@ MouseArea {
                 fillMode: Image.PreserveAspectCrop
                 cache: false
                 asynchronous: true
-                sourceSize: Qt.size(Math.ceil(coverItem.side * eDPR), Math.ceil(coverItem.side * eDPR))
+                sourceSize: Qt.size(decodedSide, decodedSide)
                 readonly property real eDPR: MainCtx.effectiveDevicePixelRatio(Window.window) || 1
+                readonly property int exactSide: Math.ceil(coverItem.side * eDPR)
+                // decoded again (and the backdrop blurred again) once a resize
+                // pauses, not at each of its steps; at its size then (1:1)
+                property int decodedSide: exactSide
+                onExactSideChanged: decodeTimer.restart()
+                Timer {
+                    id: decodeTimer
+                    interval: 200
+                    onTriggered: cover.decodedSide = cover.exactSide
+                }
                 readonly property real sar: paintedHeight > 0 ? paintedWidth / paintedHeight : 1
                 readonly property url targetSource: VLCAccessImage.uri(centerContent.coverSource)
                 source: targetSource
@@ -209,6 +220,9 @@ MouseArea {
                     width: parent.width + 2 * spread + 2 * blurRadius * compensationFactor
                     height: parent.height + 2 * spread + 2 * blurRadius * compensationFactor
                     radius: VLCStyle.dp(20, VLCStyle.scale) + spread
+                    // drawn once in a texture: the shader would run on every
+                    // frame of the player over a megapixel
+                    layer.enabled: true
                 }
             }
         }

@@ -89,6 +89,8 @@ T.Button {
         y: root.height + VLCStyle.dp(4, VLCStyle.scale)
         width: root.width
         height: root.listHeight
+        // kept in the window (moved up, or made lower, near its bottom)
+        margins: 0
         padding: VLCStyle.dp(6, VLCStyle.scale)
         focus: true
         closePolicy: T.Popup.CloseOnEscape | T.Popup.CloseOnPressOutside

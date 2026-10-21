@@ -40,7 +40,7 @@ public:
     void setDurationSeconds(int seconds);
     QVariantList bins() const { return m_bins; }
     bool ready() const { return m_bins.size() == 512; }
-    bool busy() const { return m_busy; }
+    bool busy() const { return !m_key.isEmpty(); }
     QString lastError() const { return m_lastError; }
 
 signals:
@@ -50,22 +50,21 @@ signals:
     void stateChanged();
 
 private:
-    struct CacheEntry { QString key; QVariantList bins; };
     void refresh();
-    void stopCurrent();
+    void release(bool now);
     void setBins(const QVariantList& bins);
     void setError(const QString& error);
+    static void startAnalysis(const QString& key, const QString& path, int seconds);
+    static void finishAnalysis(const QString& key, const QVariantList& bins, const QString& error);
     static QString helperPath();
     static QVariantList parseOutput(const QByteArray& bytes, int expectedSeconds);
 
     QUrl m_source;
     int m_durationSeconds = 0;
     QVariantList m_bins;
-    bool m_busy = false;
+    // the analysis waited for (shared by the sliders of the same file)
+    QString m_key;
     QString m_lastError;
-    QPointer<QProcess> m_process;
-    QList<CacheEntry> m_cache;
-    quint64 m_generation = 0;
 };
 
 #endif

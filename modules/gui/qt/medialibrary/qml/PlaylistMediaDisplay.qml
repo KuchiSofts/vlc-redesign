@@ -83,7 +83,7 @@ Widgets.PageExt {
                     objectName: "playlistSubtitlesButton"
                     text: qsTr("Subtitles…")
                     visible: !root.isMusic
-                    onClicked: subtitleDialog.openFor(root.parentId)
+                    onClicked: root._tracksDialog().openFor(root.parentId)
                 }
 
                 Widgets.ButtonExt {
@@ -111,7 +111,17 @@ Widgets.PageExt {
         }
     }
 
-    SubtitleAssociationsDialog { id: subtitleDialog; parent: root }
+    // made when first opened: it holds models of the library
+    property var _subtitleDialog: null
+    Component {
+        id: subtitleDialogComponent
+        SubtitleAssociationsDialog { parent: root }
+    }
+    function _tracksDialog() {
+        if (!_subtitleDialog)
+            _subtitleDialog = subtitleDialogComponent.createObject(root)
+        return _subtitleDialog
+    }
 
     readonly property int selectedRow: view.selectionModel.selectedIndexesFlat.length === 1
                                        ? view.selectionModel.selectedIndexesFlat[0] : -1

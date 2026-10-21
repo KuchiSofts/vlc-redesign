@@ -52,13 +52,17 @@ T.Pane {
         hasMedialib: MainCtx.mediaLibraryAvailable
     }
 
+    // The pages of Music listed under it (a bool: the list is made again
+    // only when this changes, not on every navigation)
+    readonly property bool _musicExpanded: History.viewPath[0] === "music" && delegateShowText
+
     readonly property var entries: {
         const rows = [
             {title: qsTr("Home"), uri: ["home"], icon: VLCIcons.home, asset: "home"},
             {title: qsTr("Videos"), uri: ["video", "all"], icon: VLCIcons.topbar_video, asset: "video", library: true},
             {title: qsTr("Music"), uri: ["music"], icon: VLCIcons.topbar_music, asset: "music", library: true}
         ]
-        if (History.viewPath[0] === "music" && delegateShowText) {
+        if (_musicExpanded) {
             for (const entry of [ ["artists", qsTr("Artists")], ["albums", qsTr("Albums")],
                                   ["tracks", qsTr("Tracks")], ["genres", qsTr("Genres")],
                                   ["playlists", qsTr("Playlists")] ])

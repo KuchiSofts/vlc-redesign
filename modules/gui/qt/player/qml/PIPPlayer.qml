@@ -180,7 +180,7 @@ T.Control {
                     color: "#eaeaea"
                     source: "qrc:///redesign/icons/previous/default.png"
                     fillMode: Image.PreserveAspectFit
-                    sourceSize: Qt.size(24, 24)
+                    sourceSize: Qt.size(VLCStyle.dp(24, VLCStyle.scale), VLCStyle.dp(24, VLCStyle.scale))
                 }
                 text: VLCIcons.previous
                 textStyle: root.textStyle
@@ -199,7 +199,7 @@ T.Control {
                             (Player.playingState === Player.PLAYING_STATE_PLAYING ? "pause" : "play") +
                             "/default.png"
                     fillMode: Image.PreserveAspectFit
-                    sourceSize: Qt.size(48, 48)
+                    sourceSize: Qt.size(VLCStyle.dp(48, VLCStyle.scale), VLCStyle.dp(48, VLCStyle.scale))
                 }
 
                 font.pixelSize: VLCStyle.icon_large
@@ -226,7 +226,7 @@ T.Control {
                     color: "#eaeaea"
                     source: "qrc:///redesign/icons/next/default.png"
                     fillMode: Image.PreserveAspectFit
-                    sourceSize: Qt.size(24, 24)
+                    sourceSize: Qt.size(VLCStyle.dp(24, VLCStyle.scale), VLCStyle.dp(24, VLCStyle.scale))
                 }
                 text: VLCIcons.next
                 textStyle: root.textStyle

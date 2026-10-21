@@ -40,7 +40,8 @@ Widgets.ButtonExt {
             Layout.preferredHeight: VLCStyle.redesign.iconSize
             // Figma: the more icon of the set, #6B6B6B
             source: VLCStyle.palette.isDark ? "qrc:///redesign/icons/more/dim.png" : "qrc:///redesign/menu.svg"
-            sourceSize: Qt.size(24, 24)
+            // the size of the scale (the svg made for it, the png never larger)
+            sourceSize: Qt.size(width, height)
             fillMode: Image.Pad
             smooth: false
         }

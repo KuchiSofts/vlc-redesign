@@ -57,6 +57,8 @@ Row {
             required property var modelData
             height: root.height
             readonly property bool buttonHovered: windowButton.hovered || windowButton.showHovered || fullscreenButton.hovered
+            // moved by the buttons before it (the fullscreen one shown or not)
+            onXChanged: Qt.callLater(windowButton.updateRect)
 
             CSDWindowButton {
                 id: windowButton
@@ -139,6 +141,14 @@ Row {
                     target: VLCStyle
                     function onAppWidthChanged() { Qt.callLater(windowButton.updateRect) }
                     function onAppHeightChanged() { Qt.callLater(windowButton.updateRect) }
+                }
+                // the set placed again or made wider or narrower
+                Connections {
+                    target: root
+                    function onXChanged() { Qt.callLater(windowButton.updateRect) }
+                    function onYChanged() { Qt.callLater(windowButton.updateRect) }
+                    function onWidthChanged() { Qt.callLater(windowButton.updateRect) }
+                    function onFullscreenHiddenChanged() { Qt.callLater(windowButton.updateRect) }
                 }
                 function updateRect() {
                     const point = mapToItem(null, 0, 0)

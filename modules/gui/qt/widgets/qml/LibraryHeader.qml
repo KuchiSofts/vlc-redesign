@@ -149,11 +149,13 @@ T.ToolBar {
         _groupingItems = []
         if (!_videoGrouping)
             return
-        const items = [groupingSeparator.createObject(sortOptions)]
+        // made in the header (the menu is no item: Qt warns of an object
+        // out of the scene), the menu then takes them
+        const items = [groupingSeparator.createObject(root)]
         for (const entry of [[qsTr("Do not group videos"), MainCtx.GROUPING_NONE],
                              [qsTr("Group by name"), MainCtx.GROUPING_NAME],
                              [qsTr("Group by folder"), MainCtx.GROUPING_FOLDER]])
-            items.push(groupingOption.createObject(sortOptions, { text: entry[0], grouping: entry[1] }))
+            items.push(groupingOption.createObject(root, { text: entry[0], grouping: entry[1] }))
         // after the orders, whenever these are added
         for (const item of items)
             sortOptions.addItem(item)

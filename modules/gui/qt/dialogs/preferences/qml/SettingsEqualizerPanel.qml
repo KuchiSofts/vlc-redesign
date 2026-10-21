@@ -18,6 +18,9 @@ Item {
     property var bands: []
     property real preamp: 12
     property bool expanded: false
+    // The band clicked last (-1: none): it takes the wheel while the
+    // pointer stays on it
+    property int wheelBand: -1
 
     signal bandsEdited(var bands)
     signal preampEdited(real preamp)
@@ -149,10 +152,23 @@ Item {
                             anchors.fill: parent
                             anchors.leftMargin: -root.px(22)
                             anchors.rightMargin: -root.px(22)
-                            onPressed: (mouse) => track.set(mouse.y)
+                            hoverEnabled: true
+                            onPressed: (mouse) => {
+                                root.wheelBand = column.index
+                                track.set(mouse.y)
+                            }
                             onPositionChanged: (mouse) => { if (pressed) track.set(mouse.y) }
-                            onWheel: (wheel) => track.set(track.height - root.px(2) - track.fraction * track.usable
-                                                          - (wheel.angleDelta.y > 0 ? 1 : -1) * track.usable / 80)
+                            onExited: if (root.wheelBand === column.index) root.wheelBand = -1
+                            // the wheel scrolls the page over the bands: it
+                            // moves the band clicked, or any band with Ctrl
+                            onWheel: (wheel) => {
+                                if (root.wheelBand !== column.index && !(wheel.modifiers & Qt.ControlModifier)) {
+                                    wheel.accepted = false
+                                    return
+                                }
+                                track.set(track.height - root.px(2) - track.fraction * track.usable
+                                          - (wheel.angleDelta.y > 0 ? 1 : -1) * track.usable / 80)
+                            }
                         }
                         Accessible.role: Accessible.Slider
                         Accessible.name: root.names[column.index]

@@ -15,7 +15,9 @@ SliderBar {
 
     Waveform {
         id: analysis
-        source: Player.videoTracks.count === 0 ? Player.url : ""
+        // the helper decodes the whole file: not for a hidden slider (the
+        // mini player's under the player, the player's under the library)
+        source: (root.visible && Player.videoTracks.count === 0) ? Player.url : ""
         durationSeconds: Player.length.toSeconds()
     }
 
@@ -56,20 +58,54 @@ SliderBar {
             }
             return result
         }
-        Repeater {
-            model: graph.peaks.length
-            delegate: Rectangle {
-                required property int index
-                readonly property real peak: graph.peaks[index]
-                x: graph.inset + index * graph.pitch
-                width: graph.barWidth
-                height: Math.max(graph.barWidth, Math.round(peak * graph.maxHeight))
-                y: (graph.height - height) / 2
-                radius: width / 2
-                readonly property bool isPlayed: (x + width / 2) / graph.width <= graph.played
-                color: isPlayed ? VLCStyle.redesign.accent
-                                : VLCStyle.redesign.color("#404040", "#9c9c9b")
-                opacity: isPlayed ? 0.8 : 1
+        // A bar is played once its middle is. The bars are drawn twice, each
+        // set clipped on its side of the gap after the last played bar: the
+        // position moves the two clips, the bars stay as they are
+        readonly property int playedCount: Math.max(0, Math.min(peaks.length,
+            Math.floor((played * width - inset - barWidth / 2) / pitch) + 1))
+        readonly property real playedEdge: playedCount > 0
+                                           ? inset + playedCount * pitch - (pitch - barWidth) / 2
+                                           : 0
+        Item {
+            width: graph.playedEdge
+            height: graph.height
+            clip: true
+            Repeater {
+                model: graph.peaks.length
+                delegate: Rectangle {
+                    required property int index
+                    readonly property real peak: graph.peaks[index]
+                    x: graph.inset + index * graph.pitch
+                    width: graph.barWidth
+                    height: Math.max(graph.barWidth, Math.round(peak * graph.maxHeight))
+                    y: (graph.height - height) / 2
+                    radius: width / 2
+                    color: VLCStyle.redesign.accent
+                    opacity: 0.8
+                }
+            }
+        }
+        Item {
+            id: unplayed
+            x: graph.playedEdge
+            width: graph.width - x
+            height: graph.height
+            clip: true
+            Item {
+                x: -unplayed.x
+                Repeater {
+                    model: graph.peaks.length
+                    delegate: Rectangle {
+                        required property int index
+                        readonly property real peak: graph.peaks[index]
+                        x: graph.inset + index * graph.pitch
+                        width: graph.barWidth
+                        height: Math.max(graph.barWidth, Math.round(peak * graph.maxHeight))
+                        y: (graph.height - height) / 2
+                        radius: width / 2
+                        color: VLCStyle.redesign.color("#404040", "#9c9c9b")
+                    }
+                }
             }
         }
         // the handle of the seek bar

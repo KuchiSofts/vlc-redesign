@@ -680,23 +680,74 @@ Widgets.RedesignDialog {
                 visible: service.results.length === 0
                 spacing: VLCStyle.dp(10, VLCStyle.scale)
 
+                // the three fields as wide whatever they hold
                 Widgets.RedesignTextArea {
                     id: apiKeyField
                     objectName: "openSubtitlesApiKey"
+                    Layout.preferredWidth: 1
                     placeholderText: qsTr("OpenSubtitles API key")
                     Accessible.name: placeholderText
                 }
                 Widgets.RedesignTextArea {
                     id: usernameField
                     objectName: "openSubtitlesUsername"
+                    Layout.preferredWidth: 1
                     placeholderText: qsTr("Username")
                     Accessible.name: placeholderText
                 }
-                Widgets.RedesignTextArea {
+                // the password masked: a line input of the look of
+                // RedesignTextArea (a text area can not hide its text)
+                T.TextField {
                     id: passwordField
                     objectName: "openSubtitlesPassword"
+
+                    readonly property real border: VLCStyle.dp(2, VLCStyle.scale)
+
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: 1
+                    Layout.topMargin: VLCStyle.dp(2, VLCStyle.scale)
+                    Layout.bottomMargin: VLCStyle.dp(2, VLCStyle.scale)
+                    implicitHeight: VLCStyle.dp(8 + 21 + 8, VLCStyle.scale)
+                    topPadding: VLCStyle.redesign.textBaseline(border + VLCStyle.dp(8, VLCStyle.scale), font.pixelSize) - passwordMetrics.ascent
+                    bottomPadding: border + VLCStyle.dp(8, VLCStyle.scale)
+                    leftPadding: border + VLCStyle.dp(12, VLCStyle.scale)
+                    rightPadding: border + VLCStyle.dp(18, VLCStyle.scale)
+                    verticalAlignment: TextInput.AlignTop
+                    echoMode: TextInput.Password
                     placeholderText: qsTr("Password")
                     Accessible.name: placeholderText
+
+                    color: VLCStyle.redesign.color("#C6C6C6", "#2e2e2e")
+                    placeholderTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textDisabled, "#7c7c7b")
+                    selectionColor: VLCStyle.redesign.accentBackground
+                    selectedTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#191919")
+                    font.family: VLCStyle.redesign.fontFamily
+                    font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
+                    selectByMouse: true
+
+                    FontMetrics {
+                        id: passwordMetrics
+                        font: passwordField.font
+                    }
+
+                    background: Rectangle {
+                        radius: VLCStyle.dp(6, VLCStyle.scale)
+                        color: VLCStyle.redesign.color("#090909", "#dedede")
+                        border.width: passwordField.border
+                        border.color: VLCStyle.redesign.color("#191919", "#c4c4c3")
+                    }
+
+                    // the placeholder, drawn by the style otherwise
+                    Text {
+                        x: passwordField.leftPadding
+                        y: passwordField.topPadding
+                        width: passwordField.width - passwordField.leftPadding - passwordField.rightPadding
+                        visible: passwordField.length === 0 && passwordField.preeditText === ""
+                        text: passwordField.placeholderText
+                        color: passwordField.placeholderTextColor
+                        font: passwordField.font
+                        elide: Text.ElideRight
+                    }
                 }
             }
 

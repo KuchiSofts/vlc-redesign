@@ -48,7 +48,7 @@ T.Pane {
 
     bottomPadding: VLCStyle.margin_xsmall
 
-    readonly property real sliderY: trackPositionSlider.mapToItem(root, 0, 0).y
+    readonly property real sliderY: _mapSlider(0).y
     property int textPosition: ControlBar.TimeTextPosition.AboveSlider
     property int identifier: -1
     property real sliderHeight: VLCStyle.redesign.seekHeight
@@ -157,6 +157,17 @@ T.Pane {
             dismiss()
 
         root.menu = menu
+    }
+
+    // mapToItem() is not notified: the bindings that map the slider read
+    // here what moves it (one row or two, the controls beside it)
+    function _mapSlider(y) {
+        const host = row2.parent
+        void [trackPositionSlider.x, trackPositionSlider.y, row2.x, row2.y,
+              host ? host.x : 0, host ? host.y : 0,
+              playerControlLayout.x, playerControlLayout.y,
+              root.contentItem ? root.contentItem.x : 0, root.contentItem ? root.contentItem.y : 0]
+        return trackPositionSlider.mapToItem(root, 0, y)
     }
 
     function dismiss() {
@@ -370,8 +381,8 @@ T.Pane {
                 active: MainCtx.mediaLibraryAvailable
                 source: "qrc:///qt/qml/VLC/MediaLibrary/Bookmarks.qml"
 
-                x: trackPositionSlider.mapToItem(root, 0, 0).x
-                y: trackPositionSlider.mapToItem(root, 0, trackPositionSlider.height).y + VLCStyle.margin_xxsmall
+                x: root._mapSlider(0).x
+                y: root._mapSlider(trackPositionSlider.height).y + VLCStyle.margin_xxsmall
                 width: trackPositionSlider.width
 
                 onLoaded: {

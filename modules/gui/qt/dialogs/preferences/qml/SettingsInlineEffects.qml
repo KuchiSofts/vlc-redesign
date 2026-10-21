@@ -80,35 +80,45 @@ ColumnLayout {
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
     }
-    SettingsEqualizer {
+    // The panels of the audio effects: only built when they show (the
+    // audio page lists its effects as options)
+    Loader {
         Layout.fillWidth: true
-        visible: root.category === "audio" && audioEffects.transactionActive
-                 && audioEffects.filterAvailable("equalizer")
-        effects: audioEffects
-    }
-    FilterSection {
-        Layout.fillWidth: true
-        visible: root.category === "audio" && audioEffects.transactionActive
-                 && audioEffects.filterAvailable("compressor")
-        effects: audioEffects
-        filterId: "compressor"
-        title: qsTr("Compressor")
-    }
-    FilterSection {
-        Layout.fillWidth: true
-        visible: root.category === "audio" && audioEffects.transactionActive
-                 && audioEffects.filterAvailable("spatializer")
-        effects: audioEffects
-        filterId: "spatializer"
-        title: qsTr("Spatial audio")
-    }
-    FilterSection {
-        Layout.fillWidth: true
-        visible: root.category === "audio" && audioEffects.transactionActive
-                 && audioEffects.filterAvailable("stereo_widen")
-        effects: audioEffects
-        filterId: "stereo_widen"
-        title: qsTr("Stereo widening")
+        active: root.visible && root.category === "audio"
+        visible: active
+        sourceComponent: ColumnLayout {
+            spacing: root.spacing
+            SettingsEqualizer {
+                Layout.fillWidth: true
+                visible: root.category === "audio" && audioEffects.transactionActive
+                         && audioEffects.filterAvailable("equalizer")
+                effects: audioEffects
+            }
+            FilterSection {
+                Layout.fillWidth: true
+                visible: root.category === "audio" && audioEffects.transactionActive
+                         && audioEffects.filterAvailable("compressor")
+                effects: audioEffects
+                filterId: "compressor"
+                title: qsTr("Compressor")
+            }
+            FilterSection {
+                Layout.fillWidth: true
+                visible: root.category === "audio" && audioEffects.transactionActive
+                         && audioEffects.filterAvailable("spatializer")
+                effects: audioEffects
+                filterId: "spatializer"
+                title: qsTr("Spatial audio")
+            }
+            FilterSection {
+                Layout.fillWidth: true
+                visible: root.category === "audio" && audioEffects.transactionActive
+                         && audioEffects.filterAvailable("stereo_widen")
+                effects: audioEffects
+                filterId: "stereo_widen"
+                title: qsTr("Stereo widening")
+            }
+        }
     }
     SettingsPicture {
         Layout.fillWidth: true

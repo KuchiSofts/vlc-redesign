@@ -293,12 +293,28 @@ MainViewLoader {
 
         // Add Subtitle Tracks / Add Audio Tracks: the media of the playlist
         onRequestTracksDialog: (playlistId, audio) => {
-            (audio ? audioTracksDialog : subtitleTracksDialog).openFor(playlistId)
+            root._tracksDialog(audio).openFor(playlistId)
         }
     }
 
-    SubtitleAssociationsDialog { id: subtitleTracksDialog }
-    SubtitleAssociationsDialog { id: audioTracksDialog; audio: true }
+    // The dialogs of the tracks, made when first opened: each one holds
+    // models of the library
+    property var _subtitleTracksDialog: null
+    property var _audioTracksDialog: null
+    Component {
+        id: tracksDialogComponent
+        SubtitleAssociationsDialog { }
+    }
+    function _tracksDialog(audio) {
+        if (audio) {
+            if (!_audioTracksDialog)
+                _audioTracksDialog = tracksDialogComponent.createObject(root, { audio: true })
+            return _audioTracksDialog
+        }
+        if (!_subtitleTracksDialog)
+            _subtitleTracksDialog = tracksDialogComponent.createObject(root)
+        return _subtitleTracksDialog
+    }
 
     // TBD: Refactor this with MusicGenres ?
     Component {

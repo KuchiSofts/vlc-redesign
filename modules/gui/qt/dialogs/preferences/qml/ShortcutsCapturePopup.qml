@@ -64,6 +64,14 @@ Popup {
                     capturePopup.cancel()
                 else if (capturePopup.conflictAction.length === 0)
                     capturePopup.keyCaptured(event.key, event.modifiers)
+                // asking whether to take the key: Enter replaces (not the
+                // key held from the capture), Tab goes to the buttons
+                else if ((event.key === Qt.Key_Return || event.key === Qt.Key_Enter) && !event.isAutoRepeat)
+                    capturePopup.replaceRequested()
+                else if (event.key === Qt.Key_Tab)
+                    cancelButton.forceActiveFocus(Qt.TabFocusReason)
+                else if (event.key === Qt.Key_Backtab)
+                    replaceButton.forceActiveFocus(Qt.BacktabFocusReason)
             }
         }
         Label {
@@ -116,10 +124,12 @@ Popup {
                 onClicked: capturePopup.clearRequested()
             }
             ActionButton {
+                id: cancelButton
                 text: qsTr("Cancel")
                 onClicked: capturePopup.close()
             }
             ActionButton {
+                id: replaceButton
                 text: qsTr("Replace")
                 primary: true
                 visible: capturePopup.conflictAction.length > 0

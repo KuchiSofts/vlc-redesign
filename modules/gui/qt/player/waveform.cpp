@@ -14,27 +14,45 @@
 #include <QCoreApplication>
 #include <QDir>
 #include <QFileInfo>
+#include <QHash>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QTimer>
 #include <algorithm>
 #include <cmath>
+#include <utility>
 
 namespace {
 constexpr qint64 maxFileBytes = 1024LL * 1024LL * 1024LL;
 constexpr int maxDurationSeconds = 8 * 60;
 constexpr qsizetype maxJsonBytes = 64 * 1024;
-constexpr int maxCacheEntries = 8;
+// shared by the sliders (the player's, the mini player's): an analysis
+// decodes the whole file
+constexpr int maxCacheEntries = 16;
+// a helper that hangs is killed after a minute (8 minutes of sound,
+// decoded 16 times faster than they play, take 30 s)
+constexpr int watchdogMs = 60 * 1000;
+// a helper nobody waits for any more is killed after this: a slider
+// hidden and shown again (the player, the library) goes on with it
+constexpr int orphanMs = 2 * 1000;
+
+struct CacheEntry { QString key; QVariantList bins; };
+// all in the GUI thread
+QList<CacheEntry> s_cache;
+QHash<QString, QPointer<QProcess>> s_jobs;
+QList<Waveform*> s_instances;
 }
 
-Waveform::Waveform(QObject* parent) : QObject(parent) {}
+Waveform::Waveform(QObject* parent) : QObject(parent)
+{
+    s_instances.append(this);
+}
 
 Waveform::~Waveform()
 {
-    if (m_process) {
-        m_process->kill();
-        m_process->waitForFinished(100);
-    }
+    s_instances.removeAll(this);
+    release(true);
 }
 
 void Waveform::setSource(const QUrl& source)
@@ -68,16 +86,47 @@ void Waveform::setError(const QString& error)
     emit stateChanged();
 }
 
-void Waveform::stopCurrent()
+// stops waiting for the analysis; the helper stops too unless another
+// slider waits for it
+void Waveform::release(bool now)
 {
-    ++m_generation;
-    if (m_process) {
-        m_process->kill();
-        m_process = nullptr;
+    const QString key = std::exchange(m_key, QString());
+    if (key.isEmpty()) return;
+    for (const Waveform* other : std::as_const(s_instances))
+        if (other != this && other->m_key == key) return;
+    QProcess* process = s_jobs.value(key);
+    if (!process) return;
+    if (now) {
+        // finished() deletes it
+        s_jobs.remove(key);
+        process->kill();
+        return;
     }
-    if (m_busy) {
-        m_busy = false;
-        emit stateChanged();
+    QTimer::singleShot(orphanMs, process, [key, process] {
+        if (s_jobs.value(key) != process) return;
+        for (const Waveform* waveform : std::as_const(s_instances))
+            if (waveform->m_key == key) return;
+        s_jobs.remove(key);
+        process->kill();
+    });
+}
+
+void Waveform::finishAnalysis(const QString& key, const QVariantList& bins, const QString& error)
+{
+    if (bins.size() == 512) {
+        s_cache.prepend({key, bins});
+        while (s_cache.size() > maxCacheEntries) s_cache.removeLast();
+    }
+    // the signals may destroy sliders
+    QList<QPointer<Waveform>> waiting;
+    for (Waveform* waveform : std::as_const(s_instances))
+        if (waveform->m_key == key) waiting << waveform;
+    for (const QPointer<Waveform>& waveform : std::as_const(waiting)) {
+        if (!waveform || waveform->m_key != key) continue;
+        waveform->m_key.clear();
+        if (bins.size() == 512) waveform->setBins(bins);
+        else waveform->setError(error);
+        if (waveform) emit waveform->stateChanged();
     }
 }
 
@@ -119,9 +168,11 @@ QVariantList Waveform::parseOutput(const QByteArray& bytes, int expectedSeconds)
 
 void Waveform::refresh()
 {
-    stopCurrent();
+    const bool wasBusy = busy();
+    release(false);
     setBins({});
     setError({});
+    if (wasBusy) emit stateChanged();
 
     if (!m_source.isLocalFile() || m_durationSeconds <= 0 ||
         m_durationSeconds > maxDurationSeconds) return;
@@ -131,56 +182,64 @@ void Waveform::refresh()
     if (path.isEmpty()) return;
     const QString key = path + '|' + QString::number(file.size()) + '|' +
                         QString::number(file.lastModified().toMSecsSinceEpoch());
-    for (int i = 0; i < m_cache.size(); ++i) {
-        if (m_cache[i].key != key) continue;
-        const CacheEntry hit = m_cache.takeAt(i);
-        m_cache.prepend(hit);
+    for (int i = 0; i < s_cache.size(); ++i) {
+        if (s_cache[i].key != key) continue;
+        const CacheEntry hit = s_cache.takeAt(i);
+        s_cache.prepend(hit);
         setBins(hit.bins);
         return;
     }
-    const QString program = helperPath();
-    if (!QFileInfo::exists(program)) {
+    // the analysis of another slider: its result comes here too
+    const bool running = !s_jobs.value(key).isNull();
+    if (!running && !QFileInfo::exists(helperPath())) {
         setError(tr("Waveform analyzer is unavailable."));
         return;
     }
-
-    auto* process = new QProcess(this);
-    m_process = process;
-    const quint64 request = m_generation;
-    m_busy = true;
+    m_key = key;
     emit stateChanged();
+    if (!running)
+        startAnalysis(key, path, m_durationSeconds);
+}
+
+void Waveform::startAnalysis(const QString& key, const QString& path, int seconds)
+{
+    // not a child of a slider: the analysis outlives the one that started it
+    auto* process = new QProcess(QCoreApplication::instance());
+    s_jobs.insert(key, process);
 #ifdef Q_OS_WIN
     // CREATE_NO_WINDOW: keep the analysis helper invisible beside the GUI.
     process->setCreateProcessArgumentsModifier([](QProcess::CreateProcessArguments* arguments) {
         arguments->flags |= 0x08000000;
     });
 #endif
-    process->setProgram(program);
+    process->setProgram(helperPath());
     // libvlc_media_new_path() of the helper wants native separators on Windows
     process->setArguments({QDir::toNativeSeparators(path)});
-    connect(process, &QProcess::errorOccurred, this,
-            [this, process, request](QProcess::ProcessError error) {
-        if (request != m_generation || error != QProcess::FailedToStart) return;
-        m_process = nullptr;
-        m_busy = false;
-        setError(tr("Waveform analyzer could not start."));
-        emit stateChanged();
+    connect(process, &QProcess::errorOccurred, process,
+            [process, key](QProcess::ProcessError error) {
+        if (error != QProcess::FailedToStart) return;
+        // no finished() follows
         process->deleteLater();
+        if (s_jobs.value(key) != process) return;
+        s_jobs.remove(key);
+        finishAnalysis(key, {}, tr("Waveform analyzer could not start."));
     });
-    connect(process, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), this,
-            [this, process, request, key](int exitCode, QProcess::ExitStatus status) {
+    connect(process, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), process,
+            [process, key, seconds](int exitCode, QProcess::ExitStatus status) {
         process->deleteLater();
-        if (request != m_generation) return;
-        m_process = nullptr;
-        m_busy = false;
+        if (s_jobs.value(key) != process) return;
+        s_jobs.remove(key);
         const QVariantList result = status == QProcess::NormalExit && exitCode == 0
-            ? parseOutput(process->readAllStandardOutput(), m_durationSeconds) : QVariantList{};
-        if (result.size() == 512) {
-            m_cache.prepend({key, result});
-            while (m_cache.size() > maxCacheEntries) m_cache.removeLast();
-            setBins(result);
-        } else setError(tr("Waveform analysis did not complete."));
-        emit stateChanged();
+            ? parseOutput(process->readAllStandardOutput(), seconds) : QVariantList{};
+        finishAnalysis(key, result, result.size() == 512
+                                    ? QString() : tr("Waveform analysis did not complete."));
+    });
+    // a helper that hangs does not keep the sliders busy
+    QTimer::singleShot(watchdogMs, process, [process, key] {
+        if (s_jobs.value(key) != process) return;
+        s_jobs.remove(key);
+        process->kill();
+        finishAnalysis(key, {}, tr("Waveform analysis did not complete."));
     });
     process->start();
 }

@@ -128,9 +128,9 @@ Widgets.PageExt {
             { text: qsTr("Add Folder"), icon: "folder-add",
               action: () => DialogsProvider.PLOpenDir() },
             { text: qsTr("Edit Subtitle Tracks"), icon: "subtitles",
-              action: (dataList) => subtitleDialog.openForFolderUrl(folderMenu.folderUrl(dataList)) },
+              action: (dataList) => root._tracksDialog(false).openForFolderUrl(folderMenu.folderUrl(dataList)) },
             { text: qsTr("Edit Audio Tracks"), icon: "audio",
-              action: (dataList) => audioDialog.openForFolderUrl(folderMenu.folderUrl(dataList)) },
+              action: (dataList) => root._tracksDialog(true).openForFolderUrl(folderMenu.folderUrl(dataList)) },
             // (the design's "Resync": the whole library is scanned again)
             { text: qsTr("Reload Library"), icon: "sync",
               action: () => { if (MainCtx.mediaLibraryAvailable) MainCtx.mediaLibrary.reload() },
@@ -195,9 +195,9 @@ Widgets.PageExt {
                   }
               } },
             { text: qsTr("Add Subtitle Tracks"), icon: "subtitles",
-              action: (dataList) => subtitleDialog.openForUrl(fileMenu.file(dataList).url) },
+              action: (dataList) => root._tracksDialog(false).openForUrl(fileMenu.file(dataList).url) },
             { text: qsTr("Add Audio Tracks"), icon: "audio",
-              action: (dataList) => audioDialog.openForUrl(fileMenu.file(dataList).url) },
+              action: (dataList) => root._tracksDialog(true).openForUrl(fileMenu.file(dataList).url) },
             { text: qsTr("Properties & Metadata"), icon: "info",
               action: (dataList, options, indexes) => DialogsProvider.mediaInfoDialog(folderModel.mediaId(fileMenu.row(indexes))),
               visible: (dataList) => dataList.length === 1 && dataList[0].isIndexed }
@@ -216,8 +216,24 @@ Widgets.PageExt {
         }
     }
 
-    SubtitleAssociationsDialog { id: subtitleDialog }
-    SubtitleAssociationsDialog { id: audioDialog; audio: true }
+    // The dialogs of the tracks, made when first opened: each one holds
+    // models of the library
+    property var _subtitleDialog: null
+    property var _audioDialog: null
+    Component {
+        id: tracksDialogComponent
+        SubtitleAssociationsDialog { }
+    }
+    function _tracksDialog(audio) {
+        if (audio) {
+            if (!_audioDialog)
+                _audioDialog = tracksDialogComponent.createObject(root, { audio: true })
+            return _audioDialog
+        }
+        if (!_subtitleDialog)
+            _subtitleDialog = tracksDialogComponent.createObject(root)
+        return _subtitleDialog
+    }
 
     LocalFolderModel {
         id: folderModel
@@ -298,182 +314,186 @@ Widgets.PageExt {
             }
 
             contentItem: Item {
-            // List mode (Figma "media"): the thumbnail, 10, the name
-            Item {
-                visible: root._listMode
-                width: grid.rowWidth
-                height: VLCStyle.dp(32, VLCStyle.scale)
+            // List mode (Figma "media"): the thumbnail, 10, the name (only the
+            // tree of the mode shown is made)
+            Loader {
+                active: root._listMode
+                sourceComponent: Item {
+                    width: grid.rowWidth
+                    height: VLCStyle.dp(32, VLCStyle.scale)
 
-                Rectangle {
-                    id: thumbnail
-                    width: VLCStyle.dp(32, VLCStyle.scale)
-                    height: width
-                    radius: VLCStyle.dp(2, VLCStyle.scale)
-                    color: card.model.isFolder ? "transparent" : VLCStyle.redesign.color("#171717", "#dedede")
-
-                    Widgets.ImageExt {
-                        id: smallPreview
-                        anchors.fill: parent
-                        visible: status === Image.Ready
-                        radius: parent.radius
-                        source: root._listMode ? card.previewSource : ""
-                        sourceSize: Qt.size(width * 2, height * 2)
-                        fillMode: card.isVideo ? Image.PreserveAspectCrop : Image.PreserveAspectFit
-                        asynchronous: true
-                    }
-                    Image {
-                        anchors.centerIn: parent
-                        visible: smallPreview.status !== Image.Ready && !card.playing
-                        width: card.model.isFolder ? VLCStyle.dp(32, VLCStyle.scale) : VLCStyle.redesign.iconSize
-                        height: width
-                        source: card.model.isFolder ? "qrc:///redesign/folder.svg"
-                                                    : "qrc:///redesign/icons/file/default.png"
-                        sourceSize: Qt.size(width, height)
-                    }
-                    // the progress, at the bottom of the thumbnail
-                    Item {
-                        anchors.left: parent.left
-                        anchors.bottom: parent.bottom
-                        visible: card.progress > 0
-                        width: Math.round(parent.width * Math.min(1, card.progress))
-                        height: VLCStyle.dp(3, VLCStyle.scale)
-                        clip: true
-
-                        Rectangle {
-                            anchors.left: parent.left
-                            anchors.bottom: parent.bottom
-                            width: thumbnail.width
-                            height: 2 * thumbnail.radius + VLCStyle.dp(3, VLCStyle.scale)
-                            radius: thumbnail.radius
-                            color: VLCStyle.redesign.accent
-                        }
-                    }
-                    // the media playing: darkened, the outline play of the set
                     Rectangle {
-                        anchors.fill: parent
-                        radius: parent.radius
-                        visible: card.playing
-                        color: "#B3000000"
+                        id: thumbnail
+                        width: VLCStyle.dp(32, VLCStyle.scale)
+                        height: width
+                        radius: VLCStyle.dp(2, VLCStyle.scale)
+                        color: card.model.isFolder ? "transparent" : VLCStyle.redesign.color("#171717", "#dedede")
+
+                        Widgets.ImageExt {
+                            id: smallPreview
+                            anchors.fill: parent
+                            visible: status === Image.Ready
+                            radius: parent.radius
+                            source: root._listMode ? card.previewSource : ""
+                            sourceSize: Qt.size(width * 2, height * 2)
+                            fillMode: card.isVideo ? Image.PreserveAspectCrop : Image.PreserveAspectFit
+                            asynchronous: true
+                        }
                         Image {
                             anchors.centerIn: parent
-                            width: VLCStyle.redesign.iconSize
+                            visible: smallPreview.status !== Image.Ready && !card.playing
+                            width: card.model.isFolder ? VLCStyle.dp(32, VLCStyle.scale) : VLCStyle.redesign.iconSize
                             height: width
-                            source: "qrc:///redesign/icons/play/outline-active.png"
+                            source: card.model.isFolder ? "qrc:///redesign/folder.svg"
+                                                        : "qrc:///redesign/icons/file/default.png"
                             sourceSize: Qt.size(width, height)
-                            fillMode: Image.Pad
-                            smooth: false
+                        }
+                        // the progress, at the bottom of the thumbnail
+                        Item {
+                            anchors.left: parent.left
+                            anchors.bottom: parent.bottom
+                            visible: card.progress > 0
+                            width: Math.round(parent.width * Math.min(1, card.progress))
+                            height: VLCStyle.dp(3, VLCStyle.scale)
+                            clip: true
+
+                            Rectangle {
+                                anchors.left: parent.left
+                                anchors.bottom: parent.bottom
+                                width: thumbnail.width
+                                height: 2 * thumbnail.radius + VLCStyle.dp(3, VLCStyle.scale)
+                                radius: thumbnail.radius
+                                color: VLCStyle.redesign.accent
+                            }
+                        }
+                        // the media playing: darkened, the outline play of the set
+                        Rectangle {
+                            anchors.fill: parent
+                            radius: parent.radius
+                            visible: card.playing
+                            color: "#B3000000"
+                            Image {
+                                anchors.centerIn: parent
+                                width: VLCStyle.redesign.iconSize
+                                height: width
+                                source: "qrc:///redesign/icons/play/outline-active.png"
+                                sourceSize: Qt.size(width, height)
+                                fillMode: Image.Pad
+                                smooth: false
+                            }
                         }
                     }
-                }
 
-                Text {
-                    id: rowName
-                    x: thumbnail.width + grid.rowGap
-                    width: parent.width - x
-                    height: parent.height
-                    text: card.model.name
-                    elide: Text.ElideMiddle
-                    color: card.playing ? VLCStyle.redesign.accent
-                                        : VLCStyle.redesign.color(card.played ? "#6B6B6B" : VLCStyle.redesign.textSecondary,
-                                                                  card.played ? "#5a5a59" : "#4d4d4d")
-                    font.family: VLCStyle.redesign.fontFamily
-                    font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
-                    // the text box of the design (17 px) centred, on a whole pixel;
-                    // 0.2 px higher, where Figma 970:3792 draws the names (measured)
-                    verticalAlignment: Text.AlignTop
-                    topPadding: VLCStyle.redesign.textBaseline(Math.round((height - Math.round(1.2109375 * font.pixelSize)) / 2),
-                                                               font.pixelSize) - rowMetrics.ascent - 0.2 * VLCStyle.scale
-                    FontMetrics {
-                        id: rowMetrics
-                        font: rowName.font
+                    Text {
+                        id: rowName
+                        x: thumbnail.width + grid.rowGap
+                        width: parent.width - x
+                        height: parent.height
+                        text: card.model.name
+                        elide: Text.ElideMiddle
+                        color: card.playing ? VLCStyle.redesign.accent
+                                            : VLCStyle.redesign.color(card.played ? "#6B6B6B" : VLCStyle.redesign.textSecondary,
+                                                                      card.played ? "#5a5a59" : "#4d4d4d")
+                        font.family: VLCStyle.redesign.fontFamily
+                        font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
+                        // the text box of the design (17 px) centred, on a whole pixel;
+                        // 0.2 px higher, where Figma 970:3792 draws the names (measured)
+                        verticalAlignment: Text.AlignTop
+                        topPadding: VLCStyle.redesign.textBaseline(Math.round((height - Math.round(1.2109375 * font.pixelSize)) / 2),
+                                                                   font.pixelSize) - rowMetrics.ascent - 0.2 * VLCStyle.scale
+                        FontMetrics {
+                            id: rowMetrics
+                            font: rowName.font
+                        }
                     }
                 }
             }
 
             // Figma "Frame 43": the picture, 20, the name
-            Item {
+            Loader {
                 anchors.fill: parent
-                visible: !root._listMode
-
-                Rectangle {
-                    id: picture
-                    width: grid.cardWidth
-                    height: grid.pictureHeight
-                    radius: VLCStyle.dp(12, VLCStyle.scale)
-                    color: card.model.isFolder ? VLCStyle.redesign.color("#1E1E1E", "#ababaa")
-                                               : VLCStyle.redesign.color("#171717", "#dedede")
-
-                    // A frame of videos, the artwork of the library for songs
-                    Widgets.ImageExt {
-                        id: preview
-
-                        anchors.fill: parent
-                        visible: status === Image.Ready
-                        radius: parent.radius
-                        source: root._listMode ? "" : card.previewSource
-                        sourceSize: Qt.size(width * MainCtx.effectiveDevicePixelRatio(Window.window), 0)
-                        fillMode: card.isVideo ? Image.PreserveAspectCrop : Image.PreserveAspectFit
-                        asynchronous: true
-                    }
-                    // #000000 at 20 % over the frames
+                active: !root._listMode
+                sourceComponent: Item {
                     Rectangle {
-                        anchors.fill: parent
-                        radius: parent.radius
-                        visible: preview.visible && VLCStyle.palette.isDark
-                        color: "#33000000"
-                    }
-                    // the progress: a line of the accent at the bottom,
-                    // inside the rounded corners
-                    Item {
-                        anchors.left: parent.left
-                        anchors.bottom: parent.bottom
-                        visible: card.progress > 0
-                        width: Math.round(parent.width * Math.min(1, card.progress))
-                        height: VLCStyle.dp(4, VLCStyle.scale)
-                        clip: true
+                        id: picture
+                        width: grid.cardWidth
+                        height: grid.pictureHeight
+                        radius: VLCStyle.dp(12, VLCStyle.scale)
+                        color: card.model.isFolder ? VLCStyle.redesign.color("#1E1E1E", "#ababaa")
+                                                   : VLCStyle.redesign.color("#171717", "#dedede")
 
+                        // A frame of videos, the artwork of the library for songs
+                        Widgets.ImageExt {
+                            id: preview
+
+                            anchors.fill: parent
+                            visible: status === Image.Ready
+                            radius: parent.radius
+                            source: root._listMode ? "" : card.previewSource
+                            sourceSize: Qt.size(width * MainCtx.effectiveDevicePixelRatio(Window.window), 0)
+                            fillMode: card.isVideo ? Image.PreserveAspectCrop : Image.PreserveAspectFit
+                            asynchronous: true
+                        }
+                        // #000000 at 20 % over the frames
                         Rectangle {
+                            anchors.fill: parent
+                            radius: parent.radius
+                            visible: preview.visible && VLCStyle.palette.isDark
+                            color: "#33000000"
+                        }
+                        // the progress: a line of the accent at the bottom,
+                        // inside the rounded corners
+                        Item {
                             anchors.left: parent.left
                             anchors.bottom: parent.bottom
-                            width: picture.width
-                            height: 2 * picture.radius
-                            radius: picture.radius
-                            color: VLCStyle.redesign.accent
+                            visible: card.progress > 0
+                            width: Math.round(parent.width * Math.min(1, card.progress))
+                            height: VLCStyle.dp(4, VLCStyle.scale)
+                            clip: true
+
+                            Rectangle {
+                                anchors.left: parent.left
+                                anchors.bottom: parent.bottom
+                                width: picture.width
+                                height: 2 * picture.radius
+                                radius: picture.radius
+                                color: VLCStyle.redesign.accent
+                            }
+                        }
+                        Image {
+                            anchors.centerIn: parent
+                            visible: preview.status !== Image.Ready
+                            width: card.model.isFolder ? VLCStyle.dp(48, VLCStyle.scale) : VLCStyle.redesign.iconSize
+                            height: width
+                            source: card.model.isFolder ? "qrc:///redesign/icons/folder/large.png"
+                                                        : "qrc:///redesign/icons/file/default.png"
+                            sourceSize: Qt.size(width, height)
+                            fillMode: Image.Pad
+                            smooth: false
                         }
                     }
-                    Image {
-                        anchors.centerIn: parent
-                        visible: preview.status !== Image.Ready
-                        width: card.model.isFolder ? VLCStyle.dp(48, VLCStyle.scale) : VLCStyle.redesign.iconSize
-                        height: width
-                        source: card.model.isFolder ? "qrc:///redesign/icons/folder/large.png"
-                                                    : "qrc:///redesign/icons/file/default.png"
-                        sourceSize: Qt.size(width, height)
-                        fillMode: Image.Pad
-                        smooth: false
-                    }
-                }
 
-                Text {
-                    id: cardName
-                    y: picture.height + VLCStyle.dp(20, VLCStyle.scale)
-                    width: grid.cardWidth
-                    height: VLCStyle.dp(19, VLCStyle.scale)
-                    text: card.model.name
-                    elide: Text.ElideRight
-                    // #6B6B6B once played
-                    color: card.playing ? VLCStyle.redesign.accent
-                                        : VLCStyle.redesign.color(card.played ? "#6B6B6B" : VLCStyle.redesign.textSecondary,
-                                                                  card.played ? "#5a5a59" : "#4d4d4d")
-                    font.family: VLCStyle.redesign.fontFamily
-                    font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
-                    verticalAlignment: Text.AlignTop
-                    // Figma: the baseline a whole number of pixels under the top
-                    // of the box (15 for Inter 16; measured on 970:4028)
-                    topPadding: Math.round(VLCStyle.redesign.textBaseline(0, font.pixelSize)) - cardMetrics.ascent
-                    FontMetrics {
-                        id: cardMetrics
-                        font: cardName.font
+                    Text {
+                        id: cardName
+                        y: picture.height + VLCStyle.dp(20, VLCStyle.scale)
+                        width: grid.cardWidth
+                        height: VLCStyle.dp(19, VLCStyle.scale)
+                        text: card.model.name
+                        elide: Text.ElideRight
+                        // #6B6B6B once played
+                        color: card.playing ? VLCStyle.redesign.accent
+                                            : VLCStyle.redesign.color(card.played ? "#6B6B6B" : VLCStyle.redesign.textSecondary,
+                                                                      card.played ? "#5a5a59" : "#4d4d4d")
+                        font.family: VLCStyle.redesign.fontFamily
+                        font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
+                        verticalAlignment: Text.AlignTop
+                        // Figma: the baseline a whole number of pixels under the top
+                        // of the box (15 for Inter 16; measured on 970:4028)
+                        topPadding: Math.round(VLCStyle.redesign.textBaseline(0, font.pixelSize)) - cardMetrics.ascent
+                        FontMetrics {
+                            id: cardMetrics
+                            font: cardName.font
+                        }
                     }
                 }
             }

@@ -17,7 +17,7 @@ import VLC.Widgets as Widgets
 Item {
     id: root
     objectName: "miniPlayerQueue"
-    implicitHeight: 228
+    implicitHeight: VLCStyle.dp(228, VLCStyle.scale)
     readonly property bool lightTheme: !VLCStyle.palette.isDark
     // the row picked by a click ("−" removes it); a double click plays a row
     property int selectedIndex: -1
@@ -43,9 +43,9 @@ Item {
     }
 
     Text {
-        x: 12
-        y: 10
-        width: parent.width - 24
+        x: VLCStyle.dp(12, VLCStyle.scale)
+        y: VLCStyle.dp(10, VLCStyle.scale)
+        width: parent.width - VLCStyle.dp(24, VLCStyle.scale)
         text: qsTr("Queue")
         color: root.lightTheme ? "#4d4d4d" : VLCStyle.redesign.textSecondary
         font.family: VLCStyle.redesign.fontFamily
@@ -54,15 +54,15 @@ Item {
     }
     Rectangle {
         x: 0
-        y: 37
+        y: VLCStyle.dp(37, VLCStyle.scale)
         width: parent.width
-        height: 1
+        height: VLCStyle.dp(1, VLCStyle.scale)
         color: root.lightTheme ? "#858585" : VLCStyle.redesign.separator
     }
     Text {
-        x: 12
-        y: 48
-        width: parent.width - 110
+        x: VLCStyle.dp(12, VLCStyle.scale)
+        y: VLCStyle.dp(48, VLCStyle.scale)
+        width: parent.width - VLCStyle.dp(110, VLCStyle.scale)
         text: queueModel.count > 0
               ? qsTr("%1 items · %2").arg(queueModel.count).arg(queueModel.duration.formatLong())
               : qsTr("Queue is empty")
@@ -72,12 +72,12 @@ Item {
         font.pixelSize: VLCStyle.dp(11, VLCStyle.scale)
     }
     Row {
-        x: parent.width - width - 8
-        y: 41
+        x: parent.width - width - VLCStyle.dp(8, VLCStyle.scale)
+        y: VLCStyle.dp(41, VLCStyle.scale)
         spacing: 0
         Widgets.SortControl {
-            width: 26
-            height: 28
+            width: VLCStyle.dp(26, VLCStyle.scale)
+            height: VLCStyle.dp(28, VLCStyle.scale)
             enabled: queueModel.count > 1
             model: MainPlaylistController.sortKeyTitleList
             sortKey: MainPlaylistController.sortKey
@@ -95,8 +95,8 @@ Item {
             }
         }
         Controls.Button {
-            width: 26
-            height: 28
+            width: VLCStyle.dp(26, VLCStyle.scale)
+            height: VLCStyle.dp(28, VLCStyle.scale)
             text: "−"
             enabled: root.selectedIndex >= 0 && root.selectedIndex < queueModel.count
             Accessible.name: qsTr("Remove selected item from queue")
@@ -106,22 +106,22 @@ Item {
                 color: parent.enabled
                        ? (root.lightTheme ? "#4d4d4d" : VLCStyle.redesign.textSecondary)
                        : VLCStyle.redesign.textDisabled
-                font.pixelSize: 20
+                font.pixelSize: VLCStyle.dp(20, VLCStyle.scale)
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
             }
             onClicked: queueModel.removeItems([root.selectedIndex])
         }
         Controls.Button {
-            width: 26
-            height: 28
+            width: VLCStyle.dp(26, VLCStyle.scale)
+            height: VLCStyle.dp(28, VLCStyle.scale)
             text: "+"
             Accessible.name: qsTr("Add files to queue")
             background: Item {}
             contentItem: Text {
                 text: parent.text
                 color: root.lightTheme ? "#4d4d4d" : VLCStyle.redesign.textSecondary
-                font.pixelSize: 20
+                font.pixelSize: VLCStyle.dp(20, VLCStyle.scale)
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
             }
@@ -136,10 +136,10 @@ Item {
     ListView {
         id: queueList
         objectName: "miniPlayerQueueList"
-        x: 10
-        y: 78
-        width: parent.width - 20
-        height: parent.height - 86
+        x: VLCStyle.dp(10, VLCStyle.scale)
+        y: VLCStyle.dp(78, VLCStyle.scale)
+        width: parent.width - VLCStyle.dp(20, VLCStyle.scale)
+        height: parent.height - VLCStyle.dp(86, VLCStyle.scale)
         clip: true
         model: queueModel
         boundsBehavior: Flickable.StopAtBounds
@@ -150,18 +150,18 @@ Item {
             required property bool isCurrent
             width: queueList.width
             height: VLCStyle.dp(31, VLCStyle.scale)
-            leftPadding: 5
-            rightPadding: 5
+            leftPadding: VLCStyle.dp(5, VLCStyle.scale)
+            rightPadding: VLCStyle.dp(5, VLCStyle.scale)
             highlighted: index === root.selectedIndex
             background: Rectangle {
                 color: parent.hovered || parent.highlighted
                        ? (root.lightTheme ? "#b0b0b0" : "#262626") : "transparent"
-                radius: 4
+                radius: VLCStyle.dp(4, VLCStyle.scale)
             }
             contentItem: Row {
-                spacing: 8
+                spacing: VLCStyle.dp(8, VLCStyle.scale)
                 Text {
-                    width: 14
+                    width: VLCStyle.dp(14, VLCStyle.scale)
                     height: parent.height
                     text: isCurrent ? "▶" : "="
                     color: isCurrent ? VLCStyle.redesign.accent
@@ -170,7 +170,7 @@ Item {
                     verticalAlignment: Text.AlignVCenter
                 }
                 Text {
-                    width: parent.width - 72
+                    width: parent.width - VLCStyle.dp(72, VLCStyle.scale)
                     height: parent.height
                     text: title
                     color: root.lightTheme ? "#4d4d4d" : VLCStyle.redesign.textSecondary
@@ -180,7 +180,7 @@ Item {
                     verticalAlignment: Text.AlignVCenter
                 }
                 Text {
-                    width: 43
+                    width: VLCStyle.dp(43, VLCStyle.scale)
                     height: parent.height
                     text: duration.formatHMS()
                     color: root.lightTheme ? "#7c7c7b" : VLCStyle.redesign.textMuted

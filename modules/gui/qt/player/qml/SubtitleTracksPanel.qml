@@ -187,11 +187,13 @@ ColumnLayout {
     }
 
     // The dialog of the library, loaded only with it: its types are not
-    // registered otherwise and would keep the player from loading
+    // registered otherwise and would keep the player from loading. Built
+    // the first time it is asked for, not with every menu
     Loader {
         id: associationsDialog
+        property bool requested: false
         visible: false
-        active: MainCtx.mediaLibraryAvailable
+        active: requested && MainCtx.mediaLibraryAvailable
         source: "qrc:///qt/qml/VLC/MediaLibrary/SubtitleAssociationsDialog.qml"
         onLoaded: item.parent = Controls.Overlay.overlay
     }
@@ -267,8 +269,11 @@ ColumnLayout {
             description: root.localMedia && MainCtx.mediaLibraryAvailable
                          ? qsTr("Add subtitles to the library")
                          : qsTr("Library association needs a local media file and media library.")
-            enabled: root.localMedia && associationsDialog.status === Loader.Ready
-            onClicked: associationsDialog.item.openForUrl(Player.url)
+            enabled: root.localMedia && MainCtx.mediaLibraryAvailable
+            onClicked: {
+                associationsDialog.requested = true
+                associationsDialog.item?.openForUrl(Player.url)
+            }
         }
         HeaderButton {
             objectName: "addSubtitleButton"

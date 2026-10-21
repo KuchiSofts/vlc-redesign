@@ -21,19 +21,33 @@ SettingsSectionTitle {
     // Advanced Options of the page: only the installed add-ons
     property bool installedOnly: false
     readonly property var selectedAddon: addonsView.currentItem
+    // The add-ons (null until the page first shows)
+    readonly property var addons: addonsLoader.item
 
     function c(value) { return VLCStyle.redesign.color(value, value) }
 
     onInstalledOnlyChanged: addonsView.currentIndex = -1
 
-    ServicesDiscoveryModel {
-        id: addons
-        ctx: MainCtx
-        typeFilter: ServicesDiscoveryModel.TYPE_NONE
-        stateFilter: root.installedOnly
-                     ? ServicesDiscoveryModel.STATE_INSTALLED
-                     : ServicesDiscoveryModel.STATE_NONE
-        searchPattern: searchField.text
+    // The catalog of the add-ons loads (at once, it blocks) when the page
+    // shows the first time, not each time Settings opens; kept once loaded
+    Loader {
+        id: addonsLoader
+        active: false
+        sourceComponent: ServicesDiscoveryModel {
+            ctx: MainCtx
+            typeFilter: ServicesDiscoveryModel.TYPE_NONE
+            stateFilter: root.installedOnly
+                         ? ServicesDiscoveryModel.STATE_INSTALLED
+                         : ServicesDiscoveryModel.STATE_NONE
+            searchPattern: searchField.text
+        }
+    }
+    Binding {
+        target: addonsLoader
+        property: "active"
+        value: true
+        when: root.visible
+        restoreMode: Binding.RestoreNone
     }
 
     Rectangle {
@@ -50,7 +64,7 @@ SettingsSectionTitle {
             anchors.fill: parent
             anchors.margins: root.px(2)
             clip: true
-            model: addons
+            model: root.addons
             currentIndex: -1
             boundsBehavior: Flickable.StopAtBounds
             ScrollBar.vertical: ScrollBar { policy: ScrollBar.AsNeeded }
@@ -123,7 +137,7 @@ SettingsSectionTitle {
 
         BusyIndicator {
             anchors.centerIn: parent
-            running: addons.loading
+            running: !!root.addons && root.addons.loading
             visible: running
             width: root.px(32)
             height: root.px(32)
@@ -163,11 +177,11 @@ SettingsSectionTitle {
                     width: implicitContentWidth + root.px(40)
                     text: qsTr("Find more extensions")
                     onClicked: {
-                        if (addons.loading)
+                        if (!root.addons || root.addons.loading)
                             return
                         root.onlineRequested = true
                         addonsView.currentIndex = -1
-                        addons.loadFromDefaultRepository()
+                        root.addons.loadFromDefaultRepository()
                     }
                 }
                 SettingsButton {
@@ -177,7 +191,7 @@ SettingsSectionTitle {
                     readonly property bool applicable: !!root.selectedAddon
                         && root.selectedAddon.manageable && !root.selectedAddon.broken
                         && root.selectedAddon.state === ServicesDiscoveryModel.STATE_NOTINSTALLED
-                    onClicked: if (applicable) addons.installService(addonsView.currentIndex)
+                    onClicked: if (applicable) root.addons.installService(addonsView.currentIndex)
                     ToolTip.visible: hovered && !applicable
                     ToolTip.text: qsTr("Select an add-on that is not installed")
                     ToolTip.delay: 650
@@ -188,7 +202,7 @@ SettingsSectionTitle {
                     text: qsTr("Remove")
                     readonly property bool applicable: !!root.selectedAddon && root.selectedAddon.manageable
                         && root.selectedAddon.state === ServicesDiscoveryModel.STATE_INSTALLED
-                    onClicked: if (applicable) addons.removeService(addonsView.currentIndex)
+                    onClicked: if (applicable) root.addons.removeService(addonsView.currentIndex)
                     ToolTip.visible: hovered && !applicable
                     ToolTip.text: qsTr("Select an installed add-on")
                     ToolTip.delay: 650
@@ -197,22 +211,26 @@ SettingsSectionTitle {
         }
     }
 
+    // Only while the page shows (a search lists every option of VLC), and
+    // the editor of the one row shown only
     Repeater {
-        model: root.settingsModel
-        delegate: SettingsOptionRow {
+        model: root.visible ? root.settingsModel : null
+        delegate: Loader {
             width: root.width
             // the other options of the page are under Advanced Options
-            visible: model.key === "qt-autoload-extensions"
-            height: visible ? implicitHeight : 0
-            settingKey: model.key
-            label: qsTr("Load add-ons on startup")
-            help: model.help
-            showInfo: false
-            settingType: model.type
-            settingValue: model.value
-            choices: model.choices
-            dirty: model.dirty
-            onCommit: (value) => root.settingsModel.setValue(settingKey, value)
+            active: model.key === "qt-autoload-extensions"
+            visible: active
+            sourceComponent: SettingsOptionRow {
+                settingKey: model.key ?? ""
+                label: qsTr("Load add-ons on startup")
+                help: model.help ?? ""
+                showInfo: false
+                settingType: model.type ?? ""
+                settingValue: model.value
+                choices: model.choices || []
+                dirty: !!model.dirty
+                onCommit: (value) => root.settingsModel.setValue(settingKey, value)
+            }
         }
     }
 }

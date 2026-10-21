@@ -65,13 +65,36 @@ Column {
                && (!excludedSection || entry.section !== excludedSection)
                && (!root.searchMatches || !!root.searchMatches[i])
     }
-    readonly property int availableCount: {
-        let total = 0
-        for (let i = 0; i < optionsRepeater.count; ++i)
-            if (entryVisible(i))
-                ++total
-        return total
+    // A new category can have as many rows as the last one: the rows shown
+    // are worked out again when the model is rebuilt
+    property int _rowsRevision: 0
+    Connections {
+        target: root.settingsModel
+        function onModelReset() { ++root._rowsRevision }
     }
+    // Whether each row shows, and the row shown before it (-1: none),
+    // worked out once for the list: each row looking back through the rows
+    // before it took the time of the square of the rows on every key typed.
+    // (A row still asks for itself whether it shows: a row created while
+    // the model is rebuilt would read the rows of the last one here.)
+    readonly property var shownRows: {
+        root._rowsRevision
+        const shown = []
+        for (let i = 0; i < optionsRepeater.count; ++i)
+            shown.push(entryVisible(i))
+        return shown
+    }
+    readonly property var previousShownRows: {
+        const previous = []
+        let last = -1
+        for (let i = 0; i < shownRows.length; ++i) {
+            previous.push(last)
+            if (shownRows[i])
+                last = i
+        }
+        return previous
+    }
+    readonly property int availableCount: shownRows.filter(shown => shown).length
     width: parent ? parent.width : implicitWidth
     spacing: 0
 
@@ -85,12 +108,7 @@ Column {
             // A category can place an inline effect panel between native option groups.
             visible: root.entryVisible(index)
             // The row shown before this one in the list (-1: the first one)
-            readonly property int previousVisible: {
-                for (let i = index - 1; i >= 0; --i)
-                    if (root.entryVisible(i))
-                        return i
-                return -1
-            }
+            readonly property int previousVisible: root.previousShownRows[index] ?? -1
             readonly property string previousSection: previousVisible >= 0
                 ? presentationData.entry(root.settingsModel.keyAt(previousVisible), "").section : ""
 
@@ -254,9 +272,11 @@ Column {
                 }
             }
 
+            // (built in the list that shows the row only: each holds a model
+            // of the media library)
             Loader {
                 width: parent.width
-                active: root.category === "privacy" && root.search.length === 0
+                active: parent.visible && root.category === "privacy" && root.search.length === 0
                         && model.key === "redesign/recentplay-filter"
                 sourceComponent: SettingsPrivacyActions { width: root.width }
             }
@@ -265,7 +285,7 @@ Column {
             // advanced rows of Diagnostics in the design
             Loader {
                 width: parent.width
-                active: root.category === "general" && root.filterMode === "advanced"
+                active: parent.visible && root.category === "general" && root.filterMode === "advanced"
                         && model.key === "stats"
                 sourceComponent: Column {
                     width: root.width
@@ -292,7 +312,7 @@ Column {
             // "Rescan plugins" ends Smooth Playback in the design
             Loader {
                 width: parent.width
-                active: root.category === "performance" && root.search.length === 0
+                active: parent.visible && root.category === "performance" && root.search.length === 0
                         && root.filterMode !== "advanced" && model.key === "redesign/process-priority"
                 sourceComponent: SettingsActionRow {
                     width: root.width

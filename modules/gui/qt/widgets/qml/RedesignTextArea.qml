@@ -54,8 +54,17 @@ T.TextArea {
         font: root.font
     }
 
-    // Return accepts; in multiple lines it adds a line, Ctrl+Return accepts
+    // Return accepts; in multiple lines it adds a line, Ctrl+Return accepts.
+    // On one line Tab goes to the next field (the text area would type it).
     Keys.onPressed: (event) => {
+        if (!root.multiLine && (event.key === Qt.Key_Tab || event.key === Qt.Key_Backtab)) {
+            event.accepted = true
+            const forward = event.key === Qt.Key_Tab && !(event.modifiers & Qt.ShiftModifier)
+            const next = root.nextItemInFocusChain(forward)
+            if (next && next !== root)
+                next.forceActiveFocus(forward ? Qt.TabFocusReason : Qt.BacktabFocusReason)
+            return
+        }
         if (event.key !== Qt.Key_Return && event.key !== Qt.Key_Enter)
             return
         if (root.multiLine && !(event.modifiers & Qt.ControlModifier))

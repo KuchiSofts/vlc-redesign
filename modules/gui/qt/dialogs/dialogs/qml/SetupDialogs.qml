@@ -27,6 +27,14 @@ Item {
             if (!loader.item.visible) loader.item.open()
         }
     }
+    // A dialog closed is let go with its pages and models, made again when
+    // asked for (unless it was opened again meanwhile)
+    function release(loader) {
+        Qt.callLater(() => {
+            if (loader.item && !loader.item.visible)
+                loader.active = false
+        })
+    }
     Component.onCompleted: if (setupState.needsSetup) Qt.callLater(() => show(setup))
     Connections {
         target: DialogsProvider
@@ -66,28 +74,36 @@ Item {
         anchors.fill: parent
         active: false
         source: "qrc:/qt/qml/VLC/Dialogs/SettingsDialog.qml"
-        onLoaded: { item.parent = root; item.openSettings(requestedCategory) }
+        onLoaded: {
+            item.parent = root
+            // opened again on the page it was left on
+            item.closed.connect(() => {
+                preferences.requestedCategory = preferences.item.selectedCategory
+                root.release(preferences)
+            })
+            item.openSettings(requestedCategory)
+        }
     }
     Loader {
         id: shortcuts
         anchors.fill: parent
         active: false
         source: "qrc:/qt/qml/VLC/Dialogs/ShortcutsDialog.qml"
-        onLoaded: { item.parent = root; item.open() }
+        onLoaded: { item.parent = root; item.closed.connect(() => root.release(shortcuts)); item.open() }
     }
     Loader {
         id: networkStream
         anchors.fill: parent
         active: false
         source: "qrc:/qt/qml/VLC/Dialogs/NetworkStreamDialog.qml"
-        onLoaded: { item.parent = root; item.open() }
+        onLoaded: { item.parent = root; item.closed.connect(() => root.release(networkStream)); item.open() }
     }
     Loader {
         id: about
         anchors.fill: parent
         active: false
         source: "qrc:/qt/qml/VLC/Dialogs/RedesignAboutDialog.qml"
-        onLoaded: { item.parent = root; item.open() }
+        onLoaded: { item.parent = root; item.closed.connect(() => root.release(about)); item.open() }
     }
     Loader {
         id: effects
@@ -95,7 +111,12 @@ Item {
         anchors.fill: parent
         active: false
         source: "qrc:/qt/qml/VLC/Dialogs/EffectsDialog.qml"
-        onLoaded: { item.parent = root; item.currentTab = requestedTab; item.open() }
+        onLoaded: {
+            item.parent = root
+            item.currentTab = requestedTab
+            item.closed.connect(() => root.release(effects))
+            item.open()
+        }
     }
     Connections {
         target: setup.item
@@ -103,10 +124,10 @@ Item {
     }
     Connections {
         target: preferences.item
-        function onVisibleChanged() { DialogsProvider.setRedesignDialogVisible("prefsDialog", preferences.item.visible) }
+        function onVisibleChanged() { if (preferences.item) DialogsProvider.setRedesignDialogVisible("prefsDialog", preferences.item.visible) }
     }
     Connections {
         target: effects.item
-        function onVisibleChanged() { DialogsProvider.setRedesignDialogVisible("extendedDialog", effects.item.visible) }
+        function onVisibleChanged() { if (effects.item) DialogsProvider.setRedesignDialogVisible("extendedDialog", effects.item.visible) }
     }
 }

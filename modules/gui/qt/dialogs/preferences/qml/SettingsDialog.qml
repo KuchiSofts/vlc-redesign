@@ -76,7 +76,7 @@ Dialog {
     function commit() {
         if (saved)
             return true
-        const audioOutputReady = audioOutput.canApply()
+        const audioOutputReady = !audioOutput.item || audioOutput.item.canApply()
         if (!config.applyWithEffects(inlineEffects.audioForSave(), inlineEffects.videoForSave())) {
             applyFailed = true
             // the preview of the effects was put back: start it again
@@ -86,8 +86,8 @@ Dialog {
         }
         saved = true
         applyFailed = false
-        if (audioOutputReady)
-            audioOutput.apply()
+        if (audioOutputReady && audioOutput.item)
+            audioOutput.item.apply()
         inlineEffects.clearDirty()
         appearance.save()
         subtitleLanguages.save()
@@ -129,7 +129,8 @@ Dialog {
         // closed another way than requestClose: keep what can be kept
         commit()
         inlineEffects.cancel()
-        audioOutput.cancel()
+        if (audioOutput.item)
+            audioOutput.item.cancel()
         MainCtx.useGlobalShortcuts = previousGlobalShortcuts
     }
     ShortcutsDialog { id: shortcutsDialog; parent: root.parent }
@@ -384,19 +385,27 @@ Dialog {
                     Repeater {
                         id: shortcutResults
                         model: shortcutsSection.searching ? shortcutSearch : null
-                        delegate: SettingsActionRow {
+                        // the rows listed only are built (a search finds a
+                        // hundred, on every key typed)
+                        delegate: Loader {
+                            id: shortcutResult
                             required property int index
                             required property string key
                             required property string action
                             required property string hotkey
-                            visible: index < shortcutsSection.shown
+                            active: index < shortcutsSection.shown
+                            visible: active
                             width: shortcutsSection.width
-                            // the names of the design for the actions it shows
-                            label: shortcutsDialog.actionLabels[key] ?? action
-                            buttonText: hotkey.length ? shortcutsDialog.displayKeys(hotkey.split(", ")[0])
-                                                      : qsTr("Set a shortcut")
-                            buttonWidth: root.px(200)
-                            onClicked: shortcutsDialog.openWithSearch(action)
+                            sourceComponent: SettingsActionRow {
+                                width: shortcutsSection.width
+                                // the names of the design for the actions it shows
+                                label: shortcutsDialog.actionLabels[shortcutResult.key] ?? shortcutResult.action
+                                buttonText: shortcutResult.hotkey.length
+                                            ? shortcutsDialog.displayKeys(shortcutResult.hotkey.split(", ")[0])
+                                            : qsTr("Set a shortcut")
+                                buttonWidth: root.px(200)
+                                onClicked: shortcutsDialog.openWithSearch(shortcutResult.action)
+                            }
                         }
                     }
                     SettingsActionRow {
@@ -469,11 +478,14 @@ Dialog {
                 }
 
                 // The device of the playing output (its default is the
-                // "Output device" option of the list)
-                SettingsAudioOutput {
+                // "Output device" option of the list): no page shows it, it
+                // is only built if one does
+                Loader {
                     id: audioOutput
                     width: parent.width
                     visible: false
+                    active: visible
+                    sourceComponent: SettingsAudioOutput {}
                 }
 
                 SettingsInlineEffects {
@@ -669,7 +681,8 @@ Dialog {
         objectName: "settingsError"
         parent: root.contentItem
         z: 1
-        readonly property string message: config.error || audioOutput.error || inlineEffects.error
+        readonly property string message: config.error || (audioOutput.item ? audioOutput.item.error : "")
+                                          || inlineEffects.error
         visible: message.length > 0
         x: root.px(216 + 24)
         width: parent ? parent.width - x - root.px(24) : 0

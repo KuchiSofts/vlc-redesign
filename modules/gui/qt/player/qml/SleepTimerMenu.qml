@@ -25,9 +25,9 @@ Controls.Popup {
     required property var timerController
     property int selectedAction: 0
 
-    width: 300
-    height: timerController.active ? 190 : 293
-    padding: 16
+    width: VLCStyle.dp(300, VLCStyle.scale)
+    height: timerController.active ? VLCStyle.dp(190, VLCStyle.scale) : VLCStyle.dp(293, VLCStyle.scale)
+    padding: VLCStyle.dp(16, VLCStyle.scale)
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutside
 
     function formatRemaining(seconds) {
@@ -42,18 +42,18 @@ Controls.Popup {
     // the colours of the redesign, in the light theme too (Figma "Player - Light")
     background: Rectangle {
         color: VLCStyle.redesign.color("#1b1b1b", "#ababaa")
-        radius: 11
+        radius: VLCStyle.dp(11, VLCStyle.scale)
         border.color: VLCStyle.redesign.color("#303030", "#929291")
     }
 
     contentItem: Column {
-        spacing: 12
+        spacing: VLCStyle.dp(12, VLCStyle.scale)
 
         Text {
             text: qsTr("Sleep timer")
             color: VLCStyle.redesign.color("#eaeaea", "#2e2e2e")
             font.family: VLCStyle.redesign.fontFamily
-            font.pixelSize: 18
+            font.pixelSize: VLCStyle.dp(18, VLCStyle.scale)
             font.weight: Font.DemiBold
         }
 
@@ -62,7 +62,7 @@ Controls.Popup {
             text: qsTr("Remaining: %1").arg(root.formatRemaining(root.timerController.remainingSeconds))
             color: VLCStyle.redesign.color("#c6c6c6", "#2e2e2e")
             font.family: VLCStyle.redesign.fontFamily
-            font.pixelSize: 16
+            font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
         }
 
         Text {
@@ -70,12 +70,12 @@ Controls.Popup {
             text: qsTr("After")
             color: VLCStyle.redesign.color("#969696", "#4d4d4d")
             font.family: VLCStyle.redesign.fontFamily
-            font.pixelSize: 14
+            font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
         }
 
         Row {
             visible: !root.timerController.active
-            spacing: 8
+            spacing: VLCStyle.dp(8, VLCStyle.scale)
             Controls.SpinBox {
                 id: durationInput
                 palette.text: VLCStyle.redesign.color("#eaeaea", "#2e2e2e")
@@ -87,18 +87,18 @@ Controls.Popup {
                 to: 720
                 value: 30
                 editable: true
-                width: 110
+                width: VLCStyle.dp(110, VLCStyle.scale)
                 Accessible.name: qsTr("Minutes until sleep timer")
                 background: Rectangle {
                     color: VLCStyle.redesign.color("#101010", "#c2c2c1")
                     border.color: VLCStyle.redesign.color("#383838", "#8e8e8d")
-                    radius: 6
+                    radius: VLCStyle.dp(6, VLCStyle.scale)
                 }
                 contentItem: TextInput {
                     z: 2
                     text: durationInput.textFromValue(durationInput.value, durationInput.locale)
                     font.family: VLCStyle.redesign.fontFamily
-                    font.pixelSize: 15
+                    font.pixelSize: VLCStyle.dp(15, VLCStyle.scale)
                     color: VLCStyle.redesign.color("#eaeaea", "#2e2e2e")
                     selectionColor: VLCStyle.redesign.accent
                     horizontalAlignment: Text.AlignHCenter
@@ -113,7 +113,7 @@ Controls.Popup {
                 text: qsTr("minutes")
                 color: VLCStyle.redesign.color("#969696", "#4d4d4d")
                 font.family: VLCStyle.redesign.fontFamily
-                font.pixelSize: 14
+                font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                 verticalAlignment: Text.AlignVCenter
             }
         }
@@ -121,15 +121,15 @@ Controls.Popup {
         Row {
             visible: !root.timerController.active
             width: parent.width
-            spacing: 8
+            spacing: VLCStyle.dp(8, VLCStyle.scale)
             Repeater {
                 model: [qsTr("Stop playback"), qsTr("Pause playback")]
                 delegate: Controls.Button {
                     required property int index
                     required property string modelData
                     objectName: index === 0 ? "sleepTimerStopAction" : "sleepTimerPauseAction"
-                    width: (root.width - root.leftPadding - root.rightPadding - 8) / 2
-                    height: 34
+                    width: (root.width - root.leftPadding - root.rightPadding - VLCStyle.dp(8, VLCStyle.scale)) / 2
+                    height: VLCStyle.dp(34, VLCStyle.scale)
                     text: modelData
                     Accessible.name: text
                     onClicked: root.selectedAction = index
@@ -138,13 +138,13 @@ Controls.Popup {
                                                              : VLCStyle.redesign.color("#121212", "#c2c2c1")
                         border.color: root.selectedAction === index ? VLCStyle.redesign.accent
                                                                     : VLCStyle.redesign.color("#383838", "#8e8e8d")
-                        radius: 6
+                        radius: VLCStyle.dp(6, VLCStyle.scale)
                     }
                     contentItem: Text {
                         text: parent.text
                         color: VLCStyle.redesign.color("#c6c6c6", "#2e2e2e")
                         font.family: VLCStyle.redesign.fontFamily
-                        font.pixelSize: 13
+                        font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
                     }
@@ -159,13 +159,13 @@ Controls.Popup {
             color: VLCStyle.redesign.color("#e57373", "#c62828")
             wrapMode: Text.WordWrap
             font.family: VLCStyle.redesign.fontFamily
-            font.pixelSize: 13
+            font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
         }
 
         Controls.Button {
             objectName: root.timerController.active ? "cancelSleepTimer" : "startSleepTimer"
             width: parent.width
-            height: 34
+            height: VLCStyle.dp(34, VLCStyle.scale)
             text: root.timerController.active ? qsTr("Cancel timer") : qsTr("Start timer")
             Accessible.name: text
             onClicked: {
@@ -175,14 +175,14 @@ Controls.Popup {
                     root.timerController.start(durationInput.value * 60, root.selectedAction)
             }
             background: Rectangle {
-                radius: 6
+                radius: VLCStyle.dp(6, VLCStyle.scale)
                 color: VLCStyle.redesign.accent
             }
             contentItem: Text {
                 text: parent.text
                 color: "#161616"
                 font.family: VLCStyle.redesign.fontFamily
-                font.pixelSize: 15
+                font.pixelSize: VLCStyle.dp(15, VLCStyle.scale)
                 font.weight: Font.DemiBold
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter

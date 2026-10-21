@@ -114,6 +114,17 @@ QtObject {
         readonly property int volumeHeight: MainCtx.dp(28, vlc_style.scale)
         readonly property int timeWidth: MainCtx.dp(76, vlc_style.scale)
 
+        // Figma "Player - Light": the muted texts and icons (#8F8F8F)
+        // read #2E2E2E, the dimmed ones (#6B6B6B) stay (made once, color()
+        // is called by every binding of the light theme)
+        readonly property var _lightColors: ({
+            "#0e0e0e": "#c2c2c1", "#0f0f0f": "#c2c2c1", "#191919": "#ababaa", "#1b1b1b": "#ababaa",
+            "#222222": "#9c9c9b", "#eaeaea": "#2e2e2e", "#969696": "#4d4d4d",
+            "#8f8f8f": "#2e2e2e", "#404040": "#929291", "#373737": "#8e8e8d",
+            "#090909": "#dedede", "#151515": "#b5b5b4", "#6b6b6b": "#6b6b6b",
+            "#c6c6c6": "#2e2e2e"
+        })
+
         function color(darkValue, fallback, isDark = vlc_style.palette.isDark) {
             if (isDark) return darkValue
             // Nothing drawn stays so in both themes (idle button backgrounds)
@@ -122,16 +133,7 @@ QtObject {
             if (Qt.colorEqual(darkValue, accentDim)) return accentDim
             if (Qt.colorEqual(darkValue, accentBackground))
                 return Qt.tint("#dedede", Qt.rgba(accent.r, accent.g, accent.b, 0.35))
-            // Figma "Player - Light": the muted texts and icons (#8F8F8F)
-            // read #2E2E2E, the dimmed ones (#6B6B6B) stay
-            const light = {
-                "#0e0e0e": "#c2c2c1", "#0f0f0f": "#c2c2c1", "#191919": "#ababaa", "#1b1b1b": "#ababaa",
-                "#222222": "#9c9c9b", "#eaeaea": "#2e2e2e", "#969696": "#4d4d4d",
-                "#8f8f8f": "#2e2e2e", "#404040": "#929291", "#373737": "#8e8e8d",
-                "#090909": "#dedede", "#151515": "#b5b5b4", "#6b6b6b": "#6b6b6b",
-                "#c6c6c6": "#2e2e2e"
-            }
-            return light[darkValue.toString().toLowerCase()] || fallback
+            return _lightColors[darkValue.toString().toLowerCase()] || fallback
         }
     }
 

@@ -46,8 +46,6 @@ RedesignIconButton {
 
     text: VLCIcons.audiosub
 
-    enabled: menuLoader.status === Loader.Ready
-
     description: qsTr("Languages and tracks")
 
     AccessibleCompat.id: "langButton"
@@ -55,7 +53,11 @@ RedesignIconButton {
     // Events
 
     onClicked: {
+        // the menu is built the first time it opens
+        menuLoader.active = true
         const menu = menuLoader.item
+        if (!menu)
+            return
         if (menu.opened) {
             menu.close()
             return
@@ -71,6 +73,10 @@ RedesignIconButton {
 
     Loader {
         id: menuLoader
+
+        // not before the first click: every bar has this button, and so
+        // have the previews of the toolbar editor
+        active: false
 
         sourceComponent: TracksMenu {
             id: menu

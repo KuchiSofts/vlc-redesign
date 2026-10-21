@@ -27,7 +27,8 @@ Widgets.ButtonExt {
             Layout.preferredWidth: VLCStyle.redesign.iconSize
             Layout.preferredHeight: VLCStyle.redesign.iconSize
             source: "qrc:///redesign/add.svg"
-            sourceSize: Qt.size(24, 24)
+            // made at the size of the scale, not stretched from 24
+            sourceSize: Qt.size(width, height)
         }
         Widgets.LabelExt {
             visible: !root.iconOnly

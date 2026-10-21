@@ -39,9 +39,10 @@ Item {
 
     // top, right, bottom, left: as Figma draws them, the dashes of each
     // side centered on it (as many as fit with a dash of room), a dot at the
-    // corners
+    // corners. One rectangle per dash: none while the outline is hidden
+    // (most are, until the player is customized)
     Repeater {
-        model: 4
+        model: root.visible ? 4 : 0
         delegate: Item {
             id: edge
             required property int index

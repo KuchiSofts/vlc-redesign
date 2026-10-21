@@ -12,6 +12,7 @@ import QtQuick.Controls.Basic as Controls
 import VLC.Dialogs as Dialogs
 import VLC.MainInterface
 import VLC.Style
+import VLC.Util
 import VLC.Widgets as Widgets
 
 Controls.Popup {
@@ -37,13 +38,22 @@ Controls.Popup {
     property bool committed: false
     property bool skipping: false
     property var shortcuts: []
+    // the subtitle languages (SubtitlePreferences), saved at the end
+    property string subtitlePrimary: "en"
+    property string subtitleSecondary: ""
+    property bool subtitleAutoSearch: true
+    property bool subtitleShowBoth: false
+    readonly property int lastStep: 3
 
     Dialogs.OnboardingController {
         id: controller
         ctx: MainCtx
         onCompleted: {
-            if (!root.skipping)
+            if (!root.skipping) {
                 MainCtx.setSettingValue("redesign/accent", root.selectedAccent.toString())
+                SubtitlePreferences.set(root.subtitlePrimary, root.subtitleSecondary,
+                                        root.subtitleAutoSearch, root.subtitleShowBoth)
+            }
             root.committed = true
             root.close()
         }
@@ -62,6 +72,10 @@ Controls.Popup {
         // changes only when the user chooses (consentRequested)
         metadataNetworkAccess = controller.metadataNetworkAccess
         shortcuts = controller.activeShortcuts()
+        subtitlePrimary = SubtitlePreferences.primary
+        subtitleSecondary = SubtitlePreferences.secondary
+        subtitleAutoSearch = SubtitlePreferences.autoSearch
+        subtitleShowBoth = SubtitlePreferences.showBoth
         previousGlobalShortcuts = MainCtx.useGlobalShortcuts
         MainCtx.useGlobalShortcuts = false
         controller.begin()
@@ -113,9 +127,29 @@ Controls.Popup {
                     VLCStyle.redesign.accent = colorValue
                 }
             }
-            ShortcutsStep {
+            SubtitleLanguagesStep {
                 anchors.fill: parent
                 visible: root.step === 2
+                primary: root.subtitlePrimary
+                secondary: root.subtitleSecondary
+                autoSearch: root.subtitleAutoSearch
+                showBoth: root.subtitleShowBoth
+                onPrimaryRequested: (code) => {
+                    root.subtitlePrimary = code
+                    if (root.subtitleSecondary === code)
+                        root.subtitleSecondary = ""
+                }
+                onSecondaryRequested: (code) => {
+                    root.subtitleSecondary = code === root.subtitlePrimary ? "" : code
+                    if (root.subtitleSecondary === "")
+                        root.subtitleShowBoth = false
+                }
+                onAutoSearchRequested: (on) => root.subtitleAutoSearch = on
+                onShowBothRequested: (on) => root.subtitleShowBoth = on
+            }
+            ShortcutsStep {
+                anchors.fill: parent
+                visible: root.step === 3
                 shortcuts: root.shortcuts
             }
 
@@ -164,11 +198,11 @@ Controls.Popup {
                 x: 928
                 y: 671
                 primary: true
-                text: root.step === 2 ? qsTr("Finish") : qsTr("Next")
+                text: root.step === root.lastStep ? qsTr("Finish") : qsTr("Next")
                 objectName: "onboardingNextButton"
                 enabled: !controller.busy
                 onClicked: {
-                    if (root.step < 2) {
+                    if (root.step < root.lastStep) {
                         ++root.step
                         return
                     }

@@ -52,6 +52,9 @@
 #include "util/thumbnail_image_provider.hpp"
 #include "util/redesign_icon_provider.hpp"
 #include "util/redesign_updater.hpp"
+#include "util/subtitle_preferences.hpp"
+#include "player/subtitle_finder.hpp"
+#include "util/renderer_manager.hpp"
 #include "util/csdbuttonmodel.hpp"
 #include "util/vlctick.hpp"
 #include "util/list_selection_model.hpp"
@@ -231,6 +234,10 @@ void MainUI::registerQMLTypes()
 {
     assert(!g_qmlTypesAreRegistered);
 
+    // the user's subtitle languages: in Settings and the setup (VLC.Util),
+    // and for the online search (VLC.Player)
+    SubtitlePreferences *subtitlePreferences = new SubtitlePreferences(m_intf, this);
+
     {
         const char* uri = "VLC.MainInterface";
         const int versionMajor = 1;
@@ -306,11 +313,15 @@ void MainUI::registerQMLTypes()
         qmlRegisterType<Waveform>(uri, versionMajor, versionMinor, "Waveform");
         qmlRegisterType<LocalFolderModel>(uri, versionMajor, versionMinor, "LocalFolderModel");
         qmlRegisterUncreatableType<TrackListModel>(uri, versionMajor, versionMinor, "TrackListModel", "available tracks of a media (audio/video/sub)" );
+        qmlRegisterUncreatableType<RendererManager>(uri, versionMajor, versionMinor, "RendererManager", "the devices to cast to (Player.rendererManager)" );
         qmlRegisterUncreatableType<TitleListModel>(uri, versionMajor, versionMinor, "TitleListModel", "available titles of a media" );
         qmlRegisterUncreatableType<ChapterListModel>(uri, versionMajor, versionMinor, "ChapterListModel", "available chapters of a media" );
         qmlRegisterUncreatableType<ProgramListModel>(uri, versionMajor, versionMinor, "ProgramListModel", "available programs of a media" );
         assert(m_intf->p_mainPlayerController);
         qmlRegisterSingletonInstance<PlayerController>(uri, versionMajor, versionMinor, "Player", m_intf->p_mainPlayerController);
+        qmlRegisterSingletonInstance<SubtitleFinder>(uri, versionMajor, versionMinor, "SubtitleFinder",
+                                                     new SubtitleFinder(m_intf, m_intf->p_mainPlayerController,
+                                                                        subtitlePreferences, this));
         qmlRegisterTypesAndRevisions<TimedText>(uri, versionMajor);
         qmlRegisterType<PlayerHighResolutionTimeUpdater>(uri, versionMajor, versionMinor, "HighResolutionTimeUpdater");
         // The enums (VLCTick.ForceHours...) are in the meta object of the gadget
@@ -397,6 +408,8 @@ void MainUI::registerQMLTypes()
         qmlRegisterSingletonInstance<SVGColorImage>(uri, versionMajor, versionMinor, "SVGColorImage", new SVGColorImage(this));
         qmlRegisterSingletonInstance<VLCAccessImage>(uri, versionMajor, versionMinor, "VLCAccessImage", new VLCAccessImage(this));
         qmlRegisterSingletonInstance<VLCThumbnail>(uri, versionMajor, versionMinor, "VLCThumbnail", new VLCThumbnail(this));
+        qmlRegisterSingletonInstance<SubtitlePreferences>(uri, versionMajor, versionMinor, "SubtitlePreferences",
+                                                          subtitlePreferences);
         qmlRegisterType<DelayEstimator>( uri, versionMajor, versionMinor, "DelayEstimator" );
         qmlRegisterTypesAndRevisions<WheelToVLCConverter>( uri, versionMajor );
 

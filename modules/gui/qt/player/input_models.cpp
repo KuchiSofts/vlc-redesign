@@ -18,6 +18,8 @@
 #include "input_models.hpp"
 
 #include "player/player_controller.hpp"
+#include "util/subtitle_preferences.hpp"
+#include "player/subtitle_finder.hpp"
 
 //***************************
 //  track list model
@@ -50,6 +52,16 @@ QVariant TrackListModel::data(const QModelIndex &index, int role) const
         return QVariant::fromValue<bool>(m_data[row].m_selected);
     else if (role == ExternalRole)
         return m_data[row].m_external;
+    else if (role == LanguageRole)
+        return m_data[row].m_language;
+    else if (role == SourceRole)
+    {
+        // read each time: the files are known a moment after their tracks
+        if (!m_data[row].m_external)
+            return QVariantMap{ { QStringLiteral("kind"), QStringLiteral("video") } };
+        const QVariantMap source = SubtitleFinder::externalSource(vlc_es_id_GetStrId(m_data[row].m_id.get()));
+        return source.isEmpty() ? QVariantMap{ { QStringLiteral("kind"), QStringLiteral("added") } } : source;
+    }
     return QVariant{};
 }
 
@@ -156,6 +168,8 @@ QHash<int, QByteArray> TrackListModel::roleNames() const
     QHash<int, QByteArray> roleNames = this->QAbstractListModel::roleNames();
     roleNames[Qt::CheckStateRole] = QByteArrayLiteral("checked");
     roleNames[ExternalRole] = QByteArrayLiteral("external");
+    roleNames[LanguageRole] = QByteArrayLiteral("language");
+    roleNames[SourceRole] = QByteArrayLiteral("source");
     return roleNames;
 }
 
@@ -196,8 +210,22 @@ static bool isExternalTrack(vlc_es_id_t *id)
     return slash && slash - strId == 32;
 }
 
+// a subtitle loaded from the internet keeps the name of its release
+static QString trackTitle(const vlc_player_track *track_info)
+{
+    const QString loaded = SubtitleFinder::externalTitle(vlc_es_id_GetStrId(track_info->es_id));
+    return loaded.isEmpty() ? qfu(track_info->name) : loaded;
+}
+
+static QString trackLanguage(const vlc_player_track *track_info)
+{
+    return track_info->fmt.psz_language
+        ? SubtitlePreferences::normalize(qfu(track_info->fmt.psz_language)) : QString();
+}
+
 TrackListModel::Data::Data(const vlc_player_track *track_info)
-    : m_title( qfu(track_info->name) )
+    : m_title( trackTitle(track_info) )
+    , m_language( trackLanguage(track_info) )
     , m_external( isExternalTrack(track_info->es_id) )
     , m_id( track_info->es_id, true )
     , m_selected( track_info->selected )
@@ -207,7 +235,8 @@ TrackListModel::Data::Data(const vlc_player_track *track_info)
 void TrackListModel::Data::update(const vlc_player_track *track_info)
 {
     m_id.reset(track_info->es_id, true);
-    m_title = qfu(track_info->name);
+    m_title = trackTitle(track_info);
+    m_language = trackLanguage(track_info);
     m_external = isExternalTrack(track_info->es_id);
     m_selected = track_info->selected;
 }

@@ -90,6 +90,7 @@ Dialog {
             audioOutput.apply()
         inlineEffects.clearDirty()
         appearance.save()
+        subtitleLanguages.save()
         developerMode.save()
         MainCtx.controlbarProfileModel.save()
         return true
@@ -118,6 +119,7 @@ Dialog {
         MainCtx.useGlobalShortcuts = false
         config.reload()
         appearance.begin()
+        subtitleLanguages.begin()
         developerMode.begin()
         lastfm.begin()
         advancedExpanded = false
@@ -343,6 +345,16 @@ Dialog {
                                                    qsTr("System")])
                 }
 
+                SettingsSubtitleLanguages {
+                    id: subtitleLanguages
+                    width: parent.width
+                    visible: searchField.text.length === 0
+                             ? root.selectedCategory === "subtitles"
+                             : root.searchMatches([qsTr("Subtitle Languages"), qsTr("Default language"),
+                                                   qsTr("Secondary language"), qsTr("OpenSubtitles"),
+                                                   qsTr("Find subtitles online when a video has none in these languages")])
+                }
+
                 // Keyboard Shortcuts of the controls page; in a search, with
                 // the shortcuts whose action matches
                 SettingsSectionTitle {
@@ -484,6 +496,7 @@ Dialog {
 
                 Text {
                     visible: optionList.availableCount === 0 && !appearance.visible
+                             && !subtitleLanguages.visible
                              && !developerMode.visible
                              && !lastfm.visible && !shortcutsSection.visible
                              && !inlineEffects.visible && !extensions.visible

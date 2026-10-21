@@ -7,6 +7,10 @@ qt6 = import('qt6')
 qt_include_dir = include_directories('.')
 
 qt_extra_deps = []
+# the archives subtitles come in (SubtitleProviders)
+if z_dep.found()
+    qt_extra_deps += z_dep
+endif
 qt_extra_flags = ['-DQT_STRICT_ITERATORS','-DQT_USE_QSTRINGBUILDER','-DQT_NO_CAST_TO_ASCII','-DQT_NO_CAST_FROM_BYTEARRAY']
 qt_cppargs = []
 qt_link_args = [gc_sections_linkargs]
@@ -195,6 +199,7 @@ if qt6_dep.found()
             cc.find_library('dwmapi'),
             cc.find_library('comctl32'),
             cc.find_library('winhttp'),
+            cc.find_library('shell32'),
         ]
     endif
 

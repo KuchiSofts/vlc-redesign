@@ -68,6 +68,9 @@ libqt_plugin_la_CPPFLAGS = $(AM_CPPFLAGS) $(CPPFLAGS_qt) \
 
 libqt_plugin_la_CXXFLAGS = $(AM_CXXFLAGS) $(QT_CFLAGS) $(CXXFLAGS_qt) -fPIC
 libqt_plugin_la_LIBADD = $(vlc_qt_libs)
+if HAVE_ZLIB
+libqt_plugin_la_LIBADD += $(LIBZ)
+endif
 if HAVE_LIBATOMIC
 libqt_plugin_la_CXXFLAGS += -DQT_HAS_LIBATOMIC
 libqt_plugin_la_LIBADD += -latomic
@@ -87,7 +90,7 @@ endif
 
 if HAVE_WIN32
 libqt_plugin_la_CXXFLAGS += $(LIBCOMCXXFLAGS)
-libqt_plugin_la_LIBADD += $(LIBCOM) -lcomctl32 -luuid -ldwmapi -lwinhttp
+libqt_plugin_la_LIBADD += $(LIBCOM) -lcomctl32 -luuid -ldwmapi -lwinhttp -lshell32
 endif
 if UPDATE_CHECK
 libqt_plugin_la_CPPFLAGS += -DUPDATE_CHECK

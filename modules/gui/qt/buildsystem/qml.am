@@ -21,7 +21,9 @@ libqml_module_dialogs_a_QML = \
 	dialogs/firstrun/qml/ThemeStep.qml \
 	dialogs/firstrun/qml/OnboardingDialog.qml \
 	dialogs/firstrun/qml/ShortcutsStep.qml \
+	dialogs/firstrun/qml/SubtitleLanguagesStep.qml \
 	dialogs/preferences/qml/SettingsAppearance.qml \
+	dialogs/preferences/qml/SettingsSubtitleLanguages.qml \
 	dialogs/preferences/qml/SettingsSidebar.qml \
 	dialogs/preferences/qml/ShortcutsDialog.qml \
 	dialogs/preferences/qml/SettingsOptionList.qml \
@@ -309,6 +311,7 @@ libqml_module_playercontrols_a_QML = \
 	player/qml/controlbarcontrols/QuitButton.qml \
 	player/qml/controlbarcontrols/RandomButton.qml \
 	player/qml/controlbarcontrols/RendererButton.qml \
+	player/qml/controlbarcontrols/CastButton.qml \
 	player/qml/controlbarcontrols/RecordButton.qml \
 	player/qml/controlbarcontrols/ReverseButton.qml \
 	player/qml/controlbarcontrols/SkipBackButton.qml \
@@ -410,6 +413,7 @@ libqml_module_widgets_a_QML = \
 	widgets/qml/RedesignMenuSeparator.qml \
 	widgets/qml/RedesignDialog.qml \
 	widgets/qml/RedesignButton.qml \
+	widgets/qml/LanguagePicker.qml \
 	widgets/qml/RedesignDialogHeading.qml \
 	widgets/qml/RedesignTextArea.qml \
 	widgets/qml/CSDMouseStealer.qml \

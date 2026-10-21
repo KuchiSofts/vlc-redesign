@@ -227,6 +227,8 @@ libqt_plugin_la_SOURCES = \
 	style/defaultthemeproviders.hpp \
 	style/systempalettethemeprovider.cpp \
 	player/input_models.cpp player/input_models.hpp \
+	player/subtitle_finder.cpp player/subtitle_finder.hpp \
+	player/subtitle_providers.cpp player/subtitle_providers.hpp \
 	player/delay_estimator.cpp \
 	player/delay_estimator.hpp \
 	player/waveform.cpp player/waveform.hpp \
@@ -254,6 +256,7 @@ libqt_plugin_la_SOURCES = \
 	util/workerthreadset.hpp util/workerthreadset.cpp \
 	util/http_request.cpp util/http_request.hpp \
 	util/redesign_updater.cpp util/redesign_updater.hpp \
+	util/subtitle_preferences.cpp util/subtitle_preferences.hpp \
 	util/redesign_version.hpp \
 	util/base_model.hpp util/base_model_p.hpp util/base_model.cpp \
 	util/color_scheme_model.cpp util/color_scheme_model.hpp \

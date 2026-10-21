@@ -705,6 +705,7 @@ modules/gui/qt/dialogs/firstrun/firstrunwizard.hpp
 modules/gui/qt/dialogs/firstrun/onboarding.cpp
 modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml
 modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml
+modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml
 modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml
 modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml
 modules/gui/qt/dialogs/gototime/gototime.cpp
@@ -749,6 +750,7 @@ modules/gui/qt/dialogs/preferences/shortcuts_model.cpp
 modules/gui/qt/dialogs/preferences/simple_preferences.cpp
 modules/gui/qt/dialogs/preferences/simple_preferences.hpp
 modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml
+modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml
 modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml
 modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml
 modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml
@@ -969,6 +971,7 @@ modules/gui/qt/player/qml/controlbarcontrols/QuitButton.qml
 modules/gui/qt/player/qml/controlbarcontrols/RandomButton.qml
 modules/gui/qt/player/qml/controlbarcontrols/RecordButton.qml
 modules/gui/qt/player/qml/controlbarcontrols/RendererButton.qml
+modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml
 modules/gui/qt/player/qml/controlbarcontrols/ReplayButton.qml
 modules/gui/qt/player/qml/controlbarcontrols/ResolutionWidget.qml
 modules/gui/qt/player/qml/controlbarcontrols/ReverseButton.qml
@@ -1022,6 +1025,7 @@ modules/gui/qt/widgets/native/searchlineedit.cpp
 modules/gui/qt/widgets/native/searchlineedit.hpp
 modules/gui/qt/widgets/qml/DragItem.qml
 modules/gui/qt/widgets/qml/GridSortFilterControls.qml
+modules/gui/qt/widgets/qml/LanguagePicker.qml
 modules/gui/qt/widgets/qml/SearchBox.qml
 modules/gui/qt/widgets/qml/SortControl.qml
 modules/gui/qt/widgets/qml/TableColumns.qml

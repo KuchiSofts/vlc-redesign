@@ -46,8 +46,9 @@ T.Popup {
                                        scroll.contentY + top + item.height - scroll.height)
     }
 
-    width: Math.min(VLCStyle.dp(400, VLCStyle.scale), parent ? parent.width : VLCStyle.dp(400, VLCStyle.scale))
-    height: Math.min(VLCStyle.dp(500, VLCStyle.scale), parent ? Math.max(0, parent.height - VLCStyle.dp(48, VLCStyle.scale)) : VLCStyle.dp(500, VLCStyle.scale))
+    // wide enough for the languages and the subtitles side by side
+    width: Math.min(VLCStyle.dp(600, VLCStyle.scale), parent ? parent.width : VLCStyle.dp(600, VLCStyle.scale))
+    height: Math.min(VLCStyle.dp(560, VLCStyle.scale), parent ? Math.max(0, parent.height - VLCStyle.dp(48, VLCStyle.scale)) : VLCStyle.dp(560, VLCStyle.scale))
     padding: 0
     focus: true
     closePolicy: T.Popup.CloseOnEscape | T.Popup.CloseOnPressOutside
@@ -353,10 +354,15 @@ T.Popup {
                 onClicked: root.currentTab = 3
             }
             Item { Layout.fillWidth: true }
+            // the settings of what the tab is about; this menu closes
             FooterButton {
                 objectName: "showPreferencesButton"
                 text: qsTr("Show Preferences")
-                onClicked: DialogsProvider.prefsDialog()
+                onClicked: {
+                    const page = { 0: "subtitles", 1: "audio", 2: "video", 3: "playback" }[root.currentTab]
+                    root.close()
+                    DialogsProvider.prefsDialogSection(page || "general")
+                }
             }
         }
     }

@@ -115,6 +115,8 @@ nodist_libqt_plugin_la_SOURCES = \
 	playlist/playlist_model.moc.cpp \
 	util/asynctask.moc.cpp \
 	util/redesign_updater.moc.cpp \
+	util/subtitle_preferences.moc.cpp \
+	player/subtitle_finder.moc.cpp \
 	util/accessible_compat_attached.moc.cpp \
 	util/audio_device_model.moc.cpp \
 	util/workerthreadset.moc.cpp \

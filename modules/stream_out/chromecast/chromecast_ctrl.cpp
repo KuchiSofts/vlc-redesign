@@ -207,6 +207,10 @@ intf_sys_t::intf_sys_t(vlc_object_t * const p_this, int port, std::string device
     // Start the Chromecast event thread.
     if (vlc_clone(&m_chromecastThread, ChromecastThread, this))
     {
+        /* (the destructor won't run) */
+        if ( m_libvlc != nullptr )
+            for ( const char *var : { "renderer-volume", "renderer-muted", "renderer-stop" } )
+                var_DelCallback( m_libvlc, var, rendererVarChanged, this );
         vlc_interrupt_destroy( m_ctl_thread_interrupt );
         var_SetAddress( vlc_object_parent(vlc_object_parent(m_module)), CC_SHARED_VAR_NAME, NULL );
         throw std::runtime_error( "error creating cc thread" );
@@ -484,6 +488,8 @@ void intf_sys_t::setHasInput( const std::string mime_type )
     prepareHttpArtwork();
 
     m_request_stop = false;
+    /* (a stop of the previous media was for that media) */
+    m_user_stop = false;
     m_played_once = false;
     m_paused_once = false;
     m_paused = false;
@@ -741,6 +747,8 @@ void intf_sys_t::mainLoop()
         // the context is still flagged as interrupted)
         vlc_interrupt_unregister();
         vlc::threads::mutex_locker lock( m_lock );
+        /* a volume or mute the interface asked for (rendererVarChanged) */
+        applyVolume();
         while ( m_msgQueue.empty() == false )
         {
             QueueableMessages msg = m_msgQueue.front();
@@ -1371,7 +1379,6 @@ void intf_sys_t::reportState( States previous )
 
 bool intf_sys_t::userStopped() const
 {
-    vlc::threads::mutex_locker lock( m_lock );
     return m_user_stop;
 }
 
@@ -1382,30 +1389,36 @@ void intf_sys_t::applyVolume()
     if ( m_communication == NULL || m_state == Authenticating || m_state == Connecting
       || m_state == Dead )
         return;
-    if ( m_want_volume >= 0 && m_want_volume != m_sent_volume )
+    const int volume = m_want_volume, muted = m_want_muted;
+    if ( volume >= 0 && volume != m_sent_volume )
     {
-        m_sent_volume = m_want_volume;
-        m_communication->msgReceiverSetVolume( m_want_volume / 100.f );
+        m_sent_volume = volume;
+        m_communication->msgReceiverSetVolume( volume / 100.f );
     }
-    if ( m_want_muted >= 0 && m_want_muted != m_sent_muted )
+    if ( muted >= 0 && muted != m_sent_muted )
     {
-        m_sent_muted = m_want_muted;
-        m_communication->msgReceiverSetMute( m_want_muted > 0 );
+        m_sent_muted = muted;
+        m_communication->msgReceiverSetMute( muted > 0 );
     }
 }
 
 int intf_sys_t::rendererVarChanged( vlc_object_t *, const char *psz_var, vlc_value_t,
                                     vlc_value_t newval, void *data )
 {
+    /* No m_lock here: the interface stops the cast with the player locked,
+     * while the Chromecast thread gives the paused state to the player with
+     * m_lock held. The thread sends the volume (mainLoop). */
     intf_sys_t *p_this = static_cast<intf_sys_t *>( data );
-    vlc::threads::mutex_locker lock( p_this->m_lock );
     if ( !strcmp( psz_var, "renderer-stop" ) )
         p_this->m_user_stop = true;
-    else if ( !strcmp( psz_var, "renderer-volume" ) )
-        p_this->m_want_volume = newval.i_int;
-    else if ( !strcmp( psz_var, "renderer-muted" ) )
-        p_this->m_want_muted = newval.i_int;
-    p_this->applyVolume();
+    else
+    {
+        if ( !strcmp( psz_var, "renderer-volume" ) )
+            p_this->m_want_volume = newval.i_int;
+        else if ( !strcmp( psz_var, "renderer-muted" ) )
+            p_this->m_want_muted = newval.i_int;
+        vlc_interrupt_raise( p_this->m_ctl_thread_interrupt );
+    }
     return VLC_SUCCESS;
 }
 

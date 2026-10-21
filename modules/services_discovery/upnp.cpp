@@ -1556,7 +1556,10 @@ void MediaRendererList::parseNewChromecast( IXML_Document* doc,
 {
     vlc_url_t url;
     vlc_UrlParse( &url, location.c_str() );
-    IXML_NodeList* p_device_nodes = url.psz_host != nullptr
+    /* Only its IPv4 answer: an IPv6 one (link-local, with a zone) makes no
+     * usable chromecast:// address, and as the same device it would hide
+     * the IPv4 one */
+    IXML_NodeList* p_device_nodes = url.psz_host != nullptr && !strchr( url.psz_host, ':' )
         ? ixmlDocument_getElementsByTagName( doc, "device" ) : nullptr;
 
     for ( unsigned int i = 0; p_device_nodes && i < ixmlNodeList_length( p_device_nodes ); i++ )

@@ -1719,7 +1719,20 @@ IXML_Document *MediaRenderer::SendAction(const char* action_name,const char *ser
     }
 
     /* Get the controlURL of the service */
+    last_error = 0;
     char *control_url = getServiceURL(service_type, "controlURL");
+    if (control_url == nullptr)
+    {
+        /* the device didn't answer (its error is kept: getServiceURL), or
+         * has no such service; without a URL, libupnp would only say
+         * "invalid parameter", which hides that the device is gone */
+        ixmlDocument_free(action);
+        if (last_error == 0)
+            last_error = UPNP_E_INVALID_PARAM;
+        msg_Err(parent, "Unable to send action: %s (no control URL, %d: %s)",
+                action_name, last_error, UpnpGetErrorMessage(last_error));
+        return nullptr;
+    }
 
     /* Send action */
     IXML_Document *response = nullptr;
@@ -1731,10 +1744,13 @@ IXML_Document *MediaRenderer::SendAction(const char* action_name,const char *ser
     free(control_url);
 
     if (ret != UPNP_E_SUCCESS) {
+        char *printed = response ? ixmlPrintDocument(response) : nullptr;
         msg_Err(parent, "Unable to send action: %s (%d: %s) response: %s",
-                action_name, ret, UpnpGetErrorMessage(ret), ixmlPrintDocument(response));
+                action_name, ret, UpnpGetErrorMessage(ret),
+                printed ? printed : "none");
+        free(printed);
         if (response) ixmlDocument_free(response);
-        last_error = ret != UPNP_E_SUCCESS ? ret : -1;
+        last_error = ret;
         return nullptr;
     }
 
@@ -2042,8 +2058,16 @@ Add(sout_stream_t *p_stream, const es_format_t *p_fmt, const char *es_id)
                 return p_sys_id;
             }
         }
-        p_sys->es_changed = true;
-        p_sys->es_changed_at = vlc_tick_now();
+        /* a subtitle without a picture to draw it on changes nothing that
+         * is sent: no new stream (the renderer would start again) */
+        bool has_video = false;
+        for (const sout_stream_id_sys_t *other : p_sys->streams)
+            has_video = has_video || other->fmt.i_cat == VIDEO_ES;
+        if (p_fmt->i_cat != SPU_ES || has_video)
+        {
+            p_sys->es_changed = true;
+            p_sys->es_changed_at = vlc_tick_now();
+        }
     }
     return p_sys_id;
 }
@@ -2165,7 +2189,9 @@ static void Del(sout_stream_t *p_stream, void *_id)
         }
     }
 
-    if (p_sys->out_streams.empty())
+    /* (a track that wasn't in the chain, e.g. a subtitle of a sound: the
+     * chain kept for the renderer to finish stays as it is) */
+    if (p_sys->out_streams.empty() && p_sys->p_out != nullptr)
     {
         p_sys->stopSoutChain(p_stream, true);
         vlc::threads::mutex_locker locker( p_sys->ctl_lock );

@@ -278,10 +278,12 @@ private:
     unsigned m_last_request_id;
     int64_t m_mediaSessionId;
     vlc_object_t *m_libvlc = nullptr;
-    bool m_user_stop = false;
-    int m_want_volume = -1;
+    /* set by the interface without m_lock: it calls with the player locked,
+     * and the paused state goes to the player under m_lock (corks) */
+    std::atomic<bool> m_user_stop{false};
+    std::atomic<int> m_want_volume{-1};
+    std::atomic<int> m_want_muted{-1};
     int m_sent_volume = -1;
-    int m_want_muted = -1;
     int m_sent_muted = -1;
     bool m_volume_reported = false;
 

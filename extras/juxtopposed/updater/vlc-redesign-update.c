@@ -47,10 +47,13 @@
 static wchar_t app[MAX_PATH], work[MAX_PATH], staged[MAX_PATH], backup[MAX_PATH];
 static FILE *logfile;
 
-/* the files moved so far, to put back on failure */
-static wchar_t *done_rel[MAX_FILES];
-static int done_had_old[MAX_FILES];
+/* the files moved so far, to put back on failure (the new ones and the
+ * removed ones) */
+static wchar_t *done_rel[2 * MAX_FILES];
+static int done_had_old[2 * MAX_FILES];
 static int done_count;
+/* more files than MAX_FILES: not a part of the update only */
+static BOOL too_many;
 
 static void logf_(const wchar_t *fmt, ...)
 {
@@ -154,6 +157,8 @@ static int list_files(const wchar_t *base, const wchar_t *rel, wchar_t **out, in
             count = list_files(base, sub, out, count);
         else if (count < MAX_FILES)
             out[count++] = _wcsdup(sub);
+        else
+            too_many = TRUE;
     } while (FindNextFileW(h, &fd));
     FindClose(h);
     return count;
@@ -165,6 +170,8 @@ static BOOL set_aside(const wchar_t *rel)
     wchar_t target[MAX_PATH], kept[MAX_PATH];
     join(target, app, rel);
     join(kept, backup, rel);
+    if (done_count >= 2 * MAX_FILES)
+        return FALSE;
     done_rel[done_count] = _wcsdup(rel);
     done_had_old[done_count] = exists(target);
     if (done_had_old[done_count] && !move_retry(target, kept)) {
@@ -287,7 +294,11 @@ static int read_removed(wchar_t **out)
         return 0;
     int count = 0;
     wchar_t line[MAX_PATH];
-    while (count < MAX_FILES && fgetws(line, MAX_PATH, f)) {
+    while (fgetws(line, MAX_PATH, f)) {
+        if (count >= MAX_FILES) {
+            too_many = TRUE;
+            break;
+        }
         line[wcscspn(line, L"\r\n")] = 0;
         for (wchar_t *p = line; *p; ++p)
             if (*p == L'/')
@@ -354,6 +365,13 @@ int wmain(int argc, wchar_t **argv)
     static wchar_t *files[MAX_FILES], *removed[MAX_FILES];
     int count = list_files(staged, L"", files, 0);
     int gone = read_removed(removed);
+    if (too_many) {
+        logf_(L"the update has more than %d files: not applied", MAX_FILES);
+        HANDLE vlc = again ? relaunch(resume, time) : NULL;
+        if (vlc)
+            CloseHandle(vlc);
+        return 1;
+    }
     if (!count && !gone) {
         logf_(L"nothing to update");
         return 0;

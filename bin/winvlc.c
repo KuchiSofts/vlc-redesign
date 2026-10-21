@@ -113,6 +113,21 @@ static wchar_t *PortableLanguage(void)
     return wide;
 }
 
+/* The interface (Qt 6) needs Windows 10: older versions get a message
+ * instead of nothing. RtlGetVersion tells the version whatever the
+ * manifest says. */
+static BOOL WindowsSupported(void)
+{
+    typedef LONG (WINAPI *RtlGetVersion_t)(OSVERSIONINFOW *);
+    HMODULE ntdll = GetModuleHandle(TEXT("ntdll.dll"));
+    RtlGetVersion_t get_version = ntdll == NULL ? NULL
+        : (RtlGetVersion_t)(void *)GetProcAddress(ntdll, "RtlGetVersion");
+    OSVERSIONINFOW info = { .dwOSVersionInfoSize = sizeof(info) };
+    if (get_version == NULL || get_version(&info) != 0)
+        return TRUE; /* (unknown: let it try) */
+    return info.dwMajorVersion >= 10;
+}
+
 static void vlc_kill(void *data)
 {
     HANDLE *semp = data;
@@ -161,6 +176,13 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
      * Load DLLs from system32 before any other folder (when possible)
      */
     PrioritizeSystem32();
+
+    if (!WindowsSupported())
+    {
+        MessageBox(NULL, TEXT("This version of VLC media player needs Windows 10 or later."),
+                   TEXT("VLC media player"), MB_OK|MB_ICONERROR);
+        return 1;
+    }
 
     /* Args */
     wchar_t **wargv = CommandLineToArgvW (GetCommandLine (), &argc);

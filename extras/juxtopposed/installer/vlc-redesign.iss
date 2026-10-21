@@ -65,7 +65,8 @@ UninstallDisplayName={#AppName}
 UninstallDisplayIcon={app}\vlc.exe
 ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
-MinVersion=10.0
+; Qt 6.8 supports Windows 10 from version 1809 (build 17763)
+MinVersion=10.0.17763
 OutputDir={#OutputDir}
 OutputBaseFilename=vlc-redesign-{#AppVersion}-win64-setup
 SetupIconFile=art\setup.ico

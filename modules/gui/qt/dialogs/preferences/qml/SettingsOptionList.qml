@@ -117,7 +117,7 @@ Column {
             Text {
                 id: sectionTitle
                 visible: !root.hideSectionHeadings
-                         && (root.filterMode !== "advanced" || presentation.heading)
+                         && (root.filterMode !== "advanced" || !!presentation.heading)
                          && (previousVisible < 0 || presentation.section !== previousSection)
                 width: parent.width
                 // whole pixels: the rows below stay on the pixel grid
@@ -215,7 +215,7 @@ Column {
                     dirty: !!model.dirty
                     onCommit: (value) => root.settingsModel.setValue(settingKey, value)
                     decimals: presentation.decimals
-                    rowHeight: presentation.rowHeight
+                    rowHeight: presentation.rowHeight || 0
                     fieldHeight: presentation.fieldHeight || 0
                     defaultDisplay: presentation.defaultDisplay || ""
                     controlTop: presentation.controlTop

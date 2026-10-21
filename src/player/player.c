@@ -2079,6 +2079,9 @@ vlc_player_Delete(vlc_player_t *player)
     vlc_player_aout_Deinit(player);
     var_DelCallback(player, "corks", vlc_player_CorkCallback, player);
 
+    /* A kept stream output can hold the resource itself (the picture shown
+     * here while casting: stream_out/display), which would never go */
+    input_resource_TerminateSout(player->resource);
     input_resource_Release(player->resource);
     if (player->renderer)
         vlc_renderer_item_release(player->renderer);

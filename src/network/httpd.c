@@ -765,6 +765,12 @@ static int httpd_StreamCallBack(httpd_callback_sys_t *p_sys,
                     stream->i_first_client = now;
                 if (now - stream->i_first_client < VLC_TICK_FROM_SEC(10))
                 {
+                    /* the stream's first bytes are its header (the access
+                     * output sends the header blocks as data too): not
+                     * twice (MP4 and Ogg renderers refuse that) */
+                    free(answer->p_body);
+                    answer->p_body = NULL;
+                    answer->i_body = 0;
                     answer->i_body_offset = 1;
                     cl->i_keyframe_wait_to_pass = -1;
                 }

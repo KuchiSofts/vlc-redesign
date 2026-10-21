@@ -347,10 +347,10 @@ void vout_CreateVars( vout_thread_t *p_vout )
                 VLC_VAR_INTEGER | VLC_VAR_DOINHERIT | VLC_VAR_ISCOMMAND );
     var_AddCallback( p_vout, "secondary-sub-margin", SecondarySubMarginCallback, NULL );
 
-    /* How high the subtitles are, in percent of the picture */
+    /* How high the subtitles are, in percent of the picture (the callback,
+     * like sub-margin's, only on a real vout: vout_IntfInit) */
     var_Create( p_vout, "sub-position",
                 VLC_VAR_INTEGER | VLC_VAR_DOINHERIT | VLC_VAR_ISCOMMAND );
-    var_AddCallback( p_vout, "sub-position", SubPositionCallback, NULL );
 
     /* Mouse coordinates */
     var_Create( p_vout, "mouse-button-down", VLC_VAR_INTEGER );
@@ -392,6 +392,7 @@ void vout_IntfInit( vout_thread_t *p_vout )
     var_AddCallback( p_vout, "sub-source", SubSourceCallback, NULL );
     var_AddCallback( p_vout, "sub-filter", SubFilterCallback, NULL );
     var_AddCallback( p_vout, "sub-margin", SubMarginCallback, NULL );
+    var_AddCallback( p_vout, "sub-position", SubPositionCallback, NULL );
     var_AddCallback( p_vout, "viewpoint", ViewpointCallback, NULL );
     var_AddCallback( p_vout, "override-projection", OverrideProjectionCallback, NULL );
     var_AddCallback( p_vout, "projection-mode", ChangeProjectionCallback, NULL );

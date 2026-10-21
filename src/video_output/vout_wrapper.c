@@ -73,6 +73,18 @@ vout_display_t *vout_OpenWrapper(vout_thread_t *vout,
         modlist = "splitter,none";
 
     vd = vout_display_New(VLC_OBJECT(vout), fmt, vctx, cfg, modlist, &owner);
+    if (vd == NULL && splitter_name == NULL && modlist[0] != '\0'
+     && strstr(modlist, "any") == NULL && strstr(modlist, "none") == NULL)
+    {
+        /* An output chosen in the preferences that can't show this video
+         * here (e.g. Direct3D9 or OpenGL in an interface that composes the
+         * video with Direct3D11): no picture at all would follow, and the
+         * decoder would ask again for every picture. */
+        msg_Warn(vout, "video output \"%s\" failed, trying the others",
+                 modlist);
+        vd = vout_display_New(VLC_OBJECT(vout), fmt, vctx, cfg, "any",
+                              &owner);
+    }
     free(modlistbuf);
 
     if (vd == NULL)

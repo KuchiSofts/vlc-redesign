@@ -1190,6 +1190,28 @@ vlc_frame_t *decoder_NewAudioBuffer( decoder_t *dec, int samples )
     return frame;
 }
 
+/* Codecs an audio output can take as they are (S/PDIF, HDMI passthrough,
+ * modules/codec/spdif.c): a new output may change how they are decoded */
+static bool CanPassthrough( vlc_fourcc_t codec )
+{
+    switch( codec )
+    {
+        case VLC_CODEC_MPGA:
+        case VLC_CODEC_MP2:
+        case VLC_CODEC_MP3:
+        case VLC_CODEC_A52:
+        case VLC_CODEC_EAC3:
+        case VLC_CODEC_MLP:
+        case VLC_CODEC_TRUEHD:
+        case VLC_CODEC_DTS:
+        case VLC_CODEC_SPDIFL:
+        case VLC_CODEC_SPDIFB:
+            return true;
+        default:
+            return false;
+    }
+}
+
 static void RequestReload( vlc_input_decoder_t *p_owner )
 {
     /* Don't override reload if it's RELOAD_DECODER_AOUT */
@@ -1715,8 +1737,12 @@ static int ModuleThread_PlayAudio( vlc_input_decoder_t *p_owner, vlc_frame_t *p_
     int status = vlc_aout_stream_Play( p_astream, p_audio );
     if( status == AOUT_DEC_CHANGED )
     {
-        /* Only reload the decoder */
-        RequestReload( p_owner );
+        /* Only reload the decoder, for a codec the new output may take as it
+         * is. Any other one decodes the same for every output, and a reload
+         * makes a new output stream again (another gap in the sound, over a
+         * second, when Windows' default device changes). */
+        if( CanPassthrough( p_dec->fmt_in->i_codec ) )
+            RequestReload( p_owner );
     }
     else if( status == AOUT_DEC_FAILED )
     {

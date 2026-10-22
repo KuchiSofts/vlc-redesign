@@ -332,7 +332,9 @@ static void Decoder_PausedForNextFrame(vlc_input_decoder_t *owner)
     assert(owner->cat == VIDEO_ES);
     assert(owner->output_paused);
 
-    if (owner->video.vout == NULL)
+    /* A vout held for the decoder device is not started: nothing would
+     * answer, the next-frame request waits for the first picture */
+    if (owner->video.vout == NULL || !owner->video.started)
         return;
 
     if (likely(owner->frames_countdown <= 0))
@@ -3018,7 +3020,7 @@ void vlc_input_decoder_FrameNext( vlc_input_decoder_t *p_owner )
 
     vlc_fifo_Lock( p_owner->p_fifo );
 
-    if( p_owner->video.vout == NULL )
+    if( p_owner->video.vout == NULL || !p_owner->video.started )
     {
         decoder_Notify( p_owner, frame_next_status, -EBUSY );
         vlc_fifo_Unlock( p_owner->p_fifo );

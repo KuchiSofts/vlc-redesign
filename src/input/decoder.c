@@ -1984,7 +1984,10 @@ static void Decoder_VideoDrained(vlc_input_decoder_t *owner)
              * next queue while draining. This could happen with a burst of
              * next-frame request near EOF. */
             owner->frames_countdown = 0;
-            decoder_Notify(owner, frame_next_status, -EAGAIN);
+            /* not for the picture a seek asked for: no step was asked */
+            if (!owner->frames_countdown_quiet)
+                decoder_Notify(owner, frame_next_status, -EAGAIN);
+            owner->frames_countdown_quiet = false;
         }
     }
     else if(owner->frames_countdown == -1)

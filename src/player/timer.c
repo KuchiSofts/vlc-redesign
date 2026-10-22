@@ -620,7 +620,23 @@ vlc_player_GetTimerPoint(vlc_player_t *player, bool *seeking,
     }
 
     if (player->timer.best_source.point.system_date == VLC_TICK_INVALID)
+    {
+        /* No point since a seek (paused, an audio output sends none, and
+         * the input sends no time): the time asked for, not the one before
+         * the seek */
+        if (timer_seeking
+         && (out_ts == NULL || player->timer.seek_ts != VLC_TICK_INVALID)
+         && (out_pos == NULL || player->timer.seek_position >= 0))
+        {
+            if (out_ts != NULL)
+                *out_ts = player->timer.seek_ts;
+            if (out_pos != NULL)
+                *out_pos = player->timer.seek_position;
+            *seeking = true;
+            ret = VLC_SUCCESS;
+        }
         goto end;
+    }
 
     if (system_now != VLC_TICK_INVALID) /* interpolate */
     {

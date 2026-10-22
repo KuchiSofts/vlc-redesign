@@ -2606,18 +2606,30 @@ static bool Control( input_thread_t *p_input,
 
             /* Back here from a renderer without a demux filter of its own
              * (DLNA): where the device was in the media, read before its
-             * output goes */
+             * output goes. It is a time of the stream: the time of a seek
+             * is less the stream's origin ("normal time": a TS recording,
+             * HLS) and the start time asked for. */
             vlc_tick_t renderer_time = VLC_TICK_INVALID;
             if ( p_item == NULL
               && vlc_renderer_item_demux_filter( p_priv->p_renderer ) == NULL )
             {
                 libvlc_int_t *libvlc = vlc_object_instance( p_input );
+                const vlc_tick_t origin = priv->master->i_normal_time != VLC_TICK_INVALID
+                                        ? priv->master->i_normal_time : VLC_TICK_0;
                 if ( var_Type( libvlc, "renderer-time" ) )
                 {
                     const vlc_tick_t t = var_GetInteger( libvlc, "renderer-time" );
-                    if ( t >= VLC_TICK_0 )
-                        renderer_time = t - VLC_TICK_0;
+                    if ( t >= origin )
+                        renderer_time = t - origin - priv->i_start;
                 }
+                /* not far from where the input read (a wrong measure of the
+                 * device's delay or of the times: no seek, as before) */
+                vlc_tick_t read_at;
+                if ( renderer_time != VLC_TICK_INVALID
+                  && ( renderer_time < 0
+                    || demux_Control( priv->master->p_demux, DEMUX_GET_TIME, &read_at )
+                    || llabs( priv->i_start + renderer_time - read_at ) > VLC_TICK_FROM_SEC(60) ) )
+                    renderer_time = VLC_TICK_INVALID;
             }
 
             vlc_es_id_t **context;

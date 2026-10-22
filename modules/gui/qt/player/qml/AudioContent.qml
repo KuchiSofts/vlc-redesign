@@ -31,6 +31,13 @@ import VLC.Util
 MouseArea {
     id: centerContent
 
+    // the player's menu on a right click, as on a video
+    acceptedButtons: Qt.LeftButton | Qt.RightButton
+    onClicked: (mouse) => {
+        if (mouse.button === Qt.RightButton)
+            playerRoot.showAudioContextMenu(centerContent.mapToGlobal(mouse.x, mouse.y))
+    }
+
     required property Item musicView
     required property Item playerRoot
     required property Item topBarItem

@@ -338,6 +338,14 @@ FocusScope {
 
                     doubleClickEnabled: MainCtx.doubleClickAction !== 0
 
+                    // A visualization of a music file: the audio output made
+                    // its picture, the core gives it no menu: the player's
+                    TapHandler {
+                        acceptedButtons: Qt.RightButton
+                        enabled: Player.videoTracks.count === 0
+                        onTapped: (eventPoint) => rootPlayer.showAudioContextMenu(eventPoint.globalPosition)
+                    }
+
                     // "Fullscreen controls sensitivity": in fullscreen, the
                     // controls show once the mouse moved that many pixels
                     property point lastMove: Qt.point(-1, -1)
@@ -771,6 +779,25 @@ FocusScope {
         }
     }
 
+    // A visualization of a music file plays in the video layout, without the
+    // music view's buttons: its own button stays, to change it or turn it off
+    Widgets.IconToolButton {
+        id: visualizerButton
+        visible: MainCtx.hasEmbededVideo && Player.videoTracks.count === 0
+                 && controlBar.state !== "hidden" && !toggleControlBarButton.visible
+        anchors {
+            bottom: controlBar.top
+            bottomMargin: VLCStyle.margin_small
+            horizontalCenter: parent.horizontalCenter
+        }
+        text: VLCIcons.visualization
+        font.pixelSize: VLCStyle.icon_audioPlayerButton
+        description: qsTr("Visualizer")
+        onClicked: DialogsProvider.audioVisualizationDialog()
+
+        AccessibleCompat.id: "videoVisualizationButton"
+    }
+
     Widgets.FloatingNotification {
         id: notif
 
@@ -1102,6 +1129,12 @@ FocusScope {
         id: audioContextMenu
 
         ctx: MainCtx
+    }
+
+    // The menu of a right click on the music view (AudioContent asks for it:
+    // the handler below didn't get the clicks there)
+    function showAudioContextMenu(globalPoint) {
+        audioContextMenu.popup(globalPoint)
     }
 
     TapHandler {

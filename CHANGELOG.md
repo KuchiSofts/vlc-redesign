@@ -28,7 +28,7 @@ Surround sound, memory over long sessions, and the file name of the player bar.
   layout is mixed the same way now, as 5.1 already was.
 - **A file opened from Explorer while VLC played waited its turn**: double-clicking a second video added it to the
   end of the playlist instead of playing it. It plays at once now (in 0.1 s), and the window comes back in front,
-  even minimized.
+  even minimized. Several files selected together played the last one: the first plays now, the others follow.
 - **Opening a file never hangs, and the first one after installing is quick**: a VLC that stopped answering made
   every file opened from Explorer do nothing; the file opens anyway now. Windows checks a new program for up to 10
   seconds the first time it runs, which held the first window after an install or update: the installer has it
@@ -54,7 +54,8 @@ Surround sound, memory over long sessions, and the file name of the player bar.
 - `win_msg`: a file opened from Explorer is played with `vlc_playlist_PlayAt()` (`Start()` went on with the current
   item) and raises the window (`intf-show`). `system_Configure()`: the second instance waits 10 s at most, skips a
   hung window (`IsHungAppWindow()`, `SendMessageTimeout()`) and then opens the file itself; the mutex and window are
-  named "VLC Redesign ipc", an official VLC 4 took the files.
+  named "VLC Redesign ipc", an official VLC 4 took the files. Files that arrive within 0.8 s of the previous ones
+  (Explorer starts one VLC per selected file; they arrive 10–20 ms apart) are queued.
 - Preparser: the pool thread spawns `vlc-preparser`, not `Submit()`, which runs with the playlist locked (0.5–10 s
   measured for a never-seen executable). The installer runs `vlc.exe --version` and `vlc-preparser.exe --help` once.
 - `trivial` channel mixer: a rear centre goes to the rear left and right of an output that has no rear centre.

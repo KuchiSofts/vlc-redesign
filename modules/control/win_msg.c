@@ -43,6 +43,8 @@ struct intf_sys_t
 };
 
 /* Must be same as in src/win32/specific.c */
+#define VLC_IPC_NAME L"VLC Redesign ipc " TEXT(VERSION)
+
 typedef struct
 {
     int argc;
@@ -62,9 +64,11 @@ static void add_to_playlist(intf_thread_t *intf, const char *uri,
     input_item_AddOptions(media, options_count, options, VLC_INPUT_OPTION_TRUSTED);
 
     vlc_playlist_Lock(playlist);
-    vlc_playlist_AppendOne(playlist, media);
-    if (play_now)
-        vlc_playlist_Start(playlist);
+    /* Play the new one: Start() only went on with the current item, so a
+     * file opened from Explorer waited for the end of the playlist */
+    size_t index = vlc_playlist_Count(playlist);
+    if (vlc_playlist_AppendOne(playlist, media) == VLC_SUCCESS && play_now)
+        vlc_playlist_PlayAt(playlist, index);
     vlc_playlist_Unlock(playlist);
     input_item_Release(media);
 }
@@ -127,6 +131,11 @@ static LRESULT CALLBACK WMCOPYWNDPROC(HWND hwnd, UINT uMsg,
             }
 
             free( ppsz_argv );
+
+            /* A file to play now: show the window, even minimized or behind
+             * others (the sender allowed it to come to the front) */
+            if( i_argc > 0 && !p_data->enqueue )
+                var_TriggerCallback( vlc_object_instance(intf), "intf-show" );
         }
     }
 
@@ -142,7 +151,7 @@ static void *HelperThread(void *data)
 
     HWND ipcwindow =
         CreateWindow(L"STATIC",                      /* name of window class */
-                  L"VLC ipc " TEXT(VERSION),        /* window title bar text */
+                  VLC_IPC_NAME,                     /* window title bar text */
                   0,                                         /* window style */
                   0,                                 /* default X coordinate */
                   0,                                 /* default Y coordinate */

@@ -23,9 +23,20 @@ Widgets.RedesignDialog {
     objectName: "networkStreamDialog"
 
     // One link per line; spaces also separate links
-    readonly property var urls: urlField.text.split(/\s+/).filter(url => url.length > 0)
-                                                          .map(url => root.withScheme(url))
+    readonly property var _words: urlField.text.split(/\s+/).filter(url => url.length > 0)
+    readonly property var urls: _words.map(url => root.withScheme(url))
+    // What is neither a link nor a path ("my favourite channel" typed in the
+    // links): not opened, nor added to the library as media
+    readonly property var notLinks: _words.filter(word => !root.isLink(word))
     readonly property bool canSavePlaylist: MainCtx.mediaLibraryAvailable
+
+    // A scheme ("http:", "rtsp:", "magnet:", a drive "C:"), a path, or a
+    // host as withScheme() takes it
+    function isLink(text) {
+        return /^[A-Za-z][A-Za-z0-9+.-]*:/.test(text)
+            || /^[\/\\~.]/.test(text)
+            || /^(\[[0-9A-Fa-f:.]+\]|localhost|[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)+)(:\d+)?([\/?#].*)?$/.test(text)
+    }
 
     // A link typed without its scheme ("example.com/live.m3u8") names a
     // host, not a file of the computer: https, or http for an address,
@@ -51,7 +62,7 @@ Widgets.RedesignDialog {
     bodyHeight: VLCStyle.dp(509, VLCStyle.scale)
     // Opens the links, saved as a playlist when named (Figma: "Save")
     acceptText: qsTr("Save")
-    acceptEnabled: urls.length > 0
+    acceptEnabled: urls.length > 0 && notLinks.length === 0
                    && (nameField.text.trim() === "" || (canSavePlaylist && !playlistModel.transactionPending))
 
     // Figma 6216:13614 opens with no field focused (no caret)
@@ -75,7 +86,9 @@ Widgets.RedesignDialog {
 
     Widgets.RedesignDialogHeading {
         text: qsTr("Network URL")
-        description: qsTr("You can enter multiple links to load.")
+        description: root.notLinks.length > 0
+                     ? qsTr("“%1” is not a link: links start with http://, rtsp://… or a site's address.").arg(root.notLinks[0])
+                     : qsTr("You can enter multiple links to load.")
     }
 
     Widgets.RedesignTextArea {

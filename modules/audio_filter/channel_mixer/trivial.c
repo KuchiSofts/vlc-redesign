@@ -276,6 +276,15 @@ static int Create( vlc_object_t *p_this )
                 assert( pi_vlc_chan_order_wg4[i - 2] & AOUT_CHANS_MIDDLE );
                 channel_map[i_dst_idx] = src_chans[i - 2];
             }
+            else if( ( i_chan & AOUT_CHANS_REAR )
+                  && ( i_in_physical_channels & AOUT_CHAN_REARCENTER )
+                  && !( i_out_physical_channels & AOUT_CHAN_REARCENTER ) )
+            {
+                /* Play the rear center on both rear chans: 6.1 on a 7.1
+                 * device lost it */
+                assert( pi_vlc_chan_order_wg4[6] == AOUT_CHAN_REARCENTER );
+                channel_map[i_dst_idx] = src_chans[6];
+            }
             else
                 channel_map[i_dst_idx] = -1;
         }

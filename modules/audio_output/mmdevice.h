@@ -210,6 +210,7 @@ void *aout_stream_owner_New(audio_output_t *aout, size_t size,
 static inline
 void aout_stream_owner_Delete(struct aout_stream_owner *owner)
 {
+    block_ChainRelease(owner->chain);
     CloseHandle(owner->buffer_ready_event);
     vlc_object_delete(&owner->s);
 }

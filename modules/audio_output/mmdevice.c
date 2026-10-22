@@ -103,6 +103,11 @@ typedef struct
     atomic_bool default_device_changed;
     atomic_bool session_volume_changed; /**< Flag to check if session volume/mute changed */
     HANDLE work_event;
+    /* The audio the stream had queued (dated), kept by Stop() for the next
+     * Start() of a restart (another device), with the format it is in */
+    block_t *carried;
+    audio_sample_format_t carried_fmt;
+    audio_sample_format_t stream_fmt;
     vlc_sem_t init_passed;
     vlc_mutex_t lock;
     vlc_cond_t ready;
@@ -1310,12 +1315,40 @@ static int Start(audio_output_t *aout, audio_sample_format_t *restrict fmt)
         return -1;
     }
 
+    /* A restart for another device: the audio queued for the previous output
+     * goes on here when it is in the same format (it was dropped, a gap of
+     * over a second, and leaked: megabytes at every switch) */
+    if (sys->carried != NULL)
+    {
+        const audio_sample_format_t *old = &sys->carried_fmt;
+        if (var_GetBool(aout, "aout-restarting")
+         && old->i_format == fmt->i_format && old->i_rate == fmt->i_rate
+         && old->i_physical_channels == fmt->i_physical_channels
+         && old->i_chan_mode == fmt->i_chan_mode
+         && old->channel_type == fmt->channel_type
+         && old->i_bytes_per_frame == fmt->i_bytes_per_frame
+         && old->i_frame_length == fmt->i_frame_length)
+        {
+            owner->chain = sys->carried;
+            owner->last = &owner->chain;
+            while (*owner->last != NULL)
+                owner->last = &(*owner->last)->p_next;
+        }
+        else
+            block_ChainRelease(sys->carried);
+        sys->carried = NULL;
+    }
+    sys->stream_fmt = *fmt;
+
     assert (sys->stream == NULL);
     sys->stream = owner;
 
     vlc_mutex_unlock(&sys->lock);
     LeaveMTA();
 
+    /* (the session thread plays what was carried over) */
+    if (owner->chain != NULL)
+        SetEvent(sys->work_event);
     aout_GainRequest(aout, sys->gain);
     return 0;
 }
@@ -1335,8 +1368,21 @@ static void Stop(audio_output_t *aout)
     vlc_mutex_lock(&sys->lock);
     aout_stream_owner_Stop(owner);
     sys->stream = NULL;
+    /* not played yet: for the next output of a restart, freed otherwise */
+    block_t *queued = owner->chain;
+    owner->chain = NULL;
+    owner->last = &owner->chain;
+    block_ChainRelease(sys->carried);
+    sys->carried = NULL;
+    if (queued != NULL && var_GetBool(aout, "aout-restarting"))
+    {
+        sys->carried = queued;
+        sys->carried_fmt = sys->stream_fmt;
+        queued = NULL;
+    }
     vlc_mutex_unlock(&sys->lock);
     LeaveMTA();
+    block_ChainRelease(queued);
 
     /* (it may be waiting for the stream's event, which goes now) */
     SetEvent(sys->work_event);
@@ -1356,6 +1402,7 @@ static int Open(vlc_object_t *obj)
 
     aout->sys = sys;
     sys->stream = NULL;
+    sys->carried = NULL;
     sys->aout = aout;
     sys->it = NULL;
     sys->dev = NULL;
@@ -1449,6 +1496,7 @@ static void Close(vlc_object_t *obj)
     vlc_join(sys->thread, NULL);
     CloseHandle(sys->work_event);
 
+    block_ChainRelease(sys->carried);
     free(sys);
 }
 

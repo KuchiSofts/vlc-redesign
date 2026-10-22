@@ -278,7 +278,11 @@ static void stream_ResetTimings(vlc_aout_stream *stream)
     stream->timing.played_samples = 0;
 }
 
-static void stream_Reset(vlc_aout_stream *stream)
+/* keep_clock: a new output for the same playback (another device, Windows'
+ * default device changed): the time goes on. A reset of the clock dated the
+ * audio of the new output as at a start, a buffering later, while the video
+ * went on: over a second of sound was skipped. */
+static void stream_Reset(vlc_aout_stream *stream, bool keep_clock)
 {
     aout_owner_t *owner = aout_stream_owner(stream);
 
@@ -293,13 +297,16 @@ static void stream_Reset(vlc_aout_stream *stream)
         }
         stream->sync.resamp_type = AOUT_RESAMPLING_NONE;
 
-        vlc_clock_Lock(stream->sync.clock);
-        vlc_clock_Reset(stream->sync.clock);
-        vlc_clock_Unlock(stream->sync.clock);
-        if (stream->filters)
-            aout_FiltersResetClock(stream->filters);
+        if (!keep_clock)
+        {
+            vlc_clock_Lock(stream->sync.clock);
+            vlc_clock_Reset(stream->sync.clock);
+            vlc_clock_Unlock(stream->sync.clock);
+            if (stream->filters)
+                aout_FiltersResetClock(stream->filters);
+        }
 
-        if (stream->sync.delay > 0)
+        if (stream->sync.delay > 0 && !keep_clock)
         {
             /* Also reset the delay in case of a positive delay. This will
              * trigger a silence playback before the next play. Consequently,
@@ -491,16 +498,18 @@ static int stream_CheckReady (vlc_aout_stream *stream)
                 vlc_tracer_TraceEvent(tracer, "RENDER", stream->str_id, "restart");
 
             msg_Dbg (aout, "restarting output...");
+            var_SetBool (aout, "aout-restarting", true);
             if (stream->mixer_format.i_format)
                 aout_OutputDelete (aout);
             stream->filter_format = stream->mixer_format = stream->input_format;
             stream->filters_cfg = AOUT_FILTERS_CFG_INIT;
 
-            stream_Reset(stream);
+            stream_Reset(stream, true);
 
             if (aout_OutputNew(aout, stream, &stream->mixer_format, stream->input_profile,
                                &stream->filter_format, &stream->filters_cfg))
                 stream->mixer_format.i_format = 0;
+            var_SetBool (aout, "aout-restarting", false);
             if (stream->volume != NULL)
                 aout_volume_SetFormat(stream->volume,
                                       stream->mixer_format.i_format);
@@ -1000,7 +1009,7 @@ void vlc_aout_stream_Flush(vlc_aout_stream *stream)
 
     if (stream->mixer_format.i_format)
         aout->flush(aout);
-    stream_Reset(stream);
+    stream_Reset(stream, false);
 }
 
 void vlc_aout_stream_NotifyGain(vlc_aout_stream *stream, float gain)

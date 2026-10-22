@@ -72,6 +72,12 @@ OutputBaseFilename=vlc-redesign-{#AppVersion}-win64-setup
 SetupIconFile=art\setup.ico
 Compression=lzma2/ultra64
 SolidCompression=yes
+; The files keep the times they have in the package, in any time zone: VLC
+; trusts the plugin cache of the package (plugins\plugins.dat) only for
+; plugins of the same time and size. With local times (the default) the cache
+; was stale away from the time zone of the release, and making it again here
+; (vlc-cache-gen, which loads every plugin) could hang the setup.
+TimeStampsInUTC=yes
 ChangesAssociations=yes
 ; We close VLC ourselves (and reopen it), not through the Restart Manager
 CloseApplications=no
@@ -198,8 +204,6 @@ en.StillRunning={#AppName} didn't close. Close it and click Retry.
 he.StillRunning={#AppName} לא נסגר. סגור אותו ולחץ על "נסה שוב".
 en.RemoveData=Also delete your {#AppName} settings, library and history?
 he.RemoveData=למחוק גם את ההגדרות, הספרייה וההיסטוריה של {#AppName}?
-en.Optimising=Preparing {#AppName} for a fast start...
-he.Optimising=מכין את {#AppName} להפעלה מהירה...
 en.ShortcutComment=VLC media player with the interface designed by Juxtopposed
 he.ShortcutComment=נגן VLC עם הממשק שעיצבה Juxtopposed
 
@@ -243,8 +247,6 @@ Name: "{autoprograms}\{#AppName}"; Filename: "{app}\vlc.exe"; Comment: "{cm:Shor
 Name: "{autodesktop}\{#AppName}"; Filename: "{app}\vlc.exe"; Comment: "{cm:ShortcutComment}"; Check: WantDesktopIcon
 
 [Run]
-; A fresh plugin cache for these files: VLC then starts without scanning
-Filename: "{app}\vlc-cache-gen.exe"; Parameters: """{app}\plugins"""; Flags: runhidden waituntilterminated; StatusMsg: "{cm:Optimising}"
 ; Reopen VLC as it was (update or running instance); otherwise the last
 ; page's "Open VLC Redesign now" does (CurStepChanged)
 Filename: "{app}\vlc.exe"; Parameters: "{code:RelaunchArgs}"; Flags: nowait; Check: ShouldRelaunch

@@ -2604,6 +2604,22 @@ static bool Control( input_thread_t *p_input,
             if ( p_item == NULL && p_priv->p_renderer == NULL )
                 break;
 
+            /* Back here from a renderer without a demux filter of its own
+             * (DLNA): where the device was in the media, read before its
+             * output goes */
+            vlc_tick_t renderer_time = VLC_TICK_INVALID;
+            if ( p_item == NULL
+              && vlc_renderer_item_demux_filter( p_priv->p_renderer ) == NULL )
+            {
+                libvlc_int_t *libvlc = vlc_object_instance( p_input );
+                if ( var_Type( libvlc, "renderer-time" ) )
+                {
+                    const vlc_tick_t t = var_GetInteger( libvlc, "renderer-time" );
+                    if ( t >= VLC_TICK_0 )
+                        renderer_time = t - VLC_TICK_0;
+                }
+            }
+
             vlc_es_id_t **context;
             if( es_out_StopAllEs( priv->p_es_out_display, &context ) != VLC_SUCCESS )
                 break;
@@ -2634,6 +2650,22 @@ static bool Control( input_thread_t *p_input,
             if( priv->i_slave > 0 )
                 SlaveSeek( p_input );
             es_out_StartAllEs( priv->p_es_out_display, context );
+
+            /* The media goes on here where the device was, decoded from the
+             * key frame before it: from where the input read, in the middle
+             * of a group of pictures, the pictures were broken (blocks,
+             * flicker) until the next key frame */
+            if ( renderer_time != VLC_TICK_INVALID && priv->master->b_can_seek
+              && !priv->b_recording )
+            {
+                es_out_Control( &priv->p_es_out->out, ES_OUT_RESET_PCR );
+                ResetFramePrevious( p_input );
+                priv->next_frame_need_data = false;
+                if ( ControlSetTime( p_input, renderer_time, false ) == VLC_SUCCESS )
+                    b_force_update = true;
+                else
+                    msg_Warn( p_input, "cannot go back where the renderer was" );
+            }
             break;
         }
         case INPUT_CONTROL_SET_VBI_PAGE:

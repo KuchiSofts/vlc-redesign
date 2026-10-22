@@ -27,11 +27,13 @@
 # include "config.h"
 #endif
 
+#include <algorithm>
 #include <cassert>
 #include <map>
 #include <sstream>
 
 #include <vlc_codec.h>
+#include <vlc_cpu.h>
 #include <vlc_modules.h>
 
 #include "renderer_common.hpp"
@@ -304,8 +306,14 @@ std::string GetVencX264Option( sout_stream_t * /* p_stream */,
     const bool b_hdres = p_vid->i_height == 0 || p_vid->i_height >= 800;
     unsigned i_video_x264_crf = b_hdres ? i_video_x264_crf_hd : i_video_x264_crf_720p;
 
+    /* x264 makes 1.5 frame threads per processor, each with its pictures:
+     * 48 of them took 1.2 GB on 32 processors. Eight keep up with a stream
+     * in real time and take a third of it. */
+    const unsigned i_threads = std::min( 8u, std::max( 1u, vlc_GetCPUCount() * 3 / 2 ) );
+
     ssout << "venc=x264{preset=" << psz_video_x264_preset
-          << ",crf=" << i_video_x264_crf << "}";
+          << ",crf=" << i_video_x264_crf
+          << ",options={threads=" << i_threads << "}}";
     return ssout.str();
 }
 

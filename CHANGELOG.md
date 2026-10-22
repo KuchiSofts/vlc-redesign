@@ -37,6 +37,9 @@ Memory over long sessions, and the file name of the player bar.
 - `PlayerController::UpdateName` emitted `nameChanged` before storing the name, and QML reads the property again when
   the signal comes. `UpdateMeta` clears the meta when the media has none yet, and meta changes of a media that is no
   longer current are ignored.
+- Windows sockets: `recvfrom`, `sendto`, `send` and `accept` set `errno` when they fail (`EAGAIN` or the Winsock
+  code). It kept the thread's previous value: logs said "read error: No error", and a stale `EAGAIN` or `EINTR` made
+  `net_Read()` or the file output retry a dead socket forever.
 
 ## [0.2.6] · 2026-10-22
 

@@ -212,7 +212,7 @@ struct demux_cc
             return -1;
     }
 
-    void seekBack( vlc_tick_t time, double pos )
+    void seekBack( vlc_tick_t time, double pos, bool precise = false )
     {
         es_out_Control( p_demux->s->out, ES_OUT_RESET_PCR );
 
@@ -220,10 +220,10 @@ struct demux_cc
         {
             int ret = VLC_EGENERIC;
             if( time >= 0 )
-                ret = demux_Control( p_demux->s, DEMUX_SET_TIME, time, false );
+                ret = demux_Control( p_demux->s, DEMUX_SET_TIME, time, precise );
 
             if( ret != VLC_SUCCESS && pos >= 0 )
-                demux_SetPosition( p_demux->s, pos, false );
+                demux_SetPosition( p_demux->s, pos, precise );
         }
     }
 
@@ -404,8 +404,10 @@ struct demux_cc
 
             /* Seek back to last known position. Indeed we don't want to resume
              * from the input position that can be more than 1 minutes forward
-             * (depending on the CC buffering policy). */
-            seekBack(m_last_time, m_last_pos);
+             * (depending on the CC buffering policy). Precisely: played here,
+             * it goes on where the device was, not from the key frame before
+             * (a second back, the picture shown while paused too). */
+            seekBack(m_last_time, m_last_pos, true);
 
             m_enabled = false;
             p_renderer = NULL;

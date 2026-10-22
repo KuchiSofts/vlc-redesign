@@ -47,6 +47,8 @@ public:
     bool metadataNetworkAccess() const;
 
     Q_INVOKABLE bool begin();
+    // something to play already (VLC opened with a file)
+    Q_INVOKABLE bool playlistHasMedia() const;
     Q_INVOKABLE bool previewTheme(int index);
     Q_INVOKABLE bool cancel();
     Q_INVOKABLE bool acceptTheme();

@@ -16,7 +16,14 @@ Item {
         id: setupState
         ctx: MainCtx
         onNeedsSetupChanged: if (needsSetup && (!setup.item || !setup.item.visible))
-                                 Qt.callLater(() => root.show(setup))
+                                 Qt.callLater(root.showSetupOnStart)
+    }
+    // VLC opened to play something (a file opened from Explorer): the film
+    // first, the welcome the next time VLC opens without one (it covered
+    // the picture of the first file played)
+    function showSetupOnStart() {
+        if (!setupState.playlistHasMedia())
+            root.show(setup)
     }
     // centred on whole pixels: the text stays crisp
     function centeredX(width) { return Math.round((root.width - width) / 2) }
@@ -35,7 +42,7 @@ Item {
                 loader.active = false
         })
     }
-    Component.onCompleted: if (setupState.needsSetup) Qt.callLater(() => show(setup))
+    Component.onCompleted: if (setupState.needsSetup) Qt.callLater(root.showSetupOnStart)
     Connections {
         target: DialogsProvider
         function onPreferencesRequested() { root.show(preferences) }

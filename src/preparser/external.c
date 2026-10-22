@@ -538,21 +538,18 @@ preparser_pool_QueueTake(struct preparser_process_pool *pool)
     return task;
 }
 
-static int
-preparser_pool_SpawnProcess(struct preparser_process_thread *thread)
+/* The timeout and types of a pool do not change: no lock needed */
+static struct vlc_process *
+preparser_pool_NewProcess(struct preparser_process_pool *pool)
 {
-    assert(thread != NULL);
-    vlc_mutex_assert(&thread->owner->lock);
-    struct preparser_process_pool *pool = thread->owner;
-
     char *str_timeout = NULL;
     if (asprintf(&str_timeout, "%" PRId64, pool->timeout) < 0) {
-        return VLC_ENOMEM;
+        return NULL;
     }
     char *str_types = NULL;
     if (asprintf(&str_types, "%" PRId32, pool->types) < 0) {
         free(str_timeout);
-        return VLC_ENOMEM;
+        return NULL;
     }
 
     const char *argv[] = {
@@ -585,7 +582,7 @@ preparser_pool_SpawnProcess(struct preparser_process_thread *thread)
                          lib_path, static_name) < 0) {
                 free(str_timeout);
                 free(str_types);
-                return VLC_ENOMEM;
+                return NULL;
             }
         }
     }
@@ -595,19 +592,26 @@ preparser_pool_SpawnProcess(struct preparser_process_thread *thread)
         path = config_GetSysPath(VLC_PKG_LIBEXEC_DIR, name);
     }
 
+    struct vlc_process *process;
     if (path == NULL) {
-        thread->process = vlc_process_Spawn(name, argc, argv);
+        process = vlc_process_Spawn(name, argc, argv);
     } else {
-        thread->process = vlc_process_Spawn(path, argc, argv);
+        process = vlc_process_Spawn(path, argc, argv);
     }
     free(path);
     free(str_timeout);
     free(str_types);
+    return process;
+}
 
-    if (thread->process == NULL) {
-        return VLC_EGENERIC;
-    }
-    return VLC_SUCCESS;
+static int
+preparser_pool_SpawnProcess(struct preparser_process_thread *thread)
+{
+    assert(thread != NULL);
+    vlc_mutex_assert(&thread->owner->lock);
+
+    thread->process = preparser_pool_NewProcess(thread->owner);
+    return thread->process != NULL ? VLC_SUCCESS : VLC_EGENERIC;
 }
 
 /**
@@ -621,12 +625,35 @@ preparser_pool_Run(void *data)
     struct preparser_process_thread *thread = data;
     assert(thread != NULL);
     assert(thread->owner != NULL);
-    assert(thread->process != NULL);
+    assert(thread->process == NULL);
 
     vlc_thread_set_name("vlc-pool-runner");
 
+    /* The first process is made here, not in Submit(): creating it can take
+     * seconds the first time a new vlc-preparser runs (an antivirus checks
+     * it), and Submit() is called with the playlist locked, which held the
+     * interface and the playback of a file opened from Explorer. */
+    struct vlc_process *process = preparser_pool_NewProcess(thread->owner);
 
     vlc_mutex_lock(&thread->owner->lock);
+    thread->process = process;
+    if (process == NULL) {
+        msg_Err(thread->owner->parent, "Fail to create Process in process_pool");
+        /* Submit() succeeded for them: the last thread fails them, rather
+         * than leaving them waiting for a process that won't come */
+        if (thread->owner->nthreads == 1) {
+            struct preparser_task *queued;
+            vlc_list_foreach(queued, &thread->owner->queue, node) {
+                vlc_list_remove(&queued->node);
+                --thread->owner->unfinished;
+                preparser_task_ExecCallback(queued, -ENOENT);
+                preparser_task_req_Release(&queued->req);
+            }
+        }
+        goto end;
+    }
+    thread->process_running = true;
+
     struct preparser_task *task = NULL;
     while ((task = preparser_pool_QueueTake(thread->owner))) {
         thread->task = task;
@@ -706,17 +733,12 @@ preparser_pool_SpawnThreadLocked(struct preparser_process_pool *pool)
         return VLC_EGENERIC;
     }
 
-    if (preparser_pool_SpawnProcess(thread) != VLC_SUCCESS) {
-        msg_Err(pool->parent, "Fail to create Process in process_pool");
-        vlc_preparser_msg_serdes_Delete(thread->serdes);
-        free(thread);
-        return VLC_EGENERIC;
-    }
-    thread->process_running = true;
+    /* the thread makes its process (see preparser_pool_Run()) */
+    thread->process = NULL;
+    thread->process_running = false;
 
     int ret = vlc_clone(&thread->thread, preparser_pool_Run, thread);
     if (ret != 0) {
-        vlc_process_Terminate(thread->process, false);
         vlc_preparser_msg_serdes_Delete(thread->serdes);
         free(thread);
         return VLC_EGENERIC;

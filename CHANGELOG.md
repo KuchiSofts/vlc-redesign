@@ -7,11 +7,40 @@ For changes to VLC itself, see [NEWS](NEWS).
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
 what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `942cdaea17` (2026-10-19).
 
-**Contents:** [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
 
 ---
+
+## [0.2.5] · 2026-10-22
+
+Switching the sound to other speakers or headphones while playing is now seamless, and VLC Redesign starts in
+English. The first small update: from 0.2.4 it downloads only what changed.
+
+### Fixed
+
+- **Changing Windows' default sound device while playing** ([#3](https://github.com/KuchiSofts/vlc-redesign/issues/3)):
+  - VLC Redesign could close by itself after a few switches, or when the device changed while paused (0.2.3; 0.2.4
+    already holds).
+  - Every switch kept the second of sound decoded ahead for the previous device, never freed: up to 9 MB each time
+    (with a 7.1 device). That sound is now played on the new device.
+  - So there's no more gap of over a second at every switch: the sound goes on after a fifth of a second, still in
+    sync with the picture. Choosing another device in VLC Redesign's own menu is as smooth.
+- **English by default**: VLC Redesign and its installer start in English until you choose a language in Settings,
+  whatever the language of Windows (they took it from Windows, or from an installed VLC). *Reset all* comes back to
+  English.
+
+### Technical
+
+- `modules/audio_output/mmdevice.c`: `Stop()` no longer drops the stream's queued blocks (never freed); during an
+  output restart (`aout-restarting`, set by the core around it) they go to the next `Start()` when the format is the
+  same, and are freed otherwise. `src/audio_output/dec.c` keeps the clock across an output restart (only a flush
+  resets it), so their dates stay right.
+- `src/input/decoder.c` reloads an audio decoder for a new output only for the codecs that can be passed through
+  (MPEG audio, AC-3, E-AC-3, DTS, TrueHD, MLP): for any other one the reload restarted the output a second time.
+- `bin/winvlc.c` and `interfaceLanguage()`: `portable\language` missing means English; the installer has
+  `LanguageDetectionMethod=none`.
 
 ## [0.2.4] · 2026-10-22
 

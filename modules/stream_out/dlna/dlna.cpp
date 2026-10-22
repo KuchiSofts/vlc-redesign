@@ -28,6 +28,7 @@
 #include "dlna.hpp"
 
 #include <algorithm>
+#include <atomic>
 #include <deque>
 #include <vector>
 #include <string>
@@ -316,6 +317,16 @@ struct sout_stream_sys_t
     unsigned                            stopped_checks = 0;
     unsigned                            failed_checks = 0;
     bool                                unreachable = false;
+    /* The stream copied as it was and the device did not read it (a profile,
+     * a level or a container it does not take): converted once, to the
+     * profile every renderer plays, before saying it failed. The request
+     * comes from the control thread (ctl_lock), the chain is made again on
+     * the input's (Send). */
+    std::atomic<bool>                   fallback_request { false };
+    bool                                force_transcode = false;
+    /* (ctl_lock) the running stream copies a track as it is: converting it
+     * may help */
+    bool                                copies_as_is = false;
     vlc_object_t                        *libvlc = nullptr;
 
 private:
@@ -593,6 +604,29 @@ int sout_stream_sys_t::UpdateOutput( sout_stream_t *p_stream )
         canRemux = false;
     }
 
+    /* the device did not read it as it was: converted, as with a subtitle */
+    if (force_transcode)
+    {
+        if (p_original_video)
+        {
+            stream_protocol = make_protocol(transcode_video_protocol);
+            i_codec_video = 0;
+            if (p_original_audio && p_original_audio->i_codec != stream_protocol->profile.audio_codec)
+                i_codec_audio = 0;
+        }
+        else
+        {
+            stream_protocol = make_protocol(default_audio_protocol);
+            i_codec_audio = 0;
+        }
+        canRemux = false;
+    }
+    {
+        const bool copies = p_original_video ? i_codec_video != 0 : i_codec_audio != 0;
+        vlc::threads::mutex_locker locker( ctl_lock );
+        copies_as_is = copies;
+    }
+
     msg_Dbg( p_stream, "using DLNA profile %s:%s",
                 stream_protocol->profile.mime.c_str(),
                 stream_protocol->profile.name.c_str() );
@@ -814,6 +848,19 @@ void sout_stream_sys_t::Report( int new_status, const char *error )
  * try again or to play here. ctl_lock held. */
 void sout_stream_sys_t::Fail( sout_stream_t *p_stream, const char *error, int code )
 {
+    /* a track copied as it was, not read: converted once first (the
+     * device may not take its profile or its container) */
+    if ( copies_as_is && !force_transcode && !fallback_request
+      && ( !strcmp( error, "unreadable" ) || !strcmp( error, "refused" ) ) )
+    {
+        msg_Warn( p_stream, "the renderer does not read the stream as it is (%s, %d): "
+                  "converting it", error, code );
+        playing = false;
+        check_at = VLC_TICK_INVALID;
+        copies_as_is = false;
+        fallback_request = true;
+        return;
+    }
     msg_Warn( p_stream, "the renderer does not play: %s (%d)", error, code );
     playing = false;
     check_at = VLC_TICK_INVALID;
@@ -2091,6 +2138,13 @@ static int Send(sout_stream_t *p_stream, void *id,
             sout_StreamChainDelete( p_sys->p_ended, nullptr );
             p_sys->p_ended = nullptr;
         }
+    }
+
+    /* converted, the device not reading it as it was (Fail) */
+    if ( p_sys->fallback_request.exchange( false ) )
+    {
+        p_sys->force_transcode = true;
+        p_sys->es_changed = true;
     }
 
     /* the chain for the tracks there are now (the first one once they stay

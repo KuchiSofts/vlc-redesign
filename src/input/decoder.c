@@ -2084,10 +2084,14 @@ static void *DecoderThread( void *p_data )
                 p_owner->b_idle = true;
                 vlc_cond_signal( &p_owner->wait_acknowledge );
 
-                if (p_owner->frames_countdown > 0)
+                if (p_owner->frames_countdown > 0 && p_owner->cat == VIDEO_ES)
                 {
                     /* next-frames are requested but the FIFO is empty, ask for
-                     * more buffering */
+                     * more buffering. Not for a subtitle (one shown after a
+                     * seek while paused): the next one can be far, the input
+                     * read on until it, paused, filling the other FIFOs (and
+                     * a previous-frame step, flushing them on play, jumped
+                     * there). */
                     decoder_Notify( p_owner, frame_next_need_data, true );
                 }
                 vlc_fifo_Wait( p_owner->p_fifo );
@@ -2729,7 +2733,8 @@ void vlc_input_decoder_DecodeWithStatus(vlc_input_decoder_t *p_owner, vlc_frame_
             vlc_fifo_WaitCond( p_owner->p_fifo, &p_owner->wait_fifo );
     }
 
-    if (vlc_fifo_IsEmpty(p_owner->p_fifo) && p_owner->frames_countdown > 0)
+    if (vlc_fifo_IsEmpty(p_owner->p_fifo) && p_owner->frames_countdown > 0
+     && p_owner->cat == VIDEO_ES)
         decoder_Notify(p_owner, frame_next_need_data, false);
 
     vlc_fifo_QueueUnlocked( p_owner->p_fifo, frame );

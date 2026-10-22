@@ -631,13 +631,21 @@ int vlc_socketpair(int pf, int type, int proto, int fds[2], bool nonblock)
     return -1;
 }
 
+/* Winsock does not set errno: a stale EAGAIN or EINTR would make callers
+ * retry a failed socket forever. vlc_strerror() knows the Winsock codes. */
+static void vlc_wsa_errno(void)
+{
+    int err = WSAGetLastError();
+    errno = (err == WSAEWOULDBLOCK) ? EAGAIN : err;
+}
+
 int vlc_accept (int lfd, struct sockaddr *addr, socklen_t *alen, bool nonblock)
 {
     int fd = accept (lfd, addr, alen);
     if (fd != -1 && nonblock)
         ioctlsocket (fd, FIONBIO, &(unsigned long){ 1 });
-    else if (fd < 0 && WSAGetLastError() == WSAEWOULDBLOCK)
-        errno = EAGAIN;
+    else if (fd < 0)
+        vlc_wsa_errno();
     return fd;
 }
 
@@ -646,8 +654,12 @@ ssize_t vlc_send(int fd, const void *buf, size_t len, int flags)
     WSABUF wsabuf = { .buf = (char *)buf, .len = len };
     DWORD sent;
 
-    return WSASend(fd, &wsabuf, 1, &sent, flags,
-                   NULL, NULL) ? -1 : (ssize_t)sent;
+    if (WSASend(fd, &wsabuf, 1, &sent, flags, NULL, NULL))
+    {
+        vlc_wsa_errno();
+        return -1;
+    }
+    return sent;
 }
 
 ssize_t vlc_sendto(int fd, const void *buf, size_t len, int flags,
@@ -656,8 +668,12 @@ ssize_t vlc_sendto(int fd, const void *buf, size_t len, int flags,
     WSABUF wsabuf = { .buf = (char *)buf, .len = len };
     DWORD sent;
 
-    return WSASendTo(fd, &wsabuf, 1, &sent, flags, dst, dstlen,
-                     NULL, NULL) ? -1 : (ssize_t)sent;
+    if (WSASendTo(fd, &wsabuf, 1, &sent, flags, dst, dstlen, NULL, NULL))
+    {
+        vlc_wsa_errno();
+        return -1;
+    }
+    return sent;
 }
 
 ssize_t vlc_sendmsg(int fd, const struct msghdr *msg, int flags)

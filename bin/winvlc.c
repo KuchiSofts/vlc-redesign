@@ -196,6 +196,15 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
     if (wargv == NULL)
         return 1;
 
+    /* The installer runs it once so that Windows checks the new program then,
+     * not when the first file is opened: nothing else to do (--version opens
+     * a console and waits for a key) */
+    if (argc == 2 && wcscmp (wargv[1], L"--prewarm") == 0)
+    {
+        LocalFree (wargv);
+        return 0;
+    }
+
     char *argv[argc + 3];
     BOOL crash_handling = TRUE;
     int j = 0;

@@ -594,6 +594,9 @@ Widgets.RedesignDialog {
                     KeyField {
                         objectName: "hotkey_" + shortcutRow.key
                         x: content.hotkeyX
+                        // Tab down the list scrolls it: the row stays in
+                        // sight and the next rows get made
+                        onActiveFocusChanged: if (activeFocus) shortcutList.positionViewAtIndex(shortcutRow.index, ListView.Contain)
                         keyList: shortcutRow.hotkeys
                         accessibleName: qsTr("Hotkey of %1").arg(shortcutRow.label)
                         onAddRequested: root.beginCapture(shortcutRow.key, false, shortcutRow.label)
@@ -602,6 +605,7 @@ Widgets.RedesignDialog {
                     KeyField {
                         objectName: "globalHotkey_" + shortcutRow.key
                         x: content.globalX
+                        onActiveFocusChanged: if (activeFocus) shortcutList.positionViewAtIndex(shortcutRow.index, ListView.Contain)
                         keyList: shortcutRow.globalHotkeys
                         accessibleName: qsTr("Global hotkey of %1").arg(shortcutRow.label)
                         onAddRequested: root.beginCapture(shortcutRow.key, true, shortcutRow.label)

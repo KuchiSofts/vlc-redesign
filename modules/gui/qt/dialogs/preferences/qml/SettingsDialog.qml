@@ -322,6 +322,30 @@ Dialog {
             contentHeight: contentColumn.implicitHeight
             clip: true
             boundsBehavior: Flickable.StopAtBounds
+
+            // The keyboard focus stays in sight: Tab down the page scrolls
+            // to the control that takes it (one partly shown when clicked
+            // is shown whole)
+            readonly property Item focusItem: Window.activeFocusItem
+            onFocusItemChanged: {
+                const item = focusItem
+                let inside = false
+                for (let it = item; it; it = it.parent)
+                    if (it === contentColumn) {
+                        inside = true
+                        break
+                    }
+                if (!inside)
+                    return
+                const top = item.mapToItem(contentColumn, 0, 0).y
+                const margin = root.px(20)
+                const highest = contentHeight + bottomMargin - height
+                if (top - margin < contentY || item.height + 2 * margin > height)
+                    contentY = Math.max(-topMargin, Math.min(highest, top - margin))
+                else if (top + item.height + margin > contentY + height)
+                    contentY = Math.max(-topMargin, Math.min(highest, top + item.height + margin - height))
+            }
+
             ScrollBar.vertical: ScrollBar {
                 parent: contentFlick.parent
                 anchors.top: contentFlick.top

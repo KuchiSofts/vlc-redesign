@@ -35,9 +35,33 @@ Item {
 
     implicitHeight: expanded ? px(489) : px(36)
 
-    // "Open Equalizer" / "Close Equalizer" with the chevron, centred
+    function toggle() {
+        expanded = !expanded
+        // the keyboard focus goes to the header shown now
+        if (openHeader.activeFocus || closeHeader.activeFocus)
+            (expanded ? closeHeader : openHeader).forceActiveFocus(Qt.TabFocusReason)
+    }
+
+    // "Open Equalizer" / "Close Equalizer" with the chevron, centred; Tab
+    // reaches it (the hidden one is skipped), Space or Enter opens or closes
     component Header: Item {
         property alias text: headerText.text
+        activeFocusOnTab: true
+        Keys.onPressed: (event) => {
+            if (event.key === Qt.Key_Space || event.key === Qt.Key_Return
+             || event.key === Qt.Key_Enter) {
+                root.toggle()
+                event.accepted = true
+            }
+        }
+        Rectangle {
+            anchors.fill: parent
+            radius: root.px(2)
+            color: "transparent"
+            visible: parent.activeFocus
+            border.width: 1
+            border.color: VLCStyle.redesign.accent
+        }
         Row {
             anchors.centerIn: parent
             spacing: root.px(10)
@@ -57,7 +81,7 @@ Item {
                 source: "qrc:///redesign/icons/chevron-down/default.png"
             }
         }
-        TapHandler { onTapped: root.expanded = !root.expanded }
+        TapHandler { onTapped: root.toggle() }
         HoverHandler { cursorShape: Qt.PointingHandCursor }
     }
 
@@ -68,6 +92,7 @@ Item {
         radius: root.px(2)
         color: root.c("#090909")
         Header {
+            id: openHeader
             objectName: "settingsOpenEqualizer"
             anchors.fill: parent
             text: qsTr("Open Equalizer")
@@ -84,6 +109,7 @@ Item {
         color: root.c("#191919")
 
         Header {
+            id: closeHeader
             objectName: "settingsCloseEqualizer"
             y: root.px(6)
             width: parent.width
@@ -115,6 +141,23 @@ Item {
                         height: root.px(320)
                         radius: root.px(6)
                         color: root.c("#090909")
+                        // Tab reaches each band: Up and Down move it by
+                        // 0.5 dB (the wheel's step), Page Up and Page Down
+                        // by 5, Home and End to the top and the bottom
+                        activeFocusOnTab: true
+                        border.width: activeFocus ? 1 : 0
+                        border.color: VLCStyle.redesign.accent
+                        Keys.onPressed: (event) => {
+                            const steps = { [Qt.Key_Up]: 0.5, [Qt.Key_Right]: 0.5,
+                                            [Qt.Key_Down]: -0.5, [Qt.Key_Left]: -0.5,
+                                            [Qt.Key_PageUp]: 5, [Qt.Key_PageDown]: -5,
+                                            [Qt.Key_Home]: 40, [Qt.Key_End]: -40 }
+                            const step = steps[event.key]
+                            if (step === undefined)
+                                return
+                            setDb(Math.round(Math.max(-20, Math.min(20, column.value + step)) * 10) / 10)
+                            event.accepted = true
+                        }
                         readonly property real usable: height - root.px(4)
                         readonly property real fraction: (Math.max(-20, Math.min(20, column.value)) + 20) / 40
 
@@ -138,7 +181,9 @@ Item {
 
                         function set(y) {
                             const fraction = 1 - Math.max(0, Math.min(1, (y - root.px(2)) / usable))
-                            const dB = Math.round((fraction * 40 - 20) * 10) / 10
+                            setDb(Math.round((fraction * 40 - 20) * 10) / 10)
+                        }
+                        function setDb(dB) {
                             if (column.index === 0) {
                                 root.preampEdited(dB)
                             } else {

@@ -36,6 +36,18 @@ Rectangle {
         radius: root.px(4)
         color: selected ? root.c(VLCStyle.redesign.accentBackground)
                         : hover.hovered ? root.c("#222222") : root.c("#191919")
+        // reached with Tab (a click gives it no focus), chosen with Space
+        // or Enter
+        activeFocusOnTab: true
+        border.width: activeFocus ? 1 : 0
+        border.color: VLCStyle.redesign.accent
+        Keys.onPressed: (event) => {
+            if (event.key === Qt.Key_Space || event.key === Qt.Key_Return
+             || event.key === Qt.Key_Enter) {
+                picked()
+                event.accepted = true
+            }
+        }
         Text {
             id: label
             x: root.px(12)
@@ -97,11 +109,14 @@ Rectangle {
                     selectionColor: VLCStyle.redesign.accentBackground
                     selectedTextColor: VLCStyle.redesign.accent
                     selectByMouse: true
+                    activeFocusOnTab: true
                     clip: true
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: root.px(14)
                     validator: RegularExpressionValidator { regularExpression: /\d{0,3}\s*%?/ }
-                    onActiveFocusChanged: if (activeFocus) root.chosen(false)
+                    // clicked or typed in, not only passed through with Tab
+                    TapHandler { onTapped: root.chosen(false) }
+                    onTextEdited: root.chosen(false)
                     onEditingFinished: {
                         const percent = parseInt(text)
                         if (!isNaN(percent))

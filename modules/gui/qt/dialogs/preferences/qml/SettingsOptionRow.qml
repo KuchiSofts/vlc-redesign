@@ -454,6 +454,7 @@ Item {
                     selectionColor: VLCStyle.redesign.accentBackground
                     selectedTextColor: VLCStyle.redesign.accent
                     selectByMouse: true
+                    activeFocusOnTab: true
                     clip: true
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: root.px(14)
@@ -493,6 +494,24 @@ Item {
                         color: "transparent"
                         border.width: root.px(1)
                         border.color: Qt.rgba(1, 1, 1, 0.105)
+                    }
+                    // the keyboard focus: a ring 2 px around it
+                    Rectangle {
+                        anchors.fill: parent
+                        anchors.margins: -root.px(2)
+                        radius: parent.radius + root.px(2)
+                        color: "transparent"
+                        visible: parent.activeFocus
+                        border.width: 1
+                        border.color: VLCStyle.redesign.accent
+                    }
+                    activeFocusOnTab: true
+                    Keys.onPressed: (event) => {
+                        if (event.key === Qt.Key_Space || event.key === Qt.Key_Return
+                         || event.key === Qt.Key_Enter) {
+                            root.colorRequested()
+                            event.accepted = true
+                        }
                     }
                     TapHandler { onTapped: root.colorRequested() }
                     HoverHandler { cursorShape: Qt.PointingHandCursor }

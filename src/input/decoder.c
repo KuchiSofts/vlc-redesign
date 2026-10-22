@@ -1033,7 +1033,17 @@ static subpicture_t *ModuleThread_NewSpuBuffer( decoder_t *p_dec,
         if( p_vout )
             break;
 
-        vlc_tick_sleep( DECODER_SPU_VOUT_WAIT_DURATION );
+        /* A flush or the deletion ends the wait: subtitles of an audio file
+         * (no vout ever) held a seek or the quit for seconds */
+        vlc_queue_t *q = vlc_fifo_queue( p_owner->p_fifo );
+        const vlc_tick_t deadline = vlc_tick_now() + DECODER_SPU_VOUT_WAIT_DURATION;
+        vlc_fifo_Lock( p_owner->p_fifo );
+        while( !p_owner->aborting && !p_owner->flushing
+            && vlc_cond_timedwait( &q->wait, &q->lock, deadline ) == 0 );
+        const bool stop = p_owner->aborting || p_owner->flushing;
+        vlc_fifo_Unlock( p_owner->p_fifo );
+        if( stop )
+            break;
     }
 
     if( !p_vout )

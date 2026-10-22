@@ -13,6 +13,31 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ---
 
+## [Unreleased]
+
+Memory over long sessions, and the file name of the player bar.
+
+### Fixed
+
+- **Memory grew with every media change**, about 70 KB each time: over a day of playlists that is hundreds of MB. The
+  interface now stays flat over 400 changes.
+- **The file name in the player bar was one media behind**: it showed the previous file for as long as the next one
+  played. The title, artist and album of a song no longer stay on the next media when it has none.
+- **Starting a video is quicker** when it is decoded by the processor (older formats, or PCs without hardware
+  decoding): the video output keeps its Direct3D device for the next video instead of making a new one each time.
+
+### Technical
+
+- Qt 6.8 `QQuickScrollBar` connects its accessibility actions again on every `QAccessible::setActive(true)`, which
+  Windows triggers through UI Automation all the time: `ScrollBarAccessibilityFix` (MainUI) removes the copies, at
+  most once a second. `ControlRepeater` connected `forceUnlock` without a receiver, so it was never disconnected.
+- `d3d11_fmt`: a device made for an output without a decoder device (default adapter, no decoding) is kept for 5 s
+  after its release and handed to the next one with the same creation flags, unless it was removed. The Direct3D 11
+  output is no longer unloaded, for its timer. NVIDIA's driver kept about 22 KB per device.
+- `PlayerController::UpdateName` emitted `nameChanged` before storing the name, and QML reads the property again when
+  the signal comes. `UpdateMeta` clears the meta when the media has none yet, and meta changes of a media that is no
+  longer current are ignored.
+
 ## [0.2.6] · 2026-10-22
 
 Fixes from [#4](https://github.com/KuchiSofts/vlc-redesign/issues/4): menus that kept old check marks, the

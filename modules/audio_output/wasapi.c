@@ -252,7 +252,10 @@ static HRESULT Play(aout_stream_t *s, block_t *block, vlc_tick_t date)
             goto out;
     }
 
-    if (sys->chans_to_reorder)
+    /* Reorder once: a retry gets the rest of a block already reordered, and
+     * reordering it again (an involution for 5.1 and 7.1) swapped the centre
+     * and LFE with the side or rear channels. */
+    if (sys->chans_to_reorder && date != VLC_TICK_INVALID)
         aout_ChannelReorder(block->p_buffer, block->i_buffer,
                           sys->chans_to_reorder, sys->chans_table, sys->format);
 
@@ -332,6 +335,8 @@ static HRESULT Play(aout_stream_t *s, block_t *block, vlc_tick_t date)
             break; /* done */
 
         block->i_length -= vlc_tick_from_samples(frames, sys->rate);
+        /* the rest starts later: a new stream after a restart starts from it */
+        block->i_pts += vlc_tick_from_samples(frames, sys->rate);
         /* Out of buffer space, keep the block and notify the owner */
         IAudioRenderClient_Release(render);
         return S_FALSE;

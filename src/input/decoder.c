@@ -1564,6 +1564,11 @@ static int ModuleThread_PlayVideo( vlc_input_decoder_t *p_owner, picture_t *p_pi
     if (unlikely(p_owner->output_paused && p_owner->frames_countdown > 0))
     {
         p_owner->frames_countdown--;
+        /* The picture a flush asked for while paused (a seek, a track
+         * started) is shown now: dated by the paused clock, the vout dropped
+         * it as late */
+        if (p_owner->frames_countdown_quiet)
+            p_picture->b_force = true;
         vout_PutPicture(p_vout, p_picture);
         if (!p_owner->frames_countdown_quiet)
             decoder_Notify(p_owner, frame_next_status, 0);

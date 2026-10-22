@@ -2979,8 +2979,11 @@ void vlc_input_decoder_Wait( vlc_input_decoder_t *p_owner )
     while( !p_owner->b_has_data )
     {
         /* Don't need to lock p_owner->paused since it's only modified by the
-         * owner */
-        if( p_owner->paused )
+         * owner. Paused, it still decodes the picture a flush asked for (a
+         * seek while paused): waited for, it is the first, shown at once;
+         * after the buffering, it was dated by the clock and dropped as
+         * late (the picture stayed the one before the seek). */
+        if( p_owner->paused && p_owner->frames_countdown == 0 )
             break;
         if( p_owner->b_idle && vlc_fifo_IsEmpty( p_owner->p_fifo ) )
         {

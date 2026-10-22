@@ -40,6 +40,7 @@ struct intf_sys_t
     HWND window;
     HANDLE ready;
     vlc_thread_t thread;
+    vlc_tick_t last_open; /* start, then last files received */
 };
 
 /* Must be same as in src/win32/specific.c */
@@ -98,6 +99,16 @@ static LRESULT CALLBACK WMCOPYWNDPROC(HWND hwnd, UINT uMsg,
             size_t i_len;
             int i_argc = p_data->argc, i_opt, i_options;
 
+            /* Files selected together in Explorer come as one instance
+             * each, right after one another (and after the first one started
+             * VLC): play the first, queue the others. Each was played at
+             * once and the last one won. */
+            intf_sys_t *sys = intf->p_sys;
+            const vlc_tick_t now = vlc_tick_now();
+            const bool together = now - sys->last_open < VLC_TICK_FROM_MS(800);
+            const bool enqueue = p_data->enqueue || together;
+            sys->last_open = now;
+
             ppsz_argv = vlc_alloc( i_argc, sizeof(char *) );
             for( i_opt = 0; i_opt < i_argc; i_opt++ )
             {
@@ -124,7 +135,7 @@ static LRESULT CALLBACK WMCOPYWNDPROC(HWND hwnd, UINT uMsg,
                 if( strstr( ppsz_argv[i_opt], "://" ) == NULL )
                     psz_URI = vlc_path2uri( ppsz_argv[i_opt], NULL );
                 add_to_playlist(intf, (psz_URI != NULL) ? psz_URI : ppsz_argv[i_opt],
-                                (i_opt == 0 && !p_data->enqueue), i_options,
+                                (i_opt == 0 && !enqueue), i_options,
                                 (char const **)( i_options ? &ppsz_argv[i_opt+1] : NULL ));
                 i_opt += i_options;
                 free( psz_URI );
@@ -134,7 +145,7 @@ static LRESULT CALLBACK WMCOPYWNDPROC(HWND hwnd, UINT uMsg,
 
             /* A file to play now: show the window, even minimized or behind
              * others (the sender allowed it to come to the front) */
-            if( i_argc > 0 && !p_data->enqueue )
+            if( i_argc > 0 && !enqueue )
                 var_TriggerCallback( vlc_object_instance(intf), "intf-show" );
         }
     }
@@ -187,6 +198,7 @@ static int Open(vlc_object_t *obj)
         return VLC_ENOMEM;
 
     intf->p_sys = sys;
+    sys->last_open = vlc_tick_now();
 
     /* Run the helper thread */
     sys->ready = CreateEvent(NULL, FALSE, FALSE, NULL);

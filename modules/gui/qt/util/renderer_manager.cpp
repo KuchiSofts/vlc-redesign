@@ -107,18 +107,19 @@ static bool portListHas(const wchar_t *list, long port)
     return false;
 }
 
-/* Whether an enabled rule lets the network in, on one of these profiles, to
- * this program (on any of its ports or that one), or to that TCP port
- * whatever the program */
-static bool ruleLetsIn(INetFwRule *rule, const wchar_t *path, long port, long profiles)
+/* Whether an enabled rule lets the network in (or keeps it out: wanted
+ * NET_FW_ACTION_BLOCK), on one of these profiles, to this program (on any of
+ * its ports or that one), or to that TCP port whatever the program */
+static bool ruleMatches(INetFwRule *rule, const wchar_t *path, long port, long profiles,
+                        NET_FW_ACTION wanted)
 {
     VARIANT_BOOL enabled = VARIANT_FALSE;
     NET_FW_RULE_DIRECTION direction = NET_FW_RULE_DIR_OUT;
-    NET_FW_ACTION action = NET_FW_ACTION_BLOCK;
+    NET_FW_ACTION action = wanted == NET_FW_ACTION_ALLOW ? NET_FW_ACTION_BLOCK : NET_FW_ACTION_ALLOW;
     LONG ruleProfiles = 0, protocol = 0;
     if (FAILED(rule->get_Enabled(&enabled)) || enabled == VARIANT_FALSE
      || FAILED(rule->get_Direction(&direction)) || direction != NET_FW_RULE_DIR_IN
-     || FAILED(rule->get_Action(&action)) || action != NET_FW_ACTION_ALLOW
+     || FAILED(rule->get_Action(&action)) || action != wanted
      || FAILED(rule->get_Profiles(&ruleProfiles)) || !(ruleProfiles & profiles)
      || FAILED(rule->get_Protocol(&protocol))
      // (256: NET_FW_IP_PROTOCOL_ANY, missing from some SDKs)
@@ -170,6 +171,9 @@ struct FirewallState
     // the rule of allowFirewall() is there (off, or not for this network):
     // changed rather than added again
     bool ruleExists = false;
+    // a rule keeps them out (made when its question of Windows was
+    // declined): it wins over any allowing one, it goes with the request
+    bool blockRule = false;
 };
 
 /* Whether Windows Firewall lets the devices of the network connect to this
@@ -235,19 +239,23 @@ static FirewallState firewallState(long port)
                 VARIANT item;
                 VariantInit(&item);
                 ULONG fetched = 0;
-                while (!allows && it->Next(1, &item, &fetched) == S_OK)
+                while (it->Next(1, &item, &fetched) == S_OK)
                 {
                     INetFwRule *rule = nullptr;
                     if (item.vt == VT_DISPATCH && item.pdispVal != nullptr
                      && SUCCEEDED(item.pdispVal->QueryInterface(__uuidof(INetFwRule),
                                                                 reinterpret_cast<void **>(&rule))))
                     {
-                        allows = ruleLetsIn(rule, path, port, profiles);
+                        allows = allows || ruleMatches(rule, path, port, profiles, NET_FW_ACTION_ALLOW);
+                        state.blockRule = state.blockRule
+                                       || ruleMatches(rule, path, port, profiles, NET_FW_ACTION_BLOCK);
                         state.ruleExists = state.ruleExists || isOwnRule(rule);
                         rule->Release();
                     }
                     VariantClear(&item);
                 }
+                if (state.blockRule)
+                    allows = false;
             }
             if (it)
                 it->Release();
@@ -350,6 +358,13 @@ public:
         var_DelCallback( VLC_OBJECT( vlc_object_instance( p_intf ) ), "renderer-state",
                          &castStateChanged, this );
 #ifdef _WIN32
+        // Windows' question still open runs the code of this module: its
+        // answer first (the process it starts is not waited for)
+        if (m_firewallAsking)
+        {
+            m_firewallAsking->wait();
+            delete m_firewallAsking;
+        }
         if (m_firewallProcess)
             CloseHandle(m_firewallProcess);
         // the check going on runs the code of this module: done before
@@ -587,8 +602,10 @@ public:
         const quint64 generation = ++m_firewallGeneration;
 #ifdef _WIN32
         long port = 0;
-        if (m_selectedItem && !isThisComputer(deviceAddress(m_selectedItem)))
+        QString address;
+        if (m_selectedItem)
         {
+            address = deviceAddress(m_selectedItem);
             // the port of the server the device reads from
             const char *type = vlc_renderer_item_type(m_selectedItem.get());
             const char *option = !strcmp(type, "stream_out_dlna") ? "sout-dlna-http-port"
@@ -606,7 +623,11 @@ public:
                 return;
             }
             auto result = std::make_shared<FirewallState>();
-            m_firewallThread = QThread::create([result, port]() { *result = firewallState(port); });
+            // a device on this computer reads the server without the firewall
+            m_firewallThread = QThread::create([result, port, address]() {
+                if (!isThisComputer(address))
+                    *result = firewallState(port);
+            });
             // (by the finished signal: dropped if the manager is gone)
             QObject::connect(m_firewallThread, &QThread::finished, q_ptr, [this, result, generation]() {
                 m_firewallThread->deleteLater();
@@ -617,7 +638,10 @@ public:
                     checkFirewall();
                 }
                 else if (generation == m_firewallGeneration)
+                {
+                    m_firewallBlockRule = result->blockRule;
                     setFirewall(!result->allows, result->publicNetwork, result->ruleExists);
+                }
             });
             m_firewallThread->start(QThread::LowPriority);
             return;
@@ -739,6 +763,8 @@ public:
     // see FirewallState
     bool m_firewallPublic = false;
     bool m_firewallRuleExists = false;
+    // a rule of the firewall keeps this program out: removed with the request
+    bool m_firewallBlockRule = false;
     // allowFirewall() was called by itself once (not again if declined)
     bool m_firewallAutoAsked = false;
     // the last check asked (the answers of the others are dropped)
@@ -754,6 +780,8 @@ public:
     QStringList m_hidden;
 #ifdef _WIN32
     HANDLE m_firewallProcess = nullptr;
+    // asking Windows for the rule (allowFirewall)
+    QThread *m_firewallAsking = nullptr;
     QTimer m_firewallWait;
     // the check going on, and whether to check again once it is done
     QThread *m_firewallThread = nullptr;
@@ -1063,23 +1091,58 @@ void RendererManager::allowFirewall()
     const std::wstring name = L"name=\"" + std::wstring(firewallRuleName) + L"\" dir=in ";
     const std::wstring rule = L"action=allow program=\"" + std::wstring(path) + L"\" enable=yes profile="
                             + (d->m_firewallPublic ? L"private,domain,public" : L"private,domain");
-    const std::wstring parameters = d->m_firewallRuleExists
-        ? L"advfirewall firewall set rule " + name + L"new " + rule
-        : L"advfirewall firewall add rule " + name + rule;
-    SHELLEXECUTEINFOW info = {};
-    info.cbSize = sizeof(info);
-    info.fMask = SEE_MASK_NOCLOSEPROCESS;
-    info.lpVerb = L"runas";
-    info.lpFile = L"netsh.exe";
-    info.lpParameters = parameters.c_str();
-    info.nShow = SW_HIDE;
-    if (!ShellExecuteExW(&info) || !info.hProcess)
-        return;
+    std::wstring file, parameters;
+    if (d->m_firewallBlockRule)
+    {
+        // A rule keeping it out (Windows' own question declined once) wins
+        // over any allowing one: this program's inbound rules go, then ours
+        // comes, in one approval (cmd /S strips the outer quotes)
+        file = L"cmd.exe";
+        parameters = L"/S /C \"netsh advfirewall firewall delete rule name=all dir=in program=\""
+                   + std::wstring(path) + L"\" & netsh advfirewall firewall add rule " + name + rule + L"\"";
+    }
+    else
+    {
+        file = L"netsh.exe";
+        parameters = d->m_firewallRuleExists
+            ? L"advfirewall firewall set rule " + name + L"new " + rule
+            : L"advfirewall firewall add rule " + name + rule;
+    }
 
-    d->m_firewallProcess = info.hProcess;
     d->m_firewallAllowing = true;
     emit firewallChanged();
-    d->m_firewallWait.start();
+    // The call waits for the answer to Windows' question, which can come
+    // behind other windows: on a thread of its own, the interface goes on
+    auto process = std::make_shared<HANDLE>(nullptr);
+    d->m_firewallAsking = QThread::create([file, parameters, process]() {
+        const HRESULT init = CoInitializeEx(nullptr, COINIT_APARTMENTTHREADED | COINIT_DISABLE_OLE1DDE);
+        SHELLEXECUTEINFOW info = {};
+        info.cbSize = sizeof(info);
+        info.fMask = SEE_MASK_NOCLOSEPROCESS;
+        info.lpVerb = L"runas";
+        info.lpFile = file.c_str();
+        info.lpParameters = parameters.c_str();
+        info.nShow = SW_HIDE;
+        if (ShellExecuteExW(&info) && info.hProcess)
+            *process = info.hProcess;
+        if (SUCCEEDED(init))
+            CoUninitialize();
+    });
+    connect(d->m_firewallAsking, &QThread::finished, this, [this, process]() {
+        Q_D(RendererManager);
+        d->m_firewallAsking->deleteLater();
+        d->m_firewallAsking = nullptr;
+        if (*process == nullptr)
+        {
+            // declined: the card offers it again
+            d->m_firewallAllowing = false;
+            emit firewallChanged();
+            return;
+        }
+        d->m_firewallProcess = *process;
+        d->m_firewallWait.start();
+    });
+    d->m_firewallAsking->start();
 #endif
 }
 

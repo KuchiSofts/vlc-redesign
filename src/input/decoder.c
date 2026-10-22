@@ -150,6 +150,9 @@ struct decoder_spu
     vout_thread_t *vout;
     ssize_t channel;
     int64_t order;
+    /* No vout came in the whole wait (an audio file): the next subtitles
+     * don't wait again until one does */
+    bool vout_missing;
 };
 
 struct vlc_input_decoder_t
@@ -1022,7 +1025,8 @@ static subpicture_t *ModuleThread_NewSpuBuffer( decoder_t *p_dec,
     assert( p_owner->cat == SPU_ES );
     vout_thread_t *p_vout = NULL;
     subpicture_t *p_subpic;
-    int i_attempts = 30;
+    int i_attempts = p_owner->spu.vout_missing ? 1 : 30;
+    bool stopped = false;
 
     while( i_attempts-- )
     {
@@ -1030,7 +1034,7 @@ static subpicture_t *ModuleThread_NewSpuBuffer( decoder_t *p_dec,
             break;
 
         p_vout = input_resource_HoldVout( p_owner->p_resource );
-        if( p_vout )
+        if( p_vout || i_attempts == 0 )
             break;
 
         /* A flush or the deletion ends the wait: subtitles of an audio file
@@ -1040,11 +1044,12 @@ static subpicture_t *ModuleThread_NewSpuBuffer( decoder_t *p_dec,
         vlc_fifo_Lock( p_owner->p_fifo );
         while( !p_owner->aborting && !p_owner->flushing
             && vlc_cond_timedwait( &q->wait, &q->lock, deadline ) == 0 );
-        const bool stop = p_owner->aborting || p_owner->flushing;
+        stopped = p_owner->aborting || p_owner->flushing;
         vlc_fifo_Unlock( p_owner->p_fifo );
-        if( stop )
+        if( stopped )
             break;
     }
+    p_owner->spu.vout_missing = p_vout == NULL && !stopped && !p_owner->error;
 
     if( !p_vout )
     {
@@ -2304,6 +2309,7 @@ CreateDecoder( vlc_object_t *p_parent, const struct vlc_input_decoder_cfg *cfg )
             p_owner->spu.vout = NULL;
             p_owner->spu.channel = VOUT_SPU_CHANNEL_INVALID;
             p_owner->spu.order = 0;
+            p_owner->spu.vout_missing = false;
             p_dec->cbs = &dec_spu_cbs;
             break;
         default:

@@ -923,14 +923,32 @@ static HRESULT Start(aout_stream_t *s, audio_sample_format_t *restrict pfmt,
     if (sys->s24s32)
         msg_Dbg(s, "audio device configured as s24");
 
+    /* Shared, the buffer Windows gives for 0 is two periods (about 20 ms):
+     * feeding it late that much (the system busy, a driver's delay) is a
+     * gap heard. 200 ms (VLC 3 had 2 s) rides over that; a device refusing
+     * it gets its minimum, on a client of its own (one that failed to
+     * initialize is not used again). Seeks and pauses don't wait for it:
+     * they reset or stop the stream. */
     if (shared_mode == AUDCLNT_SHAREMODE_SHARED)
-        buffer_duration = 0;
+        buffer_duration = MSFTIME_FROM_MS(200);
 
     hr = IAudioClient_Initialize(sys->client, shared_mode,
                                  AUDCLNT_STREAMFLAGS_EVENTCALLBACK,
                                  buffer_duration,
                                  shared_mode == AUDCLNT_SHAREMODE_EXCLUSIVE ? buffer_duration : 0,
                                  pwf, sid);
+    if (FAILED(hr) && shared_mode == AUDCLNT_SHAREMODE_SHARED)
+    {
+        msg_Warn(s, "no 200 ms buffer (error 0x%lX): the device's minimum", hr);
+        void *again;
+        if (SUCCEEDED(aout_stream_Activate(s, &IID_IAudioClient, NULL, &again)))
+        {
+            IAudioClient_Release(sys->client);
+            sys->client = again;
+            hr = IAudioClient_Initialize(sys->client, shared_mode,
+                                         AUDCLNT_STREAMFLAGS_EVENTCALLBACK, 0, 0, pwf, sid);
+        }
+    }
     CoTaskMemFree(pwf_closest);
     if (FAILED(hr))
     {

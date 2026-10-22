@@ -459,13 +459,34 @@ static bool KeepSpareDevice(d3d11_device_t *d3d_dev, UINT flags)
     return kept;
 }
 
+/* The DXGI factory of a device keeps the outputs it saw: after HDR was turned
+ * on or off, or a screen or GPU plugged in, a swapchain made from it would get
+ * the old colour space. A new device comes with a new factory. */
+static bool DeviceFactoryIsCurrent(ID3D11Device *d3ddevice)
+{
+    bool current = false;
+    IDXGIAdapter *adapter = D3D11DeviceAdapter(d3ddevice);
+    if (adapter != NULL)
+    {
+        IDXGIFactory1 *factory;
+        if (SUCCEEDED(adapter->GetParent(IID_GRAPHICS_PPV_ARGS(&factory))))
+        {
+            current = factory->IsCurrent();
+            factory->Release();
+        }
+        adapter->Release();
+    }
+    return current;
+}
+
 static bool TakeSpareDevice(vlc_object_t *obj, UINT flags, d3d11_device_t *out)
 {
     bool taken = false;
     AcquireSRWLockExclusive(&spare_lock);
     if (spare.kept && spare.flags == flags)
     {
-        if (spare.dev.d3ddevice->GetDeviceRemovedReason() != S_OK)
+        if (spare.dev.d3ddevice->GetDeviceRemovedReason() != S_OK ||
+            !DeviceFactoryIsCurrent(spare.dev.d3ddevice))
             ReleaseSpareDevice();
         else
         {

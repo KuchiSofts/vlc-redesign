@@ -90,6 +90,8 @@ vlc_module_begin ()
     set_description(N_("Direct3D11 video output"))
     set_help(D3D11_HELP)
     set_subcategory(SUBCAT_VIDEO_VOUT)
+    /* a released device is kept for the next video and freed by a timer */
+    cannot_unload_broken_library()
 
     add_bool("direct3d11-hw-blending", true, HW_BLENDING_TEXT, HW_BLENDING_LONGTEXT)
 

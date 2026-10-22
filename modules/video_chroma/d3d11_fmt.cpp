@@ -393,13 +393,103 @@ typedef struct {
 #ifdef HAVE_DXGI_DEBUG
     dxgi_debug_handle_t                 dxgi_debug;
 #endif
+    bool                                reusable;
+    UINT                                flags;
     d3d11_decoder_device_t              dec_device;
 } d3d11_decoder_device;
+
+/* A video output without a decoder device (software decoding) creates its own
+ * device for each video. The last one is kept for a few seconds after it is
+ * released so the next video can use it: creating a device takes time and
+ * some drivers keep memory for every device that was created. */
+#define SPARE_DEVICE_DELAY VLC_TICK_FROM_SEC(5)
+
+static SRWLOCK spare_lock = SRWLOCK_INIT;
+static struct
+{
+    vlc_timer_t         timer;
+    bool                has_timer;
+    bool                kept;
+    UINT                flags;
+    vlc_tick_t          expiry;
+    d3d11_device_t      dev;
+} spare;
+
+static void ReleaseSpareDevice(void)
+{
+    spare.dev.d3dcontext->Release();
+    spare.dev.d3ddevice->Release();
+    spare.kept = false;
+}
+
+static void SpareDeviceExpired(void *)
+{
+    AcquireSRWLockExclusive(&spare_lock);
+    if (spare.kept)
+    {
+        if (vlc_tick_now() >= spare.expiry)
+            ReleaseSpareDevice();
+        else
+            vlc_timer_schedule(spare.timer, true, spare.expiry, VLC_TIMER_FIRE_ONCE);
+    }
+    ReleaseSRWLockExclusive(&spare_lock);
+}
+
+static bool KeepSpareDevice(d3d11_device_t *d3d_dev, UINT flags)
+{
+    if (d3d_dev->d3ddevice->GetDeviceRemovedReason() != S_OK)
+        return false;
+
+    bool kept = false;
+    AcquireSRWLockExclusive(&spare_lock);
+    if (!spare.has_timer &&
+        vlc_timer_create(&spare.timer, SpareDeviceExpired, NULL) == 0)
+        spare.has_timer = true;
+    if (!spare.kept && spare.has_timer)
+    {
+        d3d_dev->d3dcontext->ClearState();
+        d3d_dev->d3dcontext->Flush();
+        spare.dev = *d3d_dev;
+        spare.flags = flags;
+        spare.expiry = vlc_tick_now() + SPARE_DEVICE_DELAY;
+        spare.kept = kept = true;
+        vlc_timer_schedule(spare.timer, true, spare.expiry, VLC_TIMER_FIRE_ONCE);
+    }
+    ReleaseSRWLockExclusive(&spare_lock);
+    return kept;
+}
+
+static bool TakeSpareDevice(vlc_object_t *obj, UINT flags, d3d11_device_t *out)
+{
+    bool taken = false;
+    AcquireSRWLockExclusive(&spare_lock);
+    if (spare.kept && spare.flags == flags)
+    {
+        if (spare.dev.d3ddevice->GetDeviceRemovedReason() != S_OK)
+            ReleaseSpareDevice();
+        else
+        {
+            *out = spare.dev;
+            spare.kept = false;
+            taken = true;
+        }
+    }
+    ReleaseSRWLockExclusive(&spare_lock);
+    if (taken)
+        msg_Dbg(obj, "Reusing the D3D11 device level %x (flags %08x).",
+                out->feature_level, flags);
+    return taken;
+}
 
 void D3D11_ReleaseDevice(d3d11_decoder_device_t *dev_sys)
 {
     d3d11_decoder_device *sys = container_of(dev_sys, d3d11_decoder_device, dec_device);
     d3d11_device_t *d3d_dev = &dev_sys->d3d_dev;
+    if (sys->reusable && d3d_dev->d3dcontext && KeepSpareDevice(d3d_dev, sys->flags))
+    {
+        d3d_dev->d3dcontext = NULL;
+        d3d_dev->d3ddevice = NULL;
+    }
     if (d3d_dev->d3dcontext)
     {
         d3d_dev->d3dcontext->Flush();
@@ -475,7 +565,8 @@ static HRESULT D3D11_CreateDeviceExternal(vlc_object_t *obj, ID3D11DeviceContext
 
 static HRESULT CreateDevice(vlc_object_t *obj,
                             IDXGIAdapter *adapter,
-                            bool hw_decoding, d3d11_device_t *out)
+                            bool hw_decoding, UINT *reuse_flags,
+                            d3d11_device_t *out)
 {
     HRESULT hr = E_NOTIMPL;
     UINT creationFlags = 0;
@@ -493,6 +584,13 @@ static HRESULT CreateDevice(vlc_object_t *obj,
         }
     }
 #endif
+
+    if (reuse_flags != NULL)
+    {
+        *reuse_flags = creationFlags;
+        if (TakeSpareDevice(obj, creationFlags, out))
+            return S_OK;
+    }
 
     static const D3D_DRIVER_TYPE driverAttempts[] = {
         D3D_DRIVER_TYPE_HARDWARE,
@@ -553,7 +651,10 @@ static HRESULT CreateDevice(vlc_object_t *obj,
         out->mutex_owner = true;
     }
     else
+    {
         out->context_mutex = INVALID_HANDLE_VALUE;
+        out->mutex_owner = false;
+    }
 
     return hr;
 }
@@ -571,6 +672,7 @@ d3d11_decoder_device_t *(D3D11_CreateDevice)(vlc_object_t *obj,
 #endif
 
     sys->external.cleanupDeviceCb = NULL;
+    sys->reusable = false;
     HRESULT hr = E_FAIL;
     {
         libvlc_video_engine_t engineType = (libvlc_video_engine_t)var_InheritInteger( obj, "vout-cb-type" );
@@ -616,7 +718,12 @@ d3d11_decoder_device_t *(D3D11_CreateDevice)(vlc_object_t *obj,
             }
 #endif
 
-            hr = CreateDevice( obj, adapter, hw_decoding, &sys->dec_device.d3d_dev );
+            /* only the default adapter without decoding can be shared */
+            bool reusable = adapter == NULL && !hw_decoding;
+            hr = CreateDevice( obj, adapter, hw_decoding,
+                               reusable ? &sys->flags : NULL,
+                               &sys->dec_device.d3d_dev );
+            sys->reusable = reusable && SUCCEEDED(hr);
         }
         else
         {

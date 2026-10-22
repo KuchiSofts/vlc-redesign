@@ -386,6 +386,19 @@ vlc_clock_get_context(vlc_clock_t *clock, vlc_tick_t system_now, vlc_tick_t ts,
     return ctx;
 }
 
+/* While paused, the time stands still at the pause date: the references
+ * taken during a pause are dated there, and the resume shifts them all by the
+ * pause duration. */
+static vlc_tick_t vlc_clock_main_now(const vlc_clock_main_t *main_clock,
+                                     vlc_tick_t now)
+{
+    if (main_clock->pause_date != VLC_TICK_INVALID
+     && now != VLC_TICK_INVALID && now != VLC_TICK_MAX
+     && now > main_clock->pause_date)
+        return main_clock->pause_date;
+    return now;
+}
+
 static void vlc_clock_main_reset(vlc_clock_main_t *main_clock)
 {
     struct vlc_clock_context *ctx = main_clock->context;
@@ -394,7 +407,8 @@ static void vlc_clock_main_reset(vlc_clock_main_t *main_clock)
     AvgResetAndFill(&main_clock->coeff_avg, ctx->coeff);
 
     main_clock->wait_sync_ref_priority = UINT_MAX;
-    main_clock->pause_date = VLC_TICK_INVALID;
+    /* A reset while paused keeps the pause date: the new references are
+     * taken in the paused time (es_out dates the first PCR there too). */
     vlc_cond_broadcast(&main_clock->cond);
 }
 
@@ -603,6 +617,8 @@ vlc_clock_input_start(vlc_clock_t *clock,
     if (main_clock->first_pcr.system != VLC_TICK_INVALID)
         return;
 
+    start_date = vlc_clock_main_now(main_clock, start_date);
+
     struct vlc_clock_context *context
         = main_clock->context;
 
@@ -674,6 +690,8 @@ vlc_clock_monotonic_to_system(vlc_clock_t *clock, struct vlc_clock_context *ctx,
      && ctx == main_clock->context
      && main_clock->first_pcr.system != VLC_TICK_INVALID)
     {
+        now = vlc_clock_main_now(main_clock, now);
+
         /* XXX: This input_delay calculation is needed until we (finally) get
          * ride of the input clock. This code is adapted from input_clock.c and
          * is used to introduce the same delay than the input clock (first PTS
@@ -885,6 +903,8 @@ vlc_clock_output_start(vlc_clock_t *clock,
      * the bus clock.
      **/
 
+    start_date = vlc_clock_main_now(main_clock, start_date);
+
     vlc_tick_t pcr_delay = (first_ts - context->start_time.stream) / context->rate
                          + context->start_time.system - start_date;
 
@@ -1025,6 +1045,7 @@ void vlc_clock_main_SetFirstPcr(vlc_clock_main_t *main_clock,
     }
     vlc_clock_main_reset(main_clock);
 
+    system_now = vlc_clock_main_now(main_clock, system_now);
     main_clock->first_pcr = clock_point_Create(system_now, ts);
     main_clock->wait_sync_ref_priority = UINT_MAX;
     ctx->wait_sync_ref =
@@ -1061,7 +1082,7 @@ void vlc_clock_main_ChangePause(vlc_clock_main_t *main_clock, vlc_tick_t now,
         return;
     }
 
-    /* Reset was called before resume from Pause */
+    /* No pause date: nothing to shift (a reset while paused keeps it) */
     if (main_clock->pause_date == VLC_TICK_INVALID)
         return;
 

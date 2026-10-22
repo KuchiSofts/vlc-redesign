@@ -610,6 +610,14 @@ ssize_t vlc_sendto_i11e(int fd, const void *buf, size_t len, int flags,
 
 #else /* _WIN32 */
 
+/* Winsock does not set errno: a stale EAGAIN or EINTR would make callers
+ * retry a failed socket forever. vlc_strerror() knows the Winsock codes. */
+static void vlc_wsa_errno(void)
+{
+    int err = WSAGetLastError();
+    errno = (err == WSAEWOULDBLOCK) ? EAGAIN : err;
+}
+
 ssize_t vlc_recvfrom_i11e(int fd, void *buf, size_t len, int flags,
                         struct sockaddr *addr, socklen_t *addrlen)
 {
@@ -617,8 +625,8 @@ ssize_t vlc_recvfrom_i11e(int fd, void *buf, size_t len, int flags,
         return -1;
 
     ssize_t ret = recvfrom(fd, buf, len, flags, addr, addrlen);
-    if (ret < 0 && WSAGetLastError() == WSAEWOULDBLOCK)
-        errno = EAGAIN;
+    if (ret < 0)
+        vlc_wsa_errno();
     return ret;
 }
 
@@ -629,8 +637,8 @@ ssize_t vlc_sendto_i11e(int fd, const void *buf, size_t len, int flags,
         return -1;
 
     ssize_t ret = sendto(fd, buf, len, flags, addr, addrlen);
-    if (ret < 0 && WSAGetLastError() == WSAEWOULDBLOCK)
-        errno = EAGAIN;
+    if (ret < 0)
+        vlc_wsa_errno();
     return ret;
 }
 

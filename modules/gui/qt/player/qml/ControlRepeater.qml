@@ -357,8 +357,11 @@ Repeater {
             if (item.menuOpened)
                 item.menuOpened.connect(repeater.menuOpened)
 
+            // with the item as receiver: the connection goes with it (a
+            // connect() of the bare function stayed on the repeater, a new
+            // one each time the controls of a media were made)
             if (item.forceUnlock)
-                repeater.forceUnlock.connect(item.forceUnlock)
+                repeater.forceUnlock.connect(item, item.forceUnlock)
 
             //can't connect to enabledChanged in a Connections
             item.onEnabledChanged.connect(() => {

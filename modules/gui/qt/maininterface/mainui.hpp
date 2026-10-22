@@ -20,7 +20,10 @@
 #include <QAbstractProxyModel>
 #include <QMessageBox>
 
+#include <memory>
+
 class VLCVarChoiceModel;
+class ScrollBarAccessibilityFix;
 
 class MainUI : public QObject
 {
@@ -51,6 +54,7 @@ private:
     QQuickItem* m_rootItem = nullptr;
 
     QPointer<QQmlEngine> m_engineBound;
+    std::unique_ptr<ScrollBarAccessibilityFix> m_scrollBarAccessibilityFix;
 };
 
 namespace vlc {

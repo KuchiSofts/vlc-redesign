@@ -2,6 +2,12 @@
 
 #include <cassert>
 
+#include <QAccessible>
+#include <QGuiApplication>
+#include <QQuickWindow>
+#include <QSet>
+#include <QTimer>
+
 #include "maininterface/navigationmodel.hpp"
 
 #include "medialibrary/medialib.hpp"
@@ -102,6 +108,83 @@
 
 static bool g_qmlTypesAreRegistered = false;
 
+#if QT_CONFIG(accessibility)
+/* Qt 6.8 on Windows: each request of a UI Automation client (a screen reader,
+ * and many other tools) calls QAccessible::setActive(true) again, which every
+ * observer hears, and each ScrollBar connects its Accessible increase and
+ * decrease actions once more (Qt 6.9 only tells a change): over a hundred
+ * connections at every media change, never freed. Once the activations stop
+ * for a second, the duplicates of the scroll bars go, one of each stays. */
+class ScrollBarAccessibilityFix : public QAccessible::ActivationObserver
+{
+public:
+    ScrollBarAccessibilityFix()
+    {
+        m_timer.setSingleShot(true);
+        m_timer.setInterval(1000);
+        QObject::connect(&m_timer, &QTimer::timeout, &m_timer, [] {
+            QSet<QObject *> seen;
+            const auto windows = QGuiApplication::allWindows();
+            for (QWindow *window : windows)
+                if (auto *quickWindow = qobject_cast<QQuickWindow *>(window))
+                {
+                    fix(quickWindow->contentItem(), seen);
+                    fix(quickWindow, seen);
+                }
+        });
+        QAccessible::installActivationObserver(this);
+    }
+
+    ~ScrollBarAccessibilityFix() override
+    {
+        QAccessible::removeActivationObserver(this);
+    }
+
+    // at most once a second: the requests can go on without a pause
+    void accessibilityActiveChanged(bool active) override
+    {
+        if (active && !m_timer.isActive())
+            m_timer.start();
+    }
+
+private:
+    // The items and their QObject children: the scroll bars of a closed popup
+    // are out of the window's items, not out of the objects
+    static void fix(QObject *object, QSet<QObject *> &seen)
+    {
+        if (!object || seen.contains(object))
+            return;
+        seen.insert(object);
+        const auto children = object->children();
+        if (object->inherits("QQuickScrollBar"))
+        {
+            // its attached Accessible is a child of it
+            for (QObject *child : children)
+            {
+                if (!child->inherits("QQuickAccessibleAttached"))
+                    continue;
+                QObject::disconnect(child, SIGNAL(increaseAction()), object, nullptr);
+                QObject::disconnect(child, SIGNAL(decreaseAction()), object, nullptr);
+                QObject::connect(child, SIGNAL(increaseAction()), object, SLOT(increase()));
+                QObject::connect(child, SIGNAL(decreaseAction()), object, SLOT(decrease()));
+            }
+        }
+        for (QObject *child : children)
+            fix(child, seen);
+        if (auto *item = qobject_cast<QQuickItem *>(object))
+        {
+            const auto childItems = item->childItems();
+            for (QQuickItem *child : childItems)
+                fix(child, seen);
+        }
+    }
+
+    QTimer m_timer;
+};
+#else
+class ScrollBarAccessibilityFix {};
+#endif
+
 using  namespace vlc::playlist;
 
 MainUI::MainUI(qt_intf_t *p_intf, MainCtx *mainCtx, QWindow* interfaceWindow,  QObject *parent)
@@ -115,6 +198,10 @@ MainUI::MainUI(qt_intf_t *p_intf, MainCtx *mainCtx, QWindow* interfaceWindow,  Q
     assert(m_interfaceWindow);
 
     registerQMLTypes();
+
+#if QT_CONFIG(accessibility)
+    m_scrollBarAccessibilityFix = std::make_unique<ScrollBarAccessibilityFix>();
+#endif
 
     // FIXME: Since Qt 6.6, Qt follows a different approach for scrolling. This new approach has
     //        caused a lot of frustration (QTBUG-116388, QTBUG-129948, QTBUG-120038). However,

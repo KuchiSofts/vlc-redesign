@@ -264,6 +264,7 @@ private:
 
     static vlc_tick_t   timeCCToVLC(double);
     static std::string  timeVLCToCC(vlc_tick_t);
+    void setCCTimeFrom( const struct json_object *status );
 
 private:
     vlc_object_t  * const m_module;

@@ -294,6 +294,9 @@ struct vlc_input_event_output_state
     enum {
         VLC_INPUT_EVENT_OUTPUT_STATE_RESUMED,
         VLC_INPUT_EVENT_OUTPUT_STATE_PAUSED,
+        /* The decoder and its output are gone, the track stays selected
+         * (all of them stopped for a renderer) */
+        VLC_INPUT_EVENT_OUTPUT_STATE_STOPPED,
     } action;
     vlc_tick_t paused_date;
     vlc_es_id_t *id;

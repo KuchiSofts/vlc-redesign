@@ -1145,6 +1145,17 @@ input_thread_Events(input_thread_t *input_thread,
                 vlc_player_UpdateTimerEvent(player, event->output_state.id,
                                             VLC_PLAYER_TIMER_EVENT_PAUSED,
                                             event->output_state.paused_date);
+            else if (event->output_state.action == VLC_INPUT_EVENT_OUTPUT_STATE_STOPPED)
+            {
+                /* The time no longer comes from this track's output: from
+                 * the input (casting), with its pauses, or from the next
+                 * output. Bound to it, the input's points and pause were not
+                 * told, and the interface counted on through a pause. */
+                vlc_player_UpdateTimerEvent(player, event->output_state.id,
+                                            VLC_PLAYER_TIMER_EVENT_DISCONTINUITY,
+                                            VLC_TICK_INVALID);
+                vlc_player_RemoveTimerSource(player, event->output_state.id);
+            }
             break;
         case INPUT_EVENT_ITEM_META:
         case INPUT_EVENT_ITEM_INFO:

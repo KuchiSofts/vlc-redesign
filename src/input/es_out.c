@@ -4154,6 +4154,15 @@ static int EsOutVaPrivControlLocked(es_out_sys_t *p_sys, input_source_t *source,
             {
                 EsOutDestroyDecoder(p_sys, es);
                 *selected_es++ = vlc_es_id_Hold(&es->id);
+
+                /* its output no longer gives the time (casting, the input
+                 * does) */
+                struct vlc_input_event_output_state event = {
+                    .action = VLC_INPUT_EVENT_OUTPUT_STATE_STOPPED,
+                    .paused_date = VLC_TICK_INVALID,
+                    .id = &es->id,
+                };
+                input_SendEventOutputState(p_sys->p_input, &event);
             }
             *selected_es = NULL;
         }

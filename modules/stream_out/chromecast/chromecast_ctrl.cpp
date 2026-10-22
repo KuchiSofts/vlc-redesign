@@ -1040,6 +1040,7 @@ void intf_sys_t::processMediaMessage( const castchannel::CastMessage& msg , cons
             }
             else if (newPlayerState == "BUFFERING")
             {
+                setCCTimeFrom( &status->array.entries[0].object );
                 if ( m_state != Buffering )
                 {
                     /* EOF when state goes from Playing to Buffering. There can
@@ -1052,6 +1053,8 @@ void intf_sys_t::processMediaMessage( const castchannel::CastMessage& msg , cons
             }
             else if (newPlayerState == "PAUSED")
             {
+                /* where it stopped (the last PLAYING status is older) */
+                setCCTimeFrom( &status->array.entries[0].object );
                 if ( m_state != Paused )
                 {
                     setState( Paused );
@@ -1306,6 +1309,16 @@ void intf_sys_t::setInputLength(vlc_tick_t length)
     m_input_length = length;
 }
 
+/* Where a status says the TV is (m_lock held) */
+void intf_sys_t::setCCTimeFrom( const struct json_object *status )
+{
+    const double time = json_get_num( status, "currentTime" );
+    if ( !std::isfinite( time ) )
+        return;
+    m_cc_time = timeCCToVLC( time );
+    m_cc_time_date = vlc_tick_now();
+}
+
 vlc_tick_t intf_sys_t::getPlaybackTimestamp()
 {
     vlc::threads::mutex_locker lock( m_lock );
@@ -1315,7 +1328,9 @@ vlc_tick_t intf_sys_t::getPlaybackTimestamp()
         case Paused:
             if( !m_played_once )
                 return VLC_TICK_INVALID;
-            /* fallthrough */
+            /* The TV doesn't move: where it said it stopped. (Counting on
+             * would resume this computer that much further on.) */
+            return m_cc_time;
         case Playing:
         {
             assert( m_communication );

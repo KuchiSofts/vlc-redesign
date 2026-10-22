@@ -2627,6 +2627,12 @@ static bool Control( input_thread_t *p_input,
                                         vlc_renderer_item_demux_filter( p_item ) );
                 }
             }
+            /* The demux filter of the renderer left goes back to where the
+             * device was, from where the stream was read ahead: the
+             * subtitle files go there too (else none until the media gets
+             * back where they were) */
+            if( priv->i_slave > 0 )
+                SlaveSeek( p_input );
             es_out_StartAllEs( priv->p_es_out_display, context );
             break;
         }

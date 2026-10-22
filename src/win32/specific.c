@@ -62,6 +62,8 @@ void system_Init(void)
  *****************************************************************************/
 
 /* Must be same as in modules/control/win_msg.c */
+#define VLC_IPC_NAME L"VLC Redesign ipc " TEXT(VERSION)
+
 typedef struct
 {
     int argc;
@@ -80,8 +82,10 @@ void system_Configure( libvlc_int_t *p_this, int i_argc, const char *const ppsz_
 
         msg_Info( p_this, "one instance mode ENABLED");
 
-        /* Use a named mutex to check if another instance is already running */
-        if( !( hmutex = CreateMutex( 0, TRUE, L"VLC ipc " TEXT(VERSION) ) ) )
+        /* Use a named mutex to check if another instance is already running
+         * (its own name: an official VLC 4 has the same version, and files
+         * opened from Explorer went to it) */
+        if( !( hmutex = CreateMutex( 0, TRUE, VLC_IPC_NAME ) ) )
         {
             /* Failed for some reason. Just ignore the option and go on as
              * normal. */
@@ -103,16 +107,19 @@ void system_Configure( libvlc_int_t *p_this, int i_argc, const char *const ppsz_
 
             HWND ipcwindow;
 
-            /* Wait until the 1st instance is initialized */
-            WaitForSingleObject( hmutex, INFINITE );
+            /* Wait until the 1st instance is initialized, not forever: one
+             * that hangs made every file opened from Explorer hang too */
+            DWORD wait = WaitForSingleObject( hmutex, 10000 );
+            const bool owned = wait == WAIT_OBJECT_0 || wait == WAIT_ABANDONED;
 
             /* Locate the window created by the IPC helper thread of the
              * 1st instance */
-            if( !( ipcwindow = FindWindow( 0, L"VLC ipc " TEXT(VERSION) ) ) )
+            if( !( ipcwindow = FindWindow( 0, VLC_IPC_NAME ) ) )
             {
                 msg_Err( p_this, "one instance mode DISABLED "
                          "(couldn't find 1st instance of program)" );
-                ReleaseMutex( hmutex );
+                if( owned )
+                    ReleaseMutex( hmutex );
                 return;
             }
 
@@ -132,6 +139,12 @@ void system_Configure( libvlc_int_t *p_this, int i_argc, const char *const ppsz_
                 }
 
                 p_data = malloc( i_data );
+                if( unlikely(p_data == NULL) )
+                {
+                    if( owned )
+                        ReleaseMutex( hmutex );
+                    return;
+                }
                 p_data->argc = i_argc;
                 p_data->enqueue = var_InheritBool( p_this, "playlist-enqueue" );
                 i_data = 0;
@@ -145,16 +158,37 @@ void system_Configure( libvlc_int_t *p_this, int i_argc, const char *const ppsz_
                 }
                 i_data += sizeof (*p_data);
 
-                /* Send our playlist items to the 1st instance */
+                /* Let the 1st instance come to the front with the file */
+                DWORD pid;
+                if( GetWindowThreadProcessId( ipcwindow, &pid ) )
+                    AllowSetForegroundWindow( pid );
+
+                /* Send our playlist items to the 1st instance; if it does
+                 * not answer, open them here rather than lose them */
                 wm_data.dwData = 0;
                 wm_data.cbData = i_data;
                 wm_data.lpData = p_data;
-                SendMessage( ipcwindow, WM_COPYDATA, 0, (LPARAM)&wm_data );
+                DWORD_PTR result;
+                bool sent = !IsHungAppWindow( ipcwindow )
+                         && SendMessageTimeout( ipcwindow, WM_COPYDATA, 0,
+                                                (LPARAM)&wm_data,
+                                                SMTO_ABORTIFHUNG, 5000,
+                                                &result ) != 0;
+                free( p_data );
+                if( !sent )
+                {
+                    msg_Err( p_this, "one instance mode DISABLED "
+                             "(1st instance not answering)" );
+                    if( owned )
+                        ReleaseMutex( hmutex );
+                    return;
+                }
             }
 
             /* Initialization done.
              * Release the mutex to unblock other instances */
-            ReleaseMutex( hmutex );
+            if( owned )
+                ReleaseMutex( hmutex );
 
             /* Bye bye */
             system_End( );

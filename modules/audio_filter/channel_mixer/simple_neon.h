@@ -28,8 +28,8 @@
 #endif
 #include <vlc_cpu.h>
 
-/* Only conversion to Mono, Stereo and 4.0 right now */
-/* Only from 7/7.1/5/5.1/3/3.1/2.0
+/* Only conversion to 4.0 right now (mono and stereo use a matrix) */
+/* Only from 7/7.1/5/5.1
  * XXX 5.X rear and middle are handled the same way */
 
 #define NEON_WRAPPER(in, out)                                                    \
@@ -46,12 +46,6 @@
         return vlc_CPU_ARM_NEON() ? DoWork_##in##_to_##out##_neon : DoWork_##in##_to_##out; \
     }
 
-NEON_WRAPPER(7_x,2_0)
-NEON_WRAPPER(5_x,2_0)
-NEON_WRAPPER(4_0,2_0)
-NEON_WRAPPER(3_x,2_0)
-NEON_WRAPPER(7_x,1_0)
-NEON_WRAPPER(5_x,1_0)
 NEON_WRAPPER(7_x,4_0)
 NEON_WRAPPER(5_x,4_0)
 
@@ -63,9 +57,5 @@ NEON_WRAPPER(5_x,4_0)
         return DoWork_##in##_to_##out; \
     }
 
-C_WRAPPER(4_0,1_0)
-C_WRAPPER(3_x,1_0)
-C_WRAPPER(2_x,1_0)
-C_WRAPPER(6_1,2_0)
 C_WRAPPER(7_x,5_x)
 C_WRAPPER(6_1,5_x)

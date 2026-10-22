@@ -47,141 +47,80 @@ vlc_module_end ()
 
 static block_t *Filter( filter_t *, block_t * );
 
-static void DoWork_7_x_to_2_0( filter_t * p_filter,  block_t * p_in_buf, block_t * p_out_buf ) {
-    float *p_dest = (float *)p_out_buf->p_buffer;
-    const float *p_src = (const float *)p_in_buf->p_buffer;
-    for( int i = p_in_buf->i_nb_samples; i--; )
-    {
-        float ctr = p_src[6] * 0.7071f;
-        *p_dest++ = ctr + p_src[0] + p_src[2] / 4 + p_src[4] / 4;
-        *p_dest++ = ctr + p_src[1] + p_src[3] / 4 + p_src[5] / 4;
-
-        p_src += 7;
-
-        if( p_filter->fmt_in.audio.i_physical_channels & AOUT_CHAN_LFE ) p_src++;
-    }
-}
-
-static void DoWork_6_1_to_2_0( filter_t *p_filter, block_t *p_in_buf,
-                               block_t *p_out_buf )
+typedef struct
 {
-    VLC_UNUSED(p_filter);
+    void (*work)( filter_t *, block_t *, block_t * );
+    unsigned in_nb, out_nb;
+    float coefs[2][AOUT_CHAN_MAX]; /* output channel, input channel */
+} filter_sys_t;
+
+/* Stereo and mono from any layout. The per-layout routines read 6.1 in
+ * another channel order (the left side went to the centre, the right side
+ * and the rear centre to the wrong outputs at full level), put the centre of
+ * 3.0 and 4.0 at full level over halved fronts, and others had none: the
+ * rears of quad, and everything but the fronts of 4.1 and 6.0, were lost. */
+static void DoWork_matrix( filter_t *p_filter, block_t *p_in_buf, block_t *p_out_buf )
+{
+    const filter_sys_t *p_sys = p_filter->p_sys;
     float *p_dest = (float *)p_out_buf->p_buffer;
     const float *p_src = (const float *)p_in_buf->p_buffer;
-    for( int i = p_in_buf->i_nb_samples; i--; )
+    for( unsigned i = p_in_buf->i_nb_samples; i--; )
     {
-        float ctr = (p_src[2] + p_src[5]) * 0.7071f;
-        *p_dest++ = p_src[0] + p_src[3] + ctr;
-        *p_dest++ = p_src[1] + p_src[4] + ctr;
-
-        p_src += 6;
-
-        /* We always have LFE here */
-        p_src++;
+        for( unsigned o = 0; o < p_sys->out_nb; o++ )
+        {
+            float v = 0.f;
+            for( unsigned c = 0; c < p_sys->in_nb; c++ )
+                v += p_sys->coefs[o][c] * p_src[c];
+            *p_dest++ = v;
+        }
+        p_src += p_sys->in_nb;
     }
 }
 
-static void DoWork_5_x_to_2_0( filter_t * p_filter,  block_t * p_in_buf, block_t * p_out_buf ) {
-    float *p_dest = (float *)p_out_buf->p_buffer;
-    const float *p_src = (const float *)p_in_buf->p_buffer;
-    for( int i = p_in_buf->i_nb_samples; i--; )
+/* ITU-R BS.775 levels: centre and surrounds at -3 dB on their side, the LFE
+ * left out. Side and back surrounds together (7.x) are -6 dB each, and a
+ * rear centre -6 dB on both sides, as through 5.1 first. Mono is the mean
+ * of the two sides. */
+static void SetupMatrix( filter_sys_t *p_sys, uint32_t input, bool mono )
+{
+    const bool both_pairs = ( input & AOUT_CHANS_MIDDLE ) && ( input & AOUT_CHANS_REAR );
+    const float surround = both_pairs ? 0.5f : 0.7071f;
+    unsigned c = 0;
+
+    for( unsigned i = 0; pi_vlc_chan_order_wg4[i]; i++ )
     {
-        *p_dest++ = p_src[0] + 0.7071f * (p_src[4] + p_src[2]);
-        *p_dest++ = p_src[1] + 0.7071f * (p_src[4] + p_src[3]);
+        const uint32_t chan = pi_vlc_chan_order_wg4[i];
+        if( !( input & chan ) )
+            continue;
 
-        p_src += 5;
-
-        if( p_filter->fmt_in.audio.i_physical_channels & AOUT_CHAN_LFE ) p_src++;
+        float l = 0.f, r = 0.f;
+        switch( chan )
+        {
+            case AOUT_CHAN_LEFT:        l = 1.f; break;
+            case AOUT_CHAN_RIGHT:       r = 1.f; break;
+            case AOUT_CHAN_CENTER:      l = r = 0.7071f; break;
+            case AOUT_CHAN_MIDDLELEFT:
+            case AOUT_CHAN_REARLEFT:    l = surround; break;
+            case AOUT_CHAN_MIDDLERIGHT:
+            case AOUT_CHAN_REARRIGHT:   r = surround; break;
+            case AOUT_CHAN_REARCENTER:  l = r = 0.5f; break;
+            default:                    break; /* LFE */
+        }
+        if( mono )
+            /* a centre alone stays as it is */
+            p_sys->coefs[0][c] = ( input & ~AOUT_CHAN_LFE ) == AOUT_CHAN_CENTER
+                               ? ( chan == AOUT_CHAN_CENTER ? 1.f : 0.f )
+                               : 0.5f * ( l + r );
+        else
+        {
+            p_sys->coefs[0][c] = l;
+            p_sys->coefs[1][c] = r;
+        }
+        c++;
     }
-}
-
-static void DoWork_4_0_to_2_0( filter_t * p_filter,  block_t * p_in_buf, block_t * p_out_buf ) {
-    VLC_UNUSED(p_filter);
-    float *p_dest = (float *)p_out_buf->p_buffer;
-    const float *p_src = (const float *)p_in_buf->p_buffer;
-    for( int i = p_in_buf->i_nb_samples; i--; )
-    {
-        *p_dest++ = p_src[2] + p_src[3] + 0.5f * p_src[0];
-        *p_dest++ = p_src[2] + p_src[3] + 0.5f * p_src[1];
-        p_src += 4;
-    }
-}
-
-static void DoWork_3_x_to_2_0( filter_t * p_filter,  block_t * p_in_buf, block_t * p_out_buf ) {
-    float *p_dest = (float *)p_out_buf->p_buffer;
-    const float *p_src = (const float *)p_in_buf->p_buffer;
-    for( int i = p_in_buf->i_nb_samples; i--; )
-    {
-        *p_dest++ = p_src[2] + 0.5f * p_src[0];
-        *p_dest++ = p_src[2] + 0.5f * p_src[1];
-
-        p_src += 3;
-
-        if( p_filter->fmt_in.audio.i_physical_channels & AOUT_CHAN_LFE ) p_src++;
-    }
-}
-
-static void DoWork_7_x_to_1_0( filter_t * p_filter,  block_t * p_in_buf, block_t * p_out_buf ) {
-    float *p_dest = (float *)p_out_buf->p_buffer;
-    const float *p_src = (const float *)p_in_buf->p_buffer;
-    for( int i = p_in_buf->i_nb_samples; i--; )
-    {
-        *p_dest++ = p_src[6] + p_src[0] / 4 + p_src[1] / 4 + p_src[2] / 8 + p_src[3] / 8 + p_src[4] / 8 + p_src[5] / 8;
-
-        p_src += 7;
-
-        if( p_filter->fmt_in.audio.i_physical_channels & AOUT_CHAN_LFE ) p_src++;
-    }
-}
-
-static void DoWork_5_x_to_1_0( filter_t * p_filter,  block_t * p_in_buf, block_t * p_out_buf ) {
-    float *p_dest = (float *)p_out_buf->p_buffer;
-    const float *p_src = (const float *)p_in_buf->p_buffer;
-    for( int i = p_in_buf->i_nb_samples; i--; )
-    {
-        *p_dest++ = 0.7071f * (p_src[0] + p_src[1]) + p_src[4]
-                     + 0.5f * (p_src[2] + p_src[3]);
-
-        p_src += 5;
-
-        if( p_filter->fmt_in.audio.i_physical_channels & AOUT_CHAN_LFE ) p_src++;
-    }
-}
-
-static void DoWork_4_0_to_1_0( filter_t * p_filter,  block_t * p_in_buf, block_t * p_out_buf ) {
-    VLC_UNUSED(p_filter);
-    float *p_dest = (float *)p_out_buf->p_buffer;
-    const float *p_src = (const float *)p_in_buf->p_buffer;
-    for( int i = p_in_buf->i_nb_samples; i--; )
-    {
-        *p_dest++ = p_src[2] + p_src[3] + p_src[0] / 4 + p_src[1] / 4;
-        p_src += 4;
-    }
-}
-
-static void DoWork_3_x_to_1_0( filter_t * p_filter,  block_t * p_in_buf, block_t * p_out_buf ) {
-    float *p_dest = (float *)p_out_buf->p_buffer;
-    const float *p_src = (const float *)p_in_buf->p_buffer;
-    for( int i = p_in_buf->i_nb_samples; i--; )
-    {
-        *p_dest++ = p_src[2] + p_src[0] / 4 + p_src[1] / 4;
-
-        p_src += 3;
-
-        if( p_filter->fmt_in.audio.i_physical_channels & AOUT_CHAN_LFE ) p_src++;
-    }
-}
-
-static void DoWork_2_x_to_1_0( filter_t * p_filter,  block_t * p_in_buf, block_t * p_out_buf ) {
-    VLC_UNUSED(p_filter);
-    float *p_dest = (float *)p_out_buf->p_buffer;
-    const float *p_src = (const float *)p_in_buf->p_buffer;
-    for( int i = p_in_buf->i_nb_samples; i--; )
-    {
-        *p_dest++ = p_src[0] / 2 + p_src[1] / 2;
-
-        p_src += 2;
-    }
+    p_sys->in_nb = c;
+    p_sys->out_nb = mono ? 1 : 2;
+    p_sys->work = DoWork_matrix;
 }
 
 static void DoWork_7_x_to_4_0( filter_t * p_filter,  block_t * p_in_buf, block_t * p_out_buf ) {
@@ -274,6 +213,7 @@ static int OpenFilter( vlc_object_t *p_this )
     if( p_filter->fmt_in.audio.i_format != VLC_CODEC_FL32 ||
         p_filter->fmt_in.audio.i_format != p_filter->fmt_out.audio.i_format ||
         p_filter->fmt_in.audio.i_rate != p_filter->fmt_out.audio.i_rate ||
+        p_filter->fmt_in.audio.channel_type != AUDIO_CHANNEL_TYPE_BITMAP ||
         aout_FormatNbChannels( &p_filter->fmt_in.audio) < 2 )
         return VLC_EGENERIC;
 
@@ -284,47 +224,29 @@ static int OpenFilter( vlc_object_t *p_this )
     if( input == output )
         return VLC_EGENERIC;
 
+    filter_sys_t *p_sys = vlc_obj_malloc( p_this, sizeof(*p_sys) );
+    if( unlikely(p_sys == NULL) )
+        return VLC_ENOMEM;
+
+    if( output == AOUT_CHAN_CENTER || output == AOUT_CHANS_2_0 )
+        SetupMatrix( p_sys, input, output == AOUT_CHAN_CENTER );
+    else
+        p_sys->work = NULL;
+
     const bool b_input_6_1 = input == AOUT_CHANS_6_1_MIDDLE;
-    const bool b_input_4_center_rear = input == AOUT_CHANS_4_CENTER_REAR;
 
     input &= ~AOUT_CHAN_LFE;
 
     const bool b_input_7_x = input == AOUT_CHANS_7_0;
     const bool b_input_5_x = input == AOUT_CHANS_5_0
                           || input == AOUT_CHANS_5_0_MIDDLE;
-    const bool b_input_3_x = input == AOUT_CHANS_3_0;
 
     /*
      * TODO: We don't support any 8.1 input
-     * TODO: We don't support any 6.x input
-     * TODO: We don't support 4.0 rear and 4.0 middle
+     * TODO: We don't support any 6.x input to 4.0
      */
-    if( output == AOUT_CHAN_CENTER )
-    {
-        if( b_input_7_x )
-            do_work = GET_WORK(7_x,1_0);
-        else if( b_input_5_x )
-            do_work = GET_WORK(5_x,1_0);
-        else if( b_input_4_center_rear )
-            do_work = GET_WORK(4_0,1_0);
-        else if( b_input_3_x )
-            do_work = GET_WORK(3_x,1_0);
-        else
-            do_work = GET_WORK(2_x,1_0);
-    }
-    else if( output == AOUT_CHANS_2_0 )
-    {
-        if( b_input_7_x )
-            do_work = GET_WORK(7_x,2_0);
-        else if( b_input_6_1 )
-            do_work = GET_WORK(6_1,2_0);
-        else if( b_input_5_x )
-            do_work = GET_WORK(5_x,2_0);
-        else if( b_input_4_center_rear )
-            do_work = GET_WORK(4_0,2_0);
-        else if( b_input_3_x )
-            do_work = GET_WORK(3_x,2_0);
-    }
+    if( p_sys->work != NULL )
+        do_work = p_sys->work;
     else if( output == AOUT_CHANS_4_0 )
     {
         if( b_input_7_x )
@@ -342,13 +264,17 @@ static int OpenFilter( vlc_object_t *p_this )
     }
 
     if( do_work == NULL )
+    {
+        vlc_obj_free( p_this, p_sys );
         return VLC_EGENERIC;
+    }
 
     static const struct vlc_filter_operations filter_ops =
         { .filter_audio = Filter };
 
+    p_sys->work = do_work;
     p_filter->ops = &filter_ops;
-    p_filter->p_sys = do_work;
+    p_filter->p_sys = p_sys;
     return VLC_SUCCESS;
 }
 
@@ -357,7 +283,7 @@ static int OpenFilter( vlc_object_t *p_this )
  *****************************************************************************/
 static block_t *Filter( filter_t *p_filter, block_t *p_block )
 {
-    void (*work)(filter_t *, block_t *, block_t *) = p_filter->p_sys;
+    const filter_sys_t *p_sys = p_filter->p_sys;
 
     if( !p_block || !p_block->i_nb_samples )
     {
@@ -388,7 +314,7 @@ static block_t *Filter( filter_t *p_filter, block_t *p_block )
     p_out->i_nb_samples = p_block->i_nb_samples;
     p_out->i_buffer = p_block->i_buffer * i_output_nb / i_input_nb;
 
-    work( p_filter, p_block, p_out );
+    p_sys->work( p_filter, p_block, p_out );
 
     block_Release( p_block );
 

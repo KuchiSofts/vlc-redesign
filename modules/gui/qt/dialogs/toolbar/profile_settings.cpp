@@ -34,14 +34,16 @@
 namespace {
 // Accounts, credentials, endpoints, file locations, remote control and process
 // integration are owned by the installation, never by a toolbar profile. So
-// are the privacy choices: choosing a profile must not turn them back.
+// are the privacy choices: choosing a profile must not turn them back. And so
+// is the media library: a profile saved with it off turned it off, Home and
+// its sections empty until it was turned on again in Settings.
 const QSet<QString> globalKeys {
     "lastfm-username", "lastfm-password", "scrobbler-url", "http-proxy",
     "http-proxy-pwd", "logfile", "sub-autodetect-path", "input-record-path",
     "extraintf", "control", "file-logging", "one-instance",
     "one-instance-when-started-from-file",
     "metadata-network-access", "save-recentplay", "qt:redesign/recentplay-filter",
-    "qt-privacy-ask"
+    "qt-privacy-ask", "media-library-enabled"
 };
 
 const QStringList audioOptions {

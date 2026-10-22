@@ -7,11 +7,38 @@ For changes to VLC itself, see [NEWS](NEWS).
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
 what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `942cdaea17` (2026-10-19).
 
-**Contents:** [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
 
 ---
+
+## [0.2.6] · 2026-10-22
+
+Fixes from [#4](https://github.com/KuchiSofts/vlc-redesign/issues/4): menus that kept old check marks, the
+Visualizer and the right-click menu of the music player, and what *Open Network Stream* takes as a link.
+
+### Fixed
+
+- **Menus kept the check marks of earlier choices**: choosing one profile after another left all of them checked in
+  the main menu. A check mark that goes now goes, in every menu of the redesign.
+- **The Visualizer could not be changed or turned off** once its window was closed: a visualization plays in the
+  video layout, which had no Visualizer button. The button stays above the controls while a music file shows a
+  visualization.
+- **No menu on a right click** over the music player, nor over a visualization. Both open the player's menu now.
+- **Open Network Stream** took anything typed in *Network URL* as links: "my channels" became two broken items of the
+  playlist. Only links and paths are taken now, and the dialog says which word isn't one.
+- **Profiles no longer turn the media library off**: a profile saved with *Use the media library* off turned it off
+  when chosen, and Home, Videos, Music, Playlists and Recent stayed greyed out.
+
+### Technical
+
+- `RedesignMenuItem`: the check mark is hidden (opacity) rather than unloaded: an `IconImage` whose `source` becomes
+  empty keeps showing its last image. `marked` and `markable` show a choice kept by a model without making the row
+  checkable.
+- The visualization's vout is made by the audio filter (`aout_filter_GetVout()`), not through the player: no module
+  listened to its mouse. A `TapHandler` on the video surface opens the player's menu when the media has no video track.
+- `media-library-enabled` joins the installation's keys that profiles neither capture nor apply.
 
 ## [0.2.5] · 2026-10-22
 

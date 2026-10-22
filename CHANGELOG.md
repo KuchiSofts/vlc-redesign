@@ -7,15 +7,16 @@ For changes to VLC itself, see [NEWS](NEWS).
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
 what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `942cdaea17` (2026-10-19).
 
-**Contents:** [0.2.4](#024--unreleased) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
 
 ---
 
-## [0.2.4] · Unreleased
+## [0.2.4] · 2026-10-22
 
-Updates without the installer: a few hundred kilobytes in the background, and a restart of a second or two.
+Updates without the installer: a few hundred kilobytes in the background, and a restart of a second or two. Setup
+no longer gets stuck, pausing and seeking no longer freezes the video, and coming back from a TV is clean.
 
 ### Added
 
@@ -36,6 +37,33 @@ Updates without the installer: a few hundred kilobytes in the background, and a 
 
 ### Fixed
 
+- **Setup stuck on "Preparing VLC Redesign for a fast start"** ([#2](https://github.com/KuchiSofts/vlc-redesign/issues/2)):
+  it waited, with no limit, for the plugin cache to be made again, which loads every plugin, and on some PCs one never
+  finished loading (another program holding or injecting into it). Setup no longer needs that step: the files keep
+  their times in every time zone, so the cache of the package is right as installed. The cache tool gives up after
+  90 seconds and leaves the user's settings out. Thanks for the report!
+- **Slow starts** after unzipping in another time zone, or after plugins changed: the plugin cache no longer matched
+  the files, and every start loaded all the plugins. VLC Redesign now saves it again by itself; the next start is fast.
+- **Playback**:
+  - After a pause, a seek and play, the video stayed frozen while the sound went on (VLC 4's clock).
+  - A seek while paused landed elsewhere or showed no picture, and said *Next frame*. The picture of the seek is shown.
+  - A previous-frame step could hang the media, and a subtitle shown while paused read the file ahead: play then
+    jumped forward.
+  - The time stood still for a moment after a seek or a start.
+  - The sound could break up while the computer was busy: the Windows audio buffer was 22 ms, it is 200 ms now.
+  - Subtitles of a music file could hold VLC Redesign open after quitting.
+- **Casting**:
+  - Casting asked about the Windows firewall in the app first: Windows now asks at once, only when the rule is
+    missing or blocked, and the window doesn't freeze meanwhile.
+  - Stopping a cast in the middle showed broken pixels and flickered: playback goes on here where the TV was, with a
+    clean picture, for Chromecast and DLNA TVs.
+  - A DLNA TV that can't read a file as it is gets it converted, instead of an error.
+  - Back from a paused cast, the picture, play and quit work; the time stays while the TV pauses; subtitles come back.
+  - The conversion for a TV takes 8 threads at most, and a Chromecast is listed with its name.
+- **Interface**:
+  - Icons are sharp at 150 % and 200 % display scale, and follow a scale changed while VLC Redesign runs.
+  - The last Settings editors that needed the mouse (equalizer, startup volume, colour swatches, the shortcut list)
+    work with the keyboard.
 - **Reopening after an update** started the media as a clip from where it was: the time began at 0:00, the length was
   shortened, and the part before couldn't be reached (VLC 4's `:start-time`). It now seeks there, without the
   *Continue where you left off?* card.
@@ -110,6 +138,18 @@ Updates without the installer: a few hundred kilobytes in the background, and a 
   their `require`d modules with `vlc_fopen` on Windows.
 - `HttpRequest` has a deadline for the whole request besides the timeout of each step, and `httpRequestAsync()` returns
   a function that cancels it.
+- The installer sets `TimeStampsInUTC` and runs no `vlc-cache-gen`; `bin/cachegen.c` passes `--ignore-config` and
+  ends itself after 90 s (a watchdog thread started before the plugins load); `src/modules/bank.c` saves the cache
+  again when a plugin had to be loaded from its file or an entry no longer had one.
+- `src/clock/clock.c`: the main clock's time stays at the pause date while paused (`vlc_clock_main_now()`), across a
+  reset, so the first picture after a paused seek isn't dated in the past. `es_out` shifts the input clock and the
+  main clock in the order of the pause; `decoder.c` keeps the frame-step countdown quiet for the picture a paused seek
+  asks for, waits for video only for `next_frame_need_data`, and lets an SPU decoder waiting for a vout be interrupted.
+- WASAPI: a 200 ms shared-mode buffer (the device's minimum when refused), the first time reported right after a
+  start, and the log says when the device ran out of audio.
+- Back from a renderer, `INPUT_CONTROL_SET_RENDERER` seeks precisely to the renderer's time (`renderer-time`, in
+  stream time) after the ES restart; the DLNA output asks for a conversion when the TV refuses a stream copied as it
+  is.
 
 ---
 

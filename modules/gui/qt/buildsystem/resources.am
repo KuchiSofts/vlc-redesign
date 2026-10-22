@@ -8,7 +8,7 @@ libqt_plugin_la_RES = \
 	pixmaps/redesign/track-check-active.png \
 	pixmaps/redesign/icons/replay/default.png \
 	pixmaps/redesign/icons/favorite/active.png \
-	pixmaps/redesign/icons/fullscreen/default.png \
+	pixmaps/redesign/icons/fullscreen/default.png 	pixmaps/redesign/icons/fullscreen/default@2x.png \
 	pixmaps/redesign/icons/preferences/active.png \
 	pixmaps/redesign/icons/preferences/default.png \
 	pixmaps/redesign/icons/list/default.png \
@@ -28,21 +28,21 @@ libqt_plugin_la_RES = \
 	pixmaps/redesign/icons/grid/default.png \
 	pixmaps/redesign/icons/new-folder/default.png \
 	pixmaps/redesign/icons/tv/selected.png \
-	pixmaps/redesign/icons/queue/default.png \
+	pixmaps/redesign/icons/queue/default.png 	pixmaps/redesign/icons/queue/default@2x.png \
 	pixmaps/redesign/icons/link/default.png \
-	pixmaps/redesign/icons/search/default.png \
+	pixmaps/redesign/icons/search/default.png 	pixmaps/redesign/icons/search/default@2x.png \
 	pixmaps/redesign/icons/window/default.png \
-	pixmaps/redesign/icons/play/default.png \
+	pixmaps/redesign/icons/play/default.png 	pixmaps/redesign/icons/play/default@2x.png \
 	pixmaps/redesign/icons/interface/active.png \
 	pixmaps/redesign/icons/home/active.png \
-	pixmaps/redesign/icons/hotkeys/default.png \
+	pixmaps/redesign/icons/hotkeys/default.png 	pixmaps/redesign/icons/hotkeys/default@2x.png \
 	pixmaps/redesign/icons/edit/default.png \
 	pixmaps/redesign/icons/PiP/default.png \
 	pixmaps/redesign/icons/cast/default.png \
 	pixmaps/redesign/icons/cast/large.png \
-	pixmaps/redesign/icons/artist/default.png \
-	pixmaps/redesign/icons/ui/default.png \
-	pixmaps/redesign/icons/close/default.png \
+	pixmaps/redesign/icons/artist/default.png 	pixmaps/redesign/icons/artist/default@2x.png \
+	pixmaps/redesign/icons/ui/default.png 	pixmaps/redesign/icons/ui/default@2x.png \
+	pixmaps/redesign/icons/close/default.png 	pixmaps/redesign/icons/close/default@2x.png \
 	pixmaps/redesign/icons/home/selected.png \
 	pixmaps/redesign/icons/chevron-right/default.png \
 	pixmaps/redesign/icons/chevron-down/default.png \
@@ -60,34 +60,34 @@ libqt_plugin_la_RES = \
 	pixmaps/redesign/icons/HDR/default.png \
 	pixmaps/redesign/icons/tv/default.png \
 	pixmaps/redesign/icons/wrench/default.png \
-	pixmaps/redesign/icons/subtitles/default.png \
+	pixmaps/redesign/icons/subtitles/default.png 	pixmaps/redesign/icons/subtitles/default@2x.png \
 	pixmaps/redesign/icons/privacy/default.png \
 	pixmaps/redesign/icons/sidebar/active.png \
 	pixmaps/redesign/icons/sidebar/default.png \
 	pixmaps/redesign/icons/speed/default.png \
-	pixmaps/redesign/icons/profile/default.png \
+	pixmaps/redesign/icons/profile/default.png 	pixmaps/redesign/icons/profile/default@2x.png \
 	pixmaps/redesign/icons/EQ/default.png \
 	pixmaps/redesign/icons/videos/active.png \
-	pixmaps/redesign/icons/remove/default.png \
+	pixmaps/redesign/icons/remove/default.png 	pixmaps/redesign/icons/remove/default@2x.png \
 	pixmaps/redesign/icons/view/default.png \
 	pixmaps/redesign/icons/interface/default.png \
 	pixmaps/redesign/icons/more/default.png \
 	pixmaps/redesign/icons/refresh/default.png \
 	pixmaps/redesign/icons/hotkeys/active.png \
-	pixmaps/redesign/icons/quit/default.png \
-	pixmaps/redesign/icons/minimize/default.png \
+	pixmaps/redesign/icons/quit/default.png 	pixmaps/redesign/icons/quit/default@2x.png \
+	pixmaps/redesign/icons/minimize/default.png 	pixmaps/redesign/icons/minimize/default@2x.png \
 	pixmaps/redesign/icons/divider/default.png \
 	pixmaps/redesign/icons/videos/default.png \
-	pixmaps/redesign/icons/home/default.png \
+	pixmaps/redesign/icons/home/default.png 	pixmaps/redesign/icons/home/default@2x.png \
 	pixmaps/redesign/icons/playback/default.png \
 	pixmaps/redesign/icons/video/active.png \
-	pixmaps/redesign/icons/previous/default.png \
-	pixmaps/redesign/icons/next/default.png \
+	pixmaps/redesign/icons/previous/default.png 	pixmaps/redesign/icons/previous/default@2x.png \
+	pixmaps/redesign/icons/next/default.png 	pixmaps/redesign/icons/next/default@2x.png \
 	pixmaps/redesign/icons/subtitles/active.png \
 	pixmaps/redesign/icons/check/active.png \
-	pixmaps/redesign/icons/disc/default.png \
-	pixmaps/redesign/icons/recent/default.png \
-	pixmaps/redesign/icons/recent/active.png \
+	pixmaps/redesign/icons/disc/default.png 	pixmaps/redesign/icons/disc/default@2x.png \
+	pixmaps/redesign/icons/recent/default.png 	pixmaps/redesign/icons/recent/default@2x.png \
+	pixmaps/redesign/icons/recent/active.png 	pixmaps/redesign/icons/recent/active@2x.png \
 	pixmaps/redesign/icons/folder/large.png \
 	pixmaps/redesign/icons/repeat/default.png \
 	pixmaps/redesign/icons/repeat/active.png \
@@ -95,14 +95,14 @@ libqt_plugin_la_RES = \
 	pixmaps/redesign/icons/shuffle/active.png \
 	pixmaps/redesign/icons/right-sidebar/default.png \
 	pixmaps/redesign/icons/play/outline-active.png \
-	pixmaps/redesign/icons/arrow-left/default.png \
-	pixmaps/redesign/icons/arrow-left/disabled.png \
-	pixmaps/redesign/icons/arrow-right/default.png \
-	pixmaps/redesign/icons/arrow-right/disabled.png \
+	pixmaps/redesign/icons/arrow-left/default.png 	pixmaps/redesign/icons/arrow-left/default@2x.png \
+	pixmaps/redesign/icons/arrow-left/disabled.png 	pixmaps/redesign/icons/arrow-left/disabled@2x.png \
+	pixmaps/redesign/icons/arrow-right/default.png 	pixmaps/redesign/icons/arrow-right/default@2x.png \
+	pixmaps/redesign/icons/arrow-right/disabled.png 	pixmaps/redesign/icons/arrow-right/disabled@2x.png \
 	pixmaps/redesign/icons/sort/dim.png \
 	pixmaps/redesign/icons/grid/dim.png \
 	pixmaps/redesign/icons/list/dim.png \
-	pixmaps/redesign/icons/search/dim.png \
+	pixmaps/redesign/icons/search/dim.png 	pixmaps/redesign/icons/search/dim@2x.png \
 	pixmaps/redesign/icons/more/dim.png \
 	pixmaps/redesign/icons/video/dim.png \
 	pixmaps/redesign/icons/subtitle/dim.png \
@@ -120,28 +120,28 @@ libqt_plugin_la_RES = \
 	pixmaps/redesign/icons/plugins/default.png \
 	pixmaps/redesign/icons/plugins/active.png \
 	pixmaps/redesign/icons/snapshot/default.png \
-	pixmaps/redesign/icons/favorite/default.png \
+	pixmaps/redesign/icons/favorite/default.png 	pixmaps/redesign/icons/favorite/default@2x.png \
 	pixmaps/redesign/icons/forward-10-sec/default.png \
 	pixmaps/redesign/icons/playback-settings/active.png \
 	pixmaps/redesign/icons/expand-sidebar/default.png \
-	pixmaps/redesign/icons/maximize/default.png \
+	pixmaps/redesign/icons/maximize/default.png 	pixmaps/redesign/icons/maximize/default@2x.png \
 	pixmaps/redesign/icons/paint/default.png \
 	pixmaps/redesign/icons/thumbnail/default.png \
 	pixmaps/redesign/icons/check/default.png \
-	pixmaps/redesign/icons/settings/default.png \
-	pixmaps/redesign/icons/lists/default.png \
+	pixmaps/redesign/icons/settings/default.png 	pixmaps/redesign/icons/settings/default@2x.png \
+	pixmaps/redesign/icons/lists/default.png 	pixmaps/redesign/icons/lists/default@2x.png \
 	pixmaps/redesign/icons/video/default.png \
 	pixmaps/redesign/icons/pause/default.png \
 	pixmaps/redesign/icons/record/active.png \
 	pixmaps/redesign/icons/streaming/active.png \
 	pixmaps/redesign/icons/music/default.png \
-	pixmaps/redesign/icons/playback-settings/default.png \
+	pixmaps/redesign/icons/playback-settings/default.png 	pixmaps/redesign/icons/playback-settings/default@2x.png \
 	pixmaps/redesign/icons/videos/selected.png \
 	pixmaps/redesign/icons/swap/default.png \
 	pixmaps/redesign/icons/zoom/default.png \
-	pixmaps/redesign/icons/playlist/default.png \
+	pixmaps/redesign/icons/playlist/default.png 	pixmaps/redesign/icons/playlist/default@2x.png \
 	pixmaps/redesign/icons/collapse-sidebar/default.png \
-	pixmaps/redesign/icons/audio/default.png \
+	pixmaps/redesign/icons/audio/default.png 	pixmaps/redesign/icons/audio/default@2x.png \
 	pixmaps/redesign/icons/capture-device/default.png \
 	pixmaps/redesign/icons/paint/active.png \
 	pixmaps/redesign/icons/genre/default.png \
@@ -150,8 +150,8 @@ libqt_plugin_la_RES = \
 	pixmaps/redesign/icons/move/default.png \
 	pixmaps/redesign/icons/bookmark/default.png \
 	pixmaps/redesign/icons/folder/selected.png \
-	pixmaps/redesign/icons/info/default.png \
-	pixmaps/redesign/icons/add/default.png 	pixmaps/redesign/icons/add/half.png \
+	pixmaps/redesign/icons/info/default.png 	pixmaps/redesign/icons/info/default@2x.png \
+	pixmaps/redesign/icons/add/default.png 	pixmaps/redesign/icons/add/default@2x.png 	pixmaps/redesign/icons/add/half.png \
 	pixmaps/redesign/icons/backward-10-sec/default.png \
 	pixmaps/redesign/icons/accessibility/default.png \
 	pixmaps/redesign/welcome.svg \

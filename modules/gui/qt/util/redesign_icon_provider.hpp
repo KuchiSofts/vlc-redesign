@@ -62,10 +62,14 @@ public:
 
 private:
     void updateTheme();
+    void updateDensity();
 
     QPointer<MainCtx> m_ctx;
     // Read from the threads of the engine
     std::atomic<bool> m_light { false };
+    // A screen shows more than a pixel per unit (150 %, 200 %): the icons
+    // drawn twice as large are taken where there are
+    std::atomic<bool> m_dense { false };
 };
 
 #endif // REDESIGN_ICON_PROVIDER_HPP

@@ -72,6 +72,11 @@ OpenDecoder(vlc_object_t *p_this)
         return VLC_EGENERIC;
     }
 
+    /* The packetizer has not read a frame yet: the decoder is loaded again
+     * with the rate (an output asked for 0 Hz logged an error every time) */
+    if (p_dec->fmt_in->audio.i_rate == 0)
+        return VLC_EGENERIC;
+
     /* Set output properties */
     p_dec->fmt_out.i_codec = p_dec->fmt_in->i_codec;
     p_dec->fmt_out.audio = p_dec->fmt_in->audio;

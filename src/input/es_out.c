@@ -2655,7 +2655,16 @@ static void EsOutCreateDecoder(es_out_sys_t *p_sys, es_out_id_t *p_es)
         vlc_input_decoder_ChangeRate( dec, p_sys->rate );
 
         if( unlikely( EsOutIsPaused(p_sys) ) ) /* Could happen during next-frame */
+        {
             vlc_input_decoder_ChangePause( dec, true, p_sys->i_pause_date );
+            /* A video started while paused (back from a renderer, a track
+             * selected or restarted) shows where the playback stands: paused,
+             * a flush asks for one picture (else the window shows no video
+             * until play) */
+            if( p_es->fmt.i_cat == VIDEO_ES && p_es->p_master == NULL
+             && priv->p_sout == NULL )
+                vlc_input_decoder_Flush( dec );
+        }
 
         if( p_sys->b_buffering )
             vlc_input_decoder_StartWait( dec );

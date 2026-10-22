@@ -145,8 +145,9 @@ void PlayerControllerPrivate::UpdateName(input_item_t* media)
 
     if( m_name != name )
     {
+        /* QML reads the property again when the signal comes */
+        m_name = name;
         emit q->nameChanged( name );
-        m_name = std::move(name);
     }
 }
 
@@ -238,6 +239,14 @@ void PlayerControllerPrivate::UpdateMeta( input_item_t *p_item )
                     m_syltLyrics.reset();
                 }
             }
+        }
+        else
+        {
+            /* no meta yet: don't keep the previous media's */
+            m_title.clear();
+            m_artist.clear();
+            m_album.clear();
+            m_artwork.clear();
         }
     }
 
@@ -918,6 +927,9 @@ static void on_player_media_meta_changed(vlc_player_t *, input_item_t *media, vo
     SharedInputItem mediaPtr(media);
     //call on object thread
     that->callAsync([that,mediaPtr] () {
+        /* the previous media keeps sending changes while it stops */
+        if (that->m_currentItem.get() != mediaPtr.get())
+            return;
         that->UpdateName(mediaPtr.get());
         that->UpdateArt(mediaPtr.get());
         that->UpdateMeta(mediaPtr.get());

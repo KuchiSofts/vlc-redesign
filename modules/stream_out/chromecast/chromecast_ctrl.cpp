@@ -573,21 +573,28 @@ void intf_sys_t::interrupt_wake_up()
 
 int intf_sys_t::pace()
 {
-    vlc::threads::mutex_locker locker( m_lock );
-
-    m_interrupted = false;
+    {
+        vlc::threads::mutex_locker locker( m_lock );
+        m_interrupted = false;
+    }
+    /* The callback takes m_lock (an interruption already pending calls it
+     * right away), so it is registered and unregistered without it. */
     vlc_interrupt_register( interrupt_wake_up_cb, this );
     int ret = 0;
     vlc_tick_t deadline = vlc_tick_now() + VLC_TICK_FROM_MS(500);
 
-    /* Wait for the sout to send more data via http (m_pace), or wait for the
-     * CC to finish. In case the demux filter is EOF, we always wait for
-     * 500msec (unless interrupted from the input thread). */
-    while( !isFinishedPlaying() && ( m_pace || m_input_eof ) && !m_interrupted && ret == 0 )
-        ret = m_pace_cond.timedwait( m_lock, deadline );
+    {
+        vlc::threads::mutex_locker locker( m_lock );
 
+        /* Wait for the sout to send more data via http (m_pace), or wait for
+         * the CC to finish. In case the demux filter is EOF, we always wait
+         * for 500msec (unless interrupted from the input thread). */
+        while( !isFinishedPlaying() && ( m_pace || m_input_eof ) && !m_interrupted && ret == 0 )
+            ret = m_pace_cond.timedwait( m_lock, deadline );
+    }
     vlc_interrupt_unregister();
 
+    vlc::threads::mutex_locker locker( m_lock );
     if( m_cc_eof )
         return CC_PACE_OK_ENDED;
     else if( isStateError() || m_state == Stopped )

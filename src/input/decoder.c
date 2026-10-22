@@ -45,6 +45,7 @@
 #include <vlc_picture_pool.h>
 #include <vlc_tracer.h>
 #include <vlc_list.h>
+#include <vlc_interrupt.h>
 #include <vlc_replay_gain.h>
 
 #include "audio_output/aout_internal.h"
@@ -2650,6 +2651,16 @@ static void GetStatusLocked(vlc_input_decoder_t *p_owner,
     GetCCDescLocked(p_owner, &status->subdec_desc);
 }
 
+/* The input pacing on the decoder is stopped (vlc_interrupt_kill) */
+static void DecoderPaceWakeUp( void *data )
+{
+    vlc_input_decoder_t *p_owner = data;
+
+    vlc_fifo_Lock( p_owner->p_fifo );
+    vlc_cond_signal( &p_owner->wait_fifo );
+    vlc_fifo_Unlock( p_owner->p_fifo );
+}
+
 void vlc_input_decoder_DecodeWithStatus(vlc_input_decoder_t *p_owner, vlc_frame_t *frame,
                                         bool b_do_pace,
                                         struct vlc_input_decoder_status *status)
@@ -2666,6 +2677,15 @@ void vlc_input_decoder_DecodeWithStatus(vlc_input_decoder_t *p_owner, vlc_frame_
         return;
     }
 
+    /* The input being stopped waits no more: a decoder that doesn't consume
+     * (a stream output stalled) would hold the input's end, and the
+     * player's, forever. The callback takes the FIFO lock, so it is
+     * registered outside of it. Locking is not necessary for b_waiting as
+     * it is only read, not written by the decoder thread. */
+    const bool b_pace = b_do_pace && !p_owner->b_waiting;
+    if( b_pace )
+        vlc_interrupt_register( DecoderPaceWakeUp, p_owner );
+
     vlc_fifo_Lock( p_owner->p_fifo );
     if( !b_do_pace )
     {
@@ -2681,11 +2701,9 @@ void vlc_input_decoder_DecodeWithStatus(vlc_input_decoder_t *p_owner, vlc_frame_
         }
     }
     else
-    if( !p_owner->b_waiting )
-    {   /* The FIFO is not consumed when waiting, so pacing would deadlock VLC.
-         * Locking is not necessary as b_waiting is only read, not written by
-         * the decoder thread. */
-        while( vlc_fifo_GetCount( p_owner->p_fifo ) >= 10 )
+    if( b_pace )
+    {   /* The FIFO is not consumed when waiting, so pacing would deadlock VLC. */
+        while( vlc_fifo_GetCount( p_owner->p_fifo ) >= 10 && !vlc_killed() )
             vlc_fifo_WaitCond( p_owner->p_fifo, &p_owner->wait_fifo );
     }
 
@@ -2710,6 +2728,9 @@ void vlc_input_decoder_DecodeWithStatus(vlc_input_decoder_t *p_owner, vlc_frame_
 
 
     vlc_fifo_Unlock( p_owner->p_fifo );
+
+    if( b_pace )
+        vlc_interrupt_unregister();
 }
 
 void vlc_input_decoder_Decode(vlc_input_decoder_t *p_owner, vlc_frame_t *frame,

@@ -1893,6 +1893,12 @@ static void ControlUpdateRenderer( input_thread_t *p_input, bool b_enable )
         input_resource_PutSout( input_priv(p_input)->p_resource,
                                 input_priv(p_input)->p_sout );
         input_priv(p_input)->p_sout = NULL;
+        /* The renderer's stream output paced the input on the decoders
+         * (es_out). Playing here again, the clock does: a decoder paused
+         * here doesn't consume, and the input pacing on it would wait
+         * forever. */
+        input_priv(p_input)->b_out_pace_control =
+            input_priv(p_input)->type == INPUT_TYPE_THUMBNAILING;
     }
 }
 

@@ -18,6 +18,15 @@ T.MenuItem {
 
     // Name of an icon in pixmaps/redesign/icons
     property string iconName
+    // The check mark of a choice kept by a model (the selected profile): the
+    // row is not checkable, a click doesn't toggle it, the mark follows the
+    // model only (a toggled check stayed on the rows chosen before)
+    property bool marked: false
+    // a row of such a choice: room for the mark, marked or not
+    property bool markable: false
+
+    Accessible.checkable: checkable || marked
+    Accessible.checked: checkable ? checked : marked
     // Shortcut shown on the right, e.g. "Ctrl + O"
     property string shortcutText
 
@@ -70,16 +79,22 @@ T.MenuItem {
         Impl.IconImage {
             Layout.preferredWidth: VLCStyle.redesign.iconSize
             Layout.preferredHeight: VLCStyle.redesign.iconSize
-            visible: root._icon !== "" ? (!root._hasDuo || duoIcon.status === Image.Error) : root.checkable
+            visible: root._icon !== "" ? (!root._hasDuo || duoIcon.status === Image.Error)
+                                       : (root.checkable || root.markable || root.marked)
             sourceSize: Qt.size(width, height)
             fillMode: Image.PreserveAspectFit
-            opacity: root.enabled ? 1 : 0.4
+            // The check mark is hidden, not unloaded: an IconImage whose
+            // source becomes empty goes on showing its last image, and the
+            // rows checked before stayed checked
+            readonly property bool _mark: root._icon === ""
+            opacity: (_mark && !((root.checkable && root.checked) || root.marked)) ? 0
+                                                                                  : (root.enabled ? 1 : 0.4)
             color: VLCStyle.redesign.accent
             // (not loaded behind a two-tone icon: some have no PNG)
             source: root._icon !== ""
                     ? (root._hasDuo && duoIcon.status !== Image.Error
                        ? "" : "qrc:///redesign/icons/" + root._icon + "/default.png")
-                    : (root.checkable && root.checked ? "qrc:///redesign/track-check-active.png" : "")
+                    : "qrc:///redesign/track-check-active.png"
         }
 
         Text {

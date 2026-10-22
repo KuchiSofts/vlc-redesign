@@ -117,11 +117,9 @@ Widgets.RedesignMenu {
                 required property int index
                 required property string name
                 text: name
-                checkable: true
-                checked: root.profileModel.selectedProfile === index
+                markable: true
+                marked: root.profileModel.selectedProfile === index
                 onTriggered: {
-                    // A click toggles the check: follow the model again
-                    checked = Qt.binding(() => root.profileModel.selectedProfile === index)
                     const previous = root.profileModel.selectedProfile
                     if (previous === index || !root.profileModel.setSelectedProfile(index))
                         return

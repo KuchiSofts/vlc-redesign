@@ -231,6 +231,9 @@ struct vlc_input_decoder_t
     vlc_tick_t delay, output_delay;
     float rate, output_rate;
     int frames_countdown;
+    /* The pictures counted down were asked by a flush while paused (a seek),
+     * not by next-frame: their display is not reported as one */
+    bool frames_countdown_quiet;
     bool paused, output_paused;
 
     bool error;
@@ -347,8 +350,11 @@ static void Decoder_PausedForNextFrame(vlc_input_decoder_t *owner)
 
     assert(next_request_count >= owner->frames_countdown);
     /* Notify for pictures that are processes by the vout */
-    for (int i = 0; i < next_request_count - owner->frames_countdown; ++i)
-        decoder_Notify(owner, frame_next_status, 0);
+    if (!owner->frames_countdown_quiet)
+        for (int i = 0; i < next_request_count - owner->frames_countdown; ++i)
+            decoder_Notify(owner, frame_next_status, 0);
+    if (owner->frames_countdown == 0)
+        owner->frames_countdown_quiet = false;
 }
 
 static void Decoder_DisplayPreviousFrame(vlc_input_decoder_t *owner, picture_t *pic)
@@ -1549,7 +1555,10 @@ static int ModuleThread_PlayVideo( vlc_input_decoder_t *p_owner, picture_t *p_pi
     {
         p_owner->frames_countdown--;
         vout_PutPicture(p_vout, p_picture);
-        decoder_Notify(p_owner, frame_next_status, 0);
+        if (!p_owner->frames_countdown_quiet)
+            decoder_Notify(p_owner, frame_next_status, 0);
+        if (p_owner->frames_countdown == 0)
+            p_owner->frames_countdown_quiet = false;
         return VLC_SUCCESS;
     }
 
@@ -2198,6 +2207,7 @@ CreateDecoder( vlc_object_t *p_parent, const struct vlc_input_decoder_cfg *cfg )
     p_owner->output_paused = p_owner->paused = false;
     p_owner->output_pause_date = p_owner->pause_date = VLC_TICK_INVALID;
     p_owner->frames_countdown = 0;
+    p_owner->frames_countdown_quiet = false;
 
     p_owner->b_waiting = false;
     p_owner->b_first = true;
@@ -2819,7 +2829,10 @@ void vlc_input_decoder_Flush( vlc_input_decoder_t *p_owner )
      * to display one frame/subtitle */
     if( p_owner->paused && ( cat == VIDEO_ES || cat == SPU_ES )
      && p_owner->frames_countdown == 0 )
+    {
         p_owner->frames_countdown = 1;
+        p_owner->frames_countdown_quiet = true;
+    }
 
     if ( p_owner->p_sout_input != NULL )
     {
@@ -2926,6 +2939,7 @@ void vlc_input_decoder_ChangePause( vlc_input_decoder_t *p_owner,
     p_owner->paused = b_paused;
     p_owner->pause_date = i_date;
     p_owner->frames_countdown = 0;
+    p_owner->frames_countdown_quiet = false;
     vlc_fifo_Signal( p_owner->p_fifo );
     vlc_fifo_Unlock( p_owner->p_fifo );
 }
@@ -3043,6 +3057,8 @@ void vlc_input_decoder_FrameNext( vlc_input_decoder_t *p_owner )
     }
 
     StopFrameNextLocked( p_owner );
+    /* Asked by the user: reported */
+    p_owner->frames_countdown_quiet = false;
 
     if (!p_owner->output_paused)
     {

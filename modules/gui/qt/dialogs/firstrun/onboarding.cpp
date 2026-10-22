@@ -24,6 +24,8 @@
 
 #include <vlc_actions.h>
 #include <vlc_configuration.h>
+#include <vlc_interface.h>
+#include <vlc_playlist.h>
 
 #include <cctype>
 #include <cstdlib>
@@ -73,6 +75,19 @@ void OnboardingController::setCtx(MainCtx* ctx)
 bool OnboardingController::needsSetup() const
 {
     return m_ctx && !m_completed && var_InheritBool(m_ctx->getIntf(), "qt-privacy-ask");
+}
+
+// The core playlist: the interface's model fills in later, it was still
+// empty when the welcome was shown over the first file opened
+bool OnboardingController::playlistHasMedia() const
+{
+    if (!m_ctx || !m_ctx->getIntf())
+        return false;
+    vlc_playlist_t *playlist = vlc_intf_GetMainPlaylist(m_ctx->getIntf()->intf);
+    vlc_playlist_Lock(playlist);
+    const size_t count = vlc_playlist_Count(playlist);
+    vlc_playlist_Unlock(playlist);
+    return count > 0;
 }
 
 int OnboardingController::themeIndex() const

@@ -92,6 +92,7 @@
 #include <QThread>
 
 #include <vlc_interface.h>
+#include <vlc_playlist.h>
 #include <vlc_preparser.h>
 
 #define VLC_REFERENCE_SCALE_FACTOR 96.
@@ -280,10 +281,18 @@ MainCtx::MainCtx(qt_intf_t *_p_intf)
 
     if( var_InheritBool( p_intf, "qt-privacy-ask") )
     {
+        /* Not over a file VLC was opened with (from Explorer): the film
+         * first, the welcome the next time VLC opens without one */
+        vlc_playlist_t *playlist = vlc_intf_GetMainPlaylist(p_intf->intf);
+        vlc_playlist_Lock(playlist);
+        const bool has_media = vlc_playlist_Count(playlist) > 0;
+        vlc_playlist_Unlock(playlist);
+
         //postpone dialog call, as composition might not be ready yet
-        QMetaObject::invokeMethod(this, [](){
-            THEDP->firstRunDialog();
-        }, Qt::QueuedConnection);
+        if (!has_media)
+            QMetaObject::invokeMethod(this, [](){
+                THEDP->firstRunDialog();
+            }, Qt::QueuedConnection);
     }
     else if (m_medialib)
     {

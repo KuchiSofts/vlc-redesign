@@ -131,6 +131,7 @@ typedef struct aout_stream_sys
     bool s24s32; /**< Output configured as S24N, but input as S32N */
     vlc_tick_t first_pts;
     unsigned early_reports; /**< Reports left at the early delay */
+    unsigned underruns; /**< Times the device found its buffer empty */
 } aout_stream_sys_t;
 
 /*** VLC audio output callbacks ***/
@@ -274,6 +275,14 @@ static HRESULT Play(aout_stream_t *s, block_t *block, vlc_tick_t date)
         }
 
         assert(frames <= sys->frames);
+        /* Started, and all written played: the device went on with silence,
+         * a gap was heard */
+        if (frames == 0 && sys->started_state == STARTED_STATE_OK && sys->written > 0)
+        {
+            sys->underruns++;
+            if (sys->underruns <= 10 || sys->underruns % 100 == 0)
+                msg_Warn(s, "the device ran out of audio (%u times)", sys->underruns);
+        }
         frames = sys->frames - frames;
         if (frames > block->i_nb_samples)
             frames = block->i_nb_samples;
@@ -958,6 +967,7 @@ static HRESULT Start(aout_stream_t *s, audio_sample_format_t *restrict pfmt,
     *pfmt = fmt;
     sys->written = 0;
     sys->first_pts = VLC_TICK_INVALID;
+    sys->underruns = 0;
     s->sys = sys;
     s->play = Play;
     s->pause = Pause;

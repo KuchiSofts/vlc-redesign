@@ -15,10 +15,13 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
-Memory over long sessions, and the file name of the player bar.
+Surround sound, memory over long sessions, and the file name of the player bar.
 
 ### Fixed
 
+- **5.1 and 7.1 sound jumped between speakers**: on a surround device (or a virtual one, such as SteelSeries Sonar),
+  voices moved between the centre and the side or rear speakers many times a second, heard as a stutter. Every
+  channel stays in its place now.
 - **Memory grew with every media change**, about 70 KB each time: over a day of playlists that is hundreds of MB. The
   interface now stays flat over 400 changes.
 - **The file name in the player bar was one media behind**: it showed the previous file for as long as the next one
@@ -28,11 +31,17 @@ Memory over long sessions, and the file name of the player bar.
 
 ### Technical
 
+- WASAPI (upstream since 2022): when the device buffer had no room for a whole block, the rest was retried and
+  `aout_ChannelReorder()` ran on it again. The 5.1 and 7.1 reorders are involutions, so the rest went out in VLC's
+  order, for about 150 blocks a second once the buffer was full (measured from what the device got: the centre
+  tone was in the centre 56 % of the time and in the side-left 51 %). Retries have no date: the reorder runs on the
+  first pass only. The pts of the rest moves on too, for a stream that starts from it after a device switch.
 - Qt 6.8 `QQuickScrollBar` connects its accessibility actions again on every `QAccessible::setActive(true)`, which
   Windows triggers through UI Automation all the time: `ScrollBarAccessibilityFix` (MainUI) removes the copies, at
   most once a second. `ControlRepeater` connected `forceUnlock` without a receiver, so it was never disconnected.
 - `d3d11_fmt`: a device made for an output without a decoder device (default adapter, no decoding) is kept for 5 s
-  after its release and handed to the next one with the same creation flags, unless it was removed. The Direct3D 11
+  after its release and handed to the next one with the same creation flags, unless it was removed or its DXGI
+  factory is no longer current (HDR switched, a screen plugged in). The Direct3D 11
   output is no longer unloaded, for its timer. NVIDIA's driver kept about 22 KB per device.
 - `PlayerController::UpdateName` emitted `nameChanged` before storing the name, and QML reads the property again when
   the signal comes. `UpdateMeta` clears the meta when the media has none yet, and meta changes of a media that is no

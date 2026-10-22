@@ -154,13 +154,19 @@ RedesignIconInterceptor::RedesignIconInterceptor(MainCtx *ctx, QObject *parent)
 {
     updateTheme();
     updateDensity();
-    connect(qApp, &QGuiApplication::screenAdded, this, [this](QScreen *screen) {
+    // a scale changed in Windows' settings: the screen's size in units
+    // changes (its logical DPI stays 96 with Qt's rounding of the scale)
+    const auto follow = [this](QScreen *screen) {
+        connect(screen, &QScreen::geometryChanged, this, &RedesignIconInterceptor::updateDensity);
         connect(screen, &QScreen::logicalDotsPerInchChanged, this, &RedesignIconInterceptor::updateDensity);
+    };
+    connect(qApp, &QGuiApplication::screenAdded, this, [this, follow](QScreen *screen) {
+        follow(screen);
         updateDensity();
     });
     connect(qApp, &QGuiApplication::screenRemoved, this, &RedesignIconInterceptor::updateDensity);
     for (QScreen *screen : QGuiApplication::screens())
-        connect(screen, &QScreen::logicalDotsPerInchChanged, this, &RedesignIconInterceptor::updateDensity);
+        follow(screen);
     if (ColorSchemeModel *scheme = ctx ? ctx->getColorScheme() : nullptr)
         connect(scheme, &ColorSchemeModel::currentChanged, this, &RedesignIconInterceptor::updateTheme);
     connect(QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged,

@@ -29,6 +29,10 @@ Surround sound, memory over long sessions, and the file name of the player bar.
 - **A file opened from Explorer while VLC played waited its turn**: double-clicking a second video added it to the
   end of the playlist instead of playing it. It plays at once now (in 0.1 s), and the window comes back in front,
   even minimized. Several files selected together played the last one: the first plays now, the others follow.
+- **The first film after installing played under two questions**: Windows Firewall asked to let VLC on the network,
+  and the welcome dialog covered the picture. VLC no longer opens network ports at start (the media library looked
+  for network shares even with none in the library), and the welcome waits for the next time VLC opens without a
+  file. Checked on a clean Windows without a graphics card (Windows Sandbox, 2 GB).
 - **Opening a file never hangs, and the first one after installing is quick**: a VLC that stopped answering made
   every file opened from Explorer do nothing; the file opens anyway now. Windows checks a new program for up to 10
   seconds the first time it runs, which held the first window after an install or update: the installer has it
@@ -58,6 +62,9 @@ Surround sound, memory over long sessions, and the file name of the player bar.
   (Explorer starts one VLC per selected file; they arrive 10–20 ms apart) are queued.
 - Preparser: the pool thread spawns `vlc-preparser`, not `Submit()`, which runs with the playlist locked (0.5–10 s
   measured for a never-seen executable). The installer runs `vlc.exe --version` and `vlc-preparser.exe --help` once.
+- Media library: `setDiscoverNetworkEnabled(true)` (every LAN services discovery: mDNS, SAP, UPnP) only when a root
+  is not a `file://` folder or is not present, or when such a folder is added. MainCtx and the setup dialog don't
+  open the welcome when the core playlist has media at start.
 - `trivial` channel mixer: a rear centre goes to the rear left and right of an output that has no rear centre.
   `spdif` waits for the packetizer's sample rate: it asked for a 0 Hz output first, which logged "too low audio
   sample frequency (0)" at the start of every A/52, E-AC-3, DTS and TrueHD media.

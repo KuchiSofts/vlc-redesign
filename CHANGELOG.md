@@ -23,6 +23,16 @@ Surround sound, memory over long sessions, and the file name of the player bar.
   voices moved between the centre and the side or rear speakers many times a second, heard as a stutter. Every
   channel stays in its place now (checked for mono, stereo, quad, 5.1, 6.1 and 7.1 sources). 6.1 sound on a 7.1
   device also lost its rear centre channel; it plays on both rear speakers now.
+- **Surround films on stereo headphones or speakers**: 6.1 sound came out with channels on the wrong sides, the
+  centre of 3.0 and 4.0 sound drowned the front, and the rear speakers of quad, 4.1 and 6.0 sound were lost. Every
+  layout is mixed the same way now, as 5.1 already was.
+- **A file opened from Explorer while VLC played waited its turn**: double-clicking a second video added it to the
+  end of the playlist instead of playing it. It plays at once now (in 0.1 s), and the window comes back in front,
+  even minimized.
+- **Opening a file never hangs, and the first one after installing is quick**: a VLC that stopped answering made
+  every file opened from Explorer do nothing; the file opens anyway now. Windows checks a new program for up to 10
+  seconds the first time it runs, which held the first window after an install or update: the installer has it
+  checked right away, and the preparser no longer holds the window (a file opens in 0.75 s).
 - **Memory grew with every media change**, about 70 KB each time: over a day of playlists that is hundreds of MB. The
   interface now stays flat over 400 changes.
 - **The file name in the player bar was one media behind**: it showed the previous file for as long as the next one
@@ -37,6 +47,16 @@ Surround sound, memory over long sessions, and the file name of the player bar.
   order, for about 150 blocks a second once the buffer was full (measured from what the device got: the centre
   tone was in the centre 56 % of the time and in the side-left 51 %). Retries have no date: the reorder runs on the
   first pass only. The pts of the rest moves on too, for a stream that starts from it after a device switch.
+- `simple` channel mixer: stereo and mono come from a matrix built from the input layout (centre and surrounds -3 dB,
+  side and back surrounds together -6 dB each, rear centre -6 dB on both sides, no LFE; mono is the mean of the two
+  sides). The per-layout routines read 6.1 in another channel order and had none for quad, 4.1 and 6.0. Measured
+  from what VLC writes for 15 layouts.
+- `win_msg`: a file opened from Explorer is played with `vlc_playlist_PlayAt()` (`Start()` went on with the current
+  item) and raises the window (`intf-show`). `system_Configure()`: the second instance waits 10 s at most, skips a
+  hung window (`IsHungAppWindow()`, `SendMessageTimeout()`) and then opens the file itself; the mutex and window are
+  named "VLC Redesign ipc", an official VLC 4 took the files.
+- Preparser: the pool thread spawns `vlc-preparser`, not `Submit()`, which runs with the playlist locked (0.5–10 s
+  measured for a never-seen executable). The installer runs `vlc.exe --version` and `vlc-preparser.exe --help` once.
 - `trivial` channel mixer: a rear centre goes to the rear left and right of an output that has no rear centre.
   `spdif` waits for the packetizer's sample rate: it asked for a 0 Hz output first, which logged "too low audio
   sample frequency (0)" at the start of every A/52, E-AC-3, DTS and TrueHD media.

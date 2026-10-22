@@ -200,6 +200,7 @@ if qt6_dep.found()
             cc.find_library('comctl32'),
             cc.find_library('winhttp'),
             cc.find_library('shell32'),
+            cc.find_library('iphlpapi'),
         ]
     endif
 

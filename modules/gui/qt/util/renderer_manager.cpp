@@ -38,17 +38,56 @@
 #include <vlc_cxx_helpers.hpp>
 
 #ifdef _WIN32
+# include <winsock2.h>
+# include <ws2tcpip.h>
+# include <iphlpapi.h>
 # include <windows.h>
 # include <ole2.h>
 # include <netfw.h>
 # include <shellapi.h>
 # include <sstream>
 # include <string>
+# include <vector>
+# include <vlc_network.h>
 #endif
 
 static void player_renderer_changed(vlc_player_t *, vlc_renderer_item_t *new_item, void *data);
 
 #ifdef _WIN32
+/* Whether @ip is one of this computer's addresses: a device there (a test
+ * device, a renderer running here) reads the server without the firewall */
+static bool isThisComputer(const QString &ip)
+{
+    if (ip.isEmpty())
+        return false;
+    if (ip.startsWith(QLatin1String("127.")) || ip == QLatin1String("::1"))
+        return true;
+    ULONG size = 16 * 1024;
+    std::vector<unsigned char> buffer(size);
+    const ULONG flags = GAA_FLAG_SKIP_ANYCAST | GAA_FLAG_SKIP_MULTICAST | GAA_FLAG_SKIP_DNS_SERVER;
+    ULONG ret = GetAdaptersAddresses(AF_UNSPEC, flags, nullptr,
+                                     reinterpret_cast<IP_ADAPTER_ADDRESSES *>(buffer.data()), &size);
+    if (ret == ERROR_BUFFER_OVERFLOW)
+    {
+        buffer.resize(size);
+        ret = GetAdaptersAddresses(AF_UNSPEC, flags, nullptr,
+                                   reinterpret_cast<IP_ADAPTER_ADDRESSES *>(buffer.data()), &size);
+    }
+    if (ret != NO_ERROR)
+        return false;
+    for (auto *adapter = reinterpret_cast<IP_ADAPTER_ADDRESSES *>(buffer.data()); adapter;
+         adapter = adapter->Next)
+        for (auto *unicast = adapter->FirstUnicastAddress; unicast; unicast = unicast->Next)
+        {
+            char host[NI_MAXNUMERICHOST];
+            if (vlc_getnameinfo(unicast->Address.lpSockaddr, unicast->Address.iSockaddrLength,
+                                host, sizeof(host), nullptr, NI_NUMERICHOST) == 0
+             && ip == QLatin1String(host))
+                return true;
+        }
+    return false;
+}
+
 /* Whether a list of firewall ports ("80,7000-7100") has this one */
 static bool portListHas(const wchar_t *list, long port)
 {
@@ -548,7 +587,7 @@ public:
         const quint64 generation = ++m_firewallGeneration;
 #ifdef _WIN32
         long port = 0;
-        if (m_selectedItem)
+        if (m_selectedItem && !isThisComputer(deviceAddress(m_selectedItem)))
         {
             // the port of the server the device reads from
             const char *type = vlc_renderer_item_type(m_selectedItem.get());
@@ -602,6 +641,14 @@ public:
             emit q->firewallChanged();
             emit q->castStatusChanged();    // (its message)
         }
+        // Casting, kept out: Windows is asked at once for the rule (its own
+        // approval, once), not after a question here; declined, the card
+        // offers it again
+        if (blocked && m_selectedItem && !m_firewallAutoAsked && !m_firewallAllowing)
+        {
+            m_firewallAutoAsked = true;
+            q->allowFirewall();
+        }
         // the rule added: the device gave up reading, it starts again from
         // where it is
         if (retry && !blocked && m_selectedItem)
@@ -627,6 +674,14 @@ public:
         checkFirewall();
     }
 #endif
+
+    // The address of a device (the "ip" of its output), empty when unknown
+    static QString deviceAddress(const RendererItemPtr& item)
+    {
+        static const QRegularExpression ipRe(QStringLiteral(R"re([{,]ip=([^,}]+))re"));
+        const QRegularExpressionMatch m = ipRe.match(qfu(vlc_renderer_item_sout(item.get())));
+        return m.hasMatch() ? m.captured(1) : QString();
+    }
 
     // A device: a Chromecast by its address (its name differs with the way
     // it was found), the others by their output
@@ -684,6 +739,8 @@ public:
     // see FirewallState
     bool m_firewallPublic = false;
     bool m_firewallRuleExists = false;
+    // allowFirewall() was called by itself once (not again if declined)
+    bool m_firewallAutoAsked = false;
     // the last check asked (the answers of the others are dropped)
     quint64 m_firewallGeneration = 0;
     // cast again once the check says the device can connect (the rule added)

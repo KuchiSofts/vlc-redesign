@@ -21,7 +21,8 @@ Surround sound, memory over long sessions, and the file name of the player bar.
 
 - **5.1 and 7.1 sound jumped between speakers**: on a surround device (or a virtual one, such as SteelSeries Sonar),
   voices moved between the centre and the side or rear speakers many times a second, heard as a stutter. Every
-  channel stays in its place now.
+  channel stays in its place now (checked for mono, stereo, quad, 5.1, 6.1 and 7.1 sources). 6.1 sound on a 7.1
+  device also lost its rear centre channel; it plays on both rear speakers now.
 - **Memory grew with every media change**, about 70 KB each time: over a day of playlists that is hundreds of MB. The
   interface now stays flat over 400 changes.
 - **The file name in the player bar was one media behind**: it showed the previous file for as long as the next one
@@ -36,6 +37,9 @@ Surround sound, memory over long sessions, and the file name of the player bar.
   order, for about 150 blocks a second once the buffer was full (measured from what the device got: the centre
   tone was in the centre 56 % of the time and in the side-left 51 %). Retries have no date: the reorder runs on the
   first pass only. The pts of the rest moves on too, for a stream that starts from it after a device switch.
+- `trivial` channel mixer: a rear centre goes to the rear left and right of an output that has no rear centre.
+  `spdif` waits for the packetizer's sample rate: it asked for a 0 Hz output first, which logged "too low audio
+  sample frequency (0)" at the start of every A/52, E-AC-3, DTS and TrueHD media.
 - Qt 6.8 `QQuickScrollBar` connects its accessibility actions again on every `QAccessible::setActive(true)`, which
   Windows triggers through UI Automation all the time: `ScrollBarAccessibilityFix` (MainUI) removes the copies, at
   most once a second. `ControlRepeater` connected `forceUnlock` without a receiver, so it was never disconnected.

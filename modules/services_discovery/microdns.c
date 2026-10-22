@@ -119,6 +119,7 @@ struct srv
     uint16_t                i_port;
     enum input_item_type_e  item_type;
     bool                    b_renderer;
+    bool                    b_txt; /* its TXT record came with it */
     struct
     {
         char *      psz_model;
@@ -373,6 +374,7 @@ parse_entries( const struct rr_entry *p_entries, bool b_renderer,
             p_srv = &p_srvs[0];
         if( p_srv != NULL )
         {
+            p_srv->b_txt = true;
             for ( struct rr_data_txt *p_txt = p_entry->data.TXT;
                   p_txt != NULL ; p_txt = p_txt->next )
             {
@@ -540,7 +542,13 @@ new_entries_rd_cb( void *p_this, int i_status, const struct rr_entry *p_entries 
         if( psz_uri == NULL )
             break;
 
-        if( items_exists( p_sys, psz_uri ) )
+        /* A Chromecast's name and whether it shows video are in its TXT
+         * record: without it (an answer to someone asking only for its
+         * SRV), it would be added under its service name, as sound only,
+         * and stay so (the same address is not added again). The next
+         * answer has it. */
+        if( items_exists( p_sys, psz_uri )
+         || ( !p_srv->b_txt && !strcmp( p_srv->psz_protocol, "chromecast" ) ) )
         {
             free( psz_uri );
             continue;

@@ -41,6 +41,10 @@
 #include <vlc_codecs.h> // GUID_FMT/GUID_PRINT
 
 #define TIMING_REPORT_DELAY VLC_TICK_FROM_MS(1000)
+/* Right after a start, the first reports come sooner: the clock and the time
+ * shown wait for two points before moving on (after each seek) */
+#define TIMING_REPORT_EARLY_DELAY VLC_TICK_FROM_MS(250)
+#define TIMING_REPORT_EARLY_COUNT 3
 
 /* 00000092-0000-0010-8000-00aa00389b71 */
 DEFINE_GUID(_KSDATAFORMAT_SUBTYPE_IEC61937_DOLBY_DIGITAL,
@@ -126,6 +130,7 @@ typedef struct aout_stream_sys
     UINT32 frames; /**< Total buffer size (frames) */
     bool s24s32; /**< Output configured as S24N, but input as S32N */
     vlc_tick_t first_pts;
+    unsigned early_reports; /**< Reports left at the early delay */
 } aout_stream_sys_t;
 
 /*** VLC audio output callbacks ***/
@@ -161,8 +166,13 @@ static void TimingReport(aout_stream_t *s)
                              vlc_tick_from_frac(pos, clock_freq) +
                              sys->first_pts);
 
-    aout_stream_TriggerTimer(s, TimingReport,
-                             vlc_tick_now() + TIMING_REPORT_DELAY);
+    vlc_tick_t delay = TIMING_REPORT_DELAY;
+    if (sys->early_reports > 0)
+    {
+        sys->early_reports--;
+        delay = TIMING_REPORT_EARLY_DELAY;
+    }
+    aout_stream_TriggerTimer(s, TimingReport, vlc_tick_now() + delay);
 
     static_assert((10000000 % CLOCK_FREQ) == 0, "Frequency conversion broken");
 }
@@ -176,7 +186,10 @@ static HRESULT StartNow(aout_stream_t *s)
     sys->started_state = SUCCEEDED(hr) ? STARTED_STATE_OK : STARTED_STATE_ERROR;
 
     if (SUCCEEDED(hr))
+    {
+        sys->early_reports = TIMING_REPORT_EARLY_COUNT;
         TimingReport(s);
+    }
     else
         msg_Err(s, "stream failed to start: 0x%lX", hr);
 
@@ -225,16 +238,18 @@ static HRESULT Play(aout_stream_t *s, block_t *block, vlc_tick_t date)
         hr = E_FAIL;
         goto out;
     }
+
+    /* Before the start: a start right away reports the position from it */
+    if (sys->first_pts == VLC_TICK_INVALID)
+        sys->first_pts = block->i_pts;
+
     /* Partial-block retries have no date: keep the already scheduled start. */
-    else if (sys->started_state == STARTED_STATE_INIT && date != VLC_TICK_INVALID)
+    if (sys->started_state == STARTED_STATE_INIT && date != VLC_TICK_INVALID)
     {
         hr = StartDeferred(s, date);
         if (FAILED(hr))
             goto out;
     }
-
-    if (sys->first_pts == VLC_TICK_INVALID)
-        sys->first_pts = block->i_pts;
 
     if (sys->chans_to_reorder)
         aout_ChannelReorder(block->p_buffer, block->i_buffer,

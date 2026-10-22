@@ -305,6 +305,8 @@ typedef struct module_bank
     size_t        size;
     vlc_plugin_t **plugins;
     vlc_plugin_t *cache;
+    /* the cache file did not describe the plugins as they are */
+    bool          stale;
 } module_bank_t;
 
 /**
@@ -344,6 +346,7 @@ static int AllocatePluginFile (module_bank_t *bank, const char *abspath,
             plugin->path = path;
             plugin->mtime = st->st_mtime;
             plugin->size = st->st_size;
+            bank->stale = true;
         }
         else free(path);
     }
@@ -353,7 +356,9 @@ static int AllocatePluginFile (module_bank_t *bank, const char *abspath,
 
     vlc_plugin_store(plugin);
 
-    if (bank->mode & CACHE_WRITE_FILE) /* Add entry to to-be-saved cache */
+    /* Add entry to to-be-saved cache (also when reading it: a stale cache
+     * is saved again) */
+    if (bank->mode & (CACHE_WRITE_FILE | CACHE_READ_FILE))
     {
         bank->plugins = xrealloc(bank->plugins,
                                  (bank->size + 1) * sizeof (vlc_plugin_t *));
@@ -542,13 +547,24 @@ static void AllocatePluginPath(libvlc_int_t *obj, const char *path,
 
         bank.cache = plugin->next;
         if (mode & CACHE_SCAN_DIR)
+        {
             vlc_plugin_destroy(plugin);
+            bank.stale = true;
+        }
         else
             vlc_plugin_store(plugin);
     }
 
     if (mode & CACHE_WRITE_FILE)
         CacheSave(obj, path, bank.plugins, bank.size);
+    else if ((mode & CACHE_READ_FILE) && (mode & CACHE_SCAN_DIR) && bank.stale)
+    {
+        /* Made again for the next start: the times of the files change
+         * when the package is unzipped in another time zone, an update adds
+         * and removes plugins. A folder that can't be written keeps it. */
+        msg_Dbg(obj, "plugins cache out of date: saving it again");
+        CacheSave(obj, path, bank.plugins, bank.size);
+    }
 
     free(bank.plugins);
 }

@@ -42,6 +42,7 @@
 #include <medialibrary/IPlaylist.h>
 #include <medialibrary/IBookmark.h>
 #include <medialibrary/IFolder.h>
+#include <medialibrary/filesystem/Errors.h>
 
 #include <algorithm>
 #include <sstream>
@@ -495,10 +496,40 @@ bool MediaLibrary::Init()
         return false;
     }
 
-    m_ml->setDiscoverNetworkEnabled( true );
+    /* Network discovery starts every LAN services discovery (mDNS, SAP,
+     * UPnP) to see SMB shares: sockets listening at every start, and on a
+     * new PC Windows asked for a firewall rule as the first file played.
+     * Only when a folder of the library may be on the network (one added
+     * later turns it on). The network page has its own discovery. */
+    if ( hasNetworkRoots() )
+        m_ml->setDiscoverNetworkEnabled( true );
 
     m_initialized = true;
     return true;
+}
+
+bool MediaLibrary::hasNetworkRoots()
+{
+    auto query = m_ml->roots( nullptr );
+    if ( query == nullptr )
+        return false;
+    for ( const auto& folder : query->all() )
+    {
+        try
+        {
+            if ( folder->mrl().compare( 0, 7, "file://" ) != 0 )
+                return true;
+        }
+        catch ( const medialibrary::fs::errors::DeviceRemoved& )
+        {
+            return true; /* not seen yet: it may be a share */
+        }
+        catch ( const std::exception& )
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 int MediaLibrary::Control( int query, va_list args )
@@ -554,6 +585,8 @@ int MediaLibrary::Control( int query, va_list args )
             switch( query )
             {
                 case VLC_ML_ADD_FOLDER:
+                    if ( strncmp( mrl, "file://", 7 ) != 0 )
+                        m_ml->setDiscoverNetworkEnabled( true );
                     m_ml->discover( mrl );
                     break;
                 case VLC_ML_REMOVE_FOLDER:

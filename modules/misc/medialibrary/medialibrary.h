@@ -150,6 +150,7 @@ public:
     void* Get( int query, va_list args );
 
 private:
+    bool hasNetworkRoots();
     int controlMedia( int query, va_list args );
     int getMeta( const medialibrary::IMedia& media, int meta, char** result );
     int getMeta( const medialibrary::IMedia& media, vlc_ml_playback_states_all* result );

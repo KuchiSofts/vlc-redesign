@@ -79,9 +79,11 @@ static void PrioritizeSystem32(void)
     SetProcessMitigationPolicy( ProcessImageLoadPolicy, &m, sizeof( m ) );
 }
 
-/* A portable copy (a "portable" folder next to vlc.exe) keeps its own
- * interface language in portable\language (an ISO code, "auto" for the
- * system's), not in the registry it would share with an installed VLC */
+/* A portable copy (a "portable" folder next to vlc.exe, the installed copy
+ * too) keeps its own interface language in portable\language (an ISO code,
+ * "auto" for the system's), not in the registry it would share with an
+ * installed VLC. Until one is chosen it is English, whatever the language of
+ * Windows. */
 static wchar_t *PortableLanguage(void)
 {
     wchar_t path[MAX_PATH];
@@ -93,18 +95,23 @@ static wchar_t *PortableLanguage(void)
     if (last == NULL)
         return NULL;
     *last = L'\0';
-    if (wcscat_s(path, size, L"\\portable\\language") != 0)
+    if (wcscat_s(path, size, L"\\portable") != 0)
+        return NULL;
+    const DWORD attributes = GetFileAttributesW(path);
+    if (attributes == INVALID_FILE_ATTRIBUTES || !(attributes & FILE_ATTRIBUTE_DIRECTORY))
+        return NULL;
+    if (wcscat_s(path, size, L"\\language") != 0)
         return NULL;
     FILE *file = _wfopen(path, L"rb");
     if (file == NULL)
-        return NULL;
+        return _wcsdup(L"en");
     char code[32] = { 0 };
     size_t len = fread(code, 1, sizeof(code) - 1, file);
     fclose(file);
     while (len > 0 && (code[len - 1] == '\n' || code[len - 1] == '\r' || code[len - 1] == ' '))
         code[--len] = '\0';
     if (len == 0)
-        return NULL;
+        return _wcsdup(L"en");
     wchar_t *wide = malloc((len + 1) * sizeof(*wide));
     if (wide == NULL)
         return NULL;

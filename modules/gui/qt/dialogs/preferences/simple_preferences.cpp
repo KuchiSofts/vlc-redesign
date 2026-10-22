@@ -1383,11 +1383,14 @@ QString interfaceLanguage()
     QString iso = QStringLiteral( "auto" );
 #ifdef _WIN32
     QFile portable( portableLanguageFile() );
-    if( !portable.fileName().isEmpty() && portable.open( QIODevice::ReadOnly ) )
+    if( !portable.fileName().isEmpty() )
     {
+        // English until one is chosen (vlc.exe starts so), not the
+        // language of Windows nor the one of an installed VLC
+        if( !portable.open( QIODevice::ReadOnly ) )
+            return QStringLiteral( "en" );
         const QString code = QString::fromLatin1( portable.readAll() ).trimmed();
-        if( !code.isEmpty() )
-            return code;
+        return code.isEmpty() ? QStringLiteral( "en" ) : code;
     }
     HKEY h_key;
     if( RegOpenKeyEx( HKEY_CURRENT_USER, TEXT("Software\\VideoLAN\\VLC\\"), 0, KEY_READ, &h_key )
@@ -1436,6 +1439,20 @@ bool setInterfaceLanguage( const QString &iso )
     VLC_UNUSED( iso );
 #endif
     return false;
+}
+
+void resetInterfaceLanguage()
+{
+#ifdef _WIN32
+    const QString portableFile = portableLanguageFile();
+    if( !portableFile.isEmpty() )
+    {
+        QFile::remove( portableFile );
+        return;
+    }
+    QVLCRegistry qvReg( HKEY_CURRENT_USER );
+    qvReg.DeleteValue( "Software\\VideoLAN\\VLC\\", "Lang" );
+#endif
 }
 
 void SPrefsPanel::langChanged( int i )

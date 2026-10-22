@@ -60,7 +60,10 @@ DisableWelcomePage=no
 DisableDirPage=yes
 DisableProgramGroupPage=yes
 DisableReadyPage=yes
-ShowLanguageDialog=auto
+; English, whatever the language of Windows (as VLC Redesign starts); the
+; Hebrew pages stay for /LANG=he
+ShowLanguageDialog=no
+LanguageDetectionMethod=none
 UninstallDisplayName={#AppName}
 UninstallDisplayIcon={app}\vlc.exe
 ArchitecturesAllowed=x64compatible

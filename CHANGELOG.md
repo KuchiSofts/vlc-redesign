@@ -67,6 +67,13 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
   It runs only for a song now, without holding the window, and the installer has it checked.
 - **Films of 50 and 60 frames per second juddered on the TV** when they are converted (shown subtitles, or a format the
   TV can't play): they were brought to 24 frames per second; they go at 25 and 30 now, every other picture.
+- **A Samsung TV stopped when a cast was paused**: about 10 seconds into a pause, the TV left the film with an
+  error. A paused Samsung TV goes on reading the stream until it has about 5 seconds of the film ahead, and gives
+  up when nothing comes for 10 seconds. While paused, the stream now gets a trickle of empty packets (which the TV
+  drops), and the TV stays paused. Found and checked on a 2017 Samsung UE55MU8000.
+- **A film cast as it is played one second on a Samsung TV**: a film the TV can play without conversion (no
+  subtitles shown) went as a fragmented MP4, which the TV took for a one-second file. It goes as MPEG-TS now, and a
+  TV that stops such a film right after it began gets it converted instead of an error.
 
 ### Changed
 
@@ -117,6 +124,15 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
 - Windows sockets: `recvfrom`, `sendto`, `send` and `accept` set `errno` when they fail (`EAGAIN` or the Winsock
   code). It kept the thread's previous value: logs said "read error: No error", and a stale `EAGAIN` or `EINTR` made
   `net_Read()` or the file output retry a dead socket forever.
+- HTTP output: a stream with DLNA headers and an MPEG-TS type gets null packets (PID 0x1fff, 1.5 KB every 100 ms,
+  64 MB at most per wait) when nothing was written for 0.5 s, from a thread of its own; blocks written are never
+  split. The Samsung TV read 2 MB of them at once while paused and failed 10 s after they stopped (captured with
+  pktmon: no request, no reset, the connection open; the same bytes replayed with more ahead did not fail).
+- DLNA stream output: how far ahead of the media's pace it sends is a setting, `sout-dlna-lead` (1000 ms), and the
+  input reads that plus 0.5 s ahead while it casts to a DLNA renderer (`UpdatePtsDelay()`, also when the renderer
+  is set during playback): with `file-caching` the input had nothing more to send than 1 s. A video profile in
+  MPEG-TS is preferred to the first one the renderer lists, and a stream copied as it was that the renderer stops
+  within 15 s counts as unreadable (converted).
 - Chromecast stream output: at the end of the media the chain is closed first (its muxer and transcoder write what
   they hold), then the TV reads until the fifo is empty or it stops reading for 15 s. At the start of each media the
   first blocks wait until the sound and the picture both sent some (at most 10 s of media or 3 s of waiting): the

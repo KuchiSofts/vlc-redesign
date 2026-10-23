@@ -86,9 +86,9 @@ Supported versions per platform, and why:
   after installing, memory flat over long sessions (1,400 media changes in 25 minutes).
 - **Real Samsung TV (2026-10-23):** three problems found by testing on a Samsung UE55MU8000, fixed in the next
   build and to be checked on the TV:
-  - pausing a cast for more than about 10 seconds made the TV stop with an error: the TV needs about 5 seconds of
-    the film ahead of it while paused, and got 4.9. The stream now goes 3 seconds ahead instead of 1 (setting
-    `--sout-dlna-lead`);
+  - pausing a cast for more than about 10 seconds made the TV stop with an error: a paused Samsung TV goes on
+    reading until it has about 5 seconds ahead, and gives up when nothing comes for 10 seconds. The stream now gets
+    a trickle of empty (null) packets while paused;
   - a film sent as it is (no subtitles shown) was sent as a fragmented MP4, which the TV took for a 1-second file:
     an MPEG-TS profile is now preferred;
   - a TV that stops a film right after it began now gets it converted, instead of an error message.
@@ -228,7 +228,8 @@ Samsung partners, so the VLC engine can't run on the TV itself. What can be done
    with the TV's own player (AVPlay), shows the redesign's on-screen controls, and is controlled from the remote and
    from the desktop program.
    - Installing it on a TV needs Tizen Studio, a Samsung certificate tied to the TV, and *Developer mode* turned on
-     with the TV's remote (Apps → 1 2 3 4 5 → the PC's address). Only you can do that step, at the TV.
+     with the TV's remote (Apps → 1 2 3 4 5 → the PC's address). Only you can do that step, at the TV. On the test
+     TV, Developer mode is already on, but set to the address 127.0.0.1: the PC's address has to be entered there.
    - Publishing it in the Samsung store needs a Samsung seller account and a review.
 3. **A Samsung Galaxy phone** is Android: [section 7](#7-android-phones-tablets-android-tv).
 

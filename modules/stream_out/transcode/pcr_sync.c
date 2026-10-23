@@ -157,19 +157,22 @@ static int pcr_sync_SignalPCRLocked(vlc_pcr_sync_t *pcr_sync, vlc_tick_t pcr)
         return VLC_ENOMEM;
     }
 
+    /* One entry for each ES id, the deleted ones too (passed): the entries
+     * are read by ES id. Pushed for the ES alive only, they moved down
+     * after a deleted one, and the last ES wrote past the end. */
     size_t entries_left = 0;
-    struct es_data data;
-    vlc_vector_foreach(data, &pcr_sync->es_data)
+    for (size_t i = 0; i < pcr_sync->es_data.size; ++i)
     {
-        if (!data.is_deleted)
-        {
-            vlc_vector_push(&event->es_last_dts_entries,
-                            ((struct es_dts_entry){.dts = data.last_input_dts,
-                                                   .discontinuity = data.discontinuity}));
-            if (data.last_input_dts != VLC_TICK_INVALID)
-                ++entries_left;
-            data.discontinuity = VLC_TICK_INVALID;
-        }
+        struct es_data *data = &pcr_sync->es_data.data[i];
+        const bool counted = !data->is_deleted && data->last_input_dts != VLC_TICK_INVALID;
+        vlc_vector_push(&event->es_last_dts_entries,
+                        ((struct es_dts_entry){.dts = data->last_input_dts,
+                                               .passed = !counted,
+                                               .discontinuity = data->discontinuity}));
+        if (counted)
+            ++entries_left;
+        if (!data->is_deleted)
+            data->discontinuity = VLC_TICK_INVALID;
     }
 
     event->pcr = pcr;
@@ -250,6 +253,18 @@ void vlc_pcr_sync_DelESID(vlc_pcr_sync_t *pcr_sync, unsigned int id)
 #define pcr_event_NextEntry(head, entry)                                                           \
     vlc_list_next_entry_or_null(head, entry, pcr_event_t, node)
 
+/* The ES that wait for this event wait for the next one: freed, it was
+ * still read through their last_pcr_event */
+static void pcr_sync_RemoveEvent(vlc_pcr_sync_t *pcr_sync, pcr_event_t *pcr_event)
+{
+    pcr_event_t *next = pcr_event_NextEntry(&pcr_sync->pcr_events, pcr_event);
+    for (size_t i = 0; i < pcr_sync->es_data.size; ++i)
+        if (pcr_sync->es_data.data[i].last_pcr_event == pcr_event)
+            pcr_sync->es_data.data[i].last_pcr_event = next;
+    vlc_list_remove(&pcr_event->node);
+    pcr_event_Delete(pcr_event);
+}
+
 vlc_tick_t
 vlc_pcr_sync_SignalFrameOutput(vlc_pcr_sync_t *pcr_sync, unsigned int id, const vlc_frame_t *frame)
 {
@@ -265,8 +280,6 @@ vlc_pcr_sync_SignalFrameOutput(vlc_pcr_sync_t *pcr_sync, unsigned int id, const 
     if (pcr_event == NULL)
         goto no_pcr;
 
-    assert(id < pcr_event->es_last_dts_entries.size);
-
     const vlc_tick_t pcr = pcr_event->pcr;
 
     if (pcr_event->no_frame_before)
@@ -275,7 +288,9 @@ vlc_pcr_sync_SignalFrameOutput(vlc_pcr_sync_t *pcr_sync, unsigned int id, const 
         goto return_pcr;
     }
 
-    assert(pcr_event->entries_left != 0);
+    /* an ES added after this PCR has no entry in it */
+    if (id >= pcr_event->es_last_dts_entries.size)
+        goto no_pcr;
 
     struct es_dts_entry *dts_entry = &pcr_event->es_last_dts_entries.data[id];
 
@@ -285,17 +300,18 @@ vlc_pcr_sync_SignalFrameOutput(vlc_pcr_sync_t *pcr_sync, unsigned int id, const 
     if (frame->i_dts < dts_entry->dts)
         goto no_pcr;
 
+    es->last_pcr_event = pcr_event_NextEntry(&pcr_sync->pcr_events, pcr_event);
+    /* (not counted: it had no frame when the PCR came) */
     if (dts_entry->passed)
         goto no_pcr;
 
     dts_entry->passed = true;
-    es->last_pcr_event = pcr_event_NextEntry(&pcr_sync->pcr_events, pcr_event);
+    assert(pcr_event->entries_left != 0);
     if (--pcr_event->entries_left != 0)
         goto no_pcr;
 
 return_pcr:
-    vlc_list_remove(&pcr_event->node);
-    pcr_event_Delete(pcr_event);
+    pcr_sync_RemoveEvent(pcr_sync, pcr_event);
 
     vlc_mutex_unlock(&pcr_sync->lock);
     return pcr;

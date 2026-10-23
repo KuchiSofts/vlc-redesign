@@ -217,6 +217,7 @@ qml_modules += {
        '../../player/qml/MusicView.qml',
     '../../player/qml/AudioContent.qml',
     '../../player/qml/ArtworkBackdrop.qml',
+    '../../player/qml/IdleScene.qml',
     '../../player/qml/TouchWheelHandler.qml',
     '../../player/qml/Player.qml',
        '../../player/qml/PlayerControlLayout.qml',

@@ -1242,10 +1242,17 @@ static void on_player_timer_seek(const struct vlc_player_timer_point *point,
             PlayerController* q = that->q_func();
 
             that->m_player_time = point_copy;
-            if (that->m_player_time.position > 0)
-                that->m_position = that->m_player_time.position;
             if (that->m_player_time.ts != VLC_TICK_INVALID)
                 that->m_time = that->m_player_time.ts - VLC_TICK_0;
+            if (that->m_player_time.position > 0)
+                that->m_position = that->m_player_time.position;
+            // a seek by time (the jumps, a typed time) has no position: from
+            // the time, else paused music kept its seek bar where it was (no
+            // picture comes to update it)
+            else if (that->m_player_time.ts != VLC_TICK_INVALID
+                  && that->m_length.valid() && that->m_length.toVLCTick() > 0)
+                that->m_position = std::clamp(double(that->m_player_time.ts - VLC_TICK_0)
+                                              / that->m_length.toVLCTick(), 0., 1.);
 
             q->updatePosition();
             q->updateTime(VLC_TICK_INVALID, false);

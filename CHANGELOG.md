@@ -85,6 +85,18 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
 - **Keyboard shortcuts with several keys were cut short**: *Next track* has three keys (N, Shift+>, >) and showed
   "N Shif… >". Each key now shows whole, apart from the others.
 - **A stray line in the Disc tab of Open Media**: half a separator under *No disc menus* is gone.
+- **Thumbnails never came while VLC was set to start paused** (*Start paused* in the advanced preferences, or
+  `--start-paused`): each picture of the library's folders, of the list next to the video and of the seek bar's
+  previews waited 10 seconds and gave up. They come at once now. It is the same in VLC 4 itself.
+- **Changing some video effects removed all of them**: moving the strength of the spatial blur (and any effect option
+  read only as the effect starts) turned every video effect off. It is the same in VLC 4 itself.
+- **A file opened paused showed no time**: with *Start playing as soon as a file opens* off, the bar read "--:--" for
+  the time and the length until Play. It shows 00:00:00 and the length now.
+- **The seek bar of paused music stood still on a jump**: the time changed, the waveform's position did not.
+- **Listen Again listed the songs played first first**: the last played comes first now, as in Continue Watching.
+- **The rows of the player's menu were not in line** (*Hide player UI* further in than the others).
+- **HDR10+ and Dolby Vision said nothing about why they cannot be chosen**: the reason now shows under the pointer
+  (Windows offers no way for a player to send them to a display).
 
 ### Added
 
@@ -99,6 +111,11 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
   menu card of the design, with *Mark as Watched* / *Unwatched* and *Show in File Explorer*.
 - **More settings**: *Show confirmation and error dialogs*, *Show controls in fullscreen*, *Show cover art in the
   window when playing audio* and *Additional command line options*.
+- **More video effects**: the *Geometry* (transform, rotate, interactive zoom, puzzle), *Overlay* (logo, text, logo
+  erase) and *Advanced* (anaglyph 3D, mirror, psychedelic, waves, water, motion detect, blur, motion blur,
+  anti-flickering, denoiser) effects of the classic dialog, in the effects of the redesign.
+- **Properties of a playlist**: *Properties & Metadata* of a playlist's menu shows its name, its media, its length
+  and its file.
 
 ### Changed
 
@@ -113,6 +130,11 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
   button.
 - **Videos stopped partway stay bright** in the library: only the ones watched to the end are dimmed, as the design
   shows them.
+- **Home, the music player, the library next to the video and Customize Player as the design draws them**: Home's
+  header shows the count and Sort, its pictures are no longer dimmed; the music player's cover and title sit where
+  the design has them and its waveform is as high; a folder of songs lists "title - artist" with Add; Customize
+  Player lists its items in the design's order with its title alone (a profile is renamed, cloned or deleted from
+  its row in the profiles' list). A row of a folder shows the pointer, not the media playing.
 - **The empty player shows Figma's pixel cat**: the player with nothing to play shows the picture of the design,
   the white cat on the floor of a dark room, drawn sharp at any size (it uses no picture file or memory).
 

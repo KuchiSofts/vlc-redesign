@@ -116,15 +116,6 @@ void drawFigmaText(QPainter *painter, const QRect &rect, Qt::Alignment align,
     painter->restore();
 }
 
-// Accent Dim of the design: #AB6314 for the default accent, 0.81 of
-// another one (VLCStyle.redesign.accentDim)
-QColor accentDim(const QColor &accent)
-{
-    if (accent == QColor(0xD3, 0x79, 0x18))
-        return QColor(0xAB, 0x63, 0x14);
-    return QColor::fromRgbF(accent.redF() * 0.81f, accent.greenF() * 0.81f, accent.blueF() * 0.81f);
-}
-
 QPixmap tinted(const QString &path, const QColor &color)
 {
     QPixmap pixmap(path);
@@ -139,6 +130,10 @@ QPixmap tinted(const QString &path, const QColor &color)
 // The interface the menus belong to, for the menus built without it
 QPointer<MainCtx> s_ctx;
 
+// Set on a menu once it has this style: in a window with a style sheet the
+// menu style is the style sheet style wrapping this one, never this one
+const char styledProperty[] = "_vlc_redesignMenuStyle";
+
 } // anonymous namespace
 
 RedesignMenuStyle::RedesignMenuStyle(MainCtx *ctx)
@@ -146,10 +141,35 @@ RedesignMenuStyle::RedesignMenuStyle(MainCtx *ctx)
     , m_ctx(ctx)
 {
     s_ctx = ctx;
-    const int id = QFontDatabase::addApplicationFont(QStringLiteral(":/fonts/InterVariable.ttf"));
-    const QStringList families = QFontDatabase::applicationFontFamilies(id);
-    if (!families.isEmpty())
-        m_fontFamily = families.first();
+    m_fontFamily = fontFamily();
+}
+
+QString RedesignMenuStyle::fontFamily()
+{
+    static const QString family = []() {
+        const int id = QFontDatabase::addApplicationFont(QStringLiteral(":/fonts/InterVariable.ttf"));
+        const QStringList families = QFontDatabase::applicationFontFamilies(id);
+        return families.isEmpty() ? QString() : families.first();
+    }();
+    return family;
+}
+
+QColor RedesignMenuStyle::accentColor(MainCtx *ctx)
+{
+    if (!ctx)
+        ctx = s_ctx;
+    QColor accent(ctx ? ctx->settingValue(QStringLiteral("redesign/accent"), QStringLiteral("#D37918")).toString()
+                      : QStringLiteral("#D37918"));
+    if (!accent.isValid())
+        accent = QColor(0xD3, 0x79, 0x18);
+    return accent;
+}
+
+QColor RedesignMenuStyle::accentDim(const QColor &accent)
+{
+    if (accent == QColor(0xD3, 0x79, 0x18))
+        return QColor(0xAB, 0x63, 0x14);
+    return QColor::fromRgbF(accent.redF() * 0.81f, accent.greenF() * 0.81f, accent.blueF() * 0.81f);
 }
 
 QIcon RedesignMenuStyle::menuIcon(const QString &classicPath, const QWidget *widget)
@@ -197,10 +217,7 @@ QIcon RedesignMenuStyle::accentIcon(MainCtx *ctx, const QString &name)
 {
     if (!ctx)
         ctx = s_ctx;
-    QColor accent(ctx ? ctx->settingValue(QStringLiteral("redesign/accent"), QStringLiteral("#D37918")).toString()
-                      : QStringLiteral("#D37918"));
-    if (!accent.isValid())
-        accent = QColor(0xD3, 0x79, 0x18);
+    const QColor accent = accentColor(ctx);
     // Two-tone icon of the design (grey outline, details in Accent Dim, the
     // full accent where the icon has it: #00FFFF, video)
     const QString duo = QStringLiteral(":/redesign/duo/%1.svg").arg(name);
@@ -238,10 +255,7 @@ bool RedesignMenuStyle::darkScheme(MainCtx *ctx)
 
 RedesignMenuStyle::Palette RedesignMenuStyle::palette() const
 {
-    QColor accent(m_ctx ? m_ctx->settingValue(QStringLiteral("redesign/accent"), QStringLiteral("#D37918")).toString()
-                        : QStringLiteral("#D37918"));
-    if (!accent.isValid())
-        accent = QColor(0xD3, 0x79, 0x18);
+    const QColor accent = accentColor(m_ctx);
 
     // Dark values of the design, light ones from VLCStyle.redesign.color()
     if (isDark())
@@ -454,8 +468,9 @@ bool RedesignMenuStyle::eventFilter(QObject *watched, QEvent *event)
     if (!menu)
         return false;
 
-    if (menu->style() != this)
+    if (menu->style() != this && !menu->property(styledProperty).toBool())
     {
+        menu->setProperty(styledProperty, true);
         menu->setStyle(this);
         menu->setFont(menuFont());
         menu->setMinimumWidth(std::max(menu->minimumWidth(), minimumWidth + 2 * panelPadding));

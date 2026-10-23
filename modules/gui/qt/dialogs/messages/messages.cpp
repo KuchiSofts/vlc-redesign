@@ -74,6 +74,25 @@ MsgEvent::MsgEvent( int type, const vlc_log_t *msg, const char *text )
 {
 }
 
+/* The colours of the log: the classic ones on a light background, lighter
+   ones on a dark one (the dark theme of the redesign) */
+static QColor logColor( const QWidget *view, Qt::GlobalColor color )
+{
+    if( view->palette().color( QPalette::Base ).lightness() >= 128 )
+        return QColor( color );
+    switch( color )
+    {
+        case Qt::darkBlue:
+            return QColor( 0x6E, 0x9B, 0xE6 );
+        case Qt::darkRed:
+            return QColor( 0xE1, 0x50, 0x32 );
+        case Qt::darkGreen:
+            return QColor( 0x18, 0xA2, 0x35 );
+        default:
+            return QColor( 0x6B, 0x6B, 0x6B );
+    }
+}
+
 MessagesDialog::MessagesDialog( qt_intf_t *_p_intf)
                : QVLCFrame( _p_intf )
 {
@@ -191,7 +210,7 @@ void MessagesDialog::addError(int row){
     QTextCharFormat format;
 
     format.setProperty( QTextFormat::FontItalic, true );
-    format.setForeground( Qt::darkRed );
+    format.setForeground( logColor( errorsList, Qt::darkRed ) );
     errorsList->textCursor().insertText( errors->data(errors->index(row, 0), DialogErrorModel::DIALOG_TITLE).toString()+": ", format );
 
     format.setProperty( QTextFormat::FontItalic, false );
@@ -264,27 +283,27 @@ void MessagesDialog::sinkMessage( const MsgEvent *msg )
     /* Insert the prefix */
     QTextCharFormat format;
     format.setProperty( QTextFormat::FontItalic, true );
-    format.setForeground( Qt::darkBlue );
+    format.setForeground( logColor( messages, Qt::darkBlue ) );
 
     messages->textCursor().insertText( msg->module, format );
 
     switch ( msg->priority )
     {
         case VLC_MSG_INFO:
-            format.setForeground( Qt::darkBlue );
+            format.setForeground( logColor( messages, Qt::darkBlue ) );
             messages->textCursor().insertText( " info: ", format );
             break;
         case VLC_MSG_ERR:
-            format.setForeground( Qt::darkRed );
+            format.setForeground( logColor( messages, Qt::darkRed ) );
             messages->textCursor().insertText( " error: ", format );
             break;
         case VLC_MSG_WARN:
-            format.setForeground( Qt::darkGreen );
+            format.setForeground( logColor( messages, Qt::darkGreen ) );
             messages->textCursor().insertText( " warning: ", format );
             break;
         case VLC_MSG_DBG:
         default:
-            format.setForeground( Qt::darkGray );
+            format.setForeground( logColor( messages, Qt::darkGray ) );
             messages->textCursor().insertText( " debug: ", format );
             break;
     }

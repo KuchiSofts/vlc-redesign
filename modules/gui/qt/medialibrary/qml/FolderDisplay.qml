@@ -104,9 +104,10 @@ Widgets.PageExt {
     }
     libraryHeader: true
     libraryItemCount: folderModel.count
-    // Figma: the more button at the end of the header
+    // Figma: the more button at the end of the header, the "folder context
+    // menu" of this folder then the other open actions
     headerAction: Component {
-        OpenMediaButton { iconOnly: true; libraryFolder: true }
+        OpenMediaButton { iconOnly: true; libraryFolder: true; folderActions: root._folderActions }
     }
     isSearchable: true
     // Figma "Sorting Options": "Unwatched First" by default
@@ -116,29 +117,32 @@ Widgets.PageExt {
         { text: qsTr("Name"), criteria: "name" }
     ]
 
-    // Figma "folder context menu" (2139:8935)
-    NativeMenu {
+    // Figma "folder context menu" (2139:8935): of a folder of the page, or
+    // of the page's folder (the more button of the header gives no data)
+    function _folderOf(dataList) { return dataList.length > 0 ? dataList[0].url : root.folderUrl }
+    readonly property var _folderActions: [
+        { text: qsTr("Add File"), icon: "add",
+          action: () => DialogsProvider.simpleOpenDialog() },
+        { text: qsTr("Add Folder"), icon: "folder-add",
+          action: () => DialogsProvider.PLOpenDir() },
+        { text: qsTr("Edit Subtitle Tracks"), icon: "subtitles",
+          action: (dataList) => root._tracksDialog(false).openForFolderUrl(root._folderOf(dataList)) },
+        { text: qsTr("Edit Audio Tracks"), icon: "audio",
+          action: (dataList) => root._tracksDialog(true).openForFolderUrl(root._folderOf(dataList)) },
+        // the whole library is scanned again
+        { text: qsTr("Resync"), icon: "sync",
+          action: () => { if (MainCtx.mediaLibraryAvailable) MainCtx.mediaLibrary.reload() },
+          enabled: () => MainCtx.mediaLibraryAvailable },
+        // the folder opens in the file manager
+        { text: qsTr("Info"), icon: "info",
+          action: (dataList) => Qt.openUrlExternally(root._folderOf(dataList)) }
+    ]
+
+    Widgets.RedesignContextMenu {
         id: folderMenu
 
-        function folderUrl(dataList) { return dataList[0].url }
-
-        actions: [
-            { text: qsTr("Add File"), icon: "add",
-              action: () => DialogsProvider.simpleOpenDialog() },
-            { text: qsTr("Add Folder"), icon: "folder-add",
-              action: () => DialogsProvider.PLOpenDir() },
-            { text: qsTr("Edit Subtitle Tracks"), icon: "subtitles",
-              action: (dataList) => root._tracksDialog(false).openForFolderUrl(folderMenu.folderUrl(dataList)) },
-            { text: qsTr("Edit Audio Tracks"), icon: "audio",
-              action: (dataList) => root._tracksDialog(true).openForFolderUrl(folderMenu.folderUrl(dataList)) },
-            // (the design's "Resync": the whole library is scanned again)
-            { text: qsTr("Reload Library"), icon: "sync",
-              action: () => { if (MainCtx.mediaLibraryAvailable) MainCtx.mediaLibrary.reload() },
-              visible: () => MainCtx.mediaLibraryAvailable },
-            // (the design's "Info": the folder opens in the file manager)
-            { text: qsTr("Show in File Explorer"), icon: "folder-open",
-              action: (dataList) => Qt.openUrlExternally(folderMenu.folderUrl(dataList)) }
-        ]
+        parentItem: root
+        actions: root._folderActions
 
         onRequestData: (requestID, indexes) => {
             setData(requestID, indexes.map(i => ({
@@ -147,28 +151,30 @@ Widgets.PageExt {
         }
     }
 
-    // Figma "file context menu" (6065:13616) for the media of the folder
-    NativeMenu {
+    // Figma "file context menu" (2404:13340) for the media of the folder; the
+    // rows that need the file in the library are greyed out until it is
+    Widgets.RedesignContextMenu {
         id: fileMenu
+
+        parentItem: root
 
         function row(indexes) { return indexes[0] }
         function file(dataList) { return dataList[0] }
+        function indexed(dataList) { return dataList.length === 1 && dataList[0].isIndexed }
 
         actions: [
             { text: qsTr("Play"), icon: "play",
               action: (dataList) => MainPlaylistController.append([fileMenu.file(dataList).url], true) },
-            { text: qsTr("Mark as Watched"), icon: "mark-watched",
-              action: (dataList, options, indexes) => folderModel.setPlayed(fileMenu.row(indexes), true),
-              visible: (dataList) => dataList.length === 1 && dataList[0].isIndexed && !dataList[0].played },
-            { text: qsTr("Mark as Unwatched"), icon: "mark-watched",
-              action: (dataList, options, indexes) => folderModel.setPlayed(fileMenu.row(indexes), false),
-              visible: (dataList) => dataList.length === 1 && dataList[0].isIndexed && dataList[0].played },
-            { text: qsTr("Favorite"), icon: "favorite",
-              action: (dataList, options, indexes) => folderModel.setFavorite(fileMenu.row(indexes), true),
-              visible: (dataList) => dataList.length === 1 && dataList[0].isIndexed && !dataList[0].isFavorite },
-            { text: qsTr("Remove from Favorites"), icon: "favorite",
-              action: (dataList, options, indexes) => folderModel.setFavorite(fileMenu.row(indexes), false),
-              visible: (dataList) => dataList.length === 1 && dataList[0].isIndexed && dataList[0].isFavorite },
+            { text: (dataList) => fileMenu.indexed(dataList) && dataList[0].played ? qsTr("Mark as Unwatched")
+                                                                                     : qsTr("Mark as Watched"),
+              icon: "mark-watched",
+              action: (dataList, options, indexes) => folderModel.setPlayed(fileMenu.row(indexes), !dataList[0].played),
+              enabled: fileMenu.indexed },
+            { text: (dataList) => fileMenu.indexed(dataList) && dataList[0].isFavorite ? qsTr("Remove from Favorites")
+                                                                                         : qsTr("Favorite"),
+              icon: "favorite",
+              action: (dataList, options, indexes) => folderModel.setFavorite(fileMenu.row(indexes), !dataList[0].isFavorite),
+              enabled: fileMenu.indexed },
             // the 2nd argument: transcode only (Convert), not the Stream output
             { text: qsTr("Stream"), icon: "streaming",
               action: (dataList) => DialogsProvider.streamingDialog([fileMenu.file(dataList).url], false) },
@@ -178,9 +184,10 @@ Widgets.PageExt {
               action: (dataList) => MainPlaylistController.append([fileMenu.file(dataList).url], false) },
             { text: qsTr("Add to Playlist"), icon: "playlist",
               action: (dataList, options, indexes) => DialogsProvider.playlistsDialog([folderModel.mediaId(fileMenu.row(indexes))]),
-              visible: (dataList) => dataList.length === 1 && dataList[0].isIndexed },
+              enabled: fileMenu.indexed },
+            // the folder opens with the file selected
             { text: qsTr("Show in File Explorer"), icon: "folder-open",
-              action: () => Qt.openUrlExternally(root.folderUrl) },
+              action: (dataList) => MainCtx.showInFileManager(String(fileMenu.file(dataList).url)) },
             // the folder of the file in the library; this page already
             // shows it: the file is made current and scrolled to
             { text: qsTr("Go to Source"), icon: "go-to",
@@ -200,7 +207,7 @@ Widgets.PageExt {
               action: (dataList) => root._tracksDialog(true).openForUrl(fileMenu.file(dataList).url) },
             { text: qsTr("Properties & Metadata"), icon: "info",
               action: (dataList, options, indexes) => DialogsProvider.mediaInfoDialog(folderModel.mediaId(fileMenu.row(indexes))),
-              visible: (dataList) => dataList.length === 1 && dataList[0].isIndexed }
+              enabled: fileMenu.indexed }
         ]
 
         onRequestData: (requestID, indexes) => {

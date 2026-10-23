@@ -58,21 +58,32 @@ Widgets.ButtonExt {
     text: qsTr("Open media")
     AccessibleCompat.id: "openMediaButton"
 
-    onClicked: menu.popup([], mapToGlobal(0, height))
+    // Rows before the open actions: the design's "folder context menu" of
+    // the folder shown (FolderDisplay), whose Add File and Add Folder stand
+    // for File… and Folder…
+    property var folderActions: []
 
-    NativeMenu {
+    // Figma: the menu card under the button
+    onClicked: menu.toggleFrom(root, 0, root.height)
+
+    Widgets.RedesignContextMenu {
         id: menu
 
-        actions: (root.libraryFolder && MainCtx.mediaLibraryAvailable
-                  ? [ { text: qsTr("Add folder to library…"), action: () => librarySource.clicked() } ]
-                  : []).concat([
-            { text: qsTr("File…"), action: () => DialogsProvider.simpleOpenDialog() },
-            { text: qsTr("Folder…"), action: () => DialogsProvider.PLOpenDir() },
-            { text: qsTr("Network stream…"), action: () => DialogsProvider.openNetDialog() },
-            { text: qsTr("Disc…"), action: () => DialogsProvider.openDiscDialog() },
-            { text: qsTr("Capture device…"), action: () => DialogsProvider.openCaptureDialog() },
-            { text: qsTr("Convert…"), action: () => DialogsProvider.openAndTranscodingDialogs() },
-            { text: qsTr("Stream…"), action: () => DialogsProvider.openAndStreamingDialogs() }
+        readonly property bool _folder: root.folderActions.length > 0
+
+        actions: root.folderActions.concat([
+            { separator: true },
+            { text: qsTr("Add folder to library…"), icon: "folder-add", action: () => librarySource.clicked(),
+              visible: root.libraryFolder && MainCtx.mediaLibraryAvailable },
+            { text: qsTr("File…"), icon: "open", action: () => DialogsProvider.simpleOpenDialog(),
+              visible: !menu._folder },
+            { text: qsTr("Folder…"), icon: "folder-open", action: () => DialogsProvider.PLOpenDir(),
+              visible: !menu._folder },
+            { text: qsTr("Network stream…"), icon: "streaming", action: () => DialogsProvider.openNetDialog() },
+            { text: qsTr("Disc…"), icon: "disc", action: () => DialogsProvider.openDiscDialog() },
+            { text: qsTr("Capture device…"), icon: "capture-device", action: () => DialogsProvider.openCaptureDialog() },
+            { text: qsTr("Convert…"), icon: "swap", action: () => DialogsProvider.openAndTranscodingDialogs() },
+            { text: qsTr("Stream…"), icon: "streaming", action: () => DialogsProvider.openAndStreamingDialogs() }
         ])
 
         onRequestData: (requestID, _) => setData(requestID, [])

@@ -133,6 +133,9 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
   *Network* with Add Network Stream and the Internet services, each with its ⋯ menu (*Rescan library*, *Add folder
   to library*, *Add network stream*).
 - **The queue of the mini player is part of its card**, as the design draws it: drag a row by its handle to move it.
+- **Effect presets** (Figma *Setting Preset*): the Effects window keeps sets of audio and video effects under a name.
+  *New Preset* saves the effects playing, a preset applies them (Save keeps them, Cancel drops them), its ⋯
+  renames, updates or deletes it, and *Default Preset* turns every effect off.
 
 ### Changed
 
@@ -158,6 +161,11 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
 - **The effects panels as the design draws them**: each opens and closes as a panel, its sliders are the ones of the
   settings, the equalizer has its fields of values, Crop its fields of pixels. *Reset* was cut to "Rese" and
   *Two-pass* had no name: both read in full now.
+- **The volume shows its value as the design does**: "100 %" in a box over the slider, while the pointer is on it,
+  while it is dragged and a moment after the wheel or the keys change it.
+- **The frame preview of the seek bar is the design's thumbnail**: a larger frame (252 px) with the time under it.
+- **No light squares in the dark theme**: music, videos and artists without a picture showed VLC's light grey
+  placeholder; it is dark now, its note in the accent.
 - **The empty player shows Figma's pixel cat**: the player with nothing to play shows the picture of the design,
   the white cat on the floor of a dark room, drawn sharp at any size (it uses no picture file or memory).
 

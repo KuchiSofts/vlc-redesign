@@ -17,7 +17,7 @@ counted from this document's own tables and checklists (column *From*); ⚪ idea
 
 | Program         | Progress             | Done    | %     | From                                   |
 |-----------------|----------------------|---------|-------|----------------------------------------|
-| Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜ | 79/94   | 84 %  | [§8](#8-next-release-030) checklists   |
+| Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜ | 80/94   | 85 %  | [§8](#8-next-release-030) checklists   |
 | Linux           | 🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 1/7     | 14 %  | [§9](#linux)                           |
 | macOS           | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/4     | 0 %   | [§9](#macos)                           |
 | Windows ARM64   | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/3     | 0 %   | [§9](#windows-on-arm64)                |
@@ -31,8 +31,8 @@ Windows 0.2.6 is released; 0.3.0 counts the lines of section 8 (done since 0.2.6
 
 | Area                    | Progress             | Done    | %     | From                                   |
 |-------------------------|----------------------|---------|-------|----------------------------------------|
-| Design frames (Figma)   | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 | 100/103 | 97 %  | [§5](#5-design-frame-by-frame) tables  |
-| Pixel check             | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 100/103 | 97 %  | [§5](#5-design-frame-by-frame) tables  |
+| Design frames (Figma)   | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 | 101/103 | 98 %  | [§5](#5-design-frame-by-frame) tables  |
+| Pixel check             | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 101/103 | 98 %  | [§5](#5-design-frame-by-frame) tables  |
 | Light theme and accents | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 16/17   | 94 %  | [§8.3](#83-light-theme-and-accents)    |
 | Settings rows           | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 211/212 | 99 %  | [§8.5](#85-settings-rows)              |
 | Classic dialogs         | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 11/11   | 100 % | [§8.6](#86-classic-dialogs)            |
@@ -400,12 +400,12 @@ The four context menus are the design's cards (`RedesignContextMenu.qml`, build 
 | 3178:16769 | EQ               | 824 × 628 | 🟢     | 🟢    | Inline equalizer: closed, open                     | SettingsEqualizerPanel.qml, SettingsEqualizer.qml |
 | 2372:8487  | EQ presets       | 406 × 460 | 🟢     | 🟢    | Equalizer preset dropdown                          | SettingsEqualizer.qml, EqualizerPanel.qml      |
 | 6456:13892 | sub filename     | 406 × 422 | 🟢     | 🟢    | Subtitle file name matching dropdown               | SettingsDropdown.qml                           |
-| 2372:8834  | Setting Preset   | 406 × 412 | 🟡     | ⏳    | A preset dropdown: default, open                   | SettingsDropdown.qml                           |
+| 2372:8834  | Setting Preset   | 406 × 412 | 🟢     | 🟢    | A preset dropdown: default, open                   | EffectPresetField.qml, EffectPresets.qml       |
 | 2372:8639  | Audio Visualizer | 406 × 369 | 🟢     | 🟢    | Visualizer choice: default, open                   | SettingsDropdown.qml, AudioVisualizationDialog.qml |
 | 2372:8733  | HDR Options      | 406 × 422 | 🟢     | 🟢    | Auto, Off, HDR10, HDR10+, Dolby Vision, HLG         | HdrOutputDialog.qml, hdr_output.cpp, HDRButton.qml |
 
-Differences: 🟡 2372:8834 is drawn on no screen of the design (a list of presets with New and ⋯ on each one);
-the profiles of Customize Player use its look. 2372:8639 is *Settings › Audio › Visualizer* and the player's
+Differences: 2372:8834 is drawn on no screen of the design: it is the presets of the Effects window (New Preset,
+⋯ Rename / Update / Delete, Default Preset), its colours and rows identical. 2372:8639 is *Settings › Audio › Visualizer* and the player's
 visualizer (VU meter and VLC's other visualizations follow the design's four). 2372:8733: HDR10+ and Dolby Vision
 are listed disabled, with the reason under the pointer (Windows offers no way for a player to send them).
 
@@ -442,7 +442,7 @@ are listed disabled, with the reason under the pointer (Windows offers no way fo
 | 2  | Library context menus are native menus, not cards                  | 2107:5903, 2139:8935, 2404:13340, 2459:9389 | 🟢  |
 | 3  | The compact library's Home lists the sections of the library's Home (no play counts of playlists or artists) | 848:1996 | 🟢 |
 | 4  | HDR10+ and Dolby Vision disabled with their reason (Windows has no way to send them) | 2372:8733 | 🟢 |
-| 5  | Setting Preset is drawn on no screen of the design                 | 2372:8834                                | 🟡     |
+| 5  | Setting Preset is drawn on no screen of the design: the Effects window's presets | 2372:8834 | 🟢 |
 | 6  | No background blur: panels solid at 95 % (the music backdrop is blurred); what shows through is at most 5 % (13 grey levels, measured: 4 under the ⋯ menu), under the pixel tolerance, so no blur pass is spent on the GPU | every floating panel | 🟢 |
 | 7  | A stray separator line in the Disc tab of Open Media               | outside the file                         | 🟢     |
 
@@ -798,12 +798,11 @@ and an accepted request made the TV fail after a pause in a test.
   show through, under the pixel tolerance; no blur pass for weak graphics cards)
 - 🟢 HDR10+ and Dolby Vision listed with the reason they cannot be chosen (Windows offers no way to send them)
 - 🟢 Geometry, overlay and advanced video filters in the effects panel
-- 🟡 Setting Preset and Audio Visualizer compared with 2372:8834 and 2372:8639 (the visualizer is; no screen uses the
-  preset list)
+- 🟢 Setting Preset and Audio Visualizer compared with 2372:8834 and 2372:8639 (the presets of the Effects window)
 - 🟢 Editing the music bar verified: a control dragged from the palette onto it and saved (`$1` of the profile);
   the mini player card keeps the fixed controls of 970:3091, and Customize Player from the library shows the player
   to edit its bars in place
-- 🟡 Pixel check of all 103 frames (§11): 100 (two hover states cannot be captured; Setting Preset in progress)
+- 🟡 Pixel check of all 103 frames (§11): 101 (two hover states cannot be captured: their values are the frames')
 - ⚪ Subtitle cues drawn on the seek bar
 - ⚪ A *What's new* card after an update
 - ⚪ The accent following the Windows accent colour (an option)
@@ -824,7 +823,7 @@ and an accepted request made the TV fail after a pause in a test.
 - 🔴 Small updates from 0.2.4, 0.2.5 and 0.2.6 built and checked
 - 🔴 Announcement in Discussions; every fixed issue answered with the release link
 
-Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 79 🟢, 2 🟡, 13 🔴 (94), of which 11 🟢 are
+Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 80 🟢, 1 🟡, 13 🔴 (94), of which 11 🟢 are
 in the app ⏳.
 Languages (§12) and the community (§13) have bars of their own.
 

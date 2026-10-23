@@ -11,29 +11,53 @@ import QtQuick.Controls.impl as Impl
 import VLC.Dialogs
 import VLC.MainInterface
 import VLC.MediaLibrary
+import VLC.Network as Network
 import VLC.Playlist
 import VLC.Style
 import VLC.Util
 import VLC.Widgets as Widgets
 
-// Library next to the video (Figma "Player" with the sidebar open): a column
-// of sections and a compact list, to pick media without leaving the player.
+// Library next to the video (Figma "Player" with the sidebar open, the
+// places of Figma 848:1996 "sidebar"): a column of sections and a compact
+// list, to pick media without leaving the player.
 FocusScope {
     id: root
 
-    // Current place: { section, folder (url), playlistId, title }
+    // Current place: { section, title, trail (the places above it, as
+    // crumbs { title, place }), and its own: folder (url) and root (the
+    // library folder it was opened from), playlistId, parentId (album,
+    // artist, genre), kind (a section of Home), source (a network service),
+    // tree (a network node) }
     property var location: ({ section: "home" })
     property var _back: []
     property var _forward: []
-    // The model filtered by the search field (the place it was typed in)
-    property var _searchedModel: null
+    // The models filtered by the search field (the place it was typed in)
+    property var _searchedModels: []
+    // Home sorted from the panel (its sections have no order of their own)
+    property bool _homeSorted: false
+    // The service and the node of the network places: changed when one is
+    // entered only, its model kept as it was until it goes
+    property string _netSource: ""
+    property var _netTree: null
 
     // The search belongs to the place it was typed in: another place starts
     // without it, and the place left shows all of its items again
     onLocationChanged: {
-        if (_searchedModel && _searchedModel.searchPattern !== undefined)
-            _searchedModel.searchPattern = ""
-        _searchedModel = null
+        root._clearSearch()
+        root._updateNetwork()
+    }
+    // Closed, the models of the panel are gone (and nothing is searched)
+    onVisibleChanged: {
+        root._clearSearch()
+        root._updateNetwork()
+    }
+
+    function _clearSearch() {
+        for (const model of _searchedModels) {
+            if (model && model.searchPattern !== undefined)
+                model.searchPattern = ""
+        }
+        _searchedModels = []
         searchField.visible = false
         searchField.text = ""
     }
@@ -102,12 +126,42 @@ FocusScope {
             return
         go({ section: "folder", folder: url })
     }
+    // A folder from the folder shown: still under the library folder it
+    // was opened from, while it is in it
+    function _openFolder(url) {
+        if (!url || url.toString() === "")
+            return
+        const libraryRoot = location.section === "folder" ? location.root : undefined
+        go({ section: "folder", folder: url,
+             root: libraryRoot && _isPrefix(_partsOf(libraryRoot.folder), _partsOf(url)) ? libraryRoot : undefined })
+    }
 
-    // Folders of the path of the current folder ("C:", "Users", ...)
-    readonly property var _folderParts: location.section === "folder"
-        ? decodeURIComponent(String(folderModel.folder).replace(/^file:\/\/\/?/, ""))
-              .split("/").filter(part => part.length > 0)
-        : []
+    // Folders of the path of a folder url ("C:", "Users", ...)
+    function _partsOf(url) {
+        let path = String(url ?? "").replace(/^file:\/\/\/?/, "")
+        try {
+            path = decodeURIComponent(path)
+        } catch (e) {
+            // (not encoded: kept as it is)
+        }
+        return path.split("/").filter(part => part.length > 0)
+    }
+    // The folders `parts` begin the path `path` (a folder holds the other)
+    function _isPrefix(parts, path) {
+        return parts.length > 0 && parts.length <= path.length
+               && parts.every((part, i) => part.toLowerCase() === path[i].toLowerCase())
+    }
+    // Name of a folder url (its last folder)
+    function _nameOf(url) {
+        const parts = _partsOf(url)
+        return parts.length > 0 ? parts[parts.length - 1] : String(url ?? "")
+    }
+    function _icon(name) {
+        return "qrc:///redesign/icons/" + name + "/default.png"
+    }
+
+    // Folders of the path of the current folder
+    readonly property var _folderParts: location.section === "folder" ? _partsOf(folderModel.folder) : []
 
     // Folder of the first `depth` parts of the path
     function _folderAt(depth) {
@@ -117,41 +171,266 @@ FocusScope {
         return "file:///" + path + (depth === 1 && /:$/.test(path) ? "/" : "")
     }
 
-    readonly property string _title: {
+    function _isVideoFile(url) {
+        return /\.(3gp|asf|avi|flv|m2ts|m4v|mkv|mov|mp4|mpe?g|mts|ogv|ts|vob|webm|wmv)$/i.test(String(url))
+    }
+    function _isAudioFile(url) {
+        return /\.(aac|aiff?|alac|ape|flac|m4a|mka|mp3|oga|ogg|opus|wav|wma)$/i.test(String(url))
+    }
+    // What the folder shown holds: videos, songs
+    readonly property var _folderContent: {
+        const content = { video: false, audio: false }
+        if (location.section !== "folder")
+            return content
+        for (let i = 0; i < folderModel.count; ++i) {
+            const url = folderModel.data(folderModel.index(i, 0), LocalFolderModel.UrlRole)
+            if (_isVideoFile(url))
+                content.video = true
+            else if (_isAudioFile(url))
+                content.audio = true
+        }
+        return content
+    }
+
+    // The crumbs of the sections, above their places
+    readonly property var _musicCrumb: ({ title: qsTr("Music"), place: { section: "music" } })
+    readonly property var _videosTrail: [{ title: qsTr("Videos"), place: { section: "videos" } }]
+    readonly property var _songsTrail: [_musicCrumb, { title: qsTr("Songs"),
+                                                      place: { section: "songs", title: qsTr("Songs"),
+                                                               trail: [_musicCrumb] } }]
+
+    // The library folder holding the folder shown, and the section it is
+    // in: the one it was opened from, else the one holding it (Music >
+    // Songs for songs, Videos otherwise)
+    readonly property var _folderRoot: {
+        if (location.section !== "folder")
+            return null
+        if (location.root)
+            return location.root
+        const urls = mlModels.item ? mlModels.item.libraryFolderUrls : []
+        let best = ""
+        let bestLength = 0
+        for (const url of urls) {
+            const parts = _partsOf(url)
+            if (parts.length > bestLength && _isPrefix(parts, _folderParts)) {
+                best = url
+                bestLength = parts.length
+            }
+        }
+        if (best === "")
+            return null
+        const songs = _songFolder || (_folderContent.audio && !_folderContent.video)
+        return { section: songs ? "songs" : "videos", folder: best, trail: songs ? _songsTrail : _videosTrail }
+    }
+    // The section of the column the place is in
+    readonly property string _columnSection: {
         switch (location.section) {
-        case "folder": return folderModel.folderName
-        case "playlist": return location.title ?? ""
+        case "homeall":
+            return "home"
+        case "songs":
+        case "albums":
+        case "artists":
+        case "genres":
+        case "album":
+        case "artist":
+        case "genre":
+            return "music"
+        case "service":
+        case "netfolder":
+            return "network"
+        case "playlist":
+            return "playlists"
+        case "folder":
+            // Figma 2160:8732: a folder shown, the Videos icon filled; the
+            // folder of the song playing, the Music one (4778:25123)
+            if (_folderRoot)
+                return _folderRoot.section === "songs" ? "music" : "videos"
+            return _songFolder ? "music" : "videos"
         default:
-            const entry = _sections.find(s => s.section === location.section)
-            return entry ? entry.title : ""
+            return location.section
         }
     }
 
-    // Model and row presentation of the current place
+    // The address of the place (Figma 848:1996: "Videos > Shows", "... >
+    // Shows > The Wand", "Music > Songs", "... > Songs > My Songs"): crumbs
+    // { title, place }, the place shown last
+    readonly property var _folderCrumbs: {
+        const parts = _folderParts
+        const libraryRoot = _folderRoot
+        const rootParts = libraryRoot ? _partsOf(libraryRoot.folder) : []
+        const inRoot = libraryRoot !== null && _isPrefix(rootParts, parts)
+        // (under the library folder, from it; else the whole path)
+        const crumbs = inRoot ? libraryRoot.trail.slice() : []
+        for (let depth = inRoot ? rootParts.length : 1; depth <= parts.length; ++depth) {
+            crumbs.push({ title: parts[depth - 1],
+                          place: { section: "folder", folder: _folderAt(depth),
+                                   root: inRoot ? libraryRoot : undefined } })
+        }
+        if (crumbs.length > 0 && folderModel.folderName !== "")
+            crumbs[crumbs.length - 1].title = folderModel.folderName
+        return crumbs
+    }
+    readonly property var _crumbs: {
+        if (location.section === "folder")
+            return _folderCrumbs
+        const entry = _sections.find(s => s.section === location.section)
+        const own = { title: location.title ?? (entry ? entry.title : ""), place: location }
+        return location.trail ? location.trail.concat([own]) : [own]
+    }
+
+    // The models of the place: the media library's (loaded with it, while
+    // the panel is shown) and the network's (VLC.Network, as the library's
+    // network pages: they always exist)
+    Loader {
+        id: mlModels
+        active: root.visible && root._mlAvailable
+        source: "qrc:///qt/qml/VLC/Player/CompactLibraryModels.qml"
+        onLoaded: root._homeSorted = false
+    }
+    Binding {
+        target: mlModels.item
+        property: "location"
+        // (what they use of the place: not its crumbs)
+        value: ({ section: root.location.section, kind: root.location.kind, parentId: root.location.parentId })
+        when: mlModels.status === Loader.Ready
+    }
+
+    Loader {
+        id: networkModels
+    }
+    // (set here, after the service or the node of the place)
+    function _updateNetwork() {
+        const section = location.section
+        if (section === "service")
+            _netSource = location.source ?? ""
+        else if (section === "netfolder")
+            _netTree = location.tree ?? null
+        networkModels.sourceComponent = !root.visible ? null
+                                      : section === "network" ? networkSourcesComponent
+                                      : section === "service" ? networkServiceComponent
+                                      : section === "netfolder" ? networkNodeComponent
+                                      : null
+    }
+    // Figma 848:1996 "Network": the services of the Internet (Podcasts,
+    // Radio), as the library's Discover > Services
+    Component {
+        id: networkSourcesComponent
+        Item {
+            readonly property Network.NetworkSourcesModel model: Network.NetworkSourcesModel { ctx: MainCtx }
+        }
+    }
+    Component {
+        id: networkServiceComponent
+        Item {
+            readonly property Network.NetworkDeviceModel model: Network.NetworkDeviceModel {
+                ctx: MainCtx
+                sd_source: Network.NetworkDeviceModel.CAT_INTERNET
+                source_name: root._netSource
+            }
+        }
+    }
+    Component {
+        id: networkNodeComponent
+        Item {
+            readonly property Network.NetworkMediaModel model: Network.NetworkMediaModel {
+                ctx: MainCtx
+                tree: root._netTree
+            }
+        }
+    }
+
+    // Model and row presentation of the current place (Home: its sections)
     readonly property var _model: {
+        const ml = mlModels.item
         switch (location.section) {
         case "folder": return folderModel
-        case "videos": return _mlAvailable ? videoModel : null
-        case "music": return _mlAvailable ? audioModel : null
+        case "videos":
+        case "songs": return ml ? ml.libraryFolders : null
+        case "music": return _mlAvailable ? musicCategories : null
+        case "albums": return ml ? ml.albums : null
+        case "artists": return ml ? ml.artists : null
+        case "genres": return ml ? ml.genres : null
+        case "album":
+        case "artist":
+        case "genre": return ml ? ml.tracks : null
+        case "homeall": return ml ? (ml[location.kind] ?? null) : null
+        case "network":
+        case "service":
+        case "netfolder": return networkModels.item ? networkModels.item.model : null
         case "playlists": return _mlAvailable ? playlistListModel : null
         case "playlist": return _mlAvailable ? playlistModel : null
-        case "home":
         case "recent": return _mlAvailable ? recentModel : null
         default: return null
         }
     }
+    // Home: its sections, as the library's Home (HomePage.qml)
+    readonly property var _homeSections: {
+        const ml = mlModels.item
+        if (!ml)
+            return []
+        return [
+            { kind: "continueWatching", title: qsTr("Continue Watching"), model: ml.continueWatching },
+            { kind: "listenAgain", title: qsTr("Listen Again"), model: ml.listenAgain },
+            { kind: "frequentFolders", title: qsTr("Frequently Visited Folders"), model: ml.frequentFolders },
+            { kind: "favorites", title: qsTr("Favorites"), model: ml.favorites },
+            { kind: "newVideos", title: qsTr("New Videos"), model: ml.newVideos },
+            { kind: "newMusic", title: qsTr("New Music"), model: ml.newMusic }
+        ]
+    }
+    // The models Home sorts and searches (its folders have neither)
+    function _homeModels() {
+        const ml = mlModels.item
+        return ml ? [ml.continueWatching, ml.listenAgain, ml.favorites, ml.newVideos, ml.newMusic] : []
+    }
+    // The models the sort and the search of the tool row act on
+    readonly property var _toolModels: location.section === "home" ? _homeModels()
+                                                                  : (_model ? [_model] : [])
 
-    // The Open media menu of Add (a folder), under its row
+    // Items counted in the tool row (Figma: "3 items" under Add; Home, the
+    // media of the library)
+    readonly property int _count: {
+        switch (location.section) {
+        case "home":
+            return mlModels.item ? mlModels.item.allMedia.count : 0
+        case "network":
+            // (the "Add a service" row of the sources, gone while searching)
+            return Math.max(0, list.count - (searchField.text === "" ? 1 : 0))
+        default:
+            return list.count
+        }
+    }
+    readonly property bool _counted: location.section === "home" ? !!mlModels.item : !!_model
+
+    // The Add row at the top of the list (Figma 848:1996): a folder to the
+    // library, or media to a folder (the Open media menu of the library's
+    // folders), in Videos, Music and their folders; not in a folder of
+    // videos (2425:13624); a playlist in Playlists
+    readonly property bool _addShown: {
+        switch (location.section) {
+        case "playlists":
+        case "videos":
+        case "songs":
+        case "music":
+            return _mlAvailable
+        case "folder":
+            return folderModel.count > 0 && !_folderContent.video
+        default:
+            return false
+        }
+    }
+
+    // The Open media menu of Add, under its row
     OpenMediaButton {
         id: addMediaButton
-        x: list.x + list.leftMargin
-        y: list.y + list.topMargin
+        // (the list is in the panel, right of the column)
+        x: panel.x + list.x + list.leftMargin
+        y: panel.y + list.y + list.topMargin
         width: VLCStyle.dp(32, VLCStyle.scale)
         height: width
         // (under the list: the row takes the clicks)
         z: -1
         opacity: 0
-        enabled: root._songFolder
+        enabled: root._addShown && root.location.section !== "playlists"
         iconOnly: true
         libraryFolder: true
     }
@@ -165,8 +444,6 @@ FocusScope {
         sortOrder: Qt.AscendingOrder
     }
 
-    MLVideoModel { id: videoModel; ml: root._mlAvailable ? MediaLib : null }
-    MLAudioModel { id: audioModel; ml: root._mlAvailable ? MediaLib : null }
     MLPlaylistListModel {
         id: playlistListModel
         ml: root._mlAvailable ? MediaLib : null
@@ -190,20 +467,71 @@ FocusScope {
         when: root.location.section === "playlist"
     }
 
+    // Figma 848:1996 "Music": Songs (the library's folders, "My Songs"),
+    // Albums, Artists, Genres
+    ListModel {
+        id: musicCategories
+        ListElement { place: "songs"; name: qsTr("Songs"); icon: "music" }
+        ListElement { place: "albums"; name: qsTr("Albums"); icon: "album" }
+        ListElement { place: "artists"; name: qsTr("Artists"); icon: "artist" }
+        ListElement { place: "genres"; name: qsTr("Genres"); icon: "genre" }
+    }
+
     function _activate(entry, index) {
-        switch (root.location.section) {
+        const place = root.location
+        switch (place.section) {
         case "folder":
             if (entry.isFolder)
-                root.showFolder(entry.url)
+                root._openFolder(entry.url)
             else
                 MainPlaylistController.append([entry.url], true)
             break
+        case "videos":
+        case "songs":
+            // a folder of the library, browsed under the section
+            root.go({ section: "folder", folder: entry.url,
+                      root: { section: place.section, folder: String(entry.url), trail: root._crumbs } })
+            break
+        case "music":
+            root.go({ section: entry.place, title: entry.name, trail: root._crumbs })
+            break
+        case "albums":
+        case "artists":
+        case "genres":
+            root.go({ section: place.section.slice(0, -1), parentId: entry.id,
+                      title: entry.name ?? entry.title ?? "", trail: root._crumbs })
+            break
+        case "network":
+            if (entry.type === Network.NetworkSourcesModel.TYPE_DUMMY)
+                DialogsProvider.openNetDialog()
+            else
+                root.go({ section: "service", source: entry.name, title: entry.long_name, trail: root._crumbs })
+            break
+        case "service":
+        case "netfolder":
+            if (root._isNetworkContainer(entry.type))
+                root.go({ section: "netfolder", tree: entry.tree, title: entry.name, trail: root._crumbs })
+            else if (root._model)
+                root._model.addAndPlay(index)
+            break
         case "playlists":
-            root.go({ section: "playlist", playlistId: entry.id, title: entry.name })
+            root.go({ section: "playlist", playlistId: entry.id, title: entry.name, trail: root._crumbs })
+            break
+        case "homeall":
+            if (place.kind === "frequentFolders")
+                root.showFolder(entry.url)
+            else
+                MediaLib.addAndPlay([entry.id])
             break
         default:
             MediaLib.addAndPlay([entry.id])
         }
+    }
+    // A node of a network source that opens (a directory, a feed, a list)
+    function _isNetworkContainer(type) {
+        return type === Network.NetworkMediaModel.TYPE_DIRECTORY
+               || type === Network.NetworkMediaModel.TYPE_NODE
+               || type === Network.NetworkMediaModel.TYPE_PLAYLIST
     }
 
     // Section column
@@ -227,18 +555,16 @@ FocusScope {
                                                     || (modelData.section === "playlists"
                                                         && root.location.section === "playlist")
                     iconName: modelData.icon
-                    // Figma 2160:8732: a folder shown, the Videos icon filled
-                    // (grey); the folder of the song playing, the Music one
-                    // (4778:25123)
+                    // Figma 848:1996: a section's own place, its icon in the
+                    // accent; the places in it (a folder, Songs, a
+                    // service...), the icon filled (grey)
                     iconState: current && modelData.icon !== "recent" ? "active"
-                             : (root.location.section === "folder"
-                                && modelData.section === (root._songFolder ? "music" : "videos")) ? "selected"
+                             : (!current && root._columnSection === modelData.section
+                                && modelData.section !== "recent" && modelData.section !== "playlists") ? "selected"
                              : "default"
                     description: modelData.title
                     onClicked: {
-                        if (modelData.section === "network")
-                            root.openLibraryRequested("network")
-                        else if (!current)
+                        if (!current)
                             root.go({ section: modelData.section })
                     }
                 }
@@ -289,8 +615,8 @@ FocusScope {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.leftMargin: VLCStyle.dp(10, VLCStyle.scale)
-                visible: root._folderParts.length < 2
-                text: root._title
+                visible: root._crumbs.length < 2
+                text: root._crumbs.length > 0 ? root._crumbs[0].title : ""
                 elide: Text.ElideRight
                 color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#4d4d4d")
                 font.family: VLCStyle.redesign.fontFamily
@@ -305,35 +631,37 @@ FocusScope {
                 }
             }
 
-            // Address line of a folder: "... > parent > folder"
+            // Address line of the places in a section: "... > parent > place"
             RowLayout {
                 Layout.fillWidth: true
                 Layout.leftMargin: VLCStyle.dp(10, VLCStyle.scale)
-                visible: root._folderParts.length >= 2
+                visible: root._crumbs.length >= 2
                 spacing: VLCStyle.dp(6, VLCStyle.scale)
                 clip: true
 
                 CrumbButton {
-                    visible: root._folderParts.length > 2
+                    readonly property var crumbData: root._crumbs.length > 2 ? root._crumbs[root._crumbs.length - 3] : null
+                    visible: !!crumbData
                     dimmed: true
                     text: "\u2026"
-                    description: root._folderParts.length > 2 ? root._folderParts[root._folderParts.length - 3] : ""
-                    onClicked: root.showFolder(root._folderAt(root._folderParts.length - 2))
+                    description: crumbData ? crumbData.title : ""
+                    onClicked: root.go(crumbData.place)
                 }
-                CrumbSeparator { visible: root._folderParts.length > 2 }
+                CrumbSeparator { visible: root._crumbs.length > 2 }
                 CrumbButton {
-                    // Gives way to the current folder first
+                    readonly property var crumbData: root._crumbs.length >= 2 ? root._crumbs[root._crumbs.length - 2] : null
+                    // Gives way to the current place first
                     Layout.minimumWidth: Math.min(implicitWidth, VLCStyle.dp(40, VLCStyle.scale))
                     Layout.maximumWidth: implicitWidth
-                    text: root._folderParts.length >= 2 ? root._folderParts[root._folderParts.length - 2] : ""
+                    text: crumbData ? crumbData.title : ""
                     description: text
-                    onClicked: root.showFolder(folderModel.parentFolder)
+                    onClicked: root.go(crumbData.place)
                 }
                 CrumbSeparator { }
                 Text {
                     Layout.minimumWidth: Math.min(implicitWidth, VLCStyle.dp(130, VLCStyle.scale))
                     Layout.maximumWidth: implicitWidth
-                    text: root._title
+                    text: root._crumbs.length > 0 ? root._crumbs[root._crumbs.length - 1].title : ""
                     elide: Text.ElideRight
                     // Dimmed: the parents are the ones to click
                     color: VLCStyle.palette.isDark ? VLCStyle.redesign.textMuted : "#8f8f8f"
@@ -346,10 +674,15 @@ FocusScope {
                 Layout.leftMargin: VLCStyle.dp(10, VLCStyle.scale)
                 iconSource: "qrc:///redesign/icons/more/dim.png"
                 description: qsTr("More")
-                // playlists are created in the media library only
+                // playlists are created in the media library only; the
+                // songs of an album, an artist, a genre or a playlist are
+                // played together
                 visible: root.location.section === "folder"
-                         || (root.location.section === "playlists" && root._mlAvailable)
-                onClicked: (root.location.section === "folder" ? folderMenu : playlistsMenu).toggleFrom(this)
+                         || (root._mlAvailable && ["playlists", "playlist", "album", "artist", "genre"]
+                                                      .includes(root.location.section))
+                onClicked: (root.location.section === "folder" ? folderMenu
+                            : root.location.section === "playlists" ? playlistsMenu
+                            : collectionMenu).toggleFrom(this)
 
                 Widgets.RedesignMenu {
                     id: playlistsMenu
@@ -357,6 +690,20 @@ FocusScope {
                         text: qsTr("Create playlist")
                         iconName: "add"
                         onTriggered: root._createPlaylist()
+                    }
+                }
+
+                Widgets.RedesignMenu {
+                    id: collectionMenu
+                    Widgets.RedesignMenuItem {
+                        text: qsTr("Play all")
+                        iconName: "play"
+                        onTriggered: root._playCollection(false)
+                    }
+                    Widgets.RedesignMenuItem {
+                        text: qsTr("Add all to queue")
+                        iconName: "queue"
+                        onTriggered: root._playCollection(true)
                     }
                 }
 
@@ -376,7 +723,7 @@ FocusScope {
                         text: qsTr("Up one folder")
                         iconName: "folder"
                         enabled: folderModel.parentFolder.toString() !== ""
-                        onTriggered: root.showFolder(folderModel.parentFolder)
+                        onTriggered: root._openFolder(folderModel.parentFolder)
                     }
                 }
             }
@@ -403,7 +750,7 @@ FocusScope {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 visible: !searchField.visible
-                text: root._model ? qsTr("%1 item", "%1 items", root._model.count).arg(root._model.count) : ""
+                text: root._counted ? qsTr("%1 item", "%1 items", root._count).arg(root._count) : ""
                 color: VLCStyle.redesign.color("#6B6B6B", "#7c7c7b")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.redesign.fontNormal
@@ -429,10 +776,10 @@ FocusScope {
                 placeholderText: qsTr("Search")
                 placeholderTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#7c7c7b")
                 onTextChanged: {
-                    if (root._model && root._model.searchPattern !== undefined) {
-                        root._model.searchPattern = text
-                        root._searchedModel = text !== "" ? root._model : null
-                    }
+                    const models = root._toolModels.filter(model => model && model.searchPattern !== undefined)
+                    for (const model of models)
+                        model.searchPattern = text
+                    root._searchedModels = text !== "" ? models : []
                 }
                 Keys.onEscapePressed: { text = ""; visible = false }
             }
@@ -440,12 +787,12 @@ FocusScope {
                 Layout.leftMargin: VLCStyle.dp(12, VLCStyle.scale)
                 iconSource: "qrc:///redesign/icons/sort/dim.png"
                 description: qsTr("Sort")
-                enabled: !!root._model
+                enabled: root._toolModels.some(model => model && model.sortCriteria !== undefined)
                 onClicked: sortMenu.toggleFrom(this)
 
                 // Figma: an order applied, the accent dot at the corner (not
                 // for the order of the place: folders list the unwatched
-                // media first)
+                // media first, the new media of Home the newest first)
                 Rectangle {
                     x: VLCStyle.dp(22, VLCStyle.scale)
                     y: -VLCStyle.dp(1, VLCStyle.scale)
@@ -454,11 +801,17 @@ FocusScope {
                     radius: width / 2
                     color: VLCStyle.redesign.accent
                     visible: {
+                        if (root.location.section === "home")
+                            return root._homeSorted
                         if (!root._model || !root._model.sortCriteria)
                             return false
                         if (root._model === folderModel)
                             return folderModel.sortCriteria !== "unwatched"
                                    || folderModel.sortOrder !== Qt.AscendingOrder
+                        if (root.location.section === "homeall"
+                            && ["favorites", "newVideos", "newMusic"].includes(root.location.kind))
+                            return root._model.sortCriteria !== "insertion"
+                                   || root._model.sortOrder !== Qt.DescendingOrder
                         return true
                     }
                 }
@@ -467,19 +820,21 @@ FocusScope {
                     id: sortMenu
                     Widgets.RedesignMenuItem {
                         text: qsTr("Title A-Z")
-                        onTriggered: root._sort(root.location.section === "folder" ? "name" : "title", Qt.AscendingOrder)
+                        onTriggered: root._sort("title", Qt.AscendingOrder)
                     }
                     Widgets.RedesignMenuItem {
                         text: qsTr("Title Z-A")
-                        onTriggered: root._sort(root.location.section === "folder" ? "name" : "title", Qt.DescendingOrder)
+                        onTriggered: root._sort("title", Qt.DescendingOrder)
                     }
                     Widgets.RedesignMenuItem {
                         text: qsTr("Newest First")
-                        onTriggered: root._sort(root.location.section === "folder" ? "date" : "insertion", Qt.DescendingOrder)
+                        enabled: root._dateCriteria() !== ""
+                        onTriggered: root._sort("date", Qt.DescendingOrder)
                     }
                     Widgets.RedesignMenuItem {
                         text: qsTr("Oldest First")
-                        onTriggered: root._sort(root.location.section === "folder" ? "date" : "insertion", Qt.AscendingOrder)
+                        enabled: root._dateCriteria() !== ""
+                        onTriggered: root._sort("date", Qt.AscendingOrder)
                     }
                 }
             }
@@ -488,7 +843,7 @@ FocusScope {
                 Layout.leftMargin: VLCStyle.dp(12, VLCStyle.scale)
                 iconSource: "qrc:///redesign/icons/list/dim.png"
                 description: qsTr("View")
-                enabled: !!root._model
+                enabled: root._counted
                 onClicked: viewMenu.toggleFrom(this)
 
                 // (the options of the library header: the list, the only
@@ -511,7 +866,7 @@ FocusScope {
                 Layout.leftMargin: VLCStyle.dp(12, VLCStyle.scale)
                 iconSource: "qrc:///redesign/icons/search/dim.png"
                 description: qsTr("Search")
-                enabled: !!root._model
+                enabled: root._toolModels.some(model => model && model.searchPattern !== undefined)
                 onClicked: {
                     searchField.visible = !searchField.visible
                     if (searchField.visible)
@@ -542,6 +897,126 @@ FocusScope {
             }
         }
 
+        // Figma 848:1996 "Home": the sections of the library's Home, a row
+        // of 32 for the name and the chevron, 15, three media (rows of 32,
+        // 10 apart), 30 to the next one
+        ListView {
+            id: homeList
+
+            anchors {
+                top: separator.bottom
+                left: parent.left
+                right: parent.right
+                bottom: parent.bottom
+            }
+            topMargin: VLCStyle.dp(20, VLCStyle.scale)
+            bottomMargin: VLCStyle.dp(20, VLCStyle.scale)
+            leftMargin: VLCStyle.dp(20, VLCStyle.scale)
+            rightMargin: VLCStyle.dp(20, VLCStyle.scale)
+            spacing: 0
+            clip: true
+            boundsBehavior: Flickable.StopAtBounds
+            visible: root.location.section === "home"
+            model: visible ? root._homeSections : []
+
+            delegate: Column {
+                id: homeSection
+
+                required property var modelData
+                readonly property var sectionModel: modelData.model
+                // (a section without media is left out, as in the library's
+                // Home; the folders while searching: they have no search)
+                readonly property bool shown: !!sectionModel && sectionModel.count > 0
+                                              && (modelData.kind !== "frequentFolders" || searchField.text === "")
+
+                width: homeList.width - homeList.leftMargin - homeList.rightMargin
+                height: shown ? implicitHeight : 0
+                visible: shown
+                spacing: 0
+
+                Item {
+                    width: parent.width
+                    height: VLCStyle.dp(32, VLCStyle.scale)
+
+                    // Inter 16 #969696
+                    Text {
+                        id: sectionTitle
+                        width: parent.width - chevron.width - VLCStyle.dp(10, VLCStyle.scale)
+                        height: parent.height
+                        text: homeSection.modelData.title
+                        elide: Text.ElideRight
+                        color: VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, "#4d4d4d")
+                        font.family: VLCStyle.redesign.fontFamily
+                        font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
+                        verticalAlignment: Text.AlignTop
+                        topPadding: root._baseline(height, font.pixelSize, undefined, sectionMetrics.ascent)
+                        FontMetrics {
+                            id: sectionMetrics
+                            font: sectionTitle.font
+                        }
+                    }
+                    // all of the section, in its own place
+                    PanelButton {
+                        id: chevron
+                        anchors.right: parent.right
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: VLCStyle.dp(24, VLCStyle.scale)
+                        height: VLCStyle.dp(24, VLCStyle.scale)
+                        iconSource: "qrc:///redesign/icons/chevron-right/default.png"
+                        description: qsTr("See all")
+                        onClicked: root.go({ section: "homeall", kind: homeSection.modelData.kind,
+                                             title: homeSection.modelData.title, trail: root._crumbs })
+                    }
+                }
+                Item {
+                    width: 1
+                    height: VLCStyle.dp(15, VLCStyle.scale)
+                }
+                Column {
+                    width: parent.width
+                    spacing: VLCStyle.dp(10, VLCStyle.scale)
+
+                    Repeater {
+                        // (three at most: the models' limit)
+                        model: homeSection.sectionModel
+
+                        delegate: LibraryRow {
+                            id: homeRow
+
+                            required property var model
+                            required property int index
+
+                            readonly property bool folder: homeSection.modelData.kind === "frequentFolders"
+                            readonly property bool song: !!model.main_artist || model.isVideo === false
+                            readonly property bool watched: !folder && !song
+                                                            && (Number(model.playcount ?? 0) > 0 || progress > 0)
+
+                            width: parent.width
+                            label: folder ? (model.name ?? "")
+                                          : (model.main_artist ? (model.title ?? "") + " - " + model.main_artist
+                                                               : (model.title ?? model.name ?? ""))
+                            cover: folder ? "" : (model.thumbnail ?? model.cover ?? model.small_cover ?? "")
+                            iconSource: folder ? root._icon("folder")
+                                               : (song ? "qrc:///redesign/music.svg" : "qrc:///redesign/video.svg")
+                            smallIcon: folder
+                            progress: folder ? 0 : Math.max(0, Number(model.progress ?? 0))
+                            progressShown: !folder && !song && (progress > 0 || watched)
+                            // Figma 848:1996: the folders, the media watched
+                            // and the songs listened again dimmed
+                            dimmed: folder || watched || homeSection.modelData.kind === "listenAgain"
+
+                            onClicked: if (folder) root.showFolder(model.url)
+                            onDoubleClicked: if (!folder) MediaLib.addAndPlay([model.id])
+                        }
+                    }
+                }
+                Item {
+                    width: 1
+                    height: VLCStyle.dp(30, VLCStyle.scale)
+                }
+            }
+        }
+
         ListView {
             id: list
 
@@ -559,186 +1034,184 @@ FocusScope {
             spacing: VLCStyle.dp(10, VLCStyle.scale)
             clip: true
             boundsBehavior: Flickable.StopAtBounds
+            visible: root.location.section !== "home"
             model: root._model
 
             header: Loader {
                 width: list.width - list.leftMargin - list.rightMargin
-                // (playlists are created in the media library only); a
-                // folder of songs: Add, the Open media menu of the library's
-                // folders (Figma 4778:25123; a folder of videos has none,
-                // 2425:13624)
-                active: (root.location.section === "playlists" && root._mlAvailable)
-                        || root._songFolder
+                active: root._addShown
                 // a row of 32 and the gap of the list
                 height: active ? VLCStyle.dp(42, VLCStyle.scale) : 0
                 sourceComponent: Item {
-                    Image {
-                        width: VLCStyle.dp(32, VLCStyle.scale)
-                        height: width
+                    LibraryRow {
+                        width: parent.width
                         // the icon of the design at 32 px (Figma "Player" 187:328)
-                        source: "qrc:///redesign/player/library-add.png"
-                        sourceSize: Qt.size(width, height)
-                    }
-                    Text {
-                        x: VLCStyle.dp(42, VLCStyle.scale)
-                        height: VLCStyle.dp(32, VLCStyle.scale)
-                        text: root.location.section === "folder" ? qsTr("Add") : qsTr("Create playlist")
-                        color: VLCStyle.redesign.color("#6B6B6B", "#7c7c7b")
-                        font.family: VLCStyle.redesign.fontFamily
-                        font.pixelSize: VLCStyle.redesign.fontNormal
-                        verticalAlignment: Text.AlignTop
-                        topPadding: root._baseline(height, font.pixelSize, undefined, createMetrics.ascent)
-                        id: createText
-                        FontMetrics {
-                            id: createMetrics
-                            font: createText.font
+                        iconSource: "qrc:///redesign/player/library-add.png"
+                        label: root.location.section === "playlists" ? qsTr("Create playlist") : qsTr("Add")
+                        dimmed: true
+                        onClicked: {
+                            if (root.location.section === "playlists")
+                                root._createPlaylist()
+                            else
+                                addMediaButton.clicked()
                         }
-                    }
-                }
-                TapHandler {
-                    onTapped: {
-                        if (root.location.section === "folder")
-                            addMediaButton.clicked()
-                        else
-                            root._createPlaylist()
                     }
                 }
             }
 
-            delegate: T.ItemDelegate {
+            delegate: LibraryRow {
                 id: row
 
                 required property var model
                 required property int index
 
-                readonly property bool isFolder: root.location.section === "folder" && model.isFolder
-                // Songs read "title - artist" as in the design
-                readonly property string label: {
-                    const name = model.name ?? model.title ?? ""
-                    if (root.location.section === "music" && model.main_artist)
-                        return name + " - " + model.main_artist
-                    // a song of a folder the library knows, as well
-                    // (Figma 4778:25123); the videos keep their file name
-                    if (root.location.section === "folder" && model.title && model.main_artist)
-                        return model.title + " - " + model.main_artist
-                    return name
+                readonly property string place: root.location.section
+                // Figma 848:1996 "Network": the sources begin with "Add a
+                // service", the design's "Add Network Stream"
+                readonly property bool addRow: place === "network"
+                                               && model.type === Network.NetworkSourcesModel.TYPE_DUMMY
+                // Rows that open a place (on a click; media play on a
+                // double click)
+                readonly property bool container: {
+                    switch (place) {
+                    case "folder":
+                        return !!model.isFolder
+                    case "service":
+                    case "netfolder":
+                        return root._isNetworkContainer(model.type)
+                    case "homeall":
+                        return root.location.kind === "frequentFolders"
+                    case "videos":
+                    case "songs":
+                    case "music":
+                    case "albums":
+                    case "artists":
+                    case "genres":
+                    case "playlists":
+                        return true
+                    case "network":
+                        return !addRow
+                    default:
+                        return false
+                    }
                 }
-                // Media of the library (Figma "media"): an accent line under
-                // the thumbnail, the title dimmed once watched to the end
-                readonly property real progress: Math.max(0, Number(model.progress ?? 0))
+                readonly property bool media: !container && !addRow
                 // (not a song: one is played again, Figma 4778:25123 shows
                 // its songs of Listen Again as the others)
-                readonly property bool song: root.location.section === "music"
-                                             || (root.location.section === "folder" && !!model.main_artist)
-                readonly property bool watched: !song && (Number(model.playcount ?? 0) > 0 || progress > 0)
-                // Videos of a folder show a frame, decoded on demand, songs
-                // the artwork of the library
-                readonly property string cover: {
-                    // (the MRL of the library: the url as text decodes some
-                    // characters)
-                    if (root.location.section === "folder" && !model.isFolder) {
-                        if (/\.(3gp|asf|avi|flv|m2ts|m4v|mkv|mov|mp4|mpe?g|mts|ogv|ts|vob|webm|wmv)$/i
-                                .test(String(model.url)))
-                            return VLCThumbnail.uri(String(model.mrl), 0.1)
-                        return VLCThumbnail.artwork(String(model.mrl))
-                    }
-                    // playlists show the icon of the design (Figma "playlist")
-                    if (root.location.section === "playlists")
-                        return ""
-                    return model.thumbnail ?? model.cover ?? model.small_cover ?? ""
-                }
+                readonly property bool song: !!model.main_artist || model.isVideo === false
+                readonly property bool watched: media && !song
+                                                && (Number(model.playcount ?? 0) > 0 || progress > 0)
 
                 // Figma "playlist" / "media": 337 x 32, an icon of 32, 10 px
                 width: list.width - list.leftMargin - list.rightMargin
-                height: VLCStyle.dp(32, VLCStyle.scale)
-                leftPadding: 0
-                rightPadding: 0
-                spacing: VLCStyle.dp(10, VLCStyle.scale)
-
-                background: Rectangle {
-                    radius: VLCStyle.redesign.controlRadius
-                    color: row.hovered ? VLCStyle.redesign.color(VLCStyle.redesign.controlHoverBackground, "#9c9c9b")
-                                       : "transparent"
-                }
-
-                contentItem: RowLayout {
-                    spacing: row.spacing
-
-                    Item {
-                        Layout.preferredWidth: VLCStyle.dp(32, VLCStyle.scale)
-                        Layout.preferredHeight: VLCStyle.dp(32, VLCStyle.scale)
-
-                        Image {
-                            anchors.fill: parent
-                            // Until the cover is ready, or without one: the
-                            // icons of the design drawn at 32 px
-                            visible: row.cover === "" || coverImage.status !== Image.Ready
-                            sourceSize: Qt.size(width, height)
-                            source: {
-                                if (row.isFolder)
-                                    return "qrc:///redesign/folder.svg"
-                                switch (root.location.section) {
-                                case "playlists": return "qrc:///redesign/player/library-playlist.png"
-                                case "music": return "qrc:///redesign/music.svg"
-                                default: return "qrc:///redesign/video.svg"
-                                }
-                            }
-                        }
-                        Image {
-                            id: coverImage
-
-                            anchors.fill: parent
-                            visible: status === Image.Ready
-                            source: row.cover
-                            fillMode: Image.PreserveAspectCrop
-                            sourceSize: Qt.size(width * 2, height * 2)
-                            asynchronous: true
-                        }
-                        Rectangle {
-                            anchors.left: parent.left
-                            anchors.bottom: parent.bottom
-                            visible: !row.song && (row.progress > 0 || row.watched)
-                            width: parent.width * (row.progress > 0 ? Math.min(1, row.progress) : 1)
-                            height: VLCStyle.dp(2, VLCStyle.scale)
-                            color: VLCStyle.redesign.accent
-                        }
+                // Songs read "title - artist" as in the design
+                label: {
+                    if (addRow)
+                        return qsTr("Add Network Stream")
+                    switch (place) {
+                    case "folder":
+                        // a song of a folder the library knows, as well
+                        // (Figma 4778:25123); the videos keep their file name
+                        return model.title && model.main_artist ? model.title + " - " + model.main_artist
+                                                                : (model.name ?? "")
+                    case "videos":
+                    case "songs":
+                        return root._nameOf(model.url)
+                    case "network":
+                        return model.long_name ?? model.name ?? ""
+                    default: {
+                        const name = model.name ?? model.title ?? ""
+                        return model.main_artist ? name + " - " + model.main_artist : name
                     }
-
-                    Text {
-                        Layout.fillWidth: true
-                        Layout.fillHeight: true
-                        // the text box (17 px) centred in the row
-                        verticalAlignment: Text.AlignTop
-                        topPadding: root._baseline(height, font.pixelSize, undefined, rowMetrics.ascent)
-                        id: rowText
-                        FontMetrics {
-                            id: rowMetrics
-                            font: rowText.font
-                        }
-                        text: row.label
-                        elide: Text.ElideMiddle
-                        // Figma "Player - Light": as dark, #969696 and watched
-                        // #6B6B6B
-                        // (the media playing is not marked: Figma 4778:25123,
-                        // 970:3308)
-                        color: row.watched ? VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
-                                           : (VLCStyle.palette.isDark ? VLCStyle.redesign.textSecondary : "#969696")
-                        font.family: VLCStyle.redesign.fontFamily
-                        font.pixelSize: VLCStyle.redesign.fontNormal
                     }
                 }
+                // Videos of a folder show a frame, decoded on demand, songs
+                // the artwork of the library
+                cover: {
+                    switch (place) {
+                    case "folder":
+                        if (model.isFolder)
+                            return ""
+                        // (the MRL of the library: the url as text decodes
+                        // some characters)
+                        if (root._isVideoFile(model.url))
+                            return VLCThumbnail.uri(String(model.mrl), 0.1)
+                        return VLCThumbnail.artwork(String(model.mrl))
+                    case "service":
+                    case "netfolder": {
+                        // the artwork of a feed or a station (not the icons
+                        // of the sources)
+                        const artwork = String(model.artwork ?? "")
+                        return /^qrc:/.test(artwork) ? "" : artwork
+                    }
+                    // the icons of the design (Figma "playlist", "folder")
+                    case "videos":
+                    case "songs":
+                    case "music":
+                    case "network":
+                    case "genres":
+                    case "playlists":
+                        return ""
+                    default:
+                        return model.thumbnail ?? model.cover ?? model.small_cover ?? ""
+                    }
+                }
+                // Until the cover is ready, or without one: the icons of the
+                // design (24, Figma 848:1996), the placeholders drawn at 32
+                iconSource: {
+                    if (addRow)
+                        return "qrc:///redesign/player/library-add.png"
+                    switch (place) {
+                    case "videos":
+                    case "songs":
+                        return root._icon("folder")
+                    case "music":
+                        return root._icon(model.icon)
+                    case "albums":
+                        return root._icon("album")
+                    case "artists":
+                        return root._icon("artist")
+                    case "genres":
+                        return root._icon("genre")
+                    case "network":
+                        return root._icon("streaming")
+                    case "service":
+                    case "netfolder":
+                        return root._icon(container ? "folder" : "streaming")
+                    case "playlists":
+                        return "qrc:///redesign/player/library-playlist.png"
+                    default:
+                        if (container)
+                            return root._icon("folder")
+                        return song ? "qrc:///redesign/music.svg" : "qrc:///redesign/video.svg"
+                    }
+                }
+                smallIcon: String(iconSource).indexOf("/redesign/icons/") >= 0
+                // Media of the library (Figma "media"): an accent line under
+                // the thumbnail, the title dimmed once watched to the end
+                progress: Math.max(0, Number(model.progress ?? 0))
+                progressShown: media && !song && (progress > 0 || watched)
+                // Figma 848:1996: the rows leading to a place (folders,
+                // sections, sources) dimmed as the Add rows; the playlists
+                // (Figma "Player": #969696) and the albums, artists and
+                // genres as the media
+                // (the media playing is not marked: Figma 4778:25123,
+                // 970:3308)
+                dimmed: addRow || watched
+                        || (container && !["playlists", "albums", "artists", "genres"].includes(place))
 
-                // Folders and playlists open on a click, media play on a double click
-                onClicked: if (row.isFolder || root.location.section === "playlists")
-                               root._activate(row.model, row.index)
-                onDoubleClicked: if (!row.isFolder && root.location.section !== "playlists")
-                                     root._activate(row.model, row.index)
+                // Places open on a click, media play on a double click
+                onClicked: if (container || addRow) root._activate(row.model, row.index)
+                onDoubleClicked: if (media) root._activate(row.model, row.index)
             }
 
             Text {
                 anchors.centerIn: parent
                 width: parent.width - VLCStyle.dp(40, VLCStyle.scale)
-                visible: !root._model || root._model.count === 0
+                // (not while the model loads; the sources have their Add)
+                visible: !root._model ? root.location.section !== "home"
+                                      : (list.count === 0 && !(root._model.loading ?? false)
+                                         && root.location.section !== "network")
                 horizontalAlignment: Text.AlignHCenter
                 wrapMode: Text.WordWrap
                 text: !root._model ? qsTr("The media library is not available.")
@@ -747,6 +1220,21 @@ FocusScope {
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.redesign.fontNormal
             }
+        }
+
+        // Home: empty, or without the media library
+        Text {
+            anchors.centerIn: homeList
+            width: homeList.width - VLCStyle.dp(40, VLCStyle.scale)
+            visible: homeList.visible && (!mlModels.item || (mlModels.item.allMedia.count === 0
+                                                             && !mlModels.item.allMedia.loading))
+            horizontalAlignment: Text.AlignHCenter
+            wrapMode: Text.WordWrap
+            text: !root._mlAvailable ? qsTr("The media library is not available.")
+                                     : qsTr("Nothing here yet.")
+            color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#7c7c7b")
+            font.family: VLCStyle.redesign.fontFamily
+            font.pixelSize: VLCStyle.redesign.fontNormal
         }
     }
 
@@ -761,11 +1249,44 @@ FocusScope {
             playlistCreate.open()
     }
 
-    function _sort(criteria, order) {
-        if (!_model)
+    // The criteria of the place's model to sort by date ("" when it has
+    // none: artists, genres, the network's sources)
+    function _dateCriteria() {
+        switch (location.section) {
+        case "folder": return "date"
+        case "albums": return "release_year"
+        case "artists":
+        case "genres":
+        case "network":
+        case "service": return ""
+        case "netfolder": return "fileModified"
+        default: return "insertion"
+        }
+    }
+    function _sort(kind, order) {
+        let criteria
+        switch (location.section) {
+        case "folder":
+        case "artists":
+        case "genres":
+        case "network":
+        case "service":
+        case "netfolder":
+            criteria = kind === "title" ? "name" : _dateCriteria()
+            break
+        default:
+            criteria = kind === "title" ? "title" : _dateCriteria()
+        }
+        if (criteria === "")
             return
-        _model.sortCriteria = criteria
-        _model.sortOrder = order
+        for (const model of _toolModels) {
+            if (!model || model.sortCriteria === undefined)
+                continue
+            model.sortCriteria = criteria
+            model.sortOrder = order
+        }
+        if (location.section === "home")
+            _homeSorted = true
     }
 
     function _playFolder(enqueue) {
@@ -777,6 +1298,115 @@ FocusScope {
         }
         if (urls.length > 0)
             MainPlaylistController.append(urls, !enqueue)
+    }
+    // The songs of the album, the artist, the genre or the playlist shown
+    function _playCollection(enqueue) {
+        const id = location.section === "playlist" ? location.playlistId : location.parentId
+        if (!root._mlAvailable || id === undefined)
+            return
+        if (enqueue)
+            MediaLib.addToPlaylist([id])
+        else
+            MediaLib.addAndPlay([id])
+    }
+
+    // Row of the lists (Figma "media", "playlist", "folder": 32 high, the
+    // image or the icon in a box of 32, 10, the name in Inter 14)
+    component LibraryRow: T.ItemDelegate {
+        id: libraryRow
+
+        // the name, the image of the media (a frame, a cover) and the icon
+        // drawn without one
+        property string label
+        property string cover
+        property string iconSource
+        // an icon of the design at 24, centred in the box (folders,
+        // sections, sources), not a placeholder drawn at 32
+        property bool smallIcon: false
+        // Media of the library (Figma "media"): an accent line under the
+        // thumbnail, its progress (all of it once watched)
+        property real progress: 0
+        property bool progressShown: false
+        // #6B6B6B (Figma 848:1996), #969696 otherwise
+        property bool dimmed: false
+
+        height: VLCStyle.dp(32, VLCStyle.scale)
+        leftPadding: 0
+        rightPadding: 0
+        spacing: VLCStyle.dp(10, VLCStyle.scale)
+        Accessible.name: label
+
+        background: Rectangle {
+            radius: VLCStyle.redesign.controlRadius
+            color: libraryRow.hovered ? VLCStyle.redesign.color(VLCStyle.redesign.controlHoverBackground, "#9c9c9b")
+                                      : "transparent"
+        }
+
+        contentItem: RowLayout {
+            spacing: libraryRow.spacing
+
+            Item {
+                Layout.preferredWidth: VLCStyle.dp(32, VLCStyle.scale)
+                Layout.preferredHeight: VLCStyle.dp(32, VLCStyle.scale)
+
+                Impl.ColorImage {
+                    anchors.centerIn: parent
+                    width: libraryRow.smallIcon ? VLCStyle.redesign.iconSize : parent.width
+                    height: width
+                    // Until the cover is ready, or without one
+                    visible: libraryRow.cover === "" || coverImage.status !== Image.Ready
+                    source: libraryRow.iconSource
+                    sourceSize: Qt.size(width, height)
+                    fillMode: Image.Pad
+                    // Figma "Player - Light": the icons #2E2E2E
+                    color: libraryRow.smallIcon && !VLCStyle.palette.isDark ? "#2e2e2e" : "transparent"
+                }
+                Image {
+                    id: coverImage
+
+                    anchors.fill: parent
+                    visible: status === Image.Ready
+                    source: libraryRow.cover
+                    fillMode: Image.PreserveAspectCrop
+                    sourceSize: Qt.size(width * 2, height * 2)
+                    asynchronous: true
+                }
+                Rectangle {
+                    anchors.left: parent.left
+                    anchors.bottom: parent.bottom
+                    visible: libraryRow.progressShown
+                    width: parent.width * (libraryRow.progress > 0 ? Math.min(1, libraryRow.progress) : 1)
+                    height: VLCStyle.dp(2, VLCStyle.scale)
+                    color: VLCStyle.redesign.accent
+                }
+            }
+
+            Text {
+                id: rowText
+
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                // the text box (17 px) centred in the row, 0.3 px higher
+                // (where Figma 187:328 draws the rows)
+                verticalAlignment: Text.AlignTop
+                topPadding: {
+                    const line = Math.round(1.2109375 * font.pixelSize)
+                    return Math.round((height - line) / 2) + (line - 1.2109375 * font.pixelSize) / 2
+                           + 0.96875 * font.pixelSize - rowMetrics.ascent - 0.3 * VLCStyle.scale
+                }
+                FontMetrics {
+                    id: rowMetrics
+                    font: rowText.font
+                }
+                text: libraryRow.label
+                elide: Text.ElideMiddle
+                // Figma "Player - Light": as dark, #969696 and dimmed #6B6B6B
+                color: libraryRow.dimmed ? VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
+                                         : (VLCStyle.palette.isDark ? VLCStyle.redesign.textSecondary : "#969696")
+                font.family: VLCStyle.redesign.fontFamily
+                font.pixelSize: VLCStyle.redesign.fontNormal
+            }
+        }
     }
 
     // Icon button of the section column

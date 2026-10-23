@@ -208,6 +208,7 @@ qml_modules += {
 
        '../../player/qml/ControlBar.qml',
        '../../player/qml/CompactLibrary.qml',
+       '../../player/qml/CompactLibraryModels.qml',
        '../../player/qml/SeekFramePreview.qml',
        '../../player/qml/PlaybackSpeed.qml',
        '../../player/qml/LyricsFlickable.qml',

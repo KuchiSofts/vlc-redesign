@@ -5,6 +5,7 @@
  */
 import QtQuick
 import QtQuick.Controls.Basic as Controls
+import QtQuick.Controls.impl as Impl
 import QtQuick.Templates as T
 
 import VLC.MainInterface
@@ -34,7 +35,7 @@ T.Control {
     padding: VLCStyle.dp(8, VLCStyle.scale)
     implicitWidth: VLCStyle.dp(391, VLCStyle.scale)
     implicitHeight: topPadding + bottomPadding +
-                    (queueExpanded ? queueArea.height + VLCStyle.dp(6, VLCStyle.scale) : 0) +
+                    (queueExpanded ? queueArea.height : 0) +
                     _frameHeight + VLCStyle.dp(20 + 4 + 19 + 14 + 32 + 4, VLCStyle.scale)
     // "Frame 112": the video and the seek bar, 230 for the video of 211;
     // narrower, the video is lower (16:9) and the frame with it
@@ -53,17 +54,24 @@ T.Control {
         }
     }
     contentItem: Item {
+        // Figma 970:3091: the queue fills the top of the card, edge to edge
+        // (out of the padding), the video 8 under it
         MiniPlayerQueue {
             id: queueArea
-            width: parent.width
+            x: -root.leftPadding
+            y: -root.topPadding
+            width: parent.width + root.leftPadding + root.rightPadding
             height: implicitHeight
             visible: root.queueExpanded
+            // the card's border and radius (background)
+            edge: root.lightTheme ? 1 : 0
+            radius: VLCStyle.dp(14, VLCStyle.scale)
         }
 
         PIPPlayer {
             id: video
             objectName: "miniPlayerVideo"
-            y: root.queueExpanded ? queueArea.height + VLCStyle.dp(6, VLCStyle.scale) : 0
+            y: root.queueExpanded ? queueArea.y + queueArea.height + root.topPadding : 0
             width: parent.width
             // Figma: 375 x 210.94
             height: Math.round(width * 9 / 16)
@@ -264,18 +272,22 @@ T.Control {
             onClicked: root.queueExpanded = !root.queueExpanded
             background: Rectangle {
                 radius: VLCStyle.dp(4, VLCStyle.scale)
-                color: (queueButton.hovered || root.queueExpanded)
+                color: queueButton.hovered
                        ? VLCStyle.redesign.color(VLCStyle.redesign.controlHoverBackground, "#9c9c9b")
                        : "transparent"
             }
+            // Figma 970:3091: the queue open, the icon in the accent (no box)
             contentItem: Item {
-                Image {
+                Impl.ColorImage {
                     width: VLCStyle.redesign.iconSize
                     height: width
-                    source: "qrc:///redesign/icons/lists/default.png"
+                    source: root.queueExpanded ? "qrc:///redesign/icons/lists/active.png"
+                                               : "qrc:///redesign/icons/lists/default.png"
                     sourceSize: Qt.size(width, height)
                     fillMode: Image.Pad
                     smooth: false
+                    // (drawn in the default accent: another one tints it)
+                    color: root.queueExpanded ? VLCStyle.redesign.accentTint : "transparent"
                 }
             }
         }

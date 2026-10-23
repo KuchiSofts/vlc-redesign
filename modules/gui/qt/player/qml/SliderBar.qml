@@ -604,9 +604,22 @@ T.ProgressBar {
                         animateLoading: false
                     }
                 },
+                // nothing plays (the bar kept shown): nothing loads, no
+                // animation (it redrew the window all the time)
+                State {
+                    name: "nothing plays"
+                    when: control.visible && !Player.isStarted
+                    PropertyChanges {
+                        target: bufferRect
+                        width: bufferAnimWidth
+                        visible: false
+                        x: 0
+                        animateLoading: false
+                    }
+                },
                 State {
                     name: "buffering not started"
-                    when: control.visible && Player.buffering === 0
+                    when: control.visible && Player.isStarted && Player.buffering === 0
                     PropertyChanges {
                         target: bufferRect
                         width: bufferAnimWidth

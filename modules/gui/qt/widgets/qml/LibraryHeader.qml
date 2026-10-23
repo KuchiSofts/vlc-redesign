@@ -369,7 +369,9 @@ T.ToolBar {
                 Item { Layout.fillWidth: true }
             }
 
-            // the page alone: the current page of the address
+            // the page alone: the current page of the address (Figma
+            // "Home": Inter 16 Regular #8F8F8F, as the parents of a path;
+            // only the last of a path is SemiBold #969696)
             Widgets.ListLabel {
                 id: titleLabel
                 Layout.fillWidth: true
@@ -378,12 +380,12 @@ T.ToolBar {
                 text: root.breadcrumb
                 elide: Text.ElideMiddle
                 font.family: VLCStyle.redesign.fontFamily
-                font.weight: Font.DemiBold
+                font.weight: Font.Normal
                 font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
                 verticalAlignment: Text.AlignTop
                 topPadding: root._topPadding(height, font.pixelSize, titleMetrics.ascent, false)
                 bottomPadding: 0
-                color: VLCStyle.redesign.color(VLCStyle.redesign.textSecondary,
+                color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted,
                                                theme.fg.primary, root.darkTheme)
                 FontMetrics {
                     id: titleMetrics

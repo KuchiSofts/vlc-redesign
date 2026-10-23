@@ -9,6 +9,7 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Templates as T
+import QtQuick.Controls.impl as Impl
 
 import VLC.MainInterface
 import VLC.MediaLibrary
@@ -419,7 +420,7 @@ Widgets.RedesignDialog {
                 text: fileRow.label
                 opacity: fileRow.dimmed ? 0.4 : 1
             }
-            Image {
+            Impl.ColorImage {
                 visible: fileRow.selected && fileRow.showCheck
                 x: parent.width - VLCStyle.dp(8, VLCStyle.scale) - width
                 y: VLCStyle.dp(6, VLCStyle.scale)
@@ -427,6 +428,7 @@ Widgets.RedesignDialog {
                 height: width
                 sourceSize: Qt.size(width, height)
                 source: "qrc:///redesign/icons/check/active.png"
+                color: VLCStyle.redesign.accentTint
                 smooth: false
             }
         }

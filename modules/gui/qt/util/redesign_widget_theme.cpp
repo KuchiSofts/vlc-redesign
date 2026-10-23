@@ -812,6 +812,15 @@ void ThemeController::update(QWidget *window)
     if (window->property(appliedProperty).toString() == m_key)
         return;
     window->setProperty(appliedProperty, m_key);
+    // its menus given the menu style before (shared by every menu) leave
+    // it: the sheet draws them, and wrapped by the sheet's style it would
+    // be left pointing to a freed style (see RedesignMenuStyle)
+    const QList<QMenu *> menus = window->findChildren<QMenu *>();
+    for (QMenu *menu : menus)
+    {
+        if (qobject_cast<RedesignMenuStyle *>(menu->style()))
+            menu->setStyle(nullptr);
+    }
     // the palette and the font before the style sheet: polishing the
     // children for it takes them up
     window->setPalette(m_palette);

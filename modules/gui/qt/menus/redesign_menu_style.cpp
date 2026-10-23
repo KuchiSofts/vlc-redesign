@@ -468,6 +468,16 @@ bool RedesignMenuStyle::eventFilter(QObject *watched, QEvent *event)
     if (!menu)
         return false;
 
+    // In a window with a style sheet (the classic dialogs), the sheet draws
+    // the menu: this style shared by every menu would be wrapped by the
+    // sheet's style of that window, which takes it as its base and leaves
+    // it pointing to a freed style when it goes (a crash, opening a dialog)
+    for (const QWidget *parent = menu->parentWidget(); parent; parent = parent->parentWidget())
+    {
+        if (!parent->styleSheet().isEmpty())
+            return false;
+    }
+
     if (menu->style() != this && !menu->property(styledProperty).toBool())
     {
         menu->setProperty(styledProperty, true);

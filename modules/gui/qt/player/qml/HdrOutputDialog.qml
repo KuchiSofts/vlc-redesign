@@ -31,32 +31,40 @@ Controls.Popup {
         }
         Repeater {
             model: output.choices
-            delegate: Controls.ItemDelegate {
-                id: row
+            // the reason of a choice that cannot be chosen shows on hover: a
+            // disabled control gets no hover itself, the row around it does
+            delegate: Item {
+                id: choice
                 required property int index
                 required property var modelData
                 width: root.availableWidth
                 height: VLCStyle.dp(46, VLCStyle.scale)
-                enabled: modelData.enabled
-                onClicked: output.select(index)
-                Controls.ToolTip.visible: hovered && modelData.reason.length > 0
+                HoverHandler { id: choiceHover }
+                Controls.ToolTip.visible: choiceHover.hovered && modelData.reason.length > 0
                 Controls.ToolTip.text: modelData.reason
-                background: Rectangle {
-                    radius: 4
-                    color: row.hovered || output.selectedIndex === row.index ? VLCStyle.redesign.color("#222222", "#ababaa") : "transparent"
-                    border.color: row.visualFocus ? VLCStyle.redesign.accent : "transparent"
-                }
-                contentItem: Row {
-                    Text {
-                        width: row.width - 54; height: parent.height
-                        text: row.modelData.label; opacity: row.enabled ? 1 : 0.45
-                        color: VLCStyle.redesign.color("#969696", "#4d4d4d")
-                        font.family: VLCStyle.redesign.fontFamily; font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
-                        verticalAlignment: Text.AlignVCenter
+                Controls.ToolTip.delay: 300
+                Controls.ItemDelegate {
+                    id: row
+                    anchors.fill: parent
+                    enabled: choice.modelData.enabled
+                    onClicked: output.select(choice.index)
+                    background: Rectangle {
+                        radius: 4
+                        color: row.hovered || output.selectedIndex === choice.index ? VLCStyle.redesign.color("#222222", "#ababaa") : "transparent"
+                        border.color: row.visualFocus ? VLCStyle.redesign.accent : "transparent"
                     }
-                    Impl.ColorImage { width: 24; height: 24; anchors.verticalCenter: parent.verticalCenter
-                        source: "qrc:///redesign/track-check-active.png"; visible: output.selectedIndex === row.index
-                        color: VLCStyle.redesign.accentTint }
+                    contentItem: Row {
+                        Text {
+                            width: row.width - 54; height: parent.height
+                            text: choice.modelData.label; opacity: row.enabled ? 1 : 0.45
+                            color: VLCStyle.redesign.color("#969696", "#4d4d4d")
+                            font.family: VLCStyle.redesign.fontFamily; font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
+                            verticalAlignment: Text.AlignVCenter
+                        }
+                        Impl.ColorImage { width: 24; height: 24; anchors.verticalCenter: parent.verticalCenter
+                            source: "qrc:///redesign/track-check-active.png"; visible: output.selectedIndex === choice.index
+                            color: VLCStyle.redesign.accentTint }
+                    }
                 }
             }
         }

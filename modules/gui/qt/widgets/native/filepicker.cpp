@@ -61,3 +61,11 @@ QString FilePicker::chooseOpenFile(const QString& title, const QString& filter)
     const ShortcutGuard guard(m_ctx);
     return QDir::toNativeSeparators(QFileDialog::getOpenFileName(nullptr, title, {}, filter));
 }
+
+QUrl FilePicker::chooseImage(const QString& title)
+{
+    const ShortcutGuard guard(m_ctx);
+    return QFileDialog::getOpenFileUrl(nullptr, title, {},
+                                       qtr("Images (*.png *.jpg *.jpeg *.bmp)"),
+                                       nullptr, {}, {"file"});
+}

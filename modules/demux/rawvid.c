@@ -125,10 +125,10 @@ static int Open( vlc_object_t * p_this )
     demux_t     *p_demux = (demux_t*)p_this;
     demux_sys_t *p_sys;
     int i_width=-1, i_height=-1;
-    unsigned u_fps_num, u_fps_den;
+    unsigned u_fps_num = 0, u_fps_den = 0;
     vlc_fourcc_t i_chroma = 0;
-    unsigned int i_sar_num;
-    unsigned int i_sar_den;
+    unsigned int i_sar_num = 1;
+    unsigned int i_sar_den = 1;
     const struct preset_t *p_preset = NULL;
     const uint8_t *p_peek;
     bool b_y4m = false;
@@ -291,15 +291,20 @@ valid:
         free( psz_tmp );
     }
 
-    if( var_InheritURational( p_demux, &u_fps_num, &u_fps_den, "rawvid-fps" ) )
+    /* the options, when given, override the header (YUV4MPEG2) or the
+     * preset: unset, they left no frame rate and every such file failed */
+    unsigned num, den;
+    if( !var_InheritURational( p_demux, &num, &den, "rawvid-fps" ) )
     {
-        u_fps_num = 0;
-        u_fps_den = 1;
+        u_fps_num = num;
+        u_fps_den = den;
     }
 
-    if( var_InheritURational( p_demux, &i_sar_num, &i_sar_den,
-                              "rawvid-aspect-ratio" ) )
-        i_sar_num = i_sar_den = 1;
+    if( !var_InheritURational( p_demux, &num, &den, "rawvid-aspect-ratio" ) )
+    {
+        i_sar_num = num;
+        i_sar_den = den;
+    }
 
     /* moan about anything wrong */
     if( i_width <= 0 || i_height <= 0 )

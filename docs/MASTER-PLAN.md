@@ -32,7 +32,7 @@ Windows 0.2.6 is released; 0.3.0 counts the lines of section 8 (done since 0.2.6
 | Area                    | Progress             | Done    | %     | From                                   |
 |-------------------------|----------------------|---------|-------|----------------------------------------|
 | Design frames (Figma)   | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 | 97/103  | 94 %  | [§5](#5-design-frame-by-frame) tables  |
-| Pixel check             | 🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜ | 29/103  | 28 %  | [§5](#5-design-frame-by-frame) tables  |
+| Pixel check             | 🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ | 30/103  | 29 %  | [§5](#5-design-frame-by-frame) tables  |
 | Light theme and accents | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 16/17   | 94 %  | [§8.3](#83-light-theme-and-accents)    |
 | Settings rows           | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 211/212 | 99 %  | [§8.5](#85-settings-rows)              |
 | Classic dialogs         | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 10/11   | 90 %  | [§8.6](#86-classic-dialogs)            |
@@ -172,11 +172,11 @@ What comes first, and why. Each step starts when what it needs is done.
 | Add Subtitles         | 4      | 4   | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Keyboard Shortcuts    | 1      | 1   | 0   | 0   | 1        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Open network stream   | 1      | 1   | 0   | 0   | 1        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
-| New playlist          | 1      | 1   | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
+| New playlist          | 1      | 1   | 0   | 0   | 1        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Settings pages        | 19     | 17  | 2   | 0   | 18       | 🟩🟩🟩🟩🟩🟩🟩🟩🟨🟨 |
-| **Screens**           | 57     | 55  | 2   | 0   | 29       | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
+| **Screens**           | 57     | 55  | 2   | 0   | 30       | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
 | **Components**        | 46     | 42  | 4   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
-| **All**               | 103    | 97  | 6   | 0   | 29       | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
+| **All**               | 103    | 97  | 6   | 0   | 30       | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
 
 ### 5.3 Onboarding (11)
 
@@ -288,7 +288,7 @@ Shared: `SubtitleAssociationsDialog.qml` (1048 × 800, `#0E0E0E` at 95 %), `Subt
 
 | Node       | Name         | Size (px)   | Status | Pixel | What it is                                                | Implemented in                                    |
 |------------|--------------|-------------|--------|-------|-----------------------------------------------------------|---------------------------------------------------|
-| 6259:14954 | new playlist | 713 × 589   | 🟢     | ⏳    | Title and thumbnail, Select Files (drop zone), Save        | PlaylistCreateDialog.qml, mlplaylistlistmodel.cpp |
+| 6259:14954 | new playlist | 713 × 589   | 🟢     | 🟢    | Title and thumbnail, Select Files (drop zone), Save        | PlaylistCreateDialog.qml, mlplaylistlistmodel.cpp |
 
 Notes: a custom thumbnail, picked or dropped, is saved as a PNG of at most 1024 px in the user data folder and
 deleted with the playlist; Save needs only a title, so a playlist can be empty (in the app ⏳).
@@ -913,7 +913,7 @@ Text matching needs Inter with the same metrics (distance-field text, no hinting
 - 🟢 References and captures of 187:328 (player) and 970:2703 (library shell), compared
 - 🟢 Text positions and sizes measured in many other frames (cited in the code)
 - 🟢 Captured at 1:1 and compared (tiles of 32 px, best shift of up to 4 px, a pixel differs above 24 levels), 2026-10-23:
-  the 18 Settings frames, the onboarding (7 frames), Keyboard Shortcuts and Open network stream. What is left differs
+  the 18 Settings frames, the onboarding (7 frames), Keyboard Shortcuts, Open network stream and New playlist. What is left differs
   by value only (the switches and choices of the test profile), by anti-aliasing, or on purpose:
   - Settings - performance: *Process priority* is a dropdown (Normal, High...), not the number field of the design.
   - Settings - privacy: the design's second "Last.fm username" row is the password (its typo); Settings - recording:

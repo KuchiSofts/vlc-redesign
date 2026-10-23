@@ -9,15 +9,15 @@ import QtQuick.Templates as T
 import QtQuick.Controls.impl as Impl
 import VLC.Style
 
-Rectangle {
+// The crop of the design (Figma 543:990): two rows of two 141 x 33 fields,
+// 8 px apart, the 24 px link 11 px after them (3 px in); the rows 6 px
+// under the header, 16 px apart and over the bottom
+ExpandPanel {
     id: root
+
     required property var effects
-    function c(value) { return VLCStyle.redesign.color(value, value) }
     property bool verticalLinked: false
     property bool horizontalLinked: false
-    implicitHeight: content.implicitHeight + VLCStyle.dp(32, VLCStyle.scale)
-    color: root.c("#1B1B1B")
-    radius: VLCStyle.dp(6, VLCStyle.scale)
 
     function updateCrop(side, pixels) {
         if (!effects.setCrop(side, pixels)) return
@@ -27,78 +27,91 @@ Rectangle {
         if (horizontalLinked && side === "right") effects.setCrop("left", pixels)
     }
 
-    ColumnLayout {
-        id: content
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.top: parent.top
-        anchors.margins: VLCStyle.dp(16, VLCStyle.scale)
-        spacing: VLCStyle.dp(12, VLCStyle.scale)
+    topSpacing: px(6)
+    bottomSpacing: px(16)
+    spacing: px(16)
 
-        RowLayout {
+    RowLayout {
+        Layout.fillWidth: true
+        spacing: root.px(8)
+        CropInput {
             Layout.fillWidth: true
-            spacing: VLCStyle.dp(8, VLCStyle.scale)
-            CropInput {
-                Layout.fillWidth: true
-                effects: root.effects
-                side: "top"
-                label: qsTr("Top")
-                onEdited: (pixels) => root.updateCrop(side, pixels)
+            effects: root.effects
+            side: "top"
+            label: qsTr("Top")
+            onEdited: (pixels) => root.updateCrop(side, pixels)
+        }
+        CropInput {
+            Layout.fillWidth: true
+            effects: root.effects
+            side: "bottom"
+            label: qsTr("Bottom")
+            onEdited: (pixels) => root.updateCrop(side, pixels)
+        }
+        T.Button {
+            id: verticalLink
+            objectName: "linkVerticalCrop"
+            Layout.leftMargin: root.px(3)
+            Layout.rightMargin: root.px(3)
+            implicitWidth: root.px(24)
+            implicitHeight: implicitWidth
+            focusPolicy: Qt.StrongFocus
+            onClicked: root.verticalLinked = !root.verticalLinked
+            Accessible.name: qsTr("Link top and bottom crop")
+            background: Rectangle {
+                radius: root.px(4)
+                color: "transparent"
+                border.width: verticalLink.visualFocus ? 1 : 0
+                border.color: VLCStyle.redesign.accent
             }
-            CropInput {
-                Layout.fillWidth: true
-                effects: root.effects
-                side: "bottom"
-                label: qsTr("Bottom")
-                onEdited: (pixels) => root.updateCrop(side, pixels)
-            }
-            T.Button {
-                objectName: "linkVerticalCrop"
-                implicitWidth: VLCStyle.dp(26, VLCStyle.scale)
-                implicitHeight: implicitWidth
-                onClicked: root.verticalLinked = !root.verticalLinked
-                Accessible.name: qsTr("Link top and bottom crop")
-                background: Item {}
-                contentItem: Impl.ColorImage {
-                    source: root.verticalLinked ? "qrc:///redesign/icons/link/active.png"
-                                                : "qrc:///redesign/icons/link/default.png"
-                    color: root.verticalLinked ? VLCStyle.redesign.accentTint : "transparent"
-                    sourceSize.width: VLCStyle.dp(22, VLCStyle.scale)
-                    sourceSize.height: VLCStyle.dp(22, VLCStyle.scale)
-                }
+            contentItem: Impl.ColorImage {
+                source: root.verticalLinked ? "qrc:///redesign/icons/link/active.png"
+                                            : "qrc:///redesign/icons/link/default.png"
+                color: root.verticalLinked ? VLCStyle.redesign.accentTint : "transparent"
+                sourceSize.width: root.px(24)
+                sourceSize.height: root.px(24)
             }
         }
-        RowLayout {
+    }
+    RowLayout {
+        Layout.fillWidth: true
+        spacing: root.px(8)
+        CropInput {
             Layout.fillWidth: true
-            spacing: VLCStyle.dp(8, VLCStyle.scale)
-            CropInput {
-                Layout.fillWidth: true
-                effects: root.effects
-                side: "left"
-                label: qsTr("Left")
-                onEdited: (pixels) => root.updateCrop(side, pixels)
+            effects: root.effects
+            side: "left"
+            label: qsTr("Left")
+            onEdited: (pixels) => root.updateCrop(side, pixels)
+        }
+        CropInput {
+            Layout.fillWidth: true
+            effects: root.effects
+            side: "right"
+            label: qsTr("Right")
+            onEdited: (pixels) => root.updateCrop(side, pixels)
+        }
+        T.Button {
+            id: horizontalLink
+            objectName: "linkHorizontalCrop"
+            Layout.leftMargin: root.px(3)
+            Layout.rightMargin: root.px(3)
+            implicitWidth: root.px(24)
+            implicitHeight: implicitWidth
+            focusPolicy: Qt.StrongFocus
+            onClicked: root.horizontalLinked = !root.horizontalLinked
+            Accessible.name: qsTr("Link left and right crop")
+            background: Rectangle {
+                radius: root.px(4)
+                color: "transparent"
+                border.width: horizontalLink.visualFocus ? 1 : 0
+                border.color: VLCStyle.redesign.accent
             }
-            CropInput {
-                Layout.fillWidth: true
-                effects: root.effects
-                side: "right"
-                label: qsTr("Right")
-                onEdited: (pixels) => root.updateCrop(side, pixels)
-            }
-            T.Button {
-                objectName: "linkHorizontalCrop"
-                implicitWidth: VLCStyle.dp(26, VLCStyle.scale)
-                implicitHeight: implicitWidth
-                onClicked: root.horizontalLinked = !root.horizontalLinked
-                Accessible.name: qsTr("Link left and right crop")
-                background: Item {}
-                contentItem: Impl.ColorImage {
-                    source: root.horizontalLinked ? "qrc:///redesign/icons/link/active.png"
-                                                  : "qrc:///redesign/icons/link/default.png"
-                    color: root.horizontalLinked ? VLCStyle.redesign.accentTint : "transparent"
-                    sourceSize.width: VLCStyle.dp(22, VLCStyle.scale)
-                    sourceSize.height: VLCStyle.dp(22, VLCStyle.scale)
-                }
+            contentItem: Impl.ColorImage {
+                source: root.horizontalLinked ? "qrc:///redesign/icons/link/active.png"
+                                              : "qrc:///redesign/icons/link/default.png"
+                color: root.horizontalLinked ? VLCStyle.redesign.accentTint : "transparent"
+                sourceSize.width: root.px(24)
+                sourceSize.height: root.px(24)
             }
         }
     }

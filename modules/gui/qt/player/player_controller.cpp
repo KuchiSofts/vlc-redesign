@@ -39,6 +39,7 @@
 #include <vlc_cxx_helpers.hpp>
 #include <vlc_vout.h>
 #include <vlc_preparser.h>
+#include <vlc_media_library.h>  /* the position to restore */
 
 #include <QFile>
 #include <QFileInfo>
@@ -1096,11 +1097,32 @@ static void on_player_corks_changed(vlc_player_t *, unsigned, void *data)
     msg_Dbg( that->p_intf, "on_player_corks_changed");
 }
 
-static void on_player_playback_restore_queried(vlc_player_t *, void *data)
+static void on_player_playback_restore_queried(vlc_player_t *player, void *data)
 {
     PlayerControllerPrivate* that = static_cast<PlayerControllerPrivate*>(data);
     msg_Dbg( that->p_intf, "on_playback_restore_queried");
-    that->callAsync([that](){
+
+    // The time vlc_player_RestorePlaybackPos() goes to: the progress the
+    // media library keeps for the media (as the core reads it, it has just
+    // done so), with its duration
+    vlc_tick_t restoreTime = VLC_TICK_INVALID;
+    input_item_t *item = vlc_player_GetCurrentMedia(player);
+    vlc_medialibrary_t *ml = vlc_ml_instance_get(that->p_intf);
+    if (item && item->psz_uri && ml)
+    {
+        vlc_ml_media_t *media = vlc_ml_get_media_by_mrl(ml, item->psz_uri);
+        if (media)
+        {
+            const vlc_tick_t duration = media->i_duration > 0 ? VLC_TICK_FROM_MS(media->i_duration)
+                                                              : input_item_GetDuration(item);
+            if (media->f_progress > 0. && duration > 0)
+                restoreTime = VLC_TICK_0 + vlc_tick_t(duration * media->f_progress);
+            vlc_ml_media_release(media);
+        }
+    }
+
+    that->callAsync([that, restoreTime](){
+        that->m_restoreTime = VLCTime(restoreTime);
         that->m_canRestorePlayback = true;
         emit that->q_func()->playbackRestoreQueried();
     });
@@ -2502,6 +2524,7 @@ PRIMITIVETYPE_GETTER(bool, isRewindable, m_capabilities & VLC_PLAYER_CAP_REWIND)
 PRIMITIVETYPE_GETTER(bool, isPausable, m_capabilities & VLC_PLAYER_CAP_PAUSE)
 PRIMITIVETYPE_GETTER(bool, isRateChangable, m_capabilities & VLC_PLAYER_CAP_CHANGE_RATE)
 PRIMITIVETYPE_GETTER(bool, canRestorePlayback, m_canRestorePlayback);
+PRIMITIVETYPE_GETTER(VLCTime, getRestoreTime, m_restoreTime);
 PRIMITIVETYPE_GETTER(float, getSubtitleFPS, m_subtitleFPS)
 PRIMITIVETYPE_GETTER(bool, hasVideoOutput, m_hasVideo)
 PRIMITIVETYPE_GETTER(float, getBuffering, m_buffering)

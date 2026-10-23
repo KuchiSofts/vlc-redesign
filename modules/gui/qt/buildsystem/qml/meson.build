@@ -59,6 +59,7 @@ qml_modules += {
         '../../dialogs/extended/qml/EffectsDialog.qml',
         '../../dialogs/extended/qml/EqualizerPanel.qml',
         '../../dialogs/extended/qml/FilterPanel.qml',
+        '../../dialogs/extended/qml/ExpandPanel.qml',
         '../../dialogs/extended/qml/FilterSection.qml',
         '../../dialogs/extended/qml/ValueSlider.qml',
         '../../dialogs/toolbar/qml/ProfilesMenu.qml',

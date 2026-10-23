@@ -6,6 +6,7 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Templates as T
+import VLC.Dialogs
 import VLC.Style
 
 ColumnLayout {
@@ -13,44 +14,59 @@ ColumnLayout {
     required property var effects
     property int section: 0
     function c(value) { return VLCStyle.redesign.color(value, value) }
+    function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
+
+    // The filters of each section, ONE panel each as the design groups them
+    // (Figma 536:1855 Essential, 614:1430 Colors), with its names and ticks
+    // of the design; a filter of one slider names it ("Sharpen Sigma")
     readonly property var essential: [
-        { id: "adjust", title: qsTr("Image adjustment") },
-        { id: "sharpen", title: qsTr("Sharpen") },
-        { id: "gradfun", title: qsTr("Debanding") },
-        { id: "grain", title: qsTr("Film grain") }
+        { id: "adjust", title: qsTr("Image Adjustment"),
+          labels: { "hue": qsTr("Hue"), "brightness": qsTr("Brightness"), "contrast": qsTr("Contrast"),
+                    "saturation": qsTr("Saturation"), "gamma": qsTr("Gamma") },
+          ticks: { "saturation": [1, 2], "gamma": [1, 2, 3, 4, 5, 6, 7, 8, 9] } },
+        { id: "sharpen", title: qsTr("Sharpen Sigma"), ticks: { "sharpen-sigma": [0.5, 1, 1.5] } },
+        { id: "gradfun", title: qsTr("Banding Removal Radius"),
+          ticks: { "gradfun-radius": [8, 12, 16, 20, 24, 28] } },
+        { id: "grain", title: qsTr("Film Grain Variance"),
+          ticks: { "grain-variance": [1, 2, 3, 4, 5, 6, 7, 8, 9] } }
     ]
     readonly property var colors: [
-        { id: "extract", title: qsTr("Color extraction") },
-        { id: "colorthres", title: qsTr("Color threshold") },
-        { id: "invert", title: qsTr("Negate colors") },
+        { id: "extract", title: qsTr("Color Extraction") },
+        { id: "colorthres", title: qsTr("Color Threshold"),
+          labels: { "colorthres-saturationthres": qsTr("Saturation"),
+                    "colorthres-similaritythres": qsTr("Similarity") } },
+        { id: "invert", title: qsTr("Negate Colors") },
         { id: "posterize", title: qsTr("Posterize") },
-        { id: "gradient", title: qsTr("Gradient") },
-        { id: "sepia", title: qsTr("Sepia") }
+        // (the dropdown shows the mode alone)
+        { id: "gradient", title: qsTr("Gradient"),
+          labels: { "gradient-mode": "", "gradient-color": qsTr("Color"),
+                    "gradient-cartoon": qsTr("Cartoon") } },
+        { id: "sepia", title: qsTr("Sepia Intensity"), ticks: { "sepia-intensity": [85, 170] } }
     ]
     readonly property var geometry: [
         { id: "transform", title: qsTr("Transform") },
         { id: "rotate", title: qsTr("Rotate") },
-        { id: "magnify", title: qsTr("Interactive zoom") },
-        { id: "puzzle", title: qsTr("Puzzle game") }
+        { id: "magnify", title: qsTr("Interactive Zoom") },
+        { id: "puzzle", title: qsTr("Puzzle Game") }
     ]
     readonly property var overlay: [
-        { id: "logo", title: qsTr("Add logo") },
-        { id: "marq", title: qsTr("Add text") },
-        { id: "erase", title: qsTr("Logo erase") }
+        { id: "logo", title: qsTr("Add Logo") },
+        { id: "marq", title: qsTr("Add Text") },
+        { id: "erase", title: qsTr("Logo Erase") }
     ]
     readonly property var advanced: [
         { id: "anaglyph", title: qsTr("Anaglyph 3D") },
         { id: "mirror", title: qsTr("Mirror") },
         { id: "psychedelic", title: qsTr("Psychedelic") },
         { id: "wave", title: qsTr("Waves") },
-        { id: "ripple", title: qsTr("Water effect") },
-        { id: "motiondetect", title: qsTr("Motion detect") },
-        { id: "gaussianblur", title: qsTr("Spatial blur") },
-        { id: "motionblur", title: qsTr("Motion blur") },
-        { id: "antiflicker", title: qsTr("Anti-flickering") },
+        { id: "ripple", title: qsTr("Water Effect") },
+        { id: "motiondetect", title: qsTr("Motion Detect") },
+        { id: "gaussianblur", title: qsTr("Spatial Blur") },
+        { id: "motionblur", title: qsTr("Motion Blur") },
+        { id: "antiflicker", title: qsTr("Anti-Flickering") },
         { id: "hqdn3d", title: qsTr("Denoiser") }
     ]
-    // The filters of each section, the crop a panel of its own
+    // The crop a panel of its own
     readonly property var sections: [root.essential, [], root.colors, root.geometry, root.overlay, root.advanced]
     spacing: VLCStyle.dp(16, VLCStyle.scale)
 
@@ -89,20 +105,50 @@ ColumnLayout {
         }
     }
 
+    // (open at first: the one panel of the section)
     CropPanel {
         Layout.fillWidth: true
         visible: root.section === 1
+        expanded: true
         effects: root.effects
     }
 
-    Repeater {
-        model: root.sections[root.section]
-        VideoFilterSection {
-            required property var modelData
-            Layout.fillWidth: true
-            effects: root.effects
-            filterId: modelData.id
-            title: modelData.title
+    // Figma 614:1430: the first filter 6 px under the header, 20 px under
+    // the last one
+    ExpandPanel {
+        id: filtersPanel
+        Layout.fillWidth: true
+        visible: root.section !== 1
+        expanded: true
+        topSpacing: root.px(6)
+
+        Repeater {
+            model: root.sections[root.section]
+            VideoFilterSection {
+                required property var modelData
+                required property int index
+                Layout.fillWidth: true
+                first: index === 0
+                effects: root.effects
+                filterId: modelData.id
+                title: modelData.title
+                labels: modelData.labels || ({})
+                ticks: modelData.ticks || ({})
+            }
+        }
+
+        // (not in the design: the button of the settings, the values of
+        // every filter of the section back to their defaults)
+        SettingsButton {
+            Layout.alignment: Qt.AlignRight
+            text: qsTr("Reset")
+            Accessible.name: qsTr("Reset to defaults")
+            onClicked: {
+                for (const filter of root.sections[root.section]) {
+                    if (root.effects.filterAvailable(filter.id))
+                        root.effects.resetDefaults(filter.id)
+                }
+            }
         }
     }
 }

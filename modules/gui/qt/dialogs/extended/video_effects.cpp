@@ -70,12 +70,15 @@ const QHash<QString, QString> reopened = {
 // The slider of an option without a range (the free angle: a turn, as the
 // dial of the classic dialog) or with one too wide to be of use (the sigma
 // of the blur to 4096, the denoiser to 254, cut as the classic dialog does;
-// the size of the text to 4096): a value beyond it set elsewhere still applies
+// the size of the text to 4096; the thresholds of colorthres, sliders in the
+// design (Figma 614:1430) and the classic dialog, 0 to 99 there): a value
+// beyond it set elsewhere still applies
 const QHash<QString, QPair<double, double>> sliderRanges = {
     {"rotate-angle", {0., 359.}}, {"gaussianblur-sigma", {0.01, 8.}},
     {"hqdn3d-luma-spat", {0., 8.}}, {"hqdn3d-luma-temp", {0., 8.}},
     {"hqdn3d-chroma-spat", {0., 8.}}, {"hqdn3d-chroma-temp", {0., 8.}},
-    {"marq-size", {0., 256.}}
+    {"marq-size", {0., 256.}},
+    {"colorthres-saturationthres", {0., 100.}}, {"colorthres-similaritythres", {0., 100.}}
 };
 const char* chainName(const QString& filter) { return sources.contains(filter) ? "sub-source" : "video-filter"; }
 QString own(char* bytes)

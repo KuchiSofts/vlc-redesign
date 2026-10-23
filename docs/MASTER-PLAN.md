@@ -33,7 +33,7 @@ Windows 0.2.6 is released; 0.3.0 counts the lines of section 8 (done since 0.2.6
 |-------------------------|----------------------|---------|-------|----------------------------------------|
 | Design frames (Figma)   | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 | 101/103 | 98 %  | [§5](#5-design-frame-by-frame) tables  |
 | Pixel check             | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 101/103 | 98 %  | [§5](#5-design-frame-by-frame) tables  |
-| Light theme and accents | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 16/17   | 94 %  | [§8.3](#83-light-theme-and-accents)    |
+| Light theme and accents | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 17/17   | 100 % | [§8.3](#83-light-theme-and-accents)    |
 | Settings rows           | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 211/212 | 99 %  | [§8.5](#85-settings-rows)              |
 | Classic dialogs         | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 11/11   | 100 % | [§8.6](#86-classic-dialogs)            |
 | Popups and menus        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 15/15   | 100 % | [§8.4](#84-popups-and-menus)           |

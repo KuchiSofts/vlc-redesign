@@ -19,7 +19,8 @@ Column {
     property var profileModel: MainCtx.controlbarProfileModel
     signal customizeRequested()
     width: 320
-    spacing: 0
+    // as the rows of the player's menu around them (PlayerMenu.qml)
+    spacing: 4
 
     Controls.ItemDelegate {
         id: profileButton
@@ -42,6 +43,8 @@ Column {
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: 16
                 verticalAlignment: Text.AlignVCenter
+                // 12 in, as the other rows of the menu
+                leftPadding: 12
             }
             Image {
                 width: 24

@@ -646,6 +646,28 @@ static void MainLoopStatistics( input_thread_t *p_input )
     }
 }
 
+/* The decoders empty at the end of the media in about the buffering delay.
+ * A picture or a sound with a broken date (a damaged file) was waited for
+ * forever: the media never ended, and a playlist stopped there. */
+static bool InputDrainOverdue( input_thread_t *p_input, vlc_tick_t *since )
+{
+    const vlc_tick_t now = vlc_tick_now();
+    if( *since == VLC_TICK_INVALID )
+    {
+        *since = now;
+        return false;
+    }
+    input_thread_private_t *priv = input_priv(p_input);
+    const float rate = priv->rate > 0.f ? priv->rate : 1.f;
+    const vlc_tick_t limit = __MAX( (vlc_tick_t)( 2 * priv->master->i_pts_delay / rate ),
+                                    VLC_TICK_FROM_SEC(10) );
+    if( now - *since < limit )
+        return false;
+    msg_Warn( p_input, "the decoders did not empty in %"PRId64" s: the end",
+              SEC_FROM_VLC_TICK( now - *since ) );
+    return true;
+}
+
 /**
  * MainLoop
  * The main input loop.
@@ -681,6 +703,8 @@ static void MainLoop( input_thread_t *p_input, bool b_interactive )
     }
 
     bool eof_signaled = false;
+    /* since when the decoders are waited for, at the end */
+    vlc_tick_t drain_since = VLC_TICK_INVALID;
 
     demux_t *p_demux = input_priv(p_input)->master->p_demux;
     const bool b_can_demux = p_demux->ops != NULL ?
@@ -702,6 +726,9 @@ static void MainLoop( input_thread_t *p_input, bool b_interactive )
                 b_paused = false;
         }
 
+        if( b_paused || !input_priv(p_input)->master->b_eof )
+            drain_since = VLC_TICK_INVALID;
+
         if( !b_paused )
         {
             if( !input_priv(p_input)->master->b_eof )
@@ -717,7 +744,8 @@ static void MainLoop( input_thread_t *p_input, bool b_interactive )
 
                 eof_signaled = false;
             }
-            else if( !es_out_IsEmpty( input_priv(p_input)->p_es_out ) )
+            else if( !es_out_IsEmpty( input_priv(p_input)->p_es_out )
+                  && !InputDrainOverdue( p_input, &drain_since ) )
             {
                 msg_Dbg( p_input, "waiting decoder fifos to empty" );
                 i_wakeup = vlc_tick_now() + INPUT_IDLE_SLEEP;

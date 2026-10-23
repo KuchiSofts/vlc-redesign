@@ -876,7 +876,14 @@ static vlc_tick_t EsOutGetWakeup(es_out_sys_t *p_sys)
         EsOutIsBuffering(p_sys) )
         return 0;
 
-    return input_clock_GetWakeup( p_sys->p_pgrm->p_input_clock );
+    /* A broken timestamp (a damaged file) put the clock reference hours
+     * ahead: the input waited for it, never read the rest, and the media
+     * never ended (a playlist stopped there). Not more than 10 s (a read
+     * ahead of 250 ms at the slowest rate takes 8): the next PCR, read
+     * then, resets the clock. */
+    const vlc_tick_t wakeup = input_clock_GetWakeup( p_sys->p_pgrm->p_input_clock );
+    const vlc_tick_t latest = vlc_tick_now() + VLC_TICK_FROM_SEC(10);
+    return wakeup > latest ? latest : wakeup;
 }
 
 

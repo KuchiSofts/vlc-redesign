@@ -119,7 +119,8 @@ Controls.Popup {
                         }
                         Widgets.RedesignMenuItem {
                             text: qsTr("Clone")
-                            iconName: "copy"
+                            // (a new profile from this one: the set has no copy icon)
+                            iconName: "add"
                             onTriggered: {
                                 root.close()
                                 root.profileModel.requestProfileAction(profileRow.index, "clone")

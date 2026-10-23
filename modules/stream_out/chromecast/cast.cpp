@@ -131,7 +131,9 @@ struct sout_stream_sys_t
      * first, the audio a moment later). The chain made with the first one
      * was made again with the next: the TV loaded twice and lost the start
      * of the media. The first blocks wait until the streams there all sent
-     * some (and there are two), or for half a second of media. */
+     * some (and there are two), or for two seconds of media: a stream is
+     * added with its first block, and an MP4 file gives a second of sound
+     * before the first picture (after a seek, casting from the middle). */
     bool holdStart( sout_stream_id_sys_t *id, block_t *p_block );
     void dropHeld( sout_stream_id_sys_t *id );
     std::vector<std::pair<sout_stream_id_sys_t *, block_t *>> held;
@@ -1349,8 +1351,8 @@ bool sout_stream_sys_t::holdStart( sout_stream_id_sys_t *id, block_t *p_block )
             sent.push_back( h.first );
     }
     const bool all_sent = streams.size() >= 2 && sent.size() >= streams.size();
-    const bool waited = ( first != VLC_TICK_INVALID && last - first >= VLC_TICK_FROM_MS(500) )
-                     || held.size() >= 256;
+    const bool waited = ( first != VLC_TICK_INVALID && last - first >= VLC_TICK_FROM_SEC(2) )
+                     || held.size() >= 1024;
     return !all_sent && !waited;
 }
 

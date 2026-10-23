@@ -21,6 +21,7 @@
 #include "qt.hpp"
 #include "info_widgets.hpp"
 
+#include <QEvent>
 #include <QLabel>
 #include <QGraphicsView>
 #include <QGraphicsScene>
@@ -59,8 +60,34 @@ VLCStatsView::VLCStatsView( QWidget *parent ) : QGraphicsView( parent )
     linepen.setBrush( QBrush( QColor( 33, 33, 33 ) ) );
     for ( int i=0; i<3; i++ )
         rulers[i] = viewScene->addLine( QLineF(), linepen );
+    updateColors();
 }
 #undef ADD_LABEL
+
+/* The history and the rulers in the colour of the text, which reads on a
+   dark background too (black on a light one, as before) */
+void VLCStatsView::updateColors()
+{
+    if ( !historyShape || !rulers[2] )
+        return;
+    const QColor history = palette().color( QPalette::Text );
+    historyShape->setBrush( history );
+    QColor ruler = history;
+    ruler.setAlpha( 128 );
+    for ( int i=0; i<3; i++ )
+    {
+        QPen pen = rulers[i]->pen();
+        pen.setColor( ruler );
+        rulers[i]->setPen( pen );
+    }
+}
+
+void VLCStatsView::changeEvent( QEvent *event )
+{
+    QGraphicsView::changeEvent( event );
+    if ( event->type() == QEvent::PaletteChange )
+        updateColors();
+}
 
 void VLCStatsView::reset()
 {

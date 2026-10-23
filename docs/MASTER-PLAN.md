@@ -32,7 +32,7 @@ Windows 0.2.6 is released; 0.3.0 counts the lines of section 8 (done since 0.2.6
 | Area                    | Progress             | Done    | %     | From                                   |
 |-------------------------|----------------------|---------|-------|----------------------------------------|
 | Design frames (Figma)   | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 | 97/103  | 94 %  | [§5](#5-design-frame-by-frame) tables  |
-| Pixel check             | 🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ | 30/103  | 29 %  | [§5](#5-design-frame-by-frame) tables  |
+| Pixel check             | 🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜ | 39/103  | 37 %  | [§5](#5-design-frame-by-frame) tables  |
 | Light theme and accents | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 16/17   | 94 %  | [§8.3](#83-light-theme-and-accents)    |
 | Settings rows           | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 211/212 | 99 %  | [§8.5](#85-settings-rows)              |
 | Classic dialogs         | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 11/11   | 100 % | [§8.6](#86-classic-dialogs)            |
@@ -164,19 +164,19 @@ What comes first, and why. Each step starts when what it needs is done.
 | Area                  | Frames | 🟢  | 🟡  | 🔴  | Pixel 🟢 | Progress             |
 |-----------------------|--------|-----|-----|-----|----------|----------------------|
 | Onboarding            | 11     | 11  | 0   | 0   | 7        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
-| Player                | 7      | 7   | 0   | 0   | 2        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
-| Player - Music        | 2      | 2   | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
+| Player                | 7      | 7   | 0   | 0   | 7        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
+| Player - Music        | 2      | 2   | 0   | 0   | 2        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Player - customize    | 9      | 9   | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
-| Player - hide UI      | 1      | 1   | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
-| Player - Light        | 1      | 1   | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
+| Player - hide UI      | 1      | 1   | 0   | 0   | 1        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
+| Player - Light        | 1      | 1   | 0   | 0   | 1        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Add Subtitles         | 4      | 4   | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Keyboard Shortcuts    | 1      | 1   | 0   | 0   | 1        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Open network stream   | 1      | 1   | 0   | 0   | 1        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | New playlist          | 1      | 1   | 0   | 0   | 1        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Settings pages        | 19     | 17  | 2   | 0   | 18       | 🟩🟩🟩🟩🟩🟩🟩🟩🟨🟨 |
-| **Screens**           | 57     | 55  | 2   | 0   | 30       | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
+| **Screens**           | 57     | 55  | 2   | 0   | 39       | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
 | **Components**        | 46     | 42  | 4   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
-| **All**               | 103    | 97  | 6   | 0   | 30       | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
+| **All**               | 103    | 97  | 6   | 0   | 39       | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
 
 ### 5.3 Onboarding (11)
 
@@ -204,12 +204,12 @@ Notes: drawn light in the light theme (the dark frames unchanged). Beyond Figma:
 | Node       | Name   | Size (px)   | Status | Pixel | What it is                                                         | Implemented in                                                    |
 |------------|--------|-------------|--------|-------|--------------------------------------------------------------------|-------------------------------------------------------------------|
 | 187:328    | Player | 1920 × 1080 | 🟢     | 🟢    | Player with the compact library open beside the video              | Player.qml, TopBar.qml, ControlBar.qml, CompactLibrary.qml        |
-| 247:445    | Player | 1920 × 1080 | 🟢     | ⏳    | Player alone: the video framed between the bars                    | Player.qml, TopBar.qml, ControlBar.qml                            |
+| 247:445    | Player | 1920 × 1080 | 🟢     | 🟢    | Player alone: the video framed between the bars                    | Player.qml, TopBar.qml, ControlBar.qml                            |
 | 970:2703   | Player | 1920 × 1080 | 🟢     | 🟢    | Library shell: sidebar, address bar, a folder's grid, mini player  | MainDisplay.qml, SideNavigationPane.qml, LibraryHeader.qml, VideoGridDisplay.qml |
-| 970:3308   | Player | 1920 × 1080 | 🟢     | ⏳    | Library: video grid, the mini player playing                       | VideoGridDisplay.qml, VideoGridItem.qml, LibraryMiniPlayer.qml    |
-| 970:3792   | Player | 1920 × 1080 | 🟢     | ⏳    | Library: a folder as a list (rows 406 × 32, 10 apart)               | FolderDisplay.qml, LibraryMiniPlayer.qml                          |
-| 970:4028   | Player | 1920 × 1080 | 🟢     | ⏳    | Library: a folder as cards, the Videos icon filled                  | FolderDisplay.qml, SideNavigationPane.qml                         |
-| 6261:15078 | Player | 1920 × 1080 | 🟢     | ⏳    | Library Home: Continue Watching, Listen Again, Frequently Visited  | HomeDisplay.qml, HomePage.qml, LibraryMiniPlayer.qml              |
+| 970:3308   | Player | 1920 × 1080 | 🟢     | 🟢    | Library: video grid, the mini player playing                       | VideoGridDisplay.qml, VideoGridItem.qml, LibraryMiniPlayer.qml    |
+| 970:3792   | Player | 1920 × 1080 | 🟢     | 🟢    | Library: a folder as a list (rows 406 × 32, 10 apart)               | FolderDisplay.qml, LibraryMiniPlayer.qml                          |
+| 970:4028   | Player | 1920 × 1080 | 🟢     | 🟢    | Library: a folder as cards, the Videos icon filled                  | FolderDisplay.qml, SideNavigationPane.qml                         |
+| 6261:15078 | Player | 1920 × 1080 | 🟢     | 🟢    | Library Home: Continue Watching, Listen Again, Frequently Visited  | HomeDisplay.qml, HomePage.qml, LibraryMiniPlayer.qml              |
 
 Notes: when nothing plays, the video area shows the frames' pixel cat (`IdleScene.qml`): 17 × 17 blocks of
 24.0625 px, wall `#2D2B29`, floor gradient `#272523` → `#2D2B29` from y 785, the cat `#FFFFFF`, `#E0E0E0`,
@@ -219,8 +219,8 @@ Notes: when nothing plays, the video area shows the frames' pixel cat (`IdleScen
 
 | Node       | Name           | Size (px)   | Status | Pixel | What it is                                                     | Implemented in                                                       |
 |------------|----------------|-------------|--------|-------|----------------------------------------------------------------|----------------------------------------------------------------------|
-| 4767:23726 | Player - Music | 1920 × 1080 | 🟢     | ⏳    | Music: artwork (738 × 737) over its blur, waveform, resume card | MusicView.qml, AudioContent.qml, WaveformSlider.qml, ResumeDialog.qml |
-| 4778:25123 | Player - Music | 1920 × 1080 | 🟢     | ⏳    | The same with the queue                                        | as above, QueueCard.qml                                              |
+| 4767:23726 | Player - Music | 1920 × 1080 | 🟢     | 🟢    | Music: artwork (738 × 737) over its blur, waveform, resume card | MusicView.qml, AudioContent.qml, WaveformSlider.qml, ResumeDialog.qml |
+| 4778:25123 | Player - Music | 1920 × 1080 | 🟢     | 🟢    | The same with the queue                                        | as above, QueueCard.qml                                              |
 
 Notes: the resume card reads as in Figma: "You've watched till 00:45:08 already." (the media library's saved time)
 and one *Continue Watching* button; Escape or 10 s close it (in the app ⏳). The bars are solid `#191919` at 95 %
@@ -249,13 +249,13 @@ Notes: editing the music bar and the mini player is implemented, not yet verifie
 
 | Node       | Name             | Size (px)   | Status | Pixel | What it is                                             | Implemented in                          |
 |------------|------------------|-------------|--------|-------|--------------------------------------------------------|-----------------------------------------|
-| 3328:11554 | Player - hide UI | 1920 × 1080 | 🟢     | ⏳    | The video alone in its 10 px frame (Ctrl+\\, right-click) | HideUIAction.qml, MinimalView.qml       |
+| 3328:11554 | Player - hide UI | 1920 × 1080 | 🟢     | 🟢    | The video alone in its 10 px frame (Ctrl+\\, right-click) | HideUIAction.qml, MinimalView.qml       |
 
 ### 5.8 Player - Light (1)
 
 | Node       | Name           | Size (px)   | Status | Pixel | What it is                                          | Implemented in                                     |
 |------------|----------------|-------------|--------|-------|-----------------------------------------------------|----------------------------------------------------|
-| 2425:13624 | Player - Light | 1920 × 1080 | 🟢     | ⏳    | The light theme, greys measured from this frame      | VLCStyle.qml (`redesign.color()`), redesign_icon_provider.cpp |
+| 2425:13624 | Player - Light | 1920 × 1080 | 🟢     | 🟢    | The light theme, greys measured from this frame      | VLCStyle.qml (`redesign.color()`), redesign_icon_provider.cpp |
 
 Notes: the whole app was checked in light in build 115 (player, tracks and subtitles window, cast window, ⋯ menu,
 classic dialogs). The last fixes, Settings scroll bar handles and the warning colour, are in the app ⏳ (§8.3).
@@ -918,7 +918,10 @@ Text matching needs Inter with the same metrics (distance-field text, no hinting
 - 🟢 References and captures of 187:328 (player) and 970:2703 (library shell), compared
 - 🟢 Text positions and sizes measured in many other frames (cited in the code)
 - 🟢 Captured at 1:1 and compared (tiles of 32 px, best shift of up to 4 px, a pixel differs above 24 levels), 2026-10-23:
-  the 18 Settings frames, the onboarding (7 frames), Keyboard Shortcuts, Open network stream and New playlist. What is left differs
+  the 18 Settings frames, the onboarding (7 frames), Keyboard Shortcuts, Open network stream and New playlist;
+  from the demo library (`C:\VLCDemoFigma`: the media, covers, lengths and playback states of the frames), Home,
+  the S01 folder (grid, list, with the mini player), the player (alone, with the library next to it, light, without
+  its bars) and the music player (alone, with its folder). What is left differs
   by value only (the switches and choices of the test profile), by anti-aliasing, or on purpose:
   - Settings - performance: *Process priority* is a dropdown (Normal, High...), not the number field of the design.
   - Settings - privacy: the design's second "Last.fm username" row is the password (its typo); Settings - recording:
@@ -926,9 +929,18 @@ Text matching needs Inter with the same metrics (distance-field text, no hinting
   - Onboarding, the accent states (1902:4020 to 1902:4940): *Back* stays, as in 1902:3670.
   - Keyboard Shortcuts: an action with several keys shows each (Next track: N, Shift+>, >; the defaults of VLC).
   - Not in the design, after its sections: Subtitles, *Second Language & Online Subtitles*; Interface, *Player Bar*.
-- 🟡 Figma references exported: 56 of 103 frames (`C:\VLCQAigma`, the rest being captured)
-- 🟡 Capture scripts that drive the app into each frame's state: settings, dialogs, onboarding (the library and
-  player frames wait for the demo library)
+  - The fullscreen button is in the control bar, not the title bar (issue #1): the right group of the bar is one
+    button further left.
+  - The design's mock data: Figma's seek handles are not where their times are (2:10 drawn at 1:57), the title bar
+    reads "VLC Media Player" over a playing film, a title has a typo ("The Wand_S01E04").
+  - The mini player is where it was put (it is dragged): the design draws it at the left (970:3792) and at the
+    right (970:2703, 970:3308); it starts at the left.
+  - Player - Light (2425:13624) draws the video to the right edge of the window; its dark frames (187:328, 247:445)
+    and the app keep the 10 px frame there.
+- 🟢 Figma references exported: all 103 frames at 1:1 (`C:\VLCQAigma`; the oversized component sheets in tiles
+  joined pixel for pixel)
+- 🟡 Capture scripts that drive the app into each frame's state: settings, dialogs, onboarding, library and player
+  (from the demo library and its playback states); the components are next
 - 🔴 The CI job `pixel-check.yml`: captures, comparison, artifacts, a pull request comment, the wiki page
 - 🔴 All 103 frames compared and recorded
 

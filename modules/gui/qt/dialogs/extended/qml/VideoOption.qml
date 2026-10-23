@@ -6,299 +6,405 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Templates as T
+import QtQuick.Controls.impl as Impl
+import VLC.Dialogs
 import VLC.MainInterface
 import VLC.Style
 import VLC.Widgets as Widgets
 
+// An option of a video filter as the design draws them (Figma 536:1855,
+// 614:1430): a slider (ValueSlider), a 32 px row of a name (14 px,
+// #6B6B6B) and a toggle or a color field, a 48 px dropdown; compact, the
+// color field only (in the row of its filter: "Color Extraction")
 ColumnLayout {
     id: root
+
     required property var effects
     required property var option
+    // The name of the design, else the one of VLC
+    property string label: option.name
+    // In the units of the option
+    property var ticks: []
+    // Its filter on (the sliders in the accent, else grey)
+    property bool active: true
+    // At the end of the row of a slider (the toggle of a filter of one setting)
+    property Component trailing: null
+    property bool compact: false
+
     readonly property var currentValue: {
         effects.revision
         return effects.parameterValue(option.id)
     }
-    readonly property var choiceList: option.type === "choice" ? effects.choices(option.id) : []
-    spacing: VLCStyle.dp(8, VLCStyle.scale)
+    readonly property bool number: option.type === "float" || option.type === "integer"
+    readonly property bool bounded: option.minimum !== undefined && option.maximum !== undefined
+    // The component to extract is an RGB mask too (three of them named)
+    readonly property bool colorValue: option.type === "color" || option.id === "extract-component"
+    readonly property var choiceList: option.type === "choice" || colorValue ? effects.choices(option.id) : []
 
+    spacing: 0
+
+    function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
     function c(value) { return VLCStyle.redesign.color(value, value) }
+    function hex(value) {
+        const number = Number(value)
+        return "#" + (Number.isFinite(number) ? number : 0).toString(16).padStart(6, "0").toUpperCase()
+    }
 
     Widgets.FilePicker { id: filePicker; ctx: MainCtx }
 
-    // The label of a value of the list; an integer outside it is an RGB mask
-    // (the component to extract)
-    function choiceName(value) {
-        const match = root.choiceList.find(choice => String(choice.id) === String(value))
-        if (match) return match.name
-        return typeof value === "number" ? "#" + value.toString(16).padStart(6, "0").toUpperCase()
-                                         : String(value)
-    }
-
     ValueSlider {
         Layout.fillWidth: true
-        visible: (option.type === "float" || option.type === "integer")
-                 && option.minimum !== undefined && option.maximum !== undefined
-        label: option.name
-        from: option.minimum === undefined ? 0 : option.minimum
-        to: option.maximum === undefined ? 1 : option.maximum
+        visible: root.number && root.bounded && !root.compact
+        label: root.label
+        from: root.bounded ? root.option.minimum : 0
+        to: root.bounded ? root.option.maximum : 1
         modelValue: Number(root.currentValue)
-        decimals: option.type === "integer" ? 0 : 2
-        onEdited: (value) => root.effects.setParameter(option.id, option.type === "integer" ? Math.round(value) : value)
+        decimals: root.option.type === "integer" ? 0 : 2
+        stepSize: root.option.type === "integer" ? 1 : 0
+        ticks: root.ticks
+        active: root.active
+        trailing: root.trailing
+        onEdited: (value) => root.effects.setParameter(root.option.id, root.option.type === "integer" ? Math.round(value) : value)
     }
 
-    RowLayout {
+    // A number without bounds: the name beside the field of the design
+    Item {
+        visible: root.number && !root.bounded && !root.compact
         Layout.fillWidth: true
-        visible: (root.option.type === "float" || root.option.type === "integer")
-                 && root.option.minimum === undefined
+        implicitHeight: root.px(36)
         Text {
-            Layout.fillWidth: true
-            text: root.option.name
-            color: root.c(VLCStyle.redesign.textMuted)
+            anchors.left: parent.left
+            anchors.right: numberField.left
+            anchors.rightMargin: root.px(10)
+            anchors.baseline: parent.verticalCenter
+            anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
+            text: root.label
+            color: root.c("#6B6B6B")
             font.family: VLCStyle.redesign.fontFamily
-            font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
+            font.pixelSize: root.px(14)
+            elide: Text.ElideRight
+        }
+        SettingsTextField {
+            id: numberField
+            anchors.right: parent.right
+            anchors.verticalCenter: parent.verticalCenter
+            width: root.px(140)
+            height: root.px(36)
+            font.pixelSize: root.px(12)
+            text: String(root.currentValue)
+            Accessible.name: root.label
+            onEditingFinished: {
+                const number = Number(text)
+                if (Number.isFinite(number) && (root.option.type !== "integer" || Number.isInteger(number)))
+                    root.effects.setParameter(root.option.id, number)
+                text = String(root.effects.parameterValue(root.option.id))
+            }
+            Connections {
+                target: root.effects
+                function onStateChanged() {
+                    if (!numberField.activeFocus)
+                        numberField.text = String(root.currentValue)
+                }
+            }
+        }
+    }
+
+    // On or off: the name and the toggle (Figma 614:1430 "Color", "Cartoon")
+    Item {
+        visible: root.option.type === "bool" && !root.compact
+        Layout.fillWidth: true
+        implicitHeight: root.px(32)
+        Text {
+            anchors.left: parent.left
+            anchors.right: boolOption.left
+            anchors.rightMargin: root.px(10)
+            anchors.baseline: parent.verticalCenter
+            anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
+            text: root.label
+            color: root.c("#6B6B6B")
+            font.family: VLCStyle.redesign.fontFamily
+            font.pixelSize: root.px(14)
+            elide: Text.ElideRight
+        }
+        Widgets.CheckButton {
+            id: boolOption
+            anchors.right: parent.right
+            anchors.verticalCenter: parent.verticalCenter
+            focusPolicy: Qt.StrongFocus
+            Accessible.name: root.label
+            Binding on checked {
+                when: !boolOption.pressed
+                value: Boolean(root.currentValue)
+            }
+            onClicked: root.effects.setParameter(root.option.id, checked)
+        }
+    }
+
+    // A color: Figma 614:1430, a 116 x 32 field (#090909, radius 6), the
+    // value (14 px, #6B6B6B) 12 px in, its 22 px swatch 5 px from the end;
+    // the swatch lists the colors VLC names
+    Item {
+        visible: root.colorValue
+        Layout.fillWidth: !root.compact
+        implicitWidth: root.compact ? colorField.width : 0
+        implicitHeight: root.px(32)
+        Text {
+            visible: !root.compact
+            anchors.left: parent.left
+            anchors.right: colorField.left
+            anchors.rightMargin: root.px(10)
+            anchors.baseline: parent.verticalCenter
+            anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
+            text: root.label
+            color: root.c("#6B6B6B")
+            font.family: VLCStyle.redesign.fontFamily
+            font.pixelSize: root.px(14)
             elide: Text.ElideRight
         }
         Rectangle {
-            width: VLCStyle.dp(116, VLCStyle.scale)
-            height: VLCStyle.dp(32, VLCStyle.scale)
-            radius: VLCStyle.dp(4, VLCStyle.scale)
-            color: root.c("#0E0E0E")
+            id: colorField
+            anchors.right: parent.right
+            anchors.verticalCenter: parent.verticalCenter
+            width: root.px(116)
+            height: root.px(32)
+            radius: root.px(6)
+            color: root.c("#090909")
+            border.width: colorInput.activeFocus ? 1 : 0
+            border.color: VLCStyle.redesign.accentDim
+
             TextInput {
-                id: unboundedInput
-                anchors.fill: parent
-                anchors.leftMargin: VLCStyle.dp(10, VLCStyle.scale)
-                verticalAlignment: TextInput.AlignVCenter
-                color: root.c(VLCStyle.redesign.textSecondary)
+                id: colorInput
+                x: root.px(12)
+                width: swatch.x - x - root.px(4)
+                anchors.baseline: parent.verticalCenter
+                anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
+                clip: true
+                text: root.hex(root.currentValue)
+                color: root.c("#6B6B6B")
+                selectionColor: VLCStyle.redesign.accentBackground
+                selectedTextColor: VLCStyle.redesign.accent
                 font.family: VLCStyle.redesign.fontFamily
-                font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
+                font.pixelSize: root.px(14)
                 selectByMouse: true
-                text: String(root.currentValue)
-                Accessible.name: root.option.name
+                maximumLength: 7
+                Accessible.name: root.label
                 onEditingFinished: {
-                    const number = Number(text)
-                    if (Number.isFinite(number) && (root.option.type !== "integer" || Number.isInteger(number)))
-                        root.effects.setParameter(root.option.id, number)
+                    if (/^#?[0-9a-fA-F]{6}$/.test(text))
+                        root.effects.setParameter(root.option.id, parseInt(text.replace("#", ""), 16))
+                    text = root.hex(root.effects.parameterValue(root.option.id))
+                }
+                Connections {
+                    target: root.effects
+                    function onStateChanged() {
+                        if (!colorInput.activeFocus)
+                            colorInput.text = root.hex(root.currentValue)
+                    }
+                }
+            }
+
+            T.Button {
+                id: swatch
+                objectName: "colorChoices-" + root.option.id
+                x: parent.width - root.px(5) - width
+                anchors.verticalCenter: parent.verticalCenter
+                width: root.px(22)
+                height: width
+                enabled: root.choiceList.length > 0
+                focusPolicy: Qt.StrongFocus
+                Accessible.name: qsTr("Colors of %1").arg(root.label)
+                onClicked: colorChoices.open()
+                background: Rectangle {
+                    radius: root.px(2)
+                    color: root.hex(root.currentValue)
+                    border.width: swatch.visualFocus ? root.px(2) : 1
+                    border.color: swatch.visualFocus ? VLCStyle.redesign.accent : Qt.rgba(1, 1, 1, 0.2)
+                }
+            }
+
+            // The list of the dropdowns of the design (Figma 2372:8300): 20
+            // px under the field, padding 2, rows of 44 2 px apart, #1F1F1F
+            // under the one chosen or the pointer, the check of the accent
+            T.Popup {
+                id: colorChoices
+                x: parent.width - width
+                y: parent.height + root.px(20)
+                width: root.px(200)
+                implicitHeight: implicitContentHeight + topPadding + bottomPadding
+                padding: root.px(2)
+                margins: root.px(8)
+                modal: true
+                dim: false
+                closePolicy: T.Popup.CloseOnEscape | T.Popup.CloseOnPressOutside
+
+                contentItem: Column {
+                    spacing: root.px(2)
+                    Repeater {
+                        model: root.choiceList
+                        T.ItemDelegate {
+                            id: colorChoice
+                            required property var modelData
+                            readonly property bool chosen: Number(modelData.id) === Number(root.currentValue)
+                            width: colorChoices.availableWidth
+                            implicitHeight: root.px(44)
+                            leftPadding: root.px(14 + 22 + 10)
+                            rightPadding: root.px(14 + 24 + 13)
+                            focusPolicy: Qt.StrongFocus
+                            Accessible.name: modelData.name
+                            onClicked: {
+                                if (root.effects.setParameter(root.option.id, modelData.id))
+                                    colorChoices.close()
+                            }
+                            contentItem: Text {
+                                text: colorChoice.modelData.name
+                                color: root.c("#8F8F8F")
+                                font.family: VLCStyle.redesign.fontFamily
+                                font.pixelSize: root.px(14)
+                                verticalAlignment: Text.AlignVCenter
+                                elide: Text.ElideRight
+                            }
+                            background: Rectangle {
+                                radius: root.px(4)
+                                color: colorChoice.chosen || colorChoice.hovered || colorChoice.visualFocus
+                                       ? root.c("#1F1F1F") : "transparent"
+                                Rectangle {
+                                    x: root.px(14)
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    width: root.px(22)
+                                    height: width
+                                    radius: root.px(2)
+                                    color: root.hex(colorChoice.modelData.id)
+                                    border.width: 1
+                                    border.color: Qt.rgba(1, 1, 1, 0.2)
+                                }
+                                Impl.ColorImage {
+                                    visible: colorChoice.chosen
+                                    x: parent.width - root.px(13) - width
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    width: root.px(24)
+                                    height: width
+                                    source: "qrc:///redesign/track-check-active.png"
+                                    color: VLCStyle.redesign.accentTint
+                                }
+                            }
+                        }
+                    }
+                }
+                background: Rectangle {
+                    radius: root.px(6)
+                    color: root.c("#191919")
+
+                    // Figma: drop shadow 0 8 blur 15 #000000 46 % (as RedesignMenu)
+                    Widgets.RoundedRectangleShadow {
+                        yOffset: root.px(8)
+                        blurRadius: 7.5 * VLCStyle.scale
+                        color: Qt.rgba(0, 0, 0, 0.46)
+                    }
+                }
+            }
+        }
+    }
+
+    // A typed string (the text of the marquee), a file also picked (the
+    // logo): the field and the button of the settings
+    ColumnLayout {
+        Layout.fillWidth: true
+        visible: (root.option.type === "text" || root.option.type === "file") && !root.compact
+        spacing: root.px(10)
+        Text {
+            Layout.fillWidth: true
+            text: root.label
+            color: root.c("#6B6B6B")
+            font.family: VLCStyle.redesign.fontFamily
+            font.pixelSize: root.px(14)
+            elide: Text.ElideRight
+        }
+        RowLayout {
+            Layout.fillWidth: true
+            spacing: root.px(8)
+            SettingsTextField {
+                id: textInput
+                Layout.fillWidth: true
+                Layout.minimumWidth: root.px(100)
+                Layout.preferredWidth: root.px(100)
+                text: String(root.currentValue)
+                Accessible.name: root.label
+                // (also emitted on a mere loss of focus: the mask of erase
+                // set again would open the filters again)
+                onEditingFinished: {
+                    if (text !== String(root.currentValue))
+                        root.effects.setParameter(root.option.id, text)
                     text = String(root.effects.parameterValue(root.option.id))
                 }
                 Connections {
                     target: root.effects
                     function onStateChanged() {
-                        if (!unboundedInput.activeFocus)
-                            unboundedInput.text = String(root.currentValue)
+                        if (!textInput.activeFocus)
+                            textInput.text = String(root.currentValue)
                     }
                 }
             }
-        }
-    }
-
-    T.CheckBox {
-        id: boolOption
-        visible: option.type === "bool"
-        text: option.name
-        font.family: VLCStyle.redesign.fontFamily
-        font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
-        Binding on checked { when: !boolOption.pressed; value: Boolean(root.currentValue) }
-        onClicked: root.effects.setParameter(option.id, checked)
-        indicator: Rectangle {
-            implicitWidth: VLCStyle.dp(18, VLCStyle.scale)
-            implicitHeight: implicitWidth
-            radius: VLCStyle.dp(3, VLCStyle.scale)
-            color: boolOption.checked ? VLCStyle.redesign.accent : root.c("#0E0E0E")
-            border.color: boolOption.checked ? VLCStyle.redesign.accent : root.c(VLCStyle.redesign.border)
-            Image {
-                anchors.centerIn: parent
-                source: "qrc:///redesign/icons/check/selected.png"
-                visible: boolOption.checked
-                sourceSize.width: VLCStyle.dp(14, VLCStyle.scale)
-                sourceSize.height: VLCStyle.dp(14, VLCStyle.scale)
-            }
-        }
-    }
-
-    RowLayout {
-        Layout.fillWidth: true
-        visible: option.type === "color"
-        Text {
-            text: root.option.name
-            Layout.fillWidth: true
-            color: root.c(VLCStyle.redesign.textMuted)
-            font.family: VLCStyle.redesign.fontFamily
-            font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
-        }
-        Rectangle {
-            width: VLCStyle.dp(130, VLCStyle.scale)
-            height: VLCStyle.dp(32, VLCStyle.scale)
-            radius: VLCStyle.dp(4, VLCStyle.scale)
-            color: root.c("#0E0E0E")
-            RowLayout {
-                anchors.fill: parent
-                anchors.margins: VLCStyle.dp(6, VLCStyle.scale)
-                TextInput {
-                    id: colorInput
-                    Layout.fillWidth: true
-                    text: "#" + Number(root.currentValue).toString(16).padStart(6, "0").toUpperCase()
-                    color: root.c(VLCStyle.redesign.textSecondary)
-                    font.family: VLCStyle.redesign.fontFamily
-                    font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
-                    selectByMouse: true
-                    maximumLength: 7
-                    onEditingFinished: {
-                        if (/^#[0-9a-fA-F]{6}$/.test(text))
-                            root.effects.setParameter(root.option.id, parseInt(text.slice(1), 16))
-                        text = "#" + Number(root.effects.parameterValue(root.option.id)).toString(16).padStart(6, "0").toUpperCase()
-                    }
-                }
-                Rectangle {
-                    width: VLCStyle.dp(20, VLCStyle.scale)
-                    height: width
-                    radius: VLCStyle.dp(2, VLCStyle.scale)
-                    color: "#" + Number(root.currentValue).toString(16).padStart(6, "0")
-                }
-            }
-        }
-    }
-
-    // A typed string (the text of the marquee), a file also picked (the logo)
-    ColumnLayout {
-        Layout.fillWidth: true
-        visible: root.option.type === "text" || root.option.type === "file"
-        spacing: VLCStyle.dp(8, VLCStyle.scale)
-        Text {
-            Layout.fillWidth: true
-            text: root.option.name
-            color: root.c(VLCStyle.redesign.textMuted)
-            font.family: VLCStyle.redesign.fontFamily
-            font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
-            elide: Text.ElideRight
-        }
-        RowLayout {
-            Layout.fillWidth: true
-            spacing: VLCStyle.dp(8, VLCStyle.scale)
-            Rectangle {
-                Layout.fillWidth: true
-                implicitHeight: VLCStyle.dp(32, VLCStyle.scale)
-                radius: VLCStyle.dp(4, VLCStyle.scale)
-                color: root.c("#0E0E0E")
-                TextInput {
-                    id: textInput
-                    anchors.fill: parent
-                    anchors.leftMargin: VLCStyle.dp(10, VLCStyle.scale)
-                    anchors.rightMargin: VLCStyle.dp(10, VLCStyle.scale)
-                    verticalAlignment: TextInput.AlignVCenter
-                    clip: true
-                    color: root.c(VLCStyle.redesign.textSecondary)
-                    font.family: VLCStyle.redesign.fontFamily
-                    font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
-                    selectByMouse: true
-                    text: String(root.currentValue)
-                    Accessible.name: root.option.name
-                    // (also emitted on a mere loss of focus: the mask of erase
-                    // set again would open the filters again)
-                    onEditingFinished: {
-                        if (text !== String(root.currentValue))
-                            root.effects.setParameter(root.option.id, text)
-                        text = String(root.effects.parameterValue(root.option.id))
-                    }
-                    Connections {
-                        target: root.effects
-                        function onStateChanged() {
-                            if (!textInput.activeFocus)
-                                textInput.text = String(root.currentValue)
-                        }
-                    }
-                }
-            }
-            T.Button {
-                id: browseButton
+            SettingsButton {
                 visible: root.option.type === "file"
                 text: qsTr("Browse")
-                implicitWidth: implicitContentWidth + leftPadding + rightPadding
-                implicitHeight: VLCStyle.dp(32, VLCStyle.scale)
-                leftPadding: VLCStyle.dp(12, VLCStyle.scale)
-                rightPadding: VLCStyle.dp(12, VLCStyle.scale)
-                focusPolicy: Qt.StrongFocus
-                Accessible.name: qsTr("Browse for %1").arg(root.option.name)
+                Accessible.name: qsTr("Browse for %1").arg(root.label)
                 onClicked: {
-                    const file = filePicker.chooseOpenFile(root.option.name,
+                    const file = filePicker.chooseOpenFile(root.label,
                                                            qsTr("Image Files (*.png *.jpg);;All Files (*)"))
                     if (file.length) root.effects.setParameter(root.option.id, file)
                 }
-                background: Rectangle {
-                    color: browseButton.hovered ? root.c(VLCStyle.redesign.controlHoverBackground) : root.c("#0E0E0E")
-                    radius: VLCStyle.dp(4, VLCStyle.scale)
-                }
-                contentItem: Text {
-                    text: browseButton.text
-                    color: root.c(VLCStyle.redesign.textSecondary)
-                    font.family: VLCStyle.redesign.fontFamily
-                    font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                }
             }
         }
     }
 
-    T.Button {
-        id: choiceButton
+    // A value of a list: Figma 614:1430 (the mode of the gradient), a 48 px
+    // dropdown, 2 px #0E0E0E around #191919, the text (#6B6B6B) 18 px in,
+    // the chevron 13 px from the end; the list of the settings
+    SettingsDropdown {
+        id: choiceBox
+        visible: root.option.type === "choice" && !root.colorValue && !root.compact
         Layout.fillWidth: true
-        visible: option.type === "choice"
-        implicitHeight: VLCStyle.dp(40, VLCStyle.scale)
-        leftPadding: VLCStyle.dp(12, VLCStyle.scale)
-        rightPadding: VLCStyle.dp(12, VLCStyle.scale)
-        onClicked: choicePopup.open()
-        Accessible.name: root.option.name
-        background: Rectangle { color: root.c("#0E0E0E"); radius: VLCStyle.dp(5, VLCStyle.scale) }
-        contentItem: RowLayout {
-            Text {
-                Layout.fillWidth: true
-                text: root.option.name + ": " + root.choiceName(root.currentValue)
-                color: root.c(VLCStyle.redesign.textSecondary)
-                font.family: VLCStyle.redesign.fontFamily
-                font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
-            }
-            Image {
-                source: "qrc:///redesign/icons/chevron-down/default.png"
-                sourceSize.width: VLCStyle.dp(16, VLCStyle.scale)
-                sourceSize.height: VLCStyle.dp(16, VLCStyle.scale)
-                Layout.preferredWidth: sourceSize.width
-                Layout.preferredHeight: sourceSize.height
+        implicitHeight: root.px(48)
+        leftPadding: root.px(18)
+        rightPadding: root.px(18 + 24 + 13)
+        model: root.choiceList
+        textRole: "name"
+        currentIndex: root.choiceList.findIndex(choice => String(choice.id) === String(root.currentValue))
+        // the name before the value, but where the design shows the value alone
+        displayText: (root.label.length ? root.label + ": " : "")
+                     + (currentIndex < 0 ? String(root.currentValue) : currentText)
+        Accessible.name: root.label.length ? root.label : root.option.name
+        onActivated: (index) => root.effects.setParameter(root.option.id, root.choiceList[index].id)
+
+        background: Rectangle {
+            radius: root.px(6)
+            color: root.c("#0E0E0E")
+            border.width: choiceBox.visualFocus ? 1 : 0
+            border.color: VLCStyle.redesign.accent
+            Rectangle {
+                anchors.fill: parent
+                anchors.margins: root.px(2)
+                radius: root.px(4)
+                color: choiceBox.hovered && !choiceBox.popup.visible ? root.c("#222222") : root.c("#191919")
             }
         }
-        T.Popup {
-            id: choicePopup
-            parent: choiceButton
-            y: choiceButton.height + VLCStyle.dp(4, VLCStyle.scale)
-            width: choiceButton.width
-            // (a template popup has no size of its own)
-            implicitHeight: implicitContentHeight + topPadding + bottomPadding
-            // Kept inside the window: the positions of the logo and the text
-            // list ten values, too tall below a button near its bottom
-            margins: VLCStyle.dp(8, VLCStyle.scale)
-            padding: VLCStyle.dp(6, VLCStyle.scale)
-            closePolicy: T.Popup.CloseOnEscape | T.Popup.CloseOnPressOutside
-            background: Rectangle { color: root.c("#1B1B1B"); radius: VLCStyle.dp(6, VLCStyle.scale) }
-            contentItem: ColumnLayout {
-                Repeater {
-                    model: root.choiceList
-                    delegate: T.Button {
-                        required property var modelData
-                        Layout.fillWidth: true
-                        text: modelData.name
-                        implicitHeight: VLCStyle.dp(34, VLCStyle.scale)
-                        onClicked: {
-                            if (root.effects.setParameter(root.option.id, modelData.id)) choicePopup.close()
-                        }
-                        background: Rectangle { color: parent.hovered ? root.c(VLCStyle.redesign.controlHoverBackground) : "transparent" }
-                        contentItem: Text {
-                            text: parent.text
-                            color: root.c(VLCStyle.redesign.textSecondary)
-                            font.family: VLCStyle.redesign.fontFamily
-                            font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
-                        }
-                    }
-                }
-            }
+        contentItem: Text {
+            id: choiceText
+            text: choiceBox.displayText
+            color: root.c("#6B6B6B")
+            font: choiceBox.font
+            verticalAlignment: Text.AlignTop
+            // the baseline where the design centres a line of Inter
+            topPadding: height / 2 + VLCStyle.redesign.centeredBaseline(font.pixelSize) - choiceMetrics.ascent
+            FontMetrics { id: choiceMetrics; font: choiceText.font }
+            elide: Text.ElideRight
+        }
+        indicator: Image {
+            x: choiceBox.width - root.px(13) - width
+            y: (choiceBox.height - height) / 2
+            width: root.px(24)
+            height: width
+            sourceSize: Qt.size(width, height)
+            source: "qrc:///redesign/icons/chevron-down/default.png"
         }
     }
 }

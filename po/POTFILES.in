@@ -688,10 +688,12 @@ modules/gui/qt/dialogs/extended/qml/CropInput.qml
 modules/gui/qt/dialogs/extended/qml/CropPanel.qml
 modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml
 modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml
+modules/gui/qt/dialogs/extended/qml/ExpandPanel.qml
 modules/gui/qt/dialogs/extended/qml/FilterPanel.qml
 modules/gui/qt/dialogs/extended/qml/FilterSection.qml
 modules/gui/qt/dialogs/extended/qml/VideoEffectsPanel.qml
 modules/gui/qt/dialogs/extended/qml/VideoFilterSection.qml
+modules/gui/qt/dialogs/extended/qml/VideoOption.qml
 modules/gui/qt/dialogs/extensions/extensions.cpp
 modules/gui/qt/dialogs/extensions/extensions.hpp
 modules/gui/qt/dialogs/extensions/extensions_manager.cpp

@@ -36,6 +36,8 @@
 
 #include <QApplication>
 #include <QAction>
+#include <QIcon>
+#include <QPainter>
 #include <QUrl>
 
 #include <math.h>
@@ -109,6 +111,25 @@ void CoverArtLabel::showArtUpdate( const QString& url )
         pix = pix.scaled( minimumWidth(), minimumHeight(),
                           Qt::KeepAspectRatioByExpanding,
                           Qt::SmoothTransformation );
+    }
+    else if( palette().color( QPalette::Window ).lightness() < 128 )
+    {
+        // the dark theme of the redesign: a card of the design (#222222)
+        // with the cone, not VLC's light square in the dark window
+        const QSize size( minimumWidth(), minimumHeight() );
+        const qreal ratio = devicePixelRatioF();
+        pix = QPixmap( size * ratio );
+        pix.setDevicePixelRatio( ratio );
+        pix.fill( Qt::transparent );
+        QPainter painter( &pix );
+        painter.setRenderHint( QPainter::Antialiasing );
+        painter.setPen( Qt::NoPen );
+        painter.setBrush( QColor( 0x22, 0x22, 0x22 ) );
+        painter.drawRoundedRect( QRectF( QPointF( 0, 0 ), QSizeF( size ) ), 4, 4 );
+        const QSize logo = size * 0.4;
+        QIcon( QStringLiteral( ":/redesign/logo.svg" ) )
+            .paint( &painter, QRect( QPoint( ( size.width() - logo.width() ) / 2,
+                                             ( size.height() - logo.height() ) / 2 ), logo ) );
     }
     else
     {

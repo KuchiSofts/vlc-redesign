@@ -752,6 +752,13 @@ static void *Add(sout_stream_t *p_stream, const es_format_t *p_fmt, const char *
         p_sys_id->p_sub_id = NULL;
         p_sys_id->flushed = false;
 
+        /* the first stream of a media (the next one of a playlist too):
+         * its start is held as the first one's was */
+        if( p_sys->streams.empty() && p_sys->out_streams.empty() )
+        {
+            p_sys->dropHeld( NULL );
+            p_sys->held_done = false;
+        }
         p_sys->streams.push_back( p_sys_id );
         p_sys->es_changed = true;
     }

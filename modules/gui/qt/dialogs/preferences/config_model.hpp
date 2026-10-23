@@ -140,6 +140,9 @@ private:
     static constexpr const char *mirrorPrefix = "x-mirror:";
     // Visualization size (effect-width / effect-height)
     static constexpr const char *visualSizeKey = "x-visual-size";
+    // The visualizer (audio-visual, and effect-list for the effects of
+    // the "visual" module: spectrometer, scope, spectrum, waveform, vuMeter)
+    static constexpr const char *visualizerKey = "x-visualizer";
     // The compressor as it was before Night mode, put back when it is off
     static constexpr const char *nightPreviousKey = "redesign/night-mode-previous";
     // Video post-processing: the level of the postproc filter, 0 when it

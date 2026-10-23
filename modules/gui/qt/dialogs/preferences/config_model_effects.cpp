@@ -51,6 +51,18 @@ bool ConfigModel::combinedValues(const Entry &entry, QHash<QString, QVariant> *v
         values->insert(QStringLiteral("effect-width"), QVariant::fromValue<int64_t>(visualSizes[mode][0]));
         values->insert(QStringLiteral("effect-height"), QVariant::fromValue<int64_t>(visualSizes[mode][1]));
         keys = { QStringLiteral("effect-width"), QStringLiteral("effect-height") };
+    } else if (entry.key == QLatin1String(visualizerKey)) {
+        // an effect of the visualizer filter, or a visualization
+        const QString value = entry.staged.toString();
+        if (QStringList{ QStringLiteral("spectrometer"), QStringLiteral("scope"), QStringLiteral("spectrum"),
+                         QStringLiteral("waveform"), QStringLiteral("vuMeter") }.contains(value)) {
+            values->insert(QStringLiteral("audio-visual"), QStringLiteral("visual"));
+            values->insert(QStringLiteral("effect-list"), value);
+            keys = { QStringLiteral("audio-visual"), QStringLiteral("effect-list") };
+        } else {
+            values->insert(QStringLiteral("audio-visual"), value);
+            keys = { QStringLiteral("audio-visual") };
+        }
     } else if (entry.key == QLatin1String(customSkinKey)) {
         // Off: back to the default interface, unless another one was chosen
         const QString intf = ConfigValues::read(QStringLiteral("intf")).toString();

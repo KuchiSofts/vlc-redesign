@@ -193,6 +193,16 @@ Column {
                             return [{ value: "none", label: qsTr("None") }].concat(model.choices.map(choice => ({
                                 value: choice.value, label: choice.label,
                                 icon: "qrc:///redesign/icons/eq-" + String(choice.value).toLowerCase() })))
+                        // Figma "Audio Visualizer" (2372:8639): the effects
+                        // of the visualizer with their icon
+                        if (setting === "x-visualizer" && model.choices) {
+                            const icons = { spectrometer: "spectrometer", scope: "scope",
+                                            spectrum: "spectrum", waveform: "waveform" }
+                            return model.choices.map(choice => icons[choice.value]
+                                ? { value: choice.value, label: choice.label,
+                                    icon: "qrc:///redesign/icons/" + icons[choice.value] }
+                                : choice)
+                        }
                         if (setting === "hotkeys-y-wheel-mode" || setting === "hotkeys-x-wheel-mode")
                             return [{ value: -1, label: qsTr("Nothing") }, { value: 0, label: qsTr("Volume") },
                                     { value: model.value === 3 ? 3 : 2, label: qsTr("Seek") }]

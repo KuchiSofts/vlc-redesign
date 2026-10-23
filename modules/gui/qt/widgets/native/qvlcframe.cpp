@@ -28,6 +28,7 @@
 
 #include "qvlcframe.hpp"
 #include "maininterface/compositor.hpp"
+#include "util/redesign_widget_theme.hpp"
 
 void QVLCTools::saveWidgetPosition(QSettings *settings, QWidget *widget)
 {
@@ -232,6 +233,10 @@ void QVLCDialog::setWindowTransientParent(QWidget* widget, QWindow* parent, qt_i
 {
     assert(widget);
     assert(widget->isWindow()); // Do not call this method if widget is not a window.
+
+    // Every classic window comes here (QVLCFrame, QVLCDialog, the stream
+    // wizard, the message boxes): it gets the look of the redesign
+    RedesignWidgetTheme::apply(widget, p_intf);
 
     if (!parent && p_intf && !p_intf->b_isDialogProvider)
     {

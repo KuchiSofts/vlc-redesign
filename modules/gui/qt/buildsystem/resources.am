@@ -241,6 +241,17 @@ libqt_plugin_la_RES = \
 	pixmaps/redesign/maximize.svg \
 	pixmaps/redesign/fullscreen.svg \
 	pixmaps/redesign/close.svg \
+	pixmaps/redesign/widgets/chevron-down-dark.svg \
+	pixmaps/redesign/widgets/chevron-down-light.svg \
+	pixmaps/redesign/widgets/chevron-down-disabled-dark.svg \
+	pixmaps/redesign/widgets/chevron-down-disabled-light.svg \
+	pixmaps/redesign/widgets/chevron-up-dark.svg \
+	pixmaps/redesign/widgets/chevron-up-light.svg \
+	pixmaps/redesign/widgets/chevron-up-disabled-dark.svg \
+	pixmaps/redesign/widgets/chevron-up-disabled-light.svg \
+	pixmaps/redesign/widgets/chevron-right-dark.svg \
+	pixmaps/redesign/widgets/chevron-right-light.svg \
+	pixmaps/redesign/widgets/check.svg \
 	pixmaps/fonts/InterVariable.ttf \
 	pixmaps/fonts/DMMono-Regular.ttf \
 	pixmaps/redesign/play.svg \

@@ -281,6 +281,8 @@ void LocalFolderModel::loadLibraryData()
         unsigned playCount;
         int64_t id;
         bool favorite;
+        QString title;
+        QString artist;
     };
     struct Ctx
     {
@@ -294,9 +296,24 @@ void LocalFolderModel::loadLibraryData()
         for (const auto& entry : mrls)
         {
             ml_unique_ptr<vlc_ml_media_t> media{ vlc_ml_get_media_by_mrl(ml, qtu(entry.second)) };
-            if (media)
-                ctx.results.push_back({ entry.first, entry.second, media->f_progress,
-                                        media->i_playcount, media->i_id, media->b_is_favorite });
+            if (!media)
+                continue;
+            // a song: its title and its artist
+            QString title, artist;
+            if (media->i_type == VLC_ML_MEDIA_TYPE_AUDIO
+             && media->i_subtype == VLC_ML_MEDIA_SUBTYPE_ALBUMTRACK)
+            {
+                title = qfu(media->psz_title);
+                if (media->album_track.i_artist_id > 0)
+                {
+                    ml_unique_ptr<vlc_ml_artist_t> found{ vlc_ml_get_artist(ml, media->album_track.i_artist_id) };
+                    if (found)
+                        artist = qfu(found->psz_name);
+                }
+            }
+            ctx.results.push_back({ entry.first, entry.second, media->f_progress,
+                                    media->i_playcount, media->i_id, media->b_is_favorite,
+                                    title, artist });
         }
     },
     // UI thread
@@ -313,6 +330,8 @@ void LocalFolderModel::loadLibraryData()
             entry.playCount = result.playCount;
             entry.mlId = result.id;
             entry.favorite = result.favorite;
+            entry.title = result.title;
+            entry.artist = result.artist;
         }
         if (m_sortCriteria == QLatin1String("unwatched"))
         {
@@ -324,7 +343,8 @@ void LocalFolderModel::loadLibraryData()
         }
         if (!m_rows.isEmpty())
             emit dataChanged(index(0), index(m_rows.size() - 1),
-                             { ProgressRole, PlayCountRole, IsFavoriteRole, IsIndexedRole });
+                             { ProgressRole, PlayCountRole, IsFavoriteRole, IsIndexedRole,
+                               TitleRole, ArtistRole });
     });
 }
 
@@ -357,6 +377,10 @@ QVariant LocalFolderModel::data(const QModelIndex& index, int role) const
         return entry.favorite;
     case IsIndexedRole:
         return entry.mlId > 0;
+    case TitleRole:
+        return entry.title;
+    case ArtistRole:
+        return entry.artist;
     default:
         return {};
     }
@@ -408,5 +432,7 @@ QHash<int, QByteArray> LocalFolderModel::roleNames() const
         { IsFavoriteRole, "isFavorite" },
         { IsIndexedRole, "isIndexed" },
         { MrlRole, "mrl" },
+        { TitleRole, "title" },
+        { ArtistRole, "main_artist" },
     };
 }

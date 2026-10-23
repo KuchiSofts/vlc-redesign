@@ -51,6 +51,10 @@ public:
         // the MRL as the core and the library write it (vlc_path2uri), as
         // text: the url (UrlRole) shown as text decodes some characters
         MrlRole,
+        // of a song the library knows: its title and its artist ("title -
+        // artist", as the design names songs)
+        TitleRole,
+        ArtistRole,
     };
     Q_ENUM(Roles)
 
@@ -108,6 +112,9 @@ private:
         unsigned playCount = 0;
         int64_t mlId = 0;
         bool favorite = false;
+        // of a song (empty for other media)
+        QString title;
+        QString artist;
     };
     // The model for the listings still running, null once it is gone
     struct Guard

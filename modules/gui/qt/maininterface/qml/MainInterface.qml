@@ -62,7 +62,8 @@ Item {
         anchors.rightMargin: VLCStyle.dp(16, VLCStyle.scale)
         // above the player's control bar, or the library's mini player
         anchors.bottomMargin: VLCStyle.dp(16, VLCStyle.scale) + MainCtx.windowExtendedMargin
-                              + ((MainCtx.playerView || Player.isStarted) ? VLCStyle.dp(64, VLCStyle.scale) : 0)
+                              + ((MainCtx.playerView || Player.isStarted || MainCtx.alwaysShowPlayerBar)
+                                 ? VLCStyle.dp(64, VLCStyle.scale) : 0)
     }
 
     Item {

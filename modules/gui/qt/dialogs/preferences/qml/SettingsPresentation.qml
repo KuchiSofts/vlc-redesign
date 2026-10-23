@@ -53,6 +53,9 @@ readonly property var items: ({
                             { false: qsTr("Always"), true: qsTr("In fullscreen only") }, { info: true }],
         "mouse-hide-timeout": [qsTr("Playback Controls"), qsTr("Hide after"), "slider", null, { info: false, labelsBaseline: 44, rowHeight: 57, controlTop: 1 }],
         "qt-fs-controller": [qsTr("Playback Controls"), qsTr("Show controls in fullscreen"), "", null, { info: true }],
+        // not in the design: next to the rows of the controls
+        "redesign/always-show-player-bar": [qsTr("Playback Controls"), qsTr("Always show the player bar"), "", null,
+                                            { info: true }],
         "qt-system-tray": [qsTr("Notifications and System Tray"), qsTr("Show a system tray icon"), "", null, { info: true, restart: true }],
         "qt-start-minimized": [qsTr("Notifications and System Tray"), qsTr("Start minimized to the tray"), "", null, { info: true }],
         "qt-notification": [qsTr("Notifications and System Tray"), qsTr("Show a popup when the track changes"), "", null,

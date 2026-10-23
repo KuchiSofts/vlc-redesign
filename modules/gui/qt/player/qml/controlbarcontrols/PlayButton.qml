@@ -25,6 +25,7 @@ import VLC.Widgets as Widgets
 import VLC.Style
 import VLC.Player
 import VLC.Playlist
+import VLC.Dialogs
 import VLC.Util
 
 T.Control {
@@ -70,8 +71,8 @@ T.Control {
     Accessible.checkable: true
     Accessible.checked: Player.playingState !== Player.PLAYING_STATE_PAUSED
                         && Player.playingState !== Player.PLAYING_STATE_STOPPED
-    Accessible.onPressAction: MainPlaylistController.togglePlayPause()
-    Accessible.onToggleAction: MainPlaylistController.togglePlayPause()
+    Accessible.onPressAction: root._activate()
+    Accessible.onToggleAction: root._activate()
 
     // Tooltip
 
@@ -107,6 +108,15 @@ T.Control {
     }
 
     // Functions
+
+    // Nothing plays and the queue is empty (the bar of the library kept
+    // shown): the files to play are asked, as the Open button does
+    function _activate() {
+        if (!Player.isStarted && MainPlaylistController.empty)
+            DialogsProvider.simpleOpenDialog()
+        else
+            MainPlaylistController.togglePlayPause()
+    }
 
     function _pressAndHoldAction() {
         innerRectangle.state = ""
@@ -159,7 +169,7 @@ T.Control {
         }
 
         onClicked: (mouse) => {
-            MainPlaylistController.togglePlayPause()
+            root._activate()
             mouse.accepted = true
         }
 

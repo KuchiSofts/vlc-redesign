@@ -224,6 +224,10 @@ T.Pane {
                 Layout.preferredWidth: (effectiveTextPosition === ControlBar.TimeTextPosition.LeftRightSlider) ? VLCStyle.redesign.timeWidth : -1
 
                 text: {
+                    // nothing plays (the bar of the library kept shown): the
+                    // empty time of formatHMS(), not the 0 of the last stop
+                    if (!Player.isStarted)
+                        return "--:--"
                     const length = Player.length
                     // The design always shows the hours: 00:02:10
                     return Player.time.formatHMS(VLCTick.ForceHours
@@ -273,7 +277,8 @@ T.Pane {
 
                 readonly property bool showRemainingTime: (MainCtx.showRemainingTime && Player.remainingTime.valid())
 
-                text: showRemainingTime
+                text: !Player.isStarted ? "--:--"
+                      : showRemainingTime
                       ? "-" + Player.remainingTime.formatHMS(VLCTick.ForceHours | VLCTick.SubSecondFormattedAsMS)
                       : Player.length.formatHMS(VLCTick.ForceHours | VLCTick.SubSecondFormattedAsMS)
                 color: mediaTime.color

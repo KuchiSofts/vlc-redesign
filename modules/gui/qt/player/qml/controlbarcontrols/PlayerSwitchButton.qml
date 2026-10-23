@@ -18,6 +18,7 @@
 import QtQuick
 
 import VLC.MainInterface
+import VLC.Player
 import VLC.Widgets as Widgets
 import VLC.Style
 import VLC.Util
@@ -25,6 +26,9 @@ import VLC.Util
 
 Widgets.IconToolButton {
     text: VLCIcons.fullscreen
+
+    // nothing plays (the bar of the library kept shown): no player to open
+    enabled: Player.isStarted || MainCtx.playerView
 
     onClicked: {
         MainCtx.playerView = !MainCtx.playerView

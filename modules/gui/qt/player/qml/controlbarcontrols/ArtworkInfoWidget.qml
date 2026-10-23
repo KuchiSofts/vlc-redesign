@@ -92,7 +92,9 @@ T.AbstractButton {
     // Events
 
     onClicked: {
-        MainCtx.playerView = !MainCtx.playerView
+        // nothing plays (the bar kept shown): no player to open
+        if (Player.isStarted || MainCtx.playerView)
+            MainCtx.playerView = !MainCtx.playerView
     }
 
     // Children
@@ -274,6 +276,8 @@ T.AbstractButton {
                 text: {
                     if (paintOnly)
                         " -- / -- "
+                    else if (!Player.isStarted)
+                        "--:-- / --:--"
                     else {
                         const length = Player.length
                         return Player.time.formatHMS(length.isSubSecond() ? VLCTick.SubSecondFormattedAsMS : 0) +

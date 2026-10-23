@@ -942,7 +942,9 @@ FocusScope {
     MiniPlayer {
         id: miniPlayer
 
-        visible: Player.isStarted && !g_mainDisplay._showMiniPlayer && !g_mainDisplay._showAudioMiniPlayer
+        // "Always show the player bar": also while nothing plays
+        visible: (Player.isStarted || MainCtx.alwaysShowPlayerBar)
+                 && !g_mainDisplay._showMiniPlayer && !g_mainDisplay._showAudioMiniPlayer
 
         anchors.left: parent.left
         anchors.right: parent.right

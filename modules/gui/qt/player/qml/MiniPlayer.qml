@@ -36,15 +36,18 @@ ControlBar {
 
     height: _delayedImplicitHeight
 
-    state: Player.isStarted ? "inViewport"
-                            : "outViewport"
+    // "Always show the player bar": in the viewport while nothing plays too
+    readonly property bool _shown: Player.isStarted || MainCtx.alwaysShowPlayerBar
+
+    state: _shown ? "inViewport"
+                  : "outViewport"
 
     Binding on state {
         id: stateBinding
         when: false
         delayed: true
-        value: Player.isStarted ? "inViewport"
-                                : "outViewport"
+        value: root._shown ? "inViewport"
+                           : "outViewport"
     }
 
     Component.onCompleted: {

@@ -32,7 +32,7 @@ Windows 0.2.6 is released; 0.3.0 counts the lines of section 8 (done since 0.2.6
 | Area                    | Progress             | Done    | %     | From                                   |
 |-------------------------|----------------------|---------|-------|----------------------------------------|
 | Design frames (Figma)   | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 | 97/103  | 94 %  | [§5](#5-design-frame-by-frame) tables  |
-| Pixel check             | 🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜ | 39/103  | 37 %  | [§5](#5-design-frame-by-frame) tables  |
+| Pixel check             | 🟩🟩🟩🟩⬜⬜⬜⬜⬜⬜ | 46/103  | 44 %  | [§5](#5-design-frame-by-frame) tables  |
 | Light theme and accents | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 16/17   | 94 %  | [§8.3](#83-light-theme-and-accents)    |
 | Settings rows           | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 211/212 | 99 %  | [§8.5](#85-settings-rows)              |
 | Classic dialogs         | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 11/11   | 100 % | [§8.6](#86-classic-dialogs)            |
@@ -166,17 +166,17 @@ What comes first, and why. Each step starts when what it needs is done.
 | Onboarding            | 11     | 11  | 0   | 0   | 7        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Player                | 7      | 7   | 0   | 0   | 7        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Player - Music        | 2      | 2   | 0   | 0   | 2        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
-| Player - customize    | 9      | 9   | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
+| Player - customize    | 9      | 9   | 0   | 0   | 1        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Player - hide UI      | 1      | 1   | 0   | 0   | 1        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Player - Light        | 1      | 1   | 0   | 0   | 1        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
-| Add Subtitles         | 4      | 4   | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
+| Add Subtitles         | 4      | 4   | 0   | 0   | 3        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Keyboard Shortcuts    | 1      | 1   | 0   | 0   | 1        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Open network stream   | 1      | 1   | 0   | 0   | 1        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | New playlist          | 1      | 1   | 0   | 0   | 1        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Settings pages        | 19     | 17  | 2   | 0   | 18       | 🟩🟩🟩🟩🟩🟩🟩🟩🟨🟨 |
-| **Screens**           | 57     | 55  | 2   | 0   | 39       | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
-| **Components**        | 46     | 42  | 4   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
-| **All**               | 103    | 97  | 6   | 0   | 39       | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
+| **Screens**           | 57     | 55  | 2   | 0   | 43       | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
+| **Components**        | 46     | 42  | 4   | 0   | 3        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
+| **All**               | 103    | 97  | 6   | 0   | 46       | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
 
 ### 5.3 Onboarding (11)
 
@@ -233,7 +233,7 @@ Shared: `ToolbarEditorDialog.qml` (the 1048 × 655 panel), `ToolbarEditorButtonL
 
 | Node       | Name               | Size (px)   | Status | Pixel | What it is                                                  | Implemented in                                   |
 |------------|--------------------|-------------|--------|-------|-------------------------------------------------------------|--------------------------------------------------|
-| 2107:5604  | Player - customize | 1920 × 1080 | 🟢     | ⏳    | Customize Player open: profile picker, palette, Cancel, Save | shared                                           |
+| 2107:5604  | Player - customize | 1920 × 1080 | 🟢     | 🟢    | Customize Player open: profile picker, palette, Cancel, Save | shared                                           |
 | 2160:6137  | Player - customize | 1920 × 1080 | 🟢     | ⏳    | The timeline dragged to a row of its own                     | ControlBar.qml, ControlRepeater.qml              |
 | 2160:6564  | Player - customize | 1920 × 1080 | 🟢     | ⏳    | A control dragged from the palette onto the bar              | shared, ControlBar.qml                           |
 | 2160:7005  | Player - customize | 1920 × 1080 | 🟢     | ⏳    | Controls moved along the bar                                 | shared                                           |
@@ -267,9 +267,9 @@ Shared: `SubtitleAssociationsDialog.qml` (1048 × 800, `#0E0E0E` at 95 %), `Subt
 
 | Node       | Name                             | Size (px)   | Status | Pixel | What it is                                       | Implemented in          |
 |------------|----------------------------------|-------------|--------|-------|--------------------------------------------------|-------------------------|
-| 1911:7545  | Add Subtitles to Playlist/Folder | 1048 × 800  | 🟢     | ⏳    | To a folder, from the computer: a row per video   | shared                  |
-| 3336:11929 | Add Subtitles to Playlist/Folder | 1048 × 800  | 🟢     | ⏳    | The same, several subtitles per video             | shared                  |
-| 1919:8707  | Add Subtitles to Playlist/Folder | 1048 × 800  | 🟢     | ⏳    | One subtitle for the folder, origin dropdown      | shared                  |
+| 1911:7545  | Add Subtitles to Playlist/Folder | 1048 × 800  | 🟢     | 🟢    | To a folder, from the computer: a row per video   | shared                  |
+| 3336:11929 | Add Subtitles to Playlist/Folder | 1048 × 800  | 🟢     | 🟢    | The same, several subtitles per video             | shared                  |
+| 1919:8707  | Add Subtitles to Playlist/Folder | 1048 × 800  | 🟢     | 🟢    | One subtitle for the folder, origin dropdown      | shared                  |
 | 1919:9278  | Add Subtitles to Playlist/Folder | 1048 × 800  | 🟢     | ⏳    | To one file, from OpenSubtitles, English          | shared, OpenSubtitlesPanel.qml |
 
 ### 5.10 Keyboard Shortcuts (1)
@@ -370,9 +370,9 @@ Differences: 🔴 848:1996: the compact library's Home lists the recent media on
 | 6648:20666 | Profiles              | 651 × 633 | 🟢     | ⏳    | Profile submenu: Movies, Shows, Music, Work, New  | MainMenu.qml, ProfilesMenu.qml, defaults.cpp     |
 | 6065:13616 | right-click menu      | 292 × 683 | 🟢     | ⏳    | Player right-click menu (Qt menu drawn to frame)  | menus.cpp, redesign_menu_style.cpp               |
 | 2107:5903  | context menu          | 265 × 296 | 🟢     | ⏳    | Library item menu                                 | MLContextMenu.qml, RedesignContextMenu.qml       |
-| 2139:8935  | folder context menu   | 265 × 296 | 🟢     | ⏳    | Folder menu                                       | FolderDisplay.qml, RedesignContextMenu.qml       |
-| 2404:13340 | file context menu     | 265 × 584 | 🟢     | ⏳    | File menu                                         | MLContextMenu.qml, FolderDisplay.qml             |
-| 2459:9389  | playlist context menu | 265 × 392 | 🟢     | ⏳    | Playlist menu                                     | MLPlaylistContextMenu.qml                        |
+| 2139:8935  | folder context menu   | 265 × 296 | 🟢     | 🟢    | Folder menu                                       | FolderDisplay.qml, RedesignContextMenu.qml       |
+| 2404:13340 | file context menu     | 265 × 584 | 🟢     | 🟢    | File menu                                         | MLContextMenu.qml, FolderDisplay.qml             |
+| 2459:9389  | playlist context menu | 265 × 392 | 🟢     | 🟢    | Playlist menu                                     | MLPlaylistContextMenu.qml                        |
 | 2107:5935  | option                | 301 × 292 | 🟢     | ⏳    | Menu row: default, hover, selected                | RedesignOptionItem.qml, RedesignMenuItem.qml     |
 
 The four context menus are the design's cards (`RedesignContextMenu.qml`, build 117): the rows, the watched state and
@@ -921,7 +921,8 @@ Text matching needs Inter with the same metrics (distance-field text, no hinting
   the 18 Settings frames, the onboarding (7 frames), Keyboard Shortcuts, Open network stream and New playlist;
   from the demo library (`C:\VLCDemoFigma`: the media, covers, lengths and playback states of the frames), Home,
   the S01 folder (grid, list, with the mini player), the player (alone, with the library next to it, light, without
-  its bars) and the music player (alone, with its folder). What is left differs
+  its bars) and the music player (alone, with its folder); Add Subtitles (to a folder, to a file), Customize
+  Player, and the file, folder and playlist context menus. What is left differs
   by value only (the switches and choices of the test profile), by anti-aliasing, or on purpose:
   - Settings - performance: *Process priority* is a dropdown (Normal, High...), not the number field of the design.
   - Settings - privacy: the design's second "Last.fm username" row is the password (its typo); Settings - recording:
@@ -937,6 +938,8 @@ Text matching needs Inter with the same metrics (distance-field text, no hinting
     right (970:2703, 970:3308); it starts at the left.
   - Player - Light (2425:13624) draws the video to the right edge of the window; its dark frames (187:328, 247:445)
     and the app keep the 10 px frame there.
+  - Add Subtitles from OpenSubtitles (1919:9278) lists answers of the service: not compared (its results change).
+  - Customize Player: the other eight frames are steps of a drag in the editor (the bars as the user moves items).
 - 🟢 Figma references exported: all 103 frames at 1:1 (`C:\VLCQAigma`; the oversized component sheets in tiles
   joined pixel for pixel)
 - 🟡 Capture scripts that drive the app into each frame's state: settings, dialogs, onboarding, library and player

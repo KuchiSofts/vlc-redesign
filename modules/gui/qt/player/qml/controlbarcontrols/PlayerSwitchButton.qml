@@ -27,9 +27,8 @@ import VLC.Util
 Widgets.IconToolButton {
     text: VLCIcons.fullscreen
 
-    // nothing plays (the bar of the library kept shown): no player to open
-    enabled: Player.isStarted || MainCtx.playerView
-
+    // (nothing plays, the bar of the library kept shown: it opens the empty
+    // player, Figma's cat)
     onClicked: {
         MainCtx.playerView = !MainCtx.playerView
     }

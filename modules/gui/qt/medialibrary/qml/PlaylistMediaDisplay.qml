@@ -241,15 +241,21 @@ Widgets.PageExt {
         }
 
 
-        PlaylistMediaContextMenu {
+        // Figma "file context menu", and the removal from the playlist
+        MLContextMenu {
             id: contextMenu
 
             model: root.model
-            ctx: MainCtx
 
-           function tableView_popup(index, selectedIndexes, globalPos) {
-               popup(selectedIndexes, globalPos)
-           }
+            parentItem: root
+
+            showPlayAsAudioAction: true
+
+            extraActions: [{
+                "text": qsTr("Remove Selected"),
+                "icon": "remove",
+                "action": (dataList, options, indexes) => root.model.remove(indexes)
+            }]
         }
 
         PlaylistMedia

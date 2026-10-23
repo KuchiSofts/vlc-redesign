@@ -159,13 +159,6 @@
         </property>
        </spacer>
       </item>
-      <item row="3" column="4" colspan="6">
-       <widget class="Line" name="line">
-        <property name="orientation">
-         <enum>Qt::Orientation::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
       <item row="0" column="5">
        <widget class="QRadioButton" name="bdRadioButton">
         <property name="text">

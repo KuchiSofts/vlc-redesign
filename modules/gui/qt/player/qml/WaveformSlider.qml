@@ -42,7 +42,12 @@ SliderBar {
         readonly property real inset: VLCStyle.dp(6, VLCStyle.scale)
         readonly property real pitch: VLCStyle.dp(5, VLCStyle.scale)
         readonly property real barWidth: VLCStyle.dp(2, VLCStyle.scale)
-        readonly property real maxHeight: height - VLCStyle.dp(2, VLCStyle.scale)
+        // Figma 4767:23726: bars of 2 every 5, 2 to 14 high in steps of 2
+        // (whole pixels above and below the middle of the 28 of the bar)
+        readonly property real maxHeight: VLCStyle.dp(14, VLCStyle.scale)
+        function peakHeight(peak) {
+            return Math.max(barWidth, 2 * Math.round(peak * maxHeight / 2))
+        }
         // Relative peak (0..1) of each bar, from the 512 analysis bins
         readonly property var peaks: {
             const bins = analysis.bins
@@ -83,7 +88,7 @@ SliderBar {
                     readonly property real peak: graph.peaks[index]
                     x: graph.inset + index * graph.pitch
                     width: graph.barWidth
-                    height: Math.max(graph.barWidth, Math.round(peak * graph.maxHeight))
+                    height: graph.peakHeight(peak)
                     y: (graph.height - height) / 2
                     radius: width / 2
                     color: VLCStyle.redesign.accent
@@ -106,7 +111,7 @@ SliderBar {
                         readonly property real peak: graph.peaks[index]
                         x: graph.inset + index * graph.pitch
                         width: graph.barWidth
-                        height: Math.max(graph.barWidth, Math.round(peak * graph.maxHeight))
+                        height: graph.peakHeight(peak)
                         y: (graph.height - height) / 2
                         radius: width / 2
                         color: VLCStyle.redesign.color("#404040", "#9c9c9b")

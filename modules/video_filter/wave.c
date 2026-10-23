@@ -113,7 +113,7 @@ static void Filter( filter_t *p_filter, picture_t *p_pic, picture_t *p_outpic )
     p_sys->last_date = new_date;
     f_angle = p_sys->f_angle;
 
-    for( int i_index = 0 ; i_index < p_pic->i_planes ; i_index++ )
+    for( int i_index = 0 ; i_index < __MIN(p_pic->i_planes, p_outpic->i_planes) ; i_index++ )
     {
         int i_num_lines, i_visible_pitch, i_pixel_pitch, i_offset,
             i_visible_pixels;
@@ -123,8 +123,13 @@ static void Filter( filter_t *p_filter, picture_t *p_pic, picture_t *p_outpic )
         p_in = p_pic->p[i_index].p_pixels;
         p_out = p_outpic->p[i_index].p_pixels;
 
-        i_num_lines = p_pic->p[i_index].i_visible_lines;
-        i_visible_pitch = p_pic->p[i_index].i_visible_pitch;
+        /* not more than both pictures have: a filter before can give a
+         * picture larger than the one this writes (puzzle, wave), and the
+         * lines were written past its end */
+        i_num_lines = __MIN( p_pic->p[i_index].i_visible_lines,
+                             p_outpic->p[i_index].i_visible_lines );
+        i_visible_pitch = __MIN( p_pic->p[i_index].i_visible_pitch,
+                                 p_outpic->p[i_index].i_visible_pitch );
         i_pixel_pitch = p_pic->p[i_index].i_pixel_pitch;
 
         switch( p_filter->fmt_in.video.i_chroma )

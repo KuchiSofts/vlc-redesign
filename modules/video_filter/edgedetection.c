@@ -105,6 +105,14 @@ static int Open( filter_t *p_filter  )
         .video = &filter_video_edge_cbs,
         .sys = p_filter,
     };
+    /* Pictures in memory, the same out as in: its filters write into the
+     * pictures of this one (with hardware decoding it took D3D11 pictures,
+     * and the blur wrote into pictures without planes) */
+    const vlc_chroma_description_t *desc =
+        vlc_fourcc_GetChromaDescription( p_filter->fmt_in.video.i_chroma );
+    if ( desc == NULL || desc->plane_count == 0
+      || !es_format_IsSimilar( &p_filter->fmt_in, &p_filter->fmt_out ) )
+        return VLC_EGENERIC;
     /* Store the filter chain in p_sys */
     filter_chain_t *sys = filter_chain_NewVideo( p_filter, true, &owner );
     if ( sys == NULL)
@@ -149,10 +157,11 @@ static void Close( filter_t *p_filter )
  ******************************************************************************/
 static picture_t *new_frame( filter_t *p_filter )
 {
-    filter_t *p_this = p_filter->owner.sys;
-    // the last filter of the internal chain gets its pictures from the original
-    // filter source
-    return filter_NewPicture( p_this );
+    // the last filter of the internal chain gets pictures in memory of its own
+    // format: those of this filter are the next one's (the display's D3D11
+    // pictures with hardware decoding, and the blur wrote into pictures
+    // without planes). This filter makes its output picture itself.
+    return picture_NewFromFormat( &p_filter->fmt_out.video );
 }
 
 /******************************************************************************
@@ -165,13 +174,21 @@ static picture_t *Filter( filter_t *p_filter, picture_t *p_pic )
 {
     picture_t *p_filtered_frame =
         filter_chain_VideoFilter( (filter_chain_t *)p_filter->p_sys, p_pic );
-    picture_t *p_out_frame = picture_NewFromFormat( &p_pic->format );
+    if ( p_filtered_frame == NULL )
+        return NULL;
+    picture_t *p_out_frame = picture_NewFromFormat( &p_filtered_frame->format );
     if ( p_out_frame == NULL )
     {
         picture_Release( p_filtered_frame );
         msg_Err( p_filter, "Could not allocate memory for new frame" );
         return NULL;
     }
+    /* its date (without it, no picture was shown), and no color: the
+     * edges are white on black */
+    picture_CopyProperties( p_out_frame, p_filtered_frame );
+    for ( int i = 1; i < p_out_frame->i_planes; i++ )
+        memset( p_out_frame->p[i].p_pixels, 0x80,
+                (size_t)p_out_frame->p[i].i_pitch * p_out_frame->p[i].i_lines );
     const int i_lines = p_filtered_frame->p[Y_PLANE].i_visible_lines;
     const int i_pitch = p_filtered_frame->p[Y_PLANE].i_pitch;
     /* Loop through every pixel in the frame */

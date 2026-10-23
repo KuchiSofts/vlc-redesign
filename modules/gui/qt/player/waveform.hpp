@@ -13,8 +13,7 @@
 #define VLC_QT_WAVEFORM_HPP_
 
 #include <QObject>
-#include <QPointer>
-#include <QProcess>
+#include <QTimer>
 #include <QUrl>
 #include <QVariantList>
 #include <QtQml/qqmlregistration.h>
@@ -55,6 +54,7 @@ private:
     void setBins(const QVariantList& bins);
     void setError(const QString& error);
     static void startAnalysis(const QString& key, const QString& path, int seconds);
+    static void stopAll();
     static void finishAnalysis(const QString& key, const QVariantList& bins, const QString& error);
     static QString helperPath();
     static QVariantList parseOutput(const QByteArray& bytes, int expectedSeconds);
@@ -64,6 +64,9 @@ private:
     QVariantList m_bins;
     // the analysis waited for (shared by the sliders of the same file)
     QString m_key;
+    QString m_path;
+    // a source is analyzed once it stays: not the passing ones
+    QTimer m_settle;
     QString m_lastError;
 };
 

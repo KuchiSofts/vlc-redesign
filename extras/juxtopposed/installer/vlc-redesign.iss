@@ -1625,11 +1625,12 @@ begin
     if not WantDesktopIcon() then
       DeleteFile(ExpandConstant('{autodesktop}\{#AppName}.lnk'));
     { Windows may check a new program for seconds the first time it runs
-      (up to 10 s measured): let it check VLC and its preparser now, hidden
-      and without waiting (both return at once), not when a file is opened.
+      (up to 10 s measured): let it check VLC and its helpers now, hidden
+      and without waiting (all return at once), not when a file is opened.
       Not --version: it opens a console and waits for a key }
     Exec(AppExe(), '--prewarm', '', SW_HIDE, ewNoWait, Code);
     Exec(ExpandConstant('{app}\vlc-preparser.exe'), '--help', '', SW_HIDE, ewNoWait, Code);
+    Exec(ExpandConstant('{app}\vlc-waveform.exe'), '', '', SW_HIDE, ewNoWait, Code);
   end
   else if (CurStep = ssDone) and (not WizardSilent) and (not ShouldRelaunch()) and Checked(T_LAUNCH) then
     ExecAsOriginalUser(AppExe(), '', '', SW_SHOWNORMAL, ewNoWait, Code);

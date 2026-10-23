@@ -133,6 +133,15 @@ Dialog {
             audioOutput.item.cancel()
         MainCtx.useGlobalShortcuts = previousGlobalShortcuts
     }
+    // VLC quits with the window open (its close button, Quit): the changes
+    // are kept as a close keeps them (the window is destroyed unclosed)
+    Connections {
+        target: MainCtx
+        function onInterfaceUnloading() {
+            if (root.opened)
+                root.commit()
+        }
+    }
     ShortcutsDialog { id: shortcutsDialog; parent: root.parent }
 
     // The keyboard shortcuts a search finds (by the name of their action)

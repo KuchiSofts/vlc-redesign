@@ -612,6 +612,9 @@ signals:
     void setInterfaceFullScreen( bool );
     void toggleWindowVisibility(bool requestActivate = false);
     void askToQuit();
+    /* the QML of the interface is about to be destroyed (VLC quits): what
+     * an open window keeps when it closes is kept now */
+    void interfaceUnloading();
     void askShow();
     void askBoss();
     void askRaise();

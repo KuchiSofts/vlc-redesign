@@ -154,6 +154,7 @@ qml_modules += {
         '../../medialibrary/qml/MLGlobalShortcuts.qml',
         '../../medialibrary/qml/Bookmarks.qml',
         '../../medialibrary/qml/MLContextMenu.qml',
+        '../../medialibrary/qml/MLPlaylistContextMenu.qml',
         '../../medialibrary/qml/MLDragItem.qml',
         '../../medialibrary/qml/MLTableColumns.qml',
         '../../medialibrary/qml/ScanProgressBar.qml',

@@ -17,7 +17,7 @@ counted from this document's own tables and checklists (column *From*); ⚪ idea
 
 | Program         | Progress             | Done    | %     | From                                   |
 |-----------------|----------------------|---------|-------|----------------------------------------|
-| Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜ | 72/94   | 76 %  | [§8](#8-next-release-030) checklists   |
+| Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜ | 73/94   | 77 %  | [§8](#8-next-release-030) checklists   |
 | Linux           | 🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 1/7     | 14 %  | [§9](#linux)                           |
 | macOS           | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/4     | 0 %   | [§9](#macos)                           |
 | Windows ARM64   | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/3     | 0 %   | [§9](#windows-on-arm64)                |
@@ -223,8 +223,8 @@ Notes: when nothing plays, the video area shows the frames' pixel cat (`IdleScen
 | 4778:25123 | Player - Music | 1920 × 1080 | 🟢     | ⏳    | The same with the queue                                        | as above, QueueCard.qml                                              |
 
 Notes: the resume card reads as in Figma: "You've watched till 00:45:08 already." (the media library's saved time)
-and one *Continue Watching* button; Escape or 10 s close it (in the app ⏳). The missing background blur (5.16,
-item 6) shows most here: the bars are solid `#191919` at 95 % over the artwork backdrop.
+and one *Continue Watching* button; Escape or 10 s close it (in the app ⏳). The bars are solid `#191919` at 95 %
+over the artwork backdrop: the design's blur would change them by at most 5 % (5.16, item 6).
 
 ### 5.6 Player - customize (9)
 
@@ -440,7 +440,7 @@ a 400 × 445 popup.
 | 3  | The compact library's Home lists recent media only                 | 848:1996                                 | 🔴     |
 | 4  | HDR10+ and Dolby Vision always disabled                            | 2372:8733                                | 🔴     |
 | 5  | Not compared yet: Setting Preset, Audio Visualizer                 | 2372:8834, 2372:8639                     | 🔴     |
-| 6  | No background blur: panels solid at 95 % (the music backdrop is blurred) | every floating panel               | 🔴     |
+| 6  | No background blur: panels solid at 95 % (the music backdrop is blurred); what shows through is at most 5 % (13 grey levels, measured: 4 under the ⋯ menu), under the pixel tolerance, so no blur pass is spent on the GPU | every floating panel | 🟢 |
 | 7  | A stray separator line in the Disc tab of Open Media               | outside the file                         | 🔴     |
 
 Fixed in build 115: the light theme leftovers, the accent on every check mark and active icon, four settings rows,
@@ -479,8 +479,8 @@ The light value is what `VLCStyle.redesign.color()` returns for the dark one (me
 | Dark/Divider/Bright   | `#373737` | `#8E8E8D` | `border`                                                       |
 | (warning, not Figma)  | `#E4A580` | `#7A1414` | settings warnings and errors                                   |
 | (scroll bar handle)   | `#6B6B6B` | `#2E2E2E` | scroll bars of Settings                                        |
-| bg blur               | blur 50   | —         | 🔴 not drawn: solid panels at 95 %                              |
-| bg blur + shadow      | + shadow  | —         | 🟢 shadow 0 8, blur 15, `#000000` 46 % · 🔴 blur                 |
+| bg blur               | blur 50   | —         | 🟢 solid panels at 95 %: a blur changes at most 5 % of a pixel  |
+| bg blur + shadow      | + shadow  | —         | 🟢 shadow 0 8, blur 15, `#000000` 46 % · 🟢 solid at 95 %        |
 
 ### Accents
 
@@ -786,7 +786,8 @@ and an accepted request made the TV fail after a pause in a test.
 - 🟢 New playlist with a custom thumbnail (PNG, 1024 px at most, deleted with the playlist) · in the app ⏳
 - 🟢 Empty playlists: Save needs only a title · in the app ⏳
 - 🔴 The compact library's Home with the rows of the library's Home
-- 🔴 Real background blur (50 px) behind floating panels, measured on weak graphics cards
+- 🟢 Background blur (50 px) behind floating panels: not drawn, the panels are 95 % opaque (at most 13 grey levels
+  show through, under the pixel tolerance; no blur pass for weak graphics cards)
 - 🔴 HDR10+ and Dolby Vision offered when the renderer supports them, hidden with a reason otherwise
 - 🔴 Geometry, overlay and advanced video filters in the effects panel
 - 🔴 Setting Preset and Audio Visualizer compared with 2372:8834 and 2372:8639
@@ -812,7 +813,7 @@ and an accepted request made the TV fail after a pause in a test.
 - 🔴 Small updates from 0.2.4, 0.2.5 and 0.2.6 built and checked
 - 🔴 Announcement in Discussions; every fixed issue answered with the release link
 
-Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 72 🟢, 0 🟡, 22 🔴 (94), of which 11 🟢 are
+Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 73 🟢, 0 🟡, 21 🔴 (94), of which 11 🟢 are
 in the app ⏳.
 Languages (§12) and the community (§13) have bars of their own.
 

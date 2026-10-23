@@ -296,10 +296,6 @@ Widgets.PageExt {
 
             readonly property bool isVideo: !model.isFolder
                 && /\.(3gp|asf|avi|flv|m2ts|m4v|mkv|mov|mp4|mpe?g|mts|ogv|ts|vob|webm|wmv)$/i.test(String(model.url))
-            // the media being played (not the one left after a stop); the
-            // paths compared, the same file has URLs encoded differently
-            readonly property bool playing: !model.isFolder && Player.isStarted
-                                            && Helpers.localPathFromUrl(Player.url) === Helpers.localPathFromUrl(model.url)
             readonly property real progress: model.progress ?? 0
             readonly property bool played: (model.playcount ?? 0) > 0 || progress > 0
             // (the MRL of the library: the url as text decodes some characters)
@@ -311,14 +307,9 @@ Widgets.PageExt {
             height: grid.cellHeight
             padding: 0
 
-            background: Rectangle {
-                visible: root._listMode
-                width: grid.rowWidth
-                height: VLCStyle.dp(32, VLCStyle.scale)
-                radius: VLCStyle.redesign.controlRadius
-                color: card.hovered ? VLCStyle.redesign.color(VLCStyle.redesign.controlHoverBackground, "#9c9c9b")
-                                    : "transparent"
-            }
+            // Figma 970:3792: the row under the pointer has no background
+            // (its name in the accent, its picture darkened with the play)
+            background: null
 
             contentItem: Item {
             // List mode (Figma "media"): the thumbnail, 10, the name (only the
@@ -348,7 +339,7 @@ Widgets.PageExt {
                         }
                         Image {
                             anchors.centerIn: parent
-                            visible: smallPreview.status !== Image.Ready && !card.playing
+                            visible: smallPreview.status !== Image.Ready && !card.hovered
                             width: card.model.isFolder ? VLCStyle.dp(32, VLCStyle.scale) : VLCStyle.redesign.iconSize
                             height: width
                             source: card.model.isFolder ? "qrc:///redesign/folder.svg"
@@ -373,11 +364,12 @@ Widgets.PageExt {
                                 color: VLCStyle.redesign.accent
                             }
                         }
-                        // the media playing: darkened, the outline play of the set
+                        // under the pointer (Figma 970:3792; the media playing is
+                        // not marked, 970:3308): darkened, the outline play of the set
                         Rectangle {
                             anchors.fill: parent
                             radius: parent.radius
-                            visible: card.playing
+                            visible: card.hovered && !card.model.isFolder
                             color: "#B3000000"
                             Impl.ColorImage {
                                 anchors.centerIn: parent
@@ -399,7 +391,7 @@ Widgets.PageExt {
                         height: parent.height
                         text: card.model.name
                         elide: Text.ElideMiddle
-                        color: card.playing ? VLCStyle.redesign.accent
+                        color: card.hovered ? VLCStyle.redesign.accent
                                             : VLCStyle.redesign.color(card.played ? "#6B6B6B" : VLCStyle.redesign.textSecondary,
                                                                       card.played ? "#5a5a59" : "#4d4d4d")
                         font.family: VLCStyle.redesign.fontFamily
@@ -489,7 +481,7 @@ Widgets.PageExt {
                         text: card.model.name
                         elide: Text.ElideRight
                         // #6B6B6B once played
-                        color: card.playing ? VLCStyle.redesign.accent
+                        color: card.hovered ? VLCStyle.redesign.accent
                                             : VLCStyle.redesign.color(card.played ? "#6B6B6B" : VLCStyle.redesign.textSecondary,
                                                                       card.played ? "#5a5a59" : "#4d4d4d")
                         font.family: VLCStyle.redesign.fontFamily

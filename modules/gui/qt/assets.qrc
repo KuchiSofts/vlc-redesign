@@ -97,7 +97,9 @@
         <file alias="noart_artist.svg">pixmaps/placeholder/noart_artist.svg</file>
         <file alias="noart_artist_small.svg">pixmaps/placeholder/noart_artist_small.svg</file>
         <file alias="noart_artistCover.svg">pixmaps/placeholder/noart_artistCover.svg</file>
+        <file alias="noart_artistCover_dark.svg">pixmaps/placeholder/noart_artistCover_dark.svg</file>
         <file alias="noart_videoCover.svg">pixmaps/placeholder/noart_videoCover.svg</file>
+        <file alias="noart_videoCover_dark.svg">pixmaps/placeholder/noart_videoCover_dark.svg</file>
     </qresource>
     <qresource prefix="/">
         <file alias="VLCIcons.ttf">pixmaps/VLCIcons.ttf</file>

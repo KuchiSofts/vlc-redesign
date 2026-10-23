@@ -237,6 +237,9 @@ static void ShowDialog   ( intf_thread_t *, int, int, intf_dialog_args_t * );
                              " - minimal mode with limited controls" )
 
 #define QT_FULLSCREEN_TEXT N_( "Show a controller in fullscreen mode" )
+#define QT_FULLSCREEN_LONGTEXT N_( "Show the playback controls in fullscreen when the " \
+    "mouse moves. Off, only the keyboard shows them (the I key). The skins read it " \
+    "for their fullscreen controller too." )
 #define QT_NATIVEOPEN_TEXT N_( "Embed the file browser in open dialog" )
 
 #define FULLSCREEN_NUMBER_TEXT N_( "Define which screen fullscreen goes" )
@@ -414,7 +417,7 @@ vlc_module_begin ()
     add_bool( "qt-name-in-title", true, TITLE_TEXT,
               TITLE_LONGTEXT )
     add_bool( "qt-fs-controller", true, QT_FULLSCREEN_TEXT,
-              nullptr )
+              QT_FULLSCREEN_LONGTEXT )
 
     add_string("qt-compositor", "auto", QT_COMPOSITOR_TEXT, QT_COMPOSITOR_LONGTEXT)
             change_string_list(compositor_vlc, compositor_user)

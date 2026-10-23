@@ -27,8 +27,6 @@ static const Option entries[] = {
     // Interface page of the design: Skin, Window, Playback Controls,
     // Notifications and System Tray, then Advanced Options
     {"interface", "skins2-last"},
-    // read by the fullscreen controller of the skins only (Skin section)
-    {"interface", "qt-fs-controller"},
     {"interface", "embedded-video"}, {"interface", "qt-video-autoresize"},
     {"interface", "qt:redesign/remember-window-geometry"},
     {"interface", "video-on-top"},
@@ -36,6 +34,9 @@ static const Option entries[] = {
     {"interface", "qt-fullscreen-screennumber"},
     {"interface", "qt-minimal-view"}, {"interface", "qt-pin-controls"},
     {"interface", "mouse-hide-timeout"},
+    // the mouse shows the controls in fullscreen (Player.qml), the skins
+    // read it too
+    {"interface", "qt-fs-controller"},
     {"interface", "qt-system-tray"}, {"interface", "qt-start-minimized"},
     {"interface", "qt-notification"}, {"interface", "qt:redesign/notification-duration"},
     // (no "playlist-tree": nothing reads it in VLC 4)

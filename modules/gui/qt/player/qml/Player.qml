@@ -363,6 +363,10 @@ FocusScope {
                         //short interval for mouse events
                         if (Player.isInteractive)
                             interactiveAutoHideTimer.restart()
+                        // "Show controls in fullscreen" off: the mouse shows
+                        // its pointer only (the keyboard still shows them)
+                        else if (rootPlayer._fullscreen && !MainCtx.fullscreenControls)
+                            fullscreenCursorTimer.restart()
                         else
                             playerToolbarVisibilityFSM.mouseMove();
                     }
@@ -378,7 +382,14 @@ FocusScope {
                         when: playerToolbarVisibilityFSM.started
                             && !playerToolbarVisibilityFSM.isVisible
                             && !interactiveAutoHideTimer.running
+                            && !fullscreenCursorTimer.running
                         value: Qt.BlankCursor
+                    }
+
+                    Timer {
+                        id: fullscreenCursorTimer
+                        interval: MainCtx.mouseHideTimeout
+                        repeat: false
                     }
 
                     TouchWheelHandler {

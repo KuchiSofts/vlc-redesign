@@ -63,6 +63,9 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
 
 ### Changed
 
+- **4K films go to the TV four times faster**: a 4K film converted for the TV is made smaller by the graphics card
+  instead of the processor (6 times faster than it plays on an RTX 4090, 2.5 times on an AMD Radeon built into the
+  processor, instead of 1.3 to 1.5 times), so slower PCs keep up too.
 - **Casting is lighter**: when a film is converted for the TV, each picture goes out as soon as it is made (the
   encoder held a number of them first), and the conversion takes half the memory (280 MB instead of 570 for a 1080p
   film with subtitles).
@@ -113,6 +116,11 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
   chain made with the first stream was made again with the next, and the TV loaded twice. A stream is added with
   its first block (a subtitle stream before any), and an MP4 file gives about a second of sound before its first
   picture after a seek.
+- `d3d11_surface` converter: a D3D11 picture to a CPU picture of another size (or 10 bits to 8: I420, YV12, NV12
+  out) is scaled by the video processor into an NV12 texture of the output size, which is copied; the source and
+  destination rectangles are the visible areas, and the stream and output color spaces are set the same. It was
+  copied at its size (24 MB a 4K P010 picture) and scaled by swscale on one thread. The processor's output view is
+  released on close (it was never released).
 - Transcode `pcr_sync` (upstream since 2022): a PCR event holds one entry per ES id (it pushed the live ES only, read
   them by id, and the last ES wrote past the vector after a deleted one); the ES waiting for an event that is freed
   go to the next one (it was read after `free()` through their `last_pcr_event`, the heap corruption 0xC0000374 of

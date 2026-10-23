@@ -27,13 +27,43 @@ ColumnLayout {
         { id: "gradient", title: qsTr("Gradient") },
         { id: "sepia", title: qsTr("Sepia") }
     ]
+    readonly property var geometry: [
+        { id: "transform", title: qsTr("Transform") },
+        { id: "rotate", title: qsTr("Rotate") },
+        { id: "magnify", title: qsTr("Interactive zoom") },
+        { id: "puzzle", title: qsTr("Puzzle game") }
+    ]
+    readonly property var overlay: [
+        { id: "logo", title: qsTr("Add logo") },
+        { id: "marq", title: qsTr("Add text") },
+        { id: "erase", title: qsTr("Logo erase") }
+    ]
+    readonly property var advanced: [
+        { id: "anaglyph", title: qsTr("Anaglyph 3D") },
+        { id: "mirror", title: qsTr("Mirror") },
+        { id: "psychedelic", title: qsTr("Psychedelic") },
+        { id: "wave", title: qsTr("Waves") },
+        { id: "ripple", title: qsTr("Water effect") },
+        { id: "motiondetect", title: qsTr("Motion detect") },
+        { id: "gaussianblur", title: qsTr("Spatial blur") },
+        { id: "motionblur", title: qsTr("Motion blur") },
+        { id: "antiflicker", title: qsTr("Anti-flickering") },
+        { id: "hqdn3d", title: qsTr("Denoiser") }
+    ]
+    // The filters of each section, the crop a panel of its own
+    readonly property var sections: [root.essential, [], root.colors, root.geometry, root.overlay, root.advanced]
     spacing: VLCStyle.dp(16, VLCStyle.scale)
 
-    RowLayout {
+    // Two rows of three, each as wide as one of the former three: the six
+    // labels in one row (Advanced 67 px at 14 px) overflow their 61 px
+    GridLayout {
         Layout.fillWidth: true
-        spacing: 0
+        columns: 3
+        rowSpacing: 0
+        columnSpacing: 0
         Repeater {
-            model: [qsTr("Essential"), qsTr("Crop"), qsTr("Colors")]
+            model: [qsTr("Essential"), qsTr("Crop"), qsTr("Colors"),
+                    qsTr("Geometry"), qsTr("Overlay"), qsTr("Advanced")]
             delegate: T.Button {
                 id: sectionButton
                 required property int index
@@ -66,7 +96,7 @@ ColumnLayout {
     }
 
     Repeater {
-        model: root.section === 0 ? root.essential : root.section === 2 ? root.colors : []
+        model: root.sections[root.section]
         VideoFilterSection {
             required property var modelData
             Layout.fillWidth: true

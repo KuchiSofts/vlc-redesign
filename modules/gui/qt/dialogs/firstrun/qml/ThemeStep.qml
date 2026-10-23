@@ -68,7 +68,7 @@ Item {
         verticalAlignment: Text.AlignTop
         topPadding: Math.round((42 - 1.2109375 * font.pixelSize) / 2 + 0.96875 * font.pixelSize) - themeTitleMetrics.ascent
         text: qsTr("Select your preferred theme and color.")
-        color: "#969696"
+        color: VLCStyle.redesign.color("#969696", "#4d4d4d")
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: 24
         font.weight: Font.Light
@@ -134,7 +134,7 @@ Item {
                     topPadding: 15 - themeLabelMetrics.ascent
                     width: parent.width
                     text: modelData.title
-                    color: "#8f8f8f"
+                    color: VLCStyle.redesign.color("#8f8f8f", "#2e2e2e")
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: 16
                     font.weight: Font.Light
@@ -155,7 +155,7 @@ Item {
                         radius: 23
                         color: "transparent"
                         border.width: themeButton.visualFocus ? 2 : 0
-                        border.color: "#eaeaea"
+                        border.color: VLCStyle.redesign.color("#eaeaea", "#2e2e2e")
                     }
                     contentItem: Item {}
                     Accessible.name: modelData.title
@@ -312,7 +312,7 @@ Item {
                         radius: width / 2
                         color: "transparent"
                         border.width: accentButton.visualFocus ? 2 : 0
-                        border.color: "#eaeaea"
+                        border.color: VLCStyle.redesign.color("#eaeaea", "#2e2e2e")
                     }
                     contentItem: Item {}
                     Accessible.name: qsTr("Accent color %1").arg(index + 1)

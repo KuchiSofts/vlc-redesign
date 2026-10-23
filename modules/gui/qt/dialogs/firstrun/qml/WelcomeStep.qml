@@ -45,7 +45,7 @@ Item {
         width: Math.ceil(implicitWidth - 0.05)
         y: 286
         text: qsTr("Welcome to VLC!")
-        color: "#eaeaea"
+        color: VLCStyle.redesign.color("#eaeaea", "#2e2e2e")
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: 32
         font.weight: Font.Light
@@ -62,7 +62,7 @@ Item {
         lineHeight: 28
         topPadding: Math.round((28 - 1.2109375 * font.pixelSize) / 2 + 0.96875 * font.pixelSize) - descriptionMetrics.ascent
         text: qsTr("VLC is a free and open source cross-platform multimedia player and framework that plays most multimedia files as well as DVDs, Audio CDs, VCDs, and various streaming protocols.")
-        color: "#969696"
+        color: VLCStyle.redesign.color("#969696", "#4d4d4d")
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: 16
         font.weight: Font.Light
@@ -80,7 +80,7 @@ Item {
         visible: root.folderAvailable
         topPadding: 14 - folderLabelMetrics.ascent
         text: qsTr("Choose a Media Folder to get started with")
-        color: "#8f8f8f"
+        color: VLCStyle.redesign.color("#8f8f8f", "#2e2e2e")
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: 14
 
@@ -95,9 +95,9 @@ Item {
         width: 471
         height: 36
         visible: root.folderAvailable
-        color: "#090909"
+        color: VLCStyle.redesign.color("#090909", "#dedede")
         border.width: 2
-        border.color: "#191919"
+        border.color: VLCStyle.redesign.color("#191919", "#c4c4c3")
         radius: 6
         Text {
             id: folderText
@@ -111,7 +111,7 @@ Item {
             elide: Text.ElideMiddle
             text: root._hasFolder
                   ? (root.folderText || Helpers.localPathFromUrl(root.folderUrl)) : qsTr("No folder selected")
-            color: "#c6c6c6"
+            color: VLCStyle.redesign.color("#c6c6c6", "#2e2e2e")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: 16
 

@@ -24,12 +24,13 @@ Controls.Button {
     font.weight: Font.DemiBold
     background: Rectangle {
         radius: 6
-        color: !control.enabled ? "#292929"
+        color: !control.enabled ? VLCStyle.redesign.color("#292929", "#b8b8b7")
              : control.primary ? VLCStyle.redesign.accent
-             : control.down || control.hovered ? "#303030" : "#1b1b1b"
+             : control.down || control.hovered ? VLCStyle.redesign.color("#303030", "#9c9c9b")
+             : VLCStyle.redesign.color("#1b1b1b", "#ababaa")
         // reached with the keyboard: outlined as the toggles are
         border.width: control.visualFocus ? 2 : 0
-        border.color: "#eaeaea"
+        border.color: VLCStyle.redesign.color("#eaeaea", "#2e2e2e")
     }
     // Figma: the text box (its advance rounded up) centred in the button
     contentItem: Item {
@@ -39,7 +40,8 @@ Controls.Button {
             width: Math.ceil(exactMetrics.advanceWidth / 16 - text.length * font.pixelSize / 2816 - 0.001)
             height: parent.height
             text: control.text
-            color: !control.enabled ? "#666666" : control.primary ? "#161616" : "#8f8f8f"
+            color: !control.enabled ? VLCStyle.redesign.color("#666666", "#7c7c7b")
+                 : control.primary ? "#161616" : VLCStyle.redesign.color("#8f8f8f", "#2e2e2e")
             font: control.font
             verticalAlignment: Text.AlignVCenter
             // the advance unrounded (Qt's are in 1/64 px): measured 16

@@ -373,16 +373,6 @@ Dialog {
                                                    qsTr("System")])
                 }
 
-                SettingsSubtitleLanguages {
-                    id: subtitleLanguages
-                    width: parent.width
-                    visible: searchField.text.length === 0
-                             ? root.selectedCategory === "subtitles"
-                             : root.searchMatches([qsTr("Subtitle Languages"), qsTr("Default language"),
-                                                   qsTr("Secondary language"), qsTr("OpenSubtitles"),
-                                                   qsTr("Find subtitles online when a video has none in these languages")])
-                }
-
                 // Keyboard Shortcuts of the controls page; in a search, with
                 // the shortcuts whose action matches
                 SettingsSectionTitle {
@@ -461,6 +451,7 @@ Dialog {
                         visible: !extensions.visible
                         width: parent.width
                         settingsModel: config
+                        subtitleLanguages: subtitleLanguages
                         category: root.selectedCategory
                         search: searchField.text
                         filterMode: searchField.text.length ? "all" : "basic"
@@ -480,6 +471,17 @@ Dialog {
                                                         qsTr("Last.fm username"), qsTr("Last.fm password"),
                                                         qsTr("Last.fm submission URL")])
                     }
+                }
+
+                // (below the sections of the design)
+                SettingsSubtitleLanguages {
+                    id: subtitleLanguages
+                    width: parent.width
+                    visible: searchField.text.length === 0
+                             ? root.selectedCategory === "subtitles"
+                             : root.searchMatches([qsTr("Second Language & Online Subtitles"), qsTr("Dual subtitles"),
+                                                   qsTr("Second language"), qsTr("OpenSubtitles"),
+                                                   qsTr("Find subtitles online when a video has none in these languages")])
                 }
 
                 Column {

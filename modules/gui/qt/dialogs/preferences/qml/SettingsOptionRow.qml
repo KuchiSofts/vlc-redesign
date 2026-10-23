@@ -6,6 +6,7 @@ import QtQuick
 import QtQuick.Controls.Basic
 import VLC.Style
 import VLC.Util
+import VLC.Widgets as Widgets
 
 // Row of the settings of the design: the label (Inter 14 #8F8F8F) with its
 // (i) 10 px after it, the control on the right; 5 px above and below the
@@ -78,10 +79,13 @@ Item {
                                       || editorKind === "inttoggle"
     // Remember last volume / Always starts at (the volume is otherValue)
     readonly property bool useStartupVolume: editorKind === "startupvolume"
-    readonly property bool useChoices: !useToggle && !useSegmented && (choices.length > 0 || editorKind === "boolchoice")
+    // "language": a language among all of them (the subtitles' Preferred language)
+    readonly property bool useLanguage: editorKind === "language"
+    readonly property bool useChoices: !useToggle && !useSegmented && !useLanguage
+                                       && (choices.length > 0 || editorKind === "boolchoice")
     readonly property bool useFile: editorKind === "savefile" || editorKind === "directory" || editorKind === "openfile"
     readonly property bool useText: !useToggle && !useChoices && !useSlider && !useStartupVolume && !useSegmented
-                                    && !useColor
+                                    && !useColor && !useLanguage
 
     // Scales of the design under some sliders: ticks, then labels
     readonly property var sliderScale: {
@@ -270,6 +274,56 @@ Item {
                                                                             : !!root.settingValue)
                 onSwitched: (on) => root.commit(root.editorKind === "inttoggle" ? (on ? (Number(root.onValue) || 1) : 0) : on)
                 Accessible.name: root.accessibleLabel
+            }
+        }
+        // the picker of the languages drawn as the dropdowns of the design
+        Loader {
+            anchors.fill: parent
+            active: root.useLanguage
+            sourceComponent: Widgets.LanguagePicker {
+                id: languageControl
+                objectName: "settingLanguage_" + root.settingKey
+                anchors.fill: parent
+                code: String(root.settingValue ?? "")
+                onPicked: (code) => root.commit(code)
+                Accessible.name: root.accessibleLabel
+                background: Rectangle {
+                    radius: root.px(6)
+                    color: root.c("#090909")
+                    border.width: languageControl.visualFocus ? 1 : 0
+                    border.color: VLCStyle.redesign.accent
+
+                    Rectangle {
+                        anchors.fill: parent
+                        anchors.margins: root.px(2)
+                        radius: root.px(4)
+                        color: languageControl.hovered ? root.c("#222222") : root.c("#191919")
+                    }
+                }
+                contentItem: Item {
+                    Text {
+                        id: languageText
+                        anchors.left: parent.left
+                        anchors.leftMargin: root.px(14)
+                        anchors.right: parent.right
+                        anchors.rightMargin: root.px(14 + 24 + 10)
+                        anchors.baseline: parent.verticalCenter
+                        anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
+                        text: languageControl._name
+                        color: root.c("#8F8F8F")
+                        font.family: VLCStyle.redesign.fontFamily
+                        font.pixelSize: root.px(14)
+                        elide: Text.ElideRight
+                    }
+                    Image {
+                        x: parent.width - root.px(14) - width
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: root.px(24)
+                        height: width
+                        sourceSize: Qt.size(width, height)
+                        source: "qrc:///redesign/icons/chevron-down/default.png"
+                    }
+                }
             }
         }
         Loader {

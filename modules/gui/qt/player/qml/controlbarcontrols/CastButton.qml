@@ -259,9 +259,20 @@ RedesignIconButton {
         contentItem: RowLayout {
             spacing: VLCStyle.dp(10, VLCStyle.scale)
             Image {
+                id: deviceIcon
+                // "ui" has a stroke in the accent dim: with another accent,
+                // its grey part and the stroke tinted above it
+                readonly property bool twoTone: row.iconName === "ui" && !VLCStyle.redesign.defaultAccent
                 Layout.leftMargin: VLCStyle.dp(8, VLCStyle.scale)
-                source: "qrc:///redesign/icons/" + row.iconName + "/default.png"
+                source: "qrc:///redesign/icons/" + row.iconName + (twoTone ? "/default-grey.png" : "/default.png")
                 sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
+                Impl.ColorImage {
+                    anchors.fill: parent
+                    visible: deviceIcon.twoTone
+                    source: visible ? "qrc:///redesign/icons/" + row.iconName + "/default-accent.png" : ""
+                    sourceSize: parent.sourceSize
+                    color: VLCStyle.redesign.accentDim
+                }
             }
             ColumnLayout {
                 Layout.fillWidth: true

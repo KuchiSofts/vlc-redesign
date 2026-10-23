@@ -686,6 +686,8 @@ modules/gui/qt/dialogs/extended/extended_panels.hpp
 modules/gui/qt/dialogs/extended/video_effects.cpp
 modules/gui/qt/dialogs/extended/qml/CropInput.qml
 modules/gui/qt/dialogs/extended/qml/CropPanel.qml
+modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml
+modules/gui/qt/dialogs/extended/qml/EffectPresets.qml
 modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml
 modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml
 modules/gui/qt/dialogs/extended/qml/ExpandPanel.qml

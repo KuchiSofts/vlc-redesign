@@ -180,15 +180,17 @@ T.Popup {
             Layout.fillHeight: true
             clip: true
             contentWidth: width
-            contentHeight: body.implicitHeight + VLCStyle.dp(32, VLCStyle.scale)
+            contentHeight: body.implicitHeight + VLCStyle.dp(40, VLCStyle.scale)
             boundsBehavior: Flickable.StopAtBounds
             T.ScrollBar.vertical: T.ScrollBar {}
 
+            // The panels of the effects 20 px in, 360 px wide in the 400 px
+            // dialog (Figma 536:1513)
             ColumnLayout {
                 id: body
-                width: scroll.width - VLCStyle.dp(32, VLCStyle.scale)
-                x: VLCStyle.dp(16, VLCStyle.scale)
-                y: VLCStyle.dp(16, VLCStyle.scale)
+                width: scroll.width - VLCStyle.dp(40, VLCStyle.scale)
+                x: VLCStyle.dp(20, VLCStyle.scale)
+                y: VLCStyle.dp(20, VLCStyle.scale)
                 spacing: VLCStyle.dp(20, VLCStyle.scale)
 
                 Text {

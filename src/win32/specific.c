@@ -116,10 +116,19 @@ void system_Configure( libvlc_int_t *p_this, int i_argc, const char *const ppsz_
              * 1st instance */
             if( !( ipcwindow = FindWindow( 0, VLC_IPC_NAME ) ) )
             {
+                if( owned )
+                {
+                    /* The 1st instance is gone (it crashed or quit while
+                     * this one waited): take its place, files opened later
+                     * come here */
+                    msg_Warn( p_this, "1st instance gone: this one takes the files" );
+                    libvlc_InternalAddIntf( p_this, "win_msg,none" );
+                    ReleaseMutex( hmutex );
+                    return;
+                }
                 msg_Err( p_this, "one instance mode DISABLED "
                          "(couldn't find 1st instance of program)" );
-                if( owned )
-                    ReleaseMutex( hmutex );
+                CloseHandle( hmutex );
                 return;
             }
 
@@ -143,6 +152,7 @@ void system_Configure( libvlc_int_t *p_this, int i_argc, const char *const ppsz_
                 {
                     if( owned )
                         ReleaseMutex( hmutex );
+                    CloseHandle( hmutex );
                     return;
                 }
                 p_data->argc = i_argc;
@@ -181,6 +191,9 @@ void system_Configure( libvlc_int_t *p_this, int i_argc, const char *const ppsz_
                              "(1st instance not answering)" );
                     if( owned )
                         ReleaseMutex( hmutex );
+                    /* not the one files go to: kept open, the mutex would
+                     * outlive the hung instance and send later files nowhere */
+                    CloseHandle( hmutex );
                     return;
                 }
             }

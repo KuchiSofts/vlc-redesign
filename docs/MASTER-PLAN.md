@@ -813,7 +813,8 @@ and an accepted request made the TV fail after a pause in a test.
 ### 8.9 Quality and hardware
 
 - 🔴 Code-signed builds (decision 2)
-- 🔴 Automated tests in CI: launch, playback, QML warnings
+- 🟡 Automated tests in CI: launch, playback, QML warnings (extras/juxtopposed/ci/launch-test.ps1 and its job in
+  build-windows.yml, passing on this PC; it runs on GitHub once uploaded)
 - 🔴 Intel graphics, older PCs, Windows 10 on real hardware, high-DPI multi-monitor
 - ⚪ Our VLC core fixes (pipes, freezes, filters, conversion, casting) offered to VideoLAN
 
@@ -826,7 +827,7 @@ and an accepted request made the TV fail after a pause in a test.
 - 🔴 Small updates from 0.2.4, 0.2.5 and 0.2.6 built and checked
 - 🔴 Announcement in Discussions; every fixed issue answered with the release link
 
-Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 81 🟢, 1 🟡, 12 🔴 (94), of which 5 🟢 are
+Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 81 🟢, 2 🟡, 11 🔴 (94), of which 5 🟢 are
 in the app ⏳.
 Languages (§12) and the community (§13) have bars of their own.
 
@@ -1256,7 +1257,7 @@ In an organization, a `.github` repository gives every repository these files by
 
 | Gate         | What                                                                              | Status |
 |--------------|-----------------------------------------------------------------------------------|--------|
-| Build        | Every platform builds in CI; the packaged app starts and plays                    | 🟡 Windows builds; no launch test yet |
+| Build        | Every platform builds in CI; the packaged app starts and plays                    | 🟡 Windows builds; the launch test is written and passes here, not run on GitHub yet |
 | Regression   | Playback, pause/seek, traces, Chromecast and DLNA test devices                    | 🟢     |
 | Real devices | Samsung TV: start, pause 1 and 5 min, seek, next file, subtitles, as-is, end      | 🟢     |
 | Formats      | Every test file and container; 148 damaged files without crash or hang            | 🟢     |

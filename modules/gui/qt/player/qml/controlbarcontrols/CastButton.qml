@@ -38,6 +38,14 @@ RedesignIconButton {
         popup.close()
     }
 
+    // the devices found while a video plays, before the list opens (when it
+    // was opened before, see prepare())
+    Timer {
+        interval: 3000
+        running: Player.playingState === Player.PLAYING_STATE_PLAYING && Player.videoTracks.count > 0
+        onTriggered: root.manager.prepare()
+    }
+
     T.Popup {
         id: popup
         objectName: "castPopup"

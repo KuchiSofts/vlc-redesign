@@ -95,6 +95,9 @@ public:
     Q_INVOKABLE void allowFirewall();
     // the device failed: casts to it again, from where the media is
     Q_INVOKABLE void retry();
+    // looks for the devices before the list is opened, once: when it was
+    // opened before (Windows asked then whether VLC may use the network)
+    Q_INVOKABLE void prepare();
 
 public slots:
     void StartScan();

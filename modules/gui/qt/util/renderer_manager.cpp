@@ -30,6 +30,7 @@
 #include <QHash>
 
 #include <memory>
+#include <utility>
 
 #include <vlc_common.h>
 #include <vlc_configuration.h>
@@ -314,6 +315,8 @@ public:
         m_displayHere = p_intf->mainSettings->value( "redesign/cast-display-here", false ).toBool();
         // devices not to show (by name)
         m_hidden = p_intf->mainSettings->value( "redesign/cast-hidden-devices" ).toStringList();
+        // the device cast to last: first in the list
+        m_lastDevice = p_intf->mainSettings->value( "redesign/cast-last-device" ).toString();
         vlc_object_t *libvlc = VLC_OBJECT( vlc_object_instance( p_intf ) );
         var_Create( libvlc, "renderer-display", VLC_VAR_BOOL );
         var_SetBool( libvlc, "renderer-display", m_displayHere );
@@ -488,30 +491,37 @@ public:
     }
 
 
-    // a device not to show: by its name, with or without its model after
-    // it ("Living Room TV (Chromecast Ultra)", as mDNS names it)
+    // a device by its name, with or without its model after it ("Living
+    // Room TV (Chromecast Ultra)", as mDNS names it)
+    static bool isDevice(const QString &name, const QString &device)
+    {
+        const QString d = device.trimmed();
+        return !d.isEmpty() && (name.compare(d, Qt::CaseInsensitive) == 0
+                                || name.startsWith(d + QStringLiteral(" ("), Qt::CaseInsensitive));
+    }
+
+    // a device not to show
     bool isHidden(const QString &name) const
     {
         for (const QString &hidden : m_hidden)
-        {
-            const QString h = hidden.trimmed();
-            if (!h.isEmpty() && (name.compare(h, Qt::CaseInsensitive) == 0
-                                 || name.startsWith(h + QStringLiteral(" ("), Qt::CaseInsensitive)))
+            if (isDevice(name, hidden))
                 return true;
-        }
         return false;
     }
 
     void onRendererAdded(const RendererItemPtr& renderItem) {
         Q_Q(RendererManager);
-        if (isHidden(qfu(vlc_renderer_item_name(renderItem.get()))))
+        const QString name = qfu(vlc_renderer_item_name(renderItem.get()));
+        if (isHidden(name))
             return;
         QString key = getItemKey(renderItem);
         if( !m_items.contains( key ) )
         {
-            emit q->beginInsertRows({}, m_itemsIndex.size(), m_itemsIndex.size());
+            // the device cast to last first: where it was the last time
+            const qsizetype row = isDevice(name, m_lastDevice) ? 0 : m_itemsIndex.size();
+            emit q->beginInsertRows({}, row, row);
             m_items.emplace( key, renderItem );
-            m_itemsIndex.push_back(key);
+            m_itemsIndex.insert(row, key);
             emit q->endInsertRows();
         }
         else
@@ -573,6 +583,8 @@ public:
         if (renderItem)
         {
             m_selectedItem = renderItem;
+            m_lastDevice = qfu(vlc_renderer_item_name(renderItem.get()));
+            p_intf->mainSettings->setValue( "redesign/cast-last-device", m_lastDevice );
 
             int newIndexRow= getItemRow(m_selectedItem);
             if (newIndexRow >= 0)
@@ -778,6 +790,9 @@ public:
     // paused when the device failed, until the user chooses
     bool m_pausedForFailure = false;
     QStringList m_hidden;
+    QString m_lastDevice;
+    // prepare() was called
+    bool m_prepared = false;
 #ifdef _WIN32
     HANDLE m_firewallProcess = nullptr;
     // asking Windows for the rule (allowFirewall)
@@ -1152,11 +1167,21 @@ bool RendererManager::useRenderer() const
     return d->m_selectedItem.get() != nullptr;
 }
 
+void RendererManager::prepare()
+{
+    Q_D(RendererManager);
+    if( std::exchange( d->m_prepared, true ) )
+        return;
+    if( d->p_intf->mainSettings->value( "redesign/cast-scanned", false ).toBool() )
+        StartScan();
+}
+
 void RendererManager::StartScan()
 {
     Q_D(RendererManager);
     if( d->m_stop_scan_timer.isActive() )
         return;
+    d->p_intf->mainSettings->setValue( "redesign/cast-scanned", true );
 
     /* SD subnodes */
     char **ppsz_longnames;

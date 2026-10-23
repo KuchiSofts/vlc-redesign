@@ -5,6 +5,7 @@
  *****************************************************************************/
 import QtQml
 
+import VLC.Dialogs
 import VLC.MediaLibrary
 import VLC.Widgets as Widgets
 
@@ -63,12 +64,12 @@ Widgets.RedesignContextMenu {
             "action": (dataList) => root.requestTracksDialog(dataList[0].id, true),
             "enabled": (dataList) => dataList.length === 1
         }, {
-            // No properties dialog for a playlist in VLC (the media
-            // information dialog takes a media): shown greyed out
+            // what the library knows of it (and its file, for a playlist
+            // made from one): the media information dialog takes a media
             "text": qsTr("Properties & Metadata"),
             "icon": "info",
-            "action": () => {},
-            "enabled": false
+            "action": (dataList) => root._propertiesDialog().openFor(dataList[0]),
+            "enabled": (dataList) => dataList.length === 1
         }, {
             "separator": true
         }, {
@@ -88,6 +89,14 @@ Widgets.RedesignContextMenu {
             setData(requestID, data)
         })
     }
+
+    property var _dialog: null
+    function _propertiesDialog() {
+        if (!_dialog)
+            _dialog = propertiesComponent.createObject(g_mainDisplay)
+        return _dialog
+    }
+    property Component propertiesComponent: Component { PlaylistPropertiesDialog {} }
 
     function _ids(dataList) {
         return dataList.map(data => data.id)

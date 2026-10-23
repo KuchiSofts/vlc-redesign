@@ -139,6 +139,7 @@ qml_modules += {
         '../../medialibrary/qml/VideoAllDisplay.qml',
         '../../medialibrary/qml/VideoAllSubDisplay.qml',
         '../../medialibrary/qml/PlaylistMediaList.qml',
+        '../../medialibrary/qml/PlaylistPropertiesDialog.qml',
     '../../medialibrary/qml/SubtitleAssociationsDialog.qml',
     '../../medialibrary/qml/PlaylistGridDisplay.qml',
     '../../medialibrary/qml/PlaylistCreateDialog.qml',

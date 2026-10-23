@@ -382,6 +382,18 @@ void DialogsProvider::mediaInfoDialog( const MLItemId& itemId )
     input_item_t * const inputItem = vlc_ml_get_input_item( ml, itemId.id );
     assert( inputItem );
 
+    mediaInfoDialogOf( inputItem );
+}
+
+void DialogsProvider::mediaInfoDialogForMrl( const QString& mrl )
+{
+    input_item_t * const inputItem = input_item_New( qtu( mrl ), NULL );
+    if ( inputItem )
+        mediaInfoDialogOf( inputItem );
+}
+
+void DialogsProvider::mediaInfoDialogOf( input_item_t* const inputItem )
+{
     const SharedInputItem sharedInputItem { inputItem, false };
     if ( input_item_IsPreparsed( inputItem ) )
     {

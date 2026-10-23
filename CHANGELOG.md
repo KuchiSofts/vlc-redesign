@@ -15,7 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
-Surround sound, memory over long sessions, and the file name of the player bar.
+Surround sound, casting to a TV, memory over long sessions, and the file name of the player bar.
 
 ### Fixed
 
@@ -43,6 +43,26 @@ Surround sound, memory over long sessions, and the file name of the player bar.
   played. The title, artist and album of a song no longer stay on the next media when it has none.
 - **Starting a video is quicker** when it is decoded by the processor (older formats, or PCs without hardware
   decoding): the video output keeps its Direct3D device for the next video instead of making a new one each time.
+- **The TV missed the end of a film**: the last seconds a film had (5.6 s, 11 s with subtitles) were dropped when it
+  ended. When the next film of a playlist came while the TV still played (VLC sends ahead of it), VLC moved on and
+  cut the end the TV had not shown yet (all of a short film). With a subtitle file beside the film, the TV got
+  nothing after the last subtitle, often minutes before the end of the film, when the film started while casting
+  (the next one of a playlist, or one opened during a cast). The TV now shows every film to its last picture.
+- **Casting started twice**: the TV loaded a film, then loaded it again a moment later and missed its first second,
+  at the start of every cast, for the next film of a playlist, and when a film went on from where it was left.
+- **Quitting after a film took up to 10 seconds** right after installing or updating: when a film stopped, the
+  progress bar started its sound analyzer (made for songs) on it, and Windows checks a new program before it runs.
+  It runs only for a song now, without holding the window, and the installer has it checked.
+- **Films of 50 and 60 frames per second juddered on the TV** when they are converted (shown subtitles, or a format the
+  TV can't play): they were brought to 24 frames per second; they go at 25 and 30 now, every other picture.
+
+### Changed
+
+- **Casting is lighter**: when a film is converted for the TV, each picture goes out as soon as it is made (the
+  encoder held a number of them first), and the conversion takes half the memory (280 MB instead of 570 for a 1080p
+  film with subtitles).
+- **The TV is in the list before you open it**: once you have cast, VLC looks for your TVs quietly while a video plays,
+  so they are listed as soon as you click the cast button, with the one you used last at the top.
 
 ### Technical
 
@@ -61,7 +81,8 @@ Surround sound, memory over long sessions, and the file name of the player bar.
   named "VLC Redesign ipc", an official VLC 4 took the files. Files that arrive within 0.8 s of the previous ones
   (Explorer starts one VLC per selected file; they arrive 10–20 ms apart) are queued.
 - Preparser: the pool thread spawns `vlc-preparser`, not `Submit()`, which runs with the playlist locked (0.5–10 s
-  measured for a never-seen executable). The installer runs `vlc.exe --version` and `vlc-preparser.exe --help` once.
+  measured for a never-seen executable). The installer runs `vlc.exe --prewarm` (returns at once; `--version`
+  opens a console and waits for a key), `vlc-preparser.exe --help` and `vlc-waveform.exe` once.
 - Media library: `setDiscoverNetworkEnabled(true)` (every LAN services discovery: mDNS, SAP, UPnP) only when a root
   is not a `file://` folder or is not present, or when such a folder is added. MainCtx and the setup dialog don't
   open the welcome when the core playlist has media at start.
@@ -81,6 +102,27 @@ Surround sound, memory over long sessions, and the file name of the player bar.
 - Windows sockets: `recvfrom`, `sendto`, `send` and `accept` set `errno` when they fail (`EAGAIN` or the Winsock
   code). It kept the thread's previous value: logs said "read error: No error", and a stale `EAGAIN` or `EINTR` made
   `net_Read()` or the file output retry a dead socket forever.
+- Chromecast stream output: at the end of the media the chain is closed first (its muxer and transcoder write what
+  they hold), then the TV reads until the fifo is empty or it stops reading for 15 s. At the start of each media the
+  first blocks wait until every stream sent some (or half a second of media): the chain made with the first stream
+  was made again with the next, and the TV loaded twice.
+- `demux_chromecast`: the drain result of `ES_OUT_DRAIN` was assigned to a `ret` declared in the EOF block (upstream
+  since `1ebb26bbc9`, 2025), so the demux's EOF was returned and the input ended as soon as all was read, instead of
+  when the TV reported FINISHED.
+- Input: a renderer's demux filter is put on the master source only. A subtitle slave got `demux_chromecast` too when
+  the input started with a renderer set, and its EOF was sent to the stream output as the end of the media. Seeks
+  queued before the first `demux_Demux()` (start time, the position to resume from) are done before it: about 250 ms
+  were read from the start, decoded and flushed, and a renderer had loaded them.
+- Renderers: x264 conversions use `tune=zerolatency` (sliced threads, no lookahead or B-frames): 287 MB instead of
+  571 MB, the same processor time and 4.2 Mb/s instead of 2.5 (measured, 1080p with a subtitle). Above 31 fps the
+  frame rate is halved (50 to 25, 59.94 to 29.97, 120 to 30) instead of forced to 24; 30 fps comes as 1000000/33333
+  from Matroska.
+- Qt `Waveform`: the source is a media playing or paused with audio and no video, analyzed after it stays 1 s.
+  `vlc-waveform` runs on a `QThread` per analysis (`QProcess` there with `waitForFinished()` steps and a cancel flag),
+  joined by a `qAddPostRoutine()`. `CreateProcessW` held the interface thread for 6–10 s for a new executable.
+- `RendererManager::prepare()`: one scan per session, 3 s into a playing video, when a scan was done before
+  (`redesign/cast-scanned`: Windows asked for the firewall then). The device cast to last (`redesign/cast-last-device`)
+  is inserted at row 0.
 
 ## [0.2.6] · 2026-10-22
 

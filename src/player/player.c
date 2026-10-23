@@ -1533,12 +1533,22 @@ vlc_player_SetRenderer(vlc_player_t *player, vlc_renderer_item_t *renderer)
 {
     vlc_player_assert_locked(player);
 
+    const bool entering = renderer != NULL && player->renderer == NULL;
     if (player->renderer)
         vlc_renderer_item_release(player->renderer);
     player->renderer = renderer ? vlc_renderer_item_hold(renderer) : NULL;
 
     vlc_player_foreach_inputs(input)
     {
+        /* From here to the renderer: where it plays here, where the input
+         * starts the streams again (where it read is ahead) */
+        if (entering
+         && var_Create(input->thread, "renderer-enter-time", VLC_VAR_INTEGER) == VLC_SUCCESS)
+        {
+            const vlc_tick_t time = vlc_player_input_GetTime(input, false, vlc_tick_now());
+            var_SetInteger(input->thread, "renderer-enter-time",
+                           time != VLC_TICK_INVALID ? time : -1);
+        }
         vlc_value_t val = {
             .p_address = renderer ? vlc_renderer_item_hold(renderer) : NULL
         };

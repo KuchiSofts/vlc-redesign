@@ -6,7 +6,7 @@ page) and the release notes. Last updated: 2026-10-24, build 151 of the `redesig
 
 **Status:** 🟢 done · 🟡 in progress or partly done · 🔴 to do or missing · ⚪ idea or research
 **Pixel check:** 🟢 measured identical to the Figma frame · ⏳ not measured yet
-**In the app ⏳:** merged and built, not yet checked in the running program (6 lines today)
+**In the app ⏳:** merged and built, not yet checked in the running program (5 lines today)
 
 ## Dashboard
 
@@ -794,7 +794,7 @@ and an accepted request made the TV fail after a pause in a test.
 
 - 🟢 Resume card as in Figma: the watched time and one *Continue Watching* button (checked in the app)
 - 🟢 New playlist with a custom thumbnail (PNG, 1024 px at most, deleted with the playlist) · in the app ⏳
-- 🟢 Empty playlists: Save needs only a title · in the app ⏳
+- 🟢 Empty playlists: Save needs only a title (checked in the app: the playlist shows the dark video placeholder)
 - 🟢 The compact library's Home with the sections of the library's Home, in its order
 - 🟢 Background blur (50 px) behind floating panels: not drawn, the panels are 95 % opaque (at most 13 grey levels
   show through, under the pixel tolerance; no blur pass for weak graphics cards)
@@ -825,7 +825,7 @@ and an accepted request made the TV fail after a pause in a test.
 - 🔴 Small updates from 0.2.4, 0.2.5 and 0.2.6 built and checked
 - 🔴 Announcement in Discussions; every fixed issue answered with the release link
 
-Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 80 🟢, 1 🟡, 13 🔴 (94), of which 6 🟢 are
+Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 80 🟢, 1 🟡, 13 🔴 (94), of which 5 🟢 are
 in the app ⏳.
 Languages (§12) and the community (§13) have bars of their own.
 

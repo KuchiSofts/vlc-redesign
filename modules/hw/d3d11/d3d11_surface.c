@@ -229,6 +229,88 @@ ok:
     return VLC_SUCCESS;
 }
 
+#if CAN_PROCESSOR
+/* A picture of another size (or 10 bits to 8): the video processor scales
+ * it into a NV12 texture of the output size, and that is copied. Copied
+ * first, 4K pictures were scaled by the processor, and in 10 bits: a 4K
+ * HEVC film converted to 1080p for a TV went little faster than it plays. */
+static int SetupScaler(filter_t *p_filter, filter_sys_t *sys, DXGI_FORMAT srcFormat)
+{
+    const video_format_t *in = &p_filter->fmt_in.video, *out = &p_filter->fmt_out.video;
+    if ((out->i_width & 1) || (out->i_height & 1))
+        return VLC_EGENERIC;
+
+    d3d11_device_t *d3d_dev = sys->d3d_dev;
+    D3D11_TEXTURE2D_DESC texDesc = {
+        .Width = out->i_width,
+        .Height = out->i_height,
+        .MipLevels = 1,
+        .ArraySize = 1,
+        .Format = DXGI_FORMAT_NV12,
+        .SampleDesc.Count = 1,
+        .Usage = D3D11_USAGE_STAGING,
+        .CPUAccessFlags = D3D11_CPU_ACCESS_READ,
+    };
+    HRESULT hr = ID3D11Device_CreateTexture2D(d3d_dev->d3ddevice, &texDesc, NULL, &sys->staging);
+    if (SUCCEEDED(hr))
+        hr = can_map(sys, d3d_dev->d3dcontext);
+    if (SUCCEEDED(hr))
+    {
+        texDesc.Usage = D3D11_USAGE_DEFAULT;
+        texDesc.CPUAccessFlags = 0;
+        texDesc.BindFlags = D3D11_BIND_RENDER_TARGET;
+        hr = ID3D11Device_CreateTexture2D(d3d_dev->d3ddevice, &texDesc, NULL, &sys->procOutTexture);
+    }
+    if (SUCCEEDED(hr) && SetupProcessor(p_filter, d3d_dev, srcFormat, DXGI_FORMAT_NV12) != VLC_SUCCESS)
+        hr = E_FAIL;
+    if (FAILED(hr))
+    {
+        if (sys->procOutTexture)
+            ID3D11Texture2D_Release(sys->procOutTexture);
+        if (sys->staging)
+            ID3D11Texture2D_Release(sys->staging);
+        sys->procOutTexture = NULL;
+        sys->staging = NULL;
+        return VLC_EGENERIC;
+    }
+
+    /* the pictures shown, not their padding */
+    RECT srcRect = {
+        .left = in->i_x_offset, .top = in->i_y_offset,
+        .right = in->i_x_offset + in->i_visible_width,
+        .bottom = in->i_y_offset + in->i_visible_height,
+    };
+    RECT dstRect = {
+        .left = out->i_x_offset, .top = out->i_y_offset,
+        .right = out->i_x_offset + out->i_visible_width,
+        .bottom = out->i_y_offset + out->i_visible_height,
+    };
+    d3d11_device_lock(d3d_dev);
+    ID3D11VideoContext_VideoProcessorSetStreamSourceRect(sys->d3d_proc.d3dvidctx,
+                                                         sys->d3d_proc.videoProcessor, 0, TRUE, &srcRect);
+    ID3D11VideoContext_VideoProcessorSetStreamDestRect(sys->d3d_proc.d3dvidctx,
+                                                       sys->d3d_proc.videoProcessor, 0, TRUE, &dstRect);
+    ID3D11VideoContext_VideoProcessorSetOutputTargetRect(sys->d3d_proc.d3dvidctx,
+                                                         sys->d3d_proc.videoProcessor, TRUE, &dstRect);
+    /* the same YCbCr in and out: the defaults differ, and the colors
+     * changed (BT.601 against BT.709: a pure green came out at 214) */
+    D3D11_VIDEO_PROCESSOR_COLOR_SPACE colorspace = {
+        .YCbCr_Matrix = in->space == COLOR_SPACE_BT601 ? 0 : 1,
+        .Nominal_Range = in->color_range == COLOR_RANGE_FULL ? D3D11_VIDEO_PROCESSOR_NOMINAL_RANGE_0_255
+                                                             : D3D11_VIDEO_PROCESSOR_NOMINAL_RANGE_16_235,
+    };
+    ID3D11VideoContext_VideoProcessorSetStreamColorSpace(sys->d3d_proc.d3dvidctx,
+                                                         sys->d3d_proc.videoProcessor, 0, &colorspace);
+    ID3D11VideoContext_VideoProcessorSetOutputColorSpace(sys->d3d_proc.d3dvidctx,
+                                                         sys->d3d_proc.videoProcessor, &colorspace);
+    d3d11_device_unlock(d3d_dev);
+    msg_Dbg(p_filter, "scaling %ux%u %s to %ux%u NV12 with the video processor",
+            in->i_visible_width, in->i_visible_height, DxgiFormatToStr(srcFormat),
+            out->i_visible_width, out->i_visible_height);
+    return VLC_SUCCESS;
+}
+#endif
+
 static void D3D11_YUY2(filter_t *p_filter, picture_t *src, picture_t *dst)
 {
     if (src->context == NULL)
@@ -608,6 +690,8 @@ static void D3D11CloseConverter( filter_t *p_filter )
 {
     filter_sys_t *p_sys = p_filter->p_sys;
 #if CAN_PROCESSOR
+    if (p_sys->processorOutput)
+        ID3D11VideoProcessorOutputView_Release(p_sys->processorOutput);
     if (p_sys->procOutTexture)
         ID3D11Texture2D_Release(p_sys->procOutTexture);
     D3D11_ReleaseProcessor( &p_sys->d3d_proc );
@@ -702,9 +786,47 @@ int D3D11OpenConverter( filter_t *p_filter )
     if ( GetD3D11ContextPrivate(p_filter->vctx_in) == NULL )
         return VLC_EGENERIC;
 
-    if ( p_filter->fmt_in.video.i_visible_height != p_filter->fmt_out.video.i_visible_height
-         || p_filter->fmt_in.video.i_width != p_filter->fmt_out.video.i_width )
+    const bool resized = p_filter->fmt_in.video.i_visible_height != p_filter->fmt_out.video.i_visible_height
+                      || p_filter->fmt_in.video.i_width != p_filter->fmt_out.video.i_width;
+    if ( resized )
+    {
+#if CAN_PROCESSOR
+        /* scaled by the video processor (8 bits out) */
+        const vlc_fourcc_t out = p_filter->fmt_out.video.i_chroma;
+        if ( out != VLC_CODEC_I420 && out != VLC_CODEC_YV12 && out != VLC_CODEC_NV12 )
+            return VLC_EGENERIC;
+        if ( p_filter->fmt_in.video.i_chroma != VLC_CODEC_D3D11_OPAQUE
+          && p_filter->fmt_in.video.i_chroma != VLC_CODEC_D3D11_OPAQUE_10B )
+            return VLC_EGENERIC;
+
+        filter_sys_t *p_sys = vlc_obj_calloc(VLC_OBJECT(p_filter), 1, sizeof(filter_sys_t));
+        if (!p_sys)
+            return VLC_ENOMEM;
+        d3d11_video_context_t *vctx_sys = GetD3D11ContextPrivate(p_filter->vctx_in);
+        d3d11_decoder_device_t *dev_sys = GetD3D11OpaqueContext(p_filter->vctx_in);
+        p_sys->d3d_dev = &dev_sys->d3d_dev;
+        p_filter->p_sys = p_sys;
+        if (SetupScaler(p_filter, p_sys, vctx_sys->format) != VLC_SUCCESS)
+        {
+            p_filter->p_sys = NULL;
+            return VLC_EGENERIC;
+        }
+        if (CopyInitCache(&p_sys->cache, p_filter->fmt_out.video.i_width))
+        {
+            D3D11_ReleaseProcessor(&p_sys->d3d_proc);
+            ID3D11VideoProcessorOutputView_Release(p_sys->processorOutput);
+            ID3D11Texture2D_Release(p_sys->procOutTexture);
+            ID3D11Texture2D_Release(p_sys->staging);
+            p_filter->p_sys = NULL;
+            return VLC_ENOMEM;
+        }
+        vlc_mutex_init(&p_sys->staging_lock);
+        p_filter->ops = out == VLC_CODEC_NV12 ? &D3D11_NV12_ops : &D3D11_YUY2_ops;
+        return VLC_SUCCESS;
+#else
         return VLC_EGENERIC;
+#endif
+    }
 
     uint8_t pixel_bytes = 1;
     switch( p_filter->fmt_out.video.i_chroma ) {

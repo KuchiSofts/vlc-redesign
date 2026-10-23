@@ -56,10 +56,41 @@ jobs:
           test -s out/vlc.exe
           test -s out/plugins/gui/libqt_plugin.dll
 
+      # (pull requests too: the launch test runs on it)
       - name: Upload the package
-        if: github.event_name != 'pull_request'
         uses: actions/upload-artifact@v5
         with:
           name: vlc-redesign-win64-${{ github.sha }}
           path: out
+          retention-days: ${{ github.event_name == 'pull_request' && 2 || 7 }}
+
+  # The package started and a clip played on Windows (a runner without a GPU
+  # or a sound card): the window opens, VLC quits when asked, the clip plays
+  # to its end, no QML warning is logged
+  launch-test:
+    needs: win64
+    runs-on: windows-2022
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          sparse-checkout: extras/juxtopposed/ci
+
+      - uses: actions/download-artifact@v5
+        with:
+          name: vlc-redesign-win64-${{ github.sha }}
+          path: package
+
+      - name: Launch and play
+        shell: pwsh
+        run: ./extras/juxtopposed/ci/launch-test.ps1 -VlcDir package -WorkDir "${{ runner.temp }}"
+
+      - name: Upload the logs
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: launch-test-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/vlc-launch-test/*.txt
+            ${{ runner.temp }}/vlc-launch-test/*.log
           retention-days: 7

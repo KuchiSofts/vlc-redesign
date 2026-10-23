@@ -105,7 +105,8 @@ QString LocalFolderModel::folderName() const
 {
     if (!m_folder.isLocalFile())
         return {};
-    const QFileInfo info(m_folder.toLocalFile());
+    // (a folder of the library ends with a slash: its name is before it)
+    const QFileInfo info(QDir::cleanPath(m_folder.toLocalFile()));
     // A drive root has no name: show "C:" rather than nothing
     return info.fileName().isEmpty() ? QDir::toNativeSeparators(info.absoluteFilePath()).remove(QLatin1Char('\\'))
                                      : info.fileName();

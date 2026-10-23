@@ -27,13 +27,17 @@ Item {
     // library's Home, Figma 6261:15078)
     readonly property MLMediaModel allMedia: MLMediaModel { ml: MediaLib }
 
-    // The sections of the library's Home (HomePage.qml)
+    // The sections of the library's Home (HomePage.qml), in its order: the
+    // last played first (its sort, by default; the models' own order is
+    // the first played first)
     readonly property MLRecentVideoModel continueWatching: MLRecentVideoModel {
         ml: MediaLib
+        sortOrder: Qt.DescendingOrder
         limit: models._limit
     }
     readonly property MLRecentAudioModel listenAgain: MLRecentAudioModel {
         ml: MediaLib
+        sortOrder: Qt.DescendingOrder
         limit: models._limit
     }
     readonly property MLFrequentFoldersModel frequentFolders: MLFrequentFoldersModel {
@@ -66,6 +70,15 @@ Item {
     // The folders of the library (its entry points): the folders of Videos
     // and of Music > Songs (Figma 848:1996: "Shows", "Films", "My Songs")
     readonly property MLFolderModel libraryFolders: MLFolderModel { ctx: MainCtx }
+    // the ones holding videos, songs (or nothing yet): Videos, Music > Songs
+    readonly property MLFolderModel videoFolders: MLFolderModel {
+        ctx: models._section === "videos" ? MainCtx : null
+        kind: MLFolderModel.VideoFolders
+    }
+    readonly property MLFolderModel songFolders: MLFolderModel {
+        ctx: models._section === "songs" ? MainCtx : null
+        kind: MLFolderModel.AudioFolders
+    }
     Instantiator {
         id: libraryFolderEntries
         model: models.libraryFolders

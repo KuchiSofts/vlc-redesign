@@ -10,6 +10,9 @@ Issues with a 👍 from many people move up this list.
 
 Status: ✅ done · 🔨 in progress · 📋 planned · 💡 idea
 
+The full plan for every program (desktop, Android, TV) and every platform is in the
+[master plan](docs/MASTER-PLAN.md).
+
 ## 0.2: solid on every Windows PC
 
 - ✅ Several copies at once: a second VLC Redesign no longer hangs on start

@@ -233,8 +233,77 @@ T.Pane {
                     return Player.time.formatHMS(VLCTick.ForceHours
                                                  | (length.isSubSecond() ? VLCTick.SubSecondFormattedAsMS : 0))
                 }
-                color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, theme.fg.primary, theme.palette?.isDark ?? VLCStyle.darkPalette.isDark)
+                color: editing ? "transparent"
+                               : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, theme.fg.primary, theme.palette?.isDark ?? VLCStyle.darkPalette.isDark)
                 font: timeTextMetrics.font
+
+                // Figma "Current Time" (1904:7238): under the pointer, the box
+                // of the design (#090909, radius 4, as high as the seek bar);
+                // a click types a time to go to: Enter goes there, Escape or
+                // a click elsewhere leaves it
+                readonly property bool editable: effectiveTextPosition === ControlBar.TimeTextPosition.LeftRightSlider
+                                                 && Player.isStarted && Player.seekable && Player.length.toSeconds() > 0
+                property bool editing: false
+                property bool _previousShortcuts: true
+                onEditingChanged: {
+                    // (the digits typed are not the shortcuts of VLC)
+                    if (editing) {
+                        _previousShortcuts = MainCtx.useGlobalShortcuts
+                        MainCtx.useGlobalShortcuts = false
+                        timeInput.text = text
+                        timeInput.forceActiveFocus(Qt.MouseFocusReason)
+                        timeInput.cursorPosition = timeInput.text.length
+                    } else {
+                        MainCtx.useGlobalShortcuts = _previousShortcuts
+                    }
+                }
+                background: Rectangle {
+                    visible: mediaTime.editing || (timeHover.hovered && mediaTime.editable)
+                    y: Math.round((parent.height - height) / 2)
+                    width: parent.width
+                    height: VLCStyle.redesign.seekHeight
+                    radius: VLCStyle.dp(4, VLCStyle.scale)
+                    color: VLCStyle.redesign.color("#090909", "#dedede")
+                }
+                HoverHandler {
+                    id: timeHover
+                    enabled: mediaTime.editable
+                }
+                TapHandler {
+                    enabled: mediaTime.editable && !mediaTime.editing
+                    onTapped: mediaTime.editing = true
+                }
+                TextInput {
+                    id: timeInput
+                    visible: mediaTime.editing
+                    anchors.fill: parent
+                    leftPadding: mediaTime.leftPadding
+                    topPadding: mediaTime.topPadding
+                    verticalAlignment: mediaTime.verticalAlignment === Text.AlignTop ? TextInput.AlignTop : TextInput.AlignVCenter
+                    font: mediaTime.font
+                    color: VLCStyle.redesign.color("#CECECE", "#1e1e1e")
+                    selectByMouse: true
+                    clip: true
+                    validator: RegularExpressionValidator { regularExpression: /[0-9:.]{0,12}/ }
+                    cursorDelegate: Rectangle {
+                        width: VLCStyle.dp(1, VLCStyle.scale)
+                        color: VLCStyle.redesign.accent
+                        visible: timeInput.cursorVisible
+                    }
+                    Accessible.name: qsTr("Go to time")
+                    // "1:02:10", "62:10", "130": hours, minutes, seconds
+                    onAccepted: {
+                        const parts = text.split(":").filter(part => part.length > 0).map(Number)
+                        const length = Player.length.toSeconds()
+                        if (parts.length > 0 && parts.length <= 3 && parts.every(n => !isNaN(n)) && length > 0) {
+                            const seconds = parts.reduce((total, n) => total * 60 + n, 0)
+                            Player.position = Math.max(0, Math.min(1, seconds / length))
+                        }
+                        mediaTime.editing = false
+                    }
+                    Keys.onEscapePressed: mediaTime.editing = false
+                    onActiveFocusChanged: if (!activeFocus) mediaTime.editing = false
+                }
 
                 // Figma "Current Time": the text box (17 px, a line of 100 %)
                 // centred in the frame, the glyphs from its left edge

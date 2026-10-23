@@ -396,7 +396,7 @@ Controls.Popup {
                     anchors.verticalCenter: cancelButton.verticalCenter
                     visible: !!MainCtx.controlbarProfileModel.lastError
                     text: MainCtx.controlbarProfileModel.lastError
-                    color: "#e4a580"
+                    color: VLCStyle.redesign.color("#e4a580", "#c62828")
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.redesign.fontSmall
                     elide: Text.ElideRight
@@ -553,7 +553,7 @@ Controls.Popup {
     component PromptError: Text {
         Layout.fillWidth: true
         visible: text.length > 0
-        color: "#e4a580"
+        color: VLCStyle.redesign.color("#e4a580", "#c62828")
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.redesign.fontSmall
         wrapMode: Text.WordWrap

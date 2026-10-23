@@ -121,7 +121,8 @@ Flickable {
         z: 2
         visible: false
         radius: VLCStyle.dp(6, VLCStyle.scale)
-        color: Qt.rgba(14 / 255, 14 / 255, 14 / 255, 0.85)
+        color: VLCStyle.palette.isDark ? Qt.rgba(14 / 255, 14 / 255, 14 / 255, 0.85)
+                                       : Qt.rgba(0xc2 / 255, 0xc2 / 255, 0xc1 / 255, 0.85)
 
         Widgets.DashedRect {
             anchors.fill: parent

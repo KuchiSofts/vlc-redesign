@@ -116,6 +116,8 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
   anti-flickering, denoiser) effects of the classic dialog, in the effects of the redesign.
 - **Properties of a playlist**: *Properties & Metadata* of a playlist's menu shows its name, its media, its length
   and its file.
+- **Type a time to go to**: a click on the time of the bar makes it a field; type 1:02:10, 62:10 or 130 and press
+  Enter (as the design draws it).
 
 ### Changed
 

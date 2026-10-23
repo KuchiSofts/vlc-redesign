@@ -32,7 +32,7 @@ Windows 0.2.6 is released; 0.3.0 counts the lines of section 8 (done since 0.2.6
 | Area                    | Progress             | Done    | %     | From                                   |
 |-------------------------|----------------------|---------|-------|----------------------------------------|
 | Design frames (Figma)   | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 | 97/103  | 94 %  | [§5](#5-design-frame-by-frame) tables  |
-| Pixel check             | 🟩🟩🟩🟩⬜⬜⬜⬜⬜⬜ | 46/103  | 44 %  | [§5](#5-design-frame-by-frame) tables  |
+| Pixel check             | 🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜ | 72/103  | 69 %  | [§5](#5-design-frame-by-frame) tables  |
 | Light theme and accents | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 16/17   | 94 %  | [§8.3](#83-light-theme-and-accents)    |
 | Settings rows           | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 211/212 | 99 %  | [§8.5](#85-settings-rows)              |
 | Classic dialogs         | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 11/11   | 100 % | [§8.6](#86-classic-dialogs)            |
@@ -175,8 +175,8 @@ What comes first, and why. Each step starts when what it needs is done.
 | New playlist          | 1      | 1   | 0   | 0   | 1        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Settings pages        | 19     | 17  | 2   | 0   | 18       | 🟩🟩🟩🟩🟩🟩🟩🟩🟨🟨 |
 | **Screens**           | 57     | 55  | 2   | 0   | 43       | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
-| **Components**        | 46     | 42  | 4   | 0   | 3        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
-| **All**               | 103    | 97  | 6   | 0   | 46       | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
+| **Components**        | 46     | 42  | 4   | 0   | 29       | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
+| **All**               | 103    | 97  | 6   | 0   | 72       | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
 
 ### 5.3 Onboarding (11)
 
@@ -334,19 +334,19 @@ added in build 115 are in the app ⏳ (§8.5).
 |------------|--------------|------------|--------|-------|------------------------------------------------|----------------------------------------------|
 | 42:356     | Icon         | 548 × 812  | 🟢     | ⏳    | The icon set: 96 names with their states        | pixmaps/redesign/ (icons, duo), redesign_icon_provider.cpp |
 | 177:98     | Icon Wrapper | 72 × 122   | 🟢     | ⏳    | Icon button: default, hover                     | RedesignIconButton.qml                       |
-| 500:3063   | Button       | 400 × 140  | 🟢     | ⏳    | Dialog button: neutral, accent                  | RedesignButton.qml, SettingsButton.qml       |
-| 848:1712   | play         | 94 × 116   | 🟢     | ⏳    | Play, pause                                     | PlayButton.qml                               |
-| 536:1014   | Toggle       | 120 × 194  | 🟢     | ⏳    | ON / OFF                                        | CheckButton.qml, SettingsToggle.qml          |
+| 500:3063   | Button       | 400 × 140  | 🟢     | 🟢    | Dialog button: neutral, accent                  | RedesignButton.qml, SettingsButton.qml       |
+| 848:1712   | play         | 94 × 116   | 🟢     | 🟢    | Play, pause                                     | PlayButton.qml                               |
+| 536:1014   | Toggle       | 120 × 194  | 🟢     | 🟢    | ON / OFF                                        | CheckButton.qml, SettingsToggle.qml          |
 
 **Player controls**
 
 | Node       | Name         | Size (px)      | Status | Pixel | What it is                                            | Implemented in                                  |
 |------------|--------------|----------------|--------|-------|-------------------------------------------------------|-------------------------------------------------|
-| 491:1780   | Controls     | 1960 × 11139   | 🟢     | ⏳    | Control bar and its 15 panel states (queue, tracks…)  | ControlBar.qml, QueueCard.qml, TracksMenu.qml, SubtitleTracksPanel.qml |
-| 244:184    | volume       | 130 × 646      | 🟢     | ⏳    | Cone volume, 13 states from 0 to 200 %                | VolumeWidget.qml                                |
+| 491:1780   | Controls     | 1960 × 11139   | 🟢     | 🟢    | Control bar and its 15 panel states (queue, tracks…)  | ControlBar.qml, QueueCard.qml, TracksMenu.qml, SubtitleTracksPanel.qml |
+| 244:184    | volume       | 130 × 646      | 🟢     | 🟢    | Cone volume, 13 states from 0 to 200 %                | VolumeWidget.qml                                |
 | 2245:9805  | audio value  | 121 × 37       | 🟢     | ⏳    | The value shown while the volume changes               | VolumeWidget.qml                                |
-| 1904:7238  | Current Time | 114 × 164      | 🟢     | ⏳    | Elapsed time: default, hover, click                    | ControlBar.qml                                  |
-| 1905:7312  | Duration     | 114 × 164      | 🟢     | ⏳    | Length: default, click (remaining time)                | ControlBar.qml                                  |
+| 1904:7238  | Current Time | 114 × 164      | 🟢     | 🟢    | Elapsed time: default, hover, click                    | ControlBar.qml                                  |
+| 1905:7312  | Duration     | 114 × 164      | 🟢     | 🟢    | Length: default, click (remaining time)                | ControlBar.qml                                  |
 | 2151:9673  | thumbnail    | 272 × 189      | 🟢     | ⏳    | Seek bar frame preview with its time                   | SeekFramePreview.qml                            |
 | 970:3091   | Miniplayer   | 431 × 2816.375 | 🟢     | ⏳    | Library mini player, 5 states                          | LibraryMiniPlayer.qml, MiniPlayerQueue.qml      |
 
@@ -355,10 +355,10 @@ added in build 115 are in the app ⏳ (§8.5).
 | Node       | Name            | Size (px)   | Status | Pixel | What it is                                          | Implemented in                               |
 |------------|-----------------|-------------|--------|-------|-----------------------------------------------------|----------------------------------------------|
 | 848:1996   | sidebar         | 4492 × 1028 | 🟡     | ⏳    | Sections column, 10 states                          | SideNavigationPane.qml, CompactLibrary.qml   |
-| 856:2215   | Sorting Options | 265 × 776   | 🟢     | ⏳    | Sort menu                                           | LibraryHeader.qml, RedesignOptionItem.qml    |
-| 858:3290   | View Options    | 265 × 104   | 🟢     | ⏳    | Grid or list                                        | LibraryHeader.qml, CompactLibrary.qml        |
-| 2404:9167  | media           | 377 × 228   | 🟢     | ⏳    | Video card: watched, unwatched, hover of each       | VideoGridItem.qml                            |
-| 2459:9352  | playlist        | 377 × 228   | 🟢     | ⏳    | Playlist card: unwatched, hover                     | PlaylistGridDisplay.qml, VideoGridItem.qml   |
+| 856:2215   | Sorting Options | 265 × 776   | 🟢     | 🟢    | Sort menu                                           | LibraryHeader.qml, RedesignOptionItem.qml    |
+| 858:3290   | View Options    | 265 × 104   | 🟢     | 🟢    | Grid or list                                        | LibraryHeader.qml, CompactLibrary.qml        |
+| 2404:9167  | media           | 377 × 228   | 🟢     | 🟢    | Video card: watched, unwatched, hover of each       | VideoGridItem.qml                            |
+| 2459:9352  | playlist        | 377 × 228   | 🟢     | 🟢    | Playlist card: unwatched, hover                     | PlaylistGridDisplay.qml, VideoGridItem.qml   |
 
 Differences: 🔴 848:1996: the compact library's Home lists the recent media only, not the rows of the library's Home.
 
@@ -366,14 +366,14 @@ Differences: 🔴 848:1996: the compact library's Home lists the recent media on
 
 | Node       | Name                  | Size (px) | Status | Pixel | What it is                                       | Implemented in                                   |
 |------------|-----------------------|-----------|--------|-------|--------------------------------------------------|--------------------------------------------------|
-| 6062:13354 | menu                  | 375 × 585 | 🟢     | ⏳    | The ⋯ main menu, with shortcuts                   | MainMenu.qml, RedesignMenu.qml, RedesignMenuItem.qml |
-| 6648:20666 | Profiles              | 651 × 633 | 🟢     | ⏳    | Profile submenu: Movies, Shows, Music, Work, New  | MainMenu.qml, ProfilesMenu.qml, defaults.cpp     |
-| 6065:13616 | right-click menu      | 292 × 683 | 🟢     | ⏳    | Player right-click menu (Qt menu drawn to frame)  | menus.cpp, redesign_menu_style.cpp               |
-| 2107:5903  | context menu          | 265 × 296 | 🟢     | ⏳    | Library item menu                                 | MLContextMenu.qml, RedesignContextMenu.qml       |
+| 6062:13354 | menu                  | 375 × 585 | 🟢     | 🟢    | The ⋯ main menu, with shortcuts                   | MainMenu.qml, RedesignMenu.qml, RedesignMenuItem.qml |
+| 6648:20666 | Profiles              | 651 × 633 | 🟢     | 🟢    | Profile submenu: Movies, Shows, Music, Work, New  | MainMenu.qml, ProfilesMenu.qml, defaults.cpp     |
+| 6065:13616 | right-click menu      | 292 × 683 | 🟢     | 🟢    | Player right-click menu (Qt menu drawn to frame)  | menus.cpp, redesign_menu_style.cpp               |
+| 2107:5903  | context menu          | 265 × 296 | 🟢     | 🟢    | Library item menu                                 | MLContextMenu.qml, RedesignContextMenu.qml       |
 | 2139:8935  | folder context menu   | 265 × 296 | 🟢     | 🟢    | Folder menu                                       | FolderDisplay.qml, RedesignContextMenu.qml       |
 | 2404:13340 | file context menu     | 265 × 584 | 🟢     | 🟢    | File menu                                         | MLContextMenu.qml, FolderDisplay.qml             |
 | 2459:9389  | playlist context menu | 265 × 392 | 🟢     | 🟢    | Playlist menu                                     | MLPlaylistContextMenu.qml                        |
-| 2107:5935  | option                | 301 × 292 | 🟢     | ⏳    | Menu row: default, hover, selected                | RedesignOptionItem.qml, RedesignMenuItem.qml     |
+| 2107:5935  | option                | 301 × 292 | 🟢     | 🟢    | Menu row: default, hover, selected                | RedesignOptionItem.qml, RedesignMenuItem.qml     |
 
 The four context menus are the design's cards (`RedesignContextMenu.qml`, build 117): the rows, the watched state and
 *Show in File Explorer* as the design lists them.
@@ -382,22 +382,22 @@ The four context menus are the design's cards (`RedesignContextMenu.qml`, build 
 
 | Node       | Name              | Size (px) | Status | Pixel | What it is                                      | Implemented in                                 |
 |------------|-------------------|-----------|--------|-------|-------------------------------------------------|------------------------------------------------|
-| 1915:8397  | subtitle multiple | 519 × 239 | 🟢     | ⏳    | A video with several subtitles: default, hover   | SubtitleAssociationsDialog.qml                 |
-| 1919:9121  | subtitle one      | 519 × 239 | 🟢     | ⏳    | A video with one subtitle: default, selected     | SubtitleAssociationsDialog.qml                 |
-| 1959:5325  | target            | 240 × 520 | 🟢     | ⏳    | To this folder / file, and its dropdown          | SubtitleAssociationsDialog.qml                 |
-| 1963:5465  | origin            | 240 × 525 | 🟢     | ⏳    | From the computer / OpenSubtitles, dropdown      | SubtitleSourceControls.qml, OpenSubtitlesPanel.qml |
+| 1915:8397  | subtitle multiple | 519 × 239 | 🟢     | 🟢    | A video with several subtitles: default, hover   | SubtitleAssociationsDialog.qml                 |
+| 1919:9121  | subtitle one      | 519 × 239 | 🟢     | 🟢    | A video with one subtitle: default, selected     | SubtitleAssociationsDialog.qml                 |
+| 1959:5325  | target            | 240 × 520 | 🟢     | 🟢    | To this folder / file, and its dropdown          | SubtitleAssociationsDialog.qml                 |
+| 1963:5465  | origin            | 240 × 525 | 🟢     | 🟢    | From the computer / OpenSubtitles, dropdown      | SubtitleSourceControls.qml, OpenSubtitlesPanel.qml |
 
 **Settings controls**
 
 | Node       | Name             | Size (px) | Status | Pixel | What it is                                        | Implemented in                                 |
 |------------|------------------|-----------|--------|-------|---------------------------------------------------|------------------------------------------------|
-| 3021:9835  | setting category | 228 × 140 | 🟢     | ⏳    | Sidebar item: selected or not                      | SettingsSidebar.qml                            |
-| 2372:8300  | Dropdown         | 406 × 369 | 🟢     | ⏳    | Dropdown: default, open                            | SettingsDropdown.qml, ComboBoxExt.qml          |
-| 804:1208   | Values           | 253 × 404 | 🟢     | ⏳    | Segmented choice of 2 or 3 values                  | SettingsSegmented.qml                          |
-| 3176:16556 | Values           | 360 × 216 | 🟢     | ⏳    | Vertical values (startup volume)                   | SettingsStartupVolume.qml                      |
-| 3178:16769 | EQ               | 824 × 628 | 🟢     | ⏳    | Inline equalizer: closed, open                     | SettingsEqualizerPanel.qml, SettingsEqualizer.qml |
+| 3021:9835  | setting category | 228 × 140 | 🟢     | 🟢    | Sidebar item: selected or not                      | SettingsSidebar.qml                            |
+| 2372:8300  | Dropdown         | 406 × 369 | 🟢     | 🟢    | Dropdown: default, open                            | SettingsDropdown.qml, ComboBoxExt.qml          |
+| 804:1208   | Values           | 253 × 404 | 🟢     | 🟢    | Segmented choice of 2 or 3 values                  | SettingsSegmented.qml                          |
+| 3176:16556 | Values           | 360 × 216 | 🟢     | 🟢    | Vertical values (startup volume)                   | SettingsStartupVolume.qml                      |
+| 3178:16769 | EQ               | 824 × 628 | 🟢     | 🟢    | Inline equalizer: closed, open                     | SettingsEqualizerPanel.qml, SettingsEqualizer.qml |
 | 2372:8487  | EQ presets       | 406 × 460 | 🟢     | ⏳    | Equalizer preset dropdown                          | SettingsEqualizer.qml, EqualizerPanel.qml      |
-| 6456:13892 | sub filename     | 406 × 422 | 🟢     | ⏳    | Subtitle file name matching dropdown               | SettingsDropdown.qml                           |
+| 6456:13892 | sub filename     | 406 × 422 | 🟢     | 🟢    | Subtitle file name matching dropdown               | SettingsDropdown.qml                           |
 | 2372:8834  | Setting Preset   | 406 × 412 | 🟡     | ⏳    | A preset dropdown: default, open                   | SettingsDropdown.qml                           |
 | 2372:8639  | Audio Visualizer | 406 × 369 | 🟡     | ⏳    | Visualizer choice: default, open                   | SettingsDropdown.qml, AudioVisualizationDialog.qml |
 | 2372:8733  | HDR Options      | 406 × 422 | 🟡     | ⏳    | Auto, Off, HDR10, HDR10+, Dolby Vision, HLG         | HdrOutputDialog.qml, hdr_output.cpp, HDRButton.qml |
@@ -922,7 +922,11 @@ Text matching needs Inter with the same metrics (distance-field text, no hinting
   from the demo library (`C:\VLCDemoFigma`: the media, covers, lengths and playback states of the frames), Home,
   the S01 folder (grid, list, with the mini player), the player (alone, with the library next to it, light, without
   its bars) and the music player (alone, with its folder); Add Subtitles (to a folder, to a file), Customize
-  Player, and the file, folder and playlist context menus. What is left differs
+  Player, and the file, folder and playlist context menus; 26 components (menus, sort and view options, settings
+  controls, the bar's controls, rows, the right-click menu). Fixed from them: the settings dropdown's list (the
+  check of the design, 44 px rows, 20 px under the field), the File name matching labels, the submenus 11 px clear
+  of their menu, the queue's count, the current time that is typed (1904:7238 state 3). In progress: the effects
+  panels, the library panel beside the video (Home rows, Videos and Music levels), the mini player's queue. What is left differs
   by value only (the switches and choices of the test profile), by anti-aliasing, or on purpose:
   - Settings - performance: *Process priority* is a dropdown (Normal, High...), not the number field of the design.
   - Settings - privacy: the design's second "Last.fm username" row is the password (its typo); Settings - recording:

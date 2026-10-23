@@ -538,6 +538,39 @@ preparser_pool_QueueTake(struct preparser_process_pool *pool)
     return task;
 }
 
+/* Where vlc-preparser is: NULL to look for it in the PATH */
+static char *
+preparser_pool_ExePath(void)
+{
+#ifdef _WIN32
+    const char *name = VLC_PREPARSER_PATH ".exe";
+    const char *static_name = VLC_PREPARSER_PATH "-static.exe";
+#else
+    const char *name = VLC_PREPARSER_PATH;
+    const char *static_name = VLC_PREPARSER_PATH "-static";
+#endif
+    char *path = NULL;
+
+    /* When running from build directory (vlc-static), VLC_LIB_PATH points to
+     * TOP_BUILDDIR/modules, so we need to construct TOP_BUILDDIR/bin to
+     * start vlc-preparser-static */
+    const char *lib_path = getenv("VLC_LIB_PATH");
+    if (lib_path != NULL) {
+        size_t len = strlen(lib_path);
+        if (len > 8 && strcmp(lib_path + len - 8, "/modules") == 0) {
+            if (asprintf(&path, "%.*s/bin/%s", (int)(len - 8),
+                         lib_path, static_name) < 0)
+                path = NULL;
+        }
+    }
+
+    /* If not in build directory, use the standard installed location */
+    if (path == NULL) {
+        path = config_GetSysPath(VLC_PKG_LIBEXEC_DIR, name);
+    }
+    return path;
+}
+
 /* The timeout and types of a pool do not change: no lock needed */
 static struct vlc_process *
 preparser_pool_NewProcess(struct preparser_process_pool *pool)
@@ -562,39 +595,14 @@ preparser_pool_NewProcess(struct preparser_process_pool *pool)
     };
     int argc = ARRAY_SIZE(argv);
 
-    char *path = NULL;
-#ifdef _WIN32
-    const char *name = VLC_PREPARSER_PATH ".exe";
-    const char *static_name = VLC_PREPARSER_PATH "-static.exe";
-#else
-    const char *name = VLC_PREPARSER_PATH;
-    const char *static_name = VLC_PREPARSER_PATH "-static";
-#endif
-
-    /* When running from build directory (vlc-static), VLC_LIB_PATH points to
-     * TOP_BUILDDIR/modules, so we need to construct TOP_BUILDDIR/bin to
-     * start vlc-preparser-static */
-    const char *lib_path = getenv("VLC_LIB_PATH");
-    if (lib_path != NULL) {
-        size_t len = strlen(lib_path);
-        if (len > 8 && strcmp(lib_path + len - 8, "/modules") == 0) {
-            if (asprintf(&path, "%.*s/bin/%s", (int)(len - 8),
-                         lib_path, static_name) < 0) {
-                free(str_timeout);
-                free(str_types);
-                return NULL;
-            }
-        }
-    }
-
-    /* If not in build directory, use the standard installed location */
-    if (path == NULL) {
-        path = config_GetSysPath(VLC_PKG_LIBEXEC_DIR, name);
-    }
-
+    char *path = preparser_pool_ExePath();
     struct vlc_process *process;
     if (path == NULL) {
-        process = vlc_process_Spawn(name, argc, argv);
+#ifdef _WIN32
+        process = vlc_process_Spawn(VLC_PREPARSER_PATH ".exe", argc, argv);
+#else
+        process = vlc_process_Spawn(VLC_PREPARSER_PATH, argc, argv);
+#endif
     } else {
         process = vlc_process_Spawn(path, argc, argv);
     }
@@ -771,8 +779,6 @@ preparser_pool_JoinStoppedThreadsLocked(struct preparser_process_pool *pool)
 {
     vlc_mutex_assert(&pool->lock);
 
-    assert(pool->nthreads_stopped == 0);
-
     /* Move all stopped threads to a local list while holding the lock */
     struct vlc_list to_join;
     vlc_list_init(&to_join);
@@ -785,6 +791,9 @@ preparser_pool_JoinStoppedThreadsLocked(struct preparser_process_pool *pool)
             pool->nthreads_stopped--;
         }
     }
+    /* (it was asserted 0 on entry, where it never is: callers come for the
+     * stopped threads) */
+    assert(pool->nthreads_stopped == 0);
 
     vlc_mutex_unlock(&pool->lock);
     vlc_list_foreach(t, &to_join, node) {
@@ -964,6 +973,22 @@ preparser_pool_New(vlc_object_t *obj, size_t max, vlc_tick_t timeout,
 
     pool->closing = false;
     pool->parent = obj;
+
+    /* The thread starts the process in the background (its first start can
+     * take seconds): see that it is there, the caller parses in-process
+     * without it (an antivirus may have removed it) */
+    char *path = preparser_pool_ExePath();
+    if (path != NULL) {
+        struct stat st;
+        const bool found = vlc_stat(path, &st) == 0;
+        if (!found)
+            msg_Warn(obj, "%s not found", path);
+        free(path);
+        if (!found) {
+            free(pool);
+            return NULL;
+        }
+    }
 
     /* Spawn one thread so sumbit will never fail */
     int ret = preparser_pool_SpawnThread(pool);

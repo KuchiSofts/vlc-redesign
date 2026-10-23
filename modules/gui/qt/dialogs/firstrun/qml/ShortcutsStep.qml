@@ -43,7 +43,7 @@ Item {
 
         height: lineHeightPx
         verticalAlignment: Text.AlignTop
-        color: "#969696"
+        color: VLCStyle.redesign.color("#969696", "#4d4d4d")
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: 16
         font.weight: Font.Light
@@ -82,9 +82,9 @@ Item {
         Rectangle {
             anchors.fill: parent
             radius: 12
-            color: "#1b1b1b"
+            color: VLCStyle.redesign.color("#1b1b1b", "#ababaa")
             border.width: 3
-            border.color: "#373737"
+            border.color: VLCStyle.redesign.color("#373737", "#8e8e8d")
         }
         FigmaText {
             id: label
@@ -94,7 +94,7 @@ Item {
             // Figma: the text at the start of its box
             horizontalAlignment: Text.AlignLeft
             text: keycap.text
-            color: "#eaeaea"
+            color: VLCStyle.redesign.color("#eaeaea", "#2e2e2e")
         }
     }
 

@@ -46,7 +46,11 @@ Controls.Popup {
             height: root.availableHeight - VLCStyle.dp(54, VLCStyle.scale)
             clip: true
             model: Player.audioVisualization
-            Controls.ScrollBar.vertical: Controls.ScrollBar {}
+            Controls.ScrollBar.vertical: Controls.ScrollBar {
+                // Basic's handle is light grey: darker in the light theme
+                palette.mid: VLCStyle.palette.isDark ? undefined : "#6b6b6b"
+                palette.dark: VLCStyle.palette.isDark ? undefined : "#2e2e2e"
+            }
             delegate: Controls.ItemDelegate {
                 id: row
                 required property int index
@@ -87,7 +91,7 @@ Controls.Popup {
                 anchors.fill: parent
                 visible: options.count === 0
                 text: qsTr("Play audio to select a visualization.")
-                color: VLCStyle.redesign.textSecondary
+                color: VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, "#4d4d4d")
                 wrapMode: Text.WordWrap
                 font.family: VLCStyle.redesign.fontFamily; font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
             }

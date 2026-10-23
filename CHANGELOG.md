@@ -59,6 +59,9 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
   *Ripple* and *Waves* after the *Puzzle* or *Waves* effect, with a video decoded by the graphics card (most videos).
   It is the same in VLC 4 itself. Edge detection showed nothing; it shows the edges now. 40 effects checked alone and
   in chains.
+- **A damaged file stopped the playlist**: a video with broken timestamps played to its end and stayed there, and the
+  next file never started (the same in VLC 4 itself). It ends now. 148 cut and damaged copies of 35 formats play
+  without a crash or a hang.
 - **Quitting after a film took up to 10 seconds** right after installing or updating: when a film stopped, the
   progress bar started its sound analyzer (made for songs) on it, and Windows checks a new program before it runs.
   It runs only for a song now, without holding the window, and the installer has it checked.
@@ -120,6 +123,9 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
   chain made with the first stream was made again with the next, and the TV loaded twice. A stream is added with
   its first block (a subtitle stream before any), and an MP4 file gives about a second of sound before its first
   picture after a seek.
+- Input: the wake-up of the main loop is 10 s ahead at most (a broken PCR hours ahead made it wait for that, and the
+  rest, whose PCR resets the clock, was never read), and at the end of the media the decoders are waited for twice
+  the buffering delay (at the rate), 10 s at least: a picture or a sound with a broken date kept them from emptying.
 - Filter loading (`vlc_filter_LoadModule()`): a module that opens with pictures in memory as input and a hardware
   format (no planes) as output, without a video context of its own, is closed and the next candidate tried (`chain`,
   which puts a converter after it). Filters are appended with the chain's output format, and those that don't check

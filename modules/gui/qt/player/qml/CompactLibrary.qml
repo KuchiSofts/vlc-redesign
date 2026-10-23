@@ -320,7 +320,7 @@ FocusScope {
                 // playlists are created in the media library only
                 visible: root.location.section === "folder"
                          || (root.location.section === "playlists" && root._mlAvailable)
-                onClicked: root.location.section === "folder" ? folderMenu.popup() : playlistsMenu.popup()
+                onClicked: (root.location.section === "folder" ? folderMenu : playlistsMenu).toggleFrom(this)
 
                 Widgets.RedesignMenu {
                     id: playlistsMenu
@@ -412,7 +412,7 @@ FocusScope {
                 iconSource: "qrc:///redesign/icons/sort/dim.png"
                 description: qsTr("Sort")
                 enabled: !!root._model
-                onClicked: sortMenu.popup()
+                onClicked: sortMenu.toggleFrom(this)
 
                 // Figma: an order applied, the accent dot at the corner (not
                 // for the order of the place: folders list the unwatched
@@ -460,7 +460,7 @@ FocusScope {
                 iconSource: "qrc:///redesign/icons/list/dim.png"
                 description: qsTr("View")
                 enabled: !!root._model
-                onClicked: viewMenu.popup()
+                onClicked: viewMenu.toggleFrom(this)
 
                 // (the options of the library header: the list, the only
                 // view here, stays checked: not checkable, a click keeps it)

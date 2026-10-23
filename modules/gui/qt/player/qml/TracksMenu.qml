@@ -52,6 +52,10 @@ T.Popup {
     padding: 0
     focus: true
     closePolicy: T.Popup.CloseOnEscape | T.Popup.CloseOnPressOutside
+    // a press outside only closes it, as a menu: the video under it does
+    // not pause, the button pressed (its own included) does nothing more
+    modal: true
+    dim: false
 
     onOpened: {
         previousGlobalShortcuts = MainCtx.useGlobalShortcuts

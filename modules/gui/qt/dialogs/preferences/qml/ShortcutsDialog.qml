@@ -450,6 +450,11 @@ Widgets.RedesignDialog {
                     }
                 }
                 popup: T.Popup {
+                    // a press outside only closes it (on the box too: it doesn't open
+                    // again), and goes no further, as in a native list
+                    closePolicy: T.Popup.CloseOnEscape | T.Popup.CloseOnPressOutside
+                    modal: true
+                    dim: false
                     y: scopePicker.height + VLCStyle.dp(4, VLCStyle.scale)
                     width: scopePicker.width
                     implicitHeight: contentItem.implicitHeight + topPadding + bottomPadding

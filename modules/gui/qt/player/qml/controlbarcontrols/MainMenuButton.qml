@@ -23,7 +23,7 @@ RedesignIconButton {
     description: qsTr("Menu")
     AccessibleCompat.id: "barMenuButton"
 
-    onClicked: mainMenu.popup(root, 0, root.height)
+    onClicked: mainMenu.toggleFrom(root, 0, root.height)
 
     Menus.MainMenu {
         id: mainMenu

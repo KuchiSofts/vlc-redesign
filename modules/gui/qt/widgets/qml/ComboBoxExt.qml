@@ -97,6 +97,11 @@ T.ComboBox {
     }
 
     popup: Popup {
+        // a press outside only closes it (on the box too: it doesn't open
+        // again), and goes no further, as in a native list
+        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
+        modal: true
+        dim: false
         y: control.height - 1
 
         // NOTE: This Popup should be on top of other Popup(s) most of the time.

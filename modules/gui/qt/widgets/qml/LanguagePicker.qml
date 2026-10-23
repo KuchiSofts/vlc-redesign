@@ -94,6 +94,10 @@ T.Button {
         padding: VLCStyle.dp(6, VLCStyle.scale)
         focus: true
         closePolicy: T.Popup.CloseOnEscape | T.Popup.CloseOnPressOutside
+        // a press outside only closes it (on the picker too: it doesn't open
+        // again), and goes no further
+        modal: true
+        dim: false
         onOpened: {
             search.text = ""
             search.forceActiveFocus()

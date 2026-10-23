@@ -91,6 +91,11 @@ ColumnLayout {
                 }
             }
             popup: Popup {
+                // a press outside only closes it (on the box too: it doesn't open
+                // again), and goes no further, as in a native list
+                closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
+                modal: true
+                dim: false
                 y: deviceBox.height
                 width: deviceBox.width
                 implicitHeight: Math.min(contentItem.implicitHeight, VLCStyle.dp(280, VLCStyle.scale))

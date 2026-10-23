@@ -323,7 +323,7 @@ FocusScope{
                 Navigation.rightItem: libraryButton
                 onHoveredChanged: root.requestLockUnlockAutoHide(hovered)
 
-                onClicked: mainMenu.popup(menuButton, 0, menuButton.height)
+                onClicked: mainMenu.toggleFrom(menuButton, 0, menuButton.height)
                 visible: !root._menuInBar
 
                 Widgets.DashedRect {

@@ -40,6 +40,10 @@ T.ToolButton {
 
     property real radius: VLCStyle.button_radius
 
+    // When it was last pressed: a popup it opens closes on that press
+    // (outside the popup) before the click, which must not open it again
+    property double pressedAt: 0
+
     // Settings
 
     padding: 0
@@ -78,7 +82,14 @@ T.ToolButton {
 
     // Events
 
-    Component.onCompleted: console.assert(text !== "", "text is empty: " + (description || objectName || control))
+    Component.onCompleted: {
+        console.assert(text !== "", "text is empty: " + (description || objectName || control))
+        // ("pressed" is the property here, not the signal)
+        control.pressedChanged.connect(() => {
+            if (control.pressed)
+                control.pressedAt = Date.now()
+        })
+    }
 
     // Children
 

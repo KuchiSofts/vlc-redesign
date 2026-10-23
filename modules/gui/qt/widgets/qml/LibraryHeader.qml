@@ -458,12 +458,8 @@ T.ToolBar {
                     fillMode: Image.Pad
                     smooth: false
                 }
-                onClicked: {
-                    if (sortOptions.opened)
-                        sortOptions.close()
-                    else
-                        sortOptions.popup(sortButton, 0, sortButton.height + VLCStyle.dp(8, VLCStyle.scale))
-                }
+                onClicked: sortOptions.toggleFrom(sortButton, 0,
+                                                  sortButton.height + VLCStyle.dp(8, VLCStyle.scale))
             }
 
             Widgets.IconToolButton {
@@ -482,12 +478,7 @@ T.ToolBar {
                 }
                 // Figma "View Options"
                 checked: viewOptions.opened
-                onClicked: {
-                    if (viewOptions.opened)
-                        viewOptions.close()
-                    else
-                        viewOptions.popup(this, 0, height + VLCStyle.dp(8, VLCStyle.scale))
-                }
+                onClicked: viewOptions.toggleFrom(this, 0, height + VLCStyle.dp(8, VLCStyle.scale))
 
                 Widgets.RedesignMenu {
                     id: viewOptions

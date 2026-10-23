@@ -659,6 +659,26 @@ static void MainLoop( input_thread_t *p_input, bool b_interactive )
     if( b_interactive && var_InheritBool( p_input, "start-paused" ) )
         ControlPause(p_input, vlc_tick_now(), true);
 
+    /* Where to start (the start time, the position to resume from) is
+     * asked for before anything is read: go there first, not after reading
+     * from the beginning (decoded for nothing, and a renderer got the start
+     * of the media, then the media again from there) */
+    for( ;; )
+    {
+        input_thread_private_t *priv = input_priv(p_input);
+        vlc_mutex_lock( &priv->lock_control );
+        const bool b_seek = priv->i_control > 0
+                         && ControlIsSeekRequest( priv->control[0].i_type );
+        vlc_mutex_unlock( &priv->lock_control );
+
+        int i_type;
+        input_control_param_t param;
+        if( !b_seek || ControlPop( p_input, &i_type, &param, 0, false ) )
+            break;
+        if( Control( p_input, i_type, param ) )
+            i_last_seek_mdate = vlc_tick_now();
+    }
+
     bool eof_signaled = false;
 
     demux_t *p_demux = input_priv(p_input)->master->p_demux;
@@ -3035,7 +3055,10 @@ static int InputSourceInit( input_source_t *in, input_thread_t *p_input,
     }
 
     char *psz_demux_chain = NULL;
-    if( priv->p_renderer )
+    /* The demux filter of a renderer goes on the media only: on a subtitle
+     * file, its end was the end of the media for the renderer (casting
+     * stopped at the last subtitle, before the end of the film) */
+    if( priv->p_renderer && master )
     {
         const char* psz_renderer_demux = vlc_renderer_item_demux_filter(
                     priv->p_renderer );

@@ -137,6 +137,9 @@ class MainCtx : public QObject
     Q_PROPERTY(int mouseHideTimeout READ mouseHideTimeout NOTIFY mouseHideTimeoutChanged FINAL)
     // Pixels the mouse moves before the controls of the fullscreen show
     Q_PROPERTY(int fsSensitivity READ fsSensitivity NOTIFY fsSensitivityChanged FINAL)
+    // "Show controls in fullscreen" of the settings (qt-fs-controller): the
+    // mouse shows them in fullscreen
+    Q_PROPERTY(bool fullscreenControls READ fullscreenControls NOTIFY fullscreenControlsChanged FINAL)
     // "Double click on the video" of the settings: 0 nothing, 1 fullscreen
     Q_PROPERTY(int doubleClickAction READ doubleClickAction NOTIFY doubleClickActionChanged FINAL)
     // "Show confirmation and error dialogs" of the settings (qt-error-dialogs)
@@ -292,6 +295,7 @@ public:
 
     int mouseHideTimeout() const { return m_mouseHideTimeout; }
     int fsSensitivity() const { return m_fsSensitivity; }
+    bool fullscreenControls() const { return m_fullscreenControls; }
     int doubleClickAction() const { return m_doubleClickAction; }
     bool showErrorDialogs() const { return m_showErrorDialogs; }
 
@@ -506,6 +510,7 @@ protected:
 
     int m_mouseHideTimeout = 1000;
     int m_fsSensitivity = 3;
+    bool m_fullscreenControls = true;
     int m_doubleClickAction = 1;
     bool m_showErrorDialogs = true;
 
@@ -643,6 +648,7 @@ signals:
 
     void mouseHideTimeoutChanged();
     void fsSensitivityChanged();
+    void fullscreenControlsChanged();
     void doubleClickActionChanged();
     void showErrorDialogsChanged();
 

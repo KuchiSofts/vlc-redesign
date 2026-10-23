@@ -222,9 +222,10 @@ Column {
                     labelsBaseline: presentation.labelsBaseline
                     available: (model.key !== "one-instance-when-started-from-file" && model.key !== "playlist-enqueue"
                                 || !!(root.settingsModel.revision, root.settingsModel.valueFor("one-instance")))
-                               // the fullscreen controls of the skins: with a skin only
-                               && (model.key !== "qt-fs-controller"
-                                   || !!(root.settingsModel.revision, root.settingsModel.valueFor("x-custom-skin")))
+                               // the mouse sensitivity of the controls in
+                               // fullscreen: while the mouse shows them
+                               && (model.key !== "qt-fs-sensitivity"
+                                   || !!(root.settingsModel.revision, root.settingsModel.valueFor("qt-fs-controller")))
                                && (!(model.key ?? "").endsWith("-caching") || model.category !== "network"
                                    || Number((root.settingsModel.revision, root.settingsModel.valueFor("x-buffering"))) === 4)
                     placeholder: presentation.placeholder || ""

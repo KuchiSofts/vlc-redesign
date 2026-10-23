@@ -40,8 +40,6 @@ readonly property var items: ({
         // Interface page of the design
         "x-custom-skin": [qsTr("Skin"), qsTr("Use a custom skin"), "", null, { info: true, restart: true }],
         "skins2-last": [qsTr("Skin"), qsTr("Skin file"), "openfile", null, { info: true, restart: true }],
-        // the skins read it (their fullscreen controller), not this interface
-        "qt-fs-controller": [qsTr("Skin"), qsTr("Show the fullscreen controls of the skin"), "", null, { info: true, restart: true }],
         "embedded-video": [qsTr("Window"), qsTr("Play video inside main window"), "", null, { info: true }],
         "qt-video-autoresize": [qsTr("Window"), qsTr("Resize window to fit video"), "boolchoice",
                                 { false: qsTr("Never"), true: qsTr("Always") }, { info: true, restart: true }],
@@ -54,6 +52,7 @@ readonly property var items: ({
         "qt-pin-controls": [qsTr("Playback Controls"), qsTr("Auto-hide the controls"), "boolchoice",
                             { false: qsTr("Always"), true: qsTr("In fullscreen only") }, { info: true }],
         "mouse-hide-timeout": [qsTr("Playback Controls"), qsTr("Hide after"), "slider", null, { info: false, labelsBaseline: 44, rowHeight: 57, controlTop: 1 }],
+        "qt-fs-controller": [qsTr("Playback Controls"), qsTr("Show controls in fullscreen"), "", null, { info: true }],
         "qt-system-tray": [qsTr("Notifications and System Tray"), qsTr("Show a system tray icon"), "", null, { info: true, restart: true }],
         "qt-start-minimized": [qsTr("Notifications and System Tray"), qsTr("Start minimized to the tray"), "", null, { info: true }],
         "qt-notification": [qsTr("Notifications and System Tray"), qsTr("Show a popup when the track changes"), "", null,

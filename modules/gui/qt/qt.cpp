@@ -253,9 +253,9 @@ static void ShowDialog   ( intf_thread_t *, int, int, intf_dialog_args_t * );
 #define QT_MINIMAL_MODE_TEXT N_("Start in minimal view (without menus)" )
 
 #define QT_BGCONE_TEXT N_( "Display background cone or art" )
-#define QT_BGCONE_LONGTEXT N_( "Display background cone or current album art " \
-                            "when not playing. " \
-                            "Can be disabled to prevent burning screen." )
+#define QT_BGCONE_LONGTEXT N_( "Display the cover art of the audio playing in the " \
+                            "player (the cone in the compact view). Off, a plain " \
+                            "picture takes its place, which also prevents burning the screen." )
 #define QT_BGCONE_EXPANDS_TEXT N_( "Expanding background cone or art" )
 #define QT_BGCONE_EXPANDS_LONGTEXT N_( "Background art fits window's size." )
 

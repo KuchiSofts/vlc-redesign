@@ -6,6 +6,7 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Templates as T
+import QtQuick.Controls.impl as Impl
 
 import VLC.Dialogs
 import VLC.MainInterface
@@ -753,10 +754,12 @@ FocusScope {
         radius: VLCStyle.dp(4, VLCStyle.scale)
         backgroundColor: VLCStyle.redesign.color(hovered || down ? VLCStyle.redesign.controlHoverBackground
                                                                  : "transparent", "#9c9c9b")
-        contentItem: Image {
+        contentItem: Impl.ColorImage {
             source: "qrc:///redesign/icons/" + sectionButton.iconName + "/" + sectionButton.iconState + ".png"
             sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
             fillMode: Image.Pad
+            // the filled icon of the section shown, drawn in the accent
+            color: sectionButton.iconState === "active" ? VLCStyle.redesign.accentTint : "transparent"
         }
     }
 

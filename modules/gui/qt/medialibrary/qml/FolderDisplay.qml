@@ -372,11 +372,12 @@ Widgets.PageExt {
                             radius: parent.radius
                             visible: card.playing
                             color: "#B3000000"
-                            Image {
+                            Impl.ColorImage {
                                 anchors.centerIn: parent
                                 width: VLCStyle.redesign.iconSize
                                 height: width
                                 source: "qrc:///redesign/icons/play/outline-active.png"
+                                color: VLCStyle.redesign.accentTint
                                 sourceSize: Qt.size(width, height)
                                 fillMode: Image.Pad
                                 smooth: false

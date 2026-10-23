@@ -39,16 +39,15 @@ static const Option entries[] = {
     {"interface", "qt-fs-controller"},
     {"interface", "qt-system-tray"}, {"interface", "qt-start-minimized"},
     {"interface", "qt-notification"}, {"interface", "qt:redesign/notification-duration"},
+    // the Playlist section of the design: the queue under the folders of its
+    // media (VLC 4's queue is flat: PlaylistPane.qml draws the folders as
+    // headings, the rows move, select and drop as they did)
+    {"interface", "playlist-tree"},
     // the bar of the library while nothing plays (MainDisplay.qml): not in
     // the design, after its sections
     {"interface", "qt:redesign/always-show-player-bar"},
     // the dim texts at the contrast of WCAG AA (VLCStyle.redesign.color())
     {"interface", "qt:redesign/increase-contrast"},
-    // (no "playlist-tree", the Playlist section of the design: nothing
-    // reads it in VLC 4. Its play queue is flat: vlc_playlist_t replaces an
-    // item that expands (a folder, a playlist file) by its children and
-    // keeps no parent, and the views of the queue (PlaylistListModel, a
-    // list) move, select and drop by row; a tree needs a new queue model)
     {"interface", "qt-opacity"}, {"interface", "qt-pause-minimized"},
     {"interface", "qt-auto-raise"}, {"interface", "qt-bgcone"},
     {"interface", "qt-embedded-open"}, {"interface", "qt-icon-change"},

@@ -452,8 +452,11 @@ T.ToolBar {
                 implicitHeight: implicitWidth
                 checked: sortOptions.opened
                 contentItem: Image {
+                    // (the dot of the light one in the accent)
                     source: VLCStyle.palette.isDark ? "qrc:///redesign/icons/sort/dim.png"
-                                                    : "qrc:///redesign/sort.svg"
+                            : VLCStyle.redesign.defaultAccent ? "qrc:///redesign/sort.svg"
+                            : SVGColorImage.colorize("qrc:///redesign/sort.svg")
+                                           .any({ "#D37918": VLCStyle.redesign.accent }).uri()
                     sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
                     fillMode: Image.Pad
                     smooth: false

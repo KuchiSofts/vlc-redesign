@@ -130,13 +130,17 @@ struct sout_stream_sys_t
     /* The start of a cast: the streams come one after the other (the video
      * first, the audio a moment later). The chain made with the first one
      * was made again with the next: the TV loaded twice and lost the start
-     * of the media. The first blocks wait until the streams there all sent
-     * some (and there are two), or for two seconds of media: a stream is
-     * added with its first block, and an MP4 file gives a second of sound
-     * before the first picture (after a seek, casting from the middle). */
+     * of the media. The first blocks wait until the sound and the picture
+     * both sent some: a stream is added with its first block, and a file
+     * can give seconds of one before the other (casting from the middle of
+     * a 4K film, read again from the key frame 4.35 s before: its pictures
+     * from there came first, then its sound). Not more than 10 s of media
+     * (read in an instant from a file), or 3 s of waiting (a stream with one
+     * track, read as it plays). */
     bool holdStart( sout_stream_id_sys_t *id, block_t *p_block );
     void dropHeld( sout_stream_id_sys_t *id );
     std::vector<std::pair<sout_stream_id_sys_t *, block_t *>> held;
+    vlc_tick_t held_since = VLC_TICK_INVALID;
     bool held_done = false;
 
     bool canDecodeVideo( const es_format_t * ) const;
@@ -1332,12 +1336,22 @@ static int Send(sout_stream_t *p_stream, void *_id, block_t *p_buffer)
 /* true: kept for later; false: kept too, but it is time to send them all */
 bool sout_stream_sys_t::holdStart( sout_stream_id_sys_t *id, block_t *p_block )
 {
+    if( held.empty() )
+        held_since = vlc_tick_now();
     held.emplace_back( id, p_block );
 
+    /* the sound and the picture: a subtitle stream is added before its
+     * first block, which may come much later, and a subtitle file is read
+     * ahead */
+    const auto av = []( const sout_stream_id_sys_t *s ) {
+        return s->fmt.i_cat == AUDIO_ES || s->fmt.i_cat == VIDEO_ES;
+    };
     vlc_tick_t first = VLC_TICK_INVALID, last = VLC_TICK_INVALID;
     std::vector<sout_stream_id_sys_t *> sent;
     for( const auto &h : held )
     {
+        if( !av( h.first ) )
+            continue;
         const vlc_tick_t t = h.second->i_dts != VLC_TICK_INVALID ? h.second->i_dts
                                                                  : h.second->i_pts;
         if( t != VLC_TICK_INVALID )
@@ -1350,10 +1364,12 @@ bool sout_stream_sys_t::holdStart( sout_stream_id_sys_t *id, block_t *p_block )
         if( std::find( sent.begin(), sent.end(), h.first ) == sent.end() )
             sent.push_back( h.first );
     }
-    const bool all_sent = streams.size() >= 2 && sent.size() >= streams.size();
-    const bool waited = ( first != VLC_TICK_INVALID && last - first >= VLC_TICK_FROM_SEC(2) )
-                     || held.size() >= 1024;
-    return !all_sent && !waited;
+    const size_t streams_av = std::count_if( streams.begin(), streams.end(), av );
+    const bool all_sent = streams_av >= 2 && sent.size() >= streams_av;
+    const bool waited = first != VLC_TICK_INVALID
+                     && ( last - first >= VLC_TICK_FROM_SEC(10)
+                       || vlc_tick_now() - held_since >= VLC_TICK_FROM_SEC(3) );
+    return !all_sent && !waited && held.size() < 4096;
 }
 
 /* id NULL: all of them */

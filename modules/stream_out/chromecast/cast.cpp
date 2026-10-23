@@ -32,6 +32,10 @@
 
 #include "../renderer_common.hpp"
 #include "chromecast.h"
+
+#include <algorithm>
+#include <utility>
+#include <vector>
 #include <vlc_configuration.h>
 #include <vlc_dialog.h>
 
@@ -54,6 +58,8 @@
 namespace {
 
 static constexpr vlc_tick_t CHROMECAST_HANDOFF_ATTACH_TIMEOUT = VLC_TICK_FROM_SEC(5);
+/* the TV stopped reading the end of the media for that long: it won't */
+static constexpr vlc_tick_t CHROMECAST_DRAIN_IDLE_TIMEOUT = VLC_TICK_FROM_SEC(15);
 
 struct sout_access_out_sys_t
 {
@@ -66,6 +72,7 @@ struct sout_access_out_sys_t
     int url_cb(httpd_client_t *cl, httpd_message_t *answer, const httpd_message_t *query);
     void fifo_put_back(block_t *);
     bool waitForClient(vlc_tick_t timeout, bool drained = false);
+    bool waitForDrain(vlc_tick_t idle_timeout);
     ssize_t write(sout_access_out_t *p_access, block_t *p_block);
     void close();
 
@@ -117,7 +124,18 @@ struct sout_stream_sys_t
 
     ~sout_stream_sys_t()
     {
+        dropHeld( NULL );
     }
+
+    /* The start of a cast: the streams come one after the other (the video
+     * first, the audio a moment later). The chain made with the first one
+     * was made again with the next: the TV loaded twice and lost the start
+     * of the media. The first blocks wait until the streams there all sent
+     * some (and there are two), or for half a second of media. */
+    bool holdStart( sout_stream_id_sys_t *id, block_t *p_block );
+    void dropHeld( sout_stream_id_sys_t *id );
+    std::vector<std::pair<sout_stream_id_sys_t *, block_t *>> held;
+    bool held_done = false;
 
     bool canDecodeVideo( const es_format_t * ) const;
     bool canDecodeAudio( sout_stream_t* p_stream, vlc_fourcc_t i_codec,
@@ -565,6 +583,36 @@ int sout_access_out_sys_t::url_cb(httpd_client_t *cl, httpd_message_t *answer,
     return VLC_SUCCESS;
 }
 
+/* The end of the media: until the TV has read all of it. It reads as its
+ * buffer empties, which can take longer than any fixed wait: this lasts as
+ * long as it reads, and ends when it stops reading for idle_timeout, or the
+ * user stops */
+bool sout_access_out_sys_t::waitForDrain(vlc_tick_t idle_timeout)
+{
+    size_t last = SIZE_MAX;
+    vlc_tick_t deadline = vlc_tick_now() + idle_timeout;
+    for (;;)
+    {
+        vlc_fifo_Lock(m_fifo);
+        const size_t left = vlc_fifo_GetBytes(m_fifo);
+        const bool has_client = m_client != NULL;
+        vlc_fifo_Unlock(m_fifo);
+
+        if (left == 0)
+            return true;
+        if (!has_client || m_intf->userStopped())
+            return false;
+        if (left != last)
+        {
+            last = left;
+            deadline = vlc_tick_now() + idle_timeout;
+        }
+        else if (vlc_tick_now() >= deadline)
+            return false;
+        vlc_tick_sleep(VLC_TICK_FROM_MS(100));
+    }
+}
+
 bool sout_access_out_sys_t::waitForClient(vlc_tick_t timeout, bool drained)
 {
     const vlc_tick_t deadline = vlc_tick_now() + timeout;
@@ -716,6 +764,8 @@ static void DelInternal(sout_stream_t *p_stream, void *_id, bool reset_config)
     sout_stream_sys_t *p_sys = reinterpret_cast<sout_stream_sys_t *>( p_stream->p_sys );
     sout_stream_id_sys_t *id = reinterpret_cast<sout_stream_id_sys_t *>( _id );
 
+    p_sys->dropHeld( id );
+
     for (std::vector<sout_stream_id_sys_t*>::iterator it = p_sys->streams.begin();
          it != p_sys->streams.end(); )
     {
@@ -755,13 +805,18 @@ static void DelInternal(sout_stream_t *p_stream, void *_id, bool reset_config)
     {
         /* the end of the media: the TV plays what it has (not when the user
          * stopped, or chose another device: it stops at once) */
-        if (!p_sys->p_intf->userStopped()
-         && p_sys->access_out_live.waitForClient(CHROMECAST_HANDOFF_ATTACH_TIMEOUT))
+        const bool play_to_end = !p_sys->p_intf->userStopped()
+         && p_sys->access_out_live.waitForClient(CHROMECAST_HANDOFF_ATTACH_TIMEOUT);
+        /* Closing the chain makes its muxer, and a transcoder, write the end
+         * of the media they still hold: it came after the wait and was
+         * dropped, the TV missed the last seconds (5.6 s of a remux, 11 s
+         * with subtitles) */
+        p_sys->stopSoutChain(p_stream);
+        if (play_to_end)
         {
-            p_sys->access_out_live.waitForClient(CHROMECAST_HANDOFF_ATTACH_TIMEOUT, true);
+            p_sys->access_out_live.waitForDrain(CHROMECAST_DRAIN_IDLE_TIMEOUT);
             p_sys->p_intf->preservePlaybackOnTeardown();
         }
-        p_sys->stopSoutChain(p_stream);
         p_sys->p_intf->requestPlayerStop();
         p_sys->access_out_live.clear();
         p_sys->transcoding_state = TRANSCODING_NONE;
@@ -1204,6 +1259,33 @@ bool sout_stream_sys_t::isFlushing( sout_stream_t *p_stream )
     return false;
 }
 
+static void SendHeld( sout_stream_t *p_stream, sout_stream_sys_t *p_sys )
+{
+    p_sys->held_done = true;
+    std::vector<std::pair<sout_stream_id_sys_t *, block_t *>> blocks;
+    blocks.swap( p_sys->held );
+    std::vector<sout_stream_id_sys_t *> failed;
+    for( auto &b : blocks )
+    {
+        if( std::find( failed.begin(), failed.end(), b.first ) != failed.end() )
+        {
+            block_ChainRelease( b.second );
+            continue;
+        }
+        sout_stream_id_sys_t *next_id = p_sys->GetSubId( p_stream, b.first );
+        if( next_id == NULL )
+        {
+            block_ChainRelease( b.second );
+            failed.push_back( b.first );
+        }
+        else if( sout_StreamIdSend( p_sys->p_out, next_id, b.second ) != VLC_SUCCESS )
+        {
+            failed.push_back( b.first );
+            DelInternal( p_stream, b.first, false );
+        }
+    }
+}
+
 static int Send(sout_stream_t *p_stream, void *_id, block_t *p_buffer)
 {
     sout_stream_sys_t *p_sys = reinterpret_cast<sout_stream_sys_t *>( p_stream->p_sys );
@@ -1213,6 +1295,14 @@ static int Send(sout_stream_t *p_stream, void *_id, block_t *p_buffer)
     if( p_sys->isFlushing( p_stream ) || p_sys->cc_eof )
     {
         block_ChainRelease( p_buffer );
+        return VLC_SUCCESS;
+    }
+
+    if( !p_sys->held_done )
+    {
+        if( p_sys->holdStart( id, p_buffer ) )
+            return VLC_SUCCESS;
+        SendHeld( p_stream, p_sys );
         return VLC_SUCCESS;
     }
 
@@ -1230,11 +1320,55 @@ static int Send(sout_stream_t *p_stream, void *_id, block_t *p_buffer)
     return ret;
 }
 
+/* true: kept for later; false: kept too, but it is time to send them all */
+bool sout_stream_sys_t::holdStart( sout_stream_id_sys_t *id, block_t *p_block )
+{
+    held.emplace_back( id, p_block );
+
+    vlc_tick_t first = VLC_TICK_INVALID, last = VLC_TICK_INVALID;
+    std::vector<sout_stream_id_sys_t *> sent;
+    for( const auto &h : held )
+    {
+        const vlc_tick_t t = h.second->i_dts != VLC_TICK_INVALID ? h.second->i_dts
+                                                                 : h.second->i_pts;
+        if( t != VLC_TICK_INVALID )
+        {
+            if( first == VLC_TICK_INVALID || t < first )
+                first = t;
+            if( last == VLC_TICK_INVALID || t > last )
+                last = t;
+        }
+        if( std::find( sent.begin(), sent.end(), h.first ) == sent.end() )
+            sent.push_back( h.first );
+    }
+    const bool all_sent = streams.size() >= 2 && sent.size() >= streams.size();
+    const bool waited = ( first != VLC_TICK_INVALID && last - first >= VLC_TICK_FROM_MS(500) )
+                     || held.size() >= 256;
+    return !all_sent && !waited;
+}
+
+/* id NULL: all of them */
+void sout_stream_sys_t::dropHeld( sout_stream_id_sys_t *id )
+{
+    for( auto it = held.begin(); it != held.end(); )
+    {
+        if( id == NULL || it->first == id )
+        {
+            block_ChainRelease( it->second );
+            it = held.erase( it );
+        }
+        else
+            ++it;
+    }
+}
+
 static void Flush( sout_stream_t *p_stream, void *_id )
 {
     sout_stream_sys_t *p_sys = reinterpret_cast<sout_stream_sys_t *>( p_stream->p_sys );
     sout_stream_id_sys_t *id = reinterpret_cast<sout_stream_id_sys_t *>( _id );
     vlc_mutex_locker locker(&p_sys->lock);
+
+    p_sys->dropHeld( id );
 
     sout_stream_id_sys_t *next_id = p_sys->GetSubId( p_stream, id, false );
     if ( next_id == NULL )

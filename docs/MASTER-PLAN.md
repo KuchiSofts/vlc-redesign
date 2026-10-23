@@ -17,7 +17,7 @@ counted from this document's own tables and checklists (column *From*); ⚪ idea
 
 | Program         | Progress             | Done    | %     | From                                   |
 |-----------------|----------------------|---------|-------|----------------------------------------|
-| Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜ | 78/94   | 82 %  | [§8](#8-next-release-030) checklists   |
+| Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜ | 79/94   | 84 %  | [§8](#8-next-release-030) checklists   |
 | Linux           | 🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 1/7     | 14 %  | [§9](#linux)                           |
 | macOS           | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/4     | 0 %   | [§9](#macos)                           |
 | Windows ARM64   | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/3     | 0 %   | [§9](#windows-on-arm64)                |
@@ -32,7 +32,7 @@ Windows 0.2.6 is released; 0.3.0 counts the lines of section 8 (done since 0.2.6
 | Area                    | Progress             | Done    | %     | From                                   |
 |-------------------------|----------------------|---------|-------|----------------------------------------|
 | Design frames (Figma)   | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 | 100/103 | 97 %  | [§5](#5-design-frame-by-frame) tables  |
-| Pixel check             | 🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜ | 88/103  | 85 %  | [§5](#5-design-frame-by-frame) tables  |
+| Pixel check             | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 100/103 | 97 %  | [§5](#5-design-frame-by-frame) tables  |
 | Light theme and accents | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 16/17   | 94 %  | [§8.3](#83-light-theme-and-accents)    |
 | Settings rows           | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 211/212 | 99 %  | [§8.5](#85-settings-rows)              |
 | Classic dialogs         | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 11/11   | 100 % | [§8.6](#86-classic-dialogs)            |
@@ -234,16 +234,18 @@ Shared: `ToolbarEditorDialog.qml` (the 1048 × 655 panel), `ToolbarEditorButtonL
 | Node       | Name               | Size (px)   | Status | Pixel | What it is                                                  | Implemented in                                   |
 |------------|--------------------|-------------|--------|-------|-------------------------------------------------------------|--------------------------------------------------|
 | 2107:5604  | Player - customize | 1920 × 1080 | 🟢     | 🟢    | Customize Player open: profile picker, palette, Cancel, Save | shared                                           |
-| 2160:6137  | Player - customize | 1920 × 1080 | 🟢     | ⏳    | The timeline dragged to a row of its own                     | ControlBar.qml, ControlRepeater.qml              |
-| 2160:6564  | Player - customize | 1920 × 1080 | 🟢     | ⏳    | A control dragged from the palette onto the bar              | shared, ControlBar.qml                           |
-| 2160:7005  | Player - customize | 1920 × 1080 | 🟢     | ⏳    | Controls moved along the bar                                 | shared                                           |
-| 2160:7437  | Player - customize | 1920 × 1080 | 🟢     | ⏳    | Library toggle and ⋯ menu moved into the bar                  | LibraryButton.qml, MainMenuButton.qml            |
-| 2160:7869  | Player - customize | 1920 × 1080 | 🟢     | ⏳    | The edited bar, ready to save                                | shared                                           |
-| 6587:19923 | Player - customize | 1920 × 1080 | 🟢     | ⏳    | Another profile being edited                                 | shared, ProfilesMenu.qml                         |
-| 2160:8301  | Player - customize | 1920 × 1080 | 🟢     | ⏳    | The player after editing: the active profile's bar           | ControlBar.qml                                   |
-| 2160:8732  | Player - customize | 1920 × 1080 | 🟢     | ⏳    | Saved layout: file name in the bar, two rows, library left   | FileNameWidget.qml, MetadataText.qml, CompactLibrary.qml |
+| 2160:6137  | Player - customize | 1920 × 1080 | 🟢     | 🟢    | The timeline dragged to a row of its own                     | ControlBar.qml, ControlRepeater.qml              |
+| 2160:6564  | Player - customize | 1920 × 1080 | 🟢     | 🟢    | A control dragged from the palette onto the bar              | shared, ControlBar.qml                           |
+| 2160:7005  | Player - customize | 1920 × 1080 | 🟢     | 🟢    | Controls moved along the bar                                 | shared                                           |
+| 2160:7437  | Player - customize | 1920 × 1080 | 🟢     | 🟢    | Library toggle and ⋯ menu moved into the bar                  | LibraryButton.qml, MainMenuButton.qml            |
+| 2160:7869  | Player - customize | 1920 × 1080 | 🟢     | 🟢    | The edited bar, ready to save                                | shared                                           |
+| 6587:19923 | Player - customize | 1920 × 1080 | 🟢     | 🟢    | Another profile being edited                                 | shared, ProfilesMenu.qml                         |
+| 2160:8301  | Player - customize | 1920 × 1080 | 🟢     | 🟢    | The player after editing: the active profile's bar           | ControlBar.qml                                   |
+| 2160:8732  | Player - customize | 1920 × 1080 | 🟢     | 🟢    | Saved layout: file name in the bar, two rows, library left   | FileNameWidget.qml, MetadataText.qml, CompactLibrary.qml |
 
-Notes: editing the music bar and the mini player is implemented, not yet verified (§8.8).
+Notes: the bars are compared with a profile of the frame written in the settings (the video area is the demo's 16:9
+picture, letterboxed where Figma stretches it); the fullscreen button stays in the bar (issue #1) where these frames
+put it in the top bar. Editing the music bar is verified (§8.8).
 
 ### 5.7 Player - hide UI (1)
 
@@ -270,7 +272,7 @@ Shared: `SubtitleAssociationsDialog.qml` (1048 × 800, `#0E0E0E` at 95 %), `Subt
 | 1911:7545  | Add Subtitles to Playlist/Folder | 1048 × 800  | 🟢     | 🟢    | To a folder, from the computer: a row per video   | shared                  |
 | 3336:11929 | Add Subtitles to Playlist/Folder | 1048 × 800  | 🟢     | 🟢    | The same, several subtitles per video             | shared                  |
 | 1919:8707  | Add Subtitles to Playlist/Folder | 1048 × 800  | 🟢     | 🟢    | One subtitle for the folder, origin dropdown      | shared                  |
-| 1919:9278  | Add Subtitles to Playlist/Folder | 1048 × 800  | 🟢     | ⏳    | To one file, from OpenSubtitles, English          | shared, OpenSubtitlesPanel.qml |
+| 1919:9278  | Add Subtitles to Playlist/Folder | 1048 × 800  | 🟢     | 🟢    | To one file, from OpenSubtitles, English          | shared (SubtitleAssociationsDialog.qml) |
 
 ### 5.10 Keyboard Shortcuts (1)
 
@@ -312,7 +314,7 @@ open. The design's typo "changew" reads "changes".
 | 3073:14187 | Settings - video       | 1048 × 865  | 🟢     | 🟢    | Output, Picture, Deinterlacing, Framing, Snapshots              | SettingsPicture.qml               |
 | 3073:15375 | Settings - video       | 1048 × 865  | 🟢     | 🟢    | Advanced: aspect and crop ratios, pixel aspect ratio            | shared                            |
 | 3073:15879 | Settings - audio       | 1048 × 865  | 🟢     | 🟢    | Output, Volume, Loudness, Effects, Tracks, Visualization        | SettingsAudioOutput.qml, SettingsStartupVolume.qml, SettingsEqualizer.qml |
-| 3180:17398 | Settings - audio       | 1048 × 865  | 🟢     | ⏳    | Advanced: pass-through, Dolby Surround, resampling, media role  | as above                          |
+| 3180:17398 | Settings - audio       | 1048 × 865  | 🟢     | 🟢    | Advanced: pass-through, Dolby Surround, resampling, media role  | as above                          |
 | 3180:17989 | Settings - subtitles   | 1048 × 865  | 🟢     | 🟢    | Languages, Loading, Appearance, Timing, On-Screen Messages      | SettingsSubtitleLanguages.qml     |
 | 6536:13908 | Settings - subtitles   | 1048 × 865  | 🟢     | 🟢    | Advanced: folders, ASS/SSA styling, shadow angle, direction     | as above                          |
 | 6536:14482 | Settings - controls    | 1048 × 865  | 🟢     | 🟢    | Shortcuts, skip amounts, mouse, web remote                      | SettingsActionRow.qml             |
@@ -332,7 +334,7 @@ added in build 115 are in the app ⏳ (§8.5).
 
 | Node       | Name         | Size (px)  | Status | Pixel | What it is                                     | Implemented in                               |
 |------------|--------------|------------|--------|-------|------------------------------------------------|----------------------------------------------|
-| 42:356     | Icon         | 548 × 812  | 🟢     | ⏳    | The icon set: 96 names with their states        | pixmaps/redesign/ (icons, duo), redesign_icon_provider.cpp |
+| 42:356     | Icon         | 548 × 812  | 🟢     | 🟢    | The icon set: 96 names with their states        | pixmaps/redesign/ (icons, duo), redesign_icon_provider.cpp |
 | 177:98     | Icon Wrapper | 72 × 122   | 🟢     | ⏳    | Icon button: default, hover                     | RedesignIconButton.qml                       |
 | 500:3063   | Button       | 400 × 140  | 🟢     | 🟢    | Dialog button: neutral, accent                  | RedesignButton.qml, SettingsButton.qml       |
 | 848:1712   | play         | 94 × 116   | 🟢     | 🟢    | Play, pause                                     | PlayButton.qml                               |
@@ -344,7 +346,7 @@ added in build 115 are in the app ⏳ (§8.5).
 |------------|--------------|----------------|--------|-------|-------------------------------------------------------|-------------------------------------------------|
 | 491:1780   | Controls     | 1960 × 11139   | 🟢     | 🟢    | Control bar and its 15 panel states (queue, tracks…)  | ControlBar.qml, QueueCard.qml, TracksMenu.qml, SubtitleTracksPanel.qml |
 | 244:184    | volume       | 130 × 646      | 🟢     | 🟢    | Cone volume, 13 states from 0 to 200 %                | VolumeWidget.qml                                |
-| 2245:9805  | audio value  | 121 × 37       | 🟢     | ⏳    | The value shown while the volume changes               | VolumeWidget.qml                                |
+| 2245:9805  | audio value  | 121 × 37       | 🟢     | 🟢    | The value shown while the volume changes               | VolumeWidget.qml                                |
 | 1904:7238  | Current Time | 114 × 164      | 🟢     | 🟢    | Elapsed time: default, hover, click                    | ControlBar.qml                                  |
 | 1905:7312  | Duration     | 114 × 164      | 🟢     | 🟢    | Length: default, click (remaining time)                | ControlBar.qml                                  |
 | 2151:9673  | thumbnail    | 272 × 189      | 🟢     | ⏳    | Seek bar frame preview with its time                   | SeekFramePreview.qml                            |
@@ -798,8 +800,10 @@ and an accepted request made the TV fail after a pause in a test.
 - 🟢 Geometry, overlay and advanced video filters in the effects panel
 - 🟡 Setting Preset and Audio Visualizer compared with 2372:8834 and 2372:8639 (the visualizer is; no screen uses the
   preset list)
-- 🔴 Editing the music bar and the mini player verified
-- 🟡 Pixel check of all 103 frames (§11): 88
+- 🟢 Editing the music bar verified: a control dragged from the palette onto it and saved (`$1` of the profile);
+  the mini player card keeps the fixed controls of 970:3091, and Customize Player from the library shows the player
+  to edit its bars in place
+- 🟡 Pixel check of all 103 frames (§11): 100 (two hover states cannot be captured; Setting Preset in progress)
 - ⚪ Subtitle cues drawn on the seek bar
 - ⚪ A *What's new* card after an update
 - ⚪ The accent following the Windows accent colour (an option)
@@ -820,7 +824,7 @@ and an accepted request made the TV fail after a pause in a test.
 - 🔴 Small updates from 0.2.4, 0.2.5 and 0.2.6 built and checked
 - 🔴 Announcement in Discussions; every fixed issue answered with the release link
 
-Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 78 🟢, 2 🟡, 14 🔴 (94), of which 11 🟢 are
+Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 79 🟢, 2 🟡, 13 🔴 (94), of which 11 🟢 are
 in the app ⏳.
 Languages (§12) and the community (§13) have bars of their own.
 
@@ -944,7 +948,9 @@ Text matching needs Inter with the same metrics (distance-field text, no hinting
     right (970:2703, 970:3308); it starts at the left.
   - Player - Light (2425:13624) draws the video to the right edge of the window; its dark frames (187:328, 247:445)
     and the app keep the 10 px frame there.
-  - Add Subtitles from OpenSubtitles (1919:9278) lists answers of the service: not compared (its results change).
+  - Add Subtitles from OpenSubtitles (1919:9278): its controls row is identical (0 tiles); the answers of the service
+    are listed in the rows of 1919:8707 (FileRow). Before the first search VLC asks for the account the service
+    requires (API key, username, password), a row the design does not draw.
   - Customize Player: the other eight frames are steps of a drag in the editor (the bars as the user moves items).
 - 🟢 Figma references exported: all 103 frames at 1:1 (`C:\VLCQAigma`; the oversized component sheets in tiles
   joined pixel for pixel)

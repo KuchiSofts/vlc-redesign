@@ -870,7 +870,6 @@ modules/gui/qt/medialibrary/qml/ScanProgressBar.qml
 modules/gui/qt/medialibrary/qml/FolderDisplay.qml
 modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml
 modules/gui/qt/medialibrary/qml/OpenMediaButton.qml
-modules/gui/qt/medialibrary/qml/OpenSubtitlesPanel.qml
 modules/gui/qt/medialibrary/qml/PlaylistCreateDialog.qml
 modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml
 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml

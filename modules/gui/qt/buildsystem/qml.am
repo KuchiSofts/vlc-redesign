@@ -111,7 +111,6 @@ libqml_module_medialibrary_a_CXXFLAGS = $(libqt_plugin_la_CXXFLAGS)
 libqml_module_medialibrary_a_CPPFLAGS = $(libqt_plugin_la_CPPFLAGS)
 libqml_module_medialibrary_a_QML = \
 	medialibrary/qml/SubtitleSourceControls.qml \
-	medialibrary/qml/OpenSubtitlesPanel.qml \
 	medialibrary/qml/ArtistTopBanner.qml \
 	medialibrary/qml/AudioGridItem.qml \
 	medialibrary/qml/HomeDisplay.qml \

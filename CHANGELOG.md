@@ -74,8 +74,19 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
 - **A film cast as it is played one second on a Samsung TV**: a film the TV can play without conversion (no
   subtitles shown) went as a fragmented MP4, which the TV took for a one-second file. It goes as MPEG-TS now, and a
   TV that stops such a film right after it began gets it converted instead of an error.
+- **The subtitles window opened again when its button was clicked to close it**, and so did the menus of the ⋯
+  button and of the library's Sort, View and More buttons. A click on their button opens and closes them now. A
+  click outside a window or a list only closes it: a click on the video no longer pauses the film at the same time,
+  and a click on another button does nothing more (the cast window, the sleep timer, the visualizer, HDR, every
+  list of the settings, the language list).
+- **The light theme left some windows dark or hard to read**: the tracks and subtitles window, the profiles list,
+  the welcome screens, the shortcut windows, the cast and visualizer windows, the mini queue, selected text, the
+  player customization and the effect sliders follow the theme now (the dark theme looks the same).
 
 ### Changed
+
+- **The empty player shows Figma's pixel cat**: the player with nothing to play shows the picture of the design,
+  the white cat on the floor of a dark room, drawn sharp at any size (it uses no picture file or memory).
 
 - **4K films go to the TV four times faster**: a 4K film converted for the TV is made smaller by the graphics card
   instead of the processor (6 times faster than it plays on an RTX 4090, 2.5 times on an AMD Radeon built into the

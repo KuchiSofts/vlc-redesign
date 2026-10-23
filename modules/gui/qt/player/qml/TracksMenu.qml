@@ -19,6 +19,7 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Templates as T
+import QtQuick.Controls.impl as Impl
 
 import VLC.Dialogs
 import VLC.MainInterface
@@ -36,6 +37,12 @@ T.Popup {
         { title: qsTr("Audio"), icon: "qrc:///redesign/track-audio.png", activeIcon: "qrc:///redesign/track-audio-active.png", tab: 1 },
         { title: qsTr("Subtitles"), icon: "qrc:///redesign/track-subtitles.png", activeIcon: "qrc:///redesign/track-subtitles-active.png", tab: 0 }
     ]
+    // The pictures of the tabs and the checks are drawn in #8F8F8F and the
+    // default accent: tinted in the light theme and for the other accents
+    readonly property color iconTint: VLCStyle.palette.isDark ? "transparent"
+                                      : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
+    readonly property color accentTint: Qt.colorEqual(VLCStyle.redesign.accent, "#D37918") ? "transparent"
+                                        : VLCStyle.redesign.accent
 
     function ensureVisible(item) {
         const top = item.mapToItem(scroll, 0, 0).y
@@ -61,7 +68,7 @@ T.Popup {
     onClosed: MainCtx.useGlobalShortcuts = previousGlobalShortcuts
 
     background: Rectangle {
-        color: VLCStyle.redesign.windowBackground
+        color: VLCStyle.redesign.color(VLCStyle.redesign.windowBackground, "#c2c2c1")
         radius: VLCStyle.dp(6, VLCStyle.scale)
     }
 
@@ -82,7 +89,7 @@ T.Popup {
                     Accessible.name: modelData.title
                     onClicked: root.currentTab = modelData.tab
                     background: Rectangle {
-                        color: parent.hovered ? "#151515" : "transparent"
+                        color: parent.hovered ? VLCStyle.redesign.color("#151515", "#b5b5b4") : "transparent"
                         Rectangle {
                             anchors.bottom: parent.bottom
                             anchors.horizontalCenter: parent.horizontalCenter
@@ -94,8 +101,9 @@ T.Popup {
                     contentItem: RowLayout {
                         spacing: VLCStyle.dp(8, VLCStyle.scale)
                         Item { Layout.fillWidth: true }
-                        Image {
+                        Impl.ColorImage {
                             source: root.currentTab === modelData.tab ? modelData.activeIcon : modelData.icon
+                            color: root.currentTab === modelData.tab ? root.accentTint : root.iconTint
                             visible: root.width >= VLCStyle.dp(320, VLCStyle.scale)
                             sourceSize.width: VLCStyle.dp(24, VLCStyle.scale)
                             sourceSize.height: VLCStyle.dp(24, VLCStyle.scale)
@@ -104,7 +112,8 @@ T.Popup {
                         }
                         Text {
                             text: modelData.title
-                            color: root.currentTab === modelData.tab ? VLCStyle.redesign.accent : VLCStyle.redesign.textMuted
+                            color: root.currentTab === modelData.tab ? VLCStyle.redesign.accent
+                                                                     : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                             font.family: VLCStyle.redesign.fontFamily
                             font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                         }
@@ -117,7 +126,7 @@ T.Popup {
         Rectangle {
             Layout.fillWidth: true
             height: VLCStyle.dp(1, VLCStyle.scale)
-            color: VLCStyle.redesign.separator
+            color: VLCStyle.redesign.color(VLCStyle.redesign.separator, "#9c9c9b")
         }
 
         Flickable {
@@ -204,7 +213,8 @@ T.Popup {
                             background: Rectangle {
                                 radius: VLCStyle.redesign.controlRadius
                                 color: refreshDevices.hovered || refreshDevices.down
-                                       ? VLCStyle.redesign.controlHoverBackground : "transparent"
+                                       ? VLCStyle.redesign.color(VLCStyle.redesign.controlHoverBackground, "#9c9c9b")
+                                       : "transparent"
                                 border.width: refreshDevices.visualFocus ? 1 : 0
                                 border.color: VLCStyle.redesign.focusColor
                             }
@@ -337,7 +347,7 @@ T.Popup {
         Rectangle {
             Layout.fillWidth: true
             height: VLCStyle.dp(1, VLCStyle.scale)
-            color: VLCStyle.redesign.separator
+            color: VLCStyle.redesign.color(VLCStyle.redesign.separator, "#9c9c9b")
         }
 
         RowLayout {
@@ -373,12 +383,12 @@ T.Popup {
         implicitHeight: VLCStyle.dp(36, VLCStyle.scale)
         focusPolicy: Qt.StrongFocus
         background: Rectangle {
-            color: parent.hovered || parent.activeFocus ? "#151515" : "transparent"
+            color: parent.hovered || parent.activeFocus ? VLCStyle.redesign.color("#151515", "#b5b5b4") : "transparent"
             radius: VLCStyle.dp(4, VLCStyle.scale)
         }
         contentItem: Text {
             text: parent.text
-            color: parent.selected ? VLCStyle.redesign.accent : VLCStyle.redesign.textMuted
+            color: parent.selected ? VLCStyle.redesign.accent : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
             verticalAlignment: Text.AlignVCenter
             leftPadding: VLCStyle.dp(8, VLCStyle.scale)
             rightPadding: VLCStyle.dp(8, VLCStyle.scale)
@@ -393,15 +403,16 @@ T.Popup {
         focusPolicy: Qt.StrongFocus
         onActiveFocusChanged: if (activeFocus) root.ensureVisible(this)
         background: Rectangle {
-            color: parent.checked ? VLCStyle.redesign.accentBackground
-                 : parent.hovered || parent.activeFocus ? VLCStyle.redesign.controlHoverBackground : "transparent"
+            color: parent.checked ? VLCStyle.redesign.color(VLCStyle.redesign.accentBackground, "#dedede")
+                 : parent.hovered || parent.activeFocus ? VLCStyle.redesign.color(VLCStyle.redesign.controlHoverBackground, "#9c9c9b")
+                 : "transparent"
             border.width: VLCStyle.dp(1, VLCStyle.scale)
-            border.color: parent.activeFocus ? VLCStyle.redesign.focusColor : VLCStyle.redesign.border
+            border.color: parent.activeFocus ? VLCStyle.redesign.focusColor : VLCStyle.redesign.color(VLCStyle.redesign.border, "#8e8e8d")
             radius: VLCStyle.dp(4, VLCStyle.scale)
         }
         contentItem: Text {
             text: parent.text
-            color: parent.checked ? VLCStyle.redesign.accent : VLCStyle.redesign.textPrimary
+            color: parent.checked ? VLCStyle.redesign.accent : VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
             elide: Text.ElideRight
@@ -419,12 +430,12 @@ T.Popup {
     component SectionDivider: Rectangle {
         Layout.fillWidth: true
         implicitHeight: VLCStyle.dp(1, VLCStyle.scale)
-        color: VLCStyle.redesign.separator
+        color: VLCStyle.redesign.color(VLCStyle.redesign.separator, "#9c9c9b")
     }
 
     component EmptyLabel: Text {
         Layout.fillWidth: true
-        color: VLCStyle.redesign.textMuted
+        color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
         wrapMode: Text.WordWrap
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.dp(12, VLCStyle.scale)
@@ -435,15 +446,16 @@ T.Popup {
         focusPolicy: Qt.StrongFocus
         onActiveFocusChanged: if (activeFocus) root.ensureVisible(this)
         background: Rectangle {
-            color: parent.hovered || parent.activeFocus ? "#151515" : "transparent"
+            color: parent.hovered || parent.activeFocus ? VLCStyle.redesign.color("#151515", "#b5b5b4") : "transparent"
             radius: VLCStyle.dp(4, VLCStyle.scale)
         }
         contentItem: Item {
-            Image {
+            Impl.ColorImage {
                 anchors.left: parent.left
                 anchors.leftMargin: VLCStyle.dp(12, VLCStyle.scale)
                 anchors.verticalCenter: parent.verticalCenter
                 source: "qrc:///redesign/track-check-active.png"
+                color: root.accentTint
                 visible: parent.parent.checked
                 width: VLCStyle.dp(24, VLCStyle.scale)
                 height: width
@@ -454,7 +466,7 @@ T.Popup {
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
                 text: parent.parent.text
-                color: VLCStyle.redesign.textSecondary
+                color: VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, "#4d4d4d")
                 elide: Text.ElideRight
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
@@ -479,7 +491,7 @@ T.Popup {
 
         Text {
             text: title
-            color: VLCStyle.redesign.textPrimary
+            color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")
             Layout.fillWidth: true
             font.pixelSize: VLCStyle.dp(12, VLCStyle.scale)
         }
@@ -492,7 +504,7 @@ T.Popup {
             }
             Text {
                 text: value + " ms"
-                color: VLCStyle.redesign.textMuted
+                color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                 width: VLCStyle.dp(64, VLCStyle.scale)
                 height: VLCStyle.dp(34, VLCStyle.scale)
                 verticalAlignment: Text.AlignVCenter

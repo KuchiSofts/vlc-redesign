@@ -17,7 +17,7 @@ counted from this document's own tables and checklists (column *From*); ⚪ idea
 
 | Program         | Progress             | Done    | %     | From                                   |
 |-----------------|----------------------|---------|-------|----------------------------------------|
-| Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜ | 73/94   | 77 %  | [§8](#8-next-release-030) checklists   |
+| Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜ | 74/94   | 78 %  | [§8](#8-next-release-030) checklists   |
 | Linux           | 🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 1/7     | 14 %  | [§9](#linux)                           |
 | macOS           | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/4     | 0 %   | [§9](#macos)                           |
 | Windows ARM64   | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/3     | 0 %   | [§9](#windows-on-arm64)                |
@@ -441,7 +441,7 @@ a 400 × 445 popup.
 | 4  | HDR10+ and Dolby Vision always disabled                            | 2372:8733                                | 🔴     |
 | 5  | Not compared yet: Setting Preset, Audio Visualizer                 | 2372:8834, 2372:8639                     | 🔴     |
 | 6  | No background blur: panels solid at 95 % (the music backdrop is blurred); what shows through is at most 5 % (13 grey levels, measured: 4 under the ⋯ menu), under the pixel tolerance, so no blur pass is spent on the GPU | every floating panel | 🟢 |
-| 7  | A stray separator line in the Disc tab of Open Media               | outside the file                         | 🔴     |
+| 7  | A stray separator line in the Disc tab of Open Media               | outside the file                         | 🟢     |
 
 Fixed in build 115: the light theme leftovers, the accent on every check mark and active icon, four settings rows,
 the new playlist's thumbnail and empty playlists, the resume card, the classic dialogs.
@@ -759,7 +759,7 @@ All classic windows go through one hook, `redesign_widget_theme.cpp`, applied fr
 - 🟢 The crash it caused at start (the shared menu style wrapped by a dialog's style sheet, 1 start in 2) fixed;
   6 runs clean
 - 🟢 Go to time, statistics, plugins list (the same hook) · in the app ⏳
-- 🔴 A stray separator line in the Disc tab
+- 🟢 A stray separator line in the Disc tab (removed, build 121)
 - ⚪ Go to time, statistics, plugins list and folder information redrawn in QML, as another implementation did
 
 ### 8.7 Casting
@@ -813,7 +813,7 @@ and an accepted request made the TV fail after a pause in a test.
 - 🔴 Small updates from 0.2.4, 0.2.5 and 0.2.6 built and checked
 - 🔴 Announcement in Discussions; every fixed issue answered with the release link
 
-Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 73 🟢, 0 🟡, 21 🔴 (94), of which 11 🟢 are
+Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 74 🟢, 0 🟡, 20 🔴 (94), of which 11 🟢 are
 in the app ⏳.
 Languages (§12) and the community (§13) have bars of their own.
 

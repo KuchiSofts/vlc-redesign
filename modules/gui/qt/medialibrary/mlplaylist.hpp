@@ -47,6 +47,9 @@ public: // Interface
     bool isFavorite() const;
     void setIsFavorite(bool favorite);
 
+    // seconds since 1970, with the id it names the chosen thumbnail
+    uint32_t getCreationDate() const;
+
 private:
     QString m_name;
 
@@ -58,6 +61,7 @@ private:
     unsigned int m_nbUnknown;
 
     bool m_isFavorite;
+    uint32_t m_creationDate;
 };
 
 #endif

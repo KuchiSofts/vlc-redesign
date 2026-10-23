@@ -35,6 +35,7 @@ MLPlaylist::MLPlaylist(const vlc_ml_playlist_t * data)
     , m_nbVideo(data->i_nb_video)
     , m_nbUnknown(data->i_nb_unknown)
     , m_isFavorite(data->b_is_favorite)
+    , m_creationDate(data->i_creation_date)
 {
     assert(data);
 }
@@ -88,4 +89,9 @@ bool MLPlaylist::isFavorite() const
 void MLPlaylist::setIsFavorite(bool favorite)
 {
     m_isFavorite = favorite;
+}
+
+uint32_t MLPlaylist::getCreationDate() const
+{
+    return m_creationDate;
 }

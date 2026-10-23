@@ -35,7 +35,7 @@ Windows 0.2.6 is released; 0.3.0 counts the lines of section 8 (done since 0.2.6
 | Pixel check             | 🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ | 30/103  | 29 %  | [§5](#5-design-frame-by-frame) tables  |
 | Light theme and accents | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 16/17   | 94 %  | [§8.3](#83-light-theme-and-accents)    |
 | Settings rows           | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 211/212 | 99 %  | [§8.5](#85-settings-rows)              |
-| Classic dialogs         | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 10/11   | 90 %  | [§8.6](#86-classic-dialogs)            |
+| Classic dialogs         | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 11/11   | 100 % | [§8.6](#86-classic-dialogs)            |
 | Popups and menus        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 15/15   | 100 % | [§8.4](#84-popups-and-menus)           |
 | Casting                 | 🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜ | 13/16   | 81 %  | [§7](#7-desktop-for-windows-what-is-done) + [§8.7](#87-casting) |
 | Languages               | 🟩🟩🟩🟩⬜⬜⬜⬜⬜⬜ | 4/9     | 44 %  | [§12](#12-languages)                   |

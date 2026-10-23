@@ -93,6 +93,7 @@
         <file alias="noart.png">pixmaps/placeholder/noart.png</file>
         <file alias="noart_album.svg">pixmaps/placeholder/noart_album.svg</file>
         <file alias="noart_albumCover.svg">pixmaps/placeholder/noart_albumCover.svg</file>
+        <file alias="noart_albumCover_dark.svg">pixmaps/placeholder/noart_albumCover_dark.svg</file>
         <file alias="noart_artist.svg">pixmaps/placeholder/noart_artist.svg</file>
         <file alias="noart_artist_small.svg">pixmaps/placeholder/noart_artist_small.svg</file>
         <file alias="noart_artistCover.svg">pixmaps/placeholder/noart_artistCover.svg</file>

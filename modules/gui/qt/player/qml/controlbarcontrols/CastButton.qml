@@ -9,6 +9,7 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Templates as T
+import QtQuick.Controls.impl as Impl
 
 import VLC.MainInterface
 import VLC.Player
@@ -284,10 +285,11 @@ RedesignIconButton {
                     elide: Text.ElideRight
                 }
             }
-            Image {
+            Impl.ColorImage {
                 Layout.rightMargin: VLCStyle.dp(8, VLCStyle.scale)
                 visible: row.selected
                 source: "qrc:///redesign/track-check-active.png"
+                color: VLCStyle.redesign.accentTint
                 Layout.preferredWidth: VLCStyle.dp(20, VLCStyle.scale)
                 Layout.preferredHeight: VLCStyle.dp(20, VLCStyle.scale)
             }

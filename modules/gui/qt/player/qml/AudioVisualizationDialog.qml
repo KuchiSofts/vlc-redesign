@@ -2,6 +2,7 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls.Basic as Controls
+import QtQuick.Controls.impl as Impl
 import VLC.MainInterface
 import VLC.Player
 import VLC.Style
@@ -83,8 +84,9 @@ Controls.Popup {
                         text: row.text; color: VLCStyle.redesign.color("#969696", "#4d4d4d")
                         font.family: VLCStyle.redesign.fontFamily; font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                     }
-                    Image { Layout.preferredWidth: 24; Layout.preferredHeight: 24
-                        source: "qrc:///redesign/track-check-active.png"; visible: row.checked }
+                    Impl.ColorImage { Layout.preferredWidth: 24; Layout.preferredHeight: 24
+                        source: "qrc:///redesign/track-check-active.png"; visible: row.checked
+                        color: VLCStyle.redesign.accentTint }
                 }
             }
             Text {

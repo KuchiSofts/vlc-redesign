@@ -55,6 +55,10 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
 - **Converting a video crashed VLC**: *Media › Convert/Save* of a video with its sound (any format: MP4, MKV, TS,
   AVI, WebM…) ended in a crash and left a broken file. It is the same in VLC 4 itself; VLC 3 was fine. Every
   format converts to the last picture now.
+- **Some video effects crashed VLC**: *Edge detection* always, and *Anaglyph*, *Anti-flicker*, *Motion detection*,
+  *Ripple* and *Waves* after the *Puzzle* or *Waves* effect, with a video decoded by the graphics card (most videos).
+  It is the same in VLC 4 itself. Edge detection showed nothing; it shows the edges now. 40 effects checked alone and
+  in chains.
 - **Quitting after a film took up to 10 seconds** right after installing or updating: when a film stopped, the
   progress bar started its sound analyzer (made for songs) on it, and Windows checks a new program before it runs.
   It runs only for a song now, without holding the window, and the installer has it checked.
@@ -116,6 +120,15 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
   chain made with the first stream was made again with the next, and the TV loaded twice. A stream is added with
   its first block (a subtitle stream before any), and an MP4 file gives about a second of sound before its first
   picture after a seek.
+- Filter loading (`vlc_filter_LoadModule()`): a module that opens with pictures in memory as input and a hardware
+  format (no planes) as output, without a video context of its own, is closed and the next candidate tried (`chain`,
+  which puts a converter after it). Filters are appended with the chain's output format, and those that don't check
+  it (anaglyph, antiflicker, motiondetect, ripple, wave) wrote their pixels into D3D11 pictures without planes.
+  `ripple` and `wave` copy no more lines, bytes or planes than both pictures have. `gaussianblur` reads its scale with
+  the luma pitch (it used the chroma pitch times 2, past the end) and makes its buffers again for another picture
+  size. `edgedetection` takes pictures in memory with the same format out, its internal chain gets pictures of its
+  own format (it got the display's), and its output gets the date of its input (it had none: nothing was shown) and
+  neutral chroma.
 - `d3d11_surface` converter: a D3D11 picture to a CPU picture of another size (or 10 bits to 8: I420, YV12, NV12
   out) is scaled by the video processor into an NV12 texture of the output size, which is copied; the source and
   destination rectangles are the visible areas, and the stream and output color spaces are set the same. It was

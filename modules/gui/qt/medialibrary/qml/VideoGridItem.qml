@@ -109,11 +109,13 @@ Widgets.GridItem {
         implicitWidth: root.pictureWidth
         implicitHeight: root.pictureHeight
 
+        // Not on the cards of the design: Home shows its pictures as they
+        // are (Figma 6261:15078; the folder pages dim theirs, FolderDisplay)
         Rectangle {
             anchors.fill: parent
             color: "#33000000"
             radius: root.pictureRadius
-            visible: VLCStyle.palette.isDark
+            visible: VLCStyle.palette.isDark && !root.redesignTitle
         }
 
         // Figma: the progress, a line of the accent at the bottom of the

@@ -33,10 +33,16 @@ Widgets.PageExt {
 
     property var pagePrefix: [] // behave like a Page
 
-    property var sortModel: [
+    // (the property of PageExt: one declared again here hid it from the
+    // sort of the page, and the header showed no Sort)
+    sortModel: [
         { text: qsTr("Alphabetic"), criteria: "title" },
         { text: qsTr("Duration"), criteria: "duration" }
     ]
+
+    // Figma 6261:15078: the media of the library, counted in the header
+    libraryItemCount: _libraryMedia.count
+    readonly property MLMediaModel _libraryMedia: MLMediaModel { ml: MediaLib }
 
     title: qsTr("Home")
 
@@ -345,6 +351,10 @@ Widgets.PageExt {
                 model: MLRecentAudioModel {
                     ml: MediaLib
 
+                    // the order of Continue Watching: the last played first
+                    // (the model's own order was the first played first)
+                    sortCriteria: root.sort.criteria
+                    sortOrder: root.sort.order
                     searchPattern: root.search.pattern
 
                     // FIXME: Make limit 0 load no items, instead of loading all items.

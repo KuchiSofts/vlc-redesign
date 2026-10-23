@@ -17,7 +17,7 @@ counted from this document's own tables and checklists (column *From*); ⚪ idea
 
 | Program         | Progress             | Done    | %     | From                                   |
 |-----------------|----------------------|---------|-------|----------------------------------------|
-| Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜ | 80/94   | 85 %  | [§8](#8-next-release-030) checklists   |
+| Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜ | 81/94   | 86 %  | [§8](#8-next-release-030) checklists   |
 | Linux           | 🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 1/7     | 14 %  | [§9](#linux)                           |
 | macOS           | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/4     | 0 %   | [§9](#macos)                           |
 | Windows ARM64   | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/3     | 0 %   | [§9](#windows-on-arm64)                |
@@ -31,10 +31,10 @@ Windows 0.2.6 is released; 0.3.0 counts the lines of section 8 (done since 0.2.6
 
 | Area                    | Progress             | Done    | %     | From                                   |
 |-------------------------|----------------------|---------|-------|----------------------------------------|
-| Design frames (Figma)   | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 | 101/103 | 98 %  | [§5](#5-design-frame-by-frame) tables  |
+| Design frames (Figma)   | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 103/103 | 100 % | [§5](#5-design-frame-by-frame) tables  |
 | Pixel check             | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 101/103 | 98 %  | [§5](#5-design-frame-by-frame) tables  |
 | Light theme and accents | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 17/17   | 100 % | [§8.3](#83-light-theme-and-accents)    |
-| Settings rows           | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 211/212 | 99 %  | [§8.5](#85-settings-rows)              |
+| Settings rows           | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 212/212 | 100 % | [§8.5](#85-settings-rows)              |
 | Classic dialogs         | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 11/11   | 100 % | [§8.6](#86-classic-dialogs)            |
 | Popups and menus        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 15/15   | 100 % | [§8.4](#84-popups-and-menus)           |
 | Casting                 | 🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜ | 13/16   | 81 %  | [§7](#7-desktop-for-windows-what-is-done) + [§8.7](#87-casting) |
@@ -306,8 +306,8 @@ open. The design's typo "changew" reads "changes".
 |------------|------------------------|-------------|--------|-------|----------------------------------------------------------------|-----------------------------------|
 | 999:5047   | Settings - global      | 1048 × 865  | 🟢     | 🟢    | Appearance (language, theme, accent), Startup, Diagnostics      | SettingsAppearance.qml, SettingsLanguageAction.qml, SettingsDeveloperMode.qml |
 | 3046:9282  | Settings - global      | 1048 × 865  | 🟢     | 🟢    | Advanced: warnings, command line, log, statistics, reset        | as above                          |
-| 3046:10057 | Settings - interface   | 1048 × 865  | 🟡     | 🟢    | Skin, Window, Playback Controls, Notifications, Playlist        | shared                            |
-| 3062:11379 | Settings - interface   | 1048 × 865  | 🟡     | 🟢    | Advanced: opacity, minimized, cover art, fullscreen controls     | shared                            |
+| 3046:10057 | Settings - interface   | 1048 × 865  | 🟢     | 🟢    | Skin, Window, Playback Controls, Notifications, Playlist        | shared                            |
+| 3062:11379 | Settings - interface   | 1048 × 865  | 🟢     | 🟢    | Advanced: opacity, minimized, cover art, fullscreen controls     | shared                            |
 | 3062:11911 | Settings - privacy     | 1048 × 865  | 🟢     | 🟢    | History, Network (cover art, Last.fm)                           | SettingsPrivacyActions.qml, SettingsLastfm.qml |
 | 3062:12552 | Settings - playback    | 1048 × 865  | 🟢     | 🟢    | Startup, Tracks, Order, Seeking, Files & Discs                  | shared                            |
 | 3072:13408 | Settings - playback    | 1048 × 865  | 🟢     | 🟢    | Advanced: time-shift buffer                                     | shared                            |
@@ -324,9 +324,9 @@ open. The design's typo "changew" reads "changes".
 | 6571:16429 | Settings - recording   | 1048 × 865  | 🟢     | 🟢    | Recording, Casting, Streaming                                   | shared                            |
 | 6575:17137 | Settings - extensions  | 1048 × 865  | 🟢     | 🟢    | Add-ons list (784 × 194), find more, add, remove, on startup    | SettingsExtensions.qml            |
 
-Differences: 🔴 Interface (3046:10057, 3062:11379): *Show the playlist as a tree* is left out on purpose: VLC 4's
-queue is flat (an expanded item is replaced by its children), so it needs a new queue model. The four other rows
-added in build 115 are in the app ⏳ (§8.5).
+Differences: Interface (3046:10057, 3062:11379): *Show the playlist as a tree* is the queue under the folders of
+its media (VLC 4's queue is flat: the folders are headings, the rows move as they did). Three of the four other
+rows added in build 115 are checked in the app (§8.5).
 
 ### 5.14 Components (46)
 
@@ -438,7 +438,7 @@ are listed disabled, with the reason under the pointer (Windows offers no way fo
 
 | #  | Difference                                                         | Frames                                   | Status |
 |----|--------------------------------------------------------------------|------------------------------------------|--------|
-| 1  | *Show the playlist as a tree*: needs a new queue model (VLC 4's queue is flat) | 3046:10057, 3062:11379       | 🔴     |
+| 1  | *Show the playlist as a tree*: the queue under the folders of its media (headings) | 3046:10057, 3062:11379 | 🟢 |
 | 2  | Library context menus are native menus, not cards                  | 2107:5903, 2139:8935, 2404:13340, 2459:9389 | 🟢  |
 | 3  | The compact library's Home lists the sections of the library's Home (no play counts of playlists or artists) | 848:1996 | 🟢 |
 | 4  | HDR10+ and Dolby Vision disabled with their reason (Windows has no way to send them) | 2372:8733 | 🟢 |
@@ -735,7 +735,8 @@ becomes 1.0 when every frame is pixel-checked, the light theme is complete and V
 
 ### 8.5 Settings rows
 
-The design's settings frames hold 211 rows (counted from their texts, each page once); the app adds one.
+The design's settings frames hold 211 rows (counted from their texts, each page once); the app adds one. All of
+them are in the app.
 
 - 🟢 206 rows of the design on the 13 pages
 - 🟢 *Show confirmation and error dialogs* (Global, `qt-error-dialogs`): no error popup, questions answered yes;
@@ -745,8 +746,8 @@ The design's settings frames hold 211 rows (counted from their texts, each page 
 - 🟢 *Show controls in fullscreen* (Interface, `qt-fs-controller`, live) · in the app ⏳
 - 🟢 *Show cover art in the window when playing audio* (Interface, advanced, `qt-bgcone`) · checked in the app (off: the
   dark placeholder of the theme)
-- 🔴 *Show the playlist as a tree* (Interface): left out on purpose; VLC 4's queue is flat (an expanded item is
-  replaced by its children), so it needs a new queue model
+- 🟢 *Show the playlist as a tree* (Interface › Playlist, `playlist-tree`, live): VLC 4's queue is flat, so the queue
+  shows its media under the folder (or the host) they come from, as headings; checked in the app
 - 🟢 *Always show the player bar* (Interface › Playback Controls, new, default off, live): the bar stays on Home and
   every page with nothing playing (times `--:--`); its cover and the player switch open the empty player with the
   pixel cat; Play starts the queue or opens files
@@ -825,7 +826,7 @@ and an accepted request made the TV fail after a pause in a test.
 - 🔴 Small updates from 0.2.4, 0.2.5 and 0.2.6 built and checked
 - 🔴 Announcement in Discussions; every fixed issue answered with the release link
 
-Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 80 🟢, 1 🟡, 13 🔴 (94), of which 5 🟢 are
+Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 81 🟢, 1 🟡, 12 🔴 (94), of which 5 🟢 are
 in the app ⏳.
 Languages (§12) and the community (§13) have bars of their own.
 

@@ -133,6 +133,8 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
   *Network* with Add Network Stream and the Internet services, each with its ⋯ menu (*Rescan library*, *Add folder
   to library*, *Add network stream*).
 - **The queue of the mini player is part of its card**, as the design draws it: drag a row by its handle to move it.
+- **Show the playlist as a tree** (*Settings › Interface › Playlist*, the last row of the design): the queue shows its
+  media under the folder (or the website) they come from.
 - **Effect presets** (Figma *Setting Preset*): the Effects window keeps sets of audio and video effects under a name.
   *New Preset* saves the effects playing, a preset applies them (Save keeps them, Cancel drops them), its ⋯
   renames, updates or deletes it, and *Default Preset* turns every effect off.

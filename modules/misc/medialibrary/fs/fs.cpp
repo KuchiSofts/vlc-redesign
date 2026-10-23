@@ -169,6 +169,9 @@ void SDFileSystemFactory::onDeviceMounted(const std::string& uuid,
             m_devices.push_back(device);
         }
         device->addMountpoint(mountpoint);
+        /* waitForDevice() waits for it: nothing woke it, it gave up when its
+         * time ran out even if the device had come meanwhile */
+        m_cond.broadcast();
     }
     m_callbacks->onDeviceMounted( *device, mountpoint );
 }
@@ -201,7 +204,7 @@ bool SDFileSystemFactory::waitForDevice(const std::string& mrl,
     while ( deviceByMrl(mrl) == nullptr )
     {
         if ( m_cond.timedwait(m_mutex, deadline) != 0 )
-            return false;
+            return deviceByMrl(mrl) != nullptr;
     }
     return true;
 }

@@ -1262,11 +1262,11 @@ In an organization, a `.github` repository gives every repository these files by
 | Formats      | Every test file and container; 148 damaged files without crash or hang            | 🟢     |
 | Effects      | 40 video effects alone and in chains                                              | 🟢     |
 | Conversion   | Every muxer, audio + video, to the last picture                                   | 🟢     |
-| Memory       | 25-minute media-change soak and cast soak: flat after warm-up                     | 🟢     |
+| Memory       | 25-minute media-change soak and cast soak: flat after warm-up; 2026-10-24 (build 163) the same soak against the 23 October build: +0.27 against +0.34 MB/min at 100 changes a minute (driver), handles, GDI and threads flat; the library panel opened and browsed 60 times: flat | 🟢     |
 | Hardware     | NVIDIA, AMD, Intel; no GPU; weak CPU; Windows 10 and 11; high DPI                 | 🟡 no Intel, no real Windows 10 |
-| Clean PC     | Install and first start on a clean Windows (Sandbox)                              | 🟢     |
+| Clean PC     | Install and first start on a clean Windows (Sandbox); again 2026-10-24 (build 163): window in 1.24 s, 1080p without a GPU 75 % of one core, quit 0.5 s | 🟢     |
 | Updates      | Small updates from the three previous releases, checked file by file              | 🟢     |
-| Design       | Pixel check of the frames the release touches; frame table updated                | 🟡 2 frames |
+| Design       | Pixel check of the frames the release touches; frame table updated                | 🟡 2 hover frames (their values checked in the code) |
 | Languages    | English by default; installer and settings language switch                        | 🟡 no switch without restart |
 
 ## 15. Risks

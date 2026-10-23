@@ -450,6 +450,18 @@ void sout_MuxDeleteStream( sout_mux_t *p_mux, sout_input_t *p_input )
         p_mux->pf_mux( p_mux );
     }
 
+    /* What this input still has is muxed before it goes, the empty inputs
+     * skipped: the muxer waits until every input has a block, so the end
+     * of a stream that went past the others was dropped (the last pictures
+     * of a film converted for a TV) */
+    if( block_FifoCount( p_input->p_fifo ) > 0 && p_mux->i_nb_inputs > 1 )
+    {
+        const bool any_time = p_mux->b_add_stream_any_time;
+        p_mux->b_add_stream_any_time = true;
+        p_mux->pf_mux( p_mux );
+        p_mux->b_add_stream_any_time = any_time;
+    }
+
     TAB_FIND( p_mux->i_nb_inputs, p_mux->pp_inputs, p_input, i_index );
     if( i_index >= 0 )
     {

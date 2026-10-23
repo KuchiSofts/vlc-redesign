@@ -26,9 +26,9 @@ Controls.Popup {
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutside
 
     background: Rectangle {
-        color: "#1b1b1b"
+        color: VLCStyle.redesign.color("#1b1b1b", "#ababaa")
         radius: 11
-        border.color: "#252525"
+        border.color: VLCStyle.redesign.color("#252525", "#9c9c9b")
     }
 
     contentItem: Column {
@@ -54,7 +54,7 @@ Controls.Popup {
                 rightPadding: 16
                 background: Rectangle {
                     radius: 6
-                    color: parent.hovered || parent.activeProfile ? "#252525" : "transparent"
+                    color: parent.hovered || parent.activeProfile ? VLCStyle.redesign.color("#252525", "#9c9c9b") : "transparent"
                 }
                 contentItem: Row {
                     spacing: 12
@@ -69,7 +69,7 @@ Controls.Popup {
                         width: parent.width - 36
                         height: parent.height
                         text: name
-                        color: "#969696"
+                        color: VLCStyle.redesign.color("#969696", "#4d4d4d")
                         elide: Text.ElideRight
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: 16
@@ -98,7 +98,7 @@ Controls.Popup {
         Rectangle {
             width: parent.width
             height: 1
-            color: "#292929"
+            color: VLCStyle.redesign.color("#292929", "#9c9c9b")
         }
 
         Text {
@@ -107,7 +107,7 @@ Controls.Popup {
             height: visible ? 56 : 0
             x: 16
             text: root.switchError || root.profileModel.lastError
-            color: "#e4a580"
+            color: VLCStyle.redesign.color("#e4a580", "#c62828")
             wrapMode: Text.WordWrap
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: 12
@@ -122,7 +122,7 @@ Controls.Popup {
             leftPadding: 18
             background: Rectangle {
                 radius: 6
-                color: parent.hovered ? "#252525" : "transparent"
+                color: parent.hovered ? VLCStyle.redesign.color("#252525", "#9c9c9b") : "transparent"
             }
             contentItem: Row {
                 spacing: 12
@@ -130,14 +130,14 @@ Controls.Popup {
                     width: 20
                     height: parent.height
                     text: "+"
-                    color: "#969696"
+                    color: VLCStyle.redesign.color("#969696", "#4d4d4d")
                     font.pixelSize: 25
                     verticalAlignment: Text.AlignVCenter
                 }
                 Text {
                     height: parent.height
                     text: qsTr("New profile…")
-                    color: "#969696"
+                    color: VLCStyle.redesign.color("#969696", "#4d4d4d")
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: 16
                     verticalAlignment: Text.AlignVCenter

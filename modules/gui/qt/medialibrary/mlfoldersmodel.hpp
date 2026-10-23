@@ -111,6 +111,9 @@ protected:
     };
 
     virtual bool failed( const vlc_ml_event_t* event ) const = 0; // will be called outside the main thread
+    // what the entry points hold is read (has_video, has_audio, kind), and
+    // read again as the library changes; called outside the main thread too
+    virtual bool readsContent() const { return false; }
 
 protected:
     static void onMlEvent( void* data , const vlc_ml_event_t* event );
@@ -137,6 +140,7 @@ class MLFoldersModel : public MLFoldersBaseModel
 {
 public:
     using MLFoldersBaseModel::MLFoldersBaseModel;
+    ~MLFoldersModel() override;
 
     void remove( const QUrl &mrl ) override;
     void add( const QUrl &mrl ) override;
@@ -144,12 +148,14 @@ public:
 private:
     void update() override final;
     bool failed( const vlc_ml_event_t* event ) const override;
+    bool readsContent() const override { return true; }
 };
 
 class MLBannedFoldersModel : public MLFoldersBaseModel
 {
 public:
     using MLFoldersBaseModel::MLFoldersBaseModel;
+    ~MLBannedFoldersModel() override;
 
     void remove( const QUrl &mrl ) override;
     void add( const QUrl &mrl ) override;

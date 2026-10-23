@@ -530,7 +530,13 @@ QVariant ConfigModel::readValue(const Entry &entry)
         char *effects = config_GetPsz("effect-list");
         const QString effect = QString::fromUtf8(effects ? effects : "").section(',', 0, 0).trimmed();
         free(effects);
-        return effect.isEmpty() ? QStringLiteral("spectrum") : effect;
+        if (effect.isEmpty())
+            return QStringLiteral("spectrum");
+        // the name of the choice (VLC compares them whatever their case)
+        for (const char *known : { "spectrometer", "scope", "spectrum", "waveform", "vuMeter" })
+            if (effect.compare(QLatin1String(known), Qt::CaseInsensitive) == 0)
+                return QString::fromLatin1(known);
+        return effect;
     }
     if (entry.key == QLatin1String(rememberPositionKey))
         return config_GetInt("restore-playback-pos") != 0;

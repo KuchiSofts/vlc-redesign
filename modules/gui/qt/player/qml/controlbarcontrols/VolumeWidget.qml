@@ -310,9 +310,46 @@ T.Pane {
                 function onVolumeChanged() { volControl._syncVolumeWithPlayer() }
             }
 
-            Binding on Widgets.PointingToolTipAttached.visible {
-                when: sliderMouseArea.pressed
-                value: true
+            // the value of the design (Figma "audio value", 2245:9805) in
+            // place of the pointing tooltip
+            Widgets.PointingToolTipAttached.visible: false
+
+            // a change by the wheel or the keys shows the value a moment
+            Timer {
+                id: valueTimer
+                interval: 1200
+            }
+            Connections {
+                target: Player
+                enabled: !root.paintOnly && (volControl.hovered || volControl.activeFocus || volControl.pressed)
+                function onVolumeChanged() { valueTimer.restart() }
+            }
+
+            // Figma "audio value" (2245:9805): 121 x 37, #0F0F0F, "100 %"
+            // (14 px, #969696) centred; 8 above the slider, centred on it
+            T.Popup {
+                id: valueBox
+                parent: volControl
+                x: Math.round((volControl.width - width) / 2)
+                y: -height - VLCStyle.dp(8, VLCStyle.scale)
+                width: VLCStyle.dp(121, VLCStyle.scale)
+                height: VLCStyle.dp(37, VLCStyle.scale)
+                padding: 0
+                closePolicy: T.Popup.NoAutoClose
+                visible: !root.paintOnly && root.visible
+                         && (volControl.hovered || volControl.pressed || volControl.visualFocus || valueTimer.running)
+                background: Rectangle {
+                    color: VLCStyle.redesign.color("#0F0F0F", "#dedede")
+                    radius: VLCStyle.dp(6, VLCStyle.scale)
+                }
+                contentItem: Text {
+                    text: qsTr("%1 %").arg(Math.round(Player.volume * 100))
+                    color: VLCStyle.redesign.color("#969696", "#4d4d4d")
+                    font.family: VLCStyle.redesign.fontFamily
+                    font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                }
             }
 
             Navigation.leftItem: volumeBtn

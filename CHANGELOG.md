@@ -52,6 +52,9 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
   at the start of every cast, for the next film of a playlist, and when a film went on from where it was left. Cast
   from the middle of a film, the TV got the sound alone first, and the picture only from the next key frame (4 s
   later in a 4K film). The TV now starts once, with the picture and the sound together.
+- **Converting a video crashed VLC**: *Media › Convert/Save* of a video with its sound (any format: MP4, MKV, TS,
+  AVI, WebM…) ended in a crash and left a broken file. It is the same in VLC 4 itself; VLC 3 was fine. Every
+  format converts to the last picture now.
 - **Quitting after a film took up to 10 seconds** right after installing or updating: when a film stopped, the
   progress bar started its sound analyzer (made for songs) on it, and Windows checks a new program before it runs.
   It runs only for a song now, without holding the window, and the installer has it checked.
@@ -110,6 +113,14 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
   chain made with the first stream was made again with the next, and the TV loaded twice. A stream is added with
   its first block (a subtitle stream before any), and an MP4 file gives about a second of sound before its first
   picture after a seek.
+- Transcode `pcr_sync` (upstream since 2022): a PCR event holds one entry per ES id (it pushed the live ES only, read
+  them by id, and the last ES wrote past the vector after a deleted one); the ES waiting for an event that is freed
+  go to the next one (it was read after `free()` through their `last_pcr_event`, the heap corruption 0xC0000374 of
+  every audio + video conversion); an ES with no frame when the PCR came is not counted and its passing no longer
+  decrements the count. The discontinuity of an ES is cleared once recorded (it was cleared on a copy).
+- `sout_MuxDeleteStream()`: what the input still has is muxed before it goes, the empty inputs skipped
+  (`b_add_stream_any_time` for that call). Muxers wait until every input has a block, so the end of the stream that
+  went past the others was dropped: the last pictures of a film converted for a TV.
 - `demux_chromecast`: the drain result of `ES_OUT_DRAIN` was assigned to a `ret` declared in the EOF block (upstream
   since `1ebb26bbc9`, 2025), so the demux's EOF was returned and the input ended as soon as all was read, instead of
   when the TV reported FINISHED.

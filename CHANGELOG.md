@@ -82,9 +82,37 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
 - **The light theme left some windows dark or hard to read**: the tracks and subtitles window, the profiles list,
   the welcome screens, the shortcut windows, the cast and visualizer windows, the mini queue, selected text, the
   player customization and the effect sliders follow the theme now (the dark theme looks the same).
+- **Keyboard shortcuts with several keys were cut short**: *Next track* has three keys (N, Shift+>, >) and showed
+  "N Shif… >". Each key now shows whole, apart from the others.
+- **A stray line in the Disc tab of Open Media**: half a separator under *No disc menus* is gone.
+
+### Added
+
+- **Always show the player bar** (*Settings › Interface › Player Bar*): the bar stays at the bottom of Home and the
+  library while nothing plays; its Play starts the play queue, or opens files when the queue is empty.
+- **Increase text contrast** (*Settings › Interface › Accessibility*): the dim texts of the design (hints,
+  descriptions, watched videos, the (i) icons) are drawn brighter, to the contrast the WCAG accessibility
+  guidelines ask for (AA, 4.5:1). Off by default: the colours of the design stay as they are.
+- **A picture for a playlist**: *New playlist* takes a thumbnail of your own, and a playlist can be saved with only
+  its title, to fill it later.
+- **The library's menus of the design**: a right-click on a video, a song, a folder, a file or a playlist opens the
+  menu card of the design, with *Mark as Watched* / *Unwatched* and *Show in File Explorer*.
+- **More settings**: *Show confirmation and error dialogs*, *Show controls in fullscreen*, *Show cover art in the
+  window when playing audio* and *Additional command line options*.
 
 ### Changed
 
+- **The settings start as the design draws them**: on the Subtitles page, *Preferred language* picks the language of
+  the subtitles, and the second language, the online search and the subtitle services come after the sections of
+  the design. Every page was compared with its frame of the design, pixel for pixel.
+- **The accent colour everywhere**: check marks, the icon of the current page and of the current settings section
+  take the colour chosen (green, blue…), not always orange.
+- **The older windows look like the rest**: *Open Media*, *Convert*, *Media Information* and the other classic
+  windows are drawn in the dark or light colours of the redesign.
+- **The resume card reads as in the design**: "You've watched till 00:45:08 already." and one *Continue Watching*
+  button.
+- **Videos stopped partway stay bright** in the library: only the ones watched to the end are dimmed, as the design
+  shows them.
 - **The empty player shows Figma's pixel cat**: the player with nothing to play shows the picture of the design,
   the white cat on the floor of a dark room, drawn sharp at any size (it uses no picture file or memory).
 

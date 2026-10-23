@@ -293,6 +293,10 @@ MainCtx::MainCtx(qt_intf_t *_p_intf)
             QMetaObject::invokeMethod(this, [](){
                 THEDP->firstRunDialog();
             }, Qt::QueuedConnection);
+        else if (m_medialib)
+            /* the library is read as usual meanwhile (VLC always opened with
+             * a file never read it at start) */
+            QMetaObject::invokeMethod(m_medialib, &MediaLib::reload, Qt::QueuedConnection);
     }
     else if (m_medialib)
     {

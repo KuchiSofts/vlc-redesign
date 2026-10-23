@@ -1,19 +1,29 @@
 /* Copyright (C) 2026 VLC authors and VideoLAN. GPL version 2 or later. */
 import QtQuick
-import QtQuick.Layouts
 import QtQuick.Controls.Basic as Controls
 import QtQuick.Controls.impl as Impl
 import VLC.MainInterface
 import VLC.Player
 import VLC.Style
+import VLC.Widgets as Widgets
+
+// Figma "Audio Visualizer" (2372:8639), the dropdown of the settings: the
+// field with the visualization in use (360 x 48: #090909 around #191919),
+// 20 under it the list (padding 2, rows of 44 two apart, the icon of each
+// visualization, #1F1F1F under the one chosen with the check of the accent
+// 13 from its end), the drop shadow of the menus. VLC offers more than the
+// design draws: the list scrolls past the height of the window.
 Controls.Popup {
     id: root
     objectName: "audioVisualizationDialog"
     property string selectedText: qsTr("Disabled")
     property bool previousShortcuts: true
-    width: Math.min(VLCStyle.dp(400, VLCStyle.scale), parent.width - 32)
-    height: Math.min(VLCStyle.dp(400, VLCStyle.scale), parent.height - 48)
-    padding: VLCStyle.dp(20, VLCStyle.scale)
+
+    function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
+    function c(dark, light) { return VLCStyle.redesign.color(dark, light) }
+
+    width: Math.min(px(360), parent.width - 32)
+    padding: 0
     focus: true
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutside
     // a press outside only closes it: the video under it does not pause
@@ -21,92 +31,153 @@ Controls.Popup {
     dim: false
     onOpened: { previousShortcuts = MainCtx.useGlobalShortcuts; MainCtx.useGlobalShortcuts = false }
     onClosed: MainCtx.useGlobalShortcuts = previousShortcuts
-    background: Rectangle { color: VLCStyle.redesign.color("#191919", "#c2c2c1"); radius: 6 }
+    background: null
     contentItem: Column {
-        spacing: VLCStyle.dp(8, VLCStyle.scale)
+        spacing: root.px(20)
+
+        // the field: the visualization in use
         Rectangle {
             width: parent.width
-            height: VLCStyle.dp(46, VLCStyle.scale)
-            color: VLCStyle.redesign.color("#222222", "#ababaa")
-            radius: 4
+            height: root.px(48)
+            radius: root.px(6)
+            color: root.c("#090909", "#dedede")
+            Rectangle {
+                anchors.fill: parent
+                anchors.margins: root.px(2)
+                radius: root.px(4)
+                color: root.c("#191919", "#ababaa")
+            }
             Text {
-                anchors.left: parent.left; anchors.leftMargin: 16; anchors.verticalCenter: parent.verticalCenter
+                x: root.px(16)
+                width: parent.width - x - root.px(16 + 24 + 10)
+                height: parent.height
                 text: root.selectedText
-                color: VLCStyle.redesign.color("#969696", "#4d4d4d")
-                font.family: VLCStyle.redesign.fontFamily; font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
+                color: root.c("#8F8F8F", "#4d4d4d")
+                font.family: VLCStyle.redesign.fontFamily
+                font.pixelSize: root.px(14)
+                verticalAlignment: Text.AlignVCenter
+                elide: Text.ElideRight
             }
             Image {
-                anchors.right: parent.right; anchors.rightMargin: 16; anchors.verticalCenter: parent.verticalCenter
-                source: "qrc:///redesign/icons/chevron-down/default.png"; width: 24; height: 24
+                x: parent.width - root.px(2 + 14) - width
+                anchors.verticalCenter: parent.verticalCenter
+                width: root.px(24)
+                height: width
+                sourceSize: Qt.size(width, height)
+                source: "qrc:///redesign/icons/chevron-down/default.png"
             }
         }
-        ListView {
-            id: options
-            objectName: "audioVisualizationModes"
+
+        // the list
+        Rectangle {
+            readonly property real rowsHeight: options.count > 0
+                                               ? options.count * root.px(46) - root.px(2) : root.px(44)
+            // the window's height less the field, the gap and a margin
+            readonly property real roomHeight: (root.parent ? root.parent.height : rowsHeight)
+                                               - root.px(48 + 20 + 48) - 2 * root.px(2)
             width: parent.width
-            height: root.availableHeight - VLCStyle.dp(54, VLCStyle.scale)
-            clip: true
-            model: Player.audioVisualization
-            Controls.ScrollBar.vertical: Controls.ScrollBar {
-                // Basic's handle is light grey: darker in the light theme
-                palette.mid: VLCStyle.palette.isDark ? undefined : "#6b6b6b"
-                palette.dark: VLCStyle.palette.isDark ? undefined : "#2e2e2e"
+            height: Math.min(rowsHeight, Math.max(root.px(44), roomHeight)) + 2 * root.px(2)
+            radius: root.px(6)
+            color: root.c("#191919", "#ababaa")
+
+            // Figma: drop shadow 0 8 blur 15 #000000 46 % (as the menus)
+            Widgets.RoundedRectangleShadow {
+                yOffset: root.px(8)
+                blurRadius: 7.5 * VLCStyle.scale
+                color: Qt.rgba(0, 0, 0, 0.46)
             }
-            delegate: Controls.ItemDelegate {
-                id: row
-                required property int index
-                required property var model
-                checked: model.checked
-                width: options.width
-                height: VLCStyle.dp(46, VLCStyle.scale)
-                text: index === 0 ? qsTr("Disabled") : model.display
-                Component.onCompleted: if (checked) root.selectedText = text
-                onCheckedChanged: if (checked) root.selectedText = text
-                onClicked: Player.audioVisualization.toggleIndex(index)
-                background: Rectangle {
-                    color: row.hovered || row.checked ? VLCStyle.redesign.color("#222222", "#ababaa") : "transparent"
-                    radius: 4
-                    border.color: row.visualFocus ? VLCStyle.redesign.accent : "transparent"
+
+            ListView {
+                id: options
+                objectName: "audioVisualizationModes"
+                x: root.px(2)
+                y: root.px(2)
+                width: parent.width - 2 * x
+                height: parent.height - 2 * y
+                spacing: root.px(2)
+                clip: true
+                boundsBehavior: Flickable.StopAtBounds
+                model: Player.audioVisualization
+                Controls.ScrollBar.vertical: Controls.ScrollBar {
+                    // Basic's handle is light grey: darker in the light theme
+                    palette.mid: VLCStyle.palette.isDark ? undefined : "#6b6b6b"
+                    palette.dark: VLCStyle.palette.isDark ? undefined : "#2e2e2e"
                 }
-                contentItem: RowLayout {
-                    spacing: 10
-                    Image {
-                        id: modeIcon
-                        Layout.preferredWidth: row.index === 0 ? 0 : 24; Layout.preferredHeight: 24
-                        // display can be undefined while the model is rebuilt
-                        readonly property string mode: String(row.model.display ?? "").toLowerCase()
-                        readonly property string iconDir: "qrc:///redesign/icons/" +
-                            (mode.includes("spectrometer") ? "spectrometer" :
-                             mode.includes("spectrum") ? "spectrum" :
-                             mode.includes("scope") ? "scope" : "waveform")
-                        // drawn in grey and the accent dim: with another
-                        // accent, the grey part and the rest tinted above it
-                        readonly property bool twoTone: row.index !== 0 && !VLCStyle.redesign.defaultAccent
-                        source: row.index === 0 ? "" : iconDir + (twoTone ? "/default-grey.png" : "/default.png")
+                delegate: Controls.ItemDelegate {
+                    id: row
+                    required property int index
+                    required property var model
+                    checked: model.checked
+                    width: options.width
+                    height: root.px(44)
+                    // the icons of the design (Figma 2372:8639), in the
+                    // order of the choices of the "visual" variable
+                    // (aout_New: Disable, Spectrometer, Scope, Spectrum,
+                    // Waveform, then VU meter and the modules)
+                    readonly property string iconDir: index >= 1 && index <= 4
+                        ? "qrc:///redesign/icons/" + ["spectrometer", "scope", "spectrum", "waveform"][index - 1] : ""
+                    // the icon, 10 before the name
+                    leftPadding: iconDir ? root.px(14 + 24 + 10) : root.px(14)
+                    rightPadding: root.px(14 + 24 + 13)
+                    text: index === 0 ? qsTr("Disabled") : model.display
+                    Component.onCompleted: if (checked) root.selectedText = text
+                    onCheckedChanged: if (checked) root.selectedText = text
+                    onClicked: Player.audioVisualization.toggleIndex(index)
+                    Accessible.name: text
+                    background: Rectangle {
+                        radius: root.px(4)
+                        color: row.checked || row.hovered || row.visualFocus
+                               ? root.c("#1F1F1F", "#9c9c9b") : "transparent"
+                        Image {
+                            id: modeIcon
+                            visible: row.iconDir !== ""
+                            x: root.px(14)
+                            anchors.verticalCenter: parent.verticalCenter
+                            width: root.px(24)
+                            height: width
+                            sourceSize: Qt.size(width, height)
+                            // drawn in grey and the accent dim: with another
+                            // accent, the grey part and the rest tinted above it
+                            readonly property bool twoTone: visible && !VLCStyle.redesign.defaultAccent
+                            source: visible ? row.iconDir + (twoTone ? "/default-grey.png" : "/default.png") : ""
+                            Impl.ColorImage {
+                                anchors.fill: parent
+                                visible: modeIcon.twoTone
+                                source: visible ? row.iconDir + "/default-accent.png" : ""
+                                color: VLCStyle.redesign.accentDim
+                            }
+                        }
                         Impl.ColorImage {
-                            anchors.fill: parent
-                            visible: modeIcon.twoTone
-                            source: visible ? modeIcon.iconDir + "/default-accent.png" : ""
-                            color: VLCStyle.redesign.accentDim
+                            visible: row.checked
+                            x: parent.width - root.px(13) - width
+                            anchors.verticalCenter: parent.verticalCenter
+                            width: root.px(24)
+                            height: width
+                            source: "qrc:///redesign/track-check-active.png"
+                            color: VLCStyle.redesign.accentTint
                         }
                     }
-                    Text {
-                        Layout.fillWidth: true; verticalAlignment: Text.AlignVCenter
-                        text: row.text; color: VLCStyle.redesign.color("#969696", "#4d4d4d")
-                        font.family: VLCStyle.redesign.fontFamily; font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
+                    contentItem: Text {
+                        text: row.text
+                        color: root.c("#8F8F8F", "#4d4d4d")
+                        font.family: VLCStyle.redesign.fontFamily
+                        font.pixelSize: root.px(14)
+                        verticalAlignment: Text.AlignVCenter
+                        elide: Text.ElideRight
                     }
-                    Impl.ColorImage { Layout.preferredWidth: 24; Layout.preferredHeight: 24
-                        source: "qrc:///redesign/track-check-active.png"; visible: row.checked
-                        color: VLCStyle.redesign.accentTint }
                 }
-            }
-            Text {
-                anchors.fill: parent
-                visible: options.count === 0
-                text: qsTr("Play audio to select a visualization.")
-                color: VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, "#4d4d4d")
-                wrapMode: Text.WordWrap
-                font.family: VLCStyle.redesign.fontFamily; font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
+                Text {
+                    anchors.fill: parent
+                    anchors.leftMargin: root.px(14)
+                    anchors.rightMargin: root.px(14)
+                    visible: options.count === 0
+                    text: qsTr("Play audio to select a visualization.")
+                    color: root.c(VLCStyle.redesign.textSecondary, "#4d4d4d")
+                    verticalAlignment: Text.AlignVCenter
+                    wrapMode: Text.WordWrap
+                    font.family: VLCStyle.redesign.fontFamily
+                    font.pixelSize: root.px(14)
+                }
             }
         }
     }

@@ -188,8 +188,8 @@ readonly property var items: ({
         "x-filter:karaoke": [qsTr("Effects"), qsTr("Karaoke"), "", null, { info: true }],
         "audio-language": [qsTr("Tracks"), qsTr("Preferred audio language"), "", { "": qsTr("Automatic") }, { info: true }],
         "audio-desync": [qsTr("Tracks"), qsTr("Audio delay"), "", null, { info: true, unit: qsTr("ms") }],
-        "audio-visual": [qsTr("Visualization"), qsTr("Visualizer"), "",
-                         { "none": qsTr("Disabled"), "any": qsTr("Automatic") }, { info: true }],
+        // audio-visual and effect-list (config_model.cpp); Figma 2372:8639
+        "x-visualizer": [qsTr("Visualization"), qsTr("Visualizer"), "", null, { info: true }],
         // Advanced Options of the design (Figma 3180:17645)
         "spdif": [qsTr("Output"), qsTr("Pass compressed audio to the receiver"), "", null, { advanced: true, info: true }],
         "force-dolby-surround": [qsTr("Output"), qsTr("Detect Dolby Surround"), "",

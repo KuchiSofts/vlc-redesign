@@ -518,6 +518,20 @@ QVariant ConfigModel::readValue(const Entry &entry)
                 return QVariant::fromValue<int64_t>(int64_t(preset));
         return QVariant::fromValue<int64_t>(int64_t(std::size(visualSizes)));
     }
+    if (entry.key == QLatin1String(visualizerKey)) {
+        char *module = config_GetPsz("audio-visual");
+        const QString value = QString::fromUtf8(module ? module : "");
+        free(module);
+        if (value.isEmpty())
+            return QStringLiteral("none");
+        if (value != QLatin1String("visual"))
+            return value;
+        // the first effect the module draws
+        char *effects = config_GetPsz("effect-list");
+        const QString effect = QString::fromUtf8(effects ? effects : "").section(',', 0, 0).trimmed();
+        free(effects);
+        return effect.isEmpty() ? QStringLiteral("spectrum") : effect;
+    }
     if (entry.key == QLatin1String(rememberPositionKey))
         return config_GetInt("restore-playback-pos") != 0;
     if (entry.key.startsWith(QLatin1String(filterPrefix)) || entry.key == QLatin1String(nightModeKey)) {
@@ -1105,6 +1119,37 @@ void ConfigModel::addCombinedEntries()
                                {});
         entry.choices = presetChoices(QStringLiteral("postproc-q"), entry.current);
         m_entries.insert(postprocQuality, entry);
+    }
+
+    // "Visualizer" (Figma "Audio Visualizer", 2372:8639): Disabled, then
+    // the effects of the visualizer filter (what the design lists), then
+    // the other visualizations of VLC
+    const int visual = indexOf("audio-visual");
+    if (visual >= 0 && config_FindConfig("effect-list"))
+    {
+        const auto named = [](const char *value, const QString &label) {
+            return QVariant(QVariantMap{{QStringLiteral("value"), QString::fromLatin1(value)},
+                                        {QStringLiteral("label"), label}});
+        };
+        QVariantList choices{ named("none", qtr("Disabled")), named("spectrometer", qtr("Spectrometer")),
+                              named("scope", qtr("Scope")), named("spectrum", qtr("Spectrum")),
+                              named("waveform", qtr("Waveform")), named("vuMeter", qtr("VU meter")) };
+        Entry probe;
+        probe.key = QLatin1String(visualizerKey);
+        const QString current = readValue(probe).toString();
+        for (const QVariant &module : m_entries[visual].choices) {
+            const QString value = module.toMap().value(QStringLiteral("value")).toString();
+            // (Automatic: only while it is the one chosen)
+            if (value.isEmpty() || value == QLatin1String("none") || value == QLatin1String("visual")
+                || (value == QLatin1String("any") && current != value))
+                continue;
+            choices.append(value == QLatin1String("any") ? named("any", qtr("Automatic")) : module);
+        }
+        Entry entry = combined(visualizerKey, m_entries[visual].category, m_entries[visual].label,
+                               m_entries[visual].help, choices);
+        entry.type = QStringLiteral("string");
+        entry.original = QStringLiteral("none");
+        m_entries[visual] = entry;
     }
 
     // "Visualization size" after the media role

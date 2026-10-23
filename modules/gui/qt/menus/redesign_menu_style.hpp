@@ -18,9 +18,11 @@
 #ifndef REDESIGN_MENU_STYLE_HPP
 #define REDESIGN_MENU_STYLE_HPP
 
+#include <QColor>
 #include <QIcon>
 #include <QPointer>
 #include <QProxyStyle>
+#include <QString>
 
 class MainCtx;
 
@@ -46,6 +48,17 @@ public:
     // design standing for the same action, else the classic icon
     static QIcon menuIcon(const QString &classicPath, const QWidget *widget = nullptr);
 
+    // Shared with the classic windows (RedesignWidgetTheme):
+    // the scheme chosen (System follows the system)
+    static bool darkScheme(MainCtx *ctx);
+    // the accent chosen in the settings
+    static QColor accentColor(MainCtx *ctx);
+    // Accent Dim of the design: #AB6314 for the default accent, 0.81 of
+    // another one (VLCStyle.redesign.accentDim)
+    static QColor accentDim(const QColor &accent);
+    // the family of the bundled Inter, loaded once
+    static QString fontFamily();
+
     int pixelMetric(PixelMetric metric, const QStyleOption *option = nullptr,
                     const QWidget *widget = nullptr) const override;
     QSize sizeFromContents(ContentsType type, const QStyleOption *option,
@@ -67,7 +80,6 @@ private:
     };
 
     bool isDark() const;
-    static bool darkScheme(MainCtx *ctx);
     Palette palette() const;
     QFont menuFont() const;
 

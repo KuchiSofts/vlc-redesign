@@ -16,6 +16,9 @@ readonly property var items: ({
         // restart: read when VLC starts (the loggers...): "Applies after
         // restart" under the row once it is changed
         "verbose": [qsTr("Diagnostics"), qsTr("Show minor warnings"), "inttoggle", null, { advanced: true, info: true, restart: true }],
+        // read by VLC as its command line at the start
+        "extra-options": [qsTr("Diagnostics"), qsTr("Additional command line options"), "", null,
+                          { advanced: true, info: true, restart: true }],
         "logmode": [qsTr("Diagnostics"), qsTr("Log format"), "", { "text": qsTr("Plain text"), "html": qsTr("HTML") },
                     { advanced: true, info: true, restart: true }],
         "redesign-update-check": [qsTr("Startup"), qsTr("Check for updates automatically"), "", null, { info: true }],

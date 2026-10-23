@@ -121,8 +121,8 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
   `vlc-waveform` runs on a `QThread` per analysis (`QProcess` there with `waitForFinished()` steps and a cancel flag),
   joined by a `qAddPostRoutine()`. `CreateProcessW` held the interface thread for 6–10 s for a new executable.
 - `RendererManager::prepare()`: one scan per session, 3 s into a playing video, when a scan was done before
-  (`redesign/cast-scanned`: Windows asked for the firewall then). The device cast to last (`redesign/cast-last-device`)
-  is inserted at row 0.
+  (`redesign/cast-scanned`: Windows asked for the firewall then). Opening the list during a scan gives it 20 s from
+  then. The device cast to last (`redesign/cast-last-device`) is inserted at row 0.
 
 ## [0.2.6] · 2026-10-22
 

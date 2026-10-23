@@ -260,13 +260,14 @@ static int Create( vlc_object_t *p_this )
         }
         else
         {
+            int src = -1;
             if( ( i_chan & AOUT_CHANS_MIDDLE )
              && !( i_out_physical_channels & AOUT_CHANS_REAR ) )
             {
                 /* Use Rear chans as Middle chans if Rear chans are not used */
                 assert( i + 2 < AOUT_CHAN_MAX );
                 assert( pi_vlc_chan_order_wg4[i + 2] & AOUT_CHANS_REAR );
-                channel_map[i_dst_idx] = src_chans[i + 2];
+                src = src_chans[i + 2];
             }
             else if( ( i_chan & AOUT_CHANS_REAR )
                   && !( i_out_physical_channels & AOUT_CHANS_MIDDLE ) )
@@ -274,19 +275,21 @@ static int Create( vlc_object_t *p_this )
                 /* Use Middle chans as Rear chans if Middle chans are not used */
                 assert( (int) i - 2 >= 0 );
                 assert( pi_vlc_chan_order_wg4[i - 2] & AOUT_CHANS_MIDDLE );
-                channel_map[i_dst_idx] = src_chans[i - 2];
+                src = src_chans[i - 2];
             }
-            else if( ( i_chan & AOUT_CHANS_REAR )
-                  && ( i_in_physical_channels & AOUT_CHAN_REARCENTER )
-                  && !( i_out_physical_channels & AOUT_CHAN_REARCENTER ) )
+            /* A rear center the output has not: on its rear pair, else its
+             * middle pair, when nothing else goes there (6.1 on a 7.1 device,
+             * 3/1 or 2/1 on a 5.1 or quad one lost it) */
+            if( src == -1
+             && !( i_out_physical_channels & AOUT_CHAN_REARCENTER )
+             && ( ( i_chan & AOUT_CHANS_REAR )
+               || ( ( i_chan & AOUT_CHANS_MIDDLE )
+                 && !( i_out_physical_channels & AOUT_CHANS_REAR ) ) ) )
             {
-                /* Play the rear center on both rear chans: 6.1 on a 7.1
-                 * device lost it */
                 assert( pi_vlc_chan_order_wg4[6] == AOUT_CHAN_REARCENTER );
-                channel_map[i_dst_idx] = src_chans[6];
+                src = src_chans[6];
             }
-            else
-                channel_map[i_dst_idx] = -1;
+            channel_map[i_dst_idx] = src;
         }
         i_dst_idx++;
     }

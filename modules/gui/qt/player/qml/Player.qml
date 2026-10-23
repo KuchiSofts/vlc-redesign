@@ -57,6 +57,25 @@ FocusScope {
 
     // Private
 
+    // Nothing plays, for a while (not between two media): the picture of an
+    // empty player (IdleScene, Figma's cat) where a video would be
+    property bool _nothingPlays: false
+    readonly property bool _showsPicture: MainCtx.hasEmbededVideo || _nothingPlays
+
+    Timer {
+        interval: 400
+        running: !Player.isStarted
+        onTriggered: rootPlayer._nothingPlays = true
+    }
+
+    Connections {
+        target: Player
+        function onPlayingStateChanged() {
+            if (Player.isStarted)
+                rootPlayer._nothingPlays = false
+        }
+    }
+
     // Library next to the video (Figma "Player" with the sidebar open)
     property bool libraryVisible: false
     // Created on first use, then kept with its history
@@ -284,13 +303,13 @@ FocusScope {
 
         // Figma 187:328: the library opens over the video, which keeps its
         // place and size (the music moves beside it)
-        readonly property bool besideLibrary: compactLibrary.visible && !MainCtx.hasEmbededVideo
+        readonly property bool besideLibrary: compactLibrary.visible && !rootPlayer._showsPicture
 
         anchors {
             left: besideLibrary ? compactLibrary.right : parent.left
             right: parent.right
-            top: (MainCtx.hasEmbededVideo && rootPlayer._controlsUnderVideo) ? topBar.bottom : parent.top
-            bottom: (MainCtx.hasEmbededVideo && rootPlayer._controlsUnderVideo) ? controlBar.top : parent.bottom
+            top: (rootPlayer._showsPicture && rootPlayer._controlsUnderVideo) ? topBar.bottom : parent.top
+            bottom: (rootPlayer._showsPicture && rootPlayer._controlsUnderVideo) ? controlBar.top : parent.bottom
             leftMargin: besideLibrary ? 0 : rootPlayer._videoInset
             rightMargin: rootPlayer._videoInset
             topMargin: rootPlayer._videoTopInset
@@ -300,7 +319,8 @@ FocusScope {
         // casting: the card (castingCard) instead of the cover
         sourceComponent: MainCtx.hasEmbededVideo ? videoComponent
                        : (Player.rendererManager.useRenderer && !Player.rendererManager.displayHere)
-                         ? castingComponent : audioComponent
+                         ? castingComponent
+                         : rootPlayer._nothingPlays ? idleComponent : audioComponent
 
         property int cursorShape
 
@@ -433,6 +453,11 @@ FocusScope {
         Component {
             id: castingComponent
             Item {}
+        }
+
+        Component {
+            id: idleComponent
+            IdleScene {}
         }
 
         Component {

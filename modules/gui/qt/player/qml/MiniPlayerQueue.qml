@@ -8,19 +8,34 @@
  *****************************************************************************/
 import QtQuick
 import QtQuick.Controls.Basic as Controls
+import QtQuick.Controls.impl as Impl
 
 import VLC.MainInterface
 import VLC.Playlist
 import VLC.Style
 import VLC.Widgets as Widgets
 
+// Figma 970:3091 (the queue open): the queue built into the top of the mini
+// player's card, as wide as the card (laid out from the card's corner)
 Item {
     id: root
     objectName: "miniPlayerQueue"
-    implicitHeight: VLCStyle.dp(228, VLCStyle.scale)
+    // the card's top to 8 above the video (the video at 359 under the top)
+    implicitHeight: VLCStyle.dp(351, VLCStyle.scale)
     readonly property bool lightTheme: !VLCStyle.palette.isDark
+    // the border of the card (light theme), left visible around the header
+    property real edge: 0
+    // the radius of the card, the header's top corners
+    property real radius: VLCStyle.dp(14, VLCStyle.scale)
     // the row picked by a click ("−" removes it); a double click plays a row
     property int selectedIndex: -1
+
+    // Text of the design (Inter: a line of 1.2109 em) centred in a box of
+    // `box` px: its top padding
+    function _textTop(box, pixelSize, ascent) {
+        return VLCStyle.redesign.textBaseline(Math.round((box - Math.round(1.2109375 * pixelSize)) / 2),
+                                              pixelSize) - ascent
+    }
 
     PlaylistListModel {
         id: queueModel
@@ -36,34 +51,45 @@ Item {
     }
     Widgets.FilePicker { id: filePicker; ctx: MainCtx }
 
+    // Figma: the "Queue" header, the width of the card, 58 high, #151515,
+    // the card's top corners (the queue below it on the card's #1B1B1B)
     Rectangle {
-        anchors.fill: parent
-        color: root.lightTheme ? "#c2c2c1" : "#111111"
-        radius: VLCStyle.dp(8, VLCStyle.scale)
+        id: header
+        x: root.edge
+        y: root.edge
+        width: parent.width - 2 * root.edge
+        height: VLCStyle.dp(58, VLCStyle.scale) - root.edge
+        color: VLCStyle.redesign.color("#151515", "#b5b5b4")
+        topLeftRadius: Math.max(0, root.radius - root.edge)
+        topRightRadius: Math.max(0, root.radius - root.edge)
+    }
+    // Inter 16 #8F8F8F, centred in the header
+    Text {
+        id: headerText
+        width: parent.width
+        height: VLCStyle.dp(58, VLCStyle.scale)
+        text: qsTr("Queue")
+        color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
+        font.family: VLCStyle.redesign.fontFamily
+        font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignTop
+        topPadding: root._textTop(height, font.pixelSize, headerMetrics.ascent)
+        FontMetrics {
+            id: headerMetrics
+            font: headerText.font
+        }
     }
 
+    // Figma: "4 items - 2h 3m" (Inter 14 #6B6B6B, 37 from the card's edge)
+    // and the icons (24, 20 apart, 28 from the other edge), on a row of 24
+    // at 79
     Text {
-        x: VLCStyle.dp(12, VLCStyle.scale)
-        y: VLCStyle.dp(10, VLCStyle.scale)
-        width: parent.width - VLCStyle.dp(24, VLCStyle.scale)
-        text: qsTr("Queue")
-        color: root.lightTheme ? "#4d4d4d" : VLCStyle.redesign.textSecondary
-        font.family: VLCStyle.redesign.fontFamily
-        font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
-        horizontalAlignment: Text.AlignHCenter
-    }
-    Rectangle {
-        x: 0
-        y: VLCStyle.dp(37, VLCStyle.scale)
-        width: parent.width
-        height: VLCStyle.dp(1, VLCStyle.scale)
-        color: root.lightTheme ? "#858585" : VLCStyle.redesign.separator
-    }
-    Text {
-        x: VLCStyle.dp(12, VLCStyle.scale)
-        y: VLCStyle.dp(48, VLCStyle.scale)
-        width: parent.width - VLCStyle.dp(110, VLCStyle.scale)
-        // Figma 970:3091: "4 items - 2h 3m"
+        id: countText
+        x: VLCStyle.dp(37, VLCStyle.scale)
+        y: VLCStyle.dp(79, VLCStyle.scale)
+        width: tools.x - x - VLCStyle.dp(12, VLCStyle.scale)
+        height: VLCStyle.dp(24, VLCStyle.scale)
         text: {
             const count = queueModel.count
             if (count === 0)
@@ -73,23 +99,41 @@ Item {
                                          : qsTr("%1m").arg(minutes)
             return (count === 1 ? qsTr("1 item - %1") : qsTr("%1 items - %2").arg(count)).arg(length)
         }
-        color: root.lightTheme ? "#7c7c7b" : VLCStyle.redesign.textMuted
+        color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
         elide: Text.ElideRight
         font.family: VLCStyle.redesign.fontFamily
-        font.pixelSize: VLCStyle.dp(11, VLCStyle.scale)
+        font.pixelSize: VLCStyle.redesign.fontNormal
+        verticalAlignment: Text.AlignTop
+        topPadding: root._textTop(height, font.pixelSize, countMetrics.ascent)
+        FontMetrics {
+            id: countMetrics
+            font: countText.font
+        }
     }
     Row {
-        x: parent.width - width - VLCStyle.dp(8, VLCStyle.scale)
-        y: VLCStyle.dp(41, VLCStyle.scale)
-        spacing: 0
+        id: tools
+        x: parent.width - width - VLCStyle.dp(28, VLCStyle.scale)
+        y: VLCStyle.dp(79, VLCStyle.scale)
+        spacing: VLCStyle.dp(20, VLCStyle.scale)
         Widgets.SortControl {
-            width: VLCStyle.dp(26, VLCStyle.scale)
-            height: VLCStyle.dp(28, VLCStyle.scale)
+            id: sortControl
+            width: VLCStyle.dp(24, VLCStyle.scale)
+            height: VLCStyle.dp(24, VLCStyle.scale)
+            radius: VLCStyle.dp(4, VLCStyle.scale)
+            backgroundColor: VLCStyle.redesign.color(hovered || down ? VLCStyle.redesign.controlHoverBackground
+                                                                     : "transparent", "#9c9c9b")
             enabled: queueModel.count > 1
             model: MainPlaylistController.sortKeyTitleList
             sortKey: MainPlaylistController.sortKey
             sortOrder: MainPlaylistController.sortOrder === PlaylistController.SORT_ORDER_ASC
                        ? Qt.AscendingOrder : Qt.DescendingOrder
+            // the sort icon of the design (#6B6B6B)
+            contentItem: Image {
+                source: "qrc:///redesign/icons/sort/dim.png"
+                sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
+                fillMode: Image.Pad
+                opacity: sortControl.enabled ? 1 : 0.35
+            }
             onSortSelected: key => {
                 MainPlaylistController.sortKey = key
                 MainPlaylistController.sort()
@@ -101,37 +145,16 @@ Item {
                 MainPlaylistController.sort()
             }
         }
-        Controls.Button {
-            width: VLCStyle.dp(26, VLCStyle.scale)
-            height: VLCStyle.dp(28, VLCStyle.scale)
-            text: "−"
+        // (Figma: "−" drawn as "+", no row picked: it stays so, unusable)
+        QueueButton {
+            iconSource: "qrc:///redesign/icons/remove/default.png"
+            description: qsTr("Remove selected item from queue")
             enabled: root.selectedIndex >= 0 && root.selectedIndex < queueModel.count
-            Accessible.name: qsTr("Remove selected item from queue")
-            background: Item {}
-            contentItem: Text {
-                text: parent.text
-                color: parent.enabled
-                       ? (root.lightTheme ? "#4d4d4d" : VLCStyle.redesign.textSecondary)
-                       : (root.lightTheme ? "#929291" : VLCStyle.redesign.textDisabled)
-                font.pixelSize: VLCStyle.dp(20, VLCStyle.scale)
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-            }
             onClicked: queueModel.removeItems([root.selectedIndex])
         }
-        Controls.Button {
-            width: VLCStyle.dp(26, VLCStyle.scale)
-            height: VLCStyle.dp(28, VLCStyle.scale)
-            text: "+"
-            Accessible.name: qsTr("Add files to queue")
-            background: Item {}
-            contentItem: Text {
-                text: parent.text
-                color: root.lightTheme ? "#4d4d4d" : VLCStyle.redesign.textSecondary
-                font.pixelSize: VLCStyle.dp(20, VLCStyle.scale)
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-            }
+        QueueButton {
+            iconSource: "qrc:///redesign/icons/add/default.png"
+            description: qsTr("Add files to queue")
             onClicked: {
                 const selected = filePicker.chooseFiles(qsTr("Add files to queue"))
                 if (selected.length > 0)
@@ -140,66 +163,133 @@ Item {
         }
     }
 
+    // Figma: rows of 44 from 118, the handle (24) 32 from the card's edge,
+    // 14, the name (Inter 14 #969696), the time (Inter 14 #6B6B6B) ending 32
+    // from the other edge; room for five rows, 21 above the video
     ListView {
         id: queueList
         objectName: "miniPlayerQueueList"
-        x: VLCStyle.dp(10, VLCStyle.scale)
-        y: VLCStyle.dp(78, VLCStyle.scale)
-        width: parent.width - VLCStyle.dp(20, VLCStyle.scale)
-        height: parent.height - VLCStyle.dp(86, VLCStyle.scale)
+        // the rows' hover 12 wider than their content on each side
+        x: VLCStyle.dp(20, VLCStyle.scale)
+        y: VLCStyle.dp(118, VLCStyle.scale)
+        width: parent.width - 2 * x
+        height: parent.height - y - VLCStyle.dp(13, VLCStyle.scale)
         clip: true
         model: queueModel
         boundsBehavior: Flickable.StopAtBounds
         delegate: Controls.ItemDelegate {
+            id: queueRow
             required property int index
             required property string title
             required property var duration
-            required property bool isCurrent
+            // moved by its handle: where the pointer took it
+            property real dragOffset: 0
             width: queueList.width
-            height: VLCStyle.dp(31, VLCStyle.scale)
-            leftPadding: VLCStyle.dp(5, VLCStyle.scale)
-            rightPadding: VLCStyle.dp(5, VLCStyle.scale)
-            highlighted: index === root.selectedIndex
+            height: VLCStyle.dp(44, VLCStyle.scale)
+            leftPadding: VLCStyle.dp(12, VLCStyle.scale)
+            rightPadding: VLCStyle.dp(12, VLCStyle.scale)
+            topPadding: 0
+            bottomPadding: 0
+            z: handleArea.pressed ? 1 : 0
+            transform: Translate { y: queueRow.dragOffset }
+            highlighted: index === root.selectedIndex || handleArea.pressed
             background: Rectangle {
-                color: parent.hovered || parent.highlighted
+                color: queueRow.hovered || queueRow.highlighted
                        ? (root.lightTheme ? "#b0b0b0" : "#262626") : "transparent"
                 radius: VLCStyle.dp(4, VLCStyle.scale)
             }
-            contentItem: Row {
-                spacing: VLCStyle.dp(8, VLCStyle.scale)
-                Text {
-                    width: VLCStyle.dp(14, VLCStyle.scale)
-                    height: parent.height
-                    text: isCurrent ? "▶" : "="
-                    color: isCurrent ? VLCStyle.redesign.accent
-                                     : (root.lightTheme ? "#7c7c7b" : VLCStyle.redesign.textMuted)
-                    font.pixelSize: VLCStyle.dp(11, VLCStyle.scale)
-                    verticalAlignment: Text.AlignVCenter
+            contentItem: Item {
+                // Figma: the "=" handle (the move icon, #8F8F8F), of every
+                // row, the one playing as well: dragged, it moves the row
+                Impl.ColorImage {
+                    id: handle
+                    anchors.verticalCenter: parent.verticalCenter
+                    width: VLCStyle.redesign.iconSize
+                    height: width
+                    source: "qrc:///redesign/icons/move/default.png"
+                    sourceSize: Qt.size(width, height)
+                    fillMode: Image.Pad
+                    color: root.lightTheme ? "#2e2e2e" : "transparent"
+
+                    MouseArea {
+                        id: handleArea
+                        property real startY: 0
+                        anchors.fill: parent
+                        // (the list would take the drag for its scrolling)
+                        preventStealing: true
+                        cursorShape: pressed ? Qt.ClosedHandCursor : Qt.OpenHandCursor
+                        onPressed: (mouse) => {
+                            startY = mapToItem(queueList.contentItem, mouse.x, mouse.y).y
+                        }
+                        onPositionChanged: (mouse) => {
+                            queueRow.dragOffset = mapToItem(queueList.contentItem, mouse.x, mouse.y).y - startY
+                        }
+                        onReleased: {
+                            const target = Math.max(0, Math.min(queueModel.count - 1,
+                                queueRow.index + Math.round(queueRow.dragOffset / queueRow.height)))
+                            queueRow.dragOffset = 0
+                            if (target !== queueRow.index)
+                                queueModel.moveItemsPost([queueRow.index], target)
+                        }
+                        onCanceled: queueRow.dragOffset = 0
+                    }
                 }
                 Text {
-                    width: parent.width - VLCStyle.dp(72, VLCStyle.scale)
+                    id: nameText
+                    x: handle.width + VLCStyle.dp(14, VLCStyle.scale)
+                    width: timeText.x - x - VLCStyle.dp(16, VLCStyle.scale)
                     height: parent.height
-                    text: title
+                    text: queueRow.title
                     color: root.lightTheme ? "#4d4d4d" : VLCStyle.redesign.textSecondary
                     elide: Text.ElideRight
                     font.family: VLCStyle.redesign.fontFamily
-                    font.pixelSize: VLCStyle.dp(11, VLCStyle.scale)
-                    verticalAlignment: Text.AlignVCenter
+                    font.pixelSize: VLCStyle.redesign.fontNormal
+                    verticalAlignment: Text.AlignTop
+                    topPadding: root._textTop(height, font.pixelSize, rowMetrics.ascent)
+                    FontMetrics {
+                        id: rowMetrics
+                        font: nameText.font
+                    }
                 }
                 Text {
-                    width: VLCStyle.dp(43, VLCStyle.scale)
+                    id: timeText
+                    x: parent.width - width
+                    width: implicitWidth
                     height: parent.height
-                    text: duration.formatHMS()
-                    color: root.lightTheme ? "#7c7c7b" : VLCStyle.redesign.textMuted
+                    text: queueRow.duration.formatHMS()
+                    color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                     font.family: VLCStyle.redesign.fontFamily
-                    font.pixelSize: VLCStyle.dp(10, VLCStyle.scale)
+                    font.pixelSize: VLCStyle.redesign.fontNormal
                     horizontalAlignment: Text.AlignRight
-                    verticalAlignment: Text.AlignVCenter
+                    verticalAlignment: Text.AlignTop
+                    topPadding: root._textTop(height, font.pixelSize, rowMetrics.ascent)
                 }
             }
             Accessible.name: title
             onClicked: root.selectedIndex = index
             onDoubleClicked: MainPlaylistController.goTo(index, true)
+        }
+    }
+
+    // Icon button of the queue's row (24, the icons of the design in
+    // #6B6B6B as the sort's)
+    component QueueButton: Widgets.IconToolButton {
+        id: queueButton
+
+        property string iconSource
+
+        // Drawn from an image, the text only names the button
+        text: description
+        width: VLCStyle.dp(24, VLCStyle.scale)
+        height: VLCStyle.dp(24, VLCStyle.scale)
+        radius: VLCStyle.dp(4, VLCStyle.scale)
+        backgroundColor: VLCStyle.redesign.color(hovered || down ? VLCStyle.redesign.controlHoverBackground
+                                                                 : "transparent", "#9c9c9b")
+        contentItem: Impl.ColorImage {
+            source: queueButton.iconSource
+            sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
+            fillMode: Image.Pad
+            color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
         }
     }
 }

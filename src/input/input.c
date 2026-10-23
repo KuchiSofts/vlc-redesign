@@ -679,7 +679,10 @@ static void MainLoop( input_thread_t *p_input, bool b_interactive )
         VLC_TICK_FROM_MS(var_InheritInteger( p_input, "stats-min-report-interval" ));
     vlc_tick_t i_last_seek_mdate = 0;
 
-    if( b_interactive && var_InheritBool( p_input, "start-paused" ) )
+    /* (not a thumbnailer: paused, it never decodes its picture, and every
+     * thumbnail times out while VLC is told to start paused) */
+    if( b_interactive && input_priv(p_input)->type != INPUT_TYPE_THUMBNAILING
+     && var_InheritBool( p_input, "start-paused" ) )
         ControlPause(p_input, vlc_tick_now(), true);
 
     /* Where to start (the start time, the position to resume from) is

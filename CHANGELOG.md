@@ -102,6 +102,9 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
 - **The library beside the video listed Home backwards**: Continue Watching and Listen Again showed the media played
   first first; they come in Home's order now, the videos by their file name as Home names them. *Videos* listed the
   music folders of the library too: it lists the folders holding videos, *Music › Songs* the ones holding songs.
+- **Raw video files did not open**: a headerless raw file (.yuv, .cif, .qcif...) never played, and a YUV4MPEG2
+  file (.y4m) logged an error before another reader took it: VLC lost the frame rate of the file. It is the
+  same in VLC itself. Both open now.
 - **A folder of the library opened from *Videos* had its path as its name**, without its separators
   ("C:VideosFilms").
 

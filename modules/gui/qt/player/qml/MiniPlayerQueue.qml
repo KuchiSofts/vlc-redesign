@@ -63,9 +63,16 @@ Item {
         x: VLCStyle.dp(12, VLCStyle.scale)
         y: VLCStyle.dp(48, VLCStyle.scale)
         width: parent.width - VLCStyle.dp(110, VLCStyle.scale)
-        text: queueModel.count > 0
-              ? qsTr("%1 items · %2").arg(queueModel.count).arg(queueModel.duration.formatLong())
-              : qsTr("Queue is empty")
+        // Figma 970:3091: "4 items - 2h 3m"
+        text: {
+            const count = queueModel.count
+            if (count === 0)
+                return qsTr("Queue is empty")
+            const minutes = Math.round(queueModel.duration.toSeconds() / 60)
+            const length = minutes >= 60 ? qsTr("%1h %2m").arg(Math.floor(minutes / 60)).arg(minutes % 60)
+                                         : qsTr("%1m").arg(minutes)
+            return (count === 1 ? qsTr("1 item - %1") : qsTr("%1 items - %2").arg(count)).arg(length)
+        }
         color: root.lightTheme ? "#7c7c7b" : VLCStyle.redesign.textMuted
         elide: Text.ElideRight
         font.family: VLCStyle.redesign.fontFamily

@@ -4,7 +4,9 @@
  ****************************************************************************/
 import QtQuick
 import QtQuick.Templates as T
+import QtQuick.Controls.impl as Impl
 import VLC.Style
+import VLC.Widgets as Widgets
 
 // Dropdown of the design (Figma component "Dropdown"): a 320 x 36 well
 // (#090909, 2 px padding) around a 316 x 32 option (#191919), 14 px text
@@ -35,7 +37,8 @@ T.ComboBox {
             anchors.fill: parent
             anchors.margins: root.px(2)
             radius: root.px(4)
-            color: root.hovered || root.popup.visible ? root.c("#222222") : root.c("#191919")
+            // (open, as closed: Figma 6456:13892)
+            color: root.hovered && !root.popup.visible ? root.c("#222222") : root.c("#191919")
         }
     }
 
@@ -58,23 +61,28 @@ T.ComboBox {
         height: width
         sourceSize: Qt.size(width, height)
         source: "qrc:///redesign/icons/chevron-down/default.png"
-        rotation: root.popup.visible ? 180 : 0
     }
 
+    // Figma 6456:13892 / 2372:8300: rows of 44, 2 apart, the text 14 in,
+    // #1F1F1F under the one chosen or the pointer; the one chosen keeps its
+    // grey and gets the check of the accent, 13 from the end
     delegate: T.ItemDelegate {
+        id: option
         required property var modelData
         required property int index
 
+        readonly property bool chosen: index === root.currentIndex
+
         width: ListView.view ? ListView.view.width : root.width
-        implicitHeight: root.px(32)
+        implicitHeight: root.px(44)
         leftPadding: root.px(14)
-        rightPadding: root.px(14)
+        rightPadding: root.px(14 + 24 + 13)
         highlighted: root.highlightedIndex === index
 
         contentItem: Text {
             id: optionText
-            text: modelData[root.textRole] !== undefined ? modelData[root.textRole] : modelData
-            color: index === root.currentIndex ? VLCStyle.redesign.accent : root.c("#8F8F8F")
+            text: option.modelData[root.textRole] !== undefined ? option.modelData[root.textRole] : option.modelData
+            color: root.c("#8F8F8F")
             font: root.font
             verticalAlignment: Text.AlignTop
             // the baseline where the design centres a line of Inter
@@ -84,7 +92,17 @@ T.ComboBox {
         }
         background: Rectangle {
             radius: root.px(4)
-            color: parent.highlighted || parent.hovered ? root.c("#222222") : "transparent"
+            color: option.chosen || option.highlighted || option.hovered ? root.c("#1F1F1F") : "transparent"
+
+            Impl.ColorImage {
+                visible: option.chosen
+                x: parent.width - root.px(13) - width
+                anchors.verticalCenter: parent.verticalCenter
+                width: root.px(24)
+                height: width
+                source: "qrc:///redesign/track-check-active.png"
+                color: VLCStyle.redesign.accentTint
+            }
         }
     }
 
@@ -94,13 +112,17 @@ T.ComboBox {
         closePolicy: T.Popup.CloseOnEscape | T.Popup.CloseOnPressOutside
         modal: true
         dim: false
-        y: root.height + root.px(4)
+        // Figma: 20 under the field, as wide, padding 2, no border, the
+        // drop shadow of the menus
+        y: root.height + root.px(20)
         width: root.width
-        implicitHeight: Math.min(contentItem.implicitHeight + topPadding + bottomPadding, root.px(32 * 8 + 4))
+        implicitHeight: Math.min(contentItem.implicitHeight + topPadding + bottomPadding, root.px(46 * 8 + 2))
         padding: root.px(2)
+        margins: root.px(8)
 
         contentItem: ListView {
             clip: true
+            spacing: root.px(2)
             implicitHeight: contentHeight
             model: root.popup.visible ? root.delegateModel : null
             currentIndex: root.highlightedIndex
@@ -109,8 +131,13 @@ T.ComboBox {
         background: Rectangle {
             radius: root.px(6)
             color: root.c("#191919")
-            border.width: 1
-            border.color: root.c("#222222")
+
+            // Figma: drop shadow 0 8 blur 15 #000000 46 % (as RedesignMenu)
+            Widgets.RoundedRectangleShadow {
+                yOffset: root.px(8)
+                blurRadius: 7.5 * VLCStyle.scale
+                color: Qt.rgba(0, 0, 0, 0.46)
+            }
         }
     }
 }

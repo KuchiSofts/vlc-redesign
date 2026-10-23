@@ -48,8 +48,9 @@ T.Menu {
 
     padding: VLCStyle.dp(4, VLCStyle.scale)
     margins: 0
-    // Submenus line up with the row that opens them
-    overlap: padding
+    // Submenus open 11 px clear of their menu (Figma "menu" 6062:13354 and
+    // "Profiles" 6648:20666), their rows in line with the one that opens them
+    overlap: -VLCStyle.dp(11, VLCStyle.scale)
     cascade: true
 
     delegate: RedesignMenuItem { }

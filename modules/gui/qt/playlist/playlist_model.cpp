@@ -24,6 +24,8 @@
 #include "playlist_model_p.hpp"
 #include <algorithm>
 #include <cassert>
+#include <QDir>
+#include <QFileInfo>
 #include "util/shared_input_item.hpp"
 #include "playlist_controller.hpp"
 
@@ -294,7 +296,8 @@ PlaylistListModel::roleNames() const
         { ArtistRole , QByteArrayLiteral("artist") },
         { AlbumRole  , QByteArrayLiteral("album") },
         { ArtworkRole, QByteArrayLiteral("artwork") },
-        { UrlRole, QByteArrayLiteral("url") }
+        { UrlRole, QByteArrayLiteral("url") },
+        { FolderRole, QByteArrayLiteral("folder") }
     };
 }
 
@@ -507,6 +510,13 @@ PlaylistListModel::data(const QModelIndex &index, int role) const
         return d->m_items[row].getUrl();
     case PlaylistListModel::PreparsedRole:
         return d->m_items[row].preparsed();
+    case FolderRole:
+    {
+        const QUrl url = d->m_items[row].getUrl();
+        if (url.isLocalFile())
+            return QDir::toNativeSeparators(QFileInfo(url.toLocalFile()).absolutePath());
+        return url.host();
+    }
     default:
         return {};
     }

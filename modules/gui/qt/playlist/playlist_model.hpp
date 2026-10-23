@@ -52,7 +52,10 @@ public:
         AlbumRole,
         ArtworkRole,
         UrlRole,
-        PreparsedRole
+        PreparsedRole,
+        // the folder of a file, the host of a stream ("Show the playlist as
+        // a tree": the headings of the queue)
+        FolderRole
     };
     Q_ENUM(Roles);
 

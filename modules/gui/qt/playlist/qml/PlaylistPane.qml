@@ -442,6 +442,48 @@ T.Pane {
                 }
             }
 
+            // "Show the playlist as a tree" (Figma 3046:10057): the media
+            // under the folder (or the host) they come from; the queue of
+            // VLC 4 is flat, the folders are headings and the rows move,
+            // select and drop as they did
+            section.property: MainCtx.playlistTree ? "folder" : ""
+            section.delegate: Item {
+                id: folderHeading
+
+                required property string section
+
+                width: listView.contentWidth
+                height: section.length > 0 ? VLCStyle.dp(32, VLCStyle.scale) : 0
+                visible: height > 0
+
+                Impl.ColorImage {
+                    id: folderIcon
+                    x: root.card ? VLCStyle.dp(14, VLCStyle.scale) : VLCStyle.margin_normal
+                    anchors.verticalCenter: parent.verticalCenter
+                    width: VLCStyle.dp(20, VLCStyle.scale)
+                    height: width
+                    sourceSize: Qt.size(width, height)
+                    source: "qrc:///redesign/icons/folder/default.png"
+                    color: VLCStyle.palette.isDark ? "transparent" : "#2e2e2e"
+                }
+                Text {
+                    anchors.left: folderIcon.right
+                    anchors.leftMargin: VLCStyle.dp(8, VLCStyle.scale)
+                    anchors.right: parent.right
+                    anchors.rightMargin: VLCStyle.margin_normal
+                    anchors.verticalCenter: parent.verticalCenter
+                    // the folder's name
+                    text: {
+                        const parts = folderHeading.section.split(/[\\/]/).filter(part => part.length > 0)
+                        return parts.length > 0 ? parts[parts.length - 1] : folderHeading.section
+                    }
+                    color: VLCStyle.redesign.color("#6B6B6B", "#4d4d4d")
+                    font.family: VLCStyle.redesign.fontFamily
+                    font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
+                    elide: Text.ElideMiddle
+                }
+            }
+
             delegate: PlaylistDelegate {
                 id: delegate
 

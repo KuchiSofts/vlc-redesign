@@ -59,6 +59,8 @@ readonly property var items: ({
                             { info: true, restart: true }],
         "redesign/notification-duration": [qsTr("Notifications and System Tray"), qsTr("Popup duration"), "slider", null,
                                            { info: false, labelsBaseline: 44, rowHeight: 57, controlTop: 1 }],
+        // Figma 3046:10057: the queue under the folders of its media
+        "playlist-tree": [qsTr("Playlist"), qsTr("Show the playlist as a tree"), "", null, { info: true }],
         // not in the design: after its sections (the page starts as it draws it)
         "redesign/always-show-player-bar": [qsTr("Player Bar"), qsTr("Always show the player bar"), "", null,
                                             { info: true }],

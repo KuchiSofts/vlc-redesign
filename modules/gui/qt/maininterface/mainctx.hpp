@@ -140,6 +140,9 @@ class MainCtx : public QObject
     // "Show controls in fullscreen" of the settings (qt-fs-controller): the
     // mouse shows them in fullscreen
     Q_PROPERTY(bool fullscreenControls READ fullscreenControls NOTIFY fullscreenControlsChanged FINAL)
+    // "Show the playlist as a tree" (playlist-tree): the queue under the
+    // folders of its media (VLC 4's queue is flat: headings, not branches)
+    Q_PROPERTY(bool playlistTree READ playlistTree NOTIFY playlistTreeChanged FINAL)
     // "Double click on the video" of the settings: 0 nothing, 1 fullscreen
     Q_PROPERTY(int doubleClickAction READ doubleClickAction NOTIFY doubleClickActionChanged FINAL)
     // "Show confirmation and error dialogs" of the settings (qt-error-dialogs)
@@ -300,6 +303,7 @@ public:
     int mouseHideTimeout() const { return m_mouseHideTimeout; }
     int fsSensitivity() const { return m_fsSensitivity; }
     bool fullscreenControls() const { return m_fullscreenControls; }
+    bool playlistTree() const { return m_playlistTree; }
     int doubleClickAction() const { return m_doubleClickAction; }
     bool showErrorDialogs() const { return m_showErrorDialogs; }
     bool alwaysShowPlayerBar() const { return m_alwaysShowPlayerBar; }
@@ -521,6 +525,7 @@ protected:
     int m_mouseHideTimeout = 1000;
     int m_fsSensitivity = 3;
     bool m_fullscreenControls = true;
+    bool m_playlistTree = false;
     int m_doubleClickAction = 1;
     bool m_showErrorDialogs = true;
     bool m_alwaysShowPlayerBar = false;
@@ -664,6 +669,7 @@ signals:
     void mouseHideTimeoutChanged();
     void fsSensitivityChanged();
     void fullscreenControlsChanged();
+    void playlistTreeChanged();
     void doubleClickActionChanged();
     void showErrorDialogsChanged();
     void alwaysShowPlayerBarChanged();

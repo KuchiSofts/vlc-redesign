@@ -27,9 +27,12 @@ HdrOutput::HdrOutput(QObject* parent) : QObject(parent)
     for (int i = 0; i < labels.size(); ++i) {
         const bool enabled = nativeValues.contains(values[i]);
         m_choices.append(QVariantMap{{QStringLiteral("label"), labels[i]}, {QStringLiteral("value"), values[i]}, {QStringLiteral("enabled"), enabled},
-            {QStringLiteral("reason"), enabled ? QString() : (m_available
+            {QStringLiteral("reason"), enabled ? QString() : values[i] < 0
+                // HDR10+ and Dolby Vision: listed as the design does
+                ? tr("Windows offers no way for a player to send this format to a display.")
+                : m_available
                 ? tr("This renderer does not expose this output format.")
-                : tr("The libplacebo HDR renderer is not installed in this build."))}});
+                : tr("The libplacebo HDR renderer is not installed in this build.")}});
     }
     m_message = m_available ? tr("Uses libplacebo on next playback. HDR requires a compatible display and driver.")
                             : tr("HDR output is unavailable with the installed video renderer.");

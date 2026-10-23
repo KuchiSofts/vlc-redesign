@@ -60,12 +60,12 @@ const QHash<QString, QStringList> options = {
     {"hqdn3d", {"hqdn3d-luma-spat", "hqdn3d-luma-temp", "hqdn3d-chroma-spat", "hqdn3d-chroma-temp"}}
 };
 // The options a filter reads only as it opens (the type of transform, the
-// scheme of anaglyph, the sigma of the blur, a change of which the core
-// answers with an empty chain), or cannot open without (the mask of
-// erase), each with its filter: the chain opens that filter again
+// scheme of anaglyph), or cannot open without (the mask of erase), each
+// with its filter: the chain opens that filter again (the sigma of the
+// blur needs not: the core opens the chain again for it)
 const QHash<QString, QString> reopened = {
     {"transform-type", "transform"}, {"anaglyph-scheme", "anaglyph"},
-    {"gaussianblur-sigma", "gaussianblur"}, {"erase-mask", "erase"}
+    {"erase-mask", "erase"}
 };
 // The slider of an option without a range (the free angle: a turn, as the
 // dial of the classic dialog) or with one too wide to be of use (the sigma

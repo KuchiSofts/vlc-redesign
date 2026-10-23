@@ -73,7 +73,7 @@ RedesignIconButton {
         onClosed: root.requestLockUnlockAutoHide(false)
 
         background: Rectangle {
-            color: VLCStyle.redesign.windowBackground
+            color: VLCStyle.redesign.color(VLCStyle.redesign.windowBackground, "#c2c2c1")
             radius: VLCStyle.dp(10, VLCStyle.scale)
             border.width: 1
             border.color: VLCStyle.redesign.color(VLCStyle.redesign.separator, "#9c9c9b")

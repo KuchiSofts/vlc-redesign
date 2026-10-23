@@ -9,7 +9,6 @@ import VLC.Style
 Popup {
     id: root
     signal confirmed()
-    readonly property bool dark: VLCStyle.palette.isDark
 
     modal: true
     focus: true
@@ -18,8 +17,8 @@ Popup {
     onOpened: cancelButton.forceActiveFocus(Qt.PopupFocusReason)
 
     background: Rectangle {
-        color: root.dark ? "#1b1b1b" : "#f5f5f5"
-        border.color: root.dark ? "#555555" : "#cccccc"
+        color: VLCStyle.redesign.color("#1b1b1b", "#ababaa")
+        border.color: VLCStyle.redesign.color("#555555", "#8e8e8d")
         radius: 6
     }
     contentItem: FocusScope {
@@ -30,7 +29,7 @@ Popup {
             anchors.top: parent.top
             anchors.topMargin: 16
             text: qsTr("Reset all shortcuts?")
-            color: root.dark ? "#eaeaea" : "#333333"
+            color: VLCStyle.redesign.color("#eaeaea", "#2e2e2e")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
         }
@@ -42,7 +41,7 @@ Popup {
             anchors.top: parent.top
             anchors.topMargin: 52
             text: qsTr("Local and global shortcuts will return to VLC defaults when you save. Cancel keeps your current settings.")
-            color: root.dark ? "#aaaaaa" : "#555555"
+            color: VLCStyle.redesign.color("#aaaaaa", "#4d4d4d")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
             wrapMode: Text.WordWrap

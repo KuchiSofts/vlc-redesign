@@ -7,6 +7,7 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Templates as T
 import QtQuick.Controls.Basic as Controls
+import QtQuick.Controls.impl as Impl
 
 import VLC.Dialogs
 import VLC.MainInterface
@@ -32,6 +33,9 @@ ColumnLayout {
         || (Player.rendererManager.useRenderer && Player.rendererManager.rendererVideo
             && Player.videoTracks.count > 0)
     readonly property real _rowHeight: VLCStyle.dp(36, VLCStyle.scale)
+    // the check is drawn in the default accent: tinted for the others
+    readonly property color _accentTint: Qt.colorEqual(VLCStyle.redesign.accent, "#D37918") ? "transparent"
+                                         : VLCStyle.redesign.accent
 
     // data() calls are not bindings: bumped when the tracks change so the
     // lists below are evaluated again
@@ -369,7 +373,7 @@ ColumnLayout {
                     }
                 }
             }
-            Controls.ScrollBar.vertical: Controls.ScrollBar { policy: Controls.ScrollBar.AsNeeded }
+            Controls.ScrollBar.vertical: ListScrollBar { }
         }
 
         Rectangle {
@@ -405,7 +409,7 @@ ColumnLayout {
                         SubtitleFinder.load(modelData.id)
                 }
             }
-            Controls.ScrollBar.vertical: Controls.ScrollBar { policy: Controls.ScrollBar.AsNeeded }
+            Controls.ScrollBar.vertical: ListScrollBar { }
 
             Text {
                 anchors.centerIn: parent
@@ -434,6 +438,14 @@ ColumnLayout {
         Layout.fillWidth: true
         presets: SubtitleSeriesPreset
         reveal: root.reveal
+    }
+
+    // The handle of Basic is a light grey, as in the dark theme: darker in
+    // the light one
+    component ListScrollBar: Controls.ScrollBar {
+        policy: Controls.ScrollBar.AsNeeded
+        palette.mid: VLCStyle.palette.isDark ? undefined : "#6b6b6b"
+        palette.dark: VLCStyle.palette.isDark ? undefined : "#2e2e2e"
     }
 
     component BusyDot: Item {
@@ -523,10 +535,11 @@ ColumnLayout {
                 Layout.preferredWidth: VLCStyle.dp(20, VLCStyle.scale)
                 Layout.preferredHeight: VLCStyle.dp(20, VLCStyle.scale)
                 Layout.leftMargin: VLCStyle.dp(6, VLCStyle.scale)
-                Image {
+                Impl.ColorImage {
                     anchors.fill: parent
                     visible: row.checked
                     source: "qrc:///redesign/track-check-active.png"
+                    color: root._accentTint
                 }
                 BusyDot {
                     anchors.centerIn: parent

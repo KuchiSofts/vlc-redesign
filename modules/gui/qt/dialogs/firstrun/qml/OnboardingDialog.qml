@@ -89,8 +89,9 @@ Controls.Popup {
     }
     background: Rectangle {
         radius: 14
-        color: "#0e0e0e"
-        border.color: "#222222"
+        // Figma's onboarding is dark: the light theme as the other dialogs
+        color: VLCStyle.redesign.color("#0e0e0e", "#c2c2c1")
+        border.color: VLCStyle.redesign.color("#222222", "#9c9c9b")
     }
 
     contentItem: Item {
@@ -159,7 +160,7 @@ Controls.Popup {
                 width: parent.width - 124
                 visible: controller.error !== ""
                 text: controller.error
-                color: "#e57373"
+                color: VLCStyle.redesign.color("#e57373", "#c62828")
                 wrapMode: Text.WordWrap
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: 14

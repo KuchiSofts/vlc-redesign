@@ -6,6 +6,7 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Templates as T
+import QtQuick.Controls.impl as Impl
 import VLC.Style
 
 Rectangle {
@@ -58,9 +59,10 @@ Rectangle {
                 onClicked: root.verticalLinked = !root.verticalLinked
                 Accessible.name: qsTr("Link top and bottom crop")
                 background: Item {}
-                contentItem: Image {
+                contentItem: Impl.ColorImage {
                     source: root.verticalLinked ? "qrc:///redesign/icons/link/active.png"
                                                 : "qrc:///redesign/icons/link/default.png"
+                    color: root.verticalLinked ? VLCStyle.redesign.accentTint : "transparent"
                     sourceSize.width: VLCStyle.dp(22, VLCStyle.scale)
                     sourceSize.height: VLCStyle.dp(22, VLCStyle.scale)
                 }
@@ -90,9 +92,10 @@ Rectangle {
                 onClicked: root.horizontalLinked = !root.horizontalLinked
                 Accessible.name: qsTr("Link left and right crop")
                 background: Item {}
-                contentItem: Image {
+                contentItem: Impl.ColorImage {
                     source: root.horizontalLinked ? "qrc:///redesign/icons/link/active.png"
                                                   : "qrc:///redesign/icons/link/default.png"
+                    color: root.horizontalLinked ? VLCStyle.redesign.accentTint : "transparent"
                     sourceSize.width: VLCStyle.dp(22, VLCStyle.scale)
                     sourceSize.height: VLCStyle.dp(22, VLCStyle.scale)
                 }

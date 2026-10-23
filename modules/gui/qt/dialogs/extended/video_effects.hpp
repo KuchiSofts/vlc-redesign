@@ -68,7 +68,7 @@ private:
     void changed();
     bool requirePreview();
     quintptr voutToken() const;
-    QString filterChain() const;
+    QString filterChain(const char* chain) const;
     QVariant readValue(const QString& name) const;
     bool writeValue(const QString& name, const QVariant& value);
     static bool validFilter(const QString& filter);
@@ -84,6 +84,7 @@ private:
     QString m_lastError;
     quintptr m_snapshotVout = 0;
     QString m_snapshotChain;
+    QString m_snapshotSources;
     QString m_snapshotCropString;
     QHash<QString, QVariant> m_snapshotValues;
     QHash<QString, QVariant> m_configSnapshot;

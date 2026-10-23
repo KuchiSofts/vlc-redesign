@@ -6,7 +6,9 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Templates as T
+import VLC.MainInterface
 import VLC.Style
+import VLC.Widgets as Widgets
 
 ColumnLayout {
     id: root
@@ -20,6 +22,8 @@ ColumnLayout {
     spacing: VLCStyle.dp(8, VLCStyle.scale)
 
     function c(value) { return VLCStyle.redesign.color(value, value) }
+
+    Widgets.FilePicker { id: filePicker; ctx: MainCtx }
 
     // The label of a value of the list; an integer outside it is an RGB mask
     // (the component to extract)
@@ -154,6 +158,87 @@ ColumnLayout {
         }
     }
 
+    // A typed string (the text of the marquee), a file also picked (the logo)
+    ColumnLayout {
+        Layout.fillWidth: true
+        visible: root.option.type === "text" || root.option.type === "file"
+        spacing: VLCStyle.dp(8, VLCStyle.scale)
+        Text {
+            Layout.fillWidth: true
+            text: root.option.name
+            color: root.c(VLCStyle.redesign.textMuted)
+            font.family: VLCStyle.redesign.fontFamily
+            font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
+            elide: Text.ElideRight
+        }
+        RowLayout {
+            Layout.fillWidth: true
+            spacing: VLCStyle.dp(8, VLCStyle.scale)
+            Rectangle {
+                Layout.fillWidth: true
+                implicitHeight: VLCStyle.dp(32, VLCStyle.scale)
+                radius: VLCStyle.dp(4, VLCStyle.scale)
+                color: root.c("#0E0E0E")
+                TextInput {
+                    id: textInput
+                    anchors.fill: parent
+                    anchors.leftMargin: VLCStyle.dp(10, VLCStyle.scale)
+                    anchors.rightMargin: VLCStyle.dp(10, VLCStyle.scale)
+                    verticalAlignment: TextInput.AlignVCenter
+                    clip: true
+                    color: root.c(VLCStyle.redesign.textSecondary)
+                    font.family: VLCStyle.redesign.fontFamily
+                    font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
+                    selectByMouse: true
+                    text: String(root.currentValue)
+                    Accessible.name: root.option.name
+                    // (also emitted on a mere loss of focus: the mask of erase
+                    // set again would open the filters again)
+                    onEditingFinished: {
+                        if (text !== String(root.currentValue))
+                            root.effects.setParameter(root.option.id, text)
+                        text = String(root.effects.parameterValue(root.option.id))
+                    }
+                    Connections {
+                        target: root.effects
+                        function onStateChanged() {
+                            if (!textInput.activeFocus)
+                                textInput.text = String(root.currentValue)
+                        }
+                    }
+                }
+            }
+            T.Button {
+                id: browseButton
+                visible: root.option.type === "file"
+                text: qsTr("Browse")
+                implicitWidth: implicitContentWidth + leftPadding + rightPadding
+                implicitHeight: VLCStyle.dp(32, VLCStyle.scale)
+                leftPadding: VLCStyle.dp(12, VLCStyle.scale)
+                rightPadding: VLCStyle.dp(12, VLCStyle.scale)
+                focusPolicy: Qt.StrongFocus
+                Accessible.name: qsTr("Browse for %1").arg(root.option.name)
+                onClicked: {
+                    const file = filePicker.chooseOpenFile(root.option.name,
+                                                           qsTr("Image Files (*.png *.jpg);;All Files (*)"))
+                    if (file.length) root.effects.setParameter(root.option.id, file)
+                }
+                background: Rectangle {
+                    color: browseButton.hovered ? root.c(VLCStyle.redesign.controlHoverBackground) : root.c("#0E0E0E")
+                    radius: VLCStyle.dp(4, VLCStyle.scale)
+                }
+                contentItem: Text {
+                    text: browseButton.text
+                    color: root.c(VLCStyle.redesign.textSecondary)
+                    font.family: VLCStyle.redesign.fontFamily
+                    font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                }
+            }
+        }
+    }
+
     T.Button {
         id: choiceButton
         Layout.fillWidth: true
@@ -187,6 +272,9 @@ ColumnLayout {
             width: choiceButton.width
             // (a template popup has no size of its own)
             implicitHeight: implicitContentHeight + topPadding + bottomPadding
+            // Kept inside the window: the positions of the logo and the text
+            // list ten values, too tall below a button near its bottom
+            margins: VLCStyle.dp(8, VLCStyle.scale)
             padding: VLCStyle.dp(6, VLCStyle.scale)
             closePolicy: T.Popup.CloseOnEscape | T.Popup.CloseOnPressOutside
             background: Rectangle { color: root.c("#1B1B1B"); radius: VLCStyle.dp(6, VLCStyle.scale) }

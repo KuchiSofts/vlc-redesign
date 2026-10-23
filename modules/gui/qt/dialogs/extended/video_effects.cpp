@@ -15,6 +15,7 @@
 #include "dialogs/preferences/config_values.hpp"
 
 #include <QByteArray>
+#include <QPair>
 #include <cmath>
 #include <cstdlib>
 #include <limits>
@@ -26,8 +27,18 @@
 #include <vlc_vout.h>
 
 namespace {
+// The filters of the classic dialog but its wall and clone: a video
+// splitter is read only as the video output opens, so it can neither be
+// previewed nor undone by Cancel, and saving it would make it the default
+// of every video, where the other effects stay previews of the current one
+// (it also draws in windows of its own, outside the player)
 const QStringList filters = {"adjust", "sharpen", "gradfun", "grain", "extract", "colorthres",
-                             "invert", "posterize", "gradient", "sepia"};
+                             "invert", "posterize", "gradient", "sepia", "transform", "rotate",
+                             "magnify", "puzzle", "logo", "marq", "erase", "anaglyph", "mirror",
+                             "psychedelic", "wave", "ripple", "motiondetect", "gaussianblur",
+                             "motionblur", "antiflicker", "hqdn3d"};
+// Drawn over the video by the subpicture unit: their chain is "sub-source"
+const QStringList sources = {"logo", "marq"};
 const QStringList cropSides = {"top", "bottom", "left", "right"};
 const QHash<QString, QStringList> options = {
     {"adjust", {"hue", "brightness", "contrast", "saturation", "gamma"}},
@@ -36,8 +47,37 @@ const QHash<QString, QStringList> options = {
     {"colorthres", {"colorthres-color", "colorthres-saturationthres", "colorthres-similaritythres"}},
     {"invert", {}}, {"posterize", {"posterize-level"}},
     {"gradient", {"gradient-mode", "gradient-color", "gradient-cartoon"}},
-    {"sepia", {"sepia-intensity"}}
+    {"sepia", {"sepia-intensity"}},
+    {"transform", {"transform-type"}}, {"rotate", {"rotate-angle"}}, {"magnify", {}},
+    {"puzzle", {"puzzle-rows", "puzzle-cols"}},
+    {"logo", {"logo-file", "logo-position", "logo-x", "logo-y", "logo-opacity"}},
+    {"marq", {"marq-marquee", "marq-position", "marq-color", "marq-size", "marq-timeout"}},
+    {"erase", {"erase-mask", "erase-x", "erase-y"}},
+    {"anaglyph", {"anaglyph-scheme"}}, {"mirror", {"mirror-split", "mirror-direction"}},
+    {"psychedelic", {}}, {"wave", {}}, {"ripple", {}}, {"motiondetect", {}},
+    {"gaussianblur", {"gaussianblur-sigma"}}, {"motionblur", {"blur-factor"}},
+    {"antiflicker", {"antiflicker-softening-size"}},
+    {"hqdn3d", {"hqdn3d-luma-spat", "hqdn3d-luma-temp", "hqdn3d-chroma-spat", "hqdn3d-chroma-temp"}}
 };
+// The options a filter reads only as it opens (the type of transform, the
+// scheme of anaglyph, the sigma of the blur, a change of which the core
+// answers with an empty chain), or cannot open without (the mask of
+// erase), each with its filter: the chain opens that filter again
+const QHash<QString, QString> reopened = {
+    {"transform-type", "transform"}, {"anaglyph-scheme", "anaglyph"},
+    {"gaussianblur-sigma", "gaussianblur"}, {"erase-mask", "erase"}
+};
+// The slider of an option without a range (the free angle: a turn, as the
+// dial of the classic dialog) or with one too wide to be of use (the sigma
+// of the blur to 4096, the denoiser to 254, cut as the classic dialog does;
+// the size of the text to 4096): a value beyond it set elsewhere still applies
+const QHash<QString, QPair<double, double>> sliderRanges = {
+    {"rotate-angle", {0., 359.}}, {"gaussianblur-sigma", {0.01, 8.}},
+    {"hqdn3d-luma-spat", {0., 8.}}, {"hqdn3d-luma-temp", {0., 8.}},
+    {"hqdn3d-chroma-spat", {0., 8.}}, {"hqdn3d-chroma-temp", {0., 8.}},
+    {"marq-size", {0., 256.}}
+};
+const char* chainName(const QString& filter) { return sources.contains(filter) ? "sub-source" : "video-filter"; }
 QString own(char* bytes)
 {
     const QString result = bytes ? QString::fromUtf8(bytes) : QString();
@@ -122,21 +162,23 @@ bool VideoEffects::filterAvailable(const QString& filter) const
 {
     if (!available() || !validFilter(filter)) return false;
     const QByteArray id = filter.toUtf8();
+    // (the first module of logo is its sub source, a video filter after it)
     module_t* module = module_find(id.constData());
-    return module && module_provides(module, "video filter");
+    return module && module_provides(module, sources.contains(filter) ? "sub source" : "video filter");
 }
-QString VideoEffects::filterChain() const
+QString VideoEffects::filterChain(const char* chain) const
 {
     if (!available()) return {};
     vout_thread_t* vout = vlc_player_vout_Hold(m_ctx->getIntf()->p_player);
     if (!vout) return {};
-    const QString value = own(var_GetString(vout, "video-filter"));
+    const QString value = own(var_GetString(vout, chain));
     vout_Release(vout);
     return value;
 }
 bool VideoEffects::filterEnabled(const QString& filter) const
 {
-    return validFilter(filter) && filterChain().split(':', Qt::SkipEmptyParts).contains(filter);
+    return validFilter(filter)
+        && filterChain(chainName(filter)).split(':', Qt::SkipEmptyParts).contains(filter);
 }
 QVariant VideoEffects::getConfig(const QString& name)
 {
@@ -214,6 +256,8 @@ QVariantList VideoEffects::parameters(const QString& filter) const
         if (CONFIG_CLASS(option->i_type) == CONFIG_ITEM_FLOAT
             || CONFIG_CLASS(option->i_type) == CONFIG_ITEM_INTEGER)
             optionBounds(option, &minimum, &maximum);
+        const auto shown = sliderRanges.constFind(name);
+        if (shown != sliderRanges.cend()) { minimum = shown->first; maximum = shown->second; }
         const bool bounded = std::isfinite(minimum) && std::isfinite(maximum);
         switch (CONFIG_CLASS(option->i_type)) {
             case CONFIG_ITEM_FLOAT:
@@ -233,7 +277,12 @@ QVariantList VideoEffects::parameters(const QString& filter) const
                 }
                 break;
             case CONFIG_ITEM_BOOL: item["type"] = "bool"; break;
-            case CONFIG_ITEM_STRING: item["type"] = "choice"; break;
+            // A string without named values is typed (the text of the
+            // marquee), a file also picked (the logo)
+            case CONFIG_ITEM_STRING:
+                item["type"] = option->list_count > 0 ? "choice"
+                             : option->i_type == CONFIG_ITEM_LOADFILE ? "file" : "text";
+                break;
         }
         result << item;
     }
@@ -264,7 +313,8 @@ bool VideoEffects::begin()
     if (!activeVideo()) return fail(tr("No active video output is available."));
     if (m_transactionActive && voutToken() == m_snapshotVout) return true;
     m_snapshotVout = voutToken();
-    m_snapshotChain = filterChain();
+    m_snapshotChain = filterChain("video-filter");
+    m_snapshotSources = filterChain("sub-source");
     if (vout_thread_t* vout = vlc_player_vout_Hold(m_ctx->getIntf()->p_player)) {
         m_snapshotCropString = own(var_GetString(vout, "crop"));
         vout_Release(vout);
@@ -327,6 +377,18 @@ bool VideoEffects::writeValue(const QString& name, const QVariant& value)
             result = var_SetString(vout, id.constData(), bytes.constData());
         }
     }
+    // A reopened option: the chain set without its filter, then with it, as
+    // the core opens a chain again only when it changes
+    const QString owner = reopened.value(name);
+    if (result == VLC_SUCCESS && !owner.isEmpty()) {
+        const QString chain = own(var_GetString(vout, "video-filter"));
+        QStringList others = chain.split(':', Qt::SkipEmptyParts);
+        if (others.removeAll(owner) > 0) {
+            const QByteArray without = others.join(':').toUtf8(), with = chain.toUtf8();
+            result = var_SetString(vout, "video-filter", without.constData());
+            if (result == VLC_SUCCESS) result = var_SetString(vout, "video-filter", with.constData());
+        }
+    }
     vout_Release(vout);
     if (result != VLC_SUCCESS) return fail(tr("The video effect value could not be applied."));
     clearError(); changed();
@@ -338,13 +400,14 @@ bool VideoEffects::setFilterEnabled(const QString& filter, bool enabled)
     if (!filterAvailable(filter)) return fail(tr("Video filter is unavailable."));
     if (!requirePreview()) return false;
     if (filterEnabled(filter) == enabled) return true;
-    QStringList chain = filterChain().split(':', Qt::SkipEmptyParts);
+    const char* name = chainName(filter);
+    QStringList chain = filterChain(name).split(':', Qt::SkipEmptyParts);
     if (enabled) chain << filter;
     else chain.removeAll(filter);
     const QByteArray value = chain.join(':').toUtf8();
     vout_thread_t* vout = vlc_player_vout_Hold(m_ctx->getIntf()->p_player);
     if (!vout) return fail(tr("No active video output is available."));
-    const int result = var_SetString(vout, "video-filter", value.constData());
+    const int result = var_SetString(vout, name, value.constData());
     vout_Release(vout);
     if (result != VLC_SUCCESS || filterEnabled(filter) != enabled)
         return fail(tr("The video filter could not be applied."));
@@ -384,10 +447,12 @@ bool VideoEffects::cancel()
         m_configSnapshot.clear(); changed();
         return fail(tr("Video output changed; the previous preview can no longer be restored."));
     }
+    // Only the changed values: a reopened option set again would open its
+    // filter again
     for (const QString& filter : filters)
         for (const QString& name : optionNames(filter)) {
             const QVariant value = m_snapshotValues.value(name);
-            if (value.isValid() && !writeValue(name, value)) return false;
+            if (value.isValid() && value != readValue(name) && !writeValue(name, value)) return false;
         }
     for (const QString& side : cropSides)
         if (!setCrop(side, m_snapshotCrop.value(side))) return false;
@@ -395,10 +460,15 @@ bool VideoEffects::cancel()
     if (!vout) return fail(tr("No active video output is available."));
     const QByteArray chain = m_snapshotChain.toUtf8();
     const int result = var_SetString(vout, "video-filter", chain.constData());
+    // (the subpicture unit opens its sources again on any set, the same chain
+    // included: a logo kept would start over)
+    const QByteArray sourceChain = m_snapshotSources.toUtf8();
+    const int sourceResult = own(var_GetString(vout, "sub-source")) == m_snapshotSources ? VLC_SUCCESS
+                           : var_SetString(vout, "sub-source", sourceChain.constData());
     const QByteArray crop = m_snapshotCropString.toUtf8();
     const int cropResult = var_SetString(vout, "crop", crop.constData());
     vout_Release(vout);
-    if (result != VLC_SUCCESS || cropResult != VLC_SUCCESS)
+    if (result != VLC_SUCCESS || sourceResult != VLC_SUCCESS || cropResult != VLC_SUCCESS)
         return fail(tr("Video preview could not be restored."));
     m_transactionActive = false; m_snapshotValues.clear(); m_snapshotCrop.clear();
     m_configSnapshot.clear();

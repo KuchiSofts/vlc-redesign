@@ -244,11 +244,37 @@ Widgets.RedesignDialog {
         }
 
         // Figma: the keys centred in the 230 between the paddings of 20;
-        // several keys share that room (each one elided when they don't fit)
+        // several keys share that room: each its own width when they fit,
+        // else the short ones theirs and the others the rest in equal parts
+        // (elided)
         Row {
             id: chipRow
 
             readonly property real room: keyField.width - 2 * VLCStyle.dp(20, VLCStyle.scale)
+            readonly property real crossRoom: VLCStyle.dp(16 + 4, VLCStyle.scale)
+            // the width of each chip, in the order of the keys
+            readonly property var chipWidths: {
+                const count = keyField.keyCount
+                const lefts = count === 1 ? crossRoom : VLCStyle.dp(4, VLCStyle.scale)
+                const natural = []
+                for (let i = 0; i < count; ++i)
+                    natural.push(lefts + Math.ceil(monoMetrics.advanceWidth(root.displayKeys(keyField.keyList[i])) - 0.05)
+                                 + crossRoom)
+                const order = natural.map((w, i) => i).sort((a, b) => natural[a] - natural[b])
+                let left = room - spacing * Math.max(0, count - 1)
+                const widths = new Array(count)
+                order.forEach((i, n) => {
+                    widths[i] = Math.min(natural[i], Math.floor(left / (count - n)))
+                    left -= widths[i]
+                })
+                return widths
+            }
+
+            FontMetrics {
+                id: monoMetrics
+                font.family: VLCStyle.redesign.monoFontFamily
+                font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
+            }
 
             x: VLCStyle.dp(20, VLCStyle.scale) + (room - width) / 2
             y: VLCStyle.dp(4, VLCStyle.scale)
@@ -261,24 +287,24 @@ Widgets.RedesignDialog {
                     id: chip
 
                     required property string modelData
+                    required property int index
 
                     readonly property real crossSize: VLCStyle.dp(16, VLCStyle.scale)
                     // after the text: 2, the cross, 2
-                    readonly property real crossRoom: crossSize + VLCStyle.dp(4, VLCStyle.scale)
+                    readonly property real crossRoom: chipRow.crossRoom
                     // a lone key keeps that room on its left too: its text
                     // in the middle of the field, as the design
                     readonly property real leftRoom: keyField.keyCount === 1 ? crossRoom
                                                                              : VLCStyle.dp(4, VLCStyle.scale)
-                    readonly property real maxWidth: (chipRow.room - chipRow.spacing * (keyField.keyCount - 1))
-                                                     / Math.max(1, keyField.keyCount)
 
-                    width: Math.min(leftRoom + Math.ceil(keyText.implicitWidth - 0.05) + crossRoom,
-                                    Math.floor(maxWidth))
+                    width: chipRow.chipWidths[index] ?? 0
                     height: VLCStyle.dp(25, VLCStyle.scale)
                     radius: VLCStyle.dp(4, VLCStyle.scale)
                     // the keys apart from each other when there are several
-                    color: keyField.keyCount > 1 && keyField.editing
-                           ? VLCStyle.redesign.color("#191919", "#ececec") : "transparent"
+                    // (brighter while they can be removed)
+                    color: keyField.keyCount <= 1 ? "transparent"
+                           : keyField.editing ? VLCStyle.redesign.color("#191919", "#ececec")
+                           : VLCStyle.redesign.color("#141414", "#f2f2f2")
 
                     FigmaText {
                         id: keyText

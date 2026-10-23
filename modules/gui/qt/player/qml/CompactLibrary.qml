@@ -344,8 +344,8 @@ FocusScope {
         const ml = mlModels.item
         switch (location.section) {
         case "folder": return folderModel
-        case "videos":
-        case "songs": return ml ? ml.libraryFolders : null
+        case "videos": return ml ? ml.videoFolders : null
+        case "songs": return ml ? ml.songFolders : null
         case "music": return _mlAvailable ? musicCategories : null
         case "albums": return ml ? ml.albums : null
         case "artists": return ml ? ml.artists : null
@@ -677,12 +677,57 @@ FocusScope {
                 // playlists are created in the media library only; the
                 // songs of an album, an artist, a genre or a playlist are
                 // played together
-                visible: root.location.section === "folder"
+                // (Figma 848:1996 draws it on every place: the sections add
+                // to the library and rescan it)
+                visible: ["folder", "home", "videos", "music", "songs", "network"].includes(root.location.section)
                          || (root._mlAvailable && ["playlists", "playlist", "album", "artist", "genre"]
                                                       .includes(root.location.section))
-                onClicked: (root.location.section === "folder" ? folderMenu
-                            : root.location.section === "playlists" ? playlistsMenu
-                            : collectionMenu).toggleFrom(this)
+                onClicked: {
+                    switch (root.location.section) {
+                    case "folder": folderMenu.toggleFrom(this); break
+                    case "playlists": playlistsMenu.toggleFrom(this); break
+                    case "home": homeMenu.toggleFrom(this); break
+                    case "videos":
+                    case "music":
+                    case "songs": foldersMenu.toggleFrom(this); break
+                    case "network": networkMenu.toggleFrom(this); break
+                    default: collectionMenu.toggleFrom(this)
+                    }
+                }
+
+                Widgets.RedesignMenu {
+                    id: homeMenu
+                    Widgets.RedesignMenuItem {
+                        text: qsTr("Rescan library")
+                        iconName: "refresh"
+                        enabled: root._mlAvailable
+                        onTriggered: MediaLib.reload()
+                    }
+                }
+
+                Widgets.RedesignMenu {
+                    id: foldersMenu
+                    Widgets.RedesignMenuItem {
+                        text: qsTr("Add folder to library…")
+                        iconName: "add"
+                        onTriggered: addMediaButton.clicked()
+                    }
+                    Widgets.RedesignMenuItem {
+                        text: qsTr("Rescan library")
+                        iconName: "refresh"
+                        enabled: root._mlAvailable
+                        onTriggered: MediaLib.reload()
+                    }
+                }
+
+                Widgets.RedesignMenu {
+                    id: networkMenu
+                    Widgets.RedesignMenuItem {
+                        text: qsTr("Add network stream…")
+                        iconName: "add"
+                        onTriggered: DialogsProvider.openNetDialog()
+                    }
+                }
 
                 Widgets.RedesignMenu {
                     id: playlistsMenu
@@ -992,9 +1037,11 @@ FocusScope {
                                                             && (Number(model.playcount ?? 0) > 0 || progress > 0)
 
                             width: parent.width
+                            // videos by their file, as the library's Home
+                            // names them (Figma 848:1996)
                             label: folder ? (model.name ?? "")
                                           : (model.main_artist ? (model.title ?? "") + " - " + model.main_artist
-                                                               : (model.title ?? model.name ?? ""))
+                                                               : (model.fileName || model.title || model.name || ""))
                             cover: folder ? "" : (model.thumbnail ?? model.cover ?? model.small_cover ?? "")
                             iconSource: folder ? root._icon("folder")
                                                : (song ? "qrc:///redesign/music.svg" : "qrc:///redesign/video.svg")
@@ -1120,7 +1167,9 @@ FocusScope {
                     case "network":
                         return model.long_name ?? model.name ?? ""
                     default: {
-                        const name = model.name ?? model.title ?? ""
+                        // (videos by their file, as Home names them)
+                        const name = model.name ?? (model.main_artist ? model.title
+                                                                      : (model.fileName || model.title)) ?? ""
                         return model.main_artist ? name + " - " + model.main_artist : name
                     }
                     }

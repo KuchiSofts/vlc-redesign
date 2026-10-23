@@ -17,7 +17,7 @@ counted from this document's own tables and checklists (column *From*); ⚪ idea
 
 | Program         | Progress             | Done    | %     | From                                   |
 |-----------------|----------------------|---------|-------|----------------------------------------|
-| Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜ | 68/94   | 72 %  | [§8](#8-next-release-030) checklists   |
+| Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜ | 72/94   | 76 %  | [§8](#8-next-release-030) checklists   |
 | Linux           | 🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 1/7     | 14 %  | [§9](#linux)                           |
 | macOS           | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/4     | 0 %   | [§9](#macos)                           |
 | Windows ARM64   | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/3     | 0 %   | [§9](#windows-on-arm64)                |
@@ -31,12 +31,12 @@ Windows 0.2.6 is released; 0.3.0 counts the lines of section 8 (done since 0.2.6
 
 | Area                    | Progress             | Done    | %     | From                                   |
 |-------------------------|----------------------|---------|-------|----------------------------------------|
-| Design frames (Figma)   | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 | 93/103  | 90 %  | [§5](#5-design-frame-by-frame) tables  |
+| Design frames (Figma)   | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 | 97/103  | 94 %  | [§5](#5-design-frame-by-frame) tables  |
 | Pixel check             | 🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜ | 29/103  | 28 %  | [§5](#5-design-frame-by-frame) tables  |
 | Light theme and accents | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 16/17   | 94 %  | [§8.3](#83-light-theme-and-accents)    |
 | Settings rows           | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 211/212 | 99 %  | [§8.5](#85-settings-rows)              |
 | Classic dialogs         | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 10/11   | 90 %  | [§8.6](#86-classic-dialogs)            |
-| Popups and menus        | 🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜ | 11/15   | 73 %  | [§8.4](#84-popups-and-menus)           |
+| Popups and menus        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 15/15   | 100 % | [§8.4](#84-popups-and-menus)           |
 | Casting                 | 🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜ | 13/16   | 81 %  | [§7](#7-desktop-for-windows-what-is-done) + [§8.7](#87-casting) |
 | Languages               | 🟩🟩🟩🟩⬜⬜⬜⬜⬜⬜ | 4/9     | 44 %  | [§12](#12-languages)                   |
 | GitHub and community    | 🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜ | 6/18    | 33 %  | [§13.16](#1316-setup-checklist)        |
@@ -175,8 +175,8 @@ What comes first, and why. Each step starts when what it needs is done.
 | New playlist          | 1      | 1   | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Settings pages        | 19     | 17  | 2   | 0   | 18       | 🟩🟩🟩🟩🟩🟩🟩🟩🟨🟨 |
 | **Screens**           | 57     | 55  | 2   | 0   | 29       | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
-| **Components**        | 46     | 38  | 8   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟨🟨 |
-| **All**               | 103    | 93  | 10  | 0   | 29       | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
+| **Components**        | 46     | 42  | 4   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
+| **All**               | 103    | 97  | 6   | 0   | 29       | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
 
 ### 5.3 Onboarding (11)
 
@@ -369,13 +369,14 @@ Differences: 🔴 848:1996: the compact library's Home lists the recent media on
 | 6062:13354 | menu                  | 375 × 585 | 🟢     | ⏳    | The ⋯ main menu, with shortcuts                   | MainMenu.qml, RedesignMenu.qml, RedesignMenuItem.qml |
 | 6648:20666 | Profiles              | 651 × 633 | 🟢     | ⏳    | Profile submenu: Movies, Shows, Music, Work, New  | MainMenu.qml, ProfilesMenu.qml, defaults.cpp     |
 | 6065:13616 | right-click menu      | 292 × 683 | 🟢     | ⏳    | Player right-click menu (Qt menu drawn to frame)  | menus.cpp, redesign_menu_style.cpp               |
-| 2107:5903  | context menu          | 265 × 296 | 🟡     | ⏳    | Library item menu                                 | MLContextMenu.qml, NativeMenu.qml                |
-| 2139:8935  | folder context menu   | 265 × 296 | 🟡     | ⏳    | Folder menu                                       | FolderDisplay.qml                                |
-| 2404:13340 | file context menu     | 265 × 584 | 🟡     | ⏳    | File menu                                         | MLContextMenu.qml, FolderDisplay.qml             |
-| 2459:9389  | playlist context menu | 265 × 392 | 🟡     | ⏳    | Playlist menu                                     | MLContextMenu.qml                                |
+| 2107:5903  | context menu          | 265 × 296 | 🟢     | ⏳    | Library item menu                                 | MLContextMenu.qml, RedesignContextMenu.qml       |
+| 2139:8935  | folder context menu   | 265 × 296 | 🟢     | ⏳    | Folder menu                                       | FolderDisplay.qml, RedesignContextMenu.qml       |
+| 2404:13340 | file context menu     | 265 × 584 | 🟢     | ⏳    | File menu                                         | MLContextMenu.qml, FolderDisplay.qml             |
+| 2459:9389  | playlist context menu | 265 × 392 | 🟢     | ⏳    | Playlist menu                                     | MLPlaylistContextMenu.qml                        |
 | 2107:5935  | option                | 301 × 292 | 🟢     | ⏳    | Menu row: default, hover, selected                | RedesignOptionItem.qml, RedesignMenuItem.qml     |
 
-Differences: 🔴 the four context menus are styled native menus, not the design's cards.
+The four context menus are the design's cards (`RedesignContextMenu.qml`, build 117): the rows, the watched state and
+*Show in File Explorer* as the design lists them.
 
 **Add Subtitles parts**
 
@@ -435,7 +436,7 @@ a 400 × 445 popup.
 | #  | Difference                                                         | Frames                                   | Status |
 |----|--------------------------------------------------------------------|------------------------------------------|--------|
 | 1  | *Show the playlist as a tree*: needs a new queue model (VLC 4's queue is flat) | 3046:10057, 3062:11379       | 🔴     |
-| 2  | Library context menus are native menus, not cards                  | 2107:5903, 2139:8935, 2404:13340, 2459:9389 | 🔴  |
+| 2  | Library context menus are native menus, not cards                  | 2107:5903, 2139:8935, 2404:13340, 2459:9389 | 🟢  |
 | 3  | The compact library's Home lists recent media only                 | 848:1996                                 | 🔴     |
 | 4  | HDR10+ and Dolby Vision always disabled                            | 2372:8733                                | 🔴     |
 | 5  | Not compared yet: Setting Preset, Audio Visualizer                 | 2372:8834, 2372:8639                     | 🔴     |
@@ -718,10 +719,10 @@ becomes 1.0 when every frame is pixel-checked, the light theme is complete and V
 - 🟢 Every Settings dropdown, the same
 - 🟢 Language picker, the same
 - 🟢 Library Sort, View and More, the same
-- 🔴 Library item context menu as the design's card
-- 🔴 Folder context menu as a card
-- 🔴 File context menu as a card
-- 🔴 Playlist context menu as a card
+- 🟢 Library item context menu as the design's card
+- 🟢 Folder context menu as a card
+- 🟢 File context menu as a card
+- 🟢 Playlist context menu as a card
 
 ### 8.5 Settings rows
 
@@ -811,7 +812,7 @@ and an accepted request made the TV fail after a pause in a test.
 - 🔴 Small updates from 0.2.4, 0.2.5 and 0.2.6 built and checked
 - 🔴 Announcement in Discussions; every fixed issue answered with the release link
 
-Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 68 🟢, 0 🟡, 26 🔴 (94), of which 11 🟢 are
+Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 72 🟢, 0 🟡, 22 🔴 (94), of which 11 🟢 are
 in the app ⏳.
 Languages (§12) and the community (§13) have bars of their own.
 

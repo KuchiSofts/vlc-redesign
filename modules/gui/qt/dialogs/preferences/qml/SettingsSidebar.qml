@@ -54,6 +54,9 @@ Item {
         ScrollBar.vertical: ScrollBar {
             policy: categoryFlick.contentHeight > categoryFlick.height ? ScrollBar.AlwaysOn
                                                                        : ScrollBar.AlwaysOff
+            // Basic's handle is light grey: darker in the light theme
+            palette.mid: VLCStyle.palette.isDark ? undefined : "#6b6b6b"
+            palette.dark: VLCStyle.palette.isDark ? undefined : "#2e2e2e"
         }
 
         Column {

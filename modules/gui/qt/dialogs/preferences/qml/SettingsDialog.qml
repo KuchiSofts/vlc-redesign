@@ -353,6 +353,9 @@ Dialog {
                 anchors.right: parent.right
                 anchors.rightMargin: root.px(4)
                 policy: ScrollBar.AsNeeded
+                // Basic's handle is light grey: darker in the light theme
+                palette.mid: VLCStyle.palette.isDark ? undefined : "#6b6b6b"
+                palette.dark: VLCStyle.palette.isDark ? undefined : "#2e2e2e"
             }
 
             Column {
@@ -728,7 +731,8 @@ Dialog {
             wrapMode: Text.WordWrap
             maximumLineCount: 3
             elide: Text.ElideRight
-            color: root.c("#E4A580")
+            // the error colour of the redesign, a dark red on the light grey
+            color: VLCStyle.redesign.color("#E4A580", "#7a1414")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: root.px(14)
             Accessible.role: Accessible.AlertMessage

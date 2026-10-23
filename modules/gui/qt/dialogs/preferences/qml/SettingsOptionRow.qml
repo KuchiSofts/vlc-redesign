@@ -221,7 +221,9 @@ Item {
         wrapMode: Text.WordWrap
         maximumLineCount: 2
         elide: Text.ElideRight
-        color: root.noteWarning ? root.c("#E4A580") : root.c("#6B6B6B")
+        // the warning in the error colour of the redesign (a dark red on the
+        // light grey)
+        color: root.noteWarning ? VLCStyle.redesign.color("#E4A580", "#7a1414") : root.c("#6B6B6B")
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: root.px(12)
         Accessible.role: root.noteWarning ? Accessible.AlertMessage : Accessible.StaticText

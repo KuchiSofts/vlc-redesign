@@ -50,9 +50,10 @@ Widgets.GridItem {
     pictureHeight: VLCStyle.gridCover_video_height
     titleFontFamily: redesignTitle ? VLCStyle.redesign.fontFamily : ""
     titleFontWeight: redesignTitle ? Font.Normal : Font.DemiBold
-    // The design dims the videos already played (Figma: #969696, #6B6B6B
-    // played, with their progress)
-    readonly property bool watched: (model?.playcount ?? 0) > 0 || (model?.progress ?? 0) > 0
+    // The design dims the videos already watched (Figma: #969696, #6B6B6B
+    // watched, with their progress); one stopped partway stays bright (the
+    // "Continue Watching" of Home)
+    readonly property bool watched: (model?.playcount ?? 0) > 0
     titleColor: redesignTitle
                 ? VLCStyle.redesign.color(watched ? "#6B6B6B" : VLCStyle.redesign.textSecondary, colorContext.fg.primary,
                                           colorContext.palette?.isDark ?? true)

@@ -117,13 +117,15 @@ QtObject {
         ControlListModel.SKIP_FW_10_BUTTON, ControlListModel.SKIP_BACK_10_BUTTON, ControlListModel.SKIP_FW_BUTTON,
         ControlListModel.SKIP_BACK_BUTTON, ControlListModel.STOP_BUTTON, ControlListModel.LOOP_BUTTON,
         ControlListModel.RANDOM_BUTTON, ControlListModel.RECORD_BUTTON, ControlListModel.SNAPSHOT_BUTTON,
-        ControlListModel.PIP_BUTTON, ControlListModel.RENDERER_BUTTON, ControlListModel.HDR_BUTTON, ControlListModel.ZOOM_WIDGET,
+        ControlListModel.PIP_BUTTON, ControlListModel.HDR_BUTTON, ControlListModel.ZOOM_WIDGET,
         ControlListModel.RIGHT_SIDEBAR_BUTTON, ControlListModel.QUIT_BUTTON, ControlListModel.SETTINGS_BUTTON,
         ControlListModel.HOME_BUTTON, ControlListModel.THUMBNAIL_WIDGET, ControlListModel.FILE_NAME_WIDGET,
         ControlListModel.ARTIST_NAME_WIDGET, ControlListModel.FOLDER_NAME_WIDGET, ControlListModel.PLAYLIST_NAME_WIDGET,
         ControlListModel.INFO_BUTTON, ControlListModel.REPLAY_BUTTON, ControlListModel.CHAPTERS_BUTTON,
         ControlListModel.FAVORITE_BUTTON, ControlListModel.BOOKMARK_BUTTON, ControlListModel.BOOKMARKS_BUTTON,
-        ControlListModel.PLAYLISTS_BUTTON
+        ControlListModel.PLAYLISTS_BUTTON,
+        // not in the design's palette: after its 31 items (Figma 2107:5604)
+        ControlListModel.RENDERER_BUTTON
     ]
 
     function control(id) {

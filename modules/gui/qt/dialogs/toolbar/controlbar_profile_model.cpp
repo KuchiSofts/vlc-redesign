@@ -462,17 +462,25 @@ ControlbarProfile *ControlbarProfileModel::cloneProfile(const ControlbarProfile 
 
 void ControlbarProfileModel::requestNewProfile()
 {
-    m_newProfileRequested = true;
-    // Customize Player asks for the name when it is open, else when it opens
-    emit newProfileRequested();
+    requestProfileAction(-1, QStringLiteral("new"));
+}
+
+void ControlbarProfileModel::requestProfileAction(int index, const QString& action)
+{
+    if (index >= 0 && index != m_selectedProfile && !setSelectedProfile(index))
+        return;
+    m_profileAction = action;
+    // Customize Player asks for the name (or the confirmation) when it is
+    // open, else when it opens
+    emit profileActionRequested();
     emit DialogsProvider::getInstance()->showToolbarEditorDialog();
 }
 
-bool ControlbarProfileModel::takeNewProfileRequest()
+QString ControlbarProfileModel::takeProfileAction()
 {
-    const bool requested = m_newProfileRequested;
-    m_newProfileRequested = false;
-    return requested;
+    QString action;
+    action.swap(m_profileAction);
+    return action;
 }
 
 QString ControlbarProfileModel::nameError(const QString &name, bool renaming) const

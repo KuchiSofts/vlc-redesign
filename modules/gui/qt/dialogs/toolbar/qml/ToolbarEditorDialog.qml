@@ -51,9 +51,9 @@ Controls.Popup {
         MainCtx.controlbarProfileModel.save(false)
         MainCtx.controlbarProfileModel.editing = true
         closeButton.forceActiveFocus(Qt.PopupFocusReason)
-        // "New profile" of a menu opened the editor: the name first
-        if (MainCtx.controlbarProfileModel.takeNewProfileRequest())
-            namePrompt.openFor("new")
+        // "New profile", or Rename, Clone, Delete of a profile, opened the
+        // editor: the name or the confirmation first
+        root.profileAction(MainCtx.controlbarProfileModel.takeProfileAction())
     }
     onVisibleChanged: if (!visible && opened) close()
     onClosed: {
@@ -92,7 +92,13 @@ Controls.Popup {
         return model.createProfile(name) >= 0
     }
 
-    function markedName(name, dirty) { return dirty ? name + " *" : name }
+    // "new", "rename", "clone" (the name asked) or "delete" (confirmed)
+    function profileAction(action) {
+        if (action === "delete")
+            deleteConfirmation.open()
+        else if (action)
+            namePrompt.openFor(action)
+    }
 
     contentItem: Item {
         id: scene
@@ -165,7 +171,7 @@ Controls.Popup {
                     Text {
                         id: titleText
                         x: VLCStyle.dp(10, VLCStyle.scale)
-                        width: Math.max(0, profileControls.x - x - VLCStyle.dp(16, VLCStyle.scale))
+                        width: Math.max(0, closeButton.x - x - VLCStyle.dp(16, VLCStyle.scale))
                         height: parent.height
                         elide: Text.ElideRight
                         text: qsTr("Customize Player")
@@ -178,115 +184,6 @@ Controls.Popup {
                         FontMetrics {
                             id: titleMetrics
                             font: titleText.font
-                        }
-                    }
-
-                    // The profile edited (the controls of the settings: the
-                    // dropdown, then New, Rename, Clone and Delete), between
-                    // the title and the close button; narrower when the room
-                    // after the title is short
-                    Row {
-                        id: profileControls
-
-                        readonly property real gap: VLCStyle.dp(16, VLCStyle.scale)
-                        readonly property real room: closeButton.x - gap - titleText.x - titleText.implicitWidth - gap
-                        readonly property real buttonWidth: Math.max(VLCStyle.dp(64, VLCStyle.scale),
-                                                                     Math.min(VLCStyle.dp(100, VLCStyle.scale),
-                                                                              (room - VLCStyle.dp(160, VLCStyle.scale) - 4 * spacing) / 4))
-                        readonly property real pickerWidth: Math.max(VLCStyle.dp(120, VLCStyle.scale),
-                                                                     Math.min(VLCStyle.dp(240, VLCStyle.scale),
-                                                                              room - 4 * buttonWidth - 4 * spacing))
-
-                        anchors.right: closeButton.left
-                        anchors.rightMargin: gap
-                        height: parent.height
-                        spacing: VLCStyle.dp(8, VLCStyle.scale)
-
-                        SettingsDropdown {
-                            id: profilePicker
-                            objectName: "toolbarEditorProfilePicker"
-                            width: profileControls.pickerWidth
-                            height: parent.height
-                            model: MainCtx.controlbarProfileModel
-                            textRole: "name"
-                            currentIndex: MainCtx.controlbarProfileModel.selectedProfile
-                            // follows a rename (the profile names itself)
-                            displayText: MainCtx.controlbarProfileModel.currentModel
-                                         ? MainCtx.controlbarProfileModel.currentModel.name : ""
-                            Accessible.name: qsTr("Profile")
-                            onActivated: (index) => {
-                                if (index !== MainCtx.controlbarProfileModel.selectedProfile)
-                                    MainCtx.controlbarProfileModel.setSelectedProfile(index)
-                                // the selected profile, whether it changed or not
-                                currentIndex = Qt.binding(() => MainCtx.controlbarProfileModel.selectedProfile)
-                            }
-
-                            // the rows of the profiles (a list model: its roles)
-                            delegate: T.ItemDelegate {
-                                required property string name
-                                required property int index
-
-                                width: ListView.view ? ListView.view.width : profilePicker.width
-                                implicitHeight: profilePicker.px(32)
-                                leftPadding: profilePicker.px(14)
-                                rightPadding: profilePicker.px(14)
-                                highlighted: profilePicker.highlightedIndex === index
-
-                                contentItem: Text {
-                                    id: profileOptionText
-                                    text: name
-                                    color: index === MainCtx.controlbarProfileModel.selectedProfile
-                                           ? VLCStyle.redesign.accent : profilePicker.c("#8F8F8F")
-                                    font: profilePicker.font
-                                    verticalAlignment: Text.AlignTop
-                                    topPadding: height / 2 + VLCStyle.redesign.centeredBaseline(font.pixelSize)
-                                                - profileOptionMetrics.ascent
-                                    FontMetrics { id: profileOptionMetrics; font: profileOptionText.font }
-                                    elide: Text.ElideRight
-                                }
-                                background: Rectangle {
-                                    radius: profilePicker.px(4)
-                                    color: parent.highlighted || parent.hovered ? profilePicker.c("#222222") : "transparent"
-                                }
-                            }
-                        }
-
-                        SettingsButton {
-                            objectName: "toolbarEditorNewProfile"
-                            width: profileControls.buttonWidth
-                            height: parent.height
-                            text: qsTr("New")
-                            Accessible.name: qsTr("New profile")
-                            onClicked: namePrompt.openFor("new")
-                        }
-                        SettingsButton {
-                            objectName: "toolbarEditorRenameProfile"
-                            width: profileControls.buttonWidth
-                            height: parent.height
-                            enabled: !!MainCtx.controlbarProfileModel.currentModel
-                            text: qsTr("Rename")
-                            Accessible.name: qsTr("Rename the profile")
-                            onClicked: namePrompt.openFor("rename")
-                        }
-                        SettingsButton {
-                            objectName: "toolbarEditorCloneProfile"
-                            width: profileControls.buttonWidth
-                            height: parent.height
-                            enabled: !!MainCtx.controlbarProfileModel.currentModel
-                            text: qsTr("Clone")
-                            Accessible.name: qsTr("Clone the profile")
-                            onClicked: namePrompt.openFor("clone")
-                        }
-                        // the last profile stays
-                        SettingsButton {
-                            objectName: "toolbarEditorDeleteProfile"
-                            width: profileControls.buttonWidth
-                            height: parent.height
-                            enabled: MainCtx.controlbarProfileModel.count > 1
-                            destructive: true
-                            text: qsTr("Delete")
-                            Accessible.name: qsTr("Delete the profile")
-                            onClicked: deleteConfirmation.open()
                         }
                     }
 
@@ -440,12 +337,12 @@ Controls.Popup {
             }
         }
 
-        // "New profile" of a menu while the editor is open
+        // the same while the editor is open
         Connections {
             target: MainCtx.controlbarProfileModel
-            function onNewProfileRequested() {
-                if (root.opened && MainCtx.controlbarProfileModel.takeNewProfileRequest())
-                    namePrompt.openFor("new")
+            function onProfileActionRequested() {
+                if (root.opened)
+                    root.profileAction(MainCtx.controlbarProfileModel.takeProfileAction())
             }
         }
 

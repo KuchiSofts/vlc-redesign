@@ -37,6 +37,8 @@ static const Option entries[] = {
     // the mouse shows the controls in fullscreen (Player.qml), the skins
     // read it too
     {"interface", "qt-fs-controller"},
+    // the bar of the library while nothing plays (MainDisplay.qml)
+    {"interface", "qt:redesign/always-show-player-bar"},
     {"interface", "qt-system-tray"}, {"interface", "qt-start-minimized"},
     {"interface", "qt-notification"}, {"interface", "qt:redesign/notification-duration"},
     // (no "playlist-tree": nothing reads it in VLC 4)

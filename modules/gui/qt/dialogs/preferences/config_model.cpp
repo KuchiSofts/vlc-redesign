@@ -244,6 +244,9 @@ const QtSettingOption qtSettingOptions[] = {
       N_("Looks for the cast devices of the local network when the Renderer menu opens.") },
     { "redesign/remember-window-geometry", 'b', 1, 0, 0, N_("Remember window size and position"),
       N_("Opens the window where it was when VLC was closed.") },
+    { "redesign/always-show-player-bar", 'b', 0, 0, 0, N_("Always show the player bar"),
+      N_("Keeps the player bar at the bottom of the library while nothing plays: Play starts "
+         "the play queue, or opens files when it is empty.") },
     { "redesign/notification-duration", 'i', 3000, 0, 10000, N_("Popup duration"),
       N_("How long the popup of the track changes stays on the screen.") },
     { "redesign/process-priority", 'i', 0, -2, 2, N_("Process priority"),

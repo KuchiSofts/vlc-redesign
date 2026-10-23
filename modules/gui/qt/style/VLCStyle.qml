@@ -459,8 +459,10 @@ QtObject {
     // (dark in the dark theme: a light square stood out of the design)
     readonly property url noArtAlbumCover: palette.isDark ? "qrc:///placeholder/noart_albumCover_dark.svg"
                                                           : "qrc:///placeholder/noart_albumCover.svg";
-    readonly property url noArtArtistCover: "qrc:///placeholder/noart_artistCover.svg";
-    readonly property url noArtVideoCover: "qrc:///placeholder/noart_videoCover.svg";
+    readonly property url noArtArtistCover: palette.isDark ? "qrc:///placeholder/noart_artistCover_dark.svg"
+                                                           : "qrc:///placeholder/noart_artistCover.svg";
+    readonly property url noArtVideoCover: palette.isDark ? "qrc:///placeholder/noart_videoCover_dark.svg"
+                                                          : "qrc:///placeholder/noart_videoCover.svg";
 
     // New indicator
     readonly property url newIndicator: "qrc:///misc/new_indicator.svg";

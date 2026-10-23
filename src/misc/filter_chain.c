@@ -63,6 +63,29 @@ module_t *vlc_filter_LoadModule(filter_t *p_filter, const char *capability,
 
         p_filter->p_module = cand;
         ret = cb(p_filter);
+        if (ret == VLC_SUCCESS && p_filter->fmt_in.i_cat == VIDEO_ES
+         && p_filter->vctx_out == NULL)
+        {
+            /* A filter of pictures in memory that took a hardware output
+             * (no planes) without a video context of its own cannot make
+             * it: filters that don't check their output wrote their pixels
+             * into pictures without planes (anaglyph, ripple, wave,
+             * antiflicker... with hardware decoding). The next candidate
+             * ("chain") puts a converter after it. */
+            const vlc_chroma_description_t *in =
+                vlc_fourcc_GetChromaDescription(p_filter->fmt_in.video.i_chroma);
+            const vlc_chroma_description_t *out =
+                vlc_fourcc_GetChromaDescription(p_filter->fmt_out.video.i_chroma);
+            if (in != NULL && in->plane_count > 0 && out != NULL && out->plane_count == 0)
+            {
+                vlc_debug(log, "%s module \"%s\" can't output %4.4s", capability,
+                          module_get_object(cand), (const char *)&p_filter->fmt_out.video.i_chroma);
+                if (p_filter->ops != NULL && p_filter->ops->close != NULL)
+                    p_filter->ops->close(p_filter);
+                p_filter->ops = NULL;
+                ret = VLC_EGENERIC;
+            }
+        }
         if (ret == VLC_SUCCESS)
         {
             vlc_debug(log, "using %s module \"%s\"", capability,

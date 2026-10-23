@@ -1415,10 +1415,10 @@ void ConfigModel::reload()
             // Volume step: a field in percent of the design (volumepercent)
             else if (entry.key == QLatin1String("sub-autodetect-fuzzy"))
             {
-                // The levels of SUB_FUZZY_LONGTEXT
-                const QString labels[] = { qtr("Off"), qtr("Any subtitle file"),
-                                           qtr("Files containing the title"),
-                                           qtr("Title with extra characters"), qtr("Exact title") };
+                // The levels of SUB_FUZZY_LONGTEXT, as the design names them
+                // (Figma "sub filename", 6456:13892)
+                const QString labels[] = { qtr("Off"), qtr("Any title"), qtr("Contains title"),
+                                           qtr("Title with extra characters"), qtr("Exact title match") };
                 for (int64_t level = 0; level < 5; ++level)
                     entry.choices.append(QVariantMap{{QStringLiteral("value"), QVariant::fromValue(level)},
                                                      {QStringLiteral("label"), labels[level]}});

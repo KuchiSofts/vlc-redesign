@@ -32,7 +32,7 @@ Windows 0.2.6 is released; 0.3.0 counts the lines of section 8 (done since 0.2.6
 | Area                    | Progress             | Done    | %     | From                                   |
 |-------------------------|----------------------|---------|-------|----------------------------------------|
 | Design frames (Figma)   | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 | 93/103  | 90 %  | [§5](#5-design-frame-by-frame) tables  |
-| Pixel check             | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 2/103   | 1 %   | [§5](#5-design-frame-by-frame) tables  |
+| Pixel check             | 🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜ | 29/103  | 28 %  | [§5](#5-design-frame-by-frame) tables  |
 | Light theme and accents | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 16/17   | 94 %  | [§8.3](#83-light-theme-and-accents)    |
 | Settings rows           | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 211/212 | 99 %  | [§8.5](#85-settings-rows)              |
 | Classic dialogs         | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 10/11   | 90 %  | [§8.6](#86-classic-dialogs)            |
@@ -163,20 +163,20 @@ What comes first, and why. Each step starts when what it needs is done.
 
 | Area                  | Frames | 🟢  | 🟡  | 🔴  | Pixel 🟢 | Progress             |
 |-----------------------|--------|-----|-----|-----|----------|----------------------|
-| Onboarding            | 11     | 11  | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
+| Onboarding            | 11     | 11  | 0   | 0   | 7        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Player                | 7      | 7   | 0   | 0   | 2        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Player - Music        | 2      | 2   | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Player - customize    | 9      | 9   | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Player - hide UI      | 1      | 1   | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Player - Light        | 1      | 1   | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Add Subtitles         | 4      | 4   | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
-| Keyboard Shortcuts    | 1      | 1   | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
-| Open network stream   | 1      | 1   | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
+| Keyboard Shortcuts    | 1      | 1   | 0   | 0   | 1        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
+| Open network stream   | 1      | 1   | 0   | 0   | 1        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | New playlist          | 1      | 1   | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
-| Settings pages        | 19     | 17  | 2   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟨🟨 |
-| **Screens**           | 57     | 55  | 2   | 0   | 2        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
+| Settings pages        | 19     | 17  | 2   | 0   | 18       | 🟩🟩🟩🟩🟩🟩🟩🟩🟨🟨 |
+| **Screens**           | 57     | 55  | 2   | 0   | 29       | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
 | **Components**        | 46     | 38  | 8   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟨🟨 |
-| **All**               | 103    | 93  | 10  | 0   | 2        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
+| **All**               | 103    | 93  | 10  | 0   | 29       | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
 
 ### 5.3 Onboarding (11)
 
@@ -184,17 +184,17 @@ Shared: `OnboardingDialog.qml`, `OnboardingButton.qml`, `onboarding.cpp`.
 
 | Node       | Name       | Size (px)   | Status | Pixel | What it is                                                        | Implemented in    |
 |------------|------------|-------------|--------|-------|-------------------------------------------------------------------|-------------------|
-| 1899:3055  | Onboarding | 1090 × 759  | 🟢     | ⏳    | Step 1, Welcome: title, description, media folder (Browse), Next   | WelcomeStep.qml   |
-| 1902:3670  | Onboarding | 1090 × 759  | 🟢     | ⏳    | Step 2: Light / Dark / System over the small player, 9 accents     | ThemeStep.qml     |
-| 1902:4020  | Onboarding | 1090 × 759  | 🟢     | ⏳    | Step 2, state 2 of 9: another theme or accent, control bar sample  | ThemeStep.qml     |
-| 1902:4325  | Onboarding | 1090 × 759  | 🟢     | ⏳    | Step 2, state 3 of 9                                              | ThemeStep.qml     |
-| 1902:4634  | Onboarding | 1090 × 759  | 🟢     | ⏳    | Step 2, state 4 of 9                                              | ThemeStep.qml     |
-| 1902:4940  | Onboarding | 1090 × 759  | 🟢     | ⏳    | Step 2, state 5 of 9                                              | ThemeStep.qml     |
+| 1899:3055  | Onboarding | 1090 × 759  | 🟢     | 🟢    | Step 1, Welcome: title, description, media folder (Browse), Next   | WelcomeStep.qml   |
+| 1902:3670  | Onboarding | 1090 × 759  | 🟢     | 🟢    | Step 2: Light / Dark / System over the small player, 9 accents     | ThemeStep.qml     |
+| 1902:4020  | Onboarding | 1090 × 759  | 🟢     | 🟢    | Step 2, state 2 of 9: another theme or accent, control bar sample  | ThemeStep.qml     |
+| 1902:4325  | Onboarding | 1090 × 759  | 🟢     | 🟢    | Step 2, state 3 of 9                                              | ThemeStep.qml     |
+| 1902:4634  | Onboarding | 1090 × 759  | 🟢     | 🟢    | Step 2, state 4 of 9                                              | ThemeStep.qml     |
+| 1902:4940  | Onboarding | 1090 × 759  | 🟢     | 🟢    | Step 2, state 5 of 9                                              | ThemeStep.qml     |
 | 1902:5245  | Onboarding | 1090 × 759  | 🟢     | ⏳    | Step 2, state 6 of 9                                              | ThemeStep.qml     |
 | 1902:5550  | Onboarding | 1090 × 759  | 🟢     | ⏳    | Step 2, state 7 of 9                                              | ThemeStep.qml     |
 | 1902:6160  | Onboarding | 1090 × 759  | 🟢     | ⏳    | Step 2, state 8 of 9                                              | ThemeStep.qml     |
 | 1902:6465  | Onboarding | 1090 × 759  | 🟢     | ⏳    | Step 2, state 9 of 9                                              | ThemeStep.qml     |
-| 1902:6770  | Onboarding | 1090 × 759  | 🟢     | ⏳    | Last step: 12 shortcuts with DM Mono keycaps, Back, Finish         | ShortcutsStep.qml |
+| 1902:6770  | Onboarding | 1090 × 759  | 🟢     | 🟢    | Last step: 12 shortcuts with DM Mono keycaps, Back, Finish         | ShortcutsStep.qml |
 
 Notes: drawn light in the light theme (the dark frames unchanged). Beyond Figma: a subtitle languages step
 (`SubtitleLanguagesStep.qml`), keycaps showing the user's real shortcuts, *Cancel* when reopened.
@@ -276,13 +276,13 @@ Shared: `SubtitleAssociationsDialog.qml` (1048 × 800, `#0E0E0E` at 95 %), `Subt
 
 | Node       | Name               | Size (px)   | Status | Pixel | What it is                                                 | Implemented in                                              |
 |------------|--------------------|-------------|--------|-------|------------------------------------------------------------|-------------------------------------------------------------|
-| 2437:14832 | Keyboard Shortcuts | 1048 × 800  | 🟢     | ⏳    | Search, Action / Hotkey / Global Hotkey by group, Save      | ShortcutsDialog.qml, ShortcutsCapturePopup.qml, shortcuts_model.cpp |
+| 2437:14832 | Keyboard Shortcuts | 1048 × 800  | 🟢     | 🟢    | Search, Action / Hotkey / Global Hotkey by group, Save      | ShortcutsDialog.qml, ShortcutsCapturePopup.qml, shortcuts_model.cpp |
 
 ### 5.11 Open network stream (1)
 
 | Node       | Name                | Size (px)   | Status | Pixel | What it is                                                 | Implemented in                               |
 |------------|---------------------|-------------|--------|-------|------------------------------------------------------------|----------------------------------------------|
-| 6216:13614 | Open network stream | 1048 × 631  | 🟢     | ⏳    | Network URL (several links), Playlist Name (optional), Save | NetworkStreamDialog.qml, RedesignTextArea.qml |
+| 6216:13614 | Open network stream | 1048 × 631  | 🟢     | 🟢    | Network URL (several links), Playlist Name (optional), Save | NetworkStreamDialog.qml, RedesignTextArea.qml |
 
 ### 5.12 New playlist (1)
 
@@ -302,25 +302,25 @@ open. The design's typo "changew" reads "changes".
 
 | Node       | Name                   | Size (px)   | Status | Pixel | What it is                                                     | Implemented in                    |
 |------------|------------------------|-------------|--------|-------|----------------------------------------------------------------|-----------------------------------|
-| 999:5047   | Settings - global      | 1048 × 865  | 🟢     | ⏳    | Appearance (language, theme, accent), Startup, Diagnostics      | SettingsAppearance.qml, SettingsLanguageAction.qml, SettingsDeveloperMode.qml |
-| 3046:9282  | Settings - global      | 1048 × 865  | 🟢     | ⏳    | Advanced: warnings, command line, log, statistics, reset        | as above                          |
-| 3046:10057 | Settings - interface   | 1048 × 865  | 🟡     | ⏳    | Skin, Window, Playback Controls, Notifications, Playlist        | shared                            |
-| 3062:11379 | Settings - interface   | 1048 × 865  | 🟡     | ⏳    | Advanced: opacity, minimized, cover art, fullscreen controls     | shared                            |
-| 3062:11911 | Settings - privacy     | 1048 × 865  | 🟢     | ⏳    | History, Network (cover art, Last.fm)                           | SettingsPrivacyActions.qml, SettingsLastfm.qml |
-| 3062:12552 | Settings - playback    | 1048 × 865  | 🟢     | ⏳    | Startup, Tracks, Order, Seeking, Files & Discs                  | shared                            |
-| 3072:13408 | Settings - playback    | 1048 × 865  | 🟢     | ⏳    | Advanced: time-shift buffer                                     | shared                            |
-| 3073:14187 | Settings - video       | 1048 × 865  | 🟢     | ⏳    | Output, Picture, Deinterlacing, Framing, Snapshots              | SettingsPicture.qml               |
-| 3073:15375 | Settings - video       | 1048 × 865  | 🟢     | ⏳    | Advanced: aspect and crop ratios, pixel aspect ratio            | shared                            |
-| 3073:15879 | Settings - audio       | 1048 × 865  | 🟢     | ⏳    | Output, Volume, Loudness, Effects, Tracks, Visualization        | SettingsAudioOutput.qml, SettingsStartupVolume.qml, SettingsEqualizer.qml |
+| 999:5047   | Settings - global      | 1048 × 865  | 🟢     | 🟢    | Appearance (language, theme, accent), Startup, Diagnostics      | SettingsAppearance.qml, SettingsLanguageAction.qml, SettingsDeveloperMode.qml |
+| 3046:9282  | Settings - global      | 1048 × 865  | 🟢     | 🟢    | Advanced: warnings, command line, log, statistics, reset        | as above                          |
+| 3046:10057 | Settings - interface   | 1048 × 865  | 🟡     | 🟢    | Skin, Window, Playback Controls, Notifications, Playlist        | shared                            |
+| 3062:11379 | Settings - interface   | 1048 × 865  | 🟡     | 🟢    | Advanced: opacity, minimized, cover art, fullscreen controls     | shared                            |
+| 3062:11911 | Settings - privacy     | 1048 × 865  | 🟢     | 🟢    | History, Network (cover art, Last.fm)                           | SettingsPrivacyActions.qml, SettingsLastfm.qml |
+| 3062:12552 | Settings - playback    | 1048 × 865  | 🟢     | 🟢    | Startup, Tracks, Order, Seeking, Files & Discs                  | shared                            |
+| 3072:13408 | Settings - playback    | 1048 × 865  | 🟢     | 🟢    | Advanced: time-shift buffer                                     | shared                            |
+| 3073:14187 | Settings - video       | 1048 × 865  | 🟢     | 🟢    | Output, Picture, Deinterlacing, Framing, Snapshots              | SettingsPicture.qml               |
+| 3073:15375 | Settings - video       | 1048 × 865  | 🟢     | 🟢    | Advanced: aspect and crop ratios, pixel aspect ratio            | shared                            |
+| 3073:15879 | Settings - audio       | 1048 × 865  | 🟢     | 🟢    | Output, Volume, Loudness, Effects, Tracks, Visualization        | SettingsAudioOutput.qml, SettingsStartupVolume.qml, SettingsEqualizer.qml |
 | 3180:17398 | Settings - audio       | 1048 × 865  | 🟢     | ⏳    | Advanced: pass-through, Dolby Surround, resampling, media role  | as above                          |
-| 3180:17989 | Settings - subtitles   | 1048 × 865  | 🟢     | ⏳    | Languages, Loading, Appearance, Timing, On-Screen Messages      | SettingsSubtitleLanguages.qml     |
-| 6536:13908 | Settings - subtitles   | 1048 × 865  | 🟢     | ⏳    | Advanced: folders, ASS/SSA styling, shadow angle, direction     | as above                          |
-| 6536:14482 | Settings - controls    | 1048 × 865  | 🟢     | ⏳    | Shortcuts, skip amounts, mouse, web remote                      | SettingsActionRow.qml             |
-| 6542:15251 | Settings - library     | 1048 × 865  | 🟢     | ⏳    | Opening files, folders, metadata, media library                 | shared                            |
-| 6543:15649 | Settings - network     | 1048 × 865  | 🟢     | ⏳    | Buffering presets, proxy, certificates, ciphers                 | shared                            |
-| 6571:15958 | Settings - performance | 1048 × 865  | 🟢     | ⏳    | Decoding, smooth playback, priority, plugins, developer         | shared                            |
-| 6571:16429 | Settings - recording   | 1048 × 865  | 🟢     | ⏳    | Recording, Casting, Streaming                                   | shared                            |
-| 6575:17137 | Settings - extensions  | 1048 × 865  | 🟢     | ⏳    | Add-ons list (784 × 194), find more, add, remove, on startup    | SettingsExtensions.qml            |
+| 3180:17989 | Settings - subtitles   | 1048 × 865  | 🟢     | 🟢    | Languages, Loading, Appearance, Timing, On-Screen Messages      | SettingsSubtitleLanguages.qml     |
+| 6536:13908 | Settings - subtitles   | 1048 × 865  | 🟢     | 🟢    | Advanced: folders, ASS/SSA styling, shadow angle, direction     | as above                          |
+| 6536:14482 | Settings - controls    | 1048 × 865  | 🟢     | 🟢    | Shortcuts, skip amounts, mouse, web remote                      | SettingsActionRow.qml             |
+| 6542:15251 | Settings - library     | 1048 × 865  | 🟢     | 🟢    | Opening files, folders, metadata, media library                 | shared                            |
+| 6543:15649 | Settings - network     | 1048 × 865  | 🟢     | 🟢    | Buffering presets, proxy, certificates, ciphers                 | shared                            |
+| 6571:15958 | Settings - performance | 1048 × 865  | 🟢     | 🟢    | Decoding, smooth playback, priority, plugins, developer         | shared                            |
+| 6571:16429 | Settings - recording   | 1048 × 865  | 🟢     | 🟢    | Recording, Casting, Streaming                                   | shared                            |
+| 6575:17137 | Settings - extensions  | 1048 × 865  | 🟢     | 🟢    | Add-ons list (784 × 194), find more, add, remove, on startup    | SettingsExtensions.qml            |
 
 Differences: 🔴 Interface (3046:10057, 3062:11379): *Show the playlist as a tree* is left out on purpose: VLC 4's
 queue is flat (an expanded item is replaced by its children), so it needs a new queue model. The four other rows
@@ -910,8 +910,18 @@ Text matching needs Inter with the same metrics (distance-field text, no hinting
 
 - 🟢 References and captures of 187:328 (player) and 970:2703 (library shell), compared
 - 🟢 Text positions and sizes measured in many other frames (cited in the code)
-- 🔴 Figma references exported for all 103 frames
-- 🔴 A capture script that drives the app into each frame's state
+- 🟢 Captured at 1:1 and compared (tiles of 32 px, best shift of up to 4 px, a pixel differs above 24 levels), 2026-10-23:
+  the 18 Settings frames, the onboarding (7 frames), Keyboard Shortcuts and Open network stream. What is left differs
+  by value only (the switches and choices of the test profile), by anti-aliasing, or on purpose:
+  - Settings - performance: *Process priority* is a dropdown (Normal, High...), not the number field of the design.
+  - Settings - privacy: the design's second "Last.fm username" row is the password (its typo); Settings - recording:
+    "include subtitles" reads "Include subtitles".
+  - Onboarding, the accent states (1902:4020 to 1902:4940): *Back* stays, as in 1902:3670.
+  - Keyboard Shortcuts: an action with several keys shows each (Next track: N, Shift+>, >; the defaults of VLC).
+  - Not in the design, after its sections: Subtitles, *Second Language & Online Subtitles*; Interface, *Player Bar*.
+- 🟡 Figma references exported: 56 of 103 frames (`C:\VLCQAigma`, the rest being captured)
+- 🟡 Capture scripts that drive the app into each frame's state: settings, dialogs, onboarding (the library and
+  player frames wait for the demo library)
 - 🔴 The CI job `pixel-check.yml`: captures, comparison, artifacts, a pull request comment, the wiki page
 - 🔴 All 103 frames compared and recorded
 

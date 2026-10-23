@@ -1180,7 +1180,13 @@ void RendererManager::StartScan()
 {
     Q_D(RendererManager);
     if( d->m_stop_scan_timer.isActive() )
+    {
+        /* (started before the list opened, prepare()): it goes on for the
+         * time of a scan from now, not until it ends with the list open */
+        d->m_scan_remain = 20;
+        emit scanRemainChanged();
         return;
+    }
     d->p_intf->mainSettings->setValue( "redesign/cast-scanned", true );
 
     /* SD subnodes */

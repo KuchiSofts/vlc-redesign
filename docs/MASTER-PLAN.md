@@ -2,26 +2,27 @@
 
 What is finished, what is left, and in which order, for every program, platform and screen of VLC Redesign.
 It is the source for the [roadmap](../ROADMAP.md), the [README](../README.md), the wiki (with its *Design check*
-page) and the release notes. Last updated: 2026-10-23.
+page) and the release notes. Last updated: 2026-10-23, build 115 of the `redesign` branch.
 
 **Status:** 🟢 done · 🟡 in progress or partly done · 🔴 to do or missing · ⚪ idea or research
 **Pixel check:** 🟢 measured identical to the Figma frame · ⏳ not measured yet
+**In the app ⏳:** merged and built, not yet checked in the running program (11 lines today)
 
 ## Dashboard
 
-Each square is 10 % (rounded down): 🟩 done · 🟨 in progress · ⬜ left. Every number is counted from this
-document's own tables and checklists (column *From*); ⚪ ideas are not counted.
+Each square is 10 %: 🟩 done · 🟨 in progress · ⬜ left; squares and percentages are rounded down. Every number is
+counted from this document's own tables and checklists (column *From*); ⚪ ideas are not counted.
 
 **Programs and platforms**
 
 | Program         | Progress             | Done    | %     | From                                   |
 |-----------------|----------------------|---------|-------|----------------------------------------|
-| Windows (0.3.0) | 🟩🟩🟩🟩🟨🟨⬜⬜⬜⬜ | 45/92   | 49 %  | [§8](#8-next-release-030) checklists   |
+| Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜ | 68/94   | 72 %  | [§8](#8-next-release-030) checklists   |
 | Linux           | 🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 1/7     | 14 %  | [§9](#linux)                           |
 | macOS           | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/4     | 0 %   | [§9](#macos)                           |
 | Windows ARM64   | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/3     | 0 %   | [§9](#windows-on-arm64)                |
 | Android         | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/7     | 0 %   | [§9](#android-phones-tablets-tv)       |
-| Samsung TV      | 🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ | 2/7     | 29 %  | [§9](#samsung-smart-tv-tizen)          |
+| Samsung TV      | 🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ | 2/7     | 28 %  | [§9](#samsung-smart-tv-tizen)          |
 | iPhone / iPad   | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/3     | 0 %   | [§9](#iphone-ipad-apple-tv)            |
 
 Windows 0.2.6 is released; 0.3.0 counts the lines of section 8 (done since 0.2.6, in progress, left).
@@ -30,11 +31,11 @@ Windows 0.2.6 is released; 0.3.0 counts the lines of section 8 (done since 0.2.6
 
 | Area                    | Progress             | Done    | %     | From                                   |
 |-------------------------|----------------------|---------|-------|----------------------------------------|
-| Design frames (Figma)   | 🟩🟩🟩🟩🟩🟩🟩🟩🟨🟨 | 87/103  | 84 %  | [§5](#5-design-frame-by-frame) tables  |
-| Pixel check             | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 2/103   | 2 %   | [§5](#5-design-frame-by-frame) tables  |
-| Light theme and accents | 🟩🟩🟩🟩🟩🟩🟩🟨⬜⬜ | 12/16   | 75 %  | [§8.3](#83-light-theme-and-accents)    |
-| Settings rows           | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 | 206/212 | 97 %  | [§8.5](#85-settings-rows)              |
-| Classic dialogs         | 🟨🟨🟨🟨🟨🟨⬜⬜⬜⬜ | 0/11    | 0 %   | [§8.6](#86-classic-dialogs)            |
+| Design frames (Figma)   | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 | 93/103  | 90 %  | [§5](#5-design-frame-by-frame) tables  |
+| Pixel check             | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 2/103   | 1 %   | [§5](#5-design-frame-by-frame) tables  |
+| Light theme and accents | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 16/17   | 94 %  | [§8.3](#83-light-theme-and-accents)    |
+| Settings rows           | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 211/212 | 99 %  | [§8.5](#85-settings-rows)              |
+| Classic dialogs         | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 10/11   | 90 %  | [§8.6](#86-classic-dialogs)            |
 | Popups and menus        | 🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜ | 11/15   | 73 %  | [§8.4](#84-popups-and-menus)           |
 | Casting                 | 🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜ | 13/16   | 81 %  | [§7](#7-desktop-for-windows-what-is-done) + [§8.7](#87-casting) |
 | Languages               | 🟩🟩🟩🟩⬜⬜⬜⬜⬜⬜ | 4/9     | 44 %  | [§12](#12-languages)                   |
@@ -129,7 +130,7 @@ What comes first, and why. Each step starts when what it needs is done.
 
 | #  | Step                                                                  | Needs first                     | Why in this order                                                   | Status |
 |----|-----------------------------------------------------------------------|---------------------------------|---------------------------------------------------------------------|--------|
-| 1  | Finish the 0.3.0 work in progress (§8)                                | —                               | Half done: finishing costs less than switching                      | 🟡     |
+| 1  | Check build 115 in the app (11 lines), finish the 0.3.0 items (§8)     | —                               | Mostly done: finishing costs less than switching                    | 🟡     |
 | 2  | Figma references exported, capture script, pixel check of 103 frames  | step 1 (screens stable)         | "Pixel for pixel" needs proof; capturing moving screens is wasted    | 🔴     |
 | 3  | Community setup: hub, Discussions, forms, labels, board, files        | decisions 1 and 9               | Feedback must land in the right place before the announcement       | 🔴     |
 | 4  | Release 0.3.0 and announce it                                         | quality gates, steps 1 and 3    | Users get the fixes; the community side is ready for them            | 🔴     |
@@ -164,18 +165,18 @@ What comes first, and why. Each step starts when what it needs is done.
 |-----------------------|--------|-----|-----|-----|----------|----------------------|
 | Onboarding            | 11     | 11  | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Player                | 7      | 7   | 0   | 0   | 2        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
-| Player - Music        | 2      | 0   | 2   | 0   | 0        | 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 |
+| Player - Music        | 2      | 2   | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Player - customize    | 9      | 9   | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Player - hide UI      | 1      | 1   | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
-| Player - Light        | 1      | 0   | 1   | 0   | 0        | 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 |
+| Player - Light        | 1      | 1   | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Add Subtitles         | 4      | 4   | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Keyboard Shortcuts    | 1      | 1   | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Open network stream   | 1      | 1   | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
-| New playlist          | 1      | 0   | 1   | 0   | 0        | 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 |
-| Settings pages        | 19     | 15  | 4   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟨🟨🟨 |
-| **Screens**           | 57     | 49  | 8   | 0   | 2        | 🟩🟩🟩🟩🟩🟩🟩🟩🟨🟨 |
+| New playlist          | 1      | 1   | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
+| Settings pages        | 19     | 17  | 2   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟨🟨 |
+| **Screens**           | 57     | 55  | 2   | 0   | 2        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
 | **Components**        | 46     | 38  | 8   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟨🟨 |
-| **All**               | 103    | 87  | 16  | 0   | 2        | 🟩🟩🟩🟩🟩🟩🟩🟩🟨🟨 |
+| **All**               | 103    | 93  | 10  | 0   | 2        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
 
 ### 5.3 Onboarding (11)
 
@@ -218,12 +219,12 @@ Notes: when nothing plays, the video area shows the frames' pixel cat (`IdleScen
 
 | Node       | Name           | Size (px)   | Status | Pixel | What it is                                                     | Implemented in                                                       |
 |------------|----------------|-------------|--------|-------|----------------------------------------------------------------|----------------------------------------------------------------------|
-| 4767:23726 | Player - Music | 1920 × 1080 | 🟡     | ⏳    | Music: artwork (738 × 737) over its blur, waveform, resume card | MusicView.qml, AudioContent.qml, WaveformSlider.qml, ResumeDialog.qml |
-| 4778:25123 | Player - Music | 1920 × 1080 | 🟡     | ⏳    | The same with the queue                                        | as above, QueueCard.qml                                              |
+| 4767:23726 | Player - Music | 1920 × 1080 | 🟢     | ⏳    | Music: artwork (738 × 737) over its blur, waveform, resume card | MusicView.qml, AudioContent.qml, WaveformSlider.qml, ResumeDialog.qml |
+| 4778:25123 | Player - Music | 1920 × 1080 | 🟢     | ⏳    | The same with the queue                                        | as above, QueueCard.qml                                              |
 
-Differences: 🟡 the resume card says "Continue where you left off?" (*Continue*, *Dismiss*); Figma: "You've watched
-till 00:45:08 already." and *Continue Watching* (being fixed). 🔴 The bars are solid `#191919` at 95 %; Figma puts
-them over a 50 px background blur.
+Notes: the resume card reads as in Figma: "You've watched till 00:45:08 already." (the media library's saved time)
+and one *Continue Watching* button; Escape or 10 s close it (in the app ⏳). The missing background blur (5.16,
+item 6) shows most here: the bars are solid `#191919` at 95 % over the artwork backdrop.
 
 ### 5.6 Player - customize (9)
 
@@ -254,11 +255,10 @@ Notes: editing the music bar and the mini player is implemented, not yet verifie
 
 | Node       | Name           | Size (px)   | Status | Pixel | What it is                                          | Implemented in                                     |
 |------------|----------------|-------------|--------|-------|-----------------------------------------------------|----------------------------------------------------|
-| 2425:13624 | Player - Light | 1920 × 1080 | 🟡     | ⏳    | The light theme, greys measured from this frame      | VLCStyle.qml (`redesign.color()`), redesign_icon_provider.cpp |
+| 2425:13624 | Player - Light | 1920 × 1080 | 🟢     | ⏳    | The light theme, greys measured from this frame      | VLCStyle.qml (`redesign.color()`), redesign_icon_provider.cpp |
 
-Differences (the rest is fixed, §8.3): 🔴 Settings scroll bar handles invisible in light; 🔴 the warning colour
-`#E4A580` unreadable in light (`SettingsDialog.qml`, `SettingsExtensions.qml`, `SettingsSidebar.qml`); 🟡 the PNG
-check marks and a few icons stay orange with another accent (being fixed).
+Notes: the whole app was checked in light in build 115 (player, tracks and subtitles window, cast window, ⋯ menu,
+classic dialogs). The last fixes, Settings scroll bar handles and the warning colour, are in the app ⏳ (§8.3).
 
 ### 5.9 Add Subtitles (4)
 
@@ -288,22 +288,22 @@ Shared: `SubtitleAssociationsDialog.qml` (1048 × 800, `#0E0E0E` at 95 %), `Subt
 
 | Node       | Name         | Size (px)   | Status | Pixel | What it is                                                | Implemented in                                    |
 |------------|--------------|-------------|--------|-------|-----------------------------------------------------------|---------------------------------------------------|
-| 6259:14954 | new playlist | 713 × 589   | 🟡     | ⏳    | Title and thumbnail, Select Files (drop zone), Save        | PlaylistCreateDialog.qml, mlplaylistlistmodel.cpp |
+| 6259:14954 | new playlist | 713 × 589   | 🟢     | ⏳    | Title and thumbnail, Select Files (drop zone), Save        | PlaylistCreateDialog.qml, mlplaylistlistmodel.cpp |
 
-Differences (being added): 🟡 the thumbnail is the first file's, not a custom one; 🟡 Save needs a file (no empty
-playlist).
+Notes: a custom thumbnail, picked or dropped, is saved as a PNG of at most 1024 px in the user data folder and
+deleted with the playlist; Save needs only a title, so a playlist can be empty (in the app ⏳).
 
 ### 5.13 Settings pages (19)
 
 Shared: `SettingsDialog.qml` (1048 × 865), `SettingsSidebar.qml`, `SettingsOptionList.qml`, `SettingsOptionRow.qml`,
 `SettingsPresentation.qml` (every label), `catalog.cpp` and `config_model.cpp` (options per page). Every frame's texts
-were checked against the code: all rows are there but five (§8.5). The second frame of a page has *Advanced Options*
+were checked against the code: all rows are there but one (§8.5). The second frame of a page has *Advanced Options*
 open. The design's typo "changew" reads "changes".
 
 | Node       | Name                   | Size (px)   | Status | Pixel | What it is                                                     | Implemented in                    |
 |------------|------------------------|-------------|--------|-------|----------------------------------------------------------------|-----------------------------------|
-| 999:5047   | Settings - global      | 1048 × 865  | 🟡     | ⏳    | Appearance (language, theme, accent), Startup, Diagnostics      | SettingsAppearance.qml, SettingsLanguageAction.qml, SettingsDeveloperMode.qml |
-| 3046:9282  | Settings - global      | 1048 × 865  | 🟡     | ⏳    | Advanced: warnings, command line, log, statistics, reset        | as above                          |
+| 999:5047   | Settings - global      | 1048 × 865  | 🟢     | ⏳    | Appearance (language, theme, accent), Startup, Diagnostics      | SettingsAppearance.qml, SettingsLanguageAction.qml, SettingsDeveloperMode.qml |
+| 3046:9282  | Settings - global      | 1048 × 865  | 🟢     | ⏳    | Advanced: warnings, command line, log, statistics, reset        | as above                          |
 | 3046:10057 | Settings - interface   | 1048 × 865  | 🟡     | ⏳    | Skin, Window, Playback Controls, Notifications, Playlist        | shared                            |
 | 3062:11379 | Settings - interface   | 1048 × 865  | 🟡     | ⏳    | Advanced: opacity, minimized, cover art, fullscreen controls     | shared                            |
 | 3062:11911 | Settings - privacy     | 1048 × 865  | 🟢     | ⏳    | History, Network (cover art, Last.fm)                           | SettingsPrivacyActions.qml, SettingsLastfm.qml |
@@ -322,9 +322,9 @@ open. The design's typo "changew" reads "changes".
 | 6571:16429 | Settings - recording   | 1048 × 865  | 🟢     | ⏳    | Recording, Casting, Streaming                                   | shared                            |
 | 6575:17137 | Settings - extensions  | 1048 × 865  | 🟢     | ⏳    | Add-ons list (784 × 194), find more, add, remove, on startup    | SettingsExtensions.qml            |
 
-Differences (being added): 🟡 Global: *Show confirmation and error dialogs*, *Additional command line options*;
-🟡 Interface: *Show controls in fullscreen*, *Show the playlist as a tree*, *Show cover art in the window when playing
-audio*.
+Differences: 🔴 Interface (3046:10057, 3062:11379): *Show the playlist as a tree* is left out on purpose: VLC 4's
+queue is flat (an expanded item is replaced by its children), so it needs a new queue model. The four other rows
+added in build 115 are in the app ⏳ (§8.5).
 
 ### 5.14 Components (46)
 
@@ -426,24 +426,24 @@ a 400 × 445 popup.
 | Cast panel: TVs, firewall card                                  | CastButton.qml                          | 🟢     |
 | Sleep timer, subtitle series presets                            | SleepTimerMenu.qml, SubtitleSeriesPreset.qml | 🟢 |
 | Idle player: the pixel cat                                      | IdleScene.qml                           | 🟢     |
+| Player bar with nothing playing (*Always show the player bar*)  | ControlBar.qml, SettingsPresentation.qml | 🟢    |
 | Installer: Welcome, Options, installing, Done                   | `extras/juxtopposed/installer/`         | 🟢     |
-| Classic dialogs (Open Disc, Convert, Media Information…)         | classic Qt widgets                      | 🟡 §8.6 |
+| Classic dialogs (Open Media, Convert, Media Information…)        | redesign_widget_theme.cpp, qvlcframe.cpp | 🟢 §8.6 |
 
 ### 5.16 Open differences
 
 | #  | Difference                                                         | Frames                                   | Status |
 |----|--------------------------------------------------------------------|------------------------------------------|--------|
-| 1  | Light: settings scroll handles invisible, `#E4A580` unreadable      | 2425:13624                               | 🔴     |
-| 2  | Accent: PNG check marks and a few icons stay orange                | 2425:13624, every accent but orange      | 🟡     |
-| 3  | Five settings rows missing                                         | 999:5047, 3046:9282, 3046:10057, 3062:11379 | 🟡  |
-| 4  | New playlist: no custom thumbnail, no empty playlist               | 6259:14954                               | 🟡     |
-| 5  | Resume card: wording and watched time                              | 4767:23726, 4778:25123                   | 🟡     |
-| 6  | Classic dialogs in the classic look                                | outside the file                         | 🟡     |
-| 7  | Library context menus are native menus, not cards                  | 2107:5903, 2139:8935, 2404:13340, 2459:9389 | 🔴  |
-| 8  | The compact library's Home lists recent media only                 | 848:1996                                 | 🔴     |
-| 9  | HDR10+ and Dolby Vision always disabled                            | 2372:8733                                | 🔴     |
-| 10 | No background blur: panels solid at 95 % (the music backdrop is blurred) | every floating panel               | 🔴     |
-| 11 | Not compared yet: Setting Preset, Audio Visualizer                 | 2372:8834, 2372:8639                     | 🔴     |
+| 1  | *Show the playlist as a tree*: needs a new queue model (VLC 4's queue is flat) | 3046:10057, 3062:11379       | 🔴     |
+| 2  | Library context menus are native menus, not cards                  | 2107:5903, 2139:8935, 2404:13340, 2459:9389 | 🔴  |
+| 3  | The compact library's Home lists recent media only                 | 848:1996                                 | 🔴     |
+| 4  | HDR10+ and Dolby Vision always disabled                            | 2372:8733                                | 🔴     |
+| 5  | Not compared yet: Setting Preset, Audio Visualizer                 | 2372:8834, 2372:8639                     | 🔴     |
+| 6  | No background blur: panels solid at 95 % (the music backdrop is blurred) | every floating panel               | 🔴     |
+| 7  | A stray separator line in the Disc tab of Open Media               | outside the file                         | 🔴     |
+
+Fixed in build 115: the light theme leftovers, the accent on every check mark and active icon, four settings rows,
+the new playlist's thumbnail and empty playlists, the resume card, the classic dialogs.
 
 ## 6. Design tokens
 
@@ -476,6 +476,8 @@ The light value is what `VLCStyle.redesign.color()` returns for the dark one (me
 | Dark/FG/B1            | `#161616` | —         | Figma only                                                     |
 | Dark/Divider/Dim      | `#222222` | `#9C9C9B` | `separator`                                                    |
 | Dark/Divider/Bright   | `#373737` | `#8E8E8D` | `border`                                                       |
+| (warning, not Figma)  | `#E4A580` | `#7A1414` | settings warnings and errors                                   |
+| (scroll bar handle)   | `#6B6B6B` | `#2E2E2E` | scroll bars of Settings                                        |
 | bg blur               | blur 50   | —         | 🔴 not drawn: solid panels at 95 %                              |
 | bg blur + shadow      | + shadow  | —         | 🟢 shadow 0 8, blur 15, `#000000` 46 % · 🔴 blur                 |
 
@@ -679,6 +681,7 @@ becomes 1.0 when every frame is pixel-checked, the light theme is complete and V
 - 🟢 Quitting after a film is quick again
 - 🟢 The idle player shows Figma's pixel cat, drawn as blocks
 - 🟢 Popups close on a click outside without pausing the video
+- 🟢 The seek bar no longer runs its loading animation when nothing plays (it redrew the window without end)
 
 ### 8.3 Light theme and accents
 
@@ -694,10 +697,13 @@ becomes 1.0 when every frame is pixel-checked, the light theme is complete and V
 - 🟢 Text selection colours
 - 🟢 Customize drop zone
 - 🟢 Effect sliders follow the accent
-- 🟡 PNG check marks and a few icons follow the accent
-- 🔴 Settings scroll bar handles visible in light (`SettingsDialog.qml`, `SettingsExtensions.qml`, `SettingsSidebar.qml`)
-- 🔴 Warning colour `#E4A580` readable in light
-- 🔴 Every state checked; text contrast at least WCAG AA
+- 🟢 Every check mark and active icon follows the accent (cast, visualizer, HDR, subtitle associations, option
+  items, crop link, folder play outline, compact library sections, queue sort dot, Recent, *This computer*,
+  visualizer icons, side navigation, settings sidebar); the default accent pixel-identical · in the app ⏳
+- 🟢 Settings scroll bar handles visible: `#6B6B6B` dark, `#2E2E2E` light · in the app ⏳
+- 🟢 Warning colour readable: `#E4A580` dark, `#7A1414` light · in the app ⏳
+- 🟢 The whole app checked in light: player, tracks and subtitles window, cast window, ⋯ menu, classic dialogs
+- 🔴 Text contrast measured: at least WCAG AA everywhere
 
 ### 8.4 Popups and menus
 
@@ -722,28 +728,38 @@ becomes 1.0 when every frame is pixel-checked, the light theme is complete and V
 The design's settings frames hold 211 rows (counted from their texts, each page once); the app adds one.
 
 - 🟢 206 rows of the design on the 13 pages
-- 🟡 *Show confirmation and error dialogs* (Global)
-- 🟡 *Additional command line options* (Global, advanced)
-- 🟡 *Show controls in fullscreen* (Interface)
-- 🟡 *Show the playlist as a tree* (Interface)
-- 🟡 *Show cover art in the window when playing audio* (Interface, advanced)
-- 🟡 *Always show the player bar* (Interface, new, default off): the bottom bar stays on Home and every library page
+- 🟢 *Show confirmation and error dialogs* (Global, `qt-error-dialogs`): no error popup, questions answered yes;
+  deleting a file still asks · in the app ⏳
+- 🟢 *Additional command line options* (Global, advanced; new core option `extra-options`, read at every start; the
+  command line wins; `--help`, `--config` and the like ignored) · in the app ⏳
+- 🟢 *Show controls in fullscreen* (Interface, `qt-fs-controller`, live) · in the app ⏳
+- 🟢 *Show cover art in the window when playing audio* (Interface, advanced, `qt-bgcone`) · in the app ⏳
+- 🔴 *Show the playlist as a tree* (Interface): left out on purpose; VLC 4's queue is flat (an expanded item is
+  replaced by its children), so it needs a new queue model
+- 🟢 *Always show the player bar* (Interface › Playback Controls, new, default off, live): the bar stays on Home and
+  every page with nothing playing (times `--:--`); its cover and the player switch open the empty player with the
+  pixel cat; Play starts the queue or opens files
 
-The dashboard counts 206 + 6 = 212 rows; the 0.3.0 bar counts these 7 lines.
+The dashboard counts 211 of 212 rows (the design's 211 and the new one); the 0.3.0 bar counts these 7 lines.
 
 ### 8.6 Classic dialogs
 
-- 🟡 Open Disc
-- 🟡 Open Capture Device
-- 🟡 Convert / Stream
-- 🟡 Media Information
-- 🟡 Bookmarks window
-- 🟡 Messages
-- 🟡 Advanced preferences (*All VLC options*)
-- 🔴 Go to time
-- 🔴 Statistics
-- 🔴 Plugins list
-- 🔴 Folder information
+All classic windows go through one hook, `redesign_widget_theme.cpp`, applied from `qvlcframe.cpp`
+(`QVLCDialog::setWindowTransientParent()`), and follow Dark / Light and the accent live.
+
+- 🟢 The hook, for every `QVLCDialog` and `QVLCFrame` window
+- 🟢 Open Media: File, Disc, Network and Capture Device tabs
+- 🟢 Convert / Save
+- 🟢 Media Information; its bitrate graph readable in dark
+- 🟢 Messages; the log colours readable in dark
+- 🟢 Bookmarks window
+- 🟢 Advanced preferences (*All VLC options*)
+- 🟢 EPG, VLM, help, message boxes
+- 🟢 The crash it caused at start (the shared menu style wrapped by a dialog's style sheet, 1 start in 2) fixed;
+  6 runs clean
+- 🟢 Go to time, statistics, plugins list (the same hook) · in the app ⏳
+- 🔴 A stray separator line in the Disc tab
+- ⚪ Go to time, statistics, plugins list and folder information redrawn in QML, as another implementation did
 
 ### 8.7 Casting
 
@@ -765,9 +781,9 @@ and an accepted request made the TV fail after a pause in a test.
 
 ### 8.8 Design and library
 
-- 🟡 Resume card with the design's wording and the watched time
-- 🟡 New playlist with a custom thumbnail
-- 🟡 Empty playlists
+- 🟢 Resume card as in Figma: the watched time and one *Continue Watching* button · in the app ⏳
+- 🟢 New playlist with a custom thumbnail (PNG, 1024 px at most, deleted with the playlist) · in the app ⏳
+- 🟢 Empty playlists: Save needs only a title · in the app ⏳
 - 🔴 The compact library's Home with the rows of the library's Home
 - 🔴 Real background blur (50 px) behind floating panels, measured on weak graphics cards
 - 🔴 HDR10+ and Dolby Vision offered when the renderer supports them, hidden with a reason otherwise
@@ -795,7 +811,8 @@ and an accepted request made the TV fail after a pause in a test.
 - 🔴 Small updates from 0.2.4, 0.2.5 and 0.2.6 built and checked
 - 🔴 Announcement in Discussions; every fixed issue answered with the release link
 
-Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 45 🟢, 17 🟡, 30 🔴 (92).
+Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 68 🟢, 0 🟡, 26 🔴 (94), of which 11 🟢 are
+in the app ⏳.
 Languages (§12) and the community (§13) have bars of their own.
 
 ## 9. Other platforms
@@ -868,8 +885,8 @@ author, since 2026-10-13), is ahead on:
 | Windows, macOS, Linux from one workflow, launch tests of packages   | Yes          | §9 tracks, §8.9 CI       |
 | 11 languages, language change without restart                       | Yes          | §12                      |
 | Real blur behind floating panels                                    | Yes, carefully | §8.8                   |
-| Classic dialogs restyled with one Qt style hook                     | Yes          | §8.6 (in progress)       |
-| Redesigned Go to time, statistics, folder info, plugins list        | Yes          | §8.6                     |
+| Classic dialogs restyled with one Qt style hook                     | Yes          | §8.6 (done)              |
+| Redesigned Go to time, statistics, folder info, plugins list        | Yes          | §8.6 (idea)              |
 | Geometry, overlay, advanced video filters in the panel              | Yes          | §8.8                     |
 | Subtitle cues on the seek bar                                       | Nice to have | §8.8 (idea)              |
 | About 85 automated QML and C++ tests                                | Yes          | §8.9                     |

@@ -21,6 +21,7 @@ readonly property var items: ({
                           { advanced: true, info: true, restart: true }],
         "logmode": [qsTr("Diagnostics"), qsTr("Log format"), "", { "text": qsTr("Plain text"), "html": qsTr("HTML") },
                     { advanced: true, info: true, restart: true }],
+        "qt-error-dialogs": [qsTr("Startup"), qsTr("Show confirmation and error dialogs"), "", null, { info: true }],
         "redesign-update-check": [qsTr("Startup"), qsTr("Check for updates automatically"), "", null, { info: true }],
         "file-logging": [qsTr("Diagnostics"), qsTr("Save a log"), "", null, { info: true, restart: true }],
         "logfile": [qsTr("Diagnostics"), qsTr("Log file"), "savefile", null, { info: true, restart: true }],

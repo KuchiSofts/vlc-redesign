@@ -510,6 +510,7 @@ void MainCtx::loadPrefs(const bool callSignals)
 
     loadFromVLCOption(m_mouseHideTimeout, "mouse-hide-timeout", &MainCtx::mouseHideTimeoutChanged);
     loadFromVLCOption(m_fsSensitivity, "qt-fs-sensitivity", &MainCtx::fsSensitivityChanged);
+    loadFromVLCOption(m_showErrorDialogs, "qt-error-dialogs", &MainCtx::showErrorDialogsChanged);
 
 #ifdef _WIN32
     /* "Process priority" of the settings (-2 idle ... 2 high); left alone

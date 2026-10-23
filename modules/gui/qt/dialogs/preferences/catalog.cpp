@@ -14,8 +14,9 @@
 namespace PrefsCatalog
 {
 static const Option entries[] = {
-    // (no "qt-error-dialogs": nothing reads it any more)
-    {"general", "redesign-update-check"},
+    // Startup of the design: the error popup and the confirmations of the
+    // interface read qt-error-dialogs (Dialogs.qml, questionDialog)
+    {"general", "qt-error-dialogs"}, {"general", "redesign-update-check"},
     {"general", "file-logging"}, {"general", "logfile"},
     {"general", "log-verbose"},
     // extra-options: read by the core at the start (libvlc.c)

@@ -68,49 +68,27 @@ ExpandPanel {
                 color: presetOption.chosen || presetOption.highlighted || presetOption.hovered
                        ? root.c("#1F1F1F") : "transparent"
 
-                // The curve of the preset: the 2 px #8F8F8F line, the
-                // gains in the accent above (boost) or under it (cut), 1 px
-                // off it, 0.7 px a dB to 8 px (the icons of the sheet: 7);
-                // columns of 1 px, no Canvas in VLC's Qt Quick
-                Item {
+                // The curve of the preset, from the icons of the sheet
+                // (Figma 42:356): drawn in grey and the accent; with another
+                // accent, the grey part and the rest tinted above it
+                Image {
                     id: curve
-                    readonly property var gains: presetOption.modelData.bands
-                    readonly property bool valid: !!gains && gains.length === 10
-                    readonly property real line: Math.round(height / 2) - root.px(1)
-
-                    function gainAt(column) {
-                        const band = (column + 0.5) * (gains.length - 1) / width
-                        const low = Math.floor(band), high = Math.min(gains.length - 1, low + 1)
-                        const gain = Number(gains[low]) + (Number(gains[high]) - Number(gains[low])) * (band - low)
-                        return Math.max(-20, Math.min(20, gain))
-                    }
-
+                    readonly property string iconDir: "qrc:///redesign/icons/eq-"
+                                                      + String(presetOption.modelData.id).toLowerCase()
+                    readonly property bool twoTone: !VLCStyle.redesign.defaultAccent
                     x: root.px(14)
                     anchors.verticalCenter: parent.verticalCenter
                     width: root.px(24)
-                    height: root.px(24)
+                    height: width
+                    sourceSize: Qt.size(width, height)
+                    source: iconDir + (twoTone ? "/default-grey.png" : "/default.png")
                     Accessible.role: Accessible.Graphic
                     Accessible.name: qsTr("%1 equalizer curve").arg(presetOption.modelData.name)
-
-                    Repeater {
-                        model: curve.valid ? Math.round(curve.width) : 0
-                        Rectangle {
-                            required property int index
-                            readonly property real gain: curve.gainAt(index)
-                            readonly property real size: Math.round(Math.min(8, Math.abs(gain) * 0.7) * VLCStyle.scale)
-                            x: index
-                            y: gain > 0 ? curve.line - root.px(1) - size : curve.line + root.px(2 + 1)
-                            width: 1
-                            height: size
-                            visible: size > 0
-                            color: VLCStyle.redesign.accent
-                        }
-                    }
-                    Rectangle {
-                        y: curve.line
-                        width: curve.width
-                        height: root.px(2)
-                        color: root.c("#8F8F8F")
+                    Impl.ColorImage {
+                        anchors.fill: parent
+                        visible: curve.twoTone
+                        source: visible ? curve.iconDir + "/default-accent.png" : ""
+                        color: VLCStyle.redesign.accent
                     }
                 }
 

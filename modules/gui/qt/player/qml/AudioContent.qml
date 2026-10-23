@@ -169,8 +169,9 @@ MouseArea {
     ColumnLayout {
         parent: leftSideParent.visible ? rightSideParent : centerContent
 
-        // centred on a whole pixel (Figma: the cover at 591 of the 1920)
-        anchors.verticalCenter: parent.verticalCenter
+        // centred on a whole pixel (Figma: the cover at 591, 113 of the
+        // 1920 x 1080; the half pixel up, as Figma rounds it)
+        y: Math.floor((parent.height - height) / 2)
         x: Math.round((parent.width - width) / 2)
         spacing: 0
 
@@ -386,10 +387,11 @@ MouseArea {
             Binding on visible {
                 delayed: true
                 when: audioControls.componentCompleted
-                // The jumps are in the control bar of the design; the
-                // visualizer (Figma "Visualizer") and, for tracks with
-                // lyrics, the lyrics button stay
-                value: Player.videoTracks.count === 0
+                // The jumps and the visualizer (Figma "Visualizer") are in the
+                // control bar of the design, under the cover and its title
+                // only: the lyrics button stays, for tracks with lyrics (a
+                // row under the title moved them up, Figma 4767:23726)
+                value: Player.videoTracks.count === 0 && Player.hasLyrics
                        && centerContent.height > (audioControls.y + audioControls.height)
             }
 
@@ -416,6 +418,8 @@ MouseArea {
             }
 
             Widgets.IconToolButton {
+                // (the one of the control bar)
+                visible: false
                 text: VLCIcons.visualization
                 font.pixelSize: VLCStyle.icon_audioPlayerButton
                 onClicked: DialogsProvider.audioVisualizationDialog()

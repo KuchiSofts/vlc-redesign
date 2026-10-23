@@ -704,7 +704,12 @@ becomes 1.0 when every frame is pixel-checked, the light theme is complete and V
 - 🟢 Settings scroll bar handles visible: `#6B6B6B` dark, `#2E2E2E` light · in the app ⏳
 - 🟢 Warning colour readable: `#E4A580` dark, `#7A1414` light · in the app ⏳
 - 🟢 The whole app checked in light: player, tracks and subtitles window, cast window, ⋯ menu, classic dialogs
-- 🔴 Text contrast measured: at least WCAG AA everywhere
+- 🟢 Text contrast measured (WCAG 2.1, 2026-10-23): the texts of the design pass AA (4.5:1) on every panel but its
+  dim greys: dark `#6B6B6B` 3.3 to 3.7 and `#5F5F5F` 2.8 to 3.1 (hints, descriptions, watched videos), light
+  `#5A5A59` 3.3 to 5.1 and `#4D4D4D` 4.1 on lists. Kept as the design draws them; *Increase text contrast*
+  (Interface › Accessibility, off) draws them `#8A8A8A` (dark) and `#333333` (light), at least 4.6:1 on every panel
+  and hover background, and the (i) icons `#707070` / `#575756`, at least 3.1:1 (the 3:1 of icons), in
+  `VLCStyle.redesign.color()`
 
 ### 8.4 Popups and menus
 

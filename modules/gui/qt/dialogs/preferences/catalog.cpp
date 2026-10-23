@@ -18,7 +18,9 @@ static const Option entries[] = {
     {"general", "redesign-update-check"},
     {"general", "file-logging"}, {"general", "logfile"},
     {"general", "log-verbose"},
-    {"general", "verbose"}, {"general", "logmode"}, {"general", "stats"},
+    // extra-options: read by the core at the start (libvlc.c)
+    {"general", "verbose"}, {"general", "extra-options"},
+    {"general", "logmode"}, {"general", "stats"},
     {"general", "syslog"}, {"general", "syslog-debug"}, {"general", "syslog-ident"},
     {"general", "syslog-facility"},
     // Interface page of the design: Skin, Window, Playback Controls,

@@ -26,6 +26,7 @@
 #include <vlc_configuration.h>
 #include <vlc_plugin.h>
 #include <vlc_url.h>
+#include <vlc_fs.h>
 #include <vlc_media_library.h>
 #include <vlc_dialog.h>
 #include "medialibrary.h"
@@ -508,11 +509,22 @@ bool MediaLibrary::Init()
     return true;
 }
 
+/* Written when a folder that is not on this computer is added: a root that
+ * is not there may be a share then, else it is a drive unplugged */
+static std::string networkRootsMarker()
+{
+    auto userdir = vlc::wrap_cptr( config_GetUserDir( VLC_USERDATA_DIR ) );
+    return userdir ? std::string{ userdir.get() } + "/ml/network-roots" : std::string{};
+}
+
 bool MediaLibrary::hasNetworkRoots()
 {
     auto query = m_ml->roots( nullptr );
     if ( query == nullptr )
         return false;
+    const std::string marker = networkRootsMarker();
+    struct stat st;
+    const bool had_network = !marker.empty() && vlc_stat( marker.c_str(), &st ) == 0;
     for ( const auto& folder : query->all() )
     {
         try
@@ -520,13 +532,11 @@ bool MediaLibrary::hasNetworkRoots()
             if ( folder->mrl().compare( 0, 7, "file://" ) != 0 )
                 return true;
         }
-        catch ( const medialibrary::fs::errors::DeviceRemoved& )
-        {
-            return true; /* not seen yet: it may be a share */
-        }
         catch ( const std::exception& )
         {
-            return true;
+            /* not seen yet (DeviceRemoved): a share, or a drive unplugged */
+            if ( had_network )
+                return true;
         }
     }
     return false;
@@ -586,7 +596,13 @@ int MediaLibrary::Control( int query, va_list args )
             {
                 case VLC_ML_ADD_FOLDER:
                     if ( strncmp( mrl, "file://", 7 ) != 0 )
+                    {
                         m_ml->setDiscoverNetworkEnabled( true );
+                        const std::string marker = networkRootsMarker();
+                        FILE *f = marker.empty() ? nullptr : vlc_fopen( marker.c_str(), "wb" );
+                        if ( f != nullptr )
+                            fclose( f );
+                    }
                     m_ml->discover( mrl );
                     break;
                 case VLC_ML_REMOVE_FOLDER:

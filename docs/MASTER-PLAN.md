@@ -1,18 +1,64 @@
 # VLC Redesign: master plan
 
-Status of every program, every platform and every version, and the plan to finish them. It is the source for
-the roadmap, the README, the wiki and the release notes of each program.
+What is finished, what is left, and in which order, for every program, platform and screen of VLC Redesign.
+It is the source for the [roadmap](../ROADMAP.md), the [README](../README.md), the wiki (with its *Design check*
+page) and the release notes. Last updated: 2026-10-23.
 
-Last updated: 2026-10-23. Desktop version: 0.2.6 released, 0.2.7 in progress.
+**Status:** 🟢 done · 🟡 in progress or partly done · 🔴 to do or missing · ⚪ idea or research
+**Pixel check:** 🟢 measured identical to the Figma frame · ⏳ not measured yet
 
-**Contents:** [Principles](#1-principles) · [Programs and platforms](#2-programs-and-platforms) ·
-[Where we are](#3-where-we-are) · [Design coverage](#4-design-coverage-figma) ·
-[Other implementations](#5-other-implementations-of-the-design) · [Desktop plan](#6-desktop-windows-linux-macos) ·
-[Android plan](#7-android-phones-tablets-android-tv) · [Samsung TV plan](#8-samsung-smart-tv-tizen) ·
-[Apple mobile](#9-iphone-ipad-apple-tv) · [Pixel-exact process](#10-pixel-exact-process) ·
-[Languages](#11-languages) · [GitHub](#12-github-repositories-releases-wiki) ·
-[Quality gates](#13-quality-gates-for-every-release) · [Decisions](#14-decisions-to-make) ·
-[Next steps](#15-next-steps)
+## Dashboard
+
+Each square is 10 % (rounded down): 🟩 done · 🟨 in progress · ⬜ left. Every number is counted from this
+document's own tables and checklists (column *From*); ⚪ ideas are not counted.
+
+**Programs and platforms**
+
+| Program         | Progress             | Done    | %     | From                                   |
+|-----------------|----------------------|---------|-------|----------------------------------------|
+| Windows (0.3.0) | 🟩🟩🟩🟩🟨🟨⬜⬜⬜⬜ | 45/92   | 49 %  | [§8](#8-next-release-030) checklists   |
+| Linux           | 🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 1/7     | 14 %  | [§9](#linux)                           |
+| macOS           | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/4     | 0 %   | [§9](#macos)                           |
+| Windows ARM64   | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/3     | 0 %   | [§9](#windows-on-arm64)                |
+| Android         | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/7     | 0 %   | [§9](#android-phones-tablets-tv)       |
+| Samsung TV      | 🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ | 2/7     | 29 %  | [§9](#samsung-smart-tv-tizen)          |
+| iPhone / iPad   | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/3     | 0 %   | [§9](#iphone-ipad-apple-tv)            |
+
+Windows 0.2.6 is released; 0.3.0 counts the lines of section 8 (done since 0.2.6, in progress, left).
+
+**Areas**
+
+| Area                    | Progress             | Done    | %     | From                                   |
+|-------------------------|----------------------|---------|-------|----------------------------------------|
+| Design frames (Figma)   | 🟩🟩🟩🟩🟩🟩🟩🟩🟨🟨 | 87/103  | 84 %  | [§5](#5-design-frame-by-frame) tables  |
+| Pixel check             | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 2/103   | 2 %   | [§5](#5-design-frame-by-frame) tables  |
+| Light theme and accents | 🟩🟩🟩🟩🟩🟩🟩🟨⬜⬜ | 12/16   | 75 %  | [§8.3](#83-light-theme-and-accents)    |
+| Settings rows           | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 | 206/212 | 97 %  | [§8.5](#85-settings-rows)              |
+| Classic dialogs         | 🟨🟨🟨🟨🟨🟨⬜⬜⬜⬜ | 0/11    | 0 %   | [§8.6](#86-classic-dialogs)            |
+| Popups and menus        | 🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜ | 11/15   | 73 %  | [§8.4](#84-popups-and-menus)           |
+| Casting                 | 🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜ | 13/16   | 81 %  | [§7](#7-desktop-for-windows-what-is-done) + [§8.7](#87-casting) |
+| Languages               | 🟩🟩🟩🟩⬜⬜⬜⬜⬜⬜ | 4/9     | 44 %  | [§12](#12-languages)                   |
+| GitHub and community    | 🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜ | 6/18    | 33 %  | [§13.16](#1316-setup-checklist)        |
+
+**Contents**
+
+1. [Principles](#1-principles)
+2. [Programs and platforms](#2-programs-and-platforms)
+3. [Where we are](#3-where-we-are)
+4. [Roadmap sequence](#4-roadmap-sequence)
+5. [Design, frame by frame](#5-design-frame-by-frame)
+6. [Design tokens](#6-design-tokens)
+7. [Desktop for Windows: what is done](#7-desktop-for-windows-what-is-done)
+8. [Next release: 0.3.0](#8-next-release-030)
+9. [Other platforms](#9-other-platforms)
+10. [Other implementations of the design](#10-other-implementations-of-the-design)
+11. [Pixel-exact process](#11-pixel-exact-process)
+12. [Languages](#12-languages)
+13. [GitHub: one project, many repositories](#13-github-one-project-many-repositories)
+14. [Quality gates for every release](#14-quality-gates-for-every-release)
+15. [Risks](#15-risks)
+16. [Definition of done](#16-definition-of-done)
+17. [Decisions for the project owner](#17-decisions-for-the-project-owner)
 
 ---
 
@@ -20,365 +66,1199 @@ Last updated: 2026-10-23. Desktop version: 0.2.6 released, 0.2.7 in progress.
 
 1. **The design, pixel for pixel.** Every screen follows Juxtopposed's
    [VLC Redesign (Community)](https://www.figma.com/community/file/1691465999134370980) Figma file 1:1: sizes,
-   spacing, colours, fonts, icons, states. A screen is done when its capture matches the Figma frame (see
-   [section 10](#10-pixel-exact-process)), not when it "looks close".
-2. **The real VLC.** The same engine, codecs and formats as VLC. Only the interface changes; fixes to the engine
-   are kept small, documented, and offered upstream.
-3. **English first.** Every program starts in English, whatever the system language. The language can be
-   chosen in the installer and changed in the settings at any time ([section 11](#11-languages)).
-4. **Smooth on every machine.** No crash, no hang, no stutter, flat memory over long sessions, on old and new
-   PCs, every graphics card vendor (NVIDIA, AMD, Intel) and every supported OS version. Every release passes
-   the [quality gates](#13-quality-gates-for-every-release).
-5. **Credit and honesty.** The design credit (CC BY 4.0) is in every program, README, store page and release.
-   Every program says it is unofficial and not made by VideoLAN; the VLC name and cone are VideoLAN trademarks.
-6. **Open source.** Every binary has its source, build scripts and licenses published next to it.
+   spacing, colours, fonts, icons, states. A screen is done when its capture matches the frame (section 11).
+2. **The real VLC.** The same engine, codecs and formats. Only the interface changes; engine fixes stay small,
+   are listed in the [changelog](../CHANGELOG.md#differences-from-upstream-vlc) and offered upstream.
+3. **English first.** Every program starts in English; the language is chosen in the installer and in the settings.
+4. **Smooth on every machine.** No crash, hang or stutter, flat memory, on old and new PCs, every graphics vendor,
+   every supported OS version: every release passes the quality gates (section 14).
+5. **Users shape it.** Ideas, votes and reports on GitHub set the order of the work; every report gets an answer.
+   The program never sends anything by itself.
+6. **Credit and honesty.** The design credit (CC BY 4.0) is in every program, README, store page and release. Every
+   program says it is unofficial; the VLC name and cone are VideoLAN trademarks.
+7. **Open source.** Every binary has its source, build scripts and licenses next to it.
 
 ## 2. Programs and platforms
 
-| Program | Platforms | Code base | Status |
-|---|---|---|---|
-| **VLC Redesign for desktop** | Windows 10/11 x64 | VLC 4 + Qt 6/QML interface (this repository) | ✅ Released (0.2.6) |
-| | Windows 11 ARM64 | same | 📋 Planned (0.7) |
-| | Linux x86_64 (AppImage, Flatpak, .deb, .rpm) | same | 📋 Planned (0.5); built once before the Windows work |
-| | macOS 12+ (Apple Silicon and Intel) | same | 📋 Planned (0.6) |
-| **VLC Redesign for Android** | Android 8+ phones and tablets (Samsung Galaxy and others) | fork of VLC for Android (Kotlin, libVLC) | 💡 Research ([section 7](#7-android-phones-tablets-android-tv)) |
-| | Android TV / Google TV | same app, TV layout | 💡 Research |
-| **Casting to TVs** | Any DLNA TV (Samsung, LG, Sony…) and Chromecast | part of the desktop (and later Android) program | ✅ Works, being hardened on a real Samsung TV |
-| **VLC Redesign TV receiver** | Samsung Tizen TVs (2017+) | Tizen web app (the TV's own player) | 💡 Research ([section 8](#8-samsung-smart-tv-tizen)) |
-| VLC Redesign for iPhone / iPad / Apple TV | iOS, iPadOS, tvOS | fork of VLC for iOS | 💡 Later ([section 9](#9-iphone-ipad-apple-tv)) |
+| Program            | Platforms                                  | Code base                               | Status                      |
+|--------------------|--------------------------------------------|-----------------------------------------|-----------------------------|
+| Desktop            | Windows 10/11 x64                          | VLC 4 + Qt 6.8/QML (`vlc-redesign`)     | 🟢 0.2.6 · 🟡 0.3.0          |
+| Desktop            | Windows 11 ARM64                           | same                                    | 🔴 track                     |
+| Desktop            | Linux x86_64                               | same                                    | 🔴 track (built once before) |
+| Desktop            | macOS 12+ (Apple Silicon, Intel)           | same                                    | 🔴 track                     |
+| Android            | Android 8+ phones, tablets, Android TV     | fork of VLC for Android (Kotlin)        | ⚪ track                     |
+| Casting            | DLNA TVs (Samsung, LG, Sony…), Chromecast  | part of the desktop program             | 🟢 works on a real TV        |
+| TV receiver        | Samsung Tizen TVs (2017+)                  | Tizen web app                           | ⚪ track                     |
+| iPhone, iPad, TV   | iOS, iPadOS, tvOS                          | fork of VLC for iOS                     | ⚪ track                     |
 
-Legend: ✅ done · 🔨 in progress · 📋 planned · 💡 idea or research.
+The desktop program has version numbers; each other platform gets its own when its first build is published
+(section 13.4).
 
-Supported versions per platform, and why:
-
-| Platform | Minimum | Reason |
-|---|---|---|
-| Windows | Windows 10 1809, x64 | Qt 6.8 and VLC 4 requirements |
-| Linux | glibc 2.35 (Ubuntu 22.04, Debian 12, Fedora 36+) for the AppImage and .deb; any distribution with Flatpak | Qt 6.8 and the VLC 4 build image |
-| macOS | 12 Monterey | Qt 6.8 |
-| Android | 8.0 (API 26) | keeps the redesign's effects (blur, rounded clipping) cheap; VLC for Android itself supports older |
-| Samsung TV | Tizen 3.0 (2017 models, such as the UE55MU8000) | web apps with the AVPlay player |
+| Platform   | Minimum                                                    | Reason                                         |
+|------------|------------------------------------------------------------|------------------------------------------------|
+| Windows    | Windows 10 1809, x64                                       | Qt 6.8 and VLC 4 (an older Windows gets a message) |
+| Linux      | glibc 2.35 (Ubuntu 22.04, Debian 12, Fedora 36+); Flatpak   | Qt 6.8 and the VLC 4 build image               |
+| macOS      | 12 Monterey                                                | Qt 6.8                                         |
+| Android    | 8.0 (API 26)                                               | keeps blur and rounded clipping cheap          |
+| Samsung TV | Tizen 3.0 (2017 models, such as the UE55MU8000)             | web apps with the AVPlay player                |
 
 ## 3. Where we are
 
-### Desktop releases
-
-| Version | Date | Highlights |
-|---|---|---|
-| M0 to M3 | 2026-10-12 to 10-13 | Baseline build, first shell and player, library, playlists, subtitles, dialogs, settings |
-| 0.1.0 | 2026-10-20 | First public Windows release |
-| 0.2.0 to 0.2.6 | 2026-10-20 to 10-22 | Installer drawn like the app, updates from GitHub (delta, checksum-verified), ~75 fixes from a full audit, fullscreen, customize player, seek previews, wiki |
-| 0.2.7 | in progress | See below |
-
-### Done since 0.2.6 (not released yet)
-
-- **Sound:** 5.1/7.1 channels no longer jump between speakers (WASAPI reorder), every surround layout mixed
-  correctly to stereo, rear centre kept.
-- **Casting:** starts once (no double load), picture and sound together from the middle of a film, the TV gets
-  every film to its last picture, playlists and subtitle files work while casting, 4K converted four times faster
-  by the graphics card, half the memory, 50/60 fps films at 25/30 on the TV, TVs listed before the panel opens.
-- **Conversion:** the crash of every audio + video conversion fixed (also in VLC 4 itself), the end of the film
-  kept.
-- **Video effects:** 6 effects that crashed are fixed, 40 checked alone and in chains.
-- **Damaged files:** a file with broken timestamps no longer stops the playlist; 148 damaged copies of 35 formats
-  play without a crash or hang.
-- **Speed and memory:** opening a file from Explorer plays at once, no firewall prompt at start, quick first start
-  after installing, memory flat over long sessions (1,400 media changes in 25 minutes).
-- **Real Samsung TV (2026-10-23):** three problems found by testing on a Samsung UE55MU8000, fixed in the next
-  build and to be checked on the TV:
-  - pausing a cast for more than about 10 seconds made the TV stop with an error: a paused Samsung TV goes on
-    reading until it has about 5 seconds ahead, and gives up when nothing comes for 10 seconds. The stream now gets
-    a trickle of empty (null) packets while paused;
-  - a film sent as it is (no subtitles shown) was sent as a fragmented MP4, which the TV took for a 1-second file:
-    an MPEG-TS profile is now preferred;
-  - a TV that stops a film right after it began now gets it converted, instead of an error message.
-  - Also found: the TV rejects VLC's `PrepareForConnection` request because its arguments are not in the UPnP
-    order. It does no harm (VLC goes on without it), and when the request was accepted in a test the TV failed
-    after a pause, so it stays as it is for now.
-
-### Verified so far
-
-- Regression suite (playback, pause/seek, traces, Chromecast and DLNA with test devices) passes on every build.
-- Hardware: NVIDIA RTX 4090, AMD Radeon (integrated), no GPU (Windows Sandbox, 2 GB), weak CPU simulated.
-- Not yet: Intel graphics, older PCs, Windows 10 on real hardware, high-DPI multi-monitor setups, other TV brands.
-
-## 4. Design coverage (Figma)
-
-The Figma file has 57 design frames (103 frames with states and variants) and 45 components. Every frame group has
-real code behind it; the gaps are the ones a user notices first.
-
-| Figma frames | Status | Gap |
-|---|---|---|
-| Onboarding ×11 | ✅ | Drawn dark in every theme |
-| Player ×7 | ✅ | The compact library's Home lists recent media only |
-| Player - Music ×2 | ✅ | Resume card wording and missing time ("You've watched till 00:45:08 already") |
-| Player - customize ×9 | ✅ | Editing the music bar and the miniplayer not verified |
-| Player - hide UI | ✅ | |
-| Player - Light | 🔨 | Light theme holes: tracks/subtitles/audio popup, profiles list, onboarding, shortcut popups |
-| Add Subtitles to Playlist/Folder ×4 | ✅ | OpenSubtitles needs your own key |
-| Keyboard Shortcuts | ✅ | |
-| Open network stream | ✅ | |
-| new playlist | 🔨 | No custom thumbnail; an empty playlist can't be made |
-| Settings ×19 (13 pages) | 🔨 | 5 rows missing: *Additional command line options*, *Show controls in fullscreen*, *Show the playlist as a tree*, *Show cover art when playing audio*, *Show confirmation and error dialogs* |
-| HDR Options | 🔨 | HDR10+ and Dolby Vision always disabled |
-| Context menus (file, folder, playlist) | 🔨 | Styled native menus, not the design's cards |
-| Dialogs outside the Figma file | 📋 | Open Disc, Capture Device, Convert, Media Information, Bookmarks, Messages, advanced preferences still use the classic look |
-
-Pixel check: 2 frames have reference captures in the repository (player, shell); the other frames are checked by
-eye. The full frame-by-frame check is part of desktop 0.3 ([section 10](#10-pixel-exact-process)).
-
-## 5. Other implementations of the design
-
-[dsojevic/juxtopposed-vlc](https://github.com/dsojevic/juxtopposed-vlc) is another VLC 4 fork that implements the
-same design (one author, started 2026-10-13, 4.0.0-beta.4). It is ahead of us on:
-
-| Their feature | Worth adding | Where in our plan |
-|---|---|---|
-| Builds for Windows, macOS (arm64, Intel) and Linux from one GitHub Actions workflow, with launch tests of the packaged apps | Yes | 0.5, 0.6, CI |
-| 11 languages shipped, language change without restart | Yes | 0.4 |
-| Real blur behind floating panels (the design's 50 px blur) | Yes, carefully (touches video output) | 0.3 |
-| Classic dialogs restyled with one Qt style hook | Yes, quick win | 0.3 |
-| Redesigned Go to time, statistics, folder info, plugins list | Yes | 0.3 |
-| Geometry, overlay and advanced video filters in the redesigned panel | Yes | 0.3 |
-| Subtitle cues drawn on the seek bar | Nice to have | 0.4 |
-| ~85 automated QML and C++ tests | Yes | CI |
-
-We are ahead on: the installer, delta updates with rollback, casting (button, discovery, many fixes), Windows
-integration (Explorer, firewall, fast start), surround sound, more subtitle providers, weekly upstream merges.
-
-## 6. Desktop (Windows, Linux, macOS)
-
-One code base (VLC 4 + Qt 6.8 QML) for the three systems. Windows-only parts (installer, updater, firewall card,
-WinHTTP subtitle client, Direct3D paths) get an equivalent on each system or are hidden there.
-
-### 0.2.7: Windows fixes (next release)
-
-- Everything in [section 3](#done-since-026-not-released-yet), after the real-TV checks: pause 1 and 5 minutes,
-  seek, next file, subtitles, a film sent as it is.
-- Release notes, wiki pages for casting.
-
-### 0.3: the rest of the design
-
-- Light theme complete on every screen (the holes in [section 4](#4-design-coverage-figma)).
-- Classic dialogs restyled (Open Disc, Capture, Convert, Media Information, Bookmarks, Messages).
-- Context menus as the design's cards.
-- The 5 missing settings rows; new playlist with a thumbnail and empty playlists; resume card text and time.
-- Redesigned Go to time, statistics, plugins list; geometry/overlay/advanced video filters in the panel.
-- Blur behind floating panels.
-- Pixel check of all 103 frames, recorded in the wiki ([section 10](#10-pixel-exact-process)).
-
-### 0.4: languages and trust
-
-- Translation system, language in the installer and in the settings, without restart; right-to-left layouts
-  ([section 11](#11-languages)).
-- Code-signed Windows builds (no SmartScreen warning).
-- Automated tests in CI: launch, playback, QML warnings, pixel checks.
-
-### 0.5: Linux
-
-- Build in Docker (Ubuntu 22.04 base, Qt 6.8), packages: AppImage, Flatpak (Flathub), .deb, .rpm, .tar.gz.
-- X11 and Wayland; PipeWire/PulseAudio; VA-API and VDPAU decoding; Intel, AMD, NVIDIA.
-- Linux equivalents: updater (AppImage update information, Flatpak updates), file associations (.desktop),
-  casting firewall notes.
-- Tested on Ubuntu, Fedora, Debian, Arch (VMs and a real PC).
-
-### 0.6: macOS
-
-- Native build on Apple Silicon and Intel (GitHub-hosted runners), universal or two .dmg files.
-- Signed and notarized (needs an Apple Developer account, see [section 14](#14-decisions-to-make)).
-- macOS equivalents: menu bar, media keys, Now Playing, VideoToolbox decoding, Sparkle-style updates.
-
-### 0.7: Windows on ARM64
-
-- Build with the ARM64 VLC toolchain; tested on a Snapdragon PC or an ARM64 VM.
-
-### 1.0
-
-- Every Figma frame pixel-checked on Windows, Linux and macOS.
-- Rebased on the VLC 4.0 release when VideoLAN publishes it.
-- All quality gates green on every platform.
-
-## 7. Android (phones, tablets, Android TV)
-
-The desktop interface can't simply run on a phone: VLC's Qt interface is built for a mouse and a big window. The
-plan is a fork of [VLC for Android](https://code.videolan.org/videolan/vlc-android) (GPL, Kotlin, the same libVLC
-engine, used by millions), with its screens redrawn in the redesign's look. It runs on every Android phone,
-including Samsung Galaxy phones, and on Android TV.
-
-The Figma file has desktop frames only. A phone and a TV layout need frames of their own: made with the design's
-colours, fonts, icons and components, and ideally reviewed by Juxtopposed (see [section 14](#14-decisions-to-make)).
-
-| Version | Content |
-|---|---|
-| A0 | Build VLC for Android in Docker, reproduce its release, rename the package (`org.kuchisofts.vlcredesign`), English by default |
-| A1 | Design tokens (colours, accents, fonts, corner radii) and the player screen: control bar, seek bar with previews, volume, gestures |
-| A2 | Library, queue, playlists, settings in the redesign's look; light and dark themes, 9 accents |
-| A3 | Casting with the desktop's fixes (DLNA, Chromecast), subtitles |
-| A4 | Android TV / Google TV layout (remote control navigation) |
-| A5 | Release: APK and AAB on GitHub, then F-Droid; Google Play only if the name is accepted (see [section 14](#14-decisions-to-make)) |
-
-## 8. Samsung Smart TV (Tizen)
-
-Samsung TVs run Tizen, not Android. VLC has no Tizen version, and native (C/C++) apps on Samsung TVs are only for
-Samsung partners, so the VLC engine can't run on the TV itself. What can be done:
-
-1. **Cast from the PC (works today).** The desktop program sends the film to the TV (DLNA), converted when the TV
-   can't play it, with subtitles burned in. This is where the real-TV testing happens (2017 Samsung UE55MU8000).
-2. **A TV receiver app (research).** A Tizen web app in the redesign's look, which plays what the PC or phone sends
-   with the TV's own player (AVPlay), shows the redesign's on-screen controls, and is controlled from the remote and
-   from the desktop program.
-   - Installing it on a TV needs Tizen Studio, a Samsung certificate tied to the TV, and *Developer mode* turned on
-     with the TV's remote (Apps → 1 2 3 4 5 → the PC's address). Only you can do that step, at the TV. On the test
-     TV, Developer mode is already on, but set to the address 127.0.0.1: the PC's address has to be entered there.
-   - Publishing it in the Samsung store needs a Samsung seller account and a review.
-3. **A Samsung Galaxy phone** is Android: [section 7](#7-android-phones-tablets-android-tv).
-
-| Version | Content |
-|---|---|
-| T0 | Developer mode on the test TV, hello-world web app installed |
-| T1 | Receiver: plays a URL sent from the desktop program, the redesign's controls, remote keys |
-| T2 | The desktop program finds the receiver and uses it instead of DLNA (seek, subtitles as text, track choice) |
-| T3 | Store submission (if wanted) |
-
-## 9. iPhone, iPad, Apple TV
-
-Later, after Android. A fork of VLC for iOS (dual-licensed MPL/GPL), same approach as Android. Needs an Apple
-Developer account and App Store review, where the VLC name may not be accepted.
-
-## 10. Pixel-exact process
-
-How every screen is checked against the design, the same way on every platform:
-
-1. **Reference:** each Figma frame is captured 1:1 from the prototype view
-   (`scaling=min-zoom&hide-ui=1&show-proto-sidebar=0`), at 100 % and 200 % scale. The list of all frames and their
-   texts is in `.specs/features/redesign/reference/inventory.json`.
-2. **Capture:** the app shows the same state (same window size, media, theme, accent) and is captured at the same
-   scale. Test media and the library come from a fixed demo folder.
-3. **Compare:** a colour metric (the largest channel difference per pixel), not grey levels: grey hides colour
-   fringes. A frame passes when no pixel differs by more than a small tolerance, except anti-aliasing at edges,
-   which is listed.
-4. **Record:** each frame's result, both captures and the difference image go to the wiki's *Design check* page;
-   failures become issues.
-5. **Keep it:** the comparisons run in CI for every pull request, so a change can't break a screen silently.
-
-Text matching the design needs Inter with the same metrics (measured rules are in the code: distance-field text,
-no hinting, Figma's line-box formula).
-
-## 11. Languages
-
-- **English by default** on every platform, whatever the system language: a language is used only when the
-  user chose it.
-- **Installer:** asks for the language on the first page (English selected), and the app starts in the language
-  chosen there.
-- **Settings:** *Interface → Language* changes it at once, without restarting.
-- **First run:** the welcome can change it too.
-- **Translations:** every string goes through VLC's gettext catalogues; new strings are extracted for translators
-  (Weblate or Transifex). Shipped first: English, Hebrew; then the languages VLC already has.
-- **Right to left:** Hebrew and Arabic mirror the layout (control bar, sidebar, settings) as the design would,
-  checked screen by screen.
-- Android and the TV receiver follow the same rules (English default, language in settings).
-
-## 12. GitHub: repositories, releases, wiki
-
-### Repositories (by type)
-
-| Repository | Content |
-|---|---|
-| `KuchiSofts/vlc-redesign` | Desktop program (Windows, Linux, macOS): source, build scripts, installers, CI |
-| `KuchiSofts/vlc-redesign-android` | Android program (phones, tablets, TV) |
-| `KuchiSofts/vlc-redesign-tv` | Samsung TV receiver (Tizen web app) |
-| `KuchiSofts/vlc-redesign-site` | Website (GitHub Pages): downloads for every platform, screenshots, credits |
-
-(Or a GitHub organization holding the same repositories; see [section 14](#14-decisions-to-make).)
-
-### Releases
-
-- One release per program and version, tagged `vX.Y.Z` in its repository; release notes from the changelog, with
-  a screenshot or GIF of what is new.
-- Assets, named the same way everywhere:
-
-| Platform | Files |
-|---|---|
-| Windows | `vlc-redesign-X.Y.Z-win64-setup.exe` (installer), `vlc-redesign-X.Y.Z-win64.zip` (portable), delta updates, `SHA256SUMS.txt` |
-| Linux | `.AppImage`, `.flatpak` (and Flathub), `.deb`, `.rpm`, `.tar.gz` |
-| macOS | `vlc-redesign-X.Y.Z-macos-arm64.dmg`, `-x86_64.dmg` |
-| Android | `vlc-redesign-X.Y.Z-android-arm64.apk` (and armv7, x86_64), `.aab` |
-| Samsung TV | `vlc-redesign-tv-X.Y.Z.wgt` |
-
-- Every release: checksums, signed binaries where the platform allows, the source archive (GPL), third-party
-  licenses.
-- Windows also through winget; Linux through Flathub; Android through F-Droid.
-
-### README (each repository)
-
-1. Title, one-line description, download buttons per platform, a demo GIF.
-2. Design credit (Juxtopposed, CC BY 4.0) with the video.
-3. Unofficial notice (VideoLAN trademarks).
-4. Features with screenshots (dark, light, accents, music, casting, settings, customize).
-5. Download and install per platform; updates.
-6. Known limitations; build from source; contributing; credits; license.
-
-### Screenshots and GIFs to make (per program)
-
-- Player: video playing, seek bar preview, volume cone, hide UI, fullscreen.
-- Music: waveform, artwork.
-- Library: Home, folders, playlists, queue card.
-- Customize: drag and drop on the control bar, profiles.
-- Themes: dark, light, the 9 accents.
-- Settings: search, a few pages.
-- Casting: choosing a TV, the TV playing with subtitles.
-- Installer and update card.
-- Android and TV: the same set on a phone and on a TV.
-
-All made from the real programs with free demo media (no personal files), at the same window size, as PNG and as
-short GIFs with an MP4 next to each.
-
-### Wiki
-
-Home · Download and install (per platform) · First run · Player · Music · Library and playlists · Queue ·
-Subtitles · Casting to a TV (DLNA, Chromecast, Samsung notes) · Customize the interface · Themes and accents ·
-Settings (one page per section) · Keyboard shortcuts · Languages · Updates · Troubleshooting · Building from
-source (per platform) · Design check (frame by frame) · Differences from VLC · Release process · Credits.
-
-### Community files
-
-`CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, issue forms (bug, feature, design mismatch, translation),
-pull request template, labels per platform and area, a project board per program, Discussions for questions.
-
-## 13. Quality gates for every release
-
-| Gate | What |
-|---|---|
-| Build | Every platform builds in CI; the packaged app starts and plays (smoke test) |
-| Regression | Local playback, pause/seek, traces, Chromecast and DLNA with test devices |
-| Real devices | Cast to the real Samsung TV: start, pause (1 and 5 minutes), seek, next file, subtitles, end of film |
-| Formats | Sweep of every test file and container; 148 damaged files without crash or hang |
-| Effects | 40 video effects alone and in chains |
-| Conversion | Every muxer, audio + video, to the last picture |
-| Memory | 25-minute media-change soak and cast soak: flat after warm-up |
-| Hardware | NVIDIA, AMD, Intel graphics; no GPU; weak CPU; Windows 10 and 11; high DPI |
-| Clean PC | Install and first start on a clean Windows (Sandbox) |
-| Design | Pixel check of the frames the release touches |
-| Languages | English default; installer and settings language switch |
-
-## 14. Decisions to make
-
-These need your answer before the work they block:
-
-1. **GitHub layout:** separate repositories under KuchiSofts (as above), or a GitHub organization.
-2. **Code signing:** a Windows code-signing certificate (yearly cost) to remove the SmartScreen warning.
-3. **Apple Developer account** (yearly fee) for a notarized macOS app and any iOS work.
-4. **Google Play:** whether to try the store (the VLC name may be refused); F-Droid and GitHub need no account.
-5. **Samsung TV app:** turning on Developer mode on the TV (only at the TV), and whether to aim for the Samsung
-   store.
-6. **Phone and TV layouts:** ask Juxtopposed for phone/TV frames, or draw them ourselves from the design system
-   (credited, marked as derived).
-7. **Languages to ship first** after English and Hebrew.
-
-## 15. Next steps
-
-1. Check the new Windows build on the Samsung TV (pause, sent as it is, seek delay with the longer lead).
-2. Release 0.2.7 when you say so.
-3. Start 0.3 with the light theme holes and the classic dialogs.
-4. Set up the Linux build in CI (0.5 groundwork) and the pixel-check tool.
-5. Android A0: build VLC for Android in Docker.
+| Version | Date              | Highlights                                                                                  |
+|---------|-------------------|---------------------------------------------------------------------------------------------|
+| M0–M3   | 2026-10-12 to 13  | Linux build, first shell and player, library, playlists, subtitles, dialogs, settings (MrDouglax) |
+| 0.1.0   | 2026-10-20        | First Windows release: Docker build, text rendered like Figma, three deadlocks fixed         |
+| 0.2.0   | 2026-10-20        | Installer, updates from GitHub, About, about 80 audit fixes, VLC 4 merged, CI on every PR     |
+| 0.2.1–2 | 2026-10-20        | Fullscreen fixes, fullscreen button in the bar (#1), drops between two controls              |
+| 0.2.3   | 2026-10-20        | Installer drawn like the app, file associations, right-click entries, the wiki               |
+| 0.2.4   | 2026-10-22        | Small (delta) updates, setup no longer stuck (#2), pause → seek → play freeze fixed          |
+| 0.2.5   | 2026-10-22        | Seamless switching of the sound device (#3), English by default                              |
+| 0.2.6   | 2026-10-22        | Menu check marks, the Visualizer, right-click on music, *Open Network Stream* links (#4)      |
+| 0.3.0   | next              | Section 8                                                                                    |
+
+**Verified so far**
+
+- 🟢 Regression suite (playback, pause/seek, traces, Chromecast and DLNA test devices) on every build
+- 🟢 Hardware: NVIDIA RTX 4090, AMD Radeon (integrated), no GPU (Windows Sandbox, 2 GB), weak CPU simulated
+- 🟢 A real TV: Samsung UE55MU8000 (2017, Tizen): start, pause, as-is and converted casts
+- 🔴 Intel graphics, older PCs, Windows 10 on real hardware, high-DPI multi-monitor, other TV brands
+
+## 4. Roadmap sequence
+
+What comes first, and why. Each step starts when what it needs is done.
+
+| #  | Step                                                                  | Needs first                     | Why in this order                                                   | Status |
+|----|-----------------------------------------------------------------------|---------------------------------|---------------------------------------------------------------------|--------|
+| 1  | Finish the 0.3.0 work in progress (§8)                                | —                               | Half done: finishing costs less than switching                      | 🟡     |
+| 2  | Figma references exported, capture script, pixel check of 103 frames  | step 1 (screens stable)         | "Pixel for pixel" needs proof; capturing moving screens is wasted    | 🔴     |
+| 3  | Community setup: hub, Discussions, forms, labels, board, files        | decisions 1 and 9               | Feedback must land in the right place before the announcement       | 🔴     |
+| 4  | Release 0.3.0 and announce it                                         | quality gates, steps 1 and 3    | Users get the fixes; the community side is ready for them            | 🔴     |
+| 5  | `platforms.yml`, platform bar, website                                | step 3                          | In place before a second platform exists, so it shows everywhere     | 🔴     |
+| 6  | Design tokens exported (`design/`: tokens, icons, fonts)              | step 2 (values checked)         | Every other platform reads them; no copying errors                   | 🔴     |
+| 7  | Linux, then macOS, then Windows ARM64                                 | CI; decision 3 for macOS        | Same code base: the cheapest new platforms first                     | 🔴     |
+| 8  | Android                                                               | step 6, decision 6              | The largest new audience (phones and Android TV)                     | 🔴     |
+| 9  | Samsung TV receiver                                                   | step 6, decision 5              | Builds on the casting work and the real-TV testing                   | 🔴     |
+| 10 | iPhone, iPad, Apple TV                                                | step 8, decision 3              | Same approach as Android, reusing its screens                        | 🔴     |
+
+## 5. Design, frame by frame
+
+### 5.1 How to read the tables
+
+- **Source:** the Figma design file `fQSxoEi1zmnD5fQacw0qGs` (a copy of the community file, same node ids): 103
+  top-level nodes, 57 screens and 46 component groups, with their texts in
+  [`inventory.json`](../.specs/features/redesign/reference/inventory.json). A node opens with
+  `https://www.figma.com/design/fQSxoEi1zmnD5fQacw0qGs?node-id=<id, with - instead of :>`.
+- **Size:** the node's width × height in Figma pixels (1 px = 1 app pixel at 100 %).
+- **Implemented in:** file names under [`modules/gui/qt/`](../modules/gui/qt) (each name is unique there), checked
+  in the code on the date above.
+- **Status:** 🟢 every element and state of the frame is implemented · 🟡 implemented with differences (listed under
+  the table) · 🔴 not implemented.
+- **Pixel:** 🟢 only where a capture was compared with the frame (section 11). Many frames have measured details in
+  the code (baselines, sizes), but no full comparison yet.
+- Screens without texts in Figma are described from the coverage notes
+  ([`m3-coverage-player.md`](../.specs/features/redesign/m3-coverage-player.md)) and the code comments citing them.
+
+### 5.2 Summary
+
+| Area                  | Frames | 🟢  | 🟡  | 🔴  | Pixel 🟢 | Progress             |
+|-----------------------|--------|-----|-----|-----|----------|----------------------|
+| Onboarding            | 11     | 11  | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
+| Player                | 7      | 7   | 0   | 0   | 2        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
+| Player - Music        | 2      | 0   | 2   | 0   | 0        | 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 |
+| Player - customize    | 9      | 9   | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
+| Player - hide UI      | 1      | 1   | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
+| Player - Light        | 1      | 0   | 1   | 0   | 0        | 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 |
+| Add Subtitles         | 4      | 4   | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
+| Keyboard Shortcuts    | 1      | 1   | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
+| Open network stream   | 1      | 1   | 0   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
+| New playlist          | 1      | 0   | 1   | 0   | 0        | 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 |
+| Settings pages        | 19     | 15  | 4   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟨🟨🟨 |
+| **Screens**           | 57     | 49  | 8   | 0   | 2        | 🟩🟩🟩🟩🟩🟩🟩🟩🟨🟨 |
+| **Components**        | 46     | 38  | 8   | 0   | 0        | 🟩🟩🟩🟩🟩🟩🟩🟩🟨🟨 |
+| **All**               | 103    | 87  | 16  | 0   | 2        | 🟩🟩🟩🟩🟩🟩🟩🟩🟨🟨 |
+
+### 5.3 Onboarding (11)
+
+Shared: `OnboardingDialog.qml`, `OnboardingButton.qml`, `onboarding.cpp`.
+
+| Node       | Name       | Size (px)   | Status | Pixel | What it is                                                        | Implemented in    |
+|------------|------------|-------------|--------|-------|-------------------------------------------------------------------|-------------------|
+| 1899:3055  | Onboarding | 1090 × 759  | 🟢     | ⏳    | Step 1, Welcome: title, description, media folder (Browse), Next   | WelcomeStep.qml   |
+| 1902:3670  | Onboarding | 1090 × 759  | 🟢     | ⏳    | Step 2: Light / Dark / System over the small player, 9 accents     | ThemeStep.qml     |
+| 1902:4020  | Onboarding | 1090 × 759  | 🟢     | ⏳    | Step 2, state 2 of 9: another theme or accent, control bar sample  | ThemeStep.qml     |
+| 1902:4325  | Onboarding | 1090 × 759  | 🟢     | ⏳    | Step 2, state 3 of 9                                              | ThemeStep.qml     |
+| 1902:4634  | Onboarding | 1090 × 759  | 🟢     | ⏳    | Step 2, state 4 of 9                                              | ThemeStep.qml     |
+| 1902:4940  | Onboarding | 1090 × 759  | 🟢     | ⏳    | Step 2, state 5 of 9                                              | ThemeStep.qml     |
+| 1902:5245  | Onboarding | 1090 × 759  | 🟢     | ⏳    | Step 2, state 6 of 9                                              | ThemeStep.qml     |
+| 1902:5550  | Onboarding | 1090 × 759  | 🟢     | ⏳    | Step 2, state 7 of 9                                              | ThemeStep.qml     |
+| 1902:6160  | Onboarding | 1090 × 759  | 🟢     | ⏳    | Step 2, state 8 of 9                                              | ThemeStep.qml     |
+| 1902:6465  | Onboarding | 1090 × 759  | 🟢     | ⏳    | Step 2, state 9 of 9                                              | ThemeStep.qml     |
+| 1902:6770  | Onboarding | 1090 × 759  | 🟢     | ⏳    | Last step: 12 shortcuts with DM Mono keycaps, Back, Finish         | ShortcutsStep.qml |
+
+Notes: drawn light in the light theme (the dark frames unchanged). Beyond Figma: a subtitle languages step
+(`SubtitleLanguagesStep.qml`), keycaps showing the user's real shortcuts, *Cancel* when reopened.
+
+### 5.4 Player (7)
+
+| Node       | Name   | Size (px)   | Status | Pixel | What it is                                                         | Implemented in                                                    |
+|------------|--------|-------------|--------|-------|--------------------------------------------------------------------|-------------------------------------------------------------------|
+| 187:328    | Player | 1920 × 1080 | 🟢     | 🟢    | Player with the compact library open beside the video              | Player.qml, TopBar.qml, ControlBar.qml, CompactLibrary.qml        |
+| 247:445    | Player | 1920 × 1080 | 🟢     | ⏳    | Player alone: the video framed between the bars                    | Player.qml, TopBar.qml, ControlBar.qml                            |
+| 970:2703   | Player | 1920 × 1080 | 🟢     | 🟢    | Library shell: sidebar, address bar, a folder's grid, mini player  | MainDisplay.qml, SideNavigationPane.qml, LibraryHeader.qml, VideoGridDisplay.qml |
+| 970:3308   | Player | 1920 × 1080 | 🟢     | ⏳    | Library: video grid, the mini player playing                       | VideoGridDisplay.qml, VideoGridItem.qml, LibraryMiniPlayer.qml    |
+| 970:3792   | Player | 1920 × 1080 | 🟢     | ⏳    | Library: a folder as a list (rows 406 × 32, 10 apart)               | FolderDisplay.qml, LibraryMiniPlayer.qml                          |
+| 970:4028   | Player | 1920 × 1080 | 🟢     | ⏳    | Library: a folder as cards, the Videos icon filled                  | FolderDisplay.qml, SideNavigationPane.qml                         |
+| 6261:15078 | Player | 1920 × 1080 | 🟢     | ⏳    | Library Home: Continue Watching, Listen Again, Frequently Visited  | HomeDisplay.qml, HomePage.qml, LibraryMiniPlayer.qml              |
+
+Notes: when nothing plays, the video area shows the frames' pixel cat (`IdleScene.qml`): 17 × 17 blocks of
+24.0625 px, wall `#2D2B29`, floor gradient `#272523` → `#2D2B29` from y 785, the cat `#FFFFFF`, `#E0E0E0`,
+`#000000`, `#FFD6E4`, drawn as blocks (sharp at any size, no texture).
+
+### 5.5 Player - Music (2)
+
+| Node       | Name           | Size (px)   | Status | Pixel | What it is                                                     | Implemented in                                                       |
+|------------|----------------|-------------|--------|-------|----------------------------------------------------------------|----------------------------------------------------------------------|
+| 4767:23726 | Player - Music | 1920 × 1080 | 🟡     | ⏳    | Music: artwork (738 × 737) over its blur, waveform, resume card | MusicView.qml, AudioContent.qml, WaveformSlider.qml, ResumeDialog.qml |
+| 4778:25123 | Player - Music | 1920 × 1080 | 🟡     | ⏳    | The same with the queue                                        | as above, QueueCard.qml                                              |
+
+Differences: 🟡 the resume card says "Continue where you left off?" (*Continue*, *Dismiss*); Figma: "You've watched
+till 00:45:08 already." and *Continue Watching* (being fixed). 🔴 The bars are solid `#191919` at 95 %; Figma puts
+them over a 50 px background blur.
+
+### 5.6 Player - customize (9)
+
+Shared: `ToolbarEditorDialog.qml` (the 1048 × 655 panel), `ToolbarEditorButtonList.qml`, `EditorDNDView.qml`,
+`EditorDNDDelegate.qml`, `CustomizeDragArea.qml`, `DashedRect.qml`, `controlbar_profile_model.cpp`.
+
+| Node       | Name               | Size (px)   | Status | Pixel | What it is                                                  | Implemented in                                   |
+|------------|--------------------|-------------|--------|-------|-------------------------------------------------------------|--------------------------------------------------|
+| 2107:5604  | Player - customize | 1920 × 1080 | 🟢     | ⏳    | Customize Player open: profile picker, palette, Cancel, Save | shared                                           |
+| 2160:6137  | Player - customize | 1920 × 1080 | 🟢     | ⏳    | The timeline dragged to a row of its own                     | ControlBar.qml, ControlRepeater.qml              |
+| 2160:6564  | Player - customize | 1920 × 1080 | 🟢     | ⏳    | A control dragged from the palette onto the bar              | shared, ControlBar.qml                           |
+| 2160:7005  | Player - customize | 1920 × 1080 | 🟢     | ⏳    | Controls moved along the bar                                 | shared                                           |
+| 2160:7437  | Player - customize | 1920 × 1080 | 🟢     | ⏳    | Library toggle and ⋯ menu moved into the bar                  | LibraryButton.qml, MainMenuButton.qml            |
+| 2160:7869  | Player - customize | 1920 × 1080 | 🟢     | ⏳    | The edited bar, ready to save                                | shared                                           |
+| 6587:19923 | Player - customize | 1920 × 1080 | 🟢     | ⏳    | Another profile being edited                                 | shared, ProfilesMenu.qml                         |
+| 2160:8301  | Player - customize | 1920 × 1080 | 🟢     | ⏳    | The player after editing: the active profile's bar           | ControlBar.qml                                   |
+| 2160:8732  | Player - customize | 1920 × 1080 | 🟢     | ⏳    | Saved layout: file name in the bar, two rows, library left   | FileNameWidget.qml, MetadataText.qml, CompactLibrary.qml |
+
+Notes: editing the music bar and the mini player is implemented, not yet verified (§8.8).
+
+### 5.7 Player - hide UI (1)
+
+| Node       | Name             | Size (px)   | Status | Pixel | What it is                                             | Implemented in                          |
+|------------|------------------|-------------|--------|-------|--------------------------------------------------------|-----------------------------------------|
+| 3328:11554 | Player - hide UI | 1920 × 1080 | 🟢     | ⏳    | The video alone in its 10 px frame (Ctrl+\\, right-click) | HideUIAction.qml, MinimalView.qml       |
+
+### 5.8 Player - Light (1)
+
+| Node       | Name           | Size (px)   | Status | Pixel | What it is                                          | Implemented in                                     |
+|------------|----------------|-------------|--------|-------|-----------------------------------------------------|----------------------------------------------------|
+| 2425:13624 | Player - Light | 1920 × 1080 | 🟡     | ⏳    | The light theme, greys measured from this frame      | VLCStyle.qml (`redesign.color()`), redesign_icon_provider.cpp |
+
+Differences (the rest is fixed, §8.3): 🔴 Settings scroll bar handles invisible in light; 🔴 the warning colour
+`#E4A580` unreadable in light (`SettingsDialog.qml`, `SettingsExtensions.qml`, `SettingsSidebar.qml`); 🟡 the PNG
+check marks and a few icons stay orange with another accent (being fixed).
+
+### 5.9 Add Subtitles (4)
+
+Shared: `SubtitleAssociationsDialog.qml` (1048 × 800, `#0E0E0E` at 95 %), `SubtitleSourceControls.qml`,
+`RedesignDialog.qml`. OpenSubtitles needs the user's own API key.
+
+| Node       | Name                             | Size (px)   | Status | Pixel | What it is                                       | Implemented in          |
+|------------|----------------------------------|-------------|--------|-------|--------------------------------------------------|-------------------------|
+| 1911:7545  | Add Subtitles to Playlist/Folder | 1048 × 800  | 🟢     | ⏳    | To a folder, from the computer: a row per video   | shared                  |
+| 3336:11929 | Add Subtitles to Playlist/Folder | 1048 × 800  | 🟢     | ⏳    | The same, several subtitles per video             | shared                  |
+| 1919:8707  | Add Subtitles to Playlist/Folder | 1048 × 800  | 🟢     | ⏳    | One subtitle for the folder, origin dropdown      | shared                  |
+| 1919:9278  | Add Subtitles to Playlist/Folder | 1048 × 800  | 🟢     | ⏳    | To one file, from OpenSubtitles, English          | shared, OpenSubtitlesPanel.qml |
+
+### 5.10 Keyboard Shortcuts (1)
+
+| Node       | Name               | Size (px)   | Status | Pixel | What it is                                                 | Implemented in                                              |
+|------------|--------------------|-------------|--------|-------|------------------------------------------------------------|-------------------------------------------------------------|
+| 2437:14832 | Keyboard Shortcuts | 1048 × 800  | 🟢     | ⏳    | Search, Action / Hotkey / Global Hotkey by group, Save      | ShortcutsDialog.qml, ShortcutsCapturePopup.qml, shortcuts_model.cpp |
+
+### 5.11 Open network stream (1)
+
+| Node       | Name                | Size (px)   | Status | Pixel | What it is                                                 | Implemented in                               |
+|------------|---------------------|-------------|--------|-------|------------------------------------------------------------|----------------------------------------------|
+| 6216:13614 | Open network stream | 1048 × 631  | 🟢     | ⏳    | Network URL (several links), Playlist Name (optional), Save | NetworkStreamDialog.qml, RedesignTextArea.qml |
+
+### 5.12 New playlist (1)
+
+| Node       | Name         | Size (px)   | Status | Pixel | What it is                                                | Implemented in                                    |
+|------------|--------------|-------------|--------|-------|-----------------------------------------------------------|---------------------------------------------------|
+| 6259:14954 | new playlist | 713 × 589   | 🟡     | ⏳    | Title and thumbnail, Select Files (drop zone), Save        | PlaylistCreateDialog.qml, mlplaylistlistmodel.cpp |
+
+Differences (being added): 🟡 the thumbnail is the first file's, not a custom one; 🟡 Save needs a file (no empty
+playlist).
+
+### 5.13 Settings pages (19)
+
+Shared: `SettingsDialog.qml` (1048 × 865), `SettingsSidebar.qml`, `SettingsOptionList.qml`, `SettingsOptionRow.qml`,
+`SettingsPresentation.qml` (every label), `catalog.cpp` and `config_model.cpp` (options per page). Every frame's texts
+were checked against the code: all rows are there but five (§8.5). The second frame of a page has *Advanced Options*
+open. The design's typo "changew" reads "changes".
+
+| Node       | Name                   | Size (px)   | Status | Pixel | What it is                                                     | Implemented in                    |
+|------------|------------------------|-------------|--------|-------|----------------------------------------------------------------|-----------------------------------|
+| 999:5047   | Settings - global      | 1048 × 865  | 🟡     | ⏳    | Appearance (language, theme, accent), Startup, Diagnostics      | SettingsAppearance.qml, SettingsLanguageAction.qml, SettingsDeveloperMode.qml |
+| 3046:9282  | Settings - global      | 1048 × 865  | 🟡     | ⏳    | Advanced: warnings, command line, log, statistics, reset        | as above                          |
+| 3046:10057 | Settings - interface   | 1048 × 865  | 🟡     | ⏳    | Skin, Window, Playback Controls, Notifications, Playlist        | shared                            |
+| 3062:11379 | Settings - interface   | 1048 × 865  | 🟡     | ⏳    | Advanced: opacity, minimized, cover art, fullscreen controls     | shared                            |
+| 3062:11911 | Settings - privacy     | 1048 × 865  | 🟢     | ⏳    | History, Network (cover art, Last.fm)                           | SettingsPrivacyActions.qml, SettingsLastfm.qml |
+| 3062:12552 | Settings - playback    | 1048 × 865  | 🟢     | ⏳    | Startup, Tracks, Order, Seeking, Files & Discs                  | shared                            |
+| 3072:13408 | Settings - playback    | 1048 × 865  | 🟢     | ⏳    | Advanced: time-shift buffer                                     | shared                            |
+| 3073:14187 | Settings - video       | 1048 × 865  | 🟢     | ⏳    | Output, Picture, Deinterlacing, Framing, Snapshots              | SettingsPicture.qml               |
+| 3073:15375 | Settings - video       | 1048 × 865  | 🟢     | ⏳    | Advanced: aspect and crop ratios, pixel aspect ratio            | shared                            |
+| 3073:15879 | Settings - audio       | 1048 × 865  | 🟢     | ⏳    | Output, Volume, Loudness, Effects, Tracks, Visualization        | SettingsAudioOutput.qml, SettingsStartupVolume.qml, SettingsEqualizer.qml |
+| 3180:17398 | Settings - audio       | 1048 × 865  | 🟢     | ⏳    | Advanced: pass-through, Dolby Surround, resampling, media role  | as above                          |
+| 3180:17989 | Settings - subtitles   | 1048 × 865  | 🟢     | ⏳    | Languages, Loading, Appearance, Timing, On-Screen Messages      | SettingsSubtitleLanguages.qml     |
+| 6536:13908 | Settings - subtitles   | 1048 × 865  | 🟢     | ⏳    | Advanced: folders, ASS/SSA styling, shadow angle, direction     | as above                          |
+| 6536:14482 | Settings - controls    | 1048 × 865  | 🟢     | ⏳    | Shortcuts, skip amounts, mouse, web remote                      | SettingsActionRow.qml             |
+| 6542:15251 | Settings - library     | 1048 × 865  | 🟢     | ⏳    | Opening files, folders, metadata, media library                 | shared                            |
+| 6543:15649 | Settings - network     | 1048 × 865  | 🟢     | ⏳    | Buffering presets, proxy, certificates, ciphers                 | shared                            |
+| 6571:15958 | Settings - performance | 1048 × 865  | 🟢     | ⏳    | Decoding, smooth playback, priority, plugins, developer         | shared                            |
+| 6571:16429 | Settings - recording   | 1048 × 865  | 🟢     | ⏳    | Recording, Casting, Streaming                                   | shared                            |
+| 6575:17137 | Settings - extensions  | 1048 × 865  | 🟢     | ⏳    | Add-ons list (784 × 194), find more, add, remove, on startup    | SettingsExtensions.qml            |
+
+Differences (being added): 🟡 Global: *Show confirmation and error dialogs*, *Additional command line options*;
+🟡 Interface: *Show controls in fullscreen*, *Show the playlist as a tree*, *Show cover art in the window when playing
+audio*.
+
+### 5.14 Components (46)
+
+**Icons and buttons**
+
+| Node       | Name         | Size (px)  | Status | Pixel | What it is                                     | Implemented in                               |
+|------------|--------------|------------|--------|-------|------------------------------------------------|----------------------------------------------|
+| 42:356     | Icon         | 548 × 812  | 🟢     | ⏳    | The icon set: 96 names with their states        | pixmaps/redesign/ (icons, duo), redesign_icon_provider.cpp |
+| 177:98     | Icon Wrapper | 72 × 122   | 🟢     | ⏳    | Icon button: default, hover                     | RedesignIconButton.qml                       |
+| 500:3063   | Button       | 400 × 140  | 🟢     | ⏳    | Dialog button: neutral, accent                  | RedesignButton.qml, SettingsButton.qml       |
+| 848:1712   | play         | 94 × 116   | 🟢     | ⏳    | Play, pause                                     | PlayButton.qml                               |
+| 536:1014   | Toggle       | 120 × 194  | 🟢     | ⏳    | ON / OFF                                        | CheckButton.qml, SettingsToggle.qml          |
+
+**Player controls**
+
+| Node       | Name         | Size (px)      | Status | Pixel | What it is                                            | Implemented in                                  |
+|------------|--------------|----------------|--------|-------|-------------------------------------------------------|-------------------------------------------------|
+| 491:1780   | Controls     | 1960 × 11139   | 🟢     | ⏳    | Control bar and its 15 panel states (queue, tracks…)  | ControlBar.qml, QueueCard.qml, TracksMenu.qml, SubtitleTracksPanel.qml |
+| 244:184    | volume       | 130 × 646      | 🟢     | ⏳    | Cone volume, 13 states from 0 to 200 %                | VolumeWidget.qml                                |
+| 2245:9805  | audio value  | 121 × 37       | 🟢     | ⏳    | The value shown while the volume changes               | VolumeWidget.qml                                |
+| 1904:7238  | Current Time | 114 × 164      | 🟢     | ⏳    | Elapsed time: default, hover, click                    | ControlBar.qml                                  |
+| 1905:7312  | Duration     | 114 × 164      | 🟢     | ⏳    | Length: default, click (remaining time)                | ControlBar.qml                                  |
+| 2151:9673  | thumbnail    | 272 × 189      | 🟢     | ⏳    | Seek bar frame preview with its time                   | SeekFramePreview.qml                            |
+| 970:3091   | Miniplayer   | 431 × 2816.375 | 🟢     | ⏳    | Library mini player, 5 states                          | LibraryMiniPlayer.qml, MiniPlayerQueue.qml      |
+
+**Library**
+
+| Node       | Name            | Size (px)   | Status | Pixel | What it is                                          | Implemented in                               |
+|------------|-----------------|-------------|--------|-------|-----------------------------------------------------|----------------------------------------------|
+| 848:1996   | sidebar         | 4492 × 1028 | 🟡     | ⏳    | Sections column, 10 states                          | SideNavigationPane.qml, CompactLibrary.qml   |
+| 856:2215   | Sorting Options | 265 × 776   | 🟢     | ⏳    | Sort menu                                           | LibraryHeader.qml, RedesignOptionItem.qml    |
+| 858:3290   | View Options    | 265 × 104   | 🟢     | ⏳    | Grid or list                                        | LibraryHeader.qml, CompactLibrary.qml        |
+| 2404:9167  | media           | 377 × 228   | 🟢     | ⏳    | Video card: watched, unwatched, hover of each       | VideoGridItem.qml                            |
+| 2459:9352  | playlist        | 377 × 228   | 🟢     | ⏳    | Playlist card: unwatched, hover                     | PlaylistGridDisplay.qml, VideoGridItem.qml   |
+
+Differences: 🔴 848:1996: the compact library's Home lists the recent media only, not the rows of the library's Home.
+
+**Menus**
+
+| Node       | Name                  | Size (px) | Status | Pixel | What it is                                       | Implemented in                                   |
+|------------|-----------------------|-----------|--------|-------|--------------------------------------------------|--------------------------------------------------|
+| 6062:13354 | menu                  | 375 × 585 | 🟢     | ⏳    | The ⋯ main menu, with shortcuts                   | MainMenu.qml, RedesignMenu.qml, RedesignMenuItem.qml |
+| 6648:20666 | Profiles              | 651 × 633 | 🟢     | ⏳    | Profile submenu: Movies, Shows, Music, Work, New  | MainMenu.qml, ProfilesMenu.qml, defaults.cpp     |
+| 6065:13616 | right-click menu      | 292 × 683 | 🟢     | ⏳    | Player right-click menu (Qt menu drawn to frame)  | menus.cpp, redesign_menu_style.cpp               |
+| 2107:5903  | context menu          | 265 × 296 | 🟡     | ⏳    | Library item menu                                 | MLContextMenu.qml, NativeMenu.qml                |
+| 2139:8935  | folder context menu   | 265 × 296 | 🟡     | ⏳    | Folder menu                                       | FolderDisplay.qml                                |
+| 2404:13340 | file context menu     | 265 × 584 | 🟡     | ⏳    | File menu                                         | MLContextMenu.qml, FolderDisplay.qml             |
+| 2459:9389  | playlist context menu | 265 × 392 | 🟡     | ⏳    | Playlist menu                                     | MLContextMenu.qml                                |
+| 2107:5935  | option                | 301 × 292 | 🟢     | ⏳    | Menu row: default, hover, selected                | RedesignOptionItem.qml, RedesignMenuItem.qml     |
+
+Differences: 🔴 the four context menus are styled native menus, not the design's cards.
+
+**Add Subtitles parts**
+
+| Node       | Name              | Size (px) | Status | Pixel | What it is                                      | Implemented in                                 |
+|------------|-------------------|-----------|--------|-------|-------------------------------------------------|------------------------------------------------|
+| 1915:8397  | subtitle multiple | 519 × 239 | 🟢     | ⏳    | A video with several subtitles: default, hover   | SubtitleAssociationsDialog.qml                 |
+| 1919:9121  | subtitle one      | 519 × 239 | 🟢     | ⏳    | A video with one subtitle: default, selected     | SubtitleAssociationsDialog.qml                 |
+| 1959:5325  | target            | 240 × 520 | 🟢     | ⏳    | To this folder / file, and its dropdown          | SubtitleAssociationsDialog.qml                 |
+| 1963:5465  | origin            | 240 × 525 | 🟢     | ⏳    | From the computer / OpenSubtitles, dropdown      | SubtitleSourceControls.qml, OpenSubtitlesPanel.qml |
+
+**Settings controls**
+
+| Node       | Name             | Size (px) | Status | Pixel | What it is                                        | Implemented in                                 |
+|------------|------------------|-----------|--------|-------|---------------------------------------------------|------------------------------------------------|
+| 3021:9835  | setting category | 228 × 140 | 🟢     | ⏳    | Sidebar item: selected or not                      | SettingsSidebar.qml                            |
+| 2372:8300  | Dropdown         | 406 × 369 | 🟢     | ⏳    | Dropdown: default, open                            | SettingsDropdown.qml, ComboBoxExt.qml          |
+| 804:1208   | Values           | 253 × 404 | 🟢     | ⏳    | Segmented choice of 2 or 3 values                  | SettingsSegmented.qml                          |
+| 3176:16556 | Values           | 360 × 216 | 🟢     | ⏳    | Vertical values (startup volume)                   | SettingsStartupVolume.qml                      |
+| 3178:16769 | EQ               | 824 × 628 | 🟢     | ⏳    | Inline equalizer: closed, open                     | SettingsEqualizerPanel.qml, SettingsEqualizer.qml |
+| 2372:8487  | EQ presets       | 406 × 460 | 🟢     | ⏳    | Equalizer preset dropdown                          | SettingsEqualizer.qml, EqualizerPanel.qml      |
+| 6456:13892 | sub filename     | 406 × 422 | 🟢     | ⏳    | Subtitle file name matching dropdown               | SettingsDropdown.qml                           |
+| 2372:8834  | Setting Preset   | 406 × 412 | 🟡     | ⏳    | A preset dropdown: default, open                   | SettingsDropdown.qml                           |
+| 2372:8639  | Audio Visualizer | 406 × 369 | 🟡     | ⏳    | Visualizer choice: default, open                   | SettingsDropdown.qml, AudioVisualizationDialog.qml |
+| 2372:8733  | HDR Options      | 406 × 422 | 🟡     | ⏳    | Auto, Off, HDR10, HDR10+, Dolby Vision, HLG         | HdrOutputDialog.qml, hdr_output.cpp, HDRButton.qml |
+
+Differences: 🔴 2372:8834 and 2372:8639 not compared with their frames yet (the player's visualizer choice is a
+400 × 400 popup). 🔴 2372:8733: HDR10+ and Dolby Vision always disabled (the renderer exposes no value for them);
+a 400 × 445 popup.
+
+**Effects panels**
+
+| Node       | Name                         | Size (px)  | Status | Pixel | What it is                     | Implemented in                                         |
+|------------|------------------------------|------------|--------|-------|--------------------------------|--------------------------------------------------------|
+| 536:1513   | Audio - Compressor Settings  | 400 × 821  | 🟢     | ⏳    | Collapsed, expanded            | EffectsDialog.qml, FilterPanel.qml, SettingsInlineEffects.qml |
+| 6114:13610 | Audio - Equalizer            | 400 × 1623 | 🟢     | ⏳    | Preamp and 10 bands            | EqualizerPanel.qml, SettingsEqualizerPanel.qml         |
+| 536:1703   | Audio - Spatializer Settings | 400 × 821  | 🟢     | ⏳    | Collapsed, expanded            | EffectsDialog.qml, FilterPanel.qml                     |
+| 612:1223   | Audio - Stereo Widener       | 400 × 821  | 🟢     | ⏳    | Collapsed, expanded            | EffectsDialog.qml, FilterPanel.qml                     |
+| 536:1855   | Video - Essential            | 400 × 821  | 🟢     | ⏳    | Collapsed, expanded            | VideoEffectsPanel.qml, VideoFilterSection.qml          |
+| 543:990    | Video - Crop                 | 400 × 821  | 🟢     | ⏳    | Collapsed, expanded            | CropPanel.qml, CropInput.qml                           |
+| 614:1430   | Video - Colors               | 400 × 888  | 🟢     | ⏳    | Collapsed, expanded            | VideoEffectsPanel.qml, VideoFilterSection.qml          |
+
+### 5.15 Screens outside the Figma file
+
+| Screen                                                          | Implemented in                          | Status |
+|-----------------------------------------------------------------|-----------------------------------------|--------|
+| About: version, update check, design credit                     | RedesignAboutDialog.qml                 | 🟢     |
+| Update card: Update now, Restart now, Later                     | RedesignUpdateBanner.qml, UpdatePane.qml | 🟢     |
+| Cast panel: TVs, firewall card                                  | CastButton.qml                          | 🟢     |
+| Sleep timer, subtitle series presets                            | SleepTimerMenu.qml, SubtitleSeriesPreset.qml | 🟢 |
+| Idle player: the pixel cat                                      | IdleScene.qml                           | 🟢     |
+| Installer: Welcome, Options, installing, Done                   | `extras/juxtopposed/installer/`         | 🟢     |
+| Classic dialogs (Open Disc, Convert, Media Information…)         | classic Qt widgets                      | 🟡 §8.6 |
+
+### 5.16 Open differences
+
+| #  | Difference                                                         | Frames                                   | Status |
+|----|--------------------------------------------------------------------|------------------------------------------|--------|
+| 1  | Light: settings scroll handles invisible, `#E4A580` unreadable      | 2425:13624                               | 🔴     |
+| 2  | Accent: PNG check marks and a few icons stay orange                | 2425:13624, every accent but orange      | 🟡     |
+| 3  | Five settings rows missing                                         | 999:5047, 3046:9282, 3046:10057, 3062:11379 | 🟡  |
+| 4  | New playlist: no custom thumbnail, no empty playlist               | 6259:14954                               | 🟡     |
+| 5  | Resume card: wording and watched time                              | 4767:23726, 4778:25123                   | 🟡     |
+| 6  | Classic dialogs in the classic look                                | outside the file                         | 🟡     |
+| 7  | Library context menus are native menus, not cards                  | 2107:5903, 2139:8935, 2404:13340, 2459:9389 | 🔴  |
+| 8  | The compact library's Home lists recent media only                 | 848:1996                                 | 🔴     |
+| 9  | HDR10+ and Dolby Vision always disabled                            | 2372:8733                                | 🔴     |
+| 10 | No background blur: panels solid at 95 % (the music backdrop is blurred) | every floating panel               | 🔴     |
+| 11 | Not compared yet: Setting Preset, Audio Visualizer                 | 2372:8834, 2372:8639                     | 🔴     |
+
+## 6. Design tokens
+
+The values the app uses at 100 % (1 px = 1 Figma px; `MainCtx.dp()` scales them). Source:
+`modules/gui/qt/style/VLCStyle.qml` (object `redesign`) and the components named.
+
+### Colours
+
+The light value is what `VLCStyle.redesign.color()` returns for the dark one (measured from *Player - Light*).
+
+| Figma style           | Dark      | Light     | In the app                                                    |
+|-----------------------|-----------|-----------|---------------------------------------------------------------|
+| Dark/BG/B1            | `#0E0E0E` | `#C2C2C1` | `windowBackground`; Settings, dialogs, compact library at 95 % |
+| Dark/BG/B2            | `#090909` | `#DEDEDE` | `seekBackground`; wells; dialog title bars; settings header    |
+| Dark/BG/A1            | `#222222` | `#9C9C9B` | `controlHoverBackground`                                       |
+| Dark/BG/A2            | `#1F1F1F` | —         | Figma only                                                     |
+| Dark/BG/A3            | `#1B1B1B` | `#ABABAA` | `playerControlBackground`, `playerTopbarBackground`, buttons   |
+| Dark/BG/A4            | `#191919` | `#ABABAA` | `sidebarBackground`, `controlBackground`; menus at 95 %        |
+| Dark/BG/A5            | `#151515` | `#B5B5B4` | hovered rows                                                   |
+| Dark/BG/Accent Bright | `#371F06` | tinted    | `accentBackground` (0.26 × accent); light: `#DEDEDE` + accent 35 % |
+| Dark/Accent/Main      | `#D37918` | same      | `accent`                                                       |
+| Dark/Accent/DIm       | `#AB6314` | same      | `accentDim` (0.81 × accent)                                    |
+| Dark/Accent/Logo      | `#D37918` | same      | `logoColor` (the cone)                                         |
+| Dark/FG/1             | `#EAEAEA` | `#2E2E2E` | `textPrimary`                                                  |
+| Dark/FG/2             | `#C6C6C6` | `#2E2E2E` | settings section titles                                        |
+| Dark/FG/A1            | `#969696` | `#4D4D4D` | `textSecondary`                                                |
+| Dark/FG/A2            | `#8F8F8F` | `#2E2E2E` | `textMuted`: menu labels, icons                                |
+| Dark/FG/A3            | `#6B6B6B` | `#6B6B6B` | menu shortcuts, dimmed items                                   |
+| Dark/FG/A4            | `#404040` | `#929291` | `textDisabled`, placeholders                                   |
+| Dark/FG/B1            | `#161616` | —         | Figma only                                                     |
+| Dark/Divider/Dim      | `#222222` | `#9C9C9B` | `separator`                                                    |
+| Dark/Divider/Bright   | `#373737` | `#8E8E8D` | `border`                                                       |
+| bg blur               | blur 50   | —         | 🔴 not drawn: solid panels at 95 %                              |
+| bg blur + shadow      | + shadow  | —         | 🟢 shadow 0 8, blur 15, `#000000` 46 % · 🔴 blur                 |
+
+### Accents
+
+`VLCStyle.redesign.accentChoices`, in the onboarding's order. Dim (0.81 ×) and Bright (0.26 ×) are computed, except
+the default's (the design's values); rounding may change a channel by 1.
+
+| #  | Accent             | Dim       | Bright    | Bright (light) |
+|----|--------------------|-----------|-----------|----------------|
+| 1  | `#D37918` orange   | `#AB6314` | `#371F06` | `#DABB99`      |
+| 2  | `#E15033` red      | `#B64129` | `#3B150D` | `#DFACA2`      |
+| 3  | `#C49D24` yellow   | `#9F7F1D` | `#332909` | `#D5C79D`      |
+| 4  | `#18A235` green    | `#13832B` | `#062A0E` | `#99C9A3`      |
+| 5  | `#18AAD3` cyan     | `#138AAB` | `#062C37` | `#99CCDA`      |
+| 6  | `#185DD4` blue     | `#134BAC` | `#061837` | `#99B1DB`      |
+| 7  | `#8E41FF` purple   | `#7335CF` | `#251142` | `#C2A7EA`      |
+| 8  | `#F051B5` pink     | `#C24293` | `#3E152F` | `#E4ADD0`      |
+| 9  | `#AFAFAF` grey     | `#8E8E8E` | `#2E2E2E` | `#CECECE`      |
+
+### Typography
+
+Inter 3.19 (variable) with every advance one unit wider (Qt truncates advances to 1/64 px), distance-field
+rendering, no hinting, greyscale antialiasing. A line is 1.2109 em (ascender 0.96875, descender 0.2412) centred in a
+box of whole pixels (17 px for 14 px text), placed with `VLCStyle.redesign.textBaseline()`. Keycaps: DM Mono.
+
+| Use                            | Font                  | Size (px)            | Line       |
+|--------------------------------|-----------------------|----------------------|------------|
+| Interface text, QML menus      | Inter Regular         | 14 (`fontNormal`)    | box 17     |
+| Buttons                        | Inter SemiBold        | 14                   | box 17     |
+| Slider scales, small labels    | Inter Regular         | 12 (`fontSmall`)     |            |
+| Player control texts           | Inter Regular         | 15 (`fontControl`)   |            |
+| Dialog titles                  | Inter                 | 16                   | 175 %      |
+| Settings section titles        | Inter, `#C6C6C6`      | 16                   | 19         |
+| Widget menus (right-click)     | Inter                 | 16                   |            |
+| Music title                    | Inter                 | 24                   | box 29     |
+| Onboarding titles / texts      | Inter Light           | 24 / 16              | 175 % / —  |
+| Keycaps                        | DM Mono Regular       |                      | 1.302 em   |
+
+### Sizes and spacing (px)
+
+| Element              | Values                                                                       | Source                      |
+|----------------------|------------------------------------------------------------------------------|-----------------------------|
+| Top bar              | 40 high, padding 6; icons in 28 × 28 boxes, 10 apart; cone in 38 × 28        | `topbarHeight`, TopBar.qml  |
+| Control bar          | rows 54; controls 28, centred; 20 from the sides; gaps 20 and 8              | `controlHeight` and others  |
+| Play button          | 54 × 28 (a 48 pill while customizing)                                        | `playWidth`, PlayButton.qml |
+| Seek bar             | 28 high, handle 8, inset 2                                                   | `seekHeight`, `seekHandleWidth` |
+| Volume · time        | 88 × 28 · 76 wide                                                            | `volumeWidth`, `timeWidth`  |
+| Video frame          | 10 on the sides, 1 under the top bar, corners 9; none in fullscreen          | Player.qml                  |
+| Library sidebar      | 217 wide; rows 32 + gap 14 (46); padding 12 / 16                             | `sidebarWidth`              |
+| Compact library      | sections column 50 + panel 377                                               | CompactLibrary.qml          |
+| Queue card           | 400 wide, header 50                                                          | QueueCard.qml               |
+| Library header       | padding 20, row 34                                                           | LibraryHeader.qml           |
+| Home                 | sections padded 20, cards 20 around, 17 between; folder cards `#1E1E1E`      | HomePage.qml                |
+| Menus                | 265 wide (⋯ 375, right-click 292), padding 4, rows 48 (padding 2 / 14)       | RedesignMenu.qml            |
+| Dialogs              | title bar padding 9, title 32; content 22 / 20, gap 20; footer 72, buttons 100 × 32 | RedesignDialog.qml   |
+| Text input           | one line 37 (row 41), several 194; padding 8 / 18 / 8 / 12; 2 border inside  | RedesignTextArea.qml        |
+| Settings window      | header 50; sidebar 200 in an 8 margin (titles 33, items 40); page 24 / 20     | SettingsDialog.qml          |
+| Settings rows        | 42 toggle, 46 dropdown or field, 55–57 slider                                | SettingsOptionRow.qml       |
+| Toggle               | 68 × 32 well, 33 × 26 label, 26 × 26 square                                  | CheckButton.qml             |
+| Dropdown · segmented | 320 × 36 well, 2 padding, option 316 × 32 · options 32, gap 2                | SettingsDropdown.qml        |
+| Slider               | track 320 × 16, fill 12, handle 8 × 24, labels 12; 57 with labels            | SettingsSlider.qml          |
+| Text field · colour  | 36 high, 2 border, text 12 in · 320 × 32, swatch 22 × 22                     | SettingsTextField.qml       |
+| Mini player          | padding 8, video 375 × 210.94                                                | LibraryMiniPlayer.qml       |
+| Seek preview         | frame 224 wide, height from the video                                        | SeekFramePreview.qml        |
+| Music cover          | 738 × 737 at 1920 × 1080; glow `#FFFFFF` 3 %, blur 90.5, spread 64           | AudioContent.qml            |
+| Shadows              | menus, dialogs: 0 8, blur 15, 46 % · mini player: 0 0, blur 11.8, 38 %       | RedesignMenu.qml            |
+
+### Corner radii, icon sizes, windows (px)
+
+| Radius | Used for                                                       |
+|--------|----------------------------------------------------------------|
+| 2      | Advanced Options bar, inline equalizer panel, colour swatch    |
+| 3      | toggle label and square                                        |
+| 4      | grid covers, small inner fills                                 |
+| 6      | controls: buttons, fields, wells, menu rows, sidebar, queue card |
+| 9      | the video frame's corners                                      |
+| 10     | menus, resume card, seek preview, Sorting Options              |
+| 12     | Home folder cards, onboarding theme swatches                   |
+| 14     | dialogs, Settings, Customize panel, mini player                |
+| 23     | the ring of the chosen theme (onboarding)                      |
+
+| Icon size | Used for                                                              |
+|-----------|-----------------------------------------------------------------------|
+| 24        | standard glyph (`iconSize`): menus, chevrons, settings sidebar         |
+| 28 × 28   | top bar and control bar boxes                                         |
+| 32 × 32   | dialog close (around a 12 px cross), settings sidebar box, "add" icon  |
+| 22        | the play triangle (between paddings of 17 and 15)                     |
+
+| Window                              | Size                                                       |
+|-------------------------------------|------------------------------------------------------------|
+| Design frames                       | 1920 × 1080                                                |
+| Main window, first start            | 1280 × 720 (at most 80 % of the screen), centred           |
+| Minimum width · layout steps        | 500 · small up to 600, medium 1000                         |
+| Settings                            | 1048 × 865                                                 |
+| Add Subtitles, Keyboard Shortcuts   | 1048 × 800 (content 632)                                   |
+| Open network stream                 | 1048 × 631 (content 509)                                   |
+| New playlist                        | 713 × 589                                                  |
+| Onboarding                          | 1090 × 759                                                 |
+| Customize Player panel              | 1048 × 655, 23 above the middle                            |
+| Visualizer · HDR popups             | 400 × 400 · 400 × 445                                      |
+
+## 7. Desktop for Windows: what is done
+
+Shipped in 0.1.0 to 0.2.6 ([changelog](../CHANGELOG.md)). Work since 0.2.6 is in section 8.
+
+**Player**
+
+- 🟢 Video framed between the bars, rounded corners; no frame in fullscreen; bars auto-hide in fullscreen
+- 🟢 Redesigned top bar; Windows 11 snap layouts; maximize shows a restore icon
+- 🟢 Skip ±15 s (±10 s buttons optional); times with hours; a click shows the remaining time
+- 🟢 Cone volume up to 200 %; startup volume
+- 🟢 Frame previews on the seek bar, decoded ahead and kept (48 MB at most, local files)
+- 🟢 Waveform seek bar for music (local, up to 1 GB and 8 minutes); waveform visualisation
+- 🟢 Music view: artwork, blurred backdrop, lyrics; Visualizer button; right-click on music
+- 🟢 Queue card: Queue, Bookmarks, Chapters; bookmarks added and removed in place
+- 🟢 Compact library over the video: sections, breadcrumb, search, sort, progress, play counts
+- 🟢 Tracks panel: subtitles by language, external tracks, sync timeline, series presets, *None* video track
+- 🟢 Picture-in-picture, mini player with queue, sleep timer, A-B loop, speed, record, snapshot
+- 🟢 Hide UI (Ctrl+\\); fullscreen from any view (F, F11, Escape, double-click); fullscreen button in the bar
+- 🟢 Right-click and ⋯ menus redrawn; classic menus with two-tone icons
+- 🟢 Resume card (or resume always / never); HDR output: Auto, Off, HDR10, HLG (libplacebo)
+
+**Library**
+
+- 🟢 Home: Continue Watching, Listen Again, Frequently Visited Folders
+- 🟢 Folder browser with breadcrumbs; network folders listed in the background
+- 🟢 Recent and Playlists pages; grouping by name or folder; back and forward
+- 🟢 Playlists: create, favourite, shuffle play, export
+- 🟢 Video cards: file names, watched dimmed, progress as an accent line
+
+**Customize and themes**
+
+- 🟢 Drag and drop on the player: palette, drops between controls, timeline on its own row
+- 🟢 Profiles Default, Movies, Shows, Music, Work; New, Rename, Clone, Delete
+- 🟢 About 20 new control bar buttons and widgets (±10 s, PiP, file name, frame rate, HDR, zoom…)
+- 🟢 Dark, Light, System themes; 9 accents
+
+**Settings**
+
+- 🟢 One window, 13 sections, search (labels and shortcuts), saved on close, *Advanced Options*
+- 🟢 The design's controls, all usable with the keyboard
+- 🟢 Many more VLC options; developer mode with *All VLC options*; restart hints; errors shown
+- 🟢 Rescan plugins, open the configuration folder, reset all
+- 🟢 Shortcuts editor: several keys per action, capture, reset
+
+**Subtitles**
+
+- 🟢 Choices remembered per file and per series; files next to the video load by themselves
+- 🟢 Association dialog for a file, folder or playlist; external audio tracks
+- 🟢 OpenSubtitles with the user's key; safe archives (16 MB, subtitles only); cache of 500 media
+
+**Casting**
+
+- 🟢 Cast button, DLNA and Chromecast discovery
+- 🟢 The firewall asked only when needed, never twice
+- 🟢 Conversion when the TV can't play a file, subtitles burned in
+- 🟢 Back from the TV: clean picture, playback goes on where the TV was
+
+**Sound**
+
+- 🟢 Seamless switching of the default device while playing (#3)
+- 🟢 200 ms WASAPI buffer: no break-up on a busy PC
+
+**Installer and updates**
+
+- 🟢 Installer drawn like the app (English, Hebrew); per user, or for everyone
+- 🟢 File associations (about 130 formats) without taking over the user's choices; Explorer entries
+- 🟢 Uninstall gives every file type back to the app it had before
+- 🟢 Daily update check; small updates (binary deltas), SHA-256 checked, rolled back on failure
+- 🟢 *Restart now* reopens the media where it was in about two seconds; portable copies update too
+
+**Windows and robustness**
+
+- 🟢 Several copies at once; fast start; quick first start after installing
+- 🟢 Three interface/core deadlocks fixed; VLC 4's pause → seek → play freeze fixed
+- 🟢 Direct3D 11 device leak fixed: threads and memory flat over playlists
+- 🟢 Folders named in other alphabets work (Lua scripts)
+- 🟢 English by default
+- 🟢 Design credit in About, README, `CREDITS.md` and the package; reproducible Docker build; weekly upstream merge
+
+## 8. Next release: 0.3.0
+
+### 8.1 Release policy
+
+Everything in this section belongs to 0.3.0: no later versions are planned before it ships. What is ready and passes
+the quality gates when the owner decides to release ships; the rest stays here for the release after. The version
+becomes 1.0 when every frame is pixel-checked, the light theme is complete and VLC 4.0 is released.
+
+### 8.2 Playback, stability and player
+
+- 🟢 Surround: 5.1 and 7.1 no longer jump between speakers; every layout mixed right to stereo; 6.1 rear centre kept
+- 🟢 Explorer: a file opened while VLC plays starts at once (0.1 s) and raises the window; a hung VLC can't block it
+- 🟢 First start: no firewall prompt (no ports opened), the welcome waits, a file opens in 0.75 s
+- 🟢 Memory flat over long sessions (1,400 media changes in 25 minutes)
+- 🟢 The player bar shows the current media's name, title and artist
+- 🟢 Videos decoded by the processor start quicker (Direct3D device kept)
+- 🟢 Conversion: the crash of every audio + video conversion fixed (also in VLC 4); the end kept
+- 🟢 Video effects: 6 crashes fixed, 40 effects checked alone and in chains
+- 🟢 Damaged files: 148 damaged copies of 35 formats play without a crash or hang
+- 🟢 Quitting after a film is quick again
+- 🟢 The idle player shows Figma's pixel cat, drawn as blocks
+- 🟢 Popups close on a click outside without pausing the video
+
+### 8.3 Light theme and accents
+
+- 🟢 Player chrome and icons recoloured (Player - Light)
+- 🟢 Tracks popup, row hovers included
+- 🟢 Subtitles panel
+- 🟢 Profiles menu
+- 🟢 Onboarding: the six files have a light branch (dark unchanged)
+- 🟢 Shortcut capture, reset and restart popups; their errors in the accent
+- 🟢 Cast and visualization popups
+- 🟢 Mini queue
+- 🟢 Language list
+- 🟢 Text selection colours
+- 🟢 Customize drop zone
+- 🟢 Effect sliders follow the accent
+- 🟡 PNG check marks and a few icons follow the accent
+- 🔴 Settings scroll bar handles visible in light (`SettingsDialog.qml`, `SettingsExtensions.qml`, `SettingsSidebar.qml`)
+- 🔴 Warning colour `#E4A580` readable in light
+- 🔴 Every state checked; text contrast at least WCAG AA
+
+### 8.4 Popups and menus
+
+- 🟢 ⋯ main menu drawn as the frame, opens and closes on its button
+- 🟢 Profile submenu
+- 🟢 Right-click menu drawn as the frame
+- 🟢 Subtitles/tracks popup: opens and closes on its button; a click outside only closes it; the video keeps playing
+- 🟢 Cast popup, the same
+- 🟢 Sleep timer, the same
+- 🟢 Visualizer, the same
+- 🟢 HDR, the same
+- 🟢 Every Settings dropdown, the same
+- 🟢 Language picker, the same
+- 🟢 Library Sort, View and More, the same
+- 🔴 Library item context menu as the design's card
+- 🔴 Folder context menu as a card
+- 🔴 File context menu as a card
+- 🔴 Playlist context menu as a card
+
+### 8.5 Settings rows
+
+The design's settings frames hold 211 rows (counted from their texts, each page once); the app adds one.
+
+- 🟢 206 rows of the design on the 13 pages
+- 🟡 *Show confirmation and error dialogs* (Global)
+- 🟡 *Additional command line options* (Global, advanced)
+- 🟡 *Show controls in fullscreen* (Interface)
+- 🟡 *Show the playlist as a tree* (Interface)
+- 🟡 *Show cover art in the window when playing audio* (Interface, advanced)
+- 🟡 *Always show the player bar* (Interface, new, default off): the bottom bar stays on Home and every library page
+
+The dashboard counts 206 + 6 = 212 rows; the 0.3.0 bar counts these 7 lines.
+
+### 8.6 Classic dialogs
+
+- 🟡 Open Disc
+- 🟡 Open Capture Device
+- 🟡 Convert / Stream
+- 🟡 Media Information
+- 🟡 Bookmarks window
+- 🟡 Messages
+- 🟡 Advanced preferences (*All VLC options*)
+- 🔴 Go to time
+- 🔴 Statistics
+- 🔴 Plugins list
+- 🔴 Folder information
+
+### 8.7 Casting
+
+- 🟢 The TV starts once, with the picture and the sound together
+- 🟢 Every film to its last picture (also with a subtitle file, and the next film of a playlist)
+- 🟢 Playlists and subtitle files while casting
+- 🟢 4K made smaller by the graphics card: four times faster
+- 🟢 Lighter: each picture sent at once, half the memory
+- 🟢 50/60 fps films at 25/30 on the TV
+- 🟢 TVs listed before the panel opens, the last one used at the top
+- 🟢 Samsung (UE55MU8000): a paused cast is kept (a trickle of null packets while paused)
+- 🟢 Samsung: a film sent as it is goes as MPEG-TS; a TV that stops it gets it converted
+- 🔴 The real-TV gate on the release build (§14)
+- 🔴 Other brands (LG, Sony, Android TV) through device reports
+- 🔴 A *TV compatibility* wiki page fed by the reports
+
+Kept as it is: the Samsung TV rejects VLC's `PrepareForConnection` (arguments not in the UPnP order). It does no harm,
+and an accepted request made the TV fail after a pause in a test.
+
+### 8.8 Design and library
+
+- 🟡 Resume card with the design's wording and the watched time
+- 🟡 New playlist with a custom thumbnail
+- 🟡 Empty playlists
+- 🔴 The compact library's Home with the rows of the library's Home
+- 🔴 Real background blur (50 px) behind floating panels, measured on weak graphics cards
+- 🔴 HDR10+ and Dolby Vision offered when the renderer supports them, hidden with a reason otherwise
+- 🔴 Geometry, overlay and advanced video filters in the effects panel
+- 🔴 Setting Preset and Audio Visualizer compared with 2372:8834 and 2372:8639
+- 🔴 Editing the music bar and the mini player verified
+- 🔴 Pixel check of all 103 frames (§11)
+- ⚪ Subtitle cues drawn on the seek bar
+- ⚪ A *What's new* card after an update
+- ⚪ The accent following the Windows accent colour (an option)
+
+### 8.9 Quality and hardware
+
+- 🔴 Code-signed builds (decision 2)
+- 🔴 Automated tests in CI: launch, playback, QML warnings
+- 🔴 Intel graphics, older PCs, Windows 10 on real hardware, high-DPI multi-monitor
+- ⚪ Our VLC core fixes (pipes, freezes, filters, conversion, casting) offered to VideoLAN
+
+### 8.10 Release checklist
+
+- 🔴 Every quality gate green (§14)
+- 🔴 `CHANGELOG.md`: *Unreleased* becomes *0.3.0* with its date
+- 🔴 Release notes with a screenshot or GIF per highlight
+- 🔴 Wiki: casting pages, new settings rows, *Design check*
+- 🔴 Small updates from 0.2.4, 0.2.5 and 0.2.6 built and checked
+- 🔴 Announcement in Discussions; every fixed issue answered with the release link
+
+Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 45 🟢, 17 🟡, 30 🔴 (92).
+Languages (§12) and the community (§13) have bars of their own.
+
+## 9. Other platforms
+
+Tracks with checklists; a version number comes with the first published build.
+
+### Linux
+
+- 🟢 Built and smoke-tested once before the Windows work (Docker, X11 and Wayland; `.specs/features/redesign/evidence/`)
+- 🔴 Docker build on Ubuntu 22.04 with Qt 6.8, in CI
+- 🔴 Packages: AppImage, Flatpak (Flathub), .deb, .rpm, .tar.gz
+- 🔴 X11, Wayland; PipeWire, PulseAudio; VA-API, VDPAU; Intel, AMD, NVIDIA
+- 🔴 Updates (AppImage update information, Flatpak), file associations (.desktop), casting firewall notes
+- 🔴 Tested on Ubuntu, Fedora, Debian, Arch (VMs and a real PC)
+- 🔴 Pixel check of every frame
+
+### macOS
+
+- 🔴 Native build on Apple Silicon and Intel (GitHub-hosted runners), two .dmg or one universal
+- 🔴 Signed and notarized (decision 3)
+- 🔴 Menu bar, media keys, Now Playing, VideoToolbox, updates
+- 🔴 Pixel check of every frame
+
+### Windows on ARM64
+
+- 🔴 Build with VLC's ARM64 toolchain and contribs
+- 🔴 Installer, zip and updates for ARM64
+- 🔴 Tested on a Snapdragon PC or an ARM64 VM
+
+### Android (phones, tablets, TV)
+
+A fork of [VLC for Android](https://code.videolan.org/videolan/vlc-android) (GPL, Kotlin, libVLC) with its screens
+redrawn: the desktop's Qt interface is made for a mouse and a big window. The Figma file has desktop frames only, so
+phone and TV layouts need frames of their own (decision 6).
+
+- 🔴 Build VLC for Android in Docker and reproduce its release
+- 🔴 Package `org.kuchisofts.vlcredesign`, English by default
+- 🔴 Design tokens from the hub; the player: control bar, seek previews, volume, gestures
+- 🔴 Library, queue, playlists, settings; themes; 9 accents
+- 🔴 Casting with the desktop's fixes; subtitles
+- 🔴 Android TV / Google TV layout (remote control)
+- 🔴 APK and AAB on GitHub, then F-Droid; Google Play only after decision 4
+
+### Samsung Smart TV (Tizen)
+
+Samsung TVs run Tizen; VLC has no Tizen version and native apps are for Samsung partners only, so the engine can't run
+on the TV. A Samsung Galaxy phone is Android (track above).
+
+- 🟢 Casting from the PC (DLNA) works on the UE55MU8000: pause kept, as-is in MPEG-TS, converted when stopped
+- 🟢 Developer mode is on on the test TV, but bound to 127.0.0.1
+- 🔴 Developer mode set to the PC's address (only at the TV: Apps → 1 2 3 4 5) (decision 5)
+- 🔴 Tizen Studio, a Samsung certificate tied to the TV, a hello-world web app installed
+- 🔴 Receiver app: plays a URL from the desktop with the TV's player (AVPlay), the redesign's controls, remote keys
+- 🔴 The desktop finds the receiver and uses it instead of DLNA (seek, subtitles as text, tracks)
+- 🔴 Samsung store submission, if wanted (seller account and review)
+
+### iPhone, iPad, Apple TV
+
+- 🔴 A fork of VLC for iOS (MPL/GPL) built in CI
+- 🔴 Screens in the redesign's look, reusing the Android work and the hub's tokens
+- 🔴 Apple Developer account and App Store review, where the VLC name may be refused (decision 3)
+
+## 10. Other implementations of the design
+
+[dsojevic/juxtopposed-vlc](https://github.com/dsojevic/juxtopposed-vlc), another VLC 4 fork of the same design (one
+author, since 2026-10-13), is ahead on:
+
+| Their feature                                                       | Worth adding | Where here               |
+|---------------------------------------------------------------------|--------------|--------------------------|
+| Windows, macOS, Linux from one workflow, launch tests of packages   | Yes          | §9 tracks, §8.9 CI       |
+| 11 languages, language change without restart                       | Yes          | §12                      |
+| Real blur behind floating panels                                    | Yes, carefully | §8.8                   |
+| Classic dialogs restyled with one Qt style hook                     | Yes          | §8.6 (in progress)       |
+| Redesigned Go to time, statistics, folder info, plugins list        | Yes          | §8.6                     |
+| Geometry, overlay, advanced video filters in the panel              | Yes          | §8.8                     |
+| Subtitle cues on the seek bar                                       | Nice to have | §8.8 (idea)              |
+| About 85 automated QML and C++ tests                                | Yes          | §8.9                     |
+
+We are ahead on: the installer, delta updates with rollback, casting (a real TV), Windows integration, surround
+sound, subtitle providers, weekly upstream merges.
+
+## 11. Pixel-exact process
+
+1. **Reference:** each frame exported 1:1 from Figma at 100 % and 200 % (prototype view:
+   `scaling=min-zoom&hide-ui=1&show-proto-sidebar=0`); the frames and their texts are in `inventory.json`.
+2. **Capture:** the app in the same state (window size, media, theme, accent), at the same scale, from a fixed demo
+   folder.
+3. **Compare:** the largest channel difference per pixel (grey levels hide colour fringes). A frame passes when no
+   pixel differs beyond a small tolerance, except listed anti-aliased edges.
+4. **Record:** result, both captures and the difference image go to the wiki's *Design check* page and to the *Pixel*
+   column of section 5; failures become *Design mismatch* issues.
+5. **Keep it:** the comparison runs in CI on every pull request.
+
+Text matching needs Inter with the same metrics (distance-field text, no hinting, Figma's line box: section 6).
+
+- 🟢 References and captures of 187:328 (player) and 970:2703 (library shell), compared
+- 🟢 Text positions and sizes measured in many other frames (cited in the code)
+- 🔴 Figma references exported for all 103 frames
+- 🔴 A capture script that drives the app into each frame's state
+- 🔴 The CI job `pixel-check.yml`: captures, comparison, artifacts, a pull request comment, the wiki page
+- 🔴 All 103 frames compared and recorded
+
+## 12. Languages
+
+- 🟢 English by default in the app and the installer, whatever the system language; *Reset all* returns to English
+- 🟢 Installer in English and Hebrew (right to left)
+- 🔴 The installer asks for the language on its first page (English selected), and the app starts in it
+- 🟢 *Settings → Global → Appearance → Interface language* (applied at the next start)
+- 🔴 The language changes at once, without a restart; the welcome can change it too
+- 🟢 Every new string listed for translation (`po/POTFILES.in`, `qtr()` in C++)
+- 🔴 Translations compiled into the release build
+- 🔴 Translators' platform (Weblate or Transifex); English and Hebrew first, then VLC's languages (decision 7)
+- 🔴 Right-to-left layouts (Hebrew, Arabic) checked screen by screen
+
+Android and the TV receiver follow the same rules.
+
+## 13. GitHub: one project, many repositories
+
+The status of every item of this section is in its setup checklist (13.16).
+
+### 13.1 One project or separate repositories?
+
+The desktop program is a fork of `videolan/vlc` (about 113,000 commits). Android would fork `videolan/vlc-android`
+(Kotlin, Gradle), iPhone/iPad `videolan/vlc-ios` (Swift, Objective-C), and the TV receiver is a small Tizen web app
+of our own.
+
+| Criterion          | One repository, folders                        | Separate repositories                    | Hub and spokes                              |
+|--------------------|------------------------------------------------|------------------------------------------|---------------------------------------------|
+| Upstream sync      | One upstream only; the others as subtrees: slow, error-prone merges | Each repository merges its own upstream | Same as separate                    |
+| Clone size         | Everyone downloads every platform              | Only the platform you work on            | Same as separate                            |
+| CI cost and speed  | Path filters; a change can trigger every build | Each builds its own platform             | Same, with shared workflows from the hub    |
+| Releases, GPL source | Prefixed tags; one source archive for all    | Each source archive matches its binaries | Same as separate                            |
+| Issues, Discussions | One place                                     | Scattered; duplicates                    | One place, in the hub, with platform labels |
+| Discoverability    | One page                                       | Several pages to find                    | One entry point: hub README and website     |
+| Stars              | One count                                      | Split                                    | Collected on the hub                        |
+| Permissions        | Coarse                                         | Per repository                           | Per repository                              |
+| Licensing          | GPL, GPL and MPL/GPL mixed in one tree         | Each keeps its upstream's license        | Same as separate                            |
+| Verdict            | 🔴                                             | 🟡                                       | 🟢                                          |
+
+**Decision: hub and spokes.**
+
+- **Code** in one repository per upstream fork or platform family: desktop (Windows, Linux and macOS from one code
+  base), Android, iOS, TV.
+- **One public face**, the hub: either the existing `KuchiSofts/vlc-redesign`, which keeps its stars, or a GitHub
+  organization (decision 1). A transfer or a rename keeps stars, issues and redirects old links.
+- The hub holds the only Discussions, the only issue tracker for every platform (platform labels; the other
+  repositories' `config.yml` has blank issues off and contact links pointing to the hub), the only public roadmap
+  (one Projects board across all repositories), the website (GitHub Pages: detects the visitor's OS and offers the
+  right download, lists every platform) and the shared design assets (exported once, used by every platform).
+- Pull requests stay in the code repositories; an issue that belongs to one moves there with GitHub's transfer.
+- The repositories stay plain repositories, not GitHub forks: GitHub search leaves forks out by default. (The hub
+  already is one.)
+- **Naming and trademark:** an organization name without "VLC" (for example the publisher's) avoids looking
+  official; repository names keep `vlc-redesign` and every description says *unofficial*. A request from VideoLAN
+  would be met with a rename, and GitHub redirects renamed repositories.
+
+### 13.2 Repositories and their layout
+
+| Repository                        | Content                                                                 |
+|-----------------------------------|-------------------------------------------------------------------------|
+| `KuchiSofts/vlc-redesign`         | Desktop (Windows, Linux, macOS), and the hub: issues, Discussions, board, website, design assets, wiki |
+| `KuchiSofts/vlc-redesign-android` | Android phones, tablets, TV (fork of `videolan/vlc-android`)             |
+| `KuchiSofts/vlc-redesign-ios`     | iPhone, iPad, Apple TV (fork of `videolan/vlc-ios`)                      |
+| `KuchiSofts/vlc-redesign-tv`      | Samsung TV receiver (Tizen web app)                                     |
+
+```
+vlc-redesign/                  desktop code + hub (or the hub alone, in an organization)
+├─ modules/gui/qt/             the redesigned interface (QML, C++)
+├─ extras/juxtopposed/         build scripts, installer, updater, release scripts
+├─ design/                     tokens.json, icons (SVG), fonts: the shared design assets
+├─ site/                       the website (GitHub Pages)
+├─ platforms.yml               every platform: status, latest version, download link
+├─ docs/
+│  ├─ MASTER-PLAN.md           this plan
+│  ├─ wiki/                    wiki source, synced to the GitHub wiki
+│  └─ media/                   screenshots and GIFs
+└─ .github/                    issue and discussion forms, labels.yml, workflows
+
+vlc-redesign-android/          fork of videolan/vlc-android
+├─ (upstream folders)          kept as they are, merged weekly
+├─ redesign/                   our theme and screens, apart from upstream code
+├─ design/                     synced from the hub
+└─ .github/                    CI, releases, config.yml → hub issues
+
+vlc-redesign-ios/              fork of videolan/vlc-ios
+├─ (upstream folders)
+├─ Redesign/                   our theme and screens
+├─ design/                     synced from the hub
+└─ .github/
+
+vlc-redesign-tv/               Tizen web app, our own code
+├─ src/                        receiver screens, AVPlay player, remote keys
+├─ design/                     tokens as CSS variables, from the hub
+├─ config.xml                  Tizen manifest
+└─ .github/
+```
+
+**Shared design assets** (`design/` in the hub): `tokens.json` (the values of section 6: colours dark and light,
+accents, fonts, sizes, radii), icons as SVG, the fonts (OFL). Exported once and checked by the pixel check; desktop CI
+compares `VLCStyle.qml` with them; Android, iOS and the TV generate their own files from them; a workflow opens a pull
+request in each repository when they change. They have their own version (`design-1.0`), named in every release.
+
+### 13.3 Every repository shows every version
+
+- `platforms.yml` in the hub is the single source: name, status, latest version, date, download link, page.
+- A workflow renders it into the hub's README, the website, and a pull request in each repository that replaces the
+  block between `<!-- platforms:start -->` and `<!-- platforms:end -->` at the top of its README.
+- The platform bar at the top of every README:
+
+```
+Windows 0.2.6 · Linux soon · macOS soon · Android soon · Samsung TV soon · iPhone/iPad later
+```
+
+| Platform     | Status        | Latest | Get it                 |
+|--------------|---------------|--------|------------------------|
+| Windows      | 🟢 released   | 0.2.6  | installer · portable   |
+| Linux        | 🔴 planned    | —      | coming soon            |
+| macOS        | 🔴 planned    | —      | coming soon            |
+| Android      | ⚪ research   | —      | coming soon            |
+| Samsung TV   | ⚪ research   | —      | coming soon            |
+| iPhone/iPad  | ⚪ later      | —      | coming soon            |
+
+- Release notes end with *Also on: …* from the same file.
+- In the app, About and the update card show *Also on: …* from a copy of `platforms.yml` built into each release:
+  nothing is fetched for it.
+
+### 13.4 Versions
+
+- Each program has its own SemVer (`MAJOR.MINOR.PATCH`) and tags `vX.Y.Z` in its repository.
+- Why not one shared number: programs ship on different days (store reviews, upstream releases); one number would
+  force empty releases or hold fixes back, and a number per program tells its users exactly what changed for them.
+- The hub shows the matrix: program, latest version, date, upstream base (VLC 4.0-dev commit, VLC for Android
+  version…), design assets version.
+
+### 13.5 Releases
+
+| Platform      | Files                                                                                         |
+|---------------|-----------------------------------------------------------------------------------------------|
+| Windows       | `vlc-redesign-X.Y.Z-win64-setup.exe`, `vlc-redesign-X.Y.Z-win64.zip`, `.vrdelta` small updates, `SHA256SUMS.txt` |
+| Windows ARM64 | `vlc-redesign-X.Y.Z-winarm64-setup.exe`, `vlc-redesign-X.Y.Z-winarm64.zip`                    |
+| Linux         | `.AppImage`, `.flatpak` (and Flathub), `.deb`, `.rpm`, `.tar.gz`                              |
+| macOS         | `vlc-redesign-X.Y.Z-macos-arm64.dmg`, `vlc-redesign-X.Y.Z-macos-x86_64.dmg`                   |
+| Android       | `vlc-redesign-X.Y.Z-android-arm64.apk` (and armv7, x86_64), `.aab`                            |
+| Samsung TV    | `vlc-redesign-tv-X.Y.Z.wgt`                                                                   |
+
+- Every release: checksums, signed binaries where possible, the source archive (GPL) and exact commit, licenses.
+- Channels: GitHub first; then winget, Flathub, F-Droid.
+- **Release notes come from the changelog**, built by the release script: a one-line summary and a hero image;
+  up to five highlights, each with a screenshot or GIF (MP4 beside it); *Fixed / Changed / Added* with linked issues
+  and reporters thanked; the download table with sizes; checksums and source; credits (design, contributors,
+  translators, testers); *Also on*; a link to the release's Announcements post.
+
+### 13.6 README (every repository)
+
+1. Platform bar (13.3), title, one-line description, download buttons, demo GIF.
+2. Design credit (Juxtopposed, CC BY 4.0) with the video; unofficial notice.
+3. Features with screenshots; download and install; updates.
+4. *Suggest an idea · Report a problem · Roadmap · Discussions* (all in the hub).
+5. Known limitations, build from source, contributing, credits, license.
+
+### 13.7 Discussions (hub)
+
+| Category          | Format                  | For                                              | How it is used                                         |
+|-------------------|-------------------------|--------------------------------------------------|--------------------------------------------------------|
+| 📣 Announcements  | maintainers post        | Releases, plans, calls for testing               | One post per release; a monthly roadmap summary        |
+| 💡 Ideas          | open, with votes        | Suggestions and requests                         | Form: problem, idea, frame; accepted → issue on the board |
+| 🙋 Q&A            | question / answer       | How do I…, a file, a TV, a setting               | Answers marked; asked twice → a wiki page              |
+| 🖼️ Show and tell  | open                    | Setups, profiles, accent and layout combinations | The best go to the README and notes (with permission)  |
+| 🎨 Design         | open                    | Frame talk, phone and TV layouts, mismatches     | Each thread names its node id; Juxtopposed invited     |
+
+Category forms: `.github/DISCUSSION_TEMPLATE/ideas.yml`, `design.yml`, `q-a.yml`.
+
+### 13.8 Issue forms (hub)
+
+Blank issues off; each form asks to search first and sets its labels. *Prefilled* fields come from the app's
+*Report a problem* link (13.12).
+
+| Form                    | Status | Fields                                                                                  | Labels                      |
+|-------------------------|--------|-----------------------------------------------------------------------------------------|-----------------------------|
+| Bug report              | 🟢     | version, install type, Windows (today); to add, prefilled: GPU and driver, screens, video output; steps, media, log, screenshots | `bug`         |
+| Feature request         | 🟢     | area, what you can't do, the idea, in the design or new; to add: alternatives            | `suggestion`                |
+| Design mismatch         | 🔴     | frame (node id, link), theme, accent, scale, app and Figma screenshots, what differs     | `design`                    |
+| TV / device report      | 🔴     | brand, model, year, firmware, DLNA or Chromecast, file; works: start, pause 1/5 min, seek, next, subtitles, as-is, end | `device report` |
+| Translation             | 🔴     | language, kind (wrong, missing, new language, join), screen, current and suggested text  | `translation`               |
+
+`config.yml` (🟢 today: official VLC, design video; to add: Q&A, Ideas, security policy). A pull request template asks
+for what and why, before/after screenshots, the node id, the tests run, and whether code outside `modules/gui/qt`
+changed (then *Differences from upstream VLC* is updated).
+
+### 13.9 Labels
+
+Kept in `.github/labels.yml`, synced to every repository by a workflow.
+
+| Group     | Labels                                                                                              |
+|-----------|-----------------------------------------------------------------------------------------------------|
+| Type      | `bug`, `suggestion`, `design`, `device report`, `translation`, `docs`, `question`                    |
+| Platform  | `platform: windows`, `windows-arm64`, `linux`, `macos`, `android`, `samsung-tv`, `apple`             |
+| Area      | `area: player`, `library`, `customize`, `settings`, `subtitles`, `casting`, `audio`, `video`, `installer-updates`, `design`, `translations`, `engine` |
+| Priority  | `priority: P0` (crash, data loss, security), `P1` (main feature broken), `P2`, `P3`                  |
+| Status    | `status: needs triage`, `needs info`, `accepted`, `in progress`, `in next release`, `upstream`, `duplicate`, `won't do` |
+| Community | `good first issue`, `help wanted`                                                                   |
+
+### 13.10 Public roadmap
+
+One public GitHub Projects board, **VLC Redesign roadmap**, across all repositories:
+
+- Fields: Status (⚪ Ideas · 🔴 Planned · 🟡 In progress · 🟢 In the next release · 🚀 Released), Platform, Area,
+  Priority, Votes, Release.
+- Fed by labels: a workflow adds issues labelled `suggestion`, `design` or `status: accepted`; the board's rules move
+  merged fixes to *In the next release* and shipped ones to *Released*.
+- Votes: a daily workflow copies each issue's 👍 (and its *Ideas* thread's) into *Votes*, since a board can't sort by
+  reactions.
+- Views: *Board* (by status), *Most wanted* (by votes), *Next release*, one per platform.
+- `ROADMAP.md` stays a short summary linking to the board and to this plan.
+
+### 13.11 Triage and answers
+
+| What                                   | Goal                                                                  |
+|----------------------------------------|-----------------------------------------------------------------------|
+| First answer to a bug                  | 2 days; crash, data loss or security: 1 day                           |
+| First answer to an idea or mismatch    | 7 days                                                                |
+| Triage                                 | Every Monday after the upstream sync: type, platform, area, priority  |
+| Ideas with 10 👍 or more               | Decided within 14 days: accepted, needs design, later, won't do (with reasons) |
+| *Needs info* without reply             | Reminder after 7 days, closed kindly after 14 (reopened on reply)     |
+| Fixed                                  | Answered with the release that has the fix; closed when it ships      |
+
+Saved replies keep answers consistent; duplicates are linked to the first report, whose votes grow.
+
+### 13.12 In-app *Suggest an idea* / *Report a problem*
+
+- Two entries at the end of the ⋯ menu (`MainMenu.qml`), and in About.
+- *Suggest an idea* opens a new *Ideas* discussion in the hub (`discussions/new?category=ideas`), with the version.
+- *Report a problem* opens the bug form (`issues/new?template=bug_report.yml`) prefilled through the link: version
+  and commit, install type, Windows edition and build, CPU architecture, GPU and driver, video output and decoding,
+  screens (resolution, scale, refresh rate, HDR, count), theme, accent, interface language.
+- No personal data: no file names or paths, no user or computer name, no address, no library, no logs (a log is
+  attached by the user, from *Settings → Global → Diagnostics → Save a log*).
+- A card shows exactly what goes into the link, with *Copy* and *Open GitHub*; the user submits on GitHub; the app
+  sends nothing itself. The link stays under 8,000 characters.
+
+### 13.13 Wiki
+
+- Source in `docs/wiki/` (one Markdown file per page, `_Sidebar.md`, `_Footer.md`), reviewed in pull requests;
+  `wiki-sync.yml` pushes it to the GitHub wiki on every merge to `main`; the wiki is read-only for the public; a link
+  check runs on pull requests touching `docs/`.
+- Pages: Home · Download and install · First run · Player · Music · Library and playlists · Queue · Subtitles ·
+  Casting (DLNA, Chromecast, Samsung, TV compatibility) · Customize · Themes and accents · Settings (one page per
+  section) · Shortcuts · Languages · Updates · Suggestions and reports · Troubleshooting · Building from source ·
+  Design check · Differences from VLC · Release process · Credits.
+- **Design check** is generated from the frame tables of section 5 (node id as key): size, status, differences,
+  latest capture, Figma reference, difference image, build checked.
+
+### 13.14 Screenshots and GIFs
+
+- The pixel-check job runs the packaged app with the demo media at fixed sizes and states: each pull request gets
+  fresh captures as artifacts and a comment listing the frames that changed, with difference thumbnails.
+- On `main` the captures refresh `docs/media/` (README screenshots, 9 accents in both themes) through a pull request.
+- GIFs with an MP4 each (player, previews, customize, casting, installer, update card), recorded from the real
+  program with free demo media at one window size; never personal files. The same set for Android and the TV.
+
+### 13.15 Community files and credits
+
+| File                               | Content                                                                         |
+|------------------------------------|---------------------------------------------------------------------------------|
+| `CONTRIBUTING.md`                  | Build, where code lives, style and `qmllint`, commits (`area: change`), picking an issue, the design rule (cite the node id), the upstream rule |
+| `CODE_OF_CONDUCT.md`               | Contributor Covenant 2.1, with a contact (decision 8)                           |
+| `SECURITY.md`                      | Latest release supported; private reports through security advisories; answer in 3 days; scope: updater, installer, casting server, subtitle downloads |
+| `.github/pull_request_template.md` | See 13.8                                                                        |
+| `CREDITS.md`                       | Design, first implementation (MrDouglax), VideoLAN, fonts; to add: contributors, translators, testers with their TV models |
+
+In an organization, a `.github` repository gives every repository these files by default.
+
+### 13.16 Setup checklist
+
+- 🟢 Issue forms: bug report and feature request; blank issues off; contact links
+- 🟢 Windows build of every pull request and of `main`
+- 🟢 Weekly upstream sync (pull request, or an issue listing conflicts)
+- 🟢 Wiki with every screen and option
+- 🟢 `CREDITS.md`
+- 🟢 `ROADMAP.md` with 👍 voting
+- 🔴 Hub: the existing repository or an organization (decision 1)
+- 🔴 `platforms.yml` and the platform bar in every README
+- 🔴 Website on GitHub Pages with OS detection
+- 🔴 Shared design assets in `design/`
+- 🔴 Discussions on, five categories and their forms
+- 🔴 Issue forms: design mismatch, device report, translation; prefilled bug fields
+- 🔴 `labels.yml` and its sync
+- 🔴 Roadmap board across repositories, with the votes workflow
+- 🔴 `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, pull request template, saved replies
+- 🔴 In-app *Suggest an idea* / *Report a problem*
+- 🔴 `docs/wiki/` with `wiki-sync.yml`; *Design check* and *TV compatibility* pages
+- 🔴 Release notes script; pixel-check job with automatic screenshots
+
+## 14. Quality gates for every release
+
+| Gate         | What                                                                              | Status |
+|--------------|-----------------------------------------------------------------------------------|--------|
+| Build        | Every platform builds in CI; the packaged app starts and plays                    | 🟡 Windows builds; no launch test yet |
+| Regression   | Playback, pause/seek, traces, Chromecast and DLNA test devices                    | 🟢     |
+| Real devices | Samsung TV: start, pause 1 and 5 min, seek, next file, subtitles, as-is, end      | 🟢     |
+| Formats      | Every test file and container; 148 damaged files without crash or hang            | 🟢     |
+| Effects      | 40 video effects alone and in chains                                              | 🟢     |
+| Conversion   | Every muxer, audio + video, to the last picture                                   | 🟢     |
+| Memory       | 25-minute media-change soak and cast soak: flat after warm-up                     | 🟢     |
+| Hardware     | NVIDIA, AMD, Intel; no GPU; weak CPU; Windows 10 and 11; high DPI                 | 🟡 no Intel, no real Windows 10 |
+| Clean PC     | Install and first start on a clean Windows (Sandbox)                              | 🟢     |
+| Updates      | Small updates from the three previous releases, checked file by file              | 🟢     |
+| Design       | Pixel check of the frames the release touches; frame table updated                | 🟡 2 frames |
+| Languages    | English by default; installer and settings language switch                        | 🟡 no switch without restart |
+
+## 15. Risks
+
+**Trademark.** VideoLAN objects to the VLC name or cone.
+Mitigation: *unofficial* everywhere; no store listing without their agreement; a neutral fallback name chosen in
+advance; renamed repositories keep their links.
+
+**Store policies.** Google Play, the App Store or Samsung refuse the app.
+Mitigation: GitHub and F-Droid first; stores only after decision 4; every listing says unofficial and credits the design.
+
+**Upstream changes.** VLC 4.0-dev or Qt breaks the build or a behaviour.
+Mitigation: small weekly merges with CI; our changes kept in `modules/gui/qt`; core changes listed and offered
+upstream; releases made from a known-good merge.
+
+**Hardware coverage.** Bugs on Intel graphics, old PCs or other TVs that we can't see.
+Mitigation: Sandbox and VM tests; the device report form; testers credited; an Intel test machine; release
+candidates announced in Discussions a few days before a release.
+
+**Single maintainer.** Work stalls, knowledge is lost.
+Mitigation: this plan, `CONTRIBUTING.md` and the release process in the wiki; a script for every release step;
+secrets kept in GitHub, not on one PC; a second maintainer with release rights.
+
+**Design source changes.** The community Figma file changes or disappears.
+Mitigation: the dated inventory, reference exports in the repository, the exported design assets.
+
+**Update security.** A download is tampered with.
+Mitigation: HTTPS from GitHub only and SHA-256 checks (done); code signing (decision 2); `SECURITY.md`.
+
+## 16. Definition of done
+
+**A frame** is done when every element and state is implemented; it works in dark and light, with the 9 accents,
+at 100 % and 200 %; it has keyboard and screen-reader names; its pixel check passes and is recorded in *Design
+check*: its row reads 🟢 with Pixel 🟢.
+
+**A feature** is done when it works end to end on a clean PC; its settings survive a restart; it is usable with the
+keyboard; its strings are listed for translation; it adds no QML warning; the regression suite covers it; the wiki
+and the changelog describe it.
+
+**A platform** is done when it builds in CI from a clean checkout; it installs, starts, plays and updates; it starts
+in English; it uses the design assets and its frames are pixel-checked; the quality gates are green on it; its
+assets, checksums and source are published; it is in `platforms.yml`.
+
+**A release** is done when the quality gates are green; the changelog has its section; the notes have their media;
+the assets are named as in 13.5 and the small updates are checked; it is announced; the fixed issues are answered;
+`platforms.yml` and the board are updated.
+
+## 17. Decisions for the project owner
+
+1. **Hub:** keep `KuchiSofts/vlc-redesign` as the hub, or create a GitHub organization (name without "VLC").
+2. **Code signing:** a Windows certificate (a yearly cost) to remove the SmartScreen warning.
+3. **Apple Developer account** (a yearly fee) for a notarized macOS app and any iOS work.
+4. **Google Play:** whether to try (the VLC name may be refused); F-Droid and GitHub need no account.
+5. **Samsung TV:** setting the PC's address in Developer mode (only at the TV); whether to aim for the Samsung store.
+6. **Phone and TV layouts:** ask Juxtopposed for frames, or draw them from the design system (credited, marked derived).
+7. **Languages** to ship first after English and Hebrew.
+8. **Community contact:** the address for conduct reports, and who answers security reports.
+9. **Turning on** Discussions and the public roadmap board.

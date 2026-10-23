@@ -214,12 +214,23 @@ vlc_sout_renderer_GetVcodecOption(sout_stream_t *p_stream,
             ssout << ( ( p_vid->i_width > 1280 ) ? "width=1280," : "" ) << video_maxres_720p << ',';
     }
 
-    if( p_vid->i_frame_rate == 0 || p_vid->i_frame_rate_base == 0
-     || ( p_vid->i_frame_rate / p_vid->i_frame_rate_base ) > 30 )
+    if( p_vid->i_frame_rate == 0 || p_vid->i_frame_rate_base == 0 )
     {
         /* Even force 24fps if the frame rate is unknown */
         msg_Warn( p_stream, "lowering frame rate to 24fps" );
         ssout << "fps=24,";
+    }
+    else if( p_vid->i_frame_rate > 31 * (uint64_t) p_vid->i_frame_rate_base )
+    {
+        /* Every other picture (of 50, 59.94 or 60 fps): 24 fps from them
+         * showed some pictures longer than others, a judder. (31: 30 fps
+         * comes as 1000000/33333 from a Matroska file.) */
+        const unsigned num = p_vid->i_frame_rate;
+        uint64_t den = p_vid->i_frame_rate_base * UINT64_C(2);
+        while( num > 31 * den )
+            den *= 2;
+        msg_Warn( p_stream, "lowering frame rate to %u/%" PRIu64 " fps", num, den );
+        ssout << "fps=" << num << '/' << den << ',';
     }
 
     return ssout.str();
@@ -308,10 +319,17 @@ std::string GetVencX264Option( sout_stream_t * /* p_stream */,
 
     /* x264 makes 1.5 frame threads per processor, each with its pictures:
      * 48 of them took 1.2 GB on 32 processors. Eight keep up with a stream
-     * in real time and take a third of it. */
+     * in real time and take a third of it.
+     * zerolatency: the threads share each picture (slices), without
+     * lookahead or B-frames. Each picture goes out as it comes, so the
+     * device starts and seeks without a second more of pictures held, and
+     * the encoder holds half the memory (280 MB instead of 570 for 1080p
+     * with a subtitle), for the same processor time and a higher bitrate
+     * (4.2 Mb/s instead of 2.5 for the same quality). */
     const unsigned i_threads = std::min( 8u, std::max( 1u, vlc_GetCPUCount() * 3 / 2 ) );
 
     ssout << "venc=x264{preset=" << psz_video_x264_preset
+          << ",tune=zerolatency"
           << ",crf=" << i_video_x264_crf
           << ",options={threads=" << i_threads << "}}";
     return ssout.str();

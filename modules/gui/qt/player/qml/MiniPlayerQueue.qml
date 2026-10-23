@@ -105,7 +105,7 @@ Item {
                 text: parent.text
                 color: parent.enabled
                        ? (root.lightTheme ? "#4d4d4d" : VLCStyle.redesign.textSecondary)
-                       : VLCStyle.redesign.textDisabled
+                       : (root.lightTheme ? "#929291" : VLCStyle.redesign.textDisabled)
                 font.pixelSize: VLCStyle.dp(20, VLCStyle.scale)
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter

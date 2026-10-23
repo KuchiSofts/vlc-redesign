@@ -41,8 +41,10 @@ FocusScope {
 
     readonly property int positionSliderY: controlBar.y + controlBar.sliderY
 
+    // "Show cover art in the window when playing audio" (qt-bgcone): the
+    // picture of a media without artwork when off
     readonly property string coverSource: {
-        if (Player.artwork &&
+        if (MainCtx.bgCone && Player.artwork &&
             Player.artwork.toString())
             return Player.artwork
         else if (Player.hasVideoOutput)
@@ -383,6 +385,10 @@ FocusScope {
                         //short interval for mouse events
                         if (Player.isInteractive)
                             interactiveAutoHideTimer.restart()
+                        // "Show controls in fullscreen" off: the mouse shows
+                        // its pointer only (the keyboard still shows them)
+                        else if (rootPlayer._fullscreen && !MainCtx.fullscreenControls)
+                            fullscreenCursorTimer.restart()
                         else
                             playerToolbarVisibilityFSM.mouseMove();
                     }
@@ -398,7 +404,14 @@ FocusScope {
                         when: playerToolbarVisibilityFSM.started
                             && !playerToolbarVisibilityFSM.isVisible
                             && !interactiveAutoHideTimer.running
+                            && !fullscreenCursorTimer.running
                         value: Qt.BlankCursor
+                    }
+
+                    Timer {
+                        id: fullscreenCursorTimer
+                        interval: MainCtx.mouseHideTimeout
+                        repeat: false
                     }
 
                     TouchWheelHandler {

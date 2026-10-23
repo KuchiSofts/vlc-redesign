@@ -47,7 +47,7 @@ Item {
     //---------------------------------------------------------------------------------------------
 
     Component.onCompleted: {
-        if (DialogErrorModel.repeatedMessageCount) {
+        if (DialogErrorModel.repeatedMessageCount && MainCtx.showErrorDialogs) {
             hideErrorPopupTimer.restart()
             errorPopup.state = "visible"
         }
@@ -152,6 +152,12 @@ Item {
         target: DialogErrorModel
 
         function onCountChanged() {
+            // "Show confirmation and error dialogs" off: only kept in the
+            // messages, no popup nor badge
+            if (!MainCtx.showErrorDialogs) {
+                DialogErrorModel.resetRepeatedMessageCount()
+                return
+            }
             hideErrorPopupTimer.restart()
             errorPopup.state = "visible"
         }

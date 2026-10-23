@@ -510,6 +510,8 @@ void MainCtx::loadPrefs(const bool callSignals)
 
     loadFromVLCOption(m_mouseHideTimeout, "mouse-hide-timeout", &MainCtx::mouseHideTimeoutChanged);
     loadFromVLCOption(m_fsSensitivity, "qt-fs-sensitivity", &MainCtx::fsSensitivityChanged);
+    loadFromVLCOption(m_fullscreenControls, "qt-fs-controller", &MainCtx::fullscreenControlsChanged);
+    loadFromVLCOption(m_showErrorDialogs, "qt-error-dialogs", &MainCtx::showErrorDialogsChanged);
 
 #ifdef _WIN32
     /* "Process priority" of the settings (-2 idle ... 2 high); left alone
@@ -527,6 +529,15 @@ void MainCtx::loadPrefs(const bool callSignals)
         }
     }
 #endif
+
+    /* "Always show the player bar" of the settings */
+    const bool alwaysShowPlayerBar = getSettings()->value( "redesign/always-show-player-bar", false ).toBool();
+    if( alwaysShowPlayerBar != m_alwaysShowPlayerBar )
+    {
+        m_alwaysShowPlayerBar = alwaysShowPlayerBar;
+        if( callSignals )
+            emit alwaysShowPlayerBarChanged();
+    }
 
     /* "Double click on the video" of the settings */
     const int doubleClick = getSettings()->value( "redesign/double-click-action", 1 ).toInt();

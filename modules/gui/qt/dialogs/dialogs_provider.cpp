@@ -423,8 +423,11 @@ void DialogsProvider::mediaInfoDialog( const MLItemId& itemId )
     }
 }
 
-bool DialogsProvider::questionDialog(const QString& text, const QString &title) const
+bool DialogsProvider::questionDialog(const QString& text, const QString &title, bool always) const
 {
+    if (!always && !var_InheritBool(p_intf, "qt-error-dialogs"))
+        return true;
+
     QMessageBox messageBox;
     messageBox.setText(text);
     if (!title.isEmpty())

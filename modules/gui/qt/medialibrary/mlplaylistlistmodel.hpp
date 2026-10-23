@@ -22,6 +22,8 @@
 // MediaLibrary includes
 #include "mlbasemodel.hpp"
 
+#include <QUrl>
+
 // Forward declarations
 struct vlc_medialibrary_t;
 class MLPlaylist;
@@ -71,7 +73,11 @@ public:
     explicit MLPlaylistListModel(QObject * parent = nullptr);
 
 public: // Interface
-    Q_INVOKABLE void create(const QString & name, const QVariantList& initialItems);
+    // initialItems may be empty (an empty playlist); thumbnail: a local
+    // picture shown for the playlist instead of its media (the library has
+    // no artwork for playlists: a copy is kept in the user data folder)
+    Q_INVOKABLE void create(const QString & name, const QVariantList& initialItems,
+                            const QUrl & thumbnail = {});
 
     Q_INVOKABLE void append(const MLItemId & playlistId, const QVariantList & ids);
 

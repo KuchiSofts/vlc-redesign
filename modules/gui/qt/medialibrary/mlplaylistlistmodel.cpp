@@ -23,6 +23,7 @@
 #include "mlplaylistlistmodel.hpp"
 
 // VLC includes
+#include <vlc_configuration.h>
 #include <vlc_media_library.h>
 #include "qt.hpp"
 #include "util/vlctick.hpp"
@@ -33,6 +34,10 @@
 #include "mlhelper.hpp"
 #include "mlcustomcover.hpp"
 #include "mlplaylist.hpp"
+
+#include <QDir>
+#include <QFileInfo>
+#include <QImage>
 
 //-------------------------------------------------------------------------------------------------
 // Static variables
@@ -72,6 +77,50 @@ void appendMediaIntoPlaylist(vlc_medialibrary_t* ml, int64_t playlistId, const s
     }
 }
 
+// The thumbnails chosen for playlists ("new playlist"; the library keeps
+// no artwork for a playlist): <user data>/playlist-thumbnails/<id>-<creation
+// date>.png, the date tells apart a playlist of a new library with the id
+QString thumbnailFolder()
+{
+    static const QString folder = []() {
+        char * dir = config_GetUserDir(VLC_USERDATA_DIR);
+        const QString path = dir ? QString::fromUtf8(dir) + QStringLiteral("/playlist-thumbnails")
+                                 : QString();
+        free(dir);
+        return path;
+    }();
+    return folder;
+}
+
+QString thumbnailPath(int64_t id, uint32_t creationDate)
+{
+    const QString folder = thumbnailFolder();
+    if (folder.isEmpty())
+        return {};
+    return QStringLiteral("%1/%2-%3.png").arg(folder).arg(id).arg(creationDate);
+}
+
+// The picture at most 1024 px wide and high, as a PNG
+bool saveThumbnail(const QString & source, const QString & target)
+{
+    QImage image(source);
+    if (image.isNull() || target.isEmpty() || !QDir().mkpath(QFileInfo(target).absolutePath()))
+        return false;
+    if (image.width() > 1024 || image.height() > 1024)
+        image = image.scaled(1024, 1024, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    return image.save(target, "PNG");
+}
+
+void removeThumbnails(int64_t id)
+{
+    const QString folder = thumbnailFolder();
+    if (folder.isEmpty())
+        return;
+    QDir dir(folder);
+    for (const QString & name : dir.entryList({ QStringLiteral("%1-*.png").arg(id) }, QDir::Files))
+        dir.remove(name);
+}
+
 } //anonymous namespace
 
 //=================================================================================================
@@ -84,7 +133,8 @@ void appendMediaIntoPlaylist(vlc_medialibrary_t* ml, int64_t playlistId, const s
 
 //-------------------------------------------------------------------------------------------------
 
-/* Q_INVOKABLE */ void MLPlaylistListModel::create(const QString & name, const QVariantList& initialItems)
+/* Q_INVOKABLE */ void MLPlaylistListModel::create(const QString & name, const QVariantList& initialItems,
+                                                   const QUrl & thumbnail)
 {
     assert(m_mediaLib);
 
@@ -94,21 +144,28 @@ void appendMediaIntoPlaylist(vlc_medialibrary_t* ml, int64_t playlistId, const s
 
     setTransactionPending(true);
 
+    const QString picture = thumbnail.isLocalFile() ? thumbnail.toLocalFile() : QString();
+
     m_mediaLib->runOnMLThread<Ctx>(this,
     //ML thread
-    [name](vlc_medialibrary_t* ml, Ctx& ctx)
+    [name, picture](vlc_medialibrary_t* ml, Ctx& ctx)
     {
         vlc_ml_playlist_t * playlist = vlc_ml_playlist_create(ml, qtu(name));
         if (playlist)
         {
             ctx.createdPlaylistId = MLItemId(playlist->i_id, VLC_ML_PARENT_UNKNOWN);
+            // kept before the playlist is listed (the reset after the
+            // transaction): its cover is the picture from the start
+            if (!picture.isEmpty())
+                saveThumbnail(picture, thumbnailPath(playlist->i_id, playlist->i_creation_date));
             vlc_ml_playlist_release(playlist);
         }
     },
     [this, initialItems](quint64, const Ctx& ctx) {
         endTransaction(); // this is intentionally called here and not after `append()`
 
-        if (ctx.createdPlaylistId.id)
+        // an empty playlist has nothing to append
+        if (ctx.createdPlaylistId.id && !initialItems.isEmpty())
         {
             append(ctx.createdPlaylistId, initialItems);
         }
@@ -199,7 +256,10 @@ void appendMediaIntoPlaylist(vlc_medialibrary_t* ml, int64_t playlistId, const s
     [itemList](vlc_medialibrary_t* ml)
     {
         for (auto itemId : itemList)
-            vlc_ml_playlist_delete(ml, itemId.id);
+        {
+            if (vlc_ml_playlist_delete(ml, itemId.id) == VLC_SUCCESS)
+                removeThumbnails(itemId.id);
+        }
     },
     //UI thread
     [this](){
@@ -419,6 +479,11 @@ bool MLPlaylistListModel::setTransactionPending(const bool value)
 
 QString MLPlaylistListModel::getCover(const MLPlaylist * playlist) const
 {
+    // the thumbnail chosen for the playlist, else its media
+    const QString chosen = thumbnailPath(playlist->getId().id, playlist->getCreationDate());
+    if (!chosen.isEmpty() && QFileInfo::exists(chosen))
+        return QUrl::fromLocalFile(chosen).toString();
+
     return MLCustomCover::url(playlist->getId()
                             , m_coverSize
                             , m_coverDefault

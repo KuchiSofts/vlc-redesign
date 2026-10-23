@@ -137,8 +137,16 @@ class MainCtx : public QObject
     Q_PROPERTY(int mouseHideTimeout READ mouseHideTimeout NOTIFY mouseHideTimeoutChanged FINAL)
     // Pixels the mouse moves before the controls of the fullscreen show
     Q_PROPERTY(int fsSensitivity READ fsSensitivity NOTIFY fsSensitivityChanged FINAL)
+    // "Show controls in fullscreen" of the settings (qt-fs-controller): the
+    // mouse shows them in fullscreen
+    Q_PROPERTY(bool fullscreenControls READ fullscreenControls NOTIFY fullscreenControlsChanged FINAL)
     // "Double click on the video" of the settings: 0 nothing, 1 fullscreen
     Q_PROPERTY(int doubleClickAction READ doubleClickAction NOTIFY doubleClickActionChanged FINAL)
+    // "Show confirmation and error dialogs" of the settings (qt-error-dialogs)
+    Q_PROPERTY(bool showErrorDialogs READ showErrorDialogs NOTIFY showErrorDialogsChanged FINAL)
+    // "Always show the player bar" of the settings: the bar of the library
+    // stays while nothing plays
+    Q_PROPERTY(bool alwaysShowPlayerBar READ alwaysShowPlayerBar NOTIFY alwaysShowPlayerBarChanged FINAL)
     Q_PROPERTY(bool albumSections READ albumSections WRITE setAlbumSections NOTIFY albumSectionsChanged FINAL)
     Q_PROPERTY(bool lyricsMode READ lyricsMode WRITE setLyricsMode NOTIFY lyricsModeChanged FINAL)
     Q_PROPERTY(bool usingTouch READ usingTouch NOTIFY usingTouchChanged FINAL)
@@ -290,7 +298,10 @@ public:
 
     int mouseHideTimeout() const { return m_mouseHideTimeout; }
     int fsSensitivity() const { return m_fsSensitivity; }
+    bool fullscreenControls() const { return m_fullscreenControls; }
     int doubleClickAction() const { return m_doubleClickAction; }
+    bool showErrorDialogs() const { return m_showErrorDialogs; }
+    bool alwaysShowPlayerBar() const { return m_alwaysShowPlayerBar; }
 
     bool usingTouch() const { return m_usingTouch; }
 
@@ -503,7 +514,10 @@ protected:
 
     int m_mouseHideTimeout = 1000;
     int m_fsSensitivity = 3;
+    bool m_fullscreenControls = true;
     int m_doubleClickAction = 1;
+    bool m_showErrorDialogs = true;
+    bool m_alwaysShowPlayerBar = false;
 
     bool m_albumSections = true;
 
@@ -639,7 +653,10 @@ signals:
 
     void mouseHideTimeoutChanged();
     void fsSensitivityChanged();
+    void fullscreenControlsChanged();
     void doubleClickActionChanged();
+    void showErrorDialogsChanged();
+    void alwaysShowPlayerBarChanged();
 
     void navBoxToggled();
 

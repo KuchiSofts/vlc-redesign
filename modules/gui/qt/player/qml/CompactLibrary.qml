@@ -39,6 +39,16 @@ FocusScope {
     }
 
     readonly property bool _mlAvailable: MainCtx.mediaLibraryAvailable
+    // The folder shown holds the song playing (the paths compared: the same
+    // file has URLs encoded differently)
+    readonly property bool _songFolder: {
+        if (location.section !== "folder" || !Player.isStarted
+            || Player.videoTracks.count > 0 || Player.audioTracks.count === 0)
+            return false
+        const folder = Helpers.localPathFromUrl(location.folder ?? "").toLowerCase()
+        const song = Helpers.localPathFromUrl(Player.url).toLowerCase()
+        return folder !== "" && song.startsWith(folder.endsWith("\\") ? folder : folder + "\\")
+    }
     readonly property var _sections: [
         { section: "home", icon: "home", title: qsTr("Home") },
         { section: "videos", icon: "videos", title: qsTr("Videos") },
@@ -131,6 +141,21 @@ FocusScope {
         }
     }
 
+    // The Open media menu of Add (a folder), under its row
+    OpenMediaButton {
+        id: addMediaButton
+        x: list.x + list.leftMargin
+        y: list.y + list.topMargin
+        width: VLCStyle.dp(32, VLCStyle.scale)
+        height: width
+        // (under the list: the row takes the clicks)
+        z: -1
+        opacity: 0
+        enabled: root.location.section === "folder"
+        iconOnly: true
+        libraryFolder: true
+    }
+
     LocalFolderModel {
         id: folderModel
         folder: root.location.section === "folder" ? root.location.folder : ""
@@ -202,9 +227,12 @@ FocusScope {
                                                     || (modelData.section === "playlists"
                                                         && root.location.section === "playlist")
                     iconName: modelData.icon
-                    // Figma 2160:8732: a folder shown, the Videos icon filled (grey)
+                    // Figma 2160:8732: a folder shown, the Videos icon filled
+                    // (grey); the folder of the song playing, the Music one
+                    // (4778:25123)
                     iconState: current && modelData.icon !== "recent" ? "active"
-                             : (root.location.section === "folder" && modelData.section === "videos") ? "selected"
+                             : (root.location.section === "folder"
+                                && modelData.section === (root._songFolder ? "music" : "videos")) ? "selected"
                              : "default"
                     description: modelData.title
                     onClicked: {
@@ -535,8 +563,11 @@ FocusScope {
 
             header: Loader {
                 width: list.width - list.leftMargin - list.rightMargin
-                // (playlists are created in the media library only)
-                active: root.location.section === "playlists" && root._mlAvailable
+                // (playlists are created in the media library only); a
+                // folder: Add, the Open media menu of the library's folders
+                // (Figma 4778:25123)
+                active: (root.location.section === "playlists" && root._mlAvailable)
+                        || root.location.section === "folder"
                 // a row of 32 and the gap of the list
                 height: active ? VLCStyle.dp(42, VLCStyle.scale) : 0
                 sourceComponent: Item {
@@ -550,7 +581,7 @@ FocusScope {
                     Text {
                         x: VLCStyle.dp(42, VLCStyle.scale)
                         height: VLCStyle.dp(32, VLCStyle.scale)
-                        text: qsTr("Create playlist")
+                        text: root.location.section === "folder" ? qsTr("Add") : qsTr("Create playlist")
                         color: VLCStyle.redesign.color("#6B6B6B", "#7c7c7b")
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: VLCStyle.redesign.fontNormal
@@ -564,7 +595,12 @@ FocusScope {
                     }
                 }
                 TapHandler {
-                    onTapped: root._createPlaylist()
+                    onTapped: {
+                        if (root.location.section === "folder")
+                            addMediaButton.clicked()
+                        else
+                            root._createPlaylist()
+                    }
                 }
             }
 
@@ -578,19 +614,22 @@ FocusScope {
                 // Songs read "title - artist" as in the design
                 readonly property string label: {
                     const name = model.name ?? model.title ?? ""
-                    return (root.location.section === "music" && model.main_artist)
-                           ? name + " - " + model.main_artist : name
-                }
-                // the paths compared: the same file has URLs encoded differently
-                readonly property bool playing: {
-                    const mrl = String(model.mrl ?? model.url ?? "")
-                    return mrl !== "" && !isFolder
-                           && Helpers.localPathFromUrl(Player.url) === Helpers.localPathFromUrl(mrl)
+                    if (root.location.section === "music" && model.main_artist)
+                        return name + " - " + model.main_artist
+                    // a song of a folder the library knows, as well
+                    // (Figma 4778:25123); the videos keep their file name
+                    if (root.location.section === "folder" && model.title && model.main_artist)
+                        return model.title + " - " + model.main_artist
+                    return name
                 }
                 // Media of the library (Figma "media"): an accent line under
                 // the thumbnail, the title dimmed once watched to the end
                 readonly property real progress: Math.max(0, Number(model.progress ?? 0))
-                readonly property bool watched: Number(model.playcount ?? 0) > 0 || progress > 0
+                // (not a song: one is played again, Figma 4778:25123 shows
+                // its songs of Listen Again as the others)
+                readonly property bool song: root.location.section === "music"
+                                             || (root.location.section === "folder" && !!model.main_artist)
+                readonly property bool watched: !song && (Number(model.playcount ?? 0) > 0 || progress > 0)
                 // Videos of a folder show a frame, decoded on demand, songs
                 // the artwork of the library
                 readonly property string cover: {
@@ -657,7 +696,7 @@ FocusScope {
                         Rectangle {
                             anchors.left: parent.left
                             anchors.bottom: parent.bottom
-                            visible: row.progress > 0 || row.watched
+                            visible: !row.song && (row.progress > 0 || row.watched)
                             width: parent.width * (row.progress > 0 ? Math.min(1, row.progress) : 1)
                             height: VLCStyle.dp(2, VLCStyle.scale)
                             color: VLCStyle.redesign.accent
@@ -679,8 +718,9 @@ FocusScope {
                         elide: Text.ElideMiddle
                         // Figma "Player - Light": as dark, #969696 and watched
                         // #6B6B6B
-                        color: row.playing ? VLCStyle.redesign.accent
-                             : row.watched ? VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
+                        // (the media playing is not marked: Figma 4778:25123,
+                        // 970:3308)
+                        color: row.watched ? VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                                            : (VLCStyle.palette.isDark ? VLCStyle.redesign.textSecondary : "#969696")
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: VLCStyle.redesign.fontNormal

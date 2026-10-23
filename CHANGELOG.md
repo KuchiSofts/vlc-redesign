@@ -97,6 +97,13 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
 - **The rows of the player's menu were not in line** (*Hide player UI* further in than the others).
 - **HDR10+ and Dolby Vision said nothing about why they cannot be chosen**: the reason now shows under the pointer
   (Windows offers no way for a player to send them to a display).
+- **Settings changed just before quitting were lost**: Settings keeps its changes when it closes (there is no Apply
+  button), but quitting VLC with the window still open dropped them. They are kept now.
+- **The library beside the video listed Home backwards**: Continue Watching and Listen Again showed the media played
+  first first; they come in Home's order now, the videos by their file name as Home names them. *Videos* listed the
+  music folders of the library too: it lists the folders holding videos, *Music › Songs* the ones holding songs.
+- **A folder of the library opened from *Videos* had its path as its name**, without its separators
+  ("C:VideosFilms").
 
 ### Added
 
@@ -118,6 +125,14 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
   and its file.
 - **Type a time to go to**: a click on the time of the bar makes it a field; type 1:02:10, 62:10 or 130 and press
   Enter (as the design draws it).
+- **The visualizations of the design in Settings**: *Settings › Audio › Visualizer* offers Spectrometer, Scope,
+  Spectrum, Waveform and VU meter with their icons (before: only "Visualizer filter"), then Goom, projectM and the 3D
+  spectrum.
+- **The library beside the video goes everywhere the library does**: Home with the sections of the library's Home
+  (a section's arrow lists all of it), *Videos* and its folders, *Music* with Songs, Albums, Artists and Genres, and
+  *Network* with Add Network Stream and the Internet services, each with its ⋯ menu (*Rescan library*, *Add folder
+  to library*, *Add network stream*).
+- **The queue of the mini player is part of its card**, as the design draws it: drag a row by its handle to move it.
 
 ### Changed
 
@@ -137,6 +152,12 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
   the design has them and its waveform is as high; a folder of songs lists "title - artist" with Add; Customize
   Player lists its items in the design's order with its title alone (a profile is renamed, cloned or deleted from
   its row in the profiles' list). A row of a folder shows the pointer, not the media playing.
+- **HDR, the visualizer and the equalizer presets choose as the design's dropdowns**: the HDR and visualizer popups
+  of the player are the field and list of the design, and the equalizer presets (Settings and the effects) start
+  with *None* and draw the curve of each preset.
+- **The effects panels as the design draws them**: each opens and closes as a panel, its sliders are the ones of the
+  settings, the equalizer has its fields of values, Crop its fields of pixels. *Reset* was cut to "Rese" and
+  *Two-pass* had no name: both read in full now.
 - **The empty player shows Figma's pixel cat**: the player with nothing to play shows the picture of the design,
   the white cat on the floor of a dark room, drawn sharp at any size (it uses no picture file or memory).
 

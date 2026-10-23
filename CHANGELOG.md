@@ -49,7 +49,9 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
   nothing after the last subtitle, often minutes before the end of the film, when the film started while casting
   (the next one of a playlist, or one opened during a cast). The TV now shows every film to its last picture.
 - **Casting started twice**: the TV loaded a film, then loaded it again a moment later and missed its first second,
-  at the start of every cast, for the next film of a playlist, and when a film went on from where it was left.
+  at the start of every cast, for the next film of a playlist, and when a film went on from where it was left. Cast
+  from the middle of a film, the TV got the sound alone first, and the picture only from the next key frame (4 s
+  later in a 4K film). The TV now starts once, with the picture and the sound together.
 - **Quitting after a film took up to 10 seconds** right after installing or updating: when a film stopped, the
   progress bar started its sound analyzer (made for songs) on it, and Windows checks a new program before it runs.
   It runs only for a song now, without holding the window, and the installer has it checked.
@@ -104,16 +106,20 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
   `net_Read()` or the file output retry a dead socket forever.
 - Chromecast stream output: at the end of the media the chain is closed first (its muxer and transcoder write what
   they hold), then the TV reads until the fifo is empty or it stops reading for 15 s. At the start of each media the
-  first blocks wait until every stream sent some (or two seconds of media): the chain made with the first stream
-  was made again with the next, and the TV loaded twice. A stream is added with its first block, and an MP4 file
-  gives about a second of sound before its first picture after a seek (casting from the middle of a film).
+  first blocks wait until the sound and the picture both sent some (at most 10 s of media or 3 s of waiting): the
+  chain made with the first stream was made again with the next, and the TV loaded twice. A stream is added with
+  its first block (a subtitle stream before any), and an MP4 file gives about a second of sound before its first
+  picture after a seek.
 - `demux_chromecast`: the drain result of `ES_OUT_DRAIN` was assigned to a `ret` declared in the EOF block (upstream
   since `1ebb26bbc9`, 2025), so the demux's EOF was returned and the input ended as soon as all was read, instead of
   when the TV reported FINISHED.
 - Input: a renderer's demux filter is put on the master source only. A subtitle slave got `demux_chromecast` too when
   the input started with a renderer set, and its EOF was sent to the stream output as the end of the media. Seeks
   queued before the first `demux_Demux()` (start time, the position to resume from) are done before it: about 250 ms
-  were read from the start, decoded and flushed, and a renderer had loaded them.
+  were read from the start, decoded and flushed, and a renderer had loaded them. Going to a renderer from here, the
+  input seeks (not precisely) to where it played here (`vlc_player_SetRenderer()` gives the player's time in
+  `renderer-enter-time`; else where the input read): the streams were started again from where the input read, in
+  the middle of a group of pictures, so the video waited for the next key frame while the sound went on.
 - Renderers: x264 conversions use `tune=zerolatency` (sliced threads, no lookahead or B-frames): 287 MB instead of
   571 MB, the same processor time and 4.2 Mb/s instead of 2.5 (measured, 1080p with a subtitle). Above 31 fps the
   frame rate is halved (50 to 25, 59.94 to 29.97, 120 to 30) instead of forced to 24; 30 fps comes as 1000000/33333

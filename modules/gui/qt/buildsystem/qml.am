@@ -211,6 +211,7 @@ libqml_module_player_a_QML = \
 	player/qml/SubtitleSyncTimeline.qml \
 	player/qml/ControlBar.qml \
 	player/qml/CompactLibrary.qml \
+	player/qml/CompactLibraryModels.qml \
 	player/qml/SeekFramePreview.qml \
 	player/qml/PlaybackSpeed.qml \
 	player/qml/LyricsFlickable.qml \

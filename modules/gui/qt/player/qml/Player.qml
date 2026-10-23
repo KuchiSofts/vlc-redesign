@@ -606,8 +606,16 @@ FocusScope {
 
         sourceComponent: CompactLibrary {
             onOpenLibraryRequested: (section) => {
+                // (the places of the panel in a section: the section's page;
+                // its Network, the services of Discover)
                 const uris = {
-                    home: ["home"], videos: ["video", "all"], music: ["music"], network: ["network"],
+                    home: ["home"], homeall: ["home"], videos: ["video", "all"],
+                    music: ["music"], songs: ["music"],
+                    albums: ["music", "albums"], album: ["music", "albums"],
+                    artists: ["music", "artists"], artist: ["music", "artists"],
+                    genres: ["music", "genres"], genre: ["music", "genres"],
+                    network: ["discover", "services"], service: ["discover", "services"],
+                    netfolder: ["discover", "services"],
                     playlists: ["video", "playlists"], playlist: ["video", "playlists"],
                     recent: ["home", "recent"], folder: ["network"]
                 }

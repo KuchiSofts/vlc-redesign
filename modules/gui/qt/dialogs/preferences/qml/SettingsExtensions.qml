@@ -67,7 +67,12 @@ SettingsSectionTitle {
             model: root.addons
             currentIndex: -1
             boundsBehavior: Flickable.StopAtBounds
-            ScrollBar.vertical: ScrollBar { policy: ScrollBar.AsNeeded }
+            ScrollBar.vertical: ScrollBar {
+                policy: ScrollBar.AsNeeded
+                // Basic's handle is light grey: darker in the light theme
+                palette.mid: VLCStyle.palette.isDark ? undefined : "#6b6b6b"
+                palette.dark: VLCStyle.palette.isDark ? undefined : "#2e2e2e"
+            }
             delegate: Item {
                 id: addonRow
                 required property int index

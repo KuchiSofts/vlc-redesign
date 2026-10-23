@@ -1198,6 +1198,32 @@ static void on_player_timer_paused(vlc_tick_t system_date, void *data)
             q->updatePosition();
             q->updateTime(system_date, false);
         }
+        else if (system_date != VLC_TICK_INVALID
+              && that->m_player_time.system_date == VLC_TICK_INVALID)
+        {
+            // Paused before the timer gave any point (a file opened paused:
+            // "Start playing as soon as a file opens" off): the player says
+            // where the media is and how long it is, else the bar showed no
+            // time nor length until it played
+            vlc_tick_t time, length;
+            double position;
+            {
+                vlc_player_locker lock{ that->m_player };
+                time = vlc_player_GetTime( that->m_player );
+                length = vlc_player_GetLength( that->m_player );
+                position = vlc_player_GetPosition( that->m_player );
+            }
+            if (length > 0 && that->m_length.toVLCTick() != length)
+            {
+                that->m_length = VLCDuration(length);
+                emit q->lengthChanged(that->m_length);
+            }
+            // (the start: VLC_TICK_0, as the timer's first point)
+            that->m_time = time != VLC_TICK_INVALID ? time : VLC_TICK_0;
+            that->m_position = position >= 0. ? position : 0.;
+            q->updatePosition();
+            q->updateTime(VLC_TICK_INVALID, false);
+        }
 
         // And stop the timers.
         that->m_position_timer.stop();

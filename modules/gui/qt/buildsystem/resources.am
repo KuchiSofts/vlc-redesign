@@ -18,6 +18,8 @@ libqt_plugin_la_RES = \
 	pixmaps/redesign/icons/sort/default.png \
 	pixmaps/redesign/icons/0/default.png \
 	pixmaps/redesign/icons/sort/active.png \
+	pixmaps/redesign/icons/sort/active-grey.png \
+	pixmaps/redesign/icons/sort/active-accent.png \
 	pixmaps/redesign/icons/fullscreen/active.png \
 	pixmaps/redesign/icons/streaming/selected.png \
 	pixmaps/redesign/icons/link/active.png \
@@ -42,6 +44,8 @@ libqt_plugin_la_RES = \
 	pixmaps/redesign/icons/cast/large.png \
 	pixmaps/redesign/icons/artist/default.png 	pixmaps/redesign/icons/artist/default@2x.png \
 	pixmaps/redesign/icons/ui/default.png 	pixmaps/redesign/icons/ui/default@2x.png \
+	pixmaps/redesign/icons/ui/default-grey.png 	pixmaps/redesign/icons/ui/default-grey@2x.png \
+	pixmaps/redesign/icons/ui/default-accent.png 	pixmaps/redesign/icons/ui/default-accent@2x.png \
 	pixmaps/redesign/icons/close/default.png 	pixmaps/redesign/icons/close/default@2x.png \
 	pixmaps/redesign/icons/home/selected.png \
 	pixmaps/redesign/icons/chevron-right/default.png \
@@ -88,6 +92,8 @@ libqt_plugin_la_RES = \
 	pixmaps/redesign/icons/disc/default.png 	pixmaps/redesign/icons/disc/default@2x.png \
 	pixmaps/redesign/icons/recent/default.png 	pixmaps/redesign/icons/recent/default@2x.png \
 	pixmaps/redesign/icons/recent/active.png 	pixmaps/redesign/icons/recent/active@2x.png \
+	pixmaps/redesign/icons/recent/active-grey.png 	pixmaps/redesign/icons/recent/active-grey@2x.png \
+	pixmaps/redesign/icons/recent/active-accent.png 	pixmaps/redesign/icons/recent/active-accent@2x.png \
 	pixmaps/redesign/icons/folder/large.png \
 	pixmaps/redesign/icons/repeat/default.png \
 	pixmaps/redesign/icons/repeat/active.png \
@@ -262,9 +268,17 @@ libqt_plugin_la_RES = \
 	pixmaps/redesign/volume-mask.svg \
 	pixmaps/redesign/volume.svg \
 	pixmaps/redesign/icons/scope/default.png \
+	pixmaps/redesign/icons/scope/default-grey.png \
+	pixmaps/redesign/icons/scope/default-accent.png \
 	pixmaps/redesign/icons/spectrometer/default.png \
+	pixmaps/redesign/icons/spectrometer/default-grey.png \
+	pixmaps/redesign/icons/spectrometer/default-accent.png \
 	pixmaps/redesign/icons/spectrum/default.png \
+	pixmaps/redesign/icons/spectrum/default-grey.png \
+	pixmaps/redesign/icons/spectrum/default-accent.png \
 	pixmaps/redesign/icons/waveform/default.png \
+	pixmaps/redesign/icons/waveform/default-grey.png \
+	pixmaps/redesign/icons/waveform/default-accent.png \
 	pixmaps/redesign/player/corner-tl-dark.png \
 	pixmaps/redesign/player/corner-tr-dark.png \
 	pixmaps/redesign/player/corner-bl-dark.png \

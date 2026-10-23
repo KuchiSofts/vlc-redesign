@@ -1,6 +1,7 @@
 /* Copyright (C) 2026 VLC authors and VideoLAN. GPL version 2 or later. */
 import QtQuick
 import QtQuick.Controls.Basic as Controls
+import QtQuick.Controls.impl as Impl
 import VLC.Dialogs
 import VLC.MainInterface
 import VLC.Style
@@ -53,8 +54,9 @@ Controls.Popup {
                         font.family: VLCStyle.redesign.fontFamily; font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                         verticalAlignment: Text.AlignVCenter
                     }
-                    Image { width: 24; height: 24; anchors.verticalCenter: parent.verticalCenter
-                        source: "qrc:///redesign/track-check-active.png"; visible: output.selectedIndex === row.index }
+                    Impl.ColorImage { width: 24; height: 24; anchors.verticalCenter: parent.verticalCenter
+                        source: "qrc:///redesign/track-check-active.png"; visible: output.selectedIndex === row.index
+                        color: VLCStyle.redesign.accentTint }
                 }
             }
         }

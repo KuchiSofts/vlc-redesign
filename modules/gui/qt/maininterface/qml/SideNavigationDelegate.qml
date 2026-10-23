@@ -18,6 +18,7 @@
 
 import QtQuick
 import QtQuick.Templates as T
+import QtQuick.Controls.impl as Impl
 import QtQuick.Layouts
 
 
@@ -47,7 +48,6 @@ T.ItemDelegate {
         "playlists": "playlist", "recent": "recent", "add": "add"
     })[referenceIconName] ?? ""
     readonly property bool _useIconSet: iconSetName.length > 0 && VLCStyle.palette.isDark
-                                        && (!checked || Qt.colorEqual(VLCStyle.redesign.accent, VLCStyle.redesign.logoColor))
 
     readonly property url imageSource: {
         if (referenceIconName.length > 0)
@@ -155,18 +155,26 @@ T.ItemDelegate {
             Layout.preferredWidth: control.iconSlotWidth
             Layout.fillHeight: true
 
-            Image {
+            Impl.ColorImage {
                 id: referenceIcon
                 anchors.centerIn: parent
                 width: VLCStyle.redesign.iconSize
                 height: width
                 sourceSize: Qt.size(width, height)
+                // The filled icon of the current page is drawn in the default
+                // accent: tinted with another (Recent, two-tone: its grey
+                // part, the hands above in the accent)
+                readonly property bool _tinted: control._useIconSet && control.checked
+                                                && !VLCStyle.redesign.defaultAccent
+                readonly property bool _twoTone: _tinted && control.iconSetName === "recent"
+                color: _tinted && !_twoTone ? VLCStyle.redesign.accent : "transparent"
                 // Drawn in #8F8F8F: the current page takes the accent, the
                 // light theme its muted text color
                 source: {
                     if (control._useIconSet)
                         return "qrc:///redesign/icons/" + control.iconSetName + "/"
-                               + (control.checked ? "active"
+                               + (referenceIcon._twoTone ? "active-grey"
+                                  : control.checked ? "active"
                                   : control.contextual && control.iconSetName === "videos" ? "selected"
                                   : "default") + ".png"
                     if (control.imageSource.toString().length === 0)
@@ -182,6 +190,16 @@ T.ItemDelegate {
                 opacity: control.enabled ? 1.0 : 0.4
                 fillMode: Image.PreserveAspectFit
                 smooth: !control._useIconSet
+
+                Impl.ColorImage {
+                    anchors.fill: parent
+                    visible: referenceIcon._twoTone
+                    source: visible ? "qrc:///redesign/icons/recent/active-accent.png" : ""
+                    sourceSize: parent.sourceSize
+                    fillMode: parent.fillMode
+                    smooth: parent.smooth
+                    color: VLCStyle.redesign.accent
+                }
             }
 
             Widgets.IconLabel {

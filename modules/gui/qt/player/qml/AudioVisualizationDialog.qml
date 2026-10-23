@@ -2,6 +2,7 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls.Basic as Controls
+import QtQuick.Controls.impl as Impl
 import VLC.MainInterface
 import VLC.Player
 import VLC.Style
@@ -70,21 +71,33 @@ Controls.Popup {
                 contentItem: RowLayout {
                     spacing: 10
                     Image {
+                        id: modeIcon
                         Layout.preferredWidth: row.index === 0 ? 0 : 24; Layout.preferredHeight: 24
                         // display can be undefined while the model is rebuilt
                         readonly property string mode: String(row.model.display ?? "").toLowerCase()
-                        source: row.index === 0 ? "" : "qrc:///redesign/icons/" +
+                        readonly property string iconDir: "qrc:///redesign/icons/" +
                             (mode.includes("spectrometer") ? "spectrometer" :
                              mode.includes("spectrum") ? "spectrum" :
-                             mode.includes("scope") ? "scope" : "waveform") + "/default.png"
+                             mode.includes("scope") ? "scope" : "waveform")
+                        // drawn in grey and the accent dim: with another
+                        // accent, the grey part and the rest tinted above it
+                        readonly property bool twoTone: row.index !== 0 && !VLCStyle.redesign.defaultAccent
+                        source: row.index === 0 ? "" : iconDir + (twoTone ? "/default-grey.png" : "/default.png")
+                        Impl.ColorImage {
+                            anchors.fill: parent
+                            visible: modeIcon.twoTone
+                            source: visible ? modeIcon.iconDir + "/default-accent.png" : ""
+                            color: VLCStyle.redesign.accentDim
+                        }
                     }
                     Text {
                         Layout.fillWidth: true; verticalAlignment: Text.AlignVCenter
                         text: row.text; color: VLCStyle.redesign.color("#969696", "#4d4d4d")
                         font.family: VLCStyle.redesign.fontFamily; font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                     }
-                    Image { Layout.preferredWidth: 24; Layout.preferredHeight: 24
-                        source: "qrc:///redesign/track-check-active.png"; visible: row.checked }
+                    Impl.ColorImage { Layout.preferredWidth: 24; Layout.preferredHeight: 24
+                        source: "qrc:///redesign/track-check-active.png"; visible: row.checked
+                        color: VLCStyle.redesign.accentTint }
                 }
             }
             Text {

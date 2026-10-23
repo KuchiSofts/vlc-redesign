@@ -76,6 +76,10 @@ QtObject {
                                            : Qt.rgba(accent.r * 0.81, accent.g * 0.81, accent.b * 0.81, 1)
         readonly property color accentBackground: Qt.colorEqual(accent, "#D37918") ? "#371F06"
                                                   : Qt.rgba(accent.r * 0.26, accent.g * 0.26, accent.b * 0.26, 1)
+        // The images drawn in the default accent are shown as they are with
+        // it, a ColorImage tints them with the others (transparent: no tint)
+        readonly property bool defaultAccent: Qt.colorEqual(accent, "#D37918")
+        readonly property color accentTint: defaultAccent ? "transparent" : accent
         readonly property color windowBackground: "#0E0E0E"
         readonly property color sidebarBackground: "#191919"
         readonly property color controlBackground: "#191919"

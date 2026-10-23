@@ -41,7 +41,11 @@ static const Option entries[] = {
     {"interface", "qt:redesign/always-show-player-bar"},
     {"interface", "qt-system-tray"}, {"interface", "qt-start-minimized"},
     {"interface", "qt-notification"}, {"interface", "qt:redesign/notification-duration"},
-    // (no "playlist-tree": nothing reads it in VLC 4)
+    // (no "playlist-tree", the Playlist section of the design: nothing
+    // reads it in VLC 4. Its play queue is flat: vlc_playlist_t replaces an
+    // item that expands (a folder, a playlist file) by its children and
+    // keeps no parent, and the views of the queue (PlaylistListModel, a
+    // list) move, select and drop by row; a tree needs a new queue model)
     {"interface", "qt-opacity"}, {"interface", "qt-pause-minimized"},
     {"interface", "qt-auto-raise"}, {"interface", "qt-bgcone"},
     {"interface", "qt-embedded-open"}, {"interface", "qt-icon-change"},

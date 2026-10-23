@@ -39,6 +39,8 @@
 
 
 #include <vlc_httpd.h>
+#include <vlc_threads.h>
+#include <vlc_tick.h>
 
 /*****************************************************************************
  * Module descriptor
@@ -110,7 +112,66 @@ typedef struct
     bool                b_header_complete;
     bool                b_metacube;
     bool                b_has_keyframes;
+
+    /* a DLNA MPEG-TS stream: padding while it waits (Stuff) */
+    bool                b_stuffing;
+    vlc_thread_t        stuff_thread;
+    vlc_mutex_t         lock;
+    vlc_cond_t          wait;
+    bool                b_stop;
+    bool                b_started;
+    vlc_tick_t          i_last_write;
+    size_t              i_stuffed;
 } sout_access_out_sys_t;
+
+/* A paused TV goes on reading the stream, until it has enough of it
+ * ahead, and gives up when nothing comes for about 10 seconds: a Samsung
+ * TV paused with less than about 5 seconds of the stream stops with an
+ * error (measured on a 2017 UE55MU8000; it reads null packets at once,
+ * and stopped 10 s after they did). While the stream waits (a pause), it
+ * gets a trickle of null MPEG-TS packets (PID 0x1fff, which every reader
+ * drops). At most STUFF_MAX each time: the stream's buffer (5 MB) keeps
+ * them for a TV that no longer reads (at this rate, for minutes). */
+#define STUFF_IDLE      VLC_TICK_FROM_MS(500)
+#define STUFF_PERIOD    VLC_TICK_FROM_MS(100)
+#define STUFF_PACKETS   8                   /* 1.5 KB each 100 ms */
+#define STUFF_MAX       (64 * 1024 * 1024)
+
+static void *Stuff( void *data )
+{
+    sout_access_out_t *p_access = data;
+    sout_access_out_sys_t *p_sys = p_access->p_sys;
+
+    vlc_thread_set_name( "vlc-http-stuff" );
+    vlc_mutex_lock( &p_sys->lock );
+    while( !p_sys->b_stop )
+    {
+        const vlc_tick_t now = vlc_tick_now();
+        if( p_sys->b_started && now - p_sys->i_last_write >= STUFF_IDLE
+         && p_sys->i_stuffed < STUFF_MAX )
+        {
+            block_t *p_block = block_Alloc( STUFF_PACKETS * 188 );
+            if( p_block != NULL )
+            {
+                for( int i = 0; i < STUFF_PACKETS; i++ )
+                {
+                    uint8_t *p = &p_block->p_buffer[188 * i];
+                    p[0] = 0x47;
+                    p[1] = 0x1f;
+                    p[2] = 0xff;
+                    p[3] = 0x10;
+                    memset( &p[4], 0xff, 184 );
+                }
+                httpd_StreamSend( p_sys->p_httpd_stream, p_block );
+                p_sys->i_stuffed += p_block->i_buffer;
+                block_Release( p_block );
+            }
+        }
+        vlc_cond_timedwait( &p_sys->wait, &p_sys->lock, now + STUFF_PERIOD );
+    }
+    vlc_mutex_unlock( &p_sys->lock );
+    return NULL;
+}
 
 /* Definitions for the Metacube2 protocol, used to communicate with Cubemap. */
 
@@ -260,6 +321,9 @@ static int Open( vlc_object_t *p_this )
 
     p_sys->b_metacube = var_GetBool( p_access, SOUT_CFG_PREFIX "metacube" );
     p_sys->b_has_keyframes = false;
+    p_sys->b_stuffing = false;
+    const bool b_ts = psz_mime != NULL && ( !strcmp( psz_mime, "video/mpeg" )
+                                         || !strcmp( psz_mime, "video/mp2t" ) );
 
     p_sys->p_httpd_stream =
         httpd_StreamNew( p_sys->p_httpd_host, path, psz_mime,
@@ -314,6 +378,20 @@ static int Open( vlc_object_t *p_this )
     p_access->pf_write       = Write;
     p_access->pf_control     = Control;
 
+    /* a TV's MPEG-TS stream: padded while it waits */
+    char *psz_tv = b_ts ? var_GetNonEmptyString( p_access, SOUT_CFG_PREFIX "dlna" ) : NULL;
+    if( psz_tv != NULL )
+    {
+        free( psz_tv );
+        vlc_mutex_init( &p_sys->lock );
+        vlc_cond_init( &p_sys->wait );
+        p_sys->b_stop = false;
+        p_sys->b_started = false;
+        p_sys->i_last_write = VLC_TICK_INVALID;
+        p_sys->i_stuffed = 0;
+        p_sys->b_stuffing = vlc_clone( &p_sys->stuff_thread, Stuff, p_access ) == 0;
+    }
+
     return VLC_SUCCESS;
 }
 
@@ -325,6 +403,14 @@ static void Close( vlc_object_t * p_this )
     sout_access_out_t       *p_access = (sout_access_out_t*)p_this;
     sout_access_out_sys_t   *p_sys = p_access->p_sys;
 
+    if( p_sys->b_stuffing )
+    {
+        vlc_mutex_lock( &p_sys->lock );
+        p_sys->b_stop = true;
+        vlc_cond_signal( &p_sys->wait );
+        vlc_mutex_unlock( &p_sys->lock );
+        vlc_join( p_sys->stuff_thread, NULL );
+    }
     httpd_StreamDelete( p_sys->p_httpd_stream );
     httpd_HostDelete( p_sys->p_httpd_host );
 
@@ -359,6 +445,10 @@ static ssize_t Write( sout_access_out_t *p_access, block_t *p_buffer )
     sout_access_out_sys_t *p_sys = p_access->p_sys;
     int i_err = 0;
     int i_len = 0;
+
+    /* (no padding between the blocks written) */
+    if( p_sys->b_stuffing )
+        vlc_mutex_lock( &p_sys->lock );
 
     while( p_buffer )
     {
@@ -402,6 +492,8 @@ static ssize_t Write( sout_access_out_t *p_access, block_t *p_buffer )
                 block_t *p_hdr_block = block_Alloc( i_header_size );
                 if( p_hdr_block == NULL ) {
                     block_ChainRelease( p_buffer );
+                    if( p_sys->b_stuffing )
+                        vlc_mutex_unlock( &p_sys->lock );
                     return VLC_ENOMEM;
                 }
                 p_hdr_block->i_flags = 0;
@@ -454,6 +546,8 @@ static ssize_t Write( sout_access_out_t *p_access, block_t *p_buffer )
             p_buffer = block_Realloc( p_buffer, sizeof( hdr ), p_buffer->i_buffer );
             if( p_buffer == NULL ) {
                 block_ChainRelease( p_next );
+                if( p_sys->b_stuffing )
+                    vlc_mutex_unlock( &p_sys->lock );
                 return VLC_ENOMEM;
             }
             memcpy( p_buffer->p_buffer, &hdr, sizeof( hdr ) );
@@ -474,6 +568,14 @@ static ssize_t Write( sout_access_out_t *p_access, block_t *p_buffer )
     if( i_err < 0 )
     {
         block_ChainRelease( p_buffer );
+    }
+
+    if( p_sys->b_stuffing )
+    {
+        p_sys->b_started = true;
+        p_sys->i_last_write = vlc_tick_now();
+        p_sys->i_stuffed = 0;
+        vlc_mutex_unlock( &p_sys->lock );
     }
 
     return( i_err < 0 ? VLC_EGENERIC : i_len );

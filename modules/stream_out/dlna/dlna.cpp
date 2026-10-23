@@ -63,12 +63,13 @@ struct sout_stream_id_sys_t
     bool                  fresh;
 };
 
-/* What is sent goes at the pace of the media, this much ahead (a renderer
- * starting gets that much at once); what is held past FEED_MAX_HOLD goes
- * all the same (the media goes faster); when what comes is later than
- * FEED_SLIP, the input waited: the pace starts again from there. */
-#define FEED_LEAD       VLC_TICK_FROM_SEC(1)
-#define FEED_MAX_HOLD   VLC_TICK_FROM_SEC(5)
+/* What is sent goes at the pace of the media, "lead" ahead (a renderer
+ * starting gets that much at once; after a seek, it shows what it has
+ * first). What is held past FEED_MAX_HOLD more goes all the same (the
+ * media goes faster); when what comes is later than FEED_SLIP, the input
+ * waited: the pace starts again from there. (A paused TV that waits for
+ * more gets null packets from the HTTP output: access_output/http.c.) */
+#define FEED_MAX_HOLD   VLC_TICK_FROM_SEC(4)
 #define FEED_SLIP       VLC_TICK_FROM_SEC(1)
 /* The input reads a subtitle once it read the pictures of its time, a little
  * after them, and the conversion blends the subtitles there are into each
@@ -300,6 +301,8 @@ struct sout_stream_sys_t
     /* how much later than the pace the renderer shows the stream (Measure):
      * the origin of its position is between origin_lo and origin_hi */
     vlc_tick_t                          latency = VLC_TICK_INVALID;
+    /* how far ahead of the pace what is sent goes ("lead") */
+    vlc_tick_t                          feed_lead = VLC_TICK_FROM_SEC(1);
     vlc_tick_t                          measure_at = VLC_TICK_INVALID;
     vlc_tick_t                          measure_until = VLC_TICK_INVALID;
     vlc_tick_t                          origin_lo = VLC_TICK_INVALID;
@@ -375,18 +378,30 @@ ProtocolPtr sout_stream_sys_t::canDecodeAudio(vlc_fourcc_t audio_codec) const
     return nullptr;
 }
 
+/* (an MPEG-TS profile first: a renderer reads a live MPEG-TS stream, while
+ * a fragmented MP4 is read wrong by some: a Samsung TV takes it for a file
+ * of a second, plays that and stops) */
 ProtocolPtr sout_stream_sys_t::canDecodeVideo(vlc_fourcc_t audio_codec,
                 vlc_fourcc_t video_codec) const
 {
-    for (protocol_info_t protocol : device_protocols) {
+    const protocol_info_t *found = nullptr;
+    for (const protocol_info_t &protocol : device_protocols) {
         if (protocol.profile.media == DLNA_CLASS_AV
                 && protocol.profile.audio_codec == audio_codec
                 && protocol.profile.video_codec == video_codec)
         {
-            return std::unique_ptr<protocol_info_t>(new protocol_info_t(protocol));
+            if (protocol.profile.mux == "ts")
+            {
+                found = &protocol;
+                break;
+            }
+            if (found == nullptr)
+                found = &protocol;
         }
     }
-    return nullptr;
+    if (found == nullptr)
+        return nullptr;
+    return std::unique_ptr<protocol_info_t>(new protocol_info_t(*found));
 }
 
 bool sout_stream_sys_t::startSoutChain(sout_stream_t *p_stream,
@@ -913,9 +928,12 @@ void sout_stream_sys_t::CheckTransport( sout_stream_t *p_stream, const std::stri
     {
         if ( stop_at != VLC_TICK_INVALID )
             return;     /* the end: it showed it all */
+        /* (a stream copied as it was that it stops right after it began:
+         * it read it wrong, as a Samsung TV a fragmented MP4: converted) */
+        const bool read_wrong = copies_as_is && now - started_at < VLC_TICK_FROM_SEC(15);
         if ( ( seen_playing || now - started_at >= VLC_TICK_FROM_SEC(4) )
           && ++stopped_checks >= 2 )
-            Fail( p_stream, seen_playing ? "stopped" : "unreadable", 0 );
+            Fail( p_stream, seen_playing && !read_wrong ? "stopped" : "unreadable", 0 );
     }
     else
     {
@@ -1328,7 +1346,7 @@ void sout_stream_sys_t::Retime( sout_stream_t *p_stream, bool force )
         if ( tl_first != VLC_TICK_INVALID && latency != VLC_TICK_INVALID )
         {
             polls = 0;
-            measure_at = vlc_tick_now() + latency + FEED_LEAD + VLC_TICK_FROM_MS(1500);
+            measure_at = vlc_tick_now() + latency + feed_lead + VLC_TICK_FROM_MS(1500);
         }
         ctl_wait.signal();
     }
@@ -1404,11 +1422,11 @@ void sout_stream_sys_t::Feed( sout_stream_t *p_stream, bool all )
                 }
                 if ( base == VLC_TICK_INVALID )
                     Anchor( p_stream, now, ts );
-                else if ( ts > base + FEED_LEAD )
+                else if ( ts > base + feed_lead )
                 {
                     late_since = VLC_TICK_INVALID;
                     const vlc_tick_t last = BlockTs( held.back().block );
-                    if ( last == VLC_TICK_INVALID || last - ts < FEED_MAX_HOLD )
+                    if ( last == VLC_TICK_INVALID || last - ts < feed_lead + FEED_MAX_HOLD )
                         break;
                 }
                 else if ( ts < base - FEED_SLIP )
@@ -2384,6 +2402,7 @@ int OpenSout( vlc_object_t *p_this )
     }
 
     p_sys->device_protocols = p_sys->renderer->GetProtocolInfo();
+    p_sys->feed_lead = VLC_TICK_FROM_MS( var_InheritInteger( p_stream, SOUT_CFG_PREFIX "lead" ) );
 
     p_stream->p_sys = p_sys;
     p_stream->ops = &ops;

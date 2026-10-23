@@ -1288,6 +1288,21 @@ static void UpdatePtsDelay( input_thread_t *p_input )
     if( i_pts_delay < 0 )
         i_pts_delay = 0;
 
+    /* Casting to a DLNA renderer: the input reads ahead what the stream
+     * goes ahead of the TV ("sout-dlna-lead"), else there is no more of it
+     * to send */
+    if( p_sys->p_renderer != NULL )
+    {
+        const char *sout = vlc_renderer_item_sout( p_sys->p_renderer );
+        if( sout != NULL && strncmp( sout, "dlna", 4 ) == 0 )
+        {
+            const vlc_tick_t lead =
+                VLC_TICK_FROM_MS( var_InheritInteger( p_input, "sout-dlna-lead" ) );
+            if( lead > 0 )
+                i_pts_delay = __MAX( i_pts_delay, lead + VLC_TICK_FROM_MS(500) );
+        }
+    }
+
     /* Update cr_average depending on the caching */
     const int i_cr_average = var_GetInteger( p_input, "cr-average" ) * i_pts_delay / DEFAULT_PTS_DELAY;
 
@@ -2721,6 +2736,8 @@ static bool Control( input_thread_t *p_input,
                                         vlc_renderer_item_demux_filter( p_item ) );
                 }
             }
+            /* (it reads further ahead for a DLNA renderer) */
+            UpdatePtsDelay( p_input );
             /* The demux filter of the renderer left goes back to where the
              * device was, from where the stream was read ahead: the
              * subtitle files go there too (else none until the media gets

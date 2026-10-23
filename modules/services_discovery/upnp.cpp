@@ -64,6 +64,9 @@ const char* SATIP_SERVER_DEVICE_TYPE = "urn:ses-com:device:SatIPServer:1";
 
 #define HTTP_PORT_TEXT N_("HTTP port")
 #define HTTP_PORT_LONGTEXT N_("This sets the HTTP port of the local server used to stream the media to the UPnP Renderer.")
+#define LEAD_TEXT N_("Lead (ms)")
+#define LEAD_LONGTEXT N_("How far ahead of the media's pace the stream goes to the renderer. " \
+    "More makes a renderer wait longer before it shows a seek.")
 #define HAS_VIDEO_TEXT N_("Video")
 #define HAS_VIDEO_LONGTEXT N_("The UPnP Renderer can receive video.")
 
@@ -172,6 +175,8 @@ vlc_module_begin()
         add_bool(SOUT_CFG_PREFIX "video", true, HAS_VIDEO_TEXT, HAS_VIDEO_LONGTEXT)
         add_string(SOUT_CFG_PREFIX "base_url", NULL, BASE_URL_TEXT, BASE_URL_LONGTEXT)
         add_string(SOUT_CFG_PREFIX "url", NULL, URL_TEXT, URL_LONGTEXT)
+        add_integer(SOUT_CFG_PREFIX "lead", 1000, LEAD_TEXT, LEAD_LONGTEXT)
+            change_integer_range(500, 10000)
         add_renderer_opts(SOUT_CFG_PREFIX)
 
 #ifdef ENABLE_UPNP_SERVER

@@ -276,16 +276,13 @@ MainViewLoader {
         defaultCover: root._placeHolder
     }
 
-    PlaylistListContextMenu {
+    // Figma "playlist context menu"
+    MLPlaylistContextMenu {
         id: contextMenu
 
         model: root.model
 
-        ctx: MainCtx
-
-        function tableView_popup(index, selectedIndexes, globalPos) {
-            popup(selectedIndexes, globalPos)
-        }
+        parentItem: root
 
         Component.onCompleted: {
             contextMenu.requestDeleteSelectedPlaylists.connect(root.deleteSelectedPlaylists)

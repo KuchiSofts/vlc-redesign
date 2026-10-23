@@ -69,10 +69,12 @@ T.Popup {
         function onPlayingStateChanged() {
             if (root.currentTab === 0 ? audioBridge.activeAudio : videoEffects.activeVideo)
                 root.beginCurrentTab()
+            presetField.refresh()
         }
         function onHasVideoOutputChanged() {
             if (root.currentTab === 1 && videoEffects.activeVideo)
                 root.beginCurrentTab()
+            presetField.refresh()
         }
     }
 
@@ -89,6 +91,7 @@ T.Popup {
         previousGlobalShortcuts = MainCtx.useGlobalShortcuts
         MainCtx.useGlobalShortcuts = false
         beginCurrentTab()
+        presetField.refresh()
         tabs.itemAt(currentTab).forceActiveFocus()
     }
     onClosed: {
@@ -133,6 +136,18 @@ T.Popup {
                 }
                 background: Item {}
             }
+        }
+
+        // Figma 2372:8834 "Setting Preset": the presets of the effects, audio
+        // and video together, above their tabs, 20 in as the panels
+        EffectPresetField {
+            id: presetField
+            Layout.fillWidth: true
+            Layout.leftMargin: VLCStyle.dp(20, VLCStyle.scale)
+            Layout.rightMargin: VLCStyle.dp(20, VLCStyle.scale)
+            Layout.bottomMargin: VLCStyle.dp(8, VLCStyle.scale)
+            audio: audioBridge
+            video: videoEffects
         }
 
         RowLayout {

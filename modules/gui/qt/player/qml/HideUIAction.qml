@@ -6,23 +6,32 @@
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
  *****************************************************************************/
+import QtQuick
 import QtQuick.Controls.Basic as Controls
 
 import VLC.MainInterface
 import VLC.Style
 
-Controls.MenuItem {
-    font.family: VLCStyle.redesign.fontFamily
-    font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
-    palette.text: VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, "#4d4d4d")
-    palette.windowText: VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, "#4d4d4d")
+// A row of the player's menu (PlayerMenu.qml), as its others: 48 high, the
+// text 12 in, the hover of the redesign
+Controls.ItemDelegate {
+    id: root
     objectName: "hidePlayerUIAction"
-    text: MainCtx.minimalView ? qsTr("Show player UI") : qsTr("Hide player UI")
-    checkable: true
-    checked: MainCtx.minimalView
-    onTriggered: {
-        MainCtx.minimalView = !MainCtx.minimalView
-        // a click toggles the check: follow the view again
-        checked = Qt.binding(() => MainCtx.minimalView)
+    height: 48
+    background: Rectangle {
+        radius: 6
+        color: root.hovered ? VLCStyle.redesign.color("#252525", "#9c9c9b") : "transparent"
     }
+    contentItem: Text {
+        text: MainCtx.minimalView ? qsTr("Show player UI") : qsTr("Hide player UI")
+        color: VLCStyle.redesign.color("#969696", "#4d4d4d")
+        font.family: VLCStyle.redesign.fontFamily
+        font.pixelSize: 16
+        verticalAlignment: Text.AlignVCenter
+        leftPadding: 12
+    }
+    Accessible.role: Accessible.CheckBox
+    Accessible.checkable: true
+    Accessible.checked: MainCtx.minimalView
+    onClicked: MainCtx.minimalView = !MainCtx.minimalView
 }

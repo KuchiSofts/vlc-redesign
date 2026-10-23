@@ -206,6 +206,10 @@ static void ShowDialog   ( intf_thread_t *, int, int, intf_dialog_args_t * );
 #define INTERFACE_SCALE_TEXT N_( "Initial user scale factor for the interface, between 0.3 and 3.0" )
 
 #define ERROR_TEXT N_( "Show unimportant error and warnings dialogs" )
+#define ERROR_LONGTEXT N_( "Show the errors of VLC at the bottom of the window, and ask " \
+    "before removing media from a playlist or from the play queue, or deleting " \
+    "playlists. Off, the errors are only kept in the messages of VLC and these " \
+    "removals are done at once; deleting a file from the disk is always confirmed." )
 
 #define UPDATER_TEXT N_( "Activate the updates availability notification" )
 #define UPDATER_LONGTEXT N_( "Activate the automatic notification of new " \
@@ -233,6 +237,9 @@ static void ShowDialog   ( intf_thread_t *, int, int, intf_dialog_args_t * );
                              " - minimal mode with limited controls" )
 
 #define QT_FULLSCREEN_TEXT N_( "Show a controller in fullscreen mode" )
+#define QT_FULLSCREEN_LONGTEXT N_( "Show the playback controls in fullscreen when the " \
+    "mouse moves. Off, only the keyboard shows them (the I key). The skins read it " \
+    "for their fullscreen controller too." )
 #define QT_NATIVEOPEN_TEXT N_( "Embed the file browser in open dialog" )
 
 #define FULLSCREEN_NUMBER_TEXT N_( "Define which screen fullscreen goes" )
@@ -246,9 +253,9 @@ static void ShowDialog   ( intf_thread_t *, int, int, intf_dialog_args_t * );
 #define QT_MINIMAL_MODE_TEXT N_("Start in minimal view (without menus)" )
 
 #define QT_BGCONE_TEXT N_( "Display background cone or art" )
-#define QT_BGCONE_LONGTEXT N_( "Display background cone or current album art " \
-                            "when not playing. " \
-                            "Can be disabled to prevent burning screen." )
+#define QT_BGCONE_LONGTEXT N_( "Display the cover art of the audio playing in the " \
+                            "player (the cone in the compact view). Off, a plain " \
+                            "picture takes its place, which also prevents burning the screen." )
 #define QT_BGCONE_EXPANDS_TEXT N_( "Expanding background cone or art" )
 #define QT_BGCONE_EXPANDS_LONGTEXT N_( "Background art fits window's size." )
 
@@ -410,7 +417,7 @@ vlc_module_begin ()
     add_bool( "qt-name-in-title", true, TITLE_TEXT,
               TITLE_LONGTEXT )
     add_bool( "qt-fs-controller", true, QT_FULLSCREEN_TEXT,
-              nullptr )
+              QT_FULLSCREEN_LONGTEXT )
 
     add_string("qt-compositor", "auto", QT_COMPOSITOR_TEXT, QT_COMPOSITOR_LONGTEXT)
             change_string_list(compositor_vlc, compositor_user)
@@ -469,8 +476,9 @@ vlc_module_begin ()
     add_integer( "qt-initial-prefs-view", 0, INITIAL_PREFS_VIEW_TEXT, INITIAL_PREFS_VIEW_LONGTEXT )
         change_integer_range( 0, 2 )
         change_integer_list( initial_prefs_view_list, initial_prefs_view_list_texts )
+    /* the error popup (Dialogs.qml) and DialogsProvider::questionDialog */
     add_bool( "qt-error-dialogs", true, ERROR_TEXT,
-              nullptr )
+              ERROR_LONGTEXT )
 
     add_obsolete_string( "qt-slider-colours")
 

@@ -28,7 +28,8 @@ import VLC.Util
 
 // Offer to continue where the media was left. The redesign shows it next to
 // the playback controls rather than in the top bar, where it went unnoticed
-// for the few seconds it stays.
+// for the few seconds it stays. Figma "Player - Music": the time saved, one
+// button (Escape, or the seconds it stays, dismiss it).
 FocusScope {
     id: resumePanel
 
@@ -122,7 +123,11 @@ FocusScope {
 
                 Layout.rightMargin: VLCStyle.dp(8, VLCStyle.scale)
 
-                text: qsTr("Continue where you left off?")
+                // the design writes the hours: 00:45:08
+                text: Player.restoreTime.valid()
+                      ? qsTr("You’ve watched till %1 already.")
+                            .arg(Player.restoreTime.formatHMS(VLCTick.ForceHours))
+                      : qsTr("Continue where you left off?")
                 color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e", resumePanel.darkTheme)
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.redesign.fontMedium
@@ -131,7 +136,7 @@ FocusScope {
             ResumeButton {
                 id: continueBtn
 
-                text: qsTr("Continue")
+                text: qsTr("Continue Watching")
                 primary: true
                 focus: true
 
@@ -143,24 +148,8 @@ FocusScope {
                 }
 
                 Navigation.parentItem: resumePanel
-                Navigation.rightItem: closeBtn
                 Keys.priority: Keys.AfterItem
                 Keys.onPressed: (event) => continueBtn.Navigation.defaultKeyAction(event)
-            }
-
-            ResumeButton {
-                id: closeBtn
-
-                text: qsTr("Dismiss")
-
-                AccessibleCompat.id: "resumeDismissButton"
-
-                onClicked: hideResumePanel()
-
-                Navigation.parentItem: resumePanel
-                Navigation.leftItem: continueBtn
-                Keys.priority: Keys.AfterItem
-                Keys.onPressed: (event) => closeBtn.Navigation.defaultKeyAction(event)
             }
         }
     }

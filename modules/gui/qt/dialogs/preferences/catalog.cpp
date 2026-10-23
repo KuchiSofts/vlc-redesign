@@ -14,18 +14,19 @@
 namespace PrefsCatalog
 {
 static const Option entries[] = {
-    // (no "qt-error-dialogs": nothing reads it any more)
-    {"general", "redesign-update-check"},
+    // Startup of the design: the error popup and the confirmations of the
+    // interface read qt-error-dialogs (Dialogs.qml, questionDialog)
+    {"general", "qt-error-dialogs"}, {"general", "redesign-update-check"},
     {"general", "file-logging"}, {"general", "logfile"},
     {"general", "log-verbose"},
-    {"general", "verbose"}, {"general", "logmode"}, {"general", "stats"},
+    // extra-options: read by the core at the start (libvlc.c)
+    {"general", "verbose"}, {"general", "extra-options"},
+    {"general", "logmode"}, {"general", "stats"},
     {"general", "syslog"}, {"general", "syslog-debug"}, {"general", "syslog-ident"},
     {"general", "syslog-facility"},
     // Interface page of the design: Skin, Window, Playback Controls,
     // Notifications and System Tray, then Advanced Options
     {"interface", "skins2-last"},
-    // read by the fullscreen controller of the skins only (Skin section)
-    {"interface", "qt-fs-controller"},
     {"interface", "embedded-video"}, {"interface", "qt-video-autoresize"},
     {"interface", "qt:redesign/remember-window-geometry"},
     {"interface", "video-on-top"},
@@ -33,9 +34,18 @@ static const Option entries[] = {
     {"interface", "qt-fullscreen-screennumber"},
     {"interface", "qt-minimal-view"}, {"interface", "qt-pin-controls"},
     {"interface", "mouse-hide-timeout"},
+    // the mouse shows the controls in fullscreen (Player.qml), the skins
+    // read it too
+    {"interface", "qt-fs-controller"},
+    // the bar of the library while nothing plays (MainDisplay.qml)
+    {"interface", "qt:redesign/always-show-player-bar"},
     {"interface", "qt-system-tray"}, {"interface", "qt-start-minimized"},
     {"interface", "qt-notification"}, {"interface", "qt:redesign/notification-duration"},
-    // (no "playlist-tree": nothing reads it in VLC 4)
+    // (no "playlist-tree", the Playlist section of the design: nothing
+    // reads it in VLC 4. Its play queue is flat: vlc_playlist_t replaces an
+    // item that expands (a folder, a playlist file) by its children and
+    // keeps no parent, and the views of the queue (PlaylistListModel, a
+    // list) move, select and drop by row; a tree needs a new queue model)
     {"interface", "qt-opacity"}, {"interface", "qt-pause-minimized"},
     {"interface", "qt-auto-raise"}, {"interface", "qt-bgcone"},
     {"interface", "qt-embedded-open"}, {"interface", "qt-icon-change"},

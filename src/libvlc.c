@@ -119,6 +119,91 @@ static void libvlc_AddInterfaces(libvlc_int_t *libvlc, const char *varname)
     free(str);
 }
 
+/* The arguments of a command line in a string: split at spaces, a "double"
+ * or 'single' quoted part keeps its spaces, backslashes stay (Windows
+ * paths). The first argument stands for the program name. */
+static const char **SplitOptions(const char *str, char **pbuf, int *pcount)
+{
+    const size_t len = strlen(str);
+    /* at most one argument every 2 characters, the name, the NULL */
+    const char **argv = malloc((len + 3) * sizeof (*argv));
+    /* the arguments one after the other are not longer than the string */
+    char *buf = malloc(len + 1);
+    if (argv == NULL || buf == NULL)
+    {
+        free(argv);
+        free(buf);
+        return NULL;
+    }
+
+    int count = 0;
+    argv[count++] = "vlc";
+    char *out = buf;
+    const char *in = str;
+    for (;;)
+    {
+        while (*in == ' ' || *in == '\t' || *in == '\r' || *in == '\n')
+            in++;
+        if (*in == '\0')
+            break;
+        argv[count++] = out;
+        char quote = '\0';
+        for (; *in != '\0'; in++)
+        {
+            if (quote != '\0')
+            {
+                if (*in == quote)
+                    quote = '\0';
+                else
+                    *out++ = *in;
+            }
+            else if (*in == '"' || *in == '\'')
+                quote = *in;
+            else if (*in == ' ' || *in == '\t' || *in == '\r' || *in == '\n')
+                break;
+            else
+                *out++ = *in;
+        }
+        *out++ = '\0';
+    }
+    argv[count] = NULL;
+    *pbuf = buf;
+    *pcount = count;
+    return argv;
+}
+
+/* "Additional command line options" of the settings (extra-options): read
+ * as the command line is. The options only a command line can give are
+ * dropped: given at every start, --help would quit at every start. */
+static void LoadExtraOptions(libvlc_int_t *libvlc, const char *options)
+{
+    static const char *const reserved[] = {
+        "help", "full-help", "longhelp", "help-verbose", "list",
+        "list-verbose", "module", "version", "config", "ignore-config",
+        "reset-config", "reset-plugins-cache", "extra-options",
+    };
+    bool given[ARRAY_SIZE(reserved)];
+    for (size_t i = 0; i < ARRAY_SIZE(reserved); i++)
+        given[i] = var_Type(libvlc, reserved[i]) != 0;
+
+    char *buf;
+    int argc;
+    const char **argv = SplitOptions(options, &buf, &argc);
+    if (argv == NULL)
+        return;
+    /* an unknown option stops the reading (the ones before it apply) */
+    if (argc > 1 && config_LoadCmdLine(libvlc, argc, argv, NULL))
+        msg_Warn(libvlc, "additional command line options not understood: %s",
+                 options);
+    free(argv);
+    free(buf);
+
+    for (size_t i = 0; i < ARRAY_SIZE(reserved); i++)
+        if (!given[i])
+            while (var_Type(libvlc, reserved[i]) != 0)
+                var_Destroy(libvlc, reserved[i]);
+}
+
 /**
  * Initialize a libvlc instance
  * This function initializes a previously allocated libvlc instance:
@@ -178,6 +263,17 @@ int libvlc_InternalInit( libvlc_int_t *p_libvlc, int i_argc,
             config_SaveConfigFile( p_libvlc ); /* Save default config */
         else
             config_LoadConfigFile( p_libvlc );
+    }
+
+    /* The options of the settings, before the loggers start (they may set
+     * them); then the command line again, which wins over them */
+    char *extra_options = var_InheritString( p_libvlc, "extra-options" );
+    if( extra_options != NULL )
+    {
+        LoadExtraOptions( p_libvlc, extra_options );
+        free( extra_options );
+        if( config_LoadCmdLine( p_libvlc, i_argc, ppsz_argv, NULL ) )
+            goto error;
     }
 
     vlc_LogInit(p_libvlc);

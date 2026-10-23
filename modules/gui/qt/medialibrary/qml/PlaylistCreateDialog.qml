@@ -26,10 +26,15 @@ Widgets.RedesignDialog {
 
     required property MLPlaylistListModel playlistModel
     property var files: []
+    // the picture chosen for the playlist (a local file), else its media
+    // (not "thumbnail": the id of its button)
+    property url picture: ""
+    readonly property bool hasPicture: root.picture.toString() !== ""
 
     title: qsTr("New Playlist")
     acceptText: qsTr("Save")
-    acceptEnabled: titleField.text.trim().length > 0 && root.files.length > 0
+    // a title is enough: the files may be added later
+    acceptEnabled: titleField.text.trim().length > 0
                    && !root.playlistModel.transactionPending
     preferredWidth: VLCStyle.dp(713, VLCStyle.scale)
 
@@ -38,8 +43,9 @@ Widgets.RedesignDialog {
     onClosed: {
         titleField.clear()
         files = []
+        root.picture = ""
     }
-    onAccepted: playlistModel.create(titleField.text.trim(), files)
+    onAccepted: playlistModel.create(titleField.text.trim(), files, root.picture)
 
     function createPlaylist() {
         root.accept()
@@ -49,6 +55,12 @@ Widgets.RedesignDialog {
         const selected = filePicker.chooseFiles(qsTr("Add files to playlist"))
         if (selected.length > 0)
             root.files = root.files.concat(selected)
+    }
+
+    function chooseThumbnail() {
+        const chosen = filePicker.chooseImage(qsTr("Choose a thumbnail"))
+        if (chosen.toString() !== "")
+            root.picture = chosen
     }
 
     Widgets.FilePicker { id: filePicker; ctx: MainCtx }
@@ -97,11 +109,14 @@ Widgets.RedesignDialog {
             }
         }
 
-        // "Frame 326" (112 x 112): the thumbnail of the first file (the
-        // frame of a video, the artwork the library has for the others),
-        // else the add button
+        // "Frame 326" (112 x 112): the thumbnail of the playlist, a click
+        // (or a picture dropped) chooses it; until then the one of the
+        // first file (the frame of a video, the artwork the library has for
+        // the others), else the add button
         T.Button {
             id: thumbnail
+
+            objectName: "playlistThumbnailButton"
 
             // the MRL of the library (vlc_path2uri), which its artwork has
             readonly property string firstMrl: {
@@ -111,6 +126,8 @@ Widgets.RedesignDialog {
                 return ml ? ml.mrlFromUrl(root.files[0]) : String(root.files[0])
             }
             readonly property string imageSource: {
+                if (root.hasPicture)
+                    return root.picture.toString()
                 if (firstMrl === "")
                     return ""
                 if (/\.(3gp|avi|flv|m2ts|m4v|mkv|mov|mp4|mpe?g|mts|ogv|ts|webm|wmv)$/i.test(firstMrl))
@@ -121,14 +138,15 @@ Widgets.RedesignDialog {
             Layout.preferredWidth: VLCStyle.dp(112, VLCStyle.scale)
             Layout.preferredHeight: VLCStyle.dp(112, VLCStyle.scale)
             Layout.alignment: Qt.AlignBottom
-            Accessible.name: qsTr("Choose files")
+            Accessible.name: qsTr("Choose a thumbnail")
 
             background: Rectangle {
                 radius: VLCStyle.dp(6, VLCStyle.scale)
                 color: VLCStyle.redesign.color("#090909", "#dedede", root.darkTheme)
                 border.width: VLCStyle.dp(2, VLCStyle.scale)
-                border.color: thumbnail.visualFocus ? VLCStyle.redesign.focusColor
-                                                    : VLCStyle.redesign.color("#191919", "#c4c4c3", root.darkTheme)
+                border.color: (thumbnail.visualFocus || thumbnailDrop.containsDrag)
+                              ? VLCStyle.redesign.focusColor
+                              : VLCStyle.redesign.color("#191919", "#c4c4c3", root.darkTheme)
             }
             contentItem: Item {
                 Image {
@@ -150,7 +168,22 @@ Widgets.RedesignDialog {
                     hovered: thumbnail.hovered
                 }
             }
-            onClicked: root.chooseFiles()
+            onClicked: root.chooseThumbnail()
+
+            DropArea {
+                id: thumbnailDrop
+
+                anchors.fill: parent
+                keys: ["text/uri-list"]
+                onDropped: (drop) => {
+                    // a picture this interface reads (see chooseImage)
+                    const dropped = drop.hasUrls ? drop.urls[0] : ""
+                    if (!/^file:.*\.(png|jpe?g|bmp)$/i.test(String(dropped)))
+                        return
+                    root.picture = dropped
+                    drop.accept(Qt.CopyAction)
+                }
+            }
         }
     }
 

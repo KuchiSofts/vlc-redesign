@@ -1146,6 +1146,15 @@ static const char* const ppsz_restore_playback_desc[] = {
 #define KEYSTORE_LONGTEXT N_( \
     "List of keystores that VLC will use in priority." )
 
+#define EXTRA_OPTIONS_TEXT N_("Additional command line options")
+#define EXTRA_OPTIONS_LONGTEXT N_( \
+    "Options VLC reads at every start, as if they were written on its " \
+    "command line (the command line wins when it gives the same option). " \
+    "Write them as on a command line, for example: --no-osd " \
+    "--network-caching=3000; quote a value with spaces. Files to open, and " \
+    "the options only a command line can give (--help, --config, " \
+    "--reset-config...), are left out." )
+
 #define STATS_TEXT N_("Locally collect statistics")
 #define STATS_LONGTEXT N_( \
      "Collect miscellaneous local statistics about the playing media.")
@@ -2138,6 +2147,11 @@ vlc_module_begin ()
 #endif
     add_string( "keystore", NULL, KEYSTORE_TEXT,
                 KEYSTORE_LONGTEXT )
+
+    set_section( N_("Startup"), NULL )
+    /* read by libvlc_InternalInit once the configuration is loaded */
+    add_string( "extra-options", NULL, EXTRA_OPTIONS_TEXT,
+                EXTRA_OPTIONS_LONGTEXT )
 
     set_section( N_("Performance options"), NULL )
 

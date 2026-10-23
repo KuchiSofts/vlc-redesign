@@ -543,6 +543,15 @@ void MainCtx::loadPrefs(const bool callSignals)
             emit alwaysShowPlayerBarChanged();
     }
 
+    /* "Increase text contrast" of the settings */
+    const bool increaseContrast = getSettings()->value( "redesign/increase-contrast", false ).toBool();
+    if( increaseContrast != m_increaseContrast )
+    {
+        m_increaseContrast = increaseContrast;
+        if( callSignals )
+            emit increaseContrastChanged();
+    }
+
     /* "Double click on the video" of the settings */
     const int doubleClick = getSettings()->value( "redesign/double-click-action", 1 ).toInt();
     if( doubleClick != m_doubleClickAction )

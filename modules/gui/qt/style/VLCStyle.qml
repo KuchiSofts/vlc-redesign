@@ -129,7 +129,27 @@ QtObject {
             "#c6c6c6": "#2e2e2e"
         })
 
+        // "Increase text contrast" (Interface > Accessibility): the dim texts
+        // of the design brighter (darker in the light theme), to the 4.5:1 of
+        // WCAG AA on every panel, and the info icons to the 3:1 of icons
+        readonly property bool increaseContrast: MainCtx.increaseContrast
+        readonly property var _contrastDark: ({
+            "#7d7d7d": "#8a8a8a", "#7c7c7b": "#8a8a8a", "#6f6f6f": "#8a8a8a", "#6b6b6b": "#8a8a8a",
+            "#676767": "#8a8a8a", "#666666": "#8a8a8a", "#636363": "#8a8a8a", "#5f5f5f": "#8a8a8a",
+            "#555555": "#8a8a8a", "#404040": "#707070"
+        })
+        readonly property var _contrastLight: ({
+            "#7c7c7b": "#333333", "#6b6b6b": "#333333", "#666666": "#333333", "#5a5a59": "#333333",
+            "#5a5a5a": "#333333", "#4d4d4d": "#333333", "#929291": "#575756"
+        })
+
         function color(darkValue, fallback, isDark = vlc_style.palette.isDark) {
+            const value = _themed(darkValue, fallback, isDark)
+            if (!increaseContrast)
+                return value
+            return (isDark ? _contrastDark : _contrastLight)[value.toString().toLowerCase()] ?? value
+        }
+        function _themed(darkValue, fallback, isDark) {
             if (isDark) return darkValue
             // Nothing drawn stays so in both themes (idle button backgrounds)
             if (Qt.colorEqual(darkValue, "transparent")) return darkValue

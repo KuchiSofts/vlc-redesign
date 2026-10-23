@@ -42,6 +42,8 @@ static const Option entries[] = {
     // the bar of the library while nothing plays (MainDisplay.qml): not in
     // the design, after its sections
     {"interface", "qt:redesign/always-show-player-bar"},
+    // the dim texts at the contrast of WCAG AA (VLCStyle.redesign.color())
+    {"interface", "qt:redesign/increase-contrast"},
     // (no "playlist-tree", the Playlist section of the design: nothing
     // reads it in VLC 4. Its play queue is flat: vlc_playlist_t replaces an
     // item that expands (a folder, a playlist file) by its children and

@@ -62,6 +62,7 @@ readonly property var items: ({
         // not in the design: after its sections (the page starts as it draws it)
         "redesign/always-show-player-bar": [qsTr("Player Bar"), qsTr("Always show the player bar"), "", null,
                                             { info: true }],
+        "redesign/increase-contrast": [qsTr("Accessibility"), qsTr("Increase text contrast"), "", null, { info: true }],
         "qt-opacity": [qsTr("Window"), qsTr("Window opacity"), "opacity10", null,
                        { advanced: true, info: false, labelsBaseline: 44, rowHeight: 57, controlTop: 1, restart: true }],
         "qt-pause-minimized": [qsTr("Window"), qsTr("Pause video when window is minimized"), "", null,

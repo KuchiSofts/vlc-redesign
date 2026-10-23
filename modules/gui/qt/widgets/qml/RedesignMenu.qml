@@ -20,6 +20,27 @@ T.Menu {
     // submenu); the main menu 375, the right-click menu 292
     property real menuWidth: VLCStyle.dp(265, VLCStyle.scale)
 
+    // A press outside closes it before the button that opens it gets that
+    // press: the click that follows closes it, not opens it again
+    property double _closedAt: 0
+
+    Component.onCompleted: root.closed.connect(() => { root._closedAt = Date.now() })
+
+    // From the click of the button that opens it: opens it (at x, y of
+    // the button, else where the mouse is), or closes it
+    function toggleFrom(button, x, y) {
+        if (root.opened) {
+            root.close()
+            return
+        }
+        if (button.pressedAt - root._closedAt < 300)
+            return
+        if (x === undefined)
+            root.popup()
+        else
+            root.popup(button, x, y)
+    }
+
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
                             implicitContentWidth + leftPadding + rightPadding)
     implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,

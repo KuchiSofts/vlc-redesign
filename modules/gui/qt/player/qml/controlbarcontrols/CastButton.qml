@@ -59,7 +59,12 @@ RedesignIconButton {
         margins: VLCStyle.dp(8, VLCStyle.scale)
         padding: VLCStyle.dp(14, VLCStyle.scale)
         focus: true
-        closePolicy: T.Popup.CloseOnEscape | T.Popup.CloseOnPressOutsideParent
+        closePolicy: T.Popup.CloseOnEscape | T.Popup.CloseOnPressOutside
+        // a press outside only closes it, as a menu: the video under it
+        // does not pause, the button pressed (its own included) does
+        // nothing more
+        modal: true
+        dim: false
 
         onOpened: {
             root.requestLockUnlockAutoHide(true)

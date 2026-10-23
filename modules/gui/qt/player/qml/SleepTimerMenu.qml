@@ -29,6 +29,9 @@ Controls.Popup {
     height: timerController.active ? VLCStyle.dp(190, VLCStyle.scale) : VLCStyle.dp(293, VLCStyle.scale)
     padding: VLCStyle.dp(16, VLCStyle.scale)
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutside
+    // a press outside only closes it: the video under it does not pause
+    modal: true
+    dim: false
 
     function formatRemaining(seconds) {
         const hours = Math.floor(seconds / 3600)

@@ -42,6 +42,11 @@ RedesignIconButton {
     signal requestLockUnlockAutoHide(bool lock)
     signal menuOpened(var menu)
 
+    // When the menu closed: a press on this button closes it (a press
+    // outside the menu) before the button gets the press, and the click
+    // that follows must not open it again
+    property double _menuClosedAt: 0
+
     // Settings
 
     text: VLCIcons.audiosub
@@ -62,6 +67,8 @@ RedesignIconButton {
             menu.close()
             return
         }
+        if (root.pressedAt - root._menuClosedAt < 300)
+            return
         const position = root.mapToItem(root._parentItem, 0, 0)
         menu.x = Math.max(0, Math.min(root._parentItem.width - menu.width,
                                       position.x + root.width - menu.width))
@@ -93,6 +100,7 @@ RedesignIconButton {
             }
 
             onClosed: {
+                root._menuClosedAt = Date.now()
                 root.requestLockUnlockAutoHide(false)
                 root.forceActiveFocus()
                 root.menuOpened(null)

@@ -15,6 +15,9 @@ Controls.Popup {
     padding: VLCStyle.dp(20, VLCStyle.scale)
     focus: true
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutside
+    // a press outside only closes it: the video under it does not pause
+    modal: true
+    dim: false
     onOpened: { previousShortcuts = MainCtx.useGlobalShortcuts; MainCtx.useGlobalShortcuts = false }
     onClosed: MainCtx.useGlobalShortcuts = previousShortcuts
     background: Rectangle { color: VLCStyle.redesign.color("#191919", "#c2c2c1"); radius: 6 }

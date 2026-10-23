@@ -151,7 +151,7 @@ FocusScope {
         // (under the list: the row takes the clicks)
         z: -1
         opacity: 0
-        enabled: root.location.section === "folder"
+        enabled: root._songFolder
         iconOnly: true
         libraryFolder: true
     }
@@ -564,10 +564,11 @@ FocusScope {
             header: Loader {
                 width: list.width - list.leftMargin - list.rightMargin
                 // (playlists are created in the media library only); a
-                // folder: Add, the Open media menu of the library's folders
-                // (Figma 4778:25123)
+                // folder of songs: Add, the Open media menu of the library's
+                // folders (Figma 4778:25123; a folder of videos has none,
+                // 2425:13624)
                 active: (root.location.section === "playlists" && root._mlAvailable)
-                        || root.location.section === "folder"
+                        || root._songFolder
                 // a row of 32 and the gap of the list
                 height: active ? VLCStyle.dp(42, VLCStyle.scale) : 0
                 sourceComponent: Item {

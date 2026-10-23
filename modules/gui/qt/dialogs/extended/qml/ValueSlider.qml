@@ -98,7 +98,11 @@ ColumnLayout {
                 width: Math.max(0, slider.visualPosition * parent.width)
                 height: parent.height
                 radius: parent.radius
-                color: "#503012"
+                // Figma: #503012, the default accent over the track; the
+                // light theme and the other accents tint the track (the
+                // seek bar's light fill)
+                color: VLCStyle.palette.isDark && Qt.colorEqual(VLCStyle.redesign.accent, "#D37918") ? "#503012"
+                       : Qt.tint(parent.color, Qt.alpha(VLCStyle.redesign.accent, 0.35))
             }
         }
         handle: Rectangle {

@@ -403,6 +403,7 @@ qml_modules += {
         '../../widgets/qml/CustomizeDragArea.qml',
         '../../widgets/qml/RedesignOptionItem.qml',
         '../../widgets/qml/RedesignMenuSeparator.qml',
+        '../../widgets/qml/RedesignContextMenu.qml',
         '../../widgets/qml/RedesignDialog.qml',
         '../../widgets/qml/RedesignButton.qml',
         '../../widgets/qml/LanguagePicker.qml',

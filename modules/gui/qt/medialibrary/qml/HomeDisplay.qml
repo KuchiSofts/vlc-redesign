@@ -251,6 +251,9 @@ Widgets.PageLoader {
                 model: MLRecentAudioModel {
                     ml: MediaLib
 
+                    // the order of Continue Watching: the last played first
+                    sortCriteria: listenAgainPage.sort.criteria
+                    sortOrder: listenAgainPage.sort.order
                     searchPattern: listenAgainPage.search.pattern
                 }
 

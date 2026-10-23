@@ -6,7 +6,7 @@ page) and the release notes. Last updated: 2026-10-24, build 151 of the `redesig
 
 **Status:** 🟢 done · 🟡 in progress or partly done · 🔴 to do or missing · ⚪ idea or research
 **Pixel check:** 🟢 measured identical to the Figma frame · ⏳ not measured yet
-**In the app ⏳:** merged and built, not yet checked in the running program (11 lines today)
+**In the app ⏳:** merged and built, not yet checked in the running program (6 lines today)
 
 ## Dashboard
 
@@ -223,7 +223,7 @@ Notes: when nothing plays, the video area shows the frames' pixel cat (`IdleScen
 | 4778:25123 | Player - Music | 1920 × 1080 | 🟢     | 🟢    | The same with the queue                                        | as above, QueueCard.qml                                              |
 
 Notes: the resume card reads as in Figma: "You've watched till 00:45:08 already." (the media library's saved time)
-and one *Continue Watching* button; Escape or 10 s close it (in the app ⏳). The bars are solid `#191919` at 95 %
+and one *Continue Watching* button; Escape or 10 s close it (checked in the app 2026-10-24). The bars are solid `#191919` at 95 %
 over the artwork backdrop: the design's blur would change them by at most 5 % (5.16, item 6).
 
 ### 5.6 Player - customize (9)
@@ -703,7 +703,8 @@ becomes 1.0 when every frame is pixel-checked, the light theme is complete and V
 - 🟢 Effect sliders follow the accent
 - 🟢 Every check mark and active icon follows the accent (cast, visualizer, HDR, subtitle associations, option
   items, crop link, folder play outline, compact library sections, queue sort dot, Recent, *This computer*,
-  visualizer icons, side navigation, settings sidebar); the default accent pixel-identical · in the app ⏳
+  visualizer icons, side navigation, settings sidebar); the default accent pixel-identical · checked in the app with
+  a blue accent (settings sidebar, check marks, the visualizer's two-tone icons)
 - 🟢 Settings scroll bar handles visible: `#6B6B6B` dark, `#2E2E2E` light · in the app ⏳
 - 🟢 Warning colour readable: `#E4A580` dark, `#7A1414` light · in the app ⏳
 - 🟢 The whole app checked in light: player, tracks and subtitles window, cast window, ⋯ menu, classic dialogs
@@ -738,11 +739,12 @@ The design's settings frames hold 211 rows (counted from their texts, each page 
 
 - 🟢 206 rows of the design on the 13 pages
 - 🟢 *Show confirmation and error dialogs* (Global, `qt-error-dialogs`): no error popup, questions answered yes;
-  deleting a file still asks · in the app ⏳
+  deleting a file still asks · checked in the app: a media that cannot open shows its error only with it on
 - 🟢 *Additional command line options* (Global, advanced; new core option `extra-options`, read at every start; the
-  command line wins; `--help`, `--config` and the like ignored) · in the app ⏳
+  command line wins; `--help`, `--config` and the like ignored) · checked in the app (`--no-qt-bgcone` from vlcrc)
 - 🟢 *Show controls in fullscreen* (Interface, `qt-fs-controller`, live) · in the app ⏳
-- 🟢 *Show cover art in the window when playing audio* (Interface, advanced, `qt-bgcone`) · in the app ⏳
+- 🟢 *Show cover art in the window when playing audio* (Interface, advanced, `qt-bgcone`) · checked in the app (off: the
+  dark placeholder of the theme)
 - 🔴 *Show the playlist as a tree* (Interface): left out on purpose; VLC 4's queue is flat (an expanded item is
   replaced by its children), so it needs a new queue model
 - 🟢 *Always show the player bar* (Interface › Playback Controls, new, default off, live): the bar stays on Home and
@@ -790,7 +792,7 @@ and an accepted request made the TV fail after a pause in a test.
 
 ### 8.8 Design and library
 
-- 🟢 Resume card as in Figma: the watched time and one *Continue Watching* button · in the app ⏳
+- 🟢 Resume card as in Figma: the watched time and one *Continue Watching* button (checked in the app)
 - 🟢 New playlist with a custom thumbnail (PNG, 1024 px at most, deleted with the playlist) · in the app ⏳
 - 🟢 Empty playlists: Save needs only a title · in the app ⏳
 - 🟢 The compact library's Home with the sections of the library's Home, in its order
@@ -823,7 +825,7 @@ and an accepted request made the TV fail after a pause in a test.
 - 🔴 Small updates from 0.2.4, 0.2.5 and 0.2.6 built and checked
 - 🔴 Announcement in Discussions; every fixed issue answered with the release link
 
-Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 80 🟢, 1 🟡, 13 🔴 (94), of which 11 🟢 are
+Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 80 🟢, 1 🟡, 13 🔴 (94), of which 6 🟢 are
 in the app ⏳.
 Languages (§12) and the community (§13) have bars of their own.
 

@@ -15,9 +15,15 @@ SliderBar {
 
     Waveform {
         id: analysis
-        // the helper decodes the whole file: not for a hidden slider (the
-        // mini player's under the player, the player's under the library)
-        source: (root.visible && Player.videoTracks.count === 0) ? Player.url : ""
+        // the helper decodes the whole file: only for the sound of a file
+        // that plays (not a film, not after its stop), not for a hidden
+        // slider (the mini player's under the player, the player's under
+        // the library)
+        source: (root.visible
+                 && (Player.playingState === Player.PLAYING_STATE_PLAYING
+                     || Player.playingState === Player.PLAYING_STATE_PAUSED)
+                 && Player.audioTracks.count > 0
+                 && Player.videoTracks.count === 0) ? Player.url : ""
         durationSeconds: Player.length.toSeconds()
     }
 

@@ -13,14 +13,19 @@
 
 #include <QCoreApplication>
 #include <QDir>
+#include <QElapsedTimer>
 #include <QFileInfo>
 #include <QHash>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
-#include <QTimer>
+#include <QPointer>
+#include <QProcess>
+#include <QThread>
 #include <algorithm>
+#include <atomic>
 #include <cmath>
+#include <memory>
 #include <utility>
 
 namespace {
@@ -36,23 +41,53 @@ constexpr int watchdogMs = 60 * 1000;
 // a helper nobody waits for any more is killed after this: a slider
 // hidden and shown again (the player, the library) goes on with it
 constexpr int orphanMs = 2 * 1000;
+// a source is analyzed once it has stayed this long: a film's sound comes a
+// moment before its picture, and its picture goes first when it stops
+constexpr int settleMs = 1000;
+
+// an analysis, run by its own thread: Windows may check a new program for
+// seconds before it starts, the interface goes on meanwhile
+struct Job { std::atomic_bool cancel{false}; };
 
 struct CacheEntry { QString key; QVariantList bins; };
 // all in the GUI thread
 QList<CacheEntry> s_cache;
-QHash<QString, QPointer<QProcess>> s_jobs;
+QHash<QString, std::shared_ptr<Job>> s_jobs;
+QList<QPointer<QThread>> s_threads;
+bool s_stopAllAtEnd = false;
 QList<Waveform*> s_instances;
 }
 
 Waveform::Waveform(QObject* parent) : QObject(parent)
 {
     s_instances.append(this);
+    m_settle.setSingleShot(true);
+    m_settle.setInterval(settleMs);
+    connect(&m_settle, &QTimer::timeout, this, [this] {
+        // (or the analysis of another slider came meanwhile)
+        if (!m_key.isEmpty() && !s_jobs.contains(m_key))
+            startAnalysis(m_key, m_path, m_durationSeconds);
+    });
 }
 
 Waveform::~Waveform()
 {
     s_instances.removeAll(this);
     release(true);
+}
+
+// the analyses end before the Qt module goes: at the end of the application
+void Waveform::stopAll()
+{
+    s_stopAllAtEnd = false;
+    for (const std::shared_ptr<Job>& job : std::as_const(s_jobs))
+        job->cancel = true;
+    s_jobs.clear();
+    for (const QPointer<QThread>& thread : std::exchange(s_threads, {}))
+        if (thread) {
+            thread->wait();
+            delete thread;
+        }
 }
 
 void Waveform::setSource(const QUrl& source)
@@ -90,24 +125,24 @@ void Waveform::setError(const QString& error)
 // slider waits for it
 void Waveform::release(bool now)
 {
+    m_settle.stop();
     const QString key = std::exchange(m_key, QString());
     if (key.isEmpty()) return;
     for (const Waveform* other : std::as_const(s_instances))
         if (other != this && other->m_key == key) return;
-    QProcess* process = s_jobs.value(key);
-    if (!process) return;
+    const std::shared_ptr<Job> job = s_jobs.value(key);
+    if (!job) return;
     if (now) {
-        // finished() deletes it
         s_jobs.remove(key);
-        process->kill();
+        job->cancel = true;
         return;
     }
-    QTimer::singleShot(orphanMs, process, [key, process] {
-        if (s_jobs.value(key) != process) return;
+    QTimer::singleShot(orphanMs, QCoreApplication::instance(), [key, job] {
+        if (s_jobs.value(key) != job) return;
         for (const Waveform* waveform : std::as_const(s_instances))
             if (waveform->m_key == key) return;
         s_jobs.remove(key);
-        process->kill();
+        job->cancel = true;
     });
 }
 
@@ -190,56 +225,63 @@ void Waveform::refresh()
         return;
     }
     // the analysis of another slider: its result comes here too
-    const bool running = !s_jobs.value(key).isNull();
+    const bool running = s_jobs.contains(key);
     if (!running && !QFileInfo::exists(helperPath())) {
         setError(tr("Waveform analyzer is unavailable."));
         return;
     }
     m_key = key;
+    m_path = path;
     emit stateChanged();
     if (!running)
-        startAnalysis(key, path, m_durationSeconds);
+        m_settle.start();
 }
 
 void Waveform::startAnalysis(const QString& key, const QString& path, int seconds)
 {
-    // not a child of a slider: the analysis outlives the one that started it
-    auto* process = new QProcess(QCoreApplication::instance());
-    s_jobs.insert(key, process);
+    if (!std::exchange(s_stopAllAtEnd, true))
+        qAddPostRoutine(stopAll);
+    s_threads.removeIf([](const QPointer<QThread>& thread) { return thread.isNull(); });
+
+    auto job = std::make_shared<Job>();
+    s_jobs.insert(key, job);
+    const QString program = helperPath();
+    QThread* thread = QThread::create([job, key, path, seconds, program] {
+        QProcess process;
 #ifdef Q_OS_WIN
-    // CREATE_NO_WINDOW: keep the analysis helper invisible beside the GUI.
-    process->setCreateProcessArgumentsModifier([](QProcess::CreateProcessArguments* arguments) {
-        arguments->flags |= 0x08000000;
-    });
+        // CREATE_NO_WINDOW: keep the analysis helper invisible beside the GUI.
+        process.setCreateProcessArgumentsModifier([](QProcess::CreateProcessArguments* arguments) {
+            arguments->flags |= 0x08000000;
+        });
 #endif
-    process->setProgram(helperPath());
-    // libvlc_media_new_path() of the helper wants native separators on Windows
-    process->setArguments({QDir::toNativeSeparators(path)});
-    connect(process, &QProcess::errorOccurred, process,
-            [process, key](QProcess::ProcessError error) {
-        if (error != QProcess::FailedToStart) return;
-        // no finished() follows
-        process->deleteLater();
-        if (s_jobs.value(key) != process) return;
-        s_jobs.remove(key);
-        finishAnalysis(key, {}, tr("Waveform analyzer could not start."));
+        // libvlc_media_new_path() of the helper wants native separators on Windows
+        process.start(program, {QDir::toNativeSeparators(path)});
+        const bool started = process.waitForStarted();
+        QVariantList result;
+        if (started) {
+            // a helper that hangs does not keep the sliders busy
+            QElapsedTimer elapsed;
+            elapsed.start();
+            while (!process.waitForFinished(100) && process.state() != QProcess::NotRunning) {
+                if (job->cancel || elapsed.hasExpired(watchdogMs)) {
+                    process.kill();
+                    process.waitForFinished(1000);
+                    break;
+                }
+            }
+            if (!job->cancel && process.exitStatus() == QProcess::NormalExit && process.exitCode() == 0)
+                result = parseOutput(process.readAllStandardOutput(), seconds);
+        }
+        const QString error = !started ? tr("Waveform analyzer could not start.")
+                            : result.size() == 512 ? QString()
+                            : tr("Waveform analysis did not complete.");
+        QMetaObject::invokeMethod(QCoreApplication::instance(), [job, key, result, error] {
+            if (s_jobs.value(key) != job) return;
+            s_jobs.remove(key);
+            finishAnalysis(key, result, error);
+        }, Qt::QueuedConnection);
     });
-    connect(process, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), process,
-            [process, key, seconds](int exitCode, QProcess::ExitStatus status) {
-        process->deleteLater();
-        if (s_jobs.value(key) != process) return;
-        s_jobs.remove(key);
-        const QVariantList result = status == QProcess::NormalExit && exitCode == 0
-            ? parseOutput(process->readAllStandardOutput(), seconds) : QVariantList{};
-        finishAnalysis(key, result, result.size() == 512
-                                    ? QString() : tr("Waveform analysis did not complete."));
-    });
-    // a helper that hangs does not keep the sliders busy
-    QTimer::singleShot(watchdogMs, process, [process, key] {
-        if (s_jobs.value(key) != process) return;
-        s_jobs.remove(key);
-        process->kill();
-        finishAnalysis(key, {}, tr("Waveform analysis did not complete."));
-    });
-    process->start();
+    connect(thread, &QThread::finished, thread, &QObject::deleteLater);
+    s_threads.append(thread);
+    thread->start();
 }

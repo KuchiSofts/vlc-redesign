@@ -62,6 +62,8 @@ qml_modules += {
         '../../dialogs/extended/qml/ExpandPanel.qml',
         '../../dialogs/extended/qml/FilterSection.qml',
         '../../dialogs/extended/qml/ValueSlider.qml',
+        '../../dialogs/extended/qml/EffectPresets.qml',
+        '../../dialogs/extended/qml/EffectPresetField.qml',
         '../../dialogs/toolbar/qml/ProfilesMenu.qml',
         '../../dialogs/toolbar/qml/PersonalizationActions.qml',
         '../../dialogs/dialogs/qml/Dialogs.qml',

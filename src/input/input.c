@@ -94,6 +94,7 @@ static void InputSourceMeta( input_thread_t *, input_source_t *, vlc_meta_t * );
 //static void InputGetAttachments( input_thread_t *, input_source_t * );
 static void SlaveDemux( input_thread_t *p_input );
 static void SlaveSeek( input_thread_t *p_input );
+static demux_t *MasterReadingDemux( input_thread_t *p_input );
 
 static void InputMetaUser( input_thread_t *p_input, vlc_meta_t *p_meta );
 static void InputUpdateMeta( input_thread_t *p_input, demux_t *p_demux );
@@ -2630,6 +2631,23 @@ static bool Control( input_thread_t *p_input,
              * is less the stream's origin ("normal time": a TS recording,
              * HLS) and the start time asked for. */
             vlc_tick_t renderer_time = VLC_TICK_INVALID;
+            /* Going there from here: where it played here (the player's
+             * time, a time of the stream as renderer-time), else where the
+             * input read */
+            vlc_tick_t enter_time = VLC_TICK_INVALID;
+            if ( p_item != NULL && p_priv->p_renderer == NULL )
+            {
+                const vlc_tick_t origin = priv->master->i_normal_time != VLC_TICK_INVALID
+                                        ? priv->master->i_normal_time : VLC_TICK_0;
+                const vlc_tick_t played = var_Type( p_input, "renderer-enter-time" )
+                                        ? var_GetInteger( p_input, "renderer-enter-time" ) : -1;
+                vlc_tick_t read;
+                if ( played >= origin )
+                    enter_time = played - origin;
+                else if ( demux_Control( MasterReadingDemux( p_input ), DEMUX_GET_TIME,
+                                         &read ) == VLC_SUCCESS )
+                    enter_time = read;
+            }
             if ( p_item == NULL
               && vlc_renderer_item_demux_filter( p_priv->p_renderer ) == NULL )
             {
@@ -2697,6 +2715,20 @@ static bool Control( input_thread_t *p_input,
                     b_force_update = true;
                 else
                     msg_Warn( p_input, "cannot go back where the renderer was" );
+            }
+            /* To the renderer, the streams start again together, from the
+             * key frame before where the input read: the video waited for
+             * the next key frame (8 s away in a 4K film), so the device
+             * loaded the sound alone, then all again, and missed those
+             * seconds */
+            else if ( enter_time != VLC_TICK_INVALID && enter_time >= priv->i_start
+                   && priv->master->b_can_seek && !priv->b_recording )
+            {
+                es_out_Control( &priv->p_es_out->out, ES_OUT_RESET_PCR );
+                ResetFramePrevious( p_input );
+                priv->next_frame_need_data = false;
+                if ( ControlSetTime( p_input, enter_time - priv->i_start, false ) == VLC_SUCCESS )
+                    b_force_update = true;
             }
             break;
         }

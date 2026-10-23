@@ -87,7 +87,11 @@
 
 #ifdef _WIN32
 #include <QFileInfo>
+#include <QProcess>
 #endif
+
+#include <QDesktopServices>
+#include <QDir>
 
 #include <QThread>
 
@@ -788,6 +792,27 @@ QUrl MainCtx::folderMRL(const QUrl &fileMRL) const
     }
 
     return {};
+}
+
+void MainCtx::showInFileManager(const QUrl &fileMRL) const
+{
+    if (!fileMRL.isLocalFile())
+        return;
+
+#ifdef _WIN32
+    const QString path = fileMRL.toLocalFile();
+    if (QFileInfo::exists(path))
+    {
+        // Explorer opens the folder with the file selected; the path quoted
+        // as Explorer wants it (a comma in a name)
+        QProcess explorer;
+        explorer.setProgram(QStringLiteral("explorer.exe"));
+        explorer.setNativeArguments(QStringLiteral("/select,\"%1\"").arg(QDir::toNativeSeparators(path)));
+        if (explorer.startDetached())
+            return;
+    }
+#endif
+    QDesktopServices::openUrl(folderMRL(fileMRL));
 }
 
 QString MainCtx::displayMRL(const QUrl &mrl) const

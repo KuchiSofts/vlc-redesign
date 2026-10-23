@@ -436,6 +436,10 @@ public:
     Q_INVOKABLE QUrl folderMRL(const QString &fileMRL) const;
     Q_INVOKABLE QUrl folderMRL(const QUrl &fileMRL) const;
 
+    // Opens the folder of a local file in the file manager, the file
+    // selected where the platform can (Windows Explorer)
+    Q_INVOKABLE void showInFileManager(const QUrl &fileMRL) const;
+
     Q_INVOKABLE QString displayMRL(const QUrl &mrl) const;
 
     double artistAlbumsWidth() const;

@@ -4,6 +4,7 @@
  ****************************************************************************/
 import QtQuick
 import QtQuick.Controls.Basic
+import QtQuick.Controls.impl as Impl
 import VLC.Style
 
 Item {
@@ -113,7 +114,8 @@ Item {
                             Item {
                                 width: root.px(32)
                                 height: root.px(32)
-                                Image {
+                                // (the active one in the accent colour)
+                                Impl.ColorImage {
                                     anchors.centerIn: parent
                                     width: root.px(24)
                                     height: width
@@ -121,6 +123,7 @@ Item {
                                     fillMode: Image.PreserveAspectFit
                                     source: !modelData.icon ? "" : "qrc:///redesign/icons/" + modelData.icon + "/"
                                             + (entry.current ? "active" : "default") + ".png"
+                                    color: entry.current ? VLCStyle.redesign.accentTint : "transparent"
                                 }
                             }
                             Text {

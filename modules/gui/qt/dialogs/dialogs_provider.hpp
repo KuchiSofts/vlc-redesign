@@ -206,6 +206,9 @@ private:
     inline void ensureDialog(std::unique_ptr<T>& dialog);
     template<typename T>
     void toggleDialogVisible(std::unique_ptr<T>& dialog);
+    // the information of an item (its reference taken), read first when
+    // it was not yet
+    void mediaInfoDialogOf( input_item_t* inputItem );
 
 public slots:
     void playlistsDialog( const QVariantList & listMedia, MLPlaylistListModel::PlaylistType type = MLPlaylistListModel::PLAYLIST_TYPE_ALL);
@@ -214,6 +217,8 @@ public slots:
     void mediaInfoDialog( const SharedInputItem& inputItem );
     void mediaInfoDialog( const PlaylistItem& pItem );
     void mediaInfoDialog( const MLItemId& itemId );
+    // of a file the library does not list as a media (a playlist file)
+    void mediaInfoDialogForMrl( const QString& mrl );
     void mediaCodecDialog();
     // "Show confirmation and error dialogs" off (qt-error-dialogs): true
     // without asking, unless the action cannot be undone (always)

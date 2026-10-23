@@ -37,6 +37,9 @@ public: // Interface
     QString getName() const;
     void setName(const QString & name);
 
+    // the file of a playlist made from one (empty for one of the library)
+    QString getMrl() const { return m_mrl; }
+
     VLCDuration getDuration() const;
 
     unsigned int getCount() const;
@@ -52,6 +55,7 @@ public: // Interface
 
 private:
     QString m_name;
+    QString m_mrl;
 
     int64_t m_duration;
 

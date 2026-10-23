@@ -373,7 +373,8 @@ QHash<int, QByteArray> MLPlaylistListModel::roleNames() const /* override */
         { PLAYLIST_NB_AUDIO,  QByteArrayLiteral("nb_audio")   },
         { PLAYLIST_NB_VIDEO,  QByteArrayLiteral("nb_video")   },
         { PLAYLIST_NB_UNKNOWN,QByteArrayLiteral("nb_unknown") },
-        { PLAYLIST_IS_FAVORITE, QByteArrayLiteral("isFavorite") }
+        { PLAYLIST_IS_FAVORITE, QByteArrayLiteral("isFavorite") },
+        { PLAYLIST_MRL,       QByteArrayLiteral("mrl")        }
     };
 }
 
@@ -407,6 +408,8 @@ QVariant MLPlaylistListModel::itemRoleData(const MLItem *item, int role) const /
             return QVariant::fromValue(playlist->getNbUnknown());
         case PLAYLIST_IS_FAVORITE:
             return playlist->isFavorite();
+        case PLAYLIST_MRL:
+            return playlist->getMrl();
         default:
             return QVariant();
     }

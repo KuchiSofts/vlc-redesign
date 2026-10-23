@@ -25,6 +25,8 @@ T.Popup {
 
     property string title
     property string acceptText: qsTr("Save")
+    // a dialog with one action (Close) shows no Cancel
+    property bool cancelVisible: true
     property bool acceptEnabled: true
     property bool darkTheme: VLCStyle.palette.isDark
     // 1048 for Open network stream, 713 for New Playlist
@@ -240,6 +242,7 @@ T.Popup {
 
             DialogButton {
                 objectName: "dialogCancelButton"
+                visible: root.cancelVisible
                 x: VLCStyle.dp(20, VLCStyle.scale)
                 y: VLCStyle.dp(20, VLCStyle.scale)
                 text: qsTr("Cancel")

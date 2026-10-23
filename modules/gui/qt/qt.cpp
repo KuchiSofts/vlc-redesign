@@ -1557,6 +1557,9 @@ static void *ThreadCleanup( qt_intf_t *p_intf, CleanupReason cleanupReason )
             open_state = OPEN_STATE_INIT;
     }
 
+    if ( p_intf->p_mi )
+        emit p_intf->p_mi->interfaceUnloading();
+
     if ( p_intf->p_compositor )
     {
         if (cleanupReason == CLEANUP_INTF_CLOSED)

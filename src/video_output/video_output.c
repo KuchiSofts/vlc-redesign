@@ -788,7 +788,12 @@ static int FilterRestartCallback(vlc_object_t *p_this, char const *psz_var,
                                  void *p_data)
 {
     (void) p_this; (void) psz_var; (void) oldval; (void) newval;
-    vout_ControlChangeFilters((vout_thread_t *)p_data, NULL);
+    /* The same filters opened again (an option they read only as they open
+     * changed): vout_ControlChangeFilters(NULL) would remove them all */
+    vout_thread_sys_t *sys = VOUT_THREAD_TO_SYS((vout_thread_t *)p_data);
+    vlc_mutex_lock(&sys->filter.lock);
+    sys->filter.changed = true;
+    vlc_mutex_unlock(&sys->filter.lock);
     return 0;
 }
 

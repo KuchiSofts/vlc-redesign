@@ -12,7 +12,6 @@ Popup {
     property string captureAction: ""
     property string conflictAction: ""
     property string errorText: ""
-    readonly property bool dark: VLCStyle.palette.isDark
     signal keyCaptured(int key, int modifiers)
     signal clearRequested()
     signal replaceRequested()
@@ -37,8 +36,8 @@ Popup {
     height: VLCStyle.dp(205, VLCStyle.scale)
     onOpened: keyInput.forceActiveFocus(Qt.PopupFocusReason)
     background: Rectangle {
-        color: capturePopup.dark ? "#1b1b1b" : "#f5f5f5"
-        border.color: capturePopup.dark ? "#555555" : "#cccccc"
+        color: VLCStyle.redesign.color("#1b1b1b", "#ababaa")
+        border.color: VLCStyle.redesign.color("#555555", "#8e8e8d")
         radius: 6
     }
     contentItem: FocusScope {
@@ -80,7 +79,7 @@ Popup {
             anchors.left: parent.left
             anchors.leftMargin: 14
             text: capturePopup.captureGlobal ? qsTr("Global Hotkey") : qsTr("Hotkey")
-            color: capturePopup.dark ? "#dddddd" : "#333333"
+            color: VLCStyle.redesign.color("#dddddd", "#2e2e2e")
             font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
         }
         Label {
@@ -93,8 +92,8 @@ Popup {
             text: capturePopup.conflictAction.length > 0
                   ? qsTr("This key is assigned to %1. Replace that assignment?").arg(capturePopup.conflictAction)
                   : qsTr("Press a key combination to add to %1 (Esc cancels)").arg(capturePopup.captureAction)
-            color: capturePopup.conflictAction.length > 0 ? "#df8950"
-                  : (capturePopup.dark ? "#aaaaaa" : "#555555")
+            color: capturePopup.conflictAction.length > 0 ? VLCStyle.redesign.accent
+                  : VLCStyle.redesign.color("#aaaaaa", "#4d4d4d")
             wrapMode: Text.WordWrap
             font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
         }
@@ -108,7 +107,7 @@ Popup {
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 61
             text: capturePopup.errorText
-            color: "#df8950"
+            color: VLCStyle.redesign.accent
             elide: Text.ElideRight
             font.pixelSize: VLCStyle.dp(12, VLCStyle.scale)
         }

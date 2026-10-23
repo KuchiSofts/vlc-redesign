@@ -92,9 +92,8 @@ T.AbstractButton {
     // Events
 
     onClicked: {
-        // nothing plays (the bar kept shown): no player to open
-        if (Player.isStarted || MainCtx.playerView)
-            MainCtx.playerView = !MainCtx.playerView
+        // (nothing plays, the bar kept shown: the empty player, Figma's cat)
+        MainCtx.playerView = !MainCtx.playerView
     }
 
     // Children

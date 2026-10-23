@@ -18,6 +18,7 @@
 import QtQuick
 import QtQuick.Window
 import QtQuick.Templates as T
+import QtQuick.Controls.impl as Impl
 import QtQuick.Layouts
 import QtQml.Models
 
@@ -208,10 +209,23 @@ T.Pane {
                            ? Qt.DescendingOrder : Qt.AscendingOrder
 
                 contentItem: Image {
-                    source: "qrc:///redesign/icons/sort/" + (cardSort.checked ? "active" : "default") + ".png"
+                    id: sortIcon
+                    // sorted: a dot in the accent, with another accent tinted
+                    // above the grey arrows
+                    readonly property bool twoTone: cardSort.checked && !VLCStyle.redesign.defaultAccent
+                    source: "qrc:///redesign/icons/sort/" + (twoTone ? "active-grey"
+                                                             : cardSort.checked ? "active" : "default") + ".png"
                     sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
                     fillMode: Image.Pad
                     opacity: cardSort.enabled ? 1 : 0.4
+                    Impl.ColorImage {
+                        anchors.fill: parent
+                        visible: sortIcon.twoTone
+                        source: visible ? "qrc:///redesign/icons/sort/active-accent.png" : ""
+                        sourceSize: parent.sourceSize
+                        fillMode: parent.fillMode
+                        color: VLCStyle.redesign.accent
+                    }
                 }
                 background: CardButtonBackground { button: cardSort }
 

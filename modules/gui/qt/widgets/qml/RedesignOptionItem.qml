@@ -18,6 +18,7 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Templates as T
+import QtQuick.Controls.impl as Impl
 
 import VLC.Style
 
@@ -76,11 +77,12 @@ T.MenuItem {
             }
         }
 
-        Image {
+        Impl.ColorImage {
             Layout.preferredWidth: VLCStyle.redesign.iconSize
             Layout.preferredHeight: VLCStyle.redesign.iconSize
             visible: root.checked
             source: "qrc:///redesign/icons/check/active.png"
+            color: VLCStyle.redesign.accentTint
             sourceSize: Qt.size(width, height)
             fillMode: Image.Pad
             smooth: false

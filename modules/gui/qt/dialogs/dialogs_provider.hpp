@@ -215,7 +215,9 @@ public slots:
     void mediaInfoDialog( const PlaylistItem& pItem );
     void mediaInfoDialog( const MLItemId& itemId );
     void mediaCodecDialog();
-    bool questionDialog(const QString& text, const QString& title = {}) const;
+    // "Show confirmation and error dialogs" off (qt-error-dialogs): true
+    // without asking, unless the action cannot be undone (always)
+    bool questionDialog(const QString& text, const QString& title = {}, bool always = false) const;
     QMessageBox::StandardButton messageDialog(const QString& text,
                                               const QString& title = {},
                                               const QMessageBox::StandardButtons buttons = QMessageBox::NoButton,

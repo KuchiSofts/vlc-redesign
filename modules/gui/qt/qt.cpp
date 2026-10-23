@@ -206,6 +206,10 @@ static void ShowDialog   ( intf_thread_t *, int, int, intf_dialog_args_t * );
 #define INTERFACE_SCALE_TEXT N_( "Initial user scale factor for the interface, between 0.3 and 3.0" )
 
 #define ERROR_TEXT N_( "Show unimportant error and warnings dialogs" )
+#define ERROR_LONGTEXT N_( "Show the errors of VLC at the bottom of the window, and ask " \
+    "before removing media from a playlist or from the play queue, or deleting " \
+    "playlists. Off, the errors are only kept in the messages of VLC and these " \
+    "removals are done at once; deleting a file from the disk is always confirmed." )
 
 #define UPDATER_TEXT N_( "Activate the updates availability notification" )
 #define UPDATER_LONGTEXT N_( "Activate the automatic notification of new " \
@@ -469,8 +473,9 @@ vlc_module_begin ()
     add_integer( "qt-initial-prefs-view", 0, INITIAL_PREFS_VIEW_TEXT, INITIAL_PREFS_VIEW_LONGTEXT )
         change_integer_range( 0, 2 )
         change_integer_list( initial_prefs_view_list, initial_prefs_view_list_texts )
+    /* the error popup (Dialogs.qml) and DialogsProvider::questionDialog */
     add_bool( "qt-error-dialogs", true, ERROR_TEXT,
-              nullptr )
+              ERROR_LONGTEXT )
 
     add_obsolete_string( "qt-slider-colours")
 

@@ -34,14 +34,14 @@ Item {
         y: 19
         width: parent.width - 34
         height: 22
-        color: "#191919"
+        color: VLCStyle.redesign.color("#191919", "#ababaa")
     }
     Rectangle {
         x: 17
         y: 41
         width: parent.width - 34
         height: 542
-        color: "#090909"
+        color: VLCStyle.redesign.color("#090909", "#dedede")
     }
 
     Text {
@@ -49,7 +49,7 @@ Item {
         x: Math.floor((parent.width - width) / 2)
         y: 132
         text: qsTr("Choose the languages of your subtitles.")
-        color: "#969696"
+        color: VLCStyle.redesign.color("#969696", "#4d4d4d")
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: 24
         font.weight: Font.Light
@@ -61,7 +61,7 @@ Item {
         horizontalAlignment: Text.AlignHCenter
         wrapMode: Text.WordWrap
         text: qsTr("Subtitles in your language show by themselves: from the video, from a file next to it, or found online. When there are none in it, not even online, the second language is used.")
-        color: "#6f6f6f"
+        color: VLCStyle.redesign.color("#6f6f6f", "#5a5a59")
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: 15
         lineHeight: 1.3
@@ -76,7 +76,7 @@ Item {
             spacing: 10
             Text {
                 text: qsTr("Default language")
-                color: "#8f8f8f"
+                color: VLCStyle.redesign.color("#8f8f8f", "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: 14
             }
@@ -86,11 +86,11 @@ Item {
                 height: 46
                 code: root.primary
                 fontSize: 15
-                fieldColor: "#090909"
-                borderColor: "#191919"
-                textColor: "#eaeaea"
-                mutedColor: "#6f6f6f"
-                listColor: "#141414"
+                fieldColor: VLCStyle.redesign.color("#090909", "#c4c4c3")
+                borderColor: VLCStyle.redesign.color("#191919", "#9c9c9b")
+                textColor: VLCStyle.redesign.color("#eaeaea", "#1e1e1e")
+                mutedColor: VLCStyle.redesign.color("#6f6f6f", "#6b6b6b")
+                listColor: VLCStyle.redesign.color("#141414", "#b4b4b3")
                 onPicked: (code) => root.primaryRequested(code)
             }
         }
@@ -98,7 +98,7 @@ Item {
             spacing: 10
             Text {
                 text: qsTr("Second language (when there are none)")
-                color: "#8f8f8f"
+                color: VLCStyle.redesign.color("#8f8f8f", "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: 14
             }
@@ -109,11 +109,11 @@ Item {
                 code: root.secondary
                 allowNone: true
                 fontSize: 15
-                fieldColor: "#090909"
-                borderColor: "#191919"
-                textColor: "#eaeaea"
-                mutedColor: "#6f6f6f"
-                listColor: "#141414"
+                fieldColor: VLCStyle.redesign.color("#090909", "#c4c4c3")
+                borderColor: VLCStyle.redesign.color("#191919", "#9c9c9b")
+                textColor: VLCStyle.redesign.color("#eaeaea", "#1e1e1e")
+                mutedColor: VLCStyle.redesign.color("#6f6f6f", "#6b6b6b")
+                listColor: VLCStyle.redesign.color("#141414", "#b4b4b3")
                 onPicked: (code) => root.secondaryRequested(code)
             }
         }
@@ -140,7 +140,7 @@ Item {
         horizontalAlignment: Text.AlignHCenter
         wrapMode: Text.WordWrap
         text: qsTr("Online subtitles come from free services (OpenSubtitles, and more for some languages). Change all of it in Settings, Subtitles.")
-        color: "#5a5a5a"
+        color: VLCStyle.redesign.color("#5a5a5a", "#6b6b6b")
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: 13
     }
@@ -159,9 +159,9 @@ Item {
             width: 44
             height: 24
             radius: 12
-            color: toggle.checked ? VLCStyle.redesign.accent : "#262626"
+            color: toggle.checked ? VLCStyle.redesign.accent : VLCStyle.redesign.color("#262626", "#9c9c9b")
             border.width: toggle.visualFocus ? 2 : 0
-            border.color: "#eaeaea"
+            border.color: VLCStyle.redesign.color("#eaeaea", "#2e2e2e")
             Rectangle {
                 x: toggle.checked ? parent.width - width - 3 : 3
                 anchors.verticalCenter: parent.verticalCenter
@@ -176,7 +176,7 @@ Item {
             leftPadding: 60
             verticalAlignment: Text.AlignVCenter
             text: toggle.text
-            color: "#b4b4b4"
+            color: VLCStyle.redesign.color("#b4b4b4", "#2e2e2e")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: 15
             elide: Text.ElideRight

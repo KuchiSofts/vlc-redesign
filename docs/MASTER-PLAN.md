@@ -2,7 +2,7 @@
 
 What is finished, what is left, and in which order, for every program, platform and screen of VLC Redesign.
 It is the source for the [roadmap](../ROADMAP.md), the [README](../README.md), the wiki (with its *Design check*
-page) and the release notes. Last updated: 2026-10-23, build 115 of the `redesign` branch.
+page) and the release notes. Last updated: 2026-10-24, build 151 of the `redesign` branch.
 
 **Status:** 🟢 done · 🟡 in progress or partly done · 🔴 to do or missing · ⚪ idea or research
 **Pixel check:** 🟢 measured identical to the Figma frame · ⏳ not measured yet
@@ -17,7 +17,7 @@ counted from this document's own tables and checklists (column *From*); ⚪ idea
 
 | Program         | Progress             | Done    | %     | From                                   |
 |-----------------|----------------------|---------|-------|----------------------------------------|
-| Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜ | 75/94   | 79 %  | [§8](#8-next-release-030) checklists   |
+| Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜ | 78/94   | 82 %  | [§8](#8-next-release-030) checklists   |
 | Linux           | 🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 1/7     | 14 %  | [§9](#linux)                           |
 | macOS           | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/4     | 0 %   | [§9](#macos)                           |
 | Windows ARM64   | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/3     | 0 %   | [§9](#windows-on-arm64)                |
@@ -31,8 +31,8 @@ Windows 0.2.6 is released; 0.3.0 counts the lines of section 8 (done since 0.2.6
 
 | Area                    | Progress             | Done    | %     | From                                   |
 |-------------------------|----------------------|---------|-------|----------------------------------------|
-| Design frames (Figma)   | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 | 97/103  | 94 %  | [§5](#5-design-frame-by-frame) tables  |
-| Pixel check             | 🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜ | 72/103  | 69 %  | [§5](#5-design-frame-by-frame) tables  |
+| Design frames (Figma)   | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 | 100/103 | 97 %  | [§5](#5-design-frame-by-frame) tables  |
+| Pixel check             | 🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜ | 88/103  | 85 %  | [§5](#5-design-frame-by-frame) tables  |
 | Light theme and accents | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 16/17   | 94 %  | [§8.3](#83-light-theme-and-accents)    |
 | Settings rows           | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 211/212 | 99 %  | [§8.5](#85-settings-rows)              |
 | Classic dialogs         | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 11/11   | 100 % | [§8.6](#86-classic-dialogs)            |
@@ -190,10 +190,10 @@ Shared: `OnboardingDialog.qml`, `OnboardingButton.qml`, `onboarding.cpp`.
 | 1902:4325  | Onboarding | 1090 × 759  | 🟢     | 🟢    | Step 2, state 3 of 9                                              | ThemeStep.qml     |
 | 1902:4634  | Onboarding | 1090 × 759  | 🟢     | 🟢    | Step 2, state 4 of 9                                              | ThemeStep.qml     |
 | 1902:4940  | Onboarding | 1090 × 759  | 🟢     | 🟢    | Step 2, state 5 of 9                                              | ThemeStep.qml     |
-| 1902:5245  | Onboarding | 1090 × 759  | 🟢     | ⏳    | Step 2, state 6 of 9                                              | ThemeStep.qml     |
-| 1902:5550  | Onboarding | 1090 × 759  | 🟢     | ⏳    | Step 2, state 7 of 9                                              | ThemeStep.qml     |
-| 1902:6160  | Onboarding | 1090 × 759  | 🟢     | ⏳    | Step 2, state 8 of 9                                              | ThemeStep.qml     |
-| 1902:6465  | Onboarding | 1090 × 759  | 🟢     | ⏳    | Step 2, state 9 of 9                                              | ThemeStep.qml     |
+| 1902:5245  | Onboarding | 1090 × 759  | 🟢     | 🟢    | Step 2, state 6 of 9                                              | ThemeStep.qml     |
+| 1902:5550  | Onboarding | 1090 × 759  | 🟢     | 🟢    | Step 2, state 7 of 9                                              | ThemeStep.qml     |
+| 1902:6160  | Onboarding | 1090 × 759  | 🟢     | 🟢    | Step 2, state 8 of 9                                              | ThemeStep.qml     |
+| 1902:6465  | Onboarding | 1090 × 759  | 🟢     | 🟢    | Step 2, state 9 of 9                                              | ThemeStep.qml     |
 | 1902:6770  | Onboarding | 1090 × 759  | 🟢     | 🟢    | Last step: 12 shortcuts with DM Mono keycaps, Back, Finish         | ShortcutsStep.qml |
 
 Notes: drawn light in the light theme (the dark frames unchanged). Beyond Figma: a subtitle languages step
@@ -348,13 +348,13 @@ added in build 115 are in the app ⏳ (§8.5).
 | 1904:7238  | Current Time | 114 × 164      | 🟢     | 🟢    | Elapsed time: default, hover, click                    | ControlBar.qml                                  |
 | 1905:7312  | Duration     | 114 × 164      | 🟢     | 🟢    | Length: default, click (remaining time)                | ControlBar.qml                                  |
 | 2151:9673  | thumbnail    | 272 × 189      | 🟢     | ⏳    | Seek bar frame preview with its time                   | SeekFramePreview.qml                            |
-| 970:3091   | Miniplayer   | 431 × 2816.375 | 🟢     | ⏳    | Library mini player, 5 states                          | LibraryMiniPlayer.qml, MiniPlayerQueue.qml      |
+| 970:3091   | Miniplayer   | 431 × 2816.375 | 🟢     | 🟢    | Library mini player, 5 states                          | LibraryMiniPlayer.qml, MiniPlayerQueue.qml      |
 
 **Library**
 
 | Node       | Name            | Size (px)   | Status | Pixel | What it is                                          | Implemented in                               |
 |------------|-----------------|-------------|--------|-------|-----------------------------------------------------|----------------------------------------------|
-| 848:1996   | sidebar         | 4492 × 1028 | 🟡     | ⏳    | Sections column, 10 states                          | SideNavigationPane.qml, CompactLibrary.qml   |
+| 848:1996   | sidebar         | 4492 × 1028 | 🟢     | 🟢    | Sections column, 10 states                          | SideNavigationPane.qml, CompactLibrary.qml   |
 | 856:2215   | Sorting Options | 265 × 776   | 🟢     | 🟢    | Sort menu                                           | LibraryHeader.qml, RedesignOptionItem.qml    |
 | 858:3290   | View Options    | 265 × 104   | 🟢     | 🟢    | Grid or list                                        | LibraryHeader.qml, CompactLibrary.qml        |
 | 2404:9167  | media           | 377 × 228   | 🟢     | 🟢    | Video card: watched, unwatched, hover of each       | VideoGridItem.qml                            |
@@ -396,27 +396,28 @@ The four context menus are the design's cards (`RedesignContextMenu.qml`, build 
 | 804:1208   | Values           | 253 × 404 | 🟢     | 🟢    | Segmented choice of 2 or 3 values                  | SettingsSegmented.qml                          |
 | 3176:16556 | Values           | 360 × 216 | 🟢     | 🟢    | Vertical values (startup volume)                   | SettingsStartupVolume.qml                      |
 | 3178:16769 | EQ               | 824 × 628 | 🟢     | 🟢    | Inline equalizer: closed, open                     | SettingsEqualizerPanel.qml, SettingsEqualizer.qml |
-| 2372:8487  | EQ presets       | 406 × 460 | 🟢     | ⏳    | Equalizer preset dropdown                          | SettingsEqualizer.qml, EqualizerPanel.qml      |
+| 2372:8487  | EQ presets       | 406 × 460 | 🟢     | 🟢    | Equalizer preset dropdown                          | SettingsEqualizer.qml, EqualizerPanel.qml      |
 | 6456:13892 | sub filename     | 406 × 422 | 🟢     | 🟢    | Subtitle file name matching dropdown               | SettingsDropdown.qml                           |
 | 2372:8834  | Setting Preset   | 406 × 412 | 🟡     | ⏳    | A preset dropdown: default, open                   | SettingsDropdown.qml                           |
-| 2372:8639  | Audio Visualizer | 406 × 369 | 🟡     | ⏳    | Visualizer choice: default, open                   | SettingsDropdown.qml, AudioVisualizationDialog.qml |
-| 2372:8733  | HDR Options      | 406 × 422 | 🟡     | ⏳    | Auto, Off, HDR10, HDR10+, Dolby Vision, HLG         | HdrOutputDialog.qml, hdr_output.cpp, HDRButton.qml |
+| 2372:8639  | Audio Visualizer | 406 × 369 | 🟢     | 🟢    | Visualizer choice: default, open                   | SettingsDropdown.qml, AudioVisualizationDialog.qml |
+| 2372:8733  | HDR Options      | 406 × 422 | 🟢     | 🟢    | Auto, Off, HDR10, HDR10+, Dolby Vision, HLG         | HdrOutputDialog.qml, hdr_output.cpp, HDRButton.qml |
 
-Differences: 🔴 2372:8834 and 2372:8639 not compared with their frames yet (the player's visualizer choice is a
-400 × 400 popup). 🔴 2372:8733: HDR10+ and Dolby Vision always disabled (the renderer exposes no value for them);
-a 400 × 445 popup.
+Differences: 🟡 2372:8834 is drawn on no screen of the design (a list of presets with New and ⋯ on each one);
+the profiles of Customize Player use its look. 2372:8639 is *Settings › Audio › Visualizer* and the player's
+visualizer (VU meter and VLC's other visualizations follow the design's four). 2372:8733: HDR10+ and Dolby Vision
+are listed disabled, with the reason under the pointer (Windows offers no way for a player to send them).
 
 **Effects panels**
 
 | Node       | Name                         | Size (px)  | Status | Pixel | What it is                     | Implemented in                                         |
 |------------|------------------------------|------------|--------|-------|--------------------------------|--------------------------------------------------------|
-| 536:1513   | Audio - Compressor Settings  | 400 × 821  | 🟢     | ⏳    | Collapsed, expanded            | EffectsDialog.qml, FilterPanel.qml, SettingsInlineEffects.qml |
-| 6114:13610 | Audio - Equalizer            | 400 × 1623 | 🟢     | ⏳    | Preamp and 10 bands            | EqualizerPanel.qml, SettingsEqualizerPanel.qml         |
-| 536:1703   | Audio - Spatializer Settings | 400 × 821  | 🟢     | ⏳    | Collapsed, expanded            | EffectsDialog.qml, FilterPanel.qml                     |
-| 612:1223   | Audio - Stereo Widener       | 400 × 821  | 🟢     | ⏳    | Collapsed, expanded            | EffectsDialog.qml, FilterPanel.qml                     |
-| 536:1855   | Video - Essential            | 400 × 821  | 🟢     | ⏳    | Collapsed, expanded            | VideoEffectsPanel.qml, VideoFilterSection.qml          |
-| 543:990    | Video - Crop                 | 400 × 821  | 🟢     | ⏳    | Collapsed, expanded            | CropPanel.qml, CropInput.qml                           |
-| 614:1430   | Video - Colors               | 400 × 888  | 🟢     | ⏳    | Collapsed, expanded            | VideoEffectsPanel.qml, VideoFilterSection.qml          |
+| 536:1513   | Audio - Compressor Settings  | 400 × 821  | 🟢     | 🟢    | Collapsed, expanded            | EffectsDialog.qml, FilterPanel.qml, SettingsInlineEffects.qml |
+| 6114:13610 | Audio - Equalizer            | 400 × 1623 | 🟢     | 🟢    | Preamp and 10 bands            | EqualizerPanel.qml, SettingsEqualizerPanel.qml         |
+| 536:1703   | Audio - Spatializer Settings | 400 × 821  | 🟢     | 🟢    | Collapsed, expanded            | EffectsDialog.qml, FilterPanel.qml                     |
+| 612:1223   | Audio - Stereo Widener       | 400 × 821  | 🟢     | 🟢    | Collapsed, expanded            | EffectsDialog.qml, FilterPanel.qml                     |
+| 536:1855   | Video - Essential            | 400 × 821  | 🟢     | 🟢    | Collapsed, expanded            | VideoEffectsPanel.qml, VideoFilterSection.qml          |
+| 543:990    | Video - Crop                 | 400 × 821  | 🟢     | 🟢    | Collapsed, expanded            | CropPanel.qml, CropInput.qml                           |
+| 614:1430   | Video - Colors               | 400 × 888  | 🟢     | 🟢    | Collapsed, expanded            | VideoEffectsPanel.qml, VideoFilterSection.qml          |
 
 ### 5.15 Screens outside the Figma file
 
@@ -437,9 +438,9 @@ a 400 × 445 popup.
 |----|--------------------------------------------------------------------|------------------------------------------|--------|
 | 1  | *Show the playlist as a tree*: needs a new queue model (VLC 4's queue is flat) | 3046:10057, 3062:11379       | 🔴     |
 | 2  | Library context menus are native menus, not cards                  | 2107:5903, 2139:8935, 2404:13340, 2459:9389 | 🟢  |
-| 3  | The compact library's Home lists recent media only                 | 848:1996                                 | 🔴     |
-| 4  | HDR10+ and Dolby Vision always disabled                            | 2372:8733                                | 🔴     |
-| 5  | Not compared yet: Setting Preset, Audio Visualizer                 | 2372:8834, 2372:8639                     | 🔴     |
+| 3  | The compact library's Home lists the sections of the library's Home (no play counts of playlists or artists) | 848:1996 | 🟢 |
+| 4  | HDR10+ and Dolby Vision disabled with their reason (Windows has no way to send them) | 2372:8733 | 🟢 |
+| 5  | Setting Preset is drawn on no screen of the design                 | 2372:8834                                | 🟡     |
 | 6  | No background blur: panels solid at 95 % (the music backdrop is blurred); what shows through is at most 5 % (13 grey levels, measured: 4 under the ⋯ menu), under the pixel tolerance, so no blur pass is spent on the GPU | every floating panel | 🟢 |
 | 7  | A stray separator line in the Disc tab of Open Media               | outside the file                         | 🟢     |
 
@@ -790,14 +791,15 @@ and an accepted request made the TV fail after a pause in a test.
 - 🟢 Resume card as in Figma: the watched time and one *Continue Watching* button · in the app ⏳
 - 🟢 New playlist with a custom thumbnail (PNG, 1024 px at most, deleted with the playlist) · in the app ⏳
 - 🟢 Empty playlists: Save needs only a title · in the app ⏳
-- 🔴 The compact library's Home with the rows of the library's Home
+- 🟢 The compact library's Home with the sections of the library's Home, in its order
 - 🟢 Background blur (50 px) behind floating panels: not drawn, the panels are 95 % opaque (at most 13 grey levels
   show through, under the pixel tolerance; no blur pass for weak graphics cards)
-- 🔴 HDR10+ and Dolby Vision offered when the renderer supports them, hidden with a reason otherwise
-- 🔴 Geometry, overlay and advanced video filters in the effects panel
-- 🔴 Setting Preset and Audio Visualizer compared with 2372:8834 and 2372:8639
+- 🟢 HDR10+ and Dolby Vision listed with the reason they cannot be chosen (Windows offers no way to send them)
+- 🟢 Geometry, overlay and advanced video filters in the effects panel
+- 🟡 Setting Preset and Audio Visualizer compared with 2372:8834 and 2372:8639 (the visualizer is; no screen uses the
+  preset list)
 - 🔴 Editing the music bar and the mini player verified
-- 🔴 Pixel check of all 103 frames (§11)
+- 🟡 Pixel check of all 103 frames (§11): 88
 - ⚪ Subtitle cues drawn on the seek bar
 - ⚪ A *What's new* card after an update
 - ⚪ The accent following the Windows accent colour (an option)
@@ -818,7 +820,7 @@ and an accepted request made the TV fail after a pause in a test.
 - 🔴 Small updates from 0.2.4, 0.2.5 and 0.2.6 built and checked
 - 🔴 Announcement in Discussions; every fixed issue answered with the release link
 
-Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 75 🟢, 0 🟡, 19 🔴 (94), of which 11 🟢 are
+Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 78 🟢, 2 🟡, 14 🔴 (94), of which 11 🟢 are
 in the app ⏳.
 Languages (§12) and the community (§13) have bars of their own.
 

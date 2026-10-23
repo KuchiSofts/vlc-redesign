@@ -41,8 +41,10 @@ FocusScope {
 
     readonly property int positionSliderY: controlBar.y + controlBar.sliderY
 
+    // "Show cover art in the window when playing audio" (qt-bgcone): the
+    // picture of a media without artwork when off
     readonly property string coverSource: {
-        if (Player.artwork &&
+        if (MainCtx.bgCone && Player.artwork &&
             Player.artwork.toString())
             return Player.artwork
         else if (Player.hasVideoOutput)

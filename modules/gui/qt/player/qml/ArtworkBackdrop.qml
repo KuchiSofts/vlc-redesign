@@ -43,7 +43,7 @@ Widgets.DualKawaseBlur {
     tint: bgtheme.palette.isDark ? "black" : "white"
     // the artwork as it is (Figma); the light placeholder of a media without
     // one stays dimmed
-    readonly property bool _artwork: !!Player.artwork && Player.artwork.toString() !== ""
+    readonly property bool _artwork: MainCtx.bgCone && !!Player.artwork && Player.artwork.toString() !== ""
                                      && !(coverItem && coverItem.status === Image.Error)
     tintStrength: bgtheme.palette.isDark ? (_artwork ? 0.0 : 0.82) : 0.6
     backgroundColor: bgtheme.bg.primary

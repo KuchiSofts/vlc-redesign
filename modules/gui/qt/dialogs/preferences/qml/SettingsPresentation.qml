@@ -66,8 +66,10 @@ readonly property var items: ({
         "qt-auto-raise": [qsTr("Window"), qsTr("Bring VLC to the front when playback starts"), "",
                           { 0: qsTr("Never"), 1: qsTr("Video"), 2: qsTr("Audio"), 3: qsTr("Audio and video") },
                           { advanced: true, info: true }],
-        // the cone of the compact view while nothing shows a video
-        "qt-bgcone": [qsTr("Window"), qsTr("Show the VLC cone when there is no video"), "", null, { advanced: true, info: false }],
+        // the cover art of the player for audio (Player.qml), the cone of
+        // the compact view
+        "qt-bgcone": [qsTr("Window"), qsTr("Show cover art in the window when playing audio"), "", null,
+                      { advanced: true, info: false }],
         "qt-embedded-open": [qsTr("Window"), qsTr("Show the file browser inside the open dialog"), "", null, { advanced: true, info: false }],
         "qt-icon-change": [qsTr("Window"), qsTr("Allow the app icon to change"), "", null, { advanced: true, info: false }],
         // one frame in the design: 5 above, 5 between, 5 below

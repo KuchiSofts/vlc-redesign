@@ -178,11 +178,21 @@ Column {
                     help: model.help ?? ""
                     settingType: model.type ?? ""
                     settingValue: model.key === "sub-language" && root.subtitleLanguages
-                                  ? root.subtitleLanguages.primary : model.value
+                                  ? root.subtitleLanguages.primary
+                                  // the equalizer off: no preset (Figma 3180:17398)
+                                  : model.key === "equalizer-preset"
+                                    && !(root.settingsModel.revision, root.settingsModel.valueFor("x-filter:equalizer"))
+                                  ? "none" : model.value
                     choices: {
                         const labels = presentation.choiceLabels
                         // Wheels: Seek is backwards (3) when Reverse scroll direction is on
                         const setting = (model.key ?? "").replace(/^x-mirror:/, "")
+                        // Figma "EQ presets" (2372:8487): None (the equalizer
+                        // off), then the presets with their curve
+                        if (setting === "equalizer-preset" && model.choices)
+                            return [{ value: "none", label: qsTr("None") }].concat(model.choices.map(choice => ({
+                                value: choice.value, label: choice.label,
+                                icon: "qrc:///redesign/icons/eq-" + String(choice.value).toLowerCase() })))
                         if (setting === "hotkeys-y-wheel-mode" || setting === "hotkeys-x-wheel-mode")
                             return [{ value: -1, label: qsTr("Nothing") }, { value: 0, label: qsTr("Volume") },
                                     { value: model.value === 3 ? 3 : 2, label: qsTr("Seek") }]
@@ -218,10 +228,16 @@ Column {
                                   : ""
                     dirty: !!model.dirty
                     onCommit: (value) => {
-                        if (settingKey === "sub-language" && root.subtitleLanguages)
+                        if (settingKey === "sub-language" && root.subtitleLanguages) {
                             root.subtitleLanguages.pickPrimary(value)
-                        else
+                        } else if (settingKey === "equalizer-preset") {
+                            // None turns the equalizer off, a preset on
+                            root.settingsModel.setValue("x-filter:equalizer", value !== "none")
+                            if (value !== "none")
+                                root.settingsModel.setValue(settingKey, value)
+                        } else {
                             root.settingsModel.setValue(settingKey, value)
+                        }
                     }
                     decimals: presentation.decimals
                     rowHeight: presentation.rowHeight || 0

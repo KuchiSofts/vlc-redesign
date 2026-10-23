@@ -5,13 +5,22 @@ import QtQuick.Controls.impl as Impl
 import VLC.Dialogs
 import VLC.MainInterface
 import VLC.Style
+import VLC.Widgets as Widgets
+
+// Figma "HDR Options" (2372:8733), the dropdown of the settings: the field
+// with the mode in use (360 x 48: #090909 around #191919), 20 under it the
+// list (padding 2, rows of 44 two apart, #1F1F1F under the mode chosen with
+// the check of the accent 13 from its end), the drop shadow of the menus
 Controls.Popup {
     id: root
     objectName: "hdrOutputDialog"
     property bool previousShortcuts: true
-    width: Math.min(VLCStyle.dp(400, VLCStyle.scale), parent.width - 32)
-    height: Math.min(VLCStyle.dp(445, VLCStyle.scale), parent.height - 48)
-    padding: VLCStyle.dp(20, VLCStyle.scale)
+
+    function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
+    function c(dark, light) { return VLCStyle.redesign.color(dark, light) }
+
+    width: Math.min(px(360), parent.width - 32)
+    padding: 0
     focus: true
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutside
     // a press outside only closes it: the video under it does not pause
@@ -20,60 +29,125 @@ Controls.Popup {
     onOpened: { previousShortcuts = MainCtx.useGlobalShortcuts; MainCtx.useGlobalShortcuts = false }
     onClosed: MainCtx.useGlobalShortcuts = previousShortcuts
     HdrOutput { id: output; ctx: MainCtx }
-    background: Rectangle { color: VLCStyle.redesign.color("#191919", "#c2c2c1"); radius: 6 }
+    background: null
     contentItem: Column {
-        spacing: 8
-        Text {
-            text: output.selectedIndex >= 0 ? output.choices[output.selectedIndex].label : qsTr("HDR unavailable")
-            height: VLCStyle.dp(40, VLCStyle.scale)
-            color: VLCStyle.redesign.color("#969696", "#4d4d4d")
-            font.family: VLCStyle.redesign.fontFamily; font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
+        spacing: root.px(20)
+
+        // the field: the mode in use
+        Rectangle {
+            width: parent.width
+            height: root.px(48)
+            radius: root.px(6)
+            color: root.c("#090909", "#dedede")
+            Rectangle {
+                anchors.fill: parent
+                anchors.margins: root.px(2)
+                radius: root.px(4)
+                color: root.c("#191919", "#ababaa")
+            }
+            Text {
+                x: root.px(16)
+                width: parent.width - x - root.px(16 + 24 + 10)
+                height: parent.height
+                text: output.selectedIndex >= 0 ? output.choices[output.selectedIndex].label : qsTr("HDR unavailable")
+                color: root.c("#8F8F8F", "#4d4d4d")
+                font.family: VLCStyle.redesign.fontFamily
+                font.pixelSize: root.px(14)
+                verticalAlignment: Text.AlignVCenter
+                elide: Text.ElideRight
+            }
+            Image {
+                x: parent.width - root.px(2 + 14) - width
+                anchors.verticalCenter: parent.verticalCenter
+                width: root.px(24)
+                height: width
+                sourceSize: Qt.size(width, height)
+                source: "qrc:///redesign/icons/chevron-down/default.png"
+            }
         }
-        Repeater {
-            model: output.choices
-            // the reason of a choice that cannot be chosen shows on hover: a
-            // disabled control gets no hover itself, the row around it does
-            delegate: Item {
-                id: choice
-                required property int index
-                required property var modelData
-                width: root.availableWidth
-                height: VLCStyle.dp(46, VLCStyle.scale)
-                HoverHandler { id: choiceHover }
-                Controls.ToolTip.visible: choiceHover.hovered && modelData.reason.length > 0
-                Controls.ToolTip.text: modelData.reason
-                Controls.ToolTip.delay: 300
-                Controls.ItemDelegate {
-                    id: row
-                    anchors.fill: parent
-                    enabled: choice.modelData.enabled
-                    onClicked: output.select(choice.index)
-                    background: Rectangle {
-                        radius: 4
-                        color: row.hovered || output.selectedIndex === choice.index ? VLCStyle.redesign.color("#222222", "#ababaa") : "transparent"
-                        border.color: row.visualFocus ? VLCStyle.redesign.accent : "transparent"
-                    }
-                    contentItem: Row {
-                        Text {
-                            width: row.width - 54; height: parent.height
-                            text: choice.modelData.label; opacity: row.enabled ? 1 : 0.45
-                            color: VLCStyle.redesign.color("#969696", "#4d4d4d")
-                            font.family: VLCStyle.redesign.fontFamily; font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
-                            verticalAlignment: Text.AlignVCenter
+
+        // the list
+        Rectangle {
+            width: parent.width
+            height: choices.height + 2 * root.px(2)
+            radius: root.px(6)
+            color: root.c("#191919", "#ababaa")
+
+            // Figma: drop shadow 0 8 blur 15 #000000 46 % (as the menus)
+            Widgets.RoundedRectangleShadow {
+                yOffset: root.px(8)
+                blurRadius: 7.5 * VLCStyle.scale
+                color: Qt.rgba(0, 0, 0, 0.46)
+            }
+
+            Column {
+                id: choices
+                x: root.px(2)
+                y: root.px(2)
+                width: parent.width - 2 * x
+                spacing: root.px(2)
+
+                Repeater {
+                    model: output.choices
+                    // the reason of a choice that cannot be chosen shows on
+                    // hover: a disabled control gets no hover itself, the
+                    // row around it does
+                    delegate: Item {
+                        id: choice
+                        required property int index
+                        required property var modelData
+                        readonly property bool chosen: output.selectedIndex === index
+                        width: choices.width
+                        height: root.px(44)
+                        HoverHandler { id: choiceHover }
+                        Controls.ToolTip.visible: choiceHover.hovered && modelData.reason.length > 0
+                        Controls.ToolTip.text: modelData.reason
+                        Controls.ToolTip.delay: 300
+                        Controls.ItemDelegate {
+                            id: row
+                            anchors.fill: parent
+                            enabled: choice.modelData.enabled
+                            leftPadding: root.px(14)
+                            rightPadding: root.px(14 + 24 + 13)
+                            onClicked: output.select(choice.index)
+                            Accessible.name: choice.modelData.label
+                            background: Rectangle {
+                                radius: root.px(4)
+                                color: choice.chosen || row.hovered || row.visualFocus
+                                       ? root.c("#1F1F1F", "#9c9c9b") : "transparent"
+                                Impl.ColorImage {
+                                    visible: choice.chosen
+                                    x: parent.width - root.px(13) - width
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    width: root.px(24)
+                                    height: width
+                                    source: "qrc:///redesign/track-check-active.png"
+                                    color: VLCStyle.redesign.accentTint
+                                }
+                            }
+                            contentItem: Text {
+                                text: choice.modelData.label
+                                opacity: row.enabled ? 1 : 0.45
+                                color: root.c("#8F8F8F", "#4d4d4d")
+                                font.family: VLCStyle.redesign.fontFamily
+                                font.pixelSize: root.px(14)
+                                verticalAlignment: Text.AlignVCenter
+                            }
                         }
-                        Impl.ColorImage { width: 24; height: 24; anchors.verticalCenter: parent.verticalCenter
-                            source: "qrc:///redesign/track-check-active.png"; visible: output.selectedIndex === choice.index
-                            color: VLCStyle.redesign.accentTint }
                     }
                 }
             }
         }
+
+        // what the modes need (not in the design: under its list)
         Text {
             width: parent.width
+            visible: text.length > 0
             text: output.message
             wrapMode: Text.WordWrap
-            color: VLCStyle.redesign.color("#969696", "#4d4d4d")
-            font.family: VLCStyle.redesign.fontFamily; font.pixelSize: VLCStyle.dp(12, VLCStyle.scale)
+            color: root.c("#6B6B6B", "#4d4d4d")
+            font.family: VLCStyle.redesign.fontFamily
+            font.pixelSize: root.px(12)
         }
     }
 }

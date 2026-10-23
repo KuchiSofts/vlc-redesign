@@ -75,9 +75,13 @@ T.ComboBox {
 
         width: ListView.view ? ListView.view.width : root.width
         implicitHeight: root.px(44)
-        leftPadding: root.px(14)
         rightPadding: root.px(14 + 24 + 13)
         highlighted: root.highlightedIndex === index
+
+        // a choice with an icon (the curves of the equalizer presets): the
+        // icon 14 in, the text 10 after it
+        readonly property string iconDir: option.modelData.icon ?? ""
+        leftPadding: iconDir ? root.px(14 + 24 + 10) : root.px(14)
 
         contentItem: Text {
             id: optionText
@@ -94,6 +98,24 @@ T.ComboBox {
             radius: root.px(4)
             color: option.chosen || option.highlighted || option.hovered ? root.c("#1F1F1F") : "transparent"
 
+            // drawn in grey and the accent: with another accent, the grey
+            // part and the rest tinted above it
+            Image {
+                id: choiceIcon
+                visible: option.iconDir.length > 0
+                readonly property bool twoTone: !VLCStyle.redesign.defaultAccent
+                x: root.px(14)
+                anchors.verticalCenter: parent.verticalCenter
+                width: root.px(24)
+                height: width
+                source: visible ? option.iconDir + (twoTone ? "/default-grey.png" : "/default.png") : ""
+                Impl.ColorImage {
+                    anchors.fill: parent
+                    visible: choiceIcon.twoTone
+                    source: visible ? option.iconDir + "/default-accent.png" : ""
+                    color: VLCStyle.redesign.accent
+                }
+            }
             Impl.ColorImage {
                 visible: option.chosen
                 x: parent.width - root.px(13) - width

@@ -100,11 +100,14 @@ public:
     ControlbarProfile* newProfile(const QString& name);
     ControlbarProfile* newProfile();
 
-    // "New profile" of every menu: opens Customize Player, which asks for
-    // the name of the profile (takeNewProfileRequest())
+    // "New profile" of every menu, and Rename, Clone and Delete of the menu
+    // of a profile (that profile selected first): opens Customize Player,
+    // which asks for the name or the confirmation (takeProfileAction())
     Q_INVOKABLE void requestNewProfile();
-    // Whether a new profile was asked for since the last call
-    Q_INVOKABLE bool takeNewProfileRequest();
+    Q_INVOKABLE void requestProfileAction(int index, const QString& action);
+    // The action asked for since the last call ("new", "rename", "clone",
+    // "delete"), empty when none
+    Q_INVOKABLE QString takeProfileAction();
 
     // Why a name can not be given to a new profile (renaming: to the
     // selected one), empty when it can
@@ -142,7 +145,7 @@ signals:
     void errorChanged();
     void modifiedChanged();
     void editingChanged();
-    void newProfileRequested();
+    void profileActionRequested();
 
     void selectedProfileControlListChanged(const QVector<int>& linearControlList);
 
@@ -154,7 +157,7 @@ private:
     bool m_skipNextApply = false;
     bool m_modified = false;
     bool m_editing = false;
-    bool m_newProfileRequested = false;
+    QString m_profileAction;
 
     struct Profile {
         const Style id;

@@ -37,8 +37,12 @@ MLFoldersBaseModel::MLFoldersBaseModel( QObject *parent )
     m_contentTimer.setSingleShot( true );
     m_contentTimer.setInterval( 1000 );
     connect( &m_contentTimer, &QTimer::timeout, this, &MLFoldersBaseModel::update );
-    connect( this, &MLFoldersBaseModel::onMLFolderModified,
-             &m_contentTimer, qOverload<>(&QTimer::start) );
+    // started once, not again by each event: a scan sends them in bursts,
+    // restarted the timer would wait for its end
+    connect( this, &MLFoldersBaseModel::onMLFolderModified, this, [this]() {
+        if ( !m_contentTimer.isActive() )
+            m_contentTimer.start();
+    } );
 }
 
 MLFoldersBaseModel::EntryPoint::EntryPoint( const vlc_ml_folder_t& entryPoint)
@@ -149,7 +153,8 @@ void MLFoldersBaseModel::onMlEvent( void* data , const vlc_ml_event_t* event )
         if (!self->failed( event ))
             emit self->onMLEntryPointModified( QPrivateSignal() );
     }
-    else if ( event->i_type == VLC_ML_EVENT_FOLDER_ADDED || event->i_type == VLC_ML_EVENT_FOLDER_UPDATED )
+    else if ( ( event->i_type == VLC_ML_EVENT_FOLDER_ADDED || event->i_type == VLC_ML_EVENT_FOLDER_UPDATED )
+              && self->readsContent() )
         emit self->onMLFolderModified( QPrivateSignal() );
 }
 
@@ -208,6 +213,12 @@ void MLFoldersBaseModel::updateImpl(vlc_ml_folder_list_t* (*folderListFunc)( vlc
     [this](quint64, Ctx& ctx)
     {
         m_updatePending = false;
+        // the context went away while it was read: no rows without it
+        if ( !m_mediaLib )
+        {
+            m_updateRequested = false;
+            return;
+        }
         if ( m_kind != AllFolders )
         {
             // an entry point holding nothing yet is in both lists
@@ -242,9 +253,16 @@ void MLFoldersBaseModel::updateImpl(vlc_ml_folder_list_t* (*folderListFunc)( vlc
     });
 }
 
+MLFoldersModel::~MLFoldersModel()
+{
+    // the events stop before this part of the object goes (onMlEvent calls
+    // its virtual functions from the media library's thread)
+    m_ml_event_handle.reset( nullptr );
+}
+
 void MLFoldersModel::update()
 {
-    updateImpl(vlc_ml_list_entry_points, true);
+    updateImpl(vlc_ml_list_entry_points, readsContent());
 }
 
 
@@ -306,6 +324,12 @@ void MLBannedFoldersModel::add(const QUrl &mrl)
         vlc_ml_ban_folder( ml , qtu( mrl.toString( QUrl::FullyEncoded ) ) );
     },
     ML_FOLDER_BAN_QUEUE);
+}
+
+MLBannedFoldersModel::~MLBannedFoldersModel()
+{
+    // (as MLFoldersModel's)
+    m_ml_event_handle.reset( nullptr );
 }
 
 void MLBannedFoldersModel::update()

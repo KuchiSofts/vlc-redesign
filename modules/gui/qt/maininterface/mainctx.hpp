@@ -147,6 +147,7 @@ class MainCtx : public QObject
     // "Always show the player bar" of the settings: the bar of the library
     // stays while nothing plays
     Q_PROPERTY(bool alwaysShowPlayerBar READ alwaysShowPlayerBar NOTIFY alwaysShowPlayerBarChanged FINAL)
+    Q_PROPERTY(bool increaseContrast READ increaseContrast NOTIFY increaseContrastChanged FINAL)
     Q_PROPERTY(bool albumSections READ albumSections WRITE setAlbumSections NOTIFY albumSectionsChanged FINAL)
     Q_PROPERTY(bool lyricsMode READ lyricsMode WRITE setLyricsMode NOTIFY lyricsModeChanged FINAL)
     Q_PROPERTY(bool usingTouch READ usingTouch NOTIFY usingTouchChanged FINAL)
@@ -302,6 +303,7 @@ public:
     int doubleClickAction() const { return m_doubleClickAction; }
     bool showErrorDialogs() const { return m_showErrorDialogs; }
     bool alwaysShowPlayerBar() const { return m_alwaysShowPlayerBar; }
+    bool increaseContrast() const { return m_increaseContrast; }
 
     bool usingTouch() const { return m_usingTouch; }
 
@@ -522,6 +524,7 @@ protected:
     int m_doubleClickAction = 1;
     bool m_showErrorDialogs = true;
     bool m_alwaysShowPlayerBar = false;
+    bool m_increaseContrast = false;
 
     bool m_albumSections = true;
 
@@ -661,6 +664,7 @@ signals:
     void doubleClickActionChanged();
     void showErrorDialogsChanged();
     void alwaysShowPlayerBarChanged();
+    void increaseContrastChanged();
 
     void navBoxToggled();
 

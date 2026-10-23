@@ -247,6 +247,9 @@ const QtSettingOption qtSettingOptions[] = {
     { "redesign/always-show-player-bar", 'b', 0, 0, 0, N_("Always show the player bar"),
       N_("Keeps the player bar at the bottom of the library while nothing plays: Play starts "
          "the play queue, or opens files when it is empty.") },
+    { "redesign/increase-contrast", 'b', 0, 0, 0, N_("Increase text contrast"),
+      N_("Draws the dim texts of the design (hints, descriptions, watched items) brighter, to the "
+         "contrast the WCAG accessibility guidelines ask for (AA).") },
     { "redesign/notification-duration", 'i', 3000, 0, 10000, N_("Popup duration"),
       N_("How long the popup of the track changes stays on the screen.") },
     { "redesign/process-priority", 'i', 0, -2, 2, N_("Process priority"),

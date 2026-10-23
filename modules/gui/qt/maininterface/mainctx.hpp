@@ -670,6 +670,9 @@ signals:
 
     void usingTouchChanged();
 
+    /// a value was set with setSettingValue()
+    void settingValueChanged(const QString &key);
+
 private:
     void loadPrefs(bool callSignals);
     void loadFromSettingsImpl(bool callSignals);

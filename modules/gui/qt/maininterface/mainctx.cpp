@@ -1173,6 +1173,7 @@ QVariant MainCtx::settingValue(const QString &key, const QVariant &defaultValue)
 void MainCtx::setSettingValue(const QString &key, const QVariant &value)
 {
     settings->setValue(key, value);
+    emit settingValueChanged(key);
 }
 
 void MainCtx::setAttachedToolTip(QObject *toolTip)

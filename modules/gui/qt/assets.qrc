@@ -451,6 +451,17 @@
         <file alias="player-settings.svg">pixmaps/redesign/player-settings.svg</file>
         <file alias="subtitles.svg">pixmaps/redesign/subtitles.svg</file>
         <file alias="equalizer.svg">pixmaps/redesign/equalizer.svg</file>
+        <file alias="widgets/chevron-down-dark.svg">pixmaps/redesign/widgets/chevron-down-dark.svg</file>
+        <file alias="widgets/chevron-down-light.svg">pixmaps/redesign/widgets/chevron-down-light.svg</file>
+        <file alias="widgets/chevron-down-disabled-dark.svg">pixmaps/redesign/widgets/chevron-down-disabled-dark.svg</file>
+        <file alias="widgets/chevron-down-disabled-light.svg">pixmaps/redesign/widgets/chevron-down-disabled-light.svg</file>
+        <file alias="widgets/chevron-up-dark.svg">pixmaps/redesign/widgets/chevron-up-dark.svg</file>
+        <file alias="widgets/chevron-up-light.svg">pixmaps/redesign/widgets/chevron-up-light.svg</file>
+        <file alias="widgets/chevron-up-disabled-dark.svg">pixmaps/redesign/widgets/chevron-up-disabled-dark.svg</file>
+        <file alias="widgets/chevron-up-disabled-light.svg">pixmaps/redesign/widgets/chevron-up-disabled-light.svg</file>
+        <file alias="widgets/chevron-right-dark.svg">pixmaps/redesign/widgets/chevron-right-dark.svg</file>
+        <file alias="widgets/chevron-right-light.svg">pixmaps/redesign/widgets/chevron-right-light.svg</file>
+        <file alias="widgets/check.svg">pixmaps/redesign/widgets/check.svg</file>
     </qresource>
     <qresource prefix="/fonts">
         <file alias="InterVariable.ttf">pixmaps/fonts/InterVariable.ttf</file>

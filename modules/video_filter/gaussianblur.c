@@ -97,6 +97,8 @@ typedef struct
     type_t *pt_distribution;
     type_t *pt_buffer;
     type_t *pt_scale;
+    /* the luma plane the buffers were made for */
+    int i_buffer_pitch, i_buffer_lines, i_buffer_visible_pitch;
 } filter_sys_t;
 
 static int gaussianblur_InitDistribution( filter_sys_t *p_sys )
@@ -202,6 +204,21 @@ static void Filter( filter_t *p_filter, picture_t *p_pic, picture_t *p_outpic )
         i_y_plane_bytes == 0 )
         return; // FIXME: nullify output ?
 
+    /* made again for pictures of another size or pitch: they were made
+     * for the first one, and read past */
+    if( p_sys->pt_buffer
+     && ( p_sys->i_buffer_pitch != p_pic->p[Y_PLANE].i_pitch
+       || p_sys->i_buffer_lines != p_pic->p[Y_PLANE].i_visible_lines
+       || p_sys->i_buffer_visible_pitch != p_pic->p[Y_PLANE].i_visible_pitch ) )
+    {
+        free( p_sys->pt_buffer );
+        free( p_sys->pt_scale );
+        p_sys->pt_buffer = p_sys->pt_scale = NULL;
+    }
+    p_sys->i_buffer_pitch = p_pic->p[Y_PLANE].i_pitch;
+    p_sys->i_buffer_lines = p_pic->p[Y_PLANE].i_visible_lines;
+    p_sys->i_buffer_visible_pitch = p_pic->p[Y_PLANE].i_visible_pitch;
+
     if( !p_sys->pt_buffer )
     {
         p_sys->pt_buffer = malloc( i_y_plane_bytes );
@@ -288,7 +305,9 @@ static void Filter( filter_t *p_filter, picture_t *p_pic, picture_t *p_outpic )
                                pt_buffer[c+(y>>y_factor)*i_in_pitch];
                 }
 
-                const type_t t_scale = pt_scale[(i_line<<y_factor)*(i_in_pitch<<x_factor)+(i_col<<x_factor)];
+                /* (the scale is laid out with the luma pitch: a chroma
+                 * pitch times 2 can be larger, read past the end) */
+                const type_t t_scale = pt_scale[(i_line<<y_factor)*p_pic->p[Y_PLANE].i_pitch+(i_col<<x_factor)];
                 p_out[i_line * p_outpic->p[i_plane].i_pitch + i_col] = (uint8_t)(t_value / t_scale); // FIXME wouldn't it be better to round instead of trunc ?
             }
         }

@@ -9,12 +9,14 @@ import VLC.Util
 import VLC.Widgets as Widgets
 
 // The subtitle languages (SubtitlePreferences, also asked by the setup): the
-// default one, the second one (when there are none in the first), the online
-// search, both at once (dual subtitles, off); then the services asked online
-// (SubtitleFinder). Kept when the settings are (save)
+// default one (picked by Preferred language, the row of the design above),
+// the second one (when there are none in the first), the online search, both
+// at once (dual subtitles, off); then the services asked online
+// (SubtitleFinder). Kept when the settings are (save). Below the sections of
+// the design: the page starts as it draws it
 SettingsSectionTitle {
     id: root
-    text: qsTr("Subtitle Languages")
+    text: qsTr("Second Language & Online Subtitles")
 
     property string primary: "en"
     property string secondary: ""
@@ -43,6 +45,14 @@ SettingsSectionTitle {
             SubtitleFinder.setServiceEnabled(id, services[id])
     }
 
+    function pickPrimary(code) {
+        if (!code)
+            return
+        primary = code
+        if (secondary === code)
+            secondary = ""
+    }
+
     function c(value) { return VLCStyle.redesign.color(value, value) }
     readonly property real controlWidth: Math.min(px(320), width * 0.46)
 
@@ -61,26 +71,7 @@ SettingsSectionTitle {
     Item {
         width: parent.width
         height: root.px(52)
-        Label { text: qsTr("Default language") }
-        Widgets.LanguagePicker {
-            objectName: "settingsSubtitlePrimary"
-            anchors.right: parent.right
-            anchors.verticalCenter: parent.verticalCenter
-            width: root.controlWidth
-            height: root.px(40)
-            code: root.primary
-            onPicked: (code) => {
-                root.primary = code
-                if (root.secondary === code)
-                    root.secondary = ""
-            }
-        }
-    }
-
-    Item {
-        width: parent.width
-        height: root.px(52)
-        Label { text: qsTr("Second language (when there are none in the default one)") }
+        Label { text: qsTr("Second language (when there are none in the preferred one)") }
         Widgets.LanguagePicker {
             objectName: "settingsSubtitleSecondary"
             anchors.right: parent.right

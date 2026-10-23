@@ -37,10 +37,11 @@ static const Option entries[] = {
     // the mouse shows the controls in fullscreen (Player.qml), the skins
     // read it too
     {"interface", "qt-fs-controller"},
-    // the bar of the library while nothing plays (MainDisplay.qml)
-    {"interface", "qt:redesign/always-show-player-bar"},
     {"interface", "qt-system-tray"}, {"interface", "qt-start-minimized"},
     {"interface", "qt-notification"}, {"interface", "qt:redesign/notification-duration"},
+    // the bar of the library while nothing plays (MainDisplay.qml): not in
+    // the design, after its sections
+    {"interface", "qt:redesign/always-show-player-bar"},
     // (no "playlist-tree", the Playlist section of the design: nothing
     // reads it in VLC 4. Its play queue is flat: vlc_playlist_t replaces an
     // item that expands (a folder, a playlist file) by its children and

@@ -53,15 +53,15 @@ readonly property var items: ({
                             { false: qsTr("Always"), true: qsTr("In fullscreen only") }, { info: true }],
         "mouse-hide-timeout": [qsTr("Playback Controls"), qsTr("Hide after"), "slider", null, { info: false, labelsBaseline: 44, rowHeight: 57, controlTop: 1 }],
         "qt-fs-controller": [qsTr("Playback Controls"), qsTr("Show controls in fullscreen"), "", null, { info: true }],
-        // not in the design: next to the rows of the controls
-        "redesign/always-show-player-bar": [qsTr("Playback Controls"), qsTr("Always show the player bar"), "", null,
-                                            { info: true }],
         "qt-system-tray": [qsTr("Notifications and System Tray"), qsTr("Show a system tray icon"), "", null, { info: true, restart: true }],
         "qt-start-minimized": [qsTr("Notifications and System Tray"), qsTr("Start minimized to the tray"), "", null, { info: true }],
         "qt-notification": [qsTr("Notifications and System Tray"), qsTr("Show a popup when the track changes"), "", null,
                             { info: true, restart: true }],
         "redesign/notification-duration": [qsTr("Notifications and System Tray"), qsTr("Popup duration"), "slider", null,
                                            { info: false, labelsBaseline: 44, rowHeight: 57, controlTop: 1 }],
+        // not in the design: after its sections (the page starts as it draws it)
+        "redesign/always-show-player-bar": [qsTr("Player Bar"), qsTr("Always show the player bar"), "", null,
+                                            { info: true }],
         "qt-opacity": [qsTr("Window"), qsTr("Window opacity"), "opacity10", null,
                        { advanced: true, info: false, labelsBaseline: 44, rowHeight: 57, controlTop: 1, restart: true }],
         "qt-pause-minimized": [qsTr("Window"), qsTr("Pause video when window is minimized"), "", null,
@@ -208,8 +208,9 @@ readonly property var items: ({
         "compressor-makeup-gain": [qsTr("Effects"), qsTr("Compressor makeup gain"), "", null, { hidden: true }],
         // Subtitles page of the design
         "spu": [qsTr("Tracks & Languages"), qsTr("Enable subtitles"), "", null, { info: true }],
-        // the default and secondary languages of SettingsSubtitleLanguages set it
-        "sub-language": [qsTr("Tracks & Languages"), qsTr("Preferred language"), "", { "": qsTr("Automatic") }, { info: true, hidden: true }],
+        // the default language of SubtitlePreferences (with the second one of
+        // SettingsSubtitleLanguages, they set it)
+        "sub-language": [qsTr("Tracks & Languages"), qsTr("Preferred language"), "language", { "": qsTr("Automatic") }, { info: true }],
         "subsdec-encoding": [qsTr("Tracks & Languages"), qsTr("Text encoding"), "", { "": qsTr("Automatic") }, { info: true }],
         "sub-autodetect-file": [qsTr("Loading Subtitles"), qsTr("Load subtitle files automatically"), "", null, { info: true }],
         "sub-autodetect-fuzzy": [qsTr("Loading Subtitles"), qsTr("File name matching"), "", null, { info: true }],

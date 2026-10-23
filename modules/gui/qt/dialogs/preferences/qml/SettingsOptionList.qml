@@ -23,6 +23,9 @@ Column {
     // Developer mode: the expert options (the design leaves them out) show
     // under Advanced Options
     property bool showExpert: false
+    // The subtitle languages (SettingsSubtitleLanguages): the Preferred
+    // language row picks their default one
+    property var subtitleLanguages: null
     // Reset all settings was clicked (the dialog confirms it)
     signal resetAllRequested()
     readonly property int count: optionsRepeater.count
@@ -174,7 +177,8 @@ Column {
                     accessibleLabel: presentation.accessible || presentation.label || ""
                     help: model.help ?? ""
                     settingType: model.type ?? ""
-                    settingValue: model.value
+                    settingValue: model.key === "sub-language" && root.subtitleLanguages
+                                  ? root.subtitleLanguages.primary : model.value
                     choices: {
                         const labels = presentation.choiceLabels
                         // Wheels: Seek is backwards (3) when Reverse scroll direction is on
@@ -213,7 +217,12 @@ Column {
                                                                    ? String(model.value) : defaultText)
                                   : ""
                     dirty: !!model.dirty
-                    onCommit: (value) => root.settingsModel.setValue(settingKey, value)
+                    onCommit: (value) => {
+                        if (settingKey === "sub-language" && root.subtitleLanguages)
+                            root.subtitleLanguages.pickPrimary(value)
+                        else
+                            root.settingsModel.setValue(settingKey, value)
+                    }
                     decimals: presentation.decimals
                     rowHeight: presentation.rowHeight || 0
                     fieldHeight: presentation.fieldHeight || 0

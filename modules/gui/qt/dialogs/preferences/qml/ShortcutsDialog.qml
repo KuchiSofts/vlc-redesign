@@ -622,7 +622,7 @@ Widgets.RedesignDialog {
             width: content.innerWidth
             visible: shortcuts.error.length > 0 || root.profileError.length > 0
             text: root.profileError || shortcuts.error
-            color: "#df8950"
+            color: VLCStyle.redesign.accent
         }
     }
 

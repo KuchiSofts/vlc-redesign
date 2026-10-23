@@ -104,8 +104,9 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
   `net_Read()` or the file output retry a dead socket forever.
 - Chromecast stream output: at the end of the media the chain is closed first (its muxer and transcoder write what
   they hold), then the TV reads until the fifo is empty or it stops reading for 15 s. At the start of each media the
-  first blocks wait until every stream sent some (or half a second of media): the chain made with the first stream
-  was made again with the next, and the TV loaded twice.
+  first blocks wait until every stream sent some (or two seconds of media): the chain made with the first stream
+  was made again with the next, and the TV loaded twice. A stream is added with its first block, and an MP4 file
+  gives about a second of sound before its first picture after a seek (casting from the middle of a film).
 - `demux_chromecast`: the drain result of `ES_OUT_DRAIN` was assigned to a `ret` declared in the EOF block (upstream
   since `1ebb26bbc9`, 2025), so the demux's EOF was returned and the input ended as soon as all was read, instead of
   when the TV reported FINISHED.

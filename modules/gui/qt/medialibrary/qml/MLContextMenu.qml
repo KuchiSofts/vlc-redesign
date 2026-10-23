@@ -76,12 +76,13 @@ Widgets.RedesignContextMenu {
             "icon": "play",
             "action": addAndPlay
         }, {
-            // all watched: the row marks them unwatched
-            "text": (dataList) => root._every(dataList, data => data["isNew"] === false)
+            // all watched (played to the end once, as the cards dim them;
+            // one stopped partway is not): the row marks them unwatched
+            "text": (dataList) => root._every(dataList, data => (data["playcount"] ?? 0) > 0)
                                   ? qsTr("Mark as Unwatched") : qsTr("Mark as Watched"),
             "icon": "mark-watched",
             "action": (dataList, options, indexes) => {
-                root._setPlayed(indexes, !root._every(dataList, data => data["isNew"] === false))
+                root._setPlayed(indexes, !root._every(dataList, data => (data["playcount"] ?? 0) > 0))
             },
             "visible": (dataList) => typeof root.model.setItemPlayed === "function"
                                      && root._every(dataList, data => typeof data["isNew"] === "boolean")

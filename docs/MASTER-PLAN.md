@@ -825,7 +825,8 @@ and an accepted request made the TV fail after a pause in a test.
 
 - 🟡 Code-signed builds (decision 2: SignPath Foundation, free for open source): the CI jobs, the artifact
   configurations, `CODE_SIGNING_POLICY.md` and the steps (docs/code-signing.md) are ready, and every binary carries
-  VLC Redesign's name and version; waiting for the application to SignPath, then the privacy choices at install
+  VLC Redesign's name and version, and the two features that go online are chosen at install (or at the first
+  start of a portable copy) with the policy linked; waiting for the user's application to SignPath
 - 🟡 Automated tests in CI: launch, playback, QML warnings (extras/juxtopposed/ci/launch-test.ps1 and its job in
   build-windows.yml, passing on this PC; it runs on GitHub once uploaded)
 - 🔴 Intel graphics, older PCs, Windows 10 on real hardware, high-DPI multi-monitor (2026-10-24: the app drawn at

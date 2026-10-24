@@ -100,12 +100,15 @@ FocusScope {
                 Layout.preferredHeight: implicitHeight
                 Layout.alignment: Qt.AlignTop
 
+                // (a Column places nothing across: its items anchored to the
+                // start, the right in a right to left layout)
                 Column {
                     id: artAndControlLayout
 
                     spacing: VLCStyle.margin_normal
 
                     Item {
+                        anchors.left: parent.left
                         height: VLCStyle.gridCover_video_height
                         width: VLCStyle.gridCover_video_width
 
@@ -130,6 +133,7 @@ FocusScope {
                     Widgets.NavigableRow {
                         id: actionButtons
 
+                        anchors.left: parent.left
                         focus: true
                         spacing: VLCStyle.margin_large
 
@@ -154,7 +158,9 @@ FocusScope {
                         }
 
                         Navigation.parentItem: root
-                        Navigation.rightItem: showMoreButton
+                        // the infos on the left in a right to left layout
+                        Navigation.leftItem: LayoutMirroring.enabled ? showMoreButton : null
+                        Navigation.rightItem: LayoutMirroring.enabled ? null : showMoreButton
                     }
                 }
             }
@@ -173,6 +179,7 @@ FocusScope {
                     Widgets.SubtitleLabel {
                         text: model.title || qsTr("Unknown title")
                         color: theme.fg.primary
+                        horizontalAlignment: Text.AlignLeft
 
                         Layout.fillWidth: true
                     }
@@ -189,7 +196,9 @@ FocusScope {
                         onClicked: root.retract()
 
                         Navigation.parentItem: root
-                        Navigation.leftItem: showMoreButton
+                        // (the close button on the left in a right to left layout)
+                        Navigation.leftItem: LayoutMirroring.enabled ? null : showMoreButton
+                        Navigation.rightItem: LayoutMirroring.enabled ? showMoreButton : null
                     }
                 }
 
@@ -197,12 +206,14 @@ FocusScope {
                     text: (model && model.duration) ? model.duration.formatHMS() : ""
                     color: theme.fg.primary
                     width: parent.width
+                    horizontalAlignment: Text.AlignLeft
                 }
 
                 Widgets.MenuCaption {
                     topPadding: VLCStyle.margin_normal
                     text: "<b>" + qsTr("File Name:") + "</b> " + root.model.fileName
                     width: parent.width
+                    horizontalAlignment: Text.AlignLeft
                     color: theme.fg.secondary
                     textFormat: Text.StyledText
                 }
@@ -226,6 +237,7 @@ FocusScope {
                     topPadding: VLCStyle.margin_xsmall
                     bottomPadding: VLCStyle.margin_large
                     width: parent.width
+                    horizontalAlignment: Text.AlignLeft
                     textFormat: Text.StyledText
 
                     onLinkActivated: function (link) {
@@ -237,6 +249,9 @@ FocusScope {
                     id: showMoreButton
 
                     AccessibleCompat.id: "videoInfoShowMoreButton"
+
+                    // at the start of the column (the right in a right to left layout)
+                    anchors.left: parent.left
 
                     text: root._showMoreInfo ? qsTr("View Less") : qsTr("View More")
                     iconTxt: VLCIcons.expand
@@ -253,8 +268,10 @@ FocusScope {
                     onClicked: root._showMoreInfo = !root._showMoreInfo
 
                     Navigation.parentItem: root
-                    Navigation.leftItem: enqueueActionBtn
-                    Navigation.rightItem: closeButton
+                    // (the buttons of the cover on the right in a right to
+                    // left layout, the close button on the left)
+                    Navigation.leftItem: LayoutMirroring.enabled ? closeButton : enqueueActionBtn
+                    Navigation.rightItem: LayoutMirroring.enabled ? enqueueActionBtn : closeButton
                 }
 
                 Row {
@@ -323,9 +340,12 @@ FocusScope {
         // [["caption": <str>, "role": <str>].,.]
         property var delegateModel
 
+        // (anchored: at the start of the column, the right in a right to
+        // left layout)
         Widgets.MenuCaption {
             id: titleTxt
 
+            anchors.left: parent.left
             color: theme.fg.secondary
             font.bold: true
             bottomPadding: VLCStyle.margin_small
@@ -349,6 +369,7 @@ FocusScope {
 
                     property string description: delegateRepeater.modelData[modelData.role] ?? ""
 
+                    anchors.left: parent ? parent.left : undefined
                     visible: !!description
                     text: modelData.text + " " + description
                     topPadding: (!delegateRepeater.isFirst) && (index === 0) ? VLCStyle.margin_small : 0

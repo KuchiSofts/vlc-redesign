@@ -150,7 +150,10 @@ FocusScope {
                 property alias playActionBtn: _playActionBtn
 
                 focus: true
-                width: VLCStyle.expandCover_music_width
+                // as wide as the cover; longer texts make it wider: the
+                // buttons may pass the cover (as in English) by less than
+                // the space before the tracks
+                width: Math.max(VLCStyle.expandCover_music_width, implicitWidth - layout.spacing)
 
                 spacing: VLCStyle.margin_small
 
@@ -184,7 +187,9 @@ FocusScope {
 
 
                 Navigation.parentItem: root
-                Navigation.rightItem: VLCStyle.isScreenSmall ? root.headerFocusScope : tracks
+                // the tracks (or the header) are on the left right to left
+                Navigation.leftItem: LayoutMirroring.enabled ? (VLCStyle.isScreenSmall ? root.headerFocusScope : tracks) : null
+                Navigation.rightItem: LayoutMirroring.enabled ? null : (VLCStyle.isScreenSmall ? root.headerFocusScope : tracks)
                 Navigation.upItem: VLCStyle.isScreenSmall ? root.headerFocusScope : null
 
                 Navigation.downAction: function () {
@@ -215,7 +220,9 @@ FocusScope {
                 focus: true
 
                 Navigation.parentItem: root
-                Navigation.leftItem: root.enqueueActionBtn
+                // the buttons are on the right right to left
+                Navigation.leftItem: LayoutMirroring.enabled ? null : root.enqueueActionBtn
+                Navigation.rightItem: LayoutMirroring.enabled ? root.enqueueActionBtn : null
                 Navigation.downAction: function () {
                     if (VLCStyle.isScreenSmall) {
                         root.enqueueActionBtn.forceActiveFocus(Qt.TabFocusReason);
@@ -344,6 +351,10 @@ FocusScope {
 
                 /* A bigger cover for the album */
                 Loader {
+                    // on the start side when the buttons are wider (a
+                    // Column does not mirror)
+                    x: LayoutMirroring.enabled ? artAndControlLayout.width - width : 0
+
                     sourceComponent: !VLCStyle.isScreenSmall ? cover : null
                     property int cover_height: VLCStyle.expandCover_music_height
                     property int cover_width: VLCStyle.expandCover_music_width
@@ -447,7 +458,9 @@ FocusScope {
                        : _allModel
 
             Navigation.parentItem: root
-            Navigation.leftItem: VLCStyle.isScreenSmall ? null : root.enqueueActionBtn
+            // the cover and its buttons are on the right right to left
+            Navigation.leftItem: (VLCStyle.isScreenSmall || LayoutMirroring.enabled) ? null : root.enqueueActionBtn
+            Navigation.rightItem: (VLCStyle.isScreenSmall || !LayoutMirroring.enabled) ? null : root.enqueueActionBtn
             Navigation.upItem: headerItem
 
 

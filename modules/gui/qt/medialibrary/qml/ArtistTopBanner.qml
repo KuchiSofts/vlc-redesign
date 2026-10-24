@@ -231,6 +231,18 @@ FocusScope {
                 Layout.fillWidth: true
                 Layout.topMargin: VLCStyle.margin_large
 
+                // the width the two buttons take with their texts (the
+                // icon, the paddings, the space before the text and the
+                // text): a longer translation shows them as icons sooner
+                readonly property real _widthWithTexts: {
+                    let total = spacing
+                    for (const button of [playActionBtn, enqueueActionBtn])
+                        total += button.iconSize + button.leftPadding + button.rightPadding
+                                 + VLCStyle.margin_xsmall + (button.contentItem?.label?.implicitWidth ?? 0)
+                    return Math.ceil(total)
+                }
+                readonly property bool _showTexts: width > Math.max(VLCStyle.colWidth(2), _widthWithTexts)
+
 
                 Widgets.ActionButtonPrimary {
                     id: playActionBtn
@@ -244,7 +256,7 @@ FocusScope {
                     //we probably want to keep this button like the other action buttons
                     colorContext.palette: VLCStyle.palette
 
-                    showText: actionButtons.width > VLCStyle.colWidth(2)
+                    showText: actionButtons._showTexts
 
                     onClicked: MediaLib.addAndPlay( artist.id )
                 }
@@ -258,7 +270,7 @@ FocusScope {
                     text: qsTr("Enqueue all")
                     onClicked: MediaLib.addToPlaylist( artist.id )
 
-                    showText: actionButtons.width > VLCStyle.colWidth(2)
+                    showText: actionButtons._showTexts
                 }
 
             }

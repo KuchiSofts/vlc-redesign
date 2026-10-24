@@ -88,7 +88,11 @@ Widgets.PageLoader {
                             source: "qrc:///redesign/icons/more/default.png"
                             sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
                         }
-                        onClicked: actionsMenu.popup(actionsButton, 0, actionsButton.height)
+                        // under the button, from its right edge in a right to
+                        // left layout (a menu is not mirrored by itself)
+                        onClicked: actionsMenu.popup(actionsButton,
+                                                     LayoutMirroring.enabled ? actionsButton.width - actionsMenu.width : 0,
+                                                     actionsButton.height)
 
                         Widgets.RedesignMenu {
                             id: actionsMenu

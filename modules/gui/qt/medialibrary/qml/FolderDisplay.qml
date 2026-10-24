@@ -314,7 +314,10 @@ Widgets.PageExt {
             contentItem: Item {
             // List mode (Figma "media"): the thumbnail, 10, the name (only the
             // tree of the mode shown is made)
+            // (anchored: at the start of its cell, the right in a right to
+            // left layout, where the grid lays the cells out from the right)
             Loader {
+                anchors.left: parent.left
                 active: root._listMode
                 sourceComponent: Item {
                     width: grid.rowWidth
@@ -322,6 +325,7 @@ Widgets.PageExt {
 
                     Rectangle {
                         id: thumbnail
+                        anchors.left: parent.left
                         width: VLCStyle.dp(32, VLCStyle.scale)
                         height: width
                         radius: VLCStyle.dp(2, VLCStyle.scale)
@@ -346,8 +350,11 @@ Widgets.PageExt {
                                                         : "qrc:///redesign/icons/file/default.png"
                             sourceSize: Qt.size(width, height)
                         }
-                        // the progress, at the bottom of the thumbnail
+                        // the progress, at the bottom of the thumbnail (a time
+                        // axis: from the left in every language, as the seek bar)
                         Item {
+                            LayoutMirroring.enabled: false
+                            LayoutMirroring.childrenInherit: true
                             anchors.left: parent.left
                             anchors.bottom: parent.bottom
                             visible: card.progress > 0
@@ -386,10 +393,12 @@ Widgets.PageExt {
 
                     Text {
                         id: rowName
-                        x: thumbnail.width + grid.rowGap
-                        width: parent.width - x
+                        anchors.left: thumbnail.right
+                        anchors.leftMargin: grid.rowGap
+                        anchors.right: parent.right
                         height: parent.height
                         text: card.model.name
+                        horizontalAlignment: Text.AlignLeft
                         elide: Text.ElideMiddle
                         color: card.hovered ? VLCStyle.redesign.accent
                                             : VLCStyle.redesign.color(card.played ? "#6B6B6B" : VLCStyle.redesign.textSecondary,
@@ -414,8 +423,10 @@ Widgets.PageExt {
                 anchors.fill: parent
                 active: !root._listMode
                 sourceComponent: Item {
+                    // (anchored: at the start of the cell, as the rows above)
                     Rectangle {
                         id: picture
+                        anchors.left: parent.left
                         width: grid.cardWidth
                         height: grid.pictureHeight
                         radius: VLCStyle.dp(12, VLCStyle.scale)
@@ -442,8 +453,11 @@ Widgets.PageExt {
                             color: "#33000000"
                         }
                         // the progress: a line of the accent at the bottom,
-                        // inside the rounded corners
+                        // inside the rounded corners (from the left in every
+                        // language: a time axis)
                         Item {
+                            LayoutMirroring.enabled: false
+                            LayoutMirroring.childrenInherit: true
                             anchors.left: parent.left
                             anchors.bottom: parent.bottom
                             visible: card.progress > 0
@@ -475,10 +489,12 @@ Widgets.PageExt {
 
                     Text {
                         id: cardName
+                        anchors.left: parent.left
                         y: picture.height + VLCStyle.dp(20, VLCStyle.scale)
                         width: grid.cardWidth
                         height: VLCStyle.dp(19, VLCStyle.scale)
                         text: card.model.name
+                        horizontalAlignment: Text.AlignLeft
                         elide: Text.ElideRight
                         // #6B6B6B once played
                         color: card.hovered ? VLCStyle.redesign.accent
@@ -521,6 +537,10 @@ Widgets.PageExt {
 
         Text {
             anchors.centerIn: parent
+            // a longer translation on more lines in a narrow window
+            width: Math.min(implicitWidth, grid.width - 2 * grid.margin)
+            horizontalAlignment: Text.AlignHCenter
+            wrapMode: Text.WordWrap
             visible: grid.count === 0
             text: folderModel.searchPattern !== "" ? qsTr("No media matches the search")
                                                    : qsTr("No media in this folder")

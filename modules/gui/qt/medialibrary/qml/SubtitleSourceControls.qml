@@ -16,6 +16,10 @@ ColumnLayout {
     required property string initialTargetLabel
     property int originIndex: 0
     readonly property bool online: originIndex === 2
+    // mirrored in a right to left layout, in a dialog (a popup, not under
+    // the mirrored interface) too
+    LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+    LayoutMirroring.childrenInherit: true
     spacing: VLCStyle.dp(10, VLCStyle.scale)
     onOriginIndexChanged: originPicker.currentIndex = originIndex
     Connections {
@@ -41,11 +45,14 @@ ColumnLayout {
                          currentIndex >= 0 ? model[currentIndex].kind + ": " + currentText : ""
             onActivated: (index) => root.associations.selectTarget(index)
             background: Rectangle { color: "#151515"; radius: VLCStyle.dp(4, VLCStyle.scale) }
+            // (the padding at the start: on the right in a right to left layout)
             contentItem: Controls.Label {
                 text: parent.displayText
                 color: "#d0d0d0"
                 font: parent.font
-                leftPadding: VLCStyle.dp(12, VLCStyle.scale)
+                leftPadding: LayoutMirroring.enabled ? 0 : VLCStyle.dp(12, VLCStyle.scale)
+                rightPadding: LayoutMirroring.enabled ? VLCStyle.dp(12, VLCStyle.scale) : 0
+                horizontalAlignment: Text.AlignLeft
                 verticalAlignment: Text.AlignVCenter
                 elide: Text.ElideRight
             }
@@ -66,7 +73,9 @@ ColumnLayout {
                 text: parent.displayText
                 color: "#d0d0d0"
                 font: parent.font
-                leftPadding: VLCStyle.dp(12, VLCStyle.scale)
+                leftPadding: LayoutMirroring.enabled ? 0 : VLCStyle.dp(12, VLCStyle.scale)
+                rightPadding: LayoutMirroring.enabled ? VLCStyle.dp(12, VLCStyle.scale) : 0
+                horizontalAlignment: Text.AlignLeft
                 verticalAlignment: Text.AlignVCenter
                 elide: Text.ElideRight
             }
@@ -100,6 +109,7 @@ ColumnLayout {
                         .arg(root.associations.destinations.length)
             color: "#8f8f8f"
             font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
+            horizontalAlignment: Text.AlignLeft
             elide: Text.ElideMiddle
         }
     }
@@ -114,6 +124,7 @@ ColumnLayout {
             Layout.fillWidth: true
             Layout.preferredHeight: VLCStyle.dp(34, VLCStyle.scale)
             placeholderText: qsTr("Direct HTTPS link to a subtitle file")
+            horizontalAlignment: TextInput.AlignLeft
             color: "#d0d0d0"
             selectByMouse: true
             onAccepted: if (addButton.enabled) addButton.clicked()
@@ -143,6 +154,7 @@ ColumnLayout {
     }
 
     RowLayout {
+        Layout.fillWidth: true
         visible: root.associations.busy
         spacing: VLCStyle.dp(8, VLCStyle.scale)
         Controls.BusyIndicator {
@@ -150,7 +162,11 @@ ColumnLayout {
             Layout.preferredHeight: Layout.preferredWidth
             running: visible
         }
+        // (elided in a narrow column, a longer translation)
         Controls.Label {
+            Layout.fillWidth: true
+            horizontalAlignment: Text.AlignLeft
+            elide: Text.ElideRight
             text: qsTr("Working on subtitles…")
             color: "#8f8f8f"
             font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)

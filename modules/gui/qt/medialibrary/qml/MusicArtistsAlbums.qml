@@ -195,7 +195,17 @@ Widgets.PageExt {
 
             Navigation.parentItem: root
 
+            // the albums are on the right of the list, on its left right to
+            // left (false: the key goes on as if there was no action)
             Navigation.rightAction: function() {
+                if (artistList.LayoutMirroring.enabled)
+                    return false
+                albumSubView.setCurrentItemFocus(Qt.TabFocusReason);
+            }
+
+            Navigation.leftAction: function() {
+                if (!artistList.LayoutMirroring.enabled)
+                    return false
                 albumSubView.setCurrentItemFocus(Qt.TabFocusReason);
             }
 
@@ -216,7 +226,9 @@ Widgets.PageExt {
 
                 visible: view.count > 0
 
-                leftPadding: VLCStyle.margin_normal
+                // on the start side (the right, right to left)
+                leftPadding: LayoutMirroring.enabled ? 0 : VLCStyle.margin_normal
+                rightPadding: LayoutMirroring.enabled ? VLCStyle.margin_normal : 0
                 bottomPadding: VLCStyle.margin_small
 
                 text: qsTr("Artists")
@@ -254,6 +266,10 @@ Widgets.PageExt {
                 }
 
                 z: 1
+
+                // right to left, the list is on the right: the handle on its
+                // left edge, dragged to the left to widen it
+                atRight: !LayoutMirroring.enabled
 
                 currentWidth: artistList.width
                 minimumWidth: artistList.minimumWidth
@@ -317,7 +333,9 @@ Widgets.PageExt {
             focus: true
             initialIndex: root.initialAlbumIndex
             Navigation.parentItem: root
-            Navigation.leftItem: VLCStyle.isScreenSmall ? null : artistList
+            // the artists are on the right right to left
+            Navigation.leftItem: (VLCStyle.isScreenSmall || LayoutMirroring.enabled) ? null : artistList
+            Navigation.rightItem: (VLCStyle.isScreenSmall || !LayoutMirroring.enabled) ? null : artistList
         }
     }
 

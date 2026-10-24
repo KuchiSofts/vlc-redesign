@@ -205,6 +205,9 @@ T.ItemDelegate {
 
             Layout.fillWidth: true
             Layout.fillHeight: true
+            // the scroller puts the name at its left: right to left it is
+            // only as wide as the name, next to the picture
+            Layout.maximumWidth: LayoutMirroring.enabled ? implicitWidth : Number.POSITIVE_INFINITY
 
             Widgets.ListLabel {
                 id: artistName
@@ -218,6 +221,12 @@ T.ItemDelegate {
 
                 color: theme.fg.primary
             }
+        }
+
+        // the rest of the row right to left (see above)
+        Item {
+            visible: LayoutMirroring.enabled
+            Layout.fillWidth: true
         }
     }
 }

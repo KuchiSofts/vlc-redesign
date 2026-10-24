@@ -85,6 +85,11 @@ Widgets.RedesignDialog {
 
     // "Frame 499": 20 apart, the thumbnail at the bottom
     RowLayout {
+        // a popup is not under the mirrored interface: right to left, the
+        // thumbnail on the left (the same for each item of the dialog)
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        LayoutMirroring.childrenInherit: true
+
         Layout.fillWidth: true
         spacing: VLCStyle.dp(20, VLCStyle.scale)
 
@@ -201,6 +206,9 @@ Widgets.RedesignDialog {
     }
 
     Widgets.RedesignDialogHeading {
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        LayoutMirroring.childrenInherit: true
+
         text: qsTr("Select Files")
         description: qsTr("These files will be added to the playlist.")
     }
@@ -212,12 +220,16 @@ Widgets.RedesignDialog {
         id: dropBox
 
         objectName: "playlistChooseFilesButton"
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        LayoutMirroring.childrenInherit: true
+
         Layout.fillWidth: true
         Layout.preferredHeight: VLCStyle.dp(186, VLCStyle.scale)
         Accessible.name: qsTr("Choose files")
 
-        leftPadding: VLCStyle.dp(12, VLCStyle.scale)
-        rightPadding: VLCStyle.dp(18, VLCStyle.scale)
+        // (swapped right to left)
+        leftPadding: VLCStyle.dp(dropBox.mirrored ? 18 : 12, VLCStyle.scale)
+        rightPadding: VLCStyle.dp(dropBox.mirrored ? 12 : 18, VLCStyle.scale)
         topPadding: VLCStyle.dp(8, VLCStyle.scale)
         bottomPadding: VLCStyle.dp(8, VLCStyle.scale)
 
@@ -246,11 +258,17 @@ Widgets.RedesignDialog {
                 Text {
                     id: dropText
 
+                    // a translation too long for the box wraps, its lines
+                    // centred
+                    readonly property bool _fits: Math.ceil(dropAdvance.advanceWidth - 0.05) <= parent.width
+
                     // Figma's text box: the advance rounded up, centred
                     // and floored
                     x: Math.floor((parent.width - width) / 2)
-                    width: Math.ceil(implicitWidth - 0.05)
-                    height: Math.round(1.2109375 * font.pixelSize)
+                    width: _fits ? Math.ceil(implicitWidth - 0.05) : parent.width
+                    height: _fits ? Math.round(1.2109375 * font.pixelSize) : implicitHeight
+                    wrapMode: _fits ? Text.NoWrap : Text.WordWrap
+                    horizontalAlignment: _fits ? Text.AlignLeft : Text.AlignHCenter
                     text: root.files.length === 0
                           ? qsTr("Drag files into the box or click here to select files.")
                           : qsTr("%1 file selected", "%1 files selected", root.files.length).arg(root.files.length)
@@ -262,6 +280,11 @@ Widgets.RedesignDialog {
                     FontMetrics {
                         id: dropMetrics
                         font: dropText.font
+                    }
+                    TextMetrics {
+                        id: dropAdvance
+                        font: dropText.font
+                        text: dropText.text
                     }
                 }
 

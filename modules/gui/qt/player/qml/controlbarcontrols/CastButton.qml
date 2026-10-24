@@ -223,7 +223,6 @@ RedesignIconButton {
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                     elide: Text.ElideRight
-                    horizontalAlignment: Text.AlignLeft
                 }
             }
 

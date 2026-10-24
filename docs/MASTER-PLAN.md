@@ -844,7 +844,7 @@ and an accepted request made the TV fail after a pause in a test.
   the release)
 - 🟡 Small updates from 0.2.4, 0.2.5 and 0.2.6 built and checked: 2026-10-24 as a dry run from build 174 (3.5-3.6 MB
   each, 4 % of the zip; every file matched the new package, the app's own updater applied them, the launch test
-  passed on all six copies); to build again once the version is 0.3.0 (redesign_version.hpp)
+  passed on all six copies); to build again from the release package (the version is 0.3.0 since 2026-10-24)
 - 🔴 Announcement in Discussions; every fixed issue answered with the release link
 
 Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 88 🟢, 3 🟡, 6 🔴 (97), of which 5 🟢 are

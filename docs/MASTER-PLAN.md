@@ -17,7 +17,7 @@ counted from this document's own tables and checklists (column *From*); ⚪ idea
 
 | Program         | Progress             | Done    | %     | From                                   |
 |-----------------|----------------------|---------|-------|----------------------------------------|
-| Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜ | 83/96   | 86 %  | [§8](#8-next-release-030) checklists   |
+| Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜ | 84/97   | 87 %  | [§8](#8-next-release-030) checklists   |
 | Linux           | 🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 1/7     | 14 %  | [§9](#linux)                           |
 | macOS           | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/4     | 0 %   | [§9](#macos)                           |
 | Windows ARM64   | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/3     | 0 %   | [§9](#windows-on-arm64)                |
@@ -689,6 +689,8 @@ becomes 1.0 when every frame is pixel-checked, the light theme is complete and V
 - 🟢 An update keeps the settings, the portable zip too: a new copy starts with those of the copy used last
 - 🟢 A big library (3,000 songs, 400 episodes): indexed in 100 s; its pages open with at most 42 ms without an
   answer, fast scrolling at most 10 ms; memory flat at about 200 MB; the library lists start A-Z
+- 🟢 Small windows, down to the smallest (320 x 360): the main menu shows that it scrolls, the library panel fits
+  and its sections scroll, a narrow bar keeps the same buttons at every start (outer ones last)
 
 ### 8.3 Light theme and accents
 
@@ -832,7 +834,7 @@ and an accepted request made the TV fail after a pause in a test.
 - 🔴 Small updates from 0.2.4, 0.2.5 and 0.2.6 built and checked
 - 🔴 Announcement in Discussions; every fixed issue answered with the release link
 
-Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 83 🟢, 2 🟡, 11 🔴 (96), of which 5 🟢 are
+Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 84 🟢, 2 🟡, 11 🔴 (97), of which 5 🟢 are
 in the app ⏳.
 Languages (§12) and the community (§13) have bars of their own.
 
@@ -1263,7 +1265,7 @@ In an organization, a `.github` repository gives every repository these files by
 | Gate         | What                                                                              | Status |
 |--------------|-----------------------------------------------------------------------------------|--------|
 | Build        | Every platform builds in CI; the packaged app starts and plays                    | 🟡 Windows builds; the launch test is written and passes here, not run on GitHub yet |
-| Regression   | Playback, pause/seek, traces, Chromecast and DLNA test devices; again 2026-10-24 (builds 164 and 170): clean quits, no late or dropped picture, both casts | 🟢     |
+| Regression   | Playback, pause/seek, traces, Chromecast and DLNA test devices; again 2026-10-24 (builds 164, 170 and 174): clean quits, no late or dropped picture, both casts | 🟢     |
 | Real devices | Samsung TV: start, pause 1 and 5 min, seek, next file, subtitles, as-is, end      | 🟢     |
 | Formats      | Every test file and container; 148 damaged files without crash or hang            | 🟢     |
 | Effects      | 40 video effects alone and in chains                                              | 🟢     |

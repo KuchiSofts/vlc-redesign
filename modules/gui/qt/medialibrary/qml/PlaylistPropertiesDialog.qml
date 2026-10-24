@@ -40,13 +40,13 @@ Widgets.RedesignDialog {
         const songs = Number(p.nb_audio ?? 0)
         const parts = []
         if (videos > 0)
-            parts.push(videos === 1 ? qsTr("1 video") : qsTr("%1 videos").arg(videos))
+            parts.push(qsTr("%1 video", "%1 videos", videos).arg(videos))
         if (songs > 0)
-            parts.push(songs === 1 ? qsTr("1 song") : qsTr("%1 songs").arg(songs))
+            parts.push(qsTr("%1 song", "%1 songs", songs).arg(songs))
         if (parts.length)
             return parts.join(", ")
         const count = Number(p.count ?? 0)
-        return count === 1 ? qsTr("1 item") : qsTr("%1 items").arg(count)
+        return qsTr("%1 item", "%1 items", count).arg(count)
     }
 
     component InfoRow: RowLayout {

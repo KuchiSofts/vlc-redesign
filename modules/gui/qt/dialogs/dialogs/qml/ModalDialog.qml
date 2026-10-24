@@ -100,9 +100,12 @@ Dialog {
 
     //FIXME use the right xxxLabel class
     header: T.Label {
+        // a popup does not inherit the mirroring of the window (right to left)
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
         text: control.title
         visible: control.title
         elide: Label.ElideRight
+        horizontalAlignment: Text.AlignLeft
         font.bold: true
         color: theme.fg.primary
         padding: 6

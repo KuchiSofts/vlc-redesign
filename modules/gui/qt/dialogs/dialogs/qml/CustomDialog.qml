@@ -65,10 +65,13 @@ ModalDialog {
     }
 
     contentItem: Text {
+        // a popup does not inherit the mirroring of the window (right to left)
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
         focus: false
         font.pixelSize: VLCStyle.fontSize_normal
         color: root.colorContext.fg.primary
         wrapMode: Text.WordWrap
+        horizontalAlignment: Text.AlignLeft
         text: root.text
     }
 
@@ -76,6 +79,9 @@ ModalDialog {
         focus: true
         id: questionButtons
         implicitHeight: VLCStyle.icon_normal
+
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        LayoutMirroring.childrenInherit: true
 
         readonly property ColorContext colorContext: ColorContext {
             id: footerTheme
@@ -100,7 +106,9 @@ ModalDialog {
 
                     onClicked: root.reject()
 
-                    Navigation.rightItem: okBtn
+                    // the row is mirrored right to left
+                    Navigation.leftItem: LayoutMirroring.enabled ? okBtn : null
+                    Navigation.rightItem: LayoutMirroring.enabled ? null : okBtn
                     Keys.priority: Keys.AfterItem
                     Keys.onPressed: (event) => okBtn.Navigation.defaultKeyAction(event)
                 }
@@ -112,7 +120,8 @@ ModalDialog {
 
                     onClicked: root.accept()
 
-                    Navigation.leftItem: cancelBtn
+                    Navigation.leftItem: LayoutMirroring.enabled ? null : cancelBtn
+                    Navigation.rightItem: LayoutMirroring.enabled ? cancelBtn : null
                     Keys.priority: Keys.AfterItem
                     Keys.onPressed: (event) => cancelBtn.Navigation.defaultKeyAction(event)
                 }

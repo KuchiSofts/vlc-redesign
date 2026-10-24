@@ -100,6 +100,10 @@ ColumnLayout {
                     font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
+                    // a longer name on two lines in the 42 of the button
+                    wrapMode: Text.WordWrap
+                    maximumLineCount: 2
+                    elide: Text.ElideRight
                 }
             }
         }

@@ -5,6 +5,7 @@
  *****************************************************************************/
 import QtQuick
 import QtQuick.Layouts
+import QtQuick.Templates as T
 import VLC.Style
 import VLC.Widgets as Widgets
 
@@ -88,6 +89,7 @@ ColumnLayout {
         implicitHeight: root.px(32)
 
         Text {
+            id: titleText
             anchors.left: parent.left
             anchors.right: headerColor.active ? headerColor.left : headerToggle.left
             anchors.rightMargin: root.px(10)
@@ -98,6 +100,11 @@ ColumnLayout {
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: root.px(14)
             elide: Text.ElideRight
+            horizontalAlignment: Text.AlignLeft
+            HoverHandler { id: titleHover }
+            T.ToolTip.visible: titleHover.hovered && titleText.truncated
+            T.ToolTip.text: titleText.text
+            T.ToolTip.delay: 650
         }
         // Figma 614:1430: the field 8 px before the toggle
         Loader {

@@ -24,12 +24,18 @@ Rectangle {
     border.color: VLCStyle.redesign.accentDim
     objectName: "crop-" + side
 
+    // Where the pixels start: 72 in, further for a longer name (the
+    // pixels keep 48 at least); mirrored right to left
+    readonly property real valueStart: Math.max(px(72), Math.min(px(12) + nameText.implicitWidth + px(4),
+                                                                 width - px(12) - px(48)))
+
     // The whole field takes the pixels
     TapHandler { onTapped: pixelsInput.forceActiveFocus(Qt.MouseFocusReason) }
 
     Text {
-        x: root.px(12)
-        width: pixelsInput.x - x - root.px(4)
+        id: nameText
+        x: LayoutMirroring.enabled ? parent.width - width - root.px(12) : root.px(12)
+        width: root.valueStart - root.px(12) - root.px(4)
         anchors.baseline: parent.verticalCenter
         anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize, parent.height)
         text: root.label
@@ -37,11 +43,13 @@ Rectangle {
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: root.px(14)
         elide: Text.ElideRight
+        horizontalAlignment: Text.AlignLeft
     }
     TextInput {
         id: pixelsInput
-        x: root.px(72)
-        width: parent.width - x - root.px(12)
+        x: LayoutMirroring.enabled ? root.px(12) : root.valueStart
+        width: parent.width - root.valueStart - root.px(12)
+        horizontalAlignment: TextInput.AlignLeft
         anchors.baseline: parent.verticalCenter
         anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize, parent.height)
         clip: true
@@ -67,11 +75,15 @@ Rectangle {
             }
         }
     }
-    // The unit right after the pixels
+    // The unit right after the pixels (right to left: before them, the
+    // pixels at the start of their field)
     Text {
-        x: pixelsInput.x + Math.min(pixelsInput.contentWidth, pixelsInput.width) + spaceMetrics.advanceWidth(" ")
+        readonly property real gap: spaceMetrics.advanceWidth(" ")
+        readonly property real pixelsWidth: Math.min(pixelsInput.contentWidth, pixelsInput.width)
+        x: LayoutMirroring.enabled ? pixelsInput.x + pixelsInput.width - pixelsWidth - gap - width
+                                   : pixelsInput.x + pixelsWidth + gap
         anchors.baseline: pixelsInput.baseline
-        visible: x + width <= parent.width - root.px(4)
+        visible: LayoutMirroring.enabled ? x >= root.px(4) : x + width <= parent.width - root.px(4)
         text: qsTr("px")
         color: root.c("#404040")
         font: pixelsInput.font

@@ -84,7 +84,11 @@ Widgets.RedesignDialog {
         ml: MainCtx.mediaLibraryAvailable ? MediaLib : null
     }
 
+    // The dialog is a popup: it does not inherit the mirroring of the window,
+    // each part laid out here mirrors right to left by itself
     Widgets.RedesignDialogHeading {
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        LayoutMirroring.childrenInherit: true
         text: qsTr("Network URL")
         description: root.notLinks.length > 0
                      ? qsTr("“%1” is not a link: links start with http://, rtsp://… or a site's address.").arg(root.notLinks[0])
@@ -95,6 +99,8 @@ Widgets.RedesignDialog {
         id: urlField
 
         objectName: "networkStreamUrlField"
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        LayoutMirroring.childrenInherit: true
         multiLine: true
         placeholderText: qsTr("e.g., https://www.example.com/stream.avi")
         Accessible.name: qsTr("Network URL")
@@ -115,6 +121,8 @@ Widgets.RedesignDialog {
     }
 
     Widgets.RedesignDialogHeading {
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        LayoutMirroring.childrenInherit: true
         text: qsTr("Playlist Name")
         suffix: qsTr("(optional)")
         description: root.canSavePlaylist ? qsTr("The playlist will be saved and displayed with this title.")
@@ -125,6 +133,8 @@ Widgets.RedesignDialog {
         id: nameField
 
         objectName: "networkStreamPlaylistField"
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        LayoutMirroring.childrenInherit: true
         enabled: root.canSavePlaylist
         placeholderText: qsTr("e.g., Favorite TV Channels")
         Accessible.name: qsTr("Playlist name")

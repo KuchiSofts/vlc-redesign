@@ -85,6 +85,7 @@ T.Popup {
     component Body: Text {
         Layout.fillWidth: true
         wrapMode: Text.WordWrap
+        horizontalAlignment: Text.AlignLeft
         color: root.textSecondary
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
@@ -93,6 +94,10 @@ T.Popup {
 
     // A low window: the content scrolls (laid out as when it fits)
     contentItem: Flickable {
+        // a popup does not inherit the mirroring of the window (right to left)
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        LayoutMirroring.childrenInherit: true
+
         contentWidth: width
         contentHeight: content.implicitHeight
         clip: contentHeight > height
@@ -125,6 +130,10 @@ T.Popup {
                     spacing: VLCStyle.dp(2, VLCStyle.scale)
 
                     Text {
+                        // (the column is the room left by the button)
+                        Layout.fillWidth: true
+                        elide: Text.ElideRight
+                        horizontalAlignment: Text.AlignLeft
                         text: qsTr("VLC Redesign")
                         color: root.textPrimary
                         font.family: VLCStyle.redesign.fontFamily
@@ -132,16 +141,28 @@ T.Popup {
                         font.weight: Font.Light
                     }
                     Text {
+                        id: versionText
                         Layout.fillWidth: true
                         elide: Text.ElideRight
+                        horizontalAlignment: Text.AlignLeft
                         text: qsTr("Version %1 · based on VLC %2").arg(RedesignUpdater.currentVersion).arg(AboutModel.version.split(" ")[0])
                         color: root.textMuted
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
+                        HoverHandler { id: versionHover }
+                        T.ToolTip.visible: versionHover.hovered && versionText.truncated
+                        T.ToolTip.text: versionText.text
+                        T.ToolTip.delay: 650
                     }
                     Text {
+                        id: updateText
                         Layout.fillWidth: true
                         elide: Text.ElideRight
+                        horizontalAlignment: Text.AlignLeft
+                        HoverHandler { id: updateHover }
+                        T.ToolTip.visible: updateHover.hovered && updateText.truncated
+                        T.ToolTip.text: updateText.text
+                        T.ToolTip.delay: 650
                         visible: text.length > 0
                         color: RedesignUpdater.state === RedesignUpdater.Failed ? "#e15033" : VLCStyle.redesign.accent
                         font.family: VLCStyle.redesign.fontFamily
@@ -202,6 +223,7 @@ T.Popup {
                     Text {
                         Layout.fillWidth: true
                         wrapMode: Text.WordWrap
+                        horizontalAlignment: Text.AlignLeft
                         textFormat: Text.StyledText
                         text: qsTr("Interface designed by <font color=\"%1\">Juxtopposed</font>").arg(VLCStyle.redesign.accent)
                         color: root.textPrimary
@@ -228,14 +250,18 @@ T.Popup {
                 Layout.fillWidth: true
                 spacing: VLCStyle.dp(6, VLCStyle.scale)
 
+                // A longer translation wraps the text before its link, inside
+                // the dialog (the text as wide as it is, at most)
                 RowLayout {
+                    Layout.maximumWidth: parent.width
                     spacing: VLCStyle.dp(6, VLCStyle.scale)
-                    Body { Layout.fillWidth: false; text: qsTr("First implementation by") }
+                    Body { Layout.maximumWidth: implicitWidth; text: qsTr("First implementation by") }
                     Link { text: "MrDouglax"; url: "https://github.com/SrDouglax/JuxtopposedVLC" }
                 }
                 RowLayout {
+                    Layout.maximumWidth: parent.width
                     spacing: VLCStyle.dp(6, VLCStyle.scale)
-                    Body { Layout.fillWidth: false; text: qsTr("Built on VLC media player by") }
+                    Body { Layout.maximumWidth: implicitWidth; text: qsTr("Built on VLC media player by") }
                     Link { text: qsTr("the VideoLAN team and contributors"); url: "https://www.videolan.org/" }
                 }
                 Body {

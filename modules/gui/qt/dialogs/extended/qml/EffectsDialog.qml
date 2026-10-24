@@ -109,6 +109,10 @@ T.Popup {
     contentItem: ColumnLayout {
         spacing: 0
 
+        // a popup does not inherit the mirroring of the window (right to left)
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        LayoutMirroring.childrenInherit: true
+
         RowLayout {
             Layout.fillWidth: true
             Layout.preferredHeight: VLCStyle.dp(54, VLCStyle.scale)
@@ -117,18 +121,24 @@ T.Popup {
             Text {
                 text: qsTr("Effects")
                 Layout.fillWidth: true
+                elide: Text.ElideRight
+                horizontalAlignment: Text.AlignLeft
                 color: root.c(VLCStyle.redesign.textPrimary)
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(18, VLCStyle.scale)
                 font.weight: Font.Medium
             }
             T.Button {
-                implicitWidth: 32
+                // the 32 of the design ("Close" runs a little past it): a
+                // longer word widens it, into the room of the title
+                implicitWidth: Math.max(32, closeLabel.implicitWidth - VLCStyle.dp(8, VLCStyle.scale))
                 implicitHeight: 32
                 text: qsTr("Close")
                 focusPolicy: Qt.StrongFocus
                 onClicked: root.close()
                 contentItem: Text {
+                    id: closeLabel
+                    horizontalAlignment: Text.AlignLeft
                     text: parent.text
                     color: root.c(VLCStyle.redesign.textSecondary)
                     font.family: VLCStyle.redesign.fontFamily
@@ -182,6 +192,7 @@ T.Popup {
                         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
+                        elide: Text.ElideRight
                     }
                 }
             }
@@ -216,6 +227,7 @@ T.Popup {
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                     wrapMode: Text.WordWrap
+                    horizontalAlignment: Text.AlignLeft
                 }
 
                 Repeater {
@@ -237,6 +249,7 @@ T.Popup {
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                     wrapMode: Text.WordWrap
+                    horizontalAlignment: Text.AlignLeft
                 }
 
                 VideoEffectsPanel {
@@ -262,6 +275,7 @@ T.Popup {
                             font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                             horizontalAlignment: Text.AlignHCenter
                             verticalAlignment: Text.AlignVCenter
+                            elide: Text.ElideRight
                         }
                     }
                 }
@@ -280,6 +294,7 @@ T.Popup {
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(12, VLCStyle.scale)
             wrapMode: Text.WordWrap
+            horizontalAlignment: Text.AlignLeft
             Accessible.role: Accessible.AlertMessage
         }
 
@@ -305,6 +320,7 @@ T.Popup {
                     font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
+                    elide: Text.ElideRight
                 }
             }
             T.Button {
@@ -331,6 +347,7 @@ T.Popup {
                     font.weight: Font.Medium
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
+                    elide: Text.ElideRight
                 }
             }
         }

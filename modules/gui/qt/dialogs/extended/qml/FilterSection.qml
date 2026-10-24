@@ -27,12 +27,19 @@ ColumnLayout {
         Layout.fillWidth: true
         Layout.leftMargin: VLCStyle.dp(4, VLCStyle.scale)
         Text {
+            id: titleText
             Layout.fillWidth: true
             text: root.title
             color: VLCStyle.redesign.color("#EAEAEA", "#2e2e2e")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(15, VLCStyle.scale)
             font.weight: Font.Medium
+            elide: Text.ElideRight
+            horizontalAlignment: Text.AlignLeft
+            HoverHandler { id: titleHover }
+            T.ToolTip.visible: titleHover.hovered && titleText.truncated
+            T.ToolTip.text: titleText.text
+            T.ToolTip.delay: 650
         }
         // The ON / OFF toggle of the design
         Widgets.CheckButton {

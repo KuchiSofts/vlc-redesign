@@ -225,6 +225,7 @@ Item {
                           + DialogErrorModel.notificationText
 
                     wrapMode: Text.WrapAnywhere
+                    horizontalAlignment: Text.AlignLeft
                     font.pixelSize: VLCStyle.fontSize_normal
                     font.bold: true
                     color: errorMsgTheme.fg.primary
@@ -301,6 +302,10 @@ Item {
         contentItem: GridLayout {
             columns: 2
 
+            // a popup does not inherit the mirroring of the window (right to left)
+            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+            LayoutMirroring.childrenInherit: true
+
             readonly property ColorContext colorContext: ColorContext {
                 id: loginContentTheme
                 palette: VLCStyle.palette
@@ -364,6 +369,9 @@ Item {
             id: loginButtons
             implicitHeight: VLCStyle.icon_normal
 
+            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+            LayoutMirroring.childrenInherit: true
+
             readonly property ColorContext colorContext: ColorContext {
                 id: loginFooterTheme
                 palette: VLCStyle.palette
@@ -385,7 +393,9 @@ Item {
                         text: qsTr("cancel")
 
                         Navigation.upItem: savePassword
-                        Navigation.rightItem: loginOk
+                        // the row is mirrored right to left
+                        Navigation.leftItem: LayoutMirroring.enabled ? loginOk : null
+                        Navigation.rightItem: LayoutMirroring.enabled ? null : loginOk
                         Keys.priority: Keys.AfterItem
                         Keys.onPressed: (event) => Navigation.defaultKeyAction(event)
 
@@ -402,7 +412,8 @@ Item {
                         focus: true
 
                         Navigation.upItem: savePassword
-                        Navigation.leftItem: loginCancel
+                        Navigation.leftItem: LayoutMirroring.enabled ? null : loginCancel
+                        Navigation.rightItem: LayoutMirroring.enabled ? loginCancel : null
                         Keys.priority: Keys.AfterItem
                         Keys.onPressed: (event) => Navigation.defaultKeyAction(event)
 
@@ -444,6 +455,10 @@ Item {
 
         contentItem:  ColumnLayout {
 
+            // a popup does not inherit the mirroring of the window (right to left)
+            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+            LayoutMirroring.childrenInherit: true
+
             readonly property ColorContext colorContext: ColorContext {
                 id: progressContentTheme
                 palette: VLCStyle.palette
@@ -451,11 +466,14 @@ Item {
             }
 
             Text {
+                // as wide as the dialog: a long text wraps in it
+                Layout.fillWidth: true
                 focus: false
                 font.pixelSize: VLCStyle.fontSize_normal
                 color: progressContentTheme.fg.primary
                 text: progressDialog.text
                 wrapMode: Text.WordWrap
+                horizontalAlignment: Text.AlignLeft
             }
 
             Widgets.ProgressBarExt {
@@ -473,6 +491,9 @@ Item {
         footer: FocusScope {
             focus: true
             implicitHeight: VLCStyle.icon_normal
+
+            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+            LayoutMirroring.childrenInherit: true
 
             readonly property ColorContext colorContext: ColorContext {
                 palette: VLCStyle.palette
@@ -517,16 +538,22 @@ Item {
 
         contentItem: Text {
             id: content
+            // a popup does not inherit the mirroring of the window (right to left)
+            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
             focus: false
             font.pixelSize: VLCStyle.fontSize_normal
             color: questionDialog.colorContext.fg.primary
             wrapMode: Text.WordWrap
+            horizontalAlignment: Text.AlignLeft
         }
 
         footer: FocusScope {
             focus: true
             id: questionButtons
             implicitHeight: VLCStyle.icon_normal
+
+            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+            LayoutMirroring.childrenInherit: true
 
             readonly property ColorContext colorContext: ColorContext {
                 palette: VLCStyle.palette
@@ -550,7 +577,9 @@ Item {
 
                         Layout.fillWidth: true
 
-                        Navigation.rightItem: action1
+                        // the row is mirrored right to left
+                        Navigation.leftItem: LayoutMirroring.enabled ? action1 : null
+                        Navigation.rightItem: LayoutMirroring.enabled ? null : action1
                         Keys.priority: Keys.AfterItem
                         Keys.onPressed: (event) => Navigation.defaultKeyAction(event)
 
@@ -568,8 +597,8 @@ Item {
 
                         Layout.fillWidth: true
 
-                        Navigation.leftItem: cancel
-                        Navigation.rightItem: action2
+                        Navigation.leftItem: LayoutMirroring.enabled ? action2 : cancel
+                        Navigation.rightItem: LayoutMirroring.enabled ? cancel : action2
                         Keys.priority: Keys.AfterItem
                         Keys.onPressed: (event) => Navigation.defaultKeyAction(event)
 
@@ -586,7 +615,8 @@ Item {
 
                         Layout.fillWidth: true
 
-                        Navigation.leftItem: action1
+                        Navigation.leftItem: LayoutMirroring.enabled ? null : action1
+                        Navigation.rightItem: LayoutMirroring.enabled ? action1 : null
                         Keys.priority: Keys.AfterItem
                         Keys.onPressed: (event) => Navigation.defaultKeyAction(event)
 

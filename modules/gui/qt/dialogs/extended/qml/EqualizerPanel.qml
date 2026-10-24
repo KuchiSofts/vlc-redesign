@@ -45,10 +45,15 @@ ExpandPanel {
 
             readonly property bool chosen: index === presetBox.currentIndex
 
+            // the list is a popup: not mirrored with the window (right to left)
+            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+            LayoutMirroring.childrenInherit: true
+
             width: ListView.view ? ListView.view.width : presetBox.width
             implicitHeight: root.px(44)
-            leftPadding: root.px(14 + 24 + 10)
-            rightPadding: root.px(14 + 24 + 13)
+            // the curve before the name, the check after it
+            leftPadding: LayoutMirroring.enabled ? root.px(14 + 24 + 13) : root.px(14 + 24 + 10)
+            rightPadding: LayoutMirroring.enabled ? root.px(14 + 24 + 10) : root.px(14 + 24 + 13)
             highlighted: presetBox.highlightedIndex === index
             Accessible.name: modelData.name
 
@@ -62,6 +67,7 @@ ExpandPanel {
                 topPadding: height / 2 + VLCStyle.redesign.centeredBaseline(font.pixelSize) - presetMetrics.ascent
                 FontMetrics { id: presetMetrics; font: presetName.font }
                 elide: Text.ElideRight
+                horizontalAlignment: Text.AlignLeft
             }
             background: Rectangle {
                 radius: root.px(4)
@@ -76,7 +82,8 @@ ExpandPanel {
                     readonly property string iconDir: "qrc:///redesign/icons/eq-"
                                                       + String(presetOption.modelData.id).toLowerCase()
                     readonly property bool twoTone: !VLCStyle.redesign.defaultAccent
-                    x: root.px(14)
+                    anchors.left: parent.left
+                    anchors.leftMargin: root.px(14)
                     anchors.verticalCenter: parent.verticalCenter
                     width: root.px(24)
                     height: width
@@ -94,7 +101,8 @@ ExpandPanel {
 
                 Impl.ColorImage {
                     visible: presetOption.chosen
-                    x: parent.width - root.px(13) - width
+                    anchors.right: parent.right
+                    anchors.rightMargin: root.px(13)
                     anchors.verticalCenter: parent.verticalCenter
                     width: root.px(24)
                     height: width
@@ -139,6 +147,7 @@ ExpandPanel {
         Layout.fillWidth: true
         implicitHeight: root.px(32)
         Text {
+            id: twoPassLabel
             anchors.left: parent.left
             anchors.right: twoPass.left
             anchors.rightMargin: root.px(10)
@@ -149,6 +158,11 @@ ExpandPanel {
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: root.px(14)
             elide: Text.ElideRight
+            horizontalAlignment: Text.AlignLeft
+            HoverHandler { id: twoPassHover }
+            T.ToolTip.visible: twoPassHover.hovered && twoPassLabel.truncated
+            T.ToolTip.text: twoPassLabel.text
+            T.ToolTip.delay: 650
         }
         Widgets.CheckButton {
             id: twoPass

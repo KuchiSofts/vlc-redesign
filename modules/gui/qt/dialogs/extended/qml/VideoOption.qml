@@ -72,17 +72,12 @@ ColumnLayout {
         visible: root.number && !root.bounded && !root.compact
         Layout.fillWidth: true
         implicitHeight: root.px(36)
-        Text {
+        OptionLabel {
             anchors.left: parent.left
             anchors.right: numberField.left
             anchors.rightMargin: root.px(10)
             anchors.baseline: parent.verticalCenter
             anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
-            text: root.label
-            color: root.c("#6B6B6B")
-            font.family: VLCStyle.redesign.fontFamily
-            font.pixelSize: root.px(14)
-            elide: Text.ElideRight
         }
         SettingsTextField {
             id: numberField
@@ -114,17 +109,12 @@ ColumnLayout {
         visible: root.option.type === "bool" && !root.compact
         Layout.fillWidth: true
         implicitHeight: root.px(32)
-        Text {
+        OptionLabel {
             anchors.left: parent.left
             anchors.right: boolOption.left
             anchors.rightMargin: root.px(10)
             anchors.baseline: parent.verticalCenter
             anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
-            text: root.label
-            color: root.c("#6B6B6B")
-            font.family: VLCStyle.redesign.fontFamily
-            font.pixelSize: root.px(14)
-            elide: Text.ElideRight
         }
         Widgets.CheckButton {
             id: boolOption
@@ -148,18 +138,13 @@ ColumnLayout {
         Layout.fillWidth: !root.compact
         implicitWidth: root.compact ? colorField.width : 0
         implicitHeight: root.px(32)
-        Text {
+        OptionLabel {
             visible: !root.compact
             anchors.left: parent.left
             anchors.right: colorField.left
             anchors.rightMargin: root.px(10)
             anchors.baseline: parent.verticalCenter
             anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
-            text: root.label
-            color: root.c("#6B6B6B")
-            font.family: VLCStyle.redesign.fontFamily
-            font.pixelSize: root.px(14)
-            elide: Text.ElideRight
         }
         Rectangle {
             id: colorField
@@ -172,10 +157,12 @@ ColumnLayout {
             border.width: colorInput.activeFocus ? 1 : 0
             border.color: VLCStyle.redesign.accentDim
 
+            // the value 12 in, the swatch at the end (right to left: mirrored)
             TextInput {
                 id: colorInput
-                x: root.px(12)
-                width: swatch.x - x - root.px(4)
+                x: LayoutMirroring.enabled ? parent.width - width - root.px(12) : root.px(12)
+                width: parent.width - root.px(12) - root.px(4) - swatch.width - root.px(5)
+                horizontalAlignment: TextInput.AlignLeft
                 anchors.baseline: parent.verticalCenter
                 anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
                 clip: true
@@ -205,7 +192,8 @@ ColumnLayout {
             T.Button {
                 id: swatch
                 objectName: "colorChoices-" + root.option.id
-                x: parent.width - root.px(5) - width
+                anchors.right: parent.right
+                anchors.rightMargin: root.px(5)
                 anchors.verticalCenter: parent.verticalCenter
                 width: root.px(22)
                 height: width
@@ -226,7 +214,8 @@ ColumnLayout {
             // under the one chosen or the pointer, the check of the accent
             T.Popup {
                 id: colorChoices
-                x: parent.width - width
+                // at the end of the field (right to left: its left edge)
+                x: colorField.LayoutMirroring.enabled ? 0 : parent.width - width
                 y: parent.height + root.px(20)
                 width: root.px(200)
                 implicitHeight: implicitContentHeight + topPadding + bottomPadding
@@ -237,6 +226,9 @@ ColumnLayout {
                 closePolicy: T.Popup.CloseOnEscape | T.Popup.CloseOnPressOutside
 
                 contentItem: Column {
+                    // a popup does not inherit the mirroring of the window (right to left)
+                    LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+                    LayoutMirroring.childrenInherit: true
                     spacing: root.px(2)
                     Repeater {
                         model: root.choiceList
@@ -246,8 +238,9 @@ ColumnLayout {
                             readonly property bool chosen: Number(modelData.id) === Number(root.currentValue)
                             width: colorChoices.availableWidth
                             implicitHeight: root.px(44)
-                            leftPadding: root.px(14 + 22 + 10)
-                            rightPadding: root.px(14 + 24 + 13)
+                            // the swatch before the name, the check after it
+                            leftPadding: LayoutMirroring.enabled ? root.px(14 + 24 + 13) : root.px(14 + 22 + 10)
+                            rightPadding: LayoutMirroring.enabled ? root.px(14 + 22 + 10) : root.px(14 + 24 + 13)
                             focusPolicy: Qt.StrongFocus
                             Accessible.name: modelData.name
                             onClicked: {
@@ -259,6 +252,7 @@ ColumnLayout {
                                 color: root.c("#8F8F8F")
                                 font.family: VLCStyle.redesign.fontFamily
                                 font.pixelSize: root.px(14)
+                                horizontalAlignment: Text.AlignLeft
                                 verticalAlignment: Text.AlignVCenter
                                 elide: Text.ElideRight
                             }
@@ -267,7 +261,8 @@ ColumnLayout {
                                 color: colorChoice.chosen || colorChoice.hovered || colorChoice.visualFocus
                                        ? root.c("#1F1F1F") : "transparent"
                                 Rectangle {
-                                    x: root.px(14)
+                                    anchors.left: parent.left
+                                    anchors.leftMargin: root.px(14)
                                     anchors.verticalCenter: parent.verticalCenter
                                     width: root.px(22)
                                     height: width
@@ -278,7 +273,8 @@ ColumnLayout {
                                 }
                                 Impl.ColorImage {
                                     visible: colorChoice.chosen
-                                    x: parent.width - root.px(13) - width
+                                    anchors.right: parent.right
+                                    anchors.rightMargin: root.px(13)
                                     anchors.verticalCenter: parent.verticalCenter
                                     width: root.px(24)
                                     height: width
@@ -310,13 +306,8 @@ ColumnLayout {
         Layout.fillWidth: true
         visible: (root.option.type === "text" || root.option.type === "file") && !root.compact
         spacing: root.px(10)
-        Text {
+        OptionLabel {
             Layout.fillWidth: true
-            text: root.label
-            color: root.c("#6B6B6B")
-            font.family: VLCStyle.redesign.fontFamily
-            font.pixelSize: root.px(14)
-            elide: Text.ElideRight
         }
         RowLayout {
             Layout.fillWidth: true
@@ -364,8 +355,9 @@ ColumnLayout {
         visible: root.option.type === "choice" && !root.colorValue && !root.compact
         Layout.fillWidth: true
         implicitHeight: root.px(48)
-        leftPadding: root.px(18)
-        rightPadding: root.px(18 + 24 + 13)
+        // the text 18 in, the chevron at the end (swapped right to left)
+        leftPadding: LayoutMirroring.enabled ? root.px(18 + 24 + 13) : root.px(18)
+        rightPadding: LayoutMirroring.enabled ? root.px(18) : root.px(18 + 24 + 13)
         model: root.choiceList
         textRole: "name"
         currentIndex: root.choiceList.findIndex(choice => String(choice.id) === String(root.currentValue))
@@ -397,14 +389,31 @@ ColumnLayout {
             topPadding: height / 2 + VLCStyle.redesign.centeredBaseline(font.pixelSize) - choiceMetrics.ascent
             FontMetrics { id: choiceMetrics; font: choiceText.font }
             elide: Text.ElideRight
+            horizontalAlignment: Text.AlignLeft
         }
         indicator: Image {
-            x: choiceBox.width - root.px(13) - width
+            x: choiceBox.LayoutMirroring.enabled ? root.px(13) : choiceBox.width - root.px(13) - width
             y: (choiceBox.height - height) / 2
             width: root.px(24)
             height: width
             sourceSize: Qt.size(width, height)
             source: "qrc:///redesign/icons/chevron-down/default.png"
         }
+    }
+
+    // The name of a row (14 px, #6B6B6B): cut before its control, whole in
+    // its tooltip; at the start of the row, right to left too
+    component OptionLabel: Text {
+        id: optionLabel
+        text: root.label
+        color: root.c("#6B6B6B")
+        font.family: VLCStyle.redesign.fontFamily
+        font.pixelSize: root.px(14)
+        elide: Text.ElideRight
+        horizontalAlignment: Text.AlignLeft
+        HoverHandler { id: labelHover }
+        T.ToolTip.visible: labelHover.hovered && optionLabel.truncated
+        T.ToolTip.text: optionLabel.text
+        T.ToolTip.delay: 650
     }
 }

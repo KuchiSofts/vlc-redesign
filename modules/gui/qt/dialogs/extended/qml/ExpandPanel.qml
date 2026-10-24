@@ -53,23 +53,34 @@ Item {
             border.color: VLCStyle.redesign.accent
         }
         contentItem: Item {
+            // (mirrored right to left by the anchors; the text stops before
+            // the chevron)
             Text {
-                x: root.px(16)
+                anchors.left: parent.left
+                anchors.leftMargin: root.px(16)
+                anchors.right: chevron.left
+                anchors.rightMargin: root.px(10)
                 anchors.baseline: parent.verticalCenter
                 anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
                 text: root.expanded ? qsTr("Collapse Settings") : qsTr("Expand Settings")
                 color: root.c("#6B6B6B")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: root.px(14)
+                elide: Text.ElideRight
+                horizontalAlignment: Text.AlignLeft
             }
             Impl.ColorImage {
-                x: parent.width - root.px(10) - width
+                id: chevron
+                anchors.right: parent.right
+                anchors.rightMargin: root.px(10)
                 anchors.verticalCenter: parent.verticalCenter
                 width: root.px(24)
                 height: width
                 sourceSize: Qt.size(width, height)
                 source: root.expanded ? "qrc:///redesign/icons/chevron-down/default.png"
                                       : "qrc:///redesign/icons/chevron-right/default.png"
+                // closed, it points to the end (right to left: the left)
+                mirror: LayoutMirroring.enabled
                 color: root.c("#6B6B6B")
             }
         }

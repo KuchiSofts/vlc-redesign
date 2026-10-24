@@ -65,6 +65,11 @@ ColumnLayout {
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: root.px(14)
             elide: Text.ElideRight
+            horizontalAlignment: Text.AlignLeft
+            HoverHandler { id: nameHover }
+            T.ToolTip.visible: nameHover.hovered && nameText.truncated
+            T.ToolTip.text: nameText.text
+            T.ToolTip.delay: 650
         }
 
         Text {
@@ -154,10 +159,13 @@ ColumnLayout {
             border.width: slider.visualFocus ? 1 : 0
             border.color: VLCStyle.redesign.accent
 
+            // from the low end to the handle (right to left: the low end on
+            // the right, visualPosition mirrored)
             Rectangle {
-                x: root.px(2)
+                x: slider.mirrored ? slider.handleCenter : root.px(2)
                 y: root.px(2)
-                width: Math.max(0, slider.handleCenter - root.px(2))
+                width: Math.max(0, slider.mirrored ? slider.availableWidth - root.px(2) - slider.handleCenter
+                                                   : slider.handleCenter - root.px(2))
                 height: root.px(12)
                 radius: root.px(4)
                 color: slider.fill
@@ -167,7 +175,9 @@ ColumnLayout {
                 model: root.ticks
                 Rectangle {
                     required property var modelData
-                    readonly property real center: root.px(2) + slider.fraction(modelData) * (slider.availableWidth - root.px(4))
+                    readonly property real visualFraction: slider.mirrored ? 1 - slider.fraction(modelData)
+                                                                           : slider.fraction(modelData)
+                    readonly property real center: root.px(2) + visualFraction * (slider.availableWidth - root.px(4))
                     // none at the ends of the track
                     visible: slider.fraction(modelData) > 0 && slider.fraction(modelData) < 1
                     x: center - width / 2
@@ -175,7 +185,8 @@ ColumnLayout {
                     width: root.px(2)
                     height: root.px(8)
                     radius: root.px(1)
-                    color: slider.screen(Qt.color(center < slider.handleCenter ? slider.fill : root.c("#090909")))
+                    color: slider.screen(Qt.color((slider.mirrored ? center > slider.handleCenter : center < slider.handleCenter)
+                                                  ? slider.fill : root.c("#090909")))
                 }
             }
         }

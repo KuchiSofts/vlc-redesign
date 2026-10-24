@@ -74,6 +74,12 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
 - **A film cast as it is played one second on a Samsung TV**: a film the TV can play without conversion (no
   subtitles shown) went as a fragmented MP4, which the TV took for a one-second file. It goes as MPEG-TS now, and a
   TV that stops such a film right after it began gets it converted instead of an error.
+- **A cast started in the middle of a film was timed from the wrong picture**: when the film is converted for the TV
+  (subtitles shown, or a format the TV can't play), VLC counted the TV's position from the key frame before the
+  place the cast started, a picture the TV never gets. The time shown ran behind the TV by up to a key frame
+  interval (6 s in a test film), and at the end the TV stayed on its last picture as long before VLC stopped it.
+  VLC now counts from the first picture the TV gets: the time matches the TV, which is stopped right after it
+  shows the end.
 - **The subtitles window opened again when its button was clicked to close it**, and so did the menus of the ⋯
   button and of the library's Sort, View and More buttons. A click on their button opens and closes them now. A
   click outside a window or a list only closes it: a click on the video no longer pauses the film at the same time,

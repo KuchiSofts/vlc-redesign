@@ -30,6 +30,7 @@
 #include <algorithm>
 #include <atomic>
 #include <deque>
+#include <new>
 #include <vector>
 #include <string>
 #include <sstream>
@@ -39,6 +40,7 @@
 #include <vlc_dialog.h>
 #include <vlc_rand.h>
 #include <vlc_sout.h>
+#include <vlc_subpicture.h>
 #include <vlc_block.h>
 
 static const char* AV_TRANSPORT_SERVICE_TYPE = "urn:schemas-upnp-org:service:AVTransport:1";
@@ -177,7 +179,8 @@ struct sout_stream_sys_t
     void Hold( sout_stream_t *p_stream, sout_stream_id_sys_t *id, block_t *block );
     void Retime( sout_stream_t *p_stream, bool force );
     void Feed( sout_stream_t *p_stream, bool all );
-    void Release( sout_stream_t *p_stream, sout_stream_id_sys_t *id, block_t *block );
+    void Release( sout_stream_id_sys_t *id, block_t *block );
+    bool Origin( sout_stream_t *p_origin, unsigned serial, int cat, const block_t *block );
     void Anchor( sout_stream_t *p_stream, vlc_tick_t date, vlc_tick_t ts );
     void UpdateDisplay( sout_stream_t *p_stream );
     void StopDisplay();
@@ -212,7 +215,7 @@ struct sout_stream_sys_t
      * another subtitle goes in there, the renderer goes on (Add) */
     bool                                chain_soverlay = false;
     /* it starts with a picture the renderer can show (a keyframe): its
-     * position in the stream counts from there */
+     * position in the stream counts from the first one it shows (Origin) */
     bool                                chain_started = false;
     vlc_tick_t                          chain_wait = VLC_TICK_INVALID;
 
@@ -294,9 +297,16 @@ struct sout_stream_sys_t
     vlc_tick_t                          pause_date = VLC_TICK_INVALID;
     vlc_tick_t                          paused_total = 0;
     /* where the renderer's position is 0: the stream's time of the first
-     * picture of the chain; the parts of the stream since the seeks
-     * (where each starts, and its offset from the input's times) */
+     * picture of the chain it shows (Origin); the parts of the stream since
+     * the seeks (where each starts, and its offset from the input's times) */
     vlc_tick_t                          tl_first = VLC_TICK_INVALID;
+    /* (Origin) the chain told it (its dlna-origin filter: each chain has a
+     * serial), whether it is still to be known, from the pictures or the
+     * sound, and the offset of the input's times when the chain started */
+    unsigned                            chain_serial = 0;
+    bool                                origin_wait = false;
+    bool                                origin_video = false;
+    vlc_tick_t                          origin_offset = 0;
     std::deque<std::pair<vlc_tick_t, vlc_tick_t>> segments;
     /* how much later than the pace the renderer shows the stream (Measure):
      * the origin of its position is between origin_lo and origin_hi */
@@ -443,6 +453,14 @@ bool sout_stream_sys_t::startSoutChain(sout_stream_t *p_stream,
         return false;
     }
 
+    /* where the renderer's stream starts: its dlna-origin filter tells */
+    bool video = false;
+    for ( const sout_stream_id_sys_t *out : out_streams )
+        if ( out->fmt.i_cat == VIDEO_ES )
+            video = true;
+    vlc::threads::mutex_locker locker( ctl_lock );
+    origin_wait = true;
+    origin_video = video;
     return true;
 }
 
@@ -455,6 +473,9 @@ void sout_stream_sys_t::stopSoutChain(sout_stream_t *p_stream, bool keep)
         tl_first = VLC_TICK_INVALID;
         measure_at = VLC_TICK_INVALID;
         polls = 0;
+        /* (what the filter of this chain tells counts no more) */
+        chain_serial++;
+        origin_wait = false;
     }
     chain_soverlay = false;
     chain_started = false;
@@ -718,7 +739,8 @@ int sout_stream_sys_t::UpdateOutput( sout_stream_t *p_stream )
     for (int i = 0; i < 3 && features.find(':') != std::string::npos; ++i)
         features.erase(0, features.find(':') + 1);
 
-    ssout << "http{dst=:" << http_port << root_url
+    /* (the stream as the renderer gets it: where it starts, Origin) */
+    ssout << "dlna-origin:http{dst=:" << http_port << root_url
           << ",mux=" << stream_protocol->profile.mux
           << ",access=http{mime=" << stream_protocol->profile.mime
           << ",dlna=\"" << features << "\"}}";
@@ -764,8 +786,8 @@ vlc_tick_t sout_stream_sys_t::BaseTs( vlc_tick_t date ) const
 }
 
 /* Where the renderer said it is (pos, to the resolution) when it was asked,
- * between sent and received: the origin of its position (when it showed the
- * first picture of the chain) is in between. The polls, at other moments in
+ * between sent and received: the origin of its position (when it showed its
+ * first picture: Origin) is in between. The polls, at other moments in
  * the second, narrow it down; how much later than the pace it shows the
  * stream follows ("renderer-latency" of libvlc: the picture here waits as
  * long, and both show the same). Again in a while: it can drift. */
@@ -1219,7 +1241,7 @@ void sout_stream_sys_t::Hold( sout_stream_t *p_stream, sout_stream_id_sys_t *id,
      * of its time as they go, so it must be there before them */
     if ( timed && id->fmt.i_cat == SPU_ES )
     {
-        Release( p_stream, id, block );
+        Release( id, block );
         return;
     }
     held.push_back( { id, block, timed, vlc_tick_now() } );
@@ -1331,7 +1353,7 @@ void sout_stream_sys_t::Retime( sout_stream_t *p_stream, bool force )
             sout_stream_id_sys_t *id = it->id;
             block_t *block = it->block;
             it = held.erase( it );
-            Release( p_stream, id, block );
+            Release( id, block );
         }
         else
             ++it;
@@ -1448,13 +1470,12 @@ void sout_stream_sys_t::Feed( sout_stream_t *p_stream, bool all )
             }
         }
         held.pop_front();
-        Release( p_stream, h.id, h.block );
+        Release( h.id, h.block );
     }
 }
 
 /* To the renderer and to the picture here */
-void sout_stream_sys_t::Release( sout_stream_t *p_stream, sout_stream_id_sys_t *id,
-                                 block_t *block )
+void sout_stream_sys_t::Release( sout_stream_id_sys_t *id, block_t *block )
 {
     /* the first picture of the input (where it started or went) is one */
     const bool keyframe = id->fmt.i_cat == VIDEO_ES
@@ -1518,15 +1539,57 @@ void sout_stream_sys_t::Release( sout_stream_t *p_stream, sout_stream_id_sys_t *
         }
         chain_started = true;
         vlc::threads::mutex_locker locker( ctl_lock );
-        tl_first = block->i_pts != VLC_TICK_INVALID ? block->i_pts : BlockTs( block );
-        msg_Dbg( p_stream, "the renderer's stream starts at %" PRId64 " ms (%" PRId64
-                 " ms of the media)", MS_FROM_VLC_TICK( tl_first ),
-                 MS_FROM_VLC_TICK( tl_first - ts_offset ) );
-        polls = 0;
-        measure_at = now + VLC_TICK_FROM_SEC(2);
-        ctl_wait.signal();
+        origin_offset = ts_offset;
     }
     sout_StreamIdSend( p_out, id->p_sub_id, block );
+}
+
+/* Where the renderer's position is 0 (tl_first: its delay is measured from
+ * there): the first picture in its stream (the first sound, without a
+ * picture), as it gets it, after the conversion if any (the dlna-origin
+ * filter, before the chain's output, tells: OriginSend). It is not always
+ * the first one that goes into the chain: after a seek, or a cast started
+ * during the media, the input sends the pictures from the keyframe before
+ * the place asked, only to decode the next ones (preroll), and a conversion
+ * makes no picture of them (its decoder does not show them): its stream
+ * starts up to a keyframe interval later (8 s and more in some films: its
+ * delay was measured as much too long, the time said as much behind, and
+ * at the end the renderer was stopped as long after it showed the last
+ * picture). The pictures come in the order they are decoded: the first shown
+ * is the earliest of those that come before its time. False once it is
+ * known, or that chain is gone. */
+bool sout_stream_sys_t::Origin( sout_stream_t *p_origin, unsigned serial, int cat,
+                                const block_t *block )
+{
+    const vlc_tick_t pts = block->i_pts != VLC_TICK_INVALID ? block->i_pts : BlockTs( block );
+    const vlc_tick_t dts = BlockTs( block );
+
+    vlc::threads::mutex_locker locker( ctl_lock );
+    if ( serial != chain_serial || !origin_wait )
+        return false;
+    if ( cat != ( origin_video ? VIDEO_ES : AUDIO_ES ) )
+        return true;
+    if ( tl_first == VLC_TICK_INVALID )
+    {
+        if ( pts == VLC_TICK_INVALID )
+            return true;
+        tl_first = pts;
+        polls = 0;
+        measure_at = vlc_tick_now() + VLC_TICK_FROM_SEC(2);
+        ctl_wait.signal();
+        return true;
+    }
+    if ( dts == VLC_TICK_INVALID || dts < tl_first )
+    {
+        if ( pts != VLC_TICK_INVALID && pts < tl_first )
+            tl_first = pts;
+        return true;
+    }
+    origin_wait = false;
+    msg_Dbg( p_origin, "the renderer's stream starts at %" PRId64 " ms (%" PRId64
+             " ms of the media)", MS_FROM_VLC_TICK( tl_first ),
+             MS_FROM_VLC_TICK( tl_first - origin_offset ) );
+    return false;
 }
 
 /* The picture here too, as the interface asks: a display output for the
@@ -2228,7 +2291,7 @@ static void Del(sout_stream_t *p_stream, void *_id)
         {
             block_t *block = it->block;
             it = p_sys->held.erase( it );
-            p_sys->Release( p_stream, id, block );
+            p_sys->Release( id, block );
         }
         else
             ++it;
@@ -2361,6 +2424,116 @@ static const struct sout_stream_operations ops = [] {
     return ops;
 }();
 
+/* The dlna-origin filter, in the chain (UpdateOutput) right before its
+ * output: what the renderer gets goes through it as it is, and it tells
+ * where that starts (Origin). It calls from the thread of the conversion's
+ * encoder too: ctl_lock only. */
+struct origin_sys_t
+{
+    sout_stream_sys_t *dlna;
+    unsigned           serial;
+    bool               waiting;
+};
+
+struct origin_id_t
+{
+    void *next;
+    int   cat;
+};
+
+static void *OriginAdd( sout_stream_t *p_stream, const es_format_t *p_fmt, const char *es_id )
+{
+    void *next = sout_StreamIdAdd( p_stream->p_next, p_fmt, es_id );
+    if ( next == nullptr )
+        return nullptr;
+    origin_id_t *id = new (std::nothrow) origin_id_t { next, p_fmt->i_cat };
+    if ( id == nullptr )
+        sout_StreamIdDel( p_stream->p_next, next );
+    return id;
+}
+
+static void OriginDel( sout_stream_t *p_stream, void *_id )
+{
+    origin_id_t *id = static_cast<origin_id_t *>( _id );
+    sout_StreamIdDel( p_stream->p_next, id->next );
+    delete id;
+}
+
+static int OriginSend( sout_stream_t *p_stream, void *_id, block_t *block )
+{
+    origin_sys_t *sys = static_cast<origin_sys_t *>( p_stream->p_sys );
+    origin_id_t *id = static_cast<origin_id_t *>( _id );
+    if ( sys->waiting )
+        sys->waiting = sys->dlna->Origin( p_stream, sys->serial, id->cat, block );
+    return sout_StreamIdSend( p_stream->p_next, id->next, block );
+}
+
+static void OriginFlush( sout_stream_t *p_stream, void *_id )
+{
+    sout_StreamFlush( p_stream->p_next, static_cast<origin_id_t *>( _id )->next );
+}
+
+static void OriginSetPCR( sout_stream_t *p_stream, vlc_tick_t pcr )
+{
+    sout_StreamSetPCR( p_stream->p_next, pcr );
+}
+
+static int OriginControl( sout_stream_t *p_stream, int query, va_list args )
+{
+    switch ( query )
+    {
+        case SOUT_STREAM_ID_SPU_HIGHLIGHT:
+        {
+            origin_id_t *id = static_cast<origin_id_t *>( va_arg( args, void * ) );
+            const vlc_spu_highlight_t *hl = va_arg( args, const vlc_spu_highlight_t * );
+            return sout_StreamControl( p_stream->p_next, query, id->next, hl );
+        }
+        case SOUT_STREAM_WANTS_SUBSTREAMS:
+        case SOUT_STREAM_IS_SYNCHRONOUS:
+            return sout_StreamControl( p_stream->p_next, query, va_arg( args, bool * ) );
+    }
+    return VLC_EGENERIC;
+}
+
+static void OriginClose( sout_stream_t *p_stream )
+{
+    delete static_cast<origin_sys_t *>( p_stream->p_sys );
+}
+
+static const struct sout_stream_operations origin_ops = [] {
+    struct sout_stream_operations ops {};
+    ops.add = OriginAdd;
+    ops.del = OriginDel;
+    ops.send = OriginSend;
+    ops.flush = OriginFlush;
+    ops.control = OriginControl;
+    ops.set_pcr = OriginSetPCR;
+    ops.close = OriginClose;
+    return ops;
+}();
+
+/* only in a chain of the DLNA stream output (its sys) */
+int OpenOrigin( vlc_object_t *p_this )
+{
+    sout_stream_t *p_stream = reinterpret_cast<sout_stream_t *>( p_this );
+    sout_stream_sys_t *dlna = static_cast<sout_stream_sys_t *>(
+        var_InheritAddress( p_this, SOUT_CFG_PREFIX "sys" ) );
+    if ( dlna == nullptr || p_stream->p_next == nullptr )
+        return VLC_EGENERIC;
+    origin_sys_t *sys = new (std::nothrow) origin_sys_t;
+    if ( sys == nullptr )
+        return VLC_ENOMEM;
+    sys->dlna = dlna;
+    sys->waiting = true;
+    {
+        vlc::threads::mutex_locker locker( dlna->ctl_lock );
+        sys->serial = dlna->chain_serial;
+    }
+    p_stream->p_sys = sys;
+    p_stream->ops = &origin_ops;
+    return VLC_SUCCESS;
+}
+
 int OpenSout( vlc_object_t *p_this )
 {
     sout_stream_t *p_stream = reinterpret_cast<sout_stream_t*>(p_this);
@@ -2406,6 +2579,9 @@ int OpenSout( vlc_object_t *p_this )
 
     p_stream->p_sys = p_sys;
     p_stream->ops = &ops;
+    /* for the dlna-origin filter of its chains (their parent) */
+    var_Create( p_stream, SOUT_CFG_PREFIX "sys", VLC_VAR_ADDRESS );
+    var_SetAddress( p_stream, SOUT_CFG_PREFIX "sys", p_sys );
 
     /* the interface's controls (pause, volume, mute), when it has them */
     {

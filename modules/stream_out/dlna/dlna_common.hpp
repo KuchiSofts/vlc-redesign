@@ -35,8 +35,10 @@
 namespace DLNA
 {
 
-/* module callback */
+/* module callbacks */
 int OpenSout(vlc_object_t *);
+/* (in the chain it makes: where the renderer's stream starts) */
+int OpenOrigin(vlc_object_t *);
 
 }
 #endif /* DLNA_COMMON_H */

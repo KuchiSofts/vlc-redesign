@@ -105,6 +105,9 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
 - **Raw video files did not open**: a headerless raw file (.yuv, .cif, .qcif...) never played, and a YUV4MPEG2
   file (.y4m) logged an error before another reader took it: VLC lost the frame rate of the file. It is the
   same in VLC itself. Both open now.
+- **The hover of the player's buttons and the time of the seek preview, as the design draws them**: the hover box
+  was 2 px short and darker than the design's (white at 6 %), the preview's time 1 px small. Both were the last
+  two frames of the design not compared pixel for pixel: all 103 are now.
 - **The library panel in a small window**: under about 470 px of height its section icons ran over the player's bar
   (the + over the previous button), and in a narrow window the panel was cut on the right. The icons scroll in
   their column now, and the panel is no wider than the window.
@@ -161,6 +164,15 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
 
 ### Changed
 
+- **VLC Redesign and an installed VLC share nothing any more**: the volume Windows keeps for the app was the one of
+  VLC (VLC 3 too), a copy without its `portable` folder used VLC's settings folder and its language in the
+  registry, and the old *File associations* button of the classic settings changed VLC's file types. VLC Redesign
+  keeps its own volume, always has its own profile (it makes its `portable` folder, or uses
+  `%APPDATA%\VLC Redesign` where it can't), and leaves VLC's files and registry alone. After the update its volume
+  starts at 100 %, as any new app's in Windows; the one you set is kept from then on.
+- **Uninstalling removes the settings**: the program goes with its settings, library and history, without asking
+  (an update keeps them, a new version in another folder starts with them). Portable copies that no longer exist
+  are dropped from the list the next copy reads its settings from.
 - **Windows 10 version 1809 or later, the portable zip too**: the interface (Qt 6.8) needs it, and the installer
   already asked for it. A portable copy on an older Windows 10 (such as LTSB 2016) now says so when it starts.
 - **The settings start as the design draws them**: on the Subtitles page, *Preferred language* picks the language of

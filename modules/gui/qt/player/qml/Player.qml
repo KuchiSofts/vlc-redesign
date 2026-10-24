@@ -961,6 +961,17 @@ FocusScope {
         onVisibleChanged: rootPlayer.lockUnlockAutoHide(visible)
     }
 
+    // and the subtitles keep above them: it covered the start of a long line
+    Binding {
+        target: Player
+        property: "subtitleClearance"
+        when: resumeDialog.visible && MainCtx.hasEmbededVideo && playerSpecializationLoader.height > 0
+        value: Math.max(0, playerSpecializationLoader.y + playerSpecializationLoader.height
+                           - resumeDialog.y + VLCStyle.dp(8, VLCStyle.scale))
+               / playerSpecializationLoader.height
+        restoreMode: Binding.RestoreValue
+    }
+
     // Casting: the media plays on a TV (CastButton). Here, which one, and the
     // way back to this computer; the bar goes on controlling it
     Rectangle {

@@ -107,6 +107,9 @@ typedef struct vout_thread_sys_t
     /* Subpicture unit */
     spu_t           *spu;
     vlc_blender_t   *spu_blend;
+    /* The bottom of the window to keep the subtitles above, in 1/10000 of
+     * its height (sub-clearance) */
+    atomic_int      spu_clearance;
 
     /* Thread & synchronization */
     vout_control_t  control;
@@ -651,6 +654,41 @@ void vout_ChangeSubtitlePosition(vout_thread_t *vout, int position)
     assert(!sys->dummy);
     if (likely(sys->spu != NULL))
         spu_ChangePosition(sys->spu, position);
+}
+
+void vout_ChangeSubtitleClearance(vout_thread_t *vout, int clearance)
+{
+    vout_thread_sys_t *sys = VOUT_THREAD_TO_SYS(vout);
+    assert(!sys->dummy);
+    atomic_store_explicit(&sys->spu_clearance, VLC_CLIP(clearance, 0, 10000),
+                          memory_order_relaxed);
+}
+
+/* The lift for sub-clearance, in the units the subtitles are rendered in:
+ * the subtitles placed in the picture rise by what the window under it does
+ * not clear, the ones placed in the whole window by all of it */
+static void UpdateSubtitleClearance(vout_thread_sys_t *sys, bool vd_does_blending,
+                                    const video_format_t *fmt_spu)
+{
+    vout_display_t *vd = sys->display;
+    const int clearance = atomic_load_explicit(&sys->spu_clearance,
+                                               memory_order_relaxed);
+    int video_lift = 0, window_lift = 0;
+
+    if (clearance > 0 && vd->place->height > 0)
+    {
+        const int height = vd->cfg->display.height;
+        const int clear = (int64_t)height * clearance / 10000;
+        const int below = height - (vd->place->y + (int)vd->place->height);
+
+        window_lift = clear;
+        video_lift = __MAX(clear - below, 0);
+        /* blended into the picture: in its pixels */
+        if (!vd_does_blending)
+            video_lift = (int64_t)video_lift * fmt_spu->i_visible_height
+                         / vd->place->height;
+    }
+    spu_ChangeClearance(sys->spu, video_lift, window_lift);
 }
 
 void vout_ChangeViewpoint(vout_thread_t *vout,
@@ -1345,6 +1383,8 @@ static int PrerenderPicture(vout_thread_sys_t *sys, picture_t *filtered,
     /* Get the subpicture to be displayed. */
     video_format_t fmt_spu_rot;
     video_format_ApplyRotation(&fmt_spu_rot, &fmt_spu);
+    if (sys->spu != NULL)
+        UpdateSubtitleClearance(sys, vd_does_blending, &fmt_spu_rot);
     /*
      * Perform rendering
      *
@@ -2282,6 +2322,7 @@ vout_thread_t *vout_Create(vlc_object_t *object)
 
     vout_control_Init(&sys->control);
     atomic_init(&sys->control_is_terminated, false);
+    atomic_init(&sys->spu_clearance, 0);
 
     sys->title.show     = var_InheritBool(vout, "video-title-show");
     sys->title.timeout  = var_InheritInteger(vout, "video-title-timeout");

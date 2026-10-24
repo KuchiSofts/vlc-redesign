@@ -168,6 +168,7 @@ void vout_ControlChangeSubSources(vout_thread_t *, const char *);
 void vout_ControlChangeSubFilters(vout_thread_t *, const char *);
 void vout_ChangeSpuChannelMargin(vout_thread_t *, enum vlc_vout_order order, int);
 void vout_ChangeSubtitlePosition(vout_thread_t *, int);
+void vout_ChangeSubtitleClearance(vout_thread_t *, int);
 void vout_ChangeViewpoint( vout_thread_t *, const vlc_viewpoint_t *);
 void vout_ControlChangeStereo(vout_thread_t *vout, vlc_stereoscopic_mode_t);
 void vout_ChangeIccProfile(vout_thread_t *, vlc_icc_profile_t *);
@@ -200,6 +201,7 @@ void spu_SetClockDelay(spu_t *spu, size_t channel_id, vlc_tick_t delay);
 void spu_SetClockRate(spu_t *spu, size_t channel_id, float rate);
 void spu_ChangeChannelOrderMargin(spu_t *, enum vlc_vout_order, int);
 void spu_ChangePosition(spu_t *, int);
+void spu_ChangeClearance(spu_t *, int video_lift, int window_lift);
 void spu_SetHighlight(spu_t *, const vlc_spu_highlight_t*);
 
 /**

@@ -321,6 +321,8 @@ void PlayerControllerPrivate::UpdateVouts(vout_thread_t **vouts, size_t i_vouts,
     m_deinterlace.resetObject( main_vout );
     m_deinterlaceMode.resetObject( main_vout );
     m_autoscale.resetObject( main_vout );
+    // a new video output keeps the subtitles where the others do
+    applySubtitleClearance(vouts, i_vouts);
 
     emit q->voutListChanged(vouts, i_vouts);
     if( hadVideo != m_hasVideo )
@@ -1799,6 +1801,37 @@ void PlayerController::setSubtitleFPS(float fps)
     vlc_player_SetAssociatedSubsFPS( d->m_player, fps );
 }
 
+void PlayerControllerPrivate::applySubtitleClearance(vout_thread_t **vouts, size_t i_vouts) const
+{
+    const int clearance = qRound(m_subtitleClearance * 10000);
+    for (size_t i = 0; i < i_vouts; ++i)
+        var_SetInteger(vouts[i], "sub-clearance", clearance);
+}
+
+void PlayerController::setSubtitleClearance(qreal clearance)
+{
+    Q_D(PlayerController);
+    clearance = std::clamp(clearance, 0., 1.);
+    if (qFuzzyCompare(1. + clearance, 1. + d->m_subtitleClearance))
+        return;
+    d->m_subtitleClearance = clearance;
+
+    size_t i_vouts = 0;
+    vout_thread_t **vouts;
+    {
+        vlc_player_locker lock{ d->m_player };
+        vouts = vlc_player_vout_HoldAll(d->m_player, &i_vouts);
+    }
+    if (vouts)
+    {
+        d->applySubtitleClearance(vouts, i_vouts);
+        for (size_t i = 0; i < i_vouts; ++i)
+            vout_Release(vouts[i]);
+        free(vouts);
+    }
+    emit subtitleClearanceChanged(clearance);
+}
+
 //TITLE/CHAPTER/MENU
 
 void PlayerController::sectionPrev()
@@ -2570,6 +2603,7 @@ PRIMITIVETYPE_GETTER(bool, isRateChangable, m_capabilities & VLC_PLAYER_CAP_CHAN
 PRIMITIVETYPE_GETTER(bool, canRestorePlayback, m_canRestorePlayback);
 PRIMITIVETYPE_GETTER(VLCTime, getRestoreTime, m_restoreTime);
 PRIMITIVETYPE_GETTER(float, getSubtitleFPS, m_subtitleFPS)
+PRIMITIVETYPE_GETTER(qreal, getSubtitleClearance, m_subtitleClearance)
 PRIMITIVETYPE_GETTER(bool, hasVideoOutput, m_hasVideo)
 PRIMITIVETYPE_GETTER(float, getBuffering, m_buffering)
 PRIMITIVETYPE_GETTER(float, getVolume, m_volume)

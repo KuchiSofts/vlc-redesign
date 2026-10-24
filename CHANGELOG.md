@@ -144,6 +144,9 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
   visualizer, but they draw with OpenGL, which the video of this interface can't take on Windows (it is shown with
   DirectComposition): the music played on a black picture. Neither the player nor Settings offers them any more;
   the five of the design and Goom remain.
+- **The resume card covered the subtitles**: for the 10 seconds it offers to continue a film, the card and the
+  controls under it hid the start of a long subtitle line. The subtitles rise above them while it shows, and
+  go back down when it closes.
 
 ### Added
 
@@ -253,6 +256,11 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
 
 ### Technical
 
+- Subtitle clearance: a `sub-clearance` variable on the video output (the bottom of the window the interface
+  covers, in 1/10000 of its height; not an option) keeps the subtitles above it, only as high as needed: the
+  space under a subtitle counts (4 % of the height for text), the window under the picture too for those placed
+  in it, and lines stacked together move as one. When VLC blends them into the picture, in its pixels.
+  `Player.subtitleClearance` sets it on every video output, and on new ones.
 - Windows file errors (upstream): `vlc_open()` and `vlc_opendir()` set no `errno` (CreateFileW, FindFirstFileExW),
   so every first start logged "cannot open config file (vlcrc): No error" and "cannot open file" gave whatever
   reason was last. The Win32 error becomes `errno` now, as in `vlc_stat()`.

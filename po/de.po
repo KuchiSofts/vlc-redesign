@@ -5925,17 +5925,17 @@ msgstr "Lautstärke: %ld%%"
 #: src/player/osd.c:184
 #, c-format
 msgid "Video tracks: %s"
-msgstr ""
+msgstr "Videospuren: %s"
 
 #: src/player/osd.c:185
 #, c-format
 msgid "Video track: %s"
-msgstr ""
+msgstr "Videospur: %s"
 
 #: src/player/osd.c:188
 #, c-format
 msgid "Audio tracks: %s"
-msgstr ""
+msgstr "Audiospuren: %s"
 
 #: src/player/osd.c:189
 #, c-format
@@ -5945,7 +5945,7 @@ msgstr "Audiospur: %s"
 #: src/player/osd.c:192
 #, c-format
 msgid "Subtitle tracks: %s"
-msgstr ""
+msgstr "Untertitelspuren: %s"
 
 #: src/player/osd.c:193
 #, c-format
@@ -6083,7 +6083,7 @@ msgstr "Untertitelverzögerung: %i ms"
 #: src/player/player.c:1848
 #, c-format
 msgid "Video delay %i ms"
-msgstr ""
+msgstr "Videoverzögerung: %i ms"
 
 #: src/player/player.c:1898
 #, c-format
@@ -17078,11 +17078,11 @@ msgstr "Globales Hotkey-Interface"
 
 #: modules/control/hotkeys.c:507
 msgid "Primary subtitle control"
-msgstr ""
+msgstr "Steuerung primärer Untertitel"
 
 #: modules/control/hotkeys.c:509
 msgid "Secondary subtitle control"
-msgstr ""
+msgstr "Steuerung sekundärer Untertitel"
 
 #: modules/control/hotkeys.c:520
 msgid "Sub sync: bookmarked audio time"

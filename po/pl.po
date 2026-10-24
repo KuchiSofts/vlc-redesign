@@ -5863,27 +5863,27 @@ msgstr "Głośność: %ld%%"
 #: src/player/osd.c:184
 #, c-format
 msgid "Video tracks: %s"
-msgstr ""
+msgstr "Ścieżki obrazu: %s"
 
 #: src/player/osd.c:185
 #, c-format
 msgid "Video track: %s"
-msgstr ""
+msgstr "Ścieżka obrazu: %s"
 
 #: src/player/osd.c:188
 #, c-format
 msgid "Audio tracks: %s"
-msgstr ""
+msgstr "Ścieżki dźwiękowe: %s"
 
 #: src/player/osd.c:189
 #, c-format
 msgid "Audio track: %s"
-msgstr "Ścieżka dźwięku: %s"
+msgstr "Ścieżka dźwiękowa: %s"
 
 #: src/player/osd.c:192
 #, c-format
 msgid "Subtitle tracks: %s"
-msgstr ""
+msgstr "Ścieżki napisów: %s"
 
 #: src/player/osd.c:193
 #, c-format
@@ -6011,17 +6011,17 @@ msgstr "Nagrywanie zakończone"
 #: src/player/player.c:1844
 #, c-format
 msgid "Audio delay %i ms"
-msgstr "Opóźnienie dźwięku %i ms"
+msgstr "Opóźnienie dźwięku: %i ms"
 
 #: src/player/player.c:1846
 #, c-format
 msgid "Subtitle delay %i ms"
-msgstr "Opóźnienie napisów %i ms"
+msgstr "Opóźnienie napisów: %i ms"
 
 #: src/player/player.c:1848
 #, c-format
 msgid "Video delay %i ms"
-msgstr ""
+msgstr "Opóźnienie obrazu: %i ms"
 
 #: src/player/player.c:1898
 #, c-format
@@ -16960,11 +16960,11 @@ msgstr "Interfejs skrótów klawiszowych"
 
 #: modules/control/hotkeys.c:507
 msgid "Primary subtitle control"
-msgstr ""
+msgstr "Sterowanie podstawowymi napisami"
 
 #: modules/control/hotkeys.c:509
 msgid "Secondary subtitle control"
-msgstr ""
+msgstr "Sterowanie dodatkowymi napisami"
 
 #: modules/control/hotkeys.c:520
 msgid "Sub sync: bookmarked audio time"

@@ -5919,17 +5919,17 @@ msgstr "Volumen: %ld%%"
 #: src/player/osd.c:184
 #, c-format
 msgid "Video tracks: %s"
-msgstr ""
+msgstr "Pistas de vídeo: %s"
 
 #: src/player/osd.c:185
 #, c-format
 msgid "Video track: %s"
-msgstr ""
+msgstr "Pista de vídeo: %s"
 
 #: src/player/osd.c:188
 #, c-format
 msgid "Audio tracks: %s"
-msgstr ""
+msgstr "Pistas de audio: %s"
 
 #: src/player/osd.c:189
 #, c-format
@@ -5939,7 +5939,7 @@ msgstr "Pista de audio: %s"
 #: src/player/osd.c:192
 #, c-format
 msgid "Subtitle tracks: %s"
-msgstr ""
+msgstr "Pistas de subtítulos: %s"
 
 #: src/player/osd.c:193
 #, c-format
@@ -6067,17 +6067,17 @@ msgstr "Grabación hecha"
 #: src/player/player.c:1844
 #, c-format
 msgid "Audio delay %i ms"
-msgstr "Retrasar audio %i ms"
+msgstr "Retraso de audio: %i ms"
 
 #: src/player/player.c:1846
 #, c-format
 msgid "Subtitle delay %i ms"
-msgstr "Retrasar subtítulos %i ms"
+msgstr "Retraso de subtítulos: %i ms"
 
 #: src/player/player.c:1848
 #, c-format
 msgid "Video delay %i ms"
-msgstr ""
+msgstr "Retraso de vídeo: %i ms"
 
 #: src/player/player.c:1898
 #, c-format
@@ -17081,11 +17081,11 @@ msgstr "Interfaz de atajos de teclado globales"
 
 #: modules/control/hotkeys.c:507
 msgid "Primary subtitle control"
-msgstr ""
+msgstr "Control de subtítulos principales"
 
 #: modules/control/hotkeys.c:509
 msgid "Secondary subtitle control"
-msgstr ""
+msgstr "Control de subtítulos secundarios"
 
 #: modules/control/hotkeys.c:520
 msgid "Sub sync: bookmarked audio time"

@@ -5806,17 +5806,17 @@ msgstr "音量: %ld%%"
 #: src/player/osd.c:184
 #, c-format
 msgid "Video tracks: %s"
-msgstr ""
+msgstr "ビデオトラック: %s"
 
 #: src/player/osd.c:185
 #, c-format
 msgid "Video track: %s"
-msgstr ""
+msgstr "ビデオトラック: %s"
 
 #: src/player/osd.c:188
 #, c-format
 msgid "Audio tracks: %s"
-msgstr ""
+msgstr "オーディオトラック: %s"
 
 #: src/player/osd.c:189
 #, c-format
@@ -5826,7 +5826,7 @@ msgstr "オーディオトラック: %s"
 #: src/player/osd.c:192
 #, c-format
 msgid "Subtitle tracks: %s"
-msgstr ""
+msgstr "字幕トラック: %s"
 
 #: src/player/osd.c:193
 #, c-format
@@ -5954,17 +5954,17 @@ msgstr "レコーディング終了"
 #: src/player/player.c:1844
 #, c-format
 msgid "Audio delay %i ms"
-msgstr "オーディオ遅延 %i ミリ秒"
+msgstr "オーディオの遅延: %i ミリ秒"
 
 #: src/player/player.c:1846
 #, c-format
 msgid "Subtitle delay %i ms"
-msgstr "字幕遅延 %i ミリ秒"
+msgstr "字幕の遅延: %i ミリ秒"
 
 #: src/player/player.c:1848
 #, c-format
 msgid "Video delay %i ms"
-msgstr ""
+msgstr "ビデオの遅延: %i ミリ秒"
 
 #: src/player/player.c:1898
 #, c-format
@@ -16866,11 +16866,11 @@ msgstr "グローバルホットキーインターフェース"
 
 #: modules/control/hotkeys.c:507
 msgid "Primary subtitle control"
-msgstr ""
+msgstr "第1字幕の操作"
 
 #: modules/control/hotkeys.c:509
 msgid "Secondary subtitle control"
-msgstr ""
+msgstr "第2字幕の操作"
 
 #: modules/control/hotkeys.c:520
 msgid "Sub sync: bookmarked audio time"
@@ -16887,7 +16887,7 @@ msgstr "字幕の同期: ブックマークの登録を先に!"
 #: modules/control/hotkeys.c:544
 #, c-format
 msgid "Sub sync: corrected %<PRId64> ms (total delay = %<PRId64> ms)"
-msgstr "字幕の同期: %<PRId64> ms 補正しました (合計の遅延 = %<PRId64> ms)"
+msgstr "字幕の同期: %<PRId64> ミリ秒 補正しました (合計の遅延 = %<PRId64> ミリ秒)"
 
 #: modules/control/hotkeys.c:553
 msgid "Sub sync: delay reset"

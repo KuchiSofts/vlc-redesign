@@ -5881,17 +5881,17 @@ msgstr "Volym: %ld %%"
 #: src/player/osd.c:184
 #, c-format
 msgid "Video tracks: %s"
-msgstr ""
+msgstr "Videospår: %s"
 
 #: src/player/osd.c:185
 #, c-format
 msgid "Video track: %s"
-msgstr ""
+msgstr "Videospår: %s"
 
 #: src/player/osd.c:188
 #, c-format
 msgid "Audio tracks: %s"
-msgstr ""
+msgstr "Ljudspår: %s"
 
 #: src/player/osd.c:189
 #, c-format
@@ -5901,7 +5901,7 @@ msgstr "Ljudspår: %s"
 #: src/player/osd.c:192
 #, c-format
 msgid "Subtitle tracks: %s"
-msgstr ""
+msgstr "Undertextspår: %s"
 
 #: src/player/osd.c:193
 #, c-format
@@ -6029,17 +6029,17 @@ msgstr "Inspelning färdig"
 #: src/player/player.c:1844
 #, c-format
 msgid "Audio delay %i ms"
-msgstr "Ljudfördröjning %i ms"
+msgstr "Ljudfördröjning: %i ms"
 
 #: src/player/player.c:1846
 #, c-format
 msgid "Subtitle delay %i ms"
-msgstr "Undertextfördröjning %i ms"
+msgstr "Undertextfördröjning: %i ms"
 
 #: src/player/player.c:1848
 #, c-format
 msgid "Video delay %i ms"
-msgstr ""
+msgstr "Videofördröjning: %i ms"
 
 #: src/player/player.c:1898
 #, c-format
@@ -16650,11 +16650,11 @@ msgstr "Gränssnitt för globala kortkommandon"
 
 #: modules/control/hotkeys.c:507
 msgid "Primary subtitle control"
-msgstr ""
+msgstr "Styrning av primär undertext"
 
 #: modules/control/hotkeys.c:509
 msgid "Secondary subtitle control"
-msgstr ""
+msgstr "Styrning av sekundär undertext"
 
 #: modules/control/hotkeys.c:520
 msgid "Sub sync: bookmarked audio time"

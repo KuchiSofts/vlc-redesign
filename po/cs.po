@@ -5784,17 +5784,17 @@ msgstr "Hlasitost: %ld%%"
 #: src/player/osd.c:184
 #, c-format
 msgid "Video tracks: %s"
-msgstr ""
+msgstr "Stopy videa: %s"
 
 #: src/player/osd.c:185
 #, c-format
 msgid "Video track: %s"
-msgstr ""
+msgstr "Stopa videa: %s"
 
 #: src/player/osd.c:188
 #, c-format
 msgid "Audio tracks: %s"
-msgstr ""
+msgstr "Zvukové stopy: %s"
 
 #: src/player/osd.c:189
 #, c-format
@@ -5804,7 +5804,7 @@ msgstr "Zvuková stopa: %s"
 #: src/player/osd.c:192
 #, c-format
 msgid "Subtitle tracks: %s"
-msgstr ""
+msgstr "Stopy titulků: %s"
 
 #: src/player/osd.c:193
 #, c-format
@@ -5932,17 +5932,17 @@ msgstr "Nahrávání dokončeno"
 #: src/player/player.c:1844
 #, c-format
 msgid "Audio delay %i ms"
-msgstr "Zpoždění zvuku %i ms"
+msgstr "Zpoždění zvuku: %i ms"
 
 #: src/player/player.c:1846
 #, c-format
 msgid "Subtitle delay %i ms"
-msgstr "Zpoždění titulku %i ms"
+msgstr "Zpoždění titulků: %i ms"
 
 #: src/player/player.c:1848
 #, c-format
 msgid "Video delay %i ms"
-msgstr ""
+msgstr "Zpoždění videa: %i ms"
 
 #: src/player/player.c:1898
 #, c-format
@@ -14661,7 +14661,7 @@ msgstr "Hebrejština (Windows-1255)"
 
 #: modules/codec/subsdec.c:133
 msgid "Turkish (ISO 8859-9)"
-msgstr "Turečština (ISO 8859-9)"
+msgstr "Turečtina (ISO 8859-9)"
 
 #: modules/codec/subsdec.c:134
 msgid "Turkish (Windows-1254)"
@@ -16375,11 +16375,11 @@ msgstr "Rozhraní pro globální klávesové zkratky"
 
 #: modules/control/hotkeys.c:507
 msgid "Primary subtitle control"
-msgstr ""
+msgstr "Ovládání primárních titulků"
 
 #: modules/control/hotkeys.c:509
 msgid "Secondary subtitle control"
-msgstr ""
+msgstr "Ovládání sekundárních titulků"
 
 #: modules/control/hotkeys.c:520
 msgid "Sub sync: bookmarked audio time"

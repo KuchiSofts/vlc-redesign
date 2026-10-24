@@ -5856,17 +5856,17 @@ msgstr "Гучність: %ld%%"
 #: src/player/osd.c:184
 #, c-format
 msgid "Video tracks: %s"
-msgstr ""
+msgstr "Відеодоріжки: %s"
 
 #: src/player/osd.c:185
 #, c-format
 msgid "Video track: %s"
-msgstr ""
+msgstr "Відеодоріжка: %s"
 
 #: src/player/osd.c:188
 #, c-format
 msgid "Audio tracks: %s"
-msgstr ""
+msgstr "Звукові доріжки: %s"
 
 #: src/player/osd.c:189
 #, c-format
@@ -5876,7 +5876,7 @@ msgstr "Звукова доріжка: %s"
 #: src/player/osd.c:192
 #, c-format
 msgid "Subtitle tracks: %s"
-msgstr ""
+msgstr "Доріжки субтитрів: %s"
 
 #: src/player/osd.c:193
 #, c-format
@@ -6004,17 +6004,17 @@ msgstr "Запис завершено"
 #: src/player/player.c:1844
 #, c-format
 msgid "Audio delay %i ms"
-msgstr "Затримка звуку %i мс"
+msgstr "Затримка звуку: %i мс"
 
 #: src/player/player.c:1846
 #, c-format
 msgid "Subtitle delay %i ms"
-msgstr "Затримка субтитрів %i мс"
+msgstr "Затримка субтитрів: %i мс"
 
 #: src/player/player.c:1848
 #, c-format
 msgid "Video delay %i ms"
-msgstr ""
+msgstr "Затримка відео: %i мс"
 
 #: src/player/player.c:1898
 #, c-format
@@ -16999,11 +16999,11 @@ msgstr "Інтерфейс керування глобальними гаряч�
 
 #: modules/control/hotkeys.c:507
 msgid "Primary subtitle control"
-msgstr ""
+msgstr "Керування основними субтитрами"
 
 #: modules/control/hotkeys.c:509
 msgid "Secondary subtitle control"
-msgstr ""
+msgstr "Керування додатковими субтитрами"
 
 #: modules/control/hotkeys.c:520
 msgid "Sub sync: bookmarked audio time"

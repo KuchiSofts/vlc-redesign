@@ -5904,17 +5904,17 @@ msgstr "Volume: %ld%%"
 #: src/player/osd.c:184
 #, c-format
 msgid "Video tracks: %s"
-msgstr ""
+msgstr "Faixas de vídeo: %s"
 
 #: src/player/osd.c:185
 #, c-format
 msgid "Video track: %s"
-msgstr ""
+msgstr "Faixa de vídeo: %s"
 
 #: src/player/osd.c:188
 #, c-format
 msgid "Audio tracks: %s"
-msgstr ""
+msgstr "Faixas de áudio: %s"
 
 #: src/player/osd.c:189
 #, c-format
@@ -5924,12 +5924,12 @@ msgstr "Faixa de áudio: %s"
 #: src/player/osd.c:192
 #, c-format
 msgid "Subtitle tracks: %s"
-msgstr ""
+msgstr "Faixas de legendas: %s"
 
 #: src/player/osd.c:193
 #, c-format
 msgid "Subtitle track: %s"
-msgstr "Faixas das legendas: %s"
+msgstr "Faixa de legendas: %s"
 
 #: src/player/osd.c:208 src/player/osd.c:251
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:98
@@ -6052,17 +6052,17 @@ msgstr "Gravação concluída"
 #: src/player/player.c:1844
 #, c-format
 msgid "Audio delay %i ms"
-msgstr "Atraso de áudio %i ms"
+msgstr "Atraso do áudio: %i ms"
 
 #: src/player/player.c:1846
 #, c-format
 msgid "Subtitle delay %i ms"
-msgstr "Atraso das legendas %i ms"
+msgstr "Atraso das legendas: %i ms"
 
 #: src/player/player.c:1848
 #, c-format
 msgid "Video delay %i ms"
-msgstr ""
+msgstr "Atraso do vídeo: %i ms"
 
 #: src/player/player.c:1898
 #, c-format
@@ -17033,11 +17033,11 @@ msgstr "Interface das teclas globais de atalho"
 
 #: modules/control/hotkeys.c:507
 msgid "Primary subtitle control"
-msgstr ""
+msgstr "Controlo das legendas principais"
 
 #: modules/control/hotkeys.c:509
 msgid "Secondary subtitle control"
-msgstr ""
+msgstr "Controlo das legendas secundárias"
 
 #: modules/control/hotkeys.c:520
 msgid "Sub sync: bookmarked audio time"

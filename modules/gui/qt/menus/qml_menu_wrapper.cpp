@@ -1266,8 +1266,8 @@ void PlaylistContextMenu::popup(int selectedIndex, QPoint pos )
 
                     if (const auto dp = DialogsProvider::getInstance())
                     {
-                        proceed = dp->questionDialog(QStringLiteral("Discard the filtered out items"),
-                                                     QStringLiteral("Do you really want to discard the items that are not displayed at the moment?"));
+                        proceed = dp->questionDialog(qtr("Discard the filtered out items"),
+                                                     qtr("Do you really want to discard the items that are not displayed at the moment?"));
                     }
 
                     const auto count = m_model->rowCount() - m_proxyModel->rowCount();

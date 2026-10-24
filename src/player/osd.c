@@ -172,6 +172,31 @@ vlc_player_osd_Volume(vlc_player_t *player, bool mute_action)
     vlc_player_osd_ReleaseAll(player, vouts, count);
 }
 
+/* "Audio track: %s": one sentence for each kind of track, as a language
+ * needs it (the English name of the kind did not translate) */
+static void
+vlc_player_osd_TrackNames(vlc_player_t *player, enum es_format_category_e cat,
+                          bool several, const char *names)
+{
+    switch (cat)
+    {
+        case VIDEO_ES:
+            vlc_player_osd_Message(player, several ? _("Video tracks: %s")
+                                                   : _("Video track: %s"), names);
+            break;
+        case AUDIO_ES:
+            vlc_player_osd_Message(player, several ? _("Audio tracks: %s")
+                                                   : _("Audio track: %s"), names);
+            break;
+        case SPU_ES:
+            vlc_player_osd_Message(player, several ? _("Subtitle tracks: %s")
+                                                   : _("Subtitle track: %s"), names);
+            break;
+        default:
+            vlc_assert_unreachable();
+    }
+}
+
 void
 vlc_player_osd_Track(vlc_player_t *player, vlc_es_id_t *id, bool select)
 {
@@ -180,10 +205,8 @@ vlc_player_osd_Track(vlc_player_t *player, vlc_es_id_t *id, bool select)
     if (!track && select)
         return;
 
-    const char *cat_name = es_format_category_to_string(cat);
-    assert(cat_name);
     const char *track_name = select ? track->name : _("N/A");
-    vlc_player_osd_Message(player, _("%s track: %s"), cat_name, track_name);
+    vlc_player_osd_TrackNames(player, cat, false, track_name);
 }
 
 void
@@ -193,7 +216,6 @@ vlc_player_osd_Tracks(vlc_player_t *player, vlc_es_id_t * const *selected, vlc_e
         return;
 
     const enum es_format_category_e cat = vlc_es_id_GetCat(selected[0]);
-    const char *cat_name = es_format_category_to_string(cat);
     int tracks_count = 0;
     struct vlc_memstream stream;
 
@@ -226,7 +248,7 @@ vlc_player_osd_Tracks(vlc_player_t *player, vlc_es_id_t * const *selected, vlc_e
 
     if (tracks_count == 0)
     {
-        vlc_player_osd_Message(player, _("%s track: %s"), cat_name, _("N/A"));
+        vlc_player_osd_TrackNames(player, cat, false, _("N/A"));
         return;
     }
 
@@ -234,12 +256,7 @@ vlc_player_osd_Tracks(vlc_player_t *player, vlc_es_id_t * const *selected, vlc_e
     if (vlc_memstream_close(&stream) != 0)
         return;
 
-    if (tracks_count == 1)
-        vlc_player_osd_Message(player, _("%s track: %s"), cat_name,
-                               stream.ptr);
-    else
-        vlc_player_osd_Message(player, _("%s tracks: %s"), cat_name,
-                               stream.ptr);
+    vlc_player_osd_TrackNames(player, cat, tracks_count > 1, stream.ptr);
     free(stream.ptr);
 }
 

@@ -64,6 +64,11 @@ T.Page {
     readonly property SearchCtx search: _searchCtx
     readonly property SortCtx sort: _sortCtx
 
+    // The order of the page until one is chosen: A-Z (SortCtx starts in
+    // descending order, which listed artists, albums, tracks and the items of
+    // a playlist backwards), the newest first for what is new or recent
+    property int defaultSortOrder: Qt.AscendingOrder
+
 
     SearchCtx {
         id: _searchCtx
@@ -78,6 +83,7 @@ T.Page {
 
         available: Helpers.isArray(root.sortModel) && (root.sortModel).length > 0
         model: root.sortModel
+        order: root.defaultSortOrder
 
         //save & restore setting of the page
         Component.onCompleted: {
@@ -85,8 +91,10 @@ T.Page {
             if (criteria !== undefined)
                 _sortCtx.criteria = criteria
 
+            // An order is chosen with its criteria: one kept without (every
+            // page kept its order when left, the descending one too) was not
             const order = MainCtx.settingValue(_sortOrderKey, undefined)
-            if (order !== undefined)
+            if (order !== undefined && _sortCtx.criteria !== "")
                 _sortCtx.order = parseInt(order)
         }
 

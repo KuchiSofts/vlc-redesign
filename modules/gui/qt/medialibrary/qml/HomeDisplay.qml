@@ -91,6 +91,8 @@ Widgets.PageLoader {
         Widgets.PageExt {
             id: continueWatchingPage
 
+            defaultSortOrder: Qt.DescendingOrder
+
             title: qsTr("Continue Watching")
 
             VideoAll {
@@ -139,6 +141,8 @@ Widgets.PageLoader {
         Widgets.PageExt {
             id: favoritesPage
 
+            defaultSortOrder: Qt.DescendingOrder
+
             title: qsTr("Favorites")
 
             MediaView {
@@ -170,6 +174,8 @@ Widgets.PageLoader {
 
         Widgets.PageExt {
             id: newVideoPage
+
+            defaultSortOrder: Qt.DescendingOrder
 
             title: qsTr("New Videos")
 
@@ -213,6 +219,8 @@ Widgets.PageLoader {
         Widgets.PageExt {
             id: recentPage
 
+            defaultSortOrder: Qt.DescendingOrder
+
             title: qsTr("Recent")
 
             MediaView {
@@ -240,6 +248,8 @@ Widgets.PageLoader {
 
         Widgets.PageExt {
             id: listenAgainPage
+
+            defaultSortOrder: Qt.DescendingOrder
 
             title: qsTr("Listen Again")
 
@@ -271,6 +281,8 @@ Widgets.PageLoader {
 
         Widgets.PageExt {
             id: newMusicPage
+
+            defaultSortOrder: Qt.DescendingOrder
 
             title: qsTr("New Music")
 

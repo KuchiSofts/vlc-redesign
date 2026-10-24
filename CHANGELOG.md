@@ -33,6 +33,13 @@ file name of the player bar.
   priority of VLC now.
 - **"Save a log" stopped after the Messages window was opened once**: the window took the log for the rest of the
   session. It takes it only while open.
+- **The log file was emptied** each time it opened again: changing its details or format, closing the Messages
+  window, or starting VLC wiped what it had (and the file output's *append* overwrote). It adds to the end now, as
+  on other systems (an upstream VLC 4 bug of Windows, since `vlc_open()` uses CreateFileW).
+- **Video late after a pause at a speed other than 1x**: at 1.5x, 2x or 0.5x (or after any change of speed), the
+  picture ran as long behind the sound as the pause had lasted, dropping frames until the next seek. It stays in
+  sync now (an upstream VLC 4 bug: the audio output dated its first report after the pause as if it had played
+  through it).
 - **VLC Redesign kept files in the folders of an installed VLC**: Qt's caches (%LOCALAPPDATA%\vlc\cache) and the
   subtitles downloaded from a link of the subtitle associations (%APPDATA%\vlc\subtitles). They are in its own
   profile now, removed with it.
@@ -185,15 +192,25 @@ file name of the player bar.
   to right (the default, whatever the language) or right to left: everything mirrors at once, the arrows point the
   way one reads, and the playback bar keeps its order as on YouTube (time runs left to right).
 - **The translations are in the program** (issue #5): the releases had none, so the language chosen in Settings
-  did nothing. 98 languages ship now. Hebrew and Brazilian Portuguese cover every text of the interface (the
-  Portuguese of the redesign contributed by @Kinglucas962 in #6); in the other languages VLC's own texts are
-  translated and the redesign's are in English until they are.
-- **The installer offers the language of Windows**: on a Hebrew or Brazilian Portuguese Windows it asks first, in that
-  language and in English, whether to install VLC Redesign in it; yes, and the installer and the program are in it
-  (Hebrew right to left, with a choice of the layout direction of the program, left to right unless chosen). An
-  English Windows, or a language without a full translation yet, is not asked. An update keeps the language, a
-  silent install is never asked (`/LANG=hebrew`, `/RIGHTTOLEFT`). The portable zip starts in English, left to
-  right. Every text of the installer is in Hebrew and Brazilian Portuguese too.
+  did nothing. 98 languages ship now, and 20 cover every text of the interface: Arabic, Chinese (simplified and
+  traditional), Czech, Dutch, French, German, Hebrew, Italian, Japanese, Korean, Polish, Portuguese (Brazil, the
+  redesign's texts contributed by @Kinglucas962 in #6, and Portugal), Russian, Spanish, Swedish, Turkish and
+  Ukrainian, with British spelling for English (UK). They come first in the language list; in the others VLC's own
+  texts are translated, the redesign's are in English, and the list says "(partial)".
+- **The translations read right**: over 500 wrong or outdated texts of the old catalogs were corrected (Arabic
+  "OK" said "Yes", "Pause" an obscure word; Ukrainian "Space" was outer space; Page Up and Page Down were swapped
+  in Ukrainian and Traditional Chinese), and the counts take the plural form of their number in every language
+  ("2 элемента", "5 элементов"). A word with two meanings is translated once per meaning: the German side bar said
+  "Pos 1" (the Home key) for Home, and the key names in the shortcuts now follow the keyboards (Entf, Suppr, Canc).
+  Minutes and milliseconds are written in each language (5 мин, 5 dk, 5 分钟).
+- **The installer offers the language of Windows**: on a Windows in one of 17 languages (Arabic, Czech, Dutch,
+  French, German, Hebrew, Italian, Japanese, Korean, Polish, Portuguese of Brazil and of Portugal, Russian, Spanish,
+  Swedish, Turkish, Ukrainian) it asks first, in that language and in English, whether to install VLC Redesign in
+  it; yes, and the installer and the program are in it (Arabic and Hebrew right to left, with a choice of the
+  layout direction of the program, left to right unless chosen). An English Windows, or a language without a full
+  translation, is not asked. An update keeps the language, a silent install is never asked (`/LANG=hebrew`,
+  `/RIGHTTOLEFT`). The portable zip starts in English, left to right. Every text of the installer, its license
+  notice included, is in each of these languages.
 - **Subtitles in the computer's language from the first film**: until subtitle languages are chosen, a film's own
   subtitle track in the language of Windows is shown (not for English, where every English film would show its
   English subtitles), as the online search already looked for it.
@@ -319,6 +336,10 @@ file name of the player bar.
 - Translations: built with `-l` (`--enable-nls`); `po/vlc.pot` made again from the tree (it was VLC's of 2017; 7,823
   strings) with the 19 files of the redesign missing from `po/POTFILES.in` and the `tr()` keyword missing from
   `po/Makevars`; the catalogs are made again at each build (gettext remakes them only when vlc.pot changes).
+- Translation contexts: the key names of `src/misc/actions.c` are `NC_("key", ...)`, looked up as "key\004Home" by
+  `vlc_keycode2str()`; the translator of the Qt interface reads `qsTr(text, context)` as a msgctxt (xgettext
+  keyword `qsTr:1,2c,2t`); `%1x`, `%1m` and `%1ms` are marked `xgettext:no-c-format`. Every catalog is merged with
+  the new vlc.pot; the Kabyle catalog compiles again (a stray line since 2020, `%.lf` for `%.1f`).
 - RowSnapWheel (widgets): the wheel over a list in whole rows, put over the list of every dropdown popup.
 - The version is 0.3.0 from now on (`redesign_version.hpp`): it was raised only when a release was cut, so every
   build made since 0.2.6 called itself 0.2.6 in About, in the settings and in the file properties.

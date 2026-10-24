@@ -987,17 +987,21 @@ Text matching needs Inter with the same metrics (distance-field text, no hinting
 ## 12. Languages
 
 - 🟢 English by default in the portable zip and the app, whatever the system language; *Reset all* returns to English
-- 🟢 Installer in English, Hebrew (right to left) and Brazilian Portuguese
-- 🟢 The installer offers the language of Windows (only for a language with a full translation: Hebrew, Brazilian
-  Portuguese), the app starts in it; updates keep it, silent installs never ask (2026-10-24, tested in Windows Sandbox)
+- 🟢 Installer in English and 17 languages (Arabic and Hebrew right to left), each with its license notice
+- 🟢 The installer offers the language of Windows (only for a language with a full translation), the app starts in
+  it; updates keep it, silent installs never ask (2026-10-24, tested in Windows Sandbox)
 - 🟢 *Settings → Global → Appearance → Interface language*, and *Layout direction* (left to right by default, right to
   left when chosen, whatever the language)
 - 🟢 The language and the direction change at once, without a restart, everywhere (the welcome and the classic settings
   too; classic dialogs when they open next)
-- 🟢 Every string listed for translation: vlc.pot made again from the tree (7,823), the missing files and `tr()` added
+- 🟢 Every string listed for translation: vlc.pot made again from the tree (7,821), the missing files and `tr()` added;
+  a word with two meanings has a context (key names, the tracks of Settings), counts are plural entries
 - 🟢 Translations compiled into the release build (98 languages, catalogs made again at each build)
-- 🔴 Translators' platform (Weblate or Transifex); English and Hebrew first, then VLC's languages (decision 7). Hebrew and
-  Brazilian Portuguese are complete; the other languages have VLC's own texts, the redesign's in English
+- 🔴 Translators' platform (Weblate or Transifex, an account of the project: the owner's step); English and Hebrew first,
+  then VLC's languages (decision 7). 20 languages are complete (2026-10-24: Arabic, Chinese ×2, Czech, Dutch, French,
+  German, Hebrew, Italian, Japanese, Korean, Polish, Portuguese ×2, Russian, Spanish, Swedish, Turkish, Ukrainian, and
+  British spelling), with over 500 corrections of the old catalogs; the others have VLC's own texts, the redesign's in
+  English, marked "(partial)" in the list
 - 🟢 Right to left checked page by page (Hebrew, Arabic, and a test language 40 % longer, both directions: no cut, no
   overlap), the playback bar kept left to right as on YouTube
 

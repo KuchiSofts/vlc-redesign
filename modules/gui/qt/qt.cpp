@@ -119,6 +119,7 @@ extern "C" char **environ;
 
 #include <QVector>
 #include "playlist/playlist_item.hpp"
+#include "util/language_change.hpp"
 
 #include <vlc_interface.h>
 #include <vlc_plugin.h>
@@ -999,6 +1000,8 @@ static void *Thread( void *obj )
         // its numbers and dates
         const QString iso = interfaceLanguage();
         QLocale::setDefault( QLocale( iso == QLatin1String( "auto" ) ? QLocale::system().name() : iso ) );
+        // its fonts for the characters Inter does not have
+        applyLanguageFonts( QLocale() );
     }
 
     /* Ctrl+Q, or more specifically Command+Q on MacOS is going

@@ -66,6 +66,7 @@
 
 #include "dialogs/toolbar/controlbar_profile_model.hpp"
 #include "dialogs/help/help.hpp"
+#include "util/language_change.hpp"
 
 #include <QKeyEvent>
 
@@ -1319,6 +1320,7 @@ void MainCtx::applyInterfaceLanguage(const QString &iso)
     m_interfaceLanguage = code;
     vlc_settextlanguage(qtu(code));
     QLocale::setDefault(QLocale(code));
+    applyLanguageFonts(QLocale(code));
     // (the direction is a setting of its own: rightToLeft)
     // the widgets get it from the application (QEvent::LanguageChange)
     QCoreApplication::postEvent(QCoreApplication::instance(), new QEvent(QEvent::LanguageChange));

@@ -80,6 +80,9 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
   interval (6 s in a test film), and at the end the TV stayed on its last picture as long before VLC stopped it.
   VLC now counts from the first picture the TV gets: the time matches the TV, which is stopped right after it
   shows the end.
+- **The last fifth of a second was missing in MPEG-TS**: a film converted or saved to a .ts file, or cast to a TV,
+  lost its last 0.2 s of picture and sound (894 of 900 pictures, the TV stopped on a picture before the last one).
+  They are all there now.
 - **The subtitles window opened again when its button was clicked to close it**, and so did the menus of the ⋯
   button and of the library's Sort, View and More buttons. A click on their button opens and closes them now. A
   click outside a window or a list only closes it: a click on the video no longer pauses the film at the same time,

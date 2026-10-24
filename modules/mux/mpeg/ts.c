@@ -35,6 +35,7 @@
 #include <limits.h>
 
 #include <vlc_common.h>
+#include <vlc_arrays.h>
 #include <vlc_configuration.h>
 #include <vlc_plugin.h>
 #include <vlc_sout.h>
@@ -362,6 +363,9 @@ typedef struct
 
     vlc_tick_t      i_pcr;  /* last PCR emitted */
 
+    /* an input goes: all that is left is muxed (Drain) */
+    bool            b_drain;
+
     csa_t           *csa;
     int             i_csa_pkt_size;
     bool            b_crypt_audio;
@@ -451,6 +455,7 @@ static int Control  ( sout_mux_t *, int, va_list );
 static int AddStream( sout_mux_t *, sout_input_t * );
 static void DelStream( sout_mux_t *, sout_input_t * );
 static int Mux      ( sout_mux_t * );
+static int MuxStreams( sout_mux_t * );
 
 static block_t *FixPES( block_fifo_t *p_fifo );
 static block_t *Add_ADTS( block_t *, const es_format_t * );
@@ -952,6 +957,28 @@ oom:
 }
 
 /*****************************************************************************
+ * Drain: an input goes (the end of the stream, most of the time): all that
+ * the inputs still have is muxed. Muxing waits for the shaping delay of data
+ * in the PCR stream, and for the block after each one (its length): the last
+ * 0.2 s of a stream were dropped with the input (the last pictures of a film,
+ * 894 of 900).
+ *****************************************************************************/
+static void Drain( sout_mux_t *p_mux, sout_input_t *p_removed )
+{
+    sout_mux_sys_t *p_sys = p_mux->p_sys;
+
+    if( p_sys->p_pcr_input == NULL )
+        return;
+
+    /* (it is out of the inputs already: back in for this) */
+    TAB_APPEND( p_mux->i_nb_inputs, p_mux->pp_inputs, p_removed );
+    p_sys->b_drain = true;
+    while( MuxStreams( p_mux ) == VLC_SUCCESS );
+    p_sys->b_drain = false;
+    TAB_REMOVE( p_mux->i_nb_inputs, p_mux->pp_inputs, p_removed );
+}
+
+/*****************************************************************************
  * DelStream: called before a stream deletion
  *****************************************************************************/
 static void DelStream( sout_mux_t *p_mux, sout_input_t *p_input )
@@ -961,6 +988,8 @@ static void DelStream( sout_mux_t *p_mux, sout_input_t *p_input )
     int               pid;
 
     msg_Dbg( p_mux, "removing input pid=%d", p_stream->ts.i_pid );
+
+    Drain( p_mux, p_input );
 
     if( p_sys->p_pcr_input == p_input )
     {
@@ -1185,15 +1214,19 @@ static int MuxStreams( sout_mux_t *p_mux )
 
         sout_input_sys_t *p_stream = (sout_input_sys_t*)p_input->p_sys;
 
-        if( ( p_stream != p_pcr_stream ||
+        /* (draining: every block, the last one too) */
+        if( !p_sys->b_drain &&
+            ( p_stream != p_pcr_stream ||
               p_stream->state.i_pes_length >= i_shaping_delay ) &&
             p_stream->state.i_pes_dts + p_stream->state.i_pes_length >=
             p_pcr_stream->state.i_pes_dts + p_pcr_stream->state.i_pes_length )
             continue;
 
         /* Need more data */
-        if( block_FifoCount( p_input->p_fifo ) <= 1 )
+        if( block_FifoCount( p_input->p_fifo ) <= ( p_sys->b_drain ? 0 : 1 ) )
         {
+            if( p_sys->b_drain )
+                continue;
             if( ( p_input->p_fmt->i_cat == AUDIO_ES ) ||
                 ( p_input->p_fmt->i_cat == VIDEO_ES ) )
             {
@@ -1228,10 +1261,12 @@ static int MuxStreams( sout_mux_t *p_mux )
         b_ok = false;
 
         block_t *p_data;
+        /* (FixPES needs the block after: not for the last one, draining) */
         if( p_stream == p_pcr_stream || p_sys->b_data_alignment
              || (p_input->p_fmt->i_codec != VLC_CODEC_MPGA &&
                  p_input->p_fmt->i_codec != VLC_CODEC_MP2 &&
-                 p_input->p_fmt->i_codec != VLC_CODEC_MP3 ) )
+                 p_input->p_fmt->i_codec != VLC_CODEC_MP3 )
+             || block_FifoCount( p_input->p_fifo ) <= 1 )
         {
             p_data = block_FifoGet( p_input->p_fifo );
             if( p_data->i_dts == VLC_TICK_INVALID )
@@ -1414,8 +1449,29 @@ static int MuxStreams( sout_mux_t *p_mux )
     }
 
     /* save */
-    const vlc_tick_t i_pcr_length = p_pcr_stream->state.i_pes_length;
+    vlc_tick_t i_pcr_dts = p_pcr_stream->state.i_pes_dts;
+    vlc_tick_t i_pcr_length = p_pcr_stream->state.i_pes_length;
     p_pcr_stream->state.b_key_frame = 0;
+
+    if( p_sys->b_drain )
+    {
+        /* all that is left, of every input */
+        vlc_tick_t i_start = 0, i_end = 0;
+        for (int i = 0; i < p_mux->i_nb_inputs; i++ )
+        {
+            const sout_input_sys_t *p_stream = p_mux->pp_inputs[i]->p_sys;
+            if( p_stream->state.i_pes_dts == 0 )
+                continue;
+            if( i_start == 0 || p_stream->state.i_pes_dts < i_start )
+                i_start = p_stream->state.i_pes_dts;
+            i_end = __MAX( i_end, p_stream->state.i_pes_dts +
+                                  p_stream->state.i_pes_length );
+        }
+        if( i_start == 0 )
+            return -EAGAIN;
+        i_pcr_dts = i_start;
+        i_pcr_length = i_end - i_start;
+    }
 
     /* msg_Dbg( p_mux, "starting muxing %lldms", i_pcr_length / 1000 ); */
     /* 2: calculate non accurate total size of muxed ts */
@@ -1429,8 +1485,7 @@ static int MuxStreams( sout_mux_t *p_mux )
              p_pes = p_pes->p_next )
         {
             int i_size = p_pes->i_buffer;
-            vlc_tick_t i_frag = p_pcr_stream->state.i_pes_dts +
-                             p_pcr_stream->state.i_pes_length - p_pes->i_dts;
+            vlc_tick_t i_frag = i_pcr_dts + i_pcr_length - p_pes->i_dts;
             if( p_pes->i_length > i_frag )
             {
                 if( i_frag < 0 )
@@ -1456,7 +1511,6 @@ static int MuxStreams( sout_mux_t *p_mux )
     i_packet_count += chain_ts.i_depth;
     /* msg_Dbg( p_mux, "estimated pck=%d", i_packet_count ); */
 
-    const vlc_tick_t i_pcr_dts = p_pcr_stream->state.i_pes_dts;
     for (;;)
     {
         int          i_stream = -1;
@@ -1479,7 +1533,8 @@ static int MuxStreams( sout_mux_t *p_mux )
                 i_dts = p_stream->state.i_pes_dts;
             }
         }
-        if( i_stream == -1 || i_dts > i_pcr_dts + i_pcr_length )
+        if( i_stream == -1 ||
+            ( !p_sys->b_drain && i_dts > i_pcr_dts + i_pcr_length ) )
         {
             break;
         }

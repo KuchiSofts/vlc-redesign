@@ -179,6 +179,13 @@ vlc_module_begin()
             change_integer_range(500, 10000)
         add_renderer_opts(SOUT_CFG_PREFIX)
 
+    add_submodule()
+        /* in the chain of the DLNA stream output, before its output: the
+         * stream as the renderer gets it (where it starts) */
+        add_shortcut("dlna-origin")
+        set_capability("sout filter", 0)
+        set_callback(DLNA::OpenOrigin)
+
 #ifdef ENABLE_UPNP_SERVER
     add_submodule()
         set_shortname("UPnP Server");

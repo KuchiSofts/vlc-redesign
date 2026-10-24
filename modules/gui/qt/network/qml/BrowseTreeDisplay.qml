@@ -49,8 +49,12 @@ Widgets.PageExt {
         path: root.headerPath
         providerModel: root.model
 
-        leftPadding: VLCStyle.dynamicAppMargins(width) + VLCStyle.layout_left_margin + root.leftPadding
-        rightPadding: VLCStyle.dynamicAppMargins(width) + VLCStyle.layout_right_margin + root.rightPadding
+        // (the paddings of the page are at its start and end: on the right
+        // and left in a right to left layout)
+        leftPadding: VLCStyle.dynamicAppMargins(width) + VLCStyle.layout_left_margin
+                     + (LayoutMirroring.enabled ? root.rightPadding : root.leftPadding)
+        rightPadding: VLCStyle.dynamicAppMargins(width) + VLCStyle.layout_right_margin
+                      + (LayoutMirroring.enabled ? root.leftPadding : root.rightPadding)
 
         sort: root.sort
         search: root.search
@@ -338,6 +342,8 @@ Widgets.PageExt {
                 text: qsTr("Nothing to see here, go back.")
 
                 button.iconTxt: VLCIcons.back
+                // the arrow points to the right in a right to left layout
+                button.iconRotation: LayoutMirroring.enabled ? 180 : 0
                 button.text: qsTr("Back")
                 button.enabled: !History.previousEmpty
                 button.width: button.implicitWidth

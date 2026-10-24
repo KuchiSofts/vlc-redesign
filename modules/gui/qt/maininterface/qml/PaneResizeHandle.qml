@@ -37,7 +37,9 @@ Item {
     }
     required property Item target
     required property QtObject panelObject
-    property alias atRight: resizeHandle.atRight
+    // On the right edge of the panel (its left edge in a right to left
+    // layout: the anchors are mirrored, the drag follows them)
+    property bool atRight: false
 
     property alias visualBorder: visualBorder
     property alias resizeHandle: resizeHandle
@@ -53,8 +55,8 @@ Item {
         anchors {
             top: parent.top
             bottom: parent.bottom
-            left: resizeHandle.atRight ? undefined : parent.left
-            right: resizeHandle.atRight ? parent.right: undefined
+            left: paneResizeHandle.atRight ? undefined : parent.left
+            right: paneResizeHandle.atRight ? parent.right: undefined
         }
 
         width: VLCStyle.border
@@ -69,11 +71,12 @@ Item {
         anchors {
             top: parent.top
             bottom: parent.bottom
-            left: resizeHandle.atRight ? undefined : parent.left
-            right: resizeHandle.atRight ? parent.right: undefined
+            left: paneResizeHandle.atRight ? undefined : parent.left
+            right: paneResizeHandle.atRight ? parent.right: undefined
         }
 
-        atRight: false
+        // the side it is on once mirrored: a drag away from the panel widens it
+        atRight: LayoutMirroring.enabled ? !paneResizeHandle.atRight : paneResizeHandle.atRight
         currentWidth: target.width
 
         visible: !VLCStyle.isScreenSmall

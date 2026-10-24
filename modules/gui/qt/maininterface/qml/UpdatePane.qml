@@ -142,7 +142,9 @@ T.Pane {
                 }
 
                 Navigation.parentItem: root
-                Navigation.rightItem: recheckButton
+                // (the row is mirrored in a right to left layout)
+                Navigation.leftItem: LayoutMirroring.enabled ? recheckButton : null
+                Navigation.rightItem: LayoutMirroring.enabled ? null : recheckButton
             }
 
             component Separator : Rectangle {
@@ -173,8 +175,8 @@ T.Pane {
                 }
 
                 Navigation.parentItem: root
-                Navigation.leftItem: revealDetailsButton
-                Navigation.rightItem: downloadButton
+                Navigation.leftItem: LayoutMirroring.enabled ? downloadButton : revealDetailsButton
+                Navigation.rightItem: LayoutMirroring.enabled ? revealDetailsButton : downloadButton
             }
 
             Widgets.ActionButtonPrimary {
@@ -205,8 +207,8 @@ T.Pane {
                 }
 
                 Navigation.parentItem: root
-                Navigation.leftItem: recheckButton
-                Navigation.rightItem: dismissButton
+                Navigation.leftItem: LayoutMirroring.enabled ? dismissButton : recheckButton
+                Navigation.rightItem: LayoutMirroring.enabled ? recheckButton : dismissButton
             }
 
             Separator {
@@ -227,7 +229,8 @@ T.Pane {
                 }
 
                 Navigation.parentItem: root
-                Navigation.leftItem: downloadButton
+                Navigation.leftItem: LayoutMirroring.enabled ? null : downloadButton
+                Navigation.rightItem: LayoutMirroring.enabled ? downloadButton : null
             }
         }
 

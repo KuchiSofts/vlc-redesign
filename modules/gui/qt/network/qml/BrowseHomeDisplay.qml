@@ -112,6 +112,11 @@ Widgets.PageExt {
     T.Label {
         anchors.centerIn: parent
 
+        // a long translation goes on more lines, within the page
+        width: Math.min(implicitWidth, parent.width - 2 * VLCStyle.margin_normal)
+        wrapMode: Text.WordWrap
+        horizontalAlignment: Text.AlignHCenter
+
         visible: [foldersSection, computerSection, deviceSection, lanSection]
                  .every(section => !section.model.loading && section.model.count === 0)
 

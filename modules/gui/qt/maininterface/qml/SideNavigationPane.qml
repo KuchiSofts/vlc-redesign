@@ -34,7 +34,33 @@ T.Pane {
     property bool useAcrylic: true
     property bool delegateShowText: true
     property alias model: navigationModel
-    readonly property int minimumWidth: VLCStyle.expandNavigationPaneWidth
+    // The width of the design, more for a longer label (a translation longer
+    // than the English), up to half as much again; past it, the labels elide
+    readonly property int minimumWidth: Math.max(VLCStyle.expandNavigationPaneWidth,
+                                                 Math.min(Math.ceil(_labelsWidth), Math.round(VLCStyle.expandNavigationPaneWidth * 1.5)))
+
+    // The width the longest label of the rows needs (all of them, the pages
+    // of Music too: the width does not change with the page shown)
+    readonly property real _labelsWidth: {
+        void labelMetrics.font // (measured again once the font is loaded)
+        let widest = 0
+        for (const label of [ qsTr("Home"), qsTr("Videos"), qsTr("Music"), qsTr("Network"),
+                              qsTr("Playlists"), qsTr("Recent"), qsTr("Add item") ])
+            widest = Math.max(widest, labelMetrics.advanceWidth(label))
+        for (const label of [ qsTr("Artists"), qsTr("Albums"), qsTr("Tracks"), qsTr("Genres"), qsTr("Playlists") ])
+            widest = Math.max(widest, labelMetrics.advanceWidth(label) + VLCStyle.dp(16, VLCStyle.scale))
+        // the paddings of the pane and the border of a resize handle (not
+        // read from the paddings: they depend on the width), the paddings of
+        // the rows, the icon and the spacing (see the delegates)
+        return widest + 1 + 2 * padding + VLCStyle.border + safeAreaLeftMargin + safeAreaRightMargin
+               + VLCStyle.dp(16 + 16 + 32, VLCStyle.scale) + VLCStyle.margin_xsmall
+    }
+
+    FontMetrics {
+        id: labelMetrics
+        font.family: VLCStyle.redesign.fontFamily
+        font.pixelSize: VLCStyle.redesign.fontNormal
+    }
 
     padding: VLCStyle.margin_xsmall
     implicitWidth: minimumWidth
@@ -136,10 +162,14 @@ T.Pane {
                 height: root._rowHeight
                 topPadding: 0
                 bottomPadding: 0
-                leftPadding: root.safeAreaLeftMargin + VLCStyle.dp(root.delegateShowText ? 16 + depth * 16 : 8, VLCStyle.scale)
-                rightPadding: root.safeAreaRightMargin + VLCStyle.dp(16, VLCStyle.scale)
-                leftInset: root.safeAreaLeftMargin + VLCStyle.dp(8, VLCStyle.scale)
-                rightInset: root.safeAreaRightMargin + VLCStyle.dp(8, VLCStyle.scale)
+                // the indent at the start of the row: on the right in a
+                // right to left layout
+                readonly property real _startPadding: root.safeAreaLeftMargin + VLCStyle.dp(root.delegateShowText ? 16 + depth * 16 : 8, VLCStyle.scale)
+                readonly property real _endPadding: root.safeAreaRightMargin + VLCStyle.dp(16, VLCStyle.scale)
+                leftPadding: LayoutMirroring.enabled ? _endPadding : _startPadding
+                rightPadding: LayoutMirroring.enabled ? _startPadding : _endPadding
+                leftInset: (LayoutMirroring.enabled ? root.safeAreaRightMargin : root.safeAreaLeftMargin) + VLCStyle.dp(8, VLCStyle.scale)
+                rightInset: (LayoutMirroring.enabled ? root.safeAreaLeftMargin : root.safeAreaRightMargin) + VLCStyle.dp(8, VLCStyle.scale)
                 // Figma "Icon Wrapper": 30 wide, 32 for Videos
                 iconSlotWidth: VLCStyle.dp(modelData.asset === "video" ? 32 : 30, VLCStyle.scale)
                 iconTxt: modelData.icon
@@ -170,10 +200,13 @@ T.Pane {
             Layout.preferredHeight: root._rowHeight
             topPadding: 0
             bottomPadding: 0
-            leftPadding: root.safeAreaLeftMargin + VLCStyle.dp(root.delegateShowText ? 16 : 8, VLCStyle.scale)
-            rightPadding: root.safeAreaRightMargin + VLCStyle.dp(16, VLCStyle.scale)
-            leftInset: root.safeAreaLeftMargin + VLCStyle.dp(8, VLCStyle.scale)
-            rightInset: root.safeAreaRightMargin + VLCStyle.dp(8, VLCStyle.scale)
+            // (mirrored like the rows above)
+            readonly property real _startPadding: root.safeAreaLeftMargin + VLCStyle.dp(root.delegateShowText ? 16 : 8, VLCStyle.scale)
+            readonly property real _endPadding: root.safeAreaRightMargin + VLCStyle.dp(16, VLCStyle.scale)
+            leftPadding: LayoutMirroring.enabled ? _endPadding : _startPadding
+            rightPadding: LayoutMirroring.enabled ? _startPadding : _endPadding
+            leftInset: (LayoutMirroring.enabled ? root.safeAreaRightMargin : root.safeAreaLeftMargin) + VLCStyle.dp(8, VLCStyle.scale)
+            rightInset: (LayoutMirroring.enabled ? root.safeAreaLeftMargin : root.safeAreaRightMargin) + VLCStyle.dp(8, VLCStyle.scale)
             iconSlotWidth: VLCStyle.dp(30, VLCStyle.scale)
             iconTxt: VLCIcons.add
             referenceIconName: "add"

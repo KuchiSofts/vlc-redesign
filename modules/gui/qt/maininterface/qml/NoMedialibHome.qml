@@ -164,7 +164,9 @@ FocusScope {
                 width: Math.max(fileButton.implicitWidth, discButton.implicitWidth)
 
                 Navigation.parentItem: coneNButtons
-                Navigation.rightItem: discButton
+                // (the row is mirrored in a right to left layout)
+                Navigation.leftItem: LayoutMirroring.enabled ? discButton : null
+                Navigation.rightItem: LayoutMirroring.enabled ? null : discButton
 
                 // TODO: The full-fledged open dialog is advertised as "Open Multiple Files" in the menu.
                 //       In the future, we can have the "Open File" button as a combo box button that has these options,
@@ -186,7 +188,8 @@ FocusScope {
                 width: Math.max(fileButton.implicitWidth, discButton.implicitWidth)
 
                 Navigation.parentItem: coneNButtons
-                Navigation.leftItem: fileButton
+                Navigation.leftItem: LayoutMirroring.enabled ? null : fileButton
+                Navigation.rightItem: LayoutMirroring.enabled ? fileButton : null
 
                 onClicked: DialogsProvider.openDiscDialog()
             }

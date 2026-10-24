@@ -256,6 +256,8 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
 
 ### Technical
 
+- The version is 0.3.0 from now on (`redesign_version.hpp`): it was raised only when a release was cut, so every
+  build made since 0.2.6 called itself 0.2.6 in About, in the settings and in the file properties.
 - Subtitle clearance: a `sub-clearance` variable on the video output (the bottom of the window the interface
   covers, in 1/10000 of its height; not an option) keeps the subtitles above it, only as high as needed: the
   space under a subtitle counts (4 % of the height for text), the window under the picture too for those placed

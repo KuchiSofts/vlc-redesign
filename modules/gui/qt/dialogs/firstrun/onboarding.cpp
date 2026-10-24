@@ -11,6 +11,7 @@
 #include "dialogs/preferences/interface_language.hpp"
 
 #include "maininterface/mainctx.hpp"
+#include "util/language_change.hpp"
 #include "medialibrary/medialib.hpp"
 #include "util/color_scheme_model.hpp"
 #include "util/vlchotkeyconverter.hpp"
@@ -416,6 +417,8 @@ QVariantList OnboardingController::activeShortcuts() const
 
 QVariantList OnboardingController::interfaceLanguages() const
 {
+    // "(partial)" in the language of the interface: read again when it changes
+    markTranslationBinding(this);
     return ::interfaceLanguages();
 }
 

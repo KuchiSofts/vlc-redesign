@@ -105,6 +105,8 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
 - **Raw video files did not open**: a headerless raw file (.yuv, .cif, .qcif...) never played, and a YUV4MPEG2
   file (.y4m) logged an error before another reader took it: VLC lost the frame rate of the file. It is the
   same in VLC itself. Both open now.
+- **The main menu in a small window**: under about 620 px of height (a maximized window on a 1366 x 768 laptop at
+  125 %), its last rows were cut off with no sign that it scrolls. A thin bar now shows that it does.
 - **The library was listed backwards**: artists, albums, tracks, genres, the playlists, videos and network folders
   started Z-A until another order was picked. They start A-Z now, also where an earlier version kept Z-A; Home's
   lists keep the newest first. An order you picked stays.

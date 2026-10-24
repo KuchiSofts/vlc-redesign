@@ -1,5 +1,5 @@
-#define VERSION_NUMBER @VERSION_MAJOR@,@VERSION_MINOR@,@VERSION_REVISION@,@VERSION_EXTRA@
-#define VERSION_NUMBER_STR "@VERSION_MAJOR@,@VERSION_MINOR@,@VERSION_REVISION@,@VERSION_EXTRA@"
+#define VERSION_NUMBER @REDESIGN_VERSION_NUMBER@
+#define VERSION_NUMBER_STR "@REDESIGN_VERSION@"
 
 #include <winuser.h>
 
@@ -13,12 +13,13 @@ BEGIN
   BEGIN
     BLOCK "040904E4"
     BEGIN
-      VALUE "CompanyName", "VideoLAN"
-      VALUE "ProductName", "VLC media player"
+      VALUE "CompanyName", "KuchiSofts"
+      VALUE "ProductName", "VLC Redesign"
       VALUE "ProductVersion", VERSION_NUMBER_STR
-      VALUE "FileVersion", "@VERSION@"
-      VALUE "FileDescription", "VLC media player"
-      VALUE "LegalCopyright", "Copyright \251 @COPYRIGHT_YEARS@ VideoLAN and VLC Authors"
+      VALUE "FileVersion", VERSION_NUMBER_STR
+      VALUE "FileDescription", "VLC Redesign core library"
+      VALUE "Comments", "Based on VLC @VERSION@"
+      VALUE "LegalCopyright", "Copyright \251 @COPYRIGHT_YEARS@ VideoLAN and VLC Authors; VLC Redesign \251 2026 KuchiSofts"
       VALUE "LegalTrademarks", "VLC media player, VideoLAN and x264 are registered trademarks from VideoLAN"
     END
   END

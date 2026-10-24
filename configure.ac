@@ -5249,6 +5249,16 @@ AC_SUBST([LIBVLC_ABI_MAJOR])
 AC_SUBST([LIBVLC_ABI_MINOR])
 AC_SUBST([LIBVLC_ABI_MICRO])
 AC_SUBST([COPYRIGHT_YEARS])
+dnl VLC Redesign's version, for the version resources of the Windows binaries:
+dnl read from modules/gui/qt/util/redesign_version.hpp, the only place it is
+dnl written (Makefile.am runs configure again when that file changes)
+REDESIGN_VERSION=`sed -n 's/^#define VLC_REDESIGN_VERSION "\(.*\)".*$/\1/p' "${srcdir}/modules/gui/qt/util/redesign_version.hpp"`
+REDESIGN_VERSION_NUMBER=`echo "${REDESIGN_VERSION}" | sed -n 's/^\([[0-9]][[0-9]]*\)\.\([[0-9]][[0-9]]*\)\.\([[0-9]][[0-9]]*\)$/\1,\2,\3,0/p'`
+AS_IF([test -z "${REDESIGN_VERSION_NUMBER}"], [
+  AC_MSG_ERROR([No x.y.z VLC_REDESIGN_VERSION in modules/gui/qt/util/redesign_version.hpp])
+])
+AC_SUBST([REDESIGN_VERSION])
+AC_SUBST([REDESIGN_VERSION_NUMBER])
 AS_IF([test -z "$VLC_COMPILE_BY"],[
    VLC_COMPILE_BY=`whoami|sed -e 's/\\\/\\\\\\\/g'`
 ])

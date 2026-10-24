@@ -23,10 +23,11 @@ vlc_preparser_SOURCES = \
 
 vlc_preparser_CFLAGS = $(vlc_CFLAGS)
 
+# On Windows, the resources of vlc.exe with the preparser's name (vlc_win32_rc.rc)
 vlc_preparser_LDADD = \
 		../compat/libcompat.la \
 		$(SOCKET_LIBS) \
-		$(vlc_LDADD)
+		$(vlc_LDADD:vlc_win32_rc.$(OBJEXT)=vlc_preparser_rc.$(OBJEXT))
 
 vlc_preparser_LDFLAGS = $(vlc_LDFLAGS)
 vlc_preparser_DEPENDENCIES = \
@@ -44,6 +45,8 @@ endif
 
 if HAVE_WIN32
 vlc_preparser_LDFLAGS += -Wc,-static
+EXTRA_vlc_preparser_DEPENDENCIES = vlc_preparser_rc.$(OBJEXT)
+EXTRA_vlc_preparser_static_DEPENDENCIES = vlc_preparser_rc.$(OBJEXT)
 endif
 
 
@@ -54,6 +57,8 @@ vlc_preparser_static_CFLAGS = $(AM_CFLAGS) \
 	$(NULL)
 
 vlc_preparser_static_LDADD = $(vlc_preparser_LDADD)
+# (automake would list the linker flags of the substitution above)
+vlc_preparser_static_DEPENDENCIES = $(vlc_preparser_DEPENDENCIES)
 if HAVE_OSX
 vlc_preparser_static_LDFLAGS = $(vlc_preparser_LDFLAGS) -static
 vlc_preparser_static_LDFLAGS += -Xlinker -rpath -Xlinker "@executable_path/../lib/.libs/"

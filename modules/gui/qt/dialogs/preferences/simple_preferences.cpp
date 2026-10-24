@@ -1348,19 +1348,42 @@ void SPrefsPanel::changeStyle()
     }, Qt::QueuedConnection );
 }
 
+// The languages the whole interface is translated into (po/: every string of
+// the redesign); the installer offers the same ones (vlc-redesign.iss). The
+// others have VLC's own texts, the redesign's in English
+static const char *const complete_languages[] = {
+    "en", "en_GB", "he", "pt_BR", "de", "fr", "es", "it", "pt_PT", "ru", "uk", "pl", "nl", "tr", "ar",
+    "ja", "ko", "zh_CN", "zh_TW", "cs", "sv",
+};
+
+static bool languageComplete( const char *iso )
+{
+    for( const char *code : complete_languages )
+        if( !strcmp( code, iso ) )
+            return true;
+    return false;
+}
+
 QVariantList interfaceLanguages()
 {
     QVariantList languages;
 #ifdef _WIN32
+    // Auto, then the complete languages, then the partial ones, marked so
+    QVariantList partial;
     for( size_t i = 0; i < ARRAY_SIZE( language_map ); i++ )
     {
         // "English" as the design names VLC's own (British English follows)
         const bool english = !strcmp( language_map[i].iso, "en" );
-        languages.append( QVariantMap{ { QStringLiteral( "value" ), QString::fromLatin1( language_map[i].iso ) },
-                                       { QStringLiteral( "label" ), i == 0 ? qtr( language_map[i].name )
-                                                                    : english ? QStringLiteral( "English" )
-                                                                    : qfu( language_map[i].name ) } } );
+        const bool complete = i == 0 || languageComplete( language_map[i].iso );
+        const QString name = i == 0 ? qtr( language_map[i].name )
+                           : english ? QStringLiteral( "English" )
+                           : qfu( language_map[i].name );
+        const QVariantMap entry{ { QStringLiteral( "value" ), QString::fromLatin1( language_map[i].iso ) },
+                                 { QStringLiteral( "label" ), complete ? name
+                                                                       : qtr( "%1 (partial)" ).arg( name ) } };
+        ( complete ? languages : partial ).append( entry );
     }
+    languages.append( partial );
 #endif
     return languages;
 }

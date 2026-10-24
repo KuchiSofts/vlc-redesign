@@ -35,6 +35,31 @@
 ;   /NOUPDATECHECK   no daily update check
 ;   /NOONLINESUBS    no automatic online subtitles
 ; (also on the page of an install that shows it: both start off).
+;
+; Languages: Setup speaks English and the languages VLC Redesign is fully
+; translated into (the list under [Languages]), and the app starts in the
+; language of Setup: {app}\portable\language holds its code, which
+; bin/winvlc.c reads (no file: English, as the portable zip starts). When
+; Windows is shown in one of them (GetUILanguage), Setup first asks, in it
+; and in English side by side, whether to install in it; Yes starts Setup
+; again in it (/LANG=, as the wizard can't change its language once it
+; runs) and this one ends, No goes on in English and notes English for the
+; app. A copy that has a language already keeps it and is not asked (it
+; was answered, or chosen in the app's settings); Setup then runs in the
+; app's language if it has it. Right to left (Hebrew) the wizard is drawn
+; right to left and the Layout page offers the app's right-to-left layout,
+; off to begin with as in the app, for setup-choices.ini ([interface]) as
+; the Privacy page's answers. An update runs in the language of the
+; install it updates (UsePreviousLanguage), and so does the uninstaller.
+; A silent install never asks: the app in English (or as it was), unless
+; told otherwise:
+;   /LANG=hebrew        Setup in Hebrew, and the app too (a copy that has a
+;                       language keeps it); the names are those of
+;                       [Languages]: english, hebrew, brazilianportuguese
+;   /RIGHTTOLEFT        the app's right-to-left layout (also on the Layout
+;                       page of an install that shows it: it starts on)
+;   /TESTUILANG=0x040D  for tests: the Windows display language Setup sees,
+;                       to ask its question on any Windows
 
 #ifndef AppVersion
   #error Define AppVersion, e.g. /DAppVersion=0.2.0
@@ -76,10 +101,12 @@ DisableWelcomePage=no
 DisableDirPage=yes
 DisableProgramGroupPage=yes
 DisableReadyPage=yes
-; English, whatever the language of Windows (as VLC Redesign starts); the
-; Hebrew pages stay for /LANG=he
+; English, whatever the language of Windows (as VLC Redesign starts),
+; unless the question at the start chose another (see the top); an update
+; in the language of the install it updates
 ShowLanguageDialog=no
 LanguageDetectionMethod=none
+UsePreviousLanguage=yes
 UninstallDisplayName={#AppName}
 UninstallDisplayIcon={app}\vlc.exe
 ArchitecturesAllowed=x64compatible
@@ -108,147 +135,291 @@ WizardBackColor=#0E0E0E
 WizardImageFile=
 WizardSmallImageFile=
 
+; The languages (see the top): English first, the default, then those VLC
+; Redesign is fully translated into, and no other (a partial translation
+; would leave the app half in English). One line each:
+;   its name in Setup: /LANG=, the prefix of its [CustomMessages]
+;   Inno Setup's translation of its own texts
+;   its code in the app (portable\language, as its settings write it)
+;   the Windows display language it is offered on: the primary language in
+;     the low 10 bits, and above them the sublanguage, 0 for any
+;   right to left (1): Setup draws it so (its .isl says it too) and offers
+;     the app's right-to-left layout
+;   Inter has its letters (1); otherwise Segoe UI, as Windows draws them
+;   its name in English, for the question
+; A new one also needs every one of the [CustomMessages] in it, its
+; question (LanguageContext_<name> and the three after it) and its
+; notice.<name>.txt, and is written into [Code] by LoadLanguages.
+#define LangCount 0
+#define LangI 0
+#dim LangName[16]
+#dim LangIsl[16]
+#dim LangCode[16]
+#dim LangId[16]
+#dim LangRTL[16]
+#dim LangInter[16]
+#dim LangEnglish[16]
+#define AddLanguage(str Name, str Isl, str Code, int Id, int RTL, int Inter, str English) \
+  LangName[LangCount] = Name, LangIsl[LangCount] = Isl, LangCode[LangCount] = Code, \
+  LangId[LangCount] = Id, LangRTL[LangCount] = RTL, LangInter[LangCount] = Inter, \
+  LangEnglish[LangCount] = English, ++LangCount
+#expr AddLanguage("english", "compiler:Default.isl", "en", 0x0009, 0, 1, "English")
+#expr AddLanguage("hebrew", "compiler:Languages\Hebrew.isl", "he", 0x000D, 1, 0, "Hebrew")
+#expr AddLanguage("brazilianportuguese", "compiler:Languages\BrazilianPortuguese.isl", "pt_BR", 0x0416, 0, 1, "Portuguese")
+
 [Languages]
-Name: "en"; MessagesFile: "compiler:Default.isl"
-Name: "he"; MessagesFile: "compiler:Languages\Hebrew.isl"
+#sub EmitLanguage
+Name: "{#LangName[LangI]}"; MessagesFile: "{#LangIsl[LangI]}"
+#endsub
+#for {LangI = 0; LangI < LangCount; LangI++} EmitLanguage
 
 [CustomMessages]
-en.StepWelcome=Welcome
-he.StepWelcome=ברוכים הבאים
-en.StepOptions=Options
-he.StepOptions=אפשרויות
-en.StepPrivacy=Privacy
-he.StepPrivacy=פרטיות
-en.StepInstall=Install
-he.StepInstall=התקנה
-en.StepDone=Done
-he.StepDone=סיום
-en.Unofficial=Unofficial build
-he.Unofficial=גרסה לא רשמית
-en.DesignedBy=Interface designed by
-he.DesignedBy=הממשק עוצב בידי
-en.WelcomeTitle=Welcome to {#AppName}
-he.WelcomeTitle=ברוכים הבאים ל-{#AppName}
-en.WelcomeText=The real VLC 4 engine with the interface designed by Juxtopposed. Setup takes about a minute.
-he.WelcomeText=מנוע VLC 4 האמיתי עם הממשק שעיצבה Juxtopposed. ההתקנה נמשכת כדקה.
-en.CreditTitle=Interface designed by Juxtopposed
-he.CreditTitle=את הממשק עיצבה Juxtopposed
-en.CreditText=Every screen comes from the "VLC Redesign (Community)" Figma file, licensed under CC BY 4.0. Juxtopposed does not endorse this project.
-he.CreditText=כל מסך מגיע מקובץ ה-Figma "VLC Redesign (Community)", ברישיון CC BY 4.0. Juxtopposed אינה מעורבת בפרויקט הזה ואינה ממליצה עליו.
-en.LinkVideo=Watch the video
-he.LinkVideo=לצפייה בסרטון
-en.LinkChannel=YouTube channel
-he.LinkChannel=ערוץ היוטיוב
-en.LinkFigma=Figma file
-he.LinkFigma=קובץ ה-Figma
-en.WelcomeNotice=An unofficial build, not made or endorsed by VideoLAN. VLC and the cone logo are trademarks of VideoLAN. It installs next to an official VLC without touching it.
-he.WelcomeNotice=גרסה לא רשמית, שאינה של VideoLAN ואינה מאושרת על ידה. VLC ולוגו הקונוס הם סימנים מסחריים של VideoLAN. היא מותקנת לצד VLC רשמי בלי לגעת בו.
-en.LinkNotice=Notice and licenses
-he.LinkNotice=הודעה ורישיונות
-en.LinkSource=Source code
-he.LinkSource=קוד מקור
-en.VersionLine=Version %1 · free software under the GNU GPL v2 or later
-he.VersionLine=גרסה %1 · תוכנה חופשית ברישיון GNU GPL גרסה 2 ומעלה
-en.OptionsTitle=Options
-he.OptionsTitle=אפשרויות
-en.OptionsText=Where it goes, and what it opens.
-he.OptionsText=לאן להתקין, ומה לפתוח איתה.
-en.InstallTo=Install to
-he.InstallTo=התקנה אל
-en.Browse=Browse
-he.Browse=עיון
-en.ForYou=For you only, without administrator rights.
-he.ForYou=עבורך בלבד, בלי הרשאות מנהל.
-en.ForEveryone=Install for everyone
-he.ForEveryone=התקנה לכל המשתמשים
-en.ForAll=For everyone on this PC.
-he.ForAll=לכל המשתמשים במחשב.
-en.UpdatingHere=Updates the copy in this folder.
-he.UpdatingHere=מעדכן את העותק שבתיקייה הזו.
-en.OpenVideo=Open videos with {#AppName}
-he.OpenVideo=פתיחת סרטונים ב-{#AppName}
-en.OpenAudio=Open music with {#AppName}
-he.OpenAudio=פתיחת מוזיקה ב-{#AppName}
-en.OpenPlaylists=Open playlists with {#AppName}
-he.OpenPlaylists=פתיחת רשימות השמעה ב-{#AppName}
-en.ContextMenu=Play with {#AppName} in right-click menus
-he.ContextMenu="הפעלה ב-{#AppName}" בתפריט הקליק הימני
-en.DesktopIcon=Desktop shortcut
-he.DesktopIcon=קיצור דרך בשולחן העבודה
-en.PrivacyTitle=Privacy
-he.PrivacyTitle=פרטיות
-en.PrivacyText=Two features go online by themselves. Each sends only this:
-he.PrivacyText=שתי תכונות מתחברות לאינטרנט מעצמן. כל אחת שולחת רק את זה:
-en.PrivacyUpdates=Check for updates once a day
-he.PrivacyUpdates=בדיקת עדכונים פעם ביום
-en.PrivacyUpdatesText=A request for the latest release, to GitHub (api.github.com).
-he.PrivacyUpdatesText=בקשה לגרסה האחרונה, אל GitHub (api.github.com).
-en.PrivacySubtitles=Find subtitles online automatically
-he.PrivacySubtitles=חיפוש כתוביות ברשת באופן אוטומטי
-en.PrivacySubtitlesText=The film's name and a fingerprint of the file, to subtitle services (OpenSubtitles.org, Wizdom, Gestdown, YIFY); its name to IMDb, Wikidata and Cinemeta.
-he.PrivacySubtitlesText=שם הסרט וטביעת אצבע של הקובץ, לשירותי הכתוביות OpenSubtitles.org, Wizdom, Gestdown ו-YIFY. השם גם ל-IMDb, ל-Wikidata ול-Cinemeta.
-en.PrivacyCardTitle=No telemetry, no ads, no account
-he.PrivacyCardTitle=בלי טלמטריה, בלי פרסומות, בלי חשבון
-en.PrivacyCardText=Nothing else goes online unless you ask for it. Change both later in Settings.
-he.PrivacyCardText=שום דבר אחר לא יוצא לאינטרנט בלי שביקשת. אפשר לשנות את שתיהן אחר כך בהגדרות.
-en.LinkPrivacy=Privacy and code signing policy
-he.LinkPrivacy=מדיניות הפרטיות וחתימת הקוד
-en.InstallingTitle=Installing
-he.InstallingTitle=מתקין
-en.InstallingText=This takes about a minute.
-he.InstallingText=זה לוקח כדקה.
-en.TipTitle=Make the player yours
-he.TipTitle=התאימו את הנגן לעצמכם
-en.TipText=Drag buttons into and out of the control bar with ⋯ → Customize Player, and keep your layouts as profiles.
-he.TipText=גררו כפתורים אל סרגל השליטה וממנו דרך ⋯ ← Customize Player, ושמרו את הפריסות שלכם כפרופילים.
-en.DoneTitle={#AppName} is ready
-he.DoneTitle={#AppName} מוכן
-en.DoneText=Find it in the Start menu.
-he.DoneText=אפשר למצוא אותו בתפריט התחל.
-en.DefaultTitle=Make it your default player
-he.DefaultTitle=הגדרה כנגן ברירת המחדל
-en.DefaultText=Windows keeps the apps you chose before. Open Default apps and choose {#AppName} for your media.
-he.DefaultText=Windows שומרת את האפליקציות שבחרת בעבר. פתחו את "אפליקציות ברירת מחדל" ובחרו ב-{#AppName} עבור קובצי המדיה.
-en.OpenDefaultApps=Open Default apps
-he.OpenDefaultApps=לאפליקציות ברירת מחדל
-en.LaunchNow=Open {#AppName} now
-he.LaunchNow=פתיחת {#AppName} עכשיו
-en.DoneCredit=Enjoy the design by Juxtopposed.
-he.DoneCredit=תיהנו מהעיצוב של Juxtopposed.
-en.LinkSubscribe=Subscribe on YouTube
-he.LinkSubscribe=הרשמה לערוץ ביוטיוב
-en.NoticeTitle=Notice and licenses
-he.NoticeTitle=הודעה ורישיונות
-en.Close=Close
-he.Close=סגירה
-en.BadDir=Choose a folder to install to.
-he.BadDir=בחרו תיקייה להתקנה.
-en.TypeVideo=%1 video
-he.TypeVideo=וידאו %1
-en.TypeAudio=%1 audio
-he.TypeAudio=שמע %1
-en.TypePlaylist=%1 playlist
-he.TypePlaylist=רשימת השמעה %1
-en.VerbPlay=Play
-he.VerbPlay=הפעלה
-en.VerbEnqueue=Add to queue
-he.VerbEnqueue=הוספה לתור
-en.ContextPlay=Play with {#AppName}
-he.ContextPlay=הפעלה ב-{#AppName}
-en.ContextEnqueue=Add to {#AppName} queue
-he.ContextEnqueue=הוספה לתור של {#AppName}
-en.Running={#AppName} is open. Setup will close it now and open it again when it's done.
-he.Running={#AppName} פתוח. ההתקנה תסגור אותו עכשיו ותפתח אותו מחדש בסיום.
-en.StillRunning={#AppName} didn't close. Close it and click Retry.
-he.StillRunning={#AppName} לא נסגר. סגור אותו ולחץ על "נסה שוב".
-en.ShortcutComment=VLC media player with the interface designed by Juxtopposed
-he.ShortcutComment=נגן VLC עם הממשק שעיצבה Juxtopposed
+; Every message in every language of [Languages], in the same order
+english.StepWelcome=Welcome
+hebrew.StepWelcome=ברוכים הבאים
+brazilianportuguese.StepWelcome=Boas-vindas
+english.StepOptions=Options
+hebrew.StepOptions=אפשרויות
+brazilianportuguese.StepOptions=Opções
+english.StepPrivacy=Privacy
+hebrew.StepPrivacy=פרטיות
+brazilianportuguese.StepPrivacy=Privacidade
+english.StepInstall=Install
+hebrew.StepInstall=התקנה
+brazilianportuguese.StepInstall=Instalação
+english.StepDone=Done
+hebrew.StepDone=סיום
+brazilianportuguese.StepDone=Concluído
+english.Unofficial=Unofficial build
+hebrew.Unofficial=גרסה לא רשמית
+brazilianportuguese.Unofficial=Não oficial
+english.DesignedBy=Interface designed by
+hebrew.DesignedBy=הממשק עוצב בידי
+brazilianportuguese.DesignedBy=Interface criada por
+english.WelcomeTitle=Welcome to {#AppName}
+hebrew.WelcomeTitle=ברוכים הבאים ל-{#AppName}
+brazilianportuguese.WelcomeTitle=Boas-vindas ao {#AppName}
+english.WelcomeText=The real VLC 4 engine with the interface designed by Juxtopposed. Setup takes about a minute.
+hebrew.WelcomeText=מנוע VLC 4 האמיתי עם הממשק שעיצבה Juxtopposed. ההתקנה נמשכת כדקה.
+brazilianportuguese.WelcomeText=O verdadeiro motor do VLC 4, com a interface criada por Juxtopposed. A instalação leva cerca de um minuto.
+english.CreditTitle=Interface designed by Juxtopposed
+hebrew.CreditTitle=את הממשק עיצבה Juxtopposed
+brazilianportuguese.CreditTitle=Interface criada por Juxtopposed
+english.CreditText=Every screen comes from the "VLC Redesign (Community)" Figma file, licensed under CC BY 4.0. Juxtopposed does not endorse this project.
+hebrew.CreditText=כל מסך מגיע מקובץ ה-Figma "VLC Redesign (Community)", ברישיון CC BY 4.0. Juxtopposed אינה מעורבת בפרויקט הזה ואינה ממליצה עליו.
+brazilianportuguese.CreditText=Cada tela vem do arquivo do Figma "VLC Redesign (Community)", sob a licença CC BY 4.0. Juxtopposed não endossa este projeto.
+english.LinkVideo=Watch the video
+hebrew.LinkVideo=לצפייה בסרטון
+brazilianportuguese.LinkVideo=Assistir ao vídeo
+english.LinkChannel=YouTube channel
+hebrew.LinkChannel=ערוץ היוטיוב
+brazilianportuguese.LinkChannel=Canal no YouTube
+english.LinkFigma=Figma file
+hebrew.LinkFigma=קובץ ה-Figma
+brazilianportuguese.LinkFigma=Arquivo do Figma
+english.WelcomeNotice=An unofficial build, not made or endorsed by VideoLAN. VLC and the cone logo are trademarks of VideoLAN. It installs next to an official VLC without touching it.
+hebrew.WelcomeNotice=גרסה לא רשמית, שאינה של VideoLAN ואינה מאושרת על ידה. VLC ולוגו הקונוס הם סימנים מסחריים של VideoLAN. היא מותקנת לצד VLC רשמי בלי לגעת בו.
+brazilianportuguese.WelcomeNotice=Uma versão não oficial, que não é feita nem endossada pela VideoLAN. VLC e o logotipo do cone são marcas da VideoLAN. Ela é instalada ao lado de um VLC oficial, sem mexer nele.
+english.LinkNotice=Notice and licenses
+hebrew.LinkNotice=הודעה ורישיונות
+brazilianportuguese.LinkNotice=Aviso e licenças
+english.LinkSource=Source code
+hebrew.LinkSource=קוד מקור
+brazilianportuguese.LinkSource=Código-fonte
+english.VersionLine=Version %1 · free software under the GNU GPL v2 or later
+hebrew.VersionLine=גרסה %1 · תוכנה חופשית ברישיון GNU GPL גרסה 2 ומעלה
+brazilianportuguese.VersionLine=Versão %1 · software livre sob a GNU GPL v2 ou posterior
+english.OptionsTitle=Options
+hebrew.OptionsTitle=אפשרויות
+brazilianportuguese.OptionsTitle=Opções
+english.OptionsText=Where it goes, and what it opens.
+hebrew.OptionsText=לאן להתקין, ומה לפתוח איתה.
+brazilianportuguese.OptionsText=Onde instalar e o que abrir com ele.
+english.InstallTo=Install to
+hebrew.InstallTo=התקנה אל
+brazilianportuguese.InstallTo=Instalar em
+english.Browse=Browse
+hebrew.Browse=עיון
+brazilianportuguese.Browse=Procurar
+english.ForYou=For you only, without administrator rights.
+hebrew.ForYou=עבורך בלבד, בלי הרשאות מנהל.
+brazilianportuguese.ForYou=Só para você, sem direitos de administrador.
+english.ForEveryone=Install for everyone
+hebrew.ForEveryone=התקנה לכל המשתמשים
+brazilianportuguese.ForEveryone=Instalar para todos
+english.ForAll=For everyone on this PC.
+hebrew.ForAll=לכל המשתמשים במחשב.
+brazilianportuguese.ForAll=Para todos neste computador.
+english.UpdatingHere=Updates the copy in this folder.
+hebrew.UpdatingHere=מעדכן את העותק שבתיקייה הזו.
+brazilianportuguese.UpdatingHere=Atualiza a cópia que está nesta pasta.
+english.OpenVideo=Open videos with {#AppName}
+hebrew.OpenVideo=פתיחת סרטונים ב-{#AppName}
+brazilianportuguese.OpenVideo=Abrir vídeos com o {#AppName}
+english.OpenAudio=Open music with {#AppName}
+hebrew.OpenAudio=פתיחת מוזיקה ב-{#AppName}
+brazilianportuguese.OpenAudio=Abrir músicas com o {#AppName}
+english.OpenPlaylists=Open playlists with {#AppName}
+hebrew.OpenPlaylists=פתיחת רשימות השמעה ב-{#AppName}
+brazilianportuguese.OpenPlaylists=Abrir playlists com o {#AppName}
+english.ContextMenu=Play with {#AppName} in right-click menus
+hebrew.ContextMenu="הפעלה ב-{#AppName}" בתפריט הקליק הימני
+brazilianportuguese.ContextMenu={#AppName} no menu do clique direito
+english.DesktopIcon=Desktop shortcut
+hebrew.DesktopIcon=קיצור דרך בשולחן העבודה
+brazilianportuguese.DesktopIcon=Atalho na área de trabalho
+english.LayoutTitle=Layout
+hebrew.LayoutTitle=פריסה
+brazilianportuguese.LayoutTitle=Layout
+english.LayoutText=Left to right as designed, or mirrored.
+hebrew.LayoutText=משמאל לימין כמו בעיצוב, או בתמונת ראי.
+brazilianportuguese.LayoutText=Da esquerda para a direita, como no design, ou espelhado.
+english.LayoutRTL=Right-to-left layout
+hebrew.LayoutRTL=פריסה מימין לשמאל
+brazilianportuguese.LayoutRTL=Layout da direita para a esquerda
+english.LayoutRTLText=The sidebar on the right and the controls in reverse order, for reading from right to left. Off: the design's layout, from left to right.
+hebrew.LayoutRTLText=סרגל הצד מימין והפקדים בסדר הפוך, לקריאה מימין לשמאל. כבוי: הפריסה של העיצוב, משמאל לימין.
+brazilianportuguese.LayoutRTLText=A barra lateral à direita e os controles em ordem inversa, para ler da direita para a esquerda. Desligado: o layout do design, da esquerda para a direita.
+english.LayoutCardTitle=Change it any time
+hebrew.LayoutCardTitle=אפשר לשנות בכל עת
+brazilianportuguese.LayoutCardTitle=Dá para mudar quando quiser
+english.LayoutCardText=Settings → Appearance: Layout direction. The language of the app is there too, in Interface language.
+hebrew.LayoutCardText=בהגדרות ← מראה: כיוון הפריסה. גם שפת האפליקציה נמצאת שם, בשפת הממשק.
+brazilianportuguese.LayoutCardText=Configurações → Aparência: direção do layout. O idioma do app também fica lá, em idioma da interface.
+english.PrivacyTitle=Privacy
+hebrew.PrivacyTitle=פרטיות
+brazilianportuguese.PrivacyTitle=Privacidade
+english.PrivacyText=Two features go online by themselves. Each sends only this:
+hebrew.PrivacyText=שתי תכונות מתחברות לאינטרנט מעצמן. כל אחת שולחת רק את זה:
+brazilianportuguese.PrivacyText=Dois recursos acessam a internet por conta própria. Cada um envia só isto:
+english.PrivacyUpdates=Check for updates once a day
+hebrew.PrivacyUpdates=בדיקת עדכונים פעם ביום
+brazilianportuguese.PrivacyUpdates=Verificar atualizações uma vez por dia
+english.PrivacyUpdatesText=A request for the latest release, to GitHub (api.github.com).
+hebrew.PrivacyUpdatesText=בקשה לגרסה האחרונה, אל GitHub (api.github.com).
+brazilianportuguese.PrivacyUpdatesText=Um pedido da versão mais recente, ao GitHub (api.github.com).
+english.PrivacySubtitles=Find subtitles online automatically
+hebrew.PrivacySubtitles=חיפוש כתוביות ברשת באופן אוטומטי
+brazilianportuguese.PrivacySubtitles=Buscar legendas on-line automaticamente
+english.PrivacySubtitlesText=The film's name and a fingerprint of the file, to subtitle services (OpenSubtitles.org, Wizdom, Gestdown, YIFY); its name to IMDb, Wikidata and Cinemeta.
+hebrew.PrivacySubtitlesText=שם הסרט וטביעת אצבע של הקובץ, לשירותי הכתוביות OpenSubtitles.org, Wizdom, Gestdown ו-YIFY. השם גם ל-IMDb, ל-Wikidata ול-Cinemeta.
+brazilianportuguese.PrivacySubtitlesText=O nome do filme e uma impressão digital do arquivo, para serviços de legendas (OpenSubtitles.org, Wizdom, Gestdown, YIFY); o nome também para IMDb, Wikidata e Cinemeta.
+english.PrivacyCardTitle=No telemetry, no ads, no account
+hebrew.PrivacyCardTitle=בלי טלמטריה, בלי פרסומות, בלי חשבון
+brazilianportuguese.PrivacyCardTitle=Sem telemetria, sem anúncios, sem conta
+english.PrivacyCardText=Nothing else goes online unless you ask for it. Change both later in Settings.
+hebrew.PrivacyCardText=שום דבר אחר לא יוצא לאינטרנט בלי שתבקשו. אפשר לשנות את שתיהן אחר כך בהגדרות.
+brazilianportuguese.PrivacyCardText=Nada mais acessa a internet sem você pedir. Altere os dois depois nas Configurações.
+english.LinkPrivacy=Privacy and code signing policy
+hebrew.LinkPrivacy=מדיניות הפרטיות וחתימת הקוד
+brazilianportuguese.LinkPrivacy=Política de privacidade e de assinatura de código
+english.InstallingTitle=Installing
+hebrew.InstallingTitle=מתקין
+brazilianportuguese.InstallingTitle=Instalando
+english.InstallingText=This takes about a minute.
+hebrew.InstallingText=זה לוקח כדקה.
+brazilianportuguese.InstallingText=Isso leva cerca de um minuto.
+english.TipTitle=Make the player yours
+hebrew.TipTitle=התאימו את הנגן לעצמכם
+brazilianportuguese.TipTitle=Deixe o player do seu jeito
+english.TipText=Drag buttons into and out of the control bar with ⋯ → Customize Player, and keep your layouts as profiles.
+hebrew.TipText=גררו כפתורים אל סרגל השליטה וממנו דרך ⋯ ← התאמת הנגן, ושמרו את הפריסות שלכם כפרופילים.
+brazilianportuguese.TipText=Arraste botões para dentro e para fora da barra de controle em ⋯ → Personalizar o player, e guarde seus layouts como perfis.
+english.DoneTitle={#AppName} is ready
+hebrew.DoneTitle={#AppName} מוכן
+brazilianportuguese.DoneTitle=O {#AppName} está pronto
+english.DoneText=Find it in the Start menu.
+hebrew.DoneText=אפשר למצוא אותו בתפריט התחל.
+brazilianportuguese.DoneText=Ele está no menu Iniciar.
+english.DefaultTitle=Make it your default player
+hebrew.DefaultTitle=הגדרה כנגן ברירת המחדל
+brazilianportuguese.DefaultTitle=Torne-o seu player padrão
+english.DefaultText=Windows keeps the apps you chose before. Open Default apps and choose {#AppName} for your media.
+hebrew.DefaultText=Windows שומרת את האפליקציות שבחרתם בעבר. פתחו את "אפליקציות ברירת מחדל" ובחרו ב-{#AppName} עבור קובצי המדיה.
+brazilianportuguese.DefaultText=O Windows mantém suas escolhas. Abra Aplicativos padrão e escolha o {#AppName} para suas mídias.
+english.OpenDefaultApps=Open Default apps
+hebrew.OpenDefaultApps=לאפליקציות ברירת מחדל
+brazilianportuguese.OpenDefaultApps=Aplicativos padrão
+english.LaunchNow=Open {#AppName} now
+hebrew.LaunchNow=פתיחת {#AppName} עכשיו
+brazilianportuguese.LaunchNow=Abrir o {#AppName} agora
+english.DoneCredit=Enjoy the design by Juxtopposed.
+hebrew.DoneCredit=תיהנו מהעיצוב של Juxtopposed.
+brazilianportuguese.DoneCredit=Aproveite o design de Juxtopposed.
+english.LinkSubscribe=Subscribe on YouTube
+hebrew.LinkSubscribe=הרשמה לערוץ ביוטיוב
+brazilianportuguese.LinkSubscribe=Inscreva-se no YouTube
+english.NoticeTitle=Notice and licenses
+hebrew.NoticeTitle=הודעה ורישיונות
+brazilianportuguese.NoticeTitle=Aviso e licenças
+english.Close=Close
+hebrew.Close=סגירה
+brazilianportuguese.Close=Fechar
+english.BadDir=Choose a folder to install to.
+hebrew.BadDir=בחרו תיקייה להתקנה.
+brazilianportuguese.BadDir=Escolha uma pasta para a instalação.
+; The words on the toggles, as the app writes them (SettingsToggle.qml)
+english.ToggleOn=ON
+hebrew.ToggleOn=פעיל
+brazilianportuguese.ToggleOn=LIG
+english.ToggleOff=OFF
+hebrew.ToggleOff=כבוי
+brazilianportuguese.ToggleOff=DESL
+; Shown by Windows: the file types, their verbs, the right-click menus
+english.TypeVideo=%1 video
+hebrew.TypeVideo=וידאו %1
+brazilianportuguese.TypeVideo=Vídeo %1
+english.TypeAudio=%1 audio
+hebrew.TypeAudio=שמע %1
+brazilianportuguese.TypeAudio=Áudio %1
+english.TypePlaylist=%1 playlist
+hebrew.TypePlaylist=רשימת השמעה %1
+brazilianportuguese.TypePlaylist=Playlist %1
+english.VerbPlay=Play
+hebrew.VerbPlay=הפעלה
+brazilianportuguese.VerbPlay=Reproduzir
+english.VerbEnqueue=Add to queue
+hebrew.VerbEnqueue=הוספה לתור
+brazilianportuguese.VerbEnqueue=Adicionar à fila
+english.ContextPlay=Play with {#AppName}
+hebrew.ContextPlay=הפעלה ב-{#AppName}
+brazilianportuguese.ContextPlay=Reproduzir com o {#AppName}
+english.ContextEnqueue=Add to {#AppName} queue
+hebrew.ContextEnqueue=הוספה לתור של {#AppName}
+brazilianportuguese.ContextEnqueue=Adicionar à fila do {#AppName}
+english.Running={#AppName} is open. Setup will close it now and open it again when it's done.
+hebrew.Running={#AppName} פתוח. ההתקנה תסגור אותו עכשיו ותפתח אותו מחדש בסיום.
+brazilianportuguese.Running=O {#AppName} está aberto. O instalador vai fechá-lo agora e abri-lo de novo quando terminar.
+english.StillRunning={#AppName} didn't close. Close it and click Retry.
+hebrew.StillRunning={#AppName} לא נסגר. סגרו אותו ולחצו על "נסה שוב".
+brazilianportuguese.StillRunning=O {#AppName} não fechou. Feche-o e clique em "Tentar novamente".
+english.ShortcutComment=VLC media player with the interface designed by Juxtopposed
+hebrew.ShortcutComment=נגן המדיה VLC עם הממשק שעיצבה Juxtopposed
+brazilianportuguese.ShortcutComment=Reprodutor de Mídias VLC com a interface criada por Juxtopposed
+; The question at the start (see the top), asked before the wizard in
+; English and in the language of Windows, whatever the language Setup runs
+; in: so in every language, without a prefix. One line of each, for the
+; question's two columns (not wrapped: a right-to-left one is drawn right
+; to left line by line).
+LanguageContext=Windows is in %1.
+LanguageQuestion=Install {#AppName} in %1?
+LanguageYes=Yes
+LanguageNo=No
+LanguageContext_hebrew=ה-Windows שלך בעברית.
+LanguageQuestion_hebrew=להתקין את {#AppName} בעברית?
+LanguageYes_hebrew=כן
+LanguageNo_hebrew=לא
+LanguageContext_brazilianportuguese=Seu Windows está em português.
+LanguageQuestion_brazilianportuguese=Instalar o {#AppName} em português?
+LanguageYes_brazilianportuguese=Sim
+LanguageNo_brazilianportuguese=Não
 
 [Files]
 ; The wizard's pieces and fonts: read by the [Code], never installed
 Source: "art\ui\*.png"; Flags: dontcopy noencryption
 Source: "art\fonts\*.ttf"; Flags: dontcopy noencryption
-Source: "notice.txt"; Flags: dontcopy noencryption
+; (notice.txt in English, notice.<language>.txt in the others)
+Source: "notice*.txt"; Flags: dontcopy noencryption
 ; portable\ holds the user's settings and library: never shipped, never replaced
 Source: "{#SourceDir}\*"; DestDir: "{app}"; Excludes: "\portable\*,*.old-*"; Flags: recursesubdirs createallsubdirs ignoreversion
 
@@ -299,7 +470,6 @@ const
   BODY_T = 100;
   BODY_H = 270;
   BUTTONS_T = 380;
-  TOGGLE_L = 512;
 
   { VLCStyle.redesign, as TColor ($BBGGRR) }
   CLR_BACK = $0E0E0E;
@@ -335,9 +505,18 @@ const
   T_LAUNCH = 5;
   T_UPDATES = 6;
   T_SUBTITLES = 7;
+  T_RTL = 8;
 
-  { The Privacy page's answers, for the app's next start (see the top) }
+  { The answers of the Privacy and Layout pages, for the app's next start
+    (see the top) }
   CHOICES_FILE = 'setup-choices.ini';
+  { The language of the app, read by bin/winvlc.c (see the top) }
+  LANGUAGE_FILE = 'language';
+  UNINSTALL_KEY = 'Software\Microsoft\Windows\CurrentVersion\Uninstall\{{#AppIdGuid}}_is1';
+  { A right-to-left run inside a left-to-right line: the question is asked
+    in English, before the language of Setup is set }
+  RTL_EMBED = #$202B;
+  RTL_POP = #$202C;
 
   FR_PRIVATE = $10;
 
@@ -373,23 +552,40 @@ type
     Off: Boolean;
   end;
 
-  { An ON / OFF toggle of the settings (SettingsToggle.qml) and its label }
+  { An ON / OFF toggle of the settings (SettingsToggle.qml), its label, and
+    the word on it in the language of Setup }
   TDesignToggle = record
     Box: TBitmapButton;
     Text: TLabel;
+    Word: TLabel;
     Checked: Boolean;
+  end;
+
+  { A language of Setup (see [Languages]) }
+  TLanguage = record
+    Name, Code, English: String;
+    Id: Integer;
+    RTL, Inter: Boolean;
   end;
 
 var
   Scale: Integer;
   FontsLoaded: Boolean;
   IsRTL: Boolean;
+  Languages: array of TLanguage;
+  { The language of Setup in Languages, and the one the app gets: its code
+    for portable\language, '' to leave that as it is (see the top) }
+  Lang: Integer;
+  AppLanguage: String;
+  { The width of the toggles' label, 33 in the design (see make-art.py) }
+  ToggleLabel: Integer;
   TimerId: Longword;
   WasRunning: Boolean;
   RunningArgs: String;
   Relaunching: Boolean;
 
   OptionsPage: TWizardPage;
+  LayoutPage: TWizardPage;
   PrivacyPage: TWizardPage;
   Buttons: array of TDesignButton;
   Toggles: array of TDesignToggle;
@@ -398,6 +594,7 @@ var
   { The profile the Privacy page shows, and its choices then }
   ChoicesReadFor: String;
   ProfileFresh, InitialUpdates, InitialSubtitles, PrivacyShown: Boolean;
+  LayoutShown: Boolean;
 
   SideMark, Pill: TBitmapImage;
   SideTitle, SideSub, SideBy, SideName: TLabel;
@@ -424,6 +621,8 @@ function GetCursorPos(var Point: TWinPoint): Boolean;
   external 'GetCursorPos@user32.dll stdcall';
 function GetWindowRect(Wnd: HWND; var Rect: TWinRect): Boolean;
   external 'GetWindowRect@user32.dll stdcall';
+function ShellExecute(Wnd: HWND; Operation, FileName, Parameters, Directory: String; ShowCmd: Integer): Integer;
+  external 'ShellExecuteW@shell32.dll stdcall';
 
 { ---- Closing and reopening a running copy --------------------------------- }
 
@@ -651,10 +850,11 @@ end;
 
 { ---- Text ---------------------------------------------------------------- }
 
-function Face(Bold: Boolean): String;
+{ Inter, or Segoe UI for a language whose letters it doesn't have (Hebrew:
+  see [Languages]), as Windows draws them }
+function FaceOf(Inter, Bold: Boolean): String;
 begin
-  { Inter has no Hebrew: Segoe UI then, as Windows draws Hebrew }
-  if FontsLoaded and (ActiveLanguage <> 'he') then
+  if FontsLoaded and Inter then
   begin
     if Bold then
       Result := 'Inter Setup SemiBold'
@@ -665,6 +865,11 @@ begin
     Result := 'Segoe UI Semibold'
   else
     Result := 'Segoe UI';
+end;
+
+function Face(Bold: Boolean): String;
+begin
+  Result := FaceOf(Languages[Lang].Inter, Bold);
 end;
 
 procedure StyleText(L: TLabel; Px: Integer; Bold: Boolean; Color, Back: TColor);
@@ -942,28 +1147,111 @@ end;
 
 { ---- Toggles ------------------------------------------------------------- }
 
+{ The label of the toggles holds ON and OFF in the language of Setup: 33
+  wide in the design, wider for longer words, as the app does
+  (SettingsToggle.qml), in the widths of the art (make-art.py) }
+procedure MeasureToggleWords();
+var
+  L: TLabel;
+  W: Integer;
+  F: Extended;
+begin
+  L := TLabel.Create(WizardForm);
+  L.Parent := WizardForm;
+  L.Visible := False;
+  StyleText(L, 12, False, CLR_FAINT, CLR_BACK);
+  L.Caption := CustomMessage('ToggleOn');
+  W := L.Width;
+  L.Caption := CustomMessage('ToggleOff');
+  if L.Width > W then
+    W := L.Width;
+  L.Free;
+  { (in the units of the 100 % window) }
+  F := W;
+  W := Round(F * BASE_W / WizardForm.ClientWidth);
+  if W + 8 <= 33 then
+    ToggleLabel := 33
+  else if W + 8 <= 39 then
+    ToggleLabel := 39
+  else
+    ToggleLabel := 45;
+end;
+
+function ToggleWidth(): Integer;
+begin
+  Result := ToggleLabel + 35;
+end;
+
+{ (at the right of the content) }
+function ToggleLeft(): Integer;
+begin
+  Result := CONTENT_L + CONTENT_W - ToggleWidth();
+end;
+
 function ToggleOf(Sender: TObject): Integer;
 var
   I: Integer;
 begin
   Result := -1;
   for I := 0 to GetArrayLength(Toggles) - 1 do
-    if (Sender = Toggles[I].Box) or (Sender = Toggles[I].Text) then
+    if (Sender = Toggles[I].Box) or (Sender = Toggles[I].Text) or (Sender = Toggles[I].Word) then
       Result := I;
 end;
 
+{ The picture of the state (mirrored right to left), and its word where
+  the design puts it: ON at 7 in its label, OFF at 4, a longer word in the
+  middle }
 procedure PaintToggle(I: Integer);
+var
+  Art, Caption: String;
+  LabelX, TextX, X: Integer;
+  W: TLabel;
 begin
+  W := Toggles[I].Word;
   if Toggles[I].Checked then
   begin
-    SetBoxImage(Toggles[I].Box, 'toggle-on');
-    Toggles[I].Box.Caption := Toggles[I].Text.Caption + ': ON';
+    Art := 'toggle-on-';
+    Caption := CustomMessage('ToggleOn');
+    LabelX := 3;
+    TextX := 7;
+    W.Font.Color := CLR_ACCENT;
+    W.Color := CLR_ACCENT_BACK;
   end
   else
   begin
-    SetBoxImage(Toggles[I].Box, 'toggle-off');
-    Toggles[I].Box.Caption := Toggles[I].Text.Caption + ': OFF';
+    Art := 'toggle-off-';
+    Caption := CustomMessage('ToggleOff');
+    LabelX := 32;
+    TextX := 4;
+    W.Font.Color := CLR_FAINT;
+    W.Color := CLR_CARD;
   end;
+  Art := Art + IntToStr(ToggleLabel);
+  if IsRTL then
+    Art := Art + '-rtl';
+  SetBoxImage(Toggles[I].Box, Art);
+  W.Caption := Caption;
+  if SX(TextX) + W.Width <= SX(ToggleLabel - 3) then
+    X := SX(LabelX + TextX)
+  else
+    X := SX(LabelX) + (SX(ToggleLabel) - W.Width) div 2;
+  { right to left, mirrored once Setup has mirrored the window (it mirrors
+    what is there then) }
+  if IsRTL and WizardForm.ControlsFlipped then
+    X := Toggles[I].Box.ClientWidth - X - W.Width;
+  W.Left := X;
+  W.Top := (Toggles[I].Box.ClientHeight - W.Height) div 2;
+  Toggles[I].Box.Caption := Toggles[I].Text.Caption + ': ' + Caption;
+end;
+
+{ Right to left, when a page shows: Setup has mirrored the window by then }
+procedure RepaintToggles();
+var
+  I: Integer;
+begin
+  for I := 0 to GetArrayLength(Toggles) - 1 do
+    if Toggles[I].Box <> nil then
+      PaintToggle(I);
 end;
 
 procedure ToggleClick(Sender: TObject);
@@ -992,7 +1280,12 @@ begin
   Toggles[Index].Box.Stretch := True;
   Toggles[Index].Box.Cursor := crHand;
   Toggles[Index].Box.OnClick := @ToggleClick;
-  Place(Toggles[Index].Box, Body, TOGGLE_L, T + 2, 68, 32);
+  Place(Toggles[Index].Box, Body, ToggleLeft(), T + 2, ToggleWidth(), 32);
+  Toggles[Index].Word := TLabel.Create(WizardForm);
+  Toggles[Index].Word.Parent := Toggles[Index].Box;
+  StyleText(Toggles[Index].Word, 12, False, CLR_FAINT, CLR_CARD);
+  Toggles[Index].Word.Cursor := crHand;
+  Toggles[Index].Word.OnClick := @ToggleClick;
   PaintToggle(Index);
 end;
 
@@ -1093,16 +1386,36 @@ begin
       BoolText(InitialUpdates) + ', online subtitles ' + BoolText(InitialSubtitles));
 end;
 
+{ The layout was chosen: in the app's settings, or on the Layout page for
+  the app's next start }
+function LayoutChosen(): Boolean;
+begin
+  Result := (InterfaceValue('redesign', 'right-to-left') <> '') or
+            (GetIniString('interface', 'right-to-left', '', ProfileFile(CHOICES_FILE)) <> '');
+end;
+
 { After the files are in place: the answers, for the app's next start (see
   the top). Those of the page where it was shown: all of them for a new
   profile, what was changed for one with settings. Otherwise (a silent
   install, or the page skipped as asked before) what the command line says;
-  a new profile is noted as asked, with the defaults. }
+  a new profile is noted as asked, with the defaults. The layout: the
+  answer of its page where it was shown (never asked before), otherwise
+  /RIGHTTOLEFT. }
 procedure SaveChoices();
 var
-  Updates, Subtitles, WriteUpdates, WriteSubtitles: Boolean;
+  Updates, Subtitles, RightToLeft, WriteUpdates, WriteSubtitles, WriteLayout: Boolean;
   FileName: String;
 begin
+  if LayoutShown and not WizardSilent then
+  begin
+    RightToLeft := Checked(T_RTL);
+    WriteLayout := True;
+  end
+  else
+  begin
+    RightToLeft := HasSwitch('RIGHTTOLEFT');
+    WriteLayout := RightToLeft;
+  end;
   if PrivacyShown and not WizardSilent then
   begin
     Updates := Checked(T_UPDATES);
@@ -1116,7 +1429,8 @@ begin
     Subtitles := not HasSwitch('NOONLINESUBS');
     WriteUpdates := not Updates;
     WriteSubtitles := not Subtitles;
-    if (not WriteUpdates) and (not WriteSubtitles) and (ChoicesMade() or ProfileHasSettings()) then
+    if (not WriteUpdates) and (not WriteSubtitles) and (not WriteLayout) and
+       (ChoicesMade() or ProfileHasSettings()) then
     begin
       Log('Privacy: nothing to change, the profile keeps its choices');
       Exit;
@@ -1124,20 +1438,346 @@ begin
   end;
   FileName := ProfileFile(CHOICES_FILE);
   if not FileExists(FileName) then
-    SaveStringToFile(FileName, '; The answers of the Privacy page of {#AppName} Setup. {#AppName} puts them' + #13#10 +
-                     '; into its settings at its next start, then deletes this file.' + #13#10 +
+    SaveStringToFile(FileName, '; The answers of {#AppName} Setup (its Privacy and Layout pages). {#AppName}' + #13#10 +
+                     '; puts them into its settings at its next start, then deletes this file.' + #13#10 +
                      '[privacy]' + #13#10, False);
   if WriteUpdates then
     SetIniString('privacy', 'update-check', BoolText(Updates), FileName);
   if WriteSubtitles then
     SetIniString('privacy', 'subtitle-search', BoolText(Subtitles), FileName);
+  if WriteLayout then
+    SetIniString('interface', 'right-to-left', BoolText(RightToLeft), FileName);
   Log('Privacy: ' + FileName + ' written: update check ' + BoolText(Updates) + ' (' + BoolText(WriteUpdates) +
-      '), online subtitles ' + BoolText(Subtitles) + ' (' + BoolText(WriteSubtitles) + ')');
+      '), online subtitles ' + BoolText(Subtitles) + ' (' + BoolText(WriteSubtitles) + '), right to left ' +
+      BoolText(RightToLeft) + ' (' + BoolText(WriteLayout) + ')');
 end;
 
 procedure PrivacyPolicyClick(Sender: TObject);
 begin
   OpenUrl('{#RepoUrl}/blob/main/CODE_SIGNING_POLICY.md');
+end;
+
+{ ---- The language -------------------------------------------------------- }
+
+{ The languages of Setup, from the list above [Languages] }
+procedure LoadLanguages();
+begin
+  SetArrayLength(Languages, {#LangCount});
+#sub EmitLanguageCode
+  with Languages[{#LangI}] do
+  begin
+    Name := '{#LangName[LangI]}';
+    Code := '{#LangCode[LangI]}';
+    Id := {#LangId[LangI]};
+    RTL := {#LangRTL[LangI] ? "True" : "False"};
+    Inter := {#LangInter[LangI] ? "True" : "False"};
+    English := '{#LangEnglish[LangI]}';
+  end;
+#endsub
+#for {LangI = 0; LangI < LangCount; LangI++} EmitLanguageCode
+end;
+
+{ A language of Setup by its name in Setup, or by its code in the app; -1
+  for one it hasn't }
+function LanguageOf(Name: String): Integer;
+var
+  I: Integer;
+begin
+  Result := -1;
+  for I := 0 to GetArrayLength(Languages) - 1 do
+    if CompareText(Languages[I].Name, Name) = 0 then
+      Result := I;
+end;
+
+function LanguageOfCode(Code: String): Integer;
+var
+  I: Integer;
+begin
+  Result := -1;
+  for I := 0 to GetArrayLength(Languages) - 1 do
+    if CompareText(Languages[I].Code, Code) = 0 then
+      Result := I;
+end;
+
+{ The display language of Windows, or the one /TESTUILANG= pretends }
+function UILanguage(): Integer;
+var
+  S: String;
+begin
+  Result := GetUILanguage;
+  S := ExpandConstant('{param:TESTUILANG|}');
+  if S <> '' then
+  begin
+    if CompareText(Copy(S, 1, 2), '0x') = 0 then
+      S := '$' + Copy(S, 3, Length(S));
+    Result := StrToIntDef(S, Result);
+  end;
+end;
+
+{ The language of Setup that Windows is shown in: the same primary
+  language, and the same sublanguage where the list gives one; -1 for
+  English (the first) and for a language Setup hasn't }
+function OfferedLanguage(): Integer;
+var
+  UI, I: Integer;
+begin
+  Result := -1;
+  UI := UILanguage();
+  for I := 1 to GetArrayLength(Languages) - 1 do
+    if (Result < 0) and ((Languages[I].Id and $3FF) = (UI and $3FF)) and
+       (((Languages[I].Id shr 10) = 0) or (Languages[I].Id = UI)) then
+      Result := I;
+end;
+
+{ The language of the app in a folder (portable\language), '' if none }
+function LanguageIn(Dir: String): String;
+var
+  S: AnsiString;
+begin
+  Result := '';
+  if (Dir <> '') and LoadStringFromFile(AddBackslash(Dir) + 'portable\' + LANGUAGE_FILE, S) then
+    Result := Trim(S);
+end;
+
+{ The language of the copy Setup installs over: the one installed (its
+  folder in the registry), or one left where a new install goes }
+function ExistingLanguage(): String;
+var
+  Dir: String;
+begin
+  if RegQueryStringValue(HKA, UNINSTALL_KEY, 'Inno Setup: App Path', Dir) and (Dir <> '') then
+    Result := LanguageIn(Dir)
+  else
+    Result := LanguageIn(ExpandConstant('{autopf}\{#AppName}'));
+end;
+
+{ A line of the question, in the redesign's colours }
+function QuestionLabel(Form: TSetupForm; Text: String; Px: Integer; Bold, Inter: Boolean;
+  Color: TColor): TLabel;
+begin
+  Result := TLabel.Create(Form);
+  Result.Parent := Form;
+  Result.StyleElements := [];
+  Result.Font.Name := FaceOf(Inter, Bold);
+  Result.Font.Height := -ScaleY(Px);
+  Result.Font.Color := Color;
+  Result.Color := CLR_BACK;
+  Result.Caption := Text;
+end;
+
+{ The question (see the top), before the wizard and so in Setup's English:
+  two columns, English and Windows' language, each a line of context and
+  the question, and Yes and No in both. A right-to-left language is drawn
+  right to left line by line (embedded in the form's left to right), in the
+  column at the right; a left-to-right one comes first. True for Yes. }
+function AskLanguage(L: Integer): Boolean;
+var
+  Form: TSetupForm;
+  Texts: array[0..3] of String;
+  Lines: array[0..3] of TLabel;
+  Widths: array[0..3] of Integer;
+  YesText, NoText: String;
+  Yes, No: TNewButton;
+  I, Margin, Gap, English, Native, ButtonW, ButtonH, Top2, ButtonsT, W, H: Integer;
+begin
+  Texts[0] := FmtMessage(CustomMessage('LanguageContext'), [Languages[L].English]);
+  Texts[1] := FmtMessage(CustomMessage('LanguageQuestion'), [Languages[L].English]);
+  Texts[2] := CustomMessage('LanguageContext_' + Languages[L].Name);
+  Texts[3] := CustomMessage('LanguageQuestion_' + Languages[L].Name);
+  if Languages[L].RTL then
+  begin
+    Texts[2] := RTL_EMBED + Texts[2] + RTL_POP;
+    Texts[3] := RTL_EMBED + Texts[3] + RTL_POP;
+    YesText := CustomMessage('LanguageYes') + ' · ' + CustomMessage('LanguageYes_' + Languages[L].Name);
+    NoText := CustomMessage('LanguageNo') + ' · ' + CustomMessage('LanguageNo_' + Languages[L].Name);
+  end
+  else
+  begin
+    YesText := CustomMessage('LanguageYes_' + Languages[L].Name) + ' · ' + CustomMessage('LanguageYes');
+    NoText := CustomMessage('LanguageNo_' + Languages[L].Name) + ' · ' + CustomMessage('LanguageNo');
+  end;
+  Log('Language: Windows is in ' + Languages[L].English + ', asking: ' + Texts[1]);
+
+  { The size of the texts first: a form's size is set when it is made }
+  Form := CreateCustomForm(ScaleX(100), ScaleY(100), False, False);
+  try
+    for I := 0 to 3 do
+    begin
+      Lines[I] := QuestionLabel(Form, Texts[I], 13 + 2 * (I mod 2), (I mod 2) = 1,
+                                (I < 2) or Languages[L].Inter, CLR_TEXT);
+      Widths[I] := Lines[I].Width;
+    end;
+    ButtonW := Form.CalculateButtonWidth([YesText, NoText]);
+  finally
+    Form.Free();
+  end;
+  Margin := ScaleX(24);
+  Gap := ScaleX(40);
+  English := Widths[0];
+  if Widths[1] > English then English := Widths[1];
+  Native := Widths[2];
+  if Widths[3] > Native then Native := Widths[3];
+  if ButtonW < ScaleX(100) then ButtonW := ScaleX(100);
+  ButtonH := ScaleY(28);
+  Top2 := ScaleY(46);
+  ButtonsT := Top2 + ScaleY(48);
+  W := Margin + English + Gap + Native + Margin;
+  if W < Margin + 2 * ButtonW + ScaleX(8) + Margin then
+    W := Margin + 2 * ButtonW + ScaleX(8) + Margin;
+  H := ButtonsT + ButtonH + ScaleY(20);
+
+  Form := CreateCustomForm(W, H, False, False);
+  try
+    Form.Caption := '{#AppName}';
+    for I := 0 to 3 do
+    begin
+      if (I mod 2) = 0 then
+        Lines[I] := QuestionLabel(Form, Texts[I], 13, False, (I < 2) or Languages[L].Inter, CLR_TEXT2)
+      else
+        Lines[I] := QuestionLabel(Form, Texts[I], 15, True, (I < 2) or Languages[L].Inter, CLR_TEXT);
+      if (I mod 2) = 0 then
+        Lines[I].Top := ScaleY(22)
+      else
+        Lines[I].Top := Top2;
+      if I < 2 then
+      begin
+        if Languages[L].RTL then
+          Lines[I].Left := Margin
+        else
+          Lines[I].Left := Margin + Native + Gap;
+      end
+      else if Languages[L].RTL then
+      begin
+        Lines[I].AutoSize := False;
+        Lines[I].Alignment := taRightJustify;
+        Lines[I].SetBounds(W - Margin - Native, Lines[I].Top, Native, Lines[I].Height);
+      end
+      else
+        Lines[I].Left := Margin;
+    end;
+    Yes := TNewButton.Create(Form);
+    Yes.Parent := Form;
+    Yes.Caption := YesText;
+    Yes.SetBounds(W - Margin - 2 * ButtonW - ScaleX(8), ButtonsT, ButtonW, ButtonH);
+    Yes.ModalResult := mrYes;
+    Yes.Default := True;
+    No := TNewButton.Create(Form);
+    No.Parent := Form;
+    No.Caption := NoText;
+    No.SetBounds(W - Margin - ButtonW, ButtonsT, ButtonW, ButtonH);
+    No.ModalResult := mrNo;
+    No.Cancel := True;
+    Form.ActiveControl := Yes;
+    { (closed: as No, English) }
+    Result := Form.ShowModal() = mrYes;
+  finally
+    Form.Free();
+  end;
+  Log('Language: answered ' + BoolText(Result));
+end;
+
+{ Setup again, with these parameters: Verb 'open', or 'runas' for
+  administrator rights. Through Windows: Exec and ShellExec refuse Setup's
+  own exe until the installation has started. False if it didn't start
+  (refused, or the rights not given). }
+function StartSetup(Wnd: HWND; Verb, Params: String): Boolean;
+var
+  Code: Integer;
+begin
+  Code := ShellExecute(Wnd, Verb, ExpandConstant('{srcexe}'), Params, ExtractFileDir(ExpandConstant('{srcexe}')),
+                       SW_SHOWNORMAL);
+  Result := Code > 32;
+  Log(Format('Setup again (%s %s): %d', [Verb, Params, Code]));
+end;
+
+{ Setup again in that language, with what this one was given, for the
+  wizard can't change its language once it runs; False if it didn't start.
+  A log of this one (/LOG=, still open) gets one next to it. }
+function Relaunch(Name: String): Boolean;
+var
+  Params, P, F: String;
+  I: Integer;
+begin
+  Params := '';
+  for I := 1 to ParamCount do
+  begin
+    P := ParamStr(I);
+    if CompareText(Copy(P, 1, 6), '/LANG=') <> 0 then
+    begin
+      if CompareText(Copy(P, 1, 5), '/LOG=') = 0 then
+      begin
+        F := Copy(P, 6, Length(P));
+        P := '/LOG=' + ChangeFileExt(F, '') + '-' + Name + ExtractFileExt(F);
+      end;
+      Params := Params + AddQuotes(P) + ' ';
+    end;
+  end;
+  Params := Params + '/LANG=' + Name;
+  Log('Language: Setup again in ' + Name);
+  Result := StartSetup(0, 'open', Params);
+end;
+
+{ The language of Setup and of the app (see the top), at the start. False
+  when Setup starts again in another language: this one ends then. }
+function ChooseLanguage(): Boolean;
+var
+  Given, Existing: String;
+  L: Integer;
+begin
+  Result := True;
+  LoadLanguages();
+  Lang := LanguageOf(ActiveLanguage);
+  if Lang < 0 then
+    Lang := 0;
+  AppLanguage := '';
+  Given := ExpandConstant('{param:LANG|}');
+  if LanguageOf(Given) < 0 then
+    Given := '';
+  Existing := ExistingLanguage();
+  if Existing <> '' then
+  begin
+    { Setup in the app's language, if it has it }
+    L := LanguageOfCode(Existing);
+    Log('Language: the app has ' + Existing + ', kept; Setup in ' + ActiveLanguage);
+    if (L >= 0) and (L <> Lang) and (Given = '') and not WizardSilent then
+      Result := not Relaunch(Languages[L].Name);
+    Exit;
+  end;
+  if Given <> '' then
+  begin
+    AppLanguage := Languages[Lang].Code;
+    Log('Language: ' + ActiveLanguage + ' (/LANG=), for the app too');
+    Exit;
+  end;
+  L := OfferedLanguage();
+  if WizardSilent or (L < 0) then
+  begin
+    Log(Format('Language: Windows in $%.4x, silent %s: no question, Setup in %s', [UILanguage(),
+               BoolText(WizardSilent), ActiveLanguage]));
+    Exit;
+  end;
+  if not AskLanguage(L) then
+    L := 0;
+  AppLanguage := Languages[L].Code;
+  if L <> Lang then
+    Result := not Relaunch(Languages[L].Name);
+end;
+
+{ After the files: the app's language (see the top), unless its profile
+  has one }
+procedure SaveLanguage();
+var
+  FileName: String;
+begin
+  if AppLanguage = '' then
+    Exit;
+  FileName := ProfileFile(LANGUAGE_FILE);
+  if FileExists(FileName) then
+    Log('Language: ' + FileName + ' kept')
+  else if SaveStringToFile(FileName, AppLanguage, False) then
+    Log('Language: ' + FileName + ' written: ' + AppLanguage)
+  else
+    Log('Language: ' + FileName + ' could not be written');
 end;
 
 { ---- The sidebar --------------------------------------------------------- }
@@ -1220,12 +1860,19 @@ var
   Memo: TNewMemo;
   Close: TNewButton;
   Lines: TArrayOfString;
-  Text: String;
+  Text, FileName: String;
   I: Integer;
 begin
-  ExtractTemporaryFile('notice.txt');
+  { in the language of Setup, English if it has none }
+  FileName := 'notice.' + ActiveLanguage + '.txt';
+  try
+    ExtractTemporaryFile(FileName);
+  except
+    FileName := 'notice.txt';
+    ExtractTemporaryFile(FileName);
+  end;
   Text := '';
-  if LoadStringsFromFile(ExpandConstant('{tmp}\notice.txt'), Lines) then
+  if LoadStringsFromFile(ExpandConstant('{tmp}\') + FileName, Lines) then
     for I := 0 to GetArrayLength(Lines) - 1 do
       Text := Text + Lines[I] + #13#10;
   Form := CreateCustomForm(SX(480), SY(380), False, False);
@@ -1261,10 +1908,14 @@ end;
 
 procedure ForEveryoneClick(Sender: TObject);
 var
-  Code: Integer;
+  Params: String;
 begin
-  if ShellExec('runas', ExpandConstant('{srcexe}'), '/ALLUSERS /LANG=' + ActiveLanguage, '', SW_SHOWNORMAL,
-               ewNoWait, Code) then
+  { in this language, if it was chosen or isn't English (otherwise as
+    Setup starts there) }
+  Params := '/ALLUSERS';
+  if (AppLanguage <> '') or (Lang <> 0) then
+    Params := Params + ' /LANG=' + ActiveLanguage;
+  if StartSetup(WizardForm.Handle, 'runas', Params) then
   begin
     Relaunching := True;
     WizardForm.Close();
@@ -1376,11 +2027,32 @@ end;
 
 { The two features that go online by themselves, each with what it sends,
   and the policy (the toggles take the profile's choices when it shows) }
+{ Right to left only, and once (see the top): the app's layout, mirrored
+  or as designed, off to begin with as in the app }
+procedure CreateLayout();
+var
+  P: TWinControl;
+begin
+  LayoutPage := CreateCustomPage(OptionsPage.ID, CustomMessage('LayoutTitle'), CustomMessage('LayoutText'));
+  P := LayoutPage.Surface;
+  NewToggle(T_RTL, P, True, 100, CustomMessage('LayoutRTL'), HasSwitch('RIGHTTOLEFT'));
+  NewLabel(P, True, CONTENT_L, 138, CONTENT_W, 11, False, CLR_FAINT, CLR_BACK, CustomMessage('LayoutRTLText'));
+  NewImage(P, True, 'card-tip', CONTENT_L, 196, CONTENT_W, 92);
+  NewLabel(P, True, CONTENT_L + 16, 210, CONTENT_W - 32, 13, True, CLR_TEXT, CLR_CARD, CustomMessage('LayoutCardTitle'));
+  NewLabel(P, True, CONTENT_L + 16, 232, CONTENT_W - 32, 12, False, CLR_TEXT2, CLR_CARD, CustomMessage('LayoutCardText'));
+end;
+
+{ The Layout page shows: right to left, never chosen }
+function ShowLayout(): Boolean;
+begin
+  Result := Languages[Lang].RTL and not LayoutChosen();
+end;
+
 procedure CreatePrivacy();
 var
   P: TWinControl;
 begin
-  PrivacyPage := CreateCustomPage(OptionsPage.ID, CustomMessage('PrivacyTitle'), CustomMessage('PrivacyText'));
+  PrivacyPage := CreateCustomPage(LayoutPage.ID, CustomMessage('PrivacyTitle'), CustomMessage('PrivacyText'));
   P := PrivacyPage.Surface;
   NewToggle(T_UPDATES, P, True, 100, CustomMessage('PrivacyUpdates'), True);
   NewLabel(P, True, CONTENT_L, 138, CONTENT_W, 11, False, CLR_FAINT, CLR_BACK, CustomMessage('PrivacyUpdatesText'));
@@ -1479,7 +2151,9 @@ begin
   CreateSidebar();
   CreateWelcome();
   CreateOptions();
+  MeasureToggleWords();
   CreateOptionToggles();
+  CreateLayout();
   CreatePrivacy();
   CreateInstalling();
   CreateFinished();
@@ -1539,8 +2213,19 @@ begin
       ShowStep(1, WizardForm.InnerPage);
       SetContentText(InnerTitle, OptionsPage.Caption);
       SetContentText(InnerText, OptionsPage.Description);
-      { the last page before the installation (no Ready page) when Privacy
-        is skipped }
+      { the last page before the installation (no Ready page) when Layout
+        and Privacy are skipped }
+      if ChoicesMade() and not ShowLayout() then
+        WizardForm.NextButton.Caption := SetupMessage(msgButtonInstall)
+      else
+        WizardForm.NextButton.Caption := SetupMessage(msgButtonNext);
+    end
+    else if CurPageID = LayoutPage.ID then
+    begin
+      ShowStep(1, WizardForm.InnerPage);
+      SetContentText(InnerTitle, LayoutPage.Caption);
+      SetContentText(InnerText, LayoutPage.Description);
+      LayoutShown := True;
       if ChoicesMade() then
         WizardForm.NextButton.Caption := SetupMessage(msgButtonInstall)
       else
@@ -1572,11 +2257,13 @@ begin
     field or button of ours starts selected }
   if WizardForm.NextButton.Visible and WizardForm.NextButton.Enabled then
     WizardForm.ActiveControl := WizardForm.NextButton;
+  if IsRTL then
+    RepaintToggles();
   SyncButtons();
 end;
 
 { Privacy: once (an update of a profile asked before goes on to install;
-  the choices stay in Settings) }
+  the choices stay in Settings). Layout: right to left, once too. }
 function ShouldSkipPage(PageID: Integer): Boolean;
 begin
   Result := False;
@@ -1585,6 +2272,12 @@ begin
     Result := ChoicesMade();
     if Result then
       PrivacyShown := False;
+  end
+  else if (LayoutPage <> nil) and (PageID = LayoutPage.ID) then
+  begin
+    Result := not ShowLayout();
+    if Result then
+      LayoutShown := False;
   end;
 end;
 
@@ -1653,6 +2346,8 @@ begin
   end;
   if not FontsLoaded then
     Log('Inter not loaded: Segoe UI instead');
+  { (after the fonts: the question uses them) }
+  Result := ChooseLanguage();
 end;
 
 procedure DeinitializeSetup();
@@ -1852,6 +2547,7 @@ var
 begin
   if CurStep = ssPostInstall then
   begin
+    SaveLanguage();
     SaveChoices();
     RegisterFileTypes();
     if not WantDesktopIcon() then

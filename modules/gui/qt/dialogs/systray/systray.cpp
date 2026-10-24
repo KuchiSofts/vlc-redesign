@@ -64,10 +64,23 @@ VLCSystray::VLCSystray(MainCtx* ctx, QObject* parent)
     /* Connect PLAY_STATUS on the systray */
     connect( m_intf->p_mainPlayerController, &PlayerController::playingStateChanged,
             this, &VLCSystray::update );
+    /* The tooltip and the menu in another language of the interface */
+    connect( m_ctx, &MainCtx::interfaceLanguageChanged,
+            this, &VLCSystray::retranslate );
 }
 
 VLCSystray::~VLCSystray()
 {}
+
+void VLCSystray::retranslate()
+{
+    m_menu->setTitle( qtr( "VLC media player" ) );
+    /* the name of the media playing stays (no notification again) */
+    if( m_intf->p_mainPlayerController->getName().isEmpty() )
+        setToolTip( qtr( "VLC media player" ) );
+    /* the menu is made again */
+    update();
+}
 
 /**
  * Updates the VLCSystray Icon's menu and toggle the main interface

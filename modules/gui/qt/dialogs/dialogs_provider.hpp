@@ -206,6 +206,20 @@ private:
     inline void ensureDialog(std::unique_ptr<T>& dialog);
     template<typename T>
     void toggleDialogVisible(std::unique_ptr<T>& dialog);
+
+    // The dialogs and the menus make their texts once: in another language
+    // of the interface (MainCtx::interfaceLanguageChanged), they are made
+    // again. MainCtx is made after this provider: followed once it is.
+    void followInterfaceLanguage();
+    void retranslate();
+    // A dialog of a previous language, once hidden, is released: made in the
+    // language of the interface when it is next shown
+    template<typename T>
+    void renewDialog(std::unique_ptr<T>& dialog);
+    void renewStaleDialogs();
+    QMetaObject::Connection m_languageConnection;
+    // the dialogs made in a previous language, open then
+    QSet<QObject *> m_staleDialogs;
     // the information of an item (its reference taken), read first when
     // it was not yet
     void mediaInfoDialogOf( input_item_t* inputItem );

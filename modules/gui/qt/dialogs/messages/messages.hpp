@@ -75,6 +75,8 @@ private:
 
 public:
     void showTab( int i );
+    // the texts in another language of the interface, the messages kept
+    void retranslate();
 };
 
 #endif

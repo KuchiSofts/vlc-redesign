@@ -44,6 +44,8 @@ public slots:
 private slots:
     void updateTooltipName( const QString& );
     void handleClick( QSystemTrayIcon::ActivationReason );
+    // the texts in the language of the interface
+    void retranslate();
 
 private:
     MainCtx* m_ctx = nullptr;

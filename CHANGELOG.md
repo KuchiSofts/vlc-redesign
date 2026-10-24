@@ -123,6 +123,9 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
   ("C:VideosFilms").
 - **A time typed to go to went after the time shown**: the field opened with the cursor after the time, so 1:30
   became 00:02:101:30. The whole time is selected now, as in any time field: what you type replaces it.
+- **The last rows of a long list in Settings were out of sight**: a dropdown shows eight rows, and the next ones
+  (the last equalizer presets, most languages) were cut off where a row ends, with no sign that the list scrolls. A
+  thin bar now shows that it does, as in the menus.
 
 ### Added
 

@@ -177,9 +177,14 @@ T.Button {
                 }
 
                 // the system's language, English and the one chosen first,
-                // then all of them by name; the search keeps those it finds
+                // then all of them by name; the search keeps those it finds.
+                // Made while the list is open only: its rows write the names
+                // in every script, and the fonts of all of them took most of
+                // a second each time a page with a picker was made (Settings)
                 model: {
                     void root._languageRevision
+                    if (!popup.visible)
+                        return []
                     const all = SubtitlePreferences.languages
                     const query = search.text.trim().toLowerCase()
                     const first = []

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 3.0.9\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-24 15:07+0000\n"
+"POT-Creation-Date: 2026-10-24 16:13+0000\n"
 "PO-Revision-Date: 2017-12-10 22:48+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>, 2020\n"
 "Language-Team: Hebrew (https://www.transifex.com/yaron/teams/16553/he/)\n"
@@ -59,11 +59,11 @@ msgstr "ממשק"
 #: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:581
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:212
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:228
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:73
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:78
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:26
 #: modules/gui/qt/menus/menus.cpp:860
 #: modules/gui/qt/player/qml/TracksMenu.qml:37
-#: modules/gui/qt/player/qml/TracksListPage.qml:89 modules/gui/qt/qt.cpp:346
+#: modules/gui/qt/player/qml/TracksListPage.qml:89 modules/gui/qt/qt.cpp:348
 #: modules/stream_out/es.c:388 modules/stream_out/transcode/transcode.c:190
 #: share/lua/http/dialogs/create_stream.html:150
 msgid "Audio"
@@ -82,10 +82,10 @@ msgstr "שמע"
 #: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:582
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:220
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:229
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:73
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:78
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:25
 #: modules/gui/qt/menus/menus.cpp:856
-#: modules/gui/qt/player/qml/TracksMenu.qml:36 modules/gui/qt/qt.cpp:346
+#: modules/gui/qt/player/qml/TracksMenu.qml:36 modules/gui/qt/qt.cpp:348
 #: modules/services_discovery/upnp.cpp:70 modules/stream_out/es.c:395
 #: modules/stream_out/transcode/transcode.c:163
 #: share/lua/http/dialogs/create_stream.html:147
@@ -115,9 +115,9 @@ msgstr "תור הנגינה"
 #: include/vlc_config_cat.h:44 src/libvlc-module.c:2026
 #: src/libvlc-module.c:2135
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:305
-#: modules/gui/qt/dialogs/extended/extended.cpp:104
+#: modules/gui/qt/dialogs/extended/extended.cpp:110
 #: modules/gui/qt/dialogs/extended/qml/VideoEffectsPanel.qml:82
-#: modules/gui/qt/qt.cpp:333
+#: modules/gui/qt/qt.cpp:335
 msgid "Advanced"
 msgstr "מתקדם"
 
@@ -520,12 +520,12 @@ msgid "VU meter"
 msgstr "מד VU"
 
 #: src/audio_output/output.c:376 src/libvlc-module.c:222
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:213
 msgid "Audio filters"
 msgstr "מסנני שמע"
 
 #: src/audio_output/output.c:385 src/libvlc-module.c:1663
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:175
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:180
 msgid "Replay gain"
 msgstr "איזון עוצמת השמע"
 
@@ -651,18 +651,18 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1165
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1447
 #: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:402
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:138
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:139
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:165
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:185
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:191
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:198
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:216
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:217
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:254
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
-#: modules/gui/qt/qt.cpp:364
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:144
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:170
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:190
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:196
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:222
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:232
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:259
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
+#: modules/gui/qt/qt.cpp:366
 msgid "Automatic"
 msgstr "אוטומטית"
 
@@ -872,7 +872,7 @@ msgstr "ל־VLC לא הייתה אפשרות לפתוח את המודול המפ
 
 #: src/input/es_out.c:771 src/input/es_out.c:775 src/libvlc-module.c:259
 #: modules/gui/qt/dialogs/open/open_panels.cpp:569
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:176
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:181
 #: modules/gui/qt/medialibrary/qml/MusicTrackListDisplay.qml:86
 #: modules/gui/qt/medialibrary/qml/MusicTracksDisplay.qml:41
 msgid "Track"
@@ -1299,7 +1299,7 @@ msgstr "זכויות יוצרים"
 #: src/input/meta.c:62 src/libvlc-module.c:259
 #: modules/gui/macosx/library/VLCLibrarySortingMenuController.m:63
 #: modules/gui/macosx/playqueue/VLCPlayQueueSortingMenuController.m:54
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:176
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:181
 #: modules/gui/qt/medialibrary/qml/MusicArtist.qml:988
 #: modules/gui/qt/medialibrary/qml/MusicTrackListDisplay.qml:59
 #: modules/gui/qt/medialibrary/qml/MusicTracksDisplay.qml:38
@@ -1397,32 +1397,32 @@ msgstr ""
 msgid "Compilation"
 msgstr ""
 
-#: src/interface/interface.c:85 modules/gui/macosx/menus/VLCMainMenu.m:350
+#: src/interface/interface.c:86 modules/gui/macosx/menus/VLCMainMenu.m:350
 #: modules/gui/macosx/menus/VLCMainMenu.m:351
 msgid "Add Interface"
 msgstr "הוספת ממשק"
 
-#: src/interface/interface.c:91
+#: src/interface/interface.c:92
 msgid "Console"
 msgstr "מסוף"
 
-#: src/interface/interface.c:94
+#: src/interface/interface.c:95
 msgid "Telnet"
 msgstr "Telnet"
 
-#: src/interface/interface.c:96
+#: src/interface/interface.c:97
 msgid "Web"
 msgstr "דפדפן"
 
-#: src/interface/interface.c:99
+#: src/interface/interface.c:100
 msgid "Upnp"
 msgstr ""
 
-#: src/interface/interface.c:103
+#: src/interface/interface.c:104
 msgid "Mouse Gestures"
 msgstr "מחוות עכבר"
 
-#: src/interface/interface.c:214
+#: src/interface/interface.c:215
 msgid ""
 "Running vlc with the default interface. Use 'cvlc' to use vlc without "
 "interface."
@@ -1468,12 +1468,12 @@ msgid ""
 "list of interface modules. (common values are \"rc\" (remote control), "
 "\"http\", \"gestures\" ...)"
 msgstr ""
-"ניתן לבחור ב„ממשקים נוספים” עבור VLC. הם יופעלו ברקע בנוסף לממשק ברירת המחדל. "
-"ניתן להשתמש ברשימת מודולים מופרדים בנקודתיים. (הערכים הנפוצים הם „rc” (שלט "
-"רחוק), „http”,‏ „gestures” …)"
+"ניתן לבחור ב„ממשקים נוספים” עבור VLC. הם יופעלו ברקע בנוסף לממשק ברירת "
+"המחדל. ניתן להשתמש ברשימת מודולים מופרדים בנקודתיים. (הערכים הנפוצים הם „rc” "
+"(שלט רחוק), „http”,‏ „gestures” …)"
 
 #: src/libvlc-module.c:94
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:95
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:100
 msgid "Control interfaces"
 msgstr "ממשקי שליטה"
 
@@ -1536,7 +1536,7 @@ msgstr ""
 "המסננים האלה כאן ולהגדיר אותם בסעיף המודולים „מסנני שמע”."
 
 #: src/libvlc-module.c:130
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:204
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:209
 msgid "Audio output module"
 msgstr "מודול פלט שמע"
 
@@ -1549,7 +1549,7 @@ msgstr ""
 "השיטה הזמינה הטובה ביותר."
 
 #: src/libvlc-module.c:136
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:202
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:207
 msgid "Media role"
 msgstr "תפקיד מדיה"
 
@@ -1569,7 +1569,7 @@ msgstr ""
 
 #: src/libvlc-module.c:145
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:368
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:163
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:168
 #: modules/stream_out/display.c:43
 msgid "Enable audio"
 msgstr "לאפשר שמע"
@@ -1615,7 +1615,7 @@ msgid "Production"
 msgstr "הפקה"
 
 #: src/libvlc-module.c:157
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:67
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:72
 msgid "Accessibility"
 msgstr "נגישות"
 
@@ -1713,8 +1713,8 @@ msgstr "אוטומטי"
 
 #: src/libvlc-module.c:198 src/libvlc-module.c:374 src/player/osd.c:323
 #: modules/access/dtv/access.c:100 modules/access/v4l2/v4l2.c:201
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:138
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:198
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
 msgid "On"
 msgstr "פעיל"
 
@@ -1724,9 +1724,9 @@ msgstr "פעיל"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:136
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1045
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1502
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:138
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:176
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:198
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:181
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
 #: modules/gui/qt/menus/menus.cpp:920 modules/gui/qt/player/hdr_output.cpp:33
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:374
 #: modules/video_filter/deinterlace/algo_phosphor.h:54
@@ -1809,7 +1809,7 @@ msgstr "מאפשר לנגן שמע במהירות גבוהה או נמוכה י�
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1305
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:195
 #: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:42
-#: modules/gui/qt/menus/qml/MainMenu.qml:114
+#: modules/gui/qt/menus/qml/MainMenu.qml:118
 #: modules/gui/qt/player/qml/TracksMenu.qml:176
 #: modules/gui/qt/player/qml/TracksMenu.qml:274
 #: modules/gui/qt/widgets/qml/LanguagePicker.qml:27
@@ -1833,7 +1833,7 @@ msgstr ""
 "אפשרויות וידאו שונות."
 
 #: src/libvlc-module.c:273
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:159
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:164
 msgid "Video output module"
 msgstr "מודול פלט הווידאו"
 
@@ -1847,7 +1847,7 @@ msgstr ""
 
 #: src/libvlc-module.c:278
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:449
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:133
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:138
 #: modules/stream_out/display.c:45
 msgid "Enable video"
 msgstr "הפעלת וידאו"
@@ -2159,12 +2159,12 @@ msgid "Disable the screensaver during video playback."
 msgstr "מונע את הפעלת שומר המסך בזמן ניגון וידאו."
 
 #: src/libvlc-module.c:432 modules/gui/macosx/main/macosx.m:125
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:45
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:73
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:98
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:119
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
-#: modules/gui/qt/qt.cpp:339 modules/gui/qt/qt.cpp:346
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:50
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:78
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:124
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
+#: modules/gui/qt/qt.cpp:341 modules/gui/qt/qt.cpp:348
 msgid "Never"
 msgstr "לעולם לא"
 
@@ -2173,12 +2173,12 @@ msgid "When fullscreen"
 msgstr ""
 
 #: src/libvlc-module.c:432 modules/gui/macosx/main/macosx.m:125
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:45
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:53
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:98
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:119
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
-#: modules/gui/qt/qt.cpp:339 modules/keystore/keychain.m:55
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:50
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:58
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:124
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:323
+#: modules/gui/qt/qt.cpp:341 modules/keystore/keychain.m:55
 msgid "Always"
 msgstr "תמיד"
 
@@ -2375,7 +2375,7 @@ msgstr ""
 "בלתי תקנית שדורשת 1088 שורות."
 
 #: src/libvlc-module.c:524
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:157
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:162
 msgid "Monitor pixel aspect ratio"
 msgstr "יחס התצוגה של פיקסל הצג"
 
@@ -2428,7 +2428,7 @@ msgstr ""
 #: src/libvlc-module.c:552 modules/access/rist.h:85
 #: modules/audio_output/mmdevice.c:1621
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1145
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:23
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:141
 msgid "Disabled"
@@ -2491,7 +2491,7 @@ msgstr ""
 "בעת שימוש בקלט ה־PVR (או במקור מאוד מוזר), יש להגדיר את הערך הזה ל־10000."
 
 #: src/libvlc-module.c:585
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:323
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
 msgid "Clock synchronisation"
 msgstr "סנכרון שעון"
 
@@ -2504,7 +2504,7 @@ msgstr ""
 "ממשאבי רשת נקטעת או מתעוותת."
 
 #: src/libvlc-module.c:591
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
 msgid "Clock jitter"
 msgstr "ריצוד שעון"
 
@@ -2556,7 +2556,7 @@ msgstr ""
 #: modules/gui/macosx/preferences/prefs_widgets.m:1038
 #: modules/gui/macosx/preferences/prefs_widgets.m:1095
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:642
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:29
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:32
 #: modules/gui/qt/dialogs/toolbar/defaults.cpp:85
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:382
 #: modules/logger/file.c:217 modules/spu/marq.c:63 modules/spu/rss.c:71
@@ -2729,17 +2729,17 @@ msgid ""
 msgstr ""
 
 #: src/libvlc-module.c:711
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:104
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:109
 msgid "Best available"
 msgstr "הטובה ביותר הזמינה"
 
 #: src/libvlc-module.c:711
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:104
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:109
 msgid "Full HD (1080p)"
 msgstr "HD מלא (1080p)"
 
 #: src/libvlc-module.c:711
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:104
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:109
 msgid "HD (720p)"
 msgstr "HD (720p)"
 
@@ -2853,7 +2853,7 @@ msgid ""
 msgstr ""
 
 #: src/libvlc-module.c:763
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:87
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:92
 msgid "Save recently played items"
 msgstr "שמירת הפריטים שהתנגנו לאחרונה"
 
@@ -3125,7 +3125,7 @@ msgid "Override the normal frames per second settings. "
 msgstr ""
 
 #: src/libvlc-module.c:893
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:244
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:249
 #: modules/spu/subsdelay.c:267
 msgid "Subtitle delay"
 msgstr "השהיית כתוביות"
@@ -3275,7 +3275,7 @@ msgid "This private key file (PEM format) is used for server-side TLS."
 msgstr "קובץ מפתח פרטי זה (מבנה קובץ PEM) משמש ל־TLS מצד השרת."
 
 #: src/libvlc-module.c:983
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:306
 msgid "HTTP proxy"
 msgstr "מתווך HTTP"
 
@@ -3290,7 +3290,7 @@ msgstr ""
 "הסביבה http_proxy."
 
 #: src/libvlc-module.c:989
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:300
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:307
 msgid "HTTP proxy password"
 msgstr "סיסמת מתווך HTTP"
 
@@ -3590,7 +3590,7 @@ msgid "List of keystores that VLC will use in priority."
 msgstr ""
 
 #: src/libvlc-module.c:1149
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:20
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:23
 msgid "Additional command line options"
 msgstr "אפשרויות שורת פקודה נוספות"
 
@@ -3758,7 +3758,7 @@ msgid ""
 msgstr ""
 
 #: src/libvlc-module.c:1264
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:288
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:294
 msgid "Show hidden files"
 msgstr "הצגת קבצים מוסתרים"
 
@@ -3831,7 +3831,7 @@ msgid "Pause each item in the play queue on the last frame."
 msgstr ""
 
 #: src/libvlc-module.c:1299
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:128
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:133
 msgid "Start paused"
 msgstr "התחל במצב מושהה"
 
@@ -3868,15 +3868,15 @@ msgid ""
 msgstr "ספריית המדיה נשמרת ונטענת מחדש עם כל הפעלה של VLC."
 
 #: src/libvlc-module.c:1317
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:290
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
 msgid "Use the media library"
 msgstr "השתמש בספריית המדיה"
 
 #: src/libvlc-module.c:1319
 msgid ""
 "Start the media library when VLC asks for it (the media player does). Turn "
-"it off to browse without indexing your media; this takes effect after a "
-"restart."
+"it off to browse without indexing your media; this takes effect the next "
+"time VLC starts."
 msgstr ""
 
 #: src/libvlc-module.c:1323
@@ -4759,7 +4759,7 @@ msgstr ""
 
 #: src/libvlc-module.c:1562 src/libvlc-module.c:1563
 #: src/video_output/vout_intf.c:231 modules/gui/macosx/menus/VLCMainMenu.m:484
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:148
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:80
 #: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:31
 msgid "Zoom"
@@ -4940,13 +4940,13 @@ msgstr "תוספים"
 #: src/libvlc-module.c:2153
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:479
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:521
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:24
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:25
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:97
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:99
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:101
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:27
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:28
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:102
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:130
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:104
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:106
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:107
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:135
 msgid "Startup"
 msgstr "הפעלה"
 
@@ -5071,7 +5071,7 @@ msgid "Browser Stop"
 msgstr "עצירה בדפדפן"
 
 #: src/misc/actions.c:61 modules/gui/macosx/menus/VLCMainMenu.m:381
-#: modules/gui/qt/dialogs/bookmarks/bookmarks.cpp:50
+#: modules/gui/qt/dialogs/bookmarks/bookmarks.cpp:55
 #: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:415
 #: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:513
 #: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:149
@@ -5700,8 +5700,8 @@ msgid "Previous chapter"
 msgstr "הפרק הקודם"
 
 #: src/player/player.c:1814
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:327
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:32
 msgid "Recording"
 msgstr "הקלטה"
@@ -7842,7 +7842,7 @@ msgstr ""
 #: modules/gui/macosx/menus/VLCMainMenu.m:2027
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:268
 #: modules/gui/qt/dialogs/extended/qml/VideoEffectsPanel.qml:81
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:141
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:146
 #: modules/video_filter/croppadd.c:83
 msgid "Crop"
 msgstr "חיתוך"
@@ -7853,7 +7853,7 @@ msgstr "חיתוך"
 #: modules/gui/macosx/menus/VLCMainMenu.m:442
 #: modules/gui/macosx/menus/VLCMainMenu.m:443
 #: modules/gui/macosx/menus/VLCMainMenu.m:1849
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:140
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:145
 #: modules/gui/qt/player/qml/controlbarcontrols/AspectRatioWidget.qml:41
 msgid "Aspect ratio"
 msgstr "יחס תצוגה"
@@ -9479,7 +9479,7 @@ msgstr ""
 #: modules/access/idummy.c:40 modules/access_output/dummy.c:43
 #: modules/audio_output/adummy.c:36 modules/codec/ddummy.c:45
 #: modules/codec/edummy.c:38 modules/control/dummy.c:39
-#: modules/gui/qt/qt.cpp:376 modules/text_renderer/tdummy.c:34
+#: modules/gui/qt/qt.cpp:378 modules/text_renderer/tdummy.c:34
 #: modules/video_output/vdummy.c:48
 msgid "Dummy"
 msgstr "מדומה"
@@ -9611,7 +9611,7 @@ msgstr ""
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:260
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1377
 #: modules/gui/qt/dialogs/extended/qml/FilterPanel.qml:33
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:149
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:154
 msgid "Size"
 msgstr "גודל"
 
@@ -11567,8 +11567,8 @@ msgid ""
 "Defines if BarGraph information should be sent. 1 if the information should "
 "be sent, 0 otherwise (default 1)."
 msgstr ""
-"הגדרה האם המידע של BarGraph אמור להישלח. 1 אם הוא אמור להישלח, 0 אם לא (ברירת "
-"המחדל היא 1)."
+"הגדרה האם המידע של BarGraph אמור להישלח. 1 אם הוא אמור להישלח, 0 אם לא "
+"(ברירת המחדל היא 1)."
 
 #: modules/audio_filter/audiobargraph_a.c:42
 msgid "Sends the barGraph information every n audio packets"
@@ -11849,10 +11849,10 @@ msgstr "רמת אות הקלט"
 
 #: modules/audio_filter/compressor.c:70
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:302
-#: modules/gui/qt/dialogs/extended/extended.cpp:72
+#: modules/gui/qt/dialogs/extended/extended.cpp:78
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:23
 #: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:106
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:187
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:192
 msgid "Compressor"
 msgstr "מדחס"
 
@@ -11861,7 +11861,7 @@ msgid "Dynamic range compressor"
 msgstr ""
 
 #: modules/audio_filter/expander.c:65
-#: modules/gui/qt/dialogs/extended/extended.cpp:76
+#: modules/gui/qt/dialogs/extended/extended.cpp:82
 msgid "Expander"
 msgstr "מרחיב"
 
@@ -11870,7 +11870,7 @@ msgid "Dynamic range expander"
 msgstr ""
 
 #: modules/audio_filter/limiter.c:68
-#: modules/gui/qt/dialogs/extended/extended.cpp:80
+#: modules/gui/qt/dialogs/extended/extended.cpp:86
 msgid "Limiter"
 msgstr "מגביל"
 
@@ -11889,7 +11889,7 @@ msgstr ""
 #: modules/audio_filter/equalizer.c:57
 #: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:38
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:41
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:180
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:185
 msgid "Equalizer preset"
 msgstr "ערכת אקווילייזר"
 
@@ -11941,11 +11941,11 @@ msgstr ""
 
 #: modules/audio_filter/equalizer.c:80
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:301
-#: modules/gui/qt/dialogs/extended/extended.cpp:68
+#: modules/gui/qt/dialogs/extended/extended.cpp:74
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:22
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:22
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:32
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:179
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
 #: share/lua/http/index.html:237
 msgid "Equalizer"
 msgstr "אקווילייזר"
@@ -12044,7 +12044,7 @@ msgstr ""
 
 #: modules/audio_filter/karaoke.c:33 modules/demux/xiph_metadata.h:48
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:284
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:190
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:195
 msgid "Karaoke"
 msgstr "קריוקי"
 
@@ -12139,7 +12139,7 @@ msgstr ""
 
 #: modules/audio_filter/resampler/soxr.c:40
 #: modules/audio_filter/resampler/speex.c:36
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:199
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:204
 msgid "Resampling quality"
 msgstr "איכות הדגימה מחדש"
 
@@ -12302,7 +12302,7 @@ msgstr ""
 
 #: modules/audio_filter/spatializer/spatializer.cpp:73
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:303
-#: modules/gui/qt/dialogs/extended/extended.cpp:84
+#: modules/gui/qt/dialogs/extended/extended.cpp:90
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:24
 msgid "Spatializer"
 msgstr "אפקט מרחבי"
@@ -12602,7 +12602,7 @@ msgid "Enabled"
 msgstr "מופעל"
 
 #: modules/audio_output/mmdevice.c:1626
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:164
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:169
 msgid "Output device"
 msgstr "התקן פלט"
 
@@ -12718,9 +12718,9 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:137
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1271
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1367
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:125
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:200
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:126
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
 #: modules/video_filter/deinterlace/algo_phosphor.h:57
 msgid "High"
 msgstr "גבוה"
@@ -12865,11 +12865,11 @@ msgstr "מפענח שמע/וידאו FFmpeg"
 
 #: modules/codec/avcodec/avcodec.c:86 modules/codec/gstreamer/gstdecode.c:108
 #: modules/codec/omxil/mediacodec.c:205 modules/codec/omxil/omxil.c:88
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:312
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:320
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
 msgid "Decoding"
 msgstr "פענוח"
 
@@ -13602,7 +13602,7 @@ msgid ""
 msgstr ""
 
 #: modules/codec/kate.c:197
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:233
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:238
 msgid "Shadow"
 msgstr "הצללה"
 
@@ -14768,7 +14768,7 @@ msgid "Good"
 msgstr ""
 
 #: modules/codec/vpx.c:62
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:200
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
 #: modules/video_output/xcb/render.c:764
 msgid "Best"
 msgstr "הטוב ביותר"
@@ -15536,7 +15536,7 @@ msgstr "רגיל"
 
 #: modules/codec/x264.c:424
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:311
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:200
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
 #: modules/video_output/xcb/render.c:764
 msgid "Fast"
 msgstr "מהיר"
@@ -16038,12 +16038,12 @@ msgstr "ממשק שליטת D-Bus"
 #: modules/gui/macosx/menus/VLCStatusBarIcon.m:355
 #: modules/gui/macosx/windows/video/VLCVideoWindowCommon.m:153
 #: modules/gui/ncurses.c:1197 modules/gui/qt/dialogs/help/help.cpp:95
-#: modules/gui/qt/dialogs/systray/systray.cpp:50
-#: modules/gui/qt/dialogs/systray/systray.cpp:52
-#: modules/gui/qt/dialogs/systray/systray.cpp:77
-#: modules/gui/qt/dialogs/systray/systray.cpp:80
-#: modules/gui/qt/dialogs/systray/systray.cpp:135
-#: modules/gui/qt/dialogs/systray/systray.cpp:148 modules/gui/qt/qt.cpp:1355
+#: modules/gui/qt/dialogs/systray/systray.cpp:51
+#: modules/gui/qt/dialogs/systray/systray.cpp:53
+#: modules/gui/qt/dialogs/systray/systray.cpp:78
+#: modules/gui/qt/dialogs/systray/systray.cpp:81
+#: modules/gui/qt/dialogs/systray/systray.cpp:136
+#: modules/gui/qt/dialogs/systray/systray.cpp:151 modules/gui/qt/qt.cpp:1373
 #: modules/lua/libs/httpd.c:80 modules/video_output/wayland/xdg-shell.c:732
 #: modules/video_output/xcb/window.c:959
 msgid "VLC media player"
@@ -16682,7 +16682,7 @@ msgid "Producer"
 msgstr "הפקה"
 
 #: modules/demux/mp4/meta.c:73 modules/demux/mp4/meta.c:140
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:29
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:32
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:180
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:968
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1014
@@ -17116,7 +17116,7 @@ msgstr ""
 #: modules/demux/playlist/wpl.c:99
 #: modules/gui/macosx/library/VLCLibraryDataTypes.m:212
 #: modules/gui/macosx/library/media-source/VLCMediaSourceCollectionViewItem.m:87
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:63
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:68
 #: modules/gui/qt/medialibrary/mlsubtitleassociations_targets.cpp:27
 #: modules/gui/qt/menus/menus.cpp:904 modules/gui/skins2/vars/playtree.cpp:210
 msgid "Playlist"
@@ -17502,7 +17502,6 @@ msgstr ""
 #: modules/gui/macosx/windows/convertandsave/VLCOutput.m:62
 #: modules/gui/qt/dialogs/dialogs/qml/CustomDialog.qml:39
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1420
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsRestartNotice.qml:33
 #: modules/stream_out/chromecast/cast.cpp:1162
 #: modules/stream_out/dlna/dlna.cpp:690
 msgid "OK"
@@ -17521,7 +17520,7 @@ msgid "Enter a name for the new playlist:"
 msgstr ""
 
 #: modules/gui/macosx/library/VLCLibraryController.m:310
-#: modules/gui/qt/dialogs/bookmarks/bookmarks.cpp:47
+#: modules/gui/qt/dialogs/bookmarks/bookmarks.cpp:52
 #: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:441
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:463
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:401
@@ -18040,11 +18039,11 @@ msgstr ""
 
 #: modules/gui/macosx/main/macosx.m:89
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:453
-#: modules/gui/qt/qt.cpp:180
+#: modules/gui/qt/qt.cpp:182
 msgid "Resize interface to the native video size"
 msgstr "שינוי גודל הממשק לגודל הטבעי של הווידאו"
 
-#: modules/gui/macosx/main/macosx.m:90 modules/gui/qt/qt.cpp:181
+#: modules/gui/macosx/main/macosx.m:90 modules/gui/qt/qt.cpp:183
 msgid ""
 "You have two choices:\n"
 " - The interface will resize to the native video size\n"
@@ -18058,21 +18057,21 @@ msgstr ""
 
 #: modules/gui/macosx/main/macosx.m:95
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:452
-#: modules/gui/qt/qt.cpp:270
+#: modules/gui/qt/qt.cpp:272
 msgid "Pause the video playback when minimized"
 msgstr "השהיית נגינת הווידאו בעת מזעור"
 
-#: modules/gui/macosx/main/macosx.m:96 modules/gui/qt/qt.cpp:272
+#: modules/gui/macosx/main/macosx.m:96 modules/gui/qt/qt.cpp:274
 msgid ""
 "With this option enabled, the playback will be automatically paused when "
 "minimizing the window."
 msgstr "כאשר אפשרות זו מופעלת, הנגינה תושהה אוטומטית בעת מזעור החלון."
 
-#: modules/gui/macosx/main/macosx.m:99 modules/gui/qt/qt.cpp:274
+#: modules/gui/macosx/main/macosx.m:99 modules/gui/qt/qt.cpp:276
 msgid "Allow automatic icon changes"
 msgstr "לאפשר שינוי אוטומטי של סמל"
 
-#: modules/gui/macosx/main/macosx.m:100 modules/gui/qt/qt.cpp:276
+#: modules/gui/macosx/main/macosx.m:100 modules/gui/qt/qt.cpp:278
 msgid ""
 "This option allows the interface to change its icon on various occasions."
 msgstr "אפשרות זו מאפשרת לממשק לשנות את הסמל במגוון מאורעות."
@@ -18136,12 +18135,12 @@ msgid ""
 msgstr ""
 
 #: modules/gui/macosx/main/macosx.m:125
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:98
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:119
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:124
 msgid "Ask"
 msgstr "לשאול"
 
-#: modules/gui/macosx/main/macosx.m:128 modules/gui/qt/qt.cpp:278
+#: modules/gui/macosx/main/macosx.m:128 modules/gui/qt/qt.cpp:280
 msgid "Maximum Volume displayed"
 msgstr "עוצמת השמע המרבית שמוצגת"
 
@@ -18152,30 +18151,30 @@ msgstr "ממשק Mac OS X"
 #: modules/gui/macosx/main/macosx.m:138
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:13
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:388
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:223
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:225
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:226
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:228
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:229
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:231
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:232
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:233
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:234
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:235
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:236
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:237
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:238
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:239
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:240
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:243
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:252
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:256
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:241
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:242
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:244
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:245
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:248
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:257
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:260
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:369
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:261
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:262
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:263
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:265
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:376
 msgid "Appearance"
 msgstr "מראה"
 
@@ -18281,7 +18280,7 @@ msgid "Connect to Server..."
 msgstr ""
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:369
-#: modules/gui/qt/menus/qml/MainMenu.qml:88
+#: modules/gui/qt/menus/qml/MainMenu.qml:92
 msgid "Open Recent"
 msgstr "האחרונים שנפתחו"
 
@@ -18360,7 +18359,7 @@ msgstr "סנכרון רצועות"
 #: modules/gui/macosx/menus/VLCMainMenu.m:401
 #: modules/gui/macosx/menus/VLCMainMenu.m:1749
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1043
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:111
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:116
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:522 modules/gui/qt/menus/menus.cpp:917
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:54
 #: modules/gui/qt/player/qml/controlbarcontrols/LoopButton.qml:29
@@ -18520,19 +18519,19 @@ msgid "Index"
 msgstr "מפתח"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:482
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:43
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:44
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:46
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:47
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:48
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:49
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:50
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:68
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:70
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:72
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:51
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:52
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:53
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:54
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:55
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:73
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:75
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:77
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:79
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:80
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:82
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:84
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:85
 msgid "Window"
 msgstr "חלון"
 
@@ -18694,7 +18693,7 @@ msgid "Clear Menu"
 msgstr ""
 
 #: modules/gui/macosx/menus/VLCStatusBarIcon.m:107
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:112
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:117
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:45
 #: modules/gui/qt/menus/menus.cpp:912
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:883
@@ -18771,7 +18770,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/extended/qml/VideoEffectsPanel.qml:148
 #: modules/gui/qt/dialogs/gototime/gototime.cpp:65
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:416
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:343
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:345
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPicture.qml:85
 #: modules/gui/qt/player/qml/TracksMenu.qml:543
 #: modules/gui/qt/player/qml/TracksPageAudio.qml:129
@@ -18834,7 +18833,7 @@ msgid "Enable Spatializer"
 msgstr ""
 
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:270
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:185
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:190
 msgid "Headphone virtualization"
 msgstr "הדמיית אוזניות"
 
@@ -18863,7 +18862,7 @@ msgstr "מסנן"
 
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:307
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:367
-#: modules/gui/qt/dialogs/extended/extended.cpp:108
+#: modules/gui/qt/dialogs/extended/extended.cpp:114
 msgid "Audio Effects"
 msgstr "אפקטים של שמע"
 
@@ -18948,7 +18947,7 @@ msgstr "הוספה"
 
 #: modules/gui/macosx/panels/VLCBookmarksWindowController.m:98
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:382
-#: modules/gui/qt/dialogs/bookmarks/bookmarks.cpp:53
+#: modules/gui/qt/dialogs/bookmarks/bookmarks.cpp:58
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml:68
 #: modules/gui/qt/widgets/qml/SearchBox.qml:305
 msgid "Clear"
@@ -19102,7 +19101,7 @@ msgstr ""
 
 #: modules/gui/macosx/panels/VLCTrackSynchronizationWindowController.m:85
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1484
-#: modules/gui/qt/qt.cpp:346
+#: modules/gui/qt/qt.cpp:348
 msgid "Audio/Video"
 msgstr "שמע/וידאו"
 
@@ -19114,10 +19113,10 @@ msgstr "סנכרון רצועות שמע:"
 #: modules/gui/macosx/panels/VLCTrackSynchronizationWindowController.m:87
 #: modules/gui/macosx/panels/VLCTrackSynchronizationWindowController.m:91
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:291
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:263
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:264
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:265
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:266
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:268
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:269
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:270
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:271
 msgid "s"
 msgstr "שנ׳"
 
@@ -19183,7 +19182,7 @@ msgstr ""
 "הגדר 0 כדי להשבית."
 
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:263
-#: modules/gui/qt/dialogs/extended/extended.cpp:120
+#: modules/gui/qt/dialogs/extended/extended.cpp:126
 msgid "Video Effects"
 msgstr "אפקטים של וידאו"
 
@@ -19501,8 +19500,8 @@ msgid "Enable Last.fm submissions"
 msgstr "הפעלת שליחה ל־Last.fm"
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:374
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:194
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:199
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
 msgid "Visualization"
 msgstr "אפקט חזותי"
 
@@ -19525,7 +19524,7 @@ msgstr ""
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:384
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:1306
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:72
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:574
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:573
 msgid "Action"
 msgstr "פעולה"
 
@@ -19580,12 +19579,12 @@ msgstr "מקודדים / מרבבים"
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:397
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:208
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:90
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:91
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:92
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:93
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:94
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:95
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:96
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:97
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:98
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:99
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:100
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:30
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:97
@@ -19662,13 +19661,13 @@ msgid "Font color"
 msgstr "צבע הגופן"
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:437
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:225
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:226
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:231
 msgid "Font size"
 msgstr "גודל גופן"
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:438
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:226
 #: modules/spu/marq.c:139 modules/spu/rss.c:188
 #: modules/text_renderer/freetype/freetype.c:59
 msgid "Font"
@@ -19692,14 +19691,14 @@ msgid "Force bold"
 msgstr "אילוץ הדגשה"
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:445
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:232
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:237
 #: modules/text_renderer/freetype/freetype.c:84
 #: modules/video_filter/sam3.cpp:138
 msgid "Outline color"
 msgstr "צבע קו המתאר"
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:446
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:231
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:236
 #: modules/text_renderer/freetype/freetype.c:85
 #: modules/video_filter/sam3.cpp:136
 msgid "Outline thickness"
@@ -19738,7 +19737,7 @@ msgid "Folder"
 msgstr "תיקייה"
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:466
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:147
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:152
 msgid "Format"
 msgstr "מבנה"
 
@@ -19817,7 +19816,7 @@ msgid "Highest Latency"
 msgstr "העיכוב הארוך ביותר"
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:904
-#: modules/gui/qt/dialogs/preferences/preferences.cpp:420
+#: modules/gui/qt/dialogs/preferences/preferences.cpp:392
 msgid "Reset Preferences"
 msgstr "איפוס ההעדפות"
 
@@ -19984,7 +19983,7 @@ msgstr "כתובת משאב מדיה (MRL)"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:664
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:687
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:701
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:335
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:337
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:35
 msgid "Open"
 msgstr "פתיחה"
@@ -20054,7 +20053,7 @@ msgstr "הפעלת תפריטי DVD"
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:253
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:228
 #: modules/gui/macosx/windows/convertandsave/VLCOutput.m:71
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:276
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
 #: modules/gui/qt/dialogs/sout/sout_widgets.cpp:186
 #: modules/gui/qt/dialogs/sout/sout_widgets.cpp:241
 #: modules/gui/qt/dialogs/sout/sout_widgets.cpp:282
@@ -20504,8 +20503,8 @@ msgid "Save File"
 msgstr "שמור קובץ"
 
 #: modules/gui/macosx/windows/logging/VLCLogWindowController.m:98
-#: modules/gui/qt/dialogs/messages/messages.cpp:99
-#: modules/gui/qt/dialogs/messages/messages.cpp:442
+#: modules/gui/qt/dialogs/messages/messages.cpp:101
+#: modules/gui/qt/dialogs/messages/messages.cpp:467
 msgid "Messages"
 msgstr "הודעות"
 
@@ -20611,11 +20610,11 @@ msgstr "עוצמת שמע: %i %%"
 
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:231
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:210
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:166
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:168
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:169
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:171
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:173
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:174
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:176
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:210
 #: modules/gui/qt/player/qml/controlbarcontrols/VolumeWidget.qml:258
 msgid "Volume"
 msgstr "עוצמת שמע"
@@ -20975,35 +20974,35 @@ msgstr "Open: %s"
 msgid "Find: %s"
 msgstr "Find: %s"
 
-#: modules/gui/qt/dialogs/bookmarks/bookmarks.cpp:41
+#: modules/gui/qt/dialogs/bookmarks/bookmarks.cpp:46
 msgid "Edit Bookmarks"
 msgstr "עריכת סימניות"
 
-#: modules/gui/qt/dialogs/bookmarks/bookmarks.cpp:48
+#: modules/gui/qt/dialogs/bookmarks/bookmarks.cpp:53
 msgid "Create a new bookmark"
 msgstr "יצירת סימנייה חדשה"
 
-#: modules/gui/qt/dialogs/bookmarks/bookmarks.cpp:51
+#: modules/gui/qt/dialogs/bookmarks/bookmarks.cpp:56
 msgid "Delete the selected item"
 msgstr "מחיקת הפריט הנבחר"
 
-#: modules/gui/qt/dialogs/bookmarks/bookmarks.cpp:54
+#: modules/gui/qt/dialogs/bookmarks/bookmarks.cpp:59
 msgid "Delete all the bookmarks"
 msgstr "מחיקת כל הסימניות"
 
-#: modules/gui/qt/dialogs/bookmarks/bookmarks.cpp:57
+#: modules/gui/qt/dialogs/bookmarks/bookmarks.cpp:62
 #: modules/video_filter/extract.c:68
 msgid "Extract"
 msgstr "חילוץ"
 
-#: modules/gui/qt/dialogs/bookmarks/bookmarks.cpp:62
+#: modules/gui/qt/dialogs/bookmarks/bookmarks.cpp:67
 #: modules/gui/qt/dialogs/epg/epg.cpp:91
-#: modules/gui/qt/dialogs/extended/extended.cpp:142
+#: modules/gui/qt/dialogs/extended/extended.cpp:148
 #: modules/gui/qt/dialogs/help/help.cpp:70
 #: modules/gui/qt/dialogs/help/help.cpp:399
 #: modules/gui/qt/dialogs/mediainfo/mediainfo.cpp:79
-#: modules/gui/qt/dialogs/messages/messages.cpp:103
-#: modules/gui/qt/dialogs/messages/messages.cpp:445
+#: modules/gui/qt/dialogs/messages/messages.cpp:105
+#: modules/gui/qt/dialogs/messages/messages.cpp:470
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:95
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:1189
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:1302
@@ -21044,7 +21043,7 @@ msgstr "אישור"
 
 #: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:60
 #: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:37
-#: modules/gui/qt/menus/menus.cpp:955 modules/gui/qt/menus/qml/MainMenu.qml:61
+#: modules/gui/qt/menus/menus.cpp:955 modules/gui/qt/menus/qml/MainMenu.qml:65
 msgid "Open Network Stream"
 msgstr "פתח תזרים רשת"
 
@@ -21222,7 +21221,7 @@ msgid "Open Directory"
 msgstr "פתיחת תיקייה"
 
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:81
-#: modules/gui/qt/menus/menus.cpp:953 modules/gui/qt/menus/qml/MainMenu.qml:55
+#: modules/gui/qt/menus/menus.cpp:953 modules/gui/qt/menus/qml/MainMenu.qml:59
 msgid "Open Folder"
 msgstr "פתיחת תיקייה"
 
@@ -21251,12 +21250,12 @@ msgid "Media Files"
 msgstr "קובצי מדיה"
 
 #: modules/gui/qt/dialogs/dialogs_provider.hpp:54
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1516
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1517
 msgid "Video Files"
 msgstr "קובצי וידאו"
 
 #: modules/gui/qt/dialogs/dialogs_provider.hpp:55
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1515
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1516
 msgid "Audio Files"
 msgstr "קובצי שמע"
 
@@ -21265,7 +21264,7 @@ msgid "Image Files"
 msgstr "קובצי תמונה"
 
 #: modules/gui/qt/dialogs/dialogs_provider.hpp:57
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1517
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1518
 msgid "Playlist Files"
 msgstr "קובצי רשימות השמעה"
 
@@ -21366,24 +21365,24 @@ msgstr "לא ניתן היה לשמור את הגדרות אפקטי השמע (�
 msgid "The setting \"%1\" changed outside this dialog."
 msgstr "ההגדרה „%1“ שונתה מחוץ לחלון זה."
 
-#: modules/gui/qt/dialogs/extended/extended.cpp:52
+#: modules/gui/qt/dialogs/extended/extended.cpp:58
 msgid "Adjustments and Effects"
 msgstr "התאמה ואפקטים"
 
-#: modules/gui/qt/dialogs/extended/extended.cpp:88
+#: modules/gui/qt/dialogs/extended/extended.cpp:94
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:25
 msgid "Stereo Widener"
 msgstr "הרחבת סטריאו"
 
-#: modules/gui/qt/dialogs/extended/extended.cpp:123
+#: modules/gui/qt/dialogs/extended/extended.cpp:129
 msgid "Synchronization"
 msgstr "סנכרון"
 
-#: modules/gui/qt/dialogs/extended/extended.cpp:128
+#: modules/gui/qt/dialogs/extended/extended.cpp:134
 msgid "v4l2 controls"
 msgstr "פקדי v4l2"
 
-#: modules/gui/qt/dialogs/extended/extended.cpp:137
+#: modules/gui/qt/dialogs/extended/extended.cpp:143
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:88
 msgid "&Save"
 msgstr "&שמירה"
@@ -21530,13 +21529,13 @@ msgstr "8 קה״ץ"
 #: modules/gui/qt/dialogs/extended/qml/FilterPanel.qml:27
 #: modules/gui/qt/dialogs/extended/qml/FilterPanel.qml:28
 #: modules/gui/qt/dialogs/extended/qml/FilterPanel.qml:38
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:192
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:306
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
 msgid "ms"
 msgstr "מ״ש"
 
@@ -21779,23 +21778,23 @@ msgstr "לא ניתן היה להחיל חלק מהאפקטים של הערכה.
 
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:122
 #: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:66
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:179
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:180
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:181
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:182
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:183
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:185
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:186
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:187
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:188
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:190
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:206
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:207
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:209
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:210
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:191
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:192
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:193
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:194
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:195
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:211
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:212
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:213
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:214
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:215
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:216
 msgid "Effects"
 msgstr "אפקטים"
 
@@ -21977,7 +21976,7 @@ msgstr "צבעי %1"
 
 #: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:339
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:167
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:495
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:496
 #: modules/gui/qt/dialogs/sout/convert.cpp:82
 #: modules/gui/qt/widgets/qml/EmptyLabelButton.qml:78
 #: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:67
@@ -22279,7 +22278,7 @@ msgstr "מ&עבר"
 #: modules/gui/qt/dialogs/podcast/podcast_configuration.cpp:36
 #: modules/gui/qt/dialogs/preferences/expert_view.cpp:237
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:90
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1584
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1585
 #: modules/gui/qt/dialogs/sout/convert.cpp:137
 msgid "&Cancel"
 msgstr "&ביטול"
@@ -22497,24 +22496,24 @@ msgstr "שמירת &נתוני העל"
 msgid "Location:"
 msgstr "מיקום:"
 
-#: modules/gui/qt/dialogs/messages/messages.cpp:116
-#: modules/gui/qt/dialogs/messages/messages.cpp:446
+#: modules/gui/qt/dialogs/messages/messages.cpp:118
+#: modules/gui/qt/dialogs/messages/messages.cpp:471
 msgid "Saves all the displayed logs to a file"
 msgstr "שמירת כל הדוחות המוצגים לקובץ"
 
-#: modules/gui/qt/dialogs/messages/messages.cpp:334
+#: modules/gui/qt/dialogs/messages/messages.cpp:359
 msgid "Save log file as..."
 msgstr "שמירת קובץ הדוח בשם..."
 
-#: modules/gui/qt/dialogs/messages/messages.cpp:336
+#: modules/gui/qt/dialogs/messages/messages.cpp:361
 msgid "Texts/Logs (*.log *.txt);; All (*.*)"
 msgstr "קובצי טקסט/יומן (‎*.log ‎*.txt);; הכול (*.*)"
 
-#: modules/gui/qt/dialogs/messages/messages.cpp:342
+#: modules/gui/qt/dialogs/messages/messages.cpp:367
 msgid "Application"
 msgstr "יישום"
 
-#: modules/gui/qt/dialogs/messages/messages.cpp:343
+#: modules/gui/qt/dialogs/messages/messages.cpp:368
 msgid ""
 "Cannot write to file %1:\n"
 "%2."
@@ -22522,15 +22521,15 @@ msgstr ""
 "לא ניתן לכתוב אל הקובץ %1:\n"
 "%2."
 
-#: modules/gui/qt/dialogs/messages/messages.cpp:426
+#: modules/gui/qt/dialogs/messages/messages.cpp:451
 msgid "Update the tree"
 msgstr "עדכון העץ"
 
-#: modules/gui/qt/dialogs/messages/messages.cpp:427
+#: modules/gui/qt/dialogs/messages/messages.cpp:452
 msgid "Clear the messages"
 msgstr "מחיקת ההודעות"
 
-#: modules/gui/qt/dialogs/messages/messages.cpp:428
+#: modules/gui/qt/dialogs/messages/messages.cpp:453
 msgid "Clear the errors"
 msgstr "נקה את השגיאות"
 
@@ -22886,8 +22885,8 @@ msgstr "הנמוך ביותר"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:136
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1270
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:124
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:125
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
 #: modules/video_filter/deinterlace/algo_phosphor.h:55
 msgid "Low"
 msgstr "נמוך"
@@ -22896,14 +22895,14 @@ msgstr "נמוך"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:156
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:171
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:312
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:124
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:125
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
 #: modules/video_filter/deinterlace/algo_phosphor.h:56
 msgid "Medium"
 msgstr "בינוני"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:137
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:106
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:107
 msgid "Higher"
 msgstr "גבוה יותר"
 
@@ -22944,7 +22943,7 @@ msgid "%1 px wide"
 msgstr "רוחב %1 px"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:244
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:328
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
 msgid "Discover cast devices"
 msgstr "חפש מכשירים לשידור"
 
@@ -22954,7 +22953,7 @@ msgid ""
 msgstr "מחפש מכשירי שידור ברשת המקומית כשתפריט „התקן עיבוד“ נפתח."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:246
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:46
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:51
 msgid "Remember window size and position"
 msgstr "זכור את גודל החלון ומיקומו"
 
@@ -22963,7 +22962,7 @@ msgid "Opens the window where it was when VLC was closed."
 msgstr "פותח את החלון במקום שבו היה כש־VLC נסגר."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:248
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:65
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:70
 msgid "Always show the player bar"
 msgstr "הצג תמיד את סרגל הנגן"
 
@@ -22976,7 +22975,7 @@ msgstr ""
 "הנגינה, או פותחת קבצים כשהתור ריק."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:251
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:67
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:72
 msgid "Increase text contrast"
 msgstr "הגבר את ניגודיות הטקסט"
 
@@ -22989,7 +22988,7 @@ msgstr ""
 "יותר, עד לניגודיות שדורשות הנחיות הנגישות WCAG ברמה AA."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:254
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:60
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:65
 msgid "Popup duration"
 msgstr "משך החלון הקופץ"
 
@@ -22998,7 +22997,7 @@ msgid "How long the popup of the track changes stays on the screen."
 msgstr "כמה זמן החלון הקופץ של החלפת הרצועה נשאר על המסך."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:256
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:320
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:327
 msgid "Process priority"
 msgstr "עדיפות התהליך"
 
@@ -23009,7 +23008,7 @@ msgid ""
 msgstr "כמה זמן מעבד המערכת מקצה ל־VLC לעומת שאר התוכנות."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:258
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:270
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:275
 msgid "Double click on the video"
 msgstr "לחיצה כפולה על הווידאו"
 
@@ -23022,7 +23021,7 @@ msgid "Nothing|Toggle fullscreen"
 msgstr "שום דבר|החלפת מצב מסך מלא"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:260
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:223
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:228
 msgid "Size values"
 msgstr "ערכי גודל"
 
@@ -23037,8 +23036,8 @@ msgid "Relative|Pixels"
 msgstr "יחסי|פיקסלים"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:263
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:239
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:240
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:244
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:245
 #: modules/text_renderer/freetype/freetype.c:80
 msgid "Background opacity"
 msgstr "אטימות הרקע"
@@ -23050,7 +23049,7 @@ msgid ""
 msgstr "מידת האטימות של התיבה שמאחורי הכתוביות כשיש כזו (נשמרת גם כשאין)."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:265
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:89
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:94
 msgid "Never remember items matching"
 msgstr "לעולם אל תזכור פריטים תואמים"
 
@@ -23133,7 +23132,7 @@ msgid "One"
 msgstr "אחד"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1052
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:114
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:119
 msgid "When playback finishes"
 msgstr "בסיום הנגינה"
 
@@ -23142,7 +23141,7 @@ msgid "Stop, or quit VLC at the end of the play queue."
 msgstr "עצירה או יציאה מ־VLC בסוף תור הנגינה."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1061
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:41
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:46
 msgid "Use a custom skin"
 msgstr "השתמש במעטפת מותאמת אישית"
 
@@ -23151,7 +23150,7 @@ msgid "Starts VLC with the skin chosen below instead of this interface."
 msgstr "מפעיל את VLC עם המעטפת שנבחרה למטה במקום ממשק זה."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1078
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:88
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:93
 msgid "Remember the playback position"
 msgstr "זכור את מיקום הנגינה"
 
@@ -23160,7 +23159,7 @@ msgid "Lets VLC continue the media where you left off."
 msgstr "מאפשר ל־VLC להמשיך את המדיה מהמקום שבו הפסקת."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1093
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:273
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
 msgid "Reverse scroll direction"
 msgstr "הפוך את כיוון הגלילה"
 
@@ -23169,7 +23168,7 @@ msgid "The wheels that seek go backwards when turned forwards."
 msgstr "גלגלות שמשמשות למעבר בזמן מזיזות אחורה כשמגלגלים אותן קדימה."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1109
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:275
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:281
 msgid "Web remote control"
 msgstr "שליטה מרחוק בדפדפן"
 
@@ -23180,7 +23179,7 @@ msgstr ""
 "מאפשר לשלוט ב־VLC מדפדפן אינטרנט. הגדר את הסיסמה שלו ב„אפשרויות מתקדמות“."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1128
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:312
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
 msgid "Video post-processing"
 msgstr "עיבוד מאוחר של וידאו"
 
@@ -23191,7 +23190,7 @@ msgid ""
 msgstr "משפר את התמונה של סרטונים שקודדו באיכות ירודה, על חשבון כוח עיבוד."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1178
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
 msgid "Visualization size"
 msgstr "גודל האפקט החזותי"
 
@@ -23204,7 +23203,7 @@ msgid "Match window"
 msgstr "כגודל החלון"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1221
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:115
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:120
 msgid "Seek precisely"
 msgstr "מעבר מדויק"
 
@@ -23288,7 +23287,7 @@ msgstr "סריקת התוספים מחדש נכשלה: ייתכן שתיקיית
 msgid "The configurations folder could not be opened."
 msgstr "לא ניתן היה לפתוח את תיקיית התצורה."
 
-#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:177
+#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:176
 msgid "Last.fm is unavailable in this VLC installation."
 msgstr "Last.fm אינו זמין בהתקנה זו של VLC."
 
@@ -23417,7 +23416,7 @@ msgid "Show settings"
 msgstr "הצגת הגדרות"
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:74
-#: modules/gui/qt/qt.cpp:333
+#: modules/gui/qt/qt.cpp:335
 msgid "Simple"
 msgstr "פשוט"
 
@@ -23430,7 +23429,7 @@ msgid "Switch to full preferences view"
 msgstr "החלפה למצב תצוגת העדפות מלאה"
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:78
-#: modules/gui/qt/qt.cpp:333
+#: modules/gui/qt/qt.cpp:335
 msgid "Expert"
 msgstr "מומחה"
 
@@ -23478,21 +23477,7 @@ msgstr "לא ניתן לשמור את התצורה"
 msgid "Preferences file could not be saved"
 msgstr "לא ניתן לשמור את קובץ התצורה"
 
-#: modules/gui/qt/dialogs/preferences/preferences.cpp:383
-msgid "Restart Required"
-msgstr "נדרשת הפעלה מחדש"
-
-#: modules/gui/qt/dialogs/preferences/preferences.cpp:384
-msgid ""
-"VLC needs to be restarted for the reset to take full effect.\n"
-"\n"
-"Restart now?"
-msgstr ""
-"יש להפעיל מחדש את VLC כדי שהאיפוס ייכנס לתוקף מלא.\n"
-"\n"
-"להפעיל מחדש כעת?"
-
-#: modules/gui/qt/dialogs/preferences/preferences.cpp:421
+#: modules/gui/qt/dialogs/preferences/preferences.cpp:393
 msgid "Are you sure you want to reset your VLC media player preferences?"
 msgstr "האם אכן ברצונך לאפס את העדפות נגן המדיה שלך VLC?"
 
@@ -23519,7 +23504,7 @@ msgstr "פעולות"
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:1307
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:90
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:73
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:584
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:583
 msgid "Hotkey"
 msgstr "מקש קיצור"
 
@@ -23687,16 +23672,16 @@ msgstr "ברירת המחדל של המערכת (%1)"
 msgid "Configure Hotkeys"
 msgstr "הגדרת מקשי קיצור"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1506
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1507
 msgid "File associations"
 msgstr "שיוכי קבצים"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1583
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1584
 msgid "&Apply"
 msgstr "ה&חלה"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1717
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1727
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1718
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1728
 msgid "Please choose an entry point folder"
 msgstr "בחר תיקיית נקודת כניסה"
 
@@ -23705,13 +23690,13 @@ msgid "Layout direction"
 msgstr "כיוון הפריסה"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:139
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:254
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:259
 #: modules/text_renderer/freetype/freetype.c:126
 msgid "Left to right"
 msgstr "שמאל לימין"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:140
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:254
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:259
 #: modules/text_renderer/freetype/freetype.c:126
 msgid "Right to left"
 msgstr "ימין לשמאל"
@@ -23723,15 +23708,13 @@ msgstr "ערכת נושא"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:178
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:388
-#: modules/gui/qt/qt.cpp:328
+#: modules/gui/qt/qt.cpp:330
 msgid "Accent color"
 msgstr "צבע הדגשה"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:240
-msgid ""
-"VLC follows the system language. Restart VLC after changing your system "
-"language."
-msgstr "VLC משתמש בשפת המערכת. הפעל מחדש את VLC אחרי שינוי שפת המערכת."
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:241
+msgid "VLC follows the system language."
+msgstr "VLC פועל בשפת המערכת."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:20
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:499
@@ -23767,7 +23750,7 @@ msgid "No selectable device available"
 msgstr "אין התקן זמין לבחירה"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:77
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:164
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:169
 #: modules/keystore/keychain.m:52
 msgid "System default"
 msgstr "ברירת המחדל של המערכת"
@@ -23782,13 +23765,13 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:18
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:508
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:18
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:20
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:22
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:26
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:27
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:28
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:21
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:23
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:25
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:29
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:30
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:31
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:34
 msgid "Diagnostics"
 msgstr "אבחון"
 
@@ -23859,7 +23842,7 @@ msgstr "תוצאות חיפוש"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:254
 #: modules/gui/qt/dialogs/sout/convert.cpp:103
-#: modules/gui/qt/menus/qml/MainMenu.qml:162
+#: modules/gui/qt/menus/qml/MainMenu.qml:166
 msgid "Settings"
 msgstr "הגדרות"
 
@@ -23872,7 +23855,7 @@ msgstr "שפת הממשק"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:398
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:405
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:52
-#: modules/gui/qt/menus/qml/MainMenu.qml:152
+#: modules/gui/qt/menus/qml/MainMenu.qml:156
 msgid "Keyboard Shortcuts"
 msgstr "קיצורי מקלדת"
 
@@ -23900,19 +23883,19 @@ msgstr "עוד %1 קיצורים תואמים"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:477
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:552
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:133
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:134
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:135
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:136
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:159
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:163
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:138
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:139
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:140
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:141
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:164
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:165
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:196
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:197
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:199
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:168
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:169
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:170
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:201
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:202
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:204
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:207
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:209
 #: share/lua/http/dialogs/create_stream.html:156
 msgid "Output"
 msgstr "פלט"
@@ -23925,19 +23908,19 @@ msgstr "שלח ל־last.fm את הרצועות שנוגנו"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:488
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:115
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:91
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:96
 msgid "Last.fm username"
 msgstr "שם משתמש ב־Last.fm"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:488
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:117
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:92
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:97
 msgid "Last.fm password"
 msgstr "סיסמת Last.fm"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:489
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:119
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:93
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:98
 msgid "Last.fm submission URL"
 msgstr "כתובת השליחה של Last.fm"
 
@@ -24010,7 +23993,7 @@ msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:182
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:187
 msgid "Two-pass"
 msgstr "שני מעברים"
 
@@ -24087,12 +24070,12 @@ msgid "Play video to adjust and preview the picture."
 msgstr "נגן וידאו כדי לכוונן את התמונה ולראות תצוגה מקדימה."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:114
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:183
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:188
 msgid "Spatial audio"
 msgstr "שמע מרחבי"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:122
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:186
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:191
 msgid "Stereo widening"
 msgstr "הרחבת סטריאו"
 
@@ -24101,12 +24084,8 @@ msgid "System language (%1)"
 msgstr "שפת המערכת (%1)"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:94
-msgid ""
-"Sends the titles of the tracks you play to your Last.fm profile. Takes "
-"effect after restarting VLC."
-msgstr ""
-"שולח את שמות הרצועות שאתה מנגן לפרופיל ה־Last.fm שלך. נכנס לתוקף לאחר הפעלה "
-"מחדש של VLC."
+msgid "Sends the titles of the tracks you play to your Last.fm profile."
+msgstr "שולח לפרופיל ה־Last.fm שלך את שמות הרצועות המתנגנות."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:116
 msgid "The user name of your Last.fm account."
@@ -24121,7 +24100,7 @@ msgid "The address the played tracks are sent to."
 msgstr "הכתובת שאליה נשלחות הרצועות שנוגנו."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:210
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:268
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:273
 msgid "Nothing"
 msgstr "שום דבר"
 
@@ -24136,105 +24115,105 @@ msgid ""
 msgstr ""
 "הגדר סיסמה לשליטה בדפדפן ב„אפשרויות מתקדמות“: בלעדיה השליטה נשארת נעולה."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:283
-msgid "Applies after restart"
-msgstr "ייכנס לתוקף לאחר הפעלה מחדש"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:285
+msgid "Applies the next time VLC starts"
+msgstr "יחול בהפעלה הבאה של VLC"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:295
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:297
 msgid "Choose a snapshot folder"
 msgstr "בחר תיקייה לצילומי מסך"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:296
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:298
 msgid "Choose a time-shift buffer folder"
 msgstr "בחר תיקייה למכלא הזזת הזמן"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:297
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:299
 msgid "Choose a recording folder"
 msgstr "בחר תיקייה להקלטות"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:299
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:301
 msgid "Choose a folder"
 msgstr "בחר תיקייה"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:303
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:305
 msgid "Choose a skin"
 msgstr "בחר מעטפת"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:304
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:306
 msgid "Skin files (*.vlt *.wsz *.xml)"
 msgstr "קובצי מעטפת (*.vlt *.wsz *.xml)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:307
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:309
 msgid "Choose a log file"
 msgstr "בחר קובץ יומן"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:333
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:335
 msgid "Open configurations folder"
 msgstr "פתח את תיקיית התצורה"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:334
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:336
 msgid "Shows the folder of the settings of VLC."
 msgstr "מציג את התיקייה של הגדרות VLC."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:341
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:343
 msgid "Reset all settings"
 msgstr "אפס את כל ההגדרות"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:342
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:344
 msgid "Puts every setting of VLC back to its default."
 msgstr "מחזיר כל הגדרה של VLC לברירת המחדל שלה."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:358
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:360
 msgid "Rescan plugins"
 msgstr "סרוק תוספים מחדש"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:359
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:361
 msgid "Rescan"
 msgstr "סרוק מחדש"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:100
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:109
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:101
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:110
 msgid "0 s"
 msgstr "0 s"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:100
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:112
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:101
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:113
 msgid "5 s"
 msgstr "5 s"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:101
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:102
 msgid "10s"
 msgstr "10s"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:104
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:105
 msgid "Lower"
 msgstr "נמוך יותר"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:105
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:106
 msgid "Usual"
 msgstr "רגיל"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:109
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:110
 msgid "-5 s"
 msgstr "-5 s"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:110
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:111
 msgid "+5 s"
 msgstr "+5 s"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:112
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:113
 msgid "0.5 s"
 msgstr "0.5 s"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:115
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:116
 msgid "1 s"
 msgstr "1 s"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:115
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:116
 msgid "10 s"
 msgstr "10 s"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:590
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:591
 msgid "Choose a color"
 msgstr "בחר צבע"
 
@@ -24246,244 +24225,244 @@ msgstr "תמונה"
 msgid "Reset picture"
 msgstr "אפס תמונה"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:18
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:21
 msgid "Show minor warnings"
 msgstr "הצג אזהרות משניות"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:22
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:25
 #: modules/logger/file.c:225
 msgid "Log format"
 msgstr "תבנית היומן"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:22
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:25
 msgid "Plain text"
 msgstr "טקסט פשוט"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:22
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:25
 #: modules/logger/file.c:207
 msgid "HTML"
 msgstr "HTML"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:24
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:27
 msgid "Show confirmation and error dialogs"
 msgstr "הצג חלונות אישור ושגיאה"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:25
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:28
 msgid "Check for updates automatically"
 msgstr "בדוק עדכונים אוטומטית"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:26
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:29
 msgid "Save a log"
 msgstr "שמור יומן"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:27
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:30
 msgid "Log file"
 msgstr "קובץ יומן"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:28
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:31
 msgid "Log details"
 msgstr "פירוט היומן"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:29
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:32
 msgid "Errors only"
 msgstr "שגיאות בלבד"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:30
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:33
 msgid "Errors and warnings"
 msgstr "שגיאות ואזהרות"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:30
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:33
 msgid "Everything (debug)"
 msgstr "הכול (ניפוי שגיאות)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:31
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:34
 msgid "Collect playback statistics"
 msgstr "אסוף סטטיסטיקת נגינה"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:32
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:34
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:36
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:38
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:35
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:37
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:39
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:41
 msgid "Developer Options"
 msgstr "אפשרויות מפתחים"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:32
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:35
 msgid "Write to the system log"
 msgstr "כתוב ליומן המערכת"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:34
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:37
 msgid "Include debug messages in the system log"
 msgstr "כלול הודעות ניפוי שגיאות ביומן המערכת"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:36
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:39
 msgid "System log identity"
 msgstr "מזהה ביומן המערכת"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:38
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:41
 msgid "System log facility"
 msgstr "קטגוריית יומן המערכת"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:41
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:42
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:46
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:47
 msgid "Skin"
 msgstr "מעטפת"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:42
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:47
 msgid "Skin file"
 msgstr "קובץ מעטפת"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:43
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:48
 msgid "Play video inside main window"
 msgstr "נגן וידאו בתוך החלון הראשי"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:44
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:49
 msgid "Resize window to fit video"
 msgstr "התאם את גודל החלון לווידאו"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:47
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:52
 msgid "Keep window above other windows"
 msgstr "השאר את החלון מעל חלונות אחרים"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:48
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:53
 msgid "Show window decorations"
 msgstr "הצג עיטורי חלון"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:49
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:54
 msgid "Show the file name in the title bar"
 msgstr "הצג את שם הקובץ בשורת הכותרת"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:50
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:55
 msgid "Open fullscreen on"
 msgstr "צג למסך מלא"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:51
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:52
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:54
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:55
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:82
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:84
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:56
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:57
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:59
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:60
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:87
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:89
 msgid "Playback Controls"
 msgstr "פקדי נגינה"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:51
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:56
 msgid "Start in compact mode"
 msgstr "התחל בתצוגה מצומצמת"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:52
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:57
 msgid "Auto-hide the controls"
 msgstr "הסתר את הפקדים אוטומטית"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:53
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:58
 msgid "In fullscreen only"
 msgstr "במסך מלא בלבד"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:54
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:59
 msgid "Hide after"
 msgstr "הסתר אחרי"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:55
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:60
 msgid "Show controls in fullscreen"
 msgstr "הצג פקדים במסך מלא"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:56
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:57
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:58
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:60
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:61
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:62
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:63
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:65
 msgid "Notifications and System Tray"
 msgstr "הודעות ומגש המערכת"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:56
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:61
 msgid "Show a system tray icon"
 msgstr "הצג סמל במגש המערכת"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:57
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:62
 msgid "Start minimized to the tray"
 msgstr "התחל ממוזער למגש"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:58
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:63
 msgid "Show a popup when the track changes"
 msgstr "הצג חלון קופץ כשהרצועה מתחלפת"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:63
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:68
 msgid "Show the playlist as a tree"
 msgstr "הצג את רשימת הנגינה כעץ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:65
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:70
 msgid "Player Bar"
 msgstr "סרגל הנגן"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:68
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:73
 msgid "Window opacity"
 msgstr "אטימות החלון"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:70
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:75
 msgid "Pause video when window is minimized"
 msgstr "השהה את הווידאו כשהחלון ממוזער"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:72
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:77
 msgid "Bring VLC to the front when playback starts"
 msgstr "הבא את VLC לחזית כשהנגינה מתחילה"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:73
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:78
 msgid "Audio and video"
 msgstr "שמע ווידאו"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:77
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:82
 msgid "Show cover art in the window when playing audio"
 msgstr "הצג עטיפה בחלון בזמן נגינת שמע"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:79
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:84
 msgid "Show the file browser inside the open dialog"
 msgstr "הצג את דפדפן הקבצים בתוך חלון הפתיחה"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:80
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:85
 msgid "Allow the app icon to change"
 msgstr "אפשר לסמל היישום להשתנות"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:82
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:87
 msgid "Fullscreen controls opacity"
 msgstr "אטימות הפקדים במסך מלא"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:84
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:89
 msgid "Fullscreen controls sensitivity"
 msgstr "רגישות הפקדים במסך מלא"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:87
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:88
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:89
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:92
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:93
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:94
 msgid "History"
 msgstr "היסטוריה"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:90
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:95
 msgid "Fetch titles and cover art from the internet"
 msgstr "אחזר כותרות ועטיפות מהאינטרנט"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:94
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:99
 msgid "Additional interfaces"
 msgstr "ממשקים נוספים"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:97
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:102
 msgid "Continue where you left off"
 msgstr "המשך מהמקום שבו הפסקת"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:99
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:104
 msgid "Start playing as soon as a file opens"
 msgstr "התחל לנגן מיד כשקובץ נפתח"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:101
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:106
 msgid "Default playback speed"
 msgstr "מהירות נגינה התחלתית"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:102
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:107
 msgid "Pause when another app uses audio"
 msgstr "השהה כשיישום אחר משתמש בשמע"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:107
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:109
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:110
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:191
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:192
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:108
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:112
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:114
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:115
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:196
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:197
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:93
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:386
@@ -24494,582 +24473,582 @@ msgstr "השהה כשיישום אחר משתמש בשמע"
 msgid "Tracks"
 msgstr "רצועות"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:108
 msgid "Preferred video quality"
 msgstr "איכות הווידאו המועדפת"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:105
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:110
 msgid "Standard (576p)"
 msgstr "רגיל (576p)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:105
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:110
 msgid "Low (360p)"
 msgstr "נמוך (360p)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:105
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:110
 msgid "Very low (240p)"
 msgstr "נמוך מאוד (240p)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:107
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:112
 msgid "Preferred menu language"
 msgstr "שפת התפריטים המועדפת"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:109
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:114
 msgid "Default audio track"
 msgstr "רצועת שמע לברירת מחדל"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:110
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:115
 msgid "Default subtitle track"
 msgstr "רצועת כתוביות לברירת מחדל"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:111
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:112
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:113
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:114
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:128
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:129
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:116
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:117
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:118
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:119
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:133
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:134
 msgid "Order"
 msgstr "סדר נגינה"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:113
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:118
 msgid "Stop after each item"
 msgstr "עצור אחרי כל פריט"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:115
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:116
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:120
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:121
 msgid "Seeking"
 msgstr "מעבר בזמן"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:116
-#: modules/gui/qt/qt.cpp:295
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:121
+#: modules/gui/qt/qt.cpp:297
 msgid "Show thumbnail while scrubbing"
 msgstr "הצג תמונה ממוזערת בזמן גרירה"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:117
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:118
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:120
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:122
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:123
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:125
 msgid "Files & Discs"
 msgstr "קבצים ותקליטורים"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:117
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:122
 msgid "Default optical drive"
 msgstr "כונן אופטי לברירת מחדל"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:118
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:123
 msgid "Repair damaged AVI files"
 msgstr "תקן קובצי AVI פגומים"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:119
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:124
 msgid "When needed"
 msgstr "בעת הצורך"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:120
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:125
 msgid "Load matching .mkv files from the same folder"
 msgstr "טען קובצי MKV תואמים מאותה תיקייה"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:122
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:124
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:127
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:129
 msgid "Time-shift"
 msgstr "הזזת זמן"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:122
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:127
 msgid "Time-shift buffer folder"
 msgstr "תיקיית המכלא להזזת זמן"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:124
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:129
 msgid "Time-shift buffer size"
 msgstr "גודל המכלא להזזת זמן"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:129
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:134
 msgid "Pause on the last frame of each item"
 msgstr "השהה בתמונית האחרונה של כל פריט"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:130
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:135
 msgid "Resume the last playback states (tracks, speed...)"
 msgstr "שחזר את מצבי הנגינה האחרונים (רצועות, מהירות...)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:134
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:139
 msgid "Start videos in fullscreen"
 msgstr "התחל סרטונים במסך מלא"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:135
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:140
 msgid "Stop the screensaver during playback"
 msgstr "מנע את שומר המסך בזמן נגינה"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:136
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:141
 msgid "Play video as desktop wallpaper"
 msgstr "נגן וידאו כרקע שולחן העבודה"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:137
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:139
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:161
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:142
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:144
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:166
 msgid "Deinterlacing"
 msgstr "ביטול שזירה"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:139
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:144
 msgid "Method"
 msgstr "שיטה"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:140
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:141
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:142
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:144
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:153
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:155
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:157
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:369
-msgid "Framing"
-msgstr "מסגור"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:142
-msgid "Scale video to the window"
-msgstr "התאם את הווידאו לחלון"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:144
-msgid "Position in the window"
-msgstr "מיקום בחלון"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:145
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:146
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:147
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:148
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:149
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:158
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:160
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:162
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:376
+msgid "Framing"
+msgstr "מסגור"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:147
+msgid "Scale video to the window"
+msgstr "התאם את הווידאו לחלון"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:149
+msgid "Position in the window"
+msgstr "מיקום בחלון"
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:150
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:151
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:160
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:152
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:154
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:155
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:156
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:165
 msgid "Snapshots"
 msgstr "צילומי מסך"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:145
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:150
 msgid "Save to"
 msgstr "שמור אל"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:146
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:151
 msgid "File name prefix"
 msgstr "קידומת שם הקובץ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:150
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:155
 msgid "Number files sequentially"
 msgstr "מספר את הקבצים ברצף"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:151
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:156
 msgid "Show a preview after capture"
 msgstr "הצג תצוגה מקדימה אחרי הצילום"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:153
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:158
 msgid "Custom aspect ratios"
 msgstr "יחסי תצוגה מותאמים אישית"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:155
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:160
 msgid "Custom crop ratios"
 msgstr "יחסי חיתוך מותאמים אישית"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:160
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:165
 msgid "Snapshot height (-1: proportional)"
 msgstr "גובה צילום המסך (‎-1: יחסי)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:161
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:166
 msgid "Deinterlacing filter"
 msgstr "מסנן ביטול שזירה"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:165
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:170
 msgid "Speaker setup"
 msgstr "תצורת רמקולים"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:166
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:171
 msgid "Maximum volume"
 msgstr "עוצמת שמע מרבית"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:168
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:169
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:173
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:174
 #: modules/gui/qt/dialogs/preferences/qml/SettingsStartupVolume.qml:139
 msgid "Startup volume"
 msgstr "עוצמת שמע בהפעלה"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:171
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:176
 msgid "Volume step"
 msgstr "צעד עוצמת שמע"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:172
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:173
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:174
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:175
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:177
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:178
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:179
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:180
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:183
 msgid "Loudness"
 msgstr "קולניות"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:172
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:177
 msgid "Normalize loudness"
 msgstr "נרמל קולניות"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:173
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:178
 msgid "Target level"
 msgstr "רמת יעד"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:174
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:179
 msgid "Night mode"
 msgstr "מצב לילה"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:178
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:183
 msgid "Replay gain preamp"
 msgstr "קדם־הגברת איזון"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
 msgid "Spatial audio mode"
 msgstr "מצב שמע מרחבי"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:188
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:193
 msgid "Pitch shift"
 msgstr "הזזת גובה הצליל"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:194
 msgid "Chorus/flanger"
 msgstr "מקהלה/פלנג׳ר"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:191
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:196
 msgid "Preferred audio language"
 msgstr "שפת השמע המועדפת"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:192
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:197
 #: modules/gui/qt/player/qml/TracksMenu.qml:258
 msgid "Audio delay"
 msgstr "השהיית שמע"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:194
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:199
 #: modules/gui/qt/player/qml/Player.qml:851
 #: modules/gui/qt/player/qml/AudioContent.qml:429
 #: modules/visualization/visual/visual.c:120
 msgid "Visualizer"
 msgstr "אפקט חזותי"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:196
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:201
 msgid "Pass compressed audio to the receiver"
 msgstr "העבר שמע דחוס למקלט"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:202
 msgid "Detect Dolby Surround"
 msgstr "זהה Dolby Surround"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:200
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Fastest"
 msgstr "המהיר ביותר"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:200
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Balanced"
 msgstr "מאוזן"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:210
 msgid "Output gain"
 msgstr "הגבר פלט"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:206
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:211
 msgid "Keep the pitch when changing the speed"
 msgstr "שמור על גובה הצליל בשינוי מהירות"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:207
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:212
 msgid "Equalizer preamp"
 msgstr "קדם־הגברת אקווילייזר"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:209
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:214
 msgid "Compressor ratio"
 msgstr "יחס המדחס"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:210
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:215
 msgid "Compressor threshold"
 msgstr "סף המדחס"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:211
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:216
 msgid "Compressor makeup gain"
 msgstr "הגבר פיצוי של המדחס"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:213
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:216
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:217
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:218
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:222
 msgid "Tracks & Languages"
 msgstr "רצועות ושפות"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:213
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:218
 msgid "Enable subtitles"
 msgstr "הפעלת כתוביות"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:216
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
 msgid "Preferred language"
 msgstr "שפה מועדפת"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:217
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:222
 msgid "Text encoding"
 msgstr "קידוד הטקסט"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:218
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:219
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:250
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:223
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:255
 msgid "Loading Subtitles"
 msgstr "טעינת כתוביות"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:218
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:223
 msgid "Load subtitle files automatically"
 msgstr "טען קובצי כתוביות אוטומטית"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:219
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
 msgid "File name matching"
 msgstr "התאמת שם הקובץ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:222
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
 msgid "System, sans-serif"
 msgstr "מערכת, sans-serif"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:228
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:233
 msgid "Bold"
 msgstr "מודגש"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:229
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:234
 msgid "Text color"
 msgstr "צבע הטקסט"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:235
 #: modules/text_renderer/freetype/freetype.c:65
 msgid "Text opacity"
 msgstr "אטימות הטקסט"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:234
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:239
 #: modules/text_renderer/freetype/freetype.c:88
 msgid "Shadow color"
 msgstr "צבע הצל"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:235
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:240
 #: modules/text_renderer/freetype/freetype.c:90
 msgid "Shadow distance"
 msgstr "מרחק הצל"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:236
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:241
 #: share/lua/http/dialogs/mosaic_window.html:133
 msgid "Background"
 msgstr "רקע"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:237
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:242
 #: modules/text_renderer/freetype/freetype.c:81
 msgid "Background color"
 msgstr "צבע הרקע"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:243
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:248
 msgid "Vertical position"
 msgstr "מיקום אנכי"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:244
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:249
 msgid "Timing"
 msgstr "תזמון"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:245
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:246
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:247
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:248
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:261
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:250
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:251
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:252
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:266
 msgid "On-Screen Messages"
 msgstr "הודעות על המסך"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:245
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:250
 msgid "Show feedback for shortcuts"
 msgstr "הצג משוב לקיצורים"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:246
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:251
 msgid "Show feedback for"
 msgstr "הצג משוב למשך"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:247
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:252
 msgid "Show filename when a video starts"
 msgstr "הצג את שם הקובץ כשווידאו מתחיל"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:248
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
 msgid "Show filename for"
 msgstr "הצג את שם הקובץ למשך"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:250
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:255
 msgid "Load subtitles from these folders"
 msgstr "טען כתוביות מהתיקיות האלה"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:252
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:257
 #: modules/text_renderer/freetype/freetype.c:89
 msgid "Shadow angle"
 msgstr "זווית הצל"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
 #: modules/text_renderer/freetype/freetype.c:94
 msgid "Text direction"
 msgstr "כיוון הטקסט"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:256
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:261
 #: modules/text_renderer/freetype/freetype.c:83
 msgid "Outline opacity"
 msgstr "אטימות קו המתאר"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:257
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:262
 #: modules/text_renderer/freetype/freetype.c:87
 msgid "Shadow opacity"
 msgstr "אטימות הצל"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:263
 msgid "Monospace font"
 msgstr "גופן ברוחב אחיד"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:259
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:264
 msgid "System monospace"
 msgstr "ברוחב אחיד של המערכת"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:260
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:265
 msgid "Text alignment"
 msgstr "יישור הטקסט"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:261
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:266
 msgid "Position of the filename"
 msgstr "מיקום שם הקובץ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:263
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:264
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:265
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:266
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:268
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:269
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:270
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:271
 msgid "Skip Amounts"
 msgstr "מרווחי דילוג"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:263
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:268
 msgid "Very short skip"
 msgstr "דילוג קצר מאוד"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:264
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:269
 msgid "Short skip"
 msgstr "דילוג קצר"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:265
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:270
 msgid "Medium skip"
 msgstr "דילוג בינוני"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:266
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:271
 msgid "Long skip"
 msgstr "דילוג ארוך"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:267
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:270
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:271
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:272
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:273
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:275
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:276
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:277
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:280
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:283
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:286
 msgid "Mouse"
 msgstr "עכבר"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:267
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:272
 msgid "Single click on the video"
 msgstr "לחיצה בודדת על הווידאו"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:268
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:273
 msgid "Play / Pause"
 msgstr "נגינה / השהיה"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:269
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:274
 msgid "Play / Pause on release"
 msgstr "נגינה / השהיה בשחרור"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:271
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:276
 msgid "Scroll wheel"
 msgstr "גלגלת גלילה"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:272
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:277
 msgid "Horizontal scroll"
 msgstr "גלילה אופקית"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:275
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:276
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:279
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:370
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:281
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:285
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:377
 msgid "Remotes"
 msgstr "שליטה מרחוק"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:277
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:283
 msgid "Handle mouse clicks in the video"
 msgstr "טפל בלחיצות עכבר בווידאו"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
 msgid "Web remote password"
 msgstr "סיסמת השליטה בדפדפן"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:279
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:285
 msgid "Web remote address"
 msgstr "כתובת השליטה בדפדפן"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:280
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:286
 msgid "Ignore the volume keys of the keyboard"
 msgstr "התעלם ממקשי עוצמת השמע במקלדת"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:283
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:285
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:288
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:292
-msgid "Opening Files"
-msgstr "פתיחת קבצים"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
-msgid "Only allow one VLC window"
-msgstr "אפשר חלון VLC אחד בלבד"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:283
-msgid "Apply to files opened from the file manager"
-msgstr "החל על קבצים שנפתחים ממנהל הקבצים"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
-msgid "Add to the playlist instead of replacing it"
-msgstr "הוסף לרשימת הנגינה במקום להחליף אותה"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:285
-msgid "When opening a folder"
-msgstr "בפתיחת תיקייה"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:286
-msgid "Only this folder"
-msgstr "רק תיקייה זו"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:286
-msgid "Include subfolders"
-msgstr "כלול תיקיות משנה"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:287
-msgid "Include and expand subfolders"
-msgstr "כלול והרחב תיקיות משנה"
-
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:289
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:290
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:291
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:294
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
+msgid "Opening Files"
+msgstr "פתיחת קבצים"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:288
+msgid "Only allow one VLC window"
+msgstr "אפשר חלון VLC אחד בלבד"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:289
+msgid "Apply to files opened from the file manager"
+msgstr "החל על קבצים שנפתחים ממנהל הקבצים"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:290
+msgid "Add to the playlist instead of replacing it"
+msgstr "הוסף לרשימת הנגינה במקום להחליף אותה"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:291
+msgid "When opening a folder"
+msgstr "בפתיחת תיקייה"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:292
+msgid "Only this folder"
+msgstr "רק תיקייה זו"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:292
+msgid "Include subfolders"
+msgstr "כלול תיקיות משנה"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:293
+msgid "Include and expand subfolders"
+msgstr "כלול והרחב תיקיות משנה"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
 msgid "Metadata & Artwork"
 msgstr "נתוני על ועטיפות"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:289
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
 msgid "Fetch titles and artwork"
 msgstr "אחזר כותרות ועטיפות"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:291
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
 msgid "Read media information automatically"
 msgstr "קרא מידע על המדיה אוטומטית"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:292
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
 msgid "Ignored file extensions"
 msgstr "סיומות קבצים מוחרגות"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:294
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
 msgid "Buffering"
 msgstr "אגירה"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
 msgid "Local files"
 msgstr "קבצים מקומיים"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
 #: modules/services_discovery/os2drive.c:36
 #: modules/services_discovery/os2drive.c:42
 #: modules/services_discovery/os2drive.c:43
@@ -25083,195 +25062,195 @@ msgstr "קבצים מקומיים"
 msgid "Discs"
 msgstr "תקליטורים"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
 msgid "Network streams"
 msgstr "תזרימי רשת"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
 msgid "Live capture"
 msgstr "לכידה חיה"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:300
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:306
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:307
 msgid "Proxy"
 msgstr "מתווך"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:306
 msgid "System proxy"
 msgstr "מתווך המערכת"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
 msgid "Security"
 msgstr "אבטחה"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
 msgid "Verify certificates against the system trust store"
 msgstr "אמת אישורים מול מאגר האישורים של המערכת"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
 msgid "Cipher preference"
 msgstr "העדפת הצפנה"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
 msgid "Secure (128-bit)"
 msgstr "מאובטח (128 סיביות)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
 msgid "Most secure (256-bit)"
 msgstr "המאובטח ביותר (256 סיביות)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:306
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:307
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 msgid "Connections"
 msgstr "חיבורים"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:306
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
 msgid "Connection timeout"
 msgstr "זמן קצוב לחיבור"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:307
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 msgid "HTTP user agent"
 msgstr "סוכן משתמש HTTP"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
 msgid "Trusted certificates folder"
 msgstr "תיקיית אישורים מהימנים"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
 msgid "Hardware-accelerated decoding"
 msgstr "קידוד בהאצת חומרה"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:320
 msgid "Post-processing quality"
 msgstr "איכות העיבוד המאוחר"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
 msgid "Skip the H.264 loop filter"
 msgstr "דלג על מסנן הלולאה של H.264"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
 msgid "Non-reference frames"
 msgstr "תמוניות שאינן לייחוס"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
 msgid "Bidirectional frames"
 msgstr "תמוניות דו־כיווניות"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:323
 msgid "Non-key frames"
 msgstr "תמוניות שאינן מפתח"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
 msgid "Decoding threads"
 msgstr "תת־תהליכי פענוח"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:320
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:327
 msgid "Smooth Playback"
 msgstr "נגינה חלקה"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
 msgid "Drop frames when the system can't keep up"
 msgstr "השמט תמוניות כשהמערכת לא עומדת בקצב"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
 msgid "Give VLC real-time priority"
 msgstr "תן ל־VLC עדיפות של זמן אמת"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:323
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:328
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
 msgid "Developer"
 msgstr "מפתחים"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:328
 #: modules/mux/avi.c:56
 msgid "Encoder"
 msgstr "מצפין"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
 msgid "Decoder"
 msgstr "מפענח"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
 msgid "Clock reference averaging"
 msgstr "מיצוע ייחוס השעון"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
 msgid "Save recordings to"
 msgstr "שמור הקלטות אל"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:327
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
 msgid "Record without re-encoding when possible"
 msgstr "הקלט בלי קידוד מחדש כשאפשר"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:328
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:340
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:348
 msgid "Casting"
 msgstr "שידור למסך"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
 msgid "Cast quality"
 msgstr "איכות השידור"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
 msgid "Low CPU"
 msgstr "חיסכון במעבד"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:336
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:343
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:345
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:346
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:349
 msgid "Streaming"
 msgstr "הזרמה"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
 msgid "Play locally while streaming"
 msgstr "נגן מקומית בזמן ההזרמה"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
 msgid "Include audio"
 msgstr "כלול שמע"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:336
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:343
 msgid "Include video"
 msgstr "כלול וידאו"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
 msgid "Include subtitles"
 msgstr "כלול כתוביות"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:345
 msgid "Encoding preset"
 msgstr "ערכת קידוד"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:346
 msgid "Tuning"
 msgstr "כוונון"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:340
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
 msgid "Send Dolby audio as is"
 msgstr "שלח שמע Dolby כמו שהוא"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:348
 msgid "Cast HTTP port"
 msgstr "פתחת HTTP לשידור"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:349
 msgid "Keep the stream output open between items"
 msgstr "השאר את פלט התזרים פתוח בין פריטים"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:388
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:395
 #: modules/gui/qt/widgets/qml/SplitButton.qml:142
 msgid "More options"
 msgstr "אפשרויות נוספות"
@@ -25336,7 +25315,7 @@ msgstr "כבוי"
 
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:90
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:74
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:592
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:591
 msgid "Global Hotkey"
 msgstr "מקש קיצור גלובלי"
 
@@ -25397,27 +25376,27 @@ msgstr "התכנית הבאה / מזהה שירות"
 msgid "All Fields"
 msgstr "כל השדות"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:223
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:222
 msgid "%1. Press to add a key"
 msgstr "%1. לחץ כדי להוסיף מקש"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:224
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:223
 msgid "No key. Press to add one"
 msgstr "אין מקש. לחץ כדי להוסיף"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:338
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:337
 msgid "Remove %1"
 msgstr "הסר את %1"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:420
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:419
 msgid "Search Keyboard Shortcuts..."
 msgstr "חפש קיצורי מקלדת..."
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:686
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:685
 msgid "Hotkey of %1"
 msgstr "מקש הקיצור של %1"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:695
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:694
 msgid "Global hotkey of %1"
 msgstr "מקש הקיצור הגלובלי של %1"
 
@@ -25437,19 +25416,11 @@ msgstr ""
 msgid "Reset all"
 msgstr "אפס הכול"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsRestartNotice.qml:15
-msgid "Shortcuts saved"
-msgstr "הקיצורים נשמרו"
-
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsRestartNotice.qml:41
-msgid "Restart VLC to use the new keyboard shortcuts."
-msgstr "הפעל מחדש את VLC כדי להשתמש בקיצורי המקלדת החדשים."
-
 #: modules/gui/qt/dialogs/sout/convert.cpp:48
 #: modules/gui/qt/dialogs/sout/convert.cpp:106
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:105
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:181
-#: modules/gui/qt/menus/menus.cpp:970 modules/gui/qt/menus/qml/MainMenu.qml:79
+#: modules/gui/qt/menus/menus.cpp:970 modules/gui/qt/menus/qml/MainMenu.qml:83
 msgid "Convert"
 msgstr "המרה"
 
@@ -25651,19 +25622,19 @@ msgstr "נקודת עגינה"
 msgid "Login:pass"
 msgstr "משתמש:סיסמה"
 
-#: modules/gui/qt/dialogs/systray/systray.cpp:195
+#: modules/gui/qt/dialogs/systray/systray.cpp:198
 msgid "&Hide VLC media player in taskbar"
 msgstr "&הסרת הנגן VLC בשורת המשימות"
 
-#: modules/gui/qt/dialogs/systray/systray.cpp:201
+#: modules/gui/qt/dialogs/systray/systray.cpp:204
 msgid "Sho&w VLC media player"
 msgstr "ה&צגת נגן הווידאו VLC"
 
-#: modules/gui/qt/dialogs/systray/systray.cpp:213
+#: modules/gui/qt/dialogs/systray/systray.cpp:216
 msgid "&Open Media"
 msgstr "&פתיחת מדיה"
 
-#: modules/gui/qt/dialogs/systray/systray.cpp:217
+#: modules/gui/qt/dialogs/systray/systray.cpp:220
 #: modules/gui/qt/menus/menus.cpp:237
 msgid "&Quit"
 msgstr "י&ציאה"
@@ -25745,7 +25716,7 @@ msgid "Could not apply profile settings; previous values restored."
 msgstr "לא ניתן היה להחיל את הגדרות הפרופיל; הערכים הקודמים שוחזרו."
 
 #: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:41
-#: modules/gui/qt/menus/qml/MainMenu.qml:113
+#: modules/gui/qt/menus/qml/MainMenu.qml:117
 msgid "Profile (%1)"
 msgstr "פרופיל (%1)"
 
@@ -25783,7 +25754,7 @@ msgid "Drop here to remove from the player"
 msgstr "שחרר כאן כדי להסיר מהנגן"
 
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:191
-#: modules/gui/qt/menus/qml/MainMenu.qml:157
+#: modules/gui/qt/menus/qml/MainMenu.qml:161
 msgid "Customize Player"
 msgstr "התאמת הנגן"
 
@@ -25904,11 +25875,11 @@ msgstr "שידור:"
 msgid "Schedule: "
 msgstr "תזמון:"
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1164
+#: modules/gui/qt/maininterface/mainctx.cpp:1193
 msgid "Paste from clipboard"
 msgstr "הדבק מלוח הגזירים"
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1165
+#: modules/gui/qt/maininterface/mainctx.cpp:1194
 msgid "Do you want to enqueue the following URLs into the play queue?"
 msgstr "להוסיף את הכתובות הבאות לתור הנגינה?"
 
@@ -25940,7 +25911,7 @@ msgstr "תצוגת דף הבית"
 
 #: modules/gui/qt/maininterface/qml/NoMedialibHome.qml:185
 #: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:36
-#: modules/gui/qt/menus/menus.cpp:957 modules/gui/qt/menus/qml/MainMenu.qml:67
+#: modules/gui/qt/menus/menus.cpp:957 modules/gui/qt/menus/qml/MainMenu.qml:71
 msgid "Open Disc"
 msgstr "פתח תקליטור"
 
@@ -25949,7 +25920,7 @@ msgid "Open Multiple Files"
 msgstr "פתח מספר קבצים"
 
 #: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:38
-#: modules/gui/qt/menus/menus.cpp:959 modules/gui/qt/menus/qml/MainMenu.qml:73
+#: modules/gui/qt/menus/menus.cpp:959 modules/gui/qt/menus/qml/MainMenu.qml:77
 msgid "Open Capture Device"
 msgstr "פתח התקן לכידה"
 
@@ -26355,11 +26326,11 @@ msgstr "לא ניתן היה להוריד את הכתוביות: %1"
 msgid "HTTP status %1"
 msgstr "מצב HTTP %1"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:97
+#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:101
 msgid "Could not create the subtitle storage folder."
 msgstr "לא ניתן היה ליצור את תיקיית האחסון של הכתוביות."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:107
+#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:111
 msgid "Could not save the downloaded subtitle."
 msgstr "לא ניתן היה לשמור את הכתוביות שהורדו."
 
@@ -27407,7 +27378,7 @@ msgstr "הסתר ממשק"
 msgid "More Settings"
 msgstr "הגדרות נוספות"
 
-#: modules/gui/qt/menus/menus.cpp:949 modules/gui/qt/menus/qml/MainMenu.qml:49
+#: modules/gui/qt/menus/menus.cpp:949 modules/gui/qt/menus/qml/MainMenu.qml:53
 msgid "Open File(s)"
 msgstr "פתח קבצים"
 
@@ -27453,43 +27424,43 @@ msgstr "&כלים"
 msgid "V&iew"
 msgstr "ת&צוגה"
 
-#: modules/gui/qt/menus/qml/MainMenu.qml:51
+#: modules/gui/qt/menus/qml/MainMenu.qml:55
 msgid "Ctrl + O"
 msgstr "Ctrl + O"
 
-#: modules/gui/qt/menus/qml/MainMenu.qml:57
+#: modules/gui/qt/menus/qml/MainMenu.qml:61
 msgid "Ctrl + F"
 msgstr "Ctrl + F"
 
-#: modules/gui/qt/menus/qml/MainMenu.qml:63
+#: modules/gui/qt/menus/qml/MainMenu.qml:67
 msgid "Ctrl + N"
 msgstr "Ctrl + N"
 
-#: modules/gui/qt/menus/qml/MainMenu.qml:69
+#: modules/gui/qt/menus/qml/MainMenu.qml:73
 msgid "Ctrl + D"
 msgstr "Ctrl + D"
 
-#: modules/gui/qt/menus/qml/MainMenu.qml:75
+#: modules/gui/qt/menus/qml/MainMenu.qml:79
 msgid "Ctrl + C"
 msgstr "Ctrl + C"
 
-#: modules/gui/qt/menus/qml/MainMenu.qml:81
+#: modules/gui/qt/menus/qml/MainMenu.qml:85
 msgid "Ctrl + R"
 msgstr "Ctrl + R"
 
-#: modules/gui/qt/menus/qml/MainMenu.qml:141
+#: modules/gui/qt/menus/qml/MainMenu.qml:145
 msgid "New"
 msgstr "חדש"
 
-#: modules/gui/qt/menus/qml/MainMenu.qml:164
+#: modules/gui/qt/menus/qml/MainMenu.qml:168
 msgid "Ctrl + P"
 msgstr "Ctrl + P"
 
-#: modules/gui/qt/menus/qml/MainMenu.qml:168
+#: modules/gui/qt/menus/qml/MainMenu.qml:172
 msgid "About VLC"
 msgstr "אודות VLC"
 
-#: modules/gui/qt/menus/qml/MainMenu.qml:170
+#: modules/gui/qt/menus/qml/MainMenu.qml:174
 msgid "Shift + F1"
 msgstr "Shift + F1"
 
@@ -27702,21 +27673,21 @@ msgstr "רכיב העיבוד הזה אינו מציע את פורמט הפלט 
 msgid "The libplacebo HDR renderer is not installed in this build."
 msgstr "רכיב העיבוד libplacebo ל־HDR אינו מותקן בגרסה זו."
 
-#: modules/gui/qt/player/hdr_output.cpp:50
-msgid "HDR output saved. Restart playback to use it."
-msgstr "פלט ה־HDR נשמר. הפעל מחדש את הנגינה כדי להשתמש בו."
-
 #: modules/gui/qt/player/hdr_output.cpp:51
+msgid "HDR output saved. Applies to the next media."
+msgstr "פלט ה־HDR נשמר. יחול על המדיה הבאה."
+
+#: modules/gui/qt/player/hdr_output.cpp:52
 msgid "Could not save HDR output. Your previous setting was kept."
 msgstr "לא ניתן היה לשמור את פלט ה־HDR. ההגדרה הקודמת שלך נותרה בתוקף."
 
-#: modules/gui/qt/player/hdr_output.cpp:53
+#: modules/gui/qt/player/hdr_output.cpp:54
 msgid ""
 "Uses libplacebo on next playback. HDR requires a compatible display and "
 "driver."
 msgstr "ישתמש ב־libplacebo בנגינה הבאה. HDR דורש צג ומנהל התקן תואמים."
 
-#: modules/gui/qt/player/hdr_output.cpp:54
+#: modules/gui/qt/player/hdr_output.cpp:55
 msgid "HDR output is unavailable with the installed video renderer."
 msgstr "פלט HDR אינו זמין עם רכיב עיבוד הווידאו המותקן."
 
@@ -28842,15 +28813,15 @@ msgstr ""
 msgid "Show the video here too"
 msgstr "הצג את הווידאו גם כאן"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:236
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:235
 msgid "With a Chromecast, the video plays only there."
 msgstr "עם Chromecast, הווידאו מתנגן רק שם."
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:247
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:246
 msgid "The subtitles shown go to the TV with the picture."
 msgstr "הכתוביות המוצגות נשלחות לטלוויזיה יחד עם התמונה."
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:266
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:265
 msgid "playing here"
 msgstr "מתנגן כאן"
 
@@ -28958,46 +28929,46 @@ msgstr "תור הנגינה"
 msgid "%1 elements, %2"
 msgstr "%1 פריטים, %2"
 
-#: modules/gui/qt/qt.cpp:167
+#: modules/gui/qt/qt.cpp:169
 msgid "Select the initial preferences view"
 msgstr "בחר את תצוגת ההעדפות ההתחלתית"
 
-#: modules/gui/qt/qt.cpp:168
+#: modules/gui/qt/qt.cpp:170
 msgid ""
 "Select which preferences view to show upon opening the preferences dialog."
 msgstr "בחר איזו תצוגת העדפות תוצג בעת פתיחת חלון ההעדפות."
 
-#: modules/gui/qt/qt.cpp:171 modules/gui/skins2/src/skin_main.cpp:482
+#: modules/gui/qt/qt.cpp:173 modules/gui/skins2/src/skin_main.cpp:482
 msgid "Systray icon"
 msgstr "סמל בשורת המשימות"
 
-#: modules/gui/qt/qt.cpp:172
+#: modules/gui/qt/qt.cpp:174
 msgid ""
 "Show an icon in the systray allowing you to control VLC media player for "
 "basic actions."
 msgstr "הצגת סמל בשורת המשימות המאפשר לך לשלוט בנגן המדיה VLC באופן בסיסי."
 
-#: modules/gui/qt/qt.cpp:176
+#: modules/gui/qt/qt.cpp:178
 msgid "Start VLC with only a systray icon"
 msgstr "הפעלת VLC עם סמל בשורת המשימות בלבד"
 
-#: modules/gui/qt/qt.cpp:177
+#: modules/gui/qt/qt.cpp:179
 msgid "VLC will start with just an icon in your taskbar."
 msgstr "VLC יופעל עם סמל בשורת המשימות בלבד."
 
-#: modules/gui/qt/qt.cpp:186
+#: modules/gui/qt/qt.cpp:188
 msgid "Show playing item name in window title"
 msgstr "הצגת שם הפריט המתנגן בכותרת החלון"
 
-#: modules/gui/qt/qt.cpp:187
+#: modules/gui/qt/qt.cpp:189
 msgid "Show the name of the song or video in the controller window title."
 msgstr "הצגת שם השיר או הווידאו בכותרת חלון השליטה."
 
-#: modules/gui/qt/qt.cpp:190
+#: modules/gui/qt/qt.cpp:192
 msgid "Show notification popup on track change"
 msgstr "הצגת הודעה קופצת עם כל החלפת רצועה"
 
-#: modules/gui/qt/qt.cpp:192
+#: modules/gui/qt/qt.cpp:194
 msgid ""
 "Show a notification popup with the artist and track name when the current "
 "play queue item changes, when VLC is minimized or hidden."
@@ -29005,11 +28976,11 @@ msgstr ""
 "הצג הודעה קופצת עם שם האמן והרצועה כשהפריט הנוכחי בתור הנגינה מתחלף, כאשר "
 "VLC ממוזער או מוסתר."
 
-#: modules/gui/qt/qt.cpp:195
+#: modules/gui/qt/qt.cpp:197
 msgid "Windows opacity between 0.1 and 1"
 msgstr "אטימות החלונות בין 0.1 ל־1"
 
-#: modules/gui/qt/qt.cpp:196
+#: modules/gui/qt/qt.cpp:198
 msgid ""
 "Sets the windows opacity between 0.1 and 1 for main interface, play queue "
 "and extended panel. This option only works with Windows and X11 with "
@@ -29018,11 +28989,11 @@ msgstr ""
 "קובע את אטימות החלונות בין 0.1 ל־1 עבור הממשק הראשי, תור הנגינה והחלונית "
 "המורחבת. אפשרות זו פועלת רק ב־Windows וב־X11 עם הרחבות composite."
 
-#: modules/gui/qt/qt.cpp:201
+#: modules/gui/qt/qt.cpp:203
 msgid "Fullscreen controller opacity between 0.1 and 1"
 msgstr "אטימות פקד המסך המלא בין 0.1 ל־1"
 
-#: modules/gui/qt/qt.cpp:202
+#: modules/gui/qt/qt.cpp:204
 msgid ""
 "Sets the fullscreen controller opacity between 0.1 and 1 for main interface, "
 "play queue and extended panel. This option only works with Windows and X11 "
@@ -29031,15 +29002,15 @@ msgstr ""
 "קובע את אטימות פקד המסך המלא בין 0.1 ל־1 עבור הממשק הראשי, תור הנגינה "
 "והחלונית המורחבת. אפשרות זו פועלת רק ב־Windows וב־X11 עם הרחבות composite."
 
-#: modules/gui/qt/qt.cpp:207
+#: modules/gui/qt/qt.cpp:209
 msgid "Initial user scale factor for the interface, between 0.3 and 3.0"
 msgstr "מקדם היחס ההתחלתי של הממשק, בין 0.3 ל־3.0"
 
-#: modules/gui/qt/qt.cpp:209
+#: modules/gui/qt/qt.cpp:211
 msgid "Show unimportant error and warnings dialogs"
 msgstr "הצגת שגיאות ואזהרות גם אם אינן חשובות"
 
-#: modules/gui/qt/qt.cpp:210
+#: modules/gui/qt/qt.cpp:212
 msgid ""
 "Show the errors of VLC at the bottom of the window, and ask before removing "
 "media from a playlist or from the play queue, or deleting playlists. Off, "
@@ -29050,22 +29021,22 @@ msgstr ""
 "או מתור הנגינה, או לפני מחיקת רשימות נגינה. כשהאפשרות כבויה, השגיאות נשמרות "
 "רק בהודעות של VLC וההסרות מתבצעות מיד; מחיקת קובץ מהדיסק תמיד דורשת אישור."
 
-#: modules/gui/qt/qt.cpp:215
+#: modules/gui/qt/qt.cpp:217
 msgid "Activate the updates availability notification"
 msgstr "הפעלת התרעת זמינות העדכונים"
 
-#: modules/gui/qt/qt.cpp:216
+#: modules/gui/qt/qt.cpp:218
 msgid ""
 "Activate the automatic notification of new versions of the software. It runs "
 "once every two weeks."
 msgstr ""
 "הפעלת ההתרעה האוטומטית של גרסאות חדשות של התכנה. החיפוש רץ אחת לשבועיים."
 
-#: modules/gui/qt/qt.cpp:220
+#: modules/gui/qt/qt.cpp:222
 msgid "set the options for qml debugger"
 msgstr "הגדר את האפשרויות של מנפה השגיאות של QML"
 
-#: modules/gui/qt/qt.cpp:221
+#: modules/gui/qt/qt.cpp:223
 msgid ""
 "set the options for qml debugger (see http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
@@ -29073,32 +29044,32 @@ msgstr ""
 "הגדר את האפשרויות של מנפה השגיאות של QML (ראה http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
 
-#: modules/gui/qt/qt.cpp:223
+#: modules/gui/qt/qt.cpp:225
 msgid "Number of days between two update checks"
 msgstr "מספר הימים שבין שני חיפושי עדכונים"
 
-#: modules/gui/qt/qt.cpp:225
+#: modules/gui/qt/qt.cpp:227
 msgid "Ask for network policy at start"
 msgstr "לבקש מדיניות רשת עם ההפעלה"
 
-#: modules/gui/qt/qt.cpp:227
+#: modules/gui/qt/qt.cpp:229
 msgid "Save the recently played items in the menu"
 msgstr "שמירת הפריטים שהתנגנו לאחרונה בתפריט"
 
-#: modules/gui/qt/qt.cpp:229
+#: modules/gui/qt/qt.cpp:231
 msgid "List of words separated by | to filter"
 msgstr "רשימת מילים מופרדות ב־| לסינון"
 
-#: modules/gui/qt/qt.cpp:230
+#: modules/gui/qt/qt.cpp:232
 msgid ""
 "Regular expression used to filter the recent items played in the player."
 msgstr "ביטוי רגולרי לסינון הפריטים האחרונים שנוגנו בנגן."
 
-#: modules/gui/qt/qt.cpp:233
+#: modules/gui/qt/qt.cpp:235
 msgid "Selection of the starting mode and look"
 msgstr "בחירת מצב ההפעלה והמראה"
 
-#: modules/gui/qt/qt.cpp:234
+#: modules/gui/qt/qt.cpp:236
 msgid ""
 "Start VLC with:\n"
 " - normal mode\n"
@@ -29110,11 +29081,11 @@ msgstr ""
 " - עם איזור שתמיד יציג מידע כגון מילות השירים, עטיפות האלבומים וכו׳...\n"
 " - מצב מזערי עם כמות מוגבלת של פקדים"
 
-#: modules/gui/qt/qt.cpp:240
+#: modules/gui/qt/qt.cpp:242
 msgid "Show a controller in fullscreen mode"
 msgstr "הצגת פקד במצב מסך מלא"
 
-#: modules/gui/qt/qt.cpp:241
+#: modules/gui/qt/qt.cpp:243
 msgid ""
 "Show the playback controls in fullscreen when the mouse moves. Off, only the "
 "keyboard shows them (the I key). The skins read it for their fullscreen "
@@ -29123,35 +29094,35 @@ msgstr ""
 "הצג את פקדי הנגינה במסך מלא כשהעכבר זז. כשהאפשרות כבויה, רק המקלדת מציגה "
 "אותם (המקש I). גם ערכות העיצוב משתמשות בהגדרה זו עבור פקד המסך המלא שלהן."
 
-#: modules/gui/qt/qt.cpp:244
+#: modules/gui/qt/qt.cpp:246
 msgid "Embed the file browser in open dialog"
 msgstr "הטמעת סייר הקבצים בדו־שיח פתוח"
 
-#: modules/gui/qt/qt.cpp:246
+#: modules/gui/qt/qt.cpp:248
 msgid "Define which screen fullscreen goes"
 msgstr "הגדרת המסך בו יוצג מצב המסך המלא"
 
-#: modules/gui/qt/qt.cpp:247
+#: modules/gui/qt/qt.cpp:249
 msgid "Screennumber of fullscreen, instead of same screen where interface is."
 msgstr "מספר המסך להצגה במסך מלא, במקום אותו מסך שבו נמצא הממשק."
 
-#: modules/gui/qt/qt.cpp:250
+#: modules/gui/qt/qt.cpp:252
 msgid "Load extensions on startup"
 msgstr "טעינת הרחבות בהפעלה"
 
-#: modules/gui/qt/qt.cpp:251
+#: modules/gui/qt/qt.cpp:253
 msgid "Automatically load the extensions module on startup."
 msgstr "טען אוטומטית את מודול ההרחבות בעת ההפעלה."
 
-#: modules/gui/qt/qt.cpp:254
+#: modules/gui/qt/qt.cpp:256
 msgid "Start in minimal view (without menus)"
 msgstr "הפעלת התצוגה המזערית (ללא תפריטים)"
 
-#: modules/gui/qt/qt.cpp:256
+#: modules/gui/qt/qt.cpp:258
 msgid "Display background cone or art"
 msgstr "הצג קונוס או עטיפה ברקע"
 
-#: modules/gui/qt/qt.cpp:257
+#: modules/gui/qt/qt.cpp:259
 msgid ""
 "Display the cover art of the audio playing in the player (the cone in the "
 "compact view). Off, a plain picture takes its place, which also prevents "
@@ -29160,19 +29131,19 @@ msgstr ""
 "הצג את העטיפה של השמע המתנגן בנגן (הקונוס בתצוגה המצומצמת). כשהאפשרות כבויה, "
 "מוצגת במקומה תמונה פשוטה, מה שגם מונע צריבה של המסך."
 
-#: modules/gui/qt/qt.cpp:260
+#: modules/gui/qt/qt.cpp:262
 msgid "Expanding background cone or art"
 msgstr "קונוס או עטיפה מתרחבים ברקע"
 
-#: modules/gui/qt/qt.cpp:261
+#: modules/gui/qt/qt.cpp:263
 msgid "Background art fits window's size."
 msgstr "העטיפה ברקע מותאמת לגודל החלון."
 
-#: modules/gui/qt/qt.cpp:263
+#: modules/gui/qt/qt.cpp:265
 msgid "Ignore keyboard volume buttons."
 msgstr "התעלמות ממקשי השליטה בעוצמת השמע שבמקלדת."
 
-#: modules/gui/qt/qt.cpp:265
+#: modules/gui/qt/qt.cpp:267
 msgid ""
 "With this option checked, the volume up, volume down and mute buttons on "
 "your keyboard will always change your system volume. With this option "
@@ -29184,11 +29155,11 @@ msgstr ""
 "עוצמת השמע ישנו את עוצמת השמע של VLC כאשר המיקוד הוא על VLC ואת עוצמת השמע "
 "של המערכת כאשר המיקוד אינו על VLC."
 
-#: modules/gui/qt/qt.cpp:280
+#: modules/gui/qt/qt.cpp:282
 msgid "When to raise the interface"
 msgstr "מתי להביא את הממשק לחזית"
 
-#: modules/gui/qt/qt.cpp:281
+#: modules/gui/qt/qt.cpp:283
 msgid ""
 "This option allows the interface to be shown and raised automatically when a "
 "video/audio playback starts, or never."
@@ -29196,11 +29167,11 @@ msgstr ""
 "אפשרות זו מאפשרת להציג את הממשק ולהביא אותו לחזית אוטומטית כשמתחילה נגינת "
 "וידאו/שמע, או לעולם לא."
 
-#: modules/gui/qt/qt.cpp:284
+#: modules/gui/qt/qt.cpp:286
 msgid "Enable window titlebar"
 msgstr "הפעל את שורת הכותרת"
 
-#: modules/gui/qt/qt.cpp:285
+#: modules/gui/qt/qt.cpp:287
 msgid ""
 "This option enables the title bar. Disabling it will remove the titlebar and "
 "move window buttons within the interface (Client Side Decoration)"
@@ -29208,35 +29179,35 @@ msgstr ""
 "אפשרות זו מפעילה את שורת הכותרת. השבתתה תסיר את שורת הכותרת ותעביר את לחצני "
 "החלון לתוך הממשק (Client Side Decoration)"
 
-#: modules/gui/qt/qt.cpp:289
+#: modules/gui/qt/qt.cpp:291
 msgid "Show the menu bar"
 msgstr "הצג שורת תפריטים"
 
-#: modules/gui/qt/qt.cpp:290
+#: modules/gui/qt/qt.cpp:292
 msgid "This option displays the classic menu bar"
 msgstr "אפשרות זו מציגה את שורת התפריטים הקלאסית"
 
-#: modules/gui/qt/qt.cpp:292
+#: modules/gui/qt/qt.cpp:294
 msgid "Pin video controls"
 msgstr "הצמד פקדי וידאו"
 
-#: modules/gui/qt/qt.cpp:293
+#: modules/gui/qt/qt.cpp:295
 msgid "Place video controls above and below the video instead of above"
 msgstr "מקם את פקדי הווידאו מעל הווידאו ומתחתיו במקום מעליו בלבד"
 
-#: modules/gui/qt/qt.cpp:296
+#: modules/gui/qt/qt.cpp:298
 msgid "Show the frame at the hovered position above the seek bar"
 msgstr "הצג מעל פס ההתקדמות את התמונית שבמיקום הסמן"
 
-#: modules/gui/qt/qt.cpp:298
+#: modules/gui/qt/qt.cpp:300
 msgid "Fullscreen controller mouse sensitivity"
 msgstr "רגישות העכבר של פקד המסך המלא"
 
-#: modules/gui/qt/qt.cpp:300
+#: modules/gui/qt/qt.cpp:302
 msgid "Select Qt video integration backend"
 msgstr "בחר את מנגנון שילוב הווידאו של Qt"
 
-#: modules/gui/qt/qt.cpp:301
+#: modules/gui/qt/qt.cpp:303
 msgid ""
 "Select Qt video integration backend. Use with care, the interface may not "
 "start if an incompatible compositor is selected"
@@ -29244,11 +29215,11 @@ msgstr ""
 "בחר את מנגנון שילוב הווידאו של Qt. יש להשתמש בזהירות, ייתכן שהממשק לא יופעל "
 "אם נבחר מרכיב תצוגה (compositor) שאינו תואם"
 
-#: modules/gui/qt/qt.cpp:303
+#: modules/gui/qt/qt.cpp:305
 msgid "Use smooth scrolling in Flickable based views"
 msgstr "השתמש בגלילה חלקה בתצוגות מבוססות Flickable"
 
-#: modules/gui/qt/qt.cpp:304
+#: modules/gui/qt/qt.cpp:306
 msgid ""
 "Deactivating this option will disable smooth scrolling in Flickable based "
 "views (such as the Play Queue). This option is only respected with a scroll "
@@ -29258,19 +29229,19 @@ msgstr ""
 "הנגינה). אפשרות זו חלה רק עם מטפל גלילה, ראה את האפשרות `qt-use-scroll-"
 "handler`."
 
-#: modules/gui/qt/qt.cpp:307
+#: modules/gui/qt/qt.cpp:309
 msgid "Use Kirigami scroll handler for Flickable based views"
 msgstr "השתמש במטפל הגלילה של Kirigami בתצוגות מבוססות Flickable"
 
-#: modules/gui/qt/qt.cpp:308
+#: modules/gui/qt/qt.cpp:310
 msgid "Using Kirigami scroll handler may improve scrolling behavior."
 msgstr "שימוש במטפל הגלילה של Kirigami עשוי לשפר את התנהגות הגלילה."
 
-#: modules/gui/qt/qt.cpp:310
+#: modules/gui/qt/qt.cpp:312
 msgid "Safe area for the user interface"
 msgstr "אזור בטוח לממשק המשתמש"
 
-#: modules/gui/qt/qt.cpp:311
+#: modules/gui/qt/qt.cpp:313
 msgid ""
 "Sets the safe area percentage between 0.0 and 100 when you want to ensure "
 "the visibility of the user interface on a constrained viewport"
@@ -29278,30 +29249,30 @@ msgstr ""
 "קובע את אחוז האזור הבטוח בין 0.0 ל־100 כשרוצים להבטיח את נראות ממשק המשתמש "
 "בתצוגה מוגבלת"
 
-#: modules/gui/qt/qt.cpp:315
+#: modules/gui/qt/qt.cpp:317
 msgid "Print Qt's important internal messages"
 msgstr "הדפס את ההודעות הפנימיות החשובות של Qt"
 
-#: modules/gui/qt/qt.cpp:316
+#: modules/gui/qt/qt.cpp:318
 msgid "Enable Qt's all own messaging categories except the debug category."
 msgstr "הפעל את כל קטגוריות ההודעות של Qt מלבד קטגוריית ניפוי השגיאות."
 
-#: modules/gui/qt/qt.cpp:318
+#: modules/gui/qt/qt.cpp:320
 msgid "Hide the window on close"
 msgstr "הסתר את החלון בעת סגירה"
 
-#: modules/gui/qt/qt.cpp:319
+#: modules/gui/qt/qt.cpp:321
 msgid ""
 "Instead of closing the application, hide the window. This setting is only "
 "applicable when system tray icon is enabled."
 msgstr ""
 "במקום לסגור את היישום, הסתר את החלון. הגדרה זו חלה רק כשסמל מגש המערכת מופעל."
 
-#: modules/gui/qt/qt.cpp:321
+#: modules/gui/qt/qt.cpp:323
 msgid "Enable backdrop blur filter for the main window if possible"
 msgstr "הפעל מסנן טשטוש רקע לחלון הראשי אם אפשר"
 
-#: modules/gui/qt/qt.cpp:322
+#: modules/gui/qt/qt.cpp:324
 msgid ""
 "If backdrop blur filter is available, use translucency in the backgrounds of "
 "certain parts of the user interface instead of a solid color. This setting "
@@ -29310,11 +29281,11 @@ msgstr ""
 "אם מסנן טשטוש הרקע זמין, השתמש בשקיפות ברקעים של חלקים מסוימים בממשק המשתמש "
 "במקום בצבע אחיד. הגדרה זו פוגעת בקריאות הטקסט."
 
-#: modules/gui/qt/qt.cpp:325
+#: modules/gui/qt/qt.cpp:327
 msgid "Enable picture-in-picture (PiP) mode"
 msgstr "הפעל מצב תמונה בתוך תמונה (PiP)"
 
-#: modules/gui/qt/qt.cpp:326
+#: modules/gui/qt/qt.cpp:328
 msgid ""
 "Picture-in-picture mode allows playing video contained in a smaller area so "
 "that the interface remains usable."
@@ -29322,40 +29293,40 @@ msgstr ""
 "מצב תמונה בתוך תמונה מאפשר לנגן וידאו בתוך אזור קטן יותר כך שהממשק יישאר "
 "שמיש."
 
-#: modules/gui/qt/qt.cpp:329
+#: modules/gui/qt/qt.cpp:331
 msgid ""
 "Adjusts the accent color, special values are 'default' and 'system' "
 "(requires Qt 6.6) ."
 msgstr ""
 "מתאים את צבע ההדגשה, הערכים המיוחדים הם 'default' ו־'system' (נדרש Qt 6.6) ."
 
-#: modules/gui/qt/qt.cpp:339
+#: modules/gui/qt/qt.cpp:341
 msgid "When minimized"
 msgstr "כשהתכנית ממוזערת"
 
-#: modules/gui/qt/qt.cpp:374 modules/video_output/xcb/x11.c:413
+#: modules/gui/qt/qt.cpp:376 modules/video_output/xcb/x11.c:413
 msgid "X11"
 msgstr "X11"
 
-#: modules/gui/qt/qt.cpp:382
+#: modules/gui/qt/qt.cpp:384
 msgid "Qt interface"
 msgstr "ממשק Qt"
 
-#: modules/gui/qt/qt.cpp:430
+#: modules/gui/qt/qt.cpp:432
 msgid "Check for VLC Redesign updates"
 msgstr "בדוק אם יש עדכונים ל־VLC Redesign"
 
-#: modules/gui/qt/qt.cpp:431
+#: modules/gui/qt/qt.cpp:433
 msgid ""
 "Look for a new release of VLC Redesign on GitHub at startup, at most once a "
 "day."
 msgstr "חפש גרסה חדשה של VLC Redesign ב־GitHub בעת ההפעלה, לכל היותר פעם ביום."
 
-#: modules/gui/qt/qt.cpp:435
+#: modules/gui/qt/qt.cpp:437
 msgid "Resume at"
 msgstr "נקודת המשך"
 
-#: modules/gui/qt/qt.cpp:436
+#: modules/gui/qt/qt.cpp:438
 msgid ""
 "Seconds into the media of the command line where playback continues, after "
 "an update."
@@ -35352,7 +35323,8 @@ msgid ""
 "Video will be rendered with this Wayland display. If empty, the default "
 "display will be used."
 msgstr ""
-"החלון יעובד בתצוגת ה־Wayland הזו. אם הערך ריק, ייעשה שימוש בתצוגת ברירת המחדל."
+"החלון יעובד בתצוגת ה־Wayland הזו. אם הערך ריק, ייעשה שימוש בתצוגת ברירת "
+"המחדל."
 
 #: modules/video_output/wayland/xdg-shell.c:846
 msgid "Fullscreen output"
@@ -36325,6 +36297,42 @@ msgstr ""
 #: share/lua/http/index.html:305
 msgid "Are you sure you wish to create the stream?"
 msgstr "ליצור את התזרים?"
+
+#~ msgid "Restart Required"
+#~ msgstr "נדרשת הפעלה מחדש"
+
+#~ msgid ""
+#~ "VLC needs to be restarted for the reset to take full effect.\n"
+#~ "\n"
+#~ "Restart now?"
+#~ msgstr ""
+#~ "יש להפעיל מחדש את VLC כדי שהאיפוס ייכנס לתוקף מלא.\n"
+#~ "\n"
+#~ "להפעיל מחדש כעת?"
+
+#~ msgid ""
+#~ "VLC follows the system language. Restart VLC after changing your system "
+#~ "language."
+#~ msgstr "VLC משתמש בשפת המערכת. הפעל מחדש את VLC אחרי שינוי שפת המערכת."
+
+#~ msgid ""
+#~ "Sends the titles of the tracks you play to your Last.fm profile. Takes "
+#~ "effect after restarting VLC."
+#~ msgstr ""
+#~ "שולח את שמות הרצועות שאתה מנגן לפרופיל ה־Last.fm שלך. נכנס לתוקף לאחר "
+#~ "הפעלה מחדש של VLC."
+
+#~ msgid "Applies after restart"
+#~ msgstr "ייכנס לתוקף לאחר הפעלה מחדש"
+
+#~ msgid "Shortcuts saved"
+#~ msgstr "הקיצורים נשמרו"
+
+#~ msgid "Restart VLC to use the new keyboard shortcuts."
+#~ msgstr "הפעל מחדש את VLC כדי להשתמש בקיצורי המקלדת החדשים."
+
+#~ msgid "HDR output saved. Restart playback to use it."
+#~ msgstr "פלט ה־HDR נשמר. הפעל מחדש את הנגינה כדי להשתמש בו."
 
 #~ msgid "Restart VLC to use the new interface language."
 #~ msgstr "הפעל מחדש את VLC כדי להשתמש בשפת הממשק החדשה."

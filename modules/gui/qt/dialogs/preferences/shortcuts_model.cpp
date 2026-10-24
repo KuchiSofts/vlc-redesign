@@ -44,9 +44,31 @@ void ShortcutsModel::setCtx(MainCtx *ctx)
 {
     if (m_ctx == ctx)
         return;
+    if (m_ctx)
+        disconnect(m_ctx, &MainCtx::interfaceLanguageChanged, this, &ShortcutsModel::retranslate);
     m_ctx = ctx;
+    if (m_ctx)
+        connect(m_ctx, &MainCtx::interfaceLanguageChanged, this, &ShortcutsModel::retranslate);
     emit ctxChanged();
     reload();
+}
+
+// Another language of the interface: the names of the actions and of their
+// groups in it, the keys staged kept
+void ShortcutsModel::retranslate()
+{
+    for (Entry &entry : m_entries) {
+        const QByteArray name = entry.key.toUtf8();
+        const module_config_t *item = config_FindConfig(name.constData());
+        if (item && item->psz_text)
+            entry.action = qfut(item->psz_text);
+        entry.group = groupFor(entry.key);
+    }
+    // a search may find other rows in the new names
+    if (!m_search.isEmpty())
+        rebuildRows();
+    else if (!m_rows.isEmpty())
+        emit dataChanged(index(0), index(m_rows.size() - 1), {ActionRole, GroupRole});
 }
 
 void ShortcutsModel::setSearch(const QString &search)

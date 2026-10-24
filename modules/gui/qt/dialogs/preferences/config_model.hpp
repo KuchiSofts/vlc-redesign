@@ -162,6 +162,10 @@ private:
 
     bool visible(const Entry &entry) const;
     void rebuildRows();
+    // m_entries from VLC and the settings of the interface (reload())
+    void buildEntries();
+    // The texts of the rows in the language of the interface
+    void retranslate();
     void setError(const QString &error);
     // A setting as the user knows it (its name), for the messages
     QString displayName(const QString &key) const;

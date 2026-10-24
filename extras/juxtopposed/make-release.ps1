@@ -57,6 +57,10 @@ if ($LASTEXITCODE) { throw "make-delta normalize failed ($LASTEXITCODE)" }
 # it had when the cache was made. Zip stores times in steps of 2 s, so give
 # every file one even-second time first, then make the cache: an unzipped
 # copy then starts without scanning its ~600 plugins.
+# The working folder of the app's updater, left if the package folder was run:
+# never shipped (the zip, the installer and the small updates would carry it)
+if (Test-Path "$Package\.update") { Remove-Item "$Package\.update" -Recurse -Force }
+
 $now = Get-Date
 $stamp = Get-Date -Year $now.Year -Month $now.Month -Day $now.Day -Hour $now.Hour -Minute $now.Minute `
     -Second ($now.Second - $now.Second % 2) -Millisecond 0

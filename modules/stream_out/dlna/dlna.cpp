@@ -37,7 +37,9 @@
 
 #include <vlc_configuration.h>
 #include <vlc_cxx_helpers.hpp>
+#include <vlc_demux.h>
 #include <vlc_dialog.h>
+#include <vlc_interrupt.h>
 #include <vlc_rand.h>
 #include <vlc_sout.h>
 #include <vlc_subpicture.h>
@@ -181,6 +183,8 @@ struct sout_stream_sys_t
     void Feed( sout_stream_t *p_stream, bool all );
     void Release( sout_stream_id_sys_t *id, block_t *block );
     bool Origin( sout_stream_t *p_origin, unsigned serial, int cat, const block_t *block );
+    void EndStream( sout_stream_t *p_stream );
+    bool InputEnded( sout_stream_t *p_stream, bool *paused );
     void Anchor( sout_stream_t *p_stream, vlc_tick_t date, vlc_tick_t ts );
     void UpdateDisplay( sout_stream_t *p_stream );
     void StopDisplay();
@@ -257,6 +261,9 @@ struct sout_stream_sys_t
      * or another plays there (ended_done, ctl_lock) */
     sout_stream_t                       *p_ended = nullptr;
     bool                                ended_done = false;
+    /* the input read all of the media (its dlna_demux filter holds its end
+     * until the renderer showed it: InputEnded) */
+    bool                                input_end = false;
 
     sout_stream_t                       *p_display = nullptr;
     bool                                display_started = false;
@@ -274,8 +281,12 @@ struct sout_stream_sys_t
     bool                                ctl_running = false;
     bool                                ctl_stop = false;
     /* the end of the media: the renderer is stopped once it has shown what
-     * it has (it is that much behind), the next one plays after that */
+     * it has (it is that much behind), the next one plays after that; the
+     * media waits for it (end_wait: the input's end, held), and the time
+     * said goes no further than the end (end_ts) */
     vlc_tick_t                          stop_at = VLC_TICK_INVALID;
+    bool                                end_wait = false;
+    vlc_tick_t                          end_ts = VLC_TICK_INVALID;
     /* stopped by the user: now (until another plays) */
     bool                                stop_now = false;
     /* what the interface asks (the "renderer-paused", "renderer-volume" and
@@ -858,7 +869,9 @@ void sout_stream_sys_t::Measure( sout_stream_t *p_stream, vlc_tick_t pos,
  * user asked for). ctl_lock held. */
 void sout_stream_sys_t::PublishTime( vlc_tick_t now )
 {
-    const vlc_tick_t ts = BaseTs( now ) - latency;
+    vlc_tick_t ts = BaseTs( now ) - latency;
+    if ( end_ts != VLC_TICK_INVALID && ts > end_ts )
+        ts = end_ts;
     while ( segments.size() > 1 && segments[1].first <= ts )
         segments.pop_front();
     if ( segments.empty() )
@@ -901,6 +914,8 @@ void sout_stream_sys_t::Fail( sout_stream_t *p_stream, const char *error, int co
     msg_Warn( p_stream, "the renderer does not play: %s (%d)", error, code );
     playing = false;
     check_at = VLC_TICK_INVALID;
+    /* (the media no longer waits for it) */
+    end_wait = false;
     if ( !strcmp( error, "unreachable" ) )
         unreachable = true;
     Report( RENDERER_FAILED, error );
@@ -986,7 +1001,10 @@ void sout_stream_sys_t::ControlLoop( sout_stream_t *p_stream )
 
         if ( stop_at != VLC_TICK_INVALID && announce_uri.empty() )
         {
-            if ( now >= stop_at || unreachable )
+            /* (paused, it shows no more of it: that much later, see
+             * RendererVarChanged) */
+            const bool paused = pause_date != VLC_TICK_INVALID && !stop_now;
+            if ( ( now >= stop_at && !paused ) || unreachable )
             {
                 stop_at = VLC_TICK_INVALID;
                 playing = false;
@@ -997,9 +1015,11 @@ void sout_stream_sys_t::ControlLoop( sout_stream_t *p_stream )
                     ctl_lock.lock();
                 }
                 ended_done = true;
+                end_wait = false;
                 continue;
             }
-            wake( stop_at );
+            if ( !paused )
+                wake( stop_at );
         }
         if ( !announce_uri.empty() )
         {
@@ -1014,6 +1034,7 @@ void sout_stream_sys_t::ControlLoop( sout_stream_t *p_stream )
             {
                 stop_at = VLC_TICK_INVALID;
                 stop_now = false;
+                end_wait = false;
                 const std::string uri = announce_uri;
                 const protocol_info_t protocol = *announce_protocol;
                 const bool paused = want_paused;
@@ -1197,6 +1218,9 @@ static int RendererVarChanged( vlc_object_t *, char const *psz_var, vlc_value_t,
             p_sys->pause_date = now;
         else if ( !newval.b_bool && p_sys->pause_date != VLC_TICK_INVALID )
         {
+            /* the end shown as much later */
+            if ( p_sys->stop_at != VLC_TICK_INVALID && !p_sys->stop_now )
+                p_sys->stop_at += now - p_sys->pause_date;
             p_sys->paused_total += now - p_sys->pause_date;
             p_sys->pause_date = VLC_TICK_INVALID;
             /* it goes on when it is told: its delay to see again */
@@ -1637,12 +1661,62 @@ void sout_stream_sys_t::ResetTimeline()
     sent_end = VLC_TICK_INVALID;
     late_since = VLC_TICK_INVALID;
     video_sent = false;
+    input_end = false;
     vlc::threads::mutex_locker locker( ctl_lock );
     anchor_date = anchor_ts = VLC_TICK_INVALID;
     segments.clear();
     time_at = VLC_TICK_INVALID;
+    end_wait = false;
+    end_ts = VLC_TICK_INVALID;
     if ( libvlc != nullptr && var_Type( libvlc, "renderer-time" ) )
         var_SetInteger( libvlc, "renderer-time", -1 );
+}
+
+/* The end of the media for the renderer: the end of its stream goes (what
+ * the chain still has: the conversion's last pictures, what the muxer
+ * keeps), and it is stopped once it showed it, that much behind (feed_lock
+ * held) */
+void sout_stream_sys_t::EndStream( sout_stream_t *p_stream )
+{
+    stopSoutChain( p_stream, true );
+    vlc::threads::mutex_locker locker( ctl_lock );
+    /* until it shows the end of what was sent */
+    const vlc_tick_t now = vlc_tick_now();
+    vlc_tick_t left = VLC_TICK_FROM_SEC(4);
+    if ( latency != VLC_TICK_INVALID && anchor_date != VLC_TICK_INVALID
+      && sent_end != VLC_TICK_INVALID )
+        left = sent_end - ( BaseTs( now ) - latency );
+    stop_at = stop_now ? now
+                       : now + std::clamp<vlc_tick_t>( left + VLC_TICK_FROM_MS(500),
+                                                       VLC_TICK_FROM_SEC(1),
+                                                       VLC_TICK_FROM_SEC(15) );
+    /* (not for a renderer that does not play: failed, stopped) */
+    end_wait = playing;
+    end_ts = sent_end;
+    msg_Dbg( p_stream, "the end: the renderer stops in %" PRId64 " ms, once it showed it",
+             MS_FROM_VLC_TICK( stop_at - now ) );
+    ctl_wait.signal();
+}
+
+/* The input read all of the media (its dlna_demux filter, once what it read
+ * went out of its decoders): what is held goes, and the renderer gets the
+ * end of its stream. Whether the media still waits for the renderer to show
+ * it (until it is stopped there: ControlLoop), and whether it is paused. */
+bool sout_stream_sys_t::InputEnded( sout_stream_t *p_stream, bool *paused )
+{
+    vlc::threads::mutex_locker feed( feed_lock );
+    if ( !input_end )
+    {
+        input_end = true;
+        if ( retime )
+            Retime( p_stream, true );
+        Feed( p_stream, true );
+        if ( p_out != nullptr )
+            EndStream( p_stream );
+    }
+    vlc::threads::mutex_locker locker( ctl_lock );
+    *paused = pause_date != VLC_TICK_INVALID;
+    return end_wait;
 }
 
 void sout_stream_sys_t::StopDisplay()
@@ -2268,6 +2342,19 @@ static void Flush( sout_stream_t *p_stream, void *id )
         p_sys->retime_since = vlc_tick_now();
     }
 
+    /* a seek once the input read all, while the renderer shows the end: its
+     * stream ended, another starts (the renderer is not stopped first) */
+    if ( p_sys->input_end )
+    {
+        p_sys->input_end = false;
+        p_sys->es_changed = true;
+        vlc::threads::mutex_locker locker( p_sys->ctl_lock );
+        if ( !p_sys->stop_now )
+            p_sys->stop_at = VLC_TICK_INVALID;
+        p_sys->end_wait = false;
+        p_sys->end_ts = VLC_TICK_INVALID;
+    }
+
     if ( p_sys->p_out != nullptr && id_sys->p_sub_id != nullptr )
         sout_StreamFlush( p_sys->p_out, id_sys->p_sub_id );
 }
@@ -2327,23 +2414,7 @@ static void Del(sout_stream_t *p_stream, void *_id)
     /* (a track that wasn't in the chain, e.g. a subtitle of a sound: the
      * chain kept for the renderer to finish stays as it is) */
     if (p_sys->out_streams.empty() && p_sys->p_out != nullptr)
-    {
-        p_sys->stopSoutChain(p_stream, true);
-        vlc::threads::mutex_locker locker( p_sys->ctl_lock );
-        /* until it shows the end of what was sent */
-        const vlc_tick_t now = vlc_tick_now();
-        vlc_tick_t left = VLC_TICK_FROM_SEC(4);
-        if ( p_sys->latency != VLC_TICK_INVALID && p_sys->anchor_date != VLC_TICK_INVALID
-          && p_sys->sent_end != VLC_TICK_INVALID )
-            left = p_sys->sent_end - ( p_sys->BaseTs( now ) - p_sys->latency );
-        p_sys->stop_at = p_sys->stop_now ? now
-                       : now + std::clamp<vlc_tick_t>( left + VLC_TICK_FROM_MS(500),
-                                                       VLC_TICK_FROM_SEC(1),
-                                                       VLC_TICK_FROM_SEC(15) );
-        msg_Dbg( p_stream, "the end: the renderer stops in %" PRId64 " ms, once it showed it",
-                 MS_FROM_VLC_TICK( p_sys->stop_at - now ) );
-        p_sys->ctl_wait.signal();
-    }
+        p_sys->EndStream( p_stream );
     if (p_sys->streams.empty())
     {
         p_sys->StopDisplay();
@@ -2354,6 +2425,12 @@ static void Del(sout_stream_t *p_stream, void *_id)
 static void CloseSout( sout_stream_t *p_stream )
 {
     sout_stream_sys_t *p_sys = static_cast<sout_stream_sys_t *>( p_stream->p_sys );
+
+    {
+        vlc_object_t *parent = vlc_object_parent( p_stream );
+        var_SetAddress( parent, SOUT_CFG_PREFIX "out", NULL );
+        var_Destroy( parent, SOUT_CFG_PREFIX "out" );
+    }
 
     if ( p_sys->feed_running )
     {
@@ -2534,6 +2611,110 @@ int OpenOrigin( vlc_object_t *p_this )
     return VLC_SUCCESS;
 }
 
+/* The demux filter of a DLNA renderer (dlna_demux, on the media): the media
+ * ends once the renderer showed its end. The input reads ahead of it (what
+ * the stream goes ahead, "lead", and more that is held: Feed), seconds
+ * before it shows that: the media ended there, the player stopped (no time,
+ * no seek bar) and went on to the next one while the renderer still played.
+ * Once all was read and went out of the decoders, the renderer gets the end
+ * of its stream (InputEnded), and the end of the input waits until it is
+ * stopped there: the player plays on meanwhile, at the renderer's time
+ * ("renderer-time"). The stream output is found on an ancestor (its parent,
+ * the player: SOUT_CFG_PREFIX "out", OpenSout). */
+struct dlna_demux_t
+{
+    bool       enabled = true;
+    bool       eof = false;
+    /* how long it waited (not while paused): it gives up after a while */
+    vlc_tick_t waited = 0;
+    vlc_tick_t last = VLC_TICK_INVALID;
+};
+
+static int DemuxFilterDemux( demux_t *p_demux )
+{
+    dlna_demux_t *sys = static_cast<dlna_demux_t *>( p_demux->p_sys );
+    if ( !sys->enabled )
+        return demux_Demux( p_demux->s );
+    if ( !sys->eof )
+    {
+        const int ret = demux_Demux( p_demux->s );
+        if ( ret != VLC_DEMUXER_EOF )
+            return ret;
+        sys->eof = true;
+        sys->waited = 0;
+        sys->last = VLC_TICK_INVALID;
+    }
+
+    sout_stream_t *out = static_cast<sout_stream_t *>(
+        var_InheritAddress( p_demux, SOUT_CFG_PREFIX "out" ) );
+    if ( out == nullptr )
+        return VLC_DEMUXER_EOF;
+
+    /* (the demux with the ES output: under other filters too) */
+    demux_t *reading = p_demux->s;
+    while ( reading->out == nullptr && reading->s != nullptr )
+        reading = reinterpret_cast<demux_t *>( reading->s );
+    bool empty = true, paused = false;
+    if ( reading->out != nullptr
+      && es_out_Control( reading->out, ES_OUT_DRAIN ) == VLC_SUCCESS )
+        es_out_Control( reading->out, ES_OUT_IS_EMPTY, &empty );
+    if ( empty
+      && !static_cast<sout_stream_sys_t *>( out->p_sys )->InputEnded( out, &paused ) )
+        return VLC_DEMUXER_EOF;
+
+    const vlc_tick_t now = vlc_tick_now();
+    if ( sys->last != VLC_TICK_INVALID && !paused )
+        sys->waited += std::min( now - sys->last, VLC_TICK_FROM_MS(250) );
+    sys->last = now;
+    if ( sys->waited > VLC_TICK_FROM_SEC(60) )
+    {
+        msg_Warn( p_demux, "the renderer did not show the end in 60 s: the end" );
+        return VLC_DEMUXER_EOF;
+    }
+    /* (the input does its controls in between) */
+    vlc_msleep_i11e( VLC_TICK_FROM_MS(50) );
+    return VLC_DEMUXER_SUCCESS;
+}
+
+static int DemuxFilterControl( demux_t *p_demux, int i_query, va_list args )
+{
+    dlna_demux_t *sys = static_cast<dlna_demux_t *>( p_demux->p_sys );
+    switch ( i_query )
+    {
+        case DEMUX_FILTER_ENABLE:
+        case DEMUX_FILTER_DISABLE:
+            sys->enabled = i_query == DEMUX_FILTER_ENABLE;
+            sys->eof = false;
+            return VLC_SUCCESS;
+        /* it reads again */
+        case DEMUX_SET_POSITION:
+        case DEMUX_SET_TIME:
+        case DEMUX_SET_TITLE:
+        case DEMUX_SET_SEEKPOINT:
+            sys->eof = false;
+            break;
+    }
+    return demux_vaControl( p_demux->s, i_query, args );
+}
+
+int OpenDemuxFilter( vlc_object_t *p_this )
+{
+    demux_t *p_demux = reinterpret_cast<demux_t *>( p_this );
+    dlna_demux_t *sys = new (std::nothrow) dlna_demux_t;
+    if ( sys == nullptr )
+        return VLC_ENOMEM;
+    p_demux->p_sys = sys;
+    p_demux->pf_demux = DemuxFilterDemux;
+    p_demux->pf_control = DemuxFilterControl;
+    return VLC_SUCCESS;
+}
+
+void CloseDemuxFilter( vlc_object_t *p_this )
+{
+    demux_t *p_demux = reinterpret_cast<demux_t *>( p_this );
+    delete static_cast<dlna_demux_t *>( p_demux->p_sys );
+}
+
 int OpenSout( vlc_object_t *p_this )
 {
     sout_stream_t *p_stream = reinterpret_cast<sout_stream_t*>(p_this);
@@ -2582,6 +2763,13 @@ int OpenSout( vlc_object_t *p_this )
     /* for the dlna-origin filter of its chains (their parent) */
     var_Create( p_stream, SOUT_CFG_PREFIX "sys", VLC_VAR_ADDRESS );
     var_SetAddress( p_stream, SOUT_CFG_PREFIX "sys", p_sys );
+    /* for the dlna_demux filter of the media (the player is an ancestor of
+     * its input) */
+    {
+        vlc_object_t *parent = vlc_object_parent( p_stream );
+        if ( var_Create( parent, SOUT_CFG_PREFIX "out", VLC_VAR_ADDRESS ) == VLC_SUCCESS )
+            var_SetAddress( parent, SOUT_CFG_PREFIX "out", p_stream );
+    }
 
     /* the interface's controls (pause, volume, mute), when it has them */
     {

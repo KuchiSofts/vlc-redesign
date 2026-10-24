@@ -83,6 +83,11 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
 - **The last fifth of a second was missing in MPEG-TS**: a film converted or saved to a .ts file, or cast to a TV,
   lost its last 0.2 s of picture and sound (894 of 900 pictures, the TV stopped on a picture before the last one).
   They are all there now.
+- **The player stopped while the TV still showed the end of a film**: VLC reads ahead of the TV, and it reached the
+  end of a cast film about 6 s before the TV showed it: the time went blank (--:--), the seek bar stopped working
+  and VLC went back to the library, or on to the next film, while the TV still played. The player now plays on,
+  at the TV's time, until the TV has shown the last picture; the next film of a playlist starts after that. Paused
+  in those last seconds, the TV keeps them for after the pause (it was stopped during the pause).
 - **The subtitles window opened again when its button was clicked to close it**, and so did the menus of the ⋯
   button and of the library's Sort, View and More buttons. A click on their button opens and closes them now. A
   click outside a window or a list only closes it: a click on the video no longer pauses the film at the same time,

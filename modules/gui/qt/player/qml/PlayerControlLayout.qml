@@ -194,6 +194,12 @@ FocusScope {
                 availableWidth: loaderLeftRight.width
                 availableHeight: loaderLeftRight.height
 
+                // the left controls first, then the room between the two
+                // (see ControlRepeater); the outer controls stay the longest
+                fromEnd: true
+                reservedWidth: leftRepeater.neededWidth + 2 * playerControlLayout.spacing
+                               + playerControlLayout.layoutSpacing
+
                 Component.onCompleted: {
                     requestLockUnlockAutoHide.connect(playerControlLayout.requestLockUnlockAutoHide)
                     menuOpened.connect(playerControlLayout.menuOpened)

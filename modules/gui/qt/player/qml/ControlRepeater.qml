@@ -32,6 +32,27 @@ Repeater {
     property real availableWidth: Number.MAX_VALUE
     property real availableHeight: Number.MAX_VALUE
 
+    // In a row too narrow for every control, they show while they fit in
+    // their order, from the end on the right (its outer controls, the full
+    // screen one, stay the longest); reservedWidth: what the rest of the row
+    // needs. (Each control compared its x with the width, and its x moved
+    // as others were hidden: which ones stayed changed from start to start.)
+    property bool fromEnd: (alignment & Qt.AlignRight)
+    property real reservedWidth: 0
+
+    // the width of the controls from..to (excluded), the gaps included
+    function _span(from, to) {
+        let width = 0
+        for (let i = from; i < to; ++i) {
+            const item = itemAt(i)
+            if (item)
+                width += item._spanWidth
+        }
+        return width
+    }
+
+    readonly property real neededWidth: _span(0, count)
+
     signal requestLockUnlockAutoHide(bool lock)
     signal menuOpened(var menu)
 
@@ -304,13 +325,19 @@ Repeater {
 
         Layout.alignment: repeater.alignment
 
+        // its width in the row, the gap before it included (see _span)
+        readonly property real _spanWidth: Math.max(0, Layout.minimumWidth)
+                                           + ((index > 0) ? Layout.leftMargin + (parent?.spacing ?? 0) : 0)
+
         Binding on visible {
             delayed: true // this is important
             when: condition
             value: {
-                if (condition)
-                    return (loader.x + loader.Layout.minimumWidth <= repeater.availableWidth)
-                else
+                if (condition) {
+                    const span = repeater.fromEnd ? repeater._span(index, repeater.count)
+                                                  : repeater._span(0, index + 1)
+                    return (repeater.reservedWidth + span <= repeater.availableWidth)
+                } else
                     return true;
             }
 

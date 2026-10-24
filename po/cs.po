@@ -22600,13 +22600,13 @@ msgstr "Vyberte preferovaný motiv a barvu."
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:31
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:407
 msgid "Light"
-msgstr "Světlé"
+msgstr "Světlý"
 
 #: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:89
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:30
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:407
 msgid "Dark"
-msgstr "Tmavé"
+msgstr "Tmavý"
 
 #: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:90
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:32

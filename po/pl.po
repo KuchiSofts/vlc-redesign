@@ -11519,7 +11519,7 @@ msgstr "Tuner"
 #: modules/access/v4l2/v4l2.c:326
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:22
 msgid "Controls"
-msgstr "Kontrole"
+msgstr "Sterowanie"
 
 #: modules/access/v4l2/v4l2.c:327
 msgid "Video capture controls (if supported by the device)"

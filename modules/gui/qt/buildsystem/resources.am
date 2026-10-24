@@ -333,6 +333,9 @@ libqt_plugin_la_RES = \
 	pixmaps/redesign/icons/waveform/default.png \
 	pixmaps/redesign/icons/waveform/default-grey.png \
 	pixmaps/redesign/icons/waveform/default-accent.png \
+	pixmaps/redesign/icons/vumeter/default.png \
+	pixmaps/redesign/icons/vumeter/default-grey.png \
+	pixmaps/redesign/icons/vumeter/default-accent.png \
 	pixmaps/redesign/player/corner-tl-dark.png \
 	pixmaps/redesign/player/corner-tr-dark.png \
 	pixmaps/redesign/player/corner-bl-dark.png \

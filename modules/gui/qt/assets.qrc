@@ -219,6 +219,9 @@
         <file alias="icons/waveform/default.png">pixmaps/redesign/icons/waveform/default.png</file>
         <file alias="icons/waveform/default-grey.png">pixmaps/redesign/icons/waveform/default-grey.png</file>
         <file alias="icons/waveform/default-accent.png">pixmaps/redesign/icons/waveform/default-accent.png</file>
+        <file alias="icons/vumeter/default.png">pixmaps/redesign/icons/vumeter/default.png</file>
+        <file alias="icons/vumeter/default-grey.png">pixmaps/redesign/icons/vumeter/default-grey.png</file>
+        <file alias="icons/vumeter/default-accent.png">pixmaps/redesign/icons/vumeter/default-accent.png</file>
         <file alias="icons/0/default.png">pixmaps/redesign/icons/0/default.png</file>
         <file alias="icons/sort/active.png">pixmaps/redesign/icons/sort/active.png</file>
         <file alias="icons/sort/active-grey.png">pixmaps/redesign/icons/sort/active-grey.png</file>

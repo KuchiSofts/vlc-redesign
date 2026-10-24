@@ -25,6 +25,7 @@
 #include "player_controller.hpp"
 #include "player_controller_p.hpp"
 #include "player/subtitle_finder.hpp"
+#include "maininterface/compositor.hpp"   /* videoTakesOpenGL */
 #include "util/shared_input_item.hpp"
 
 #include <algorithm>
@@ -474,6 +475,16 @@ static void on_player_state_changed(vlc_player_t *, enum vlc_player_state state,
         {
             msg_Dbg( that->p_intf, "on_player_state_changed VLC_PLAYER_STATE_PLAYING");
             SharedAOut aout = q->getAout();
+            /* The visualizations drawn with OpenGL open nothing where the
+             * video window takes none (DirectComposition): not offered */
+            if( aout && that->p_intf->p_compositor
+             && !that->p_intf->p_compositor->videoTakesOpenGL() )
+                for( const char *name : { "glspectrum", "projectm" } )
+                {
+                    vlc_value_t val;
+                    val.psz_string = const_cast<char *>( name );
+                    var_Change( aout.get(), "visual", VLC_VAR_DELCHOICE, val );
+                }
             that->m_audioStereoMode.resetObject( aout.get() );
             that->m_audioMixMode.resetObject( aout.get() );
             that->m_audioVisualization.resetObject( aout.get() );

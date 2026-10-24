@@ -31,26 +31,35 @@ Column {
             radius: 6
             color: profileButton.hovered || profilesMenu.opened ? VLCStyle.redesign.color("#252525", "#9c9c9b") : "transparent"
         }
+        // (right to left: the row mirrored, the chevron pointing left)
         contentItem: Row {
             spacing: 12
             Text {
+                id: profileLabel
                 width: profileButton.width - 54
                 height: parent.height
                 text: qsTr("Profile (%1)").arg(root.profileModel.currentModel
                                             ? root.profileModel.currentModel.name : qsTr("None"))
                 elide: Text.ElideRight
+                horizontalAlignment: Text.AlignLeft
                 color: VLCStyle.redesign.color("#969696", "#4d4d4d")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: 16
                 verticalAlignment: Text.AlignVCenter
                 // 12 in, as the other rows of the menu
-                leftPadding: 12
+                leftPadding: LayoutMirroring.enabled ? 0 : 12
+                rightPadding: LayoutMirroring.enabled ? 12 : 0
+                HoverHandler { id: profileLabelHover }
+                Controls.ToolTip.visible: profileLabelHover.hovered && profileLabel.truncated
+                Controls.ToolTip.text: profileLabel.text
+                Controls.ToolTip.delay: 650
             }
             Image {
                 width: 24
                 height: 24
                 anchors.verticalCenter: parent.verticalCenter
                 source: "qrc:///redesign/icons/chevron-right/default.png"
+                mirror: LayoutMirroring.enabled
             }
         }
         onClicked: profilesMenu.open()
@@ -59,7 +68,8 @@ Column {
             id: profilesMenu
             parent: profileButton
             profileModel: root.profileModel
-            x: 0
+            // under the row, from its start (right to left: its right edge)
+            x: profileButton.LayoutMirroring.enabled ? profileButton.width - width : 0
             y: profileButton.height
         }
     }
@@ -79,7 +89,10 @@ Column {
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: 16
             verticalAlignment: Text.AlignVCenter
-            leftPadding: 12
+            horizontalAlignment: Text.AlignLeft
+            elide: Text.ElideRight
+            leftPadding: LayoutMirroring.enabled ? 0 : 12
+            rightPadding: LayoutMirroring.enabled ? 12 : 0
         }
         onClicked: root.customizeRequested()
     }

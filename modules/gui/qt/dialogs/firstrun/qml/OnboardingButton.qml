@@ -16,7 +16,8 @@ Controls.Button {
     property bool primary: false
     // the text box on the pixel at its left (Figma's Browse)
     property bool floorText: false
-    implicitWidth: 100
+    // the 100 of the design, wider for a longer word (16 on each side)
+    implicitWidth: Math.max(100, label.width + 32)
     implicitHeight: 32
     font.family: VLCStyle.redesign.fontFamily
     font.pixelSize: 16

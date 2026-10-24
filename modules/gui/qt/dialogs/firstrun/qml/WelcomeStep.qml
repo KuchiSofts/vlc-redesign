@@ -27,6 +27,13 @@ Item {
     signal clearRequested()
     signal consentRequested(bool allowed)
 
+    // The left edge of the folder row (595 wide, centred); right to left the
+    // row is mirrored around the middle
+    readonly property real _rowX: Math.round((width - 595) / 2)
+    // A longer description (a translation) moves the folder row down, never
+    // up from where the design puts it
+    readonly property real _rowShift: Math.max(0, description.y + description.height + 14 - 500)
+
     // Figma 1899:3055 on whole pixels (centring 1090 gives halves)
     Image {
         width: 141
@@ -56,6 +63,7 @@ Item {
         y: 362
         width: 595
         wrapMode: Text.WordWrap
+        horizontalAlignment: Text.AlignLeft
         // Figma: lines of 28 (175 %), the glyphs centred on each, the
         // baselines on whole pixels
         lineHeightMode: Text.FixedHeight
@@ -75,8 +83,11 @@ Item {
     // Figma: a box of 17 (14, line 100 %), the baseline at 514
     Text {
         id: folderLabel
-        x: Math.round((parent.width - 595) / 2)
-        y: 500
+        x: LayoutMirroring.enabled ? parent.width - width - root._rowX : root._rowX
+        y: 500 + root._rowShift
+        width: Math.min(implicitWidth, 595)
+        elide: Text.ElideRight
+        horizontalAlignment: Text.AlignLeft
         visible: root.folderAvailable
         topPadding: 14 - folderLabelMetrics.ascent
         text: qsTr("Choose a Media Folder to get started with")
@@ -89,10 +100,11 @@ Item {
             font: folderLabel.font
         }
     }
+    // (the field gives Browse the room a longer word needs)
     Rectangle {
-        x: Math.round((parent.width - 595) / 2)
-        y: 533
-        width: 471
+        x: LayoutMirroring.enabled ? parent.width - width - root._rowX : root._rowX
+        y: 533 + root._rowShift
+        width: 595 - 10 - browseButton.width
         height: 36
         visible: root.folderAvailable
         color: VLCStyle.redesign.color("#090909", "#dedede")
@@ -109,6 +121,7 @@ Item {
             verticalAlignment: Text.AlignTop
             topPadding: Math.round(height / 2 + VLCStyle.redesign.centeredBaseline(font.pixelSize)) - folderMetrics.ascent
             elide: Text.ElideMiddle
+            horizontalAlignment: Text.AlignLeft
             text: root._hasFolder
                   ? (root.folderText || Helpers.localPathFromUrl(root.folderUrl)) : qsTr("No folder selected")
             color: VLCStyle.redesign.color("#c6c6c6", "#2e2e2e")
@@ -142,10 +155,12 @@ Item {
         }
     }
     OnboardingButton {
-        x: Math.round((parent.width - 595) / 2) + 481
+        id: browseButton
+        // at the end of the row
+        x: LayoutMirroring.enabled ? parent.width - root._rowX - 595 : root._rowX + 595 - width
         // 35 high (padding 8 around 19), centred in the 36 of the row
-        y: 533.5
-        width: 114
+        y: 533.5 + root._rowShift
+        width: Math.max(114, implicitWidth)
         height: 35
         visible: root.folderAvailable
         objectName: "onboardingBrowseFolder"

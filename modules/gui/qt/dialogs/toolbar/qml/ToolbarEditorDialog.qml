@@ -103,6 +103,10 @@ Controls.Popup {
     contentItem: Item {
         id: scene
 
+        // a popup does not inherit the mirroring of the window (right to left)
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        LayoutMirroring.childrenInherit: true
+
         readonly property ColorContext colorContext: ColorContext {
             palette: VLCStyle.palette
             colorSet: ColorContext.Window
@@ -148,10 +152,11 @@ Controls.Popup {
             }
 
             // "Frame 120": #090909, radius 14 on top, padding 9, gap 12
+            // (taller when the description takes two lines)
             Rectangle {
                 id: head
                 width: parent.width
-                height: VLCStyle.dp(94, VLCStyle.scale)
+                height: VLCStyle.dp(94, VLCStyle.scale) + Math.max(0, descriptionText.height - VLCStyle.dp(32, VLCStyle.scale))
                 radius: panel.radius
                 color: VLCStyle.redesign.color("#090909", root.colorContext.bg.secondary)
                 Rectangle {
@@ -168,12 +173,21 @@ Controls.Popup {
                     width: parent.width - 2 * x
                     height: VLCStyle.dp(32, VLCStyle.scale)
 
+                    // 10 from the start, up to 16 before the close button
+                    // (right to left: mirrored)
                     Text {
                         id: titleText
-                        x: VLCStyle.dp(10, VLCStyle.scale)
-                        width: Math.max(0, closeButton.x - x - VLCStyle.dp(16, VLCStyle.scale))
+                        x: LayoutMirroring.enabled ? parent.width - width - VLCStyle.dp(10, VLCStyle.scale)
+                                                   : VLCStyle.dp(10, VLCStyle.scale)
+                        width: Math.max(0, parent.width - closeButton.width - VLCStyle.dp(10, VLCStyle.scale)
+                                           - VLCStyle.dp(16, VLCStyle.scale))
                         height: parent.height
                         elide: Text.ElideRight
+                        horizontalAlignment: Text.AlignLeft
+                        Controls.ToolTip.visible: titleHover.hovered && titleText.truncated
+                        Controls.ToolTip.text: titleText.text
+                        Controls.ToolTip.delay: 650
+                        HoverHandler { id: titleHover }
                         text: qsTr("Customize Player")
                         color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, root.colorContext.fg.primary)
                         font.family: VLCStyle.redesign.fontFamily
@@ -213,20 +227,26 @@ Controls.Popup {
                     }
                 }
 
-                // the description
+                // the description: one line of the 32 of the design, two for
+                // a longer translation (the header grows)
                 Text {
                     id: descriptionText
-                    x: VLCStyle.dp(9 + 10, VLCStyle.scale)
+                    x: LayoutMirroring.enabled ? parent.width - width - VLCStyle.dp(9 + 10, VLCStyle.scale)
+                                               : VLCStyle.dp(9 + 10, VLCStyle.scale)
                     y: VLCStyle.dp(9 + 32 + 12, VLCStyle.scale)
-                    width: parent.width - x - VLCStyle.dp(9, VLCStyle.scale)
-                    height: VLCStyle.dp(32, VLCStyle.scale)
+                    width: parent.width - VLCStyle.dp(9 + 10, VLCStyle.scale) - VLCStyle.dp(9, VLCStyle.scale)
+                    height: Math.max(VLCStyle.dp(32, VLCStyle.scale), implicitHeight)
                     text: qsTr("Drag items around and out of the box below to re-order them. Drag items into the box to remove them from the player.")
+                    wrapMode: Text.WordWrap
+                    maximumLineCount: 2
                     elide: Text.ElideRight
+                    horizontalAlignment: Text.AlignLeft
                     color: VLCStyle.redesign.color("#6B6B6B", root.colorContext.fg.secondary)
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                     verticalAlignment: Text.AlignTop
-                    topPadding: VLCStyle.redesign.textBaseline(Math.round((height - Math.round(1.2109375 * font.pixelSize)) / 2),
+                    // the first line centred in the 32 of the design
+                    topPadding: VLCStyle.redesign.textBaseline(Math.round((VLCStyle.dp(32, VLCStyle.scale) - Math.round(1.2109375 * font.pixelSize)) / 2),
                                                                font.pixelSize) - descriptionMetrics.ascent
                     FontMetrics {
                         id: descriptionMetrics
@@ -256,12 +276,16 @@ Controls.Popup {
                 readonly property bool changed: !!MainCtx.controlbarProfileModel.currentModel
                                                 && MainCtx.controlbarProfileModel.currentModel.dirty
 
+                // Cancel at the start, Save at the end (right to left:
+                // mirrored); 100 wide, wider for a longer word
                 T.Button {
                     id: cancelButton
                     objectName: "toolbarEditorCancel"
-                    x: VLCStyle.dp(20, VLCStyle.scale)
+                    x: LayoutMirroring.enabled ? parent.width - width - VLCStyle.dp(20, VLCStyle.scale)
+                                               : VLCStyle.dp(20, VLCStyle.scale)
                     y: VLCStyle.dp(20, VLCStyle.scale)
-                    width: VLCStyle.dp(100, VLCStyle.scale)
+                    width: Math.max(VLCStyle.dp(100, VLCStyle.scale),
+                                    cancelLabel.implicitWidth + 2 * VLCStyle.dp(16, VLCStyle.scale))
                     height: VLCStyle.dp(32, VLCStyle.scale)
                     text: qsTr("Cancel")
                     activeFocusOnTab: true
@@ -275,6 +299,7 @@ Controls.Popup {
                         border.color: VLCStyle.redesign.focusColor
                     }
                     contentItem: Text {
+                        id: cancelLabel
                         text: cancelButton.text
                         color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#4d4d4d")
                         font.family: VLCStyle.redesign.fontFamily
@@ -286,6 +311,7 @@ Controls.Popup {
                 }
 
                 Text {
+                    id: footError
                     anchors.left: cancelButton.right
                     anchors.leftMargin: VLCStyle.dp(16, VLCStyle.scale)
                     anchors.right: saveButton.left
@@ -297,6 +323,11 @@ Controls.Popup {
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.redesign.fontSmall
                     elide: Text.ElideRight
+                    horizontalAlignment: Text.AlignLeft
+                    HoverHandler { id: footErrorHover }
+                    Controls.ToolTip.visible: footErrorHover.hovered && footError.truncated
+                    Controls.ToolTip.text: footError.text
+                    Controls.ToolTip.delay: 650
                     Accessible.role: Accessible.AlertMessage
                 }
 
@@ -305,9 +336,11 @@ Controls.Popup {
                 T.Button {
                     id: saveButton
                     objectName: "toolbarEditorSave"
-                    x: parent.width - width - VLCStyle.dp(20, VLCStyle.scale)
+                    x: LayoutMirroring.enabled ? VLCStyle.dp(20, VLCStyle.scale)
+                                               : parent.width - width - VLCStyle.dp(20, VLCStyle.scale)
                     y: VLCStyle.dp(20, VLCStyle.scale)
-                    width: VLCStyle.dp(100, VLCStyle.scale)
+                    width: Math.max(VLCStyle.dp(100, VLCStyle.scale),
+                                    saveLabel.implicitWidth + 2 * VLCStyle.dp(16, VLCStyle.scale))
                     height: VLCStyle.dp(32, VLCStyle.scale)
                     text: qsTr("Save")
                     // a layout changed, or profiles added, renamed, deleted
@@ -324,6 +357,7 @@ Controls.Popup {
                         border.color: VLCStyle.redesign.focusColor
                     }
                     contentItem: Text {
+                        id: saveLabel
                         text: saveButton.text
                         color: saveButton.enabled ? VLCStyle.redesign.accent
                                                   : VLCStyle.redesign.color("#4C4C4C", "#8e8e8d")
@@ -392,7 +426,11 @@ Controls.Popup {
                     failure = MainCtx.controlbarProfileModel.lastError
             }
 
+            // (the dialog is a popup: its parts mirror right to left by
+            // themselves)
             Widgets.RedesignDialogHeading {
+                LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+                LayoutMirroring.childrenInherit: true
                 text: qsTr("Profile Name")
                 description: namePrompt.mode === "rename" ? qsTr("The profile keeps its layout and its settings.")
                              : namePrompt.mode === "clone" ? qsTr("The copy starts with the layout and the settings of this profile.")
@@ -402,6 +440,8 @@ Controls.Popup {
             Widgets.RedesignTextArea {
                 id: nameField
                 objectName: "toolbarEditorProfileNameField"
+                LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+                LayoutMirroring.childrenInherit: true
                 placeholderText: qsTr("e.g., Late Night")
                 Accessible.name: qsTr("Profile name")
                 onAccepted: namePrompt.accept()
@@ -436,6 +476,8 @@ Controls.Popup {
             }
 
             Widgets.RedesignDialogHeading {
+                LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+                LayoutMirroring.childrenInherit: true
                 text: qsTr("Delete %1?").arg(deleteConfirmation.profileName)
                 description: qsTr("Its layout and its settings go with it.")
             }
@@ -448,12 +490,15 @@ Controls.Popup {
 
     // a line of error of the prompts, as the footer shows them
     component PromptError: Text {
+        // (in a dialog: a popup, not mirrored with the window)
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
         Layout.fillWidth: true
         visible: text.length > 0
         color: VLCStyle.redesign.color("#e4a580", "#c62828")
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.redesign.fontSmall
         wrapMode: Text.WordWrap
+        horizontalAlignment: Text.AlignLeft
         Accessible.role: Accessible.AlertMessage
     }
 }

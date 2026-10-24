@@ -7,6 +7,7 @@
  * (at your option) any later version.
  *****************************************************************************/
 import QtQuick
+import QtQuick.Templates as T
 
 import VLC.Style
 
@@ -103,6 +104,7 @@ Item {
         width: parent.width
         lineHeightPx: 42
         horizontalAlignment: Text.AlignHCenter
+        elide: Text.ElideRight
         text: qsTr("Learn the basic keyboard shortcuts.")
         font.pixelSize: 24
         font.weight: Font.Normal
@@ -124,21 +126,35 @@ Item {
             required property var modelData
 
             readonly property int column: index < root.rows ? 0 : 1
+            readonly property int columnX: column === 0 ? 62 : 605
 
-            x: column === 0 ? 62 : 605
+            // right to left: the first column on the right, the action at
+            // the right of its row, its keys before it
+            x: LayoutMirroring.enabled ? parent.width - width - columnX : columnX
             y: 154 + (index % root.rows) * 82
             width: 393
             height: 42
 
             FigmaText {
+                id: actionText
+                x: LayoutMirroring.enabled ? parent.width - width : 0
                 y: 7
                 width: 220
                 elide: Text.ElideRight
+                horizontalAlignment: Text.AlignLeft
                 text: row.modelData.action
+                HoverHandler { id: actionHover }
+                T.ToolTip.visible: actionHover.hovered && actionText.truncated
+                T.ToolTip.text: actionText.text
+                T.ToolTip.delay: 650
             }
 
+            // The keys read left to right, as on the keyboard and in the
+            // menus ("CTRL" "+" "S"), in any language
             Row {
-                x: 240
+                x: row.LayoutMirroring.enabled ? row.width - width - 240 : 240
+                LayoutMirroring.enabled: false
+                LayoutMirroring.childrenInherit: true
                 spacing: 10
 
                 Repeater {
@@ -174,9 +190,13 @@ Item {
         }
     }
 
+    // (beside Back and Finish: a longer one cut before them)
     FigmaText {
-        x: 62
+        x: LayoutMirroring.enabled ? parent.width - width - 62 : 62
         y: 671
+        width: Math.min(implicitWidth, parent.width - 62 - 300)
+        elide: Text.ElideRight
+        horizontalAlignment: Text.AlignLeft
         text: qsTr("Find the full list in the menu.")
         color: "#6b6b6b"
         font.weight: Font.Normal

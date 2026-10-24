@@ -35,6 +35,10 @@ Controls.Popup {
     contentItem: Column {
         spacing: 0
 
+        // a popup does not inherit the mirroring of the window (right to left)
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        LayoutMirroring.childrenInherit: true
+
         ListView {
             id: profileList
             width: parent.width
@@ -52,8 +56,9 @@ Controls.Popup {
                 objectName: "profileOption_" + index
                 width: profileList.width
                 height: 48
-                leftPadding: 18
-                rightPadding: 16
+                // (swapped right to left)
+                leftPadding: LayoutMirroring.enabled ? 16 : 18
+                rightPadding: LayoutMirroring.enabled ? 18 : 16
                 background: Rectangle {
                     radius: 6
                     color: parent.hovered || parent.activeProfile ? VLCStyle.redesign.color("#252525", "#9c9c9b") : "transparent"
@@ -73,6 +78,7 @@ Controls.Popup {
                         text: name
                         color: VLCStyle.redesign.color("#969696", "#4d4d4d")
                         elide: Text.ElideRight
+                        horizontalAlignment: Text.AlignLeft
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: 16
                         verticalAlignment: Text.AlignVCenter
@@ -103,13 +109,21 @@ Controls.Popup {
                         sourceSize: Qt.size(24, 24)
                         fillMode: Image.Pad
                     }
-                    onClicked: actionsMenu.toggleFrom(profileActions, 0, profileActions.height)
+                    // under the button, from its start (right to left: its
+                    // right edge)
+                    onClicked: actionsMenu.toggleFrom(profileActions,
+                                                      LayoutMirroring.enabled ? profileActions.width - actionsMenu.width : 0,
+                                                      profileActions.height)
 
                     Widgets.RedesignMenu {
                         id: actionsMenu
                         menuWidth: 200
 
+                        // (a menu does not inherit the mirroring of the
+                        // window: its rows mirror right to left by themselves)
                         Widgets.RedesignMenuItem {
+                            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+                            LayoutMirroring.childrenInherit: true
                             text: qsTr("Rename")
                             iconName: "edit"
                             onTriggered: {
@@ -118,6 +132,8 @@ Controls.Popup {
                             }
                         }
                         Widgets.RedesignMenuItem {
+                            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+                            LayoutMirroring.childrenInherit: true
                             text: qsTr("Clone")
                             // (a new profile from this one: the set has no copy icon)
                             iconName: "add"
@@ -128,6 +144,8 @@ Controls.Popup {
                         }
                         // the last profile stays
                         Widgets.RedesignMenuItem {
+                            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+                            LayoutMirroring.childrenInherit: true
                             text: qsTr("Delete")
                             iconName: "remove"
                             enabled: root.profileModel.count > 1
@@ -172,6 +190,10 @@ Controls.Popup {
             text: root.switchError || root.profileModel.lastError
             color: VLCStyle.redesign.color("#e4a580", "#c62828")
             wrapMode: Text.WordWrap
+            // (three lines in the 56 kept for it)
+            maximumLineCount: 3
+            elide: Text.ElideRight
+            horizontalAlignment: Text.AlignLeft
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: 12
             verticalAlignment: Text.AlignVCenter
@@ -182,7 +204,9 @@ Controls.Popup {
             objectName: "newProfileAction"
             width: parent.width
             height: 60
-            leftPadding: 18
+            // (the end as the style pads it; swapped right to left)
+            leftPadding: LayoutMirroring.enabled ? horizontalPadding : 18
+            rightPadding: LayoutMirroring.enabled ? 18 : horizontalPadding
             background: Rectangle {
                 radius: 6
                 color: parent.hovered ? VLCStyle.redesign.color("#252525", "#9c9c9b") : "transparent"
@@ -198,7 +222,9 @@ Controls.Popup {
                     verticalAlignment: Text.AlignVCenter
                 }
                 Text {
+                    width: Math.min(implicitWidth, parent.width - 32)
                     height: parent.height
+                    elide: Text.ElideRight
                     text: qsTr("New profile…")
                     color: VLCStyle.redesign.color("#969696", "#4d4d4d")
                     font.family: VLCStyle.redesign.fontFamily

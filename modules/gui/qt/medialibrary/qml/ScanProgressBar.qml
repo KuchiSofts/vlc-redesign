@@ -42,6 +42,8 @@ ProgressBarExt {
                                             .arg(MediaLib.parsingProgress)
 
         elide: Text.ElideMiddle
+        // from the start (the right in a right to left layout)
+        horizontalAlignment: Text.AlignLeft
 
         font.pixelSize: VLCStyle.fontSize_large
         font.weight: Font.Normal

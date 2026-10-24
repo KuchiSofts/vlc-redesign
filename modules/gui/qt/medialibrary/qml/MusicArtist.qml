@@ -341,7 +341,9 @@ FocusScope {
                                 focus: true
 
                                 Navigation.parentItem: pinnedMusicAlbumSection
-                                Navigation.rightItem: enqueueButton
+                                // the row is mirrored right to left: Enqueue on the left
+                                Navigation.leftItem: LayoutMirroring.enabled ? enqueueButton : null
+                                Navigation.rightItem: LayoutMirroring.enabled ? null : enqueueButton
                             }
 
                             MusicAlbumSectionDelegate.EnqueueButton {
@@ -353,7 +355,8 @@ FocusScope {
 
                                 Navigation.parentItem: pinnedMusicAlbumSection
                                 // Navigation.rightItem: previousSectionButton
-                                Navigation.leftItem: playButton
+                                Navigation.leftItem: LayoutMirroring.enabled ? null : playButton
+                                Navigation.rightItem: LayoutMirroring.enabled ? playButton : null
                             }
 
                             // MusicAlbumSectionDelegate.PreviousSectionButton {

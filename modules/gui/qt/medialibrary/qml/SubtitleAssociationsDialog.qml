@@ -30,7 +30,12 @@ Widgets.RedesignDialog {
     id: root
     objectName: "subtitleAssociationsDialog"
 
-    property string targetKind: qsTr("To This File")
+    // what the dialog was opened for: 0 a file, 1 a folder, 2 a playlist
+    // (named by a binding: it follows a change of the language)
+    property int _targetType: 0
+    readonly property string targetKind: _targetType === 1 ? qsTr("To This Folder")
+                                       : _targetType === 2 ? qsTr("To This Playlist")
+                                       : qsTr("To This File")
     // audio files (the folder menu's "Edit Audio Tracks"): from the computer
     property bool audio: false
     // 0 the computer, 1 a link, 2 OpenSubtitles
@@ -78,23 +83,23 @@ Widgets.RedesignDialog {
 
     function openFor(itemId) {
         const serialized = itemId.toString()
-        targetKind = serialized.startsWith("VLC_ML_PARENT_FOLDER") ? qsTr("To This Folder")
-                   : serialized.startsWith("VLC_ML_PARENT_PLAYLIST") ? qsTr("To This Playlist")
-                   : qsTr("To This File")
+        _targetType = serialized.startsWith("VLC_ML_PARENT_FOLDER") ? 1
+                    : serialized.startsWith("VLC_ML_PARENT_PLAYLIST") ? 2
+                    : 0
         originIndex = 0
         associations.open(itemId)
         open()
     }
 
     function openForUrl(url) {
-        targetKind = qsTr("To This File")
+        _targetType = 0
         originIndex = 0
         associations.openUrl(url)
         open()
     }
 
     function openForFolderUrl(url) {
-        targetKind = qsTr("To This Folder")
+        _targetType = 1
         originIndex = 0
         associations.openFolderUrl(url)
         open()
@@ -183,6 +188,13 @@ Widgets.RedesignDialog {
                 depth = entryParts.length
         }
         const shown = depth > 0 ? [qsTr("Videos")].concat(parts.slice(depth)) : parts.slice(-3)
+        // right to left: from the right, the names in Latin letters too (a
+        // right-to-left mark at each separator keeps them from reading as
+        // one left-to-right run)
+        if (Qt.application.layoutDirection === Qt.RightToLeft) {
+            const rlm = String.fromCharCode(0x200F)
+            return rlm + shown.join(" " + rlm + "/ ")
+        }
         return shown.join(" / ")
     }
 
@@ -201,12 +213,16 @@ Widgets.RedesignDialog {
     // a line of Inter 14 centred in its box as Figma does
     component CenteredText: Text {
         id: centeredText
+        // the box the (first) line is centred in
+        property real boxHeight: height
+        // from the start of the line (the right in a right to left layout)
+        horizontalAlignment: Text.AlignLeft
         verticalAlignment: Text.AlignTop
         elide: Text.ElideRight
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
         color: VLCStyle.redesign.color("#969696", "#2e2e2e")
-        topPadding: VLCStyle.redesign.textBaseline(Math.round((height - Math.round(1.2109375 * font.pixelSize)) / 2),
+        topPadding: VLCStyle.redesign.textBaseline(Math.round((boxHeight - Math.round(1.2109375 * font.pixelSize)) / 2),
                                                    font.pixelSize) - centeredMetrics.ascent
         FontMetrics {
             id: centeredMetrics
@@ -227,8 +243,14 @@ Widgets.RedesignDialog {
         enabled: !associations.busy
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
-        leftPadding: VLCStyle.dp(12, VLCStyle.scale)
-        rightPadding: VLCStyle.dp(8 + 24, VLCStyle.scale)
+        // the chevron at the end: on the left in a right to left layout
+        leftPadding: LayoutMirroring.enabled ? VLCStyle.dp(8 + 24, VLCStyle.scale) : VLCStyle.dp(12, VLCStyle.scale)
+        rightPadding: LayoutMirroring.enabled ? VLCStyle.dp(12, VLCStyle.scale) : VLCStyle.dp(8 + 24, VLCStyle.scale)
+
+        // a longer text (a translation) elided: in full under the pointer
+        T.ToolTip.visible: hovered && !popup.visible && contentItem.truncated
+        T.ToolTip.text: shownText
+        T.ToolTip.delay: 650
 
         background: Rectangle {
             radius: VLCStyle.dp(6, VLCStyle.scale)
@@ -241,7 +263,8 @@ Widgets.RedesignDialog {
             text: dropdown.shownText
         }
         indicator: Image {
-            x: dropdown.width - VLCStyle.dp(8, VLCStyle.scale) - width
+            x: LayoutMirroring.enabled ? VLCStyle.dp(8, VLCStyle.scale)
+                                       : dropdown.width - VLCStyle.dp(8, VLCStyle.scale) - width
             y: Math.round((dropdown.height - height) / 2)
             width: VLCStyle.redesign.iconSize
             height: width
@@ -270,6 +293,8 @@ Widgets.RedesignDialog {
             }
         }
         popup: T.Popup {
+            // under the box, from its end in a right to left layout
+            x: dropdown.mirrored ? dropdown.width - width : 0
             y: dropdown.height + VLCStyle.dp(4, VLCStyle.scale)
             width: Math.max(dropdown.width, VLCStyle.dp(200, VLCStyle.scale))
             implicitHeight: Math.min(contentItem.implicitHeight + topPadding + bottomPadding,
@@ -277,6 +302,10 @@ Widgets.RedesignDialog {
             padding: VLCStyle.dp(2, VLCStyle.scale)
 
             contentItem: ListView {
+                // a popup is not under the mirrored interface: its rows
+                // mirror from here
+                LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+                LayoutMirroring.childrenInherit: true
                 clip: true
                 implicitHeight: contentHeight
                 model: dropdown.popup.visible ? dropdown.delegateModel : null
@@ -302,9 +331,11 @@ Widgets.RedesignDialog {
         radius: VLCStyle.dp(6, VLCStyle.scale)
         color: VLCStyle.redesign.color("#151515", "#b8b8b7")
 
+        // (anchored: from the right in a right to left layout)
         Image {
             id: fieldIcon
-            x: VLCStyle.dp(8, VLCStyle.scale)
+            anchors.left: parent.left
+            anchors.leftMargin: VLCStyle.dp(8, VLCStyle.scale)
             y: VLCStyle.dp(5, VLCStyle.scale)
             width: VLCStyle.redesign.iconSize
             height: width
@@ -313,8 +344,10 @@ Widgets.RedesignDialog {
         }
         Item {
             id: fieldContent
-            x: fieldIcon.x + fieldIcon.width + VLCStyle.dp(10, VLCStyle.scale)
-            width: parent.width - x - VLCStyle.dp(8, VLCStyle.scale)
+            anchors.left: fieldIcon.right
+            anchors.leftMargin: VLCStyle.dp(10, VLCStyle.scale)
+            anchors.right: parent.right
+            anchors.rightMargin: VLCStyle.dp(8, VLCStyle.scale)
             height: parent.height
         }
     }
@@ -326,6 +359,8 @@ Widgets.RedesignDialog {
         property string placeholderText
 
         anchors.fill: parent
+        // from the start of the field (the right in a right to left layout)
+        horizontalAlignment: TextInput.AlignLeft
         verticalAlignment: TextInput.AlignTop
         topPadding: VLCStyle.redesign.textBaseline(Math.round((height - Math.round(1.2109375 * font.pixelSize)) / 2),
                                                    font.pixelSize) - inputMetrics.ascent
@@ -347,6 +382,7 @@ Widgets.RedesignDialog {
             text: headerInput.placeholderText
             color: VLCStyle.redesign.color(VLCStyle.redesign.textDisabled, "#7c7c7b")
             font: headerInput.font
+            horizontalAlignment: Text.AlignLeft
             elide: Text.ElideRight
         }
     }
@@ -406,9 +442,12 @@ Widgets.RedesignDialog {
             border.width: fileRow.visualFocus ? 1 : 0
             border.color: VLCStyle.redesign.focusColor
         }
+        // (the icon and the check anchored: mirrored in a right to left
+        // layout; the name as far from both ends)
         contentItem: Item {
             DimIcon {
-                x: VLCStyle.dp(8, VLCStyle.scale)
+                anchors.left: parent.left
+                anchors.leftMargin: VLCStyle.dp(8, VLCStyle.scale)
                 y: VLCStyle.dp(6, VLCStyle.scale)
                 source: root.audio ? "qrc:///redesign/icons/spectrum/dim.png"
                                    : "qrc:///redesign/icons/subtitle/dim.png"
@@ -422,7 +461,8 @@ Widgets.RedesignDialog {
             }
             Impl.ColorImage {
                 visible: fileRow.selected && fileRow.showCheck
-                x: parent.width - VLCStyle.dp(8, VLCStyle.scale) - width
+                anchors.right: parent.right
+                anchors.rightMargin: VLCStyle.dp(8, VLCStyle.scale)
                 y: VLCStyle.dp(6, VLCStyle.scale)
                 width: VLCStyle.redesign.iconSize
                 height: width
@@ -438,6 +478,12 @@ Widgets.RedesignDialog {
 
     headerContent: [
         RowLayout {
+            // the dialog is a popup, not under the mirrored interface: what
+            // it is given mirrors from here (right to left: the target on
+            // the right)
+            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+            LayoutMirroring.childrenInherit: true
+
             Layout.fillWidth: true
             Layout.preferredHeight: VLCStyle.dp(34, VLCStyle.scale)
             spacing: VLCStyle.dp(10, VLCStyle.scale)
@@ -488,10 +534,12 @@ Widgets.RedesignDialog {
                     border.width: folderButton.visualFocus ? 1 : 0
                     border.color: VLCStyle.redesign.focusColor
                 }
+                // (anchored: from the right in a right to left layout)
                 contentItem: Item {
                     Image {
                         id: folderIcon
-                        x: VLCStyle.dp(8, VLCStyle.scale)
+                        anchors.left: parent.left
+                        anchors.leftMargin: VLCStyle.dp(8, VLCStyle.scale)
                         y: VLCStyle.dp(5, VLCStyle.scale)
                         width: VLCStyle.redesign.iconSize
                         height: width
@@ -500,12 +548,19 @@ Widgets.RedesignDialog {
                         smooth: false
                     }
                     CenteredText {
-                        x: folderIcon.x + folderIcon.width + VLCStyle.dp(10, VLCStyle.scale)
-                        width: parent.width - x - VLCStyle.dp(8, VLCStyle.scale)
+                        id: folderText
+                        anchors.left: folderIcon.right
+                        anchors.leftMargin: VLCStyle.dp(10, VLCStyle.scale)
+                        anchors.right: parent.right
+                        anchors.rightMargin: VLCStyle.dp(8, VLCStyle.scale)
                         height: parent.height
                         text: root.folderPath
                     }
                 }
+                // a long path elided: in full under the pointer
+                T.ToolTip.visible: hovered && folderText.truncated
+                T.ToolTip.text: root.folderPath
+                T.ToolTip.delay: 650
                 onClicked: associations.chooseFolder()
             }
 
@@ -556,6 +611,10 @@ Widgets.RedesignDialog {
     // ---- "Frame 124": the lists -----------------------------------------
 
     Item {
+        // (mirrored from here, as the title bar's row)
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        LayoutMirroring.childrenInherit: true
+
         Layout.fillWidth: true
         // lower in a low window (the dialog within it)
         Layout.fillHeight: true
@@ -602,14 +661,18 @@ Widgets.RedesignDialog {
                 height: VLCStyle.dp(40, VLCStyle.scale)
 
                 // "Frame 3": 30 from the left, rows of 24 (8 under the file's)
+                // (anchored, the widths from widths: the media on the right
+                // in a right to left layout, the files on the left)
                 DimIcon {
-                    x: VLCStyle.dp(30, VLCStyle.scale)
+                    anchors.left: parent.left
+                    anchors.leftMargin: VLCStyle.dp(30, VLCStyle.scale)
                     y: VLCStyle.dp(8, VLCStyle.scale)
                     source: "qrc:///redesign/icons/video/dim.png"
                 }
                 CenteredText {
                     id: mediaName
-                    x: VLCStyle.dp(30 + 24 + 14, VLCStyle.scale)
+                    anchors.left: parent.left
+                    anchors.leftMargin: VLCStyle.dp(30 + 24 + 14, VLCStyle.scale)
                     y: VLCStyle.dp(8, VLCStyle.scale)
                     width: Math.min(implicitWidth, VLCStyle.dp(519 - 68 - 14, VLCStyle.scale))
                     height: VLCStyle.dp(24, VLCStyle.scale)
@@ -617,15 +680,20 @@ Widgets.RedesignDialog {
                 }
                 DashedLine {
                     visible: pair.joined
-                    x: mediaName.x + mediaName.width + VLCStyle.dp(14, VLCStyle.scale)
+                    anchors.left: mediaName.right
+                    anchors.leftMargin: VLCStyle.dp(14, VLCStyle.scale)
                     y: VLCStyle.dp(8 + 12, VLCStyle.scale) - height / 2
-                    width: Math.max(0, VLCStyle.dp(519, VLCStyle.scale) - x)
+                    width: Math.max(0, VLCStyle.dp(519, VLCStyle.scale)
+                                       - (VLCStyle.dp(30 + 24 + 14, VLCStyle.scale) + mediaName.width
+                                          + VLCStyle.dp(14, VLCStyle.scale)))
                 }
 
                 // "Frame 124": 20 then 8 from the middle, rows of 36
                 FileRow {
-                    x: VLCStyle.dp(519 + 20, VLCStyle.scale)
-                    width: parent.width - x - VLCStyle.dp(20, VLCStyle.scale)
+                    anchors.left: parent.left
+                    anchors.leftMargin: VLCStyle.dp(519 + 20, VLCStyle.scale)
+                    anchors.right: parent.right
+                    anchors.rightMargin: VLCStyle.dp(20, VLCStyle.scale)
                     visible: pair.sourceIndex >= 0
                     showCheck: false
                     dimmed: !pair.joined
@@ -712,8 +780,10 @@ Widgets.RedesignDialog {
                     implicitHeight: VLCStyle.dp(8 + 21 + 8, VLCStyle.scale)
                     topPadding: VLCStyle.redesign.textBaseline(border + VLCStyle.dp(8, VLCStyle.scale), font.pixelSize) - passwordMetrics.ascent
                     bottomPadding: border + VLCStyle.dp(8, VLCStyle.scale)
-                    leftPadding: border + VLCStyle.dp(12, VLCStyle.scale)
-                    rightPadding: border + VLCStyle.dp(18, VLCStyle.scale)
+                    // (swapped in a right to left layout, the text from the right)
+                    leftPadding: border + VLCStyle.dp(LayoutMirroring.enabled ? 18 : 12, VLCStyle.scale)
+                    rightPadding: border + VLCStyle.dp(LayoutMirroring.enabled ? 12 : 18, VLCStyle.scale)
+                    horizontalAlignment: TextInput.AlignLeft
                     verticalAlignment: TextInput.AlignTop
                     echoMode: TextInput.Password
                     placeholderText: qsTr("Password")
@@ -748,6 +818,7 @@ Widgets.RedesignDialog {
                         text: passwordField.placeholderText
                         color: passwordField.placeholderTextColor
                         font: passwordField.font
+                        horizontalAlignment: Text.AlignLeft
                         elide: Text.ElideRight
                     }
                 }
@@ -779,12 +850,16 @@ Widgets.RedesignDialog {
             }
         }
 
-        // nothing to show: why
+        // nothing to show: why (a longer text, a translation or an error,
+        // on more lines, the block centred)
         CenteredText {
             anchors.centerIn: parent
             width: parent.width - VLCStyle.dp(80, VLCStyle.scale)
-            height: VLCStyle.dp(34, VLCStyle.scale)
+            boxHeight: VLCStyle.dp(34, VLCStyle.scale)
+            height: boxHeight + (lineCount > 1 ? contentHeight - contentHeight / lineCount : 0)
             horizontalAlignment: Text.AlignHCenter
+            wrapMode: Text.Wrap
+            elide: Text.ElideNone
             visible: text.length > 0
             color: (associations.error.length > 0 || service.error.length > 0)
                    ? VLCStyle.redesign.accent : VLCStyle.redesign.color("#6B6B6B", "#4d4d4d")

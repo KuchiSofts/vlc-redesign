@@ -119,8 +119,11 @@ Widgets.GridItem {
         }
 
         // Figma: the progress, a line of the accent at the bottom of the
-        // picture, inside its rounded corners
+        // picture, inside its rounded corners (a time axis: from the left
+        // in every language, as the seek bar)
         Item {
+            LayoutMirroring.enabled: false
+            LayoutMirroring.childrenInherit: true
             anchors.left: parent.left
             anchors.bottom: parent.bottom
             visible: root.redesignTitle && (model?.progress ?? 0) > 0

@@ -53,15 +53,28 @@ Widgets.RedesignDialog {
         id: row
         property string label
         property string value
+        // the column of the labels (see infoColumn)
+        property real labelWidth: VLCStyle.dp(120, VLCStyle.scale)
+        // the label on one line, for a row shown
+        readonly property real labelNeededWidth: value.length > 0 ? Math.ceil(labelMetrics.advanceWidth) : 0
         Layout.fillWidth: true
         visible: value.length > 0
         spacing: VLCStyle.dp(20, VLCStyle.scale)
         Text {
-            Layout.preferredWidth: VLCStyle.dp(120, VLCStyle.scale)
+            id: labelText
+            Layout.preferredWidth: row.labelWidth
             text: row.label
             color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#4d4d4d")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
+            // from the start of the line (the right, right to left)
+            horizontalAlignment: Text.AlignLeft
+            wrapMode: Text.WordWrap
+            TextMetrics {
+                id: labelMetrics
+                font: labelText.font
+                text: labelText.text
+            }
         }
         Text {
             Layout.fillWidth: true
@@ -69,21 +82,49 @@ Widgets.RedesignDialog {
             color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#1d1d1d")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
+            horizontalAlignment: Text.AlignLeft
             wrapMode: Text.WrapAnywhere
         }
     }
 
     ColumnLayout {
+        id: infoColumn
+
+        // a popup is not under the mirrored interface
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        LayoutMirroring.childrenInherit: true
+
+        // the labels 120 wide, wider for a longer translation (up to a
+        // third of the dialog, past it they wrap)
+        readonly property real labelWidth: Math.max(VLCStyle.dp(120, VLCStyle.scale),
+                                                    Math.min(Math.max(nameRow.labelNeededWidth, mediaRow.labelNeededWidth,
+                                                                      lengthRow.labelNeededWidth, fileRow.labelNeededWidth),
+                                                             Math.floor(width / 3)))
+
         Layout.fillWidth: true
         spacing: VLCStyle.dp(14, VLCStyle.scale)
 
-        InfoRow { label: qsTr("Name"); value: String(root.playlist.name ?? "") }
-        InfoRow { label: qsTr("Media"); value: root.mediaText(root.playlist) }
         InfoRow {
+            id: nameRow
+            labelWidth: infoColumn.labelWidth
+            label: qsTr("Name")
+            value: String(root.playlist.name ?? "")
+        }
+        InfoRow {
+            id: mediaRow
+            labelWidth: infoColumn.labelWidth
+            label: qsTr("Media")
+            value: root.mediaText(root.playlist)
+        }
+        InfoRow {
+            id: lengthRow
+            labelWidth: infoColumn.labelWidth
             label: qsTr("Length")
             value: root.playlist.duration?.formatHMS?.() ?? ""
         }
         InfoRow {
+            id: fileRow
+            labelWidth: infoColumn.labelWidth
             label: qsTr("File")
             value: root.playlist.mrl ? Helpers.localPathFromUrl(root.playlist.mrl) : ""
         }

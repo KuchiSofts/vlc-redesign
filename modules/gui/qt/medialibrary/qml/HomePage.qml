@@ -461,6 +461,9 @@ Widgets.PageExt {
                             width: foldersRow.cardSize
                             height: VLCStyle.dp(19, VLCStyle.scale)
                             text: folderCard.model.name
+                            // from the start of the card (the right in a right
+                            // to left layout), whatever the script of the name
+                            horizontalAlignment: Text.AlignLeft
                             elide: Text.ElideMiddle
                             color: VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, "#4d4d4d")
                             font.family: VLCStyle.redesign.fontFamily

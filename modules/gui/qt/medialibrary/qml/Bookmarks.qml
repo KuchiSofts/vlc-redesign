@@ -96,6 +96,8 @@ Item {
             width: height
             backgroundColor: bookmarkButton.colorContext.fg.primary
 
+            // on the time axis of the seek bar: from the left in every
+            // language (not mirrored in a right to left layout)
             x: control.width * model.position - width/2
             y: VLCStyle.dp(1, VLCStyle.scale)
             focusPolicy: Qt.NoFocus

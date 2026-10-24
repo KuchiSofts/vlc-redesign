@@ -342,7 +342,9 @@ T.Pane {
                     showText: !_contentItem.compactDownButtons
 
                     Navigation.parentItem: root
-                    Navigation.rightItem: enqueueButton
+                    // the row is mirrored right to left: Enqueue on the left
+                    Navigation.leftItem: LayoutMirroring.enabled ? enqueueButton : null
+                    Navigation.rightItem: LayoutMirroring.enabled ? null : enqueueButton
                 }
 
                 EnqueueButton {
@@ -357,7 +359,8 @@ T.Pane {
                     Navigation.parentItem: root
                     // Navigation.rightItem: previousSectionButton.enabled ? previousSectionButton
                     //                                                     : nextSectionButton
-                    Navigation.leftItem: playButton
+                    Navigation.leftItem: LayoutMirroring.enabled ? null : playButton
+                    Navigation.rightItem: LayoutMirroring.enabled ? playButton : null
                 }
             }
         }

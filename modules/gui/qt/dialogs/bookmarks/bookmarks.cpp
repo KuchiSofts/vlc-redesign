@@ -38,6 +38,11 @@ BookmarksDialog::BookmarksDialog( qt_intf_t *_p_intf ):QVLCFrame( _p_intf )
 {
     setWindowFlags( Qt::Tool );
     setWindowOpacity( var_InheritFloat( p_intf, "qt-opacity" ) );
+    /* "Window opacity" of the settings, at once */
+    if( p_intf->p_mi )
+        connect( p_intf->p_mi, &MainCtx::windowOpacityChanged, this, [this]() {
+            setWindowOpacity( p_intf->p_mi->windowOpacity() );
+        } );
     setWindowTitle( qtr( "Edit Bookmarks" ) );
     setWindowRole( "vlc-bookmarks" );
 

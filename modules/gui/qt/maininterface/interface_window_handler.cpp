@@ -107,11 +107,14 @@ InterfaceWindowHandler::InterfaceWindowHandler(qt_intf_t *_p_intf, MainCtx* main
     if (m_mainCtx->useClientSideDecoration())
         m_window->setFlag(Qt::FramelessWindowHint);
 
-    /* */
-    m_pauseOnMinimize = var_InheritBool( p_intf, "qt-pause-minimized" );
-
     m_window->setIcon( QApplication::windowIcon() );
-    m_window->setOpacity( var_InheritFloat( p_intf, "qt-opacity" ) );
+    /* "Window opacity" of the settings, at once */
+    m_window->setOpacity( m_mainCtx->windowOpacity() );
+    connect( m_mainCtx, &MainCtx::windowOpacityChanged, this, [this]()
+    {
+        if( m_window )
+            m_window->setOpacity( m_mainCtx->windowOpacity() );
+    });
 
     /* First run: a 16:9 window centered on the screen, within 80% of it */
     const QRect available = m_window->screen()->availableGeometry();
@@ -156,12 +159,23 @@ InterfaceWindowHandler::InterfaceWindowHandler(qt_intf_t *_p_intf, MainCtx* main
             m_window->hide();
     }, Qt::QueuedConnection);
 
-    m_window->setTitle("");
-
-    if( var_InheritBool( p_intf, "qt-name-in-title" ) )
+    /* "Show the file name in the title bar" of the settings, at once */
+    const auto updateTitle = [this]()
     {
-        connect( THEMIM, &PlayerController::nameChanged, m_window, &QWindow::setTitle );
-    }
+        if( !m_window )
+            return;
+        disconnect( m_titleConnection );
+        if( m_mainCtx->nameInTitle() )
+        {
+            m_window->setTitle( THEMIM->getName() );
+            m_titleConnection = connect( THEMIM, &PlayerController::nameChanged,
+                                         m_window, &QWindow::setTitle );
+        }
+        else
+            m_window->setTitle( QString() );
+    };
+    updateTitle();
+    connect( m_mainCtx, &MainCtx::nameInTitleChanged, this, updateTitle );
 
     connect( m_window, &QWindow::screenChanged, m_mainCtx, &MainCtx::updateIntfScaleFactor );
 
@@ -309,9 +323,11 @@ bool InterfaceWindowHandler::eventFilter(QObject*, QEvent* event)
 
             m_hasPausedWhenMinimized = false;
 
+            /* "Pause video when window is minimized" of the settings, as
+             * it is */
             if( THEMIM->getPlayingState() == PlayerController::PLAYING_STATE_PLAYING &&
                 THEMIM->hasVideoOutput() && !THEMIM->hasAudioVisualization() &&
-                m_pauseOnMinimize )
+                var_InheritBool( p_intf, "qt-pause-minimized" ) )
             {
                 m_hasPausedWhenMinimized = true;
                 THEMPL->pause();

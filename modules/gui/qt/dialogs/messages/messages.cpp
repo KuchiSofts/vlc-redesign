@@ -34,6 +34,8 @@
 #include <QScrollBar>
 #include <QMutex>
 #include <QMutexLocker>
+#include <QShowEvent>
+#include <QHideEvent>
 
 #include <cassert>
 
@@ -156,24 +158,47 @@ MessagesDialog::MessagesDialog( qt_intf_t *_p_intf)
     /* General action */
     restoreWidgetPosition( "Messages", QSize( 600, 450 ) );
 
-    /* Hook up to LibVLC messaging */
-    static const struct vlc_logger_operations log_ops =
-    {
-        MessagesDialog::MsgCallback,
-        NULL
-    };
-    libvlc_int_t *vlc = vlc_object_instance(p_intf);
-
-    vlc_LogSet( vlc, &log_ops, this );
-
-    buildTree( NULL, VLC_OBJECT(vlc) );
+    buildTree( NULL, VLC_OBJECT( vlc_object_instance(p_intf) ) );
 }
 
 MessagesDialog::~MessagesDialog()
 {
     saveWidgetPosition( "Messages" );
-    vlc_LogSet( vlc_object_instance(p_intf), NULL, NULL );
+    releaseLog();
 };
+
+/* The messages of LibVLC come here while the window shows, instead of the
+ * log of the settings (Save a log...), which opens again once it is hidden.
+ * (Minimized and restored, it keeps them: spontaneous events) */
+void MessagesDialog::showEvent( QShowEvent *event )
+{
+    QVLCFrame::showEvent( event );
+    if( event->spontaneous() || p_intf->logInMessages )
+        return;
+    static const struct vlc_logger_operations log_ops =
+    {
+        MessagesDialog::MsgCallback,
+        NULL
+    };
+    p_intf->logInMessages = true;
+    vlc_LogSet( vlc_object_instance(p_intf), &log_ops, this );
+}
+
+void MessagesDialog::hideEvent( QHideEvent *event )
+{
+    QVLCFrame::hideEvent( event );
+    if( !event->spontaneous() )
+        releaseLog();
+}
+
+void MessagesDialog::releaseLog()
+{
+    if( !p_intf->logInMessages )
+        return;
+    p_intf->logInMessages = false;
+    /* (no message reaches this window after it) */
+    vlc_LogReload( vlc_object_instance(p_intf) );
+}
 
 void MessagesDialog::changeVerbosity( int i_verbosity )
 {

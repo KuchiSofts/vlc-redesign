@@ -474,6 +474,8 @@ bool ShortcutsModel::apply()
         entry.globalCurrent = entry.globalStaged;
         notifyEntry(i);
     }
+    // the next keys pressed use them; the global hotkeys register again
+    m_ctx->reloadPrefs();
     emit dirtyChanged();
     setError({});
     return true;

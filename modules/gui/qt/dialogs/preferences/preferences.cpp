@@ -368,47 +368,19 @@ void PrefsDialog::save()
         }
     }
 
+    /* everything applies at once (MainCtx::reloadPrefs): nothing waits for
+     * VLC to start again */
     if( p_intf->p_mi )
         p_intf->p_mi->reloadPrefs();
     accept();
 
-    // Don't save widget position if reset is pending
-    if( !p_intf->preferencesResetPending )
-        QVLCTools::saveWidgetPosition( p_intf, "Preferences", this );
-
-    if( p_intf->preferencesResetPending )
-    {
-        int restart = QMessageBox::question(
-                          this,
-                          qtr( "Restart Required" ),
-                          qtr( "VLC needs to be restarted for the reset to take full effect.\n\nRestart now?" ),
-                          QMessageBox::Yes | QMessageBox::No,
-                          QMessageBox::Yes);
-        
-        if( restart == QMessageBox::Yes )
-        {
-            // Quit VLC
-            emit p_intf->p_mi->askToQuit();
-        }
-        else
-        {
-            // User chose not to restart - clear the flag
-            p_intf->preferencesResetPending = false;
-        }
-    }
-
+    QVLCTools::saveWidgetPosition( p_intf, "Preferences", this );
 }
 
 /* Clean the preferences, dunno if it does something really */
 void PrefsDialog::cancel()
 {
-    bool wasResetting = p_intf->preferencesResetPending;
-    
-    // Clear the reset flag
-    p_intf->preferencesResetPending = false;
-    
-    if( !wasResetting )
-        QVLCTools::saveWidgetPosition( p_intf, "Preferences", this );
+    QVLCTools::saveWidgetPosition( p_intf, "Preferences", this );
     reject();
 }
 
@@ -424,12 +396,16 @@ void PrefsDialog::reset()
 
     if( ret == QMessageBox::Ok )
     {
+        /* VLC goes on with the defaults at once, as with Reset all
+         * settings of the settings of the interface (ConfigModel::resetAll) */
         config_ResetAll();
         config_SaveConfigFile( p_intf );
         getSettings()->clear();
-        p_intf->preferencesResetPending = true;
-        p_intf->p_mi->reloadPrefs();
-        p_intf->p_mi->reloadFromSettings();
+        if( p_intf->p_mi )
+        {
+            p_intf->p_mi->reloadPrefs();
+            p_intf->p_mi->reloadFromSettings();
+        }
 
 #ifdef _WIN32
         simple_panels[0]->cleanLang();

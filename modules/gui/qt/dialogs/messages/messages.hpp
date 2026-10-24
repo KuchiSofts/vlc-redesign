@@ -53,6 +53,11 @@ private:
     static void MsgCallback( void *, int, const vlc_log_t *, const char *,
                              va_list );
 
+    void showEvent( QShowEvent * ) override;
+    void hideEvent( QHideEvent * ) override;
+    // the log of the settings again, when this window had the messages
+    void releaseLog();
+
 private slots:
     bool save();
     void updateConfig();

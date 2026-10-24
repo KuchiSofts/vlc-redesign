@@ -1446,7 +1446,8 @@ void SPrefsPanel::configML()
 // (the registry key of an installed VLC is never written nor deleted)
 void SPrefsPanel::cleanLang() {
     resetInterfaceLanguage();
-    p_intf->p_mi->applyInterfaceLanguage( interfaceLanguage() );
+    if( p_intf->p_mi )
+        p_intf->p_mi->applyInterfaceLanguage( interfaceLanguage() );
 }
 
 void SPrefsPanel::saveLang() {

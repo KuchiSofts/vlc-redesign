@@ -63,7 +63,6 @@ private:
     QPointer<QWindow> m_window;
 
     bool m_videoFullScreen = false;
-    bool m_autoresize = false;
 
     QScreen* m_lastWinScreen = nullptr;
 

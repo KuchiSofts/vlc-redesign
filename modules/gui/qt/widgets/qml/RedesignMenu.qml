@@ -64,6 +64,23 @@ T.Menu {
         clip: true
         currentIndex: root.currentIndex
         boundsBehavior: Flickable.StopAtBounds
+
+        // Taller than the window (the main menu in a window under about
+        // 620 px), it scrolls, its last rows cut: show it, as Qt's menus do
+        T.ScrollIndicator.vertical: T.ScrollIndicator {
+            id: scrollIndicator
+            // (a template has no size of its own)
+            implicitWidth: implicitContentWidth + leftPadding + rightPadding
+            implicitHeight: implicitContentHeight + topPadding + bottomPadding
+            padding: VLCStyle.dp(2, VLCStyle.scale)
+            visible: scrollIndicator.size < 1.0
+            contentItem: Rectangle {
+                implicitWidth: VLCStyle.dp(3, VLCStyle.scale)
+                implicitHeight: VLCStyle.dp(3, VLCStyle.scale)
+                radius: width / 2
+                color: VLCStyle.redesign.color("#6B6B6B", "#6B6B6B")
+            }
+        }
     }
 
     background: Rectangle {

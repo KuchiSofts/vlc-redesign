@@ -142,7 +142,25 @@ Dialog {
                 root.commit()
         }
     }
-    ShortcutsDialog { id: shortcutsDialog; parent: root.parent }
+    // The Keyboard Shortcuts dialog: made when it is first asked for, or
+    // when a search lists shortcuts (with the names of their actions); it
+    // was made with every opening of Settings
+    Loader {
+        id: shortcutsLoader
+        active: false
+        sourceComponent: ShortcutsDialog { parent: root.parent }
+    }
+    Binding {
+        target: shortcutsLoader
+        property: "active"
+        value: true
+        when: shortcutsSection.searching
+        restoreMode: Binding.RestoreNone
+    }
+    function shortcutsDialog() {
+        shortcutsLoader.active = true
+        return shortcutsLoader.item
+    }
 
     // The keyboard shortcuts a search finds (by the name of their action)
     ShortcutsModel {
@@ -408,13 +426,13 @@ Dialog {
                         visible: !shortcutsSection.searching || shortcutsSection.labelsMatch
                         label: qsTr("Defaults")
                         buttonText: qsTr("Edit Keyboard Shortcuts")
-                        onClicked: shortcutsDialog.open()
+                        onClicked: root.shortcutsDialog().open()
                     }
                     SettingsActionRow {
                         visible: !shortcutsSection.searching || shortcutsSection.labelsMatch
                         label: qsTr("Reset all shortcuts")
                         buttonText: qsTr("Reset")
-                        onClicked: shortcutsDialog.openReset()
+                        onClicked: root.shortcutsDialog().openReset()
                     }
                     Repeater {
                         id: shortcutResults
@@ -433,12 +451,16 @@ Dialog {
                             sourceComponent: SettingsActionRow {
                                 width: shortcutsSection.width
                                 // the names of the design for the actions it shows
-                                label: shortcutsDialog.actionLabels[shortcutResult.key] ?? shortcutResult.action
+                                // (the dialog is made as the search starts)
+                                readonly property var dialog: shortcutsLoader.item
+                                label: dialog ? (dialog.actionLabels[shortcutResult.key] ?? shortcutResult.action)
+                                              : shortcutResult.action
                                 buttonText: shortcutResult.hotkey.length
-                                            ? shortcutsDialog.displayKeys(shortcutResult.hotkey.split(", ")[0])
+                                            ? (dialog ? dialog.displayKeys(shortcutResult.hotkey.split(", ")[0])
+                                                      : shortcutResult.hotkey.split(", ")[0])
                                             : qsTr("Set a shortcut")
                                 buttonWidth: root.px(200)
-                                onClicked: shortcutsDialog.openWithSearch(shortcutResult.action)
+                                onClicked: root.shortcutsDialog().openWithSearch(shortcutResult.action)
                             }
                         }
                     }
@@ -447,7 +469,7 @@ Dialog {
                         label: qsTr("%1 more matching shortcuts").arg(shortcutResults.count - shortcutsSection.shown)
                         buttonText: qsTr("Show all")
                         buttonWidth: root.px(200)
-                        onClicked: shortcutsDialog.openWithSearch(searchField.text)
+                        onClicked: root.shortcutsDialog().openWithSearch(searchField.text)
                     }
                 }
 

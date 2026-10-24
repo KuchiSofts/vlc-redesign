@@ -1232,16 +1232,39 @@ void ConfigModel::addCombinedEntries()
 void ConfigModel::reload()
 {
     const bool wasDirty = dirty();
-    beginResetModel();
-    m_entries.clear();
+    // The entries made again aside (nobody told), as retranslate() does
+    QVector<Entry> previous;
+    previous.swap(m_entries);
+    const QVector<int> previousRows = m_rows;
     m_rows.clear();
+    QVector<Entry> fresh;
+    QVector<int> freshRows;
     if (m_ctx) {
+        const QSignalBlocker blocker(this);
         buildEntries();
         for (int i = 0; i < m_entries.size(); ++i)
             if (visible(m_entries[i]))
-                m_rows.append(i);
+                freshRows.append(i);
     }
-    endResetModel();
+    fresh.swap(m_entries);
+    // The same options in the same rows (Settings opened again): their
+    // values are told, the rows of the views are not made again
+    bool sameRows = !previousRows.isEmpty() && previousRows == freshRows
+                    && previous.size() == fresh.size();
+    for (int i = 0; sameRows && i < fresh.size(); ++i)
+        sameRows = previous[i].key == fresh[i].key;
+    if (sameRows) {
+        m_entries.swap(fresh);
+        m_rows = freshRows;
+        emit dataChanged(index(0), index(m_rows.size() - 1));
+    } else {
+        m_entries.swap(previous);
+        m_rows = previousRows;
+        beginResetModel();
+        m_entries.swap(fresh);
+        m_rows = freshRows;
+        endResetModel();
+    }
     ++m_revision;
     emit revisionChanged();
     emit categoriesChanged();

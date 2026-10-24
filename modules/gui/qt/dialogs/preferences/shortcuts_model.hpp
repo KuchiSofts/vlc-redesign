@@ -78,6 +78,8 @@ private:
 
     bool visible(const Entry &entry) const;
     void rebuildRows();
+    // The names of the actions in the language of the interface
+    void retranslate();
     // The rows again after a change of keys, while a search may hide them
     void refreshSearch();
     void notifyEntry(int entryIndex);

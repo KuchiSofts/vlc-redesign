@@ -338,7 +338,11 @@ void ConfigModel::setCtx(MainCtx *ctx)
 {
     if (m_ctx == ctx)
         return;
+    if (m_ctx)
+        disconnect(m_ctx, &MainCtx::interfaceLanguageChanged, this, &ConfigModel::retranslate);
     m_ctx = ctx;
+    if (m_ctx)
+        connect(m_ctx, &MainCtx::interfaceLanguageChanged, this, &ConfigModel::retranslate);
     emit ctxChanged();
     reload();
 }
@@ -1232,275 +1236,7 @@ void ConfigModel::reload()
     m_entries.clear();
     m_rows.clear();
     if (m_ctx) {
-        for (size_t i = 0; i < PrefsCatalog::count(); ++i) {
-            const PrefsCatalog::Option &option = PrefsCatalog::options()[i];
-            if (qstrncmp(option.name, "x:", 2) == 0) {
-                // "x:x-filter:<module>", "x:x-night-mode": toggles of the
-                // audio filters, where the module exists
-                Entry entry;
-                entry.key = QString::fromLatin1(option.name + 2);
-                entry.category = QString::fromLatin1(option.category);
-                entry.type = QStringLiteral("boolean");
-                if (entry.key == QLatin1String(bufferingKey)) {
-                    entry.proxyFor = QStringLiteral("network-caching");
-                    entry.type = QStringLiteral("integer");
-                    entry.original = QVariant::fromValue<int64_t>(2);
-                    const char *const names[] = { N_("Lowest latency"), N_("Low"), N_("Normal"),
-                                                  N_("High"), N_("Custom") };
-                    for (int64_t preset = 0; preset < 5; ++preset)
-                        entry.choices.append(QVariantMap{{QStringLiteral("value"), QVariant::fromValue(preset)},
-                                                         {QStringLiteral("label"), qtr(names[preset])}});
-                    entry.current = readValue(entry);
-                    entry.staged = entry.current;
-                    m_entries.append(entry);
-                    continue;
-                }
-                if (entry.key == QLatin1String(fetchMetadataKey)) {
-                    if (!config_FindConfig("metadata-network-access"))
-                        continue;
-                    entry.proxyFor = QStringLiteral("metadata-network-access");
-                    entry.type = QStringLiteral("integer");
-                    entry.original = QVariant::fromValue<int64_t>(0);
-                    entry.choices = {
-                        QVariantMap{{QStringLiteral("value"), QVariant::fromValue<int64_t>(0)},
-                                    {QStringLiteral("label"), qtr("From the file only")}},
-                        QVariantMap{{QStringLiteral("value"), QVariant::fromValue<int64_t>(1)},
-                                    {QStringLiteral("label"), qtr("From the file and the internet")}} };
-                    entry.current = readValue(entry);
-                    entry.staged = entry.current;
-                    m_entries.append(entry);
-                    continue;
-                }
-                if (entry.key == QLatin1String(subShadowKey) || entry.key == QLatin1String(subBackgroundKey)) {
-                    if (!config_FindConfig("freetype-shadow-opacity"))
-                        continue;
-                    entry.proxyFor = QStringLiteral("freetype");
-                    if (entry.key == QLatin1String(subBackgroundKey)) {
-                        entry.type = QStringLiteral("integer");
-                        entry.original = QVariant::fromValue<int64_t>(0);
-                        entry.choices = {
-                            QVariantMap{{QStringLiteral("value"), QVariant::fromValue<int64_t>(0)},
-                                        {QStringLiteral("label"), qtr("None")}},
-                            QVariantMap{{QStringLiteral("value"), QVariant::fromValue<int64_t>(1)},
-                                        {QStringLiteral("label"), qtr("Box")}} };
-                    } else {
-                        entry.original = true;
-                    }
-                    entry.current = readValue(entry);
-                    entry.staged = entry.current;
-                    m_entries.append(entry);
-                    continue;
-                }
-                const QString module = entry.key.startsWith(QLatin1String(filterPrefix))
-                    ? entry.key.mid(int(strlen(filterPrefix))) : QStringLiteral("compressor");
-                if (!module_exists(module.toUtf8().constData()) || !config_FindConfig("audio-filter"))
-                    continue;
-                entry.proxyFor = QStringLiteral("audio-filter");
-                entry.original = false;
-                entry.current = readValue(entry);
-                entry.staged = entry.current;
-                m_entries.append(entry);
-                continue;
-            }
-            if (qstrncmp(option.name, "qt:", 3) == 0) {
-                for (const QtSettingOption &qtOption : qtSettingOptions) {
-                    if (qstrcmp(qtOption.key, option.name + 3) != 0)
-                        continue;
-                    Entry entry;
-                    entry.key = QString::fromLatin1(qtOption.key);
-                    entry.category = QString::fromLatin1(option.category);
-                    entry.label = qtr(qtOption.label);
-                    entry.help = qtr(qtOption.help);
-                    entry.qtSetting = true;
-                    if (qtOption.type == 's') {
-                        entry.type = QStringLiteral("string");
-                        entry.original = QString();
-                        entry.current = m_ctx->settingValue(entry.key, QString()).toString();
-                    } else if (qtOption.type == 'b') {
-                        entry.type = QStringLiteral("boolean");
-                        entry.original = qtOption.defaultValue != 0;
-                        entry.current = m_ctx->settingValue(entry.key, entry.original).toBool();
-                    } else {
-                        entry.type = QStringLiteral("integer");
-                        entry.original = QVariant::fromValue<int64_t>(qtOption.defaultValue);
-                        entry.bounded = true;
-                        entry.minimum = QVariant::fromValue<int64_t>(qtOption.minimum);
-                        entry.maximum = QVariant::fromValue<int64_t>(qtOption.maximum);
-                        const qlonglong value = m_ctx->settingValue(entry.key, qtOption.defaultValue).toLongLong();
-                        entry.current = QVariant::fromValue<int64_t>(
-                            std::clamp<qlonglong>(value, qtOption.minimum, qtOption.maximum));
-                    }
-                    if (qtOption.choices) {
-                        entry.bounded = false;
-                        const QStringList labels = qtr(qtOption.choices).split('|');
-                        for (int64_t value = 0; value < labels.size(); ++value)
-                            entry.choices.append(QVariantMap{{QStringLiteral("value"), QVariant::fromValue(value)},
-                                                             {QStringLiteral("label"), labels[value]}});
-                    }
-                    // Process priority: the classes of Windows by name, the
-                    // usual ones first (-2 idle ... 2 high, see MainCtx)
-                    if (entry.key == QLatin1String("redesign/process-priority")) {
-                        entry.bounded = false;
-                        const struct { int64_t value; const char *label; } priorities[] = {
-                            { 0, N_("Normal") }, { 1, N_("Above normal") }, { 2, N_("High") },
-                            { -1, N_("Below normal") }, { -2, N_("Idle") } };
-                        for (const auto &priority : priorities)
-                            entry.choices.append(QVariantMap{{QStringLiteral("value"), QVariant::fromValue(priority.value)},
-                                                             {QStringLiteral("label"), qtr(priority.label)}});
-                    }
-                    entry.staged = entry.current;
-                    m_entries.append(entry);
-                }
-                continue;
-            }
-            module_config_t *config = config_FindConfig(option.name);
-            if (!config || !config->psz_text || !*config->psz_text)
-                continue;
-            Entry entry;
-            switch (CONFIG_CLASS(config->i_type)) {
-            case CONFIG_ITEM_BOOL: entry.type = QStringLiteral("boolean"); break;
-            case CONFIG_ITEM_INTEGER: entry.type = QStringLiteral("integer"); break;
-            case CONFIG_ITEM_FLOAT: entry.type = QStringLiteral("float"); break;
-            case CONFIG_ITEM_STRING:
-                entry.type = config->i_type == CONFIG_ITEM_DIRECTORY
-                    ? QStringLiteral("directory") : QStringLiteral("string");
-                break;
-            default: continue;
-            }
-            entry.key = QString::fromLatin1(option.name);
-            entry.category = QString::fromLatin1(option.category);
-            entry.label = qfut(config->psz_text);
-            entry.help = config->psz_longtext ? qfut(config->psz_longtext) : QString();
-            if (entry.type == QLatin1String("boolean")) {
-                entry.original = config->orig.i != 0;
-            } else if (entry.type == QLatin1String("integer")) {
-                entry.original = QVariant::fromValue(config->orig.i);
-                entry.bounded = config->min.i < config->max.i;
-                if (entry.bounded) {
-                    entry.minimum = QVariant::fromValue(config->min.i);
-                    entry.maximum = QVariant::fromValue(config->max.i);
-                }
-            } else if (entry.type == QLatin1String("float")) {
-                entry.original = config->orig.f;
-                entry.bounded = config->min.f < config->max.f;
-                if (entry.bounded) {
-                    entry.minimum = config->min.f;
-                    entry.maximum = config->max.f;
-                }
-            } else {
-                entry.original = QString::fromUtf8(config->orig.psz ? config->orig.psz : "");
-            }
-            entry.current = readValue(entry);
-            entry.staged = entry.current;
-            if (entry.type == QLatin1String("integer")) {
-                int64_t *values = nullptr;
-                char **texts = nullptr;
-                const ssize_t count = config_GetIntChoices(option.name, &values, &texts);
-                for (ssize_t j = 0; j < count; ++j) {
-                    const QString label = texts && texts[j] ? qfut(texts[j]) : QString::number(values[j]);
-                    entry.choices.append(QVariantMap{{QStringLiteral("value"), QVariant::fromValue(values[j])},
-                                                     {QStringLiteral("label"), label}});
-                    if (texts) free(texts[j]);
-                }
-                free(texts);
-                free(values);
-            } else if (entry.type == QLatin1String("string")
-                       && entry.key != QLatin1String("extraintf")
-                       && entry.key != QLatin1String("control")
-                       && entry.key != QLatin1String("audio-filter")) {
-                char **values = nullptr;
-                char **texts = nullptr;
-                const ssize_t count = config_GetPszChoices(option.name, &values, &texts);
-                // the encoder of the conversions: "none" lets VLC pick one
-                const bool encoder = entry.key == QLatin1String("sout-transcode-venc");
-                for (ssize_t j = 0; j < count; ++j) {
-                    const QString value = QString::fromUtf8(values[j] ? values[j] : "");
-                    QString label = texts && texts[j] ? qfut(texts[j]) : value;
-                    if (encoder && value == QLatin1String("any")) {
-                        free(values[j]);
-                        if (texts) free(texts[j]);
-                        continue;
-                    }
-                    if (encoder && value == QLatin1String("none"))
-                        label = qtr("Automatic");
-                    entry.choices.append(QVariantMap{{QStringLiteral("value"), value},
-                                                     {QStringLiteral("label"), label}});
-                    free(values[j]);
-                    if (texts) free(texts[j]);
-                }
-                // Automatic first
-                if (encoder && !entry.choices.isEmpty())
-                    entry.choices.move(entry.choices.size() - 1, 0);
-                free(texts);
-                free(values);
-            }
-            if (entry.key == QLatin1String("aout") && entry.choices.isEmpty())
-                continue;
-            if (entry.key == QLatin1String("menu-language") || entry.key == QLatin1String("sub-language")
-                || entry.key == QLatin1String("audio-language"))
-                entry.choices = languageChoices(entry.current.toString(),
-                                                entry.key != QLatin1String("menu-language"));
-            else if (entry.key == QLatin1String("aspect-ratio") || entry.key == QLatin1String("crop")
-                     || entry.key == QLatin1String("zoom") || entry.key == QLatin1String("snapshot-width")
-                     || entry.key == QLatin1String("sub-text-scale") || entry.key == QLatin1String("sub-margin")
-                     || entry.key == QLatin1String("freetype-shadow-distance")
-                     || entry.key == QLatin1String("postproc-q") || entry.key == QLatin1String("codec")
-                     || entry.key == QLatin1String("input-timeshift-granularity"))
-                entry.choices = presetChoices(entry.key, entry.current);
-            // Colors of the subtitles: any color (a field of the design)
-            else if (entry.key.startsWith(QLatin1String("freetype-")) && entry.key.endsWith(QLatin1String("color")))
-                entry.choices = {};
-            else if (entry.key == QLatin1String("dvd"))
-                entry.choices = opticalDriveChoices(entry.current.toString());
-            else if (entry.key == QLatin1String("qt-fullscreen-screennumber"))
-            {
-                // -1: the screen of the window; then the screens by number
-                entry.choices = {};
-                entry.choices.append(QVariantMap{{QStringLiteral("value"), QVariant::fromValue<int64_t>(-1)},
-                                                 {QStringLiteral("label"), qtr("Current screen")}});
-                const QList<QScreen *> screens = QGuiApplication::screens();
-                bool listed = entry.current.toLongLong() == -1;
-                for (int64_t i = 0; i < screens.size(); ++i) {
-                    entry.choices.append(QVariantMap{{QStringLiteral("value"), QVariant::fromValue(i)},
-                                                     {QStringLiteral("label"), qtr("Screen %1 (%2)").arg(i + 1)
-                                                                               .arg(screens[i]->name())}});
-                    listed = listed || entry.current.toLongLong() == i;
-                }
-                if (!listed)
-                    entry.choices.append(QVariantMap{{QStringLiteral("value"), entry.current},
-                                                     {QStringLiteral("label"), qtr("Screen %1").arg(entry.current.toLongLong() + 1)}});
-            }
-            else if (entry.key.startsWith(QLatin1String("sout-x264-")))
-                entry.choices = x264Choices(option.name, entry.current.toString());
-            // Volume step: a field in percent of the design (volumepercent)
-            else if (entry.key == QLatin1String("sub-autodetect-fuzzy"))
-            {
-                // The levels of SUB_FUZZY_LONGTEXT, as the design names them
-                // (Figma "sub filename", 6456:13892)
-                const QString labels[] = { qtr("Off"), qtr("Any title"), qtr("Contains title"),
-                                           qtr("Title with extra characters"), qtr("Exact title match") };
-                for (int64_t level = 0; level < 5; ++level)
-                    entry.choices.append(QVariantMap{{QStringLiteral("value"), QVariant::fromValue(level)},
-                                                     {QStringLiteral("label"), labels[level]}});
-            }
-            m_entries.append(entry);
-        }
-        addCombinedEntries();
-        // Size values: Pixels while VLC has a size in pixels, else Relative
-        const int pixels = indexOfKey(QStringLiteral("freetype-fontsize"));
-        const int sizeMode = indexOfKey(QStringLiteral("redesign/subtitle-size-mode"));
-        if (pixels >= 0 && sizeMode >= 0) {
-            m_entries[sizeMode].current = QVariant::fromValue<int64_t>(m_entries[pixels].current.toLongLong() > 0 ? 1 : 0);
-            m_entries[sizeMode].staged = m_entries[sizeMode].current;
-        }
-        // The kept opacity of the subtitle background: VLC's while there is one
-        const int background = indexOfKey(QStringLiteral("freetype-background-opacity"));
-        const int kept = indexOfKey(QLatin1String(subBackgroundOpacityKey));
-        if (background >= 0 && kept >= 0 && m_entries[background].current.toLongLong() != 0) {
-            m_entries[kept].current = QVariant::fromValue<int64_t>(m_entries[background].current.toLongLong());
-            m_entries[kept].staged = m_entries[kept].current;
-        }
-        syncDerived();
+        buildEntries();
         for (int i = 0; i < m_entries.size(); ++i)
             if (visible(m_entries[i]))
                 m_rows.append(i);
@@ -1512,4 +1248,315 @@ void ConfigModel::reload()
     if (wasDirty)
         emit dirtyChanged();
     setError({});
+}
+
+// The rows of the catalog with their values, their texts in the language of
+// the interface
+void ConfigModel::buildEntries()
+{
+    for (size_t i = 0; i < PrefsCatalog::count(); ++i) {
+        const PrefsCatalog::Option &option = PrefsCatalog::options()[i];
+        if (qstrncmp(option.name, "x:", 2) == 0) {
+            // "x:x-filter:<module>", "x:x-night-mode": toggles of the
+            // audio filters, where the module exists
+            Entry entry;
+            entry.key = QString::fromLatin1(option.name + 2);
+            entry.category = QString::fromLatin1(option.category);
+            entry.type = QStringLiteral("boolean");
+            if (entry.key == QLatin1String(bufferingKey)) {
+                entry.proxyFor = QStringLiteral("network-caching");
+                entry.type = QStringLiteral("integer");
+                entry.original = QVariant::fromValue<int64_t>(2);
+                const char *const names[] = { N_("Lowest latency"), N_("Low"), N_("Normal"),
+                                              N_("High"), N_("Custom") };
+                for (int64_t preset = 0; preset < 5; ++preset)
+                    entry.choices.append(QVariantMap{{QStringLiteral("value"), QVariant::fromValue(preset)},
+                                                     {QStringLiteral("label"), qtr(names[preset])}});
+                entry.current = readValue(entry);
+                entry.staged = entry.current;
+                m_entries.append(entry);
+                continue;
+            }
+            if (entry.key == QLatin1String(fetchMetadataKey)) {
+                if (!config_FindConfig("metadata-network-access"))
+                    continue;
+                entry.proxyFor = QStringLiteral("metadata-network-access");
+                entry.type = QStringLiteral("integer");
+                entry.original = QVariant::fromValue<int64_t>(0);
+                entry.choices = {
+                    QVariantMap{{QStringLiteral("value"), QVariant::fromValue<int64_t>(0)},
+                                {QStringLiteral("label"), qtr("From the file only")}},
+                    QVariantMap{{QStringLiteral("value"), QVariant::fromValue<int64_t>(1)},
+                                {QStringLiteral("label"), qtr("From the file and the internet")}} };
+                entry.current = readValue(entry);
+                entry.staged = entry.current;
+                m_entries.append(entry);
+                continue;
+            }
+            if (entry.key == QLatin1String(subShadowKey) || entry.key == QLatin1String(subBackgroundKey)) {
+                if (!config_FindConfig("freetype-shadow-opacity"))
+                    continue;
+                entry.proxyFor = QStringLiteral("freetype");
+                if (entry.key == QLatin1String(subBackgroundKey)) {
+                    entry.type = QStringLiteral("integer");
+                    entry.original = QVariant::fromValue<int64_t>(0);
+                    entry.choices = {
+                        QVariantMap{{QStringLiteral("value"), QVariant::fromValue<int64_t>(0)},
+                                    {QStringLiteral("label"), qtr("None")}},
+                        QVariantMap{{QStringLiteral("value"), QVariant::fromValue<int64_t>(1)},
+                                    {QStringLiteral("label"), qtr("Box")}} };
+                } else {
+                    entry.original = true;
+                }
+                entry.current = readValue(entry);
+                entry.staged = entry.current;
+                m_entries.append(entry);
+                continue;
+            }
+            const QString module = entry.key.startsWith(QLatin1String(filterPrefix))
+                ? entry.key.mid(int(strlen(filterPrefix))) : QStringLiteral("compressor");
+            if (!module_exists(module.toUtf8().constData()) || !config_FindConfig("audio-filter"))
+                continue;
+            entry.proxyFor = QStringLiteral("audio-filter");
+            entry.original = false;
+            entry.current = readValue(entry);
+            entry.staged = entry.current;
+            m_entries.append(entry);
+            continue;
+        }
+        if (qstrncmp(option.name, "qt:", 3) == 0) {
+            for (const QtSettingOption &qtOption : qtSettingOptions) {
+                if (qstrcmp(qtOption.key, option.name + 3) != 0)
+                    continue;
+                Entry entry;
+                entry.key = QString::fromLatin1(qtOption.key);
+                entry.category = QString::fromLatin1(option.category);
+                entry.label = qtr(qtOption.label);
+                entry.help = qtr(qtOption.help);
+                entry.qtSetting = true;
+                if (qtOption.type == 's') {
+                    entry.type = QStringLiteral("string");
+                    entry.original = QString();
+                    entry.current = m_ctx->settingValue(entry.key, QString()).toString();
+                } else if (qtOption.type == 'b') {
+                    entry.type = QStringLiteral("boolean");
+                    entry.original = qtOption.defaultValue != 0;
+                    entry.current = m_ctx->settingValue(entry.key, entry.original).toBool();
+                } else {
+                    entry.type = QStringLiteral("integer");
+                    entry.original = QVariant::fromValue<int64_t>(qtOption.defaultValue);
+                    entry.bounded = true;
+                    entry.minimum = QVariant::fromValue<int64_t>(qtOption.minimum);
+                    entry.maximum = QVariant::fromValue<int64_t>(qtOption.maximum);
+                    const qlonglong value = m_ctx->settingValue(entry.key, qtOption.defaultValue).toLongLong();
+                    entry.current = QVariant::fromValue<int64_t>(
+                        std::clamp<qlonglong>(value, qtOption.minimum, qtOption.maximum));
+                }
+                if (qtOption.choices) {
+                    entry.bounded = false;
+                    const QStringList labels = qtr(qtOption.choices).split('|');
+                    for (int64_t value = 0; value < labels.size(); ++value)
+                        entry.choices.append(QVariantMap{{QStringLiteral("value"), QVariant::fromValue(value)},
+                                                         {QStringLiteral("label"), labels[value]}});
+                }
+                // Process priority: the classes of Windows by name, the
+                // usual ones first (-2 idle ... 2 high, see MainCtx)
+                if (entry.key == QLatin1String("redesign/process-priority")) {
+                    entry.bounded = false;
+                    const struct { int64_t value; const char *label; } priorities[] = {
+                        { 0, N_("Normal") }, { 1, N_("Above normal") }, { 2, N_("High") },
+                        { -1, N_("Below normal") }, { -2, N_("Idle") } };
+                    for (const auto &priority : priorities)
+                        entry.choices.append(QVariantMap{{QStringLiteral("value"), QVariant::fromValue(priority.value)},
+                                                         {QStringLiteral("label"), qtr(priority.label)}});
+                }
+                entry.staged = entry.current;
+                m_entries.append(entry);
+            }
+            continue;
+        }
+        module_config_t *config = config_FindConfig(option.name);
+        if (!config || !config->psz_text || !*config->psz_text)
+            continue;
+        Entry entry;
+        switch (CONFIG_CLASS(config->i_type)) {
+        case CONFIG_ITEM_BOOL: entry.type = QStringLiteral("boolean"); break;
+        case CONFIG_ITEM_INTEGER: entry.type = QStringLiteral("integer"); break;
+        case CONFIG_ITEM_FLOAT: entry.type = QStringLiteral("float"); break;
+        case CONFIG_ITEM_STRING:
+            entry.type = config->i_type == CONFIG_ITEM_DIRECTORY
+                ? QStringLiteral("directory") : QStringLiteral("string");
+            break;
+        default: continue;
+        }
+        entry.key = QString::fromLatin1(option.name);
+        entry.category = QString::fromLatin1(option.category);
+        entry.label = qfut(config->psz_text);
+        entry.help = config->psz_longtext ? qfut(config->psz_longtext) : QString();
+        if (entry.type == QLatin1String("boolean")) {
+            entry.original = config->orig.i != 0;
+        } else if (entry.type == QLatin1String("integer")) {
+            entry.original = QVariant::fromValue(config->orig.i);
+            entry.bounded = config->min.i < config->max.i;
+            if (entry.bounded) {
+                entry.minimum = QVariant::fromValue(config->min.i);
+                entry.maximum = QVariant::fromValue(config->max.i);
+            }
+        } else if (entry.type == QLatin1String("float")) {
+            entry.original = config->orig.f;
+            entry.bounded = config->min.f < config->max.f;
+            if (entry.bounded) {
+                entry.minimum = config->min.f;
+                entry.maximum = config->max.f;
+            }
+        } else {
+            entry.original = QString::fromUtf8(config->orig.psz ? config->orig.psz : "");
+        }
+        entry.current = readValue(entry);
+        entry.staged = entry.current;
+        if (entry.type == QLatin1String("integer")) {
+            int64_t *values = nullptr;
+            char **texts = nullptr;
+            const ssize_t count = config_GetIntChoices(option.name, &values, &texts);
+            for (ssize_t j = 0; j < count; ++j) {
+                const QString label = texts && texts[j] ? qfut(texts[j]) : QString::number(values[j]);
+                entry.choices.append(QVariantMap{{QStringLiteral("value"), QVariant::fromValue(values[j])},
+                                                 {QStringLiteral("label"), label}});
+                if (texts) free(texts[j]);
+            }
+            free(texts);
+            free(values);
+        } else if (entry.type == QLatin1String("string")
+                   && entry.key != QLatin1String("extraintf")
+                   && entry.key != QLatin1String("control")
+                   && entry.key != QLatin1String("audio-filter")) {
+            char **values = nullptr;
+            char **texts = nullptr;
+            const ssize_t count = config_GetPszChoices(option.name, &values, &texts);
+            // the encoder of the conversions: "none" lets VLC pick one
+            const bool encoder = entry.key == QLatin1String("sout-transcode-venc");
+            for (ssize_t j = 0; j < count; ++j) {
+                const QString value = QString::fromUtf8(values[j] ? values[j] : "");
+                QString label = texts && texts[j] ? qfut(texts[j]) : value;
+                if (encoder && value == QLatin1String("any")) {
+                    free(values[j]);
+                    if (texts) free(texts[j]);
+                    continue;
+                }
+                if (encoder && value == QLatin1String("none"))
+                    label = qtr("Automatic");
+                entry.choices.append(QVariantMap{{QStringLiteral("value"), value},
+                                                 {QStringLiteral("label"), label}});
+                free(values[j]);
+                if (texts) free(texts[j]);
+            }
+            // Automatic first
+            if (encoder && !entry.choices.isEmpty())
+                entry.choices.move(entry.choices.size() - 1, 0);
+            free(texts);
+            free(values);
+        }
+        if (entry.key == QLatin1String("aout") && entry.choices.isEmpty())
+            continue;
+        if (entry.key == QLatin1String("menu-language") || entry.key == QLatin1String("sub-language")
+            || entry.key == QLatin1String("audio-language"))
+            entry.choices = languageChoices(entry.current.toString(),
+                                            entry.key != QLatin1String("menu-language"));
+        else if (entry.key == QLatin1String("aspect-ratio") || entry.key == QLatin1String("crop")
+                 || entry.key == QLatin1String("zoom") || entry.key == QLatin1String("snapshot-width")
+                 || entry.key == QLatin1String("sub-text-scale") || entry.key == QLatin1String("sub-margin")
+                 || entry.key == QLatin1String("freetype-shadow-distance")
+                 || entry.key == QLatin1String("postproc-q") || entry.key == QLatin1String("codec")
+                 || entry.key == QLatin1String("input-timeshift-granularity"))
+            entry.choices = presetChoices(entry.key, entry.current);
+        // Colors of the subtitles: any color (a field of the design)
+        else if (entry.key.startsWith(QLatin1String("freetype-")) && entry.key.endsWith(QLatin1String("color")))
+            entry.choices = {};
+        else if (entry.key == QLatin1String("dvd"))
+            entry.choices = opticalDriveChoices(entry.current.toString());
+        else if (entry.key == QLatin1String("qt-fullscreen-screennumber"))
+        {
+            // -1: the screen of the window; then the screens by number
+            entry.choices = {};
+            entry.choices.append(QVariantMap{{QStringLiteral("value"), QVariant::fromValue<int64_t>(-1)},
+                                             {QStringLiteral("label"), qtr("Current screen")}});
+            const QList<QScreen *> screens = QGuiApplication::screens();
+            bool listed = entry.current.toLongLong() == -1;
+            for (int64_t i = 0; i < screens.size(); ++i) {
+                entry.choices.append(QVariantMap{{QStringLiteral("value"), QVariant::fromValue(i)},
+                                                 {QStringLiteral("label"), qtr("Screen %1 (%2)").arg(i + 1)
+                                                                           .arg(screens[i]->name())}});
+                listed = listed || entry.current.toLongLong() == i;
+            }
+            if (!listed)
+                entry.choices.append(QVariantMap{{QStringLiteral("value"), entry.current},
+                                                 {QStringLiteral("label"), qtr("Screen %1").arg(entry.current.toLongLong() + 1)}});
+        }
+        else if (entry.key.startsWith(QLatin1String("sout-x264-")))
+            entry.choices = x264Choices(option.name, entry.current.toString());
+        // Volume step: a field in percent of the design (volumepercent)
+        else if (entry.key == QLatin1String("sub-autodetect-fuzzy"))
+        {
+            // The levels of SUB_FUZZY_LONGTEXT, as the design names them
+            // (Figma "sub filename", 6456:13892)
+            const QString labels[] = { qtr("Off"), qtr("Any title"), qtr("Contains title"),
+                                       qtr("Title with extra characters"), qtr("Exact title match") };
+            for (int64_t level = 0; level < 5; ++level)
+                entry.choices.append(QVariantMap{{QStringLiteral("value"), QVariant::fromValue(level)},
+                                                 {QStringLiteral("label"), labels[level]}});
+        }
+        m_entries.append(entry);
+    }
+    addCombinedEntries();
+    // Size values: Pixels while VLC has a size in pixels, else Relative
+    const int pixels = indexOfKey(QStringLiteral("freetype-fontsize"));
+    const int sizeMode = indexOfKey(QStringLiteral("redesign/subtitle-size-mode"));
+    if (pixels >= 0 && sizeMode >= 0) {
+        m_entries[sizeMode].current = QVariant::fromValue<int64_t>(m_entries[pixels].current.toLongLong() > 0 ? 1 : 0);
+        m_entries[sizeMode].staged = m_entries[sizeMode].current;
+    }
+    // The kept opacity of the subtitle background: VLC's while there is one
+    const int background = indexOfKey(QStringLiteral("freetype-background-opacity"));
+    const int kept = indexOfKey(QLatin1String(subBackgroundOpacityKey));
+    if (background >= 0 && kept >= 0 && m_entries[background].current.toLongLong() != 0) {
+        m_entries[kept].current = QVariant::fromValue<int64_t>(m_entries[background].current.toLongLong());
+        m_entries[kept].staged = m_entries[kept].current;
+    }
+    syncDerived();
+}
+
+// Another language of the interface: the names, the help and the choices of
+// the rows in it, the values staged kept (the rows stay where they are)
+void ConfigModel::retranslate()
+{
+    if (!m_ctx || m_entries.isEmpty())
+        return;
+    QVector<Entry> entries;
+    entries.swap(m_entries);
+    const QVector<int> rows = m_rows;
+    m_rows.clear();
+    {
+        // made again for their texts only: nobody is told
+        const QSignalBlocker blocker(this);
+        buildEntries();
+    }
+    QHash<QString, int> translated;
+    for (int i = 0; i < m_entries.size(); ++i)
+        translated.insert(m_entries[i].key, i);
+    for (Entry &entry : entries) {
+        const auto it = translated.constFind(entry.key);
+        if (it == translated.cend())
+            continue;
+        const Entry &fresh = m_entries[it.value()];
+        entry.label = fresh.label;
+        entry.help = fresh.help;
+        entry.choices = fresh.choices;
+    }
+    m_entries.swap(entries);
+    m_rows = rows;
+    if (!m_rows.isEmpty())
+        emit dataChanged(index(0), index(m_rows.size() - 1), {LabelRole, HelpRole, ChoicesRole});
+    // for the bindings reading labelAt() and helpAt()
+    ++m_revision;
+    emit revisionChanged();
 }

@@ -28812,7 +28812,7 @@ msgstr "Uitgefilterde items verwijderen"
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1270
 msgid ""
 "Do you really want to discard the items that are not displayed at the moment?"
-msgstr ""
+msgstr "Wilt u de items die nu niet worden weergegeven echt verwijderen?"
 
 #: modules/gui/qt/network/addonsmodel.cpp:330
 msgid "This addon has been installed manually. VLC can't manage it by itself."

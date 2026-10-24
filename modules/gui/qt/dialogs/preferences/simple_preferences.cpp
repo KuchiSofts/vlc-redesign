@@ -722,11 +722,9 @@ SPrefsPanel::SPrefsPanel( qt_intf_t *_p_intf, QWidget *_parent,
                     + qtr( "VLC skins website" ) + QString( "</a>." ) );
             ui.skinsLabel->setFont( italicFont );
 
-#ifdef _WIN32
-            BUTTONACT( ui.assoButton, &SPrefsPanel::assoDialog );
-#else
+            // (VLC Redesign: its file types are its installer's and Windows'
+            // Default apps; this dialog set those of an installed VLC)
             ui.osGroupBox->hide();
-#endif
 
             if( !module_exists( "skins2" ) )
             {
@@ -1368,47 +1366,33 @@ QVariantList interfaceLanguages()
 }
 
 #ifdef _WIN32
-// A portable copy (a "portable" folder next to vlc.exe) keeps its language in
-// portable/language, read by vlc.exe at startup, not in the registry it would
-// share with an installed VLC
-static QString portableLanguageFile()
+// The interface language is kept in the profile of VLC Redesign (its portable
+// folder, else %APPDATA%\VLC Redesign: bin/winvlc.c), where vlc.exe reads it
+// at startup; never in the registry of an installed VLC
+static QString languageFile()
 {
-    const QString portable = QCoreApplication::applicationDirPath() + QStringLiteral( "/portable" );
-    return QFileInfo( portable ).isDir() ? portable + QStringLiteral( "/language" ) : QString();
+    char *dir = config_GetUserDir( VLC_USERDATA_DIR );
+    if( dir == NULL )
+        return QString();
+    const QString file = QString::fromUtf8( dir ) + QStringLiteral( "/language" );
+    free( dir );
+    return file;
 }
 #endif
 
 QString interfaceLanguage()
 {
-    QString iso = QStringLiteral( "auto" );
 #ifdef _WIN32
-    QFile portable( portableLanguageFile() );
-    if( !portable.fileName().isEmpty() )
-    {
-        // English until one is chosen (vlc.exe starts so), not the
-        // language of Windows nor the one of an installed VLC
-        if( !portable.open( QIODevice::ReadOnly ) )
-            return QStringLiteral( "en" );
-        const QString code = QString::fromLatin1( portable.readAll() ).trimmed();
-        return code.isEmpty() ? QStringLiteral( "en" ) : code;
-    }
-    HKEY h_key;
-    if( RegOpenKeyEx( HKEY_CURRENT_USER, TEXT("Software\\VideoLAN\\VLC\\"), 0, KEY_READ, &h_key )
-            == ERROR_SUCCESS )
-    {
-        WCHAR szData[256];
-        DWORD len = sizeof( szData ) - sizeof( WCHAR );
-        DWORD type;
-        if( RegQueryValueEx( h_key, TEXT("Lang"), NULL, &type, (LPBYTE) &szData, &len ) == ERROR_SUCCESS
-                && type == REG_SZ )
-        {
-            szData[len / sizeof( WCHAR )] = 0;
-            iso = QString::fromWCharArray( szData );
-        }
-        RegCloseKey( h_key );
-    }
+    // English until one is chosen (vlc.exe starts so), not the language of
+    // Windows nor the one of an installed VLC
+    QFile file( languageFile() );
+    if( file.fileName().isEmpty() || !file.open( QIODevice::ReadOnly ) )
+        return QStringLiteral( "en" );
+    const QString code = QString::fromLatin1( file.readAll() ).trimmed();
+    return code.isEmpty() ? QStringLiteral( "en" ) : code;
+#else
+    return QStringLiteral( "auto" );
 #endif
-    return iso;
 }
 
 bool setInterfaceLanguage( const QString &iso )
@@ -1420,20 +1404,10 @@ bool setInterfaceLanguage( const QString &iso )
     {
         if( iso != QLatin1String( language_map[i].iso ) )
             continue;
-        const QString portableFile = portableLanguageFile();
-        if( !portableFile.isEmpty() )
-        {
-            QFile portable( portableFile );
-            if( !portable.open( QIODevice::WriteOnly | QIODevice::Truncate ) )
-                return false;
-            return portable.write( QByteArray( language_map[i].iso ) ) > 0;
-        }
-        QVLCRegistry qvReg( HKEY_CURRENT_USER );
-        if( i == 0 )
-            qvReg.DeleteValue( "Software\\VideoLAN\\VLC\\", "Lang" );
-        else
-            qvReg.WriteRegistry( "Software\\VideoLAN\\VLC\\", "Lang", language_map[i].iso );
-        return true;
+        QFile file( languageFile() );
+        if( file.fileName().isEmpty() || !file.open( QIODevice::WriteOnly | QIODevice::Truncate ) )
+            return false;
+        return file.write( QByteArray( language_map[i].iso ) ) > 0;
     }
 #else
     VLC_UNUSED( iso );
@@ -1444,14 +1418,9 @@ bool setInterfaceLanguage( const QString &iso )
 void resetInterfaceLanguage()
 {
 #ifdef _WIN32
-    const QString portableFile = portableLanguageFile();
-    if( !portableFile.isEmpty() )
-    {
-        QFile::remove( portableFile );
-        return;
-    }
-    QVLCRegistry qvReg( HKEY_CURRENT_USER );
-    qvReg.DeleteValue( "Software\\VideoLAN\\VLC\\", "Lang" );
+    const QString file = languageFile();
+    if( !file.isEmpty() )
+        QFile::remove( file );
 #endif
 }
 
@@ -1474,32 +1443,14 @@ void SPrefsPanel::configML()
 #include <QDialogButtonBox>
 #include "util/registry.hpp"
 
+// (the registry key of an installed VLC is never written nor deleted)
 void SPrefsPanel::cleanLang() {
-    const QString portableFile = portableLanguageFile();
-    if( !portableFile.isEmpty() )
-    {
-        QFile::remove( portableFile );
-        return;
-    }
-    QVLCRegistry qvReg( HKEY_CURRENT_USER );
-    qvReg.DeleteValue( "Software\\VideoLAN\\VLC\\", "Lang" );
-    qvReg.DeleteKey( "Software\\VideoLAN\\", "VLC" );
-    qvReg.DeleteKey( "Software\\", "VideoLAN" );
+    resetInterfaceLanguage();
 }
 
 void SPrefsPanel::saveLang() {
     if( !lang ) return;
-
-    if( !portableLanguageFile().isEmpty() )
-        setInterfaceLanguage( QString::fromLatin1( lang ) );
-    else if( !strncmp( lang, "auto", 4 ) ) {
-        cleanLang();
-    }
-    else
-    {
-        QVLCRegistry qvReg( HKEY_CURRENT_USER );
-        qvReg.WriteRegistry( "Software\\VideoLAN\\VLC\\", "Lang", lang );
-    }
+    setInterfaceLanguage( QString::fromLatin1( lang ) );
 }
 
 bool SPrefsPanel::addType( const char * psz_ext, QTreeWidgetItem* current,

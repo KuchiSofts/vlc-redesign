@@ -205,8 +205,6 @@ en.Running={#AppName} is open. Setup will close it now and open it again when it
 he.Running={#AppName} פתוח. ההתקנה תסגור אותו עכשיו ותפתח אותו מחדש בסיום.
 en.StillRunning={#AppName} didn't close. Close it and click Retry.
 he.StillRunning={#AppName} לא נסגר. סגור אותו ולחץ על "נסה שוב".
-en.RemoveData=Also delete your {#AppName} settings, library and history?
-he.RemoveData=למחוק גם את ההגדרות, הספרייה וההיסטוריה של {#AppName}?
 en.ShortcutComment=VLC media player with the interface designed by Juxtopposed
 he.ShortcutComment=נגן VLC עם הממשק שעיצבה Juxtopposed
 
@@ -1661,16 +1659,14 @@ begin
   end;
   if CurUninstallStep = usPostUninstall then
   begin
-    { A silent uninstall keeps the user's data; otherwise ask, defaulting to keep }
-    if DirExists(ExpandConstant('{app}\portable')) and (not UninstallSilent) and
-       (MsgBox(CustomMessage('RemoveData'), mbConfirmation, MB_YESNO or MB_DEFBUTTON2) = IDYES) then
-    begin
+    { The program goes with its settings, library and history (an update
+      keeps them: it installs over the program, never uninstalls it) }
+    if DirExists(ExpandConstant('{app}\portable')) then
       DelTree(ExpandConstant('{app}\portable'), True, True, True);
-      { no copy starts with these settings any more }
-      RegDeleteValue(HKCU, PROFILES, ExpandConstant('{app}\portable'));
-      RegDeleteKeyIfEmpty(HKCU, PROFILES);
-      RegDeleteKeyIfEmpty(HKCU, 'Software\{#AppName}');
-    end;
+    { no copy starts with these settings any more }
+    RegDeleteValue(HKCU, PROFILES, ExpandConstant('{app}\portable'));
+    RegDeleteKeyIfEmpty(HKCU, PROFILES);
+    RegDeleteKeyIfEmpty(HKCU, 'Software\{#AppName}');
     RemoveDir(ExpandConstant('{app}'));
   end;
 end;

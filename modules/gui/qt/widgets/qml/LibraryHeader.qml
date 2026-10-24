@@ -50,7 +50,8 @@ T.ToolBar {
     readonly property var _historyHost: typeof g_mainDisplay !== "undefined" ? g_mainDisplay : null
     readonly property string breadcrumb: {
         const detail = History.viewProp && History.viewProp.title ? History.viewProp.title : ""
-        return detail && detail !== title ? title + "  ▸  " + detail : title
+        // (to the page, the left in a right to left layout)
+        return detail && detail !== title ? title + (root.mirrored ? "  ◂  " : "  ▸  ") + detail : title
     }
 
     position: T.ToolBar.Header
@@ -152,10 +153,8 @@ T.ToolBar {
         // made in the header (the menu is no item: Qt warns of an object
         // out of the scene), the menu then takes them
         const items = [groupingSeparator.createObject(root)]
-        for (const entry of [[qsTr("Do not group videos"), MainCtx.GROUPING_NONE],
-                             [qsTr("Group by name"), MainCtx.GROUPING_NAME],
-                             [qsTr("Group by folder"), MainCtx.GROUPING_FOLDER]])
-            items.push(groupingOption.createObject(root, { text: entry[0], grouping: entry[1] }))
+        for (const grouping of [MainCtx.GROUPING_NONE, MainCtx.GROUPING_NAME, MainCtx.GROUPING_FOLDER])
+            items.push(groupingOption.createObject(root, { grouping: grouping }))
         // after the orders, whenever these are added
         for (const item of items)
             sortOptions.addItem(item)
@@ -173,6 +172,10 @@ T.ToolBar {
         id: groupingOption
         Widgets.RedesignOptionItem {
             property int grouping
+            // (a binding: in the language chosen, then and later)
+            text: grouping === MainCtx.GROUPING_NAME ? qsTr("Group by name")
+                  : grouping === MainCtx.GROUPING_FOLDER ? qsTr("Group by folder")
+                  : qsTr("Do not group videos")
             checked: MainCtx.grouping === grouping
             // the page applies it (SortMenuVideo.onGrouping)
             onTriggered: root.sortMenu.grouping(grouping)
@@ -246,6 +249,8 @@ T.ToolBar {
                     fillMode: Image.Pad
                     smooth: false
                     opacity: (VLCStyle.palette.isDark || parent.enabled) ? 1 : 0.4
+                    // back: to the right in a right to left layout
+                    mirror: root.mirrored
                 }
                 enabled: !History.previousEmpty
                 onClicked: {
@@ -270,6 +275,7 @@ T.ToolBar {
                     fillMode: Image.Pad
                     smooth: false
                     opacity: (VLCStyle.palette.isDark || parent.enabled) ? 1 : 0.4
+                    mirror: root.mirrored
                 }
                 // History has no forward stack: the main display keeps the
                 // pages left with "Previous"
@@ -303,7 +309,8 @@ T.ToolBar {
                             id: crumbSeparator
                             visible: crumbDelegate.index > 0
                             // Figma: "\u25B6", Inter 8, #404040, in a box of 8 x 19
-                            text: "\u25B6"
+                            // ("\u25C0" in a right to left address)
+                            text: root.mirrored ? "\u25C0" : "\u25B6"
                             Layout.preferredWidth: VLCStyle.dp(8, VLCStyle.scale)
                             Layout.fillHeight: true
                             horizontalAlignment: Text.AlignLeft
@@ -463,7 +470,9 @@ T.ToolBar {
                     fillMode: Image.Pad
                     smooth: false
                 }
-                onClicked: sortOptions.toggleFrom(sortButton, 0,
+                // under the button, from its start (its right edge in a
+                // right to left layout)
+                onClicked: sortOptions.toggleFrom(sortButton, root.mirrored ? sortButton.width - sortOptions.width : 0,
                                                   sortButton.height + VLCStyle.dp(8, VLCStyle.scale))
             }
 
@@ -483,7 +492,8 @@ T.ToolBar {
                 }
                 // Figma "View Options"
                 checked: viewOptions.opened
-                onClicked: viewOptions.toggleFrom(this, 0, height + VLCStyle.dp(8, VLCStyle.scale))
+                onClicked: viewOptions.toggleFrom(this, root.mirrored ? width - viewOptions.width : 0,
+                                                  height + VLCStyle.dp(8, VLCStyle.scale))
 
                 Widgets.RedesignMenu {
                     id: viewOptions

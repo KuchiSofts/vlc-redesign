@@ -36,8 +36,12 @@ T.TextArea {
     // the first line as Figma places it
     topPadding: VLCStyle.redesign.textBaseline(border + VLCStyle.dp(8, VLCStyle.scale), font.pixelSize) - metrics.ascent
     bottomPadding: border + VLCStyle.dp(8, VLCStyle.scale)
-    leftPadding: border + VLCStyle.dp(12, VLCStyle.scale)
-    rightPadding: border + VLCStyle.dp(18, VLCStyle.scale)
+    // 12 before the text, 18 after it: the other way round in a right to
+    // left layout (Hebrew, Arabic...), the text from the right
+    readonly property bool _mirrored: LayoutMirroring.enabled
+    leftPadding: border + VLCStyle.dp(_mirrored ? 18 : 12, VLCStyle.scale)
+    rightPadding: border + VLCStyle.dp(_mirrored ? 12 : 18, VLCStyle.scale)
+    horizontalAlignment: TextEdit.AlignLeft
     verticalAlignment: TextEdit.AlignTop
     wrapMode: multiLine ? TextEdit.WrapAnywhere : TextEdit.NoWrap
 
@@ -90,5 +94,6 @@ T.TextArea {
         color: root.placeholderTextColor
         font: root.font
         elide: Text.ElideRight
+        horizontalAlignment: Text.AlignLeft
     }
 }

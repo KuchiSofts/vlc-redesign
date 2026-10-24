@@ -36,12 +36,16 @@ ButtonExt {
 
     signal menuIndicatorClicked()
 
-    rightPadding: leftPadding + implicitIndicatorWidth
+    // the menu at the end: on the left in a right to left layout (Hebrew,
+    // Arabic...)
+    leftPadding: padding + (mirrored ? implicitIndicatorWidth : 0)
+    rightPadding: padding + (mirrored ? 0 : implicitIndicatorWidth)
 
     spacing: VLCStyle.margin_xxsmall
 
     onKeyPressedFunc: function(event) {
-        if (KeyHelper.matchRight(event) && contentItem?.menuIndicatorButton) {
+        if ((root.mirrored ? KeyHelper.matchLeft(event) : KeyHelper.matchRight(event))
+                && contentItem?.menuIndicatorButton) {
             contentItem.menuIndicatorButton.forceActiveFocus(Qt.TabFocusReason)
             event.accepted = true
             return
@@ -132,8 +136,8 @@ ButtonExt {
             topInset: (background.border.width > 0 && background.border.color.a > 0) ? 0
                                                                                      : (root.background?.border.width ?? 0)
             bottomInset: topInset
-            leftInset: 0
-            rightInset: topInset
+            leftInset: root.mirrored ? topInset : 0
+            rightInset: root.mirrored ? 0 : topInset
 
             Accessible.name: qsTr("More options")
 
@@ -145,7 +149,7 @@ ButtonExt {
 
             Keys.priority: Keys.AfterItem
             Keys.onPressed: (event) => {
-                if (KeyHelper.matchLeft(event)) {
+                if (root.mirrored ? KeyHelper.matchRight(event) : KeyHelper.matchLeft(event)) {
                     root.forceActiveFocus(Qt.BacktabFocusReason)
                     event.accepted = true
                     return

@@ -11,6 +11,7 @@ import QtQuick.Layouts
 import QtQuick.Templates as T
 import QtQuick.Controls.Basic as Controls
 
+import VLC.MainInterface
 import VLC.Style
 import VLC.Util
 
@@ -35,7 +36,15 @@ T.Button {
     property real fontSize: VLCStyle.dp(14, VLCStyle.scale)
     property real listHeight: VLCStyle.dp(320, VLCStyle.scale)
 
-    readonly property string _name: code === "" ? noneText : SubtitlePreferences.name(code)
+    // the names come translated by SubtitlePreferences: asked again in
+    // another language of the interface (no qsTr() here to follow it)
+    property int _languageRevision: 0
+    Connections {
+        target: MainCtx
+        function onInterfaceLanguageChanged() { ++root._languageRevision }
+    }
+
+    readonly property string _name: { void root._languageRevision; return code === "" ? noneText : SubtitlePreferences.name(code) }
     readonly property string _native: code === "" ? "" : SubtitlePreferences.nativeName(code)
 
     implicitWidth: VLCStyle.dp(280, VLCStyle.scale)
@@ -66,6 +75,7 @@ T.Button {
             elide: Text.ElideRight
             Layout.maximumWidth: root.width * 0.6
         }
+        // after the name, in its own script (a right to left one too)
         Text {
             Layout.fillWidth: true
             visible: root._native !== "" && root._native !== root._name
@@ -74,6 +84,7 @@ T.Button {
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: root.fontSize - 1
             elide: Text.ElideRight
+            horizontalAlignment: Text.AlignLeft
         }
         Item { Layout.fillWidth: !(root._native !== "" && root._native !== root._name) }
         Image {
@@ -112,6 +123,11 @@ T.Button {
         }
 
         contentItem: ColumnLayout {
+            // right to left (Hebrew, Arabic...): a popup is not under the
+            // mirrored interface
+            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+            LayoutMirroring.childrenInherit: true
+
             spacing: VLCStyle.dp(6, VLCStyle.scale)
 
             T.TextField {
@@ -125,6 +141,7 @@ T.Button {
                 color: root.textColor
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: root.fontSize
+                horizontalAlignment: TextInput.AlignLeft
                 verticalAlignment: TextInput.AlignVCenter
                 selectByMouse: true
                 background: Rectangle {
@@ -162,6 +179,7 @@ T.Button {
                 // the system's language, English and the one chosen first,
                 // then all of them by name; the search keeps those it finds
                 model: {
+                    void root._languageRevision
                     const all = SubtitlePreferences.languages
                     const query = search.text.trim().toLowerCase()
                     const first = []
@@ -213,6 +231,7 @@ T.Button {
                             font.family: VLCStyle.redesign.fontFamily
                             font.pixelSize: root.fontSize
                             elide: Text.ElideRight
+                            horizontalAlignment: Text.AlignLeft
                             Layout.maximumWidth: item.width * 0.55
                         }
                         Text {

@@ -34,6 +34,8 @@ ColumnLayout {
 
         Layout.fillWidth: true
         Layout.preferredHeight: Math.ceil(lineHeightPx)
+        // from the start of the line (the right in a right to left layout)
+        horizontalAlignment: Text.AlignLeft
         verticalAlignment: Text.AlignTop
         elide: Text.ElideRight
         font.family: VLCStyle.redesign.fontFamily
@@ -60,6 +62,10 @@ ColumnLayout {
     FigmaText {
         visible: root.description !== ""
         lineHeightPx: VLCStyle.dp(24.5, VLCStyle.scale)
+        // longer than the line (a translation): on more lines, not cut
+        wrapMode: Text.Wrap
+        elide: Text.ElideNone
+        Layout.preferredHeight: lineCount > 1 ? implicitHeight : Math.ceil(lineHeightPx)
         text: root.description
         color: VLCStyle.redesign.color("#6B6B6B", "#4d4d4d", root.darkTheme)
         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)

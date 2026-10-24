@@ -68,6 +68,11 @@ FocusScope {
         id: theme
     }
 
+    // right to left (Hebrew, Arabic...): the field opens on the other side
+    // of the button, its buttons on its left (a popup is not under the
+    // mirrored interface: its content mirrors itself)
+    readonly property bool _rtl: Qt.application.layoutDirection === Qt.RightToLeft
+
     Widgets.IconToolButton {
         id: iconButton
 
@@ -96,7 +101,7 @@ FocusScope {
             id: popup
             focus: true
 
-            x: -width + parent.width
+            x: iconButton.mirrored ? 0 : -width + parent.width
             y: root.popBelow ? parent.height : -height
 
             implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
@@ -161,13 +166,19 @@ FocusScope {
 
                 property bool _keyPressed: false
 
+                LayoutMirroring.enabled: root._rtl
+                LayoutMirroring.childrenInherit: true
+
                 colorContext.palette: theme.palette
 
                 implicitWidth: VLCStyle.widthSearchInput
 
+                readonly property real _sidePadding: padding + VLCStyle.dp(4, VLCStyle.scale)
+                readonly property real _buttonsWidth: insideRow.visible ? insideRow.width : 0.0
+
                 padding: VLCStyle.dp(6, VLCStyle.scale)
-                leftPadding: padding + VLCStyle.dp(4, VLCStyle.scale)
-                rightPadding: leftPadding + (insideRow.visible ? insideRow.width : 0.0)
+                leftPadding: _sidePadding + (root._rtl ? _buttonsWidth : 0.0)
+                rightPadding: _sidePadding + (root._rtl ? 0.0 : _buttonsWidth)
 
                 radius: clearButton.radius
 
@@ -175,12 +186,16 @@ FocusScope {
 
                 placeholderText: qsTr("filter")
 
+                // the buttons in the field, after its text
+                readonly property Item _firstButton: caseSensitiveToggleButton.visible ? caseSensitiveToggleButton
+                                                                                       : (regexToggleButton.visible ? regexToggleButton
+                                                                                                                    : (clearButton.visible ? clearButton : null))
+
                 Navigation.parentItem: root
                 Navigation.upItem: root.popBelow ? iconButton : null
                 Navigation.downItem: root.popBelow ? null : iconButton
-                Navigation.rightItem: caseSensitiveToggleButton.visible ? caseSensitiveToggleButton
-                                                                        : (regexToggleButton.visible ? regexToggleButton
-                                                                                                     : (clearButton.visible ? clearButton : null))
+                Navigation.rightItem: root._rtl ? null : _firstButton
+                Navigation.leftItem: root._rtl ? _firstButton : null
                 Navigation.cancelAction: function() {
                     root.retract()
                     iconButton.focusReason = Qt.ShortcutFocusReason
@@ -249,9 +264,11 @@ FocusScope {
                             checked = !checked
                         }
 
+                        // (the row mirrored in a right to left layout:
+                        // the arrows go to the buttons the user sees there)
                         Navigation.parentItem: textField
-                        Navigation.leftItem: textField
-                        Navigation.rightItem: regexToggleButton
+                        Navigation.leftItem: root._rtl ? regexToggleButton : textField
+                        Navigation.rightItem: root._rtl ? textField : regexToggleButton
                     }
 
                     Widgets.IconToolButton {
@@ -271,8 +288,8 @@ FocusScope {
                         }
 
                         Navigation.parentItem: textField
-                        Navigation.leftItem: caseSensitiveToggleButton
-                        Navigation.rightItem: clearButton
+                        Navigation.leftItem: root._rtl ? clearButton : caseSensitiveToggleButton
+                        Navigation.rightItem: root._rtl ? caseSensitiveToggleButton : clearButton
                     }
 
                     Widgets.IconToolButton {
@@ -298,7 +315,8 @@ FocusScope {
                         onClicked: textField.clear()
 
                         Navigation.parentItem: textField
-                        Navigation.leftItem: regexToggleButton
+                        Navigation.leftItem: root._rtl ? null : regexToggleButton
+                        Navigation.rightItem: root._rtl ? regexToggleButton : null
                     }
                 }
             }

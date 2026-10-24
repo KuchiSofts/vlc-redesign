@@ -201,6 +201,10 @@ FocusScope {
     // NOTE: Update on contentLeftMargin since we depend on this for item placements.
     onContentLeftMarginChanged: _anchoredLayout(true)
 
+    // the items placed from the right in a right to left layout
+    readonly property bool _mirrored: LayoutMirroring.enabled
+    on_MirroredChanged: _anchoredLayout(true)
+
     onDisplayMarginEndChanged: _anchoredLayout(false)
 
     onModelChanged: _onModelCountChanged()
@@ -230,11 +234,12 @@ FocusScope {
 
     Keys.onPressed: (event) => {
         let newIndex = -1
-        if (KeyHelper.matchRight(event)) {
+        // (the next item is on the left in a right to left grid)
+        if (_mirrored ? KeyHelper.matchLeft(event) : KeyHelper.matchRight(event)) {
             if ((currentIndex + 1) % nbItemPerRow !== 0) {//are we not at the end of line
                 newIndex = Math.min(_count - 1, currentIndex + 1)
             }
-        } else if (KeyHelper.matchLeft(event)) {
+        } else if (_mirrored ? KeyHelper.matchRight(event) : KeyHelper.matchLeft(event)) {
             if (currentIndex % nbItemPerRow !== 0) {//are we not at the beginning of line
                 newIndex = Math.max(0, currentIndex - 1)
             }
@@ -500,7 +505,12 @@ FocusScope {
     function getItemPos(id) {
         const rowCol = getItemRowCol(id);
 
-        const x = rowCol[0] * _effectiveCellWidth + contentLeftMargin;
+        let x = rowCol[0] * _effectiveCellWidth + contentLeftMargin;
+
+        // right to left (Hebrew, Arabic...): the grid as in a mirror, the
+        // first column on the right
+        if (root._mirrored)
+            x = root.width - x - cellWidth;
 
         const y = rowCol[1] * rowHeight + headerHeight + topMargin;
 

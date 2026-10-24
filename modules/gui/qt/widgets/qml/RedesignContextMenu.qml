@@ -143,10 +143,11 @@ QtObject {
         _focusItem = host.Window.activeFocusItem
 
         if (_button) {
-            menu.popup(_button, _popupPoint.x, _popupPoint.y)
+            menu.popupFrom(_button, _popupPoint.x, _popupPoint.y)
         } else {
             const pos = host.mapFromGlobal(_popupPoint.x, _popupPoint.y)
-            menu.popup(host, pos.x, pos.y)
+            // right to left: on the left of the pointer, as Windows does
+            menu.popup(host, menu._rtl ? pos.x - menu.width : pos.x, pos.y)
         }
     }
 

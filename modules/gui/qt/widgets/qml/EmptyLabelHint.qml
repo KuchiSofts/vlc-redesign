@@ -42,6 +42,10 @@ EmptyLabel {
 
         anchors.horizontalCenter: parent.horizontalCenter
 
+        // a longer hint (a translation) on more lines, within the view
+        width: parent.width > 0 ? Math.min(implicitWidth, parent.width) : implicitWidth
+        wrapMode: Text.Wrap
+
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
 

@@ -146,6 +146,8 @@ T.Pane {
                 sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
                 fillMode: Image.Pad
                 smooth: false
+                // after the title: it points left in a right to left layout
+                mirror: button.mirrored
             }
 
             Navigation.parentItem: root

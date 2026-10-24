@@ -32,12 +32,19 @@ Item {
     readonly property real requiredTextWidth: label.implicitWidth
     readonly property bool _needsToScroll: (label.width < requiredTextWidth)
 
+    // right to left (Hebrew, Arabic...): the label at the right, its end
+    // shown by scrolling it to the right
+    readonly property bool _mirrored: LayoutMirroring.enabled
+    readonly property real _restX: _mirrored ? root.width - label.width : 0
+
     //Accessible
     Accessible.role: Accessible.StaticText
     Accessible.name: label.text
 
     onLabelChanged: {
         label.width = Qt.binding(function () { return Math.min(label.implicitWidth, root.width) })
+
+        label.x = Qt.binding(function () { return root._restX })
 
         label.elide = Qt.binding(function () {
             return root.scrolling ? Text.ElideNone : Text.ElideRight
@@ -57,7 +64,7 @@ Item {
         loops: Animation.Infinite
 
         onStopped: {
-            label.x = 0
+            label.x = Qt.binding(function () { return root._restX })
         }
 
         PauseAnimation {
@@ -67,8 +74,9 @@ Item {
         SmoothedAnimation {
             target: label
             property: "x"
-            from: 0
-            to: label.width - root.requiredTextWidth
+            from: root._restX
+            to: root._mirrored ? root._restX + root.requiredTextWidth - label.width
+                               : label.width - root.requiredTextWidth
 
             maximumEasingTime: 0
             velocity: 20
@@ -81,7 +89,7 @@ Item {
         PropertyAction {
             target: label
             property: "x"
-            value: 0
+            value: root._restX
         }
     }
 }

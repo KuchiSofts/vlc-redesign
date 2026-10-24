@@ -91,6 +91,10 @@ T.Control {
 
             anchors.horizontalCenter: parent.horizontalCenter
 
+            // a longer text (a translation) on more lines, within the view
+            width: parent.width > 0 ? Math.min(implicitWidth, parent.width) : implicitWidth
+            wrapMode: Text.Wrap
+
             focus: false
 
             color: VLCStyle.redesign.color("#C6C6C6", theme.fg.primary)

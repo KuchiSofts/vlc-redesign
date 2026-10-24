@@ -104,6 +104,12 @@ T.Popup {
     }
 
     contentItem: ColumnLayout {
+        // right to left (Hebrew, Arabic...): a popup is not under the
+        // mirrored interface, its content mirrors itself (the action on the
+        // left, Cancel on the right)
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        LayoutMirroring.childrenInherit: true
+
         spacing: 0
 
         // holds the keyboard while nothing shows focused (initialField)
@@ -159,14 +165,18 @@ T.Popup {
                     Text {
                         id: titleText
 
-                        x: VLCStyle.dp(10, VLCStyle.scale)
-                        width: closeButton.x - x
+                        // up to the close button (on the left in a right
+                        // to left layout)
+                        anchors.left: parent.left
+                        anchors.leftMargin: VLCStyle.dp(10, VLCStyle.scale)
+                        anchors.right: closeButton.left
                         height: parent.height
                         text: root.title
                         color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e", root.darkTheme)
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                         elide: Text.ElideRight
+                        horizontalAlignment: Text.AlignLeft
                         verticalAlignment: Text.AlignTop
                         // the text box (17) centred in the row
                         topPadding: VLCStyle.redesign.textBaseline(Math.round((height - Math.round(1.2109375 * font.pixelSize)) / 2),
@@ -243,7 +253,8 @@ T.Popup {
             DialogButton {
                 objectName: "dialogCancelButton"
                 visible: root.cancelVisible
-                x: VLCStyle.dp(20, VLCStyle.scale)
+                anchors.left: parent.left
+                anchors.leftMargin: VLCStyle.dp(20, VLCStyle.scale)
                 y: VLCStyle.dp(20, VLCStyle.scale)
                 text: qsTr("Cancel")
                 onClicked: root.close()
@@ -251,7 +262,8 @@ T.Popup {
 
             DialogButton {
                 objectName: "dialogAcceptButton"
-                x: parent.width - width - VLCStyle.dp(20, VLCStyle.scale)
+                anchors.right: parent.right
+                anchors.rightMargin: VLCStyle.dp(20, VLCStyle.scale)
                 y: VLCStyle.dp(20, VLCStyle.scale)
                 text: root.acceptText
                 accent: true

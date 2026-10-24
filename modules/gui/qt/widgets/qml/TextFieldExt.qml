@@ -41,6 +41,9 @@ TextField {
 
     font.pixelSize: VLCStyle.fontSize_normal
 
+    // from the start of the field: the right in a right to left layout
+    // (Hebrew, Arabic...), whatever is typed
+    horizontalAlignment: Text.AlignLeft
     verticalAlignment: Text.AlignVCenter
 
     property real radius

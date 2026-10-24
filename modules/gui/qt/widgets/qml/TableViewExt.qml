@@ -245,7 +245,10 @@ ListViewExt {
 
             Widgets.ListLabel {
                 // NOTE: We want the section label to be slightly shifted to the left.
-                x: row.x - VLCStyle.margin_small
+                //       (to the right, at the start of the row, in a right to left
+                //       layout)
+                x: LayoutMirroring.enabled ? row.x + row.width - width + VLCStyle.margin_small
+                                           : row.x - VLCStyle.margin_small
                 y: row.y + root.headerTopPadding
 
                 height: VLCStyle.tableHeaderText_height
@@ -357,7 +360,10 @@ ListViewExt {
 
     section.delegate: Widgets.ListLabel {
         // NOTE: We want the section label to be slightly shifted to the left.
-        leftPadding: root.contentLeftPadding - VLCStyle.margin_small
+        //       (in a right to left layout: from the right, across the list)
+        width: LayoutMirroring.enabled ? root.width : implicitWidth
+        leftPadding: LayoutMirroring.enabled ? 0 : root.contentLeftPadding - VLCStyle.margin_small
+        rightPadding: LayoutMirroring.enabled ? root.contentLeftPadding - VLCStyle.margin_small : 0
 
         topPadding: VLCStyle.margin_xsmall
 
@@ -376,8 +382,10 @@ ListViewExt {
         fixedColumnWidth: root.baseColumnWidth
         weightedColumnWidth: root._weightedColumnsSize
 
-        leftPadding: root.contentLeftPadding
-        rightPadding: root.contentRightPadding
+        // (the columns from the right in a right to left layout, as the
+        // mirrored header)
+        leftPadding: mirrored ? root.contentRightPadding : root.contentLeftPadding
+        rightPadding: mirrored ? root.contentLeftPadding : root.contentRightPadding
 
         dragItem: root.dragItem
 

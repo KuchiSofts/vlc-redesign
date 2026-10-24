@@ -154,34 +154,38 @@ T.Container  {
 
                 item.Navigation.parentItem = root;
 
+                // the item on the left: the next one in a right to left
+                // row (Hebrew, Arabic...), the previous one otherwise
                 item.Navigation.leftAction = function() {
+                    const step = root.mirrored ? 1 : -1;
                     let i = index;
 
                     do {
-                        i--;
-                    } while (i >= 0
+                        i += step;
+                    } while (i >= 0 && i < count
                              &&
                              !root._isNavigable(repeater.itemAt(i)));
 
-                    if (i == -1)
+                    if (i < 0 || i >= count)
                         root.Navigation.defaultNavigationLeft();
                     else
-                        Helpers.transferFocus(repeater.itemAt(i), Qt.BacktabFocusReason)
+                        Helpers.transferFocus(repeater.itemAt(i), root.mirrored ? Qt.TabFocusReason : Qt.BacktabFocusReason)
                 };
 
                 item.Navigation.rightAction = function() {
+                    const step = root.mirrored ? -1 : 1;
                     let i = index;
 
                     do {
-                        i++;
-                    } while (i < count
+                        i += step;
+                    } while (i >= 0 && i < count
                              &&
                              !root._isNavigable(repeater.itemAt(i)));
 
-                    if (i === count)
+                    if (i < 0 || i >= count)
                         root.Navigation.defaultNavigationRight();
                     else
-                        Helpers.transferFocus(repeater.itemAt(i), Qt.TabFocusReason)
+                        Helpers.transferFocus(repeater.itemAt(i), root.mirrored ? Qt.BacktabFocusReason : Qt.TabFocusReason)
                 };
             }
 

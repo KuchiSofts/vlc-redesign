@@ -40,7 +40,9 @@ T.TabButton {
 
     // Settings
 
-    width: control.showText ? VLCStyle.bannerTabButton_width_large
+    // wider for a longer name (a translation)
+    width: control.showText ? Math.max(VLCStyle.bannerTabButton_width_large,
+                                       implicitContentWidth + leftPadding + rightPadding)
                             : VLCStyle.icon_banner
 
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
@@ -64,7 +66,8 @@ T.TabButton {
 
     // Tooltip
 
-    T.ToolTip.visible: (showText === false && T.ToolTip.text && (hovered || visualFocus))
+    // (the name too when it is cut)
+    T.ToolTip.visible: ((showText === false || label.truncated) && T.ToolTip.text && (hovered || visualFocus))
 
     T.ToolTip.delay: VLCStyle.delayToolTipAppear
 

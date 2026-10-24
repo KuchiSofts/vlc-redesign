@@ -27,7 +27,9 @@ import VLC.Style
 T.ToolTip {
     id: control
 
-    x: 0
+    // over the start of its item: its right edge in a right to left
+    // layout (Hebrew, Arabic...)
+    x: (Qt.application.layoutDirection === Qt.RightToLeft && parent) ? parent.width - width : 0
     y: -implicitHeight - VLCStyle.margin_xxxsmall
 
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,

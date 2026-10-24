@@ -20,6 +20,10 @@ import QtQuick.Templates as T
 import VLC.Style
 
 T.Label {
+    // from the start of the line: the left, the right in a right to left
+    // layout (Hebrew, Arabic...), whatever the language of the text itself
+    horizontalAlignment: Text.AlignLeft
+
     T.ToolTip.visible: (elide !== Text.ElideNone) && (width < implicitWidth) && hoverHandler.hovered
     T.ToolTip.delay: VLCStyle.delayToolTipAppear
     T.ToolTip.text: text

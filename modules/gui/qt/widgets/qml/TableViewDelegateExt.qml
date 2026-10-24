@@ -299,7 +299,9 @@ T.Control {
                 id: contextButton
 
                 // place it at the end of the last column, we don't want spacing for this column
-                x: - contentItemRow.spacing + VLCStyle.contextButton_margin
+                // (on its left in a right to left row)
+                x: delegate.mirrored ? parent.width - width + contentItemRow.spacing - VLCStyle.contextButton_margin
+                                     : - contentItemRow.spacing + VLCStyle.contextButton_margin
 
                 anchors.verticalCenter: parent.verticalCenter
 

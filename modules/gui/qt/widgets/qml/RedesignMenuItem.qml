@@ -103,6 +103,8 @@ T.MenuItem {
             Layout.fillHeight: true
             text: root.text
             elide: Text.ElideRight
+            // from the start of the row (the right in a right to left menu)
+            horizontalAlignment: Text.AlignLeft
             color: root._textColor
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
@@ -137,6 +139,8 @@ T.MenuItem {
             visible: !!root.subMenu
             sourceSize: Qt.size(width, height)
             source: "qrc:///redesign/icons/chevron-right/default.png"
+            // to the submenu: it opens on the left in a right to left menu
+            mirror: root.mirrored
         }
     }
 

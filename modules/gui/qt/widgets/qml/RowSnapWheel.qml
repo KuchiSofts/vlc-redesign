@@ -63,11 +63,31 @@ MouseArea {
         return index
     }
 
+    // The last row that can be at the top: after it the list is at its end.
+    // (indexAt() knows only the rows made around what is shown, so it is
+    // found by where the list puts each row, in a few tries.) Kept until the
+    // list changes
+    property int _lastTop: -1
+    function _endTop() {
+        if (_lastTop >= 0)
+            return _lastTop
+        const endY = _yOf(view.count - 1)
+        let low = 0
+        let high = view.count - 1
+        while (low < high) {
+            const middle = Math.floor((low + high) / 2)
+            if (_yOf(middle) >= endY - 0.5)
+                high = middle
+            else
+                low = middle + 1
+        }
+        _lastTop = low
+        return low
+    }
+
     function _go(index) {
         glide.stop()
-        // the last row that can be at the top: after it the list is at its end
-        const lastTop = _rowAt(_yOf(view.count - 1))
-        index = Math.max(0, Math.min(index, lastTop))
+        index = Math.max(0, Math.min(index, _endTop()))
         _target = index
         const y = _yOf(index)
         if (Math.abs(y - view.contentY) < 0.5) {
@@ -112,6 +132,8 @@ MouseArea {
     // a list opened again starts from its own position
     Connections {
         target: root.view
-        function onCountChanged() { root._angle = 0; root._target = -1 }
+        function onCountChanged() { root._angle = 0; root._target = -1; root._lastTop = -1 }
+        function onHeightChanged() { root._lastTop = -1 }
+        function onContentHeightChanged() { root._lastTop = -1 }
     }
 }

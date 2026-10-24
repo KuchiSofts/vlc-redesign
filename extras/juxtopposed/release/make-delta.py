@@ -28,7 +28,9 @@ Needs bsdiff4 (pip install bsdiff4).
 """
 import hashlib, io, json, os, re, struct, sys, zipfile, zlib
 
-SKIP = re.compile(r'^(portable/|plugins/plugins\.dat$)|\.old-', re.I)
+# (.update/: the working folder of the app's own updater, if a package
+# folder was run before it was packed; the app refuses a delta that names it)
+SKIP = re.compile(r'^(portable/|\.update/|plugins/plugins\.dat$)|\.old-', re.I)
 PATCH_MIN = 64 * 1024        # smaller files go whole
 PATCH_GAIN = 0.6             # a patch only if it's under 60 % of the whole file
 FIRST_APPLIER = '0.2.4'      # older releases can't apply a delta: they get the installer

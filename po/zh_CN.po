@@ -28776,12 +28776,12 @@ msgstr "队列为空"
 
 #: modules/gui/qt/player/qml/MiniPlayerQueue.qml:104
 msgid "%1h %2m"
-msgstr "%1h %2min"
+msgstr "%1 小时 %2 分钟"
 
 #: modules/gui/qt/player/qml/MiniPlayerQueue.qml:106
 #, no-c-format
 msgid "%1m"
-msgstr "%1min"
+msgstr "%1 分钟"
 
 #: modules/gui/qt/player/qml/MiniPlayerQueue.qml:160
 msgid "Remove selected item from queue"
@@ -29728,7 +29728,7 @@ msgstr "%1小时%2分"
 #: modules/gui/qt/util/vlctick.cpp:144
 #, no-c-format
 msgid "%1ms"
-msgstr "%1ms"
+msgstr "%1 毫秒"
 
 #: modules/gui/qt/util/model_recovery_agent.hpp:72
 msgid "Do you want to restore the %1 model from %2?"

@@ -29171,7 +29171,7 @@ msgstr "%1시간 %2분"
 #: modules/gui/qt/player/qml/MiniPlayerQueue.qml:106
 #, no-c-format
 msgid "%1m"
-msgstr "%1m"
+msgstr "%1분"
 
 #: modules/gui/qt/player/qml/MiniPlayerQueue.qml:160
 msgid "Remove selected item from queue"
@@ -30141,7 +30141,7 @@ msgstr "%1시간 %2분"
 #: modules/gui/qt/util/vlctick.cpp:144
 #, no-c-format
 msgid "%1ms"
-msgstr "%1ms"
+msgstr "%1 ms"
 
 #: modules/gui/qt/util/model_recovery_agent.hpp:72
 msgid "Do you want to restore the %1 model from %2?"

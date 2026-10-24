@@ -28752,7 +28752,7 @@ msgstr "Вилучити відфільтровані елементи"
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1270
 msgid ""
 "Do you really want to discard the items that are not displayed at the moment?"
-msgstr ""
+msgstr "Вилучити елементи, які зараз не відображаються?"
 
 #: modules/gui/qt/network/addonsmodel.cpp:330
 msgid "This addon has been installed manually. VLC can't manage it by itself."

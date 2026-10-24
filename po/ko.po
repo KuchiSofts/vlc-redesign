@@ -28379,7 +28379,7 @@ msgstr "필터링으로 제외된 항목 버리기"
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1270
 msgid ""
 "Do you really want to discard the items that are not displayed at the moment?"
-msgstr ""
+msgstr "현재 표시되지 않은 항목을 버리시겠습니까?"
 
 #: modules/gui/qt/network/addonsmodel.cpp:330
 msgid "This addon has been installed manually. VLC can't manage it by itself."

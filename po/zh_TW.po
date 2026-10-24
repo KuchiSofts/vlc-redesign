@@ -5610,32 +5610,32 @@ msgstr "音量：%ld%%"
 #: src/player/osd.c:184
 #, c-format
 msgid "Video tracks: %s"
-msgstr ""
+msgstr "視訊軌：%s"
 
 #: src/player/osd.c:185
 #, c-format
 msgid "Video track: %s"
-msgstr ""
+msgstr "視訊軌：%s"
 
 #: src/player/osd.c:188
 #, c-format
 msgid "Audio tracks: %s"
-msgstr ""
+msgstr "音訊軌：%s"
 
 #: src/player/osd.c:189
 #, c-format
 msgid "Audio track: %s"
-msgstr "音訊軌: %s"
+msgstr "音訊軌：%s"
 
 #: src/player/osd.c:192
 #, c-format
 msgid "Subtitle tracks: %s"
-msgstr ""
+msgstr "字幕軌：%s"
 
 #: src/player/osd.c:193
 #, c-format
 msgid "Subtitle track: %s"
-msgstr "字幕軌: %s"
+msgstr "字幕軌：%s"
 
 #: src/player/osd.c:208 src/player/osd.c:251
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:98
@@ -5758,17 +5758,17 @@ msgstr "錄製完成"
 #: src/player/player.c:1844
 #, c-format
 msgid "Audio delay %i ms"
-msgstr "音訊延遲 %i 毫秒"
+msgstr "音訊延遲：%i 毫秒"
 
 #: src/player/player.c:1846
 #, c-format
 msgid "Subtitle delay %i ms"
-msgstr "字幕延遲 %i 毫秒"
+msgstr "字幕延遲：%i 毫秒"
 
 #: src/player/player.c:1848
 #, c-format
 msgid "Video delay %i ms"
-msgstr ""
+msgstr "視訊延遲：%i 毫秒"
 
 #: src/player/player.c:1898
 #, c-format
@@ -16195,11 +16195,11 @@ msgstr "全域熱鍵介面"
 
 #: modules/control/hotkeys.c:507
 msgid "Primary subtitle control"
-msgstr ""
+msgstr "主要字幕控制"
 
 #: modules/control/hotkeys.c:509
 msgid "Secondary subtitle control"
-msgstr ""
+msgstr "次要字幕控制"
 
 #: modules/control/hotkeys.c:520
 msgid "Sub sync: bookmarked audio time"
@@ -27740,7 +27740,7 @@ msgstr "捨棄已篩選掉的項目"
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1270
 msgid ""
 "Do you really want to discard the items that are not displayed at the moment?"
-msgstr ""
+msgstr "確定要捨棄目前未顯示的項目嗎？"
 
 #: modules/gui/qt/network/addonsmodel.cpp:330
 msgid "This addon has been installed manually. VLC can't manage it by itself."

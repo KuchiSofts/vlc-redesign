@@ -1,0 +1,24 @@
+<!--
+  Copyright (C) 2026 VLC authors and VideoLAN
+  SPDX-License-Identifier: GPL-2.0-or-later
+
+  SignPath artifact configuration "installer" (docs/code-signing.md): the
+  installer that make-release.ps1 makes from the signed package, as the
+  release job of .github/workflows/build-windows.yml uploads it (a GitHub
+  artifact, so a zip with vlc-redesign-<version>-win64-setup.exe at its
+  root). Inno Setup writes its version resource from the .iss: product name
+  "VLC Redesign" (AppName), product version <version> (AppVersion).
+
+  Paste it into the SignPath project as the artifact configuration with the
+  slug "installer".
+-->
+<artifact-configuration xmlns="http://signpath.io/artifact-configuration/v1">
+  <parameters>
+    <parameter name="version" required="true" />
+  </parameters>
+  <zip-file>
+    <pe-file path="vlc-redesign-${version}-win64-setup.exe" product-name="VLC Redesign" product-version="${version}">
+      <authenticode-sign description="VLC Redesign Setup" description-url="https://github.com/KuchiSofts/vlc-redesign" />
+    </pe-file>
+  </zip-file>
+</artifact-configuration>

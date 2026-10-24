@@ -1,0 +1,39 @@
+<!--
+  Copyright (C) 2026 VLC authors and VideoLAN
+  SPDX-License-Identifier: GPL-2.0-or-later
+
+  SignPath artifact configuration "package" (docs/code-signing.md): the
+  Windows package of VLC Redesign, as the sign job of
+  .github/workflows/build-windows.yml uploads it (a GitHub artifact, so a
+  zip with the folder of vlc.exe at its root). Every .exe and .dll in it is
+  signed with Authenticode; no other file changes.
+
+  SignPath Foundation requires the product name and the product version of
+  every signed binary to be checked: they are read from the version
+  resources (bin/vlc_win32_rc.rc.in, lib/libvlc_win32_rc.rc.in,
+  src/libvlccore_win32_rc.rc.in, modules/module.rc.in, and those of
+  vlc-waveform.exe and vlc-redesign-update.exe). The parameter "version" is
+  VLC_REDESIGN_VERSION (modules/gui/qt/util/redesign_version.hpp), given by
+  the workflow.
+
+  Paste it into the SignPath project as the artifact configuration with the
+  slug "package".
+-->
+<artifact-configuration xmlns="http://signpath.io/artifact-configuration/v1">
+  <parameters>
+    <parameter name="version" required="true" />
+  </parameters>
+  <zip-file>
+    <pe-file-set product-name="VLC Redesign" product-version="${version}">
+      <!-- vlc.exe, vlc-cache-gen.exe, vlc-preparser.exe, vlc-waveform.exe, vlc-redesign-update.exe -->
+      <include path="*.exe" max-matches="unbounded" />
+      <!-- libvlc.dll, libvlccore.dll -->
+      <include path="*.dll" max-matches="unbounded" />
+      <!-- the plugins, a folder for each kind (plugins/gui/libqt_plugin.dll) -->
+      <include path="plugins/*/*.dll" max-matches="unbounded" />
+      <for-each>
+        <authenticode-sign description="VLC Redesign" description-url="https://github.com/KuchiSofts/vlc-redesign" />
+      </for-each>
+    </pe-file-set>
+  </zip-file>
+</artifact-configuration>

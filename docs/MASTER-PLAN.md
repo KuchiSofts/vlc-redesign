@@ -1280,7 +1280,7 @@ In an organization, a `.github` repository gives every repository these files by
 | Gate         | What                                                                              | Status |
 |--------------|-----------------------------------------------------------------------------------|--------|
 | Build        | Every platform builds in CI; the packaged app starts and plays                    | 🟡 Windows builds; the launch test is written and passes here, not run on GitHub yet |
-| Regression   | Playback, pause/seek, traces, Chromecast and DLNA test devices; again 2026-10-24 (builds 164, 170, 174 and 179): clean quits, no late or dropped picture, both casts | 🟢     |
+| Regression   | Playback, pause/seek, traces, Chromecast and DLNA test devices; again 2026-10-24 (builds 164, 170, 174, 179 and 181): clean quits, no dropped picture (one to four shown a few ms late at a start or a seek, as in every build), both casts | 🟢     |
 | Real devices | Samsung TV: start, pause 1 and 5 min, seek, next file, subtitles, as-is, end      | 🟢     |
 | Formats      | Every test file and container; 148 damaged files without crash or hang            | 🟢     |
 | Effects      | 40 video effects alone and in chains                                              | 🟢     |

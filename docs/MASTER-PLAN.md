@@ -17,7 +17,7 @@ counted from this document's own tables and checklists (column *From*); ⚪ idea
 
 | Program         | Progress             | Done    | %     | From                                   |
 |-----------------|----------------------|---------|-------|----------------------------------------|
-| Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜ | 84/97   | 87 %  | [§8](#8-next-release-030) checklists   |
+| Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 85/97   | 88 %  | [§8](#8-next-release-030) checklists   |
 | Linux           | 🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 1/7     | 14 %  | [§9](#linux)                           |
 | macOS           | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/4     | 0 %   | [§9](#macos)                           |
 | Windows ARM64   | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/3     | 0 %   | [§9](#windows-on-arm64)                |
@@ -32,7 +32,7 @@ Windows 0.2.6 is released; 0.3.0 counts the lines of section 8 (done since 0.2.6
 | Area                    | Progress             | Done    | %     | From                                   |
 |-------------------------|----------------------|---------|-------|----------------------------------------|
 | Design frames (Figma)   | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 103/103 | 100 % | [§5](#5-design-frame-by-frame) tables  |
-| Pixel check             | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 101/103 | 98 %  | [§5](#5-design-frame-by-frame) tables  |
+| Pixel check             | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 103/103 | 100 % | [§5](#5-design-frame-by-frame) tables  |
 | Light theme and accents | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 17/17   | 100 % | [§8.3](#83-light-theme-and-accents)    |
 | Settings rows           | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 212/212 | 100 % | [§8.5](#85-settings-rows)              |
 | Classic dialogs         | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 11/11   | 100 % | [§8.6](#86-classic-dialogs)            |
@@ -163,20 +163,20 @@ What comes first, and why. Each step starts when what it needs is done.
 
 | Area                  | Frames | 🟢  | 🟡  | 🔴  | Pixel 🟢 | Progress             |
 |-----------------------|--------|-----|-----|-----|----------|----------------------|
-| Onboarding            | 11     | 11  | 0   | 0   | 7        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
+| Onboarding            | 11     | 11  | 0   | 0   | 11       | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Player                | 7      | 7   | 0   | 0   | 7        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Player - Music        | 2      | 2   | 0   | 0   | 2        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
-| Player - customize    | 9      | 9   | 0   | 0   | 1        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
+| Player - customize    | 9      | 9   | 0   | 0   | 9        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Player - hide UI      | 1      | 1   | 0   | 0   | 1        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Player - Light        | 1      | 1   | 0   | 0   | 1        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
-| Add Subtitles         | 4      | 4   | 0   | 0   | 3        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
+| Add Subtitles         | 4      | 4   | 0   | 0   | 4        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Keyboard Shortcuts    | 1      | 1   | 0   | 0   | 1        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | Open network stream   | 1      | 1   | 0   | 0   | 1        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 | New playlist          | 1      | 1   | 0   | 0   | 1        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
-| Settings pages        | 19     | 17  | 2   | 0   | 18       | 🟩🟩🟩🟩🟩🟩🟩🟩🟨🟨 |
-| **Screens**           | 57     | 55  | 2   | 0   | 43       | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
-| **Components**        | 46     | 42  | 4   | 0   | 29       | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
-| **All**               | 103    | 97  | 6   | 0   | 72       | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨 |
+| Settings pages        | 19     | 19  | 0   | 0   | 19       | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
+| **Screens**           | 57     | 57  | 0   | 0   | 57       | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
+| **Components**        | 46     | 46  | 0   | 0   | 46       | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
+| **All**               | 103    | 103 | 0   | 0   | 103      | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 |
 
 ### 5.3 Onboarding (11)
 
@@ -335,7 +335,7 @@ rows added in build 115 are checked in the app (§8.5).
 | Node       | Name         | Size (px)  | Status | Pixel | What it is                                     | Implemented in                               |
 |------------|--------------|------------|--------|-------|------------------------------------------------|----------------------------------------------|
 | 42:356     | Icon         | 548 × 812  | 🟢     | 🟢    | The icon set: 96 names with their states        | pixmaps/redesign/ (icons, duo), redesign_icon_provider.cpp |
-| 177:98     | Icon Wrapper | 72 × 122   | 🟢     | ⏳    | Icon button: default, hover                     | RedesignIconButton.qml                       |
+| 177:98     | Icon Wrapper | 72 × 122   | 🟢     | 🟢    | Icon button: default, hover                     | RedesignIconButton.qml                       |
 | 500:3063   | Button       | 400 × 140  | 🟢     | 🟢    | Dialog button: neutral, accent                  | RedesignButton.qml, SettingsButton.qml       |
 | 848:1712   | play         | 94 × 116   | 🟢     | 🟢    | Play, pause                                     | PlayButton.qml                               |
 | 536:1014   | Toggle       | 120 × 194  | 🟢     | 🟢    | ON / OFF                                        | CheckButton.qml, SettingsToggle.qml          |
@@ -349,7 +349,7 @@ rows added in build 115 are checked in the app (§8.5).
 | 2245:9805  | audio value  | 121 × 37       | 🟢     | 🟢    | The value shown while the volume changes               | VolumeWidget.qml                                |
 | 1904:7238  | Current Time | 114 × 164      | 🟢     | 🟢    | Elapsed time: default, hover, click                    | ControlBar.qml                                  |
 | 1905:7312  | Duration     | 114 × 164      | 🟢     | 🟢    | Length: default, click (remaining time)                | ControlBar.qml                                  |
-| 2151:9673  | thumbnail    | 272 × 189      | 🟢     | ⏳    | Seek bar frame preview with its time                   | SeekFramePreview.qml                            |
+| 2151:9673  | thumbnail    | 272 × 189      | 🟢     | 🟢    | Seek bar frame preview with its time                   | SeekFramePreview.qml                            |
 | 970:3091   | Miniplayer   | 431 × 2816.375 | 🟢     | 🟢    | Library mini player, 5 states                          | LibraryMiniPlayer.qml, MiniPlayerQueue.qml      |
 
 **Library**
@@ -362,7 +362,7 @@ rows added in build 115 are checked in the app (§8.5).
 | 2404:9167  | media           | 377 × 228   | 🟢     | 🟢    | Video card: watched, unwatched, hover of each       | VideoGridItem.qml                            |
 | 2459:9352  | playlist        | 377 × 228   | 🟢     | 🟢    | Playlist card: unwatched, hover                     | PlaylistGridDisplay.qml, VideoGridItem.qml   |
 
-Differences: 🔴 848:1996: the compact library's Home lists the recent media only, not the rows of the library's Home.
+Differences: none open (848:1996: the compact library's Home lists the sections of the library's Home, §5.16 item 3).
 
 **Menus**
 
@@ -439,7 +439,7 @@ are listed disabled, with the reason under the pointer (Windows offers no way fo
 | #  | Difference                                                         | Frames                                   | Status |
 |----|--------------------------------------------------------------------|------------------------------------------|--------|
 | 1  | *Show the playlist as a tree*: the queue under the folders of its media (headings) | 3046:10057, 3062:11379 | 🟢 |
-| 2  | Library context menus are native menus, not cards                  | 2107:5903, 2139:8935, 2404:13340, 2459:9389 | 🟢  |
+| 2  | Library context menus are the design's cards (they were native menus) | 2107:5903, 2139:8935, 2404:13340, 2459:9389 | 🟢  |
 | 3  | The compact library's Home lists the sections of the library's Home (no play counts of playlists or artists) | 848:1996 | 🟢 |
 | 4  | HDR10+ and Dolby Vision disabled with their reason (Windows has no way to send them) | 2372:8733 | 🟢 |
 | 5  | Setting Preset is drawn on no screen of the design: the Effects window's presets | 2372:8834 | 🟢 |
@@ -789,7 +789,9 @@ All classic windows go through one hook, `redesign_widget_theme.cpp`, applied fr
 - 🟢 TVs listed before the panel opens, the last one used at the top
 - 🟢 Samsung (UE55MU8000): a paused cast is kept (a trickle of null packets while paused)
 - 🟢 Samsung: a film sent as it is goes as MPEG-TS; a TV that stops it gets it converted
-- 🔴 The real-TV gate on the release build (§14)
+- 🔴 The real-TV gate on the release build (§14); 2026-10-24 on build 174 ([TV]ChenTV, Samsung): start, pause 1 min and
+  5 min (paused the whole time), seek, resume, next file, the end (stopped at 29.3 of 30 s), converted with
+  subtitles; still open: a cast sent as-is, and the end of a film cast mid-film (being fixed, found with the fake TV)
 - 🔴 Other brands (LG, Sony, Android TV) through device reports
 - 🔴 A *TV compatibility* wiki page fed by the reports
 
@@ -810,7 +812,8 @@ and an accepted request made the TV fail after a pause in a test.
 - 🟢 Editing the music bar verified: a control dragged from the palette onto it and saved (`$1` of the profile);
   the mini player card keeps the fixed controls of 970:3091, and Customize Player from the library shows the player
   to edit its bars in place
-- 🟡 Pixel check of all 103 frames (§11): 101 (two hover states cannot be captured: their values are the frames')
+- 🟢 Pixel check of all 103 frames (§11): the two hover states (177:98, 2151:9673) in Windows Sandbox, where real
+  mouse input stays inside it: the button's hover box 30 x 32 at white 6 %, the preview's time 15 px
 - ⚪ Subtitle cues drawn on the seek bar
 - ⚪ A *What's new* card after an update
 - ⚪ The accent following the Windows accent colour (an option)
@@ -834,7 +837,7 @@ and an accepted request made the TV fail after a pause in a test.
 - 🔴 Small updates from 0.2.4, 0.2.5 and 0.2.6 built and checked
 - 🔴 Announcement in Discussions; every fixed issue answered with the release link
 
-Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 84 🟢, 2 🟡, 11 🔴 (97), of which 5 🟢 are
+Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 85 🟢, 1 🟡, 11 🔴 (97), of which 5 🟢 are
 in the app ⏳.
 Languages (§12) and the community (§13) have bars of their own.
 
@@ -962,12 +965,14 @@ Text matching needs Inter with the same metrics (distance-field text, no hinting
     are listed in the rows of 1919:8707 (FileRow). Before the first search VLC asks for the account the service
     requires (API key, username, password), a row the design does not draw.
   - Customize Player: the other eight frames are steps of a drag in the editor (the bars as the user moves items).
-- 🟢 Figma references exported: all 103 frames at 1:1 (`C:\VLCQAigma`; the oversized component sheets in tiles
+- 🟢 Figma references exported: all 103 frames at 1:1 (`C:\VLCQA\figma`; the oversized component sheets in tiles
   joined pixel for pixel)
-- 🟡 Capture scripts that drive the app into each frame's state: settings, dialogs, onboarding, library and player
-  (from the demo library and its playback states); the components are next
+- 🟢 Capture scripts that drive the app into each frame's state: settings, dialogs, onboarding, library and player
+  (from the demo library and its playback states), the components, and the hover states in Windows Sandbox
 - 🔴 The CI job `pixel-check.yml`: captures, comparison, artifacts, a pull request comment, the wiki page
-- 🔴 All 103 frames compared and recorded
+- 🟢 All 103 frames compared and recorded (2026-10-24, build 175: the last two, hover states, in Windows Sandbox
+  with real mouse input inside it, scratchpad hoverrun.py; the preview's time differs in 2 tiles of anti-aliasing
+  of the software renderer there, same size, place and colour)
 
 ## 12. Languages
 

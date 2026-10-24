@@ -36,8 +36,8 @@ Rectangle {
     readonly property real _eDPR: MainCtx.effectiveDevicePixelRatio(Window.window)
 
     implicitWidth: frameWidth + 2 * padding
-    // (the line of the time: 17 px for 14)
-    implicitHeight: frameHeight + Math.round(1.2109375 * label.font.pixelSize) + 3 * padding
+    // (the line of the time: 17 px, as in Figma 2151:9673, 189 high in all)
+    implicitHeight: frameHeight + label.height + 3 * padding
 
     radius: VLCStyle.dp(12, VLCStyle.scale)
     // Menu surface of the design: #191919 at 95%
@@ -72,11 +72,12 @@ Rectangle {
 
         anchors.horizontalCenter: parent.horizontalCenter
         y: root.padding * 2 + root.frameHeight
-        height: Math.round(1.2109375 * font.pixelSize)
+        height: VLCStyle.dp(17, VLCStyle.scale)
         verticalAlignment: Text.AlignVCenter
         text: root.timeText
         color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e", root.darkTheme)
         font.family: VLCStyle.redesign.fontFamily
-        font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
+        // (Figma 2151:9673: the bar's time style, 15 px)
+        font.pixelSize: VLCStyle.dp(15, VLCStyle.scale)
     }
 }

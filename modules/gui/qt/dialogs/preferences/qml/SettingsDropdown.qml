@@ -20,9 +20,14 @@ T.ComboBox {
     implicitWidth: px(320)
     implicitHeight: px(36)
     padding: px(2)
-    leftPadding: px(16)
-    rightPadding: px(16 + 24 + 10)
+    // (the chevron on the left, right to left)
+    leftPadding: mirrored ? px(16 + 24 + 10) : px(16)
+    rightPadding: mirrored ? px(16) : px(16 + 24 + 10)
     textRole: "label"
+    // the whole choice when it is cut short (a long translation)
+    T.ToolTip.visible: hovered && !popup.visible && valueText.truncated
+    T.ToolTip.text: displayText
+    T.ToolTip.delay: 650
     focusPolicy: Qt.StrongFocus
     font.family: VLCStyle.redesign.fontFamily
     font.pixelSize: px(14)
@@ -52,10 +57,11 @@ T.ComboBox {
         topPadding: height / 2 + VLCStyle.redesign.centeredBaseline(font.pixelSize) - valueMetrics.ascent
         FontMetrics { id: valueMetrics; font: valueText.font }
         elide: Text.ElideRight
+        horizontalAlignment: Text.AlignLeft
     }
 
     indicator: Image {
-        x: root.width - root.px(2 + 14) - width
+        x: root.mirrored ? root.px(2 + 14) : root.width - root.px(2 + 14) - width
         y: (root.height - height) / 2
         width: root.px(24)
         height: width
@@ -75,13 +81,19 @@ T.ComboBox {
 
         width: ListView.view ? ListView.view.width : root.width
         implicitHeight: root.px(44)
-        rightPadding: root.px(14 + 24 + 13)
         highlighted: root.highlightedIndex === index
 
         // a choice with an icon (the curves of the equalizer presets): the
-        // icon 14 in, the text 10 after it
+        // icon 14 in, the text 10 after it (from the right, right to left)
         readonly property string iconDir: option.modelData.icon ?? ""
-        leftPadding: iconDir ? root.px(14 + 24 + 10) : root.px(14)
+        readonly property real startPadding: iconDir ? root.px(14 + 24 + 10) : root.px(14)
+        readonly property real endPadding: root.px(14 + 24 + 13)
+        leftPadding: option.mirrored ? endPadding : startPadding
+        rightPadding: option.mirrored ? startPadding : endPadding
+
+        T.ToolTip.visible: option.hovered && optionText.truncated
+        T.ToolTip.text: optionText.text
+        T.ToolTip.delay: 650
 
         contentItem: Text {
             id: optionText
@@ -93,6 +105,7 @@ T.ComboBox {
             topPadding: height / 2 + VLCStyle.redesign.centeredBaseline(font.pixelSize) - optionMetrics.ascent
             FontMetrics { id: optionMetrics; font: optionText.font }
             elide: Text.ElideRight
+            horizontalAlignment: Text.AlignLeft
         }
         background: Rectangle {
             radius: root.px(4)
@@ -104,7 +117,8 @@ T.ComboBox {
                 id: choiceIcon
                 visible: option.iconDir.length > 0
                 readonly property bool twoTone: !VLCStyle.redesign.defaultAccent
-                x: root.px(14)
+                anchors.left: parent.left
+                anchors.leftMargin: root.px(14)
                 anchors.verticalCenter: parent.verticalCenter
                 width: root.px(24)
                 height: width
@@ -118,7 +132,8 @@ T.ComboBox {
             }
             Impl.ColorImage {
                 visible: option.chosen
-                x: parent.width - root.px(13) - width
+                anchors.right: parent.right
+                anchors.rightMargin: root.px(13)
                 anchors.verticalCenter: parent.verticalCenter
                 width: root.px(24)
                 height: width
@@ -143,6 +158,10 @@ T.ComboBox {
         margins: root.px(8)
 
         contentItem: ListView {
+            // the list is a popup (not under the mirrored interface): right
+            // to left as the box
+            LayoutMirroring.enabled: root.mirrored
+            LayoutMirroring.childrenInherit: true
             clip: true
             spacing: root.px(2)
             implicitHeight: contentHeight

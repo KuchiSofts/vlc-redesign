@@ -33,6 +33,7 @@ Column {
             font.pixelSize: root.px(16)
             font.weight: Font.Medium
             elide: Text.ElideRight
+            horizontalAlignment: Text.AlignLeft
         }
     }
 

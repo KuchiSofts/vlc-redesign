@@ -81,6 +81,10 @@ Item {
                         visible: entry.heading
                         anchors.left: parent.left
                         anchors.leftMargin: root.px(10)
+                        anchors.right: parent.right
+                        anchors.rightMargin: root.px(10)
+                        elide: Text.ElideRight
+                        horizontalAlignment: Text.AlignLeft
                         anchors.baseline: parent.verticalCenter
                         // centred in the 33 of the heading (odd)
                         anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize, root.px(33))
@@ -101,6 +105,10 @@ Item {
                         horizontalPadding: root.px(4)
                         onClicked: root.selected(modelData.key)
                         Accessible.name: modelData.label || ""
+                        // the whole name of a page cut short (a long translation)
+                        ToolTip.visible: item.hovered && itemLabel.truncated
+                        ToolTip.text: modelData.label || ""
+                        ToolTip.delay: 650
                         background: Rectangle {
                             radius: root.px(2)
                             color: entry.current ? root.c("#222222")
@@ -127,6 +135,11 @@ Item {
                                 }
                             }
                             Text {
+                                id: itemLabel
+                                // what the item leaves after its icon: a longer
+                                // name is cut short
+                                width: Math.max(0, Math.min(implicitWidth, item.availableWidth - root.px(32) - parent.spacing))
+                                elide: Text.ElideRight
                                 anchors.baseline: parent.verticalCenter
                                 anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
                                 text: modelData.label || ""

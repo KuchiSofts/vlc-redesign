@@ -103,6 +103,7 @@ SettingsSectionTitle {
                         text: addonRow.name
                         color: addonRow.selected ? root.c("#EAEAEA") : root.c("#8F8F8F")
                         elide: Text.ElideRight
+                        horizontalAlignment: Text.AlignLeft
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: root.px(14)
                     }
@@ -111,6 +112,7 @@ SettingsSectionTitle {
                         text: addonRow.summary || addonRow.author
                         color: root.c("#6B6B6B")
                         elide: Text.ElideRight
+                        horizontalAlignment: Text.AlignLeft
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: root.px(12)
                     }
@@ -164,13 +166,15 @@ SettingsSectionTitle {
                 objectName: "settingsAddonsSearch"
                 anchors.left: parent.left
                 anchors.verticalCenter: parent.verticalCenter
-                width: root.px(210)
+                // narrower when longer translations widen the buttons
+                width: Math.max(root.px(120), Math.min(root.px(210), parent.width - addonButtons.width - root.px(10)))
                 placeholderText: qsTr("Search")
                 onTextChanged: addonsView.currentIndex = -1
                 Accessible.name: qsTr("Search add-ons")
             }
 
             Row {
+                id: addonButtons
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
                 spacing: root.px(10)

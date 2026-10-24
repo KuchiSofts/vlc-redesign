@@ -25,6 +25,8 @@ T.Slider {
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
     function c(value) { return VLCStyle.redesign.color(value, value) }
     function fraction(value) { return to > from ? Math.max(0, Math.min(1, (value - from) / (to - from))) : 0 }
+    // Right to left, the low end is on the right (as visualPosition)
+    function visualFraction(value) { return mirrored ? 1 - fraction(value) : fraction(value) }
     // Screen blend of the ticks over what is below them
     function screen(below) {
         const tick = Qt.color("#1A1611")
@@ -52,10 +54,12 @@ T.Slider {
             border.width: root.visualFocus ? 1 : 0
             border.color: VLCStyle.redesign.accent
 
+            // the fill from the low end to the handle
             Rectangle {
-                x: root.px(2)
+                x: root.mirrored ? root.handleCenter : root.px(2)
                 y: root.px(2)
-                width: Math.max(0, root.handleCenter - root.px(2))
+                width: Math.max(0, root.mirrored ? root.trackWidth - root.px(2) - root.handleCenter
+                                                 : root.handleCenter - root.px(2))
                 height: root.px(12)
                 radius: root.px(4)
                 color: root.c(VLCStyle.redesign.accentBackground)
@@ -65,7 +69,7 @@ T.Slider {
                 model: root.ticks
                 Rectangle {
                     required property var modelData
-                    readonly property real center: root.px(2) + root.fraction(modelData) * (root.trackWidth - root.px(4))
+                    readonly property real center: root.px(2) + root.visualFraction(modelData) * (root.trackWidth - root.px(4))
                     // none at the ends of the track
                     visible: root.fraction(modelData) > 0 && root.fraction(modelData) < 1
                     x: center - width / 2
@@ -73,8 +77,10 @@ T.Slider {
                     width: root.px(2)
                     height: root.px(8)
                     radius: root.px(1)
-                    color: root.screen(Qt.color(center < root.handleCenter ? root.c(VLCStyle.redesign.accentBackground)
-                                                                           : root.c("#090909")))
+                    // over the fill (on the other side of the handle, right to left)
+                    readonly property bool filled: root.mirrored ? center > root.handleCenter : center < root.handleCenter
+                    color: root.screen(Qt.color(filled ? root.c(VLCStyle.redesign.accentBackground)
+                                                       : root.c("#090909")))
                 }
             }
         }
@@ -86,10 +92,13 @@ T.Slider {
                 required property int index
                 // centred as Figma places them (measured)
                 // (whole pixels: as measured, px() rounds)
-                readonly property real center: root.px(5) + root.fraction(modelData.value) * (root.trackWidth - root.px(10))
+                readonly property real center: root.px(5) + root.visualFraction(modelData.value) * (root.trackWidth - root.px(10))
                 // The first and last labels align with the ends of the track
-                x: index === 0 ? root.labelsInset
-                   : index === root.labels.length - 1 ? root.trackWidth - root.labelsInset - width
+                // (the first on the right, right to left)
+                readonly property real startX: root.labelsInset
+                readonly property real endX: root.trackWidth - root.labelsInset - width
+                x: index === 0 ? (root.mirrored ? endX : startX)
+                   : index === root.labels.length - 1 ? (root.mirrored ? startX : endX)
                    : center - width / 2
                 // the labels 10 px under the handle, on the baseline of the design
                 anchors.baseline: parent.top

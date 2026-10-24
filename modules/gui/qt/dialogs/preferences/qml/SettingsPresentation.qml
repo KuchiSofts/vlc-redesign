@@ -342,15 +342,22 @@ readonly property var items: ({
         "sout-keep": [qsTr("Streaming"), qsTr("Keep the stream output open between items"), "", null, { advanced: true }]
     })
 
-// The entries of the rows ({ section, label, editor... }), kept by key
-property var cache: ({})
+// The entries of the rows ({ section, label, editor... }), kept by key, for
+// the table they were made from: the table is made again when the language
+// changes (its texts), and the rows asking for their entry then (they read
+// the table) get them in the new language
+property var cache: ({ items: null, entries: {} })
 
 function entry(key, fallback) {
-    const cached = cache[key]
+    if (cache.items !== items) {
+        cache.items = items
+        cache.entries = {}
+    }
+    const cached = cache.entries[key]
     if (cached !== undefined && (items[key] !== undefined || cached.fallback === fallback))
         return cached.value
     const value = makeEntry(key, fallback)
-    cache[key] = { value: value, fallback: fallback }
+    cache.entries[key] = { value: value, fallback: fallback }
     return value
 }
 

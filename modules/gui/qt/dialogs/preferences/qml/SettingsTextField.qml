@@ -19,9 +19,11 @@ T.TextField {
 
     implicitWidth: px(320)
     implicitHeight: px(36)
-    // 12 px inside the 2 px border, as the design lays it out
-    leftPadding: px(14)
-    rightPadding: px(18)
+    // 12 px inside the 2 px border, as the design lays it out (from the
+    // right, right to left)
+    leftPadding: LayoutMirroring.enabled ? px(18) : px(14)
+    rightPadding: LayoutMirroring.enabled ? px(14) : px(18)
+    horizontalAlignment: TextInput.AlignLeft
     // The baseline where the design centres a line of Inter
     topPadding: height / 2 + VLCStyle.redesign.centeredBaseline(font.pixelSize) - metrics.ascent
     bottomPadding: 0
@@ -46,6 +48,7 @@ T.TextField {
         color: root.placeholderTextColor
         font: root.font
         elide: Text.ElideRight
+        horizontalAlignment: Text.AlignLeft
     }
 
     background: Rectangle {
@@ -55,10 +58,11 @@ T.TextField {
         border.color: root.activeFocus ? VLCStyle.redesign.accentDim : root.c("#191919")
     }
 
-    // The unit right after the text
+    // The unit right after the text (before it on the left, right to left)
     Text {
         visible: root.suffix.length > 0 && root.text.length > 0
-        x: root.leftPadding + root.contentWidth + metrics.advanceWidth(" ")
+        x: LayoutMirroring.enabled ? root.width - root.rightPadding - root.contentWidth - metrics.advanceWidth(" ") - width
+                                   : root.leftPadding + root.contentWidth + metrics.advanceWidth(" ")
         y: root.topPadding
         text: root.suffix
         color: root.color

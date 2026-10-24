@@ -40,18 +40,29 @@ SettingsSectionTitle {
         height: root.px(42)
 
         Row {
+            id: developerRow
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
             spacing: root.px(10)
             Text {
+                id: developerLabel
                 anchors.baseline: parent.verticalCenter
                 anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
+                // cut short before the toggle (a long translation)
+                width: Math.max(0, Math.min(implicitWidth, developerRow.parent.width - developerToggle.width - root.px(20)
+                                            - developerInfo.width - developerRow.spacing))
+                elide: Text.ElideRight
+                HoverHandler { id: developerLabelHover }
+                ToolTip.visible: developerLabelHover.hovered && developerLabel.truncated
+                ToolTip.text: developerLabel.text
+                ToolTip.delay: 650
                 text: qsTr("Developer mode")
                 color: root.c("#8F8F8F")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: root.px(14)
             }
             Image {
+                id: developerInfo
                 anchors.verticalCenter: parent.verticalCenter
                 width: root.px(18)
                 height: width
@@ -65,6 +76,7 @@ SettingsSectionTitle {
         }
 
         SettingsToggle {
+            id: developerToggle
             objectName: "settingsDeveloperMode"
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter

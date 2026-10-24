@@ -18,7 +18,11 @@ Dialog {
         radius: 6
         border.color: VLCStyle.redesign.color("#555555", "#8e8e8d")
     }
+    // (a popup: not under the mirrored interface, right to left)
     header: Label {
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        horizontalAlignment: Text.AlignLeft
+        elide: Text.ElideRight
         text: root.title
         color: VLCStyle.redesign.color("#eaeaea", "#2e2e2e")
         padding: 16
@@ -32,6 +36,8 @@ Dialog {
     }
     width: VLCStyle.dp(420, VLCStyle.scale)
     contentItem: Label {
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        horizontalAlignment: Text.AlignLeft
         text: qsTr("Restart VLC to use the new keyboard shortcuts.")
         color: VLCStyle.redesign.color("#dddddd", "#2e2e2e")
         wrapMode: Text.WordWrap

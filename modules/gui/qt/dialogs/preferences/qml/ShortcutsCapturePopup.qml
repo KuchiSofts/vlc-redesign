@@ -33,7 +33,9 @@ Popup {
     modal: true
     focus: true
     closePolicy: Popup.NoAutoClose
-    height: VLCStyle.dp(205, VLCStyle.scale)
+    // taller when a longer translation of the message takes more lines
+    height: Math.max(VLCStyle.dp(205, VLCStyle.scale),
+                     topPadding + bottomPadding + 52 + message.implicitHeight + 8 + 76)
     onOpened: keyInput.forceActiveFocus(Qt.PopupFocusReason)
     background: Rectangle {
         color: VLCStyle.redesign.color("#1b1b1b", "#ababaa")
@@ -42,6 +44,9 @@ Popup {
     }
     contentItem: FocusScope {
         id: captureFocus
+        // (a popup: not under the mirrored interface, right to left)
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        LayoutMirroring.childrenInherit: true
         focus: true
         // Esc from a button of the popup (the keyboard left the capture)
         Keys.onEscapePressed: (event) => {
@@ -78,11 +83,16 @@ Popup {
             anchors.topMargin: 14
             anchors.left: parent.left
             anchors.leftMargin: 14
+            anchors.right: parent.right
+            anchors.rightMargin: 14
+            elide: Text.ElideRight
+            horizontalAlignment: Text.AlignLeft
             text: capturePopup.captureGlobal ? qsTr("Global Hotkey") : qsTr("Hotkey")
             color: VLCStyle.redesign.color("#dddddd", "#2e2e2e")
             font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
         }
         Label {
+            id: message
             anchors.top: parent.top
             anchors.topMargin: 52
             anchors.left: parent.left
@@ -95,6 +105,7 @@ Popup {
             color: capturePopup.conflictAction.length > 0 ? VLCStyle.redesign.accent
                   : VLCStyle.redesign.color("#aaaaaa", "#4d4d4d")
             wrapMode: Text.WordWrap
+            horizontalAlignment: Text.AlignLeft
             font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
         }
         Label {
@@ -109,6 +120,7 @@ Popup {
             text: capturePopup.errorText
             color: VLCStyle.redesign.accent
             elide: Text.ElideRight
+            horizontalAlignment: Text.AlignLeft
             font.pixelSize: VLCStyle.dp(12, VLCStyle.scale)
         }
         Row {

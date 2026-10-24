@@ -161,6 +161,8 @@ Widgets.RedesignDialog {
 
         height: lineHeightPx
         verticalAlignment: Text.AlignTop
+        // (on the right in its box, right to left)
+        horizontalAlignment: Text.AlignLeft
         elide: Text.ElideRight
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
@@ -232,7 +234,9 @@ Widgets.RedesignDialog {
             }
             contentItem: Item {
                 Image {
-                    x: parent.width - VLCStyle.dp(5, VLCStyle.scale) - width
+                    // at the end of the field (the left, right to left)
+                    x: LayoutMirroring.enabled ? VLCStyle.dp(5, VLCStyle.scale)
+                                               : parent.width - VLCStyle.dp(5, VLCStyle.scale) - width
                     y: VLCStyle.dp(4, VLCStyle.scale)
                     width: VLCStyle.redesign.iconSize
                     height: width
@@ -308,8 +312,9 @@ Widgets.RedesignDialog {
 
                     FigmaText {
                         id: keyText
-                        x: chip.leftRoom
-                        width: Math.max(0, chip.width - x - chip.crossRoom)
+                        // the cross after it: on its left, right to left
+                        x: LayoutMirroring.enabled ? chip.crossRoom : chip.leftRoom
+                        width: Math.max(0, chip.width - chip.leftRoom - chip.crossRoom)
                         text: root.displayKeys(chip.modelData)
                         color: VLCStyle.redesign.color("#C6C6C6", "#333333")
                         // DM Mono (bundled): a line of 1.302 em, ascender 0.992
@@ -321,7 +326,8 @@ Widgets.RedesignDialog {
                     T.Button {
                         id: removeButton
 
-                        x: chip.width - width - VLCStyle.dp(2, VLCStyle.scale)
+                        x: LayoutMirroring.enabled ? VLCStyle.dp(2, VLCStyle.scale)
+                                                   : chip.width - width - VLCStyle.dp(2, VLCStyle.scale)
                         anchors.verticalCenter: parent.verticalCenter
                         width: chip.crossSize
                         height: chip.crossSize
@@ -355,6 +361,10 @@ Widgets.RedesignDialog {
 
     headerContent: [
         RowLayout {
+            // the dialog is a popup, not under the mirrored interface: right
+            // to left, its content is mirrored here (All Fields on the left)
+            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+            LayoutMirroring.childrenInherit: true
             Layout.fillWidth: true
             Layout.preferredHeight: VLCStyle.dp(34, VLCStyle.scale)
             spacing: VLCStyle.dp(10, VLCStyle.scale)
@@ -370,7 +380,8 @@ Widgets.RedesignDialog {
 
                 Image {
                     id: searchIcon
-                    x: VLCStyle.dp(8, VLCStyle.scale)
+                    x: LayoutMirroring.enabled ? parent.width - width - VLCStyle.dp(8, VLCStyle.scale)
+                                               : VLCStyle.dp(8, VLCStyle.scale)
                     y: VLCStyle.dp(5, VLCStyle.scale)
                     width: VLCStyle.redesign.iconSize
                     height: width
@@ -382,11 +393,15 @@ Widgets.RedesignDialog {
                     id: searchField
 
                     objectName: "shortcutsSearch"
-                    x: searchIcon.x + searchIcon.width + VLCStyle.dp(10, VLCStyle.scale)
-                    width: parent.width - x - VLCStyle.dp(8, VLCStyle.scale)
+                    // after the icon (on its left, right to left)
+                    x: LayoutMirroring.enabled ? VLCStyle.dp(8, VLCStyle.scale)
+                                               : VLCStyle.dp(8, VLCStyle.scale) + searchIcon.width + VLCStyle.dp(10, VLCStyle.scale)
+                    width: parent.width - VLCStyle.dp(8, VLCStyle.scale) - searchIcon.width - VLCStyle.dp(10, VLCStyle.scale)
+                           - VLCStyle.dp(8, VLCStyle.scale)
                     height: parent.height
                     clip: true
                     selectByMouse: true
+                    horizontalAlignment: TextInput.AlignLeft
                     verticalAlignment: TextInput.AlignTop
                     topPadding: VLCStyle.redesign.textBaseline(Math.round((height - Math.round(1.2109375 * font.pixelSize)) / 2),
                                                                font.pixelSize) - searchMetrics.ascent
@@ -406,6 +421,7 @@ Widgets.RedesignDialog {
                         color: VLCStyle.redesign.color(VLCStyle.redesign.textDisabled, "#7c7c7b")
                         font: searchField.font
                         elide: Text.ElideRight
+                        horizontalAlignment: Text.AlignLeft
                     }
                 }
             }
@@ -421,8 +437,9 @@ Widgets.RedesignDialog {
                 textRole: "label"
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
-                leftPadding: VLCStyle.dp(12, VLCStyle.scale)
-                rightPadding: VLCStyle.dp(8 + 24, VLCStyle.scale)
+                // (the chevron on the left, right to left)
+                leftPadding: mirrored ? VLCStyle.dp(8 + 24, VLCStyle.scale) : VLCStyle.dp(12, VLCStyle.scale)
+                rightPadding: mirrored ? VLCStyle.dp(12, VLCStyle.scale) : VLCStyle.dp(8 + 24, VLCStyle.scale)
 
                 background: Rectangle {
                     radius: VLCStyle.dp(6, VLCStyle.scale)
@@ -437,6 +454,7 @@ Widgets.RedesignDialog {
                     color: VLCStyle.redesign.color("#969696", "#292929")
                     font: scopePicker.font
                     elide: Text.ElideRight
+                    horizontalAlignment: Text.AlignLeft
                     verticalAlignment: Text.AlignTop
                     topPadding: VLCStyle.redesign.textBaseline(Math.round((height - Math.round(1.2109375 * font.pixelSize)) / 2),
                                                                font.pixelSize) - scopeMetrics.ascent
@@ -446,7 +464,8 @@ Widgets.RedesignDialog {
                     }
                 }
                 indicator: Image {
-                    x: scopePicker.width - VLCStyle.dp(8, VLCStyle.scale) - width
+                    x: scopePicker.mirrored ? VLCStyle.dp(8, VLCStyle.scale)
+                                            : scopePicker.width - VLCStyle.dp(8, VLCStyle.scale) - width
                     y: Math.round((scopePicker.height - height) / 2)
                     width: VLCStyle.redesign.iconSize
                     height: width
@@ -460,7 +479,8 @@ Widgets.RedesignDialog {
 
                     width: ListView.view ? ListView.view.width : scopePicker.width
                     implicitHeight: VLCStyle.dp(32, VLCStyle.scale)
-                    leftPadding: VLCStyle.dp(12, VLCStyle.scale)
+                    leftPadding: mirrored ? 0 : VLCStyle.dp(12, VLCStyle.scale)
+                    rightPadding: mirrored ? VLCStyle.dp(12, VLCStyle.scale) : 0
                     highlighted: scopePicker.highlightedIndex === index
                     contentItem: Text {
                         text: modelData.label
@@ -469,6 +489,7 @@ Widgets.RedesignDialog {
                         font: scopePicker.font
                         verticalAlignment: Text.AlignVCenter
                         elide: Text.ElideRight
+                        horizontalAlignment: Text.AlignLeft
                     }
                     background: Rectangle {
                         radius: VLCStyle.dp(4, VLCStyle.scale)
@@ -486,6 +507,9 @@ Widgets.RedesignDialog {
                     implicitHeight: contentItem.implicitHeight + topPadding + bottomPadding
                     padding: VLCStyle.dp(2, VLCStyle.scale)
                     contentItem: ListView {
+                        // a popup: right to left as its box
+                        LayoutMirroring.enabled: scopePicker.mirrored
+                        LayoutMirroring.childrenInherit: true
                         clip: true
                         implicitHeight: contentHeight
                         model: scopePicker.popup.visible ? scopePicker.delegateModel : null
@@ -507,6 +531,9 @@ Widgets.RedesignDialog {
     Item {
         id: content
 
+        // (mirrored as the title bar: the actions on the right, right to left)
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        LayoutMirroring.childrenInherit: true
         Layout.fillWidth: true
         // lower in a low window (the dialog within it)
         Layout.fillHeight: true
@@ -527,7 +554,9 @@ Widgets.RedesignDialog {
             width: content.innerWidth
             height: VLCStyle.dp(25, VLCStyle.scale)
 
+            // (the x of the design, from the right right to left)
             FigmaText {
+                x: LayoutMirroring.enabled ? parent.width - width : 0
                 width: content.labelWidth
                 text: qsTr("Action")
                 color: VLCStyle.redesign.color("#6B6B6B", "#555555")
@@ -536,13 +565,17 @@ Widgets.RedesignDialog {
             // in a narrower window, moved with the fields under them (the
             // Hotkey field by half the width lost, the Global one by all)
             FigmaText {
-                x: VLCStyle.dp(488, VLCStyle.scale) - Math.round((root.preferredWidth - root.width) / 2)
+                readonly property real designX: VLCStyle.dp(488, VLCStyle.scale) - Math.round((root.preferredWidth - root.width) / 2)
+                x: LayoutMirroring.enabled ? parent.width - width - designX : designX
                 width: VLCStyle.dp(332, VLCStyle.scale)
                 text: qsTr("Hotkey")
                 color: VLCStyle.redesign.color("#6B6B6B", "#555555")
             }
             FigmaText {
-                x: VLCStyle.dp(488 + 332, VLCStyle.scale) - Math.round(root.preferredWidth - root.width)
+                readonly property real designX: VLCStyle.dp(488 + 332, VLCStyle.scale) - Math.round(root.preferredWidth - root.width)
+                x: LayoutMirroring.enabled ? parent.width - width - designX : designX
+                // to the end of the row (a longer translation is cut short)
+                width: Math.max(0, Math.min(implicitWidth, parent.width - designX))
                 text: qsTr("Global Hotkey")
                 color: VLCStyle.redesign.color("#6B6B6B", "#555555")
             }
@@ -616,15 +649,23 @@ Widgets.RedesignDialog {
                     height: VLCStyle.dp(33, VLCStyle.scale)
 
                     FigmaText {
+                        id: actionText
+                        x: LayoutMirroring.enabled ? parent.width - width : 0
                         y: VLCStyle.dp(4, VLCStyle.scale)
-                        width: content.labelWidth
+                        // (never under the hotkey field, in a narrow window)
+                        width: Math.max(0, Math.min(content.labelWidth, content.hotkeyX - VLCStyle.dp(8, VLCStyle.scale)))
                         text: shortcutRow.label
+                        // the whole name when it is cut short
+                        HoverHandler { id: actionHover }
+                        T.ToolTip.visible: actionHover.hovered && actionText.truncated
+                        T.ToolTip.text: actionText.text
+                        T.ToolTip.delay: 650
                         color: shortcutRow.dirty ? VLCStyle.redesign.accent
                                                  : VLCStyle.redesign.color("#C6C6C6", "#333333")
                     }
                     KeyField {
                         objectName: "hotkey_" + shortcutRow.key
-                        x: content.hotkeyX
+                        x: LayoutMirroring.enabled ? parent.width - width - content.hotkeyX : content.hotkeyX
                         // Tab down the list scrolls it: the row stays in
                         // sight and the next rows get made
                         onActiveFocusChanged: if (activeFocus) shortcutList.positionViewAtIndex(shortcutRow.index, ListView.Contain)
@@ -635,7 +676,7 @@ Widgets.RedesignDialog {
                     }
                     KeyField {
                         objectName: "globalHotkey_" + shortcutRow.key
-                        x: content.globalX
+                        x: LayoutMirroring.enabled ? parent.width - width - content.globalX : content.globalX
                         onActiveFocusChanged: if (activeFocus) shortcutList.positionViewAtIndex(shortcutRow.index, ListView.Contain)
                         keyList: shortcutRow.globalHotkeys
                         accessibleName: qsTr("Global hotkey of %1").arg(shortcutRow.label)

@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  ****************************************************************************/
 import QtQuick
+import QtQuick.Controls.Basic
 import VLC.Style
 import VLC.Util
 
@@ -28,19 +29,30 @@ Item {
     implicitHeight: px(42)
 
     Row {
+        id: labelRow
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
         spacing: root.px(10)
 
         Text {
+            id: rowLabel
+            // cut short before the button (a long translation)
+            width: Math.max(0, Math.min(implicitWidth, root.width - rowButton.width - root.px(20)
+                                        - (infoIcon.visible ? infoIcon.width + labelRow.spacing : 0)))
+            elide: Text.ElideRight
             anchors.baseline: parent.verticalCenter
             anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
             text: root.label
             color: root.c("#8F8F8F")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: root.px(14)
+            HoverHandler { id: labelHover }
+            ToolTip.visible: labelHover.hovered && rowLabel.truncated
+            ToolTip.text: rowLabel.text
+            ToolTip.delay: 650
         }
         Image {
+            id: infoIcon
             visible: root.showInfo
             anchors.verticalCenter: parent.verticalCenter
             width: root.px(18)
@@ -51,9 +63,11 @@ Item {
     }
 
     SettingsButton {
+        id: rowButton
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
-        width: Math.min(root.buttonWidth, root.width * 0.46)
+        // wider for a longer translation, up to the column of the controls
+        width: Math.min(Math.max(root.buttonWidth, implicitWidth), root.width * 0.46)
         text: root.buttonText
         destructive: root.destructive
         onClicked: root.clicked()

@@ -91,7 +91,8 @@ static void vout_display_window_CloseNotify(vlc_window_t *window)
 {
     /* TODO: Nowhere to dispatch to currently.
      * Needs callback to ES output to deselect ES? */
-    msg_Err(window, "window closed");
+    /* (no error: the interface closes it at every quit with a video) */
+    msg_Dbg(window, "window closed");
 }
 
 static void vout_display_window_StateNotify(vlc_window_t *window,

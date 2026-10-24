@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-24 17:23+0000\n"
+"POT-Creation-Date: 2026-10-24 17:28+0000\n"
 "PO-Revision-Date: 2016-01-22 02:26+0000\n"
 "Last-Translator: ssdoria <ssdoria@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/yaron/vlc-trans/"
@@ -517,9 +517,8 @@ msgstr "Forma de onda"
 
 #: src/audio_output/output.c:339
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1147
-#, fuzzy
 msgid "VU meter"
-msgstr "Medidor Vu"
+msgstr "Medidor VU"
 
 #: src/audio_output/output.c:376 src/libvlc-module.c:222
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:213
@@ -1656,9 +1655,8 @@ msgstr "Produto"
 
 #: src/libvlc-module.c:157
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:72
-#, fuzzy
 msgid "Accessibility"
-msgstr "Acesso à saída"
+msgstr "Acessibilidade"
 
 #: src/libvlc-module.c:157
 msgid "Test"
@@ -5153,8 +5151,8 @@ msgid "Plugins"
 msgstr "Complementos"
 
 #: src/libvlc-module.c:2153
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:501
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:543
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:502
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:544
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:27
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:28
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:102
@@ -10570,9 +10568,8 @@ msgstr ""
 #: modules/access/rist.h:98
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:137
 #: modules/logger/file.c:217
-#, fuzzy
 msgid "Info"
-msgstr "Mais Informações"
+msgstr "Informações"
 
 #: modules/access/rist.h:98 modules/logger/file.c:217
 #, fuzzy
@@ -18828,7 +18825,7 @@ msgid "All artists"
 msgstr ""
 
 #: modules/gui/macosx/library/home-library/VLCLibraryHomeViewSectionHeaderView.m:72
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:470
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:471
 msgid "Show all"
 msgstr "Mostrar tudo"
 
@@ -21039,9 +21036,9 @@ msgstr "Localizador de Recursos de Mídia (MRL)"
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:637
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:895
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:1275
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:686
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:709
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:723
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:687
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:710
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:724
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:337
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:35
 msgid "Open"
@@ -23305,7 +23302,7 @@ msgstr "Segundo idioma (quando não houver)"
 
 #: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:135
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:102
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:523
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:524
 msgid "Find subtitles online when a video has none in these languages"
 msgstr ""
 "Buscar legendas na internet quando o vídeo não tiver nenhuma nesses idiomas"
@@ -23801,8 +23798,8 @@ msgid " f/s"
 msgstr "qps"
 
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1387
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:603
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:617
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:604
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:618
 msgid "Advanced Options"
 msgstr "Opções Avançadas"
 
@@ -23850,7 +23847,7 @@ msgid "%1 Media"
 msgstr "%1 mídia(s)"
 
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:81
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:685
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:686
 msgid "Plugins and extensions"
 msgstr "Complementos e Extensões"
 
@@ -24872,7 +24869,7 @@ msgid "VLC follows the system language."
 msgstr "O VLC segue o idioma do sistema."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:20
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:521
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:522
 msgid "Second Language & Online Subtitles"
 msgstr "Segundo idioma e legendas online"
 
@@ -24920,7 +24917,7 @@ msgstr ""
 "mantém esta seleção enquanto ela estiver ativa."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:18
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:530
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:531
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:21
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:23
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:25
@@ -24933,7 +24930,7 @@ msgstr "Diagnóstico"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:59
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:85
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:530
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:531
 msgid "Developer mode"
 msgstr "Modo desenvolvedor"
 
@@ -25035,11 +25032,13 @@ msgid "Set a shortcut"
 msgstr "Definir um atalho"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:469
-msgid "%1 more matching shortcuts"
-msgstr "Mais %1 atalhos correspondentes"
+msgid "%1 more matching shortcut"
+msgid_plural "%1 more matching shortcuts"
+msgstr[0] "Mais %1 atalho correspondente"
+msgstr[1] "Mais %1 atalhos correspondentes"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:499
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:574
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:500
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:575
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:138
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:139
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:140
@@ -25057,78 +25056,78 @@ msgstr "Mais %1 atalhos correspondentes"
 msgid "Output"
 msgstr "Saída"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:509
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:510
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:93
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:109
 msgid "Submit played tracks to last.fm"
 msgstr "Enviar faixas reproduzidas para o last.fm"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:510
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:511
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:115
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:96
 msgid "Last.fm username"
 msgstr "Nome de usuário do Last.fm"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:510
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:511
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:117
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:97
 msgid "Last.fm password"
 msgstr "Senha do Last.fm"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:511
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:512
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:119
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:98
 msgid "Last.fm submission URL"
 msgstr "URL de envio do Last.fm"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:521
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:522
 msgid "Dual subtitles"
 msgstr "Legendas duplas"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:522
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:523
 msgid "Second language"
 msgstr "Segundo idioma"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:522
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:523
 msgid "OpenSubtitles"
 msgstr "OpenSubtitles"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:584
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:585
 msgid "No matching settings"
 msgstr "Nenhuma configuração correspondente"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:585
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:586
 msgid "No settings are available for this category on this VLC installation"
 msgstr ""
 "Nenhuma configuração está disponível para esta categoria nesta instalação do "
 "VLC"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:664
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:680
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:665
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:681
 msgid "Show installed add-ons only"
 msgstr "Mostrar somente complementos instalados"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:696
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:697
 msgid "No advanced options on this page."
 msgstr "Nenhuma opção avançada nesta página."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:708
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:709
 msgid "Welcome setup"
 msgstr "Configuração de boas-vindas"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:722
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:723
 msgid "All VLC options"
 msgstr "Todas as opções do VLC"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:741
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:742
 msgid "Reset all settings?"
 msgstr "Redefinir todas as configurações?"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:753
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:754
 msgid "Every setting of VLC media player goes back to its default."
 msgstr "Todas as configurações do VLC media player voltam ao padrão."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:811
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:812
 msgid "Discard changes"
 msgstr "Descartar alterações"
 
@@ -27694,6 +27693,7 @@ msgid "Tracks Count"
 msgstr "Número de faixas"
 
 #: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:144
+#: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:45
 msgid "%1 song"
 msgid_plural "%1 songs"
 msgstr[0] "%1 música"
@@ -27815,11 +27815,10 @@ msgid "Playlist media list"
 msgstr "Lista de mídia da lista de reprodução"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:208
-#, fuzzy
 msgid "Do you really want to delete the selected playlist?"
 msgid_plural "Do you really want to delete the selected playlists?"
-msgstr[0] "Tem certeza de que quer excluir a lista de reprodução selecionada?"
-msgstr[1] "Tem certeza de que quer excluir a lista de reprodução selecionada?"
+msgstr[0] "Tem certeza de que deseja excluir a lista de reprodução selecionada?"
+msgstr[1] "Tem certeza de que deseja excluir as listas de reprodução selecionadas?"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:211
 msgid "Delete playlist"
@@ -27862,10 +27861,12 @@ msgstr ""
 "Nenhum vídeo encontrado\n"
 "Tente adicionar fontes"
 
-#: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:199
-#: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:258
-msgid "%1 Videos"
-msgstr "%1 vídeos"
+#: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:121
+#: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:77
+msgid "%1 Video"
+msgid_plural "%1 Videos"
+msgstr[0] "%1 vídeo"
+msgstr[1] "%1 vídeos"
 
 #: modules/gui/qt/medialibrary/qml/VideoDisplay.qml:59
 msgid "Video view"
@@ -28141,12 +28142,6 @@ msgid_plural "%1 files selected"
 msgstr[0] "%1 arquivo selecionado"
 msgstr[1] "%1 arquivos selecionados"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:77
-msgid "%1 Video"
-msgid_plural "%1 Videos"
-msgstr[0] "%1 vídeo"
-msgstr[1] "%1 vídeos"
-
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:79
 msgid "%1 Other"
 msgid_plural "%1 Other"
@@ -28154,29 +28149,22 @@ msgstr[0] "%1 outro"
 msgstr[1] "%1 outros"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:43
-msgid "1 video"
-msgstr "1 vídeo"
-
-#: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:43
-msgid "%1 videos"
-msgstr "%1 vídeos"
-
-#: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:45
-msgid "1 song"
-msgstr "1 música"
-
-#: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:45
-msgid "%1 songs"
-msgstr "%1 músicas"
+#: modules/gui/qt/widgets/qml/TableColumns.qml:77
+msgid "%1 video"
+msgid_plural "%1 videos"
+msgstr[0] "%1 vídeo"
+msgstr[1] "%1 vídeos"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:49
-#, fuzzy
-msgid "1 item"
-msgstr "%i itens"
-
-#: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:49
-msgid "%1 items"
-msgstr "%1 itens"
+#: modules/gui/qt/player/qml/CompactLibrary.qml:848
+#: modules/gui/qt/player/qml/MiniPlayerQueue.qml:107
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:193
+#: modules/gui/qt/widgets/qml/DragItem.qml:620
+#: modules/gui/qt/widgets/qml/LibraryHeader.qml:418
+msgid "%1 item"
+msgid_plural "%1 items"
+msgstr[0] "%1 item"
+msgstr[1] "%1 itens"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:122
 msgid "Length"
@@ -29475,15 +29463,6 @@ msgstr "Subir uma pasta"
 msgid "Open in the library"
 msgstr "Abrir na biblioteca"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:848
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:193
-#: modules/gui/qt/widgets/qml/DragItem.qml:620
-#: modules/gui/qt/widgets/qml/LibraryHeader.qml:418
-msgid "%1 item"
-msgid_plural "%1 items"
-msgstr[0] "%1 item"
-msgstr[1] "%1 itens"
-
 #: modules/gui/qt/player/qml/CompactLibrary.qml:887
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:205
 #: modules/gui/qt/playlist/qml/QueueHeader.qml:74
@@ -29597,14 +29576,6 @@ msgstr "%1h %2min"
 #, no-c-format
 msgid "%1m"
 msgstr "%1min"
-
-#: modules/gui/qt/player/qml/MiniPlayerQueue.qml:107
-msgid "1 item - %1"
-msgstr "1 item - %1"
-
-#: modules/gui/qt/player/qml/MiniPlayerQueue.qml:107
-msgid "%1 items - %2"
-msgstr "%1 itens - %2"
 
 #: modules/gui/qt/player/qml/MiniPlayerQueue.qml:160
 msgid "Remove selected item from queue"
@@ -30157,9 +30128,8 @@ msgid "Start VLC with only a systray icon"
 msgstr "Iniciar o VLC como um ícone de bandeja"
 
 #: modules/gui/qt/qt.cpp:181
-#, fuzzy
 msgid "VLC will start with just an icon in your taskbar."
-msgstr "O VLC iniciará como um ícone em sua barra de tarefas"
+msgstr "O VLC iniciará apenas como um ícone na barra de tarefas."
 
 #: modules/gui/qt/qt.cpp:190
 msgid "Show playing item name in window title"
@@ -30271,16 +30241,13 @@ msgid "List of words separated by | to filter"
 msgstr "Listagem das palavras separadas por | para filtrar"
 
 #: modules/gui/qt/qt.cpp:234
-#, fuzzy
 msgid ""
 "Regular expression used to filter the recent items played in the player."
-msgstr ""
-"Expressão regular usada para filtrar os itens reproduzidos recentemente"
+msgstr "Expressão regular usada para filtrar os itens recentes reproduzidos no player."
 
 #: modules/gui/qt/qt.cpp:237
-#, fuzzy
 msgid "Selection of the starting mode and look"
-msgstr "Seleção do modo de início e aparência"
+msgstr "Seleção do modo de início e da aparência"
 
 #: modules/gui/qt/qt.cpp:238
 msgid ""
@@ -30318,20 +30285,16 @@ msgid "Define which screen fullscreen goes"
 msgstr "Define que tela irá para o modo Tela Inteira"
 
 #: modules/gui/qt/qt.cpp:251
-#, fuzzy
 msgid "Screennumber of fullscreen, instead of same screen where interface is."
-msgstr ""
-"Número da tela no modo Tela Inteira, em vez da mesma tela em que a interface "
-"está"
+msgstr "Número da tela usada na tela cheia, em vez da tela em que está a interface."
 
 #: modules/gui/qt/qt.cpp:254
 msgid "Load extensions on startup"
 msgstr "Carregar as extensões ao iniciar"
 
 #: modules/gui/qt/qt.cpp:255
-#, fuzzy
 msgid "Automatically load the extensions module on startup."
-msgstr "Carrega automaticamente os módulos de extensão ao iniciar"
+msgstr "Carregar automaticamente o módulo de extensões ao iniciar."
 
 #: modules/gui/qt/qt.cpp:258
 msgid "Start in minimal view (without menus)"
@@ -30352,14 +30315,12 @@ msgstr ""
 "também evita a queima da tela."
 
 #: modules/gui/qt/qt.cpp:264
-#, fuzzy
 msgid "Expanding background cone or art"
-msgstr "Expandindo o cone ou a imagem de fundo."
+msgstr "Cone ou arte de fundo expansível"
 
 #: modules/gui/qt/qt.cpp:265
-#, fuzzy
 msgid "Background art fits window's size."
-msgstr "Ajustar o desenho de fundo ao tamanho da janela"
+msgstr "A arte de fundo se ajusta ao tamanho da janela."
 
 #: modules/gui/qt/qt.cpp:267
 msgid "Ignore keyboard volume buttons."
@@ -30379,9 +30340,8 @@ msgstr ""
 "estiver selecionado."
 
 #: modules/gui/qt/qt.cpp:284
-#, fuzzy
 msgid "When to raise the interface"
-msgstr "Configurações para a interface principal"
+msgstr "Quando trazer a interface para a frente"
 
 #: modules/gui/qt/qt.cpp:285
 msgid ""
@@ -30837,7 +30797,6 @@ msgid "Medialibrary error"
 msgstr "Erro da biblioteca de mídia"
 
 #: modules/gui/qt/widgets/native/searchlineedit.cpp:43
-#, fuzzy
 msgctxt "Tooltip|Clear"
 msgid "Clear"
 msgstr "Limpar"
@@ -30847,12 +30806,11 @@ msgid "drag item"
 msgstr "arrastar item"
 
 #: modules/gui/qt/widgets/qml/DragItem.qml:630
-msgid "1 selected"
-msgstr "1 selecionado"
-
 #: modules/gui/qt/widgets/qml/DragItem.qml:633
 msgid "%1 selected"
-msgstr "%1 selecionados"
+msgid_plural "%1 selected"
+msgstr[0] "%1 selecionado"
+msgstr[1] "%1 selecionados"
 
 #: modules/gui/qt/widgets/qml/GridSortFilterControls.qml:30
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:482
@@ -30874,12 +30832,6 @@ msgstr "Diferenciar maiúsculas e minúsculas"
 #: modules/gui/qt/widgets/qml/SearchBox.qml:284
 msgid "Use regular expression"
 msgstr "Usar expressão regular"
-
-#: modules/gui/qt/widgets/qml/TableColumns.qml:77
-msgid "%1 video"
-msgid_plural "%1 videos"
-msgstr[0] "%1 vídeo"
-msgstr[1] "%1 vídeos"
 
 #: modules/gui/qt/widgets/qml/ViewHeader.qml:134
 msgid "See All"
@@ -38027,6 +37979,40 @@ msgstr ""
 #: share/lua/http/index.html:305
 msgid "Are you sure you wish to create the stream?"
 msgstr "Tem certeza de que deseja criar o fluxo?"
+
+#~ msgid "%1 more matching shortcuts"
+#~ msgstr "Mais %1 atalhos correspondentes"
+
+#~ msgid "%1 Videos"
+#~ msgstr "%1 vídeos"
+
+#~ msgid "1 video"
+#~ msgstr "1 vídeo"
+
+#~ msgid "%1 videos"
+#~ msgstr "%1 vídeos"
+
+#~ msgid "1 song"
+#~ msgstr "1 música"
+
+#~ msgid "%1 songs"
+#~ msgstr "%1 músicas"
+
+#, fuzzy
+#~ msgid "1 item"
+#~ msgstr "%i itens"
+
+#~ msgid "%1 items"
+#~ msgstr "%1 itens"
+
+#~ msgid "1 item - %1"
+#~ msgstr "1 item - %1"
+
+#~ msgid "%1 items - %2"
+#~ msgstr "%1 itens - %2"
+
+#~ msgid "1 selected"
+#~ msgstr "1 selecionado"
 
 #~ msgid "Backspace"
 #~ msgstr "Backspace"

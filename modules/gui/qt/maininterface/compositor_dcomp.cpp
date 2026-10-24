@@ -51,10 +51,25 @@
 #include "compositor_dcomp_acrylicsurface.hpp"
 #include "maininterface/interface_window_handler.hpp"
 
+#include <QThread>
+
 #include <memory>
 #include <type_traits>
 
 namespace vlc {
+
+struct CompositorDirectComposition::DriverWarmUp
+{
+    HMODULE library = nullptr;
+    Microsoft::WRL::ComPtr<IUnknown> device;
+
+    ~DriverWarmUp()
+    {
+        device.Reset();
+        if (library)
+            ::FreeLibrary(library);
+    }
+};
 
 int CompositorDirectComposition::windowEnable(const vlc_window_cfg_t *)
 {
@@ -100,6 +115,7 @@ CompositorDirectComposition::CompositorDirectComposition( qt_intf_t* p_intf,  QO
 
 CompositorDirectComposition::~CompositorDirectComposition()
 {
+    endGraphicsDriverWarmUp();
     cleanup();
 
     //m_acrylicSurface should be released before the RHI context is destroyed
@@ -178,6 +194,57 @@ bool CompositorDirectComposition::init()
     }
 
     return true;
+}
+
+// The first Direct3D 11 device of the process loads and starts the graphics
+// driver: about 0.2 s, spent on the render thread when the window is shown,
+// before its first frame. A device made meanwhile on a thread of its own,
+// while the interface is created, starts the driver earlier, and the
+// window's device then takes a few ms. It is kept until the first frame:
+// the driver stops with the last device.
+void CompositorDirectComposition::startGraphicsDriverWarmUp()
+{
+#ifdef QRhiD3D11_ACTIVE
+    if (m_driverWarmUpThread)
+        return;
+    // (the software rasterizer has no driver to start)
+    if (QQuickWindow::graphicsApi() != QSGRendererInterface::Direct3D11
+        || qEnvironmentVariableIntValue("QSG_RHI_PREFER_SOFTWARE_RENDERER"))
+        return;
+
+    const auto warmUp = std::make_shared<DriverWarmUp>();
+    m_driverWarmUp = warmUp;
+    m_driverWarmUpThread = QThread::create([warmUp]() {
+        warmUp->library = ::LoadLibraryEx(TEXT("d3d11.dll"), nullptr, LOAD_LIBRARY_SEARCH_SYSTEM32);
+        if (!warmUp->library)
+            return;
+        typedef HRESULT (WINAPI *D3D11CreateDeviceFuncPtr)(
+            IDXGIAdapter *adapter, D3D_DRIVER_TYPE driverType, HMODULE software, UINT flags,
+            const D3D_FEATURE_LEVEL *featureLevels, UINT featureLevelCount, UINT sdkVersion,
+            ID3D11Device **device, D3D_FEATURE_LEVEL *featureLevel, ID3D11DeviceContext **context);
+        const auto createDevice = reinterpret_cast<D3D11CreateDeviceFuncPtr>(
+            GetProcAddress(warmUp->library, "D3D11CreateDevice"));
+        if (!createDevice)
+            return;
+        // the default adapter, as Qt's
+        ID3D11Device *device = nullptr;
+        if (SUCCEEDED(createDevice(nullptr, D3D_DRIVER_TYPE_HARDWARE, nullptr, D3D11_CREATE_DEVICE_BGRA_SUPPORT,
+                                   nullptr, 0, D3D11_SDK_VERSION, &device, nullptr, nullptr)) && device)
+            warmUp->device.Attach(device);
+    });
+    m_driverWarmUpThread->start();
+#endif
+}
+
+void CompositorDirectComposition::endGraphicsDriverWarmUp()
+{
+    if (m_driverWarmUpThread)
+    {
+        m_driverWarmUpThread->wait();
+        delete m_driverWarmUpThread;
+        m_driverWarmUpThread = nullptr;
+    }
+    m_driverWarmUp.reset();
 }
 
 bool CompositorDirectComposition::setup()
@@ -304,6 +371,9 @@ bool CompositorDirectComposition::makeMainInterface(MainCtx* mainCtx, std::funct
     assert(mainCtx);
     m_mainCtx = mainCtx;
 
+    // the graphics driver starts while the interface is created
+    startGraphicsDriverWarmUp();
+
     m_quickView = std::make_unique<QQuickView>();
     const auto quickViewPtr = m_quickView.get();
 
@@ -316,6 +386,8 @@ bool CompositorDirectComposition::makeMainInterface(MainCtx* mainCtx, std::funct
             &QQuickWindow::frameSwapped, // At this stage, we can be sure that QRhi and QRhiSwapChain are valid.
             this,
             [this]() {
+                // the window has its own device now
+                endGraphicsDriverWarmUp();
                 if (!setup())
                 {
                     // Similar to `QQuickWindow::sceneGraphError()` handling:
@@ -385,6 +457,7 @@ void CompositorDirectComposition::destroyMainInterface()
     if (m_videoVisual)
         msg_Err(m_intf, "video surface still active while destroying main interface");
 
+    endGraphicsDriverWarmUp();
     commonIntfDestroy();
 
     // We still need to call this explicitly, as it seems Qt does not send
@@ -402,6 +475,7 @@ void CompositorDirectComposition::destroyMainInterface()
 
 void CompositorDirectComposition::unloadGUI()
 {
+    endGraphicsDriverWarmUp();
     m_acrylicSurface.reset();
     m_interfaceWindowHandler.reset();
 

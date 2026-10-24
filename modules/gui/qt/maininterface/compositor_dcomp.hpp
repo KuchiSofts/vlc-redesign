@@ -35,6 +35,7 @@
 class MainCtx;
 class WinTaskbarWidget;
 class QQuickView;
+class QThread;
 
 class IDCompositionVisual;
 class IDCompositionDevice;
@@ -79,6 +80,9 @@ private:
     [[nodiscard]] bool setup();
     void cleanup();
 
+    void startGraphicsDriverWarmUp();
+    void endGraphicsDriverWarmUp();
+
 private slots:
     void onSurfacePositionChanged(const QPointF& position) override;
     void onSurfaceSizeChanged(const QSizeF& size) override;
@@ -106,6 +110,12 @@ private:
     IDCompositionVisual *m_uiVisual = nullptr;
 
     std::unique_ptr<CompositorDCompositionAcrylicSurface> m_acrylicSurface;
+
+    // A Direct3D 11 device made on a thread of its own while the interface
+    // loads, kept until the first frame (see startGraphicsDriverWarmUp())
+    struct DriverWarmUp;
+    std::shared_ptr<DriverWarmUp> m_driverWarmUp;
+    QThread *m_driverWarmUpThread = nullptr;
 };
 
 }

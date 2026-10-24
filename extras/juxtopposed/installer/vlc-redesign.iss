@@ -849,6 +849,8 @@ begin
     Buttons[I].Text.Caption := Caption;
     Buttons[I].Box.Caption := Caption;
     CentreButtonText(I);
+    { a new caption leaves the box white until its picture is set again }
+    PaintButton(I);
   end;
 end;
 

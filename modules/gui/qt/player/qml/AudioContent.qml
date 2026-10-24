@@ -89,7 +89,7 @@ MouseArea {
 
             Component.onCompleted: {
                 // The animation should not be used at initialization:
-                Qt.callLater(() => { opacityBehavior.enabled = true })
+                Qt.callLater(() => { if (opacityBehavior) opacityBehavior.enabled = true })
             }
         }
 
@@ -113,7 +113,7 @@ MouseArea {
 
             Component.onCompleted: {
                 // The animation should not be used at initialization:
-                Qt.callLater(() => { widthBehavior.enabled = true })
+                Qt.callLater(() => { if (widthBehavior) widthBehavior.enabled = true })
             }
         }
 

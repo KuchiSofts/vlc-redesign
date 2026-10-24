@@ -51,7 +51,7 @@ ControlBar {
     }
 
     Component.onCompleted: {
-        Qt.callLater(() => { stateBinding.when = true })
+        Qt.callLater(() => { if (stateBinding) stateBinding.when = true })
     }
 
     textPosition: (MainCtx.pinVideoControls) ? ControlBar.TimeTextPosition.LeftRightSlider
@@ -72,7 +72,7 @@ ControlBar {
             // Animation should not be based on the implicit height change
             // but rather the visibility state:
             behavior.enabled = false
-            Qt.callLater(() => { behavior.enabled = true })
+            Qt.callLater(() => { if (behavior) behavior.enabled = true })
         }
     }
 

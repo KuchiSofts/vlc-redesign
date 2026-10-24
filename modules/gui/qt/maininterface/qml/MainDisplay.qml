@@ -592,7 +592,7 @@ FocusScope {
             }
 
             Component.onCompleted: {
-                Qt.callLater(() => { playlistTransition.enabled = true; })
+                Qt.callLater(() => { if (playlistTransition) playlistTransition.enabled = true })
             }
 
             states: State {
@@ -893,7 +893,7 @@ FocusScope {
             }
 
             Component.onCompleted: {
-                Qt.callLater(() => { visibleBinding.when = true })
+                Qt.callLater(() => { if (visibleBinding) visibleBinding.when = true })
             }
 
             dragXMin: VLCStyle.applicationHorizontalMargin

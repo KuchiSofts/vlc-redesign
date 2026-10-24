@@ -4,6 +4,8 @@
 # Builds the Windows package of every pull request (including the weekly
 # upstream VLC merges) and of main, in VideoLAN's official build image, so an
 # upstream change that breaks the redesign is caught before it is merged.
+# Started by hand with a signing policy, it also signs the package through
+# SignPath and makes the release files from it (docs/code-signing.md).
 name: Windows build
 
 on:
@@ -11,9 +13,17 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      sign:
+        description: 'Sign through SignPath (release-signing: a release to publish; test-signing: a check, never published)'
+        type: choice
+        options: [none, test-signing, release-signing]
+        default: none
 
 concurrency:
-  group: windows-build-${{ github.ref }}
+  # a signed run waits for its approvals in SignPath: a push to main must not
+  # cancel it (the other runs keep their group)
+  group: windows-build-${{ github.ref }}${{ github.event_name == 'workflow_dispatch' && inputs.sign != 'none' && '-signed' || '' }}
   cancel-in-progress: true
 
 jobs:
@@ -94,3 +104,203 @@ jobs:
             ${{ runner.temp }}/vlc-launch-test/*.txt
             ${{ runner.temp }}/vlc-launch-test/*.log
           retention-days: 7
+
+  # The package that passed the launch test, signed through SignPath
+  # (docs/code-signing.md): only in a run started by hand with a signing
+  # policy, once the SignPath variables exist; the jobs above don't change.
+  # Signing changes the bytes of every binary, so what make-release.ps1 does
+  # to them comes first: the PE time stamps set to 0.
+  sign:
+    needs: [win64, launch-test]
+    if: github.event_name == 'workflow_dispatch' && inputs.sign != 'none' && vars.SIGNPATH_ORGANIZATION_ID != ''
+    runs-on: ubuntu-24.04
+    # most of it is the wait for the approval in SignPath (3 hours at most)
+    timeout-minutes: 210
+    permissions:
+      actions: read
+      contents: read
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          sparse-checkout: |
+            extras/juxtopposed/release
+            modules/gui/qt/util
+
+      - name: SignPath setup
+        env:
+          API_TOKEN: ${{ secrets.SIGNPATH_API_TOKEN }}
+          PROJECT: ${{ vars.SIGNPATH_PROJECT_SLUG }}
+        run: |
+          test -n "$API_TOKEN" || { echo "::error::No SIGNPATH_API_TOKEN secret (docs/code-signing.md)"; exit 1; }
+          test -n "$PROJECT" || { echo "::error::No SIGNPATH_PROJECT_SLUG variable (docs/code-signing.md)"; exit 1; }
+
+      # the product version every signed binary must have
+      - name: Version
+        id: version
+        run: |
+          version=$(sed -n 's/^#define VLC_REDESIGN_VERSION "\(.*\)"$/\1/p' modules/gui/qt/util/redesign_version.hpp)
+          test -n "$version"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/download-artifact@v5
+        with:
+          name: vlc-redesign-win64-${{ github.sha }}
+          path: package
+
+      - name: PE time stamps at 0
+        run: python3 extras/juxtopposed/release/make-delta.py normalize package
+
+      - name: Upload the package to sign
+        id: unsigned
+        uses: actions/upload-artifact@v5
+        with:
+          name: vlc-redesign-win64-unsigned-${{ github.sha }}
+          path: package
+          retention-days: 2
+
+      # artifact configuration "package": extras/juxtopposed/signing/artifact-configuration.xml
+      - name: Sign
+        uses: signpath/github-action-submit-signing-request@v3
+        with:
+          api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
+          organization-id: ${{ vars.SIGNPATH_ORGANIZATION_ID }}
+          project-slug: ${{ vars.SIGNPATH_PROJECT_SLUG }}
+          signing-policy-slug: ${{ inputs.sign }}
+          artifact-configuration-slug: package
+          github-artifact-id: ${{ steps.unsigned.outputs.artifact-id }}
+          parameters: |
+            version: "${{ steps.version.outputs.version }}"
+          wait-for-completion: true
+          wait-for-completion-timeout-in-seconds: 10800
+          output-artifact-directory: signed
+
+      # every file came back; the binaries changed (signed), nothing else did
+      - name: Check
+        run: |
+          cd package
+          find . -type f | sort > ../files.txt
+          (cd ../signed && find . -type f | sort) | diff ../files.txt -
+          while read -r f; do
+            case "$f" in
+              *.exe|*.dll) ! cmp -s "$f" "../signed/$f" || { echo "::error::$f is not signed"; exit 1; } ;;
+              *) cmp -s "$f" "../signed/$f" || { echo "::error::$f was changed"; exit 1; } ;;
+            esac
+          done < ../files.txt
+
+      - name: Upload the signed package
+        uses: actions/upload-artifact@v5
+        with:
+          name: vlc-redesign-win64-${{ inputs.sign }}-${{ github.sha }}
+          path: signed
+          retention-days: 14
+
+  # The release files from the signed package: make-release.ps1 -Signed (the
+  # plugin cache, the zip, the installer, the small updates from the latest
+  # releases), then the installer signed in turn and SHA256SUMS.txt made
+  # again for its new bytes. Publishing them stays a step by hand.
+  release:
+    needs: sign
+    runs-on: windows-2022
+    # the packaging, then the wait for the approval in SignPath (3 hours at most)
+    timeout-minutes: 300
+    permissions:
+      actions: read
+      contents: read
+    env:
+      VERSION: ${{ needs.sign.outputs.version }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          sparse-checkout: |
+            extras/juxtopposed
+            modules/gui/qt/util
+
+      - uses: actions/download-artifact@v5
+        with:
+          name: vlc-redesign-win64-${{ inputs.sign }}-${{ github.sha }}
+          path: package
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Tools
+        shell: pwsh
+        run: |
+          python -m pip install bsdiff4
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          # the Inno Setup the releases are made with
+          choco upgrade innosetup --version 6.7.1 --allow-downgrade -y --no-progress
+
+      # the small updates start from the zips of the latest releases
+      - name: Latest releases
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          New-Item -ItemType Directory -Force dist | Out-Null
+          $tags = @(gh release list --repo $env:GITHUB_REPOSITORY --exclude-drafts --limit 4 --json tagName --jq '.[].tagName')
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          foreach ($tag in $tags) {
+            gh release download $tag --repo $env:GITHUB_REPOSITORY --pattern 'vlc-redesign-*-win64.zip' --dir dist
+            if ($LASTEXITCODE) { Write-Warning "No portable zip in $tag" }
+          }
+          $global:LASTEXITCODE = 0
+          Get-ChildItem dist | Format-Table Name, Length
+
+      # (full paths: .NET resolves the relative ones elsewhere)
+      - name: Package
+        shell: pwsh
+        run: ./extras/juxtopposed/make-release.ps1 -Signed -Package "$PWD\package" -Dist "$PWD\dist"
+
+      - name: Upload the installer to sign
+        id: unsigned
+        uses: actions/upload-artifact@v5
+        with:
+          name: vlc-redesign-setup-unsigned-${{ github.sha }}
+          path: dist/vlc-redesign-${{ env.VERSION }}-win64-setup.exe
+          retention-days: 2
+
+      # artifact configuration "installer": extras/juxtopposed/signing/installer-configuration.xml
+      - name: Sign the installer
+        uses: signpath/github-action-submit-signing-request@v3
+        with:
+          api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
+          organization-id: ${{ vars.SIGNPATH_ORGANIZATION_ID }}
+          project-slug: ${{ vars.SIGNPATH_PROJECT_SLUG }}
+          signing-policy-slug: ${{ inputs.sign }}
+          artifact-configuration-slug: installer
+          github-artifact-id: ${{ steps.unsigned.outputs.artifact-id }}
+          parameters: |
+            version: "${{ env.VERSION }}"
+          wait-for-completion: true
+          wait-for-completion-timeout-in-seconds: 10800
+          output-artifact-directory: signed-setup
+
+      # the files to publish; SHA256SUMS.txt as make-release.ps1 writes it,
+      # with the signed installer
+      - name: Release files
+        shell: pwsh
+        run: |
+          $name = "vlc-redesign-$env:VERSION-win64"
+          $status = (Get-AuthenticodeSignature -LiteralPath "signed-setup\$name-setup.exe").Status
+          if ($status -in 'NotSigned', 'HashMismatch') { throw "The installer is not signed ($status)" }
+          New-Item -ItemType Directory -Force release | Out-Null
+          Copy-Item "dist\$name.zip", "signed-setup\$name-setup.exe" release
+          $deltas = @(Get-ChildItem dist -Filter "vlc-redesign-$env:VERSION-delta-from-*.vrdelta")
+          $deltas | Copy-Item -Destination release
+          $files = @("$name.zip", "$name-setup.exe") + @($deltas | ForEach-Object { $_.Name })
+          $sums = foreach ($f in $files) {
+            '{0}  {1}' -f (Get-FileHash "release\$f" -Algorithm SHA256).Hash.ToLower(), $f
+          }
+          [System.IO.File]::WriteAllText((Join-Path (Resolve-Path release) 'SHA256SUMS.txt'), ($sums -join "`n") + "`n")
+          Get-ChildItem release | Format-Table Name, Length
+
+      - name: Upload the release files
+        uses: actions/upload-artifact@v5
+        with:
+          name: vlc-redesign-${{ env.VERSION }}-${{ inputs.sign }}-${{ github.sha }}
+          path: release
+          retention-days: 14

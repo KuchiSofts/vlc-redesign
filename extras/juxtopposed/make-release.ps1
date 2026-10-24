@@ -8,15 +8,19 @@
 #                                            3 latest releases whose zip is in -Dist
 # The version comes from modules/gui/qt/util/redesign_version.hpp unless
 # -Version is given. -Quick only rebuilds what changed; -SkipBuild packages
-# the existing -Package folder as it is. Needs Python with bsdiff4 for the
-# small updates (pip install bsdiff4).
+# the existing -Package folder as it is; -Signed packages a folder whose
+# binaries are signed already (the signed package of the Windows build
+# workflow, docs/code-signing.md): never built, its binaries never changed.
+# Needs Python with bsdiff4 for the small updates (pip install bsdiff4).
 param(
     [string]$Version,
     [string]$Package = "$env:USERPROFILE\source\vlc-redesign-release",
     [string]$Dist = "$env:USERPROFILE\source\vlc-redesign-dist",
     [switch]$Quick,
-    [switch]$SkipBuild
+    [switch]$SkipBuild,
+    [switch]$Signed
 )
+if ($Signed) { $SkipBuild = $true }
 $ErrorActionPreference = 'Stop'
 $root = (Resolve-Path "$PSScriptRoot\..\..").Path
 
@@ -50,8 +54,22 @@ if (-not $python) { throw 'Python is needed for the small updates (with pip inst
 
 # A binary keeps no build time (PE time stamp 0): the files whose code didn't
 # change stay the same from one release to the next, and small updates skip them
-& $python "$PSScriptRoot\release\make-delta.py" normalize $Package
-if ($LASTEXITCODE) { throw "make-delta normalize failed ($LASTEXITCODE)" }
+if ($Signed) {
+    # done before signing (the workflow's sign job): the time stamp is part
+    # of what a signature covers. Every binary must carry its signature.
+    $checked = @(Get-ChildItem $Package -Recurse -File -Include *.exe, *.dll |
+        Where-Object { $_.FullName -notlike "*\portable\*" -and $_.Name -notlike '*.old-*' } |
+        ForEach-Object { [pscustomobject]@{ Name = $_.Name; Status = (Get-AuthenticodeSignature -LiteralPath $_.FullName).Status } })
+    $bad = @($checked | Where-Object { $_.Status -in 'NotSigned', 'HashMismatch' })
+    if ($bad) { throw "Not signed: $(($bad | Select-Object -First 10 | ForEach-Object { "$($_.Name) ($($_.Status))" }) -join ', ')" }
+    # (a test certificate: signed, not trusted by Windows)
+    $untrusted = @($checked | Where-Object { $_.Status -ne 'Valid' }).Count
+    if ($untrusted) { Write-Warning "$untrusted of $($checked.Count) signatures are not trusted by Windows" }
+    Write-Host "$($checked.Count) binaries signed"
+} else {
+    & $python "$PSScriptRoot\release\make-delta.py" normalize $Package
+    if ($LASTEXITCODE) { throw "make-delta normalize failed ($LASTEXITCODE)" }
+}
 
 # VLC trusts plugins\plugins.dat only if every plugin keeps the time and size
 # it had when the cache was made. Zip stores times in steps of 2 s, so give

@@ -252,7 +252,8 @@ T.Pane {
                         MainCtx.useGlobalShortcuts = false
                         timeInput.text = text
                         timeInput.forceActiveFocus(Qt.MouseFocusReason)
-                        timeInput.cursorPosition = timeInput.text.length
+                        // the time shown is selected: what is typed replaces it
+                        timeInput.selectAll()
                     } else {
                         MainCtx.useGlobalShortcuts = _previousShortcuts
                     }
@@ -282,6 +283,8 @@ T.Pane {
                     verticalAlignment: mediaTime.verticalAlignment === Text.AlignTop ? TextInput.AlignTop : TextInput.AlignVCenter
                     font: mediaTime.font
                     color: VLCStyle.redesign.color("#CECECE", "#1e1e1e")
+                    selectionColor: VLCStyle.redesign.color(VLCStyle.redesign.accentBackground, "#dedede")
+                    selectedTextColor: VLCStyle.redesign.accent
                     selectByMouse: true
                     clip: true
                     validator: RegularExpressionValidator { regularExpression: /[0-9:.]{0,12}/ }
@@ -302,7 +305,13 @@ T.Pane {
                         mediaTime.editing = false
                     }
                     Keys.onEscapePressed: mediaTime.editing = false
-                    onActiveFocusChanged: if (!activeFocus) mediaTime.editing = false
+                    // the field that takes the focus has its whole time selected
+                    onActiveFocusChanged: {
+                        if (activeFocus)
+                            selectAll()
+                        else
+                            mediaTime.editing = false
+                    }
                 }
 
                 // Figma "Current Time": the text box (17 px, a line of 100 %)

@@ -101,7 +101,8 @@ ColumnLayout {
     function openActions(button, name) {
         actionsFor = name
         actions.canUpdate = presets.canCapture()
-        actions.toggleFrom(button, 0, button.height)
+        // under the button, from its start (right to left: its right edge)
+        actions.toggleFrom(button, LayoutMirroring.enabled ? button.width - actions.width : 0, button.height)
     }
 
     function updatePreset(name) {
@@ -146,14 +147,17 @@ ColumnLayout {
         contentItem: Item {
             Text {
                 id: fieldText
-                x: root.px(16)
-                width: parent.width - x - root.px(16 + 24 + 10)
+                // 16 from the start, the chevron at the end (right to left:
+                // mirrored)
+                x: LayoutMirroring.enabled ? parent.width - width - root.px(16) : root.px(16)
+                width: parent.width - root.px(16) - root.px(16 + 24 + 10)
                 height: parent.height
                 text: field.text
                 color: root.c("#8F8F8F", "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: root.px(14)
                 elide: Text.ElideRight
+                horizontalAlignment: Text.AlignLeft
                 verticalAlignment: Text.AlignTop
                 // the baseline where the design centres a line of Inter
                 topPadding: height / 2 + VLCStyle.redesign.centeredBaseline(font.pixelSize) - fieldMetrics.ascent
@@ -162,7 +166,8 @@ ColumnLayout {
 
             // up while the list is open
             Impl.ColorImage {
-                x: parent.width - root.px(16) - width
+                anchors.right: parent.right
+                anchors.rightMargin: root.px(16)
                 anchors.verticalCenter: parent.verticalCenter
                 width: root.px(24)
                 height: width
@@ -184,6 +189,7 @@ ColumnLayout {
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: root.px(12)
         wrapMode: Text.WordWrap
+        horizontalAlignment: Text.AlignLeft
         Accessible.role: Accessible.AlertMessage
     }
 
@@ -224,6 +230,9 @@ ColumnLayout {
 
         contentItem: Flickable {
             id: rowsView
+            // a popup does not inherit the mirroring of the window (right to left)
+            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+            LayoutMirroring.childrenInherit: true
             clip: true
             contentWidth: width
             contentHeight: rows.implicitHeight
@@ -256,9 +265,14 @@ ColumnLayout {
                         objectName: "effectPresetRow_" + index
                         width: rows.width
                         height: root.px(38)
+                        // the room of the icons before and after the name
+                        // (swapped right to left)
+                        readonly property real _startRoom: kind === "default" ? root.px(14) : root.px(14 + 24 + 10)
+                        readonly property real _endRoom: root.px(14 + 24 + 14)
+
                         padding: 0
-                        leftPadding: kind === "default" ? root.px(14) : root.px(14 + 24 + 10)
-                        rightPadding: root.px(14 + 24 + 14)
+                        leftPadding: LayoutMirroring.enabled ? _endRoom : _startRoom
+                        rightPadding: LayoutMirroring.enabled ? _startRoom : _endRoom
                         focusPolicy: Qt.StrongFocus
 
                         Accessible.name: label
@@ -291,7 +305,8 @@ ColumnLayout {
                             // the plus of "New Preset", dimmed as its name
                             Impl.ColorImage {
                                 visible: row.kind === "new"
-                                x: root.px(14)
+                                anchors.left: parent.left
+                                anchors.leftMargin: root.px(14)
                                 anchors.verticalCenter: parent.verticalCenter
                                 width: root.px(24)
                                 height: width
@@ -301,7 +316,8 @@ ColumnLayout {
 
                             Impl.ColorImage {
                                 visible: row.chosen
-                                x: parent.width - root.px(14) - width
+                                anchors.right: parent.right
+                                anchors.rightMargin: root.px(14)
                                 anchors.verticalCenter: parent.verticalCenter
                                 width: root.px(24)
                                 height: width
@@ -317,6 +333,7 @@ ColumnLayout {
                             font.family: VLCStyle.redesign.fontFamily
                             font.pixelSize: root.px(14)
                             elide: Text.ElideRight
+                            horizontalAlignment: Text.AlignLeft
                             verticalAlignment: Text.AlignTop
                             // the baseline where the design centres a line of Inter
                             topPadding: height / 2 + VLCStyle.redesign.centeredBaseline(font.pixelSize) - rowMetrics.ascent
@@ -331,7 +348,8 @@ ColumnLayout {
                             property double pressedAt: 0
 
                             visible: row.kind === "custom"
-                            x: root.px(14 - 4)
+                            anchors.left: parent.left
+                            anchors.leftMargin: root.px(14 - 4)
                             anchors.verticalCenter: parent.verticalCenter
                             width: root.px(32)
                             height: width
@@ -368,8 +386,12 @@ ColumnLayout {
         // nothing plays: no effects to update the preset with
         property bool canUpdate: true
 
+        // (a menu does not inherit the mirroring of the window: its rows
+        // mirror right to left by themselves)
         Widgets.RedesignMenuItem {
             objectName: "effectPresetRename"
+            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+            LayoutMirroring.childrenInherit: true
             text: qsTr("Rename")
             iconName: "edit"
             onTriggered: {
@@ -379,6 +401,8 @@ ColumnLayout {
         }
         Widgets.RedesignMenuItem {
             objectName: "effectPresetUpdate"
+            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+            LayoutMirroring.childrenInherit: true
             text: qsTr("Update with current effects")
             iconName: "save"
             enabled: actions.canUpdate
@@ -386,6 +410,8 @@ ColumnLayout {
         }
         Widgets.RedesignMenuItem {
             objectName: "effectPresetDelete"
+            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+            LayoutMirroring.childrenInherit: true
             text: qsTr("Delete")
             iconName: "remove"
             onTriggered: {
@@ -450,7 +476,10 @@ ColumnLayout {
             close()
         }
 
+        // (the dialog is a popup: its parts mirror right to left by themselves)
         Widgets.RedesignDialogHeading {
+            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+            LayoutMirroring.childrenInherit: true
             text: qsTr("Preset Name")
             description: namePrompt.mode === "rename" ? qsTr("The preset keeps its effects.")
                                                       : qsTr("The preset keeps the audio and video effects in use.")
@@ -459,6 +488,8 @@ ColumnLayout {
         Widgets.RedesignTextArea {
             id: nameField
             objectName: "effectPresetNameField"
+            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+            LayoutMirroring.childrenInherit: true
             placeholderText: qsTr("e.g., Late Night Movies")
             Accessible.name: qsTr("Preset name")
             onAccepted: namePrompt.accept()
@@ -502,6 +533,8 @@ ColumnLayout {
         }
 
         Widgets.RedesignDialogHeading {
+            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+            LayoutMirroring.childrenInherit: true
             text: qsTr("Delete %1?").arg(deleteConfirmation.name)
             description: qsTr("The effects in use stay as they are.")
         }
@@ -513,12 +546,15 @@ ColumnLayout {
 
     // a line of error of the prompts (as ToolbarEditorDialog)
     component PromptError: Text {
+        // (in a dialog: a popup, not mirrored with the window)
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
         Layout.fillWidth: true
         visible: text.length > 0
         color: VLCStyle.redesign.color("#e4a580", "#c62828")
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.redesign.fontSmall
         wrapMode: Text.WordWrap
+        horizontalAlignment: Text.AlignLeft
         Accessible.role: Accessible.AlertMessage
     }
 }

@@ -80,6 +80,9 @@ Window {
         anchors.fill: parent
         anchors.margins: VLCStyle.margin_small
 
+        // a window does not inherit the mirroring of the main one (right to left)
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        LayoutMirroring.childrenInherit: true
 
         readonly property ColorContext colorContext: ColorContext {
             palette: VLCStyle.palette

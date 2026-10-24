@@ -138,8 +138,10 @@ int vlc_open (const char *filename, int flags, ...)
     {
         if (flags & O_EXCL)
             dwCreationDisposition = CREATE_NEW;
-        else
+        else if (flags & O_TRUNC)
             dwCreationDisposition = CREATE_ALWAYS;
+        else /* like open(): an existing file is kept (appended logs) */
+            dwCreationDisposition = OPEN_ALWAYS;
     }
     else if (flags & O_TRUNC)
     {

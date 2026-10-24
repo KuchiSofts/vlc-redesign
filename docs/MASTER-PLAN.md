@@ -821,7 +821,9 @@ and an accepted request made the TV fail after a pause in a test.
 
 ### 8.9 Quality and hardware
 
-- 🔴 Code-signed builds (decision 2)
+- 🟡 Code-signed builds (decision 2: SignPath Foundation, free for open source): the CI jobs, the artifact
+  configurations, `CODE_SIGNING_POLICY.md` and the steps (docs/code-signing.md) are ready, and every binary carries
+  VLC Redesign's name and version; waiting for the application to SignPath, then the privacy choices at install
 - 🟡 Automated tests in CI: launch, playback, QML warnings (extras/juxtopposed/ci/launch-test.ps1 and its job in
   build-windows.yml, passing on this PC; it runs on GitHub once uploaded)
 - 🔴 Intel graphics, older PCs, Windows 10 on real hardware, high-DPI multi-monitor (2026-10-24: the app drawn at
@@ -842,7 +844,7 @@ and an accepted request made the TV fail after a pause in a test.
   passed on all six copies); to build again once the version is 0.3.0 (redesign_version.hpp)
 - 🔴 Announcement in Discussions; every fixed issue answered with the release link
 
-Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 88 🟢, 2 🟡, 7 🔴 (97), of which 5 🟢 are
+Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 88 🟢, 3 🟡, 6 🔴 (97), of which 5 🟢 are
 in the app ⏳.
 Languages (§12) and the community (§13) have bars of their own.
 
@@ -1335,7 +1337,8 @@ the assets are named as in 13.5 and the small updates are checked; it is announc
 ## 17. Decisions for the project owner
 
 1. **Hub:** keep `KuchiSofts/vlc-redesign` as the hub, or create a GitHub organization (name without "VLC").
-2. **Code signing:** a Windows certificate (a yearly cost) to remove the SmartScreen warning.
+2. **Code signing:** decided 2026-10-24: SignPath Foundation's free signing for open source (the publisher shown
+   is SignPath Foundation); the user applies, the CI signs releases (docs/code-signing.md).
 3. **Apple Developer account** (a yearly fee) for a notarized macOS app and any iOS work.
 4. **Google Play:** whether to try (the VLC name may be refused); F-Droid and GitHub need no account.
 5. **Samsung TV:** setting the PC's address in Developer mode (only at the TV); whether to aim for the Samsung store.

@@ -542,38 +542,50 @@ FocusScope {
         height: parent.height
         color: VLCStyle.redesign.color(VLCStyle.redesign.sidebarBackground, "#ababaa")
 
-        Column {
-            y: VLCStyle.dp(8, VLCStyle.scale)
-            width: parent.width
-            spacing: VLCStyle.dp(14, VLCStyle.scale)
+        // In a window too low for every section (under about 470 px), they
+        // scroll in the column instead of running over the player's bar
+        Flickable {
+            anchors.fill: parent
+            contentWidth: width
+            contentHeight: sectionButtons.y + sectionButtons.height + VLCStyle.dp(8, VLCStyle.scale)
+            interactive: contentHeight > height
+            boundsBehavior: Flickable.StopAtBounds
+            clip: true
 
-            Repeater {
-                model: root._sections
-                delegate: SectionButton {
-                    required property var modelData
-                    readonly property bool current: root.location.section === modelData.section
-                                                    || (modelData.section === "playlists"
-                                                        && root.location.section === "playlist")
-                    iconName: modelData.icon
-                    // Figma 848:1996: a section's own place, its icon in the
-                    // accent; the places in it (a folder, Songs, a
-                    // service...), the icon filled (grey)
-                    iconState: current && modelData.icon !== "recent" ? "active"
-                             : (!current && root._columnSection === modelData.section
-                                && modelData.section !== "recent" && modelData.section !== "playlists") ? "selected"
-                             : "default"
-                    description: modelData.title
-                    onClicked: {
-                        if (!current)
-                            root.go({ section: modelData.section })
+            Column {
+                id: sectionButtons
+                y: VLCStyle.dp(8, VLCStyle.scale)
+                width: parent.width
+                spacing: VLCStyle.dp(14, VLCStyle.scale)
+
+                Repeater {
+                    model: root._sections
+                    delegate: SectionButton {
+                        required property var modelData
+                        readonly property bool current: root.location.section === modelData.section
+                                                        || (modelData.section === "playlists"
+                                                            && root.location.section === "playlist")
+                        iconName: modelData.icon
+                        // Figma 848:1996: a section's own place, its icon in the
+                        // accent; the places in it (a folder, Songs, a
+                        // service...), the icon filled (grey)
+                        iconState: current && modelData.icon !== "recent" ? "active"
+                                 : (!current && root._columnSection === modelData.section
+                                    && modelData.section !== "recent" && modelData.section !== "playlists") ? "selected"
+                                 : "default"
+                        description: modelData.title
+                        onClicked: {
+                            if (!current)
+                                root.go({ section: modelData.section })
+                        }
                     }
                 }
-            }
 
-            SectionButton {
-                iconName: "add"
-                description: qsTr("Open media")
-                onClicked: DialogsProvider.simpleOpenDialog()
+                SectionButton {
+                    iconName: "add"
+                    description: qsTr("Open media")
+                    onClicked: DialogsProvider.simpleOpenDialog()
+                }
             }
         }
     }

@@ -105,6 +105,12 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
 - **Raw video files did not open**: a headerless raw file (.yuv, .cif, .qcif...) never played, and a YUV4MPEG2
   file (.y4m) logged an error before another reader took it: VLC lost the frame rate of the file. It is the
   same in VLC itself. Both open now.
+- **The library panel in a small window**: under about 470 px of height its section icons ran over the player's bar
+  (the + over the previous button), and in a narrow window the panel was cut on the right. The icons scroll in
+  their column now, and the panel is no wider than the window.
+- **The buttons of a narrow player's bar changed from one start to the next**: when the bar had no room for all of
+  them, which ones stayed depended on timing (full screen there one time, gone the next). They go from the inside
+  out now, the same every time: full screen and the playlist stay the longest.
 - **The main menu in a small window**: under about 620 px of height (a maximized window on a 1366 x 768 laptop at
   125 %), its last rows were cut off with no sign that it scrolls. A thin bar now shows that it does.
 - **The library was listed backwards**: artists, albums, tracks, genres, the playlists, videos and network folders

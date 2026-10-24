@@ -602,7 +602,8 @@ FocusScope {
 
         active: rootPlayer._libraryCreated
         visible: rootPlayer.libraryVisible
-        width: item ? item.implicitWidth : 0
+        // (no wider than the window: a small one cut its right side)
+        width: item ? Math.min(item.implicitWidth, parent.width) : 0
 
         sourceComponent: CompactLibrary {
             onOpenLibraryRequested: (section) => {

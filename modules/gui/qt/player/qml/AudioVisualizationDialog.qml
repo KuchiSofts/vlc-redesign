@@ -16,7 +16,11 @@ import VLC.Widgets as Widgets
 Controls.Popup {
     id: root
     objectName: "audioVisualizationDialog"
-    property string selectedText: qsTr("Disabled")
+    // the visualization in use, in the language of the interface (again
+    // in another one chosen meanwhile): its row, the name of a module
+    property int _selectedIndex: 0
+    property string _selectedName: ""
+    readonly property string selectedText: _selectedIndex <= 0 ? qsTr("Disabled") : _selectedName
     property bool previousShortcuts: true
 
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
@@ -33,6 +37,11 @@ Controls.Popup {
     onClosed: MainCtx.useGlobalShortcuts = previousShortcuts
     background: null
     contentItem: Column {
+        // right to left (Hebrew, Arabic...): a popup is not under the
+        // mirrored interface, its content mirrors itself
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        LayoutMirroring.childrenInherit: true
+
         spacing: root.px(20)
 
         // the field: the visualization in use
@@ -47,10 +56,15 @@ Controls.Popup {
                 radius: root.px(4)
                 color: root.c("#191919", "#ababaa")
             }
+            // (the text from the right, the arrow on the left in a right
+            // to left layout)
             Text {
-                x: root.px(16)
-                width: parent.width - x - root.px(16 + 24 + 10)
+                anchors.left: parent.left
+                anchors.leftMargin: root.px(16)
+                anchors.right: parent.right
+                anchors.rightMargin: root.px(16 + 24 + 10)
                 height: parent.height
+                horizontalAlignment: Text.AlignLeft
                 text: root.selectedText
                 color: root.c("#8F8F8F", "#4d4d4d")
                 font.family: VLCStyle.redesign.fontFamily
@@ -59,7 +73,8 @@ Controls.Popup {
                 elide: Text.ElideRight
             }
             Image {
-                x: parent.width - root.px(2 + 14) - width
+                anchors.right: parent.right
+                anchors.rightMargin: root.px(2 + 14)
                 anchors.verticalCenter: parent.verticalCenter
                 width: root.px(24)
                 height: width
@@ -117,12 +132,19 @@ Controls.Popup {
                     // not drawn there, with the gauge of the icon set
                     readonly property string iconDir: index >= 1 && index <= 5
                         ? "qrc:///redesign/icons/" + ["spectrometer", "scope", "spectrum", "waveform", "vumeter"][index - 1] : ""
-                    // the icon, 10 before the name
-                    leftPadding: iconDir ? root.px(14 + 24 + 10) : root.px(14)
-                    rightPadding: root.px(14 + 24 + 13)
+                    // the icon, 10 before the name (the other way round in a
+                    // right to left layout)
+                    readonly property real _startPadding: iconDir ? root.px(14 + 24 + 10) : root.px(14)
+                    readonly property real _endPadding: root.px(14 + 24 + 13)
+                    leftPadding: mirrored ? _endPadding : _startPadding
+                    rightPadding: mirrored ? _startPadding : _endPadding
                     text: index === 0 ? qsTr("Disabled") : model.display
-                    Component.onCompleted: if (checked) root.selectedText = text
-                    onCheckedChanged: if (checked) root.selectedText = text
+                    function _choose() {
+                        root._selectedIndex = index
+                        root._selectedName = model.display ?? ""
+                    }
+                    Component.onCompleted: if (checked) _choose()
+                    onCheckedChanged: if (checked) _choose()
                     onClicked: Player.audioVisualization.toggleIndex(index)
                     Accessible.name: text
                     background: Rectangle {
@@ -132,7 +154,8 @@ Controls.Popup {
                         Image {
                             id: modeIcon
                             visible: row.iconDir !== ""
-                            x: root.px(14)
+                            anchors.left: parent.left
+                            anchors.leftMargin: root.px(14)
                             anchors.verticalCenter: parent.verticalCenter
                             width: root.px(24)
                             height: width
@@ -150,7 +173,8 @@ Controls.Popup {
                         }
                         Impl.ColorImage {
                             visible: row.checked
-                            x: parent.width - root.px(13) - width
+                            anchors.right: parent.right
+                            anchors.rightMargin: root.px(13)
                             anchors.verticalCenter: parent.verticalCenter
                             width: root.px(24)
                             height: width
@@ -163,6 +187,7 @@ Controls.Popup {
                         color: root.c("#8F8F8F", "#4d4d4d")
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: root.px(14)
+                        horizontalAlignment: Text.AlignLeft
                         verticalAlignment: Text.AlignVCenter
                         elide: Text.ElideRight
                     }
@@ -174,6 +199,7 @@ Controls.Popup {
                     visible: options.count === 0
                     text: qsTr("Play audio to select a visualization.")
                     color: root.c(VLCStyle.redesign.textSecondary, "#4d4d4d")
+                    horizontalAlignment: Text.AlignLeft
                     verticalAlignment: Text.AlignVCenter
                     wrapMode: Text.WordWrap
                     font.family: VLCStyle.redesign.fontFamily

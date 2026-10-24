@@ -26,7 +26,9 @@ Controls.Popup {
     property int selectedAction: 0
 
     width: VLCStyle.dp(300, VLCStyle.scale)
-    height: timerController.active ? VLCStyle.dp(190, VLCStyle.scale) : VLCStyle.dp(293, VLCStyle.scale)
+    // (higher for longer texts, a translation on more lines)
+    height: Math.max(timerController.active ? VLCStyle.dp(190, VLCStyle.scale) : VLCStyle.dp(293, VLCStyle.scale),
+                     implicitContentHeight + topPadding + bottomPadding)
     padding: VLCStyle.dp(16, VLCStyle.scale)
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutside
     // a press outside only closes it: the video under it does not pause
@@ -50,9 +52,19 @@ Controls.Popup {
     }
 
     contentItem: Column {
+        // right to left (Hebrew, Arabic...): a popup is not under the
+        // mirrored interface, its content mirrors itself
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        LayoutMirroring.childrenInherit: true
+
         spacing: VLCStyle.dp(12, VLCStyle.scale)
 
+        // (the texts across the popup: from the right in a right to left
+        // layout)
         Text {
+            width: parent.width
+            horizontalAlignment: Text.AlignLeft
+            elide: Text.ElideRight
             text: qsTr("Sleep timer")
             color: VLCStyle.redesign.color("#eaeaea", "#2e2e2e")
             font.family: VLCStyle.redesign.fontFamily
@@ -61,6 +73,9 @@ Controls.Popup {
         }
 
         Text {
+            width: parent.width
+            horizontalAlignment: Text.AlignLeft
+            elide: Text.ElideRight
             visible: root.timerController.active
             text: qsTr("Remaining: %1").arg(root.formatRemaining(root.timerController.remainingSeconds))
             color: VLCStyle.redesign.color("#c6c6c6", "#2e2e2e")
@@ -69,6 +84,9 @@ Controls.Popup {
         }
 
         Text {
+            width: parent.width
+            horizontalAlignment: Text.AlignLeft
+            elide: Text.ElideRight
             visible: !root.timerController.active
             text: qsTr("After")
             color: VLCStyle.redesign.color("#969696", "#4d4d4d")
@@ -78,6 +96,7 @@ Controls.Popup {
 
         Row {
             visible: !root.timerController.active
+            width: parent.width
             spacing: VLCStyle.dp(8, VLCStyle.scale)
             Controls.SpinBox {
                 id: durationInput
@@ -150,6 +169,10 @@ Controls.Popup {
                         font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
+                        // a longer name (a translation) on two lines
+                        wrapMode: Text.Wrap
+                        maximumLineCount: 2
+                        elide: Text.ElideRight
                     }
                 }
             }
@@ -161,6 +184,7 @@ Controls.Popup {
             text: root.timerController.error
             color: VLCStyle.redesign.color("#e57373", "#c62828")
             wrapMode: Text.WordWrap
+            horizontalAlignment: Text.AlignLeft
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
         }

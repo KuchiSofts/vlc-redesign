@@ -66,6 +66,13 @@ FocusScope{
 
     readonly property int _sideMargin: VLCStyle.margin_small + sideMargin
 
+    // Right to left (Hebrew, Arabic...): the bar mirrored, the cone and its
+    // buttons on the right, the window buttons on the left (as Windows
+    // places them in such a layout); the arrow keys follow what is seen
+    readonly property bool _mirrored: LayoutMirroring.enabled
+    // the cone 7 px in its frame of 38 (Figma "Player" topbar)
+    readonly property real _logoInset: VLCStyle.dp(7, VLCStyle.scale)
+
     // The resume prompt is next to the playback controls (Player.qml)
     readonly property bool resumeVisible: false
 
@@ -297,7 +304,9 @@ FocusScope{
                     id: logo
                     source: "qrc:///redesign/logo.svg"
 
-                    x: VLCStyle.dp(7, VLCStyle.scale)
+                    // (from the outer edge of the bar)
+                    anchors.left: parent.left
+                    anchors.leftMargin: root._logoInset
                     anchors.verticalCenter: parent.verticalCenter
                     width: VLCStyle.redesign.iconSize
                     height: VLCStyle.redesign.iconSize
@@ -320,10 +329,14 @@ FocusScope{
 
                 focus: true
                 Navigation.parentItem: root
-                Navigation.rightItem: libraryButton
+                Navigation.rightItem: root._mirrored ? null : libraryButton
+                Navigation.leftItem: root._mirrored ? libraryButton : null
                 onHoveredChanged: root.requestLockUnlockAutoHide(hovered)
 
-                onClicked: mainMenu.toggleFrom(menuButton, 0, menuButton.height)
+                // under the button, from its start (its right edge in a
+                // right to left bar)
+                onClicked: mainMenu.toggleFrom(menuButton, root._mirrored ? menuButton.width - mainMenu.width : 0,
+                                               menuButton.height)
                 visible: !root._menuInBar
 
                 Widgets.DashedRect {
@@ -359,8 +372,8 @@ FocusScope{
                 AccessibleCompat.id: "topBarLibraryButton"
 
                 Navigation.parentItem: root
-                Navigation.leftItem: menuButton
-                Navigation.rightItem: folderButton
+                Navigation.leftItem: root._mirrored ? folderButton : menuButton
+                Navigation.rightItem: root._mirrored ? menuButton : folderButton
                 onHoveredChanged: root.requestLockUnlockAutoHide(hovered)
 
                 onClicked: root.libraryToggled()
@@ -408,7 +421,7 @@ FocusScope{
 
                 anchors.verticalCenter: parent.verticalCenter
                 visible: folderName !== "" && !root._folderInBar
-                width: folderText.x + Math.ceil(folderText.implicitWidth) + VLCStyle.dp(4, VLCStyle.scale)
+                width: VLCStyle.dp(32, VLCStyle.scale) + Math.ceil(folderText.implicitWidth) + VLCStyle.dp(4, VLCStyle.scale)
                 height: VLCStyle.dp(28, VLCStyle.scale)
 
                 text: description
@@ -419,9 +432,11 @@ FocusScope{
                                                          colorContext.bg.primary)
                 radius: VLCStyle.redesign.controlRadius
 
+                // (the icon first: on the right in a right to left bar)
                 contentItem: Item {
                     Image {
-                        x: VLCStyle.dp(2, VLCStyle.scale)
+                        anchors.left: parent.left
+                        anchors.leftMargin: VLCStyle.dp(2, VLCStyle.scale)
                         anchors.verticalCenter: parent.verticalCenter
                         width: VLCStyle.redesign.iconSize
                         height: width
@@ -430,7 +445,8 @@ FocusScope{
                     }
                     Text {
                         id: folderText
-                        x: VLCStyle.dp(32, VLCStyle.scale)
+                        anchors.left: parent.left
+                        anchors.leftMargin: VLCStyle.dp(32, VLCStyle.scale)
                         // the text box of the design centred in the button,
                         // on a whole pixel as Figma draws it
                         anchors.baseline: parent.top
@@ -444,7 +460,8 @@ FocusScope{
                 }
 
                 Navigation.parentItem: root
-                Navigation.leftItem: libraryButton
+                Navigation.leftItem: root._mirrored ? null : libraryButton
+                Navigation.rightItem: root._mirrored ? libraryButton : null
 
                 onClicked: root.folderRequested()
                 onHoveredChanged: root.requestLockUnlockAutoHide(hovered)
@@ -465,8 +482,12 @@ FocusScope{
     Title {
         id: centerTitleText
         centerWithinBounds: true
-        leftLimit: logoOrResume.x + logoOrResume.width
-        rightLimit: root.showCSD ? csdDecorations.x : root.width
+        // between the cone group and the window buttons (on the other
+        // sides in a right to left bar)
+        leftLimit: root._mirrored ? (root.showCSD ? csdDecorations.x + csdDecorations.width : 0)
+                                  : logoOrResume.x + logoOrResume.width
+        rightLimit: root._mirrored ? logoOrResume.x
+                                   : (root.showCSD ? csdDecorations.x : root.width)
         visible: root._showCenterText && !root.resumeVisible && !root._titleInBar
         enabled: visible
         text: root.title || (Player.isStarted && Player.name.length ? Player.name : qsTr("VLC Media Player"))
@@ -510,7 +531,9 @@ FocusScope{
         visible: !root.pinControls && !root._showCenterText
         enabled: visible
         topPadding: VLCStyle.margin_large
-        leftPadding: logo.x
+        // in line with the cone (on the right in a right to left bar)
+        leftPadding: root._mirrored ? VLCStyle.margin_small : root._logoInset
+        rightPadding: root._mirrored ? root._logoInset : VLCStyle.margin_small
         text: root.title
         colorContext.palette: theme.palette
     }

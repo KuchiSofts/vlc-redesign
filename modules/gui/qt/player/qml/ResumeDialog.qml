@@ -108,6 +108,9 @@ FocusScope {
             id: row
 
             anchors.centerIn: parent
+            // narrower than its text (a translation in a small window): the
+            // text on more lines
+            width: Math.min(implicitWidth, card.width - 2 * VLCStyle.dp(8, VLCStyle.scale))
             spacing: VLCStyle.dp(8, VLCStyle.scale)
 
             Image {
@@ -122,6 +125,9 @@ FocusScope {
                 id: label
 
                 Layout.rightMargin: VLCStyle.dp(8, VLCStyle.scale)
+                Layout.fillWidth: true
+                wrapMode: Text.Wrap
+                horizontalAlignment: Text.AlignLeft
 
                 // the design writes the hours: 00:45:08
                 text: Player.restoreTime.valid()

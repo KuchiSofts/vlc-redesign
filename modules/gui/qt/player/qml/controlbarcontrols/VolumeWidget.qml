@@ -29,6 +29,11 @@ import VLC.Player
 T.Pane {
     id: root
 
+    // The volume grows from left to right in right to left languages too
+    // (Hebrew, Arabic...), as the time of the seek bar (see ControlBar)
+    LayoutMirroring.enabled: false
+    LayoutMirroring.childrenInherit: true
+
     property bool paintOnly: false
 
     readonly property color sliderColor: {

@@ -77,6 +77,11 @@ T.Popup {
     }
 
     contentItem: ColumnLayout {
+        // right to left (Hebrew, Arabic...): a popup is not under the
+        // mirrored interface (the bar it opens from keeps its order)
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        LayoutMirroring.childrenInherit: true
+
         spacing: 0
 
         RowLayout {
@@ -115,6 +120,11 @@ T.Popup {
                             Layout.preferredHeight: VLCStyle.dp(24, VLCStyle.scale)
                         }
                         Text {
+                            // narrower than its name (a translation in a
+                            // small window): elided, named by the tab
+                            Layout.fillWidth: true
+                            Layout.maximumWidth: implicitWidth
+                            elide: Text.ElideRight
                             text: modelData.title
                             color: root.currentTab === modelData.tab ? VLCStyle.redesign.accent
                                                                      : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
@@ -403,7 +413,9 @@ T.Popup {
 
     component PanelButton: T.Button {
         implicitHeight: VLCStyle.dp(34, VLCStyle.scale)
-        implicitWidth: VLCStyle.dp(62, VLCStyle.scale)
+        // wider for a longer word (a translation)
+        implicitWidth: Math.max(VLCStyle.dp(62, VLCStyle.scale),
+                                Math.ceil(implicitContentWidth) + 2 * VLCStyle.dp(8, VLCStyle.scale))
         focusPolicy: Qt.StrongFocus
         onActiveFocusChanged: if (activeFocus) root.ensureVisible(this)
         background: Rectangle {
@@ -425,8 +437,12 @@ T.Popup {
         }
     }
 
+    // (the texts from the start of the line: the right in a right to left
+    // layout)
     component SectionTitle: Text {
         color: "#6B6B6B"
+        horizontalAlignment: Text.AlignLeft
+        elide: Text.ElideRight
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
     }
@@ -440,6 +456,7 @@ T.Popup {
     component EmptyLabel: Text {
         Layout.fillWidth: true
         color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
+        horizontalAlignment: Text.AlignLeft
         wrapMode: Text.WordWrap
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.dp(12, VLCStyle.scale)
@@ -472,6 +489,7 @@ T.Popup {
                 text: parent.parent.text
                 color: VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, "#4d4d4d")
                 elide: Text.ElideRight
+                horizontalAlignment: Text.AlignLeft
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
             }
@@ -497,6 +515,8 @@ T.Popup {
             text: title
             color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")
             Layout.fillWidth: true
+            horizontalAlignment: Text.AlignLeft
+            elide: Text.ElideRight
             font.pixelSize: VLCStyle.dp(12, VLCStyle.scale)
         }
         Flow {
@@ -507,7 +527,7 @@ T.Popup {
                 onClicked: requested(Math.max(-10000, value - 50))
             }
             Text {
-                text: value + " ms"
+                text: qsTr("%1 ms").arg(value)
                 color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                 width: VLCStyle.dp(64, VLCStyle.scale)
                 height: VLCStyle.dp(34, VLCStyle.scale)

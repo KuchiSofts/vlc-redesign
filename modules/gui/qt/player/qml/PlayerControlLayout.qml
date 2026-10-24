@@ -28,6 +28,11 @@ import VLC.PlayerControls
 FocusScope {
     id: playerControlLayout
 
+    // the controls of a player keep their order in a right to left layout
+    // (see ControlBar), wherever the layout is shown
+    LayoutMirroring.enabled: false
+    LayoutMirroring.childrenInherit: true
+
     // Properties
 
     property real spacing: VLCStyle.margin_normal // spacing between controls

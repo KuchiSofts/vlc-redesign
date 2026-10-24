@@ -271,11 +271,39 @@ FocusScope {
         return crumbs
     }
     readonly property var _crumbs: {
-        if (location.section === "folder")
-            return _folderCrumbs
-        const entry = _sections.find(s => s.section === location.section)
-        const own = { title: location.title ?? (entry ? entry.title : ""), place: location }
-        return location.trail ? location.trail.concat([own]) : [own]
+        let crumbs
+        if (location.section === "folder") {
+            crumbs = _folderCrumbs
+        } else {
+            const entry = _sections.find(s => s.section === location.section)
+            const own = { title: location.title ?? (entry ? entry.title : ""), place: location }
+            crumbs = location.trail ? location.trail.concat([own]) : [own]
+        }
+        // the places of the panel itself in the language of the interface
+        // (their names were kept with the places, in the language then)
+        return crumbs.map(crumb => ({ title: root._placeName(crumb.place) || crumb.title, place: crumb.place }))
+    }
+
+    // The name of a place of the panel itself ("" for the places of media:
+    // an album, a folder, a playlist keep their names)
+    function _placeName(place) {
+        switch (place ? place.section : "") {
+        case "home": return qsTr("Home")
+        case "videos": return qsTr("Videos")
+        case "music": return qsTr("Music")
+        case "network": return qsTr("Network")
+        case "playlists": return qsTr("Playlists")
+        case "recent": return qsTr("Recent")
+        case "songs": return qsTr("Songs")
+        case "albums": return qsTr("Albums")
+        case "artists": return qsTr("Artists")
+        case "genres": return qsTr("Genres")
+        case "homeall": {
+            const section = _homeSections.find(s => s.kind === place.kind)
+            return section ? section.title : ""
+        }
+        default: return ""
+        }
     }
 
     // The models of the place: the media library's (loaded with it, while
@@ -422,8 +450,10 @@ FocusScope {
     // The Open media menu of Add, under its row
     OpenMediaButton {
         id: addMediaButton
-        // (the list is in the panel, right of the column)
-        x: panel.x + list.x + list.leftMargin
+        // (the list is in the panel, right of the column; the row from the
+        // right in a right to left layout)
+        x: LayoutMirroring.enabled ? panel.x + list.x + list.width - list.rightMargin - width
+                                   : panel.x + list.x + list.leftMargin
         y: panel.y + list.y + list.topMargin
         width: VLCStyle.dp(32, VLCStyle.scale)
         height: width
@@ -538,6 +568,8 @@ FocusScope {
     Rectangle {
         id: sectionColumn
 
+        // (on the right in a right to left layout, the list on its left)
+        anchors.left: parent.left
         width: VLCStyle.dp(50, VLCStyle.scale)
         height: parent.height
         color: VLCStyle.redesign.color(VLCStyle.redesign.sidebarBackground, "#ababaa")
@@ -612,6 +644,7 @@ FocusScope {
 
             PanelButton {
                 iconSource: "qrc:///redesign/arrow-left.svg"
+                mirrorIcon: true
                 description: qsTr("Previous")
                 enabled: root._back.length > 0
                 onClicked: root.back()
@@ -619,6 +652,7 @@ FocusScope {
             PanelButton {
                 Layout.leftMargin: VLCStyle.dp(12, VLCStyle.scale)
                 iconSource: "qrc:///redesign/arrow-right.svg"
+                mirrorIcon: true
                 description: qsTr("Next")
                 enabled: root._forward.length > 0
                 onClicked: root.forward()
@@ -630,6 +664,8 @@ FocusScope {
                 visible: root._crumbs.length < 2
                 text: root._crumbs.length > 0 ? root._crumbs[0].title : ""
                 elide: Text.ElideRight
+                // (from the right in a right to left layout)
+                horizontalAlignment: Text.AlignLeft
                 color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#4d4d4d")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
@@ -649,7 +685,9 @@ FocusScope {
                 Layout.leftMargin: VLCStyle.dp(10, VLCStyle.scale)
                 visible: root._crumbs.length >= 2
                 spacing: VLCStyle.dp(6, VLCStyle.scale)
-                clip: true
+                // cut only when the crumbs do not fit (the clip of the row of
+                // 24 would cut the accents of taller scripts, Thai, Hindi)
+                clip: implicitWidth > width
 
                 CrumbButton {
                     readonly property var crumbData: root._crumbs.length > 2 ? root._crumbs[root._crumbs.length - 3] : null
@@ -808,6 +846,8 @@ FocusScope {
                 Layout.fillHeight: true
                 visible: !searchField.visible
                 text: root._counted ? qsTr("%1 item", "%1 items", root._count).arg(root._count) : ""
+                elide: Text.ElideRight
+                horizontalAlignment: Text.AlignLeft
                 color: VLCStyle.redesign.color("#6B6B6B", "#7c7c7b")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.redesign.fontNormal
@@ -832,6 +872,7 @@ FocusScope {
                 font.pixelSize: VLCStyle.redesign.fontNormal
                 placeholderText: qsTr("Search")
                 placeholderTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#7c7c7b")
+                horizontalAlignment: TextInput.AlignLeft
                 onTextChanged: {
                     const models = root._toolModels.filter(model => model && model.searchPattern !== undefined)
                     for (const model of models)
@@ -851,7 +892,9 @@ FocusScope {
                 // for the order of the place: folders list the unwatched
                 // media first, the new media of Home the newest first)
                 Rectangle {
-                    x: VLCStyle.dp(22, VLCStyle.scale)
+                    // (at the other corner in a right to left layout)
+                    x: LayoutMirroring.enabled ? parent.width - VLCStyle.dp(22, VLCStyle.scale) - width
+                                               : VLCStyle.dp(22, VLCStyle.scale)
                     y: -VLCStyle.dp(1, VLCStyle.scale)
                     width: VLCStyle.dp(4, VLCStyle.scale)
                     height: width
@@ -1002,6 +1045,7 @@ FocusScope {
                         height: parent.height
                         text: homeSection.modelData.title
                         elide: Text.ElideRight
+                        horizontalAlignment: Text.AlignLeft
                         color: VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, "#4d4d4d")
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
@@ -1020,6 +1064,7 @@ FocusScope {
                         width: VLCStyle.dp(24, VLCStyle.scale)
                         height: VLCStyle.dp(24, VLCStyle.scale)
                         iconSource: "qrc:///redesign/icons/chevron-right/default.png"
+                        mirrorIcon: true
                         description: qsTr("See all")
                         onClicked: root.go({ section: "homeall", kind: homeSection.modelData.kind,
                                              title: homeSection.modelData.title, trail: root._crumbs })
@@ -1432,7 +1477,10 @@ FocusScope {
                     sourceSize: Qt.size(width * 2, height * 2)
                     asynchronous: true
                 }
+                // the time watched, from the left in right to left
+                // languages too (as the seek bar)
                 Rectangle {
+                    LayoutMirroring.enabled: false
                     anchors.left: parent.left
                     anchors.bottom: parent.bottom
                     visible: libraryRow.progressShown
@@ -1461,6 +1509,7 @@ FocusScope {
                 }
                 text: libraryRow.label
                 elide: Text.ElideMiddle
+                horizontalAlignment: Text.AlignLeft
                 // Figma "Player - Light": as dark, #969696 and dimmed #6B6B6B
                 color: libraryRow.dimmed ? VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                                          : (VLCStyle.palette.isDark ? VLCStyle.redesign.textSecondary : "#969696")
@@ -1498,7 +1547,8 @@ FocusScope {
     // Icon button of the panel header and tool row
     component CrumbSeparator: Text {
         // Figma (as the library header): "\u25B6", Inter 8, #404040, a box of 8
-        text: "\u25B6"
+        // ("\u25C0" in a right to left address)
+        text: LayoutMirroring.enabled ? "\u25C0" : "\u25B6"
         Layout.preferredWidth: VLCStyle.dp(8, VLCStyle.scale)
         Layout.fillHeight: true
         horizontalAlignment: Text.AlignLeft
@@ -1536,6 +1586,9 @@ FocusScope {
         id: panelButton
 
         property string iconSource
+        // an arrow of the reading direction (back, forward, see all): it
+        // points the other way in a right to left layout
+        property bool mirrorIcon: false
 
         // Drawn from an image, the text only names the button
         text: description
@@ -1554,6 +1607,7 @@ FocusScope {
             sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
             fillMode: Image.Pad
             opacity: panelButton.enabled ? 1 : 0.35
+            mirror: panelButton.mirrorIcon && panelButton.mirrored
         }
     }
 }

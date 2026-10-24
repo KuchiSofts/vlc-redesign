@@ -113,6 +113,10 @@ FocusScope {
                                              || Player.rendererManager.firewallBlocked)
     readonly property real _videoRadius: VLCStyle.dp(9, VLCStyle.scale)
 
+    // Right to left (Hebrew, Arabic...): the player mirrored, the library
+    // and the queue on the other sides; the bar keeps its order (ControlBar)
+    readonly property bool _mirrored: LayoutMirroring.enabled
+
     // Settings
 
     Accessible.role: Accessible.Client
@@ -261,7 +265,9 @@ FocusScope {
             width: {
                 if (index >= 2)
                     return playerSpecializationLoader.width + 2 * rootPlayer._videoInset
-                return (index === 0 && compactLibrary.visible) ? 0 : rootPlayer._videoInset
+                // none on the side of the library (the right one in a
+                // right to left layout)
+                return (index === (rootPlayer._mirrored ? 1 : 0) && compactLibrary.visible) ? 0 : rootPlayer._videoInset
             }
             height: {
                 if (index === 2)
@@ -727,7 +733,10 @@ FocusScope {
                 Navigation.parentItem: rootPlayer
                 Navigation.upItem: topBar
                 Navigation.downItem: Player.isInteractive ? toggleControlBarButton : controlBar
-                Navigation.leftAction: closeQueue
+                // towards the video: the right key in a right to left
+                // layout, where the queue is on the left
+                Navigation.leftAction: rootPlayer._mirrored ? null : closeQueue
+                Navigation.rightAction: rootPlayer._mirrored ? closeQueue : null
                 Navigation.cancelAction: closeQueue
 
                 function closeQueue() {
@@ -941,11 +950,16 @@ FocusScope {
     ResumeDialog {
         id: resumeDialog
 
-        anchors.left: controlBar.left
+        // (on the left in a right to left layout too, as the play button:
+        // a mirrored anchors.right is the left edge)
+        readonly property real _sideMargin: VLCStyle.dp(16, VLCStyle.scale) + rootPlayer._videoInset
+        anchors.left: rootPlayer._mirrored ? undefined : controlBar.left
+        anchors.right: rootPlayer._mirrored ? controlBar.right : undefined
         anchors.bottom: controlBar.top
-        anchors.leftMargin: VLCStyle.dp(16, VLCStyle.scale) + rootPlayer._videoInset
+        anchors.leftMargin: _sideMargin
+        anchors.rightMargin: _sideMargin
         anchors.bottomMargin: VLCStyle.dp(12, VLCStyle.scale)
-        width: Math.min(implicitWidth, rootPlayer.width - anchors.leftMargin * 2)
+        width: Math.min(implicitWidth, rootPlayer.width - _sideMargin * 2)
         height: implicitHeight
         z: 2
 

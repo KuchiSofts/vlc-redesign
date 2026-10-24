@@ -111,6 +111,10 @@ T.Control {
         Controls.Slider {
             id: seek
             objectName: "miniPlayerSeek"
+            // the time from left to right in right to left languages too
+            // (as SliderBar)
+            LayoutMirroring.enabled: false
+            LayoutMirroring.childrenInherit: true
             // Figma "Frame 21": 4 under the video, 375 x 16
             y: video.y + video.height + VLCStyle.dp(4, VLCStyle.scale)
             z: 1
@@ -200,6 +204,8 @@ T.Control {
             text: Player.name
             color: root.lightTheme ? "#4d4d4d" : VLCStyle.redesign.textSecondary
             elide: Text.ElideRight
+            // (from the right in a right to left layout)
+            horizontalAlignment: Text.AlignLeft
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
             verticalAlignment: Text.AlignTop
@@ -213,7 +219,9 @@ T.Control {
         // the folder and the artist (icon 24, 8, the name), 20 apart
         Row {
             id: details
-            x: VLCStyle.dp(8, VLCStyle.scale)
+            // (from the right in a right to left layout)
+            x: LayoutMirroring.enabled ? parent.width - width - VLCStyle.dp(8, VLCStyle.scale)
+                                       : VLCStyle.dp(8, VLCStyle.scale)
             y: titleLabel.y + titleLabel.height + VLCStyle.dp(14, VLCStyle.scale)
             height: VLCStyle.dp(32, VLCStyle.scale)
             spacing: VLCStyle.dp(20, VLCStyle.scale)
@@ -263,7 +271,9 @@ T.Control {
         Controls.Button {
             id: queueButton
             objectName: "miniPlayerQueueToggle"
-            x: parent.width - width - VLCStyle.dp(8, VLCStyle.scale)
+            // (on the left in a right to left layout)
+            x: LayoutMirroring.enabled ? VLCStyle.dp(8, VLCStyle.scale)
+                                       : parent.width - width - VLCStyle.dp(8, VLCStyle.scale)
             y: details.y
             width: VLCStyle.dp(30, VLCStyle.scale)
             height: VLCStyle.dp(32, VLCStyle.scale)

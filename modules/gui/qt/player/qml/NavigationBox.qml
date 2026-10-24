@@ -38,6 +38,11 @@ T.Control {
     Accessible.name: qsTr("DVD navigation")
     AccessibleCompat.id: "navigationBox"
 
+    // The arrows of the menu of a disc, which is not mirrored: left is
+    // left in right to left languages too (Hebrew, Arabic...)
+    LayoutMirroring.enabled: false
+    LayoutMirroring.childrenInherit: true
+
     padding: VLCStyle.focus_border
 
     property real dragXMin: 0

@@ -89,10 +89,14 @@ SideNavigationPane {
     property int maximumWidth: Math.max(minimumWidth, (sidebar.mainDisplay.width + sidebarResizeHandle.width) / 3)
 
     // Figma "Frame 3": padding 8
+    // (the border of the resize handle on the right, on the left in a right
+    // to left layout: the side bar is then on the right of the window)
+    readonly property real _handleBorderWidth: sidebarResizeHandle.visible ? sidebarResizeHandle.visualBorder.width : 0.0
     topPadding: VLCStyle.dp(8, VLCStyle.scale)
     leftPadding: VLCStyle.dp(8, VLCStyle.scale)
+                 + (LayoutMirroring.enabled ? _handleBorderWidth : 0.0)
     rightPadding: VLCStyle.dp(8, VLCStyle.scale)
-                  + (sidebarResizeHandle.visible ? sidebarResizeHandle.visualBorder.width : 0.0)
+                  + (LayoutMirroring.enabled ? 0.0 : _handleBorderWidth)
     bottomPadding: VLCStyle.applicationVerticalMargin + VLCStyle.dp(8, VLCStyle.scale)
 
     safeAreaLeftMargin: VLCStyle.applicationHorizontalMargin
@@ -124,7 +128,9 @@ SideNavigationPane {
         if ((sidebar.state !== 'expanded') && item.expandable) {
             // TODO: Investigate opening the menu on hover, if
             //       we switch to `Popup.Item` type of menus.
-            const mappedPos = item.mapToGlobal(item.width, 0)
+            // (next to the item, on the side of the content: its left
+            // edge in a right to left layout)
+            const mappedPos = item.mapToGlobal(sidebar.LayoutMirroring.enabled ? 0 : item.width, 0)
             navigationBarContextMenu.popup(item.index, mappedPos, !item.hovered)
 
             return
@@ -144,7 +150,9 @@ SideNavigationPane {
     Navigation.parentItem: sidebar.mainDisplay
     Navigation.upItem: sidebar.toolbar
     Navigation.downItem: sidebar.updatePane
-    Navigation.rightItem: sidebar.view.currentItem
+    // the content is on the left of the side bar in a right to left layout
+    Navigation.leftItem: LayoutMirroring.enabled ? sidebar.view.currentItem : null
+    Navigation.rightItem: LayoutMirroring.enabled ? null : sidebar.view.currentItem
 
     state: sidebar.panels.showNavigation ? "expanded" : ""
 

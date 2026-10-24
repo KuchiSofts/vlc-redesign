@@ -127,7 +127,9 @@ Widgets.TableRowDelegate {
             anchors.topMargin: VLCStyle.margin_xxsmall
             anchors.bottomMargin: VLCStyle.margin_xxsmall
 
-            width: Math.max(0, parent.width - x)
+            // the room left by the cover (from widths: the row is mirrored
+            // in a right to left layout, the column is then on the left)
+            width: Math.max(0, parent.width - cover.width - parent.spacing)
 
             Widgets.TextAutoScroller {
                 id: itemText

@@ -107,7 +107,8 @@ T.ItemDelegate {
 
     // Tooltip
 
-    T.ToolTip.visible: (showText === false && T.ToolTip.text && (hovered || visualFocus))
+    // (the label hidden, or cut by a long translation)
+    T.ToolTip.visible: ((showText === false || label.truncated) && T.ToolTip.text && (hovered || visualFocus))
 
     T.ToolTip.delay: VLCStyle.delayToolTipAppear
 
@@ -231,6 +232,9 @@ T.ItemDelegate {
 
             text: control.text
 
+            // from the start of the row (the right in a right to left
+            // layout), whatever the language of the text
+            horizontalAlignment: Text.AlignLeft
             // the text box of the design (17 px) centred in the row, on a
             // whole pixel
             verticalAlignment: Text.AlignTop

@@ -417,8 +417,12 @@ FocusScope {
                 // for the source visual here. The effect rect exceeds the boundaries of `PartialEffect` due to this (see
                 // `effectRect`), which is not particularly nice, but there is not much we can do about that here without
                 // using `sourceVisualRect`, and saving video memory is considered more important:
-                anchors.rightMargin: (stackViewParent.width - stackViewParent.layer.sourceRect.width - stackViewParent.layer.sourceRect.x)
-                anchors.leftMargin: stackViewParent.layer.sourceRect.x
+                // (the source rect is in x: the anchors, mirrored in a right to left layout, take
+                // the margins the other way round)
+                anchors.rightMargin: LayoutMirroring.enabled ? stackViewParent.layer.sourceRect.x
+                                                             : (stackViewParent.width - stackViewParent.layer.sourceRect.width - stackViewParent.layer.sourceRect.x)
+                anchors.leftMargin: LayoutMirroring.enabled ? (stackViewParent.width - stackViewParent.layer.sourceRect.width - stackViewParent.layer.sourceRect.x)
+                                                            : stackViewParent.layer.sourceRect.x
 
                 blending: stackViewParent.color.a < (1.0 - Number.EPSILON)
 
@@ -495,7 +499,9 @@ FocusScope {
 
                 rightPadding: playlistLoader.shown ? 0 : VLCStyle.applicationHorizontalMargin
 
-                // Top-left corner rounding:
+                // Top-left corner rounding (the corner next to the side bar:
+                // the top-right one in a right to left layout, the anchors
+                // are mirrored):
                 Widgets.AcrylicBackground {
                     id: topLeftCornerBackground
 
@@ -514,8 +520,8 @@ FocusScope {
                     Rectangle {
                         id: stackViewTopLeftRadiusRectangle
 
-                        width: (stackViewTopLeftRadiusRectangle.topLeftRadius * 2)
-                        height: (stackViewTopLeftRadiusRectangle.topLeftRadius * 2)
+                        width: (stackViewTopLeftRadiusRectangle.implicitTopLeftRadius * 2)
+                        height: (stackViewTopLeftRadiusRectangle.implicitTopLeftRadius * 2)
 
                         anchors.top: parent.top
                         anchors.left: parent.left
@@ -526,8 +532,12 @@ FocusScope {
                         property real implicitTopLeftRadius: VLCStyle.mainView_topLeftRadius
 
                         Component.onCompleted: {
-                            if (stackViewTopLeftRadiusRectangle.topLeftRadius !== undefined) // TODO: Directly set when minimum Qt is 6.7
-                                stackViewTopLeftRadiusRectangle.topLeftRadius = Qt.binding(() => stackViewTopLeftRadiusRectangle.implicitTopLeftRadius)
+                            if (stackViewTopLeftRadiusRectangle.topLeftRadius !== undefined) { // TODO: Directly set when minimum Qt is 6.7
+                                stackViewTopLeftRadiusRectangle.topLeftRadius = Qt.binding(() => stackViewTopLeftRadiusRectangle.LayoutMirroring.enabled
+                                                                                                  ? 0 : stackViewTopLeftRadiusRectangle.implicitTopLeftRadius)
+                                stackViewTopLeftRadiusRectangle.topRightRadius = Qt.binding(() => stackViewTopLeftRadiusRectangle.LayoutMirroring.enabled
+                                                                                                   ? stackViewTopLeftRadiusRectangle.implicitTopLeftRadius : 0)
+                            }
                         }
                     }
                 }
@@ -548,8 +558,10 @@ FocusScope {
 
                 Navigation.parentItem: g_mainDisplay
                 Navigation.upItem: localTopbar
-                Navigation.rightItem: playlistLoader
-                Navigation.leftItem: sidebar
+                // the side bar on the right, the queue on the left in a right
+                // to left layout
+                Navigation.rightItem: LayoutMirroring.enabled ? sidebar : playlistLoader
+                Navigation.leftItem: LayoutMirroring.enabled ? playlistLoader : sidebar
                 Navigation.downItem: loaderUpdatePane
             }
         }
@@ -637,8 +649,12 @@ FocusScope {
 
                 focus: true
 
-                leftPadding: playqueueResizeHandle.visualBorder.width
-                rightPadding: VLCStyle.applicationHorizontalMargin
+                // the resize handle on the left, on the right in a right to
+                // left layout (the queue is then on the left of the window)
+                leftPadding: LayoutMirroring.enabled ? VLCStyle.applicationHorizontalMargin
+                                                     : playqueueResizeHandle.visualBorder.width
+                rightPadding: LayoutMirroring.enabled ? playqueueResizeHandle.visualBorder.width
+                                                      : VLCStyle.applicationHorizontalMargin
                 bottomPadding: Math.max(VLCStyle.applicationVerticalMargin - g_mainDisplay.displayMargin, 0)
                 topPadding: VLCStyle.layoutTitle_top_padding
 
@@ -649,7 +665,9 @@ FocusScope {
                 Navigation.parentItem: g_mainDisplay
                 Navigation.upItem: localTopbar
                 Navigation.downItem: loaderUpdatePane
-                Navigation.leftItem: stackView.currentItem
+                // the content is on its right in a right to left layout
+                Navigation.leftItem: LayoutMirroring.enabled ? null : stackView.currentItem
+                Navigation.rightItem: LayoutMirroring.enabled ? stackView.currentItem : null
 
                 Navigation.cancelAction: function() {
                     MainCtx.playqueuePanel.visible = false

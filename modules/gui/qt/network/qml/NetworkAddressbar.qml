@@ -103,12 +103,25 @@ T.Control {
 
             Layout.fillHeight: true
 
-            Navigation.parentItem: control
-            Navigation.rightAction: function () {
+            function _focusNext() {
                 if (menuButton.visible)
                     menuButton.forceActiveFocus(Qt.TabFocusReason)
                 else
                     contentRepeater.itemAt(0).forceActiveFocus(Qt.TabFocusReason)
+            }
+
+            Navigation.parentItem: control
+            // the path goes to the left in a right to left layout (false:
+            // the default navigation)
+            Navigation.leftAction: function () {
+                if (!control.LayoutMirroring.enabled)
+                    return false
+                homeButton._focusNext()
+            }
+            Navigation.rightAction: function () {
+                if (control.LayoutMirroring.enabled)
+                    return false
+                homeButton._focusNext()
             }
             Keys.priority: Keys.AfterItem
             Keys.onPressed: (event) => Navigation.defaultKeyAction(event)
@@ -129,9 +142,25 @@ T.Control {
 
             Layout.fillHeight: true
 
+            // the glyph points to the right in a right to left layout (the
+            // background is symmetric: only the glyph changes)
+            transform: Scale {
+                origin.x: menuButton.width / 2
+                xScale: control.LayoutMirroring.enabled ? -1 : 1
+            }
+
             Navigation.parentItem: control
-            Navigation.leftItem: homeButton
+            // (mirrored like the home button; false: to the home button)
+            Navigation.leftItem: control.LayoutMirroring.enabled ? null : homeButton
+            Navigation.rightItem: control.LayoutMirroring.enabled ? homeButton : null
+            Navigation.leftAction: function () {
+                if (!control.LayoutMirroring.enabled)
+                    return false
+                contentRepeater.itemAt(0).forceActiveFocus(Qt.TabFocusReason)
+            }
             Navigation.rightAction: function () {
+                if (control.LayoutMirroring.enabled)
+                    return false
                 contentRepeater.itemAt(0).forceActiveFocus(Qt.TabFocusReason)
             }
             Keys.priority: Keys.AfterItem
@@ -152,8 +181,7 @@ T.Control {
                 spacing: VLCStyle.margin_xxxsmall
                 onActiveFocusChanged: if (activeFocus) btn.forceActiveFocus(focusReason)
 
-                Navigation.parentItem: control
-                Navigation.leftAction: function() {
+                function _focusPrevious() {
                     if (index !== 0)
                         contentRepeater.itemAt(index - 1).forceActiveFocus(Qt.BacktabFocusReason)
                     else if (menuButton.visible)
@@ -162,8 +190,21 @@ T.Control {
                         homeButton.forceActiveFocus(Qt.BacktabFocusReason)
                 }
 
+                Navigation.parentItem: control
+                // the path goes to the left in a right to left layout
+                Navigation.leftAction: function() {
+                    if (!control.LayoutMirroring.enabled)
+                        _focusPrevious()
+                    else if (index !== contentRepeater.count - 1)
+                        contentRepeater.itemAt(index + 1).forceActiveFocus(Qt.TabFocusReason)
+                    else
+                        control.Navigation.defaultNavigationLeft()
+                }
+
                 Navigation.rightAction: function () {
-                    if (index !== contentRepeater.count - 1)
+                    if (control.LayoutMirroring.enabled)
+                        _focusPrevious()
+                    else if (index !== contentRepeater.count - 1)
                         contentRepeater.itemAt(index + 1).forceActiveFocus(Qt.TabFocusReason)
                     else
                         control.Navigation.defaultNavigationRight()
@@ -188,12 +229,18 @@ T.Control {
                 }
 
                 Widgets.IconLabel {
+                    id: separator
                     Layout.fillHeight: true
                     visible: index !== contentRepeater.count - 1
                     text: VLCIcons.breadcrumb_sep
                     font.pixelSize: VLCStyle.icon_addressBar
                     color: theme.fg.secondary
                     verticalAlignment: Text.AlignVCenter
+                    // points to the left in a right to left layout
+                    transform: Scale {
+                        origin.x: separator.width / 2
+                        xScale: control.LayoutMirroring.enabled ? -1 : 1
+                    }
                 }
             }
         }
@@ -226,6 +273,9 @@ T.Control {
                 return modelData.display
             })
 
+            // under the bar, from its left edge (the native menu opens to
+            // the right of the point, in a right to left layout too: from
+            // the right edge it would leave the bar)
             const point = control.mapToGlobal(0, menuButton.height + VLCStyle.margin_xxsmall)
 
             popup.popup(point, model)

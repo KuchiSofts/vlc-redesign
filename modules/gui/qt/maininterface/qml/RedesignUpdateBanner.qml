@@ -31,7 +31,12 @@ Rectangle {
     }
 
     visible: RedesignUpdater.showBanner
-    width: Math.min(parent.width - 2 * VLCStyle.dp(16, VLCStyle.scale), VLCStyle.dp(420, VLCStyle.scale))
+    // 420, wider for buttons that need more (long translations), within the
+    // window
+    width: Math.min(parent.width - 2 * VLCStyle.dp(16, VLCStyle.scale),
+                    Math.max(VLCStyle.dp(420, VLCStyle.scale),
+                             (readyButtons.visible ? readyButtons.implicitWidth : 0) + 2 * column.x,
+                             (actionButtons.visible ? actionButtons.implicitWidth : 0) + 2 * column.x))
     height: column.implicitHeight + 2 * VLCStyle.dp(16, VLCStyle.scale)
     radius: VLCStyle.dp(10, VLCStyle.scale)
     color: VLCStyle.redesign.color("#191919", "#ABABAA", darkTheme)
@@ -65,8 +70,17 @@ Rectangle {
             }
 
             Text {
+                id: titleText
                 Layout.fillWidth: true
+                // from the start (the right in a right to left layout),
+                // whatever the language of the text
+                horizontalAlignment: Text.AlignLeft
                 elide: Text.ElideRight
+                // the whole title when it is cut
+                HoverHandler { id: titleHover }
+                T.ToolTip.visible: titleHover.hovered && titleText.truncated
+                T.ToolTip.text: titleText.text
+                T.ToolTip.delay: VLCStyle.delayToolTipAppear
                 color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#1d1d1d", root.darkTheme)
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(15, VLCStyle.scale)
@@ -115,6 +129,7 @@ Rectangle {
         Text {
             Layout.fillWidth: true
             visible: text.length > 0
+            horizontalAlignment: Text.AlignLeft
             wrapMode: Text.WordWrap
             maximumLineCount: 5
             elide: Text.ElideRight
@@ -152,6 +167,8 @@ Rectangle {
             color: VLCStyle.redesign.color("#0E0E0E", "#8f8f8e", root.darkTheme)
 
             Rectangle {
+                // (fills from the right in a right to left layout)
+                anchors.left: parent.left
                 height: parent.height
                 radius: parent.radius
                 width: root.state === RedesignUpdater.Preparing ? parent.width
@@ -162,6 +179,7 @@ Rectangle {
         }
 
         RowLayout {
+            id: readyButtons
             Layout.fillWidth: true
             Layout.topMargin: VLCStyle.dp(6, VLCStyle.scale)
             visible: root.state === RedesignUpdater.Ready
@@ -182,6 +200,7 @@ Rectangle {
         }
 
         RowLayout {
+            id: actionButtons
             Layout.fillWidth: true
             Layout.topMargin: VLCStyle.dp(6, VLCStyle.scale)
             visible: root.state === RedesignUpdater.Available || root.state === RedesignUpdater.Failed

@@ -144,14 +144,19 @@ T.ToolBar {
                     height: VLCStyle.dp(28, VLCStyle.scale)
                     width: VLCStyle.dp(28, VLCStyle.scale)
 
-                    onClicked: mainMenu.popup(menuButton, 0, menuButton.height)
+                    // under the button, from its left edge (its right edge in a
+                    // right to left layout)
+                    onClicked: mainMenu.popup(menuButton, LayoutMirroring.enabled ? menuButton.width - mainMenu.width : 0,
+                                              menuButton.height)
 
                     Menus.MainMenu {
                         id: mainMenu
                     }
 
                     Navigation.parentItem: navigationButtons
-                    Navigation.rightItem: navigationVisibilty
+                    // (the row is mirrored in a right to left layout)
+                    Navigation.leftItem: LayoutMirroring.enabled ? navigationVisibilty : null
+                    Navigation.rightItem: LayoutMirroring.enabled ? null : navigationVisibilty
                 }
 
                 // Not in the design: the navigation stays shown, the
@@ -181,8 +186,8 @@ T.ToolBar {
                     onClicked: root.toggleNavigationVisibility()
 
                     Navigation.parentItem: navigationButtons
-                    Navigation.leftItem: menuButton
-                    Navigation.rightItem: historyBack
+                    Navigation.leftItem: LayoutMirroring.enabled ? historyBack : menuButton
+                    Navigation.rightItem: LayoutMirroring.enabled ? menuButton : historyBack
                 }
 
                 Widgets.IconToolButton {
@@ -198,6 +203,13 @@ T.ToolBar {
                     text: VLCIcons.back
                     description: qsTr("Previous")
 
+                    // the arrow points to the right in a right to left layout
+                    // (the background is symmetric: only the glyph changes)
+                    transform: Scale {
+                        origin.x: historyBack.width / 2
+                        xScale: historyBack.LayoutMirroring.enabled ? -1 : 1
+                    }
+
                     AccessibleCompat.id: "historyBackButton"
 
                     height: VLCStyle.bannerButton_height
@@ -212,7 +224,8 @@ T.ToolBar {
                     }
 
                     Navigation.parentItem: navigationButtons
-                    Navigation.leftItem: navigationVisibilty
+                    Navigation.leftItem: LayoutMirroring.enabled ? null : navigationVisibilty
+                    Navigation.rightItem: LayoutMirroring.enabled ? navigationVisibilty : null
                 }
 
 
@@ -236,6 +249,12 @@ T.ToolBar {
                                                        font.pixelSize) - titleMetrics.ascent
             elide: Text.ElideRight
             Accessible.ignored: true
+
+            // the whole title when it is cut
+            HoverHandler { id: titleHover }
+            T.ToolTip.visible: titleHover.hovered && titleText.truncated
+            T.ToolTip.text: titleText.text
+            T.ToolTip.delay: VLCStyle.delayToolTipAppear
 
             FontMetrics {
                 id: titleMetrics

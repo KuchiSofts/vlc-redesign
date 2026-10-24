@@ -84,7 +84,9 @@ T.Pane {
             path: root.path
 
             Navigation.parentItem: root
-            Navigation.rightItem: medialibraryBtn
+            // (the row is mirrored in a right to left layout)
+            Navigation.leftItem: LayoutMirroring.enabled ? medialibraryBtn : null
+            Navigation.rightItem: LayoutMirroring.enabled ? null : medialibraryBtn
 
             onHomeButtonClicked: reason => root.homeButtonClicked(reason)
 
@@ -113,15 +115,16 @@ T.Pane {
             Layout.preferredWidth: implicitWidth
 
             Navigation.parentItem: root
-            Navigation.leftItem: networkAddressbar
-            Navigation.rightItem: gridSortFilter
+            Navigation.leftItem: LayoutMirroring.enabled ? gridSortFilter : networkAddressbar
+            Navigation.rightItem: LayoutMirroring.enabled ? networkAddressbar : gridSortFilter
         }
 
         Widgets.GridSortFilterControls {
             id: gridSortFilter
 
             Navigation.parentItem: root
-            Navigation.leftItem: medialibraryBtn
+            Navigation.leftItem: LayoutMirroring.enabled ? null : medialibraryBtn
+            Navigation.rightItem: LayoutMirroring.enabled ? medialibraryBtn : null
         }
     }
 }

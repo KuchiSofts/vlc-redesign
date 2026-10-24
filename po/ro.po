@@ -21839,7 +21839,8 @@ msgstr "Activează efecte de transparență"
 msgid ""
 "You can disable all transparency effects if you want. This is mainly useful "
 "when moving windows does not behave correctly."
-msgstr "Puteți dezactiva "
+msgstr ""
+"Puteți dezactiva toate efectele de transparență dacă doriți. Acest lucru este util în special atunci când mutarea ferestrelor nu funcționează corect."
 
 #: modules/gui/skins2/src/skin_main.cpp:497
 #: modules/gui/skins2/src/skin_main.cpp:498

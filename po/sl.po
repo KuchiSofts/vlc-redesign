@@ -6781,7 +6781,7 @@ msgstr "Spona zvokovnega odvoda"
 #: modules/access/dshow/dshow.cpp:190
 msgid "Select the audio output type. See the \"video input\" option."
 msgstr ""
-"Izbor vira zvokovnega dovoda. Več nastavitev je med možnostmi »dovoda videa«."
+"Izbor vrste zvokovnega izhoda. Več nastavitev je med možnostmi »dovoda videa«."
 
 #: modules/access/dshow/dshow.cpp:192
 msgid "AM Tuner mode"

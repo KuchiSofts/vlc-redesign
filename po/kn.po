@@ -337,6 +337,7 @@ msgid "Packetizers"
 msgstr "ವಿಭಜಕಗಳು "
 
 #: include/vlc_config_cat.h:156
+#, fuzzy
 msgid ""
 "Packetizers are used to \"preprocess\" the elementary streams before muxing. "
 "This setting allows you to always force a packetizer. You should probably "
@@ -832,11 +833,9 @@ msgstr ""
 "  dvd://[device]                 DVD device\n"
 "  vcd://[device]                 VCD device\n"
 "  cdda://[device]                Audio CD device\n"
-"  udp://[[&lt;source address&gt;]@[&lt;bind address&gt;][:&lt;bind "
-"port&gt;]]\n"
+"  udp://[[<source address>]@[<bind address>][:<bind port>]]\n"
 "                                 UDP stream sent by a streaming server\n"
-"  vlc://pause:&lt;seconds&gt;          Pause the playlist for a certain "
-"time\n"
+"  vlc://pause:<seconds>          Pause the playlist for a certain time\n"
 "  vlc://quit                     Special item to quit VLC\n"
 "\n"
 
@@ -876,9 +875,7 @@ msgstr ""
 #: src/config/help.c:721
 #, c-format
 msgid "VLC version %s (%s)\n"
-msgstr ""
-"VLCಯ ಆವೃತ್ತಿ %s (%s)\n"
-"\n"
+msgstr "VLCಯ ಆವೃತ್ತಿ %s (%s)\n"
 
 #: src/config/help.c:722
 #, c-format
@@ -1754,6 +1751,7 @@ msgid "Remember the audio volume"
 msgstr "ಧ್ವನಿಯ ವಾಲ್ಯೂಮ್ಅನ್ನು ನೆನಪಿಡಿ"
 
 #: src/libvlc-module.c:158
+#, fuzzy
 msgid ""
 "The volume can be recorded and automatically restored next time VLC is used."
 msgstr "ಧ್ವನಿ ಸಕ್ರಿಯಗೊಳಿಸಿ"
@@ -2935,6 +2933,7 @@ msgid "Change title according to current media"
 msgstr "ಪ್ರಸ್ತುತ ಮಾಧ್ಯಮದ ಪ್ರಕಾರ ಶೀರ್ಷಿಕೆಯನ್ನು ಬದಲಾಯಿಸಿ"
 
 #: src/libvlc-module.c:694
+#, fuzzy
 msgid ""
 "This option allows you to set the title according to what's being played<br>"
 "$a: Artist<br>$b: Album<br>$c: Copyright<br>$t: Title<br>$g: Genre<br>$n: "
@@ -3126,8 +3125,7 @@ msgid ""
 "This is the default VCD drive (or file) to use. Don't forget the colon after "
 "the drive letter (e.g. D:)"
 msgstr ""
-"ಈ ಬಳಸಲು ಪೂರ್ವನಿಯೋಜಿತ DVD ಡ್ರೈವ್ (ಅಥವಾ ಕಡತ) ಆಗಿದೆ. ಡ್ರೈವ್ ಅಕ್ಷರ ನಂತರ ಅಪೂರ್ಣವಿರಾಮ "
-"ಚಿಹ್ನೆಯನ್ನು ಮರೆಯಬೇಡಿ(ಉದಾಹರಣೆ:D:)"
+"ಈ ಬಳಸಲು ಪೂರ್ವನಿಯೋಜಿತ VCD ಡ್ರೈವ್ (ಅಥವಾ ಕಡತ) ಆಗಿದೆ. ಡ್ರೈವ್ ಅಕ್ಷರ ನಂತರ ಅಪೂರ್ಣವಿರಾಮ ಚಿಹ್ನೆಯನ್ನು ಮರೆಯಬೇಡಿ(ಉದಾಹರಣೆ:D:)"
 
 #: src/libvlc-module.c:778 modules/access/cdda.c:704
 msgid ""
@@ -6621,6 +6619,7 @@ msgid "Video size"
 msgstr "ವೀಡಿಯೊದ ಗಾತ್ರ"
 
 #: modules/access/dshow/dshow.cpp:142
+#, fuzzy
 msgid ""
 "Size of the video that will be displayed by the DirectShow plugin. If you "
 "don't specify anything the default size for your device will be used. You "
@@ -8656,6 +8655,7 @@ msgid "Time code"
 msgstr "ಸಮಯದ ಸಂಕೇತ"
 
 #: modules/access/timecode.c:43
+#, fuzzy
 msgid "Time code subpicture elementary stream generator"
 msgstr ""
 "White balance temperature as a color temperation in Kelvin (2800 is minimum "
@@ -10675,6 +10675,7 @@ msgid "Number of output channels"
 msgstr "ಉತ್ಪಾದನೆ ಚಾನೆಲ್ಗಳ ಸಂಖ್ಯೆ"
 
 #: modules/audio_output/file.c:86
+#, fuzzy
 msgid ""
 "By default (0), all the channels of the incoming will be saved but you can "
 "restrict the number of channels here."
@@ -15999,6 +16000,7 @@ msgid "Set id of ES to PID"
 msgstr "ES  ಯ ಐಡಿಯನ್ನು PIDಗೆ ಹೊಂದಿಸಿ"
 
 #: modules/demux/mpeg/ts.c:85
+#, fuzzy
 msgid ""
 "Set the internal ID of each elementary stream handled by VLC to the same "
 "value as the PID in the TS stream, instead of 1, 2, 3, etc. Useful to do "
@@ -19366,7 +19368,7 @@ msgstr " s                      ನಿಲ್ಲಿಸಿ"
 
 #: modules/gui/ncurses.c:887
 msgid " <space>                Pause/Play"
-msgstr " &lt;space&gt;                ವಿರಾಮಗೊಳಿಸಿ/ಪ್ಲೇ ಮಾಡಿ"
+msgstr " <space>                ವಿರಾಮಗೊಳಿಸಿ/ಪ್ಲೇ ಮಾಡಿ"
 
 #: modules/gui/ncurses.c:888
 msgid " f                      Toggle Fullscreen"
@@ -19394,13 +19396,13 @@ msgstr " [, ]                   ಮುಂದಿನ/ಹಿಂದಿನ ಶೀ�
 
 #: modules/gui/ncurses.c:894
 msgid " <, >                   Next/Previous chapter"
-msgstr " &lt;, &gt;                   ಮುಂದಿನ/ಹಿಂದಿನ ಅಧ್ಯಾಯ"
+msgstr " <, >                   ಮುಂದಿನ/ಹಿಂದಿನ ಅಧ್ಯಾಯ"
 
 #. xgettext: You can use ← and → characters
 #: modules/gui/ncurses.c:896
 #, c-format
 msgid " <left>,<right>         Seek -/+ 1%%"
-msgstr " &lt;ಎಡ&gt;,&lt;ಬಲ&gt;         Seek -/+ 1%%"
+msgstr " <ಎಡ>,<ಬಲ>         Seek -/+ 1%%"
 
 #: modules/gui/ncurses.c:897
 msgid " a, z                   Volume Up/Down"
@@ -19413,19 +19415,17 @@ msgstr " m                      ನಿಶ್ಯಬ್ಧಗೊಳಿಸಿ"
 #. xgettext: You can use ↑ and ↓ characters
 #: modules/gui/ncurses.c:900
 msgid " <up>,<down>            Navigate through the box line by line"
-msgstr ""
-" &lt;ಮೇಲೆ&gt;,&lt;ಕೆಳಗೆ&gt;            ಪೆಟ್ಟಿಗೆಯ ಮೂಲಕ ಪ್ರತಿ ರೇಖೆಗೆ ವಿಹರಿಸಿ"
+msgstr " <ಮೇಲೆ>,<ಕೆಳಗೆ>            ಪೆಟ್ಟಿಗೆಯ ಮೂಲಕ ಪ್ರತಿ ರೇಖೆಗೆ ವಿಹರಿಸಿ"
 
 #. xgettext: You can use ⇞ and ⇟ characters
 #: modules/gui/ncurses.c:902
 msgid " <pageup>,<pagedown>    Navigate through the box page by page"
-msgstr ""
-" &lt;ಪುಟ ಮೇಲೆ&gt;,&lt;ಪುಟ ಕೆಳಗೆ&gt;    ಪೆಟ್ಟಿಗೆಯ ಮೂಲಕ ಪ್ರತಿ ಪುಟಕ್ಕೆ ವಿಹರಿಸಿ"
+msgstr " <ಪುಟ ಮೇಲೆ>,<ಪುಟ ಕೆಳಗೆ>    ಪೆಟ್ಟಿಗೆಯ ಮೂಲಕ ಪ್ರತಿ ಪುಟಕ್ಕೆ ವಿಹರಿಸಿ"
 
 #. xgettext: You can use ↖ and ↘ characters
 #: modules/gui/ncurses.c:904
 msgid " <start>,<end>          Navigate to start/end of box"
-msgstr " &lt;ಆರಂಭ&gt;,&lt;ಅಂತ್ಯ&gt;          ಪೆಟ್ಟಿಗೆಯ ಆರಂಭ/ಅಂತ್ಯಕ್ಕೆ ವಿಹರಿಸಿ"
+msgstr " <ಆರಂಭ>,<ಅಂತ್ಯ>          ಪೆಟ್ಟಿಗೆಯ ಆರಂಭ/ಅಂತ್ಯಕ್ಕೆ ವಿಹರಿಸಿ"
 
 #: modules/gui/ncurses.c:908
 msgid "[Playlist]"
@@ -19470,7 +19470,7 @@ msgstr " A                      ಒಂದು ನಮೂದನ್ನು ಸೇ�
 #. xgettext: You can use ⌫ character to translate <backspace>
 #: modules/gui/ncurses.c:920
 msgid " D, <backspace>, <del>  Delete an entry"
-msgstr " D, &lt;backspace&gt;, &lt;del&gt;  ಒಂದು ನಮೂದನ್ನು ಅಳಿಸಿ"
+msgstr " D, <backspace>, <del>  ಒಂದು ನಮೂದನ್ನು ಅಳಿಸಿ"
 
 #: modules/gui/ncurses.c:921
 msgid " e                      Eject (if stopped)"
@@ -19482,11 +19482,11 @@ msgstr "[ಕಡತಗಳ ವೀಕ್ಷಕ]"
 
 #: modules/gui/ncurses.c:927
 msgid " <enter>                Add the selected file to the playlist"
-msgstr " &lt;enter&gt;                ಆಯ್ಕೆ ಮಾಡಿದ ಕಡತವನ್ನು ಪ್ಲೇಪಟ್ಟಿಗೆ ಸೇರಿಸಿ"
+msgstr " <enter>                ಆಯ್ಕೆ ಮಾಡಿದ ಕಡತವನ್ನು ಪ್ಲೇಪಟ್ಟಿಗೆ ಸೇರಿಸಿ"
 
 #: modules/gui/ncurses.c:928
 msgid " <space>                Add the selected directory to the playlist"
-msgstr " &lt;enter&gt;                ಆಯ್ಕೆ ಮಾಡಿದ ಕೋಶವನ್ನು ಪ್ಲೇಪಟ್ಟಿಗೆ ಸೇರಿಸಿ"
+msgstr " <space>                ಆಯ್ಕೆ ಮಾಡಿದ ಕೋಶವನ್ನು ಪ್ಲೇಪಟ್ಟಿಗೆ ಸೇರಿಸಿ"
 
 #: modules/gui/ncurses.c:929
 msgid " .                      Show/Hide hidden files"
@@ -19498,7 +19498,7 @@ msgstr "[Player]"
 
 #. xgettext: You can use ↑ and ↓ characters
 #: modules/gui/ncurses.c:936
-#, c-format
+#, fuzzy, c-format
 msgid " <up>,<down>            Seek +/-5%%"
 msgstr " &lt;up&gt;,&lt;down&gt;            Seek +/-5%%"
 
@@ -20361,8 +20361,7 @@ msgstr "ಎಚ್ಚರಿಕೆ: ಈ ಕೀಲಿ ಅಥವಾ ಸಂಯೆ�
 
 #: modules/gui/qt/components/preferences_widgets.cpp:1474
 msgid "Warning: <b>%1</b> is already an application menu shortcut"
-msgstr ""
-"ಎಚ್ಚರಿಕೆ: &lt;b&gt;%1&lt;/b&gt; ಈಗಾಗಲೇ ಅಪ್ಲಿಕೇಶನ್ ಮೆನುವಿನ ಶೀಘ್ರಮಾರ್ಗ ಆಗಿದೆ"
+msgstr "ಎಚ್ಚರಿಕೆ: <b>%1</b> ಈಗಾಗಲೇ ಅಪ್ಲಿಕೇಶನ್ ಮೆನುವಿನ ಶೀಘ್ರಮಾರ್ಗ ಆಗಿದೆ"
 
 #: modules/gui/qt/components/preferences_widgets.cpp:1497
 msgid "Key or combination: "
@@ -22585,6 +22584,7 @@ msgid "Lua interface configuration"
 msgstr "Lua ಅಂತರ್ವರ್ತನದ ಸಂಯೋಜನೆ"
 
 #: modules/lua/vlc.c:53
+#, fuzzy
 msgid ""
 "Lua interface configuration string. Format is: '[\"<interface module name>"
 "\"] = { <option> = <value>, ...}, ...'."
@@ -24460,9 +24460,7 @@ msgid ""
 "<alpha>]][;<image>[,<delay>[,<alpha>]]][;...]. If you only have one file, "
 "simply enter its filename."
 msgstr ""
-"ಬಳಸುವ ಚಿತ್ರ ಕಡತಗಳ ಸಂಪೂರ್ಣ ಮಾರ್ಗ.&lt;image&gt;[,&lt;delay in ms&gt;[,&lt;"
-"alpha&gt;]][;&lt;image&gt;[,&lt;delay&gt;[,&lt;alpha&gt;]]][;...].  "
-"ಸ್ವರೂಪವಾಗಿದೆ.ನೀವು ಕೇವಲ ಒಂದು ಕಡತವನ್ನು ಹೊಂದಿದ್ದರೆ, ಕೇವಲ ಅದರ ಹೆಸರನ್ನು ನಮೂದಿಸಿ."
+"ಬಳಸುವ ಚಿತ್ರ ಕಡತಗಳ ಸಂಪೂರ್ಣ ಮಾರ್ಗ. <image>[,<delay in ms>[,<alpha>]][;<image>[,<delay>[,<alpha>]]][;...] ಸ್ವರೂಪವಾಗಿದೆ. ನೀವು ಕೇವಲ ಒಂದು ಕಡತವನ್ನು ಹೊಂದಿದ್ದರೆ, ಕೇವಲ ಅದರ ಹೆಸರನ್ನು ನಮೂದಿಸಿ."
 
 #: modules/spu/logo.c:53
 msgid "Logo animation # of loops"
@@ -25070,7 +25068,7 @@ msgstr ""
 
 #: modules/spu/subsdelay.c:69
 msgid "Interval between disappearance and appearance"
-msgstr "ಗೋಚರತೆ ಮತ್ತು ಕಣ್ಮರೆಯ ನಡುವಿನ ಮಧ್ಯಂತರ"
+msgstr "ಕಣ್ಮರೆ ಮತ್ತು ಗೋಚರತೆಯ ನಡುವಿನ ಮಧ್ಯಂತರ"
 
 #: modules/spu/subsdelay.c:71
 msgid ""
@@ -29126,6 +29124,7 @@ msgid "If nothing appears, check your internet connection."
 msgstr "ಏನೂ ಗೋಚರಿಸದಿದ್ದರೆ, ನಿಮ್ಮ ಅಂತರ್ಜಾಲ ಸಂಪರ್ಕವನ್ನು ಪರೀಕ್ಷಿಸಿ."
 
 #: share/lua/http/index.html:263
+#, fuzzy
 msgid ""
 "By creating a stream, the <i>Main Controls</i> will operate the stream "
 "instead of the main interface."
@@ -29134,6 +29133,7 @@ msgstr ""
 "stream instead of the main interface."
 
 #: share/lua/http/index.html:264
+#, fuzzy
 msgid ""
 "The stream will be created using default settings, for more advanced "
 "configuration, or to modify the default settings, select the button to the "
@@ -29144,6 +29144,7 @@ msgstr ""
 "right: &lt;i&gt;Manage Streams&lt;/i&gt;"
 
 #: share/lua/http/index.html:268
+#, fuzzy
 msgid ""
 "Once the stream is created, the <i>Media Viewer</i> window will display the "
 "stream."
@@ -29152,6 +29153,7 @@ msgstr ""
 "display the stream."
 
 #: share/lua/http/index.html:269
+#, fuzzy
 msgid ""
 "Volume will be controlled by the player, and not the <i>Main Controls</i>."
 msgstr ""
@@ -29159,6 +29161,7 @@ msgstr ""
 "Controls&lt;/i&gt;."
 
 #: share/lua/http/index.html:272
+#, fuzzy
 msgid ""
 "The current playing item will be streamed. If there is no currently playing "
 "item, the first selected item from the <i>Library</i> will be the subject of "
@@ -29169,6 +29172,7 @@ msgstr ""
 "the subject of the stream."
 
 #: share/lua/http/index.html:275
+#, fuzzy
 msgid ""
 "To stop the stream and resume normal controls, click the <i>Open Stream</i> "
 "button again."

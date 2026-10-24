@@ -1475,7 +1475,8 @@ msgid ""
 "These options allow you to configure the interfaces used by VLC. You can "
 "select the main interface, additional interface modules, and define various "
 "related options."
-msgstr "Estas opções permitem"
+msgstr ""
+"Estas opções permitem configurar as interfaces usadas pelo VLC. Você pode selecionar a interface principal, módulos de interface adicionais e definir várias opções relacionadas."
 
 #: src/libvlc-module.c:81
 msgid "Interface module"

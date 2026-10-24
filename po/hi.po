@@ -27372,7 +27372,8 @@ msgstr ""
 #: share/lua/http/index.html:269
 msgid ""
 "Volume will be controlled by the player, and not the <i>Main Controls</i>."
-msgstr "वॉल्यूम प्लयेर द्वारा नियंत्रित किया जाएगा, और </ i>मुख्य नियंत्रक <i> द्वारा नहीं."
+msgstr ""
+"वॉल्यूम प्लेयर द्वारा नियंत्रित किया जाएगा, और <i>मुख्य नियंत्रक</i> द्वारा नहीं."
 
 #: share/lua/http/index.html:272
 msgid ""
@@ -27386,8 +27387,7 @@ msgid ""
 "To stop the stream and resume normal controls, click the <i>Open Stream</i> "
 "button again."
 msgstr ""
-"स्ट्रीम को रोकने के लिए और सामान्य नियंत्रण को फिर से शुरू करने के लिए,  फिर से <i>खुला "
-"स्ट्रीम</ i> बटन पर क्लिक करें."
+"स्ट्रीम को रोकने के लिए और सामान्य नियंत्रण को फिर से शुरू करने के लिए, फिर से <i>खुला स्ट्रीम</i> बटन पर क्लिक करें."
 
 #: share/lua/http/index.html:278
 msgid "Are you sure you wish to create the stream?"

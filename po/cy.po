@@ -27912,8 +27912,7 @@ msgid ""
 "To stop the stream and resume normal controls, click the <i>Open Stream</i> "
 "button again."
 msgstr ""
-"I stopio'r ffrwd a newid yn ôl i'r rheolaeth arferol, clicia'r botwm <l>Agor "
-"Ffrwd</i> eto."
+"I stopio'r ffrwd a newid yn ôl i'r rheolaeth arferol, clicia'r botwm <i>Agor Ffrwd</i> eto."
 
 #: share/lua/http/index.html:278
 msgid "Are you sure you wish to create the stream?"

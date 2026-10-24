@@ -7643,8 +7643,7 @@ msgid ""
 "Sets the password for the connection, if no username or password are set in "
 "the url."
 msgstr ""
-"Postavlja korisničko ime za povezivanje, ako ni korisničko ime ni šifra nisu "
-"postavljeni u url."
+"Postavlja šifru za povezivanje, ako ni korisničko ime ni šifra nisu postavljeni u url."
 
 #: modules/access/live555.cpp:89
 msgid "RTSP frame buffer size"

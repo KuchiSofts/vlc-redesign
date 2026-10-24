@@ -14487,8 +14487,7 @@ msgstr "Zona morta di quantizzazione intra-luminanza"
 #: modules/codec/x264.c:378
 msgid "Set the size of the intra luma quantization deadzone. Range 0 to 32."
 msgstr ""
-"Imposta la dimensione della zona morta per la quantizzazione inter-luma. "
-"Intervallo da 0 a 32."
+"Imposta la dimensione della zona morta per la quantizzazione intra-luma. Intervallo da 0 a 32."
 
 #: modules/codec/x264.c:383
 msgid "Non-deterministic optimizations when threaded"
@@ -20223,7 +20222,9 @@ msgstr ""
 msgid ""
 "Makeup\n"
 "gain"
-msgstr "Guadagno di compensazione"
+msgstr ""
+"Guadagno di\n"
+"compensazione"
 
 #: modules/gui/qt/components/extended_panels.cpp:1333
 #, fuzzy
@@ -25497,7 +25498,7 @@ msgstr ""
 
 #: modules/spu/subsdelay.c:74
 msgid "Interval between appearance and disappearance"
-msgstr "Intervallo tra scomparsa e apparizione"
+msgstr "Intervallo tra apparizione e scomparsa"
 
 #: modules/spu/subsdelay.c:76
 msgid ""
@@ -27622,7 +27623,7 @@ msgstr "Periodo massimo"
 
 #: modules/video_filter/grain.c:61
 msgid "Maximal period of the noise grain in pixel"
-msgstr "Periodo minimo del rumore in pixel"
+msgstr "Periodo massimo del rumore in pixel"
 
 #: modules/video_filter/grain.c:64
 msgid "Grain video filter"

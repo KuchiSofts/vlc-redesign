@@ -29181,9 +29181,7 @@ msgid ""
 "item, the first selected item from the <i>Library</i> will be the subject of "
 "the stream."
 msgstr ""
-"Stavka koja se upravo izvodi će biti strujana. Ukoliko trenutno nema stavke "
-"koja se izvodi, onda će prva stavka odabrana iz <i>Knjižnice</ i> biti "
-"predmetom strujanja."
+"Stavka koja se upravo izvodi će biti strujana. Ukoliko trenutno nema stavke koja se izvodi, onda će prva stavka odabrana iz <i>Knjižnice</i> biti predmetom strujanja."
 
 #: share/lua/http/index.html:275
 msgid ""

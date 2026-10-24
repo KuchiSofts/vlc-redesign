@@ -3043,8 +3043,7 @@ msgid ""
 "This is the default Audio CD drive (or file) to use. Don't forget the colon "
 "after the drive letter (e.g. D:)"
 msgstr ""
-"Ово је подразумевани DVD уређај (или фајл) који се користе. Не заборавите "
-"две тачке после слова уређаја (нпр. D:)"
+"Ово је подразумевани уређај за аудио CD (или фајл) који се користи. Не заборавите две тачке после слова уређаја (нпр. D:)"
 
 #: src/libvlc-module.c:785
 msgid "This is the default DVD device to use."

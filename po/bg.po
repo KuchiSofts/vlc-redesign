@@ -1993,7 +1993,8 @@ msgid ""
 "Enforce the alignment of the video in its window. By default (0) it will be "
 "centered (0=center, 1=left, 2=right, 4=top, 8=bottom, you can also use "
 "combinations of these values, like 6=4+2 meaning top-right)."
-msgstr "Задаване подравняване на видеото в прозореца."
+msgstr ""
+"Задаване подравняване на видеото в прозореца. По подразбиране (0) то ще бъде центрирано (0=център, 1=ляво, 2=дясно, 4=горе, 8=долу; можете да използвате и комбинации от тези стойности, например 6=4+2 означава горе вдясно)."
 
 #: src/libvlc-module.c:295 src/libvlc-module.c:368 modules/codec/dvbsub.c:102
 #: modules/codec/zvbi.c:83
@@ -14241,7 +14242,8 @@ msgid ""
 "You can enforce the teletext position on the video (0=center, 1=left, "
 "2=right, 4=top, 8=bottom, you can also use combinations of these values, eg. "
 "6 = top-right)."
-msgstr "Позиция на телетекста върху видеото"
+msgstr ""
+"Можете да зададете позицията на телетекста върху видеото (0=център, 1=ляво, 2=дясно, 4=горе, 8=долу; можете да използвате и комбинации от тези стойности, напр. 6 = горе вдясно)."
 
 #: modules/codec/zvbi.c:75
 msgid "Teletext text subtitles"
@@ -24333,7 +24335,8 @@ msgid ""
 "hexadecimal (like HTML colors). The first two chars are for red, then green, "
 "then blue. #000000 = black, #FF0000 = red, #00FF00 = green, #FFFF00 = yellow "
 "(red + green), #FFFFFF = white"
-msgstr "Цвят на текста, който ще бъде извеждан във видеото."
+msgstr ""
+"Цвят на текста, който ще бъде извеждан във видеото. Трябва да е шестнадесетична стойност (като цветовете в HTML). Първите два знака са за червено, следващите за зелено, а последните за синьо. #000000 = черно, #FF0000 = червено, #00FF00 = зелено, #FFFF00 = жълто (червено + зелено), #FFFFFF = бяло"
 
 #: modules/spu/marq.c:121
 msgid "Marquee position"
@@ -24419,7 +24422,8 @@ msgid ""
 "You can enforce the mosaic alignment on the video (0=center, 1=left, "
 "2=right, 4=top, 8=bottom, you can also use combinations of these values, eg "
 "6 = top-right)."
-msgstr "Задаване подравняване на мозайката във видеото."
+msgstr ""
+"Можете да зададете подравняването на мозайката във видеото (0=център, 1=ляво, 2=дясно, 4=горе, 8=долу; можете да използвате и комбинации от тези стойности, напр. 6 = горе вдясно)."
 
 #: modules/spu/mosaic.c:117
 msgid "Positioning method"
@@ -25970,7 +25974,8 @@ msgid ""
 "hexadecimal (like HTML colors). The first two chars are for red, then green, "
 "then blue. #000000 = black, #FF0000 = red, #00FF00 = green, #FFFF00 = yellow "
 "(red + green), #FFFFFF = white"
-msgstr "Цвят на текста, който ще бъде извеждан във видеото."
+msgstr ""
+"Цвят на текста, който ще бъде извеждан във видеото. Трябва да е шестнадесетична стойност (като цветовете в HTML). Първите два знака са за червено, следващите за зелено, а последните за синьо. #000000 = черно, #FF0000 = червено, #00FF00 = зелено, #FFFF00 = жълто (червено + зелено), #FFFFFF = бяло"
 
 #: modules/text_renderer/freetype/freetype.c:100
 msgid "Relative font size"

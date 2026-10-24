@@ -20663,8 +20663,8 @@ msgid ""
 "Cannot write to file %1:\n"
 "%2."
 msgstr ""
-"ለ ፋይል  %1:\n"
-" መጻፍ አልተቻለም "
+"ፋይል %1 ላይ መጻፍ አልተቻለም:\n"
+"%2."
 
 #: modules/gui/qt/dialogs/messages.cpp:334
 #, fuzzy

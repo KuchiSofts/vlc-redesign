@@ -26281,7 +26281,7 @@ msgstr "ES ID berria"
 #: modules/stream_out/setid.c:47
 msgid "Specify an new identifier integer for this elementary stream"
 msgstr ""
-"Zehaztu identifikatzaile oso bat oinarrizko transmisio jarraitu honentzat"
+"Zehaztu identifikatzaile oso berri bat oinarrizko transmisio jarraitu honentzat"
 
 #: modules/stream_out/setid.c:51
 msgid "Specify an ISO-639 code (three characters) for this elementary stream"

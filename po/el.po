@@ -29211,8 +29211,7 @@ msgstr ""
 #: modules/video_splitter/panoramix.c:65
 msgid "Select the number of vertical video windows in which to split the video"
 msgstr ""
-"Επιλέξτε τον αριθμό των οριζόντιων παραθύρων βίντεο στα οποία θα διαχωριστεί "
-"το βίντεο"
+"Επιλέξτε τον αριθμό των κάθετων παραθύρων βίντεο στα οποία θα διαχωριστεί το βίντεο"
 
 #: modules/video_splitter/panoramix.c:68 modules/video_splitter/wall.c:54
 msgid "Active windows"
@@ -29557,7 +29556,7 @@ msgstr "Το πλάτος του παραθύρου βίντεο, σε εικο�
 
 #: modules/visualization/projectm.cpp:69 modules/visualization/vsxu.cpp:56
 msgid "The height of the video window, in pixels."
-msgstr "Το πλάτος του παραθύρου βίντεο, σε εικονοστοιχεία."
+msgstr "Το ύψος του παραθύρου βίντεο, σε εικονοστοιχεία."
 
 #: modules/visualization/projectm.cpp:71
 msgid "Mesh width"
@@ -29931,8 +29930,7 @@ msgid ""
 "Once the stream is created, the <i>Media Viewer</i> window will display the "
 "stream."
 msgstr ""
-"Αφότου δημιουργηθεί η ροή δεδομένων, το παράθυρο του <i>Προβολέα πολυμέσων</"
-"> θα εμφανίσει τη ροή δεδομένων."
+"Αφότου δημιουργηθεί η ροή δεδομένων, το παράθυρο του <i>Προβολέα πολυμέσων</i> θα εμφανίσει τη ροή δεδομένων."
 
 #: share/lua/http/index.html:269
 msgid ""

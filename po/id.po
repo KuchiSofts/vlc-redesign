@@ -4342,7 +4342,7 @@ msgstr "Penundaan subtitle diturunkan"
 
 #: src/libvlc-module.c:1318
 msgid "Select the key to decrease the subtitle delay."
-msgstr "Pilih kunci untuk menaikkan penundaan subtitle."
+msgstr "Pilih kunci untuk menurunkan penundaan subtitle."
 
 #: src/libvlc-module.c:1319
 #, fuzzy
@@ -4741,7 +4741,7 @@ msgstr "Potong satu piksel dari kiri video"
 
 #: src/libvlc-module.c:1439 src/libvlc-module.c:1440
 msgid "Uncrop one pixel from the left of the video"
-msgstr "Potong satu piksel dari kiri video"
+msgstr "Batalkan pemotongan satu piksel dari kiri video"
 
 #: src/libvlc-module.c:1442 src/libvlc-module.c:1443
 msgid "Crop one pixel from the bottom of the video"
@@ -4749,7 +4749,7 @@ msgstr "Potong satu piksel dari dasar video"
 
 #: src/libvlc-module.c:1444 src/libvlc-module.c:1445
 msgid "Uncrop one pixel from the bottom of the video"
-msgstr "Potong satu piksel dari dasar video"
+msgstr "Batalkan pemotongan satu piksel dari dasar video"
 
 #: src/libvlc-module.c:1447 src/libvlc-module.c:1448
 msgid "Crop one pixel from the right of the video"
@@ -4757,7 +4757,7 @@ msgstr "Potong satu piksel dari kanan video"
 
 #: src/libvlc-module.c:1449 src/libvlc-module.c:1450
 msgid "Uncrop one pixel from the right of the video"
-msgstr "Potong satu piksel dari kanan video"
+msgstr "Batalkan pemotongan satu piksel dari kanan video"
 
 #: src/libvlc-module.c:1453
 msgid "Shrink the viewpoint field of view (360°)"

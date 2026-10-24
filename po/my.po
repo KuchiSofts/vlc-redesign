@@ -769,7 +769,7 @@ msgid "VLC version %s (%s)\n"
 msgstr "ဗီအလ်စီပံုစံ %s (%s)⏎\n"
 
 #: src/config/help.c:722
-#, c-format
+#, fuzzy, c-format
 msgid "Compiled by %s on %s (%s)\n"
 msgstr ""
 "%s  (%s) အပေါ်တွင် %s မှစည်း⏎\n"

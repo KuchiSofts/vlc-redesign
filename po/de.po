@@ -29589,9 +29589,7 @@ msgid ""
 "item, the first selected item from the <i>Library</i> will be the subject of "
 "the stream."
 msgstr ""
-"Das gerade wiedergegebene Objekt wird gestreamt werden. Wenn es aktuell "
-"keine wiedergegebene Objekte gibt, wird das aus der <i>Bibliothek</ i> "
-"zuerst ausgewählte Objekt Thema des Streams sein."
+"Das gerade wiedergegebene Objekt wird gestreamt. Wenn aktuell kein Objekt wiedergegeben wird, wird das erste ausgewählte Objekt aus der <i>Bibliothek</i> gestreamt."
 
 #: share/lua/http/index.html:275
 msgid ""

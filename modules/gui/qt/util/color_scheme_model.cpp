@@ -19,12 +19,40 @@
 #include "color_scheme_model.hpp"
 
 #include "qt.hpp"
+#include "maininterface/mainctx.hpp"
 
 ColorSchemeModel::ColorSchemeModel(QObject* parent)
     : QAbstractListModel(parent)
-    , m_list {{qtr("System"), ColorScheme::System}, {qtr("Day"), ColorScheme::Day}, {qtr("Night"), ColorScheme::Night}}
+    , m_list {{schemeText(ColorScheme::System), ColorScheme::System},
+              {schemeText(ColorScheme::Day), ColorScheme::Day},
+              {schemeText(ColorScheme::Night), ColorScheme::Night}}
     , m_currentIndex {0}
 {
+    // made by MainCtx: the names follow the language of the interface
+    if (const auto ctx = qobject_cast<MainCtx *>(parent))
+        connect(ctx, &MainCtx::interfaceLanguageChanged, this, &ColorSchemeModel::retranslate);
+}
+
+QString ColorSchemeModel::schemeText(const ColorScheme scheme)
+{
+    switch (scheme)
+    {
+    case ColorScheme::Day:
+        return qtr("Day");
+    case ColorScheme::Night:
+        return qtr("Night");
+    case ColorScheme::System:
+    default:
+        return qtr("System");
+    }
+}
+
+void ColorSchemeModel::retranslate()
+{
+    for (Item &item : m_list)
+        item.text = schemeText(item.scheme);
+    if (!m_list.isEmpty())
+        emit dataChanged(index(0), index(m_list.size() - 1), {Qt::DisplayRole});
 }
 
 int ColorSchemeModel::rowCount(const QModelIndex &) const

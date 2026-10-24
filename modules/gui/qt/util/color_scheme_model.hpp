@@ -80,7 +80,11 @@ private:
     // \internal used by SchemeList to notify scheme changed
     void indexChanged(int i);
 
-    const QVector<ColorSchemeModel::Item> m_list;
+    // The names in the language of the interface
+    static QString schemeText(ColorScheme scheme);
+    void retranslate();
+
+    QVector<ColorSchemeModel::Item> m_list;
     int m_currentIndex;
 };
 

@@ -19,10 +19,11 @@
 #include "player_controlbar_model.hpp"
 
 #include <QMetaEnum>
-#include <QJSEngine>
+#include <QVariantMap>
 
 #include "qt.hpp"
 #include "control_list_model.hpp"
+#include "maininterface/mainctx.hpp"
 
 decltype (PlayerControlbarModel::playerIdentifierDictionary)
     PlayerControlbarModel::playerIdentifierDictionary {
@@ -31,40 +32,39 @@ decltype (PlayerControlbarModel::playerIdentifierDictionary)
         {Miniplayer,  N_("Mini player")}
     };
 
-QJSValue PlayerControlbarModel::getPlaylistIdentifierListModel(QQmlEngine *engine, QJSEngine *scriptEngine)
+PlayerListModel::PlayerListModel(MainCtx *ctx, QObject *parent)
+    : QObject(parent)
 {
-    Q_UNUSED(engine)
+    // the names in another language of the interface
+    if (ctx)
+        connect(ctx, &MainCtx::interfaceLanguageChanged, this, &PlayerListModel::modelChanged);
+}
 
-    static const QMetaEnum metaEnum = QMetaEnum::fromType<PlayerIdentifier>();
+QVariantList PlayerListModel::model() const
+{
+    static const QMetaEnum metaEnum = QMetaEnum::fromType<PlayerControlbarModel::PlayerIdentifier>();
 
-    QJSValue array = scriptEngine->newArray();
+    QVariantList list;
 
     for (int i = 0; i < metaEnum.keyCount(); ++i)
     {
-       QJSValue obj = scriptEngine->newObject();
-
        const int val = metaEnum.value(i);
-       obj.setProperty("identifier", val);
+       const auto identifier = static_cast<PlayerControlbarModel::PlayerIdentifier>(val);
 
-       QString key;
-       if ( playerIdentifierDictionary.contains(static_cast<PlayerControlbarModel::PlayerIdentifier>(i)) )
+       QString name;
+       if ( PlayerControlbarModel::playerIdentifierDictionary.contains(identifier) )
        {
-           key = qfut( playerIdentifierDictionary[static_cast<PlayerControlbarModel::PlayerIdentifier>(i)] );
+           name = qfut( PlayerControlbarModel::playerIdentifierDictionary[identifier] );
        }
        else
        {
-           key = metaEnum.key(i);
+           name = metaEnum.key(i);
        }
 
-       obj.setProperty("name", key);
-
-       array.setProperty(i, obj);
+       list.append(QVariantMap{{QStringLiteral("identifier"), val}, {QStringLiteral("name"), name}});
     }
 
-    QJSValue value = scriptEngine->newObject();
-    value.setProperty("model", array);
-
-    return value;
+    return list;
 }
 
 PlayerControlbarModel::PlayerControlbarModel(QObject *parent) : QObject(parent)

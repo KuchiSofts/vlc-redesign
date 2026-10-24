@@ -155,7 +155,7 @@ SideNavigationPane {
     }
 
     Component.onCompleted: {
-        Qt.callLater(() => { sidebarTransition.enabled = true; })
+        Qt.callLater(() => { if (sidebarTransition) sidebarTransition.enabled = true })
     }
 
     states: State {

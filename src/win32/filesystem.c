@@ -64,6 +64,54 @@ static wchar_t *widen_path (const char *path)
     return wpath;
 }
 
+/* The Win32 file calls set no errno: what their callers check and print
+ * (a missing vlcrc is no error, "cannot open file" says why) */
+static void win32_errno (DWORD error)
+{
+    switch (error)
+    {
+        case ERROR_FILE_NOT_FOUND:
+        case ERROR_PATH_NOT_FOUND:
+        case ERROR_INVALID_NAME:
+        case ERROR_BAD_NETPATH:
+        case ERROR_BAD_NET_NAME:
+            errno = ENOENT;
+            break;
+        case ERROR_ACCESS_DENIED:
+        case ERROR_SHARING_VIOLATION:
+        case ERROR_LOCK_VIOLATION:
+            errno = EACCES;
+            break;
+        case ERROR_FILE_EXISTS:
+        case ERROR_ALREADY_EXISTS:
+            errno = EEXIST;
+            break;
+        case ERROR_DIRECTORY:
+            errno = ENOTDIR;
+            break;
+        case ERROR_TOO_MANY_OPEN_FILES:
+            errno = EMFILE;
+            break;
+        case ERROR_DISK_FULL:
+        case ERROR_HANDLE_DISK_FULL:
+            errno = ENOSPC;
+            break;
+        case ERROR_WRITE_PROTECT:
+            errno = EROFS;
+            break;
+        case ERROR_NOT_ENOUGH_MEMORY:
+        case ERROR_OUTOFMEMORY:
+            errno = ENOMEM;
+            break;
+        case ERROR_INVALID_PARAMETER:
+            errno = EINVAL;
+            break;
+        default:
+            errno = EIO;
+            break;
+    }
+}
+
 int vlc_open (const char *filename, int flags, ...)
 {
     DWORD dwDesiredAccess, dwCreationDisposition, dwFlagsAndAttributes;
@@ -132,9 +180,13 @@ int vlc_open (const char *filename, int flags, ...)
         dwCreationDisposition,
         &params);
 #endif
+    const DWORD error = GetLastError ();
     free (wpath);
     if (h == INVALID_HANDLE_VALUE)
+    {
+        win32_errno (error);
         return -1;
+    }
     int fd = _open_osfhandle((intptr_t)h, flags);
     if (unlikely(fd == -1))
     {
@@ -308,6 +360,7 @@ vlc_DIR *vlc_opendir (const char *dirname)
                                       NULL, FIND_FIRST_EX_LARGE_FETCH);
     if (p_dir->fHandle == INVALID_HANDLE_VALUE)
     {
+        win32_errno (GetLastError ());
         free(p_dir->wildcard);
         free(p_dir);
         return NULL;
@@ -440,28 +493,11 @@ int vlc_stat (const char *filename, struct stat *buf)
     // GetFileAttributesExW() doesn't have this problem.
     WIN32_FILE_ATTRIBUTE_DATA fad;
     BOOL res = GetFileAttributesExW( wpath, GetFileExInfoStandard, &fad );
+    const DWORD error = GetLastError ();
     free (wpath);
     if ( unlikely(!res) )
     {
-        DWORD error = GetLastError();
-
-        switch (error) {
-            case ERROR_FILE_NOT_FOUND:
-            case ERROR_PATH_NOT_FOUND:
-            case ERROR_INVALID_NAME:
-                errno = ENOENT;
-                break;
-
-            case ERROR_ACCESS_DENIED:
-            case ERROR_SHARING_VIOLATION:
-                errno = EACCES;
-                break;
-
-            default:
-                errno = EIO;
-                break;
-        }
-
+        win32_errno (error);
         return -1;
     }
 

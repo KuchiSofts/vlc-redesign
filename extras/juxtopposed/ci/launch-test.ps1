@@ -109,11 +109,12 @@ foreach ($line in 'Received first picture', 'EOF reached') {
     else { Fail "the clip did not play: no `"$line`" in the log" }
 }
 
-# 3. No QML warning in either run (a warning of a QML file names it: qrc:)
+# 3. No QML warning in either run (a warning of a QML file names it: qrc:;
+# Qt logs it as "qt generic warning" or "qt warning: (default)", errors too)
 foreach ($name in 'interface', 'playback') {
     $log = Join-Path $work "$name.log"
     if (-not (Test-Path $log)) { Fail "no log of the $name run"; continue }
-    $warnings = @(Select-String -Path $log -Pattern 'qt generic warning.*qrc:')
+    $warnings = @(Select-String -Path $log -Pattern 'qt (generic )?(warning|error|critical).*qrc:')
     if ($warnings.Count -gt 0) {
         Fail "$($warnings.Count) QML warnings in the $name run"
         $warnings | Select-Object -First 20 | ForEach-Object { Note "  $($_.Line)" }

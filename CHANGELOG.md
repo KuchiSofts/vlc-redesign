@@ -20,6 +20,22 @@ file name of the player bar.
 
 ### Fixed
 
+- **No more "restart VLC" after changing a setting**: 21 of the 24 settings that applied only after a restart apply
+  when the settings are saved: the log (on, file, format, details), the web remote (on, port, password, address),
+  Last.fm, the keyboard shortcuts and the global hotkeys, the tray icon, the track-change popup, the file name in
+  the title bar, the window opacity, pausing when minimized, resizing the window to the video, and the default
+  playback speed (also for what plays). The output of HDR applies to the next media. Three need VLC to start
+  again, as they decide what it is made of (extra command-line options, a skin, the media library), and say so.
+  Settings that needed a restart without saying so apply at once too (the wheel modes, start paused, pause when
+  another app plays sound, pause on the last frame), and the classic settings no longer ask for a restart after
+  Reset.
+- **"Give VLC real-time priority" did nothing** from the settings (VLC read it before loading them): it raises the
+  priority of VLC now.
+- **"Save a log" stopped after the Messages window was opened once**: the window took the log for the rest of the
+  session. It takes it only while open.
+- **VLC Redesign kept files in the folders of an installed VLC**: Qt's caches (%LOCALAPPDATA%lc\cache) and the
+  subtitles downloaded from a link of the subtitle associations (%APPDATA%lc\subtitles). They are in its own
+  profile now, removed with it.
 - **"Install for everyone" in the installer did nothing**: Inno Setup 6.7 refuses to start its own program from
   its code before installing, which that link relied on. It goes through Windows now and reopens the installer
   for all users (Program Files).
@@ -288,6 +304,12 @@ file name of the player bar.
 
 ### Technical
 
+- Settings at once: `intf_DestroyByName()` stops the interfaces of one module (the web remote, Last.fm, the global
+  hotkeys) for `intf_Create()` to start them again; `vlc_LogReload()` opens the log again from the settings;
+  `vlc_actions_reload()` makes the key map again. `maininterface/live_settings.cpp` applies what changed after each
+  save. The Windows global hotkeys unregister before their window goes (their atoms were never deleted).
+- Qt's caches: `QML_DISK_CACHE_PATH` and the pipeline cache files point to the profile's `qtcache` (Qt names its
+  cache folder after the program, `vlc`).
 - Interface language at runtime: `vlc_settextlanguage()` (core) sets LANGUAGE, which gettext reads at each lookup;
   `MainCtx::applyInterfaceLanguage()` sets it and the default QLocale, sends QEvent::LanguageChange and emits
   `interfaceLanguageChanged()`, on which the QML engine retranslates and the C++ models, the side bar, the shortcuts,

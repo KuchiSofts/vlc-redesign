@@ -172,6 +172,9 @@ public:
     Q_PROPERTY(int subtitleDelayMS READ getSubtitleDelayMS WRITE setSubtitleDelayMS NOTIFY subtitleDelayChanged FINAL)
     Q_PROPERTY(int secondarySubtitleDelayMS READ getSecondarySubtitleDelayMS WRITE setSecondarySubtitleDelayMS NOTIFY secondarySubtitleDelayChanged FINAL)
     Q_PROPERTY(float subtitleFPS READ getSubtitleFPS WRITE setSubtitleFPS NOTIFY subtitleFPSChanged FINAL)
+    // The bottom of the video the interface covers for a while, as a part of
+    // its height: the subtitles keep above it
+    Q_PROPERTY(qreal subtitleClearance READ getSubtitleClearance WRITE setSubtitleClearance NOTIFY subtitleClearanceChanged FINAL)
     Q_PROPERTY(TimedText currentLyric READ getCurrentLyric NOTIFY currentLyricChanged FINAL)
     Q_PROPERTY(bool hasLyrics READ hasLyrics NOTIFY hasLyricsChanged FINAL)
     Q_PROPERTY(QList<TimedText> syltLyrics READ getSyltLyrics NOTIFY syltLyricsChanged FINAL)
@@ -368,6 +371,8 @@ public slots:
     void setSecondarySubtitleDelayMS( int );
     float getSubtitleFPS( ) const;
     void setSubtitleFPS( float );
+    qreal getSubtitleClearance() const;
+    void setSubtitleClearance( qreal );
 
     //title/chapters/menu
     TitleListModel* getTitles();
@@ -476,6 +481,7 @@ signals:
     void subtitleDelayChanged(VLCDuration);
     void secondarySubtitleDelayChanged(VLCDuration);
     void subtitleFPSChanged(float);
+    void subtitleClearanceChanged(qreal);
 
     //title/chapters/menu
     void hasTitlesChanged( bool );

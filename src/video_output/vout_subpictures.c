@@ -131,6 +131,12 @@ struct spu_private_t {
      * (sub-position): with the margin, whatever the size of the picture.
      */
     int position;
+    /**
+     * How far above the bottom of the picture, and of the whole window, the
+     * subtitles keep: clear of what the interface covers (sub-clearance).
+     */
+    int clearance_video;
+    int clearance_window;
     int secondary_alignment;       /**< Force alignment for secondary subs */
     subtitles_positions_vector subs_pos;
 
@@ -999,6 +1005,7 @@ static struct subpicture_region_rendered *SpuRenderRegion(spu_t *spu,
                             const vlc_fourcc_t *chroma_list,
                             const unsigned output_x, const unsigned output_y,
                             const unsigned output_width, const unsigned output_height,
+                            int min_margin,
                             const spu_area_t *subtitle_area, size_t subtitle_area_count,
                             vlc_tick_t render_date)
 {
@@ -1047,6 +1054,19 @@ static struct subpicture_region_rendered *SpuRenderRegion(spu_t *spu,
 
     SpuRegionPlace(&x_offset, &y_offset,
                    subpic, region, i_align);
+
+    /* Above what the interface covers (sub-clearance), only as high as
+     * needed: the space the subtitle has under it counts (the same for the
+     * lines stacked over it, which move as much) */
+    if (!crop_requested && subpic->b_subtitle && min_margin > 0)
+    {
+        const int clearance = apply_scale ? spu_invscale_h(min_margin, scale_size)
+                                          : min_margin;
+        const int below = (int)subpic->i_original_picture_height
+                          - (y_offset + (int)region->fmt.i_visible_height);
+        if (y_margin < clearance - below)
+            y_margin = clearance - below;
+    }
 
     if (channel_order == VLC_VOUT_ORDER_SECONDARY)
     {
@@ -1533,6 +1553,7 @@ static vlc_render_subpicture *SpuRenderSubpictures(spu_t *spu,
                             region, scale, !external_scale,
                             chroma_list,
                             output_x, output_y, output_width, output_height,
+                            subpic_in_video ? sys->clearance_video : sys->clearance_window,
                             subtitle_area, subtitle_area_count,
                             subpic->b_subtitle ? render_subtitle_date : system_now);
             if (unlikely(output_last_ptr == NULL))
@@ -1975,6 +1996,7 @@ spu_t *spu_Create(vlc_object_t *object, vout_thread_t *vout)
     sys->margin = var_InheritInteger(spu, "sub-margin");
     sys->secondary_margin = var_InheritInteger(spu, "secondary-sub-margin");
     sys->position = var_InheritInteger(spu, "sub-position");
+    sys->clearance_video = sys->clearance_window = 0;
 
     sys->secondary_alignment = var_InheritInteger(spu,
                                                   "secondary-sub-alignment");
@@ -2504,6 +2526,16 @@ void spu_ChangePosition(spu_t *spu, int position)
 
     vlc_mutex_lock(&sys->lock);
     sys->position = position;
+    vlc_mutex_unlock(&sys->lock);
+}
+
+void spu_ChangeClearance(spu_t *spu, int video_lift, int window_lift)
+{
+    spu_private_t *sys = container_of(spu, spu_private_t, spu);
+
+    vlc_mutex_lock(&sys->lock);
+    sys->clearance_video = video_lift;
+    sys->clearance_window = window_lift;
     vlc_mutex_unlock(&sys->lock);
 }
 

@@ -82,6 +82,8 @@ static int SecondarySubMarginCallback( vlc_object_t *, char const *,
                                        vlc_value_t, vlc_value_t, void * );
 static int SubPositionCallback( vlc_object_t *, char const *,
                                 vlc_value_t, vlc_value_t, void * );
+static int SubClearanceCallback( vlc_object_t *, char const *,
+                                 vlc_value_t, vlc_value_t, void * );
 static int ViewpointCallback( vlc_object_t *, char const *,
                               vlc_value_t, vlc_value_t, void * );
 static int Stereo3DCallback( vlc_object_t *, char const *,
@@ -352,6 +354,10 @@ void vout_CreateVars( vout_thread_t *p_vout )
     var_Create( p_vout, "sub-position",
                 VLC_VAR_INTEGER | VLC_VAR_DOINHERIT | VLC_VAR_ISCOMMAND );
 
+    /* The bottom of the window the interface covers for a while, in
+     * 1/10000 of its height: the subtitles keep above it (not an option) */
+    var_Create( p_vout, "sub-clearance", VLC_VAR_INTEGER );
+
     /* Mouse coordinates */
     var_Create( p_vout, "mouse-button-down", VLC_VAR_INTEGER );
     var_Create( p_vout, "mouse-moved", VLC_VAR_COORDS );
@@ -393,6 +399,7 @@ void vout_IntfInit( vout_thread_t *p_vout )
     var_AddCallback( p_vout, "sub-filter", SubFilterCallback, NULL );
     var_AddCallback( p_vout, "sub-margin", SubMarginCallback, NULL );
     var_AddCallback( p_vout, "sub-position", SubPositionCallback, NULL );
+    var_AddCallback( p_vout, "sub-clearance", SubClearanceCallback, NULL );
     var_AddCallback( p_vout, "viewpoint", ViewpointCallback, NULL );
     var_AddCallback( p_vout, "override-projection", OverrideProjectionCallback, NULL );
     var_AddCallback( p_vout, "projection-mode", ChangeProjectionCallback, NULL );
@@ -422,6 +429,7 @@ void vout_IntfDeinit(vlc_object_t *obj)
     var_DelCallback(obj, "sub-margin", SubMarginCallback, NULL);
     var_DelCallback(obj, "secondary-sub-margin", SecondarySubMarginCallback, NULL);
     var_DelCallback(obj, "sub-position", SubPositionCallback, NULL);
+    var_DelCallback(obj, "sub-clearance", SubClearanceCallback, NULL);
     var_DelCallback(obj, "sub-filter", SubFilterCallback, NULL);
     var_DelCallback(obj, "sub-source", SubSourceCallback, NULL);
     var_DelCallback(obj, "video-filter", VideoFilterCallback, NULL);
@@ -843,6 +851,16 @@ static int SubPositionCallback( vlc_object_t *p_this, char const *psz_cmd,
     VLC_UNUSED(psz_cmd); VLC_UNUSED(oldval); VLC_UNUSED(p_data);
 
     vout_ChangeSubtitlePosition(p_vout, newval.i_int);
+    return VLC_SUCCESS;
+}
+
+static int SubClearanceCallback( vlc_object_t *p_this, char const *psz_cmd,
+                                 vlc_value_t oldval, vlc_value_t newval, void *p_data)
+{
+    vout_thread_t *p_vout = (vout_thread_t *)p_this;
+    VLC_UNUSED(psz_cmd); VLC_UNUSED(oldval); VLC_UNUSED(p_data);
+
+    vout_ChangeSubtitleClearance(p_vout, newval.i_int);
     return VLC_SUCCESS;
 }
 

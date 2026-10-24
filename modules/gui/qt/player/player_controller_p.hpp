@@ -58,6 +58,7 @@ public:
     void UpdateStats( const input_stats_t& stats );
     void UpdateProgram(vlc_player_list_action action, const vlc_player_program *prgm);
     void UpdateVouts(vout_thread_t **vouts, size_t i_vouts, vlc_player_vout_action action);
+    void applySubtitleClearance(vout_thread_t **vouts, size_t i_vouts) const;
     void UpdateTrackSelection(vlc_es_id_t *trackid, bool selected);
     void UpdateSpuOrder(vlc_es_id_t *es_id, enum vlc_vout_order spu_order);
     int interpolateTime(vlc_tick_t system_now);
@@ -138,6 +139,7 @@ public:
     VLCDuration  m_subtitleDelay;
     VLCDuration  m_secondarySubtitleDelay;
     float        m_subtitleFPS = 1.0;
+    qreal        m_subtitleClearance = 0.;
 
     //timer
     vlc_player_timer_id* m_player_timer = nullptr;

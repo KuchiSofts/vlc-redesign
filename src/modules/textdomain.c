@@ -86,6 +86,32 @@ const char *vlc_gettext(const char *msgid)
     return msgid;
 }
 
+void vlc_settextlanguage(const char *lang)
+{
+#ifdef ENABLE_NLS
+    /* gettext reads LANGUAGE at each lookup, before the locale VLC started
+     * with (LANG), and keeps what it found by language: the next messages
+     * are in the new one. Empty, it is the locale's. */
+    if (lang == NULL)
+        lang = "";
+# ifdef _WIN32
+    char *env;
+    if (asprintf(&env, "LANGUAGE=%s", lang) >= 0)
+    {
+        _putenv(env); /* copies it */
+        free(env);
+    }
+# else
+    if (*lang)
+        setenv("LANGUAGE", lang, 1);
+    else
+        unsetenv("LANGUAGE");
+# endif
+#else
+    (void)lang;
+#endif
+}
+
 const char *vlc_ngettext(const char *msgid, const char *plural,
                          unsigned long n)
 {

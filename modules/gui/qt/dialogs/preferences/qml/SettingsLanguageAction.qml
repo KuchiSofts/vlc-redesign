@@ -8,8 +8,8 @@ import VLC.MainInterface
 import VLC.Style
 
 // Interface language (General > Appearance): a dropdown as in the design
-// where VLC has its own language setting (Windows), applied at the next
-// start; elsewhere VLC follows the system language
+// where VLC has its own language setting (Windows), shown at once; elsewhere
+// VLC follows the system language
 Item {
     id: root
     objectName: "interfaceLanguageAction"

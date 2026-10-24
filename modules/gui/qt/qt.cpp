@@ -105,6 +105,7 @@ extern "C" char **environ;
 #include "util/shared_input_item.hpp"
 #include "util/model_recovery_agent.hpp"
 #include "util/vlcqtmessagehandler.hpp"
+#include "dialogs/preferences/interface_language.hpp"
 #include "network/networkmediamodel.hpp"
 #include "network/devicesourceprovider.hpp"
 #include "playlist/playlist_common.hpp"
@@ -960,6 +961,12 @@ static void *Thread( void *obj )
         const auto translator = new Translator(&app);
         const auto ret = QCoreApplication::installTranslator(translator);
         assert(ret);
+    }
+    {
+        // The language VLC started in (bin/winvlc.c), not the one of Windows:
+        // its numbers and dates, and its direction (below)
+        const QString iso = interfaceLanguage();
+        QLocale::setDefault( QLocale( iso == QLatin1String( "auto" ) ? QLocale::system().name() : iso ) );
     }
 
     /* Ctrl+Q, or more specifically Command+Q on MacOS is going

@@ -17,7 +17,6 @@ SettingsSectionTitle {
     property color initialAccent: VLCStyle.redesign.accent
     property string selectedLanguage: "auto"
     property string initialLanguage: "auto"
-    property bool languageSaved: false
     readonly property var languages: themeBridge.interfaceLanguages()
     readonly property bool dark: VLCStyle.palette.isDark
     readonly property bool dirty: selectedTheme !== initialTheme
@@ -48,6 +47,13 @@ SettingsSectionTitle {
         themeBridge.previewTheme(index)
     }
 
+    // The interface shows the language at once (Save keeps it, Cancel goes
+    // back), as the theme
+    function chooseLanguage(iso) {
+        selectedLanguage = iso
+        themeBridge.previewInterfaceLanguage(iso)
+    }
+
     function chooseAccent(color) {
         selectedAccent = color
         VLCStyle.redesign.accent = color
@@ -56,7 +62,8 @@ SettingsSectionTitle {
     function resetDefaults() {
         chooseTheme(0)
         chooseAccent("#D37918")
-        selectedLanguage = "auto"
+        // English until one is chosen (Windows), else the system's
+        chooseLanguage(languages.length > 0 ? "en" : "auto")
     }
 
     function cancel() {
@@ -64,14 +71,15 @@ SettingsSectionTitle {
         selectedTheme = initialTheme
         selectedAccent = initialAccent
         VLCStyle.redesign.accent = initialAccent
-        selectedLanguage = initialLanguage
+        if (selectedLanguage !== initialLanguage)
+            chooseLanguage(initialLanguage)
     }
 
     function save() {
         themeBridge.acceptTheme()
         MainCtx.setSettingValue("redesign/accent", selectedAccent.toString())
-        if (selectedLanguage !== initialLanguage && themeBridge.setInterfaceLanguage(selectedLanguage))
-            languageSaved = true
+        if (selectedLanguage !== initialLanguage)
+            themeBridge.setInterfaceLanguage(selectedLanguage)
         initialTheme = selectedTheme
         initialAccent = selectedAccent
         initialLanguage = selectedLanguage
@@ -84,7 +92,7 @@ SettingsSectionTitle {
         languages: root.languages
         language: root.selectedLanguage
         changed: root.selectedLanguage !== root.initialLanguage
-        onChosen: (iso) => root.selectedLanguage = iso
+        onChosen: (iso) => root.chooseLanguage(iso)
     }
 
     // Theme: the Values component of the design (Dark, Light, System)
@@ -175,15 +183,13 @@ SettingsSectionTitle {
         }
     }
 
-    // The language applies at the next start
+    // Where VLC follows the system language (not Windows), it reads it when
+    // it starts
     Text {
         id: languageNote
-        visible: root.languages.length === 0 || root.languageSaved
-                 || root.selectedLanguage !== root.initialLanguage
+        visible: root.languages.length === 0
         width: parent.width
-        text: root.languages.length > 0
-              ? qsTr("Restart VLC to use the new interface language.")
-              : qsTr("VLC follows the system language. Restart VLC after changing your system language.")
+        text: qsTr("VLC follows the system language. Restart VLC after changing your system language.")
         color: root.c("#6B6B6B")
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: root.px(12)

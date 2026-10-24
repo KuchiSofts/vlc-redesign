@@ -234,9 +234,9 @@ int ShortcutsModel::groupOrder(const QString &group)
 void ShortcutsModel::reload()
 {
     const bool wasDirty = dirty();
-    beginResetModel();
-    m_entries.clear();
-    m_rows.clear();
+    // The entries made again aside
+    QVector<Entry> previous;
+    previous.swap(m_entries);
     if (m_ctx) {
         module_t *main = module_get_main();
         if (main) {
@@ -286,11 +286,29 @@ void ShortcutsModel::reload()
             const int firstA = firstActions.indexOf(a.key), firstB = firstActions.indexOf(b.key);
             return (firstA < 0 ? 100 : firstA) < (firstB < 0 ? 100 : firstB);
         });
-        for (int i = 0; i < m_entries.size(); ++i)
-            if (visible(m_entries[i]))
-                m_rows.append(i);
     }
-    endResetModel();
+    QVector<Entry> fresh;
+    fresh.swap(m_entries);
+    QVector<int> freshRows;
+    for (int i = 0; i < fresh.size(); ++i)
+        if (visible(fresh[i]))
+            freshRows.append(i);
+    // The same actions in the same rows (the dialog opened, its list made
+    // with it a moment before): their keys are told, the rows of the list
+    // are not made again
+    bool sameRows = !m_rows.isEmpty() && m_rows == freshRows && previous.size() == fresh.size();
+    for (int i = 0; sameRows && i < fresh.size(); ++i)
+        sameRows = previous[i].key == fresh[i].key;
+    if (sameRows) {
+        m_entries.swap(fresh);
+        emit dataChanged(index(0), index(m_rows.size() - 1));
+    } else {
+        m_entries.swap(previous);
+        beginResetModel();
+        m_entries.swap(fresh);
+        m_rows = freshRows;
+        endResetModel();
+    }
     if (wasDirty)
         emit dirtyChanged();
     setError({});

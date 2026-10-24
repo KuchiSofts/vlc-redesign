@@ -152,13 +152,13 @@ WizardSmallImageFile=
 ; notice.<name>.txt, and is written into [Code] by LoadLanguages.
 #define LangCount 0
 #define LangI 0
-#dim LangName[16]
-#dim LangIsl[16]
-#dim LangCode[16]
-#dim LangId[16]
-#dim LangRTL[16]
-#dim LangInter[16]
-#dim LangEnglish[16]
+#dim LangName[32]
+#dim LangIsl[32]
+#dim LangCode[32]
+#dim LangId[32]
+#dim LangRTL[32]
+#dim LangInter[32]
+#dim LangEnglish[32]
 #define AddLanguage(str Name, str Isl, str Code, int Id, int RTL, int Inter, str English) \
   LangName[LangCount] = Name, LangIsl[LangCount] = Isl, LangCode[LangCount] = Code, \
   LangId[LangCount] = Id, LangRTL[LangCount] = RTL, LangInter[LangCount] = Inter, \
@@ -166,6 +166,7 @@ WizardSmallImageFile=
 #expr AddLanguage("english", "compiler:Default.isl", "en", 0x0009, 0, 1, "English")
 #expr AddLanguage("hebrew", "compiler:Languages\Hebrew.isl", "he", 0x000D, 1, 0, "Hebrew")
 #expr AddLanguage("brazilianportuguese", "compiler:Languages\BrazilianPortuguese.isl", "pt_BR", 0x0416, 0, 1, "Portuguese")
+#expr AddLanguage("dutch", "compiler:Languages\Dutch.isl", "nl", 0x0013, 0, 1, "Dutch")
 
 [Languages]
 #sub EmitLanguage
@@ -178,224 +179,297 @@ Name: "{#LangName[LangI]}"; MessagesFile: "{#LangIsl[LangI]}"
 english.StepWelcome=Welcome
 hebrew.StepWelcome=ברוכים הבאים
 brazilianportuguese.StepWelcome=Boas-vindas
+dutch.StepWelcome=Welkom
 english.StepOptions=Options
 hebrew.StepOptions=אפשרויות
 brazilianportuguese.StepOptions=Opções
+dutch.StepOptions=Opties
 english.StepPrivacy=Privacy
 hebrew.StepPrivacy=פרטיות
 brazilianportuguese.StepPrivacy=Privacidade
+dutch.StepPrivacy=Privacy
 english.StepInstall=Install
 hebrew.StepInstall=התקנה
 brazilianportuguese.StepInstall=Instalação
+dutch.StepInstall=Installeren
 english.StepDone=Done
 hebrew.StepDone=סיום
 brazilianportuguese.StepDone=Concluído
+dutch.StepDone=Klaar
 english.Unofficial=Unofficial build
 hebrew.Unofficial=גרסה לא רשמית
 brazilianportuguese.Unofficial=Não oficial
+dutch.Unofficial=Onofficiële build
 english.DesignedBy=Interface designed by
 hebrew.DesignedBy=הממשק עוצב בידי
 brazilianportuguese.DesignedBy=Interface criada por
+dutch.DesignedBy=Interface ontworpen door
 english.WelcomeTitle=Welcome to {#AppName}
 hebrew.WelcomeTitle=ברוכים הבאים ל-{#AppName}
 brazilianportuguese.WelcomeTitle=Boas-vindas ao {#AppName}
+dutch.WelcomeTitle=Welkom bij {#AppName}
 english.WelcomeText=The real VLC 4 engine with the interface designed by Juxtopposed. Setup takes about a minute.
 hebrew.WelcomeText=מנוע VLC 4 האמיתי עם הממשק שעיצבה Juxtopposed. ההתקנה נמשכת כדקה.
 brazilianportuguese.WelcomeText=O verdadeiro motor do VLC 4, com a interface criada por Juxtopposed. A instalação leva cerca de um minuto.
+dutch.WelcomeText=De echte VLC 4-engine met de interface ontworpen door Juxtopposed. De installatie duurt ongeveer een minuut.
 english.CreditTitle=Interface designed by Juxtopposed
 hebrew.CreditTitle=את הממשק עיצבה Juxtopposed
 brazilianportuguese.CreditTitle=Interface criada por Juxtopposed
+dutch.CreditTitle=Interface ontworpen door Juxtopposed
 english.CreditText=Every screen comes from the "VLC Redesign (Community)" Figma file, licensed under CC BY 4.0. Juxtopposed does not endorse this project.
 hebrew.CreditText=כל מסך מגיע מקובץ ה-Figma "VLC Redesign (Community)", ברישיון CC BY 4.0. Juxtopposed אינה מעורבת בפרויקט הזה ואינה ממליצה עליו.
 brazilianportuguese.CreditText=Cada tela vem do arquivo do Figma "VLC Redesign (Community)", sob a licença CC BY 4.0. Juxtopposed não endossa este projeto.
+dutch.CreditText=Elk scherm komt uit het Figma-bestand "VLC Redesign (Community)", gelicentieerd onder CC BY 4.0. Juxtopposed onderschrijft dit project niet.
 english.LinkVideo=Watch the video
 hebrew.LinkVideo=לצפייה בסרטון
 brazilianportuguese.LinkVideo=Assistir ao vídeo
+dutch.LinkVideo=Bekijk de video
 english.LinkChannel=YouTube channel
 hebrew.LinkChannel=ערוץ היוטיוב
 brazilianportuguese.LinkChannel=Canal no YouTube
+dutch.LinkChannel=YouTube-kanaal
 english.LinkFigma=Figma file
 hebrew.LinkFigma=קובץ ה-Figma
 brazilianportuguese.LinkFigma=Arquivo do Figma
+dutch.LinkFigma=Figma-bestand
 english.WelcomeNotice=An unofficial build, not made or endorsed by VideoLAN. VLC and the cone logo are trademarks of VideoLAN. It installs next to an official VLC without touching it.
 hebrew.WelcomeNotice=גרסה לא רשמית, שאינה של VideoLAN ואינה מאושרת על ידה. VLC ולוגו הקונוס הם סימנים מסחריים של VideoLAN. היא מותקנת לצד VLC רשמי בלי לגעת בו.
 brazilianportuguese.WelcomeNotice=Uma versão não oficial, que não é feita nem endossada pela VideoLAN. VLC e o logotipo do cone são marcas da VideoLAN. Ela é instalada ao lado de um VLC oficial, sem mexer nele.
+dutch.WelcomeNotice=Een onofficiële build, niet gemaakt of goedgekeurd door VideoLAN. VLC en het kegellogo zijn handelsmerken van VideoLAN. Wordt naast een officiële VLC geïnstalleerd zonder die aan te raken.
 english.LinkNotice=Notice and licenses
 hebrew.LinkNotice=הודעה ורישיונות
 brazilianportuguese.LinkNotice=Aviso e licenças
+dutch.LinkNotice=Kennisgeving en licenties
 english.LinkSource=Source code
 hebrew.LinkSource=קוד מקור
 brazilianportuguese.LinkSource=Código-fonte
+dutch.LinkSource=Broncode
 english.VersionLine=Version %1 · free software under the GNU GPL v2 or later
 hebrew.VersionLine=גרסה %1 · תוכנה חופשית ברישיון GNU GPL גרסה 2 ומעלה
 brazilianportuguese.VersionLine=Versão %1 · software livre sob a GNU GPL v2 ou posterior
+dutch.VersionLine=Versie %1 · vrije software onder de GNU GPL v2 of later
 english.OptionsTitle=Options
 hebrew.OptionsTitle=אפשרויות
 brazilianportuguese.OptionsTitle=Opções
+dutch.OptionsTitle=Opties
 english.OptionsText=Where it goes, and what it opens.
 hebrew.OptionsText=לאן להתקין, ומה לפתוח איתה.
 brazilianportuguese.OptionsText=Onde instalar e o que abrir com ele.
+dutch.OptionsText=Waar het komt, en wat het opent.
 english.InstallTo=Install to
 hebrew.InstallTo=התקנה אל
 brazilianportuguese.InstallTo=Instalar em
+dutch.InstallTo=Installeren in
 english.Browse=Browse
 hebrew.Browse=עיון
 brazilianportuguese.Browse=Procurar
+dutch.Browse=Bladeren
 english.ForYou=For you only, without administrator rights.
 hebrew.ForYou=עבורך בלבד, בלי הרשאות מנהל.
 brazilianportuguese.ForYou=Só para você, sem direitos de administrador.
+dutch.ForYou=Alleen voor u, zonder beheerdersrechten.
 english.ForEveryone=Install for everyone
 hebrew.ForEveryone=התקנה לכל המשתמשים
 brazilianportuguese.ForEveryone=Instalar para todos
+dutch.ForEveryone=Voor iedereen installeren
 english.ForAll=For everyone on this PC.
 hebrew.ForAll=לכל המשתמשים במחשב.
 brazilianportuguese.ForAll=Para todos neste computador.
+dutch.ForAll=Voor iedereen op deze pc.
 english.UpdatingHere=Updates the copy in this folder.
 hebrew.UpdatingHere=מעדכן את העותק שבתיקייה הזו.
 brazilianportuguese.UpdatingHere=Atualiza a cópia que está nesta pasta.
+dutch.UpdatingHere=Werkt de kopie in deze map bij.
 english.OpenVideo=Open videos with {#AppName}
 hebrew.OpenVideo=פתיחת סרטונים ב-{#AppName}
 brazilianportuguese.OpenVideo=Abrir vídeos com o {#AppName}
+dutch.OpenVideo=Video's openen met {#AppName}
 english.OpenAudio=Open music with {#AppName}
 hebrew.OpenAudio=פתיחת מוזיקה ב-{#AppName}
 brazilianportuguese.OpenAudio=Abrir músicas com o {#AppName}
+dutch.OpenAudio=Muziek openen met {#AppName}
 english.OpenPlaylists=Open playlists with {#AppName}
 hebrew.OpenPlaylists=פתיחת רשימות השמעה ב-{#AppName}
 brazilianportuguese.OpenPlaylists=Abrir playlists com o {#AppName}
+dutch.OpenPlaylists=Afspeellijsten openen met {#AppName}
 english.ContextMenu=Play with {#AppName} in right-click menus
 hebrew.ContextMenu="הפעלה ב-{#AppName}" בתפריט הקליק הימני
 brazilianportuguese.ContextMenu={#AppName} no menu do clique direito
+dutch.ContextMenu=Afspelen met {#AppName} in contextmenu's
 english.DesktopIcon=Desktop shortcut
 hebrew.DesktopIcon=קיצור דרך בשולחן העבודה
 brazilianportuguese.DesktopIcon=Atalho na área de trabalho
+dutch.DesktopIcon=Bureaubladsnelkoppeling
 english.LayoutTitle=Layout
 hebrew.LayoutTitle=פריסה
 brazilianportuguese.LayoutTitle=Layout
+dutch.LayoutTitle=Indeling
 english.LayoutText=Left to right as designed, or mirrored.
 hebrew.LayoutText=משמאל לימין כמו בעיצוב, או בתמונת ראי.
 brazilianportuguese.LayoutText=Da esquerda para a direita, como no design, ou espelhado.
+dutch.LayoutText=Van links naar rechts zoals ontworpen, of gespiegeld.
 english.LayoutRTL=Right-to-left layout
 hebrew.LayoutRTL=פריסה מימין לשמאל
 brazilianportuguese.LayoutRTL=Layout da direita para a esquerda
+dutch.LayoutRTL=Indeling van rechts naar links
 english.LayoutRTLText=The sidebar on the right and the controls in reverse order, for reading from right to left. Off: the design's layout, from left to right.
 hebrew.LayoutRTLText=סרגל הצד מימין והפקדים בסדר הפוך, לקריאה מימין לשמאל. כבוי: הפריסה של העיצוב, משמאל לימין.
 brazilianportuguese.LayoutRTLText=A barra lateral à direita e os controles em ordem inversa, para ler da direita para a esquerda. Desligado: o layout do design, da esquerda para a direita.
+dutch.LayoutRTLText=De zijbalk rechts en de bediening in omgekeerde volgorde, om van rechts naar links te lezen. Uit: de indeling van het ontwerp, van links naar rechts.
 english.LayoutCardTitle=Change it any time
 hebrew.LayoutCardTitle=אפשר לשנות בכל עת
 brazilianportuguese.LayoutCardTitle=Dá para mudar quando quiser
+dutch.LayoutCardTitle=Altijd te wijzigen
 english.LayoutCardText=Settings → Appearance: Layout direction. The language of the app is there too, in Interface language.
 hebrew.LayoutCardText=בהגדרות ← מראה: כיוון הפריסה. גם שפת האפליקציה נמצאת שם, בשפת הממשק.
 brazilianportuguese.LayoutCardText=Configurações → Aparência: direção do layout. O idioma do app também fica lá, em idioma da interface.
+dutch.LayoutCardText=Instellingen → Uiterlijk: Indelingsrichting. De taal van de app staat daar ook, bij Interfacetaal.
 english.PrivacyTitle=Privacy
 hebrew.PrivacyTitle=פרטיות
 brazilianportuguese.PrivacyTitle=Privacidade
+dutch.PrivacyTitle=Privacy
 english.PrivacyText=Two features go online by themselves. Each sends only this:
 hebrew.PrivacyText=שתי תכונות מתחברות לאינטרנט מעצמן. כל אחת שולחת רק את זה:
 brazilianportuguese.PrivacyText=Dois recursos acessam a internet por conta própria. Cada um envia só isto:
+dutch.PrivacyText=Twee functies gaan zelf online. Elk verzendt alleen dit:
 english.PrivacyUpdates=Check for updates once a day
 hebrew.PrivacyUpdates=בדיקת עדכונים פעם ביום
 brazilianportuguese.PrivacyUpdates=Verificar atualizações uma vez por dia
+dutch.PrivacyUpdates=Dagelijks controleren op updates
 english.PrivacyUpdatesText=A request for the latest release, to GitHub (api.github.com).
 hebrew.PrivacyUpdatesText=בקשה לגרסה האחרונה, אל GitHub (api.github.com).
 brazilianportuguese.PrivacyUpdatesText=Um pedido da versão mais recente, ao GitHub (api.github.com).
+dutch.PrivacyUpdatesText=Een verzoek om de nieuwste release, naar GitHub (api.github.com).
 english.PrivacySubtitles=Find subtitles online automatically
 hebrew.PrivacySubtitles=חיפוש כתוביות ברשת באופן אוטומטי
 brazilianportuguese.PrivacySubtitles=Buscar legendas on-line automaticamente
+dutch.PrivacySubtitles=Automatisch online ondertitels zoeken
 english.PrivacySubtitlesText=The film's name and a fingerprint of the file, to subtitle services (OpenSubtitles.org, Wizdom, Gestdown, YIFY); its name to IMDb, Wikidata and Cinemeta.
 hebrew.PrivacySubtitlesText=שם הסרט וטביעת אצבע של הקובץ, לשירותי הכתוביות OpenSubtitles.org, Wizdom, Gestdown ו-YIFY. השם גם ל-IMDb, ל-Wikidata ול-Cinemeta.
 brazilianportuguese.PrivacySubtitlesText=O nome do filme e uma impressão digital do arquivo, para serviços de legendas (OpenSubtitles.org, Wizdom, Gestdown, YIFY); o nome também para IMDb, Wikidata e Cinemeta.
+dutch.PrivacySubtitlesText=De naam van de film en een vingerafdruk van het bestand, naar ondertiteldiensten (OpenSubtitles.org, Wizdom, Gestdown, YIFY); de naam naar IMDb, Wikidata en Cinemeta.
 english.PrivacyCardTitle=No telemetry, no ads, no account
 hebrew.PrivacyCardTitle=בלי טלמטריה, בלי פרסומות, בלי חשבון
 brazilianportuguese.PrivacyCardTitle=Sem telemetria, sem anúncios, sem conta
+dutch.PrivacyCardTitle=Geen telemetrie, geen reclame, geen account
 english.PrivacyCardText=Nothing else goes online unless you ask for it. Change both later in Settings.
 hebrew.PrivacyCardText=שום דבר אחר לא יוצא לאינטרנט בלי שתבקשו. אפשר לשנות את שתיהן אחר כך בהגדרות.
 brazilianportuguese.PrivacyCardText=Nada mais acessa a internet sem você pedir. Altere os dois depois nas Configurações.
+dutch.PrivacyCardText=Niets anders gaat online tenzij u erom vraagt. Wijzig beide later in Instellingen.
 english.LinkPrivacy=Privacy and code signing policy
 hebrew.LinkPrivacy=מדיניות הפרטיות וחתימת הקוד
 brazilianportuguese.LinkPrivacy=Política de privacidade e de assinatura de código
+dutch.LinkPrivacy=Privacy- en codeondertekeningsbeleid
 english.InstallingTitle=Installing
 hebrew.InstallingTitle=מתקין
 brazilianportuguese.InstallingTitle=Instalando
+dutch.InstallingTitle=Installeren
 english.InstallingText=This takes about a minute.
 hebrew.InstallingText=זה לוקח כדקה.
 brazilianportuguese.InstallingText=Isso leva cerca de um minuto.
+dutch.InstallingText=Dit duurt ongeveer een minuut.
 english.TipTitle=Make the player yours
 hebrew.TipTitle=התאימו את הנגן לעצמכם
 brazilianportuguese.TipTitle=Deixe o player do seu jeito
+dutch.TipTitle=Maak de speler persoonlijk
 english.TipText=Drag buttons into and out of the control bar with ⋯ → Customize Player, and keep your layouts as profiles.
 hebrew.TipText=גררו כפתורים אל סרגל השליטה וממנו דרך ⋯ ← התאמת הנגן, ושמרו את הפריסות שלכם כפרופילים.
 brazilianportuguese.TipText=Arraste botões para dentro e para fora da barra de controle em ⋯ → Personalizar o player, e guarde seus layouts como perfis.
+dutch.TipText=Sleep knoppen in en uit de bedieningsbalk via ⋯ → Speler aanpassen, en bewaar uw indelingen als profielen.
 english.DoneTitle={#AppName} is ready
 hebrew.DoneTitle={#AppName} מוכן
 brazilianportuguese.DoneTitle=O {#AppName} está pronto
+dutch.DoneTitle={#AppName} is klaar
 english.DoneText=Find it in the Start menu.
 hebrew.DoneText=אפשר למצוא אותו בתפריט התחל.
 brazilianportuguese.DoneText=Ele está no menu Iniciar.
+dutch.DoneText=U vindt het in het menu Start.
 english.DefaultTitle=Make it your default player
 hebrew.DefaultTitle=הגדרה כנגן ברירת המחדל
 brazilianportuguese.DefaultTitle=Torne-o seu player padrão
+dutch.DefaultTitle=Maak het uw standaardspeler
 english.DefaultText=Windows keeps the apps you chose before. Open Default apps and choose {#AppName} for your media.
 hebrew.DefaultText=Windows שומרת את האפליקציות שבחרתם בעבר. פתחו את "אפליקציות ברירת מחדל" ובחרו ב-{#AppName} עבור קובצי המדיה.
 brazilianportuguese.DefaultText=O Windows mantém suas escolhas. Abra Aplicativos padrão e escolha o {#AppName} para suas mídias.
+dutch.DefaultText=Windows behoudt de apps die u eerder koos. Open Standaard-apps en kies {#AppName} voor uw media.
 english.OpenDefaultApps=Open Default apps
 hebrew.OpenDefaultApps=לאפליקציות ברירת מחדל
 brazilianportuguese.OpenDefaultApps=Aplicativos padrão
+dutch.OpenDefaultApps=Standaard-apps openen
 english.LaunchNow=Open {#AppName} now
 hebrew.LaunchNow=פתיחת {#AppName} עכשיו
 brazilianportuguese.LaunchNow=Abrir o {#AppName} agora
+dutch.LaunchNow={#AppName} nu openen
 english.DoneCredit=Enjoy the design by Juxtopposed.
 hebrew.DoneCredit=תיהנו מהעיצוב של Juxtopposed.
 brazilianportuguese.DoneCredit=Aproveite o design de Juxtopposed.
+dutch.DoneCredit=Geniet van het ontwerp van Juxtopposed.
 english.LinkSubscribe=Subscribe on YouTube
 hebrew.LinkSubscribe=הרשמה לערוץ ביוטיוב
 brazilianportuguese.LinkSubscribe=Inscreva-se no YouTube
+dutch.LinkSubscribe=Abonneren op YouTube
 english.NoticeTitle=Notice and licenses
 hebrew.NoticeTitle=הודעה ורישיונות
 brazilianportuguese.NoticeTitle=Aviso e licenças
+dutch.NoticeTitle=Kennisgeving en licenties
 english.Close=Close
 hebrew.Close=סגירה
 brazilianportuguese.Close=Fechar
+dutch.Close=Sluiten
 english.BadDir=Choose a folder to install to.
 hebrew.BadDir=בחרו תיקייה להתקנה.
 brazilianportuguese.BadDir=Escolha uma pasta para a instalação.
+dutch.BadDir=Kies een map om in te installeren.
 ; The words on the toggles, as the app writes them (SettingsToggle.qml)
 english.ToggleOn=ON
 hebrew.ToggleOn=פעיל
 brazilianportuguese.ToggleOn=LIG
+dutch.ToggleOn=AAN
 english.ToggleOff=OFF
 hebrew.ToggleOff=כבוי
 brazilianportuguese.ToggleOff=DESL
+dutch.ToggleOff=UIT
 ; Shown by Windows: the file types, their verbs, the right-click menus
 english.TypeVideo=%1 video
 hebrew.TypeVideo=וידאו %1
 brazilianportuguese.TypeVideo=Vídeo %1
+dutch.TypeVideo=%1-video
 english.TypeAudio=%1 audio
 hebrew.TypeAudio=שמע %1
 brazilianportuguese.TypeAudio=Áudio %1
+dutch.TypeAudio=%1-audio
 english.TypePlaylist=%1 playlist
 hebrew.TypePlaylist=רשימת השמעה %1
 brazilianportuguese.TypePlaylist=Playlist %1
+dutch.TypePlaylist=%1-afspeellijst
 english.VerbPlay=Play
 hebrew.VerbPlay=הפעלה
 brazilianportuguese.VerbPlay=Reproduzir
+dutch.VerbPlay=Afspelen
 english.VerbEnqueue=Add to queue
 hebrew.VerbEnqueue=הוספה לתור
 brazilianportuguese.VerbEnqueue=Adicionar à fila
+dutch.VerbEnqueue=In wachtrij zetten
 english.ContextPlay=Play with {#AppName}
 hebrew.ContextPlay=הפעלה ב-{#AppName}
 brazilianportuguese.ContextPlay=Reproduzir com o {#AppName}
+dutch.ContextPlay=Afspelen met {#AppName}
 english.ContextEnqueue=Add to {#AppName} queue
 hebrew.ContextEnqueue=הוספה לתור של {#AppName}
 brazilianportuguese.ContextEnqueue=Adicionar à fila do {#AppName}
+dutch.ContextEnqueue=In wachtrij van {#AppName} zetten
 english.Running={#AppName} is open. Setup will close it now and open it again when it's done.
 hebrew.Running={#AppName} פתוח. ההתקנה תסגור אותו עכשיו ותפתח אותו מחדש בסיום.
 brazilianportuguese.Running=O {#AppName} está aberto. O instalador vai fechá-lo agora e abri-lo de novo quando terminar.
+dutch.Running={#AppName} is geopend. Setup sluit het nu en opent het opnieuw als het klaar is.
 english.StillRunning={#AppName} didn't close. Close it and click Retry.
 hebrew.StillRunning={#AppName} לא נסגר. סגרו אותו ולחצו על "נסה שוב".
 brazilianportuguese.StillRunning=O {#AppName} não fechou. Feche-o e clique em "Tentar novamente".
+dutch.StillRunning={#AppName} is niet gesloten. Sluit het en klik op "Opnieuw proberen".
 english.ShortcutComment=VLC media player with the interface designed by Juxtopposed
 hebrew.ShortcutComment=נגן המדיה VLC עם הממשק שעיצבה Juxtopposed
 brazilianportuguese.ShortcutComment=Reprodutor de Mídias VLC com a interface criada por Juxtopposed
+dutch.ShortcutComment=VLC media player met de interface ontworpen door Juxtopposed
 ; The question at the start (see the top), asked before the wizard in
 ; English and in the language of Windows, whatever the language Setup runs
 ; in: so in every language, without a prefix. One line of each, for the
@@ -413,6 +487,10 @@ LanguageContext_brazilianportuguese=Seu Windows está em português.
 LanguageQuestion_brazilianportuguese=Instalar o {#AppName} em português?
 LanguageYes_brazilianportuguese=Sim
 LanguageNo_brazilianportuguese=Não
+LanguageContext_dutch=Uw Windows is in het Nederlands.
+LanguageQuestion_dutch={#AppName} in het Nederlands installeren?
+LanguageYes_dutch=Ja
+LanguageNo_dutch=Nee
 
 [Files]
 ; The wizard's pieces and fonts: read by the [Code], never installed

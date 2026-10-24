@@ -1,0 +1,77 @@
+name: TV report
+description: Tell how casting to your TV or Chromecast went, good or bad (it fills the TV compatibility page)
+title: "TV report: "
+labels: ["casting", "tv-report"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks! Each report adds a TV to the [TV compatibility](https://github.com/KuchiSofts/vlc-redesign/wiki/TV-Compatibility)
+        page, the ones that work too. Please give the brand and model in the title, e.g. *TV report: LG OLED55C1*.
+  - type: input
+    id: version
+    attributes:
+      label: VLC Redesign version
+      description: "⋯ menu → About VLC shows it"
+      placeholder: "0.3.0"
+    validations:
+      required: true
+  - type: input
+    id: tv
+    attributes:
+      label: The TV or device
+      description: Brand, model and year (on the label at its back, or in its settings).
+      placeholder: "Samsung UE55MU8000 (2017)"
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: How it showed in the Cast menu
+      options:
+        - A TV (DLNA / UPnP)
+        - A Chromecast or a TV with Chromecast built in
+        - It did not show
+    validations:
+      required: true
+  - type: dropdown
+    id: network
+    attributes:
+      label: How the TV and the computer are connected
+      options:
+        - Both on Wi-Fi, the same router
+        - TV on a cable, computer on Wi-Fi
+        - Both on cables
+        - Other (say below)
+  - type: textarea
+    id: media
+    attributes:
+      label: What you cast
+      description: The file format (MP4, MKV…), its size (1080p, 4K), with or without subtitles.
+      placeholder: "MKV, 1080p, H.264, with English subtitles"
+    validations:
+      required: true
+  - type: checkboxes
+    id: worked
+    attributes:
+      label: What worked
+      options:
+        - label: It started on the TV
+        - label: Pause and play again (say for how long it was paused below)
+        - label: Seek
+        - label: The next file of the playlist
+        - label: Subtitles on the TV
+        - label: The film played to its end
+        - label: Back to "This computer"
+  - type: textarea
+    id: what
+    attributes:
+      label: What did not work
+      description: What you did, what the TV showed, and what the card of the player said. Write "nothing" if all went well.
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: Log
+      description: Turn on Settings › General › Diagnostics › Save a log, restart VLC Redesign, cast again, and drag the log file here.

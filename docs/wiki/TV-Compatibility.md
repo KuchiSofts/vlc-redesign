@@ -46,7 +46,8 @@ How to cast: [Casting](Casting). When something fails: [Casting: when a TV does 
 
 ## Report your TV
 
-[Open an issue](https://github.com/KuchiSofts/vlc-redesign/issues) titled *TV report: brand model*, with:
+[Fill in a TV report](https://github.com/KuchiSofts/vlc-redesign/issues/new?template=tv_report.yml) (an issue titled
+*TV report: brand model*), with:
 
 - **The TV**: brand, model, year (on the label at its back, or in its settings).
 - **How it is connected**: Wi-Fi or cable, the same router as the computer.

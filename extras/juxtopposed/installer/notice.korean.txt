@@ -1,0 +1,29 @@
+VLC Redesign - 비공식 빌드
+
+디자인
+인터페이스는 Juxtopposed가 디자인했습니다.
+  영상:   https://www.youtube.com/watch?v=ERFeOgqk324
+  채널:   https://www.youtube.com/@juxtopposed
+  Figma:  https://www.figma.com/community/file/1691465999134370980
+Juxtopposed의 "VLC Redesign (Community)"는 CC BY 4.0 라이선스
+(https://creativecommons.org/licenses/by/4.0/)로 배포됩니다. Qt/QML에
+맞게 조정했으며 아이콘은 새로 그리고 수정했습니다. Juxtopposed는 이
+빌드를 보증하지 않습니다.
+
+공식 VLC가 아닙니다
+이 빌드는 VLC 4.0(개발 버전) 기반이며, VideoLAN이 만들거나 제휴하거나
+보증하지 않았습니다. VLC, VLC media player 및 원뿔 로고는 VideoLAN의
+상표입니다. 공식 재생기는 https://www.videolan.org 에서 받으세요.
+
+공식 VLC를 건드리지 않고 그 옆에 설치됩니다. 설정, 라이브러리, 기록은
+자체 폴더에 따로 저장됩니다.
+
+라이선스
+GNU General Public License 버전 2 이상에 따른 자유 소프트웨어입니다.
+libVLC는 GNU LGPL 2.1 이상, Inter 및 DM Mono 글꼴은 SIL Open Font
+License 1.1을 따릅니다. 전체 라이선스 문서는 vlc.exe 옆에 설치됩니다
+(COPYING.txt, COPYING.LIB.txt, licenses\). 소스 코드:
+https://github.com/KuchiSofts/vlc-redesign
+
+리디자인 최초 구현: MrDouglax
+(https://github.com/SrDouglax/JuxtopposedVLC).

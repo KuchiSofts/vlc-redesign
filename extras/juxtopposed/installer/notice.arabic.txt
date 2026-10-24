@@ -1,0 +1,23 @@
+VLC Redesign - إصدار غير رسمي
+
+التصميم
+صممت Juxtopposed الواجهة.
+  الفيديو: https://www.youtube.com/watch?v=ERFeOgqk324
+  القناة: https://www.youtube.com/@juxtopposed
+  Figma: https://www.figma.com/community/file/1691465999134370980
+‏"VLC Redesign (Community)"‎ من Juxtopposed مرخّص بموجب CC BY 4.0. وقد كُيّف لـ Qt/QML، وأُعيد رسم أيقوناته وتعديلها. لا تؤيد Juxtopposed هذا الإصدار.
+https://creativecommons.org/licenses/by/4.0/‎
+
+ليس VLC رسميًا
+يستند هذا الإصدار إلى VLC 4.0 (قيد التطوير). لم تصنعه VideoLAN، ولا يرتبط بها ولا تؤيده. ‏VLC و‏VLC media player وشعار المخروط علامات تجارية لـ VideoLAN. يمكنك تنزيل المشغل الرسمي من:
+https://www.videolan.org
+
+يُثبَّت بجانب VLC الرسمي دون المساس به: تبقى إعداداته ومكتبته وسجله في مجلده الخاص.
+
+الترخيص
+برنامج حر بموجب GNU General Public License، الإصدار 2 أو أحدث؛ وlibVLC بموجب GNU LGPL 2.1 أو أحدث. الخطان Inter وDM Mono بموجب SIL Open Font License 1.1. النصوص الكاملة مثبّتة بجانب vlc.exe: في الملفين COPYING.txt وCOPYING.LIB.txt وفي المجلد licenses.
+الشفرة المصدرية:
+https://github.com/KuchiSofts/vlc-redesign
+
+أول تنفيذ لإعادة التصميم: MrDouglax
+https://github.com/SrDouglax/JuxtopposedVLC

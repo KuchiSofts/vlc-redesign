@@ -4,10 +4,12 @@
  ****************************************************************************/
 import QtQuick
 import QtQuick.Controls.Basic
+import QtQuick.Layouts
 import VLC.MainInterface
 import VLC.MediaLibrary
 import VLC.Style
 import VLC.Util
+import VLC.Widgets as Widgets
 
 Item {
     id: root
@@ -70,29 +72,24 @@ Item {
         onClicked: confirmClear.open()
     }
 
-    Dialog {
+    // the dialog of the redesign, in the theme of the window
+    Widgets.RedesignDialog {
         id: confirmClear
         objectName: "confirmClearRecentHistory"
-        parent: root.parent
-        anchors.centerIn: parent
-        // The wrapped label has no implicit width of its own (binding loop)
-        width: VLCStyle.dp(420, VLCStyle.scale)
-        modal: true
-        title: qsTr("Clear playback history?")
-        standardButtons: Dialog.Cancel | Dialog.Ok
+        title: qsTr("Clear history now")
+        acceptText: qsTr("Clear")
+        preferredWidth: VLCStyle.dp(560, VLCStyle.scale)
         onAccepted: {
             if (root.available)
                 recentMedia.clearHistory()
         }
-        contentItem: Label {
+
+        Widgets.RedesignDialogHeading {
             // (a popup of its own: not under the mirrored interface)
             LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
-            horizontalAlignment: Text.AlignLeft
-            text: qsTr("Recently played items will be removed from the media library.")
-            wrapMode: Text.WordWrap
-            color: root.dark ? "#dddddd" : "#333333"
-            font.family: VLCStyle.redesign.fontFamily
-            font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
+            LayoutMirroring.childrenInherit: true
+            text: qsTr("Clear playback history?")
+            description: qsTr("Recently played items will be removed from the media library.")
         }
     }
 }

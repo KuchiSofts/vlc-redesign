@@ -96,6 +96,12 @@ public:
 
     virtual Type type() const = 0;
 
+    /* Whether OpenGL can draw in the video window: Windows' OpenGL (wgl)
+     * draws in a window of its own (HWND), not in the visual of
+     * DirectComposition. The visualizations drawn with OpenGL (projectM,
+     * the 3D spectrum) open nothing there. */
+    bool videoTakesOpenGL() const { return type() != DirectCompositionCompositor; }
+
     virtual QWindow* interfaceMainWindow() const = 0;
 
     // Override this to return the quick window if quick window

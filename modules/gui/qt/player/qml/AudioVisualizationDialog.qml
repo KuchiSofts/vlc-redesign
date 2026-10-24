@@ -113,9 +113,10 @@ Controls.Popup {
                     // the icons of the design (Figma 2372:8639), in the
                     // order of the choices of the "visual" variable
                     // (aout_New: Disable, Spectrometer, Scope, Spectrum,
-                    // Waveform, then VU meter and the modules)
-                    readonly property string iconDir: index >= 1 && index <= 4
-                        ? "qrc:///redesign/icons/" + ["spectrometer", "scope", "spectrum", "waveform"][index - 1] : ""
+                    // Waveform, VU meter, then the modules); the VU meter,
+                    // not drawn there, with the gauge of the icon set
+                    readonly property string iconDir: index >= 1 && index <= 5
+                        ? "qrc:///redesign/icons/" + ["spectrometer", "scope", "spectrum", "waveform", "vumeter"][index - 1] : ""
                     // the icon, 10 before the name
                     leftPadding: iconDir ? root.px(14 + 24 + 10) : root.px(14)
                     rightPadding: root.px(14 + 24 + 13)

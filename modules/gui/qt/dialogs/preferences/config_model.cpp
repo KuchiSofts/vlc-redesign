@@ -15,6 +15,7 @@
 
 #include "config_model.hpp"
 #include "catalog.hpp"
+#include "maininterface/compositor.hpp"
 #include "maininterface/mainctx.hpp"
 #include "qt.hpp"
 
@@ -1143,11 +1144,19 @@ void ConfigModel::addCombinedEntries()
         Entry probe;
         probe.key = QLatin1String(visualizerKey);
         const QString current = readValue(probe).toString();
+        // the ones drawn with OpenGL, where the video window takes none
+        // (DirectComposition: Compositor::videoTakesOpenGL), open nothing:
+        // listed only while chosen
+        const qt_intf_t *intf = m_ctx ? m_ctx->getIntf() : nullptr;
+        const bool openGL = !intf || !intf->p_compositor || intf->p_compositor->videoTakesOpenGL();
         for (const QVariant &module : m_entries[visual].choices) {
             const QString value = module.toMap().value(QStringLiteral("value")).toString();
             // (Automatic: only while it is the one chosen)
             if (value.isEmpty() || value == QLatin1String("none") || value == QLatin1String("visual")
                 || (value == QLatin1String("any") && current != value))
+                continue;
+            if (!openGL && current != value
+                && (value == QLatin1String("glspectrum") || value == QLatin1String("projectm")))
                 continue;
             choices.append(value == QLatin1String("any") ? named("any", qtr("Automatic")) : module);
         }

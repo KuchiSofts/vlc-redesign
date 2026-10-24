@@ -194,10 +194,11 @@ Column {
                                 value: choice.value, label: choice.label,
                                 icon: "qrc:///redesign/icons/eq-" + String(choice.value).toLowerCase() })))
                         // Figma "Audio Visualizer" (2372:8639): the effects
-                        // of the visualizer with their icon
+                        // of the visualizer with their icon (the VU meter,
+                        // not drawn there, with the gauge of the icon set)
                         if (setting === "x-visualizer" && model.choices) {
                             const icons = { spectrometer: "spectrometer", scope: "scope",
-                                            spectrum: "spectrum", waveform: "waveform" }
+                                            spectrum: "spectrum", waveform: "waveform", vuMeter: "vumeter" }
                             return model.choices.map(choice => icons[choice.value]
                                 ? { value: choice.value, label: choice.label,
                                     icon: "qrc:///redesign/icons/" + icons[choice.value] }

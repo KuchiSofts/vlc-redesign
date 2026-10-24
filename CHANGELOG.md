@@ -126,6 +126,10 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
 - **The last rows of a long list in Settings were out of sight**: a dropdown shows eight rows, and the next ones
   (the last equalizer presets, most languages) were cut off where a row ends, with no sign that the list scrolls. A
   thin bar now shows that it does, as in the menus.
+- **Two visualizations showed nothing**: projectM and the 3D OpenGL spectrum were offered in the player's
+  visualizer, but they draw with OpenGL, which the video of this interface can't take on Windows (it is shown with
+  DirectComposition): the music played on a black picture. Neither the player nor Settings offers them any more;
+  the five of the design and Goom remain.
 
 ### Added
 
@@ -154,8 +158,9 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
 - **Type a time to go to**: a click on the time of the bar makes it a field; type 1:02:10, 62:10 or 130 and press
   Enter (as the design draws it).
 - **The visualizations of the design in Settings**: *Settings › Audio › Visualizer* offers Spectrometer, Scope,
-  Spectrum, Waveform and VU meter with their icons (before: only "Visualizer filter"), then Goom, projectM and the 3D
-  spectrum.
+  Spectrum, Waveform and VU meter with their icons (before: only "Visualizer filter"; the VU meter, which the design
+  doesn't draw, with the gauge of its icons), then Goom. projectM and the 3D spectrum are left out: they draw with
+  OpenGL, which the video of this interface can't take on Windows.
 - **The library beside the video goes everywhere the library does**: Home with the sections of the library's Home
   (a section's arrow lists all of it), *Videos* and its folders, *Music* with Songs, Albums, Artists and Genres, and
   *Network* with Add Network Stream and the Internet services, each with its ⋯ menu (*Rescan library*, *Add folder

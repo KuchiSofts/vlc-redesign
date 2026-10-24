@@ -193,6 +193,12 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
 
 ### Technical
 
+- Windows file errors (upstream): `vlc_open()` and `vlc_opendir()` set no `errno` (CreateFileW, FindFirstFileExW),
+  so every first start logged "cannot open config file (vlcrc): No error" and "cannot open file" gave whatever
+  reason was last. The Win32 error becomes `errno` now, as in `vlc_stat()`.
+- QML: the `Qt.callLater()` that turn on a transition once a component is complete ran after it was gone when VLC
+  quit right after making it (`--play-and-exit`): seven TypeErrors at each such quit, which the launch test missed
+  (Qt logs them as `qt warning: (default)`). They check the object first, and the test looks for both forms.
 - Settings carried over (`bin/winvlc.c`, before `libvlc_new()`): every start notes its portable profile with the
   time under `HKCU\Software\VLC Redesign\Profiles`. A profile with no `vlcrc`, no `vlc-qt-interface.ini` and no
   `ml.db` gets a copy of the one with settings written last: of the noted ones, the installed copy (the

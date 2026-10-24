@@ -101,14 +101,10 @@ QtObject {
     // Figma "Customize Player": the names of the palette broken as the design
     // breaks them
     readonly property var paletteText: ({
-        [ControlListModel.SKIP_FW_10_BUTTON]: qsTr("Forward
-10s"),
-        [ControlListModel.SKIP_BACK_10_BUTTON]: qsTr("Backward
-10s"),
-        [ControlListModel.SKIP_FW_BUTTON]: qsTr("Forward
-15s"),
-        [ControlListModel.SKIP_BACK_BUTTON]: qsTr("Backward
-15s")
+        [ControlListModel.SKIP_FW_10_BUTTON]: qsTr("Forward\n10s"),
+        [ControlListModel.SKIP_BACK_10_BUTTON]: qsTr("Backward\n10s"),
+        [ControlListModel.SKIP_FW_BUTTON]: qsTr("Forward\n15s"),
+        [ControlListModel.SKIP_BACK_BUTTON]: qsTr("Backward\n15s")
     })
 
     // Figma "Customize Player": the items of the palette, in its order

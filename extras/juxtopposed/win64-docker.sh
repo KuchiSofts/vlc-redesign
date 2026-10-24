@@ -113,7 +113,10 @@ sed 's/|| PREBUILT_FAILED=yes/|| exit 1/' extras/package/win32/build.sh \
 # expects its own folder layout and fails with -o; the package in
 # /build/package is complete by then (it was removed above, so a failure
 # before the install leaves it empty and the checks below catch it).
-sh extras/package/win32/build-prebuilt-only.sh -a x86_64 -p -o /build/package "$@" \
+# -l: with the translations (--enable-nls), or the language chosen in the
+# settings does nothing (issue #5); a tree configured without them needs a
+# build without -Quick once.
+sh extras/package/win32/build-prebuilt-only.sh -a x86_64 -p -l -o /build/package "$@" \
     || echo "build.sh failed after packaging (expected in release mode)" >&2
 rm -f extras/package/win32/build-prebuilt-only.sh
 

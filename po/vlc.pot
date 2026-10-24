@@ -27478,3 +27478,3856 @@ msgstr ""
 #: modules/gui/qt/ui/vlm.h:302
 msgid "Media Manager List"
 msgstr ""
+
+#. New strings of the VLC Redesign interface (modules/gui/qt)
+msgid "Save play queue as..."
+msgstr ""
+
+msgid "Export playlist as..."
+msgstr ""
+
+msgid "Open audio..."
+msgstr ""
+
+msgid "Open video..."
+msgstr ""
+
+msgid "cancel"
+msgstr ""
+
+msgid "error popup"
+msgstr ""
+
+msgid "Show Details"
+msgstr ""
+
+msgid "Dismiss"
+msgstr ""
+
+msgid "Save password"
+msgstr ""
+
+msgid "Ok"
+msgstr ""
+
+msgid "Open Network Stream"
+msgstr ""
+
+msgid "Network URL"
+msgstr ""
+
+msgid "“%1” is not a link: links start with http://, rtsp://… or a site's address."
+msgstr ""
+
+msgid "You can enter multiple links to load."
+msgstr ""
+
+msgid "e.g., https://www.example.com/stream.avi"
+msgstr ""
+
+msgid "Playlist Name"
+msgstr ""
+
+msgid "(optional)"
+msgstr ""
+
+msgid "The playlist will be saved and displayed with this title."
+msgstr ""
+
+msgid "Playlists need the media library."
+msgstr ""
+
+msgid "e.g., Favorite TV Channels"
+msgstr ""
+
+msgid "Playlist name"
+msgstr ""
+
+msgid "VLC Redesign"
+msgstr ""
+
+msgid "Version %1 · based on VLC %2"
+msgstr ""
+
+msgid "Checking for updates…"
+msgstr ""
+
+msgid "You have the latest version"
+msgstr ""
+
+msgid "Version %1 is available"
+msgstr ""
+
+msgid "Downloading the update… %1%"
+msgstr ""
+
+msgid "Preparing the update…"
+msgstr ""
+
+msgid "Version %1 is ready: restart to finish"
+msgstr ""
+
+msgid "Restart now"
+msgstr ""
+
+msgid "Update now"
+msgstr ""
+
+msgid "Download"
+msgstr ""
+
+msgid "Check for updates"
+msgstr ""
+
+msgid "Interface designed by <font color=\"%1\">Juxtopposed</font>"
+msgstr ""
+
+msgid "Every screen comes from the \"VLC Redesign (Community)\" Figma file, licensed under CC BY 4.0. It was adapted to Qt and its icons were redrawn."
+msgstr ""
+
+msgid "YouTube channel"
+msgstr ""
+
+msgid "The redesign video"
+msgstr ""
+
+msgid "Figma file"
+msgstr ""
+
+msgid "CC BY 4.0"
+msgstr ""
+
+msgid "First implementation by"
+msgstr ""
+
+msgid "Built on VLC media player by"
+msgstr ""
+
+msgid "the VideoLAN team and contributors"
+msgstr ""
+
+msgid "An unofficial build, not affiliated with or endorsed by VideoLAN or Juxtopposed. VLC, VLC media player and the cone logo are trademarks of VideoLAN. Free software under the GNU GPL v2 or later."
+msgstr ""
+
+msgid "Licenses & authors"
+msgstr ""
+
+msgid "GitHub"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Expander"
+msgstr ""
+
+msgid "Limiter"
+msgstr ""
+
+msgid "Adjust pan"
+msgstr ""
+
+msgid "Subtitle track synchronization"
+msgstr ""
+
+msgid "Primary subtitle track:"
+msgstr ""
+
+msgid "Secondary subtitle track:"
+msgstr ""
+
+msgid "%1 crop in pixels"
+msgstr ""
+
+msgid "Link top and bottom crop"
+msgstr ""
+
+msgid "Link left and right crop"
+msgstr ""
+
+msgid "Play audio to preview and edit audio effects."
+msgstr ""
+
+msgid "Play video to preview and edit effects."
+msgstr ""
+
+msgid "Open synchronization"
+msgstr ""
+
+msgid "Collapse equalizer settings"
+msgstr ""
+
+msgid "Expand equalizer settings"
+msgstr ""
+
+msgid "Collapse Settings"
+msgstr ""
+
+msgid "Expand Settings"
+msgstr ""
+
+msgid "Two-pass equalizer"
+msgstr ""
+
+msgid "%1 equalizer curve"
+msgstr ""
+
+msgid "Collapse settings"
+msgstr ""
+
+msgid "Expand settings"
+msgstr ""
+
+msgid "Enable %1"
+msgstr ""
+
+msgid "Image adjustment"
+msgstr ""
+
+msgid "Debanding"
+msgstr ""
+
+msgid "Film grain"
+msgstr ""
+
+msgid "Collapse %1 settings"
+msgstr ""
+
+msgid "Expand %1 settings"
+msgstr ""
+
+msgid "Welcome"
+msgstr ""
+
+msgid "Choose a folder to add to the Media Library"
+msgstr ""
+
+msgid "<i>VLC will automatically switch to dark mode accordingly with system settings</i>"
+msgstr ""
+
+msgid "<i>VLC will automatically use light mode</i>"
+msgstr ""
+
+msgid "<i>VLC will automatically use dark mode</i>"
+msgstr ""
+
+msgid "<i>VLC will use a modern layout with no menubar or pinned controls but with client-side decoration</i>"
+msgstr ""
+
+msgid "<i>VLC will use a classic layout with a menubar and pinned controls but with no client-side decoration</i>"
+msgstr ""
+
+msgid "Choose a media folder"
+msgstr ""
+
+msgid "Finish"
+msgstr ""
+
+msgid "Learn the basic keyboard shortcuts."
+msgstr ""
+
+msgid "No playback shortcuts are currently assigned."
+msgstr ""
+
+msgid "Find the full list in the menu."
+msgstr ""
+
+msgid "Choose the languages of your subtitles."
+msgstr ""
+
+msgid "Subtitles in your language show by themselves: from the video, from a file next to it, or found online. When there are none in it, not even online, the second language is used."
+msgstr ""
+
+msgid "Default language"
+msgstr ""
+
+msgid "Second language (when there are none)"
+msgstr ""
+
+msgid "Find subtitles online when a video has none in these languages"
+msgstr ""
+
+msgid "Online subtitles come from free services (OpenSubtitles, and more for some languages). Change all of it in Settings, Subtitles."
+msgstr ""
+
+msgid "Select your preferred theme and color."
+msgstr ""
+
+msgid "Light"
+msgstr ""
+
+msgid "System"
+msgstr ""
+
+msgid "Accent color %1"
+msgstr ""
+
+msgid "Welcome to VLC!"
+msgstr ""
+
+msgid "VLC is a free and open source cross-platform multimedia player and framework that plays most multimedia files as well as DVDs, Audio CDs, VCDs, and various streaming protocols."
+msgstr ""
+
+msgid "Choose a Media Folder to get started with"
+msgstr ""
+
+msgid "No folder selected"
+msgstr ""
+
+msgid "Remove the folder"
+msgstr ""
+
+msgid "<p>VLC media player is a free and open source media player, encoder, and streamer made by the volunteers of the <a href=\"https://www.videolan.org/\"><span style=\" text-decoration: underline; color:#0057ae;\">VideoLAN</span></a> community.</p><p>VLC uses its internal codecs, works on essentially every popular platform, and can read almost all files, CDs, DVDs, network streams, capture cards and other media formats!</p><p><a href=\"https://www.videolan.org/contribute/\"><span style=\" text-decoration: underline; color:#0057ae;\">Help and join us!</span></a>"
+msgstr ""
+
+msgid "<p><b>Unofficial redesign build.</b> Interface designed by <a href=\"https://www.youtube.com/@juxtopposed\"><span style=\" text-decoration: underline; color:#0057ae;\">Juxtopposed</span></a> (<a href=\"https://www.youtube.com/watch?v=ERFeOgqk324\"><span style=\" text-decoration: underline; color:#0057ae;\">watch the redesign video</span></a>), from the <a href=\"https://www.figma.com/community/file/1691465999134370980\"><span style=\" text-decoration: underline; color:#0057ae;\">VLC Redesign</span></a> Figma file under <a href=\"https://creativecommons.org/licenses/by/4.0/\"><span style=\" text-decoration: underline; color:#0057ae;\">CC BY 4.0</span></a>, adapted to Qt. Not affiliated with or endorsed by VideoLAN or Juxtopposed.</p>"
+msgstr ""
+
+msgid "Checking for updates..."
+msgstr ""
+
+msgid "Not editing a file"
+msgstr ""
+
+msgid "Failed to save metadata"
+msgstr ""
+
+msgid "Property"
+msgstr ""
+
+msgid "Value"
+msgstr ""
+
+msgid "Late"
+msgstr ""
+
+msgid "Clear the errors"
+msgstr ""
+
+msgid "Existing Playlist"
+msgstr ""
+
+msgid "New Playlist"
+msgstr ""
+
+msgid "%1 Media"
+msgstr ""
+
+msgid "Retrieves extra info and art for play queue items"
+msgstr ""
+
+msgid "Audio output changed; the previous device could not be restored."
+msgstr ""
+
+msgid "The audio output changed. Reopen Audio settings to choose a device."
+msgstr ""
+
+msgid "The available output devices changed. Reopen Audio settings."
+msgstr ""
+
+msgid "Could not select this output device."
+msgstr ""
+
+msgid "The audio output changed; the device preview cannot be kept."
+msgstr ""
+
+msgid "The previous audio device could not be restored."
+msgstr ""
+
+msgid "System language"
+msgstr ""
+
+msgid "%1 MiB"
+msgstr ""
+
+msgid "Same as video"
+msgstr ""
+
+msgid "%1 px wide"
+msgstr ""
+
+msgid "%1: this value can not be used."
+msgstr ""
+
+msgid "%1 is not available in this VLC installation."
+msgstr ""
+
+msgid "This setting"
+msgstr ""
+
+msgid "%1: choose a folder of this computer."
+msgstr ""
+
+msgid "Select a category to reset."
+msgstr ""
+
+msgid "Repeat the current item (One) or the whole play queue (All)."
+msgstr ""
+
+msgid "When playback finishes"
+msgstr ""
+
+msgid "Stop, or quit VLC at the end of the play queue."
+msgstr ""
+
+msgid "Use a custom skin"
+msgstr ""
+
+msgid "Starts VLC with the skin chosen below instead of this interface."
+msgstr ""
+
+msgid "Remember the playback position"
+msgstr ""
+
+msgid "Lets VLC continue the media where you left off."
+msgstr ""
+
+msgid "Reverse scroll direction"
+msgstr ""
+
+msgid "The wheels that seek go backwards when turned forwards."
+msgstr ""
+
+msgid "Web remote control"
+msgstr ""
+
+msgid "Lets a web browser control VLC. Set its password in the Advanced Options."
+msgstr ""
+
+msgid "Video post-processing"
+msgstr ""
+
+msgid "Improves the picture of poorly encoded videos, at the cost of processing power."
+msgstr ""
+
+msgid "Visualization size"
+msgstr ""
+
+msgid "The size the visualizations are drawn at."
+msgstr ""
+
+msgid "Match window"
+msgstr ""
+
+msgid "Seek precisely"
+msgstr ""
+
+msgid "Seek to the exact time asked, slower than seeking to the nearest key frame."
+msgstr ""
+
+msgid "From the file only"
+msgstr ""
+
+msgid "From the file and the internet"
+msgstr ""
+
+msgid "Box"
+msgstr ""
+
+msgid "Current screen"
+msgstr ""
+
+msgid "Screen %1 (%2)"
+msgstr ""
+
+msgid "Screen %1"
+msgstr ""
+
+msgid "Any subtitle file"
+msgstr ""
+
+msgid "Files containing the title"
+msgstr ""
+
+msgid "Title with extra characters"
+msgstr ""
+
+msgid "Exact title"
+msgstr ""
+
+msgid "The plugins can not be rescanned on this installation."
+msgstr ""
+
+msgid "The plugins could not be rescanned."
+msgstr ""
+
+msgid "The plugins could not be rescanned: the folder of VLC may need administrator rights."
+msgstr ""
+
+msgid "The configurations folder could not be opened."
+msgstr ""
+
+msgid "Last.fm is unavailable in this VLC installation."
+msgstr ""
+
+msgid "VLC preferences are unavailable."
+msgstr ""
+
+msgid "The effect preview belongs to another VLC window."
+msgstr ""
+
+msgid "%1 changed outside the settings. Discard your changes to see its new value."
+msgstr ""
+
+msgid "The playback preview could not be restored."
+msgstr ""
+
+msgid "Could not save the settings of VLC (error %1). Check that its configuration file can be written."
+msgstr ""
+
+msgid "%1 changed outside the settings or is unavailable. Your changes were not saved."
+msgstr ""
+
+msgid "default"
+msgstr ""
+
+msgid "modified"
+msgstr ""
+
+msgid "true"
+msgstr ""
+
+msgid "false"
+msgstr ""
+
+msgid "color"
+msgstr ""
+
+msgid "password"
+msgstr ""
+
+msgid "module"
+msgstr ""
+
+msgid "module-list"
+msgstr ""
+
+msgid "file"
+msgstr ""
+
+msgid "directory"
+msgstr ""
+
+msgid "font"
+msgstr ""
+
+msgid "Core"
+msgstr ""
+
+msgid "Option"
+msgstr ""
+
+msgid "&Reset"
+msgstr ""
+
+msgid "&Toggle"
+msgstr ""
+
+msgid "&Modify"
+msgstr ""
+
+msgid "Copy &name"
+msgstr ""
+
+msgid "Copy &value"
+msgstr ""
+
+msgid "Set option value"
+msgstr ""
+
+msgid "&Ok"
+msgstr ""
+
+msgid "Expert"
+msgstr ""
+
+msgid "Switch to expert preferences view"
+msgstr ""
+
+msgid "Modified only"
+msgstr ""
+
+msgid "Expert Preferences"
+msgstr ""
+
+msgid "Restart Required"
+msgstr ""
+
+msgid "VLC needs to be restarted for the reset to take full effect.\n\nRestart now?"
+msgstr ""
+
+msgid "Action hotkey mappings."
+msgstr ""
+
+msgid "&Copy value"
+msgstr ""
+
+msgid "&Unset"
+msgstr ""
+
+msgid "Reset &all"
+msgstr ""
+
+msgid "Reset &all (column)"
+msgstr ""
+
+msgid "Key: <b>%1</b>"
+msgstr ""
+
+msgid "Global Hotkey change"
+msgstr ""
+
+msgid "Press the new key or combination for <b>%1</b>"
+msgstr ""
+
+msgid "Warning: this key or combination is already assigned to \"<b>%1</b>\""
+msgstr ""
+
+msgid "Key or combination: <b>%1</b>"
+msgstr ""
+
+msgid "Global Hotkey assignment conflict"
+msgstr ""
+
+msgid "Hotkey assignment conflict"
+msgstr ""
+
+msgid "Navigation"
+msgstr ""
+
+msgid "This shortcut is unavailable."
+msgstr ""
+
+msgid "This key combination cannot be used by VLC."
+msgstr ""
+
+msgid "The global hotkeys of \"%1\" changed outside this dialog. Cancel and reopen the shortcuts."
+msgstr ""
+
+msgid "The hotkeys of \"%1\" changed outside this dialog. Cancel and reopen the shortcuts."
+msgstr ""
+
+msgid "A shortcut could not be changed. Changes were reverted in memory."
+msgstr ""
+
+msgid "Could not save shortcuts (error %1). Changes were reverted in memory; verify the configuration file."
+msgstr ""
+
+msgid "System's default (%1)"
+msgstr ""
+
+msgid "Media Library Settings"
+msgstr ""
+
+msgid "Please choose an entry point folder"
+msgstr ""
+
+msgid "Theme"
+msgstr ""
+
+msgid "Accent color"
+msgstr ""
+
+msgid "Restart VLC to use the new interface language."
+msgstr ""
+
+msgid "VLC follows the system language. Restart VLC after changing your system language."
+msgstr ""
+
+msgid "Current output device"
+msgstr ""
+
+msgid "No selectable device available"
+msgstr ""
+
+msgid "Device changes affect only the current audio output. Apply keeps this selection while it remains active."
+msgstr ""
+
+msgid "Diagnostics"
+msgstr ""
+
+msgid "Developer mode"
+msgstr ""
+
+msgid "Shows expert options under the Advanced Options of each page, and all the options of VLC."
+msgstr ""
+
+msgid "Add-ons & Scripts"
+msgstr ""
+
+msgid "Global Settings"
+msgstr ""
+
+msgid "Privacy Settings"
+msgstr ""
+
+msgid "Mouse, Keyboard & Remote Controls"
+msgstr ""
+
+msgid "Playback Preferences"
+msgstr ""
+
+msgid "Video Defaults"
+msgstr ""
+
+msgid "Audio Defaults"
+msgstr ""
+
+msgid "Subtitle Defaults"
+msgstr ""
+
+msgid "Playlists, Folders & Files"
+msgstr ""
+
+msgid "Network Connections & Security"
+msgstr ""
+
+msgid "Performance Settings"
+msgstr ""
+
+msgid "Recording, Casting & Streaming Out"
+msgstr ""
+
+msgid "Search results"
+msgstr ""
+
+msgid "Interface language"
+msgstr ""
+
+msgid "Subtitle Languages"
+msgstr ""
+
+msgid "Secondary language"
+msgstr ""
+
+msgid "OpenSubtitles"
+msgstr ""
+
+msgid "Keyboard Shortcuts"
+msgstr ""
+
+msgid "Edit Keyboard Shortcuts"
+msgstr ""
+
+msgid "Reset all shortcuts"
+msgstr ""
+
+msgid "Defaults"
+msgstr ""
+
+msgid "Set a shortcut"
+msgstr ""
+
+msgid "%1 more matching shortcuts"
+msgstr ""
+
+msgid "Show all"
+msgstr ""
+
+msgid "Startup"
+msgstr ""
+
+msgid "Submit played tracks to last.fm"
+msgstr ""
+
+msgid "Last.fm username"
+msgstr ""
+
+msgid "Last.fm password"
+msgstr ""
+
+msgid "Last.fm submission URL"
+msgstr ""
+
+msgid "No matching settings"
+msgstr ""
+
+msgid "No settings are available for this category on this VLC installation"
+msgstr ""
+
+msgid "Show installed add-ons only"
+msgstr ""
+
+msgid "No advanced options on this page."
+msgstr ""
+
+msgid "Welcome setup"
+msgstr ""
+
+msgid "All VLC options"
+msgstr ""
+
+msgid "Reset all settings?"
+msgstr ""
+
+msgid "Every setting of VLC media player goes back to its default."
+msgstr ""
+
+msgid "Discard changes"
+msgstr ""
+
+msgid "Close Equalizer"
+msgstr ""
+
+msgid "Open Equalizer"
+msgstr ""
+
+msgid " Hz"
+msgstr ""
+
+msgid " dB"
+msgstr ""
+
+msgid "Two-pass"
+msgstr ""
+
+msgid "1 kHz"
+msgstr ""
+
+msgid "3 kHz"
+msgstr ""
+
+msgid "6 kHz"
+msgstr ""
+
+msgid "12 kHz"
+msgstr ""
+
+msgid "14 kHz"
+msgstr ""
+
+msgid "16 kHz"
+msgstr ""
+
+msgid "Add-ons"
+msgstr ""
+
+msgid "Broken"
+msgstr ""
+
+msgid "Installing…"
+msgstr ""
+
+msgid "Removing…"
+msgstr ""
+
+msgid "This add-on was installed manually and cannot be managed here."
+msgstr ""
+
+msgid "Search add-ons"
+msgstr ""
+
+msgid "Find more extensions"
+msgstr ""
+
+msgid "Select an add-on that is not installed"
+msgstr ""
+
+msgid "Select an installed add-on"
+msgstr ""
+
+msgid "Load add-ons on startup"
+msgstr ""
+
+msgid "Play audio to adjust and preview sound effects."
+msgstr ""
+
+msgid "Play video to adjust and preview the picture."
+msgstr ""
+
+msgid "Spatial audio"
+msgstr ""
+
+msgid "Stereo widening"
+msgstr ""
+
+msgid "System language (%1)"
+msgstr ""
+
+msgid "Sends the titles of the tracks you play to your Last.fm profile. Takes effect after restarting VLC."
+msgstr ""
+
+msgid "The user name of your Last.fm account."
+msgstr ""
+
+msgid "The password of your Last.fm account."
+msgstr ""
+
+msgid "The address the played tracks are sent to."
+msgstr ""
+
+msgid "Nothing"
+msgstr ""
+
+msgid "Seek"
+msgstr ""
+
+msgid "Set a web remote password in the Advanced Options: the remote stays locked without one."
+msgstr ""
+
+msgid "Applies after restart"
+msgstr ""
+
+msgid "Choose a snapshot folder"
+msgstr ""
+
+msgid "Choose a time-shift buffer folder"
+msgstr ""
+
+msgid "Choose a recording folder"
+msgstr ""
+
+msgid "Choose a folder"
+msgstr ""
+
+msgid "Choose a skin"
+msgstr ""
+
+msgid "Skin files (*.vlt *.wsz *.xml)"
+msgstr ""
+
+msgid "Choose a log file"
+msgstr ""
+
+msgid "Open configurations folder"
+msgstr ""
+
+msgid "Shows the folder of the settings of VLC."
+msgstr ""
+
+msgid "Reset all settings"
+msgstr ""
+
+msgid "Puts every setting of VLC back to its default."
+msgstr ""
+
+msgid "Rescan plugins"
+msgstr ""
+
+msgid "Rescan"
+msgstr ""
+
+msgid "0 s"
+msgstr ""
+
+msgid "5 s"
+msgstr ""
+
+msgid "10s"
+msgstr ""
+
+msgid "Lower"
+msgstr ""
+
+msgid "Usual"
+msgstr ""
+
+msgid "Higher"
+msgstr ""
+
+msgid "-5 s"
+msgstr ""
+
+msgid "+5 s"
+msgstr ""
+
+msgid "0.5 s"
+msgstr ""
+
+msgid "1 s"
+msgstr ""
+
+msgid "10 s"
+msgstr ""
+
+msgid "Choose a color"
+msgstr ""
+
+msgid "Reset picture"
+msgstr ""
+
+msgid "Show minor warnings"
+msgstr ""
+
+msgid "Plain text"
+msgstr ""
+
+msgid "Check for updates automatically"
+msgstr ""
+
+msgid "Save a log"
+msgstr ""
+
+msgid "Log file"
+msgstr ""
+
+msgid "Log details"
+msgstr ""
+
+msgid "Errors only"
+msgstr ""
+
+msgid "Errors and warnings"
+msgstr ""
+
+msgid "Everything (debug)"
+msgstr ""
+
+msgid "Collect playback statistics"
+msgstr ""
+
+msgid "Developer Options"
+msgstr ""
+
+msgid "Write to the system log"
+msgstr ""
+
+msgid "Include debug messages in the system log"
+msgstr ""
+
+msgid "System log identity"
+msgstr ""
+
+msgid "System log facility"
+msgstr ""
+
+msgid "Skin"
+msgstr ""
+
+msgid "Skin file"
+msgstr ""
+
+msgid "Show the fullscreen controls of the skin"
+msgstr ""
+
+msgid "Play video inside main window"
+msgstr ""
+
+msgid "Resize window to fit video"
+msgstr ""
+
+msgid "Remember window size and position"
+msgstr ""
+
+msgid "Keep window above other windows"
+msgstr ""
+
+msgid "Show window decorations"
+msgstr ""
+
+msgid "Show the file name in the title bar"
+msgstr ""
+
+msgid "Open fullscreen on"
+msgstr ""
+
+msgid "Playback Controls"
+msgstr ""
+
+msgid "Start in compact mode"
+msgstr ""
+
+msgid "Auto-hide the controls"
+msgstr ""
+
+msgid "In fullscreen only"
+msgstr ""
+
+msgid "Hide after"
+msgstr ""
+
+msgid "Notifications and System Tray"
+msgstr ""
+
+msgid "Show a system tray icon"
+msgstr ""
+
+msgid "Start minimized to the tray"
+msgstr ""
+
+msgid "Show a popup when the track changes"
+msgstr ""
+
+msgid "Popup duration"
+msgstr ""
+
+msgid "Window opacity"
+msgstr ""
+
+msgid "Pause video when window is minimized"
+msgstr ""
+
+msgid "Bring VLC to the front when playback starts"
+msgstr ""
+
+msgid "Audio and video"
+msgstr ""
+
+msgid "Show the VLC cone when there is no video"
+msgstr ""
+
+msgid "Show the file browser inside the open dialog"
+msgstr ""
+
+msgid "Allow the app icon to change"
+msgstr ""
+
+msgid "Fullscreen controls opacity"
+msgstr ""
+
+msgid "Fullscreen controls sensitivity"
+msgstr ""
+
+msgid "History"
+msgstr ""
+
+msgid "Never remember items matching"
+msgstr ""
+
+msgid "Fetch titles and cover art from the internet"
+msgstr ""
+
+msgid "Additional interfaces"
+msgstr ""
+
+msgid "Continue where you left off"
+msgstr ""
+
+msgid "Start playing as soon as a file opens"
+msgstr ""
+
+msgid "Default playback speed"
+msgstr ""
+
+msgid "Pause when another app uses audio"
+msgstr ""
+
+msgid "Preferred video quality"
+msgstr ""
+
+msgid "Standard (576p)"
+msgstr ""
+
+msgid "Low (360p)"
+msgstr ""
+
+msgid "Very low (240p)"
+msgstr ""
+
+msgid "Preferred menu language"
+msgstr ""
+
+msgid "Default audio track"
+msgstr ""
+
+msgid "Default subtitle track"
+msgstr ""
+
+msgid "Order"
+msgstr ""
+
+msgid "Stop after each item"
+msgstr ""
+
+msgid "Seeking"
+msgstr ""
+
+msgid "Show thumbnail while scrubbing"
+msgstr ""
+
+msgid "Files & Discs"
+msgstr ""
+
+msgid "Default optical drive"
+msgstr ""
+
+msgid "Repair damaged AVI files"
+msgstr ""
+
+msgid "When needed"
+msgstr ""
+
+msgid "Load matching .mkv files from the same folder"
+msgstr ""
+
+msgid "Time-shift"
+msgstr ""
+
+msgid "Time-shift buffer folder"
+msgstr ""
+
+msgid "Time-shift buffer size"
+msgstr ""
+
+msgid "Pause on the last frame of each item"
+msgstr ""
+
+msgid "Resume the last playback states (tracks, speed...)"
+msgstr ""
+
+msgid "Start videos in fullscreen"
+msgstr ""
+
+msgid "Stop the screensaver during playback"
+msgstr ""
+
+msgid "Play video as desktop wallpaper"
+msgstr ""
+
+msgid "Method"
+msgstr ""
+
+msgid "Framing"
+msgstr ""
+
+msgid "Scale video to the window"
+msgstr ""
+
+msgid "Position in the window"
+msgstr ""
+
+msgid "Snapshots"
+msgstr ""
+
+msgid "Save to"
+msgstr ""
+
+msgid "File name prefix"
+msgstr ""
+
+msgid "Number files sequentially"
+msgstr ""
+
+msgid "Show a preview after capture"
+msgstr ""
+
+msgid "Custom aspect ratios"
+msgstr ""
+
+msgid "Custom crop ratios"
+msgstr ""
+
+msgid "Snapshot height (-1: proportional)"
+msgstr ""
+
+msgid "Deinterlacing filter"
+msgstr ""
+
+msgid "Speaker setup"
+msgstr ""
+
+msgid "Maximum volume"
+msgstr ""
+
+msgid "Startup volume"
+msgstr ""
+
+msgid "Volume step"
+msgstr ""
+
+msgid "Loudness"
+msgstr ""
+
+msgid "Normalize loudness"
+msgstr ""
+
+msgid "Target level"
+msgstr ""
+
+msgid "Night mode"
+msgstr ""
+
+msgid "Replay gain preamp"
+msgstr ""
+
+msgid "Spatial audio mode"
+msgstr ""
+
+msgid "Pitch shift"
+msgstr ""
+
+msgid "Chorus/flanger"
+msgstr ""
+
+msgid "Preferred audio language"
+msgstr ""
+
+msgid "Audio delay"
+msgstr ""
+
+msgid "Disabled"
+msgstr ""
+
+msgid "Pass compressed audio to the receiver"
+msgstr ""
+
+msgid "Detect Dolby Surround"
+msgstr ""
+
+msgid "Fastest"
+msgstr ""
+
+msgid "Balanced"
+msgstr ""
+
+msgid "Best"
+msgstr ""
+
+msgid "Output gain"
+msgstr ""
+
+msgid "Keep the pitch when changing the speed"
+msgstr ""
+
+msgid "Equalizer preamp"
+msgstr ""
+
+msgid "Compressor ratio"
+msgstr ""
+
+msgid "Compressor threshold"
+msgstr ""
+
+msgid "Compressor makeup gain"
+msgstr ""
+
+msgid "Tracks & Languages"
+msgstr ""
+
+msgid "Preferred language"
+msgstr ""
+
+msgid "Text encoding"
+msgstr ""
+
+msgid "Loading Subtitles"
+msgstr ""
+
+msgid "Load subtitle files automatically"
+msgstr ""
+
+msgid "File name matching"
+msgstr ""
+
+msgid "System, sans-serif"
+msgstr ""
+
+msgid "Size values"
+msgstr ""
+
+msgid "Bold"
+msgstr ""
+
+msgid "Text color"
+msgstr ""
+
+msgid "Vertical position"
+msgstr ""
+
+msgid "Timing"
+msgstr ""
+
+msgid "On-Screen Messages"
+msgstr ""
+
+msgid "Show feedback for shortcuts"
+msgstr ""
+
+msgid "Show feedback for"
+msgstr ""
+
+msgid "Show filename when a video starts"
+msgstr ""
+
+msgid "Show filename for"
+msgstr ""
+
+msgid "Load subtitles from these folders"
+msgstr ""
+
+msgid "Monospace font"
+msgstr ""
+
+msgid "System monospace"
+msgstr ""
+
+msgid "Text alignment"
+msgstr ""
+
+msgid "Position of the filename"
+msgstr ""
+
+msgid "Skip Amounts"
+msgstr ""
+
+msgid "Very short skip"
+msgstr ""
+
+msgid "Short skip"
+msgstr ""
+
+msgid "Medium skip"
+msgstr ""
+
+msgid "Long skip"
+msgstr ""
+
+msgid "Mouse"
+msgstr ""
+
+msgid "Single click on the video"
+msgstr ""
+
+msgid "Play / Pause"
+msgstr ""
+
+msgid "Play / Pause on release"
+msgstr ""
+
+msgid "Double click on the video"
+msgstr ""
+
+msgid "Scroll wheel"
+msgstr ""
+
+msgid "Horizontal scroll"
+msgstr ""
+
+msgid "Remotes"
+msgstr ""
+
+msgid "Handle mouse clicks in the video"
+msgstr ""
+
+msgid "Web remote password"
+msgstr ""
+
+msgid "Web remote address"
+msgstr ""
+
+msgid "Ignore the volume keys of the keyboard"
+msgstr ""
+
+msgid "Opening Files"
+msgstr ""
+
+msgid "Only allow one VLC window"
+msgstr ""
+
+msgid "Apply to files opened from the file manager"
+msgstr ""
+
+msgid "Add to the playlist instead of replacing it"
+msgstr ""
+
+msgid "When opening a folder"
+msgstr ""
+
+msgid "Only this folder"
+msgstr ""
+
+msgid "Include subfolders"
+msgstr ""
+
+msgid "Include and expand subfolders"
+msgstr ""
+
+msgid "Metadata & Artwork"
+msgstr ""
+
+msgid "Fetch titles and artwork"
+msgstr ""
+
+msgid "Use the media library"
+msgstr ""
+
+msgid "Read media information automatically"
+msgstr ""
+
+msgid "Ignored file extensions"
+msgstr ""
+
+msgid "Buffering"
+msgstr ""
+
+msgid "Local files"
+msgstr ""
+
+msgid "Network streams"
+msgstr ""
+
+msgid "Live capture"
+msgstr ""
+
+msgid "Proxy"
+msgstr ""
+
+msgid "System proxy"
+msgstr ""
+
+msgid "Security"
+msgstr ""
+
+msgid "Verify certificates against the system trust store"
+msgstr ""
+
+msgid "Cipher preference"
+msgstr ""
+
+msgid "Secure (128-bit)"
+msgstr ""
+
+msgid "Most secure (256-bit)"
+msgstr ""
+
+msgid "Connections"
+msgstr ""
+
+msgid "Connection timeout"
+msgstr ""
+
+msgid "HTTP user agent"
+msgstr ""
+
+msgid "Trusted certificates folder"
+msgstr ""
+
+msgid "Post-processing quality"
+msgstr ""
+
+msgid "Skip the H.264 loop filter"
+msgstr ""
+
+msgid "Non-reference frames"
+msgstr ""
+
+msgid "Bidirectional frames"
+msgstr ""
+
+msgid "Non-key frames"
+msgstr ""
+
+msgid "Decoding threads"
+msgstr ""
+
+msgid "Smooth Playback"
+msgstr ""
+
+msgid "Drop frames when the system can't keep up"
+msgstr ""
+
+msgid "Give VLC real-time priority"
+msgstr ""
+
+msgid "Process priority"
+msgstr ""
+
+msgid "Developer"
+msgstr ""
+
+msgid "Decoder"
+msgstr ""
+
+msgid "Clock reference averaging"
+msgstr ""
+
+msgid "Save recordings to"
+msgstr ""
+
+msgid "Record without re-encoding when possible"
+msgstr ""
+
+msgid "Casting"
+msgstr ""
+
+msgid "Discover cast devices"
+msgstr ""
+
+msgid "Cast quality"
+msgstr ""
+
+msgid "Low CPU"
+msgstr ""
+
+msgid "Play locally while streaming"
+msgstr ""
+
+msgid "Include audio"
+msgstr ""
+
+msgid "Include video"
+msgstr ""
+
+msgid "Include subtitles"
+msgstr ""
+
+msgid "Encoding preset"
+msgstr ""
+
+msgid "Tuning"
+msgstr ""
+
+msgid "Send Dolby audio as is"
+msgstr ""
+
+msgid "Cast HTTP port"
+msgstr ""
+
+msgid "Keep the stream output open between items"
+msgstr ""
+
+msgid "More options"
+msgstr ""
+
+msgid "Clear history now"
+msgstr ""
+
+msgid "Removes the recently played items of the media library."
+msgstr ""
+
+msgid "Media library unavailable"
+msgstr ""
+
+msgid "Clear playback history?"
+msgstr ""
+
+msgid "Recently played items will be removed from the media library."
+msgstr ""
+
+msgid "App"
+msgstr ""
+
+msgid "Privacy"
+msgstr ""
+
+msgid "Media"
+msgstr ""
+
+msgid "Library"
+msgstr ""
+
+msgid "Performance"
+msgstr ""
+
+msgid "Remember last volume"
+msgstr ""
+
+msgid "Always starts at:"
+msgstr ""
+
+msgid "Second language (when there are none in the default one)"
+msgstr ""
+
+msgid "Show both languages at once (dual subtitles)"
+msgstr ""
+
+msgid "Subtitle services"
+msgstr ""
+
+msgid "To find subtitles, the services turned on get the video's title, its IMDb id, its file name and hash (made from a part of the file), and nothing else."
+msgstr ""
+
+msgid "ON"
+msgstr ""
+
+msgid "OFF"
+msgstr ""
+
+msgid "Global Hotkey"
+msgstr ""
+
+msgid "This key is assigned to %1. Replace that assignment?"
+msgstr ""
+
+msgid "Press a key combination to add to %1 (Esc cancels)"
+msgstr ""
+
+msgid "Replace"
+msgstr ""
+
+msgid "Toggle fullscreen"
+msgstr ""
+
+msgid "Exit fullscreen / close dialog"
+msgstr ""
+
+msgid "Show playback position and time"
+msgstr ""
+
+msgid "Show the menu"
+msgstr ""
+
+msgid "Show interface controls in fullscreen"
+msgstr ""
+
+msgid "Play / pause"
+msgstr ""
+
+msgid "Next track"
+msgstr ""
+
+msgid "Previous track"
+msgstr ""
+
+msgid "Next program / Service ID"
+msgstr ""
+
+msgid "All Fields"
+msgstr ""
+
+msgid "%1. Press to add a key"
+msgstr ""
+
+msgid "No key. Press to add one"
+msgstr ""
+
+msgid "Remove %1"
+msgstr ""
+
+msgid "Search Keyboard Shortcuts..."
+msgstr ""
+
+msgid "Hotkey of %1"
+msgstr ""
+
+msgid "Global hotkey of %1"
+msgstr ""
+
+msgid "Reset all shortcuts?"
+msgstr ""
+
+msgid "Local and global shortcuts will return to VLC defaults when you save. Cancel keeps your current settings."
+msgstr ""
+
+msgid "Reset all"
+msgstr ""
+
+msgid "Shortcuts saved"
+msgstr ""
+
+msgid "Restart VLC to use the new keyboard shortcuts."
+msgstr ""
+
+msgid "This module outputs the stream using the RIST protocol (TR06)."
+msgstr ""
+
+msgid "Destination Address"
+msgstr ""
+
+msgid "Destination Port"
+msgstr ""
+
+msgid "Stream Name"
+msgstr ""
+
+msgid "Profile %1"
+msgstr ""
+
+msgid "Enter a name for the profile."
+msgstr ""
+
+msgid "A profile named \"%1\" already exists."
+msgstr ""
+
+msgid "No profile is selected."
+msgstr ""
+
+msgid "The last profile cannot be deleted."
+msgstr ""
+
+msgid "Could not save the selected profile."
+msgstr ""
+
+msgid "Profile settings are unavailable or incompatible."
+msgstr ""
+
+msgid "Profile appearance is invalid."
+msgstr ""
+
+msgid "Could not save profile appearance."
+msgstr ""
+
+msgid "Could not apply profile settings; previous values restored."
+msgstr ""
+
+msgid "Profile (%1)"
+msgstr ""
+
+msgid "Customize player"
+msgstr ""
+
+msgid "Sleep timer"
+msgstr ""
+
+msgid "Selected profile"
+msgstr ""
+
+msgid "New profile…"
+msgstr ""
+
+msgid "L   E   F   T"
+msgstr ""
+
+msgid "C   E   N   T   E   R"
+msgstr ""
+
+msgid "R   I   G   H   T"
+msgstr ""
+
+msgid "Drop here to remove from the player"
+msgstr ""
+
+msgid "Customize Player"
+msgstr ""
+
+msgid "New"
+msgstr ""
+
+msgid "Rename"
+msgstr ""
+
+msgid "Rename the profile"
+msgstr ""
+
+msgid "Clone the profile"
+msgstr ""
+
+msgid "Delete the profile"
+msgstr ""
+
+msgid "Cancel and close"
+msgstr ""
+
+msgid "Drag items around and out of the box below to re-order them. Drag items into the box to remove them from the player."
+msgstr ""
+
+msgid "Rename Profile"
+msgstr ""
+
+msgid "Clone Profile"
+msgstr ""
+
+msgid "New Profile"
+msgstr ""
+
+msgid "The profile keeps its layout and its settings."
+msgstr ""
+
+msgid "The copy starts with the layout and the settings of this profile."
+msgstr ""
+
+msgid "The new profile starts with the default layout and the settings in use."
+msgstr ""
+
+msgid "e.g., Late Night"
+msgstr ""
+
+msgid "Profile name"
+msgstr ""
+
+msgid "Delete Profile"
+msgstr ""
+
+msgid "Delete %1?"
+msgstr ""
+
+msgid "Its layout and its settings go with it."
+msgstr ""
+
+msgid "Paste from clipboard"
+msgstr ""
+
+msgid "Do you want to enqueue the following URLs into the play queue?"
+msgstr ""
+
+msgid "MC"
+msgstr ""
+
+msgid "Playlists"
+msgstr ""
+
+msgid "Artists"
+msgstr ""
+
+msgid "Albums"
+msgstr ""
+
+msgid "Genres"
+msgstr ""
+
+msgid "Discover"
+msgstr ""
+
+msgid "Local top bar"
+msgstr ""
+
+msgid "Show navigation menu"
+msgstr ""
+
+msgid "VLC Media Player"
+msgstr ""
+
+msgid "Main display"
+msgstr ""
+
+msgid "Main interface"
+msgstr ""
+
+msgid "Home View"
+msgstr ""
+
+msgid "Open Disc"
+msgstr ""
+
+msgid "Open Multiple Files"
+msgstr ""
+
+msgid "Open Capture Device"
+msgstr ""
+
+msgid "Open Location from clipboard"
+msgstr ""
+
+msgid "%1 MB"
+msgstr ""
+
+msgid "VLC Redesign %1 is up to date"
+msgstr ""
+
+msgid "VLC Redesign %1 is available"
+msgstr ""
+
+msgid "Downloading VLC Redesign %1… %2%"
+msgstr ""
+
+msgid "Preparing VLC Redesign %1…"
+msgstr ""
+
+msgid "VLC Redesign %1 is ready"
+msgstr ""
+
+msgid "Couldn't update"
+msgstr ""
+
+msgid "You have %1."
+msgstr ""
+
+msgid "Only what changed: keep watching, it's checked in the background."
+msgstr ""
+
+msgid "VLC Redesign will close, update and open again where you were."
+msgstr ""
+
+msgid "It takes a few seconds: restart now, or it's done when you close VLC Redesign."
+msgstr ""
+
+msgid "Later"
+msgstr ""
+
+msgid "Retry"
+msgstr ""
+
+msgid "What's new"
+msgstr ""
+
+msgid "Release page"
+msgstr ""
+
+msgid "Update now · %1"
+msgstr ""
+
+msgid "Sidebar"
+msgstr ""
+
+msgid "Videos"
+msgstr ""
+
+msgid "Recent"
+msgstr ""
+
+msgid "Add item"
+msgstr ""
+
+msgid "A new version of VLC is available: <font color=\"%1\">%2.%3.%4%5</font>"
+msgstr ""
+
+msgid "You have the latest version of VLC media player: <font color=\"%1\">%2</font>."
+msgstr ""
+
+msgid "An <font color=\"%1\">error</font> occurred while checking for updates..."
+msgstr ""
+
+msgid "Details"
+msgstr ""
+
+msgid "Re-check"
+msgstr ""
+
+msgid "Bookmark at %1"
+msgstr ""
+
+msgid "Rename playlist"
+msgstr ""
+
+msgid "Please enter the new playlist name:"
+msgstr ""
+
+msgid "Artist banner"
+msgstr ""
+
+msgid "No artist"
+msgstr ""
+
+msgid "Play all"
+msgstr ""
+
+msgid "Enqueue all"
+msgstr ""
+
+msgid "Unknown title"
+msgstr ""
+
+msgid "Unknown artist"
+msgstr ""
+
+msgid "Unwatched First"
+msgstr ""
+
+msgid "Add File"
+msgstr ""
+
+msgid "Add Folder"
+msgstr ""
+
+msgid "Edit Subtitle Tracks"
+msgstr ""
+
+msgid "Edit Audio Tracks"
+msgstr ""
+
+msgid "Reload Library"
+msgstr ""
+
+msgid "Show in File Explorer"
+msgstr ""
+
+msgid "Mark as Watched"
+msgstr ""
+
+msgid "Mark as Unwatched"
+msgstr ""
+
+msgid "Favorite"
+msgstr ""
+
+msgid "Remove from Favorites"
+msgstr ""
+
+msgid "Add to Queue"
+msgstr ""
+
+msgid "Go to Source"
+msgstr ""
+
+msgid "Add Subtitle Tracks"
+msgstr ""
+
+msgid "Add Audio Tracks"
+msgstr ""
+
+msgid "Properties & Metadata"
+msgstr ""
+
+msgid "No media matches the search"
+msgstr ""
+
+msgid "No media in this folder"
+msgstr ""
+
+msgid "Continue Watching"
+msgstr ""
+
+msgid "Favorites"
+msgstr ""
+
+msgid "New Videos"
+msgstr ""
+
+msgid "Listen Again"
+msgstr ""
+
+msgid "New Music"
+msgstr ""
+
+msgid "Alphabetic"
+msgstr ""
+
+msgid "Frequently Visited Folders"
+msgstr ""
+
+msgid "Add folder"
+msgstr ""
+
+msgid "Add folder to media library"
+msgstr ""
+
+msgid "Could not add this folder to the library: %1"
+msgstr ""
+
+msgid "Media library"
+msgstr ""
+
+msgid "Play as Audio"
+msgstr ""
+
+msgid "Play as Album"
+msgstr ""
+
+msgid "Add Album to Queue"
+msgstr ""
+
+msgid "Add to a Video-only Playlist"
+msgstr ""
+
+msgid "Add to an Audio-only Playlist"
+msgstr ""
+
+msgid "Delete File From System"
+msgstr ""
+
+msgid "Are you sure you want to delete this file?"
+msgstr ""
+
+msgid "Media view"
+msgstr ""
+
+msgid "Unknown Title"
+msgstr ""
+
+msgid "No media found\nPlease try adding sources"
+msgstr ""
+
+msgid "Enqueue"
+msgstr ""
+
+msgid "No albums found\nPlease try adding sources"
+msgstr ""
+
+msgid "Close Panel"
+msgstr ""
+
+msgid "%1 - %2 - %3 - %4"
+msgstr ""
+
+msgid "Tracks Count"
+msgstr ""
+
+msgid "No artists found\nPlease try adding sources"
+msgstr ""
+
+msgid "Release Year"
+msgstr ""
+
+msgid "Album Title"
+msgstr ""
+
+msgid "Music view"
+msgstr ""
+
+msgid "Unknown genre"
+msgstr ""
+
+msgid "No genres found\nPlease try adding sources"
+msgstr ""
+
+msgid "Genres - %1"
+msgstr ""
+
+msgid "New playlist"
+msgstr ""
+
+msgid "Playlist actions"
+msgstr ""
+
+msgid "No tracks found\nPlease try adding sources"
+msgstr ""
+
+msgid "Open media"
+msgstr ""
+
+msgid "Add folder to library…"
+msgstr ""
+
+msgid "File…"
+msgstr ""
+
+msgid "Folder…"
+msgstr ""
+
+msgid "Network stream…"
+msgstr ""
+
+msgid "Disc…"
+msgstr ""
+
+msgid "Capture device…"
+msgstr ""
+
+msgid "Convert…"
+msgstr ""
+
+msgid "Stream…"
+msgstr ""
+
+msgid "Title or episode"
+msgstr ""
+
+msgid "Language code"
+msgstr ""
+
+msgid "OpenSubtitles API key"
+msgstr ""
+
+msgid "Your credentials are used for this session only. Downloads use your OpenSubtitles quota."
+msgstr ""
+
+msgid "Search OpenSubtitles to see available files."
+msgstr ""
+
+msgid "Download selected"
+msgstr ""
+
+msgid "Add files to playlist"
+msgstr ""
+
+msgid "Playlist Details"
+msgstr ""
+
+msgid "The playlist will be saved and displayed with this title and thumbnail."
+msgstr ""
+
+msgid "e.g., Favorite Videos"
+msgstr ""
+
+msgid "Playlist title"
+msgstr ""
+
+msgid "Choose files"
+msgstr ""
+
+msgid "Select Files"
+msgstr ""
+
+msgid "These files will be added to the playlist."
+msgstr ""
+
+msgid "Drag files into the box or click here to select files."
+msgstr ""
+
+msgid "Playlist media"
+msgstr ""
+
+msgid "Add files"
+msgstr ""
+
+msgid "Subtitles…"
+msgstr ""
+
+msgid "Move up"
+msgstr ""
+
+msgid "Move down"
+msgstr ""
+
+msgid "Remove selected media from this playlist?"
+msgstr ""
+
+msgid "Remove from playlist"
+msgstr ""
+
+msgid "Processing..."
+msgstr ""
+
+msgid "No media found"
+msgstr ""
+
+msgid "Playlist media list"
+msgstr ""
+
+msgid "Items"
+msgstr ""
+
+msgid "No playlists found"
+msgstr ""
+
+msgid "Create a playlist with files or add media from the library"
+msgstr ""
+
+msgid "Scanning %1"
+msgstr ""
+
+msgid "Indexing Medias (%1%)"
+msgstr ""
+
+msgid "To This File"
+msgstr ""
+
+msgid "Add Subtitles"
+msgstr ""
+
+msgid "To This Folder"
+msgstr ""
+
+msgid "To This Playlist"
+msgstr ""
+
+msgid "From Computer"
+msgstr ""
+
+msgid "From Link"
+msgstr ""
+
+msgid "From OpenSubtitles"
+msgstr ""
+
+msgid "Choose the folder of the audio tracks"
+msgstr ""
+
+msgid "Choose the folder of the subtitles"
+msgstr ""
+
+msgid "Direct HTTPS link to a subtitle file"
+msgstr ""
+
+msgid "Searching OpenSubtitles…"
+msgstr ""
+
+msgid "Search OpenSubtitles to see the subtitle files."
+msgstr ""
+
+msgid "Working on audio tracks…"
+msgstr ""
+
+msgid "Working on subtitles…"
+msgstr ""
+
+msgid "Enter a direct link to a subtitle file above."
+msgstr ""
+
+msgid "No audio file in this folder: choose another one above."
+msgstr ""
+
+msgid "No subtitle file in this folder: choose another one above."
+msgstr ""
+
+msgid "Add link"
+msgstr ""
+
+msgid "Url"
+msgstr ""
+
+msgid "Last played date"
+msgstr ""
+
+msgid "No video found\nPlease try adding sources"
+msgstr ""
+
+msgid "%1 Videos"
+msgstr ""
+
+msgid "Video view"
+msgstr ""
+
+msgid "File Name:"
+msgstr ""
+
+msgid "Folder:"
+msgstr ""
+
+msgid "Path:"
+msgstr ""
+
+msgid "View Less"
+msgstr ""
+
+msgid "View More"
+msgstr ""
+
+msgid "Video track"
+msgstr ""
+
+msgid "Codec:"
+msgstr ""
+
+msgid "Language:"
+msgstr ""
+
+msgid "FPS:"
+msgstr ""
+
+msgid "Channel:"
+msgstr ""
+
+msgid "Search for cast devices"
+msgstr ""
+
+msgid "Scanning..."
+msgstr ""
+
+msgid "Quit at the end of play queue"
+msgstr ""
+
+msgid "Play &Queue"
+msgstr ""
+
+msgid "Docked Play Queue"
+msgstr ""
+
+msgid "&Big Player View"
+msgstr ""
+
+msgid "&Minimal View"
+msgstr ""
+
+msgid "&View Items as Grid"
+msgstr ""
+
+msgid "&Color Scheme"
+msgstr ""
+
+msgid "&Decrease Volume"
+msgstr ""
+
+msgid "&Audio Device"
+msgstr ""
+
+msgid "&Mix Mode"
+msgstr ""
+
+msgid "&3D Output"
+msgstr ""
+
+msgid "&Fit"
+msgstr ""
+
+msgid "Previous Title"
+msgstr ""
+
+msgid "Next Title"
+msgstr ""
+
+msgid "Previous Chapter"
+msgstr ""
+
+msgid "Next Chapter"
+msgstr ""
+
+msgid "Previous Item"
+msgstr ""
+
+msgid "Next Item"
+msgstr ""
+
+msgid "Hide UI"
+msgstr ""
+
+msgid "More Settings"
+msgstr ""
+
+msgid "Play Queue"
+msgstr ""
+
+msgid "Open File(s)"
+msgstr ""
+
+msgid "Open Location from Clipboard"
+msgstr ""
+
+msgid "Album sections"
+msgstr ""
+
+msgid "&Subtitle"
+msgstr ""
+
+msgid "&Tools"
+msgstr ""
+
+msgid "Titles"
+msgstr ""
+
+msgid "Open file"
+msgstr ""
+
+msgid "Synchronize"
+msgstr ""
+
+msgid "Search online"
+msgstr ""
+
+msgid "Select multiple"
+msgstr ""
+
+msgid "Export Playlist"
+msgstr ""
+
+msgid "Add and play"
+msgstr ""
+
+msgid "Add to playlist"
+msgstr ""
+
+msgid "Play as audio"
+msgstr ""
+
+msgid "Remove from Media Library"
+msgstr ""
+
+msgid "Add to Media Library"
+msgstr ""
+
+msgid "Jump to current playing"
+msgstr ""
+
+msgid "Advanced Open..."
+msgstr ""
+
+msgid "Save Play Queue to File..."
+msgstr ""
+
+msgid "Clear the play queue"
+msgstr ""
+
+msgid "%1 Ascending"
+msgstr ""
+
+msgid "%1 Descending"
+msgstr ""
+
+msgid "Shuffle the play queue"
+msgstr ""
+
+msgid "Discard the filtered out items"
+msgstr ""
+
+msgid "About VLC"
+msgstr ""
+
+msgid "Documents"
+msgstr ""
+
+msgid "Browse view"
+msgstr ""
+
+msgid "No network shares found"
+msgstr ""
+
+msgid "Folders"
+msgstr ""
+
+msgid "Computer"
+msgstr ""
+
+msgid "File size"
+msgstr ""
+
+msgid "File modified"
+msgstr ""
+
+msgid "Unknown Share"
+msgstr ""
+
+msgid "Nothing to see here, go back."
+msgstr ""
+
+msgid "Remove from medialibrary"
+msgstr ""
+
+msgid "Add to medialibrary"
+msgstr ""
+
+msgid "Discover view"
+msgstr ""
+
+msgid "Paste or write the URL here"
+msgstr ""
+
+msgid "Unknown share"
+msgstr ""
+
+msgid "Install services"
+msgstr ""
+
+msgid "by <b>%1</b>"
+msgstr ""
+
+msgid "by <b>Unknown</b>"
+msgstr ""
+
+msgid "Installing"
+msgstr ""
+
+msgid "Uninstalling"
+msgstr ""
+
+msgid "No information available"
+msgstr ""
+
+msgid "Score: %1/5  Downloads: %2"
+msgstr ""
+
+msgid "Add a service"
+msgstr ""
+
+msgid "Configure..."
+msgstr ""
+
+msgid "This build can't search the internet."
+msgstr ""
+
+msgid "No connection to the internet."
+msgstr ""
+
+msgid "The video couldn't be identified from its name."
+msgstr ""
+
+msgid "\"%1\" wasn't found. Search for its title."
+msgstr ""
+
+msgid "No subtitles were found for %1."
+msgstr ""
+
+msgid "The subtitle couldn't be downloaded (%1)."
+msgstr ""
+
+msgid "The subtitle couldn't be saved."
+msgstr ""
+
+msgid "The subtitle couldn't be unpacked."
+msgstr ""
+
+msgid "%1 didn't answer."
+msgstr ""
+
+msgid "%1 asks to wait a moment (too many searches)."
+msgstr ""
+
+msgid "%1 didn't answer (%2)."
+msgstr ""
+
+msgid "All languages · movies and series · finds those made for your file"
+msgstr ""
+
+msgid "Hebrew · movies and series"
+msgstr ""
+
+msgid "Series · many languages"
+msgstr ""
+
+msgid "Movies · many languages"
+msgstr ""
+
+msgid "This subtitle comes as a RAR archive, which can't be opened here."
+msgstr ""
+
+msgid "The archive has no subtitle in it."
+msgstr ""
+
+msgid "OpenSubtitles keeps this subtitle for its paying members. Choose another one."
+msgstr ""
+
+msgid "The subtitle is empty."
+msgstr ""
+
+msgid "Title and artist"
+msgstr ""
+
+msgid "Step back"
+msgstr ""
+
+msgid "Toggle lyrics view"
+msgstr ""
+
+msgid "Sync lyrics to playback"
+msgstr ""
+
+msgid "Sync lyrics to playback position"
+msgstr ""
+
+msgid "Volume %1%"
+msgstr ""
+
+msgid "Play audio to select a visualization."
+msgstr ""
+
+msgid "More"
+msgstr ""
+
+msgid "Create playlist"
+msgstr ""
+
+msgid "Add all to queue"
+msgstr ""
+
+msgid "Up one folder"
+msgstr ""
+
+msgid "Open in the library"
+msgstr ""
+
+msgid "Sort"
+msgstr ""
+
+msgid "Title A-Z"
+msgstr ""
+
+msgid "Title Z-A"
+msgstr ""
+
+msgid "Newest First"
+msgstr ""
+
+msgid "Oldest First"
+msgstr ""
+
+msgid "Grid View"
+msgstr ""
+
+msgid "List View"
+msgstr ""
+
+msgid "The media library is not available."
+msgstr ""
+
+msgid "Nothing here yet."
+msgstr ""
+
+msgid "Player controls"
+msgstr ""
+
+msgid "%1 (%2x)"
+msgstr ""
+
+msgid "Progress"
+msgstr ""
+
+msgid "HDR unavailable"
+msgstr ""
+
+msgid "Show player UI"
+msgstr ""
+
+msgid "Hide player UI"
+msgstr ""
+
+msgid "Mini player"
+msgstr ""
+
+msgid "Hide queue"
+msgstr ""
+
+msgid "Show queue"
+msgstr ""
+
+msgid "Queue"
+msgstr ""
+
+msgid "%1 items · %2"
+msgstr ""
+
+msgid "Queue is empty"
+msgstr ""
+
+msgid "Remove selected item from queue"
+msgstr ""
+
+msgid "Add files to queue"
+msgstr ""
+
+msgid "DVD navigation"
+msgstr ""
+
+msgid "Close navigation"
+msgstr ""
+
+msgid "video content"
+msgstr ""
+
+msgid "Previous item"
+msgstr ""
+
+msgid "Play or pause"
+msgstr ""
+
+msgid "Next item"
+msgstr ""
+
+msgid "close video"
+msgstr ""
+
+msgid "maximize player"
+msgstr ""
+
+msgid "Presets:"
+msgstr ""
+
+msgid "Player"
+msgstr ""
+
+msgid "Not playing on %1"
+msgstr ""
+
+msgid "Connecting to %1…"
+msgstr ""
+
+msgid "Playing on %1"
+msgstr ""
+
+msgid "The sound plays on %1"
+msgstr ""
+
+msgid "Pause, seek and change the subtitles here: the TV follows."
+msgstr ""
+
+msgid "Windows Firewall doesn't let %1 connect to this computer to read the media."
+msgstr ""
+
+msgid "Waiting for Windows…"
+msgstr ""
+
+msgid "Allow on public networks too"
+msgstr ""
+
+msgid "Allow on private networks"
+msgstr ""
+
+msgid "Try again"
+msgstr ""
+
+msgid "Play here"
+msgstr ""
+
+msgid "Stop casting"
+msgstr ""
+
+msgid "Also on %1"
+msgstr ""
+
+msgid "VLC Settings"
+msgstr ""
+
+msgid "A-B Loop"
+msgstr ""
+
+msgid "Next Frame"
+msgstr ""
+
+msgid "Previous Frame"
+msgstr ""
+
+msgid "Backward 15s"
+msgstr ""
+
+msgid "Forward 15s"
+msgstr ""
+
+msgid "Properties"
+msgstr ""
+
+msgid "Volume Widget"
+msgstr ""
+
+msgid "Navigation Box"
+msgstr ""
+
+msgid "Program Button"
+msgstr ""
+
+msgid "Cast to TV"
+msgstr ""
+
+msgid "Switch Player"
+msgstr ""
+
+msgid "Artwork Info"
+msgstr ""
+
+msgid "HDR"
+msgstr ""
+
+msgid "File Name"
+msgstr ""
+
+msgid "Artist Name"
+msgstr ""
+
+msgid "Divider"
+msgstr ""
+
+msgid "High Resolution Time"
+msgstr ""
+
+msgid "Forward 10s"
+msgstr ""
+
+msgid "Backward 10s"
+msgstr ""
+
+msgid "Picture in Picture"
+msgstr ""
+
+msgid "Right Sidebar"
+msgstr ""
+
+msgid "Go Home"
+msgstr ""
+
+msgid "Thumbnail"
+msgstr ""
+
+msgid "Folder Name"
+msgstr ""
+
+msgid "Replay"
+msgstr ""
+
+msgid "Forward\n10s"
+msgstr ""
+
+msgid "Backward\n10s"
+msgstr ""
+
+msgid "Forward\n15s"
+msgstr ""
+
+msgid "Backward\n15s"
+msgstr ""
+
+msgid "Play queue, bookmarks and chapters"
+msgstr ""
+
+msgid "Remove the bookmark"
+msgstr ""
+
+msgid "Add a bookmark at the current time"
+msgstr ""
+
+msgid "No bookmarks: add one at the current time with +"
+msgstr ""
+
+msgid "Bookmarks need the media library"
+msgstr ""
+
+msgid "Chapter %1"
+msgstr ""
+
+msgid "No chapters in this media"
+msgstr ""
+
+msgid "Resume dialog"
+msgstr ""
+
+msgid "Continue where you left off?"
+msgstr ""
+
+msgid "Remaining: %1"
+msgstr ""
+
+msgid "After"
+msgstr ""
+
+msgid "Minutes until sleep timer"
+msgstr ""
+
+msgid "minutes"
+msgstr ""
+
+msgid "Pause playback"
+msgstr ""
+
+msgid "Cancel timer"
+msgstr ""
+
+msgid "Start timer"
+msgstr ""
+
+msgid "The saved series preset could not be read."
+msgstr ""
+
+msgid "A saved audio or subtitle track is unavailable in this episode."
+msgstr ""
+
+msgid "Series preset applied."
+msgstr ""
+
+msgid "Saved for episodes of %1."
+msgstr ""
+
+msgid "Series preset removed."
+msgstr ""
+
+msgid "Subtitle timing"
+msgstr ""
+
+msgid "Primary subtitle delay"
+msgstr ""
+
+msgid "Voice marked"
+msgstr ""
+
+msgid "Mark voice heard"
+msgstr ""
+
+msgid "Text marked"
+msgstr ""
+
+msgid "Mark text seen"
+msgstr ""
+
+msgid "Series preset"
+msgstr ""
+
+msgid "Applies to episodes of %1"
+msgstr ""
+
+msgid "Play a local episode to save its track and timing choices."
+msgstr ""
+
+msgid "In the video"
+msgstr ""
+
+msgid "Next to the video · %1"
+msgstr ""
+
+msgid "Next to the video"
+msgstr ""
+
+msgid "Downloaded from %1"
+msgstr ""
+
+msgid "Downloaded"
+msgstr ""
+
+msgid "Opened · %1"
+msgstr ""
+
+msgid "Opened file"
+msgstr ""
+
+msgid "%1k downloads"
+msgstr ""
+
+msgid "Unknown language"
+msgstr ""
+
+msgid "Foreign parts only"
+msgstr ""
+
+msgid "Identifying the video…"
+msgstr ""
+
+msgid "Searching %1…"
+msgstr ""
+
+msgid "Searching subtitles online…"
+msgstr ""
+
+msgid "Downloading…"
+msgstr ""
+
+msgid "%1 · %2 found"
+msgstr ""
+
+msgid "%1 found for this file"
+msgstr ""
+
+msgid "Subtitles of this video"
+msgstr ""
+
+msgid "The video is another one: search by its title"
+msgstr ""
+
+msgid "Search subtitles online again"
+msgstr ""
+
+msgid "Add subtitles to the library"
+msgstr ""
+
+msgid "Library association needs a local media file and media library."
+msgstr ""
+
+msgid "Load a subtitle file for playback"
+msgstr ""
+
+msgid "Title of the movie or series"
+msgstr ""
+
+msgid "Searching…"
+msgstr ""
+
+msgid "Second"
+msgstr ""
+
+msgid "For this file"
+msgstr ""
+
+msgid "Looking for subtitles…"
+msgstr ""
+
+msgid "No subtitles yet"
+msgstr ""
+
+msgid "HI"
+msgstr ""
+
+msgid "For the hearing impaired"
+msgstr ""
+
+msgid "Player topbar"
+msgstr ""
+
+msgid "Show %1 in the library"
+msgstr ""
+
+msgid "Video Tracks"
+msgstr ""
+
+msgid "Track list"
+msgstr ""
+
+msgid "Embedded Tracks"
+msgstr ""
+
+msgid "No audio tracks in this media"
+msgstr ""
+
+msgid "Output Device"
+msgstr ""
+
+msgid "Refresh output devices"
+msgstr ""
+
+msgid "No output device available"
+msgstr ""
+
+msgid "No video tracks in this media"
+msgstr ""
+
+msgid "Current: %1×"
+msgstr ""
+
+msgid "Speed cannot be changed for this media"
+msgstr ""
+
+msgid "Manage bookmarks…"
+msgstr ""
+
+msgid "Bookmarks require the media library"
+msgstr ""
+
+msgid "Show Preferences"
+msgstr ""
+
+msgid "Audio track synchronization"
+msgstr ""
+
+msgid "Audio track delay"
+msgstr ""
+
+msgid "Sound Heard"
+msgstr ""
+
+msgid "Sound Spotted"
+msgstr ""
+
+msgid "Subtitle synchronization"
+msgstr ""
+
+msgid "Voice Heard"
+msgstr ""
+
+msgid "Text Seen"
+msgstr ""
+
+msgid "Secondary subtitle delay"
+msgstr ""
+
+msgid "Subtitle Speed"
+msgstr ""
+
+msgid "Artist unavailable"
+msgstr ""
+
+msgid "Open player"
+msgstr ""
+
+msgid "A to B Loop"
+msgstr ""
+
+msgid "Casting to %1"
+msgstr ""
+
+msgid "Cast to"
+msgstr ""
+
+msgid "This computer"
+msgstr ""
+
+msgid "Not playing: choose it to try again"
+msgstr ""
+
+msgid "Connecting…"
+msgstr ""
+
+msgid "Sound only"
+msgstr ""
+
+msgid "Looking for TVs and Chromecasts on your network…"
+msgstr ""
+
+msgid "No device found. Turn your TV or Chromecast on, on the same network as this computer."
+msgstr ""
+
+msgid "Show the video here too"
+msgstr ""
+
+msgid "With a Chromecast, the video plays only there."
+msgstr ""
+
+msgid "The subtitles shown go to the TV with the picture."
+msgstr ""
+
+msgid "playing here"
+msgstr ""
+
+msgid "Duration unavailable"
+msgstr ""
+
+msgid "Audio effects"
+msgstr ""
+
+msgid "WIDGET\nNOT\nFOUND"
+msgstr ""
+
+msgid "Available for items in your library"
+msgstr ""
+
+msgid "Remove from favorites"
+msgstr ""
+
+msgid "Add to favorites"
+msgstr ""
+
+msgid "File name unavailable"
+msgstr ""
+
+msgid "Folder name unavailable"
+msgstr ""
+
+msgid "Previous frame"
+msgstr ""
+
+msgid "Frame rate unavailable"
+msgstr ""
+
+msgid "Exit Fullscreen"
+msgstr ""
+
+msgid "HDR output"
+msgstr ""
+
+msgid "Languages and tracks"
+msgstr ""
+
+msgid "Repeat one"
+msgstr ""
+
+msgid "Navigation Buttons"
+msgstr ""
+
+msgid "change playback speed"
+msgstr ""
+
+msgid "Play Queue (%1/%2)"
+msgstr ""
+
+msgid "Renderer"
+msgstr ""
+
+msgid "Resolution unavailable"
+msgstr ""
+
+msgid "Backward 10 seconds"
+msgstr ""
+
+msgid "Back 15 seconds"
+msgstr ""
+
+msgid "Forward 10 seconds"
+msgstr ""
+
+msgid "Forward 15 seconds"
+msgstr ""
+
+msgid "Index key"
+msgstr ""
+
+msgid "Red key"
+msgstr ""
+
+msgid "Green key"
+msgstr ""
+
+msgid "Yellow key"
+msgstr ""
+
+msgid "Blue key"
+msgstr ""
+
+msgid "Choose a video zoom level"
+msgstr ""
+
+msgid "Zoom is unavailable without video"
+msgstr ""
+
+msgid "Disc Number"
+msgstr ""
+
+msgid "Playing"
+msgstr ""
+
+msgid "Media cover"
+msgstr ""
+
+msgid "No items"
+msgstr ""
+
+msgid "Remove selected items"
+msgstr ""
+
+msgid "Add files to the queue"
+msgstr ""
+
+msgid "No results"
+msgstr ""
+
+msgid "No content yet"
+msgstr ""
+
+msgid "Drag & Drop some content here!"
+msgstr ""
+
+msgid "Play queue"
+msgstr ""
+
+msgid "%1 elements, %2"
+msgstr ""
+
+msgid "Day"
+msgstr ""
+
+msgid "Night"
+msgstr ""
+
+msgid "Restore"
+msgstr ""
+
+msgid "Maximized"
+msgstr ""
+
+msgid "Do you want to restore the %1 model from %2?"
+msgstr ""
+
+msgid "The application closed abruptly."
+msgstr ""
+
+msgid "This build cannot check for updates."
+msgstr ""
+
+msgid "Couldn't reach GitHub. Check your connection and try again."
+msgstr ""
+
+msgid "GitHub sent an unexpected answer (%1)."
+msgstr ""
+
+msgid "The update's checksum is missing; download it from the release page instead."
+msgstr ""
+
+msgid "The download failed. Check your connection and try again."
+msgstr ""
+
+msgid "The update doesn't match its checksum, so it wasn't used."
+msgstr ""
+
+msgid "The update isn't in a format this version knows."
+msgstr ""
+
+msgid "The update is damaged."
+msgstr ""
+
+msgid "The update isn't for this version."
+msgstr ""
+
+msgid "The update can't be written in %1."
+msgstr ""
+
+msgid "The update is damaged: a file doesn't match its checksum."
+msgstr ""
+
+msgid "The update couldn't be started. It will be tried again next time."
+msgstr ""
+
+msgid "The download failed. Try again, or download it from the release page."
+msgstr ""
+
+msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
+msgstr ""
+
+msgid "The installer couldn't be saved to %1."
+msgstr ""
+
+msgid "The installer couldn't be started."
+msgstr ""
+
+msgid "%1 doesn't answer. Check that it's on, and on the same network as this computer."
+msgstr ""
+
+msgid "Windows Firewall doesn't let %1 connect to this computer to read the video."
+msgstr ""
+
+msgid "%1 couldn't read the video from this computer."
+msgstr ""
+
+msgid "%1 refused to play this video."
+msgstr ""
+
+msgid "%1 stopped playing."
+msgstr ""
+
+msgid "%1 is playing something else now."
+msgstr ""
+
+msgid "%1 couldn't play the video."
+msgstr ""
+
+msgid "Scale: %1%"
+msgstr ""
+
+msgid "Minimal View"
+msgstr ""
+
+msgid "%1 h %2 min"
+msgstr ""
+
+msgid "%1 min %2 s"
+msgstr ""
+
+msgid "%1 sec"
+msgstr ""
+
+msgid "%1h%2"
+msgstr ""
+
+msgid "infos"
+msgstr ""
+
+msgid "Reload"
+msgstr ""
+
+msgid "Failed to add \"%1\""
+msgstr ""
+
+msgid "Failed to remove \"%1\""
+msgstr ""
+
+msgid "Failed to ban \"%1\""
+msgstr ""
+
+msgid "Failed to unban \"%1\""
+msgstr ""
+
+msgid "Medialibrary error"
+msgstr ""
+
+msgid "Maximize"
+msgstr ""
+
+msgid "drag item"
+msgstr ""
+
+msgid "1 selected"
+msgstr ""
+
+msgid "%1 selected"
+msgstr ""
+
+msgid "Empty view"
+msgstr ""
+
+msgid "List/Grid"
+msgstr ""
+
+msgid "Search a language"
+msgstr ""
+
+msgid "Watched First"
+msgstr ""
+
+msgid "Artist A-Z"
+msgstr ""
+
+msgid "Artist Z-A"
+msgstr ""
+
+msgid "Album A-Z"
+msgstr ""
+
+msgid "Album Z-A"
+msgstr ""
+
+msgid "Track Number Ascending"
+msgstr ""
+
+msgid "Track Number Descending"
+msgstr ""
+
+msgid "URI Ascending"
+msgstr ""
+
+msgid "URI Descending"
+msgstr ""
+
+msgid "Disc Number Ascending"
+msgstr ""
+
+msgid "Disc Number Descending"
+msgstr ""
+
+msgid "Do not group videos"
+msgstr ""
+
+msgid "Group by name"
+msgstr ""
+
+msgid "Group by folder"
+msgstr ""
+
+msgid "filter"
+msgstr ""
+
+msgid "Case sensitive"
+msgstr ""
+
+msgid "Use regular expression"
+msgstr ""
+
+msgid "See All"
+msgstr ""
+
+msgid "Enable window titlebar"
+msgstr ""
+
+msgid "Show the menu bar"
+msgstr ""
+
+msgid "Pin video controls"
+msgstr ""
+
+msgid "Show the frame at the hovered position above the seek bar"
+msgstr ""
+
+msgid "Hide the window on close"
+msgstr ""
+
+msgid "Instead of closing the application, hide the window. This setting is only applicable when system tray icon is enabled."
+msgstr ""
+
+msgid "Enable backdrop blur filter for the main window if possible"
+msgstr ""
+
+msgid "Enable picture-in-picture (PiP) mode"
+msgstr ""
+
+msgid "Picture-in-picture mode allows playing video contained in a smaller area so that the interface remains usable."
+msgstr ""
+
+msgid "Check for VLC Redesign updates"
+msgstr ""
+
+msgid "Look for a new release of VLC Redesign on GitHub at startup, at most once a day."
+msgstr ""
+
+msgid "Resume at"
+msgstr ""
+
+msgid "Seconds into the media of the command line where playback continues, after an update."
+msgstr ""
+
+msgid "<p>In order to protect your privacy, <i>VLC media player</i> does <b>not</b> collect personal data or transmit them, not even in anonymized form, to anyone.</p>\n<p>Nevertheless, <i>VLC</i> is able to automatically retrieve information about the media in your play queue from third party Internet-based services. This includes cover art, track names, artist names and other meta-data.</p>\n<p>Consequently, this may entail identifying some of your media files to third party entities. Therefore the <i>VLC</i> developers require your express consent for the media player to access the Internet automatically.</p>\n"
+msgstr ""
+
+msgid "<ul><li>No client-side decoration</li><li>Toolbar menu</li><li>Pinned video controls</li></ul>"
+msgstr ""
+
+msgid "<ul><li>Client-side decoration</li><li>No toolbar menu</li><li>Video controls unpinned</li></ul>"
+msgstr ""
+
+msgid "Seek Backward / Forward"
+msgstr ""
+
+msgid "Previous / Next Item"
+msgstr ""
+
+msgid "Previous / Next Frame"
+msgstr ""
+
+msgid "Cycle Subtitle Track"
+msgstr ""
+
+msgid "Cycle Audio Track"
+msgstr ""
+
+msgid "Toggle Fullscreen"
+msgstr ""
+
+msgid "Increase / Decrease Volume"
+msgstr ""
+
+msgid "Show / Hide Queue"
+msgstr ""
+
+msgid "Show / Hide File Browser"
+msgstr ""
+
+msgid "Take a Snapshot"
+msgstr ""
+
+msgid "Video camera"
+msgstr ""
+
+msgid "Service discoveries adds new sources to your play queue such as web radios, video websites, ..."
+msgstr ""
+
+msgid "Greek"
+msgstr ""
+
+msgid "Largest"
+msgstr ""
+
+msgid "Slightly raised"
+msgstr ""
+
+msgid "Raised"
+msgstr ""
+
+msgid "Looks for the cast devices of the local network when the Renderer menu opens."
+msgstr ""
+
+msgid "Opens the window where it was when VLC was closed."
+msgstr ""
+
+msgid "How long the popup of the track changes stays on the screen."
+msgstr ""
+
+msgid "How much processor time the system gives VLC compared with the other programs."
+msgstr ""
+
+msgid "What a double click on the video does."
+msgstr ""
+
+msgid "Nothing|Toggle fullscreen"
+msgstr ""
+
+msgid "Choose the size of the subtitles by name (relative to the picture), or in pixels."
+msgstr ""
+
+msgid "Relative|Pixels"
+msgstr ""
+
+msgid "Relative"
+msgstr ""
+
+msgid "How opaque the box behind the subtitles is when there is one (kept while there is none)."
+msgstr ""
+
+msgid "A regular expression: the items whose address or name matches it are not saved in the history, nor their playback position."
+msgstr ""
+
+msgid "Ultra fast"
+msgstr ""
+
+msgid "Super fast"
+msgstr ""
+
+msgid "Very fast"
+msgstr ""
+
+msgid "Very slow"
+msgstr ""
+
+msgid "Placebo"
+msgstr ""
+
+msgid "Film"
+msgstr ""
+
+msgid "Still image"
+msgstr ""
+
+msgid "Fast decoding"
+msgstr ""
+
+msgid "Zero latency"
+msgstr ""
+
+msgid "Above normal"
+msgstr ""
+
+msgid "Below normal"
+msgstr ""
+
+msgid "Idle"
+msgstr ""
+
+msgid "This displays the resulting media, but can slow things down."
+msgstr ""
+
+msgid "This module outputs the transcoded stream to a network via SRT."
+msgstr ""
+
+msgid "Empty Style"
+msgstr ""
+
+msgid "Minimalist Style"
+msgstr ""
+
+msgid "One-liner Style"
+msgstr ""
+
+msgid "Simplest Style"
+msgstr ""
+
+msgid "Classic Style"
+msgstr ""
+
+msgid "Movies"
+msgstr ""
+
+msgid "Shows"
+msgstr ""
+
+msgid "Work"
+msgstr ""
+
+msgid "Do you really want to delete the selected playlist?"
+msgstr ""
+
+msgid "Video player"
+msgstr ""
+
+msgid "Audio player"
+msgstr ""
+
+msgid "A file of VLC Redesign was changed since it was installed, so the small update can't be used: update with the installer instead."
+msgstr ""
+
+msgid "Asturian"
+msgstr ""
+
+msgid "Cebuano"
+msgstr ""
+
+msgid "Central Kurdish"
+msgstr ""
+
+msgid "Montenegrin"
+msgstr ""
+
+msgid "Hawaiian"
+msgstr ""
+
+msgid "Hmong"
+msgstr ""
+
+msgid "Manipuri"
+msgstr ""
+
+msgid "Dari"
+msgstr ""
+
+msgid "Syriac"
+msgstr ""
+
+msgid "Cantonese"
+msgstr ""
+
+msgid "Standard Moroccan Tamazight"
+msgstr ""
+
+msgid "Portuguese (Brazil)"
+msgstr ""
+
+msgid "Chinese (Traditional)"
+msgstr ""
+
+msgid "Spanish (Latin America)"
+msgstr ""
+
+msgid "%1 Bookmark"
+msgid_plural "%1 Bookmarks"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "%1 file selected"
+msgid_plural "%1 files selected"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "%1 item"
+msgid_plural "%1 items"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "%1 media file"
+msgid_plural "%1 media files"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "%1 Other"
+msgid_plural "%1 Other"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "%1 song"
+msgid_plural "%1 songs"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "%1 Song"
+msgid_plural "%1 Songs"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "%1 track"
+msgid_plural "%1 tracks"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "%1 Track"
+msgid_plural "%1 Tracks"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "%1 video"
+msgid_plural "%1 videos"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "%1 Video"
+msgid_plural "%1 Videos"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Delete playlist"
+msgid_plural "Delete playlists"
+msgstr[0] ""
+msgstr[1] ""

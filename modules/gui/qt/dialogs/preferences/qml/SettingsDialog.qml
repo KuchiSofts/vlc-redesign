@@ -731,31 +731,27 @@ Dialog {
         }
     }
 
-    Dialog {
+    // the dialog of the redesign, in the theme of the window (Qt's own
+    // Dialog was a light box over the dark settings)
+    Widgets.RedesignDialog {
         id: confirmReset
         objectName: "confirmResetAllSettings"
-        parent: root.parent
-        x: Math.round(((parent ? parent.width : width) - width) / 2)
-        y: Math.round(((parent ? parent.height : height) - height) / 2)
-        width: root.px(420)
-        modal: true
-        title: qsTr("Reset all settings?")
-        standardButtons: Dialog.Cancel | Dialog.Ok
+        title: qsTr("Reset all settings")
+        acceptText: qsTr("Reset")
+        preferredWidth: root.px(560)
         onAccepted: {
             config.resetAll()
             // nothing staged to keep: the settings are the defaults now
             root.saved = true
             root.close()
         }
-        contentItem: Text {
+
+        Widgets.RedesignDialogHeading {
             // (a popup of its own: not under the mirrored content)
             LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
-            horizontalAlignment: Text.AlignLeft
-            text: qsTr("Every setting of VLC media player goes back to its default.")
-            wrapMode: Text.WordWrap
-            color: root.c("#8F8F8F")
-            font.family: VLCStyle.redesign.fontFamily
-            font.pixelSize: root.px(14)
+            LayoutMirroring.childrenInherit: true
+            text: qsTr("Reset all settings?")
+            description: qsTr("Every setting of VLC media player goes back to its default.")
         }
     }
 

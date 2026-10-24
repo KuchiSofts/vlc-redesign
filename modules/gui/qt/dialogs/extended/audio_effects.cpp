@@ -16,6 +16,7 @@
 #include "maininterface/mainctx.hpp"
 #include "qt.hpp"
 #include "dialogs/preferences/config_values.hpp"
+#include "util/language_change.hpp"
 #include "../../../../audio_filter/equalizer_presets.h"
 
 #include <QLocale>
@@ -231,6 +232,8 @@ QString AudioEffects::preset() const
 
 QVariantList AudioEffects::presets() const
 {
+    // in another language of the interface, the bindings asking are made again
+    markTranslationBinding(this);
     QVariantList result;
     for (int i = 0; i < NB_PRESETS; ++i) {
         QVariantList gains;

@@ -30,6 +30,7 @@
 #include "dialogs/dialogs_provider.hpp"
 #include "util/colorizedsvgicon.hpp"
 #include "maininterface/navigationmodel.hpp"
+#include "util/language_change.hpp"
 
 // Qt includes
 #include <QPainter>
@@ -355,8 +356,9 @@ QmlMenuBar::QmlMenuBar(QObject *parent)
 {
 }
 
- QString QmlMenuBar::menuEntryTitle(MenuEntry entry)
+ QString QmlMenuBar::menuEntryTitle(MenuEntry entry) const
 {
+    markTranslationBinding(this);
     switch (entry)
     {
     case MEDIA:

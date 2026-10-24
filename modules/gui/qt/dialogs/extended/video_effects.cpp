@@ -13,6 +13,7 @@
 #include "maininterface/mainctx.hpp"
 #include "qt.hpp"
 #include "dialogs/preferences/config_values.hpp"
+#include "util/language_change.hpp"
 
 #include <QByteArray>
 #include <QPair>
@@ -229,6 +230,8 @@ QVariant VideoEffects::readValue(const QString& name) const
 QVariant VideoEffects::parameterValue(const QString& name) const { return readValue(name); }
 QVariantList VideoEffects::choices(const QString& name) const
 {
+    // in another language of the interface, the bindings asking are made again
+    markTranslationBinding(this);
     QVariantList result;
     if (!validOption(name)) return result;
     const QByteArray id = name.toUtf8();
@@ -246,6 +249,7 @@ QVariantList VideoEffects::choices(const QString& name) const
 }
 QVariantList VideoEffects::parameters(const QString& filter) const
 {
+    markTranslationBinding(this);
     QVariantList result;
     if (!filterAvailable(filter)) return result;
     for (const QString& name : optionNames(filter)) {

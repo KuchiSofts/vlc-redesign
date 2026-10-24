@@ -200,7 +200,9 @@ public:
     explicit QmlMenuBar(QObject *parent = nullptr);
 
 
-    Q_INVOKABLE static QString menuEntryTitle(MenuEntry entry);
+    // in the language of the interface: the bindings asking are made again
+    // when it changes
+    Q_INVOKABLE QString menuEntryTitle(MenuEntry entry) const;
 
 signals:
     //navigate to the left(-1)/right(1) menu

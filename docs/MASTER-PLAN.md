@@ -38,7 +38,7 @@ Windows 0.2.6 is released; 0.3.0 counts the lines of section 8 (done since 0.2.6
 | Classic dialogs         | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 11/11   | 100 % | [§8.6](#86-classic-dialogs)            |
 | Popups and menus        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 15/15   | 100 % | [§8.4](#84-popups-and-menus)           |
 | Casting                 | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 14/16   | 88 %  | [§7](#7-desktop-for-windows-what-is-done) + [§8.7](#87-casting) |
-| Languages               | 🟩🟩🟩🟩⬜⬜⬜⬜⬜⬜ | 4/9     | 44 %  | [§12](#12-languages)                   |
+| Languages               | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 8/9     | 89 %  | [§12](#12-languages)                   |
 | GitHub and community    | 🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜ | 6/18    | 33 %  | [§13.16](#1316-setup-checklist)        |
 
 **Contents**
@@ -986,15 +986,20 @@ Text matching needs Inter with the same metrics (distance-field text, no hinting
 
 ## 12. Languages
 
-- 🟢 English by default in the app and the installer, whatever the system language; *Reset all* returns to English
-- 🟢 Installer in English and Hebrew (right to left)
-- 🔴 The installer asks for the language on its first page (English selected), and the app starts in it
-- 🟢 *Settings → Global → Appearance → Interface language* (applied at the next start)
-- 🔴 The language changes at once, without a restart; the welcome can change it too
-- 🟢 Every new string listed for translation (`po/POTFILES.in`, `qtr()` in C++)
-- 🔴 Translations compiled into the release build
-- 🔴 Translators' platform (Weblate or Transifex); English and Hebrew first, then VLC's languages (decision 7)
-- 🔴 Right-to-left layouts (Hebrew, Arabic) checked screen by screen
+- 🟢 English by default in the portable zip and the app, whatever the system language; *Reset all* returns to English
+- 🟢 Installer in English, Hebrew (right to left) and Brazilian Portuguese
+- 🟢 The installer offers the language of Windows (only for a language with a full translation: Hebrew, Brazilian
+  Portuguese), the app starts in it; updates keep it, silent installs never ask (2026-10-24, tested in Windows Sandbox)
+- 🟢 *Settings → Global → Appearance → Interface language*, and *Layout direction* (left to right by default, right to
+  left when chosen, whatever the language)
+- 🟢 The language and the direction change at once, without a restart, everywhere (the welcome and the classic settings
+  too; classic dialogs when they open next)
+- 🟢 Every string listed for translation: vlc.pot made again from the tree (7,823), the missing files and `tr()` added
+- 🟢 Translations compiled into the release build (98 languages, catalogs made again at each build)
+- 🔴 Translators' platform (Weblate or Transifex); English and Hebrew first, then VLC's languages (decision 7). Hebrew and
+  Brazilian Portuguese are complete; the other languages have VLC's own texts, the redesign's in English
+- 🟢 Right to left checked page by page (Hebrew, Arabic, and a test language 40 % longer, both directions: no cut, no
+  overlap), the playback bar kept left to right as on YouTube
 
 Android and the TV receiver follow the same rules.
 
@@ -1290,7 +1295,7 @@ In an organization, a `.github` repository gives every repository these files by
 | Clean PC     | Install and first start on a clean Windows (Sandbox); again 2026-10-24 (build 163): window in 1.24 s, 1080p without a GPU 75 % of one core, quit 0.5 s | 🟢     |
 | Updates      | Small updates from the three previous releases, checked file by file              | 🟢     |
 | Design       | Pixel check of the frames the release touches; frame table updated                | 🟡 2 hover frames (their values checked in the code) |
-| Languages    | English by default; installer and settings language switch                        | 🟡 no switch without restart |
+| Languages    | English by default; installer offers Windows' language; switch at once, right to left | 🟢 |
 
 ## 15. Risks
 

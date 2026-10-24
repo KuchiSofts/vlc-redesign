@@ -42,102 +42,106 @@
 #include <vlc_charset.h>
 #include "../libvlc.h"
 
+/* A key name, translated in the context "key" (vlc_keycode2str): the Home
+ * key is not the Home page, nor the Delete key the Delete command. */
+#define NC_(ctx, str) str
+
 static const struct key_descriptor
 {
     const char psz[20];
     uint32_t i_code;
 } s_keys[] =
 {   /* Alphabetical order */
-    { N_("Backspace"),         KEY_BACKSPACE         },
-    { N_("Brightness Down"),   KEY_BRIGHTNESS_DOWN   },
-    { N_("Brightness Up"),     KEY_BRIGHTNESS_UP     },
-    { N_("Browser Back"),      KEY_BROWSER_BACK      },
-    { N_("Browser Favorites"), KEY_BROWSER_FAVORITES },
-    { N_("Browser Forward"),   KEY_BROWSER_FORWARD   },
-    { N_("Browser Home"),      KEY_BROWSER_HOME      },
-    { N_("Browser Refresh"),   KEY_BROWSER_REFRESH   },
-    { N_("Browser Search"),    KEY_BROWSER_SEARCH    },
-    { N_("Browser Stop"),      KEY_BROWSER_STOP      },
-    { N_("Delete"),            KEY_DELETE            },
-    { N_("Down"),              KEY_DOWN              },
-    { N_("End"),               KEY_END               },
-    { N_("Enter"),             KEY_ENTER             },
-    { N_("Esc"),               KEY_ESC               },
-    { N_("F1"),                KEY_F1                },
-    { N_("F10"),               KEY_F10               },
-    { N_("F11"),               KEY_F11               },
-    { N_("F12"),               KEY_F12               },
-    { N_("F13"),               KEY_F(13)             },
-    { N_("F14"),               KEY_F(14)             },
-    { N_("F15"),               KEY_F(15)             },
-    { N_("F16"),               KEY_F(16)             },
-    { N_("F17"),               KEY_F(17)             },
-    { N_("F18"),               KEY_F(18)             },
-    { N_("F19"),               KEY_F(19)             },
-    { N_("F2"),                KEY_F2                },
-    { N_("F20"),               KEY_F(20)             },
-    { N_("F21"),               KEY_F(21)             },
-    { N_("F22"),               KEY_F(22)             },
-    { N_("F23"),               KEY_F(23)             },
-    { N_("F24"),               KEY_F(24)             },
-    { N_("F25"),               KEY_F(25)             },
-    { N_("F26"),               KEY_F(26)             },
-    { N_("F27"),               KEY_F(27)             },
-    { N_("F28"),               KEY_F(28)             },
-    { N_("F29"),               KEY_F(29)             },
-    { N_("F3"),                KEY_F3                },
-    { N_("F30"),               KEY_F(30)             },
-    { N_("F31"),               KEY_F(31)             },
-    { N_("F32"),               KEY_F(32)             },
-    { N_("F33"),               KEY_F(33)             },
-    { N_("F34"),               KEY_F(34)             },
-    { N_("F35"),               KEY_F(35)             },
-    { N_("F4"),                KEY_F4                },
-    { N_("F5"),                KEY_F5                },
-    { N_("F6"),                KEY_F6                },
-    { N_("F7"),                KEY_F7                },
-    { N_("F8"),                KEY_F8                },
-    { N_("F9"),                KEY_F9                },
-    { N_("Home"),              KEY_HOME              },
-    { N_("Insert"),            KEY_INSERT            },
-    { N_("Left"),              KEY_LEFT              },
-    { N_("Media Angle"),       KEY_MEDIA_ANGLE       },
-    { N_("Media Audio Track"), KEY_MEDIA_AUDIO       },
-    { N_("Media Forward"),     KEY_MEDIA_FORWARD     },
-    { N_("Media Menu"),        KEY_MEDIA_MENU        },
-    { N_("Media Next Frame"),  KEY_MEDIA_FRAME_NEXT  },
-    { N_("Media Next Track"),  KEY_MEDIA_NEXT_TRACK  },
-    { N_("Media Play Pause"),  KEY_MEDIA_PLAY_PAUSE  },
-    { N_("Media Prev Frame"),  KEY_MEDIA_FRAME_PREV  },
-    { N_("Media Prev Track"),  KEY_MEDIA_PREV_TRACK  },
-    { N_("Media Record"),      KEY_MEDIA_RECORD      },
-    { N_("Media Repeat"),      KEY_MEDIA_REPEAT      },
-    { N_("Media Rewind"),      KEY_MEDIA_REWIND      },
-    { N_("Media Select"),      KEY_MEDIA_SELECT      },
-    { N_("Media Shuffle"),     KEY_MEDIA_SHUFFLE     },
-    { N_("Media Stop"),        KEY_MEDIA_STOP        },
-    { N_("Media Subtitle"),    KEY_MEDIA_SUBTITLE    },
-    { N_("Media Time"),        KEY_MEDIA_TIME        },
-    { N_("Media View"),        KEY_MEDIA_VIEW        },
-    { N_("Menu"),              KEY_MENU              },
-    { N_("Mouse Wheel Down"),  KEY_MOUSEWHEELDOWN    },
-    { N_("Mouse Wheel Left"),  KEY_MOUSEWHEELLEFT    },
-    { N_("Mouse Wheel Right"), KEY_MOUSEWHEELRIGHT   },
-    { N_("Mouse Wheel Up"),    KEY_MOUSEWHEELUP      },
-    { N_("Page Down"),         KEY_PAGEDOWN          },
-    { N_("Page Up"),           KEY_PAGEUP            },
-    { N_("Pause"),             KEY_PAUSE             },
-    { N_("Print"),             KEY_PRINT             },
-    { N_("Right"),             KEY_RIGHT             },
-    { N_("Space"),             ' '                   },
-    { N_("Tab"),               KEY_TAB               },
-    { N_("Unset"),             KEY_UNSET             },
-    { N_("Up"),                KEY_UP                },
-    { N_("Volume Down"),       KEY_VOLUME_DOWN       },
-    { N_("Volume Mute"),       KEY_VOLUME_MUTE       },
-    { N_("Volume Up"),         KEY_VOLUME_UP         },
-    { N_("Zoom In"),           KEY_ZOOM_IN           },
-    { N_("Zoom Out"),          KEY_ZOOM_OUT          },
+    { NC_("key", "Backspace"),         KEY_BACKSPACE         },
+    { NC_("key", "Brightness Down"),   KEY_BRIGHTNESS_DOWN   },
+    { NC_("key", "Brightness Up"),     KEY_BRIGHTNESS_UP     },
+    { NC_("key", "Browser Back"),      KEY_BROWSER_BACK      },
+    { NC_("key", "Browser Favorites"), KEY_BROWSER_FAVORITES },
+    { NC_("key", "Browser Forward"),   KEY_BROWSER_FORWARD   },
+    { NC_("key", "Browser Home"),      KEY_BROWSER_HOME      },
+    { NC_("key", "Browser Refresh"),   KEY_BROWSER_REFRESH   },
+    { NC_("key", "Browser Search"),    KEY_BROWSER_SEARCH    },
+    { NC_("key", "Browser Stop"),      KEY_BROWSER_STOP      },
+    { NC_("key", "Delete"),            KEY_DELETE            },
+    { NC_("key", "Down"),              KEY_DOWN              },
+    { NC_("key", "End"),               KEY_END               },
+    { NC_("key", "Enter"),             KEY_ENTER             },
+    { NC_("key", "Esc"),               KEY_ESC               },
+    { NC_("key", "F1"),                KEY_F1                },
+    { NC_("key", "F10"),               KEY_F10               },
+    { NC_("key", "F11"),               KEY_F11               },
+    { NC_("key", "F12"),               KEY_F12               },
+    { NC_("key", "F13"),               KEY_F(13)             },
+    { NC_("key", "F14"),               KEY_F(14)             },
+    { NC_("key", "F15"),               KEY_F(15)             },
+    { NC_("key", "F16"),               KEY_F(16)             },
+    { NC_("key", "F17"),               KEY_F(17)             },
+    { NC_("key", "F18"),               KEY_F(18)             },
+    { NC_("key", "F19"),               KEY_F(19)             },
+    { NC_("key", "F2"),                KEY_F2                },
+    { NC_("key", "F20"),               KEY_F(20)             },
+    { NC_("key", "F21"),               KEY_F(21)             },
+    { NC_("key", "F22"),               KEY_F(22)             },
+    { NC_("key", "F23"),               KEY_F(23)             },
+    { NC_("key", "F24"),               KEY_F(24)             },
+    { NC_("key", "F25"),               KEY_F(25)             },
+    { NC_("key", "F26"),               KEY_F(26)             },
+    { NC_("key", "F27"),               KEY_F(27)             },
+    { NC_("key", "F28"),               KEY_F(28)             },
+    { NC_("key", "F29"),               KEY_F(29)             },
+    { NC_("key", "F3"),                KEY_F3                },
+    { NC_("key", "F30"),               KEY_F(30)             },
+    { NC_("key", "F31"),               KEY_F(31)             },
+    { NC_("key", "F32"),               KEY_F(32)             },
+    { NC_("key", "F33"),               KEY_F(33)             },
+    { NC_("key", "F34"),               KEY_F(34)             },
+    { NC_("key", "F35"),               KEY_F(35)             },
+    { NC_("key", "F4"),                KEY_F4                },
+    { NC_("key", "F5"),                KEY_F5                },
+    { NC_("key", "F6"),                KEY_F6                },
+    { NC_("key", "F7"),                KEY_F7                },
+    { NC_("key", "F8"),                KEY_F8                },
+    { NC_("key", "F9"),                KEY_F9                },
+    { NC_("key", "Home"),              KEY_HOME              },
+    { NC_("key", "Insert"),            KEY_INSERT            },
+    { NC_("key", "Left"),              KEY_LEFT              },
+    { NC_("key", "Media Angle"),       KEY_MEDIA_ANGLE       },
+    { NC_("key", "Media Audio Track"), KEY_MEDIA_AUDIO       },
+    { NC_("key", "Media Forward"),     KEY_MEDIA_FORWARD     },
+    { NC_("key", "Media Menu"),        KEY_MEDIA_MENU        },
+    { NC_("key", "Media Next Frame"),  KEY_MEDIA_FRAME_NEXT  },
+    { NC_("key", "Media Next Track"),  KEY_MEDIA_NEXT_TRACK  },
+    { NC_("key", "Media Play Pause"),  KEY_MEDIA_PLAY_PAUSE  },
+    { NC_("key", "Media Prev Frame"),  KEY_MEDIA_FRAME_PREV  },
+    { NC_("key", "Media Prev Track"),  KEY_MEDIA_PREV_TRACK  },
+    { NC_("key", "Media Record"),      KEY_MEDIA_RECORD      },
+    { NC_("key", "Media Repeat"),      KEY_MEDIA_REPEAT      },
+    { NC_("key", "Media Rewind"),      KEY_MEDIA_REWIND      },
+    { NC_("key", "Media Select"),      KEY_MEDIA_SELECT      },
+    { NC_("key", "Media Shuffle"),     KEY_MEDIA_SHUFFLE     },
+    { NC_("key", "Media Stop"),        KEY_MEDIA_STOP        },
+    { NC_("key", "Media Subtitle"),    KEY_MEDIA_SUBTITLE    },
+    { NC_("key", "Media Time"),        KEY_MEDIA_TIME        },
+    { NC_("key", "Media View"),        KEY_MEDIA_VIEW        },
+    { NC_("key", "Menu"),              KEY_MENU              },
+    { NC_("key", "Mouse Wheel Down"),  KEY_MOUSEWHEELDOWN    },
+    { NC_("key", "Mouse Wheel Left"),  KEY_MOUSEWHEELLEFT    },
+    { NC_("key", "Mouse Wheel Right"), KEY_MOUSEWHEELRIGHT   },
+    { NC_("key", "Mouse Wheel Up"),    KEY_MOUSEWHEELUP      },
+    { NC_("key", "Page Down"),         KEY_PAGEDOWN          },
+    { NC_("key", "Page Up"),           KEY_PAGEUP            },
+    { NC_("key", "Pause"),             KEY_PAUSE             },
+    { NC_("key", "Print"),             KEY_PRINT             },
+    { NC_("key", "Right"),             KEY_RIGHT             },
+    { NC_("key", "Space"),             ' '                   },
+    { NC_("key", "Tab"),               KEY_TAB               },
+    { NC_("key", "Unset"),             KEY_UNSET             },
+    { NC_("key", "Up"),                KEY_UP                },
+    { NC_("key", "Volume Down"),       KEY_VOLUME_DOWN       },
+    { NC_("key", "Volume Mute"),       KEY_VOLUME_MUTE       },
+    { NC_("key", "Volume Up"),         KEY_VOLUME_UP         },
+    { NC_("key", "Zoom In"),           KEY_ZOOM_IN           },
+    { NC_("key", "Zoom Out"),          KEY_ZOOM_OUT          },
 };
 
 static int keystrcmp (const void *key, const void *elem)
@@ -235,6 +239,18 @@ static const char *nooptext (const char *txt)
     return txt;
 }
 
+/* The name of a key in the language of the interface: "key\004Home" */
+static const char *keytext (const char *name)
+{
+    char msgid[sizeof ("key\004") + sizeof (s_keys[0].psz)];
+    const char *tr;
+
+    if (snprintf (msgid, sizeof (msgid), "key\004%s", name) >= (int) sizeof (msgid))
+        return name;
+    tr = vlc_gettext (msgid);
+    return (tr == msgid) ? name : tr;
+}
+
 /**
  * Format a human-readable and unique representation of a VLC key code
  * (including modifiers).
@@ -246,6 +262,7 @@ static const char *nooptext (const char *txt)
 char *vlc_keycode2str (uint_fast32_t code, bool locale)
 {
     const char *(*tr)(const char *) = locale ? vlc_gettext : nooptext;
+    const char *(*trkey)(const char *) = locale ? keytext : nooptext;
     const char *name;
     char *str, buf[5];
     uintptr_t key = code & ~KEY_MODIFIER;
@@ -268,7 +285,7 @@ found:
                   (code & KEY_MODIFIER_SHIFT) ? tr(N_("Shift+")) : "",
                   (code & KEY_MODIFIER_META) ? tr(N_("Meta+")) : "",
                   (code & KEY_MODIFIER_COMMAND) ? tr(N_("Command+")) : "",
-                  tr(name)) == -1)
+                  trkey(name)) == -1)
         return NULL;
     return str;
 }

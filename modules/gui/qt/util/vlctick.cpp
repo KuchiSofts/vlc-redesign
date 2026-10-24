@@ -140,6 +140,7 @@ QString VLCTick::formatShort(int formatFlags) const
 
     }
     else
+        /* xgettext:no-c-format */
         return qtr("%1ms").arg(t_ms);
 }
 

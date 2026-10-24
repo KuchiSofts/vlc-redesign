@@ -243,7 +243,8 @@ QVariantList VideoEffects::choices(const QString& name) const
             result << QVariantMap{{"id", QString::fromUtf8(option->list.psz[i])},
                                   {"name", qtr(label ? label : option->list.psz[i])}};
         else if (CONFIG_CLASS(option->i_type) == CONFIG_ITEM_INTEGER)
-            result << QVariantMap{{"id", option->list.i[i]}, {"name", qtr(label ? label : "")}};
+            // no literal "" in qtr(): xgettext would add an empty msgid to vlc.pot
+            result << QVariantMap{{"id", option->list.i[i]}, {"name", label ? qtr(label) : QString()}};
     }
     return result;
 }

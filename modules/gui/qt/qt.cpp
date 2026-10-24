@@ -609,8 +609,20 @@ public:
     {
         Q_UNUSED(context);
 
-        const char* text = (n >= 0 && disambiguation != nullptr) ? vlc_ngettext(sourceText, disambiguation, n)
-                                                                 : vlc_gettext(sourceText);
+        const char* text;
+        if (n >= 0 && disambiguation != nullptr)
+            text = vlc_ngettext(sourceText, disambiguation, n);
+        else if (disambiguation != nullptr && disambiguation[0] != '\0')
+        {
+            // qsTr("Tracks", "media streams"): the msgctxt of a text that
+            // means something else in another place
+            const QByteArray msgid = QByteArray(disambiguation) + '\004' + sourceText;
+            text = vlc_gettext(msgid.constData());
+            if (text == msgid.constData())
+                text = sourceText;
+        }
+        else
+            text = vlc_gettext(sourceText);
 
         assert(text);
         return QString::fromUtf8(text);

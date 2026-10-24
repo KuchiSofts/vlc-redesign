@@ -6,6 +6,7 @@ import QtQuick
 import QtQuick.Controls.Basic
 import QtQuick.Layouts
 import VLC.Style
+import VLC.Widgets as Widgets
 
 ColumnLayout {
     id: root
@@ -86,11 +87,24 @@ ColumnLayout {
                 width: presetBox.width
                 implicitHeight: Math.min(contentItem.implicitHeight, VLCStyle.dp(280, VLCStyle.scale))
                 padding: 0
-                contentItem: ListView {
-                    // a popup: right to left as its box
-                    LayoutMirroring.enabled: presetBox.mirrored
-                    LayoutMirroring.childrenInherit: true
-                    clip: true; implicitHeight: contentHeight; model: presetBox.popup.visible ? presetBox.delegateModel : null; currentIndex: presetBox.highlightedIndex
+                contentItem: Item {
+                    implicitWidth: popupList.implicitWidth
+                    implicitHeight: popupList.implicitHeight
+
+                    ListView {
+                        id: popupList
+                        anchors.fill: parent
+                        // a popup: right to left as its box
+                        LayoutMirroring.enabled: presetBox.mirrored
+                        LayoutMirroring.childrenInherit: true
+                        clip: true; implicitHeight: contentHeight; model: presetBox.popup.visible ? presetBox.delegateModel : null; currentIndex: presetBox.highlightedIndex
+                    }
+
+                    // the wheel moves it by whole rows
+                    Widgets.RowSnapWheel {
+                        anchors.fill: popupList
+                        view: popupList
+                    }
                 }
                 background: Rectangle { color: VLCStyle.redesign.color("#191919", "#ababaa"); border.color: VLCStyle.redesign.color("#373737", "#8e8e8d") }
             }

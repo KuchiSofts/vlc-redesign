@@ -114,24 +114,37 @@ T.ComboBox {
         width: control.width
         padding: 1
 
-        contentItem: ListView {
-            // right to left (Hebrew, Arabic...): a popup is not under the
-            // mirrored interface
-            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
-            LayoutMirroring.childrenInherit: true
+        contentItem: Item {
+            implicitWidth: popupList.implicitWidth
+            implicitHeight: popupList.implicitHeight
 
-            clip: true
-            implicitHeight: contentHeight
-            model: control.popup.visible ? control.delegateModel : null
-            currentIndex: control.highlightedIndex
+            ListView {
+                id: popupList
+                anchors.fill: parent
+                // right to left (Hebrew, Arabic...): a popup is not under the
+                // mirrored interface
+                LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+                LayoutMirroring.childrenInherit: true
 
-            highlight: Widgets.AnimatedBackground {
-                enabled: theme.initialized
-                border.color: visualFocus ? theme.visualFocus : Qt.alpha(theme.visualFocus, 0.0)
-                color: theme.bg.secondary
+                clip: true
+                implicitHeight: contentHeight
+                model: control.popup.visible ? control.delegateModel : null
+                currentIndex: control.highlightedIndex
+
+                highlight: Widgets.AnimatedBackground {
+                    enabled: theme.initialized
+                    border.color: visualFocus ? theme.visualFocus : Qt.alpha(theme.visualFocus, 0.0)
+                    color: theme.bg.secondary
+                }
+
+                ScrollIndicator.vertical: ScrollIndicator { }
             }
 
-            ScrollIndicator.vertical: ScrollIndicator { }
+            // the wheel moves it by whole rows
+            Widgets.RowSnapWheel {
+                anchors.fill: popupList
+                view: popupList
+            }
         }
 
         background: Rectangle {

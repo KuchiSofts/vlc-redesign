@@ -506,14 +506,27 @@ Widgets.RedesignDialog {
                     width: scopePicker.width
                     implicitHeight: contentItem.implicitHeight + topPadding + bottomPadding
                     padding: VLCStyle.dp(2, VLCStyle.scale)
-                    contentItem: ListView {
-                        // a popup: right to left as its box
-                        LayoutMirroring.enabled: scopePicker.mirrored
-                        LayoutMirroring.childrenInherit: true
-                        clip: true
-                        implicitHeight: contentHeight
-                        model: scopePicker.popup.visible ? scopePicker.delegateModel : null
-                        currentIndex: scopePicker.highlightedIndex
+                    contentItem: Item {
+                        implicitWidth: popupList.implicitWidth
+                        implicitHeight: popupList.implicitHeight
+
+                        ListView {
+                            id: popupList
+                            anchors.fill: parent
+                            // a popup: right to left as its box
+                            LayoutMirroring.enabled: scopePicker.mirrored
+                            LayoutMirroring.childrenInherit: true
+                            clip: true
+                            implicitHeight: contentHeight
+                            model: scopePicker.popup.visible ? scopePicker.delegateModel : null
+                            currentIndex: scopePicker.highlightedIndex
+                        }
+
+                        // the wheel moves it by whole rows
+                        Widgets.RowSnapWheel {
+                            anchors.fill: popupList
+                            view: popupList
+                        }
                     }
                     background: Rectangle {
                         radius: VLCStyle.dp(6, VLCStyle.scale)

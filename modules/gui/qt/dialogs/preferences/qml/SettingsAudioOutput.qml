@@ -9,6 +9,7 @@ import VLC.Dialogs
 import VLC.MainInterface
 import VLC.Player
 import VLC.Style
+import VLC.Widgets as Widgets
 
 ColumnLayout {
     id: root
@@ -105,14 +106,27 @@ ColumnLayout {
                 width: deviceBox.width
                 implicitHeight: Math.min(contentItem.implicitHeight, VLCStyle.dp(280, VLCStyle.scale))
                 padding: 0
-                contentItem: ListView {
-                    // a popup: right to left as its box
-                    LayoutMirroring.enabled: deviceBox.mirrored
-                    LayoutMirroring.childrenInherit: true
-                    clip: true
-                    implicitHeight: contentHeight
-                    model: deviceBox.popup.visible ? deviceBox.delegateModel : null
-                    currentIndex: deviceBox.highlightedIndex
+                contentItem: Item {
+                    implicitWidth: popupList.implicitWidth
+                    implicitHeight: popupList.implicitHeight
+
+                    ListView {
+                        id: popupList
+                        anchors.fill: parent
+                        // a popup: right to left as its box
+                        LayoutMirroring.enabled: deviceBox.mirrored
+                        LayoutMirroring.childrenInherit: true
+                        clip: true
+                        implicitHeight: contentHeight
+                        model: deviceBox.popup.visible ? deviceBox.delegateModel : null
+                        currentIndex: deviceBox.highlightedIndex
+                    }
+
+                    // the wheel moves it by whole rows
+                    Widgets.RowSnapWheel {
+                        anchors.fill: popupList
+                        view: popupList
+                    }
                 }
                 background: Rectangle {
                     color: VLCStyle.redesign.color("#191919", "#ababaa")

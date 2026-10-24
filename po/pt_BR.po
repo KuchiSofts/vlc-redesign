@@ -19401,7 +19401,7 @@ msgstr "Exibir"
 #: modules/gui/qt/menus/menus.cpp:853
 #: modules/gui/qt/player/qml/TracksMenu.qml:376
 msgid "Playback"
-msgstr "Reproduzir"
+msgstr "Reprodução"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:393
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:73
@@ -23378,7 +23378,7 @@ msgstr "Claro"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:30
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:407
 msgid "Dark"
-msgstr "Escura"
+msgstr "Escuro"
 
 #: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:90
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:32

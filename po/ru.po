@@ -2607,7 +2607,7 @@ msgstr ""
 #: modules/logger/file.c:217 modules/spu/marq.c:63 modules/spu/rss.c:71
 #: modules/spu/rss.c:168
 msgid "Default"
-msgstr "по умолчанию"
+msgstr "По умолчанию"
 
 #: src/libvlc-module.c:619
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:239
@@ -11513,7 +11513,7 @@ msgstr "Приёмник"
 #: modules/access/v4l2/v4l2.c:326
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:22
 msgid "Controls"
-msgstr "Параметры"
+msgstr "Управление"
 
 #: modules/access/v4l2/v4l2.c:327
 msgid "Video capture controls (if supported by the device)"

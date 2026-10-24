@@ -31,7 +31,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-24 17:48+0000\n"
+"POT-Creation-Date: 2026-10-24 18:08+0000\n"
 "PO-Revision-Date: 2017-09-20 03:42+0000\n"
 "Last-Translator: Fan\n"
 "Language-Team: French (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -143,7 +143,7 @@ msgstr "Avancé"
 msgid "Subtitles / OSD"
 msgstr "Sous-titres / OSD"
 
-#: include/vlc_config_cat.h:46 modules/control/hotkeys.c:1311
+#: include/vlc_config_cat.h:46 modules/control/hotkeys.c:1314
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:1301
 msgid "Hotkeys"
 msgstr "Raccourcis"
@@ -563,7 +563,7 @@ msgstr "Mode stéréo"
 
 #: src/audio_output/output.c:406 src/libvlc-module.c:212
 msgid "Audio mix mode"
-msgstr ""
+msgstr "Mode de mixage audio"
 
 #: src/audio_output/output.c:489 src/libvlc-module.c:209
 #: modules/access/v4l2/v4l2.c:267 modules/audio_output/alsa.c:1276
@@ -616,17 +616,16 @@ msgid "Reverse stereo"
 msgstr "Stéréo inversée"
 
 #: src/audio_output/output.c:614
-#, fuzzy
 msgid "Original"
-msgstr "Id original"
+msgstr "Original"
 
 #: src/audio_output/output.c:619 src/libvlc-module.c:218
 msgid "Binaural"
-msgstr ""
+msgstr "Binaural"
 
 #: src/audio_output/output.c:631
 msgid "4.0"
-msgstr ""
+msgstr "4.0"
 
 #: src/audio_output/output.c:640
 msgid "5.1"
@@ -634,7 +633,7 @@ msgstr "5.1"
 
 #: src/audio_output/output.c:649
 msgid "7.1"
-msgstr ""
+msgstr "7.1"
 
 #: src/config/cmdline.c:307
 #, c-format
@@ -896,9 +895,9 @@ msgid "Closed captions %u"
 msgstr "Sous-titrage %u"
 
 #: src/input/decoder.c:2672
-#, fuzzy, c-format
+#, c-format
 msgid "DTVCC Closed captions %u"
-msgstr "Sous-titrage %u"
+msgstr "Sous-titrage codé DTVCC %u"
 
 #: src/input/decoder.c:2972
 msgid "VLC could not open the decoder module."
@@ -926,7 +925,7 @@ msgstr "Programme"
 #: src/input/es_out.c:1974
 #, c-format
 msgid "Stream '%s'"
-msgstr ""
+msgstr "Flux « %s »"
 
 #: src/input/es_out.c:2235 src/input/es_out.c:2237
 msgid "Scrambled"
@@ -1016,7 +1015,7 @@ msgstr "Canaux"
 
 #: src/input/es_out.c:4734
 msgid "Channel Layout"
-msgstr ""
+msgstr "Disposition des canaux"
 
 #: src/input/es_out.c:4738 modules/access/alsa.c:40 modules/access/imem.c:74
 #: modules/audio_output/amem.c:62 modules/codec/fluidsynth.c:64
@@ -1038,19 +1037,19 @@ msgstr "Format décodé"
 
 #: src/input/es_out.c:4760
 msgid "Decoded channels"
-msgstr ""
+msgstr "Canaux décodés"
 
 #: src/input/es_out.c:4765
 msgid "Decoded sample rate"
-msgstr ""
+msgstr "Fréquence d'échantillonnage décodée"
 
 #: src/input/es_out.c:4772
 msgid "Decoded bits per sample"
-msgstr ""
+msgstr "Bits par échantillon décodés"
 
 #: src/input/es_out.c:4776
 msgid "Decoded Bitrate"
-msgstr ""
+msgstr "Débit décodé"
 
 #: src/input/es_out.c:4786
 msgid "Track replay gain"
@@ -1066,14 +1065,12 @@ msgid "%.2f dB"
 msgstr "%.2f dB"
 
 #: src/input/es_out.c:4799
-#, fuzzy
 msgid "Video resolution"
-msgstr "Liste de résolutions vidéos préférées"
+msgstr "Résolution vidéo"
 
 #: src/input/es_out.c:4804
-#, fuzzy
 msgid "Buffer dimensions"
-msgstr "Durée (s)"
+msgstr "Dimensions du tampon"
 
 #: src/input/es_out.c:4811 src/input/es_out.c:4814 modules/access/imem.c:92
 #: modules/access/rdp.c:65 modules/access/screen/screen.c:44
@@ -1087,49 +1084,40 @@ msgid "Frame rate"
 msgstr "Fréquence d'images"
 
 #: src/input/es_out.c:4828
-#, fuzzy
 msgid "Top left"
-msgstr "Zone 3 : gauche"
+msgstr "Haut-gauche"
 
 #: src/input/es_out.c:4828
-#, fuzzy
 msgid "Left top"
-msgstr "Avant Gauche"
+msgstr "Gauche-haut"
 
 #: src/input/es_out.c:4829
-#, fuzzy
 msgid "Right bottom"
-msgstr "haut bas"
+msgstr "Droite-bas"
 
 #: src/input/es_out.c:4829
-#, fuzzy
 msgid "Top right"
-msgstr "Copyright"
+msgstr "Haut-droite"
 
 #: src/input/es_out.c:4830
-#, fuzzy
 msgid "Bottom left"
-msgstr "Bas-Gauche"
+msgstr "Bas-gauche"
 
 #: src/input/es_out.c:4830
-#, fuzzy
 msgid "Bottom right"
-msgstr "Bas-Droite"
+msgstr "Bas-droite"
 
 #: src/input/es_out.c:4831
-#, fuzzy
 msgid "Left bottom"
-msgstr "haut bas"
+msgstr "Gauche-bas"
 
 #: src/input/es_out.c:4831
-#, fuzzy
 msgid "Right top"
-msgstr "Droite"
+msgstr "Droite-haut"
 
 #: src/input/es_out.c:4833
-#, fuzzy
 msgid "Orientation"
-msgstr "Orientation du miroir"
+msgstr "Orientation"
 
 #: src/input/es_out.c:4839 src/input/es_out.c:4857 src/input/es_out.c:4875
 #: src/input/es_out.c:4888 src/input/es_out.c:4900
@@ -1141,19 +1129,16 @@ msgid "Undefined"
 msgstr "Indéfini"
 
 #: src/input/es_out.c:4841
-#, fuzzy
 msgid "ITU-R BT.601 (525 lines, 60 Hz)"
-msgstr "525 lignes / 60 Hz"
+msgstr "ITU-R BT.601 (525 lignes, 60 Hz)"
 
 #: src/input/es_out.c:4843
-#, fuzzy
 msgid "ITU-R BT.601 (625 lines, 50 Hz)"
-msgstr "625 lignes / 50 Hz"
+msgstr "ITU-R BT.601 (625 lignes, 50 Hz)"
 
 #: src/input/es_out.c:4851
-#, fuzzy
 msgid "Color primaries"
-msgstr "Messages en couleur"
+msgstr "Primaires de couleur"
 
 #: src/input/es_out.c:4858 src/libvlc-module.c:387
 #: modules/video_filter/deinterlace/deinterlace.h:57
@@ -1162,30 +1147,27 @@ msgstr "Linéaire"
 
 #: src/input/es_out.c:4865
 msgid "Hybrid Log-Gamma"
-msgstr ""
+msgstr "Hybrid Log-Gamma"
 
 #: src/input/es_out.c:4869
-#, fuzzy
 msgid "Color transfer function"
-msgstr "Extraction de couleur"
+msgstr "Fonction de transfert des couleurs"
 
 #: src/input/es_out.c:4882
-#, fuzzy
 msgid "Color space"
-msgstr "Schéma de couleur"
+msgstr "Espace colorimétrique"
 
 #: src/input/es_out.c:4889
-#, fuzzy
 msgid "Full"
-msgstr "Graves"
+msgstr "Complète"
 
 #: src/input/es_out.c:4890
 msgid "Limited"
-msgstr ""
+msgstr "Limitée"
 
 #: src/input/es_out.c:4894
 msgid "Color Range"
-msgstr ""
+msgstr "Plage de couleurs"
 
 #: src/input/es_out.c:4902 src/libvlc-module.c:320 src/libvlc-module.c:419
 #: src/libvlc-module.c:424 modules/audio_filter/channel_mixer/mono.c:90
@@ -1198,122 +1180,116 @@ msgid "Center"
 msgstr "Centré"
 
 #: src/input/es_out.c:4903
-#, fuzzy
 msgid "Top Left"
-msgstr "Haut-Gauche"
+msgstr "En haut à gauche"
 
 #: src/input/es_out.c:4904
-#, fuzzy
 msgid "Top Center"
-msgstr "Centré"
+msgstr "En haut au centre"
 
 #: src/input/es_out.c:4905
-#, fuzzy
 msgid "Bottom Left"
-msgstr "Bas-Gauche"
+msgstr "En bas à gauche"
 
 #: src/input/es_out.c:4906
-#, fuzzy
 msgid "Bottom Center"
-msgstr "Bas-Gauche"
+msgstr "En bas au centre"
 
 #: src/input/es_out.c:4910
-#, fuzzy
 msgid "Chroma location"
-msgstr "Gain de chrominance"
+msgstr "Position de la chrominance"
 
 #: src/input/es_out.c:4916 modules/codec/x264.c:434
 msgid "2D"
-msgstr ""
+msgstr "2D"
 
 #: src/input/es_out.c:4917
 msgid "Side-By-Side"
-msgstr ""
+msgstr "Côte à côte"
 
 #: src/input/es_out.c:4918
 msgid "Top-Bottom"
-msgstr ""
+msgstr "Haut-bas"
 
 #: src/input/es_out.c:4919
 msgid "Row Sequential"
-msgstr ""
+msgstr "Séquentiel par lignes"
 
 #: src/input/es_out.c:4920
 msgid "Column Sequential"
-msgstr ""
+msgstr "Séquentiel par colonnes"
 
 #: src/input/es_out.c:4921
 msgid "Frame Sequential"
-msgstr ""
+msgstr "Séquentiel par images"
 
 #: src/input/es_out.c:4922
 msgid "Checkboard"
-msgstr ""
+msgstr "Damier"
 
 #: src/input/es_out.c:4926
 msgid "Stereo Mode"
-msgstr ""
+msgstr "Mode stéréo"
 
 #: src/input/es_out.c:4928
 msgid "First Stereo Eye"
-msgstr ""
+msgstr "Premier œil stéréo"
 
 #: src/input/es_out.c:4938
 msgid "Equirectangular"
-msgstr ""
+msgstr "Équirectangulaire"
 
 #: src/input/es_out.c:4941
 msgid "Cubemap"
-msgstr ""
+msgstr "Cubemap"
 
 #: src/input/es_out.c:4947
-#, fuzzy
 msgid "Projection"
-msgstr "Direction"
+msgstr "Projection"
 
 #: src/input/es_out.c:4953
 msgctxt "ViewPoint"
 msgid "Yaw"
-msgstr ""
+msgstr "Lacet"
 
 #: src/input/es_out.c:4955
 msgctxt "ViewPoint"
 msgid "Pitch"
-msgstr ""
+msgstr "Tangage"
 
 #: src/input/es_out.c:4957
 msgctxt "ViewPoint"
 msgid "Roll"
-msgstr ""
+msgstr "Roulis"
 
 #: src/input/es_out.c:4960
 msgctxt "ViewPoint"
 msgid "Field of view"
-msgstr ""
+msgstr "Champ de vision"
 
 #: src/input/es_out.c:4965
 msgid "Max. mastering luminance"
-msgstr ""
+msgstr "Luminance max. de mastering"
 
 #: src/input/es_out.c:4970
 msgid "Min. mastering luminance"
-msgstr ""
+msgstr "Luminance min. de mastering"
 
 #: src/input/es_out.c:4978
 msgid "Mastering Primary R"
-msgstr ""
+msgstr "Primaire R de mastering"
 
 #: src/input/es_out.c:4985
 msgid "Mastering Primary G"
-msgstr ""
+msgstr "Primaire V de mastering"
 
 #: src/input/es_out.c:4992
 msgid "Mastering Primary B"
-msgstr ""
+msgstr "Primaire B de mastering"
 
 #: src/input/es_out.c:4999
 msgid "Mastering White point"
-msgstr ""
+msgstr "Point blanc de mastering"
 
 #: src/input/es_out.c:5014 modules/access/imem.c:63
 #: modules/gui/macosx/library/VLCLibraryDataTypes.m:216
@@ -1324,7 +1300,7 @@ msgstr "Sous-titres"
 
 #: src/input/input.c:3130
 msgid "Your media can't be opened"
-msgstr ""
+msgstr "Impossible d'ouvrir votre média"
 
 #: src/input/input.c:3131
 #, c-format
@@ -1440,22 +1416,20 @@ msgstr "Acteurs"
 
 #: src/input/meta.c:82 modules/demux/mp4/meta.c:103
 #: modules/gui/macosx/playqueue/VLCPlayQueueSortingMenuController.m:55
-#, fuzzy
 msgid "Album Artist"
-msgstr "Artiste"
+msgstr "Artiste de l'album"
 
 #: src/input/meta.c:83
-#, fuzzy
 msgid "Disc number"
-msgstr "Numéro de piste"
+msgstr "Numéro de disque"
 
 #: src/input/meta.c:84
 msgid "Total disc number"
-msgstr ""
+msgstr "Nombre total de disques"
 
 #: src/input/meta.c:85
 msgid "Compilation"
-msgstr ""
+msgstr "Compilation"
 
 #: src/interface/interface.c:86 modules/gui/macosx/menus/VLCMainMenu.m:350
 #: modules/gui/macosx/menus/VLCMainMenu.m:351
@@ -1619,7 +1593,7 @@ msgstr "Rôle du média"
 
 #: src/libvlc-module.c:137
 msgid "Media (player) role for operating system policy."
-msgstr ""
+msgstr "Rôle du média (lecteur) pour la gestion par le système d'exploitation."
 
 #: src/libvlc-module.c:139
 msgid "Enable bit-exact mode (pure mode)"
@@ -1658,18 +1632,16 @@ msgid "Music"
 msgstr "Musique"
 
 #: src/libvlc-module.c:155
-#, fuzzy
 msgid "Communication"
-msgstr "Emplacement"
+msgstr "Communication"
 
 #: src/libvlc-module.c:155 modules/meta_engine/ID3Genres.h:69
 msgid "Game"
 msgstr "Jeux"
 
 #: src/libvlc-module.c:156
-#, fuzzy
 msgid "Notification"
-msgstr "Amplification"
+msgstr "Notification"
 
 #: src/libvlc-module.c:156
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:315
@@ -1677,9 +1649,8 @@ msgid "Animation"
 msgstr "Animation"
 
 #: src/libvlc-module.c:156
-#, fuzzy
 msgid "Production"
-msgstr "Produit"
+msgstr "Production"
 
 #: src/libvlc-module.c:157
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:72
@@ -1688,7 +1659,7 @@ msgstr "Accessibilité"
 
 #: src/libvlc-module.c:157
 msgid "Test"
-msgstr ""
+msgstr "Test"
 
 #: src/libvlc-module.c:160
 msgid "Audio gain"
@@ -1740,13 +1711,15 @@ msgstr "Ceci  sélectionne le module utilisé pour le rééchantillonnage audio.
 
 #: src/libvlc-module.c:184
 msgid "Force S/PDIF support"
-msgstr ""
+msgstr "Forcer la prise en charge S/PDIF"
 
 #: src/libvlc-module.c:186
 msgid ""
 "This option should be used when the audio output can't negotiate S/PDIF "
 "support."
 msgstr ""
+"Utilisez cette option lorsque la sortie audio ne parvient pas à négocier la "
+"prise en charge S/PDIF."
 
 #: src/libvlc-module.c:189
 msgid "Force detection of Dolby Surround"
@@ -1780,14 +1753,14 @@ msgstr ""
 msgid "Auto"
 msgstr "Automatique"
 
-#: src/libvlc-module.c:198 src/libvlc-module.c:374 src/player/osd.c:323
+#: src/libvlc-module.c:198 src/libvlc-module.c:374 src/player/osd.c:340
 #: modules/access/dtv/access.c:100 modules/access/v4l2/v4l2.c:201
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
 msgid "On"
 msgstr "Activé"
 
-#: src/libvlc-module.c:198 src/libvlc-module.c:374 src/player/osd.c:323
+#: src/libvlc-module.c:198 src/libvlc-module.c:374 src/player/osd.c:340
 #: modules/access/dtv/access.c:100 modules/access/v4l2/v4l2.c:137
 #: modules/access/v4l2/v4l2.c:201
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:136
@@ -2118,9 +2091,8 @@ msgid "Always place the video window on top of other windows."
 msgstr "Toujours placer la fenêtre vidéo au-dessus des autres fenêtres"
 
 #: src/libvlc-module.c:348
-#, fuzzy
 msgid "Enable wallpaper mode"
-msgstr "Activer le mode bureau"
+msgstr "Activer le mode papier peint"
 
 #: src/libvlc-module.c:350
 msgid ""
@@ -2210,12 +2182,11 @@ msgstr "Film NTSC (IVTC)"
 
 #: src/libvlc-module.c:391
 msgid "Deinterlace filter"
-msgstr ""
+msgstr "Filtre de désentrelacement"
 
 #: src/libvlc-module.c:392
-#, fuzzy
 msgid "Deinterlace module to use."
-msgstr "Module de désentrelacement"
+msgstr "Module de désentrelacement à utiliser."
 
 #: src/libvlc-module.c:394
 msgid "Video Stereo 3D mode"
@@ -2227,15 +2198,15 @@ msgstr ""
 
 #: src/libvlc-module.c:403 src/video_output/vout_intf.c:166
 msgid "Left Only"
-msgstr ""
+msgstr "Gauche uniquement"
 
 #: src/libvlc-module.c:403 src/video_output/vout_intf.c:167
 msgid "Right Only"
-msgstr ""
+msgstr "Droite uniquement"
 
 #: src/libvlc-module.c:404 src/video_output/vout_intf.c:168
 msgid "Side-by-Side"
-msgstr ""
+msgstr "Côte à côte"
 
 #: src/libvlc-module.c:427
 msgid "Disable screensaver"
@@ -2257,7 +2228,7 @@ msgstr "Jamais"
 
 #: src/libvlc-module.c:432
 msgid "When fullscreen"
-msgstr ""
+msgstr "En plein écran"
 
 #: src/libvlc-module.c:432 modules/gui/macosx/main/macosx.m:125
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:50
@@ -2520,11 +2491,11 @@ msgstr "Ceci permet la gestion des clics souris sur la vidéo."
 
 #: src/libvlc-module.c:543
 msgid "Mouse Pause Policy"
-msgstr ""
+msgstr "Pause au clic de souris"
 
 #: src/libvlc-module.c:545
 msgid "This controls how pause on mouse click is handled"
-msgstr ""
+msgstr "Détermine comment la pause par clic de souris est gérée"
 
 #: src/libvlc-module.c:552 modules/access/rist.h:85
 #: modules/audio_output/mmdevice.c:1621
@@ -2537,7 +2508,7 @@ msgstr "Désactivé"
 
 #: src/libvlc-module.c:552
 msgid "Toggle pause immediately on mouse released"
-msgstr ""
+msgstr "Lecture/pause dès le relâchement du clic"
 
 #: src/libvlc-module.c:560
 msgid ""
@@ -2786,6 +2757,9 @@ msgid ""
 "letter ISO-639 country code; you may use 'none' to avoid a fallback to "
 "another language)."
 msgstr ""
+"Langue de la piste audio à utiliser (séparées par des virgules, code de pays "
+"ISO-639 à deux ou trois lettres ; vous pouvez utiliser « none » pour éviter "
+"de basculer vers une autre langue)."
 
 #: src/libvlc-module.c:677
 msgid "Subtitle language"
@@ -2796,6 +2770,9 @@ msgid ""
 "Language of the subtitle track you want to use (comma separated, two or "
 "three letter ISO-639 country code; you may use 'any' as a fallback)."
 msgstr ""
+"Langue de la piste de sous-titres à utiliser (séparées par des virgules, "
+"code de pays ISO-639 à deux ou trois lettres ; vous pouvez utiliser « any » "
+"comme langue de secours)."
 
 #: src/libvlc-module.c:682
 msgid "Menu language"
@@ -2806,6 +2783,9 @@ msgid ""
 "Language of the menus you want to use with DVD/BluRay (comma separated, two "
 "or three letter ISO-639 country code; you may use 'any' as a fallback)."
 msgstr ""
+"Langue des menus à utiliser avec les DVD/BluRay (séparées par des virgules, "
+"code de pays ISO-639 à deux ou trois lettres ; vous pouvez utiliser « any » "
+"comme langue de secours)."
 
 #: src/libvlc-module.c:687
 msgid "Video track ID"
@@ -2995,39 +2975,39 @@ msgstr "Continuer la lecture"
 
 #: src/libvlc-module.c:766
 msgid "Should the playback resume where it was left off?"
-msgstr ""
+msgstr "La lecture doit-elle reprendre là où elle s'était arrêtée ?"
 
 #: src/libvlc-module.c:775
 msgid "Never resume playback where it was left off"
-msgstr ""
+msgstr "Ne jamais reprendre la lecture là où elle s'était arrêtée"
 
 #: src/libvlc-module.c:776
 msgid "Ask when the playback starts"
-msgstr ""
+msgstr "Demander au démarrage de la lecture"
 
 #: src/libvlc-module.c:777
 msgid "Always resume playback where it was left off"
-msgstr ""
+msgstr "Toujours reprendre la lecture là où elle s'était arrêtée"
 
 #: src/libvlc-module.c:780
 msgid "Resume last playback states"
-msgstr ""
+msgstr "Restaurer les derniers états de lecture"
 
 #: src/libvlc-module.c:781
 msgid ""
 "This will resume the last playback state, such as the selected tracks, rate, "
 "aspect-ratio, ..."
 msgstr ""
+"Restaure le dernier état de lecture, comme les pistes sélectionnées, la "
+"vitesse, le format d'écran, ..."
 
 #: src/libvlc-module.c:784
-#, fuzzy
 msgid "Record directory"
-msgstr "Dossier source"
+msgstr "Dossier des enregistrements"
 
 #: src/libvlc-module.c:786
-#, fuzzy
 msgid "Directory where the records will be stored"
-msgstr "Dossier ou fichier pour les enregistrements"
+msgstr "Dossier où les enregistrements seront stockés"
 
 #: src/libvlc-module.c:788
 msgid "Prefer native stream recording"
@@ -3102,7 +3082,7 @@ msgstr ""
 
 #: src/libvlc-module.c:821
 msgid "Subtitle position"
-msgstr ""
+msgstr "Position des sous-titres"
 
 #: src/libvlc-module.c:823
 msgid ""
@@ -3110,15 +3090,17 @@ msgid ""
 "their usual place (below it when negative). The same on any screen and in "
 "any window size."
 msgstr ""
+"Hauteur des sous-titres au-dessus de leur place habituelle, en pourcentage "
+"de la hauteur de l'image (en dessous si la valeur est négative). Identique "
+"sur tout écran et quelle que soit la taille de la fenêtre."
 
 #: src/libvlc-module.c:827
-#, fuzzy
 msgid "Subtitles text scaling factor"
-msgstr "Encodage des sous-titres texte"
+msgstr "Facteur d'échelle du texte des sous-titres"
 
 #: src/libvlc-module.c:828
 msgid "Changes the subtitles size where possible"
-msgstr ""
+msgstr "Modifie la taille des sous-titres lorsque c'est possible"
 
 #: src/libvlc-module.c:830
 msgid "Enable sub-pictures"
@@ -3159,11 +3141,13 @@ msgstr ""
 
 #: src/libvlc-module.c:847
 msgid "On Screen Display duration"
-msgstr ""
+msgstr "Durée de l'affichage à l'écran (OSD)"
 
 #: src/libvlc-module.c:849
 msgid "How long the messages of the On Screen Display stay, in milliseconds."
 msgstr ""
+"Durée pendant laquelle les messages de l'affichage à l'écran (OSD) restent "
+"visibles, en millisecondes."
 
 #: src/libvlc-module.c:850 src/libvlc-module.c:1827 src/text/iso-639_def.h:573
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:441
@@ -3334,9 +3318,8 @@ msgid "TCP connection timeout"
 msgstr "Temps d'expiration TCP"
 
 #: src/libvlc-module.c:937
-#, fuzzy
 msgid "Default TCP connection timeout (in milliseconds)."
-msgstr "Temps d'expiration par défaut des connexions TCP en millisecondes. "
+msgstr "Délai d'expiration par défaut des connexions TCP (en millisecondes)."
 
 #: src/libvlc-module.c:939
 msgid "HTTP server address"
@@ -3552,7 +3535,7 @@ msgstr ""
 
 #: src/libvlc-module.c:1042
 msgid "Preferred decoder hardware device"
-msgstr ""
+msgstr "Périphérique matériel de décodage préféré"
 
 #: src/libvlc-module.c:1043
 msgid "This allows hardware decoding when available."
@@ -3641,6 +3624,8 @@ msgid ""
 "This allows you to keep an unique stream output instance across multiple "
 "play queue items."
 msgstr ""
+"Permet de conserver une instance unique du flux de sortie pour plusieurs "
+"éléments de la file de lecture."
 
 #: src/libvlc-module.c:1088
 msgid "Stream output muxer caching (ms)"
@@ -3784,6 +3769,12 @@ msgid ""
 "with spaces. Files to open, and the options only a command line can give (--"
 "help, --config, --reset-config...), are left out."
 msgstr ""
+"Options que VLC lit à chaque démarrage, comme si elles étaient écrites sur "
+"sa ligne de commande (la ligne de commande l'emporte lorsqu'elle donne la "
+"même option). Écrivez-les comme sur une ligne de commande, par exemple : --"
+"no-osd --network-caching=3000 ; mettez entre guillemets une valeur contenant "
+"des espaces. Les fichiers à ouvrir et les options que seule une ligne de "
+"commande peut donner (--help, --config, --reset-config...) sont ignorés."
 
 #: src/libvlc-module.c:1158
 msgid "Locally collect statistics"
@@ -3860,13 +3851,15 @@ msgstr "Source d'horloge"
 
 #: src/libvlc-module.c:1208
 msgid "Enqueue items into play queue in one instance mode"
-msgstr ""
+msgstr "Ajouter les éléments à la file de lecture en mode instance unique"
 
 #: src/libvlc-module.c:1210
 msgid ""
 "When using the one instance only option, enqueue items to play queue and "
 "keep playing current item."
 msgstr ""
+"Avec l'option d'instance unique, ajoute les éléments à la file de lecture et "
+"poursuit la lecture de l'élément en cours."
 
 #: src/libvlc-module.c:1213
 #, fuzzy
@@ -3884,15 +3877,16 @@ msgid ""
 msgstr ""
 
 #: src/libvlc-module.c:1226
-#, fuzzy
 msgid "Automatically preparse items"
-msgstr "Analyse automatique des fichiers"
+msgstr "Pré-analyser automatiquement les éléments"
 
 #: src/libvlc-module.c:1228
 msgid ""
 "Automatically preparse items added to the play queue (to retrieve some "
 "metadata)."
 msgstr ""
+"Pré-analyse automatiquement les éléments ajoutés à la file de lecture (pour "
+"récupérer certaines métadonnées)."
 
 #: src/libvlc-module.c:1231
 #, fuzzy
@@ -3944,6 +3938,11 @@ msgid ""
 "collapse: subdirectories appear but are expanded on first play.\n"
 "expand: all subdirectories are expanded.\n"
 msgstr ""
+"Indique si les sous-dossiers doivent être développés.\n"
+"Aucun : les sous-dossiers n'apparaissent pas dans la file de lecture.\n"
+"Refermer : les sous-dossiers apparaissent mais sont développés à la première "
+"lecture.\n"
+"Développer : tous les sous-dossiers sont développés.\n"
 
 #: src/libvlc-module.c:1257
 msgid "Ignored extensions"
@@ -3956,6 +3955,11 @@ msgid ""
 "This is useful if you add directories that contain playlist files for "
 "instance. Use a comma-separated list of extensions."
 msgstr ""
+"Les fichiers ayant ces extensions ne seront pas ajoutés à la file de lecture "
+"lors de l'ouverture d'un dossier.\n"
+"C'est utile, par exemple, si vous ajoutez des dossiers contenant des "
+"fichiers de liste de lecture. Utilisez une liste d'extensions séparées par "
+"des virgules."
 
 #: src/libvlc-module.c:1264
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:294
@@ -3964,7 +3968,7 @@ msgstr "Afficher les fichiers cachés"
 
 #: src/libvlc-module.c:1266
 msgid "Ignore files starting with '.'"
-msgstr ""
+msgstr "Ignorer les fichiers commençant par « . »"
 
 #: src/libvlc-module.c:1268
 msgid "Flatten files listed by extractors (archive)"
@@ -3989,6 +3993,8 @@ msgstr "Aléatoire"
 #: src/libvlc-module.c:1277
 msgid "VLC will randomly play files in the play queue until interrupted."
 msgstr ""
+"VLC lira les fichiers de la file de lecture dans un ordre aléatoire jusqu'à "
+"ce que vous l'arrêtiez."
 
 #: src/libvlc-module.c:1279
 msgid "Repeat all"
@@ -3996,7 +4002,7 @@ msgstr "Tout répéter"
 
 #: src/libvlc-module.c:1281
 msgid "VLC will keep playing the play queue indefinitely."
-msgstr ""
+msgstr "VLC lira la file de lecture en boucle indéfiniment."
 
 #: src/libvlc-module.c:1283
 msgid "Repeat current item"
@@ -4004,7 +4010,7 @@ msgstr "Répéter l'élément actuel"
 
 #: src/libvlc-module.c:1285
 msgid "VLC will keep playing the current play queue item."
-msgstr ""
+msgstr "VLC répétera indéfiniment l'élément en cours de la file de lecture."
 
 #: src/libvlc-module.c:1287
 msgid "Play and stop"
@@ -4012,7 +4018,7 @@ msgstr "Lire puis arrêter"
 
 #: src/libvlc-module.c:1289
 msgid "Stop playback after each item in the play queue."
-msgstr ""
+msgstr "Arrêter la lecture après chaque élément de la file de lecture."
 
 #: src/libvlc-module.c:1291
 msgid "Play and exit"
@@ -4029,6 +4035,7 @@ msgstr "Lecture puis pause"
 #: src/libvlc-module.c:1297
 msgid "Pause each item in the play queue on the last frame."
 msgstr ""
+"Mettre en pause chaque élément de la file de lecture sur sa dernière image."
 
 #: src/libvlc-module.c:1299
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:133
@@ -4038,6 +4045,7 @@ msgstr "Démarrer en pause"
 #: src/libvlc-module.c:1301
 msgid "Pause each item in the play queue on the first frame."
 msgstr ""
+"Mettre en pause chaque élément de la file de lecture sur sa première image."
 
 #: src/libvlc-module.c:1303
 msgid "Auto start"
@@ -4046,6 +4054,8 @@ msgstr "Lecture automatique"
 #: src/libvlc-module.c:1304
 msgid "Automatically start playing the play queue content once it's loaded."
 msgstr ""
+"Démarrer automatiquement la lecture du contenu de la file de lecture une "
+"fois celui-ci chargé."
 
 #: src/libvlc-module.c:1307
 msgid "Pause on audio communication"
@@ -4082,16 +4092,21 @@ msgid ""
 "it off to browse without indexing your media; this takes effect the next "
 "time VLC starts."
 msgstr ""
+"Démarre la médiathèque lorsque VLC la demande (c'est le cas du lecteur "
+"multimédia). Désactivez-la pour parcourir vos médias sans les indexer ; la "
+"modification prend effet au prochain démarrage de VLC."
 
 #: src/libvlc-module.c:1323
 msgid "Display play queue tree"
-msgstr ""
+msgstr "Afficher l'arborescence de la file de lecture"
 
 #: src/libvlc-module.c:1325
 msgid ""
 "The play queue can use a tree to categorize some items, like the contents of "
 "a directory."
 msgstr ""
+"La file de lecture peut utiliser une arborescence pour classer certains "
+"éléments, comme le contenu d'un dossier."
 
 #: src/libvlc-module.c:1328
 msgid "Play queue bookmark 1"
@@ -4147,47 +4162,40 @@ msgid "Ignore"
 msgstr "Ignorer"
 
 #: src/libvlc-module.c:1350
-#, fuzzy
 msgid "Volume control"
 msgstr "Contrôle du volume"
 
 #: src/libvlc-module.c:1351
-#, fuzzy
 msgid "Position control"
 msgstr "Contrôle de la position"
 
 #: src/libvlc-module.c:1351
-#, fuzzy
 msgid "Position control reversed"
-msgstr "Contrôle de la position"
+msgstr "Contrôle de la position inversé"
 
 #: src/libvlc-module.c:1354
-#, fuzzy
 msgid "Mouse wheel vertical axis control"
-msgstr "Molette de la souris"
+msgstr "Molette de la souris (axe vertical)"
 
 #: src/libvlc-module.c:1356
-#, fuzzy
 msgid ""
 "The mouse wheel vertical (up/down) axis can control volume, position or be "
 "ignored."
 msgstr ""
-"La molette de la souris peut contrôler le volume, la position ou être "
-"complètement ignorée."
+"L'axe vertical (haut/bas) de la molette de la souris peut contrôler le "
+"volume ou la position, ou être ignoré."
 
 #: src/libvlc-module.c:1358
-#, fuzzy
 msgid "Mouse wheel horizontal axis control"
-msgstr "Molette de la souris"
+msgstr "Molette de la souris (axe horizontal)"
 
 #: src/libvlc-module.c:1360
-#, fuzzy
 msgid ""
 "The mouse wheel horizontal (left/right) axis can control volume, position or "
 "be ignored."
 msgstr ""
-"La molette de la souris peut contrôler le volume, la position ou être "
-"complètement ignorée."
+"L'axe horizontal (gauche/droite) de la molette de la souris peut contrôler "
+"le volume ou la position, ou être ignoré."
 
 #: src/libvlc-module.c:1362 src/video_output/vout_intf.c:325
 #: modules/gui/macosx/menus/VLCMainMenu.m:437
@@ -4303,6 +4311,8 @@ msgstr "Suivant"
 #: src/libvlc-module.c:1383
 msgid "Select the hotkey to use to skip to the next item in the play queue."
 msgstr ""
+"Sélectionnez la combinaison de touches à utiliser pour passer à l'élément "
+"suivant de la file de lecture."
 
 #: src/libvlc-module.c:1384 modules/gui/macosx/menus/VLCMainMenu.m:398
 #: modules/gui/macosx/menus/VLCMainMenu.m:511
@@ -4323,6 +4333,8 @@ msgstr "Précédent"
 msgid ""
 "Select the hotkey to use to skip to the previous item in the play queue."
 msgstr ""
+"Sélectionnez la combinaison de touches à utiliser pour revenir à l'élément "
+"précédent de la file de lecture."
 
 #: src/libvlc-module.c:1386 modules/gui/macosx/menus/VLCMainMenu.m:389
 #: modules/gui/macosx/menus/VLCMainMenu.m:509
@@ -4438,6 +4450,8 @@ msgstr "Image suivante"
 #: src/libvlc-module.c:1418
 msgid "Select the hotkey to go to the next video frame."
 msgstr ""
+"Sélectionnez la combinaison de touches à utiliser pour passer à l'image "
+"suivante de la vidéo."
 
 #: src/libvlc-module.c:1419 src/player/input.c:968
 #: modules/gui/qt/player/qml/controlbarcontrols/FramePrevButton.qml:34
@@ -4447,6 +4461,8 @@ msgstr "Image précédente"
 #: src/libvlc-module.c:1421
 msgid "Select the hotkey to go to the previous video frame."
 msgstr ""
+"Sélectionnez la combinaison de touches à utiliser pour revenir à l'image "
+"précédente de la vidéo."
 
 #: src/libvlc-module.c:1423
 msgid "Very short jump length"
@@ -4496,52 +4512,52 @@ msgid "Navigate up"
 msgstr "Aller vers le haut"
 
 #: src/libvlc-module.c:1435
-#, fuzzy
 msgid ""
 "Select the key to move the selector up in DVD menus / Move viewpoint to up "
 "(pitch)."
 msgstr ""
-"Sélectionnez la combinaison de touches à utiliser pour se déplacer vers le "
-"haut dans les menus DVD."
+"Sélectionnez la combinaison de touches à utiliser pour déplacer le curseur "
+"vers le haut dans les menus DVD / déplacer le point de vue vers le haut "
+"(tangage)."
 
 #: src/libvlc-module.c:1436 modules/gui/qt/player/qml/NavigationBox.qml:161
 msgid "Navigate down"
 msgstr "Aller vers le bas"
 
 #: src/libvlc-module.c:1437
-#, fuzzy
 msgid ""
 "Select the key to move the selector down in DVD menus / Move viewpoint to "
 "down (pitch)."
 msgstr ""
-"Sélectionnez la combinaison de touches à utiliser pour se déplacer vers le "
-"bas dans les menus DVD."
+"Sélectionnez la combinaison de touches à utiliser pour déplacer le curseur "
+"vers le bas dans les menus DVD / déplacer le point de vue vers le bas "
+"(tangage)."
 
 #: src/libvlc-module.c:1438 modules/gui/qt/player/qml/NavigationBox.qml:118
 msgid "Navigate left"
 msgstr "Aller vers la gauche"
 
 #: src/libvlc-module.c:1439
-#, fuzzy
 msgid ""
 "Select the key to move the selector left in DVD menus / Move viewpoint to "
 "left (yaw)."
 msgstr ""
-"Sélectionnez la combinaison de touches à utiliser pour se déplacer vers la "
-"gauche dans les menus DVD."
+"Sélectionnez la combinaison de touches à utiliser pour déplacer le curseur "
+"vers la gauche dans les menus DVD / déplacer le point de vue vers la gauche "
+"(lacet)."
 
 #: src/libvlc-module.c:1440 modules/gui/qt/player/qml/NavigationBox.qml:147
 msgid "Navigate right"
 msgstr "Aller vers la droite"
 
 #: src/libvlc-module.c:1441
-#, fuzzy
 msgid ""
 "Select the key to move the selector right in DVD menus / Move viewpoint to "
 "right (yaw)."
 msgstr ""
-"Sélectionnez la combinaison de touches à utiliser pour se déplacer vers la "
-"droite dans les menus DVD."
+"Sélectionnez la combinaison de touches à utiliser pour déplacer le curseur "
+"vers la droite dans les menus DVD / déplacer le point de vue vers la droite "
+"(lacet)."
 
 #: src/libvlc-module.c:1442
 msgid "Activate"
@@ -4656,26 +4672,22 @@ msgstr ""
 "des sous-titres."
 
 #: src/libvlc-module.c:1464
-#, fuzzy
 msgid "Reset subtitles text scale"
-msgstr "Décodeur de sous-titres Télétexte"
+msgstr "Réinitialiser la taille du texte des sous-titres"
 
 #: src/libvlc-module.c:1465
-#, fuzzy
-msgid "Scale up subtitles text"
-msgstr "Activer les sous-titres"
+msgid "Scale down subtitles text"
+msgstr "Réduire le texte des sous-titres"
 
 #: src/libvlc-module.c:1466
-#, fuzzy
-msgid "Scale down subtitles text"
-msgstr "Activer les sous-titres"
+msgid "Scale up subtitles text"
+msgstr "Agrandir le texte des sous-titres"
 
 #: src/libvlc-module.c:1467
-#, fuzzy
 msgid "Select the key to change subtitles text scaling"
 msgstr ""
-"Sélectionnez la combinaison de touches à utiliser pour déplacer les sous-"
-"titres vers le haut."
+"Sélectionnez la combinaison de touches à utiliser pour modifier la taille du "
+"texte des sous-titres"
 
 #: src/libvlc-module.c:1468
 msgid "Subtitle sync / bookmark audio timestamp"
@@ -4780,46 +4792,48 @@ msgstr "2:1 Double"
 #: src/libvlc-module.c:1489
 msgid "Select the hotkey to use to zoom to the corresponding level."
 msgstr ""
+"Sélectionnez la combinaison de touches à utiliser pour zoomer au niveau "
+"correspondant."
 
 #: src/libvlc-module.c:1491
 msgid "Go to play queue bookmark 1"
-msgstr ""
+msgstr "Aller au signet 1 de la file de lecture"
 
 #: src/libvlc-module.c:1492
 msgid "Go to play queue bookmark 2"
-msgstr ""
+msgstr "Aller au signet 2 de la file de lecture"
 
 #: src/libvlc-module.c:1493
 msgid "Go to play queue bookmark 3"
-msgstr ""
+msgstr "Aller au signet 3 de la file de lecture"
 
 #: src/libvlc-module.c:1494
 msgid "Go to play queue bookmark 4"
-msgstr ""
+msgstr "Aller au signet 4 de la file de lecture"
 
 #: src/libvlc-module.c:1495
 msgid "Go to play queue bookmark 5"
-msgstr ""
+msgstr "Aller au signet 5 de la file de lecture"
 
 #: src/libvlc-module.c:1496
 msgid "Go to play queue bookmark 6"
-msgstr ""
+msgstr "Aller au signet 6 de la file de lecture"
 
 #: src/libvlc-module.c:1497
 msgid "Go to play queue bookmark 7"
-msgstr ""
+msgstr "Aller au signet 7 de la file de lecture"
 
 #: src/libvlc-module.c:1498
 msgid "Go to play queue bookmark 8"
-msgstr ""
+msgstr "Aller au signet 8 de la file de lecture"
 
 #: src/libvlc-module.c:1499
 msgid "Go to play queue bookmark 9"
-msgstr ""
+msgstr "Aller au signet 9 de la file de lecture"
 
 #: src/libvlc-module.c:1500
 msgid "Go to play queue bookmark 10"
-msgstr ""
+msgstr "Aller au signet 10 de la file de lecture"
 
 #: src/libvlc-module.c:1501
 msgid "Select the key to play this bookmark."
@@ -4827,47 +4841,49 @@ msgstr "Sélectionnez la combinaison de touches à utiliser pour lire ce favori.
 
 #: src/libvlc-module.c:1502
 msgid "Set play queue bookmark 1"
-msgstr ""
+msgstr "Définir le signet 1 de la file de lecture"
 
 #: src/libvlc-module.c:1503
 msgid "Set play queue bookmark 2"
-msgstr ""
+msgstr "Définir le signet 2 de la file de lecture"
 
 #: src/libvlc-module.c:1504
 msgid "Set play queue bookmark 3"
-msgstr ""
+msgstr "Définir le signet 3 de la file de lecture"
 
 #: src/libvlc-module.c:1505
 msgid "Set play queue bookmark 4"
-msgstr ""
+msgstr "Définir le signet 4 de la file de lecture"
 
 #: src/libvlc-module.c:1506
 msgid "Set play queue bookmark 5"
-msgstr ""
+msgstr "Définir le signet 5 de la file de lecture"
 
 #: src/libvlc-module.c:1507
 msgid "Set play queue bookmark 6"
-msgstr ""
+msgstr "Définir le signet 6 de la file de lecture"
 
 #: src/libvlc-module.c:1508
 msgid "Set play queue bookmark 7"
-msgstr ""
+msgstr "Définir le signet 7 de la file de lecture"
 
 #: src/libvlc-module.c:1509
 msgid "Set play queue bookmark 8"
-msgstr ""
+msgstr "Définir le signet 8 de la file de lecture"
 
 #: src/libvlc-module.c:1510
 msgid "Set play queue bookmark 9"
-msgstr ""
+msgstr "Définir le signet 9 de la file de lecture"
 
 #: src/libvlc-module.c:1511
 msgid "Set play queue bookmark 10"
-msgstr ""
+msgstr "Définir le signet 10 de la file de lecture"
 
 #: src/libvlc-module.c:1512
 msgid "Select the key to set this play queue bookmark."
 msgstr ""
+"Sélectionnez la combinaison de touches à utiliser pour définir ce signet de "
+"la file de lecture."
 
 #: src/libvlc-module.c:1513 modules/gui/qt/menus/qml_menu_wrapper.cpp:1212
 msgid "Clear the play queue"
@@ -4876,6 +4892,8 @@ msgstr "Vider la file de lecture"
 #: src/libvlc-module.c:1514
 msgid "Select the key to clear the current play queue."
 msgstr ""
+"Sélectionnez la combinaison de touches à utiliser pour vider la file de "
+"lecture actuelle."
 
 #: src/libvlc-module.c:1516
 msgid "Cycle audio track"
@@ -4886,14 +4904,14 @@ msgid "Cycle through the available audio tracks(languages)."
 msgstr "Boucler entre les différentes pistes audio disponibles (langues)."
 
 #: src/libvlc-module.c:1518
-#, fuzzy
 msgid "Cycle subtitle track in reverse order"
-msgstr "Faire défiler les pistes de sous-titres"
+msgstr "Faire défiler les pistes de sous-titres en sens inverse"
 
 #: src/libvlc-module.c:1519
-#, fuzzy
 msgid "Cycle through the available subtitle tracks in reverse order."
-msgstr "Faire défiler en boucle les différentes pistes de sous-titres."
+msgstr ""
+"Faire défiler en boucle les différentes pistes de sous-titres en sens "
+"inverse."
 
 #: src/libvlc-module.c:1520
 msgid "Cycle subtitle track"
@@ -4904,22 +4922,22 @@ msgid "Cycle through the available subtitle tracks."
 msgstr "Faire défiler en boucle les différentes pistes de sous-titres."
 
 #: src/libvlc-module.c:1522
-#, fuzzy
 msgid "Toggle subtitles"
-msgstr "Sous-titres Télétexte"
+msgstr "Afficher/masquer les sous-titres"
 
 #: src/libvlc-module.c:1523
-#, fuzzy
 msgid "Toggle subtitle track visibility."
-msgstr "Faire défiler les pistes de sous-titres"
+msgstr "Affiche ou masque la piste de sous-titres."
 
 #: src/libvlc-module.c:1524
 msgid "Toggle secondary subtitle control"
-msgstr ""
+msgstr "Basculer le contrôle des sous-titres secondaires"
 
 #: src/libvlc-module.c:1525
 msgid "Use original subtitle controls to manage secondary subtitles."
 msgstr ""
+"Utiliser les commandes habituelles des sous-titres pour gérer les sous-"
+"titres secondaires."
 
 #: src/libvlc-module.c:1526
 msgid "Cycle next program Service ID"
@@ -4993,6 +5011,8 @@ msgstr "Afficher le contrôleur en plein écran"
 msgid ""
 "Select the hotkey to use to toggle visibility of controls in fullscreen mode."
 msgstr ""
+"Sélectionnez la combinaison de touches à utiliser pour afficher ou masquer "
+"les commandes en plein écran."
 
 #: src/libvlc-module.c:1546
 msgid "Boss key"
@@ -5037,6 +5057,7 @@ msgstr "Normal/Boucle/Répétition"
 #: src/libvlc-module.c:1557
 msgid "Toggle Normal/Loop/Repeat play queue modes"
 msgstr ""
+"Basculer entre les modes Normal/Boucle/Répétition de la file de lecture"
 
 #: src/libvlc-module.c:1559 modules/gui/macosx/menus/VLCMainMenu.m:400
 msgid "Random"
@@ -5044,7 +5065,7 @@ msgstr "Aléatoire"
 
 #: src/libvlc-module.c:1560
 msgid "Toggle random play queue playback"
-msgstr ""
+msgstr "Activer/désactiver la lecture aléatoire de la file de lecture"
 
 #: src/libvlc-module.c:1562 src/libvlc-module.c:1563
 #: src/video_output/vout_intf.c:231 modules/gui/macosx/menus/VLCMainMenu.m:484
@@ -5092,35 +5113,43 @@ msgstr "Enlève un pixel de rognage à droite de la vidéo."
 
 #: src/libvlc-module.c:1589
 msgid "Shrink the viewpoint field of view (360°)"
-msgstr ""
+msgstr "Réduire le champ de vision du point de vue (360°)"
 
 #: src/libvlc-module.c:1590
 msgid "Select the hotkey to use to shrink the viewpoint (360°) field of view."
 msgstr ""
+"Sélectionnez la combinaison de touches à utiliser pour réduire le champ de "
+"vision du point de vue (360°)."
 
 #: src/libvlc-module.c:1591
 msgid "Expand the viewpoint field of view (360°)"
-msgstr ""
+msgstr "Élargir le champ de vision du point de vue (360°)"
 
 #: src/libvlc-module.c:1592
 msgid "Select the hotkey to use to expand the viewpoint (360°) field of view."
 msgstr ""
+"Sélectionnez la combinaison de touches à utiliser pour élargir le champ de "
+"vision du point de vue (360°)."
 
 #: src/libvlc-module.c:1593
 msgid "Roll the viewpoint clockwise (360°)"
-msgstr ""
+msgstr "Faire pivoter le point de vue dans le sens horaire (360°)"
 
 #: src/libvlc-module.c:1594
 msgid "Select the hotkey to use for viewpoint (360°) clockwise roll."
 msgstr ""
+"Sélectionnez la combinaison de touches à utiliser pour faire pivoter le "
+"point de vue (360°) dans le sens horaire."
 
 #: src/libvlc-module.c:1595
 msgid "Roll the viewpoint anti-clockwise (360°)"
-msgstr ""
+msgstr "Faire pivoter le point de vue dans le sens antihoraire (360°)"
 
 #: src/libvlc-module.c:1596
 msgid "Select the hotkey to use for viewpoint (360°) anti-clockwise roll."
 msgstr ""
+"Sélectionnez la combinaison de touches à utiliser pour faire pivoter le "
+"point de vue (360°) dans le sens antihoraire."
 
 #: src/libvlc-module.c:1598
 msgid "Toggle wallpaper mode in video output"
@@ -5419,37 +5448,37 @@ msgstr "F12"
 #: src/misc/actions.c:74
 msgctxt "key"
 msgid "F13"
-msgstr ""
+msgstr "F13"
 
 #: src/misc/actions.c:75
 msgctxt "key"
 msgid "F14"
-msgstr ""
+msgstr "F14"
 
 #: src/misc/actions.c:76
 msgctxt "key"
 msgid "F15"
-msgstr ""
+msgstr "F15"
 
 #: src/misc/actions.c:77
 msgctxt "key"
 msgid "F16"
-msgstr ""
+msgstr "F16"
 
 #: src/misc/actions.c:78
 msgctxt "key"
 msgid "F17"
-msgstr ""
+msgstr "F17"
 
 #: src/misc/actions.c:79
 msgctxt "key"
 msgid "F18"
-msgstr ""
+msgstr "F18"
 
 #: src/misc/actions.c:80
 msgctxt "key"
 msgid "F19"
-msgstr ""
+msgstr "F19"
 
 #: src/misc/actions.c:81
 msgctxt "key"
@@ -5459,52 +5488,52 @@ msgstr "F2"
 #: src/misc/actions.c:82
 msgctxt "key"
 msgid "F20"
-msgstr ""
+msgstr "F20"
 
 #: src/misc/actions.c:83
 msgctxt "key"
 msgid "F21"
-msgstr ""
+msgstr "F21"
 
 #: src/misc/actions.c:84
 msgctxt "key"
 msgid "F22"
-msgstr ""
+msgstr "F22"
 
 #: src/misc/actions.c:85
 msgctxt "key"
 msgid "F23"
-msgstr ""
+msgstr "F23"
 
 #: src/misc/actions.c:86
 msgctxt "key"
 msgid "F24"
-msgstr ""
+msgstr "F24"
 
 #: src/misc/actions.c:87
 msgctxt "key"
 msgid "F25"
-msgstr ""
+msgstr "F25"
 
 #: src/misc/actions.c:88
 msgctxt "key"
 msgid "F26"
-msgstr ""
+msgstr "F26"
 
 #: src/misc/actions.c:89
 msgctxt "key"
 msgid "F27"
-msgstr ""
+msgstr "F27"
 
 #: src/misc/actions.c:90
 msgctxt "key"
 msgid "F28"
-msgstr ""
+msgstr "F28"
 
 #: src/misc/actions.c:91
 msgctxt "key"
 msgid "F29"
-msgstr ""
+msgstr "F29"
 
 #: src/misc/actions.c:92
 msgctxt "key"
@@ -5514,32 +5543,32 @@ msgstr "F3"
 #: src/misc/actions.c:93
 msgctxt "key"
 msgid "F30"
-msgstr ""
+msgstr "F30"
 
 #: src/misc/actions.c:94
 msgctxt "key"
 msgid "F31"
-msgstr ""
+msgstr "F31"
 
 #: src/misc/actions.c:95
 msgctxt "key"
 msgid "F32"
-msgstr ""
+msgstr "F32"
 
 #: src/misc/actions.c:96
 msgctxt "key"
 msgid "F33"
-msgstr ""
+msgstr "F33"
 
 #: src/misc/actions.c:97
 msgctxt "key"
 msgid "F34"
-msgstr ""
+msgstr "F34"
 
 #: src/misc/actions.c:98
 msgctxt "key"
 msgid "F35"
-msgstr ""
+msgstr "F35"
 
 #: src/misc/actions.c:99
 msgctxt "key"
@@ -5945,99 +5974,119 @@ msgstr "Mettre à jour le lecteur multimédia VLC"
 #: src/player/osd.c:169
 #, c-format
 msgid "Volume: %ld%%"
+msgstr "Volume : %ld %%"
+
+#: src/player/osd.c:184
+#, c-format
+msgid "Video tracks: %s"
 msgstr ""
 
-#: src/player/osd.c:185 src/player/osd.c:229
+#: src/player/osd.c:185
+#, c-format
+msgid "Video track: %s"
+msgstr ""
+
+#: src/player/osd.c:188
+#, c-format
+msgid "Audio tracks: %s"
+msgstr ""
+
+#: src/player/osd.c:189
+#, c-format
+msgid "Audio track: %s"
+msgstr "Piste audio : %s"
+
+#: src/player/osd.c:192
+#, c-format
+msgid "Subtitle tracks: %s"
+msgstr ""
+
+#: src/player/osd.c:193
+#, c-format
+msgid "Subtitle track: %s"
+msgstr "Piste de sous-titres : %s"
+
+#: src/player/osd.c:208 src/player/osd.c:251
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:98
 msgid "N/A"
 msgstr "N/D"
 
-#: src/player/osd.c:186 src/player/osd.c:229 src/player/osd.c:238
-#, c-format
-msgid "%s track: %s"
-msgstr ""
-
-#: src/player/osd.c:241
-#, c-format
-msgid "%s tracks: %s"
-msgstr ""
-
-#: src/player/osd.c:249
+#: src/player/osd.c:266
 #, c-format
 msgid "Program Service ID: %s"
 msgstr "ID de service programme : %s"
 
-#: src/player/osd.c:292
+#: src/player/osd.c:309
 #, c-format
 msgid "Aspect ratio: %s"
 msgstr "Ratio d'aspect : %s"
 
-#: src/player/osd.c:296
+#: src/player/osd.c:313
 msgid "Scaled to screen"
 msgstr "Adapté à l'écran"
 
-#: src/player/osd.c:296
+#: src/player/osd.c:313
 msgid "Original size"
-msgstr ""
+msgstr "Taille d'origine"
 
-#: src/player/osd.c:300
+#: src/player/osd.c:317
 #, c-format
 msgid "Crop: %s"
 msgstr "Rognage : %s"
 
-#: src/player/osd.c:303
+#: src/player/osd.c:320
 #, c-format
 msgid "Bottom crop: %d px"
-msgstr ""
+msgstr "Rognage en bas : %d px"
 
-#: src/player/osd.c:306
+#: src/player/osd.c:323
 #, c-format
 msgid "Top crop: %d px"
-msgstr ""
+msgstr "Rognage en haut : %d px"
 
-#: src/player/osd.c:309
+#: src/player/osd.c:326
 #, c-format
 msgid "Left crop: %d px"
-msgstr ""
-
-#: src/player/osd.c:312
-#, c-format
-msgid "Right crop: %d px"
-msgstr ""
-
-#: src/player/osd.c:322
-#, c-format
-msgid "Deinterlace %s (%s)"
-msgstr ""
+msgstr "Rognage à gauche : %d px"
 
 #: src/player/osd.c:329
+#, c-format
+msgid "Right crop: %d px"
+msgstr "Rognage à droite : %d px"
+
+#: src/player/osd.c:339
+#, c-format
+msgid "Deinterlace %s (%s)"
+msgstr "Désentrelacement %s (%s)"
+
+#: src/player/osd.c:346
 #, c-format
 msgid "Subtitle position %d px"
 msgstr "Position des sous-titres %d px"
 
-#: src/player/osd.c:332
+#: src/player/osd.c:349
 #, c-format
 msgid "Secondary subtitle position %d px"
-msgstr ""
+msgstr "Position des sous-titres secondaires %d px"
 
-#: src/player/osd.c:335
-#, fuzzy, c-format
+#: src/player/osd.c:352
+#, c-format
 msgid "Subtitle text scale %d%%"
-msgstr "Encodage des sous-titres texte"
+msgstr "Taille du texte des sous-titres %d %%"
 
-#: src/player/osd.c:340
+#: src/player/osd.c:357
 msgid "Zooming reset"
 msgstr "R. à z. du zoom"
 
-#: src/player/osd.c:344
+#: src/player/osd.c:361
 #, c-format
 msgid "Zoom mode: %s"
 msgstr "Mode de Zoom : %s"
 
-#: src/player/osd.c:346
+#: src/player/osd.c:363
 #, c-format
 msgid "Zoom: x%.2f"
-msgstr ""
+msgstr "Zoom : x%.2f"
 
 #: src/player/player.c:919
 msgid "Next title"
@@ -6050,7 +6099,7 @@ msgstr "Titre précédent"
 #: src/player/player.c:978
 #, c-format
 msgid "Chapter %ld"
-msgstr ""
+msgstr "Chapitre %ld"
 
 #: src/player/player.c:991
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:59
@@ -6075,34 +6124,49 @@ msgstr "Enregistrement"
 msgid "Recording done"
 msgstr "Enregistrement effectué"
 
-#: src/player/player.c:1841 src/player/player.c:1893
+#: src/player/player.c:1844
+#, c-format
+msgid "Audio delay %i ms"
+msgstr "Retard de l'audio %i ms"
+
+#: src/player/player.c:1846
+#, c-format
+msgid "Subtitle delay %i ms"
+msgstr "Retard des sous-titres %i ms"
+
+#: src/player/player.c:1848
+#, c-format
+msgid "Video delay %i ms"
+msgstr ""
+
+#: src/player/player.c:1898
 #, c-format
 msgid "%s delay: %i ms"
-msgstr ""
+msgstr "Retard %s : %i ms"
 
 #: src/player/input.c:912
 msgid "can't seek back"
-msgstr ""
+msgstr "impossible de revenir en arrière"
 
 #: src/player/input.c:913
 msgid "no video found"
-msgstr ""
+msgstr "aucune vidéo trouvée"
 
 #: src/player/input.c:914
 msgid "can't pause/seek/pace"
-msgstr ""
+msgstr "impossible de mettre en pause, de se déplacer ou de régler la cadence"
 
 #: src/player/input.c:915
 msgid "invalid state"
-msgstr ""
+msgstr "état non valide"
 
 #: src/player/input.c:953
 msgid "Next frame error"
-msgstr ""
+msgstr "Erreur d'image suivante"
 
 #: src/player/input.c:969
 msgid "Previous frame error"
-msgstr ""
+msgstr "Erreur d'image précédente"
 
 #: src/text/iso-639_def.h:45
 msgid "Abkhazian"
@@ -8180,27 +8244,27 @@ msgstr "Audio original"
 
 #: src/video_output/vout_intf.c:144
 msgid "Fill Window"
-msgstr ""
+msgstr "Remplir la fenêtre"
 
 #: src/video_output/vout_intf.c:153
 msgid "Inside Window"
-msgstr ""
+msgstr "Dans la fenêtre"
 
 #: src/video_output/vout_intf.c:154
 msgid "Outside Window"
-msgstr ""
+msgstr "Couvrir la fenêtre"
 
 #: src/video_output/vout_intf.c:155
 msgid "Window Width"
-msgstr ""
+msgstr "Largeur de la fenêtre"
 
 #: src/video_output/vout_intf.c:156
 msgid "Window Height"
-msgstr ""
+msgstr "Hauteur de la fenêtre"
 
 #: src/video_output/vout_intf.c:240
 msgid "video-stereo-output"
-msgstr ""
+msgstr "Sortie 3D"
 
 #: src/video_output/vout_intf.c:258 modules/gui/macosx/menus/VLCMainMenu.m:444
 #: modules/gui/macosx/menus/VLCMainMenu.m:445
@@ -8225,7 +8289,7 @@ msgstr "Format d'écran"
 
 #: src/video_output/vout_intf.c:301
 msgid "Fit Mode"
-msgstr ""
+msgstr "Mode d'ajustement"
 
 #: lib/core.c:72
 msgid "Generic VLC error"
@@ -9800,11 +9864,12 @@ msgstr "Nom d'utilisateur"
 
 #: modules/access/ftp.c:71 modules/access/rdp.c:58 modules/access/sftp.c:56
 #: modules/access/smb_common.h:22
-#, fuzzy
 msgid ""
 "Username that will be used for the connection, if no username is set in the "
 "URL."
-msgstr "Nom d'utilisateur qui sera utilisé pour la connexion."
+msgstr ""
+"Nom d'utilisateur utilisé pour la connexion si aucun nom d'utilisateur n'est "
+"indiqué dans l'URL."
 
 #: modules/access/ftp.c:73 modules/access/live555.cpp:90
 #: modules/access/rdp.c:60 modules/access/sftp.c:58
@@ -9822,13 +9887,12 @@ msgstr "Mot de passe"
 
 #: modules/access/ftp.c:74 modules/access/rdp.c:61 modules/access/sftp.c:59
 #: modules/access/smb_common.h:25
-#, fuzzy
 msgid ""
 "Password that will be used for the connection, if no username or password "
 "are set in URL."
 msgstr ""
-"Utilisateur pour la connexion, si aucun nom d'utilisateur et aucun mot de "
-"passe dans l'URL."
+"Mot de passe utilisé pour la connexion si aucun nom d'utilisateur ni mot de "
+"passe n'est indiqué dans l'URL."
 
 #: modules/access/ftp.c:76
 msgid "FTP account"
@@ -9839,14 +9903,15 @@ msgid "Account that will be used for the connection."
 msgstr "Compte à utiliser pour la connexion."
 
 #: modules/access/ftp.c:80
-#, fuzzy
 msgid "FTP authentication"
-msgstr "Authentification SFTP"
+msgstr "Authentification FTP"
 
 #: modules/access/ftp.c:81
 #, c-format
 msgid "Please enter a valid login and password for the FTP connection to %s"
 msgstr ""
+"Saisissez un identifiant et un mot de passe valides pour la connexion FTP à "
+"%s"
 
 #: modules/access/ftp.c:86
 msgid "FTP input"
@@ -9903,14 +9968,12 @@ msgstr ""
 "domaine « %s »."
 
 #: modules/access/http/access.c:288
-#, fuzzy
 msgid "HTTPS input"
-msgstr "Entrée HTTP"
+msgstr "Entrée HTTPS"
 
 #: modules/access/http/access.c:289
-#, fuzzy
 msgid "HTTPS"
-msgstr "HTTP(S)"
+msgstr "HTTPS"
 
 #: modules/access/http/access.c:295
 msgid "Continuous stream"
@@ -9918,41 +9981,37 @@ msgstr "Flux continu"
 
 #: modules/access/http/access.c:296
 msgid "Keep reading a resource that keeps being updated."
-msgstr ""
+msgstr "Continuer à lire une ressource qui est sans cesse mise à jour."
 
 #: modules/access/http/access.c:298
-#, fuzzy
 msgid "Cookies forwarding"
-msgstr "Avancer d'un pas"
+msgstr "Transfert des cookies"
 
 #: modules/access/http/access.c:299
-#, fuzzy
 msgid "Forward cookies across HTTP redirections."
-msgstr "Propager les cookies à travers les redirections HTTP."
+msgstr "Transmettre les cookies lors des redirections HTTP."
 
 #: modules/access/http/access.c:300
 msgid "Referrer"
-msgstr ""
+msgstr "Référent"
 
 #: modules/access/http/access.c:301
 msgid "Provide the referral URL, i.e. HTTP \"Referer\" (sic)."
-msgstr ""
+msgstr "Fournir l'URL de provenance, c'est-à-dire le « Referer » HTTP (sic)."
 
 #: modules/access/http/access.c:304
-#, fuzzy
 msgid "User agent"
-msgstr "Agent utilisateur HTTP"
+msgstr "Agent utilisateur"
 
 #: modules/access/http/access.c:305
-#, fuzzy
 msgid ""
 "Override the name and version of the application as provided to the HTTP "
 "server, i.e. the HTTP \"User-Agent\". Name and version must be separated by "
 "a forward slash, e.g. \"FooBar/1.2.3\"."
 msgstr ""
-"Le nom et la version du programme vont être transmis au serveur HTTP. Ils "
-"doivent être séparés par une barre oblique, p. ex. FooBar/1.2.3. Cette "
-"option doit être précisée pour chaque entrée."
+"Remplacer le nom et la version de l'application tels que fournis au serveur "
+"HTTP, c'est-à-dire le « User-Agent » HTTP. Le nom et la version doivent être "
+"séparés par une barre oblique, par exemple « FooBar/1.2.3 »."
 
 #: modules/access/idummy.c:40 modules/access_output/dummy.c:43
 #: modules/audio_output/adummy.c:36 modules/codec/ddummy.c:45
@@ -10650,9 +10709,8 @@ msgid "Info"
 msgstr "Infos"
 
 #: modules/access/rist.h:98 modules/logger/file.c:217
-#, fuzzy
 msgid "Debug"
-msgstr "mise au point"
+msgstr "Débogage"
 
 #: modules/access/rist.h:98
 msgid "Simulate-Loss"
@@ -10910,7 +10968,7 @@ msgstr "Port SFTP à utiliser sur le serveur"
 
 #: modules/access/sftp.c:61
 msgid "Private key file"
-msgstr ""
+msgstr "Fichier de clé privée"
 
 #: modules/access/sftp.c:62
 msgid ""
@@ -10918,6 +10976,10 @@ msgid ""
 "assumed to be in the same directory with '.pub' appended. If unset, standard "
 "key paths will be attempted (e.g. '~/.ssh/id_rsa')."
 msgstr ""
+"Fichier de clé privée utilisé pour l'authentification SSH par clé publique. "
+"Le fichier de clé publique est supposé se trouver dans le même dossier, avec "
+"« .pub » ajouté à la fin. Si rien n'est défini, les chemins de clés standard "
+"seront essayés (par exemple « ~/.ssh/id_rsa »)."
 
 #: modules/access/sftp.c:68
 msgid "SFTP input"
@@ -10931,6 +10993,8 @@ msgstr "Authentification SFTP"
 #, c-format
 msgid "Please enter a valid login and password for the SFTP connection to %s"
 msgstr ""
+"Saisissez un identifiant et un mot de passe valides pour la connexion SFTP à "
+"%s"
 
 #: modules/access/shm.c:46 modules/access/vnc.c:61
 msgid "Frame buffer depth"
@@ -11010,15 +11074,15 @@ msgstr "Framebuffer en mémoire partagée"
 
 #: modules/access/smb2.c:104
 msgid "SMB2 / SMB3 input"
-msgstr ""
+msgstr "Entrée SMB2 / SMB3"
 
 #: modules/access/smb2.c:105
 msgid "Samba (Windows network shares) input via libsmb2"
-msgstr ""
+msgstr "Entrée Samba (partages réseau Windows) via libsmb2"
 
 #: modules/access/smb2.c:963
 msgid "SMB2 operation failed"
-msgstr ""
+msgstr "Échec de l'opération SMB2"
 
 #: modules/access/smb_common.h:27
 msgid "SMB domain"
@@ -12864,13 +12928,12 @@ msgstr ""
 "recouvrement"
 
 #: modules/audio_filter/scaletempo.c:72
-#, fuzzy
 msgid "Pitch Shift"
-msgstr "Pas"
+msgstr "Décalage de hauteur"
 
 #: modules/audio_filter/scaletempo.c:72
 msgid "Pitch shift in semitones."
-msgstr ""
+msgstr "Décalage de hauteur en demi-tons."
 
 #: modules/audio_filter/spatializer/spatializer.cpp:55
 msgid "Room size"
@@ -13221,21 +13284,23 @@ msgstr "Sortie audio « K Audio Interface »"
 
 #: modules/audio_output/mmdevice.c:1612
 msgid "HDMI/SPDIF audio passthrough"
-msgstr ""
+msgstr "Passthrough audio HDMI/SPDIF"
 
 #: modules/audio_output/mmdevice.c:1614
 msgid ""
 "Change this value if you have issue with HD codecs when using a HDMI "
 "receiver."
 msgstr ""
+"Modifiez cette valeur si vous rencontrez des problèmes avec les codecs HD "
+"lors de l'utilisation d'un récepteur HDMI."
 
 #: modules/audio_output/mmdevice.c:1622
 msgid "Enabled (AC3/DTS only)"
-msgstr ""
+msgstr "Activé (AC3/DTS uniquement)"
 
 #: modules/audio_output/mmdevice.c:1623
 msgid "Enabled"
-msgstr ""
+msgstr "Activé"
 
 #: modules/audio_output/mmdevice.c:1626
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:169
@@ -13255,14 +13320,12 @@ msgid "Windows Multimedia Device output"
 msgstr "Sortie périphérique Windows Multimédia"
 
 #: modules/audio_output/mmdevice.c:1639
-#, fuzzy
 msgid "Output back-end"
-msgstr "Carte de sortie"
+msgstr "Interface de sortie"
 
 #: modules/audio_output/mmdevice.c:1639
-#, fuzzy
 msgid "Audio output back-end interface."
-msgstr "Périphérique de sortie audio"
+msgstr "Interface sous-jacente de la sortie audio."
 
 #: modules/audio_output/oss.c:68
 msgid "OSS device node path."
@@ -16906,10 +16969,10 @@ msgstr "RC"
 msgid "Remote control interface"
 msgstr "Interface de commande à distance"
 
-#: modules/control/cli/player.c:801 modules/control/hotkeys.c:674
+#: modules/control/cli/player.c:801 modules/control/hotkeys.c:677
 #, c-format
 msgid "Audio device: %s"
-msgstr ""
+msgstr "Périphérique audio : %s"
 
 #: modules/control/cli/player.c:900 modules/gui/ncurses.c:934
 msgid "+-[Incoming]"
@@ -17063,42 +17126,47 @@ msgstr "Raccourcis globaux"
 msgid "Global Hotkeys interface"
 msgstr "Interface de combinaisons de touches"
 
-#: modules/control/hotkeys.c:505
-#, c-format
-msgid "%s subtitle control"
+#: modules/control/hotkeys.c:507
+msgid "Primary subtitle control"
 msgstr ""
 
-#: modules/control/hotkeys.c:517
+#: modules/control/hotkeys.c:509
+msgid "Secondary subtitle control"
+msgstr ""
+
+#: modules/control/hotkeys.c:520
 msgid "Sub sync: bookmarked audio time"
 msgstr "Synchro sous-titres : signet temps audio"
 
-#: modules/control/hotkeys.c:521
+#: modules/control/hotkeys.c:524
 msgid "Sub sync: bookmarked subtitle time"
 msgstr "Synchro sous-titrage : signet te"
 
-#: modules/control/hotkeys.c:528
+#: modules/control/hotkeys.c:531
 msgid "Sub sync: set bookmarks first!"
 msgstr "Synchro sous-titrage : configurer d'abord des signets !"
 
-#: modules/control/hotkeys.c:541
+#: modules/control/hotkeys.c:544
 #, c-format
 msgid "Sub sync: corrected %<PRId64> ms (total delay = %<PRId64> ms)"
 msgstr ""
+"Synchro sous-titres : correction de %<PRId64> ms (retard total = %<PRId64> "
+"ms)"
 
-#: modules/control/hotkeys.c:550
+#: modules/control/hotkeys.c:553
 msgid "Sub sync: delay reset"
 msgstr "Synchro sous-titres : effacement retard"
 
-#: modules/control/hotkeys.c:908
+#: modules/control/hotkeys.c:911
 msgid "Subtitle position: usual"
-msgstr ""
+msgstr "Position des sous-titres : habituelle"
 
-#: modules/control/hotkeys.c:910
+#: modules/control/hotkeys.c:913
 #, c-format
 msgid "Subtitle position: %+d%%"
-msgstr ""
+msgstr "Position des sous-titres : %+d %%"
 
-#: modules/control/hotkeys.c:1312
+#: modules/control/hotkeys.c:1315
 msgid "Hotkeys management interface"
 msgstr "Interface de combinaisons de touches"
 
@@ -28878,8 +28946,14 @@ msgid "Shuffle the play queue"
 msgstr "Mélanger la file de lecture"
 
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1263
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1269
 msgid "Discard the filtered out items"
 msgstr "Supprimer les éléments filtrés"
+
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1270
+msgid ""
+"Do you really want to discard the items that are not displayed at the moment?"
+msgstr ""
 
 #: modules/gui/qt/network/addonsmodel.cpp:330
 msgid "This addon has been installed manually. VLC can't manage it by itself."
@@ -31553,13 +31627,12 @@ msgid "Verbosity"
 msgstr "Niveau de verbosité"
 
 #: modules/logger/file.c:229
-#, fuzzy
 msgid ""
 "Select the logging verbosity or default to use the same verbosity given by --"
 "verbose."
 msgstr ""
-"Choisir la verbosité pour les messages, ou utiliser -1 pour la même que "
-"celle donnée par l'option « --verbose »."
+"Sélectionnez le niveau de verbosité de la journalisation, ou « Par défaut » "
+"pour utiliser celui donné par --verbose."
 
 #: modules/logger/file.c:233
 #, fuzzy
@@ -31581,38 +31654,35 @@ msgstr ""
 
 #: modules/logger/syslog.c:141
 msgid "System log (syslog)"
-msgstr ""
+msgstr "Journal système (syslog)"
 
 #: modules/logger/syslog.c:142
 msgid "Emit log messages through the POSIX system log."
-msgstr ""
+msgstr "Émettre les messages de journal via le journal système POSIX."
 
 #: modules/logger/syslog.c:144
-#, fuzzy
 msgid "Debug messages"
-msgstr "Masque de débogage"
+msgstr "Messages de débogage"
 
 #: modules/logger/syslog.c:145
 msgid "Include debug messages in system log."
-msgstr ""
+msgstr "Inclure les messages de débogage dans le journal système."
 
 #: modules/logger/syslog.c:147
 msgid "Identity"
-msgstr ""
+msgstr "Identité"
 
 #: modules/logger/syslog.c:148
 msgid "Process identity in system log."
-msgstr ""
+msgstr "Identité du processus dans le journal système."
 
 #: modules/logger/syslog.c:150
-#, fuzzy
 msgid "Facility"
-msgstr "Type"
+msgstr "Catégorie"
 
 #: modules/logger/syslog.c:151
-#, fuzzy
 msgid "System logging facility."
-msgstr "Serveur syslog"
+msgstr "Catégorie (facility) du journal système."
 
 #: modules/logger/syslog.c:154
 #, fuzzy
@@ -32494,26 +32564,29 @@ msgstr ""
 "En cas de doute, arrêtez maintenant.\n"
 
 #: modules/misc/gnutls.c:734
-#, fuzzy
 msgid "Use system trust database"
-msgstr "Débit d'images pour la capture."
+msgstr "Utiliser le magasin de confiance du système"
 
 #: modules/misc/gnutls.c:736
 msgid ""
 "Trust the root certificates of Certificate Authorities stored in the "
 "operating system trust database to authenticate TLS sessions."
 msgstr ""
+"Faire confiance aux certificats racines des autorités de certification "
+"enregistrés dans le magasin de confiance du système d'exploitation pour "
+"authentifier les sessions TLS."
 
 #: modules/misc/gnutls.c:739
-#, fuzzy
 msgid "Trust directory"
-msgstr "Dossier temporaire pour le différé"
+msgstr "Dossier de confiance"
 
 #: modules/misc/gnutls.c:741
 msgid ""
 "Trust the root certificates of Certificate Authorities stored in the "
 "specified directory to authenticate TLS sessions."
 msgstr ""
+"Faire confiance aux certificats racines des autorités de certification "
+"enregistrés dans le dossier indiqué pour authentifier les sessions TLS."
 
 #: modules/misc/gnutls.c:744
 msgid "TLS cipher priorities"
@@ -32534,11 +32607,11 @@ msgstr "Performance (priorité à des chiffrements rapides)"
 
 #: modules/misc/gnutls.c:757
 msgid "Secure 128-bit (or higher)"
-msgstr ""
+msgstr "Sécurisé 128 bits (ou plus)"
 
 #: modules/misc/gnutls.c:758
 msgid "Secure 256-bit (exclude 128-bit ciphers)"
-msgstr ""
+msgstr "Sécurisé 256 bits (exclut les chiffrements 128 bits)"
 
 #: modules/misc/gnutls.c:763
 msgid "GNU TLS transport layer security"
@@ -32592,35 +32665,37 @@ msgstr "Inhiber l'économiseur d'écran XDG"
 
 #: modules/misc/medialibrary/medialibrary.cpp:469
 msgid "Recover"
-msgstr ""
+msgstr "Récupérer"
 
 #: modules/misc/medialibrary/medialibrary.cpp:470
 msgid "Recreate"
-msgstr ""
+msgstr "Recréer"
 
 #: modules/misc/medialibrary/medialibrary.cpp:470
 msgid "Media database corrupted"
-msgstr ""
+msgstr "Base de données des médias corrompue"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2728
 msgid "Folders discovered by the media library"
-msgstr ""
+msgstr "Dossiers analysés par la médiathèque"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2729
 msgid "Semicolon separated list of folders to discover media from"
 msgstr ""
+"Liste de dossiers, séparés par des points-virgules, dans lesquels rechercher "
+"des médias"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2732
 msgid "Extra verbose media library logs"
-msgstr ""
+msgstr "Journaux très détaillés de la médiathèque"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2735
 msgid "media library"
-msgstr ""
+msgstr "médiathèque"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2736
 msgid "Organize your media"
-msgstr ""
+msgstr "Organisez vos médias"
 
 #: modules/misc/playlist/export.c:49
 msgid "M3U playlist export"
@@ -33174,14 +33249,12 @@ msgstr "Services « Bonjour »"
 #: modules/services_discovery/microdns.c:46
 #: modules/services_discovery/microdns.c:59
 #: modules/services_discovery/microdns.c:689
-#, fuzzy
 msgid "mDNS Network Discovery"
-msgstr "Services « Bonjour »"
+msgstr "Découverte réseau mDNS"
 
 #: modules/services_discovery/microdns.c:66
-#, fuzzy
 msgid "mDNS Renderer Discovery"
-msgstr "Services « Bonjour »"
+msgstr "Découverte des appareils de rendu mDNS"
 
 #: modules/services_discovery/mtp.c:326 modules/services_discovery/mtp.c:357
 #: modules/services_discovery/mtp.c:361
@@ -33339,7 +33412,7 @@ msgstr ""
 
 #: modules/services_discovery/upnp.cpp:61
 msgid "Custom SAT>IP channel list URL"
-msgstr ""
+msgstr "URL personnalisée de la liste des chaînes SAT>IP"
 
 #: modules/services_discovery/upnp.cpp:65
 #: modules/stream_out/chromecast/cast.cpp:225
@@ -33351,48 +33424,56 @@ msgid ""
 "This sets the HTTP port of the local server used to stream the media to the "
 "UPnP Renderer."
 msgstr ""
+"Définit le port HTTP du serveur local utilisé pour diffuser le média vers "
+"l'appareil de rendu UPnP."
 
 #: modules/services_discovery/upnp.cpp:67
 msgid "Lead (ms)"
-msgstr ""
+msgstr "Avance (ms)"
 
 #: modules/services_discovery/upnp.cpp:68
 msgid ""
 "How far ahead of the media's pace the stream goes to the renderer. More "
 "makes a renderer wait longer before it shows a seek."
 msgstr ""
+"Avance du flux envoyé à l'appareil de rendu par rapport au rythme du média. "
+"Une valeur plus élevée fait attendre plus longtemps l'appareil de rendu "
+"avant qu'il n'affiche un déplacement."
 
 #: modules/services_discovery/upnp.cpp:71
 msgid "The UPnP Renderer can receive video."
-msgstr ""
+msgstr "L'appareil de rendu UPnP peut recevoir de la vidéo."
 
 #: modules/services_discovery/upnp.cpp:74
 msgid "IP Address of the UPnP Renderer."
-msgstr ""
+msgstr "Adresse IP de l'appareil de rendu UPnP."
 
 #: modules/services_discovery/upnp.cpp:75
 msgid "UPnP Renderer port"
-msgstr ""
+msgstr "Port de l'appareil de rendu UPnP"
 
 #: modules/services_discovery/upnp.cpp:76
 msgid "The port used to talk to the UPnP Renderer."
-msgstr ""
+msgstr "Le port utilisé pour communiquer avec l'appareil de rendu UPnP."
 
 #: modules/services_discovery/upnp.cpp:77
 msgid "base URL"
-msgstr ""
+msgstr "URL de base"
 
 #: modules/services_discovery/upnp.cpp:78
 msgid "The base Url relative to which all other UPnP operations must be called"
 msgstr ""
+"L'URL de base par rapport à laquelle toutes les autres opérations UPnP "
+"doivent être appelées"
 
 #: modules/services_discovery/upnp.cpp:79
 msgid "description URL"
-msgstr ""
+msgstr "URL de description"
 
 #: modules/services_discovery/upnp.cpp:80
 msgid "The Url used to get the xml descriptor of the UPnP Renderer"
 msgstr ""
+"L'URL utilisée pour obtenir le descripteur XML de l'appareil de rendu UPnP"
 
 #: modules/services_discovery/upnp.cpp:130
 #: modules/services_discovery/upnp.cpp:138
@@ -33403,19 +33484,19 @@ msgstr "Universal Plug'n'Play"
 #: modules/services_discovery/upnp.cpp:131
 #: modules/services_discovery/upnp.cpp:156
 msgid "UPnP Renderer Discovery"
-msgstr ""
+msgstr "Découverte des appareils de rendu UPnP"
 
 #: modules/services_discovery/upnp.cpp:166
 msgid "UPnP/DLNA stream output"
-msgstr ""
+msgstr "Sortie de flux UPnP/DLNA"
 
 #: modules/services_discovery/upnp.cpp:193
 msgid "UPnP/DLNA demux filter"
-msgstr ""
+msgstr "Filtre de démultiplexage UPnP/DLNA"
 
 #: modules/services_discovery/upnp.cpp:202
 msgid "Universal Plug'n'Play Server"
-msgstr ""
+msgstr "Serveur Universal Plug'n'Play"
 
 #: modules/services_discovery/xcb_apps.c:54
 #: modules/services_discovery/xcb_apps.c:55
@@ -35262,11 +35343,12 @@ msgid "Font file for the font you want to use"
 msgstr "Fichier de police à utiliser"
 
 #: modules/text_renderer/freetype/freetype.c:66
-#, fuzzy
 msgid ""
 "The opacity (inverse of transparency) of the text that will be rendered on "
 "the video. 0 = transparent, 255 = totally opaque."
-msgstr "Opacité du texte affiché (0 = transparent, 255 = opaque). "
+msgstr ""
+"L'opacité (inverse de la transparence) du texte affiché sur la vidéo. 0 = "
+"transparent, 255 = totalement opaque."
 
 #: modules/text_renderer/freetype/freetype.c:69
 msgid "Text default color"
@@ -35293,6 +35375,8 @@ msgid ""
 "The size of the text in pixels of the picture. 0 sizes it from the picture "
 "(see the text scale)."
 msgstr ""
+"La taille du texte, en pixels de l'image. 0 la calcule d'après l'image (voir "
+"l'échelle du texte)."
 
 #: modules/text_renderer/freetype/freetype.c:91
 msgid "Cache size"
@@ -35305,6 +35389,7 @@ msgstr ""
 #: modules/text_renderer/freetype/freetype.c:95
 msgid "Paragraph base direction for the Unicode bi-directional algorithm."
 msgstr ""
+"Direction de base des paragraphes pour l'algorithme bidirectionnel Unicode."
 
 #: modules/text_renderer/freetype/freetype.c:98
 msgid "Use YUVP renderer"
@@ -38105,6 +38190,18 @@ msgstr ""
 msgid "Are you sure you wish to create the stream?"
 msgstr "Voulez-vous créer ce flux ?"
 
+#, c-format
+#~ msgid "%s track: %s"
+#~ msgstr "Piste %s : %s"
+
+#, c-format
+#~ msgid "%s tracks: %s"
+#~ msgstr "Pistes %s : %s"
+
+#, c-format
+#~ msgid "%s subtitle control"
+#~ msgstr "Contrôle des sous-titres : %s"
+
 #~ msgid "%1 more matching shortcuts"
 #~ msgstr "%1 autres raccourcis correspondants"
 
@@ -40005,22 +40102,6 @@ msgstr "Voulez-vous créer ce flux ?"
 #, c-format
 #~ msgid "Sub sync: corrected %i ms (total delay = %i ms)"
 #~ msgstr "Synchro sous-titres : correction %i ms (délai total = %is ms)"
-
-#, c-format
-#~ msgid "Subtitle delay %i ms"
-#~ msgstr "Retard des sous-titres %i ms"
-
-#, c-format
-#~ msgid "Audio delay %i ms"
-#~ msgstr "Retard de l'audio %i ms"
-
-#, c-format
-#~ msgid "Audio track: %s"
-#~ msgstr "Piste audio : %s"
-
-#, c-format
-#~ msgid "Subtitle track: %s"
-#~ msgstr "Piste de sous-titres : %s"
 
 #~ msgid "Original Size"
 #~ msgstr "Taille originale"

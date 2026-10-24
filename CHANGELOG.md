@@ -15,10 +15,19 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
-Surround sound, casting to a TV, memory over long sessions, and the file name of the player bar.
+Every language at once (right to left too), surround sound, casting to a TV, memory over long sessions, and the
+file name of the player bar.
 
 ### Fixed
 
+- **Long translations no longer break the interface**: texts that are longer in German, Russian or Portuguese, or
+  written in other scripts, were cut in the middle or ran over the next control. They shorten with "…" and show
+  in full in a tooltip, wrap where there is room, or their button, switch, tab or menu widens; checked on every page
+  with a test language 40 % longer than English. The four labels of the player palette with a line break could not
+  be translated at all.
+- **The wheel over an open dropdown moves it by whole rows**: a notch moved the list by about half a row and it
+  stopped between two. It moves one row per notch now, in a short glide, always stopping on a row, in every
+  dropdown (languages, presets, audio devices, aspect ratio, zoom...).
 - **5.1 and 7.1 sound jumped between speakers**: on a surround device (or a virtual one, such as SteelSeries Sonar),
   voices moved between the centre and the side or rear speakers many times a second, heard as a stutter. Every
   channel stays in its place now (checked for mono, stereo, quad, 5.1, 6.1 and 7.1 sources). 6.1 sound on a 7.1
@@ -150,6 +159,20 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
 
 ### Added
 
+- **Every language at once, right to left too**: choosing the interface language in Settings shows the whole
+  interface in it immediately, without a restart: the side bar, the pages, the player, the settings, the menus and
+  the dialogs (the classic ones when they open next). Save keeps it, Cancel goes back, as for the theme; the
+  welcome and the classic settings do the same. Under the language, *Layout direction* lays the interface out left
+  to right (the default, whatever the language) or right to left: everything mirrors at once, the arrows point the
+  way one reads, and the playback bar keeps its order as on YouTube (time runs left to right).
+- **The translations are in the program** (issue #5): the releases had none, so the language chosen in Settings
+  did nothing. 98 languages ship now. Hebrew and Brazilian Portuguese cover every text of the interface (the
+  Portuguese of the redesign contributed by @Kinglucas962 in #6); in the other languages VLC's own texts are
+  translated and the redesign's are in English until they are.
+- **Subtitles in the computer's language from the first film**: until subtitle languages are chosen, a film's own
+  subtitle track in the language of Windows is shown (not for English, where every English film would show its
+  English subtitles), as the online search already looked for it.
+
 - **Asked before going online**: the two features that connect by themselves, the daily update check (GitHub) and
   the automatic online subtitles (the film's name and a fingerprint of the file to subtitle services), are asked
   first. The installer has a *Privacy* page with both, on to begin with, what each one sends and to whom, and a link
@@ -256,6 +279,16 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
 
 ### Technical
 
+- Interface language at runtime: `vlc_settextlanguage()` (core) sets LANGUAGE, which gettext reads at each lookup;
+  `MainCtx::applyInterfaceLanguage()` sets it and the default QLocale, sends QEvent::LanguageChange and emits
+  `interfaceLanguageChanged()`, on which the QML engine retranslates and the C++ models, the side bar, the shortcuts,
+  the tray menu and the classic dialogs refresh (hidden dialogs are made again; `markTranslationBinding()` lets a
+  binding reading a C++ text retranslate). `MainCtx::rightToLeft` (redesign/right-to-left) sets the direction; the
+  main interface, every popup and every other window bind `LayoutMirroring` to it.
+- Translations: built with `-l` (`--enable-nls`); `po/vlc.pot` made again from the tree (it was VLC's of 2017; 7,823
+  strings) with the 19 files of the redesign missing from `po/POTFILES.in` and the `tr()` keyword missing from
+  `po/Makevars`; the catalogs are made again at each build (gettext remakes them only when vlc.pot changes).
+- RowSnapWheel (widgets): the wheel over a list in whole rows, put over the list of every dropdown popup.
 - The version is 0.3.0 from now on (`redesign_version.hpp`): it was raised only when a release was cut, so every
   build made since 0.2.6 called itself 0.2.6 in About, in the settings and in the file properties.
 - Subtitle clearance: a `sub-clearance` variable on the video output (the bottom of the window the interface

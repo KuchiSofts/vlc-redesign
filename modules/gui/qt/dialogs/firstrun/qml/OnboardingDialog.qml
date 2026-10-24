@@ -110,6 +110,10 @@ Controls.Popup {
     }
 
     contentItem: Item {
+        // a popup does not inherit the mirroring of the window (right to left)
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        LayoutMirroring.childrenInherit: true
+
         Item {
             id: stage
             width: 1090
@@ -190,6 +194,9 @@ Controls.Popup {
                 Text {
                     x: Math.floor((parent.width - width) / 2)
                     y: 132
+                    // (inside the player behind, a longer one cut)
+                    width: Math.min(implicitWidth, parent.width - 124)
+                    elide: Text.ElideRight
                     text: qsTr("Choose what VLC does online by itself.")
                     color: VLCStyle.redesign.color("#969696", "#4d4d4d")
                     font.family: VLCStyle.redesign.fontFamily
@@ -197,6 +204,7 @@ Controls.Popup {
                     font.weight: Font.Light
                 }
                 Text {
+                    id: onlineIntro
                     x: Math.floor((parent.width - width) / 2)
                     y: 184
                     width: 700
@@ -209,8 +217,11 @@ Controls.Popup {
                     lineHeight: 1.3
                 }
 
+                // What follows moves down under longer texts (a translation),
+                // never up from where the design puts it
                 Column {
-                    y: 284
+                    id: onlineColumn
+                    y: Math.max(284, onlineIntro.y + onlineIntro.height + 16)
                     anchors.horizontalCenter: parent.horizontalCenter
                     width: 680
                     spacing: 28
@@ -236,7 +247,7 @@ Controls.Popup {
                     id: policyLink
                     objectName: "onboardingPrivacyPolicy"
                     x: Math.floor((parent.width - width) / 2)
-                    y: 500
+                    y: Math.max(500, onlineColumn.y + onlineColumn.height + 16)
                     // (a template has no size of its own)
                     implicitWidth: implicitContentWidth
                     implicitHeight: implicitContentHeight
@@ -257,7 +268,10 @@ Controls.Popup {
                 }
                 Text {
                     x: Math.floor((parent.width - width) / 2)
-                    y: 530
+                    y: policyLink.y + 30
+                    width: Math.min(implicitWidth, parent.width - 124)
+                    horizontalAlignment: Text.AlignHCenter
+                    wrapMode: Text.WordWrap
                     text: qsTr("Both stay in Settings: General for the updates, Subtitles for the subtitles.")
                     color: VLCStyle.redesign.color("#5a5a5a", "#6b6b6b")
                     font.family: VLCStyle.redesign.fontFamily
@@ -278,12 +292,15 @@ Controls.Popup {
                 text: controller.error
                 color: VLCStyle.redesign.color("#e57373", "#c62828")
                 wrapMode: Text.WordWrap
+                horizontalAlignment: Text.AlignLeft
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: 14
             }
 
+            // (right to left: Cancel on the right, Next on the left, Back
+            // after it)
             OnboardingButton {
-                x: 62
+                x: LayoutMirroring.enabled ? parent.width - width - 62 : 62
                 y: 671
                 // Figma: no Skip on the first run; Cancel when reopened
                 visible: root.step === 0 && !controller.needsSetup
@@ -301,9 +318,11 @@ Controls.Popup {
                     controller.skip()
                 }
             }
-            // Figma 1902:6770: Back 8 before Finish
+            // Figma 1902:6770: Back 8 before Finish (wider buttons: a longer
+            // word)
             OnboardingButton {
-                x: 820
+                x: LayoutMirroring.enabled ? 62 + nextButton.width + 8
+                                           : parent.width - 62 - nextButton.width - 8 - width
                 y: 671
                 visible: root.step > 0
                 text: qsTr("Back")
@@ -312,7 +331,8 @@ Controls.Popup {
                 onClicked: --root.step
             }
             OnboardingButton {
-                x: 928
+                id: nextButton
+                x: LayoutMirroring.enabled ? 62 : parent.width - width - 62
                 y: 671
                 primary: true
                 text: root.step === root.lastStep ? qsTr("Finish") : qsTr("Next")
@@ -346,10 +366,13 @@ Controls.Popup {
             Accessible.description: choice.detail
             onToggled: choice.toggled(checked)
         }
+        // under the text of the switch (right to left: 60 from the right)
         Text {
             width: parent.width
-            leftPadding: 60
+            leftPadding: LayoutMirroring.enabled ? 0 : 60
+            rightPadding: LayoutMirroring.enabled ? 60 : 0
             wrapMode: Text.WordWrap
+            horizontalAlignment: Text.AlignLeft
             text: choice.detail
             color: VLCStyle.redesign.color("#6f6f6f", "#5a5a59")
             font.family: VLCStyle.redesign.fontFamily

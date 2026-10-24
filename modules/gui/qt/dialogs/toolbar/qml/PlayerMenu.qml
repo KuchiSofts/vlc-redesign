@@ -26,6 +26,9 @@ Controls.Popup {
     }
     contentItem: Column {
         spacing: 4
+        // a popup does not inherit the mirroring of the window (right to left)
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        LayoutMirroring.childrenInherit: true
         PersonalizationActions {
             width: parent.width
             onCustomizeRequested: {
@@ -51,7 +54,10 @@ Controls.Popup {
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: 16
                     verticalAlignment: Text.AlignVCenter
-                    leftPadding: 12
+                    horizontalAlignment: Text.AlignLeft
+                    elide: Text.ElideRight
+                    leftPadding: LayoutMirroring.enabled ? 0 : 12
+                    rightPadding: LayoutMirroring.enabled ? 12 : 0
                 }
                 onClicked: {
                     root.close()

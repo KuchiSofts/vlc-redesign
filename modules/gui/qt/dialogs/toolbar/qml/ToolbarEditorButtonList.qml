@@ -131,6 +131,9 @@ Flickable {
 
         Text {
             anchors.centerIn: parent
+            width: Math.min(implicitWidth, parent.width - VLCStyle.dp(32, VLCStyle.scale))
+            horizontalAlignment: Text.AlignHCenter
+            wrapMode: Text.WordWrap
             text: qsTr("Drop here to remove from the player")
             color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, theme.fg.secondary)
             font.family: VLCStyle.redesign.fontFamily
@@ -146,9 +149,11 @@ Flickable {
         cursorShape: visible ? Qt.DragMoveCursor : Qt.ArrowCursor
     }
 
-    // its own width: the columns 86 wide, 24 apart (no spare width spread)
+    // its own width: the columns 86 wide, 24 apart (no spare width spread);
+    // right to left, from the right edge (the items mirrored in it)
     GridLayout {
         id: grid
+        x: LayoutMirroring.enabled ? root.width - width : 0
         columns: Math.max(1, Math.floor((root.width + columnSpacing) / (VLCStyle.dp(86, VLCStyle.scale) + columnSpacing)))
         columnSpacing: VLCStyle.dp(24, VLCStyle.scale)
         rowSpacing: VLCStyle.dp(38, VLCStyle.scale)

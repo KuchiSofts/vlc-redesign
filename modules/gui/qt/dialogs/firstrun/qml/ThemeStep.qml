@@ -139,6 +139,8 @@ Item {
                     font.pixelSize: 16
                     font.weight: Font.Light
                     horizontalAlignment: Text.AlignHCenter
+                    // a longer name on more lines, under the tile
+                    wrapMode: Text.WordWrap
 
                     FontMetrics {
                         id: themeLabelMetrics
@@ -273,7 +275,8 @@ Item {
     // Figma 1902:4020: discs of 40 every 80 from x 53 at y 667, the chosen
     // one in a ring of 64 (4 thick, the accent at 30 %)
     Row {
-        x: 41
+        // (right to left: 41 from the right, the colors in the mirrored order)
+        x: LayoutMirroring.enabled ? parent.width - width - 41 : 41
         y: 655
         spacing: 16
         Repeater {

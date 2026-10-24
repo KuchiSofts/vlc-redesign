@@ -82,6 +82,11 @@ if ! cmp -s "$archive" "$latest"; then
     rm -rf contrib/$triplet
 fi
 
+# The catalogs (po/*.gmo) are made again only when vlc.pot changes: a
+# translation changed alone kept its previous catalog. Always made again
+# (seconds).
+rm -f po/*.gmo po/stamp-po win64/po/*.gmo win64/po/stamp-po
+
 # QUICK=1: the tree is configured already, only rebuild what changed. A full
 # build.sh run bootstraps and configures again, which takes minutes.
 if [ "${QUICK:-}" = 1 ] && [ -f win64/Makefile ]; then

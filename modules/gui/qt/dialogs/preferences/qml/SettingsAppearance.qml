@@ -127,6 +127,8 @@ SettingsSectionTitle {
             color: root.c("#8F8F8F")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: root.px(14)
+            // on the start side, whatever the script (mirrored right to left)
+            horizontalAlignment: Text.AlignLeft
             elide: Text.ElideRight
         }
         SettingsSegmented {

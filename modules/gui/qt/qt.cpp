@@ -53,6 +53,8 @@ extern "C" char **environ;
 
 #include <QApplication>
 #include <QFontDatabase>
+#include <QLocale>
+#include <QThreadPool>
 #include <QDate>
 #include <QDir>
 #include <QFile>
@@ -1051,6 +1053,30 @@ static void *Thread( void *obj )
             // and the advances of the font itself (not rounded to pixels)
             font.setHintingPreference( QFont::PreferNoHinting );
             app.setFont( font );
+        }
+    }
+
+    /* The first text in a script Inter does not draw (Hebrew, Arabic,
+     * Chinese...) has Qt read every font of the system for the scripts it
+     * covers: about 0.2 s of the start in such a language of the interface.
+     * The fonts are read on a thread of the pool meanwhile (QFontDatabase
+     * is thread-safe), while the interface is created. Not in the other
+     * languages: the fonts read take memory (~15 MB) that only a name in
+     * such a script needs (the first one holds the interface that long) */
+    {
+        const QLocale::Script script = QLocale().script();
+        if( script != QLocale::LatinScript && script != QLocale::CyrillicScript
+            && script != QLocale::GreekScript && script != QLocale::AnyScript )
+        {
+            QThreadPool::globalInstance()->start([]() {
+                const QStringList families = QFontDatabase::families();
+                for( const QString &family : families )
+                {
+                    if( QCoreApplication::closingDown() )
+                        return;
+                    QFontDatabase::writingSystems( family );
+                }
+            });
         }
     }
 

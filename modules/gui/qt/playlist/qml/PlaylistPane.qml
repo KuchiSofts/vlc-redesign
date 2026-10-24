@@ -166,6 +166,8 @@ T.Pane {
             Layout.bottomMargin: VLCStyle.dp(4, VLCStyle.scale)
             text: qsTr("Queue")
             elide: Text.ElideRight
+            // (the right in a right to left layout)
+            horizontalAlignment: Text.AlignLeft
             color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, theme.fg.primary)
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(18, VLCStyle.scale)
@@ -191,6 +193,7 @@ T.Pane {
                     return qsTr("%1 item", "%1 items", count).arg(count) + " - " + root.model.duration.formatLong()
                 }
                 elide: Text.ElideRight
+                horizontalAlignment: Text.AlignLeft
                 color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, theme.fg.secondary)
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
@@ -458,7 +461,9 @@ T.Pane {
 
                 Impl.ColorImage {
                     id: folderIcon
-                    x: root.card ? VLCStyle.dp(14, VLCStyle.scale) : VLCStyle.margin_normal
+                    // (from the right in a right to left layout)
+                    anchors.left: parent.left
+                    anchors.leftMargin: root.card ? VLCStyle.dp(14, VLCStyle.scale) : VLCStyle.margin_normal
                     anchors.verticalCenter: parent.verticalCenter
                     width: VLCStyle.dp(20, VLCStyle.scale)
                     height: width
@@ -481,6 +486,7 @@ T.Pane {
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
                     elide: Text.ElideMiddle
+                    horizontalAlignment: Text.AlignLeft
                 }
             }
 
@@ -489,8 +495,12 @@ T.Pane {
 
                 width: listView.contentWidth
                 compact: root.card
-                leftPadding: root.card ? VLCStyle.dp(14, VLCStyle.scale) : VLCStyle.margin_normal
-                rightPadding: Math.max(listView.T.ScrollBar.vertical.width, VLCStyle.margin_normal)
+                // the room of the scroll bar at the end: on the left in a
+                // right to left layout, where the bar is
+                readonly property real _startPadding: root.card ? VLCStyle.dp(14, VLCStyle.scale) : VLCStyle.margin_normal
+                readonly property real _endPadding: Math.max(listView.T.ScrollBar.vertical.width, VLCStyle.margin_normal)
+                leftPadding: mirrored ? _endPadding : _startPadding
+                rightPadding: mirrored ? _startPadding : _endPadding
 
                 contextMenu: root.contextMenu
 
@@ -579,6 +589,10 @@ T.Pane {
 
                     anchors.horizontalCenter: parent.horizontalCenter
 
+                    // a longer text (a translation) on more lines
+                    width: listView.width > 0 ? Math.min(implicitWidth, listView.width - 2 * VLCStyle.margin_normal) : implicitWidth
+                    wrapMode: Text.Wrap
+
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
 
@@ -594,6 +608,9 @@ T.Pane {
 
                 T.Label {
                     anchors.topMargin: VLCStyle.margin_normal
+
+                    width: listView.width > 0 ? Math.min(implicitWidth, listView.width - 2 * VLCStyle.margin_normal) : implicitWidth
+                    wrapMode: Text.Wrap
 
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter

@@ -61,6 +61,8 @@ RowLayout {
         font.pixelSize: VLCStyle.fontSize_normal
         textFormat: Text.PlainText
 
+        // (the right in a right to left layout)
+        horizontalAlignment: Text.AlignLeft
         verticalAlignment: Text.AlignVCenter
         text: qsTr("Title")
         color: theme.fg.secondary

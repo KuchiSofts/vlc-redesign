@@ -37,6 +37,12 @@ Window {
     title: qsTr("Play Queue")
     color: theme.bg.primary
 
+    // Right to left (Hebrew, Arabic...): a window of its own is not under
+    // the mirrored interface, it mirrors itself
+    readonly property bool _rtl: Qt.application.layoutDirection === Qt.RightToLeft
+    LayoutMirroring.enabled: _rtl
+    LayoutMirroring.childrenInherit: true
+
     property bool _componentCompleted: false
 
     onVisibleChanged: {
@@ -44,7 +50,9 @@ Window {
             console.assert(transientParent)
             height = transientParent.height
             minimumHeight = transientParent.minimumHeight
-            x = transientParent.x + transientParent.width + 10
+            // beside the main window: on its left in a right to left layout
+            x = _rtl ? transientParent.x - width - 10
+                     : transientParent.x + transientParent.width + 10
             y = transientParent.y
         }
     }

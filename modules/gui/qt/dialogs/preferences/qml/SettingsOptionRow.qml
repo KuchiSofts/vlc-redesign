@@ -53,8 +53,9 @@ Item {
     property bool valueShown: true
     // The name read out for the row
     property string accessibleLabel: label
-    // A line under the label ("Applies after restart"; a warning: the web
-    // remote without a password), as the note of the interface language
+    // A line under the label ("Applies the next time VLC starts"; a warning:
+    // the web remote without a password), as the note of the interface
+    // language
     property string note: ""
     property bool noteWarning: false
     readonly property real noteHeight: noteText.visible ? noteText.implicitHeight + px(6) : 0

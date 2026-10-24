@@ -278,9 +278,11 @@ Column {
                         const notes = []
                         if (webRemoteLocked)
                             notes.push(qsTr("Set a web remote password in the Advanced Options: the remote stays locked without one."))
-                        // the settings read when VLC starts, once changed
+                        // the few settings VLC can only read when it starts
+                        // (its command line, the interface, the media
+                        // library), once changed
                         if (presentation.restart && model.pendingRestart)
-                            notes.push(qsTr("Applies after restart"))
+                            notes.push(qsTr("Applies the next time VLC starts"))
                         return notes.join(" ")
                     }
                     noteWarning: webRemoteLocked

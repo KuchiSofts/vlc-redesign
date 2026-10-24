@@ -18,8 +18,9 @@
 // The languages of the simple preferences, [{ value: iso, label: name }];
 // empty where VLC follows the system language (not Windows)
 QVariantList interfaceLanguages();
-// The chosen language, applied at the next start: English when none is
-// chosen in a portable copy (the installed one too), "auto" otherwise
+// The chosen language, the one VLC starts in (MainCtx::applyInterfaceLanguage
+// shows a new one at once): English when none is chosen in a portable copy
+// (the installed one too), "auto" otherwise
 QString interfaceLanguage();
 bool setInterfaceLanguage(const QString &iso);
 // Forgets the choice: back to the default above

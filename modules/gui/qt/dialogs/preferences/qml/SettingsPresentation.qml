@@ -13,50 +13,55 @@ QtObject {
    The table is built once: entry() is called for every row of a page (and
    for the rows before it), a table per call made the long pages slow. */
 readonly property var items: ({
-        // restart: read when VLC starts (the loggers...): "Applies after
-        // restart" under the row once it is changed
-        "verbose": [qsTr("Diagnostics"), qsTr("Show minor warnings"), "inttoggle", null, { advanced: true, info: true, restart: true }],
+        // restart: what VLC can only read when it starts (its command line,
+        // the interface it opens, its media library): "Applies the next time
+        // VLC starts" under the row once it is changed. The other settings
+        // apply at once (the log, the web remote...: LiveSettings) or to the
+        // next media.
+        "verbose": [qsTr("Diagnostics"), qsTr("Show minor warnings"), "inttoggle", null, { advanced: true, info: true }],
         // read by VLC as its command line at the start
         "extra-options": [qsTr("Diagnostics"), qsTr("Additional command line options"), "", null,
                           { advanced: true, info: true, restart: true }],
         "logmode": [qsTr("Diagnostics"), qsTr("Log format"), "", { "text": qsTr("Plain text"), "html": qsTr("HTML") },
-                    { advanced: true, info: true, restart: true }],
+                    { advanced: true, info: true }],
         "qt-error-dialogs": [qsTr("Startup"), qsTr("Show confirmation and error dialogs"), "", null, { info: true }],
         "redesign-update-check": [qsTr("Startup"), qsTr("Check for updates automatically"), "", null, { info: true }],
-        "file-logging": [qsTr("Diagnostics"), qsTr("Save a log"), "", null, { info: true, restart: true }],
-        "logfile": [qsTr("Diagnostics"), qsTr("Log file"), "savefile", null, { info: true, restart: true }],
+        "file-logging": [qsTr("Diagnostics"), qsTr("Save a log"), "", null, { info: true }],
+        "logfile": [qsTr("Diagnostics"), qsTr("Log file"), "savefile", null, { info: true }],
         "log-verbose": [qsTr("Diagnostics"), qsTr("Log details"), "",
                         { "-1": qsTr("Default"), 0: qsTr("Information"), 1: qsTr("Errors only"),
-                          2: qsTr("Errors and warnings"), 3: qsTr("Everything (debug)") }, { info: true, restart: true }],
+                          2: qsTr("Errors and warnings"), 3: qsTr("Everything (debug)") }, { info: true }],
         "stats": [qsTr("Diagnostics"), qsTr("Collect playback statistics"), "", null, { advanced: true, info: true }],
         "syslog": [qsTr("Developer Options"), qsTr("Write to the system log"), "", null,
-                   { advanced: true, heading: true, info: true, restart: true }],
+                   { advanced: true, heading: true, info: true }],
         "syslog-debug": [qsTr("Developer Options"), qsTr("Include debug messages in the system log"), "", null,
-                         { advanced: true, heading: true, info: true, restart: true }],
+                         { advanced: true, heading: true, info: true }],
         "syslog-ident": [qsTr("Developer Options"), qsTr("System log identity"), "", null,
-                         { advanced: true, heading: true, info: true, restart: true }],
+                         { advanced: true, heading: true, info: true }],
         "syslog-facility": [qsTr("Developer Options"), qsTr("System log facility"), "", null,
-                            { advanced: true, heading: true, info: true, restart: true }],
-        // Interface page of the design
+                            { advanced: true, heading: true, info: true }],
+        // Interface page of the design. The skin is another interface: the
+        // one VLC opens with (it can't run beside this one); its file is
+        // the one it opens
         "x-custom-skin": [qsTr("Skin"), qsTr("Use a custom skin"), "", null, { info: true, restart: true }],
-        "skins2-last": [qsTr("Skin"), qsTr("Skin file"), "openfile", null, { info: true, restart: true }],
+        "skins2-last": [qsTr("Skin"), qsTr("Skin file"), "openfile", null, { info: true }],
         "embedded-video": [qsTr("Window"), qsTr("Play video inside main window"), "", null, { info: true }],
         "qt-video-autoresize": [qsTr("Window"), qsTr("Resize window to fit video"), "boolchoice",
-                                { false: qsTr("Never"), true: qsTr("Always") }, { info: true, restart: true }],
+                                { false: qsTr("Never"), true: qsTr("Always") }, { info: true }],
         "redesign/remember-window-geometry": [qsTr("Window"), qsTr("Remember window size and position"), "", null, { info: false }],
         "video-on-top": [qsTr("Window"), qsTr("Keep window above other windows"), "", null, { info: true }],
         "qt-titlebar": [qsTr("Window"), qsTr("Show window decorations"), "", null, { info: true }],
-        "qt-name-in-title": [qsTr("Window"), qsTr("Show the file name in the title bar"), "", null, { info: true, restart: true }],
+        "qt-name-in-title": [qsTr("Window"), qsTr("Show the file name in the title bar"), "", null, { info: true }],
         "qt-fullscreen-screennumber": [qsTr("Window"), qsTr("Open fullscreen on"), "", null, { info: true }],
         "qt-minimal-view": [qsTr("Playback Controls"), qsTr("Start in compact mode"), "", null, { info: true }],
         "qt-pin-controls": [qsTr("Playback Controls"), qsTr("Auto-hide the controls"), "boolchoice",
                             { false: qsTr("Always"), true: qsTr("In fullscreen only") }, { info: true }],
         "mouse-hide-timeout": [qsTr("Playback Controls"), qsTr("Hide after"), "slider", null, { info: false, labelsBaseline: 44, rowHeight: 57, controlTop: 1 }],
         "qt-fs-controller": [qsTr("Playback Controls"), qsTr("Show controls in fullscreen"), "", null, { info: true }],
-        "qt-system-tray": [qsTr("Notifications and System Tray"), qsTr("Show a system tray icon"), "", null, { info: true, restart: true }],
+        "qt-system-tray": [qsTr("Notifications and System Tray"), qsTr("Show a system tray icon"), "", null, { info: true }],
         "qt-start-minimized": [qsTr("Notifications and System Tray"), qsTr("Start minimized to the tray"), "", null, { info: true }],
         "qt-notification": [qsTr("Notifications and System Tray"), qsTr("Show a popup when the track changes"), "", null,
-                            { info: true, restart: true }],
+                            { info: true }],
         "redesign/notification-duration": [qsTr("Notifications and System Tray"), qsTr("Popup duration"), "slider", null,
                                            { info: false, labelsBaseline: 44, rowHeight: 57, controlTop: 1 }],
         // Figma 3046:10057: the queue under the folders of its media
@@ -66,9 +71,9 @@ readonly property var items: ({
                                             { info: true }],
         "redesign/increase-contrast": [qsTr("Accessibility"), qsTr("Increase text contrast"), "", null, { info: true }],
         "qt-opacity": [qsTr("Window"), qsTr("Window opacity"), "opacity10", null,
-                       { advanced: true, info: false, labelsBaseline: 44, rowHeight: 57, controlTop: 1, restart: true }],
+                       { advanced: true, info: false, labelsBaseline: 44, rowHeight: 57, controlTop: 1 }],
         "qt-pause-minimized": [qsTr("Window"), qsTr("Pause video when window is minimized"), "", null,
-                               { advanced: true, info: false, restart: true }],
+                               { advanced: true, info: false }],
         "qt-auto-raise": [qsTr("Window"), qsTr("Bring VLC to the front when playback starts"), "",
                           { 0: qsTr("Never"), 1: qsTr("Video"), 2: qsTr("Audio"), 3: qsTr("Audio and video") },
                           { advanced: true, info: true }],
@@ -97,8 +102,8 @@ readonly property var items: ({
         "restore-playback-pos": [qsTr("Startup"), qsTr("Continue where you left off"), "",
                                  { 0: qsTr("Never"), 1: qsTr("Ask"), 2: qsTr("Always") }, { info: true }],
         "playlist-autostart": [qsTr("Startup"), qsTr("Start playing as soon as a file opens"), "", null, { info: true }],
-        // the speed of the player, read when VLC starts
-        "rate": [qsTr("Startup"), qsTr("Default playback speed"), "slider", null, { info: false, restart: true }],
+        // the speed of the player: of now and of the next media
+        "rate": [qsTr("Startup"), qsTr("Default playback speed"), "slider", null, { info: false }],
         "playlist-cork": [qsTr("Startup"), qsTr("Pause when another app uses audio"), "", null, { info: true }],
         "preferred-resolution": [qsTr("Tracks"), qsTr("Preferred video quality"), "",
                                  { "-1": qsTr("Best available"), 1080: qsTr("Full HD (1080p)"), 720: qsTr("HD (720p)"),
@@ -271,12 +276,13 @@ readonly property var items: ({
         "hotkeys-y-wheel-mode": [qsTr("Mouse"), qsTr("Scroll wheel"), "", null, { info: false }],
         "hotkeys-x-wheel-mode": [qsTr("Mouse"), qsTr("Horizontal scroll"), "", null, { info: false }],
         "x-wheel-reverse": [qsTr("Mouse"), qsTr("Reverse scroll direction"), "", null, { info: false }],
-        // the web interface starts with VLC
-        "x-web-remote": [qsTr("Remotes"), qsTr("Web remote control"), "", null, { info: false, restart: true }],
-        "http-port": [qsTr("Remotes"), qsTr("Port"), "", null, { info: false, rowHeight: 48, restart: true }],
+        // the web interface starts and stops at once, starts again on
+        // another port, password, address
+        "x-web-remote": [qsTr("Remotes"), qsTr("Web remote control"), "", null, { info: false }],
+        "http-port": [qsTr("Remotes"), qsTr("Port"), "", null, { info: false, rowHeight: 48 }],
         "mouse-events": [qsTr("Mouse"), qsTr("Handle mouse clicks in the video"), "", null, { advanced: true }],
-        "http-password": [qsTr("Remotes"), qsTr("Web remote password"), "password", null, { advanced: true, restart: true }],
-        "http-host": [qsTr("Remotes"), qsTr("Web remote address"), "", null, { advanced: true, restart: true }],
+        "http-password": [qsTr("Remotes"), qsTr("Web remote password"), "password", null, { advanced: true }],
+        "http-host": [qsTr("Remotes"), qsTr("Web remote address"), "", null, { advanced: true }],
         "qt-disable-volume-keys": [qsTr("Mouse"), qsTr("Ignore the volume keys of the keyboard"), "", null, { advanced: true }],
         // Library page of the design
         "one-instance": [qsTr("Opening Files"), qsTr("Only allow one VLC window"), "", null, { info: true }],
@@ -287,6 +293,7 @@ readonly property var items: ({
                         "expand": qsTr("Include and expand subfolders") }, { info: true }],
         "show-hiddenfiles": [qsTr("Opening Files"), qsTr("Show hidden files"), "", null, { info: true }],
         "x-fetch-metadata": [qsTr("Metadata & Artwork"), qsTr("Fetch titles and artwork"), "", null, { info: true }],
+        // made by VLC when it starts, the interface built with it or without
         "media-library-enabled": [qsTr("Metadata & Artwork"), qsTr("Use the media library"), "", null, { info: true, restart: true }],
         "auto-preparse": [qsTr("Metadata & Artwork"), qsTr("Read media information automatically"), "", null, { advanced: true }],
         "ignore-filetypes": [qsTr("Opening Files"), qsTr("Ignored file extensions"), "", null, { advanced: true }],
@@ -374,7 +381,7 @@ function makeEntry(key, fallback) {
     const hidden = ["lastfm-username", "lastfm-password", "scrobbler-url", "extraintf", "control"].includes(key)
     // item[4]: { info: shows the (i) of the design, unit: after the value,
     // advanced: under Advanced Options, hidden, expert: shown in Developer
-    // mode only, restart: read when VLC starts }
+    // mode only, restart: read when VLC starts only }
     const extra = item && item[4] ? item[4] : {}
     return item ? { section: item[0], label: item[1], editor: item[2] || "", choiceLabels: item[3] || null,
                     advanced: advanced || !!extra.advanced, hidden: hidden || !!extra.hidden,

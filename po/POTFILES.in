@@ -776,7 +776,6 @@ modules/gui/qt/dialogs/preferences/qml/SettingsToggle.qml
 modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml
 modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml
 modules/gui/qt/dialogs/preferences/qml/ShortcutsResetPopup.qml
-modules/gui/qt/dialogs/preferences/qml/ShortcutsRestartNotice.qml
 modules/gui/qt/dialogs/sout/convert.cpp
 modules/gui/qt/dialogs/sout/convert.hpp
 modules/gui/qt/dialogs/sout/profile_selector.cpp

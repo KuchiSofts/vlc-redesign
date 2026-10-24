@@ -1318,7 +1318,7 @@ static const char *const psz_recursive_list_text[] = {
 #define ML_ENABLED_LONGTEXT N_( \
     "Start the media library when VLC asks for it (the media player does). " \
     "Turn it off to browse without indexing your media; this takes effect " \
-    "after a restart." )
+    "the next time VLC starts." )
 
 #define PLTREE_TEXT N_("Display play queue tree")
 #define PLTREE_LONGTEXT N_( \

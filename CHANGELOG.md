@@ -105,6 +105,10 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
 - **Raw video files did not open**: a headerless raw file (.yuv, .cif, .qcif...) never played, and a YUV4MPEG2
   file (.y4m) logged an error before another reader took it: VLC lost the frame rate of the file. It is the
   same in VLC itself. Both open now.
+- **The library was listed backwards**: artists, albums, tracks, genres, playlists, videos, network folders and the
+  items of a playlist started Z-A (a playlist from its last item) until another order was picked. They start A-Z
+  now, a playlist in its own order, also where an earlier version kept Z-A; Home's lists keep the newest first. An
+  order you picked stays.
 - **A folder of the library opened from *Videos* had its path as its name**, without its separators
   ("C:VideosFilms").
 

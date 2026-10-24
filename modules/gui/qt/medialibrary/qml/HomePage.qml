@@ -33,6 +33,9 @@ Widgets.PageExt {
 
     property var pagePrefix: [] // behave like a Page
 
+    // (its sections list what is recent: the newest first)
+    defaultSortOrder: Qt.DescendingOrder
+
     // (the property of PageExt: one declared again here hid it from the
     // sort of the page, and the header showed no Sort)
     sortModel: [

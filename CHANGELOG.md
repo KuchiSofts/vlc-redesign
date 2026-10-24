@@ -169,6 +169,8 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
 
 ### Changed
 
+- **The file name at the start of a film no longer covers its first subtitle**: it shows at the top of the picture
+  now, clear of the subtitles at the bottom (a position you chose yourself in the settings stays).
 - **VLC Redesign and an installed VLC share nothing any more**: the volume Windows keeps for the app was the one of
   VLC (VLC 3 too), a copy without its `portable` folder used VLC's settings folder and its language in the
   registry, and the old *File associations* button of the classic settings changed VLC's file types. VLC Redesign

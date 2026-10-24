@@ -1736,7 +1736,9 @@ vlc_module_begin ()
     add_integer( "video-title-timeout", 5000, VIDEO_TITLE_TIMEOUT_TEXT,
                  VIDEO_TITLE_TIMEOUT_LONGTEXT )
         change_safe()
-    add_integer( "video-title-position", SUBPICTURE_ALIGN_BOTTOM, VIDEO_TITLE_POSITION_TEXT,
+    /* VLC Redesign: at the top, clear of the subtitles (at the bottom it
+     * covered the first line of a film's subtitles) */
+    add_integer( "video-title-position", SUBPICTURE_ALIGN_TOP, VIDEO_TITLE_POSITION_TEXT,
                  VIDEO_TITLE_POSITION_LONGTEXT )
         change_safe()
         change_integer_list( pi_pos_values, ppsz_pos_descriptions )

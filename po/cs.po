@@ -30,7 +30,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-24 17:23+0000\n"
+"POT-Creation-Date: 2026-10-24 17:28+0000\n"
 "PO-Revision-Date: 2017-09-23 19:54+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Czech (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -5034,8 +5034,8 @@ msgid "Plugins"
 msgstr "Moduly"
 
 #: src/libvlc-module.c:2153
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:501
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:543
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:502
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:544
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:27
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:28
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:102
@@ -18079,7 +18079,7 @@ msgid "All artists"
 msgstr ""
 
 #: modules/gui/macosx/library/home-library/VLCLibraryHomeViewSectionHeaderView.m:72
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:470
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:471
 msgid "Show all"
 msgstr "Zobrazit vše"
 
@@ -20267,9 +20267,9 @@ msgstr ""
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:637
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:895
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:1275
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:686
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:709
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:723
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:687
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:710
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:724
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:337
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:35
 msgid "Open"
@@ -22501,7 +22501,7 @@ msgstr "Druhý jazyk (když žádné nejsou)"
 
 #: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:135
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:102
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:523
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:524
 msgid "Find subtitles online when a video has none in these languages"
 msgstr "Hledat titulky online, když video nemá titulky v těchto jazycích"
 
@@ -22997,8 +22997,8 @@ msgid " f/s"
 msgstr " sn/s"
 
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1387
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:603
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:617
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:604
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:618
 msgid "Advanced Options"
 msgstr "Pokročilé možnosti"
 
@@ -23044,7 +23044,7 @@ msgid "%1 Media"
 msgstr "Médií: %1"
 
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:81
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:685
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:686
 msgid "Plugins and extensions"
 msgstr "Zásuvné moduly a rozšíření"
 
@@ -24052,7 +24052,7 @@ msgid "VLC follows the system language."
 msgstr "VLC se řídí jazykem systému."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:20
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:521
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:522
 msgid "Second Language & Online Subtitles"
 msgstr "Druhý jazyk a online titulky"
 
@@ -24099,7 +24099,7 @@ msgstr ""
 "výběr, dokud zůstane aktivní."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:18
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:530
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:531
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:21
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:23
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:25
@@ -24112,7 +24112,7 @@ msgstr "Diagnostika"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:59
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:85
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:530
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:531
 msgid "Developer mode"
 msgstr "Režim vývojáře"
 
@@ -24214,11 +24214,14 @@ msgid "Set a shortcut"
 msgstr "Nastavit zkratku"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:469
-msgid "%1 more matching shortcuts"
-msgstr "Další odpovídající zkratky: %1"
+msgid "%1 more matching shortcut"
+msgid_plural "%1 more matching shortcuts"
+msgstr[0] "Další %1 odpovídající zkratka"
+msgstr[1] "Další %1 odpovídající zkratky"
+msgstr[2] "Dalších %1 odpovídajících zkratek"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:499
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:574
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:500
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:575
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:138
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:139
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:140
@@ -24236,78 +24239,78 @@ msgstr "Další odpovídající zkratky: %1"
 msgid "Output"
 msgstr "Výstup"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:509
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:510
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:93
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:109
 msgid "Submit played tracks to last.fm"
 msgstr "Odesílat přehrané skladby na Last.fm"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:510
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:511
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:115
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:96
 msgid "Last.fm username"
 msgstr "Uživatelské jméno Last.fm"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:510
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:511
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:117
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:97
 msgid "Last.fm password"
 msgstr "Heslo Last.fm"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:511
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:512
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:119
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:98
 msgid "Last.fm submission URL"
 msgstr "URL pro odesílání na Last.fm"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:521
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:522
 msgid "Dual subtitles"
 msgstr "Duální titulky"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:522
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:523
 msgid "Second language"
 msgstr "Druhý jazyk"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:522
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:523
 msgid "OpenSubtitles"
 msgstr "OpenSubtitles"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:584
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:585
 msgid "No matching settings"
 msgstr "Žádná odpovídající nastavení"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:585
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:586
 msgid "No settings are available for this category on this VLC installation"
 msgstr ""
 "Pro tuto kategorii nejsou v této instalaci VLC k dispozici žádná nastavení"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:664
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:680
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:665
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:681
 msgid "Show installed add-ons only"
 msgstr "Zobrazit pouze nainstalované doplňky"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:696
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:697
 msgid "No advanced options on this page."
 msgstr "Na této stránce nejsou žádné pokročilé možnosti."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:708
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:709
 msgid "Welcome setup"
 msgstr "Úvodní nastavení"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:722
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:723
 msgid "All VLC options"
 msgstr "Všechny možnosti VLC"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:741
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:742
 msgid "Reset all settings?"
 msgstr "Obnovit všechna nastavení?"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:753
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:754
 msgid "Every setting of VLC media player goes back to its default."
 msgstr ""
 "Všechna nastavení přehrávače VLC media player se vrátí na výchozí hodnoty."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:811
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:812
 msgid "Discard changes"
 msgstr "Zahodit změny"
 
@@ -26866,6 +26869,7 @@ msgid "Tracks Count"
 msgstr "Počet skladeb"
 
 #: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:144
+#: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:45
 msgid "%1 song"
 msgid_plural "%1 songs"
 msgstr[0] "%1 skladba"
@@ -27036,10 +27040,13 @@ msgstr ""
 "Nebylo nalezeno žádné video\n"
 "Zkuste přidat zdroje"
 
-#: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:199
-#: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:258
-msgid "%1 Videos"
-msgstr "Videa: %1"
+#: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:121
+#: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:77
+msgid "%1 Video"
+msgid_plural "%1 Videos"
+msgstr[0] "%1 video"
+msgstr[1] "%1 videa"
+msgstr[2] "%1 videí"
 
 #: modules/gui/qt/medialibrary/qml/VideoDisplay.qml:59
 msgid "Video view"
@@ -27315,13 +27322,6 @@ msgstr[0] "Vybrán %1 soubor"
 msgstr[1] "Vybrány %1 soubory"
 msgstr[2] "Vybráno %1 souborů"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:77
-msgid "%1 Video"
-msgid_plural "%1 Videos"
-msgstr[0] "%1 video"
-msgstr[1] "%1 videa"
-msgstr[2] "%1 videí"
-
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:79
 msgid "%1 Other"
 msgid_plural "%1 Other"
@@ -27330,28 +27330,24 @@ msgstr[1] "%1 ostatní"
 msgstr[2] "%1 ostatních"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:43
-msgid "1 video"
-msgstr "1 video"
-
-#: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:43
-msgid "%1 videos"
-msgstr "Videa: %1"
-
-#: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:45
-msgid "1 song"
-msgstr "1 skladba"
-
-#: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:45
-msgid "%1 songs"
-msgstr "Skladby: %1"
+#: modules/gui/qt/widgets/qml/TableColumns.qml:77
+msgid "%1 video"
+msgid_plural "%1 videos"
+msgstr[0] "%1 video"
+msgstr[1] "%1 videa"
+msgstr[2] "%1 videí"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:49
-msgid "1 item"
-msgstr "1 položka"
-
-#: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:49
-msgid "%1 items"
-msgstr "Položky: %1"
+#: modules/gui/qt/player/qml/CompactLibrary.qml:848
+#: modules/gui/qt/player/qml/MiniPlayerQueue.qml:107
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:193
+#: modules/gui/qt/widgets/qml/DragItem.qml:620
+#: modules/gui/qt/widgets/qml/LibraryHeader.qml:418
+msgid "%1 item"
+msgid_plural "%1 items"
+msgstr[0] "%1 položka"
+msgstr[1] "%1 položky"
+msgstr[2] "%1 položek"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:122
 msgid "Length"
@@ -28651,16 +28647,6 @@ msgstr "O složku výš"
 msgid "Open in the library"
 msgstr "Otevřít v knihovně"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:848
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:193
-#: modules/gui/qt/widgets/qml/DragItem.qml:620
-#: modules/gui/qt/widgets/qml/LibraryHeader.qml:418
-msgid "%1 item"
-msgid_plural "%1 items"
-msgstr[0] "%1 položka"
-msgstr[1] "%1 položky"
-msgstr[2] "%1 položek"
-
 #: modules/gui/qt/player/qml/CompactLibrary.qml:887
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:205
 #: modules/gui/qt/playlist/qml/QueueHeader.qml:74
@@ -28774,14 +28760,6 @@ msgstr "%1 h %2 min"
 #, no-c-format
 msgid "%1m"
 msgstr "%1min"
-
-#: modules/gui/qt/player/qml/MiniPlayerQueue.qml:107
-msgid "1 item - %1"
-msgstr "1 položka – %1"
-
-#: modules/gui/qt/player/qml/MiniPlayerQueue.qml:107
-msgid "%1 items - %2"
-msgstr "Položky: %1 – %2"
 
 #: modules/gui/qt/player/qml/MiniPlayerQueue.qml:160
 msgid "Remove selected item from queue"
@@ -30003,12 +29981,12 @@ msgid "drag item"
 msgstr "přetahovaná položka"
 
 #: modules/gui/qt/widgets/qml/DragItem.qml:630
-msgid "1 selected"
-msgstr "Vybráno: 1"
-
 #: modules/gui/qt/widgets/qml/DragItem.qml:633
 msgid "%1 selected"
-msgstr "Vybráno: %1"
+msgid_plural "%1 selected"
+msgstr[0] "Vybráno: %1"
+msgstr[1] "Vybráno: %1"
+msgstr[2] "Vybráno: %1"
 
 #: modules/gui/qt/widgets/qml/GridSortFilterControls.qml:30
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:482
@@ -30030,13 +30008,6 @@ msgstr "Rozlišovat velká a malá písmena"
 #: modules/gui/qt/widgets/qml/SearchBox.qml:284
 msgid "Use regular expression"
 msgstr "Použít regulární výraz"
-
-#: modules/gui/qt/widgets/qml/TableColumns.qml:77
-msgid "%1 video"
-msgid_plural "%1 videos"
-msgstr[0] "%1 video"
-msgstr[1] "%1 videa"
-msgstr[2] "%1 videí"
 
 #: modules/gui/qt/widgets/qml/ViewHeader.qml:134
 msgid "See All"
@@ -36771,6 +36742,39 @@ msgstr ""
 #: share/lua/http/index.html:305
 msgid "Are you sure you wish to create the stream?"
 msgstr "Opravdu si přejete vytvořit proud?"
+
+#~ msgid "%1 more matching shortcuts"
+#~ msgstr "Další odpovídající zkratky: %1"
+
+#~ msgid "%1 Videos"
+#~ msgstr "Videa: %1"
+
+#~ msgid "1 video"
+#~ msgstr "1 video"
+
+#~ msgid "%1 videos"
+#~ msgstr "Videa: %1"
+
+#~ msgid "1 song"
+#~ msgstr "1 skladba"
+
+#~ msgid "%1 songs"
+#~ msgstr "Skladby: %1"
+
+#~ msgid "1 item"
+#~ msgstr "1 položka"
+
+#~ msgid "%1 items"
+#~ msgstr "Položky: %1"
+
+#~ msgid "1 item - %1"
+#~ msgstr "1 položka – %1"
+
+#~ msgid "%1 items - %2"
+#~ msgstr "Položky: %1 – %2"
+
+#~ msgid "1 selected"
+#~ msgstr "Vybráno: 1"
 
 #~ msgid "Backspace"
 #~ msgstr "Backspace"

@@ -5250,7 +5250,7 @@ msgstr "F9"
 #: modules/gui/qt/player/qml/CompactLibrary.qml:77
 #: modules/gui/qt/player/qml/CompactLibrary.qml:291
 msgid "Home"
-msgstr "Home"
+msgstr "בית"
 
 #: src/misc/actions.c:102
 msgid "Insert"
@@ -18755,7 +18755,7 @@ msgstr "2 מעברים"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:186
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:28
 msgid "Preamp"
-msgstr "Preamp"
+msgstr "קדם־הגברה"
 
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:247
 msgid "Enable dynamic range compressor"

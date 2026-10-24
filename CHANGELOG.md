@@ -20,6 +20,9 @@ file name of the player bar.
 
 ### Fixed
 
+- **"Install for everyone" in the installer did nothing**: Inno Setup 6.7 refuses to start its own program from
+  its code before installing, which that link relied on. It goes through Windows now and reopens the installer
+  for all users (Program Files).
 - **Long translations no longer break the interface**: texts that are longer in German, Russian or Portuguese, or
   written in other scripts, were cut in the middle or ran over the next control. They shorten with "…" and show
   in full in a tooltip, wrap where there is room, or their button, switch, tab or menu widens; checked on every page
@@ -169,6 +172,12 @@ file name of the player bar.
   did nothing. 98 languages ship now. Hebrew and Brazilian Portuguese cover every text of the interface (the
   Portuguese of the redesign contributed by @Kinglucas962 in #6); in the other languages VLC's own texts are
   translated and the redesign's are in English until they are.
+- **The installer offers the language of Windows**: on a Hebrew or Brazilian Portuguese Windows it asks first, in that
+  language and in English, whether to install VLC Redesign in it; yes, and the installer and the program are in it
+  (Hebrew right to left, with a choice of the layout direction of the program, left to right unless chosen). An
+  English Windows, or a language without a full translation yet, is not asked. An update keeps the language, a
+  silent install is never asked (`/LANG=hebrew`, `/RIGHTTOLEFT`). The portable zip starts in English, left to
+  right. Every text of the installer is in Hebrew and Brazilian Portuguese too.
 - **Subtitles in the computer's language from the first film**: until subtitle languages are chosen, a film's own
   subtitle track in the language of Windows is shown (not for English, where every English film would show its
   English subtitles), as the online search already looked for it.

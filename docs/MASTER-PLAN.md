@@ -1258,13 +1258,13 @@ In an organization, a `.github` repository gives every repository these files by
 | Gate         | What                                                                              | Status |
 |--------------|-----------------------------------------------------------------------------------|--------|
 | Build        | Every platform builds in CI; the packaged app starts and plays                    | 🟡 Windows builds; the launch test is written and passes here, not run on GitHub yet |
-| Regression   | Playback, pause/seek, traces, Chromecast and DLNA test devices                    | 🟢     |
+| Regression   | Playback, pause/seek, traces, Chromecast and DLNA test devices; again 2026-10-24 (build 164): clean quits, no late or dropped picture, both casts | 🟢     |
 | Real devices | Samsung TV: start, pause 1 and 5 min, seek, next file, subtitles, as-is, end      | 🟢     |
 | Formats      | Every test file and container; 148 damaged files without crash or hang            | 🟢     |
 | Effects      | 40 video effects alone and in chains                                              | 🟢     |
 | Conversion   | Every muxer, audio + video, to the last picture                                   | 🟢     |
 | Memory       | 25-minute media-change soak and cast soak: flat after warm-up; 2026-10-24 (build 163) the same soak against the 23 October build: +0.27 against +0.34 MB/min at 100 changes a minute (driver), handles, GDI and threads flat; the library panel opened and browsed 60 times: flat | 🟢     |
-| Hardware     | NVIDIA, AMD, Intel; no GPU; weak CPU; Windows 10 and 11; high DPI                 | 🟡 no Intel, no real Windows 10 |
+| Hardware     | NVIDIA, AMD, Intel; no GPU; weak CPU; Windows 10 and 11; high DPI; 2026-10-24 (build 164) the nine graphics setups (D3D11, WARP, OpenGL, Qt software, no hardware decoding, GL and D3D9 outputs, the win7 and dummy compositors) play and quit cleanly; no import newer than Windows 10 1809, AVX only in CPU-dispatched code | 🟡 no Intel, no real Windows 10 |
 | Clean PC     | Install and first start on a clean Windows (Sandbox); again 2026-10-24 (build 163): window in 1.24 s, 1080p without a GPU 75 % of one core, quit 0.5 s | 🟢     |
 | Updates      | Small updates from the three previous releases, checked file by file              | 🟢     |
 | Design       | Pixel check of the frames the release touches; frame table updated                | 🟡 2 hover frames (their values checked in the code) |

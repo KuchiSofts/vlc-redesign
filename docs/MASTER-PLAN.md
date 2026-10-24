@@ -17,7 +17,7 @@ counted from this document's own tables and checklists (column *From*); ⚪ idea
 
 | Program         | Progress             | Done    | %     | From                                   |
 |-----------------|----------------------|---------|-------|----------------------------------------|
-| Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 85/97   | 88 %  | [§8](#8-next-release-030) checklists   |
+| Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 87/97   | 90 %  | [§8](#8-next-release-030) checklists   |
 | Linux           | 🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 1/7     | 14 %  | [§9](#linux)                           |
 | macOS           | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/4     | 0 %   | [§9](#macos)                           |
 | Windows ARM64   | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/3     | 0 %   | [§9](#windows-on-arm64)                |
@@ -832,12 +832,16 @@ and an accepted request made the TV fail after a pause in a test.
 
 - 🔴 Every quality gate green (§14)
 - 🔴 `CHANGELOG.md`: *Unreleased* becomes *0.3.0* with its date
-- 🔴 Release notes with a screenshot or GIF per highlight
-- 🔴 Wiki: casting pages, new settings rows, *Design check*
-- 🔴 Small updates from 0.2.4, 0.2.5 and 0.2.6 built and checked
+- 🟢 Release notes with a screenshot or GIF per highlight (docs/release/0.3.0, 13 images from the running app; the
+  last changes of the changelog join them when the date is set)
+- 🟢 Wiki: casting pages, new settings rows, *Design check* (docs/wiki, in the wiki's own page names; uploaded with
+  the release)
+- 🟡 Small updates from 0.2.4, 0.2.5 and 0.2.6 built and checked: 2026-10-24 as a dry run from build 174 (3.5-3.6 MB
+  each, 4 % of the zip; every file matched the new package, the app's own updater applied them, the launch test
+  passed on all six copies); to build again once the version is 0.3.0 (redesign_version.hpp)
 - 🔴 Announcement in Discussions; every fixed issue answered with the release link
 
-Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 85 🟢, 1 🟡, 11 🔴 (97), of which 5 🟢 are
+Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 87 🟢, 2 🟡, 8 🔴 (97), of which 5 🟢 are
 in the app ⏳.
 Languages (§12) and the community (§13) have bars of their own.
 

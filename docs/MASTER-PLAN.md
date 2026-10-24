@@ -1004,6 +1004,9 @@ Text matching needs Inter with the same metrics (distance-field text, no hinting
   English, marked "(partial)" in the list
 - 🟢 Right to left checked page by page (Hebrew, Arabic, and a test language 40 % longer, both directions: no cut, no
   overlap), the playback bar kept left to right as on YouTube
+- 🟢 Every complete language captured page by page and reviewed (2026-10-24, builds 191 and 193): the core texts the
+  interface shows (settings help and choices, shortcut names, messages on the video, dialogs) translated too, Chinese,
+  Japanese and Korean in the fonts of their language, long translations widen or shrink instead of being cut
 
 Android and the TV receiver follow the same rules.
 

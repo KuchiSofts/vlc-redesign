@@ -38,6 +38,9 @@
 
 #define MAX_PCR_DELAY VLC_TICK_FROM_SEC(60)
 
+/* Rate changes of the master output that it has not played yet */
+#define MAX_RATE_POINTS 8
+
 struct vlc_clock_listener_id
 {
     vlc_clock_t *clock;
@@ -60,6 +63,18 @@ struct vlc_clock_context
      * started the playback. It does not account for latency of the output
      * when one of them is driving the main_clock. */
     clock_point_t start_time;
+
+    /**
+     * Rate changes the master output announced ahead (vlc_clock_ChangeRateAt):
+     * it plays the samples it already has at the old rate first. From each
+     * point on, the timestamps are converted at its rate, until an update of
+     * the master past it. In stream order. */
+    struct
+    {
+        clock_point_t point;
+        double rate;
+    } rate_points[MAX_RATE_POINTS];
+    size_t rate_point_count;
 
     struct vlc_list node;
     struct vlc_list using_clocks;
@@ -248,6 +263,7 @@ static void context_reset(struct vlc_clock_context *ctx)
     ctx->wait_sync_ref = clock_point_Create(VLC_TICK_INVALID, VLC_TICK_INVALID);
     ctx->last = clock_point_Create(VLC_TICK_INVALID, VLC_TICK_INVALID);
     ctx->start_time = clock_point_Create(VLC_TICK_INVALID, VLC_TICK_INVALID);
+    ctx->rate_point_count = 0;
 }
 
 static void context_init(struct vlc_clock_context *ctx)
@@ -272,9 +288,34 @@ static vlc_tick_t context_stream_to_system(const struct vlc_clock_context *ctx,
     if (ctx->last.system == VLC_TICK_INVALID)
         return VLC_TICK_INVALID;
 
+    /* Past a rate change announced by the master, at its rate */
+    for (size_t i = ctx->rate_point_count; i-- > 0;)
+    {
+        const clock_point_t *point = &ctx->rate_points[i].point;
+        if (ts >= point->stream)
+            return point->system
+                 + (vlc_tick_t) ((ts - point->stream) * ctx->coeff
+                                 / ctx->rate_points[i].rate);
+    }
+
     return ((vlc_tick_t) ((ts - ctx->start_time.stream) * ctx->coeff / ctx->rate))
             + ctx->offset
             + ctx->start_time.system;
+}
+
+/* The master update at system_now is past these rate changes: it sets the
+ * line from there on */
+static void context_drop_rate_points(struct vlc_clock_context *ctx,
+                                     vlc_tick_t system_now)
+{
+    size_t reached = 0;
+    while (reached < ctx->rate_point_count
+        && ctx->rate_points[reached].point.system <= system_now)
+        reached++;
+
+    ctx->rate_point_count -= reached;
+    for (size_t i = 0; i < ctx->rate_point_count; ++i)
+        ctx->rate_points[i] = ctx->rate_points[i + reached];
 }
 
 static void
@@ -530,6 +571,7 @@ static vlc_tick_t vlc_clock_master_update(vlc_clock_t *clock,
      * anything but only notify the new clock point. */
     if (system_now != VLC_TICK_MAX)
     {
+        context_drop_rate_points(ctx, system_now);
         vlc_clock_master_update_coeff(clock, ctx, system_now, ts, rate);
         ctx->last = clock_point_Create(system_now, ts);
     }
@@ -558,6 +600,8 @@ static void vlc_clock_master_reset(vlc_clock_t *clock)
     if (clock->context != NULL && clock->context != ctx)
         vlc_clock_switch_context(clock, ctx);
 
+    /* The output dropped the samples the rate changes were ahead of */
+    ctx->rate_point_count = 0;
 
     assert(main_clock->delay <= 0);
     assert(clock->delay >= 0);
@@ -1104,6 +1148,8 @@ void vlc_clock_main_ChangePause(vlc_clock_main_t *main_clock, vlc_tick_t now,
         ctx->start_time.system += delay;
     if (ctx->wait_sync_ref.system != VLC_TICK_INVALID)
         ctx->wait_sync_ref.system += delay;
+    for (size_t i = 0; i < ctx->rate_point_count; ++i)
+        ctx->rate_points[i].point.system += delay;
     main_clock->pause_date = VLC_TICK_INVALID;
     vlc_cond_broadcast(&main_clock->cond);
 }
@@ -1194,6 +1240,53 @@ vlc_tick_t vlc_clock_ConvertToSystem(vlc_clock_t *clock,
     clock->last_conversion =
         clock->ops->to_system(clock, ctx, system_now, ts, rate);
     return clock->last_conversion;
+}
+
+void vlc_clock_ChangeRateAt(vlc_clock_t *clock, vlc_tick_t system,
+                            vlc_tick_t ts, double rate)
+{
+    AssertLocked(clock);
+    vlc_clock_main_t *main_clock = clock->owner;
+    struct vlc_clock_context *ctx = main_clock->context;
+
+    /* Only the master output drives the bus, from a reference: before it,
+     * its first update gives the rate */
+    if (main_clock->master != clock || main_clock->input_master != NULL
+     || clock->context != ctx || ctx->last.system == VLC_TICK_INVALID
+     || system == VLC_TICK_INVALID || ts == VLC_TICK_INVALID)
+        return;
+
+    /* A change replaces the ones announced from the same timestamp on */
+    while (ctx->rate_point_count > 0
+        && ctx->rate_points[ctx->rate_point_count - 1].point.stream >= ts)
+        ctx->rate_point_count--;
+
+    if (ctx->rate_point_count == MAX_RATE_POINTS)
+    {
+        /* Too many changes ahead: the line starts at the first one */
+        const clock_point_t first = ctx->rate_points[0].point;
+        const double first_rate = ctx->rate_points[0].rate;
+        ctx->offset = ComputeOffset(main_clock, ctx, first.system,
+                                    first.stream, first_rate);
+        ctx->rate = first_rate;
+        ctx->last = first;
+        context_drop_rate_points(ctx, first.system);
+    }
+
+    ctx->rate_points[ctx->rate_point_count].point =
+        clock_point_Create(system, ts);
+    ctx->rate_points[ctx->rate_point_count].rate = rate;
+    ctx->rate_point_count++;
+
+    if (main_clock->tracer != NULL && clock->track_str_id != NULL)
+        vlc_tracer_Trace(main_clock->tracer,
+                         VLC_TRACE("type", "RENDER"),
+                         VLC_TRACE("id", clock->track_str_id),
+                         VLC_TRACE_TICK_NS("rate_ts", ts),
+                         VLC_TRACE_TICK_NS("rate_system", system),
+                         VLC_TRACE("rate", rate),
+                         VLC_TRACE_END);
+    vlc_cond_broadcast(&main_clock->cond);
 }
 
 static const struct vlc_clock_ops master_ops = {

@@ -68,6 +68,7 @@ class ControlbarProfileModel;
 class SearchCtx;
 class SortCtx;
 class VLCSystray;
+class LiveSettings;
 class MediaLib;
 class ColorSchemeModel;
 class VLCVarChoiceModel;
@@ -313,6 +314,9 @@ public:
     bool showErrorDialogs() const { return m_showErrorDialogs; }
     bool alwaysShowPlayerBar() const { return m_alwaysShowPlayerBar; }
     bool increaseContrast() const { return m_increaseContrast; }
+    // "Show the file name in the title bar", "Window opacity" of the settings
+    bool nameInTitle() const { return m_nameInTitle; }
+    float windowOpacity() const { return m_windowOpacity; }
 
     bool usingTouch() const { return m_usingTouch; }
 
@@ -478,6 +482,8 @@ public:
 protected:
     /* Systray */
     void initSystray();
+    // shown or hidden as "Show a system tray icon" says, when it changes
+    void updateSystray();
 
     qt_intf_t* p_intf = nullptr;
     vlc_preparser_t *m_network_preparser = nullptr;
@@ -490,6 +496,12 @@ protected:
     QSettings           *settings = nullptr;
 
     std::unique_ptr<VLCSystray> m_systray;
+    // "qt-system-tray" as last read (the tray is there when VLC started
+    // minimized to it, whatever it says)
+    bool m_systrayOption = true;
+
+    // the settings VLC reads once, applied when they change (reloadPrefs)
+    std::unique_ptr<LiveSettings> m_liveSettings;
 
     /* Flags */
     double               m_intfUserScaleFactor = 1.;
@@ -550,6 +562,8 @@ protected:
     bool m_showErrorDialogs = true;
     bool m_alwaysShowPlayerBar = false;
     bool m_increaseContrast = false;
+    bool m_nameInTitle = true;
+    float m_windowOpacity = 1.f;
 
     bool m_albumSections = true;
 
@@ -703,6 +717,8 @@ signals:
     void showErrorDialogsChanged();
     void alwaysShowPlayerBarChanged();
     void increaseContrastChanged();
+    void nameInTitleChanged();
+    void windowOpacityChanged();
 
     void navBoxToggled();
 

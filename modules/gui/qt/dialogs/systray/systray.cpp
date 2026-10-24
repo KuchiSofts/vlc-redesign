@@ -38,8 +38,6 @@ VLCSystray::VLCSystray(MainCtx* ctx, QObject* parent)
     assert(ctx);
     assert(m_intf);
 
-    m_notificationSetting = var_InheritInteger(m_intf, "qt-notification");
-
     QIcon iconVLC;
     if( m_ctx->useXmasCone() )
         iconVLC = QIcon::fromTheme( "vlc-xmas", QIcon( ":/logo/vlc128-xmas.png" ) );
@@ -47,7 +45,10 @@ VLCSystray::VLCSystray(MainCtx* ctx, QObject* parent)
         iconVLC = QIcon::fromTheme( "vlc", QIcon( ":/logo/vlc256.png" ) );
 
     setIcon(iconVLC);
-    setToolTip( qtr( "VLC media player" ));
+    /* the name of what plays: the icon may come while a media plays ("Show
+     * a system tray icon" of the settings) */
+    const QString name = m_intf->p_mainPlayerController->getName();
+    setToolTip( name.isEmpty() ? qtr( "VLC media player" ) : name );
 
     m_menu = std::make_unique<VLCMenu>( qtr( "VLC media player"), m_intf );
     m_menu->setIcon( iconVLC );
@@ -138,8 +139,10 @@ void VLCSystray::updateTooltipName( const QString& name )
     {
         setToolTip( name );
         const auto windowVisiblity = m_ctx->interfaceVisibility();
-        if( ( m_notificationSetting == NOTIFICATION_ALWAYS ) ||
-            ( m_notificationSetting == NOTIFICATION_MINIMIZED && (windowVisiblity == QWindow::Hidden || windowVisiblity == QWindow::Minimized)))
+        /* "Show a popup when the track changes" of the settings, as it is */
+        const int notification = var_InheritInteger( m_intf, "qt-notification" );
+        if( ( notification == NOTIFICATION_ALWAYS ) ||
+            ( notification == NOTIFICATION_MINIMIZED && (windowVisiblity == QWindow::Hidden || windowVisiblity == QWindow::Minimized)))
         {
             const auto showMessageTemplate = [this, &name](const auto &icon) {
                 /* "Popup duration" of the settings */

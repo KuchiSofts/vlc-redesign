@@ -28,9 +28,6 @@ VideoWindowHandler::VideoWindowHandler(qt_intf_t* intf, QObject *parent)
     : QObject(parent)
     , m_intf(intf)
 {
-    /* Does the interface resize to video size or the opposite */
-    m_autoresize = var_InheritBool( m_intf, "qt-video-autoresize" );
-
     assert(qGuiApp);
     m_hasWayland = qGuiApp->platformName().startsWith(QLatin1String("wayland"));
 
@@ -112,7 +109,9 @@ void VideoWindowHandler::setVideoSize(unsigned int w, unsigned int h, Qt::Window
          * If the video size is too large for the screen, resize it
          * to the screen size.
          */
-        if (m_autoresize)
+        /* Does the interface resize to video size or the opposite ("Resize
+         * window to fit video" of the settings, as it is) */
+        if (var_InheritBool( m_intf, "qt-video-autoresize" ))
         {
             QRect screen = m_window->screen()->availableGeometry();
             qreal factor = m_window->devicePixelRatio();

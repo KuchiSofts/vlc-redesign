@@ -80,11 +80,13 @@ protected:
 
     bool m_isWindowTiled = false;
 
-    bool m_pauseOnMinimize ;
     bool m_maximizedView = false;
     bool m_hideAfterCreation  = false; // --qt-start-minimized
 
     bool m_hasResizeCursor = false;
+
+    // the name of the media in the title ("qt-name-in-title")
+    QMetaObject::Connection m_titleConnection;
 
     QRect m_interfaceGeometry;
     // the geometry out of maximized / full screen / minimized: saved instead

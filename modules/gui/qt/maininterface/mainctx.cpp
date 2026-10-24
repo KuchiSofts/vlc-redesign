@@ -42,6 +42,7 @@
 #include "medialibrary/mlhelper.hpp"
 
 #include "compositor.hpp"
+#include "live_settings.hpp"
 #include "util/renderer_manager.hpp"
 #include "util/csdbuttonmodel.hpp"
 
@@ -352,6 +353,8 @@ MainCtx::MainCtx(qt_intf_t *_p_intf)
     connect(m_hotkeyThread, &QThread::finished, m_hotkeyContext, &QObject::deleteLater);
     m_hotkeyThread->start();
 
+    m_liveSettings = std::make_unique<LiveSettings>(p_intf);
+
     m_initialEffectiveMainInterfaceMode = getEffectiveMainInterfaceMode();
 }
 
@@ -371,45 +374,41 @@ MainCtx::~MainCtx()
         connect(m_hotkeyThread, &QThread::finished, m_hotkeyThread, &QObject::deleteLater);
     }
 
+    /* an interface still starting or stopping ends first */
+    m_liveSettings.reset();
+
     /* Save states */
 
     m_threadRunner->destroy();
 
-    if ( !p_intf->preferencesResetPending)
-    {
-        settings->beginGroup("MainWindow");
-        settings->setValue( "ShowRemainingTime", m_showRemainingTime );
-        settings->setValue( "interface-scale", QString::number( m_intfUserScaleFactor ) );
+    settings->beginGroup("MainWindow");
+    settings->setValue( "ShowRemainingTime", m_showRemainingTime );
+    settings->setValue( "interface-scale", QString::number( m_intfUserScaleFactor ) );
 
-        /* Save playlist state */
-        settings->setValue( "playqueue-panel-docked", m_playqueuePanel->m_docked );
-        settings->setValue( "playqueue-panel-visible", m_playqueuePanel->m_visible );
-        settings->setValue( "playqueue-panel-width", QString::number( m_playqueuePanel->m_width ) );
+    /* Save playlist state */
+    settings->setValue( "playqueue-panel-docked", m_playqueuePanel->m_docked );
+    settings->setValue( "playqueue-panel-visible", m_playqueuePanel->m_visible );
+    settings->setValue( "playqueue-panel-width", QString::number( m_playqueuePanel->m_width ) );
 
-        settings->setValue( "navigation-panel-visible", m_navigationPanel->m_visible );
-        settings->setValue( "navigation-panel-width", QString::number( m_navigationPanel->m_width ) );
+    settings->setValue( "navigation-panel-visible", m_navigationPanel->m_visible );
+    settings->setValue( "navigation-panel-width", QString::number( m_navigationPanel->m_width ) );
 
-        settings->setValue( "player-playlist-width", QString::number( m_playerPlaylistWidth ) );
-        settings->setValue( "artist-albums-width", QString::number( m_artistAlbumsWidth ) );
+    settings->setValue( "player-playlist-width", QString::number( m_playerPlaylistWidth ) );
+    settings->setValue( "artist-albums-width", QString::number( m_artistAlbumsWidth ) );
 
-        settings->setValue( "grid-view", m_gridView );
-        settings->setValue( "grouping", m_grouping );
+    settings->setValue( "grid-view", m_gridView );
+    settings->setValue( "grouping", m_grouping );
 
-        settings->setValue( "color-scheme-index", m_colorScheme->currentIndex() );
+    settings->setValue( "color-scheme-index", m_colorScheme->currentIndex() );
 
-        settings->setValue( "album-sections", m_albumSections );
+    settings->setValue( "album-sections", m_albumSections );
 
-        settings->setValue( "lyrics-mode", m_lyricsMode );
+    settings->setValue( "lyrics-mode", m_lyricsMode );
 
-        /* Save the stackCentralW sizes */
-        settings->endGroup();
-    }
-    else
-    {
-        settings->remove("MainWindow");
-    }
+    /* Save the stackCentralW sizes */
+    settings->endGroup();
 
-    if( !p_intf->preferencesResetPending && var_InheritBool( p_intf, "save-recentplay" ) )
+    if( var_InheritBool( p_intf, "save-recentplay" ) )
         getSettings()->setValue( "filedialog-path", m_dialogFilepath );
     else
         getSettings()->remove( "filedialog-path" );
@@ -586,15 +585,26 @@ void MainCtx::loadPrefs(const bool callSignals)
     loadFromVLCOption(m_playlistTree, "playlist-tree", &MainCtx::playlistTreeChanged);
     loadFromVLCOption(m_showErrorDialogs, "qt-error-dialogs", &MainCtx::showErrorDialogsChanged);
 
+    /* The window of the interface follows these at once (the file name in
+     * its title, its opacity); the tray icon shows or goes when its option
+     * changes (at the start: initSystray) */
+    loadFromVLCOption(m_nameInTitle, "qt-name-in-title", &MainCtx::nameInTitleChanged);
+    loadFromVLCOption(m_windowOpacity, "qt-opacity", &MainCtx::windowOpacityChanged);
+    loadFromVLCOption(m_systrayOption, "qt-system-tray", &MainCtx::updateSystray);
+
 #ifdef _WIN32
-    /* "Process priority" of the settings (-2 idle ... 2 high); left alone
-     * while normal, for "high-priority" of VLC */
+    /* "Process priority" of the settings (-2 idle ... 2 high); while normal,
+     * "Give VLC real-time priority" (high-priority) raises it above normal,
+     * as VLC does when it is given on its command line (VLC reads it before
+     * its settings: never from them) */
     {
         static const DWORD classes[] = { IDLE_PRIORITY_CLASS, BELOW_NORMAL_PRIORITY_CLASS,
                                          NORMAL_PRIORITY_CLASS, ABOVE_NORMAL_PRIORITY_CLASS,
                                          HIGH_PRIORITY_CLASS };
         static int applied = 0;
-        const int priority = std::clamp( getSettings()->value( "redesign/process-priority", 0 ).toInt(), -2, 2 );
+        int priority = std::clamp( getSettings()->value( "redesign/process-priority", 0 ).toInt(), -2, 2 );
+        if( priority == 0 && var_InheritBool( p_intf, "high-priority" ) )
+            priority = 1;
         if( priority != applied )
         {
             SetPriorityClass( GetCurrentProcess(), classes[priority + 2] );
@@ -689,6 +699,9 @@ void MainCtx::loadFromSettingsImpl(const bool callSignals)
 void MainCtx::reloadPrefs()
 {
     loadPrefs(true);
+    /* the log, the interfaces started with VLC, the hotkeys, the speed */
+    if (m_liveSettings)
+        m_liveSettings->reload();
 }
 
 void MainCtx::onInputChanged( bool hasInput )
@@ -856,8 +869,24 @@ inline void MainCtx::initSystray()
             msg_Err( p_intf, "cannot start minimized without system tray bar" );
     }
 
-    if( b_systrayAvailable && b_systrayWanted )
+    if( b_systrayAvailable && b_systrayWanted && !m_systray )
         m_systray = std::make_unique<VLCSystray>(this);
+}
+
+void MainCtx::updateSystray()
+{
+    const bool wanted = m_systrayOption && QSystemTrayIcon::isSystemTrayAvailable();
+    if( wanted == ( m_systray != nullptr ) )
+        return;
+    if( wanted )
+    {
+        m_systray = std::make_unique<VLCSystray>(this);
+        return;
+    }
+    /* the window hidden in the tray comes back: nothing would show it */
+    if( m_windowVisibility == QWindow::Hidden )
+        emit setInterfaceVisibible( true );
+    m_systray.reset();
 }
 
 ThreadRunner* MainCtx::threadRunner() const

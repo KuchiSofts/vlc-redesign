@@ -29,6 +29,7 @@
 #include "extended.hpp"
 
 #include "maininterface/compositor.hpp" /* Needed for external MI size */
+#include "maininterface/mainctx.hpp"
 #include "player/player_controller.hpp"
 
 #include <QTabWidget>
@@ -49,6 +50,11 @@ ExtendedDialog::ExtendedDialog( qt_intf_t *_p_intf )
 #endif
 
     setWindowOpacity( var_InheritFloat( p_intf, "qt-opacity" ) );
+    /* "Window opacity" of the settings, at once */
+    if( p_intf->p_mi )
+        connect( p_intf->p_mi, &MainCtx::windowOpacityChanged, this, [this]() {
+            setWindowOpacity( p_intf->p_mi->windowOpacity() );
+        } );
     setWindowTitle( qtr( "Adjustments and Effects" ) );
     setWindowRole( "vlc-extended" );
 

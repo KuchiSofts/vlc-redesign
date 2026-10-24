@@ -99,9 +99,8 @@ void ConfigModel::resetAll()
     config_ResetAll();
     config_SaveConfigFile(p_intf);
     getSettings()->clear();
-    // Not preferencesResetPending: the interface goes on with the defaults it
-    // reloads, and its state is saved at exit as usual (the old dialog sets
-    // it only until VLC restarts or the restart is declined)
+    // The interface goes on with the defaults it reloads (the ones VLC reads
+    // once too: MainCtx::reloadPrefs), its state saved at exit as usual
     m_ctx->reloadPrefs();
     m_ctx->reloadFromSettings();
 #ifdef _WIN32

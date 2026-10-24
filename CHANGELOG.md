@@ -33,8 +33,8 @@ file name of the player bar.
   priority of VLC now.
 - **"Save a log" stopped after the Messages window was opened once**: the window took the log for the rest of the
   session. It takes it only while open.
-- **VLC Redesign kept files in the folders of an installed VLC**: Qt's caches (%LOCALAPPDATA%lc\cache) and the
-  subtitles downloaded from a link of the subtitle associations (%APPDATA%lc\subtitles). They are in its own
+- **VLC Redesign kept files in the folders of an installed VLC**: Qt's caches (%LOCALAPPDATA%\vlc\cache) and the
+  subtitles downloaded from a link of the subtitle associations (%APPDATA%\vlc\subtitles). They are in its own
   profile now, removed with it.
 - **"Install for everyone" in the installer did nothing**: Inno Setup 6.7 refuses to start its own program from
   its code before installing, which that link relied on. It goes through Windows now and reopens the installer

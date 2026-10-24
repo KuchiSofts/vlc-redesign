@@ -39,6 +39,9 @@ namespace DLNA
 int OpenSout(vlc_object_t *);
 /* (in the chain it makes: where the renderer's stream starts) */
 int OpenOrigin(vlc_object_t *);
+/* (on the media cast: it ends once the renderer showed its end) */
+int OpenDemuxFilter(vlc_object_t *);
+void CloseDemuxFilter(vlc_object_t *);
 
 }
 #endif /* DLNA_COMMON_H */

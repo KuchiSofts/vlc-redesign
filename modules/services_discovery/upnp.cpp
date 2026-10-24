@@ -186,6 +186,16 @@ vlc_module_begin()
         set_capability("sout filter", 0)
         set_callback(DLNA::OpenOrigin)
 
+    add_submodule()
+        /* the demux filter of a DLNA renderer (its items): the media ends
+         * once the renderer showed its end */
+        set_shortname("dlna_demux")
+        set_description(N_("UPnP/DLNA demux filter"))
+        set_subcategory(SUBCAT_INPUT_DEMUX)
+        set_capability("demux_filter", 0)
+        add_shortcut("dlna_demux")
+        set_callbacks(DLNA::OpenDemuxFilter, DLNA::CloseDemuxFilter)
+
 #ifdef ENABLE_UPNP_SERVER
     add_submodule()
         set_shortname("UPnP Server");
@@ -1449,11 +1459,13 @@ bool MediaRendererList::addRenderer(MediaRendererDesc *desc)
     if (asprintf(&extra_sout, "base_url=%s,url=%s", desc->base_url.c_str(),
                         desc->location.c_str()) < 0)
         return false;
+    /* (its demux filter holds the end of the media until the renderer
+     * showed it: dlna_demux) */
     desc->inputItem = vlc_renderer_item_new("stream_out_dlna",
                                             desc->friendlyName.c_str(),
                                             psz_url,
                                             extra_sout,
-                                            NULL, "", 3);
+                                            "dlna_demux", "", 3);
     free(extra_sout);
     if ( !desc->inputItem )
         return false;

@@ -2671,11 +2671,13 @@ static bool Control( input_thread_t *p_input,
             if ( p_item == NULL && p_priv->p_renderer == NULL )
                 break;
 
-            /* Back here from a renderer without a demux filter of its own
-             * (DLNA): where the device was in the media, read before its
-             * output goes. It is a time of the stream: the time of a seek
-             * is less the stream's origin ("normal time": a TS recording,
-             * HLS) and the start time asked for. */
+            /* Back here from a DLNA renderer (its demux filter only holds
+             * the end of the media, it does not go back where the device
+             * was, as the Chromecast one does): where the device was in the
+             * media, read before its output goes. It is a time of the
+             * stream: the time of a seek is less the stream's origin
+             * ("normal time": a TS recording, HLS) and the start time asked
+             * for. */
             vlc_tick_t renderer_time = VLC_TICK_INVALID;
             /* Going there from here: where it played here (the player's
              * time, a time of the stream as renderer-time), else where the
@@ -2694,8 +2696,10 @@ static bool Control( input_thread_t *p_input,
                                          &read ) == VLC_SUCCESS )
                     enter_time = read;
             }
-            if ( p_item == NULL
-              && vlc_renderer_item_demux_filter( p_priv->p_renderer ) == NULL )
+            const char *renderer_sout = p_priv->p_renderer != NULL
+                                      ? vlc_renderer_item_sout( p_priv->p_renderer ) : NULL;
+            if ( p_item == NULL && renderer_sout != NULL
+              && strncmp( renderer_sout, "dlna", 4 ) == 0 )
             {
                 libvlc_int_t *libvlc = vlc_object_instance( p_input );
                 const vlc_tick_t origin = priv->master->i_normal_time != VLC_TICK_INVALID
@@ -3174,6 +3178,7 @@ static int InputSourceInit( input_source_t *in, input_thread_t *p_input,
 
     /* Threaded and directory demuxers do not have pace control */
     assert( b_can_demux || !in->b_can_pace_control );
+    VLC_UNUSED( b_can_demux ); /* (only in the assertion) */
 
     if( !in->b_can_pace_control )
     {

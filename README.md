@@ -194,6 +194,7 @@ Running the installer by hand works too: it closes a running VLC Redesign polite
 > Windows SmartScreen may warn about an unknown publisher, because the build isn't code-signed.
 > Click *More info → Run anyway*, or build it yourself from source.
 > Every release lists the SHA-256 of its files in `SHA256SUMS.txt`.
+> Signed releases are coming: see the [code signing policy](CODE_SIGNING_POLICY.md).
 
 ## Known limitations
 

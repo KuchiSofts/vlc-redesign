@@ -753,6 +753,17 @@ static void stream_Synchronize(vlc_aout_stream *stream, vlc_tick_t system_now,
         stream->timing.rate_system_ts = play_date;
         stream->timing.rate_audio_ts = dec_pts;
         stream->timing.rate = stream->sync.rate;
+
+        /* The output plays the samples it already has at the old rate
+         * first: the clock takes the new rate from this point on, when it
+         * is played. Left to the next timing report past it (wasapi: one a
+         * second), the video went on at the old rate, then dropped or held
+         * pictures for as long; a second change before that point was
+         * dated at the old rate, and the video stayed off by as much. */
+        vlc_clock_Lock(stream->sync.clock);
+        vlc_clock_ChangeRateAt(stream->sync.clock, play_date, dec_pts,
+                               stream->sync.rate);
+        vlc_clock_Unlock(stream->sync.clock);
     }
 
     if (stream->timing.first_pts == VLC_TICK_INVALID)

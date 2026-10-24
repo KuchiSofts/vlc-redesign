@@ -237,6 +237,22 @@ vlc_tick_t vlc_clock_UpdateVideo(vlc_clock_t *clock, vlc_tick_t system_now,
                                  unsigned frame_rate, unsigned frame_rate_base);
 
 /**
+ * This function announces a rate change of the master output ahead
+ *
+ * The output plays the samples it already has at the old rate first: from ts
+ * on, played at system, the timestamps are converted at the new rate, before
+ * the next update of the master comes past that point. It does nothing for a
+ * clock that is not the master.
+ *
+ * @param clock the locked clock used by the source
+ * @param system system time when ts will be played
+ * @param ts the first timestamp played at the new rate
+ * @param rate the new playback speed
+ */
+void vlc_clock_ChangeRateAt(vlc_clock_t *clock, vlc_tick_t system,
+                            vlc_tick_t ts, double rate);
+
+/**
  * This function resets the clock drift
  *
  * @param clock the locked clock used by the source

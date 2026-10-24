@@ -58,7 +58,9 @@ T.ComboBox {
         width: control.width
         height: implicitContentHeight + topPadding + bottomPadding
         padding: VLCStyle.margin_xsmall
-        leftPadding: control.leftPadding
+        // (the text under the one of the box: from its start)
+        leftPadding: mirrored ? padding : control.leftPadding
+        rightPadding: mirrored ? control.rightPadding : padding
         contentItem: Widgets.ListLabel {
             text: control.textRole ? (Helpers.isArray(control.model) ? modelData[control.textRole] : model[control.textRole]) : modelData
             color: control.color
@@ -68,8 +70,9 @@ T.ComboBox {
         highlighted: control.highlightedIndex === index
     }
 
+    // (at the end of the box: on the left in a right to left layout)
     indicator: Widgets.IconLabel {
-        x: control.width - width - rightPadding
+        x: control.mirrored ? control.leftPadding : control.width - width - control.rightPadding
         y: control.topPadding + (control.availableHeight - height) / 2
         font.pixelSize: VLCStyle.icon_normal
         font.bold: true
@@ -80,7 +83,8 @@ T.ComboBox {
     }
 
     contentItem: Widgets.ListLabel {
-        rightPadding: control.spacing + control.indicator.width
+        leftPadding: control.mirrored ? control.spacing + control.indicator.width : 0
+        rightPadding: control.mirrored ? 0 : control.spacing + control.indicator.width
 
         text: control.displayText
         color: control.color
@@ -111,6 +115,11 @@ T.ComboBox {
         padding: 1
 
         contentItem: ListView {
+            // right to left (Hebrew, Arabic...): a popup is not under the
+            // mirrored interface
+            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+            LayoutMirroring.childrenInherit: true
+
             clip: true
             implicitHeight: contentHeight
             model: control.popup.visible ? control.delegateModel : null

@@ -22,6 +22,8 @@ import VLC.Style
 T.Label {
     elide: Text.ElideRight
     font.pixelSize: VLCStyle.fontSize_normal
+    // from the start of the line (the right in a right to left layout)
+    horizontalAlignment: Text.AlignLeft
     verticalAlignment: Text.AlignVCenter
     textFormat: Text.PlainText
 }

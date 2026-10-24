@@ -27,8 +27,10 @@ T.ItemDelegate {
 
     // Settings
 
-    leftPadding: VLCStyle.margin_xlarge
-    rightPadding: VLCStyle.margin_xsmall
+    // (the larger one before the check: on the right in a right to left
+    // layout)
+    leftPadding: mirrored ? VLCStyle.margin_xsmall : VLCStyle.margin_xlarge
+    rightPadding: mirrored ? VLCStyle.margin_xlarge : VLCStyle.margin_xsmall
 
     checkable: true
 
@@ -56,6 +58,7 @@ T.ItemDelegate {
         Widgets.IconLabel {
             id: checkIcon
 
+            anchors.left: parent.left
             height: parent.height
 
             verticalAlignment: Text.AlignVCenter
@@ -77,7 +80,8 @@ T.ItemDelegate {
             height: parent.height
             width: parent.width - checkIcon.width
 
-            leftPadding: VLCStyle.margin_normal
+            leftPadding: control.mirrored ? 0 : VLCStyle.margin_normal
+            rightPadding: control.mirrored ? VLCStyle.margin_normal : 0
 
             verticalAlignment: Text.AlignVCenter
 

@@ -71,8 +71,9 @@ Column {
 
             focus: false
 
-            width: notifText.implicitWidth
-            height: notifText.implicitHeight
+            // a longer text (a translation) wraps within the width given
+            width: root.width > 0 ? Math.min(notifText.implicitWidth, root.width) : notifText.implicitWidth
+            height: notifText.height
 
             radius: VLCStyle.dp(3, VLCStyle.scale)
 
@@ -161,6 +162,10 @@ Column {
 
             SubtitleLabel {
                 id: notifText
+
+                width: delegate.width
+                wrapMode: Text.Wrap
+                horizontalAlignment: Text.AlignHCenter
 
                 padding: VLCStyle.margin_small
 

@@ -69,10 +69,13 @@ T.ProgressBar {
                 color: progressBarTheme.bg.primary
             }
 
+            // (a scan, a download: from the right in a right to left layout,
+            // unlike the time of a media)
             Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
 
-                implicitWidth: parent.width * control.visualPosition
+                x: control.mirrored ? parent.width - width : 0
+                implicitWidth: parent.width * control.position
                 implicitHeight: VLCStyle.heightBar_xxsmall
 
                 // NOTE: We want round corners.

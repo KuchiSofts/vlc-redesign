@@ -35,6 +35,9 @@ Item {
     property bool hovered: _countHovered !== 0
     property bool menuOpened: _menuIndex !== -1
 
+    // right to left (Hebrew, Arabic...): the menus from the right
+    readonly property bool _mirrored: LayoutMirroring.enabled
+
     readonly property ColorContext colorContext: ColorContext {
         colorSet: ColorContext.MenuBar
     }
@@ -118,9 +121,20 @@ Item {
 
         onMenuClosed: _menuIndex = -1
         onNavigateMenu: (direction) => {
+            // (the left key: -1, the menu before; the one on the left is
+            // the next one in a right to left bar)
+            if (root._mirrored)
+                direction = -direction
             const i =  (root._menuIndex + root.toolbarModel.length + direction) % root.toolbarModel.length
             root._requestMenuPopup(i)
         }
+    }
+
+    // The titles come translated from the menu bar: made again in the
+    // language chosen (and as many of them as fit)
+    Connections {
+        target: MainCtx
+        function onInterfaceLanguageChanged() { root._updateContentModel() }
     }
 
     FontMetrics {
@@ -196,7 +210,8 @@ Item {
         anchors.top:  parent.top
         anchors.right: parent.right
 
-        text: ">"
+        // (the menus that do not fit, after the others)
+        text: root._mirrored ? "<" : ">"
 
         Accessible.ignored: true
 

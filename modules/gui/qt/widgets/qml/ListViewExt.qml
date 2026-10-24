@@ -609,7 +609,9 @@ ListView {
                     newIndex = Math.max(0, newIndex - 10)
                 }
             } else {
-                if ( suppressPageModifier || KeyHelper.matchRight(event) ) {
+                // (a right to left list: the next item is on the left)
+                const mirrored = (root.effectiveLayoutDirection === Qt.RightToLeft)
+                if ( suppressPageModifier || (mirrored ? KeyHelper.matchLeft(event) : KeyHelper.matchRight(event)) ) {
                     if (newIndex !== count - 1 )
                         newIndex += 1
                     else if ( root.keyNavigationWraps )
@@ -617,7 +619,7 @@ ListView {
                 }
                 else if ( !suppressPageModifier && KeyHelper.matchPageDown(event) ) {
                     newIndex = Math.min(count - 1, newIndex + 10)
-                } else if ( suppressPageModifier || KeyHelper.matchLeft(event) ) {
+                } else if ( suppressPageModifier || (mirrored ? KeyHelper.matchRight(event) : KeyHelper.matchLeft(event)) ) {
                     if ( newIndex !== 0 )
                         newIndex -= 1
                     else if ( root.keyNavigationWraps )

@@ -88,6 +88,9 @@ Widgets.RedesignMenu {
         title: qsTr("Open Recent")
         iconName: "recent"
         enabled: root._recentAllowed && !!root._recentModel && root._recentModel.count > 0
+        // the names of the media elide in the width of the design (a long
+        // one does not widen it)
+        maximumWidth: menuWidth
 
         Instantiator {
             model: root._recentAllowed ? root._recentModel : null

@@ -74,31 +74,54 @@ T.Switch {
         border.color: VLCStyle.redesign.accent
     }
 
+    // the square on the side of the state: on the left when on in a right
+    // to left layout (Hebrew, Arabic...), as Windows' toggles
+    readonly property bool _labelFirst: root.checked !== root.mirrored
+
     indicator: Item {
         anchors.fill: parent
 
         Rectangle {
-            x: root.checked ? root.px(3) : root.px(32)
+            x: root._labelFirst ? root.px(3) : root.px(32)
             y: root.px(3)
             width: root.px(33)
             height: root.px(26)
             radius: root.px(3)
             color: root.checked ? root.c(VLCStyle.redesign.accentBackground) : root.c("#191919")
 
-            // ON at (10, 9) of the toggle, OFF at (36, 9), as the design
+            // ON at (10, 9) of the toggle, OFF at (36, 9), as the design;
+            // a longer word (a translation) centred, smaller if it has to
             Text {
-                x: root.checked ? root.px(7) : root.px(4)
+                id: stateText
+
+                readonly property real _designSize: root.px(12)
+                readonly property bool _fits: stateMetrics.advanceWidth
+                                              <= root.px(root.checked ? 33 - 7 - 2 : 33 - 4 - 2)
+
+                x: _fits ? (root.checked ? root.px(7) : root.px(4)) : Math.round((parent.width - width) / 2)
                 anchors.baseline: parent.top
-                anchors.baselineOffset: VLCStyle.redesign.textBaseline(root.px(6), font.pixelSize)
+                anchors.baselineOffset: _fits ? VLCStyle.redesign.textBaseline(root.px(6), font.pixelSize)
+                                              : VLCStyle.redesign.textBaseline(Math.round((parent.height - Math.round(1.2109375 * font.pixelSize)) / 2),
+                                                                               font.pixelSize)
                 text: root.checked ? qsTr("ON") : qsTr("OFF")
                 color: root.checked ? VLCStyle.redesign.accent : root.c("#6B6B6B")
                 font.family: VLCStyle.redesign.fontFamily
-                font.pixelSize: root.px(12)
+                font.pixelSize: _fits ? _designSize
+                                      : Math.max(root.px(7), Math.min(_designSize,
+                                                                      Math.floor(_designSize * root.px(33 - 2 * 3)
+                                                                                 / Math.max(1, stateMetrics.advanceWidth))))
+
+                TextMetrics {
+                    id: stateMetrics
+                    font.family: stateText.font.family
+                    font.pixelSize: stateText._designSize
+                    text: stateText.text
+                }
             }
         }
 
         Rectangle {
-            x: root.checked ? root.px(39) : root.px(3)
+            x: root._labelFirst ? root.px(39) : root.px(3)
             y: root.px(3)
             width: root.px(26)
             height: root.px(26)

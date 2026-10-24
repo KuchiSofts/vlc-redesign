@@ -62,6 +62,8 @@ T.MenuItem {
             Layout.fillHeight: true
             text: root.text
             elide: Text.ElideRight
+            // from the start of the row (the right in a right to left menu)
+            horizontalAlignment: Text.AlignLeft
             color: VLCStyle.redesign.color(root.enabled ? VLCStyle.redesign.textMuted : VLCStyle.redesign.textDisabled,
                                            "#4d4d4d")
             font.family: VLCStyle.redesign.fontFamily

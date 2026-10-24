@@ -48,5 +48,9 @@ T.Popup {
              && MainCtx.intfMainWindow.visibility !== Window.FullScreen
 
     background: null
-    contentItem: CSDTitlebarTapNDrapHandler { }
+    // (right to left as the interface, though nothing in it has a side)
+    contentItem: CSDTitlebarTapNDrapHandler {
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        LayoutMirroring.childrenInherit: true
+    }
 }

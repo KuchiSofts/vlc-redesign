@@ -19,6 +19,36 @@ T.Menu {
     // Figma's menus are 265 wide (context menus, options, the profile
     // submenu); the main menu 375, the right-click menu 292
     property real menuWidth: VLCStyle.dp(265, VLCStyle.scale)
+    // A row longer than that (a translation longer than the English of the
+    // design) makes the menu wider, up to this; past it, the rows elide
+    property real maximumWidth: Math.round(menuWidth * 1.6)
+
+    // the width the longest row needs
+    readonly property real _widestRow: {
+        let widest = 0
+        for (let i = 0; i < count; ++i) {
+            const item = itemAt(i)
+            if (item && item.contentItem)
+                widest = Math.max(widest, Math.ceil(item.contentItem.implicitWidth)
+                                          + item.leftPadding + item.rightPadding)
+        }
+        return widest
+    }
+
+    // Right to left in Hebrew, Arabic... A popup is not under the mirrored
+    // interface: the item of the menu mirrors itself, its rows with it, and
+    // its submenus open on its left (the left and right keys follow)
+    readonly property bool _rtl: Qt.application.layoutDirection === Qt.RightToLeft
+    Binding {
+        target: root.contentItem ? root.contentItem.parent : null
+        property: "LayoutMirroring.enabled"
+        value: root._rtl
+    }
+    Binding {
+        target: root.contentItem ? root.contentItem.parent : null
+        property: "LayoutMirroring.childrenInherit"
+        value: true
+    }
 
     // A press outside closes it before the button that opens it gets that
     // press: the click that follows closes it, not opens it again
@@ -41,6 +71,14 @@ T.Menu {
             root.popup(button, x, y)
     }
 
+    // Opens it at x, y of the item, x from the right edge of the item in a
+    // right to left layout: the menu ends there (it begins there in
+    // English). (toggleFrom() takes x as it is: its callers mirror it.)
+    function popupFrom(item, x, y) {
+        const mirrored = (item.mirrored !== undefined) ? item.mirrored : root._rtl
+        root.popup(item, mirrored ? item.width - x - root.width : x, y)
+    }
+
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
                             implicitContentWidth + leftPadding + rightPadding)
     implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
@@ -56,6 +94,10 @@ T.Menu {
     delegate: RedesignMenuItem { }
 
     contentItem: ListView {
+        // (the rows mirrored with it, see above)
+        LayoutMirroring.enabled: root._rtl
+        LayoutMirroring.childrenInherit: true
+
         implicitHeight: contentHeight
         model: root.contentModel
         interactive: Window.window
@@ -84,7 +126,10 @@ T.Menu {
     }
 
     background: Rectangle {
-        implicitWidth: root.menuWidth
+        // the width of the design, more for a longer row (the window keeps
+        // a menu wider than itself within it)
+        implicitWidth: Math.max(root.menuWidth,
+                                Math.min(root.maximumWidth, root._widestRow + root.leftPadding + root.rightPadding))
         radius: VLCStyle.dp(10, VLCStyle.scale)
         // "Dark/BG/A3 Transparent": #191919 at 95%
         color: VLCStyle.palette.isDark ? Qt.rgba(0x19 / 255, 0x19 / 255, 0x19 / 255, 0.95)

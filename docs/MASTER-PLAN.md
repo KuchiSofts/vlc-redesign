@@ -17,7 +17,7 @@ counted from this document's own tables and checklists (column *From*); ⚪ idea
 
 | Program         | Progress             | Done    | %     | From                                   |
 |-----------------|----------------------|---------|-------|----------------------------------------|
-| Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 87/97   | 90 %  | [§8](#8-next-release-030) checklists   |
+| Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 88/97   | 91 %  | [§8](#8-next-release-030) checklists   |
 | Linux           | 🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 1/7     | 14 %  | [§9](#linux)                           |
 | macOS           | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/4     | 0 %   | [§9](#macos)                           |
 | Windows ARM64   | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/3     | 0 %   | [§9](#windows-on-arm64)                |
@@ -37,7 +37,7 @@ Windows 0.2.6 is released; 0.3.0 counts the lines of section 8 (done since 0.2.6
 | Settings rows           | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 212/212 | 100 % | [§8.5](#85-settings-rows)              |
 | Classic dialogs         | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 11/11   | 100 % | [§8.6](#86-classic-dialogs)            |
 | Popups and menus        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 15/15   | 100 % | [§8.4](#84-popups-and-menus)           |
-| Casting                 | 🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜ | 13/16   | 81 %  | [§7](#7-desktop-for-windows-what-is-done) + [§8.7](#87-casting) |
+| Casting                 | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 14/16   | 88 %  | [§7](#7-desktop-for-windows-what-is-done) + [§8.7](#87-casting) |
 | Languages               | 🟩🟩🟩🟩⬜⬜⬜⬜⬜⬜ | 4/9     | 44 %  | [§12](#12-languages)                   |
 | GitHub and community    | 🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜ | 6/18    | 33 %  | [§13.16](#1316-setup-checklist)        |
 
@@ -793,7 +793,8 @@ All classic windows go through one hook, `redesign_widget_theme.cpp`, applied fr
   5 min (paused the whole time), seek, resume, next file, the end (stopped at 29.3 of 30 s), converted with
   subtitles; still open: a cast sent as-is, and the end of a film cast mid-film (being fixed, found with the fake TV)
 - 🔴 Other brands (LG, Sony, Android TV) through device reports
-- 🔴 A *TV compatibility* wiki page fed by the reports
+- 🟢 A *TV compatibility* wiki page fed by the reports (docs/wiki/TV-Compatibility.md, and the issue form
+  `.github/ISSUE_TEMPLATE/tv_report.yml` it links to)
 
 Kept as it is: the Samsung TV rejects VLC's `PrepareForConnection` (arguments not in the UPnP order). It does no harm,
 and an accepted request made the TV fail after a pause in a test.
@@ -841,7 +842,7 @@ and an accepted request made the TV fail after a pause in a test.
   passed on all six copies); to build again once the version is 0.3.0 (redesign_version.hpp)
 - 🔴 Announcement in Discussions; every fixed issue answered with the release link
 
-Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 87 🟢, 2 🟡, 8 🔴 (97), of which 5 🟢 are
+Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 88 🟢, 2 🟡, 7 🔴 (97), of which 5 🟢 are
 in the app ⏳.
 Languages (§12) and the community (§13) have bars of their own.
 

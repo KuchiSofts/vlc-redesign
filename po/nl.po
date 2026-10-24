@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 2.2.7\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-24 17:48+0000\n"
+"POT-Creation-Date: 2026-10-24 18:08+0000\n"
 "PO-Revision-Date: 2017-11-22 21:15+0100\n"
 "Last-Translator: Thomas De Rocker\n"
 "Language-Team: Dutch (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -124,7 +124,7 @@ msgstr "Geavanceerd"
 msgid "Subtitles / OSD"
 msgstr "Ondertitels / OSD"
 
-#: include/vlc_config_cat.h:46 modules/control/hotkeys.c:1311
+#: include/vlc_config_cat.h:46 modules/control/hotkeys.c:1314
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:1301
 msgid "Hotkeys"
 msgstr "Sneltoetsen"
@@ -542,7 +542,7 @@ msgstr "Stereo-audiomodus"
 
 #: src/audio_output/output.c:406 src/libvlc-module.c:212
 msgid "Audio mix mode"
-msgstr ""
+msgstr "Audiomixmodus"
 
 #: src/audio_output/output.c:489 src/libvlc-module.c:209
 #: modules/access/v4l2/v4l2.c:267 modules/audio_output/alsa.c:1276
@@ -595,17 +595,16 @@ msgid "Reverse stereo"
 msgstr "Omgekeerd stereo"
 
 #: src/audio_output/output.c:614
-#, fuzzy
 msgid "Original"
-msgstr "Originele ID"
+msgstr "Origineel"
 
 #: src/audio_output/output.c:619 src/libvlc-module.c:218
 msgid "Binaural"
-msgstr ""
+msgstr "Binauraal"
 
 #: src/audio_output/output.c:631
 msgid "4.0"
-msgstr ""
+msgstr "4.0"
 
 #: src/audio_output/output.c:640
 msgid "5.1"
@@ -613,7 +612,7 @@ msgstr "5.1"
 
 #: src/audio_output/output.c:649
 msgid "7.1"
-msgstr ""
+msgstr "7.1"
 
 #: src/config/cmdline.c:307
 #, c-format
@@ -871,9 +870,9 @@ msgid "Closed captions %u"
 msgstr "Gesloten ondertitels %u"
 
 #: src/input/decoder.c:2672
-#, fuzzy, c-format
+#, c-format
 msgid "DTVCC Closed captions %u"
-msgstr "Gesloten ondertitels %u"
+msgstr "DTVCC gesloten ondertitels %u"
 
 #: src/input/decoder.c:2972
 msgid "VLC could not open the decoder module."
@@ -901,7 +900,7 @@ msgstr "Programma"
 #: src/input/es_out.c:1974
 #, c-format
 msgid "Stream '%s'"
-msgstr ""
+msgstr "Stream '%s'"
 
 #: src/input/es_out.c:2235 src/input/es_out.c:2237
 msgid "Scrambled"
@@ -991,7 +990,7 @@ msgstr "Kanalen"
 
 #: src/input/es_out.c:4734
 msgid "Channel Layout"
-msgstr ""
+msgstr "Kanaalindeling"
 
 #: src/input/es_out.c:4738 modules/access/alsa.c:40 modules/access/imem.c:74
 #: modules/audio_output/amem.c:62 modules/codec/fluidsynth.c:64
@@ -1013,19 +1012,19 @@ msgstr "Gedecodeerd formaat"
 
 #: src/input/es_out.c:4760
 msgid "Decoded channels"
-msgstr ""
+msgstr "Gedecodeerde kanalen"
 
 #: src/input/es_out.c:4765
 msgid "Decoded sample rate"
-msgstr ""
+msgstr "Gedecodeerde samplerate"
 
 #: src/input/es_out.c:4772
 msgid "Decoded bits per sample"
-msgstr ""
+msgstr "Gedecodeerde bits per sample"
 
 #: src/input/es_out.c:4776
 msgid "Decoded Bitrate"
-msgstr ""
+msgstr "Gedecodeerde bitrate"
 
 #: src/input/es_out.c:4786
 msgid "Track replay gain"
@@ -1041,14 +1040,12 @@ msgid "%.2f dB"
 msgstr "%.2f dB"
 
 #: src/input/es_out.c:4799
-#, fuzzy
 msgid "Video resolution"
-msgstr "Voorkeursvideoresolutie"
+msgstr "Videoresolutie"
 
 #: src/input/es_out.c:4804
-#, fuzzy
 msgid "Buffer dimensions"
-msgstr "Buffergrootte in seconden"
+msgstr "Bufferafmetingen"
 
 #: src/input/es_out.c:4811 src/input/es_out.c:4814 modules/access/imem.c:92
 #: modules/access/rdp.c:65 modules/access/screen/screen.c:44
@@ -1062,49 +1059,40 @@ msgid "Frame rate"
 msgstr "Beeldsnelheid"
 
 #: src/input/es_out.c:4828
-#, fuzzy
 msgid "Top left"
-msgstr "Linksachter"
+msgstr "Boven links"
 
 #: src/input/es_out.c:4828
-#, fuzzy
 msgid "Left top"
-msgstr "Links voor"
+msgstr "Links boven"
 
 #: src/input/es_out.c:4829
-#, fuzzy
 msgid "Right bottom"
-msgstr "boven onder"
+msgstr "Rechts onder"
 
 #: src/input/es_out.c:4829
-#, fuzzy
 msgid "Top right"
-msgstr "Auteursrechten"
+msgstr "Boven rechts"
 
 #: src/input/es_out.c:4830
-#, fuzzy
 msgid "Bottom left"
-msgstr "Linksonder"
+msgstr "Onder links"
 
 #: src/input/es_out.c:4830
-#, fuzzy
 msgid "Bottom right"
-msgstr "Rechtsonder"
+msgstr "Onder rechts"
 
 #: src/input/es_out.c:4831
-#, fuzzy
 msgid "Left bottom"
-msgstr "boven onder"
+msgstr "Links onder"
 
 #: src/input/es_out.c:4831
-#, fuzzy
 msgid "Right top"
-msgstr "Rechts"
+msgstr "Rechts boven"
 
 #: src/input/es_out.c:4833
-#, fuzzy
 msgid "Orientation"
-msgstr "Spiegeloriëntatie"
+msgstr "Oriëntatie"
 
 #: src/input/es_out.c:4839 src/input/es_out.c:4857 src/input/es_out.c:4875
 #: src/input/es_out.c:4888 src/input/es_out.c:4900
@@ -1116,19 +1104,16 @@ msgid "Undefined"
 msgstr "Ongedefinieerd"
 
 #: src/input/es_out.c:4841
-#, fuzzy
 msgid "ITU-R BT.601 (525 lines, 60 Hz)"
-msgstr "525 lijnen / 60 Hz"
+msgstr "ITU-R BT.601 (525 lijnen, 60 Hz)"
 
 #: src/input/es_out.c:4843
-#, fuzzy
 msgid "ITU-R BT.601 (625 lines, 50 Hz)"
-msgstr "625 lijnen / 50 Hz"
+msgstr "ITU-R BT.601 (625 lijnen, 50 Hz)"
 
 #: src/input/es_out.c:4851
-#, fuzzy
 msgid "Color primaries"
-msgstr "Gekleurde meldingen"
+msgstr "Primaire kleuren"
 
 #: src/input/es_out.c:4858 src/libvlc-module.c:387
 #: modules/video_filter/deinterlace/deinterlace.h:57
@@ -1137,30 +1122,27 @@ msgstr "Lineair"
 
 #: src/input/es_out.c:4865
 msgid "Hybrid Log-Gamma"
-msgstr ""
+msgstr "Hybrid Log-Gamma"
 
 #: src/input/es_out.c:4869
-#, fuzzy
 msgid "Color transfer function"
-msgstr "Kleurextractie"
+msgstr "Overdrachtsfunctie"
 
 #: src/input/es_out.c:4882
-#, fuzzy
 msgid "Color space"
-msgstr "Kleurenschema"
+msgstr "Kleurruimte"
 
 #: src/input/es_out.c:4889
-#, fuzzy
 msgid "Full"
-msgstr "Vol bass"
+msgstr "Volledig"
 
 #: src/input/es_out.c:4890
 msgid "Limited"
-msgstr ""
+msgstr "Beperkt"
 
 #: src/input/es_out.c:4894
 msgid "Color Range"
-msgstr ""
+msgstr "Kleurbereik"
 
 #: src/input/es_out.c:4902 src/libvlc-module.c:320 src/libvlc-module.c:419
 #: src/libvlc-module.c:424 modules/audio_filter/channel_mixer/mono.c:90
@@ -1173,124 +1155,116 @@ msgid "Center"
 msgstr "Gecentreerd"
 
 #: src/input/es_out.c:4903
-#, fuzzy
 msgid "Top Left"
 msgstr "Linksboven"
 
 #: src/input/es_out.c:4904
-#, fuzzy
 msgid "Top Center"
-msgstr "Gecentreerd"
+msgstr "Midden boven"
 
 #: src/input/es_out.c:4905
-#, fuzzy
 msgid "Bottom Left"
 msgstr "Linksonder"
 
 #: src/input/es_out.c:4906
-#, fuzzy
 msgid "Bottom Center"
-msgstr "Linksonder"
+msgstr "Midden onder"
 
 #: src/input/es_out.c:4910
-#, fuzzy
 msgid "Chroma location"
-msgstr "Chroma-gain"
+msgstr "Chromapositie"
 
 #: src/input/es_out.c:4916 modules/codec/x264.c:434
-#, fuzzy
 msgid "2D"
-msgstr "F2"
+msgstr "2D"
 
 #: src/input/es_out.c:4917
 msgid "Side-By-Side"
-msgstr ""
+msgstr "Naast elkaar"
 
 #: src/input/es_out.c:4918
 msgid "Top-Bottom"
-msgstr ""
+msgstr "Boven elkaar"
 
 #: src/input/es_out.c:4919
 msgid "Row Sequential"
-msgstr ""
+msgstr "Rijsequentieel"
 
 #: src/input/es_out.c:4920
 msgid "Column Sequential"
-msgstr ""
+msgstr "Kolomsequentieel"
 
 #: src/input/es_out.c:4921
 msgid "Frame Sequential"
-msgstr ""
+msgstr "Beeldsequentieel"
 
 #: src/input/es_out.c:4922
 msgid "Checkboard"
-msgstr ""
+msgstr "Dambord"
 
 #: src/input/es_out.c:4926
 msgid "Stereo Mode"
-msgstr ""
+msgstr "Stereomodus"
 
 #: src/input/es_out.c:4928
 msgid "First Stereo Eye"
-msgstr ""
+msgstr "Eerste oog"
 
 #: src/input/es_out.c:4938
 msgid "Equirectangular"
-msgstr ""
+msgstr "Equirectangulair"
 
 #: src/input/es_out.c:4941
-#, fuzzy
 msgid "Cubemap"
-msgstr "Kubus"
+msgstr "Cubemap"
 
 #: src/input/es_out.c:4947
-#, fuzzy
 msgid "Projection"
-msgstr "Richting"
+msgstr "Projectie"
 
 #: src/input/es_out.c:4953
 msgctxt "ViewPoint"
 msgid "Yaw"
-msgstr ""
+msgstr "Gierhoek"
 
 #: src/input/es_out.c:4955
 msgctxt "ViewPoint"
 msgid "Pitch"
-msgstr ""
+msgstr "Hellingshoek"
 
 #: src/input/es_out.c:4957
 msgctxt "ViewPoint"
 msgid "Roll"
-msgstr ""
+msgstr "Rolhoek"
 
 #: src/input/es_out.c:4960
 msgctxt "ViewPoint"
 msgid "Field of view"
-msgstr ""
+msgstr "Gezichtsveld"
 
 #: src/input/es_out.c:4965
 msgid "Max. mastering luminance"
-msgstr ""
+msgstr "Max. mastering-luminantie"
 
 #: src/input/es_out.c:4970
 msgid "Min. mastering luminance"
-msgstr ""
+msgstr "Min. mastering-luminantie"
 
 #: src/input/es_out.c:4978
 msgid "Mastering Primary R"
-msgstr ""
+msgstr "Mastering-primaire kleur R"
 
 #: src/input/es_out.c:4985
 msgid "Mastering Primary G"
-msgstr ""
+msgstr "Mastering-primaire kleur G"
 
 #: src/input/es_out.c:4992
 msgid "Mastering Primary B"
-msgstr ""
+msgstr "Mastering-primaire kleur B"
 
 #: src/input/es_out.c:4999
 msgid "Mastering White point"
-msgstr ""
+msgstr "Mastering-witpunt"
 
 #: src/input/es_out.c:5014 modules/access/imem.c:63
 #: modules/gui/macosx/library/VLCLibraryDataTypes.m:216
@@ -1301,7 +1275,7 @@ msgstr "Ondertitel"
 
 #: src/input/input.c:3130
 msgid "Your media can't be opened"
-msgstr ""
+msgstr "Uw media kan niet worden geopend"
 
 #: src/input/input.c:3131
 #, c-format
@@ -1416,22 +1390,20 @@ msgstr "Acteurs"
 
 #: src/input/meta.c:82 modules/demux/mp4/meta.c:103
 #: modules/gui/macosx/playqueue/VLCPlayQueueSortingMenuController.m:55
-#, fuzzy
 msgid "Album Artist"
-msgstr "Artiest"
+msgstr "Albumartiest"
 
 #: src/input/meta.c:83
-#, fuzzy
 msgid "Disc number"
-msgstr "Tracknummer"
+msgstr "Schijfnummer"
 
 #: src/input/meta.c:84
 msgid "Total disc number"
-msgstr ""
+msgstr "Totaal aantal schijven"
 
 #: src/input/meta.c:85
 msgid "Compilation"
-msgstr ""
+msgstr "Compilatie"
 
 #: src/interface/interface.c:86 modules/gui/macosx/menus/VLCMainMenu.m:350
 #: modules/gui/macosx/menus/VLCMainMenu.m:351
@@ -1595,7 +1567,7 @@ msgstr "Mediarol"
 
 #: src/libvlc-module.c:137
 msgid "Media (player) role for operating system policy."
-msgstr ""
+msgstr "Mediarol (van de speler) voor het beleid van het besturingssysteem."
 
 #: src/libvlc-module.c:139
 msgid "Enable bit-exact mode (pure mode)"
@@ -1634,18 +1606,16 @@ msgid "Music"
 msgstr "Muziek"
 
 #: src/libvlc-module.c:155
-#, fuzzy
 msgid "Communication"
-msgstr "Locatie"
+msgstr "Communicatie"
 
 #: src/libvlc-module.c:155 modules/meta_engine/ID3Genres.h:69
 msgid "Game"
 msgstr "Spellen"
 
 #: src/libvlc-module.c:156
-#, fuzzy
 msgid "Notification"
-msgstr "Versterking"
+msgstr "Melding"
 
 #: src/libvlc-module.c:156
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:315
@@ -1653,9 +1623,8 @@ msgid "Animation"
 msgstr "Animatie"
 
 #: src/libvlc-module.c:156
-#, fuzzy
 msgid "Production"
-msgstr "Product"
+msgstr "Productie"
 
 #: src/libvlc-module.c:157
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:72
@@ -1664,7 +1633,7 @@ msgstr "Toegankelijkheid"
 
 #: src/libvlc-module.c:157
 msgid "Test"
-msgstr ""
+msgstr "Test"
 
 #: src/libvlc-module.c:160
 msgid "Audio gain"
@@ -1717,13 +1686,15 @@ msgstr "Dit selecteert welke plugin gebruikt wordt voor audio-resampling"
 
 #: src/libvlc-module.c:184
 msgid "Force S/PDIF support"
-msgstr ""
+msgstr "S/PDIF-ondersteuning forceren"
 
 #: src/libvlc-module.c:186
 msgid ""
 "This option should be used when the audio output can't negotiate S/PDIF "
 "support."
 msgstr ""
+"Gebruik deze optie wanneer de audio-uitvoer de S/PDIF-ondersteuning niet kan "
+"onderhandelen."
 
 #: src/libvlc-module.c:189
 msgid "Force detection of Dolby Surround"
@@ -1757,14 +1728,14 @@ msgstr ""
 msgid "Auto"
 msgstr "Auto"
 
-#: src/libvlc-module.c:198 src/libvlc-module.c:374 src/player/osd.c:323
+#: src/libvlc-module.c:198 src/libvlc-module.c:374 src/player/osd.c:340
 #: modules/access/dtv/access.c:100 modules/access/v4l2/v4l2.c:201
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
 msgid "On"
 msgstr "Aan"
 
-#: src/libvlc-module.c:198 src/libvlc-module.c:374 src/player/osd.c:323
+#: src/libvlc-module.c:198 src/libvlc-module.c:374 src/player/osd.c:340
 #: modules/access/dtv/access.c:100 modules/access/v4l2/v4l2.c:137
 #: modules/access/v4l2/v4l2.c:201
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:136
@@ -2097,9 +2068,8 @@ msgid "Always place the video window on top of other windows."
 msgstr "Het videovenster altijd boven andere vensters plaatsen."
 
 #: src/libvlc-module.c:348
-#, fuzzy
 msgid "Enable wallpaper mode"
-msgstr "Bureaubladachtergrond-modus inschakelen"
+msgstr "Bureaubladachtergrondmodus inschakelen"
 
 #: src/libvlc-module.c:350
 msgid ""
@@ -2190,12 +2160,11 @@ msgstr "Film NTSC (IVTC)"
 
 #: src/libvlc-module.c:391
 msgid "Deinterlace filter"
-msgstr ""
+msgstr "Deïnterlace-filter"
 
 #: src/libvlc-module.c:392
-#, fuzzy
 msgid "Deinterlace module to use."
-msgstr "Deïnterlace module"
+msgstr "Te gebruiken deïnterlace-module."
 
 #: src/libvlc-module.c:394
 msgid "Video Stereo 3D mode"
@@ -2207,15 +2176,15 @@ msgstr ""
 
 #: src/libvlc-module.c:403 src/video_output/vout_intf.c:166
 msgid "Left Only"
-msgstr ""
+msgstr "Alleen links"
 
 #: src/libvlc-module.c:403 src/video_output/vout_intf.c:167
 msgid "Right Only"
-msgstr ""
+msgstr "Alleen rechts"
 
 #: src/libvlc-module.c:404 src/video_output/vout_intf.c:168
 msgid "Side-by-Side"
-msgstr ""
+msgstr "Naast elkaar"
 
 #: src/libvlc-module.c:427
 msgid "Disable screensaver"
@@ -2237,7 +2206,7 @@ msgstr "Nooit"
 
 #: src/libvlc-module.c:432
 msgid "When fullscreen"
-msgstr ""
+msgstr "Bij schermvullend"
 
 #: src/libvlc-module.c:432 modules/gui/macosx/main/macosx.m:125
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:50
@@ -2504,11 +2473,11 @@ msgstr "Dit activeert het gebruik van muisklikken op de video."
 
 #: src/libvlc-module.c:543
 msgid "Mouse Pause Policy"
-msgstr ""
+msgstr "Pauzeren met muisklik"
 
 #: src/libvlc-module.c:545
 msgid "This controls how pause on mouse click is handled"
-msgstr ""
+msgstr "Bepaalt hoe pauzeren met een muisklik wordt afgehandeld"
 
 #: src/libvlc-module.c:552 modules/access/rist.h:85
 #: modules/audio_output/mmdevice.c:1621
@@ -2521,7 +2490,7 @@ msgstr "Uitgeschakeld"
 
 #: src/libvlc-module.c:552
 msgid "Toggle pause immediately on mouse released"
-msgstr ""
+msgstr "Direct pauzeren/hervatten bij loslaten van de muisknop"
 
 #: src/libvlc-module.c:560
 msgid ""
@@ -2767,6 +2736,9 @@ msgid ""
 "letter ISO-639 country code; you may use 'none' to avoid a fallback to "
 "another language)."
 msgstr ""
+"Taal van het audiospoor dat u wilt gebruiken (kommagescheiden, ISO-639-"
+"landcode van twee of drie letters; met 'none' voorkomt u dat op een andere "
+"taal wordt teruggevallen)."
 
 #: src/libvlc-module.c:677
 msgid "Subtitle language"
@@ -2777,6 +2749,8 @@ msgid ""
 "Language of the subtitle track you want to use (comma separated, two or "
 "three letter ISO-639 country code; you may use 'any' as a fallback)."
 msgstr ""
+"Taal van het ondertitelspoor dat u wilt gebruiken (kommagescheiden, ISO-639-"
+"landcode van twee of drie letters; u kunt 'any' als terugvaloptie gebruiken)."
 
 #: src/libvlc-module.c:682
 msgid "Menu language"
@@ -2787,6 +2761,9 @@ msgid ""
 "Language of the menus you want to use with DVD/BluRay (comma separated, two "
 "or three letter ISO-639 country code; you may use 'any' as a fallback)."
 msgstr ""
+"Taal van de menu's die u bij dvd/BluRay wilt gebruiken (kommagescheiden, "
+"ISO-639-landcode van twee of drie letters; u kunt 'any' als terugvaloptie "
+"gebruiken)."
 
 #: src/libvlc-module.c:687
 msgid "Video track ID"
@@ -2976,39 +2953,39 @@ msgstr "Afspelen hervatten"
 
 #: src/libvlc-module.c:766
 msgid "Should the playback resume where it was left off?"
-msgstr ""
+msgstr "Moet het afspelen worden hervat waar het was gebleven?"
 
 #: src/libvlc-module.c:775
 msgid "Never resume playback where it was left off"
-msgstr ""
+msgstr "Afspelen nooit hervatten waar het was gebleven"
 
 #: src/libvlc-module.c:776
 msgid "Ask when the playback starts"
-msgstr ""
+msgstr "Vragen wanneer het afspelen begint"
 
 #: src/libvlc-module.c:777
 msgid "Always resume playback where it was left off"
-msgstr ""
+msgstr "Afspelen altijd hervatten waar het was gebleven"
 
 #: src/libvlc-module.c:780
 msgid "Resume last playback states"
-msgstr ""
+msgstr "Laatste afspeelstatus hervatten"
 
 #: src/libvlc-module.c:781
 msgid ""
 "This will resume the last playback state, such as the selected tracks, rate, "
 "aspect-ratio, ..."
 msgstr ""
+"Hiermee wordt de laatste afspeelstatus hervat, zoals de geselecteerde "
+"sporen, snelheid, beeldverhouding, ..."
 
 #: src/libvlc-module.c:784
-#, fuzzy
 msgid "Record directory"
-msgstr "Bronmap"
+msgstr "Opnamemap"
 
 #: src/libvlc-module.c:786
-#, fuzzy
 msgid "Directory where the records will be stored"
-msgstr "Map of bestandsnaam waar de opnames in opgeslagen worden"
+msgstr "Map waarin de opnamen worden opgeslagen"
 
 #: src/libvlc-module.c:788
 msgid "Prefer native stream recording"
@@ -3084,7 +3061,7 @@ msgstr ""
 
 #: src/libvlc-module.c:821
 msgid "Subtitle position"
-msgstr ""
+msgstr "Ondertitelpositie"
 
 #: src/libvlc-module.c:823
 msgid ""
@@ -3092,16 +3069,17 @@ msgid ""
 "their usual place (below it when negative). The same on any screen and in "
 "any window size."
 msgstr ""
+"Hoe hoog de ondertitels boven hun gebruikelijke plek staan, in procenten van "
+"de beeldhoogte (eronder bij een negatieve waarde). Hetzelfde op elk scherm "
+"en bij elke venstergrootte."
 
 #: src/libvlc-module.c:827
-#, fuzzy
 msgid "Subtitles text scaling factor"
-msgstr "Ondertitel-tekstcodering"
+msgstr "Schaalfactor ondertiteltekst"
 
 #: src/libvlc-module.c:828
-#, fuzzy
 msgid "Changes the subtitles size where possible"
-msgstr "Ondertitelbestand selecteren"
+msgstr "Wijzigt de grootte van de ondertitels waar mogelijk"
 
 #: src/libvlc-module.c:830
 msgid "Enable sub-pictures"
@@ -3140,11 +3118,13 @@ msgstr ""
 
 #: src/libvlc-module.c:847
 msgid "On Screen Display duration"
-msgstr ""
+msgstr "Duur van On Screen Display"
 
 #: src/libvlc-module.c:849
 msgid "How long the messages of the On Screen Display stay, in milliseconds."
 msgstr ""
+"Hoe lang de berichten van de On Screen Display zichtbaar blijven, in "
+"milliseconden."
 
 #: src/libvlc-module.c:850 src/libvlc-module.c:1827 src/text/iso-639_def.h:573
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:441
@@ -3315,9 +3295,8 @@ msgid "TCP connection timeout"
 msgstr "TCP-verbindingstimeout"
 
 #: src/libvlc-module.c:937
-#, fuzzy
 msgid "Default TCP connection timeout (in milliseconds)."
-msgstr "Standaard TCP-verbindingstimeout (in milliseconden)."
+msgstr "Standaardtimeout voor TCP-verbindingen (in milliseconden)."
 
 #: src/libvlc-module.c:939
 msgid "HTTP server address"
@@ -3534,7 +3513,7 @@ msgstr ""
 
 #: src/libvlc-module.c:1042
 msgid "Preferred decoder hardware device"
-msgstr ""
+msgstr "Voorkeurshardwareapparaat voor decoderen"
 
 #: src/libvlc-module.c:1043
 msgid "This allows hardware decoding when available."
@@ -3621,6 +3600,8 @@ msgid ""
 "This allows you to keep an unique stream output instance across multiple "
 "play queue items."
 msgstr ""
+"Hiermee kunt u één enkele instantie van de streamuitvoer behouden voor "
+"meerdere items in de wachtrij."
 
 #: src/libvlc-module.c:1088
 msgid "Stream output muxer caching (ms)"
@@ -3766,6 +3747,12 @@ msgid ""
 "with spaces. Files to open, and the options only a command line can give (--"
 "help, --config, --reset-config...), are left out."
 msgstr ""
+"Opties die VLC bij elke start leest, alsof ze op de opdrachtregel stonden "
+"(de opdrachtregel heeft voorrang als die dezelfde optie geeft). Schrijf ze "
+"zoals op een opdrachtregel, bijvoorbeeld: --no-osd --network-caching=3000; "
+"zet een waarde met spaties tussen aanhalingstekens. Te openen bestanden en "
+"de opties die alleen een opdrachtregel kan geven (--help, --config, --reset-"
+"config...), worden weggelaten."
 
 #: src/libvlc-module.c:1158
 msgid "Locally collect statistics"
@@ -3842,13 +3829,15 @@ msgstr "Klokbron"
 
 #: src/libvlc-module.c:1208
 msgid "Enqueue items into play queue in one instance mode"
-msgstr ""
+msgstr "Items aan wachtrij toevoegen in modus met één instantie"
 
 #: src/libvlc-module.c:1210
 msgid ""
 "When using the one instance only option, enqueue items to play queue and "
 "keep playing current item."
 msgstr ""
+"Bij gebruik van de optie voor slechts één instantie items aan de wachtrij "
+"toevoegen en het huidige item blijven afspelen."
 
 #: src/libvlc-module.c:1213
 #, fuzzy
@@ -3866,15 +3855,16 @@ msgid ""
 msgstr ""
 
 #: src/libvlc-module.c:1226
-#, fuzzy
 msgid "Automatically preparse items"
-msgstr "Automatisch bestanden voorverwerken"
+msgstr "Items automatisch vooraf analyseren"
 
 #: src/libvlc-module.c:1228
 msgid ""
 "Automatically preparse items added to the play queue (to retrieve some "
 "metadata)."
 msgstr ""
+"Items die aan de wachtrij worden toegevoegd automatisch vooraf analyseren "
+"(om bepaalde metadata op te halen)."
 
 #: src/libvlc-module.c:1231
 #, fuzzy
@@ -3926,6 +3916,11 @@ msgid ""
 "collapse: subdirectories appear but are expanded on first play.\n"
 "expand: all subdirectories are expanded.\n"
 msgstr ""
+"Selecteer of submappen moeten worden uitgeklapt.\n"
+"none: submappen verschijnen niet in de wachtrij.\n"
+"collapse: submappen verschijnen, maar worden pas bij de eerste keer afspelen "
+"uitgeklapt.\n"
+"expand: alle submappen worden uitgeklapt.\n"
 
 #: src/libvlc-module.c:1257
 msgid "Ignored extensions"
@@ -3938,6 +3933,10 @@ msgid ""
 "This is useful if you add directories that contain playlist files for "
 "instance. Use a comma-separated list of extensions."
 msgstr ""
+"Bestanden met deze extensies worden niet aan de wachtrij toegevoegd bij het "
+"openen van een map.\n"
+"Dit is bijvoorbeeld handig als u mappen toevoegt die afspeellijstbestanden "
+"bevatten. Gebruik een kommagescheiden lijst van extensies."
 
 #: src/libvlc-module.c:1264
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:294
@@ -3946,7 +3945,7 @@ msgstr "Verborgen bestanden weergeven"
 
 #: src/libvlc-module.c:1266
 msgid "Ignore files starting with '.'"
-msgstr ""
+msgstr "Bestanden negeren die met '.' beginnen"
 
 #: src/libvlc-module.c:1268
 msgid "Flatten files listed by extractors (archive)"
@@ -3971,6 +3970,8 @@ msgstr "Bestanden continu in willekeurige volgorde afspelen"
 #: src/libvlc-module.c:1277
 msgid "VLC will randomly play files in the play queue until interrupted."
 msgstr ""
+"VLC speelt bestanden uit de wachtrij in willekeurige volgorde af tot het "
+"afspelen wordt onderbroken."
 
 #: src/libvlc-module.c:1279
 msgid "Repeat all"
@@ -3978,7 +3979,7 @@ msgstr "Alles herhalen"
 
 #: src/libvlc-module.c:1281
 msgid "VLC will keep playing the play queue indefinitely."
-msgstr ""
+msgstr "VLC blijft de wachtrij eindeloos afspelen."
 
 #: src/libvlc-module.c:1283
 msgid "Repeat current item"
@@ -3986,7 +3987,7 @@ msgstr "Huidig item herhalen"
 
 #: src/libvlc-module.c:1285
 msgid "VLC will keep playing the current play queue item."
-msgstr ""
+msgstr "VLC blijft het huidige item in de wachtrij afspelen."
 
 #: src/libvlc-module.c:1287
 msgid "Play and stop"
@@ -3994,7 +3995,7 @@ msgstr "Afspelen en stoppen"
 
 #: src/libvlc-module.c:1289
 msgid "Stop playback after each item in the play queue."
-msgstr ""
+msgstr "Het afspelen stoppen na elk item in de wachtrij."
 
 #: src/libvlc-module.c:1291
 msgid "Play and exit"
@@ -4010,7 +4011,7 @@ msgstr "Afspelen en pauzeren"
 
 #: src/libvlc-module.c:1297
 msgid "Pause each item in the play queue on the last frame."
-msgstr ""
+msgstr "Elk item in de wachtrij pauzeren op het laatste beeld."
 
 #: src/libvlc-module.c:1299
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:133
@@ -4019,7 +4020,7 @@ msgstr "Gepauzeerd starten"
 
 #: src/libvlc-module.c:1301
 msgid "Pause each item in the play queue on the first frame."
-msgstr ""
+msgstr "Elk item in de wachtrij pauzeren op het eerste beeld."
 
 #: src/libvlc-module.c:1303
 msgid "Auto start"
@@ -4028,6 +4029,8 @@ msgstr "Auto-start"
 #: src/libvlc-module.c:1304
 msgid "Automatically start playing the play queue content once it's loaded."
 msgstr ""
+"Automatisch beginnen met afspelen van de inhoud van de wachtrij zodra die "
+"geladen is."
 
 #: src/libvlc-module.c:1307
 msgid "Pause on audio communication"
@@ -4064,16 +4067,21 @@ msgid ""
 "it off to browse without indexing your media; this takes effect the next "
 "time VLC starts."
 msgstr ""
+"De mediabibliotheek starten wanneer VLC erom vraagt (de mediaspeler doet "
+"dat). Schakel dit uit om te bladeren zonder uw media te indexeren; dit wordt "
+"van kracht wanneer VLC de volgende keer start."
 
 #: src/libvlc-module.c:1323
 msgid "Display play queue tree"
-msgstr ""
+msgstr "Wachtrij als boomstructuur weergeven"
 
 #: src/libvlc-module.c:1325
 msgid ""
 "The play queue can use a tree to categorize some items, like the contents of "
 "a directory."
 msgstr ""
+"De wachtrij kan een boomstructuur gebruiken om sommige items in te delen, "
+"zoals de inhoud van een map."
 
 #: src/libvlc-module.c:1328
 msgid "Play queue bookmark 1"
@@ -4131,47 +4139,40 @@ msgid "Ignore"
 msgstr "Negeren"
 
 #: src/libvlc-module.c:1350
-#, fuzzy
 msgid "Volume control"
-msgstr "Volumeaansturing"
+msgstr "Volumeregeling"
 
 #: src/libvlc-module.c:1351
-#, fuzzy
 msgid "Position control"
-msgstr "Positieaansturing"
+msgstr "Positieregeling"
 
 #: src/libvlc-module.c:1351
-#, fuzzy
 msgid "Position control reversed"
-msgstr "Positieaansturing"
+msgstr "Positieregeling omgekeerd"
 
 #: src/libvlc-module.c:1354
-#, fuzzy
 msgid "Mouse wheel vertical axis control"
-msgstr "Bediening omhoog/omlaag scrollen"
+msgstr "Bediening met verticale as van muiswiel"
 
 #: src/libvlc-module.c:1356
-#, fuzzy
 msgid ""
 "The mouse wheel vertical (up/down) axis can control volume, position or be "
 "ignored."
 msgstr ""
-"Omhoog/omlaag (verticaal) scrollen kan het volume of de positie aansturen of "
-"de muiswielgebeurtenis kan genegeerd worden"
+"De verticale as (omhoog/omlaag) van het muiswiel kan het volume of de "
+"positie regelen of worden genegeerd."
 
 #: src/libvlc-module.c:1358
-#, fuzzy
 msgid "Mouse wheel horizontal axis control"
-msgstr "Bediening omhoog/omlaag scrollen"
+msgstr "Bediening met horizontale as van muiswiel"
 
 #: src/libvlc-module.c:1360
-#, fuzzy
 msgid ""
 "The mouse wheel horizontal (left/right) axis can control volume, position or "
 "be ignored."
 msgstr ""
-"Omhoog/omlaag (verticaal) scrollen kan het volume of de positie aansturen of "
-"de muiswielgebeurtenis kan genegeerd worden"
+"De horizontale as (links/rechts) van het muiswiel kan het volume of de "
+"positie regelen of worden genegeerd."
 
 #: src/libvlc-module.c:1362 src/video_output/vout_intf.c:325
 #: modules/gui/macosx/menus/VLCMainMenu.m:437
@@ -4279,6 +4280,7 @@ msgstr "Volgende"
 #: src/libvlc-module.c:1383
 msgid "Select the hotkey to use to skip to the next item in the play queue."
 msgstr ""
+"Selecteer de sneltoets om naar het volgende item in de wachtrij te gaan."
 
 #: src/libvlc-module.c:1384 modules/gui/macosx/menus/VLCMainMenu.m:398
 #: modules/gui/macosx/menus/VLCMainMenu.m:511
@@ -4298,7 +4300,7 @@ msgstr "Vorige"
 #: src/libvlc-module.c:1385
 msgid ""
 "Select the hotkey to use to skip to the previous item in the play queue."
-msgstr ""
+msgstr "Selecteer de sneltoets om naar het vorige item in de wachtrij te gaan."
 
 #: src/libvlc-module.c:1386 modules/gui/macosx/menus/VLCMainMenu.m:389
 #: modules/gui/macosx/menus/VLCMainMenu.m:509
@@ -4399,7 +4401,7 @@ msgstr "Volgende beeld"
 
 #: src/libvlc-module.c:1418
 msgid "Select the hotkey to go to the next video frame."
-msgstr ""
+msgstr "Selecteer de sneltoets om naar het volgende videobeeld te gaan."
 
 #: src/libvlc-module.c:1419 src/player/input.c:968
 #: modules/gui/qt/player/qml/controlbarcontrols/FramePrevButton.qml:34
@@ -4408,7 +4410,7 @@ msgstr "Vorig beeld"
 
 #: src/libvlc-module.c:1421
 msgid "Select the hotkey to go to the previous video frame."
-msgstr ""
+msgstr "Selecteer de sneltoets om naar het vorige videobeeld te gaan."
 
 #: src/libvlc-module.c:1423
 msgid "Very short jump length"
@@ -4458,44 +4460,48 @@ msgid "Navigate up"
 msgstr "Naar boven navigeren"
 
 #: src/libvlc-module.c:1435
-#, fuzzy
 msgid ""
 "Select the key to move the selector up in DVD menus / Move viewpoint to up "
 "(pitch)."
-msgstr "Selecteer de toets om naar boven te gaan in dvd-menu's."
+msgstr ""
+"Selecteer de sneltoets om de selectie in dvd-menu's omhoog te verplaatsen / "
+"het gezichtspunt omhoog te verplaatsen (hellingshoek)."
 
 #: src/libvlc-module.c:1436 modules/gui/qt/player/qml/NavigationBox.qml:161
 msgid "Navigate down"
 msgstr "Naar beneden navigeren"
 
 #: src/libvlc-module.c:1437
-#, fuzzy
 msgid ""
 "Select the key to move the selector down in DVD menus / Move viewpoint to "
 "down (pitch)."
-msgstr "Selecteer de toets om naar beneden te gaan in dvd-menu's."
+msgstr ""
+"Selecteer de sneltoets om de selectie in dvd-menu's omlaag te verplaatsen / "
+"het gezichtspunt omlaag te verplaatsen (hellingshoek)."
 
 #: src/libvlc-module.c:1438 modules/gui/qt/player/qml/NavigationBox.qml:118
 msgid "Navigate left"
 msgstr "Naar links navigeren"
 
 #: src/libvlc-module.c:1439
-#, fuzzy
 msgid ""
 "Select the key to move the selector left in DVD menus / Move viewpoint to "
 "left (yaw)."
-msgstr "Selecteer de sneltoets om naar links te gaan in dvd-menu's."
+msgstr ""
+"Selecteer de sneltoets om de selectie in dvd-menu's naar links te "
+"verplaatsen / het gezichtspunt naar links te verplaatsen (gierhoek)."
 
 #: src/libvlc-module.c:1440 modules/gui/qt/player/qml/NavigationBox.qml:147
 msgid "Navigate right"
 msgstr "Naar rechts navigeren"
 
 #: src/libvlc-module.c:1441
-#, fuzzy
 msgid ""
 "Select the key to move the selector right in DVD menus / Move viewpoint to "
 "right (yaw)."
-msgstr "Selecteer de toets om naar rechts te gaan in dvd-menu's."
+msgstr ""
+"Selecteer de sneltoets om de selectie in dvd-menu's naar rechts te "
+"verplaatsen / het gezichtspunt naar rechts te verplaatsen (gierhoek)."
 
 #: src/libvlc-module.c:1442
 msgid "Activate"
@@ -4596,24 +4602,20 @@ msgstr ""
 "Selecteer de sneltoets om de vertraging van de ondertitels te verlagen."
 
 #: src/libvlc-module.c:1464
-#, fuzzy
 msgid "Reset subtitles text scale"
-msgstr "Teletekst-ondertiteldecoder"
+msgstr "Tekstschaal ondertitels herstellen"
 
 #: src/libvlc-module.c:1465
-#, fuzzy
-msgid "Scale up subtitles text"
-msgstr "Ondertitelbestand selecteren"
+msgid "Scale down subtitles text"
+msgstr "Ondertiteltekst verkleinen"
 
 #: src/libvlc-module.c:1466
-#, fuzzy
-msgid "Scale down subtitles text"
-msgstr "Ondertitelbestand selecteren"
+msgid "Scale up subtitles text"
+msgstr "Ondertiteltekst vergroten"
 
 #: src/libvlc-module.c:1467
-#, fuzzy
 msgid "Select the key to change subtitles text scaling"
-msgstr "Selecteer de toets om ondertitels hoger te plaatsen."
+msgstr "Selecteer de sneltoets om de schaal van de ondertiteltekst te wijzigen"
 
 #: src/libvlc-module.c:1468
 msgid "Subtitle sync / bookmark audio timestamp"
@@ -4709,47 +4711,47 @@ msgstr "Dubbele grootte"
 
 #: src/libvlc-module.c:1489
 msgid "Select the hotkey to use to zoom to the corresponding level."
-msgstr ""
+msgstr "Selecteer de sneltoets om naar het overeenkomstige niveau te zoomen."
 
 #: src/libvlc-module.c:1491
 msgid "Go to play queue bookmark 1"
-msgstr ""
+msgstr "Naar wachtrijbladwijzer 1 gaan"
 
 #: src/libvlc-module.c:1492
 msgid "Go to play queue bookmark 2"
-msgstr ""
+msgstr "Naar wachtrijbladwijzer 2 gaan"
 
 #: src/libvlc-module.c:1493
 msgid "Go to play queue bookmark 3"
-msgstr ""
+msgstr "Naar wachtrijbladwijzer 3 gaan"
 
 #: src/libvlc-module.c:1494
 msgid "Go to play queue bookmark 4"
-msgstr ""
+msgstr "Naar wachtrijbladwijzer 4 gaan"
 
 #: src/libvlc-module.c:1495
 msgid "Go to play queue bookmark 5"
-msgstr ""
+msgstr "Naar wachtrijbladwijzer 5 gaan"
 
 #: src/libvlc-module.c:1496
 msgid "Go to play queue bookmark 6"
-msgstr ""
+msgstr "Naar wachtrijbladwijzer 6 gaan"
 
 #: src/libvlc-module.c:1497
 msgid "Go to play queue bookmark 7"
-msgstr ""
+msgstr "Naar wachtrijbladwijzer 7 gaan"
 
 #: src/libvlc-module.c:1498
 msgid "Go to play queue bookmark 8"
-msgstr ""
+msgstr "Naar wachtrijbladwijzer 8 gaan"
 
 #: src/libvlc-module.c:1499
 msgid "Go to play queue bookmark 9"
-msgstr ""
+msgstr "Naar wachtrijbladwijzer 9 gaan"
 
 #: src/libvlc-module.c:1500
 msgid "Go to play queue bookmark 10"
-msgstr ""
+msgstr "Naar wachtrijbladwijzer 10 gaan"
 
 #: src/libvlc-module.c:1501
 msgid "Select the key to play this bookmark."
@@ -4757,47 +4759,47 @@ msgstr "Selecteer de sneltoets om deze bladwijzer af te spelen."
 
 #: src/libvlc-module.c:1502
 msgid "Set play queue bookmark 1"
-msgstr ""
+msgstr "Wachtrijbladwijzer 1 instellen"
 
 #: src/libvlc-module.c:1503
 msgid "Set play queue bookmark 2"
-msgstr ""
+msgstr "Wachtrijbladwijzer 2 instellen"
 
 #: src/libvlc-module.c:1504
 msgid "Set play queue bookmark 3"
-msgstr ""
+msgstr "Wachtrijbladwijzer 3 instellen"
 
 #: src/libvlc-module.c:1505
 msgid "Set play queue bookmark 4"
-msgstr ""
+msgstr "Wachtrijbladwijzer 4 instellen"
 
 #: src/libvlc-module.c:1506
 msgid "Set play queue bookmark 5"
-msgstr ""
+msgstr "Wachtrijbladwijzer 5 instellen"
 
 #: src/libvlc-module.c:1507
 msgid "Set play queue bookmark 6"
-msgstr ""
+msgstr "Wachtrijbladwijzer 6 instellen"
 
 #: src/libvlc-module.c:1508
 msgid "Set play queue bookmark 7"
-msgstr ""
+msgstr "Wachtrijbladwijzer 7 instellen"
 
 #: src/libvlc-module.c:1509
 msgid "Set play queue bookmark 8"
-msgstr ""
+msgstr "Wachtrijbladwijzer 8 instellen"
 
 #: src/libvlc-module.c:1510
 msgid "Set play queue bookmark 9"
-msgstr ""
+msgstr "Wachtrijbladwijzer 9 instellen"
 
 #: src/libvlc-module.c:1511
 msgid "Set play queue bookmark 10"
-msgstr ""
+msgstr "Wachtrijbladwijzer 10 instellen"
 
 #: src/libvlc-module.c:1512
 msgid "Select the key to set this play queue bookmark."
-msgstr ""
+msgstr "Selecteer de sneltoets om deze wachtrijbladwijzer in te stellen."
 
 #: src/libvlc-module.c:1513 modules/gui/qt/menus/qml_menu_wrapper.cpp:1212
 msgid "Clear the play queue"
@@ -4805,7 +4807,7 @@ msgstr "De wachtrij wissen"
 
 #: src/libvlc-module.c:1514
 msgid "Select the key to clear the current play queue."
-msgstr ""
+msgstr "Selecteer de sneltoets om de huidige wachtrij te wissen."
 
 #: src/libvlc-module.c:1516
 msgid "Cycle audio track"
@@ -4816,14 +4818,12 @@ msgid "Cycle through the available audio tracks(languages)."
 msgstr "Tussen beschikbare audiosporen (talen) schakelen."
 
 #: src/libvlc-module.c:1518
-#, fuzzy
 msgid "Cycle subtitle track in reverse order"
-msgstr "Ondertitelspoor veranderen"
+msgstr "Ondertitelspoor in omgekeerde volgorde veranderen"
 
 #: src/libvlc-module.c:1519
-#, fuzzy
 msgid "Cycle through the available subtitle tracks in reverse order."
-msgstr "Tussen beschikbare ondertitelsporen schakelen."
+msgstr "In omgekeerde volgorde tussen beschikbare ondertitelsporen schakelen."
 
 #: src/libvlc-module.c:1520
 msgid "Cycle subtitle track"
@@ -4843,11 +4843,12 @@ msgstr "Zichtbaarheid ondertitelspoor aan/uit"
 
 #: src/libvlc-module.c:1524
 msgid "Toggle secondary subtitle control"
-msgstr ""
+msgstr "Bediening secundaire ondertitel aan/uit"
 
 #: src/libvlc-module.c:1525
 msgid "Use original subtitle controls to manage secondary subtitles."
 msgstr ""
+"De gewone ondertitelbediening gebruiken voor de secundaire ondertitels."
 
 #: src/libvlc-module.c:1526
 msgid "Cycle next program Service ID"
@@ -4922,6 +4923,8 @@ msgstr "Bediening in schermvullende modus weergeven"
 msgid ""
 "Select the hotkey to use to toggle visibility of controls in fullscreen mode."
 msgstr ""
+"Selecteer de sneltoets om de bedieningselementen in de schermvullende modus "
+"te tonen of te verbergen."
 
 #: src/libvlc-module.c:1546
 msgid "Boss key"
@@ -4965,7 +4968,7 @@ msgstr "Normaal/lus/herhalen"
 
 #: src/libvlc-module.c:1557
 msgid "Toggle Normal/Loop/Repeat play queue modes"
-msgstr ""
+msgstr "Wachtrijmodus normaal/lus/herhalen wisselen"
 
 #: src/libvlc-module.c:1559 modules/gui/macosx/menus/VLCMainMenu.m:400
 msgid "Random"
@@ -4973,7 +4976,7 @@ msgstr "Willekeurige volgorde"
 
 #: src/libvlc-module.c:1560
 msgid "Toggle random play queue playback"
-msgstr ""
+msgstr "Willekeurige volgorde aan/uit"
 
 #: src/libvlc-module.c:1562 src/libvlc-module.c:1563
 #: src/video_output/vout_intf.c:231 modules/gui/macosx/menus/VLCMainMenu.m:484
@@ -5021,35 +5024,35 @@ msgstr "Pixel aan rechterkant video toevoegen"
 
 #: src/libvlc-module.c:1589
 msgid "Shrink the viewpoint field of view (360°)"
-msgstr ""
+msgstr "Gezichtsveld verkleinen (360°)"
 
 #: src/libvlc-module.c:1590
 msgid "Select the hotkey to use to shrink the viewpoint (360°) field of view."
-msgstr ""
+msgstr "Selecteer de sneltoets om het gezichtsveld (360°) te verkleinen."
 
 #: src/libvlc-module.c:1591
 msgid "Expand the viewpoint field of view (360°)"
-msgstr ""
+msgstr "Gezichtsveld vergroten (360°)"
 
 #: src/libvlc-module.c:1592
 msgid "Select the hotkey to use to expand the viewpoint (360°) field of view."
-msgstr ""
+msgstr "Selecteer de sneltoets om het gezichtsveld (360°) te vergroten."
 
 #: src/libvlc-module.c:1593
 msgid "Roll the viewpoint clockwise (360°)"
-msgstr ""
+msgstr "Beeld rechtsom draaien (360°)"
 
 #: src/libvlc-module.c:1594
 msgid "Select the hotkey to use for viewpoint (360°) clockwise roll."
-msgstr ""
+msgstr "Selecteer de sneltoets om het beeld (360°) rechtsom te draaien."
 
 #: src/libvlc-module.c:1595
 msgid "Roll the viewpoint anti-clockwise (360°)"
-msgstr ""
+msgstr "Beeld linksom draaien (360°)"
 
 #: src/libvlc-module.c:1596
 msgid "Select the hotkey to use for viewpoint (360°) anti-clockwise roll."
-msgstr ""
+msgstr "Selecteer de sneltoets om het beeld (360°) linksom te draaien."
 
 #: src/libvlc-module.c:1598
 msgid "Toggle wallpaper mode in video output"
@@ -5348,37 +5351,37 @@ msgstr "F12"
 #: src/misc/actions.c:74
 msgctxt "key"
 msgid "F13"
-msgstr ""
+msgstr "F13"
 
 #: src/misc/actions.c:75
 msgctxt "key"
 msgid "F14"
-msgstr ""
+msgstr "F14"
 
 #: src/misc/actions.c:76
 msgctxt "key"
 msgid "F15"
-msgstr ""
+msgstr "F15"
 
 #: src/misc/actions.c:77
 msgctxt "key"
 msgid "F16"
-msgstr ""
+msgstr "F16"
 
 #: src/misc/actions.c:78
 msgctxt "key"
 msgid "F17"
-msgstr ""
+msgstr "F17"
 
 #: src/misc/actions.c:79
 msgctxt "key"
 msgid "F18"
-msgstr ""
+msgstr "F18"
 
 #: src/misc/actions.c:80
 msgctxt "key"
 msgid "F19"
-msgstr ""
+msgstr "F19"
 
 #: src/misc/actions.c:81
 msgctxt "key"
@@ -5388,52 +5391,52 @@ msgstr "F2"
 #: src/misc/actions.c:82
 msgctxt "key"
 msgid "F20"
-msgstr ""
+msgstr "F20"
 
 #: src/misc/actions.c:83
 msgctxt "key"
 msgid "F21"
-msgstr ""
+msgstr "F21"
 
 #: src/misc/actions.c:84
 msgctxt "key"
 msgid "F22"
-msgstr ""
+msgstr "F22"
 
 #: src/misc/actions.c:85
 msgctxt "key"
 msgid "F23"
-msgstr ""
+msgstr "F23"
 
 #: src/misc/actions.c:86
 msgctxt "key"
 msgid "F24"
-msgstr ""
+msgstr "F24"
 
 #: src/misc/actions.c:87
 msgctxt "key"
 msgid "F25"
-msgstr ""
+msgstr "F25"
 
 #: src/misc/actions.c:88
 msgctxt "key"
 msgid "F26"
-msgstr ""
+msgstr "F26"
 
 #: src/misc/actions.c:89
 msgctxt "key"
 msgid "F27"
-msgstr ""
+msgstr "F27"
 
 #: src/misc/actions.c:90
 msgctxt "key"
 msgid "F28"
-msgstr ""
+msgstr "F28"
 
 #: src/misc/actions.c:91
 msgctxt "key"
 msgid "F29"
-msgstr ""
+msgstr "F29"
 
 #: src/misc/actions.c:92
 msgctxt "key"
@@ -5443,32 +5446,32 @@ msgstr "F3"
 #: src/misc/actions.c:93
 msgctxt "key"
 msgid "F30"
-msgstr ""
+msgstr "F30"
 
 #: src/misc/actions.c:94
 msgctxt "key"
 msgid "F31"
-msgstr ""
+msgstr "F31"
 
 #: src/misc/actions.c:95
 msgctxt "key"
 msgid "F32"
-msgstr ""
+msgstr "F32"
 
 #: src/misc/actions.c:96
 msgctxt "key"
 msgid "F33"
-msgstr ""
+msgstr "F33"
 
 #: src/misc/actions.c:97
 msgctxt "key"
 msgid "F34"
-msgstr ""
+msgstr "F34"
 
 #: src/misc/actions.c:98
 msgctxt "key"
 msgid "F35"
-msgstr ""
+msgstr "F35"
 
 #: src/misc/actions.c:99
 msgctxt "key"
@@ -5874,99 +5877,119 @@ msgstr "VLC Media Player bijwerken"
 #: src/player/osd.c:169
 #, c-format
 msgid "Volume: %ld%%"
+msgstr "Volume: %ld%%"
+
+#: src/player/osd.c:184
+#, c-format
+msgid "Video tracks: %s"
 msgstr ""
 
-#: src/player/osd.c:185 src/player/osd.c:229
+#: src/player/osd.c:185
+#, c-format
+msgid "Video track: %s"
+msgstr ""
+
+#: src/player/osd.c:188
+#, c-format
+msgid "Audio tracks: %s"
+msgstr ""
+
+#: src/player/osd.c:189
+#, c-format
+msgid "Audio track: %s"
+msgstr "Audiospoor: %s"
+
+#: src/player/osd.c:192
+#, c-format
+msgid "Subtitle tracks: %s"
+msgstr ""
+
+#: src/player/osd.c:193
+#, c-format
+msgid "Subtitle track: %s"
+msgstr "Ondertitelspoor: %s"
+
+#: src/player/osd.c:208 src/player/osd.c:251
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:98
 msgid "N/A"
 msgstr "n.v.t."
 
-#: src/player/osd.c:186 src/player/osd.c:229 src/player/osd.c:238
-#, c-format
-msgid "%s track: %s"
-msgstr ""
-
-#: src/player/osd.c:241
-#, c-format
-msgid "%s tracks: %s"
-msgstr ""
-
-#: src/player/osd.c:249
+#: src/player/osd.c:266
 #, c-format
 msgid "Program Service ID: %s"
 msgstr "Programma-service-ID: %s"
 
-#: src/player/osd.c:292
+#: src/player/osd.c:309
 #, c-format
 msgid "Aspect ratio: %s"
 msgstr "Beeldverhouding: %s"
 
-#: src/player/osd.c:296
+#: src/player/osd.c:313
 msgid "Scaled to screen"
 msgstr "Geschaald naar scherm"
 
-#: src/player/osd.c:296
+#: src/player/osd.c:313
 msgid "Original size"
-msgstr ""
+msgstr "Oorspronkelijke grootte"
 
-#: src/player/osd.c:300
+#: src/player/osd.c:317
 #, c-format
 msgid "Crop: %s"
 msgstr "Bijsnijden: %s"
 
-#: src/player/osd.c:303
+#: src/player/osd.c:320
 #, c-format
 msgid "Bottom crop: %d px"
-msgstr ""
+msgstr "Bijsnijden onder: %d px"
 
-#: src/player/osd.c:306
+#: src/player/osd.c:323
 #, c-format
 msgid "Top crop: %d px"
-msgstr ""
+msgstr "Bijsnijden boven: %d px"
 
-#: src/player/osd.c:309
+#: src/player/osd.c:326
 #, c-format
 msgid "Left crop: %d px"
-msgstr ""
-
-#: src/player/osd.c:312
-#, c-format
-msgid "Right crop: %d px"
-msgstr ""
-
-#: src/player/osd.c:322
-#, c-format
-msgid "Deinterlace %s (%s)"
-msgstr ""
+msgstr "Bijsnijden links: %d px"
 
 #: src/player/osd.c:329
+#, c-format
+msgid "Right crop: %d px"
+msgstr "Bijsnijden rechts: %d px"
+
+#: src/player/osd.c:339
+#, c-format
+msgid "Deinterlace %s (%s)"
+msgstr "Deïnterlace %s (%s)"
+
+#: src/player/osd.c:346
 #, c-format
 msgid "Subtitle position %d px"
 msgstr "Ondertitelpositie %d px"
 
-#: src/player/osd.c:332
+#: src/player/osd.c:349
 #, c-format
 msgid "Secondary subtitle position %d px"
-msgstr ""
+msgstr "Positie secundaire ondertitel %d px"
 
-#: src/player/osd.c:335
-#, fuzzy, c-format
+#: src/player/osd.c:352
+#, c-format
 msgid "Subtitle text scale %d%%"
-msgstr "Ondertitel-tekstcodering"
+msgstr "Tekstschaal ondertitels %d%%"
 
-#: src/player/osd.c:340
+#: src/player/osd.c:357
 msgid "Zooming reset"
 msgstr "Zoom herstellen"
 
-#: src/player/osd.c:344
+#: src/player/osd.c:361
 #, c-format
 msgid "Zoom mode: %s"
 msgstr "Zoommodus: %s"
 
-#: src/player/osd.c:346
+#: src/player/osd.c:363
 #, c-format
 msgid "Zoom: x%.2f"
-msgstr ""
+msgstr "Zoom: x%.2f"
 
 #: src/player/player.c:919
 msgid "Next title"
@@ -5979,7 +6002,7 @@ msgstr "Vorige titel"
 #: src/player/player.c:978
 #, c-format
 msgid "Chapter %ld"
-msgstr ""
+msgstr "Hoofdstuk %ld"
 
 #: src/player/player.c:991
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:59
@@ -6004,34 +6027,49 @@ msgstr "Opnemen"
 msgid "Recording done"
 msgstr "Opname voltooid"
 
-#: src/player/player.c:1841 src/player/player.c:1893
+#: src/player/player.c:1844
+#, c-format
+msgid "Audio delay %i ms"
+msgstr "Audiovertraging %i ms"
+
+#: src/player/player.c:1846
+#, c-format
+msgid "Subtitle delay %i ms"
+msgstr "Ondertitelvertraging %i ms"
+
+#: src/player/player.c:1848
+#, c-format
+msgid "Video delay %i ms"
+msgstr ""
+
+#: src/player/player.c:1898
 #, c-format
 msgid "%s delay: %i ms"
-msgstr ""
+msgstr "%s-vertraging: %i ms"
 
 #: src/player/input.c:912
 msgid "can't seek back"
-msgstr ""
+msgstr "Kan niet terugspringen"
 
 #: src/player/input.c:913
 msgid "no video found"
-msgstr ""
+msgstr "Geen video gevonden"
 
 #: src/player/input.c:914
 msgid "can't pause/seek/pace"
-msgstr ""
+msgstr "Kan niet pauzeren/springen/tempo regelen"
 
 #: src/player/input.c:915
 msgid "invalid state"
-msgstr ""
+msgstr "Ongeldige status"
 
 #: src/player/input.c:953
 msgid "Next frame error"
-msgstr ""
+msgstr "Fout bij volgende beeld"
 
 #: src/player/input.c:969
 msgid "Previous frame error"
-msgstr ""
+msgstr "Fout bij vorig beeld"
 
 #: src/text/iso-639_def.h:45
 msgid "Abkhazian"
@@ -8109,27 +8147,27 @@ msgstr "Originele audio"
 
 #: src/video_output/vout_intf.c:144
 msgid "Fill Window"
-msgstr ""
+msgstr "Venster vullen"
 
 #: src/video_output/vout_intf.c:153
 msgid "Inside Window"
-msgstr ""
+msgstr "Binnen venster"
 
 #: src/video_output/vout_intf.c:154
 msgid "Outside Window"
-msgstr ""
+msgstr "Buiten venster"
 
 #: src/video_output/vout_intf.c:155
 msgid "Window Width"
-msgstr ""
+msgstr "Vensterbreedte"
 
 #: src/video_output/vout_intf.c:156
 msgid "Window Height"
-msgstr ""
+msgstr "Vensterhoogte"
 
 #: src/video_output/vout_intf.c:240
 msgid "video-stereo-output"
-msgstr ""
+msgstr "Stereovideo-uitvoer"
 
 #: src/video_output/vout_intf.c:258 modules/gui/macosx/menus/VLCMainMenu.m:444
 #: modules/gui/macosx/menus/VLCMainMenu.m:445
@@ -8154,7 +8192,7 @@ msgstr "Beeldverhouding"
 
 #: src/video_output/vout_intf.c:301
 msgid "Fit Mode"
-msgstr ""
+msgstr "Aanpassingsmodus"
 
 #: lib/core.c:72
 msgid "Generic VLC error"
@@ -9719,11 +9757,12 @@ msgstr "Gebruikersnaam"
 
 #: modules/access/ftp.c:71 modules/access/rdp.c:58 modules/access/sftp.c:56
 #: modules/access/smb_common.h:22
-#, fuzzy
 msgid ""
 "Username that will be used for the connection, if no username is set in the "
 "URL."
-msgstr "Gebruikersnaam om te gebruiken voor de verbinding."
+msgstr ""
+"Gebruikersnaam die voor de verbinding wordt gebruikt als er geen "
+"gebruikersnaam in de URL staat."
 
 #: modules/access/ftp.c:73 modules/access/live555.cpp:90
 #: modules/access/rdp.c:60 modules/access/sftp.c:58
@@ -9741,13 +9780,12 @@ msgstr "Wachtwoord"
 
 #: modules/access/ftp.c:74 modules/access/rdp.c:61 modules/access/sftp.c:59
 #: modules/access/smb_common.h:25
-#, fuzzy
 msgid ""
 "Password that will be used for the connection, if no username or password "
 "are set in URL."
 msgstr ""
-"Stelt de gebruikersnaam voor de verbinding in, indien geen gebruikersnaam of "
-"wachtwoord in de url gezet zijn."
+"Wachtwoord dat voor de verbinding wordt gebruikt als er geen gebruikersnaam "
+"of wachtwoord in de URL staat."
 
 #: modules/access/ftp.c:76
 msgid "FTP account"
@@ -9758,14 +9796,15 @@ msgid "Account that will be used for the connection."
 msgstr "Account om te gebruiken voor de verbinding."
 
 #: modules/access/ftp.c:80
-#, fuzzy
 msgid "FTP authentication"
-msgstr "SFTP-verificatie"
+msgstr "FTP-verificatie"
 
 #: modules/access/ftp.c:81
 #, c-format
 msgid "Please enter a valid login and password for the FTP connection to %s"
 msgstr ""
+"Voer een geldige gebruikersnaam en wachtwoord in voor de FTP-verbinding met "
+"%s"
 
 #: modules/access/ftp.c:86
 msgid "FTP input"
@@ -9822,14 +9861,12 @@ msgid "Please enter a valid login name and a password for realm %s."
 msgstr "Voer een geldige gebruikersnaam en wachtwoord voor gebied %s in."
 
 #: modules/access/http/access.c:288
-#, fuzzy
 msgid "HTTPS input"
-msgstr "HTTP-invoer"
+msgstr "HTTPS-invoer"
 
 #: modules/access/http/access.c:289
-#, fuzzy
 msgid "HTTPS"
-msgstr "HTTP(S)"
+msgstr "HTTPS"
 
 #: modules/access/http/access.c:295
 msgid "Continuous stream"
@@ -9837,42 +9874,37 @@ msgstr "Continue stream"
 
 #: modules/access/http/access.c:296
 msgid "Keep reading a resource that keeps being updated."
-msgstr ""
+msgstr "Een bron blijven lezen die steeds wordt bijgewerkt."
 
 #: modules/access/http/access.c:298
-#, fuzzy
 msgid "Cookies forwarding"
-msgstr "Stap vooruit"
+msgstr "Cookies doorsturen"
 
 #: modules/access/http/access.c:299
-#, fuzzy
 msgid "Forward cookies across HTTP redirections."
-msgstr "Cookies over http omleidingen doorsturen."
+msgstr "Cookies doorsturen bij HTTP-omleidingen."
 
 #: modules/access/http/access.c:300
 msgid "Referrer"
-msgstr ""
+msgstr "Referrer"
 
 #: modules/access/http/access.c:301
 msgid "Provide the referral URL, i.e. HTTP \"Referer\" (sic)."
-msgstr ""
+msgstr "Geef de verwijzende URL op, d.w.z. de HTTP-\"Referer\" (sic)."
 
 #: modules/access/http/access.c:304
-#, fuzzy
 msgid "User agent"
-msgstr "User agent"
+msgstr "User-agent"
 
 #: modules/access/http/access.c:305
-#, fuzzy
 msgid ""
 "Override the name and version of the application as provided to the HTTP "
 "server, i.e. the HTTP \"User-Agent\". Name and version must be separated by "
 "a forward slash, e.g. \"FooBar/1.2.3\"."
 msgstr ""
-"De naam en versie van het programma zullen aan de http-server verstrekt "
-"worden. Ze moeten gescheiden worden door een slash-teken, bijvoorbeels "
-"FooBar/1.2.3. Deze optie kan alleen per invoer-item worden opgegeven, niet "
-"globaal."
+"Overschrijft de naam en versie van de toepassing zoals die aan de HTTP-"
+"server worden doorgegeven, d.w.z. de HTTP-\"User-Agent\". Naam en versie "
+"moeten worden gescheiden door een schuine streep, bijv. \"FooBar/1.2.3\"."
 
 #: modules/access/idummy.c:40 modules/access_output/dummy.c:43
 #: modules/audio_output/adummy.c:36 modules/codec/ddummy.c:45
@@ -10571,9 +10603,8 @@ msgid "Info"
 msgstr "Info"
 
 #: modules/access/rist.h:98 modules/logger/file.c:217
-#, fuzzy
 msgid "Debug"
-msgstr "debug"
+msgstr "Debug"
 
 #: modules/access/rist.h:98
 msgid "Simulate-Loss"
@@ -10831,9 +10862,8 @@ msgid "SFTP port number to use on the server"
 msgstr "SFTP server gebruikt deze poort om te communiceren"
 
 #: modules/access/sftp.c:61
-#, fuzzy
 msgid "Private key file"
-msgstr "AES sleutelbestand"
+msgstr "Bestand met privésleutel"
 
 #: modules/access/sftp.c:62
 msgid ""
@@ -10841,6 +10871,10 @@ msgid ""
 "assumed to be in the same directory with '.pub' appended. If unset, standard "
 "key paths will be attempted (e.g. '~/.ssh/id_rsa')."
 msgstr ""
+"Privésleutelbestand voor SSH-verificatie met een openbare sleutel. Het "
+"openbare-sleutelbestand wordt verondersteld in dezelfde map te staan, met "
+"'.pub' erachter. Als dit niet is ingesteld, worden de standaardsleutelpaden "
+"geprobeerd (bijv. '~/.ssh/id_rsa')."
 
 #: modules/access/sftp.c:68
 msgid "SFTP input"
@@ -10854,6 +10888,8 @@ msgstr "SFTP-verificatie"
 #, c-format
 msgid "Please enter a valid login and password for the SFTP connection to %s"
 msgstr ""
+"Voer een geldige gebruikersnaam en wachtwoord in voor de SFTP-verbinding met "
+"%s"
 
 #: modules/access/shm.c:46 modules/access/vnc.c:61
 msgid "Frame buffer depth"
@@ -10933,15 +10969,15 @@ msgstr "Gedeeld geheugen framebuffer"
 
 #: modules/access/smb2.c:104
 msgid "SMB2 / SMB3 input"
-msgstr ""
+msgstr "SMB2/SMB3-invoer"
 
 #: modules/access/smb2.c:105
 msgid "Samba (Windows network shares) input via libsmb2"
-msgstr ""
+msgstr "Samba (Windows-netwerkschijven) invoer via libsmb2"
 
 #: modules/access/smb2.c:963
 msgid "SMB2 operation failed"
-msgstr ""
+msgstr "SMB2-bewerking mislukt"
 
 #: modules/access/smb_common.h:27
 msgid "SMB domain"
@@ -12788,13 +12824,12 @@ msgid "Length in milliseconds to search for best overlap position"
 msgstr "Lengte in milliseconden om voor een beste overlappositie te zoeken"
 
 #: modules/audio_filter/scaletempo.c:72
-#, fuzzy
 msgid "Pitch Shift"
-msgstr "Pitch"
+msgstr "Toonhoogteverschuiving"
 
 #: modules/audio_filter/scaletempo.c:72
 msgid "Pitch shift in semitones."
-msgstr ""
+msgstr "Toonhoogteverschuiving in halve tonen."
 
 #: modules/audio_filter/spatializer/spatializer.cpp:55
 msgid "Room size"
@@ -13145,21 +13180,23 @@ msgstr "K Audio interface audio-uitvoer"
 
 #: modules/audio_output/mmdevice.c:1612
 msgid "HDMI/SPDIF audio passthrough"
-msgstr ""
+msgstr "HDMI/SPDIF-audiopassthrough"
 
 #: modules/audio_output/mmdevice.c:1614
 msgid ""
 "Change this value if you have issue with HD codecs when using a HDMI "
 "receiver."
 msgstr ""
+"Wijzig deze waarde als u problemen hebt met HD-codecs bij gebruik van een "
+"HDMI-receiver."
 
 #: modules/audio_output/mmdevice.c:1622
 msgid "Enabled (AC3/DTS only)"
-msgstr ""
+msgstr "Ingeschakeld (alleen AC3/DTS)"
 
 #: modules/audio_output/mmdevice.c:1623
 msgid "Enabled"
-msgstr ""
+msgstr "Ingeschakeld"
 
 #: modules/audio_output/mmdevice.c:1626
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:169
@@ -13179,14 +13216,12 @@ msgid "Windows Multimedia Device output"
 msgstr "Windows multimedia-apparaat-uitvoer"
 
 #: modules/audio_output/mmdevice.c:1639
-#, fuzzy
 msgid "Output back-end"
-msgstr "Uitvoerkaart"
+msgstr "Uitvoer-back-end"
 
 #: modules/audio_output/mmdevice.c:1639
-#, fuzzy
 msgid "Audio output back-end interface."
-msgstr "Audio-uitvoerapparaat"
+msgstr "Back-endinterface voor audio-uitvoer."
 
 #: modules/audio_output/oss.c:68
 msgid "OSS device node path."
@@ -16829,10 +16864,10 @@ msgstr "Afstandsbediening"
 msgid "Remote control interface"
 msgstr "Afstandsbediening-interface"
 
-#: modules/control/cli/player.c:801 modules/control/hotkeys.c:674
+#: modules/control/cli/player.c:801 modules/control/hotkeys.c:677
 #, c-format
 msgid "Audio device: %s"
-msgstr ""
+msgstr "Audioapparaat: %s"
 
 #: modules/control/cli/player.c:900 modules/gui/ncurses.c:934
 msgid "+-[Incoming]"
@@ -16985,42 +17020,46 @@ msgstr "Globale sneltoetsen"
 msgid "Global Hotkeys interface"
 msgstr "Globale sneltoetseninterface"
 
-#: modules/control/hotkeys.c:505
-#, c-format
-msgid "%s subtitle control"
+#: modules/control/hotkeys.c:507
+msgid "Primary subtitle control"
 msgstr ""
 
-#: modules/control/hotkeys.c:517
+#: modules/control/hotkeys.c:509
+msgid "Secondary subtitle control"
+msgstr ""
+
+#: modules/control/hotkeys.c:520
 msgid "Sub sync: bookmarked audio time"
 msgstr "Ondertitelsync: audiotijd-bladwijzer"
 
-#: modules/control/hotkeys.c:521
+#: modules/control/hotkeys.c:524
 msgid "Sub sync: bookmarked subtitle time"
 msgstr "Ondertitelsync: ondertiteltijd-bladwijzer"
 
-#: modules/control/hotkeys.c:528
+#: modules/control/hotkeys.c:531
 msgid "Sub sync: set bookmarks first!"
 msgstr "Ondertitelsync: eerst bladwijzers instellen!"
 
-#: modules/control/hotkeys.c:541
+#: modules/control/hotkeys.c:544
 #, c-format
 msgid "Sub sync: corrected %<PRId64> ms (total delay = %<PRId64> ms)"
 msgstr ""
+"Ondertitelsync: %<PRId64> ms gecorrigeerd (totale vertraging = %<PRId64> ms)"
 
-#: modules/control/hotkeys.c:550
+#: modules/control/hotkeys.c:553
 msgid "Sub sync: delay reset"
 msgstr "Ondertitelsync: vertraging hersteld"
 
-#: modules/control/hotkeys.c:908
+#: modules/control/hotkeys.c:911
 msgid "Subtitle position: usual"
-msgstr ""
+msgstr "Ondertitelpositie: normaal"
 
-#: modules/control/hotkeys.c:910
+#: modules/control/hotkeys.c:913
 #, c-format
 msgid "Subtitle position: %+d%%"
-msgstr ""
+msgstr "Ondertitelpositie: %+d%%"
 
-#: modules/control/hotkeys.c:1312
+#: modules/control/hotkeys.c:1315
 msgid "Hotkeys management interface"
 msgstr "Sneltoetsbeheersinterface"
 
@@ -28766,8 +28805,14 @@ msgid "Shuffle the play queue"
 msgstr "Wachtrij in willekeurige volgorde zetten"
 
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1263
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1269
 msgid "Discard the filtered out items"
 msgstr "Uitgefilterde items verwijderen"
+
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1270
+msgid ""
+"Do you really want to discard the items that are not displayed at the moment?"
+msgstr ""
 
 #: modules/gui/qt/network/addonsmodel.cpp:330
 msgid "This addon has been installed manually. VLC can't manage it by itself."
@@ -31418,13 +31463,12 @@ msgid "Verbosity"
 msgstr "Informatiehoeveelheid"
 
 #: modules/logger/file.c:229
-#, fuzzy
 msgid ""
 "Select the logging verbosity or default to use the same verbosity given by --"
 "verbose."
 msgstr ""
-"Selecteer het informatieniveau om in het logboek te gebruiken of -1 om "
-"hetzelfde informatieniveau opgegeven door --verbose te gebruiken."
+"Selecteer de informatiehoeveelheid van het logboek, of Standaard om dezelfde "
+"informatiehoeveelheid te gebruiken als bij --verbose."
 
 #: modules/logger/file.c:233
 #, fuzzy
@@ -31446,38 +31490,35 @@ msgstr ""
 
 #: modules/logger/syslog.c:141
 msgid "System log (syslog)"
-msgstr ""
+msgstr "Systeemlogboek (syslog)"
 
 #: modules/logger/syslog.c:142
 msgid "Emit log messages through the POSIX system log."
-msgstr ""
+msgstr "Logberichten naar het POSIX-systeemlogboek sturen."
 
 #: modules/logger/syslog.c:144
-#, fuzzy
 msgid "Debug messages"
-msgstr "Debugmasker"
+msgstr "Debugberichten"
 
 #: modules/logger/syslog.c:145
 msgid "Include debug messages in system log."
-msgstr ""
+msgstr "Debugberichten opnemen in het systeemlogboek."
 
 #: modules/logger/syslog.c:147
 msgid "Identity"
-msgstr ""
+msgstr "Identiteit"
 
 #: modules/logger/syslog.c:148
 msgid "Process identity in system log."
-msgstr ""
+msgstr "Procesidentiteit in het systeemlogboek."
 
 #: modules/logger/syslog.c:150
-#, fuzzy
 msgid "Facility"
-msgstr "Bekwaamheid"
+msgstr "Facility"
 
 #: modules/logger/syslog.c:151
-#, fuzzy
 msgid "System logging facility."
-msgstr "Syslog faciliteit"
+msgstr "Facility van het systeemlogboek."
 
 #: modules/logger/syslog.c:154
 #, fuzzy
@@ -32360,26 +32401,28 @@ msgstr ""
 "Bij twijfel, nu afbreken.\n"
 
 #: modules/misc/gnutls.c:734
-#, fuzzy
 msgid "Use system trust database"
-msgstr "Gewenste beeldsnelheid voor de opname."
+msgstr "Vertrouwensdatabase van het systeem gebruiken"
 
 #: modules/misc/gnutls.c:736
 msgid ""
 "Trust the root certificates of Certificate Authorities stored in the "
 "operating system trust database to authenticate TLS sessions."
 msgstr ""
+"De basiscertificaten van certificeringsinstanties in de vertrouwensdatabase "
+"van het besturingssysteem vertrouwen om TLS-sessies te verifiëren."
 
 #: modules/misc/gnutls.c:739
-#, fuzzy
 msgid "Trust directory"
-msgstr "Tijdverschuivingsmap"
+msgstr "Vertrouwensmap"
 
 #: modules/misc/gnutls.c:741
 msgid ""
 "Trust the root certificates of Certificate Authorities stored in the "
 "specified directory to authenticate TLS sessions."
 msgstr ""
+"De basiscertificaten van certificeringsinstanties in de opgegeven map "
+"vertrouwen om TLS-sessies te verifiëren."
 
 #: modules/misc/gnutls.c:744
 msgid "TLS cipher priorities"
@@ -32400,11 +32443,11 @@ msgstr "Prestaties (prioriteit voor snellere cijfers)"
 
 #: modules/misc/gnutls.c:757
 msgid "Secure 128-bit (or higher)"
-msgstr ""
+msgstr "Veilig, 128-bit (of hoger)"
 
 #: modules/misc/gnutls.c:758
 msgid "Secure 256-bit (exclude 128-bit ciphers)"
-msgstr ""
+msgstr "Veilig, 256-bit (128-bit-cijfers uitsluiten)"
 
 #: modules/misc/gnutls.c:763
 msgid "GNU TLS transport layer security"
@@ -32458,35 +32501,35 @@ msgstr "XDG schermbeveiliging onderdrukking"
 
 #: modules/misc/medialibrary/medialibrary.cpp:469
 msgid "Recover"
-msgstr ""
+msgstr "Herstellen"
 
 #: modules/misc/medialibrary/medialibrary.cpp:470
 msgid "Recreate"
-msgstr ""
+msgstr "Opnieuw aanmaken"
 
 #: modules/misc/medialibrary/medialibrary.cpp:470
 msgid "Media database corrupted"
-msgstr ""
+msgstr "Mediadatabase beschadigd"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2728
 msgid "Folders discovered by the media library"
-msgstr ""
+msgstr "Mappen die de mediabibliotheek doorzoekt"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2729
 msgid "Semicolon separated list of folders to discover media from"
-msgstr ""
+msgstr "Puntkommagescheiden lijst van mappen waarin naar media wordt gezocht"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2732
 msgid "Extra verbose media library logs"
-msgstr ""
+msgstr "Extra uitgebreide logboeken van de mediabibliotheek"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2735
 msgid "media library"
-msgstr ""
+msgstr "mediabibliotheek"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2736
 msgid "Organize your media"
-msgstr ""
+msgstr "Organiseer uw media"
 
 #: modules/misc/playlist/export.c:49
 msgid "M3U playlist export"
@@ -33041,14 +33084,12 @@ msgstr "Bonjour diensten"
 #: modules/services_discovery/microdns.c:46
 #: modules/services_discovery/microdns.c:59
 #: modules/services_discovery/microdns.c:689
-#, fuzzy
 msgid "mDNS Network Discovery"
-msgstr "Bonjour diensten"
+msgstr "mDNS-netwerkontdekking"
 
 #: modules/services_discovery/microdns.c:66
-#, fuzzy
 msgid "mDNS Renderer Discovery"
-msgstr "Bonjour diensten"
+msgstr "mDNS-rendererontdekking"
 
 #: modules/services_discovery/mtp.c:326 modules/services_discovery/mtp.c:357
 #: modules/services_discovery/mtp.c:361
@@ -33209,7 +33250,7 @@ msgstr ""
 
 #: modules/services_discovery/upnp.cpp:61
 msgid "Custom SAT>IP channel list URL"
-msgstr ""
+msgstr "Aangepaste URL van SAT>IP-kanalenlijst"
 
 #: modules/services_discovery/upnp.cpp:65
 #: modules/stream_out/chromecast/cast.cpp:225
@@ -33221,48 +33262,55 @@ msgid ""
 "This sets the HTTP port of the local server used to stream the media to the "
 "UPnP Renderer."
 msgstr ""
+"Hiermee stelt u de HTTP-poort in van de lokale server die de media naar de "
+"UPnP-renderer streamt."
 
 #: modules/services_discovery/upnp.cpp:67
 msgid "Lead (ms)"
-msgstr ""
+msgstr "Voorsprong (ms)"
 
 #: modules/services_discovery/upnp.cpp:68
 msgid ""
 "How far ahead of the media's pace the stream goes to the renderer. More "
 "makes a renderer wait longer before it shows a seek."
 msgstr ""
+"Hoe ver de stream naar de renderer vooruitloopt op het tempo van de media. "
+"Een hogere waarde laat een renderer langer wachten voordat hij een sprong "
+"toont."
 
 #: modules/services_discovery/upnp.cpp:71
 msgid "The UPnP Renderer can receive video."
-msgstr ""
+msgstr "De UPnP-renderer kan video ontvangen."
 
 #: modules/services_discovery/upnp.cpp:74
 msgid "IP Address of the UPnP Renderer."
-msgstr ""
+msgstr "IP-adres van de UPnP-renderer."
 
 #: modules/services_discovery/upnp.cpp:75
 msgid "UPnP Renderer port"
-msgstr ""
+msgstr "Poort van UPnP-renderer"
 
 #: modules/services_discovery/upnp.cpp:76
 msgid "The port used to talk to the UPnP Renderer."
-msgstr ""
+msgstr "De poort voor communicatie met de UPnP-renderer."
 
 #: modules/services_discovery/upnp.cpp:77
 msgid "base URL"
-msgstr ""
+msgstr "basis-URL"
 
 #: modules/services_discovery/upnp.cpp:78
 msgid "The base Url relative to which all other UPnP operations must be called"
 msgstr ""
+"De basis-URL ten opzichte waarvan alle andere UPnP-bewerkingen moeten worden "
+"aangeroepen"
 
 #: modules/services_discovery/upnp.cpp:79
 msgid "description URL"
-msgstr ""
+msgstr "beschrijvings-URL"
 
 #: modules/services_discovery/upnp.cpp:80
 msgid "The Url used to get the xml descriptor of the UPnP Renderer"
-msgstr ""
+msgstr "De URL waarmee de XML-descriptor van de UPnP-renderer wordt opgehaald"
 
 #: modules/services_discovery/upnp.cpp:130
 #: modules/services_discovery/upnp.cpp:138
@@ -33273,19 +33321,19 @@ msgstr "Universele Plug'n'Play"
 #: modules/services_discovery/upnp.cpp:131
 #: modules/services_discovery/upnp.cpp:156
 msgid "UPnP Renderer Discovery"
-msgstr ""
+msgstr "UPnP-rendererontdekking"
 
 #: modules/services_discovery/upnp.cpp:166
 msgid "UPnP/DLNA stream output"
-msgstr ""
+msgstr "UPnP/DLNA-streamuitvoer"
 
 #: modules/services_discovery/upnp.cpp:193
 msgid "UPnP/DLNA demux filter"
-msgstr ""
+msgstr "UPnP/DLNA-demuxfilter"
 
 #: modules/services_discovery/upnp.cpp:202
 msgid "Universal Plug'n'Play Server"
-msgstr ""
+msgstr "Universele Plug'n'Play-server"
 
 #: modules/services_discovery/xcb_apps.c:54
 #: modules/services_discovery/xcb_apps.c:55
@@ -35145,13 +35193,12 @@ msgid "Font file for the font you want to use"
 msgstr "Lettertypebestand van het lettertype dat u wilt gebruiken"
 
 #: modules/text_renderer/freetype/freetype.c:66
-#, fuzzy
 msgid ""
 "The opacity (inverse of transparency) of the text that will be rendered on "
 "the video. 0 = transparent, 255 = totally opaque."
 msgstr ""
-"De dekking (omgekeerde van transparantie) van de tekst die op de video zal "
-"worden weergegeven. 0 = transparant, 255 =  volledig dekkend."
+"De dekking (het omgekeerde van transparantie) van de tekst die op de video "
+"wordt weergegeven. 0 = transparant, 255 = volledig dekkend."
 
 #: modules/text_renderer/freetype/freetype.c:69
 msgid "Text default color"
@@ -35178,6 +35225,8 @@ msgid ""
 "The size of the text in pixels of the picture. 0 sizes it from the picture "
 "(see the text scale)."
 msgstr ""
+"De grootte van de tekst in pixels van het beeld. Bij 0 wordt die afgeleid "
+"van het beeld (zie de tekstschaal)."
 
 #: modules/text_renderer/freetype/freetype.c:91
 msgid "Cache size"
@@ -35189,7 +35238,7 @@ msgstr ""
 
 #: modules/text_renderer/freetype/freetype.c:95
 msgid "Paragraph base direction for the Unicode bi-directional algorithm."
-msgstr ""
+msgstr "Basisrichting van alinea's voor het bidirectionele Unicode-algoritme."
 
 #: modules/text_renderer/freetype/freetype.c:98
 msgid "Use YUVP renderer"
@@ -37983,6 +38032,18 @@ msgstr ""
 msgid "Are you sure you wish to create the stream?"
 msgstr "Weet u zeker dat u de stream wilt aanmaken?"
 
+#, c-format
+#~ msgid "%s track: %s"
+#~ msgstr "%s-spoor: %s"
+
+#, c-format
+#~ msgid "%s tracks: %s"
+#~ msgstr "%s-sporen: %s"
+
+#, c-format
+#~ msgid "%s subtitle control"
+#~ msgstr "Ondertitelbediening: %s"
+
 #~ msgid "%1 more matching shortcuts"
 #~ msgstr "Nog %1 overeenkomende sneltoetsen"
 
@@ -39883,22 +39944,6 @@ msgstr "Weet u zeker dat u de stream wilt aanmaken?"
 #, c-format
 #~ msgid "Sub sync: corrected %i ms (total delay = %i ms)"
 #~ msgstr "Ondertitelsync: %i ms gecorrigeerd (totale vertraging = %i ms)"
-
-#, c-format
-#~ msgid "Subtitle delay %i ms"
-#~ msgstr "Ondertitelvertraging %i ms"
-
-#, c-format
-#~ msgid "Audio delay %i ms"
-#~ msgstr "Audiovertraging %i ms"
-
-#, c-format
-#~ msgid "Audio track: %s"
-#~ msgstr "Audiospoor: %s"
-
-#, c-format
-#~ msgid "Subtitle track: %s"
-#~ msgstr "Ondertitelspoor: %s"
 
 #~ msgid "Original Size"
 #~ msgstr "Originele grootte"

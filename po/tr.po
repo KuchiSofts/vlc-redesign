@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 2.2.7\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-24 17:48+0000\n"
+"POT-Creation-Date: 2026-10-24 18:08+0000\n"
 "PO-Revision-Date: 2017-11-16 03:12+0100\n"
 "Last-Translator: Kaya Zeren <kayazeren@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -131,7 +131,7 @@ msgstr "Gelişmiş"
 msgid "Subtitles / OSD"
 msgstr "Altyazı / EÜG"
 
-#: include/vlc_config_cat.h:46 modules/control/hotkeys.c:1311
+#: include/vlc_config_cat.h:46 modules/control/hotkeys.c:1314
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:1301
 msgid "Hotkeys"
 msgstr "Kısayol Tuşları"
@@ -547,7 +547,7 @@ msgstr "Çift kanal ses kipi"
 
 #: src/audio_output/output.c:406 src/libvlc-module.c:212
 msgid "Audio mix mode"
-msgstr ""
+msgstr "Ses karıştırma kipi"
 
 #: src/audio_output/output.c:489 src/libvlc-module.c:209
 #: modules/access/v4l2/v4l2.c:267 modules/audio_output/alsa.c:1276
@@ -600,17 +600,16 @@ msgid "Reverse stereo"
 msgstr "Ters Çift Kanal"
 
 #: src/audio_output/output.c:614
-#, fuzzy
 msgid "Original"
-msgstr "Özgün Kimlik"
+msgstr "Özgün"
 
 #: src/audio_output/output.c:619 src/libvlc-module.c:218
 msgid "Binaural"
-msgstr ""
+msgstr "Binaural"
 
 #: src/audio_output/output.c:631
 msgid "4.0"
-msgstr ""
+msgstr "4.0"
 
 #: src/audio_output/output.c:640
 msgid "5.1"
@@ -618,7 +617,7 @@ msgstr "5.1"
 
 #: src/audio_output/output.c:649
 msgid "7.1"
-msgstr ""
+msgstr "7.1"
 
 #: src/config/cmdline.c:307
 #, c-format
@@ -876,9 +875,9 @@ msgid "Closed captions %u"
 msgstr "Closed captions %u"
 
 #: src/input/decoder.c:2672
-#, fuzzy, c-format
+#, c-format
 msgid "DTVCC Closed captions %u"
-msgstr "Closed captions %u"
+msgstr "DTVCC Closed captions %u"
 
 #: src/input/decoder.c:2972
 msgid "VLC could not open the decoder module."
@@ -906,7 +905,7 @@ msgstr "Program"
 #: src/input/es_out.c:1974
 #, c-format
 msgid "Stream '%s'"
-msgstr ""
+msgstr "Akış '%s'"
 
 #: src/input/es_out.c:2235 src/input/es_out.c:2237
 msgid "Scrambled"
@@ -996,7 +995,7 @@ msgstr "Kanallar"
 
 #: src/input/es_out.c:4734
 msgid "Channel Layout"
-msgstr ""
+msgstr "Kanal Düzeni"
 
 #: src/input/es_out.c:4738 modules/access/alsa.c:40 modules/access/imem.c:74
 #: modules/audio_output/amem.c:62 modules/codec/fluidsynth.c:64
@@ -1018,19 +1017,19 @@ msgstr "Çözülen biçim"
 
 #: src/input/es_out.c:4760
 msgid "Decoded channels"
-msgstr ""
+msgstr "Çözülen kanallar"
 
 #: src/input/es_out.c:4765
 msgid "Decoded sample rate"
-msgstr ""
+msgstr "Çözülen örnekleme hızı"
 
 #: src/input/es_out.c:4772
 msgid "Decoded bits per sample"
-msgstr ""
+msgstr "Çözülen örnek başına bit"
 
 #: src/input/es_out.c:4776
 msgid "Decoded Bitrate"
-msgstr ""
+msgstr "Çözülen Bit Hızı"
 
 #: src/input/es_out.c:4786
 msgid "Track replay gain"
@@ -1046,14 +1045,12 @@ msgid "%.2f dB"
 msgstr "%.2f dB"
 
 #: src/input/es_out.c:4799
-#, fuzzy
 msgid "Video resolution"
-msgstr "Yeğlenen görüntü çözünürlüğü"
+msgstr "Görüntü çözünürlüğü"
 
 #: src/input/es_out.c:4804
-#, fuzzy
 msgid "Buffer dimensions"
-msgstr "Saniye cinsinden ara bellek boyutu"
+msgstr "Arabellek boyutları"
 
 #: src/input/es_out.c:4811 src/input/es_out.c:4814 modules/access/imem.c:92
 #: modules/access/rdp.c:65 modules/access/screen/screen.c:44
@@ -1067,49 +1064,40 @@ msgid "Frame rate"
 msgstr "Kare hızı"
 
 #: src/input/es_out.c:4828
-#, fuzzy
 msgid "Top left"
-msgstr "Arka sol"
+msgstr "Üst sol"
 
 #: src/input/es_out.c:4828
-#, fuzzy
 msgid "Left top"
-msgstr "Soldan"
+msgstr "Sol üst"
 
 #: src/input/es_out.c:4829
-#, fuzzy
 msgid "Right bottom"
-msgstr "Altta"
+msgstr "Sağ alt"
 
 #: src/input/es_out.c:4829
-#, fuzzy
 msgid "Top right"
-msgstr "Telif hakkı"
+msgstr "Üst sağ"
 
 #: src/input/es_out.c:4830
-#, fuzzy
 msgid "Bottom left"
-msgstr "Sol Altta"
+msgstr "Alt sol"
 
 #: src/input/es_out.c:4830
-#, fuzzy
 msgid "Bottom right"
-msgstr "Sağ Altta"
+msgstr "Alt sağ"
 
 #: src/input/es_out.c:4831
-#, fuzzy
 msgid "Left bottom"
-msgstr "Altta"
+msgstr "Sol alt"
 
 #: src/input/es_out.c:4831
-#, fuzzy
 msgid "Right top"
-msgstr "Sağ"
+msgstr "Sağ üst"
 
 #: src/input/es_out.c:4833
-#, fuzzy
 msgid "Orientation"
-msgstr "Yansıtma doğrultusu"
+msgstr "Yönlendirme"
 
 #: src/input/es_out.c:4839 src/input/es_out.c:4857 src/input/es_out.c:4875
 #: src/input/es_out.c:4888 src/input/es_out.c:4900
@@ -1121,19 +1109,16 @@ msgid "Undefined"
 msgstr "Belirsiz"
 
 #: src/input/es_out.c:4841
-#, fuzzy
 msgid "ITU-R BT.601 (525 lines, 60 Hz)"
-msgstr "525 satır / 60 Hz"
+msgstr "ITU-R BT.601 (525 satır, 60 Hz)"
 
 #: src/input/es_out.c:4843
-#, fuzzy
 msgid "ITU-R BT.601 (625 lines, 50 Hz)"
-msgstr "625 satır / 50 Hz"
+msgstr "ITU-R BT.601 (625 satır, 50 Hz)"
 
 #: src/input/es_out.c:4851
-#, fuzzy
 msgid "Color primaries"
-msgstr "Renkli iletiler"
+msgstr "Birincil renkler"
 
 #: src/input/es_out.c:4858 src/libvlc-module.c:387
 #: modules/video_filter/deinterlace/deinterlace.h:57
@@ -1142,30 +1127,27 @@ msgstr "Doğrusal"
 
 #: src/input/es_out.c:4865
 msgid "Hybrid Log-Gamma"
-msgstr ""
+msgstr "Hybrid Log-Gamma"
 
 #: src/input/es_out.c:4869
-#, fuzzy
 msgid "Color transfer function"
-msgstr "Renk ayıklama"
+msgstr "Renk aktarım işlevi"
 
 #: src/input/es_out.c:4882
-#, fuzzy
 msgid "Color space"
-msgstr "Renk şeması"
+msgstr "Renk uzayı"
 
 #: src/input/es_out.c:4889
-#, fuzzy
 msgid "Full"
-msgstr "Tamamen bas"
+msgstr "Tam"
 
 #: src/input/es_out.c:4890
 msgid "Limited"
-msgstr ""
+msgstr "Sınırlı"
 
 #: src/input/es_out.c:4894
 msgid "Color Range"
-msgstr ""
+msgstr "Renk Aralığı"
 
 #: src/input/es_out.c:4902 src/libvlc-module.c:320 src/libvlc-module.c:419
 #: src/libvlc-module.c:424 modules/audio_filter/channel_mixer/mono.c:90
@@ -1178,124 +1160,116 @@ msgid "Center"
 msgstr "Ortada"
 
 #: src/input/es_out.c:4903
-#, fuzzy
 msgid "Top Left"
-msgstr "Sol Üstte"
+msgstr "Sol Üst"
 
 #: src/input/es_out.c:4904
-#, fuzzy
 msgid "Top Center"
-msgstr "Ortada"
+msgstr "Üst Orta"
 
 #: src/input/es_out.c:4905
-#, fuzzy
 msgid "Bottom Left"
-msgstr "Sol Altta"
+msgstr "Sol Alt"
 
 #: src/input/es_out.c:4906
-#, fuzzy
 msgid "Bottom Center"
-msgstr "Sol Altta"
+msgstr "Alt Orta"
 
 #: src/input/es_out.c:4910
-#, fuzzy
 msgid "Chroma location"
-msgstr "Renk doygunluğu kazancı"
+msgstr "Renk doygunluğu konumu"
 
 #: src/input/es_out.c:4916 modules/codec/x264.c:434
-#, fuzzy
 msgid "2D"
-msgstr "F2"
+msgstr "2B"
 
 #: src/input/es_out.c:4917
 msgid "Side-By-Side"
-msgstr ""
+msgstr "Yan Yana"
 
 #: src/input/es_out.c:4918
 msgid "Top-Bottom"
-msgstr ""
+msgstr "Üst-Alt"
 
 #: src/input/es_out.c:4919
 msgid "Row Sequential"
-msgstr ""
+msgstr "Satır Sıralı"
 
 #: src/input/es_out.c:4920
 msgid "Column Sequential"
-msgstr ""
+msgstr "Sütun Sıralı"
 
 #: src/input/es_out.c:4921
 msgid "Frame Sequential"
-msgstr ""
+msgstr "Kare Sıralı"
 
 #: src/input/es_out.c:4922
 msgid "Checkboard"
-msgstr ""
+msgstr "Dama Tahtası"
 
 #: src/input/es_out.c:4926
 msgid "Stereo Mode"
-msgstr ""
+msgstr "Stereoskopik Kip"
 
 #: src/input/es_out.c:4928
 msgid "First Stereo Eye"
-msgstr ""
+msgstr "İlk Stereoskopik Göz"
 
 #: src/input/es_out.c:4938
 msgid "Equirectangular"
-msgstr ""
+msgstr "Eşdikdörtgen"
 
 #: src/input/es_out.c:4941
-#, fuzzy
 msgid "Cubemap"
-msgstr "Küp"
+msgstr "Küp haritası"
 
 #: src/input/es_out.c:4947
-#, fuzzy
 msgid "Projection"
-msgstr "Doğrultu"
+msgstr "İzdüşüm"
 
 #: src/input/es_out.c:4953
 msgctxt "ViewPoint"
 msgid "Yaw"
-msgstr ""
+msgstr "Sapma"
 
 #: src/input/es_out.c:4955
 msgctxt "ViewPoint"
 msgid "Pitch"
-msgstr ""
+msgstr "Yunuslama"
 
 #: src/input/es_out.c:4957
 msgctxt "ViewPoint"
 msgid "Roll"
-msgstr ""
+msgstr "Yuvarlanma"
 
 #: src/input/es_out.c:4960
 msgctxt "ViewPoint"
 msgid "Field of view"
-msgstr ""
+msgstr "Görüş alanı"
 
 #: src/input/es_out.c:4965
 msgid "Max. mastering luminance"
-msgstr ""
+msgstr "En yüksek mastering parlaklığı"
 
 #: src/input/es_out.c:4970
 msgid "Min. mastering luminance"
-msgstr ""
+msgstr "En düşük mastering parlaklığı"
 
 #: src/input/es_out.c:4978
 msgid "Mastering Primary R"
-msgstr ""
+msgstr "Mastering Birincil R"
 
 #: src/input/es_out.c:4985
 msgid "Mastering Primary G"
-msgstr ""
+msgstr "Mastering Birincil G"
 
 #: src/input/es_out.c:4992
 msgid "Mastering Primary B"
-msgstr ""
+msgstr "Mastering Birincil B"
 
 #: src/input/es_out.c:4999
 msgid "Mastering White point"
-msgstr ""
+msgstr "Mastering Beyaz noktası"
 
 #: src/input/es_out.c:5014 modules/access/imem.c:63
 #: modules/gui/macosx/library/VLCLibraryDataTypes.m:216
@@ -1306,7 +1280,7 @@ msgstr "Altyazı"
 
 #: src/input/input.c:3130
 msgid "Your media can't be opened"
-msgstr ""
+msgstr "Ortamınız açılamıyor"
 
 #: src/input/input.c:3131
 #, c-format
@@ -1423,22 +1397,20 @@ msgstr "Oyuncular"
 
 #: src/input/meta.c:82 modules/demux/mp4/meta.c:103
 #: modules/gui/macosx/playqueue/VLCPlayQueueSortingMenuController.m:55
-#, fuzzy
 msgid "Album Artist"
-msgstr "Sanatçı"
+msgstr "Albüm Sanatçısı"
 
 #: src/input/meta.c:83
-#, fuzzy
 msgid "Disc number"
-msgstr "Kayıt Numarası"
+msgstr "Disk numarası"
 
 #: src/input/meta.c:84
 msgid "Total disc number"
-msgstr ""
+msgstr "Toplam disk sayısı"
 
 #: src/input/meta.c:85
 msgid "Compilation"
-msgstr ""
+msgstr "Derleme"
 
 #: src/interface/interface.c:86 modules/gui/macosx/menus/VLCMainMenu.m:350
 #: modules/gui/macosx/menus/VLCMainMenu.m:351
@@ -1602,7 +1574,7 @@ msgstr "Ortam rolü"
 
 #: src/libvlc-module.c:137
 msgid "Media (player) role for operating system policy."
-msgstr ""
+msgstr "İşletim sistemi ilkesi için ortam (oynatıcı) rolü."
 
 #: src/libvlc-module.c:139
 msgid "Enable bit-exact mode (pure mode)"
@@ -1641,18 +1613,16 @@ msgid "Music"
 msgstr "Müzik"
 
 #: src/libvlc-module.c:155
-#, fuzzy
 msgid "Communication"
-msgstr "Konum"
+msgstr "İletişim"
 
 #: src/libvlc-module.c:155 modules/meta_engine/ID3Genres.h:69
 msgid "Game"
 msgstr "Oyun"
 
 #: src/libvlc-module.c:156
-#, fuzzy
 msgid "Notification"
-msgstr "Güçlendirme"
+msgstr "Bildirim"
 
 #: src/libvlc-module.c:156
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:315
@@ -1660,9 +1630,8 @@ msgid "Animation"
 msgstr "Animasyon"
 
 #: src/libvlc-module.c:156
-#, fuzzy
 msgid "Production"
-msgstr "Ürün"
+msgstr "Prodüksiyon"
 
 #: src/libvlc-module.c:157
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:72
@@ -1671,7 +1640,7 @@ msgstr "Erişilebilirlik"
 
 #: src/libvlc-module.c:157
 msgid "Test"
-msgstr ""
+msgstr "Test"
 
 #: src/libvlc-module.c:160
 msgid "Audio gain"
@@ -1723,13 +1692,15 @@ msgstr ""
 
 #: src/libvlc-module.c:184
 msgid "Force S/PDIF support"
-msgstr ""
+msgstr "S/PDIF desteği zorlansın"
 
 #: src/libvlc-module.c:186
 msgid ""
 "This option should be used when the audio output can't negotiate S/PDIF "
 "support."
 msgstr ""
+"Ses çıkışı S/PDIF desteği için anlaşma sağlayamıyorsa bu seçenek "
+"kullanılmalıdır."
 
 #: src/libvlc-module.c:189
 msgid "Force detection of Dolby Surround"
@@ -1763,14 +1734,14 @@ msgstr ""
 msgid "Auto"
 msgstr "Otomatik"
 
-#: src/libvlc-module.c:198 src/libvlc-module.c:374 src/player/osd.c:323
+#: src/libvlc-module.c:198 src/libvlc-module.c:374 src/player/osd.c:340
 #: modules/access/dtv/access.c:100 modules/access/v4l2/v4l2.c:201
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
 msgid "On"
 msgstr "Açık"
 
-#: src/libvlc-module.c:198 src/libvlc-module.c:374 src/player/osd.c:323
+#: src/libvlc-module.c:198 src/libvlc-module.c:374 src/player/osd.c:340
 #: modules/access/dtv/access.c:100 modules/access/v4l2/v4l2.c:137
 #: modules/access/v4l2/v4l2.c:201
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:136
@@ -2105,9 +2076,8 @@ msgstr ""
 "pencerelerin üzerinde tutulur."
 
 #: src/libvlc-module.c:348
-#, fuzzy
 msgid "Enable wallpaper mode"
-msgstr "Duvar kağıdı kipi"
+msgstr "Duvar kağıdı kipi kullanılsın"
 
 #: src/libvlc-module.c:350
 msgid ""
@@ -2198,12 +2168,11 @@ msgstr "Film NTSC (IVTC)"
 
 #: src/libvlc-module.c:391
 msgid "Deinterlace filter"
-msgstr ""
+msgstr "Taramasızlık süzgeci"
 
 #: src/libvlc-module.c:392
-#, fuzzy
 msgid "Deinterlace module to use."
-msgstr "Taramasızlık modülü"
+msgstr "Kullanılacak taramasızlık modülü."
 
 #: src/libvlc-module.c:394
 msgid "Video Stereo 3D mode"
@@ -2215,15 +2184,15 @@ msgstr ""
 
 #: src/libvlc-module.c:403 src/video_output/vout_intf.c:166
 msgid "Left Only"
-msgstr ""
+msgstr "Yalnızca Sol"
 
 #: src/libvlc-module.c:403 src/video_output/vout_intf.c:167
 msgid "Right Only"
-msgstr ""
+msgstr "Yalnızca Sağ"
 
 #: src/libvlc-module.c:404 src/video_output/vout_intf.c:168
 msgid "Side-by-Side"
-msgstr ""
+msgstr "Yan Yana"
 
 #: src/libvlc-module.c:427
 msgid "Disable screensaver"
@@ -2247,7 +2216,7 @@ msgstr "Asla"
 
 #: src/libvlc-module.c:432
 msgid "When fullscreen"
-msgstr ""
+msgstr "Tam ekrandayken"
 
 #: src/libvlc-module.c:432 modules/gui/macosx/main/macosx.m:125
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:50
@@ -2516,11 +2485,11 @@ msgstr ""
 
 #: src/libvlc-module.c:543
 msgid "Mouse Pause Policy"
-msgstr ""
+msgstr "Fareyle Duraklatma İlkesi"
 
 #: src/libvlc-module.c:545
 msgid "This controls how pause on mouse click is handled"
-msgstr ""
+msgstr "Fare tıklamasıyla duraklatmanın nasıl işleneceğini belirler"
 
 #: src/libvlc-module.c:552 modules/access/rist.h:85
 #: modules/audio_output/mmdevice.c:1621
@@ -2533,7 +2502,7 @@ msgstr "Devre dışı"
 
 #: src/libvlc-module.c:552
 msgid "Toggle pause immediately on mouse released"
-msgstr ""
+msgstr "Fare bırakılınca hemen duraklat/sürdür"
 
 #: src/libvlc-module.c:560
 msgid ""
@@ -2781,6 +2750,9 @@ msgid ""
 "letter ISO-639 country code; you may use 'none' to avoid a fallback to "
 "another language)."
 msgstr ""
+"Kullanmak istediğiniz ses kaydının dili (virgülle ayrılmış, iki ya da üç "
+"harfli ISO-639 ülke kodu; başka bir dile geçilmesini önlemek için 'none' "
+"yazabilirsiniz)."
 
 #: src/libvlc-module.c:677
 msgid "Subtitle language"
@@ -2791,6 +2763,8 @@ msgid ""
 "Language of the subtitle track you want to use (comma separated, two or "
 "three letter ISO-639 country code; you may use 'any' as a fallback)."
 msgstr ""
+"Kullanmak istediğiniz altyazı kaydının dili (virgülle ayrılmış, iki ya da üç "
+"harfli ISO-639 ülke kodu; yedek olarak 'any' yazabilirsiniz)."
 
 #: src/libvlc-module.c:682
 msgid "Menu language"
@@ -2801,6 +2775,8 @@ msgid ""
 "Language of the menus you want to use with DVD/BluRay (comma separated, two "
 "or three letter ISO-639 country code; you may use 'any' as a fallback)."
 msgstr ""
+"DVD/BluRay ile kullanmak istediğiniz menülerin dili (virgülle ayrılmış, iki "
+"ya da üç harfli ISO-639 ülke kodu; yedek olarak 'any' yazabilirsiniz)."
 
 #: src/libvlc-module.c:687
 msgid "Video track ID"
@@ -2989,39 +2965,39 @@ msgstr "Oynatmaya devam edin"
 
 #: src/libvlc-module.c:766
 msgid "Should the playback resume where it was left off?"
-msgstr ""
+msgstr "Oynatma kalınan yerden sürdürülsün mü?"
 
 #: src/libvlc-module.c:775
 msgid "Never resume playback where it was left off"
-msgstr ""
+msgstr "Oynatma hiçbir zaman kalınan yerden sürdürülmesin"
 
 #: src/libvlc-module.c:776
 msgid "Ask when the playback starts"
-msgstr ""
+msgstr "Oynatma başlarken sorulsun"
 
 #: src/libvlc-module.c:777
 msgid "Always resume playback where it was left off"
-msgstr ""
+msgstr "Oynatma her zaman kalınan yerden sürdürülsün"
 
 #: src/libvlc-module.c:780
 msgid "Resume last playback states"
-msgstr ""
+msgstr "Son oynatma durumları sürdürülsün"
 
 #: src/libvlc-module.c:781
 msgid ""
 "This will resume the last playback state, such as the selected tracks, rate, "
 "aspect-ratio, ..."
 msgstr ""
+"Bu seçenek etkinleştirildiğinde, son oynatma durumu sürdürülür: seçilmiş "
+"kayıtlar, hız, en boy oranı, ..."
 
 #: src/libvlc-module.c:784
-#, fuzzy
 msgid "Record directory"
-msgstr "Kaynak klasörü"
+msgstr "Kayıt klasörü"
 
 #: src/libvlc-module.c:786
-#, fuzzy
 msgid "Directory where the records will be stored"
-msgstr "Kaydedilen görüntü ya da sesin saklanacağı klasör ya da dosya adı."
+msgstr "Kayıtların saklanacağı klasör"
 
 #: src/libvlc-module.c:788
 msgid "Prefer native stream recording"
@@ -3096,7 +3072,7 @@ msgstr ""
 
 #: src/libvlc-module.c:821
 msgid "Subtitle position"
-msgstr ""
+msgstr "Altyazı konumu"
 
 #: src/libvlc-module.c:823
 msgid ""
@@ -3104,16 +3080,17 @@ msgid ""
 "their usual place (below it when negative). The same on any screen and in "
 "any window size."
 msgstr ""
+"Altyazıların olağan yerlerinden ne kadar yukarıda duracağı, görüntü "
+"yüksekliğinin yüzdesi olarak (negatif değerlerde aşağıda). Her ekranda ve "
+"her pencere boyutunda aynıdır."
 
 #: src/libvlc-module.c:827
-#, fuzzy
 msgid "Subtitles text scaling factor"
-msgstr "Alt Yazı Metin Kodlayıcısı"
+msgstr "Altyazı metni ölçekleme çarpanı"
 
 #: src/libvlc-module.c:828
-#, fuzzy
 msgid "Changes the subtitles size where possible"
-msgstr "Alt yazı dosyasını seçin"
+msgstr "Olabildiğinde altyazıların boyutunu değiştirir"
 
 #: src/libvlc-module.c:830
 msgid "Enable sub-pictures"
@@ -3152,11 +3129,13 @@ msgstr ""
 
 #: src/libvlc-module.c:847
 msgid "On Screen Display duration"
-msgstr ""
+msgstr "Ekran Üzerinde Gösterim süresi"
 
 #: src/libvlc-module.c:849
 msgid "How long the messages of the On Screen Display stay, in milliseconds."
 msgstr ""
+"Milisaniye cinsinden, Ekran Üzerinde Gösterim iletilerinin ekranda kalma "
+"süresi."
 
 #: src/libvlc-module.c:850 src/libvlc-module.c:1827 src/text/iso-639_def.h:573
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:441
@@ -3328,9 +3307,8 @@ msgid "TCP connection timeout"
 msgstr "TCP bağlantısının zaman aşımı"
 
 #: src/libvlc-module.c:937
-#, fuzzy
 msgid "Default TCP connection timeout (in milliseconds)."
-msgstr "Milisaniye cinsinden, varsayılan TCP bağlantısının zaman aşımı."
+msgstr "Milisaniye cinsinden, varsayılan TCP bağlantısı zaman aşımı."
 
 #: src/libvlc-module.c:939
 msgid "HTTP server address"
@@ -3549,7 +3527,7 @@ msgstr ""
 
 #: src/libvlc-module.c:1042
 msgid "Preferred decoder hardware device"
-msgstr ""
+msgstr "Yeğlenen donanımsal kod çözücü aygıtı"
 
 #: src/libvlc-module.c:1043
 msgid "This allows hardware decoding when available."
@@ -3642,6 +3620,8 @@ msgid ""
 "This allows you to keep an unique stream output instance across multiple "
 "play queue items."
 msgstr ""
+"Bu seçenek etkinleştirildiğinde, birden çok oynatma kuyruğu ögesi boyunca "
+"tek bir akış çıkışı kopyası korunur."
 
 #: src/libvlc-module.c:1088
 msgid "Stream output muxer caching (ms)"
@@ -3786,6 +3766,12 @@ msgid ""
 "with spaces. Files to open, and the options only a command line can give (--"
 "help, --config, --reset-config...), are left out."
 msgstr ""
+"VLC'nin her başlatılışta, komut satırına yazılmış gibi okuduğu seçenekler "
+"(aynı seçenek komut satırında da verilirse komut satırındaki geçerli olur). "
+"Komut satırındaki gibi yazın, örneğin: --no-osd --network-caching=3000; "
+"boşluk içeren değerleri tırnak içine alın. Açılacak dosyalar ve yalnızca "
+"komut satırından verilebilen seçenekler (--help, --config, --reset-"
+"config...) dikkate alınmaz."
 
 #: src/libvlc-module.c:1158
 msgid "Locally collect statistics"
@@ -3862,13 +3848,15 @@ msgstr "Saat kaynağı"
 
 #: src/libvlc-module.c:1208
 msgid "Enqueue items into play queue in one instance mode"
-msgstr ""
+msgstr "Tek kopya kipinde ögeler oynatma kuyruğuna eklensin"
 
 #: src/libvlc-module.c:1210
 msgid ""
 "When using the one instance only option, enqueue items to play queue and "
 "keep playing current item."
 msgstr ""
+"Yalnızca tek kopya seçeneği kullanılırken, ögeler oynatma kuyruğuna eklenir "
+"ve geçerli öge oynatılmaya devam eder."
 
 #: src/libvlc-module.c:1213
 #, fuzzy
@@ -3886,15 +3874,16 @@ msgid ""
 msgstr ""
 
 #: src/libvlc-module.c:1226
-#, fuzzy
 msgid "Automatically preparse items"
-msgstr "Dosyalar önceden işlensin"
+msgstr "Ögeler otomatik olarak önceden işlensin"
 
 #: src/libvlc-module.c:1228
 msgid ""
 "Automatically preparse items added to the play queue (to retrieve some "
 "metadata)."
 msgstr ""
+"Oynatma kuyruğuna eklenen ögeler otomatik olarak önceden işlenir (bazı üst "
+"verileri almak için)."
 
 #: src/libvlc-module.c:1231
 #, fuzzy
@@ -3946,6 +3935,10 @@ msgid ""
 "collapse: subdirectories appear but are expanded on first play.\n"
 "expand: all subdirectories are expanded.\n"
 msgstr ""
+"Alt klasörlerin genişletilip genişletilmeyeceğini seçin.\n"
+"none: alt klasörler oynatma kuyruğunda görünmez.\n"
+"collapse: alt klasörler görünür ancak ilk oynatmada genişletilir.\n"
+"expand: tüm alt klasörler genişletilir.\n"
 
 #: src/libvlc-module.c:1257
 msgid "Ignored extensions"
@@ -3958,6 +3951,10 @@ msgid ""
 "This is useful if you add directories that contain playlist files for "
 "instance. Use a comma-separated list of extensions."
 msgstr ""
+"Bir klasör açılırken bu uzantılara sahip dosyalar oynatma kuyruğuna "
+"eklenmez.\n"
+"Örneğin oynatma listesi dosyaları içeren klasörler ekliyorsanız "
+"kullanışlıdır. Uzantıları virgülle ayrılmış bir liste olarak yazın."
 
 #: src/libvlc-module.c:1264
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:294
@@ -3966,7 +3963,7 @@ msgstr "Gizli dosyalar görüntülensin"
 
 #: src/libvlc-module.c:1266
 msgid "Ignore files starting with '.'"
-msgstr ""
+msgstr "'.' ile başlayan dosyalar yoksayılsın"
 
 #: src/libvlc-module.c:1268
 msgid "Flatten files listed by extractors (archive)"
@@ -3991,6 +3988,7 @@ msgstr "Dosyalar rastgele sürekli oynatılsın"
 #: src/libvlc-module.c:1277
 msgid "VLC will randomly play files in the play queue until interrupted."
 msgstr ""
+"VLC, durdurulana kadar oynatma kuyruğundaki dosyaları rastgele oynatır."
 
 #: src/libvlc-module.c:1279
 msgid "Repeat all"
@@ -3998,7 +3996,7 @@ msgstr "Tümü yinelensin"
 
 #: src/libvlc-module.c:1281
 msgid "VLC will keep playing the play queue indefinitely."
-msgstr ""
+msgstr "VLC, oynatma kuyruğunu sürekli oynatır."
 
 #: src/libvlc-module.c:1283
 msgid "Repeat current item"
@@ -4006,7 +4004,7 @@ msgstr "Geçerli öge yinelensin"
 
 #: src/libvlc-module.c:1285
 msgid "VLC will keep playing the current play queue item."
-msgstr ""
+msgstr "VLC, oynatma kuyruğundaki geçerli ögeyi sürekli oynatır."
 
 #: src/libvlc-module.c:1287
 msgid "Play and stop"
@@ -4014,7 +4012,7 @@ msgstr "Oynatılıp durulsun"
 
 #: src/libvlc-module.c:1289
 msgid "Stop playback after each item in the play queue."
-msgstr ""
+msgstr "Oynatma kuyruğundaki her ögeden sonra oynatma durdurulur."
 
 #: src/libvlc-module.c:1291
 msgid "Play and exit"
@@ -4030,7 +4028,7 @@ msgstr "Oynatılıp duraklatılsın"
 
 #: src/libvlc-module.c:1297
 msgid "Pause each item in the play queue on the last frame."
-msgstr ""
+msgstr "Oynatma kuyruğundaki her öge son karesinde duraklatılır."
 
 #: src/libvlc-module.c:1299
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:133
@@ -4039,7 +4037,7 @@ msgstr "Duraklatılmış olarak başlatılsın"
 
 #: src/libvlc-module.c:1301
 msgid "Pause each item in the play queue on the first frame."
-msgstr ""
+msgstr "Oynatma kuyruğundaki her öge ilk karesinde duraklatılır."
 
 #: src/libvlc-module.c:1303
 msgid "Auto start"
@@ -4048,6 +4046,8 @@ msgstr "Otomatik başlatılsın"
 #: src/libvlc-module.c:1304
 msgid "Automatically start playing the play queue content once it's loaded."
 msgstr ""
+"Oynatma kuyruğunun içeriği yüklendiğinde otomatik olarak oynatılmaya "
+"başlanır."
 
 #: src/libvlc-module.c:1307
 msgid "Pause on audio communication"
@@ -4084,16 +4084,21 @@ msgid ""
 "it off to browse without indexing your media; this takes effect the next "
 "time VLC starts."
 msgstr ""
+"VLC istediğinde ortam kitaplığı başlatılır (ortam oynatıcısı bunu ister). "
+"Ortamlarınızı dizinlemeden göz atmak için kapatın; bu ayar VLC bir sonraki "
+"başlatıldığında geçerli olur."
 
 #: src/libvlc-module.c:1323
 msgid "Display play queue tree"
-msgstr ""
+msgstr "Oynatma kuyruğu ağacı görüntülensin"
 
 #: src/libvlc-module.c:1325
 msgid ""
 "The play queue can use a tree to categorize some items, like the contents of "
 "a directory."
 msgstr ""
+"Oynatma kuyruğu, bir klasörün içeriği gibi bazı ögeleri sınıflandırmak için "
+"ağaç yapısı kullanabilir."
 
 #: src/libvlc-module.c:1328
 msgid "Play queue bookmark 1"
@@ -4149,47 +4154,40 @@ msgid "Ignore"
 msgstr "Görmezden Gelinsin"
 
 #: src/libvlc-module.c:1350
-#, fuzzy
 msgid "Volume control"
-msgstr "Sesi Değiştirsin"
+msgstr "Ses düzeyi denetimi"
 
 #: src/libvlc-module.c:1351
-#, fuzzy
 msgid "Position control"
-msgstr "Konumu Değiştirsin"
+msgstr "Konum denetimi"
 
 #: src/libvlc-module.c:1351
-#, fuzzy
 msgid "Position control reversed"
-msgstr "Konumu Değiştirsin"
+msgstr "Ters konum denetimi"
 
 #: src/libvlc-module.c:1354
-#, fuzzy
 msgid "Mouse wheel vertical axis control"
-msgstr "Fare tekerleğinin aşağı-yukarı ekseni denetimi"
+msgstr "Fare tekerleği dikey eksen denetimi"
 
 #: src/libvlc-module.c:1356
-#, fuzzy
 msgid ""
 "The mouse wheel vertical (up/down) axis can control volume, position or be "
 "ignored."
 msgstr ""
-"Fare tekerleğinin aşağı-yukarı (dikey) eksenindeki hareketleri, ses düzeyini "
-"ya da iz konumu ayarlayabileceği gibi görmezden de gelinebilir."
+"Fare tekerleğinin dikey (yukarı/aşağı) ekseni ses düzeyini ya da konumu "
+"denetleyebilir; isterseniz yoksayılabilir."
 
 #: src/libvlc-module.c:1358
-#, fuzzy
 msgid "Mouse wheel horizontal axis control"
-msgstr "Fare tekerleğinin aşağı-yukarı ekseni denetimi"
+msgstr "Fare tekerleği yatay eksen denetimi"
 
 #: src/libvlc-module.c:1360
-#, fuzzy
 msgid ""
 "The mouse wheel horizontal (left/right) axis can control volume, position or "
 "be ignored."
 msgstr ""
-"Fare tekerleğinin aşağı-yukarı (dikey) eksenindeki hareketleri, ses düzeyini "
-"ya da iz konumu ayarlayabileceği gibi görmezden de gelinebilir."
+"Fare tekerleğinin yatay (sol/sağ) ekseni ses düzeyini ya da konumu "
+"denetleyebilir; isterseniz yoksayılabilir."
 
 #: src/libvlc-module.c:1362 src/video_output/vout_intf.c:325
 #: modules/gui/macosx/menus/VLCMainMenu.m:437
@@ -4297,6 +4295,8 @@ msgstr "Sonraki"
 #: src/libvlc-module.c:1383
 msgid "Select the hotkey to use to skip to the next item in the play queue."
 msgstr ""
+"Oynatma kuyruğundaki sonraki ögeye geçmek için kullanılacak kısayol tuşunu "
+"seçin."
 
 #: src/libvlc-module.c:1384 modules/gui/macosx/menus/VLCMainMenu.m:398
 #: modules/gui/macosx/menus/VLCMainMenu.m:511
@@ -4317,6 +4317,8 @@ msgstr "Önceki"
 msgid ""
 "Select the hotkey to use to skip to the previous item in the play queue."
 msgstr ""
+"Oynatma kuyruğundaki önceki ögeye geçmek için kullanılacak kısayol tuşunu "
+"seçin."
 
 #: src/libvlc-module.c:1386 modules/gui/macosx/menus/VLCMainMenu.m:389
 #: modules/gui/macosx/menus/VLCMainMenu.m:509
@@ -4428,6 +4430,7 @@ msgstr "Sonraki Kare"
 #: src/libvlc-module.c:1418
 msgid "Select the hotkey to go to the next video frame."
 msgstr ""
+"Sonraki görüntü karesine geçmek için kullanılacak kısayol tuşunu seçin."
 
 #: src/libvlc-module.c:1419 src/player/input.c:968
 #: modules/gui/qt/player/qml/controlbarcontrols/FramePrevButton.qml:34
@@ -4436,7 +4439,7 @@ msgstr "Önceki kare"
 
 #: src/libvlc-module.c:1421
 msgid "Select the hotkey to go to the previous video frame."
-msgstr ""
+msgstr "Önceki görüntü karesine geçmek için kullanılacak kısayol tuşunu seçin."
 
 #: src/libvlc-module.c:1423
 msgid "Very short jump length"
@@ -4486,50 +4489,48 @@ msgid "Navigate up"
 msgstr "Yukarı Gitme"
 
 #: src/libvlc-module.c:1435
-#, fuzzy
 msgid ""
 "Select the key to move the selector up in DVD menus / Move viewpoint to up "
 "(pitch)."
 msgstr ""
-"DVD menülerinde seçimi yukarı kaydırmak için kullanılacak kısayol tuşunu "
-"seçin."
+"DVD menülerinde seçimi yukarı kaydırmak / bakış açısını yukarı çevirmek "
+"(yunuslama) için kullanılacak kısayol tuşunu seçin."
 
 #: src/libvlc-module.c:1436 modules/gui/qt/player/qml/NavigationBox.qml:161
 msgid "Navigate down"
 msgstr "Aşağı Gitme"
 
 #: src/libvlc-module.c:1437
-#, fuzzy
 msgid ""
 "Select the key to move the selector down in DVD menus / Move viewpoint to "
 "down (pitch)."
 msgstr ""
-"DVD menülerinde seçimi aşağı kaydırmak için kullanılacak kısayol tuşunu "
-"seçin."
+"DVD menülerinde seçimi aşağı kaydırmak / bakış açısını aşağı çevirmek "
+"(yunuslama) için kullanılacak kısayol tuşunu seçin."
 
 #: src/libvlc-module.c:1438 modules/gui/qt/player/qml/NavigationBox.qml:118
 msgid "Navigate left"
 msgstr "Sola Gitme"
 
 #: src/libvlc-module.c:1439
-#, fuzzy
 msgid ""
 "Select the key to move the selector left in DVD menus / Move viewpoint to "
 "left (yaw)."
 msgstr ""
-"DVD menülerinde seçimi sola kaydırmak için kullanılacak kısayol tuşunu seçin."
+"DVD menülerinde seçimi sola kaydırmak / bakış açısını sola çevirmek (sapma) "
+"için kullanılacak kısayol tuşunu seçin."
 
 #: src/libvlc-module.c:1440 modules/gui/qt/player/qml/NavigationBox.qml:147
 msgid "Navigate right"
 msgstr "Sağa Gitme"
 
 #: src/libvlc-module.c:1441
-#, fuzzy
 msgid ""
 "Select the key to move the selector right in DVD menus / Move viewpoint to "
 "right (yaw)."
 msgstr ""
-"DVD menülerinde seçimi sağa kaydırmak için kullanılacak kısayol tuşunu seçin."
+"DVD menülerinde seçimi sağa kaydırmak / bakış açısını sağa çevirmek (sapma) "
+"için kullanılacak kısayol tuşunu seçin."
 
 #: src/libvlc-module.c:1442
 msgid "Activate"
@@ -4629,25 +4630,21 @@ msgid "Select the key to decrease the subtitle delay."
 msgstr "Altyazı gecikmesini azaltmak için kullanılacak kısayol tuşunu seçin."
 
 #: src/libvlc-module.c:1464
-#, fuzzy
 msgid "Reset subtitles text scale"
-msgstr "Teletext Altyazı Kod Çözücüsü"
+msgstr "Altyazı metni ölçeğini sıfırla"
 
 #: src/libvlc-module.c:1465
-#, fuzzy
-msgid "Scale up subtitles text"
-msgstr "Alt yazı dosyasını seçin"
+msgid "Scale down subtitles text"
+msgstr "Altyazı metnini küçült"
 
 #: src/libvlc-module.c:1466
-#, fuzzy
-msgid "Scale down subtitles text"
-msgstr "Alt yazı dosyasını seçin"
+msgid "Scale up subtitles text"
+msgstr "Altyazı metnini büyüt"
 
 #: src/libvlc-module.c:1467
-#, fuzzy
 msgid "Select the key to change subtitles text scaling"
 msgstr ""
-"Altyazıları daha yukarıya kaydırmak için kullanılacak kısayol tuşunu seçin."
+"Altyazı metninin ölçeğini değiştirmek için kullanılacak kısayol tuşunu seçin"
 
 #: src/libvlc-module.c:1468
 msgid "Subtitle sync / bookmark audio timestamp"
@@ -4746,46 +4743,47 @@ msgstr "2:1 İki Kat"
 #: src/libvlc-module.c:1489
 msgid "Select the hotkey to use to zoom to the corresponding level."
 msgstr ""
+"İlgili yakınlaştırma düzeyine geçmek için kullanılacak kısayol tuşunu seçin."
 
 #: src/libvlc-module.c:1491
 msgid "Go to play queue bookmark 1"
-msgstr ""
+msgstr "Oynatma kuyruğu yer imi 1'e git"
 
 #: src/libvlc-module.c:1492
 msgid "Go to play queue bookmark 2"
-msgstr ""
+msgstr "Oynatma kuyruğu yer imi 2'ye git"
 
 #: src/libvlc-module.c:1493
 msgid "Go to play queue bookmark 3"
-msgstr ""
+msgstr "Oynatma kuyruğu yer imi 3'e git"
 
 #: src/libvlc-module.c:1494
 msgid "Go to play queue bookmark 4"
-msgstr ""
+msgstr "Oynatma kuyruğu yer imi 4'e git"
 
 #: src/libvlc-module.c:1495
 msgid "Go to play queue bookmark 5"
-msgstr ""
+msgstr "Oynatma kuyruğu yer imi 5'e git"
 
 #: src/libvlc-module.c:1496
 msgid "Go to play queue bookmark 6"
-msgstr ""
+msgstr "Oynatma kuyruğu yer imi 6'ya git"
 
 #: src/libvlc-module.c:1497
 msgid "Go to play queue bookmark 7"
-msgstr ""
+msgstr "Oynatma kuyruğu yer imi 7'ye git"
 
 #: src/libvlc-module.c:1498
 msgid "Go to play queue bookmark 8"
-msgstr ""
+msgstr "Oynatma kuyruğu yer imi 8'e git"
 
 #: src/libvlc-module.c:1499
 msgid "Go to play queue bookmark 9"
-msgstr ""
+msgstr "Oynatma kuyruğu yer imi 9'a git"
 
 #: src/libvlc-module.c:1500
 msgid "Go to play queue bookmark 10"
-msgstr ""
+msgstr "Oynatma kuyruğu yer imi 10'a git"
 
 #: src/libvlc-module.c:1501
 msgid "Select the key to play this bookmark."
@@ -4793,47 +4791,49 @@ msgstr "Bu yer imini oynatmak için kullanılacak kısayol tuşunu seçin."
 
 #: src/libvlc-module.c:1502
 msgid "Set play queue bookmark 1"
-msgstr ""
+msgstr "Oynatma kuyruğu yer imi 1'i ayarla"
 
 #: src/libvlc-module.c:1503
 msgid "Set play queue bookmark 2"
-msgstr ""
+msgstr "Oynatma kuyruğu yer imi 2'yi ayarla"
 
 #: src/libvlc-module.c:1504
 msgid "Set play queue bookmark 3"
-msgstr ""
+msgstr "Oynatma kuyruğu yer imi 3'ü ayarla"
 
 #: src/libvlc-module.c:1505
 msgid "Set play queue bookmark 4"
-msgstr ""
+msgstr "Oynatma kuyruğu yer imi 4'ü ayarla"
 
 #: src/libvlc-module.c:1506
 msgid "Set play queue bookmark 5"
-msgstr ""
+msgstr "Oynatma kuyruğu yer imi 5'i ayarla"
 
 #: src/libvlc-module.c:1507
 msgid "Set play queue bookmark 6"
-msgstr ""
+msgstr "Oynatma kuyruğu yer imi 6'yı ayarla"
 
 #: src/libvlc-module.c:1508
 msgid "Set play queue bookmark 7"
-msgstr ""
+msgstr "Oynatma kuyruğu yer imi 7'yi ayarla"
 
 #: src/libvlc-module.c:1509
 msgid "Set play queue bookmark 8"
-msgstr ""
+msgstr "Oynatma kuyruğu yer imi 8'i ayarla"
 
 #: src/libvlc-module.c:1510
 msgid "Set play queue bookmark 9"
-msgstr ""
+msgstr "Oynatma kuyruğu yer imi 9'u ayarla"
 
 #: src/libvlc-module.c:1511
 msgid "Set play queue bookmark 10"
-msgstr ""
+msgstr "Oynatma kuyruğu yer imi 10'u ayarla"
 
 #: src/libvlc-module.c:1512
 msgid "Select the key to set this play queue bookmark."
 msgstr ""
+"Bu oynatma kuyruğu yer imini ayarlamak için kullanılacak kısayol tuşunu "
+"seçin."
 
 #: src/libvlc-module.c:1513 modules/gui/qt/menus/qml_menu_wrapper.cpp:1212
 msgid "Clear the play queue"
@@ -4842,6 +4842,7 @@ msgstr "Oynatma kuyruğunu temizle"
 #: src/libvlc-module.c:1514
 msgid "Select the key to clear the current play queue."
 msgstr ""
+"Geçerli oynatma kuyruğunu temizlemek için kullanılacak kısayol tuşunu seçin."
 
 #: src/libvlc-module.c:1516
 msgid "Cycle audio track"
@@ -4852,14 +4853,12 @@ msgid "Cycle through the available audio tracks(languages)."
 msgstr "Var olan ses kayıtları (diller) arasında dolaşır."
 
 #: src/libvlc-module.c:1518
-#, fuzzy
 msgid "Cycle subtitle track in reverse order"
-msgstr "Altyazı kayıtları arasında dolaş"
+msgstr "Altyazı kayıtları arasında ters sırada dolaş"
 
 #: src/libvlc-module.c:1519
-#, fuzzy
 msgid "Cycle through the available subtitle tracks in reverse order."
-msgstr "Var olan altyazı kayıtları arasında dolaşır."
+msgstr "Var olan altyazı kayıtları arasında ters sırada dolaşır."
 
 #: src/libvlc-module.c:1520
 msgid "Cycle subtitle track"
@@ -4879,11 +4878,12 @@ msgstr "Altyazı kaydının görünürlüğünü değiştir."
 
 #: src/libvlc-module.c:1524
 msgid "Toggle secondary subtitle control"
-msgstr ""
+msgstr "İkincil altyazı denetimini aç/kapat"
 
 #: src/libvlc-module.c:1525
 msgid "Use original subtitle controls to manage secondary subtitles."
 msgstr ""
+"İkincil altyazıları yönetmek için özgün altyazı denetimleri kullanılır."
 
 #: src/libvlc-module.c:1526
 msgid "Cycle next program Service ID"
@@ -4958,6 +4958,8 @@ msgstr "Tam Ekranda Denetimleri Görüntüleme"
 msgid ""
 "Select the hotkey to use to toggle visibility of controls in fullscreen mode."
 msgstr ""
+"Tam ekran kipinde denetimlerin görünürlüğünü açıp kapatmak için kullanılacak "
+"kısayol tuşunu seçin."
 
 #: src/libvlc-module.c:1546
 msgid "Boss key"
@@ -5001,7 +5003,7 @@ msgstr "Normal/Çevrim/Yineleme"
 
 #: src/libvlc-module.c:1557
 msgid "Toggle Normal/Loop/Repeat play queue modes"
-msgstr ""
+msgstr "Oynatma kuyruğu Normal/Çevrim/Yineleme kipleri arasında geçiş yap"
 
 #: src/libvlc-module.c:1559 modules/gui/macosx/menus/VLCMainMenu.m:400
 msgid "Random"
@@ -5009,7 +5011,7 @@ msgstr "Rastgele"
 
 #: src/libvlc-module.c:1560
 msgid "Toggle random play queue playback"
-msgstr ""
+msgstr "Oynatma kuyruğunda rastgele oynatmayı aç/kapat"
 
 #: src/libvlc-module.c:1562 src/libvlc-module.c:1563
 #: src/video_output/vout_intf.c:231 modules/gui/macosx/menus/VLCMainMenu.m:484
@@ -5057,35 +5059,43 @@ msgstr "Görüntünün sağına bir piksel ekle"
 
 #: src/libvlc-module.c:1589
 msgid "Shrink the viewpoint field of view (360°)"
-msgstr ""
+msgstr "Bakış açısının görüş alanını daralt (360°)"
 
 #: src/libvlc-module.c:1590
 msgid "Select the hotkey to use to shrink the viewpoint (360°) field of view."
 msgstr ""
+"Bakış açısının (360°) görüş alanını daraltmak için kullanılacak kısayol "
+"tuşunu seçin."
 
 #: src/libvlc-module.c:1591
 msgid "Expand the viewpoint field of view (360°)"
-msgstr ""
+msgstr "Bakış açısının görüş alanını genişlet (360°)"
 
 #: src/libvlc-module.c:1592
 msgid "Select the hotkey to use to expand the viewpoint (360°) field of view."
 msgstr ""
+"Bakış açısının (360°) görüş alanını genişletmek için kullanılacak kısayol "
+"tuşunu seçin."
 
 #: src/libvlc-module.c:1593
 msgid "Roll the viewpoint clockwise (360°)"
-msgstr ""
+msgstr "Bakış açısını saat yönünde döndür (360°)"
 
 #: src/libvlc-module.c:1594
 msgid "Select the hotkey to use for viewpoint (360°) clockwise roll."
 msgstr ""
+"Bakış açısını (360°) saat yönünde döndürmek için kullanılacak kısayol tuşunu "
+"seçin."
 
 #: src/libvlc-module.c:1595
 msgid "Roll the viewpoint anti-clockwise (360°)"
-msgstr ""
+msgstr "Bakış açısını saat yönünün tersine döndür (360°)"
 
 #: src/libvlc-module.c:1596
 msgid "Select the hotkey to use for viewpoint (360°) anti-clockwise roll."
 msgstr ""
+"Bakış açısını (360°) saat yönünün tersine döndürmek için kullanılacak "
+"kısayol tuşunu seçin."
 
 #: src/libvlc-module.c:1598
 msgid "Toggle wallpaper mode in video output"
@@ -5384,37 +5394,37 @@ msgstr "F12"
 #: src/misc/actions.c:74
 msgctxt "key"
 msgid "F13"
-msgstr ""
+msgstr "F13"
 
 #: src/misc/actions.c:75
 msgctxt "key"
 msgid "F14"
-msgstr ""
+msgstr "F14"
 
 #: src/misc/actions.c:76
 msgctxt "key"
 msgid "F15"
-msgstr ""
+msgstr "F15"
 
 #: src/misc/actions.c:77
 msgctxt "key"
 msgid "F16"
-msgstr ""
+msgstr "F16"
 
 #: src/misc/actions.c:78
 msgctxt "key"
 msgid "F17"
-msgstr ""
+msgstr "F17"
 
 #: src/misc/actions.c:79
 msgctxt "key"
 msgid "F18"
-msgstr ""
+msgstr "F18"
 
 #: src/misc/actions.c:80
 msgctxt "key"
 msgid "F19"
-msgstr ""
+msgstr "F19"
 
 #: src/misc/actions.c:81
 msgctxt "key"
@@ -5424,52 +5434,52 @@ msgstr "F2"
 #: src/misc/actions.c:82
 msgctxt "key"
 msgid "F20"
-msgstr ""
+msgstr "F20"
 
 #: src/misc/actions.c:83
 msgctxt "key"
 msgid "F21"
-msgstr ""
+msgstr "F21"
 
 #: src/misc/actions.c:84
 msgctxt "key"
 msgid "F22"
-msgstr ""
+msgstr "F22"
 
 #: src/misc/actions.c:85
 msgctxt "key"
 msgid "F23"
-msgstr ""
+msgstr "F23"
 
 #: src/misc/actions.c:86
 msgctxt "key"
 msgid "F24"
-msgstr ""
+msgstr "F24"
 
 #: src/misc/actions.c:87
 msgctxt "key"
 msgid "F25"
-msgstr ""
+msgstr "F25"
 
 #: src/misc/actions.c:88
 msgctxt "key"
 msgid "F26"
-msgstr ""
+msgstr "F26"
 
 #: src/misc/actions.c:89
 msgctxt "key"
 msgid "F27"
-msgstr ""
+msgstr "F27"
 
 #: src/misc/actions.c:90
 msgctxt "key"
 msgid "F28"
-msgstr ""
+msgstr "F28"
 
 #: src/misc/actions.c:91
 msgctxt "key"
 msgid "F29"
-msgstr ""
+msgstr "F29"
 
 #: src/misc/actions.c:92
 msgctxt "key"
@@ -5479,32 +5489,32 @@ msgstr "F3"
 #: src/misc/actions.c:93
 msgctxt "key"
 msgid "F30"
-msgstr ""
+msgstr "F30"
 
 #: src/misc/actions.c:94
 msgctxt "key"
 msgid "F31"
-msgstr ""
+msgstr "F31"
 
 #: src/misc/actions.c:95
 msgctxt "key"
 msgid "F32"
-msgstr ""
+msgstr "F32"
 
 #: src/misc/actions.c:96
 msgctxt "key"
 msgid "F33"
-msgstr ""
+msgstr "F33"
 
 #: src/misc/actions.c:97
 msgctxt "key"
 msgid "F34"
-msgstr ""
+msgstr "F34"
 
 #: src/misc/actions.c:98
 msgctxt "key"
 msgid "F35"
-msgstr ""
+msgstr "F35"
 
 #: src/misc/actions.c:99
 msgctxt "key"
@@ -5907,99 +5917,119 @@ msgstr "VLC ortam oynatıcısını güncelle"
 #: src/player/osd.c:169
 #, c-format
 msgid "Volume: %ld%%"
+msgstr "Ses düzeyi: %ld%%"
+
+#: src/player/osd.c:184
+#, c-format
+msgid "Video tracks: %s"
 msgstr ""
 
-#: src/player/osd.c:185 src/player/osd.c:229
+#: src/player/osd.c:185
+#, c-format
+msgid "Video track: %s"
+msgstr ""
+
+#: src/player/osd.c:188
+#, c-format
+msgid "Audio tracks: %s"
+msgstr ""
+
+#: src/player/osd.c:189
+#, c-format
+msgid "Audio track: %s"
+msgstr "Ses kaydı: %s"
+
+#: src/player/osd.c:192
+#, c-format
+msgid "Subtitle tracks: %s"
+msgstr ""
+
+#: src/player/osd.c:193
+#, c-format
+msgid "Subtitle track: %s"
+msgstr "Altyazı kaydı: %s"
+
+#: src/player/osd.c:208 src/player/osd.c:251
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:98
 msgid "N/A"
 msgstr "(yok)"
 
-#: src/player/osd.c:186 src/player/osd.c:229 src/player/osd.c:238
-#, c-format
-msgid "%s track: %s"
-msgstr ""
-
-#: src/player/osd.c:241
-#, c-format
-msgid "%s tracks: %s"
-msgstr ""
-
-#: src/player/osd.c:249
+#: src/player/osd.c:266
 #, c-format
 msgid "Program Service ID: %s"
 msgstr "Program hizmet kodu: %s"
 
-#: src/player/osd.c:292
+#: src/player/osd.c:309
 #, c-format
 msgid "Aspect ratio: %s"
 msgstr "En boy Oranı: %s"
 
-#: src/player/osd.c:296
+#: src/player/osd.c:313
 msgid "Scaled to screen"
 msgstr "Ekrana sığdırın"
 
-#: src/player/osd.c:296
+#: src/player/osd.c:313
 msgid "Original size"
-msgstr ""
+msgstr "Özgün boyut"
 
-#: src/player/osd.c:300
+#: src/player/osd.c:317
 #, c-format
 msgid "Crop: %s"
 msgstr "Kırpma: %s"
 
-#: src/player/osd.c:303
+#: src/player/osd.c:320
 #, c-format
 msgid "Bottom crop: %d px"
-msgstr ""
+msgstr "Alt kırpma: %d piksel"
 
-#: src/player/osd.c:306
+#: src/player/osd.c:323
 #, c-format
 msgid "Top crop: %d px"
-msgstr ""
+msgstr "Üst kırpma: %d piksel"
 
-#: src/player/osd.c:309
+#: src/player/osd.c:326
 #, c-format
 msgid "Left crop: %d px"
-msgstr ""
-
-#: src/player/osd.c:312
-#, c-format
-msgid "Right crop: %d px"
-msgstr ""
-
-#: src/player/osd.c:322
-#, c-format
-msgid "Deinterlace %s (%s)"
-msgstr ""
+msgstr "Sol kırpma: %d piksel"
 
 #: src/player/osd.c:329
+#, c-format
+msgid "Right crop: %d px"
+msgstr "Sağ kırpma: %d piksel"
+
+#: src/player/osd.c:339
+#, c-format
+msgid "Deinterlace %s (%s)"
+msgstr "Taramasızlık %s (%s)"
+
+#: src/player/osd.c:346
 #, c-format
 msgid "Subtitle position %d px"
 msgstr "Altyazı konumu %d piksel"
 
-#: src/player/osd.c:332
+#: src/player/osd.c:349
 #, c-format
 msgid "Secondary subtitle position %d px"
-msgstr ""
+msgstr "İkincil altyazı konumu %d piksel"
 
-#: src/player/osd.c:335
-#, fuzzy, c-format
+#: src/player/osd.c:352
+#, c-format
 msgid "Subtitle text scale %d%%"
-msgstr "Altyazı Metin Kodlayıcısı"
+msgstr "Altyazı metni ölçeği %d%%"
 
-#: src/player/osd.c:340
+#: src/player/osd.c:357
 msgid "Zooming reset"
 msgstr "Büyütmeyi sıfırla"
 
-#: src/player/osd.c:344
+#: src/player/osd.c:361
 #, c-format
 msgid "Zoom mode: %s"
 msgstr "Yakınlaşma kipi: %s"
 
-#: src/player/osd.c:346
+#: src/player/osd.c:363
 #, c-format
 msgid "Zoom: x%.2f"
-msgstr ""
+msgstr "Yakınlaştırma: x%.2f"
 
 #: src/player/player.c:919
 msgid "Next title"
@@ -6012,7 +6042,7 @@ msgstr "Önceki başlık"
 #: src/player/player.c:978
 #, c-format
 msgid "Chapter %ld"
-msgstr ""
+msgstr "Bölüm %ld"
 
 #: src/player/player.c:991
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:59
@@ -6037,34 +6067,49 @@ msgstr "Kayıt ediyor"
 msgid "Recording done"
 msgstr "Kayıt tamamlandı"
 
-#: src/player/player.c:1841 src/player/player.c:1893
+#: src/player/player.c:1844
+#, c-format
+msgid "Audio delay %i ms"
+msgstr "Ses gecikmesi %i ms"
+
+#: src/player/player.c:1846
+#, c-format
+msgid "Subtitle delay %i ms"
+msgstr "Altyazı gecikmesi %i ms"
+
+#: src/player/player.c:1848
+#, c-format
+msgid "Video delay %i ms"
+msgstr ""
+
+#: src/player/player.c:1898
 #, c-format
 msgid "%s delay: %i ms"
-msgstr ""
+msgstr "%s gecikmesi: %i ms"
 
 #: src/player/input.c:912
 msgid "can't seek back"
-msgstr ""
+msgstr "geri sarılamıyor"
 
 #: src/player/input.c:913
 msgid "no video found"
-msgstr ""
+msgstr "görüntü bulunamadı"
 
 #: src/player/input.c:914
 msgid "can't pause/seek/pace"
-msgstr ""
+msgstr "duraklatma/atlama/hız ayarı yapılamıyor"
 
 #: src/player/input.c:915
 msgid "invalid state"
-msgstr ""
+msgstr "geçersiz durum"
 
 #: src/player/input.c:953
 msgid "Next frame error"
-msgstr ""
+msgstr "Sonraki kare hatası"
 
 #: src/player/input.c:969
 msgid "Previous frame error"
-msgstr ""
+msgstr "Önceki kare hatası"
 
 #: src/text/iso-639_def.h:45
 msgid "Abkhazian"
@@ -8142,27 +8187,27 @@ msgstr "Özgün ses"
 
 #: src/video_output/vout_intf.c:144
 msgid "Fill Window"
-msgstr ""
+msgstr "Pencereyi Doldur"
 
 #: src/video_output/vout_intf.c:153
 msgid "Inside Window"
-msgstr ""
+msgstr "Pencereye Sığdır"
 
 #: src/video_output/vout_intf.c:154
 msgid "Outside Window"
-msgstr ""
+msgstr "Pencereyi Kapla"
 
 #: src/video_output/vout_intf.c:155
 msgid "Window Width"
-msgstr ""
+msgstr "Pencere Genişliği"
 
 #: src/video_output/vout_intf.c:156
 msgid "Window Height"
-msgstr ""
+msgstr "Pencere Yüksekliği"
 
 #: src/video_output/vout_intf.c:240
 msgid "video-stereo-output"
-msgstr ""
+msgstr "Stereoskopik görüntü çıkışı"
 
 #: src/video_output/vout_intf.c:258 modules/gui/macosx/menus/VLCMainMenu.m:444
 #: modules/gui/macosx/menus/VLCMainMenu.m:445
@@ -8187,7 +8232,7 @@ msgstr "En boy oranı"
 
 #: src/video_output/vout_intf.c:301
 msgid "Fit Mode"
-msgstr ""
+msgstr "Sığdırma Kipi"
 
 #: lib/core.c:72
 msgid "Generic VLC error"
@@ -9741,11 +9786,12 @@ msgstr "Kullanıcı Adı"
 
 #: modules/access/ftp.c:71 modules/access/rdp.c:58 modules/access/sftp.c:56
 #: modules/access/smb_common.h:22
-#, fuzzy
 msgid ""
 "Username that will be used for the connection, if no username is set in the "
 "URL."
-msgstr " Bağlantı için gereken kullanıcı adı."
+msgstr ""
+"Adreste kullanıcı adı belirtilmemişse bağlantı için kullanılacak kullanıcı "
+"adı."
 
 #: modules/access/ftp.c:73 modules/access/live555.cpp:90
 #: modules/access/rdp.c:60 modules/access/sftp.c:58
@@ -9763,13 +9809,12 @@ msgstr "Parola"
 
 #: modules/access/ftp.c:74 modules/access/rdp.c:61 modules/access/sftp.c:59
 #: modules/access/smb_common.h:25
-#, fuzzy
 msgid ""
 "Password that will be used for the connection, if no username or password "
 "are set in URL."
 msgstr ""
-"İnternet adresinde kullanıcı adı ve parola belirtilmemişse, bağlantının "
-"kullanıcı adını ayarlar."
+"Adreste kullanıcı adı ya da parola belirtilmemişse bağlantı için "
+"kullanılacak parola."
 
 #: modules/access/ftp.c:76
 msgid "FTP account"
@@ -9780,14 +9825,14 @@ msgid "Account that will be used for the connection."
 msgstr "FTP bağlantısı için kullanılacak hesap türü."
 
 #: modules/access/ftp.c:80
-#, fuzzy
 msgid "FTP authentication"
-msgstr "SFTP kimlik doğrulaması"
+msgstr "FTP kimlik doğrulaması"
 
 #: modules/access/ftp.c:81
 #, c-format
 msgid "Please enter a valid login and password for the FTP connection to %s"
 msgstr ""
+"%s adresine FTP bağlantısı için geçerli bir kullanıcı adı ve parola yazın"
 
 #: modules/access/ftp.c:86
 msgid "FTP input"
@@ -9844,14 +9889,12 @@ msgid "Please enter a valid login name and a password for realm %s."
 msgstr "Realm %s için geçerli bir kullanıcı adı ve parola yazın."
 
 #: modules/access/http/access.c:288
-#, fuzzy
 msgid "HTTPS input"
-msgstr "HTTP Girişi"
+msgstr "HTTPS Girişi"
 
 #: modules/access/http/access.c:289
-#, fuzzy
 msgid "HTTPS"
-msgstr "HTTP(S)"
+msgstr "HTTPS"
 
 #: modules/access/http/access.c:295
 msgid "Continuous stream"
@@ -9859,43 +9902,37 @@ msgstr "Sürekli akış"
 
 #: modules/access/http/access.c:296
 msgid "Keep reading a resource that keeps being updated."
-msgstr ""
+msgstr "Sürekli güncellenen bir kaynak okunmaya devam edilir."
 
 #: modules/access/http/access.c:298
-#, fuzzy
 msgid "Cookies forwarding"
-msgstr "İleri gider"
+msgstr "Çerez iletme"
 
 #: modules/access/http/access.c:299
-#, fuzzy
 msgid "Forward cookies across HTTP redirections."
-msgstr ""
-"Bu seçenek etkinleştirildiğinde, HTTP yeniden yönlendirmelerinde çerezler de "
-"iletilir."
+msgstr "Çerezler HTTP yönlendirmeleri boyunca iletilir."
 
 #: modules/access/http/access.c:300
 msgid "Referrer"
-msgstr ""
+msgstr "Yönlendiren"
 
 #: modules/access/http/access.c:301
 msgid "Provide the referral URL, i.e. HTTP \"Referer\" (sic)."
-msgstr ""
+msgstr "Yönlendiren adresi, yani HTTP \"Referer\" (sic) bilgisini sağlar."
 
 #: modules/access/http/access.c:304
-#, fuzzy
 msgid "User agent"
-msgstr "Kullanıcının Tarayıcısı"
+msgstr "Kullanıcı aracısı"
 
 #: modules/access/http/access.c:305
-#, fuzzy
 msgid ""
 "Override the name and version of the application as provided to the HTTP "
 "server, i.e. the HTTP \"User-Agent\". Name and version must be separated by "
 "a forward slash, e.g. \"FooBar/1.2.3\"."
 msgstr ""
-"HTTP sunucusuna iletilecek program adı ve sürümü. Bölü '/' işareti ile "
-"ayrılarak yazılmalıdır. Örneğin Program/1.2.3. Bu değer genel değildir, her "
-"giriş ögesi için ayrı ayrı belirtilir."
+"HTTP sunucusuna iletilen uygulama adını ve sürümünü, yani HTTP \"User-"
+"Agent\" bilgisini değiştirir. Ad ve sürüm bölü işaretiyle ayrılmalıdır, "
+"örneğin \"FooBar/1.2.3\"."
 
 #: modules/access/idummy.c:40 modules/access_output/dummy.c:43
 #: modules/audio_output/adummy.c:36 modules/codec/ddummy.c:45
@@ -10589,9 +10626,8 @@ msgid "Info"
 msgstr "Bilgi"
 
 #: modules/access/rist.h:98 modules/logger/file.c:217
-#, fuzzy
 msgid "Debug"
-msgstr "hata ayıklama"
+msgstr "Hata ayıklama"
 
 #: modules/access/rist.h:98
 msgid "Simulate-Loss"
@@ -10845,9 +10881,8 @@ msgid "SFTP port number to use on the server"
 msgstr "Sunucunun kullandığı SFTP kapı numarası"
 
 #: modules/access/sftp.c:61
-#, fuzzy
 msgid "Private key file"
-msgstr "AES anahtar dosyası"
+msgstr "Özel anahtar dosyası"
 
 #: modules/access/sftp.c:62
 msgid ""
@@ -10855,6 +10890,10 @@ msgid ""
 "assumed to be in the same directory with '.pub' appended. If unset, standard "
 "key paths will be attempted (e.g. '~/.ssh/id_rsa')."
 msgstr ""
+"SSH ortak anahtar kimlik doğrulaması için kullanılan özel anahtar dosyası. "
+"Ortak anahtar dosyasının aynı klasörde, adının sonuna '.pub' eklenmiş olarak "
+"bulunduğu varsayılır. Belirtilmezse standart anahtar yolları denenir "
+"(örneğin '~/.ssh/id_rsa')."
 
 #: modules/access/sftp.c:68
 msgid "SFTP input"
@@ -10868,6 +10907,7 @@ msgstr "SFTP kimlik doğrulaması"
 #, c-format
 msgid "Please enter a valid login and password for the SFTP connection to %s"
 msgstr ""
+"%s adresine SFTP bağlantısı için geçerli bir kullanıcı adı ve parola yazın"
 
 #: modules/access/shm.c:46 modules/access/vnc.c:61
 msgid "Frame buffer depth"
@@ -10949,15 +10989,15 @@ msgstr "Paylaşılmış bellek kare arabelleği"
 
 #: modules/access/smb2.c:104
 msgid "SMB2 / SMB3 input"
-msgstr ""
+msgstr "SMB2 / SMB3 girişi"
 
 #: modules/access/smb2.c:105
 msgid "Samba (Windows network shares) input via libsmb2"
-msgstr ""
+msgstr "libsmb2 ile Samba (Windows ağ paylaşımı) girişi"
 
 #: modules/access/smb2.c:963
 msgid "SMB2 operation failed"
-msgstr ""
+msgstr "SMB2 işlemi başarısız oldu"
 
 #: modules/access/smb_common.h:27
 msgid "SMB domain"
@@ -12799,13 +12839,12 @@ msgid "Length in milliseconds to search for best overlap position"
 msgstr "Milisaniye cinsinden, bulunacak en iyi bindirme konumunun uzunluğu."
 
 #: modules/audio_filter/scaletempo.c:72
-#, fuzzy
 msgid "Pitch Shift"
-msgstr "Aralık"
+msgstr "Perde Kaydırma"
 
 #: modules/audio_filter/scaletempo.c:72
 msgid "Pitch shift in semitones."
-msgstr ""
+msgstr "Yarım ton cinsinden perde kaydırma."
 
 #: modules/audio_filter/spatializer/spatializer.cpp:55
 msgid "Room size"
@@ -13149,22 +13188,23 @@ msgstr "K Audio arayüzü ses çıkışı"
 
 #: modules/audio_output/mmdevice.c:1612
 msgid "HDMI/SPDIF audio passthrough"
-msgstr ""
+msgstr "HDMI/SPDIF ses doğrudan aktarımı"
 
 #: modules/audio_output/mmdevice.c:1614
 msgid ""
 "Change this value if you have issue with HD codecs when using a HDMI "
 "receiver."
 msgstr ""
+"Bir HDMI alıcısı kullanırken HD kodlayıcı/çözücülerle sorun yaşıyorsanız bu "
+"değeri değiştirin."
 
 #: modules/audio_output/mmdevice.c:1622
 msgid "Enabled (AC3/DTS only)"
-msgstr ""
+msgstr "Etkin (yalnızca AC3/DTS)"
 
 #: modules/audio_output/mmdevice.c:1623
-#, fuzzy
 msgid "Enabled"
-msgstr "Etkinleştir"
+msgstr "Etkin"
 
 #: modules/audio_output/mmdevice.c:1626
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:169
@@ -13184,14 +13224,12 @@ msgid "Windows Multimedia Device output"
 msgstr "Windows Çokluortam Aygıtı çıkışı"
 
 #: modules/audio_output/mmdevice.c:1639
-#, fuzzy
 msgid "Output back-end"
-msgstr "Çıkış kartı"
+msgstr "Çıkış arka ucu"
 
 #: modules/audio_output/mmdevice.c:1639
-#, fuzzy
 msgid "Audio output back-end interface."
-msgstr "Ses çıkış aygıtı"
+msgstr "Ses çıkışı arka uç arayüzü."
 
 #: modules/audio_output/oss.c:68
 msgid "OSS device node path."
@@ -16847,10 +16885,10 @@ msgstr "Uzaktan Denetim"
 msgid "Remote control interface"
 msgstr "Uzaktan Denetim Arayüzü"
 
-#: modules/control/cli/player.c:801 modules/control/hotkeys.c:674
+#: modules/control/cli/player.c:801 modules/control/hotkeys.c:677
 #, c-format
 msgid "Audio device: %s"
-msgstr ""
+msgstr "Ses aygıtı: %s"
 
 #: modules/control/cli/player.c:900 modules/gui/ncurses.c:934
 msgid "+-[Incoming]"
@@ -17003,42 +17041,46 @@ msgstr "Genel Kısayol Tuşları"
 msgid "Global Hotkeys interface"
 msgstr "Genel Kısayol Tuşları Arayüzü"
 
-#: modules/control/hotkeys.c:505
-#, c-format
-msgid "%s subtitle control"
+#: modules/control/hotkeys.c:507
+msgid "Primary subtitle control"
 msgstr ""
 
-#: modules/control/hotkeys.c:517
+#: modules/control/hotkeys.c:509
+msgid "Secondary subtitle control"
+msgstr ""
+
+#: modules/control/hotkeys.c:520
 msgid "Sub sync: bookmarked audio time"
 msgstr "Altyazı eşleme: imlenmiş ses zamanı"
 
-#: modules/control/hotkeys.c:521
+#: modules/control/hotkeys.c:524
 msgid "Sub sync: bookmarked subtitle time"
 msgstr "Altyazı eşleme: imlenmiş altyazı zamanı"
 
-#: modules/control/hotkeys.c:528
+#: modules/control/hotkeys.c:531
 msgid "Sub sync: set bookmarks first!"
 msgstr "Altyazı eşleme: önce yer imlerini ayarlayın!"
 
-#: modules/control/hotkeys.c:541
+#: modules/control/hotkeys.c:544
 #, c-format
 msgid "Sub sync: corrected %<PRId64> ms (total delay = %<PRId64> ms)"
 msgstr ""
+"Altyazı eşleme: %<PRId64> ms düzeltildi (toplam gecikme = %<PRId64> ms)"
 
-#: modules/control/hotkeys.c:550
+#: modules/control/hotkeys.c:553
 msgid "Sub sync: delay reset"
 msgstr "Altyazı eşleme: gecikme sıfırlaması"
 
-#: modules/control/hotkeys.c:908
+#: modules/control/hotkeys.c:911
 msgid "Subtitle position: usual"
-msgstr ""
+msgstr "Altyazı konumu: olağan"
 
-#: modules/control/hotkeys.c:910
+#: modules/control/hotkeys.c:913
 #, c-format
 msgid "Subtitle position: %+d%%"
-msgstr ""
+msgstr "Altyazı konumu: %+d%%"
 
-#: modules/control/hotkeys.c:1312
+#: modules/control/hotkeys.c:1315
 msgid "Hotkeys management interface"
 msgstr "Kısayol Tuşları Yönetim Arayüzü"
 
@@ -28747,8 +28789,14 @@ msgid "Shuffle the play queue"
 msgstr "Oynatma kuyruğunu karıştır"
 
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1263
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1269
 msgid "Discard the filtered out items"
 msgstr "Süzgeç dışında kalan ögeleri at"
+
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1270
+msgid ""
+"Do you really want to discard the items that are not displayed at the moment?"
+msgstr ""
 
 #: modules/gui/qt/network/addonsmodel.cpp:330
 msgid "This addon has been installed manually. VLC can't manage it by itself."
@@ -31388,13 +31436,12 @@ msgid "Verbosity"
 msgstr "Günlük ayrıntısı"
 
 #: modules/logger/file.c:229
-#, fuzzy
 msgid ""
 "Select the logging verbosity or default to use the same verbosity given by --"
 "verbose."
 msgstr ""
-"Günlük ayrıntı düzeyini belirleyebilir ya da --verbose ile verilen düzeyi "
-"kullanmak için -1 seçebilirsiniz."
+"Günlük ayrıntı düzeyini seçin ya da --verbose ile verilen ayrıntı düzeyini "
+"kullanmak için varsayılanı seçin."
 
 #: modules/logger/file.c:233
 #, fuzzy
@@ -31416,38 +31463,35 @@ msgstr ""
 
 #: modules/logger/syslog.c:141
 msgid "System log (syslog)"
-msgstr ""
+msgstr "Sistem günlüğü (syslog)"
 
 #: modules/logger/syslog.c:142
 msgid "Emit log messages through the POSIX system log."
-msgstr ""
+msgstr "Günlük iletileri POSIX sistem günlüğüne gönderilir."
 
 #: modules/logger/syslog.c:144
-#, fuzzy
 msgid "Debug messages"
-msgstr "Hata ayıklama maskesi"
+msgstr "Hata ayıklama iletileri"
 
 #: modules/logger/syslog.c:145
 msgid "Include debug messages in system log."
-msgstr ""
+msgstr "Hata ayıklama iletileri sistem günlüğüne eklenir."
 
 #: modules/logger/syslog.c:147
 msgid "Identity"
-msgstr ""
+msgstr "Kimlik"
 
 #: modules/logger/syslog.c:148
 msgid "Process identity in system log."
-msgstr ""
+msgstr "Sistem günlüğündeki işlem kimliği."
 
 #: modules/logger/syslog.c:150
-#, fuzzy
 msgid "Facility"
-msgstr "Yetenek"
+msgstr "Kaynak"
 
 #: modules/logger/syslog.c:151
-#, fuzzy
 msgid "System logging facility."
-msgstr "Syslog özelliği"
+msgstr "Sistem günlüğü kaynak türü."
 
 #: modules/logger/syslog.c:154
 #, fuzzy
@@ -32330,26 +32374,28 @@ msgstr ""
 "Şüpheniz varsa işlemden vazgeçin.\n"
 
 #: modules/misc/gnutls.c:734
-#, fuzzy
 msgid "Use system trust database"
-msgstr "Yakalamada istenen kare hızı."
+msgstr "Sistem güven veritabanı kullanılsın"
 
 #: modules/misc/gnutls.c:736
 msgid ""
 "Trust the root certificates of Certificate Authorities stored in the "
 "operating system trust database to authenticate TLS sessions."
 msgstr ""
+"TLS oturumlarında kimlik doğrulaması için işletim sisteminin güven "
+"veritabanında saklanan Sertifika Yetkilisi kök sertifikalarına güvenilir."
 
 #: modules/misc/gnutls.c:739
-#, fuzzy
 msgid "Trust directory"
-msgstr "Zaman kaydırma klasörü"
+msgstr "Güven klasörü"
 
 #: modules/misc/gnutls.c:741
 msgid ""
 "Trust the root certificates of Certificate Authorities stored in the "
 "specified directory to authenticate TLS sessions."
 msgstr ""
+"TLS oturumlarında kimlik doğrulaması için belirtilen klasörde saklanan "
+"Sertifika Yetkilisi kök sertifikalarına güvenilir."
 
 #: modules/misc/gnutls.c:744
 msgid "TLS cipher priorities"
@@ -32370,11 +32416,11 @@ msgstr "Hızlı (daha hızlı şifreleyicileri kullanılır) "
 
 #: modules/misc/gnutls.c:757
 msgid "Secure 128-bit (or higher)"
-msgstr ""
+msgstr "Güvenli 128 bit (ya da daha yüksek)"
 
 #: modules/misc/gnutls.c:758
 msgid "Secure 256-bit (exclude 128-bit ciphers)"
-msgstr ""
+msgstr "Güvenli 256 bit (128 bit şifreleyiciler hariç)"
 
 #: modules/misc/gnutls.c:763
 msgid "GNU TLS transport layer security"
@@ -32428,35 +32474,35 @@ msgstr "XDG ekran koruyucu engellemesi"
 
 #: modules/misc/medialibrary/medialibrary.cpp:469
 msgid "Recover"
-msgstr ""
+msgstr "Kurtar"
 
 #: modules/misc/medialibrary/medialibrary.cpp:470
 msgid "Recreate"
-msgstr ""
+msgstr "Yeniden oluştur"
 
 #: modules/misc/medialibrary/medialibrary.cpp:470
 msgid "Media database corrupted"
-msgstr ""
+msgstr "Ortam veritabanı bozulmuş"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2728
 msgid "Folders discovered by the media library"
-msgstr ""
+msgstr "Ortam kitaplığının taradığı klasörler"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2729
 msgid "Semicolon separated list of folders to discover media from"
-msgstr ""
+msgstr "Ortamların aranacağı klasörlerin noktalı virgülle ayrılmış listesi"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2732
 msgid "Extra verbose media library logs"
-msgstr ""
+msgstr "Çok ayrıntılı ortam kitaplığı günlükleri"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2735
 msgid "media library"
-msgstr ""
+msgstr "ortam kitaplığı"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2736
 msgid "Organize your media"
-msgstr ""
+msgstr "Ortamlarınızı düzenleyin"
 
 #: modules/misc/playlist/export.c:49
 msgid "M3U playlist export"
@@ -33011,14 +33057,12 @@ msgstr "Bonjour Hizmetleri"
 #: modules/services_discovery/microdns.c:46
 #: modules/services_discovery/microdns.c:59
 #: modules/services_discovery/microdns.c:689
-#, fuzzy
 msgid "mDNS Network Discovery"
-msgstr "Bonjour Hizmetleri"
+msgstr "mDNS Ağ Algılama"
 
 #: modules/services_discovery/microdns.c:66
-#, fuzzy
 msgid "mDNS Renderer Discovery"
-msgstr "Bonjour Hizmetleri"
+msgstr "mDNS Yayın Aygıtı Algılama"
 
 #: modules/services_discovery/mtp.c:326 modules/services_discovery/mtp.c:357
 #: modules/services_discovery/mtp.c:361
@@ -33175,7 +33219,7 @@ msgstr ""
 
 #: modules/services_discovery/upnp.cpp:61
 msgid "Custom SAT>IP channel list URL"
-msgstr ""
+msgstr "Özel SAT>IP kanal listesi adresi"
 
 #: modules/services_discovery/upnp.cpp:65
 #: modules/stream_out/chromecast/cast.cpp:225
@@ -33187,48 +33231,53 @@ msgid ""
 "This sets the HTTP port of the local server used to stream the media to the "
 "UPnP Renderer."
 msgstr ""
+"Ortamı UPnP yayın aygıtına aktarmak için kullanılan yerel sunucunun HTTP "
+"kapısını ayarlar."
 
 #: modules/services_discovery/upnp.cpp:67
 msgid "Lead (ms)"
-msgstr ""
+msgstr "Önde gitme süresi (ms)"
 
 #: modules/services_discovery/upnp.cpp:68
 msgid ""
 "How far ahead of the media's pace the stream goes to the renderer. More "
 "makes a renderer wait longer before it shows a seek."
 msgstr ""
+"Akışın, ortamın akış hızının ne kadar önünde yayın aygıtına gönderildiği. "
+"Daha yüksek değer, yayın aygıtının bir konum değişikliğini göstermeden önce "
+"daha uzun beklemesine neden olur."
 
 #: modules/services_discovery/upnp.cpp:71
 msgid "The UPnP Renderer can receive video."
-msgstr ""
+msgstr "UPnP yayın aygıtı görüntü alabilir."
 
 #: modules/services_discovery/upnp.cpp:74
 msgid "IP Address of the UPnP Renderer."
-msgstr ""
+msgstr "UPnP yayın aygıtının IP adresi."
 
 #: modules/services_discovery/upnp.cpp:75
 msgid "UPnP Renderer port"
-msgstr ""
+msgstr "UPnP yayın aygıtı kapısı"
 
 #: modules/services_discovery/upnp.cpp:76
 msgid "The port used to talk to the UPnP Renderer."
-msgstr ""
+msgstr "UPnP yayın aygıtıyla iletişim için kullanılan kapı."
 
 #: modules/services_discovery/upnp.cpp:77
 msgid "base URL"
-msgstr ""
+msgstr "temel adres"
 
 #: modules/services_discovery/upnp.cpp:78
 msgid "The base Url relative to which all other UPnP operations must be called"
-msgstr ""
+msgstr "Diğer tüm UPnP işlemlerinin ona göre çağrılması gereken temel adres"
 
 #: modules/services_discovery/upnp.cpp:79
 msgid "description URL"
-msgstr ""
+msgstr "açıklama adresi"
 
 #: modules/services_discovery/upnp.cpp:80
 msgid "The Url used to get the xml descriptor of the UPnP Renderer"
-msgstr ""
+msgstr "UPnP yayın aygıtının XML tanımlayıcısını almak için kullanılan adres"
 
 #: modules/services_discovery/upnp.cpp:130
 #: modules/services_discovery/upnp.cpp:138
@@ -33239,19 +33288,19 @@ msgstr "Evrensel Tak ve Çalıştır"
 #: modules/services_discovery/upnp.cpp:131
 #: modules/services_discovery/upnp.cpp:156
 msgid "UPnP Renderer Discovery"
-msgstr ""
+msgstr "UPnP Yayın Aygıtı Algılama"
 
 #: modules/services_discovery/upnp.cpp:166
 msgid "UPnP/DLNA stream output"
-msgstr ""
+msgstr "UPnP/DLNA akış çıkışı"
 
 #: modules/services_discovery/upnp.cpp:193
 msgid "UPnP/DLNA demux filter"
-msgstr ""
+msgstr "UPnP/DLNA tekleyici süzgeci"
 
 #: modules/services_discovery/upnp.cpp:202
 msgid "Universal Plug'n'Play Server"
-msgstr ""
+msgstr "Evrensel Tak ve Çalıştır Sunucusu"
 
 #: modules/services_discovery/xcb_apps.c:54
 #: modules/services_discovery/xcb_apps.c:55
@@ -35103,13 +35152,12 @@ msgid "Font file for the font you want to use"
 msgstr "Kullanmak istediğiniz yazı türü dosyasının adı"
 
 #: modules/text_renderer/freetype/freetype.c:66
-#, fuzzy
 msgid ""
 "The opacity (inverse of transparency) of the text that will be rendered on "
 "the video. 0 = transparent, 255 = totally opaque."
 msgstr ""
-"Görüntü üzerine eklenecek metnin matlığı (saydamlığın tersi). 0 tamamen "
-"saydam, 255 tamamen mat."
+"Görüntü üzerine eklenecek metnin matlığı (saydamlığın tersi). 0 = saydam, "
+"255 = tamamen mat."
 
 #: modules/text_renderer/freetype/freetype.c:69
 msgid "Text default color"
@@ -35136,6 +35184,8 @@ msgid ""
 "The size of the text in pixels of the picture. 0 sizes it from the picture "
 "(see the text scale)."
 msgstr ""
+"Görüntünün pikselleri cinsinden metin boyutu. 0 değeri boyutu görüntüye göre "
+"belirler (metin ölçeğine bakın)."
 
 #: modules/text_renderer/freetype/freetype.c:91
 msgid "Cache size"
@@ -35147,7 +35197,7 @@ msgstr ""
 
 #: modules/text_renderer/freetype/freetype.c:95
 msgid "Paragraph base direction for the Unicode bi-directional algorithm."
-msgstr ""
+msgstr "Unicode çift yönlü algoritması için paragraf temel yönü."
 
 #: modules/text_renderer/freetype/freetype.c:98
 msgid "Use YUVP renderer"
@@ -37915,6 +37965,18 @@ msgstr ""
 msgid "Are you sure you wish to create the stream?"
 msgstr " Akışı oluşturmak istediğinize emin misiniz?"
 
+#, c-format
+#~ msgid "%s track: %s"
+#~ msgstr "%s kaydı: %s"
+
+#, c-format
+#~ msgid "%s tracks: %s"
+#~ msgstr "%s kayıtları: %s"
+
+#, c-format
+#~ msgid "%s subtitle control"
+#~ msgstr "Altyazı denetimi: %s"
+
 #~ msgid "%1 more matching shortcuts"
 #~ msgstr "Eşleşen %1 kısayol daha"
 
@@ -39819,22 +39881,6 @@ msgstr " Akışı oluşturmak istediğinize emin misiniz?"
 #, c-format
 #~ msgid "Sub sync: corrected %i ms (total delay = %i ms)"
 #~ msgstr "Altyazı eşleme: %i milisaniye düzeltildi (toplam gecikme = %i ms)"
-
-#, c-format
-#~ msgid "Subtitle delay %i ms"
-#~ msgstr "Altyazı gecikmesi %i ms"
-
-#, c-format
-#~ msgid "Audio delay %i ms"
-#~ msgstr "Ses gecikmesi %i ms"
-
-#, c-format
-#~ msgid "Audio track: %s"
-#~ msgstr "Ses kaydı: %s"
-
-#, c-format
-#~ msgid "Subtitle track: %s"
-#~ msgstr "Altyazı kaydı: %s"
 
 #~ msgid "Original Size"
 #~ msgstr "Özgün Boyut"

@@ -231,6 +231,8 @@ MainCtx::MainCtx(qt_intf_t *_p_intf)
     // before the updater and the subtitle finder read them
     applySetupChoices();
 
+    setRightToLeft(getSettings()->value(QStringLiteral("redesign/right-to-left"), false).toBool());
+
     loadPrefs(false);
     loadFromSettingsImpl(false);
 
@@ -470,6 +472,8 @@ void MainCtx::setOnlineChoicesMade()
 //   [privacy]
 //   update-check=true|false      (redesign-update-check, absent: as it is)
 //   subtitle-search=true|false   (SubtitlePreferences' auto-search)
+//   [interface]
+//   right-to-left=true|false     (redesign/right-to-left: the layout)
 void MainCtx::applySetupChoices()
 {
     char *dir = config_GetUserDir(VLC_CONFIG_DIR);
@@ -490,6 +494,9 @@ void MainCtx::applySetupChoices()
         }
         if (subtitleSearch.isValid())
             getSettings()->setValue(QStringLiteral("redesign/subtitle-auto-search"), subtitleSearch.toBool());
+        const QVariant rightToLeft = choices.value(QStringLiteral("interface/right-to-left"));
+        if (rightToLeft.isValid())
+            getSettings()->setValue(QStringLiteral("redesign/right-to-left"), rightToLeft.toBool());
         msg_Dbg(p_intf, "setup choices: update check %s, online subtitles %s",
                 updateCheck.isValid() ? (updateCheck.toBool() ? "on" : "off") : "as it was",
                 subtitleSearch.isValid() ? (subtitleSearch.toBool() ? "on" : "off") : "as it was");
@@ -803,6 +810,15 @@ void MainCtx::setHasToolbarMenu( bool hasToolbarMenu )
     config_PutInt("qt-menubar", (int) hasToolbarMenu);
 
     emit hasToolbarMenuChanged();
+}
+
+void MainCtx::setRightToLeft(bool rightToLeft)
+{
+    QGuiApplication::setLayoutDirection(rightToLeft ? Qt::RightToLeft : Qt::LeftToRight);
+    if (m_rightToLeft == rightToLeft)
+        return;
+    m_rightToLeft = rightToLeft;
+    emit rightToLeftChanged();
 }
 
 void MainCtx::setPinVideoControls(bool pinVideoControls)
@@ -1273,9 +1289,8 @@ void MainCtx::applyInterfaceLanguage(const QString &iso)
         return;
     m_interfaceLanguage = code;
     vlc_settextlanguage(qtu(code));
-    const QLocale locale(code);
-    QLocale::setDefault(locale);
-    QGuiApplication::setLayoutDirection(locale.textDirection());
+    QLocale::setDefault(QLocale(code));
+    // (the direction is a setting of its own: rightToLeft)
     // the widgets get it from the application (QEvent::LanguageChange)
     QCoreApplication::postEvent(QCoreApplication::instance(), new QEvent(QEvent::LanguageChange));
     emit interfaceLanguageChanged();

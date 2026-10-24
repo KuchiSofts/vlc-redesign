@@ -49,7 +49,7 @@ Item {
     Accessible.name: qsTr("Main interface")
     AccessibleCompat.id: "mainInterface"
 
-    // Right to left in Hebrew, Arabic... (MainCtx.applyInterfaceLanguage):
+    // Right to left when chosen (Settings > Appearance, MainCtx.rightToLeft):
     // the whole interface is mirrored (popups and other windows have roots
     // of their own)
     LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft

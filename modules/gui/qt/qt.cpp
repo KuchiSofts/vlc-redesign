@@ -964,7 +964,7 @@ static void *Thread( void *obj )
     }
     {
         // The language VLC started in (bin/winvlc.c), not the one of Windows:
-        // its numbers and dates, and its direction (below)
+        // its numbers and dates
         const QString iso = interfaceLanguage();
         QLocale::setDefault( QLocale( iso == QLatin1String( "auto" ) ? QLocale::system().name() : iso ) );
     }
@@ -1003,9 +1003,9 @@ static void *Thread( void *obj )
 
     //app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings);
 
-    /* Set application direction to locale direction,
-     * necessary for  RTL locales */
-    app.setLayoutDirection(QLocale().textDirection());
+    /* The direction is a setting of the interface, whatever the language:
+     * left to right unless right to left is chosen (MainCtx::rightToLeft) */
+    app.setLayoutDirection(Qt::LeftToRight);
 
     /* The redesign uses Inter everywhere: as the application font, it also
      * reaches the widget dialogs and the QML text without a font family */

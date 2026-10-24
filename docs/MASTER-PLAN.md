@@ -816,7 +816,9 @@ and an accepted request made the TV fail after a pause in a test.
 - 🔴 Code-signed builds (decision 2)
 - 🟡 Automated tests in CI: launch, playback, QML warnings (extras/juxtopposed/ci/launch-test.ps1 and its job in
   build-windows.yml, passing on this PC; it runs on GitHub once uploaded)
-- 🔴 Intel graphics, older PCs, Windows 10 on real hardware, high-DPI multi-monitor
+- 🔴 Intel graphics, older PCs, Windows 10 on real hardware, high-DPI multi-monitor (2026-10-24: the app drawn at
+  125, 150, 175 and 200 % has the layout of 100 % on every page checked, with sharp text, and its caption buttons
+  and top edge answer Windows where they are drawn; still to do: monitors of different scales, a real one above 100 %)
 - ⚪ Our VLC core fixes (pipes, freezes, filters, conversion, casting) offered to VideoLAN
 
 ### 8.10 Release checklist

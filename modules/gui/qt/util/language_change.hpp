@@ -11,8 +11,11 @@
 #ifndef VLC_QT_LANGUAGE_CHANGE_HPP
 #define VLC_QT_LANGUAGE_CHANGE_HPP
 
+#include <QFontDatabase>
+#include <QLocale>
 #include <QObject>
 #include <QQmlEngine>
+#include <QStringList>
 
 // The language of the interface changes while VLC runs
 // (MainCtx::applyInterfaceLanguage): the QML engine then makes the bindings
@@ -28,6 +31,43 @@ inline void markTranslationBinding(const QObject *object)
         engine->markCurrentFunctionAsTranslationBinding();
 #else
     Q_UNUSED(object);
+#endif
+}
+
+// The characters Inter does not draw come from the fallback fonts Windows
+// lists for its own language: Chinese in Simplified on an English or a
+// Japanese Windows had its characters in two fonts, the ones the first
+// lacked thinner. The interface language picks the fonts of its script.
+inline void applyLanguageFonts(const QLocale &locale)
+{
+#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0) && defined(_WIN32)
+    QStringList han, kana, hangul;
+    switch (locale.language())
+    {
+    case QLocale::Chinese:
+        han = locale.script() == QLocale::TraditionalHanScript
+            ? QStringList{ QStringLiteral("Microsoft JhengHei UI"), QStringLiteral("Microsoft JhengHei") }
+            : QStringList{ QStringLiteral("Microsoft YaHei UI"), QStringLiteral("Microsoft YaHei") };
+        break;
+    case QLocale::Japanese:
+        han = kana = { QStringLiteral("Yu Gothic UI"), QStringLiteral("Meiryo UI"), QStringLiteral("Meiryo") };
+        break;
+    case QLocale::Korean:
+        han = hangul = { QStringLiteral("Malgun Gothic") };
+        break;
+    default:
+        break;
+    }
+    const auto set = [](QChar::Script script, const QStringList &families) {
+        if (QFontDatabase::applicationFallbackFontFamilies(script) != families)
+            QFontDatabase::setApplicationFallbackFontFamilies(script, families);
+    };
+    set(QChar::Script_Han, han);
+    set(QChar::Script_Hiragana, kana);
+    set(QChar::Script_Katakana, kana);
+    set(QChar::Script_Hangul, hangul);
+#else
+    Q_UNUSED(locale);
 #endif
 }
 

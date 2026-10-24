@@ -13669,7 +13669,9 @@ msgid ""
 "the IDR-frame. \n"
 "If scenecuts appear within this interval, they are still encoded as I-"
 "frames, but do not start a new GOP."
-msgstr "Nastaví minimálny interval medzi jednotlivými ID-R snímkami."
+msgstr ""
+"Nastaví minimálny interval medzi jednotlivými IDR snímkami. V H.264 I-snímky nemusia nevyhnutne ohraničovať uzavretú GOP, pretože P-snímka môže byť predpovedaná z viacerých snímok než len z jednej snímky pred ňou (pozrite aj voľbu referenčných snímok). Preto nemusí byť vždy možné presunúť sa na I-snímku. IDR-snímky zabraňujú nasledujúcim P-snímkam odkazovať na akúkoľvek snímku pred IDR-snímkou. \n"
+"Ak sa v tomto intervale objavia strihy scén, stále sa zakódujú ako I-snímky, ale nezačnú novú GOP."
 
 #: modules/codec/x264.c:86
 msgid "Use recovery points to close GOPs"

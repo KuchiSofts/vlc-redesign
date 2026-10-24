@@ -18537,7 +18537,7 @@ msgid ""
 "Multiply subtitle duration by this value.\n"
 "Set 0 to disable."
 msgstr ""
-"Suurenda subtiitrite kestvust selle väärtuse võrra.\n"
+"Korruta subtiitrite kestvus selle väärtusega.\n"
 "Määra 0 keelamaks."
 
 #: modules/gui/macosx/VLCTrackSynchronizationWindowController.m:76
@@ -24826,7 +24826,7 @@ msgstr "Elementaarvoo ID"
 
 #: modules/stream_out/delay.c:41 modules/stream_out/setid.c:43
 msgid "Specify an identifier integer for this elementary stream"
-msgstr "Määra sellele pildipealdisele indetifitseeriv string"
+msgstr "Määra sellele elementaarvoole identifitseeriv täisarv"
 
 #: modules/stream_out/delay.c:43
 msgid "Delay of the ES (ms)"

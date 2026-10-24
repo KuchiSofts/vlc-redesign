@@ -9474,6 +9474,7 @@ msgid "Stream public"
 msgstr "स्ट्रीम पब्लिक"
 
 #: modules/access_output/shout.c:105
+#, fuzzy
 msgid ""
 "Make the server publicly available on the 'Yellow Pages' (directory listing "
 "of streams) on the icecast/shoutcast website. Requires the bitrate "
@@ -15046,17 +15047,17 @@ msgstr "+-[वीडियो डीकोडिंग]"
 #: modules/control/oldrc.c:1738 modules/gui/ncurses.c:824
 #, c-format
 msgid "| video decoded    :    %5<PRIi64>"
-msgstr "वीडियो डीकोड कए देब गेल:% <PRId64>"
+msgstr "| वीडियो डीकोड कए देब गेल    :    %5<PRIi64>"
 
 #: modules/control/oldrc.c:1740 modules/gui/ncurses.c:826
 #, c-format
 msgid "| frames displayed :    %5<PRIi64>"
-msgstr "प्रदर्शित फ्रेम्स :नहि% <PRId64>"
+msgstr "| प्रदर्शित फ्रेम्स :    %5<PRIi64>"
 
 #: modules/control/oldrc.c:1742 modules/gui/ncurses.c:828
 #, c-format
 msgid "| frames lost      :    %5<PRIi64>"
-msgstr "      फ्रेम्स खो गेल      :    %<PRId64>"
+msgstr "| फ्रेम्स खो गेल      :    %5<PRIi64>"
 
 #: modules/control/oldrc.c:1746 modules/gui/ncurses.c:834
 msgid "+-[Audio Decoding]"
@@ -15065,17 +15066,17 @@ msgstr "+-[आडियो डिकोडिंग]"
 #: modules/control/oldrc.c:1747 modules/gui/ncurses.c:836
 #, c-format
 msgid "| audio decoded    :    %5<PRIi64>"
-msgstr "डीकोडेड आडियो:% <PRId64>"
+msgstr "| डीकोडेड आडियो    :    %5<PRIi64>"
 
 #: modules/control/oldrc.c:1749 modules/gui/ncurses.c:838
 #, c-format
 msgid "| buffers played   :    %5<PRIi64>"
-msgstr "बफ़र्स चला देल गेल अछि:% <PRId64>"
+msgstr "| बफ़र्स चला देल गेल अछि   :    %5<PRIi64>"
 
 #: modules/control/oldrc.c:1751 modules/gui/ncurses.c:840
 #, c-format
 msgid "| buffers lost     :    %5<PRIi64>"
-msgstr "बफ़र्स खो देब अछि:% <PRId64>"
+msgstr "| बफ़र्स खो गेल     :    %5<PRIi64>"
 
 #: modules/control/oldrc.c:1755 modules/gui/ncurses.c:845
 msgid "+-[Streaming]"
@@ -28929,7 +28930,8 @@ msgstr "धारा बन जाए क बाद, <i>मीडिया द�
 #: share/lua/http/index.html:269
 msgid ""
 "Volume will be controlled by the player, and not the <i>Main Controls</i>."
-msgstr "वाल्यूम प्लयेर द्वारा नियंत्रित कएल जएताह, आओर </ i>मुख्य नियंत्रक <i> द्वारा नहि."
+msgstr ""
+"वाल्यूम प्लेयर द्वारा नियंत्रित कएल जएताह, आओर <i>मुख्य नियंत्रक</i> द्वारा नहि."
 
 #: share/lua/http/index.html:272
 msgid ""
@@ -28945,8 +28947,7 @@ msgid ""
 "To stop the stream and resume normal controls, click the <i>Open Stream</i> "
 "button again."
 msgstr ""
-"स्ट्रीम केँ रोकब क लेल आओर सामान्य नियंत्रण केँ फिनु सँ शुरू करबाक लेल,  फिनु सँ <i>खुलल "
-"स्ट्रीम</ i> बटन पर क्लिक करू."
+"स्ट्रीम केँ रोकब क लेल आओर सामान्य नियंत्रण केँ फिनु सँ शुरू करबाक लेल, फिनु सँ <i>खुलल स्ट्रीम</i> बटन पर क्लिक करू."
 
 #: share/lua/http/index.html:278
 msgid "Are you sure you wish to create the stream?"

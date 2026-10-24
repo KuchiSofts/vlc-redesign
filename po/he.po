@@ -801,8 +801,7 @@ msgid ""
 "Dumped content to vlc-help.txt file.\n"
 msgstr ""
 "\n"
-"↵\n"
-"המידע נשמר לתוך הקובץ vlc-help.txt↵\n"
+"המידע נשמר לתוך הקובץ vlc-help.txt.\n"
 
 #: src/config/help.c:746
 msgid ""
@@ -36277,7 +36276,7 @@ msgstr "לאחר יצירת התזרים חלון <b>מציג המדיה</b> י�
 #: share/lua/http/index.html:296
 msgid ""
 "Volume will be controlled by the player, and not the <i>Main Controls</i>."
-msgstr "עוצמת השמע תבוקר על ידי הנגן ולא באמצעות הפקדים הראשיים."
+msgstr "עוצמת השמע תבוקר על ידי הנגן ולא באמצעות <i>הפקדים הראשיים</i>."
 
 #: share/lua/http/index.html:299
 msgid ""

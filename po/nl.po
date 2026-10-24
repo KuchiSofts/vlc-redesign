@@ -4412,7 +4412,7 @@ msgstr "Geluid zachter"
 
 #: src/libvlc-module.c:1312
 msgid "Select the key to decrease audio volume."
-msgstr "Selecteer de sneltoets om het geluid harder te zetten."
+msgstr "Selecteer de sneltoets om het geluid zachter te zetten."
 
 #: src/libvlc-module.c:1313 modules/access/v4l2/v4l2.c:181
 #: modules/gui/macosx/VLCMainMenu.m:407 modules/gui/macosx/VLCMainMenu.m:491
@@ -26856,7 +26856,7 @@ msgstr "Aantal keren mengen"
 
 #: modules/video_filter/blendbench.c:54
 msgid "The number of time the blend will be performed"
-msgstr "Aantal keer dat dezelfde invoer herhaald wordt"
+msgstr "Het aantal keren dat het mengen wordt uitgevoerd"
 
 #: modules/video_filter/blendbench.c:56
 msgid "Alpha of the blended image"

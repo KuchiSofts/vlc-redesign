@@ -15989,12 +15989,14 @@ msgid "Separate sub-streams"
 msgstr "উপ-ষ্ট্ৰিমবোৰ পৃথক কৰক"
 
 #: modules/demux/mpeg/ts.c:106
+#, fuzzy
 msgid ""
 "Separate teletex/dvbs pages into independent ES. It can be useful to turn "
 "off this option when using stream output."
 msgstr "অডিঅ' ষ্ট্ৰিমটো প্ৰক্ৰিয়া কৰিবলৈ অডিঅ' ফিল্টাৰবোৰ ব্যৱহাৰ কৰা হয়."
 
 #: modules/demux/mpeg/ts.c:111
+#, fuzzy
 msgid ""
 "Seek and position based on a percent byte position, not a PCR generated time "
 "position. If seeking doesn't work property, turn on this option."
@@ -16976,6 +16978,7 @@ msgstr "বিশ্লেষণ"
 
 #: modules/gui/macosx/VLCConvertAndSaveWindowController.m:166
 #: modules/gui/qt/ui/profiles.h:740
+#, fuzzy
 msgid ""
 "You just need to fill one of the three following parameters, VLC will "
 "autodetect the other using the original aspect ratio"
@@ -17198,6 +17201,7 @@ msgid "Opaqueness"
 msgstr "অপাৰদৰ্শিতা"
 
 #: modules/gui/macosx/macosx.m:57
+#, fuzzy
 msgid ""
 "Set the transparency of the video output. 1 is non-transparent (default) 0 "
 "is fully transparent."
@@ -17335,6 +17339,7 @@ msgid "Resize interface to the native video size"
 msgstr "স্থানীয় ভিডিঅ' আকাৰটোলৈ ইন্টাৰফেছ পুনৰ আকাৰ কৰক"
 
 #: modules/gui/macosx/macosx.m:99 modules/gui/qt/qt.cpp:96
+#, fuzzy
 msgid ""
 "You have two choices:\n"
 " - The interface will resize to the native video size\n"
@@ -17350,6 +17355,7 @@ msgid "Pause the video playback when minimized"
 msgstr "ভিডিঅ' প্লেবেকটোক বিৰতি দিয়ক যেতিয়া সৰু কৰে"
 
 #: modules/gui/macosx/macosx.m:105 modules/gui/qt/qt.cpp:180
+#, fuzzy
 msgid ""
 "With this option enabled, the playback will be automatically paused when "
 "minimizing the window."
@@ -17362,6 +17368,7 @@ msgid "Allow automatic icon changes"
 msgstr "স্বয়ংক্ৰিয় আইকন সলনিবোৰৰ অনুমতি দিয়ক"
 
 #: modules/gui/macosx/macosx.m:109 modules/gui/qt/qt.cpp:184
+#, fuzzy
 msgid ""
 "This option allows the interface to change its icon on various occasions."
 msgstr ""
@@ -20921,6 +20928,7 @@ msgid "Retrieves extra info and art for playlist items"
 msgstr ""
 
 #: modules/gui/qt/dialogs/plugins.cpp:396
+#, fuzzy
 msgid ""
 "Extensions brings various enhancements. Check descriptions for more details"
 msgstr ""
@@ -20940,6 +20948,7 @@ msgid "No addons found"
 msgstr "কোনো এডঅন বিচাৰি পোৱা নগল"
 
 #: modules/gui/qt/dialogs/plugins.cpp:813
+#, fuzzy
 msgid "This addon has been installed manually. VLC can't manage it by itself."
 msgstr ""
 "আউটপুট ফাইলটো ইতিমধ্যে বৰ্তি আছে. যদি ৰেকৰ্ডি অব্যাহত থাকে, তেন্তে ফাইলটো অভাৰৰাইড "
@@ -21049,6 +21058,7 @@ msgstr ""
 "\" বাটন অব্যাহত ৰাখিবলৈ.\n"
 
 #: modules/gui/qt/dialogs/sout.cpp:58
+#, fuzzy
 msgid ""
 "Stream output string.\n"
 "This is automatically generated when you change the above settings,\n"
@@ -21737,6 +21747,7 @@ msgid "Activate the updates availability notification"
 msgstr "আপডেটবোৰৰ উপলব্ধ জাননীটো সক্ৰিয় কৰক"
 
 #: modules/gui/qt/qt.cpp:125
+#, fuzzy
 msgid ""
 "Activate the automatic notification of new versions of the software. It runs "
 "once every two weeks."
@@ -21790,6 +21801,7 @@ msgid "Selection of the starting mode and look"
 msgstr "আৰম্ভণিৰ ধৰণ আৰু দৃশ্যটো নিৰ্বাচন"
 
 #: modules/gui/qt/qt.cpp:145
+#, fuzzy
 msgid ""
 "Start VLC with:\n"
 " - normal mode\n"
@@ -21856,6 +21868,7 @@ msgid "Ignore keyboard volume buttons."
 msgstr "কীবোৰ্ড প্ৰসাৰ বাটনবোৰ অৱজ্ঞা কৰক."
 
 #: modules/gui/qt/qt.cpp:173
+#, fuzzy
 msgid ""
 "With this option checked, the volume up, volume down and mute buttons on "
 "your keyboard will always change your system volume. With this option "
@@ -21974,6 +21987,7 @@ msgid "Enable transparency effects"
 msgstr "স্বচ্ছতাৰ প্ৰভৱবোৰ সক্ষম কৰক"
 
 #: modules/gui/skins2/src/skin_main.cpp:494
+#, fuzzy
 msgid ""
 "You can disable all transparency effects if you want. This is mainly useful "
 "when moving windows does not behave correctly."
@@ -21991,6 +22005,7 @@ msgid "Display video in a skinned window if any"
 msgstr "এখন স্কিন কৰা উইণ্ডোত ভিডিঅ' প্ৰদৰ্শন কৰক যদি আছে"
 
 #: modules/gui/skins2/src/skin_main.cpp:501
+#, fuzzy
 msgid ""
 "When set to 'no', this parameter is intended to give old skins a chance to "
 "play back video even though no video tag is implemented"
@@ -22130,6 +22145,7 @@ msgid "VideoCore layer where the video is displayed."
 msgstr "ভিডিঅ' মুখ্য স্তৰটো যত ভিডিঅ'টো প্ৰদৰ্শন কৰা হয়."
 
 #: modules/hw/mmal/vout.c:51
+#, fuzzy
 msgid ""
 "VideoCore layer where the video is displayed. Subpictures are displayed "
 "directly above and a black background directly below."
@@ -22525,6 +22541,7 @@ msgid "Lua interface configuration"
 msgstr "লুৱা ইন্টাৰফেছ ৰূপৰেখাকৰণ"
 
 #: modules/lua/vlc.c:53
+#, fuzzy
 msgid ""
 "Lua interface configuration string. Format is: '[\"<interface module name>"
 "\"] = { <option> = <value>, ...}, ...'."
@@ -22549,6 +22566,7 @@ msgid "Allow to build directory index"
 msgstr "নিৰ্দেশিকা সূচী প্ৰস্তুত কৰিবলৈ অনুমতি দিয়ক"
 
 #: modules/lua/vlc.c:63
+#, fuzzy
 msgid ""
 "This is the host on which the interface will listen. It defaults to all "
 "network interfaces (0.0.0.0). If you want this interface to be available "
@@ -22558,6 +22576,7 @@ msgstr ""
 "কৰা হব আৰু ইয়াৰ উপাদনবোৰ হেৰাব."
 
 #: modules/lua/vlc.c:68
+#, fuzzy
 msgid ""
 "This is the TCP port on which this interface will listen. It defaults to "
 "4212."
@@ -23253,6 +23272,7 @@ msgid "last.fm: Authentication failed"
 msgstr "last.fm: বৈধতা ব্যৰ্থ হল"
 
 #: modules/misc/audioscrobbler.c:567
+#, fuzzy
 msgid ""
 "last.fm username or password is incorrect. Please verify your settings and "
 "relaunch VLC."
@@ -23378,6 +23398,7 @@ msgid "TLS cipher priorities"
 msgstr "TLS চিফাৰ অগ্ৰাধিকাৰবোৰ"
 
 #: modules/misc/gnutls.c:759
+#, fuzzy
 msgid ""
 "Ciphers, key exchange methods, hash functions and compression methods can be "
 "selected. Refer to GNU TLS documentation for detailed syntax."
@@ -23586,6 +23607,7 @@ msgid "Bitrate override"
 msgstr "বিট হাৰ অভাৰৰাইড"
 
 #: modules/mux/asf.c:69
+#, fuzzy
 msgid ""
 "Do not try to guess ASF bitrate. Setting this, allows you to control how "
 "Windows Media Player will cache streamed content. Set to audio+video bitrate "
@@ -23623,6 +23645,7 @@ msgid "Create \"Fast Start\" files"
 msgstr "\"Fast Start\" ফাইলবোৰ তৈয়াৰ কৰক"
 
 #: modules/mux/mp4/mp4.c:52
+#, fuzzy
 msgid ""
 "Create \"Fast Start\" files. \"Fast Start\" files are optimized for "
 "downloads and allow the user to start previewing the file while it is "
@@ -23644,6 +23667,7 @@ msgid "DTS delay (ms)"
 msgstr "DTS বিলম্ব (ms)"
 
 #: modules/mux/mpeg/ps.c:49
+#, fuzzy
 msgid ""
 "Delay the DTS (decoding time stamps) and PTS (presentation timestamps) of "
 "the data in the stream, compared to the SCRs. This allows for some buffering "
@@ -23733,6 +23757,7 @@ msgid "Mux PMT (requires --sout-ts-es-id-pid)"
 msgstr "মাক্স PMT (দাবী কৰে --ছাউট-ts-es-id-pid)"
 
 #: modules/mux/mpeg/ts.c:121
+#, fuzzy
 msgid ""
 "Define the pids to add to each pmt. This requires \"Set PID to ID of ES\" to "
 "be enabled."
@@ -23770,6 +23795,7 @@ msgid "Data alignment"
 msgstr "ডাটা শাৰী কৰা"
 
 #: modules/mux/mpeg/ts.c:134
+#, fuzzy
 msgid ""
 "Enforces alignment of all access units on PES boundaries. Disabling this "
 "might save some bandwidth but introduce incompatibilities."
@@ -23782,6 +23808,7 @@ msgid "Shaping delay (ms)"
 msgstr "আকৃতি প্ৰদানৰ বিলম্ব (ms)"
 
 #: modules/mux/mpeg/ts.c:138
+#, fuzzy
 msgid ""
 "Cut the stream in slices of the given duration, and ensure a constant "
 "bitrate between the two boundaries. This avoids having huge bitrate peaks, "
@@ -23795,6 +23822,7 @@ msgid "Use keyframes"
 msgstr "কীফ্ৰেমবোৰ ব্যৱহাৰ কৰক"
 
 #: modules/mux/mpeg/ts.c:144
+#, fuzzy
 msgid ""
 "If enabled, and shaping is specified, the TS muxer will place the boundaries "
 "at the end of I pictures. In that case, the shaping duration given by the "
@@ -23810,6 +23838,7 @@ msgid "PCR interval (ms)"
 msgstr "PCR অন্তৰাল (ms)"
 
 #: modules/mux/mpeg/ts.c:152
+#, fuzzy
 msgid ""
 "Set at which interval PCRs (Program Clock Reference) will be sent (in "
 "milliseconds). This value should be below 100ms. (default is 70ms)."
@@ -23830,6 +23859,7 @@ msgid "Maximum B (deprecated)"
 msgstr "সৰ্বাধিক B (বিৰোধ কৰা হল)"
 
 #: modules/mux/mpeg/ts.c:163
+#, fuzzy
 msgid ""
 "Delay the DTS (decoding time stamps) and PTS (presentation timestamps) of "
 "the data in the stream, compared to the PCRs. This allows for some buffering "
@@ -24001,6 +24031,7 @@ msgid "Sync on Intra Frame"
 msgstr "অন্ত: ফ্ৰেমত ছিনক্ৰনাইজ কৰক"
 
 #: modules/packetizer/mpegvideo.c:61
+#, fuzzy
 msgid ""
 "Normally the packetizer would sync on the next full frame. This flags "
 "instructs the packetizer to sync on the first Intra Frame found."
@@ -24153,6 +24184,7 @@ msgid "Try to parse the announce"
 msgstr "ঘোষণাটো ভাগ কৰিবলৈ চেষ্টা কৰক"
 
 #: modules/services_discovery/sap.c:92
+#, fuzzy
 msgid ""
 "This enables actual parsing of the announces by the SAP module. Otherwise, "
 "all announcements are parsed by the \"live555\" (RTP/RTSP) module."
@@ -24378,6 +24410,7 @@ msgid "Overlay"
 msgstr "অভাৰলে কৰক"
 
 #: modules/spu/logo.c:50
+#, fuzzy
 msgid ""
 "Full path of the image files to use. Format is <image>[,<delay in ms>[,"
 "<alpha>]][;<image>[,<delay>[,<alpha>]]][;...]. If you only have one file, "
@@ -24455,6 +24488,7 @@ msgid "Logo video filter"
 msgstr "ল'গ'ৰ ভিডিঅ' ফিল্টাৰ "
 
 #: modules/spu/marq.c:90
+#, fuzzy
 msgid ""
 "Marquee text to display. (Available format strings: %Y = year, %m = month, "
 "%d = day, %H = hour, %M = minute, %S = second, ...)"
@@ -24495,6 +24529,7 @@ msgid "Timeout"
 msgstr "সময় উকলি গল"
 
 #: modules/spu/marq.c:101
+#, fuzzy
 msgid ""
 "Number of milliseconds the marquee must remain displayed. Default value is 0 "
 "(remains forever)."
@@ -24507,6 +24542,7 @@ msgid "Refresh period in ms"
 msgstr "ms ত পুনৰ সজীৱৰ সময়সীমা"
 
 #: modules/spu/marq.c:105
+#, fuzzy
 msgid ""
 "Number of milliseconds between string updates. This is mainly useful when "
 "using meta data or time format string sequences."
@@ -24533,6 +24569,7 @@ msgid "Font size, in pixels. Default is 0 (use default font size)."
 msgstr "পিক্সেলবোৰ ফন্ট আকাৰ. ডিফল্টটো হল -1 (ডিফল্ট ফন্ট আকাৰ ব্যৱহাৰ কৰক)."
 
 #: modules/spu/marq.c:116 modules/spu/rss.c:153
+#, fuzzy
 msgid ""
 "Color of the text that will be rendered on the video. This must be an "
 "hexadecimal (like HTML colors). The first two chars are for red, then green, "
@@ -24572,6 +24609,7 @@ msgid "Misc"
 msgstr "সংগীত"
 
 #: modules/spu/mosaic.c:89
+#, fuzzy
 msgid ""
 "Transparency of the mosaic foreground pictures. 0 means transparent, 255 "
 "opaque (default)."
@@ -24624,6 +24662,7 @@ msgid "Mosaic alignment"
 msgstr "মোজেইক শাৰী কৰক"
 
 #: modules/spu/mosaic.c:113
+#, fuzzy
 msgid ""
 "You can enforce the mosaic alignment on the video (0=center, 1=left, "
 "2=right, 4=top, 8=bottom, you can also use combinations of these values, eg "
@@ -24637,6 +24676,7 @@ msgid "Positioning method"
 msgstr "স্থান নিৰূপণৰ পদ্ধথি"
 
 #: modules/spu/mosaic.c:119
+#, fuzzy
 msgid ""
 "Positioning method for the mosaic. auto: automatically choose the best "
 "number of rows and columns. fixed: use the user-defined number of rows and "
@@ -24651,6 +24691,7 @@ msgid "Number of rows"
 msgstr "শাৰীবোৰৰ সংখ্যা"
 
 #: modules/spu/mosaic.c:126
+#, fuzzy
 msgid ""
 "Number of image rows in the mosaic (only used if positioning method is set "
 "to \"fixed\")."
@@ -24707,6 +24748,7 @@ msgid "Offsets in order"
 msgstr "ক্ৰমত অফচেটবোৰ"
 
 #: modules/spu/mosaic.c:150
+#, fuzzy
 msgid ""
 "You can enforce the (x,y) offsets of the elements on the mosaic (only used "
 "if positioning method is set to \"offsets\"). You must give a comma-"
@@ -24716,6 +24758,7 @@ msgstr ""
 "কৰা হব আৰু ইয়াৰ উপাদনবোৰ হেৰাব."
 
 #: modules/spu/mosaic.c:156
+#, fuzzy
 msgid ""
 "Pictures coming from the mosaic elements will be delayed according to this "
 "value (in milliseconds). For high values you will need to raise caching at "
@@ -24851,6 +24894,7 @@ msgid "Refresh time"
 msgstr "পুনৰ সজীৱৰ সময়"
 
 #: modules/spu/rss.c:135
+#, fuzzy
 msgid ""
 "Number of seconds between each forced refresh of the feeds. 0 means that the "
 "feeds are never updated."
@@ -24892,6 +24936,7 @@ msgid "Title display mode"
 msgstr "শিৰোনাম প্ৰদৰ্শনৰ ধৰণ"
 
 #: modules/spu/rss.c:165
+#, fuzzy
 msgid ""
 "Title display mode. Default is 0 (hidden) if the feed has an image and feed "
 "images are enabled, 1 otherwise."
@@ -24932,6 +24977,7 @@ msgid "Delay calculation mode"
 msgstr "গণনাৰ ধৰণ বিলম্ব কৰক"
 
 #: modules/spu/subsdelay.c:49
+#, fuzzy
 msgid ""
 "Absolute delay - add absolute delay to each subtitle. Relative to source "
 "delay - multiply subtitle delay. Relative to source content - determine "
@@ -24945,6 +24991,7 @@ msgid "Calculation factor"
 msgstr "গণনাৰ কাৰক"
 
 #: modules/spu/subsdelay.c:54
+#, fuzzy
 msgid ""
 "Calculation factor. In Absolute delay mode the factor represents seconds."
 msgstr ""
@@ -24964,6 +25011,7 @@ msgid "Minimum alpha value"
 msgstr "নূন্যতম আলফা মান"
 
 #: modules/spu/subsdelay.c:62
+#, fuzzy
 msgid ""
 "Alpha value of the earliest subtitle, where 0 is fully transparent and 255 "
 "is fully opaque."
@@ -24976,6 +25024,7 @@ msgid "Interval between two disappearances"
 msgstr "দুটা অদৃষ্টিগোচৰৰ মাজত অন্তৰাল"
 
 #: modules/spu/subsdelay.c:66
+#, fuzzy
 msgid ""
 "Minimum time (in milliseconds) that subtitle should stay after its "
 "predecessor has disappeared (subtitle delay will be extended to meet this "
@@ -24989,6 +25038,7 @@ msgid "Interval between disappearance and appearance"
 msgstr "অদৃষ্টিগোচৰ আৰু দৃষ্টিগোচৰৰ মাজৰ অন্তৰাল"
 
 #: modules/spu/subsdelay.c:71
+#, fuzzy
 msgid ""
 "Minimum time (in milliseconds) between subtitle disappearance and newer "
 "subtitle appearance (earlier subtitle delay will be extended to fill the "
@@ -25002,6 +25052,7 @@ msgid "Interval between appearance and disappearance"
 msgstr "দৃষ্টিগোচৰ আৰু অদৃষ্টিগোচৰৰ মাজৰ অন্তৰাল"
 
 #: modules/spu/subsdelay.c:76
+#, fuzzy
 msgid ""
 "Minimum time (in milliseconds) that subtitle should stay after newer "
 "subtitle has appeared (earlier subtitle delay will be shortened to avoid the "
@@ -25141,6 +25192,7 @@ msgid "Destination bridge-in name"
 msgstr "গন্তব্যস্থান ব্ৰীজ-ইন নাম"
 
 #: modules/stream_out/bridge.c:48
+#, fuzzy
 msgid ""
 "Name of the destination bridge-in. If you do not need more than one bridge-"
 "in at a time, you can discard this option."
@@ -25149,6 +25201,7 @@ msgstr ""
 "কৰা হব আৰু ইয়াৰ উপাদনবোৰ হেৰাব."
 
 #: modules/stream_out/bridge.c:52
+#, fuzzy
 msgid ""
 "Pictures coming from the picture video outputs will be delayed according to "
 "this value (in milliseconds, should be >= 100 ms). For high values, you will "
@@ -25162,6 +25215,7 @@ msgid "ID Offset"
 msgstr "ID অফচেট"
 
 #: modules/stream_out/bridge.c:57
+#, fuzzy
 msgid ""
 "Offset to add to the stream IDs specified in bridge_out to obtain the stream "
 "IDs bridge_in will register."
@@ -25174,6 +25228,7 @@ msgid "Name of current instance"
 msgstr "চলিত উদাহৰণৰ নাম"
 
 #: modules/stream_out/bridge.c:62
+#, fuzzy
 msgid ""
 "Name of this bridge-in instance. If you do not need more than one bridge-in "
 "at a time, you can discard this option."
@@ -25209,6 +25264,7 @@ msgid "Wait for I frame before toggling placeholder"
 msgstr "স্থানধাৰক টগুল কৰাৰ আগতে I ৰ বাবে অপেক্ষা কৰক"
 
 #: modules/stream_out/bridge.c:78
+#, fuzzy
 msgid ""
 "If enabled, switching between the placeholder and the normal stream will "
 "only occur on I frames. This will remove artifacts on stream switching at "
@@ -25328,6 +25384,7 @@ msgid "Delay of the ES (ms)"
 msgstr "ES টোৰ বিলম্ব (ms)"
 
 #: modules/stream_out/delay.c:45
+#, fuzzy
 msgid ""
 "Specify a delay (in ms) for this elementary stream. Positive means delay and "
 "negative means advance."
@@ -25532,6 +25589,7 @@ msgid "This is the output URL that will be used."
 msgstr "এইটো হল আউটপুট URL যিটো ব্যৱহাৰ কৰা হব."
 
 #: modules/stream_out/rtp.c:81
+#, fuzzy
 msgid ""
 "This allows you to specify how the SDP (Session Descriptor) for this RTP "
 "session will be made available. You must use a url: http://location to "
@@ -25657,6 +25715,7 @@ msgstr ""
 "আৰু গ্ৰহণ কৰে."
 
 #: modules/stream_out/rtp.c:137
+#, fuzzy
 msgid ""
 "Default caching value for outbound RTP streams. This value should be set in "
 "milliseconds."
@@ -25673,6 +25732,7 @@ msgid "This selects which transport protocol to use for RTP."
 msgstr "এইটোৱে RTP ৰ বাবে কোনটো পৰিবহন প্ৰটকল ব্যৱহাৰ কৰিব নিৰ্বাচন কৰে."
 
 #: modules/stream_out/rtp.c:146
+#, fuzzy
 msgid ""
 "RTP packets will be integrity-protected and ciphered with this Secure RTP "
 "master shared secret key. This must be a 32-character-long hexadecimal "
@@ -25696,6 +25756,7 @@ msgid "RTSP session timeout (s)"
 msgstr "RTSP অধিৱেশনৰ সময় উকলি গল (বোৰ)"
 
 #: modules/stream_out/rtp.c:168
+#, fuzzy
 msgid ""
 "RTSP sessions will be closed after not receiving any RTSP request for this "
 "long. Setting it to a negative value or zero disables timeouts. The default "
@@ -25753,6 +25814,7 @@ msgid "Video prerender callback"
 msgstr "ভিডিঅ' পূৰ্বঅনুবাদৰ কলবেক"
 
 #: modules/stream_out/smem.c:62
+#, fuzzy
 msgid ""
 "Address of the video prerender callback function. This function will set the "
 "buffer where render will be done."
@@ -25765,6 +25827,7 @@ msgid "Audio prerender callback"
 msgstr "অডিঅ' পূৰ্বঅনুবাদৰ কলবেক"
 
 #: modules/stream_out/smem.c:66
+#, fuzzy
 msgid ""
 "Address of the audio prerender callback function. This function will set the "
 "buffer where render will be done."
@@ -25777,6 +25840,7 @@ msgid "Video postrender callback"
 msgstr "ভিডিঅ' পিছত অনুবাদৰ কলবেক"
 
 #: modules/stream_out/smem.c:70
+#, fuzzy
 msgid ""
 "Address of the video postrender callback function. This function will be "
 "called when the render is into the buffer."
@@ -25789,6 +25853,7 @@ msgid "Audio postrender callback"
 msgstr "অডিঅ' পিছত অনুবাদৰ কলবেক"
 
 #: modules/stream_out/smem.c:74
+#, fuzzy
 msgid ""
 "Address of the audio postrender callback function. This function will be "
 "called when the render is into the buffer."
@@ -25817,6 +25882,7 @@ msgid "Time Synchronized output"
 msgstr "সময় ছিনক্ৰনাইজ কৰা আউটপুট"
 
 #: modules/stream_out/smem.c:84
+#, fuzzy
 msgid ""
 "Time Synchronisation option for output. If true, stream will render as "
 "usual, else it will be rendered as fast as possible."
@@ -25859,6 +25925,7 @@ msgid "Output destination"
 msgstr "আউটপুট গন্তব্যস্থান"
 
 #: modules/stream_out/standard.c:50
+#, fuzzy
 msgid ""
 "Destination (URL) to use for the stream. Overrides path and bind parameters"
 msgstr ""
@@ -26077,6 +26144,7 @@ msgid "High priority"
 msgstr "উচ্চ অগ্ৰাধিকাৰ"
 
 #: modules/stream_out/transcode/transcode.c:128
+#, fuzzy
 msgid ""
 "Runs the optional encoder thread at the OUTPUT priority instead of VIDEO."
 msgstr ""
@@ -26158,6 +26226,7 @@ msgid "Text default color"
 msgstr "টেক্সটৰ ডিফল্ট ৰং"
 
 #: modules/text_renderer/freetype/freetype.c:96
+#, fuzzy
 msgid ""
 "The color of the text that will be rendered on the video. This must be an "
 "hexadecimal (like HTML colors). The first two chars are for red, then green, "
@@ -26221,6 +26290,7 @@ msgid "Use YUVP renderer"
 msgstr "YUVP অনুবাদকৰ্তা ব্যৱহাৰ কৰক"
 
 #: modules/text_renderer/freetype/freetype.c:126
+#, fuzzy
 msgid ""
 "This renders the font using \"paletized YUV\". This option is only needed if "
 "you want to encode into DVB subtitles"
@@ -26578,6 +26648,7 @@ msgid "Video pictures blending"
 msgstr "ভিডিঅ’ ছবি সংমিশ্ৰণ কৰিছে"
 
 #: modules/video_filter/bluescreen.c:38
+#, fuzzy
 msgid ""
 "This effect, also known as \"greenscreen\" or \"chroma key\" blends the "
 "\"blue parts\" of the foreground image of the mosaic on the background (like "
@@ -26664,6 +26735,7 @@ msgid "Output picture aspect ratio"
 msgstr "আউটপুট ছবি দৃষ্টিকোণৰ অনুপাত"
 
 #: modules/video_filter/canvas.c:91
+#, fuzzy
 msgid ""
 "Set the canvas' picture aspect ratio. If omitted, the canvas is assumed to "
 "have the same SAR as the input."
@@ -26676,6 +26748,7 @@ msgid "Pad video"
 msgstr "পেড ভিডিঅ'"
 
 #: modules/video_filter/canvas.c:95
+#, fuzzy
 msgid ""
 "If enabled, video will be padded to fit in canvas after scaling. Otherwise, "
 "video will be cropped to fix in canvas after scaling."
@@ -26710,6 +26783,7 @@ msgid "Mac OS X hardware video filters"
 msgstr "তীক্ষ্ন ভিডিঅ' ফিল্টাৰ"
 
 #: modules/video_filter/colorthres.c:56
+#, fuzzy
 msgid ""
 "Colors similar to this will be kept, others will be grayscaled. This must be "
 "an hexadecimal (like HTML colors). The first two chars are for red, then "
@@ -26848,6 +26922,7 @@ msgid "Phosphor chroma mode for 4:2:0 input"
 msgstr "4:2:0 ইনপুটৰ বাবে ফছফোৰ ক্ৰোমা ধৰণ"
 
 #: modules/video_filter/deinterlace/deinterlace.c:269
+#, fuzzy
 msgid ""
 "Choose handling for colours in those output frames that fall across input "
 "frame boundaries. \n"
@@ -26872,6 +26947,7 @@ msgid "Phosphor old field dimmer strength"
 msgstr "ফছফোৰ পুৰণি ক্ষেত্ৰৰ অস্পষ্ট শক্তি"
 
 #: modules/video_filter/deinterlace/deinterlace.c:292
+#, fuzzy
 msgid ""
 "This controls the strength of the darkening filter that simulates CRT TV "
 "phosphor light decay for the old field in the Phosphor framerate doubler. "
@@ -27268,6 +27344,7 @@ msgid "Wrapper filter output"
 msgstr "ৰেপাৰ ফিল্টাৰ আউটপুট"
 
 #: modules/video_filter/opencv_wrapper.c:90
+#, fuzzy
 msgid "Determines what (if any) video is displayed by the wrapper filter"
 msgstr ""
 "আউটপুট ফাইলটো ইতিমধ্যে বৰ্তি আছে. যদি ৰেকৰ্ডি অব্যাহত থাকে, তেন্তে ফাইলটো অভাৰৰাইড "
@@ -27294,6 +27371,7 @@ msgid "Posterize video by lowering the number of colors"
 msgstr "ৰংবোৰৰ সংখ্যাটো নিম্ন কৰাৰ দ্বাৰা পোষ্টাৰাইজ ভিডিঅ'"
 
 #: modules/video_filter/postproc.c:71
+#, fuzzy
 msgid ""
 "Quality of post processing. Valid range is 0 (disabled) to 6 (highest)\n"
 "Higher levels require more CPU power, but produce higher quality pictures.\n"
@@ -27496,6 +27574,7 @@ msgid "Recording ratio"
 msgstr "ৰেকৰ্ডিংৰ অনুপাত"
 
 #: modules/video_filter/scene.c:73
+#, fuzzy
 msgid ""
 "Ratio of images to record. 3 means that one image out of three is recorded."
 msgstr ""
@@ -27507,6 +27586,7 @@ msgid "Filename prefix"
 msgstr "ফাইল নাম উপসৰ্গ"
 
 #: modules/video_filter/scene.c:77
+#, fuzzy
 msgid ""
 "Prefix of the output images filenames. Output filenames will have the "
 "\"prefixNUMBER.format\" form if replace is not true."
@@ -27519,6 +27599,7 @@ msgid "Directory path prefix"
 msgstr "নিৰ্দেশিকা পাথ উপসৰ্গ"
 
 #: modules/video_filter/scene.c:82
+#, fuzzy
 msgid ""
 "Directory path where images files should be saved. If not set, then images "
 "will be automatically saved in users homedir."
@@ -27531,6 +27612,7 @@ msgid "Always write to the same file"
 msgstr "সদায় একেটা ফাইলত লিখক"
 
 #: modules/video_filter/scene.c:87
+#, fuzzy
 msgid ""
 "Always write to the same file instead of creating one file per image. In "
 "this case, the number is not appended to the filename."
@@ -27652,6 +27734,7 @@ msgid "Timelength after which we assume there is no signal."
 msgstr "সময়ৰ দৈৰ্ঘ্য যাৰ পিছত আমি কোনো সংকেত নথকাটো অনুমান কৰিব পাৰো."
 
 #: modules/video_output/decklink.cpp:69
+#, fuzzy
 msgid ""
 "Timelength after which we assume there is no signal.\n"
 "After this delay we black out the video."
@@ -27685,6 +27768,7 @@ msgid "Output card"
 msgstr "আউটপুট কাৰ্ড"
 
 #: modules/video_output/decklink.cpp:86
+#, fuzzy
 msgid "DeckLink output card, if multiple exist. The cards are numbered from 0."
 msgstr ""
 "আউটপুট ফাইলটো ইতিমধ্যে বৰ্তি আছে. যদি ৰেকৰ্ডি অব্যাহত থাকে, তেন্তে ফাইলটো অভাৰৰাইড "
@@ -27695,6 +27779,7 @@ msgid "Desired output mode"
 msgstr "বিচৰা আউটপুট ধৰণটো"
 
 #: modules/video_output/decklink.cpp:91
+#, fuzzy
 msgid ""
 "Desired output mode for DeckLink output. This value should be a FOURCC code "
 "in textual form, e.g. \"ntsc\"."
@@ -27707,6 +27792,7 @@ msgid "Audio connection for DeckLink output."
 msgstr "ডেকসংযোগ আউটপুটৰ বাবে অডিঅ' সংযোগ."
 
 #: modules/video_output/decklink.cpp:102
+#, fuzzy
 msgid ""
 "Audio sampling rate (in hertz) for DeckLink output. 0 disables audio output."
 msgstr ""
@@ -27767,6 +27853,7 @@ msgid "Window handle (HWND)"
 msgstr "উইণ্ডো পৰিচালনা (HWND)"
 
 #: modules/video_output/drawable.c:36 modules/video_output/xcb/window.c:707
+#, fuzzy
 msgid ""
 "Video will be embedded in this pre-existing window. If zero, a new window "
 "will be created."
@@ -27851,6 +27938,7 @@ msgid "Enable a workaround for T23"
 msgstr "T23 ৰ বাবে চাৰিওফালে কাৰ্য কৰা এটা সক্ষম কৰক"
 
 #: modules/video_output/kva.c:52
+#, fuzzy
 msgid ""
 "Enable this option if the diagonal stripes are displayed when the window "
 "size is equal to or smaller than the movie size."
@@ -27899,6 +27987,7 @@ msgid "OpenGL ES 2 extension"
 msgstr "মুক্তGL ES 2 সম্প্ৰসাৰণ"
 
 #: modules/video_output/opengl/display.c:43
+#, fuzzy
 msgid "Extension through which to use the Open Graphics Library (OpenGL)."
 msgstr ""
 "আউটপুট ফাইলটো ইতিমধ্যে বৰ্তি আছে. যদি ৰেকৰ্ডি অব্যাহত থাকে, তেন্তে ফাইলটো অভাৰৰাইড "
@@ -28319,6 +28408,7 @@ msgstr ""
 "পৃথকীকৃত তালিকা ব্যৱহাৰ কৰক."
 
 #: modules/video_splitter/clone.c:47
+#, fuzzy
 msgid "Duplicate your video to multiple windows and/or video output modules"
 msgstr "পেৰামিটাৰ আগতে নিৰ্বাচিত ফাইলটোৰ সৈতে ছিনক্ৰনাইজত এইটো চলাবলৈ অন্য ."
 
@@ -28332,6 +28422,7 @@ msgid ""
 msgstr "আপুনি ব্যৱহাৰ কৰিব আগতে নিৰ্বাচিত ফাইলটোৰ সৈতে ছিনক্ৰনাইজত এইটো ভিডিঅ'"
 
 #: modules/video_splitter/panoramix.c:65
+#, fuzzy
 msgid "Select the number of vertical video windows in which to split the video"
 msgstr "পেৰামিটাৰ আগতে নিৰ্বাচিত ফাইলটোৰ সৈতে ছিনক্ৰনাইজত এইটো চলাবলৈ অন্য ."
 
@@ -29007,6 +29098,7 @@ msgid "If nothing appears, check your internet connection."
 msgstr "যদি একো দৃষ্টিগোচৰ নহয় তেন্তে আপোনাৰ ইন্টাৰনেট সংযোগটো পৰীক্ষা কৰক."
 
 #: share/lua/http/index.html:263
+#, fuzzy
 msgid ""
 "By creating a stream, the <i>Main Controls</i> will operate the stream "
 "instead of the main interface."
@@ -29032,6 +29124,7 @@ msgstr ""
 "কৰিবলৈ <i>Media Viewer</i>  ক্লিক কৰক."
 
 #: share/lua/http/index.html:269
+#, fuzzy
 msgid ""
 "Volume will be controlled by the player, and not the <i>Main Controls</i>."
 msgstr ""
@@ -29048,6 +29141,7 @@ msgstr ""
 "কৰিবলৈ <i>Library</i>  ক্লিক কৰক."
 
 #: share/lua/http/index.html:275
+#, fuzzy
 msgid ""
 "To stop the stream and resume normal controls, click the <i>Open Stream</i> "
 "button again."

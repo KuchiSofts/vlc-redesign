@@ -14707,7 +14707,7 @@ msgstr "| XYZ ઉમેરો  . . . . . . . . . . . . વગાડવાની 
 
 #: modules/control/oldrc.c:776
 msgid "| enqueue XYZ  . . . . . . . . . queue XYZ to playlist"
-msgstr "| XYZ ઉમેરો  . . . . . . . . . . . . વગાડવાની યાદીમાં XYZ ને ઉમેરો"
+msgstr "| enqueue XYZ  . . . . . . . . . વગાડવાની યાદીની કતારમાં XYZ ને ઉમેરો"
 
 #: modules/control/oldrc.c:777
 msgid "| playlist . . . . .  show items currently in playlist"

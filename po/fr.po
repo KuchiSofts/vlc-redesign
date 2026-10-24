@@ -3467,7 +3467,8 @@ msgstr "Activer le flux de sortie vidéo"
 msgid ""
 "Choose whether the video stream should be redirected to the stream output "
 "facility when this last one is enabled."
-msgstr "Diffuser le flux vidéo."
+msgstr ""
+"Choisissez si le flux vidéo doit être redirigé vers la sortie de flux lorsque celle-ci est activée."
 
 #: src/libvlc-module.c:942
 msgid "Enable audio stream output"
@@ -3477,7 +3478,8 @@ msgstr "Activer le flux de sortie audio"
 msgid ""
 "Choose whether the audio stream should be redirected to the stream output "
 "facility when this last one is enabled."
-msgstr "Diffuser les flux audio."
+msgstr ""
+"Choisissez si le flux audio doit être redirigé vers la sortie de flux lorsque celle-ci est activée."
 
 #: src/libvlc-module.c:947
 msgid "Enable SPU stream output"
@@ -3487,7 +3489,8 @@ msgstr "Diffuser les sous-titres"
 msgid ""
 "Choose whether the SPU streams should be redirected to the stream output "
 "facility when this last one is enabled."
-msgstr "Diffuser les flux de sous-titres."
+msgstr ""
+"Choisissez si les flux de sous-titres doivent être redirigés vers la sortie de flux lorsque celle-ci est activée."
 
 #: src/libvlc-module.c:952
 msgid "Keep stream output open"
@@ -8514,7 +8517,7 @@ msgstr "Ligne haute de la région"
 #: modules/access/screen/screen.c:57 modules/access/screen/wayland.c:462
 #: modules/access/screen/xcb.c:49
 msgid "Ordinate of the capture region in pixels."
-msgstr "Abscisse de la région de capture en pixels."
+msgstr "Ordonnée de la région de capture en pixels."
 
 #: modules/access/screen/screen.c:59 modules/access/screen/wayland.c:456
 #: modules/access/screen/xcb.c:43
@@ -26086,9 +26089,7 @@ msgid ""
 "master shared secret key. This must be a 32-character-long hexadecimal "
 "string."
 msgstr ""
-"Les paquets RTP seront authentifiés et déchiffrés avec cette clé maître "
-"secrète partagée « Secure RTP ». Ceci doit être une chaine en hexadécimal de "
-"32 caractères."
+"Les paquets RTP seront protégés en intégrité et chiffrés avec cette clé maître secrète partagée « Secure RTP ». Ceci doit être une chaine en hexadécimal de 32 caractères."
 
 #: modules/stream_out/rtp.c:163
 msgid "MP4A LATM"

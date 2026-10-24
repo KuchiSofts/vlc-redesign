@@ -277,6 +277,7 @@ msgid "Stream output"
 msgstr "प्रवाह निर्गत"
 
 #: include/vlc_config_cat.h:129
+#, fuzzy
 msgid ""
 "Stream output settings are used when acting as a streaming server or when "
 "saving incoming streams.\n"
@@ -19866,7 +19867,7 @@ msgstr "अद्यावधिक गर्नुहोस्"
 
 #: modules/gui/qt/dialogs/epg.cpp:161
 msgid " (%1+ rated)"
-msgstr "(१ प्रतिशत + श्रेणी निर्धारण)"
+msgstr " (%1+ उमेरका लागि)"
 
 #: modules/gui/qt/dialogs/errors.cpp:40
 msgid "Errors"

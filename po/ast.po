@@ -11835,7 +11835,10 @@ msgid ""
 "available.\n"
 "Note that changing settings below will not take effect until a new stream is "
 "played. This will hopefully be fixed soon."
-msgstr "Kate ye un codificador pa testu ya imaxe basáu en superposiciones"
+msgstr ""
+"Kate ye un códec pa superposiciones basaes en testu y imaxe.\n"
+"Precísase la biblioteca Tiger pa xenerar emisiones Kate complexes, pero VLC pue xenerar igualmente subtítulos estáticos basaos en testu y imaxe si nun ta disponible.\n"
+"Repara en que los cambeos nos axustes d'abaxo nun van tener efeutu hasta que se reproduza una emisión nueva. Esperamos que esto s'igüe aína."
 
 #: modules/codec/kate.c:268
 msgid "Kate"
@@ -13600,7 +13603,7 @@ msgstr "Factor QP ente P y B"
 
 #: modules/codec/x264.c:249
 msgid "QP factor between P and B. Range 1.0 to 2.0."
-msgstr "Factor QP ente I y P. Rangu 1.0 a 2.0."
+msgstr "Factor QP ente P y B. Rangu 1.0 a 2.0."
 
 #: modules/codec/x264.c:251
 msgid "QP difference between chroma and luma"
@@ -17053,7 +17056,11 @@ msgid ""
 " - The interface will resize to the native video size\n"
 " - The video will fit to the interface size\n"
 " By default, interface resize to the native video size."
-msgstr "Tien dos opciones"
+msgstr ""
+"Tien dos opciones:\n"
+" - La interfaz va redimensionase al tamañu nativu del videu\n"
+" - El videu va axustase al tamañu de la interfaz\n"
+" De mou predetermináu, la interfaz redimensiónase al tamañu nativu del videu."
 
 #: modules/gui/macosx/macosx.m:104
 #: modules/gui/macosx/VLCSimplePrefsController.m:349 modules/gui/qt/qt.cpp:178
@@ -18445,7 +18452,9 @@ msgstr "Escoyer la carpeta o nome de ficheru au van guardase les grabaciones."
 msgid ""
 "Press new keys for\n"
 "\"%@\""
-msgstr "Pulsie nueves tecles p"
+msgstr ""
+"Pulsie nueves tecles pa\n"
+"\"%@\""
 
 #: modules/gui/macosx/VLCSimplePrefsController.m:1444
 msgid "Invalid combination"
@@ -19366,7 +19375,11 @@ msgid ""
 "Please check that the device has been opened with VLC and is playing.\n"
 "\n"
 "Controls will automatically appear here."
-msgstr "Nun s'atopó una instancia de v4l2"
+msgstr ""
+"Nun s'atopó una instancia de v4l2.\n"
+"Comprueba que'l preséu s'abrió con VLC y que ta reproduciéndose.\n"
+"\n"
+"Los controles van apaecer equí automáticamente."
 
 #: modules/gui/qt/components/extended_panels.cpp:1086
 #: modules/gui/qt/components/extended_panels.cpp:1087
@@ -19519,7 +19532,9 @@ msgstr "Los metadatos estra y otra información amuésense nesti panel.\n"
 msgid ""
 "Information about what your media or stream is made of.\n"
 "Muxer, Audio and Video Codecs, Subtitles are shown."
-msgstr "Información tocante a qué ta fechu'l mediu o emisión"
+msgstr ""
+"Información tocante a qué ta fechu'l mediu o emisión.\n"
+"Amuésense'l muxor, los códecs d'audio y videu, y los subtítulos."
 
 #: modules/gui/qt/components/info_panels.cpp:548
 msgid "Current media / stream statistics"
@@ -19963,7 +19978,11 @@ msgid ""
 "for DVD, VCD, and CDDA are set.\n"
 "You can define a unique one or configure them \n"
 "individually in the advanced preferences."
-msgstr "Si esta propiedá ta en blancu, pónens"
+msgstr ""
+"Si esta propiedá ta en blancu, pónense valores\n"
+"estremaos pa DVD, VCD y CDDA.\n"
+"Pues definir ún únicu o configuralos \n"
+"individualmente nes preferencies avanzaes."
 
 #: modules/gui/qt/components/simple_preferences.cpp:643
 msgid "Lowest latency"
@@ -20421,7 +20440,9 @@ msgstr "Aplicación"
 msgid ""
 "Cannot write to file %1:\n"
 "%2."
-msgstr "Nun pue escribise'l ficheru %1"
+msgstr ""
+"Nun pue escribise'l ficheru %1:\n"
+"%2."
 
 #: modules/gui/qt/dialogs/messages.cpp:334
 msgid "Update the tree"
@@ -20675,7 +20696,10 @@ msgid ""
 "Stream output string.\n"
 "This is automatically generated when you change the above settings,\n"
 "but you can change it manually."
-msgstr "Cadena de salida d'emisión"
+msgstr ""
+"Cadena de salida d'emisión.\n"
+"Xenérase automáticamente cuando camudes los axustes d'enriba,\n"
+"pero pues camudala a mano."
 
 #: modules/gui/qt/dialogs/sout.cpp:91
 msgid "Back"
@@ -21420,7 +21444,11 @@ msgid ""
 " - normal mode\n"
 " - a zone always present to show information as lyrics, album arts...\n"
 " - minimal mode with limited controls"
-msgstr "Empecipiar VLC con"
+msgstr ""
+"Empecipiar VLC con:\n"
+" - mou normal\n"
+" - una zona siempre presente p'amosar información como lletres, carátules d'álbum...\n"
+" - mou mínimu con controles llendaos"
 
 #: modules/gui/qt/qt.cpp:151
 msgid "Show a controller in fullscreen mode"
@@ -25732,7 +25760,8 @@ msgid ""
 "hexadecimal (like HTML colors). The first two chars are for red, then green, "
 "then blue. #000000 = black, #FF0000 = red, #00FF00 = green, #FFFF00 = yellow "
 "(red + green), #FFFFFF = white"
-msgstr "El color del testu que se va xenerar nel videu."
+msgstr ""
+"El color del testu que se va xenerar nel videu. Tien de ser hexadecimal (como los colores HTML). Los dos primeros caráuteres son pa bermeyu, depués verde y depués azul. #000000 = prietu, #FF0000 = bermeyu, #00FF00 = verde, #FFFF00 = mariellu (bermeyu + verde), #FFFFFF = blancu"
 
 #: modules/text_renderer/freetype/freetype.c:100
 msgid "Relative font size"

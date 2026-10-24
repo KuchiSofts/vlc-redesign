@@ -2664,9 +2664,7 @@ msgid ""
 "multicast packets sent by the stream output (-1 = use operating system built-"
 "in default)."
 msgstr ""
-"Este é o campo Differentiated Services Code Point para saídas de transmissão "
-"UDP (ou Tipo de Serviço no IPv4, ou ainda Classe de Tráfego no IPv6). É "
-"usado para qualidade de serviço em rede."
+"Este é o limite de saltos (também conhecido como \"Time-To-Live\" ou TTL) dos pacotes multicast enviados pela saída de transmissão (-1 = usar a predefinição do sistema operativo)."
 
 #: src/libvlc-module.c:559
 msgid "Multicast output interface"
@@ -4547,7 +4545,7 @@ msgstr "Diminuir atraso do áudio"
 
 #: src/libvlc-module.c:1338
 msgid "Select the key to decrease the audio delay."
-msgstr "Selecione a tecla de atalho para aumentar o atraso do áudio."
+msgstr "Selecione a tecla de atalho para diminuir o atraso do áudio."
 
 #: src/libvlc-module.c:1345
 msgid "Play playlist bookmark 1"
@@ -13364,7 +13362,8 @@ msgid ""
 "Override the indicated page, try this if your subtitles don't appear (-1 = "
 "autodetect from TS, 0 = autodetect from teletext, >0 = actual page number, "
 "usually 888 or 889)."
-msgstr "Empacotador OGT Philips (legenda de SVCD)"
+msgstr ""
+"Substituir a página indicada; experimente esta opção se as suas legendas não aparecerem (-1 = detectar automaticamente a partir do TS, 0 = detectar automaticamente a partir do teletexto, >0 = número real da página, normalmente 888 ou 889)."
 
 #: modules/codec/telx.c:60
 msgid "Ignore subtitle flag"
@@ -20081,7 +20080,6 @@ msgstr "Comentários"
 msgid "Extra metadata and other information are shown in this panel.\n"
 msgstr ""
 "Os meta-dados extra e outras informações serão mostradas neste painel.\n"
-"\n"
 
 #: modules/gui/qt/components/info_panels.cpp:473
 msgid ""
@@ -23843,7 +23841,8 @@ msgid ""
 "Do not try to guess ASF bitrate. Setting this, allows you to control how "
 "Windows Media Player will cache streamed content. Set to audio+video bitrate "
 "in bytes"
-msgstr "Misturador Simples/Plano"
+msgstr ""
+"Não tentar adivinhar a taxa de bits ASF. Activar esta opção permite controlar a forma como o Windows Media Player coloca em cache o conteúdo transmitido. Defina-a como a taxa de bits de áudio+vídeo em bytes"
 
 #: modules/mux/asf.c:73
 msgid "ASF muxer"
@@ -28843,8 +28842,7 @@ msgstr "White Crush para o Verde"
 
 #: modules/video_splitter/panoramix.c:143
 msgid "Select the White Crush of blended zone (Green or U component)"
-msgstr ""
-"Seleccione o nível de Branco da zona de mistura (Verde ou componente V)"
+msgstr "Selecione o White Crush da zona mesclada (Verde ou componente U)"
 
 #: modules/video_splitter/panoramix.c:144
 msgid "White Crush for Blue"
@@ -28852,7 +28850,7 @@ msgstr "White Crush for Blue"
 
 #: modules/video_splitter/panoramix.c:145
 msgid "Select the White Crush of blended zone (Blue or V component)"
-msgstr "Seleccione o nível de Branco da zona de mistura (Azul ou componente V)"
+msgstr "Selecione o White Crush da zona mesclada (Azul ou componente V)"
 
 #: modules/video_splitter/panoramix.c:147
 msgid "Black Level for Red"
@@ -28895,7 +28893,7 @@ msgstr "Nível de Branco para o Verde"
 #: modules/video_splitter/panoramix.c:157
 msgid "Select the White Level of blended zone (Green or U component)"
 msgstr ""
-"Seleccione o nível de Branco da zona de mistura (Verde ou componente V)"
+"Seleccione o nível de Branco da zona de mistura (Verde ou componente U)"
 
 #: modules/video_splitter/panoramix.c:158
 msgid "White Level for Blue"
@@ -28931,7 +28929,7 @@ msgstr "Parede de imagens"
 
 #: modules/visualization/glspectrum.c:56
 msgid "The width of the visualization window, in pixels."
-msgstr "A largura da janela de vídeo, em pixels."
+msgstr "A largura da janela de visualização, em pixels."
 
 #: modules/visualization/glspectrum.c:59
 msgid "The height of the visualization window, in pixels."

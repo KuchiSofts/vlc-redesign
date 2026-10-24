@@ -20462,7 +20462,7 @@ msgstr "VLC মিডিয়া প্লেয়ার হালনাগাদ"
 
 #: modules/gui/qt/dialogs/help.cpp:294
 msgid "A new version of VLC (%1.%2.%3%4) is available."
-msgstr "একটি VLC (%1.%2. 4%3%) এর একটি নতুন সংস্করণ উপলব্ধ."
+msgstr "VLC এর একটি নতুন সংস্করণ (%1.%2.%3%4) উপলব্ধ."
 
 #: modules/gui/qt/dialogs/help.cpp:319
 msgid "You have the latest version of VLC media player."

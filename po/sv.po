@@ -7936,8 +7936,7 @@ msgid ""
 "Sets the password for the connection, if no username or password are set in "
 "the url."
 msgstr ""
-"Anger användarnamnet för anslutningen om inget användarnamn eller lösenord "
-"anges i webbadressen."
+"Anger lösenordet för anslutningen om inget användarnamn eller lösenord anges i webbadressen."
 
 #: modules/access/live555.cpp:89
 msgid "RTSP frame buffer size"

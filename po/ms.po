@@ -14233,7 +14233,7 @@ msgstr "Pengkuantitian zonmati Inter luma"
 
 #: modules/codec/x264.c:378
 msgid "Set the size of the intra luma quantization deadzone. Range 0 to 32."
-msgstr "Tetapkan saiz zon-mati pengkuantitian inter luma. Julat 0 hingga 32."
+msgstr "Tetapkan saiz zon-mati pengkuantitian intra luma. Julat 0 hingga 32."
 
 #: modules/codec/x264.c:383
 msgid "Non-deterministic optimizations when threaded"
@@ -20975,10 +20975,9 @@ msgid ""
 "or the path to a file on your computer,\n"
 "it will be automatically selected."
 msgstr ""
-"Jika papan keratan anda mengandungi\n"
-"URL atau laluan tidak sah ke fail dalam\n"
-"komputer anda, ia akan dipilih secara\n"
-"automatik."
+"Jika papan keratan anda mengandungi URL yang sah\n"
+"atau laluan ke fail dalam komputer anda,\n"
+"ia akan dipilih secara automatik."
 
 #: modules/gui/qt/dialogs/plugins.cpp:79
 msgid "Plugins and extensions"
@@ -24691,10 +24690,7 @@ msgid ""
 "then blue. #000000 = black, #FF0000 = red, #00FF00 = green, #FFFF00 = yellow "
 "(red + green), #FFFFFF = white"
 msgstr ""
-"Warna teks yang akan dipersembahkan pada video. Mestilah heksadesimal "
-"(seperti warna HTML). Dua aksara pertama untuk murah, berikutnya hijau, "
-"kemudian biru. #000000 = hitam, #FF0000 = merah, #00FF00 = hijau, #FFFF00 = "
-"kuning (merah + hijau), #FFFFFF = putih"
+"Warna teks yang akan dipersembahkan pada video. Mestilah heksadesimal (seperti warna HTML). Dua aksara pertama untuk merah, berikutnya hijau, kemudian biru. #000000 = hitam, #FF0000 = merah, #00FF00 = hijau, #FFFF00 = kuning (merah + hijau), #FFFFFF = putih"
 
 #: modules/spu/marq.c:121
 msgid "Marquee position"
@@ -26334,10 +26330,7 @@ msgid ""
 "then blue. #000000 = black, #FF0000 = red, #00FF00 = green, #FFFF00 = yellow "
 "(red + green), #FFFFFF = white"
 msgstr ""
-"Warna teks yang akan dipersembahkan pada video. Mestilah heksadesimal "
-"(seperti warna HTML). Dua aksara pertama untuk murah, berikutnya hijau, "
-"kemudian biru. #000000 = hitam, #FF0000 = merah, #00FF00 = hijau, #FFFF00 = "
-"kuning (merah + hijau), #FFFFFF = putih"
+"Warna teks yang akan dipersembahkan pada video. Mestilah heksadesimal (seperti warna HTML). Dua aksara pertama untuk merah, berikutnya hijau, kemudian biru. #000000 = hitam, #FF0000 = merah, #00FF00 = hijau, #FFFF00 = kuning (merah + hijau), #FFFFFF = putih"
 
 #: modules/text_renderer/freetype/freetype.c:100
 msgid "Relative font size"

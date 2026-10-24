@@ -27809,9 +27809,7 @@ msgstr "出力カード"
 
 #: modules/video_output/decklink.cpp:86
 msgid "DeckLink output card, if multiple exist. The cards are numbered from 0."
-msgstr ""
-"DeckLinkキャプチャーカードが複数ある場合は使用するものを指定します。カード番"
-"号は0から始まります。"
+msgstr "DeckLink出力カードが複数ある場合は使用するものを指定します。カード番号は0から始まります。"
 
 #: modules/video_output/decklink.cpp:89
 msgid "Desired output mode"

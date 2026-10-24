@@ -28870,9 +28870,7 @@ msgstr "아무것도 보이지 않으면 인터넷 연결을 확인하세요."
 msgid ""
 "By creating a stream, the <i>Main Controls</i> will operate the stream "
 "instead of the main interface."
-msgstr ""
-"스트림을 생성할 때, 메인 인터페이스 대신 메인 컨트롤이 스트림에 동작할 것입니"
-"다."
+msgstr "스트림을 생성할 때, 메인 인터페이스 대신 <i>메인 컨트롤</i>이 스트림에 동작할 것입니다."
 
 #: share/lua/http/index.html:264
 msgid ""
@@ -28887,7 +28885,7 @@ msgstr ""
 msgid ""
 "Once the stream is created, the <i>Media Viewer</i> window will display the "
 "stream."
-msgstr "일단 스트림이 생성되면, 미디어 보기 창이 스트림을 출력할 것입니다."
+msgstr "일단 스트림이 생성되면, <i>미디어 보기</i> 창이 스트림을 출력할 것입니다."
 
 #: share/lua/http/index.html:269
 msgid ""
@@ -28900,16 +28898,13 @@ msgid ""
 "item, the first selected item from the <i>Library</i> will be the subject of "
 "the stream."
 msgstr ""
-"현재 재생중인 항목이 스트림될 것입니다. 만약 재생중인 항목이 없다면, 라이브러"
-"리에서 처음 선택된 항목이 스트림의 주제가 될 것입니다."
+"현재 재생중인 항목이 스트림될 것입니다. 만약 재생중인 항목이 없다면, <i>라이브러리</i>에서 처음 선택된 항목이 스트림의 대상이 될 것입니다."
 
 #: share/lua/http/index.html:275
 msgid ""
 "To stop the stream and resume normal controls, click the <i>Open Stream</i> "
 "button again."
-msgstr ""
-"스트림을 중단하고 보통 컨트롤을 다시 시작하려면, '스트림 열기' 버튼을 다시 누"
-"르세요."
+msgstr "스트림을 중단하고 보통 컨트롤을 다시 시작하려면, <i>스트림 열기</i> 버튼을 다시 누르세요."
 
 #: share/lua/http/index.html:278
 msgid "Are you sure you wish to create the stream?"

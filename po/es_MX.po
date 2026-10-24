@@ -13816,7 +13816,7 @@ msgstr "Factor QP entre P y B"
 
 #: modules/codec/x264.c:249
 msgid "QP factor between P and B. Range 1.0 to 2.0."
-msgstr "Factor QP entre I y P. Rango 1.0 a 2.0."
+msgstr "Factor QP entre P y B. Rango 1.0 a 2.0."
 
 #: modules/codec/x264.c:251
 msgid "QP difference between chroma and luma"
@@ -25575,7 +25575,8 @@ msgid ""
 "hexadecimal (like HTML colors). The first two chars are for red, then green, "
 "then blue. #000000 = black, #FF0000 = red, #00FF00 = green, #FFFF00 = yellow "
 "(red + green), #FFFFFF = white"
-msgstr "El color del texto que se generará en el vídeo."
+msgstr ""
+"El color del texto que se generará en el vídeo. Debe ser hexadecimal (como los colores HTML). Los dos primeros caracteres son para el rojo, luego el verde y luego el azul. #000000 = negro, #FF0000 = rojo, #00FF00 = verde, #FFFF00 = amarillo (rojo + verde), #FFFFFF = blanco"
 
 #: modules/text_renderer/freetype/freetype.c:100
 msgid "Relative font size"

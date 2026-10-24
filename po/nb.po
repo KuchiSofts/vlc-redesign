@@ -189,7 +189,7 @@ msgstr "Generelle videoinnstillinger"
 
 #: include/vlc_config_cat.h:79
 msgid "General settings for video output modules."
-msgstr "Generelle innstillinger for lydeksportmoduler."
+msgstr "Generelle innstillinger for videoeksportmoduler."
 
 #: include/vlc_config_cat.h:82
 msgid "Video filters are used to process the video stream."
@@ -1951,9 +1951,7 @@ msgid ""
 "This is the the video output method used by VLC. The default behavior is to "
 "automatically select the best method available."
 msgstr ""
-"Du velger hvilken metode for lydeksport VLC skal bruke med dette "
-"alternativet. Standard innstillingen velger automatisk den beste "
-"tilgjengelige metoden. "
+"Du velger hvilken metode for videoeksport VLC skal bruke med dette alternativet. Standard innstillingen velger automatisk den beste tilgjengelige metoden."
 
 #: src/libvlc-module.c:258 modules/gui/macosx/VLCSimplePrefsController.m:346
 #: modules/stream_out/display.c:42 modules/gui/qt/ui/sprefs_video.h:312
@@ -2952,10 +2950,7 @@ msgid ""
 "Track num<br>$p: Now playing<br>$A: Date<br>$D: Duration<br>$Z: \"Now playing"
 "\" (Fall back on Title - Artist)"
 msgstr ""
-"Denne innstillingen lar deg velge tittelen i henhold til det som blir "
-"avspilt<br>$a: Artist<br>$b: Album<br>$c: Opphavsrett<br>$t: Tittel<br>$g: "
-"Sjanger<br>$n: Spornummer<br>$p: \"Spilles av nå\" (Faller tilbake på Tittel "
-"- Artist)"
+"Denne innstillingen lar deg velge tittelen i henhold til det som blir avspilt<br>$a: Artist<br>$b: Album<br>$c: Opphavsrett<br>$t: Tittel<br>$g: Sjanger<br>$n: Spornummer<br>$p: Spilles av nå<br>$A: Dato<br>$D: Varighet<br>$Z: \"Spilles av nå\" (Faller tilbake på Tittel - Artist)"
 
 #: src/libvlc-module.c:699
 msgid "Disable all lua plugins"
@@ -20019,13 +20014,17 @@ msgstr "ms"
 msgid ""
 "Knee\n"
 "radius"
-msgstr "Lydbøyingsradius"
+msgstr ""
+"Lydbøyings-\n"
+"radius"
 
 #: modules/gui/qt/components/extended_panels.cpp:1280
 msgid ""
 "Makeup\n"
 "gain"
-msgstr "Oppveiingsforsterkning"
+msgstr ""
+"Oppveiings-\n"
+"forsterkning"
 
 #: modules/gui/qt/components/extended_panels.cpp:1333
 #, fuzzy

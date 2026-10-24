@@ -25917,7 +25917,8 @@ msgid ""
 "hexadecimal (like HTML colors). The first two chars are for red, then green, "
 "then blue. #000000 = black, #FF0000 = red, #00FF00 = green, #FFFF00 = yellow "
 "(red + green), #FFFFFF = white"
-msgstr "A color d'o texto que se chenerará en o video."
+msgstr ""
+"A color d'o texto que se chenerará en o video. Debe estar hexadecimal (como as colors HTML). Os dos primers caracters son ta royo, dimpués verde y dimpués azul. #000000 = negro, #FF0000 = royo, #00FF00 = verde, #FFFF00 = amariello (royo + verde), #FFFFFF = blanco"
 
 #: modules/text_renderer/freetype/freetype.c:100
 msgid "Relative font size"

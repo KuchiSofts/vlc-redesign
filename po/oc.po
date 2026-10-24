@@ -3448,7 +3448,8 @@ msgstr "Activar lo flux de sortida vidèo"
 msgid ""
 "Choose whether the video stream should be redirected to the stream output "
 "facility when this last one is enabled."
-msgstr "Difusar lo flux vidèo."
+msgstr ""
+"Causissètz se lo flux vidèo deu èsser redirigit cap al flux de sortida quand aqueste es activat."
 
 #: src/libvlc-module.c:942
 msgid "Enable audio stream output"
@@ -3458,7 +3459,8 @@ msgstr "Activar lo flux de sortida àudio"
 msgid ""
 "Choose whether the audio stream should be redirected to the stream output "
 "facility when this last one is enabled."
-msgstr "Difusar los fluxes àudio."
+msgstr ""
+"Causissètz se lo flux àudio deu èsser redirigit cap al flux de sortida quand aqueste es activat."
 
 #: src/libvlc-module.c:947
 msgid "Enable SPU stream output"
@@ -3468,7 +3470,8 @@ msgstr "Difusar los sostítols"
 msgid ""
 "Choose whether the SPU streams should be redirected to the stream output "
 "facility when this last one is enabled."
-msgstr "Difusar los fluxes de sostítols."
+msgstr ""
+"Causissètz se los fluxes de sostítols devon èsser redirigits cap al flux de sortida quand aqueste es activat."
 
 #: src/libvlc-module.c:952
 msgid "Keep stream output open"

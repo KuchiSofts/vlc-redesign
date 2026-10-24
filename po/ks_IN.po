@@ -13417,6 +13417,7 @@ msgid "Minimum encoding bitrate"
 msgstr "مینیمم اینکوڈینگ بِٹ ریٹ "
 
 #: modules/codec/vorbis.c:182
+#, fuzzy
 msgid ""
 "Minimum bitrate in kbps. This is useful for encoding for a fixed-size "
 "channel."

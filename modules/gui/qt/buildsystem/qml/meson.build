@@ -161,6 +161,7 @@ qml_modules += {
         '../../medialibrary/qml/MLDragItem.qml',
         '../../medialibrary/qml/MLTableColumns.qml',
         '../../medialibrary/qml/ScanProgressBar.qml',
+        '../../medialibrary/qml/RecentMediaMenuModel.qml',
     ),
 }
 

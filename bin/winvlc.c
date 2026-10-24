@@ -464,6 +464,66 @@ static void Repoint(const wchar_t *profile, const wchar_t *name, const wchar_t *
     free(text);
 }
 
+/* VLC Redesign keeps its settings apart from those of VLC (%APPDATA%\vlc and
+ * HKCU\Software\VideoLAN\VLC, which an installed VLC uses): in its portable
+ * folder, made when it is missing, else (a place it can't write to) in
+ * %APPDATA%\VLC Redesign, as the core does (src/win32/dirs.c) */
+static BOOL ProfileDir(wchar_t *path, DWORD size)
+{
+    if (PortableProfile(path, size))
+        return TRUE;
+    const DWORD read = GetModuleFileNameW(NULL, path, size);
+    wchar_t *last = (read != 0 && read != size) ? wcsrchr(path, L'\\') : NULL;
+    if (last != NULL)
+    {
+        *last = L'\0';
+        if (JoinPath(path, size, path, L"portable") && CreateDirectoryW(path, NULL))
+            return TRUE;
+    }
+    const wchar_t *appdata = _wgetenv(L"APPDATA");
+    if (appdata == NULL || !JoinPath(path, size, appdata, L"VLC Redesign"))
+        return FALSE;
+    CreateDirectoryW(path, NULL);
+    return TRUE;
+}
+
+/* A folder that is gone from a drive that is there (not a USB stick taken
+ * out, not a network share out of reach) */
+static BOOL FolderGone(const wchar_t *folder)
+{
+    if (wcslen(folder) < 3 || folder[1] != L':' || folder[2] != L'\\')
+        return FALSE;
+    const wchar_t root[] = { folder[0], L':', L'\\', L'\0' };
+    if (GetFileAttributesW(root) == INVALID_FILE_ATTRIBUTES)
+        return FALSE;
+    if (GetFileAttributesW(folder) != INVALID_FILE_ATTRIBUTES)
+        return FALSE;
+    const DWORD error = GetLastError();
+    return error == ERROR_FILE_NOT_FOUND || error == ERROR_PATH_NOT_FOUND;
+}
+
+/* The noted copies whose folder is gone (deleted, or a zip unpacked in a
+ * temporary folder): their note goes too */
+static void PruneProfiles(HKEY key)
+{
+    wchar_t (*gone)[MAX_PATH] = malloc(32 * sizeof(*gone));
+    if (gone == NULL)
+        return;
+    DWORD count = 0;
+    for (DWORD i = 0; count < 32; i++)
+    {
+        DWORD name_len = MAX_PATH;
+        LONG ret = RegEnumValueW(key, i, gone[count], &name_len, NULL, NULL, NULL, NULL);
+        if (ret == ERROR_NO_MORE_ITEMS)
+            break;
+        if (ret == ERROR_SUCCESS && FolderGone(gone[count]))
+            count++;
+    }
+    for (DWORD i = 0; i < count; i++)
+        RegDeleteValueW(key, gone[i]);
+    free(gone);
+}
+
 /* An update keeps the settings. Each portable copy is noted with the time it
  * last started (HKCU\Software\VLC Redesign\Profiles), and one that starts
  * with an empty profile (a new version unpacked into a new folder, an install
@@ -473,7 +533,8 @@ static void Repoint(const wchar_t *profile, const wchar_t *name, const wchar_t *
 static void CarryOverSettings(void)
 {
     wchar_t profile[MAX_PATH], path[MAX_PATH];
-    if (!PortableProfile(profile, MAX_PATH) || ExistsIn(profile, L"standalone"))
+    if (!ProfileDir(profile, MAX_PATH) || !PortableProfile(profile, MAX_PATH)
+     || ExistsIn(profile, L"standalone"))
         return;
     /* (one name for a folder however VLC was started) */
     const DWORD len = GetLongPathNameW(profile, path, MAX_PATH);
@@ -483,6 +544,7 @@ static void CarryOverSettings(void)
     if (RegCreateKeyExW(HKEY_CURRENT_USER, PROFILES_KEY, 0, NULL, 0, KEY_QUERY_VALUE | KEY_SET_VALUE,
                         NULL, &key, NULL) != ERROR_SUCCESS)
         return;
+    PruneProfiles(key);
     wchar_t last[MAX_PATH];
     if (!HasSettings(profile) && !ExistsIn(profile, L"ml\\ml.db")
      && LastProfile(key, profile, last, MAX_PATH))
@@ -498,17 +560,16 @@ static void CarryOverSettings(void)
     RegCloseKey(key);
 }
 
-/* A portable copy (a "portable" folder next to vlc.exe, the installed copy
- * too) keeps its own interface language in portable\language (an ISO code,
- * "auto" for the system's), not in the registry it would share with an
+/* The interface language is kept in the profile (portable\language: an ISO
+ * code, "auto" for the system's), not in the registry it would share with an
  * installed VLC. Until one is chosen it is English, whatever the language of
  * Windows. */
-static wchar_t *PortableLanguage(void)
+static wchar_t *ProfileLanguage(void)
 {
     wchar_t path[MAX_PATH];
     const DWORD size = sizeof(path) / sizeof(path[0]);
-    if (!PortableProfile(path, size) || !JoinPath(path, size, path, L"language"))
-        return NULL;
+    if (!ProfileDir(path, size) || !JoinPath(path, size, path, L"language"))
+        return _wcsdup(L"en");
     FILE *file = _wfopen(path, L"rb");
     if (file == NULL)
         return _wcsdup(L"en");
@@ -675,19 +736,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
     /* */
     if (!lang)
-        lang = PortableLanguage();
-    if (!lang)
-    {
-        HKEY h_key;
-        if( RegOpenKeyEx( HKEY_CURRENT_USER, TEXT("Software\\VideoLAN\\VLC\\"), 0, KEY_READ, &h_key )
-                == ERROR_SUCCESS )
-        {
-            WCHAR szData[256];
-            DWORD len = 256;
-            if( RegQueryValueEx( h_key, TEXT("Lang"), NULL, NULL, (LPBYTE) &szData, &len ) == ERROR_SUCCESS )
-                lang = _wcsdup( szData );
-        }
-    }
+        lang = ProfileLanguage();
 
     if (lang && wcsncmp( lang, L"auto", 4 ) )
     {

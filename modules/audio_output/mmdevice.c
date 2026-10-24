@@ -45,8 +45,11 @@ DEFINE_PROPERTYKEY(PKEY_Device_FriendlyName, 0xa45c254e, 0xdf1c, 0x4efd,
 #include <vlc_modules.h>
 #include "mmdevice.h"
 
-DEFINE_GUID (GUID_VLC_AUD_OUT, 0x4533f59d, 0x59ee, 0x00c6,
-   0xad, 0xb2, 0xc6, 0x8b, 0x50, 0x1a, 0x66, 0x55);
+/* The audio session whose volume Windows keeps from one start to the next:
+ * VLC Redesign's own, not VLC's (4533f59d-59ee-00c6-adb2-c68b501a6655, which
+ * an installed VLC uses) */
+DEFINE_GUID (GUID_VLC_AUD_OUT, 0x1c791b23, 0xd789, 0x49f8,
+   0x83, 0x9c, 0x1b, 0xa3, 0xcb, 0x58, 0x2f, 0x89);
 
 static int TryEnterMTA(vlc_object_t *obj)
 {

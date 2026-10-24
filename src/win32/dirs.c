@@ -71,11 +71,13 @@ static char *config_GetAppDir (void)
         }
     }
 
+    /* VLC Redesign: never VLC's own folder (an installed VLC uses it); vlc.exe
+     * makes the portable folder, this is for a place it can't write to */
     char *psz_dir;
     char *psz_parent = config_GetKnownFolder (FOLDERID_RoamingAppData);
 
     if (psz_parent == NULL
-     ||  asprintf (&psz_dir, "%s\\vlc", psz_parent) == -1)
+     ||  asprintf (&psz_dir, "%s\\VLC Redesign", psz_parent) == -1)
         psz_dir = NULL;
     free (psz_parent);
     return psz_dir;

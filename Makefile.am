@@ -9,6 +9,9 @@
 SUBDIRS = compat po share src modules lib doc bin test
 DIST_SUBDIRS = m4 $(SUBDIRS)
 
+# configure reads the version of VLC Redesign from it
+CONFIG_STATUS_DEPENDENCIES = $(top_srcdir)/modules/gui/qt/util/redesign_version.hpp
+
 EXTRA_DIST = \
 	buildsystem/cargo-test.py \
 	buildsystem/check_qml_module.py \

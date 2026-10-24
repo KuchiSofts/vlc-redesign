@@ -67,21 +67,20 @@ package or an installer made locally can't be signed.
 
 ## Before applying: what the project still has to change
 
-SignPath Foundation's conditions are at <https://signpath.org/terms>. These are not met yet:
+SignPath Foundation's conditions are at <https://signpath.org/terms>. The first is met; the others are not yet:
 
-1. **The binaries' version resources.** SignPath Foundation requires the artifact configuration to check the product
-   name (the project's name) and the product version (the same in all files of a build) of every signed binary. Today
-   every binary says *VLC media player*, *VideoLAN*, *4,0,0,0*, and `vlc-waveform.exe` and `vlc-redesign-update.exe`
-   have no version resource, so the configurations here would refuse the package. To change:
-   - `bin/vlc_win32_rc.rc.in`, `lib/libvlc_win32_rc.rc.in`, `src/libvlccore_win32_rc.rc.in`,
-     `modules/module.rc.in`: `ProductName` "VLC Redesign"; `ProductVersion` the VLC Redesign version, exactly
-     `VLC_REDESIGN_VERSION` (for instance "0.3.0", with `PRODUCTVERSION 0,3,0,0`), for instance by including
-     `modules/gui/qt/util/redesign_version.hpp`. Recommended too: `CompanyName` "KuchiSofts" (the installer's
-     publisher: VideoLAN doesn't publish these files, and SignPath Foundation's name will be on them) and
-     `FileDescription` "VLC Redesign" for `vlc.exe`. `LegalCopyright` (VideoLAN and the VLC authors) and
-     `LegalTrademarks` stay.
-   - `vlc-waveform.exe` (`bin/Makefile.am`, `bin/meson.build`) and `vlc-redesign-update.exe` (`build_updater` in
-     `extras/juxtopposed/win64-docker.sh`): a version resource with the same product name and version.
+1. **The binaries' version resources (done).** SignPath Foundation requires the artifact configuration to check the
+   product name (the project's name) and the product version (the same in all files of a build) of every signed
+   binary. Every `.exe` and `.dll` of the package says `ProductName` *VLC Redesign*, `CompanyName` *KuchiSofts*, and
+   `VLC_REDESIGN_VERSION` as `ProductVersion` and `FileVersion` (for instance "0.3.0", with `PRODUCTVERSION
+   0,3,0,0`), with a `FileDescription` of its own; `LegalCopyright` keeps VideoLAN and the VLC authors and adds
+   VLC Redesign's, `LegalTrademarks` stays, and `Comments` names the VLC version it is based on.
+   - The version is written only in `modules/gui/qt/util/redesign_version.hpp`: `configure.ac` (and `meson.build`)
+     read it, and configure runs again when it changes. Its values fill `bin/vlc_win32_rc.rc.in` (`vlc.exe`, and
+     `vlc-cache-gen.exe` and `vlc-preparser.exe` with their own names), `bin/vlc_waveform_rc.rc.in`,
+     `lib/libvlc_win32_rc.rc.in`, `src/libvlccore_win32_rc.rc.in`, `modules/module.rc.in` (every plugin) and
+     `extras/juxtopposed/updater/vlc-redesign-update.rc.in` (`build_updater` in
+     `extras/juxtopposed/win64-docker.sh`).
    - Check a package (it must list nothing):
      ```powershell
      $v = '0.3.0'   # VLC_REDESIGN_VERSION

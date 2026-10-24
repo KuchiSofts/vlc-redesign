@@ -38,9 +38,16 @@ strip_package() {
 
 # The program that applies an update once VLC has quit (see
 # extras/juxtopposed/updater); no PE time stamp, so an update leaves it alone
-# when it didn't change.
+# when it didn't change. Its version resource is filled by VLC's
+# config.status, with the version of the other binaries.
 build_updater() {
-    $triplet-gcc -O2 -municode -mwindows -static -Wl,--no-insert-timestamp         -o /build/package/vlc-redesign-update.exe         /src/extras/juxtopposed/updater/vlc-redesign-update.c -ladvapi32 -lshell32
+    (cd win64 && ./config.status \
+        --file=bin/vlc-redesign-update.rc:/src/extras/juxtopposed/updater/vlc-redesign-update.rc.in)
+    $triplet-windres -i win64/bin/vlc-redesign-update.rc -o win64/bin/vlc-redesign-update-rc.o
+    $triplet-gcc -O2 -municode -mwindows -static -Wl,--no-insert-timestamp \
+        -o /build/package/vlc-redesign-update.exe \
+        /src/extras/juxtopposed/updater/vlc-redesign-update.c win64/bin/vlc-redesign-update-rc.o \
+        -ladvapi32 -lshell32
 }
 
 # The prebuilt libupnp never returns from its HTTP requests (pupnp renames

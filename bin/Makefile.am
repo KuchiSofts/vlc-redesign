@@ -9,8 +9,8 @@ bin_PROGRAMS = vlc
 noinst_PROGRAMS = vlc-static
 endif
 endif
-EXTRA_DIST = vlc_win32_rc.rc.in
-CLEANFILES = vlc_win32_rc.rc
+EXTRA_DIST = vlc_win32_rc.rc.in vlc_waveform_rc.rc.in
+CLEANFILES = vlc_win32_rc.rc vlc_waveform_rc.rc
 
 SUFFIXES = .rc.in .rc
 
@@ -110,6 +110,13 @@ vlc_win32_rc.rc: $(top_builddir)/config.status vlc_win32_rc.rc.in
 vlc_win32_rc.$(OBJEXT): vlc_win32_rc.rc $(top_builddir)/extras/package/win32/vlc.exe.manifest
 	$(WINDRES) --include-dir $(top_srcdir)/share/icons --include-dir $(top_builddir)/extras/package/win32 -i $< -o $@
 
+# The same resources with the names of the helpers
+vlc_cache_gen_rc.$(OBJEXT): vlc_win32_rc.rc $(top_builddir)/extras/package/win32/vlc.exe.manifest
+	$(WINDRES) -DVLC_RC_CACHE_GEN --include-dir $(top_srcdir)/share/icons --include-dir $(top_builddir)/extras/package/win32 -i $< -o $@
+
+vlc_preparser_rc.$(OBJEXT): vlc_win32_rc.rc $(top_builddir)/extras/package/win32/vlc.exe.manifest
+	$(WINDRES) -DVLC_RC_PREPARSER --include-dir $(top_srcdir)/share/icons --include-dir $(top_builddir)/extras/package/win32 -i $< -o $@
+
 #
 # Plug-ins cache generator
 #
@@ -122,9 +129,9 @@ vlc_cache_gen_LDADD = \
 	../compat/libcompat.la \
 	../lib/libvlc.la
 if HAVE_WIN32
-vlc_cache_gen_LDADD += vlc_win32_rc.$(OBJEXT)
+vlc_cache_gen_LDADD += vlc_cache_gen_rc.$(OBJEXT)
 vlc_cache_gen_LDFLAGS = -Wc,-static
-EXTRA_vlc_cache_gen_DEPENDENCIES = vlc_win32_rc.$(OBJEXT)
+EXTRA_vlc_cache_gen_DEPENDENCIES = vlc_cache_gen_rc.$(OBJEXT)
 endif
 
 if HAVE_PARTIAL_LINKING
@@ -180,4 +187,13 @@ if HAVE_WIN32
 # Static runtimes, as vlc.exe: with stack protection, libssp-0.dll is not
 # in the package and the helper would not start
 vlc_waveform_LDFLAGS = -municode -Wc,-static
+vlc_waveform_LDADD += vlc_waveform_rc.$(OBJEXT)
+EXTRA_vlc_waveform_DEPENDENCIES = vlc_waveform_rc.$(OBJEXT)
 endif
+
+vlc_waveform_rc.rc: $(top_builddir)/config.status vlc_waveform_rc.rc.in
+	cd "$(top_builddir)" && \
+	$(SHELL) ./config.status --file="bin/$@"
+
+vlc_waveform_rc.$(OBJEXT): vlc_waveform_rc.rc
+	$(WINDRES) -i $< -o $@

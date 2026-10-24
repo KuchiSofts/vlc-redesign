@@ -113,8 +113,11 @@ BUILT_SOURCES += module.rc.lo
 CLEANFILES += module.rc
 #noinst_DATA = module.rc.lo
 
+# Every plugin is linked again when module.rc.lo changes (common.am): a
+# configure run that doesn't change the resource leaves it alone
 module.rc: module.rc.in $(top_builddir)/config.status
-	$(AM_V_GEN) cd "$(top_builddir)" && $(SHELL) ./config.status --file="modules/$@"
+	$(AM_V_GEN) cd "$(top_builddir)" && $(SHELL) ./config.status --file="modules/$@.tmp:modules/$@.in" && \
+	if cmp -s "modules/$@.tmp" "modules/$@"; then rm -f "modules/$@.tmp"; else mv -f "modules/$@.tmp" "modules/$@"; fi
 
 module.rc.lo: module.rc
 	$(AM_V_GEN) $(LIBTOOL) --tag=RC --mode=compile $(WINDRES) \

@@ -23,6 +23,9 @@ if build_vlc and (host_system != 'darwin' or have_osx) and not have_win_store an
     endif
 
     vlc_win_extra = []
+    vlc_cache_gen_win_extra = []
+    vlc_preparser_win_extra = []
+    vlc_waveform_win_extra = []
     if host_system == 'windows'
         vlc_rc = configure_file(
             input: 'vlc_win32_rc.rc.in',
@@ -44,6 +47,41 @@ if build_vlc and (host_system != 'darwin' or have_osx) and not have_win_store an
             ],
             depend_files: [vlc_manifest],
         )
+
+        # The same resources with the names of the helpers
+        vlc_cache_gen_win_extra = windows_rc.compile_resources(
+            configure_file(
+                input: 'vlc_win32_rc.rc.in',
+                output: 'vlc_cache_gen_rc.rc',
+                configuration: rc_conf,
+            ),
+            args: ['-DVLC_RC_CACHE_GEN'],
+            include_directories: [
+                vlc_src_root / 'share/icons',
+            ],
+            depend_files: [vlc_manifest],
+        )
+
+        vlc_preparser_win_extra = windows_rc.compile_resources(
+            configure_file(
+                input: 'vlc_win32_rc.rc.in',
+                output: 'vlc_preparser_rc.rc',
+                configuration: rc_conf,
+            ),
+            args: ['-DVLC_RC_PREPARSER'],
+            include_directories: [
+                vlc_src_root / 'share/icons',
+            ],
+            depend_files: [vlc_manifest],
+        )
+
+        vlc_waveform_win_extra = windows_rc.compile_resources(
+            configure_file(
+                input: 'vlc_waveform_rc.rc.in',
+                output: 'vlc_waveform_rc.rc',
+                configuration: rc_conf,
+            ),
+        )
     endif
 
     executable('vlc',
@@ -63,7 +101,7 @@ if build_vlc and (host_system != 'darwin' or have_osx) and not have_win_store an
         waveform_link_args += ['-municode', '-static']
     endif
     executable('vlc-waveform',
-        '../extras/juxtopposed/waveform.c',
+        ['../extras/juxtopposed/waveform.c'] + vlc_waveform_win_extra,
         link_args: waveform_link_args,
         link_with: [libvlc],
         include_directories: [vlc_include_dirs],
@@ -89,7 +127,7 @@ if build_vlc and (host_system != 'darwin' or have_osx) and not have_win_store an
     )
 
     vlc_cache_gen_dep = executable('vlc-cache-gen',
-        ['cachegen.c'] + vlc_win_extra,
+        ['cachegen.c'] + vlc_cache_gen_win_extra,
         link_with: [vlc_libcompat, libvlc],
         link_args: gc_sections_linkargs,
         include_directories: [vlc_include_dirs],
@@ -118,7 +156,7 @@ if build_vlc and (host_system != 'darwin' or have_osx) and not have_win_store an
     ]
 
     executable('vlc-preparser',
-        vlc_preparser_sources + vlc_win_extra,
+        vlc_preparser_sources + vlc_preparser_win_extra,
         link_with: [libvlc, libvlccore, vlc_libcompat],
         link_args: gc_sections_linkargs,
         include_directories: [vlc_include_dirs],
@@ -129,7 +167,7 @@ if build_vlc and (host_system != 'darwin' or have_osx) and not have_win_store an
     )
 
     vlc_preparser_static_dep = executable('vlc-preparser-static',
-        vlc_preparser_sources + vlc_win_extra,
+        vlc_preparser_sources + vlc_preparser_win_extra,
         link_with: [libvlc, libvlccore, vlc_libcompat],
         link_args: gc_sections_linkargs,
         include_directories: [vlc_include_dirs],

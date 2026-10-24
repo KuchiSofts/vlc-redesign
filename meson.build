@@ -1202,6 +1202,20 @@ if host_system == 'windows'
     rc_conf.merge_from(cdata)
     rc_conf.set('VERSION', vlc_version)
     rc_conf.set('COPYRIGHT_YEARS', vlc_copyright_years)
+
+    # VLC Redesign's version, written only in redesign_version.hpp (meson
+    # configures again when that file changes)
+    redesign_version = import('fs').read('modules/gui/qt/util/redesign_version.hpp')
+    redesign_version = redesign_version.split('#define VLC_REDESIGN_VERSION "')[1].split('"')[0]
+    redesign_version_parts = redesign_version.split('.')
+    if redesign_version_parts.length() != 3
+        error(f'Unexpected VLC_REDESIGN_VERSION "@redesign_version@", expected major.minor.patch')
+    endif
+    rc_conf.set('REDESIGN_VERSION', redesign_version)
+    rc_conf.set('REDESIGN_VERSION_NUMBER', '@0@,@1@,@2@,0'.format(
+        redesign_version_parts[0].to_int(),
+        redesign_version_parts[1].to_int(),
+        redesign_version_parts[2].to_int()))
 endif
 
 # libvlccore

@@ -220,6 +220,10 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
   film with subtitles).
 - **The TV is in the list before you open it**: once you have cast, VLC looks for your TVs quietly while a video plays,
   so they are listed as soon as you click the cast button, with the one you used last at the top.
+- **Every program and plugin says VLC Redesign**: Task Manager and a file's Properties showed *VLC media player*,
+  *VideoLAN* and 4.0.0.0 for every file of the package, and nothing at all for `vlc-waveform.exe` and
+  `vlc-redesign-update.exe`. They all show *VLC Redesign*, *KuchiSofts* and the version of the release now, each with
+  its own description, as code signing requires; the copyright of VideoLAN and the VLC authors stays.
 
 ### Technical
 

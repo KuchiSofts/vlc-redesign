@@ -21,10 +21,25 @@ Rectangle {
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
     function c(value) { return VLCStyle.redesign.color(value, value) }
 
+    // the width where every option shows its whole text: a row gives a long
+    // translation ("Da esquerda para a direita") more room than the design's
+    readonly property real neededWidth: {
+        let widest = 0
+        for (const option of options)
+            widest = Math.max(widest, Math.ceil(textMetrics.advanceWidth(option.text)))
+        return options.length * (widest + px(24)) + px(2) * (options.length + 1)
+    }
+
     implicitWidth: px(320)
     implicitHeight: px(36)
     radius: px(6)
     color: c("#090909")
+
+    FontMetrics {
+        id: textMetrics
+        font.family: VLCStyle.redesign.fontFamily
+        font.pixelSize: root.px(14)
+    }
 
     Row {
         anchors.fill: parent

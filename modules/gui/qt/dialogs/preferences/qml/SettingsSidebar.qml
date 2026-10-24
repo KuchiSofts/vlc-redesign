@@ -137,8 +137,11 @@ Item {
                             Text {
                                 id: itemLabel
                                 // what the item leaves after its icon: a longer
-                                // name is cut short
+                                // name (a translation: "Конфиденциальность") is
+                                // drawn up to 2 px smaller, and only then cut short
                                 width: Math.max(0, Math.min(implicitWidth, item.availableWidth - root.px(32) - parent.spacing))
+                                fontSizeMode: Text.HorizontalFit
+                                minimumPixelSize: root.px(12)
                                 elide: Text.ElideRight
                                 anchors.baseline: parent.verticalCenter
                                 anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)

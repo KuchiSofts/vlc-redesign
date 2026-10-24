@@ -135,7 +135,8 @@ SettingsSectionTitle {
             id: directionChoice
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
-            width: Math.min(root.px(320), parent.width * 0.46)
+            // wider for a long translation, as far as the label leaves room
+            width: Math.min(Math.max(root.px(320), neededWidth), parent.width * 0.62)
             options: [{ text: qsTr("Left to right"), value: false },
                       { text: qsTr("Right to left"), value: true }]
             value: root.selectedRightToLeft
@@ -159,7 +160,7 @@ SettingsSectionTitle {
         SettingsSegmented {
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
-            width: Math.min(root.px(320), parent.width * 0.46)
+            width: Math.min(Math.max(root.px(320), neededWidth), parent.width * 0.62)
             options: root.themeChoices.map(choice => ({ text: choice.text, value: choice.index }))
             value: root.selectedTheme
             onChosen: (value) => root.chooseTheme(value)

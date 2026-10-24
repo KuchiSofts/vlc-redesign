@@ -425,6 +425,12 @@ public:
 
     Q_INVOKABLE static void setAttachedToolTip(QObject* toolTip);
 
+    // Shows the interface in a language at once (an ISO code, "auto" for the
+    // system's): the messages, the locale of numbers and dates, the direction
+    // of the layout (right to left for Hebrew, Arabic...), then every text
+    // (interfaceLanguageChanged). Saving the choice is interface_language.hpp's
+    Q_INVOKABLE void applyInterfaceLanguage(const QString &iso);
+
     CSDButtonModel *csdButtonModel() { return m_csdButtonModel.get(); }
 
     inline MainInterfaceModes getMainInterfaceModes() const { return m_mainInterfaceModes; };
@@ -558,6 +564,9 @@ protected:
     unsigned m_windowExtendedMargin = 0;
 
     std::unique_ptr<CSDButtonModel> m_csdButtonModel;
+    // the language last applied (applyInterfaceLanguage): empty, the one VLC
+    // started in
+    QString m_interfaceLanguage;
 
     SearchCtx* m_search = nullptr;
     SortCtx* m_sort = nullptr;
@@ -656,6 +665,9 @@ signals:
 
     void intfScaleFactorChanged();
     void intfDevicePixelRatioChanged();
+    // the language of the interface changed: texts made once (models, menus,
+    // dialogs) are made again; qsTr() bindings are retranslated by the engine
+    void interfaceLanguageChanged();
 
     void pinVideoControlsChanged();
     void seekThumbnailChanged();

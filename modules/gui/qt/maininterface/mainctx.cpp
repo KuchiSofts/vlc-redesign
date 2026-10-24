@@ -70,6 +70,8 @@
 
 #include <QUrl>
 #include <QDate>
+#include <QLocale>
+#include <QGuiApplication>
 #include <QMimeData>
 #include <QClipboard>
 #include <QInputDialog>
@@ -1262,6 +1264,21 @@ QWindow *MainCtx::intfMainWindow() const
 QVariant MainCtx::settingValue(const QString &key, const QVariant &defaultValue) const
 {
     return settings->value(key, defaultValue);
+}
+
+void MainCtx::applyInterfaceLanguage(const QString &iso)
+{
+    const QString code = (iso.isEmpty() || iso == QLatin1String("auto")) ? QLocale::system().name() : iso;
+    if (code == m_interfaceLanguage)
+        return;
+    m_interfaceLanguage = code;
+    vlc_settextlanguage(qtu(code));
+    const QLocale locale(code);
+    QLocale::setDefault(locale);
+    QGuiApplication::setLayoutDirection(locale.textDirection());
+    // the widgets get it from the application (QEvent::LanguageChange)
+    QCoreApplication::postEvent(QCoreApplication::instance(), new QEvent(QEvent::LanguageChange));
+    emit interfaceLanguageChanged();
 }
 
 void MainCtx::setSettingValue(const QString &key, const QVariant &value)

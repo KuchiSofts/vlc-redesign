@@ -305,6 +305,7 @@ vlc_tracer_Destroy
 vlc_tracer_TraceWithTs
 vlc_LogHeaderCreate
 vlc_LogDestroy
+vlc_settextlanguage
 vlc_strerror
 vlc_strerror_c
 vlc_obj_malloc

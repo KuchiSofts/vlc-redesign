@@ -57,10 +57,12 @@ public:
     Q_INVOKABLE QVariantList activeShortcuts() const;
     // A folder as the design writes it: "~/Videos" in the home folder
     Q_INVOKABLE QString displayPath(const QUrl& folder) const;
-    // Interface language (settings, Appearance), applied at the next start
+    // Interface language (settings, Appearance; the welcome): shown at once,
+    // saved by setInterfaceLanguage
     Q_INVOKABLE QVariantList interfaceLanguages() const;
     Q_INVOKABLE QString interfaceLanguage() const;
     Q_INVOKABLE bool setInterfaceLanguage(const QString& iso);
+    Q_INVOKABLE void previewInterfaceLanguage(const QString& iso);
 
 signals:
     void ctxChanged();

@@ -1446,11 +1446,13 @@ void SPrefsPanel::configML()
 // (the registry key of an installed VLC is never written nor deleted)
 void SPrefsPanel::cleanLang() {
     resetInterfaceLanguage();
+    p_intf->p_mi->applyInterfaceLanguage( interfaceLanguage() );
 }
 
 void SPrefsPanel::saveLang() {
     if( !lang ) return;
-    setInterfaceLanguage( QString::fromLatin1( lang ) );
+    if( setInterfaceLanguage( QString::fromLatin1( lang ) ) )
+        p_intf->p_mi->applyInterfaceLanguage( QString::fromLatin1( lang ) );
 }
 
 bool SPrefsPanel::addType( const char * psz_ext, QTreeWidgetItem* current,

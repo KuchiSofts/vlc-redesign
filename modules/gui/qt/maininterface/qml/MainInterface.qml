@@ -49,6 +49,12 @@ Item {
     Accessible.name: qsTr("Main interface")
     AccessibleCompat.id: "mainInterface"
 
+    // Right to left in Hebrew, Arabic... (MainCtx.applyInterfaceLanguage):
+    // the whole interface is mirrored (popups and other windows have roots
+    // of their own)
+    LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+    LayoutMirroring.childrenInherit: true
+
     property bool _extendedFrameVisible: MainCtx.windowSuportExtendedFrame
                                       && MainCtx.clientSideDecoration
                                       && (MainCtx.intfMainWindow.visibility === Window.Windowed)

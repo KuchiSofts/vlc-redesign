@@ -1088,6 +1088,15 @@ VLC_API const char *vlc_gettext(const char *msgid) VLC_FORMAT_ARG(1);
 VLC_API const char *vlc_ngettext(const char *s, const char *p, unsigned long n)
 VLC_FORMAT_ARG(1) VLC_FORMAT_ARG(2);
 
+/**
+ * Changes the language of the messages at once, for the next vlc_gettext()
+ * and vlc_ngettext() of every thread.
+ *
+ * \param lang a language code ("he", "pt_BR", "zh_TW"), or NULL for the
+ * language VLC started with
+ */
+VLC_API void vlc_settextlanguage(const char *lang);
+
 #define vlc_pgettext( ctx, id ) \
         vlc_pgettext_aux( ctx "\004" id, id )
 

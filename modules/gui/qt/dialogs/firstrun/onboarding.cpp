@@ -426,5 +426,14 @@ QString OnboardingController::interfaceLanguage() const
 
 bool OnboardingController::setInterfaceLanguage(const QString& iso)
 {
-    return ::setInterfaceLanguage(iso);
+    if (!::setInterfaceLanguage(iso))
+        return false;
+    previewInterfaceLanguage(iso);
+    return true;
+}
+
+void OnboardingController::previewInterfaceLanguage(const QString& iso)
+{
+    if (m_ctx)
+        m_ctx->applyInterfaceLanguage(iso);
 }

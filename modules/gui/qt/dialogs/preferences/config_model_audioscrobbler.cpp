@@ -107,6 +107,7 @@ void ConfigModel::resetAll()
 #ifdef _WIN32
     // the language of the interface is not a setting (registry, portable file)
     resetInterfaceLanguage();
+    m_ctx->applyInterfaceLanguage(interfaceLanguage());
 #endif
     reload();
 }

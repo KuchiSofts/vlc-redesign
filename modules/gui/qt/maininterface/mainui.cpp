@@ -245,6 +245,9 @@ bool MainUI::setup(QQmlEngine* engine)
 {
     m_engineBound = engine;
 
+    // a new language: every qsTr() of the interface again
+    connect(m_mainCtx, &MainCtx::interfaceLanguageChanged, engine, &QQmlEngine::retranslate);
+
     if (m_mainCtx->hasMediaLibrary())
     {
         engine->addImageProvider(MLCustomCover::providerId, new MLCustomCover(m_mainCtx->getMediaLibrary()));

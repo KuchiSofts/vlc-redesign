@@ -1,0 +1,30 @@
+VLC Redesign - inoffizieller Build
+
+DESIGN
+Die Oberfläche wurde von Juxtopposed gestaltet.
+  Video:   https://www.youtube.com/watch?v=ERFeOgqk324
+  Kanal:   https://www.youtube.com/@juxtopposed
+  Figma:   https://www.figma.com/community/file/1691465999134370980
+„VLC Redesign (Community)“ von Juxtopposed steht unter der Lizenz
+CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Es wurde an
+Qt/QML angepasst, seine Symbole wurden neu gezeichnet und verändert.
+Juxtopposed unterstützt diesen Build nicht.
+
+KEIN OFFIZIELLES VLC
+Dieser Build basiert auf VLC 4.0 (in Entwicklung). Er wurde weder von
+VideoLAN erstellt noch ist er mit VideoLAN verbunden oder von VideoLAN
+unterstützt. VLC, VLC media player und das Kegel-Logo sind Marken von
+VideoLAN. Den offiziellen Player gibt es unter https://www.videolan.org
+
+Er wird neben einem offiziellen VLC installiert, ohne es zu verändern:
+Einstellungen, Bibliothek und Verlauf bleiben in seinem eigenen Ordner.
+
+LIZENZ
+Freie Software unter der GNU General Public License, Version 2 oder neuer;
+libVLC unter der GNU LGPL 2.1 oder neuer. Die Schriften Inter und DM Mono
+unter der SIL Open Font License 1.1. Die vollständigen Texte werden neben
+vlc.exe installiert (COPYING.txt, COPYING.LIB.txt, licenses\). Quellcode:
+https://github.com/KuchiSofts/vlc-redesign
+
+Erste Umsetzung des Redesigns von MrDouglax
+(https://github.com/SrDouglax/JuxtopposedVLC).

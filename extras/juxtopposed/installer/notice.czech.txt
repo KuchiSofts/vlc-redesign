@@ -1,0 +1,29 @@
+VLC Redesign - neoficiální sestavení
+
+DESIGN
+Rozhraní navrhla Juxtopposed.
+  Video:   https://www.youtube.com/watch?v=ERFeOgqk324
+  Kanál:   https://www.youtube.com/@juxtopposed
+  Figma:   https://www.figma.com/community/file/1691465999134370980
+„VLC Redesign (Community)“ od Juxtopposed je licencováno pod CC BY 4.0
+(https://creativecommons.org/licenses/by/4.0/). Bylo přizpůsobeno pro
+Qt/QML a jeho ikony byly překresleny a upraveny. Juxtopposed toto
+sestavení nijak nezaštiťuje.
+
+NEJDE O OFICIÁLNÍ VLC
+Toto sestavení vychází z VLC 4.0 (ve vývoji). Nevytvořila ho organizace
+VideoLAN, není s ní spojeno ani jí schváleno. VLC, VLC media player a logo
+kužele jsou ochranné známky VideoLAN. Oficiální přehrávač: https://www.videolan.org
+
+Instaluje se vedle oficiálního VLC, aniž by se ho dotklo: jeho nastavení,
+knihovna a historie zůstávají v jeho vlastní složce.
+
+LICENCE
+Svobodný software pod licencí GNU General Public License verze 2 nebo
+novější; libVLC pod GNU LGPL 2.1 nebo novější. Písma Inter a DM Mono pod
+SIL Open Font License 1.1. Úplná znění jsou nainstalována vedle vlc.exe
+(COPYING.txt, COPYING.LIB.txt, licenses\). Zdrojový kód:
+https://github.com/KuchiSofts/vlc-redesign
+
+První implementaci redesignu vytvořil MrDouglax
+(https://github.com/SrDouglax/JuxtopposedVLC).

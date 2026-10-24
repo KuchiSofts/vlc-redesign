@@ -20,14 +20,15 @@
 #define PLAYERCONTROLBARMODEL_HPP
 
 #include <QObject>
-#include <QJSValue>
 #include <QMap>
+#include <QVariantList>
 
 #include <array>
 
 Q_MOC_INCLUDE( "player/control_list_model.hpp" )
 
 class ControlListModel;
+class MainCtx;
 
 class PlayerControlbarModel : public QObject
 {
@@ -63,9 +64,6 @@ public:
     // (except for the translation)
 
     static const QMap<PlayerIdentifier, const char*> playerIdentifierDictionary;
-
-    static QJSValue getPlaylistIdentifierListModel(class QQmlEngine *engine,
-                                                   class QJSEngine *scriptEngine);
 
     explicit PlayerControlbarModel(QObject *parent = nullptr);
     ~PlayerControlbarModel();
@@ -103,6 +101,23 @@ private:
 
 private slots:
     void contentChanged();
+};
+
+// The players of the configuration editor (PlayerListModel in QML): its
+// model is [{ identifier, name }], named in the language of the interface
+class PlayerListModel : public QObject
+{
+    Q_OBJECT
+
+    Q_PROPERTY(QVariantList model READ model NOTIFY modelChanged FINAL)
+
+public:
+    explicit PlayerListModel(MainCtx *ctx, QObject *parent = nullptr);
+
+    QVariantList model() const;
+
+signals:
+    void modelChanged();
 };
 
 #endif

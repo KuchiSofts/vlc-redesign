@@ -20,6 +20,7 @@
 
 #include "standardpathmodel.hpp"
 #include "qt.hpp"
+#include "maininterface/mainctx.hpp"
 #include "networkdevicemodel.hpp"
 #include "networkmediamodel.hpp"
 
@@ -30,6 +31,7 @@
 #include <vlc_configuration.h>
 
 #include <QAbstractListModel>
+#include <QQmlEngine>
 #include <QStandardPaths>
 #include <QUrl>
 
@@ -39,6 +41,8 @@ struct StandardPathItem : public NetworkBaseItem
 {
     SharedInputItem inputItem;
     MediaTreePtr tree;
+    // the name untranslated (N_()), for another language of the interface
+    const char *label = nullptr;
 };
 
 using StandardPathItemPtr =  std::shared_ptr<StandardPathItem>;
@@ -124,12 +128,12 @@ public:
         QString homePath = QVLCUserDir(VLC_HOME_DIR);
         //QVLCUserDir defaults to HomePath, make sure we only add it once
         bool homeAdded = false;
-        auto addFilterHome = [&](const QString& path, const QString& label) {
+        auto addFilterHome = [&](const QString& path, const char* label) {
             if (path == homePath ) {
                 if (homeAdded) {
                     return;
                 } else {
-                    addItem(homePath, qtr("Home"), {});
+                    addItem(homePath, N_("Home"), {});
                     homeAdded = true;
                 }
             } else {
@@ -139,20 +143,49 @@ public:
         };
 
 #ifdef Q_OS_UNIX
-        addItem(homePath, qtr("Home"), {});
+        addItem(homePath, N_("Home"), {});
         homeAdded = true;
 #endif
-        addFilterHome(QVLCUserDir(VLC_DESKTOP_DIR), qtr("Desktop"));
-        addFilterHome(QVLCUserDir(VLC_DOCUMENTS_DIR), qtr("Documents"));
-        addFilterHome(QVLCUserDir(VLC_MUSIC_DIR), qtr("Music"));
-        addFilterHome(QVLCUserDir(VLC_VIDEOS_DIR), qtr("Videos"));
-        addFilterHome(QVLCUserDir(VLC_DOWNLOAD_DIR), qtr("Download"));
+        addFilterHome(QVLCUserDir(VLC_DESKTOP_DIR), N_("Desktop"));
+        addFilterHome(QVLCUserDir(VLC_DOCUMENTS_DIR), N_("Documents"));
+        addFilterHome(QVLCUserDir(VLC_MUSIC_DIR), N_("Music"));
+        addFilterHome(QVLCUserDir(VLC_VIDEOS_DIR), N_("Videos"));
+        addFilterHome(QVLCUserDir(VLC_DOWNLOAD_DIR), N_("Download"));
 
         //model is never updated, but this is still needed to fit the LocalListBaseModelPrivate requirements
         ++m_revision;
         m_loading = false;
         emit q->loadingChanged();
+
+        // the names follow the language of the interface (MainCtx, the
+        // singleton of the QML engine)
+        if (QQmlEngine *engine = qmlEngine(q))
+        {
+            const int mainCtxType = qmlTypeId("VLC.MainInterface", 1, 0, "MainCtx");
+            if (MainCtx *mainCtx = engine->singletonInstance<MainCtx *>(mainCtxType))
+                QObject::connect(mainCtx, &MainCtx::interfaceLanguageChanged, q, [this]() { retranslate(); });
+        }
         return true;
+    }
+
+    // The names in another language of the interface
+    void retranslate()
+    {
+        Q_Q(StandardPathModel);
+
+        for (const StandardPathItemPtr& item : m_items)
+        {
+            if (!item->label)
+                continue;
+            item->name = qtr(item->label);
+            input_item_SetName(item->inputItem.get(), qtu(item->name));
+        }
+        const int count = q->rowCount();
+        if (count > 0)
+            emit q->dataChanged(q->index(0), q->index(count - 1));
+        // sorted by the new names
+        ++m_revision;
+        invalidateCache();
     }
 
     const StandardPathItem* getItemForRow(int row) const
@@ -163,13 +196,15 @@ public:
         return nullptr;
     }
 
-    void addItem(const QString & path, const QString & name, const QString& artwork)
+    void addItem(const QString & path, const char * label, const QString& artwork)
     {
         QUrl url = QUrl::fromLocalFile(path);
 
         auto item = std::make_shared<StandardPathItem>();
 
+        const QString name = qtr(label);
         item->name = name;
+        item->label = label;
         item->mainMrl  = url;
         item->protocol = url.scheme();
         item->type = NetworkDeviceModel::TYPE_DIRECTORY;

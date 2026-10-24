@@ -8,6 +8,7 @@
 #include <vlc_configuration.h>
 #include <vlc_plugin.h>
 #include <cstdlib>
+#include <iterator>
 #include <QSet>
 #include <QSettings>
 HdrOutput::HdrOutput(QObject* parent) : QObject(parent)
@@ -21,23 +22,47 @@ HdrOutput::HdrOutput(QObject* parent) : QObject(parent)
         free(values); free(labels);
     }
     m_available = !nativeValues.isEmpty();
-    const QStringList labels = {tr("Auto"), tr("Off"), QStringLiteral("HDR10"), QStringLiteral("HDR10+"), QStringLiteral("Dolby Vision"), QStringLiteral("HLG")};
     // Only output modes actually implemented by the libplacebo module have a value.
     const int values[] = {0, 1, 2, -1, -1, 3};
-    for (int i = 0; i < labels.size(); ++i) {
-        const bool enabled = nativeValues.contains(values[i]);
-        m_choices.append(QVariantMap{{QStringLiteral("label"), labels[i]}, {QStringLiteral("value"), values[i]}, {QStringLiteral("enabled"), enabled},
-            {QStringLiteral("reason"), enabled ? QString() : values[i] < 0
-                // HDR10+ and Dolby Vision: listed as the design does
-                ? tr("Windows offers no way for a player to send this format to a display.")
-                : m_available
-                ? tr("This renderer does not expose this output format.")
-                : tr("The libplacebo HDR renderer is not installed in this build.")}});
-    }
-    m_message = m_available ? tr("Uses libplacebo on next playback. HDR requires a compatible display and driver.")
-                            : tr("HDR output is unavailable with the installed video renderer.");
+    for (const int value : values)
+        m_choices.append(QVariantMap{{QStringLiteral("value"), value}, {QStringLiteral("enabled"), nativeValues.contains(value)}});
+    retranslate();
 }
-void HdrOutput::setCtx(MainCtx* ctx) { if (m_ctx != ctx) { m_ctx = ctx; emit changed(); } }
+void HdrOutput::retranslate()
+{
+    const QString labels[] = {tr("Auto"), tr("Off"), QStringLiteral("HDR10"), QStringLiteral("HDR10+"), QStringLiteral("Dolby Vision"), QStringLiteral("HLG")};
+    for (int i = 0; i < m_choices.size() && i < int(std::size(labels)); ++i) {
+        QVariantMap choice = m_choices[i].toMap();
+        const int value = choice.value(QStringLiteral("value")).toInt();
+        choice.insert(QStringLiteral("label"), labels[i]);
+        choice.insert(QStringLiteral("reason"), choice.value(QStringLiteral("enabled")).toBool() ? QString() : value < 0
+            // HDR10+ and Dolby Vision: listed as the design does
+            ? tr("Windows offers no way for a player to send this format to a display.")
+            : m_available
+            ? tr("This renderer does not expose this output format.")
+            : tr("The libplacebo HDR renderer is not installed in this build."));
+        m_choices[i] = choice;
+    }
+}
+QString HdrOutput::message() const
+{
+    switch (m_messageKind) {
+    case MessageSaved: return tr("HDR output saved. Restart playback to use it.");
+    case MessageNotSaved: return tr("Could not save HDR output. Your previous setting was kept.");
+    default:
+        return m_available ? tr("Uses libplacebo on next playback. HDR requires a compatible display and driver.")
+                           : tr("HDR output is unavailable with the installed video renderer.");
+    }
+}
+void HdrOutput::setCtx(MainCtx* ctx)
+{
+    if (m_ctx == ctx) return;
+    if (m_ctx) disconnect(m_ctx, &MainCtx::interfaceLanguageChanged, this, nullptr);
+    m_ctx = ctx;
+    // the texts in another language of the interface
+    if (m_ctx) connect(m_ctx, &MainCtx::interfaceLanguageChanged, this, [this]() { retranslate(); emit changed(); });
+    emit changed();
+}
 MainCtx* HdrOutput::ctx() const { return m_ctx; }
 namespace {
 // The HDR formats need the libplacebo renderer; Auto and Off give the
@@ -114,7 +139,7 @@ bool HdrOutput::select(int index)
         if (hdrFormat && !wasLibplacebo)
             settings->remove(previousOutputKey);
     }
-    m_message = saved ? tr("HDR output saved. Restart playback to use it.") : tr("Could not save HDR output. Your previous setting was kept.");
+    m_messageKind = saved ? MessageSaved : MessageNotSaved;
     emit changed();
     return saved;
 }

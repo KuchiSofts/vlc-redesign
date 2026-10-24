@@ -9,7 +9,7 @@ Q_MOC_INCLUDE("maininterface/mainctx.hpp")
 class HdrOutput : public QObject {
     Q_OBJECT
     Q_PROPERTY(MainCtx* ctx READ ctx WRITE setCtx NOTIFY changed)
-    Q_PROPERTY(QVariantList choices READ choices CONSTANT)
+    Q_PROPERTY(QVariantList choices READ choices NOTIFY changed)
     Q_PROPERTY(bool available READ available CONSTANT)
     Q_PROPERTY(int selectedIndex READ selectedIndex NOTIFY changed)
     Q_PROPERTY(QString message READ message NOTIFY changed)
@@ -20,14 +20,19 @@ public:
     QVariantList choices() const { return m_choices; }
     bool available() const { return m_available; }
     int selectedIndex() const;
-    QString message() const { return m_message; }
+    QString message() const;
     Q_INVOKABLE bool select(int index);
 signals:
     void changed();
 private:
+    // The labels and the reasons of the choices in the language of the
+    // interface (made again when it changes)
+    void retranslate();
+
     QPointer<MainCtx> m_ctx;
     QVariantList m_choices;
     bool m_available = false;
-    QString m_message;
+    // What the message says: what the choice does, or how the last one went
+    enum { MessageInfo, MessageSaved, MessageNotSaved } m_messageKind = MessageInfo;
 };
 #endif

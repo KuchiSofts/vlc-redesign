@@ -272,7 +272,7 @@ static const char *const ppsz_replay_gain_mode_text[] = {
 
 #define VOUT_TEXT N_("Video output module")
 #define VOUT_LONGTEXT N_( \
-    "This is the the video output method used by VLC. " \
+    "This is the video output method used by VLC. " \
     "The default behavior is to automatically select the best method available.")
 
 #define VIDEO_TEXT N_("Enable video")
@@ -1488,16 +1488,16 @@ static const char *const mouse_wheel_texts[] = {
 #define ZOOM_DOUBLE_KEY_TEXT N_("2:1 Double")
 #define ZOOM_LEVEL_KEY_LONGTEXT N_("Select the hotkey to use to zoom to the corresponding level.")
 
-#define PLAY_BOOKMARK1_KEY_TEXT N_("Play play queue bookmark 1")
-#define PLAY_BOOKMARK2_KEY_TEXT N_("Play play queue bookmark 2")
-#define PLAY_BOOKMARK3_KEY_TEXT N_("Play play queue bookmark 3")
-#define PLAY_BOOKMARK4_KEY_TEXT N_("Play play queue bookmark 4")
-#define PLAY_BOOKMARK5_KEY_TEXT N_("Play play queue bookmark 5")
-#define PLAY_BOOKMARK6_KEY_TEXT N_("Play play queue bookmark 6")
-#define PLAY_BOOKMARK7_KEY_TEXT N_("Play play queue bookmark 7")
-#define PLAY_BOOKMARK8_KEY_TEXT N_("Play play queue bookmark 8")
-#define PLAY_BOOKMARK9_KEY_TEXT N_("Play play queue bookmark 9")
-#define PLAY_BOOKMARK10_KEY_TEXT N_("Play play queue bookmark 10")
+#define PLAY_BOOKMARK1_KEY_TEXT N_("Go to play queue bookmark 1")
+#define PLAY_BOOKMARK2_KEY_TEXT N_("Go to play queue bookmark 2")
+#define PLAY_BOOKMARK3_KEY_TEXT N_("Go to play queue bookmark 3")
+#define PLAY_BOOKMARK4_KEY_TEXT N_("Go to play queue bookmark 4")
+#define PLAY_BOOKMARK5_KEY_TEXT N_("Go to play queue bookmark 5")
+#define PLAY_BOOKMARK6_KEY_TEXT N_("Go to play queue bookmark 6")
+#define PLAY_BOOKMARK7_KEY_TEXT N_("Go to play queue bookmark 7")
+#define PLAY_BOOKMARK8_KEY_TEXT N_("Go to play queue bookmark 8")
+#define PLAY_BOOKMARK9_KEY_TEXT N_("Go to play queue bookmark 9")
+#define PLAY_BOOKMARK10_KEY_TEXT N_("Go to play queue bookmark 10")
 #define PLAY_BOOKMARK_KEY_LONGTEXT N_("Select the key to play this bookmark.")
 #define SET_BOOKMARK1_KEY_TEXT N_("Set play queue bookmark 1")
 #define SET_BOOKMARK2_KEY_TEXT N_("Set play queue bookmark 2")

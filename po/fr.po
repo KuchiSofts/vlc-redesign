@@ -31,7 +31,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-24 17:28+0000\n"
+"POT-Creation-Date: 2026-10-24 17:48+0000\n"
 "PO-Revision-Date: 2017-09-20 03:42+0000\n"
 "Last-Translator: Fan\n"
 "Language-Team: French (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -1915,7 +1915,7 @@ msgstr "Module de sortie vidéo"
 
 #: src/libvlc-module.c:275
 msgid ""
-"This is the the video output method used by VLC. The default behavior is to "
+"This is the video output method used by VLC. The default behavior is to "
 "automatically select the best method available."
 msgstr ""
 "Module de sortie vidéo utilisé par VLC. Le comportement par défaut est de "
@@ -4782,43 +4782,43 @@ msgid "Select the hotkey to use to zoom to the corresponding level."
 msgstr ""
 
 #: src/libvlc-module.c:1491
-msgid "Play play queue bookmark 1"
+msgid "Go to play queue bookmark 1"
 msgstr ""
 
 #: src/libvlc-module.c:1492
-msgid "Play play queue bookmark 2"
+msgid "Go to play queue bookmark 2"
 msgstr ""
 
 #: src/libvlc-module.c:1493
-msgid "Play play queue bookmark 3"
+msgid "Go to play queue bookmark 3"
 msgstr ""
 
 #: src/libvlc-module.c:1494
-msgid "Play play queue bookmark 4"
+msgid "Go to play queue bookmark 4"
 msgstr ""
 
 #: src/libvlc-module.c:1495
-msgid "Play play queue bookmark 5"
+msgid "Go to play queue bookmark 5"
 msgstr ""
 
 #: src/libvlc-module.c:1496
-msgid "Play play queue bookmark 6"
+msgid "Go to play queue bookmark 6"
 msgstr ""
 
 #: src/libvlc-module.c:1497
-msgid "Play play queue bookmark 7"
+msgid "Go to play queue bookmark 7"
 msgstr ""
 
 #: src/libvlc-module.c:1498
-msgid "Play play queue bookmark 8"
+msgid "Go to play queue bookmark 8"
 msgstr ""
 
 #: src/libvlc-module.c:1499
-msgid "Play play queue bookmark 9"
+msgid "Go to play queue bookmark 9"
 msgstr ""
 
 #: src/libvlc-module.c:1500
-msgid "Play play queue bookmark 10"
+msgid "Go to play queue bookmark 10"
 msgstr ""
 
 #: src/libvlc-module.c:1501
@@ -17013,7 +17013,7 @@ msgstr "Interface de contrôle D-Bus"
 #: modules/gui/qt/dialogs/systray/systray.cpp:78
 #: modules/gui/qt/dialogs/systray/systray.cpp:81
 #: modules/gui/qt/dialogs/systray/systray.cpp:136
-#: modules/gui/qt/dialogs/systray/systray.cpp:151 modules/gui/qt/qt.cpp:1411
+#: modules/gui/qt/dialogs/systray/systray.cpp:151 modules/gui/qt/qt.cpp:1422
 #: modules/lua/libs/httpd.c:80 modules/video_output/wayland/xdg-shell.c:732
 #: modules/video_output/xcb/window.c:959
 msgid "VLC media player"
@@ -19880,6 +19880,7 @@ msgstr "Compression dynamique"
 #: modules/gui/qt/dialogs/extended/qml/VideoEffectsPanel.qml:148
 #: modules/gui/qt/dialogs/gototime/gototime.cpp:65
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:434
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:740
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:345
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPicture.qml:85
 #: modules/gui/qt/player/qml/TracksMenu.qml:543
@@ -20058,7 +20059,8 @@ msgstr "Ajouter"
 #: modules/gui/macosx/panels/VLCBookmarksWindowController.m:98
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:382
 #: modules/gui/qt/dialogs/bookmarks/bookmarks.cpp:58
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml:68
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml:70
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml:80
 #: modules/gui/qt/widgets/qml/SearchBox.qml:305
 msgid "Clear"
 msgstr "Effacer"
@@ -25205,7 +25207,12 @@ msgstr "Configuration initiale"
 msgid "All VLC options"
 msgstr "Toutes les options de VLC"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:742
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:739
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:343
+msgid "Reset all settings"
+msgstr "Réinitialiser tous les paramètres"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:753
 msgid "Reset all settings?"
 msgstr "Réinitialiser tous les paramètres ?"
 
@@ -25213,7 +25220,7 @@ msgstr "Réinitialiser tous les paramètres ?"
 msgid "Every setting of VLC media player goes back to its default."
 msgstr "Chaque paramètre de VLC media player revient à sa valeur par défaut."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:812
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:808
 msgid "Discard changes"
 msgstr "Annuler les modifications"
 
@@ -25400,10 +25407,6 @@ msgstr "Ouvrir le dossier des configurations"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:336
 msgid "Shows the folder of the settings of VLC."
 msgstr "Affiche le dossier des paramètres de VLC."
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:343
-msgid "Reset all settings"
-msgstr "Réinitialiser tous les paramètres"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:344
 msgid "Puts every setting of VLC back to its default."
@@ -26495,23 +26498,24 @@ msgstr "Garder la sortie de flux ouverte entre les éléments"
 msgid "More options"
 msgstr "Plus d'options"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml:42
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml:44
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml:79
 msgid "Clear history now"
 msgstr "Effacer l'historique"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml:57
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml:59
 msgid "Removes the recently played items of the media library."
 msgstr "Supprime les éléments récemment lus de la médiathèque."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml:58
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml:60
 msgid "Media library unavailable"
 msgstr "Médiathèque indisponible"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml:81
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml:91
 msgid "Clear playback history?"
 msgstr "Effacer l'historique de lecture ?"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml:91
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml:92
 msgid "Recently played items will be removed from the media library."
 msgstr "Les éléments récemment lus seront supprimés de la médiathèque."
 

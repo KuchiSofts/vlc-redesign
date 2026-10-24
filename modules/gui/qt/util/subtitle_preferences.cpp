@@ -121,6 +121,21 @@ SubtitlePreferences::SubtitlePreferences(qt_intf_t *intf, QObject *parent)
     : QObject(parent)
     , m_intf(intf)
 {
+    // Not chosen yet: the subtitle track of a film in the language of the
+    // computer is shown already, as the online search looks for it (not
+    // English: an English film would always show its English subtitles). A
+    // sub-language set in the classic settings stays; nothing is saved
+    if (chosen() || m_intf->p_player == nullptr || systemLanguage() == QLatin1String("en"))
+        return;
+    char *configured = config_GetPsz("sub-language");
+    const bool none = configured == nullptr || *configured == '\0';
+    free(configured);
+    const QByteArray iso = iso639_2(systemLanguage()).toUtf8();
+    if (!none || iso.isEmpty())
+        return;
+    vlc_player_Lock(m_intf->p_player);
+    vlc_player_SelectSubtitleLanguage(m_intf->p_player, iso.constData());
+    vlc_player_Unlock(m_intf->p_player);
 }
 
 QString SubtitlePreferences::normalize(const QString &input)

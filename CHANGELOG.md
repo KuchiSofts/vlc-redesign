@@ -151,8 +151,7 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
 ### Changed
 
 - **Windows 10 version 1809 or later, the portable zip too**: the interface (Qt 6.8) needs it, and the installer
-  already asked for it. A portable copy on an older Windows 10 (such as LTSB 2016) says so now, instead of
-  starting without its interface.
+  already asked for it. A portable copy on an older Windows 10 (such as LTSB 2016) now says so when it starts.
 - **The settings start as the design draws them**: on the Subtitles page, *Preferred language* picks the language of
   the subtitles, and the second language, the online search and the subtitle services come after the sections of
   the design. Every page was compared with its frame of the design, pixel for pixel.

@@ -40,6 +40,22 @@ file name of the player bar.
   picture ran as long behind the sound as the pause had lasted, dropping frames until the next seek. It stays in
   sync now (an upstream VLC 4 bug: the audio output dated its first report after the pause as if it had played
   through it).
+- **Changing the speed no longer skips or freezes the picture**: the video changed speed up to a second before or
+  after the sound did, dropping frames when faster and holding one when slower; pressing *faster* a few times
+  quickly left the picture almost a second behind the sound until the next seek. The picture changes speed with
+  the sound now (upstream VLC 4: the clock learned the new speed only from the next report of the audio output).
+- **Messages on the video in one language**: "Piste Subtitle", "Дорожка Audio" and "Audio delay" in a translated
+  interface: the kind of track and of subtitles was inserted in English. Each message is a whole sentence in the
+  language now. The shortcuts that make subtitles bigger and smaller also had each other's name.
+- **The confirmations of Settings in the theme**: *Reset all settings* and *Clear history* opened a light box
+  with OK and Cancel over the dark settings; they are the dialogs of the redesign now, with the action named.
+- **Chinese in one font**: Simplified Chinese on an English (or Japanese) Windows drew the characters Windows'
+  own fallback font lacked in a thinner, greyer one, in the middle of words. Chinese, Japanese and Korean take
+  the fonts of their language now, whatever the language of Windows.
+- **Long translations in Settings**: the two choices of the layout direction were cut in Portuguese; the choice
+  widens into the row now, and a long name in the menu ("Конфиденциальность") is drawn a little smaller before
+  it is cut. The list of languages names each language as it names itself ("Українська", "Slovenčina",
+  "العربية"), no longer with stress marks or in lower case.
 - **VLC Redesign kept files in the folders of an installed VLC**: Qt's caches (%LOCALAPPDATA%\vlc\cache) and the
   subtitles downloaded from a link of the subtitle associations (%APPDATA%\vlc\subtitles). They are in its own
   profile now, removed with it.
@@ -202,7 +218,10 @@ file name of the player bar.
   in Ukrainian and Traditional Chinese), and the counts take the plural form of their number in every language
   ("2 элемента", "5 элементов"). A word with two meanings is translated once per meaning: the German side bar said
   "Pos 1" (the Home key) for Home, and the key names in the shortcuts now follow the keyboards (Entf, Suppr, Canc).
-  Minutes and milliseconds are written in each language (5 мин, 5 dk, 5 分钟).
+  Minutes and milliseconds are written in each language (5 мин, 5 dk, 5 分钟). The texts of VLC's core the
+  interface shows are translated too: the explanations and choices of the settings, the names of the shortcuts,
+  the messages on the video, the names of tracks and media information, the dialogs of the player, the network
+  and casting.
 - **The installer offers the language of Windows**: on a Windows in one of 17 languages (Arabic, Czech, Dutch,
   French, German, Hebrew, Italian, Japanese, Korean, Polish, Portuguese of Brazil and of Portugal, Russian, Spanish,
   Swedish, Turkish, Ukrainian) it asks first, in that language and in English, whether to install VLC Redesign in

@@ -283,7 +283,7 @@ file name of the player bar.
 ### Changed
 
 - **Faster to start and to open Settings**: Settings opens in about 0.1 s instead of 1.3 to 1.8 s (a closed
-  language list no longer loads the fonts of every script), and the keyboard shortcuts in half the time. The window
+  language list no longer loads the fonts of every script). The window
   shows 0.06 s sooner and is drawn 0.07 s sooner (0.33 s and 0.46 s here): the graphics driver starts while the
   interface loads, and no second graphics device is made at each start to check the one that works. In Hebrew,
   Arabic or Chinese the fonts are read while the interface is created.

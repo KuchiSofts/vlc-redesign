@@ -435,6 +435,20 @@ void MessagesDialog::showTab( int i )
     raise();
 }
 
+void MessagesDialog::retranslate()
+{
+    /* the texts of the form, then the ones set here */
+    ui.retranslateUi( this );
+    setWindowTitle( qtr( "Messages" ) );
+    for( QAbstractButton *button : ui.bottomButtonsBox->buttons() )
+        if( ui.bottomButtonsBox->buttonRole( button ) == QDialogButtonBox::RejectRole )
+            button->setText( qtr( "&Close" ) );
+    ui.saveLogButton->setToolTip( qtr( "Saves all the displayed logs to a file" ) );
+    tabChanged( ui.mainTab->currentIndex() );
+    /* the name of the verbosity level in the box ("1 (warnings)") */
+    ui.verbosityBox->setSuffix( ui.verbosityBox->suffix() );
+}
+
 void MessagesDialog::MsgCallback( void *self, int type, const vlc_log_t *item,
                                   const char *format, va_list ap )
 {

@@ -105,11 +105,39 @@
 #define ALL_DIALOG(X) BASE_DIALOG(X)
 #endif
 
+/* The dialogs made again in another language of the interface. Not the
+ * messages (made again in place: the log is kept), nor VLM (its dialog holds
+ * the broadcasts), nor the preferences (deleted when closed) */
+#define RENEWED_BASE_DIALOG(X) \
+    X(openDialog) \
+    X(firstRunDialog) \
+    X(extendedDialog) \
+    X(gotoTimeDialog) \
+    X(helpDialog) \
+    X(aboutDialog) \
+    X(mediaInfoDialog) \
+    X(bookmarkDialog) \
+    X(podcastDialog) \
+    X(pluginDialog) \
+    X(egpDialog)
+
+#ifdef UPDATE_CHECK
+#define RENEWED_DIALOG(X) \
+    RENEWED_BASE_DIALOG(X) \
+    X(updateDialog)
+#else
+#define RENEWED_DIALOG(X) RENEWED_BASE_DIALOG(X)
+#endif
+
 DialogsProvider::DialogsProvider( qt_intf_t *_p_intf )
     : QObject( NULL ), p_intf( _p_intf ), m_parser( nullptr, &input_item_parser_id_Release )
 
 {
     b_isDying = false;
+    /* MainCtx is made after this: its language followed from the event loop
+     * (and when a dialog or a menu is made) */
+    QMetaObject::invokeMethod( this, &DialogsProvider::followInterfaceLanguage,
+                               Qt::QueuedConnection );
 }
 
 DialogsProvider::~DialogsProvider()
@@ -132,6 +160,7 @@ void DialogsProvider::customEvent( QEvent *event )
 {
     if( event->type() == DialogEvent::DialogEvent_Type )
     {
+        followInterfaceLanguage();
         DialogEvent *de = static_cast<DialogEvent*>(event);
         switch( de->i_dialog )
         {
@@ -232,6 +261,10 @@ bool DialogsProvider::eventFilter(QObject *watched, QEvent *event) {
         emit dialog ## VisibleChanged(); \
         break;\
     }
+
+    // made in a previous language of the interface: made again once hidden
+    if (event->type() == QEvent::Hide && m_staleDialogs.contains(watched))
+        QMetaObject::invokeMethod(this, &DialogsProvider::renewStaleDialogs, Qt::QueuedConnection);
 
     switch (event->type()) {
     case QEvent::Hide:
@@ -520,6 +553,7 @@ void DialogsProvider::epgDialog()
 
 void DialogsProvider::setPopupMenu()
 {
+    followInterfaceLanguage();
     popupMenu.reset(VLCMenuBar::PopupMenu( p_intf, true ));
 }
 
@@ -1243,6 +1277,7 @@ void DialogsProvider::sendKey( int key )
 
      if( !popupMenu )
      {
+         followInterfaceLanguage();
          // make sure at least a non visible popupmenu is available
          popupMenu.reset(VLCMenuBar::PopupMenu( p_intf, false ));
          if( unlikely( !popupMenu ) )
@@ -1271,6 +1306,7 @@ template<typename T>
 void DialogsProvider::ensureDialog(std::unique_ptr<T>& dialog)
 {
     if (!dialog) {
+        followInterfaceLanguage();
         dialog = std::make_unique<T>(p_intf);
         //install event filter to track visibility
         dialog->installEventFilter(this);
@@ -1281,6 +1317,54 @@ template<typename T>
 void DialogsProvider::toggleDialogVisible(std::unique_ptr<T>& dialog) {
     ensureDialog(dialog);
     dialog->toggleVisible();
+}
+
+void DialogsProvider::followInterfaceLanguage()
+{
+    if (m_languageConnection || !p_intf->p_mi)
+        return;
+    m_languageConnection = connect(p_intf->p_mi, &MainCtx::interfaceLanguageChanged,
+                                   this, &DialogsProvider::retranslate);
+}
+
+void DialogsProvider::retranslate()
+{
+    // the classic dialogs: released when hidden, else once they are
+    // (renewDialog); the open ones keep their texts meanwhile
+#define STALE_DIALOG(dialog) \
+    if (m_ ## dialog) \
+        m_staleDialogs.insert(m_ ## dialog.get());
+    RENEWED_DIALOG(STALE_DIALOG)
+#undef STALE_DIALOG
+    renewStaleDialogs();
+
+    // the log of the messages is kept: their texts are made again in place
+    if (m_messagesDialog)
+        m_messagesDialog->retranslate();
+
+    // the menus not shown: made again when next asked
+    for (std::unique_ptr<QMenu> *menu : { &popupMenu, &videoPopupMenu, &audioPopupMenu, &miscPopupMenu })
+        if (*menu && !(*menu)->isVisible())
+            menu->release()->deleteLater();
+    // (in the popup menu only)
+    if (!popupMenu && VLCMenuBar::rendererMenu && !VLCMenuBar::rendererMenu->isVisible())
+        VLCMenuBar::freeRendererMenu();
+}
+
+template<typename T>
+void DialogsProvider::renewDialog(std::unique_ptr<T>& dialog)
+{
+    if (!dialog || dialog->isVisible() || !m_staleDialogs.remove(dialog.get()))
+        return;
+    // later: one of its functions may still be running (a dialog it opened)
+    dialog.release()->deleteLater();
+}
+
+void DialogsProvider::renewStaleDialogs()
+{
+#define RENEW_DIALOG(dialog) renewDialog(m_ ## dialog);
+    RENEWED_DIALOG(RENEW_DIALOG)
+#undef RENEW_DIALOG
 }
 
 #define DIALOG_VISIBLE_GETTER(dialog) \

@@ -56,7 +56,7 @@ Widgets.RedesignDialog {
     bodyVerticalPadding: 0
     acceptText: qsTr("Save")
     acceptEnabled: shortcuts.dirty || !!root.profileError
-    // the restart notice closes it once saved
+    // closed once saved (an error keeps it open); the shortcuts work at once
     closeOnAccept: false
 
     // "f" reads F as on a keyboard, "Ctrl+e" Ctrl+E
@@ -121,7 +121,7 @@ Widgets.RedesignDialog {
             return
         }
         root.profileError = ""
-        restartNotice.open()
+        root.close()
     }
 
     onOpened: {
@@ -137,7 +137,6 @@ Widgets.RedesignDialog {
     onClosed: {
         capturePopup.close()
         resetConfirmation.close()
-        restartNotice.close()
         if (!saved)
             shortcuts.cancel()
     }
@@ -746,13 +745,5 @@ Widgets.RedesignDialog {
         y: parent ? Math.round((parent.height - VLCStyle.dp(172, VLCStyle.scale)) / 2) : 0
         width: givenWidth
         onConfirmed: shortcuts.resetAll()
-    }
-
-    ShortcutsRestartNotice {
-        id: restartNotice
-        parent: root.parent
-        x: parent ? Math.round((parent.width - width) / 2) : 0
-        y: parent ? Math.round((parent.height - height) / 2) : 0
-        onAccepted: root.close()
     }
 }

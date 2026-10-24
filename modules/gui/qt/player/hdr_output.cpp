@@ -47,7 +47,8 @@ void HdrOutput::retranslate()
 QString HdrOutput::message() const
 {
     switch (m_messageKind) {
-    case MessageSaved: return tr("HDR output saved. Restart playback to use it.");
+    // (the video output reads it when it opens: a video playing keeps its own)
+    case MessageSaved: return qtr("HDR output saved. Applies to the next media.");
     case MessageNotSaved: return tr("Could not save HDR output. Your previous setting was kept.");
     default:
         return m_available ? tr("Uses libplacebo on next playback. HDR requires a compatible display and driver.")

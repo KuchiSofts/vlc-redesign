@@ -30,7 +30,6 @@ qml_modules += {
         '../../dialogs/preferences/qml/SettingsOptionList.qml',
         '../../dialogs/preferences/qml/SettingsLanguageAction.qml',
         '../../dialogs/preferences/qml/SettingsPrivacyActions.qml',
-        '../../dialogs/preferences/qml/ShortcutsRestartNotice.qml',
         '../../dialogs/preferences/qml/SettingsPresentation.qml',
         '../../dialogs/preferences/qml/ActionButton.qml',
         '../../dialogs/preferences/qml/ShortcutsCapturePopup.qml',

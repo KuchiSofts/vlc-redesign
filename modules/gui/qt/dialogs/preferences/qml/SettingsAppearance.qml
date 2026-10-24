@@ -231,13 +231,14 @@ SettingsSectionTitle {
         }
     }
 
-    // Where VLC follows the system language (not Windows), it reads it when
-    // it starts
+    // Where VLC follows the system language (not Windows): the one of the
+    // session it runs in (a new language of the system comes with a new
+    // session)
     Text {
         id: languageNote
         visible: root.languages.length === 0
         width: parent.width
-        text: qsTr("VLC follows the system language. Restart VLC after changing your system language.")
+        text: qsTr("VLC follows the system language.")
         color: root.c("#6B6B6B")
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: root.px(12)

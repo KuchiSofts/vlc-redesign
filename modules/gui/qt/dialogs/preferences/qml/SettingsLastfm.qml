@@ -91,7 +91,7 @@ Column {
         visible: root.available
         RowLabel {
             text: qsTr("Submit played tracks to last.fm")
-            help: qsTr("Sends the titles of the tracks you play to your Last.fm profile. Takes effect after restarting VLC.")
+            help: qsTr("Sends the titles of the tracks you play to your Last.fm profile.")
             room: parent.width - submitToggle.width - root.px(20)
         }
         SettingsToggle {

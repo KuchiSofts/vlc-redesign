@@ -432,6 +432,18 @@ void vlc_LogInit(libvlc_int_t *vlc)
     vlc_LogSwitch(vlc->obj.logger, logger);
 }
 
+void vlc_LogReload(libvlc_int_t *vlc)
+{
+    /* The current log ends (a log file is closed) before the new one opens
+     * (the same file, maybe): the messages meanwhile wait in memory, as at
+     * the start */
+    struct vlc_logger *early = vlc_LogEarlyOpen(vlc->obj.logger);
+    if (early != NULL)
+        vlc_LogSwitch(vlc->obj.logger, early);
+
+    vlc_LogInit(vlc);
+}
+
 /**
  * Performs preinitialization of the messages logging subsystem.
  *

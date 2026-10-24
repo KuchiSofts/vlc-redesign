@@ -91,6 +91,17 @@ struct intf_dialog_args_t
 
 VLC_API int intf_Create( libvlc_int_t *, const char * );
 
+/**
+ * Stops and destroys the running interfaces of a module.
+ *
+ * Not from the thread of one of these interfaces (it waits for them to end).
+ *
+ * @param libvlc the LibVLC instance
+ * @param name a name of the module ("http"), as intf_Create() takes it
+ * @return the number of interfaces destroyed
+ */
+VLC_API int intf_DestroyByName( libvlc_int_t *libvlc, const char *name );
+
 VLC_API void libvlc_Quit( libvlc_int_t * );
 
 /**
@@ -108,6 +119,15 @@ vlc_intf_GetMainPlaylist(intf_thread_t *intf);
 
 VLC_API void vlc_LogSet(libvlc_int_t *, const struct vlc_logger_operations *,
                         void *data);
+
+/**
+ * Opens the log of the configuration again (its verbosity, its file...), in
+ * place of the current one (vlc_LogSet() included): for options that
+ * changed. The messages logged meanwhile go to the new log.
+ *
+ * \param vlc the libvlc private instance
+ */
+VLC_API void vlc_LogReload(libvlc_int_t *vlc);
 
 /** @} */
 

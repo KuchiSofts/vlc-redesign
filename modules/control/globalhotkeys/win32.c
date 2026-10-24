@@ -298,6 +298,12 @@ LRESULT CALLBACK WMHOTKEYPROC( HWND hwnd, UINT uMsg, WPARAM wParam,
             }
             break;
 
+        case WM_CLOSE:
+            /* (Close) the loop ends with the window still there: the hotkeys
+             * are unregistered from it, their atoms deleted, then it goes */
+            PostQuitMessage( 0 );
+            return 0;
+
         case WM_DESTROY:
             PostQuitMessage( 0 );
             break;

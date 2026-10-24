@@ -415,27 +415,51 @@ static int keycmp (const void *a, const void *b)
 
 struct vlc_actions_t
 {
+    vlc_mutex_t lock; /* the maps, made again when the bindings change */
     void *map; /* Key map */
     void *global_map; /* Grabbed/global key map */
     const char *ppsz_keys[];
 };
 
+static int vlc_key_to_action_in (vlc_object_t *obj, vlc_actions_t *as,
+                                 void *const *map, uint32_t keycode)
+{
+    vlc_action_id_t action = ACTIONID_NONE;
+
+    vlc_mutex_lock (&as->lock);
+    const void **pent = tfind (&keycode, map, keycmp);
+    if (pent != NULL)
+    {
+        const struct mapping *ent = *pent;
+        action = ent->action;
+    }
+    vlc_mutex_unlock (&as->lock);
+
+    /* (the action is done unlocked: it may take as long as it takes) */
+    if (action == ACTIONID_NONE)
+        return VLC_SUCCESS;
+    return var_SetInteger (obj, "key-action", action);
+}
+
 static int vlc_key_to_action (vlc_object_t *obj, const char *varname,
                               vlc_value_t prevkey, vlc_value_t curkey, void *d)
 {
-    void *const *map = d;
-    const void **pent;
-    uint32_t keycode = curkey.i_int;
-
-    pent = tfind (&keycode, map, keycmp);
-    if (pent == NULL)
-        return VLC_SUCCESS;
-
-    const struct mapping *ent = *pent;
+    vlc_actions_t *as = d;
 
     (void) varname;
     (void) prevkey;
-    return var_SetInteger (obj, "key-action", ent->action);
+    return vlc_key_to_action_in (obj, as, &as->map, curkey.i_int);
+}
+
+static int vlc_global_key_to_action (vlc_object_t *obj, const char *varname,
+                                     vlc_value_t prevkey, vlc_value_t curkey,
+                                     void *d)
+{
+    vlc_actions_t *as = d;
+
+    (void) varname;
+    (void) prevkey;
+    return vlc_key_to_action_in (obj, as, &as->global_map, curkey.i_int);
 }
 
 /**
@@ -520,6 +544,31 @@ static void init_action (vlc_object_t *obj, void **map,
     free (keys);
 }
 
+#define STRINGIFY_(x) #x
+#define STRINGIFY(x) STRINGIFY_(x)
+
+/**
+ * Sets up the key maps (hotkeys, global hotkeys, mouse wheels) from the
+ * configuration.
+ */
+static void load_actions (vlc_object_t *obj, void **map, void **global_map)
+{
+    for (size_t i = 0; i < ARRAY_SIZE(s_names2actions); i++)
+    {
+        char name[12 + MAXACTION];
+
+        snprintf (name, sizeof (name), "global-key-%." STRINGIFY(MAXACTION) "s", s_names2actions[i].psz);
+        init_action (obj, map, name + 7, s_names2actions[i].id);
+        init_action (obj, global_map, name, s_names2actions[i].id);
+    }
+
+    /* Initialize mouse wheel events */
+    add_wheel_mapping (map, KEY_MOUSEWHEELRIGHT, KEY_MOUSEWHEELLEFT,
+                         var_InheritInteger (obj, "hotkeys-x-wheel-mode"));
+    add_wheel_mapping (map, KEY_MOUSEWHEELUP, KEY_MOUSEWHEELDOWN,
+                         var_InheritInteger (obj, "hotkeys-y-wheel-mode"));
+}
+
 /**
  * Initializes the key map from configuration.
  */
@@ -533,6 +582,7 @@ int libvlc_InternalActionsInit (libvlc_int_t *libvlc)
 
     if (unlikely(as == NULL))
         return VLC_ENOMEM;
+    vlc_mutex_init (&as->lock);
     as->map = NULL;
     as->global_map = NULL;
 
@@ -540,7 +590,6 @@ int libvlc_InternalActionsInit (libvlc_int_t *libvlc)
     var_Create (obj, "global-key-pressed", VLC_VAR_INTEGER);
     var_Create (obj, "key-action", VLC_VAR_INTEGER);
 
-    /* Initialize from configuration */
     for (size_t i = 0; i < ARRAY_SIZE(s_names2actions); i++)
     {
 #ifndef NDEBUG
@@ -553,28 +602,40 @@ int libvlc_InternalActionsInit (libvlc_int_t *libvlc)
         }
 #endif
         as->ppsz_keys[i] = s_names2actions[i].psz;
-
-#define STRINGIFY_(x) #x
-#define STRINGIFY(x) STRINGIFY_(x)
-        char name[12 + MAXACTION];
-
-        snprintf (name, sizeof (name), "global-key-%." STRINGIFY(MAXACTION) "s", s_names2actions[i].psz);
-        init_action (obj, &as->map, name + 7, s_names2actions[i].id);
-        init_action (obj, &as->global_map, name, s_names2actions[i].id);
     }
     as->ppsz_keys[ARRAY_SIZE(s_names2actions)] = NULL;
 
-    /* Initialize mouse wheel events */
-    add_wheel_mapping (&as->map, KEY_MOUSEWHEELRIGHT, KEY_MOUSEWHEELLEFT,
-                         var_InheritInteger (obj, "hotkeys-x-wheel-mode"));
-    add_wheel_mapping (&as->map, KEY_MOUSEWHEELUP, KEY_MOUSEWHEELDOWN,
-                         var_InheritInteger (obj, "hotkeys-y-wheel-mode"));
+    /* Initialize from configuration */
+    load_actions (obj, &as->map, &as->global_map);
 
     libvlc_priv(libvlc)->actions = as;
-    var_AddCallback (obj, "key-pressed", vlc_key_to_action, &as->map);
-    var_AddCallback (obj, "global-key-pressed", vlc_key_to_action,
-                     &as->global_map);
+    var_AddCallback (obj, "key-pressed", vlc_key_to_action, as);
+    var_AddCallback (obj, "global-key-pressed", vlc_global_key_to_action, as);
     return VLC_SUCCESS;
+}
+
+#undef vlc_actions_reload
+void vlc_actions_reload (vlc_object_t *p_obj)
+{
+    libvlc_int_t *libvlc = vlc_object_instance(p_obj);
+    vlc_actions_t *as = libvlc_priv(libvlc)->actions;
+    void *map = NULL, *global_map = NULL;
+
+    if (unlikely(as == NULL))
+        return;
+
+    /* made apart, then put in place of the old ones at once: a key pressed
+     * meanwhile finds one or the other */
+    load_actions (VLC_OBJECT(libvlc), &map, &global_map);
+
+    vlc_mutex_lock (&as->lock);
+    void *old_map = as->map, *old_global_map = as->global_map;
+    as->map = map;
+    as->global_map = global_map;
+    vlc_mutex_unlock (&as->lock);
+
+    tdestroy (old_global_map, free);
+    tdestroy (old_map, free);
 }
 
 /**
@@ -588,9 +649,9 @@ void libvlc_InternalActionsClean (libvlc_int_t *libvlc)
     if (unlikely(as == NULL))
         return;
 
-    var_DelCallback (libvlc, "global-key-pressed", vlc_key_to_action,
-                     &as->global_map);
-    var_DelCallback (libvlc, "key-pressed", vlc_key_to_action, &as->map);
+    var_DelCallback (libvlc, "global-key-pressed", vlc_global_key_to_action,
+                     as);
+    var_DelCallback (libvlc, "key-pressed", vlc_key_to_action, as);
 
     tdestroy (as->global_map, free);
     tdestroy (as->map, free);

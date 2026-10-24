@@ -1310,8 +1310,19 @@ static void *Thread( void *obj )
             QMetaObject::invokeMethod(&app, [&](){
                 // A cached (by then) valid graphics api is found, use it:
                 QQuickWindow::setGraphicsApi(static_cast<QSGRendererInterface::GraphicsApi>(graphicsApiValue.value<int>()));
-                if (p_intf->mainSettings->value(graphicsApiRhiSoftwareKey).value<bool>())
+                const bool rhiSoftware = p_intf->mainSettings->value(graphicsApiRhiSoftwareKey).value<bool>();
+                if (rhiSoftware)
                     enableRhiSoftwareRenderer();
+
+#ifdef _WIN32
+                // Direct3D 11 on the hardware is the first choice of the probe:
+                // the window's own device checks it, and if that fails the scene
+                // graph error removes it for the next start (gracefulExitHandler).
+                // Probing again would make one more device, whose memory the
+                // driver keeps (about 14 MB).
+                if (graphicsApiValue.toInt() == QSGRendererInterface::Direct3D11 && !rhiSoftware)
+                    return;
+#endif
 
                 // Asynchronous re-probe to see if the cached graphics api is still applicable.
                 // If not, QQuickWindow is going to emit scene graph error, and the application is

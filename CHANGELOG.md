@@ -121,6 +121,8 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
   lists keep the newest first. An order you picked stays.
 - **A folder of the library opened from *Videos* had its path as its name**, without its separators
   ("C:VideosFilms").
+- **A time typed to go to went after the time shown**: the field opened with the cursor after the time, so 1:30
+  became 00:02:101:30. The whole time is selected now, as in any time field: what you type replaces it.
 
 ### Added
 

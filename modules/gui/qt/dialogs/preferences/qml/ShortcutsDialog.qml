@@ -127,7 +127,10 @@ Widgets.RedesignDialog {
     onOpened: {
         saved = false
         profileError = ""
+        // (the rows stay when the actions are the same: the list starts
+        // at its top as a new one did)
         shortcuts.reload()
+        shortcutList.positionViewAtBeginning()
         searchField.text = initialSearch
         initialSearch = ""
         scopePicker.currentIndex = 0

@@ -19,6 +19,8 @@ ColumnLayout {
         Label {
             Layout.fillWidth: true
             text: qsTr("Equalizer")
+            elide: Text.ElideRight
+            horizontalAlignment: Text.AlignLeft
             color: VLCStyle.redesign.color("#8F8F8F", "#7c7c7b")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
@@ -36,6 +38,8 @@ ColumnLayout {
         Label {
             Layout.fillWidth: true
             text: qsTr("Equalizer preset")
+            elide: Text.ElideRight
+            horizontalAlignment: Text.AlignLeft
             color: VLCStyle.redesign.color("#8F8F8F", "#7c7c7b")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
@@ -53,7 +57,11 @@ ColumnLayout {
             }
             onActivated: (index) => root.effects.setPreset(root.effects.presets[index].id)
             contentItem: Label {
-                leftPadding: 12
+                // 12 px from the start (the right, right to left)
+                leftPadding: presetBox.mirrored ? 0 : 12
+                rightPadding: presetBox.mirrored ? 12 : 0
+                horizontalAlignment: Text.AlignLeft
+                elide: Text.ElideRight
                 text: presetBox.displayText || qsTr("Custom")
                 color: VLCStyle.redesign.color("#EAEAEA", "#2e2e2e")
                 verticalAlignment: Text.AlignVCenter
@@ -78,7 +86,12 @@ ColumnLayout {
                 width: presetBox.width
                 implicitHeight: Math.min(contentItem.implicitHeight, VLCStyle.dp(280, VLCStyle.scale))
                 padding: 0
-                contentItem: ListView { clip: true; implicitHeight: contentHeight; model: presetBox.popup.visible ? presetBox.delegateModel : null; currentIndex: presetBox.highlightedIndex }
+                contentItem: ListView {
+                    // a popup: right to left as its box
+                    LayoutMirroring.enabled: presetBox.mirrored
+                    LayoutMirroring.childrenInherit: true
+                    clip: true; implicitHeight: contentHeight; model: presetBox.popup.visible ? presetBox.delegateModel : null; currentIndex: presetBox.highlightedIndex
+                }
                 background: Rectangle { color: VLCStyle.redesign.color("#191919", "#ababaa"); border.color: VLCStyle.redesign.color("#373737", "#8e8e8d") }
             }
         }
@@ -99,10 +112,13 @@ ColumnLayout {
                 contentItem: Label { text: parent.text; color: VLCStyle.redesign.color("#8F8F8F", "#7c7c7b"); font.pixelSize: VLCStyle.dp(14, VLCStyle.scale) }
             }
             RowLayout {
+                id: bandsRow
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 visible: root.expanded
                 spacing: VLCStyle.dp(5, VLCStyle.scale)
+                // the room of a band: its names are cut short to it
+                readonly property real bandWidth: (width - 10 * spacing) / 11
                 Repeater {
                     model: 11
                     ColumnLayout {
@@ -151,6 +167,8 @@ ColumnLayout {
                         }
                         Label {
                             Layout.alignment: Qt.AlignHCenter
+                            Layout.maximumWidth: bandsRow.bandWidth
+                            elide: Text.ElideRight
                             text: index === 0 ? qsTr("Preamp")
                                   : Math.round(Number(root.effects.frequencies[index - 1] || 0)) + qsTr(" Hz")
                             color: VLCStyle.redesign.color("#8F8F8F", "#7c7c7b")
@@ -169,7 +187,7 @@ ColumnLayout {
     }
     RowLayout {
         Layout.fillWidth: true
-        Label { Layout.fillWidth: true; text: qsTr("Two-pass"); color: VLCStyle.redesign.color("#8F8F8F", "#7c7c7b"); font.pixelSize: VLCStyle.dp(14, VLCStyle.scale) }
+        Label { Layout.fillWidth: true; elide: Text.ElideRight; horizontalAlignment: Text.AlignLeft; text: qsTr("Two-pass"); color: VLCStyle.redesign.color("#8F8F8F", "#7c7c7b"); font.pixelSize: VLCStyle.dp(14, VLCStyle.scale) }
         SettingsToggle {
             id: twoPassSwitch
             Accessible.name: qsTr("Two-pass")

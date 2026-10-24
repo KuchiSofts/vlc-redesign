@@ -23,18 +23,29 @@ Item {
 
     // Clear history now: label, (i) and the 100 px Clear button of the design
     Row {
+        id: clearRow
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
         spacing: VLCStyle.dp(10, VLCStyle.scale)
         Text {
+            id: clearLabel
             anchors.baseline: parent.verticalCenter
             anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
+            // cut short before the button (a long translation)
+            width: Math.max(0, Math.min(implicitWidth, root.width - clearButton.width - VLCStyle.dp(20, VLCStyle.scale)
+                                        - clearInfo.width - clearRow.spacing))
+            elide: Text.ElideRight
+            HoverHandler { id: clearLabelHover }
+            ToolTip.visible: clearLabelHover.hovered && clearLabel.truncated
+            ToolTip.text: clearLabel.text
+            ToolTip.delay: 650
             text: qsTr("Clear history now")
             color: VLCStyle.redesign.color("#8F8F8F", "#8F8F8F")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
         }
         Image {
+            id: clearInfo
             anchors.verticalCenter: parent.verticalCenter
             width: VLCStyle.dp(18, VLCStyle.scale)
             height: width
@@ -74,6 +85,9 @@ Item {
                 recentMedia.clearHistory()
         }
         contentItem: Label {
+            // (a popup of its own: not under the mirrored interface)
+            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+            horizontalAlignment: Text.AlignLeft
             text: qsTr("Recently played items will be removed from the media library.")
             wrapMode: Text.WordWrap
             color: root.dark ? "#dddddd" : "#333333"

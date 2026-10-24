@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  ****************************************************************************/
 import QtQuick
+import QtQuick.Templates as T
 import VLC.Player
 import VLC.Style
 import VLC.Util
@@ -57,6 +58,7 @@ SettingsSectionTitle {
     readonly property real controlWidth: Math.min(px(320), width * 0.46)
 
     component Label: Text {
+        id: rowLabel
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.rightMargin: root.controlWidth + root.px(16)
@@ -66,6 +68,12 @@ SettingsSectionTitle {
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: root.px(14)
         elide: Text.ElideRight
+        horizontalAlignment: Text.AlignLeft
+        // the whole text when it is cut short
+        HoverHandler { id: labelHover }
+        T.ToolTip.visible: labelHover.hovered && rowLabel.truncated
+        T.ToolTip.text: rowLabel.text
+        T.ToolTip.delay: 650
     }
 
     Item {
@@ -122,6 +130,8 @@ SettingsSectionTitle {
         topPadding: root.px(14)
         bottomPadding: root.px(4)
         text: qsTr("Subtitle services")
+        elide: Text.ElideRight
+        horizontalAlignment: Text.AlignLeft
         color: root.c("#B8B8B8")
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: root.px(15)
@@ -146,6 +156,7 @@ SettingsSectionTitle {
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: root.px(14)
                     elide: Text.ElideRight
+                    horizontalAlignment: Text.AlignLeft
                 }
                 Text {
                     width: parent.width
@@ -154,6 +165,7 @@ SettingsSectionTitle {
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: root.px(12)
                     elide: Text.ElideRight
+                    horizontalAlignment: Text.AlignLeft
                 }
             }
             SettingsToggle {
@@ -175,6 +187,7 @@ SettingsSectionTitle {
         topPadding: root.px(4)
         bottomPadding: root.px(8)
         wrapMode: Text.WordWrap
+        horizontalAlignment: Text.AlignLeft
         text: qsTr("To find subtitles, the services turned on get the video's title, its IMDb id, its file name and hash (made from a part of the file), and nothing else.")
         color: root.c("#5F5F5F")
         font.family: VLCStyle.redesign.fontFamily

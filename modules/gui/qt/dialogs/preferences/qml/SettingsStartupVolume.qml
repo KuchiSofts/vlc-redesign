@@ -30,6 +30,10 @@ Rectangle {
     component Option: Rectangle {
         property bool selected
         property alias text: label.text
+        // the room of the label (a longer one is cut short) and the width
+        // it needs
+        property real labelRoom: width - root.px(24)
+        readonly property real labelImplicitWidth: label.implicitWidth
         signal picked()
         width: root.width - root.px(4)
         height: root.px(36)
@@ -50,7 +54,9 @@ Rectangle {
         }
         Text {
             id: label
-            x: root.px(12)
+            x: LayoutMirroring.enabled ? parent.width - width - root.px(12) : root.px(12)
+            width: Math.max(0, Math.min(implicitWidth, parent.labelRoom))
+            elide: Text.ElideRight
             anchors.baseline: parent.verticalCenter
             anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
             color: parent.selected ? VLCStyle.redesign.accent : root.c("#6B6B6B")
@@ -85,12 +91,18 @@ Rectangle {
             Accessible.role: Accessible.RadioButton
             Accessible.name: text
             Accessible.checked: selected
+            // The field: 10 px after the label (where the design puts it, or
+            // 6 px after a longer label, keeping 60 px for the value), 2 px
+            // from the other sides
+            readonly property real fieldStart: Math.min(Math.max(root.px(12 + 110 + 10),
+                                                                 root.px(12 + 6) + Math.ceil(labelImplicitWidth)),
+                                                        width - root.px(2 + 60))
+            labelRoom: fieldStart - root.px(12 + 6)
 
-            // The field: 10 px after the label, 2 px from the other sides
             Rectangle {
-                x: root.px(12 + 110 + 10)
+                x: LayoutMirroring.enabled ? root.px(2) : startsAt.fieldStart
                 y: root.px(2)
-                width: parent.width - x - root.px(2)
+                width: startsAt.width - startsAt.fieldStart - root.px(2)
                 height: parent.height - root.px(4)
                 radius: root.px(2)
                 color: root.c("#090909")
@@ -100,8 +112,9 @@ Rectangle {
                 TextInput {
                     id: volumeInput
                     objectName: "settingsStartupVolumeValue"
-                    x: root.px(12)
+                    x: LayoutMirroring.enabled ? root.px(18) : root.px(12)
                     width: parent.width - root.px(12 + 18)
+                    horizontalAlignment: TextInput.AlignLeft
                     anchors.baseline: parent.verticalCenter
                     anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
                     text: Math.round(root.volume * 100) + "%"

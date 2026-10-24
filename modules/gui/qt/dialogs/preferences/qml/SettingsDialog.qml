@@ -167,6 +167,10 @@ Dialog {
     }
 
     contentItem: Item {
+        // A popup is not under the main interface: right to left in Hebrew,
+        // Arabic... (the sidebar on the right) as it is
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        LayoutMirroring.childrenInherit: true
         // Escape closes as the close button does (once the changes are kept)
         focus: true
         Keys.onEscapePressed: (event) => {
@@ -215,8 +219,10 @@ Dialog {
                     objectName: "settingsSearch"
                     anchors.fill: parent
                     implicitHeight: root.px(34)
-                    leftPadding: root.px(8 + 24 + 10)
-                    rightPadding: root.px(8)
+                    // (the icon on the right, right to left)
+                    leftPadding: LayoutMirroring.enabled ? root.px(8) : root.px(8 + 24 + 10)
+                    rightPadding: LayoutMirroring.enabled ? root.px(8 + 24 + 10) : root.px(8)
+                    horizontalAlignment: TextInput.AlignLeft
                     placeholderText: qsTr("Search")
                     placeholderTextColor: root.c("#404040")
                     // Figma's baseline: the 17 px line centred in the 34
@@ -243,6 +249,7 @@ Dialog {
                                         + Math.round(VLCStyle.redesign.textBaseline(0, font.pixelSize))
                 anchors.right: closeButton.left
                 elide: Text.ElideRight
+                horizontalAlignment: Text.AlignLeft
                 text: searchField.text.length > 0 ? qsTr("Search results")
                       : root.titles[root.selectedCategory] || qsTr("Settings")
                 color: root.c("#969696")
@@ -279,11 +286,12 @@ Dialog {
         }
 
         // The page column of the design is #0F0F0F (the sidebar column stays
-        // #0E0E0E); the rounded corner of the dialog at the bottom right
+        // #0E0E0E); the rounded corner of the dialog at the bottom right (left,
+        // right to left)
         Item {
-            x: root.px(216)
+            x: LayoutMirroring.enabled ? 0 : root.px(216)
             y: root.px(50)
-            width: parent.width - x
+            width: parent.width - root.px(216)
             height: parent.height - y
             clip: true
             Rectangle {
@@ -557,6 +565,7 @@ Dialog {
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: root.px(14)
                     wrapMode: Text.WordWrap
+                    horizontalAlignment: Text.AlignLeft
                     width: parent.width
                 }
 
@@ -595,6 +604,8 @@ Dialog {
                                 sourceSize: Qt.size(width, height)
                                 source: root.advancedExpanded ? "qrc:///redesign/icons/chevron-down/default.png"
                                                               : "qrc:///redesign/icons/chevron-right/default.png"
+                                // closed, it points the way the text reads
+                                mirror: LayoutMirroring.enabled && !root.advancedExpanded
                             }
                         }
                     }
@@ -621,15 +632,24 @@ Dialog {
                         width: parent.width
                         height: root.px(42)
                         Text {
+                            id: installedOnlyLabel
                             anchors.left: parent.left
                             anchors.baseline: parent.verticalCenter
                             anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
+                            // cut short before the toggle (a long translation)
+                            width: Math.max(0, Math.min(implicitWidth, parent.width - installedOnlyToggle.width - root.px(20)))
+                            elide: Text.ElideRight
                             text: qsTr("Show installed add-ons only")
                             color: root.c("#8F8F8F")
                             font.family: VLCStyle.redesign.fontFamily
                             font.pixelSize: root.px(14)
+                            HoverHandler { id: installedOnlyHover }
+                            ToolTip.visible: installedOnlyHover.hovered && installedOnlyLabel.truncated
+                            ToolTip.text: installedOnlyLabel.text
+                            ToolTip.delay: 650
                         }
                         SettingsToggle {
+                            id: installedOnlyToggle
                             objectName: "settingsInstalledOnly"
                             anchors.right: parent.right
                             anchors.verticalCenter: parent.verticalCenter
@@ -652,6 +672,8 @@ Dialog {
                              && advancedOptions.availableCount === 0
                     width: parent.width
                     text: qsTr("No advanced options on this page.")
+                    wrapMode: Text.WordWrap
+                    horizontalAlignment: Text.AlignLeft
                     color: root.c("#6B6B6B")
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: root.px(14)
@@ -703,6 +725,9 @@ Dialog {
             root.close()
         }
         contentItem: Text {
+            // (a popup of its own: not under the mirrored content)
+            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+            horizontalAlignment: Text.AlignLeft
             text: qsTr("Every setting of VLC media player goes back to its default.")
             wrapMode: Text.WordWrap
             color: root.c("#8F8F8F")
@@ -722,8 +747,9 @@ Dialog {
         readonly property string message: config.error || (audioOutput.item ? audioOutput.item.error : "")
                                           || inlineEffects.error
         visible: message.length > 0
-        x: root.px(216 + 24)
-        width: parent ? parent.width - x - root.px(24) : 0
+        // over the page, the sidebar on the right right to left
+        x: LayoutMirroring.enabled ? root.px(24) : root.px(216 + 24)
+        width: parent ? parent.width - root.px(216 + 24 + 24) : 0
         y: parent ? parent.height - height - root.px(16) : 0
         height: Math.max(root.px(48), errorText.implicitHeight + root.px(24))
         radius: root.px(6)
@@ -742,6 +768,7 @@ Dialog {
             wrapMode: Text.WordWrap
             maximumLineCount: 3
             elide: Text.ElideRight
+            horizontalAlignment: Text.AlignLeft
             // the error colour of the redesign, a dark red on the light grey
             color: VLCStyle.redesign.color("#E4A580", "#7a1414")
             font.family: VLCStyle.redesign.fontFamily
@@ -757,7 +784,8 @@ Dialog {
             anchors.right: parent.right
             anchors.rightMargin: root.px(8)
             anchors.verticalCenter: parent.verticalCenter
-            width: root.px(150)
+            // wider for a longer translation
+            width: Math.max(root.px(150), implicitWidth)
             text: qsTr("Discard changes")
             onClicked: root.discardAndClose()
         }

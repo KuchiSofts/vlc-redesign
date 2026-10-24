@@ -44,6 +44,10 @@ Rectangle {
                 onClicked: root.chosen(modelData.value)
                 Accessible.name: modelData.text
                 Accessible.checked: selected
+                // the whole name when it is cut short (a long translation)
+                T.ToolTip.visible: hovered && optionText.truncated
+                T.ToolTip.text: modelData.text
+                T.ToolTip.delay: 650
 
                 background: Rectangle {
                     radius: root.px(4)
@@ -64,6 +68,7 @@ Rectangle {
                         height: parent.height
                         text: option.modelData.text
                         color: option.selected ? VLCStyle.redesign.accent : root.c("#6B6B6B")
+                        elide: Text.ElideRight
                         verticalAlignment: Text.AlignTop
                         // the baseline where the design centres a line of Inter
                         topPadding: height / 2 + VLCStyle.redesign.centeredBaseline(font.pixelSize) - optionMetrics.ascent

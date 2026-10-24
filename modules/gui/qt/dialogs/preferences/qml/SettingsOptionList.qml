@@ -131,6 +131,8 @@ Column {
                                                                       font.pixelSize)) - titleMetrics.ascent
                 FontMetrics { id: titleMetrics; font: sectionTitle.font }
                 text: presentation.section
+                elide: Text.ElideRight
+                horizontalAlignment: Text.AlignLeft
                 color: VLCStyle.redesign.color("#C6C6C6", "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)

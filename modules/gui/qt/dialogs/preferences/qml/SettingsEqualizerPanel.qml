@@ -228,6 +228,11 @@ Item {
                         color: root.c("#6B6B6B")
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: root.px(14)
+                        // a longer name (a translation of Preamp) is made
+                        // smaller to fit its 60 px, then cut short
+                        fontSizeMode: Text.HorizontalFit
+                        minimumPixelSize: root.px(10)
+                        elide: Text.ElideRight
                         topPadding: VLCStyle.redesign.textBaseline(0, font.pixelSize) - nameMetrics.ascent
                         FontMetrics { id: nameMetrics; font: nameText.font }
                     }

@@ -64,6 +64,8 @@ ColumnLayout {
         Layout.fillWidth: true
         visible: root.category === "audio"
         text: qsTr("Effects")
+        horizontalAlignment: Text.AlignLeft
+        elide: Text.ElideRight
         color: VLCStyle.redesign.color("#EAEAEA", "#2e2e2e")
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
@@ -76,6 +78,7 @@ ColumnLayout {
               ? qsTr("Play audio to adjust and preview sound effects.")
               : qsTr("Play video to adjust and preview the picture.")
         wrapMode: Text.WordWrap
+        horizontalAlignment: Text.AlignLeft
         color: VLCStyle.redesign.color("#8F8F8F", "#7c7c7b")
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)

@@ -178,11 +178,13 @@ Item {
             id: settingLabel
             // From the room left of the control only: a width taken from the
             // Row (which sums its children) could settle on 0 and hide the label
+            // (from the width of the control, not its x: right to left, the
+            // control is at 0)
             // Figma's text box: the advance of Inter 3.19 rounded up (measured
             // 16 times larger, less the unit per glyph the bundled font adds)
             width: Math.max(0, Math.min(Math.ceil(labelExact.advanceWidth / 16
                                                   - text.length * font.pixelSize / 2816 - 0.001),
-                                        valueArea.x - root.px(20)
+                                        root.width - valueArea.width - root.px(20)
                                         - (helpIcon.visible ? helpIcon.width + labelRow.spacing : 0)))
             anchors.baseline: parent.verticalCenter
             anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
@@ -219,10 +221,12 @@ Item {
     Text {
         id: noteText
         visible: root.note.length > 0
+        anchors.left: parent.left
         y: root.height - root.noteHeight
-        width: Math.max(0, valueArea.x - root.px(20))
+        width: Math.max(0, root.width - valueArea.width - root.px(20))
         text: root.note
         wrapMode: Text.WordWrap
+        horizontalAlignment: Text.AlignLeft
         maximumLineCount: 2
         elide: Text.ElideRight
         // the warning in the error colour of the redesign (a dark red on the
@@ -234,10 +238,14 @@ Item {
         Accessible.name: text
     }
 
+    // The help; over a label cut short (a long translation), the whole
+    // label first
     ToolTip {
         parent: helpIcon.visible ? helpIcon : settingLabel
-        visible: (labelHover.hovered || helpHover.hovered) && root.help.length > 0
-        text: root.help
+        visible: (labelHover.hovered && (root.help.length > 0 || settingLabel.truncated))
+                 || (helpHover.hovered && root.help.length > 0)
+        text: !settingLabel.truncated ? root.help
+              : root.help.length > 0 ? root.label + "\n" + root.help : root.label
         delay: 650
     }
 
@@ -246,7 +254,9 @@ Item {
         anchors.right: parent.right
         y: root.controlTop !== undefined ? root.px(root.controlTop)
                                          : Math.round((root.height - root.noteHeight - height) / 2)
-        width: root.useToggle ? root.px(68) : Math.min(root.px(320), root.width * 0.46)
+        // (a toggle grows when its ON / OFF are longer words)
+        width: root.useToggle ? Math.max(root.px(68), toggleLoader.item ? toggleLoader.item.implicitWidth : 0)
+                              : Math.min(root.px(320), root.width * 0.46)
         height: root.useStartupVolume ? root.px(78) : root.useToggle || root.useColor ? root.px(32)
                 : root.useSlider && root.sliderScale ? root.px(57)
                 : root.useText && root.fieldHeight > 0 ? root.px(root.fieldHeight) : root.px(36)
@@ -264,6 +274,7 @@ Item {
             }
         }
         Loader {
+            id: toggleLoader
             anchors.fill: parent
             active: root.useToggle
             sourceComponent: SettingsToggle {
@@ -314,9 +325,11 @@ Item {
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: root.px(14)
                         elide: Text.ElideRight
+                        horizontalAlignment: Text.AlignLeft
                     }
                     Image {
-                        x: parent.width - root.px(14) - width
+                        anchors.right: parent.right
+                        anchors.rightMargin: root.px(14)
                         anchors.verticalCenter: parent.verticalCenter
                         width: root.px(24)
                         height: width
@@ -501,8 +514,10 @@ Item {
                 TextInput {
                     id: colorInput
                     objectName: "settingColor_" + root.settingKey
-                    x: root.px(12)
-                    width: parent.width - x - root.px(5 + 22 + 10)
+                    // the colour on the left, right to left
+                    x: LayoutMirroring.enabled ? root.px(5 + 22 + 10) : root.px(12)
+                    width: parent.width - root.px(12 + 5 + 22 + 10)
+                    horizontalAlignment: TextInput.AlignLeft
                     anchors.baseline: parent.verticalCenter
                     anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
                     text: parent.hex

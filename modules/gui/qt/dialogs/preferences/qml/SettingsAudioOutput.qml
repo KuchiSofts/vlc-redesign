@@ -50,6 +50,8 @@ ColumnLayout {
         Label {
             Layout.fillWidth: true
             text: qsTr("Current output device")
+            elide: Text.ElideRight
+            horizontalAlignment: Text.AlignLeft
             color: VLCStyle.redesign.color("#8F8F8F", "#7c7c7b")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
@@ -66,7 +68,10 @@ ColumnLayout {
                 if (preview.preview(index, textAt(index))) root.selectedIndex = index
             }
             contentItem: Label {
-                leftPadding: VLCStyle.dp(12, VLCStyle.scale)
+                // 12 px from the start (the right, right to left)
+                leftPadding: deviceBox.mirrored ? 0 : VLCStyle.dp(12, VLCStyle.scale)
+                rightPadding: deviceBox.mirrored ? VLCStyle.dp(12, VLCStyle.scale) : 0
+                horizontalAlignment: Text.AlignLeft
                 text: deviceRows.count === 0 ? qsTr("No selectable device available")
                       : root.selectedIndex < 0 ? qsTr("System default") : deviceBox.displayText
                 color: VLCStyle.redesign.color("#969696", "#4d4d4d")
@@ -101,6 +106,9 @@ ColumnLayout {
                 implicitHeight: Math.min(contentItem.implicitHeight, VLCStyle.dp(280, VLCStyle.scale))
                 padding: 0
                 contentItem: ListView {
+                    // a popup: right to left as its box
+                    LayoutMirroring.enabled: deviceBox.mirrored
+                    LayoutMirroring.childrenInherit: true
                     clip: true
                     implicitHeight: contentHeight
                     model: deviceBox.popup.visible ? deviceBox.delegateModel : null
@@ -117,6 +125,7 @@ ColumnLayout {
         Layout.fillWidth: true
         text: qsTr("Device changes affect only the current audio output. Apply keeps this selection while it remains active.")
         wrapMode: Text.WordWrap
+        horizontalAlignment: Text.AlignLeft
         color: VLCStyle.redesign.color("#8F8F8F", "#7c7c7b")
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.dp(12, VLCStyle.scale)

@@ -38,8 +38,12 @@ Column {
     }
 
     component RowLabel: Row {
+        id: rowLabel
         property alias text: rowText.text
         property string help
+        // the room left by the control of the row: a longer label (a
+        // translation) is cut short, its whole text in the tool tip
+        property real room: parent.width
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
         spacing: root.px(10)
@@ -47,7 +51,13 @@ Column {
             id: rowText
             // Figma's text box: the advance of Inter 3.19 rounded up (see
             // SettingsOptionRow)
-            width: Math.ceil(rowExact.advanceWidth / 16 - text.length * font.pixelSize / 2816 - 0.001)
+            width: Math.max(0, Math.min(Math.ceil(rowExact.advanceWidth / 16 - text.length * font.pixelSize / 2816 - 0.001),
+                                        rowLabel.room - rowInfo.width - rowLabel.spacing))
+            elide: Text.ElideRight
+            HoverHandler { id: textHover }
+            ToolTip.visible: textHover.hovered && rowText.truncated
+            ToolTip.text: rowLabel.help.length > 0 ? rowText.text + "\n" + rowLabel.help : rowText.text
+            ToolTip.delay: 650
             anchors.baseline: parent.verticalCenter
             anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
             color: root.c("#8F8F8F")
@@ -62,6 +72,7 @@ Column {
             }
         }
         Image {
+            id: rowInfo
             anchors.verticalCenter: parent.verticalCenter
             width: root.px(18)
             height: width
@@ -81,8 +92,10 @@ Column {
         RowLabel {
             text: qsTr("Submit played tracks to last.fm")
             help: qsTr("Sends the titles of the tracks you play to your Last.fm profile. Takes effect after restarting VLC.")
+            room: parent.width - submitToggle.width - root.px(20)
         }
         SettingsToggle {
+            id: submitToggle
             objectName: "settingsLastfmEnabled"
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
@@ -115,6 +128,7 @@ Column {
             RowLabel {
                 text: fieldRow.modelData.label
                 help: fieldRow.modelData.help
+                room: parent.width - editor.width - root.px(20)
             }
             SettingsTextField {
                 id: editor
@@ -130,6 +144,10 @@ Column {
                     if (fieldRow.modelData.key === "lastfm-username") root.username = editor
                     else if (fieldRow.modelData.key === "lastfm-password") root.password = editor
                     else root.submissionUrl = editor
+                    // the rows are made again when the language changes (their
+                    // labels): the new field shows the value as the last one
+                    if (root.available)
+                        root.show(editor, fieldRow.modelData.key)
                 }
             }
         }

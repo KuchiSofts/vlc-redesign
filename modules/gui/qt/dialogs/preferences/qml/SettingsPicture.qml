@@ -39,9 +39,17 @@ SettingsSectionTitle {
             height: root.px(42)
 
             Text {
+                id: adjustmentLabel
                 anchors.left: parent.left
                 anchors.baseline: parent.verticalCenter
                 anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
+                // cut short before the slider (a long translation)
+                width: Math.max(0, Math.min(implicitWidth, parent.width - adjustmentSlider.width - root.px(20)))
+                elide: Text.ElideRight
+                HoverHandler { id: adjustmentHover }
+                ToolTip.visible: adjustmentHover.hovered && adjustmentLabel.truncated
+                ToolTip.text: adjustmentLabel.text
+                ToolTip.delay: 650
                 text: row.modelData.title
                 color: root.c("#8F8F8F")
                 font.family: VLCStyle.redesign.fontFamily

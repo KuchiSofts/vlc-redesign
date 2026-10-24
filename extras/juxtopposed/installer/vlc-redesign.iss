@@ -19,6 +19,22 @@
 ; chosen (Windows keeps the user's choices: the last page opens Default
 ; apps for the rest), and add "Play with VLC Redesign" to the right-click
 ; menus. All of it goes away with the uninstaller.
+;
+; Privacy: the two features that go online by themselves, the daily update
+; check (GitHub) and the automatic online subtitles, are asked on the
+; Privacy page, both on to begin with, with a link to CODE_SIGNING_POLICY.md.
+; The answers go to {app}\portable\setup-choices.ini, which VLC Redesign puts
+; into its settings at its next start (MainCtx::applySetupChoices) and then
+; deletes; the first-run setup doesn't ask them again. Not the settings
+; themselves: a new install has none yet, and vlc.exe fills an empty profile
+; with the settings of the copy started last. An update shows the page with
+; the profile's choices when they were never asked (installs from before the
+; page), and skips it otherwise: they stay in Settings; it writes only what
+; was changed. A silent install keeps the defaults (on), or what was chosen
+; before, unless told otherwise:
+;   /NOUPDATECHECK   no daily update check
+;   /NOONLINESUBS    no automatic online subtitles
+; (also on the page of an install that shows it: both start off).
 
 #ifndef AppVersion
   #error Define AppVersion, e.g. /DAppVersion=0.2.0
@@ -101,6 +117,8 @@ en.StepWelcome=Welcome
 he.StepWelcome=ברוכים הבאים
 en.StepOptions=Options
 he.StepOptions=אפשרויות
+en.StepPrivacy=Privacy
+he.StepPrivacy=פרטיות
 en.StepInstall=Install
 he.StepInstall=התקנה
 en.StepDone=Done
@@ -157,6 +175,24 @@ en.ContextMenu=Play with {#AppName} in right-click menus
 he.ContextMenu="הפעלה ב-{#AppName}" בתפריט הקליק הימני
 en.DesktopIcon=Desktop shortcut
 he.DesktopIcon=קיצור דרך בשולחן העבודה
+en.PrivacyTitle=Privacy
+he.PrivacyTitle=פרטיות
+en.PrivacyText=Two features go online by themselves. Each sends only this:
+he.PrivacyText=שתי תכונות מתחברות לאינטרנט מעצמן. כל אחת שולחת רק את זה:
+en.PrivacyUpdates=Check for updates once a day
+he.PrivacyUpdates=בדיקת עדכונים פעם ביום
+en.PrivacyUpdatesText=A request for the latest release, to GitHub (api.github.com).
+he.PrivacyUpdatesText=בקשה לגרסה האחרונה, אל GitHub (api.github.com).
+en.PrivacySubtitles=Find subtitles online automatically
+he.PrivacySubtitles=חיפוש כתוביות ברשת באופן אוטומטי
+en.PrivacySubtitlesText=The film's name and a fingerprint of the file, to subtitle services (OpenSubtitles.org, Wizdom, Gestdown, YIFY); its name to IMDb, Wikidata and Cinemeta.
+he.PrivacySubtitlesText=שם הסרט וטביעת אצבע של הקובץ, לשירותי הכתוביות OpenSubtitles.org, Wizdom, Gestdown ו-YIFY. השם גם ל-IMDb, ל-Wikidata ול-Cinemeta.
+en.PrivacyCardTitle=No telemetry, no ads, no account
+he.PrivacyCardTitle=בלי טלמטריה, בלי פרסומות, בלי חשבון
+en.PrivacyCardText=Nothing else goes online unless you ask for it. Change both later in Settings.
+he.PrivacyCardText=שום דבר אחר לא יוצא לאינטרנט בלי שביקשת. אפשר לשנות את שתיהן אחר כך בהגדרות.
+en.LinkPrivacy=Privacy and code signing policy
+he.LinkPrivacy=מדיניות הפרטיות וחתימת הקוד
 en.InstallingTitle=Installing
 he.InstallingTitle=מתקין
 en.InstallingText=This takes about a minute.
@@ -297,6 +333,11 @@ const
   T_CONTEXT = 3;
   T_DESKTOP = 4;
   T_LAUNCH = 5;
+  T_UPDATES = 6;
+  T_SUBTITLES = 7;
+
+  { The Privacy page's answers, for the app's next start (see the top) }
+  CHOICES_FILE = 'setup-choices.ini';
 
   FR_PRIVATE = $10;
 
@@ -349,13 +390,18 @@ var
   Relaunching: Boolean;
 
   OptionsPage: TWizardPage;
+  PrivacyPage: TWizardPage;
   Buttons: array of TDesignButton;
   Toggles: array of TDesignToggle;
   NavCancel, NavBack, NavNext: Integer;
 
+  { The profile the Privacy page shows, and its choices then }
+  ChoicesReadFor: String;
+  ProfileFresh, InitialUpdates, InitialSubtitles, PrivacyShown: Boolean;
+
   SideMark, Pill: TBitmapImage;
   SideTitle, SideSub, SideBy, SideName: TLabel;
-  StepNum, StepText: array[0..3] of TLabel;
+  StepNum, StepText: array[0..4] of TLabel;
   CurStep: Integer;
 
   InnerTitle, InnerText: TLabel;
@@ -960,6 +1006,140 @@ begin
   Result := Checked(T_DESKTOP);
 end;
 
+{ ---- Privacy ------------------------------------------------------------- }
+
+{ A switch of the command line, /NAME or -NAME }
+function HasSwitch(Name: String): Boolean;
+var
+  I: Integer;
+begin
+  Result := False;
+  for I := 1 to ParamCount do
+    if (CompareText(ParamStr(I), '/' + Name) = 0) or (CompareText(ParamStr(I), '-' + Name) = 0) then
+      Result := True;
+end;
+
+function BoolText(B: Boolean): String;
+begin
+  if B then
+    Result := 'true'
+  else
+    Result := 'false';
+end;
+
+{ The profile of the copy installed: its settings, in portable\ next to
+  vlc.exe (see [Dirs]) }
+function ProfileFile(Name: String): String;
+begin
+  Result := AddBackslash(WizardDirValue) + 'portable\' + Name;
+end;
+
+{ A profile that vlc.exe leaves as it is: with settings, or a library
+  (bin/winvlc.c fills one without them with the settings of the last copy) }
+function ProfileHasSettings(): Boolean;
+begin
+  Result := FileExists(ProfileFile('vlcrc')) or FileExists(ProfileFile('vlc\vlc-qt-interface.ini')) or
+            FileExists(ProfileFile('ml\ml.db'));
+end;
+
+{ An option of vlcrc as it is written there, '' for its default (VLC writes
+  those as comments) }
+function VlcrcValue(Name: String): String;
+var
+  Lines: TArrayOfString;
+  I: Integer;
+  L: String;
+begin
+  Result := '';
+  if not LoadStringsFromFile(ProfileFile('vlcrc'), Lines) then
+    Exit;
+  for I := 0 to GetArrayLength(Lines) - 1 do
+  begin
+    L := Trim(Lines[I]);
+    if CompareText(Copy(L, 1, Length(Name) + 1), Name + '=') = 0 then
+      Result := Trim(Copy(L, Length(Name) + 2, Length(L)));
+  end;
+end;
+
+{ A setting of the interface (QSettings: "true" or "false"), '' if unset }
+function InterfaceValue(Section, Key: String): String;
+begin
+  Result := GetIniString(Section, Key, '', ProfileFile('vlc\vlc-qt-interface.ini'));
+end;
+
+{ The profile was asked already: by this page (its answers wait for the
+  app's next start, or are in the settings), or by the app's first-run setup }
+function ChoicesMade(): Boolean;
+begin
+  Result := FileExists(ProfileFile(CHOICES_FILE)) or
+            (CompareText(InterfaceValue('redesign', 'privacy-asked'), 'true') = 0);
+end;
+
+{ The page shows the choices of the profile it installs to (the defaults for
+  a new one); the switches of the command line turn them off }
+procedure LoadChoices();
+begin
+  if ChoicesReadFor = ProfileFile('') then
+    Exit;
+  ChoicesReadFor := ProfileFile('');
+  ProfileFresh := not ProfileHasSettings();
+  InitialUpdates := VlcrcValue('redesign-update-check') <> '0';
+  InitialSubtitles := CompareText(InterfaceValue('redesign', 'subtitle-auto-search'), 'false') <> 0;
+  Toggles[T_UPDATES].Checked := InitialUpdates and not HasSwitch('NOUPDATECHECK');
+  Toggles[T_SUBTITLES].Checked := InitialSubtitles and not HasSwitch('NOONLINESUBS');
+  PaintToggle(T_UPDATES);
+  PaintToggle(T_SUBTITLES);
+  Log('Privacy: profile ' + ChoicesReadFor + ', new ' + BoolText(ProfileFresh) + ', update check ' +
+      BoolText(InitialUpdates) + ', online subtitles ' + BoolText(InitialSubtitles));
+end;
+
+{ After the files are in place: the answers, for the app's next start (see
+  the top). Those of the page where it was shown: all of them for a new
+  profile, what was changed for one with settings. Otherwise (a silent
+  install, or the page skipped as asked before) what the command line says;
+  a new profile is noted as asked, with the defaults. }
+procedure SaveChoices();
+var
+  Updates, Subtitles, WriteUpdates, WriteSubtitles: Boolean;
+  FileName: String;
+begin
+  if PrivacyShown and not WizardSilent then
+  begin
+    Updates := Checked(T_UPDATES);
+    Subtitles := Checked(T_SUBTITLES);
+    WriteUpdates := ProfileFresh or (Updates <> InitialUpdates);
+    WriteSubtitles := ProfileFresh or (Subtitles <> InitialSubtitles);
+  end
+  else
+  begin
+    Updates := not HasSwitch('NOUPDATECHECK');
+    Subtitles := not HasSwitch('NOONLINESUBS');
+    WriteUpdates := not Updates;
+    WriteSubtitles := not Subtitles;
+    if (not WriteUpdates) and (not WriteSubtitles) and (ChoicesMade() or ProfileHasSettings()) then
+    begin
+      Log('Privacy: nothing to change, the profile keeps its choices');
+      Exit;
+    end;
+  end;
+  FileName := ProfileFile(CHOICES_FILE);
+  if not FileExists(FileName) then
+    SaveStringToFile(FileName, '; The answers of the Privacy page of {#AppName} Setup. {#AppName} puts them' + #13#10 +
+                     '; into its settings at its next start, then deletes this file.' + #13#10 +
+                     '[privacy]' + #13#10, False);
+  if WriteUpdates then
+    SetIniString('privacy', 'update-check', BoolText(Updates), FileName);
+  if WriteSubtitles then
+    SetIniString('privacy', 'subtitle-search', BoolText(Subtitles), FileName);
+  Log('Privacy: ' + FileName + ' written: update check ' + BoolText(Updates) + ' (' + BoolText(WriteUpdates) +
+      '), online subtitles ' + BoolText(Subtitles) + ' (' + BoolText(WriteSubtitles) + ')');
+end;
+
+procedure PrivacyPolicyClick(Sender: TObject);
+begin
+  OpenUrl('{#RepoUrl}/blob/main/CODE_SIGNING_POLICY.md');
+end;
+
 { ---- The sidebar --------------------------------------------------------- }
 
 procedure ShowStep(Step: Integer; Parent: TWinControl);
@@ -974,7 +1154,7 @@ begin
   SideBy.Parent := Parent;
   SideName.Parent := Parent;
   Pill.Top := SY(84 + 36 * Step);
-  for I := 0 to 3 do
+  for I := 0 to 4 do
   begin
     StepNum[I].Parent := Parent;
     StepText[I].Parent := Parent;
@@ -1009,7 +1189,7 @@ end;
 procedure CreateSidebar();
 var
   Parent: TWinControl;
-  Names: array[0..3] of String;
+  Names: array[0..4] of String;
   I: Integer;
 begin
   Parent := WizardForm.WelcomePage;
@@ -1019,9 +1199,10 @@ begin
   Pill := NewImage(Parent, False, 'pill', 18, 84, 144, 32);
   Names[0] := CustomMessage('StepWelcome');
   Names[1] := CustomMessage('StepOptions');
-  Names[2] := CustomMessage('StepInstall');
-  Names[3] := CustomMessage('StepDone');
-  for I := 0 to 3 do
+  Names[2] := CustomMessage('StepPrivacy');
+  Names[3] := CustomMessage('StepInstall');
+  Names[4] := CustomMessage('StepDone');
+  for I := 0 to 4 do
   begin
     StepNum[I] := NewLabel(Parent, False, 30, 84 + 36 * I + 8, 0, 13, True, CLR_FAINT, CLR_CARD, IntToStr(I + 1));
     StepText[I] := NewLabel(Parent, False, 50, 84 + 36 * I + 8, 0, 13, False, CLR_FAINT, CLR_CARD, Names[I]);
@@ -1193,6 +1374,24 @@ begin
   NewToggle(T_DESKTOP, P, True, 328, CustomMessage('DesktopIcon'), GetPreviousData('DesktopIcon', Def) = '1');
 end;
 
+{ The two features that go online by themselves, each with what it sends,
+  and the policy (the toggles take the profile's choices when it shows) }
+procedure CreatePrivacy();
+var
+  P: TWinControl;
+begin
+  PrivacyPage := CreateCustomPage(OptionsPage.ID, CustomMessage('PrivacyTitle'), CustomMessage('PrivacyText'));
+  P := PrivacyPage.Surface;
+  NewToggle(T_UPDATES, P, True, 100, CustomMessage('PrivacyUpdates'), True);
+  NewLabel(P, True, CONTENT_L, 138, CONTENT_W, 11, False, CLR_FAINT, CLR_BACK, CustomMessage('PrivacyUpdatesText'));
+  NewToggle(T_SUBTITLES, P, True, 166, CustomMessage('PrivacySubtitles'), True);
+  NewLabel(P, True, CONTENT_L, 204, CONTENT_W, 11, False, CLR_FAINT, CLR_BACK, CustomMessage('PrivacySubtitlesText'));
+  NewImage(P, True, 'card-tip', CONTENT_L, 254, CONTENT_W, 92);
+  NewLabel(P, True, CONTENT_L + 16, 268, CONTENT_W - 32, 13, True, CLR_TEXT, CLR_CARD, CustomMessage('PrivacyCardTitle'));
+  NewLabel(P, True, CONTENT_L + 16, 290, CONTENT_W - 32, 12, False, CLR_TEXT2, CLR_CARD, CustomMessage('PrivacyCardText'));
+  NewLink(P, True, CONTENT_L + 16, 322, 12, CLR_CARD, CustomMessage('LinkPrivacy'), @PrivacyPolicyClick);
+end;
+
 procedure CreateInstalling();
 var
   P: TWinControl;
@@ -1281,6 +1480,7 @@ begin
   CreateWelcome();
   CreateOptions();
   CreateOptionToggles();
+  CreatePrivacy();
   CreateInstalling();
   CreateFinished();
   InnerTitle := NewLabel(WizardForm.InnerPage, False, CONTENT_L, 24, CONTENT_W, 22, True, CLR_TEXT, CLR_BACK, '');
@@ -1322,7 +1522,7 @@ begin
     ShowStep(0, WizardForm.WelcomePage)
   else if CurPageID = wpFinished then
   begin
-    ShowStep(3, WizardForm.FinishedPage);
+    ShowStep(4, WizardForm.FinishedPage);
     Assoc := Checked(T_VIDEO) or Checked(T_AUDIO) or Checked(T_PLAYLIST);
     FinishCard.Visible := Assoc;
     FinishCardTitle.Visible := Assoc;
@@ -1339,18 +1539,31 @@ begin
       ShowStep(1, WizardForm.InnerPage);
       SetContentText(InnerTitle, OptionsPage.Caption);
       SetContentText(InnerText, OptionsPage.Description);
-      { the last page before the installation (no Ready page) }
+      { the last page before the installation (no Ready page) when Privacy
+        is skipped }
+      if ChoicesMade() then
+        WizardForm.NextButton.Caption := SetupMessage(msgButtonInstall)
+      else
+        WizardForm.NextButton.Caption := SetupMessage(msgButtonNext);
+    end
+    else if CurPageID = PrivacyPage.ID then
+    begin
+      ShowStep(2, WizardForm.InnerPage);
+      SetContentText(InnerTitle, PrivacyPage.Caption);
+      SetContentText(InnerText, PrivacyPage.Description);
+      LoadChoices();
+      PrivacyShown := True;
       WizardForm.NextButton.Caption := SetupMessage(msgButtonInstall);
     end
     else if CurPageID = wpInstalling then
     begin
-      ShowStep(2, WizardForm.InnerPage);
+      ShowStep(3, WizardForm.InnerPage);
       SetContentText(InnerTitle, CustomMessage('InstallingTitle'));
       SetContentText(InnerText, CustomMessage('InstallingText'));
     end
     else
     begin
-      ShowStep(2, WizardForm.InnerPage);
+      ShowStep(3, WizardForm.InnerPage);
       SetContentText(InnerTitle, WizardForm.PageNameLabel.Caption);
       SetContentText(InnerText, WizardForm.PageDescriptionLabel.Caption);
     end;
@@ -1360,6 +1573,19 @@ begin
   if WizardForm.NextButton.Visible and WizardForm.NextButton.Enabled then
     WizardForm.ActiveControl := WizardForm.NextButton;
   SyncButtons();
+end;
+
+{ Privacy: once (an update of a profile asked before goes on to install;
+  the choices stay in Settings) }
+function ShouldSkipPage(PageID: Integer): Boolean;
+begin
+  Result := False;
+  if (PrivacyPage <> nil) and (PageID = PrivacyPage.ID) then
+  begin
+    Result := ChoicesMade();
+    if Result then
+      PrivacyShown := False;
+  end;
 end;
 
 function NextButtonClick(CurPageID: Integer): Boolean;
@@ -1626,6 +1852,7 @@ var
 begin
   if CurStep = ssPostInstall then
   begin
+    SaveChoices();
     RegisterFileTypes();
     if not WantDesktopIcon() then
       DeleteFile(ExpandConstant('{autodesktop}\{#AppName}.lnk'));

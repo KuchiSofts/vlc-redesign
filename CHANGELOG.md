@@ -147,6 +147,13 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
 
 ### Added
 
+- **Asked before going online**: the two features that connect by themselves, the daily update check (GitHub) and
+  the automatic online subtitles (the film's name and a fingerprint of the file to subtitle services), are asked
+  first. The installer has a *Privacy* page with both, on to begin with, what each one sends and to whom, and a link
+  to the privacy and code signing policy (a silent install takes `/NOUPDATECHECK` and `/NOONLINESUBS`); the portable
+  zip's first-run setup asks the same on a step of its own, and neither goes online before the answer. An update
+  keeps the answers, and both stay in Settings. With online subtitles off, the subtitles menu searches only when its
+  search button is clicked.
 - **An update keeps your settings, the portable zip too**: a new version unpacked into another folder started with
   the default settings, an empty library and no history. It starts with those of the copy you used last now (the
   installed one or a portable one, 0.2.4 and later), once, when its own are still empty: settings, theme and

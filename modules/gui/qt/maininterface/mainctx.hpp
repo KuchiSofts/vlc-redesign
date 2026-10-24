@@ -448,6 +448,15 @@ public:
 
     Q_INVOKABLE QString displayMRL(const QUrl &mrl) const;
 
+    // The two features that go online by themselves (the daily update check,
+    // the automatic online subtitles) wait for the user's answer: a new
+    // profile is asked by the first-run setup, an installed copy by the
+    // installer's Privacy page (redesign/privacy-asked). A profile of a
+    // version from before the question, its setup done, keeps its settings.
+    Q_INVOKABLE bool onlineChoicesPending() const;
+    // the user answered (the values are set by their own owners)
+    Q_INVOKABLE void setOnlineChoicesMade();
+
     double artistAlbumsWidth() const;
     void setArtistAlbumsWidth(double newArtistAlbumsWidth);
 
@@ -693,6 +702,7 @@ signals:
 private:
     void loadPrefs(bool callSignals);
     void loadFromSettingsImpl(bool callSignals);
+    void applySetupChoices();
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(MainCtx::MainInterfaceModes)

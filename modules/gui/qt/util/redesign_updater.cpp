@@ -36,6 +36,7 @@
 #include <memory>
 
 #include "dialogs/dialogs_provider.hpp"
+#include "maininterface/mainctx.hpp"
 #include "player/player_controller.hpp"
 #include "util/http_request.hpp"
 #include "util/redesign_version.hpp"
@@ -221,8 +222,33 @@ RedesignUpdater::RedesignUpdater(qt_intf_t *intf, QObject *parent)
     connect(qApp, &QCoreApplication::aboutToQuit, this, &RedesignUpdater::applyOnExit);
     findStagedUpdate();
     resumeAfterUpdate();
-    if (var_InheritBool(m_intf, "redesign-update-check") && httpRequestSupported())
+    scheduleStartupCheck();
+}
+
+// A few seconds after the start, unless the user is yet to say whether VLC
+// may check (a new profile: the first-run setup asks)
+void RedesignUpdater::scheduleStartupCheck()
+{
+    if (automaticCheck() && httpRequestSupported()
+        && !(m_intf->p_mi && m_intf->p_mi->onlineChoicesPending()))
         m_startupTimer.start();
+    else
+        m_startupTimer.stop();
+}
+
+bool RedesignUpdater::automaticCheck() const
+{
+    return var_InheritBool(m_intf, "redesign-update-check");
+}
+
+void RedesignUpdater::setAutomaticCheck(bool on)
+{
+    if (on != automaticCheck())
+    {
+        config_PutInt("redesign-update-check", on ? 1 : 0);
+        config_SaveConfigFile(m_intf);
+    }
+    scheduleStartupCheck();
 }
 
 RedesignUpdater::~RedesignUpdater()
@@ -375,6 +401,8 @@ void RedesignUpdater::check(bool manual)
         return;
     }
     setState(Checking);
+    msg_Dbg(m_intf, "update check (%s): asking GitHub for the latest release",
+            manual ? "asked" : "daily");
     QString url = QString::fromLatin1(latestReleaseApi);
 #ifndef NDEBUG
     if (!testApi().isEmpty())

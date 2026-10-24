@@ -93,14 +93,11 @@ SignPath Foundation's conditions are at <https://signpath.org/terms>. The first 
    describes it in a privacy policy, shows that policy during the installation, and offers installation options to
    turn those features off. Two features are on out of the box: the update check (GitHub) and the automatic online
    subtitles (the video's title, file name and hash to IMDb, Wikidata, Cinemeta, OpenSubtitles.org, Wizdom, Gestdown,
-   YIFY Subtitles). The policy describes them; the installer neither shows it nor has the options. Either:
-   - the installer shows the privacy policy (a link on its Welcome page) and its Options page gets two toggles,
-     *Check for updates automatically* and *Find subtitles online*, that set the two settings; the portable zip has
-     no installation, so the first-run setup asks the same; or
-   - both are off until the user turns them on (the first-run setup asks, unticked), and the policy can then use
-     SignPath's sentence: *This program will not transfer any information to other networked systems unless
-     specifically requested by the user or the person installing or operating it*, with the list of what the user
-     can turn on.
+   YIFY Subtitles). Done: the installer's *Privacy* page (after Options) has the two toggles, both on, each with what
+   it sends and to whom, and links the policy; a silent install takes `/NOUPDATECHECK` and `/NOONLINESUBS`. The
+   portable zip's first-run setup asks the same on a step of its own, and neither feature goes online before the
+   answer. How the answers reach the app: the top of
+   [`vlc-redesign.iss`](../extras/juxtopposed/installer/vlc-redesign.iss).
 3. **"Code signing policy" on the home page and the download page.** SignPath Foundation requires the words *Code
    signing policy* there, as a heading or a link. Add to `README.md`, for instance before *License*:
    ```markdown

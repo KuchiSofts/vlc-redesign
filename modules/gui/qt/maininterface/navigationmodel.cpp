@@ -18,19 +18,21 @@
 
 #include "navigationmodel.hpp"
 #include "qt.hpp"
+#include "maininterface/mainctx.hpp"
 #include "style/vlcicons.hpp"
 
 //hierachical model entry
 struct ModelEntry
 {
-    ModelEntry( QString name, QString uri, QString icon = {}, QString iconSvg = {})
+    ModelEntry( const char *name, QString uri, QString icon = {}, QString iconSvg = {})
         : name(name)
         , urinode(uri)
         , icon(icon)
         , icon_svg(iconSvg)
     {}
 
-    const QString name;
+    // untranslated (N_()): shown in the language of the interface when asked
+    const char *name;
     const QString urinode;
     const QString icon;
     const QString icon_svg;
@@ -176,7 +178,7 @@ struct ModelEntry
     QString getName(const PathIterator& it, const PathIterator& end) const
     {
         if (it == end)
-            return name;
+            return qtr(name);
         else
             return children[*it].getName(it + 1, end);
     }
@@ -259,36 +261,36 @@ class NavigationModelPrivate
 public:
     NavigationModelPrivate(NavigationModel* q)
         : q_ptr(q)
-        , m_model{qtr("MC"), "mc"}
+        , m_model{N_("MC"), "mc"}
     {
     }
 
     void initilializeModel()
     {
-        m_model.children.emplace_back(qtr("Home"), "home", VLCIcons::home, QStringLiteral(":/icons/ic_fluent_home.svg"));
+        m_model.children.emplace_back(N_("Home"), "home", VLCIcons::home, QStringLiteral(":/icons/ic_fluent_home.svg"));
 
         if (m_hasMedialib)
         {
-            ModelEntry videoEntry{ qtr("Video"), "video", VLCIcons::topbar_video, QStringLiteral(":/icons/ic_fluent_filmstrip.svg") };
-            videoEntry.children.emplace_back(qtr("All"), "all");
-            videoEntry.children.emplace_back(qtr("Playlists"), "playlists");
+            ModelEntry videoEntry{ N_("Video"), "video", VLCIcons::topbar_video, QStringLiteral(":/icons/ic_fluent_filmstrip.svg") };
+            videoEntry.children.emplace_back(N_("All"), "all");
+            videoEntry.children.emplace_back(N_("Playlists"), "playlists");
             m_model.children.push_back(std::move(videoEntry));
 
-            ModelEntry musicEntry{ qtr("Music"), "music", VLCIcons::topbar_music, QStringLiteral(":/icons/ic_fluent_music_note_2.svg") };
-            musicEntry.children.emplace_back(qtr("Artists"), "artists");
-            musicEntry.children.emplace_back(qtr("Albums"), "albums");
-            musicEntry.children.emplace_back(qtr("Tracks"), "tracks");
-            musicEntry.children.emplace_back(qtr("Genres"), "genres");
-            musicEntry.children.emplace_back(qtr("Playlists"), "playlists");
+            ModelEntry musicEntry{ N_("Music"), "music", VLCIcons::topbar_music, QStringLiteral(":/icons/ic_fluent_music_note_2.svg") };
+            musicEntry.children.emplace_back(N_("Artists"), "artists");
+            musicEntry.children.emplace_back(N_("Albums"), "albums");
+            musicEntry.children.emplace_back(N_("Tracks"), "tracks");
+            musicEntry.children.emplace_back(N_("Genres"), "genres");
+            musicEntry.children.emplace_back(N_("Playlists"), "playlists");
             m_model.children.push_back(std::move(musicEntry));
         }
 
-        m_model.children.emplace_back(qtr("Browse"), "network", VLCIcons::topbar_network, QStringLiteral(":/icons/ic_fluent_wifi_1.svg"));
+        m_model.children.emplace_back(N_("Browse"), "network", VLCIcons::topbar_network, QStringLiteral(":/icons/ic_fluent_wifi_1.svg"));
 
-        ModelEntry discoverEntry{ qtr("Discover"), "discover", VLCIcons::topbar_discover, QStringLiteral(":/icons/ic_fluent_globe.svg") };
-        discoverEntry.children.emplace_back(qtr("Services"), "services");
+        ModelEntry discoverEntry{ N_("Discover"), "discover", VLCIcons::topbar_discover, QStringLiteral(":/icons/ic_fluent_globe.svg") };
+        discoverEntry.children.emplace_back(N_("Services"), "services");
 
-        discoverEntry.children.emplace_back(qtr("URL"), "url");
+        discoverEntry.children.emplace_back(N_("URL"), "url");
         m_model.children.push_back(std::move(discoverEntry));
 
         m_model.visibleChildren = m_model.children.size();
@@ -483,7 +485,7 @@ QVariant NavigationModel::data(const QModelIndex &index, int role) const
             outlist.pop_front();
             outlist.push_back(child.urinode);
 
-            list.emplace_back(child.name, child.icon, child.icon_svg, outlist);
+            list.emplace_back(qtr(child.name), child.icon, child.icon_svg, outlist);
         }
 
         return QVariant::fromValue(list);
@@ -523,6 +525,21 @@ void NavigationModel::componentComplete()
 {
     Q_D(NavigationModel);
     d->initilializeModel();
+
+    // the names follow the language of the interface (MainCtx, the singleton
+    // of the QML engine)
+    QQmlEngine *engine = qmlEngine(this);
+    if (!engine)
+        return;
+    const int mainCtxType = qmlTypeId("VLC.MainInterface", 1, 0, "MainCtx");
+    MainCtx *mainCtx = engine->singletonInstance<MainCtx *>(mainCtxType);
+    if (!mainCtx)
+        return;
+    connect(mainCtx, &MainCtx::interfaceLanguageChanged, this, [this]() {
+        const int count = rowCount();
+        if (count > 0)
+            emit dataChanged(index(0), index(count - 1), {TITLE, CHILDREN});
+    });
 }
 
 //properties

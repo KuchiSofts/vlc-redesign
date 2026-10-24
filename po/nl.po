@@ -5882,17 +5882,17 @@ msgstr "Volume: %ld%%"
 #: src/player/osd.c:184
 #, c-format
 msgid "Video tracks: %s"
-msgstr ""
+msgstr "Videosporen: %s"
 
 #: src/player/osd.c:185
 #, c-format
 msgid "Video track: %s"
-msgstr ""
+msgstr "Videospoor: %s"
 
 #: src/player/osd.c:188
 #, c-format
 msgid "Audio tracks: %s"
-msgstr ""
+msgstr "Audiosporen: %s"
 
 #: src/player/osd.c:189
 #, c-format
@@ -5902,7 +5902,7 @@ msgstr "Audiospoor: %s"
 #: src/player/osd.c:192
 #, c-format
 msgid "Subtitle tracks: %s"
-msgstr ""
+msgstr "Ondertitelsporen: %s"
 
 #: src/player/osd.c:193
 #, c-format
@@ -6030,17 +6030,17 @@ msgstr "Opname voltooid"
 #: src/player/player.c:1844
 #, c-format
 msgid "Audio delay %i ms"
-msgstr "Audiovertraging %i ms"
+msgstr "Audiovertraging: %i ms"
 
 #: src/player/player.c:1846
 #, c-format
 msgid "Subtitle delay %i ms"
-msgstr "Ondertitelvertraging %i ms"
+msgstr "Ondertitelvertraging: %i ms"
 
 #: src/player/player.c:1848
 #, c-format
 msgid "Video delay %i ms"
-msgstr ""
+msgstr "Videovertraging: %i ms"
 
 #: src/player/player.c:1898
 #, c-format
@@ -17022,11 +17022,11 @@ msgstr "Globale sneltoetseninterface"
 
 #: modules/control/hotkeys.c:507
 msgid "Primary subtitle control"
-msgstr ""
+msgstr "Bediening primaire ondertitel"
 
 #: modules/control/hotkeys.c:509
 msgid "Secondary subtitle control"
-msgstr ""
+msgstr "Bediening secundaire ondertitel"
 
 #: modules/control/hotkeys.c:520
 msgid "Sub sync: bookmarked audio time"

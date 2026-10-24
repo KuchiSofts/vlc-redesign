@@ -1838,9 +1838,14 @@ vlc_player_SetCategoryDelay(vlc_player_t *player, enum es_format_category_e cat,
     int ret = input_SetEsCatDelay(input->thread, cat, delay);
     if (ret == VLC_SUCCESS)
     {
-        vlc_player_osd_Message(player, _("%s delay: %i ms"),
-                               es_format_category_to_string(cat),
-                               (int)MS_FROM_VLC_TICK(delay));
+        /* a sentence for each kind (the English name did not translate) */
+        const int ms = (int)MS_FROM_VLC_TICK(delay);
+        if (cat == AUDIO_ES)
+            vlc_player_osd_Message(player, _("Audio delay %i ms"), ms);
+        else if (cat == SPU_ES)
+            vlc_player_osd_Message(player, _("Subtitle delay %i ms"), ms);
+        else
+            vlc_player_osd_Message(player, _("Video delay %i ms"), ms);
         vlc_player_SendEvent(player, on_category_delay_changed, cat, delay);
     }
     return VLC_SUCCESS;

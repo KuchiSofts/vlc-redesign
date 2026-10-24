@@ -502,8 +502,11 @@ PLAYER_ACTION_HANDLER(ControlSubtitleSecondary)
         sys->spu_channel_order == VLC_VOUT_ORDER_PRIMARY ?
         VLC_VOUT_ORDER_SECONDARY : VLC_VOUT_ORDER_PRIMARY;
 
-    vlc_player_osd_Message(player, _("%s subtitle control"),
-        sys->spu_channel_order == VLC_VOUT_ORDER_PRIMARY ? "Primary" : "Secondary");
+    /* (the English "Primary" did not translate) */
+    if (sys->spu_channel_order == VLC_VOUT_ORDER_PRIMARY)
+        vlc_player_osd_Message(player, _("Primary subtitle control"));
+    else
+        vlc_player_osd_Message(player, _("Secondary subtitle control"));
 }
 
 PLAYER_ACTION_HANDLER(SyncSubtitle)

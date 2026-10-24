@@ -32,6 +32,14 @@ import VLC.Util
 T.Pane {
     id: root
 
+    // The bar of the player keeps the order of a player in right to left
+    // languages too (Hebrew, Arabic...), as Material, Apple and YouTube do:
+    // the time runs from left to right on the seek bar, its times on its
+    // sides, Previous Play Next and the volume as in English. Its menus and
+    // tooltips mirror (popups of their own)
+    LayoutMirroring.enabled: false
+    LayoutMirroring.childrenInherit: true
+
     enum TimeTextPosition {
         Hide,
         AboveSlider,

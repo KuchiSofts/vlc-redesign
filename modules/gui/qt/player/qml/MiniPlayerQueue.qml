@@ -30,6 +30,10 @@ Item {
     // the row picked by a click ("−" removes it); a double click plays a row
     property int selectedIndex: -1
 
+    // Right to left (Hebrew, Arabic...): the count on the right, the
+    // icons on the left, the rows from the right
+    readonly property bool _mirrored: LayoutMirroring.enabled
+
     // Text of the design (Inter: a line of 1.2109 em) centred in a box of
     // `box` px: its top padding
     function _textTop(box, pixelSize, ascent) {
@@ -86,9 +90,11 @@ Item {
     // at 79
     Text {
         id: countText
-        x: VLCStyle.dp(37, VLCStyle.scale)
+        x: root._mirrored ? tools.x + tools.width + VLCStyle.dp(12, VLCStyle.scale)
+                          : VLCStyle.dp(37, VLCStyle.scale)
         y: VLCStyle.dp(79, VLCStyle.scale)
-        width: tools.x - x - VLCStyle.dp(12, VLCStyle.scale)
+        width: root._mirrored ? parent.width - VLCStyle.dp(37, VLCStyle.scale) - x
+                              : tools.x - x - VLCStyle.dp(12, VLCStyle.scale)
         height: VLCStyle.dp(24, VLCStyle.scale)
         text: {
             const count = queueModel.count
@@ -101,6 +107,7 @@ Item {
         }
         color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
         elide: Text.ElideRight
+        horizontalAlignment: Text.AlignLeft
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.redesign.fontNormal
         verticalAlignment: Text.AlignTop
@@ -112,7 +119,8 @@ Item {
     }
     Row {
         id: tools
-        x: parent.width - width - VLCStyle.dp(28, VLCStyle.scale)
+        x: root._mirrored ? VLCStyle.dp(28, VLCStyle.scale)
+                          : parent.width - width - VLCStyle.dp(28, VLCStyle.scale)
         y: VLCStyle.dp(79, VLCStyle.scale)
         spacing: VLCStyle.dp(20, VLCStyle.scale)
         Widgets.SortControl {
@@ -203,6 +211,8 @@ Item {
                 // row, the one playing as well: dragged, it moves the row
                 Impl.ColorImage {
                     id: handle
+                    // (the handle first: on the right in a right to left row)
+                    anchors.left: parent.left
                     anchors.verticalCenter: parent.verticalCenter
                     width: VLCStyle.redesign.iconSize
                     height: width
@@ -236,12 +246,15 @@ Item {
                 }
                 Text {
                     id: nameText
-                    x: handle.width + VLCStyle.dp(14, VLCStyle.scale)
-                    width: timeText.x - x - VLCStyle.dp(16, VLCStyle.scale)
+                    anchors.left: handle.right
+                    anchors.leftMargin: VLCStyle.dp(14, VLCStyle.scale)
+                    anchors.right: timeText.left
+                    anchors.rightMargin: VLCStyle.dp(16, VLCStyle.scale)
                     height: parent.height
                     text: queueRow.title
                     color: root.lightTheme ? "#4d4d4d" : VLCStyle.redesign.textSecondary
                     elide: Text.ElideRight
+                    horizontalAlignment: Text.AlignLeft
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.redesign.fontNormal
                     verticalAlignment: Text.AlignTop
@@ -253,7 +266,7 @@ Item {
                 }
                 Text {
                     id: timeText
-                    x: parent.width - width
+                    anchors.right: parent.right
                     width: implicitWidth
                     height: parent.height
                     text: queueRow.duration.formatHMS()

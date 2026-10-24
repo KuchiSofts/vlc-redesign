@@ -273,7 +273,10 @@ MouseArea {
             readonly property real figmaBox: Math.ceil(albumExact.advanceWidth / 16
                                                        - text.length * font.pixelSize / 2816 - 0.001)
             horizontalAlignment: figmaBox < width ? Text.AlignLeft : Text.AlignHCenter
-            leftPadding: figmaBox < width ? (width - figmaBox) / 2 : 0
+            // (the box centred from the right in a right to left layout,
+            // where the alignment is mirrored)
+            leftPadding: (figmaBox < width && !LayoutMirroring.enabled) ? (width - figmaBox) / 2 : 0
+            rightPadding: (figmaBox < width && LayoutMirroring.enabled) ? (width - figmaBox) / 2 : 0
             TextMetrics {
                 id: albumExact
                 font.family: albumLabel.font.family

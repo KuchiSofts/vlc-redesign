@@ -30,6 +30,12 @@ import VLC.Util
 ColumnLayout {
     id: root
 
+    // Right to left (Hebrew, Arabic...): the content of a popup is not
+    // under the mirrored interface, it mirrors itself; the speed itself,
+    // as the volume, slower on the left (see the slider)
+    LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+    LayoutMirroring.childrenInherit: true
+
     property alias slider: slider
 
     signal radioButtonClicked(T.AbstractButton button)
@@ -154,6 +160,10 @@ ColumnLayout {
 
         Layout.fillWidth: true
 
+        // (the ends of the slider below, left to right)
+        LayoutMirroring.enabled: false
+        LayoutMirroring.childrenInherit: true
+
         Layout.alignment: Qt.AlignTop
 
         Navigation.parentItem: root
@@ -186,6 +196,11 @@ ColumnLayout {
         id: slider
 
         Layout.fillWidth: true
+
+        // slower on the left, faster on the right in right to left
+        // languages too, as the volume (see VolumeWidget)
+        LayoutMirroring.enabled: false
+        LayoutMirroring.childrenInherit: true
 
         topPadding: 0
 

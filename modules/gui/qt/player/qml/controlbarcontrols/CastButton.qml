@@ -81,6 +81,11 @@ RedesignIconButton {
         }
 
         contentItem: ColumnLayout {
+            // right to left (Hebrew, Arabic...): a popup is not under the
+            // mirrored interface (the bar it opens from keeps its order)
+            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+            LayoutMirroring.childrenInherit: true
+
             spacing: VLCStyle.dp(4, VLCStyle.scale)
 
             RowLayout {
@@ -88,6 +93,9 @@ RedesignIconButton {
                 Layout.bottomMargin: VLCStyle.dp(6, VLCStyle.scale)
                 Text {
                     Layout.fillWidth: true
+                    // (the texts from the right in a right to left layout)
+                    horizontalAlignment: Text.AlignLeft
+                    elide: Text.ElideRight
                     text: qsTr("Cast to")
                     color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#1e1e1e")
                     font.family: VLCStyle.redesign.fontFamily
@@ -161,6 +169,7 @@ RedesignIconButton {
                 Layout.topMargin: VLCStyle.dp(6, VLCStyle.scale)
                 visible: devices.count === 0
                 wrapMode: Text.WordWrap
+                horizontalAlignment: Text.AlignLeft
                 text: root.manager.status === RendererManager.RUNNING
                       ? qsTr("Looking for TVs and Chromecasts on your network…")
                       : qsTr("No device found. Turn your TV or Chromecast on, on the same network as this computer.")
@@ -182,8 +191,10 @@ RedesignIconButton {
                 onToggled: root.manager.displayHere = checked
                 Accessible.name: text
 
+                // (on the right in a right to left layout, on on its left)
                 indicator: Rectangle {
-                    x: VLCStyle.dp(8, VLCStyle.scale)
+                    x: displayHere.mirrored ? parent.width - width - VLCStyle.dp(8, VLCStyle.scale)
+                                            : VLCStyle.dp(8, VLCStyle.scale)
                     anchors.verticalCenter: parent.verticalCenter
                     width: VLCStyle.dp(40, VLCStyle.scale)
                     height: VLCStyle.dp(22, VLCStyle.scale)
@@ -193,7 +204,7 @@ RedesignIconButton {
                     border.width: displayHere.visualFocus ? 2 : 0
                     border.color: VLCStyle.redesign.focusColor
                     Rectangle {
-                        x: displayHere.checked ? parent.width - width - 3 : 3
+                        x: (displayHere.checked !== displayHere.mirrored) ? parent.width - width - 3 : 3
                         anchors.verticalCenter: parent.verticalCenter
                         width: parent.height - 6
                         height: width
@@ -203,13 +214,16 @@ RedesignIconButton {
                     }
                 }
                 contentItem: Text {
-                    leftPadding: VLCStyle.dp(58, VLCStyle.scale)
+                    leftPadding: displayHere.mirrored ? 0 : VLCStyle.dp(58, VLCStyle.scale)
+                    rightPadding: displayHere.mirrored ? VLCStyle.dp(58, VLCStyle.scale) : 0
+                    horizontalAlignment: Text.AlignLeft
                     verticalAlignment: Text.AlignVCenter
                     text: displayHere.text
                     color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#1e1e1e")
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                     elide: Text.ElideRight
+                    horizontalAlignment: Text.AlignLeft
                 }
             }
 
@@ -218,6 +232,7 @@ RedesignIconButton {
                 Layout.fillWidth: true
                 visible: !root.manager.displayHereAvailable
                 wrapMode: Text.WordWrap
+                horizontalAlignment: Text.AlignLeft
                 text: qsTr("With a Chromecast, the video plays only there.")
                 color: VLCStyle.redesign.color("#8F8F8F", "#4d4d4d")
                 font.family: VLCStyle.redesign.fontFamily
@@ -228,6 +243,7 @@ RedesignIconButton {
                 Layout.fillWidth: true
                 Layout.topMargin: VLCStyle.dp(8, VLCStyle.scale)
                 wrapMode: Text.WordWrap
+                horizontalAlignment: Text.AlignLeft
                 text: qsTr("The subtitles shown go to the TV with the picture.")
                 color: VLCStyle.redesign.color("#5F5F5F", "#6b6b6b")
                 font.family: VLCStyle.redesign.fontFamily
@@ -294,6 +310,7 @@ RedesignIconButton {
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(11, VLCStyle.scale)
                     elide: Text.ElideRight
+                    horizontalAlignment: Text.AlignLeft
                 }
             }
             Impl.ColorImage {

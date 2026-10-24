@@ -112,6 +112,8 @@ T.Pane {
                         Layout.fillWidth: true
                         text: qsTr("%1 Bookmark", "%1 Bookmarks", bookmarkList.count).arg(bookmarkList.count)
                         elide: Text.ElideRight
+                        // (from the right in a right to left layout)
+                        horizontalAlignment: Text.AlignLeft
                         color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#5a5a59")
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
@@ -211,6 +213,10 @@ T.Pane {
                 Text {
                     anchors.centerIn: parent
                     visible: chapterList.count === 0
+                    // a longer text (a translation) on more lines
+                    width: parent.width - VLCStyle.dp(40, VLCStyle.scale)
+                    horizontalAlignment: Text.AlignHCenter
+                    wrapMode: Text.WordWrap
                     text: qsTr("No chapters in this media")
                     color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#5a5a59")
                     font.family: VLCStyle.redesign.fontFamily
@@ -252,6 +258,9 @@ T.Pane {
                 }
                 Text {
                     anchors.verticalCenter: parent.verticalCenter
+                    // within the tab (a longer name, a translation, elided)
+                    width: Math.min(implicitWidth, tab.width - VLCStyle.dp(18 + 8 + 8, VLCStyle.scale))
+                    elide: Text.ElideRight
                     text: tab.text
                     color: tab.current || tab.hovered ? VLCStyle.redesign.color("#C6C6C6", "#2e2e2e")
                                                       : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#5a5a59")
@@ -307,6 +316,7 @@ T.Pane {
                 Layout.fillWidth: true
                 text: row.label
                 elide: Text.ElideRight
+                horizontalAlignment: Text.AlignLeft
                 // The current chapter stands out, as in the design
                 color: row.current || row.number === 0 ? VLCStyle.redesign.color("#C6C6C6", "#2e2e2e")
                                                        : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#5a5a59")

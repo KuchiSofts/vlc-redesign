@@ -172,6 +172,11 @@ T.Control {
             anchors.centerIn: parent
             spacing: VLCStyle.dp(12, VLCStyle.scale)
 
+            // Previous Play Next in this order in right to left languages
+            // too, as the bar of the player (see ControlBar)
+            LayoutMirroring.enabled: false
+            LayoutMirroring.childrenInherit: true
+
             Widgets.IconButton {
                 id: previousButton
                 width: VLCStyle.dp(32, VLCStyle.scale)

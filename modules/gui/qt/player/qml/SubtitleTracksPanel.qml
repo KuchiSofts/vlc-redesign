@@ -96,9 +96,18 @@ ColumnLayout {
     }
     readonly property bool _anyChecked: _localTracks.some(t => t.checked)
 
+    // (the names of the languages come translated by SubtitlePreferences:
+    // asked again in another language of the interface)
+    property int _languageRevision: 0
+    Connections {
+        target: MainCtx
+        function onInterfaceLanguageChanged() { ++root._languageRevision }
+    }
+
     // the languages: { code, name, native, count, wanted }, the user's
     // first, then the media's own, then the others by name
     readonly property var _languages: {
+        void root._languageRevision
         const counts = {}
         const order = []
         const add = (code) => {
@@ -246,6 +255,8 @@ ColumnLayout {
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
             elide: Text.ElideRight
+            // (from the right in a right to left layout)
+            horizontalAlignment: Text.AlignLeft
             Accessible.role: Accessible.StaticText
             Accessible.name: text
         }
@@ -309,6 +320,7 @@ ColumnLayout {
             color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#1e1e1e")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
+            horizontalAlignment: TextInput.AlignLeft
             verticalAlignment: TextInput.AlignVCenter
             selectByMouse: true
             background: Rectangle {
@@ -325,6 +337,7 @@ ColumnLayout {
             Layout.fillWidth: true
             visible: SubtitleFinder.titleBusy
             text: qsTr("Searching…")
+            horizontalAlignment: Text.AlignLeft
             color: VLCStyle.redesign.color("#6B6B6B", "#5a5a59")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
@@ -523,8 +536,10 @@ ColumnLayout {
                  : row.hovered || row.activeFocus ? VLCStyle.redesign.color("#151515", "#9c9c9b") : "transparent"
             border.width: row.visualFocus ? VLCStyle.dp(1, VLCStyle.scale) : 0
             border.color: VLCStyle.redesign.focusColor
+            // (at the start of the row: the right in a right to left one)
             Rectangle {
                 visible: row.highlighted
+                anchors.left: parent.left
                 width: VLCStyle.dp(3, VLCStyle.scale)
                 height: parent.height - VLCStyle.dp(12, VLCStyle.scale)
                 anchors.verticalCenter: parent.verticalCenter
@@ -561,6 +576,7 @@ ColumnLayout {
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                     elide: Text.ElideRight
+                    horizontalAlignment: Text.AlignLeft
                 }
                 Text {
                     Layout.fillWidth: true
@@ -571,6 +587,7 @@ ColumnLayout {
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(11, VLCStyle.scale)
                     elide: Text.ElideRight
+                    horizontalAlignment: Text.AlignLeft
                 }
             }
             Text {

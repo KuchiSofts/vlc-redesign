@@ -39,7 +39,19 @@ Item {
     }
     readonly property string storageKey: "redesign/subtitleSeries/" + encodeURIComponent(seriesKey)
     property var preset: null
-    property string status: ""
+    // what was done last, said in the language of the interface (again in
+    // another one chosen meanwhile)
+    property string _statusKind: ""
+    readonly property string status: {
+        switch (_statusKind) {
+        case "unreadable": return qsTr("The saved series preset could not be read.")
+        case "unavailable": return qsTr("A saved audio or subtitle track is unavailable in this episode.")
+        case "applied": return qsTr("Series preset applied.")
+        case "saved": return qsTr("Saved for episodes of %1.").arg(label)
+        case "removed": return qsTr("Series preset removed.")
+        default: return ""
+        }
+    }
     property bool delayApplied: false
     property bool audioApplied: false
     property bool subtitleApplied: false
@@ -78,7 +90,7 @@ Item {
         audioApplied = false
         subtitleApplied = false
         preset = null
-        status = ""
+        _statusKind = ""
         if (!seriesKey) return
         const raw = MainCtx.settingValue(storageKey, "")
         if (!raw) return
@@ -88,7 +100,7 @@ Item {
             preset = loaded
             Qt.callLater(tryApply)
         } catch (error) {
-            status = qsTr("The saved series preset could not be read.")
+            _statusKind = "unreadable"
         }
     }
 
@@ -110,9 +122,9 @@ Item {
                             ? disableTracks(Player.subtitleTracks)
                             : !preset.subtitleTrack || selectTrack(Player.subtitleTracks, preset.subtitleTrack)
         if (!audioApplied || !subtitleApplied)
-            status = qsTr("A saved audio or subtitle track is unavailable in this episode.")
+            _statusKind = "unavailable"
         else if (delayApplied && audioApplied && subtitleApplied)
-            status = qsTr("Series preset applied.")
+            _statusKind = "applied"
     }
 
     function saveCurrent() {
@@ -134,7 +146,7 @@ Item {
         delayApplied = true
         audioApplied = true
         subtitleApplied = true
-        status = qsTr("Saved for episodes of %1.").arg(label)
+        _statusKind = "saved"
         return true
     }
 
@@ -142,7 +154,7 @@ Item {
         if (!seriesKey) return
         MainCtx.setSettingValue(storageKey, "")
         preset = null
-        status = qsTr("Series preset removed.")
+        _statusKind = "removed"
     }
 
     Component.onCompleted: refresh()

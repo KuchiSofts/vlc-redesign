@@ -29,15 +29,17 @@ ColumnLayout {
 
     RowLayout {
         Layout.fillWidth: true
+        // (the texts from the right in a right to left layout)
         Controls.Label {
             Layout.fillWidth: true
+            horizontalAlignment: Text.AlignLeft
             text: qsTr("Subtitle timing")
             color: VLCStyle.redesign.color("#EAEAEA", "#2e2e2e")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(15, VLCStyle.scale)
         }
         Controls.Label {
-            text: (Player.subtitleDelayMS >= 0 ? "+" : "") + Player.subtitleDelayMS + qsTr(" ms")
+            text: qsTr("%1 ms").arg((Player.subtitleDelayMS >= 0 ? "+" : "") + Player.subtitleDelayMS)
             color: VLCStyle.redesign.color("#969696", "#4d4d4d")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
@@ -48,6 +50,10 @@ ColumnLayout {
         id: timeline
         objectName: "subtitleTimingSlider"
         Layout.fillWidth: true
+        // earlier on the left, later on the right in right to left
+        // languages too, as the time of the seek bar (see SliderBar)
+        LayoutMirroring.enabled: false
+        LayoutMirroring.childrenInherit: true
         from: -10000
         to: 10000
         stepSize: 50
@@ -115,6 +121,9 @@ ColumnLayout {
             Layout.fillWidth: true
             spacing: VLCStyle.dp(2, VLCStyle.scale)
             Controls.Label {
+                Layout.fillWidth: true
+                horizontalAlignment: Text.AlignLeft
+                elide: Text.ElideRight
                 text: qsTr("Series preset")
                 color: VLCStyle.redesign.color("#EAEAEA", "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
@@ -127,6 +136,7 @@ ColumnLayout {
                 color: VLCStyle.redesign.color("#969696", "#4d4d4d")
                 font.pixelSize: VLCStyle.dp(12, VLCStyle.scale)
                 elide: Text.ElideRight
+                horizontalAlignment: Text.AlignLeft
             }
         }
         TimelineButton {
@@ -149,6 +159,7 @@ ColumnLayout {
         color: VLCStyle.redesign.color("#969696", "#4d4d4d")
         font.pixelSize: VLCStyle.dp(12, VLCStyle.scale)
         wrapMode: Text.WordWrap
+        horizontalAlignment: Text.AlignLeft
     }
 
     component TimelineButton: Controls.Button {

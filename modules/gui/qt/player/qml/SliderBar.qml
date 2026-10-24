@@ -29,6 +29,12 @@ import VLC.MainInterface
 T.ProgressBar {
     id: control
 
+    // The time of a media runs from left to right in right to left
+    // languages too (Hebrew, Arabic...), as Material, Apple and YouTube
+    // keep it: the bar, its chapters, its waveform and the arrow keys
+    LayoutMirroring.enabled: false
+    LayoutMirroring.childrenInherit: true
+
     // Dragging the bar: playback pauses (no bursts of sound), the picture
     // follows with key frame seeks, at most one per scrubTimer interval (a
     // precise seek of a 4K HEVC video decodes seconds of frames), and the

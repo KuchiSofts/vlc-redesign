@@ -31,6 +31,11 @@ Controls.Popup {
     HdrOutput { id: output; ctx: MainCtx }
     background: null
     contentItem: Column {
+        // right to left (Hebrew, Arabic...): a popup is not under the
+        // mirrored interface, its content mirrors itself
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        LayoutMirroring.childrenInherit: true
+
         spacing: root.px(20)
 
         // the field: the mode in use
@@ -45,10 +50,15 @@ Controls.Popup {
                 radius: root.px(4)
                 color: root.c("#191919", "#ababaa")
             }
+            // (the text from the right, the arrow on the left in a right
+            // to left layout)
             Text {
-                x: root.px(16)
-                width: parent.width - x - root.px(16 + 24 + 10)
+                anchors.left: parent.left
+                anchors.leftMargin: root.px(16)
+                anchors.right: parent.right
+                anchors.rightMargin: root.px(16 + 24 + 10)
                 height: parent.height
+                horizontalAlignment: Text.AlignLeft
                 text: output.selectedIndex >= 0 ? output.choices[output.selectedIndex].label : qsTr("HDR unavailable")
                 color: root.c("#8F8F8F", "#4d4d4d")
                 font.family: VLCStyle.redesign.fontFamily
@@ -57,7 +67,8 @@ Controls.Popup {
                 elide: Text.ElideRight
             }
             Image {
-                x: parent.width - root.px(2 + 14) - width
+                anchors.right: parent.right
+                anchors.rightMargin: root.px(2 + 14)
                 anchors.verticalCenter: parent.verticalCenter
                 width: root.px(24)
                 height: width
@@ -107,8 +118,9 @@ Controls.Popup {
                             id: row
                             anchors.fill: parent
                             enabled: choice.modelData.enabled
-                            leftPadding: root.px(14)
-                            rightPadding: root.px(14 + 24 + 13)
+                            // (the check on the left in a right to left layout)
+                            leftPadding: mirrored ? root.px(14 + 24 + 13) : root.px(14)
+                            rightPadding: mirrored ? root.px(14) : root.px(14 + 24 + 13)
                             onClicked: output.select(choice.index)
                             Accessible.name: choice.modelData.label
                             background: Rectangle {
@@ -117,7 +129,8 @@ Controls.Popup {
                                        ? root.c("#1F1F1F", "#9c9c9b") : "transparent"
                                 Impl.ColorImage {
                                     visible: choice.chosen
-                                    x: parent.width - root.px(13) - width
+                                    anchors.right: parent.right
+                                    anchors.rightMargin: root.px(13)
                                     anchors.verticalCenter: parent.verticalCenter
                                     width: root.px(24)
                                     height: width
@@ -131,7 +144,9 @@ Controls.Popup {
                                 color: root.c("#8F8F8F", "#4d4d4d")
                                 font.family: VLCStyle.redesign.fontFamily
                                 font.pixelSize: root.px(14)
+                                horizontalAlignment: Text.AlignLeft
                                 verticalAlignment: Text.AlignVCenter
+                                elide: Text.ElideRight
                             }
                         }
                     }
@@ -145,6 +160,7 @@ Controls.Popup {
             visible: text.length > 0
             text: output.message
             wrapMode: Text.WordWrap
+            horizontalAlignment: Text.AlignLeft
             color: root.c("#6B6B6B", "#4d4d4d")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: root.px(12)

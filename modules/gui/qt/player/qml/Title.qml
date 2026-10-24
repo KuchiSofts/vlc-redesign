@@ -43,7 +43,9 @@ T.Label {
     }
 
     width: centerWithinBounds ? Math.max(0, Math.min(rightLimit - leftLimit, implicitWidth)) : implicitWidth
-    x: centerWithinBounds ? Math.max(leftLimit, ((parent ? parent.width : 0) - width) / 2) : 0
+    // centred in its parent, kept between the limits on both sides (the
+    // wider side is on the right in a right to left bar)
+    x: centerWithinBounds ? Math.max(leftLimit, Math.min(rightLimit - width, ((parent ? parent.width : 0) - width) / 2)) : 0
 
     leftPadding: VLCStyle.margin_small
     rightPadding: VLCStyle.margin_small

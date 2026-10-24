@@ -54,6 +54,8 @@ extern "C" char **environ;
 #include <QApplication>
 #include <QFontDatabase>
 #include <QDate>
+#include <QDir>
+#include <QFile>
 #include <QMutex>
 #include <QtQuickControls2/QQuickStyle>
 #include <QLoggingCategory>
@@ -947,6 +949,22 @@ static void *Thread( void *obj )
     auto compositor = var_InheritString(p_intf, "qt-compositor");
     vlc::CompositorFactory compositorFactory(p_intf, compositor);
     free(compositor);
+
+    // Qt's caches (QML compiled at run time, graphics pipelines) in the
+    // profile of VLC Redesign, not in %LOCALAPPDATA%\vlc where an installed
+    // VLC keeps its own (Qt names the folder after the program)
+    if( char *cache = config_GetUserDir( VLC_CACHE_DIR ) )
+    {
+        const QString dir = QString::fromUtf8( cache ) + QStringLiteral( "/qtcache" );
+        free( cache );
+        if( QDir().mkpath( dir ) )
+        {
+            const QByteArray pipelines = QFile::encodeName( QDir::toNativeSeparators( dir + QStringLiteral( "/pipelines.bin" ) ) );
+            qputenv( "QML_DISK_CACHE_PATH", QFile::encodeName( QDir::toNativeSeparators( dir + QStringLiteral( "/qml" ) ) ) );
+            qputenv( "QSG_RHI_PIPELINE_CACHE_SAVE", pipelines );
+            qputenv( "QSG_RHI_PIPELINE_CACHE_LOAD", pipelines );
+        }
+    }
 
     // at the moment, the vout is created in another thread than the rendering thread
     QApplication::setAttribute( Qt::AA_DontCheckOpenGLContextThreadAffinity );

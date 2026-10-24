@@ -15,8 +15,8 @@
 #include <QFileInfo>
 #include <QSaveFile>
 #include <QSignalBlocker>
-#include <QStandardPaths>
 
+#include <vlc_configuration.h>
 #include <vlc_input_item.h>
 
 #include "util/http_request.hpp"
@@ -90,8 +90,12 @@ void MLSubtitleAssociations::addLinkWithName(const QUrl& url, const QString& fil
             return;
         }
 
-        const QString folder = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)
-                               + QStringLiteral("/subtitles");
+        // in the profile of VLC Redesign, not in %APPDATA%\vlc of an installed
+        // VLC (Qt's AppDataLocation); apart from the finder's cache, which it
+        // cleans up: these are kept
+        char *profile = config_GetUserDir(VLC_USERDATA_DIR);
+        const QString folder = QString::fromUtf8(profile ? profile : "") + QStringLiteral("/linked-subtitles");
+        free(profile);
         if (!QDir().mkpath(folder))
         {
             setError(tr("Could not create the subtitle storage folder."));

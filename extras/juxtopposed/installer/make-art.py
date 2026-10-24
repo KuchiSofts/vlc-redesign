@@ -120,34 +120,34 @@ def background(w, h):
     return img.convert('RGB')
 
 
-def toggle(on, sx, sy):
-    """The design's ON / OFF toggle (SettingsToggle.qml): a 68 x 32 well,
-    a 33 x 26 label and a 26 x 26 square, swapped by the state."""
+# The widths of the toggle's label: 33 in the design, wider for the longer
+# words of other languages (the installer picks the one its words need)
+TOGGLE_LABELS = (33, 39, 45)
+
+
+def toggle(on, sx, sy, label=33, rtl=False):
+    """The design's ON / OFF toggle (SettingsToggle.qml): a well, a label
+    33 x 26 in the design (wider for longer words) and a 26 x 26 square,
+    swapped by the state; right to left, mirrored. Without its word: the
+    installer writes it on, in its language."""
     s = min(sx, sy)
-    w, h = round(68 * sx), round(32 * sy)
+    tw = 68 + label - 33
+    w, h = round(tw * sx), round(32 * sy)
     big = Image.new('RGBA', (w * SS, h * SS), (0, 0, 0, 0))
     d = ImageDraw.Draw(big)
 
     def box(x, y, bw, bh, r, colour):
         d.rounded_rectangle((x * sx * SS, y * sy * SS, (x + bw) * sx * SS - 1, (y + bh) * sy * SS - 1),
                             r * s * SS, fill=colour + (255,))
-    box(0, 0, 68, 32, 6, WELL)
+    box(0, 0, tw, 32, 6, WELL)
     if on:
-        box(3, 3, 33, 26, 3, ACCENT_BACK)
-        box(39, 3, 26, 26, 3, ACCENT_DIM)
+        box(3, 3, label, 26, 3, ACCENT_BACK)
+        box(6 + label, 3, 26, 26, 3, ACCENT_DIM)
     else:
-        box(32, 3, 33, 26, 3, OFF_LABEL)
+        box(32, 3, label, 26, 3, OFF_LABEL)
         box(3, 3, 26, 26, 3, OFF_SQUARE)
     img = big.resize((w, h), Image.LANCZOS)
-    # "ON" at (10, 9) of the toggle, "OFF" at (36, 9): Inter 12, the top of
-    # the box at the ascender
-    d = ImageDraw.Draw(img)
-    f = font(round(12 * sy), 400)
-    text, x = ('ON', 10) if on else ('OFF', 36)
-    asc = f.getmetrics()[0]
-    top = 9 * sy + 12 * sy * 0.96875 - asc
-    d.text((x * sx, top), text, font=f, fill=(ACCENT if on else OFF_TEXT) + (255,))
-    return img
+    return ImageOps.mirror(img) if rtl else img
 
 
 def write_fonts():
@@ -204,8 +204,11 @@ def main():
             rounded(bw2, bh, round(6 * s), hover).save(os.path.join(ui, f'{name}-hover-{n}.png'), optimize=True)
             rounded(bw2, bh, round(6 * s), fill, alpha=128).save(
                 os.path.join(ui, f'{name}-off-{n}.png'), optimize=True)
-        toggle(True, sx, sy).save(os.path.join(ui, f'toggle-on-{n}.png'), optimize=True)
-        toggle(False, sx, sy).save(os.path.join(ui, f'toggle-off-{n}.png'), optimize=True)
+        for label in TOGGLE_LABELS:
+            for rtl in (False, True):
+                for on in (True, False):
+                    name = f'toggle-{"on" if on else "off"}-{label}{"-rtl" if rtl else ""}'
+                    toggle(on, sx, sy, label, rtl).save(os.path.join(ui, f'{name}-{n}.png'), optimize=True)
         mark(round(28 * s)).save(os.path.join(ui, f'mark-{n}.png'), optimize=True)
     write_fonts()
     sizes = [16, 20, 24, 32, 40, 48, 64, 128, 256]

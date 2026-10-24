@@ -105,14 +105,14 @@ readonly property var items: ({
         // the speed of the player: of now and of the next media
         "rate": [qsTr("Startup"), qsTr("Default playback speed"), "slider", null, { info: false }],
         "playlist-cork": [qsTr("Startup"), qsTr("Pause when another app uses audio"), "", null, { info: true }],
-        "preferred-resolution": [qsTr("Tracks"), qsTr("Preferred video quality"), "",
+        "preferred-resolution": [qsTr("Tracks", "media streams"), qsTr("Preferred video quality"), "",
                                  { "-1": qsTr("Best available"), 1080: qsTr("Full HD (1080p)"), 720: qsTr("HD (720p)"),
                                    576: qsTr("Standard (576p)"), 360: qsTr("Low (360p)"), 240: qsTr("Very low (240p)") },
                                  { info: true }],
-        "menu-language": [qsTr("Tracks"), qsTr("Preferred menu language"), "", null, { info: true }],
+        "menu-language": [qsTr("Tracks", "media streams"), qsTr("Preferred menu language"), "", null, { info: true }],
         // counted from 1 as the design writes them; VLC's choice shows "1"
-        "audio-track": [qsTr("Tracks"), qsTr("Default audio track"), "track", null, { info: true, placeholder: "1" }],
-        "sub-track": [qsTr("Tracks"), qsTr("Default subtitle track"), "track", null, { info: true, placeholder: "1" }],
+        "audio-track": [qsTr("Tracks", "media streams"), qsTr("Default audio track"), "track", null, { info: true, placeholder: "1" }],
+        "sub-track": [qsTr("Tracks", "media streams"), qsTr("Default subtitle track"), "track", null, { info: true, placeholder: "1" }],
         "x-repeat": [qsTr("Order"), qsTr("Repeat"), "", null, { info: true }],
         "random": [qsTr("Order"), qsTr("Shuffle"), "", null, { info: true }],
         "play-and-stop": [qsTr("Order"), qsTr("Stop after each item"), "", null, { info: true }],
@@ -193,8 +193,8 @@ readonly property var items: ({
         "pitch-shift": [qsTr("Effects"), qsTr("Pitch shift"), "", null, { info: true, decimals: 2 }],
         "x-filter:chorus_flanger": [qsTr("Effects"), qsTr("Chorus/flanger"), "", null, { info: true }],
         "x-filter:karaoke": [qsTr("Effects"), qsTr("Karaoke"), "", null, { info: true }],
-        "audio-language": [qsTr("Tracks"), qsTr("Preferred audio language"), "", { "": qsTr("Automatic") }, { info: true }],
-        "audio-desync": [qsTr("Tracks"), qsTr("Audio delay"), "", null, { info: true, unit: qsTr("ms") }],
+        "audio-language": [qsTr("Tracks", "media streams"), qsTr("Preferred audio language"), "", { "": qsTr("Automatic") }, { info: true }],
+        "audio-desync": [qsTr("Tracks", "media streams"), qsTr("Audio delay"), "", null, { info: true, unit: qsTr("ms") }],
         // audio-visual and effect-list (config_model.cpp); Figma 2372:8639
         "x-visualizer": [qsTr("Visualization"), qsTr("Visualizer"), "", null, { info: true }],
         // Advanced Options of the design (Figma 3180:17645)

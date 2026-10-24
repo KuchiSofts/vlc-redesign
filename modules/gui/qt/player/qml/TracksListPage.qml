@@ -50,6 +50,7 @@ RowLayout {
     Widgets.ButtonExt {
         id: playbackBtn
 
+        // xgettext:no-c-format
         text: qsTr("%1x").arg(+Player.rate.toFixed(2))
 
         onPressed: {

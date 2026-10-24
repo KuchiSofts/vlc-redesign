@@ -527,9 +527,10 @@ static wchar_t *PortableLanguage(void)
     return wide;
 }
 
-/* The interface (Qt 6) needs Windows 10: older versions get a message
- * instead of nothing. RtlGetVersion tells the version whatever the
- * manifest says. */
+/* The interface (Qt 6.8) needs Windows 10 version 1809 (build 17763), as the
+ * installer does: older versions get a message instead of an interface that
+ * does not load. RtlGetVersion tells the version whatever the manifest
+ * says. */
 static BOOL WindowsSupported(void)
 {
     typedef LONG (WINAPI *RtlGetVersion_t)(OSVERSIONINFOW *);
@@ -539,7 +540,8 @@ static BOOL WindowsSupported(void)
     OSVERSIONINFOW info = { .dwOSVersionInfoSize = sizeof(info) };
     if (get_version == NULL || get_version(&info) != 0)
         return TRUE; /* (unknown: let it try) */
-    return info.dwMajorVersion >= 10;
+    return info.dwMajorVersion > 10
+        || (info.dwMajorVersion == 10 && info.dwBuildNumber >= 17763);
 }
 
 static void vlc_kill(void *data)
@@ -593,7 +595,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
     if (!WindowsSupported())
     {
-        MessageBox(NULL, TEXT("This version of VLC media player needs Windows 10 or later."),
+        MessageBox(NULL, TEXT("This version of VLC media player needs Windows 10 version 1809 or later."),
                    TEXT("VLC media player"), MB_OK|MB_ICONERROR);
         return 1;
     }

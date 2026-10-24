@@ -8,6 +8,7 @@
  *****************************************************************************/
 import QtQuick
 import QtQuick.Controls.Basic as Controls
+import QtQuick.Templates as T
 
 import VLC.Dialogs as Dialogs
 import VLC.MainInterface
@@ -43,7 +44,14 @@ Controls.Popup {
     property string subtitleSecondary: ""
     property bool subtitleAutoSearch: true
     property bool subtitleShowBoth: false
-    readonly property int lastStep: 3
+    // What goes online by itself, asked once (a new profile; the installer
+    // asks an installed copy): a step of its own, not in the design, before
+    // the shortcuts (the last step of the design keeps its Finish)
+    property bool askOnline: false
+    property bool onlineUpdateCheck: true
+    readonly property int onlineStep: askOnline ? 3 : -1
+    readonly property int shortcutsStep: askOnline ? 4 : 3
+    readonly property int lastStep: shortcutsStep
 
     Dialogs.OnboardingController {
         id: controller
@@ -53,6 +61,11 @@ Controls.Popup {
                 MainCtx.setSettingValue("redesign/accent", root.selectedAccent.toString())
                 SubtitlePreferences.set(root.subtitlePrimary, root.subtitleSecondary,
                                         root.subtitleAutoSearch, root.subtitleShowBoth)
+                if (root.askOnline) {
+                    MainCtx.setOnlineChoicesMade()
+                    // (on: the check comes a few seconds later, as at a start)
+                    RedesignUpdater.setAutomaticCheck(root.onlineUpdateCheck)
+                }
             }
             root.committed = true
             root.close()
@@ -76,6 +89,8 @@ Controls.Popup {
         subtitleSecondary = SubtitlePreferences.secondary
         subtitleAutoSearch = SubtitlePreferences.autoSearch
         subtitleShowBoth = SubtitlePreferences.showBoth
+        askOnline = MainCtx.onlineChoicesPending()
+        onlineUpdateCheck = RedesignUpdater.automaticCheck()
         previousGlobalShortcuts = MainCtx.useGlobalShortcuts
         MainCtx.useGlobalShortcuts = false
         controller.begin()
@@ -134,6 +149,8 @@ Controls.Popup {
                 primary: root.subtitlePrimary
                 secondary: root.subtitleSecondary
                 autoSearch: root.subtitleAutoSearch
+                // asked with the update check on the next step
+                showAutoSearch: !root.askOnline
                 showBoth: root.subtitleShowBoth
                 onPrimaryRequested: (code) => {
                     root.subtitlePrimary = code
@@ -148,9 +165,108 @@ Controls.Popup {
                 onAutoSearchRequested: (on) => root.subtitleAutoSearch = on
                 onShowBothRequested: (on) => root.subtitleShowBoth = on
             }
+            Item {
+                id: onlineChoices
+                objectName: "onboardingOnlineStep"
+                anchors.fill: parent
+                visible: root.step === root.onlineStep
+
+                // the player behind, as on the other steps
+                Rectangle {
+                    x: 17
+                    y: 19
+                    width: parent.width - 34
+                    height: 22
+                    color: VLCStyle.redesign.color("#191919", "#ababaa")
+                }
+                Rectangle {
+                    x: 17
+                    y: 41
+                    width: parent.width - 34
+                    height: 542
+                    color: VLCStyle.redesign.color("#090909", "#dedede")
+                }
+
+                Text {
+                    x: Math.floor((parent.width - width) / 2)
+                    y: 132
+                    text: qsTr("Choose what VLC does online by itself.")
+                    color: VLCStyle.redesign.color("#969696", "#4d4d4d")
+                    font.family: VLCStyle.redesign.fontFamily
+                    font.pixelSize: 24
+                    font.weight: Font.Light
+                }
+                Text {
+                    x: Math.floor((parent.width - width) / 2)
+                    y: 184
+                    width: 700
+                    horizontalAlignment: Text.AlignHCenter
+                    wrapMode: Text.WordWrap
+                    text: qsTr("No telemetry, no ads, no account. These two connect to the internet without being asked each time, and send only what is written under them.")
+                    color: VLCStyle.redesign.color("#6f6f6f", "#5a5a59")
+                    font.family: VLCStyle.redesign.fontFamily
+                    font.pixelSize: 15
+                    lineHeight: 1.3
+                }
+
+                Column {
+                    y: 284
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    width: 680
+                    spacing: 28
+
+                    OnlineChoice {
+                        objectName: "onboardingUpdateCheck"
+                        text: qsTr("Check for updates once a day")
+                        detail: qsTr("Asks GitHub (api.github.com) for the latest release of VLC Redesign.")
+                        checked: root.onlineUpdateCheck
+                        onToggled: (on) => root.onlineUpdateCheck = on
+                    }
+                    OnlineChoice {
+                        objectName: "onboardingOnlineSubtitles"
+                        text: qsTr("Find subtitles online automatically")
+                        detail: qsTr("When a video has none in your languages: its name and a fingerprint of the file to subtitle services (OpenSubtitles.org, Wizdom, Gestdown, YIFY Subtitles), its name to IMDb, Wikidata and Cinemeta to know the film.")
+                        checked: root.subtitleAutoSearch
+                        onToggled: (on) => root.subtitleAutoSearch = on
+                    }
+                }
+
+                // the policy that lists all of it, on GitHub
+                T.AbstractButton {
+                    id: policyLink
+                    objectName: "onboardingPrivacyPolicy"
+                    x: Math.floor((parent.width - width) / 2)
+                    y: 500
+                    // (a template has no size of its own)
+                    implicitWidth: implicitContentWidth
+                    implicitHeight: implicitContentHeight
+                    focusPolicy: Qt.StrongFocus
+                    text: qsTr("Privacy and code signing policy")
+                    Accessible.role: Accessible.Link
+                    Accessible.name: text
+                    contentItem: Text {
+                        text: policyLink.text
+                        color: VLCStyle.redesign.accent
+                        font.family: VLCStyle.redesign.fontFamily
+                        font.pixelSize: 14
+                        font.weight: Font.Medium
+                        font.underline: policyLink.hovered || policyLink.visualFocus
+                    }
+                    HoverHandler { cursorShape: Qt.PointingHandCursor }
+                    onClicked: Qt.openUrlExternally(RedesignUpdater.repositoryUrl + "/blob/main/CODE_SIGNING_POLICY.md")
+                }
+                Text {
+                    x: Math.floor((parent.width - width) / 2)
+                    y: 530
+                    text: qsTr("Both stay in Settings: General for the updates, Subtitles for the subtitles.")
+                    color: VLCStyle.redesign.color("#5a5a5a", "#6b6b6b")
+                    font.family: VLCStyle.redesign.fontFamily
+                    font.pixelSize: 13
+                }
+            }
             ShortcutsStep {
                 anchors.fill: parent
-                visible: root.step === 3
+                visible: root.step === root.shortcutsStep
                 shortcuts: root.shortcuts
             }
 
@@ -212,6 +328,33 @@ Controls.Popup {
                     controller.finish(selected, root.metadataNetworkAccess)
                 }
             }
+        }
+    }
+
+    // A switch of the online step, and what it sends under its text
+    component OnlineChoice: Column {
+        id: choice
+        property alias text: choiceToggle.text
+        property alias checked: choiceToggle.checked
+        property string detail
+        signal toggled(bool on)
+        width: parent ? parent.width : 680
+        spacing: 6
+
+        SubtitleLanguagesStep.ToggleRow {
+            id: choiceToggle
+            Accessible.description: choice.detail
+            onToggled: choice.toggled(checked)
+        }
+        Text {
+            width: parent.width
+            leftPadding: 60
+            wrapMode: Text.WordWrap
+            text: choice.detail
+            color: VLCStyle.redesign.color("#6f6f6f", "#5a5a59")
+            font.family: VLCStyle.redesign.fontFamily
+            font.pixelSize: 13
+            lineHeight: 1.25
         }
     }
 

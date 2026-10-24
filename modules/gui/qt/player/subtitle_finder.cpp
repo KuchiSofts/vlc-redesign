@@ -48,6 +48,7 @@
 #include <vlc_player.h>
 #include <vlc_url.h>
 
+#include "maininterface/mainctx.hpp"
 #include "player/input_models.hpp"
 #include "player/player_controller.hpp"
 #include "player/subtitle_providers.hpp"
@@ -546,6 +547,12 @@ bool SubtitleFinder::supported() const
     return httpRequestSupported();
 }
 
+bool SubtitleFinder::searchesByItself() const
+{
+    return supported() && m_preferences->autoSearch()
+        && !(m_intf->p_mi && m_intf->p_mi->onlineChoicesPending());
+}
+
 QString SubtitleFinder::matchTitle() const
 {
     if (m_match.imdb.isEmpty())
@@ -620,7 +627,7 @@ void SubtitleFinder::onStarted()
         // sub-language); the secondary one too when both are shown
         const bool needPrimary = rememberedLanguage != primary && !local.contains(primary);
         const bool needSecondary = showBoth && rememberedLanguage != secondary && !local.contains(secondary);
-        if ((!needPrimary && !needSecondary) || !m_preferences->autoSearch() || !supported())
+        if ((!needPrimary && !needSecondary) || !searchesByItself())
         {
             if (rememberedLanguage != primary)
                 ensureSecondary();
@@ -717,6 +724,7 @@ void SubtitleFinder::search()
     }
     if (m_state == Identifying || m_state == Searching)
         return;
+    msg_Dbg(m_intf, "subtitles: searching online (%s)", m_autoPending ? "by itself" : "asked");
     m_results.clear();
     emit resultsChanged();
     setState(Identifying);

@@ -183,10 +183,12 @@ ColumnLayout {
             SubtitleFinder.load(online.id)
     }
 
-    // the search starts when the menu shows, for a video without results
+    // the search starts when the menu shows, for a video without results,
+    // when subtitles are found online by themselves (else: the refresh
+    // button, as the user turned it off or wasn't asked yet)
     onVisibleChanged: {
-        if (visible && root._video && SubtitleFinder.supported
-            && SubtitleFinder.state === SubtitleFinder.Idle)
+        if (visible && root._video && SubtitleFinder.state === SubtitleFinder.Idle
+            && SubtitleFinder.searchesByItself())
             SubtitleFinder.search()
     }
 
@@ -261,7 +263,8 @@ ColumnLayout {
         HeaderButton {
             objectName: "subtitleRefreshButton"
             iconName: "refresh"
-            description: qsTr("Search subtitles online again")
+            description: SubtitleFinder.state === SubtitleFinder.Idle ? qsTr("Search subtitles online")
+                                                                     : qsTr("Search subtitles online again")
             visible: SubtitleFinder.supported && root._video
             enabled: SubtitleFinder.state !== SubtitleFinder.Identifying
                      && SubtitleFinder.state !== SubtitleFinder.Searching

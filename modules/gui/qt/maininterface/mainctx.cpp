@@ -92,6 +92,9 @@
 
 #include <QDesktopServices>
 #include <QDir>
+#include <QFile>
+#include <QFileInfo>
+#include <QSettings>
 
 #include <QThread>
 
@@ -222,6 +225,9 @@ MainCtx::MainCtx(qt_intf_t *_p_intf)
         break;
     }
     m_osVersion = (currentOS.majorVersion());
+
+    // before the updater and the subtitle finder read them
+    applySetupChoices();
 
     loadPrefs(false);
     loadFromSettingsImpl(false);
@@ -436,6 +442,59 @@ bool MainCtx::useClientSideDecoration() const
 
 bool MainCtx::hasFirstrun() const {
     return var_InheritBool(p_intf,  "qt-privacy-ask" );
+}
+
+namespace {
+const char keyPrivacyAsked[] = "redesign/privacy-asked";
+}
+
+bool MainCtx::onlineChoicesPending() const
+{
+    return var_InheritBool(p_intf, "qt-privacy-ask")
+        && !getSettings()->value(keyPrivacyAsked, false).toBool();
+}
+
+void MainCtx::setOnlineChoicesMade()
+{
+    getSettings()->setValue(keyPrivacyAsked, true);
+    getSettings()->sync();
+}
+
+// The answers of the installer's Privacy page (extras/juxtopposed/installer/
+// vlc-redesign.iss): a file next to vlcrc that the installer writes rather
+// than the settings themselves, which a new install doesn't have yet (vlc.exe
+// fills an empty profile with the settings of the copy started last). Put
+// into the settings once, then gone: the settings change in Settings after.
+//   [privacy]
+//   update-check=true|false      (redesign-update-check, absent: as it is)
+//   subtitle-search=true|false   (SubtitlePreferences' auto-search)
+void MainCtx::applySetupChoices()
+{
+    char *dir = config_GetUserDir(VLC_CONFIG_DIR);
+    if (dir == nullptr)
+        return;
+    const QString path = QDir(QString::fromUtf8(dir)).filePath(QStringLiteral("setup-choices.ini"));
+    free(dir);
+    if (!QFileInfo::exists(path))
+        return;
+    {
+        QSettings choices(path, QSettings::IniFormat);
+        const QVariant updateCheck = choices.value(QStringLiteral("privacy/update-check"));
+        const QVariant subtitleSearch = choices.value(QStringLiteral("privacy/subtitle-search"));
+        if (updateCheck.isValid())
+        {
+            config_PutInt("redesign-update-check", updateCheck.toBool() ? 1 : 0);
+            config_SaveConfigFile(p_intf);
+        }
+        if (subtitleSearch.isValid())
+            getSettings()->setValue(QStringLiteral("redesign/subtitle-auto-search"), subtitleSearch.toBool());
+        msg_Dbg(p_intf, "setup choices: update check %s, online subtitles %s",
+                updateCheck.isValid() ? (updateCheck.toBool() ? "on" : "off") : "as it was",
+                subtitleSearch.isValid() ? (subtitleSearch.toBool() ? "on" : "off") : "as it was");
+    }
+    setOnlineChoicesMade();
+    if (getSettings()->status() == QSettings::NoError && !QFile::remove(path))
+        msg_Warn(p_intf, "setup choices: %s could not be removed", qtu(QDir::toNativeSeparators(path)));
 }
 
 void MainCtx::setUseGlobalShortcuts( bool useShortcuts )

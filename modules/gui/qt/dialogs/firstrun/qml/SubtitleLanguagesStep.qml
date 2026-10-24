@@ -22,6 +22,8 @@ Item {
     property string primary: "en"
     property string secondary: ""
     property bool autoSearch: true
+    // false: the setup asks it on a step of its own (with the update check)
+    property bool showAutoSearch: true
     property bool showBoth: false
     signal primaryRequested(string code)
     signal secondaryRequested(string code)
@@ -127,6 +129,7 @@ Item {
 
         ToggleRow {
             objectName: "onboardingSubtitleAutoSearch"
+            visible: root.showAutoSearch
             text: qsTr("Find subtitles online when a video has none in these languages")
             checked: root.autoSearch
             onToggled: root.autoSearchRequested(checked)
@@ -135,7 +138,8 @@ Item {
 
     Text {
         x: Math.floor((parent.width - width) / 2)
-        y: 520
+        // (in the place of the switch when the next step asks it)
+        y: root.showAutoSearch ? 520 : 392
         width: 720
         horizontalAlignment: Text.AlignHCenter
         wrapMode: Text.WordWrap

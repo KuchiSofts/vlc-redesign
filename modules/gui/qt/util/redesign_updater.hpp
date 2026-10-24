@@ -89,6 +89,11 @@ public:
     void setAboutOpen(bool open);
     QString repositoryUrl() const;
 
+    // The daily check (option redesign-update-check), for the first-run
+    // setup: turned on, it starts as at a start of VLC
+    Q_INVOKABLE bool automaticCheck() const;
+    Q_INVOKABLE void setAutomaticCheck(bool on);
+
     // a < b, comparing "1.2.3" or "v1.2.3-beta.1" like semantic versions
     static bool versionLess(const QString &a, const QString &b);
 
@@ -115,6 +120,7 @@ signals:
     void progressChanged();
 
 private:
+    void scheduleStartupCheck();
     void setState(State state, const QString &error = {});
     void setProgress(double progress);
     void onRelease(int status, const QByteArray &body);

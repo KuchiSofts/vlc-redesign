@@ -80,6 +80,10 @@ public:
     bool supported() const;
     QVariantList services() const;
     bool serviceEnabled(const QString &id) const;
+    // Searches without being asked (a video starts, the subtitles menu
+    // opens): the user's setting, once the user was asked about it (the
+    // first-run setup, the installer)
+    Q_INVOKABLE bool searchesByItself() const;
 
     // The name of a subtitle loaded from the internet (its release), for the
     // track VLC made of it ("<md5 of its MRL>/spu/0"); empty for the others

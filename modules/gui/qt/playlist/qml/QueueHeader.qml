@@ -32,6 +32,8 @@ Column {
     property alias searchBox: searchBox
     property alias sortButton: sort
     readonly property real titleWidth: titleRowLayout.implicitWidth
+    // right to left (Hebrew, Arabic...): the row mirrored
+    readonly property bool _mirrored: LayoutMirroring.enabled
 
     readonly property ColorContext colorContext: ColorContext {
         id: theme
@@ -106,8 +108,10 @@ Column {
 
             sortKey: MainPlaylistController.sortKey
 
+            // (the search on its left in a right to left row)
             Navigation.parentItem: root.navigationParent
-            Navigation.rightItem: searchBox
+            Navigation.rightItem: root._mirrored ? null : searchBox
+            Navigation.leftItem: root._mirrored ? searchBox : null
             Navigation.downItem: listView
         }
 
@@ -127,7 +131,8 @@ Column {
             popup.topPadding: VLCStyle.margin_xxsmall
 
             Navigation.parentItem: root.navigationParent
-            Navigation.leftItem: sort
+            Navigation.leftItem: root._mirrored ? null : sort
+            Navigation.rightItem: root._mirrored ? sort : null
             Navigation.downItem: listView
 
             Connections {

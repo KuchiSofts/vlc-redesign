@@ -791,7 +791,9 @@ All classic windows go through one hook, `redesign_widget_theme.cpp`, applied fr
 - 🟢 Samsung: a film sent as it is goes as MPEG-TS; a TV that stops it gets it converted
 - 🔴 The real-TV gate on the release build (§14); 2026-10-24 on build 174 ([TV]ChenTV, Samsung): start, pause 1 min and
   5 min (paused the whole time), seek, resume, next file, the end (stopped at 29.3 of 30 s), converted with
-  subtitles; still open: a cast sent as-is, and the end of a film cast mid-film (being fixed, found with the fake TV)
+  subtitles; and on build 178 a cast sent as-is, started mid-film, seeked to 25 s before the end: the TV played to
+  the end and the player stayed playing until it had (the end of a cast mid-film, ff54815d10, d0e1f85b1e, and the
+  last frames of MPEG-TS, 95722c717a, fixed with the fake TV first); left: the same run on the release build
 - 🔴 Other brands (LG, Sony, Android TV) through device reports
 - 🟢 A *TV compatibility* wiki page fed by the reports (docs/wiki/TV-Compatibility.md, and the issue form
   `.github/ISSUE_TEMPLATE/tv_report.yml` it links to)

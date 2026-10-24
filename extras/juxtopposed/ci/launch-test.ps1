@@ -17,8 +17,10 @@ $VlcDir = (Resolve-Path $VlcDir).Path
 $vlc = Join-Path $VlcDir 'vlc.exe'
 $work = Join-Path $WorkDir 'vlc-launch-test'
 New-Item -ItemType Directory -Force $work | Out-Null
-# a profile of its own: never the one of the user
+# a profile of its own: never the one of the user, nor the settings of another
+# copy ("standalone")
 New-Item -ItemType Directory -Force (Join-Path $VlcDir 'portable') | Out-Null
+Set-Content (Join-Path $VlcDir 'portable\standalone') ''
 $result = Join-Path $work 'result.txt'
 Set-Content $result "launch test of $vlc"
 $failures = 0

@@ -86,7 +86,11 @@ try {
     $w = New-Object System.IO.StreamWriter($note.Open())
     $w.Write("VLC Redesign keeps its settings, library and history in this folder`r`n" +
              "instead of %APPDATA%\vlc, so it never touches an installed VLC.`r`n" +
-             "Delete this folder to reset it.`r`n")
+             "`r`n" +
+             "A new version unpacked into another folder starts with the settings of`r`n" +
+             "the copy you used last: an update keeps them. To keep this copy apart`r`n" +
+             "(its own settings, never passed on), put an empty file named standalone`r`n" +
+             "in this folder. To start over, use Reset all settings in the settings.`r`n")
     $w.Dispose()
 } finally { $archive.Dispose() }
 

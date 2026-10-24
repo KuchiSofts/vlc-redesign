@@ -157,34 +157,46 @@ T.ComboBox {
         padding: root.px(2)
         margins: root.px(8)
 
-        contentItem: ListView {
+        contentItem: Item {
             // the list is a popup (not under the mirrored interface): right
             // to left as the box
             LayoutMirroring.enabled: root.mirrored
             LayoutMirroring.childrenInherit: true
-            clip: true
-            spacing: root.px(2)
-            implicitHeight: contentHeight
-            model: root.popup.visible ? root.delegateModel : null
-            currentIndex: root.highlightedIndex
-            boundsBehavior: Flickable.StopAtBounds
+            implicitHeight: popupList.implicitHeight
 
-            // More than its 8 rows (the equalizer presets, the
-            // languages): it scrolls, the rows after the 8th cut off
-            // where a row ends; show it, as the menus do
-            T.ScrollIndicator.vertical: T.ScrollIndicator {
-                id: scrollIndicator
-                // (a template has no size of its own)
-                implicitWidth: implicitContentWidth + leftPadding + rightPadding
-                implicitHeight: implicitContentHeight + topPadding + bottomPadding
-                padding: root.px(2)
-                visible: scrollIndicator.size < 1.0
-                contentItem: Rectangle {
-                    implicitWidth: root.px(3)
-                    implicitHeight: root.px(3)
-                    radius: width / 2
-                    color: root.c("#6B6B6B")
+            ListView {
+                id: popupList
+                anchors.fill: parent
+                clip: true
+                spacing: root.px(2)
+                implicitHeight: contentHeight
+                model: root.popup.visible ? root.delegateModel : null
+                currentIndex: root.highlightedIndex
+                boundsBehavior: Flickable.StopAtBounds
+
+                // More than its 8 rows (the equalizer presets, the
+                // languages): it scrolls, the rows after the 8th cut off
+                // where a row ends; show it, as the menus do
+                T.ScrollIndicator.vertical: T.ScrollIndicator {
+                    id: scrollIndicator
+                    // (a template has no size of its own)
+                    implicitWidth: implicitContentWidth + leftPadding + rightPadding
+                    implicitHeight: implicitContentHeight + topPadding + bottomPadding
+                    padding: root.px(2)
+                    visible: scrollIndicator.size < 1.0
+                    contentItem: Rectangle {
+                        implicitWidth: root.px(3)
+                        implicitHeight: root.px(3)
+                        radius: width / 2
+                        color: root.c("#6B6B6B")
+                    }
                 }
+            }
+
+            // the wheel moves it by whole rows
+            Widgets.RowSnapWheel {
+                anchors.fill: popupList
+                view: popupList
             }
         }
         background: Rectangle {

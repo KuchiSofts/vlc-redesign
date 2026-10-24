@@ -491,6 +491,7 @@ libqml_module_widgets_a_QML = \
 	widgets/qml/FastBlend.qml \
 	widgets/qml/RadioButtonExt.qml \
 	widgets/qml/RoundedRectangleShadow.qml \
+	widgets/qml/RowSnapWheel.qml \
 	widgets/qml/VoronoiSnow.qml \
 	widgets/qml/DualKawaseBlur.qml \
 	widgets/qml/CheckBoxExt.qml \

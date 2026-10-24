@@ -110,6 +110,12 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
 
 ### Added
 
+- **An update keeps your settings, the portable zip too**: a new version unpacked into another folder started with
+  the default settings, an empty library and no history. It starts with those of the copy you used last now (the
+  installed one or a portable one, 0.2.4 and later), once, when its own are still empty: settings, theme and
+  accent, library, playlists, history and downloaded subtitles. The copy it came from stays as it was. The
+  installer already kept them. VLC's own settings (VLC 3 included) are never taken. A copy with an empty file
+  named `standalone` in its `portable` folder keeps to itself.
 - **Always show the player bar** (*Settings › Interface › Player Bar*): the bar stays at the bottom of Home and the
   library while nothing plays; its Play starts the play queue, or opens files when the queue is empty.
 - **Increase text contrast** (*Settings › Interface › Accessibility*): the dim texts of the design (hints,
@@ -185,6 +191,15 @@ Surround sound, casting to a TV, memory over long sessions, and the file name of
 
 ### Technical
 
+- Settings carried over (`bin/winvlc.c`, before `libvlc_new()`): every start notes its portable profile with the
+  time under `HKCU\Software\VLC Redesign\Profiles`. A profile with no `vlcrc`, no `vlc-qt-interface.ini` and no
+  `ml.db` gets a copy of the one with settings written last: of the noted ones, the installed copy (the
+  `InstallLocation` of its uninstall key) and the copies with "vlc" in their folder's name next to this one, up to
+  two folders up (older versions noted nothing: a copy of VLC Redesign has `vlc-redesign-update.exe` or
+  `vlc-waveform.exe`). No file is copied over another, lock files and `cache` folders stay behind, the paths of
+  the old profile in `vlcrc` and the ini (as is, with doubled `\`, with `/`) name the new one, and the crash
+  recovery (`RecoveryFilePath`) of the old copy is dropped. The uninstaller removes only `Capabilities` now, and the
+  noted profile of the copy only when its data is removed.
 - WASAPI (upstream since 2022): when the device buffer had no room for a whole block, the rest was retried and
   `aout_ChannelReorder()` ran on it again. The 5.1 and 7.1 reorders are involutions, so the rest went out in VLC's
   order, for about 150 blocks a second once the buffer was full (measured from what the device got: the centre

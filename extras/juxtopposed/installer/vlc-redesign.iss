@@ -312,6 +312,8 @@ const
   PROGID_PREFIX = 'VLCRedesign';
   BACKUP_VALUE = 'VLCRedesign.backup';
   CAPABILITIES = 'Software\{#AppName}\Capabilities';
+  { Where each copy notes its profile, for the settings of the next copy }
+  PROFILES = 'Software\{#AppName}\Profiles';
 
 type
   TWinPoint = record
@@ -1612,7 +1614,10 @@ begin
   SetContextMenu('Software\Classes\Directory\shell', False);
   RemoveOldOpenWith();
   RegDeleteValue(HKA, 'Software\RegisteredApplications', '{#AppName}');
-  RegDeleteKeyIncludingSubkeys(HKA, 'Software\{#AppName}');
+  RegDeleteKeyIncludingSubkeys(HKA, CAPABILITIES);
+  { (not the profiles the copies noted: the settings of the next copy)
+  }
+  DeleteKeyIfEmpty('Software\{#AppName}');
 end;
 
 procedure CurStepChanged(CurStep: TSetupStep);
@@ -1659,7 +1664,13 @@ begin
     { A silent uninstall keeps the user's data; otherwise ask, defaulting to keep }
     if DirExists(ExpandConstant('{app}\portable')) and (not UninstallSilent) and
        (MsgBox(CustomMessage('RemoveData'), mbConfirmation, MB_YESNO or MB_DEFBUTTON2) = IDYES) then
+    begin
       DelTree(ExpandConstant('{app}\portable'), True, True, True);
+      { no copy starts with these settings any more }
+      RegDeleteValue(HKCU, PROFILES, ExpandConstant('{app}\portable'));
+      RegDeleteKeyIfEmpty(HKCU, PROFILES);
+      RegDeleteKeyIfEmpty(HKCU, 'Software\{#AppName}');
+    end;
     RemoveDir(ExpandConstant('{app}'));
   end;
 end;

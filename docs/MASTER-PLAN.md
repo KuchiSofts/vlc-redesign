@@ -17,7 +17,7 @@ counted from this document's own tables and checklists (column *From*); ⚪ idea
 
 | Program         | Progress             | Done    | %     | From                                   |
 |-----------------|----------------------|---------|-------|----------------------------------------|
-| Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜ | 81/94   | 86 %  | [§8](#8-next-release-030) checklists   |
+| Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜ | 82/95   | 86 %  | [§8](#8-next-release-030) checklists   |
 | Linux           | 🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 1/7     | 14 %  | [§9](#linux)                           |
 | macOS           | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/4     | 0 %   | [§9](#macos)                           |
 | Windows ARM64   | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/3     | 0 %   | [§9](#windows-on-arm64)                |
@@ -686,6 +686,7 @@ becomes 1.0 when every frame is pixel-checked, the light theme is complete and V
 - 🟢 The idle player shows Figma's pixel cat, drawn as blocks
 - 🟢 Popups close on a click outside without pausing the video
 - 🟢 The seek bar no longer runs its loading animation when nothing plays (it redrew the window without end)
+- 🟢 An update keeps the settings, the portable zip too: a new copy starts with those of the copy used last
 
 ### 8.3 Light theme and accents
 
@@ -827,7 +828,7 @@ and an accepted request made the TV fail after a pause in a test.
 - 🔴 Small updates from 0.2.4, 0.2.5 and 0.2.6 built and checked
 - 🔴 Announcement in Discussions; every fixed issue answered with the release link
 
-Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 81 🟢, 2 🟡, 11 🔴 (94), of which 5 🟢 are
+Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 82 🟢, 2 🟡, 11 🔴 (95), of which 5 🟢 are
 in the app ⏳.
 Languages (§12) and the community (§13) have bars of their own.
 

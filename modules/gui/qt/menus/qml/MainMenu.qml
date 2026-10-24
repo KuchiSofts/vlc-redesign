@@ -32,9 +32,13 @@ Widgets.RedesignMenu {
     onAboutToShow: {
         _recentAllowed = MainCtx.mediaLibraryAvailable && Player.isRecentPlaySaved()
         if (_recentAllowed && !_recentModel) {
-            _recentModel = Qt.createQmlObject("import VLC.MediaLibrary; MLRecentMediaModel { limit: 10 }",
-                                              root, "MainMenuRecentModel")
-            _recentModel.ml = MainCtx.mediaLibrary
+            // (compiled with the interface: a model made from a string here
+            // held the first opening of the menu a quarter of a second)
+            const component = Qt.createComponent("qrc:///qt/qml/VLC/MediaLibrary/RecentMediaMenuModel.qml")
+            if (component.status === Component.Ready)
+                _recentModel = component.createObject(root)
+            else
+                console.warn("MainMenu: no recent media:", component.errorString())
         }
     }
 

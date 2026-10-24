@@ -301,16 +301,29 @@ Widgets.RedesignDialog {
                                      VLCStyle.dp(32 * 10 + 4, VLCStyle.scale))
             padding: VLCStyle.dp(2, VLCStyle.scale)
 
-            contentItem: ListView {
-                // a popup is not under the mirrored interface: its rows
-                // mirror from here
-                LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
-                LayoutMirroring.childrenInherit: true
-                clip: true
-                implicitHeight: contentHeight
-                model: dropdown.popup.visible ? dropdown.delegateModel : null
-                currentIndex: dropdown.highlightedIndex
-                boundsBehavior: Flickable.StopAtBounds
+            contentItem: Item {
+                implicitWidth: popupList.implicitWidth
+                implicitHeight: popupList.implicitHeight
+
+                ListView {
+                    id: popupList
+                    anchors.fill: parent
+                    // a popup is not under the mirrored interface: its rows
+                    // mirror from here
+                    LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+                    LayoutMirroring.childrenInherit: true
+                    clip: true
+                    implicitHeight: contentHeight
+                    model: dropdown.popup.visible ? dropdown.delegateModel : null
+                    currentIndex: dropdown.highlightedIndex
+                    boundsBehavior: Flickable.StopAtBounds
+                }
+
+                // the wheel moves it by whole rows
+                Widgets.RowSnapWheel {
+                    anchors.fill: popupList
+                    view: popupList
+                }
             }
             background: Rectangle {
                 radius: VLCStyle.dp(6, VLCStyle.scale)

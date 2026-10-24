@@ -26,12 +26,11 @@
 # Vít Pelčák, 2012,2015,2016
 # Vojtěch Smejkal <smejkalv@gmail.com>, 2009
 # Zuzana Wolfová <painteddreaming@gmail.com>, 2014
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:246
 msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-24 16:51+0000\n"
+"POT-Creation-Date: 2026-10-24 17:23+0000\n"
 "PO-Revision-Date: 2017-09-23 19:54+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Czech (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -80,7 +79,7 @@ msgstr "Rozhraní"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:26
 #: modules/gui/qt/menus/menus.cpp:860
 #: modules/gui/qt/player/qml/TracksMenu.qml:37
-#: modules/gui/qt/player/qml/TracksListPage.qml:89 modules/gui/qt/qt.cpp:350
+#: modules/gui/qt/player/qml/TracksListPage.qml:90 modules/gui/qt/qt.cpp:350
 #: modules/stream_out/es.c:388 modules/stream_out/transcode/transcode.c:190
 #: share/lua/http/dialogs/create_stream.html:150
 msgid "Audio"
@@ -574,7 +573,7 @@ msgstr "Stereo"
 
 #: src/audio_output/output.c:509 src/input/es_out.c:4901
 #: src/input/es_out.c:4930 src/libvlc-module.c:208 src/libvlc-module.c:320
-#: src/libvlc-module.c:419 src/libvlc-module.c:424 src/misc/actions.c:103
+#: src/libvlc-module.c:419 src/libvlc-module.c:424
 #: modules/audio_filter/channel_mixer/mono.c:88
 #: modules/audio_filter/channel_mixer/remap.c:63 modules/codec/dvbsub.c:116
 #: modules/codec/subsdec.c:166 modules/codec/zvbi.c:92
@@ -589,8 +588,7 @@ msgstr "Vlevo"
 
 #: src/audio_output/output.c:511 src/input/es_out.c:4930
 #: src/libvlc-module.c:208 src/libvlc-module.c:320 src/libvlc-module.c:419
-#: src/libvlc-module.c:424 src/misc/actions.c:131
-#: modules/audio_filter/channel_mixer/mono.c:88
+#: src/libvlc-module.c:424 modules/audio_filter/channel_mixer/mono.c:88
 #: modules/audio_filter/channel_mixer/remap.c:63 modules/codec/dvbsub.c:116
 #: modules/codec/subsdec.c:166 modules/codec/zvbi.c:92
 #: modules/control/gestures.c:88
@@ -1303,7 +1301,7 @@ msgstr ""
 #: src/input/es_out.c:5014 modules/access/imem.c:63
 #: modules/gui/macosx/library/VLCLibraryDataTypes.m:216
 #: modules/gui/qt/menus/menus.cpp:864
-#: modules/gui/qt/player/qml/TracksListPage.qml:79
+#: modules/gui/qt/player/qml/TracksListPage.qml:80
 msgid "Subtitle"
 msgstr "Titulky"
 
@@ -1791,7 +1789,7 @@ msgid "Stereo audio output mode"
 msgstr "Režim stereo zvukového výstupu"
 
 #: src/libvlc-module.c:206 src/libvlc-module.c:218 src/libvlc-module.c:424
-#: src/misc/actions.c:134 modules/codec/x264.c:434
+#: modules/codec/x264.c:434
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:1793
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:133
 msgid "Unset"
@@ -5130,407 +5128,473 @@ msgstr "obnovit současnou mezipaměť modulů"
 msgid "print version information"
 msgstr "zobrazit informace o verzi"
 
-#: src/misc/actions.c:51
+#: src/misc/actions.c:55
+msgctxt "key"
 msgid "Backspace"
 msgstr "Backspace"
 
-#: src/misc/actions.c:52
+#: src/misc/actions.c:56
+msgctxt "key"
 msgid "Brightness Down"
 msgstr "Zeslabení jasu"
 
-#: src/misc/actions.c:53
+#: src/misc/actions.c:57
+msgctxt "key"
 msgid "Brightness Up"
 msgstr "Zesílení jasu"
 
-#: src/misc/actions.c:54
+#: src/misc/actions.c:58
+msgctxt "key"
 msgid "Browser Back"
 msgstr "Prohlížeč Zpět"
 
-#: src/misc/actions.c:55
+#: src/misc/actions.c:59
+msgctxt "key"
 msgid "Browser Favorites"
 msgstr "Prohlížeč Oblíbené"
 
-#: src/misc/actions.c:56
+#: src/misc/actions.c:60
+msgctxt "key"
 msgid "Browser Forward"
 msgstr "Prohlížeč Vpřed"
 
-#: src/misc/actions.c:57
+#: src/misc/actions.c:61
+msgctxt "key"
 msgid "Browser Home"
 msgstr "Prohlížeč Domů"
 
-#: src/misc/actions.c:58
+#: src/misc/actions.c:62
+msgctxt "key"
 msgid "Browser Refresh"
 msgstr "Prohlížeč Obnovit"
 
-#: src/misc/actions.c:59
+#: src/misc/actions.c:63
+msgctxt "key"
 msgid "Browser Search"
 msgstr "Prohlížeč Hledat"
 
-#: src/misc/actions.c:60
+#: src/misc/actions.c:64
+msgctxt "key"
 msgid "Browser Stop"
 msgstr "Prohlížeč Zastavit"
 
-#: src/misc/actions.c:61 modules/gui/macosx/menus/VLCMainMenu.m:381
-#: modules/gui/qt/dialogs/bookmarks/bookmarks.cpp:55
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:415
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:513
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:149
-#: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:466
-#: modules/gui/qt/dialogs/vlm/vlm.cpp:471
-#: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:112
-#: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:115
-#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:185
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:81
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:915
+#: src/misc/actions.c:65
+msgctxt "key"
 msgid "Delete"
-msgstr "Smazat"
+msgstr "Delete"
 
-#: src/misc/actions.c:62
+#: src/misc/actions.c:66
+msgctxt "key"
 msgid "Down"
 msgstr "Dolů"
 
-#: src/misc/actions.c:63
+#: src/misc/actions.c:67
+msgctxt "key"
 msgid "End"
-msgstr "Konec"
+msgstr "End"
 
-#: src/misc/actions.c:64
+#: src/misc/actions.c:68
+msgctxt "key"
 msgid "Enter"
 msgstr "Enter"
 
-#: src/misc/actions.c:65
+#: src/misc/actions.c:69
+msgctxt "key"
 msgid "Esc"
 msgstr "Esc"
 
-#: src/misc/actions.c:66
+#: src/misc/actions.c:70
+msgctxt "key"
 msgid "F1"
 msgstr "F1"
 
-#: src/misc/actions.c:67
+#: src/misc/actions.c:71
+msgctxt "key"
 msgid "F10"
 msgstr "F10"
 
-#: src/misc/actions.c:68
+#: src/misc/actions.c:72
+msgctxt "key"
 msgid "F11"
 msgstr "F11"
 
-#: src/misc/actions.c:69
+#: src/misc/actions.c:73
+msgctxt "key"
 msgid "F12"
 msgstr "F12"
 
-#: src/misc/actions.c:70
+#: src/misc/actions.c:74
+msgctxt "key"
 msgid "F13"
 msgstr ""
 
-#: src/misc/actions.c:71
+#: src/misc/actions.c:75
+msgctxt "key"
 msgid "F14"
 msgstr ""
 
-#: src/misc/actions.c:72
+#: src/misc/actions.c:76
+msgctxt "key"
 msgid "F15"
 msgstr ""
 
-#: src/misc/actions.c:73
+#: src/misc/actions.c:77
+msgctxt "key"
 msgid "F16"
 msgstr ""
 
-#: src/misc/actions.c:74
+#: src/misc/actions.c:78
+msgctxt "key"
 msgid "F17"
 msgstr ""
 
-#: src/misc/actions.c:75
+#: src/misc/actions.c:79
+msgctxt "key"
 msgid "F18"
 msgstr ""
 
-#: src/misc/actions.c:76
+#: src/misc/actions.c:80
+msgctxt "key"
 msgid "F19"
 msgstr ""
 
-#: src/misc/actions.c:77
+#: src/misc/actions.c:81
+msgctxt "key"
 msgid "F2"
 msgstr "F2"
 
-#: src/misc/actions.c:78
+#: src/misc/actions.c:82
+msgctxt "key"
 msgid "F20"
 msgstr ""
 
-#: src/misc/actions.c:79
+#: src/misc/actions.c:83
+msgctxt "key"
 msgid "F21"
 msgstr ""
 
-#: src/misc/actions.c:80
+#: src/misc/actions.c:84
+msgctxt "key"
 msgid "F22"
 msgstr ""
 
-#: src/misc/actions.c:81
+#: src/misc/actions.c:85
+msgctxt "key"
 msgid "F23"
 msgstr ""
 
-#: src/misc/actions.c:82
+#: src/misc/actions.c:86
+msgctxt "key"
 msgid "F24"
 msgstr ""
 
-#: src/misc/actions.c:83
+#: src/misc/actions.c:87
+msgctxt "key"
 msgid "F25"
 msgstr ""
 
-#: src/misc/actions.c:84
+#: src/misc/actions.c:88
+msgctxt "key"
 msgid "F26"
 msgstr ""
 
-#: src/misc/actions.c:85
+#: src/misc/actions.c:89
+msgctxt "key"
 msgid "F27"
 msgstr ""
 
-#: src/misc/actions.c:86
+#: src/misc/actions.c:90
+msgctxt "key"
 msgid "F28"
 msgstr ""
 
-#: src/misc/actions.c:87
+#: src/misc/actions.c:91
+msgctxt "key"
 msgid "F29"
 msgstr ""
 
-#: src/misc/actions.c:88
+#: src/misc/actions.c:92
+msgctxt "key"
 msgid "F3"
 msgstr "F3"
 
-#: src/misc/actions.c:89
+#: src/misc/actions.c:93
+msgctxt "key"
 msgid "F30"
 msgstr ""
 
-#: src/misc/actions.c:90
+#: src/misc/actions.c:94
+msgctxt "key"
 msgid "F31"
 msgstr ""
 
-#: src/misc/actions.c:91
+#: src/misc/actions.c:95
+msgctxt "key"
 msgid "F32"
 msgstr ""
 
-#: src/misc/actions.c:92
+#: src/misc/actions.c:96
+msgctxt "key"
 msgid "F33"
 msgstr ""
 
-#: src/misc/actions.c:93
+#: src/misc/actions.c:97
+msgctxt "key"
 msgid "F34"
 msgstr ""
 
-#: src/misc/actions.c:94
+#: src/misc/actions.c:98
+msgctxt "key"
 msgid "F35"
 msgstr ""
 
-#: src/misc/actions.c:95
+#: src/misc/actions.c:99
+msgctxt "key"
 msgid "F4"
 msgstr "F4"
 
-#: src/misc/actions.c:96
+#: src/misc/actions.c:100
+msgctxt "key"
 msgid "F5"
 msgstr "F5"
 
-#: src/misc/actions.c:97
+#: src/misc/actions.c:101
+msgctxt "key"
 msgid "F6"
 msgstr "F6"
 
-#: src/misc/actions.c:98
+#: src/misc/actions.c:102
+msgctxt "key"
 msgid "F7"
 msgstr "F7"
 
-#: src/misc/actions.c:99
+#: src/misc/actions.c:103
+msgctxt "key"
 msgid "F8"
 msgstr "F8"
 
-#: src/misc/actions.c:100
+#: src/misc/actions.c:104
+msgctxt "key"
 msgid "F9"
 msgstr "F9"
 
-#: src/misc/actions.c:101
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:87
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:50
-#: modules/gui/qt/network/standardpathmodel.cpp:136
-#: modules/gui/qt/network/standardpathmodel.cpp:146
-#: modules/gui/qt/player/qml/CompactLibrary.qml:77
-#: modules/gui/qt/player/qml/CompactLibrary.qml:291
+#: src/misc/actions.c:105
+msgctxt "key"
 msgid "Home"
-msgstr "Domů"
+msgstr "Home"
 
-#: src/misc/actions.c:102
+#: src/misc/actions.c:106
+msgctxt "key"
 msgid "Insert"
-msgstr "Vložit"
+msgstr "Insert"
 
-#: src/misc/actions.c:104
+#: src/misc/actions.c:107
+msgctxt "key"
+msgid "Left"
+msgstr "Vlevo"
+
+#: src/misc/actions.c:108
+msgctxt "key"
 msgid "Media Angle"
 msgstr "Úhel média"
 
-#: src/misc/actions.c:105
+#: src/misc/actions.c:109
+msgctxt "key"
 msgid "Media Audio Track"
 msgstr "Zvuková stopa média"
 
-#: src/misc/actions.c:106
+#: src/misc/actions.c:110
+msgctxt "key"
 msgid "Media Forward"
 msgstr "Médium Vpřed"
 
-#: src/misc/actions.c:107
+#: src/misc/actions.c:111
+msgctxt "key"
 msgid "Media Menu"
 msgstr "Nabídka médií"
 
-#: src/misc/actions.c:108
+#: src/misc/actions.c:112
+msgctxt "key"
 msgid "Media Next Frame"
 msgstr "Následující snímek média"
 
-#: src/misc/actions.c:109
+#: src/misc/actions.c:113
+msgctxt "key"
 msgid "Media Next Track"
 msgstr "Další stopa média"
 
-#: src/misc/actions.c:110
+#: src/misc/actions.c:114
+msgctxt "key"
 msgid "Media Play Pause"
 msgstr "Pozastavit přehrávání média"
 
-#: src/misc/actions.c:111
+#: src/misc/actions.c:115
+msgctxt "key"
 msgid "Media Prev Frame"
 msgstr "Předchozí snímek média"
 
-#: src/misc/actions.c:112
+#: src/misc/actions.c:116
+msgctxt "key"
 msgid "Media Prev Track"
 msgstr "Předchozí stopa média"
 
-#: src/misc/actions.c:113
+#: src/misc/actions.c:117
+msgctxt "key"
 msgid "Media Record"
 msgstr "Nahrávání média"
 
-#: src/misc/actions.c:114
+#: src/misc/actions.c:118
+msgctxt "key"
 msgid "Media Repeat"
 msgstr "Opakovat média"
 
-#: src/misc/actions.c:115
+#: src/misc/actions.c:119
+msgctxt "key"
 msgid "Media Rewind"
 msgstr "Přetočit média"
 
-#: src/misc/actions.c:116
+#: src/misc/actions.c:120
+msgctxt "key"
 msgid "Media Select"
 msgstr "Vybrat média"
 
-#: src/misc/actions.c:117
+#: src/misc/actions.c:121
+msgctxt "key"
 msgid "Media Shuffle"
 msgstr "Zamíchat média"
 
-#: src/misc/actions.c:118
+#: src/misc/actions.c:122
+msgctxt "key"
 msgid "Media Stop"
 msgstr "Zastavit média"
 
-#: src/misc/actions.c:119
+#: src/misc/actions.c:123
+msgctxt "key"
 msgid "Media Subtitle"
 msgstr "Titulky médií"
 
-#: src/misc/actions.c:120
+#: src/misc/actions.c:124
+msgctxt "key"
 msgid "Media Time"
 msgstr "Čas médií"
 
-#: src/misc/actions.c:121
+#: src/misc/actions.c:125
+msgctxt "key"
 msgid "Media View"
 msgstr "Zobrazení médií"
 
-#: src/misc/actions.c:122 modules/gui/qt/maininterface/qml/MenuTopbar.qml:36
-#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:138
-#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:88
-#: modules/gui/qt/player/qml/TopBar.qml:327
-#: modules/gui/qt/player/qml/TracksListPage.qml:82
-#: modules/gui/qt/player/qml/TracksListPage.qml:92
-#: modules/gui/qt/player/qml/controlbarcontrols/DvdMenuButton.qml:34
-#: modules/gui/qt/player/qml/controlbarcontrols/MainMenuButton.qml:23
-#: modules/gui/qt/player/qml/controlbarcontrols/MenuButton.qml:33
-#: modules/gui/qt/widgets/qml/TableViewDelegateExt.qml:312
+#: src/misc/actions.c:126
+msgctxt "key"
 msgid "Menu"
 msgstr "Nabídka"
 
-#: src/misc/actions.c:123
+#: src/misc/actions.c:127
+msgctxt "key"
 msgid "Mouse Wheel Down"
 msgstr "Kolečko myši dolů"
 
-#: src/misc/actions.c:124
+#: src/misc/actions.c:128
+msgctxt "key"
 msgid "Mouse Wheel Left"
 msgstr "Kolečko myši doleva"
 
-#: src/misc/actions.c:125
+#: src/misc/actions.c:129
+msgctxt "key"
 msgid "Mouse Wheel Right"
 msgstr "Kolečko myši doprava"
 
-#: src/misc/actions.c:126
+#: src/misc/actions.c:130
+msgctxt "key"
 msgid "Mouse Wheel Up"
 msgstr "Kolečko myši nahoru"
 
-#: src/misc/actions.c:127
+#: src/misc/actions.c:131
+msgctxt "key"
 msgid "Page Down"
 msgstr "Page Down"
 
-#: src/misc/actions.c:128
+#: src/misc/actions.c:132
+msgctxt "key"
 msgid "Page Up"
 msgstr "Page Up"
 
-#: src/misc/actions.c:129 modules/gui/macosx/menus/VLCMainMenu.m:1727
-#: modules/gui/macosx/menus/VLCMainMenu.m:1728
-#: modules/gui/macosx/menus/VLCMainMenu.m:1729
-#: modules/gui/macosx/menus/VLCStatusBarIcon.m:102
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:161
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:162
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:169
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:171
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:584
-#: modules/gui/qt/menus/menus.cpp:594 modules/gui/qt/menus/menus.cpp:813
+#: src/misc/actions.c:133
+msgctxt "key"
 msgid "Pause"
 msgstr "Pozastavit"
 
-#: src/misc/actions.c:130
+#: src/misc/actions.c:134
+msgctxt "key"
 msgid "Print"
 msgstr "Tisk"
 
-#: src/misc/actions.c:132 modules/meta_engine/ID3Genres.h:77
+#: src/misc/actions.c:135
+msgctxt "key"
+msgid "Right"
+msgstr "Vpravo"
+
+#: src/misc/actions.c:136
+msgctxt "key"
 msgid "Space"
 msgstr "Space"
 
-#: src/misc/actions.c:133
+#: src/misc/actions.c:137
+msgctxt "key"
 msgid "Tab"
 msgstr "Tabulátor"
 
-#: src/misc/actions.c:135
+#: src/misc/actions.c:138
+msgctxt "key"
+msgid "Unset"
+msgstr "Nenastaveno"
+
+#: src/misc/actions.c:139
+msgctxt "key"
 msgid "Up"
 msgstr "Nahoru"
 
-#: src/misc/actions.c:136 modules/gui/macosx/menus/VLCMainMenu.m:520
+#: src/misc/actions.c:140
+msgctxt "key"
 msgid "Volume Down"
 msgstr "Snížit hlasitost"
 
-#: src/misc/actions.c:137
+#: src/misc/actions.c:141
+msgctxt "key"
 msgid "Volume Mute"
 msgstr "Ztlumit zvuk"
 
-#: src/misc/actions.c:138 modules/gui/macosx/menus/VLCMainMenu.m:519
+#: src/misc/actions.c:142
+msgctxt "key"
 msgid "Volume Up"
 msgstr "Zvýšit hlasitost"
 
-#: src/misc/actions.c:139
+#: src/misc/actions.c:143
+msgctxt "key"
 msgid "Zoom In"
 msgstr "Přiblížit"
 
-#: src/misc/actions.c:140
+#: src/misc/actions.c:144
+msgctxt "key"
 msgid "Zoom Out"
 msgstr "Oddálit"
 
-#: src/misc/actions.c:266
+#: src/misc/actions.c:283
 msgid "Ctrl+"
 msgstr "Ctrl+"
 
-#: src/misc/actions.c:267
+#: src/misc/actions.c:284
 msgid "Alt+"
 msgstr "Alt+"
 
-#: src/misc/actions.c:268
+#: src/misc/actions.c:285
 msgid "Shift+"
 msgstr "Shift+"
 
-#: src/misc/actions.c:269
+#: src/misc/actions.c:286
 msgid "Meta+"
 msgstr "Meta+"
 
-#: src/misc/actions.c:270
+#: src/misc/actions.c:287
 msgid "Command+"
 msgstr "Příkaz+"
 
@@ -16190,7 +16254,7 @@ msgstr "Ovládací rozhraní D-Bus"
 #: modules/gui/qt/dialogs/systray/systray.cpp:78
 #: modules/gui/qt/dialogs/systray/systray.cpp:81
 #: modules/gui/qt/dialogs/systray/systray.cpp:136
-#: modules/gui/qt/dialogs/systray/systray.cpp:151 modules/gui/qt/qt.cpp:1399
+#: modules/gui/qt/dialogs/systray/systray.cpp:151 modules/gui/qt/qt.cpp:1411
 #: modules/lua/libs/httpd.c:80 modules/video_output/wayland/xdg-shell.c:732
 #: modules/video_output/xcb/window.c:959
 msgid "VLC media player"
@@ -18486,6 +18550,21 @@ msgstr "Kopírovat"
 msgid "Paste"
 msgstr "Vložit"
 
+#: modules/gui/macosx/menus/VLCMainMenu.m:381
+#: modules/gui/qt/dialogs/bookmarks/bookmarks.cpp:55
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:415
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:513
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:149
+#: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:466
+#: modules/gui/qt/dialogs/vlm/vlm.cpp:471
+#: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:112
+#: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:115
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:185
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:81
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:915
+msgid "Delete"
+msgstr "Smazat"
+
 #: modules/gui/macosx/menus/VLCMainMenu.m:382
 msgid "Select All"
 msgstr "Vybrat vše"
@@ -18513,7 +18592,7 @@ msgstr "Přehrávání"
 #: modules/gui/macosx/menus/VLCMainMenu.m:393
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:73
 #: modules/gui/qt/player/qml/PlaybackSpeed.qml:151
-#: modules/gui/qt/player/qml/TracksListPage.qml:60
+#: modules/gui/qt/player/qml/TracksListPage.qml:61
 #: modules/gui/qt/player/qml/controlbarcontrols/PlaybackSpeedButton.qml:34
 msgid "Playback Speed"
 msgstr "Rychlost přehrávání"
@@ -18785,6 +18864,14 @@ msgstr "Podpořte vývoj programu..."
 msgid "Online Forum..."
 msgstr "Online fórum..."
 
+#: modules/gui/macosx/menus/VLCMainMenu.m:519
+msgid "Volume Up"
+msgstr "Zvýšit hlasitost"
+
+#: modules/gui/macosx/menus/VLCMainMenu.m:520
+msgid "Volume Down"
+msgstr "Snížit hlasitost"
+
 #: modules/gui/macosx/menus/VLCMainMenu.m:1498
 msgid "File Format:"
 msgstr "Formát souboru:"
@@ -18827,6 +18914,19 @@ msgstr ""
 #: modules/gui/macosx/menus/VLCMainMenu.m:1536
 msgid "There are no items in the play queue to save."
 msgstr ""
+
+#: modules/gui/macosx/menus/VLCMainMenu.m:1727
+#: modules/gui/macosx/menus/VLCMainMenu.m:1728
+#: modules/gui/macosx/menus/VLCMainMenu.m:1729
+#: modules/gui/macosx/menus/VLCStatusBarIcon.m:102
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:161
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:162
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:169
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:171
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:584
+#: modules/gui/qt/menus/menus.cpp:594 modules/gui/qt/menus/menus.cpp:813
+msgid "Pause"
+msgstr "Pozastavit"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:1737
 #: modules/gui/qt/menus/menus.cpp:922
@@ -19115,7 +19215,7 @@ msgstr "Zadejte název nového přednastavení:"
 
 #: modules/gui/macosx/panels/VLCBookmarksWindowController.m:97
 #: modules/gui/qt/dialogs/preferences/qml/SettingsExtensions.qml:199
-#: modules/gui/qt/player/qml/TracksListPage.qml:102
+#: modules/gui/qt/player/qml/TracksListPage.qml:103
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1154
 msgid "Add"
 msgstr "Přidat"
@@ -19700,7 +19800,7 @@ msgstr ""
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:384
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:1306
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:72
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:573
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:576
 msgid "Action"
 msgstr "Činnost"
 
@@ -21558,7 +21658,7 @@ msgid "Audio effect settings could not be saved (error %1)."
 msgstr "Nastavení zvukových efektů se nepodařilo uložit (chyba %1)."
 
 #: modules/gui/qt/dialogs/extended/audio_effects.cpp:525
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:524
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:525
 msgid "The setting \"%1\" changed outside this dialog."
 msgstr "Nastavení „%1“ bylo změněno mimo tento dialog."
 
@@ -21780,64 +21880,64 @@ msgstr "Sekundární stopa titulků:"
 msgid "Eject the disc"
 msgstr "Vysunout disk"
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:313
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:314
 msgid "Open video effects before changing them."
 msgstr "Než začnete efekty videa měnit, otevřete je."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:314
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:320
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:352
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:416
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:430
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:467
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:315
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:321
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:353
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:417
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:431
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:468
 msgid "No active video output is available."
 msgstr "Není k dispozici žádný aktivní výstup videa."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:315
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:316
 msgid "Video output changed during the preview."
 msgstr "Během náhledu se změnil výstup videa."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:349
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:350
 msgid "Video effect option is unavailable."
 msgstr "Možnost efektu videa není k dispozici."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:359
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:360
 msgid "The video effect value could not be prepared."
 msgstr "Hodnotu efektu videa se nepodařilo připravit."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:400
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:401
 msgid "The video effect value could not be applied."
 msgstr "Hodnotu efektu videa se nepodařilo použít."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:407
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:408
 msgid "Video filter is unavailable."
 msgstr "Filtr videa není k dispozici."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:420
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:421
 msgid "The video filter could not be applied."
 msgstr "Filtr videa se nepodařilo použít."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:426
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:427
 msgid "Invalid crop value."
 msgstr "Neplatná hodnota ořezu."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:438
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:439
 msgid "Crop could not be applied to every video output."
 msgstr "Ořez se nepodařilo použít na všechny výstupy videa."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:455
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:456
 msgid "Video output changed; the previous preview can no longer be restored."
 msgstr "Výstup videa se změnil; předchozí náhled již nelze obnovit."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:479
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:480
 msgid "Video preview could not be restored."
 msgstr "Náhled videa se nepodařilo obnovit."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:492
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:493
 msgid "A video effect value is unavailable."
 msgstr "Hodnota efektu videa není k dispozici."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:523
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:524
 msgid "Video effect settings could not be saved (error %1)."
 msgstr "Nastavení efektů videa se nepodařilo uložit (chyba %1)."
 
@@ -23516,7 +23616,7 @@ msgid "Last.fm is unavailable in this VLC installation."
 msgstr "Last.fm není v této instalaci VLC k dispozici."
 
 #: modules/gui/qt/dialogs/preferences/config_model_effects.cpp:89
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:430
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:448
 msgid "VLC preferences are unavailable."
 msgstr "Nastavení VLC není k dispozici."
 
@@ -23730,7 +23830,7 @@ msgstr "Činnosti"
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:1307
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:90
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:73
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:583
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:586
 msgid "Hotkey"
 msgstr "Klávesová zkratka"
 
@@ -23818,17 +23918,17 @@ msgstr "Konflikt přiřazení klávesové zkratky"
 msgid "Navigation"
 msgstr "Navigace"
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:337
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:392
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:355
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:410
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:428
 msgid "This shortcut is unavailable."
 msgstr "Tato zkratka není k dispozici."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:348
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:366
 msgid "This key combination cannot be used by VLC."
 msgstr "Tuto kombinaci kláves nemůže VLC použít."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:444
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:462
 msgid ""
 "The global hotkeys of \"%1\" changed outside this dialog. Cancel and reopen "
 "the shortcuts."
@@ -23836,7 +23936,7 @@ msgstr ""
 "Globální klávesové zkratky „%1“ byly změněny mimo tento dialog. Zrušte a "
 "znovu otevřete zkratky."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:445
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:463
 msgid ""
 "The hotkeys of \"%1\" changed outside this dialog. Cancel and reopen the "
 "shortcuts."
@@ -23844,11 +23944,11 @@ msgstr ""
 "Klávesové zkratky „%1“ byly změněny mimo tento dialog. Zrušte a znovu "
 "otevřete zkratky."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:459
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:477
 msgid "A shortcut could not be changed. Changes were reverted in memory."
 msgstr "Zkratku se nepodařilo změnit. Změny byly v paměti vráceny zpět."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:467
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:485
 msgid ""
 "Could not save shortcuts (error %1). Changes were reverted in memory; verify "
 "the configuration file."
@@ -24703,13 +24803,7 @@ msgstr "Pozastavit, když zvuk používá jiná aplikace"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:115
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:196
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:197
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:93
-#: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:386
-#: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:207
-#: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:46
-#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:258
-#: modules/gui/qt/medialibrary/qml/MusicTracksDisplay.qml:28
+msgctxt "media streams"
 msgid "Tracks"
 msgstr "Stopy"
 
@@ -25555,7 +25649,7 @@ msgstr "VYP"
 
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:90
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:74
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:591
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:594
 msgid "Global Hotkey"
 msgstr "Globální zkratka"
 
@@ -25616,27 +25710,27 @@ msgstr "Následující program / ID služby"
 msgid "All Fields"
 msgstr "Všechna pole"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:222
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:225
 msgid "%1. Press to add a key"
 msgstr "%1. Stiskněte pro přidání klávesy"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:223
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:226
 msgid "No key. Press to add one"
 msgstr "Žádná klávesa. Stiskněte pro přidání"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:337
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:340
 msgid "Remove %1"
 msgstr "Odebrat %1"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:419
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:422
 msgid "Search Keyboard Shortcuts..."
 msgstr "Hledat klávesové zkratky..."
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:685
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:688
 msgid "Hotkey of %1"
 msgstr "Klávesová zkratka pro %1"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:694
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:697
 msgid "Global hotkey of %1"
 msgstr "Globální klávesová zkratka pro %1"
 
@@ -26124,6 +26218,19 @@ msgstr "Vložit ze schránky"
 msgid "Do you want to enqueue the following URLs into the play queue?"
 msgstr "Chcete zařadit následující adresy URL do fronty přehrávání?"
 
+#: modules/gui/qt/maininterface/qml/MenuTopbar.qml:36
+#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:138
+#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:88
+#: modules/gui/qt/player/qml/TopBar.qml:327
+#: modules/gui/qt/player/qml/TracksListPage.qml:83
+#: modules/gui/qt/player/qml/TracksListPage.qml:93
+#: modules/gui/qt/player/qml/controlbarcontrols/DvdMenuButton.qml:34
+#: modules/gui/qt/player/qml/controlbarcontrols/MainMenuButton.qml:23
+#: modules/gui/qt/player/qml/controlbarcontrols/MenuButton.qml:33
+#: modules/gui/qt/widgets/qml/TableViewDelegateExt.qml:312
+msgid "Menu"
+msgstr "Nabídka"
+
 #: modules/gui/qt/maininterface/qml/LocalTopbar.qml:37
 msgid "Local top bar"
 msgstr "Místní horní panel"
@@ -26271,6 +26378,16 @@ msgid "Re-check"
 msgstr "Znovu zkontrolovat"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:87
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:50
+#: modules/gui/qt/network/standardpathmodel.cpp:136
+#: modules/gui/qt/network/standardpathmodel.cpp:146
+#: modules/gui/qt/player/qml/CompactLibrary.qml:77
+#: modules/gui/qt/player/qml/CompactLibrary.qml:291
+msgid "Home"
+msgstr "Domů"
+
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:88
 #: modules/gui/qt/medialibrary/qml/VideoGroupDisplay.qml:40
 #: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:73
@@ -26333,6 +26450,16 @@ msgstr "Umělci"
 #: modules/gui/qt/player/qml/CompactLibrary.qml:505
 msgid "Albums"
 msgstr "Alba"
+
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:93
+#: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:386
+#: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:207
+#: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:46
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:258
+#: modules/gui/qt/medialibrary/qml/MusicTracksDisplay.qml:28
+msgid "Tracks"
+msgstr "Skladby"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:93
@@ -28440,17 +28567,17 @@ msgstr "Zpoždění sekundárních titulků"
 msgid "Subtitle Speed"
 msgstr "Rychlost titulků"
 
-#: modules/gui/qt/player/qml/TracksListPage.qml:53
-#: modules/gui/qt/player/qml/controlbarcontrols/PlaybackSpeedButton.qml:74
-#, c-format
+#: modules/gui/qt/player/qml/TracksListPage.qml:54
+#: modules/gui/qt/player/qml/controlbarcontrols/PlaybackSpeedButton.qml:75
+#, no-c-format
 msgid "%1x"
 msgstr "%1x"
 
-#: modules/gui/qt/player/qml/TracksListPage.qml:99
+#: modules/gui/qt/player/qml/TracksListPage.qml:100
 msgid "Video Tracks"
 msgstr "Stopy videa"
 
-#: modules/gui/qt/player/qml/TracksListPage.qml:216
+#: modules/gui/qt/player/qml/TracksListPage.qml:217
 msgid "Track list"
 msgstr "Seznam stop"
 
@@ -28643,25 +28770,25 @@ msgstr "Fronta je prázdná"
 msgid "%1h %2m"
 msgstr "%1 h %2 min"
 
-#: modules/gui/qt/player/qml/MiniPlayerQueue.qml:105
-#, c-format
+#: modules/gui/qt/player/qml/MiniPlayerQueue.qml:106
+#, no-c-format
 msgid "%1m"
 msgstr "%1min"
 
-#: modules/gui/qt/player/qml/MiniPlayerQueue.qml:106
+#: modules/gui/qt/player/qml/MiniPlayerQueue.qml:107
 msgid "1 item - %1"
 msgstr "1 položka – %1"
 
-#: modules/gui/qt/player/qml/MiniPlayerQueue.qml:106
+#: modules/gui/qt/player/qml/MiniPlayerQueue.qml:107
 msgid "%1 items - %2"
 msgstr "Položky: %1 – %2"
 
-#: modules/gui/qt/player/qml/MiniPlayerQueue.qml:159
+#: modules/gui/qt/player/qml/MiniPlayerQueue.qml:160
 msgid "Remove selected item from queue"
 msgstr "Odebrat vybranou položku z fronty"
 
-#: modules/gui/qt/player/qml/MiniPlayerQueue.qml:165
-#: modules/gui/qt/player/qml/MiniPlayerQueue.qml:167
+#: modules/gui/qt/player/qml/MiniPlayerQueue.qml:166
+#: modules/gui/qt/player/qml/MiniPlayerQueue.qml:168
 msgid "Add files to queue"
 msgstr "Přidat soubory do fronty"
 
@@ -29014,7 +29141,7 @@ msgstr "Navigační tlačítka"
 msgid "change playback speed"
 msgstr "změnit rychlost přehrávání"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/PlaybackSpeedButton.qml:75
+#: modules/gui/qt/player/qml/controlbarcontrols/PlaybackSpeedButton.qml:76
 msgid "1x"
 msgstr "1x"
 
@@ -29639,8 +29766,8 @@ msgstr "%1 s"
 msgid "%1h%2"
 msgstr "%1h%2"
 
-#: modules/gui/qt/util/vlctick.cpp:143
-#, c-format
+#: modules/gui/qt/util/vlctick.cpp:144
+#, no-c-format
 msgid "%1ms"
 msgstr "%1ms"
 
@@ -30840,6 +30967,10 @@ msgstr "Soul"
 #: modules/meta_engine/ID3Genres.h:76
 msgid "Punk"
 msgstr "Punk"
+
+#: modules/meta_engine/ID3Genres.h:77
+msgid "Space"
+msgstr "Space"
 
 #: modules/meta_engine/ID3Genres.h:78
 msgid "Meditative"
@@ -36640,6 +36771,177 @@ msgstr ""
 #: share/lua/http/index.html:305
 msgid "Are you sure you wish to create the stream?"
 msgstr "Opravdu si přejete vytvořit proud?"
+
+#~ msgid "Backspace"
+#~ msgstr "Backspace"
+
+#~ msgid "Brightness Down"
+#~ msgstr "Zeslabení jasu"
+
+#~ msgid "Brightness Up"
+#~ msgstr "Zesílení jasu"
+
+#~ msgid "Browser Back"
+#~ msgstr "Prohlížeč Zpět"
+
+#~ msgid "Browser Favorites"
+#~ msgstr "Prohlížeč Oblíbené"
+
+#~ msgid "Browser Forward"
+#~ msgstr "Prohlížeč Vpřed"
+
+#~ msgid "Browser Home"
+#~ msgstr "Prohlížeč Domů"
+
+#~ msgid "Browser Refresh"
+#~ msgstr "Prohlížeč Obnovit"
+
+#~ msgid "Browser Search"
+#~ msgstr "Prohlížeč Hledat"
+
+#~ msgid "Browser Stop"
+#~ msgstr "Prohlížeč Zastavit"
+
+#~ msgid "Down"
+#~ msgstr "Dolů"
+
+#~ msgid "End"
+#~ msgstr "Konec"
+
+#~ msgid "Enter"
+#~ msgstr "Enter"
+
+#~ msgid "Esc"
+#~ msgstr "Esc"
+
+#~ msgid "F1"
+#~ msgstr "F1"
+
+#~ msgid "F10"
+#~ msgstr "F10"
+
+#~ msgid "F11"
+#~ msgstr "F11"
+
+#~ msgid "F12"
+#~ msgstr "F12"
+
+#~ msgid "F2"
+#~ msgstr "F2"
+
+#~ msgid "F3"
+#~ msgstr "F3"
+
+#~ msgid "F4"
+#~ msgstr "F4"
+
+#~ msgid "F5"
+#~ msgstr "F5"
+
+#~ msgid "F6"
+#~ msgstr "F6"
+
+#~ msgid "F7"
+#~ msgstr "F7"
+
+#~ msgid "F8"
+#~ msgstr "F8"
+
+#~ msgid "F9"
+#~ msgstr "F9"
+
+#~ msgid "Insert"
+#~ msgstr "Vložit"
+
+#~ msgid "Media Angle"
+#~ msgstr "Úhel média"
+
+#~ msgid "Media Audio Track"
+#~ msgstr "Zvuková stopa média"
+
+#~ msgid "Media Forward"
+#~ msgstr "Médium Vpřed"
+
+#~ msgid "Media Menu"
+#~ msgstr "Nabídka médií"
+
+#~ msgid "Media Next Frame"
+#~ msgstr "Následující snímek média"
+
+#~ msgid "Media Next Track"
+#~ msgstr "Další stopa média"
+
+#~ msgid "Media Play Pause"
+#~ msgstr "Pozastavit přehrávání média"
+
+#~ msgid "Media Prev Frame"
+#~ msgstr "Předchozí snímek média"
+
+#~ msgid "Media Prev Track"
+#~ msgstr "Předchozí stopa média"
+
+#~ msgid "Media Record"
+#~ msgstr "Nahrávání média"
+
+#~ msgid "Media Repeat"
+#~ msgstr "Opakovat média"
+
+#~ msgid "Media Rewind"
+#~ msgstr "Přetočit média"
+
+#~ msgid "Media Select"
+#~ msgstr "Vybrat média"
+
+#~ msgid "Media Shuffle"
+#~ msgstr "Zamíchat média"
+
+#~ msgid "Media Stop"
+#~ msgstr "Zastavit média"
+
+#~ msgid "Media Subtitle"
+#~ msgstr "Titulky médií"
+
+#~ msgid "Media Time"
+#~ msgstr "Čas médií"
+
+#~ msgid "Media View"
+#~ msgstr "Zobrazení médií"
+
+#~ msgid "Mouse Wheel Down"
+#~ msgstr "Kolečko myši dolů"
+
+#~ msgid "Mouse Wheel Left"
+#~ msgstr "Kolečko myši doleva"
+
+#~ msgid "Mouse Wheel Right"
+#~ msgstr "Kolečko myši doprava"
+
+#~ msgid "Mouse Wheel Up"
+#~ msgstr "Kolečko myši nahoru"
+
+#~ msgid "Page Down"
+#~ msgstr "Page Down"
+
+#~ msgid "Page Up"
+#~ msgstr "Page Up"
+
+#~ msgid "Print"
+#~ msgstr "Tisk"
+
+#~ msgid "Tab"
+#~ msgstr "Tabulátor"
+
+#~ msgid "Up"
+#~ msgstr "Nahoru"
+
+#~ msgid "Volume Mute"
+#~ msgstr "Ztlumit zvuk"
+
+#~ msgid "Zoom In"
+#~ msgstr "Přiblížit"
+
+#~ msgid "Zoom Out"
+#~ msgstr "Oddálit"
 
 #~ msgid "Select \"Advanced Options\" to see all options."
 #~ msgstr "Vyberte \"Pokročilé možnosti\" pro zobrazení všech možností."

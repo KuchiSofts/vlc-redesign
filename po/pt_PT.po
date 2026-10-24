@@ -22,12 +22,11 @@
 # Ricardo Perdigão <ricardofonseca1977@gmail.com>, 2012
 # Rui <xymarior@yandex.com>, 2017
 # Sérgio Marques <smarquespt@gmail.com>, 2015-2017
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:246
 msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-24 16:51+0000\n"
+"POT-Creation-Date: 2026-10-24 17:23+0000\n"
 "PO-Revision-Date: 2017-10-10 09:14+0000\n"
 "Last-Translator: Bruno Queiros <bqueiros@gmail.com>\n"
 "Language-Team: Portuguese (Portugal) (http://www.transifex.com/yaron/vlc-"
@@ -76,7 +75,7 @@ msgstr "Interface"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:26
 #: modules/gui/qt/menus/menus.cpp:860
 #: modules/gui/qt/player/qml/TracksMenu.qml:37
-#: modules/gui/qt/player/qml/TracksListPage.qml:89 modules/gui/qt/qt.cpp:350
+#: modules/gui/qt/player/qml/TracksListPage.qml:90 modules/gui/qt/qt.cpp:350
 #: modules/stream_out/es.c:388 modules/stream_out/transcode/transcode.c:190
 #: share/lua/http/dialogs/create_stream.html:150
 msgid "Audio"
@@ -582,7 +581,7 @@ msgstr "Estéreo"
 
 #: src/audio_output/output.c:509 src/input/es_out.c:4901
 #: src/input/es_out.c:4930 src/libvlc-module.c:208 src/libvlc-module.c:320
-#: src/libvlc-module.c:419 src/libvlc-module.c:424 src/misc/actions.c:103
+#: src/libvlc-module.c:419 src/libvlc-module.c:424
 #: modules/audio_filter/channel_mixer/mono.c:88
 #: modules/audio_filter/channel_mixer/remap.c:63 modules/codec/dvbsub.c:116
 #: modules/codec/subsdec.c:166 modules/codec/zvbi.c:92
@@ -597,8 +596,7 @@ msgstr "Esquerdo"
 
 #: src/audio_output/output.c:511 src/input/es_out.c:4930
 #: src/libvlc-module.c:208 src/libvlc-module.c:320 src/libvlc-module.c:419
-#: src/libvlc-module.c:424 src/misc/actions.c:131
-#: modules/audio_filter/channel_mixer/mono.c:88
+#: src/libvlc-module.c:424 modules/audio_filter/channel_mixer/mono.c:88
 #: modules/audio_filter/channel_mixer/remap.c:63 modules/codec/dvbsub.c:116
 #: modules/codec/subsdec.c:166 modules/codec/zvbi.c:92
 #: modules/control/gestures.c:88
@@ -1302,7 +1300,7 @@ msgstr ""
 #: src/input/es_out.c:5014 modules/access/imem.c:63
 #: modules/gui/macosx/library/VLCLibraryDataTypes.m:216
 #: modules/gui/qt/menus/menus.cpp:864
-#: modules/gui/qt/player/qml/TracksListPage.qml:79
+#: modules/gui/qt/player/qml/TracksListPage.qml:80
 msgid "Subtitle"
 msgstr "Legendas"
 
@@ -1789,7 +1787,7 @@ msgid "Stereo audio output mode"
 msgstr "Modo de saída de áudio estéreo"
 
 #: src/libvlc-module.c:206 src/libvlc-module.c:218 src/libvlc-module.c:424
-#: src/misc/actions.c:134 modules/codec/x264.c:434
+#: modules/codec/x264.c:434
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:1793
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:133
 msgid "Unset"
@@ -5267,407 +5265,473 @@ msgstr "restaura a cache de extras"
 msgid "print version information"
 msgstr "mostrar informação da versão"
 
-#: src/misc/actions.c:51
+#: src/misc/actions.c:55
+msgctxt "key"
 msgid "Backspace"
-msgstr "Apagar"
+msgstr "Retrocesso"
 
-#: src/misc/actions.c:52
+#: src/misc/actions.c:56
+msgctxt "key"
 msgid "Brightness Down"
 msgstr "Diminuir brilho"
 
-#: src/misc/actions.c:53
+#: src/misc/actions.c:57
+msgctxt "key"
 msgid "Brightness Up"
 msgstr "Aumentar brilho"
 
-#: src/misc/actions.c:54
+#: src/misc/actions.c:58
+msgctxt "key"
 msgid "Browser Back"
 msgstr "Retroceder no navegador"
 
-#: src/misc/actions.c:55
+#: src/misc/actions.c:59
+msgctxt "key"
 msgid "Browser Favorites"
 msgstr "Favoritos do navegador"
 
-#: src/misc/actions.c:56
+#: src/misc/actions.c:60
+msgctxt "key"
 msgid "Browser Forward"
 msgstr "Avançar no navegador"
 
-#: src/misc/actions.c:57
+#: src/misc/actions.c:61
+msgctxt "key"
 msgid "Browser Home"
 msgstr "Página inicial do navegador"
 
-#: src/misc/actions.c:58
+#: src/misc/actions.c:62
+msgctxt "key"
 msgid "Browser Refresh"
 msgstr "Recarregar no navegador"
 
-#: src/misc/actions.c:59
+#: src/misc/actions.c:63
+msgctxt "key"
 msgid "Browser Search"
 msgstr "Pesquisa do navegador"
 
-#: src/misc/actions.c:60
+#: src/misc/actions.c:64
+msgctxt "key"
 msgid "Browser Stop"
 msgstr "Parar do navegador"
 
-#: src/misc/actions.c:61 modules/gui/macosx/menus/VLCMainMenu.m:381
-#: modules/gui/qt/dialogs/bookmarks/bookmarks.cpp:55
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:415
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:513
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:149
-#: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:466
-#: modules/gui/qt/dialogs/vlm/vlm.cpp:471
-#: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:112
-#: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:115
-#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:185
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:81
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:915
+#: src/misc/actions.c:65
+msgctxt "key"
 msgid "Delete"
-msgstr "Apagar"
+msgstr "Delete"
 
-#: src/misc/actions.c:62
+#: src/misc/actions.c:66
+msgctxt "key"
 msgid "Down"
 msgstr "Baixo"
 
-#: src/misc/actions.c:63
+#: src/misc/actions.c:67
+msgctxt "key"
 msgid "End"
-msgstr "Fim da página"
+msgstr "End"
 
-#: src/misc/actions.c:64
+#: src/misc/actions.c:68
+msgctxt "key"
 msgid "Enter"
 msgstr "Enter"
 
-#: src/misc/actions.c:65
+#: src/misc/actions.c:69
+msgctxt "key"
 msgid "Esc"
 msgstr "Esc"
 
-#: src/misc/actions.c:66
+#: src/misc/actions.c:70
+msgctxt "key"
 msgid "F1"
 msgstr "F1"
 
-#: src/misc/actions.c:67
+#: src/misc/actions.c:71
+msgctxt "key"
 msgid "F10"
 msgstr "F10"
 
-#: src/misc/actions.c:68
+#: src/misc/actions.c:72
+msgctxt "key"
 msgid "F11"
 msgstr "F11"
 
-#: src/misc/actions.c:69
+#: src/misc/actions.c:73
+msgctxt "key"
 msgid "F12"
 msgstr "F12"
 
-#: src/misc/actions.c:70
+#: src/misc/actions.c:74
+msgctxt "key"
 msgid "F13"
 msgstr ""
 
-#: src/misc/actions.c:71
+#: src/misc/actions.c:75
+msgctxt "key"
 msgid "F14"
 msgstr ""
 
-#: src/misc/actions.c:72
+#: src/misc/actions.c:76
+msgctxt "key"
 msgid "F15"
 msgstr ""
 
-#: src/misc/actions.c:73
+#: src/misc/actions.c:77
+msgctxt "key"
 msgid "F16"
 msgstr ""
 
-#: src/misc/actions.c:74
+#: src/misc/actions.c:78
+msgctxt "key"
 msgid "F17"
 msgstr ""
 
-#: src/misc/actions.c:75
+#: src/misc/actions.c:79
+msgctxt "key"
 msgid "F18"
 msgstr ""
 
-#: src/misc/actions.c:76
+#: src/misc/actions.c:80
+msgctxt "key"
 msgid "F19"
 msgstr ""
 
-#: src/misc/actions.c:77
+#: src/misc/actions.c:81
+msgctxt "key"
 msgid "F2"
 msgstr "F2"
 
-#: src/misc/actions.c:78
+#: src/misc/actions.c:82
+msgctxt "key"
 msgid "F20"
 msgstr ""
 
-#: src/misc/actions.c:79
+#: src/misc/actions.c:83
+msgctxt "key"
 msgid "F21"
 msgstr ""
 
-#: src/misc/actions.c:80
+#: src/misc/actions.c:84
+msgctxt "key"
 msgid "F22"
 msgstr ""
 
-#: src/misc/actions.c:81
+#: src/misc/actions.c:85
+msgctxt "key"
 msgid "F23"
 msgstr ""
 
-#: src/misc/actions.c:82
+#: src/misc/actions.c:86
+msgctxt "key"
 msgid "F24"
 msgstr ""
 
-#: src/misc/actions.c:83
+#: src/misc/actions.c:87
+msgctxt "key"
 msgid "F25"
 msgstr ""
 
-#: src/misc/actions.c:84
+#: src/misc/actions.c:88
+msgctxt "key"
 msgid "F26"
 msgstr ""
 
-#: src/misc/actions.c:85
+#: src/misc/actions.c:89
+msgctxt "key"
 msgid "F27"
 msgstr ""
 
-#: src/misc/actions.c:86
+#: src/misc/actions.c:90
+msgctxt "key"
 msgid "F28"
 msgstr ""
 
-#: src/misc/actions.c:87
+#: src/misc/actions.c:91
+msgctxt "key"
 msgid "F29"
 msgstr ""
 
-#: src/misc/actions.c:88
+#: src/misc/actions.c:92
+msgctxt "key"
 msgid "F3"
 msgstr "F3"
 
-#: src/misc/actions.c:89
+#: src/misc/actions.c:93
+msgctxt "key"
 msgid "F30"
 msgstr ""
 
-#: src/misc/actions.c:90
+#: src/misc/actions.c:94
+msgctxt "key"
 msgid "F31"
 msgstr ""
 
-#: src/misc/actions.c:91
+#: src/misc/actions.c:95
+msgctxt "key"
 msgid "F32"
 msgstr ""
 
-#: src/misc/actions.c:92
+#: src/misc/actions.c:96
+msgctxt "key"
 msgid "F33"
 msgstr ""
 
-#: src/misc/actions.c:93
+#: src/misc/actions.c:97
+msgctxt "key"
 msgid "F34"
 msgstr ""
 
-#: src/misc/actions.c:94
+#: src/misc/actions.c:98
+msgctxt "key"
 msgid "F35"
 msgstr ""
 
-#: src/misc/actions.c:95
+#: src/misc/actions.c:99
+msgctxt "key"
 msgid "F4"
 msgstr "F4"
 
-#: src/misc/actions.c:96
+#: src/misc/actions.c:100
+msgctxt "key"
 msgid "F5"
 msgstr "F5"
 
-#: src/misc/actions.c:97
+#: src/misc/actions.c:101
+msgctxt "key"
 msgid "F6"
 msgstr "F6"
 
-#: src/misc/actions.c:98
+#: src/misc/actions.c:102
+msgctxt "key"
 msgid "F7"
 msgstr "F7"
 
-#: src/misc/actions.c:99
+#: src/misc/actions.c:103
+msgctxt "key"
 msgid "F8"
 msgstr "F8"
 
-#: src/misc/actions.c:100
+#: src/misc/actions.c:104
+msgctxt "key"
 msgid "F9"
 msgstr "F9"
 
-#: src/misc/actions.c:101
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:87
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:50
-#: modules/gui/qt/network/standardpathmodel.cpp:136
-#: modules/gui/qt/network/standardpathmodel.cpp:146
-#: modules/gui/qt/player/qml/CompactLibrary.qml:77
-#: modules/gui/qt/player/qml/CompactLibrary.qml:291
+#: src/misc/actions.c:105
+msgctxt "key"
 msgid "Home"
 msgstr "Home"
 
-#: src/misc/actions.c:102
+#: src/misc/actions.c:106
+msgctxt "key"
 msgid "Insert"
 msgstr "Insert"
 
-#: src/misc/actions.c:104
+#: src/misc/actions.c:107
+msgctxt "key"
+msgid "Left"
+msgstr "Esquerda"
+
+#: src/misc/actions.c:108
+msgctxt "key"
 msgid "Media Angle"
 msgstr "Ângulo"
 
-#: src/misc/actions.c:105
+#: src/misc/actions.c:109
+msgctxt "key"
 msgid "Media Audio Track"
 msgstr "Faixa de áudio"
 
-#: src/misc/actions.c:106
+#: src/misc/actions.c:110
+msgctxt "key"
 msgid "Media Forward"
 msgstr "Avançar"
 
-#: src/misc/actions.c:107
+#: src/misc/actions.c:111
+msgctxt "key"
 msgid "Media Menu"
 msgstr "Menu multimédia"
 
-#: src/misc/actions.c:108
+#: src/misc/actions.c:112
+msgctxt "key"
 msgid "Media Next Frame"
 msgstr "Fotograma seguinte"
 
-#: src/misc/actions.c:109
+#: src/misc/actions.c:113
+msgctxt "key"
 msgid "Media Next Track"
 msgstr "Faixa seguinte"
 
-#: src/misc/actions.c:110
+#: src/misc/actions.c:114
+msgctxt "key"
 msgid "Media Play Pause"
 msgstr "Pausar reprodução"
 
-#: src/misc/actions.c:111
+#: src/misc/actions.c:115
+msgctxt "key"
 msgid "Media Prev Frame"
 msgstr "Fotograma anterior"
 
-#: src/misc/actions.c:112
+#: src/misc/actions.c:116
+msgctxt "key"
 msgid "Media Prev Track"
 msgstr "Faixa anterior"
 
-#: src/misc/actions.c:113
+#: src/misc/actions.c:117
+msgctxt "key"
 msgid "Media Record"
 msgstr "Gravar"
 
-#: src/misc/actions.c:114
+#: src/misc/actions.c:118
+msgctxt "key"
 msgid "Media Repeat"
 msgstr "Repetição de ficheiros"
 
-#: src/misc/actions.c:115
+#: src/misc/actions.c:119
+msgctxt "key"
 msgid "Media Rewind"
 msgstr "Recuar"
 
-#: src/misc/actions.c:116
+#: src/misc/actions.c:120
+msgctxt "key"
 msgid "Media Select"
 msgstr "Seleção"
 
-#: src/misc/actions.c:117
+#: src/misc/actions.c:121
+msgctxt "key"
 msgid "Media Shuffle"
 msgstr "Aleatório"
 
-#: src/misc/actions.c:118
+#: src/misc/actions.c:122
+msgctxt "key"
 msgid "Media Stop"
 msgstr "Parar"
 
-#: src/misc/actions.c:119
+#: src/misc/actions.c:123
+msgctxt "key"
 msgid "Media Subtitle"
 msgstr "Legendas do vídeo"
 
-#: src/misc/actions.c:120
+#: src/misc/actions.c:124
+msgctxt "key"
 msgid "Media Time"
 msgstr "Tempo"
 
-#: src/misc/actions.c:121
+#: src/misc/actions.c:125
+msgctxt "key"
 msgid "Media View"
 msgstr "Ver Média"
 
-#: src/misc/actions.c:122 modules/gui/qt/maininterface/qml/MenuTopbar.qml:36
-#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:138
-#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:88
-#: modules/gui/qt/player/qml/TopBar.qml:327
-#: modules/gui/qt/player/qml/TracksListPage.qml:82
-#: modules/gui/qt/player/qml/TracksListPage.qml:92
-#: modules/gui/qt/player/qml/controlbarcontrols/DvdMenuButton.qml:34
-#: modules/gui/qt/player/qml/controlbarcontrols/MainMenuButton.qml:23
-#: modules/gui/qt/player/qml/controlbarcontrols/MenuButton.qml:33
-#: modules/gui/qt/widgets/qml/TableViewDelegateExt.qml:312
+#: src/misc/actions.c:126
+msgctxt "key"
 msgid "Menu"
 msgstr "Menu"
 
-#: src/misc/actions.c:123
+#: src/misc/actions.c:127
+msgctxt "key"
 msgid "Mouse Wheel Down"
 msgstr "Roda do rato para baixo"
 
-#: src/misc/actions.c:124
+#: src/misc/actions.c:128
+msgctxt "key"
 msgid "Mouse Wheel Left"
 msgstr "Roda do Rato para a Esquerda"
 
-#: src/misc/actions.c:125
+#: src/misc/actions.c:129
+msgctxt "key"
 msgid "Mouse Wheel Right"
 msgstr "Roda do Rato para a Direita"
 
-#: src/misc/actions.c:126
+#: src/misc/actions.c:130
+msgctxt "key"
 msgid "Mouse Wheel Up"
 msgstr "Roda do Rato para Cima"
 
-#: src/misc/actions.c:127
+#: src/misc/actions.c:131
+msgctxt "key"
 msgid "Page Down"
 msgstr "Página Abaixo"
 
-#: src/misc/actions.c:128
+#: src/misc/actions.c:132
+msgctxt "key"
 msgid "Page Up"
 msgstr "Página Acima"
 
-#: src/misc/actions.c:129 modules/gui/macosx/menus/VLCMainMenu.m:1727
-#: modules/gui/macosx/menus/VLCMainMenu.m:1728
-#: modules/gui/macosx/menus/VLCMainMenu.m:1729
-#: modules/gui/macosx/menus/VLCStatusBarIcon.m:102
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:161
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:162
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:169
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:171
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:584
-#: modules/gui/qt/menus/menus.cpp:594 modules/gui/qt/menus/menus.cpp:813
+#: src/misc/actions.c:133
+msgctxt "key"
 msgid "Pause"
 msgstr "Pausar"
 
-#: src/misc/actions.c:130
+#: src/misc/actions.c:134
+msgctxt "key"
 msgid "Print"
 msgstr "Imprimir"
 
-#: src/misc/actions.c:132 modules/meta_engine/ID3Genres.h:77
+#: src/misc/actions.c:135
+msgctxt "key"
+msgid "Right"
+msgstr "Direita"
+
+#: src/misc/actions.c:136
+msgctxt "key"
 msgid "Space"
 msgstr "Espaço"
 
-#: src/misc/actions.c:133
+#: src/misc/actions.c:137
+msgctxt "key"
 msgid "Tab"
 msgstr "Tab"
 
-#: src/misc/actions.c:135
+#: src/misc/actions.c:138
+msgctxt "key"
+msgid "Unset"
+msgstr "Não definido"
+
+#: src/misc/actions.c:139
+msgctxt "key"
 msgid "Up"
 msgstr "Cima"
 
-#: src/misc/actions.c:136 modules/gui/macosx/menus/VLCMainMenu.m:520
+#: src/misc/actions.c:140
+msgctxt "key"
 msgid "Volume Down"
 msgstr "Diminuir volume"
 
-#: src/misc/actions.c:137
+#: src/misc/actions.c:141
+msgctxt "key"
 msgid "Volume Mute"
 msgstr "Sem som"
 
-#: src/misc/actions.c:138 modules/gui/macosx/menus/VLCMainMenu.m:519
+#: src/misc/actions.c:142
+msgctxt "key"
 msgid "Volume Up"
 msgstr "Aumentar volume"
 
-#: src/misc/actions.c:139
+#: src/misc/actions.c:143
+msgctxt "key"
 msgid "Zoom In"
 msgstr "Ampliar"
 
-#: src/misc/actions.c:140
+#: src/misc/actions.c:144
+msgctxt "key"
 msgid "Zoom Out"
 msgstr "Reduzir"
 
-#: src/misc/actions.c:266
+#: src/misc/actions.c:283
 msgid "Ctrl+"
 msgstr "Ctrl+"
 
-#: src/misc/actions.c:267
+#: src/misc/actions.c:284
 msgid "Alt+"
 msgstr "Alt+"
 
-#: src/misc/actions.c:268
+#: src/misc/actions.c:285
 msgid "Shift+"
 msgstr "Shift+"
 
-#: src/misc/actions.c:269
+#: src/misc/actions.c:286
 msgid "Meta+"
 msgstr "Meta+"
 
-#: src/misc/actions.c:270
+#: src/misc/actions.c:287
 msgid "Command+"
 msgstr "Comando+"
 
@@ -16878,7 +16942,7 @@ msgstr "Interface de controlo D-Bus"
 #: modules/gui/qt/dialogs/systray/systray.cpp:78
 #: modules/gui/qt/dialogs/systray/systray.cpp:81
 #: modules/gui/qt/dialogs/systray/systray.cpp:136
-#: modules/gui/qt/dialogs/systray/systray.cpp:151 modules/gui/qt/qt.cpp:1399
+#: modules/gui/qt/dialogs/systray/systray.cpp:151 modules/gui/qt/qt.cpp:1411
 #: modules/lua/libs/httpd.c:80 modules/video_output/wayland/xdg-shell.c:732
 #: modules/video_output/xcb/window.c:959
 msgid "VLC media player"
@@ -19245,6 +19309,21 @@ msgstr "Copiar"
 msgid "Paste"
 msgstr "Colar"
 
+#: modules/gui/macosx/menus/VLCMainMenu.m:381
+#: modules/gui/qt/dialogs/bookmarks/bookmarks.cpp:55
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:415
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:513
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:149
+#: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:466
+#: modules/gui/qt/dialogs/vlm/vlm.cpp:471
+#: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:112
+#: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:115
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:185
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:81
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:915
+msgid "Delete"
+msgstr "Apagar"
+
 #: modules/gui/macosx/menus/VLCMainMenu.m:382
 msgid "Select All"
 msgstr "Selecionar tudo"
@@ -19272,7 +19351,7 @@ msgstr "Reprodução"
 #: modules/gui/macosx/menus/VLCMainMenu.m:393
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:73
 #: modules/gui/qt/player/qml/PlaybackSpeed.qml:151
-#: modules/gui/qt/player/qml/TracksListPage.qml:60
+#: modules/gui/qt/player/qml/TracksListPage.qml:61
 #: modules/gui/qt/player/qml/controlbarcontrols/PlaybackSpeedButton.qml:34
 msgid "Playback Speed"
 msgstr "Velocidade de reprodução"
@@ -19544,6 +19623,14 @@ msgstr "Fazer um donativo..."
 msgid "Online Forum..."
 msgstr "Fórum online..."
 
+#: modules/gui/macosx/menus/VLCMainMenu.m:519
+msgid "Volume Up"
+msgstr "Aumentar volume"
+
+#: modules/gui/macosx/menus/VLCMainMenu.m:520
+msgid "Volume Down"
+msgstr "Diminuir volume"
+
 #: modules/gui/macosx/menus/VLCMainMenu.m:1498
 msgid "File Format:"
 msgstr "Formato do ficheiro:"
@@ -19586,6 +19673,19 @@ msgstr ""
 #: modules/gui/macosx/menus/VLCMainMenu.m:1536
 msgid "There are no items in the play queue to save."
 msgstr ""
+
+#: modules/gui/macosx/menus/VLCMainMenu.m:1727
+#: modules/gui/macosx/menus/VLCMainMenu.m:1728
+#: modules/gui/macosx/menus/VLCMainMenu.m:1729
+#: modules/gui/macosx/menus/VLCStatusBarIcon.m:102
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:161
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:162
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:169
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:171
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:584
+#: modules/gui/qt/menus/menus.cpp:594 modules/gui/qt/menus/menus.cpp:813
+msgid "Pause"
+msgstr "Pausar"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:1737
 #: modules/gui/qt/menus/menus.cpp:922
@@ -19875,7 +19975,7 @@ msgstr "Introduza um nome para o novo pré-ajuste:"
 
 #: modules/gui/macosx/panels/VLCBookmarksWindowController.m:97
 #: modules/gui/qt/dialogs/preferences/qml/SettingsExtensions.qml:199
-#: modules/gui/qt/player/qml/TracksListPage.qml:102
+#: modules/gui/qt/player/qml/TracksListPage.qml:103
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1154
 msgid "Add"
 msgstr "Adicionar"
@@ -20461,7 +20561,7 @@ msgstr ""
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:384
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:1306
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:72
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:573
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:576
 msgid "Action"
 msgstr "Ação"
 
@@ -22345,7 +22445,7 @@ msgid "Audio effect settings could not be saved (error %1)."
 msgstr "Não foi possível guardar as definições dos efeitos de áudio (erro %1)."
 
 #: modules/gui/qt/dialogs/extended/audio_effects.cpp:525
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:524
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:525
 msgid "The setting \"%1\" changed outside this dialog."
 msgstr "A definição \"%1\" foi alterada fora desta janela."
 
@@ -22567,66 +22667,66 @@ msgstr "Faixa de legendas secundária:"
 msgid "Eject the disc"
 msgstr "Ejetar disco"
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:313
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:314
 msgid "Open video effects before changing them."
 msgstr "Abra os efeitos de vídeo antes de os alterar."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:314
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:320
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:352
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:416
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:430
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:467
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:315
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:321
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:353
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:417
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:431
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:468
 msgid "No active video output is available."
 msgstr "Não há nenhuma saída de vídeo ativa disponível."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:315
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:316
 msgid "Video output changed during the preview."
 msgstr "A saída de vídeo mudou durante a pré-visualização."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:349
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:350
 msgid "Video effect option is unavailable."
 msgstr "A opção do efeito de vídeo não está disponível."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:359
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:360
 msgid "The video effect value could not be prepared."
 msgstr "Não foi possível preparar o valor do efeito de vídeo."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:400
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:401
 msgid "The video effect value could not be applied."
 msgstr "Não foi possível aplicar o valor do efeito de vídeo."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:407
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:408
 msgid "Video filter is unavailable."
 msgstr "O filtro de vídeo não está disponível."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:420
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:421
 msgid "The video filter could not be applied."
 msgstr "Não foi possível aplicar o filtro de vídeo."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:426
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:427
 msgid "Invalid crop value."
 msgstr "Valor de recorte inválido."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:438
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:439
 msgid "Crop could not be applied to every video output."
 msgstr "Não foi possível aplicar o recorte a todas as saídas de vídeo."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:455
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:456
 msgid "Video output changed; the previous preview can no longer be restored."
 msgstr ""
 "A saída de vídeo mudou; já não é possível restaurar a pré-visualização "
 "anterior."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:479
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:480
 msgid "Video preview could not be restored."
 msgstr "Não foi possível restaurar a pré-visualização do vídeo."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:492
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:493
 msgid "A video effect value is unavailable."
 msgstr "Um valor de efeito de vídeo não está disponível."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:523
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:524
 msgid "Video effect settings could not be saved (error %1)."
 msgstr "Não foi possível guardar as definições dos efeitos de vídeo (erro %1)."
 
@@ -24322,7 +24422,7 @@ msgid "Last.fm is unavailable in this VLC installation."
 msgstr "O Last.fm não está disponível nesta instalação do VLC."
 
 #: modules/gui/qt/dialogs/preferences/config_model_effects.cpp:89
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:430
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:448
 msgid "VLC preferences are unavailable."
 msgstr "As preferências do VLC não estão disponíveis."
 
@@ -24537,7 +24637,7 @@ msgstr "Acções"
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:1307
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:90
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:73
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:583
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:586
 msgid "Hotkey"
 msgstr "Tecla de atalho"
 
@@ -24625,17 +24725,17 @@ msgstr "Conflito de atribuição de tecla de atalho"
 msgid "Navigation"
 msgstr "Navegação"
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:337
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:392
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:355
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:410
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:428
 msgid "This shortcut is unavailable."
 msgstr "Este atalho não está disponível."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:348
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:366
 msgid "This key combination cannot be used by VLC."
 msgstr "Esta combinação de teclas não pode ser usada pelo VLC."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:444
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:462
 msgid ""
 "The global hotkeys of \"%1\" changed outside this dialog. Cancel and reopen "
 "the shortcuts."
@@ -24643,7 +24743,7 @@ msgstr ""
 "As teclas de atalho globais de \"%1\" foram alteradas fora desta janela. "
 "Cancele e volte a abrir os atalhos."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:445
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:463
 msgid ""
 "The hotkeys of \"%1\" changed outside this dialog. Cancel and reopen the "
 "shortcuts."
@@ -24651,13 +24751,13 @@ msgstr ""
 "As teclas de atalho de \"%1\" foram alteradas fora desta janela. Cancele e "
 "volte a abrir os atalhos."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:459
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:477
 msgid "A shortcut could not be changed. Changes were reverted in memory."
 msgstr ""
 "Não foi possível alterar um atalho. As alterações foram revertidas na "
 "memória."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:467
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:485
 msgid ""
 "Could not save shortcuts (error %1). Changes were reverted in memory; verify "
 "the configuration file."
@@ -25508,13 +25608,7 @@ msgstr "Pausar quando outra aplicação usa o áudio"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:115
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:196
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:197
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:93
-#: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:386
-#: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:207
-#: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:46
-#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:258
-#: modules/gui/qt/medialibrary/qml/MusicTracksDisplay.qml:28
+msgctxt "media streams"
 msgid "Tracks"
 msgstr "Faixas"
 
@@ -26361,7 +26455,7 @@ msgstr "NÃO"
 
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:90
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:74
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:591
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:594
 msgid "Global Hotkey"
 msgstr "Tecla de atalho global"
 
@@ -26422,27 +26516,27 @@ msgstr "Programa seguinte / ID de serviço"
 msgid "All Fields"
 msgstr "Todos os campos"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:222
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:225
 msgid "%1. Press to add a key"
 msgstr "%1. Prima para adicionar uma tecla"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:223
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:226
 msgid "No key. Press to add one"
 msgstr "Sem tecla. Prima para adicionar uma"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:337
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:340
 msgid "Remove %1"
 msgstr "Remover %1"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:419
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:422
 msgid "Search Keyboard Shortcuts..."
 msgstr "Pesquisar atalhos de teclado..."
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:685
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:688
 msgid "Hotkey of %1"
 msgstr "Tecla de atalho de %1"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:694
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:697
 msgid "Global hotkey of %1"
 msgstr "Tecla de atalho global de %1"
 
@@ -26933,6 +27027,19 @@ msgstr "Colar da área de transferência"
 msgid "Do you want to enqueue the following URLs into the play queue?"
 msgstr "Pretende adicionar os seguintes URL à fila de reprodução?"
 
+#: modules/gui/qt/maininterface/qml/MenuTopbar.qml:36
+#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:138
+#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:88
+#: modules/gui/qt/player/qml/TopBar.qml:327
+#: modules/gui/qt/player/qml/TracksListPage.qml:83
+#: modules/gui/qt/player/qml/TracksListPage.qml:93
+#: modules/gui/qt/player/qml/controlbarcontrols/DvdMenuButton.qml:34
+#: modules/gui/qt/player/qml/controlbarcontrols/MainMenuButton.qml:23
+#: modules/gui/qt/player/qml/controlbarcontrols/MenuButton.qml:33
+#: modules/gui/qt/widgets/qml/TableViewDelegateExt.qml:312
+msgid "Menu"
+msgstr "Menu"
+
 #: modules/gui/qt/maininterface/qml/LocalTopbar.qml:37
 msgid "Local top bar"
 msgstr "Barra superior local"
@@ -27079,6 +27186,16 @@ msgid "Re-check"
 msgstr "Verificar novamente"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:87
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:50
+#: modules/gui/qt/network/standardpathmodel.cpp:136
+#: modules/gui/qt/network/standardpathmodel.cpp:146
+#: modules/gui/qt/player/qml/CompactLibrary.qml:77
+#: modules/gui/qt/player/qml/CompactLibrary.qml:291
+msgid "Home"
+msgstr "Início"
+
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:88
 #: modules/gui/qt/medialibrary/qml/VideoGroupDisplay.qml:40
 #: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:73
@@ -27141,6 +27258,16 @@ msgstr "Artistas"
 #: modules/gui/qt/player/qml/CompactLibrary.qml:505
 msgid "Albums"
 msgstr "Álbuns"
+
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:93
+#: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:386
+#: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:207
+#: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:46
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:258
+#: modules/gui/qt/medialibrary/qml/MusicTracksDisplay.qml:28
+msgid "Tracks"
+msgstr "Faixas"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:93
@@ -29248,17 +29375,17 @@ msgstr "Atraso das legendas secundárias"
 msgid "Subtitle Speed"
 msgstr "Velocidade das legendas"
 
-#: modules/gui/qt/player/qml/TracksListPage.qml:53
-#: modules/gui/qt/player/qml/controlbarcontrols/PlaybackSpeedButton.qml:74
-#, c-format
+#: modules/gui/qt/player/qml/TracksListPage.qml:54
+#: modules/gui/qt/player/qml/controlbarcontrols/PlaybackSpeedButton.qml:75
+#, no-c-format
 msgid "%1x"
 msgstr "%1x"
 
-#: modules/gui/qt/player/qml/TracksListPage.qml:99
+#: modules/gui/qt/player/qml/TracksListPage.qml:100
 msgid "Video Tracks"
 msgstr "Faixas de vídeo"
 
-#: modules/gui/qt/player/qml/TracksListPage.qml:216
+#: modules/gui/qt/player/qml/TracksListPage.qml:217
 msgid "Track list"
 msgstr "Lista de faixas"
 
@@ -29450,25 +29577,25 @@ msgstr "A fila está vazia"
 msgid "%1h %2m"
 msgstr "%1h %2m"
 
-#: modules/gui/qt/player/qml/MiniPlayerQueue.qml:105
-#, c-format
+#: modules/gui/qt/player/qml/MiniPlayerQueue.qml:106
+#, no-c-format
 msgid "%1m"
 msgstr "%1m"
 
-#: modules/gui/qt/player/qml/MiniPlayerQueue.qml:106
+#: modules/gui/qt/player/qml/MiniPlayerQueue.qml:107
 msgid "1 item - %1"
 msgstr "1 item - %1"
 
-#: modules/gui/qt/player/qml/MiniPlayerQueue.qml:106
+#: modules/gui/qt/player/qml/MiniPlayerQueue.qml:107
 msgid "%1 items - %2"
 msgstr "%1 itens - %2"
 
-#: modules/gui/qt/player/qml/MiniPlayerQueue.qml:159
+#: modules/gui/qt/player/qml/MiniPlayerQueue.qml:160
 msgid "Remove selected item from queue"
 msgstr "Remover o item selecionado da fila"
 
-#: modules/gui/qt/player/qml/MiniPlayerQueue.qml:165
-#: modules/gui/qt/player/qml/MiniPlayerQueue.qml:167
+#: modules/gui/qt/player/qml/MiniPlayerQueue.qml:166
+#: modules/gui/qt/player/qml/MiniPlayerQueue.qml:168
 msgid "Add files to queue"
 msgstr "Adicionar ficheiros à fila"
 
@@ -29824,7 +29951,7 @@ msgstr "Botões de navegação"
 msgid "change playback speed"
 msgstr "mudar a velocidade de reprodução"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/PlaybackSpeedButton.qml:75
+#: modules/gui/qt/player/qml/controlbarcontrols/PlaybackSpeedButton.qml:76
 msgid "1x"
 msgstr "1x"
 
@@ -30008,7 +30135,8 @@ msgid ""
 "Show an icon in the systray allowing you to control VLC media player for "
 "basic actions."
 msgstr ""
-"Mostra um ícone no tabuleiro do sistema que permite controlar as ações básicas do VLC media player."
+"Mostra um ícone no tabuleiro do sistema que permite controlar as ações "
+"básicas do VLC media player."
 
 #: modules/gui/qt/qt.cpp:180
 msgid "Start VLC with only a systray icon"
@@ -30458,8 +30586,8 @@ msgstr "%1 s"
 msgid "%1h%2"
 msgstr "%1h%2"
 
-#: modules/gui/qt/util/vlctick.cpp:143
-#, c-format
+#: modules/gui/qt/util/vlctick.cpp:144
+#, no-c-format
 msgid "%1ms"
 msgstr "%1ms"
 
@@ -31692,6 +31820,10 @@ msgstr "Soul"
 #: modules/meta_engine/ID3Genres.h:76
 msgid "Punk"
 msgstr "Punk"
+
+#: modules/meta_engine/ID3Genres.h:77
+msgid "Space"
+msgstr "Space"
 
 #: modules/meta_engine/ID3Genres.h:78
 msgid "Meditative"
@@ -37850,6 +37982,177 @@ msgstr ""
 #: share/lua/http/index.html:305
 msgid "Are you sure you wish to create the stream?"
 msgstr "Tem a certeza que deseja criar a transmissão?"
+
+#~ msgid "Backspace"
+#~ msgstr "Apagar"
+
+#~ msgid "Brightness Down"
+#~ msgstr "Diminuir brilho"
+
+#~ msgid "Brightness Up"
+#~ msgstr "Aumentar brilho"
+
+#~ msgid "Browser Back"
+#~ msgstr "Retroceder no navegador"
+
+#~ msgid "Browser Favorites"
+#~ msgstr "Favoritos do navegador"
+
+#~ msgid "Browser Forward"
+#~ msgstr "Avançar no navegador"
+
+#~ msgid "Browser Home"
+#~ msgstr "Página inicial do navegador"
+
+#~ msgid "Browser Refresh"
+#~ msgstr "Recarregar no navegador"
+
+#~ msgid "Browser Search"
+#~ msgstr "Pesquisa do navegador"
+
+#~ msgid "Browser Stop"
+#~ msgstr "Parar do navegador"
+
+#~ msgid "Down"
+#~ msgstr "Baixo"
+
+#~ msgid "End"
+#~ msgstr "Fim da página"
+
+#~ msgid "Enter"
+#~ msgstr "Enter"
+
+#~ msgid "Esc"
+#~ msgstr "Esc"
+
+#~ msgid "F1"
+#~ msgstr "F1"
+
+#~ msgid "F10"
+#~ msgstr "F10"
+
+#~ msgid "F11"
+#~ msgstr "F11"
+
+#~ msgid "F12"
+#~ msgstr "F12"
+
+#~ msgid "F2"
+#~ msgstr "F2"
+
+#~ msgid "F3"
+#~ msgstr "F3"
+
+#~ msgid "F4"
+#~ msgstr "F4"
+
+#~ msgid "F5"
+#~ msgstr "F5"
+
+#~ msgid "F6"
+#~ msgstr "F6"
+
+#~ msgid "F7"
+#~ msgstr "F7"
+
+#~ msgid "F8"
+#~ msgstr "F8"
+
+#~ msgid "F9"
+#~ msgstr "F9"
+
+#~ msgid "Insert"
+#~ msgstr "Insert"
+
+#~ msgid "Media Angle"
+#~ msgstr "Ângulo"
+
+#~ msgid "Media Audio Track"
+#~ msgstr "Faixa de áudio"
+
+#~ msgid "Media Forward"
+#~ msgstr "Avançar"
+
+#~ msgid "Media Menu"
+#~ msgstr "Menu multimédia"
+
+#~ msgid "Media Next Frame"
+#~ msgstr "Fotograma seguinte"
+
+#~ msgid "Media Next Track"
+#~ msgstr "Faixa seguinte"
+
+#~ msgid "Media Play Pause"
+#~ msgstr "Pausar reprodução"
+
+#~ msgid "Media Prev Frame"
+#~ msgstr "Fotograma anterior"
+
+#~ msgid "Media Prev Track"
+#~ msgstr "Faixa anterior"
+
+#~ msgid "Media Record"
+#~ msgstr "Gravar"
+
+#~ msgid "Media Repeat"
+#~ msgstr "Repetição de ficheiros"
+
+#~ msgid "Media Rewind"
+#~ msgstr "Recuar"
+
+#~ msgid "Media Select"
+#~ msgstr "Seleção"
+
+#~ msgid "Media Shuffle"
+#~ msgstr "Aleatório"
+
+#~ msgid "Media Stop"
+#~ msgstr "Parar"
+
+#~ msgid "Media Subtitle"
+#~ msgstr "Legendas do vídeo"
+
+#~ msgid "Media Time"
+#~ msgstr "Tempo"
+
+#~ msgid "Media View"
+#~ msgstr "Ver Média"
+
+#~ msgid "Mouse Wheel Down"
+#~ msgstr "Roda do rato para baixo"
+
+#~ msgid "Mouse Wheel Left"
+#~ msgstr "Roda do Rato para a Esquerda"
+
+#~ msgid "Mouse Wheel Right"
+#~ msgstr "Roda do Rato para a Direita"
+
+#~ msgid "Mouse Wheel Up"
+#~ msgstr "Roda do Rato para Cima"
+
+#~ msgid "Page Down"
+#~ msgstr "Página Abaixo"
+
+#~ msgid "Page Up"
+#~ msgstr "Página Acima"
+
+#~ msgid "Print"
+#~ msgstr "Imprimir"
+
+#~ msgid "Tab"
+#~ msgstr "Tab"
+
+#~ msgid "Up"
+#~ msgstr "Cima"
+
+#~ msgid "Volume Mute"
+#~ msgstr "Sem som"
+
+#~ msgid "Zoom In"
+#~ msgstr "Ampliar"
+
+#~ msgid "Zoom Out"
+#~ msgstr "Reduzir"
 
 #~ msgid "Select \"Advanced Options\" to see all options."
 #~ msgstr "Selecione “Opções avançadas” para ver todas as opções."

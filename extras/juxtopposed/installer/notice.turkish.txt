@@ -1,0 +1,30 @@
+VLC Redesign - resmî olmayan derleme
+
+TASARIM
+Arayüz Juxtopposed tarafından tasarlandı.
+  Video:  https://www.youtube.com/watch?v=ERFeOgqk324
+  Kanal:  https://www.youtube.com/@juxtopposed
+  Figma:  https://www.figma.com/community/file/1691465999134370980
+Juxtopposed'un "VLC Redesign (Community)" çalışması CC BY 4.0 ile
+lisanslanmıştır (https://creativecommons.org/licenses/by/4.0/). Qt/QML'ye
+uyarlanmış, simgeleri yeniden çizilmiş ve değiştirilmiştir. Juxtopposed
+bu derlemeyi onaylamaz.
+
+RESMÎ BİR VLC DEĞİLDİR
+Bu derleme VLC 4.0 (geliştirme sürümü) tabanlıdır. VideoLAN tarafından
+yapılmamıştır, VideoLAN ile bağlantılı değildir ve VideoLAN tarafından
+onaylanmamıştır. VLC, VLC media player ve koni logosu VideoLAN'ın ticari
+markalarıdır. Resmî oynatıcıyı https://www.videolan.org adresinden edinin.
+
+Resmî VLC'ye dokunmadan onun yanına kurulur: ayarları, kitaplığı ve
+geçmişi kendi klasöründe kalır.
+
+LİSANS
+GNU Genel Kamu Lisansı sürüm 2 ya da sonrası kapsamında özgür yazılımdır;
+libVLC GNU LGPL 2.1 ya da sonrası kapsamındadır. Inter ve DM Mono yazı
+tipleri SIL Open Font License 1.1 kapsamındadır. Tam metinler vlc.exe'nin
+yanına kurulur (COPYING.txt, COPYING.LIB.txt, licenses\). Kaynak kodu:
+https://github.com/KuchiSofts/vlc-redesign
+
+Yeniden tasarımın ilk uygulaması: MrDouglax
+(https://github.com/SrDouglax/JuxtopposedVLC).

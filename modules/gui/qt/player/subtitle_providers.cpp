@@ -775,13 +775,13 @@ const QList<Provider> &providers()
 {
     static const QList<Provider> list = {
         { QStringLiteral("opensubtitles"), QStringLiteral("OpenSubtitles"),
-          qtr("All languages · movies and series · finds those made for your file"), true, true, {} },
+          N_("All languages · movies and series · finds those made for your file"), true, true, {} },
         { QStringLiteral("wizdom"), QStringLiteral("Wizdom"),
-          qtr("Hebrew · movies and series"), true, true, QStringLiteral("he") },
+          N_("Hebrew · movies and series"), true, true, QStringLiteral("he") },
         { QStringLiteral("addic7ed"), QStringLiteral("Addic7ed"),
-          qtr("Series · many languages"), false, true, {} },
+          N_("Series · many languages"), false, true, {} },
         { QStringLiteral("yify"), QStringLiteral("YIFY Subtitles"),
-          qtr("Movies · many languages"), true, false, {} },
+          N_("Movies · many languages"), true, false, {} },
     };
     return list;
 }

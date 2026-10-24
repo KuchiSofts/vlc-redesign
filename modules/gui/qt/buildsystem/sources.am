@@ -286,6 +286,7 @@ libqt_plugin_la_SOURCES = \
 	util/proxycolumnmodel.hpp \
 	util/registry.cpp util/registry.hpp \
 	util/renderer_manager.cpp util/renderer_manager.hpp \
+	util/language_change.hpp \
 	util/singleton.hpp \
 	util/soutchain.cpp util/soutchain.hpp \
 	util/validators.cpp util/validators.hpp \

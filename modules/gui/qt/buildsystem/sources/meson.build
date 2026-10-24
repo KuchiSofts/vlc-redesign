@@ -351,6 +351,7 @@ qt_plugin_sources = files(
     '../../util/registry.hpp',
     '../../util/renderer_manager.cpp',
     '../../util/renderer_manager.hpp',
+    '../../util/language_change.hpp',
     '../../util/singleton.hpp',
     '../../util/soutchain.cpp',
     '../../util/soutchain.hpp',

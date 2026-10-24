@@ -11,6 +11,7 @@
 #endif
 
 #include "subtitle_preferences.hpp"
+#include "util/language_change.hpp"
 
 #include <QCollator>
 #include <QHash>
@@ -192,6 +193,8 @@ QString SubtitlePreferences::iso639_2(const QString &code)
 
 QString SubtitlePreferences::name(const QString &code) const
 {
+    // in another language of the interface, the bindings asking are made again
+    markTranslationBinding(this);
     const QString normalized = normalize(code);
     if (const Language *language = findLanguage(normalized))
         return qtr(qtu(language->english));
@@ -207,6 +210,7 @@ QString SubtitlePreferences::nativeName(const QString &code) const
 
 QVariantList SubtitlePreferences::languages() const
 {
+    markTranslationBinding(this);
     QList<QVariantMap> entries;
     for (const Language &language : allLanguages())
         entries.append({ { QStringLiteral("code"), language.code },

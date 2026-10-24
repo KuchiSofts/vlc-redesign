@@ -25,6 +25,7 @@
 #include <vlc_player.h>
 #include <vlc_url.h>
 #include "util/shared_input_item.hpp"
+#include "util/language_change.hpp"
 #include <algorithm>
 #include <QVariant>
 #include <QDesktopServices>
@@ -384,7 +385,6 @@ PlaylistControllerPrivate::PlaylistControllerPrivate(PlaylistController* playlis
     : q_ptr(playlistController)
     , m_playlist(playlist)
 {
-    fillSortKeyTitleList();
 }
 
 PlaylistControllerPrivate::~PlaylistControllerPrivate()
@@ -902,7 +902,10 @@ QVariantList PlaylistController::getSortKeyTitleList() const
 {
     Q_D(const PlaylistController);
 
-    return d->sortKeyTitleList;
+    // the names in another language of the interface: the bindings reading
+    // them are made again
+    markTranslationBinding(this);
+    return d->sortKeyTitleList();
 }
 
 bool PlaylistController::isInitialized() const

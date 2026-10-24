@@ -17,11 +17,14 @@ SettingsSectionTitle {
     property color initialAccent: VLCStyle.redesign.accent
     property string selectedLanguage: "auto"
     property string initialLanguage: "auto"
+    property bool selectedRightToLeft: false
+    property bool initialRightToLeft: false
     readonly property var languages: themeBridge.interfaceLanguages()
     readonly property bool dark: VLCStyle.palette.isDark
     readonly property bool dirty: selectedTheme !== initialTheme
                                   || selectedAccent.toString() !== initialAccent.toString()
                                   || selectedLanguage !== initialLanguage
+                                  || selectedRightToLeft !== initialRightToLeft
 
     readonly property var themeChoices: [
         { text: qsTr("Dark"), index: 2 },
@@ -40,6 +43,8 @@ SettingsSectionTitle {
         selectedAccent = initialAccent
         initialLanguage = themeBridge.interfaceLanguage()
         selectedLanguage = initialLanguage
+        initialRightToLeft = MainCtx.rightToLeft
+        selectedRightToLeft = initialRightToLeft
     }
 
     function chooseTheme(index) {
@@ -54,6 +59,12 @@ SettingsSectionTitle {
         themeBridge.previewInterfaceLanguage(iso)
     }
 
+    // The layout, mirrored at once too
+    function chooseRightToLeft(rightToLeft) {
+        selectedRightToLeft = rightToLeft
+        MainCtx.rightToLeft = rightToLeft
+    }
+
     function chooseAccent(color) {
         selectedAccent = color
         VLCStyle.redesign.accent = color
@@ -64,6 +75,7 @@ SettingsSectionTitle {
         chooseAccent("#D37918")
         // English until one is chosen (Windows), else the system's
         chooseLanguage(languages.length > 0 ? "en" : "auto")
+        chooseRightToLeft(false)
     }
 
     function cancel() {
@@ -73,6 +85,8 @@ SettingsSectionTitle {
         VLCStyle.redesign.accent = initialAccent
         if (selectedLanguage !== initialLanguage)
             chooseLanguage(initialLanguage)
+        if (selectedRightToLeft !== initialRightToLeft)
+            chooseRightToLeft(initialRightToLeft)
     }
 
     function save() {
@@ -83,6 +97,9 @@ SettingsSectionTitle {
         initialTheme = selectedTheme
         initialAccent = selectedAccent
         initialLanguage = selectedLanguage
+        if (selectedRightToLeft !== initialRightToLeft)
+            MainCtx.setSettingValue("redesign/right-to-left", selectedRightToLeft)
+        initialRightToLeft = selectedRightToLeft
     }
 
     function c(value) { return VLCStyle.redesign.color(value, value) }
@@ -93,6 +110,35 @@ SettingsSectionTitle {
         language: root.selectedLanguage
         changed: root.selectedLanguage !== root.initialLanguage
         onChosen: (iso) => root.chooseLanguage(iso)
+    }
+
+    // Layout direction: left to right unless chosen, whatever the language
+    // (a right-to-left language can stay left to right, as many prefer)
+    Item {
+        width: parent.width
+        height: root.px(46)
+        Text {
+            anchors.left: parent.left
+            anchors.right: directionChoice.left
+            anchors.rightMargin: root.px(12)
+            anchors.baseline: parent.verticalCenter
+            anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
+            text: qsTr("Layout direction")
+            color: root.c("#8F8F8F")
+            font.family: VLCStyle.redesign.fontFamily
+            font.pixelSize: root.px(14)
+            elide: Text.ElideRight
+        }
+        SettingsSegmented {
+            id: directionChoice
+            anchors.right: parent.right
+            anchors.verticalCenter: parent.verticalCenter
+            width: Math.min(root.px(320), parent.width * 0.46)
+            options: [{ text: qsTr("Left to right"), value: false },
+                      { text: qsTr("Right to left"), value: true }]
+            value: root.selectedRightToLeft
+            onChosen: (value) => root.chooseRightToLeft(value)
+        }
     }
 
     // Theme: the Values component of the design (Dark, Light, System)

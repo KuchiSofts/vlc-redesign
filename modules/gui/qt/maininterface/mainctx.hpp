@@ -124,6 +124,10 @@ class MainCtx : public QObject
     Q_PROPERTY(bool hasToolbarMenu READ hasToolbarMenu WRITE setHasToolbarMenu NOTIFY hasToolbarMenuChanged FINAL)
     Q_PROPERTY(bool canShowVideoPIP READ canShowVideoPIP CONSTANT FINAL)
     Q_PROPERTY(bool pinVideoControls READ pinVideoControls WRITE setPinVideoControls NOTIFY pinVideoControlsChanged FINAL)
+    // The layout right to left (Settings > Appearance), whatever the
+    // language: left to right unless chosen. Shown at once; the setting
+    // (redesign/right-to-left) is saved by Settings
+    Q_PROPERTY(bool rightToLeft READ rightToLeft WRITE setRightToLeft NOTIFY rightToLeftChanged FINAL)
     Q_PROPERTY(bool seekThumbnail READ seekThumbnail NOTIFY seekThumbnailChanged FINAL)
     Q_PROPERTY(float pinOpacity READ pinOpacity WRITE setPinOpacity NOTIFY pinOpacityChanged FINAL)
     Q_PROPERTY(ControlbarProfileModel* controlbarProfileModel READ controlbarProfileModel CONSTANT FINAL)
@@ -269,6 +273,7 @@ public:
     inline void setCanShowVideoPIP(bool canShowVideoPIP) { m_canShowVideoPIP = canShowVideoPIP; }
 
     inline bool pinVideoControls() const { return m_pinVideoControls; }
+    inline bool rightToLeft() const { return m_rightToLeft; }
     inline bool seekThumbnail() const { return m_seekThumbnail; }
     inline float pinOpacity() const { return m_pinOpacity; }
 
@@ -567,6 +572,7 @@ protected:
     // the language last applied (applyInterfaceLanguage): empty, the one VLC
     // started in
     QString m_interfaceLanguage;
+    bool m_rightToLeft = false;
 
     SearchCtx* m_search = nullptr;
     SortCtx* m_sort = nullptr;
@@ -603,6 +609,7 @@ public slots:
     void setHasToolbarMenu( bool );
 
     void setPinVideoControls( bool );
+    void setRightToLeft( bool );
     void setPinOpacity( float );
 
     void setbgCone(bool);
@@ -670,6 +677,7 @@ signals:
     void interfaceLanguageChanged();
 
     void pinVideoControlsChanged();
+    void rightToLeftChanged();
     void seekThumbnailChanged();
     void pinOpacityChanged();
 

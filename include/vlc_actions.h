@@ -292,4 +292,15 @@ VLC_API const char* const*
 vlc_actions_get_key_names(vlc_object_t *p_obj);
 #define vlc_actions_get_key_names(x) vlc_actions_get_key_names(VLC_OBJECT(x))
 
+/**
+ * Reads the key bindings of the configuration again (the hotkeys, the global
+ * hotkeys, the mouse wheels): the next keys pressed are mapped with them.
+ *
+ * The global hotkeys registered with the system by an interface stay as they
+ * are until it starts again.
+ */
+VLC_API void
+vlc_actions_reload(vlc_object_t *p_obj);
+#define vlc_actions_reload(x) vlc_actions_reload(VLC_OBJECT(x))
+
 #endif

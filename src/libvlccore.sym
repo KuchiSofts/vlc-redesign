@@ -248,6 +248,7 @@ vlc_readdir_helper_init
 vlc_readdir_helper_finish
 vlc_readdir_helper_additem
 intf_Create
+intf_DestroyByName
 libvlc_InternalAddIntf
 libvlc_InternalPlay
 libvlc_InternalCleanup
@@ -299,6 +300,7 @@ vlc_memstream_printf
 vlc_ntp_time
 vlc_Log
 vlc_LogSet
+vlc_LogReload
 vlc_vaLog
 vlc_tracer_Create
 vlc_tracer_Destroy
@@ -534,6 +536,7 @@ video_format_Print
 vlc_actions_get_id
 vlc_actions_get_key_names
 vlc_actions_get_keycodes
+vlc_actions_reload
 vlc_b64_decode
 vlc_b64_decode_binary
 vlc_b64_decode_binary_to_buffer

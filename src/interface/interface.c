@@ -45,6 +45,7 @@
 #include <vlc_playlist.h>
 #include "../libvlc.h"
 #include "../lib/libvlc_internal.h"
+#include "../modules/modules.h"
 
 static int AddIntfCallback( vlc_object_t *, char const *,
                             vlc_value_t , vlc_value_t , void * );
@@ -248,6 +249,55 @@ void intf_DestroyAll(libvlc_int_t *libvlc)
         vlc_mutex_lock(&priv->lock);
     }
     vlc_mutex_unlock(&priv->lock);
+}
+
+/* Whether an interface runs a module of this name (one of its shortcuts, as
+ * intf_Create() looks the module up) */
+static bool intf_HasName(const intf_thread_t *intf, const char *name)
+{
+    const module_t *module = intf->p_module;
+
+    for (unsigned i = 0; i < module->i_shortcuts; i++)
+        if (strcasecmp(module->pp_shortcuts[i], name) == 0)
+            return true;
+    return false;
+}
+
+/**
+ * Stops and destroys the interfaces of a module, the other ones going on:
+ * the ones started with VLC, by intf_Create() or "intf-add".
+ *
+ * Not from the thread of one of these interfaces (it waits for them to end).
+ *
+ * @param libvlc the LibVLC instance
+ * @param name a name of the module ("http"), as intf_Create() takes it
+ * @return the number of interfaces destroyed
+ */
+int intf_DestroyByName(libvlc_int_t *libvlc, const char *name)
+{
+    libvlc_priv_t *priv = libvlc_priv(libvlc);
+    int count = 0;
+
+    for (;;)
+    {
+        /* out of the list first: intf_DestroyAll() can't take it too */
+        vlc_mutex_lock(&priv->lock);
+        intf_thread_t *intf, **pp = &priv->interfaces;
+        while ((intf = *pp) != NULL && !intf_HasName(intf, name))
+            pp = &intf->p_next;
+        if (intf != NULL)
+            *pp = intf->p_next;
+        vlc_mutex_unlock(&priv->lock);
+
+        if (intf == NULL)
+            return count;
+
+        module_unneed(intf, intf->p_module);
+        config_ChainDestroy(intf->p_cfg);
+        var_DelCallback(intf, "intf-add", AddIntfCallback, NULL);
+        vlc_object_delete(intf);
+        count++;
+    }
 }
 
 /* Following functions are local */

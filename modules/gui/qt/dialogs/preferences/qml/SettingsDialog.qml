@@ -466,7 +466,8 @@ Dialog {
                     }
                     SettingsActionRow {
                         visible: shortcutsSection.searching && shortcutResults.count > shortcutsSection.shown
-                        label: qsTr("%1 more matching shortcuts").arg(shortcutResults.count - shortcutsSection.shown)
+                        label: qsTr("%1 more matching shortcut", "%1 more matching shortcuts", shortcutResults.count - shortcutsSection.shown)
+                               .arg(shortcutResults.count - shortcutsSection.shown)
                         buttonText: qsTr("Show all")
                         buttonWidth: root.px(200)
                         onClicked: root.shortcutsDialog().openWithSearch(searchField.text)

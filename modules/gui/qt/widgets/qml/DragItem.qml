@@ -627,10 +627,10 @@ Item {
                     if (name && name.length > 0)
                         return name + extra
                     else
-                        return qsTr("1 selected")
+                        return qsTr("%1 selected", "%1 selected", 1).arg(1)
                 }
             } else {
-                return qsTr("%1 selected").arg(dragItem._indexesSize)
+                return qsTr("%1 selected", "%1 selected", dragItem._indexesSize).arg(dragItem._indexesSize)
             }
         }
         color: theme.fg.secondary

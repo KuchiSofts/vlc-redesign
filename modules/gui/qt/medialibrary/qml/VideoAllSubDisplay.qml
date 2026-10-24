@@ -109,7 +109,7 @@ Widgets.PageExt {
 
         // VideoAll events reimplementation
 
-        function getLabelGroup(model, string) {
+        function getLabelGroup(model) {
             if (!model) return ""
 
             const count = model.count
@@ -117,10 +117,12 @@ Widgets.PageExt {
             if (count === 1) {
                 return getLabel(model)
             } else {
+                // the plural form of the number shown ("99+" as 99)
+                const label = qsTr("%1 Video", "%1 Videos", Math.min(count, 99))
                 if (count < 100)
-                    return [ string.arg(count) ]
+                    return [ label.arg(count) ]
                 else
-                    return [ string.arg("99+") ]
+                    return [ label.arg("99+") ]
             }
         }
 
@@ -196,7 +198,7 @@ Widgets.PageExt {
                 }
 
                 property var gridLabels: function (model) {
-                    return videoAll.getLabelGroup(model, qsTr("%1 Videos"))
+                    return videoAll.getLabelGroup(model)
                 }
 
                 property bool showGroupCountColumn: true
@@ -255,7 +257,7 @@ Widgets.PageExt {
                 }
 
                 property var gridLabels: function (model) {
-                    return videoAll.getLabelGroup(model, qsTr("%1 Videos"))
+                    return videoAll.getLabelGroup(model)
                 }
 
                 property bool showGroupCountColumn: true

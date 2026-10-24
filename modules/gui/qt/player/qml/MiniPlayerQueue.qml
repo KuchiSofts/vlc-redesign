@@ -104,7 +104,7 @@ Item {
             const length = minutes >= 60 ? qsTr("%1h %2m").arg(Math.floor(minutes / 60)).arg(minutes % 60)
                                          // xgettext:no-c-format
                                          : qsTr("%1m").arg(minutes)
-            return (count === 1 ? qsTr("1 item - %1") : qsTr("%1 items - %2").arg(count)).arg(length)
+            return qsTr("%1 item", "%1 items", count).arg(count) + " - " + length
         }
         color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
         elide: Text.ElideRight

@@ -69,12 +69,12 @@ public:
     PlaylistController::SortKey m_sortKey = PlaylistController::SORT_KEY_NONE;
     PlaylistController::SortOrder m_sortOrder = PlaylistController::SORT_ORDER_ASC;
 
-    QVariantList sortKeyTitleList;
-
-private:
-    inline void fillSortKeyTitleList()
+    // The sort keys and their names, in the language of the interface (made
+    // when asked: it changes while VLC runs)
+    inline QVariantList sortKeyTitleList() const
     {
-        auto filler = [this](PlaylistController::SortKey key, const QString& text) {
+        QVariantList sortKeyTitleList;
+        auto filler = [&sortKeyTitleList](PlaylistController::SortKey key, const QString& text) {
             QVariantMap map;
             map.insert("criteria", key);
             map.insert("text", text);
@@ -94,6 +94,7 @@ private:
         filler(PlaylistController::SORT_KEY_RATING, qtr("Rating"));
         filler(PlaylistController::SORT_KEY_FILE_SIZE, qtr("File size"));
         filler(PlaylistController::SORT_KEY_FILE_MODIFIED, qtr("File modified"));
+        return sortKeyTitleList;
     }
 };
 

@@ -11,6 +11,7 @@
 #endif
 
 #include "subtitle_finder.hpp"
+#include "util/language_change.hpp"
 
 #include <QCryptographicHash>
 #include <QDateTime>
@@ -1231,6 +1232,8 @@ void SubtitleFinder::finishSearch()
 
 QVariantList SubtitleFinder::services() const
 {
+    // in another language of the interface, the bindings asking are made again
+    markTranslationBinding(this);
     QVariantList list;
     for (const SubtitleProviders::Provider &provider : SubtitleProviders::providers())
     {
@@ -1238,7 +1241,7 @@ QVariantList SubtitleFinder::services() const
         list.append(QVariantMap{
             { QStringLiteral("id"), provider.id },
             { QStringLiteral("name"), provider.name },
-            { QStringLiteral("detail"), provider.detail },
+            { QStringLiteral("detail"), qfut(provider.detail) },
             { QStringLiteral("enabled"), serviceEnabled(provider.id) },
             { QStringLiteral("busy"), run != m_runs.constEnd() && run->busy },
             { QStringLiteral("count"), run != m_runs.constEnd() ? run->count : -1 },

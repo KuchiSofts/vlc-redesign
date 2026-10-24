@@ -20,6 +20,7 @@
 #endif
 
 #include "renderer_manager.hpp"
+#include "maininterface/mainctx.hpp"
 
 #include <QApplication>
 #include <QRegularExpression>
@@ -429,6 +430,12 @@ public:
             return;
         m_castStatus = status;
         m_castError = error;
+        // the message of a failed cast in another language of the interface
+        if ( status == RendererManager::CastFailed && !m_languageConnection && p_intf->p_mi )
+            m_languageConnection = QObject::connect( p_intf->p_mi, &MainCtx::interfaceLanguageChanged, q, [this]() {
+                if ( m_castStatus == RendererManager::CastFailed )
+                    emit q_ptr->castStatusChanged();    // (its message)
+            });
         emit q->castStatusChanged();
     }
 
@@ -787,6 +794,8 @@ public:
     RendererManager::CastStatus m_castStatus = RendererManager::CastIdle;
     // why it failed (see "renderer-state")
     QString m_castError;
+    // to MainCtx::interfaceLanguageChanged, from the first failure
+    QMetaObject::Connection m_languageConnection;
     // paused when the device failed, until the user chooses
     bool m_pausedForFailure = false;
     QStringList m_hidden;

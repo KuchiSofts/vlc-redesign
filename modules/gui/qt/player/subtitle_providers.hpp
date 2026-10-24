@@ -62,7 +62,8 @@ struct Provider
 {
     QString id;
     QString name;          // "OpenSubtitles"
-    QString detail;        // what it has ("All languages · movies and series")
+    const char *detail;    // what it has ("All languages · movies and series"),
+                           // untranslated (N_()): shown in the interface language
     bool movies;
     bool series;
     QString onlyLanguage;  // its only language ("he"), empty: all

@@ -12,6 +12,11 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-10-25):
 
+- 🟡 **A rare crash at shutdown on GitHub's runner**: the launch test ended once with `0xC000041D` (a crash inside a
+  window's message handling) on Windows Server 2022 without a GPU, and passed when run again with the same files.
+  Not reproduced in 110 runs on this PC and in Windows Sandbox. Done so the next one can be read: the log file keeps
+  its last lines on a crash (build 204, checked by killing VLC: every line kept, against a cut at 4 KB before), and
+  the CI job keeps a crash dump. Next: read the dump when it crashes again.
 - 🟢 **Languages**: 72 languages and British English cover the whole interface: every language the list offers
   (the last 13 done on 2026-10-25; in build 197 and later). VLC's other catalogs follow as "(partial)".
 - 🟡 **The direction comes with the language**: choosing a right-to-left language (in Settings, the classic

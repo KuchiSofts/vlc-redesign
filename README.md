@@ -155,6 +155,7 @@ Every option is explained in the **[wiki](https://github.com/KuchiSofts/vlc-rede
 list and its status are in [`platforms.yml`](platforms.yml).
 
 Go to **[Releases](https://github.com/KuchiSofts/vlc-redesign/releases/latest)** and pick one:
+Windows 10 or 11, 64-bit. Windows files: [Code signing policy](https://github.com/KuchiSofts/vlc-redesign/blob/main/CODE_SIGNING_POLICY.md).
 
 | | |
 |---|---|
@@ -245,6 +246,13 @@ when it applies cleanly, or an issue listing the conflicting files when it doesn
 - **Fonts:** [Inter](https://github.com/rsms/inter) and [DM Mono](https://github.com/googlefonts/dm-mono), SIL Open Font License 1.1
 
 Details in [CREDITS.md](CREDITS.md).
+
+## Code signing policy
+
+Free code signing provided by [SignPath.io](https://about.signpath.io/), certificate by
+[SignPath Foundation](https://signpath.org/). What is signed, the team roles and the privacy policy:
+[CODE_SIGNING_POLICY.md](CODE_SIGNING_POLICY.md). Until the first signed release, the files are unsigned and their
+SHA-256 is listed in `SHA256SUMS.txt`.
 
 ## License
 

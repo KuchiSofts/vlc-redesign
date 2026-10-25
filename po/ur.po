@@ -36426,3 +36426,7 @@ msgstr ""
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "اکثر استعمال شدہ"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "اسنیپ شاٹ کی اونچائی (0: متناسب، ‎-1: اصل)"

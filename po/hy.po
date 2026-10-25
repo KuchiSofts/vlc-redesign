@@ -45844,3 +45844,7 @@ msgstr ""
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Հաճախ օգտագործվող"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Լուսանկարի բարձրություն (0՝ համամասնական, -1՝ սկզբնական)"

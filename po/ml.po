@@ -43995,3 +43995,7 @@ msgstr "നിങ്ങള്‍ സ്ട്രീം സൃഷ്ടിക്�
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "പതിവായി ഉപയോഗിക്കുന്നത്"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "സ്നാപ്‌ഷോട്ടിന്റെ ഉയരം (0: ആനുപാതികം, -1: യഥാർത്ഥം)"

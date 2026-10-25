@@ -173,6 +173,14 @@ QVariantList presetChoices(const QString &key, const QVariant &current)
         add(QVariant::fromValue<int64_t>(200 * 1024 * 1024), qtr("Large"));
         if (!listed)
             add(current, qtr("%1 MiB").arg(current.toLongLong() / (1024 * 1024)));
+    } else if (key == QLatin1String("mouse-pause-policy")) {
+        // VLC pauses on the release for "auto" and "pause-on-released"
+        // alike (es_out.c): one choice for both, the other kept for a
+        // profile that has it
+        add(QStringLiteral("auto"), qtr("Auto"));
+        add(QStringLiteral("disabled"), qtr("Disabled"));
+        if (!listed)
+            add(current, current.toString());
     } else if (key == QLatin1String("snapshot-width")) {
         add(QVariant::fromValue<int64_t>(-1), qtr("Same as video"));
         for (int64_t width : { 3840, 1920, 1280, 640 })
@@ -922,6 +930,19 @@ bool ConfigModel::setValue(const QString &key, const QVariant &value)
             showSubtitlePosition(m_ctx, normalized.toLongLong());
         if (key == QLatin1String("pitch-shift"))
             setFilter(QStringLiteral("scaletempo_pitch"), normalized.toFloat() != 0.f);
+        // a snapshot width chosen (Size): the height follows it (0), else
+        // VLC keeps the video's own height (-1) and the snapshot is
+        // stretched; "Same as video" gives the height back to the video
+        if (key == QLatin1String("snapshot-width")) {
+            const int height = indexOfKey(QStringLiteral("snapshot-height"));
+            if (height >= 0) {
+                const qlonglong current = m_entries[height].staged.toLongLong();
+                if (normalized.toLongLong() > 0 && current == -1)
+                    setValue(QStringLiteral("snapshot-height"), QVariant::fromValue<int64_t>(0));
+                else if (normalized.toLongLong() < 0 && current == 0)
+                    setValue(QStringLiteral("snapshot-height"), QVariant::fromValue<int64_t>(-1));
+            }
+        }
         // Size values: the size of the other way back to its default (both
         // apply together in VLC: pixels times the scale)
         if (key == QLatin1String("redesign/subtitle-size-mode")) {
@@ -1528,7 +1549,8 @@ void ConfigModel::buildEntries()
                  || entry.key == QLatin1String("sub-text-scale") || entry.key == QLatin1String("sub-margin")
                  || entry.key == QLatin1String("freetype-shadow-distance")
                  || entry.key == QLatin1String("postproc-q") || entry.key == QLatin1String("codec")
-                 || entry.key == QLatin1String("input-timeshift-granularity"))
+                 || entry.key == QLatin1String("input-timeshift-granularity")
+                 || entry.key == QLatin1String("mouse-pause-policy"))
             entry.choices = presetChoices(entry.key, entry.current);
         // Colors of the subtitles: any color (a field of the design)
         else if (entry.key.startsWith(QLatin1String("freetype-")) && entry.key.endsWith(QLatin1String("color")))

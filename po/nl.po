@@ -52227,3 +52227,7 @@ msgstr "Weet u zeker dat u de stream wilt aanmaken?"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Vaak gebruikt"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Hoogte van de momentopname (0: proportioneel, -1: origineel)"

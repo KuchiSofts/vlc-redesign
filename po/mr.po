@@ -44248,3 +44248,7 @@ msgstr "तुम्हाला प्रवाह तयार करायच
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "वारंवार वापरलेली"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "स्नॅपशॉटची उंची (0: प्रमाणात, -1: मूळ)"

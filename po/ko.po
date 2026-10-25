@@ -52819,3 +52819,7 @@ msgstr "스트림을 생성할까요?"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "자주 사용"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "스냅샷 높이 (0: 비율 유지, -1: 원본)"

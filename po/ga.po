@@ -40518,3 +40518,7 @@ msgstr "An bhfuil tú cinnte gur mian leat an sruth a chruthú?"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Úsáidtear go minic"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Airde an ghrianghraif (0: comhréireach, -1: bunaidh)"

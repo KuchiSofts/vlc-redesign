@@ -45987,3 +45987,7 @@ msgstr "您確定要建立串流嗎？"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "常用"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "快照高度（0：按比例，-1：原始）"

@@ -45508,3 +45508,7 @@ msgstr "Vai jūs esat pārliecināts, ka vēlaties izveidot straumi?"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Bieži lietota"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Momentuzņēmuma augstums (0: proporcionāli, -1: sākotnējais)"

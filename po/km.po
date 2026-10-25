@@ -48242,3 +48242,7 @@ msgstr "តើ​អ្នក​ពិតជា​ចង់​បង្កើត
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "ប្រើញឹកញាប់"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "កម្ពស់រូបថត (0: តាមសមាមាត្រ, -1: ដើម)"

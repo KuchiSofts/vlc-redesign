@@ -49472,3 +49472,7 @@ msgstr "Jeste li sigurni da želite stvoriti to strujanje?"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Često korišten"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Visina snimke (0: proporcionalno, -1: izvorna)"

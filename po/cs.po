@@ -40146,3 +40146,7 @@ msgstr "Opravdu si přejete vytvořit proud?"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Často používaný"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Výška snímku (0: poměrně, -1: původní)"

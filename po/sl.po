@@ -52063,3 +52063,7 @@ msgstr "Ali res želite ustvariti pretok?"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Pogosto uporabljen"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Višina posnetka (0: sorazmerno, -1: izvirna)"

@@ -25,17 +25,111 @@
 #include <string.h>
 
 #include <vlc_common.h>
+#include <vlc_charset.h>
 #include <vlc_configuration.h>
 #include <vlc_network.h>
 #include <vlc_url.h>
 
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
+# include <windows.h>
+# include <winhttp.h>
+
+/* Whether the host of the URL is in the bypass list of Windows (entries
+ * separated by ';' or spaces: a host, "*.example.com", or "<local>" for the
+ * names without a dot) */
+static bool BypassesProxy(const char *bypass, const char *url)
+{
+    vlc_url_t parsed;
+    if (vlc_UrlParse(&parsed, url) != 0 || parsed.psz_host == NULL)
+    {
+        vlc_UrlClean(&parsed);
+        return false;
+    }
+    const char *host = parsed.psz_host;
+    const size_t hostlen = strlen(host);
+    bool bypassed = false;
+
+    for (const char *p = bypass; *p != '\0' && !bypassed; )
+    {
+        size_t len = strcspn(p, "; \t");
+        if (len == 7 && !strncasecmp(p, "<local>", 7))
+            bypassed = strchr(host, '.') == NULL;
+        else if (len > 1 && p[0] == '*')
+        {   /* "*.example.com": the end of the host */
+            size_t suffix = len - 1;
+            bypassed = hostlen >= suffix
+                    && !strncasecmp(host + hostlen - suffix, p + 1, suffix);
+        }
+        else if (len > 0)
+            bypassed = len == hostlen && !strncasecmp(host, p, len);
+        p += len;
+        p += strspn(p, "; \t");
+    }
+    vlc_UrlClean(&parsed);
+    return bypassed;
+}
+
+/* The proxy of Windows' settings (Settings > Network > Proxy, manual setup),
+ * for the scheme of the URL: "proxy:8080", or "http=a:1;https=b:2" with an
+ * entry per scheme; NULL for none. An automatic setup script (PAC) is not
+ * followed. */
+static char *SystemProxy(const char *url)
+{
+    WINHTTP_CURRENT_USER_IE_PROXY_CONFIG config;
+    if (!WinHttpGetIEProxyConfigForCurrentUser(&config))
+        return NULL;
+
+    char *proxy = NULL;
+    char *list = config.lpszProxy ? FromWide(config.lpszProxy) : NULL;
+    char *bypass = config.lpszProxyBypass ? FromWide(config.lpszProxyBypass) : NULL;
+
+    if (list != NULL && (bypass == NULL || !BypassesProxy(bypass, url)))
+    {
+        const char *scheme = strncasecmp(url, "https:", 6) ? "http=" : "https=";
+        const char *entry = list;
+        if (strchr(list, '=') != NULL)
+        {   /* entries per scheme: this one's, else http's */
+            entry = strstr(list, scheme);
+            if (entry == NULL)
+                entry = strstr(list, "http=");
+            if (entry != NULL)
+                entry = strchr(entry, '=') + 1;
+        }
+        if (entry != NULL)
+        {
+            size_t len = strcspn(entry, "; ");
+            if (len > 0 && asprintf(&proxy, "%s%.*s",
+                                    strstr(entry, "://") ? "" : "http://",
+                                    (int)len, entry) < 0)
+                proxy = NULL;
+        }
+    }
+
+    free(list);
+    free(bypass);
+    if (config.lpszProxy)
+        GlobalFree(config.lpszProxy);
+    if (config.lpszProxyBypass)
+        GlobalFree(config.lpszProxyBypass);
+    if (config.lpszAutoConfigUrl)
+        GlobalFree(config.lpszAutoConfigUrl);
+    return proxy;
+}
+#endif
+
 char *vlc_getProxyUrl(const char *psz_url)
 {
-    VLC_UNUSED(psz_url);
-
     char *proxy = config_GetPsz( "http-proxy" );
-    if (proxy == NULL)
+    if (proxy == NULL || *proxy == '\0')
+    {
+        /* no proxy of VLC's own: the one of Windows */
+        free(proxy);
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
+        return psz_url != NULL ? SystemProxy(psz_url) : NULL;
+#else
         return NULL;
+#endif
+    }
 
     char *proxy_pwd = config_GetPsz( "http-proxy-pwd" );
     if (proxy_pwd == NULL)
@@ -57,54 +151,5 @@ char *vlc_getProxyUrl(const char *psz_url)
 
     free (proxy_pwd);
     free (proxy);
-
-#if 0
-    /* Try to get the proxy server address from Windows internet settings. */
-    HKEY h_key;
-
-    /* Open the key */
-    if( RegOpenKeyEx( HKEY_CURRENT_USER, "Software\\Microsoft"
-                      "\\Windows\\CurrentVersion\\Internet Settings",
-                      0, KEY_READ, &h_key ) == ERROR_SUCCESS )
-        return NULL;
-
-    DWORD len = sizeof( DWORD );
-    BYTE proxyEnable;
-
-    /* Get the proxy enable value */
-    if( RegQueryValueEx( h_key, "ProxyEnable", NULL, NULL,
-                         &proxyEnable, &len ) != ERROR_SUCCESS
-     || !proxyEnable )
-        goto out;
-
-    /* Proxy is enabled */
-    /* Get the proxy URL :
-       Proxy server value in the registry can be something like "address:port"
-       or "ftp=address1:port1;http=address2:port2 ..."
-       depending of the configuration. */
-    unsigned char key[256];
-
-    len = sizeof( key );
-    if( RegQueryValueEx( h_key, "ProxyServer", NULL, NULL,
-                         key, &len ) == ERROR_SUCCESS )
-    {
-        /* FIXME: This is lame. The string should be tokenized. */
-#warning FIXME.
-        char *psz_proxy = strstr( (char *)key, "http=" );
-        if( psz_proxy != NULL )
-        {
-            psz_proxy += 5;
-            char *end = strchr( psz_proxy, ';' );
-            if( end != NULL )
-                *end = '\0';
-        }
-        else
-            psz_proxy = (char *)key;
-        proxy_url = strdup( psz_proxy );
-    }
-
-out:
-    RegCloseKey( h_key );
-#endif
     return proxy_url;
 }

@@ -50201,3 +50201,7 @@ msgstr "Naozaj chcete vytvoriť stream?"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Často používaný"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Výška snímky (0: pomerne, -1: pôvodná)"

@@ -71,6 +71,7 @@ min_windows_version_test = '''
     libvlccore_deps += cc.find_library('normaliz')
     if not have_win_store
         libvlccore_deps += cc.find_library('winmm')
+        libvlccore_deps += cc.find_library('winhttp')
     else
         libvlccore_deps += cc.find_library('runtimeobject')
     endif

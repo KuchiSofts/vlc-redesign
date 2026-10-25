@@ -39182,3 +39182,7 @@ msgstr "ליצור את התזרים?"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "בשימוש תדיר"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "גובה צילום המסך (0: יחסי, ‎-1: מקורי)"

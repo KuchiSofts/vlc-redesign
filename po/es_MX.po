@@ -44743,3 +44743,7 @@ msgstr "¿Seguro que desea crear la emisión?"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Usado con frecuencia"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Altura de la captura (0: proporcional, -1: original)"

@@ -46098,3 +46098,7 @@ msgstr "Ești sigur că dorești să creezi fluxul?"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Folosită des"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Înălțimea capturii (0: proporțională, -1: originală)"

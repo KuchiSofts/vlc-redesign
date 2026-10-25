@@ -43461,3 +43461,7 @@ msgstr "શું તમે ખરેખર સ્ટ્રીમને બન�
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "વારંવાર વપરાયેલી"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "સ્નેપશોટની ઊંચાઈ (0: પ્રમાણસર, -1: મૂળ)"

@@ -44028,3 +44028,7 @@ msgstr "ನೀವು ಸ್ಟ್ರೀಮ್ ರಚಿಸಲು ಖಚಿ
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "ಆಗಾಗ ಬಳಸಿದ್ದು"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "ಸ್ನ್ಯಾಪ್‌ಶಾಟ್ ಎತ್ತರ (0: ಅನುಪಾತದಂತೆ, -1: ಮೂಲ)"

@@ -1,15 +1,16 @@
 **[VLC Redesign](Home)**
 
 **Get it**
-- [Installation](Installation)
-- [Updates](Updates)
+- [Install and update](Install-and-Update)
+- [Updates](Install-and-Update#small-updates)
 
 **Use it**
 - [The player](The-Player)
 - [Library](Library)
-- [Queue and playlists](Queue-and-Playlists)
+- [Queue and playlists](The-Player#the-queue-card)
 - [Subtitles](Subtitles)
-- [Audio and video](Audio-and-Video)
+- [Effects](Effects)
+- [Languages](Languages)
 - [Customize the player](Customize-the-Player)
 - [Colours and themes](Colours-and-Themes)
 - [Keyboard shortcuts](Keyboard-Shortcuts)
@@ -36,6 +37,7 @@
 
 **Help**
 - [Troubleshooting and FAQ](Troubleshooting-and-FAQ)
+- [Platforms](Platforms)
 - [Building from source](Building-from-Source)
 - [Design check](Design-Check)
 - [Credits and license](Credits-and-License)

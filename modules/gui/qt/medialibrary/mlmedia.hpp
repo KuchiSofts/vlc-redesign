@@ -60,6 +60,19 @@ public:
 
         m_title = qfu(media->psz_title);
         m_fileName = qfu(media->psz_filename);
+        // a media without a title is named by its file: shown without the
+        // extension ("Sintel", not "Sintel.mp4"); a dot that ends no
+        // extension ("Mr. Robot") stays
+        if (m_title == m_fileName)
+        {
+            const qsizetype dot = m_title.lastIndexOf('.');
+            const qsizetype length = m_title.size() - dot - 1;
+            bool extension = dot > 0 && length >= 2 && length <= 5;
+            for (qsizetype i = dot + 1; extension && i < m_title.size(); ++i)
+                extension = m_title[i].isLetterOrNumber() && m_title[i].unicode() < 128;
+            if (extension)
+                m_title.truncate(dot);
+        }
         m_smallThumbnail = getThumbnail(media->thumbnails[VLC_ML_THUMBNAIL_SMALL]);
         m_bannerThumbnail = getThumbnail(media->thumbnails[VLC_ML_THUMBNAIL_BANNER]);
         m_duration = media->i_duration >= 0

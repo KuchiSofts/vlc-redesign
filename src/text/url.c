@@ -177,7 +177,9 @@ char *vlc_path2uri (const char *path, const char *scheme)
 
     char *buf;
 
-#ifdef __OS2__
+#if defined (_WIN32) || defined (__OS2__)
+    /* Windows takes '/' as a separator too ("C:/Videos/film.mkv"): the
+     * drive letter and the UNC paths below expect DIR_SEP_CHAR */
     char p[strlen (path) + 1];
 
     for (buf = p; *path; buf++, path++)
@@ -198,6 +200,7 @@ char *vlc_path2uri (const char *path, const char *scheme)
         if (path[0] != DIR_SEP_CHAR)
         {
             // Warning: Drive letter-relative path not implemented!
+            free (buf);
             errno = ENOTSUP;
             return NULL;
         }

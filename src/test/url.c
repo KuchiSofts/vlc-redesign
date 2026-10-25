@@ -209,6 +209,14 @@ int main (void)
                "file:///C:/Users/john/music.ogg");
     test_path ("\\\\server\\share\\dir\\file.ext",
                "file://server/share/dir/file.ext");
+    /* Windows takes '/' as a separator too */
+    test_path ("C:/Users/john/music.ogg",
+               "file:///C:/Users/john/music.ogg");
+    test_path ("C:\\Users/john\\music.ogg",
+               "file:///C:/Users/john/music.ogg");
+    test_path ("//server/share/dir/file.ext",
+               "file://server/share/dir/file.ext");
+    test_path ("C:music.ogg", NULL);
 #endif
 
     /*int fd = open (".", O_RDONLY);

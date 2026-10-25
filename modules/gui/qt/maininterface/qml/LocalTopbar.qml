@@ -238,7 +238,9 @@ T.ToolBar {
             width: Math.max(0, parent.width - 2 * Math.max(navigationButtons.width, root._showCSD ? csdButtons.width : 0)
                             - 2 * VLCStyle.margin_normal)
             height: parent.height
-            text: Player.title || qsTr("VLC Media Player")
+            // what plays (or is paused); stopped, the app's name again (the
+            // player keeps the last media's title after a stop)
+            text: (Player.isStarted && Player.title) || qsTr("VLC Media Player")
             color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, theme.fg.primary)
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.redesign.fontNormal

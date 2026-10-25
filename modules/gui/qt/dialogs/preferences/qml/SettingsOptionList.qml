@@ -103,7 +103,9 @@ Column {
 
     Repeater {
         id: optionsRepeater
-        model: root.settingsModel
+        // A list not shown makes no rows (the dialog has four over the
+        // options of the page: of other pages, Advanced Options closed)
+        model: root.visible ? root.settingsModel : null
         delegate: Column {
             width: root.width
             spacing: 0

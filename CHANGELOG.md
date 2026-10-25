@@ -239,7 +239,8 @@ file name of the player bar.
   with − and + (and Reset). The subtitles move and grow on the video as you click, and stay so for the next
   videos and the next starts, as Shift+Up and Shift+Down already kept the position (Ctrl+wheel's size is kept now
   too). The font, colours, outline, shadow and size chosen in Settings now reach the video already playing, from
-  its next line (before: from the next video, the size after a restart).
+  its next line (before: from the next video, the size after a restart). The font of the subtitles is picked in a list of the
+  fonts installed (it was a field to type a font name in).
 - **The translations read right**: over 700 wrong or outdated texts of the old catalogs were corrected (Arabic
   "OK" said "Yes", "Pause" an obscure word; Ukrainian "Space" was outer space; Page Up and Page Down were swapped
   in Ukrainian and Traditional Chinese), and the counts take the plural form of their number in every language

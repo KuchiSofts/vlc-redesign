@@ -27,6 +27,10 @@ ColumnLayout {
     objectName: "subtitleTracksPanel"
     spacing: VLCStyle.dp(8, VLCStyle.scale)
     property var reveal: null
+    // the position or the size is being changed (and a moment after): the
+    // menu lets the video through
+    readonly property bool adjusting: _adjustHold.running
+    Timer { id: _adjustHold; interval: 1500 }
     readonly property bool localMedia: Player.url.toString().startsWith("file://")
     // a video, here or on a TV (no video output here while casting)
     readonly property bool _video: Player.hasVideoOutput
@@ -576,6 +580,8 @@ ColumnLayout {
         implicitWidth: Math.max(VLCStyle.dp(32, VLCStyle.scale), Math.ceil(implicitContentWidth))
         focusPolicy: Qt.StrongFocus
         autoRepeat: true
+        onPressed: _adjustHold.restart()
+        onReleased: _adjustHold.restart()
         T.ToolTip.visible: hovered && Accessible.name !== text
         T.ToolTip.text: Accessible.name
         T.ToolTip.delay: VLCStyle.delayToolTipAppear

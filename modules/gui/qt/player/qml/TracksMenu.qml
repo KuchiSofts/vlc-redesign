@@ -57,6 +57,10 @@ T.Popup {
     width: Math.min(VLCStyle.dp(600, VLCStyle.scale), parent ? parent.width : VLCStyle.dp(600, VLCStyle.scale))
     height: Math.min(VLCStyle.dp(560, VLCStyle.scale), parent ? Math.max(0, parent.height - VLCStyle.dp(48, VLCStyle.scale)) : VLCStyle.dp(560, VLCStyle.scale))
     padding: 0
+    // see-through while the subtitles are moved or resized: they are
+    // behind the menu
+    opacity: subtitlePanel.adjusting ? 0.3 : 1
+    Behavior on opacity { NumberAnimation { duration: VLCStyle.duration_short } }
     focus: true
     closePolicy: T.Popup.CloseOnEscape | T.Popup.CloseOnPressOutside
     // a press outside only closes it, as a menu: the video under it does
@@ -159,6 +163,7 @@ T.Popup {
                 spacing: VLCStyle.dp(12, VLCStyle.scale)
 
                 SubtitleTracksPanel {
+                    id: subtitlePanel
                     visible: root.currentTab === 0
                     Layout.fillWidth: true
                     reveal: root.ensureVisible

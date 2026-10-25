@@ -68,7 +68,7 @@ counted from this document's own tables and checklists (column *From*); ⚪ idea
 
 | Program         | Progress             | Done    | %     | From                                   |
 |-----------------|----------------------|---------|-------|----------------------------------------|
-| Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 90/97   | 92 %  | [§8](#8-next-release-030) checklists   |
+| Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 91/97   | 93 %  | [§8](#8-next-release-030) checklists   |
 | Linux           | 🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 1/7     | 14 %  | [§9](#linux)                           |
 | macOS           | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/4     | 0 %   | [§9](#macos)                           |
 | Windows ARM64   | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/3     | 0 %   | [§9](#windows-on-arm64)                |
@@ -885,8 +885,8 @@ and an accepted request made the TV fail after a pause in a test.
   configurations, `CODE_SIGNING_POLICY.md` and the steps (docs/code-signing.md) are ready, and every binary carries
   VLC Redesign's name and version, and the two features that go online are chosen at install (or at the first
   start of a portable copy) with the policy linked; waiting for the user's application to SignPath
-- 🟡 Automated tests in CI: launch, playback, QML warnings (extras/juxtopposed/ci/launch-test.ps1 and its job in
-  build-windows.yml, passing on this PC; first run on GitHub started with the 0.3.0 push, 2026-10-25)
+- 🟢 Automated tests in CI: launch, playback, QML warnings (extras/juxtopposed/ci/launch-test.ps1 and its job in
+  build-windows.yml): the Windows build and the launch test passed on GitHub's runners with the 0.3.0 push (2026-10-25)
 - 🔴 Intel graphics, older PCs, Windows 10 on real hardware, high-DPI multi-monitor (2026-10-24: the app drawn at
   125, 150, 175 and 200 % has the layout of 100 % on every page checked, with sharp text, and its caption buttons
   and top edge answer Windows where they are drawn; still to do: monitors of different scales, a real one above 100 %)
@@ -894,7 +894,7 @@ and an accepted request made the TV fail after a pause in a test.
 
 ### 8.10 Release checklist
 
-- 🟡 Every quality gate green (§14): all but Build (CI runs once uploaded) and Hardware (no Intel or real Windows 10 here)
+- 🟡 Every quality gate green (§14): all but Hardware (no Intel or real Windows 10 here)
 - 🟢 `CHANGELOG.md`: *Unreleased* became *0.3.0* · 2026-10-25
 - 🟢 Release notes with a screenshot or GIF per highlight (docs/release/0.3.0, 13 images from the running app; the
   last changes of the changelog join them when the date is set)
@@ -906,7 +906,7 @@ and an accepted request made the TV fail after a pause in a test.
 - 🟡 Every fixed issue answered with the release link (#5 and #6, 2026-10-25); the announcement waits for
   Discussions to be turned on (a setting of the owner)
 
-Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 90 🟢, 5 🟡, 2 🔴 (97), of which 5 🟢 are
+Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 91 🟢, 5 🟡, 1 🔴 (97), of which 5 🟢 are
 in the app ⏳. The 🟡 and 🔴 left need the upload (CI, the announcement, the replies), SignPath, or hardware not here.
 Languages (§12) and the community (§13) have bars of their own.
 
@@ -1353,7 +1353,7 @@ In an organization, a `.github` repository gives every repository these files by
 
 | Gate         | What                                                                              | Status |
 |--------------|-----------------------------------------------------------------------------------|--------|
-| Build        | Every platform builds in CI; the packaged app starts and plays                    | 🟡 Windows builds; the launch test is written and passes here, not run on GitHub yet |
+| Build        | Every platform builds in CI; the packaged app starts and plays                    | 🟢 Windows: build and launch test green on GitHub (2026-10-25) |
 | Regression   | Playback, pause/seek, traces, Chromecast and DLNA test devices; again 2026-10-24 (builds 164, 170, 174, 179 and 181): clean quits, no dropped picture (one to four shown a few ms late at a start or a seek, as in every build), both casts | 🟢     |
 | Real devices | Samsung TV: start, pause 1 and 5 min, seek, next file, subtitles, as-is, end; Chromecast Ultra 2026-10-25 | 🟢     |
 | Formats      | Every test file and container; 148 damaged files without crash or hang            | 🟢     |

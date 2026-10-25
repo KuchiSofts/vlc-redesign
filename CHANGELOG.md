@@ -7,11 +7,24 @@ For changes to VLC itself, see [NEWS](NEWS).
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
 what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `942cdaea17` (2026-10-19).
 
-**Contents:** [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [Unreleased](#unreleased) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
 
 ---
+
+## [Unreleased]
+
+### Fixed
+
+- **A log file written with *Log to a file* keeps its last lines when VLC crashes.** Windows wrote the log in blocks
+  of 4 KB, so a crash lost the lines that say where it happened; each line is now written at once.
+
+### Technical
+
+- The launch test on GitHub keeps a crash dump of `vlc.exe` (Windows Error Reporting) and uploads it with the logs.
+  It crashed once at shutdown on GitHub's runner (exit code `0xC000041D`, Windows Server 2022 without a GPU), and
+  passed on the next attempt; 110 runs on this PC and in Windows Sandbox didn't crash.
 
 ## [0.3.0] · 2026-10-25
 

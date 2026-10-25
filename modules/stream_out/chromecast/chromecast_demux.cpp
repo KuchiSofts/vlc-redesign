@@ -35,6 +35,8 @@
 #include "chromecast_common.h"
 
 #include <cassert>
+#include <cstring>
+#include <strings.h>
 #include <new>
 
 static void on_paused_changed_cb(void *data, bool paused);
@@ -47,6 +49,24 @@ struct demux_cc
         ,m_enabled( true )
     {
         init();
+    }
+
+    /* the demux of a subtitle file (next to the video, or opened): its
+     * tracks are subtitles only */
+    bool isSubtitleFile() const
+    {
+        const char *name = p_demux->s->psz_name;
+        if( name != NULL && strcmp( name, "subtitle" ) == 0 )
+            return true;
+        const char *location = p_demux->s->psz_location;
+        const char *ext = location ? strrchr( location, '.' ) : NULL;
+        static const char *const subs[] = { ".srt", ".ass", ".ssa", ".vtt", ".sub", ".smi", ".idx", ".usf",
+                                            ".txt", ".sami", ".ttml", ".dks", ".jss", ".mpl2", ".pjs" };
+        if( ext != NULL )
+            for( const char *sub : subs )
+                if( strcasecmp( ext, sub ) == 0 )
+                    return true;
+        return false;
     }
 
     void init()
@@ -384,6 +404,12 @@ struct demux_cc
         }
         case DEMUX_SET_ES:
         case DEMUX_SET_ES_LIST:
+            /* A subtitle file's track (another subtitle, or none): the TV
+             * plays on, the conversion blends the new subtitle from where the
+             * stream is (the seconds the TV holds still show the last one).
+             * Flushing stopped the picture until the TV loaded it again */
+            if( isSubtitleFile() )
+                break;
             /* Seek back to the last known pos when changing tracks. This will
              * flush sout streams, make sout del/add called right away and
              * clear CC buffers. */

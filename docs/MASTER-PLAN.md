@@ -90,7 +90,7 @@ Windows 0.2.6 is released; 0.3.0 counts the lines of section 8 (done since 0.2.6
 | Popups and menus        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 15/15   | 100 % | [§8.4](#84-popups-and-menus)           |
 | Casting                 | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 15/16   | 94 %  | [§7](#7-desktop-for-windows-what-is-done) + [§8.7](#87-casting) |
 | Languages               | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 8/9     | 89 %  | [§12](#12-languages)                   |
-| GitHub and community    | 🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜ | 6/18    | 33 %  | [§13.16](#1316-setup-checklist)        |
+| GitHub and community    | 🟩🟩🟩🟩🟩🟩⬜⬜⬜⬜ | 11/18   | 61 %  | [§13.16](#1316-setup-checklist)        |
 
 **Contents**
 
@@ -1047,9 +1047,8 @@ Text matching needs Inter with the same metrics (distance-field text, no hinting
 - 🟢 Installer in English and 27 languages (Arabic and Hebrew right to left), each with its license notice
 - 🟢 The installer offers the language of Windows (only for a language with a full translation), the app starts in
   it; updates keep it, silent installs never ask (2026-10-24, tested in Windows Sandbox)
-- 🟡 *Settings → Global → Appearance → Interface language*, and *Layout direction*: the direction of the language
-  chosen (its catalog says it: "layout direction"), changed under it if wanted (2026-10-25, written, not built yet;
-  before: left to right unless chosen)
+- 🟢 *Settings → Global → Appearance → Interface language*, and *Layout direction*: the direction of the language
+  chosen (its catalog says it: "layout direction"), changed under it if wanted (2026-10-25, checked on build 196)
 - 🟢 The language and the direction change at once, without a restart, everywhere (the welcome and the classic settings
   too; classic dialogs when they open next)
 - 🟢 Every string listed for translation: vlc.pot made again from the tree (7,821), the missing files and `tr()` added;
@@ -1334,17 +1333,19 @@ In an organization, a `.github` repository gives every repository these files by
 - 🟢 `CREDITS.md`
 - 🟢 `ROADMAP.md` with 👍 voting
 - 🔴 Hub: the existing repository or an organization (decision 1)
-- 🔴 `platforms.yml` and the platform bar in every README
+- 🟢 `platforms.yml` and the platform bar in the README (2026-10-25; the sister repositories read the same file)
 - 🔴 Website on GitHub Pages with OS detection
 - 🔴 Shared design assets in `design/`
 - 🔴 Discussions on, five categories and their forms
-- 🔴 Issue forms: design mismatch, device report, translation; prefilled bug fields
-- 🔴 `labels.yml` and its sync
+- 🟢 Issue forms: design mismatch, TV report, translation (2026-10-25)
+- 🟢 `labels.yml` and its sync workflow (runs once uploaded)
 - 🔴 Roadmap board across repositories, with the votes workflow
-- 🔴 `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, pull request template, saved replies
+- 🟢 `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, pull request template (2026-10-25; saved replies are a
+  GitHub setting of the owner's account)
 - 🔴 In-app *Suggest an idea* / *Report a problem*
-- 🔴 `docs/wiki/` with `wiki-sync.yml`; *Design check* and *TV compatibility* pages
-- 🔴 Release notes script; pixel-check job with automatic screenshots
+- 🟢 `docs/wiki/` with its *Design check* and *TV compatibility* pages, and `wiki-sync.yml` (runs once uploaded)
+- 🟡 Release notes script (`extras/juxtopposed/release/release-notes.py`, 2026-10-25); the pixel-check job with
+  automatic screenshots needs a Windows runner with a display: later
 
 ## 14. Quality gates for every release
 

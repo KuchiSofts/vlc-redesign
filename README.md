@@ -151,6 +151,9 @@ Every option is explained in the **[wiki](https://github.com/KuchiSofts/vlc-rede
 
 ## Download
 
+**Platforms:** Windows 0.3.0 ✅ · Linux 🔜 · Samsung TV 🔜 · macOS, Windows ARM64, Android, iPhone 💡 — the
+list and its status are in [`platforms.yml`](platforms.yml).
+
 Go to **[Releases](https://github.com/KuchiSofts/vlc-redesign/releases/latest)** and pick one:
 
 | | |

@@ -23,7 +23,8 @@ What is being worked on, updated as it changes (2026-10-25):
   [TRANSLATING.md](TRANSLATING.md) explains how to translate, try and send a language. In build 196.
 - 🟡 **Subtitles**: the player's subtitle panel gets *Position* and *Size* with − and + (Position in steps of 1 % of the
   picture). Both apply live and are kept. Settings' subtitle font, colours and size now reach the video already playing,
-  from its next line. 🟢 Checked on build 196: +5 % and 130 % move and enlarge the subtitles on the video at once and
+  from its next line; the font is picked in a list of the fonts installed (a field to type a name in before; build
+  200). 🟢 Checked on build 196: +5 % and 130 % move and enlarge the subtitles on the video at once and
   are saved (that they came back at the next start was the profile bug below).
 - 🟡 **Performance pass**: baseline of build 195 measured (start, menus, Settings, dialogs, the 3,000-song library,
   scrolling). Real costs: Settings froze 115–190 ms at each opening, Keyboard Shortcuts 125–150 ms, Customize 60–85 ms,
@@ -33,14 +34,20 @@ What is being worked on, updated as it changes (2026-10-25):
     (medians of A/B runs, build 196 against 197; memory the same).
   - 🟢 Keyboard Shortcuts sorted its rows translating the names of its groups at each comparison: ranked once, the
     dialog opens with a 20 ms freeze (b197: 67 ms, b196: 142 ms).
-  - ⚪ Settings: making only the rows of the lists shown changed nothing measurable (133 vs 138 ms): reverted. Each
-    part of the dialog is being timed alone (probe build 199) to find what its 80 ms of creation are.
+  - ⚪ Settings: making only the rows of the lists shown (by their visibility) changed nothing measurable (133 vs
+    138 ms): reverted. Each part of the dialog timed alone (build 199): the whole dialog ~93 ms, its options model
+    ~20, each of its four option lists made its own table of labels (~10 ms each), the rows of the two lists hidden
+    on a page ~9 ms each.
+  - 🟡 One table of labels for the four lists, and no rows for the hidden lists (an explicit condition, not their
+    visibility): in build 200, to measure.
 - 🟢 **Bug found while testing the direction**: choosing a language after another translated one (Arabic, then British
-  English) kept the first one's texts; only the layout changed. Fixed in build 198 (gettext's cache).
+  English) kept the first one's texts; only the layout changed. Fixed (gettext's cache) and checked on build 199:
+  Greek then Danish in one session, all of it in Danish.
 - 🟡 **Settings kept across restarts and updates**: found while testing the subtitle panel. Every start applied the
   settings saved with the selected player profile over the ones in use, so what was changed outside Settings (the
   subtitle position and size from the player or Shift+Up, the classic preferences, a VLC ended unclosed) went back.
-  Fixed in build 199 (the settings in use stay at the start), to verify; then an installer update and a portable
+  Fixed and checked on build 199: values written to vlcrc stay after a clean quit, after VLC is killed, and after
+  another start (before: all back to their defaults at the first start). Next: an installer update and a portable
   update on top of a changed profile.
 
 ## Dashboard

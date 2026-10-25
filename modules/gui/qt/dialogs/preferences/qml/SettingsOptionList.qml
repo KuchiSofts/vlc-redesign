@@ -12,7 +12,9 @@ import VLC.Widgets as Widgets
 Column {
     id: root
     Widgets.FilePicker { id: filePicker; ctx: MainCtx }
-    SettingsPresentation { id: presentationData }
+    // The labels of the options (a table of hundreds of texts): the one of
+    // the dialog, shared by its lists (one each took 10 ms to make)
+    property QtObject presentationData: null
     property var settingsModel
     property string category: ""
     property string search: ""

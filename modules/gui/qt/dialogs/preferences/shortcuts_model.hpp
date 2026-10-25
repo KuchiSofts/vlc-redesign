@@ -77,6 +77,9 @@ private:
     struct Entry {
         QString key, globalKey, action, group;
         QString current, staged, defaults, globalCurrent, globalStaged, globalDefaults;
+        // the place of the row: its group, then the first actions of the
+        // design (worked out once, not at each comparison of the sort)
+        int groupRank = 5, firstRank = 100;
     };
     struct Change { QString key, action, before, after; bool global; };
 

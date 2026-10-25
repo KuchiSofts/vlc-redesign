@@ -1372,6 +1372,7 @@ static const char *const complete_languages[] = {
     "ca", "da", "fi", "el", "hu", "ro", "bg", "sk", "sl", "hr", "sr", "nb", "id", "ms", "vi", "th", "hi",
     "lt", "lv", "fa", "et", "es_MX",
     "bs", "gl", "gu", "nn", "sq", "eu", "af", "mr", "is", "bn", "be", "mk", "ml", "ta", "te", "kn", "ur",
+    "pa", "cy", "kk", "gd", "ka", "ga", "mn", "hy",
 };
 
 static bool languageComplete( const char *iso )
@@ -1382,11 +1383,50 @@ static bool languageComplete( const char *iso )
     return false;
 }
 
+#ifdef _WIN32
+// The languages a catalog was added for (locale\<code>\LC_MESSAGES\vlc.mo, as
+// a translator makes one) that the list above does not name: by their own
+// name, as Qt knows it; not the catalogs with next to nothing translated
+// (under 16 KB: the interface alone is over 100). Read once (a new catalog
+// comes with a new start)
+static const QVector<QPair<QString, QString>> &addedLanguages()
+{
+    static const QVector<QPair<QString, QString>> added = [] {
+        QVector<QPair<QString, QString>> found;
+        char *dir = config_GetSysPath( VLC_LOCALE_DIR, NULL );
+        if( dir == NULL )
+            return found;
+        const QDir locale( QString::fromUtf8( dir ) );
+        free( dir );
+        for( const QString &code : locale.entryList( QDir::Dirs | QDir::NoDotAndDotDot, QDir::Name ) )
+        {
+            const QByteArray iso = code.toLatin1();
+            bool listed = false;
+            for( size_t i = 0; i < ARRAY_SIZE( language_map ) && !listed; i++ )
+                listed = iso == language_map[i].iso;
+            const QFileInfo catalog( locale.filePath( code + QStringLiteral( "/LC_MESSAGES/vlc.mo" ) ) );
+            if( listed || !catalog.isFile() || catalog.size() < 16 * 1024 )
+                continue;
+            const QLocale language( code );
+            QString name = language.language() == QLocale::C ? code : language.nativeLanguageName();
+            if( name.isEmpty() )
+                name = code;
+            if( code.contains( '_' ) && !language.nativeTerritoryName().isEmpty() )
+                name += QStringLiteral( " (%1)" ).arg( language.nativeTerritoryName() );
+            found.append( { code, QLocale( code ).toUpper( name.left( 1 ) ) + name.mid( 1 ) } );
+        }
+        return found;
+    }();
+    return added;
+}
+#endif
+
 QVariantList interfaceLanguages()
 {
     QVariantList languages;
 #ifdef _WIN32
     // Auto, then the complete languages, then the partial ones, marked so
+    // (a language added by its catalog with them)
     QVariantList partial;
     for( size_t i = 0; i < ARRAY_SIZE( language_map ); i++ )
     {
@@ -1401,6 +1441,9 @@ QVariantList interfaceLanguages()
                                                                        : qtr( "%1 (partial)" ).arg( name ) } };
         ( complete ? languages : partial ).append( entry );
     }
+    for( const auto &added : addedLanguages() )
+        partial.append( QVariantMap{ { QStringLiteral( "value" ), added.first },
+                                     { QStringLiteral( "label" ), qtr( "%1 (partial)" ).arg( added.second ) } } );
     languages.append( partial );
 #endif
     return languages;
@@ -1441,14 +1484,17 @@ bool setInterfaceLanguage( const QString &iso )
 #ifdef _WIN32
     if( iso == interfaceLanguage() )
         return true;
-    for( size_t i = 0; i < ARRAY_SIZE( language_map ); i++ )
+    bool known = false;
+    for( size_t i = 0; i < ARRAY_SIZE( language_map ) && !known; i++ )
+        known = iso == QLatin1String( language_map[i].iso );
+    for( const auto &added : addedLanguages() )
+        known = known || iso == added.first;
+    if( known )
     {
-        if( iso != QLatin1String( language_map[i].iso ) )
-            continue;
         QFile file( languageFile() );
         if( file.fileName().isEmpty() || !file.open( QIODevice::WriteOnly | QIODevice::Truncate ) )
             return false;
-        return file.write( QByteArray( language_map[i].iso ) ) > 0;
+        return file.write( iso.toLatin1() ) > 0;
     }
 #else
     VLC_UNUSED( iso );
@@ -1485,16 +1531,35 @@ void SPrefsPanel::configML()
 #include "util/registry.hpp"
 
 // (the registry key of an installed VLC is never written nor deleted)
+// The layout in the direction of the language shown (as Settings does)
+static void layOutAsLanguage( MainCtx *mi )
+{
+    const bool rightToLeft = mi->languageRightToLeft();
+    mi->setRightToLeft( rightToLeft );
+    mi->setSettingValue( QStringLiteral( "redesign/right-to-left" ), rightToLeft );
+}
+
 void SPrefsPanel::cleanLang() {
     resetInterfaceLanguage();
     if( p_intf->p_mi )
+    {
         p_intf->p_mi->applyInterfaceLanguage( interfaceLanguage() );
+        layOutAsLanguage( p_intf->p_mi );
+    }
 }
 
 void SPrefsPanel::saveLang() {
     if( !lang ) return;
-    if( setInterfaceLanguage( QString::fromLatin1( lang ) ) )
-        p_intf->p_mi->applyInterfaceLanguage( QString::fromLatin1( lang ) );
+    // (the panel sets lang as it opens: the direction chosen stays when the
+    // language does)
+    const QString iso = QString::fromLatin1( lang );
+    const bool changed = iso != interfaceLanguage();
+    if( setInterfaceLanguage( iso ) && p_intf->p_mi )
+    {
+        p_intf->p_mi->applyInterfaceLanguage( iso );
+        if( changed )
+            layOutAsLanguage( p_intf->p_mi );
+    }
 }
 
 bool SPrefsPanel::addType( const char * psz_ext, QTreeWidgetItem* current,

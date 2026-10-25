@@ -656,6 +656,14 @@ void vout_ChangeSubtitlePosition(vout_thread_t *vout, int position)
         spu_ChangePosition(sys->spu, position);
 }
 
+void vout_ReloadSubtitleText(vout_thread_t *vout)
+{
+    vout_thread_sys_t *sys = VOUT_THREAD_TO_SYS(vout);
+    assert(!sys->dummy);
+    if (likely(sys->spu != NULL))
+        spu_ReloadText(sys->spu);
+}
+
 void vout_ChangeSubtitleClearance(vout_thread_t *vout, int clearance)
 {
     vout_thread_sys_t *sys = VOUT_THREAD_TO_SYS(vout);

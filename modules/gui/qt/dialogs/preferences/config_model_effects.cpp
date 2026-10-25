@@ -14,8 +14,47 @@
 #include "qt.hpp"
 
 #include <vlc_configuration.h>
+#include <vlc_player.h>
+#include <vlc_vout.h>
 
+#include <algorithm>
+#include <cstdlib>
 #include <iterator>
+
+namespace {
+
+// The subtitles shown take the look just kept: the size at once, the font,
+// colours, outline... from the next text drawn (the renderer of each video
+// loaded again); before, from the next video only, the size after a restart
+void applySubtitleLook(MainCtx *ctx, const QHash<QString, QVariant> &values)
+{
+    vlc_player_t *player = ctx->getIntf()->p_player;
+    if (!player)
+        return;
+    const auto scale = values.constFind(QStringLiteral("sub-text-scale"));
+    if (scale != values.cend())
+        vlc_player_SetSubtitleTextScale(player, std::clamp<int>(scale->toInt(), 10, 500));
+    bool text = false;
+    for (auto it = values.cbegin(); it != values.cend() && !text; ++it)
+        text = it.key().startsWith(QLatin1String("freetype-")) || it.key() == QLatin1String("text-renderer");
+    if (!text)
+        return;
+    size_t count = 0;
+    vout_thread_t **vouts;
+    {
+        vlc_player_Lock(player);
+        vouts = vlc_player_vout_HoldAll(player, &count);
+        vlc_player_Unlock(player);
+    }
+    for (size_t i = 0; i < count; ++i)
+    {
+        var_TriggerCallback(vouts[i], "sub-text-reload");
+        vout_Release(vouts[i]);
+    }
+    free(vouts);
+}
+
+} // namespace
 
 // VLC options written for a combined entry (see addCombinedEntries)
 bool ConfigModel::combinedValues(const Entry &entry, QHash<QString, QVariant> *values,
@@ -148,6 +187,7 @@ bool ConfigModel::applyWithEffects(AudioEffects *audio, VideoEffects *video)
     }
     if (audio) audio->finalizeConfiguration();
     if (video) video->finalizeConfiguration();
+    applySubtitleLook(m_ctx, values);
     for (int i : changedQt)
         m_ctx->setSettingValue(m_entries[i].key, m_entries[i].staged);
     changed += changedQt;

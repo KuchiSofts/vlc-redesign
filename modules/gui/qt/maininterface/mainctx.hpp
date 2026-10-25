@@ -435,10 +435,15 @@ public:
     Q_INVOKABLE static void setAttachedToolTip(QObject* toolTip);
 
     // Shows the interface in a language at once (an ISO code, "auto" for the
-    // system's): the messages, the locale of numbers and dates, the direction
-    // of the layout (right to left for Hebrew, Arabic...), then every text
-    // (interfaceLanguageChanged). Saving the choice is interface_language.hpp's
+    // system's): the messages, the locale of numbers and dates, then every
+    // text (interfaceLanguageChanged). Saving the choice is
+    // interface_language.hpp's; the layout follows languageRightToLeft where
+    // the language is chosen (rightToLeft)
     Q_INVOKABLE void applyInterfaceLanguage(const QString &iso);
+    // Whether the language shown is written from right to left, as its
+    // catalog says (its translators write "RTL" for "LTR"), else as Qt knows
+    // the language
+    Q_INVOKABLE bool languageRightToLeft() const;
 
     CSDButtonModel *csdButtonModel() { return m_csdButtonModel.get(); }
 

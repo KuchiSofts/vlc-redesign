@@ -472,7 +472,7 @@ msgstr "Дыбысты фильтрмен өндеу сәтсіз аяқталд
 #: src/audio_output/filters.c:289
 #, c-format
 msgid "The maximum number of filters (%u) was reached."
-msgstr " (%u) фильтрлерінің саны ең шеткі деңгейге жетті."
+msgstr "(%u) фильтрлерінің саны ең шеткі деңгейге жетті."
 
 #: src/audio_output/output.c:327 modules/gui/macosx/menus/VLCMainMenu.m:429
 #: modules/gui/macosx/menus/VLCMainMenu.m:430
@@ -4651,7 +4651,7 @@ msgstr ""
 
 #: src/libvlc-module.c:1542
 msgid "Cycle deinterlace modes"
-msgstr "Тізбектестіру режімдерін орайғыту "
+msgstr "Тізбектестіру режімдерін орайғыту"
 
 #: src/libvlc-module.c:1543
 msgid "Cycle through available deinterlace modes."
@@ -4989,7 +4989,7 @@ msgstr "ағымдағы қондырмалар бүркемесін ысыра�
 
 #: src/libvlc-module.c:2885
 msgid "print version information"
-msgstr "басып шығару үшін нобайының ақпары "
+msgstr "басып шығару үшін нобайының ақпары"
 
 #: src/misc/actions.c:55
 msgctxt "key"
@@ -5009,7 +5009,7 @@ msgstr "Жарқындығын жоғарылату"
 #: src/misc/actions.c:58
 msgctxt "key"
 msgid "Browser Back"
-msgstr "Браузерде қайту "
+msgstr "Браузерде қайту"
 
 #: src/misc/actions.c:59
 msgctxt "key"
@@ -9240,7 +9240,7 @@ msgstr ""
 
 #: modules/access/dvdnav.c:94
 msgid "DVD with menus"
-msgstr "Мәзірлі DVD "
+msgstr "Мәзірлі DVD"
 
 #: modules/access/dvdnav.c:95
 msgid "DVDnav Input"
@@ -9263,7 +9263,7 @@ msgstr ""
 
 #: modules/access/dvdread.c:66
 msgid "DVD without menus"
-msgstr "Мәзірсіз DVD "
+msgstr "Мәзірсіз DVD"
 
 #: modules/access/dvdread.c:67
 msgid "DVDRead Input (no menu support)"
@@ -11395,7 +11395,7 @@ msgstr "Ойнату тізімінде іздеу"
 #: modules/access_output/livehttp.c:96
 #, fuzzy
 msgid "AES key file"
-msgstr "Жаңа бейін жасау "
+msgstr "Жаңа бейін жасау"
 
 #: modules/access_output/livehttp.c:97
 msgid "File containing the 16 bytes encryption key"
@@ -12633,7 +12633,7 @@ msgstr ""
 #: modules/audio_output/mmdevice.c:1634
 #, fuzzy
 msgid "Windows Multimedia Device output"
-msgstr "Windows GDI бейнелік шығасыны "
+msgstr "Windows GDI бейнелік шығасыны"
 
 #: modules/audio_output/mmdevice.c:1639
 #, fuzzy
@@ -14917,7 +14917,7 @@ msgstr ""
 
 #: modules/codec/x264.c:111
 msgid "Influence (bias) B-frames usage"
-msgstr "B-кадрлар қолдануының әсер етуі "
+msgstr "B-кадрлар қолдануының әсер етуі"
 
 #: modules/codec/x264.c:112
 msgid ""
@@ -17992,7 +17992,7 @@ msgstr ""
 
 #: modules/gui/macosx/main/macosx.m:58
 msgid "Black screens in fullscreen"
-msgstr "Қара бейнебеттер толық бейнебетте "
+msgstr "Қара бейнебеттер толық бейнебетте"
 
 #: modules/gui/macosx/main/macosx.m:59
 msgid "In fullscreen mode, keep screen where there is no video displayed black"
@@ -18181,7 +18181,7 @@ msgstr ""
 
 #: modules/gui/macosx/main/macosx.m:132
 msgid "Mac OS X interface"
-msgstr "Mac OS X тілдесуі "
+msgstr "Mac OS X тілдесуі"
 
 #: modules/gui/macosx/main/macosx.m:138
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:13
@@ -19202,7 +19202,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:270
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:271
 msgid "s"
-msgstr " с"
+msgstr "с"
 
 #: modules/gui/macosx/panels/VLCTrackSynchronizationWindowController.m:88
 msgid "A positive value means that the audio is ahead of the video"
@@ -19570,7 +19570,7 @@ msgstr "Жалпы дыбыстық"
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:370
 msgid "Preferred Audio language"
-msgstr " Дыбыстың ұнамды тілі"
+msgstr "Дыбыстың ұнамды тілі"
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:371
 msgid "Enable Last.fm submissions"
@@ -21039,7 +21039,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr "Ағымдық бірлікті қайталау"
+msgstr " Ағымдық бірлікті қайталау"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -21061,7 +21061,7 @@ msgstr "Бетбелгілер өңдеу"
 
 #: modules/gui/qt/dialogs/bookmarks/bookmarks.cpp:53
 msgid "Create a new bookmark"
-msgstr "Жаңа бетбелгі жасау "
+msgstr "Жаңа бетбелгі жасау"
 
 #: modules/gui/qt/dialogs/bookmarks/bookmarks.cpp:56
 msgid "Delete the selected item"
@@ -22067,7 +22067,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/extensions/extensions_manager.cpp:175
 #, fuzzy
 msgid "Empty"
-msgstr " - Бос - "
+msgstr "- Бос -"
 
 #: modules/gui/qt/dialogs/extensions/extensions_manager.cpp:181
 #, fuzzy
@@ -22544,7 +22544,7 @@ msgstr "Жұрнал файлын басқаша сақтау..."
 #: modules/gui/qt/dialogs/messages/messages.cpp:361
 #, fuzzy
 msgid "Texts/Logs (*.log *.txt);; All (*.*)"
-msgstr "Мәтіндер / Жұрналдар (*.log *.txt);; Бәрі (*.*) "
+msgstr "Мәтіндер / Жұрналдар (*.log *.txt);; Бәрі (*.*)"
 
 #: modules/gui/qt/dialogs/messages/messages.cpp:367
 msgid "Application"
@@ -24009,7 +24009,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:193
 #, fuzzy
 msgid " dB"
-msgstr "dB"
+msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207
@@ -25496,7 +25496,7 @@ msgstr "Бөлектелген бейінді жою"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:70
 msgid "Create a new profile"
-msgstr "Жаңа бейін жасау "
+msgstr "Жаңа бейін жасау"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:650
 msgid "This muxer is not provided directly by VLC: It could be missing."
@@ -25872,11 +25872,11 @@ msgstr "Ауыстыру"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:506
 msgid "Broadcast: "
-msgstr "Хабар тарату:"
+msgstr "Хабар тарату: "
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 msgid "Schedule: "
-msgstr "Іс кестесі:"
+msgstr "Іс кестесі: "
 
 #: modules/gui/qt/maininterface/mainctx.cpp:1193
 msgid "Paste from clipboard"
@@ -28901,7 +28901,7 @@ msgstr ""
 
 #: modules/gui/qt/qt.cpp:180
 msgid "Start VLC with only a systray icon"
-msgstr "VLC тек қана жүйе жаймасындағы белгішемен іске қосылады "
+msgstr "VLC тек қана жүйе жаймасындағы белгішемен іске қосылады"
 
 #: modules/gui/qt/qt.cpp:181
 msgid "VLC will start with just an icon in your taskbar."
@@ -28985,7 +28985,7 @@ msgstr ""
 
 #: modules/gui/qt/qt.cpp:227
 msgid "Number of days between two update checks"
-msgstr "Жаңартулардың екі тесксеруінің аралығындағы күн саны "
+msgstr "Жаңартулардың екі тесксеруінің аралығындағы күн саны"
 
 #: modules/gui/qt/qt.cpp:229
 msgid "Ask for network policy at start"
@@ -29615,7 +29615,7 @@ msgstr "Ойнату тізімін сақтау"
 #: modules/gui/skins2/src/dialogs.cpp:227
 #, fuzzy
 msgid "XSPF playlist |*.xspf|M3U file |*.m3u|HTML playlist |*.html"
-msgstr " XSPF ойнату тізімі|*.xspf|M3U файлы|*.m3u|HTML ойнату тізімі|*.html"
+msgstr "XSPF ойнату тізімі|*.xspf|M3U файлы|*.m3u|HTML ойнату тізімі|*.html"
 
 #: modules/gui/skins2/src/skin_main.cpp:477
 msgid "Skin to use"
@@ -30088,7 +30088,7 @@ msgstr ""
 
 #: modules/logger/file.c:222
 msgid "Log filename"
-msgstr "Жұрнал файл аты "
+msgstr "Жұрнал файл аты"
 
 #: modules/logger/file.c:223
 msgid "Specify the log filename."
@@ -31463,7 +31463,7 @@ msgstr "Шифрланған дыбыс"
 
 #: modules/mux/mpeg/ts.c:166
 msgid "Crypt audio using CSA"
-msgstr "CSA қолданып шифрланған дыбыс "
+msgstr "CSA қолданып шифрланған дыбыс"
 
 #: modules/mux/mpeg/ts.c:167
 msgid "Crypt video"
@@ -33382,7 +33382,7 @@ msgstr "Бейненің ең көпі ені"
 
 #: modules/stream_out/transcode/transcode.c:75
 msgid "Maximum output video width."
-msgstr "Шығасын бейненің ең көп ені. "
+msgstr "Шығасын бейненің ең көп ені."
 
 #: modules/stream_out/transcode/transcode.c:76
 msgid "Maximum video height"
@@ -33689,7 +33689,7 @@ msgstr "Бейне сүзгілеу модульдер тізбектерін қ
 #: modules/video_chroma/grey_yuv.c:55 modules/video_chroma/i422_i420.c:56
 #: modules/video_chroma/yuy2_i420.c:57 modules/video_chroma/yuy2_i422.c:57
 msgid "Conversions from "
-msgstr "Түрлендірулер мынадан"
+msgstr "Түрлендірулер мынадан "
 
 #: modules/video_chroma/i420_nv12.c:239
 msgid "YUV planar to semiplanar conversions"
@@ -33777,7 +33777,7 @@ msgstr ""
 
 #: modules/video_filter/adjust.c:68
 msgid "Image properties filter"
-msgstr "Кескін сипаттары сүзгісі "
+msgstr "Кескін сипаттары сүзгісі"
 
 #: modules/video_filter/adjust.c:69
 msgid "Image adjust"
@@ -33966,7 +33966,7 @@ msgstr "Миксер үстелі"
 
 #: modules/video_filter/blendbench.c:78
 msgid "Benchmarking"
-msgstr "Үлгілі сынамақтау "
+msgstr "Үлгілі сынамақтау"
 
 #: modules/video_filter/blendbench.c:84
 msgid "Base image"
@@ -35237,7 +35237,7 @@ msgstr ""
 
 #: modules/video_output/vmem.c:42
 msgid "Video memory buffer width."
-msgstr "Бейнелік жады сақтағыштың ені. "
+msgstr "Бейнелік жады сақтағыштың ені."
 
 #: modules/video_output/vmem.c:45
 msgid "Video memory buffer height."
@@ -35459,7 +35459,7 @@ msgstr ""
 
 #: modules/video_output/win32/wingdi.c:52
 msgid "Windows GDI video output"
-msgstr "Windows GDI бейнелік шығасыны "
+msgstr "Windows GDI бейнелік шығасыны"
 
 #: modules/video_output/xcb/render.c:768
 msgid "RENDER"

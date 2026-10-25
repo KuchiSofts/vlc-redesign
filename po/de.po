@@ -776,12 +776,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (standardmäßig an)"
+msgstr "(standardmäßig an)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (standardmäßig aus)"
+msgstr "(standardmäßig aus)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -5319,7 +5319,7 @@ msgstr "Im Browser zurück"
 #: src/misc/actions.c:59
 msgctxt "key"
 msgid "Browser Favorites"
-msgstr "Browser-Favoriten "
+msgstr "Browser-Favoriten"
 
 #: src/misc/actions.c:60
 msgctxt "key"
@@ -21944,15 +21944,15 @@ msgstr " f                      Vollbild an/aus"
 
 #: modules/gui/ncurses.c:1009
 msgid " c                      Cycle through audio tracks"
-msgstr "Taste »c« für das Wechseln durch die Audiospuren"
+msgstr " Taste »c« für das Wechseln durch die Audiospuren"
 
 #: modules/gui/ncurses.c:1010
 msgid " v                      Cycle through subtitles tracks"
-msgstr "Taste »v« für das Wechseln durch die Untertitelspuren"
+msgstr " Taste »v« für das Wechseln durch die Untertitelspuren"
 
 #: modules/gui/ncurses.c:1011
 msgid " b                      Cycle through video tracks"
-msgstr "Taste »b« für das Wechseln durch die Videospuren"
+msgstr " Taste »b« für das Wechseln durch die Videospuren"
 
 #: modules/gui/ncurses.c:1012
 msgid " n, p                   Next/Previous playlist item"
@@ -22121,7 +22121,7 @@ msgstr " Position  : %s/%s"
 
 #: modules/gui/ncurses.c:1276
 msgid " Volume   : Mute"
-msgstr "Lautstärke   : Stumm"
+msgstr " Lautstärke   : Stumm"
 
 #: modules/gui/ncurses.c:1277
 #, c-format
@@ -22145,7 +22145,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr " Quelle: <kein aktuelles Objekt> "
+msgstr " Quelle: <kein aktuelles Objekt>"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -23631,7 +23631,7 @@ msgstr "Mediengröße"
 
 #: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:591
 msgid "Demuxed data size"
-msgstr "Größe der demuxten Daten "
+msgstr "Größe der demuxten Daten"
 
 #: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:592
 msgid "Content bitrate"
@@ -26785,7 +26785,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:802
 msgid " Profile Name Missing"
-msgstr "Profilname fehlt"
+msgstr " Profilname fehlt"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:803
 msgid "You must set a name for the profile."
@@ -30476,7 +30476,7 @@ msgstr "Starte mit Minimaler Ansicht (ohne Menüs)"
 
 #: modules/gui/qt/qt.cpp:260
 msgid "Display background cone or art"
-msgstr " VLC Hintergrund-Kegel oder die Grafik anzeigen"
+msgstr "VLC Hintergrund-Kegel oder die Grafik anzeigen"
 
 #: modules/gui/qt/qt.cpp:261
 msgid ""

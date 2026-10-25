@@ -8372,7 +8372,7 @@ msgstr ""
 #: modules/video_output/decklink.cpp:143
 #, fuzzy
 msgid "Composite"
-msgstr "کۆکەرەوە: "
+msgstr "کۆکەرەوە:"
 
 #: modules/access/decklink.cpp:98
 #, fuzzy
@@ -16918,7 +16918,7 @@ msgstr ""
 #: modules/demux/mp4/meta.c:71
 #, fuzzy
 msgid "Composer"
-msgstr "کۆکەرەوە: "
+msgstr "کۆکەرەوە:"
 
 #: modules/demux/mp4/meta.c:72
 #, fuzzy
@@ -21107,37 +21107,37 @@ msgstr "[پیشاندان]"
 #: modules/gui/ncurses.c:990
 #, fuzzy
 msgid " h,H                    Show/Hide help box"
-msgstr "     h,H         پیشاندان/شاردنەوەی سندووقی یارمەتی "
+msgstr " h,H         پیشاندان/شاردنەوەی سندووقی یارمەتی"
 
 #: modules/gui/ncurses.c:991
 #, fuzzy
 msgid " i                      Show/Hide info box"
-msgstr "     i           پیشاندان/شاردنەوەی سندووقی زانیاری"
+msgstr " i           پیشاندان/شاردنەوەی سندووقی زانیاری"
 
 #: modules/gui/ncurses.c:992
 #, fuzzy
 msgid " M                      Show/Hide metadata box"
-msgstr "     L           پیشاندان/شاردنەوەی سندووقی پەیامەکان"
+msgstr " L           پیشاندان/شاردنەوەی سندووقی پەیامەکان"
 
 #: modules/gui/ncurses.c:993
 #, fuzzy
 msgid " L                      Show/Hide messages box"
-msgstr "     L           پیشاندان/شاردنەوەی سندووقی پەیامەکان"
+msgstr " L           پیشاندان/شاردنەوەی سندووقی پەیامەکان"
 
 #: modules/gui/ncurses.c:994
 #, fuzzy
 msgid " P                      Show/Hide playlist box"
-msgstr "     P           پیشاندان/شاردنەوەی سندووقی لیستی لێدان"
+msgstr " P           پیشاندان/شاردنەوەی سندووقی لیستی لێدان"
 
 #: modules/gui/ncurses.c:995
 #, fuzzy
 msgid " B                      Show/Hide filebrowser"
-msgstr "     B           پیشاندان/شاردنەوە پەڕگەگەڕ"
+msgstr " B           پیشاندان/شاردنەوە پەڕگەگەڕ"
 
 #: modules/gui/ncurses.c:996
 #, fuzzy
 msgid " S                      Show/Hide statistics box"
-msgstr "     S           پیشاندان/شاردنەوەی سندووقی ئامارەکان"
+msgstr " S           پیشاندان/شاردنەوەی سندووقی ئامارەکان"
 
 #: modules/gui/ncurses.c:997
 msgid " E                      Show/Hide equalizer box"
@@ -21162,12 +21162,12 @@ msgstr ""
 #: modules/gui/ncurses.c:1006
 #, fuzzy
 msgid " s                      Stop"
-msgstr "     i           پیشاندان/شاردنەوەی سندووقی زانیاری"
+msgstr " i           پیشاندان/شاردنەوەی سندووقی زانیاری"
 
 #: modules/gui/ncurses.c:1007
 #, fuzzy
 msgid " <space>                Pause/Play"
-msgstr "     <space>    ڕاگرتن/لێدان"
+msgstr " <space>    ڕاگرتن/لێدان"
 
 #: modules/gui/ncurses.c:1008
 msgid " f                      Toggle Fullscreen"
@@ -21176,22 +21176,22 @@ msgstr ""
 #: modules/gui/ncurses.c:1009
 #, fuzzy
 msgid " c                      Cycle through audio tracks"
-msgstr "     P           پیشاندان/شاردنەوەی سندووقی لیستی لێدان"
+msgstr " P           پیشاندان/شاردنەوەی سندووقی لیستی لێدان"
 
 #: modules/gui/ncurses.c:1010
 #, fuzzy
 msgid " v                      Cycle through subtitles tracks"
-msgstr "     P           پیشاندان/شاردنەوەی سندووقی لیستی لێدان"
+msgstr " P           پیشاندان/شاردنەوەی سندووقی لیستی لێدان"
 
 #: modules/gui/ncurses.c:1011
 #, fuzzy
 msgid " b                      Cycle through video tracks"
-msgstr "     S           پیشاندان/شاردنەوەی سندووقی ئامارەکان"
+msgstr " S           پیشاندان/شاردنەوەی سندووقی ئامارەکان"
 
 #: modules/gui/ncurses.c:1012
 #, fuzzy
 msgid " n, p                   Next/Previous playlist item"
-msgstr "     P           پیشاندان/شاردنەوەی سندووقی لیستی لێدان"
+msgstr " P           پیشاندان/شاردنەوەی سندووقی لیستی لێدان"
 
 #: modules/gui/ncurses.c:1013
 msgid " [, ]                   Next/Previous title"
@@ -21214,7 +21214,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1018
 #, fuzzy
 msgid " m                      Mute"
-msgstr "     i           پیشاندان/شاردنەوەی سندووقی زانیاری"
+msgstr " i           پیشاندان/شاردنەوەی سندووقی زانیاری"
 
 #. xgettext: You can use ↑ and ↓ characters
 #: modules/gui/ncurses.c:1020
@@ -21254,7 +21254,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1038
 #, fuzzy
 msgid " l                      Toggle Loop Playlist"
-msgstr "     P           پیشاندان/شاردنەوەی سندووقی لیستی لێدان"
+msgstr " P           پیشاندان/شاردنەوەی سندووقی لیستی لێدان"
 
 #: modules/gui/ncurses.c:1039
 msgid " R                      Toggle Repeat item"
@@ -21263,12 +21263,12 @@ msgstr ""
 #: modules/gui/ncurses.c:1040
 #, fuzzy
 msgid " o                      Order Playlist by title"
-msgstr "     P           پیشاندان/شاردنەوەی سندووقی لیستی لێدان"
+msgstr " P           پیشاندان/شاردنەوەی سندووقی لیستی لێدان"
 
 #: modules/gui/ncurses.c:1041
 #, fuzzy
 msgid " O                      Reverse order Playlist by title"
-msgstr "     P           پیشاندان/شاردنەوەی سندووقی لیستی لێدان"
+msgstr " P           پیشاندان/شاردنەوەی سندووقی لیستی لێدان"
 
 #: modules/gui/ncurses.c:1042
 msgid " g                      Go to the current playing item"
@@ -21281,7 +21281,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1044
 #, fuzzy
 msgid " ;                      Look for the next item"
-msgstr "     B           پیشاندان/شاردنەوە پەڕگەگەڕ"
+msgstr " B           پیشاندان/شاردنەوە پەڕگەگەڕ"
 
 #: modules/gui/ncurses.c:1045
 msgid " A                      Add an entry"
@@ -21311,7 +21311,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1056
 #, fuzzy
 msgid " .                      Show/Hide hidden files"
-msgstr "     B           پیشاندان/شاردنەوە پەڕگەگەڕ"
+msgstr " B           پیشاندان/شاردنەوە پەڕگەگەڕ"
 
 #: modules/gui/ncurses.c:1060
 msgid "[Player]"
@@ -21351,27 +21351,27 @@ msgstr ""
 #: modules/gui/ncurses.c:1241
 #, c-format
 msgid " Source   : %s"
-msgstr "سەرچاوە   : %s"
+msgstr " سەرچاوە   : %s"
 
 #: modules/gui/ncurses.c:1271
 #, fuzzy, c-format
 msgid " Position : %s/%s"
-msgstr "شوێن    : %s/%s (%.2f%%)"
+msgstr " شوێن    : %s/%s (%.2f%%)"
 
 #: modules/gui/ncurses.c:1276
 #, fuzzy
 msgid " Volume   : Mute"
-msgstr "دەنگ     : %i%%"
+msgstr " دەنگ     : %i%%"
 
 #: modules/gui/ncurses.c:1277
 #, fuzzy, c-format
 msgid " Volume   : %3ld%%"
-msgstr "دەنگ     : %i%%"
+msgstr " دەنگ     : %i%%"
 
 #: modules/gui/ncurses.c:1277
 #, fuzzy
 msgid " Volume   : ----"
-msgstr "دەنگ     : %i%%"
+msgstr " دەنگ     : %i%%"
 
 #: modules/gui/ncurses.c:1286
 #, c-format
@@ -21386,7 +21386,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr "ئەم دانەیە دووبارە بکەوە"
+msgstr " ئەم دانەیە دووبارە بکەوە"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -21964,7 +21964,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
 #, fuzzy
 msgid "ms"
-msgstr " مچ"
+msgstr "مچ"
 
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1316
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1338
@@ -22076,7 +22076,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/extended/qml/CropInput.qml:87
 #, fuzzy
 msgid "px"
-msgstr " خاڵ"
+msgstr "خاڵ"
 
 #: modules/gui/qt/dialogs/extended/qml/CropPanel.qml:60
 msgid "Link top and bottom crop"
@@ -22412,7 +22412,7 @@ msgstr ""
 #: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:67
 #, fuzzy
 msgid "Browse"
-msgstr " گەڕان"
+msgstr "گەڕان"
 
 #: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:340
 msgid "Browse for %1"
@@ -23102,7 +23102,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1172
 #, fuzzy
 msgid " f/s"
-msgstr "%u کب/چ"
+msgstr " %u کب/چ"
 
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1387
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:604
@@ -24414,7 +24414,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:193
 #, fuzzy
 msgid " dB"
-msgstr "%.2f dB"
+msgstr " %.2f dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207
@@ -26305,7 +26305,7 @@ msgstr "گۆڕین"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:506
 msgid "Broadcast: "
-msgstr "بڵاوکردنەوە:"
+msgstr "بڵاوکردنەوە: "
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 msgid "Schedule: "
@@ -31766,7 +31766,7 @@ msgstr "ڤیدیۆیەکی نەناسراو"
 #: modules/mux/avi.c:55
 #, fuzzy
 msgid "Subject"
-msgstr " تەنەکان"
+msgstr "تەنەکان"
 
 #: modules/mux/avi.c:60
 msgid "AVI muxer"
@@ -34233,7 +34233,7 @@ msgstr ""
 #: modules/video_chroma/grey_yuv.c:55 modules/video_chroma/i422_i420.c:56
 #: modules/video_chroma/yuy2_i420.c:57 modules/video_chroma/yuy2_i422.c:57
 msgid "Conversions from "
-msgstr "گۆڕین لە"
+msgstr "گۆڕین لە "
 
 #: modules/video_chroma/i420_nv12.c:239
 msgid "YUV planar to semiplanar conversions"

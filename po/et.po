@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-24 17:48+0000\n"
+"POT-Creation-Date: 2026-10-24 18:08+0000\n"
 "PO-Revision-Date: 2014-07-12 17:35+0000\n"
 "Last-Translator: Joel Limberg <joel@stuudium.com>\n"
 "Language-Team: Estonian (http://www.transifex.com/projects/p/vlc-trans/"
@@ -125,7 +125,7 @@ msgstr "Edasijõudnutele"
 msgid "Subtitles / OSD"
 msgstr "Subtiitrid / OSD"
 
-#: include/vlc_config_cat.h:46 modules/control/hotkeys.c:1311
+#: include/vlc_config_cat.h:46 modules/control/hotkeys.c:1314
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:1301
 msgid "Hotkeys"
 msgstr "Kiirklahvid"
@@ -1751,14 +1751,14 @@ msgstr ""
 msgid "Auto"
 msgstr "Automaatne"
 
-#: src/libvlc-module.c:198 src/libvlc-module.c:374 src/player/osd.c:323
+#: src/libvlc-module.c:198 src/libvlc-module.c:374 src/player/osd.c:340
 #: modules/access/dtv/access.c:100 modules/access/v4l2/v4l2.c:201
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
 msgid "On"
 msgstr "Sees"
 
-#: src/libvlc-module.c:198 src/libvlc-module.c:374 src/player/osd.c:323
+#: src/libvlc-module.c:198 src/libvlc-module.c:374 src/player/osd.c:340
 #: modules/access/dtv/access.c:100 modules/access/v4l2/v4l2.c:137
 #: modules/access/v4l2/v4l2.c:201
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:136
@@ -4522,12 +4522,12 @@ msgstr "Teleteksti subtiitrite dekooder"
 
 #: src/libvlc-module.c:1465
 #, fuzzy
-msgid "Scale up subtitles text"
+msgid "Scale down subtitles text"
 msgstr "Vali subtiitrite fail"
 
 #: src/libvlc-module.c:1466
 #, fuzzy
-msgid "Scale down subtitles text"
+msgid "Scale up subtitles text"
 msgstr "Vali subtiitrite fail"
 
 #: src/libvlc-module.c:1467
@@ -5786,94 +5786,114 @@ msgstr "Uuenda VLC meediaesitajat"
 msgid "Volume: %ld%%"
 msgstr ""
 
-#: src/player/osd.c:185 src/player/osd.c:229
+#: src/player/osd.c:184
+#, c-format
+msgid "Video tracks: %s"
+msgstr ""
+
+#: src/player/osd.c:185
+#, c-format
+msgid "Video track: %s"
+msgstr ""
+
+#: src/player/osd.c:188
+#, c-format
+msgid "Audio tracks: %s"
+msgstr ""
+
+#: src/player/osd.c:189
+#, c-format
+msgid "Audio track: %s"
+msgstr "Audiorada: %s"
+
+#: src/player/osd.c:192
+#, c-format
+msgid "Subtitle tracks: %s"
+msgstr ""
+
+#: src/player/osd.c:193
+#, c-format
+msgid "Subtitle track: %s"
+msgstr "Subtiitrite rada: %s"
+
+#: src/player/osd.c:208 src/player/osd.c:251
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:98
 msgid "N/A"
 msgstr "pole"
 
-#: src/player/osd.c:186 src/player/osd.c:229 src/player/osd.c:238
-#, c-format
-msgid "%s track: %s"
-msgstr ""
-
-#: src/player/osd.c:241
-#, c-format
-msgid "%s tracks: %s"
-msgstr ""
-
-#: src/player/osd.c:249
+#: src/player/osd.c:266
 #, c-format
 msgid "Program Service ID: %s"
 msgstr ""
 
-#: src/player/osd.c:292
+#: src/player/osd.c:309
 #, c-format
 msgid "Aspect ratio: %s"
 msgstr "Külgede suhe: %s"
 
-#: src/player/osd.c:296
+#: src/player/osd.c:313
 msgid "Scaled to screen"
 msgstr "Ekraan täidetud"
 
-#: src/player/osd.c:296
+#: src/player/osd.c:313
 msgid "Original size"
 msgstr ""
 
-#: src/player/osd.c:300
+#: src/player/osd.c:317
 #, c-format
 msgid "Crop: %s"
 msgstr "Kärbi: %s"
 
-#: src/player/osd.c:303
+#: src/player/osd.c:320
 #, c-format
 msgid "Bottom crop: %d px"
 msgstr ""
 
-#: src/player/osd.c:306
+#: src/player/osd.c:323
 #, c-format
 msgid "Top crop: %d px"
 msgstr ""
 
-#: src/player/osd.c:309
+#: src/player/osd.c:326
 #, c-format
 msgid "Left crop: %d px"
 msgstr ""
 
-#: src/player/osd.c:312
+#: src/player/osd.c:329
 #, c-format
 msgid "Right crop: %d px"
 msgstr ""
 
-#: src/player/osd.c:322
+#: src/player/osd.c:339
 #, c-format
 msgid "Deinterlace %s (%s)"
 msgstr ""
 
-#: src/player/osd.c:329
+#: src/player/osd.c:346
 #, c-format
 msgid "Subtitle position %d px"
 msgstr ""
 
-#: src/player/osd.c:332
+#: src/player/osd.c:349
 #, c-format
 msgid "Secondary subtitle position %d px"
 msgstr ""
 
-#: src/player/osd.c:335
+#: src/player/osd.c:352
 #, fuzzy, c-format
 msgid "Subtitle text scale %d%%"
 msgstr "Subtiitrite teksti kodeering"
 
-#: src/player/osd.c:340
+#: src/player/osd.c:357
 msgid "Zooming reset"
 msgstr "Algväärtusta suurendus"
 
-#: src/player/osd.c:344
+#: src/player/osd.c:361
 #, c-format
 msgid "Zoom mode: %s"
 msgstr "Suurendamise režiim: %s"
 
-#: src/player/osd.c:346
+#: src/player/osd.c:363
 #, c-format
 msgid "Zoom: x%.2f"
 msgstr ""
@@ -5914,7 +5934,22 @@ msgstr "Salvestamine"
 msgid "Recording done"
 msgstr "Salvestamine valmis"
 
-#: src/player/player.c:1841 src/player/player.c:1893
+#: src/player/player.c:1844
+#, c-format
+msgid "Audio delay %i ms"
+msgstr "Audio viivitus %i ms"
+
+#: src/player/player.c:1846
+#, c-format
+msgid "Subtitle delay %i ms"
+msgstr "Subtiitri viivitus %i ms"
+
+#: src/player/player.c:1848
+#, c-format
+msgid "Video delay %i ms"
+msgstr ""
+
+#: src/player/player.c:1898
 #, c-format
 msgid "%s delay: %i ms"
 msgstr ""
@@ -11777,7 +11812,7 @@ msgstr "Stiili kirjeldus"
 #: modules/access_output/shout.c:83
 #, fuzzy
 msgid "Genre of the content."
-msgstr "Sisu stiil. "
+msgstr "Sisu stiil."
 
 #: modules/access_output/shout.c:85
 #, fuzzy
@@ -11854,7 +11889,7 @@ msgstr ""
 
 #: modules/audio_filter/audiobargraph_a.c:39
 msgid "Defines if BarGraph information should be sent"
-msgstr "Määrab, kas BarGraph informatsiooni tuleks saata "
+msgstr "Määrab, kas BarGraph informatsiooni tuleks saata"
 
 #: modules/audio_filter/audiobargraph_a.c:40
 msgid ""
@@ -11866,7 +11901,7 @@ msgstr ""
 
 #: modules/audio_filter/audiobargraph_a.c:42
 msgid "Sends the barGraph information every n audio packets"
-msgstr "Saadab barGraph informatsiooni iga n audio paketiga "
+msgstr "Saadab barGraph informatsiooni iga n audio paketiga"
 
 #: modules/audio_filter/audiobargraph_a.c:43
 msgid ""
@@ -16434,7 +16469,7 @@ msgstr "RC"
 msgid "Remote control interface"
 msgstr "Kaugjuhtimise liides"
 
-#: modules/control/cli/player.c:801 modules/control/hotkeys.c:674
+#: modules/control/cli/player.c:801 modules/control/hotkeys.c:677
 #, c-format
 msgid "Audio device: %s"
 msgstr ""
@@ -16590,42 +16625,45 @@ msgstr "Globaalsed kiirklahvid"
 msgid "Global Hotkeys interface"
 msgstr "Globaalsete kiirklahvide liides"
 
-#: modules/control/hotkeys.c:505
-#, c-format
-msgid "%s subtitle control"
+#: modules/control/hotkeys.c:507
+msgid "Primary subtitle control"
 msgstr ""
 
-#: modules/control/hotkeys.c:517
+#: modules/control/hotkeys.c:509
+msgid "Secondary subtitle control"
+msgstr ""
+
+#: modules/control/hotkeys.c:520
 msgid "Sub sync: bookmarked audio time"
 msgstr ""
 
-#: modules/control/hotkeys.c:521
+#: modules/control/hotkeys.c:524
 msgid "Sub sync: bookmarked subtitle time"
 msgstr ""
 
-#: modules/control/hotkeys.c:528
+#: modules/control/hotkeys.c:531
 msgid "Sub sync: set bookmarks first!"
 msgstr ""
 
-#: modules/control/hotkeys.c:541
+#: modules/control/hotkeys.c:544
 #, c-format
 msgid "Sub sync: corrected %<PRId64> ms (total delay = %<PRId64> ms)"
 msgstr ""
 
-#: modules/control/hotkeys.c:550
+#: modules/control/hotkeys.c:553
 msgid "Sub sync: delay reset"
 msgstr ""
 
-#: modules/control/hotkeys.c:908
+#: modules/control/hotkeys.c:911
 msgid "Subtitle position: usual"
 msgstr ""
 
-#: modules/control/hotkeys.c:910
+#: modules/control/hotkeys.c:913
 #, c-format
 msgid "Subtitle position: %+d%%"
 msgstr ""
 
-#: modules/control/hotkeys.c:1312
+#: modules/control/hotkeys.c:1315
 msgid "Hotkeys management interface"
 msgstr "Kiirklahvide haldamise liides"
 
@@ -21411,16 +21449,16 @@ msgstr " ←,→                    Keri -/+ 1%%"
 
 #: modules/gui/ncurses.c:1017
 msgid " a, z                   Volume Up/Down"
-msgstr "a, z                     Vaiksemaks/Valjemaks"
+msgstr " a, z                     Vaiksemaks/Valjemaks"
 
 #: modules/gui/ncurses.c:1018
 msgid " m                      Mute"
-msgstr "m Heli maha"
+msgstr " m Heli maha"
 
 #. xgettext: You can use ↑ and ↓ characters
 #: modules/gui/ncurses.c:1020
 msgid " <up>,<down>            Navigate through the box line by line"
-msgstr "↑, ↓                    Navigeeri läbi kasti ridahaaval"
+msgstr " ↑, ↓                    Navigeeri läbi kasti ridahaaval"
 
 #. xgettext: You can use ⇞ and ⇟ characters
 #: modules/gui/ncurses.c:1022
@@ -21487,7 +21525,7 @@ msgstr " A                      Lisa kirje"
 #. xgettext: You can use ⌫ character to translate <backspace>
 #: modules/gui/ncurses.c:1047
 msgid " D, <backspace>, <del>  Delete an entry"
-msgstr "D, <backspace>, <del>   Kustuta kirje"
+msgstr " D, <backspace>, <del>   Kustuta kirje"
 
 #: modules/gui/ncurses.c:1048
 msgid " e                      Eject (if stopped)"
@@ -21546,7 +21584,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1241
 #, c-format
 msgid " Source   : %s"
-msgstr "Allikas   : %s"
+msgstr " Allikas   : %s"
 
 #: modules/gui/ncurses.c:1271
 #, c-format
@@ -21564,7 +21602,7 @@ msgstr ""
 
 #: modules/gui/ncurses.c:1277
 msgid " Volume   : ----"
-msgstr "Helitase : ----"
+msgstr " Helitase : ----"
 
 #: modules/gui/ncurses.c:1286
 #, c-format
@@ -21579,7 +21617,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr " Allikas: <aktiivne kirje puudub> "
+msgstr " Allikas: <aktiivne kirje puudub>"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -23086,7 +23124,7 @@ msgstr "Salvesta logifail kui..."
 #: modules/gui/qt/dialogs/messages/messages.cpp:361
 #, fuzzy
 msgid "Texts/Logs (*.log *.txt);; All (*.*)"
-msgstr "Tekstid / logid (*.log *.txt);; Kõik (*.*) "
+msgstr "Tekstid / logid (*.log *.txt);; Kõik (*.*)"
 
 #: modules/gui/qt/dialogs/messages/messages.cpp:367
 msgid "Application"
@@ -24561,7 +24599,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:193
 #, fuzzy
 msgid " dB"
-msgstr "dB"
+msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207
@@ -26060,7 +26098,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:802
 msgid " Profile Name Missing"
-msgstr "Profiili nimi puudub"
+msgstr " Profiili nimi puudub"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:803
 msgid "You must set a name for the profile."
@@ -28140,7 +28178,13 @@ msgid "Shuffle the play queue"
 msgstr ""
 
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1263
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1269
 msgid "Discard the filtered out items"
+msgstr ""
+
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1270
+msgid ""
+"Do you really want to discard the items that are not displayed at the moment?"
 msgstr ""
 
 #: modules/gui/qt/network/addonsmodel.cpp:330
@@ -29525,7 +29569,7 @@ msgstr ""
 
 #: modules/gui/qt/qt.cpp:213
 msgid "Show unimportant error and warnings dialogs"
-msgstr "Kuva ebaolulisi veateadete ja hoiatuste dialooge "
+msgstr "Kuva ebaolulisi veateadete ja hoiatuste dialooge"
 
 #: modules/gui/qt/qt.cpp:214
 msgid ""
@@ -34358,7 +34402,7 @@ msgstr ""
 #: modules/video_chroma/grey_yuv.c:55 modules/video_chroma/i422_i420.c:56
 #: modules/video_chroma/yuy2_i420.c:57 modules/video_chroma/yuy2_i422.c:57
 msgid "Conversions from "
-msgstr "Teisendus"
+msgstr "Teisendus "
 
 #: modules/video_chroma/i420_nv12.c:239
 msgid "YUV planar to semiplanar conversions"
@@ -36687,7 +36731,7 @@ msgstr "See koefitsent muudab sageduste kõrgust."
 
 #: modules/visualization/visual/visual.c:82
 msgid "Draw peaks in the analyzer"
-msgstr "Analüsaatorile joonistatakse \"tipud\" "
+msgstr "Analüsaatorile joonistatakse \"tipud\""
 
 #: modules/visualization/visual/visual.c:84
 msgid "Enable original graphic spectrum"
@@ -38530,22 +38574,6 @@ msgstr ""
 
 #~ msgid "No active subtitle"
 #~ msgstr "Puudub aktiivne subtiiter"
-
-#, c-format
-#~ msgid "Subtitle delay %i ms"
-#~ msgstr "Subtiitri viivitus %i ms"
-
-#, c-format
-#~ msgid "Audio delay %i ms"
-#~ msgstr "Audio viivitus %i ms"
-
-#, c-format
-#~ msgid "Audio track: %s"
-#~ msgstr "Audiorada: %s"
-
-#, c-format
-#~ msgid "Subtitle track: %s"
-#~ msgstr "Subtiitrite rada: %s"
 
 #~ msgid "Original Size"
 #~ msgstr "Algupärane suurus"

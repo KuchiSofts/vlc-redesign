@@ -711,12 +711,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (prémetou en alaedje)"
+msgstr "(prémetou en alaedje)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (prémetou dimet)"
+msgstr "(prémetou dimet)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -1002,7 +1002,7 @@ msgstr ""
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:203
 #: modules/video_filter/fps.c:42
 msgid "Frame rate"
-msgstr "Frecwince do cåde "
+msgstr "Frecwince do cåde"
 
 #: src/input/es_out.c:4828
 #, fuzzy
@@ -9231,7 +9231,7 @@ msgstr "Parametes di ricujhinne do cåbe eyet do satelite"
 
 #: modules/access/dtv/access.c:369
 msgid "DVB-S2 parameters"
-msgstr "Parametes DVB-S2 "
+msgstr "Parametes DVB-S2"
 
 #: modules/access/dtv/access.c:380
 msgid "ISDB-S parameters"
@@ -16075,7 +16075,7 @@ msgstr ""
 #: modules/control/cli/cli.c:355
 #, c-format
 msgid "Unknown command `%s'. Type `help' for help."
-msgstr "Comande nén cnoxhowe `%s'. Taper  `aidance' po aidance. "
+msgstr "Comande nén cnoxhowe `%s'. Taper  `aidance' po aidance."
 
 #: modules/control/cli/cli.c:987
 msgid "Remote control interface initialized. Type `help' for help."
@@ -19275,7 +19275,7 @@ msgstr "Schaper les meta-dnêyes"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:19
 #: modules/visualization/visual/visual.c:123
 msgid "General"
-msgstr "Djenerå "
+msgstr "Djenerå"
 
 #: modules/gui/macosx/panels/VLCInformationWindowController.m:169
 msgid "Codec Details"
@@ -19424,7 +19424,7 @@ msgstr ""
 #: modules/gui/macosx/panels/VLCTrackSynchronizationWindowController.m:94
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:292
 msgid "fps"
-msgstr " cps"
+msgstr "cps"
 
 #: modules/gui/macosx/panels/VLCTrackSynchronizationWindowController.m:95
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1530
@@ -20022,7 +20022,7 @@ msgstr "Cogne"
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:467
 msgid "Prefix"
-msgstr "Betchete "
+msgstr "Betchete"
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:468
 msgid "Sequential numbering"
@@ -21155,7 +21155,7 @@ msgstr ""
 
 #: modules/gui/ncurses.c:1045
 msgid " A                      Add an entry"
-msgstr "A                      Radjouter ene intrêye"
+msgstr " A                      Radjouter ene intrêye"
 
 #. xgettext: You can use ⌫ character to translate <backspace>
 #: modules/gui/ncurses.c:1047
@@ -21254,7 +21254,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr "Sourdant: <nou cayet do moumint>"
+msgstr " Sourdant: <nou cayet do moumint>"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -21943,7 +21943,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/extended/qml/CropInput.qml:87
 #, fuzzy
 msgid "px"
-msgstr " px"
+msgstr "px"
 
 #: modules/gui/qt/dialogs/extended/qml/CropPanel.qml:60
 msgid "Link top and bottom crop"
@@ -22289,7 +22289,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/extensions/extensions_manager.cpp:175
 #, fuzzy
 msgid "Empty"
-msgstr " - Vude - "
+msgstr "- Vude -"
 
 #: modules/gui/qt/dialogs/extensions/extensions_manager.cpp:181
 #, fuzzy
@@ -22764,11 +22764,11 @@ msgstr "Schaper l' fitchî do djournå come..."
 #: modules/gui/qt/dialogs/messages/messages.cpp:361
 #, fuzzy
 msgid "Texts/Logs (*.log *.txt);; All (*.*)"
-msgstr "Tecses / Djournås (*.log *.txt);; Totafwait (*.*) "
+msgstr "Tecses / Djournås (*.log *.txt);; Totafwait (*.*)"
 
 #: modules/gui/qt/dialogs/messages/messages.cpp:367
 msgid "Application"
-msgstr "Aplicåcion "
+msgstr "Aplicåcion"
 
 #: modules/gui/qt/dialogs/messages/messages.cpp:368
 msgid ""
@@ -24235,7 +24235,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:193
 #, fuzzy
 msgid " dB"
-msgstr "dB"
+msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207
@@ -26104,11 +26104,11 @@ msgstr "Candjî"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:506
 msgid "Broadcast: "
-msgstr "Evoyaedje:"
+msgstr "Evoyaedje: "
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 msgid "Schedule: "
-msgstr "Programaedje:"
+msgstr "Programaedje: "
 
 #: modules/gui/qt/maininterface/mainctx.cpp:1193
 msgid "Paste from clipboard"
@@ -31539,7 +31539,7 @@ msgstr "Videyo nén cnoxhou"
 #: modules/mux/avi.c:55
 #, fuzzy
 msgid "Subject"
-msgstr " Cayets "
+msgstr "Cayets"
 
 #: modules/mux/avi.c:60
 msgid "AVI muxer"
@@ -33990,7 +33990,7 @@ msgstr ""
 #: modules/video_chroma/grey_yuv.c:55 modules/video_chroma/i422_i420.c:56
 #: modules/video_chroma/yuy2_i420.c:57 modules/video_chroma/yuy2_i422.c:57
 msgid "Conversions from "
-msgstr "Coviertixhaedjes di"
+msgstr "Coviertixhaedjes di "
 
 #: modules/video_chroma/i420_nv12.c:239
 msgid "YUV planar to semiplanar conversions"

@@ -766,12 +766,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (habilitado por padrão)"
+msgstr "(habilitado por padrão)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (desabilitado por padrão)"
+msgstr "(desabilitado por padrão)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -2394,7 +2394,7 @@ msgstr ""
 
 #: src/libvlc-module.c:512
 msgid "Custom aspect ratios list"
-msgstr "Lista personalizada de proporções "
+msgstr "Lista personalizada de proporções"
 
 #: src/libvlc-module.c:514
 msgid ""
@@ -10770,7 +10770,7 @@ msgstr "Coluna da região esquerda"
 #: modules/access/screen/screen.c:62 modules/access/screen/wayland.c:470
 #: modules/access/screen/xcb.c:45
 msgid "Abscissa of the capture region in pixels."
-msgstr "Abcissa da região de captura, em pixels. "
+msgstr "Abcissa da região de captura, em pixels."
 
 #: modules/access/screen/screen.c:64 modules/access/screen/wayland.c:476
 #: modules/access/screen/xcb.c:51
@@ -13735,7 +13735,7 @@ msgstr ""
 
 #: modules/codec/avcodec/avcodec.h:161
 msgid "Fixed quantizer scale"
-msgstr "Escala fixa de quantização "
+msgstr "Escala fixa de quantização"
 
 #: modules/codec/avcodec/avcodec.h:162
 msgid ""
@@ -18124,7 +18124,7 @@ msgstr ""
 
 #: modules/demux/playlist/playlist.c:50
 msgid "Skip ads"
-msgstr "Ignorar "
+msgstr "Ignorar"
 
 #: modules/demux/playlist/playlist.c:51
 msgid ""
@@ -21542,7 +21542,7 @@ msgstr "Nome do Canal"
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:238
 #: modules/gui/macosx/windows/convertandsave/VLCOutput.m:111
 msgid "SDP URL"
-msgstr " URL SDP"
+msgstr "URL SDP"
 
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:296
 msgid "Invalid container format for HTTP streaming"
@@ -21836,7 +21836,7 @@ msgstr "[Exibir]"
 
 #: modules/gui/ncurses.c:990
 msgid " h,H                    Show/Hide help box"
-msgstr "h,H         Exibir/Ocultar a janla de ajuda"
+msgstr " h,H         Exibir/Ocultar a janla de ajuda"
 
 #: modules/gui/ncurses.c:991
 msgid " i                      Show/Hide info box"
@@ -21926,7 +21926,7 @@ msgstr " <left>,<right>         Buscar -/+ 1%%"
 
 #: modules/gui/ncurses.c:1017
 msgid " a, z                   Volume Up/Down"
-msgstr "a,z           Aumentar/Diminuir Volume"
+msgstr " a,z           Aumentar/Diminuir Volume"
 
 #: modules/gui/ncurses.c:1018
 msgid " m                      Mute"
@@ -22002,7 +22002,7 @@ msgstr " A           Adicionar uma entrada"
 #. xgettext: You can use ⌫ character to translate <backspace>
 #: modules/gui/ncurses.c:1047
 msgid " D, <backspace>, <del>  Delete an entry"
-msgstr " <backspace> Exclui uma entrada "
+msgstr " <backspace> Exclui uma entrada"
 
 #: modules/gui/ncurses.c:1048
 msgid " e                      Eject (if stopped)"
@@ -22061,12 +22061,12 @@ msgstr ""
 #: modules/gui/ncurses.c:1241
 #, c-format
 msgid " Source   : %s"
-msgstr "Fonte   : %s"
+msgstr " Fonte   : %s"
 
 #: modules/gui/ncurses.c:1271
 #, c-format
 msgid " Position : %s/%s"
-msgstr "Posição : %s/%s"
+msgstr " Posição : %s/%s"
 
 #: modules/gui/ncurses.c:1276
 msgid " Volume   : Mute"
@@ -22094,7 +22094,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr " Fonte: <Nenhum item> "
+msgstr " Fonte: <Nenhum item>"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -23844,7 +23844,7 @@ msgstr ""
 #. xgettext: frames per second
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1172
 msgid " f/s"
-msgstr "qps"
+msgstr " qps"
 
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1387
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:604
@@ -26704,7 +26704,7 @@ msgstr "Este misturador está ausente. O uso deste perfil irá falhar"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:802
 msgid " Profile Name Missing"
-msgstr "Perfil Sem Nome"
+msgstr " Perfil Sem Nome"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:803
 msgid "You must set a name for the profile."
@@ -35745,7 +35745,7 @@ msgstr ""
 #: modules/video_filter/ci_filters.m:784
 #, fuzzy
 msgid "Mac OS X hardware video filters"
-msgstr "Filtro de nitidez de vídeo "
+msgstr "Filtro de nitidez de vídeo"
 
 #: modules/video_filter/colorthres.c:55
 msgid ""
@@ -36515,7 +36515,7 @@ msgstr "Quebra-cabeças"
 
 #: modules/video_filter/ripple.c:51
 msgid "Ripple video filter"
-msgstr "Filtro de ondulação de vídeo "
+msgstr "Filtro de ondulação de vídeo"
 
 #: modules/video_filter/ripple.c:52
 msgid "Ripple"
@@ -36708,7 +36708,7 @@ msgstr "Enfatiza o contraste entre contornos."
 
 #: modules/video_filter/sharpen.c:66
 msgid "Sharpen video filter"
-msgstr "Filtro de nitidez de vídeo "
+msgstr "Filtro de nitidez de vídeo"
 
 #: modules/video_filter/transform.c:106
 msgid "Transform type"

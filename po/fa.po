@@ -738,12 +738,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (پیش‌فرض فعال)"
+msgstr "(پیش‌فرض فعال)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (پیش‌فرض غیر‌فعال)"
+msgstr "(پیش‌فرض غیر‌فعال)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -4727,7 +4727,7 @@ msgstr "تغییر وضعیت نسبت‌بندی خودکار"
 
 #: src/libvlc-module.c:1535
 msgid "Activate or deactivate autoscaling."
-msgstr " فعال یا غیرفعال کردن نسبت‌بندی خودکار"
+msgstr "فعال یا غیرفعال کردن نسبت‌بندی خودکار"
 
 #: src/libvlc-module.c:1536
 msgid "Increase scale factor"
@@ -16299,7 +16299,7 @@ msgstr ""
 
 #: modules/control/ntservice.c:46
 msgid "Install Windows Service"
-msgstr "نصب سرویس ویندوز "
+msgstr "نصب سرویس ویندوز"
 
 #: modules/control/ntservice.c:48
 msgid "Install the Service and exit."
@@ -20938,7 +20938,7 @@ msgstr ""
 
 #: modules/gui/ncurses.c:1007
 msgid " <space>                Pause/Play"
-msgstr "<space> ایست/پخش"
+msgstr " <space> ایست/پخش"
 
 #: modules/gui/ncurses.c:1008
 msgid " f                      Toggle Fullscreen"
@@ -21120,16 +21120,16 @@ msgstr ""
 
 #: modules/gui/ncurses.c:1276
 msgid " Volume   : Mute"
-msgstr "صدا : قطع"
+msgstr " صدا : قطع"
 
 #: modules/gui/ncurses.c:1277
 #, c-format
 msgid " Volume   : %3ld%%"
-msgstr "صدا : %3ld%%"
+msgstr " صدا : %3ld%%"
 
 #: modules/gui/ncurses.c:1277
 msgid " Volume   : ----"
-msgstr "صدا : ----"
+msgstr " صدا : ----"
 
 #: modules/gui/ncurses.c:1286
 #, c-format
@@ -21144,7 +21144,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr "منبع :  <no current item>"
+msgstr " منبع :  <no current item>"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -23778,7 +23778,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:982
 msgid "Configure Hotkeys"
-msgstr "پیکربندی کلید های میانبر "
+msgstr "پیکربندی کلید های میانبر"
 
 #: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1383
 msgid "%1 (partial)"
@@ -31610,7 +31610,7 @@ msgstr "زمان انقضا (میلی‌ثانیه)"
 #: modules/notify/notify.c:62
 #, fuzzy
 msgid "How long the notification will be displayed."
-msgstr "هر اطلاع چه مدت نمایش داده شود "
+msgstr "هر اطلاع چه مدت نمایش داده شود"
 
 #: modules/notify/notify.c:66
 msgid "Notify"

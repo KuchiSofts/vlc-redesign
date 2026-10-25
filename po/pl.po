@@ -767,12 +767,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (domyślnie włączone)"
+msgstr "(domyślnie włączone)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (domyślnie wyłączone)"
+msgstr "(domyślnie wyłączone)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -2869,7 +2869,7 @@ msgstr "Szybkie przeszukiwanie"
 
 #: src/libvlc-module.c:740
 msgid "Favor speed over precision while seeking"
-msgstr "Preferuj prędkość nad precyzją podczas przeglądania "
+msgstr "Preferuj prędkość nad precyzją podczas przeglądania"
 
 #: src/libvlc-module.c:742 modules/gui/qt/player/qml/PlaybackSpeed.qml:221
 #: modules/gui/qt/player/qml/TracksMenu.qml:310
@@ -9979,7 +9979,7 @@ msgstr "Wyświetl stosunek rozmiaru"
 
 #: modules/access/imem.c:90
 msgid "Display aspect ratio of a video elementary stream"
-msgstr "Wyświetl stosunek rozmiaru obrazu podstawowego strumienia "
+msgstr "Wyświetl stosunek rozmiaru obrazu podstawowego strumienia"
 
 #: modules/access/imem.c:94
 msgid "Frame rate of a video elementary stream"
@@ -11380,7 +11380,7 @@ msgstr "Błękitne niebo"
 
 #: modules/access/v4l2/v4l2.c:166
 msgid "Grass green"
-msgstr "Zieleń trawiasta "
+msgstr "Zieleń trawiasta"
 
 #: modules/access/v4l2/v4l2.c:166
 msgid "Skin whiten"
@@ -12240,7 +12240,7 @@ msgstr "Prawy tylny"
 #: modules/audio_filter/channel_mixer/mono.c:90
 #: modules/audio_filter/channel_mixer/remap.c:65
 msgid "Low-frequency effects"
-msgstr "Efekty o niskiej częstotliwości "
+msgstr "Efekty o niskiej częstotliwości"
 
 #: modules/audio_filter/channel_mixer/mono.c:91
 #: modules/audio_filter/channel_mixer/remap.c:65
@@ -18098,7 +18098,7 @@ msgstr "Parser Kasenna MediaBase"
 
 #: modules/demux/playlist/playlist.c:106
 msgid "QuickTime Media Link importer"
-msgstr "Importer QuickTime Media Link "
+msgstr "Importer QuickTime Media Link"
 
 #: modules/demux/playlist/playlist.c:111
 msgid "Dummy IFO demux"
@@ -21808,15 +21808,15 @@ msgstr " f                      Przełącz pełny ekran"
 
 #: modules/gui/ncurses.c:1009
 msgid " c                      Cycle through audio tracks"
-msgstr "c Przełącz pomiędzy ścieżkami dźwięku"
+msgstr " c Przełącz pomiędzy ścieżkami dźwięku"
 
 #: modules/gui/ncurses.c:1010
 msgid " v                      Cycle through subtitles tracks"
-msgstr "v Przełącz pomiędzy ścieżkami napisów"
+msgstr " v Przełącz pomiędzy ścieżkami napisów"
 
 #: modules/gui/ncurses.c:1011
 msgid " b                      Cycle through video tracks"
-msgstr "b Przełącz pomiędzy ścieżkami obrazu"
+msgstr " b Przełącz pomiędzy ścieżkami obrazu"
 
 #: modules/gui/ncurses.c:1012
 msgid " n, p                   Next/Previous playlist item"
@@ -21842,7 +21842,7 @@ msgstr " a, z                   Głośniej/Ciszej"
 
 #: modules/gui/ncurses.c:1018
 msgid " m                      Mute"
-msgstr "m Wycisz"
+msgstr " m Wycisz"
 
 #. xgettext: You can use ↑ and ↓ characters
 #: modules/gui/ncurses.c:1020
@@ -21906,7 +21906,7 @@ msgstr " /                      Szukaj pozycji"
 
 #: modules/gui/ncurses.c:1044
 msgid " ;                      Look for the next item"
-msgstr "; Szukaj następnej pozycji"
+msgstr " ; Szukaj następnej pozycji"
 
 #: modules/gui/ncurses.c:1045
 msgid " A                      Add an entry"
@@ -21983,7 +21983,7 @@ msgstr " Pozycja : %s/%s"
 
 #: modules/gui/ncurses.c:1276
 msgid " Volume   : Mute"
-msgstr "Głośność: Wycisz"
+msgstr " Głośność: Wycisz"
 
 #: modules/gui/ncurses.c:1277
 #, c-format
@@ -21992,7 +21992,7 @@ msgstr " Głośność   : %3ld%%"
 
 #: modules/gui/ncurses.c:1277
 msgid " Volume   : ----"
-msgstr "Głośność : ----"
+msgstr " Głośność : ----"
 
 #: modules/gui/ncurses.c:1286
 #, c-format
@@ -26595,7 +26595,7 @@ msgstr "Tego muksera brakuje. Używanie tego profilu nie powiedzie się"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:802
 msgid " Profile Name Missing"
-msgstr "Brak nazwy profilu"
+msgstr " Brak nazwy profilu"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:803
 msgid "You must set a name for the profile."
@@ -35604,7 +35604,7 @@ msgstr "Proporcje wyjścia obrazu"
 msgid ""
 "Set the canvas' picture aspect ratio. If omitted, the canvas is assumed to "
 "have the same SAR as the input."
-msgstr "Ustaw proporcje obrazu na płótnie. Jeśli nie ma podanej wartości, "
+msgstr "Ustaw proporcje obrazu na płótnie. Jeśli nie ma podanej wartości,"
 
 #: modules/video_filter/canvas.c:94
 msgid "Pad video"

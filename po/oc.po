@@ -773,12 +773,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (activat per defaut)"
+msgstr "(activat per defaut)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (desactivat per defaut)"
+msgstr "(desactivat per defaut)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -955,13 +955,13 @@ msgstr "Títol"
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:201
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:212
 msgid "Codec"
-msgstr "Codec "
+msgstr "Codec"
 
 #: src/input/es_out.c:4711 src/input/meta.c:69 modules/access/imem.c:70
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:411
 #: modules/stream_out/setid.c:50
 msgid "Language"
-msgstr "Lenga "
+msgstr "Lenga"
 
 #: src/input/es_out.c:4714 src/input/meta.c:64
 #: modules/gui/macosx/panels/VLCBookmarksWindowController.m:103
@@ -974,7 +974,7 @@ msgstr "Descripcion"
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:202
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:213
 msgid "Bitrate"
-msgstr "Debit "
+msgstr "Debit"
 
 #: src/input/es_out.c:4719 src/input/es_out.c:4776
 #, c-format
@@ -988,13 +988,13 @@ msgstr "%u kbit/s"
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:1246
 #: modules/gui/qt/dialogs/preferences/expert_model.cpp:304
 msgid "Type"
-msgstr "Tipe "
+msgstr "Tipe"
 
 #: src/input/es_out.c:4728 modules/access/jack.c:66
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:214
 #: modules/gui/macosx/windows/convertandsave/VLCOutput.m:100
 msgid "Channels"
-msgstr "Canals "
+msgstr "Canals"
 
 #: src/input/es_out.c:4734
 msgid "Channel Layout"
@@ -1012,7 +1012,7 @@ msgstr "%u Hz"
 
 #: src/input/es_out.c:4745
 msgid "Bits per sample"
-msgstr "Bits per escapolon "
+msgstr "Bits per escapolon"
 
 #: src/input/es_out.c:4753 src/input/es_out.c:4822
 msgid "Decoded format"
@@ -1066,7 +1066,7 @@ msgstr "Durada (s)"
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:203
 #: modules/video_filter/fps.c:42
 msgid "Frame rate"
-msgstr "Debit d'imatges "
+msgstr "Debit d'imatges"
 
 #: src/input/es_out.c:4828
 #, fuzzy
@@ -1303,7 +1303,7 @@ msgstr ""
 #: modules/gui/qt/menus/menus.cpp:864
 #: modules/gui/qt/player/qml/TracksListPage.qml:80
 msgid "Subtitle"
-msgstr "Sostítols "
+msgstr "Sostítols"
 
 #: src/input/input.c:3130
 msgid "Your media can't be opened"
@@ -3323,7 +3323,7 @@ msgstr "Temps d'expiracion TCP"
 #: src/libvlc-module.c:937
 #, fuzzy
 msgid "Default TCP connection timeout (in milliseconds)."
-msgstr "Temps d'expiracion per defaut de las connexions TCP en millisegondas. "
+msgstr "Temps d'expiracion per defaut de las connexions TCP en millisegondas."
 
 #: src/libvlc-module.c:939
 msgid "HTTP server address"
@@ -8039,7 +8039,7 @@ msgstr ""
 #: src/text/iso-639_def.h:542
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:81
 msgid "Vietnamese"
-msgstr "Vietnamian "
+msgstr "Vietnamian"
 
 #: src/text/iso-639_def.h:543
 msgid "Volapük"
@@ -9459,7 +9459,7 @@ msgstr ""
 
 #: modules/access/dtv/access.c:207
 msgid "DiSEqC LNB number"
-msgstr "Numèro del LNB DiSEqC "
+msgstr "Numèro del LNB DiSEqC"
 
 #: modules/access/dtv/access.c:209
 msgid ""
@@ -9478,7 +9478,7 @@ msgstr "Pas especificat"
 
 #: modules/access/dtv/access.c:219
 msgid "Uncommitted DiSEqC LNB number"
-msgstr "Numèro del LNB DiSEqC "
+msgstr "Numèro del LNB DiSEqC"
 
 #: modules/access/dtv/access.c:221
 msgid ""
@@ -9686,7 +9686,7 @@ msgstr "Entrada DVDnav"
 
 #: modules/access/dvdnav.c:105
 msgid "DVDnav demuxer"
-msgstr "Desmultiplexador DVDnav "
+msgstr "Desmultiplexador DVDnav"
 
 #: modules/access/dvdnav.c:397 modules/access/dvdread.c:204
 #: modules/access/dvdread.c:220 modules/access/dvdread.c:696
@@ -10348,7 +10348,7 @@ msgstr "MTP"
 
 #: modules/access/mtp.c:170 modules/access/vdr.c:380 modules/access/vdr.c:546
 msgid "File reading failed"
-msgstr "La lectura del fichièr a fracassat "
+msgstr "La lectura del fichièr a fracassat"
 
 #: modules/access/mtp.c:171
 #, c-format
@@ -10951,7 +10951,7 @@ msgstr "Fichièr del tampon del framebuffer"
 
 #: modules/access/shm.c:65
 msgid "Path of the memory mapped file of the frame buffer"
-msgstr "Camin del fichièr del framebuffer mappat en memòria "
+msgstr "Camin del fichièr del framebuffer mappat en memòria"
 
 #: modules/access/shm.c:75
 msgid "XWD file (autodetect)"
@@ -12040,7 +12040,7 @@ msgstr "Descripcion"
 #: modules/access_output/shout.c:86
 #, fuzzy
 msgid "URL with information about the stream or your channel."
-msgstr "URL amb d'informacions sus vòstre flux o canal. "
+msgstr "URL amb d'informacions sus vòstre flux o canal."
 
 #: modules/access_output/shout.c:93
 #, fuzzy
@@ -14280,7 +14280,7 @@ msgstr ""
 
 #: modules/codec/gstreamer/gstdecode.c:105
 msgid "GStreamer Based Decoder"
-msgstr "Desencodador basat sus GStreamer "
+msgstr "Desencodador basat sus GStreamer"
 
 #: modules/codec/jpeg.c:40
 msgid ""
@@ -14700,7 +14700,7 @@ msgstr ""
 
 #: modules/codec/qsv.c:79
 msgid "Group of Picture size"
-msgstr "Grop de talha de l'imatge "
+msgstr "Grop de talha de l'imatge"
 
 #: modules/codec/qsv.c:81
 msgid ""
@@ -14769,7 +14769,7 @@ msgstr ""
 
 #: modules/codec/qsv.c:116
 msgid "Quantization parameter for I-frames"
-msgstr "Paramètre de quantificacion pels imatges-I "
+msgstr "Paramètre de quantificacion pels imatges-I"
 
 #: modules/codec/qsv.c:117
 msgid ""
@@ -17272,7 +17272,7 @@ msgstr "Desmultiplexador AIFF"
 
 #: modules/demux/asf/asf.c:64
 msgid "ASF/WMV demuxer"
-msgstr "Desmultiplexador ASF/WMV "
+msgstr "Desmultiplexador ASF/WMV"
 
 #: modules/demux/asf/asf.c:920
 msgid "Could not demux ASF stream"
@@ -20239,7 +20239,7 @@ msgstr "Velocitat dels sostítols :"
 #: modules/gui/macosx/panels/VLCTrackSynchronizationWindowController.m:94
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:292
 msgid "fps"
-msgstr " ips"
+msgstr "ips"
 
 #: modules/gui/macosx/panels/VLCTrackSynchronizationWindowController.m:95
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1530
@@ -21832,27 +21832,27 @@ msgstr " h,H Afichar/Amagar l'ajuda"
 
 #: modules/gui/ncurses.c:991
 msgid " i                      Show/Hide info box"
-msgstr "i Afichar/Amagar las informacions"
+msgstr " i Afichar/Amagar las informacions"
 
 #: modules/gui/ncurses.c:992
 msgid " M                      Show/Hide metadata box"
-msgstr "m Afichar/Amagar las metainformacions"
+msgstr " m Afichar/Amagar las metainformacions"
 
 #: modules/gui/ncurses.c:993
 msgid " L                      Show/Hide messages box"
-msgstr "L Afichar/Amagar los messatges"
+msgstr " L Afichar/Amagar los messatges"
 
 #: modules/gui/ncurses.c:994
 msgid " P                      Show/Hide playlist box"
-msgstr "P Afichar/Amagar la lista de lectura"
+msgstr " P Afichar/Amagar la lista de lectura"
 
 #: modules/gui/ncurses.c:995
 msgid " B                      Show/Hide filebrowser"
-msgstr "B Afichar/Amagar lo navigator de fichièrs"
+msgstr " B Afichar/Amagar lo navigator de fichièrs"
 
 #: modules/gui/ncurses.c:996
 msgid " S                      Show/Hide statistics box"
-msgstr "P Afichar/Amagar las estatisticas"
+msgstr " P Afichar/Amagar las estatisticas"
 
 #: modules/gui/ncurses.c:997
 msgid " E                      Show/Hide equalizer box"
@@ -21860,11 +21860,11 @@ msgstr ""
 
 #: modules/gui/ncurses.c:998
 msgid " Esc                    Close Add/Search entry"
-msgstr "     [Escap]     Tampar lo dialòg Apondre/Cercar"
+msgstr " [Escap]     Tampar lo dialòg Apondre/Cercar"
 
 #: modules/gui/ncurses.c:999
 msgid " Ctrl-l                 Refresh the screen"
-msgstr "     Ctrl+l      Refrescar l'ecran"
+msgstr " Ctrl+l      Refrescar l'ecran"
 
 #: modules/gui/ncurses.c:1003
 msgid "[Global]"
@@ -21872,72 +21872,72 @@ msgstr "[Global]"
 
 #: modules/gui/ncurses.c:1005
 msgid " q, Q, Esc              Quit"
-msgstr "     q, Q, Escap Quitar"
+msgstr " q, Q, Escap Quitar"
 
 #: modules/gui/ncurses.c:1006
 msgid " s                      Stop"
-msgstr "     s           Arrestar"
+msgstr " s           Arrestar"
 
 #: modules/gui/ncurses.c:1007
 msgid " <space>                Pause/Play"
-msgstr "     [Espaci]    Suspendre/Legir"
+msgstr " [Espaci]    Suspendre/Legir"
 
 #: modules/gui/ncurses.c:1008
 msgid " f                      Toggle Fullscreen"
-msgstr "     f           Comutar l'ecran complet"
+msgstr " f           Comutar l'ecran complet"
 
 #: modules/gui/ncurses.c:1009
 msgid " c                      Cycle through audio tracks"
-msgstr "c Bocla sus las pistas àudios"
+msgstr " c Bocla sus las pistas àudios"
 
 #: modules/gui/ncurses.c:1010
 msgid " v                      Cycle through subtitles tracks"
-msgstr "v Bocla sus las pistas de sostítols"
+msgstr " v Bocla sus las pistas de sostítols"
 
 #: modules/gui/ncurses.c:1011
 msgid " b                      Cycle through video tracks"
-msgstr "b Bocla sus las pistas vidèos"
+msgstr " b Bocla sus las pistas vidèos"
 
 #: modules/gui/ncurses.c:1012
 msgid " n, p                   Next/Previous playlist item"
-msgstr "     n, p        Seguent/Precedent"
+msgstr " n, p        Seguent/Precedent"
 
 #: modules/gui/ncurses.c:1013
 msgid " [, ]                   Next/Previous title"
-msgstr "     [, ]        Títol Seguent/Precedent"
+msgstr " [, ]        Títol Seguent/Precedent"
 
 #: modules/gui/ncurses.c:1014
 msgid " <, >                   Next/Previous chapter"
-msgstr "     <, >        Capítol Seguent/Precedent"
+msgstr " <, >        Capítol Seguent/Precedent"
 
 #. xgettext: You can use ← and → characters
 #: modules/gui/ncurses.c:1016
 #, c-format
 msgid " <left>,<right>         Seek -/+ 1%%"
-msgstr "     ←, →        Sautar -/+1%%"
+msgstr " ←, →        Sautar -/+1%%"
 
 #: modules/gui/ncurses.c:1017
 msgid " a, z                   Volume Up/Down"
-msgstr "     a,z         Aumentar/redusir lo volum"
+msgstr " a,z         Aumentar/redusir lo volum"
 
 #: modules/gui/ncurses.c:1018
 msgid " m                      Mute"
-msgstr "     m           Mut"
+msgstr " m           Mut"
 
 #. xgettext: You can use ↑ and ↓ characters
 #: modules/gui/ncurses.c:1020
 msgid " <up>,<down>            Navigate through the box line by line"
-msgstr "     ↑,↓         Navigar linha per linha"
+msgstr " ↑,↓         Navigar linha per linha"
 
 #. xgettext: You can use ⇞ and ⇟ characters
 #: modules/gui/ncurses.c:1022
 msgid " <pageup>,<pagedown>    Navigate through the box page by page"
-msgstr "     ⇞,⇟         Navigar pagina per pagina"
+msgstr " ⇞,⇟         Navigar pagina per pagina"
 
 #. xgettext: You can use ↖ and ↘ characters
 #: modules/gui/ncurses.c:1024
 msgid " <start>,<end>          Navigate to start/end of box"
-msgstr "     ↖,↘         Anar al començament/a la fin de la bóstia de dialòg"
+msgstr " ↖,↘         Anar al començament/a la fin de la bóstia de dialòg"
 
 #: modules/gui/ncurses.c:1028
 msgid "[Equalizer]"
@@ -21957,48 +21957,48 @@ msgstr "[Lista de lectura]"
 
 #: modules/gui/ncurses.c:1037
 msgid " r                      Toggle Random playing"
-msgstr "     r           Comutar la lectura aleatòri"
+msgstr " r           Comutar la lectura aleatòri"
 
 #: modules/gui/ncurses.c:1038
 msgid " l                      Toggle Loop Playlist"
-msgstr "     l           Comutar lo reboclatge de lista"
+msgstr " l           Comutar lo reboclatge de lista"
 
 #: modules/gui/ncurses.c:1039
 msgid " R                      Toggle Repeat item"
-msgstr "     R           Comutar la repeticion d'element"
+msgstr " R           Comutar la repeticion d'element"
 
 #: modules/gui/ncurses.c:1040
 msgid " o                      Order Playlist by title"
-msgstr "     o           Triar la lista de lectura per títol"
+msgstr " o           Triar la lista de lectura per títol"
 
 #: modules/gui/ncurses.c:1041
 msgid " O                      Reverse order Playlist by title"
-msgstr "     O           Triar la lista de lectura per títol (inversat)"
+msgstr " O           Triar la lista de lectura per títol (inversat)"
 
 #: modules/gui/ncurses.c:1042
 msgid " g                      Go to the current playing item"
-msgstr "     g           Anar a l'element corrent"
+msgstr " g           Anar a l'element corrent"
 
 #: modules/gui/ncurses.c:1043
 msgid " /                      Look for an item"
-msgstr "     /           Recercar"
+msgstr " /           Recercar"
 
 #: modules/gui/ncurses.c:1044
 msgid " ;                      Look for the next item"
-msgstr "     ;           Recercar l'element seguent"
+msgstr " ;           Recercar l'element seguent"
 
 #: modules/gui/ncurses.c:1045
 msgid " A                      Add an entry"
-msgstr "     A           Apondre"
+msgstr " A           Apondre"
 
 #. xgettext: You can use ⌫ character to translate <backspace>
 #: modules/gui/ncurses.c:1047
 msgid " D, <backspace>, <del>  Delete an entry"
-msgstr "     D,⌫,[Supr] Escafar"
+msgstr " D,⌫,[Supr] Escafar"
 
 #: modules/gui/ncurses.c:1048
 msgid " e                      Eject (if stopped)"
-msgstr "     e           Ejectar (se arrestat)"
+msgstr " e           Ejectar (se arrestat)"
 
 #: modules/gui/ncurses.c:1052
 msgid "[Filebrowser]"
@@ -22016,7 +22016,7 @@ msgstr ""
 
 #: modules/gui/ncurses.c:1056
 msgid " .                      Show/Hide hidden files"
-msgstr ". Afichar/Amagar los fichièrs amagats"
+msgstr " . Afichar/Amagar los fichièrs amagats"
 
 #: modules/gui/ncurses.c:1060
 msgid "[Player]"
@@ -22026,7 +22026,7 @@ msgstr "[Lector]"
 #: modules/gui/ncurses.c:1063
 #, c-format
 msgid " <up>,<down>            Seek +/-5%%"
-msgstr "     ↑,↓         Sautar +/-5%%"
+msgstr " ↑,↓         Sautar +/-5%%"
 
 #: modules/gui/ncurses.c:1106
 #, c-format
@@ -22064,16 +22064,16 @@ msgstr " Posicion : %s/%s"
 
 #: modules/gui/ncurses.c:1276
 msgid " Volume   : Mute"
-msgstr "Volum : mut"
+msgstr " Volum : mut"
 
 #: modules/gui/ncurses.c:1277
 #, c-format
 msgid " Volume   : %3ld%%"
-msgstr "Volum : %3ld%%"
+msgstr " Volum : %3ld%%"
 
 #: modules/gui/ncurses.c:1277
 msgid " Volume   : ----"
-msgstr "Volum : ----"
+msgstr " Volum : ----"
 
 #: modules/gui/ncurses.c:1286
 #, c-format
@@ -23124,7 +23124,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/extensions/extensions_manager.cpp:175
 #, fuzzy
 msgid "Empty"
-msgstr " - Void - "
+msgstr "- Void -"
 
 #: modules/gui/qt/dialogs/extensions/extensions_manager.cpp:181
 #, fuzzy
@@ -23604,7 +23604,7 @@ msgstr "Enregistrar lo jornal jos…"
 #: modules/gui/qt/dialogs/messages/messages.cpp:361
 #, fuzzy
 msgid "Texts/Logs (*.log *.txt);; All (*.*)"
-msgstr "Tèxtes / Jornals (*.log *.txt);; Totes (*.*) "
+msgstr "Tèxtes / Jornals (*.log *.txt);; Totes (*.*)"
 
 #: modules/gui/qt/dialogs/messages/messages.cpp:367
 msgid "Application"
@@ -23780,7 +23780,7 @@ msgstr "Vòstre ecran serà utilizat per difusar o enregistrar son contengut."
 #. xgettext: frames per second
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1172
 msgid " f/s"
-msgstr "ima/s"
+msgstr " ima/s"
 
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1387
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:604
@@ -25088,7 +25088,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:193
 #, fuzzy
 msgid " dB"
-msgstr "dB"
+msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207
@@ -26589,7 +26589,7 @@ msgstr "Manca un multiplexador. Utilizar aqueste perfil serà un fracàs."
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:802
 msgid " Profile Name Missing"
-msgstr "Nom de perfil absent"
+msgstr " Nom de perfil absent"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:803
 msgid "You must set a name for the profile."
@@ -26963,11 +26963,11 @@ msgstr "Cambiar"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:506
 msgid "Broadcast: "
-msgstr "Difusion :"
+msgstr "Difusion : "
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 msgid "Schedule: "
-msgstr "Planificacion :"
+msgstr "Planificacion : "
 
 #: modules/gui/qt/maininterface/mainctx.cpp:1193
 msgid "Paste from clipboard"
@@ -28485,7 +28485,7 @@ msgstr "&Vidèo"
 #: modules/gui/qt/menus/menus.cpp:1038
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:294
 msgid "Subti&tle"
-msgstr "Sostí&tols "
+msgstr "Sostí&tols"
 
 #: modules/gui/qt/menus/menus.cpp:1044
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:367
@@ -28909,7 +28909,7 @@ msgstr ""
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:42
 msgid "Extended panel"
-msgstr "Opcions espandidas "
+msgstr "Opcions espandidas"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:46
 msgid "A-B Loop"
@@ -33678,7 +33678,7 @@ msgstr ""
 
 #: modules/spu/subsdelay.c:74
 msgid "Interval between appearance and disappearance"
-msgstr "Interval entre aparicion e desaparicion "
+msgstr "Interval entre aparicion e desaparicion"
 
 #: modules/spu/subsdelay.c:76
 msgid ""
@@ -34862,7 +34862,7 @@ msgstr ""
 #: modules/stream_out/transcode/transcode.c:132
 #, fuzzy
 msgid "Picture pool size"
-msgstr "Grop de talha de l'imatge "
+msgstr "Grop de talha de l'imatge"
 
 #: modules/stream_out/transcode/transcode.c:133
 msgid ""
@@ -34957,7 +34957,7 @@ msgstr "Fichièr de poliça d'utilizar"
 msgid ""
 "The opacity (inverse of transparency) of the text that will be rendered on "
 "the video. 0 = transparent, 255 = totally opaque."
-msgstr "Opacitat del tèxte afichat (0 = transparent, 255 = opac). "
+msgstr "Opacitat del tèxte afichat (0 = transparent, 255 = opac)."
 
 #: modules/text_renderer/freetype/freetype.c:69
 msgid "Text default color"
@@ -36561,7 +36561,7 @@ msgstr "SNAP"
 
 #: modules/video_output/kva.c:63
 msgid "WarpOverlay!"
-msgstr "Incrustacion «  WarpOverlay! » "
+msgstr "Incrustacion «  WarpOverlay! »"
 
 #: modules/video_output/kva.c:63
 msgid "VMAN"

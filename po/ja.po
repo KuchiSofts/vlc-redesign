@@ -764,12 +764,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (デフォルトで有効)"
+msgstr "(デフォルトで有効)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (デフォルトで無効)"
+msgstr "(デフォルトで無効)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -21145,7 +21145,7 @@ msgstr ""
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:747
 #, c-format
 msgid "%i tracks"
-msgstr " %i トラック"
+msgstr "%i トラック"
 
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:917
 msgid "Play as DVD-Audio"
@@ -21649,7 +21649,7 @@ msgstr " i                      情報ボックスの表示/非表示"
 
 #: modules/gui/ncurses.c:992
 msgid " M                      Show/Hide metadata box"
-msgstr "M メタデータボックスの表示/非表示"
+msgstr " M メタデータボックスの表示/非表示"
 
 #: modules/gui/ncurses.c:993
 msgid " L                      Show/Hide messages box"
@@ -21701,15 +21701,15 @@ msgstr " f                      全画面表示の切り替え"
 
 #: modules/gui/ncurses.c:1009
 msgid " c                      Cycle through audio tracks"
-msgstr "オーディオトラック中のcサイクル"
+msgstr " オーディオトラック中のcサイクル"
 
 #: modules/gui/ncurses.c:1010
 msgid " v                      Cycle through subtitles tracks"
-msgstr "字幕トラック中のvサイクル"
+msgstr " 字幕トラック中のvサイクル"
 
 #: modules/gui/ncurses.c:1011
 msgid " b                      Cycle through video tracks"
-msgstr "ビデオトラック中のbサイクル"
+msgstr " ビデオトラック中のbサイクル"
 
 #: modules/gui/ncurses.c:1012
 msgid " n, p                   Next/Previous playlist item"
@@ -21735,7 +21735,7 @@ msgstr " a, z                   音量の増減"
 
 #: modules/gui/ncurses.c:1018
 msgid " m                      Mute"
-msgstr "m ミュート"
+msgstr " m ミュート"
 
 #. xgettext: You can use ↑ and ↓ characters
 #: modules/gui/ncurses.c:1020
@@ -21798,7 +21798,7 @@ msgstr " /                      項目を探す"
 
 #: modules/gui/ncurses.c:1044
 msgid " ;                      Look for the next item"
-msgstr "; 次の項目を見る"
+msgstr " ; 次の項目を見る"
 
 #: modules/gui/ncurses.c:1045
 msgid " A                      Add an entry"
@@ -22595,7 +22595,7 @@ msgstr "%1のクロッピング (ピクセル)"
 
 #: modules/gui/qt/dialogs/extended/qml/CropInput.qml:87
 msgid "px"
-msgstr " ピクセル"
+msgstr "ピクセル"
 
 #: modules/gui/qt/dialogs/extended/qml/CropPanel.qml:60
 msgid "Link top and bottom crop"
@@ -22931,7 +22931,7 @@ msgstr "%1の色"
 #: modules/gui/qt/widgets/qml/EmptyLabelButton.qml:78
 #: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:67
 msgid "Browse"
-msgstr " 参照 "
+msgstr "参照"
 
 #: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:340
 msgid "Browse for %1"
@@ -23637,7 +23637,7 @@ msgstr "ストリームを再生するか、保存するためにディスプレ
 #. xgettext: frames per second
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1172
 msgid " f/s"
-msgstr "フレーム/秒"
+msgstr " フレーム/秒"
 
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1387
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:604
@@ -26481,7 +26481,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:802
 msgid " Profile Name Missing"
-msgstr "プロファイル名が指定されていません"
+msgstr " プロファイル名が指定されていません"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:803
 msgid "You must set a name for the profile."

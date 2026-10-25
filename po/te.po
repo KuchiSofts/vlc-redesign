@@ -706,12 +706,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (అప్రమేయం చేతనపరచివుంది)"
+msgstr "(అప్రమేయం చేతనపరచివుంది)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (అప్రమేయం అచేతనపరచివుంది)"
+msgstr "(అప్రమేయం అచేతనపరచివుంది)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -11649,7 +11649,7 @@ msgstr ""
 #: modules/audio_filter/channel_mixer/mono.c:91
 #: modules/audio_filter/channel_mixer/remap.c:65
 msgid "Side right"
-msgstr "కుడి "
+msgstr "కుడి"
 
 #: modules/audio_filter/channel_mixer/mono.c:91
 #: modules/audio_filter/channel_mixer/remap.c:64
@@ -20941,7 +20941,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr " వనరు: <ఏ ప్రస్తుత అంశం లేదు> "
+msgstr " వనరు: <ఏ ప్రస్తుత అంశం లేదు>"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -21625,7 +21625,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/extended/qml/CropInput.qml:87
 #, fuzzy
 msgid "px"
-msgstr " px"
+msgstr "px"
 
 #: modules/gui/qt/dialogs/extended/qml/CropPanel.qml:60
 msgid "Link top and bottom crop"
@@ -21972,7 +21972,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/extensions/extensions_manager.cpp:175
 #, fuzzy
 msgid "Empty"
-msgstr " - ఖాళీ - "
+msgstr "- ఖాళీ -"
 
 #: modules/gui/qt/dialogs/extensions/extensions_manager.cpp:181
 #, fuzzy
@@ -22447,7 +22447,7 @@ msgstr "చిట్టా దస్త్రాన్ని ఇలా భద్
 #: modules/gui/qt/dialogs/messages/messages.cpp:361
 #, fuzzy
 msgid "Texts/Logs (*.log *.txt);; All (*.*)"
-msgstr "పాఠ్యాలు / చిట్టాలు (*.log *.txt);; All (*.*) "
+msgstr "పాఠ్యాలు / చిట్టాలు (*.log *.txt);; All (*.*)"
 
 #: modules/gui/qt/dialogs/messages/messages.cpp:367
 msgid "Application"
@@ -23915,7 +23915,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:193
 #, fuzzy
 msgid " dB"
-msgstr "dB"
+msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207

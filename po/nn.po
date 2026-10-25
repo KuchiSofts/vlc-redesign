@@ -732,12 +732,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (standard slått på)"
+msgstr "(standard slått på)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (standard slått av)"
+msgstr "(standard slått av)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -3215,7 +3215,7 @@ msgstr "TCP-tilkoplingsavbrot"
 #: src/libvlc-module.c:937
 #, fuzzy
 msgid "Default TCP connection timeout (in milliseconds)."
-msgstr "Standard TCP-tilkoplingsavbrot (i millisekund). "
+msgstr "Standard TCP-tilkoplingsavbrot (i millisekund)."
 
 #: src/libvlc-module.c:939
 msgid "HTTP server address"
@@ -13399,7 +13399,7 @@ msgstr ""
 #: modules/codec/daala.c:113
 #, fuzzy
 msgid "Keyframe interval"
-msgstr "Standard grensesnitt: "
+msgstr "Standard grensesnitt:"
 
 #: modules/codec/daala.c:115
 msgid "Enforce a keyframe interval between 1 and 1000."
@@ -19324,7 +19324,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:270
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:271
 msgid "s"
-msgstr " s"
+msgstr "s"
 
 #: modules/gui/macosx/panels/VLCTrackSynchronizationWindowController.m:88
 msgid "A positive value means that the audio is ahead of the video"
@@ -20963,7 +20963,7 @@ msgstr ""
 
 #: modules/gui/ncurses.c:1007
 msgid " <space>                Pause/Play"
-msgstr "<space> Pause/Spel"
+msgstr " <space> Pause/Spel"
 
 #: modules/gui/ncurses.c:1008
 msgid " f                      Toggle Fullscreen"
@@ -21005,7 +21005,7 @@ msgstr ""
 
 #: modules/gui/ncurses.c:1018
 msgid " m                      Mute"
-msgstr "m Demp"
+msgstr " m Demp"
 
 #. xgettext: You can use ↑ and ↓ characters
 #: modules/gui/ncurses.c:1020
@@ -21145,7 +21145,7 @@ msgstr " Posisjon : %s/%s"
 
 #: modules/gui/ncurses.c:1276
 msgid " Volume   : Mute"
-msgstr "Volum : Dempa"
+msgstr " Volum : Dempa"
 
 #: modules/gui/ncurses.c:1277
 #, c-format
@@ -21169,7 +21169,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr "Kjelde: <no current item> "
+msgstr " Kjelde: <no current item>"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -21851,7 +21851,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/extended/qml/CropInput.qml:87
 msgid "px"
-msgstr "  pikslar"
+msgstr "pikslar"
 
 #: modules/gui/qt/dialogs/extended/qml/CropPanel.qml:60
 msgid "Link top and bottom crop"
@@ -24134,7 +24134,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:193
 #, fuzzy
 msgid " dB"
-msgstr "dB"
+msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207
@@ -25996,11 +25996,11 @@ msgstr "Endra"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:506
 msgid "Broadcast: "
-msgstr "Kringkasting:"
+msgstr "Kringkasting: "
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 msgid "Schedule: "
-msgstr "Tidsplan:"
+msgstr "Tidsplan: "
 
 #: modules/gui/qt/maininterface/mainctx.cpp:1193
 msgid "Paste from clipboard"
@@ -32055,7 +32055,7 @@ msgstr ""
 #: modules/spu/audiobargraph_v.c:50
 #, fuzzy
 msgid "Height in pixel of BarGraph to be displayed."
-msgstr "Den viste tekstens loddrette forskyvning i pixler "
+msgstr "Den viste tekstens loddrette forskyvning i pixler"
 
 #: modules/spu/audiobargraph_v.c:63 modules/spu/audiobargraph_v.c:80
 msgid "Audio Bar Graph Video sub source"

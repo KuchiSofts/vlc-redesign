@@ -730,12 +730,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (كۆڭۈلدىكى قوزغىتىلغان)"
+msgstr "(كۆڭۈلدىكى قوزغىتىلغان)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (كۆڭۈلدىكى چەكلەنگەن)"
+msgstr "(كۆڭۈلدىكى چەكلەنگەن)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -18333,7 +18333,7 @@ msgstr ""
 #: modules/gui/macosx/menus/VLCMainMenu.m:524
 #: modules/gui/macosx/menus/VLCMainMenu.m:525
 msgid "Video Track"
-msgstr " سىن يولى"
+msgstr "سىن يولى"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:446
 #: modules/gui/macosx/menus/VLCMainMenu.m:447

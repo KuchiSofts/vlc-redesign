@@ -350,7 +350,7 @@ msgstr ""
 
 #: include/vlc_config_cat.h:135
 msgid "VLC's implementation of Video On Demand"
-msgstr "Implementació del VLC del sistema de vídeos a la carta (VoD) "
+msgstr "Implementació del VLC del sistema de vídeos a la carta (VoD)"
 
 #: include/vlc_config_cat.h:138
 msgid ""
@@ -411,7 +411,7 @@ msgstr "Seleccioneu una carpeta"
 
 #: include/vlc_intf_strings.h:54
 msgid "Media &Information"
-msgstr "&Informació multimèdia "
+msgstr "&Informació multimèdia"
 
 #: include/vlc_intf_strings.h:55
 msgid "&Codec Information"
@@ -976,7 +976,7 @@ msgstr "Descripció"
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:202
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:213
 msgid "Bitrate"
-msgstr "Taxa de bits "
+msgstr "Taxa de bits"
 
 #: src/input/es_out.c:4719 src/input/es_out.c:4776
 #, c-format
@@ -3047,7 +3047,7 @@ msgstr "Directori o fitxer on s'alçaran els enregistraments"
 
 #: src/libvlc-module.c:788
 msgid "Prefer native stream recording"
-msgstr "Es prefereix l'enregistrament de flux natiu "
+msgstr "Es prefereix l'enregistrament de flux natiu"
 
 #: src/libvlc-module.c:790
 msgid ""
@@ -5063,7 +5063,7 @@ msgstr ""
 
 #: src/libvlc-module.c:1546
 msgid "Boss key"
-msgstr "Tecla mestra "
+msgstr "Tecla mestra"
 
 #: src/libvlc-module.c:1547
 msgid "Hide the interface and pause playback."
@@ -5987,7 +5987,7 @@ msgstr "El fitxer està malmés"
 #: src/misc/update.c:711 src/misc/update.c:723
 #, c-format
 msgid "Downloaded file \"%s\" was corrupted. Thus, it was deleted."
-msgstr "El fitxer baixat \"%s\" estava malmés. Per tant, s'ha eliminat. "
+msgstr "El fitxer baixat \"%s\" estava malmés. Per tant, s'ha eliminat."
 
 #: src/misc/update.c:735
 msgid ""
@@ -6841,7 +6841,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:220 modules/meta_engine/ID3Genres.h:82
 msgid "Gothic"
-msgstr "Gòtic "
+msgstr "Gòtic"
 
 #: src/text/iso-639_def.h:221
 msgid "Grebo"
@@ -8714,7 +8714,7 @@ msgstr "Mòduls de la interfície addicional"
 
 #: modules/access/decklink.cpp:60
 msgid "Input card to use"
-msgstr "Targeta d'entrada que s'ha d'utilitzar "
+msgstr "Targeta d'entrada que s'ha d'utilitzar"
 
 #: modules/access/decklink.cpp:62
 msgid ""
@@ -8817,7 +8817,7 @@ msgstr "Vídeo compost"
 #: modules/access/decklink.cpp:98
 #, fuzzy
 msgid "S-Video"
-msgstr "S-video "
+msgstr "S-video"
 
 #: modules/access/decklink.cpp:105
 msgid "Embedded"
@@ -9342,15 +9342,15 @@ msgstr ""
 
 #: modules/access/dtv/access.c:102
 msgid "FEC code rate"
-msgstr "Taxa de codi FEC "
+msgstr "Taxa de codi FEC"
 
 #: modules/access/dtv/access.c:103
 msgid "High-priority code rate"
-msgstr "Taxa de codi d'alta prioritat "
+msgstr "Taxa de codi d'alta prioritat"
 
 #: modules/access/dtv/access.c:104
 msgid "Low-priority code rate"
-msgstr "Taxa de codi de baixa prioritat "
+msgstr "Taxa de codi de baixa prioritat"
 
 #: modules/access/dtv/access.c:105
 msgid "Layer A code rate"
@@ -9403,7 +9403,7 @@ msgstr "1,712 MHz"
 
 #: modules/access/dtv/access.c:136
 msgid "Guard interval"
-msgstr "Interval de guàrdia "
+msgstr "Interval de guàrdia"
 
 #: modules/access/dtv/access.c:144
 msgid "Hierarchy mode"
@@ -9465,7 +9465,7 @@ msgstr "0,25"
 
 #: modules/access/dtv/access.c:174
 msgid "Transport stream ID"
-msgstr "Identificador de flux de transport "
+msgstr "Identificador de flux de transport"
 
 #: modules/access/dtv/access.c:176
 msgid "Polarization (Voltage)"
@@ -10174,7 +10174,7 @@ msgstr "Mida"
 
 #: modules/access/imem.c:114
 msgid "Size of stream in bytes"
-msgstr "Mida del paquet en bytes "
+msgstr "Mida del paquet en bytes"
 
 #: modules/access/imem.c:117 modules/access/imem.c:118
 msgid "Memory input"
@@ -10894,7 +10894,7 @@ msgstr "Abscissa de la regió de captura  en píxels."
 #: modules/access/screen/screen.c:64 modules/access/screen/wayland.c:476
 #: modules/access/screen/xcb.c:51
 msgid "Capture region width"
-msgstr "Amplada de la regió de captura "
+msgstr "Amplada de la regió de captura"
 
 #: modules/access/screen/screen.c:66 modules/access/screen/wayland.c:480
 #: modules/access/screen/xcb.c:55
@@ -11292,7 +11292,7 @@ msgstr "Sintonitzador d'àudio mono/estèreo i selecció de pistes."
 
 #: modules/access/v4l2/v4l2.c:82
 msgid "Reset controls"
-msgstr "Restableix els controls "
+msgstr "Restableix els controls"
 
 #: modules/access/v4l2/v4l2.c:83
 msgid "Reset controls to defaults."
@@ -11326,7 +11326,7 @@ msgstr "Contrast"
 
 #: modules/access/v4l2/v4l2.c:90
 msgid "Picture contrast or luma gain."
-msgstr "Contrast de la imatge o guany de luminància. "
+msgstr "Contrast de la imatge o guany de luminància."
 
 #: modules/access/v4l2/v4l2.c:91
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:282
@@ -11565,7 +11565,7 @@ msgstr "Viu"
 #: modules/access/v4l2/v4l2.c:169 modules/audio_output/apple/auhal.c:44
 #: modules/audio_output/mmdevice.c:1629 modules/audio_output/waveout.c:149
 msgid "Audio volume"
-msgstr "Volum d'àudio "
+msgstr "Volum d'àudio"
 
 #: modules/access/v4l2/v4l2.c:171
 msgid "Volume of the audio input."
@@ -11728,7 +11728,7 @@ msgstr "Òfset del capítol en ms"
 
 #: modules/access/vdr.c:78
 msgid "Move all chapters. This value should be set in milliseconds."
-msgstr "Mou tots els capítols. Este valor s'ha de definir en mil·lisegons. "
+msgstr "Mou tots els capítols. Este valor s'ha de definir en mil·lisegons."
 
 #: modules/access/vdr.c:82
 msgid "Default frame rate for chapter import."
@@ -11754,7 +11754,7 @@ msgstr "No s'ha pogut obrir el fitxer «%s» (%m)."
 
 #: modules/access/vdr.c:809
 msgid "VDR Cut Marks"
-msgstr "Línies de tall del VDR "
+msgstr "Línies de tall del VDR"
 
 #: modules/access/vdr.c:875
 msgid "Start"
@@ -11887,7 +11887,7 @@ msgstr "Aplica el format de data i hora ISO C al camí del fitxer"
 
 #: modules/access_output/file.c:385
 msgid "Synchronous writing"
-msgstr "Escriptura síncrona "
+msgstr "Escriptura síncrona"
 
 #: modules/access_output/file.c:386
 msgid "Open the file with synchronous writing."
@@ -12066,7 +12066,7 @@ msgstr "Nombre de vegades que es repetirà la barreja"
 
 #: modules/access_output/livehttp.c:111
 msgid "HTTP Live streaming output"
-msgstr "Eixida del protocol HTTP Live Streaming "
+msgstr "Eixida del protocol HTTP Live Streaming"
 
 #: modules/access_output/livehttp.c:112
 msgid "LiveHTTP"
@@ -12154,7 +12154,7 @@ msgstr "Descripció del gènere"
 #: modules/access_output/shout.c:83
 #, fuzzy
 msgid "Genre of the content."
-msgstr "Gènere del contingut. "
+msgstr "Gènere del contingut."
 
 #: modules/access_output/shout.c:85
 msgid "URL description"
@@ -12553,7 +12553,7 @@ msgstr "Compressor"
 
 #: modules/audio_filter/compressor.c:71
 msgid "Dynamic range compressor"
-msgstr "Compressor de rang dinàmic "
+msgstr "Compressor de rang dinàmic"
 
 #: modules/audio_filter/expander.c:65
 #: modules/gui/qt/dialogs/extended/extended.cpp:82
@@ -12587,7 +12587,7 @@ msgstr "Filtre d'àudio per a l'encapsulació A/52->S/PDIF"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:41
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:185
 msgid "Equalizer preset"
-msgstr "Valors predefinits de l'equalitzador "
+msgstr "Valors predefinits de l'equalitzador"
 
 #: modules/audio_filter/equalizer.c:58
 msgid "Preset to use for the equalizer."
@@ -12658,7 +12658,7 @@ msgstr "Pla"
 #: modules/audio_filter/equalizer_presets.h:53
 #: modules/meta_engine/ID3Genres.h:65
 msgid "Classical"
-msgstr "Clàssic "
+msgstr "Clàssic"
 
 #: modules/audio_filter/equalizer_presets.h:53
 #: modules/meta_engine/ID3Genres.h:145
@@ -12902,7 +12902,7 @@ msgstr "Remostrador SRC"
 
 #: modules/audio_filter/resampler/src.c:59
 msgid "Secret Rabbit Code (libsamplerate) resampler"
-msgstr "Remostrador Secret Rabbit Code (libsamplerate) "
+msgstr "Remostrador Secret Rabbit Code (libsamplerate)"
 
 #: modules/audio_filter/resampler/ugly.c:48
 msgid "Nearest-neighbor audio resampler"
@@ -13577,7 +13577,7 @@ msgstr "Sense Referència"
 #: modules/codec/avcodec/avcodec.c:49 modules/codec/avcodec/avcodec.c:53
 #: modules/codec/avcodec/avcodec.c:57
 msgid "Bidir"
-msgstr "Bidireccional "
+msgstr "Bidireccional"
 
 #: modules/codec/avcodec/avcodec.c:49 modules/codec/avcodec/avcodec.c:53
 #: modules/codec/avcodec/avcodec.c:57
@@ -14012,7 +14012,7 @@ msgstr "desconegut"
 #: modules/codec/avcodec/encoder.c:942
 #, fuzzy
 msgid "video"
-msgstr "S-video "
+msgstr "S-video"
 
 #: modules/codec/avcodec/encoder.c:943
 #, fuzzy
@@ -14083,7 +14083,7 @@ msgstr "Força una qualitat entre 0 (baixa) i 10 (alta)."
 #: modules/codec/daala.c:113
 #, fuzzy
 msgid "Keyframe interval"
-msgstr "Interval de guàrdia "
+msgstr "Interval de guàrdia"
 
 #: modules/codec/daala.c:115
 #, fuzzy
@@ -14665,7 +14665,7 @@ msgstr "Kate"
 
 #: modules/codec/kate.c:267
 msgid "Kate overlay decoder"
-msgstr "Descodificador de superposició Kate "
+msgstr "Descodificador de superposició Kate"
 
 #: modules/codec/kate.c:282
 msgid "Tiger rendering defaults"
@@ -15733,7 +15733,7 @@ msgstr ""
 
 #: modules/codec/x264.c:73
 msgid "Minimum GOP size"
-msgstr "Mida del GOP mínima "
+msgstr "Mida del GOP mínima"
 
 #: modules/codec/x264.c:74
 msgid ""
@@ -15967,7 +15967,7 @@ msgstr ""
 
 #: modules/codec/x264.c:173
 msgid "Use Periodic Intra Refresh"
-msgstr "Utilitza el refrescament intra periòdic "
+msgstr "Utilitza el refrescament intra periòdic"
 
 #: modules/codec/x264.c:174
 msgid "Use Periodic Intra Refresh instead of IDR frames"
@@ -15993,7 +15993,7 @@ msgstr ""
 
 #: modules/codec/x264.c:182
 msgid "Limit the size of each slice in bytes"
-msgstr "Limita la mida de cada fragment en bytes "
+msgstr "Limita la mida de cada fragment en bytes"
 
 #: modules/codec/x264.c:183
 msgid "Sets a maximum slice size in bytes, Includes NAL overhead in size"
@@ -16032,7 +16032,7 @@ msgstr "VBR basada en qualitat d'1 passada. Interval de 0 a 51."
 
 #: modules/codec/x264.c:197
 msgid "Min QP"
-msgstr "PQ mínim "
+msgstr "PQ mínim"
 
 #: modules/codec/x264.c:198
 msgid "Minimum quantizer parameter. 15 to 35 seems to be a useful range."
@@ -16040,7 +16040,7 @@ msgstr "Paràmetre mínim del quantificador. L'interval més útil és de 15 a 3
 
 #: modules/codec/x264.c:201
 msgid "Max QP"
-msgstr "PQ màxim "
+msgstr "PQ màxim"
 
 #: modules/codec/x264.c:202
 msgid "Maximum quantizer parameter."
@@ -16048,7 +16048,7 @@ msgstr "Paràmetre màxim del quantificador."
 
 #: modules/codec/x264.c:204
 msgid "Max QP step"
-msgstr "Pas PQ màxim "
+msgstr "Pas PQ màxim"
 
 #: modules/codec/x264.c:205
 msgid "Max QP step between frames."
@@ -16273,7 +16273,7 @@ msgstr ""
 
 #: modules/codec/x264.c:306
 msgid "Minimum buffer space between threads"
-msgstr "Espai de memòria intermèdia mínim entre fils "
+msgstr "Espai de memòria intermèdia mínim entre fils"
 
 #: modules/codec/x264.c:307
 msgid ""
@@ -16400,7 +16400,7 @@ msgstr ""
 
 #: modules/codec/x264.c:360
 msgid "Inter luma quantization deadzone"
-msgstr "Zona morta de la quantificació de luminància inter "
+msgstr "Zona morta de la quantificació de luminància inter"
 
 #: modules/codec/x264.c:361
 msgid "Set the size of the inter luma quantization deadzone. Range 0 to 32."
@@ -16500,7 +16500,7 @@ msgstr "Delimitadors d'unitats d'accés"
 
 #: modules/codec/x264.c:398
 msgid "Generate access unit delimiter NAL units."
-msgstr "Genera delimitadors d'unitat d'accés d'unitats NAL. "
+msgstr "Genera delimitadors d'unitat d'accés d'unitats NAL."
 
 #: modules/codec/x264.c:400
 msgid "Framecount to use on frametype lookahead"
@@ -17376,7 +17376,7 @@ msgstr "Meditatiu"
 #: modules/demux/adaptive/adaptive.cpp:127
 #, fuzzy
 msgid "Unified adaptive streaming for DASH/HLS"
-msgstr "DASH (Dynamic Adaptive Streaming over HTTP) "
+msgstr "DASH (Dynamic Adaptive Streaming over HTTP)"
 
 #: modules/demux/aiff.c:53
 msgid "AIFF demuxer"
@@ -17384,7 +17384,7 @@ msgstr "Desmultiplexor AIFF"
 
 #: modules/demux/asf/asf.c:64
 msgid "ASF/WMV demuxer"
-msgstr "Desmultiplexor ASF/WMV "
+msgstr "Desmultiplexor ASF/WMV"
 
 #: modules/demux/asf/asf.c:920
 msgid "Could not demux ASF stream"
@@ -17975,7 +17975,7 @@ msgstr ""
 
 #: modules/demux/mpeg/es.c:64
 msgid "MPEG-I/II/4 / A52 / DTS / MLP audio"
-msgstr "Àudio MPEG-I/II/4 / A52 / DTS / MLP "
+msgstr "Àudio MPEG-I/II/4 / A52 / DTS / MLP"
 
 #: modules/demux/mpeg/es.c:65
 msgid "Audio ES"
@@ -18109,7 +18109,7 @@ msgstr ""
 #: modules/demux/mpeg/ts.c:128
 #, fuzzy
 msgid "Trust in-stream PCR"
-msgstr "Identificador de flux de transport "
+msgstr "Identificador de flux de transport"
 
 #: modules/demux/mpeg/ts.c:129
 #, fuzzy
@@ -18419,7 +18419,7 @@ msgstr ""
 
 #: modules/demux/rawaud.c:52
 msgid "Forces the audio language"
-msgstr "Força l'idioma de l'àudio "
+msgstr "Força l'idioma de l'àudio"
 
 #: modules/demux/rawaud.c:53
 #, fuzzy
@@ -18561,7 +18561,7 @@ msgstr "Categoria desconeguda"
 
 #: modules/demux/xiph_metadata.h:45
 msgid "Closed captions"
-msgstr "Títols tancats "
+msgstr "Títols tancats"
 
 #: modules/demux/xiph_metadata.h:47
 msgid "Textual audio descriptions"
@@ -19187,7 +19187,7 @@ msgstr ""
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:453
 #: modules/gui/qt/qt.cpp:184
 msgid "Resize interface to the native video size"
-msgstr "Canvia la mida de la interfície amb la mida nadiua de vídeo  "
+msgstr "Canvia la mida de la interfície amb la mida nadiua de vídeo"
 
 #: modules/gui/macosx/main/macosx.m:90 modules/gui/qt/qt.cpp:185
 msgid ""
@@ -19222,7 +19222,7 @@ msgstr "Permet el canvi automàtic d'icones"
 #: modules/gui/macosx/main/macosx.m:100 modules/gui/qt/qt.cpp:280
 msgid ""
 "This option allows the interface to change its icon on various occasions."
-msgstr "Permet que la interfície canvie la seua icona en diverses ocasions. "
+msgstr "Permet que la interfície canvie la seua icona en diverses ocasions."
 
 #: modules/gui/macosx/main/macosx.m:102
 #: modules/gui/macosx/menus/VLCMainMenu.m:1851
@@ -19951,7 +19951,7 @@ msgstr "Preamplificació"
 
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:247
 msgid "Enable dynamic range compressor"
-msgstr "Habilita el compressor del rang dinàmic "
+msgstr "Habilita el compressor del rang dinàmic"
 
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:248
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:259
@@ -20016,7 +20016,7 @@ msgstr "Ràtio"
 
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:254
 msgid "Knee radius"
-msgstr "Radi de l'angle de curvatura "
+msgstr "Radi de l'angle de curvatura"
 
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:255
 msgid "Makeup gain"
@@ -20255,7 +20255,7 @@ msgstr ""
 
 #: modules/gui/macosx/panels/VLCInformationWindowController.m:209
 msgid "Played buffers"
-msgstr "Memòries intermèdies reproduïdes "
+msgstr "Memòries intermèdies reproduïdes"
 
 #: modules/gui/macosx/panels/VLCInformationWindowController.m:210
 msgid "Lost buffers"
@@ -21256,7 +21256,7 @@ msgstr "Insereix un disc"
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:239
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:727
 msgid "Disable DVD menus"
-msgstr "Inhabilita els menús de DVD "
+msgstr "Inhabilita els menús de DVD"
 
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:242
 msgid "Enable DVD menus"
@@ -21960,19 +21960,19 @@ msgstr " M                      Mostra/Amaga la caixa de metadades"
 
 #: modules/gui/ncurses.c:993
 msgid " L                      Show/Hide messages box"
-msgstr "     L           Mostra / Amaga quadre de missatges"
+msgstr " L           Mostra / Amaga quadre de missatges"
 
 #: modules/gui/ncurses.c:994
 msgid " P                      Show/Hide playlist box"
-msgstr "     P           Mostra / Amaga el quadre de llista de reproducció"
+msgstr " P           Mostra / Amaga el quadre de llista de reproducció"
 
 #: modules/gui/ncurses.c:995
 msgid " B                      Show/Hide filebrowser"
-msgstr "     B           Mostra / Amaga el navegador de fitxers"
+msgstr " B           Mostra / Amaga el navegador de fitxers"
 
 #: modules/gui/ncurses.c:996
 msgid " S                      Show/Hide statistics box"
-msgstr "     S           Mostra / Amaga el quadre d'estadístiques"
+msgstr " S           Mostra / Amaga el quadre d'estadístiques"
 
 #: modules/gui/ncurses.c:997
 msgid " E                      Show/Hide equalizer box"
@@ -22019,7 +22019,7 @@ msgstr " [,]                   Títol Anterior/Següent"
 #: modules/gui/ncurses.c:1011
 #, fuzzy
 msgid " b                      Cycle through video tracks"
-msgstr "     S           Mostra / Amaga el quadre d'estadístiques"
+msgstr " S           Mostra / Amaga el quadre d'estadístiques"
 
 #: modules/gui/ncurses.c:1012
 msgid " n, p                   Next/Previous playlist item"
@@ -22081,7 +22081,7 @@ msgstr "[Llista de reproducció]"
 
 #: modules/gui/ncurses.c:1037
 msgid " r                      Toggle Random playing"
-msgstr " r                      Commuta la reproducció aleatòria "
+msgstr " r                      Commuta la reproducció aleatòria"
 
 #: modules/gui/ncurses.c:1038
 msgid " l                      Toggle Loop Playlist"
@@ -22093,7 +22093,7 @@ msgstr " R                      Commuta la repetició de l'element"
 
 #: modules/gui/ncurses.c:1040
 msgid " o                      Order Playlist by title"
-msgstr "o                      Ordena llista de reproducció per títol"
+msgstr " o                      Ordena llista de reproducció per títol"
 
 #: modules/gui/ncurses.c:1041
 msgid " O                      Reverse order Playlist by title"
@@ -22119,7 +22119,7 @@ msgstr " A                      Afig una entrada"
 #. xgettext: You can use ⌫ character to translate <backspace>
 #: modules/gui/ncurses.c:1047
 msgid " D, <backspace>, <del>  Delete an entry"
-msgstr "D, <retrocés>, <supr> Elimina una entrada"
+msgstr " D, <retrocés>, <supr> Elimina una entrada"
 
 #: modules/gui/ncurses.c:1048
 msgid " e                      Eject (if stopped)"
@@ -22137,7 +22137,7 @@ msgstr ""
 
 #: modules/gui/ncurses.c:1055
 msgid " <space>                Add the selected directory to the playlist"
-msgstr "<espai> Afig el directori seleccionat a la llista de reproducció"
+msgstr " <espai> Afig el directori seleccionat a la llista de reproducció"
 
 #: modules/gui/ncurses.c:1056
 msgid " .                      Show/Hide hidden files"
@@ -22151,7 +22151,7 @@ msgstr "[Reproductor]"
 #: modules/gui/ncurses.c:1063
 #, c-format
 msgid " <up>,<down>            Seek +/-5%%"
-msgstr "<puja>,<baixa>            Cerca +/-5%%"
+msgstr " <puja>,<baixa>            Cerca +/-5%%"
 
 #: modules/gui/ncurses.c:1106
 #, c-format
@@ -22180,12 +22180,12 @@ msgstr ""
 #: modules/gui/ncurses.c:1241
 #, c-format
 msgid " Source   : %s"
-msgstr "Font: %s"
+msgstr " Font: %s"
 
 #: modules/gui/ncurses.c:1271
 #, c-format
 msgid " Position : %s/%s"
-msgstr "Posició: %s/%s"
+msgstr " Posició: %s/%s"
 
 #: modules/gui/ncurses.c:1276
 msgid " Volume   : Mute"
@@ -22213,7 +22213,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr "Origen: <cap element actual>"
+msgstr " Origen: <cap element actual>"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -23635,7 +23635,7 @@ msgstr "Descartat (malmés)"
 
 #: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:596
 msgid "Dropped (discontinued)"
-msgstr "Llençat (discontinuat) "
+msgstr "Llençat (discontinuat)"
 
 #: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:599
 #: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:608
@@ -23898,7 +23898,7 @@ msgstr "La visualització s'obri i es reprodueix per transmetre-la o alçar-la."
 #. xgettext: frames per second
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1172
 msgid " f/s"
-msgstr "f/s"
+msgstr " f/s"
 
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1387
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:604
@@ -26702,7 +26702,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:802
 msgid " Profile Name Missing"
-msgstr "Falta el nom del perfil"
+msgstr " Falta el nom del perfil"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:803
 msgid "You must set a name for the profile."
@@ -27055,7 +27055,7 @@ msgstr "Repeteix el retard:"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:104
 msgid " days"
-msgstr "dies"
+msgstr " dies"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:123
 msgid "I&mport"
@@ -27084,11 +27084,11 @@ msgstr "Canvia"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:506
 msgid "Broadcast: "
-msgstr "Difusió:"
+msgstr "Difusió: "
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 msgid "Schedule: "
-msgstr "Programa:"
+msgstr "Programa: "
 
 #: modules/gui/qt/maininterface/mainctx.cpp:1193
 msgid "Paste from clipboard"
@@ -30269,7 +30269,7 @@ msgstr ""
 
 #: modules/gui/qt/qt.cpp:254
 msgid "Load extensions on startup"
-msgstr "Carrega les extensions a l'inici "
+msgstr "Carrega les extensions a l'inici"
 
 #: modules/gui/qt/qt.cpp:255
 msgid "Automatically load the extensions module on startup."
@@ -30277,7 +30277,7 @@ msgstr ""
 
 #: modules/gui/qt/qt.cpp:258
 msgid "Start in minimal view (without menus)"
-msgstr "Inicia amb la vista mínima (sense menús) "
+msgstr "Inicia amb la vista mínima (sense menús)"
 
 #: modules/gui/qt/qt.cpp:260
 msgid "Display background cone or art"
@@ -30891,7 +30891,7 @@ msgstr "Utilitza una llista de reproducció amb aparença"
 
 #: modules/gui/skins2/src/skin_main.cpp:490
 msgid "Display video in a skinned window if any"
-msgstr "Mostra el vídeo en una finestra amb aparença si n'hi ha "
+msgstr "Mostra el vídeo en una finestra amb aparença si n'hi ha"
 
 #: modules/gui/skins2/src/skin_main.cpp:492
 msgid ""
@@ -31297,7 +31297,7 @@ msgstr ""
 
 #: modules/logger/console.c:165
 msgid "Be quiet"
-msgstr "Mode silenciós "
+msgstr "Mode silenciós"
 
 #: modules/logger/console.c:166
 msgid "Turn off all messages on the console."
@@ -31723,7 +31723,7 @@ msgstr "Rock instrumental"
 
 #: modules/meta_engine/ID3Genres.h:81
 msgid "Ethnic"
-msgstr "Ètnic "
+msgstr "Ètnic"
 
 #: modules/meta_engine/ID3Genres.h:83
 msgid "Darkwave"
@@ -31759,7 +31759,7 @@ msgstr "Comèdia"
 
 #: modules/meta_engine/ID3Genres.h:91
 msgid "Cult"
-msgstr "De culte "
+msgstr "De culte"
 
 #: modules/meta_engine/ID3Genres.h:92
 msgid "Gangsta"
@@ -33205,7 +33205,7 @@ msgstr ""
 #: modules/services_discovery/xcb_apps.c:106
 #: modules/services_discovery/xcb_apps.c:158
 msgid "Screen capture"
-msgstr "Captura de pantalla "
+msgstr "Captura de pantalla"
 
 #: modules/services_discovery/xcb_apps.c:159
 msgid "Your window manager does not provide a list of applications."
@@ -33241,7 +33241,7 @@ msgstr ""
 
 #: modules/spu/audiobargraph_v.c:63 modules/spu/audiobargraph_v.c:80
 msgid "Audio Bar Graph Video sub source"
-msgstr "Sub font del vídeo de la gràfica de barres d'àudio "
+msgstr "Sub font del vídeo de la gràfica de barres d'àudio"
 
 #: modules/spu/audiobargraph_v.c:64
 msgid "Audio Bar Graph Video"
@@ -33740,7 +33740,7 @@ msgstr ""
 
 #: modules/spu/subsdelay.c:64
 msgid "Interval between two disappearances"
-msgstr "Interval entre les dues desaparicions "
+msgstr "Interval entre les dues desaparicions"
 
 #: modules/spu/subsdelay.c:66
 msgid ""
@@ -33794,7 +33794,7 @@ msgstr "Proporcional al contingut de la font"
 
 #: modules/spu/subsdelay.c:266
 msgid "Subsdelay"
-msgstr "Retard dels subtítols "
+msgstr "Retard dels subtítols"
 
 #: modules/spu/subsdelay.c:281
 msgid "Overlap fix"
@@ -33841,7 +33841,7 @@ msgstr "Descompressió gzip"
 #: modules/stream_filter/hds/hds.c:209
 #, fuzzy
 msgid "HTTP Dynamic Streaming"
-msgstr "Eixida del protocol HTTP Live Streaming "
+msgstr "Eixida del protocol HTTP Live Streaming"
 
 #: modules/stream_filter/inflate.c:193
 #, fuzzy
@@ -34286,7 +34286,7 @@ msgstr "Prefix del fitxer de destí generat automàticament"
 
 #: modules/stream_out/record.c:57
 msgid "Record stream output"
-msgstr "Enregistra l'eixida de flux "
+msgstr "Enregistra l'eixida de flux"
 
 #: modules/stream_out/renderer_common.hpp:36
 msgid "Display a performance warning when transcoding"
@@ -34459,7 +34459,7 @@ msgstr ""
 
 #: modules/stream_out/rtp.c:155
 msgid "MP4A LATM"
-msgstr "LATM MP4A "
+msgstr "LATM MP4A"
 
 #: modules/stream_out/rtp.c:157
 msgid "This allows you to stream MPEG4 LATM audio streams (see RFC3016)."
@@ -35150,7 +35150,7 @@ msgstr "Filtratge de vídeo mitjançant una cadena de mòduls de filtres de víd
 #: modules/video_chroma/grey_yuv.c:55 modules/video_chroma/i422_i420.c:56
 #: modules/video_chroma/yuy2_i420.c:57 modules/video_chroma/yuy2_i422.c:57
 msgid "Conversions from "
-msgstr "Conversions des de"
+msgstr "Conversions des de "
 
 #: modules/video_chroma/i420_nv12.c:239
 msgid "YUV planar to semiplanar conversions"
@@ -35307,7 +35307,7 @@ msgstr "Nombre de fotogrames (de 0 a 100)"
 
 #: modules/video_filter/antiflicker.c:53
 msgid "Softening value"
-msgstr "Valor de suavització "
+msgstr "Valor de suavització"
 
 #: modules/video_filter/antiflicker.c:54
 msgid "Number of frames consider for smoothening (0 to 30)"
@@ -35628,7 +35628,7 @@ msgstr ""
 
 #: modules/video_filter/croppadd.c:54 modules/video_filter/formatcrop.c:55
 msgid "Pixels to crop from right"
-msgstr "Escapça un píxel de la part dreta "
+msgstr "Escapça un píxel de la part dreta"
 
 #: modules/video_filter/croppadd.c:56 modules/video_filter/formatcrop.c:57
 msgid "Number of pixels to crop from the right of the image."
@@ -36083,7 +36083,7 @@ msgstr "Vídeo mirall"
 
 #: modules/video_filter/mirror.c:81
 msgid "Splits video in two same parts, like in a mirror"
-msgstr "Divideix el vídeo en dues parts iguals, com en un mirall "
+msgstr "Divideix el vídeo en dues parts iguals, com en un mirall"
 
 #: modules/video_filter/motionblur.c:55
 msgid "Blur factor (1-127)"
@@ -36238,7 +36238,7 @@ msgstr "Postprocessament"
 
 #: modules/video_filter/psychedelic.c:51
 msgid "Psychedelic video filter"
-msgstr "Filtre de vídeo psicodèlic "
+msgstr "Filtre de vídeo psicodèlic"
 
 #: modules/video_filter/puzzle/puzzle.c:53
 msgid "Number of puzzle rows"
@@ -36530,7 +36530,7 @@ msgstr "Filtre de vídeo de sèpia"
 
 #: modules/video_filter/sepia.c:66
 msgid "Gives video a warmer tone by applying sepia effect"
-msgstr "L'aplicació de l'efecte sèpia li dóna al vídeo un to més càlid "
+msgstr "L'aplicació de l'efecte sèpia li dóna al vídeo un to més càlid"
 
 #: modules/video_filter/sharpen.c:47
 msgid "Sharpen strength (0-2)"
@@ -36678,7 +36678,7 @@ msgstr "DIVE"
 
 #: modules/video_output/kva.c:72
 msgid "K Video Acceleration video output"
-msgstr "Eixida de vídeo K Video Acceleration "
+msgstr "Eixida de vídeo K Video Acceleration"
 
 #: modules/video_output/libplacebo/display.c:645
 msgid "GPU instance provider"
@@ -37190,7 +37190,7 @@ msgstr "longitud de l'àrea de superposició (en %)"
 
 #: modules/video_splitter/panoramix.c:92
 msgid "Select in percent the length of the blended zone"
-msgstr "Seleccioneu el percentatge de longitud de la zona barrejada "
+msgstr "Seleccioneu el percentatge de longitud de la zona barrejada"
 
 #: modules/video_splitter/panoramix.c:95
 msgid "height of the overlapping area (in %)"
@@ -37543,7 +37543,7 @@ msgstr "projectM"
 
 #: modules/visualization/projectm.cpp:115
 msgid "libprojectM effect"
-msgstr "Efecte libprojectM "
+msgstr "Efecte libprojectM"
 
 #: modules/visualization/visual/visual.c:49
 msgid "Effects list"
@@ -37722,7 +37722,7 @@ msgstr "Multiplexor"
 
 #: share/lua/http/dialogs/create_stream.html:266
 msgid "Video FPS"
-msgstr "FPS del vídeo "
+msgstr "FPS del vídeo"
 
 #: share/lua/http/dialogs/create_stream.html:297
 msgid "MUX options"

@@ -763,12 +763,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (типово: ввімкнено)"
+msgstr "(типово: ввімкнено)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (типово: вимкнено)"
+msgstr "(типово: вимкнено)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -3644,7 +3644,7 @@ msgstr "Модуль фільтру потоку"
 #: src/libvlc-module.c:1115
 #, fuzzy
 msgid "Stream filters are used to modify the stream that is being read."
-msgstr "Фільтри потоку використовуються для змінення потоку, який читається. "
+msgstr "Фільтри потоку використовуються для змінення потоку, який читається."
 
 #: src/libvlc-module.c:1117
 #, fuzzy
@@ -3654,7 +3654,7 @@ msgstr "Модуль фільтру потоку"
 #: src/libvlc-module.c:1119
 #, fuzzy
 msgid "Demux filters are used to modify/control the stream that is being read."
-msgstr "Фільтри потоку використовуються для змінення потоку, який читається. "
+msgstr "Фільтри потоку використовуються для змінення потоку, який читається."
 
 #: src/libvlc-module.c:1121
 msgid "Demux module"
@@ -10157,7 +10157,7 @@ msgstr ""
 
 #: modules/access/live555.cpp:82
 msgid "WMServer RTSP dialect"
-msgstr "WMServer-варіант RTSP "
+msgstr "WMServer-варіант RTSP"
 
 #: modules/access/live555.cpp:83
 msgid ""
@@ -11987,17 +11987,17 @@ msgstr "Опис"
 #: modules/access_output/shout.c:86
 #, fuzzy
 msgid "URL with information about the stream or your channel."
-msgstr "URL-адреса з інформацією про потік або канал. "
+msgstr "URL-адреса з інформацією про потік або канал."
 
 #: modules/access_output/shout.c:93
 #, fuzzy
 msgid "Bitrate information of the transcoded stream."
-msgstr "Інформація про бітрейт перекодованого потоку. "
+msgstr "Інформація про бітрейт перекодованого потоку."
 
 #: modules/access_output/shout.c:96
 #, fuzzy
 msgid "Samplerate information of the transcoded stream."
-msgstr "Інформація про частоту дискретизації перекодованого потоку. "
+msgstr "Інформація про частоту дискретизації перекодованого потоку."
 
 #: modules/access_output/shout.c:98
 msgid "Number of channels"
@@ -12006,7 +12006,7 @@ msgstr "Число каналів"
 #: modules/access_output/shout.c:99
 #, fuzzy
 msgid "Number of channels information of the transcoded stream."
-msgstr "Інформація про число каналів перекодованого потоку. "
+msgstr "Інформація про число каналів перекодованого потоку."
 
 #: modules/access_output/shout.c:101
 msgid "Ogg Vorbis Quality"
@@ -12015,7 +12015,7 @@ msgstr "Якість Ogg Vorbis"
 #: modules/access_output/shout.c:102
 #, fuzzy
 msgid "Ogg Vorbis Quality information of the transcoded stream."
-msgstr "Інформація про якість Ogg Vorbis перекодованого потоку. "
+msgstr "Інформація про якість Ogg Vorbis перекодованого потоку."
 
 #: modules/access_output/shout.c:104
 msgid "Stream public"
@@ -14140,7 +14140,7 @@ msgstr ""
 
 #: modules/codec/fluidsynth.c:57
 msgid "Polyphony"
-msgstr "Поліфонія "
+msgstr "Поліфонія"
 
 #: modules/codec/fluidsynth.c:59
 msgid ""
@@ -21785,7 +21785,7 @@ msgstr " i                      показати/сховати інформац
 
 #: modules/gui/ncurses.c:992
 msgid " M                      Show/Hide metadata box"
-msgstr "M показати/сховати метадані"
+msgstr " M показати/сховати метадані"
 
 #: modules/gui/ncurses.c:993
 msgid " L                      Show/Hide messages box"
@@ -21873,7 +21873,7 @@ msgstr " a, z                   збільшити/зменшити гучніс
 
 #: modules/gui/ncurses.c:1018
 msgid " m                      Mute"
-msgstr "m Вимкнення звуку"
+msgstr " m Вимкнення звуку"
 
 #. xgettext: You can use ↑ and ↓ characters
 #: modules/gui/ncurses.c:1020
@@ -21937,7 +21937,7 @@ msgstr " /                      шукати елемент"
 
 #: modules/gui/ncurses.c:1044
 msgid " ;                      Look for the next item"
-msgstr "; Шукати наступний елемент"
+msgstr " ; Шукати наступний елемент"
 
 #: modules/gui/ncurses.c:1045
 msgid " A                      Add an entry"
@@ -22014,16 +22014,16 @@ msgstr " Позиція      : %s/%s"
 
 #: modules/gui/ncurses.c:1276
 msgid " Volume   : Mute"
-msgstr "Гучність: Вимкнути"
+msgstr " Гучність: Вимкнути"
 
 #: modules/gui/ncurses.c:1277
 #, c-format
 msgid " Volume   : %3ld%%"
-msgstr "Гучність: %3ld%%"
+msgstr " Гучність: %3ld%%"
 
 #: modules/gui/ncurses.c:1277
 msgid " Volume   : ----"
-msgstr "Гучність   : ----"
+msgstr " Гучність   : ----"
 
 #: modules/gui/ncurses.c:1286
 #, c-format
@@ -22373,7 +22373,7 @@ msgstr "Оновити"
 
 #: modules/gui/qt/dialogs/epg/epg.cpp:161
 msgid " (%1+ rated)"
-msgstr "(%1+ місце в рейтингу)"
+msgstr " (%1+ місце в рейтингу)"
 
 #: modules/gui/qt/dialogs/extended/audio_effects.cpp:319
 msgid "Open audio effects before changing them."
@@ -22620,7 +22620,7 @@ msgstr "8 кГц"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
 msgid "ms"
-msgstr " мс"
+msgstr "мс"
 
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1316
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1338
@@ -32884,7 +32884,7 @@ msgstr "Таймаут (мс)"
 #: modules/notify/notify.c:62
 #, fuzzy
 msgid "How long the notification will be displayed."
-msgstr "Як довго буде відображатися повідомлення "
+msgstr "Як довго буде відображатися повідомлення"
 
 #: modules/notify/notify.c:66
 msgid "Notify"
@@ -34063,7 +34063,7 @@ msgstr "Типово: 90 сек"
 #: modules/stream_out/chromaprint.c:60
 #, fuzzy
 msgid "Chromaprint stream output"
-msgstr " Насиченість кольору вихідного потоку"
+msgstr "Насиченість кольору вихідного потоку"
 
 #: modules/stream_out/chromecast/cast.cpp:226
 msgid ""

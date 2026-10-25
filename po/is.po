@@ -729,12 +729,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (sjálfgefið virkt)"
+msgstr "(sjálfgefið virkt)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (sjálfgefið óvirkt)"
+msgstr "(sjálfgefið óvirkt)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -3110,7 +3110,7 @@ msgstr "TCP tenging féll á tíma"
 #: src/libvlc-module.c:937
 #, fuzzy
 msgid "Default TCP connection timeout (in milliseconds)."
-msgstr "Sjálfgefin tímamörk TCP tengingar (í millísekúndum). "
+msgstr "Sjálfgefin tímamörk TCP tengingar (í millísekúndum)."
 
 #: src/libvlc-module.c:939
 msgid "HTTP server address"
@@ -21010,7 +21010,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr " Uppruni: <ekkert í gangi> "
+msgstr " Uppruni: <ekkert í gangi>"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -21556,7 +21556,7 @@ msgstr "500 Hz"
 
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1148
 msgid "2 KHz"
-msgstr " 2 KHz"
+msgstr "2 KHz"
 
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1149
 msgid "4 KHz"
@@ -22510,7 +22510,7 @@ msgstr "Vista annál sem..."
 #: modules/gui/qt/dialogs/messages/messages.cpp:361
 #, fuzzy
 msgid "Texts/Logs (*.log *.txt);; All (*.*)"
-msgstr "Textar / annálar (*.log *.txt);; Allt (*.*) "
+msgstr "Textar / annálar (*.log *.txt);; Allt (*.*)"
 
 #: modules/gui/qt/dialogs/messages/messages.cpp:367
 msgid "Application"
@@ -22686,7 +22686,7 @@ msgstr ""
 #. xgettext: frames per second
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1172
 msgid " f/s"
-msgstr "rammar/sek"
+msgstr " rammar/sek"
 
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1387
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:604
@@ -23977,7 +23977,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:193
 #, fuzzy
 msgid " dB"
-msgstr "dB"
+msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207
@@ -25842,11 +25842,11 @@ msgstr "Breyta"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:506
 msgid "Broadcast: "
-msgstr "Útvarpa:"
+msgstr "Útvarpa: "
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 msgid "Schedule: "
-msgstr "Áætlun:"
+msgstr "Áætlun: "
 
 #: modules/gui/qt/maininterface/mainctx.cpp:1193
 msgid "Paste from clipboard"

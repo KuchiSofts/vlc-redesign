@@ -469,7 +469,7 @@ msgstr "Spectrometer"
 #: src/audio_output/output.c:333
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1146
 msgid "Scope"
-msgstr "ክልል "
+msgstr "ክልል"
 
 #: src/audio_output/output.c:335
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1146
@@ -521,7 +521,7 @@ msgstr "ዶልቢ የተከበበ"
 #: modules/access/oss.c:59 modules/access/v4l2/v4l2.c:268
 #: modules/audio_output/alsa.c:1276 modules/codec/twolame.c:70
 msgid "Stereo"
-msgstr "ስቴሪዮ "
+msgstr "ስቴሪዮ"
 
 #: src/audio_output/output.c:509 src/input/es_out.c:4901
 #: src/input/es_out.c:4930 src/libvlc-module.c:208 src/libvlc-module.c:320
@@ -698,12 +698,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (ነባር ተችሏል)"
+msgstr "(ነባር ተችሏል)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (ነባር ተሰናክሏል)"
+msgstr "(ነባር ተሰናክሏል)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -864,7 +864,7 @@ msgstr "አዎ"
 #: modules/gui/qt/player/qml/controlbarcontrols/ArtworkInfoWidget.qml:237
 #: modules/gui/qt/playlist/qml/QueueColumns.qml:67 modules/mux/asf.c:56
 msgid "Title"
-msgstr "አርእስት "
+msgstr "አርእስት"
 
 #: src/input/es_out.c:4707 modules/access/imem.c:66
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:201
@@ -1319,7 +1319,7 @@ msgstr ""
 
 #: src/input/meta.c:80
 msgid "Show Name"
-msgstr "የ ትእይንቱ ስም "
+msgstr "የ ትእይንቱ ስም"
 
 #: src/input/meta.c:81
 msgid "Actors"
@@ -2090,7 +2090,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:323
 #: modules/gui/qt/qt.cpp:343 modules/keystore/keychain.m:55
 msgid "Always"
-msgstr "ሁል ጊዜ "
+msgstr "ሁል ጊዜ"
 
 #: src/libvlc-module.c:435
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:455
@@ -2533,7 +2533,7 @@ msgstr ""
 #: src/libvlc-module.c:667
 #: modules/gui/qt/medialibrary/qml/VideoInfoExpandPanel.qml:319
 msgid "Subtitle track"
-msgstr "የ ተረኛ ንዑስ አርእስት "
+msgstr "የ ተረኛ ንዑስ አርእስት"
 
 #: src/libvlc-module.c:669
 msgid "Stream number of the subtitle track to use (from 0 to n)."
@@ -2701,7 +2701,7 @@ msgstr ""
 
 #: src/libvlc-module.c:746
 msgid "Input list"
-msgstr "ማስገቢያ ዝርዝር "
+msgstr "ማስገቢያ ዝርዝር"
 
 #: src/libvlc-module.c:748
 msgid ""
@@ -3012,7 +3012,7 @@ msgstr "የ ቪሲዲ አካል"
 
 #: src/libvlc-module.c:905 modules/access/cdda.c:822
 msgid "Audio CD device"
-msgstr "የ ድምፅ ሲዲ አካል "
+msgstr "የ ድምፅ ሲዲ አካል"
 
 #: src/libvlc-module.c:909
 msgid ""
@@ -5147,7 +5147,7 @@ msgstr "መገናኛ ወደ ፊት"
 #: src/misc/actions.c:111
 msgctxt "key"
 msgid "Media Menu"
-msgstr "መገናኛ ዝርዝር "
+msgstr "መገናኛ ዝርዝር"
 
 #: src/misc/actions.c:112
 msgctxt "key"
@@ -5217,7 +5217,7 @@ msgstr "የ መገናኛ ጊዜ"
 #: src/misc/actions.c:125
 msgctxt "key"
 msgid "Media View"
-msgstr "መገናኛ መመልከቻ "
+msgstr "መገናኛ መመልከቻ"
 
 #: src/misc/actions.c:126
 msgctxt "key"
@@ -5307,7 +5307,7 @@ msgstr "መጠን መጨመሪያ"
 #: src/misc/actions.c:143
 msgctxt "key"
 msgid "Zoom In"
-msgstr " በቅርብ ማሳያ"
+msgstr "በቅርብ ማሳያ"
 
 #: src/misc/actions.c:144
 msgctxt "key"
@@ -5337,7 +5337,7 @@ msgstr "ትእዛዝ+"
 #: src/misc/update.c:490
 #, c-format
 msgid "%.1f GiB"
-msgstr "%.1f ጊባ "
+msgstr "%.1f ጊባ"
 
 #: src/misc/update.c:492
 #, c-format
@@ -5349,7 +5349,7 @@ msgstr "%.1f ሜባ"
 #: modules/gui/macosx/panels/VLCInformationWindowController.m:278
 #, c-format
 msgid "%.1f KiB"
-msgstr "%.1f ኪባ "
+msgstr "%.1f ኪባ"
 
 #: src/misc/update.c:496
 #, c-format
@@ -5658,7 +5658,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:50
 msgid "Afar"
-msgstr "አፋር "
+msgstr "አፋር"
 
 #: src/text/iso-639_def.h:51
 msgid "Afrihili"
@@ -5792,7 +5792,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:84
 msgid "Aymara"
-msgstr "አይማራ "
+msgstr "አይማራ"
 
 #: src/text/iso-639_def.h:85
 msgid "Azerbaijani"
@@ -5844,7 +5844,7 @@ msgstr "ባሽኪር"
 
 #: src/text/iso-639_def.h:97
 msgid "Basque"
-msgstr "ባስክ "
+msgstr "ባስክ"
 
 #: src/text/iso-639_def.h:98
 msgid "Batak (Indonesia)"
@@ -5892,7 +5892,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:109
 msgid "Bislama"
-msgstr "ቢስላማ "
+msgstr "ቢስላማ"
 
 #: src/text/iso-639_def.h:110
 msgid "Blin; Bilin"
@@ -5980,7 +5980,7 @@ msgstr "ቻሞሮ"
 
 #: src/text/iso-639_def.h:131
 msgid "Chechen"
-msgstr "ቼቼን "
+msgstr "ቼቼን"
 
 #: src/text/iso-639_def.h:132
 msgid "Cherokee"
@@ -6078,7 +6078,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:156
 msgid "Croatian"
-msgstr "ክሮኤሺያን "
+msgstr "ክሮኤሺያን"
 
 #: src/text/iso-639_def.h:157
 msgid "Cushitic (Other)"
@@ -6281,7 +6281,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:211
 msgid "Georgian"
-msgstr "ጆርጂያን "
+msgstr "ጆርጂያን"
 
 #: src/text/iso-639_def.h:214
 msgid "Germanic (Other)"
@@ -6291,7 +6291,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:60
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:203
 msgid "German"
-msgstr "ጀርመን "
+msgstr "ጀርመን"
 
 #: src/text/iso-639_def.h:216
 msgid "Swiss German; Alemannic"
@@ -6361,7 +6361,7 @@ msgstr "ሂብሩ"
 
 #: src/text/iso-639_def.h:233
 msgid "Herero"
-msgstr "ሄሮሮ "
+msgstr "ሄሮሮ"
 
 #: src/text/iso-639_def.h:234
 msgid "Hiligaynon"
@@ -6407,7 +6407,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:244
 msgid "Icelandic"
-msgstr "አይስላንዲክ "
+msgstr "አይስላንዲክ"
 
 #: src/text/iso-639_def.h:245
 msgid "Ido"
@@ -6448,11 +6448,11 @@ msgstr ""
 
 #: src/text/iso-639_def.h:254
 msgid "Interlingua"
-msgstr "ኢንተርሊንጉአ "
+msgstr "ኢንተርሊንጉአ"
 
 #: src/text/iso-639_def.h:255
 msgid "Interlingue"
-msgstr "ኢንተርሊንግ "
+msgstr "ኢንተርሊንግ"
 
 #: src/text/iso-639_def.h:256
 msgid "Inuktitut"
@@ -6528,7 +6528,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:275
 msgid "Kannada"
-msgstr "ካናዳ "
+msgstr "ካናዳ"
 
 #: src/text/iso-639_def.h:276
 msgid "Kanuri"
@@ -6556,7 +6556,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:282
 msgid "Kashmiri"
-msgstr "ካሽሚር "
+msgstr "ካሽሚር"
 
 #: src/text/iso-639_def.h:283
 msgid "Kashubian"
@@ -6596,11 +6596,11 @@ msgstr ""
 
 #: src/text/iso-639_def.h:292
 msgid "Kinyarwanda"
-msgstr "ኪንያርዋንዳ "
+msgstr "ኪንያርዋንዳ"
 
 #: src/text/iso-639_def.h:293
 msgid "Kirghiz"
-msgstr "ኪርጊዝ "
+msgstr "ኪርጊዝ"
 
 #: src/text/iso-639_def.h:294
 msgid "Klingon; tlhIngan-Hol"
@@ -6674,11 +6674,11 @@ msgstr "ላኦ"
 
 #: src/text/iso-639_def.h:311 modules/meta_engine/ID3Genres.h:119
 msgid "Latin"
-msgstr "ላቲን "
+msgstr "ላቲን"
 
 #: src/text/iso-639_def.h:312
 msgid "Latvian"
-msgstr "ላትቪያን "
+msgstr "ላትቪያን"
 
 #: src/text/iso-639_def.h:313
 msgid "Lezghian"
@@ -6694,7 +6694,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:316
 msgid "Lingala"
-msgstr "ሊንጋላ "
+msgstr "ሊንጋላ"
 
 #: src/text/iso-639_def.h:317
 msgid "Literary Chinese"
@@ -6702,7 +6702,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:318
 msgid "Lithuanian"
-msgstr "ሊቱአኒያን "
+msgstr "ሊቱአኒያን"
 
 #: src/text/iso-639_def.h:319
 msgid "Lojban"
@@ -6754,7 +6754,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:331
 msgid "Macedonian"
-msgstr "ማሴኖዲያን "
+msgstr "ማሴኖዲያን"
 
 #: src/text/iso-639_def.h:332
 msgid "Madurese"
@@ -6778,12 +6778,12 @@ msgstr "ማላጋሲ"
 
 #: src/text/iso-639_def.h:337
 msgid "Malayalam"
-msgstr "ማላያላም "
+msgstr "ማላያላም"
 
 #: src/text/iso-639_def.h:338
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:69
 msgid "Malay"
-msgstr "ማላይ "
+msgstr "ማላይ"
 
 #: src/text/iso-639_def.h:339
 msgid "Maltese"
@@ -6819,11 +6819,11 @@ msgstr "ማንክ"
 
 #: src/text/iso-639_def.h:347
 msgid "Maori"
-msgstr "ማኦሪ "
+msgstr "ማኦሪ"
 
 #: src/text/iso-639_def.h:348
 msgid "Marathi"
-msgstr "ማራቲ "
+msgstr "ማራቲ"
 
 #: src/text/iso-639_def.h:349
 msgid "Mari"
@@ -6903,7 +6903,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:368
 msgid "Moldavian"
-msgstr "ሞልዳቪያን "
+msgstr "ሞልዳቪያን"
 
 #: src/text/iso-639_def.h:369
 msgid "Mon"
@@ -6943,7 +6943,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:378
 msgid "Nauru"
-msgstr "ናኡሩ "
+msgstr "ናኡሩ"
 
 #: src/text/iso-639_def.h:379
 msgid "Navajo; Navaho"
@@ -7044,7 +7044,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:404
 msgid "Occitan; Provençal"
-msgstr "ኦሺታን ፕሮቬንሻል "
+msgstr "ኦሺታን ፕሮቬንሻል"
 
 #: src/text/iso-639_def.h:405
 msgid "Ojibwa"
@@ -7056,7 +7056,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:407
 msgid "Oromo"
-msgstr "ኦሮሞ "
+msgstr "ኦሮሞ"
 
 #: src/text/iso-639_def.h:408
 msgid "Osage"
@@ -7064,7 +7064,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:409
 msgid "Ossetian; Ossetic"
-msgstr "ኦሼቲያን ኦሼቲክ "
+msgstr "ኦሼቲያን ኦሼቲክ"
 
 #: src/text/iso-639_def.h:410
 msgid "Otomian languages"
@@ -7144,7 +7144,7 @@ msgstr "ፑሽቶ"
 
 #: src/text/iso-639_def.h:430
 msgid "Quechua"
-msgstr "ኴቹአ "
+msgstr "ኴቹአ"
 
 #: src/text/iso-639_def.h:431
 msgid "Quechua, Southern"
@@ -7152,7 +7152,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:432
 msgid "Raeto-Romance"
-msgstr "ራኤቶ-ሮማንስ "
+msgstr "ራኤቶ-ሮማንስ"
 
 #: src/text/iso-639_def.h:433
 msgid "Rajasthani"
@@ -7173,7 +7173,7 @@ msgstr ""
 #: src/text/iso-639_def.h:437
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:74
 msgid "Romanian"
-msgstr "ሮማኒያን "
+msgstr "ሮማኒያን"
 
 #: src/text/iso-639_def.h:438
 msgid "Romany"
@@ -7187,7 +7187,7 @@ msgstr "ሩንዲ"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:75
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:205
 msgid "Russian"
-msgstr "ሩሲያን "
+msgstr "ሩሲያን"
 
 #: src/text/iso-639_def.h:441
 msgid "Samogitian"
@@ -7215,7 +7215,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:447
 msgid "Sango"
-msgstr "ሳንጎ "
+msgstr "ሳንጎ"
 
 #: src/text/iso-639_def.h:448
 msgid "Sanskrit"
@@ -7227,7 +7227,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:450
 msgid "Sardinian"
-msgstr "ሳርዲኒያን "
+msgstr "ሳርዲኒያን"
 
 #: src/text/iso-639_def.h:451
 msgid "Sasak"
@@ -7247,7 +7247,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:455
 msgid "Serbian"
-msgstr "ሴርቢያን "
+msgstr "ሴርቢያን"
 
 #: src/text/iso-639_def.h:456
 msgid "Serer"
@@ -7259,7 +7259,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:458
 msgid "Shona"
-msgstr "ሾና "
+msgstr "ሾና"
 
 #: src/text/iso-639_def.h:459
 msgid "Shuswap"
@@ -7291,7 +7291,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:466
 msgid "Sindhi"
-msgstr "ሲንዲ "
+msgstr "ሲንዲ"
 
 #: src/text/iso-639_def.h:467
 msgid "Sinhala; Sinhalese"
@@ -7319,11 +7319,11 @@ msgstr ""
 
 #: src/text/iso-639_def.h:473
 msgid "Slovak"
-msgstr "ስሎቫክ "
+msgstr "ስሎቫክ"
 
 #: src/text/iso-639_def.h:474
 msgid "Slovenian"
-msgstr "ስሎቬኒያን "
+msgstr "ስሎቬኒያን"
 
 #: src/text/iso-639_def.h:475
 msgid "Sogdian"
@@ -7331,7 +7331,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:476
 msgid "Somali"
-msgstr "ሶማሊ "
+msgstr "ሶማሊ"
 
 #: src/text/iso-639_def.h:477
 msgid "Songhai"
@@ -7351,7 +7351,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:481
 msgid "Sotho, Southern"
-msgstr "ሶቶ ሳውዘርን "
+msgstr "ሶቶ ሳውዘርን"
 
 #: src/text/iso-639_def.h:482
 msgid "South American Indian (Other)"
@@ -7391,12 +7391,12 @@ msgstr "ስዋህሊ"
 
 #: src/text/iso-639_def.h:491
 msgid "Swati"
-msgstr "ስዋቲ "
+msgstr "ስዋቲ"
 
 #: src/text/iso-639_def.h:492
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:77
 msgid "Swedish"
-msgstr "ስዊዲሽ "
+msgstr "ስዊዲሽ"
 
 #: src/text/iso-639_def.h:494 modules/gui/qt/util/subtitle_preferences.cpp:60
 msgid "Syriac"
@@ -7404,11 +7404,11 @@ msgstr ""
 
 #: src/text/iso-639_def.h:495
 msgid "Tagalog"
-msgstr "ታጋሎግ "
+msgstr "ታጋሎግ"
 
 #: src/text/iso-639_def.h:496
 msgid "Tahitian"
-msgstr "ታህቲያን "
+msgstr "ታህቲያን"
 
 #: src/text/iso-639_def.h:497
 msgid "Tai (Other)"
@@ -7428,15 +7428,15 @@ msgstr ""
 
 #: src/text/iso-639_def.h:501
 msgid "Tamil"
-msgstr "ታሚል "
+msgstr "ታሚል"
 
 #: src/text/iso-639_def.h:502
 msgid "Tatar"
-msgstr "ታታር "
+msgstr "ታታር"
 
 #: src/text/iso-639_def.h:503
 msgid "Telugu"
-msgstr "ቴልጉ "
+msgstr "ቴልጉ"
 
 #: src/text/iso-639_def.h:504
 msgid "Tereno"
@@ -7449,7 +7449,7 @@ msgstr ""
 #: src/text/iso-639_def.h:506
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:78
 msgid "Thai"
-msgstr "ታሂ "
+msgstr "ታሂ"
 
 #: src/text/iso-639_def.h:507
 msgid "Tharu, Chitwani"
@@ -7457,7 +7457,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:508
 msgid "Tibetan"
-msgstr "ቲቤቲያን "
+msgstr "ቲቤቲያን"
 
 #: src/text/iso-639_def.h:509
 msgid "Tigre"
@@ -7501,7 +7501,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:519
 msgid "Tsonga"
-msgstr "ትሶንጋ "
+msgstr "ትሶንጋ"
 
 #: src/text/iso-639_def.h:520
 msgid "Tswana"
@@ -7522,11 +7522,11 @@ msgstr ""
 #: src/text/iso-639_def.h:525
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:79
 msgid "Turkish"
-msgstr "ቱርኪሽ "
+msgstr "ቱርኪሽ"
 
 #: src/text/iso-639_def.h:526
 msgid "Turkmen"
-msgstr "ቱርክሜን "
+msgstr "ቱርክሜን"
 
 #: src/text/iso-639_def.h:527
 msgid "Tuvalu"
@@ -7538,7 +7538,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:529
 msgid "Twi"
-msgstr "ትዊ "
+msgstr "ትዊ"
 
 #: src/text/iso-639_def.h:530
 msgid "Udmurt"
@@ -7555,7 +7555,7 @@ msgstr ""
 #: src/text/iso-639_def.h:533
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:80
 msgid "Ukrainian"
-msgstr "ዩክሬኒያን "
+msgstr "ዩክሬኒያን"
 
 #: src/text/iso-639_def.h:534
 msgid "Umbundu"
@@ -7575,11 +7575,11 @@ msgstr ""
 
 #: src/text/iso-639_def.h:538
 msgid "Urdu"
-msgstr "ኡርዱ "
+msgstr "ኡርዱ"
 
 #: src/text/iso-639_def.h:539
 msgid "Uzbek"
-msgstr "ኡዝቤክ "
+msgstr "ኡዝቤክ"
 
 #: src/text/iso-639_def.h:540
 msgid "Vai"
@@ -7592,7 +7592,7 @@ msgstr ""
 #: src/text/iso-639_def.h:542
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:81
 msgid "Vietnamese"
-msgstr "ቬትናሚስ "
+msgstr "ቬትናሚስ"
 
 #: src/text/iso-639_def.h:543
 msgid "Volapük"
@@ -7628,11 +7628,11 @@ msgstr ""
 
 #: src/text/iso-639_def.h:551
 msgid "Welsh"
-msgstr "ዌልሽ "
+msgstr "ዌልሽ"
 
 #: src/text/iso-639_def.h:552
 msgid "Wolof"
-msgstr "ዎሎፍ "
+msgstr "ዎሎፍ"
 
 #: src/text/iso-639_def.h:553
 msgid "Wu Chinese"
@@ -7640,7 +7640,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:554
 msgid "Xhosa"
-msgstr "ሾሳ "
+msgstr "ሾሳ"
 
 #: src/text/iso-639_def.h:555
 msgid "Xiang Chinese"
@@ -7664,11 +7664,11 @@ msgstr ""
 
 #: src/text/iso-639_def.h:560
 msgid "Yiddish"
-msgstr "ዪዲሽ "
+msgstr "ዪዲሽ"
 
 #: src/text/iso-639_def.h:561
 msgid "Yoruba"
-msgstr "ዮሩባ "
+msgstr "ዮሩባ"
 
 #: src/text/iso-639_def.h:562
 msgid "Yue Chinese"
@@ -7696,7 +7696,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:568
 msgid "Zulu"
-msgstr "ዙሉ "
+msgstr "ዙሉ"
 
 #: src/text/iso-639_def.h:569
 msgid "Zuni"
@@ -7708,7 +7708,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:574
 msgid "Original audio"
-msgstr "ዋናው ድምፅ "
+msgstr "ዋናው ድምፅ"
 
 #: src/video_output/vout_intf.c:144
 msgid "Fill Window"
@@ -8090,7 +8090,7 @@ msgstr ""
 #: modules/access/cdda.c:843
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:235
 msgid "Audio CD"
-msgstr "የ ድምፅ ሲዲ "
+msgstr "የ ድምፅ ሲዲ"
 
 #: modules/access/cdda.c:844
 msgid "Audio CD input"
@@ -8107,7 +8107,7 @@ msgstr ""
 #: modules/access/concat.c:303
 #, fuzzy
 msgid "Inputs list"
-msgstr "ማስገቢያ ዝርዝር "
+msgstr "ማስገቢያ ዝርዝር"
 
 #: modules/access/concat.c:305
 msgid "Comma-separated list of input URLs to concatenate."
@@ -8234,7 +8234,7 @@ msgstr "Optical SDI"
 #: modules/access/decklink.cpp:98 modules/stream_out/sdi/sdiout.cpp:100
 #: modules/video_output/decklink.cpp:142
 msgid "Component"
-msgstr "አካላት "
+msgstr "አካላት"
 
 #: modules/access/decklink.cpp:98 modules/stream_out/sdi/sdiout.cpp:101
 #: modules/video_output/decklink.cpp:143
@@ -8335,15 +8335,15 @@ msgstr ""
 
 #: modules/access/dshow/dshow.cpp:90
 msgid "Cable"
-msgstr "ኬብል "
+msgstr "ኬብል"
 
 #: modules/access/dshow/dshow.cpp:90
 msgid "Antenna"
-msgstr "አንቴና "
+msgstr "አንቴና"
 
 #: modules/access/dshow/dshow.cpp:98
 msgid "TV"
-msgstr "ቲቪ "
+msgstr "ቲቪ"
 
 #: modules/access/dshow/dshow.cpp:99
 msgid "FM radio"
@@ -9170,7 +9170,7 @@ msgstr "ፋይል ማስገቢያ"
 #: share/lua/http/dialogs/stream_config_window.html:36
 #: share/lua/http/dialogs/stream_window.html:95
 msgid "File"
-msgstr "ፋይል "
+msgstr "ፋይል"
 
 #: modules/access/fs.c:42 modules/demux/directory.c:73
 msgid "Directory"
@@ -9395,7 +9395,7 @@ msgstr "ያልታወቀ"
 
 #: modules/access/imem.c:63
 msgid "Data"
-msgstr "ዳታ "
+msgstr "ዳታ"
 
 #: modules/access/imem.c:68
 msgid "Set the codec of the elementary stream"
@@ -10849,7 +10849,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/sout/convert.cpp:164
 #: modules/gui/qt/medialibrary/qml/VideoDisplay.qml:49
 msgid "All"
-msgstr "ሁሉንም "
+msgstr "ሁሉንም"
 
 #: modules/access/v4l2/v4l2.c:246
 msgid "Multichannel television sound (MTS)"
@@ -10972,7 +10972,7 @@ msgstr ""
 
 #: modules/access/vdr.c:875
 msgid "Start"
-msgstr "ማስጀመሪያ "
+msgstr "ማስጀመሪያ"
 
 #: modules/access/vnc.c:52
 msgid "X.509 Certificate Authority"
@@ -13517,7 +13517,7 @@ msgstr "ሰማያዊ"
 #: modules/video_filter/ball.c:122 modules/video_filter/colorthres.c:64
 #: modules/video_filter/extract.c:61
 msgid "Blue"
-msgstr "ሰማያዊ "
+msgstr "ሰማያዊ"
 
 #: modules/codec/kate.c:207 modules/spu/marq.c:67 modules/spu/rss.c:75
 #: modules/text_renderer/freetype/freetype.c:112
@@ -16825,7 +16825,7 @@ msgstr ""
 #: modules/demux/mpeg/ts_descriptions.h:27
 #, fuzzy
 msgid "Main audio"
-msgstr "ዋናው ድምፅ "
+msgstr "ዋናው ድምፅ"
 
 #: modules/demux/mpeg/ts_descriptions.h:28
 msgid "Audio description for the visually impaired"
@@ -18675,7 +18675,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1414
 #, fuzzy
 msgid "Adjust pitch"
-msgstr "የ ቪኤልሲ ቅድሚያ ማሰናጃ "
+msgstr "የ ቪኤልሲ ቅድሚያ ማሰናጃ"
 
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:297
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1423
@@ -18825,7 +18825,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:19
 #: modules/visualization/visual/visual.c:123
 msgid "General"
-msgstr "ባጠቃላይ "
+msgstr "ባጠቃላይ"
 
 #: modules/gui/macosx/panels/VLCInformationWindowController.m:169
 msgid "Codec Details"
@@ -19232,7 +19232,7 @@ msgstr "አርማ መጨመሪያ"
 
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:382
 msgid "Logo"
-msgstr "አርማ "
+msgstr "አርማ"
 
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:403
 #: modules/spu/mosaic.c:88 modules/stream_out/mosaic_bridge.c:696
@@ -20780,7 +20780,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr "የ አሁኑን እቃ መድገሚያ"
+msgstr " የ አሁኑን እቃ መድገሚያ"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -21606,7 +21606,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:215
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:216
 msgid "Effects"
-msgstr "ውጤቶች "
+msgstr "ውጤቶች"
 
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:225
 msgid "Play audio to preview and edit audio effects."
@@ -23962,7 +23962,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPicture.qml:14
 msgid "Picture"
-msgstr "ስእል "
+msgstr "ስእል"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPicture.qml:84
 msgid "Reset picture"
@@ -24562,7 +24562,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:241
 #: share/lua/http/dialogs/mosaic_window.html:133
 msgid "Background"
-msgstr "መደብ "
+msgstr "መደብ"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:242
 #: modules/text_renderer/freetype/freetype.c:81
@@ -27570,7 +27570,7 @@ msgstr ""
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:57
 msgid "Bookmark"
-msgstr "እልባት "
+msgstr "እልባት"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:60
 msgid "Volume Widget"
@@ -30056,7 +30056,7 @@ msgstr "ሂፕ-ሆፕ"
 
 #: modules/meta_engine/ID3Genres.h:41
 msgid "Jazz"
-msgstr "ጃዝ "
+msgstr "ጃዝ"
 
 #: modules/meta_engine/ID3Genres.h:42
 msgid "Metal"
@@ -30120,7 +30120,7 @@ msgstr "ጃዝ+ፈንክ"
 
 #: modules/meta_engine/ID3Genres.h:63
 msgid "Fusion"
-msgstr "ፊዩዥን "
+msgstr "ፊዩዥን"
 
 #: modules/meta_engine/ID3Genres.h:64
 msgid "Trance"
@@ -30160,11 +30160,11 @@ msgstr "ባስ"
 
 #: modules/meta_engine/ID3Genres.h:75
 msgid "Soul"
-msgstr "ሶል "
+msgstr "ሶል"
 
 #: modules/meta_engine/ID3Genres.h:76
 msgid "Punk"
-msgstr "ፐንክ "
+msgstr "ፐንክ"
 
 #: modules/meta_engine/ID3Genres.h:77
 msgid "Space"
@@ -31435,7 +31435,7 @@ msgstr "ሲዲ"
 
 #: modules/services_discovery/udev.c:600
 msgid "DVD"
-msgstr "ዲቪዲ "
+msgstr "ዲቪዲ"
 
 #: modules/services_discovery/udev.c:604
 msgid "HD DVD"
@@ -31747,7 +31747,7 @@ msgstr ""
 
 #: modules/spu/marq.c:107 modules/spu/rss.c:145
 msgid "Font size, pixels"
-msgstr "የ ፊደል መጠን በ ፒክስልስ "
+msgstr "የ ፊደል መጠን በ ፒክስልስ"
 
 #: modules/spu/marq.c:108 modules/spu/rss.c:146
 msgid "Font size, in pixels. Default is 0 (use default font size)."
@@ -31809,7 +31809,7 @@ msgstr ""
 
 #: modules/spu/mosaic.c:105
 msgid "Border width"
-msgstr "የ ድንበር ስፋት "
+msgstr "የ ድንበር ስፋት"
 
 #: modules/spu/mosaic.c:107
 msgid "Width in pixels of the border between miniatures."
@@ -31817,7 +31817,7 @@ msgstr ""
 
 #: modules/spu/mosaic.c:108
 msgid "Border height"
-msgstr "የ ድንበር እርዝመት "
+msgstr "የ ድንበር እርዝመት"
 
 #: modules/spu/mosaic.c:110
 msgid "Height in pixels of the border between miniatures."
@@ -33695,7 +33695,7 @@ msgstr "ሰማያዊ መመልከቻ"
 
 #: modules/video_filter/canvas.c:84
 msgid "Output width"
-msgstr "የ ውጤት ስፋት "
+msgstr "የ ውጤት ስፋት"
 
 #: modules/video_filter/canvas.c:86
 msgid "Output (canvas) image width"
@@ -33703,7 +33703,7 @@ msgstr ""
 
 #: modules/video_filter/canvas.c:87
 msgid "Output height"
-msgstr "የ ውጤት እርዝመት "
+msgstr "የ ውጤት እርዝመት"
 
 #: modules/video_filter/canvas.c:89
 msgid "Output (canvas) image height"
@@ -34189,7 +34189,7 @@ msgstr ""
 
 #: modules/video_filter/mirror.c:68
 msgid "Vertical"
-msgstr "በ ቁመት "
+msgstr "በ ቁመት"
 
 #: modules/video_filter/mirror.c:68
 msgid "Horizontal"
@@ -34277,7 +34277,7 @@ msgstr "RGB32"
 
 #: modules/video_filter/opencv_wrapper.cpp:67
 msgid "Don't display any video"
-msgstr "ምንም ቪዲዮ አታሳይ "
+msgstr "ምንም ቪዲዮ አታሳይ"
 
 #: modules/video_filter/opencv_wrapper.cpp:68
 msgid "Display the input video"
@@ -34384,7 +34384,7 @@ msgstr ""
 
 #: modules/video_filter/puzzle/puzzle.c:57
 msgid "Border"
-msgstr "ድንበር "
+msgstr "ድንበር"
 
 #: modules/video_filter/puzzle/puzzle.c:58
 msgid "Unshuffled Border width."
@@ -35726,7 +35726,7 @@ msgstr ""
 #: share/lua/http/dialogs/browse_window.html:41
 #: share/lua/http/mobile_browse.html:48
 msgid "Play List"
-msgstr "ማጫወቻ ዝርዝር "
+msgstr "ማጫወቻ ዝርዝር"
 
 #: share/lua/http/dialogs/create_stream.html:193
 msgid "Subtitle codec"
@@ -35779,11 +35779,11 @@ msgstr "የ ፋይል ስም"
 
 #: share/lua/http/dialogs/mosaic_window.html:104
 msgid "Row border"
-msgstr "የ ረድፍ ድንበር "
+msgstr "የ ረድፍ ድንበር"
 
 #: share/lua/http/dialogs/mosaic_window.html:122
 msgid "Column border"
-msgstr "የ አምድ ድንበር "
+msgstr "የ አምድ ድንበር"
 
 #: share/lua/http/dialogs/mosaic_window.html:135
 msgid "Mosaic Tiles"

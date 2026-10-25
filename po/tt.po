@@ -763,12 +763,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (гадәттә кабызылган)"
+msgstr "(гадәттә кабызылган)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (гадәттә сүндерелгән)"
+msgstr "(гадәттә сүндерелгән)"
 
 #: src/config/help.c:625
 msgid "This module has no options."

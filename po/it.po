@@ -807,12 +807,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (predefinito abilitato)"
+msgstr "(predefinito abilitato)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (predefinito disabilitato)"
+msgstr "(predefinito disabilitato)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -1402,7 +1402,7 @@ msgstr "URL copertine"
 
 #: src/input/meta.c:75
 msgid "Track ID"
-msgstr "ID Traccia "
+msgstr "ID Traccia"
 
 #: src/input/meta.c:76
 msgid "Number of Tracks"
@@ -5773,7 +5773,7 @@ msgstr "Riduci volume"
 #: src/misc/actions.c:141
 msgctxt "key"
 msgid "Volume Mute"
-msgstr " Volume Silenzio"
+msgstr "Volume Silenzio"
 
 #: src/misc/actions.c:142
 msgctxt "key"
@@ -8601,7 +8601,7 @@ msgstr "Riproduzione bluray non riuscita. Prova senza il supporto per il menu."
 #: modules/access/bluray.c:1021 modules/access/bluray.c:2923
 #: modules/access/bluray.c:2928
 msgid "Blu-ray error"
-msgstr "Errore Blu-ray "
+msgstr "Errore Blu-ray"
 
 #: modules/access/bluray.c:2189
 msgid "Top Menu"
@@ -8969,7 +8969,7 @@ msgstr "Proporzioni dell'immagine n:m"
 
 #: modules/access/dshow/dshow.cpp:119 modules/access/v4l2/v4l2.c:197
 msgid "Define input picture aspect-ratio to use. Default is 4:3"
-msgstr "Specifica le proporzioni dell'immagine in ingresso. Predefinito 4:3 "
+msgstr "Specifica le proporzioni dell'immagine in ingresso. Predefinito 4:3"
 
 #: modules/access/dshow/dshow.cpp:120 modules/access/v4l2/v4l2.c:53
 msgid "Video input chroma format"
@@ -11645,7 +11645,7 @@ msgstr "V4L"
 
 #: modules/access/v4l2/v4l2.c:276
 msgid "Video4Linux input"
-msgstr "Ingresso Video4Linux "
+msgstr "Ingresso Video4Linux"
 
 #: modules/access/v4l2/v4l2.c:279
 msgid "Video input"
@@ -11666,7 +11666,7 @@ msgstr "Controlli di acquisizione video (se supportati dal dispositivo)."
 
 #: modules/access/v4l2/v4l2.c:409
 msgid "Video4Linux compressed A/V input"
-msgstr "Ingresso A/V compresso Video4Linux "
+msgstr "Ingresso A/V compresso Video4Linux"
 
 #: modules/access/v4l2/v4l2.c:416
 msgid "Video4Linux radio tuner"
@@ -12130,17 +12130,17 @@ msgstr "Descrizione"
 #: modules/access_output/shout.c:86
 #, fuzzy
 msgid "URL with information about the stream or your channel."
-msgstr "URL con informazioni relative al flusso o al canale. "
+msgstr "URL con informazioni relative al flusso o al canale."
 
 #: modules/access_output/shout.c:93
 #, fuzzy
 msgid "Bitrate information of the transcoded stream."
-msgstr "Informazioni sul bitrate del flusso transcodificato. "
+msgstr "Informazioni sul bitrate del flusso transcodificato."
 
 #: modules/access_output/shout.c:96
 #, fuzzy
 msgid "Samplerate information of the transcoded stream."
-msgstr "Informazioni sul campionamento del flusso transcodificato. "
+msgstr "Informazioni sul campionamento del flusso transcodificato."
 
 #: modules/access_output/shout.c:98
 msgid "Number of channels"
@@ -12149,7 +12149,7 @@ msgstr "Numero di canali"
 #: modules/access_output/shout.c:99
 #, fuzzy
 msgid "Number of channels information of the transcoded stream."
-msgstr "Informazioni sul numero di canali del flusso transcodificato. "
+msgstr "Informazioni sul numero di canali del flusso transcodificato."
 
 #: modules/access_output/shout.c:101
 msgid "Ogg Vorbis Quality"
@@ -12158,7 +12158,7 @@ msgstr "Qualità Ogg Vorbis"
 #: modules/access_output/shout.c:102
 #, fuzzy
 msgid "Ogg Vorbis Quality information of the transcoded stream."
-msgstr "Informazioni di qualità Ogg Vorbis del flusso transcodificato. "
+msgstr "Informazioni di qualità Ogg Vorbis del flusso transcodificato."
 
 #: modules/access_output/shout.c:104
 msgid "Stream public"
@@ -13054,7 +13054,7 @@ msgstr "Potenziatore stereo"
 
 #: modules/audio_filter/stereo_widen.c:78
 msgid "Simple stereo widening effect"
-msgstr "Semplice effetto di amplificazione stereo "
+msgstr "Semplice effetto di amplificazione stereo"
 
 #: modules/audio_mixer/float.c:47
 msgid "Single precision audio volume"
@@ -14147,7 +14147,7 @@ msgstr "Codificatore DirectMedia Object"
 
 #: modules/codec/dvbsub.c:87
 msgid "Decoding X coordinate"
-msgstr "Decodifica coordinata X "
+msgstr "Decodifica coordinata X"
 
 #: modules/codec/dvbsub.c:88
 msgid "X coordinate of the rendered subtitle"
@@ -15618,7 +15618,7 @@ msgstr "Codificatore audio libtwolame"
 
 #: modules/codec/uleaddvaudio.c:39
 msgid "Ulead DV audio decoder"
-msgstr "Decodificatore audio "
+msgstr "Decodificatore audio"
 
 #: modules/codec/videotoolbox/decoder.c:2228
 #, fuzzy
@@ -16066,7 +16066,7 @@ msgstr "Varianza consentita sul bitrate medio (in kbit/s)."
 
 #: modules/codec/x264.c:211
 msgid "Max local bitrate"
-msgstr "Bitrate locale massimo "
+msgstr "Bitrate locale massimo"
 
 #: modules/codec/x264.c:212
 msgid "Sets a maximum local bitrate (in kbits/s)."
@@ -17306,7 +17306,7 @@ msgstr "Interfaccia dei messaggi di Windows"
 #: modules/demux/adaptive/adaptive.cpp:68
 #, fuzzy
 msgid "Maximum device width"
-msgstr "Larghezza video massima "
+msgstr "Larghezza video massima"
 
 #: modules/demux/adaptive/adaptive.cpp:69
 #, fuzzy
@@ -18130,7 +18130,7 @@ msgstr "Considera affidabile il flusso PCR in ingresso"
 
 #: modules/demux/mpeg/ts.c:129
 msgid "Use the stream PCR as a reference."
-msgstr "Usa il flusso PCR come riferimento. "
+msgstr "Usa il flusso PCR come riferimento."
 
 #: modules/demux/mpeg/ts.c:136 modules/mux/mpeg/ts.c:103
 #, fuzzy
@@ -20343,7 +20343,7 @@ msgstr "Sincronizzazione traccia audio:"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:270
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:271
 msgid "s"
-msgstr " s"
+msgstr "s"
 
 #: modules/gui/macosx/panels/VLCTrackSynchronizationWindowController.m:88
 msgid "A positive value means that the audio is ahead of the video"
@@ -21201,7 +21201,7 @@ msgstr "Errori e avvisi"
 
 #: modules/gui/macosx/windows/VLCErrorWindowController.m:53
 msgid "Clean up"
-msgstr "Pulisci "
+msgstr "Pulisci"
 
 #: modules/gui/macosx/windows/VLCHelpWindowController.m:47
 msgid "VLC media player Help"
@@ -22033,15 +22033,15 @@ msgstr " f           Commuta schermo intero"
 
 #: modules/gui/ncurses.c:1009
 msgid " c                      Cycle through audio tracks"
-msgstr "c Passa attraverso le tracce audio"
+msgstr " c Passa attraverso le tracce audio"
 
 #: modules/gui/ncurses.c:1010
 msgid " v                      Cycle through subtitles tracks"
-msgstr "v Passa attraverso i sottotitoli"
+msgstr " v Passa attraverso i sottotitoli"
 
 #: modules/gui/ncurses.c:1011
 msgid " b                      Cycle through video tracks"
-msgstr "b Passa attraverso le tracce video"
+msgstr " b Passa attraverso le tracce video"
 
 #: modules/gui/ncurses.c:1012
 msgid " n, p                   Next/Previous playlist item"
@@ -22072,17 +22072,17 @@ msgstr " m Silenzia"
 #. xgettext: You can use ↑ and ↓ characters
 #: modules/gui/ncurses.c:1020
 msgid " <up>,<down>            Navigate through the box line by line"
-msgstr "< ↑ >,< ↓ >  Naviga nella finestra riga per riga"
+msgstr " < ↑ >,< ↓ >  Naviga nella finestra riga per riga"
 
 #. xgettext: You can use ⇞ and ⇟ characters
 #: modules/gui/ncurses.c:1022
 msgid " <pageup>,<pagedown>    Navigate through the box page by page"
-msgstr "< ⇞ >,< ⇟ >  Naviga nella finestra pagina per pagina"
+msgstr " < ⇞ >,< ⇟ >  Naviga nella finestra pagina per pagina"
 
 #. xgettext: You can use ↖ and ↘ characters
 #: modules/gui/ncurses.c:1024
 msgid " <start>,<end>          Navigate to start/end of box"
-msgstr "< ↖ >,< ↘  >  Naviga nella finestra riga dall'inizio/fine"
+msgstr " < ↖ >,< ↘  >  Naviga nella finestra riga dall'inizio/fine"
 
 #: modules/gui/ncurses.c:1028
 msgid "[Equalizer]"
@@ -22130,7 +22130,7 @@ msgstr " /           Cerca un elemento"
 
 #: modules/gui/ncurses.c:1044
 msgid " ;                      Look for the next item"
-msgstr "; Cerca l'elemento successivo"
+msgstr " ; Cerca l'elemento successivo"
 
 #: modules/gui/ncurses.c:1045
 msgid " A                      Add an entry"
@@ -22566,7 +22566,7 @@ msgstr "Aggiorna"
 
 #: modules/gui/qt/dialogs/epg/epg.cpp:161
 msgid " (%1+ rated)"
-msgstr "(valutato %1+)"
+msgstr " (valutato %1+)"
 
 #: modules/gui/qt/dialogs/extended/audio_effects.cpp:319
 msgid "Open audio effects before changing them."
@@ -26847,7 +26847,7 @@ msgstr "Questo muxer manca. Non sarà possibile utilizzare questo profilo"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:802
 msgid " Profile Name Missing"
-msgstr "Nome del profilo mancante"
+msgstr " Nome del profilo mancante"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:803
 msgid "You must set a name for the profile."
@@ -27231,11 +27231,11 @@ msgstr "Cambia"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:506
 msgid "Broadcast: "
-msgstr "Trasmissione:"
+msgstr "Trasmissione: "
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 msgid "Schedule: "
-msgstr "Pianificazione:"
+msgstr "Pianificazione: "
 
 #: modules/gui/qt/maininterface/mainctx.cpp:1193
 msgid "Paste from clipboard"
@@ -32845,7 +32845,7 @@ msgstr "Video sconosciuto"
 
 #: modules/mux/avi.c:55
 msgid "Subject"
-msgstr " Oggetto"
+msgstr "Oggetto"
 
 #: modules/mux/avi.c:60
 msgid "AVI muxer"
@@ -33564,7 +33564,7 @@ msgstr ""
 
 #: modules/spu/audiobargraph_v.c:63 modules/spu/audiobargraph_v.c:80
 msgid "Audio Bar Graph Video sub source"
-msgstr "Sotto fonte Audio Bar Graph Video "
+msgstr "Sotto fonte Audio Bar Graph Video"
 
 #: modules/spu/audiobargraph_v.c:64
 msgid "Audio Bar Graph Video"
@@ -34167,7 +34167,7 @@ msgstr "Decompressione LZMA"
 
 #: modules/stream_filter/decomp.c:64
 msgid "Burrows-Wheeler decompression"
-msgstr "Decompressione "
+msgstr "Decompressione"
 
 #: modules/stream_filter/decomp.c:69
 msgid "gzip decompression"
@@ -35179,7 +35179,7 @@ msgstr "Specifica il modulo di deinterlacciamento da utilizzare."
 
 #: modules/stream_out/transcode/transcode.c:73
 msgid "Maximum video width"
-msgstr "Larghezza video massima "
+msgstr "Larghezza video massima"
 
 #: modules/stream_out/transcode/transcode.c:75
 msgid "Maximum output video width."
@@ -36725,7 +36725,7 @@ msgstr "Angolo in gradi"
 
 #: modules/video_filter/rotate.c:59
 msgid "Angle in degrees (0 to 359)"
-msgstr "Angolo in grad (da 0 a 359)i "
+msgstr "Angolo in grad (da 0 a 359)i"
 
 #: modules/video_filter/rotate.c:60
 msgid "Use motion sensors"
@@ -37833,7 +37833,7 @@ msgstr "Percorsa alla cartella delle preimpostazioni projectM"
 
 #: modules/visualization/projectm.cpp:72
 msgid "Title font"
-msgstr "Carattere del titolo "
+msgstr "Carattere del titolo"
 
 #: modules/visualization/projectm.cpp:73
 msgid "Font used for the titles"

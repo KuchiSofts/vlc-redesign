@@ -728,12 +728,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (predeterminât ativât)"
+msgstr "(predeterminât ativât)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (predeterminât disativât)"
+msgstr "(predeterminât disativât)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -1352,7 +1352,7 @@ msgstr "URL"
 #: src/input/meta.c:75
 #, fuzzy
 msgid "Track ID"
-msgstr "Trace "
+msgstr "Trace"
 
 #: src/input/meta.c:76
 #, fuzzy
@@ -2022,7 +2022,7 @@ msgstr "Met simpri il barcon dal video parsore di chei altris barcons."
 #: src/libvlc-module.c:348
 #, fuzzy
 msgid "Enable wallpaper mode"
-msgstr "Ative modaliât sfont "
+msgstr "Ative modaliât sfont"
 
 #: src/libvlc-module.c:350
 msgid ""
@@ -4842,12 +4842,12 @@ msgstr ""
 #: src/libvlc-module.c:1598
 #, fuzzy
 msgid "Toggle wallpaper mode in video output"
-msgstr "Ative modaliât sfont "
+msgstr "Ative modaliât sfont"
 
 #: src/libvlc-module.c:1600
 #, fuzzy
 msgid "Toggle wallpaper mode in video output."
-msgstr "Ative modaliât sfont "
+msgstr "Ative modaliât sfont"
 
 #: src/libvlc-module.c:1602
 #, fuzzy
@@ -8872,7 +8872,7 @@ msgstr ""
 #: modules/access/dtv/access.c:58
 #, fuzzy
 msgid "Network name"
-msgstr "Rêt: "
+msgstr "Rêt:"
 
 #: modules/access/dtv/access.c:59
 msgid "Unique network name in the System Tuning Spaces"
@@ -8979,7 +8979,7 @@ msgstr ""
 #: modules/access/dtv/access.c:119
 #, fuzzy
 msgid "Transmission mode"
-msgstr "Conversions di "
+msgstr "Conversions di"
 
 #: modules/access/dtv/access.c:127
 #, fuzzy
@@ -9662,7 +9662,7 @@ msgstr "Nissun file sielt"
 #: modules/access/imem-access.c:155
 #, fuzzy
 msgid "In-memory stream input"
-msgstr "Flus "
+msgstr "Flus"
 
 #: modules/access/imem.c:48 modules/stream_out/bridge.c:41
 #: modules/stream_out/mosaic_bridge.c:673
@@ -11536,7 +11536,7 @@ msgstr ""
 #: modules/access_output/dummy.c:42 modules/stream_out/dummy.c:76
 #, fuzzy
 msgid "Dummy stream output"
-msgstr "Flus "
+msgstr "Flus"
 
 #: modules/access_output/file.c:314
 #, fuzzy
@@ -11594,7 +11594,7 @@ msgstr "Sielç trace audio"
 #: modules/access_output/file.c:389
 #, fuzzy
 msgid "File stream output"
-msgstr "Flus "
+msgstr "Flus"
 
 #: modules/access_output/http-put.c:126
 msgid "HTTP PUT stream output"
@@ -11644,7 +11644,7 @@ msgstr ""
 #: modules/access_output/http.c:72
 #, fuzzy
 msgid "HTTP stream output"
-msgstr "Flus "
+msgstr "Flus"
 
 #: modules/access_output/livehttp.c:69
 #, fuzzy
@@ -11760,7 +11760,7 @@ msgstr "Numar di stelis"
 #: modules/access_output/livehttp.c:111
 #, fuzzy
 msgid "HTTP Live streaming output"
-msgstr "Flus "
+msgstr "Flus"
 
 #: modules/access_output/livehttp.c:112
 #, fuzzy
@@ -11907,7 +11907,7 @@ msgstr "Tai dal video"
 #: modules/access_output/srt.c:458
 #, fuzzy
 msgid "SRT stream output"
-msgstr "Flus "
+msgstr "Flus"
 
 #: modules/access_output/srt.c:470
 msgid "SRT maximum payload size (bytes)"
@@ -14478,7 +14478,7 @@ msgstr ""
 #: modules/codec/qsv.c:62
 #, fuzzy
 msgid "Enable software mode"
-msgstr "Ative modaliât sfont "
+msgstr "Ative modaliât sfont"
 
 #: modules/codec/qsv.c:63
 msgid ""
@@ -17182,7 +17182,7 @@ msgstr ""
 #: modules/demux/image.c:46
 #, fuzzy
 msgid "ES ID"
-msgstr "Trace "
+msgstr "Trace"
 
 #: modules/demux/image.c:54
 #, fuzzy
@@ -17331,7 +17331,7 @@ msgstr ""
 #: modules/demux/mod.c:60
 #, fuzzy
 msgid "Enable megabass mode"
-msgstr "Ative modaliât sfont "
+msgstr "Ative modaliât sfont"
 
 #: modules/demux/mod.c:61
 msgid "Megabass mode level (from 0 to 100, default value is 0)."
@@ -17421,7 +17421,7 @@ msgstr "Numar di trace"
 #: modules/demux/mp4/meta.c:75
 #, fuzzy
 msgid "Requirements"
-msgstr "Segment "
+msgstr "Segment"
 
 #: modules/demux/mp4/meta.c:76
 #, fuzzy
@@ -19353,7 +19353,7 @@ msgstr ""
 #: modules/gui/macosx/menus/VLCMainMenu.m:464
 #, fuzzy
 msgid "Text Color"
-msgstr "Compilatôr: "
+msgstr "Compilatôr:"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:465
 #, fuzzy
@@ -20152,7 +20152,7 @@ msgstr "Puarte video"
 #: modules/video_filter/colorthres.c:54
 #, fuzzy
 msgid "Color"
-msgstr "Compilatôr: "
+msgstr "Compilatôr:"
 
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:278
 #, fuzzy
@@ -20659,7 +20659,7 @@ msgstr "Sielç"
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:436
 #, fuzzy
 msgid "Font color"
-msgstr "Compilatôr: "
+msgstr "Compilatôr:"
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:437
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
@@ -21790,7 +21790,7 @@ msgstr ""
 #: modules/gui/ncurses.c:992
 #, fuzzy
 msgid " M                      Show/Hide metadata box"
-msgstr "Element esistent de liste di riproduzion"
+msgstr " Element esistent de liste di riproduzion"
 
 #: modules/gui/ncurses.c:993
 msgid " L                      Show/Hide messages box"
@@ -21844,32 +21844,32 @@ msgstr ""
 #: modules/gui/ncurses.c:1009
 #, fuzzy
 msgid " c                      Cycle through audio tracks"
-msgstr "Element esistent de liste di riproduzion"
+msgstr " Element esistent de liste di riproduzion"
 
 #: modules/gui/ncurses.c:1010
 #, fuzzy
 msgid " v                      Cycle through subtitles tracks"
-msgstr "Element esistent de liste di riproduzion"
+msgstr " Element esistent de liste di riproduzion"
 
 #: modules/gui/ncurses.c:1011
 #, fuzzy
 msgid " b                      Cycle through video tracks"
-msgstr "Element esistent de liste di riproduzion"
+msgstr " Element esistent de liste di riproduzion"
 
 #: modules/gui/ncurses.c:1012
 #, fuzzy
 msgid " n, p                   Next/Previous playlist item"
-msgstr "Element esistent de liste di riproduzion"
+msgstr " Element esistent de liste di riproduzion"
 
 #: modules/gui/ncurses.c:1013
 #, fuzzy
 msgid " [, ]                   Next/Previous title"
-msgstr "Element esistent de liste di riproduzion"
+msgstr " Element esistent de liste di riproduzion"
 
 #: modules/gui/ncurses.c:1014
 #, fuzzy
 msgid " <, >                   Next/Previous chapter"
-msgstr "Element esistent de liste di riproduzion"
+msgstr " Element esistent de liste di riproduzion"
 
 #. xgettext: You can use ← and → characters
 #: modules/gui/ncurses.c:1016
@@ -21884,7 +21884,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1018
 #, fuzzy
 msgid " m                      Mute"
-msgstr "Element esistent de liste di riproduzion"
+msgstr " Element esistent de liste di riproduzion"
 
 #. xgettext: You can use ↑ and ↓ characters
 #: modules/gui/ncurses.c:1020
@@ -21933,12 +21933,12 @@ msgstr ""
 #: modules/gui/ncurses.c:1040
 #, fuzzy
 msgid " o                      Order Playlist by title"
-msgstr "Element esistent de liste di riproduzion"
+msgstr " Element esistent de liste di riproduzion"
 
 #: modules/gui/ncurses.c:1041
 #, fuzzy
 msgid " O                      Reverse order Playlist by title"
-msgstr "Element esistent de liste di riproduzion"
+msgstr " Element esistent de liste di riproduzion"
 
 #: modules/gui/ncurses.c:1042
 msgid " g                      Go to the current playing item"
@@ -21951,7 +21951,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1044
 #, fuzzy
 msgid " ;                      Look for the next item"
-msgstr "Element esistent de liste di riproduzion"
+msgstr " Element esistent de liste di riproduzion"
 
 #: modules/gui/ncurses.c:1045
 msgid " A                      Add an entry"
@@ -22027,22 +22027,22 @@ msgstr ""
 #: modules/gui/ncurses.c:1271
 #, fuzzy, c-format
 msgid " Position : %s/%s"
-msgstr "Posizion"
+msgstr " Posizion"
 
 #: modules/gui/ncurses.c:1276
 #, fuzzy
 msgid " Volume   : Mute"
-msgstr "Volum: %d%%"
+msgstr " Volum: %d%%"
 
 #: modules/gui/ncurses.c:1277
 #, fuzzy, c-format
 msgid " Volume   : %3ld%%"
-msgstr "Volum: %d%%"
+msgstr " Volum: %d%%"
 
 #: modules/gui/ncurses.c:1277
 #, fuzzy
 msgid " Volume   : ----"
-msgstr "Volum: %d%%"
+msgstr " Volum: %d%%"
 
 #: modules/gui/ncurses.c:1286
 #, c-format
@@ -22057,7 +22057,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr "Torne a riprodusi l'element corint"
+msgstr " Torne a riprodusi l'element corint"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -23081,7 +23081,7 @@ msgstr "spaziâl"
 #: modules/gui/qt/dialogs/extended/qml/VideoEffectsPanel.qml:81
 #, fuzzy
 msgid "Colors"
-msgstr "Compilatôr: "
+msgstr "Compilatôr:"
 
 #: modules/gui/qt/dialogs/extended/qml/VideoEffectsPanel.qml:82
 #: modules/spu/dynamicoverlay/dynamicoverlay.c:68
@@ -23823,7 +23823,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1172
 #, fuzzy
 msgid " f/s"
-msgstr "fps"
+msgstr " fps"
 
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1387
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:604
@@ -26692,7 +26692,7 @@ msgstr "Rileve in automatic files dai sot titui"
 #: modules/gui/qt/dialogs/sout/sout.cpp:44
 #, fuzzy
 msgid "Stream Output"
-msgstr "Flus "
+msgstr "Flus"
 
 #: modules/gui/qt/dialogs/sout/sout.cpp:56
 msgid ""
@@ -27043,7 +27043,7 @@ msgstr "Ripet dut"
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:104
 #, fuzzy
 msgid " days"
-msgstr "ritart"
+msgstr " ritart"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:123
 #, fuzzy
@@ -27078,7 +27078,7 @@ msgstr "Canâi"
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:506
 #, fuzzy
 msgid "Broadcast: "
-msgstr "Podcasts"
+msgstr "Podcasts "
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 msgid "Schedule: "
@@ -32735,7 +32735,7 @@ msgstr ""
 #: modules/mux/mpeg/ts.c:114
 #, fuzzy
 msgid "TS ID"
-msgstr "Trace "
+msgstr "Trace"
 
 #: modules/mux/mpeg/ts.c:115
 msgid "Assign a fixed Transport Stream ID."
@@ -34073,7 +34073,7 @@ msgstr "Luminositât"
 #: modules/stream_out/bridge.c:93
 #, fuzzy
 msgid "Bridge stream output"
-msgstr "Flus "
+msgstr "Flus"
 
 #: modules/stream_out/bridge.c:95
 #, fuzzy
@@ -34392,7 +34392,7 @@ msgstr ""
 #: modules/stream_out/record.c:57
 #, fuzzy
 msgid "Record stream output"
-msgstr "Flus "
+msgstr "Flus"
 
 #: modules/stream_out/renderer_common.hpp:36
 msgid "Display a performance warning when transcoding"
@@ -34569,7 +34569,7 @@ msgstr ""
 #: modules/stream_out/rtp.c:180
 #, fuzzy
 msgid "RTP stream output"
-msgstr "Flus "
+msgstr "Flus"
 
 #: modules/stream_out/sdi/sdiout.cpp:37 modules/video_output/decklink.cpp:80
 msgid "Timelength after which we assume there is no signal."
@@ -35114,7 +35114,7 @@ msgstr ""
 #: modules/stream_out/udp.c:355
 #, fuzzy
 msgid "UDP stream output"
-msgstr "Flus "
+msgstr "Flus"
 
 #: modules/text_renderer/freetype/fonts/fontconfig.c:93
 msgid ""
@@ -35261,7 +35261,7 @@ msgstr ""
 #: modules/video_chroma/rv32.c:51
 #, fuzzy
 msgid "RV32 conversion filter"
-msgstr "Conversions MMX di "
+msgstr "Conversions MMX di"
 
 #: modules/video_chroma/swscale.c:54 modules/video_output/xcb/render.c:773
 #, fuzzy
@@ -35328,7 +35328,7 @@ msgstr "Salve"
 #: modules/video_chroma/yuvp.c:54
 #, fuzzy
 msgid "YUVP converter"
-msgstr "Conversions MMX di "
+msgstr "Conversions MMX di"
 
 #: modules/video_filter/adjust.c:58
 msgid "Image hue (-180..180)"
@@ -35675,7 +35675,7 @@ msgstr "Cîr inzornaments"
 #: modules/video_filter/canvas.c:106
 #, fuzzy
 msgid "Canvas"
-msgstr " Scancele "
+msgstr "Scancele"
 
 #: modules/video_filter/canvas.c:107
 #, fuzzy
@@ -36000,7 +36000,7 @@ msgstr "Filtris audio"
 #: modules/video_filter/fps.c:46
 #, fuzzy
 msgid "FPS Converter"
-msgstr "Conversions MMX di "
+msgstr "Conversions MMX di"
 
 #: modules/video_filter/freeze.c:78
 #, fuzzy

@@ -758,11 +758,11 @@ msgstr ""
 
 #: src/config/help.c:489
 msgid "(default enabled)"
-msgstr " (פעיל כברירת מחדל)"
+msgstr "(פעיל כברירת מחדל)"
 
 #: src/config/help.c:490
 msgid "(default disabled)"
-msgstr " (מושבת כברירת מחדל)"
+msgstr "(מושבת כברירת מחדל)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -1678,7 +1678,7 @@ msgstr ""
 
 #: src/libvlc-module.c:189
 msgid "Force detection of Dolby Surround"
-msgstr "אילוץ זיהוי של "
+msgstr "אילוץ זיהוי של"
 
 #: src/libvlc-module.c:191
 msgid ""
@@ -8822,7 +8822,7 @@ msgstr "DirectShow"
 
 #: modules/access/dshow/dshow.cpp:194 modules/access/dshow/dshow.cpp:257
 msgid "DirectShow input"
-msgstr "קלט DirectShow "
+msgstr "קלט DirectShow"
 
 #: modules/access/dshow/dshow.cpp:478 modules/access/dshow/dshow.cpp:552
 #: modules/access/dshow/dshow.cpp:1001 modules/access/dshow/dshow.cpp:1073
@@ -26085,11 +26085,11 @@ msgstr "שינוי"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:506
 msgid "Broadcast: "
-msgstr "שידור:"
+msgstr "שידור: "
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 msgid "Schedule: "
-msgstr "תזמון:"
+msgstr "תזמון: "
 
 #: modules/gui/qt/maininterface/mainctx.cpp:1193
 msgid "Paste from clipboard"
@@ -34882,7 +34882,7 @@ msgstr "מסנן זיהוי פנים של OpenCV לדוגמה"
 
 #: modules/video_filter/opencv_example.cpp:81
 msgid "OpenCV example"
-msgstr "דוגמה של "
+msgstr "דוגמה של"
 
 #: modules/video_filter/opencv_example.cpp:89
 msgid "Haar cascade filename"
@@ -35196,7 +35196,7 @@ msgstr "סוג התמונה"
 
 #: modules/video_filter/scene.c:60
 msgid "Format of the output images (png, jpeg, ...)."
-msgstr "סוג תמונת הפלט "
+msgstr "סוג תמונת הפלט"
 
 #: modules/video_filter/scene.c:63
 msgid ""

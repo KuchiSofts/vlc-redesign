@@ -762,12 +762,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (預設啟用)"
+msgstr "(預設啟用)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (預設停用)"
+msgstr "(預設停用)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -21140,7 +21140,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr " 來源: <目前無播放項目> "
+msgstr " 來源: <目前無播放項目>"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -26028,11 +26028,11 @@ msgstr "變更"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:506
 msgid "Broadcast: "
-msgstr "廣播："
+msgstr "廣播： "
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 msgid "Schedule: "
-msgstr "排程："
+msgstr "排程： "
 
 #: modules/gui/qt/maininterface/mainctx.cpp:1193
 msgid "Paste from clipboard"

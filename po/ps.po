@@ -16547,7 +16547,7 @@ msgstr ""
 #: modules/demux/avi/avi.c:71
 #, fuzzy
 msgid "Ask for action"
-msgstr "خبرتياوې "
+msgstr "خبرتياوې"
 
 #: modules/demux/avi/avi.c:72
 msgid "Always fix"
@@ -19405,7 +19405,7 @@ msgstr "%s غږيز پلنيوی:"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:271
 #, fuzzy
 msgid "s"
-msgstr " س"
+msgstr "س"
 
 #: modules/gui/macosx/panels/VLCTrackSynchronizationWindowController.m:88
 msgid "A positive value means that the audio is ahead of the video"
@@ -19435,7 +19435,7 @@ msgstr "_فايل"
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:292
 #, fuzzy
 msgid "fps"
-msgstr " س"
+msgstr "س"
 
 #: modules/gui/macosx/panels/VLCTrackSynchronizationWindowController.m:95
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1530
@@ -21114,22 +21114,22 @@ msgstr ""
 #: modules/gui/ncurses.c:1009
 #, fuzzy
 msgid " c                      Cycle through audio tracks"
-msgstr "_فايل"
+msgstr " _فايل"
 
 #: modules/gui/ncurses.c:1010
 #, fuzzy
 msgid " v                      Cycle through subtitles tracks"
-msgstr "_فايل"
+msgstr " _فايل"
 
 #: modules/gui/ncurses.c:1011
 #, fuzzy
 msgid " b                      Cycle through video tracks"
-msgstr "_فايل"
+msgstr " _فايل"
 
 #: modules/gui/ncurses.c:1012
 #, fuzzy
 msgid " n, p                   Next/Previous playlist item"
-msgstr "_فايل"
+msgstr " _فايل"
 
 #: modules/gui/ncurses.c:1013
 msgid " [, ]                   Next/Previous title"
@@ -21152,7 +21152,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1018
 #, fuzzy
 msgid " m                      Mute"
-msgstr "_فايل"
+msgstr " _فايل"
 
 #. xgettext: You can use ↑ and ↓ characters
 #: modules/gui/ncurses.c:1020
@@ -21216,7 +21216,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1044
 #, fuzzy
 msgid " ;                      Look for the next item"
-msgstr "_فايل"
+msgstr " _فايل"
 
 #: modules/gui/ncurses.c:1045
 msgid " A                      Add an entry"
@@ -21289,22 +21289,22 @@ msgstr ""
 #: modules/gui/ncurses.c:1271
 #, fuzzy, c-format
 msgid " Position : %s/%s"
-msgstr "ځای"
+msgstr " ځای"
 
 #: modules/gui/ncurses.c:1276
 #, fuzzy
 msgid " Volume   : Mute"
-msgstr "غږ لوړول"
+msgstr " غږ لوړول"
 
 #: modules/gui/ncurses.c:1277
 #, fuzzy, c-format
 msgid " Volume   : %3ld%%"
-msgstr "غږ لوړول"
+msgstr " غږ لوړول"
 
 #: modules/gui/ncurses.c:1277
 #, fuzzy
 msgid " Volume   : ----"
-msgstr "غږ لوړول"
+msgstr " غږ لوړول"
 
 #: modules/gui/ncurses.c:1286
 #, c-format
@@ -21319,7 +21319,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr "اوسنی توکی ښودل"
+msgstr " اوسنی توکی ښودل"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -21898,7 +21898,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
 #, fuzzy
 msgid "ms"
-msgstr " س"
+msgstr "س"
 
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1316
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1338
@@ -22010,7 +22010,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/extended/qml/CropInput.qml:87
 #, fuzzy
 msgid "px"
-msgstr " px"
+msgstr "px"
 
 #: modules/gui/qt/dialogs/extended/qml/CropPanel.qml:60
 msgid "Link top and bottom crop"
@@ -22359,7 +22359,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/extensions/extensions_manager.cpp:175
 #, fuzzy
 msgid "Empty"
-msgstr " - تش - "
+msgstr "- تش -"
 
 #: modules/gui/qt/dialogs/extensions/extensions_manager.cpp:181
 #, fuzzy
@@ -24335,7 +24335,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:193
 #, fuzzy
 msgid " dB"
-msgstr "%.2f dB"
+msgstr " %.2f dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207

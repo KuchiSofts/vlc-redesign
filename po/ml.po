@@ -688,7 +688,7 @@ msgstr "സ്ട്രിങ്ങ്"
 
 #: src/config/help.c:167
 msgid "To get exhaustive help, use '-H'."
-msgstr " '-H' ഉപയോഗിച്ച്, സഹായം തേടാവുന്നതാണ്."
+msgstr "'-H' ഉപയോഗിച്ച്, സഹായം തേടാവുന്നതാണ്."
 
 #: src/config/help.c:171
 #, c-format
@@ -762,12 +762,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (സഹജം സാധ്യമാക്കിയത്)"
+msgstr "(സഹജം സാധ്യമാക്കിയത്)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (സഹജം അസാധ്യമാക്കിയത്)"
+msgstr "(സഹജം അസാധ്യമാക്കിയത്)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -828,7 +828,7 @@ msgstr "കോഡെക്ക് പിന്തുണയ്ക്കുന്�
 #: src/input/decoder.c:2490
 #, c-format
 msgid "VLC could not decode the format \"%4.4s\" (%s)"
-msgstr " \"%4.4s\" (%s) ഘടനയെ വിഎല്‍സിക്കു ഡീക്കോഡ് ചെയ്യാനാകുന്നില്ല"
+msgstr "\"%4.4s\" (%s) ഘടനയെ വിഎല്‍സിക്കു ഡീക്കോഡ് ചെയ്യാനാകുന്നില്ല"
 
 #: src/input/decoder.c:2494
 msgid "Unidentified codec"
@@ -2249,7 +2249,7 @@ msgstr ""
 
 #: src/libvlc-module.c:440
 msgid "Video filter module"
-msgstr "വീഡിയോ ഫില്‍റ്റര്‍ മോഡ്യൂള്‍ "
+msgstr "വീഡിയോ ഫില്‍റ്റര്‍ മോഡ്യൂള്‍"
 
 #: src/libvlc-module.c:442
 msgid ""
@@ -4609,7 +4609,7 @@ msgstr "ഉപശീര്‍ഷക സമന്വയം / ഓഡിയോ ക�
 
 #: src/libvlc-module.c:1475
 msgid "Select the key to reset synchronization of audio & subtitle timestamps."
-msgstr " ഓഡിയോ കൂടാതെ ഉപശീര്‍ഷക സമയമുദ്രകള്‍ സമന്വയം പുന;ക്രമീകരിക്കാന്‍ ഈ കീ തിരഞ്ഞെടുക്കുക."
+msgstr "ഓഡിയോ കൂടാതെ ഉപശീര്‍ഷക സമയമുദ്രകള്‍ സമന്വയം പുന;ക്രമീകരിക്കാന്‍ ഈ കീ തിരഞ്ഞെടുക്കുക."
 
 #: src/libvlc-module.c:1476
 msgid "Subtitle position up"
@@ -11488,7 +11488,7 @@ msgstr "എല്ലാ അദ്ധ്യായങ്ങളും നീക്�
 
 #: modules/access/vdr.c:82
 msgid "Default frame rate for chapter import."
-msgstr "അധ്യായ ഇറക്കുമതിക്കു സ്വയമേവയുള്ള ഫ്രെയിം നിരക്ക് "
+msgstr "അധ്യായ ഇറക്കുമതിക്കു സ്വയമേവയുള്ള ഫ്രെയിം നിരക്ക്"
 
 #: modules/access/vdr.c:85
 msgid "VDR"
@@ -11749,7 +11749,7 @@ msgstr "നിര്‍മിക്കാനുള്ള സൂചിക ഫയ�
 
 #: modules/access_output/livehttp.c:85
 msgid "Full URL to put in index file"
-msgstr "സൂചിക ഫയലില്‍ ഇടാനുള്ള മുഴുവന്‍ യു‌ആര്‍‌എല്‍ "
+msgstr "സൂചിക ഫയലില്‍ ഇടാനുള്ള മുഴുവന്‍ യു‌ആര്‍‌എല്‍"
 
 #: modules/access_output/livehttp.c:86
 msgid "Full URL to put in index file. Use #'s to represent segment number"
@@ -11868,7 +11868,7 @@ msgstr "സ്ട്രീം നാമം"
 
 #: modules/access_output/shout.c:65
 msgid "Name to give to this stream/channel on the shoutcast/icecast server."
-msgstr "ഷൌട്കാസ്റ്റ്/ഐസ്കാസ്റ്റ് സെര്‍വറിലുള്ള ഈ സ്ട്രീം/ചാനലിനുള്ള പേര്. "
+msgstr "ഷൌട്കാസ്റ്റ്/ഐസ്കാസ്റ്റ് സെര്‍വറിലുള്ള ഈ സ്ട്രീം/ചാനലിനുള്ള പേര്."
 
 #: modules/access_output/shout.c:68
 msgid "Stream description"
@@ -13695,11 +13695,11 @@ msgstr ""
 #: modules/codec/avcodec/d3d11va.c:70
 #, fuzzy
 msgid "Direct3D11 Video Acceleration"
-msgstr "ഡിറക്റ്റ്എക്സ്വീഡിയോ ത്വരിതപ്പെടുത്തല്‍ (ഡി‌എക്സ്‌വി‌എ) 2.0 "
+msgstr "ഡിറക്റ്റ്എക്സ്വീഡിയോ ത്വരിതപ്പെടുത്തല്‍ (ഡി‌എക്സ്‌വി‌എ) 2.0"
 
 #: modules/codec/avcodec/dxva2.c:54
 msgid "DirectX Video Acceleration (DXVA) 2.0"
-msgstr "ഡിറക്റ്റ്എക്സ്വീഡിയോ ത്വരിതപ്പെടുത്തല്‍ (ഡി‌എക്സ്‌വി‌എ) 2.0 "
+msgstr "ഡിറക്റ്റ്എക്സ്വീഡിയോ ത്വരിതപ്പെടുത്തല്‍ (ഡി‌എക്സ്‌വി‌എ) 2.0"
 
 #: modules/codec/avcodec/encoder.c:406
 #, c-format
@@ -14293,7 +14293,7 @@ msgstr "വിവിധ പശ്ചാത്തലത്തില്‍ സു�
 
 #: modules/codec/kate.c:224
 msgid "Default font effect strength"
-msgstr "സഹജമായ ഫോണ്ട് പ്രഭാവ സ്ട്രെംഗ്ത്ത് "
+msgstr "സഹജമായ ഫോണ്ട് പ്രഭാവ സ്ട്രെംഗ്ത്ത്"
 
 #: modules/codec/kate.c:225
 msgid "How pronounced to make the chosen font effect (effect dependent)."
@@ -16420,7 +16420,7 @@ msgstr "|പ്ലേലിസ്റ്റ് .... പ്ലേലിസ്റ�
 
 #: modules/control/cli/cli.c:139
 msgid "| play . . . . . . . . . . . . . . . . . . play stream"
-msgstr "| പ്ലേ . . . . . . . . . . ..  . .  സ്ട്രീം പ്ലേചെയ്യുക "
+msgstr "| പ്ലേ . . . . . . . . . . ..  . .  സ്ട്രീം പ്ലേചെയ്യുക"
 
 #: modules/control/cli/cli.c:140
 msgid "| stop . . . . . . . . . . . . . . . . . . stop stream"
@@ -16853,11 +16853,11 @@ msgstr ""
 
 #: modules/control/hotkeys.c:517
 msgid "Sub sync: bookmarked audio time"
-msgstr "സഹ സിങ്ക്: ബുക്ക്മാര്‍ക്ക് ചെയ്ത ആഡിയോ സമയം "
+msgstr "സഹ സിങ്ക്: ബുക്ക്മാര്‍ക്ക് ചെയ്ത ആഡിയോ സമയം"
 
 #: modules/control/hotkeys.c:521
 msgid "Sub sync: bookmarked subtitle time"
-msgstr "സഹ സിങ്ക്: ബുക്ക്മാര്‍ക്ക് ചെയ്ത സഹശീര്‍ഷക സമയം "
+msgstr "സഹ സിങ്ക്: ബുക്ക്മാര്‍ക്ക് ചെയ്ത സഹശീര്‍ഷക സമയം"
 
 #: modules/control/hotkeys.c:528
 msgid "Sub sync: set bookmarks first!"
@@ -18871,7 +18871,7 @@ msgstr ""
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:453
 #: modules/gui/qt/qt.cpp:184
 msgid "Resize interface to the native video size"
-msgstr "പൊതുപ്രതലത്തിന്റെ വലിപ്പം  തദ്ദേശീയമായ വീഡിയോസൈസിലേയ്ക്ക് മാറ്റുക "
+msgstr "പൊതുപ്രതലത്തിന്റെ വലിപ്പം  തദ്ദേശീയമായ വീഡിയോസൈസിലേയ്ക്ക് മാറ്റുക"
 
 #: modules/gui/macosx/main/macosx.m:90 modules/gui/qt/qt.cpp:185
 msgid ""
@@ -20328,7 +20328,7 @@ msgstr "പ്ലേബാക്ക് പുനരാരംഭിക്കു�
 
 #: modules/gui/macosx/panels/dialogs/VLCResumeDialogController.m:104
 msgid "Playback of \"%@\" will continue at %@"
-msgstr " \"%@\" ന്റെ പ്ലേബാക്ക് %@ ല്‍ തുടരും"
+msgstr "\"%@\" ന്റെ പ്ലേബാക്ക് %@ ല്‍ തുടരും"
 
 #: modules/gui/macosx/playqueue/VLCPlayQueueController.m:744
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:820
@@ -21324,7 +21324,7 @@ msgstr "എസ്ഡിപി യുആര്‍എല്‍"
 
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:296
 msgid "Invalid container format for HTTP streaming"
-msgstr "HTTP സ്ട്രീമിങ്ങിനായി തെറ്റായ കണ്‍റ്റൈനര്‍ ഫോര്‍മാറ്റ് "
+msgstr "HTTP സ്ട്രീമിങ്ങിനായി തെറ്റായ കണ്‍റ്റൈനര്‍ ഫോര്‍മാറ്റ്"
 
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:297
 msgid ""
@@ -21614,11 +21614,11 @@ msgstr "[പ്രദര്‍ശിപ്പിക്കുക]"
 
 #: modules/gui/ncurses.c:990
 msgid " h,H                    Show/Hide help box"
-msgstr "h,H                  സഹായപ്പെട്ടി കാണിക്കുക/ഒളിപ്പിക്കുക"
+msgstr " h,H                  സഹായപ്പെട്ടി കാണിക്കുക/ഒളിപ്പിക്കുക"
 
 #: modules/gui/ncurses.c:991
 msgid " i                      Show/Hide info box"
-msgstr "i                     വിവരപെട്ടി കാണിക്കുക/ഒളിപ്പിക്കുക"
+msgstr " i                     വിവരപെട്ടി കാണിക്കുക/ഒളിപ്പിക്കുക"
 
 #: modules/gui/ncurses.c:992
 msgid " M                      Show/Hide metadata box"
@@ -21662,7 +21662,7 @@ msgstr " q, Q, Esc              നിര്‍ത്തിപ്പോകുക
 
 #: modules/gui/ncurses.c:1006
 msgid " s                      Stop"
-msgstr "എസ്                     അവസാനിപ്പിക്കുക"
+msgstr " എസ്                     അവസാനിപ്പിക്കുക"
 
 #: modules/gui/ncurses.c:1007
 msgid " <space>                Pause/Play"
@@ -21708,7 +21708,7 @@ msgstr " a, z                   ശബ്ദം ഉയര്‍ത്തുക/�
 
 #: modules/gui/ncurses.c:1018
 msgid " m                      Mute"
-msgstr "എം                      നിശബ്ദമാക്കുക"
+msgstr " എം                      നിശബ്ദമാക്കുക"
 
 #. xgettext: You can use ↑ and ↓ characters
 #: modules/gui/ncurses.c:1020
@@ -21718,12 +21718,12 @@ msgstr " <up>,<down>           പെട്ടിയിലൂടെ വരി �
 #. xgettext: You can use ⇞ and ⇟ characters
 #: modules/gui/ncurses.c:1022
 msgid " <pageup>,<pagedown>    Navigate through the box page by page"
-msgstr "<pageup>,<pagedown>    പെട്ടിയിലൂടെ താളുകളോരോന്നായി നാവിഗേറ്റ് ചെയ്യപ്പെടുന്നു"
+msgstr " <pageup>,<pagedown>    പെട്ടിയിലൂടെ താളുകളോരോന്നായി നാവിഗേറ്റ് ചെയ്യപ്പെടുന്നു"
 
 #. xgettext: You can use ↖ and ↘ characters
 #: modules/gui/ncurses.c:1024
 msgid " <start>,<end>          Navigate to start/end of box"
-msgstr "<start>,<end>          പെട്ടിയുടെ ആരംഭം/അവസാനം എന്നതിലേയ്ക്ക് നാവിഗേറ്റ് ചെയ്യുക"
+msgstr " <start>,<end>          പെട്ടിയുടെ ആരംഭം/അവസാനം എന്നതിലേയ്ക്ക് നാവിഗേറ്റ് ചെയ്യുക"
 
 #: modules/gui/ncurses.c:1028
 msgid "[Equalizer]"
@@ -21759,7 +21759,7 @@ msgstr " o                      ശീര്‍ഷകത്തിന് അന�
 
 #: modules/gui/ncurses.c:1041
 msgid " O                      Reverse order Playlist by title"
-msgstr "O                      ശീര്‍ഷകത്തിന് അനുസരിച്ചുള്ള പ്ലേലിസ്റ്റിന്റെ പ്രതിലോമ ക്രമം"
+msgstr " O                      ശീര്‍ഷകത്തിന് അനുസരിച്ചുള്ള പ്ലേലിസ്റ്റിന്റെ പ്രതിലോമ ക്രമം"
 
 #: modules/gui/ncurses.c:1042
 msgid " g                      Go to the current playing item"
@@ -21775,7 +21775,7 @@ msgstr " ;                      അടുത്ത ഇനത്തിനായ�
 
 #: modules/gui/ncurses.c:1045
 msgid " A                      Add an entry"
-msgstr "എ                      എന്‍ട്രി കൂട്ടിച്ചേര്‍ക്കുക"
+msgstr " എ                      എന്‍ട്രി കൂട്ടിച്ചേര്‍ക്കുക"
 
 #. xgettext: You can use ⌫ character to translate <backspace>
 #: modules/gui/ncurses.c:1047
@@ -21796,11 +21796,11 @@ msgstr " <enter>                പ്ലേലിസ്റ്റിലേയ്
 
 #: modules/gui/ncurses.c:1055
 msgid " <space>                Add the selected directory to the playlist"
-msgstr "<space>                പ്ലേലിസ്റ്റിലേയ്ക്ക് തിരഞ്ഞെടുത്ത ഡയറക്ടറി ചേര്‍ക്കുക"
+msgstr " <space>                പ്ലേലിസ്റ്റിലേയ്ക്ക് തിരഞ്ഞെടുത്ത ഡയറക്ടറി ചേര്‍ക്കുക"
 
 #: modules/gui/ncurses.c:1056
 msgid " .                      Show/Hide hidden files"
-msgstr " .                      ഗുപ്ത ഫയലുകള്‍ കാണിക്കുക/ഒളിപ്പിക്കുക "
+msgstr " .                      ഗുപ്ത ഫയലുകള്‍ കാണിക്കുക/ഒളിപ്പിക്കുക"
 
 #: modules/gui/ncurses.c:1060
 msgid "[Player]"
@@ -21839,25 +21839,25 @@ msgstr ""
 #: modules/gui/ncurses.c:1241
 #, c-format
 msgid " Source   : %s"
-msgstr "സ്രോതസ്സ്   : %s"
+msgstr " സ്രോതസ്സ്   : %s"
 
 #: modules/gui/ncurses.c:1271
 #, c-format
 msgid " Position : %s/%s"
-msgstr "സ്ഥാനം : %s/%s"
+msgstr " സ്ഥാനം : %s/%s"
 
 #: modules/gui/ncurses.c:1276
 msgid " Volume   : Mute"
-msgstr "ശബ്ദം   : മ്യൂട്ട്"
+msgstr " ശബ്ദം   : മ്യൂട്ട്"
 
 #: modules/gui/ncurses.c:1277
 #, c-format
 msgid " Volume   : %3ld%%"
-msgstr "വോളിയം  : %3ld%%"
+msgstr " വോളിയം  : %3ld%%"
 
 #: modules/gui/ncurses.c:1277
 msgid " Volume   : ----"
-msgstr "ഒച്ച  : ----"
+msgstr " ഒച്ച  : ----"
 
 #: modules/gui/ncurses.c:1286
 #, c-format
@@ -21872,7 +21872,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr "ഉറവിടം: <നിലവില്‍ ഇനങ്ങള്‍ ഇല്ല>"
+msgstr " ഉറവിടം: <നിലവില്‍ ഇനങ്ങള്‍ ഇല്ല>"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -23238,7 +23238,7 @@ msgstr "ഓഡിയോ വിരലടയാള പ്രക്രിയ ഉപ
 
 #: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:159
 msgid "Comments"
-msgstr "അഭിപ്രായങ്ങള്‍ "
+msgstr "അഭിപ്രായങ്ങള്‍"
 
 #: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:269
 msgid "Not editing a file"
@@ -23383,7 +23383,7 @@ msgstr "ലോഗ് ഫയലുകളെ സംരക്ഷിക്കുന�
 #: modules/gui/qt/dialogs/messages/messages.cpp:361
 #, fuzzy
 msgid "Texts/Logs (*.log *.txt);; All (*.*)"
-msgstr "ടെക്സ്റ്റുകള്‍/ലോഗുകള്‍ (*.log *.txt);; എല്ലാം(*.*) "
+msgstr "ടെക്സ്റ്റുകള്‍/ലോഗുകള്‍ (*.log *.txt);; എല്ലാം(*.*)"
 
 #: modules/gui/qt/dialogs/messages/messages.cpp:367
 msgid "Application"
@@ -26364,7 +26364,7 @@ msgstr "ഈ മക്സര്‍ കാണ്മാനില്ല. ഈ പ്�
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:802
 msgid " Profile Name Missing"
-msgstr "പ്രൊഫൈല്‍ നാമം കാണ്മാനില്ല"
+msgstr " പ്രൊഫൈല്‍ നാമം കാണ്മാനില്ല"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:803
 msgid "You must set a name for the profile."
@@ -26712,7 +26712,7 @@ msgstr "ആവര്‍ത്തിക്കുന്ന കാലതാമസ�
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:104
 msgid " days"
-msgstr "ദിനങ്ങള്‍"
+msgstr " ദിനങ്ങള്‍"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:123
 msgid "I&mport"
@@ -26741,11 +26741,11 @@ msgstr "മാറ്റുക"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:506
 msgid "Broadcast: "
-msgstr "ബ്രോഡ്കാസ്റ്റ്:"
+msgstr "ബ്രോഡ്കാസ്റ്റ്: "
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 msgid "Schedule: "
-msgstr "ഷെഡ്യുള്‍:"
+msgstr "ഷെഡ്യുള്‍: "
 
 #: modules/gui/qt/maininterface/mainctx.cpp:1193
 msgid "Paste from clipboard"
@@ -30562,7 +30562,7 @@ msgstr "ഒരു സ്കിന്ന് ചെയ്യപ്പെട്ട 
 
 #: modules/gui/skins2/src/skin_main.cpp:490
 msgid "Display video in a skinned window if any"
-msgstr "ഒരു സ്കിന്ന് ചെയ്യപ്പെട്ട വിന്‍ഡോയില്‍ വീഡിയോ കാണിക്കുക, അങ്ങനെ ഉണ്ടെങ്കില്‍ "
+msgstr "ഒരു സ്കിന്ന് ചെയ്യപ്പെട്ട വിന്‍ഡോയില്‍ വീഡിയോ കാണിക്കുക, അങ്ങനെ ഉണ്ടെങ്കില്‍"
 
 #: modules/gui/skins2/src/skin_main.cpp:492
 msgid ""
@@ -31823,11 +31823,11 @@ msgstr ""
 
 #: modules/misc/audioscrobbler.c:118
 msgid "The username of your last.fm account"
-msgstr "നിങ്ങളുടെ last.fm അക്കൌണ്ടിന്റെ ഉപയോക്തനാമം "
+msgstr "നിങ്ങളുടെ last.fm അക്കൌണ്ടിന്റെ ഉപയോക്തനാമം"
 
 #: modules/misc/audioscrobbler.c:120
 msgid "The password of your last.fm account"
-msgstr "നിങ്ങളുടെ last.fm അക്കൌണ്ടിന്റെ പാസ്സ്വേര്‍ഡ് "
+msgstr "നിങ്ങളുടെ last.fm അക്കൌണ്ടിന്റെ പാസ്സ്വേര്‍ഡ്"
 
 #: modules/misc/audioscrobbler.c:121
 msgid "Scrobbler URL"
@@ -32925,12 +32925,12 @@ msgstr ""
 #: modules/spu/common.h:27 modules/stream_out/mosaic_bridge.c:700
 #: share/lua/http/dialogs/mosaic_window.html:100
 msgid "X offset"
-msgstr "ഒഫ്സെറ്റ് "
+msgstr "ഒഫ്സെറ്റ്"
 
 #: modules/spu/common.h:28 modules/stream_out/mosaic_bridge.c:704
 #: share/lua/http/dialogs/mosaic_window.html:118
 msgid "Y offset"
-msgstr "ഒഫ്സെറ്റ് "
+msgstr "ഒഫ്സെറ്റ്"
 
 #: modules/spu/common.h:29
 msgid "X offset, from top-left, or from relative position."
@@ -34408,7 +34408,7 @@ msgstr ""
 #: modules/stream_out/standard.c:54
 #, fuzzy
 msgid "Filename for stream (helper setting for dst)"
-msgstr "സ്ട്രീമിനുള്ള ഫയല്‍നാമം (dstയ്ക്ക് വേണ്ടിയുള്ള സഹായി ക്രമീകരണം) "
+msgstr "സ്ട്രീമിനുള്ള ഫയല്‍നാമം (dstയ്ക്ക് വേണ്ടിയുള്ള സഹായി ക്രമീകരണം)"
 
 #: modules/stream_out/standard.c:56
 #, fuzzy
@@ -34461,7 +34461,7 @@ msgstr "വീഡിയോ ബിറ്റ്റേറ്റ്"
 
 #: modules/stream_out/transcode/transcode.c:54
 msgid "Target bitrate of the transcoded video stream."
-msgstr "ട്രാന്‍കോഡ് ചെയ്യപ്പെട്ട വീഡിയോ സ്ട്രീമിന്റെ ലക്ഷ്യ ബിറ്റ്നിരക്ക്. "
+msgstr "ട്രാന്‍കോഡ് ചെയ്യപ്പെട്ട വീഡിയോ സ്ട്രീമിന്റെ ലക്ഷ്യ ബിറ്റ്നിരക്ക്."
 
 #: modules/stream_out/transcode/transcode.c:55
 msgid "Video scaling"
@@ -34544,7 +34544,7 @@ msgstr "ഓഡിയോ ബിറ്റ്റേറ്റ്"
 
 #: modules/stream_out/transcode/transcode.c:93
 msgid "Target bitrate of the transcoded audio stream."
-msgstr "ട്രാന്‍കോഡ് ചെയ്യപ്പെട്ട വീഡിയോ സ്ട്രീമിന്റെ ലക്ഷ്യ ബിറ്റ്നിരക്ക്. "
+msgstr "ട്രാന്‍കോഡ് ചെയ്യപ്പെട്ട വീഡിയോ സ്ട്രീമിന്റെ ലക്ഷ്യ ബിറ്റ്നിരക്ക്."
 
 #: modules/stream_out/transcode/transcode.c:96
 msgid ""
@@ -34823,7 +34823,7 @@ msgstr "വീഡിയോ അരിക്കല്‍ വീഡിയോ ഫി
 #: modules/video_chroma/grey_yuv.c:55 modules/video_chroma/i422_i420.c:56
 #: modules/video_chroma/yuy2_i420.c:57 modules/video_chroma/yuy2_i422.c:57
 msgid "Conversions from "
-msgstr "പരിവര്‍ത്തനങ്ങള്‍ നിന്ന്"
+msgstr "പരിവര്‍ത്തനങ്ങള്‍ നിന്ന് "
 
 #: modules/video_chroma/i420_nv12.c:239
 msgid "YUV planar to semiplanar conversions"
@@ -35369,7 +35369,7 @@ msgstr "സ്ട്രീമിങ്ങിന് ഉപയോഗിക്ക�
 
 #: modules/video_filter/deinterlace/deinterlace.c:262
 msgid "Phosphor chroma mode for 4:2:0 input"
-msgstr " 4:2:0 ഇന്‍പുട്ടിന് വേണ്ടിയുള്ള ഫോസ്ഫര്‍ ക്രോമ മോഡ്"
+msgstr "4:2:0 ഇന്‍പുട്ടിന് വേണ്ടിയുള്ള ഫോസ്ഫര്‍ ക്രോമ മോഡ്"
 
 #: modules/video_filter/deinterlace/deinterlace.c:263
 msgid ""
@@ -36396,7 +36396,7 @@ msgstr "ഇജിഎല്‍"
 
 #: modules/video_output/opengl/egl.c:893
 msgid "EGL extension for OpenGL"
-msgstr "ഓപ്പണ്‍ജിഎല്‍നായുള്ള ഇജിഎല്‍ എക്സ്റ്റന്‍ഷന്‍ "
+msgstr "ഓപ്പണ്‍ജിഎല്‍നായുള്ള ഇജിഎല്‍ എക്സ്റ്റന്‍ഷന്‍"
 
 #: modules/video_output/opengl/vout_helper.h:35
 msgid "Open GL/GLES hardware interop"
@@ -36656,7 +36656,7 @@ msgstr "ജിപിയു അഫിനിറ്റി"
 #: modules/video_output/win32/wgl.c:46
 #, fuzzy
 msgid "WGL extension for OpenGL"
-msgstr "ഓപ്പണ്‍ജിഎല്‍നായുള്ള ഇജിഎല്‍ എക്സ്റ്റന്‍ഷന്‍ "
+msgstr "ഓപ്പണ്‍ജിഎല്‍നായുള്ള ഇജിഎല്‍ എക്സ്റ്റന്‍ഷന്‍"
 
 #: modules/video_output/win32/window.c:878
 #: modules/video_output/win32/window.c:879
@@ -37307,7 +37307,7 @@ msgstr "താങ്കളുടെ വിഎല്‍എം കമാന്‍�
 
 #: share/lua/http/dialogs/batch_window.html:30
 msgid "#separate commands with a new line or a semi-colon"
-msgstr "#ഒരു പുതിയ വരി അല്ലെങ്കില്‍ ഒരു അര്‍ദ്ധ വിരാമം ഉള്ള പ്രത്യേക കമാന്‍ഡുകള്‍ "
+msgstr "#ഒരു പുതിയ വരി അല്ലെങ്കില്‍ ഒരു അര്‍ദ്ധ വിരാമം ഉള്ള പ്രത്യേക കമാന്‍ഡുകള്‍"
 
 #: share/lua/http/dialogs/browse_window.html:41
 #: share/lua/http/mobile_browse.html:48

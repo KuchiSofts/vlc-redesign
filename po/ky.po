@@ -20486,7 +20486,7 @@ msgstr ""
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:508
 #, fuzzy, c-format
 msgid "Volume: %i %%"
-msgstr " Булагы   : %s"
+msgstr "Булагы   : %s"
 
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:231
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:210
@@ -22338,7 +22338,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/messages/messages.cpp:361
 #, fuzzy
 msgid "Texts/Logs (*.log *.txt);; All (*.*)"
-msgstr "Тексттер / журналдар (*.log *.txt);; Баары (*.*) "
+msgstr "Тексттер / журналдар (*.log *.txt);; Баары (*.*)"
 
 #: modules/gui/qt/dialogs/messages/messages.cpp:367
 msgid "Application"
@@ -23801,7 +23801,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:193
 #, fuzzy
 msgid " dB"
-msgstr "дБ"
+msgstr " дБ"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207

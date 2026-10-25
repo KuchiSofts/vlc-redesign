@@ -5466,7 +5466,7 @@ msgstr "Installar"
 
 #: src/misc/update.c:739
 msgid "Update VLC media player"
-msgstr "Actualisar Reproductor de Media VLC "
+msgstr "Actualisar Reproductor de Media VLC"
 
 #: src/player/osd.c:169
 #, c-format
@@ -5738,7 +5738,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:71
 msgid "Armenian"
-msgstr "Armenio "
+msgstr "Armenio"
 
 #: src/text/iso-639_def.h:72
 msgid "Aromanian; Arumanian; Macedo-Romanian"
@@ -5838,7 +5838,7 @@ msgstr "Bashkir"
 
 #: src/text/iso-639_def.h:97
 msgid "Basque"
-msgstr "Basco "
+msgstr "Basco"
 
 #: src/text/iso-639_def.h:98
 msgid "Batak (Indonesia)"
@@ -6164,7 +6164,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:182
 msgid "Esperanto"
-msgstr "Esperanto "
+msgstr "Esperanto"
 
 #: src/text/iso-639_def.h:183
 msgid "Estonian"
@@ -6351,7 +6351,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:62
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:208
 msgid "Hebrew"
-msgstr "Hebreo "
+msgstr "Hebreo"
 
 #: src/text/iso-639_def.h:233
 msgid "Herero"
@@ -6389,7 +6389,7 @@ msgstr ""
 #: src/text/iso-639_def.h:241
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:64
 msgid "Hungarian"
-msgstr "Hungaro "
+msgstr "Hungaro"
 
 #: src/text/iso-639_def.h:242
 msgid "Hupa"
@@ -6434,7 +6434,7 @@ msgstr ""
 #: src/text/iso-639_def.h:252
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:65
 msgid "Indonesian"
-msgstr "Indonesiano "
+msgstr "Indonesiano"
 
 #: src/text/iso-639_def.h:253
 msgid "Ingush"
@@ -6462,7 +6462,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:261
 msgid "Irish"
-msgstr "Irlandese "
+msgstr "Irlandese"
 
 #: src/text/iso-639_def.h:262
 msgid "Iroquoian languages"
@@ -7313,7 +7313,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:473
 msgid "Slovak"
-msgstr "Slovaco "
+msgstr "Slovaco"
 
 #: src/text/iso-639_def.h:474
 msgid "Slovenian"
@@ -7622,7 +7622,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:551
 msgid "Welsh"
-msgstr "Gallese "
+msgstr "Gallese"
 
 #: src/text/iso-639_def.h:552
 msgid "Wolof"
@@ -7690,7 +7690,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:568
 msgid "Zulu"
-msgstr "Zulu "
+msgstr "Zulu"
 
 #: src/text/iso-639_def.h:569
 msgid "Zuni"
@@ -22643,7 +22643,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:76
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:203
 msgid "Spanish"
-msgstr "Espaniol "
+msgstr "Espaniol"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:94
 msgid "System language"

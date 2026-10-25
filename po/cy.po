@@ -526,7 +526,7 @@ msgstr "Hidlyddion Sain"
 #: src/audio_output/output.c:385 src/libvlc-module.c:1663
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:180
 msgid "Replay gain"
-msgstr "Ailchwarae "
+msgstr "Ailchwarae"
 
 #: src/audio_output/output.c:400 modules/gui/macosx/menus/VLCMainMenu.m:425
 #: modules/gui/macosx/menus/VLCMainMenu.m:426
@@ -729,12 +729,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (rhagosodedig wedi'i alluogi)"
+msgstr "(rhagosodedig wedi'i alluogi)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (rhagosodedig wedi'i analluogi)"
+msgstr "(rhagosodedig wedi'i analluogi)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -8506,7 +8506,7 @@ msgstr "DeckLink"
 
 #: modules/access/decklink.cpp:114
 msgid "Blackmagic DeckLink SDI input"
-msgstr "Mewnbwn DeckLink SDI gan Blackmagic "
+msgstr "Mewnbwn DeckLink SDI gan Blackmagic"
 
 #: modules/access/decklink.cpp:133 modules/stream_out/sdi/sdiout.cpp:73
 #: modules/video_output/decklink.cpp:121
@@ -13355,7 +13355,7 @@ msgstr "Datgodiwr fideo PNG"
 #: modules/codec/bpg.c:48
 #, fuzzy
 msgid "BPG image decoder"
-msgstr "Datgodydd "
+msgstr "Datgodydd"
 
 #: modules/codec/cc.c:57 modules/codec/zvbi.c:64
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:443
@@ -13713,7 +13713,7 @@ msgstr ""
 
 #: modules/codec/jpeg.c:103
 msgid "JPEG image decoder"
-msgstr "Datgodydd "
+msgstr "Datgodydd"
 
 #: modules/codec/jpeg.c:113
 msgid "JPEG video encoder"
@@ -15873,7 +15873,7 @@ msgstr "| clirio . . . . . . . . . . . . . . clirio'r rhestr chwarae"
 
 #: modules/control/cli/cli.c:148
 msgid "| status . . . . . . . . . . . current playlist status"
-msgstr "| statws . . . . . . . . . . . statws y rhestr chwarae "
+msgstr "| statws . . . . . . . . . . . statws y rhestr chwarae"
 
 #: modules/control/cli/cli.c:149
 msgid "| title [X]  . . . . . . set/get title in current item"
@@ -21206,7 +21206,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr " Ffynhonnell: <dim eitem ar hyn o'r bryd> "
+msgstr " Ffynhonnell: <dim eitem ar hyn o'r bryd>"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -22709,7 +22709,7 @@ msgstr "Cadw ffeil log fel..."
 #: modules/gui/qt/dialogs/messages/messages.cpp:361
 #, fuzzy
 msgid "Texts/Logs (*.log *.txt);; All (*.*)"
-msgstr "Testun / Log (*.log *.txt);; Holl (*.*) "
+msgstr "Testun / Log (*.log *.txt);; Holl (*.*)"
 
 #: modules/gui/qt/dialogs/messages/messages.cpp:367
 msgid "Application"
@@ -24180,7 +24180,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:193
 #, fuzzy
 msgid " dB"
-msgstr "dB"
+msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207
@@ -26057,11 +26057,11 @@ msgstr "Newid"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:506
 msgid "Broadcast: "
-msgstr "Darllediad:"
+msgstr "Darllediad: "
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 msgid "Schedule: "
-msgstr "Amserlen:"
+msgstr "Amserlen: "
 
 #: modules/gui/qt/maininterface/mainctx.cpp:1193
 msgid "Paste from clipboard"
@@ -33078,7 +33078,7 @@ msgstr "Uchder fideo allbwn"
 
 #: modules/stream_out/mosaic_bridge.c:683
 msgid "Sample aspect ratio"
-msgstr "Sampl cymhareb agwedd "
+msgstr "Sampl cymhareb agwedd"
 
 #: modules/stream_out/mosaic_bridge.c:685
 msgid "Sample aspect ratio of the destination (1:1, 3:4, 2:3)."
@@ -36415,7 +36415,7 @@ msgstr "Cyfrwng mewnbwn"
 
 #: share/lua/http/dialogs/create_stream.html:367
 msgid "Error:"
-msgstr "Gwall: "
+msgstr "Gwall:"
 
 #: share/lua/http/dialogs/create_stream.html:367
 msgid "Sample ui-state-error style."
@@ -36465,7 +36465,7 @@ msgstr "Cuddio / Dangos y Llyfrgell"
 
 #: share/lua/http/index.html:234
 msgid "Hide / Show Viewer"
-msgstr "Cuddio / Dangos "
+msgstr "Cuddio / Dangos"
 
 #: share/lua/http/index.html:235
 msgid "Manage Streams"

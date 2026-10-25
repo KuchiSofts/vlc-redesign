@@ -20763,7 +20763,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1241
 #, c-format
 msgid " Source   : %s"
-msgstr "سەرچاوە   : %s"
+msgstr " سەرچاوە   : %s"
 
 #: modules/gui/ncurses.c:1271
 #, c-format
@@ -20796,7 +20796,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr "ئەم دانەیە دووبارە بکەوە"
+msgstr " ئەم دانەیە دووبارە بکەوە"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -25613,7 +25613,7 @@ msgstr "گۆڕین"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:506
 msgid "Broadcast: "
-msgstr "بڵاوکردنەوە:"
+msgstr "بڵاوکردنەوە: "
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 msgid "Schedule: "
@@ -33373,7 +33373,7 @@ msgstr ""
 #: modules/video_chroma/grey_yuv.c:55 modules/video_chroma/i422_i420.c:56
 #: modules/video_chroma/yuy2_i420.c:57 modules/video_chroma/yuy2_i422.c:57
 msgid "Conversions from "
-msgstr "گۆڕین لە"
+msgstr "گۆڕین لە "
 
 #: modules/video_chroma/i420_nv12.c:239
 msgid "YUV planar to semiplanar conversions"

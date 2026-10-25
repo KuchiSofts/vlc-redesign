@@ -20871,7 +20871,7 @@ msgstr "[Dîmen]"
 #: modules/gui/ncurses.c:990
 #, fuzzy
 msgid " h,H                    Show/Hide help box"
-msgstr "     s           Rawestîne"
+msgstr " s           Rawestîne"
 
 #: modules/gui/ncurses.c:991
 msgid " i                      Show/Hide info box"
@@ -20880,7 +20880,7 @@ msgstr ""
 #: modules/gui/ncurses.c:992
 #, fuzzy
 msgid " M                      Show/Hide metadata box"
-msgstr "     s           Rawestîne"
+msgstr " s           Rawestîne"
 
 #: modules/gui/ncurses.c:993
 msgid " L                      Show/Hide messages box"
@@ -20905,7 +20905,7 @@ msgstr ""
 #: modules/gui/ncurses.c:998
 #, fuzzy
 msgid " Esc                    Close Add/Search entry"
-msgstr "Ketanekê Lê Zêde Bike"
+msgstr " Ketanekê Lê Zêde Bike"
 
 #: modules/gui/ncurses.c:999
 msgid " Ctrl-l                 Refresh the screen"
@@ -20919,17 +20919,17 @@ msgstr "Giştî"
 #: modules/gui/ncurses.c:1005
 #, fuzzy
 msgid " q, Q, Esc              Quit"
-msgstr "     s           Rawestîne"
+msgstr " s           Rawestîne"
 
 #: modules/gui/ncurses.c:1006
 #, fuzzy
 msgid " s                      Stop"
-msgstr "     s           Rawestîne"
+msgstr " s           Rawestîne"
 
 #: modules/gui/ncurses.c:1007
 #, fuzzy
 msgid " <space>                Pause/Play"
-msgstr "Ketanekê Lê Zêde Bike"
+msgstr " Ketanekê Lê Zêde Bike"
 
 #: modules/gui/ncurses.c:1008
 msgid " f                      Toggle Fullscreen"
@@ -20938,17 +20938,17 @@ msgstr ""
 #: modules/gui/ncurses.c:1009
 #, fuzzy
 msgid " c                      Cycle through audio tracks"
-msgstr "Ketanekê Lê Zêde Bike"
+msgstr " Ketanekê Lê Zêde Bike"
 
 #: modules/gui/ncurses.c:1010
 #, fuzzy
 msgid " v                      Cycle through subtitles tracks"
-msgstr "     s           Rawestîne"
+msgstr " s           Rawestîne"
 
 #: modules/gui/ncurses.c:1011
 #, fuzzy
 msgid " b                      Cycle through video tracks"
-msgstr "Ketanekê Lê Zêde Bike"
+msgstr " Ketanekê Lê Zêde Bike"
 
 #: modules/gui/ncurses.c:1012
 msgid " n, p                   Next/Previous playlist item"
@@ -20971,12 +20971,12 @@ msgstr ""
 #: modules/gui/ncurses.c:1017
 #, fuzzy
 msgid " a, z                   Volume Up/Down"
-msgstr "     s           Rawestîne"
+msgstr " s           Rawestîne"
 
 #: modules/gui/ncurses.c:1018
 #, fuzzy
 msgid " m                      Mute"
-msgstr "     s           Rawestîne"
+msgstr " s           Rawestîne"
 
 #. xgettext: You can use ↑ and ↓ characters
 #: modules/gui/ncurses.c:1020
@@ -21036,17 +21036,17 @@ msgstr ""
 #: modules/gui/ncurses.c:1043
 #, fuzzy
 msgid " /                      Look for an item"
-msgstr "Ketanekê Lê Zêde Bike"
+msgstr " Ketanekê Lê Zêde Bike"
 
 #: modules/gui/ncurses.c:1044
 #, fuzzy
 msgid " ;                      Look for the next item"
-msgstr "Ketanekê Lê Zêde Bike"
+msgstr " Ketanekê Lê Zêde Bike"
 
 #: modules/gui/ncurses.c:1045
 #, fuzzy
 msgid " A                      Add an entry"
-msgstr "Ketanekê Lê Zêde Bike"
+msgstr " Ketanekê Lê Zêde Bike"
 
 #. xgettext: You can use ⌫ character to translate <backspace>
 #: modules/gui/ncurses.c:1047
@@ -21056,7 +21056,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1048
 #, fuzzy
 msgid " e                      Eject (if stopped)"
-msgstr "     s           Rawestîne"
+msgstr " s           Rawestîne"
 
 #: modules/gui/ncurses.c:1052
 msgid "[Filebrowser]"
@@ -21117,22 +21117,22 @@ msgstr " Çavkanî   : %s"
 #: modules/gui/ncurses.c:1271
 #, fuzzy, c-format
 msgid " Position : %s/%s"
-msgstr "Derawa"
+msgstr " Derawa"
 
 #: modules/gui/ncurses.c:1276
 #, fuzzy
 msgid " Volume   : Mute"
-msgstr "Deng   : %i%%"
+msgstr " Deng   : %i%%"
 
 #: modules/gui/ncurses.c:1277
 #, fuzzy, c-format
 msgid " Volume   : %3ld%%"
-msgstr "Deng   : %i%%"
+msgstr " Deng   : %i%%"
 
 #: modules/gui/ncurses.c:1277
 #, fuzzy
 msgid " Volume   : ----"
-msgstr "Deng   : %i%%"
+msgstr " Deng   : %i%%"
 
 #: modules/gui/ncurses.c:1286
 #, c-format
@@ -25704,12 +25704,12 @@ msgstr "Peldank"
 #: modules/gui/qt/dialogs/sout/sout_widgets.cpp:49
 #, fuzzy
 msgid "Source"
-msgstr " Çavkanî   : %s"
+msgstr "Çavkanî   : %s"
 
 #: modules/gui/qt/dialogs/sout/sout_widgets.cpp:52
 #, fuzzy
 msgid "Source:"
-msgstr " Çavkanî   : %s"
+msgstr "Çavkanî   : %s"
 
 #: modules/gui/qt/dialogs/sout/sout_widgets.cpp:61
 #, fuzzy
@@ -26039,7 +26039,7 @@ msgstr "Biguherîne"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:506
 msgid "Broadcast: "
-msgstr "Weşan:"
+msgstr "Weşan: "
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 msgid "Schedule: "

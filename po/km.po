@@ -755,12 +755,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (លំនាំដើម បើក)"
+msgstr "(លំនាំដើម បើក)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (លំនាំដើម បិទ)"
+msgstr "(លំនាំដើម បិទ)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -2058,7 +2058,7 @@ msgstr "ដាក់​បង្អួច​វីដេអូ​នៅ​លើ
 #: src/libvlc-module.c:348
 #, fuzzy
 msgid "Enable wallpaper mode"
-msgstr "បើក​របៀប​ផ្ទាំង​រូបភាព "
+msgstr "បើក​របៀប​ផ្ទាំង​រូបភាព"
 
 #: src/libvlc-module.c:350
 msgid ""
@@ -4510,7 +4510,7 @@ msgstr "ជ្រើស​គ្រាប់ចុច​ដើម្បី​ច
 
 #: src/libvlc-module.c:1472
 msgid "Subtitle sync / synchronize audio & subtitle timestamps"
-msgstr "សមកាលកម្ម​ចំណងជើង​រង/ធ្វើ​សមកាលកម្ម​ត្រា​ពេលវេលា​ចំណងជើង​រង & អូឌីយ៉ូ "
+msgstr "សមកាលកម្ម​ចំណងជើង​រង/ធ្វើ​សមកាលកម្ម​ត្រា​ពេលវេលា​ចំណងជើង​រង & អូឌីយ៉ូ"
 
 #: src/libvlc-module.c:1473
 msgid "Select the key to synchronize bookmarked audio & subtitle timestamps."
@@ -11758,7 +11758,7 @@ msgstr "សេចក្ដី​ពណ៌នា​ចង្វាក់"
 #: modules/access_output/shout.c:83
 #, fuzzy
 msgid "Genre of the content."
-msgstr "ចង្វាក់​របស់​មាតិកា។ "
+msgstr "ចង្វាក់​របស់​មាតិកា។"
 
 #: modules/access_output/shout.c:85
 #, fuzzy
@@ -11773,12 +11773,12 @@ msgstr "URL ដែល​មាន​ព័ត៌មាន​អំពី​ស�
 #: modules/access_output/shout.c:93
 #, fuzzy
 msgid "Bitrate information of the transcoded stream."
-msgstr "ព័ត៌មាន​អត្រា​ប៊ីត​របស់​ស្ទ្រីម​បម្លែង​ត្រឡប់។ "
+msgstr "ព័ត៌មាន​អត្រា​ប៊ីត​របស់​ស្ទ្រីម​បម្លែង​ត្រឡប់។"
 
 #: modules/access_output/shout.c:96
 #, fuzzy
 msgid "Samplerate information of the transcoded stream."
-msgstr "ព័ត៌មាន​អត្រា​គំរូ​របស់​ស្ទ្រីម​បម្លែង​ត្រឡប់។ "
+msgstr "ព័ត៌មាន​អត្រា​គំរូ​របស់​ស្ទ្រីម​បម្លែង​ត្រឡប់។"
 
 #: modules/access_output/shout.c:98
 msgid "Number of channels"
@@ -11787,7 +11787,7 @@ msgstr "ចំនួន​ឆានែល"
 #: modules/access_output/shout.c:99
 #, fuzzy
 msgid "Number of channels information of the transcoded stream."
-msgstr "ចំនួន​ព័ត៌មាន​ឆានែល​របស់​ស្ទ្រីម​បម្លែង​ត្រឡប់។ "
+msgstr "ចំនួន​ព័ត៌មាន​ឆានែល​របស់​ស្ទ្រីម​បម្លែង​ត្រឡប់។"
 
 #: modules/access_output/shout.c:101
 msgid "Ogg Vorbis Quality"
@@ -11796,7 +11796,7 @@ msgstr "គុណភាព Ogg Vorbis"
 #: modules/access_output/shout.c:102
 #, fuzzy
 msgid "Ogg Vorbis Quality information of the transcoded stream."
-msgstr "ព័ត៌មាន​គុណភាព Ogg Vorbis របស់​ស្ទ្រីម​បម្លែង​ត្រឡប់។ "
+msgstr "ព័ត៌មាន​គុណភាព Ogg Vorbis របស់​ស្ទ្រីម​បម្លែង​ត្រឡប់។"
 
 #: modules/access_output/shout.c:104
 msgid "Stream public"
@@ -17529,7 +17529,7 @@ msgstr "ទំហំ​កញ្ចប់​ដែល​ត្រូវ​ឌិ
 msgid ""
 "Specify the size of the TS packet to decrypt. The decryption routines "
 "subtract the TS-header from the value before decrypting."
-msgstr "បញ្ជាក់​ទំហំ​​កញ្ចប់ TS ដែល​ត្រូវ​ឌិគ្រីប ។ ការ​ឌិគ្រីប​នឹង​ដក​បឋមកថា TS ចេញ​ពី​តម្លៃ មុន​ពេល​ឌិគ្រីប ។ "
+msgstr "បញ្ជាក់​ទំហំ​​កញ្ចប់ TS ដែល​ត្រូវ​ឌិគ្រីប ។ ការ​ឌិគ្រីប​នឹង​ដក​បឋមកថា TS ចេញ​ពី​តម្លៃ មុន​ពេល​ឌិគ្រីប ។"
 
 #: modules/demux/mpeg/ts.c:109
 msgid "Separate sub-streams"
@@ -21604,7 +21604,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr "ប្រភព ៖ <no current item> "
+msgstr " ប្រភព ៖ <no current item>"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -24591,7 +24591,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:193
 #, fuzzy
 msgid " dB"
-msgstr "dB"
+msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207
@@ -26462,11 +26462,11 @@ msgstr "ផ្លាស់ប្ដូរ"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:506
 msgid "Broadcast: "
-msgstr "ផ្សាយ ៖"
+msgstr "ផ្សាយ ៖ "
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 msgid "Schedule: "
-msgstr "កាលវិភាគ ៖"
+msgstr "កាលវិភាគ ៖ "
 
 #: modules/gui/qt/maininterface/mainctx.cpp:1193
 msgid "Paste from clipboard"
@@ -29601,7 +29601,7 @@ msgstr "កន្សោម​ធម្មតា​ដែល​បាន​ប្
 #: modules/gui/qt/qt.cpp:237
 #, fuzzy
 msgid "Selection of the starting mode and look"
-msgstr "ជម្រើស​នៃ​រូបរាង និង​របៀប​ចាប់ផ្ដើម "
+msgstr "ជម្រើស​នៃ​រូបរាង និង​របៀប​ចាប់ផ្ដើម"
 
 #: modules/gui/qt/qt.cpp:238
 msgid ""

@@ -1417,7 +1417,7 @@ msgstr ""
 #: src/libvlc-module.c:94
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:100
 msgid "Control interfaces"
-msgstr " Fōliga-fa'aali pūlea"
+msgstr "Fōliga-fa'aali pūlea"
 
 #: src/libvlc-module.c:96
 msgid "You can select control interfaces for VLC."
@@ -17896,7 +17896,7 @@ msgstr ""
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:421
 #, fuzzy
 msgid "Control external music players"
-msgstr " Fōliga-fa'aali pūlea"
+msgstr "Fōliga-fa'aali pūlea"
 
 #: modules/gui/macosx/main/macosx.m:108
 msgid "VLC will pause and resume supported music players on playback."
@@ -25213,7 +25213,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/sout/convert.cpp:163
 #, fuzzy
 msgid "Containers"
-msgstr " Fōliga-fa'aali pūlea"
+msgstr "Fōliga-fa'aali pūlea"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:52
 msgid "Profile"

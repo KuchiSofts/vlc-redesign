@@ -778,12 +778,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (ve výchozím nastavení zapnuto)"
+msgstr "(ve výchozím nastavení zapnuto)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (ve výchozím nastavení vypnuto)"
+msgstr "(ve výchozím nastavení vypnuto)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -3581,7 +3581,7 @@ msgstr "Modul proudových filtrů"
 #: src/libvlc-module.c:1115
 #, fuzzy
 msgid "Stream filters are used to modify the stream that is being read."
-msgstr "Stream filters are used to modify the stream that is being read. "
+msgstr "Stream filters are used to modify the stream that is being read."
 
 #: src/libvlc-module.c:1117
 #, fuzzy
@@ -3591,7 +3591,7 @@ msgstr "Modul proudových filtrů"
 #: src/libvlc-module.c:1119
 #, fuzzy
 msgid "Demux filters are used to modify/control the stream that is being read."
-msgstr "Stream filters are used to modify the stream that is being read. "
+msgstr "Stream filters are used to modify the stream that is being read."
 
 #: src/libvlc-module.c:1121
 msgid "Demux module"
@@ -12961,7 +12961,7 @@ msgstr ""
 
 #: modules/codec/aes3.c:49
 msgid "AES3/SMPTE 302M audio packetizer"
-msgstr "Paketizér zvuku AES3/SMPTE 302M "
+msgstr "Paketizér zvuku AES3/SMPTE 302M"
 
 #: modules/codec/aom.c:71 modules/gui/macosx/library/VLCLibraryDataTypes.m:204
 msgid "Main"
@@ -15882,7 +15882,7 @@ msgstr ""
 
 #: modules/codec/zvbi.c:68
 msgid "Teletext alignment"
-msgstr "Zarovnání teletextu "
+msgstr "Zarovnání teletextu"
 
 #: modules/codec/zvbi.c:70
 msgid ""
@@ -17344,7 +17344,7 @@ msgstr "Titulky teletextu: pro sluchově postižené"
 #: modules/demux/mpeg/ts_descriptions.h:30
 #, fuzzy
 msgid "Spoken subtitles for the visually impaired"
-msgstr "Titulky DVB: pro sluchově postižené "
+msgstr "Titulky DVB: pro sluchově postižené"
 
 #: modules/demux/mpeg/ts_descriptions.h:33
 #: modules/gui/macosx/menus/VLCMainMenu.m:474
@@ -19397,7 +19397,7 @@ msgstr ""
 #: modules/gui/macosx/panels/VLCInformationWindowController.m:202
 #: modules/gui/macosx/panels/VLCInformationWindowController.m:208
 msgid "Decoded blocks"
-msgstr "Dekódované bloky "
+msgstr "Dekódované bloky"
 
 #: modules/gui/macosx/panels/VLCInformationWindowController.m:203
 msgid "Displayed frames"
@@ -21018,7 +21018,7 @@ msgstr ""
 
 #: modules/gui/minimal_macosx/macosx.c:55
 msgid "Minimal Mac OS X interface"
-msgstr "Minimální rozhraní Mac OS X "
+msgstr "Minimální rozhraní Mac OS X"
 
 #: modules/gui/ncurses.c:75
 msgid "Filebrowser starting point"
@@ -21333,7 +21333,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr " Zdroj: <no current item> "
+msgstr " Zdroj: <no current item>"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -26288,7 +26288,7 @@ msgstr "Změnit"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:506
 msgid "Broadcast: "
-msgstr "Broadcast:"
+msgstr "Broadcast: "
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 msgid "Schedule: "
@@ -32090,7 +32090,7 @@ msgstr "Časový limit (ms)"
 #: modules/notify/notify.c:62
 #, fuzzy
 msgid "How long the notification will be displayed."
-msgstr "Doba zobrazení oznámení "
+msgstr "Doba zobrazení oznámení"
 
 #: modules/notify/notify.c:66
 msgid "Notify"

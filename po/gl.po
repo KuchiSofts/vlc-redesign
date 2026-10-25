@@ -775,12 +775,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (opción predeterminada activada)"
+msgstr "(opción predeterminada activada)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (opción predeterminada desactivada)"
+msgstr "(opción predeterminada desactivada)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -2108,7 +2108,7 @@ msgstr "Colocar sempre a xanela de vídeo por encima das outras xanelas."
 #: src/libvlc-module.c:348
 #, fuzzy
 msgid "Enable wallpaper mode"
-msgstr "Activar o modo de imaxe de fondo "
+msgstr "Activar o modo de imaxe de fondo"
 
 #: src/libvlc-module.c:350
 msgid ""
@@ -3332,7 +3332,7 @@ msgstr "Excedeuse o tempo de conexión para TCP"
 #: src/libvlc-module.c:937
 #, fuzzy
 msgid "Default TCP connection timeout (in milliseconds)."
-msgstr "Excedeuse o tempo de conexión TCP predeterminado (en milisegundos). "
+msgstr "Excedeuse o tempo de conexión TCP predeterminado (en milisegundos)."
 
 #: src/libvlc-module.c:939
 msgid "HTTP server address"
@@ -3695,7 +3695,7 @@ msgstr "Módulo de filtro de fluxo"
 #: src/libvlc-module.c:1115
 #, fuzzy
 msgid "Stream filters are used to modify the stream that is being read."
-msgstr "Os filtros de fluxo úsanse para modificar o fluxo que se está a ler. "
+msgstr "Os filtros de fluxo úsanse para modificar o fluxo que se está a ler."
 
 #: src/libvlc-module.c:1117
 #, fuzzy
@@ -3705,7 +3705,7 @@ msgstr "Módulo de filtro de fluxo"
 #: src/libvlc-module.c:1119
 #, fuzzy
 msgid "Demux filters are used to modify/control the stream that is being read."
-msgstr "Os filtros de fluxo úsanse para modificar o fluxo que se está a ler. "
+msgstr "Os filtros de fluxo úsanse para modificar o fluxo que se está a ler."
 
 #: src/libvlc-module.c:1121
 msgid "Demux module"
@@ -12033,7 +12033,7 @@ msgstr "Descrición de xénero"
 #: modules/access_output/shout.c:83
 #, fuzzy
 msgid "Genre of the content."
-msgstr "Xénero do contido. "
+msgstr "Xénero do contido."
 
 #: modules/access_output/shout.c:85
 #, fuzzy
@@ -12043,17 +12043,17 @@ msgstr "Descrición"
 #: modules/access_output/shout.c:86
 #, fuzzy
 msgid "URL with information about the stream or your channel."
-msgstr "Existe un URL con información sobre o fluxo na súa canle. "
+msgstr "Existe un URL con información sobre o fluxo na súa canle."
 
 #: modules/access_output/shout.c:93
 #, fuzzy
 msgid "Bitrate information of the transcoded stream."
-msgstr "Información de taxa de bits do fluxo transcodificado. "
+msgstr "Información de taxa de bits do fluxo transcodificado."
 
 #: modules/access_output/shout.c:96
 #, fuzzy
 msgid "Samplerate information of the transcoded stream."
-msgstr "Información sobre a taxa de mostras do fluxo transcodificado. "
+msgstr "Información sobre a taxa de mostras do fluxo transcodificado."
 
 #: modules/access_output/shout.c:98
 msgid "Number of channels"
@@ -12062,7 +12062,7 @@ msgstr "Número de canles"
 #: modules/access_output/shout.c:99
 #, fuzzy
 msgid "Number of channels information of the transcoded stream."
-msgstr "Información do número de canles do fluxo transcodificado. "
+msgstr "Información do número de canles do fluxo transcodificado."
 
 #: modules/access_output/shout.c:101
 msgid "Ogg Vorbis Quality"
@@ -12071,7 +12071,7 @@ msgstr "Calidade Ogg Vorbis"
 #: modules/access_output/shout.c:102
 #, fuzzy
 msgid "Ogg Vorbis Quality information of the transcoded stream."
-msgstr "Información sobre a calidade Ogg Vorbis do fluxo transcodificado. "
+msgstr "Información sobre a calidade Ogg Vorbis do fluxo transcodificado."
 
 #: modules/access_output/shout.c:104
 msgid "Stream public"
@@ -22121,7 +22121,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr " Fonte: <ningún elemento actual> "
+msgstr " Fonte: <ningún elemento actual>"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -22451,7 +22451,7 @@ msgstr "Actualizar"
 
 #: modules/gui/qt/dialogs/epg/epg.cpp:161
 msgid " (%1+ rated)"
-msgstr "(votado %1+)"
+msgstr " (votado %1+)"
 
 #: modules/gui/qt/dialogs/extended/audio_effects.cpp:319
 msgid "Open audio effects before changing them."
@@ -23633,7 +23633,7 @@ msgstr "Gardar o ficheiro de rexistro como…"
 #: modules/gui/qt/dialogs/messages/messages.cpp:361
 #, fuzzy
 msgid "Texts/Logs (*.log *.txt);; All (*.*)"
-msgstr "Textos / rexistros (*.log *.txt);; Todo (*.*) "
+msgstr "Textos / rexistros (*.log *.txt);; Todo (*.*)"
 
 #: modules/gui/qt/dialogs/messages/messages.cpp:367
 msgid "Application"
@@ -25113,7 +25113,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:193
 #, fuzzy
 msgid " dB"
-msgstr "dB"
+msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207
@@ -30143,7 +30143,7 @@ msgstr ""
 #: modules/gui/qt/qt.cpp:237
 #, fuzzy
 msgid "Selection of the starting mode and look"
-msgstr "Selección do modo de inicio e da aparencia gráfica "
+msgstr "Selección do modo de inicio e da aparencia gráfica"
 
 #: modules/gui/qt/qt.cpp:238
 msgid ""
@@ -32772,7 +32772,7 @@ msgstr "Tempo de espera (ms)"
 #: modules/notify/notify.c:62
 #, fuzzy
 msgid "How long the notification will be displayed."
-msgstr "Durante canto tempo se mostrarán as notificacións "
+msgstr "Durante canto tempo se mostrarán as notificacións"
 
 #: modules/notify/notify.c:66
 msgid "Notify"

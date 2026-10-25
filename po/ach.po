@@ -10477,7 +10477,7 @@ msgstr ""
 
 #: modules/access/v4l2/v4l2.c:50 modules/stream_out/standard.c:71
 msgid "Standard"
-msgstr "Rwom "
+msgstr "Rwom"
 
 #: modules/access/v4l2/v4l2.c:52
 msgid "Video standard (Default, SECAM, PAL, or NTSC)."
@@ -11364,7 +11364,7 @@ msgstr ""
 #: modules/access_output/shout.c:72
 #, fuzzy
 msgid "Stream MP3"
-msgstr "Makato kore kore "
+msgstr "Makato kore kore"
 
 #: modules/access_output/shout.c:73
 msgid ""
@@ -17780,7 +17780,7 @@ msgstr ""
 #: modules/gui/qt/menus/menus.cpp:972
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1141
 msgid "Stream"
-msgstr "Makato kore kore "
+msgstr "Makato kore kore"
 
 #: modules/gui/macosx/library/media-source/VLCMediaSourceCollectionViewItem.m:91
 msgid "Disk"
@@ -17931,7 +17931,7 @@ msgstr ""
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:453
 #: modules/gui/qt/qt.cpp:184
 msgid "Resize interface to the native video size"
-msgstr "Yik kite me neno kit cal anena mamegi "
+msgstr "Yik kite me neno kit cal anena mamegi"
 
 #: modules/gui/macosx/main/macosx.m:90 modules/gui/qt/qt.cpp:185
 msgid ""
@@ -18321,7 +18321,7 @@ msgstr "Med dwone"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:421
 msgid "Decrease Volume"
-msgstr "Dwok Dwone "
+msgstr "Dwok Dwone"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:423
 #: modules/gui/macosx/menus/VLCMainMenu.m:424
@@ -19803,7 +19803,7 @@ msgstr ""
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1527
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1531
 msgid "This combination is already taken by \"%@\"."
-msgstr "Man ma gicoko \"%@\" otyeko kwanyo oko. "
+msgstr "Man ma gicoko \"%@\" otyeko kwanyo oko."
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1598
 msgid "Unban Folder"
@@ -20122,7 +20122,7 @@ msgstr ""
 
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:341
 msgid "Font Properties"
-msgstr " Kit Yore me Coc"
+msgstr "Kit Yore me Coc"
 
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:342
 msgid "Subtitle File"
@@ -22695,7 +22695,7 @@ msgstr "Gin manyen pe ononge"
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:942
 #, fuzzy
 msgid "Version %1"
-msgstr "Cik "
+msgstr "Cik"
 
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:970
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:76
@@ -22713,7 +22713,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:1150
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:1253
 msgid "Version"
-msgstr "Cik "
+msgstr "Cik"
 
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:1292
 msgid "Files"
@@ -23300,7 +23300,7 @@ msgstr "Yot"
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:75
 msgid "Switch to simple preferences view"
-msgstr "Dok oko i neno mayot "
+msgstr "Dok oko i neno mayot"
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:77
 msgid "Switch to full preferences view"
@@ -23317,7 +23317,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:89
 msgid "Save and close the dialog"
-msgstr "Gwok ki i ceg canduk ne "
+msgstr "Gwok ki i ceg canduk ne"
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:91
 msgid "&Reset Preferences"
@@ -23867,7 +23867,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:193
 #, fuzzy
 msgid " dB"
-msgstr "dB"
+msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207
@@ -28774,7 +28774,7 @@ msgstr "Cak VLC kwede cal me Systray keken"
 #: modules/gui/qt/qt.cpp:181
 #, fuzzy
 msgid "VLC will start with just an icon in your taskbar."
-msgstr "VLC obi cake kwede cal ma iyi bao me gitic mamegi "
+msgstr "VLC obi cake kwede cal ma iyi bao me gitic mamegi"
 
 #: modules/gui/qt/qt.cpp:190
 msgid "Show playing item name in window title"

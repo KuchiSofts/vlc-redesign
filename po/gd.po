@@ -746,12 +746,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (a' bhun-roghainn an comas)"
+msgstr "(a' bhun-roghainn an comas)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (a' bhun-roghainn à comas)"
+msgstr "(a' bhun-roghainn à comas)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -2028,7 +2028,7 @@ msgstr "Cuir uinneag a' video air uachdar nan uinneagan eile an-còmhnaidh."
 #: src/libvlc-module.c:348
 #, fuzzy
 msgid "Enable wallpaper mode"
-msgstr "Cuir an comas modh a' phàipeir-bhalla "
+msgstr "Cuir an comas modh a' phàipeir-bhalla"
 
 #: src/libvlc-module.c:350
 msgid ""
@@ -2670,7 +2670,7 @@ msgstr "ID traca na fuaime"
 
 #: src/libvlc-module.c:693
 msgid "Stream ID of the audio track to use."
-msgstr "ID an t-srutha aig traca na fuaime a chleachdar. "
+msgstr "ID an t-srutha aig traca na fuaime a chleachdar."
 
 #: src/libvlc-module.c:695
 msgid "Subtitle track ID"
@@ -4284,7 +4284,7 @@ msgstr "Tagh an iuchair gus an ath-thiotal dhen DVD a thaghadh"
 
 #: src/libvlc-module.c:1450
 msgid "Select prev DVD chapter"
-msgstr "Tagh an caibideal roimhe dhen DVD "
+msgstr "Tagh an caibideal roimhe dhen DVD"
 
 #: src/libvlc-module.c:1451
 msgid "Select the key to choose the previous chapter from the DVD"
@@ -4292,7 +4292,7 @@ msgstr "Tagh an iuchair gus an caibideal roimhe dhen DVD a thaghadh"
 
 #: src/libvlc-module.c:1452
 msgid "Select next DVD chapter"
-msgstr "Tagh an ath-chaibideal dhen DVD "
+msgstr "Tagh an ath-chaibideal dhen DVD"
 
 #: src/libvlc-module.c:1453
 msgid "Select the key to choose the next chapter from the DVD"
@@ -20895,7 +20895,7 @@ msgstr " a, z                   Àirde na fuaime suas/sìos"
 
 #: modules/gui/ncurses.c:1018
 msgid " m                      Mute"
-msgstr "m Mùch"
+msgstr " m Mùch"
 
 #. xgettext: You can use ↑ and ↓ characters
 #: modules/gui/ncurses.c:1020
@@ -21039,7 +21039,7 @@ msgstr " Ionad : %s/%s"
 
 #: modules/gui/ncurses.c:1276
 msgid " Volume   : Mute"
-msgstr "Àirde na fuaime: Mùch"
+msgstr " Àirde na fuaime: Mùch"
 
 #: modules/gui/ncurses.c:1277
 #, c-format
@@ -21063,7 +21063,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr " Tùs: <chan eil nì làithreach agad> "
+msgstr " Tùs: <chan eil nì làithreach agad>"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -22574,7 +22574,7 @@ msgstr "Sàbhail faidhle an loga mar..."
 #: modules/gui/qt/dialogs/messages/messages.cpp:361
 #, fuzzy
 msgid "Texts/Logs (*.log *.txt);; All (*.*)"
-msgstr "Teacsaichean / Logaichean (*.log *.txt);; A h-uile (*.*) "
+msgstr "Teacsaichean / Logaichean (*.log *.txt);; A h-uile (*.*)"
 
 #: modules/gui/qt/dialogs/messages/messages.cpp:367
 msgid "Application"
@@ -24049,7 +24049,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:193
 #, fuzzy
 msgid " dB"
-msgstr "dB"
+msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207

@@ -783,12 +783,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (lehenetsia gaituta)"
+msgstr "(lehenetsia gaituta)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (lehenetsia desgaituta)"
+msgstr "(lehenetsia desgaituta)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -2117,7 +2117,7 @@ msgstr "Bideoaren leihoa beti beste leihoen gainean kokatu."
 #: src/libvlc-module.c:348
 #, fuzzy
 msgid "Enable wallpaper mode"
-msgstr "Gaitu horma-paperaren modua "
+msgstr "Gaitu horma-paperaren modua"
 
 #: src/libvlc-module.c:350
 msgid ""
@@ -3346,11 +3346,11 @@ msgstr "TCP konexioaren denbora-muga"
 #: src/libvlc-module.c:937
 #, fuzzy
 msgid "Default TCP connection timeout (in milliseconds)."
-msgstr "TCP konexioetarako denbora-muga lehenetsia (milisegundotan). "
+msgstr "TCP konexioetarako denbora-muga lehenetsia (milisegundotan)."
 
 #: src/libvlc-module.c:939
 msgid "HTTP server address"
-msgstr "HTTP zerbitzariaren helbidea "
+msgstr "HTTP zerbitzariaren helbidea"
 
 #: src/libvlc-module.c:941
 msgid ""
@@ -11653,12 +11653,12 @@ msgstr "VDR grabazioak"
 #: modules/access/vdr.c:381
 #, c-format
 msgid "VLC could not read the file (%s)."
-msgstr " VLCk ezin du (%s) fitxategia irakurri."
+msgstr "VLCk ezin du (%s) fitxategia irakurri."
 
 #: modules/access/vdr.c:546
 #, c-format
 msgid "VLC could not open the file \"%s\" (%s)."
-msgstr " VLCk ezin du \"%s\" (%s) fitxategia ireki."
+msgstr "VLCk ezin du \"%s\" (%s) fitxategia ireki."
 
 #: modules/access/vdr.c:809
 msgid "VDR Cut Marks"
@@ -12064,7 +12064,7 @@ msgstr "Generoaren deskribapena"
 #: modules/access_output/shout.c:83
 #, fuzzy
 msgid "Genre of the content."
-msgstr "Edukiaren generoa. "
+msgstr "Edukiaren generoa."
 
 #: modules/access_output/shout.c:85
 #, fuzzy
@@ -12074,7 +12074,7 @@ msgstr "Deskribapena"
 #: modules/access_output/shout.c:86
 #, fuzzy
 msgid "URL with information about the stream or your channel."
-msgstr "Transmisio jarraituari edo kanalari buruzko informazioa duen URLa. "
+msgstr "Transmisio jarraituari edo kanalari buruzko informazioa duen URLa."
 
 #: modules/access_output/shout.c:93
 #, fuzzy
@@ -12095,7 +12095,7 @@ msgstr "Kanal kopurua"
 #: modules/access_output/shout.c:99
 #, fuzzy
 msgid "Number of channels information of the transcoded stream."
-msgstr "Transkodetutako transmisio jarraituaren kanal kopuruaren informazioa. "
+msgstr "Transkodetutako transmisio jarraituaren kanal kopuruaren informazioa."
 
 #: modules/access_output/shout.c:101
 msgid "Ogg Vorbis Quality"
@@ -12182,7 +12182,7 @@ msgstr ""
 
 #: modules/audio_filter/audiobargraph_a.c:48
 msgid "Time window to use in ms"
-msgstr "Ms-etan erabili beharreko denbora-leihoa "
+msgstr "Ms-etan erabili beharreko denbora-leihoa"
 
 #: modules/audio_filter/audiobargraph_a.c:49
 msgid ""
@@ -18462,7 +18462,7 @@ msgstr "Gainidatzi pista-deskribapen lehenetsia."
 
 #: modules/demux/subtitle.c:68
 msgid "Text subtitle parser"
-msgstr " Testu-azpititulu analizatzailea"
+msgstr "Testu-azpititulu analizatzailea"
 
 #: modules/demux/subtitle.c:71
 msgid "Subtitle format"
@@ -21445,7 +21445,7 @@ msgstr "Arte eta metadatuen eskuratzaileak"
 
 #: modules/gui/macosx/windows/addons/VLCAddonsWindowController.m:116
 msgid "Show Installed Only"
-msgstr "Erakutsi instalatutakoa soilik "
+msgstr "Erakutsi instalatutakoa soilik"
 
 #: modules/gui/macosx/windows/addons/VLCAddonsWindowController.m:118
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:423
@@ -21968,15 +21968,15 @@ msgstr " f                      Txandakatu pantaila osoaren egoera"
 
 #: modules/gui/ncurses.c:1009
 msgid " c                      Cycle through audio tracks"
-msgstr "c zikloka aldatu dauden audio-pistak"
+msgstr " c zikloka aldatu dauden audio-pistak"
 
 #: modules/gui/ncurses.c:1010
 msgid " v                      Cycle through subtitles tracks"
-msgstr "v zikloka aldatu dauden azpititulu-pistak"
+msgstr " v zikloka aldatu dauden azpititulu-pistak"
 
 #: modules/gui/ncurses.c:1011
 msgid " b                      Cycle through video tracks"
-msgstr "b zikloka aldatu dauden bideo-pistak"
+msgstr " b zikloka aldatu dauden bideo-pistak"
 
 #: modules/gui/ncurses.c:1012
 msgid " n, p                   Next/Previous playlist item"
@@ -22172,7 +22172,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr " Iturburua: <uneko elementurik ez> "
+msgstr " Iturburua: <uneko elementurik ez>"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -23209,7 +23209,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/extensions/extensions_manager.cpp:175
 #, fuzzy
 msgid "Empty"
-msgstr " - Hutsa -"
+msgstr "- Hutsa -"
 
 #: modules/gui/qt/dialogs/extensions/extensions_manager.cpp:181
 #, fuzzy
@@ -23689,7 +23689,7 @@ msgstr "Gorde egunkari-fitxategia honela..."
 #: modules/gui/qt/dialogs/messages/messages.cpp:361
 #, fuzzy
 msgid "Texts/Logs (*.log *.txt);; All (*.*)"
-msgstr "Testuak / Egunkariak (*.log *.txt);; Guztiak (*.*) "
+msgstr "Testuak / Egunkariak (*.log *.txt);; Guztiak (*.*)"
 
 #: modules/gui/qt/dialogs/messages/messages.cpp:367
 msgid "Application"
@@ -25179,7 +25179,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:193
 #, fuzzy
 msgid " dB"
-msgstr "dB"
+msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207
@@ -26676,7 +26676,7 @@ msgstr "Multiplexadore hau ez du VLC-k zuzenean hornitzen: baliteke ez egotea."
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:657
 msgid "This muxer is missing. Using this profile will fail"
-msgstr "Multiplexadore hau ez dago. Profil honen erabilerak akatsa emango du "
+msgstr "Multiplexadore hau ez dago. Profil honen erabilerak akatsa emango du"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:802
 msgid " Profile Name Missing"
@@ -31771,7 +31771,7 @@ msgstr "Dream"
 
 #: modules/meta_engine/ID3Genres.h:89
 msgid "Southern Rock"
-msgstr "Hegoaldeko Rocka "
+msgstr "Hegoaldeko Rocka"
 
 #: modules/meta_engine/ID3Genres.h:90
 msgid "Comedy"
@@ -32866,7 +32866,7 @@ msgstr "Denbora-muga (ms)"
 #: modules/notify/notify.c:62
 #, fuzzy
 msgid "How long the notification will be displayed."
-msgstr "Jakinarazpena zenbat denboran bistaratuko den "
+msgstr "Jakinarazpena zenbat denboran bistaratuko den"
 
 #: modules/notify/notify.c:66
 msgid "Notify"
@@ -35227,7 +35227,7 @@ msgstr "Bideo-iragazketa, bideo-iragazkien moduluen kate bat erabiliz"
 #: modules/video_chroma/grey_yuv.c:55 modules/video_chroma/i422_i420.c:56
 #: modules/video_chroma/yuy2_i420.c:57 modules/video_chroma/yuy2_i422.c:57
 msgid "Conversions from "
-msgstr "Hauetatik egindako bihurketak:"
+msgstr "Hauetatik egindako bihurketak: "
 
 #: modules/video_chroma/i420_nv12.c:239
 msgid "YUV planar to semiplanar conversions"
@@ -35957,7 +35957,7 @@ msgstr "YUVP bihurgailua"
 
 #: modules/video_filter/freeze.c:78
 msgid "Freezing interactive video filter"
-msgstr " Izozteko bideo-iragazki interaktiboa"
+msgstr "Izozteko bideo-iragazki interaktiboa"
 
 #: modules/video_filter/freeze.c:79
 msgid "Freeze"
@@ -37028,7 +37028,7 @@ msgstr ""
 
 #: modules/video_output/win32/direct3d9.c:85
 msgid "Pixel Shader"
-msgstr "Pixel-itzaleztatzailea "
+msgstr "Pixel-itzaleztatzailea"
 
 #: modules/video_output/win32/direct3d9.c:87
 msgid "Choose a pixel shader to apply."
@@ -37783,7 +37783,7 @@ msgstr "Irteera-fitxategia"
 
 #: share/lua/http/dialogs/create_stream.html:355
 msgid "Input media"
-msgstr " Multimedia-sarrera"
+msgstr "Multimedia-sarrera"
 
 #: share/lua/http/dialogs/create_stream.html:367
 msgid "Error:"

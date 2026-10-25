@@ -110,7 +110,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/extended/qml/VideoEffectsPanel.qml:82
 #: modules/gui/qt/qt.cpp:337
 msgid "Advanced"
-msgstr "Ընդլայնված "
+msgstr "Ընդլայնված"
 
 #: include/vlc_config_cat.h:45
 msgid "Subtitles / OSD"
@@ -702,12 +702,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (լռությամբ թույլտրված)"
+msgstr "(լռությամբ թույլտրված)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (լռությամբ չթույլտրված)"
+msgstr "(լռությամբ չթույլտրված)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -2736,7 +2736,7 @@ msgstr ""
 
 #: src/libvlc-module.c:757
 msgid "Bookmarks list for a stream"
-msgstr "Էջանիշ ցուցակը հոսքի համար "
+msgstr "Էջանիշ ցուցակը հոսքի համար"
 
 #: src/libvlc-module.c:759
 msgid ""
@@ -3883,7 +3883,7 @@ msgstr ""
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:39
 #: modules/gui/qt/player/qml/controlbarcontrols/FasterButton.qml:33
 msgid "Faster"
-msgstr "Ավելի արագ "
+msgstr "Ավելի արագ"
 
 #: src/libvlc-module.c:1373 src/libvlc-module.c:1379
 msgid "Select the hotkey to use for fast forward playback."
@@ -4742,7 +4742,7 @@ msgstr "Ենթանկարներ"
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:248
 #: share/lua/http/dialogs/create_stream.html:153
 msgid "Subtitles"
-msgstr "Ենթագրեր "
+msgstr "Ենթագրեր"
 
 #: src/libvlc-module.c:1862 modules/stream_out/transcode/transcode.c:118
 msgid "Overlays"
@@ -8428,7 +8428,7 @@ msgstr ""
 
 #: modules/access/dshow/dshow.cpp:118 modules/access/v4l2/v4l2.c:196
 msgid "Picture aspect-ratio n:m"
-msgstr "Պատկերի չափերի հարաբերությունը n:m "
+msgstr "Պատկերի չափերի հարաբերությունը n:m"
 
 #: modules/access/dshow/dshow.cpp:119 modules/access/v4l2/v4l2.c:197
 msgid "Define input picture aspect-ratio to use. Default is 4:3"
@@ -9096,7 +9096,7 @@ msgstr ""
 #: modules/access/dvb/access.c:75
 #, fuzzy
 msgid "Use NIT for scanning services"
-msgstr "Օգտագործվում է վիճակագրության համար "
+msgstr "Օգտագործվում է վիճակագրության համար"
 
 #: modules/access/dvb/access.c:78
 #, fuzzy
@@ -9242,7 +9242,7 @@ msgstr "Մականուն"
 msgid ""
 "Username that will be used for the connection, if no username is set in the "
 "URL."
-msgstr "Ոգտագործող անուն, որ կօգտագործվի կապի համար "
+msgstr "Ոգտագործող անուն, որ կօգտագործվի կապի համար"
 
 #: modules/access/ftp.c:73 modules/access/live555.cpp:90
 #: modules/access/rdp.c:60 modules/access/sftp.c:58
@@ -9795,7 +9795,7 @@ msgstr ""
 #: modules/access/nfs.c:57
 #, fuzzy
 msgid "NFS"
-msgstr " Կադր/վ"
+msgstr "Կադր/վ"
 
 #: modules/access/nfs.c:58
 #, fuzzy
@@ -10979,7 +10979,7 @@ msgstr ""
 
 #: modules/access/vcd/vcd.c:48
 msgid "VCD"
-msgstr ", VCD "
+msgstr ", VCD"
 
 #: modules/access/vcd/vcd.c:49
 msgid "VCD input"
@@ -18655,7 +18655,7 @@ msgstr "Կրկնել բոլորը"
 #: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:673
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:66
 msgid "Custom"
-msgstr "Սեփական "
+msgstr "Սեփական"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:2022
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:68
@@ -20157,7 +20157,7 @@ msgstr ""
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:333
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:78
 msgid "FPS"
-msgstr " Կադր/վ"
+msgstr "Կադր/վ"
 
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:335
 msgid "Subtitle encoding"
@@ -20912,7 +20912,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1241
 #, c-format
 msgid " Source   : %s"
-msgstr "Աղբյուր`%s "
+msgstr " Աղբյուր`%s"
 
 #: modules/gui/ncurses.c:1271
 #, c-format
@@ -20945,7 +20945,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr "Կրկնել ընթացիկը"
+msgstr " Կրկնել ընթացիկը"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -22283,7 +22283,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/help/help.cpp:511
 msgid "You have the latest version of VLC media player."
-msgstr "Դուք ունեք VLC-ի վերջին տարբերակը "
+msgstr "Դուք ունեք VLC-ի վերջին տարբերակը"
 
 #: modules/gui/qt/dialogs/help/help.cpp:518
 msgid "An error occurred while checking for updates..."
@@ -22447,7 +22447,7 @@ msgstr "Պահել լոգ ֆայլը որպես ..."
 #: modules/gui/qt/dialogs/messages/messages.cpp:361
 #, fuzzy
 msgid "Texts/Logs (*.log *.txt);; All (*.*)"
-msgstr "Տեքստեր / Լոգեր (*.log *.txt);; Բոլորը (*.*) "
+msgstr "Տեքստեր / Լոգեր (*.log *.txt);; Բոլորը (*.*)"
 
 #: modules/gui/qt/dialogs/messages/messages.cpp:367
 msgid "Application"
@@ -23913,7 +23913,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:193
 #, fuzzy
 msgid " dB"
-msgstr "դԲ"
+msgstr " դԲ"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207
@@ -25336,7 +25336,7 @@ msgstr ""
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:181
 #: modules/gui/qt/menus/menus.cpp:970 modules/gui/qt/menus/qml/MainMenu.qml:83
 msgid "Convert"
-msgstr "Փոխել ֆորմատը "
+msgstr "Փոխել ֆորմատը"
 
 #: modules/gui/qt/dialogs/sout/convert.cpp:61
 #, fuzzy
@@ -25413,7 +25413,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:802
 msgid " Profile Name Missing"
-msgstr "Անձնագիրի անունը Բացակայում է"
+msgstr " Անձնագիրի անունը Բացակայում է"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:803
 msgid "You must set a name for the profile."
@@ -25452,7 +25452,7 @@ msgstr "Աղբյուր"
 
 #: modules/gui/qt/dialogs/sout/sout_widgets.cpp:52
 msgid "Source:"
-msgstr "Աղբյուր` "
+msgstr "Աղբյուր`"
 
 #: modules/gui/qt/dialogs/sout/sout_widgets.cpp:61
 msgid "Type:"
@@ -25778,11 +25778,11 @@ msgstr "Փոխել"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:506
 msgid "Broadcast: "
-msgstr "Եթեր`"
+msgstr "Եթեր` "
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 msgid "Schedule: "
-msgstr "Ժամանակացույց"
+msgstr "Ժամանակացույց "
 
 #: modules/gui/qt/maininterface/mainctx.cpp:1193
 msgid "Paste from clipboard"
@@ -29615,7 +29615,7 @@ msgstr ""
 #: modules/hw/d3d11/d3d11_filters.c:81 modules/hw/d3d9/d3d9_filters.c:71
 #: modules/video_filter/adjust.c:60
 msgid "Image saturation (0-3)"
-msgstr "Պատկերի հագեցումը (0-3) "
+msgstr "Պատկերի հագեցումը (0-3)"
 
 #: modules/hw/d3d11/d3d11_filters.c:82 modules/hw/d3d9/d3d9_filters.c:72
 #: modules/video_filter/adjust.c:61
@@ -30162,7 +30162,7 @@ msgstr "SOCKS օգտանուն"
 
 #: modules/lua/vlc.c:72
 msgid "User name to be used for connection to the SOCKS proxy."
-msgstr "Ոգտագործող անուն, որ կօգտագործվի SOCKS պրոքսիի հետ կապի համար "
+msgstr "Ոգտագործող անուն, որ կօգտագործվի SOCKS պրոքսիի հետ կապի համար"
 
 #: modules/lua/vlc.c:74
 msgid "SOCKS password"
@@ -33433,7 +33433,7 @@ msgstr ""
 
 #: modules/stream_out/transcode/transcode.c:208
 msgid "Overlays/Subtitles"
-msgstr "Վրադիրներ / Ենթագրեր "
+msgstr "Վրադիրներ / Ենթագրեր"
 
 #: modules/stream_out/udp.c:339
 msgid "Use libavformat"
@@ -33595,7 +33595,7 @@ msgstr ""
 #: modules/video_chroma/grey_yuv.c:55 modules/video_chroma/i422_i420.c:56
 #: modules/video_chroma/yuy2_i420.c:57 modules/video_chroma/yuy2_i422.c:57
 msgid "Conversions from "
-msgstr "Փոխել ֆորմատները`"
+msgstr "Փոխել ֆորմատները` "
 
 #: modules/video_chroma/i420_nv12.c:239
 msgid "YUV planar to semiplanar conversions"
@@ -34269,7 +34269,7 @@ msgstr "Հստակեցման վիդեո զտիչ"
 #: modules/video_filter/fps.c:46
 #, fuzzy
 msgid "FPS Converter"
-msgstr "Փոխել ֆորմատը "
+msgstr "Փոխել ֆորմատը"
 
 #: modules/video_filter/freeze.c:78
 msgid "Freezing interactive video filter"

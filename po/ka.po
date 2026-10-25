@@ -728,12 +728,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (სტანდარტულად ჩართული)"
+msgstr "(სტანდარტულად ჩართული)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (სტანდარტულად გამორთული)"
+msgstr "(სტანდარტულად გამორთული)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -2021,7 +2021,7 @@ msgstr ""
 #: src/libvlc-module.c:348
 #, fuzzy
 msgid "Enable wallpaper mode"
-msgstr "ჩართვა რეჟიმი "
+msgstr "ჩართვა რეჟიმი"
 
 #: src/libvlc-module.c:350
 msgid ""
@@ -3628,7 +3628,7 @@ msgstr ""
 #: src/libvlc-module.c:1213
 #, fuzzy
 msgid "Expose media player via D-Bus"
-msgstr "VLC მედია დამკვრელი "
+msgstr "VLC მედია დამკვრელი"
 
 #: src/libvlc-module.c:1214
 msgid "Allow other applications to control VLC using the D-Bus MPRIS protocol."
@@ -4837,12 +4837,12 @@ msgstr ""
 #: src/libvlc-module.c:1598
 #, fuzzy
 msgid "Toggle wallpaper mode in video output"
-msgstr "ჩართვა რეჟიმი "
+msgstr "ჩართვა რეჟიმი"
 
 #: src/libvlc-module.c:1600
 #, fuzzy
 msgid "Toggle wallpaper mode in video output."
-msgstr "ჩართვა რეჟიმი "
+msgstr "ჩართვა რეჟიმი"
 
 #: src/libvlc-module.c:1602
 #, fuzzy
@@ -7204,7 +7204,7 @@ msgstr ""
 #: src/text/iso-639_def.h:394
 #, fuzzy
 msgid "Northern Sami"
-msgstr "ჩრიდილოეთ სამი "
+msgstr "ჩრიდილოეთ სამი"
 
 #: src/text/iso-639_def.h:395
 msgid "Northern Sotho; Pedi; Sepedi"
@@ -8892,7 +8892,7 @@ msgstr ""
 #: modules/access/dtv/access.c:58
 #, fuzzy
 msgid "Network name"
-msgstr "ქსელი: "
+msgstr "ქსელი:"
 
 #: modules/access/dtv/access.c:59
 msgid "Unique network name in the System Tuning Spaces"
@@ -8901,7 +8901,7 @@ msgstr ""
 #: modules/access/dtv/access.c:61
 #, fuzzy
 msgid "Network name to create"
-msgstr "ქსელი: "
+msgstr "ქსელი:"
 
 #: modules/access/dtv/access.c:62
 msgid "Create unique name in the System Tuning Spaces"
@@ -12383,7 +12383,7 @@ msgstr "სრული ბასი"
 #: modules/audio_filter/equalizer_presets.h:54
 #, fuzzy
 msgid "Full bass and treble"
-msgstr "სრული ბასი და "
+msgstr "სრული ბასი და"
 
 #: modules/audio_filter/equalizer_presets.h:54
 #, fuzzy
@@ -14498,7 +14498,7 @@ msgstr ""
 #: modules/codec/qsv.c:62
 #, fuzzy
 msgid "Enable software mode"
-msgstr "ჩართვა რეჟიმი "
+msgstr "ჩართვა რეჟიმი"
 
 #: modules/codec/qsv.c:63
 msgid ""
@@ -15527,7 +15527,7 @@ msgstr ""
 msgid ""
 "Force the specified number of consecutive B-frames to be used, except "
 "possibly before an I-frame. Range 0 to 2."
-msgstr "B კადრები I და კადრები. "
+msgstr "B კადრები I და კადრები."
 
 #: modules/codec/x264.c:111
 #, fuzzy
@@ -17144,7 +17144,7 @@ msgstr "a ინდექსი AVI ფაილი AVI ფაილი არ�
 #: modules/demux/avi/avi.c:71
 #, fuzzy
 msgid "Ask for action"
-msgstr " ინფორმაცია "
+msgstr "ინფორმაცია"
 
 #: modules/demux/avi/avi.c:72
 #, fuzzy
@@ -21033,7 +21033,7 @@ msgstr "შეცდომები და გაფრთხილებებ�
 #: modules/gui/macosx/windows/VLCErrorWindowController.m:53
 #, fuzzy
 msgid "Clean up"
-msgstr " გაწმენდა "
+msgstr "გაწმენდა"
 
 #: modules/gui/macosx/windows/VLCHelpWindowController.m:47
 #, fuzzy
@@ -21846,37 +21846,37 @@ msgstr "დისპლეი"
 #: modules/gui/ncurses.c:990
 #, fuzzy
 msgid " h,H                    Show/Hide help box"
-msgstr "დახმარება დახმარება"
+msgstr " დახმარება დახმარება"
 
 #: modules/gui/ncurses.c:991
 #, fuzzy
 msgid " i                      Show/Hide info box"
-msgstr "დახმარება დახმარება"
+msgstr " დახმარება დახმარება"
 
 #: modules/gui/ncurses.c:992
 #, fuzzy
 msgid " M                      Show/Hide metadata box"
-msgstr "დახმარება დახმარება"
+msgstr " დახმარება დახმარება"
 
 #: modules/gui/ncurses.c:993
 #, fuzzy
 msgid " L                      Show/Hide messages box"
-msgstr "დახმარება დახმარება"
+msgstr " დახმარება დახმარება"
 
 #: modules/gui/ncurses.c:994
 #, fuzzy
 msgid " P                      Show/Hide playlist box"
-msgstr "დახმარება დახმარება"
+msgstr " დახმარება დახმარება"
 
 #: modules/gui/ncurses.c:995
 #, fuzzy
 msgid " B                      Show/Hide filebrowser"
-msgstr "დახმარება დახმარება"
+msgstr " დახმარება დახმარება"
 
 #: modules/gui/ncurses.c:996
 #, fuzzy
 msgid " S                      Show/Hide statistics box"
-msgstr "დახმარება დახმარება"
+msgstr " დახმარება დახმარება"
 
 #: modules/gui/ncurses.c:997
 msgid " E                      Show/Hide equalizer box"
@@ -21889,7 +21889,7 @@ msgstr ""
 #: modules/gui/ncurses.c:999
 #, fuzzy
 msgid " Ctrl-l                 Refresh the screen"
-msgstr "დახმარება დახმარება"
+msgstr " დახმარება დახმარება"
 
 #: modules/gui/ncurses.c:1003
 msgid "[Global]"
@@ -21910,37 +21910,37 @@ msgstr ""
 #: modules/gui/ncurses.c:1008
 #, fuzzy
 msgid " f                      Toggle Fullscreen"
-msgstr "დახმარება დახმარება"
+msgstr " დახმარება დახმარება"
 
 #: modules/gui/ncurses.c:1009
 #, fuzzy
 msgid " c                      Cycle through audio tracks"
-msgstr "დახმარება დახმარება"
+msgstr " დახმარება დახმარება"
 
 #: modules/gui/ncurses.c:1010
 #, fuzzy
 msgid " v                      Cycle through subtitles tracks"
-msgstr "დახმარება დახმარება"
+msgstr " დახმარება დახმარება"
 
 #: modules/gui/ncurses.c:1011
 #, fuzzy
 msgid " b                      Cycle through video tracks"
-msgstr "დახმარება დახმარება"
+msgstr " დახმარება დახმარება"
 
 #: modules/gui/ncurses.c:1012
 #, fuzzy
 msgid " n, p                   Next/Previous playlist item"
-msgstr "დახმარება დახმარება"
+msgstr " დახმარება დახმარება"
 
 #: modules/gui/ncurses.c:1013
 #, fuzzy
 msgid " [, ]                   Next/Previous title"
-msgstr "დახმარება დახმარება"
+msgstr " დახმარება დახმარება"
 
 #: modules/gui/ncurses.c:1014
 #, fuzzy
 msgid " <, >                   Next/Previous chapter"
-msgstr "დახმარება დახმარება"
+msgstr " დახმარება დახმარება"
 
 #. xgettext: You can use ← and → characters
 #: modules/gui/ncurses.c:1016
@@ -21955,7 +21955,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1018
 #, fuzzy
 msgid " m                      Mute"
-msgstr "დახმარება დახმარება"
+msgstr " დახმარება დახმარება"
 
 #. xgettext: You can use ↑ and ↓ characters
 #: modules/gui/ncurses.c:1020
@@ -21992,32 +21992,32 @@ msgstr "დაკვრის სია"
 #: modules/gui/ncurses.c:1037
 #, fuzzy
 msgid " r                      Toggle Random playing"
-msgstr "დახმარება დახმარება"
+msgstr " დახმარება დახმარება"
 
 #: modules/gui/ncurses.c:1038
 #, fuzzy
 msgid " l                      Toggle Loop Playlist"
-msgstr "დახმარება დახმარება"
+msgstr " დახმარება დახმარება"
 
 #: modules/gui/ncurses.c:1039
 #, fuzzy
 msgid " R                      Toggle Repeat item"
-msgstr "დახმარება დახმარება"
+msgstr " დახმარება დახმარება"
 
 #: modules/gui/ncurses.c:1040
 #, fuzzy
 msgid " o                      Order Playlist by title"
-msgstr "დახმარება დახმარება"
+msgstr " დახმარება დახმარება"
 
 #: modules/gui/ncurses.c:1041
 #, fuzzy
 msgid " O                      Reverse order Playlist by title"
-msgstr "დახმარება დახმარება"
+msgstr " დახმარება დახმარება"
 
 #: modules/gui/ncurses.c:1042
 #, fuzzy
 msgid " g                      Go to the current playing item"
-msgstr "დახმარება დახმარება"
+msgstr " დახმარება დახმარება"
 
 #: modules/gui/ncurses.c:1043
 msgid " /                      Look for an item"
@@ -22026,7 +22026,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1044
 #, fuzzy
 msgid " ;                      Look for the next item"
-msgstr "დახმარება დახმარება"
+msgstr " დახმარება დახმარება"
 
 #: modules/gui/ncurses.c:1045
 msgid " A                      Add an entry"
@@ -22057,7 +22057,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1056
 #, fuzzy
 msgid " .                      Show/Hide hidden files"
-msgstr "დახმარება დახმარება"
+msgstr " დახმარება დახმარება"
 
 #: modules/gui/ncurses.c:1060
 #, fuzzy
@@ -22103,22 +22103,22 @@ msgstr ""
 #: modules/gui/ncurses.c:1271
 #, fuzzy, c-format
 msgid " Position : %s/%s"
-msgstr "პოზიცია"
+msgstr " პოზიცია"
 
 #: modules/gui/ncurses.c:1276
 #, fuzzy
 msgid " Volume   : Mute"
-msgstr "ხმის რეგულაცია"
+msgstr " ხმის რეგულაცია"
 
 #: modules/gui/ncurses.c:1277
 #, fuzzy, c-format
 msgid " Volume   : %3ld%%"
-msgstr "ხმის რეგულაცია"
+msgstr " ხმის რეგულაცია"
 
 #: modules/gui/ncurses.c:1277
 #, fuzzy
 msgid " Volume   : ----"
-msgstr "ხმის რეგულაცია"
+msgstr " ხმის რეგულაცია"
 
 #: modules/gui/ncurses.c:1286
 #, c-format
@@ -22133,7 +22133,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr "ახლანდელი ელემენტის გამეორება"
+msgstr " ახლანდელი ელემენტის გამეორება"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -23496,7 +23496,7 @@ msgstr "არა"
 #: modules/gui/qt/dialogs/help/help.cpp:409
 #, fuzzy
 msgid "VLC media player updates"
-msgstr "VLC მედია დამკვრელი "
+msgstr "VLC მედია დამკვრელი"
 
 #: modules/gui/qt/dialogs/help/help.cpp:488
 #, fuzzy
@@ -23884,7 +23884,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1172
 #, fuzzy
 msgid " f/s"
-msgstr "%d kb/s"
+msgstr " %d kb/s"
 
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1387
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:604
@@ -27092,7 +27092,7 @@ msgstr "ყველას გამეორება"
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:104
 #, fuzzy
 msgid " days"
-msgstr "დაყოვნება"
+msgstr " დაყოვნება"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:123
 #, fuzzy
@@ -27126,7 +27126,7 @@ msgstr "შეცვლა"
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:506
 #, fuzzy
 msgid "Broadcast: "
-msgstr "Podcast ტიპი"
+msgstr "Podcast ტიპი "
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 msgid "Schedule: "
@@ -33195,7 +33195,7 @@ msgstr "ხელსაწყო"
 #: modules/services_discovery/sap.c:714
 #, fuzzy
 msgid "Network streams (SAP)"
-msgstr "ქსელი: "
+msgstr "ქსელი:"
 
 #: modules/services_discovery/sap.c:696
 #, fuzzy
@@ -35280,7 +35280,7 @@ msgstr ""
 msgid ""
 "The opacity (inverse of transparency) of the text that will be rendered on "
 "the video. 0 = transparent, 255 = totally opaque."
-msgstr "ის გამჭირვალობა ის ტექსტი "
+msgstr "ის გამჭირვალობა ის ტექსტი"
 
 #: modules/text_renderer/freetype/freetype.c:69
 #, fuzzy
@@ -35387,7 +35387,7 @@ msgstr ""
 #: modules/video_chroma/yuy2_i420.c:57 modules/video_chroma/yuy2_i422.c:57
 #, fuzzy
 msgid "Conversions from "
-msgstr "ფერი"
+msgstr "ფერი "
 
 #: modules/video_chroma/i420_nv12.c:239
 msgid "YUV planar to semiplanar conversions"
@@ -35818,7 +35818,7 @@ msgstr "განახლებებზე შემოწმება"
 #: modules/video_filter/canvas.c:106
 #, fuzzy
 msgid "Canvas"
-msgstr " გაუქმება "
+msgstr "გაუქმება"
 
 #: modules/video_filter/canvas.c:107
 #, fuzzy
@@ -38118,7 +38118,7 @@ msgstr "დრო"
 #: share/lua/http/mobile_view.html:24
 #, fuzzy
 msgid "VLC media player - Web Interface"
-msgstr "VLC მედია დამკვრელი "
+msgstr "VLC მედია დამკვრელი"
 
 #: share/lua/http/index.html:233
 msgid "Hide / Show Library"

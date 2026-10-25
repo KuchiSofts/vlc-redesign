@@ -9202,7 +9202,7 @@ msgstr "DTV"
 
 #: modules/access/dtv/access.c:251
 msgid "Digital Television and Radio"
-msgstr "Digitalni Televizija i Radio "
+msgstr "Digitalni Televizija i Radio"
 
 #: modules/access/dtv/access.c:288
 msgid "Terrestrial reception parameters"
@@ -9482,7 +9482,7 @@ msgstr "FTP ulaz"
 
 #: modules/access/ftp.c:99
 msgid "FTP upload output"
-msgstr "FTP prijenosni izlaz "
+msgstr "FTP prijenosni izlaz"
 
 #: modules/access/ftp.c:389 modules/access/ftp.c:405 modules/access/ftp.c:574
 msgid "Network interaction failed"
@@ -17132,7 +17132,7 @@ msgstr ""
 #: modules/demux/mpeg/ts.c:136 modules/mux/mpeg/ts.c:103
 #, fuzzy
 msgid "Digital TV Standard"
-msgstr "Digitalni Televizija i Radio "
+msgstr "Digitalni Televizija i Radio"
 
 #: modules/demux/mpeg/ts.c:137
 msgid ""
@@ -20914,11 +20914,11 @@ msgstr " q, Q, Esc              Zatvori"
 
 #: modules/gui/ncurses.c:1006
 msgid " s                      Stop"
-msgstr "s Zaustavi"
+msgstr " s Zaustavi"
 
 #: modules/gui/ncurses.c:1007
 msgid " <space>                Pause/Play"
-msgstr "<space> Pauziraj/Produciraj"
+msgstr " <space> Pauziraj/Produciraj"
 
 #: modules/gui/ncurses.c:1008
 msgid " f                      Toggle Fullscreen"
@@ -21100,7 +21100,7 @@ msgstr ""
 
 #: modules/gui/ncurses.c:1276
 msgid " Volume   : Mute"
-msgstr "Glasnoća : Smanjeno"
+msgstr " Glasnoća : Smanjeno"
 
 #: modules/gui/ncurses.c:1277
 #, c-format
@@ -21124,7 +21124,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr "Ponovi trenutnu stavku"
+msgstr " Ponovi trenutnu stavku"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -24087,7 +24087,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:193
 #, fuzzy
 msgid " dB"
-msgstr "dB"
+msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207

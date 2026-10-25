@@ -128,7 +128,7 @@ msgstr "अनुवाद/ओएसडी"
 #: include/vlc_config_cat.h:46 modules/control/hotkeys.c:1311
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:1301
 msgid "Hotkeys"
-msgstr "हॉटकी "
+msgstr "हॉटकी"
 
 #: include/vlc_config_cat.h:47
 msgid "Media Library"
@@ -341,7 +341,7 @@ msgstr ""
 
 #: include/vlc_config_cat.h:135
 msgid "VLC's implementation of Video On Demand"
-msgstr "व्हीएलसीची मागणीनुसार ध्वनीचित्रफित अंमलबजावणी "
+msgstr "व्हीएलसीची मागणीनुसार ध्वनीचित्रफित अंमलबजावणी"
 
 #: include/vlc_config_cat.h:138
 msgid ""
@@ -1643,7 +1643,7 @@ msgstr "प्रवर्धन"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:315
 #, fuzzy
 msgid "Animation"
-msgstr "माहिती "
+msgstr "माहिती"
 
 #: src/libvlc-module.c:156
 #, fuzzy
@@ -2116,7 +2116,7 @@ msgstr ""
 
 #: src/libvlc-module.c:365
 msgid "Hide cursor and fullscreen controller after x milliseconds"
-msgstr "कर्सर व संपूर्ण स्क्रीन नियंत्रक एक्स मिलीसेकंदांनंतर लपवा  "
+msgstr "कर्सर व संपूर्ण स्क्रीन नियंत्रक एक्स मिलीसेकंदांनंतर लपवा"
 
 #: src/libvlc-module.c:369 src/video_output/interlacing.c:107
 #: modules/gui/macosx/menus/VLCMainMenu.m:448
@@ -2285,7 +2285,7 @@ msgstr "वेळेच्या शिक्क्यांऐवजी क्�
 
 #: src/libvlc-module.c:462
 msgid "Use sequential numbers instead of timestamps for snapshot numbering"
-msgstr "क्षणचित्रांना क्रमांक घालण्यासाठी वेळेच्या शिक्क्यांऐवजी क्रमवार संख्या वापरा  "
+msgstr "क्षणचित्रांना क्रमांक घालण्यासाठी वेळेच्या शिक्क्यांऐवजी क्रमवार संख्या वापरा"
 
 #: src/libvlc-module.c:464
 msgid "Video snapshot width"
@@ -2838,7 +2838,7 @@ msgstr "संगणकास वारंवार माहिती देण
 
 #: src/libvlc-module.c:724
 msgid "Number of time the same input will be repeated"
-msgstr "संगणकास किती वेळा तीच माहिती वारंवार दिली जाईल "
+msgstr "संगणकास किती वेळा तीच माहिती वारंवार दिली जाईल"
 
 #: src/libvlc-module.c:726
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:225
@@ -3278,7 +3278,7 @@ msgstr "पूर्वनिर्धारित टीसीपी जोड�
 
 #: src/libvlc-module.c:939
 msgid "HTTP server address"
-msgstr "एचटीटीपी सर्वर आदेश "
+msgstr "एचटीटीपी सर्वर आदेश"
 
 #: src/libvlc-module.c:941
 msgid ""
@@ -4272,7 +4272,7 @@ msgstr "स्थान दाखविण्यासाठी हॉटकी 
 
 #: src/libvlc-module.c:1391
 msgid "Very short backwards jump"
-msgstr "अतिशय थोडेसे मागे जा "
+msgstr "अतिशय थोडेसे मागे जा"
 
 #: src/libvlc-module.c:1393
 msgid "Select the hotkey to make a very short backwards jump."
@@ -4639,7 +4639,7 @@ msgstr "१:१ मूळ"
 #: src/libvlc-module.c:1488 src/video_output/vout_intf.c:109
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:130
 msgid "2:1 Double"
-msgstr "२:१ दुप्पट "
+msgstr "२:१ दुप्पट"
 
 #: src/libvlc-module.c:1489
 msgid "Select the hotkey to use to zoom to the corresponding level."
@@ -5189,7 +5189,7 @@ msgstr "बॅकस्पेस"
 #: src/misc/actions.c:56
 msgctxt "key"
 msgid "Brightness Down"
-msgstr "तेजस्विता कमी "
+msgstr "तेजस्विता कमी"
 
 #: src/misc/actions.c:57
 msgctxt "key"
@@ -8334,7 +8334,7 @@ msgstr "ब्लू-रे डिस्क सहाय्य (वाचना�
 
 #: modules/access/bluray.c:888
 msgid "Path doesn't appear to be a Blu-ray"
-msgstr "मार्ग ब्लू-रे असल्याचे दिसत नाही "
+msgstr "मार्ग ब्लू-रे असल्याचे दिसत नाही"
 
 #: modules/access/bluray.c:903
 msgid ""
@@ -8378,7 +8378,7 @@ msgstr ""
 
 #: modules/access/bluray.c:932
 msgid "Your system BD+ decoding library does not work. Missing configuration?"
-msgstr "तुमचे यंत्रणा बीडी + विसंकेतन वाचनालय काम करत नाही. मांडणी हरवली आहे का? "
+msgstr "तुमचे यंत्रणा बीडी + विसंकेतन वाचनालय काम करत नाही. मांडणी हरवली आहे का?"
 
 #: modules/access/bluray.c:965
 #, fuzzy
@@ -8621,7 +8621,7 @@ msgstr "रेखीय"
 
 #: modules/access/decklink.cpp:110 modules/demux/rawvid.c:59
 msgid "Aspect ratio (4:3, 16:9). Default assumes square pixels."
-msgstr "आकार अनुपात (४:३, १६:९). पूर्वनिर्धारितपणे चौकोनी पिक्सल गृहित धरले जातात. "
+msgstr "आकार अनुपात (४:३, १६:९). पूर्वनिर्धारितपणे चौकोनी पिक्सल गृहित धरले जातात."
 
 #: modules/access/decklink.cpp:113
 msgid "DeckLink"
@@ -8817,7 +8817,7 @@ msgstr "मेलक टीव्ही चॅनल"
 
 #: modules/access/dshow/dshow.cpp:137
 msgid "Set the TV channel the tuner will set to (0 means default)."
-msgstr "मेलक कोणत्या टीव्ही चॅनलशी जोडला जाईल याची रचना करा. (० म्हणजे पूर्वनिर्धारित) "
+msgstr "मेलक कोणत्या टीव्ही चॅनलशी जोडला जाईल याची रचना करा. (० म्हणजे पूर्वनिर्धारित)"
 
 #: modules/access/dshow/dshow.cpp:139
 msgid "Tuner country code"
@@ -8935,7 +8935,7 @@ msgstr "ग्रहण अपयशी"
 
 #: modules/access/dshow/dshow.cpp:479
 msgid "No video or audio device selected."
-msgstr "कोणतेही ध्वनीचित्रफित किंवा ध्वनीफित साधन निवडले नाही. "
+msgstr "कोणतेही ध्वनीचित्रफित किंवा ध्वनीफित साधन निवडले नाही."
 
 #: modules/access/dshow/dshow.cpp:553
 msgid "VLC cannot open ANY capture device. Check the error log for details."
@@ -10122,7 +10122,7 @@ msgstr "सत्राच्या आरटीपी सोतासाठी 
 
 #: modules/access/live555.cpp:119
 msgid "Force multicast RTP via RTSP"
-msgstr "आरटीएसपीद्वारे बहुप्रसारण आरटीपीची सक्ती करा "
+msgstr "आरटीएसपीद्वारे बहुप्रसारण आरटीपीची सक्ती करा"
 
 #: modules/access/live555.cpp:122
 msgid "Tunnel RTSP and RTP over HTTP"
@@ -10134,11 +10134,11 @@ msgstr "एचटीटीपी बोगदा खाच"
 
 #: modules/access/live555.cpp:126
 msgid "Port to use for tunneling the RTSP/RTP over HTTP."
-msgstr "एचटीटीपीवर बोगद्याद्वारे आरटीएसपी/आरटीपी वापरण्यासाठी खाच. "
+msgstr "एचटीटीपीवर बोगद्याद्वारे आरटीएसपी/आरटीपी वापरण्यासाठी खाच."
 
 #: modules/access/live555.cpp:714
 msgid "RTSP authentication"
-msgstr "आरटीएसपी प्रमाणीकरण "
+msgstr "आरटीएसपी प्रमाणीकरण"
 
 #: modules/access/live555.cpp:715
 msgid "Please enter a valid login name and a password."
@@ -10535,7 +10535,7 @@ msgstr "आरटीपी स्रोत वेळ संपली (सेक�
 
 #: modules/access/rtp/rtp.c:640
 msgid "How long to wait for any packet before a source is expired."
-msgstr "स्रोताची मुदत संपण्यापूर्वी एखाद्या पॅकेटसाठी किती वेळ वाट पाहावी. "
+msgstr "स्रोताची मुदत संपण्यापूर्वी एखाद्या पॅकेटसाठी किती वेळ वाट पाहावी."
 
 #: modules/access/rtp/rtp.c:642
 msgid "Maximum RTP sequence number dropout"
@@ -10857,7 +10857,7 @@ msgstr ""
 #: modules/access/smb_common.h:33
 #, fuzzy
 msgid "SMB authentication required"
-msgstr "आरटीएसपी प्रमाणीकरण "
+msgstr "आरटीएसपी प्रमाणीकरण"
 
 #: modules/access/smb_common.h:34
 #, c-format
@@ -10969,7 +10969,7 @@ msgstr ""
 
 #: modules/access/v4l2/v4l2.c:61
 msgid "Input of the card to use (see debug)."
-msgstr "वापरायचे कार्डची संगणकाला द्यायची माहिती (गणकदोष निवारण पाहा). "
+msgstr "वापरायचे कार्डची संगणकाला द्यायची माहिती (गणकदोष निवारण पाहा)."
 
 #: modules/access/v4l2/v4l2.c:62
 msgid "Audio input"
@@ -11261,7 +11261,7 @@ msgstr "ऋण"
 
 #: modules/access/v4l2/v4l2.c:165
 msgid "Emboss"
-msgstr "उठावाचे नक्षीकाम "
+msgstr "उठावाचे नक्षीकाम"
 
 #: modules/access/v4l2/v4l2.c:165
 msgid "Sketch"
@@ -11524,7 +11524,7 @@ msgstr "संपीडन पातळी"
 
 #: modules/access/vnc.c:66
 msgid "Transfer compression level from 0 (none) to 9 (max)"
-msgstr "अंतरण संपीडन पातळी ० (एकही नाही) पासून ते ९ (कमाल) पर्यंत "
+msgstr "अंतरण संपीडन पातळी ० (एकही नाही) पासून ते ९ (कमाल) पर्यंत"
 
 #: modules/access/vnc.c:67
 msgid "Image quality"
@@ -11743,7 +11743,7 @@ msgstr "धारिकेमध्ये १६ बाईट्स संके
 
 #: modules/access_output/livehttp.c:99
 msgid "File where vlc reads key-uri and keyfile-location"
-msgstr "धारिका जेथे व्हीएलसी की-यूआरआय व कीधारिका-स्थान वाचते "
+msgstr "धारिका जेथे व्हीएलसी की-यूआरआय व कीधारिका-स्थान वाचते"
 
 #: modules/access_output/livehttp.c:100
 #, fuzzy
@@ -11891,7 +11891,7 @@ msgstr "चॅलनची संख्या"
 #: modules/access_output/shout.c:99
 #, fuzzy
 msgid "Number of channels information of the transcoded stream."
-msgstr "रुपांतरित प्रवाहाच्या चॅनल संख्येविषयी माहिती. "
+msgstr "रुपांतरित प्रवाहाच्या चॅनल संख्येविषयी माहिती."
 
 #: modules/access_output/shout.c:101
 msgid "Ogg Vorbis Quality"
@@ -12046,7 +12046,7 @@ msgstr "वैशिष्ट परिमाण"
 
 #: modules/audio_filter/channel_mixer/headphone.c:60
 msgid "Distance between front left speaker and listener in meters."
-msgstr "पुढील डावा स्पीकर व श्रोत्यादरम्यानचे अंतर मीटरमध्ये. "
+msgstr "पुढील डावा स्पीकर व श्रोत्यादरम्यानचे अंतर मीटरमध्ये."
 
 #: modules/audio_filter/channel_mixer/headphone.c:62
 msgid "Compensate delay"
@@ -12101,7 +12101,7 @@ msgstr "ठेवण्यासाठी चॅनल निवडा"
 
 #: modules/audio_filter/channel_mixer/mono.c:82
 msgid "This option silences all other channels except the selected channel."
-msgstr "हा पर्याय निवडलेले चॅलन वगळता इतर सर्व चॅनलला शांत करतो. "
+msgstr "हा पर्याय निवडलेले चॅलन वगळता इतर सर्व चॅनलला शांत करतो."
 
 #: modules/audio_filter/channel_mixer/mono.c:87
 msgid "Stereo mix"
@@ -12213,7 +12213,7 @@ msgstr "प्रसार दर"
 
 #: modules/audio_filter/chorus_flanger.c:86
 msgid "Rate of change of sweep depth in milliseconds shift per second of play"
-msgstr "प्रसार खोली बदल दर मिलीसेकंदांमध्ये प्रतिसेकंद प्रति सेकंद चालविण्यातील बदल "
+msgstr "प्रसार खोली बदल दर मिलीसेकंदांमध्ये प्रतिसेकंद प्रति सेकंद चालविण्यातील बदल"
 
 #: modules/audio_filter/chorus_flanger.c:89
 #: modules/audio_filter/stereo_widen.c:60
@@ -12689,7 +12689,7 @@ msgstr "व्हर्च्युअल खोलीची रुंदी"
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1379
 #: modules/gui/qt/dialogs/extended/qml/FilterPanel.qml:35
 msgid "Wet"
-msgstr "ओले "
+msgstr "ओले"
 
 #: modules/audio_filter/spatializer/spatializer.cpp:65
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:266
@@ -12997,7 +12997,7 @@ msgstr "विशेष पद्धतीमध्ये ध्वनी उघ
 msgid ""
 "Enable this option if you want your audio not to be interrupted by the other "
 "audio."
-msgstr "तुम्हाला तुमच्या ध्वनीमध्ये इतर ध्वनीचा अडथळा नको असेल तर हा पर्याय समर्थ करा.  "
+msgstr "तुम्हाला तुमच्या ध्वनीमध्ये इतर ध्वनीचा अडथळा नको असेल तर हा पर्याय समर्थ करा."
 
 #: modules/audio_output/kai.c:114
 msgid "K Audio Interface audio output"
@@ -14083,7 +14083,7 @@ msgstr "जेपीईजी चित्र संकेतक"
 
 #: modules/codec/kate.c:188 modules/codec/subsusf.c:44
 msgid "Formatted Subtitles"
-msgstr "विशिष्ट प्रकारे रचना केलेल्या अनुवादपट्ट्या "
+msgstr "विशिष्ट प्रकारे रचना केलेल्या अनुवादपट्ट्या"
 
 #: modules/codec/kate.c:189
 #, fuzzy
@@ -14319,7 +14319,7 @@ msgstr ""
 
 #: modules/codec/kate.c:266
 msgid "Kate"
-msgstr "केट "
+msgstr "केट"
 
 #: modules/codec/kate.c:267
 msgid "Kate overlay decoder"
@@ -15309,7 +15309,7 @@ msgstr ""
 
 #: modules/codec/vorbis.c:186
 msgid "Force a constant bitrate encoding (CBR)."
-msgstr "सातत्यपूर्ण बिटदर संकेतनाची (सीबीआर) सक्ती करा. "
+msgstr "सातत्यपूर्ण बिटदर संकेतनाची (सीबीआर) सक्ती करा."
 
 #: modules/codec/vorbis.c:190
 msgid "Vorbis audio decoder"
@@ -15578,7 +15578,7 @@ msgstr "एच.२६४ प्रारुप"
 
 #: modules/codec/x264.c:155
 msgid "Specify H.264 profile which limits are enforced over other settings"
-msgstr "एच.२६४ प्रारुप नमूद करा ज्याच्या मर्यादांची इतर मांडण्यांवर अंमलबजावणी केली जाते "
+msgstr "एच.२६४ प्रारुप नमूद करा ज्याच्या मर्यादांची इतर मांडण्यांवर अंमलबजावणी केली जाते"
 
 #: modules/codec/x264.c:161
 msgid "Interlaced mode"
@@ -15692,7 +15692,7 @@ msgstr "कमाल क्यूपी पायरी"
 
 #: modules/codec/x264.c:205
 msgid "Max QP step between frames."
-msgstr "फ्रेमदरम्यान कमाल क्यूपी पायरी. "
+msgstr "फ्रेमदरम्यान कमाल क्यूपी पायरी."
 
 #: modules/codec/x264.c:207
 msgid "Average bitrate tolerance"
@@ -15772,7 +15772,7 @@ msgstr "आय व पी दरम्यान क्यूपी घटक. �
 
 #: modules/codec/x264.c:239
 msgid "QP factor between P and B"
-msgstr "पी व बी दरम्यानचा क्यूपी घटक "
+msgstr "पी व बी दरम्यानचा क्यूपी घटक"
 
 #: modules/codec/x264.c:240
 msgid "QP factor between P and B. Range 1.0 to 2.0."
@@ -16005,7 +16005,7 @@ msgstr ""
 
 #: modules/codec/x264.c:346
 msgid "Early SKIP detection on P-frames"
-msgstr "पी-फ्रेमवर लवकर वगळणे शोध "
+msgstr "पी-फ्रेमवर लवकर वगळणे शोध"
 
 #: modules/codec/x264.c:348
 msgid "Coefficient thresholding on P-frames"
@@ -16134,7 +16134,7 @@ msgstr "उपलब्धता एकक परिसीमक एनएएल
 
 #: modules/codec/x264.c:400
 msgid "Framecount to use on frametype lookahead"
-msgstr "फ्रेमप्रकार शोधण्यासाठी फ्रेमसंख्या वापरणे "
+msgstr "फ्रेमप्रकार शोधण्यासाठी फ्रेमसंख्या वापरणे"
 
 #: modules/codec/x264.c:401
 msgid ""
@@ -16206,7 +16206,7 @@ msgstr "सामान्य"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
 #: modules/video_output/xcb/render.c:764
 msgid "Fast"
-msgstr "जलद "
+msgstr "जलद"
 
 #: modules/codec/x264.c:424
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:312
@@ -16272,7 +16272,7 @@ msgstr "टेलीमजकूर पान"
 #: modules/codec/zvbi.c:61
 #, fuzzy
 msgid "Open the indicated Teletext page. Default page is index 100."
-msgstr "निर्देशित टेलिमजकूर पान उघडा. पूर्वनिर्धारित पान अनुसूची १०० आहे "
+msgstr "निर्देशित टेलिमजकूर पान उघडा. पूर्वनिर्धारित पान अनुसूची १०० आहे"
 
 #: modules/codec/zvbi.c:68
 msgid "Teletext alignment"
@@ -16853,7 +16853,7 @@ msgstr "सेवा व बाहेर पडणे स्थापित क�
 
 #: modules/control/ntservice.c:49
 msgid "Uninstall Windows Service"
-msgstr "विंडोज सेवा स्थापना रद्द करा "
+msgstr "विंडोज सेवा स्थापना रद्द करा"
 
 #: modules/control/ntservice.c:51
 msgid "Uninstall the Service and exit."
@@ -17408,7 +17408,7 @@ msgstr "निर्माता"
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1083
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1155
 msgid "Information"
-msgstr "माहिती "
+msgstr "माहिती"
 
 #: modules/demux/mp4/meta.c:74
 msgid "Disclaimer"
@@ -17448,7 +17448,7 @@ msgstr "इशारा"
 
 #: modules/demux/mp4/meta.c:83
 msgid "Software"
-msgstr "सॉफ्टवेअर "
+msgstr "सॉफ्टवेअर"
 
 #: modules/demux/mp4/meta.c:84 modules/demux/mpeg/es.c:510
 #: modules/demux/xiph_metadata.h:54 modules/demux/xiph_metadata.h:61
@@ -17743,7 +17743,7 @@ msgstr "एमपीईजी परिवहन प्रवाह विभा
 
 #: modules/demux/mpeg/ts_descriptions.h:24
 msgid "clean effects"
-msgstr "स्वच्छ परिणाम "
+msgstr "स्वच्छ परिणाम"
 
 #: modules/demux/mpeg/ts_descriptions.h:25
 msgid "visual impaired commentary"
@@ -18047,7 +18047,7 @@ msgstr "कच्चा ध्वनी विभाजक"
 #: modules/demux/rawdv.c:42
 msgid ""
 "The demuxer will advance timestamps if the input can't keep up with the rate."
-msgstr "संगणकाला दिलेल्या माहितीचा वेग दराशी जुळत नसेल तर विभाजक वेळेचे शिक्के पुढे नेईल. "
+msgstr "संगणकाला दिलेल्या माहितीचा वेग दराशी जुळत नसेल तर विभाजक वेळेचे शिक्के पुढे नेईल."
 
 #: modules/demux/rawdv.c:50
 msgid "DV (Digital Video) demuxer"
@@ -18063,7 +18063,7 @@ msgstr ""
 
 #: modules/demux/rawvid.c:47
 msgid "This specifies the width in pixels of the raw video stream."
-msgstr "हे कच्च्या ध्वनीचित्रफित प्रवाहाची रुंदी पिक्सलमध्ये स्पष्ट करते. "
+msgstr "हे कच्च्या ध्वनीचित्रफित प्रवाहाची रुंदी पिक्सलमध्ये स्पष्ट करते."
 
 #: modules/demux/rawvid.c:51
 msgid "This specifies the height in pixels of the raw video stream."
@@ -18657,7 +18657,7 @@ msgstr "जुनी प्राधान्ये काढून टाका
 
 #: modules/gui/macosx/main/VLCMain+OldPrefs.m:115
 msgid "We just found an older version of VLC's preferences files."
-msgstr "आम्हाला नुकतीच व्हीएलसी प्राधान्य धारिकांची जुनी आवृत्ती सापडली. "
+msgstr "आम्हाला नुकतीच व्हीएलसी प्राधान्य धारिकांची जुनी आवृत्ती सापडली."
 
 #: modules/gui/macosx/main/VLCMain+OldPrefs.m:116
 msgid "Move To Trash and Relaunch VLC"
@@ -18890,7 +18890,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:124
 msgid "Ask"
-msgstr "विचारा "
+msgstr "विचारा"
 
 #: modules/gui/macosx/main/macosx.m:128 modules/gui/qt/qt.cpp:282
 msgid "Maximum Volume displayed"
@@ -19879,7 +19879,7 @@ msgstr "मेटा साठविताना झालेली चूक"
 
 #: modules/gui/macosx/panels/VLCInformationWindowController.m:680
 msgid "VLC was unable to save the meta data."
-msgstr "व्हीएलसीला मेटा डाटा साठवता आला नाही. "
+msgstr "व्हीएलसीला मेटा डाटा साठवता आला नाही."
 
 #: modules/gui/macosx/panels/VLCInformationWindowController.m:696
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1229
@@ -20304,7 +20304,7 @@ msgstr "समर्थ करा अंतिम.एफएम सादरी�
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:199
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
 msgid "Visualization"
-msgstr "दृश्ये "
+msgstr "दृश्ये"
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:375
 msgid "Keep audio level between sessions"
@@ -21525,31 +21525,31 @@ msgstr "[प्रदर्शित करा]"
 
 #: modules/gui/ncurses.c:990
 msgid " h,H                    Show/Hide help box"
-msgstr "एच, एच                 मदत चौकट दाखवा/लपवा"
+msgstr " एच, एच                 मदत चौकट दाखवा/लपवा"
 
 #: modules/gui/ncurses.c:991
 msgid " i                      Show/Hide info box"
-msgstr "आय                 माहिती चौकट दाखवा/लपवा"
+msgstr " आय                 माहिती चौकट दाखवा/लपवा"
 
 #: modules/gui/ncurses.c:992
 msgid " M                      Show/Hide metadata box"
-msgstr "एम                     मेटाडाटा चौकट दाखवा/लपवा"
+msgstr " एम                     मेटाडाटा चौकट दाखवा/लपवा"
 
 #: modules/gui/ncurses.c:993
 msgid " L                      Show/Hide messages box"
-msgstr "एल                   संदेश चौकट दाखवा/लपवा"
+msgstr " एल                   संदेश चौकट दाखवा/लपवा"
 
 #: modules/gui/ncurses.c:994
 msgid " P                      Show/Hide playlist box"
-msgstr "पी                     चालविण्याची यादी चौकट दाखवा/लपवा"
+msgstr " पी                     चालविण्याची यादी चौकट दाखवा/लपवा"
 
 #: modules/gui/ncurses.c:995
 msgid " B                      Show/Hide filebrowser"
-msgstr "बी                   धारिकाब्राउजर  दाखवा/लपवा"
+msgstr " बी                   धारिकाब्राउजर  दाखवा/लपवा"
 
 #: modules/gui/ncurses.c:996
 msgid " S                      Show/Hide statistics box"
-msgstr "एस                   सांख्यिकी चौकट दाखवा/लपवा "
+msgstr " एस                   सांख्यिकी चौकट दाखवा/लपवा"
 
 #: modules/gui/ncurses.c:997
 msgid " E                      Show/Hide equalizer box"
@@ -21557,11 +21557,11 @@ msgstr ""
 
 #: modules/gui/ncurses.c:998
 msgid " Esc                    Close Add/Search entry"
-msgstr "ईएससी                नोंद समाविष्ट/शोध बंद करा"
+msgstr " ईएससी                नोंद समाविष्ट/शोध बंद करा"
 
 #: modules/gui/ncurses.c:999
 msgid " Ctrl-l                 Refresh the screen"
-msgstr "कंट्रोल-एल         पटल रिफ्रेश करा"
+msgstr " कंट्रोल-एल         पटल रिफ्रेश करा"
 
 #: modules/gui/ncurses.c:1003
 msgid "[Global]"
@@ -21569,11 +21569,11 @@ msgstr "[जागतिक]"
 
 #: modules/gui/ncurses.c:1005
 msgid " q, Q, Esc              Quit"
-msgstr "क्यू, क्यू, ईएससी        बाहेर पडणे"
+msgstr " क्यू, क्यू, ईएससी        बाहेर पडणे"
 
 #: modules/gui/ncurses.c:1006
 msgid " s                      Stop"
-msgstr "एस                  थांबा"
+msgstr " एस                  थांबा"
 
 #: modules/gui/ncurses.c:1007
 msgid " <space>                Pause/Play"
@@ -21581,23 +21581,23 @@ msgstr " <जागा>                थांबा/चालविणे"
 
 #: modules/gui/ncurses.c:1008
 msgid " f                      Toggle Fullscreen"
-msgstr "एफ               संपूर्णपटल बदला"
+msgstr " एफ               संपूर्णपटल बदला"
 
 #: modules/gui/ncurses.c:1009
 msgid " c                      Cycle through audio tracks"
-msgstr "सी                     ध्वनीचित्रफिती चालवत राहा"
+msgstr " सी                     ध्वनीचित्रफिती चालवत राहा"
 
 #: modules/gui/ncurses.c:1010
 msgid " v                      Cycle through subtitles tracks"
-msgstr "व्ही                  अनुवादपट्टी फित चालवत राहा"
+msgstr " व्ही                  अनुवादपट्टी फित चालवत राहा"
 
 #: modules/gui/ncurses.c:1011
 msgid " b                      Cycle through video tracks"
-msgstr "बी                    ध्वनीचित्रफिती चालवत राहा"
+msgstr " बी                    ध्वनीचित्रफिती चालवत राहा"
 
 #: modules/gui/ncurses.c:1012
 msgid " n, p                   Next/Previous playlist item"
-msgstr "एन, पी               पुढील/आधीचा प्लेलिस्ट घटक"
+msgstr " एन, पी               पुढील/आधीचा प्लेलिस्ट घटक"
 
 #: modules/gui/ncurses.c:1013
 msgid " [, ]                   Next/Previous title"
@@ -21615,11 +21615,11 @@ msgstr " <डावे>,<उजवे>        मिळवा -/+ १%%"
 
 #: modules/gui/ncurses.c:1017
 msgid " a, z                   Volume Up/Down"
-msgstr "ए, झेड               आवाज वर/खाली"
+msgstr " ए, झेड               आवाज वर/खाली"
 
 #: modules/gui/ncurses.c:1018
 msgid " m                      Mute"
-msgstr "एम                  आवाज बंद"
+msgstr " एम                  आवाज बंद"
 
 #. xgettext: You can use ↑ and ↓ characters
 #: modules/gui/ncurses.c:1020
@@ -21654,27 +21654,27 @@ msgstr "[चालविण्याची यादी]"
 
 #: modules/gui/ncurses.c:1037
 msgid " r                      Toggle Random playing"
-msgstr "आर              स्वैर चालविणे बदला"
+msgstr " आर              स्वैर चालविणे बदला"
 
 #: modules/gui/ncurses.c:1038
 msgid " l                      Toggle Loop Playlist"
-msgstr "आय                      लूप चालविण्याच्या याद्या बदला"
+msgstr " आय                      लूप चालविण्याच्या याद्या बदला"
 
 #: modules/gui/ncurses.c:1039
 msgid " R                      Toggle Repeat item"
-msgstr "आर                 घटक पुनरावृत्ती बदला"
+msgstr " आर                 घटक पुनरावृत्ती बदला"
 
 #: modules/gui/ncurses.c:1040
 msgid " o                      Order Playlist by title"
-msgstr "ओ                   शीर्षकाद्वारे चालविण्याची यादी मागवा"
+msgstr " ओ                   शीर्षकाद्वारे चालविण्याची यादी मागवा"
 
 #: modules/gui/ncurses.c:1041
 msgid " O                      Reverse order Playlist by title"
-msgstr "०                       शीर्षकाद्वारे चालविण्याची यादी उलट्या क्रमाने"
+msgstr " ०                       शीर्षकाद्वारे चालविण्याची यादी उलट्या क्रमाने"
 
 #: modules/gui/ncurses.c:1042
 msgid " g                      Go to the current playing item"
-msgstr "जी                      सध्या चालविल्या जाणा-या घटकाकडे जा"
+msgstr " जी                      सध्या चालविल्या जाणा-या घटकाकडे जा"
 
 #: modules/gui/ncurses.c:1043
 msgid " /                      Look for an item"
@@ -21686,7 +21686,7 @@ msgstr " ;                      पुढील घटकाचा शोध घ
 
 #: modules/gui/ncurses.c:1045
 msgid " A                      Add an entry"
-msgstr "ए                     एक नोंद समाविष्ट करा"
+msgstr " ए                     एक नोंद समाविष्ट करा"
 
 #. xgettext: You can use ⌫ character to translate <backspace>
 #: modules/gui/ncurses.c:1047
@@ -21695,7 +21695,7 @@ msgstr " डी, <बॅकस्पेस>, <डिलीट>  नोंद न
 
 #: modules/gui/ncurses.c:1048
 msgid " e                      Eject (if stopped)"
-msgstr "ई                      बाहेर काढा (थांबविण्यात आल्यास)"
+msgstr " ई                      बाहेर काढा (थांबविण्यात आल्यास)"
 
 #: modules/gui/ncurses.c:1052
 msgid "[Filebrowser]"
@@ -21750,25 +21750,25 @@ msgstr ""
 #: modules/gui/ncurses.c:1241
 #, c-format
 msgid " Source   : %s"
-msgstr "स्रोत   : %s"
+msgstr " स्रोत   : %s"
 
 #: modules/gui/ncurses.c:1271
 #, c-format
 msgid " Position : %s/%s"
-msgstr "स्थिती : %s/%s"
+msgstr " स्थिती : %s/%s"
 
 #: modules/gui/ncurses.c:1276
 msgid " Volume   : Mute"
-msgstr "तीव्रता  : आवाज नाही"
+msgstr " तीव्रता  : आवाज नाही"
 
 #: modules/gui/ncurses.c:1277
 #, c-format
 msgid " Volume   : %3ld%%"
-msgstr "तीव्रता  : %3ld%%"
+msgstr " तीव्रता  : %3ld%%"
 
 #: modules/gui/ncurses.c:1277
 msgid " Volume   : ----"
-msgstr "तीव्रता  : ----"
+msgstr " तीव्रता  : ----"
 
 #: modules/gui/ncurses.c:1286
 #, c-format
@@ -21783,7 +21783,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr "स्रोत: <कोणताही सध्याचा घटक नाही> "
+msgstr " स्रोत: <कोणताही सध्याचा घटक नाही>"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -23293,7 +23293,7 @@ msgstr "नोंद धारिका च्या नावाने सा�
 #: modules/gui/qt/dialogs/messages/messages.cpp:361
 #, fuzzy
 msgid "Texts/Logs (*.log *.txt);; All (*.*)"
-msgstr "मजकूर/नोंदी (*.एलओजी *.टीएक्सटी);; सर्व (*.*) "
+msgstr "मजकूर/नोंदी (*.एलओजी *.टीएक्सटी);; सर्व (*.*)"
 
 #: modules/gui/qt/dialogs/messages/messages.cpp:367
 msgid "Application"
@@ -23469,7 +23469,7 @@ msgstr "प्रवाह करण्यासाठी किंवा सा
 #. xgettext: frames per second
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1172
 msgid " f/s"
-msgstr "एफ/एस"
+msgstr " एफ/एस"
 
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1387
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:604
@@ -23487,7 +23487,7 @@ msgstr "इथे यूआरएल घाला..."
 
 #: modules/gui/qt/dialogs/open/openurl.cpp:66
 msgid "Please enter the URL or path to the media you want to play."
-msgstr "कृपया तुम्हाला जे माध्यम चालवायचे आहे त्याची यूआरएल किंवा मार्ग घाला. "
+msgstr "कृपया तुम्हाला जे माध्यम चालवायचे आहे त्याची यूआरएल किंवा मार्ग घाला."
 
 #: modules/gui/qt/dialogs/open/openurl.cpp:70
 msgid ""
@@ -24774,7 +24774,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:193
 #, fuzzy
 msgid " dB"
-msgstr "डीबी"
+msgstr " डीबी"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207
@@ -26273,7 +26273,7 @@ msgstr "हा मिश्रण हरवलेला आहे. हे स्
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:802
 msgid " Profile Name Missing"
-msgstr "स्वरुप नाव हरवले आहे"
+msgstr " स्वरुप नाव हरवले आहे"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:803
 msgid "You must set a name for the profile."
@@ -26628,7 +26628,7 @@ msgstr "पुन्हा विलंब करा:"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:104
 msgid " days"
-msgstr "दिवस"
+msgstr " दिवस"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:123
 msgid "I&mport"
@@ -26657,11 +26657,11 @@ msgstr "बदला"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:506
 msgid "Broadcast: "
-msgstr "प्रसारण:"
+msgstr "प्रसारण: "
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 msgid "Schedule: "
-msgstr "वेळापत्रक:"
+msgstr "वेळापत्रक: "
 
 #: modules/gui/qt/maininterface/mainctx.cpp:1193
 msgid "Paste from clipboard"
@@ -27922,7 +27922,7 @@ msgstr "सिस्ट्रेच्या जवळ"
 
 #: modules/gui/qt/menus/menus.cpp:246 modules/gui/qt/menus/menus.cpp:884
 msgid "&Effects and Filters"
-msgstr "व परिणाम व चाळण्या "
+msgstr "व परिणाम व चाळण्या"
 
 #: modules/gui/qt/menus/menus.cpp:249 modules/gui/qt/menus/menus.cpp:885
 msgid "&Track Synchronization"
@@ -29844,7 +29844,7 @@ msgstr "कोणते पटल संपूर्णपटल होतील
 #: modules/gui/qt/qt.cpp:251
 #, fuzzy
 msgid "Screennumber of fullscreen, instead of same screen where interface is."
-msgstr "जेथे आंतरपृष्ठ आहे त्या एकाच पटलाऐवजी संपूर्ण पटलाचा पटलक्रमांक  "
+msgstr "जेथे आंतरपृष्ठ आहे त्या एकाच पटलाऐवजी संपूर्ण पटलाचा पटलक्रमांक"
 
 #: modules/gui/qt/qt.cpp:254
 msgid "Load extensions on startup"
@@ -30477,7 +30477,7 @@ msgstr "आवरण घातलेली चालविण्याची य
 
 #: modules/gui/skins2/src/skin_main.cpp:490
 msgid "Display video in a skinned window if any"
-msgstr "आवरण असलेल्या विंडोमध्ये एखादी ध्वनीचित्रफित असल्यास ती प्रदर्शित करा "
+msgstr "आवरण असलेल्या विंडोमध्ये एखादी ध्वनीचित्रफित असल्यास ती प्रदर्शित करा"
 
 #: modules/gui/skins2/src/skin_main.cpp:492
 msgid ""
@@ -30712,7 +30712,7 @@ msgstr "विलग करण्याचा गणनविधी"
 
 #: modules/hw/vdpau/chroma.c:812
 msgid "Inverse telecine"
-msgstr "उलट टेलिसिनी "
+msgstr "उलट टेलिसिनी"
 
 #: modules/hw/vdpau/chroma.c:814
 msgid "Deinterlace chroma skip"
@@ -30720,7 +30720,7 @@ msgstr "क्रोमा वगळणे विलग करा"
 
 #: modules/hw/vdpau/chroma.c:815
 msgid "Whether temporal deinterlacing applies to luma only"
-msgstr "कालवाचक विलग करणे केवळ ल्यूमालाच लागू होते "
+msgstr "कालवाचक विलग करणे केवळ ल्यूमालाच लागू होते"
 
 #: modules/hw/vdpau/chroma.c:817
 msgid "Noise reduction level"
@@ -31022,7 +31022,7 @@ msgstr "एलयूए आंतरपृष्ठ"
 
 #: modules/lua/vlc.c:53
 msgid "Lua interface module to load"
-msgstr "उघडायचा एलयूएल आंतरपृष्ठ भाग "
+msgstr "उघडायचा एलयूएल आंतरपृष्ठ भाग"
 
 #: modules/lua/vlc.c:55
 msgid "Lua interface configuration"
@@ -31202,7 +31202,7 @@ msgstr "जुनी"
 
 #: modules/meta_engine/ID3Genres.h:45
 msgid "Other"
-msgstr "इतर "
+msgstr "इतर"
 
 #: modules/meta_engine/ID3Genres.h:47
 msgid "R&B"
@@ -31258,7 +31258,7 @@ msgstr "ट्रांस"
 
 #: modules/meta_engine/ID3Genres.h:66
 msgid "Instrumental"
-msgstr " वाद्यसंगीत"
+msgstr "वाद्यसंगीत"
 
 #: modules/meta_engine/ID3Genres.h:67
 msgid "Acid"
@@ -31554,7 +31554,7 @@ msgstr "स्लो जाम"
 
 #: modules/meta_engine/ID3Genres.h:146
 msgid "Tango"
-msgstr "टँगो "
+msgstr "टँगो"
 
 #: modules/meta_engine/ID3Genres.h:147
 msgid "Samba"
@@ -31666,7 +31666,7 @@ msgstr "तत्कालीन ख्रिश्चन"
 
 #: modules/meta_engine/ID3Genres.h:174
 msgid "Christian Rock"
-msgstr "ख्रिश्चन रॉक "
+msgstr "ख्रिश्चन रॉक"
 
 #: modules/meta_engine/ID3Genres.h:175
 msgid "Merengue"
@@ -32502,7 +32502,7 @@ msgstr "एमपीईजी-I/II ध्वनीचित्रफित प�
 
 #: modules/packetizer/mpegvideo.c:76
 msgid "MPEG Video"
-msgstr "एमपीईजी ध्वनीचित्रफित "
+msgstr "एमपीईजी ध्वनीचित्रफित"
 
 #: modules/packetizer/vc1.c:54
 msgid "VC-1 packetizer"
@@ -33838,7 +33838,7 @@ msgstr "नक्षीदार चित्राची पारपदर्�
 
 #: modules/stream_out/mosaic_bridge.c:702
 msgid "X coordinate of the upper left corner in the mosaic if non negative."
-msgstr "एक्स ऋण नसल्यास नक्षीच्या वरील भागातील डाव्या कोप-याचा निर्देशांक. "
+msgstr "एक्स ऋण नसल्यास नक्षीच्या वरील भागातील डाव्या कोप-याचा निर्देशांक."
 
 #: modules/stream_out/mosaic_bridge.c:706
 msgid "Y coordinate of the upper left corner in the mosaic if non negative."
@@ -34359,7 +34359,7 @@ msgstr "हा ध्वनीचित्रफित कोडेक आहे
 #: modules/stream_out/transcode/transcode.c:52
 #: share/lua/http/dialogs/create_stream.html:212
 msgid "Video bitrate"
-msgstr "ध्वनीटचित्रफित बिटदर "
+msgstr "ध्वनीटचित्रफित बिटदर"
 
 #: modules/stream_out/transcode/transcode.c:54
 msgid "Target bitrate of the transcoded video stream."
@@ -34727,7 +34727,7 @@ msgstr "ध्वनीचित्रफित चाळणी ध्वनी�
 #: modules/video_chroma/grey_yuv.c:55 modules/video_chroma/i422_i420.c:56
 #: modules/video_chroma/yuy2_i420.c:57 modules/video_chroma/yuy2_i422.c:57
 msgid "Conversions from "
-msgstr "च्यामधून रुपांतर"
+msgstr "च्यामधून रुपांतर "
 
 #: modules/video_chroma/i420_nv12.c:239
 msgid "YUV planar to semiplanar conversions"
@@ -34792,7 +34792,7 @@ msgstr "लँकोस"
 
 #: modules/video_chroma/swscale.c:62
 msgid "Bicubic spline"
-msgstr "द्विघनाकृती "
+msgstr "द्विघनाकृती"
 
 #: modules/video_chroma/swscale.c:116 modules/video_filter/scale.c:48
 msgid "Video scaling filter"
@@ -34984,7 +34984,7 @@ msgstr "जी प्रतिमा मिसळली जाईल"
 
 #: modules/video_filter/blendbench.c:65
 msgid "The image blended onto the base image"
-msgstr "प्रतिमा आधार प्रतिमेत मिसळली जाईल "
+msgstr "प्रतिमा आधार प्रतिमेत मिसळली जाईल"
 
 #: modules/video_filter/blendbench.c:67
 msgid "Chroma for the blend image"
@@ -35491,7 +35491,7 @@ msgstr "ग्रॅडफन ध्वनीचित्रफित चाळ�
 
 #: modules/video_filter/gradfun.c:58
 msgid "Gradfun"
-msgstr "ग्रॅडफन "
+msgstr "ग्रॅडफन"
 
 #: modules/video_filter/gradfun.c:59
 msgid "Debanding algorithm"
@@ -35503,7 +35503,7 @@ msgstr "आकार बिघडवणे पद्धत"
 
 #: modules/video_filter/gradient.c:62
 msgid "Distort mode, one of \"gradient\", \"edge\" and \"hough\"."
-msgstr "आकार बिघडवणे पद्धत, one of \"अनुपात\", \"कडा\" व \"हॉग\" पैकी एक. "
+msgstr "आकार बिघडवणे पद्धत, one of \"अनुपात\", \"कडा\" व \"हॉग\" पैकी एक."
 
 #: modules/video_filter/gradient.c:64
 msgid "Keep color"
@@ -35539,7 +35539,7 @@ msgstr "किमान कालावधी"
 
 #: modules/video_filter/grain.c:58
 msgid "Minimal period of the noise grain in pixel"
-msgstr "कोलाहल अंशाचा किमान कालावधी पिक्सलमध्ये "
+msgstr "कोलाहल अंशाचा किमान कालावधी पिक्सलमध्ये"
 
 #: modules/video_filter/grain.c:59
 msgid "Maximal period"
@@ -35724,7 +35724,7 @@ msgstr "पट्टी घटक (०.१-२.०)"
 msgid ""
 "Amount by which to scale the picture before sending it to the internal "
 "OpenCV filter"
-msgstr "अंतर्गत खुलासीव्ही चाळणीकडे पाठविण्यापूर्वी चित्र किती पटीने वाढवायचे त्याचे प्रमाण "
+msgstr "अंतर्गत खुलासीव्ही चाळणीकडे पाठविण्यापूर्वी चित्र किती पटीने वाढवायचे त्याचे प्रमाण"
 
 #: modules/video_filter/opencv_wrapper.cpp:80
 msgid "OpenCV filter chroma"
@@ -35823,7 +35823,7 @@ msgstr "लहान पूर्वावलोकन"
 
 #: modules/video_filter/puzzle/puzzle.c:61
 msgid "Small preview size"
-msgstr "लहान पूर्वावलोकन आकार "
+msgstr "लहान पूर्वावलोकन आकार"
 
 #: modules/video_filter/puzzle/puzzle.c:62
 msgid "Show small preview size (percent of source)."
@@ -36757,7 +36757,7 @@ msgstr "प्रारंभिक मिश्र विभागाचा ल
 
 #: modules/video_splitter/panoramix.c:107
 msgid "Attenuation, middle (in %)"
-msgstr "विरलन, मध्य (% मध्ये) "
+msgstr "विरलन, मध्य (% मध्ये)"
 
 #: modules/video_splitter/panoramix.c:108
 msgid ""
@@ -36815,7 +36815,7 @@ msgstr "लाल साठी काळी दाटी"
 
 #: modules/video_splitter/panoramix.c:131
 msgid "Select the Black Crush of blended zone (Red or Y component)"
-msgstr "मिश्र विभागासाठी काळी "
+msgstr "मिश्र विभागासाठी काळी"
 
 #: modules/video_splitter/panoramix.c:132
 msgid "Black Crush for Green"
@@ -37118,7 +37118,7 @@ msgstr "मूळ आलेखी स्पेक्ट्रम समर्थ
 
 #: modules/visualization/visual/visual.c:86
 msgid "Enable the \"flat\" spectrum analyzer in the spectrometer."
-msgstr "स्पेक्ट्रोमीटरमध्ये \"सपाट\" स्पेक्ट्रम विश्लेषक समर्थ करा. "
+msgstr "स्पेक्ट्रोमीटरमध्ये \"सपाट\" स्पेक्ट्रम विश्लेषक समर्थ करा."
 
 #: modules/visualization/visual/visual.c:88
 msgid "Draw bands in the spectrometer"
@@ -37150,7 +37150,7 @@ msgstr "सर्वोच्च उंची"
 
 #: modules/visualization/visual/visual.c:102
 msgid "Total pixel height of the peak items."
-msgstr "सर्वोच्च घटकांची एकूण पिक्सल उंची. "
+msgstr "सर्वोच्च घटकांची एकूण पिक्सल उंची."
 
 #: modules/visualization/visual/visual.c:104
 msgid "Peak extra width"
@@ -37319,7 +37319,7 @@ msgstr "लूप"
 
 #: share/lua/http/index.html:261
 msgid "Empty Playlist"
-msgstr "रिकामी चालविण्याची यादी "
+msgstr "रिकामी चालविण्याची यादी"
 
 #: share/lua/http/index.html:262
 msgid "Queue Selected"

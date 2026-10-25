@@ -769,12 +769,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (по умолчанию включено)"
+msgstr "(по умолчанию включено)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (по умолчанию выключено)"
+msgstr "(по умолчанию выключено)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -10757,7 +10757,7 @@ msgstr "Код дисплея"
 #: modules/access/screen/screen.c:83
 #, fuzzy
 msgid "Display ID. If not specified, main display ID is used."
-msgstr "Код дисплея (если не указан, используется основной дисплей). "
+msgstr "Код дисплея (если не указан, используется основной дисплей)."
 
 #: modules/access/screen/screen.c:84
 msgid "Screen index"
@@ -22008,7 +22008,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr " Источник: <нет текущего элемента> "
+msgstr " Источник: <нет текущего элемента>"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"

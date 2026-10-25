@@ -2575,7 +2575,7 @@ msgstr ""
 
 #: src/libvlc-module.c:580
 msgid "Clock reference average counter"
-msgstr "Contador meyo de referencia d'o reloch "
+msgstr "Contador meyo de referencia d'o reloch"
 
 #: src/libvlc-module.c:582
 msgid ""
@@ -2905,7 +2905,7 @@ msgstr "O fluxo s'encetará en ista posición (en segundos)."
 #: src/libvlc-module.c:730
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:227
 msgid "Stop time"
-msgstr "Inte d'aturada  "
+msgstr "Inte d'aturada"
 
 #: src/libvlc-module.c:732
 msgid "The stream will stop at this position (in seconds)."
@@ -4364,7 +4364,7 @@ msgstr "Seleccione l'alcorce de teclau ta fer un blinco largo dezaga."
 
 #: src/libvlc-module.c:1404
 msgid "Very short forward jump"
-msgstr "Blinco muit curto abance "
+msgstr "Blinco muit curto abance"
 
 #: src/libvlc-module.c:1406
 msgid "Select the hotkey to make a very short forward jump."
@@ -5268,7 +5268,7 @@ msgstr "Favoritos d'o navegador"
 #: src/misc/actions.c:60
 msgctxt "key"
 msgid "Browser Forward"
-msgstr "Enta abant en o navegador "
+msgstr "Enta abant en o navegador"
 
 #: src/misc/actions.c:61
 msgctxt "key"
@@ -5867,7 +5867,7 @@ msgstr ""
 #: src/player/osd.c:185 src/player/osd.c:229
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:98
 msgid "N/A"
-msgstr " N/A2"
+msgstr "N/A2"
 
 #: src/player/osd.c:186 src/player/osd.c:229 src/player/osd.c:238
 #, c-format
@@ -5900,7 +5900,7 @@ msgstr ""
 #: src/player/osd.c:300
 #, c-format
 msgid "Crop: %s"
-msgstr " Retallar: %s"
+msgstr "Retallar: %s"
 
 #: src/player/osd.c:303
 #, c-format
@@ -5944,7 +5944,7 @@ msgstr "Codificador de subtítulos DVB"
 
 #: src/player/osd.c:340
 msgid "Zooming reset"
-msgstr " Reinicializar ampliación"
+msgstr "Reinicializar ampliación"
 
 #: src/player/osd.c:344
 #, c-format
@@ -9055,7 +9055,7 @@ msgstr ""
 
 #: modules/access/dtv/access.c:49
 msgid "DVB device"
-msgstr "Dispositivo DVB "
+msgstr "Dispositivo DVB"
 
 #: modules/access/dtv/access.c:51
 msgid ""
@@ -9456,7 +9456,7 @@ msgstr "Parametros ISDB-S"
 
 #: modules/access/dtv/access.c:385
 msgid "Satellite equipment control"
-msgstr " Control de quipamiento de satélite"
+msgstr "Control de quipamiento de satélite"
 
 #: modules/access/dtv/access.c:421
 msgid "ATSC reception parameters"
@@ -9556,7 +9556,7 @@ msgstr ""
 
 #: modules/access/dvdnav.c:94
 msgid "DVD with menus"
-msgstr "DVD con menús "
+msgstr "DVD con menús"
 
 #: modules/access/dvdnav.c:95
 msgid "DVDnav Input"
@@ -11437,7 +11437,7 @@ msgstr ""
 
 #: modules/access/vcd/vcd.c:48
 msgid "VCD"
-msgstr " VCD"
+msgstr "VCD"
 
 #: modules/access/vcd/vcd.c:49
 msgid "VCD input"
@@ -11868,7 +11868,7 @@ msgstr "Descripción de chenero"
 #: modules/access_output/shout.c:83
 #, fuzzy
 msgid "Genre of the content."
-msgstr "Chenero d'o conteniu. "
+msgstr "Chenero d'o conteniu."
 
 #: modules/access_output/shout.c:85
 #, fuzzy
@@ -11878,7 +11878,7 @@ msgstr "Descripción"
 #: modules/access_output/shout.c:86
 #, fuzzy
 msgid "URL with information about the stream or your channel."
-msgstr "URL con información sobre a emisión u a suya canal. "
+msgstr "URL con información sobre a emisión u a suya canal."
 
 #: modules/access_output/shout.c:93
 #, fuzzy
@@ -12522,7 +12522,7 @@ msgstr "Freq 1 Q"
 
 #: modules/audio_filter/param_eq.c:67
 msgid "Freq 2 (Hz)"
-msgstr " Freq 2 (Hz)"
+msgstr "Freq 2 (Hz)"
 
 #: modules/audio_filter/param_eq.c:69
 msgid "Freq 2 gain (dB)"
@@ -12534,7 +12534,7 @@ msgstr "Freq 2 Q"
 
 #: modules/audio_filter/param_eq.c:72
 msgid "Freq 3 (Hz)"
-msgstr " Freq 3 (Hz)"
+msgstr "Freq 3 (Hz)"
 
 #: modules/audio_filter/param_eq.c:74
 msgid "Freq 3 gain (dB)"
@@ -12846,7 +12846,7 @@ msgstr "Salida d'audio ALSA"
 
 #: modules/audio_output/amem.c:51
 msgid "Audio memory"
-msgstr " Memoria d'audio"
+msgstr "Memoria d'audio"
 
 #: modules/audio_output/amem.c:52
 msgid "Audio memory output"
@@ -15738,7 +15738,7 @@ msgstr "Factor QP entre I y P"
 
 #: modules/codec/x264.c:236
 msgid "QP factor between I and P. Range 1.0 to 2.0."
-msgstr " Factor QP entre I y P. Rango 1.0 a 2.0."
+msgstr "Factor QP entre I y P. Rango 1.0 a 2.0."
 
 #: modules/codec/x264.c:239
 msgid "QP factor between P and B"
@@ -16137,7 +16137,7 @@ msgstr ""
 #: modules/codec/x264.c:408
 #, fuzzy
 msgid "x264 advanced options"
-msgstr " Opcions abanzadas"
+msgstr "Opcions abanzadas"
 
 #: modules/codec/x264.c:409
 msgid "x264 advanced options, in the form {opt=val,op2=val2}."
@@ -16612,7 +16612,7 @@ msgstr "| taxa de bits de dentrada    :   %6.0f kb/s"
 #: modules/control/cli/player.c:905 modules/gui/ncurses.c:940
 #, c-format
 msgid "| demux bytes read : %8.0f KiB"
-msgstr " | bytes de demux leitos : %8.0f KiB"
+msgstr "| bytes de demux leitos : %8.0f KiB"
 
 #: modules/control/cli/player.c:907 modules/gui/ncurses.c:942
 #, c-format
@@ -16622,7 +16622,7 @@ msgstr "| taxa de bits de demux      :   %6.0f kb/s"
 #: modules/control/cli/player.c:909
 #, c-format
 msgid "| demux corrupted  :    %5<PRIi64>"
-msgstr " | demux corrompiu : %5<PRIi64>"
+msgstr "| demux corrompiu : %5<PRIi64>"
 
 #: modules/control/cli/player.c:911
 #, c-format
@@ -16974,7 +16974,7 @@ msgstr ""
 
 #: modules/demux/aiff.c:53
 msgid "AIFF demuxer"
-msgstr " Demuxer AIFF"
+msgstr "Demuxer AIFF"
 
 #: modules/demux/asf/asf.c:64
 msgid "ASF/WMV demuxer"
@@ -17853,7 +17853,7 @@ msgstr "Importar lista de reproducción B4S"
 
 #: modules/demux/playlist/playlist.c:83
 msgid "DVB playlist import"
-msgstr " Importar lista de reproducción DVB"
+msgstr "Importar lista de reproducción DVB"
 
 #: modules/demux/playlist/playlist.c:88
 msgid "Podcast parser"
@@ -17982,7 +17982,7 @@ msgstr "Demuxor AU"
 
 #: modules/demux/rawaud.c:43
 msgid "Audio sample rate in Hertz. Default is 48000 Hz."
-msgstr "Taxa de muestreyo d'audio en hercios. Por defecto ye 48000 Hz. "
+msgstr "Taxa de muestreyo d'audio en hercios. Por defecto ye 48000 Hz."
 
 #: modules/demux/rawaud.c:45 modules/stream_out/transcode/transcode.c:100
 #: share/lua/http/dialogs/create_stream.html:316
@@ -19887,11 +19887,11 @@ msgstr "Sincronización de pista d'audio:"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:270
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:271
 msgid "s"
-msgstr " s"
+msgstr "s"
 
 #: modules/gui/macosx/panels/VLCTrackSynchronizationWindowController.m:88
 msgid "A positive value means that the audio is ahead of the video"
-msgstr " Una valor positiva significa que l'audio va abanzau a o video"
+msgstr "Una valor positiva significa que l'audio va abanzau a o video"
 
 #: modules/gui/macosx/panels/VLCTrackSynchronizationWindowController.m:89
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1496
@@ -21403,7 +21403,7 @@ msgstr "Volumen"
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:248
 #, fuzzy
 msgid "Playback time"
-msgstr "Ratio de reproducción "
+msgstr "Ratio de reproducción"
 
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:549
 msgid "No current item"
@@ -21478,7 +21478,7 @@ msgstr "      %s: %s"
 
 #: modules/gui/ncurses.c:988
 msgid "[Display]"
-msgstr " [Pantalla]"
+msgstr "[Pantalla]"
 
 #: modules/gui/ncurses.c:990
 msgid " h,H                    Show/Hide help box"
@@ -21713,7 +21713,7 @@ msgstr " Orichen   : %s"
 #: modules/gui/ncurses.c:1271
 #, c-format
 msgid " Position : %s/%s"
-msgstr "  Posición : %s/%s"
+msgstr " Posición : %s/%s"
 
 #: modules/gui/ncurses.c:1276
 msgid " Volume   : Mute"
@@ -23248,7 +23248,7 @@ msgstr "Alzar fichero de trazas como..."
 #: modules/gui/qt/dialogs/messages/messages.cpp:361
 #, fuzzy
 msgid "Texts/Logs (*.log *.txt);; All (*.*)"
-msgstr "Fichers de texto y trazas (*.log *.txt);; Tot (*.*) "
+msgstr "Fichers de texto y trazas (*.log *.txt);; Tot (*.*)"
 
 #: modules/gui/qt/dialogs/messages/messages.cpp:367
 msgid "Application"
@@ -23430,7 +23430,7 @@ msgstr " f/s"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:604
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:618
 msgid "Advanced Options"
-msgstr " Opcions abanzadas"
+msgstr "Opcions abanzadas"
 
 #: modules/gui/qt/dialogs/open/openurl.cpp:45
 msgid "Open URL"
@@ -24721,7 +24721,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:193
 #, fuzzy
 msgid " dB"
-msgstr "dB"
+msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207
@@ -26220,7 +26220,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:802
 msgid " Profile Name Missing"
-msgstr "Nombre de perfil ausent"
+msgstr " Nombre de perfil ausent"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:803
 msgid "You must set a name for the profile."
@@ -27444,7 +27444,7 @@ msgstr ""
 
 #: modules/gui/qt/medialibrary/qml/MusicAlbumSectionDelegate.qml:236
 msgid "Prev"
-msgstr " Previo"
+msgstr "Previo"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:82
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:168
@@ -29818,7 +29818,7 @@ msgstr "Amostrar como de fondo u arte"
 #: modules/gui/qt/qt.cpp:265
 #, fuzzy
 msgid "Background art fits window's size."
-msgstr "Arte de fondo s'achusta a la grandaria d'a finestra "
+msgstr "Arte de fondo s'achusta a la grandaria d'a finestra"
 
 #: modules/gui/qt/qt.cpp:267
 msgid "Ignore keyboard volume buttons."
@@ -37036,7 +37036,7 @@ msgstr "Color plana-V"
 
 #: modules/visualization/visual/visual.c:110
 msgid "YUV-Color cube shifting across the V-plane ( 0 - 127 )."
-msgstr " Cubo Color YUV cambiando por o plano V ( 0 - 127 )."
+msgstr "Cubo Color YUV cambiando por o plano V ( 0 - 127 )."
 
 #: modules/visualization/visual/visual.c:122
 msgid "Visualizer filter"
@@ -37143,7 +37143,7 @@ msgstr ""
 
 #: share/lua/http/dialogs/offset_window.html:68
 msgid "Playback Rate"
-msgstr "Ratio de reproducción "
+msgstr "Ratio de reproducción"
 
 #: share/lua/http/dialogs/offset_window.html:72
 msgid "Audio Delay"

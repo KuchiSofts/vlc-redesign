@@ -153,7 +153,7 @@ msgstr "Obutwe obwokubiri & Ku Ntegeka Elaga Sikulini"
 #: include/vlc_config_cat.h:57
 #, fuzzy
 msgid "Input & Codec Settings"
-msgstr "Nyigiza & Entegeka za Codecs "
+msgstr "Nyigiza & Entegeka za Codecs"
 
 #: include/vlc_config_cat.h:58
 msgid "Hotkeys Settings"
@@ -515,7 +515,7 @@ msgstr "Sengejja Eddoboozi"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:180
 #, fuzzy
 msgid "Replay gain"
-msgstr "Ddamu engyeri gjogizanye: "
+msgstr "Ddamu engyeri gjogizanye:"
 
 #: src/audio_output/output.c:400 modules/gui/macosx/menus/VLCMainMenu.m:425
 #: modules/gui/macosx/menus/VLCMainMenu.m:426
@@ -1739,12 +1739,12 @@ msgstr ""
 #: src/libvlc-module.c:233
 #, fuzzy
 msgid "Replay gain mode"
-msgstr "Ddamu engyeri gjogizanye: "
+msgstr "Ddamu engyeri gjogizanye:"
 
 #: src/libvlc-module.c:236
 #, fuzzy
 msgid "Replay preamp"
-msgstr "Ddamu engyeri gjogizanye: "
+msgstr "Ddamu engyeri gjogizanye:"
 
 #: src/libvlc-module.c:238
 msgid ""
@@ -9964,7 +9964,7 @@ msgstr ""
 #: modules/access/linsys/linsys_sdi.c:81
 #, fuzzy
 msgid "Teletext configuration"
-msgstr "Wereza Esobozesa ye kiwandiiko "
+msgstr "Wereza Esobozesa ye kiwandiiko"
 
 #: modules/access/linsys/linsys_sdi.c:83
 msgid ""
@@ -10605,7 +10605,7 @@ msgstr ""
 #: modules/access/screen/screen.c:84
 #, fuzzy
 msgid "Screen index"
-msgstr "Ekwata ye Biyingizidwa mu Sikulini "
+msgstr "Ekwata ye Biyingizidwa mu Sikulini"
 
 #: modules/access/screen/screen.c:86
 msgid "Index of screen (1, 2, 3, ...). Alternative to Display ID."
@@ -10614,7 +10614,7 @@ msgstr ""
 #: modules/access/screen/screen.c:99
 #, fuzzy
 msgid "Screen Input"
-msgstr "Ekwata ye Biyingizidwa mu Sikulini "
+msgstr "Ekwata ye Biyingizidwa mu Sikulini"
 
 #: modules/access/screen/screen.c:100 modules/access/screen/wayland.c:485
 #: modules/access/screen/xcb.c:70 modules/gui/macosx/menus/VLCMainMenu.m:841
@@ -10642,12 +10642,12 @@ msgstr ""
 #: modules/access/screen/wayland.c:486
 #, fuzzy
 msgid "Screen capture (with Wayland)"
-msgstr "Ekwata ye Biyingizidwa mu Sikulini "
+msgstr "Ekwata ye Biyingizidwa mu Sikulini"
 
 #: modules/access/screen/xcb.c:71
 #, fuzzy
 msgid "Screen capture (with X11/XCB)"
-msgstr "Ekwata ye Biyingizidwa mu Sikulini "
+msgstr "Ekwata ye Biyingizidwa mu Sikulini"
 
 #: modules/access/sdp.c:105 modules/stream_out/rtp.c:81
 #, fuzzy
@@ -11298,7 +11298,7 @@ msgstr "Akanya akadugavu"
 #: modules/access/v4l2/v4l2.c:180
 #, fuzzy
 msgid "Treble adjustment of the audio input."
-msgstr "Gatta enfuga ku dirisa lya vidiyo "
+msgstr "Gatta enfuga ku dirisa lya vidiyo"
 
 #: modules/access/v4l2/v4l2.c:183
 #, fuzzy
@@ -14276,7 +14276,7 @@ msgstr ""
 #: modules/codec/kate.c:245
 #, fuzzy
 msgid "Default background color"
-msgstr "Enkola y`enkalakalira yokumpi "
+msgstr "Enkola y`enkalakalira yokumpi"
 
 #: modules/codec/kate.c:246
 msgid ""
@@ -17710,7 +17710,7 @@ msgstr "Londa obutundu bwe mitwe zafayiro"
 #: modules/demux/mpeg/ts_descriptions.h:35
 #, fuzzy
 msgid "Teletext: additional information"
-msgstr "Wereza Esobozesa ye kiwandiiko "
+msgstr "Wereza Esobozesa ye kiwandiiko"
 
 #: modules/demux/mpeg/ts_descriptions.h:36
 #, fuzzy
@@ -17817,7 +17817,7 @@ msgstr ""
 #: modules/demux/playlist/playlist.c:93
 #, fuzzy
 msgid "XSPF playlist import"
-msgstr " XSPF olulakaoa lwe nyimba (*.xspf)"
+msgstr "XSPF olulakaoa lwe nyimba (*.xspf)"
 
 #: modules/demux/playlist/playlist.c:97
 #, fuzzy
@@ -18733,7 +18733,7 @@ msgstr ""
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:453
 #: modules/gui/qt/qt.cpp:184
 msgid "Resize interface to the native video size"
-msgstr "Fuza ekipimo kye nkolagano ku bugazi bwaligjo mu vidiyo "
+msgstr "Fuza ekipimo kye nkolagano ku bugazi bwaligjo mu vidiyo"
 
 #: modules/gui/macosx/main/macosx.m:90 modules/gui/qt/qt.cpp:185
 msgid ""
@@ -19228,7 +19228,7 @@ msgstr "Egyero ze kimpimo kya vidiyo"
 #: modules/gui/macosx/menus/VLCMainMenu.m:473
 #, fuzzy
 msgid "Background Color"
-msgstr "Enkola y`enkalakalira yokumpi "
+msgstr "Enkola y`enkalakalira yokumpi"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:475
 #: modules/text_renderer/freetype/freetype.c:134
@@ -19586,7 +19586,7 @@ msgstr ""
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:255
 #, fuzzy
 msgid "Makeup gain"
-msgstr "Ddamu engyeri gjogizanye: "
+msgstr "Ddamu engyeri gjogizanye:"
 
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:258
 #, fuzzy
@@ -20229,7 +20229,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:820
 #, fuzzy
 msgid "XSPF playlist"
-msgstr " XSPF olulakaoa lwe nyimba (*.xspf)"
+msgstr "XSPF olulakaoa lwe nyimba (*.xspf)"
 
 #: modules/gui/macosx/playqueue/VLCPlayQueueController.m:749
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:821
@@ -21776,27 +21776,27 @@ msgstr ""
 #: modules/gui/ncurses.c:1241
 #, fuzzy, c-format
 msgid " Source   : %s"
-msgstr "Ensibiko:"
+msgstr " Ensibiko:"
 
 #: modules/gui/ncurses.c:1271
 #, fuzzy, c-format
 msgid " Position : %s/%s"
-msgstr "Ekifo"
+msgstr " Ekifo"
 
 #: modules/gui/ncurses.c:1276
 #, fuzzy
 msgid " Volume   : Mute"
-msgstr "Obungi: %d%%"
+msgstr " Obungi: %d%%"
 
 #: modules/gui/ncurses.c:1277
 #, fuzzy, c-format
 msgid " Volume   : %3ld%%"
-msgstr "Obungi: %d%%"
+msgstr " Obungi: %d%%"
 
 #: modules/gui/ncurses.c:1277
 #, fuzzy
 msgid " Volume   : ----"
-msgstr "Obungi: %d%%"
+msgstr " Obungi: %d%%"
 
 #: modules/gui/ncurses.c:1286
 #, c-format
@@ -21811,7 +21811,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr "Sangula ebikwatako ebiriwo kakano"
+msgstr " Sangula ebikwatako ebiriwo kakano"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -24465,7 +24465,7 @@ msgstr "Ekikozesa:"
 
 #: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:611
 msgid "Input & Codecs Settings"
-msgstr "Nyigiza & Entegeka za Codecs "
+msgstr "Nyigiza & Entegeka za Codecs"
 
 #: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:616
 msgid ""
@@ -24828,7 +24828,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:193
 #, fuzzy
 msgid " dB"
-msgstr "dB"
+msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207
@@ -25660,13 +25660,13 @@ msgstr ""
 #: share/lua/http/dialogs/mosaic_window.html:133
 #, fuzzy
 msgid "Background"
-msgstr "Enkola y`enkalakalira yokumpi "
+msgstr "Enkola y`enkalakalira yokumpi"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:242
 #: modules/text_renderer/freetype/freetype.c:81
 #, fuzzy
 msgid "Background color"
-msgstr "Enkola y`enkalakalira yokumpi "
+msgstr "Enkola y`enkalakalira yokumpi"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:248
 msgid "Vertical position"
@@ -26341,7 +26341,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:802
 #, fuzzy
 msgid " Profile Name Missing"
-msgstr "Erinnya ly`Ebikukwatako"
+msgstr " Erinnya ly`Ebikukwatako"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:803
 msgid "You must set a name for the profile."
@@ -26469,7 +26469,7 @@ msgstr "Yingiza:Ekumbo"
 #: modules/gui/qt/dialogs/systray/systray.cpp:198
 #, fuzzy
 msgid "&Hide VLC media player in taskbar"
-msgstr "Kweka VLC enyimbiso mu kabawo kebikola "
+msgstr "Kweka VLC enyimbiso mu kabawo kebikola"
 
 #: modules/gui/qt/dialogs/systray/systray.cpp:204
 #, fuzzy
@@ -26715,12 +26715,12 @@ msgstr "Kyuusa"
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:506
 #, fuzzy
 msgid "Broadcast: "
-msgstr "Sasanya"
+msgstr "Sasanya "
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 #, fuzzy
 msgid "Schedule: "
-msgstr "Tegeka"
+msgstr "Tegeka "
 
 #: modules/gui/qt/maininterface/mainctx.cpp:1193
 msgid "Paste from clipboard"
@@ -28022,7 +28022,7 @@ msgstr ""
 
 #: modules/gui/qt/menus/menus.cpp:339
 msgid "&Fullscreen Interface"
-msgstr "Enkolagano ya &Sikulini yona "
+msgstr "Enkolagano ya &Sikulini yona"
 
 #: modules/gui/qt/menus/menus.cpp:346
 msgid "&Minimal View"
@@ -29926,7 +29926,7 @@ msgstr "Ntandiikira mu labika ye wasi (nga terina ebirimu)"
 #: modules/gui/qt/qt.cpp:260
 #, fuzzy
 msgid "Display background cone or art"
-msgstr "Enkola y`enkalakalira yokumpi "
+msgstr "Enkola y`enkalakalira yokumpi"
 
 #: modules/gui/qt/qt.cpp:261
 msgid ""
@@ -29938,7 +29938,7 @@ msgstr ""
 #: modules/gui/qt/qt.cpp:264
 #, fuzzy
 msgid "Expanding background cone or art"
-msgstr "Enkola y`enkalakalira yokumpi "
+msgstr "Enkola y`enkalakalira yokumpi"
 
 #: modules/gui/qt/qt.cpp:265
 #, fuzzy
@@ -31207,7 +31207,7 @@ msgstr "HTML Olukalala lwe nyimba"
 #: modules/lua/vlc.c:874
 #, fuzzy
 msgid "Lua Playlist Parser Interface"
-msgstr "Enkolagano ya &Sikulini yona "
+msgstr "Enkolagano ya &Sikulini yona"
 
 #: modules/lua/vlc.c:879
 msgid "Lua Art"
@@ -32089,7 +32089,7 @@ msgstr "M3U8 olukalala (*.m3u)"
 #: modules/misc/playlist/export.c:61
 #, fuzzy
 msgid "XSPF playlist export"
-msgstr " XSPF olulakaoa lwe nyimba (*.xspf)"
+msgstr "XSPF olulakaoa lwe nyimba (*.xspf)"
 
 #: modules/misc/playlist/export.c:67
 #, fuzzy
@@ -32852,7 +32852,7 @@ msgstr ""
 #: modules/services_discovery/xcb_apps.c:158
 #, fuzzy
 msgid "Screen capture"
-msgstr "Ekwata ye Biyingizidwa mu Sikulini "
+msgstr "Ekwata ye Biyingizidwa mu Sikulini"
 
 #: modules/services_discovery/xcb_apps.c:159
 msgid "Your window manager does not provide a list of applications."
@@ -32991,7 +32991,7 @@ msgstr "Laga obutundu bwe mitwe ya vidiyo"
 #: modules/spu/logo.c:76
 #, fuzzy
 msgid "Logo sub source"
-msgstr "VSeegejja kiwendewo "
+msgstr "VSeegejja kiwendewo"
 
 #: modules/spu/logo.c:77
 #, fuzzy
@@ -33332,7 +33332,7 @@ msgstr "Omutwe ogwokubiri"
 #: modules/spu/subsdelay.c:47
 #, fuzzy
 msgid "Delay calculation mode"
-msgstr "Ddamu engyeri gjogizanye: "
+msgstr "Ddamu engyeri gjogizanye:"
 
 #: modules/spu/subsdelay.c:49
 msgid ""
@@ -35104,7 +35104,7 @@ msgstr ""
 #: modules/video_filter/bluescreen.c:51
 #, fuzzy
 msgid "Bluescreen U tolerance"
-msgstr "Enkolagano ya &Sikulini yona "
+msgstr "Enkolagano ya &Sikulini yona"
 
 #: modules/video_filter/bluescreen.c:53
 msgid ""
@@ -35115,7 +35115,7 @@ msgstr ""
 #: modules/video_filter/bluescreen.c:56
 #, fuzzy
 msgid "Bluescreen V tolerance"
-msgstr "Enkolagano ya &Sikulini yona "
+msgstr "Enkolagano ya &Sikulini yona"
 
 #: modules/video_filter/bluescreen.c:58
 msgid ""

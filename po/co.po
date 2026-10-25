@@ -765,12 +765,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (predefinitu attivatu)"
+msgstr "(predefinitu attivatu)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (predefinitu disattivatu)"
+msgstr "(predefinitu disattivatu)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -2059,7 +2059,7 @@ msgstr "Piazzà sempre a finestra di a video sopra à tutte l'altre finestre."
 #: src/libvlc-module.c:348
 #, fuzzy
 msgid "Enable wallpaper mode"
-msgstr "Permette u modu tappizzeria "
+msgstr "Permette u modu tappizzeria"
 
 #: src/libvlc-module.c:350
 msgid ""
@@ -3168,7 +3168,7 @@ msgstr "Cumportu d'attesa di cunnessione TCP"
 #: src/libvlc-module.c:937
 #, fuzzy
 msgid "Default TCP connection timeout (in milliseconds)."
-msgstr "Cumportu d'attesa predefinitu di cunnessione TCP (in milliseconde). "
+msgstr "Cumportu d'attesa predefinitu di cunnessione TCP (in milliseconde)."
 
 #: src/libvlc-module.c:939
 msgid "HTTP server address"
@@ -3510,7 +3510,7 @@ msgstr "Mudullu di filtru di flussu"
 #: src/libvlc-module.c:1115
 #, fuzzy
 msgid "Stream filters are used to modify the stream that is being read."
-msgstr "I filtri di flussu sò impiegati per mudificà u flussu chì hè lettu. "
+msgstr "I filtri di flussu sò impiegati per mudificà u flussu chì hè lettu."
 
 #: src/libvlc-module.c:1117
 #, fuzzy
@@ -3520,7 +3520,7 @@ msgstr "Mudullu di filtru di flussu"
 #: src/libvlc-module.c:1119
 #, fuzzy
 msgid "Demux filters are used to modify/control the stream that is being read."
-msgstr "I filtri di flussu sò impiegati per mudificà u flussu chì hè lettu. "
+msgstr "I filtri di flussu sò impiegati per mudificà u flussu chì hè lettu."
 
 #: src/libvlc-module.c:1121
 msgid "Demux module"
@@ -11599,7 +11599,7 @@ msgstr "Discrizzione di generu"
 #: modules/access_output/shout.c:83
 #, fuzzy
 msgid "Genre of the content."
-msgstr "Generu di u cuntenutu. "
+msgstr "Generu di u cuntenutu."
 
 #: modules/access_output/shout.c:85
 #, fuzzy
@@ -21159,7 +21159,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr "Ripete l'elementu currente"
+msgstr " Ripete l'elementu currente"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"

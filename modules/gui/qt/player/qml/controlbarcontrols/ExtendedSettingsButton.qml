@@ -33,5 +33,30 @@ RedesignIconButton {
 
     AccessibleCompat.id: "extendedSettingsButton"
 
-    onClicked: DialogsProvider.extendedDialog()
+    signal requestLockUnlockAutoHide(bool lock)
+    signal menuOpened(var menu)
+
+    // above the button, as the languages and tracks (the menu and the
+    // shortcut still open it in the middle of the window)
+    onClicked: panel.toggle()
+
+    function forceUnlock() {
+        panel.close()
+    }
+
+    BarPanel {
+        id: panel
+        button: extdSettingsBtn
+        maximumHeight: VLCStyle.dp(780, VLCStyle.scale)
+        sourceComponent: EffectsDialog { }
+        onPanelOpened: (menu) => {
+            extdSettingsBtn.requestLockUnlockAutoHide(true)
+            extdSettingsBtn.menuOpened(menu)
+        }
+        onPanelClosed: {
+            extdSettingsBtn.requestLockUnlockAutoHide(false)
+            extdSettingsBtn.forceActiveFocus()
+            extdSettingsBtn.menuOpened(null)
+        }
+    }
 }

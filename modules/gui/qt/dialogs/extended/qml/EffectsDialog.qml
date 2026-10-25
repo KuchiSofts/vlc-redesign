@@ -84,7 +84,10 @@ T.Popup {
     modal: true
     focus: true
     closePolicy: T.Popup.CloseOnEscape | T.Popup.CloseOnPressOutside
-    anchors.centerIn: T.Overlay.overlay
+    // in the middle of the window (the menu, a shortcut); off: placed by
+    // whoever opens it (above the button of the control bar)
+    property bool centered: true
+    anchors.centerIn: centered ? T.Overlay.overlay : undefined
 
     onOpened: {
         profileError = ""

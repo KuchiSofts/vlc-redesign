@@ -644,6 +644,17 @@ void MainCtx::loadPrefs(const bool callSignals)
         if( callSignals )
             emit doubleClickActionChanged();
     }
+    {
+        char *policy = config_GetPsz( "mouse-pause-policy" );
+        const bool clickPauses = !policy || strcmp( policy, "disabled" ) != 0;
+        free( policy );
+        if( clickPauses != m_clickPauses )
+        {
+            m_clickPauses = clickPauses;
+            if( callSignals )
+                emit clickPausesChanged();
+        }
+    }
 
     /* "Never remember items matching" of the settings */
     vlc::playlist::Media::setHistoryFilter( QRegularExpression(

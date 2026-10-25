@@ -1,47 +1,97 @@
 # VLC Redesign wiki
 
-**VLC 4 with the interface designed by [Juxtopposed](https://www.youtube.com/@juxtopposed).** The real VLC engine, the
-same codecs, the same "plays everything"; only the interface is new, and it follows the design screen by screen.
+**VLC 4 with the interface designed by [Juxtopposed](https://www.youtube.com/@juxtopposed), for Windows 10 and 11.**
+The real VLC engine, the same codecs, the same "plays everything"; only the interface is new, built screen by screen
+from the design. This wiki explains every screen, every option and every switch of it.
 
-![VLC Redesign: the library's Home](https://raw.githubusercontent.com/wiki/KuchiSofts/vlc-redesign/images/home.png)
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/tour/tour.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/tour/tour.webp" alt="A 56-second tour of VLC Redesign: the welcome steps, Home, seek bar previews, subtitles, music, the panels above the control bar, casting, themes, customizing the controls, languages and the library" width="960"></a>
+
+<sub>The 56-second tour (animated picture). [Watch it in full quality (MP4)](https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/tour/tour.mp4).
+Every picture is the real app, with free films and music.</sub>
 
 > **Design by Juxtopposed.** Every screen comes from the
 > ["VLC Redesign (Community)"](https://www.figma.com/community/file/1691465999134370980) Figma file by Juxtopposed,
 > licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
-> ▶ [Watch the video: *I Redesigned VLC After 25 Years*](https://www.youtube.com/watch?v=ERFeOgqk324) ·
+> [Watch the video: *I Redesigned VLC After 25 Years*](https://www.youtube.com/watch?v=ERFeOgqk324) ·
 > [YouTube channel](https://www.youtube.com/@juxtopposed). Juxtopposed does not endorse this project.
 
 > [!IMPORTANT]
 > **Unofficial.** VLC Redesign is not made, affiliated with, or endorsed by [VideoLAN](https://www.videolan.org/).
-> *VLC*, *VLC media player* and the cone logo are VideoLAN trademarks. Report problems
-> [here](https://github.com/KuchiSofts/vlc-redesign/issues), not to VideoLAN.
+> *VLC*, *VLC media player* and the cone logo are trademarks of VideoLAN. It is based on the VLC 4.0 development
+> branch: report problems [here](https://github.com/KuchiSofts/vlc-redesign/issues), not to VideoLAN.
 
-## Start here
+![Home: Continue Watching, Listen Again, your folders and the newest media](images/home.jpg)
+
+## Quick facts
 
 | | |
 |---|---|
-| **[Install and update](Install-and-Update)** | The installer and its options, the portable zip, [updates](Install-and-Update#small-updates), uninstalling |
-| **[The player](The-Player)** | Every control of the player: seek bar previews, volume, fullscreen, speed, sleep timer, A-B loop |
-| **[Library](Library)** | Home, Videos, Music, Network, Playlists, Recent, folders, and the library next to the video |
-| **[Queue and playlists](The-Player#the-queue-card)** | The queue card, bookmarks, chapters; [playlists](Library#playlists) in the library |
-| **[Subtitles](Subtitles)** | Tracks, sync, remembered choices, subtitle files, OpenSubtitles, how they look |
+| **Current version** | **0.3.1**, released 2026-10-25 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.3.1), [changelog](https://github.com/KuchiSofts/vlc-redesign/blob/main/CHANGELOG.md)) |
+| **Runs on** | Windows 10 (version 1809 or later) and Windows 11, 64-bit. Other systems: [Platforms](Platforms) |
+| **Based on** | VLC 4.0 (development branch), with fixes from VideoLAN merged in regularly |
+| **Download** | An installer (59.1 MB, no administrator rights) or a portable zip (106.8 MB): [Install and update](Install-and-Update) |
+| **Updates** | In the app, a few megabytes at a time: only the files that changed ([small updates](Install-and-Update#small-updates)) |
+| **Languages** | English and 72 others, switched live; right-to-left languages laid out right to left ([Languages](Languages)) |
+| **Privacy** | No telemetry, no ads, no account. Two features go online by themselves, and both are asked about first |
+| **Next to an official VLC** | Yes: its own folder, settings, library and history; an installed VLC is never touched |
+| **License** | GNU GPL v2 or later, like VLC; the design is CC BY 4.0 ([Credits and license](Credits-and-License)) |
+
+## Start here
+
+| Page | What it covers |
+|---|---|
+| **[Install and update](Install-and-Update)** | The installer page by page, silent install switches, the portable zip, [small updates](Install-and-Update#small-updates), uninstalling |
+| **[The player](The-Player)** | Every control of the player: seek bar previews, volume up to 200 %, the panels above the bar, speed, sleep timer, A-B loop, picture in picture |
+| **[Library](Library)** | Home, Videos, Music, Network, Playlists, Recent, media folders, and the library next to the video |
+| **[Queue and playlists](The-Player#the-queue-card)** | The queue card of the player; [playlists](Library#playlists) in the library |
+| **[Subtitles](Subtitles)** | Tracks and languages that learn, online search, sync, position and size, dual subtitles |
 | **[Effects](Effects)** | Equalizer, compressor, spatializer, stereo widener, video effects, presets |
-| **[Languages](Languages)** | The language of the interface, right to left, translating |
-| **[Customize the player](Customize-the-Player)** | Drag buttons into and out of the control bar, profiles |
+| **[Customize the player](Customize-the-Player)** | Drag buttons into and out of the control bar; profiles |
 | **[Colours and themes](Colours-and-Themes)** | Dark, Light or System, and nine accent colours |
-| **[Casting to a TV](Casting)** | Chromecast and DLNA TVs, [when a TV does not play](Casting-Troubleshooting), [TV compatibility](TV-Compatibility) |
-| **[Settings](Settings)** | Every option of the Settings window, section by section |
+| **[Languages](Languages)** | The language of the interface, right to left, translating |
 | **[Keyboard shortcuts](Keyboard-Shortcuts)** | The default keys, and how to change them |
-| **[Troubleshooting and FAQ](Troubleshooting-and-FAQ)** | SmartScreen, file types, fullscreen, where settings live |
-| **[Platforms](Platforms)** | Windows today; what may come next, and what is not planned |
-| **[Building from source](Building-from-Source)** | The Windows build in Docker, the installer |
+| **[Casting to a TV](Casting)** | Chromecast and DLNA TVs; [when a TV does not play](Casting-Troubleshooting); [TV compatibility](TV-Compatibility) |
+| **[Settings](Settings)** | Every option of the Settings window, page by page |
+| **[Troubleshooting and FAQ](Troubleshooting-and-FAQ)** | SmartScreen, where settings live, logs, video problems, reporting a bug |
+| **[Platforms](Platforms)** | Windows today; what may come next, in which order, and what is not planned |
+| **[Building from source](Building-from-Source)** | The Windows build in Docker, the release script, signing |
 | **[Design check](Design-Check)** | How the app is compared with the 103 frames of the Figma design, and the results |
 | **[Credits and license](Credits-and-License)** | Who made what, and the licenses |
 
 ## In one minute
 
-- **Download** the installer from the [latest release](https://github.com/KuchiSofts/vlc-redesign/releases/latest)
-  and run it: three clicks, no administrator rights. Or unzip the portable version anywhere.
-- It installs **next to an official VLC** without touching it: its settings, library and history stay in its own
-  `portable` folder.
-- **Windows 10 or 11**, 64-bit ([other platforms](Platforms)). Based on VLC 4.0 (development).
+1. **Download** the installer from the [latest release](https://github.com/KuchiSofts/vlc-redesign/releases/latest)
+   and run it. It needs no administrator rights; a new install goes through Welcome, Options, Languages and
+   Privacy, then installs in about a minute. Or unzip the portable version anywhere and run `vlc.exe`.
+2. The first start shows the **welcome steps**: a media folder, the theme and accent colour, your subtitle
+   languages, what VLC does online, and the basic keys.
+3. **Play** something: drop a file on the window, open one from Explorer, or pick it on [Home](Library#home).
+4. VLC Redesign checks for a new release once a day and offers a **small update** when one is out.
+
+| The first start | What may go online |
+|---|---|
+| ![The first welcome step: choose a media folder](images/welcome.jpg) | ![The privacy step: the update check and online subtitles, each with its own switch](images/welcome-privacy.jpg) |
+
+> **Good to know.** VLC Redesign keeps its settings, library and history in a `portable` folder next to its
+> `vlc.exe`, so it never reads or changes an installed official VLC. See
+> [Where are my settings?](Troubleshooting-and-FAQ#where-are-my-settings)
+
+## Get help
+
+| Where | For |
+|---|---|
+| **[Discussions](https://github.com/KuchiSofts/vlc-redesign/discussions)** | Questions (the **Q&A** category) and ideas (the **Ideas** category); talking with other users |
+| **[Issues](https://github.com/KuchiSofts/vlc-redesign/issues/new/choose)** | Bug reports, design mismatches, suggestions, translations and TV reports, each with its own form ([what to include](Troubleshooting-and-FAQ#report-a-bug)) |
+| **[Troubleshooting and FAQ](Troubleshooting-and-FAQ)** | The common questions, answered first |
+| **[VideoLAN](https://www.videolan.org/vlc/)** | Problems with the official VLC only |
+
+Security problems: see [SECURITY.md](https://github.com/KuchiSofts/vlc-redesign/blob/main/SECURITY.md) instead of a
+public issue. To help: [CONTRIBUTING.md](https://github.com/KuchiSofts/vlc-redesign/blob/main/CONTRIBUTING.md), and
+[TRANSLATING.md](https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/TRANSLATING.md) for translations.
+
+## About this wiki
+
+The pages are written in the repository, in
+[`docs/wiki`](https://github.com/KuchiSofts/vlc-redesign/tree/main/docs/wiki), and copied to this wiki by a GitHub
+workflow whenever they change. A correction is welcome as a pull request on those files. The pictures are captures
+of version 0.3.1.

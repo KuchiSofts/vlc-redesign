@@ -14,7 +14,8 @@ How to cast: [Casting](Casting). When something fails: [Casting: when a TV does 
 | Chromecast | Chromecast | A test device that speaks the Chromecast protocol, in the checks of every build | Works |
 | DLNA TV | DLNA TV | A test device that reads the stream as a TV does, in the checks of every build | Works |
 
-**Not checked yet:** LG, Sony, Android TV, other Samsung models, real Chromecasts. Reports are welcome.
+**Not checked yet:** LG, Sony, Philips, Android TV and Google TV sets, other Samsung models, and Chromecast models
+other than the Ultra (Chromecast with Google TV, Google TV Streamer, older Chromecasts). Reports are welcome.
 
 ## Known quirks
 
@@ -55,8 +56,9 @@ How to cast: [Casting](Casting). When something fails: [Casting: when a TV does 
 - **What you cast**: the file format (MP4, MKV…), its size (1080p, 4K), with or without subtitles.
 - **What worked**: start, pause (how long), seek, the next film of a playlist, subtitles, the end of the film.
 - **What did not**, and what the card of the player said.
-- **A log**: turn on *Settings › General › Diagnostics › Save a log*, restart VLC Redesign, cast again, and attach the
-  log file.
+- **A log**: turn on *Settings › General › Diagnostics › Save a log* (with *Log details* on *Everything (debug)*),
+  close Settings, cast again, close VLC Redesign, and attach the log file (see
+  [Save a log](Troubleshooting-and-FAQ#save-a-log)).
 
 ---
 

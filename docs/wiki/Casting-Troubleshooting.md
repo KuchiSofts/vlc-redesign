@@ -3,6 +3,16 @@
 What to do when a TV or a Chromecast is not listed, does not play a file, or when Windows asks about its firewall.
 How casting works is on the [Casting](Casting) page; what is known of each TV is in [TV compatibility](TV-Compatibility).
 
+## Quick checks
+
+| Symptom | First thing to try |
+|---|---|
+| The TV is not listed | Turn it on (not standby), same network, wait 20 s, open the panel again |
+| *Windows Firewall doesn't let...* | **Allow on private networks** on the card, and approve Windows' question |
+| *...couldn't read the video...* | Another firewall or security program; ports 7070 (DLNA) and 8010 (Chromecast) |
+| The picture stutters on the TV | Subtitles off (no conversion), or a lower *Cast quality* for a Chromecast |
+| *...refused to play this video.* | **Try again**: a DLNA TV then gets the film converted |
+
 ## The TV is not in the list
 
 - The TV (or Chromecast) must be **on** and on the **same network** as this computer. A TV in standby may not answer.
@@ -54,7 +64,7 @@ VLC Redesign.
   inbound rule named **VLC Redesign** for this program, on private networks (and on public ones when this computer is
   on a public network). Windows asks for an administrator's approval; the rule is made once.
 - **Declined?** The card of the player says *Windows Firewall doesn't let TV connect to this computer to read the
-  media*, with a button **Allow on private networks** (**Allow on public networks too** on a public network) and
+  video*, with a button **Allow on private networks** (**Allow on public networks too** on a public network) and
   **Play here**. The button asks Windows again (*Waiting for Windows…* meanwhile). Once the rule is there, the TV
   starts again from where it was.
 - **A rule that blocks VLC Redesign** (made when Windows' own question was declined once) wins over any allowing rule:
@@ -70,11 +80,15 @@ VLC Redesign.
 - The TV starts once, with the picture and the sound together.
 - A Samsung TV keeps a paused cast paused, and plays a film sent as it is (as MPEG-TS) beyond its first second.
 
+If a TV failed with an older version, update to the latest one (see [Small updates](Install-and-Update#small-updates))
+before reporting it.
+
 ## Report a TV
 
 If a TV or a Chromecast does not work, [open an issue](https://github.com/KuchiSofts/vlc-redesign/issues) with its
 brand, model and year, what you cast (the format, with or without subtitles), what the card said, and a log: turn on
-*Settings › General › Diagnostics › Save a log*, restart VLC Redesign, then cast again. See
+*Settings › General › Diagnostics › Save a log* (with *Log details* on *Everything (debug)*), close Settings, then cast
+again; see [Save a log](Troubleshooting-and-FAQ#save-a-log). See
 [TV compatibility](TV-Compatibility).
 
 ---

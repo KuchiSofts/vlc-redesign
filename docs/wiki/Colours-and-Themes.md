@@ -1,21 +1,31 @@
 # Colours and themes
 
 VLC Redesign has the two themes of the design, **Dark** and **Light**, and a third choice, **System**, that follows
-Windows. On top of the theme, one of **nine accent colours** marks what is selected and active.
+Windows. On top of the theme, one of **nine accent colours** marks what is selected and active. Both change at once, without
+a restart, and both can follow a [player profile](Customize-the-Player#profiles).
+
+| | Default | Choices |
+|---|---|---|
+| **Theme** | System | Dark, Light, System |
+| **Accent colour** | Orange `#D37918` | Nine colours (below) |
+| **Increase text contrast** | Off | On, Off |
 
 ![The player in the nine accent colours, dark theme](https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/accents-dark.png)
 
 ## Where to change them
 
 - **Settings → General → Appearance** (<kbd>Ctrl</kbd>+<kbd>P</kbd>): the **Theme** row (Dark / Light / System) and
-  the **Accent color** row (the nine swatches). The window shows a change at once; it is kept when the window
-  closes. See [Settings: General](Settings-General#appearance).
+  the **Accent color** row (the nine swatches). The whole interface shows a change at once; it is kept when the
+  window closes. *Reset all settings* (Advanced Options of General) goes back to System and orange. See
+  [Settings: General](Settings-General#appearance).
 - **The welcome steps.** The second step of the first-run setup, *Select your preferred theme and color.*, shows
   three tiles, **Light**, **Dark** and **System**, and the nine colours as discs under them; the chosen tile has a
   ring in the accent colour, the colours not chosen are dimmed. The setup runs again from **Settings → General →
   Advanced Options → Welcome setup**.
 - **Profiles.** A player profile keeps the theme and the accent colour with its other settings, so switching profile
-  (**⋯ → Profile**) can change them too. See [Customize the player](Customize-the-Player#profiles).
+  (**⋯ → Profile**) can change them too: a *Music* profile can be light and green, a *Movies* one dark and orange.
+  A built-in profile you have never left keeps the colours in use. See
+  [Customize the player](Customize-the-Player#profiles).
 
 ## The themes
 
@@ -28,7 +38,9 @@ Windows. On top of the theme, one of **nine accent colours** marks what is selec
 The whole interface follows the theme: the library, the player, the panels and menus, the Settings window, the
 welcome steps, and VLC's classic windows (*Open Media*, *Convert*, *Media Information*…).
 
-![The light theme with a blue accent](https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/light-theme.png)
+| Light theme, library | Light theme, player |
+|---|---|
+| ![Home in the light theme](images/home-light.jpg) | ![The player in the light theme with a blue accent](images/player-light.jpg) |
 
 ## The accent colours
 
@@ -50,6 +62,9 @@ shades come from it, as the design draws them for orange: a dimmer one (81 % of 
 and a dark one for the background of selections (26 %, `#371F06` for orange). The images the design draws in
 orange are shown as they are with the default accent, and tinted with any other.
 
+> **Good to know.** With *System*, VLC Redesign follows Windows' *Choose your default app mode*, not the Windows
+> mode: a Windows with a dark taskbar and light apps gives the light theme.
+
 ## Increase text contrast
 
 Some texts of the design are dim on purpose (hints, descriptions, watched videos). **Settings → Interface →
@@ -58,6 +73,8 @@ Accessibility → Increase text contrast** draws them brighter in the dark theme
 design stay as they are. See [Settings: Interface](Settings-Interface#accessibility).
 
 ## Artwork and the light theme
+
+![The music player in the dark theme: the cover over its blurred copy](images/music-dark.jpg)
 
 - **The music player** shows the cover over a blurred copy of itself, in both themes. In the dark theme the title
   line measures how bright the artwork is behind it: it keeps the design's grey where that grey reads at 3:1 or

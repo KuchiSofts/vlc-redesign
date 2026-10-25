@@ -1,7 +1,18 @@
 # Languages
 
 VLC Redesign speaks **72 languages** besides English, each covering every text of the interface, and changes from
-one to another at once, without a restart. Right-to-left languages are laid out right to left.
+one to another at once, without a restart. Right-to-left languages are laid out right to left. This page explains
+where to choose the language, what each language brings, how right to left works, and how to translate.
+
+| | |
+|---|---|
+| **Complete languages** | 72, plus English and British English |
+| **Other catalogs** | 37 of VLC's own catalogs, listed as *(partial)* when they have enough of VLC's texts |
+| **Right to left** | Hebrew, Arabic, Persian, Urdu, Central Kurdish |
+| **Default** | English, whatever the language of Windows, until you choose one |
+| **Where** | **Settings → General → Appearance → Interface language**, or the installer's *Languages* page |
+
+![Settings, Appearance: interface language, layout direction, theme and accent](images/settings.jpg)
 
 ## Choose the language
 
@@ -9,9 +20,10 @@ one to another at once, without a restart. Right-to-left languages are laid out 
 
 - The whole interface changes at once: the sidebar, the pages, the player, the settings, the menus and the dialogs
   (VLC's classic windows the next time they open). There is no restart.
-- As for the theme, the new language is kept when Settings closes. Choosing the language in VLC's classic
-  preferences changes it at once too.
-- Each language is listed by its own name (*Deutsch*, *Українська*, *العربية*).
+- As for the theme, the new language is kept when Settings closes; the Settings window has no Apply button.
+  Choosing the language in VLC's classic preferences changes it at once too.
+- The list starts with **Auto** (the language of Windows), then the complete languages, each by its own name
+  (*Deutsch*, *Українська*, *العربية*), then the partial ones, marked *(partial)*.
 - VLC Redesign starts in **English** until you choose a language, whatever the language of Windows; *Reset all
   settings* comes back to English. The installer can set the language for you (see
   [Install and update](Install-and-Update#languages)).
@@ -28,10 +40,13 @@ Norwegian Bokmål, Norwegian Nynorsk, Occitan, Persian, Polish, Portuguese (Braz
 Romanian, Russian, Scottish Gaelic, Serbian, Sinhala, Slovak, Slovenian, Spanish (Spain), Spanish (Latin America),
 Swedish, Tamil, Telugu, Thai, Turkish, Ukrainian, Urdu, Vietnamese, Walloon and Welsh.
 
-English comes in two spellings: *English* and *English (UK)*.
+English comes in two spellings: *English* (American, VLC's own texts) and *British English* (shown as *English
+(United Kingdom)* in the installer).
 
-VLC's other catalogs (Asturian, Kabyle, Uzbek...) are listed after them, marked **(partial)**: VLC's own texts are
-translated there, the redesign's stay in English.
+VLC's 37 other catalogs (Asturian, Kabyle, Uzbek, Interlingua...) are listed after them, marked **(partial)**:
+VLC's own texts are translated there, the redesign's stay in English. A catalog with next to nothing translated
+(under 16 KB) is not listed. The installer offers only the complete languages, so that the app never starts half
+in English.
 
 Beyond the words, each language gets:
 
@@ -64,8 +79,22 @@ Under the language, **Layout direction** chooses **Left to right** or **Right to
 choose (a right-to-left language switches it to *Right to left*), and you can change it: a right-to-left language
 can stay left to right, as some prefer. Like the language, it changes at once.
 
-The installer asks the same (*Right-to-left layout*, on its Languages page), and a silent install takes
-`/RIGHTTOLEFT` or `/LEFTTORIGHT`. The portable zip starts left to right.
+The installer asks the same (*Right-to-left layout*, on its Languages page, shown only for those five languages),
+and a silent install takes `/RIGHTTOLEFT` or `/LEFTTORIGHT`. The portable zip starts in English, left to right.
+
+## In the installer
+
+The installer's **Languages** page (new in 0.3.1) sets two languages before the first start:
+
+- **Interface language**: any of the complete languages, Setup's own language to begin with.
+- **Subtitle language**: the default language of the subtitles, the interface's until you choose another.
+
+A silent install takes `/UILANG=` and `/SUBLANG=` with the codes of the app (`he`, `de`, `pt_BR`, `zh_TW`...), for
+example `/VERYSILENT /UILANG=he /SUBLANG=en`. A copy that already has a language keeps it. Details:
+[Install and update](Install-and-Update#languages).
+
+> **Good to know.** The interface language is kept in a file named `language` in the copy's `portable` folder, not
+> in the registry, so an installed official VLC keeps its own language.
 
 ## Translate
 

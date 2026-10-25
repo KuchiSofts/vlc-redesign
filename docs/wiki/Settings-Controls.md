@@ -1,59 +1,76 @@
 # Settings: Controls
 
-**⋯ → Settings → Controls** (or <kbd>Ctrl</kbd>+<kbd>P</kbd>). Keyboard shortcuts, the jump lengths of the skip buttons, the mouse wheel and remotes.
+**⋯ → Settings → Controls** (<kbd>Ctrl</kbd>+<kbd>P</kbd>; the header reads *Mouse, Keyboard & Remote Controls*).
+Keyboard shortcuts, the lengths of the skip jumps, what the mouse does on the video, and the web remote. All rows
+apply when the Settings window closes, without a restart. See
+[how the Settings window works](Settings#how-the-window-works).
 
-Rows under **Advanced Options** are in the collapsed bar at the bottom of the page. Rows marked *Developer mode only* appear there once **Developer mode** is on ([General](Settings-General)). See [how the Settings window works](Settings).
+## Keyboard Shortcuts
 
-### Keyboard Shortcuts
-- **Defaults**: button **Edit Keyboard Shortcuts**. Opens the Keyboard Shortcuts window: every action of VLC with its **Hotkey** and its **Global Hotkey** (a global hotkey works while VLC is not the active window), a search box (*Search Keyboard Shortcuts...*) with a filter (All Fields / Action / Hotkey / Global Hotkey). Click a key field and press a key combination to add it (<kbd>Esc</kbd> cancels); a key already used by another action asks before it is moved ("This key is assigned to … Replace that assignment?"). **Save** keeps the changes.
-- **Reset all shortcuts**: button **Reset**. Opens the Keyboard Shortcuts window and asks "Reset all shortcuts?" ("Local and global shortcuts will return to VLC defaults when you save. Cancel keeps your current settings."). **Reset all** puts the default keys back once you save the window.
+| Row | Control | What it does |
+|---|---|---|
+| **Defaults** | Button **Edit Keyboard Shortcuts** | Opens the Keyboard Shortcuts window (also **⋯ → Keyboard Shortcuts**). |
+| **Reset all shortcuts** | Button **Reset** | Opens the Keyboard Shortcuts window and asks *Reset all shortcuts?* (*Local and global shortcuts will return to VLC defaults when you save. Cancel keeps your current settings.*). **Reset all** puts the default keys back once you **Save** the window. |
 
-### Skip Amounts
-- **Very short skip**: number field, in seconds. Default: 3 s. Length of the very short jump (the very short jump forward / backward shortcuts). <sub>VLC option: `extrashort-jump-size`</sub>
-- **Short skip**: number field, in seconds. Default: 10 s. Length of the short jump. It is also the jump of the **Jump forward / Jump backward** menu items, of the skip buttons of the audio player and of the arrow keys on the mini player. <sub>VLC option: `short-jump-size`</sub>
-- **Medium skip**: number field, in seconds. Default: 60 s. Length of the medium jump. <sub>VLC option: `medium-jump-size`</sub>
-- **Long skip**: number field, in seconds. Default: 300 s (5 minutes). Length of the long jump. <sub>VLC option: `long-jump-size`</sub>
+**The Keyboard Shortcuts window** lists every action of VLC with two columns: **Hotkey** (works while VLC is the
+active window) and **Global Hotkey** (works from any application). A search box (*Search Keyboard Shortcuts...*)
+has a filter: *All Fields* / *Action* / *Hotkey* / *Global Hotkey*.
+
+- Click a key field and press a key combination to add it; <kbd>Esc</kbd> cancels.
+- A key already used by another action asks *This key is assigned to … Replace that assignment?*.
+- **Save** keeps the changes; they apply at once, global hotkeys included.
+
+See [Keyboard shortcuts](Keyboard-Shortcuts) for the default keys.
+
+## Skip Amounts
+
+| Option | Choices / default | What it does | VLC option |
+|---|---|---|---|
+| **Very short skip** | Number field, in seconds. Default: 3 s. | The length of the *very short jump* forward and backward actions. | `extrashort-jump-size` |
+| **Short skip** | Number field, in seconds. Default: 10 s. | The *short jump*. Also used by the **Jump forward / Jump backward** menu items, the skip buttons of the audio player, the arrow keys on the seek bar and on the library's mini player. | `short-jump-size` |
+| **Medium skip** | Number field, in seconds. Default: 60 s. | The *medium jump*. | `medium-jump-size` |
+| **Long skip** | Number field, in seconds. Default: 300 s (5 minutes). | The *long jump*. | `long-jump-size` |
 
 Which keys do each jump is set in **Edit Keyboard Shortcuts** (the *jump* actions).
 
-### Mouse
-- **Single click on the video**: dropdown: Play / Pause / Nothing. Default: Play / Pause. What a click on the video does. With Nothing, a click on the video does not pause it (useful if you often click the video by accident). The pause toggles when the button is released. The older choice *Play / Pause on release* did the same as Play / Pause; it only shows for a profile that already has it. <sub>VLC option: `mouse-pause-policy` (`auto` / `disabled` / `pause-on-released`)</sub>
-- **Double click on the video**: dropdown: Nothing / Toggle fullscreen. Default: Toggle fullscreen. What a double click on the video does. With Toggle fullscreen, a single click waits for the double-click time of Windows before it plays or pauses (so that a double click does not also pause). <sub>Interface setting: `redesign/double-click-action`</sub>
-- **Scroll wheel**: dropdown: Nothing / Volume / Seek. Default: Volume. What the vertical mouse wheel does over the video. <sub>VLC option: `hotkeys-y-wheel-mode` (Nothing = −1, Volume = 0, Seek = 2, reversed Seek = 3)</sub>
-- **Horizontal scroll**: dropdown: Nothing / Volume / Seek. Default: Seek. What the horizontal wheel (a tilting wheel, a horizontal scroll) does over the video. <sub>VLC option: `hotkeys-x-wheel-mode`</sub>
-- **Reverse scroll direction**: toggle. Default: off. The wheels set to Seek go backwards when turned forwards. Only seeking is reversed, not the volume. While neither wheel seeks, the toggle keeps its state and applies as soon as one is set to Seek. <sub>VLC options: `hotkeys-y-wheel-mode` and `hotkeys-x-wheel-mode` (Seek stored as 3 instead of 2)</sub>
+## Mouse
 
-### Remotes
-- **Web remote control**: toggle. Default: off. Lets a web browser (on this computer or another device of the network) control VLC through VLC's web interface. It starts or stops at once. On adds the `http` interface to VLC's additional interfaces. While it is on without a password, the note "Set a web remote password in the Advanced Options: the remote stays locked without one." appears: the web interface only asks for a password until one is set. <sub>VLC option: `extraintf` (with `http`)</sub>
-- **Port**: number field (1–65535). Default: 8080. The TCP port the web remote listens on: open `http://<address of the computer>:<port>` in a browser. Ports below 1025 are usually restricted by the operating system. The field is empty while **Web remote control** is off. Changing it restarts the web remote on the new port. <sub>VLC option: `http-port`</sub>
-- **Scroll wheel**, **Horizontal scroll**, **Reverse scroll direction**: the three rows of Mouse, shown again here as the design places them. They are the same settings: changing one changes the other.
+These rows set what the mouse does on the video (and on the card shown while casting to a TV). See
+[Mouse on the video](The-Player#mouse-on-the-video).
 
-### Advanced Options
-- **Handle mouse clicks in the video**: toggle. Default: on. Lets VLC react to mouse clicks on the video. <sub>VLC option: `mouse-events`</sub>
-- **Web remote password**: password field. Default: empty. A single password that restricts access to the web remote: the browser asks for it. The web remote stays locked until one is set. <sub>VLC option: `http-password`</sub>
-- **Web remote address**: text field. Default: empty, which listens on every local IP address. Give an IP address (for example `127.0.0.1` or `::1`) or a host name (`localhost`) to accept connections from one network interface only; `localhost` keeps the remote on this computer. <sub>VLC option: `http-host`</sub>
-- **Ignore the volume keys of the keyboard**: toggle. Default: on. On, the volume up, volume down and mute keys of your keyboard always change the volume of the system. Off, they change VLC's volume while VLC is the active window, and the system volume otherwise. *(Windows only.)* <sub>VLC option: `qt-disable-volume-keys`</sub>
+| Option | Choices / default | What it does | VLC option |
+|---|---|---|---|
+| **Single click on the video** | Dropdown: *Play / Pause* / *Nothing*. Default: *Play / Pause*. | What a click on the video does. *Nothing*: a click never pauses, handy if you often click the video by accident. Playback toggles when the button is released. A profile that still has VLC's older value *pause-on-released* shows a third choice, *Play / Pause on release*, which behaves the same. | `mouse-pause-policy` (`auto` / `disabled`) |
+| **Double click on the video** | Dropdown: *Nothing* / *Toggle fullscreen*. Default: *Toggle fullscreen*. | What a double click does. With *Toggle fullscreen*, a single click waits for Windows' double-click time before it plays or pauses, so a double click does not also pause. With *Nothing*, a click acts at once. | `redesign/double-click-action` (interface setting, 0 / 1) |
+| **Scroll wheel** | Dropdown: *Nothing* / *Volume* / *Seek*. Default: *Volume*. | What the vertical mouse wheel does over the video. | `hotkeys-y-wheel-mode` (−1 / 0 / 2) |
+| **Horizontal scroll** | Dropdown: *Nothing* / *Volume* / *Seek*. Default: *Seek*. | What a horizontal scroll (a tilting wheel, a touchpad swipe) does over the video. | `hotkeys-x-wheel-mode` (−1 / 0 / 2) |
+| **Reverse scroll direction** | Toggle. Default: off. | The wheels set to *Seek* go backwards when turned forwards. Only seeking is reversed, never the volume. While neither wheel seeks, the toggle keeps its state and applies as soon as one is set to *Seek*. | both wheel options (*Seek* stored as 3 instead of 2) |
 
-### Options of VLC behind these settings
+## Remotes
 
-| Row | VLC option |
-|---|---|
-| Edit Keyboard Shortcuts, Reset all shortcuts | the `key-…` and `global-key-…` options |
-| Very short skip | `extrashort-jump-size` |
-| Short skip | `short-jump-size` |
-| Medium skip | `medium-jump-size` |
-| Long skip | `long-jump-size` |
-| Single click on the video | `mouse-pause-policy` |
-| Double click on the video | `redesign/double-click-action` (interface setting) |
-| Scroll wheel | `hotkeys-y-wheel-mode` |
-| Horizontal scroll | `hotkeys-x-wheel-mode` |
-| Reverse scroll direction | `hotkeys-y-wheel-mode`, `hotkeys-x-wheel-mode` (value 3) |
-| Web remote control | `extraintf` (`http`) |
-| Port | `http-port` |
-| Handle mouse clicks in the video | `mouse-events` |
-| Web remote password | `http-password` |
-| Web remote address | `http-host` |
-| Ignore the volume keys of the keyboard | `qt-disable-volume-keys` |
+| Option | Choices / default | What it does | VLC option |
+|---|---|---|---|
+| **Web remote control** | Toggle. Default: off. | Lets a web browser on this computer or on another device of your network control VLC through VLC's web interface. It starts or stops when the window closes. While it is on without a password, a warning appears under it: *Set a web remote password in the Advanced Options: the remote stays locked without one.* | `http` in `extraintf` |
+| **Port** | Number field. Default: 8080. | The TCP port the web remote listens on: open `http://<address of this computer>:<port>` in a browser. The field is empty while **Web remote control** is off. A new port restarts the web remote on it. Ports below 1025 are usually restricted by the operating system. | `http-port` |
+| **Scroll wheel**, **Horizontal scroll**, **Reverse scroll direction** | | The three rows of *Mouse*, shown again here as the design places them. They are the same settings: changing one changes the other. | |
+
+## Advanced Options
+
+| Option | Choices / default | What it does | VLC option |
+|---|---|---|---|
+| **Handle mouse clicks in the video** | Toggle. Default: on. | Lets VLC's own video window pass the mouse (clicks, movement, the pointer hiding) to the player. It is read by the separate video window used when **Play video inside main window** ([Interface](Settings-Interface#window)) is off; video inside the main window handles the mouse regardless. | `mouse-events` |
+| **Web remote password** | Password field. Default: empty. | The password the browser asks for. Until one is set, the web remote only shows a page asking for one. Changing it restarts the web remote. | `http-password` |
+| **Web remote address** | Text field. Default: empty (every network interface). | Restricts the web remote to one network interface: an IP address (`192.168.1.20`, `127.0.0.1`, `::1`) or a host name. `localhost` or `127.0.0.1` keeps it on this computer only. | `http-host` |
+| **Ignore the volume keys of the keyboard** | Toggle. Default: on. | On: the volume up, volume down and mute keys of your keyboard always change the system volume. Off: they change VLC's volume while VLC is the active window, and the system volume otherwise. Windows only. | `qt-disable-volume-keys` |
+
+## Good to know
+
+- **Setting up the web remote:** turn on **Web remote control**, open Advanced Options and set a **Web remote
+  password**, then close Settings. From a phone on the same network, open `http://<PC address>:8080`, leave the
+  user name empty and type the password. Windows Firewall may ask to allow VLC the first time.
+- **Seeking with the wheel:** set **Scroll wheel** to *Seek*; with a touchpad, **Reverse scroll direction** often
+  feels more natural.
+- **Accidental pauses** when clicking to focus the window: set **Single click on the video** to *Nothing*.
 
 ---
 

@@ -298,6 +298,7 @@ qml_modules += {
        '../../player/qml/controlbarcontrols/FullscreenButton.qml',
        '../../player/qml/controlbarcontrols/InfoButton.qml',
        '../../player/qml/controlbarcontrols/LangButton.qml',
+       '../../player/qml/controlbarcontrols/BarPanel.qml',
        '../../player/qml/controlbarcontrols/LoopButton.qml',
        '../../player/qml/controlbarcontrols/MenuButton.qml',
        '../../player/qml/controlbarcontrols/NavigationBoxButton.qml',

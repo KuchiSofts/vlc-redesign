@@ -21,9 +21,34 @@ import VLC.Dialogs
 import VLC.Util
 
 RedesignIconButton {
+    id: root
     iconSource: "qrc:///redesign/player/settings.png"
     text: VLCIcons.settings
     description: qsTr("VLC Settings")
     AccessibleCompat.id: "playerSettingsButton"
-    onClicked: DialogsProvider.playerMenuDialog()
+
+    signal requestLockUnlockAutoHide(bool lock)
+    signal menuOpened(var menu)
+
+    // above the button, as the languages and tracks
+    onClicked: panel.toggle()
+
+    function forceUnlock() {
+        panel.close()
+    }
+
+    BarPanel {
+        id: panel
+        button: root
+        sourceComponent: PlayerMenu { }
+        onPanelOpened: (menu) => {
+            root.requestLockUnlockAutoHide(true)
+            root.menuOpened(menu)
+        }
+        onPanelClosed: {
+            root.requestLockUnlockAutoHide(false)
+            root.forceActiveFocus()
+            root.menuOpened(null)
+        }
+    }
 }

@@ -263,6 +263,7 @@ void ShortcutsModel::reload()
                         entry.globalKey.clear();
                     entry.action = qfut(item.psz_text);
                     entry.group = groupFor(entry.key);
+                    entry.groupRank = groupOrder(entry.group);
                     entry.current = readKey(entry.key);
                     entry.staged = entry.current;
                     entry.defaults = QString::fromUtf8(item.orig.psz ? item.orig.psz : "");
@@ -286,12 +287,16 @@ void ShortcutsModel::reload()
             QStringLiteral("key-next"), QStringLiteral("key-prev"),
             QStringLiteral("key-program-sid-next")
         };
-        std::stable_sort(m_entries.begin(), m_entries.end(), [&firstActions](const Entry &a, const Entry &b) {
-            const int groupA = groupOrder(a.group), groupB = groupOrder(b.group);
-            if (groupA != groupB)
-                return groupA < groupB;
-            const int firstA = firstActions.indexOf(a.key), firstB = firstActions.indexOf(b.key);
-            return (firstA < 0 ? 100 : firstA) < (firstB < 0 ? 100 : firstB);
+        for (Entry &entry : m_entries) {
+            const int first = firstActions.indexOf(entry.key);
+            entry.firstRank = first < 0 ? 100 : first;
+        }
+        // (groupOrder translates the names of the groups: once per row,
+        // not at each of the thousands of comparisons)
+        std::stable_sort(m_entries.begin(), m_entries.end(), [](const Entry &a, const Entry &b) {
+            if (a.groupRank != b.groupRank)
+                return a.groupRank < b.groupRank;
+            return a.firstRank < b.firstRank;
         });
     }
     QVector<Entry> fresh;

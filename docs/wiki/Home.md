@@ -20,19 +20,20 @@ same codecs, the same "plays everything"; only the interface is new, and it foll
 
 | | |
 |---|---|
-| **[Installation](Installation)** | The installer and its options, the portable zip, uninstalling |
-| **[Updates](Updates)** | How VLC Redesign finds and installs new releases |
+| **[Install and update](Install-and-Update)** | The installer and its options, the portable zip, [updates](Install-and-Update#small-updates), uninstalling |
 | **[The player](The-Player)** | Every control of the player: seek bar previews, volume, fullscreen, speed, sleep timer, A-B loop |
 | **[Library](Library)** | Home, Videos, Music, Network, Playlists, Recent, folders, and the library next to the video |
-| **[Queue and playlists](Queue-and-Playlists)** | The queue card, bookmarks, chapters, playlists |
+| **[Queue and playlists](The-Player#the-queue-card)** | The queue card, bookmarks, chapters; [playlists](Library#playlists) in the library |
 | **[Subtitles](Subtitles)** | Tracks, sync, remembered choices, subtitle files, OpenSubtitles, how they look |
-| **[Audio and video](Audio-and-Video)** | Tracks, effects, equalizer, visualizations, picture, HDR |
+| **[Effects](Effects)** | Equalizer, compressor, spatializer, stereo widener, video effects, presets |
+| **[Languages](Languages)** | The language of the interface, right to left, translating |
 | **[Customize the player](Customize-the-Player)** | Drag buttons into and out of the control bar, profiles |
 | **[Colours and themes](Colours-and-Themes)** | Dark, Light or System, and nine accent colours |
 | **[Casting to a TV](Casting)** | Chromecast and DLNA TVs, [when a TV does not play](Casting-Troubleshooting), [TV compatibility](TV-Compatibility) |
 | **[Settings](Settings)** | Every option of the Settings window, section by section |
 | **[Keyboard shortcuts](Keyboard-Shortcuts)** | The default keys, and how to change them |
 | **[Troubleshooting and FAQ](Troubleshooting-and-FAQ)** | SmartScreen, file types, fullscreen, where settings live |
+| **[Platforms](Platforms)** | Windows today; what may come next, and what is not planned |
 | **[Building from source](Building-from-Source)** | The Windows build in Docker, the installer |
 | **[Design check](Design-Check)** | How the app is compared with the 103 frames of the Figma design, and the results |
 | **[Credits and license](Credits-and-License)** | Who made what, and the licenses |
@@ -43,4 +44,4 @@ same codecs, the same "plays everything"; only the interface is new, and it foll
   and run it: three clicks, no administrator rights. Or unzip the portable version anywhere.
 - It installs **next to an official VLC** without touching it: its settings, library and history stay in its own
   `portable` folder.
-- **Windows 10 or 11**, 64-bit. Based on VLC 4.0 (development).
+- **Windows 10 or 11**, 64-bit ([other platforms](Platforms)). Based on VLC 4.0 (development).

@@ -38,8 +38,8 @@ What is being worked on, updated as it changes (2026-10-25):
     138 ms): reverted. Each part of the dialog timed alone (build 199): the whole dialog ~93 ms, its options model
     ~20, each of its four option lists made its own table of labels (~10 ms each), the rows of the two lists hidden
     on a page ~9 ms each.
-  - 🟡 One table of labels for the four lists, and no rows for the hidden lists (an explicit condition, not their
-    visibility): in build 200, to measure.
+  - 🟢 One table of labels for the four lists, and no rows for the hidden lists (an explicit condition): Settings
+    112 → 92 ms freeze, 147 → 122 ms settled, 3 MB less (b199 → b200). Full report: [PERFORMANCE.md](PERFORMANCE.md).
 - 🟢 **Bug found while testing the direction**: choosing a language after another translated one (Arabic, then British
   English) kept the first one's texts; only the layout changed. Fixed (gettext's cache) and checked on build 199:
   Greek then Danish in one session, all of it in Danish.

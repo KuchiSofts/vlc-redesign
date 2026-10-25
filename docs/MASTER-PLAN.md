@@ -21,11 +21,12 @@ What is being worked on, updated as it changes (2026-10-25):
   kept after a restart; British English then lays it out left to right (its texts: fixed in build 198).
 - 🟡 **Translators**: a language file added to `locale\` appears in the language list by itself, and
   [TRANSLATING.md](TRANSLATING.md) explains how to translate, try and send a language. In build 196.
-- 🟡 **Subtitles**: the player's subtitle panel gets *Position* and *Size* with − and + (Position in steps of 1 % of the
+- 🟢 **Subtitles**: the player's subtitle panel gets *Position* and *Size* with − and + (Position in steps of 1 % of the
   picture). Both apply live and are kept. Settings' subtitle font, colours and size now reach the video already playing,
   from its next line; the font is picked in a list of the fonts installed (a field to type a name in before; build
   200). 🟢 Checked on build 196: +5 % and 130 % move and enlarge the subtitles on the video at once and
-  are saved (that they came back at the next start was the profile bug below).
+  are saved (that they came back at the next start was the profile bug below). The menu fades while they are moved
+  (it covered them).
 - 🟡 **Performance pass**: baseline of build 195 measured (start, menus, Settings, dialogs, the 3,000-song library,
   scrolling). Real costs: Settings froze 115–190 ms at each opening, Keyboard Shortcuts 125–150 ms, Customize 60–85 ms,
   the Tracks page 45–60 ms of layout as it opens. The Artists "stall" of the scroll test is the end of the list
@@ -40,6 +41,14 @@ What is being worked on, updated as it changes (2026-10-25):
     on a page ~9 ms each.
   - 🟢 One table of labels for the four lists, and no rows for the hidden lists (an explicit condition): Settings
     112 → 92 ms freeze, 147 → 122 ms settled, 3 MB less (b199 → b200). Full report: [PERFORMANCE.md](PERFORMANCE.md).
+- 🟢 **Casting (2026-10-25, build 202, fake Chromecast)**: a click on the casting screen plays or pauses (it did
+  nothing), a double click toggles fullscreen, the wheel changes the volume (it did nothing); a subtitle changed
+  while casting is noted in the top corner where reading starts ("Subtitles on the TV: …", 72 languages). Taking the
+  subtitles off no longer makes the TV load the stream again (Chromecast; DLNA already kept it), a subtitle added to
+  a converted video goes into the running conversion, and the font, colours, outline, shadow, bold and position of
+  the subtitles burnt into a cast follow Settings while the film plays. Limit: a burnt-in subtitle changed while the
+  TV holds ~14 s of picture ahead is sent again from where the TV is (VLC's design), not shown instantly; subtitles
+  as a separate text track (Chromecast) would switch at once: a larger piece of work, not started.
 - 🟢 **Bug found while testing the direction**: choosing a language after another translated one (Arabic, then British
   English) kept the first one's texts; only the layout changed. Fixed (gettext's cache) and checked on build 199:
   Greek then Danish in one session, all of it in Danish.

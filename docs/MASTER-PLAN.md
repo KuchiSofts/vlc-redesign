@@ -37,7 +37,7 @@ Windows 0.2.6 is released; 0.3.0 counts the lines of section 8 (done since 0.2.6
 | Settings rows           | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 212/212 | 100 % | [§8.5](#85-settings-rows)              |
 | Classic dialogs         | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 11/11   | 100 % | [§8.6](#86-classic-dialogs)            |
 | Popups and menus        | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 15/15   | 100 % | [§8.4](#84-popups-and-menus)           |
-| Casting                 | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 14/16   | 88 %  | [§7](#7-desktop-for-windows-what-is-done) + [§8.7](#87-casting) |
+| Casting                 | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 15/16   | 94 %  | [§7](#7-desktop-for-windows-what-is-done) + [§8.7](#87-casting) |
 | Languages               | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 8/9     | 89 %  | [§12](#12-languages)                   |
 | GitHub and community    | 🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜ | 6/18    | 33 %  | [§13.16](#1316-setup-checklist)        |
 
@@ -789,11 +789,14 @@ All classic windows go through one hook, `redesign_widget_theme.cpp`, applied fr
 - 🟢 TVs listed before the panel opens, the last one used at the top
 - 🟢 Samsung (UE55MU8000): a paused cast is kept (a trickle of null packets while paused)
 - 🟢 Samsung: a film sent as it is goes as MPEG-TS; a TV that stops it gets it converted
-- 🔴 The real-TV gate on the release build (§14); 2026-10-24 on build 174 ([TV]ChenTV, Samsung): start, pause 1 min and
+- 🟢 The real-TV gate on the 0.3.0 candidate (build 193, 2026-10-25, [TV]ChenTV): converted with subtitles: started in
+  3.5 s, paused 1 min and 5 min (paused the whole time), resumed, seeked, next file, the last film to its end; sent as
+  it is (AVC_TS_NA_ISO): started mid-film in 2.5 s, seeked to 25 s before the end, the TV played to the end and the
+  player stayed playing until it had; quit in 0.5 s. Earlier: 2026-10-24 on build 174 ([TV]ChenTV, Samsung): start, pause 1 min and
   5 min (paused the whole time), seek, resume, next file, the end (stopped at 29.3 of 30 s), converted with
   subtitles; and on build 178 a cast sent as-is, started mid-film, seeked to 25 s before the end: the TV played to
   the end and the player stayed playing until it had (the end of a cast mid-film, ff54815d10, d0e1f85b1e, and the
-  last frames of MPEG-TS, 95722c717a, fixed with the fake TV first); left: the same run on the release build
+  last frames of MPEG-TS, 95722c717a, fixed with the fake TV first); the same run repeated on build 193 above
 - 🔴 Other brands (LG, Sony, Android TV) through device reports
 - 🟢 A *TV compatibility* wiki page fed by the reports (docs/wiki/TV-Compatibility.md, and the issue form
   `.github/ISSUE_TEMPLATE/tv_report.yml` it links to)

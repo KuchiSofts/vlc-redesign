@@ -15,8 +15,25 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Added
+
+- **Subtitle languages that learn.** Each subtitle you pick counts for its language. The languages panel lists your
+  default and second language, then the ones you pick, the most picked first (marked *Often used*), then the
+  video's own. A language you pick about three times is then chosen by itself after your default and second ones:
+  VLC shows its track, and the online search looks for it. Older choices fade, so recent habits count most.
+- **Setup asks for the languages.** A new *Languages* page: the language of the interface (all 73) and the default
+  language of the subtitles, which follows the interface's until you choose it apart. Right to left, the layout
+  toggle is there too. A silent install takes `/UILANG=` and `/SUBLANG=` (for instance `/UILANG=he /SUBLANG=en`).
+
+### Changed
+
+- **Audio effects, VLC Settings and HDR open above their button**, as the languages and tracks do: a click outside
+  closes them, and so does the button, and opening one closes the other. The bar stays while one is open, and
+  the video isn't dimmed. The menu and the keyboard shortcuts still open them in the middle of the window.
+
 ### Fixed
 
+- **"Subtitl…"**: the name of a tab of the languages and tracks panel was cut short even with room for it.
 - **A log file written with *Log to a file* keeps its last lines when VLC crashes.** Windows wrote the log in blocks
   of 4 KB, so a crash lost the lines that say where it happened; each line is now written at once.
 

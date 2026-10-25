@@ -47,10 +47,14 @@
 ; app. A copy that has a language already keeps it and is not asked (it
 ; was answered, or chosen in the app's settings); Setup then runs in the
 ; app's language if it has it. Right to left (Hebrew) the wizard is drawn
-; right to left and the Layout page offers the app's right-to-left layout,
-; on to begin with as the app lays out a right-to-left language, for
-; setup-choices.ini ([interface]) as
-; the Privacy page's answers. An update runs in the language of the
+; right to left. The Languages page (a new install, or a profile without a
+; language) has two lists: the app's interface language, Setup's to begin
+; with, written to {app}\portable\language, and the default subtitle
+; language, the interface's until chosen apart, for setup-choices.ini
+; ([subtitles] language); for a right-to-left interface language, the app's
+; right-to-left layout too, on to begin with as the app lays out the
+; language, for setup-choices.ini ([interface]) as the Privacy page's
+; answers. An update runs in the language of the
 ; install it updates (UsePreviousLanguage), and so does the uninstaller.
 ; A silent install never asks: the app in English (or as it was), unless
 ; told otherwise:
@@ -62,6 +66,9 @@
 ;                       direction of the app's language)
 ;   /TESTUILANG=0x040D  for tests: the Windows display language Setup sees,
 ;                       to ask its question on any Windows
+;   /UILANG=he          the app's interface language (a code of its
+;                       languages: he, pt_BR, en_GB...), without the page
+;   /SUBLANG=en         the default subtitle language (the same codes)
 
 #ifndef AppVersion
   #error Define AppVersion, e.g. /DAppVersion=0.2.0
@@ -1276,6 +1283,151 @@ norwegian.LayoutCardText=Innstillinger → Utseende: Oppsettsretning. Språket i
 thai.LayoutCardText=ค่าตั้ง → รูปลักษณ์: ทิศทางการจัดวาง ภาษาของโปรแกรมก็อยู่ที่นั่นด้วย ในภาษาของส่วนติดต่อ
 tamil.LayoutCardText=அமைப்புகள் → தோற்றம்: தளவமைப்புத் திசை. பயன்பாட்டின் மொழியும் அங்கேயே, இடைமுக மொழியில் உள்ளது.
 armenian.LayoutCardText=Կարգավորումներ → Արտաքին տեսք՝ Դասավորության ուղղություն։ Հավելվածի լեզուն նույնպես այնտեղ է՝ Ինտերֆեյսի լեզու կետում։
+english.LanguagesTitle=Languages
+hebrew.LanguagesTitle=שפות
+brazilianportuguese.LanguagesTitle=Idiomas
+dutch.LanguagesTitle=Talen
+german.LanguagesTitle=Sprachen
+czech.LanguagesTitle=Jazyky
+swedish.LanguagesTitle=Språk
+portuguese.LanguagesTitle=Idiomas
+french.LanguagesTitle=Langues
+korean.LanguagesTitle=언어
+japanese.LanguagesTitle=言語
+italian.LanguagesTitle=Lingue
+spanish.LanguagesTitle=Idiomas
+polish.LanguagesTitle=Języki
+ukrainian.LanguagesTitle=Мови
+russian.LanguagesTitle=Языки
+arabic.LanguagesTitle=اللغات
+turkish.LanguagesTitle=Diller
+catalan.LanguagesTitle=Idiomes
+danish.LanguagesTitle=Sprog
+finnish.LanguagesTitle=Kielet
+hungarian.LanguagesTitle=Nyelvek
+bulgarian.LanguagesTitle=Езици
+slovak.LanguagesTitle=Jazyky
+slovenian.LanguagesTitle=Jeziki
+norwegian.LanguagesTitle=Språk
+thai.LanguagesTitle=ภาษา
+tamil.LanguagesTitle=மொழிகள்
+armenian.LanguagesTitle=Լեզուներ
+english.LanguagesText=The language of the app and of your subtitles.
+hebrew.LanguagesText=השפה של הנגן ושל הכתוביות שלך.
+brazilianportuguese.LanguagesText=O idioma do app e das suas legendas.
+dutch.LanguagesText=De taal van de app en van je ondertitels.
+german.LanguagesText=Die Sprache der App und deiner Untertitel.
+czech.LanguagesText=Jazyk aplikace a vašich titulků.
+swedish.LanguagesText=Språket för appen och för dina undertexter.
+portuguese.LanguagesText=O idioma da aplicação e das suas legendas.
+french.LanguagesText=La langue de l'application et de vos sous-titres.
+korean.LanguagesText=앱과 자막의 언어입니다.
+japanese.LanguagesText=アプリと字幕の言語です。
+italian.LanguagesText=La lingua dell'app e dei tuoi sottotitoli.
+spanish.LanguagesText=El idioma de la aplicación y de tus subtítulos.
+polish.LanguagesText=Język aplikacji i Twoich napisów.
+ukrainian.LanguagesText=Мова застосунку та ваших субтитрів.
+russian.LanguagesText=Язык приложения и ваших субтитров.
+arabic.LanguagesText=لغة التطبيق ولغة ترجماتك.
+turkish.LanguagesText=Uygulamanın ve altyazılarınızın dili.
+catalan.LanguagesText=L'idioma de l'aplicació i dels vostres subtítols.
+danish.LanguagesText=Sproget i appen og i dine undertekster.
+finnish.LanguagesText=Sovelluksen ja tekstitystesi kieli.
+hungarian.LanguagesText=Az alkalmazás és a feliratok nyelve.
+bulgarian.LanguagesText=Езикът на приложението и на субтитрите ви.
+slovak.LanguagesText=Jazyk aplikácie a vašich titulkov.
+slovenian.LanguagesText=Jezik aplikacije in vaših podnapisov.
+norwegian.LanguagesText=Språket i appen og i undertekstene dine.
+thai.LanguagesText=ภาษาของแอปและคำบรรยายของคุณ
+tamil.LanguagesText=பயன்பாட்டின் மற்றும் உங்கள் வசனங்களின் மொழி.
+armenian.LanguagesText=Հավելվածի և ձեր ենթագրերի լեզուն։
+english.LanguagesInterface=Interface language
+hebrew.LanguagesInterface=שפת הממשק
+brazilianportuguese.LanguagesInterface=Idioma da interface
+dutch.LanguagesInterface=Taal van de interface
+german.LanguagesInterface=Sprache der Oberfläche
+czech.LanguagesInterface=Jazyk rozhraní
+swedish.LanguagesInterface=Gränssnittets språk
+portuguese.LanguagesInterface=Idioma da interface
+french.LanguagesInterface=Langue de l'interface
+korean.LanguagesInterface=인터페이스 언어
+japanese.LanguagesInterface=インターフェースの言語
+italian.LanguagesInterface=Lingua dell'interfaccia
+spanish.LanguagesInterface=Idioma de la interfaz
+polish.LanguagesInterface=Język interfejsu
+ukrainian.LanguagesInterface=Мова інтерфейсу
+russian.LanguagesInterface=Язык интерфейса
+arabic.LanguagesInterface=لغة الواجهة
+turkish.LanguagesInterface=Arayüz dili
+catalan.LanguagesInterface=Idioma de la interfície
+danish.LanguagesInterface=Grænsefladens sprog
+finnish.LanguagesInterface=Käyttöliittymän kieli
+hungarian.LanguagesInterface=A felület nyelve
+bulgarian.LanguagesInterface=Език на интерфейса
+slovak.LanguagesInterface=Jazyk rozhrania
+slovenian.LanguagesInterface=Jezik vmesnika
+norwegian.LanguagesInterface=Grensesnittspråk
+thai.LanguagesInterface=ภาษาของอินเทอร์เฟซ
+tamil.LanguagesInterface=இடைமுக மொழி
+armenian.LanguagesInterface=Միջերեսի լեզուն
+english.LanguagesSubtitles=Subtitle language
+hebrew.LanguagesSubtitles=שפת הכתוביות
+brazilianportuguese.LanguagesSubtitles=Idioma das legendas
+dutch.LanguagesSubtitles=Taal van de ondertitels
+german.LanguagesSubtitles=Sprache der Untertitel
+czech.LanguagesSubtitles=Jazyk titulků
+swedish.LanguagesSubtitles=Undertexternas språk
+portuguese.LanguagesSubtitles=Idioma das legendas
+french.LanguagesSubtitles=Langue des sous-titres
+korean.LanguagesSubtitles=자막 언어
+japanese.LanguagesSubtitles=字幕の言語
+italian.LanguagesSubtitles=Lingua dei sottotitoli
+spanish.LanguagesSubtitles=Idioma de los subtítulos
+polish.LanguagesSubtitles=Język napisów
+ukrainian.LanguagesSubtitles=Мова субтитрів
+russian.LanguagesSubtitles=Язык субтитров
+arabic.LanguagesSubtitles=لغة الترجمة
+turkish.LanguagesSubtitles=Altyazı dili
+catalan.LanguagesSubtitles=Idioma dels subtítols
+danish.LanguagesSubtitles=Underteksternes sprog
+finnish.LanguagesSubtitles=Tekstityksen kieli
+hungarian.LanguagesSubtitles=A feliratok nyelve
+bulgarian.LanguagesSubtitles=Език на субтитрите
+slovak.LanguagesSubtitles=Jazyk titulkov
+slovenian.LanguagesSubtitles=Jezik podnapisov
+norwegian.LanguagesSubtitles=Undertekstspråk
+thai.LanguagesSubtitles=ภาษาคำบรรยาย
+tamil.LanguagesSubtitles=வசன மொழி
+armenian.LanguagesSubtitles=Ենթագրերի լեզուն
+english.LanguagesSubtitlesText=Subtitles in this language show by themselves: from the video, a file next to it, or online. Change both any time in Settings.
+hebrew.LanguagesSubtitlesText=כתוביות בשפה זו מוצגות מעצמן: מהסרטון, מקובץ לידו או מהאינטרנט. אפשר לשנות את שתיהן בכל עת בהגדרות.
+brazilianportuguese.LanguagesSubtitlesText=Legendas neste idioma aparecem sozinhas: do vídeo, de um arquivo ao lado dele ou da internet. Mude os dois quando quiser em Configurações.
+dutch.LanguagesSubtitlesText=Ondertitels in deze taal verschijnen vanzelf: uit de video, uit een bestand ernaast of online. Wijzig beide altijd in Instellingen.
+german.LanguagesSubtitlesText=Untertitel in dieser Sprache erscheinen von selbst: aus dem Video, aus einer Datei daneben oder online. Beides lässt sich jederzeit in den Einstellungen ändern.
+czech.LanguagesSubtitlesText=Titulky v tomto jazyce se zobrazí samy: z videa, ze souboru vedle něj nebo z internetu. Obojí můžete kdykoli změnit v Nastavení.
+swedish.LanguagesSubtitlesText=Undertexter på det här språket visas av sig själva: från videon, från en fil bredvid den eller från nätet. Ändra båda när som helst i Inställningar.
+portuguese.LanguagesSubtitlesText=As legendas neste idioma aparecem sozinhas: do vídeo, de um ficheiro ao lado dele ou da Internet. Altere ambos quando quiser nas Definições.
+french.LanguagesSubtitlesText=Les sous-titres dans cette langue s'affichent d'eux-mêmes : depuis la vidéo, un fichier à côté ou en ligne. Modifiez les deux à tout moment dans les Paramètres.
+korean.LanguagesSubtitlesText=이 언어의 자막은 동영상, 옆에 있는 파일 또는 온라인에서 자동으로 표시됩니다. 둘 다 언제든지 설정에서 바꿀 수 있습니다.
+japanese.LanguagesSubtitlesText=この言語の字幕は、動画、隣にあるファイル、またはオンラインから自動で表示されます。どちらもいつでも設定で変更できます。
+italian.LanguagesSubtitlesText=I sottotitoli in questa lingua compaiono da soli: dal video, da un file accanto o online. Puoi cambiarle entrambe in qualsiasi momento in Impostazioni.
+spanish.LanguagesSubtitlesText=Los subtítulos en este idioma aparecen solos: del vídeo, de un archivo junto a él o de internet. Cambia ambos cuando quieras en Configuración.
+polish.LanguagesSubtitlesText=Napisy w tym języku pojawiają się same: z filmu, z pliku obok niego lub z internetu. Oba możesz zmienić w dowolnej chwili w Ustawieniach.
+ukrainian.LanguagesSubtitlesText=Субтитри цією мовою з’являються самі: з відео, з файлу поруч із ним або з інтернету. Обидві можна будь-коли змінити в Налаштуваннях.
+russian.LanguagesSubtitlesText=Субтитры на этом языке появляются сами: из видео, из файла рядом с ним или из интернета. Оба можно изменить в любой момент в Настройках.
+arabic.LanguagesSubtitlesText=تظهر الترجمات بهذه اللغة تلقائيًا: من الفيديو أو من ملف بجانبه أو من الإنترنت. يمكنك تغيير كلتيهما في أي وقت من الإعدادات.
+turkish.LanguagesSubtitlesText=Bu dildeki altyazılar kendiliğinden gösterilir: videodan, yanındaki bir dosyadan veya internetten. İkisini de istediğiniz zaman Ayarlar'dan değiştirebilirsiniz.
+catalan.LanguagesSubtitlesText=Els subtítols en aquest idioma es mostren sols: del vídeo, d'un fitxer al costat o d'internet. Podeu canviar tots dos quan vulgueu a la Configuració.
+danish.LanguagesSubtitlesText=Undertekster på dette sprog vises af sig selv: fra videoen, fra en fil ved siden af den eller online. Skift begge når som helst under Indstillinger.
+finnish.LanguagesSubtitlesText=Tämänkieliset tekstitykset näkyvät itsestään: videosta, sen vieressä olevasta tiedostosta tai verkosta. Voit vaihtaa molemmat milloin tahansa asetuksista.
+hungarian.LanguagesSubtitlesText=Az ilyen nyelvű feliratok maguktól megjelennek: a videóból, a mellette lévő fájlból vagy az internetről. Mindkettő bármikor módosítható a Beállításokban.
+bulgarian.LanguagesSubtitlesText=Субтитрите на този език се показват сами: от видеото, от файл до него или от интернет. Можете да промените и двата по всяко време в Настройки.
+slovak.LanguagesSubtitlesText=Titulky v tomto jazyku sa zobrazia samy: z videa, zo súboru vedľa neho alebo z internetu. Oboje môžete kedykoľvek zmeniť v Nastaveniach.
+slovenian.LanguagesSubtitlesText=Podnapisi v tem jeziku se prikažejo sami: iz videa, iz datoteke ob njem ali s spleta. Oba lahko kadar koli spremenite v Nastavitvah.
+norwegian.LanguagesSubtitlesText=Undertekster på dette språket vises av seg selv: fra videoen, fra en fil ved siden av den eller fra nettet. Endre begge når som helst i Innstillinger.
+thai.LanguagesSubtitlesText=คำบรรยายในภาษานี้จะแสดงเอง: จากวิดีโอ จากไฟล์ที่อยู่ข้างๆ หรือจากออนไลน์ เปลี่ยนทั้งสองได้ทุกเมื่อในการตั้งค่า
+tamil.LanguagesSubtitlesText=இந்த மொழியிலான வசனங்கள் தானாகவே தோன்றும்: காணொளியிலிருந்து, அதன் அருகிலுள்ள கோப்பிலிருந்து அல்லது இணையத்திலிருந்து. இரண்டையும் எப்போது வேண்டுமானாலும் அமைப்புகளில் மாற்றலாம்.
+armenian.LanguagesSubtitlesText=Այս լեզվով ենթագրերը ցուցադրվում են ինքնաբերաբար՝ տեսանյութից, կողքի ֆայլից կամ առցանց։ Երկուսն էլ կարող եք փոխել ցանկացած պահի Կարգավորումներում։
 english.PrivacyTitle=Privacy
 hebrew.PrivacyTitle=פרטיות
 brazilianportuguese.PrivacyTitle=Privacidade
@@ -2625,6 +2777,14 @@ var
   ChoicesReadFor: String;
   ProfileFresh, InitialUpdates, InitialSubtitles, PrivacyShown: Boolean;
   LayoutShown: Boolean;
+  { The Languages page (LayoutPage): the app's languages (AppLanguageCodes,
+    their names in the lists), the interface's and the subtitles' lists,
+    whether the subtitles' was changed by hand (else it follows the
+    interface's), and the right-to-left toggle's description }
+  AppLanguageCodes, AppLanguageNames: array of String;
+  InterfaceCombo, SubtitleCombo: TNewComboBox;
+  SubtitleTouched: Boolean;
+  RtlNote: TLabel;
 
   SideMark, Pill: TBitmapImage;
   SideTitle, SideSub, SideBy, SideName: TLabel;
@@ -3392,6 +3552,131 @@ end;
 
 { The profile was asked already: by this page (its answers wait for the
   app's next start, or are in the settings), or by the app's first-run setup }
+{ ---- The Languages page ------------------------------------------------ }
+{ The languages of the app (the complete ones of simple_preferences.cpp),
+  each in its own name and in English: the language of the interface, and
+  the default one of the subtitles (the app's list has more; Settings) }
+procedure AddAppLanguage(Code, Native, English: String);
+var
+  N: Integer;
+begin
+  N := GetArrayLength(AppLanguageCodes);
+  SetArrayLength(AppLanguageCodes, N + 1);
+  SetArrayLength(AppLanguageNames, N + 1);
+  AppLanguageCodes[N] := Code;
+  if Native = English then
+    AppLanguageNames[N] := English
+  else
+    AppLanguageNames[N] := Native + ' - ' + English;
+end;
+
+procedure LoadAppLanguages();
+begin
+  AddAppLanguage('af', 'Afrikaans', 'Afrikaans');
+  AddAppLanguage('sq', 'Shqip', 'Albanian');
+  AddAppLanguage('ar', 'العربية', 'Arabic');
+  AddAppLanguage('hy', 'Հայերեն', 'Armenian');
+  AddAppLanguage('eu', 'Euskara', 'Basque');
+  AddAppLanguage('be', 'Беларуская', 'Belarusian');
+  AddAppLanguage('bn', 'বাংলা', 'Bengali');
+  AddAppLanguage('bs', 'Bosanski', 'Bosnian');
+  AddAppLanguage('bg', 'Български', 'Bulgarian');
+  AddAppLanguage('ca', 'Català', 'Catalan');
+  AddAppLanguage('ckb', 'کوردی', 'Central Kurdish');
+  AddAppLanguage('zh_CN', '简体中文', 'Chinese (Simplified)');
+  AddAppLanguage('zh_TW', '繁體中文', 'Chinese (Traditional)');
+  AddAppLanguage('hr', 'Hrvatski', 'Croatian');
+  AddAppLanguage('cs', 'Čeština', 'Czech');
+  AddAppLanguage('da', 'Dansk', 'Danish');
+  AddAppLanguage('nl', 'Nederlands', 'Dutch');
+  AddAppLanguage('en', 'English', 'English');
+  AddAppLanguage('en_GB', 'English (United Kingdom)', 'English (United Kingdom)');
+  AddAppLanguage('et', 'Eesti', 'Estonian');
+  AddAppLanguage('fi', 'Suomi', 'Finnish');
+  AddAppLanguage('fr', 'Français', 'French');
+  AddAppLanguage('gl', 'Galego', 'Galician');
+  AddAppLanguage('ka', 'ქართული', 'Georgian');
+  AddAppLanguage('de', 'Deutsch', 'German');
+  AddAppLanguage('el', 'Ελληνικά', 'Greek');
+  AddAppLanguage('gu', 'ગુજરાતી', 'Gujarati');
+  AddAppLanguage('he', 'עברית', 'Hebrew');
+  AddAppLanguage('hi', 'हिन्दी', 'Hindi');
+  AddAppLanguage('hu', 'Magyar', 'Hungarian');
+  AddAppLanguage('is', 'Íslenska', 'Icelandic');
+  AddAppLanguage('id', 'Bahasa Indonesia', 'Indonesian');
+  AddAppLanguage('ga', 'Gaeilge', 'Irish');
+  AddAppLanguage('it', 'Italiano', 'Italian');
+  AddAppLanguage('ja', '日本語', 'Japanese');
+  AddAppLanguage('kn', 'ಕನ್ನಡ', 'Kannada');
+  AddAppLanguage('kk', 'Қазақ тілі', 'Kazakh');
+  AddAppLanguage('km', 'ខ្មែរ', 'Khmer');
+  AddAppLanguage('ko', '한국어', 'Korean');
+  AddAppLanguage('lv', 'Latviešu', 'Latvian');
+  AddAppLanguage('lt', 'Lietuvių', 'Lithuanian');
+  AddAppLanguage('mk', 'Македонски', 'Macedonian');
+  AddAppLanguage('ms', 'Bahasa Melayu', 'Malay');
+  AddAppLanguage('ml', 'മലയാളം', 'Malayalam');
+  AddAppLanguage('mr', 'मराठी', 'Marathi');
+  AddAppLanguage('mn', 'Монгол', 'Mongolian');
+  AddAppLanguage('ne', 'नेपाली', 'Nepali');
+  AddAppLanguage('nb', 'Norsk bokmål', 'Norwegian Bokmål');
+  AddAppLanguage('nn', 'Norsk nynorsk', 'Norwegian Nynorsk');
+  AddAppLanguage('oc', 'Occitan', 'Occitan');
+  AddAppLanguage('fa', 'فارسی', 'Persian');
+  AddAppLanguage('pl', 'Polski', 'Polish');
+  AddAppLanguage('pt_BR', 'Português (Brasil)', 'Portuguese (Brazil)');
+  AddAppLanguage('pt_PT', 'Português (Portugal)', 'Portuguese (Portugal)');
+  AddAppLanguage('pa', 'ਪੰਜਾਬੀ', 'Punjabi');
+  AddAppLanguage('ro', 'Română', 'Romanian');
+  AddAppLanguage('ru', 'Русский', 'Russian');
+  AddAppLanguage('gd', 'Gàidhlig', 'Scottish Gaelic');
+  AddAppLanguage('sr', 'Српски', 'Serbian');
+  AddAppLanguage('si', 'සිංහල', 'Sinhala');
+  AddAppLanguage('sk', 'Slovenčina', 'Slovak');
+  AddAppLanguage('sl', 'Slovenščina', 'Slovenian');
+  AddAppLanguage('es', 'Español', 'Spanish');
+  AddAppLanguage('es_MX', 'Español (México)', 'Spanish (Mexico)');
+  AddAppLanguage('sv', 'Svenska', 'Swedish');
+  AddAppLanguage('ta', 'தமிழ்', 'Tamil');
+  AddAppLanguage('te', 'తెలుగు', 'Telugu');
+  AddAppLanguage('th', 'ไทย', 'Thai');
+  AddAppLanguage('tr', 'Türkçe', 'Turkish');
+  AddAppLanguage('uk', 'Українська', 'Ukrainian');
+  AddAppLanguage('ur', 'اردو', 'Urdu');
+  AddAppLanguage('vi', 'Tiếng Việt', 'Vietnamese');
+  AddAppLanguage('wa', 'Walon', 'Walloon');
+  AddAppLanguage('cy', 'Cymraeg', 'Welsh');
+end;
+
+function AppLanguageIndex(Code: String): Integer;
+var
+  I: Integer;
+begin
+  Result := -1;
+  for I := 0 to GetArrayLength(AppLanguageCodes) - 1 do
+    if CompareText(AppLanguageCodes[I], Code) = 0 then
+    begin
+      Result := I;
+      Exit;
+    end;
+  { a language with a region the list doesn't have: the language }
+  if Pos('_', Code) > 0 then
+    Result := AppLanguageIndex(Copy(Code, 1, Pos('_', Code) - 1));
+end;
+
+function RightToLeftCode(Code: String): Boolean;
+begin
+  Result := (Code = 'he') or (Code = 'ar') or (Code = 'fa') or (Code = 'ur') or (Code = 'ckb');
+end;
+
+function ComboCode(Combo: TNewComboBox): String;
+begin
+  if Combo.ItemIndex >= 0 then
+    Result := AppLanguageCodes[Combo.ItemIndex]
+  else
+    Result := 'en';
+end;
+
 function ChoicesMade(): Boolean;
 begin
   Result := FileExists(ProfileFile(CHOICES_FILE)) or
@@ -3434,17 +3719,22 @@ end;
 procedure SaveChoices();
 var
   Updates, Subtitles, RightToLeft, WriteUpdates, WriteSubtitles, WriteLayout: Boolean;
-  FileName: String;
+  FileName, SubtitleLanguage: String;
 begin
+  SubtitleLanguage := '';
   if LayoutShown and not WizardSilent then
   begin
+    { right to left: as the toggle says; left to right: as the language }
     RightToLeft := Checked(T_RTL);
-    WriteLayout := True;
+    WriteLayout := RightToLeftCode(ComboCode(InterfaceCombo));
+    SubtitleLanguage := ComboCode(SubtitleCombo);
   end
   else
   begin
     RightToLeft := HasSwitch('RIGHTTOLEFT');
     WriteLayout := RightToLeft or HasSwitch('LEFTTORIGHT');
+    if AppLanguageIndex(ExpandConstant('{param:SUBLANG|}')) >= 0 then
+      SubtitleLanguage := AppLanguageCodes[AppLanguageIndex(ExpandConstant('{param:SUBLANG|}'))];
   end;
   if PrivacyShown and not WizardSilent then
   begin
@@ -3459,7 +3749,7 @@ begin
     Subtitles := not HasSwitch('NOONLINESUBS');
     WriteUpdates := not Updates;
     WriteSubtitles := not Subtitles;
-    if (not WriteUpdates) and (not WriteSubtitles) and (not WriteLayout) and
+    if (not WriteUpdates) and (not WriteSubtitles) and (not WriteLayout) and (SubtitleLanguage = '') and
        (ChoicesMade() or ProfileHasSettings()) then
     begin
       Log('Privacy: nothing to change, the profile keeps its choices');
@@ -3477,6 +3767,8 @@ begin
     SetIniString('privacy', 'subtitle-search', BoolText(Subtitles), FileName);
   if WriteLayout then
     SetIniString('interface', 'right-to-left', BoolText(RightToLeft), FileName);
+  if SubtitleLanguage <> '' then
+    SetIniString('subtitles', 'language', SubtitleLanguage, FileName);
   Log('Privacy: ' + FileName + ' written: update check ' + BoolText(Updates) + ' (' + BoolText(WriteUpdates) +
       '), online subtitles ' + BoolText(Subtitles) + ' (' + BoolText(WriteSubtitles) + '), right to left ' +
       BoolText(RightToLeft) + ' (' + BoolText(WriteLayout) + ')');
@@ -3799,6 +4091,11 @@ procedure SaveLanguage();
 var
   FileName: String;
 begin
+  { the Languages page's choice, else /UILANG= }
+  if LayoutShown and not WizardSilent then
+    AppLanguage := ComboCode(InterfaceCombo)
+  else if AppLanguageIndex(ExpandConstant('{param:UILANG|}')) >= 0 then
+    AppLanguage := AppLanguageCodes[AppLanguageIndex(ExpandConstant('{param:UILANG|}'))];
   if AppLanguage = '' then
     Exit;
   FileName := ProfileFile(LANGUAGE_FILE);
@@ -4057,25 +4354,94 @@ end;
 
 { The two features that go online by themselves, each with what it sends,
   and the policy (the toggles take the profile's choices when it shows) }
-{ Right to left only, and once (see the top): the app's layout, mirrored
-  or as designed, mirrored to begin with as the app lays out the language }
+
+{ The right-to-left toggle, for a right-to-left language of the interface }
+procedure ShowRtlToggle();
+var
+  Rtl: Boolean;
+begin
+  Rtl := RightToLeftCode(ComboCode(InterfaceCombo));
+  Toggles[T_RTL].Box.Visible := Rtl;
+  Toggles[T_RTL].Text.Visible := Rtl;
+  RtlNote.Visible := Rtl;
+end;
+
+procedure InterfaceComboChange(Sender: TObject);
+begin
+  { the subtitles in the language of the interface, until chosen apart }
+  if not SubtitleTouched then
+    SubtitleCombo.ItemIndex := InterfaceCombo.ItemIndex;
+  ShowRtlToggle();
+end;
+
+procedure SubtitleComboChange(Sender: TObject);
+begin
+  SubtitleTouched := True;
+end;
+
+function NewLanguageCombo(Parent: TWinControl; T: Integer): TNewComboBox;
+var
+  I: Integer;
+begin
+  Result := TNewComboBox.Create(WizardForm);
+  Result.Parent := Parent;
+  Result.Style := csDropDownList;
+  Result.DropDownCount := 14;
+  Result.Color := CLR_WELL;
+  Result.Font.Name := Face(False);
+  Result.Font.Height := FontPx(13);
+  Result.Font.Color := CLR_TEXT;
+  for I := 0 to GetArrayLength(AppLanguageNames) - 1 do
+    Result.Items.Add(AppLanguageNames[I]);
+  Place(Result, True, CONTENT_L, T, CONTENT_W, 30);
+end;
+
+{ The language of the app's interface and of its subtitles, each in a list,
+  the interface's preselected in Setup's language (or as the profile has
+  it); the subtitles' follow it until chosen apart. Right to left, the
+  app's layout too: mirrored to begin with as the app lays out the
+  language (see the top) }
 procedure CreateLayout();
 var
   P: TWinControl;
+  Code: String;
 begin
-  LayoutPage := CreateCustomPage(OptionsPage.ID, CustomMessage('LayoutTitle'), CustomMessage('LayoutText'));
+  LoadAppLanguages();
+  LayoutPage := CreateCustomPage(OptionsPage.ID, CustomMessage('LanguagesTitle'), CustomMessage('LanguagesText'));
   P := LayoutPage.Surface;
-  NewToggle(T_RTL, P, True, 100, CustomMessage('LayoutRTL'), not HasSwitch('LEFTTORIGHT'));
-  NewLabel(P, True, CONTENT_L, 138, CONTENT_W, 11, False, CLR_FAINT, CLR_BACK, CustomMessage('LayoutRTLText'));
-  NewImage(P, True, 'card-tip', CONTENT_L, 196, CONTENT_W, 92);
-  NewLabel(P, True, CONTENT_L + 16, 210, CONTENT_W - 32, 13, True, CLR_TEXT, CLR_CARD, CustomMessage('LayoutCardTitle'));
-  NewLabel(P, True, CONTENT_L + 16, 232, CONTENT_W - 32, 12, False, CLR_TEXT2, CLR_CARD, CustomMessage('LayoutCardText'));
+  NewLabel(P, True, CONTENT_L, 100, 0, 13, False, CLR_MUTED, CLR_BACK, CustomMessage('LanguagesInterface'));
+  InterfaceCombo := NewLanguageCombo(P, 120);
+  NewLabel(P, True, CONTENT_L, 168, 0, 13, False, CLR_MUTED, CLR_BACK, CustomMessage('LanguagesSubtitles'));
+  SubtitleCombo := NewLanguageCombo(P, 188);
+  NewLabel(P, True, CONTENT_L, 224, CONTENT_W, 11, False, CLR_FAINT, CLR_BACK, CustomMessage('LanguagesSubtitlesText'));
+  NewToggle(T_RTL, P, True, 262, CustomMessage('LayoutRTL'), not HasSwitch('LEFTTORIGHT'));
+  RtlNote := NewLabel(P, True, CONTENT_L, 300, CONTENT_W, 11, False, CLR_FAINT, CLR_BACK, CustomMessage('LayoutRTLText'));
+
+  Code := ExpandConstant('{param:UILANG|}');
+  if Code = '' then Code := AppLanguage;
+  if Code = '' then Code := Languages[Lang].Code;
+  InterfaceCombo.ItemIndex := AppLanguageIndex(Code);
+  if InterfaceCombo.ItemIndex < 0 then
+    InterfaceCombo.ItemIndex := AppLanguageIndex('en');
+  Code := ExpandConstant('{param:SUBLANG|}');
+  if (Code <> '') and (AppLanguageIndex(Code) >= 0) then
+  begin
+    SubtitleCombo.ItemIndex := AppLanguageIndex(Code);
+    SubtitleTouched := True;
+  end
+  else
+    SubtitleCombo.ItemIndex := InterfaceCombo.ItemIndex;
+  InterfaceCombo.OnChange := @InterfaceComboChange;
+  SubtitleCombo.OnChange := @SubtitleComboChange;
+  ShowRtlToggle();
 end;
 
-{ The Layout page shows: right to left, never chosen }
+{ The Languages page shows: once, for a profile without a language (a new
+  install, or one from before the page); a silent install takes /UILANG=
+  and /SUBLANG= }
 function ShowLayout(): Boolean;
 begin
-  Result := Languages[Lang].RTL and not LayoutChosen();
+  Result := not FileExists(ProfileFile(LANGUAGE_FILE));
 end;
 
 procedure CreatePrivacy();

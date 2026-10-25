@@ -155,7 +155,7 @@ Every option is explained in the **[wiki](https://github.com/KuchiSofts/vlc-rede
 list and its status are in [`platforms.yml`](platforms.yml).
 
 Go to **[Releases](https://github.com/KuchiSofts/vlc-redesign/releases/latest)** and pick one:
-Windows 10 or 11, 64-bit. Windows files: [Code signing policy](https://github.com/KuchiSofts/vlc-redesign/blob/main/CODE_SIGNING_POLICY.md).
+Windows 10 or 11, 64-bit. Code signing: free code signing provided by [SignPath.io](https://about.signpath.io/), certificate by [SignPath Foundation](https://signpath.org/) ([Code signing policy](https://github.com/KuchiSofts/vlc-redesign/blob/main/CODE_SIGNING_POLICY.md)).
 
 | | |
 |---|---|

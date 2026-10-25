@@ -124,10 +124,13 @@ T.Popup {
                             Layout.preferredHeight: VLCStyle.dp(24, VLCStyle.scale)
                         }
                         Text {
-                            // narrower than its name (a translation in a
-                            // small window): elided, named by the tab
-                            Layout.fillWidth: true
-                            Layout.maximumWidth: implicitWidth
+                            // its whole name first, the spacers around it
+                            // get what is left (filling, it got a third of
+                            // the room with them: "Subtitl…" in a wide
+                            // tab); narrower than its name (a translation
+                            // in a small window): elided, named by the tab
+                            Layout.preferredWidth: implicitWidth
+                            Layout.minimumWidth: 0
                             elide: Text.ElideRight
                             text: modelData.title
                             color: root.currentTab === modelData.tab ? VLCStyle.redesign.accent

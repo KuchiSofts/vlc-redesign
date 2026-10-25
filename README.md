@@ -1,18 +1,27 @@
 <div align="center">
 
+<img src="modules/gui/qt/pixmaps/misc/cone.svg" alt="" width="84">
+
 # VLC Redesign <sub><sup>(unofficial)</sup></sub>
 
-**VLC 4 with the interface designed by [Juxtopposed](https://www.youtube.com/@juxtopposed), built for real and running on Windows.**
+**The VLC you know, with the interface designed by [Juxtopposed](https://www.youtube.com/@juxtopposed).**<br>
+The real VLC 4 engine and codecs, a new interface built screen by screen from the design, for Windows 10 and 11.
 
-[**⬇ Download for Windows**](https://github.com/KuchiSofts/vlc-redesign/releases/latest) ·
+[![Latest release](https://img.shields.io/github/v/release/KuchiSofts/vlc-redesign?label=release&color=ff8800)](https://github.com/KuchiSofts/vlc-redesign/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/KuchiSofts/vlc-redesign/total?color=ff8800)](https://github.com/KuchiSofts/vlc-redesign/releases)
+![Windows 10 and 11, 64-bit](https://img.shields.io/badge/Windows-10%20%7C%2011%20%C2%B7%2064--bit-0b0a09)
+![72 languages](https://img.shields.io/badge/languages-72-0b0a09)
+[![License: GPL-2.0-or-later](https://img.shields.io/badge/license-GPL--2.0--or--later-0b0a09)](COPYING)
+
+**[⬇ Download for Windows](https://github.com/KuchiSofts/vlc-redesign/releases/latest)** ·
 [What's new](CHANGELOG.md) ·
+[Wiki](https://github.com/KuchiSofts/vlc-redesign/wiki) ·
 [Roadmap](ROADMAP.md) ·
-[Credits](CREDITS.md) ·
 [Build from source](#build-from-source)
 
-<a href="docs/media/demo.mp4"><img src="docs/media/demo.gif" alt="VLC Redesign in action: seek bar frame previews, light theme, music waveform, and the design credit in About" width="880"></a>
+<a href="docs/media/tour/tour.mp4"><img src="docs/media/tour/tour.webp" alt="A 56-second tour of VLC Redesign: the welcome steps, Home with Continue Watching, frame previews on the seek bar, subtitles that learn your languages, moving and resizing subtitles, music with a waveform seek bar, the panels above the control bar, casting to a TV, themes, customizing the controls, 72 languages, the library" width="960"></a>
 
-<sub>▶ <a href="docs/media/demo.mp4">Watch the full 85-second tour (MP4)</a></sub>
+<sub>▶ <a href="docs/media/tour/tour.mp4">Watch the tour in full quality (MP4, 56 s)</a> · Every picture is the real app, with free films and music.</sub>
 
 </div>
 
@@ -51,12 +60,7 @@ If you like how this looks, go subscribe to Juxtopposed's channel. That's where 
 > The design is **["VLC Redesign (Community)"](https://www.figma.com/community/file/1691465999134370980) by Juxtopposed**,
 > licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 > It was adapted to Qt/QML for this build, and its icons were redrawn and modified.
-> Juxtopposed does not endorse this project.
-
-<p align="center"><img src="docs/media/about-credit.png" alt="The design credit in the app's About window" width="640"><br>
-<sub>The same credit is in the app, under <b>⋯ → About VLC</b>.</sub></p>
-
----
+> Juxtopposed does not endorse this project. The same credit is in the app, under **⋯ → About VLC**.
 
 > [!IMPORTANT]
 > **This is an unofficial fork.** It is not made, affiliated with, or endorsed by
@@ -65,153 +69,165 @@ If you like how this looks, go subscribe to Juxtopposed's channel. That's where 
 > This build is based on the VLC 4.0 development branch: please report problems
 > [here](https://github.com/KuchiSofts/vlc-redesign/issues), not to VideoLAN.
 
-## What it is
-
-The real VLC: same engine, same codecs, same "plays everything". Only the interface is new, and it
-follows the design screen by screen, down to the pixel on the screens that were measured.
-
-| | |
-|---|---|
-| **Player** | Framed video with rounded corners, a waveform seek bar for music, frame previews when hovering the timeline, the cone volume control (up to 200 %), skip ±15 s (and optional ±10 s buttons), picture-in-picture, sleep timer, A-B loop |
-| **Queue & library** | A queue card with Queue / Bookmarks / Chapters tabs, a compact library over the video, *Listen Again* and *Frequently Visited Folders* on Home, folder browsing with breadcrumbs, playlists you can favourite, shuffle and export |
-| **Customise** | Drag and drop the control bar directly on the player ([see how](#customize-the-interface)), save layouts as profiles, Dark / Light / System themes with 9 accent colours |
-| **Settings** | A single redesigned settings window with search, the design's toggles, dropdowns and sliders, and many more VLC options exposed than before |
-| **Subtitles** | Per-file and per-series subtitle choices remembered, a sync timeline, external subtitle and audio tracks, OpenSubtitles (with your own API key) |
-| **Onboarding** | A three-step welcome: media folder, theme, keyboard shortcuts |
-
-See the full list in the **[changelog](CHANGELOG.md)**.
-
-## Screenshots
-
-| | |
-|---|---|
-| ![Home with Continue Watching and Listen Again](docs/media/home.png) | ![Frame preview while hovering the seek bar](docs/media/player-seek-preview.png) |
-| **Home**: Continue Watching, Listen Again, Frequently Visited Folders | **Player**: framed video and frame previews on the seek bar |
-| ![Queue card](docs/media/queue.png) | ![Light theme with a blue accent](docs/media/light-theme.png) |
-| **Queue card** with Bookmarks and Chapters tabs | **Light theme**, here with a blue accent |
-| ![Music view with the waveform seek bar](docs/media/music-waveform.png) | ![Settings](docs/media/settings.png) |
-| **Music**: blurred artwork backdrop and a waveform seek bar | **Settings**, redesigned with search |
-
-The demo uses free media: *[Sintel](https://durian.blender.org/)* and *[Big Buck Bunny](https://peach.blender.org/)* trailers
-(© Blender Foundation, [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/); Sintel's first second trimmed) and
-"Fluffing a Duck" and "Carefree" by [Kevin MacLeod](https://incompetech.com/) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); generated cover art added).
-
-## Colours and themes
-
-Nine accent colours, in the dark or the light theme, or following Windows: **Settings → General → Appearance**.
-
-<p align="center"><img src="docs/media/accents-dark.png" alt="The player in the nine accent colours of the design, dark theme" width="820"></p>
-<p align="center"><img src="docs/media/accents-light.png" alt="The player in the light theme, with three of the accent colours" width="820"></p>
-
-## Customize the interface
-
-<p align="center"><a href="docs/media/customize.mp4"><img src="docs/media/customize.gif" alt="Customizing the player: switching profiles, creating one, dragging a button off the control bar and two onto it, then saving" width="800"></a><br>
-<sub>▶ <a href="docs/media/customize.mp4">Watch it in full quality (MP4, 44 seconds)</a></sub></p>
-
-The control bar is edited right on the player:
-
-1. Open **⋯ → Customize Player**. From the library, it switches to the player first.
-2. Pick a profile at the top (**Default**, **Movies**, **Shows**, **Music**, **Work**), or press **New** to start your own.
-   **Rename**, **Clone** and **Delete** manage them.
-3. **Drag a button from the grid onto the bar.** An orange line shows where it goes: before or after a button, or between two.
-4. **Drag a button off the bar** into the grid to remove it, or along the bar to move it.
-5. **Save** keeps the changes. **Cancel** or Escape drops them.
-
-Switch profiles any time with **⋯ → Profile**. The fullscreen button sits at the right end of the bar. Move it or take
-it out the same way: F, F11 and a double-click on the video still toggle fullscreen.
-
-## Settings and smart features
-
-One redesigned settings window, with search, in thirteen sections: General, Interface, Privacy, Controls, Playback,
-Video, Audio, Subtitles, Library, Network, Performance, Recording and Extensions.
-Every option is explained in the **[wiki](https://github.com/KuchiSofts/vlc-redesign/wiki)**.
+## What makes it different
 
 <table>
 <tr>
-<td width="50%"><img src="docs/media/settings-subtitles.png" alt="Settings: Subtitles"></td>
-<td width="50%"><img src="docs/media/settings-playback.png" alt="Settings: Playback"></td>
+<td width="50%" valign="top">
+<img src="docs/media/tour/home.jpg" alt="Home with Continue Watching and Listen Again">
+
+**Pick up where you left off.** Home opens on *Continue Watching* and *Listen Again*, with your folders and the
+newest videos and music under them.
+</td>
+<td width="50%" valign="top">
+<img src="docs/media/tour/seek-preview.jpg" alt="A frame preview above the seek bar">
+
+**Frame previews on the seek bar.** Hover the seek bar and the frame at that time appears above it, decoded ahead
+while you move.
+</td>
 </tr>
 <tr>
-<td><b>Subtitles</b>: languages, size and style, encoding, automatic loading</td>
-<td><b>Playback</b>: resume, speed, repeat, what happens at the end</td>
+<td valign="top">
+<img src="docs/media/tour/subtitles-learn.jpg" alt="The languages and tracks panel, German marked Often used">
+
+**Subtitles that learn your languages.** The languages you pick move up the list (*Often used*). Pick one about
+three times and it is chosen by itself when your default language isn't there, in the video or online.
+</td>
+<td valign="top">
+<img src="docs/media/tour/subtitles-position.jpg" alt="Subtitles raised into the picture and enlarged">
+
+**Move and resize subtitles, live.** − and + in the panel (or Shift+↑ and Shift+↓) move them up and down and change
+their size while the film plays; the panel fades so you can see them move. Kept for the next videos.
+</td>
+</tr>
+<tr>
+<td valign="top">
+<img src="docs/media/tour/music.jpg" alt="The music player with a waveform seek bar">
+
+**Music, with a waveform seek bar.** The cover fills the background, the seek bar shows the song's waveform, and the
+title stays readable on dark and bright covers alike.
+</td>
+<td valign="top">
+<img src="docs/media/tour/effects.jpg" alt="The effects panel above the control bar">
+
+**Everything one click away.** Languages and tracks, Effects, VLC Settings, HDR and Cast open right above their
+button; a click outside or on the button closes them, and the video never pauses for it.
+</td>
+</tr>
+<tr>
+<td valign="top">
+<img src="docs/media/tour/cast.png" alt="Cast to: This computer, Living Room TV, Kitchen">
+
+**Cast to your TV.** Chromecast and DLNA TVs, with the subtitles you chose burned into the picture, and the video
+on your computer too if you want. [Which TVs work](https://github.com/KuchiSofts/vlc-redesign/wiki/TV-Compatibility).
+</td>
+<td valign="top">
+<img src="docs/media/tour/player-light.jpg" alt="The player in the light theme with a blue accent">
+
+**Dark, light, and nine accent colours.** Or *System*, which follows Windows. Every screen of the design in both
+themes.
+</td>
+</tr>
+<tr>
+<td valign="top">
+<img src="docs/media/tour/customize.jpg" alt="Customize Player: the palette of buttons">
+
+**Make the controls yours.** Drag buttons onto the bar and off it, right on the player, and keep layouts as profiles
+(Movies, Shows, Music, Work…). Any button you remove can come back from the palette.
+</td>
+<td valign="top">
+<img src="docs/media/tour/settings.jpg" alt="Settings, Appearance: interface language, layout direction, theme, accent">
+
+**72 languages, switched live.** Pick one in Settings and the whole interface changes at once, no restart; a
+right-to-left language lays it out right to left. [Translate it into yours](docs/TRANSLATING.md).
+</td>
+</tr>
+<tr>
+<td valign="top">
+<img src="docs/media/tour/welcome-privacy.jpg" alt="The welcome step that asks what VLC does online">
+
+**Private by default.** No telemetry, no ads, no account. The two things that go online by themselves (the daily
+update check and online subtitles) are asked about at the start, with exactly what they send.
+</td>
+<td valign="top">
+<img src="docs/media/tour/albums.jpg" alt="The Albums of the music library">
+
+**A real library.** Artists, albums, tracks, genres and playlists for music; films, series and folders for video;
+network shares and streams.
+</td>
 </tr>
 </table>
 
-**Smart by default**
-
-- **Subtitles remembered**: the subtitle track you pick stays with the file, and with the episodes of a series; external
-  subtitle files next to the video load by themselves; a sync timeline in the tracks menu fixes early or late subtitles,
-  with presets per series. OpenSubtitles search with your own API key.
-- **Continue where you left off**: a small card offers to resume, or resume always or never (Settings → Playback).
-- **Frame previews** on the seek bar, decoded ahead while you hover it, and a **waveform seek bar** for music.
-- **Sleep timer** (stop or pause), **A-B loop**, playback speed, **picture-in-picture**, a mini player with its queue.
-- **Startup volume** and volume up to 200 %, audio and video effects that apply live and can be undone.
-- **Small updates from GitHub**: only what changed, checksum-verified, put in place in a restart of two seconds that
-  reopens where you were (installed and portable copies).
+And more: a sleep timer, A-B loop, speed, picture-in-picture, a mini player with its queue, volume up to 200 %,
+bookmarks and chapters, audio and video effects that apply live, small in-app updates. **Every option is explained in
+the [wiki](https://github.com/KuchiSofts/vlc-redesign/wiki)**, and everything new is in the [changelog](CHANGELOG.md).
 
 ## Download
 
-**Platforms:** Windows 0.3.0 ✅ · Linux 🔜 · Samsung TV 🔜 · macOS, Windows ARM64, Android, iPhone 💡 — the
-list and its status are in [`platforms.yml`](platforms.yml).
-
-Go to **[Releases](https://github.com/KuchiSofts/vlc-redesign/releases/latest)** and pick one:
-Windows 10 or 11, 64-bit. Code signing: free code signing provided by [SignPath.io](https://about.signpath.io/), certificate by [SignPath Foundation](https://signpath.org/) ([Code signing policy](https://github.com/KuchiSofts/vlc-redesign/blob/main/CODE_SIGNING_POLICY.md)).
+**Windows 10 or 11, 64-bit.** Go to **[Releases](https://github.com/KuchiSofts/vlc-redesign/releases/latest)** and
+pick one. Code signing: free code signing provided by [SignPath.io](https://about.signpath.io/), certificate by
+[SignPath Foundation](https://signpath.org/) ([Code signing policy](https://github.com/KuchiSofts/vlc-redesign/blob/main/CODE_SIGNING_POLICY.md)).
 
 | | |
 |---|---|
-| **Installer** · `vlc-redesign-…-win64-setup.exe` | Recommended. Installs for you only (no administrator rights needed), adds a Start menu entry, and keeps itself up to date. Its *Options* page can open your videos, music and playlists with VLC Redesign and add *Play with VLC Redesign* to the right-click menu. |
+| **Installer** · `vlc-redesign-…-win64-setup.exe` | Recommended. Installs for you only (no administrator rights needed), adds a Start menu entry, and keeps itself up to date. |
 | **Portable** · `vlc-redesign-…-win64.zip` | Unzip anywhere and run `vlc.exe`. Nothing is installed; delete the folder to remove it. |
 
-Both keep their settings, library and history in their own `portable` folder, so they never touch an
-installed official VLC. Requirements: Windows 10 or 11, 64-bit.
+Both keep their settings, library and history in their own `portable` folder, so they never touch an installed
+official VLC.
 
 ### The installer
 
-<p align="center"><img src="docs/media/installer.png" alt="The installer: Welcome with the design credit, Options with the toggles, the installation, Done" width="820"></p>
+<table>
+<tr>
+<td width="50%"><img src="docs/media/tour/installer-welcome.png" alt="The installer's Welcome page with the design credit"></td>
+<td width="50%"><img src="docs/media/tour/installer-languages.png" alt="The installer's Languages page: interface and subtitle language"></td>
+</tr>
+</table>
 
-Drawn like the app itself, in English or Hebrew. Three clicks from *Welcome* to *Done*, and on the way:
+Drawn like the app itself, in 29 languages (it offers Windows' own when it has it). On the way:
 
-- **Open videos, music and playlists with VLC Redesign**: it becomes the player of the formats VLC plays, wherever you
-  haven't picked another app yourself. Windows keeps your own choices, so *Done* has a button to Windows' *Default apps*
-  to choose VLC Redesign there too.
-- **Play with VLC Redesign** and **Add to VLC Redesign queue** in the right-click menu of media files and folders.
-- **Desktop shortcut**, and **Install for everyone** (Program Files, asks for administrator rights).
+- **Languages**: the language of the interface (any of the 72, or English) and your default subtitle language.
+- **Options**: open videos, music and playlists with VLC Redesign, *Play with VLC Redesign* in the right-click menu, a
+  desktop shortcut, or install for everyone.
+- **Privacy**: the update check and online subtitles, each with what it sends and to whom.
 
-An update keeps your choices. Uninstalling removes all of it and gives every file type back to the app it had before.
+Silent installs take switches (`/VERYSILENT /UILANG=en /SUBLANG=en /NOUPDATECHECK` …), listed in the
+[wiki](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update).
 
 ### Updates
 
 VLC Redesign checks this repository for a new release once a day (Settings → General → *Check for updates
 automatically*, or ⋯ → About → *Check for updates*). When one is out, a card offers **Update now**:
 
-- **A small update** (installed or portable copy): only the files that changed, usually a few megabytes or less,
-  downloaded in the background and checked against the release's `SHA256SUMS.txt` and file by file. Then
-  **Restart now** puts it in place in about two seconds and reopens VLC Redesign on what was playing, where it was,
-  or **Later** puts it in place when you close it. If anything goes wrong, every file goes back as it was.
+- **A small update** (installed or portable copy): only the files that changed, usually a few megabytes, downloaded in
+  the background and checked against the release's `SHA256SUMS.txt` file by file. **Restart now** puts it in place in
+  about two seconds and reopens VLC Redesign on what was playing, where it was; **Later** puts it in place when you
+  close it. If anything goes wrong, every file goes back as it was.
 - **The installer**, when no small update fits (more than three releases behind, or installed for everyone):
-  downloaded, checked, and run without questions; it reopens VLC Redesign where you were.
-- **Download** (a portable copy too far behind): opens the [latest release](https://github.com/KuchiSofts/vlc-redesign/releases/latest).
+  downloaded, checked, and run without questions.
 
-Running the installer by hand works too: it closes a running VLC Redesign politely and reopens it afterwards.
+Until the first signed release, Windows SmartScreen may warn about an unknown publisher: *More info → Run anyway*.
+Every release lists the SHA-256 of its files in `SHA256SUMS.txt`.
 
-> [!NOTE]
-> Windows SmartScreen may warn about an unknown publisher, because the build isn't code-signed.
-> Click *More info → Run anyway*, or build it yourself from source.
-> Every release lists the SHA-256 of its files in `SHA256SUMS.txt`.
-> Signed releases are coming: see the [code signing policy](CODE_SIGNING_POLICY.md).
+## Platforms
+
+**Windows 10 and 11 (64-bit) ✅** · Windows on ARM64 🔜 · Linux 🔜 · macOS, Android, Android TV, iPhone/iPad 💡 ·
+a receiver for Samsung and LG TVs 💡
+
+What each would take and in which order is in the [platform study](docs/PLATFORMS.md); the status lives in
+[`platforms.yml`](platforms.yml). Windows 7, 8, XP and 32-bit Windows are not planned (VLC 4's interface needs Qt 6,
+which needs 64-bit Windows 10 or later): use the official VLC 3 there.
 
 ## Known limitations
 
 - **Based on VLC 4.0-dev**, not on the stable VLC 3. Expect the occasional rough edge.
-- **Windows only for now.** The first milestones were also validated on Linux, but the latest work has only been tested on Windows. No macOS build.
-- **72 languages cover the whole interface**; in VLC's other catalogs (listed as partial) only VLC's own texts are
-  translated and the redesign's are in English. Anyone can help: see [Translating](docs/TRANSLATING.md).
+- **Windows only for now** (see [Platforms](#platforms)).
+- 72 languages cover the whole interface; in VLC's other catalogs (listed as partial) only VLC's own texts are
+  translated.
 - Media Info, Bookmarks, Convert/Stream, Open Disc, Capture and Messages still use the classic VLC windows.
-- A few controls in the design have no VLC equivalent and were left out on purpose.
 - The waveform seek bar works on local files up to 1 GB and 8 minutes; other media get the regular seek bar.
 - HDR output offers Auto / Off / HDR10 / HLG and needs the libplacebo renderer.
-
-The detailed status of every screen is in [`.specs/`](.specs/project/STATE.md) (in Portuguese, from the first implementation).
 
 ## Build from source
 
@@ -228,9 +244,16 @@ cd vlc-redesign
 .\extras\juxtopposed\make-release.ps1
 ```
 
-The first build takes a while; later ones only rebuild what changed (`-Quick` skips configure).
-Linux builds use `extras/juxtopposed/linux.sh` (see [foundation.md](.specs/features/redesign/foundation.md)).
-The interface lives in [`modules/gui/qt`](modules/gui/qt).
+The first build takes a while; later ones only rebuild what changed (`-Quick` skips configure). Every parameter is in
+the [wiki](https://github.com/KuchiSofts/vlc-redesign/wiki/Building-from-Source). The interface lives in
+[`modules/gui/qt`](modules/gui/qt).
+
+## Contributing
+
+Bug reports, TV reports, design mismatches and translations are welcome: the
+[issue forms](https://github.com/KuchiSofts/vlc-redesign/issues/new/choose) ask for what is needed. Before a pull
+request, read [CONTRIBUTING.md](CONTRIBUTING.md); to translate, [TRANSLATING.md](docs/TRANSLATING.md). Security
+problems: [SECURITY.md](SECURITY.md). Everyone here follows the [code of conduct](CODE_OF_CONDUCT.md).
 
 ## Staying in sync with VLC
 
@@ -243,7 +266,11 @@ when it applies cleanly, or an issue listing the conflicting files when it doesn
 - **Design:** [Juxtopposed](https://www.youtube.com/@juxtopposed). [Video](https://www.youtube.com/watch?v=ERFeOgqk324) · [Figma file](https://www.figma.com/community/file/1691465999134370980) (CC BY 4.0)
 - **First implementation:** [MrDouglax](https://github.com/SrDouglax/JuxtopposedVLC), whose Linux fork this builds on
 - **VLC:** the [VideoLAN](https://www.videolan.org/) team and the VLC contributors ([AUTHORS](AUTHORS))
+- **Translators:** see [CREDITS.md](CREDITS.md); Brazilian Portuguese by [Kinglucas962](https://github.com/Kinglucas962)
 - **Fonts:** [Inter](https://github.com/rsms/inter) and [DM Mono](https://github.com/googlefonts/dm-mono), SIL Open Font License 1.1
+- **Media in the pictures and the tour:** *Caminandes: Gran Dillama* (CC BY), *Sintel*, *Tears of Steel* and *Big Buck
+  Bunny* (CC BY 3.0) and *Elephants Dream* (CC BY 2.5), © Blender Foundation, pictures only; music by
+  [Kevin MacLeod](https://incompetech.com/) (CC BY 4.0), with covers made for this demo.
 
 Details in [CREDITS.md](CREDITS.md).
 

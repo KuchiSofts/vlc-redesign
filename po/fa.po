@@ -5726,17 +5726,17 @@ msgstr "بلندی صدا: %ld%%"
 #: src/player/osd.c:184
 #, c-format
 msgid "Video tracks: %s"
-msgstr ""
+msgstr "قطعه‌های ویدئویی: %s"
 
 #: src/player/osd.c:185
 #, c-format
 msgid "Video track: %s"
-msgstr ""
+msgstr "قطعهٔ ویدئویی: %s"
 
 #: src/player/osd.c:188
 #, c-format
 msgid "Audio tracks: %s"
-msgstr ""
+msgstr "قطعه‌های صوتی: %s"
 
 #: src/player/osd.c:189
 #, c-format
@@ -5746,7 +5746,7 @@ msgstr "قطعه صدا: %s"
 #: src/player/osd.c:192
 #, c-format
 msgid "Subtitle tracks: %s"
-msgstr ""
+msgstr "قطعه‌های زیرنویس: %s"
 
 #: src/player/osd.c:193
 #, c-format
@@ -5874,17 +5874,17 @@ msgstr "ضبط انجام شد"
 #: src/player/player.c:1844
 #, c-format
 msgid "Audio delay %i ms"
-msgstr ""
+msgstr "تأخیر صدا: ‎%i ms"
 
 #: src/player/player.c:1846
 #, c-format
 msgid "Subtitle delay %i ms"
-msgstr ""
+msgstr "تأخیر زیرنویس: ‎%i ms"
 
 #: src/player/player.c:1848
 #, c-format
 msgid "Video delay %i ms"
-msgstr ""
+msgstr "تأخیر ویدئو: ‎%i ms"
 
 #: src/player/player.c:1898
 #, c-format
@@ -16296,11 +16296,11 @@ msgstr ""
 
 #: modules/control/hotkeys.c:507
 msgid "Primary subtitle control"
-msgstr ""
+msgstr "کنترل زیرنویس: اصلی"
 
 #: modules/control/hotkeys.c:509
 msgid "Secondary subtitle control"
-msgstr ""
+msgstr "کنترل زیرنویس: دوم"
 
 #: modules/control/hotkeys.c:520
 msgid "Sub sync: bookmarked audio time"
@@ -27890,6 +27890,7 @@ msgstr "حذف موارد پالایش‌شده"
 msgid ""
 "Do you really want to discard the items that are not displayed at the moment?"
 msgstr ""
+"آیا واقعاً می‌خواهید مواردی از صف پخش را که اکنون نمایش داده نمی‌شوند حذف کنید؟"
 
 #: modules/gui/qt/network/addonsmodel.cpp:330
 msgid "This addon has been installed manually. VLC can't manage it by itself."

@@ -26764,7 +26764,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:657
 msgid "This muxer is missing. Using this profile will fail"
-msgstr "El muxer no se encuentra. Usando ester perfil fallará"
+msgstr "Falta este multiplexor. Si usa este perfil, fallará"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:802
 msgid " Profile Name Missing"

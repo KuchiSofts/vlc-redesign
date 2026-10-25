@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-24 17:48+0000\n"
+"POT-Creation-Date: 2026-10-24 18:08+0000\n"
 "PO-Revision-Date: 2015-12-04 10:01+0000\n"
 "Last-Translator: Christoph Miebach <christoph.miebach@web.de>\n"
 "Language-Team: Bodo (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -118,7 +118,7 @@ msgstr "जौगानाय"
 msgid "Subtitles / OSD"
 msgstr "दालाय-बिमुं / OSD"
 
-#: include/vlc_config_cat.h:46 modules/control/hotkeys.c:1311
+#: include/vlc_config_cat.h:46 modules/control/hotkeys.c:1314
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:1301
 msgid "Hotkeys"
 msgstr "हटकिस"
@@ -1738,14 +1738,14 @@ msgstr ""
 msgid "Auto"
 msgstr "अट'"
 
-#: src/libvlc-module.c:198 src/libvlc-module.c:374 src/player/osd.c:323
+#: src/libvlc-module.c:198 src/libvlc-module.c:374 src/player/osd.c:340
 #: modules/access/dtv/access.c:100 modules/access/v4l2/v4l2.c:201
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
 msgid "On"
 msgstr "अन"
 
-#: src/libvlc-module.c:198 src/libvlc-module.c:374 src/player/osd.c:323
+#: src/libvlc-module.c:198 src/libvlc-module.c:374 src/player/osd.c:340
 #: modules/access/dtv/access.c:100 modules/access/v4l2/v4l2.c:137
 #: modules/access/v4l2/v4l2.c:201
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:136
@@ -4535,12 +4535,12 @@ msgstr "टेलिटेक्स्ट दालाय-बिमुं डि
 
 #: src/libvlc-module.c:1465
 #, fuzzy
-msgid "Scale up subtitles text"
+msgid "Scale down subtitles text"
 msgstr "दालाय-बिमुंखौ हाहोनाय खालाम"
 
 #: src/libvlc-module.c:1466
 #, fuzzy
-msgid "Scale down subtitles text"
+msgid "Scale up subtitles text"
 msgstr "दालाय-बिमुंखौ हाहोनाय खालाम"
 
 #: src/libvlc-module.c:1467
@@ -5802,94 +5802,114 @@ msgstr "VLC मेडिया प्लेयारखौ आपडेट ख�
 msgid "Volume: %ld%%"
 msgstr ""
 
-#: src/player/osd.c:185 src/player/osd.c:229
+#: src/player/osd.c:184
+#, c-format
+msgid "Video tracks: %s"
+msgstr ""
+
+#: src/player/osd.c:185
+#, c-format
+msgid "Video track: %s"
+msgstr ""
+
+#: src/player/osd.c:188
+#, c-format
+msgid "Audio tracks: %s"
+msgstr ""
+
+#: src/player/osd.c:189
+#, c-format
+msgid "Audio track: %s"
+msgstr "अडिअ' ट्रेक: %s"
+
+#: src/player/osd.c:192
+#, c-format
+msgid "Subtitle tracks: %s"
+msgstr ""
+
+#: src/player/osd.c:193
+#, c-format
+msgid "Subtitle track: %s"
+msgstr "दालाय-बिमुं ट्रेक: %s"
+
+#: src/player/osd.c:208 src/player/osd.c:251
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:98
 msgid "N/A"
 msgstr "N/A"
 
-#: src/player/osd.c:186 src/player/osd.c:229 src/player/osd.c:238
-#, c-format
-msgid "%s track: %s"
-msgstr ""
-
-#: src/player/osd.c:241
-#, c-format
-msgid "%s tracks: %s"
-msgstr ""
-
-#: src/player/osd.c:249
+#: src/player/osd.c:266
 #, c-format
 msgid "Program Service ID: %s"
 msgstr "प्रग्राम सिबिथाय ID: %s"
 
-#: src/player/osd.c:292
+#: src/player/osd.c:309
 #, c-format
 msgid "Aspect ratio: %s"
 msgstr "नुथाय रुजुथाय: %s"
 
-#: src/player/osd.c:296
+#: src/player/osd.c:313
 msgid "Scaled to screen"
 msgstr "स्क्रिनआव जखा सुबाय"
 
-#: src/player/osd.c:296
+#: src/player/osd.c:313
 msgid "Original size"
 msgstr ""
 
-#: src/player/osd.c:300
+#: src/player/osd.c:317
 #, c-format
 msgid "Crop: %s"
 msgstr "क्रप: %s"
 
-#: src/player/osd.c:303
+#: src/player/osd.c:320
 #, c-format
 msgid "Bottom crop: %d px"
 msgstr ""
 
-#: src/player/osd.c:306
+#: src/player/osd.c:323
 #, c-format
 msgid "Top crop: %d px"
 msgstr ""
 
-#: src/player/osd.c:309
+#: src/player/osd.c:326
 #, c-format
 msgid "Left crop: %d px"
 msgstr ""
 
-#: src/player/osd.c:312
+#: src/player/osd.c:329
 #, c-format
 msgid "Right crop: %d px"
 msgstr ""
 
-#: src/player/osd.c:322
+#: src/player/osd.c:339
 #, c-format
 msgid "Deinterlace %s (%s)"
 msgstr ""
 
-#: src/player/osd.c:329
+#: src/player/osd.c:346
 #, c-format
 msgid "Subtitle position %d px"
 msgstr "दालाय-बिमुं जायगा %d px"
 
-#: src/player/osd.c:332
+#: src/player/osd.c:349
 #, c-format
 msgid "Secondary subtitle position %d px"
 msgstr ""
 
-#: src/player/osd.c:335
+#: src/player/osd.c:352
 #, fuzzy, c-format
 msgid "Subtitle text scale %d%%"
 msgstr "दालाय-बिमुं फरा एनक'डिं"
 
-#: src/player/osd.c:340
+#: src/player/osd.c:357
 msgid "Zooming reset"
 msgstr "जुमिं फिन फजनाय"
 
-#: src/player/osd.c:344
+#: src/player/osd.c:361
 #, c-format
 msgid "Zoom mode: %s"
 msgstr "जुम म'ड: %s"
 
-#: src/player/osd.c:346
+#: src/player/osd.c:363
 #, c-format
 msgid "Zoom: x%.2f"
 msgstr ""
@@ -5930,7 +5950,22 @@ msgstr "रेकर्डिं"
 msgid "Recording done"
 msgstr "रेकर्डिं खालामखांबाय"
 
-#: src/player/player.c:1841 src/player/player.c:1893
+#: src/player/player.c:1844
+#, c-format
+msgid "Audio delay %i ms"
+msgstr "अडिअ' गोबाव %i ms"
+
+#: src/player/player.c:1846
+#, c-format
+msgid "Subtitle delay %i ms"
+msgstr "दालाय-बिमुं गोलाव %i ms"
+
+#: src/player/player.c:1848
+#, c-format
+msgid "Video delay %i ms"
+msgstr ""
+
+#: src/player/player.c:1898
 #, c-format
 msgid "%s delay: %i ms"
 msgstr ""
@@ -16602,7 +16637,7 @@ msgstr "RC"
 msgid "Remote control interface"
 msgstr "रिमट दबथायनाय इन्टारफेस"
 
-#: modules/control/cli/player.c:801 modules/control/hotkeys.c:674
+#: modules/control/cli/player.c:801 modules/control/hotkeys.c:677
 #, c-format
 msgid "Audio device: %s"
 msgstr ""
@@ -16758,42 +16793,45 @@ msgstr "मुलुगनां हटकिस"
 msgid "Global Hotkeys interface"
 msgstr "मुलुगनां हटकिस इन्टारफेस"
 
-#: modules/control/hotkeys.c:505
-#, c-format
-msgid "%s subtitle control"
+#: modules/control/hotkeys.c:507
+msgid "Primary subtitle control"
 msgstr ""
 
-#: modules/control/hotkeys.c:517
+#: modules/control/hotkeys.c:509
+msgid "Secondary subtitle control"
+msgstr ""
+
+#: modules/control/hotkeys.c:520
 msgid "Sub sync: bookmarked audio time"
 msgstr "दालाय सिन्क: बुकमार्क खालामखानाय अडिअ' सम"
 
-#: modules/control/hotkeys.c:521
+#: modules/control/hotkeys.c:524
 msgid "Sub sync: bookmarked subtitle time"
 msgstr "दालाय सिन्क: बुकमार्क खालामखानाय दालाय-बिमुं सम"
 
-#: modules/control/hotkeys.c:528
+#: modules/control/hotkeys.c:531
 msgid "Sub sync: set bookmarks first!"
 msgstr "दालाय सिन्क: गिबियाव बुकमार्कखौ फज!"
 
-#: modules/control/hotkeys.c:541
+#: modules/control/hotkeys.c:544
 #, c-format
 msgid "Sub sync: corrected %<PRId64> ms (total delay = %<PRId64> ms)"
 msgstr ""
 
-#: modules/control/hotkeys.c:550
+#: modules/control/hotkeys.c:553
 msgid "Sub sync: delay reset"
 msgstr "दालाय सिन्क: गोबाव फिन फजनाय"
 
-#: modules/control/hotkeys.c:908
+#: modules/control/hotkeys.c:911
 msgid "Subtitle position: usual"
 msgstr ""
 
-#: modules/control/hotkeys.c:910
+#: modules/control/hotkeys.c:913
 #, c-format
 msgid "Subtitle position: %+d%%"
 msgstr ""
 
-#: modules/control/hotkeys.c:1312
+#: modules/control/hotkeys.c:1315
 msgid "Hotkeys management interface"
 msgstr "हटकिस सामलायनाय इन्टारफेस"
 
@@ -28333,7 +28371,13 @@ msgid "Shuffle the play queue"
 msgstr ""
 
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1263
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1269
 msgid "Discard the filtered out items"
+msgstr ""
+
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1270
+msgid ""
+"Do you really want to discard the items that are not displayed at the moment?"
 msgstr ""
 
 #: modules/gui/qt/network/addonsmodel.cpp:330
@@ -39139,22 +39183,6 @@ msgstr "थारैनो नोंथाङा स्ट्रिमखौ स
 #, c-format
 #~ msgid "Sub sync: corrected %i ms (total delay = %i ms)"
 #~ msgstr "दालाय सिन्क: गेबें खालामबाय %i ms (गासै गोबाव = %i ms)"
-
-#, c-format
-#~ msgid "Subtitle delay %i ms"
-#~ msgstr "दालाय-बिमुं गोलाव %i ms"
-
-#, c-format
-#~ msgid "Audio delay %i ms"
-#~ msgstr "अडिअ' गोबाव %i ms"
-
-#, c-format
-#~ msgid "Audio track: %s"
-#~ msgstr "अडिअ' ट्रेक: %s"
-
-#, c-format
-#~ msgid "Subtitle track: %s"
-#~ msgstr "दालाय-बिमुं ट्रेक: %s"
 
 #~ msgid "Original Size"
 #~ msgstr "गुबै महर"

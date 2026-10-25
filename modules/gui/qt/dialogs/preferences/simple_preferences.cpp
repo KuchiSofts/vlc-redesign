@@ -1359,7 +1359,7 @@ static const char *const complete_languages[] = {
     "en", "en_GB", "he", "pt_BR", "de", "fr", "es", "it", "pt_PT", "ru", "uk", "pl", "nl", "tr", "ar",
     "ja", "ko", "zh_CN", "zh_TW", "cs", "sv",
     "ca", "da", "fi", "el", "hu", "ro", "bg", "sk", "sl", "hr", "sr", "nb", "id", "ms", "vi", "th", "hi",
-    "lt", "lv", "fa",
+    "lt", "lv", "fa", "et", "es_MX",
 };
 
 static bool languageComplete( const char *iso )

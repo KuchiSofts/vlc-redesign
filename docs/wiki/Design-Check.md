@@ -4,9 +4,10 @@ Every screen of VLC Redesign follows **["VLC Redesign (Community)"](https://www.
 the Figma file by **[Juxtopposed](https://www.youtube.com/@juxtopposed)** ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).
 This page shows how the app is compared with that design, frame by frame, and where it stands.
 
-**Where it stands** (build of 2026-10-24): all **103** frames of the design are in the app, and **101** of them were
-captured from the running app and compared pixel for pixel. The two others are hover states, which the capture scripts
-cannot show; their values were checked in the code.
+**Where it stands** (build of 2026-10-24): all **103** frames of the design are in the app, and all **103** were
+captured from the running app and compared pixel for pixel. The last two, hover states, were captured in Windows
+Sandbox, where real mouse input can be used without touching the desktop. The tables by area and frame by frame are
+[below](#results-by-area).
 
 ![Settings - global: the Figma frame, the app, and their difference](images/design-check-settings-global.png)
 
@@ -35,6 +36,10 @@ duplicate the file into your Figma drafts and open a frame with `?node-id=` and 
 5. **Record.** The result goes into the frame tables of the project plan and onto this page; a failure becomes a
    *Design mismatch* to fix.
 
+> **Good to know.** Found a screen that differs from the design? Open a
+> [Design mismatch](https://github.com/KuchiSofts/vlc-redesign/issues/new/choose) issue with the frame's node id (from
+> the tables below) and a screenshot.
+
 Text can only match when it is drawn like Figma draws it: the app uses Inter with Figma's metrics and line box, as
 distance-field text without hinting.
 
@@ -54,12 +59,15 @@ distance-field text without hinting.
 | New playlist | 1 | 1 | 1 |
 | Settings pages | 19 | 19 | 19 |
 | **Screens** | **57** | **57** | **57** |
-| Components | 46 | 46 | 44 |
-| **All** | **103** | **103** | **101** |
+| Components | 46 | 46 | 46 |
+| **All** | **103** | **103** | **103** |
 
-Not compared yet: **177:98** *Icon Wrapper* (the hover state of an icon button) and **2151:9673** *thumbnail* (the
-frame preview of the seek bar, shown on hover). The capture scripts send their clicks and keys to the app as window
-messages, and a hover cannot be shown that way; the sizes, colours and positions of both were checked in the code.
+**The two hover states.** **177:98** *Icon Wrapper* (the hover state of an icon button) and **2151:9673** *thumbnail*
+(the frame preview of the seek bar, shown on hover) cannot be reached by the usual capture scripts, which send their
+clicks and keys to the app as window messages: a hover needs a real pointer. They were captured in Windows Sandbox
+with real mouse input inside it: the button's hover box (30 × 32 px, white at 6 %) and the preview's time (15 px)
+match. The preview's time differs in two tiles of anti-aliasing from the sandbox's software renderer, with the same
+size, place and colour.
 
 ## What differs, and why
 
@@ -100,120 +108,120 @@ off, another choice in a dropdown, a path in a field. Besides those:
 
 ## Frame by frame
 
-Status: 🟢 every element and state of the frame is in the app. Pixel: 🟢 compared pixel for pixel, ⏳ not compared
-yet.
+**Status**: *Done* when every element and state of the frame is in the app. **Pixel**: *Passed* when compared pixel
+for pixel and passing (apart from the differences listed above).
 
 ### Onboarding (11)
 
 | Node | Name | Size (px) | What it is | Status | Pixel |
 |---|---|---|---|---|---|
-| 1899:3055 | Onboarding | 1090 × 759 | Step 1, Welcome: title, description, media folder (Browse), Next | 🟢 | 🟢 |
-| 1902:3670 | Onboarding | 1090 × 759 | Step 2: Light / Dark / System over the small player, 9 accents | 🟢 | 🟢 |
-| 1902:4020 | Onboarding | 1090 × 759 | Step 2, state 2 of 9: another theme or accent, control bar sample | 🟢 | 🟢 |
-| 1902:4325 | Onboarding | 1090 × 759 | Step 2, state 3 of 9 | 🟢 | 🟢 |
-| 1902:4634 | Onboarding | 1090 × 759 | Step 2, state 4 of 9 | 🟢 | 🟢 |
-| 1902:4940 | Onboarding | 1090 × 759 | Step 2, state 5 of 9 | 🟢 | 🟢 |
-| 1902:5245 | Onboarding | 1090 × 759 | Step 2, state 6 of 9 | 🟢 | 🟢 |
-| 1902:5550 | Onboarding | 1090 × 759 | Step 2, state 7 of 9 | 🟢 | 🟢 |
-| 1902:6160 | Onboarding | 1090 × 759 | Step 2, state 8 of 9 | 🟢 | 🟢 |
-| 1902:6465 | Onboarding | 1090 × 759 | Step 2, state 9 of 9 | 🟢 | 🟢 |
-| 1902:6770 | Onboarding | 1090 × 759 | Last step: 12 shortcuts with DM Mono keycaps, Back, Finish | 🟢 | 🟢 |
+| 1899:3055 | Onboarding | 1090 × 759 | Step 1, Welcome: title, description, media folder (Browse), Next | Done | Passed |
+| 1902:3670 | Onboarding | 1090 × 759 | Step 2: Light / Dark / System over the small player, 9 accents | Done | Passed |
+| 1902:4020 | Onboarding | 1090 × 759 | Step 2, state 2 of 9: another theme or accent, control bar sample | Done | Passed |
+| 1902:4325 | Onboarding | 1090 × 759 | Step 2, state 3 of 9 | Done | Passed |
+| 1902:4634 | Onboarding | 1090 × 759 | Step 2, state 4 of 9 | Done | Passed |
+| 1902:4940 | Onboarding | 1090 × 759 | Step 2, state 5 of 9 | Done | Passed |
+| 1902:5245 | Onboarding | 1090 × 759 | Step 2, state 6 of 9 | Done | Passed |
+| 1902:5550 | Onboarding | 1090 × 759 | Step 2, state 7 of 9 | Done | Passed |
+| 1902:6160 | Onboarding | 1090 × 759 | Step 2, state 8 of 9 | Done | Passed |
+| 1902:6465 | Onboarding | 1090 × 759 | Step 2, state 9 of 9 | Done | Passed |
+| 1902:6770 | Onboarding | 1090 × 759 | Last step: 12 shortcuts with DM Mono keycaps, Back, Finish | Done | Passed |
 
 ### Player (7)
 
 | Node | Name | Size (px) | What it is | Status | Pixel |
 |---|---|---|---|---|---|
-| 187:328 | Player | 1920 × 1080 | Player with the compact library open beside the video | 🟢 | 🟢 |
-| 247:445 | Player | 1920 × 1080 | Player alone: the video framed between the bars | 🟢 | 🟢 |
-| 970:2703 | Player | 1920 × 1080 | Library shell: sidebar, address bar, a folder's grid, mini player | 🟢 | 🟢 |
-| 970:3308 | Player | 1920 × 1080 | Library: video grid, the mini player playing | 🟢 | 🟢 |
-| 970:3792 | Player | 1920 × 1080 | Library: a folder as a list (rows 406 × 32, 10 apart) | 🟢 | 🟢 |
-| 970:4028 | Player | 1920 × 1080 | Library: a folder as cards, the Videos icon filled | 🟢 | 🟢 |
-| 6261:15078 | Player | 1920 × 1080 | Library Home: Continue Watching, Listen Again, Frequently Visited | 🟢 | 🟢 |
+| 187:328 | Player | 1920 × 1080 | Player with the compact library open beside the video | Done | Passed |
+| 247:445 | Player | 1920 × 1080 | Player alone: the video framed between the bars | Done | Passed |
+| 970:2703 | Player | 1920 × 1080 | Library shell: sidebar, address bar, a folder's grid, mini player | Done | Passed |
+| 970:3308 | Player | 1920 × 1080 | Library: video grid, the mini player playing | Done | Passed |
+| 970:3792 | Player | 1920 × 1080 | Library: a folder as a list (rows 406 × 32, 10 apart) | Done | Passed |
+| 970:4028 | Player | 1920 × 1080 | Library: a folder as cards, the Videos icon filled | Done | Passed |
+| 6261:15078 | Player | 1920 × 1080 | Library Home: Continue Watching, Listen Again, Frequently Visited | Done | Passed |
 
 ### Player - Music (2)
 
 | Node | Name | Size (px) | What it is | Status | Pixel |
 |---|---|---|---|---|---|
-| 4767:23726 | Player - Music | 1920 × 1080 | Music: artwork (738 × 737) over its blur, waveform, resume card | 🟢 | 🟢 |
-| 4778:25123 | Player - Music | 1920 × 1080 | The same with the queue | 🟢 | 🟢 |
+| 4767:23726 | Player - Music | 1920 × 1080 | Music: artwork (738 × 737) over its blur, waveform, resume card | Done | Passed |
+| 4778:25123 | Player - Music | 1920 × 1080 | The same with the queue | Done | Passed |
 
 ### Player - customize (9)
 
 | Node | Name | Size (px) | What it is | Status | Pixel |
 |---|---|---|---|---|---|
-| 2107:5604 | Player - customize | 1920 × 1080 | Customize Player open: profile picker, palette, Cancel, Save | 🟢 | 🟢 |
-| 2160:6137 | Player - customize | 1920 × 1080 | The timeline dragged to a row of its own | 🟢 | 🟢 |
-| 2160:6564 | Player - customize | 1920 × 1080 | A control dragged from the palette onto the bar | 🟢 | 🟢 |
-| 2160:7005 | Player - customize | 1920 × 1080 | Controls moved along the bar | 🟢 | 🟢 |
-| 2160:7437 | Player - customize | 1920 × 1080 | Library toggle and ⋯ menu moved into the bar | 🟢 | 🟢 |
-| 2160:7869 | Player - customize | 1920 × 1080 | The edited bar, ready to save | 🟢 | 🟢 |
-| 6587:19923 | Player - customize | 1920 × 1080 | Another profile being edited | 🟢 | 🟢 |
-| 2160:8301 | Player - customize | 1920 × 1080 | The player after editing: the active profile's bar | 🟢 | 🟢 |
-| 2160:8732 | Player - customize | 1920 × 1080 | Saved layout: file name in the bar, two rows, library left | 🟢 | 🟢 |
+| 2107:5604 | Player - customize | 1920 × 1080 | Customize Player open: profile picker, palette, Cancel, Save | Done | Passed |
+| 2160:6137 | Player - customize | 1920 × 1080 | The timeline dragged to a row of its own | Done | Passed |
+| 2160:6564 | Player - customize | 1920 × 1080 | A control dragged from the palette onto the bar | Done | Passed |
+| 2160:7005 | Player - customize | 1920 × 1080 | Controls moved along the bar | Done | Passed |
+| 2160:7437 | Player - customize | 1920 × 1080 | Library toggle and ⋯ menu moved into the bar | Done | Passed |
+| 2160:7869 | Player - customize | 1920 × 1080 | The edited bar, ready to save | Done | Passed |
+| 6587:19923 | Player - customize | 1920 × 1080 | Another profile being edited | Done | Passed |
+| 2160:8301 | Player - customize | 1920 × 1080 | The player after editing: the active profile's bar | Done | Passed |
+| 2160:8732 | Player - customize | 1920 × 1080 | Saved layout: file name in the bar, two rows, library left | Done | Passed |
 
 ### Player - hide UI (1)
 
 | Node | Name | Size (px) | What it is | Status | Pixel |
 |---|---|---|---|---|---|
-| 3328:11554 | Player - hide UI | 1920 × 1080 | The video alone in its 10 px frame (Ctrl+\\, right-click) | 🟢 | 🟢 |
+| 3328:11554 | Player - hide UI | 1920 × 1080 | The video alone in its 10 px frame (Ctrl+\\, right-click) | Done | Passed |
 
 ### Player - Light (1)
 
 | Node | Name | Size (px) | What it is | Status | Pixel |
 |---|---|---|---|---|---|
-| 2425:13624 | Player - Light | 1920 × 1080 | The light theme, greys measured from this frame | 🟢 | 🟢 |
+| 2425:13624 | Player - Light | 1920 × 1080 | The light theme, greys measured from this frame | Done | Passed |
 
 ### Add Subtitles (4)
 
 | Node | Name | Size (px) | What it is | Status | Pixel |
 |---|---|---|---|---|---|
-| 1911:7545 | Add Subtitles to Playlist/Folder | 1048 × 800 | To a folder, from the computer: a row per video | 🟢 | 🟢 |
-| 3336:11929 | Add Subtitles to Playlist/Folder | 1048 × 800 | The same, several subtitles per video | 🟢 | 🟢 |
-| 1919:8707 | Add Subtitles to Playlist/Folder | 1048 × 800 | One subtitle for the folder, origin dropdown | 🟢 | 🟢 |
-| 1919:9278 | Add Subtitles to Playlist/Folder | 1048 × 800 | To one file, from OpenSubtitles, English | 🟢 | 🟢 |
+| 1911:7545 | Add Subtitles to Playlist/Folder | 1048 × 800 | To a folder, from the computer: a row per video | Done | Passed |
+| 3336:11929 | Add Subtitles to Playlist/Folder | 1048 × 800 | The same, several subtitles per video | Done | Passed |
+| 1919:8707 | Add Subtitles to Playlist/Folder | 1048 × 800 | One subtitle for the folder, origin dropdown | Done | Passed |
+| 1919:9278 | Add Subtitles to Playlist/Folder | 1048 × 800 | To one file, from OpenSubtitles, English | Done | Passed |
 
 ### Keyboard Shortcuts (1)
 
 | Node | Name | Size (px) | What it is | Status | Pixel |
 |---|---|---|---|---|---|
-| 2437:14832 | Keyboard Shortcuts | 1048 × 800 | Search, Action / Hotkey / Global Hotkey by group, Save | 🟢 | 🟢 |
+| 2437:14832 | Keyboard Shortcuts | 1048 × 800 | Search, Action / Hotkey / Global Hotkey by group, Save | Done | Passed |
 
 ### Open network stream (1)
 
 | Node | Name | Size (px) | What it is | Status | Pixel |
 |---|---|---|---|---|---|
-| 6216:13614 | Open network stream | 1048 × 631 | Network URL (several links), Playlist Name (optional), Save | 🟢 | 🟢 |
+| 6216:13614 | Open network stream | 1048 × 631 | Network URL (several links), Playlist Name (optional), Save | Done | Passed |
 
 ### New playlist (1)
 
 | Node | Name | Size (px) | What it is | Status | Pixel |
 |---|---|---|---|---|---|
-| 6259:14954 | new playlist | 713 × 589 | Title and thumbnail, Select Files (drop zone), Save | 🟢 | 🟢 |
+| 6259:14954 | new playlist | 713 × 589 | Title and thumbnail, Select Files (drop zone), Save | Done | Passed |
 
 ### Settings pages (19)
 
 | Node | Name | Size (px) | What it is | Status | Pixel |
 |---|---|---|---|---|---|
-| 999:5047 | Settings - global | 1048 × 865 | Appearance (language, theme, accent), Startup, Diagnostics | 🟢 | 🟢 |
-| 3046:9282 | Settings - global | 1048 × 865 | Advanced: warnings, command line, log, statistics, reset | 🟢 | 🟢 |
-| 3046:10057 | Settings - interface | 1048 × 865 | Skin, Window, Playback Controls, Notifications, Playlist | 🟢 | 🟢 |
-| 3062:11379 | Settings - interface | 1048 × 865 | Advanced: opacity, minimized, cover art, fullscreen controls | 🟢 | 🟢 |
-| 3062:11911 | Settings - privacy | 1048 × 865 | History, Network (cover art, Last.fm) | 🟢 | 🟢 |
-| 3062:12552 | Settings - playback | 1048 × 865 | Startup, Tracks, Order, Seeking, Files & Discs | 🟢 | 🟢 |
-| 3072:13408 | Settings - playback | 1048 × 865 | Advanced: time-shift buffer | 🟢 | 🟢 |
-| 3073:14187 | Settings - video | 1048 × 865 | Output, Picture, Deinterlacing, Framing, Snapshots | 🟢 | 🟢 |
-| 3073:15375 | Settings - video | 1048 × 865 | Advanced: aspect and crop ratios, pixel aspect ratio | 🟢 | 🟢 |
-| 3073:15879 | Settings - audio | 1048 × 865 | Output, Volume, Loudness, Effects, Tracks, Visualization | 🟢 | 🟢 |
-| 3180:17398 | Settings - audio | 1048 × 865 | Advanced: pass-through, Dolby Surround, resampling, media role | 🟢 | 🟢 |
-| 3180:17989 | Settings - subtitles | 1048 × 865 | Languages, Loading, Appearance, Timing, On-Screen Messages | 🟢 | 🟢 |
-| 6536:13908 | Settings - subtitles | 1048 × 865 | Advanced: folders, ASS/SSA styling, shadow angle, direction | 🟢 | 🟢 |
-| 6536:14482 | Settings - controls | 1048 × 865 | Shortcuts, skip amounts, mouse, web remote | 🟢 | 🟢 |
-| 6542:15251 | Settings - library | 1048 × 865 | Opening files, folders, metadata, media library | 🟢 | 🟢 |
-| 6543:15649 | Settings - network | 1048 × 865 | Buffering presets, proxy, certificates, ciphers | 🟢 | 🟢 |
-| 6571:15958 | Settings - performance | 1048 × 865 | Decoding, smooth playback, priority, plugins, developer | 🟢 | 🟢 |
-| 6571:16429 | Settings - recording | 1048 × 865 | Recording, Casting, Streaming | 🟢 | 🟢 |
-| 6575:17137 | Settings - extensions | 1048 × 865 | Add-ons list (784 × 194), find more, add, remove, on startup | 🟢 | 🟢 |
+| 999:5047 | Settings - global | 1048 × 865 | Appearance (language, theme, accent), Startup, Diagnostics | Done | Passed |
+| 3046:9282 | Settings - global | 1048 × 865 | Advanced: warnings, command line, log, statistics, reset | Done | Passed |
+| 3046:10057 | Settings - interface | 1048 × 865 | Skin, Window, Playback Controls, Notifications, Playlist | Done | Passed |
+| 3062:11379 | Settings - interface | 1048 × 865 | Advanced: opacity, minimized, cover art, fullscreen controls | Done | Passed |
+| 3062:11911 | Settings - privacy | 1048 × 865 | History, Network (cover art, Last.fm) | Done | Passed |
+| 3062:12552 | Settings - playback | 1048 × 865 | Startup, Tracks, Order, Seeking, Files & Discs | Done | Passed |
+| 3072:13408 | Settings - playback | 1048 × 865 | Advanced: time-shift buffer | Done | Passed |
+| 3073:14187 | Settings - video | 1048 × 865 | Output, Picture, Deinterlacing, Framing, Snapshots | Done | Passed |
+| 3073:15375 | Settings - video | 1048 × 865 | Advanced: aspect and crop ratios, pixel aspect ratio | Done | Passed |
+| 3073:15879 | Settings - audio | 1048 × 865 | Output, Volume, Loudness, Effects, Tracks, Visualization | Done | Passed |
+| 3180:17398 | Settings - audio | 1048 × 865 | Advanced: pass-through, Dolby Surround, resampling, media role | Done | Passed |
+| 3180:17989 | Settings - subtitles | 1048 × 865 | Languages, Loading, Appearance, Timing, On-Screen Messages | Done | Passed |
+| 6536:13908 | Settings - subtitles | 1048 × 865 | Advanced: folders, ASS/SSA styling, shadow angle, direction | Done | Passed |
+| 6536:14482 | Settings - controls | 1048 × 865 | Shortcuts, skip amounts, mouse, web remote | Done | Passed |
+| 6542:15251 | Settings - library | 1048 × 865 | Opening files, folders, metadata, media library | Done | Passed |
+| 6543:15649 | Settings - network | 1048 × 865 | Buffering presets, proxy, certificates, ciphers | Done | Passed |
+| 6571:15958 | Settings - performance | 1048 × 865 | Decoding, smooth playback, priority, plugins, developer | Done | Passed |
+| 6571:16429 | Settings - recording | 1048 × 865 | Recording, Casting, Streaming | Done | Passed |
+| 6575:17137 | Settings - extensions | 1048 × 865 | Add-ons list (784 × 194), find more, add, remove, on startup | Done | Passed |
 
 ### Components (46)
 
@@ -221,82 +229,82 @@ yet.
 
 | Node | Name | Size (px) | What it is | Status | Pixel |
 |---|---|---|---|---|---|
-| 42:356 | Icon | 548 × 812 | The icon set: 96 names with their states | 🟢 | 🟢 |
-| 177:98 | Icon Wrapper | 72 × 122 | Icon button: default, hover | 🟢 | ⏳ |
-| 500:3063 | Button | 400 × 140 | Dialog button: neutral, accent | 🟢 | 🟢 |
-| 848:1712 | play | 94 × 116 | Play, pause | 🟢 | 🟢 |
-| 536:1014 | Toggle | 120 × 194 | ON / OFF | 🟢 | 🟢 |
+| 42:356 | Icon | 548 × 812 | The icon set: 96 names with their states | Done | Passed |
+| 177:98 | Icon Wrapper | 72 × 122 | Icon button: default, hover | Done | Passed |
+| 500:3063 | Button | 400 × 140 | Dialog button: neutral, accent | Done | Passed |
+| 848:1712 | play | 94 × 116 | Play, pause | Done | Passed |
+| 536:1014 | Toggle | 120 × 194 | ON / OFF | Done | Passed |
 
 **Player controls**
 
 | Node | Name | Size (px) | What it is | Status | Pixel |
 |---|---|---|---|---|---|
-| 491:1780 | Controls | 1960 × 11139 | Control bar and its 15 panel states (queue, tracks…) | 🟢 | 🟢 |
-| 244:184 | volume | 130 × 646 | Cone volume, 13 states from 0 to 200 % | 🟢 | 🟢 |
-| 2245:9805 | audio value | 121 × 37 | The value shown while the volume changes | 🟢 | 🟢 |
-| 1904:7238 | Current Time | 114 × 164 | Elapsed time: default, hover, click | 🟢 | 🟢 |
-| 1905:7312 | Duration | 114 × 164 | Length: default, click (remaining time) | 🟢 | 🟢 |
-| 2151:9673 | thumbnail | 272 × 189 | Seek bar frame preview with its time | 🟢 | ⏳ |
-| 970:3091 | Miniplayer | 431 × 2816.375 | Library mini player, 5 states | 🟢 | 🟢 |
+| 491:1780 | Controls | 1960 × 11139 | Control bar and its 15 panel states (queue, tracks…) | Done | Passed |
+| 244:184 | volume | 130 × 646 | Cone volume, 13 states from 0 to 200 % | Done | Passed |
+| 2245:9805 | audio value | 121 × 37 | The value shown while the volume changes | Done | Passed |
+| 1904:7238 | Current Time | 114 × 164 | Elapsed time: default, hover, click | Done | Passed |
+| 1905:7312 | Duration | 114 × 164 | Length: default, click (remaining time) | Done | Passed |
+| 2151:9673 | thumbnail | 272 × 189 | Seek bar frame preview with its time | Done | Passed |
+| 970:3091 | Miniplayer | 431 × 2816.375 | Library mini player, 5 states | Done | Passed |
 
 **Library**
 
 | Node | Name | Size (px) | What it is | Status | Pixel |
 |---|---|---|---|---|---|
-| 848:1996 | sidebar | 4492 × 1028 | Sections column, 10 states | 🟢 | 🟢 |
-| 856:2215 | Sorting Options | 265 × 776 | Sort menu | 🟢 | 🟢 |
-| 858:3290 | View Options | 265 × 104 | Grid or list | 🟢 | 🟢 |
-| 2404:9167 | media | 377 × 228 | Video card: watched, unwatched, hover of each | 🟢 | 🟢 |
-| 2459:9352 | playlist | 377 × 228 | Playlist card: unwatched, hover | 🟢 | 🟢 |
+| 848:1996 | sidebar | 4492 × 1028 | Sections column, 10 states | Done | Passed |
+| 856:2215 | Sorting Options | 265 × 776 | Sort menu | Done | Passed |
+| 858:3290 | View Options | 265 × 104 | Grid or list | Done | Passed |
+| 2404:9167 | media | 377 × 228 | Video card: watched, unwatched, hover of each | Done | Passed |
+| 2459:9352 | playlist | 377 × 228 | Playlist card: unwatched, hover | Done | Passed |
 
 **Menus**
 
 | Node | Name | Size (px) | What it is | Status | Pixel |
 |---|---|---|---|---|---|
-| 6062:13354 | menu | 375 × 585 | The ⋯ main menu, with shortcuts | 🟢 | 🟢 |
-| 6648:20666 | Profiles | 651 × 633 | Profile submenu: Movies, Shows, Music, Work, New | 🟢 | 🟢 |
-| 6065:13616 | right-click menu | 292 × 683 | Player right-click menu (Qt menu drawn to frame) | 🟢 | 🟢 |
-| 2107:5903 | context menu | 265 × 296 | Library item menu | 🟢 | 🟢 |
-| 2139:8935 | folder context menu | 265 × 296 | Folder menu | 🟢 | 🟢 |
-| 2404:13340 | file context menu | 265 × 584 | File menu | 🟢 | 🟢 |
-| 2459:9389 | playlist context menu | 265 × 392 | Playlist menu | 🟢 | 🟢 |
-| 2107:5935 | option | 301 × 292 | Menu row: default, hover, selected | 🟢 | 🟢 |
+| 6062:13354 | menu | 375 × 585 | The ⋯ main menu, with shortcuts | Done | Passed |
+| 6648:20666 | Profiles | 651 × 633 | Profile submenu: Movies, Shows, Music, Work, New | Done | Passed |
+| 6065:13616 | right-click menu | 292 × 683 | Player right-click menu (Qt menu drawn to frame) | Done | Passed |
+| 2107:5903 | context menu | 265 × 296 | Library item menu | Done | Passed |
+| 2139:8935 | folder context menu | 265 × 296 | Folder menu | Done | Passed |
+| 2404:13340 | file context menu | 265 × 584 | File menu | Done | Passed |
+| 2459:9389 | playlist context menu | 265 × 392 | Playlist menu | Done | Passed |
+| 2107:5935 | option | 301 × 292 | Menu row: default, hover, selected | Done | Passed |
 
 **Add Subtitles parts**
 
 | Node | Name | Size (px) | What it is | Status | Pixel |
 |---|---|---|---|---|---|
-| 1915:8397 | subtitle multiple | 519 × 239 | A video with several subtitles: default, hover | 🟢 | 🟢 |
-| 1919:9121 | subtitle one | 519 × 239 | A video with one subtitle: default, selected | 🟢 | 🟢 |
-| 1959:5325 | target | 240 × 520 | To this folder / file, and its dropdown | 🟢 | 🟢 |
-| 1963:5465 | origin | 240 × 525 | From the computer / OpenSubtitles, dropdown | 🟢 | 🟢 |
+| 1915:8397 | subtitle multiple | 519 × 239 | A video with several subtitles: default, hover | Done | Passed |
+| 1919:9121 | subtitle one | 519 × 239 | A video with one subtitle: default, selected | Done | Passed |
+| 1959:5325 | target | 240 × 520 | To this folder / file, and its dropdown | Done | Passed |
+| 1963:5465 | origin | 240 × 525 | From the computer / OpenSubtitles, dropdown | Done | Passed |
 
 **Settings controls**
 
 | Node | Name | Size (px) | What it is | Status | Pixel |
 |---|---|---|---|---|---|
-| 3021:9835 | setting category | 228 × 140 | Sidebar item: selected or not | 🟢 | 🟢 |
-| 2372:8300 | Dropdown | 406 × 369 | Dropdown: default, open | 🟢 | 🟢 |
-| 804:1208 | Values | 253 × 404 | Segmented choice of 2 or 3 values | 🟢 | 🟢 |
-| 3176:16556 | Values | 360 × 216 | Vertical values (startup volume) | 🟢 | 🟢 |
-| 3178:16769 | EQ | 824 × 628 | Inline equalizer: closed, open | 🟢 | 🟢 |
-| 2372:8487 | EQ presets | 406 × 460 | Equalizer preset dropdown | 🟢 | 🟢 |
-| 6456:13892 | sub filename | 406 × 422 | Subtitle file name matching dropdown | 🟢 | 🟢 |
-| 2372:8834 | Setting Preset | 406 × 412 | A preset dropdown: default, open | 🟢 | 🟢 |
-| 2372:8639 | Audio Visualizer | 406 × 369 | Visualizer choice: default, open | 🟢 | 🟢 |
-| 2372:8733 | HDR Options | 406 × 422 | Auto, Off, HDR10, HDR10+, Dolby Vision, HLG | 🟢 | 🟢 |
+| 3021:9835 | setting category | 228 × 140 | Sidebar item: selected or not | Done | Passed |
+| 2372:8300 | Dropdown | 406 × 369 | Dropdown: default, open | Done | Passed |
+| 804:1208 | Values | 253 × 404 | Segmented choice of 2 or 3 values | Done | Passed |
+| 3176:16556 | Values | 360 × 216 | Vertical values (startup volume) | Done | Passed |
+| 3178:16769 | EQ | 824 × 628 | Inline equalizer: closed, open | Done | Passed |
+| 2372:8487 | EQ presets | 406 × 460 | Equalizer preset dropdown | Done | Passed |
+| 6456:13892 | sub filename | 406 × 422 | Subtitle file name matching dropdown | Done | Passed |
+| 2372:8834 | Setting Preset | 406 × 412 | A preset dropdown: default, open | Done | Passed |
+| 2372:8639 | Audio Visualizer | 406 × 369 | Visualizer choice: default, open | Done | Passed |
+| 2372:8733 | HDR Options | 406 × 422 | Auto, Off, HDR10, HDR10+, Dolby Vision, HLG | Done | Passed |
 
 **Effects panels**
 
 | Node | Name | Size (px) | What it is | Status | Pixel |
 |---|---|---|---|---|---|
-| 536:1513 | Audio - Compressor Settings | 400 × 821 | Collapsed, expanded | 🟢 | 🟢 |
-| 6114:13610 | Audio - Equalizer | 400 × 1623 | Preamp and 10 bands | 🟢 | 🟢 |
-| 536:1703 | Audio - Spatializer Settings | 400 × 821 | Collapsed, expanded | 🟢 | 🟢 |
-| 612:1223 | Audio - Stereo Widener | 400 × 821 | Collapsed, expanded | 🟢 | 🟢 |
-| 536:1855 | Video - Essential | 400 × 821 | Collapsed, expanded | 🟢 | 🟢 |
-| 543:990 | Video - Crop | 400 × 821 | Collapsed, expanded | 🟢 | 🟢 |
-| 614:1430 | Video - Colors | 400 × 888 | Collapsed, expanded | 🟢 | 🟢 |
+| 536:1513 | Audio - Compressor Settings | 400 × 821 | Collapsed, expanded | Done | Passed |
+| 6114:13610 | Audio - Equalizer | 400 × 1623 | Preamp and 10 bands | Done | Passed |
+| 536:1703 | Audio - Spatializer Settings | 400 × 821 | Collapsed, expanded | Done | Passed |
+| 612:1223 | Audio - Stereo Widener | 400 × 821 | Collapsed, expanded | Done | Passed |
+| 536:1855 | Video - Essential | 400 × 821 | Collapsed, expanded | Done | Passed |
+| 543:990 | Video - Crop | 400 × 821 | Collapsed, expanded | Done | Passed |
+| 614:1430 | Video - Colors | 400 × 888 | Collapsed, expanded | Done | Passed |
 
 
 ---

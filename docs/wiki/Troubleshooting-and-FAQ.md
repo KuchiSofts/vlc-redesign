@@ -1,15 +1,25 @@
 # Troubleshooting and FAQ
 
-> Casting problems have their own page: [Casting: when a TV does not play](Casting-Troubleshooting).
+Answers to the questions asked most, and what to do when something does not work. Casting problems have their own
+page: [Casting: when a TV does not play](Casting-Troubleshooting). A question not answered here can be asked in
+[Discussions](https://github.com/KuchiSofts/vlc-redesign/discussions) (the **Q&A** category).
+
+**On this page:** [Which Windows](#which-windows-does-it-run-on) ·
+[SmartScreen](#windows-protected-your-pc-smartscreen) ·
+[Is it the official VLC?](#is-it-the-official-vlc-does-it-replace-mine) ·
+[Where are my settings?](#where-are-my-settings) · [Reset the settings](#reset-the-settings) ·
+[Save a log](#save-a-log) · [Video problems](#video-problems-no-picture-black-screen-stutter-wrong-colours) ·
+[Other questions](#other-questions) · [Report a bug](#report-a-bug)
 
 ## Which Windows does it run on?
 
 **Windows 10 version 1809 or later, or Windows 11, 64-bit.** The interface is built on Qt 6.8, which needs them; the
 installer refuses an older Windows, and a portable copy on one says so when it starts.
 
-There is no build for Windows XP, Vista, 7, 8 or 8.1, nor for 32-bit Windows or Windows on ARM. Linux, macOS and
-the other systems are not available yet (the list of platforms and their status is in
-[`platforms.yml`](https://github.com/KuchiSofts/vlc-redesign/blob/main/platforms.yml)). For those, use the official
+There is no build for Windows XP, Vista, 7, 8 or 8.1, nor for 32-bit Windows. There is no native build for Windows
+on ARM yet: the x64 installer accepts Windows 11 on ARM, where Windows runs it under emulation (slower, and not tested
+on real ARM hardware). Linux, macOS and the other systems are not available yet (see [Platforms](Platforms); the status
+of each is in [`platforms.yml`](https://github.com/KuchiSofts/vlc-redesign/blob/main/platforms.yml)). For those, use the official
 [VLC](https://www.videolan.org/vlc/).
 
 ## "Windows protected your PC" (SmartScreen)
@@ -99,7 +109,7 @@ VLC Redesign decodes video on the graphics card when it can (*Hardware-accelerat
 windows. If VLC Redesign stopped answering, the file opens in a new one.
 
 **The language changed back to English.** VLC Redesign starts in English until you choose a language in
-*Settings → General → Interface language*; *Reset all settings* goes back to English. See [Languages](Languages).
+*Settings → General → Appearance → Interface language*; *Reset all settings* goes back to English. See [Languages](Languages).
 
 **Fullscreen does not end.** <kbd>Esc</kbd>, <kbd>F</kbd> or <kbd>F11</kbd> leave it, from any view.
 
@@ -119,7 +129,8 @@ with the picture.
 
 ## Report a bug
 
-Open an issue on [GitHub](https://github.com/KuchiSofts/vlc-redesign/issues/new/choose) and pick a form:
+**A question, or an idea?** Use [Discussions](https://github.com/KuchiSofts/vlc-redesign/discussions): **Q&A** for
+questions, **Ideas** for suggestions to talk over. **Something broken?** Open an issue on [GitHub](https://github.com/KuchiSofts/vlc-redesign/issues/new/choose) and pick a form:
 
 | Form | For |
 |---|---|
@@ -137,7 +148,8 @@ A bug report asks for:
 - for playback, the **media**: format, codec, resolution, or a link to a sample (no copyrighted files);
 - screenshots or a short recording, and the [log](#save-a-log) if you have one.
 
-Problems with the official VLC go to [VideoLAN](https://www.videolan.org/vlc/).
+Problems with the official VLC go to [VideoLAN](https://www.videolan.org/vlc/). A security problem goes through
+[SECURITY.md](https://github.com/KuchiSofts/vlc-redesign/blob/main/SECURITY.md), not a public issue.
 
 ---
 

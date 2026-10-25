@@ -1,7 +1,9 @@
 # Building from source
 
 The Windows build of VLC Redesign is a cross-compile in Docker, with VideoLAN's official build image and its prebuilt
-libraries. It runs on Windows, in PowerShell. Every release links to the exact source it was built from.
+libraries. It runs on Windows, in PowerShell, and on GitHub's Linux runners. Every release links to the exact source
+it was built from. This page covers the development build, the release script and its files, the GitHub workflows,
+and signing.
 
 ## What you need
 
@@ -20,10 +22,16 @@ cd vlc-redesign
 .\extras\juxtopposed\make-release.ps1
 ```
 
-The first build takes a while: it builds the Docker image once and downloads VideoLAN's prebuilt libraries
-(`contrib`) for the source. Later builds only rebuild what changed: the objects stay in a Docker volume. The result is
-a portable VLC Redesign in the output folder: run its `vlc.exe`. Close a VLC running from that folder first; the
-script stops otherwise, since a running VLC locks its files.
+The first build takes a while: it builds the Docker image once (`vlc-win64-redesign`, from VideoLAN's
+`registry.videolan.org/vlc-debian-win64-posix` image, the one of VideoLAN's own Windows CI) and downloads VideoLAN's
+prebuilt libraries (`contrib`) for the source from `artifacts.videolan.org`. VideoLAN publishes those archives only
+for its own commits, so the script takes the newest one among the last 20 commits that touched the build paths. Later builds only rebuild what changed: the objects stay in a Docker volume. The result is
+a portable VLC Redesign in the output folder: run its `vlc.exe`. At the end the script also writes the plugin cache
+(`plugins\plugins.dat`, with `vlc-cache-gen.exe`), without which every start scans all plugins.
+
+> **Good to know.** Close a VLC running from the output folder first: the script stops otherwise, since a running VLC
+> locks its files. Files still held by a VLC that crashed are renamed aside (`*.old-<time>`) and deleted on a later
+> build.
 
 ## `win64-docker.ps1`
 
@@ -60,6 +68,26 @@ release mode) and makes in `-Dist`:
 | `-SkipBuild` | off | Packages the existing `-Package` folder as it is. |
 | `-Signed` | off | Packages a folder whose files are signed already (implies `-SkipBuild`): nothing is built, and no file of it is changed. |
 
+### Examples
+
+```powershell
+# Rebuild only what changed, after editing QML or C++
+.\extras\juxtopposed\win64-docker.ps1 -Quick
+# Check the changed QML files with qmllint, without building
+.\extras\juxtopposed\win64-docker.ps1 -Lint
+# A release from the tree already built, into its own folders
+.\extras\juxtopposed\make-release.ps1 -Quick -Dist D:\dist
+```
+
+## On GitHub
+
+| Workflow | When | What it does |
+|---|---|---|
+| **Windows build** (`build-windows.yml`) | Every push to `main`, every pull request, and by hand | Builds the package in Docker on Ubuntu 24.04, then a *launch test* on Windows Server 2022 starts it and plays a file (keeping crash dumps and logs); the package and the logs are uploaded as artifacts. Run by hand with signing chosen, it has the files signed through SignPath and packages the release from them. |
+| **Upstream sync** (`upstream-sync.yml`) | Every Monday at 06:00 UTC, and by hand | Tries to merge VideoLAN's VLC into this fork: a pull request when it applies cleanly, an issue listing the conflicting files otherwise. |
+| **Wiki** (`wiki-sync.yml`) | A push that changes `docs/wiki` | Copies `docs/wiki` to this wiki. |
+| **Labels** (`labels.yml`) | A push that changes `.github/labels.yml`, and by hand | Keeps the issue labels in step with the repository's list. |
+
 ## Signed builds
 
 Signing is prepared and not active yet: the files of the releases are unsigned, and their SHA-256 is listed in
@@ -74,7 +102,8 @@ and the [code signing policy](https://github.com/KuchiSofts/vlc-redesign/blob/ma
 
 ## Other systems
 
-Linux builds use `extras/juxtopposed/linux.sh`. The interface lives in
+A Linux build script exists (`extras/juxtopposed/linux.sh` with `linux.Dockerfile`: Ubuntu 24.04 and its Qt 6.4),
+from the first milestones; it has not been run since the Windows work began, and is not a supported build. The interface lives in
 [`modules/gui/qt`](https://github.com/KuchiSofts/vlc-redesign/tree/main/modules/gui/qt). Which other systems may come,
 and in which order: [Platforms](Platforms).
 

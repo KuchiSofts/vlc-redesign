@@ -1,8 +1,10 @@
 **[VLC Redesign](Home)**
 
-**Get it**
+**Get started**
+- [Home](Home)
 - [Install and update](Install-and-Update)
-- [Updates](Install-and-Update#small-updates)
+- [Small updates](Install-and-Update#small-updates)
+- [Languages](Languages)
 
 **Use it**
 - [The player](The-Player)
@@ -10,17 +12,17 @@
 - [Queue and playlists](The-Player#the-queue-card)
 - [Subtitles](Subtitles)
 - [Effects](Effects)
-- [Languages](Languages)
 - [Customize the player](Customize-the-Player)
 - [Colours and themes](Colours-and-Themes)
 - [Keyboard shortcuts](Keyboard-Shortcuts)
 
-**[Casting](Casting)**
+**Casting**
 - [Casting to a TV](Casting)
 - [When a TV does not play](Casting-Troubleshooting)
 - [TV compatibility](TV-Compatibility)
 
-**[Settings](Settings)**
+**Settings**
+- [Overview](Settings)
 - [General](Settings-General)
 - [Interface](Settings-Interface)
 - [Privacy](Settings-Privacy)
@@ -37,6 +39,10 @@
 
 **Help**
 - [Troubleshooting and FAQ](Troubleshooting-and-FAQ)
+- [Discussions](https://github.com/KuchiSofts/vlc-redesign/discussions)
+- [Report a problem](https://github.com/KuchiSofts/vlc-redesign/issues/new/choose)
+
+**About**
 - [Platforms](Platforms)
 - [Building from source](Building-from-Source)
 - [Design check](Design-Check)

@@ -4,6 +4,14 @@ VLC Redesign plays what is playing on a **Chromecast** or on a **DLNA / UPnP TV*
 there from where it was, and the bar of the player goes on controlling it: pause, seek and change the subtitles here,
 the TV follows.
 
+| | Chromecast | DLNA / UPnP TV |
+|---|---|---|
+| **Found by** | mDNS (the Chromecast protocol) | UPnP discovery (a DLNA media renderer) |
+| **Reads the film from this computer on port** | 8010 | 7070 |
+| **Picture on this computer too** | No | Yes, with *Show the video here too* |
+| **Converted when** | Its format can't play there, or a subtitle is shown | Its format can't play there, a subtitle is shown, or the TV stops it in its first 15 s |
+| **Checked with** | A real Chromecast Ultra, and a test device | A real Samsung TV, and a test device |
+
 ![The cast panel: this computer and the devices of the network](images/cast-panel.png)
 
 > When a TV does not appear, does not play a file, or Windows asks about its firewall, see
@@ -23,10 +31,11 @@ the TV follows.
 The default bars have no Cast button. Add it once:
 
 1. **⋯ → Customize Player** (or the gear of the player's bar → *Customize player*).
-2. Drag **Cast to TV**, the last item of the palette, onto the player's bar.
+2. Drag **Cast to TV** onto the player's bar. It comes right after the 31 items of the design's palette, before the
+   bar's own controls (Play, Previous, Next...).
 3. **Save**.
 
-![Customize Player: Cast to TV is the last item of the palette](images/cast-customize.png)
+![Customize Player: Cast to TV in the palette](images/cast-customize.png)
 
 The button belongs to the profile you edited (*⋯ → Profile*); see [Customize the player](Customize-the-Player).
 
@@ -41,6 +50,8 @@ in a classic menu: *&lt;Local&gt;* is this computer.
 3. Click the TV or the Chromecast. The panel closes and the player shows **Connecting to *TV*…**, then
    **Playing on *TV***.
 
+![The cast panel listing the devices found](images/cast-list.png)
+
 The panel lists:
 
 - **This computer**, with a check mark while the media plays here.
@@ -49,6 +60,8 @@ The panel lists:
 - **Show the video here too**: the picture stays on this computer as well while the TV plays (DLNA TVs only;
   *"With a Chromecast, the video plays only there."*).
 - *The subtitles shown go to the TV with the picture*: the subtitle you see is drawn into the picture sent to the TV.
+
+A device that failed reads *Not playing: choose it to try again*; one being reached reads *Connecting…*.
 
 When nothing is found yet: *Looking for TVs and Chromecasts on your network…*, then *No device found. Turn your TV or
 Chromecast on, on the same network as this computer.*
@@ -62,7 +75,7 @@ session, 3 seconds into a playing video, so they are already in the list when yo
 
 - The player shows the card **Playing on *TV***, with the title of the media and *Pause, seek and change the subtitles
   here: the TV follows.*
-- The Cast button is lit, and its tooltip reads *Casting to TV*.
+- The Cast button is lit, and its tooltip reads *Casting to* and the name of the device (*Cast to TV* otherwise).
 - Pause, seek, the next or previous media of the playlist, and the subtitles (choose another one, or none) are done
   here; the TV follows. A playlist goes on to its next film on the TV, and a subtitle file beside a film goes with it.
 - **Stop casting** on the card, or **This computer** in the panel, brings the media back here: it goes on where the
@@ -90,6 +103,9 @@ session, 3 seconds into a playing video, so they are already in the list when yo
   for the TV by the graphics card; films of 50 and 60 frames per second go at 25 and 30.
 - **Show the video here too** works with a DLNA TV.
 
+> **Good to know.** To cast a film exactly as it is (no conversion, least work for this computer), turn the
+> subtitles off before casting: a subtitle shown is drawn into the picture, which needs a conversion.
+
 ## Settings for casting
 
 **⋯ → Settings → Recording**, section *Casting* (see [Settings: Recording](Settings-Recording)):
@@ -100,7 +116,9 @@ session, 3 seconds into a playing video, so they are already in the list when yo
   *Search for cast devices* instead, and VLC only looks when you choose it. (The cast panel always looks when it
   opens.)
 - **Cast quality**: see Chromecast above.
-- *Advanced Options*: **Send Dolby audio as is**, **Cast HTTP port**.
+- *Advanced Options*: **Send Dolby audio as is**, **Cast HTTP port** (the Chromecast's, 8010).
+- The DLNA lead (how far ahead of the film the stream goes) is VLC's option `sout-dlna-lead`: see
+  [TV compatibility](TV-Compatibility#every-dlna-tv).
 
 ---
 

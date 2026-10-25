@@ -12,23 +12,36 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-10-25):
 
-- 🟡 **Languages**: 59 languages and British English cover the whole interface (build 195 has 58 of them, Punjabi
-  is merged since). The last wave, every language the list still marks "(partial)":
-  - done: Welsh;
-  - being translated: Irish, Scottish Gaelic, Georgian, Armenian (with the installer), Mongolian and Kazakh;
-  - next: Khmer, Nepali, Occitan, Sinhala, Central Kurdish and Walloon.
+- 🟢 **Languages**: 72 languages and British English cover the whole interface: every language the list offers
+  (the last 13 done on 2026-10-25; in build 197 and later). VLC's other catalogs follow as "(partial)".
 - 🟡 **The direction comes with the language**: choosing a right-to-left language (in Settings, the classic
   settings, or the installer) lays the interface out right to left at once, and *Layout direction* under it still
   changes it. Each catalog says its direction (the "layout direction" entry), so a new translation can be right to
-  left. Written; not built yet.
+  left. 🟢 Checked on build 196: Arabic chosen in Settings mirrors everything at once with *Right to left* selected,
+  kept after a restart; British English then lays it out left to right (its texts: fixed in build 198).
 - 🟡 **Translators**: a language file added to `locale\` appears in the language list by itself, and
-  [TRANSLATING.md](TRANSLATING.md) explains how to translate, try and send a language. Written.
+  [TRANSLATING.md](TRANSLATING.md) explains how to translate, try and send a language. In build 196.
 - 🟡 **Subtitles**: the player's subtitle panel gets *Position* and *Size* with − and + (Position in steps of 1 % of the
   picture). Both apply live and are kept. Settings' subtitle font, colours and size now reach the video already playing,
-  from its next line. Written; not built yet.
-- 🟡 **Performance pass**: the baseline of build 195 is being measured (start, menus, Settings, dialogs, the 3,000-song
-  library, scrolling). Each change is kept only if the same measurements improve.
-- 🔴 **Settings kept across updates** (installer and portable): to verify.
+  from its next line. 🟢 Checked on build 196: +5 % and 130 % move and enlarge the subtitles on the video at once and
+  are saved (that they came back at the next start was the profile bug below).
+- 🟡 **Performance pass**: baseline of build 195 measured (start, menus, Settings, dialogs, the 3,000-song library,
+  scrolling). Real costs: Settings froze 115–190 ms at each opening, Keyboard Shortcuts 125–150 ms, Customize 60–85 ms,
+  the Tracks page 45–60 ms of layout as it opens. The Artists "stall" of the scroll test is the end of the list
+  (nothing to draw), not a freeze. Timing lines in a probe build (never committed) showed where the time goes.
+  - 🟢 The two dialogs read their options once as they open, not twice: Shortcuts 142 → 66 ms, Settings 155 → 134 ms
+    (medians of A/B runs, build 196 against 197; memory the same).
+  - 🟢 Keyboard Shortcuts sorted its rows translating the names of its groups at each comparison: ranked once, the
+    dialog opens with a 20 ms freeze (b197: 67 ms, b196: 142 ms).
+  - ⚪ Settings: making only the rows of the lists shown changed nothing measurable (133 vs 138 ms): reverted. Each
+    part of the dialog is being timed alone (probe build 199) to find what its 80 ms of creation are.
+- 🟢 **Bug found while testing the direction**: choosing a language after another translated one (Arabic, then British
+  English) kept the first one's texts; only the layout changed. Fixed in build 198 (gettext's cache).
+- 🟡 **Settings kept across restarts and updates**: found while testing the subtitle panel. Every start applied the
+  settings saved with the selected player profile over the ones in use, so what was changed outside Settings (the
+  subtitle position and size from the player or Shift+Up, the classic preferences, a VLC ended unclosed) went back.
+  Fixed in build 199 (the settings in use stay at the start), to verify; then an installer update and a portable
+  update on top of a changed profile.
 
 ## Dashboard
 
@@ -1026,8 +1039,8 @@ Text matching needs Inter with the same metrics (distance-field text, no hinting
 - 🔴 Translators' platform (Weblate or Transifex, an account of the project: the owner's step); English and Hebrew first,
   then VLC's languages (decision 7). Until then [TRANSLATING.md](TRANSLATING.md) explains how to translate, try and send
   a language, and a catalog put in `locale\` is listed by itself
-- 🟡 59 languages and British spelling complete (2026-10-25), with over 600 corrections of the old catalogs; the last
-  13 the list marks "(partial)" are being translated (Welsh done). The other catalogs of VLC (Asturian, Kabyle,
+- 🟢 72 languages and British spelling complete (2026-10-25), every language of the list, with over 700 corrections of
+  the old catalogs. The other catalogs of VLC (Asturian, Kabyle,
   Uzbek...) are listed too, as partial, except those with next to nothing translated (Tagalog, Tetum, Azerbaijani)
 - 🟢 Right to left checked page by page (Hebrew, Arabic, and a test language 40 % longer, both directions: no cut, no
   overlap), the playback bar kept left to right as on YouTube

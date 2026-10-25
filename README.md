@@ -200,7 +200,7 @@ Running the installer by hand works too: it closes a running VLC Redesign polite
 
 - **Based on VLC 4.0-dev**, not on the stable VLC 3. Expect the occasional rough edge.
 - **Windows only for now.** The first milestones were also validated on Linux, but the latest work has only been tested on Windows. No macOS build.
-- **Some languages are partial**: about 60 cover the whole interface; in the others only VLC's own texts are
+- **72 languages cover the whole interface**; in VLC's other catalogs (listed as partial) only VLC's own texts are
   translated and the redesign's are in English. Anyone can help: see [Translating](docs/TRANSLATING.md).
 - Media Info, Bookmarks, Convert/Stream, Open Disc, Capture and Messages still use the classic VLC windows.
 - A few controls in the design have no VLC equivalent and were left out on purpose.

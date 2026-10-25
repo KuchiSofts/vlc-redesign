@@ -790,7 +790,10 @@ double MainCtx::imageLuminance(const QVariant &image, const QRectF &area) const
             sum += 0.2126 * linear(qRed(line[x])) + 0.7152 * linear(qGreen(line[x]))
                  + 0.0722 * linear(qBlue(line[x]));
     }
-    return sum / ((x1 - x0) * (y1 - y0));
+    const double luminance = sum / ((x1 - x0) * (y1 - y0));
+    msg_Dbg(p_intf, "artwork luminance %.3f (a grab of %dx%d, format %d)", luminance,
+            source.width(), source.height(), int(source.format()));
+    return luminance;
 }
 
 bool MainCtx::isHotkeyFree(Qt::Key key, Qt::KeyboardModifiers modifiers) const

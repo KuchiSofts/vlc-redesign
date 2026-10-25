@@ -29,6 +29,7 @@
 # include <windows.h>
 #endif
 
+#include <QFontDatabase>
 #include <QGuiApplication>
 #include <QLocale>
 #include <QScreen>
@@ -266,6 +267,29 @@ const QtSettingOption qtSettingOptions[] = {
       N_("A regular expression: the items whose address or name matches it are not saved "
          "in the history, nor their playback position.") },
 };
+
+// The fonts of the subtitles: the system's (VLC's default) first, then the
+// families installed (not Windows' "@" ones, for vertical writing); one the
+// user typed that is not installed is kept. The text renderer's own list
+// was empty on Windows (a field to type the name in)
+QVariantList fontChoices(const QString &current, bool monospace)
+{
+    const auto choice = [](const QString &value, const QString &label) {
+        return QVariant(QVariantMap{{QStringLiteral("value"), value}, {QStringLiteral("label"), label}});
+    };
+    QVariantList choices;
+    choices.append(choice(QString(), monospace ? qtr("System monospace") : qtr("System, sans-serif")));
+    bool listed = current.isEmpty();
+    for (const QString &family : QFontDatabase::families()) {
+        if (family.startsWith(QLatin1Char('@')) || QFontDatabase::isPrivateFamily(family))
+            continue;
+        choices.append(choice(family, family));
+        listed = listed || family.compare(current, Qt::CaseInsensitive) == 0;
+    }
+    if (!listed)
+        choices.append(choice(current, current));
+    return choices;
+}
 
 // "Default optical drive": the CD / DVD drives of the computer ("-" when
 // there is none); a drive of the user that is not listed is kept
@@ -1464,7 +1488,9 @@ void ConfigModel::buildEntries()
         } else if (entry.type == QLatin1String("string")
                    && entry.key != QLatin1String("extraintf")
                    && entry.key != QLatin1String("control")
-                   && entry.key != QLatin1String("audio-filter")) {
+                   && entry.key != QLatin1String("audio-filter")
+                   && entry.key != QLatin1String("freetype-font")
+                   && entry.key != QLatin1String("freetype-monofont")) {
             char **values = nullptr;
             char **texts = nullptr;
             const ssize_t count = config_GetPszChoices(option.name, &values, &texts);
@@ -1507,6 +1533,8 @@ void ConfigModel::buildEntries()
         // Colors of the subtitles: any color (a field of the design)
         else if (entry.key.startsWith(QLatin1String("freetype-")) && entry.key.endsWith(QLatin1String("color")))
             entry.choices = {};
+        else if (entry.key == QLatin1String("freetype-font") || entry.key == QLatin1String("freetype-monofont"))
+            entry.choices = fontChoices(entry.current.toString(), entry.key == QLatin1String("freetype-monofont"));
         else if (entry.key == QLatin1String("dvd"))
             entry.choices = opticalDriveChoices(entry.current.toString());
         else if (entry.key == QLatin1String("qt-fullscreen-screennumber"))

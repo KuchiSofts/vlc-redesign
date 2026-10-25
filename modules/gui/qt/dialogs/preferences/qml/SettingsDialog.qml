@@ -170,6 +170,9 @@ Dialog {
         searchField: "action"
     }
 
+    // the labels of the options, for the four lists below
+    SettingsPresentation { id: settingsPresentation }
+
     ConfigModel {
         id: config
         ctx: MainCtx
@@ -488,6 +491,7 @@ Dialog {
 
                     SettingsOptionList {
                         id: optionList
+                        presentationData: settingsPresentation
                         visible: !extensions.visible
                         width: parent.width
                         settingsModel: config
@@ -535,6 +539,7 @@ Dialog {
                     }
                     SettingsOptionList {
                         id: generalMoreOptions
+                        presentationData: settingsPresentation
                         width: parent.width
                         visible: !searchField.text.length
                         settingsModel: config
@@ -566,6 +571,7 @@ Dialog {
 
                 SettingsOptionList {
                     id: videoMoreOptions
+                    presentationData: settingsPresentation
                     width: parent.width
                     visible: root.selectedCategory === "video" && !searchField.text.length
                     settingsModel: config
@@ -636,6 +642,7 @@ Dialog {
 
                 SettingsOptionList {
                     id: advancedOptions
+                    presentationData: settingsPresentation
                     width: parent.width
                     visible: advancedButton.visible && root.advancedExpanded
                     onResetAllRequested: confirmReset.open()

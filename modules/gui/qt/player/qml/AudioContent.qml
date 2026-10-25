@@ -47,6 +47,20 @@ MouseArea {
     // how bright the artwork is (MainCtx.imageLuminance), for the texts over
     // its backdrop; -1 until measured
     property real artLuminance: -1
+    // measured once the blurred backdrop is drawn: the strip just above the
+    // title, as shown (the backdrop it is drawn over)
+    Timer {
+        id: luminanceTimer
+        interval: 600
+        onTriggered: {
+            if (!albumLabel.visible || !albumLabel.Window.window)
+                return
+            const strip = VLCStyle.dp(16, VLCStyle.scale)
+            const p = albumLabel.mapToItem(null, 0, -strip)
+            centerContent.artLuminance = MainCtx.windowLuminance(albumLabel.Window.window,
+                                                                 Qt.rect(p.x, p.y, albumLabel.width, strip))
+        }
+    }
     property alias coverImage: cover
     property alias lyricsPanel: lyricsLoader
     readonly property alias audioControls: audioControls
@@ -218,12 +232,7 @@ MouseArea {
                     if (status === Image.Error)
                         source = VLCStyle.noArtAlbumCover
                     else if (status === Image.Ready)
-                        cover.grabToImage((result) => {
-                            // the backdrop is the artwork filling the
-                            // view: the title sits over its lower middle
-                            centerContent.artLuminance = MainCtx.imageLuminance(result.image,
-                                                                                Qt.rect(0.3, 0.6, 0.4, 0.18))
-                        }, Qt.size(16, 16))
+                        luminanceTimer.restart()
                     else
                         centerContent.artLuminance = -1
                 }

@@ -766,33 +766,36 @@ void MainCtx::sendHotkey(Qt::Key key , Qt::KeyboardModifiers modifiers)
     postHotkey(vlckey);
 }
 
-double MainCtx::imageLuminance(const QVariant &image, const QRectF &area) const
+double MainCtx::windowLuminance(QQuickWindow *window, const QRectF &area) const
 {
-    const QImage source = image.value<QImage>();
-    if (source.isNull())
+    if (window == nullptr || !area.isValid())
         return -1;
-    const QImage small = source.scaled(16, 16, Qt::IgnoreAspectRatio, Qt::SmoothTransformation)
-                               .convertToFormat(QImage::Format_RGB32);
+    // the frame as shown (rendered again for the grab: once per media)
+    const QImage frame = window->grabWindow();
+    if (frame.isNull())
+        return -1;
+    const qreal dpr = frame.devicePixelRatio() > 0 ? frame.devicePixelRatio() : 1;
+    const QRect pixels = QRectF(area.x() * dpr, area.y() * dpr, area.width() * dpr, area.height() * dpr)
+                             .toAlignedRect().intersected(frame.rect());
+    if (pixels.isEmpty())
+        return -1;
+    const QImage small = frame.copy(pixels).scaled(16, 4, Qt::IgnoreAspectRatio, Qt::SmoothTransformation)
+                                           .convertToFormat(QImage::Format_RGB32);
     // sRGB to linear light, as WCAG's relative luminance
     const auto linear = [](int channel) {
         const double c = channel / 255.0;
         return c <= 0.04045 ? c / 12.92 : std::pow((c + 0.055) / 1.055, 2.4);
     };
-    const int x0 = std::clamp(int(area.left() * 16), 0, 15);
-    const int y0 = std::clamp(int(area.top() * 16), 0, 15);
-    const int x1 = std::clamp(int(std::ceil(area.right() * 16)), x0 + 1, 16);
-    const int y1 = std::clamp(int(std::ceil(area.bottom() * 16)), y0 + 1, 16);
     double sum = 0;
-    for (int y = y0; y < y1; ++y)
+    for (int y = 0; y < small.height(); ++y)
     {
         const QRgb *line = reinterpret_cast<const QRgb *>(small.constScanLine(y));
-        for (int x = x0; x < x1; ++x)
+        for (int x = 0; x < small.width(); ++x)
             sum += 0.2126 * linear(qRed(line[x])) + 0.7152 * linear(qGreen(line[x]))
                  + 0.0722 * linear(qBlue(line[x]));
     }
-    const double luminance = sum / ((x1 - x0) * (y1 - y0));
-    msg_Dbg(p_intf, "artwork luminance %.3f (a grab of %dx%d, format %d)", luminance,
-            source.width(), source.height(), int(source.format()));
+    const double luminance = sum / (small.width() * small.height());
+    msg_Dbg(p_intf, "luminance behind a text: %.3f", luminance);
     return luminance;
 }
 

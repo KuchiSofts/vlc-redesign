@@ -329,11 +329,10 @@ public:
 
     // no hotkey of VLC takes the key: the interface may (Q, L of the onboarding)
     Q_INVOKABLE bool isHotkeyFree(Qt::Key key, Qt::KeyboardModifiers modifiers) const;
-    // The relative luminance (WCAG, 0 black to 1 white) of an image, the
-    // ItemGrabResult.image of a small grab, in an area of it (0 to 1 of its
-    // width and height; all of it by default): the texts drawn over the
-    // artwork choose a readable colour; -1 for no image
-    Q_INVOKABLE double imageLuminance(const QVariant &image, const QRectF &area = QRectF(0, 0, 1, 1)) const;
+    // The relative luminance (WCAG, 0 black to 1 white) of an area of the
+    // window as shown (in its coordinates): what a text drawn there is over,
+    // to choose a readable colour; -1 when it can't be read
+    Q_INVOKABLE double windowLuminance(QQuickWindow *window, const QRectF &area) const;
 
     Q_INVOKABLE static inline void setCursor(Qt::CursorShape cursor) { QApplication::setOverrideCursor(QCursor(cursor)); }
     Q_INVOKABLE static inline void restoreCursor(void) { QApplication::restoreOverrideCursor(); }

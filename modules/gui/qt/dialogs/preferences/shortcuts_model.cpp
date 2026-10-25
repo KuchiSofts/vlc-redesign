@@ -231,8 +231,15 @@ int ShortcutsModel::groupOrder(const QString &group)
     return 5;
 }
 
+void ShortcutsModel::refresh()
+{
+    if (!m_loaded.isValid() || m_loaded.elapsed() > 1000)
+        reload();
+}
+
 void ShortcutsModel::reload()
 {
+    m_loaded.start();
     const bool wasDirty = dirty();
     // The entries made again aside
     QVector<Entry> previous;

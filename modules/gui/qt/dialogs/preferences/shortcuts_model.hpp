@@ -13,6 +13,7 @@
 #define VLC_QT_PREFERENCES_SHORTCUTS_MODEL_HPP
 
 #include <QAbstractListModel>
+#include <QElapsedTimer>
 #include <QPointer>
 #include <QVariantMap>
 #include <QVector>
@@ -52,6 +53,9 @@ public:
     QHash<int, QByteArray> roleNames() const override;
 
     Q_INVOKABLE void reload();
+    // reload(), unless the values were read a moment ago (the dialog made
+    // just before it opens: read twice, every row told again)
+    Q_INVOKABLE void refresh();
     Q_INVOKABLE void cancel();
     Q_INVOKABLE void resetAll();
     Q_INVOKABLE bool apply();
@@ -92,6 +96,7 @@ private:
 
     QPointer<MainCtx> m_ctx;
     QString m_search, m_searchField = QStringLiteral("all"), m_error;
+    QElapsedTimer m_loaded;
     QVector<Entry> m_entries;
     QVector<int> m_rows;
 };

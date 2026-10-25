@@ -13,6 +13,7 @@
 #define VLC_QT_PREFERENCES_CONFIG_MODEL_HPP
 
 #include <QAbstractListModel>
+#include <QElapsedTimer>
 #include <QPointer>
 #include <QStringList>
 #include <QUrl>
@@ -96,6 +97,9 @@ public:
     Q_INVOKABLE void cancel();
     Q_INVOKABLE void resetCategory();
     Q_INVOKABLE void reload();
+    // reload(), unless the values were read a moment ago (the dialog made
+    // just before it opens: read twice, every row told again)
+    Q_INVOKABLE void refresh();
 
 signals:
     void ctxChanged();
@@ -186,6 +190,7 @@ private:
     QVector<Entry> m_entries;
     QVector<int> m_rows;
     int m_revision = 0;
+    QElapsedTimer m_loaded;
 };
 
 #endif

@@ -66,6 +66,7 @@
 
 #include "dialogs/toolbar/controlbar_profile_model.hpp"
 #include "dialogs/help/help.hpp"
+#include "dialogs/preferences/interface_language.hpp"
 #include "util/language_change.hpp"
 
 #include <QKeyEvent>
@@ -233,7 +234,10 @@ MainCtx::MainCtx(qt_intf_t *_p_intf)
     // before the updater and the subtitle finder read them
     applySetupChoices();
 
-    setRightToLeft(getSettings()->value(QStringLiteral("redesign/right-to-left"), false).toBool());
+    // as chosen, else the direction of the language (a right-to-left one
+    // chosen before the direction followed it)
+    const QVariant rightToLeft = getSettings()->value(QStringLiteral("redesign/right-to-left"));
+    setRightToLeft(rightToLeft.isValid() ? rightToLeft.toBool() : languageRightToLeft());
 
     loadPrefs(false);
     loadFromSettingsImpl(false);
@@ -1321,10 +1325,33 @@ void MainCtx::applyInterfaceLanguage(const QString &iso)
     vlc_settextlanguage(qtu(code));
     QLocale::setDefault(QLocale(code));
     applyLanguageFonts(QLocale(code));
-    // (the direction is a setting of its own: rightToLeft)
+    // (the direction is a setting of its own: rightToLeft, chosen with the
+    // language from languageRightToLeft)
     // the widgets get it from the application (QEvent::LanguageChange)
     QCoreApplication::postEvent(QCoreApplication::instance(), new QEvent(QEvent::LanguageChange));
     emit interfaceLanguageChanged();
+}
+
+bool MainCtx::languageRightToLeft() const
+{
+    /* xgettext: The direction your language is written in: "RTL" if from
+     * right to left (Arabic, Hebrew, Persian, Urdu...), else "LTR". Choosing
+     * the language lays the interface out in that direction (the user can
+     * change it under the language). */
+    const QString direction = QString::fromUtf8(vlc_pgettext("layout direction", "LTR")).trimmed();
+    if (direction.compare(QLatin1String("RTL"), Qt::CaseInsensitive) == 0)
+        return true;
+    if (direction.compare(QLatin1String("LTR"), Qt::CaseInsensitive) != 0)
+        return false;
+    // not translated (or left to right): as Qt knows the language
+    QString code = m_interfaceLanguage;
+    if (code.isEmpty())
+    {
+        code = interfaceLanguage();
+        if (code == QLatin1String("auto"))
+            code = QLocale::system().name();
+    }
+    return QLocale(code).textDirection() == Qt::RightToLeft;
 }
 
 void MainCtx::setSettingValue(const QString &key, const QVariant &value)

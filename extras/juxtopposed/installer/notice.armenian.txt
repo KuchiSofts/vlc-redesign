@@ -1,0 +1,29 @@
+VLC Redesign - ոչ պաշտոնական տարբերակ
+
+ԴԻԶԱՅՆ
+Ինտերֆեյսի դիզայնը ստեղծել է Juxtopposed-ը։
+  Վիդեո:   https://www.youtube.com/watch?v=ERFeOgqk324
+  Ալիք:    https://www.youtube.com/@juxtopposed
+  Figma:   https://www.figma.com/community/file/1691465999134370980
+Juxtopposed-ի «VLC Redesign (Community)» ֆայլը տարածվում է CC BY 4.0
+լիցենզիայով (https://creativecommons.org/licenses/by/4.0/)։ Այն
+հարմարեցվել է Qt/QML-ին, իսկ պատկերակները վերանկարվել և փոփոխվել են։
+Juxtopposed-ը հավանություն չի տվել այս տարբերակին։
+
+ՈՉ ՊԱՇՏՈՆԱԿԱՆ VLC
+Այս տարբերակը հիմնված է VLC 4.0-ի վրա (մշակման փուլում)։ Այն ստեղծված,
+կապված կամ հավանության արժանացած չէ VideoLAN-ի կողմից։ VLC-ն, VLC media
+player-ը և կոնի լոգոն VideoLAN-ի ապրանքային նշաններն են։ Պաշտոնական նվագարկիչը՝ https://www.videolan.org
+
+Այն տեղադրվում է պաշտոնական VLC-ի կողքին՝ առանց այն փոփոխելու։ Դրա
+կարգավորումները, գրադարանը և պատմությունը պահվում են առանձին պանակում։
+
+ԼԻՑԵՆԶԻԱ
+Ազատ ծրագրակազմ GNU General Public License-ի 2-րդ կամ ավելի նոր
+տարբերակով, libVLC-ն՝ GNU LGPL 2.1 կամ ավելի նոր։ Inter և DM Mono
+տառատեսակները՝ SIL Open Font License 1.1։ Ամբողջական տեքստերը vlc.exe-ի
+կողքին են (COPYING.txt, COPYING.LIB.txt, licenses\)։ Ելակետային կոդ՝
+https://github.com/KuchiSofts/vlc-redesign
+
+Վերադիզայնի առաջին իրականացումը՝ MrDouglax
+(https://github.com/SrDouglax/JuxtopposedVLC)։

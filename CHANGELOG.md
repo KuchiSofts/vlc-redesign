@@ -51,7 +51,9 @@ file name of the player bar.
   with OK and Cancel over the dark settings; they are the dialogs of the redesign now, with the action named.
 - **Chinese in one font**: Simplified Chinese on an English (or Japanese) Windows drew the characters Windows'
   own fallback font lacked in a thinner, greyer one, in the middle of words. Chinese, Japanese and Korean take
-  the fonts of their language now, whatever the language of Windows.
+  the fonts of their language now, whatever the language of Windows. Hindi and the other Indian scripts, Sinhala, Thai, Lao, Khmer,
+  Myanmar and Ethiopic take the fonts of Windows' own interface (Nirmala UI, Leelawadee UI...): Hindi was drawn in
+  a thin serif font where Office had installed Arial Unicode MS.
 - **Long translations in Settings**: the two choices of the layout direction were cut in Portuguese; the choice
   widens into the row now, and a long name in the menu ("Конфиденциальность") is drawn a little smaller before
   it is cut. The list of languages names each language as it names itself ("Українська", "Slovenčina",
@@ -208,11 +210,26 @@ file name of the player bar.
   to right (the default, whatever the language) or right to left: everything mirrors at once, the arrows point the
   way one reads, and the playback bar keeps its order as on YouTube (time runs left to right).
 - **The translations are in the program** (issue #5): the releases had none, so the language chosen in Settings
-  did nothing. 98 languages ship now, and 20 cover every text of the interface: Arabic, Chinese (simplified and
-  traditional), Czech, Dutch, French, German, Hebrew, Italian, Japanese, Korean, Polish, Portuguese (Brazil, the
-  redesign's texts contributed by @Kinglucas962 in #6, and Portugal), Russian, Spanish, Swedish, Turkish and
-  Ukrainian, with British spelling for English (UK). They come first in the language list; in the others VLC's own
-  texts are translated, the redesign's are in English, and the list says "(partial)".
+  did nothing. 99 languages ship now, and 59 cover every text of the interface: Afrikaans, Albanian, Arabic, Basque,
+  Belarusian, Bengali, Bosnian, Bulgarian, Catalan, Chinese (simplified and traditional), Croatian, Czech, Danish,
+  Dutch, Estonian, Finnish, French, Galician, German, Greek, Gujarati, Hebrew, Hindi, Hungarian, Icelandic,
+  Indonesian, Italian, Japanese, Kannada, Korean, Latvian, Lithuanian, Macedonian, Malay, Malayalam, Marathi,
+  Norwegian (Bokmål and Nynorsk), Persian, Polish, Portuguese (Brazil, the redesign's texts contributed by
+  @Kinglucas962 in #6, and Portugal), Punjabi, Romanian, Russian, Serbian, Slovak, Slovenian, Spanish (Spain and
+  Latin America), Swedish, Tamil, Telugu, Thai, Turkish, Ukrainian, Urdu and Vietnamese, with British spelling
+  for English (UK). They come first in the language list; in the others VLC's own texts are translated, the
+  redesign's are in English, and the list says "(partial)". The last of those are being translated.
+- **Right-to-left languages are laid out right to left**: choosing Hebrew, Arabic, Persian or Urdu in Settings
+  (or in the classic settings, or installing in it) mirrors the interface at once; *Layout direction* under the
+  language still changes it, and a choice made there is kept. Each language file says which way it is written,
+  so a new translation can be right to left too.
+- **Anyone can translate**: a language file put in `locale\` appears in the language list by itself (by its own
+  name, "(partial)"), and [Translating](docs/TRANSLATING.md) explains how to translate, try and send a language.
+- **Move and resize the subtitles while watching**: the subtitle panel of the player has *Position* and *Size*,
+  with − and + (and Reset). The subtitles move and grow on the video as you click, and stay so for the next
+  videos and the next starts, as Shift+Up and Shift+Down already kept the position (Ctrl+wheel's size is kept now
+  too). The font, colours, outline, shadow and size chosen in Settings now reach the video already playing, from
+  its next line (before: from the next video, the size after a restart).
 - **The translations read right**: over 500 wrong or outdated texts of the old catalogs were corrected (Arabic
   "OK" said "Yes", "Pause" an obscure word; Ukrainian "Space" was outer space; Page Up and Page Down were swapped
   in Ukrainian and Traditional Chinese), and the counts take the plural form of their number in every language
@@ -222,11 +239,12 @@ file name of the player bar.
   interface shows are translated too: the explanations and choices of the settings, the names of the shortcuts,
   the messages on the video, the names of tracks and media information, the dialogs of the player, the network
   and casting.
-- **The installer offers the language of Windows**: on a Windows in one of 17 languages (Arabic, Czech, Dutch,
-  French, German, Hebrew, Italian, Japanese, Korean, Polish, Portuguese of Brazil and of Portugal, Russian, Spanish,
-  Swedish, Turkish, Ukrainian) it asks first, in that language and in English, whether to install VLC Redesign in
-  it; yes, and the installer and the program are in it (Arabic and Hebrew right to left, with a choice of the
-  layout direction of the program, left to right unless chosen). An English Windows, or a language without a full
+- **The installer offers the language of Windows**: on a Windows in one of 27 languages (Arabic, Bulgarian,
+  Catalan, Czech, Danish, Dutch, Finnish, French, German, Hebrew, Hungarian, Italian, Japanese, Korean, Norwegian,
+  Polish, Portuguese of Brazil and of Portugal, Russian, Slovak, Slovenian, Spanish, Swedish, Tamil, Thai, Turkish,
+  Ukrainian) it asks first, in that language and in English, whether to install VLC Redesign in it; yes, and the
+  installer and the program are in it (Arabic and Hebrew right to left, the program too unless the Layout page
+  is turned off; `/LEFTTORIGHT` for a silent install). An English Windows, or a language without a full
   translation, is not asked. An update keeps the language, a silent install is never asked (`/LANG=hebrew`,
   `/RIGHTTOLEFT`). The portable zip starts in English, left to right. Every text of the installer, its license
   notice included, is in each of these languages.

@@ -2,11 +2,33 @@
 
 What is finished, what is left, and in which order, for every program, platform and screen of VLC Redesign.
 It is the source for the [roadmap](../ROADMAP.md), the [README](../README.md), the wiki (with its *Design check*
-page) and the release notes. Last updated: 2026-10-24, build 151 of the `redesign` branch.
+page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesign` branch.
 
 **Status:** 🟢 done · 🟡 in progress or partly done · 🔴 to do or missing · ⚪ idea or research
 **Pixel check:** 🟢 measured identical to the Figma frame · ⏳ not measured yet
 **In the app ⏳:** merged and built, not yet checked in the running program (5 lines today)
+
+## Now
+
+What is being worked on, updated as it changes (2026-10-25):
+
+- 🟡 **Languages**: 59 languages and British English cover the whole interface (build 195 has 58 of them, Punjabi
+  is merged since). The last wave, every language the list still marks "(partial)":
+  - done: Welsh;
+  - being translated: Irish, Scottish Gaelic, Georgian, Armenian (with the installer), Mongolian and Kazakh;
+  - next: Khmer, Nepali, Occitan, Sinhala, Central Kurdish and Walloon.
+- 🟡 **The direction comes with the language**: choosing a right-to-left language (in Settings, the classic
+  settings, or the installer) lays the interface out right to left at once, and *Layout direction* under it still
+  changes it. Each catalog says its direction (the "layout direction" entry), so a new translation can be right to
+  left. Written; not built yet.
+- 🟡 **Translators**: a language file added to `locale\` appears in the language list by itself, and
+  [TRANSLATING.md](TRANSLATING.md) explains how to translate, try and send a language. Written.
+- 🟡 **Subtitles**: the player's subtitle panel gets *Position* and *Size* with − and + (Position in steps of 1 % of the
+  picture). Both apply live and are kept. Settings' subtitle font, colours and size now reach the video already playing,
+  from its next line. Written; not built yet.
+- 🟡 **Performance pass**: the baseline of build 195 is being measured (start, menus, Settings, dialogs, the 3,000-song
+  library, scrolling). Each change is kept only if the same measurements improve.
+- 🔴 **Settings kept across updates** (installer and portable): to verify.
 
 ## Dashboard
 
@@ -990,21 +1012,23 @@ Text matching needs Inter with the same metrics (distance-field text, no hinting
 ## 12. Languages
 
 - 🟢 English by default in the portable zip and the app, whatever the system language; *Reset all* returns to English
-- 🟢 Installer in English and 17 languages (Arabic and Hebrew right to left), each with its license notice
+- 🟢 Installer in English and 27 languages (Arabic and Hebrew right to left), each with its license notice
 - 🟢 The installer offers the language of Windows (only for a language with a full translation), the app starts in
   it; updates keep it, silent installs never ask (2026-10-24, tested in Windows Sandbox)
-- 🟢 *Settings → Global → Appearance → Interface language*, and *Layout direction* (left to right by default, right to
-  left when chosen, whatever the language)
+- 🟡 *Settings → Global → Appearance → Interface language*, and *Layout direction*: the direction of the language
+  chosen (its catalog says it: "layout direction"), changed under it if wanted (2026-10-25, written, not built yet;
+  before: left to right unless chosen)
 - 🟢 The language and the direction change at once, without a restart, everywhere (the welcome and the classic settings
   too; classic dialogs when they open next)
 - 🟢 Every string listed for translation: vlc.pot made again from the tree (7,821), the missing files and `tr()` added;
   a word with two meanings has a context (key names, the tracks of Settings), counts are plural entries
 - 🟢 Translations compiled into the release build (98 languages, catalogs made again at each build)
 - 🔴 Translators' platform (Weblate or Transifex, an account of the project: the owner's step); English and Hebrew first,
-  then VLC's languages (decision 7). 20 languages are complete (2026-10-24: Arabic, Chinese ×2, Czech, Dutch, French,
-  German, Hebrew, Italian, Japanese, Korean, Polish, Portuguese ×2, Russian, Spanish, Swedish, Turkish, Ukrainian, and
-  British spelling), with over 500 corrections of the old catalogs; the others have VLC's own texts, the redesign's in
-  English, marked "(partial)" in the list
+  then VLC's languages (decision 7). Until then [TRANSLATING.md](TRANSLATING.md) explains how to translate, try and send
+  a language, and a catalog put in `locale\` is listed by itself
+- 🟡 59 languages and British spelling complete (2026-10-25), with over 600 corrections of the old catalogs; the last
+  13 the list marks "(partial)" are being translated (Welsh done). The other catalogs of VLC (Asturian, Kabyle,
+  Uzbek...) are listed too, as partial, except those with next to nothing translated (Tagalog, Tetum, Azerbaijani)
 - 🟢 Right to left checked page by page (Hebrew, Arabic, and a test language 40 % longer, both directions: no cut, no
   overlap), the playback bar kept left to right as on YouTube
 - 🟢 Every complete language captured page by page and reviewed (2026-10-24, builds 191 and 193): the core texts the

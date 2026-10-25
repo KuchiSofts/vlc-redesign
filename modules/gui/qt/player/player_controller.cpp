@@ -1832,6 +1832,56 @@ void PlayerController::setSubtitleClearance(qreal clearance)
     emit subtitleClearanceChanged(clearance);
 }
 
+int PlayerController::getSubtitlePosition() const
+{
+    return config_GetInt("sub-position");
+}
+
+void PlayerController::setSubtitlePosition(int position)
+{
+    Q_D(PlayerController);
+    // the range of the option
+    position = std::clamp(position, -20, 60);
+    config_PutInt("sub-position", position);
+    size_t i_vouts = 0;
+    vout_thread_t **vouts;
+    {
+        vlc_player_locker lock{ d->m_player };
+        vouts = vlc_player_vout_HoldAll(d->m_player, &i_vouts);
+    }
+    if (vouts)
+    {
+        for (size_t i = 0; i < i_vouts; ++i)
+        {
+            var_SetInteger(vouts[i], "sub-position", position);
+            vout_Release(vouts[i]);
+        }
+        free(vouts);
+    }
+    emit subtitlePositionChanged(position);
+}
+
+int PlayerController::getSubtitleTextScale() const
+{
+    Q_D(const PlayerController);
+    return vlc_player_GetSubtitleTextScale(d->m_player);
+}
+
+void PlayerController::setSubtitleTextScale(int scale)
+{
+    Q_D(PlayerController);
+    scale = std::clamp(scale, 30, 300);
+    vlc_player_SetSubtitleTextScale(d->m_player, scale);
+    config_PutInt("sub-text-scale", scale);
+    emit subtitleTextScaleChanged(scale);
+}
+
+void PlayerController::refreshSubtitleLook()
+{
+    emit subtitlePositionChanged(getSubtitlePosition());
+    emit subtitleTextScaleChanged(getSubtitleTextScale());
+}
+
 //TITLE/CHAPTER/MENU
 
 void PlayerController::sectionPrev()

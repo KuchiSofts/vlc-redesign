@@ -2520,6 +2520,24 @@ void spu_ChangeFilters(spu_t *spu, const char *filters)
     vlc_mutex_unlock(&sys->lock);
 }
 
+/* The text renderer loaded again: its options (the font, colours, outline,
+ * size in pixels...) as they are now, from the next text drawn */
+void spu_ReloadText(spu_t *spu)
+{
+    spu_private_t *sys = container_of(spu, spu_private_t, spu);
+
+    /* (as spu_Attach: the input of the attachments, the fonts of a file) */
+    vlc_mutex_lock(&sys->lock);
+    filter_t *text = SpuRenderCreateAndLoadText(spu);
+    vlc_mutex_lock(&sys->textlock);
+    filter_t *old = sys->text;
+    sys->text = text;
+    vlc_mutex_unlock(&sys->textlock);
+    vlc_mutex_unlock(&sys->lock);
+    if (old)
+        vlc_filter_Delete(old);
+}
+
 void spu_ChangePosition(spu_t *spu, int position)
 {
     spu_private_t *sys = container_of(spu, spu_private_t, spu);

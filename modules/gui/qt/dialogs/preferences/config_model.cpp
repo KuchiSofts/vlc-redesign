@@ -906,6 +906,11 @@ bool ConfigModel::setValue(const QString &key, const QVariant &value)
             else if (normalized.toLongLong() == 0 && indexOfKey(QStringLiteral("freetype-fontsize")) >= 0)
                 setValue(QStringLiteral("freetype-fontsize"), QVariant::fromValue<int64_t>(0));
         }
+        // a size in pixels is the size drawn (the scale of the player's
+        // Size buttons back to 100)
+        if (key == QLatin1String("freetype-fontsize") && normalized.toLongLong() > 0
+            && indexOfKey(QStringLiteral("sub-text-scale")) >= 0)
+            setValue(QStringLiteral("sub-text-scale"), QVariant::fromValue<int64_t>(100));
         // the kept background opacity applies while there is a background
         // (0: no background any more)
         if (key == QLatin1String(subBackgroundOpacityKey)) {

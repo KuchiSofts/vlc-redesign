@@ -936,6 +936,8 @@ VOUT_ACTION_HANDLER(SubtitleDisplay)
                 scale = VLC_CLIP(scale, 25, 500);
             }
             vlc_player_SetSubtitleTextScale(player, scale);
+            /* for the next videos too, as the position */
+            config_PutInt("sub-text-scale", scale);
             break;
         }
     }

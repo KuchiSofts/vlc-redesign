@@ -175,6 +175,12 @@ public:
     // The bottom of the video the interface covers for a while, as a part of
     // its height: the subtitles keep above it
     Q_PROPERTY(qreal subtitleClearance READ getSubtitleClearance WRITE setSubtitleClearance NOTIFY subtitleClearanceChanged FINAL)
+    // Where the subtitles are, in percent of the picture above their usual
+    // place, and their size, in percent of the usual one: at once on the
+    // videos shown, and kept for the next ones and the next starts (as
+    // Shift+Up and Shift+Down keep the place)
+    Q_PROPERTY(int subtitlePosition READ getSubtitlePosition WRITE setSubtitlePosition NOTIFY subtitlePositionChanged FINAL)
+    Q_PROPERTY(int subtitleTextScale READ getSubtitleTextScale WRITE setSubtitleTextScale NOTIFY subtitleTextScaleChanged FINAL)
     Q_PROPERTY(TimedText currentLyric READ getCurrentLyric NOTIFY currentLyricChanged FINAL)
     Q_PROPERTY(bool hasLyrics READ hasLyrics NOTIFY hasLyricsChanged FINAL)
     Q_PROPERTY(QList<TimedText> syltLyrics READ getSyltLyrics NOTIFY syltLyricsChanged FINAL)
@@ -373,6 +379,12 @@ public slots:
     void setSubtitleFPS( float );
     qreal getSubtitleClearance() const;
     void setSubtitleClearance( qreal );
+    int getSubtitlePosition() const;
+    void setSubtitlePosition( int );
+    int getSubtitleTextScale() const;
+    void setSubtitleTextScale( int );
+    // the two above read again (a shortcut changed them meanwhile)
+    Q_INVOKABLE void refreshSubtitleLook();
 
     //title/chapters/menu
     TitleListModel* getTitles();
@@ -482,6 +494,8 @@ signals:
     void secondarySubtitleDelayChanged(VLCDuration);
     void subtitleFPSChanged(float);
     void subtitleClearanceChanged(qreal);
+    void subtitlePositionChanged(int);
+    void subtitleTextScaleChanged(int);
 
     //title/chapters/menu
     void hasTitlesChanged( bool );

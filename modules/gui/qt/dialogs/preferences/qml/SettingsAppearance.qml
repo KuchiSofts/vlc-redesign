@@ -53,10 +53,12 @@ SettingsSectionTitle {
     }
 
     // The interface shows the language at once (Save keeps it, Cancel goes
-    // back), as the theme
+    // back), as the theme, laid out in the direction of the language (its
+    // catalog says it: Layout direction below changes it)
     function chooseLanguage(iso) {
         selectedLanguage = iso
         themeBridge.previewInterfaceLanguage(iso)
+        chooseRightToLeft(MainCtx.languageRightToLeft())
     }
 
     // The layout, mirrored at once too
@@ -74,8 +76,8 @@ SettingsSectionTitle {
         chooseTheme(0)
         chooseAccent("#D37918")
         // English until one is chosen (Windows), else the system's
+        // (laid out as the language)
         chooseLanguage(languages.length > 0 ? "en" : "auto")
-        chooseRightToLeft(false)
     }
 
     function cancel() {
@@ -112,8 +114,8 @@ SettingsSectionTitle {
         onChosen: (iso) => root.chooseLanguage(iso)
     }
 
-    // Layout direction: left to right unless chosen, whatever the language
-    // (a right-to-left language can stay left to right, as many prefer)
+    // Layout direction: the one of the language chosen above, until changed
+    // here (a right-to-left language can stay left to right, as some prefer)
     Item {
         width: parent.width
         height: root.px(46)

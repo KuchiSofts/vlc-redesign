@@ -456,6 +456,148 @@ ColumnLayout {
         reveal: root.reveal
     }
 
+    // Where and how big the subtitles are: they move and grow on the video
+    // at once, and stay so for the next videos (Settings > Subtitles >
+    // Appearance has them too; Shift+Up and Shift+Down move them)
+    Rectangle {
+        Layout.fillWidth: true
+        Layout.topMargin: VLCStyle.dp(4, VLCStyle.scale)
+        implicitHeight: 1
+        color: VLCStyle.redesign.color("#222222", "#9c9c9b")
+    }
+
+    ColumnLayout {
+        objectName: "subtitleLookControls"
+        Layout.fillWidth: true
+        spacing: VLCStyle.dp(8, VLCStyle.scale)
+        // (a shortcut may have moved them since the panel last showed)
+        onVisibleChanged: if (visible) Player.refreshSubtitleLook()
+        Component.onCompleted: Player.refreshSubtitleLook()
+
+        Controls.Label {
+            Layout.fillWidth: true
+            horizontalAlignment: Text.AlignLeft
+            text: qsTr("Position and size")
+            color: VLCStyle.redesign.color("#EAEAEA", "#2e2e2e")
+            font.family: VLCStyle.redesign.fontFamily
+            font.pixelSize: VLCStyle.dp(15, VLCStyle.scale)
+        }
+
+        LookRow {
+            objectName: "subtitlePositionRow"
+            title: qsTr("Position", "subtitles")
+            value: Player.subtitlePosition === 0
+                   ? qsTr("Usual")
+                   : qsTr("%1%").arg((Player.subtitlePosition > 0 ? "+" : "−") + Math.abs(Player.subtitlePosition))
+            lowerName: qsTr("Move the subtitles down")
+            higherName: qsTr("Move the subtitles up")
+            lowerEnabled: Player.subtitlePosition > -20
+            higherEnabled: Player.subtitlePosition < 60
+            resetEnabled: Player.subtitlePosition !== 0
+            onLower: Player.subtitlePosition = Player.subtitlePosition - 1
+            onHigher: Player.subtitlePosition = Player.subtitlePosition + 1
+            onReset: Player.subtitlePosition = 0
+        }
+
+        LookRow {
+            objectName: "subtitleSizeRow"
+            title: qsTr("Size", "subtitles")
+            value: qsTr("%1%").arg(Player.subtitleTextScale)
+            lowerName: qsTr("Smaller subtitles")
+            higherName: qsTr("Larger subtitles")
+            lowerEnabled: Player.subtitleTextScale > 30
+            higherEnabled: Player.subtitleTextScale < 300
+            resetEnabled: Player.subtitleTextScale !== 100
+            onLower: Player.subtitleTextScale = Player.subtitleTextScale - 10
+            onHigher: Player.subtitleTextScale = Player.subtitleTextScale + 10
+            onReset: Player.subtitleTextScale = 100
+        }
+    }
+
+    // A title, − its value + and Reset (the buttons repeat while held)
+    component LookRow: RowLayout {
+        id: lookRow
+        property string title
+        property string value
+        property string lowerName
+        property string higherName
+        property bool lowerEnabled: true
+        property bool higherEnabled: true
+        property bool resetEnabled: true
+        signal lower()
+        signal higher()
+        signal reset()
+        Layout.fillWidth: true
+        spacing: VLCStyle.dp(4, VLCStyle.scale)
+
+        Controls.Label {
+            Layout.fillWidth: true
+            horizontalAlignment: Text.AlignLeft
+            text: lookRow.title
+            elide: Text.ElideRight
+            color: VLCStyle.redesign.color("#969696", "#4d4d4d")
+            font.family: VLCStyle.redesign.fontFamily
+            font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
+        }
+        LookButton {
+            objectName: lookRow.objectName + "Lower"
+            text: "−"
+            enabled: lookRow.lowerEnabled
+            Accessible.name: lookRow.lowerName
+            onClicked: lookRow.lower()
+        }
+        Controls.Label {
+            Layout.preferredWidth: VLCStyle.dp(64, VLCStyle.scale)
+            horizontalAlignment: Text.AlignHCenter
+            text: lookRow.value
+            elide: Text.ElideRight
+            color: VLCStyle.redesign.color("#EAEAEA", "#2e2e2e")
+            font.family: VLCStyle.redesign.fontFamily
+            font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
+        }
+        LookButton {
+            objectName: lookRow.objectName + "Higher"
+            text: "+"
+            enabled: lookRow.higherEnabled
+            Accessible.name: lookRow.higherName
+            onClicked: lookRow.higher()
+        }
+        LookButton {
+            objectName: lookRow.objectName + "Reset"
+            text: qsTr("Reset")
+            enabled: lookRow.resetEnabled
+            Accessible.name: text
+            onClicked: lookRow.reset()
+        }
+    }
+
+    component LookButton: Controls.Button {
+        implicitHeight: VLCStyle.dp(32, VLCStyle.scale)
+        implicitWidth: Math.max(VLCStyle.dp(32, VLCStyle.scale), Math.ceil(implicitContentWidth))
+        focusPolicy: Qt.StrongFocus
+        autoRepeat: true
+        T.ToolTip.visible: hovered && Accessible.name !== text
+        T.ToolTip.text: Accessible.name
+        T.ToolTip.delay: VLCStyle.delayToolTipAppear
+        onActiveFocusChanged: if (activeFocus && root.reveal) root.reveal(this)
+        background: Rectangle {
+            color: parent.hovered || parent.activeFocus
+                   ? VLCStyle.redesign.color("#222222", "#9c9c9b") : VLCStyle.redesign.color("#191919", "#ababaa")
+            border.color: parent.activeFocus ? VLCStyle.redesign.focusColor : VLCStyle.redesign.color("#373737", "#8e8e8d")
+            radius: VLCStyle.dp(4, VLCStyle.scale)
+        }
+        contentItem: Controls.Label {
+            text: parent.text
+            color: parent.enabled ? VLCStyle.redesign.color("#EAEAEA", "#2e2e2e") : VLCStyle.redesign.color("#8F8F8F", "#7c7c7b")
+            font.family: VLCStyle.redesign.fontFamily
+            font.pixelSize: VLCStyle.dp(text.length > 1 ? 12 : 16, VLCStyle.scale)
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            leftPadding: VLCStyle.dp(8, VLCStyle.scale)
+            rightPadding: VLCStyle.dp(8, VLCStyle.scale)
+        }
+    }
+
     // The handle of Basic is a light grey, as in the dark theme: darker in
     // the light one
     component ListScrollBar: Controls.ScrollBar {

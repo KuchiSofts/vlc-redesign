@@ -108,6 +108,7 @@ void ConfigModel::resetAll()
     resetInterfaceLanguage();
     m_ctx->applyInterfaceLanguage(interfaceLanguage());
 #endif
+    m_ctx->setRightToLeft(m_ctx->languageRightToLeft());
     reload();
 }
 

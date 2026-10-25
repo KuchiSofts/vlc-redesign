@@ -117,7 +117,7 @@ Dialog {
         applyFailed = false
         previousGlobalShortcuts = MainCtx.useGlobalShortcuts
         MainCtx.useGlobalShortcuts = false
-        config.reload()
+        config.refresh()
         appearance.begin()
         subtitleLanguages.begin()
         developerMode.begin()

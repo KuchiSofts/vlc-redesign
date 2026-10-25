@@ -129,7 +129,7 @@ Widgets.RedesignDialog {
         profileError = ""
         // (the rows stay when the actions are the same: the list starts
         // at its top as a new one did)
-        shortcuts.reload()
+        shortcuts.refresh()
         shortcutList.positionViewAtBeginning()
         searchField.text = initialSearch
         initialSearch = ""

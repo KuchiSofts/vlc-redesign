@@ -1234,8 +1234,15 @@ void ConfigModel::addCombinedEntries()
     }
 }
 
+void ConfigModel::refresh()
+{
+    if (!m_loaded.isValid() || m_loaded.elapsed() > 1000)
+        reload();
+}
+
 void ConfigModel::reload()
 {
+    m_loaded.start();
     const bool wasDirty = dirty();
     // The entries made again aside (nobody told), as retranslate() does
     QVector<Entry> previous;

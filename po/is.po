@@ -41446,3 +41446,8 @@ msgstr "Ertu viss um að þú viljir búa til stauminn?"
 
 #~ msgid "Streaming Output"
 #~ msgstr "Frálag streymis"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Oft notað"

@@ -41125,3 +41125,8 @@ msgstr ""
 
 #~ msgid "Remaining time: %i seconds"
 #~ msgstr "کاتی ماوە: %i چرکە"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "زۆر بەکارهاتوو"

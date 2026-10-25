@@ -44555,3 +44555,8 @@ msgstr "Sind Sie sicher, dass Sie den Stream erstellen möchten?"
 
 #~ msgid "Streaming Output"
 #~ msgstr "Streaming-Ausgabe"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Oft verwendet"

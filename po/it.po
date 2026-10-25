@@ -56549,3 +56549,8 @@ msgstr "Sei sicuro di voler creare il flusso?"
 #~ "Se il tuo framebuffer supporta l'accelerazione hardware o esegue il "
 #~ "doppio buffering hardware, dovresti disabilitare questa opzione. Sarà "
 #~ "eseguito il doppio buffering software."
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Usata spesso"

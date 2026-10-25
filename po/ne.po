@@ -45689,3 +45689,8 @@ msgstr ""
 #, fuzzy
 #~ msgid "Streaming Output"
 #~ msgstr "प्रवाह निर्गत"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "प्रायः प्रयोग गरिएको"

@@ -40141,3 +40141,8 @@ msgstr "Opravdu si přejete vytvořit proud?"
 #, fuzzy
 #~ msgid "Configure Media Library"
 #~ msgstr "Knihovna médií"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Často používaný"

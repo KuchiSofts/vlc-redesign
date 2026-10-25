@@ -52528,3 +52528,8 @@ msgstr "Akışı oluşturmak istediğinize emin misiniz?"
 #, fuzzy
 #~ msgid "Addon Manager"
 #~ msgstr "Eklenti Yöneticisi"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Sık kullanılan"

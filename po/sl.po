@@ -52058,3 +52058,8 @@ msgstr "Ali res želite ustvariti pretok?"
 #~ msgstr ""
 #~ "Možnost omogoča določanje kategorije seje, ki bo najavljena če je za "
 #~ "uporabo izbran protokol SAP."
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Pogosto uporabljen"

@@ -47531,3 +47531,8 @@ msgstr "Ønskjer du å opprette straumen?"
 
 #~ msgid "Uncompressed RAR"
 #~ msgstr "Dekomprimert RAR"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Brukt ofte"

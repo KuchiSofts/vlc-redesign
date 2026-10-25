@@ -40513,3 +40513,8 @@ msgstr "An bhfuil tú cinnte gur mian leat an sruth a chruthú?"
 #, fuzzy
 #~ msgid "Advanced video filter controls"
 #~ msgstr "&Ardrialtáin"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Úsáidtear go minic"

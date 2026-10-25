@@ -47753,3 +47753,8 @@ msgstr "هل أنت متأكد من رغبتك في إنشاء البث؟"
 #~ msgstr ""
 #~ "وهذا يتيح لك الاتصال اعطاء العنوان البريدي للتيار ، وسوف يعلن في SDP "
 #~ "(دورة توصيف)."
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "مستخدمة كثيرًا"

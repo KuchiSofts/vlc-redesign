@@ -53226,3 +53226,8 @@ msgstr "Είστε σίγουρος ότι θέλετε να δημιουργή�
 #, fuzzy
 #~ msgid "Fingerprinting track..."
 #~ msgstr "&Αποτύπωμα"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Χρησιμοποιείται συχνά"

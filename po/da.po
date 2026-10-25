@@ -51160,3 +51160,8 @@ msgstr "Er du sikker på, at du vil oprette streamet?"
 
 #~ msgid "Streaming Output"
 #~ msgstr "Streaming output"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Bruges ofte"

@@ -46093,3 +46093,8 @@ msgstr "Ești sigur că dorești să creezi fluxul?"
 
 #~ msgid "Streaming Output"
 #~ msgstr "Flux de ieșire"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Folosită des"

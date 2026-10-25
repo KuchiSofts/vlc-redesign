@@ -51602,3 +51602,8 @@ msgstr "Czy na pewno chcesz utworzyć ten strumień?"
 #, fuzzy
 #~ msgid "Addon Manager"
 #~ msgstr "Menedżer dodatków"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Często używany"

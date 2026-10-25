@@ -39438,3 +39438,8 @@ msgstr ""
 #, fuzzy
 #~ msgid "Open Subtitles"
 #~ msgstr "Дэд бичвэр нээх..."
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Байнга хэрэглэдэг"

@@ -41229,3 +41229,8 @@ msgstr "Ydych yn sicr am greu'r ffrwd?"
 #, fuzzy
 #~ msgid "Black slot"
 #~ msgstr "Slot Ddu"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Defnyddir yn aml"

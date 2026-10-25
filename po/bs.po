@@ -39380,3 +39380,8 @@ msgstr ""
 #, fuzzy
 #~ msgid "Video Filters..."
 #~ msgstr "Datoteke Videa"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Često korišten"

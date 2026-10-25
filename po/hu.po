@@ -50426,3 +50426,8 @@ msgstr "Valóban létre kívánja hozni a közvetítést?"
 
 #~ msgid "Select a matching identity"
 #~ msgstr "Válasszon illeszkedő identitást"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Gyakran használt"

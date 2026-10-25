@@ -45503,3 +45503,8 @@ msgstr "Vai jūs esat pārliecināts, ka vēlaties izveidot straumi?"
 
 #~ msgid "Streaming Output"
 #~ msgstr "Straumēšanas izvade"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Bieži lietota"

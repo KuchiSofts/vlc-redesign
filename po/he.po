@@ -39177,3 +39177,8 @@ msgstr "ליצור את התזרים?"
 
 #~ msgid "Media Manager List"
 #~ msgstr "רשימת מנהל המדיה"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "בשימוש תדיר"

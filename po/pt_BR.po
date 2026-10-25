@@ -50681,3 +50681,8 @@ msgstr "Tem certeza de que deseja criar o fluxo?"
 
 #~ msgid "Relative"
 #~ msgstr "Relativo"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Usado com frequência"

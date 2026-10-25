@@ -52814,3 +52814,8 @@ msgstr "스트림을 생성할까요?"
 #, fuzzy
 #~ msgid "Addon Manager"
 #~ msgstr "애드온 관리자"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "자주 사용"

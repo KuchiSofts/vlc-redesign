@@ -44,6 +44,14 @@ file name of the player bar.
   after the sound did, dropping frames when faster and holding one when slower; pressing *faster* a few times
   quickly left the picture almost a second behind the sound until the next seek. The picture changes speed with
   the sound now (upstream VLC 4: the clock learned the new speed only from the next report of the audio output).
+- **Settings changed outside the Settings window are kept**: each start put back the settings saved with the
+  player profile in use, so the subtitle position and size set from the player (or Shift+Up and Shift+Down), the
+  classic preferences, and anything changed before VLC ended unexpectedly, went back at the next start.
+- **A language chosen after another one shows all its texts**: from Arabic to British English (or between any two
+  translated languages) the interface kept the texts of the first one; only the layout changed.
+- **Keyboard Shortcuts and Settings open faster**: Keyboard Shortcuts froze the window for about 140 ms as it
+  opened, now about 20 ms (it read its options twice, and its sort translated group names thousands of times);
+  Settings about 155 ms, now about 135 ms.
 - **Messages on the video in one language**: "Piste Subtitle", "Дорожка Audio" and "Audio delay" in a translated
   interface: the kind of track and of subtitles was inserted in English. Each message is a whole sentence in the
   language now. The shortcuts that make subtitles bigger and smaller also had each other's name.
@@ -210,15 +218,17 @@ file name of the player bar.
   to right (the default, whatever the language) or right to left: everything mirrors at once, the arrows point the
   way one reads, and the playback bar keeps its order as on YouTube (time runs left to right).
 - **The translations are in the program** (issue #5): the releases had none, so the language chosen in Settings
-  did nothing. 99 languages ship now, and 59 cover every text of the interface: Afrikaans, Albanian, Arabic, Basque,
-  Belarusian, Bengali, Bosnian, Bulgarian, Catalan, Chinese (simplified and traditional), Croatian, Czech, Danish,
-  Dutch, Estonian, Finnish, French, Galician, German, Greek, Gujarati, Hebrew, Hindi, Hungarian, Icelandic,
-  Indonesian, Italian, Japanese, Kannada, Korean, Latvian, Lithuanian, Macedonian, Malay, Malayalam, Marathi,
-  Norwegian (Bokmål and Nynorsk), Persian, Polish, Portuguese (Brazil, the redesign's texts contributed by
-  @Kinglucas962 in #6, and Portugal), Punjabi, Romanian, Russian, Serbian, Slovak, Slovenian, Spanish (Spain and
-  Latin America), Swedish, Tamil, Telugu, Thai, Turkish, Ukrainian, Urdu and Vietnamese, with British spelling
-  for English (UK). They come first in the language list; in the others VLC's own texts are translated, the
-  redesign's are in English, and the list says "(partial)". The last of those are being translated.
+  did nothing. 100 languages ship now, and 72 cover every text of the interface: Afrikaans, Albanian, Arabic,
+  Armenian, Basque, Belarusian, Bengali, Bosnian, Bulgarian, Catalan, Central Kurdish, Chinese (simplified and
+  traditional), Croatian, Czech, Danish, Dutch, Estonian, Finnish, French, Galician, Georgian, German, Greek,
+  Gujarati, Hebrew, Hindi, Hungarian, Icelandic, Indonesian, Irish, Italian, Japanese, Kannada, Kazakh, Khmer,
+  Korean, Latvian, Lithuanian, Macedonian, Malay, Malayalam, Marathi, Mongolian, Nepali, Norwegian (Bokmål and
+  Nynorsk), Occitan, Persian, Polish, Portuguese (Brazil, the redesign's texts contributed by @Kinglucas962 in #6,
+  and Portugal), Punjabi, Romanian, Russian, Scottish Gaelic, Serbian, Sinhala, Slovak, Slovenian, Spanish (Spain
+  and Latin America), Swedish, Tamil, Telugu, Thai, Turkish, Ukrainian, Urdu, Vietnamese, Walloon and Welsh, with
+  British spelling for English (UK). Every language of the list is complete; VLC's other catalogs (Asturian,
+  Kabyle, Uzbek...) are listed after them, marked "(partial)": VLC's own texts are translated there, the
+  redesign's are in English.
 - **Right-to-left languages are laid out right to left**: choosing Hebrew, Arabic, Persian or Urdu in Settings
   (or in the classic settings, or installing in it) mirrors the interface at once; *Layout direction* under the
   language still changes it, and a choice made there is kept. Each language file says which way it is written,
@@ -230,7 +240,7 @@ file name of the player bar.
   videos and the next starts, as Shift+Up and Shift+Down already kept the position (Ctrl+wheel's size is kept now
   too). The font, colours, outline, shadow and size chosen in Settings now reach the video already playing, from
   its next line (before: from the next video, the size after a restart).
-- **The translations read right**: over 500 wrong or outdated texts of the old catalogs were corrected (Arabic
+- **The translations read right**: over 700 wrong or outdated texts of the old catalogs were corrected (Arabic
   "OK" said "Yes", "Pause" an obscure word; Ukrainian "Space" was outer space; Page Up and Page Down were swapped
   in Ukrainian and Traditional Chinese), and the counts take the plural form of their number in every language
   ("2 элемента", "5 элементов"). A word with two meanings is translated once per meaning: the German side bar said

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 1.0\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-25 09:28+0000\n"
+"POT-Creation-Date: 2026-10-25 11:16+0000\n"
 "PO-Revision-Date: 2009-06-07 18:52+0300\n"
 "Last-Translator: Ara Qadir <arastein@gmail.com>\n"
 "Language-Team: Kurdish (Sorani) <arastein@gmail.com>\n"
@@ -409,7 +409,7 @@ msgstr ""
 
 #: include/vlc_intf_strings.h:67
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:1294
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:244
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:247
 #: modules/gui/qt/dialogs/preferences/qml/SettingsExtensions.qml:171
 #: modules/gui/qt/player/qml/CompactLibrary.qml:873
 #: modules/gui/qt/player/qml/CompactLibrary.qml:968
@@ -469,28 +469,28 @@ msgid "Disable"
 msgstr "ناچالاککردن"
 
 #: src/audio_output/output.c:331
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1150
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1174
 #: modules/visualization/visual/visual.c:140
 msgid "Spectrometer"
 msgstr "سپێکترۆمیتەر"
 
 #: src/audio_output/output.c:333
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1151
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1175
 msgid "Scope"
 msgstr "بینین"
 
 #: src/audio_output/output.c:335
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1151
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1175
 msgid "Spectrum"
 msgstr "سپێکتروم"
 
 #: src/audio_output/output.c:337
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1152
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1176
 msgid "Waveform"
 msgstr "شێوەی شەپۆل"
 
 #: src/audio_output/output.c:339
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1152
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1176
 msgid "VU meter"
 msgstr "پێوەری VU"
 
@@ -619,11 +619,11 @@ msgstr ""
 #: modules/access/dtv/access.c:148 modules/access/dtv/access.c:170
 #: modules/access/v4l2/v4l2.c:137
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1031
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:122
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:143
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:148
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1170
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1475
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:123
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:144
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:149
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1194
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1508
 #: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:417
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:144
@@ -1534,7 +1534,7 @@ msgid "Notification"
 msgstr "ئاگادارکردنەوە"
 
 #: src/libvlc-module.c:156
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:315
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:339
 msgid "Animation"
 msgstr "جووڵاندن"
 
@@ -1631,7 +1631,7 @@ msgstr ""
 #: modules/codec/subsdec.c:166 modules/codec/x264.c:429
 #: modules/demux/adaptive/adaptive.cpp:121 modules/demux/mpeg/ts.c:134
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:63
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:86
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:87
 #: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:91
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:604
 #: modules/gui/qt/player/hdr_output.cpp:33
@@ -1650,14 +1650,14 @@ msgstr "کارا"
 #: src/libvlc-module.c:198 src/libvlc-module.c:374 src/player/osd.c:340
 #: modules/access/dtv/access.c:100 modules/access/v4l2/v4l2.c:137
 #: modules/access/v4l2/v4l2.c:201
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:136
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1050
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1530
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:137
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1074
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1565
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:181
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
 #: modules/gui/qt/menus/menus.cpp:920 modules/gui/qt/player/hdr_output.cpp:33
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:374
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:378
 #: modules/video_filter/deinterlace/algo_phosphor.h:54
 msgid "Off"
 msgstr "ناکارا"
@@ -1737,14 +1737,14 @@ msgstr ""
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:1376
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:1377
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:230
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:122
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:308
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1333
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:195
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:123
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:332
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1364
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:201
 #: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:42
 #: modules/gui/qt/menus/qml/MainMenu.qml:118
-#: modules/gui/qt/player/qml/TracksMenu.qml:176
-#: modules/gui/qt/player/qml/TracksMenu.qml:274
+#: modules/gui/qt/player/qml/TracksMenu.qml:181
+#: modules/gui/qt/player/qml/TracksMenu.qml:279
 #: modules/gui/qt/widgets/qml/LanguagePicker.qml:27
 #: modules/text_renderer/freetype/freetype.c:118
 #: modules/visualization/visual/window_presets.h:33
@@ -1875,7 +1875,7 @@ msgstr "سەرەوە"
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:371
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:393
 #: modules/gui/qt/dialogs/extended/qml/CropPanel.qml:48
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:163
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:164
 #: modules/spu/common.h:53 modules/spu/mosaic.c:181
 msgid "Bottom"
 msgstr "بنەوە"
@@ -2240,12 +2240,12 @@ msgid "This selects the dimension according to which the video will be scaled."
 msgstr ""
 
 #: src/libvlc-module.c:504 modules/gui/macosx/menus/VLCMainMenu.m:462
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:148
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:149
 msgid "Smaller"
 msgstr "بچوکتر"
 
 #: src/libvlc-module.c:504 modules/gui/macosx/menus/VLCMainMenu.m:463
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:149
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:150
 msgid "Larger"
 msgstr "گەورەتر"
 
@@ -2356,7 +2356,7 @@ msgstr "ئەمە دیاری دەکات ڕاگرتن بە کرتەی ماوس چ�
 
 #: src/libvlc-module.c:552 modules/access/rist.h:85
 #: modules/audio_output/mmdevice.c:1621
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1150
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1174
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:23
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:141
@@ -2488,7 +2488,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:642
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:32
 #: modules/gui/qt/dialogs/toolbar/defaults.cpp:85
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:382
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:386
 #: modules/logger/file.c:217 modules/spu/marq.c:63 modules/spu/rss.c:71
 #: modules/spu/rss.c:168
 msgid "Default"
@@ -2749,7 +2749,7 @@ msgid "Favor speed over precision while seeking"
 msgstr ""
 
 #: src/libvlc-module.c:742 modules/gui/qt/player/qml/PlaybackSpeed.qml:221
-#: modules/gui/qt/player/qml/TracksMenu.qml:310
+#: modules/gui/qt/player/qml/TracksMenu.qml:315
 msgid "Playback speed"
 msgstr "خێرایی لێدان"
 
@@ -4000,7 +4000,7 @@ msgid "Select the hotkey to use to play."
 msgstr "ئەو کلیلە دیاری بکە بۆ بەکارهێنان بۆ لێدان."
 
 #: src/libvlc-module.c:1372 modules/gui/macosx/menus/VLCMainMenu.m:396
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:311
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:335
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:39
 #: modules/gui/qt/player/qml/controlbarcontrols/FasterButton.qml:33
 msgid "Faster"
@@ -4011,7 +4011,7 @@ msgid "Select the hotkey to use for fast forward playback."
 msgstr "ئەو کلیلە دیاری بکە بۆ لێدان بە خێرایی."
 
 #: src/libvlc-module.c:1374 modules/gui/macosx/menus/VLCMainMenu.m:394
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:312
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:336
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:38
 #: modules/gui/qt/player/qml/controlbarcontrols/SlowerButton.qml:33
 msgid "Slower"
@@ -4083,7 +4083,7 @@ msgstr "کلیلی گەرم هەڵبژێرە بۆ چوون بۆ بڕگەی پێ�
 #: modules/gui/macosx/menus/VLCMainMenu.m:516
 #: modules/gui/macosx/windows/controlsbar/VLCMainWindowControlsBar.m:104
 #: modules/gui/macosx/windows/controlsbar/VLCMainWindowControlsBar.m:115
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1059
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1083
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:518 modules/gui/qt/menus/menus.cpp:823
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:34
 #: modules/gui/qt/player/qml/controlbarcontrols/StopButton.qml:29
@@ -4458,22 +4458,22 @@ msgid "Select the key to decrease the audio delay."
 msgstr "کلیلەکە هەڵبژێرە بۆ کەمکردنی دواخستنی دەنگ."
 
 #: src/libvlc-module.c:1485 src/video_output/vout_intf.c:108
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:129
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:130
 msgid "1:4 Quarter"
 msgstr "1:4 چارەک"
 
 #: src/libvlc-module.c:1486 src/video_output/vout_intf.c:109
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:129
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:130
 msgid "1:2 Half"
 msgstr "1:2 نیو"
 
 #: src/libvlc-module.c:1487 src/video_output/vout_intf.c:110
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:130
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:131
 msgid "1:1 Original"
 msgstr "1:1 ڕەسەنیی"
 
 #: src/libvlc-module.c:1488 src/video_output/vout_intf.c:111
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:130
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:131
 msgid "2:1 Double"
 msgstr "2:1 دوو ئەوەندە"
 
@@ -4870,7 +4870,7 @@ msgstr "ژێروێنەکان"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:27
 #: modules/gui/qt/player/subtitle_finder.cpp:1179
 #: modules/gui/qt/player/qml/TracksMenu.qml:38
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:248
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:252
 #: share/lua/http/dialogs/create_stream.html:153
 msgid "Subtitles"
 msgstr "ژێرنووسەکان"
@@ -4929,8 +4929,8 @@ msgid "Plugins"
 msgstr "پێوەکراوەکان"
 
 #: src/libvlc-module.c:2153
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:502
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:544
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:506
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:549
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:27
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:28
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:102
@@ -4949,7 +4949,7 @@ msgstr ""
 #: modules/gui/macosx/panels/VLCBookmarksWindowController.m:96
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:601
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:97
-#: modules/gui/qt/player/qml/TracksMenu.qml:345
+#: modules/gui/qt/player/qml/TracksMenu.qml:350
 #: modules/gui/qt/player/qml/QueueCard.qml:68
 #: modules/gui/qt/player/qml/controlbarcontrols/BookmarkButton.qml:37
 #: modules/gui/qt/player/qml/controlbarcontrols/BookmarksButton.qml:29
@@ -5560,7 +5560,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:290
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:111
 #: modules/gui/qt/widgets/qml/RedesignDialog.qml:259
-#: modules/stream_out/chromecast/cast.cpp:1162
+#: modules/stream_out/chromecast/cast.cpp:1189
 #: modules/stream_out/dlna/dlna.cpp:690
 msgid "Cancel"
 msgstr "پاشگەزبوونەوە"
@@ -5909,7 +5909,7 @@ msgid "Apache languages"
 msgstr ""
 
 #: src/text/iso-639_def.h:65
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:52
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:53
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:207
 msgid "Arabic"
 msgstr "عەرەبی"
@@ -6200,7 +6200,7 @@ msgid "Chiga"
 msgstr ""
 
 #: src/text/iso-639_def.h:138
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:53
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:54
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:206
 msgid "Chinese"
 msgstr "چینی"
@@ -6279,7 +6279,7 @@ msgid "Cushitic (Other)"
 msgstr ""
 
 #: src/text/iso-639_def.h:158
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:54
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:55
 msgid "Czech"
 msgstr "چیکی"
 
@@ -6288,7 +6288,7 @@ msgid "Dakota"
 msgstr ""
 
 #: src/text/iso-639_def.h:160
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:55
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:56
 msgid "Danish"
 msgstr "دانیماڕکی"
 
@@ -6353,7 +6353,7 @@ msgid "Elamite"
 msgstr ""
 
 #: src/text/iso-639_def.h:180
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:57
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:58
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:202
 msgid "English"
 msgstr "ئینگلیزی"
@@ -6404,7 +6404,7 @@ msgid "Filipino; Pilipino"
 msgstr ""
 
 #: src/text/iso-639_def.h:192
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:58
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:59
 msgid "Finnish"
 msgstr "فینلەندی"
 
@@ -6417,7 +6417,7 @@ msgid "Fon"
 msgstr ""
 
 #: src/text/iso-639_def.h:197
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:59
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:60
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:202
 msgid "French"
 msgstr "فەڕەنسی"
@@ -6483,7 +6483,7 @@ msgid "Germanic (Other)"
 msgstr ""
 
 #: src/text/iso-639_def.h:215
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:60
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:61
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:203
 msgid "German"
 msgstr "ئەڵمانی"
@@ -6550,7 +6550,7 @@ msgid "Hawaiian"
 msgstr "هاوایی"
 
 #: src/text/iso-639_def.h:232 src/text/iso-639_def.h:575
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:62
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:63
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:208
 msgid "Hebrew"
 msgstr "حربی"
@@ -6568,7 +6568,7 @@ msgid "Himachali"
 msgstr ""
 
 #: src/text/iso-639_def.h:236
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:63
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:64
 msgid "Hindi"
 msgstr "هندی"
 
@@ -6589,7 +6589,7 @@ msgid "Huizhou Chinese"
 msgstr ""
 
 #: src/text/iso-639_def.h:241
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:64
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:65
 msgid "Hungarian"
 msgstr "هەنگاری"
 
@@ -6634,7 +6634,7 @@ msgid "Indo-European (Other)"
 msgstr ""
 
 #: src/text/iso-639_def.h:252
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:65
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:66
 msgid "Indonesian"
 msgstr "ئەندەنووزی"
 
@@ -6673,13 +6673,13 @@ msgid "Iroquoian languages"
 msgstr ""
 
 #: src/text/iso-639_def.h:263
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:66
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:67
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:204
 msgid "Italian"
 msgstr "ئیتاڵی"
 
 #: src/text/iso-639_def.h:264
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:67
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:68
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:206
 msgid "Japanese"
 msgstr "ژاپۆنی"
@@ -6818,7 +6818,7 @@ msgid "Konkani"
 msgstr ""
 
 #: src/text/iso-639_def.h:298
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:68
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:69
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:207
 msgid "Korean"
 msgstr "کۆری"
@@ -6980,7 +6980,7 @@ msgid "Malayalam"
 msgstr ""
 
 #: src/text/iso-639_def.h:338
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:69
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:70
 msgid "Malay"
 msgstr "مالایی"
 
@@ -7219,7 +7219,7 @@ msgid "Norwegian Nynorsk"
 msgstr "نەرویجی"
 
 #: src/text/iso-639_def.h:398
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:70
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:71
 msgid "Norwegian"
 msgstr "نەرویجی"
 
@@ -7304,7 +7304,7 @@ msgid "Papuan (Other)"
 msgstr ""
 
 #: src/text/iso-639_def.h:420
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:71
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:72
 msgid "Persian"
 msgstr "فارسی"
 
@@ -7321,12 +7321,12 @@ msgid "Pohnpeian"
 msgstr ""
 
 #: src/text/iso-639_def.h:424
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:72
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:73
 msgid "Polish"
 msgstr "پۆڵەندی"
 
 #: src/text/iso-639_def.h:425
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:73
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:74
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:204
 msgid "Portuguese"
 msgstr "پورتوگالی"
@@ -7372,7 +7372,7 @@ msgid "Romance (Other)"
 msgstr ""
 
 #: src/text/iso-639_def.h:437
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:74
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:75
 msgid "Romanian"
 msgstr "ڕۆمانی"
 
@@ -7385,7 +7385,7 @@ msgid "Rundi"
 msgstr "ڕەندی"
 
 #: src/text/iso-639_def.h:440
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:75
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:76
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:205
 msgid "Russian"
 msgstr "ڕووسی"
@@ -7596,7 +7596,7 @@ msgid "Swati"
 msgstr ""
 
 #: src/text/iso-639_def.h:492
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:77
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:78
 msgid "Swedish"
 msgstr "سویدی"
 
@@ -7651,7 +7651,7 @@ msgid "Tetum"
 msgstr ""
 
 #: src/text/iso-639_def.h:506
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:78
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:79
 msgid "Thai"
 msgstr "تایلەندی"
 
@@ -7724,7 +7724,7 @@ msgid "Tupi languages"
 msgstr ""
 
 #: src/text/iso-639_def.h:525
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:79
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:80
 msgid "Turkish"
 msgstr "تورکی"
 
@@ -7757,7 +7757,7 @@ msgid "Uighur; Uyghur"
 msgstr ""
 
 #: src/text/iso-639_def.h:533
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:80
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:81
 msgid "Ukrainian"
 msgstr "ئۆکرانی"
 
@@ -7794,7 +7794,7 @@ msgid "Venda"
 msgstr ""
 
 #: src/text/iso-639_def.h:542
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:81
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:82
 msgid "Vietnamese"
 msgstr "ڤێتنامی"
 
@@ -8523,9 +8523,9 @@ msgid "Alternate director's comments"
 msgstr ""
 
 #: modules/access/dvd_description.h:47
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:149
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:156
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:172
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:150
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:157
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:173
 msgid "Large"
 msgstr "گەورە"
 
@@ -11185,7 +11185,7 @@ msgstr ""
 #: modules/codec/x264.c:424
 #: modules/gui/macosx/windows/addons/VLCAddonsWindowController.m:100
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:360
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1050
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1074
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:76
 #: modules/gui/qt/dialogs/sout/convert.cpp:164
 #: modules/gui/qt/medialibrary/qml/VideoDisplay.qml:49
@@ -12970,9 +12970,9 @@ msgid "Main"
 msgstr ""
 
 #: modules/codec/aom.c:71
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:137
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1299
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1395
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:138
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1330
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1426
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:126
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
@@ -15834,22 +15834,22 @@ msgstr ""
 #: modules/codec/x264.c:419 modules/codec/x264.c:424
 #: modules/gui/macosx/menus/VLCMainMenu.m:395
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:776
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1298
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1395
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1329
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1426
 #: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:691
 #: modules/misc/gnutls.c:756 modules/text_renderer/freetype/freetype.c:118
 msgid "Normal"
 msgstr "ئاسایی"
 
 #: modules/codec/x264.c:424
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:311
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:335
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
 #: modules/video_output/xcb/render.c:764
 msgid "Fast"
 msgstr "خێرا"
 
 #: modules/codec/x264.c:424
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:312
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:336
 msgid "Slow"
 msgstr "خاو"
 
@@ -17867,7 +17867,7 @@ msgstr ""
 #: modules/gui/macosx/windows/convertandsave/VLCOutput.m:62
 #: modules/gui/qt/dialogs/dialogs/qml/CustomDialog.qml:39
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1420
-#: modules/stream_out/chromecast/cast.cpp:1162
+#: modules/stream_out/chromecast/cast.cpp:1189
 #: modules/stream_out/dlna/dlna.cpp:690
 msgid "OK"
 msgstr "باشە"
@@ -18211,7 +18211,7 @@ msgid "All artists"
 msgstr ""
 
 #: modules/gui/macosx/library/home-library/VLCLibraryHomeViewSectionHeaderView.m:72
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:471
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:474
 msgid "Show all"
 msgstr "پیشاندانی هەموو"
 
@@ -18514,7 +18514,7 @@ msgstr "ڕووکاری Mac OS X"
 
 #: modules/gui/macosx/main/macosx.m:138
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:13
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:406
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:409
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:226
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:228
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
@@ -18607,7 +18607,7 @@ msgid "Show All"
 msgstr "پیشاندانی هەموو"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:356
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1059
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1083
 #: modules/gui/qt/menus/menus.cpp:976
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:52
 #: modules/gui/qt/player/qml/controlbarcontrols/QuitButton.qml:27
@@ -18721,7 +18721,7 @@ msgstr "بینین"
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:227
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:24
 #: modules/gui/qt/menus/menus.cpp:853
-#: modules/gui/qt/player/qml/TracksMenu.qml:376
+#: modules/gui/qt/player/qml/TracksMenu.qml:381
 msgid "Playback"
 msgstr "لێدان"
 
@@ -18740,7 +18740,7 @@ msgstr ""
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:401
 #: modules/gui/macosx/menus/VLCMainMenu.m:1749
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1048
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1072
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:116
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:522 modules/gui/qt/menus/menus.cpp:917
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:54
@@ -19089,7 +19089,7 @@ msgstr "هەمووی دووبارە بکەوە"
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1321
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:1055
 #: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:37
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1299
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1330
 #: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:688
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:66
 msgid "Custom"
@@ -19188,17 +19188,17 @@ msgstr ""
 #: modules/gui/qt/dialogs/extended/qml/FilterPanel.qml:91
 #: modules/gui/qt/dialogs/extended/qml/VideoEffectsPanel.qml:148
 #: modules/gui/qt/dialogs/gototime/gototime.cpp:65
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:434
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:740
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:345
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:437
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:749
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:351
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPicture.qml:85
-#: modules/gui/qt/player/qml/TracksMenu.qml:543
+#: modules/gui/qt/player/qml/TracksMenu.qml:548
 #: modules/gui/qt/player/qml/TracksPageAudio.qml:129
 #: modules/gui/qt/player/qml/TracksPageSubtitle.qml:146
 #: modules/gui/qt/player/qml/TracksPageSubtitle.qml:274
 #: modules/gui/qt/player/qml/TracksPageSubtitle.qml:388
 #: modules/gui/qt/player/qml/SubtitleSyncTimeline.qml:106
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:567
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:571
 msgid "Reset"
 msgstr "گەڕاندنەوە"
 
@@ -20428,10 +20428,10 @@ msgstr ""
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:637
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:895
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:1275
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:687
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:710
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:724
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:337
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:696
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:719
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:733
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:343
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:35
 msgid "Open"
 msgstr "کردنەوە"
@@ -20523,7 +20523,7 @@ msgstr "دەرچە"
 
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:252
 #: modules/services_discovery/upnp.cpp:73
-#: modules/stream_out/chromecast/cast.cpp:229
+#: modules/stream_out/chromecast/cast.cpp:232
 msgid "IP Address"
 msgstr "ناونیشانی IP"
 
@@ -21100,7 +21100,7 @@ msgid "Volume: %i %%"
 msgstr "دەنگ: %d%%"
 
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:231
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:210
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:216
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:171
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:173
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:174
@@ -21721,7 +21721,7 @@ msgstr "GitHub"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:291
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:136
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:290
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:293
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:111
 #: modules/gui/qt/widgets/qml/CSDWindowButtonSet.qml:87
 #: modules/gui/qt/medialibrary/qml/VideoInfoExpandPanel.qml:194
@@ -22718,7 +22718,7 @@ msgstr "زمانی دووەم (کاتێک هیچ نییە)"
 
 #: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:135
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:102
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:524
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:528
 msgid "Find subtitles online when a video has none in these languages"
 msgstr "دۆزینەوەی ژێرنووس لە سەرهێڵ کاتێک ڤیدیۆیەک هیچی بەم زمانانە نییە"
 
@@ -22736,19 +22736,19 @@ msgstr "ڕووکار و ڕەنگی دڵخوازت هەڵبژێرە."
 
 #: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:88
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:31
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:407
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:410
 msgid "Light"
 msgstr "ڕووناک"
 
 #: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:89
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:30
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:407
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:410
 msgid "Dark"
 msgstr "تاریک"
 
 #: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:90
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:32
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:408
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:411
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:29
 #: modules/gui/qt/util/color_scheme_model.cpp:46
 msgid "System"
@@ -23212,8 +23212,8 @@ msgid " f/s"
 msgstr " f/s"
 
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1387
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:604
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:618
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:611
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:625
 msgid "Advanced Options"
 msgstr "هەڵبژاردنە پەرەسەندووەکان"
 
@@ -23259,7 +23259,7 @@ msgid "%1 Media"
 msgstr "%1 ڕەنگاڵە"
 
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:81
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:686
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:695
 msgid "Plugins and extensions"
 msgstr "پێوەکراو و درێژکراوەکان"
 
@@ -23339,7 +23339,7 @@ msgid "Version %1"
 msgstr "وەشانی %1"
 
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:970
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:76
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:80
 msgid "%1 downloads"
 msgstr "%1 داگرتن"
 
@@ -23390,115 +23390,115 @@ msgstr "دەرچوونی دەنگ گۆڕا؛ پێشبینینی ئامێرەکە
 msgid "The previous audio device could not be restored."
 msgstr "ئامێری دەنگی پێشوو نەگەڕێنرایەوە."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:56
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:57
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:205
 msgid "Dutch"
 msgstr "هۆڵەندی"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:61
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:62
 msgid "Greek"
 msgstr "یۆنانی"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:76
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:77
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:203
 msgid "Spanish"
 msgstr "ئیسپانی"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:94
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:95
 msgid "System language"
 msgstr "زمانی سیستەم"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:136
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:137
 #: modules/video_filter/postproc.c:215
 msgid "Lowest"
 msgstr "نزمترین"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:136
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1298
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:137
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1329
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:125
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
 #: modules/video_filter/deinterlace/algo_phosphor.h:55
 msgid "Low"
 msgstr "نزم"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:136
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:156
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:171
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:312
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:137
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:157
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:172
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:336
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:125
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
 #: modules/video_filter/deinterlace/algo_phosphor.h:56
 msgid "Medium"
 msgstr "مامناوەند"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:137
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:138
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:107
 msgid "Higher"
 msgstr "بەرزتر"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:137
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:138
 #: modules/video_filter/postproc.c:218
 msgid "Highest"
 msgstr "بەرزترین"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:148
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:156
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:170
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:149
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:157
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:171
 msgid "Small"
 msgstr "بچوک"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:149
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:150
 msgid "Largest"
 msgstr "گەورەترین"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:163
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:164
 msgid "Slightly raised"
 msgstr "کەمێک بەرزکراوە"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:163
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:164
 msgid "Raised"
 msgstr "بەرزکراوە"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:174
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:175
 msgid "%1 MiB"
 msgstr "%1 MiB"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:176
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:177
 msgid "Same as video"
 msgstr "وەک ڤیدیۆ"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:178
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:180
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:179
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:181
 msgid "%1 px wide"
 msgstr "پانی %1 px"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:244
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:245
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
 msgid "Discover cast devices"
 msgstr "دۆزینەوەی ئامێرەکانی کاست"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:245
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:246
 msgid ""
 "Looks for the cast devices of the local network when the Renderer menu opens."
 msgstr ""
 "کاتێک مێنیوی پیشاندەر دەکرێتەوە، بەدوای ئامێرەکانی کاستی ڕایەڵەی ناوخۆییدا "
 "دەگەڕێت."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:246
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:247
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:51
 msgid "Remember window size and position"
 msgstr "لەبیرکردنی قەبارە و شوێنی پەنجەرە"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:247
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:248
 msgid "Opens the window where it was when VLC was closed."
 msgstr "پەنجەرەکە لەو شوێنەدا دەکاتەوە کە کاتی داخستنی VLC تێیدا بوو."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:248
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:249
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:70
 msgid "Always show the player bar"
 msgstr "هەمیشە شریتی لێدەر پیشان بدە"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:249
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:250
 msgid ""
 "Keeps the player bar at the bottom of the library while nothing plays: Play "
 "starts the play queue, or opens files when it is empty."
@@ -23506,12 +23506,12 @@ msgstr ""
 "شریتی لێدەر لە خوارەوەی گەنجینە دەهێڵێتەوە کاتێک هیچ لێنادرێت: لێدان ڕیزی "
 "لێدان دەستپێدەکات، یان ئەگەر بەتاڵ بێت پەڕگە دەکاتەوە."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:251
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:252
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:72
 msgid "Increase text contrast"
 msgstr "زیادکردنی جیاوازیی ڕەنگی دەق"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:252
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:253
 msgid ""
 "Draws the dim texts of the design (hints, descriptions, watched items) "
 "brighter, to the contrast the WCAG accessibility guidelines ask for (AA)."
@@ -23520,76 +23520,76 @@ msgstr ""
 "دەکێشێت، بۆ ئەو ئاستی جیاوازییەی ڕێنماییەکانی دەستگەیشتنی WCAG داوای دەکەن "
 "(AA)."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:254
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:255
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:65
 msgid "Popup duration"
 msgstr "ماوەی پەنجەرەی دەرکەوتوو"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:255
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:256
 msgid "How long the popup of the track changes stays on the screen."
 msgstr "پەنجەرەی دەرکەوتووی گۆڕانی تراک چەند لەسەر شاشە دەمێنێتەوە."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:256
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:257
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:327
 msgid "Process priority"
 msgstr "پێشینەی پرۆسە"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:257
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:258
 msgid ""
 "How much processor time the system gives VLC compared with the other "
 "programs."
 msgstr ""
 "سیستەم چەند کاتی پرۆسێسەر دەدات بە VLC بە بەراورد لەگەڵ بەرنامەکانی تر."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:258
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:259
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:275
 msgid "Double click on the video"
 msgstr "دوو کرتە لەسەر ڤیدیۆ"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:259
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:260
 msgid "What a double click on the video does."
 msgstr "دوو کرتە لەسەر ڤیدیۆ چی دەکات."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:259
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:260
 msgid "Nothing|Toggle fullscreen"
 msgstr "هیچ|گۆڕینی پڕشاشە"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:260
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:261
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:228
 msgid "Size values"
 msgstr "بەهاکانی قەبارە"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:261
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:262
 msgid ""
 "Choose the size of the subtitles by name (relative to the picture), or in "
 "pixels."
 msgstr ""
 "قەبارەی ژێرنووسەکان بە ناو (بە بەراورد لەگەڵ وێنە)، یان بە پیکسڵ هەڵبژێرە."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:262
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:263
 msgid "Relative|Pixels"
 msgstr "ڕێژەیی|پیکسڵ"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:263
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:264
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:244
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:245
 #: modules/text_renderer/freetype/freetype.c:80
 msgid "Background opacity"
 msgstr "ناڕوونیی پاشبنەما"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:264
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:265
 msgid ""
 "How opaque the box behind the subtitles is when there is one (kept while "
 "there is none)."
 msgstr ""
 "سندوقی پشت ژێرنووسەکان چەندە ناڕوونە کاتێک هەیە (کاتێک نییە دەهێڵدرێتەوە)."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:265
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:266
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:94
 msgid "Never remember items matching"
 msgstr "هەرگیز ئەم بڕگە هاوشێوانە لەبیر مەکە"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:266
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:267
 msgid ""
 "A regular expression: the items whose address or name matches it are not "
 "saved in the history, nor their playback position."
@@ -23597,216 +23597,226 @@ msgstr ""
 "دەربڕینێکی ڕێکخراو (regex): ئەو بڕگانەی ناونیشان یان ناویان لەگەڵی دەگونجێت "
 "لە مێژوودا پاشەکەوت ناکرێن، نە شوێنی لێدانیشیان."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:310
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:281
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:264
+msgid "System monospace"
+msgstr "یەکپانیی سیستەم"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:281
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
+msgid "System, sans-serif"
+msgstr "سیستەم، sans-serif"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:334
 msgid "Ultra fast"
 msgstr "زۆر زۆر خێرا"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:310
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:334
 msgid "Super fast"
 msgstr "سوپەر خێرا"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:311
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:335
 msgid "Very fast"
 msgstr "زۆر خێرا"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:313
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:337
 msgid "Very slow"
 msgstr "زۆر خاو"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:313
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:337
 msgid "Placebo"
 msgstr "پلاسیبۆ"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:315
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:339
 msgid "Film"
 msgstr "فیلم"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:315
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:339
 #: modules/video_filter/grain.c:64
 msgid "Grain"
 msgstr "دەنکۆڵە"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:316
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:340
 msgid "Still image"
 msgstr "وێنەی نەجووڵاو"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:317
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:341
 msgid "Fast decoding"
 msgstr "کۆدکردنەوەی خێرا"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:317
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:341
 msgid "Zero latency"
 msgstr "بێ دواکەوتن"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:884
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:908
 msgid "%1: this value can not be used."
 msgstr "%1: ئەم بەهایە بەکارناهێنرێت."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:934
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:963
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:958
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:987
 msgid "%1 is not available in this VLC installation."
 msgstr "%1 لەم دامەزراندنەی VLC دا بەردەست نییە."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:948
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:972
 msgid "This setting"
 msgstr "ئەم ڕێکخستنە"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:958
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:982
 msgid "%1: choose a folder of this computer."
 msgstr "%1: بوخچەیەکی ئەم کۆمپیوتەرە هەڵبژێرە."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:987
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1011
 msgid "Select a category to reset."
 msgstr "پۆلێک هەڵبژێرە بۆ گەڕاندنەوە."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1049
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1073
 msgid "Repeat the current item (One) or the whole play queue (All)."
 msgstr "دووبارەکردنەوەی بڕگەی ئێستا (یەک) یان هەموو ڕیزی لێدان (هەموو)."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1050
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1074
 msgid "One"
 msgstr "یەک"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1057
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1081
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:119
 msgid "When playback finishes"
 msgstr "کاتێک لێدان کۆتایی دێت"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1058
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1082
 msgid "Stop, or quit VLC at the end of the play queue."
 msgstr "وەستاندن، یان داخستنی VLC لە کۆتایی ڕیزی لێدان."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1066
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1090
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:46
 msgid "Use a custom skin"
 msgstr "بەکارهێنانی پێستێکی تایبەت"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1067
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1091
 msgid "Starts VLC with the skin chosen below instead of this interface."
 msgstr ""
 "VLC بەو پێستەی لە خوارەوە هەڵبژێردراوە دەستپێدەکات لە جیاتی ئەم ڕووکارە."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1083
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1107
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:93
 msgid "Remember the playback position"
 msgstr "لەبیرکردنی شوێنی لێدان"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1084
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1108
 msgid "Lets VLC continue the media where you left off."
 msgstr "ڕێگە بە VLC دەدات ڕەنگاڵەکە لەو شوێنەوە بەردەوام بکات کە لێی وەستایت."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1098
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1122
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
 msgid "Reverse scroll direction"
 msgstr "پێچەوانەکردنەوەی ئاراستەی گێڕان"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1099
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1123
 msgid "The wheels that seek go backwards when turned forwards."
 msgstr "ئەو چەرخانەی دەگوازنەوە بۆ دواوە دەڕۆن کاتێک بۆ پێشەوە دەسووڕێنرێن."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1114
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1138
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:281
 msgid "Web remote control"
 msgstr "کۆنترۆڵی دووری وێب"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1115
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1139
 msgid ""
 "Lets a web browser control VLC. Set its password in the Advanced Options."
 msgstr ""
 "ڕێگە بە وێبگەڕێک دەدات VLC کۆنترۆڵ بکات. وشەی نهێنییەکەی لە هەڵبژاردە "
 "پێشکەوتووەکاندا دابنێ."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1133
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1157
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
 msgid "Video post-processing"
 msgstr "پرۆسێسکردنی دوایی ڤیدیۆ"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1134
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1158
 msgid ""
 "Improves the picture of poorly encoded videos, at the cost of processing "
 "power."
 msgstr ""
 "وێنەی ڤیدیۆ خراپ کۆدکراوەکان باشتر دەکات، لە بەرامبەر توانای پرۆسێسکردن."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1183
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1207
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
 msgid "Visualization size"
 msgstr "قەبارەی هێنانەپێش چاو"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1184
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1208
 msgid "The size the visualizations are drawn at."
 msgstr "ئەو قەبارەیەی هێنانەپێش چاوەکانی پێ دەکێشرێن."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1185
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1209
 msgid "Match window"
 msgstr "وەک پەنجەرە"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1226
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1250
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:120
 msgid "Seek precisely"
 msgstr "گواستنەوەی ورد"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1227
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1251
 msgid ""
 "Seek to the exact time asked, slower than seeking to the nearest key frame."
 msgstr ""
 "بۆ ڕێک ئەو کاتەی داواکراوە دەگوازرێتەوە، خاوترە لە گواستنەوە بۆ نزیکترین "
 "چوارچێوەی کلیلی."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1298
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1329
 #: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:689
 msgid "Lowest latency"
 msgstr "کەمترین دواکەوتن"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1316
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1347
 msgid "From the file only"
 msgstr "تەنها لە پەڕگەکەوە"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1318
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1349
 msgid "From the file and the internet"
 msgstr "لە پەڕگەکە و ئینتەرنێتەوە"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1335
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1366
 msgid "Box"
 msgstr "سندوق"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1395
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1426
 msgid "Above normal"
 msgstr "سەرووی ئاسایی"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1396
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1427
 msgid "Below normal"
 msgstr "خوار ئاسایی"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1396
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1427
 msgid "Idle"
 msgstr "بێکار"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1510
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1545
 msgid "Current screen"
 msgstr "شاشەی ئێستا"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1515
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1550
 msgid "Screen %1 (%2)"
 msgstr "شاشەی %1 (%2)"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1521
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1556
 msgid "Screen %1"
 msgstr "شاشەی %1"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1530
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1565
 msgid "Any title"
 msgstr "هەر ناونیشانێک"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1530
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1565
 msgid "Contains title"
 msgstr "ناونیشانی تێدایە"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1531
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1566
 msgid "Title with extra characters"
 msgstr "ناونیشان لەگەڵ پیتی زیادە"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1531
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1566
 msgid "Exact title match"
 msgstr "گونجانی ڕێکی ناونیشان"
 
@@ -23835,7 +23845,7 @@ msgid "Last.fm is unavailable in this VLC installation."
 msgstr "Last.fm لەم دامەزراندنەی VLC دا بەردەست نییە."
 
 #: modules/gui/qt/dialogs/preferences/config_model_effects.cpp:128
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:448
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:460
 msgid "VLC preferences are unavailable."
 msgstr "ویستراوەکانی VLC بەردەست نین."
 
@@ -24137,17 +24147,17 @@ msgstr "ناکۆکیی دیاریکردنی کلیلی گەرم"
 msgid "Navigation"
 msgstr "ڕێدۆزی"
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:355
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:410
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:428
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:367
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:422
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:440
 msgid "This shortcut is unavailable."
 msgstr "ئەم کورتبڕە بەردەست نییە."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:366
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:378
 msgid "This key combination cannot be used by VLC."
 msgstr "ئەم تێکەڵەی کلیلانە ناتوانرێت لە لایەن VLC ـەوە بەکاربهێنرێت."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:462
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:474
 msgid ""
 "The global hotkeys of \"%1\" changed outside this dialog. Cancel and reopen "
 "the shortcuts."
@@ -24155,7 +24165,7 @@ msgstr ""
 "کلیلە گەرمە گشتییەکانی \"%1\" لە دەرەوەی ئەم پەنجەرەیە گۆڕان. پاشگەزببەوە و "
 "کورتبڕەکان دووبارە بکەرەوە."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:463
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:475
 msgid ""
 "The hotkeys of \"%1\" changed outside this dialog. Cancel and reopen the "
 "shortcuts."
@@ -24163,11 +24173,11 @@ msgstr ""
 "کلیلە گەرمەکانی \"%1\" لە دەرەوەی ئەم پەنجەرەیە گۆڕان. پاشگەزببەوە و "
 "کورتبڕەکان دووبارە بکەرەوە."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:477
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:489
 msgid "A shortcut could not be changed. Changes were reverted in memory."
 msgstr "کورتبڕێک نەگۆڕدرا. گۆڕانکارییەکان لە یادگەدا گەڕێنرانەوە."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:485
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:497
 msgid ""
 "Could not save shortcuts (error %1). Changes were reverted in memory; verify "
 "the configuration file."
@@ -24255,12 +24265,12 @@ msgid "Right to left"
 msgstr "ڕاست بۆ چەپ"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:157
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:406
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:409
 msgid "Theme"
 msgstr "ڕووکار"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:181
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:406
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:409
 #: modules/gui/qt/qt.cpp:333
 msgid "Accent color"
 msgstr "ڕەنگی جەختکردنەوە"
@@ -24270,7 +24280,7 @@ msgid "VLC follows the system language."
 msgstr "VLC زمانی سیستەم پەیڕەو دەکات."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:20
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:522
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:526
 msgid "Second Language & Online Subtitles"
 msgstr "زمانی دووەم و ژێرنووسی سەرهێڵ"
 
@@ -24318,7 +24328,7 @@ msgstr ""
 "هەڵبژاردنە دەهێڵێتەوە تا چالاک بمێنێت."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:18
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:531
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:535
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:21
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:23
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:25
@@ -24331,7 +24341,7 @@ msgstr "دەستنیشانکردن"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:59
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:85
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:531
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:535
 msgid "Developer mode"
 msgstr "دۆخی گەشەپێدەر"
 
@@ -24391,55 +24401,55 @@ msgstr "ڕێکخستنەکانی کارایی"
 msgid "Recording, Casting & Streaming Out"
 msgstr "تۆمارکردن، کاست و ستریمی دەرەوە"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:271
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:274
 msgid "Search results"
 msgstr "ئەنجامەکانی گەڕان"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:272
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:275
 #: modules/gui/qt/dialogs/sout/convert.cpp:103
 #: modules/gui/qt/menus/qml/MainMenu.qml:166
 msgid "Settings"
 msgstr "ڕێکخستنەکان"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:407
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:410
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLanguageAction.qml:34
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLanguageAction.qml:47
 msgid "Interface language"
 msgstr "زمانی ڕووکار"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:416
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:423
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:419
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:426
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:52
 #: modules/gui/qt/menus/qml/MainMenu.qml:156
 msgid "Keyboard Shortcuts"
 msgstr "کورتبڕەکانی تەختەکلیل"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:417
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:428
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:420
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:431
 msgid "Edit Keyboard Shortcuts"
 msgstr "دەستکاریکردنی کورتبڕەکانی تەختەکلیل"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:418
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:433
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:421
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:436
 msgid "Reset all shortcuts"
 msgstr "گەڕاندنەوەی هەموو کورتبڕەکان"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:427
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:430
 msgid "Defaults"
 msgstr "بنەڕەتەکان"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:461
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:464
 msgid "Set a shortcut"
 msgstr "دانانی کورتبڕ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:469
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:472
 msgid "%1 more matching shortcut"
 msgid_plural "%1 more matching shortcuts"
 msgstr[0] "%1 کورتبڕی هاوشێوەی تر"
 msgstr[1] "%1 کورتبڕی هاوشێوەی تر"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:500
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:575
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:504
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:582
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:138
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:139
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:140
@@ -24457,81 +24467,81 @@ msgstr[1] "%1 کورتبڕی هاوشێوەی تر"
 msgid "Output"
 msgstr "دەرەنجام"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:510
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:514
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:93
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:109
 msgid "Submit played tracks to last.fm"
 msgstr "ناردنی تراکە لێدراوەکان بۆ last.fm"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:511
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:515
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:115
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:96
 msgid "Last.fm username"
 msgstr "ناوی بەکارهێنەری Last.fm"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:511
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:515
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:117
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:97
 msgid "Last.fm password"
 msgstr "وشەی نهێنیی Last.fm"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:512
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:516
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:119
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:98
 msgid "Last.fm submission URL"
 msgstr "URL ـی ناردنی Last.fm"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:522
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:526
 msgid "Dual subtitles"
 msgstr "ژێرنووسی دووانە"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:523
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:527
 msgid "Second language"
 msgstr "زمانی دووەم"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:523
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:527
 msgid "OpenSubtitles"
 msgstr "OpenSubtitles"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:585
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:592
 msgid "No matching settings"
 msgstr "هیچ ڕێکخستنێکی هاوشێوە نییە"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:586
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:593
 msgid "No settings are available for this category on this VLC installation"
 msgstr "هیچ ڕێکخستنێک بۆ ئەم پۆلە لەم دامەزراندنەی VLC دا بەردەست نییە"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:665
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:681
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:674
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:690
 msgid "Show installed add-ons only"
 msgstr "تەنها پێوەکراوە دامەزراوەکان پیشان بدە"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:697
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:706
 msgid "No advanced options on this page."
 msgstr "هیچ هەڵبژاردەیەکی پێشکەوتوو لەم پەڕەیەدا نییە."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:709
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:718
 msgid "Welcome setup"
 msgstr "ڕێکخستنی بەخێرهاتن"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:723
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:732
 msgid "All VLC options"
 msgstr "هەموو هەڵبژاردەکانی VLC"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:739
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:343
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:748
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:349
 msgid "Reset all settings"
 msgstr "گەڕاندنەوەی هەموو ڕێکخستنەکان"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:753
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:762
 msgid "Reset all settings?"
 msgstr "هەموو ڕێکخستنەکان بگەڕێنرێنەوە؟"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:754
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:763
 msgid "Every setting of VLC media player goes back to its default."
 msgstr "هەموو ڕێکخستنێکی لێدەری ڕەنگاڵەی VLC دەگەڕێتەوە بۆ بنەڕەتەکەی."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:808
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:817
 msgid "Discard changes"
 msgstr "فڕێدانی گۆڕانکارییەکان"
 
@@ -24661,16 +24671,16 @@ msgstr "وشەی نهێنیی هەژماری Last.fm ـەکەت."
 msgid "The address the played tracks are sent to."
 msgstr "ئەو ناونیشانەی تراکە لێدراوەکانی بۆ دەنێردرێن."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:210
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:216
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:273
 msgid "Nothing"
 msgstr "هیچ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:211
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:217
 msgid "Seek"
 msgstr "گواستنەوە"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:280
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:286
 msgid ""
 "Set a web remote password in the Advanced Options: the remote stays locked "
 "without one."
@@ -24678,55 +24688,55 @@ msgstr ""
 "وشەی نهێنیی کۆنترۆڵی دووری وێب لە هەڵبژاردە پێشکەوتووەکاندا دابنێ: بەبێ ئەو "
 "کۆنترۆڵی دوور داخراو دەمێنێتەوە."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:285
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:291
 msgid "Applies the next time VLC starts"
 msgstr "لە دەستپێکردنی داهاتووی VLC جێبەجێ دەبێت"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:297
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:303
 msgid "Choose a snapshot folder"
 msgstr "بوخچەیەکی وێنەگرتن هەڵبژێرە"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:298
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:304
 msgid "Choose a time-shift buffer folder"
 msgstr "بوخچەیەکی بافەری time-shift هەڵبژێرە"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:299
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:305
 msgid "Choose a recording folder"
 msgstr "بوخچەیەکی تۆمارکردن هەڵبژێرە"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:301
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:307
 msgid "Choose a folder"
 msgstr "بوخچەیەک هەڵبژێرە"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:305
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:311
 msgid "Choose a skin"
 msgstr "پێستێک هەڵبژێرە"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:306
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:312
 msgid "Skin files (*.vlt *.wsz *.xml)"
 msgstr "پەڕگەکانی پێست (*.vlt *.wsz *.xml)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:309
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:315
 msgid "Choose a log file"
 msgstr "پەڕگەیەکی تۆمار هەڵبژێرە"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:335
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:341
 msgid "Open configurations folder"
 msgstr "کردنەوەی بوخچەی ڕێکخستنەکان"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:336
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:342
 msgid "Shows the folder of the settings of VLC."
 msgstr "بوخچەی ڕێکخستنەکانی VLC پیشان دەدات."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:344
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:350
 msgid "Puts every setting of VLC back to its default."
 msgstr "هەموو ڕێکخستنێکی VLC دەگەڕێنێتەوە بۆ بنەڕەتەکەی."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:360
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:366
 msgid "Rescan plugins"
 msgstr "دووبارە پشکنینی پێوەکراوەکان"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:361
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:367
 msgid "Rescan"
 msgstr "دووبارە پشکنین"
 
@@ -24749,7 +24759,7 @@ msgid "Lower"
 msgstr "نزمتر"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:106
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:490
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:494
 msgid "Usual"
 msgstr "ئاسایی"
 
@@ -25264,12 +25274,12 @@ msgid "Preferred audio language"
 msgstr "زمانی دەنگی پەسەندکراو"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:197
-#: modules/gui/qt/player/qml/TracksMenu.qml:258
+#: modules/gui/qt/player/qml/TracksMenu.qml:263
 msgid "Audio delay"
 msgstr "دواخستنی دەنگ"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:199
-#: modules/gui/qt/player/qml/Player.qml:851
+#: modules/gui/qt/player/qml/Player.qml:880
 #: modules/gui/qt/player/qml/AudioContent.qml:429
 #: modules/visualization/visual/visual.c:120
 msgid "Visualizer"
@@ -25348,10 +25358,6 @@ msgstr "بارکردنی خۆکاری پەڕگەکانی ژێرنووس"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
 msgid "File name matching"
 msgstr "گونجاندنی ناوی پەڕگە"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
-msgid "System, sans-serif"
-msgstr "سیستەم، sans-serif"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:233
 msgid "Bold"
@@ -25445,10 +25451,6 @@ msgstr "ناڕوونیی سێبەر"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:263
 msgid "Monospace font"
 msgstr "فۆنتی یەکپانی"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:264
-msgid "System monospace"
-msgstr "یەکپانیی سیستەم"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:265
 msgid "Text alignment"
@@ -26434,11 +26436,11 @@ msgstr "بڵاوکردنەوە: "
 msgid "Schedule: "
 msgstr "خشتەی کات: "
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1198
+#: modules/gui/qt/maininterface/mainctx.cpp:1209
 msgid "Paste from clipboard"
 msgstr "لکاندن لە کلیپبۆردەوە"
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1199
+#: modules/gui/qt/maininterface/mainctx.cpp:1210
 msgid "Do you want to enqueue the following URLs into the play queue?"
 msgstr "دەتەوێت ئەم URLـانەی خوارەوە بخەیتە ڕیزی لێدانەوە؟"
 
@@ -26446,7 +26448,7 @@ msgstr "دەتەوێت ئەم URLـانەی خوارەوە بخەیتە ڕیزی
 #. * right to left (Arabic, Hebrew, Persian, Urdu...), else "LTR". Choosing
 #. * the language lays the interface out in that direction (the user can
 #. * change it under the language).
-#: modules/gui/qt/maininterface/mainctx.cpp:1341
+#: modules/gui/qt/maininterface/mainctx.cpp:1352
 msgctxt "layout direction"
 msgid "LTR"
 msgstr "RTL"
@@ -28091,7 +28093,7 @@ msgstr "ناونیشانەکان"
 
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:597
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:96
-#: modules/gui/qt/player/qml/TracksMenu.qml:330
+#: modules/gui/qt/player/qml/TracksMenu.qml:335
 #: modules/gui/qt/player/qml/QueueCard.qml:69
 #: modules/gui/qt/player/qml/controlbarcontrols/ChaptersButton.qml:33
 msgid "Chapters"
@@ -28601,62 +28603,70 @@ msgstr "ڕێکخستنە ئامادەکان:"
 msgid "Player"
 msgstr "لێدەر"
 
-#: modules/gui/qt/player/qml/Player.qml:1038
+#: modules/gui/qt/player/qml/Player.qml:1036
+msgid "Subtitles on the TV: %1"
+msgstr "ژێرنووس لە تەلەفزیۆن: %1"
+
+#: modules/gui/qt/player/qml/Player.qml:1036
+msgid "Subtitles off on the TV"
+msgstr "ژێرنووس لە تەلەفزیۆن کوژاوەتەوە"
+
+#: modules/gui/qt/player/qml/Player.qml:1146
 msgid "Not playing on %1"
 msgstr "لەسەر %1 لێنادرێت"
 
-#: modules/gui/qt/player/qml/Player.qml:1040
-#: modules/gui/qt/player/qml/Player.qml:1166
+#: modules/gui/qt/player/qml/Player.qml:1148
+#: modules/gui/qt/player/qml/Player.qml:1274
 msgid "Connecting to %1…"
 msgstr "پەیوەستبوون بە %1…"
 
-#: modules/gui/qt/player/qml/Player.qml:1042
+#: modules/gui/qt/player/qml/Player.qml:1150
 msgid "Playing on %1"
 msgstr "لەسەر %1 لێدەدرێت"
 
-#: modules/gui/qt/player/qml/Player.qml:1043
+#: modules/gui/qt/player/qml/Player.qml:1151
 msgid "The sound plays on %1"
 msgstr "دەنگەکە لەسەر %1 لێدەدرێت"
 
-#: modules/gui/qt/player/qml/Player.qml:1067
+#: modules/gui/qt/player/qml/Player.qml:1175
 msgid "Pause, seek and change the subtitles here: the TV follows."
 msgstr ""
 "لێرە ڕابگرە، بگوازەرەوە و ژێرنووسەکان بگۆڕە: تەلەفزیۆنەکە پەیڕەوی دەکات."
 
-#: modules/gui/qt/player/qml/Player.qml:1084
+#: modules/gui/qt/player/qml/Player.qml:1192
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the media."
 msgstr ""
 "Windows Firewall ڕێگە بە %1 نادات پەیوەست بێت بەم کۆمپیوتەرەوە بۆ خوێندنەوەی "
 "ڕەنگاڵەکە."
 
-#: modules/gui/qt/player/qml/Player.qml:1096
+#: modules/gui/qt/player/qml/Player.qml:1204
 msgid "Waiting for Windows…"
 msgstr "چاوەڕێی Windows…"
 
-#: modules/gui/qt/player/qml/Player.qml:1097
+#: modules/gui/qt/player/qml/Player.qml:1205
 msgid "Allow on public networks too"
 msgstr "لەسەر ڕایەڵە گشتییەکانیش ڕێگەبدە"
 
-#: modules/gui/qt/player/qml/Player.qml:1098
+#: modules/gui/qt/player/qml/Player.qml:1206
 msgid "Allow on private networks"
 msgstr "لەسەر ڕایەڵە تایبەتەکان ڕێگەبدە"
 
-#: modules/gui/qt/player/qml/Player.qml:1110
+#: modules/gui/qt/player/qml/Player.qml:1218
 msgid "Try again"
 msgstr "دووبارە هەوڵبدەرەوە"
 
-#: modules/gui/qt/player/qml/Player.qml:1115
-#: modules/gui/qt/player/qml/Player.qml:1125
+#: modules/gui/qt/player/qml/Player.qml:1223
+#: modules/gui/qt/player/qml/Player.qml:1233
 msgid "Play here"
 msgstr "لێرە لێبدە"
 
-#: modules/gui/qt/player/qml/Player.qml:1125
-#: modules/gui/qt/player/qml/Player.qml:1176
+#: modules/gui/qt/player/qml/Player.qml:1233
+#: modules/gui/qt/player/qml/Player.qml:1284
 msgid "Stop casting"
 msgstr "وەستاندنی کاست"
 
-#: modules/gui/qt/player/qml/Player.qml:1167
+#: modules/gui/qt/player/qml/Player.qml:1275
 msgid "Also on %1"
 msgstr "هەروەها لەسەر %1"
 
@@ -28680,57 +28690,57 @@ msgstr "شریتی سەرەوەی لێدەر"
 msgid "Show %1 in the library"
 msgstr "پیشاندانی %1 لە گەنجینەدا"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:172
-#: modules/gui/qt/player/qml/TracksMenu.qml:269
+#: modules/gui/qt/player/qml/TracksMenu.qml:177
+#: modules/gui/qt/player/qml/TracksMenu.qml:274
 msgid "Embedded Tracks"
 msgstr "تراکە نێوخراوەکان"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:195
+#: modules/gui/qt/player/qml/TracksMenu.qml:200
 msgid "No audio tracks in this media"
 msgstr "هیچ تراکێکی دەنگ لەم ڕەنگاڵەیەدا نییە"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:212
+#: modules/gui/qt/player/qml/TracksMenu.qml:217
 msgid "Output Device"
 msgstr "ئامێری دەرچوون"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:221
+#: modules/gui/qt/player/qml/TracksMenu.qml:226
 msgid "Refresh output devices"
 msgstr "نوێکردنەوەی ئامێرەکانی دەرچوون"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:244
+#: modules/gui/qt/player/qml/TracksMenu.qml:249
 msgid "No output device available"
 msgstr "هیچ ئامێرێکی دەرچوون بەردەست نییە"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:293
+#: modules/gui/qt/player/qml/TracksMenu.qml:298
 msgid "No video tracks in this media"
 msgstr "هیچ تراکێکی ڤیدیۆ لەم ڕەنگاڵەیەدا نییە"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:311
+#: modules/gui/qt/player/qml/TracksMenu.qml:316
 msgid "Current: %1×"
 msgstr "ئێستا: %1×"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:328
+#: modules/gui/qt/player/qml/TracksMenu.qml:333
 msgid "Speed cannot be changed for this media"
 msgstr "خێرایی بۆ ئەم ڕەنگاڵەیە ناگۆڕدرێت"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:333
+#: modules/gui/qt/player/qml/TracksMenu.qml:338
 #: modules/gui/qt/player/qml/QueueCard.qml:220
 msgid "No chapters in this media"
 msgstr "هیچ چاپتەرێک لەم ڕەنگاڵەیەدا نییە"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:349
+#: modules/gui/qt/player/qml/TracksMenu.qml:354
 msgid "Manage bookmarks…"
 msgstr "بەڕێوەبردنی نیشانەکان…"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:355
+#: modules/gui/qt/player/qml/TracksMenu.qml:360
 msgid "Bookmarks require the media library"
 msgstr "نیشانەکان پێویستیان بە گەنجینەی ڕەنگاڵەیە"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:384
+#: modules/gui/qt/player/qml/TracksMenu.qml:389
 msgid "Show Preferences"
 msgstr "پیشاندانی ویستراوەکان"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:530
+#: modules/gui/qt/player/qml/TracksMenu.qml:535
 #: modules/gui/qt/player/qml/TracksPageAudio.qml:37
 #: modules/gui/qt/player/qml/TracksPageSubtitle.qml:37
 #: modules/gui/qt/player/qml/SubtitleSyncTimeline.qml:42
@@ -29131,164 +29141,164 @@ msgid "Play a local episode to save its track and timing choices."
 msgstr ""
 "ئەڵقەیەکی ناوخۆیی لێبدە بۆ پاشەکەوتکردنی هەڵبژاردەکانی تراک و کاتبەندییەکەی."
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:67
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:71
 msgid "In the video"
 msgstr "لە ناو ڤیدیۆکەدا"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:68
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:72
 msgid "Next to the video · %1"
 msgstr "لە تەنیشت ڤیدیۆکەوە · %1"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:68
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:72
 msgid "Next to the video"
 msgstr "لە تەنیشت ڤیدیۆکەوە"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:69
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:73
 msgid "Downloaded from %1"
 msgstr "داگیراو لە %1"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:69
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:73
 msgid "Downloaded"
 msgstr "داگیراو"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:70
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:74
 msgid "Opened · %1"
 msgstr "کراوە · %1"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:70
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:74
 msgid "Opened file"
 msgstr "پەڕگەی کراوە"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:76
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:80
 msgid "%1k downloads"
 msgstr "%1k داگرتن"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:131
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:135
 msgid "Unknown language"
 msgstr "زمانی نەزانراو"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:169
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:173
 msgid "Foreign parts only"
 msgstr "تەنها بەشە بیانییەکان"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:233
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:237
 msgid "Identifying the video…"
 msgstr "ناسینەوەی ڤیدیۆکە…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:236
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:240
 msgid "Searching %1…"
 msgstr "گەڕان لە %1…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:236
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:240
 msgid "Searching subtitles online…"
 msgstr "گەڕان بۆ ژێرنووس لە سەرهێڵ…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:240
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:244
 msgid "Downloading…"
 msgstr "داگرتن…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:242
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:246
 msgid "%1 · %2 found"
 msgstr "%1 · %2 دۆزرایەوە"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:243
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:247
 msgid "%1 found for this file"
 msgstr "%1 بۆ ئەم پەڕگەیە دۆزرایەوە"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:247
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:251
 msgid "Subtitles of this video"
 msgstr "ژێرنووسەکانی ئەم ڤیدیۆیە"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:266
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:270
 msgid "The video is another one: search by its title"
 msgstr "ڤیدیۆکە یەکێکی ترە: بە ناونیشانەکەی بگەڕێ"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:277
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:281
 msgid "Search subtitles online"
 msgstr "گەڕان بۆ ژێرنووس لە سەرهێڵ"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:278
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:282
 msgid "Search subtitles online again"
 msgstr "دووبارە گەڕان بۆ ژێرنووس لە سەرهێڵ"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:288
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:292
 msgid "Add subtitles to the library"
 msgstr "زیادکردنی ژێرنووس بۆ گەنجینە"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:289
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:293
 msgid "Library association needs a local media file and media library."
 msgstr ""
 "پەیوەستکردن بە گەنجینەوە پێویستی بە پەڕگەیەکی ڕەنگاڵەی ناوخۆیی و گەنجینەی "
 "ڕەنگاڵە هەیە."
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:299
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:303
 msgid "Load a subtitle file for playback"
 msgstr "بارکردنی پەڕگەیەکی ژێرنووس بۆ لێدان"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:318
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:322
 msgid "Title of the movie or series"
 msgstr "ناونیشانی فیلم یان زنجیرە"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:339
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:343
 msgid "Searching…"
 msgstr "گەڕان…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:382
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:386
 msgid "Second"
 msgstr "دووەم"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:417
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:421
 msgid "For this file"
 msgstr "بۆ ئەم پەڕگەیە"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:437
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:441
 msgid "Looking for subtitles…"
 msgstr "گەڕان بۆ ژێرنووس…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:438
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:442
 msgid "No subtitles yet"
 msgstr "هێشتا هیچ ژێرنووسێک نییە"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:480
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:484
 msgid "Position and size"
 msgstr "شوێن و قەبارە"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:488
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:492
 msgctxt "subtitles"
 msgid "Position"
 msgstr "شوێن"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:491
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:505
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:495
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:509
 msgid "%1%"
 msgstr "%1٪"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:492
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:496
 msgid "Move the subtitles down"
 msgstr "ژێرنووس بۆ خوارەوە ببە"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:493
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:497
 msgid "Move the subtitles up"
 msgstr "ژێرنووس بۆ سەرەوە ببە"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:504
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:508
 msgctxt "subtitles"
 msgid "Size"
 msgstr "قەبارە"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:506
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:510
 msgid "Smaller subtitles"
 msgstr "ژێرنووسی بچووکتر"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:507
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:511
 msgid "Larger subtitles"
 msgstr "ژێرنووسی گەورەتر"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:737
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:743
 msgid "HI"
 msgstr "HI"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:742
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:748
 msgid "For the hearing impaired"
 msgstr "بۆ کەم بیستەکان"
 
@@ -32587,7 +32597,7 @@ msgid "Custom SAT>IP channel list URL"
 msgstr "URL ـی لیستی تایبەتی کەناڵەکانی SAT>IP"
 
 #: modules/services_discovery/upnp.cpp:65
-#: modules/stream_out/chromecast/cast.cpp:225
+#: modules/stream_out/chromecast/cast.cpp:228
 msgid "HTTP port"
 msgstr "دەرگای HTTP"
 
@@ -33426,7 +33436,7 @@ msgstr "بنەڕەتییەکان"
 msgid "Chromaprint stream output"
 msgstr "دەرچە دیاریکراوەکان:"
 
-#: modules/stream_out/chromecast/cast.cpp:226
+#: modules/stream_out/chromecast/cast.cpp:229
 msgid ""
 "This sets the HTTP port of the local server used to stream the media to the "
 "Chromecast."
@@ -33434,38 +33444,38 @@ msgstr ""
 "ئەمە دەرگای HTTP ـی ڕاژەکاری ناوخۆیی دادەنێت کە بۆ ستریمکردنی ڕەنگاڵە بۆ "
 "Chromecast بەکاردێت."
 
-#: modules/stream_out/chromecast/cast.cpp:230
+#: modules/stream_out/chromecast/cast.cpp:233
 msgid "IP Address of the Chromecast."
 msgstr "ناونیشانی IP ـی Chromecast."
 
-#: modules/stream_out/chromecast/cast.cpp:231
+#: modules/stream_out/chromecast/cast.cpp:234
 msgid "Chromecast port"
 msgstr "دەرگای Chromecast"
 
-#: modules/stream_out/chromecast/cast.cpp:232
+#: modules/stream_out/chromecast/cast.cpp:235
 msgid "The port used to talk to the Chromecast."
 msgstr "ئەو دەرگایەی بۆ قسەکردن لەگەڵ Chromecast بەکاردێت."
 
-#: modules/stream_out/chromecast/cast.cpp:242
+#: modules/stream_out/chromecast/cast.cpp:245
 msgid "Chromecast"
 msgstr "Chromecast"
 
-#: modules/stream_out/chromecast/cast.cpp:243
+#: modules/stream_out/chromecast/cast.cpp:246
 msgid "Chromecast stream output"
 msgstr "دەرچوونی ستریمی Chromecast"
 
-#: modules/stream_out/chromecast/cast.cpp:1162
+#: modules/stream_out/chromecast/cast.cpp:1189
 #: modules/stream_out/dlna/dlna.cpp:690
 msgid "OK, don't warn me again"
 msgstr "باشە، دووبارە ئاگادارم مەکەرەوە"
 
-#: modules/stream_out/chromecast/cast.cpp:1163
+#: modules/stream_out/chromecast/cast.cpp:1190
 #: modules/stream_out/dlna/dlna.cpp:691
 #: modules/stream_out/renderer_common.hpp:35
 msgid "Performance warning"
 msgstr "ئاگاداریی کارایی"
 
-#: modules/stream_out/chromecast/cast.cpp:1164
+#: modules/stream_out/chromecast/cast.cpp:1191
 #: modules/stream_out/dlna/dlna.cpp:692
 msgid ""
 "Casting this video requires conversion. This conversion can use all the "

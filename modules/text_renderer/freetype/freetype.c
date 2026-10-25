@@ -725,6 +725,48 @@ static void UpdateDefaultLiveStyles( filter_t *p_filter )
     p_style->i_background_color = var_InheritInteger( p_filter, "freetype-background-color" );
 
     p_sys->i_outline_thickness = var_InheritInteger( p_filter, "freetype-outline-thickness" );
+
+    /* the rest of the style chosen, as it changes (the renderer of a video
+     * converted for a TV lasts the whole film): the face is chosen again
+     * for another font or bold */
+    p_style->i_font_alpha = var_InheritInteger( p_filter, "freetype-opacity" );
+    p_style->i_outline_alpha = var_InheritInteger( p_filter, "freetype-outline-opacity" );
+    p_style->i_outline_color = var_InheritInteger( p_filter, "freetype-outline-color" );
+    p_style->i_shadow_alpha = var_InheritInteger( p_filter, "freetype-shadow-opacity" );
+    p_style->i_shadow_color = var_InheritInteger( p_filter, "freetype-shadow-color" );
+#ifdef HAVE_GET_FONT_BY_FAMILY_NAME
+    char *font = var_InheritString( p_filter, "freetype-font" );
+    if( font == NULL || *font == '\0' )
+    {
+        free( font );
+        font = strdup( DEFAULT_FAMILY );
+    }
+    if( font != NULL && p_style->psz_fontname != NULL && strcmp( font, p_style->psz_fontname ) )
+    {
+        free( p_style->psz_fontname );
+        p_style->psz_fontname = font;
+        p_sys->p_faceid = NULL;
+    }
+    else
+        free( font );
+#endif
+    const bool bold = var_InheritBool( p_filter, "freetype-bold" );
+    if( bold != !!( p_sys->p_forced_style->i_style_flags & STYLE_BOLD ) )
+    {
+        if( bold )
+        {
+            p_sys->p_forced_style->i_style_flags |= STYLE_BOLD;
+            p_sys->p_forced_style->i_features |= STYLE_HAS_FLAGS;
+            p_style->i_style_flags |= STYLE_BOLD;
+        }
+        else
+        {
+            p_sys->p_forced_style->i_style_flags &= ~STYLE_BOLD;
+            p_style->i_style_flags &= ~STYLE_BOLD;
+        }
+        p_style->i_features |= STYLE_HAS_FLAGS;
+        p_sys->p_faceid = NULL;
+    }
 }
 
 static void FillDefaultStyles( filter_t *p_filter )

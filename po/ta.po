@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-24 18:08+0000\n"
+"POT-Creation-Date: 2026-10-25 09:28+0000\n"
 "PO-Revision-Date: 2017-02-06 13:43+0000\n"
 "Last-Translator: Christoph Miebach <christoph.miebach@web.de>\n"
 "Language-Team: Tamil (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -63,7 +63,7 @@ msgstr "இடைமுகப்பு"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:26
 #: modules/gui/qt/menus/menus.cpp:860
 #: modules/gui/qt/player/qml/TracksMenu.qml:37
-#: modules/gui/qt/player/qml/TracksListPage.qml:90 modules/gui/qt/qt.cpp:350
+#: modules/gui/qt/player/qml/TracksListPage.qml:90 modules/gui/qt/qt.cpp:351
 #: modules/stream_out/es.c:388 modules/stream_out/transcode/transcode.c:190
 #: share/lua/http/dialogs/create_stream.html:150
 msgid "Audio"
@@ -85,7 +85,7 @@ msgstr "ஒலி"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:78
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:25
 #: modules/gui/qt/menus/menus.cpp:856
-#: modules/gui/qt/player/qml/TracksMenu.qml:36 modules/gui/qt/qt.cpp:350
+#: modules/gui/qt/player/qml/TracksMenu.qml:36 modules/gui/qt/qt.cpp:351
 #: modules/services_discovery/upnp.cpp:70 modules/stream_out/es.c:395
 #: modules/stream_out/transcode/transcode.c:163
 #: share/lua/http/dialogs/create_stream.html:147
@@ -117,7 +117,7 @@ msgstr "இயக்க வரிசை"
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:305
 #: modules/gui/qt/dialogs/extended/extended.cpp:110
 #: modules/gui/qt/dialogs/extended/qml/VideoEffectsPanel.qml:82
-#: modules/gui/qt/qt.cpp:337
+#: modules/gui/qt/qt.cpp:338
 msgid "Advanced"
 msgstr "மேம்பட்ட"
 
@@ -125,7 +125,7 @@ msgstr "மேம்பட்ட"
 msgid "Subtitles / OSD"
 msgstr "துணைத் தலைப்புகள் / திரையில் தோன்றும் காட்சி"
 
-#: include/vlc_config_cat.h:46 modules/control/hotkeys.c:1314
+#: include/vlc_config_cat.h:46 modules/control/hotkeys.c:1316
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:1301
 msgid "Hotkeys"
 msgstr "குறுக்குவிசைகள்"
@@ -135,23 +135,23 @@ msgid "Media Library"
 msgstr "ஊடகநூலகம்"
 
 #: include/vlc_config_cat.h:53 modules/gui/qt/dialogs/plugins/plugins.cpp:360
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:705
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:720
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:53
 msgid "Interface Settings"
 msgstr "முகப்பு அமைப்புகள்"
 
 #: include/vlc_config_cat.h:54
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:453
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:468
 msgid "Audio Settings"
 msgstr "ஒலி அமைப்புகள்"
 
 #: include/vlc_config_cat.h:55
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:391
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:406
 msgid "Video Settings"
 msgstr "நிகழ்பட அமைப்புகள்"
 
 #: include/vlc_config_cat.h:56
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:928
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:943
 msgid "Subtitle & On Screen Display Settings"
 msgstr "வசனங்கள் & திரைக் காட்சி அமைப்புகள்"
 
@@ -164,7 +164,7 @@ msgid "Hotkeys Settings"
 msgstr ""
 
 #: include/vlc_config_cat.h:59
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1019
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1034
 msgid "Media Library Settings"
 msgstr "ஊடக நூலக அமைப்புகள்"
 
@@ -479,28 +479,28 @@ msgid "Disable"
 msgstr "செயலிளக்க செய்"
 
 #: src/audio_output/output.c:331
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1145
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1150
 #: modules/visualization/visual/visual.c:140
 msgid "Spectrometer"
 msgstr "ஸ்பெக்ட்ரோமீட்டர்"
 
 #: src/audio_output/output.c:333
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1146
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1151
 msgid "Scope"
 msgstr "நோக்கம்"
 
 #: src/audio_output/output.c:335
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1146
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1151
 msgid "Spectrum"
 msgstr "ஸ்பெக்ட்ரம்"
 
 #: src/audio_output/output.c:337
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1147
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1152
 msgid "Waveform"
 msgstr "அலைவடிவம்"
 
 #: src/audio_output/output.c:339
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1147
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1152
 msgid "VU meter"
 msgstr "VU அளவி"
 
@@ -534,7 +534,7 @@ msgstr "டால்பி சரவுண்ட்"
 
 #: src/audio_output/output.c:499 src/audio_output/output.c:615
 #: src/libvlc-module.c:207 src/libvlc-module.c:218 src/libvlc-module.c:403
-#: src/video_output/vout_intf.c:165 modules/access/alsa.c:39
+#: src/video_output/vout_intf.c:167 modules/access/alsa.c:39
 #: modules/access/oss.c:59 modules/access/v4l2/v4l2.c:268
 #: modules/audio_output/alsa.c:1276 modules/codec/twolame.c:70
 msgid "Stereo"
@@ -632,9 +632,9 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:122
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:143
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:148
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1165
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1470
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:402
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1170
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1475
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:417
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:144
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:170
@@ -646,7 +646,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:232
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:259
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
-#: modules/gui/qt/qt.cpp:368
+#: modules/gui/qt/qt.cpp:369
 msgid "Automatic"
 msgstr "தானாக"
 
@@ -1637,7 +1637,7 @@ msgstr ""
 
 #: src/libvlc-module.c:198 src/libvlc-module.c:386 src/libvlc-module.c:403
 #: src/libvlc-module.c:552 src/libvlc-module.c:611 src/libvlc-module.c:1200
-#: src/video_output/vout_intf.c:164 modules/audio_output/kai.c:110
+#: src/video_output/vout_intf.c:166 modules/audio_output/kai.c:110
 #: modules/codec/subsdec.c:166 modules/codec/x264.c:429
 #: modules/demux/adaptive/adaptive.cpp:121 modules/demux/mpeg/ts.c:134
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:63
@@ -1661,8 +1661,8 @@ msgstr "இயங்கச் செய்"
 #: modules/access/dtv/access.c:100 modules/access/v4l2/v4l2.c:137
 #: modules/access/v4l2/v4l2.c:201
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:136
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1045
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1525
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1050
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1530
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:181
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
@@ -1734,7 +1734,7 @@ msgstr ""
 "ஒலியின் சுருதியைப் பாதிக்காமல் குறைந்த அல்லது அதிக வேகத்தில் ஒலியை இயக்க இது உதவுகிறது"
 
 #: src/libvlc-module.c:259 src/libvlc-module.c:1248
-#: src/video_output/vout_intf.c:152 modules/access/dshow/dshow.cpp:2020
+#: src/video_output/vout_intf.c:154 modules/access/dshow/dshow.cpp:2020
 #: modules/access/dtv/access.c:115 modules/access/dtv/access.c:149
 #: modules/access/v4l2/v4l2.c:163 modules/audio_output/alsa.c:1285
 #: modules/codec/avcodec/avcodec.c:49 modules/codec/avcodec/avcodec.c:53
@@ -1747,7 +1747,7 @@ msgstr ""
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:230
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:122
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:308
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1328
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1333
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:195
 #: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:42
 #: modules/gui/qt/menus/qml/MainMenu.qml:118
@@ -1962,7 +1962,7 @@ msgstr ""
 msgid "Change the 360 video projection mode."
 msgstr ""
 
-#: src/libvlc-module.c:344 src/video_output/vout_intf.c:314
+#: src/libvlc-module.c:344 src/video_output/vout_intf.c:316
 #: modules/gui/qt/util/csdmenu.cpp:125
 msgid "Always on top"
 msgstr "எப்போதும் மேலே"
@@ -2073,15 +2073,15 @@ msgstr ""
 msgid "Set the Video Stereo 3D mode."
 msgstr ""
 
-#: src/libvlc-module.c:403 src/video_output/vout_intf.c:166
+#: src/libvlc-module.c:403 src/video_output/vout_intf.c:168
 msgid "Left Only"
 msgstr "இடது மட்டும்"
 
-#: src/libvlc-module.c:403 src/video_output/vout_intf.c:167
+#: src/libvlc-module.c:403 src/video_output/vout_intf.c:169
 msgid "Right Only"
 msgstr "வலது மட்டும்"
 
-#: src/libvlc-module.c:404 src/video_output/vout_intf.c:168
+#: src/libvlc-module.c:404 src/video_output/vout_intf.c:170
 msgid "Side-by-Side"
 msgstr "பக்கவாட்டில்"
 
@@ -2099,7 +2099,7 @@ msgstr "நிகழ்படம் இயங்கும்போது தி�
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:124
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
-#: modules/gui/qt/qt.cpp:343 modules/gui/qt/qt.cpp:350
+#: modules/gui/qt/qt.cpp:344 modules/gui/qt/qt.cpp:351
 msgid "Never"
 msgstr "ஒருபோதும் இல்லை"
 
@@ -2113,7 +2113,7 @@ msgstr "முழுத்திரையில் இருக்கும்�
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:124
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:323
-#: modules/gui/qt/qt.cpp:343 modules/keystore/keychain.m:55
+#: modules/gui/qt/qt.cpp:344 modules/keystore/keychain.m:55
 msgid "Always"
 msgstr "எப்போதும்"
 
@@ -2365,7 +2365,7 @@ msgstr ""
 
 #: src/libvlc-module.c:552 modules/access/rist.h:85
 #: modules/audio_output/mmdevice.c:1621
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1145
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1150
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:23
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:141
@@ -2478,8 +2478,8 @@ msgstr ""
 msgid "Monotonic"
 msgstr ""
 
-#: src/libvlc-module.c:619 src/video_output/vout_intf.c:117
-#: src/video_output/vout_intf.c:135 modules/access/dshow/dshow.cpp:90
+#: src/libvlc-module.c:619 src/video_output/vout_intf.c:119
+#: src/video_output/vout_intf.c:137 modules/access/dshow/dshow.cpp:90
 #: modules/access/dshow/dshow.cpp:97 modules/access/dshow/dshow.cpp:2018
 #: modules/audio_output/alsa.c:1153 modules/audio_output/mmdevice.c:1435
 #: modules/audio_output/mmdevice.c:1583 modules/audio_output/winstore.c:695
@@ -3954,7 +3954,7 @@ msgstr ""
 "சுட்டிச் சக்கரத்தின் கிடைமட்ட (இடது/வலது) அச்சு ஒலியளவை அல்லது நிலையைக் "
 "கட்டுப்படுத்தலாம், அல்லது புறக்கணிக்கப்படலாம்."
 
-#: src/libvlc-module.c:1362 src/video_output/vout_intf.c:325
+#: src/libvlc-module.c:1362 src/video_output/vout_intf.c:327
 #: modules/gui/macosx/menus/VLCMainMenu.m:437
 #: modules/gui/macosx/menus/VLCMainMenu.m:529
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:176
@@ -4090,7 +4090,7 @@ msgstr ""
 #: modules/gui/macosx/menus/VLCMainMenu.m:516
 #: modules/gui/macosx/windows/controlsbar/VLCMainWindowControlsBar.m:104
 #: modules/gui/macosx/windows/controlsbar/VLCMainWindowControlsBar.m:115
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1054
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1059
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:518 modules/gui/qt/menus/menus.cpp:823
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:34
 #: modules/gui/qt/player/qml/controlbarcontrols/StopButton.qml:29
@@ -4465,22 +4465,22 @@ msgstr "ஒலி தாமதமாக கீழே"
 msgid "Select the key to decrease the audio delay."
 msgstr "ஆடியோ தாமதம் குறைக்க விசையை தேர்ந்தெடுக்கவும்."
 
-#: src/libvlc-module.c:1485 src/video_output/vout_intf.c:106
+#: src/libvlc-module.c:1485 src/video_output/vout_intf.c:108
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:129
 msgid "1:4 Quarter"
 msgstr "1:4 கால் பங்கு"
 
-#: src/libvlc-module.c:1486 src/video_output/vout_intf.c:107
+#: src/libvlc-module.c:1486 src/video_output/vout_intf.c:109
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:129
 msgid "1:2 Half"
 msgstr "1:2 பாதி"
 
-#: src/libvlc-module.c:1487 src/video_output/vout_intf.c:108
+#: src/libvlc-module.c:1487 src/video_output/vout_intf.c:110
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:130
 msgid "1:1 Original"
 msgstr "1:1 அசல்"
 
-#: src/libvlc-module.c:1488 src/video_output/vout_intf.c:109
+#: src/libvlc-module.c:1488 src/video_output/vout_intf.c:111
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:130
 msgid "2:1 Double"
 msgstr "2:1 இரட்டிப்பு"
@@ -4754,7 +4754,7 @@ msgid "Toggle random play queue playback"
 msgstr "இயக்க வரிசையின் சீரற்ற இயக்கத்தை இயக்கு/முடக்கு"
 
 #: src/libvlc-module.c:1562 src/libvlc-module.c:1563
-#: src/video_output/vout_intf.c:231 modules/gui/macosx/menus/VLCMainMenu.m:484
+#: src/video_output/vout_intf.c:233 modules/gui/macosx/menus/VLCMainMenu.m:484
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:148
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:80
 #: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:31
@@ -4857,7 +4857,7 @@ msgstr "கிடைக்கும் ஒலிச் சாதனங்கள�
 msgid "core program"
 msgstr ""
 
-#: src/libvlc-module.c:1748 src/video_output/vout_intf.c:329
+#: src/libvlc-module.c:1748 src/video_output/vout_intf.c:331
 #: modules/gui/macosx/menus/VLCMainMenu.m:439
 #: modules/gui/macosx/menus/VLCMainMenu.m:530
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:44
@@ -7915,31 +7915,31 @@ msgstr ""
 msgid "Original audio"
 msgstr ""
 
-#: src/video_output/vout_intf.c:144
+#: src/video_output/vout_intf.c:146
 msgid "Fill Window"
 msgstr "சாளரத்தை நிரப்பு"
 
-#: src/video_output/vout_intf.c:153
+#: src/video_output/vout_intf.c:155
 msgid "Inside Window"
 msgstr "சாளரத்துக்குள்"
 
-#: src/video_output/vout_intf.c:154
+#: src/video_output/vout_intf.c:156
 msgid "Outside Window"
 msgstr "சாளரத்துக்கு வெளியே"
 
-#: src/video_output/vout_intf.c:155
+#: src/video_output/vout_intf.c:157
 msgid "Window Width"
 msgstr "சாளர அகலம்"
 
-#: src/video_output/vout_intf.c:156
+#: src/video_output/vout_intf.c:158
 msgid "Window Height"
 msgstr "சாளர உயரம்"
 
-#: src/video_output/vout_intf.c:240
+#: src/video_output/vout_intf.c:242
 msgid "video-stereo-output"
 msgstr "ஸ்டீரியோ நிகழ்பட வெளியீடு"
 
-#: src/video_output/vout_intf.c:258 modules/gui/macosx/menus/VLCMainMenu.m:444
+#: src/video_output/vout_intf.c:260 modules/gui/macosx/menus/VLCMainMenu.m:444
 #: modules/gui/macosx/menus/VLCMainMenu.m:445
 #: modules/gui/macosx/menus/VLCMainMenu.m:2027
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:268
@@ -7949,7 +7949,7 @@ msgstr "ஸ்டீரியோ நிகழ்பட வெளியீடு"
 msgid "Crop"
 msgstr "வெட்டு"
 
-#: src/video_output/vout_intf.c:281 modules/access/decklink.cpp:108
+#: src/video_output/vout_intf.c:283 modules/access/decklink.cpp:108
 #: modules/access/linsys/linsys_hdsdi.c:79
 #: modules/access/linsys/linsys_sdi.c:75 modules/demux/rawvid.c:57
 #: modules/gui/macosx/menus/VLCMainMenu.m:442
@@ -7960,7 +7960,7 @@ msgstr "வெட்டு"
 msgid "Aspect ratio"
 msgstr "தோற்றவிகிதம்"
 
-#: src/video_output/vout_intf.c:301
+#: src/video_output/vout_intf.c:303
 msgid "Fit Mode"
 msgstr "பொருத்தும் முறை"
 
@@ -9560,7 +9560,7 @@ msgstr ""
 #: modules/access/idummy.c:40 modules/access_output/dummy.c:43
 #: modules/audio_output/adummy.c:36 modules/codec/ddummy.c:45
 #: modules/codec/edummy.c:38 modules/control/dummy.c:39
-#: modules/gui/qt/qt.cpp:380 modules/text_renderer/tdummy.c:34
+#: modules/gui/qt/qt.cpp:381 modules/text_renderer/tdummy.c:34
 #: modules/video_output/vdummy.c:48
 msgid "Dummy"
 msgstr "போலி"
@@ -11074,7 +11074,7 @@ msgstr ""
 #: modules/codec/x264.c:424
 #: modules/gui/macosx/windows/addons/VLCAddonsWindowController.m:100
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:360
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1045
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1050
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:76
 #: modules/gui/qt/dialogs/sout/convert.cpp:164
 #: modules/gui/qt/medialibrary/qml/VideoDisplay.qml:49
@@ -12800,8 +12800,8 @@ msgstr ""
 
 #: modules/codec/aom.c:71
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:137
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1294
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1390
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1299
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1395
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:126
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
@@ -15623,9 +15623,9 @@ msgstr ""
 #: modules/codec/x264.c:419 modules/codec/x264.c:424
 #: modules/gui/macosx/menus/VLCMainMenu.m:395
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:776
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1293
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1390
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:676
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1298
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1395
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:691
 #: modules/misc/gnutls.c:756 modules/text_renderer/freetype/freetype.c:118
 msgid "Normal"
 msgstr "வழக்கமான"
@@ -16135,7 +16135,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/systray/systray.cpp:78
 #: modules/gui/qt/dialogs/systray/systray.cpp:81
 #: modules/gui/qt/dialogs/systray/systray.cpp:136
-#: modules/gui/qt/dialogs/systray/systray.cpp:151 modules/gui/qt/qt.cpp:1422
+#: modules/gui/qt/dialogs/systray/systray.cpp:151 modules/gui/qt/qt.cpp:1425
 #: modules/lua/libs/httpd.c:80 modules/video_output/wayland/xdg-shell.c:732
 #: modules/video_output/xcb/window.c:959
 msgid "VLC media player"
@@ -16222,7 +16222,7 @@ msgstr "வசன நிலை: வழக்கமானது"
 msgid "Subtitle position: %+d%%"
 msgstr "வசன நிலை: %+d%%"
 
-#: modules/control/hotkeys.c:1315
+#: modules/control/hotkeys.c:1317
 msgid "Hotkeys management interface"
 msgstr "முக்கியவிசைகள் கட்டுப்பாடு முகப்பு"
 
@@ -16353,7 +16353,7 @@ msgid "Connect using HTTP access instead of custom HTTP code"
 msgstr ""
 
 #: modules/demux/adaptive/adaptive.cpp:84
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:675
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:690
 msgid "Low latency"
 msgstr "குறைந்த தாமதம்"
 
@@ -18140,11 +18140,11 @@ msgstr ""
 
 #: modules/gui/macosx/main/macosx.m:89
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:453
-#: modules/gui/qt/qt.cpp:184
+#: modules/gui/qt/qt.cpp:185
 msgid "Resize interface to the native video size"
 msgstr "இடைமுகத்தை நிகழ்படத்தின் இயல் அளவுக்கு மாற்று"
 
-#: modules/gui/macosx/main/macosx.m:90 modules/gui/qt/qt.cpp:185
+#: modules/gui/macosx/main/macosx.m:90 modules/gui/qt/qt.cpp:186
 msgid ""
 "You have two choices:\n"
 " - The interface will resize to the native video size\n"
@@ -18158,22 +18158,22 @@ msgstr ""
 
 #: modules/gui/macosx/main/macosx.m:95
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:452
-#: modules/gui/qt/qt.cpp:274
+#: modules/gui/qt/qt.cpp:275
 msgid "Pause the video playback when minimized"
 msgstr "சிறிதாக்கும்போது நிகழ்பட இயக்கத்தை இடைநிறுத்து"
 
-#: modules/gui/macosx/main/macosx.m:96 modules/gui/qt/qt.cpp:276
+#: modules/gui/macosx/main/macosx.m:96 modules/gui/qt/qt.cpp:277
 msgid ""
 "With this option enabled, the playback will be automatically paused when "
 "minimizing the window."
 msgstr ""
 "இந்த விருப்பம் இயக்கப்பட்டால், சாளரத்தைச் சிறிதாக்கும்போது இயக்கம் தானாக இடைநிறுத்தப்படும்."
 
-#: modules/gui/macosx/main/macosx.m:99 modules/gui/qt/qt.cpp:278
+#: modules/gui/macosx/main/macosx.m:99 modules/gui/qt/qt.cpp:279
 msgid "Allow automatic icon changes"
 msgstr "தானியங்கு சின்ன மாற்றங்களை அனுமதி"
 
-#: modules/gui/macosx/main/macosx.m:100 modules/gui/qt/qt.cpp:280
+#: modules/gui/macosx/main/macosx.m:100 modules/gui/qt/qt.cpp:281
 msgid ""
 "This option allows the interface to change its icon on various occasions."
 msgstr "பல்வேறு சந்தர்ப்பங்களில் இடைமுகம் தனது சின்னத்தை மாற்ற இந்த விருப்பம் அனுமதிக்கிறது."
@@ -18240,7 +18240,7 @@ msgstr ""
 msgid "Ask"
 msgstr "கேள்"
 
-#: modules/gui/macosx/main/macosx.m:128 modules/gui/qt/qt.cpp:282
+#: modules/gui/macosx/main/macosx.m:128 modules/gui/qt/qt.cpp:283
 msgid "Maximum Volume displayed"
 msgstr "காட்டப்படும் அதிகபட்ச ஒலியளவு"
 
@@ -18342,7 +18342,7 @@ msgid "Show All"
 msgstr "எல்லாம் காட்டு"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:356
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1054
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1059
 #: modules/gui/qt/menus/menus.cpp:976
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:52
 #: modules/gui/qt/player/qml/controlbarcontrols/QuitButton.qml:27
@@ -18474,7 +18474,7 @@ msgstr ""
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:401
 #: modules/gui/macosx/menus/VLCMainMenu.m:1749
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1043
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1048
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:116
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:522 modules/gui/qt/menus/menus.cpp:917
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:54
@@ -18813,8 +18813,8 @@ msgstr "மீண்டும் செய்(All)"
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1321
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:1055
 #: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:37
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1294
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:673
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1299
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:688
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:66
 msgid "Custom"
 msgstr "தனிப்பயன்"
@@ -18922,6 +18922,7 @@ msgstr ""
 #: modules/gui/qt/player/qml/TracksPageSubtitle.qml:274
 #: modules/gui/qt/player/qml/TracksPageSubtitle.qml:388
 #: modules/gui/qt/player/qml/SubtitleSyncTimeline.qml:106
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:567
 msgid "Reset"
 msgstr "மீட்டமை"
 
@@ -19246,7 +19247,7 @@ msgstr ""
 
 #: modules/gui/macosx/panels/VLCTrackSynchronizationWindowController.m:85
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1484
-#: modules/gui/qt/qt.cpp:350
+#: modules/gui/qt/qt.cpp:351
 msgid "Audio/Video"
 msgstr "ஒலி/நிகழ்படம்"
 
@@ -19690,7 +19691,7 @@ msgstr "பதி டைரக்டரி அல்லது கோப்ப
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:236
 #: modules/gui/macosx/windows/convertandsave/VLCOutput.m:69
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:308
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:488
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:503
 #: modules/gui/qt/dialogs/sout/sout_widgets.cpp:134
 msgid "Browse..."
 msgstr "கண்டெடுக்க..."
@@ -21401,12 +21402,12 @@ msgid "Media Files"
 msgstr "ஊடக கோப்புகள்"
 
 #: modules/gui/qt/dialogs/dialogs_provider.hpp:54
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1540
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1623
 msgid "Video Files"
 msgstr "நிகழ்பட கோப்புகள்"
 
 #: modules/gui/qt/dialogs/dialogs_provider.hpp:55
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1539
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1622
 msgid "Audio Files"
 msgstr "ஒலி கோப்புகள்"
 
@@ -21415,7 +21416,7 @@ msgid "Image Files"
 msgstr "படக் கோப்புகள்"
 
 #: modules/gui/qt/dialogs/dialogs_provider.hpp:57
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1541
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1624
 msgid "Playlist Files"
 msgstr "தொகுப்பு பட்டியல் கோப்புகள்"
 
@@ -22386,7 +22387,7 @@ msgid "System"
 msgstr "கணினி"
 
 #: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:321
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:208
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:211
 msgid "Accent color %1"
 msgstr "உச்சரிப்பு நிறம் %1"
 
@@ -22435,7 +22436,7 @@ msgstr "&செல்"
 #: modules/gui/qt/dialogs/podcast/podcast_configuration.cpp:36
 #: modules/gui/qt/dialogs/preferences/expert_view.cpp:237
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:90
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1608
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1691
 #: modules/gui/qt/dialogs/sout/convert.cpp:137
 msgid "&Cancel"
 msgstr "&தவிர்க்க"
@@ -23046,7 +23047,7 @@ msgid "Lowest"
 msgstr "மிகக் குறைவு"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:136
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1293
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1298
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:125
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
 #: modules/video_filter/deinterlace/algo_phosphor.h:55
@@ -23272,86 +23273,86 @@ msgstr "பூஜ்ஜியத் தாமதம்"
 msgid "%1: this value can not be used."
 msgstr "%1: இந்த மதிப்பைப் பயன்படுத்த முடியாது."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:929
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:958
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:934
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:963
 msgid "%1 is not available in this VLC installation."
 msgstr "இந்த VLC நிறுவலில் %1 கிடைக்கவில்லை."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:943
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:948
 msgid "This setting"
 msgstr "இந்த அமைப்பு"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:953
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:958
 msgid "%1: choose a folder of this computer."
 msgstr "%1: இந்தக் கணினியிலுள்ள ஒரு கோப்புறையைத் தேர்ந்தெடுக்கவும்."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:982
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:987
 msgid "Select a category to reset."
 msgstr "மீட்டமைக்க ஒரு வகையைத் தேர்ந்தெடுக்கவும்."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1044
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1049
 msgid "Repeat the current item (One) or the whole play queue (All)."
 msgstr ""
 "தற்போதைய உருப்படியை (ஒன்று) அல்லது முழு இயக்க வரிசையையும் (அனைத்தும்) மீண்டும் இயக்கு."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1045
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1050
 msgid "One"
 msgstr "ஒன்று"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1052
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1057
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:119
 msgid "When playback finishes"
 msgstr "இயக்கம் முடியும்போது"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1053
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1058
 msgid "Stop, or quit VLC at the end of the play queue."
 msgstr "இயக்க வரிசையின் முடிவில் நிறுத்து, அல்லது VLC-இலிருந்து வெளியேறு."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1061
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1066
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:46
 msgid "Use a custom skin"
 msgstr "தனிப்பயன் தோலைப் பயன்படுத்து"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1062
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1067
 msgid "Starts VLC with the skin chosen below instead of this interface."
 msgstr "இந்த இடைமுகத்துக்குப் பதிலாக கீழே தேர்ந்தெடுத்த தோலுடன் VLC-ஐத் தொடங்குகிறது."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1078
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1083
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:93
 msgid "Remember the playback position"
 msgstr "இயக்க நிலையை நினைவில் வை"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1079
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1084
 msgid "Lets VLC continue the media where you left off."
 msgstr "நீங்கள் விட்ட இடத்திலிருந்து ஊடகத்தைத் தொடர VLC-ஐ அனுமதிக்கிறது."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1093
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1098
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
 msgid "Reverse scroll direction"
 msgstr "உருட்டும் திசையைத் தலைகீழாக்கு"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1094
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1099
 msgid "The wheels that seek go backwards when turned forwards."
 msgstr "தாவும் சக்கரங்கள் முன்னோக்கித் திருப்பும்போது பின்னோக்கிச் செல்லும்."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1109
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1114
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:281
 msgid "Web remote control"
 msgstr "இணையத் தொலைக் கட்டுப்பாடு"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1110
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1115
 msgid ""
 "Lets a web browser control VLC. Set its password in the Advanced Options."
 msgstr ""
 "ஒரு இணைய உலாவி VLC-ஐக் கட்டுப்படுத்த அனுமதிக்கிறது. அதன் கடவுச்சொல்லை மேம்பட்ட "
 "விருப்பங்களில் அமைக்கவும்."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1128
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1133
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
 msgid "Video post-processing"
 msgstr "நிகழ்படப் பின்செயலாக்கம்"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1129
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1134
 msgid ""
 "Improves the picture of poorly encoded videos, at the cost of processing "
 "power."
@@ -23359,85 +23360,85 @@ msgstr ""
 "மோசமாகக் குறியாக்கப்பட்ட நிகழ்படங்களின் படத்தை, செயலாக்கத் திறனின் விலையில், "
 "மேம்படுத்துகிறது."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1178
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1183
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
 msgid "Visualization size"
 msgstr "காட்சிப்படுத்தல் அளவு"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1179
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1184
 msgid "The size the visualizations are drawn at."
 msgstr "காட்சிப்படுத்தல்கள் வரையப்படும் அளவு."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1180
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1185
 msgid "Match window"
 msgstr "சாளரத்துக்குப் பொருந்து"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1221
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1226
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:120
 msgid "Seek precisely"
 msgstr "துல்லியமாகத் தாவு"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1222
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1227
 msgid ""
 "Seek to the exact time asked, slower than seeking to the nearest key frame."
 msgstr ""
 "கேட்ட சரியான நேரத்துக்குத் தாவு; அருகிலுள்ள விசைச் சட்டகத்துக்குத் தாவுவதைவிட "
 "மெதுவானது."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1293
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:674
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1298
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:689
 msgid "Lowest latency"
 msgstr "மிகக் குறைந்த தாமதம்"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1311
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1316
 msgid "From the file only"
 msgstr "கோப்பிலிருந்து மட்டும்"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1313
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1318
 msgid "From the file and the internet"
 msgstr "கோப்பிலிருந்தும் இணையத்திலிருந்தும்"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1330
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1335
 msgid "Box"
 msgstr "பெட்டி"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1390
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1395
 msgid "Above normal"
 msgstr "இயல்புக்கு மேல்"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1391
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1396
 msgid "Below normal"
 msgstr "இயல்புக்குக் கீழ்"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1391
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1396
 msgid "Idle"
 msgstr "செயலற்ற நிலை"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1505
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1510
 msgid "Current screen"
 msgstr "தற்போதைய திரை"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1510
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1515
 msgid "Screen %1 (%2)"
 msgstr "திரை %1 (%2)"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1516
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1521
 msgid "Screen %1"
 msgstr "திரை %1"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1525
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1530
 msgid "Any title"
 msgstr "எந்தத் தலைப்பும்"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1525
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1530
 msgid "Contains title"
 msgstr "தலைப்பைக் கொண்டது"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1526
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1531
 msgid "Title with extra characters"
 msgstr "கூடுதல் எழுத்துகளுடன் தலைப்பு"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1526
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1531
 msgid "Exact title match"
 msgstr "சரியான தலைப்புப் பொருத்தம்"
 
@@ -23461,31 +23462,31 @@ msgstr ""
 msgid "The configurations folder could not be opened."
 msgstr "உள்ளமைவுக் கோப்புறையைத் திறக்க முடியவில்லை."
 
-#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:176
+#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:177
 msgid "Last.fm is unavailable in this VLC installation."
 msgstr "இந்த VLC நிறுவலில் Last.fm கிடைக்கவில்லை."
 
-#: modules/gui/qt/dialogs/preferences/config_model_effects.cpp:89
+#: modules/gui/qt/dialogs/preferences/config_model_effects.cpp:128
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:448
 msgid "VLC preferences are unavailable."
 msgstr "VLC விருப்பத்தேர்வுகள் கிடைக்கவில்லை."
 
-#: modules/gui/qt/dialogs/preferences/config_model_effects.cpp:94
+#: modules/gui/qt/dialogs/preferences/config_model_effects.cpp:133
 msgid "The effect preview belongs to another VLC window."
 msgstr "விளைவு முன்னோட்டம் வேறொரு VLC சாளரத்துக்குச் சொந்தமானது."
 
-#: modules/gui/qt/dialogs/preferences/config_model_effects.cpp:112
+#: modules/gui/qt/dialogs/preferences/config_model_effects.cpp:151
 msgid ""
 "%1 changed outside the settings. Discard your changes to see its new value."
 msgstr ""
 "%1 அமைப்புகளுக்கு வெளியே மாற்றப்பட்டது. அதன் புதிய மதிப்பைக் காண உங்கள் மாற்றங்களைக் "
 "கைவிடவும்."
 
-#: modules/gui/qt/dialogs/preferences/config_model_effects.cpp:140
+#: modules/gui/qt/dialogs/preferences/config_model_effects.cpp:179
 msgid "The playback preview could not be restored."
 msgstr "இயக்க முன்னோட்டத்தை மீட்டமைக்க முடியவில்லை."
 
-#: modules/gui/qt/dialogs/preferences/config_model_effects.cpp:142
+#: modules/gui/qt/dialogs/preferences/config_model_effects.cpp:181
 msgid ""
 "Could not save the settings of VLC (error %1). Check that its configuration "
 "file can be written."
@@ -23493,7 +23494,7 @@ msgstr ""
 "VLC-இன் அமைப்புகளைச் சேமிக்க முடியவில்லை (பிழை %1). அதன் உள்ளமைவுக் கோப்பில் எழுத "
 "முடியுமா எனச் சரிபார்க்கவும்."
 
-#: modules/gui/qt/dialogs/preferences/config_model_effects.cpp:145
+#: modules/gui/qt/dialogs/preferences/config_model_effects.cpp:184
 msgid ""
 "%1 changed outside the settings or is unavailable. Your changes were not "
 "saved."
@@ -23592,7 +23593,7 @@ msgid "Show settings"
 msgstr "அமைப்புகளை காட்டு"
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:74
-#: modules/gui/qt/qt.cpp:337
+#: modules/gui/qt/qt.cpp:338
 msgid "Simple"
 msgstr "எளிய"
 
@@ -23605,7 +23606,7 @@ msgid "Switch to full preferences view"
 msgstr "முழு விருப்பத்தேர்வுக் காட்சிக்கு மாறு"
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:78
-#: modules/gui/qt/qt.cpp:337
+#: modules/gui/qt/qt.cpp:338
 msgid "Expert"
 msgstr "நிபுணர்"
 
@@ -23808,16 +23809,16 @@ msgstr ""
 "குறுக்குவிசைகளைச் சேமிக்க முடியவில்லை (பிழை %1). மாற்றங்கள் நினைவகத்தில் திரும்பப் "
 "பெறப்பட்டன; உள்ளமைவுக் கோப்பைச் சரிபார்க்கவும்."
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:464
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:480
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:479
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:495
 msgid "Device:"
 msgstr "சாதனம்:"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:611
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:626
 msgid "Input & Codecs Settings"
 msgstr "உள்ளீடு & Codecs அமைப்புகள்"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:616
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:631
 msgid ""
 "If this property is blank, different values\n"
 "for DVD, VCD, and CDDA are set.\n"
@@ -23829,75 +23830,76 @@ msgstr ""
 "ஒரே மதிப்பை வரையறுக்கலாம் அல்லது அவற்றைத் \n"
 "தனித்தனியாக மேம்பட்ட விருப்பத்தேர்வுகளில் உள்ளமைக்கலாம்."
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:677
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:692
 msgid "High latency"
 msgstr "அதிக தாமதம்"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:678
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:693
 msgid "Higher latency"
 msgstr "மிக அதிக தாமதம்"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:720
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:735
 msgid "This is VLC's skinnable interface. You can download other skins at"
 msgstr "இது VLC-இன் தோல் மாற்றக்கூடிய இடைமுகம். பிற தோல்களைப் பதிவிறக்கும் இடம்"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:722
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:737
 msgid "VLC skins website"
 msgstr "VLC தோல்கள் இணையதளம்"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:750
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:765
 msgid "System's default (%1)"
 msgstr "கணினியின் இயல்புநிலை (%1)"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:982
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:997
 msgid "Configure Hotkeys"
 msgstr "முக்கியவிசை அமைப்புகள்"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1383
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1441
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1446
 msgid "%1 (partial)"
 msgstr "%1 (பகுதி)"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1530
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1613
 msgid "File associations"
 msgstr "கோப்பு இணைப்புகள்"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1607
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1690
 msgid "&Apply"
 msgstr "&Apply"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1741
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1751
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1824
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1834
 msgid "Please choose an entry point folder"
 msgstr "நுழைவுப் புள்ளிக் கோப்புறையைத் தேர்ந்தெடுக்கவும்"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:126
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:128
 msgid "Layout direction"
 msgstr "தளவமைப்புத் திசை"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:139
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:142
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:259
 #: modules/text_renderer/freetype/freetype.c:126
 msgid "Left to right"
 msgstr "இடமிருந்து வலம்"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:140
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:143
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:259
 #: modules/text_renderer/freetype/freetype.c:126
 msgid "Right to left"
 msgstr "வலமிருந்து இடம்"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:154
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:157
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:406
 msgid "Theme"
 msgstr "தீம்"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:178
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:181
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:406
-#: modules/gui/qt/qt.cpp:332
+#: modules/gui/qt/qt.cpp:333
 msgid "Accent color"
 msgstr "உச்சரிப்பு நிறம்"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:241
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:244
 msgid "VLC follows the system language."
 msgstr "VLC கணினி மொழியைப் பின்பற்றுகிறது."
 
@@ -24382,6 +24384,7 @@ msgid "Lower"
 msgstr "கீழே"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:106
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:490
 msgid "Usual"
 msgstr "வழக்கமானது"
 
@@ -24706,7 +24709,7 @@ msgid "Seeking"
 msgstr "தாவுதல்"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:121
-#: modules/gui/qt/qt.cpp:299
+#: modules/gui/qt/qt.cpp:300
 msgid "Show thumbnail while scrubbing"
 msgstr "இழுக்கும்போது சிறுபடத்தைக் காட்டு"
 
@@ -26071,13 +26074,22 @@ msgstr "ஒளிபரப்பு: "
 msgid "Schedule: "
 msgstr "அட்டவனை: "
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1193
+#: modules/gui/qt/maininterface/mainctx.cpp:1198
 msgid "Paste from clipboard"
 msgstr "ஒட்டுப்பலகையிலிருந்து ஒட்டு"
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1194
+#: modules/gui/qt/maininterface/mainctx.cpp:1199
 msgid "Do you want to enqueue the following URLs into the play queue?"
 msgstr "பின்வரும் URL-களை இயக்க வரிசையில் சேர்க்க விரும்புகிறீர்களா?"
+
+#. xgettext: The direction your language is written in: "RTL" if from
+#. * right to left (Arabic, Hebrew, Persian, Urdu...), else "LTR". Choosing
+#. * the language lays the interface out in that direction (the user can
+#. * change it under the language).
+#: modules/gui/qt/maininterface/mainctx.cpp:1341
+msgctxt "layout direction"
+msgid "LTR"
+msgstr ""
 
 #: modules/gui/qt/maininterface/qml/MenuTopbar.qml:36
 #: modules/gui/qt/maininterface/qml/LocalTopbar.qml:138
@@ -28873,11 +28885,46 @@ msgstr "வசனங்களைத் தேடுகிறது…"
 msgid "No subtitles yet"
 msgstr "இன்னும் வசனங்கள் இல்லை"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:595
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:480
+msgid "Position and size"
+msgstr "நிலை மற்றும் அளவு"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:488
+msgctxt "subtitles"
+msgid "Position"
+msgstr "நிலை"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:491
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:505
+msgid "%1%"
+msgstr "%1%"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:492
+msgid "Move the subtitles down"
+msgstr "வசனங்களைக் கீழே நகர்த்து"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:493
+msgid "Move the subtitles up"
+msgstr "வசனங்களை மேலே நகர்த்து"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:504
+msgctxt "subtitles"
+msgid "Size"
+msgstr "அளவு"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:506
+msgid "Smaller subtitles"
+msgstr "சிறிய வசனங்கள்"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:507
+msgid "Larger subtitles"
+msgstr "பெரிய வசனங்கள்"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:737
 msgid "HI"
 msgstr "HI"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:600
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:742
 msgid "For the hearing impaired"
 msgstr "செவித்திறன் குறைந்தோருக்கு"
 
@@ -29133,22 +29180,22 @@ msgstr "இயக்க வரிசை"
 msgid "%1 elements, %2"
 msgstr "%1 உருப்படிகள், %2"
 
-#: modules/gui/qt/qt.cpp:171
+#: modules/gui/qt/qt.cpp:172
 msgid "Select the initial preferences view"
 msgstr "தொடக்க விருப்பத்தேர்வுக் காட்சியைத் தேர்ந்தெடு"
 
-#: modules/gui/qt/qt.cpp:172
+#: modules/gui/qt/qt.cpp:173
 msgid ""
 "Select which preferences view to show upon opening the preferences dialog."
 msgstr ""
 "விருப்பத்தேர்வுகள் உரையாடலைத் திறக்கும்போது காட்ட வேண்டிய விருப்பத்தேர்வுக் காட்சியைத் "
 "தேர்ந்தெடுக்கவும்."
 
-#: modules/gui/qt/qt.cpp:175 modules/gui/skins2/src/skin_main.cpp:482
+#: modules/gui/qt/qt.cpp:176 modules/gui/skins2/src/skin_main.cpp:482
 msgid "Systray icon"
 msgstr "கணினித் தட்டுச் சின்னம்"
 
-#: modules/gui/qt/qt.cpp:176
+#: modules/gui/qt/qt.cpp:177
 msgid ""
 "Show an icon in the systray allowing you to control VLC media player for "
 "basic actions."
@@ -29156,27 +29203,27 @@ msgstr ""
 "அடிப்படைச் செயல்களுக்கு VLC ஊடக இயக்கியைக் கட்டுப்படுத்த அனுமதிக்கும் சின்னத்தைக் கணினித் "
 "தட்டில் காட்டு."
 
-#: modules/gui/qt/qt.cpp:180
+#: modules/gui/qt/qt.cpp:181
 msgid "Start VLC with only a systray icon"
 msgstr "கணினித் தட்டுச் சின்னத்துடன் மட்டும் VLC-ஐத் தொடங்கு"
 
-#: modules/gui/qt/qt.cpp:181
+#: modules/gui/qt/qt.cpp:182
 msgid "VLC will start with just an icon in your taskbar."
 msgstr "VLC உங்கள் பணிப்பட்டையில் ஒரு சின்னத்துடன் மட்டும் தொடங்கும்."
 
-#: modules/gui/qt/qt.cpp:190
+#: modules/gui/qt/qt.cpp:191
 msgid "Show playing item name in window title"
 msgstr "இயங்கும் உருப்படியின் பெயரைச் சாளரத் தலைப்பில் காட்டு"
 
-#: modules/gui/qt/qt.cpp:191
+#: modules/gui/qt/qt.cpp:192
 msgid "Show the name of the song or video in the controller window title."
 msgstr "கட்டுப்பாட்டுச் சாளரத் தலைப்பில் பாடல் அல்லது நிகழ்படத்தின் பெயரைக் காட்டு."
 
-#: modules/gui/qt/qt.cpp:194
+#: modules/gui/qt/qt.cpp:195
 msgid "Show notification popup on track change"
 msgstr "சுவடு மாறும்போது அறிவிப்பு பாப்அப்பைக் காட்டு"
 
-#: modules/gui/qt/qt.cpp:196
+#: modules/gui/qt/qt.cpp:197
 msgid ""
 "Show a notification popup with the artist and track name when the current "
 "play queue item changes, when VLC is minimized or hidden."
@@ -29184,11 +29231,11 @@ msgstr ""
 "VLC சிறிதாக்கப்பட்டோ மறைக்கப்பட்டோ இருக்கும்போது, தற்போதைய இயக்க வரிசை உருப்படி மாறினால் "
 "கலைஞர் மற்றும் சுவடுப் பெயருடன் அறிவிப்பு பாப்அப்பைக் காட்டு."
 
-#: modules/gui/qt/qt.cpp:199
+#: modules/gui/qt/qt.cpp:200
 msgid "Windows opacity between 0.1 and 1"
 msgstr "0.1 முதல் 1 வரையிலான சாளர ஒளிபுகாமை"
 
-#: modules/gui/qt/qt.cpp:200
+#: modules/gui/qt/qt.cpp:201
 msgid ""
 "Sets the windows opacity between 0.1 and 1 for main interface, play queue "
 "and extended panel. This option only works with Windows and X11 with "
@@ -29198,11 +29245,11 @@ msgstr ""
 "முதல் 1 வரை அமைக்கிறது. இந்த விருப்பம் Windows மற்றும் composite நீட்டிப்புகளுடன் கூடிய "
 "X11-இல் மட்டுமே செயல்படும்."
 
-#: modules/gui/qt/qt.cpp:205
+#: modules/gui/qt/qt.cpp:206
 msgid "Fullscreen controller opacity between 0.1 and 1"
 msgstr "0.1 முதல் 1 வரையிலான முழுத்திரைக் கட்டுப்பாட்டி ஒளிபுகாமை"
 
-#: modules/gui/qt/qt.cpp:206
+#: modules/gui/qt/qt.cpp:207
 msgid ""
 "Sets the fullscreen controller opacity between 0.1 and 1 for main interface, "
 "play queue and extended panel. This option only works with Windows and X11 "
@@ -29212,15 +29259,15 @@ msgstr ""
 "ஒளிபுகாமையை 0.1 முதல் 1 வரை அமைக்கிறது. இந்த விருப்பம் Windows மற்றும் composite "
 "நீட்டிப்புகளுடன் கூடிய X11-இல் மட்டுமே செயல்படும்."
 
-#: modules/gui/qt/qt.cpp:211
+#: modules/gui/qt/qt.cpp:212
 msgid "Initial user scale factor for the interface, between 0.3 and 3.0"
 msgstr "இடைமுகத்துக்கான தொடக்கப் பயனர் அளவுக் காரணி, 0.3 முதல் 3.0 வரை"
 
-#: modules/gui/qt/qt.cpp:213
+#: modules/gui/qt/qt.cpp:214
 msgid "Show unimportant error and warnings dialogs"
 msgstr "முக்கியமற்ற பிழை மற்றும் எச்சரிக்கை உரையாடல்களைக் காட்டு"
 
-#: modules/gui/qt/qt.cpp:214
+#: modules/gui/qt/qt.cpp:215
 msgid ""
 "Show the errors of VLC at the bottom of the window, and ask before removing "
 "media from a playlist or from the play queue, or deleting playlists. Off, "
@@ -29232,11 +29279,11 @@ msgstr ""
 "முடக்கப்பட்டால், பிழைகள் VLC-இன் செய்திகளில் மட்டுமே வைக்கப்படும், இந்த அகற்றல்கள் உடனே "
 "செய்யப்படும்; வட்டிலிருந்து கோப்பை நீக்குவது எப்போதும் உறுதிப்படுத்தப்படும்."
 
-#: modules/gui/qt/qt.cpp:219
+#: modules/gui/qt/qt.cpp:220
 msgid "Activate the updates availability notification"
 msgstr "புதுப்பிப்பு கிடைப்பு அறிவிப்பைச் செயல்படுத்து"
 
-#: modules/gui/qt/qt.cpp:220
+#: modules/gui/qt/qt.cpp:221
 msgid ""
 "Activate the automatic notification of new versions of the software. It runs "
 "once every two weeks."
@@ -29244,11 +29291,11 @@ msgstr ""
 "மென்பொருளின் புதிய பதிப்புகள் பற்றிய தானியங்கு அறிவிப்பைச் செயல்படுத்து. இது இரண்டு "
 "வாரங்களுக்கு ஒருமுறை இயங்கும்."
 
-#: modules/gui/qt/qt.cpp:224
+#: modules/gui/qt/qt.cpp:225
 msgid "set the options for qml debugger"
 msgstr "qml பிழைத்திருத்திக்கான விருப்பங்களை அமை"
 
-#: modules/gui/qt/qt.cpp:225
+#: modules/gui/qt/qt.cpp:226
 msgid ""
 "set the options for qml debugger (see http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
@@ -29256,32 +29303,32 @@ msgstr ""
 "qml பிழைத்திருத்திக்கான விருப்பங்களை அமை (பார்க்க http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
 
-#: modules/gui/qt/qt.cpp:227
+#: modules/gui/qt/qt.cpp:228
 msgid "Number of days between two update checks"
 msgstr "இரண்டு புதுப்பிப்புச் சரிபார்ப்புகளுக்கு இடையிலான நாட்கள்"
 
-#: modules/gui/qt/qt.cpp:229
+#: modules/gui/qt/qt.cpp:230
 msgid "Ask for network policy at start"
 msgstr "தொடக்கத்தில் பிணையக் கொள்கையைக் கேள்"
 
-#: modules/gui/qt/qt.cpp:231
+#: modules/gui/qt/qt.cpp:232
 msgid "Save the recently played items in the menu"
 msgstr "சமீபத்தில் இயக்கிய உருப்படிகளை மெனுவில் சேமி"
 
-#: modules/gui/qt/qt.cpp:233
+#: modules/gui/qt/qt.cpp:234
 msgid "List of words separated by | to filter"
 msgstr "வடிகட்ட | ஆல் பிரிக்கப்பட்ட சொற்களின் பட்டியல்"
 
-#: modules/gui/qt/qt.cpp:234
+#: modules/gui/qt/qt.cpp:235
 msgid ""
 "Regular expression used to filter the recent items played in the player."
 msgstr "இயக்கியில் இயக்கிய சமீபத்திய உருப்படிகளை வடிகட்டப் பயன்படும் வழக்கமான கோவை."
 
-#: modules/gui/qt/qt.cpp:237
+#: modules/gui/qt/qt.cpp:238
 msgid "Selection of the starting mode and look"
 msgstr "தொடக்கப் பயன்முறை மற்றும் தோற்றத்தின் தேர்வு"
 
-#: modules/gui/qt/qt.cpp:238
+#: modules/gui/qt/qt.cpp:239
 msgid ""
 "Start VLC with:\n"
 " - normal mode\n"
@@ -29293,11 +29340,11 @@ msgstr ""
 " - பாடல் வரிகள், ஆல்பப் படங்கள்... போன்ற தகவல்களைக் காட்ட எப்போதும் இருக்கும் ஒரு பகுதி\n"
 " - வரம்பிடப்பட்ட கட்டுப்பாடுகளுடன் சிறிய பயன்முறை"
 
-#: modules/gui/qt/qt.cpp:244
+#: modules/gui/qt/qt.cpp:245
 msgid "Show a controller in fullscreen mode"
 msgstr "முழுத்திரைப் பயன்முறையில் கட்டுப்பாட்டியைக் காட்டு"
 
-#: modules/gui/qt/qt.cpp:245
+#: modules/gui/qt/qt.cpp:246
 msgid ""
 "Show the playback controls in fullscreen when the mouse moves. Off, only the "
 "keyboard shows them (the I key). The skins read it for their fullscreen "
@@ -29307,35 +29354,35 @@ msgstr ""
 "விசைப்பலகை (I விசை) மட்டுமே அவற்றைக் காட்டும். தோல்களும் தங்கள் முழுத்திரைக் "
 "கட்டுப்பாட்டிக்கு இதைப் படிக்கின்றன."
 
-#: modules/gui/qt/qt.cpp:248
+#: modules/gui/qt/qt.cpp:249
 msgid "Embed the file browser in open dialog"
 msgstr "திறப்பு உரையாடலில் கோப்பு உலாவியை உட்பொதி"
 
-#: modules/gui/qt/qt.cpp:250
+#: modules/gui/qt/qt.cpp:251
 msgid "Define which screen fullscreen goes"
 msgstr "முழுத்திரை எந்தத் திரைக்குச் செல்லும் என்பதை வரையறு"
 
-#: modules/gui/qt/qt.cpp:251
+#: modules/gui/qt/qt.cpp:252
 msgid "Screennumber of fullscreen, instead of same screen where interface is."
 msgstr "இடைமுகம் உள்ள அதே திரைக்குப் பதிலாக, முழுத்திரையின் திரை எண்."
 
-#: modules/gui/qt/qt.cpp:254
+#: modules/gui/qt/qt.cpp:255
 msgid "Load extensions on startup"
 msgstr "தொடக்கத்தில் நீட்சிகளை ஏற்று"
 
-#: modules/gui/qt/qt.cpp:255
+#: modules/gui/qt/qt.cpp:256
 msgid "Automatically load the extensions module on startup."
 msgstr "தொடக்கத்தில் நீட்சித் தொகுதியைத் தானாக ஏற்று."
 
-#: modules/gui/qt/qt.cpp:258
+#: modules/gui/qt/qt.cpp:259
 msgid "Start in minimal view (without menus)"
 msgstr "சிறிய காட்சியில் தொடங்கு (மெனுக்கள் இல்லாமல்)"
 
-#: modules/gui/qt/qt.cpp:260
+#: modules/gui/qt/qt.cpp:261
 msgid "Display background cone or art"
 msgstr "பின்னணிக் கூம்பை அல்லது படத்தைக் காட்டு"
 
-#: modules/gui/qt/qt.cpp:261
+#: modules/gui/qt/qt.cpp:262
 msgid ""
 "Display the cover art of the audio playing in the player (the cone in the "
 "compact view). Off, a plain picture takes its place, which also prevents "
@@ -29345,19 +29392,19 @@ msgstr ""
 "முடக்கப்பட்டால், ஒரு வெற்றுப் படம் அதன் இடத்தைப் பிடிக்கும், இது திரை எரிவதையும் "
 "தடுக்கிறது."
 
-#: modules/gui/qt/qt.cpp:264
+#: modules/gui/qt/qt.cpp:265
 msgid "Expanding background cone or art"
 msgstr "விரியும் பின்னணிக் கூம்பு அல்லது படம்"
 
-#: modules/gui/qt/qt.cpp:265
+#: modules/gui/qt/qt.cpp:266
 msgid "Background art fits window's size."
 msgstr "பின்னணிப் படம் சாளர அளவுக்குப் பொருந்தும்."
 
-#: modules/gui/qt/qt.cpp:267
+#: modules/gui/qt/qt.cpp:268
 msgid "Ignore keyboard volume buttons."
 msgstr "விசைப்பலகை சத்த பொத்தான்களைத் தவிர்"
 
-#: modules/gui/qt/qt.cpp:269
+#: modules/gui/qt/qt.cpp:270
 msgid ""
 "With this option checked, the volume up, volume down and mute buttons on "
 "your keyboard will always change your system volume. With this option "
@@ -29369,11 +29416,11 @@ msgstr ""
 "இந்த விருப்பம் தேர்ந்தெடுக்கப்படாவிட்டால், VLC தேர்ந்தெடுக்கப்பட்டிருக்கும்போது ஒலியளவுப் "
 "பொத்தான்கள் VLC-இன் ஒலியளவையும், VLC தேர்ந்தெடுக்கப்படாதபோது கணினி ஒலியளவையும் மாற்றும்."
 
-#: modules/gui/qt/qt.cpp:284
+#: modules/gui/qt/qt.cpp:285
 msgid "When to raise the interface"
 msgstr "இடைமுகத்தை எப்போது முன்னுக்குக் கொண்டுவர வேண்டும்"
 
-#: modules/gui/qt/qt.cpp:285
+#: modules/gui/qt/qt.cpp:286
 msgid ""
 "This option allows the interface to be shown and raised automatically when a "
 "video/audio playback starts, or never."
@@ -29381,11 +29428,11 @@ msgstr ""
 "நிகழ்பட/ஒலி இயக்கம் தொடங்கும்போது இடைமுகம் தானாகக் காட்டப்பட்டு முன்னுக்குக் கொண்டுவரப்பட, "
 "அல்லது ஒருபோதும் இல்லை என இந்த விருப்பம் அனுமதிக்கிறது."
 
-#: modules/gui/qt/qt.cpp:288
+#: modules/gui/qt/qt.cpp:289
 msgid "Enable window titlebar"
 msgstr "சாளரத் தலைப்புப் பட்டியை இயக்கு"
 
-#: modules/gui/qt/qt.cpp:289
+#: modules/gui/qt/qt.cpp:290
 msgid ""
 "This option enables the title bar. Disabling it will remove the titlebar and "
 "move window buttons within the interface (Client Side Decoration)"
@@ -29393,36 +29440,36 @@ msgstr ""
 "இந்த விருப்பம் தலைப்புப் பட்டியை இயக்குகிறது. இதை முடக்கினால் தலைப்புப் பட்டி அகற்றப்பட்டு, "
 "சாளரப் பொத்தான்கள் இடைமுகத்துக்குள் நகர்த்தப்படும் (கிளையன்ட் பக்க அலங்காரம்)"
 
-#: modules/gui/qt/qt.cpp:293
+#: modules/gui/qt/qt.cpp:294
 msgid "Show the menu bar"
 msgstr "மெனுப் பட்டியைக் காட்டு"
 
-#: modules/gui/qt/qt.cpp:294
+#: modules/gui/qt/qt.cpp:295
 msgid "This option displays the classic menu bar"
 msgstr "இந்த விருப்பம் பாரம்பரிய மெனுப் பட்டியைக் காட்டுகிறது"
 
-#: modules/gui/qt/qt.cpp:296
+#: modules/gui/qt/qt.cpp:297
 msgid "Pin video controls"
 msgstr "நிகழ்படக் கட்டுப்பாடுகளைப் பொருத்து"
 
-#: modules/gui/qt/qt.cpp:297
+#: modules/gui/qt/qt.cpp:298
 msgid "Place video controls above and below the video instead of above"
 msgstr ""
 "நிகழ்படக் கட்டுப்பாடுகளை நிகழ்படத்தின் மேலே வைப்பதற்குப் பதிலாக, அதன் மேலும் கீழும் வை"
 
-#: modules/gui/qt/qt.cpp:300
+#: modules/gui/qt/qt.cpp:301
 msgid "Show the frame at the hovered position above the seek bar"
 msgstr "தாவும் பட்டியின் மேலே, சுட்டி இருக்கும் நிலையிலுள்ள சட்டகத்தைக் காட்டு"
 
-#: modules/gui/qt/qt.cpp:302
+#: modules/gui/qt/qt.cpp:303
 msgid "Fullscreen controller mouse sensitivity"
 msgstr "முழுத்திரைக் கட்டுப்பாட்டியின் சுட்டி உணர்திறன்"
 
-#: modules/gui/qt/qt.cpp:304
+#: modules/gui/qt/qt.cpp:305
 msgid "Select Qt video integration backend"
 msgstr "Qt நிகழ்பட ஒருங்கிணைப்புப் பின்தளத்தைத் தேர்ந்தெடு"
 
-#: modules/gui/qt/qt.cpp:305
+#: modules/gui/qt/qt.cpp:306
 msgid ""
 "Select Qt video integration backend. Use with care, the interface may not "
 "start if an incompatible compositor is selected"
@@ -29430,11 +29477,11 @@ msgstr ""
 "Qt நிகழ்பட ஒருங்கிணைப்புப் பின்தளத்தைத் தேர்ந்தெடுக்கவும். கவனமாகப் பயன்படுத்தவும், "
 "பொருந்தாத compositor தேர்ந்தெடுக்கப்பட்டால் இடைமுகம் தொடங்காமல் போகலாம்"
 
-#: modules/gui/qt/qt.cpp:307
+#: modules/gui/qt/qt.cpp:308
 msgid "Use smooth scrolling in Flickable based views"
 msgstr "Flickable அடிப்படையிலான காட்சிகளில் மென்மையான உருட்டலைப் பயன்படுத்து"
 
-#: modules/gui/qt/qt.cpp:308
+#: modules/gui/qt/qt.cpp:309
 msgid ""
 "Deactivating this option will disable smooth scrolling in Flickable based "
 "views (such as the Play Queue). This option is only respected with a scroll "
@@ -29444,20 +29491,20 @@ msgstr ""
 "போன்றவை) மென்மையான உருட்டல் முடக்கப்படும். இந்த விருப்பம் உருட்டல் கையாளுநருடன் மட்டுமே "
 "மதிக்கப்படும், `qt-use-scroll-handler` விருப்பத்தைப் பார்க்கவும்."
 
-#: modules/gui/qt/qt.cpp:311
+#: modules/gui/qt/qt.cpp:312
 msgid "Use Kirigami scroll handler for Flickable based views"
 msgstr ""
 "Flickable அடிப்படையிலான காட்சிகளுக்கு Kirigami உருட்டல் கையாளுநரைப் பயன்படுத்து"
 
-#: modules/gui/qt/qt.cpp:312
+#: modules/gui/qt/qt.cpp:313
 msgid "Using Kirigami scroll handler may improve scrolling behavior."
 msgstr "Kirigami உருட்டல் கையாளுநரைப் பயன்படுத்துவது உருட்டல் நடத்தையை மேம்படுத்தலாம்."
 
-#: modules/gui/qt/qt.cpp:314
+#: modules/gui/qt/qt.cpp:315
 msgid "Safe area for the user interface"
 msgstr "பயனர் இடைமுகத்துக்கான பாதுகாப்புப் பகுதி"
 
-#: modules/gui/qt/qt.cpp:315
+#: modules/gui/qt/qt.cpp:316
 msgid ""
 "Sets the safe area percentage between 0.0 and 100 when you want to ensure "
 "the visibility of the user interface on a constrained viewport"
@@ -29465,19 +29512,19 @@ msgstr ""
 "கட்டுப்படுத்தப்பட்ட காட்சிப் பகுதியில் பயனர் இடைமுகம் தெரிவதை உறுதிசெய்ய விரும்பும்போது, "
 "பாதுகாப்புப் பகுதிச் சதவீதத்தை 0.0 முதல் 100 வரை அமைக்கிறது"
 
-#: modules/gui/qt/qt.cpp:319
+#: modules/gui/qt/qt.cpp:320
 msgid "Print Qt's important internal messages"
 msgstr "Qt-இன் முக்கியமான உள்ளகச் செய்திகளை அச்சிடு"
 
-#: modules/gui/qt/qt.cpp:320
+#: modules/gui/qt/qt.cpp:321
 msgid "Enable Qt's all own messaging categories except the debug category."
 msgstr "பிழைத்திருத்த வகை தவிர Qt-இன் சொந்தச் செய்தி வகைகள் அனைத்தையும் இயக்கு."
 
-#: modules/gui/qt/qt.cpp:322
+#: modules/gui/qt/qt.cpp:323
 msgid "Hide the window on close"
 msgstr "மூடும்போது சாளரத்தை மறை"
 
-#: modules/gui/qt/qt.cpp:323
+#: modules/gui/qt/qt.cpp:324
 msgid ""
 "Instead of closing the application, hide the window. This setting is only "
 "applicable when system tray icon is enabled."
@@ -29485,11 +29532,11 @@ msgstr ""
 "பயன்பாட்டை மூடுவதற்குப் பதிலாக, சாளரத்தை மறை. கணினித் தட்டுச் சின்னம் "
 "இயக்கப்பட்டிருக்கும்போது மட்டுமே இந்த அமைப்பு பொருந்தும்."
 
-#: modules/gui/qt/qt.cpp:325
+#: modules/gui/qt/qt.cpp:326
 msgid "Enable backdrop blur filter for the main window if possible"
 msgstr "முடிந்தால் முதன்மைச் சாளரத்துக்குப் பின்னணி மங்கல் வடிகட்டியை இயக்கு"
 
-#: modules/gui/qt/qt.cpp:326
+#: modules/gui/qt/qt.cpp:327
 msgid ""
 "If backdrop blur filter is available, use translucency in the backgrounds of "
 "certain parts of the user interface instead of a solid color. This setting "
@@ -29499,11 +29546,11 @@ msgstr ""
 "நிறத்துக்குப் பதிலாக ஒளிபுகுதன்மையைப் பயன்படுத்து. இந்த அமைப்பு உரையின் "
 "வாசிப்புத்தன்மையைக் குறைக்கும்."
 
-#: modules/gui/qt/qt.cpp:329
+#: modules/gui/qt/qt.cpp:330
 msgid "Enable picture-in-picture (PiP) mode"
 msgstr "படத்துக்குள் படம் (PiP) பயன்முறையை இயக்கு"
 
-#: modules/gui/qt/qt.cpp:330
+#: modules/gui/qt/qt.cpp:331
 msgid ""
 "Picture-in-picture mode allows playing video contained in a smaller area so "
 "that the interface remains usable."
@@ -29511,7 +29558,7 @@ msgstr ""
 "படத்துக்குள் படம் பயன்முறை, இடைமுகம் பயன்படுத்தக்கூடியதாக இருக்கும்படி, நிகழ்படத்தை ஒரு "
 "சிறிய பகுதிக்குள் இயக்க அனுமதிக்கிறது."
 
-#: modules/gui/qt/qt.cpp:333
+#: modules/gui/qt/qt.cpp:334
 msgid ""
 "Adjusts the accent color, special values are 'default' and 'system' "
 "(requires Qt 6.6) ."
@@ -29519,23 +29566,23 @@ msgstr ""
 "உச்சரிப்பு நிறத்தைச் சரிசெய்கிறது, சிறப்பு மதிப்புகள் 'default' மற்றும் 'system' (Qt "
 "6.6 தேவை) ."
 
-#: modules/gui/qt/qt.cpp:343
+#: modules/gui/qt/qt.cpp:344
 msgid "When minimized"
 msgstr "சிறிதாக்கப்படும்போது"
 
-#: modules/gui/qt/qt.cpp:378 modules/video_output/xcb/x11.c:413
+#: modules/gui/qt/qt.cpp:379 modules/video_output/xcb/x11.c:413
 msgid "X11"
 msgstr "X11"
 
-#: modules/gui/qt/qt.cpp:386
+#: modules/gui/qt/qt.cpp:387
 msgid "Qt interface"
 msgstr "QT முகப்பு"
 
-#: modules/gui/qt/qt.cpp:434
+#: modules/gui/qt/qt.cpp:435
 msgid "Check for VLC Redesign updates"
 msgstr "VLC Redesign புதுப்பிப்புகளைச் சரிபார்"
 
-#: modules/gui/qt/qt.cpp:435
+#: modules/gui/qt/qt.cpp:436
 msgid ""
 "Look for a new release of VLC Redesign on GitHub at startup, at most once a "
 "day."
@@ -29543,11 +29590,11 @@ msgstr ""
 "தொடக்கத்தில், அதிகபட்சம் தினமும் ஒருமுறை, GitHub-இல் VLC Redesign-இன் புதிய "
 "வெளியீட்டைத் தேடு."
 
-#: modules/gui/qt/qt.cpp:439
+#: modules/gui/qt/qt.cpp:440
 msgid "Resume at"
 msgstr "இங்கிருந்து தொடர்"
 
-#: modules/gui/qt/qt.cpp:440
+#: modules/gui/qt/qt.cpp:441
 msgid ""
 "Seconds into the media of the command line where playback continues, after "
 "an update."

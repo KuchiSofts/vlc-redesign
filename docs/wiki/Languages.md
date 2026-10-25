@@ -98,7 +98,15 @@ example `/VERYSILENT /UILANG=he /SUBLANG=en`. A copy that already has a language
 
 ## Translate
 
-Anyone can translate VLC Redesign, improve a translation or add a language. The texts are ordinary gettext catalogs
+Anyone can translate VLC Redesign, improve a translation or add a language.
+
+**The easiest way: [Weblate](https://hosted.weblate.org/engage/vlc-redesign/).** Translate in the browser, with a GitHub account or a Weblate one; Weblate shows
+the context of each text, checks the placeholders and sends the work back as a pull request. It holds the texts VLC
+Redesign adds; VLC's own texts are translated by VideoLAN. A language that is missing can be asked for there.
+
+[![Translation status](https://hosted.weblate.org/widget/vlc-redesign/interface/svg-badge.svg)](https://hosted.weblate.org/engage/vlc-redesign/)
+
+**Or with the files.** The texts are ordinary gettext catalogs
 (`.po`), the format VLC uses: any `.po` editor works ([Poedit](https://poedit.net/) is free), as does a plain text
 editor.
 

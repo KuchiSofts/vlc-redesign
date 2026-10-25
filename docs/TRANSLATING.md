@@ -4,6 +4,22 @@ Anyone can translate VLC Redesign, improve a translation, or add a new language.
 gettext catalogs, the same format VLC uses, so any `.po` editor works ([Poedit](https://poedit.net/) is
 free) as well as a plain text editor.
 
+## On Weblate (the easiest)
+
+The texts VLC Redesign adds are translated on **[Hosted Weblate](https://hosted.weblate.org/engage/vlc-redesign/)**, in the browser: sign in (a GitHub account
+works), choose your language and translate. Weblate shows each text with its context, checks the placeholders, and
+sends the translations back to this repository as pull requests; they are in the next release.
+
+[![Translation status](https://hosted.weblate.org/widget/vlc-redesign/interface/multi-auto.svg)](https://hosted.weblate.org/engage/vlc-redesign/)
+
+- Only the texts of VLC Redesign are there (`po/redesign`, about 1,700). VLC's own texts are translated by VideoLAN
+  and arrive with each update of VLC.
+- A language that is not listed yet can be asked for on Weblate (*Start new translation*); the maintainers add it.
+- Maintainers: `extras/juxtopposed/translations/weblate-sync.py` cuts `po/redesign` out of the catalogs
+  (`export`, after new texts) and puts Weblate's translations back into `po/<code>.po` (`import`, before a build).
+
+The rest of this page is for translating the files directly.
+
 ## Where the texts are
 
 | File | What it is |

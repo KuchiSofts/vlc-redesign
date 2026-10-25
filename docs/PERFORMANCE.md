@@ -62,11 +62,9 @@ From the first measurement to the last (medians):
 | Start (window shown) | 436 ms | 442 ms | same (noise ±30 ms) |
 | Customize, About, library pages, playback CPU | | | unchanged |
 
-`perfap.py`, which opens Settings after browsing the library three times, spreads widely (115–204 ms for the same
-build) and did not show the Settings gain (b196 median 132 ms, b200 164 ms over 9 openings each). The probe of
-build 200 in the same conditions as settime shows the dialog made in 41–56 ms against ~78 before, with the reading
-of the options unchanged (20–25 ms, the new font list included): the settime and benchmark results are the ones
-used, and perfap's Settings figure is to be watched in the next runs.
+On the clean build 201 (no timing lines), against build 196, both tools agree: Settings freezes 95 ms instead of
+129 (settime, median of 7–8 openings) and 124 ms instead of 150 (perfap, after browsing the library, 6 openings);
+Keyboard Shortcuts 5–14 ms. (On build 200 one perfap series had shown no gain: its spread is 115–204 ms for one build.)
 
 ## Bugs found on the way
 

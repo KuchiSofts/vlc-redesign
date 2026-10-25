@@ -15,6 +15,10 @@ Column {
     // The labels of the options (a table of hundreds of texts): the one of
     // the dialog, shared by its lists (one each took 10 ms to make)
     property QtObject presentationData: null
+    // false: no rows made (the list of another page, Advanced Options
+    // closed: hidden, they took 9 ms to make at each opening); not the
+    // visible of the list, which changes as the dialog is made and opens
+    property bool active: true
     property var settingsModel
     property string category: ""
     property string search: ""
@@ -105,7 +109,7 @@ Column {
 
     Repeater {
         id: optionsRepeater
-        model: root.settingsModel
+        model: root.active ? root.settingsModel : null
         delegate: Column {
             width: root.width
             spacing: 0

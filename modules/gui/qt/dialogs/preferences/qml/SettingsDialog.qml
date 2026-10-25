@@ -573,7 +573,8 @@ Dialog {
                     id: videoMoreOptions
                     presentationData: settingsPresentation
                     width: parent.width
-                    visible: root.selectedCategory === "video" && !searchField.text.length
+                    visible: active
+                    active: root.selectedCategory === "video" && !searchField.text.length
                     settingsModel: config
                     category: root.selectedCategory
                     filterMode: "basic"
@@ -645,6 +646,7 @@ Dialog {
                     presentationData: settingsPresentation
                     width: parent.width
                     visible: advancedButton.visible && root.advancedExpanded
+                    active: root.advancedExpanded
                     onResetAllRequested: confirmReset.open()
                     settingsModel: config
                     category: root.selectedCategory

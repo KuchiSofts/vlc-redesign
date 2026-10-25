@@ -108,8 +108,9 @@ ColumnLayout {
         function onInterfaceLanguageChanged() { ++root._languageRevision }
     }
 
-    // the languages: { code, name, native, count, wanted }, the user's
-    // first, then the media's own, then the others by name
+    // the languages: { code, name, native, count, wanted, often }, the
+    // user's first, then the ones they pick, the most picked first, then the
+    // media's own, then the others by name
     readonly property var _languages: {
         void root._languageRevision
         const counts = {}
@@ -124,10 +125,13 @@ ColumnLayout {
             if (!SubtitleFinder.loadedIds.includes(r.id))
                 add(r.language)
         const wanted = [SubtitlePreferences.primary, SubtitlePreferences.secondary].filter(c => c !== "")
+        const usage = SubtitlePreferences.usage
+        const used = (code) => usage[code] || 0
         const rank = (code) => {
             const w = wanted.indexOf(code)
             if (w >= 0) return w
             if (code === "") return 1000
+            if (used(code) >= 0.5) return 5
             return _localTracks.some(t => t.language === code) ? 10 : 20
         }
         const list = order.map(code => ({
@@ -135,10 +139,22 @@ ColumnLayout {
             name: code === "" ? qsTr("Unknown language") : SubtitlePreferences.name(code),
             native: code === "" ? "" : SubtitlePreferences.nativeName(code),
             count: counts[code],
-            wanted: wanted.indexOf(code)
+            wanted: wanted.indexOf(code),
+            often: code !== "" && wanted.indexOf(code) < 0 && used(code) >= 1.5
         }))
-        list.sort((a, b) => rank(a.code) - rank(b.code) || a.name.localeCompare(b.name))
+        list.sort((a, b) => rank(a.code) - rank(b.code) || used(b.code) - used(a.code)
+                            || a.name.localeCompare(b.name))
         return list
+    }
+
+    // a subtitle picked by hand: its language counts once a media, so the
+    // list puts it first and, picked often, it is chosen by itself
+    property var _usedHere: ({})
+    function _recordUse(code) {
+        if (!code || root._usedHere[code])
+            return
+        root._usedHere[code] = true
+        SubtitlePreferences.recordUse(code)
     }
 
     // the language shown on the right: chosen, else the one of the track
@@ -155,7 +171,7 @@ ColumnLayout {
     }
     Connections {
         target: Player
-        function onInputChanged() { root.chosenLanguage = "\u0001"; titleSearch.visible = false }
+        function onInputChanged() { root.chosenLanguage = "\u0001"; root._usedHere = {}; titleSearch.visible = false }
     }
 
     // the subtitles of that language: { kind: "track"|"online", ... }
@@ -185,6 +201,7 @@ ColumnLayout {
     // a language: its best subtitle, the media's own first
     function _chooseLanguage(code) {
         chosenLanguage = code
+        _recordUse(code)
         const track = _localTracks.find(t => t.language === code)
         if (track) {
             if (!track.checked)
@@ -383,7 +400,8 @@ ColumnLayout {
                 detail: modelData.native !== "" && modelData.native !== modelData.name ? modelData.native : ""
                 count: modelData.count
                 highlighted: modelData.code === "\u0002" ? !root._anyChecked : root._shownLanguage === modelData.code
-                marker: modelData.wanted === 0 ? qsTr("Default") : modelData.wanted === 1 ? qsTr("Second") : ""
+                marker: modelData.wanted === 0 ? qsTr("Default") : modelData.wanted === 1 ? qsTr("Second")
+                        : modelData.often ? qsTr("Often used", "subtitle language") : ""
                 onClicked: {
                     if (modelData.code === "\u0002") {
                         root._turnOff()
@@ -423,6 +441,7 @@ ColumnLayout {
                 hearingImpaired: modelData.kind === "online" && modelData.hearingImpaired
                 onClicked: {
                     root.chosenLanguage = root._shownLanguage
+                    root._recordUse(root._shownLanguage)
                     if (modelData.kind === "track")
                         root._selectTrack(modelData.row)
                     else

@@ -2289,8 +2289,15 @@ vlc_render_subpicture *spu_Render(spu_t *spu,
     spu_private_t *sys = container_of(spu, spu_private_t, spu);
     const bool external_scale = chroma_list != NULL;
 
+    /* Without a video output (subtitles blended into a video converted for
+     * a TV), the position chosen as it changes: a video output tells it
+     * (sub-position, spu_ChangePosition) */
+    const int position = sys->vout == NULL ? (int)var_InheritInteger(spu, "sub-position") : 0;
+
     /* Update sub-source chain */
     vlc_mutex_lock(&sys->lock);
+    if (sys->vout == NULL)
+        sys->position = position;
     char *chain_update = sys->source_chain_update;
     sys->source_chain_update = NULL;
     vlc_mutex_unlock(&sys->lock);

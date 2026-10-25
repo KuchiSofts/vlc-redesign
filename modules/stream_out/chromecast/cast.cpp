@@ -178,6 +178,9 @@ struct sout_stream_sys_t
     bool                               out_force_reload;
     bool                               perf_warning_shown;
     int                                transcoding_state;
+    /* the running chain converts the video and blends a subtitle
+     * (soverlay): another subtitle goes into it */
+    bool                               chain_soverlay = false;
     int                                venc_opt_idx;
     std::vector<sout_stream_id_sys_t*> streams;
     std::vector<sout_stream_id_sys_t*> out_streams;
@@ -766,6 +769,24 @@ static void *Add(sout_stream_t *p_stream, const es_format_t *p_fmt, const char *
             p_sys->held_done = false;
         }
         p_sys->streams.push_back( p_sys_id );
+
+        /* Another subtitle while a converted video plays (the user chose
+         * one): into the running conversion, which blends it from its next
+         * line. A new chain would be a new stream: the TV loading it again,
+         * seconds of black */
+        if( p_fmt->i_cat == SPU_ES && p_sys->p_out != NULL && p_sys->chain_soverlay )
+        {
+            p_sys_id->p_sub_id = reinterpret_cast<sout_stream_id_sys_t *>(
+                sout_StreamIdAdd( p_sys->p_out, &p_sys_id->fmt, p_sys_id->es_id ) );
+            if( p_sys_id->p_sub_id != NULL )
+            {
+                msg_Dbg( p_stream, "subtitle '%4.4s' blended into the running stream",
+                         (const char *)&p_fmt->i_codec );
+                p_sys->out_streams.push_back( p_sys_id );
+                p_sys->spu_streams_count++;
+                return p_sys_id;
+            }
+        }
         p_sys->es_changed = true;
     }
     return p_sys_id;
@@ -794,8 +815,12 @@ static void DelInternal(sout_stream_t *p_stream, void *_id, bool reset_config)
                     if (*out_it == id)
                     {
                         p_sys->out_streams.erase(out_it);
-                        p_sys->es_changed = reset_config;
-                        p_sys->out_force_reload = reset_config;
+                        /* a subtitle gone from a converted video (another
+                         * one chosen, or none): the conversion goes on,
+                         * the TV keeps its stream */
+                        const bool keep = p_sys_id->fmt.i_cat == SPU_ES && p_sys->chain_soverlay;
+                        p_sys->es_changed = reset_config && !keep;
+                        p_sys->out_force_reload = reset_config && !keep;
                         if( p_sys_id->fmt.i_cat == VIDEO_ES )
                             p_sys->has_video = false;
                         else if( p_sys_id->fmt.i_cat == SPU_ES )
@@ -936,6 +961,7 @@ void sout_stream_sys_t::stopSoutChain(sout_stream_t *p_stream)
         out_streams.clear();
         sout_StreamChainDelete( p_out, NULL );
         p_out = NULL;
+        chain_soverlay = false;
     }
 }
 
@@ -953,6 +979,7 @@ bool sout_stream_sys_t::startSoutChain(sout_stream_t *p_stream,
     out_streams = new_streams;
     spu_streams_count = 0;
     transcoding_state = new_transcoding_state;
+    chain_soverlay = false;
 
     access_out_live.prepare( p_stream, mime );
 
@@ -1225,6 +1252,8 @@ bool sout_stream_sys_t::UpdateOutput( sout_stream_t *p_stream )
     if ( !startSoutChain( p_stream, new_streams, ssout.str(),
                           new_transcoding_state ) )
         p_intf->requestPlayerStop();
+    else
+        chain_soverlay = !canRemux && p_original_spu != NULL && p_original_video != NULL;
     return true;
 }
 

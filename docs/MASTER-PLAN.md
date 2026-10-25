@@ -68,7 +68,7 @@ counted from this document's own tables and checklists (column *From*); ⚪ idea
 
 | Program         | Progress             | Done    | %     | From                                   |
 |-----------------|----------------------|---------|-------|----------------------------------------|
-| Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 88/97   | 91 %  | [§8](#8-next-release-030) checklists   |
+| Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 90/97   | 92 %  | [§8](#8-next-release-030) checklists   |
 | Linux           | 🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 1/7     | 14 %  | [§9](#linux)                           |
 | macOS           | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/4     | 0 %   | [§9](#macos)                           |
 | Windows ARM64   | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/3     | 0 %   | [§9](#windows-on-arm64)                |
@@ -848,7 +848,10 @@ All classic windows go through one hook, `redesign_widget_theme.cpp`, applied fr
   subtitles; and on build 178 a cast sent as-is, started mid-film, seeked to 25 s before the end: the TV played to
   the end and the player stayed playing until it had (the end of a cast mid-film, ff54815d10, d0e1f85b1e, and the
   last frames of MPEG-TS, 95722c717a, fixed with the fake TV first); the same run repeated on build 193 above
-- 🔴 Other brands (LG, Sony, Android TV) through device reports
+- 🟡 Other brands: a real Google Chromecast Ultra checked 2026-10-25 on the release binary (start mid-film with
+  subtitles, pause, play, seek, another subtitle, subtitles off: the device stayed PLAYING through the subtitle
+  change, no reload, no error); the living-room Android TV (Mi TV) was off; no LG or Sony on this network: through
+  device reports
 - 🟢 A *TV compatibility* wiki page fed by the reports (docs/wiki/TV-Compatibility.md, and the issue form
   `.github/ISSUE_TEMPLATE/tv_report.yml` it links to)
 
@@ -890,19 +893,19 @@ and an accepted request made the TV fail after a pause in a test.
 
 ### 8.10 Release checklist
 
-- 🔴 Every quality gate green (§14)
-- 🔴 `CHANGELOG.md`: *Unreleased* becomes *0.3.0* with its date
+- 🟡 Every quality gate green (§14): all but Build (CI runs once uploaded) and Hardware (no Intel or real Windows 10 here)
+- 🟢 `CHANGELOG.md`: *Unreleased* became *0.3.0* · 2026-10-25
 - 🟢 Release notes with a screenshot or GIF per highlight (docs/release/0.3.0, 13 images from the running app; the
   last changes of the changelog join them when the date is set)
 - 🟢 Wiki: casting pages, new settings rows, *Design check* (docs/wiki, in the wiki's own page names; uploaded with
   the release)
-- 🟡 Small updates from 0.2.4, 0.2.5 and 0.2.6 built and checked: 2026-10-24 as a dry run from build 174 (3.5-3.6 MB
-  each, 4 % of the zip; every file matched the new package, the app's own updater applied them, the launch test
-  passed on all six copies); to build again from the release package (the version is 0.3.0 since 2026-10-24)
+- 🟢 Small updates from 0.2.4, 0.2.5 and 0.2.6 built from the release package (2026-10-25, build 203): 21.8 MB each
+  (the 72 new translation files go whole), each applied to its old release and every one of the 524 files checked
+  against the package; the check itself had to learn to make the new `locale\` folder
 - 🔴 Announcement in Discussions; every fixed issue answered with the release link
 
-Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 88 🟢, 3 🟡, 6 🔴 (97), of which 5 🟢 are
-in the app ⏳.
+Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 90 🟢, 5 🟡, 2 🔴 (97), of which 5 🟢 are
+in the app ⏳. The 🟡 and 🔴 left need the upload (CI, the announcement, the replies), SignPath, or hardware not here.
 Languages (§12) and the community (§13) have bars of their own.
 
 ## 9. Other platforms
@@ -1349,15 +1352,15 @@ In an organization, a `.github` repository gives every repository these files by
 |--------------|-----------------------------------------------------------------------------------|--------|
 | Build        | Every platform builds in CI; the packaged app starts and plays                    | 🟡 Windows builds; the launch test is written and passes here, not run on GitHub yet |
 | Regression   | Playback, pause/seek, traces, Chromecast and DLNA test devices; again 2026-10-24 (builds 164, 170, 174, 179 and 181): clean quits, no dropped picture (one to four shown a few ms late at a start or a seek, as in every build), both casts | 🟢     |
-| Real devices | Samsung TV: start, pause 1 and 5 min, seek, next file, subtitles, as-is, end      | 🟢     |
+| Real devices | Samsung TV: start, pause 1 and 5 min, seek, next file, subtitles, as-is, end; Chromecast Ultra 2026-10-25 | 🟢     |
 | Formats      | Every test file and container; 148 damaged files without crash or hang            | 🟢     |
 | Effects      | 40 video effects alone and in chains                                              | 🟢     |
 | Conversion   | Every muxer, audio + video, to the last picture                                   | 🟢     |
 | Memory       | 25-minute media-change soak and cast soak: flat after warm-up; 2026-10-24 (build 163) the same soak against the 23 October build: +0.27 against +0.34 MB/min at 100 changes a minute (driver), handles, GDI and threads flat; the library panel opened and browsed 60 times: flat | 🟢     |
 | Hardware     | NVIDIA, AMD, Intel; no GPU; weak CPU; Windows 10 and 11; high DPI; 2026-10-24 (build 164) the nine graphics setups (D3D11, WARP, OpenGL, Qt software, no hardware decoding, GL and D3D9 outputs, the win7 and dummy compositors) play and quit cleanly; no import newer than Windows 10 1809, AVX only in CPU-dispatched code | 🟡 no Intel, no real Windows 10 |
 | Clean PC     | Install and first start on a clean Windows (Sandbox); again 2026-10-24 (build 163): window in 1.24 s, 1080p without a GPU 75 % of one core, quit 0.5 s | 🟢     |
-| Updates      | Small updates from the three previous releases, checked file by file              | 🟢     |
-| Design       | Pixel check of the frames the release touches; frame table updated                | 🟡 2 hover frames (their values checked in the code) |
+| Updates      | Small updates from the three previous releases, checked file by file; 2026-10-25 from the 0.3.0 package | 🟢     |
+| Design       | Pixel check of the frames the release touches; frame table updated                | 🟢 all 103, the 2 hover frames in Windows Sandbox (§8.8) |
 | Languages    | English by default; installer offers Windows' language; switch at once, right to left | 🟢 |
 
 ## 15. Risks

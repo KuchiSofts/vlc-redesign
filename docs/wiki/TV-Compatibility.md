@@ -10,7 +10,8 @@ How to cast: [Casting](Casting). When something fails: [Casting: when a TV does 
 | Device | Kind | Checked with | Result |
 |---|---|---|---|
 | **Samsung UE55MU8000** (2017, Tizen) | DLNA TV | The real TV of the quality checks: start, pause of 1 and 5 minutes, seek, next file, subtitles, a film sent as it is, a converted film, the end of a film | Works, with the quirks below |
-| Chromecast | Chromecast | A test device that speaks the Chromecast protocol, in the checks of every build | Works; no real Chromecast reported yet |
+| **Google Chromecast Ultra** | Chromecast | A real one (2026-10-25): a converted film with subtitles from 60 s, pause 10 s, play, seek, another subtitle, subtitles off, stop | Works |
+| Chromecast | Chromecast | A test device that speaks the Chromecast protocol, in the checks of every build | Works |
 | DLNA TV | DLNA TV | A test device that reads the stream as a TV does, in the checks of every build | Works |
 
 **Not checked yet:** LG, Sony, Android TV, other Samsung models, real Chromecasts. Reports are welcome.

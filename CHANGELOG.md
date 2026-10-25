@@ -34,6 +34,13 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 ### Fixed
 
 - **"Subtitl…"**: the name of a tab of the languages and tracks panel was cut short even with room for it.
+- **The library's title bar kept the last song's name** after playback stopped; it shows *VLC Media Player* again.
+- **Titles without ".mp4"**: a video without a title of its own is listed by its file name without the extension
+  ("Sintel", not "Sintel.mp4").
+- **Windows paths written with "/"** ("C:/Videos/film.mkv", as some apps and scripts pass them) were refused by
+  VLC's core; "/" is a separator on Windows too.
+- **The welcome's subtitle and online steps** showed an empty player frame behind them; they are drawn on the
+  dialog, as the shortcuts step.
 - **A log file written with *Log to a file* keeps its last lines when VLC crashes.** Windows wrote the log in blocks
   of 4 KB, so a crash lost the lines that say where it happened; each line is now written at once.
 

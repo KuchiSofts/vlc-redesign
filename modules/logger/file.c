@@ -63,6 +63,11 @@ static void LogText(void *opaque, int type, const vlc_log_t *meta,
     fprintf(stream, "%s%s: ", meta->psz_module, msg_type[type]);
     vfprintf(stream, format, ap);
     putc_unlocked('\n', stream);
+#ifdef _WIN32
+    /* the C runtime of Windows buffers _IOLBF streams fully: without this, a
+     * crash loses the last lines, the ones that tell where it happened */
+    fflush(stream);
+#endif
     funlockfile(stream);
 }
 
@@ -118,6 +123,9 @@ static void LogHtml(void *opaque, int type, const vlc_log_t *meta,
     /* FIXME: encode special ASCII characters */
     vfprintf(stream, format, ap);
     fputs("</span>\n", stream);
+#ifdef _WIN32
+    fflush(stream);
+#endif
     funlockfile(stream);
 }
 

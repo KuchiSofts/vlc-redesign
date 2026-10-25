@@ -766,7 +766,7 @@ void MainCtx::sendHotkey(Qt::Key key , Qt::KeyboardModifiers modifiers)
     postHotkey(vlckey);
 }
 
-double MainCtx::imageLuminance(const QVariant &image) const
+double MainCtx::imageLuminance(const QVariant &image, const QRectF &area) const
 {
     const QImage source = image.value<QImage>();
     if (source.isNull())
@@ -778,15 +778,19 @@ double MainCtx::imageLuminance(const QVariant &image) const
         const double c = channel / 255.0;
         return c <= 0.04045 ? c / 12.92 : std::pow((c + 0.055) / 1.055, 2.4);
     };
+    const int x0 = std::clamp(int(area.left() * 16), 0, 15);
+    const int y0 = std::clamp(int(area.top() * 16), 0, 15);
+    const int x1 = std::clamp(int(std::ceil(area.right() * 16)), x0 + 1, 16);
+    const int y1 = std::clamp(int(std::ceil(area.bottom() * 16)), y0 + 1, 16);
     double sum = 0;
-    for (int y = 0; y < small.height(); ++y)
+    for (int y = y0; y < y1; ++y)
     {
         const QRgb *line = reinterpret_cast<const QRgb *>(small.constScanLine(y));
-        for (int x = 0; x < small.width(); ++x)
+        for (int x = x0; x < x1; ++x)
             sum += 0.2126 * linear(qRed(line[x])) + 0.7152 * linear(qGreen(line[x]))
                  + 0.0722 * linear(qBlue(line[x]));
     }
-    return sum / (small.width() * small.height());
+    return sum / ((x1 - x0) * (y1 - y0));
 }
 
 bool MainCtx::isHotkeyFree(Qt::Key key, Qt::KeyboardModifiers modifiers) const

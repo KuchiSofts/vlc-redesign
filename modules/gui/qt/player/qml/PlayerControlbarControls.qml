@@ -30,17 +30,17 @@ QtObject {
     readonly property string controlPath : "qrc:///qt/qml/VLC/PlayerControls/"
 
     readonly property var controlList: [
-        { id: ControlListModel.PLAY_BUTTON, file: "PlayButton.qml", label: VLCIcons.play_filled, text: qsTr("Play") },
+        { id: ControlListModel.PLAY_BUTTON, file: "PlayButton.qml", label: VLCIcons.play_filled, icon: "qrc:///redesign/icons/play/default.png", text: qsTr("Play") },
         { id: ControlListModel.STOP_BUTTON, file: "StopButton.qml", label: VLCIcons.stop, icon: "qrc:///redesign/icons/stop/default.png", text: qsTr("Stop") },
         { id: ControlListModel.OPEN_BUTTON, file: "OpenButton.qml", label: VLCIcons.eject, text: qsTr("Open") },
-        { id: ControlListModel.PREVIOUS_BUTTON, file: "PreviousButton.qml", label: VLCIcons.previous, text: qsTr("Previous") },
-        { id: ControlListModel.NEXT_BUTTON, file: "NextButton.qml", label: VLCIcons.next, text: qsTr("Next") },
+        { id: ControlListModel.PREVIOUS_BUTTON, file: "PreviousButton.qml", label: VLCIcons.previous, icon: "qrc:///redesign/player/previous.png", text: qsTr("Previous") },
+        { id: ControlListModel.NEXT_BUTTON, file: "NextButton.qml", label: VLCIcons.next, icon: "qrc:///redesign/player/next.png", text: qsTr("Next") },
         { id: ControlListModel.SLOWER_BUTTON, file: "SlowerButton.qml", label: VLCIcons.slower, text: qsTr("Slower") },
         { id: ControlListModel.FASTER_BUTTON, file: "FasterButton.qml", label: VLCIcons.faster, text: qsTr("Faster") },
         { id: ControlListModel.FULLSCREEN_BUTTON, file: "FullscreenButton.qml", label: VLCIcons.fullscreen, icon: "qrc:///redesign/icons/fullscreen/default.png", text: qsTr("Fullscreen") },
         { id: ControlListModel.SETTINGS_BUTTON, file: "SettingsButton.qml", label: VLCIcons.settings, icon: "qrc:///redesign/icons/settings/default.png", text: qsTr("VLC Settings") },
-        { id: ControlListModel.EXTENDED_BUTTON, file: "ExtendedSettingsButton.qml", label: VLCIcons.effect_filter, text: qsTr("Extended panel") },
-        { id: ControlListModel.PLAYLIST_BUTTON, file: "PlaylistButton.qml", label: VLCIcons.playlist, text: qsTr("Play Queue") },
+        { id: ControlListModel.EXTENDED_BUTTON, file: "ExtendedSettingsButton.qml", label: VLCIcons.effect_filter, icon: "qrc:///redesign/player/equalizer.png", text: qsTr("Effects") },
+        { id: ControlListModel.PLAYLIST_BUTTON, file: "PlaylistButton.qml", label: VLCIcons.playlist, icon: "qrc:///redesign/player/queue.png", text: qsTr("Play Queue") },
         { id: ControlListModel.SNAPSHOT_BUTTON, file: "SnapshotButton.qml", label: VLCIcons.snapshot, icon: "qrc:///redesign/icons/snapshot/default.png", text: qsTr("Snapshot") },
         { id: ControlListModel.RECORD_BUTTON, file: "RecordButton.qml", label: VLCIcons.record, icon: "qrc:///redesign/icons/record/default.png", text: qsTr("Record") },
         { id: ControlListModel.ATOB_BUTTON, file: "AtoBButton.qml", label: VLCIcons.atob, text: qsTr("A-B Loop") },
@@ -53,11 +53,11 @@ QtObject {
         { id: ControlListModel.RANDOM_BUTTON, file: "RandomButton.qml", label: VLCIcons.shuffle, icon: "qrc:///redesign/icons/shuffle/default.png", text: qsTr("Shuffle") },
         { id: ControlListModel.LOOP_BUTTON, file: "LoopButton.qml", label: VLCIcons.repeat_all, icon: "qrc:///redesign/icons/repeat/default.png", text: qsTr("Repeat") },
         { id: ControlListModel.INFO_BUTTON, file: "InfoButton.qml", label: VLCIcons.info, icon: "qrc:///redesign/icons/info/default.png", text: qsTr("Properties") },
-        { id: ControlListModel.LANG_BUTTON, file: "LangButton.qml", label: VLCIcons.audiosub, text: qsTr("Open subtitles") },
+        { id: ControlListModel.LANG_BUTTON, file: "LangButton.qml", label: VLCIcons.audiosub, icon: "qrc:///redesign/player/subtitles.png", text: qsTr("Languages and tracks") },
         { id: ControlListModel.BOOKMARK_BUTTON, file: "BookmarkButton.qml", label: VLCIcons.bookmark, icon: "qrc:///redesign/icons/bookmark/default.png", text: qsTr("Bookmark") },
         { id: ControlListModel.CHAPTER_PREVIOUS_BUTTON, file: "ChapterPreviousButton.qml", label: VLCIcons.dvd_prev, text: qsTr("Previous chapter") },
         { id: ControlListModel.CHAPTER_NEXT_BUTTON, file: "ChapterNextButton.qml", label: VLCIcons.dvd_next, text: qsTr("Next chapter") },
-        { id: ControlListModel.VOLUME, file: "VolumeWidget.qml", label: VLCIcons.volume_high, text: qsTr("Volume Widget") },
+        { id: ControlListModel.VOLUME, file: "VolumeWidget.qml", label: VLCIcons.volume_high, icon: "qrc:///redesign/volume-high.png", text: qsTr("Volume") },
         { id: ControlListModel.NAVIGATION_BOX, file: "NavigationBoxButton.qml", label: VLCIcons.ic_fluent_arrow_move, text: qsTr("Navigation Box") },
         { id: ControlListModel.NAVIGATION_BUTTONS, file: "NavigationWidget.qml", label: VLCIcons.dvd_menu, text: qsTr("Navigation") },
         { id: ControlListModel.DVD_MENUS_BUTTON, file: "DvdMenuButton.qml", label: VLCIcons.dvd_menu, text: qsTr("DVD menus") },
@@ -121,7 +121,13 @@ QtObject {
         ControlListModel.FAVORITE_BUTTON, ControlListModel.BOOKMARK_BUTTON, ControlListModel.BOOKMARKS_BUTTON,
         ControlListModel.PLAYLISTS_BUTTON,
         // not in the design's palette: after its 31 items (Figma 2107:5604)
-        ControlListModel.RENDERER_BUTTON
+        ControlListModel.RENDERER_BUTTON,
+        // the bar's own controls, which the design's palette leaves out
+        // (they are on every bar): a button removed can come back
+        ControlListModel.PLAY_BUTTON, ControlListModel.PREVIOUS_BUTTON, ControlListModel.NEXT_BUTTON,
+        ControlListModel.VOLUME, ControlListModel.LANG_BUTTON, ControlListModel.EXTENDED_BUTTON,
+        ControlListModel.PLAYLIST_BUTTON, ControlListModel.FULLSCREEN_BUTTON, ControlListModel.ATOB_BUTTON,
+        ControlListModel.FRAME_PREV_BUTTON, ControlListModel.FRAME_NEXT_BUTTON, ControlListModel.MENU_BUTTON
     ]
 
     function control(id) {

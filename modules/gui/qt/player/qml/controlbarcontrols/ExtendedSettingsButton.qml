@@ -29,7 +29,8 @@ RedesignIconButton {
 
     text: VLCIcons.effect_filter
 
-    description: qsTr("Audio effects")
+    // (audio and video: the whole effects panel)
+    description: qsTr("Effects")
 
     AccessibleCompat.id: "extendedSettingsButton"
 

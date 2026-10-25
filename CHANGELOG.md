@@ -21,19 +21,30 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   default and second language, then the ones you pick, the most picked first (marked *Often used*), then the
   video's own. A language you pick about three times is then chosen by itself after your default and second ones:
   VLC shows its track, and the online search looks for it. Older choices fade, so recent habits count most.
-- **Setup asks for the languages.** A new *Languages* page: the language of the interface (all 73) and the default
+- **Setup asks for the languages.** A new *Languages* page: the language of the interface (English, British English and the 72 others) and the default
   language of the subtitles, which follows the interface's until you choose it apart. Right to left, the layout
   toggle is there too. A silent install takes `/UILANG=` and `/SUBLANG=` (for instance `/UILANG=he /SUBLANG=en`).
 
 ### Changed
 
-- **Audio effects, VLC Settings and HDR open above their button**, as the languages and tracks do: a click outside
+- **Effects, VLC Settings and HDR open above their button**, as the languages and tracks do: a click outside
   closes them, and so does the button, and opening one closes the other. The bar stays while one is open, and
   the video isn't dimmed. The menu and the keyboard shortcuts still open them in the middle of the window.
 
 ### Fixed
 
 - **"Subtitl…"**: the name of a tab of the languages and tracks panel was cut short even with room for it.
+- **A button removed from the bar can come back.** Customize Player's palette now also offers the bar's own controls
+  (Play, Previous, Next, Volume, Languages and tracks, Effects, Play Queue, Fullscreen, A-B Loop, the frame steps and
+  the menu), after the design's items: once removed, they could not be added again.
+- **Settings that said more or less than they did**: an empty HTTP proxy now uses Windows' proxy, as its field says;
+  "Apply to files opened from the file manager" is no longer dimmed (it works alone); choosing a snapshot width no
+  longer stretches the picture, and the height's label says that 0 keeps the proportions; "Give VLC real-time
+  priority" is named as what it does, *Increase the priority of the process*; *Stop the screensaver* keeps its
+  *When fullscreen* choice; the click on the video offers one *Play / Pause* (there were two that did the same).
+- **The title of a song stays readable on a bright cover**: the design's grey on dark artwork, near white or dark
+  on the rest, measured behind the title.
+- **The effects button is named Effects**: it opens the audio and the video effects.
 - **The library's title bar kept the last song's name** after playback stopped; it shows *VLC Media Player* again.
 - **Windows paths written with "/"** ("C:/Videos/film.mkv", as some apps and scripts pass them) were refused by
   VLC's core; "/" is a separator on Windows too.

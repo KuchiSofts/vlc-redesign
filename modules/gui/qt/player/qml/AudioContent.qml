@@ -219,7 +219,10 @@ MouseArea {
                         source = VLCStyle.noArtAlbumCover
                     else if (status === Image.Ready)
                         cover.grabToImage((result) => {
-                            centerContent.artLuminance = MainCtx.imageLuminance(result.image)
+                            // the backdrop is the artwork filling the
+                            // view: the title sits over its lower middle
+                            centerContent.artLuminance = MainCtx.imageLuminance(result.image,
+                                                                                Qt.rect(0.3, 0.6, 0.4, 0.18))
                         }, Qt.size(16, 16))
                     else
                         centerContent.artLuminance = -1

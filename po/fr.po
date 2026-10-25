@@ -31,7 +31,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-24 18:08+0000\n"
+"POT-Creation-Date: 2026-10-25 09:28+0000\n"
 "PO-Revision-Date: 2017-09-20 03:42+0000\n"
 "Last-Translator: Fan\n"
 "Language-Team: French (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -81,7 +81,7 @@ msgstr "Interface"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:26
 #: modules/gui/qt/menus/menus.cpp:860
 #: modules/gui/qt/player/qml/TracksMenu.qml:37
-#: modules/gui/qt/player/qml/TracksListPage.qml:90 modules/gui/qt/qt.cpp:350
+#: modules/gui/qt/player/qml/TracksListPage.qml:90 modules/gui/qt/qt.cpp:351
 #: modules/stream_out/es.c:388 modules/stream_out/transcode/transcode.c:190
 #: share/lua/http/dialogs/create_stream.html:150
 msgid "Audio"
@@ -103,7 +103,7 @@ msgstr "Audio"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:78
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:25
 #: modules/gui/qt/menus/menus.cpp:856
-#: modules/gui/qt/player/qml/TracksMenu.qml:36 modules/gui/qt/qt.cpp:350
+#: modules/gui/qt/player/qml/TracksMenu.qml:36 modules/gui/qt/qt.cpp:351
 #: modules/services_discovery/upnp.cpp:70 modules/stream_out/es.c:395
 #: modules/stream_out/transcode/transcode.c:163
 #: share/lua/http/dialogs/create_stream.html:147
@@ -135,7 +135,7 @@ msgstr "File de lecture"
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:305
 #: modules/gui/qt/dialogs/extended/extended.cpp:110
 #: modules/gui/qt/dialogs/extended/qml/VideoEffectsPanel.qml:82
-#: modules/gui/qt/qt.cpp:337
+#: modules/gui/qt/qt.cpp:338
 msgid "Advanced"
 msgstr "Avancé"
 
@@ -143,7 +143,7 @@ msgstr "Avancé"
 msgid "Subtitles / OSD"
 msgstr "Sous-titres / OSD"
 
-#: include/vlc_config_cat.h:46 modules/control/hotkeys.c:1314
+#: include/vlc_config_cat.h:46 modules/control/hotkeys.c:1316
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:1301
 msgid "Hotkeys"
 msgstr "Raccourcis"
@@ -153,23 +153,23 @@ msgid "Media Library"
 msgstr "Médiathèque"
 
 #: include/vlc_config_cat.h:53 modules/gui/qt/dialogs/plugins/plugins.cpp:360
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:705
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:720
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:53
 msgid "Interface Settings"
 msgstr "Paramètres de l'interface"
 
 #: include/vlc_config_cat.h:54
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:453
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:468
 msgid "Audio Settings"
 msgstr "Paramètres audio"
 
 #: include/vlc_config_cat.h:55
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:391
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:406
 msgid "Video Settings"
 msgstr "Paramètres vidéo"
 
 #: include/vlc_config_cat.h:56
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:928
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:943
 msgid "Subtitle & On Screen Display Settings"
 msgstr "Paramètres de sous-titres et d'incrustation vidéo"
 
@@ -182,7 +182,7 @@ msgid "Hotkeys Settings"
 msgstr ""
 
 #: include/vlc_config_cat.h:59
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1019
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1034
 msgid "Media Library Settings"
 msgstr "Paramètres de la médiathèque"
 
@@ -521,28 +521,28 @@ msgid "Disable"
 msgstr "Désactiver"
 
 #: src/audio_output/output.c:331
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1145
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1150
 #: modules/visualization/visual/visual.c:140
 msgid "Spectrometer"
 msgstr "Analyseur de spectre 2"
 
 #: src/audio_output/output.c:333
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1146
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1151
 msgid "Scope"
 msgstr "Oscilloscope"
 
 #: src/audio_output/output.c:335
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1146
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1151
 msgid "Spectrum"
 msgstr "Analyseur de spectre"
 
 #: src/audio_output/output.c:337
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1147
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1152
 msgid "Waveform"
 msgstr "Forme d'onde"
 
 #: src/audio_output/output.c:339
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1147
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1152
 msgid "VU meter"
 msgstr "VU-mètre"
 
@@ -576,7 +576,7 @@ msgstr "Dolby surround"
 
 #: src/audio_output/output.c:499 src/audio_output/output.c:615
 #: src/libvlc-module.c:207 src/libvlc-module.c:218 src/libvlc-module.c:403
-#: src/video_output/vout_intf.c:165 modules/access/alsa.c:39
+#: src/video_output/vout_intf.c:167 modules/access/alsa.c:39
 #: modules/access/oss.c:59 modules/access/v4l2/v4l2.c:268
 #: modules/audio_output/alsa.c:1276 modules/codec/twolame.c:70
 msgid "Stereo"
@@ -674,9 +674,9 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:122
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:143
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:148
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1165
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1470
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:402
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1170
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1475
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:417
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:144
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:170
@@ -688,7 +688,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:232
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:259
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
-#: modules/gui/qt/qt.cpp:368
+#: modules/gui/qt/qt.cpp:369
 msgid "Automatic"
 msgstr "Automatique"
 
@@ -1740,7 +1740,7 @@ msgstr ""
 
 #: src/libvlc-module.c:198 src/libvlc-module.c:386 src/libvlc-module.c:403
 #: src/libvlc-module.c:552 src/libvlc-module.c:611 src/libvlc-module.c:1200
-#: src/video_output/vout_intf.c:164 modules/audio_output/kai.c:110
+#: src/video_output/vout_intf.c:166 modules/audio_output/kai.c:110
 #: modules/codec/subsdec.c:166 modules/codec/x264.c:429
 #: modules/demux/adaptive/adaptive.cpp:121 modules/demux/mpeg/ts.c:134
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:63
@@ -1764,8 +1764,8 @@ msgstr "Activé"
 #: modules/access/dtv/access.c:100 modules/access/v4l2/v4l2.c:137
 #: modules/access/v4l2/v4l2.c:201
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:136
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1045
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1525
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1050
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1530
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:181
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
@@ -1841,7 +1841,7 @@ msgstr ""
 "préservant le ton"
 
 #: src/libvlc-module.c:259 src/libvlc-module.c:1248
-#: src/video_output/vout_intf.c:152 modules/access/dshow/dshow.cpp:2020
+#: src/video_output/vout_intf.c:154 modules/access/dshow/dshow.cpp:2020
 #: modules/access/dtv/access.c:115 modules/access/dtv/access.c:149
 #: modules/access/v4l2/v4l2.c:163 modules/audio_output/alsa.c:1285
 #: modules/codec/avcodec/avcodec.c:49 modules/codec/avcodec/avcodec.c:53
@@ -1854,7 +1854,7 @@ msgstr ""
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:230
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:122
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:308
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1328
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1333
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:195
 #: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:42
 #: modules/gui/qt/menus/qml/MainMenu.qml:118
@@ -2081,7 +2081,7 @@ msgstr ""
 msgid "Change the 360 video projection mode."
 msgstr ""
 
-#: src/libvlc-module.c:344 src/video_output/vout_intf.c:314
+#: src/libvlc-module.c:344 src/video_output/vout_intf.c:316
 #: modules/gui/qt/util/csdmenu.cpp:125
 msgid "Always on top"
 msgstr "Toujours au-dessus"
@@ -2196,15 +2196,15 @@ msgstr ""
 msgid "Set the Video Stereo 3D mode."
 msgstr ""
 
-#: src/libvlc-module.c:403 src/video_output/vout_intf.c:166
+#: src/libvlc-module.c:403 src/video_output/vout_intf.c:168
 msgid "Left Only"
 msgstr "Gauche uniquement"
 
-#: src/libvlc-module.c:403 src/video_output/vout_intf.c:167
+#: src/libvlc-module.c:403 src/video_output/vout_intf.c:169
 msgid "Right Only"
 msgstr "Droite uniquement"
 
-#: src/libvlc-module.c:404 src/video_output/vout_intf.c:168
+#: src/libvlc-module.c:404 src/video_output/vout_intf.c:170
 msgid "Side-by-Side"
 msgstr "Côte à côte"
 
@@ -2222,7 +2222,7 @@ msgstr "Désactiver l'économiseur d'écran pendant la lecture"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:124
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
-#: modules/gui/qt/qt.cpp:343 modules/gui/qt/qt.cpp:350
+#: modules/gui/qt/qt.cpp:344 modules/gui/qt/qt.cpp:351
 msgid "Never"
 msgstr "Jamais"
 
@@ -2236,7 +2236,7 @@ msgstr "En plein écran"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:124
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:323
-#: modules/gui/qt/qt.cpp:343 modules/keystore/keychain.m:55
+#: modules/gui/qt/qt.cpp:344 modules/keystore/keychain.m:55
 msgid "Always"
 msgstr "Toujours"
 
@@ -2499,7 +2499,7 @@ msgstr "Détermine comment la pause par clic de souris est gérée"
 
 #: src/libvlc-module.c:552 modules/access/rist.h:85
 #: modules/audio_output/mmdevice.c:1621
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1145
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1150
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:23
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:141
@@ -2616,8 +2616,8 @@ msgstr ""
 msgid "Monotonic"
 msgstr ""
 
-#: src/libvlc-module.c:619 src/video_output/vout_intf.c:117
-#: src/video_output/vout_intf.c:135 modules/access/dshow/dshow.cpp:90
+#: src/libvlc-module.c:619 src/video_output/vout_intf.c:119
+#: src/video_output/vout_intf.c:137 modules/access/dshow/dshow.cpp:90
 #: modules/access/dshow/dshow.cpp:97 modules/access/dshow/dshow.cpp:2018
 #: modules/audio_output/alsa.c:1153 modules/audio_output/mmdevice.c:1435
 #: modules/audio_output/mmdevice.c:1583 modules/audio_output/winstore.c:695
@@ -4197,7 +4197,7 @@ msgstr ""
 "L'axe horizontal (gauche/droite) de la molette de la souris peut contrôler "
 "le volume ou la position, ou être ignoré."
 
-#: src/libvlc-module.c:1362 src/video_output/vout_intf.c:325
+#: src/libvlc-module.c:1362 src/video_output/vout_intf.c:327
 #: modules/gui/macosx/menus/VLCMainMenu.m:437
 #: modules/gui/macosx/menus/VLCMainMenu.m:529
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:176
@@ -4341,7 +4341,7 @@ msgstr ""
 #: modules/gui/macosx/menus/VLCMainMenu.m:516
 #: modules/gui/macosx/windows/controlsbar/VLCMainWindowControlsBar.m:104
 #: modules/gui/macosx/windows/controlsbar/VLCMainWindowControlsBar.m:115
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1054
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1059
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:518 modules/gui/qt/menus/menus.cpp:823
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:34
 #: modules/gui/qt/player/qml/controlbarcontrols/StopButton.qml:29
@@ -4769,22 +4769,22 @@ msgstr ""
 "Sélectionnez la combinaison de touches à utiliser pour diminuer le retard de "
 "l'audio."
 
-#: src/libvlc-module.c:1485 src/video_output/vout_intf.c:106
+#: src/libvlc-module.c:1485 src/video_output/vout_intf.c:108
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:129
 msgid "1:4 Quarter"
 msgstr "¼ Quart"
 
-#: src/libvlc-module.c:1486 src/video_output/vout_intf.c:107
+#: src/libvlc-module.c:1486 src/video_output/vout_intf.c:109
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:129
 msgid "1:2 Half"
 msgstr "½ Moitié"
 
-#: src/libvlc-module.c:1487 src/video_output/vout_intf.c:108
+#: src/libvlc-module.c:1487 src/video_output/vout_intf.c:110
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:130
 msgid "1:1 Original"
 msgstr "1:1 Normal"
 
-#: src/libvlc-module.c:1488 src/video_output/vout_intf.c:109
+#: src/libvlc-module.c:1488 src/video_output/vout_intf.c:111
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:130
 msgid "2:1 Double"
 msgstr "2:1 Double"
@@ -5068,7 +5068,7 @@ msgid "Toggle random play queue playback"
 msgstr "Activer/désactiver la lecture aléatoire de la file de lecture"
 
 #: src/libvlc-module.c:1562 src/libvlc-module.c:1563
-#: src/video_output/vout_intf.c:231 modules/gui/macosx/menus/VLCMainMenu.m:484
+#: src/video_output/vout_intf.c:233 modules/gui/macosx/menus/VLCMainMenu.m:484
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:148
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:80
 #: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:31
@@ -5171,7 +5171,7 @@ msgstr "Boucler entre les différents périphériques audio disponibles"
 msgid "core program"
 msgstr "Programme principal"
 
-#: src/libvlc-module.c:1748 src/video_output/vout_intf.c:329
+#: src/libvlc-module.c:1748 src/video_output/vout_intf.c:331
 #: modules/gui/macosx/menus/VLCMainMenu.m:439
 #: modules/gui/macosx/menus/VLCMainMenu.m:530
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:44
@@ -8242,31 +8242,31 @@ msgstr ""
 msgid "Original audio"
 msgstr "Audio original"
 
-#: src/video_output/vout_intf.c:144
+#: src/video_output/vout_intf.c:146
 msgid "Fill Window"
 msgstr "Remplir la fenêtre"
 
-#: src/video_output/vout_intf.c:153
+#: src/video_output/vout_intf.c:155
 msgid "Inside Window"
 msgstr "Dans la fenêtre"
 
-#: src/video_output/vout_intf.c:154
+#: src/video_output/vout_intf.c:156
 msgid "Outside Window"
 msgstr "Couvrir la fenêtre"
 
-#: src/video_output/vout_intf.c:155
+#: src/video_output/vout_intf.c:157
 msgid "Window Width"
 msgstr "Largeur de la fenêtre"
 
-#: src/video_output/vout_intf.c:156
+#: src/video_output/vout_intf.c:158
 msgid "Window Height"
 msgstr "Hauteur de la fenêtre"
 
-#: src/video_output/vout_intf.c:240
+#: src/video_output/vout_intf.c:242
 msgid "video-stereo-output"
 msgstr "Sortie 3D"
 
-#: src/video_output/vout_intf.c:258 modules/gui/macosx/menus/VLCMainMenu.m:444
+#: src/video_output/vout_intf.c:260 modules/gui/macosx/menus/VLCMainMenu.m:444
 #: modules/gui/macosx/menus/VLCMainMenu.m:445
 #: modules/gui/macosx/menus/VLCMainMenu.m:2027
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:268
@@ -8276,7 +8276,7 @@ msgstr "Sortie 3D"
 msgid "Crop"
 msgstr "Rognage"
 
-#: src/video_output/vout_intf.c:281 modules/access/decklink.cpp:108
+#: src/video_output/vout_intf.c:283 modules/access/decklink.cpp:108
 #: modules/access/linsys/linsys_hdsdi.c:79
 #: modules/access/linsys/linsys_sdi.c:75 modules/demux/rawvid.c:57
 #: modules/gui/macosx/menus/VLCMainMenu.m:442
@@ -8287,7 +8287,7 @@ msgstr "Rognage"
 msgid "Aspect ratio"
 msgstr "Format d'écran"
 
-#: src/video_output/vout_intf.c:301
+#: src/video_output/vout_intf.c:303
 msgid "Fit Mode"
 msgstr "Mode d'ajustement"
 
@@ -10016,7 +10016,7 @@ msgstr ""
 #: modules/access/idummy.c:40 modules/access_output/dummy.c:43
 #: modules/audio_output/adummy.c:36 modules/codec/ddummy.c:45
 #: modules/codec/edummy.c:38 modules/control/dummy.c:39
-#: modules/gui/qt/qt.cpp:380 modules/text_renderer/tdummy.c:34
+#: modules/gui/qt/qt.cpp:381 modules/text_renderer/tdummy.c:34
 #: modules/video_output/vdummy.c:48
 msgid "Dummy"
 msgstr "Factice"
@@ -11597,7 +11597,7 @@ msgstr ""
 #: modules/codec/x264.c:424
 #: modules/gui/macosx/windows/addons/VLCAddonsWindowController.m:100
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:360
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1045
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1050
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:76
 #: modules/gui/qt/dialogs/sout/convert.cpp:164
 #: modules/gui/qt/medialibrary/qml/VideoDisplay.qml:49
@@ -13422,8 +13422,8 @@ msgstr ""
 
 #: modules/codec/aom.c:71
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:137
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1294
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1390
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1299
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1395
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:126
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
@@ -16550,9 +16550,9 @@ msgstr ""
 #: modules/codec/x264.c:419 modules/codec/x264.c:424
 #: modules/gui/macosx/menus/VLCMainMenu.m:395
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:776
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1293
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1390
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:676
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1298
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1395
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:691
 #: modules/misc/gnutls.c:756 modules/text_renderer/freetype/freetype.c:118
 msgid "Normal"
 msgstr "Normal"
@@ -17076,7 +17076,7 @@ msgstr "Interface de contrôle D-Bus"
 #: modules/gui/qt/dialogs/systray/systray.cpp:78
 #: modules/gui/qt/dialogs/systray/systray.cpp:81
 #: modules/gui/qt/dialogs/systray/systray.cpp:136
-#: modules/gui/qt/dialogs/systray/systray.cpp:151 modules/gui/qt/qt.cpp:1422
+#: modules/gui/qt/dialogs/systray/systray.cpp:151 modules/gui/qt/qt.cpp:1425
 #: modules/lua/libs/httpd.c:80 modules/video_output/wayland/xdg-shell.c:732
 #: modules/video_output/xcb/window.c:959
 msgid "VLC media player"
@@ -17166,7 +17166,7 @@ msgstr "Position des sous-titres : habituelle"
 msgid "Subtitle position: %+d%%"
 msgstr "Position des sous-titres : %+d %%"
 
-#: modules/control/hotkeys.c:1315
+#: modules/control/hotkeys.c:1317
 msgid "Hotkeys management interface"
 msgstr "Interface de combinaisons de touches"
 
@@ -17309,7 +17309,7 @@ msgid "Connect using HTTP access instead of custom HTTP code"
 msgstr ""
 
 #: modules/demux/adaptive/adaptive.cpp:84
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:675
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:690
 msgid "Low latency"
 msgstr "Latence faible"
 
@@ -19165,11 +19165,11 @@ msgstr ""
 
 #: modules/gui/macosx/main/macosx.m:89
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:453
-#: modules/gui/qt/qt.cpp:184
+#: modules/gui/qt/qt.cpp:185
 msgid "Resize interface to the native video size"
 msgstr "Redimensionner l'interface à la taille réelle de la vidéo"
 
-#: modules/gui/macosx/main/macosx.m:90 modules/gui/qt/qt.cpp:185
+#: modules/gui/macosx/main/macosx.m:90 modules/gui/qt/qt.cpp:186
 msgid ""
 "You have two choices:\n"
 " - The interface will resize to the native video size\n"
@@ -19183,11 +19183,11 @@ msgstr ""
 
 #: modules/gui/macosx/main/macosx.m:95
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:452
-#: modules/gui/qt/qt.cpp:274
+#: modules/gui/qt/qt.cpp:275
 msgid "Pause the video playback when minimized"
 msgstr "Mettre la vidéo en pause lors de l'iconification"
 
-#: modules/gui/macosx/main/macosx.m:96 modules/gui/qt/qt.cpp:276
+#: modules/gui/macosx/main/macosx.m:96 modules/gui/qt/qt.cpp:277
 msgid ""
 "With this option enabled, the playback will be automatically paused when "
 "minimizing the window."
@@ -19195,11 +19195,11 @@ msgstr ""
 "Si cette option est validé, la lecture sera automatiquement mise en pause "
 "lorsque VLC est minimisé "
 
-#: modules/gui/macosx/main/macosx.m:99 modules/gui/qt/qt.cpp:278
+#: modules/gui/macosx/main/macosx.m:99 modules/gui/qt/qt.cpp:279
 msgid "Allow automatic icon changes"
 msgstr "Changement automatique de l’icône"
 
-#: modules/gui/macosx/main/macosx.m:100 modules/gui/qt/qt.cpp:280
+#: modules/gui/macosx/main/macosx.m:100 modules/gui/qt/qt.cpp:281
 msgid ""
 "This option allows the interface to change its icon on various occasions."
 msgstr ""
@@ -19272,7 +19272,7 @@ msgstr ""
 msgid "Ask"
 msgstr "Demander"
 
-#: modules/gui/macosx/main/macosx.m:128 modules/gui/qt/qt.cpp:282
+#: modules/gui/macosx/main/macosx.m:128 modules/gui/qt/qt.cpp:283
 msgid "Maximum Volume displayed"
 msgstr "Niveau de volume maximum affiché"
 
@@ -19374,7 +19374,7 @@ msgid "Show All"
 msgstr "Tout afficher"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:356
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1054
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1059
 #: modules/gui/qt/menus/menus.cpp:976
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:52
 #: modules/gui/qt/player/qml/controlbarcontrols/QuitButton.qml:27
@@ -19506,7 +19506,7 @@ msgstr "Synchronisation de piste"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:401
 #: modules/gui/macosx/menus/VLCMainMenu.m:1749
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1043
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1048
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:116
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:522 modules/gui/qt/menus/menus.cpp:917
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:54
@@ -19846,8 +19846,8 @@ msgstr "Tout répéter"
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1321
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:1055
 #: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:37
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1294
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:673
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1299
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:688
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:66
 msgid "Custom"
 msgstr "Personnalisé"
@@ -19957,6 +19957,7 @@ msgstr "Compression dynamique"
 #: modules/gui/qt/player/qml/TracksPageSubtitle.qml:274
 #: modules/gui/qt/player/qml/TracksPageSubtitle.qml:388
 #: modules/gui/qt/player/qml/SubtitleSyncTimeline.qml:106
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:567
 msgid "Reset"
 msgstr "Réinitialiser"
 
@@ -20281,7 +20282,7 @@ msgstr ""
 
 #: modules/gui/macosx/panels/VLCTrackSynchronizationWindowController.m:85
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1484
-#: modules/gui/qt/qt.cpp:350
+#: modules/gui/qt/qt.cpp:351
 msgid "Audio/Video"
 msgstr "Audio/Vidéo"
 
@@ -20727,7 +20728,7 @@ msgstr "Dossier des captures"
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:236
 #: modules/gui/macosx/windows/convertandsave/VLCOutput.m:69
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:308
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:488
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:503
 #: modules/gui/qt/dialogs/sout/sout_widgets.cpp:134
 msgid "Browse..."
 msgstr "Parcourir…"
@@ -22485,12 +22486,12 @@ msgid "Media Files"
 msgstr "Fichiers multimédias"
 
 #: modules/gui/qt/dialogs/dialogs_provider.hpp:54
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1540
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1623
 msgid "Video Files"
 msgstr "Fichiers vidéo"
 
 #: modules/gui/qt/dialogs/dialogs_provider.hpp:55
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1539
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1622
 msgid "Audio Files"
 msgstr "Fichiers audio"
 
@@ -22499,7 +22500,7 @@ msgid "Image Files"
 msgstr "Fichiers image"
 
 #: modules/gui/qt/dialogs/dialogs_provider.hpp:57
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1541
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1624
 msgid "Playlist Files"
 msgstr "Fichiers de liste de lecture"
 
@@ -23486,7 +23487,7 @@ msgid "System"
 msgstr "Système"
 
 #: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:321
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:208
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:211
 msgid "Accent color %1"
 msgstr "Couleur d'accentuation %1"
 
@@ -23535,7 +23536,7 @@ msgstr "&Écrire les modifications dans la config"
 #: modules/gui/qt/dialogs/podcast/podcast_configuration.cpp:36
 #: modules/gui/qt/dialogs/preferences/expert_view.cpp:237
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:90
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1608
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1691
 #: modules/gui/qt/dialogs/sout/convert.cpp:137
 msgid "&Cancel"
 msgstr "&Annuler"
@@ -24158,7 +24159,7 @@ msgid "Lowest"
 msgstr "La plus faible"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:136
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1293
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1298
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:125
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
 #: modules/video_filter/deinterlace/algo_phosphor.h:55
@@ -24391,171 +24392,171 @@ msgstr "Latence nulle"
 msgid "%1: this value can not be used."
 msgstr "%1 : cette valeur ne peut pas être utilisée."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:929
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:958
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:934
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:963
 msgid "%1 is not available in this VLC installation."
 msgstr "%1 n'est pas disponible dans cette installation de VLC."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:943
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:948
 msgid "This setting"
 msgstr "Ce réglage"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:953
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:958
 msgid "%1: choose a folder of this computer."
 msgstr "%1 : choisissez un dossier de cet ordinateur."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:982
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:987
 msgid "Select a category to reset."
 msgstr "Sélectionnez une catégorie à réinitialiser."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1044
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1049
 msgid "Repeat the current item (One) or the whole play queue (All)."
 msgstr "Répéter l'élément actuel (Un) ou toute la file de lecture (Tous)."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1045
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1050
 msgid "One"
 msgstr "Un"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1052
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1057
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:119
 msgid "When playback finishes"
 msgstr "À la fin de la lecture"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1053
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1058
 msgid "Stop, or quit VLC at the end of the play queue."
 msgstr "Arrêter, ou quitter VLC à la fin de la file de lecture."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1061
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1066
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:46
 msgid "Use a custom skin"
 msgstr "Utiliser un habillage personnalisé"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1062
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1067
 msgid "Starts VLC with the skin chosen below instead of this interface."
 msgstr ""
 "Démarre VLC avec l'habillage choisi ci-dessous au lieu de cette interface."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1078
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1083
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:93
 msgid "Remember the playback position"
 msgstr "Mémoriser la position de lecture"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1079
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1084
 msgid "Lets VLC continue the media where you left off."
 msgstr "Permet à VLC de reprendre le média là où vous l'avez laissé."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1093
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1098
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
 msgid "Reverse scroll direction"
 msgstr "Inverser le sens du défilement"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1094
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1099
 msgid "The wheels that seek go backwards when turned forwards."
 msgstr "Les molettes de déplacement reculent quand on les tourne vers l'avant."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1109
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1114
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:281
 msgid "Web remote control"
 msgstr "Télécommande Web"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1110
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1115
 msgid ""
 "Lets a web browser control VLC. Set its password in the Advanced Options."
 msgstr ""
 "Permet à un navigateur web de contrôler VLC. Définissez son mot de passe "
 "dans les Options avancées."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1128
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1133
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
 msgid "Video post-processing"
 msgstr "Post-traitement vidéo"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1129
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1134
 msgid ""
 "Improves the picture of poorly encoded videos, at the cost of processing "
 "power."
 msgstr ""
 "Améliore l'image des vidéos mal encodées, au prix de la puissance de calcul."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1178
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1183
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
 msgid "Visualization size"
 msgstr "Taille des visualisations"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1179
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1184
 msgid "The size the visualizations are drawn at."
 msgstr "Taille à laquelle les visualisations sont dessinées."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1180
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1185
 msgid "Match window"
 msgstr "Selon la fenêtre"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1221
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1226
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:120
 msgid "Seek precisely"
 msgstr "Déplacement précis"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1222
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1227
 msgid ""
 "Seek to the exact time asked, slower than seeking to the nearest key frame."
 msgstr ""
 "Se déplace exactement au temps demandé, plus lentement qu'en allant à "
 "l'image clé la plus proche."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1293
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:674
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1298
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:689
 msgid "Lowest latency"
 msgstr "Latence la plus basse"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1311
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1316
 msgid "From the file only"
 msgstr "Depuis le fichier uniquement"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1313
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1318
 msgid "From the file and the internet"
 msgstr "Depuis le fichier et Internet"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1330
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1335
 msgid "Box"
 msgstr "Cadre"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1390
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1395
 msgid "Above normal"
 msgstr "Supérieure à la normale"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1391
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1396
 msgid "Below normal"
 msgstr "Inférieure à la normale"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1391
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1396
 msgid "Idle"
 msgstr "Basse"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1505
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1510
 msgid "Current screen"
 msgstr "Écran actuel"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1510
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1515
 msgid "Screen %1 (%2)"
 msgstr "Écran %1 (%2)"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1516
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1521
 msgid "Screen %1"
 msgstr "Écran %1"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1525
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1530
 msgid "Any title"
 msgstr "N'importe quel titre"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1525
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1530
 msgid "Contains title"
 msgstr "Contient le titre"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1526
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1531
 msgid "Title with extra characters"
 msgstr "Titre avec caractères en plus"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1526
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1531
 msgid "Exact title match"
 msgstr "Titre exact"
 
@@ -24579,31 +24580,31 @@ msgstr ""
 msgid "The configurations folder could not be opened."
 msgstr "Le dossier des configurations n'a pas pu être ouvert."
 
-#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:176
+#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:177
 msgid "Last.fm is unavailable in this VLC installation."
 msgstr "Last.fm n'est pas disponible dans cette installation de VLC."
 
-#: modules/gui/qt/dialogs/preferences/config_model_effects.cpp:89
+#: modules/gui/qt/dialogs/preferences/config_model_effects.cpp:128
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:448
 msgid "VLC preferences are unavailable."
 msgstr "Les préférences de VLC ne sont pas disponibles."
 
-#: modules/gui/qt/dialogs/preferences/config_model_effects.cpp:94
+#: modules/gui/qt/dialogs/preferences/config_model_effects.cpp:133
 msgid "The effect preview belongs to another VLC window."
 msgstr "L'aperçu de l'effet appartient à une autre fenêtre de VLC."
 
-#: modules/gui/qt/dialogs/preferences/config_model_effects.cpp:112
+#: modules/gui/qt/dialogs/preferences/config_model_effects.cpp:151
 msgid ""
 "%1 changed outside the settings. Discard your changes to see its new value."
 msgstr ""
 "%1 a été modifié en dehors des paramètres. Annulez vos modifications pour "
 "voir sa nouvelle valeur."
 
-#: modules/gui/qt/dialogs/preferences/config_model_effects.cpp:140
+#: modules/gui/qt/dialogs/preferences/config_model_effects.cpp:179
 msgid "The playback preview could not be restored."
 msgstr "L'aperçu de la lecture n'a pas pu être restauré."
 
-#: modules/gui/qt/dialogs/preferences/config_model_effects.cpp:142
+#: modules/gui/qt/dialogs/preferences/config_model_effects.cpp:181
 msgid ""
 "Could not save the settings of VLC (error %1). Check that its configuration "
 "file can be written."
@@ -24611,7 +24612,7 @@ msgstr ""
 "Impossible d'enregistrer les paramètres de VLC (erreur %1). Vérifiez que son "
 "fichier de configuration est accessible en écriture."
 
-#: modules/gui/qt/dialogs/preferences/config_model_effects.cpp:145
+#: modules/gui/qt/dialogs/preferences/config_model_effects.cpp:184
 msgid ""
 "%1 changed outside the settings or is unavailable. Your changes were not "
 "saved."
@@ -24710,7 +24711,7 @@ msgid "Show settings"
 msgstr "Afficher les paramètres"
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:74
-#: modules/gui/qt/qt.cpp:337
+#: modules/gui/qt/qt.cpp:338
 msgid "Simple"
 msgstr "Simple"
 
@@ -24723,7 +24724,7 @@ msgid "Switch to full preferences view"
 msgstr "Montrer les préférences avancées"
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:78
-#: modules/gui/qt/qt.cpp:337
+#: modules/gui/qt/qt.cpp:338
 msgid "Expert"
 msgstr "Expert"
 
@@ -24929,16 +24930,16 @@ msgstr ""
 "Impossible d'enregistrer les raccourcis (erreur %1). Les modifications ont "
 "été annulées en mémoire ; vérifiez le fichier de configuration."
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:464
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:480
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:479
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:495
 msgid "Device:"
 msgstr "Périphérique :"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:611
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:626
 msgid "Input & Codecs Settings"
 msgstr "Paramètres d'entrée et de codecs"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:616
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:631
 msgid ""
 "If this property is blank, different values\n"
 "for DVD, VCD, and CDDA are set.\n"
@@ -24950,77 +24951,78 @@ msgstr ""
 "Vous pouvez en définir une unique ou les configurer\n"
 "dans les préférences avancées."
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:677
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:692
 msgid "High latency"
 msgstr "Latence élevée"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:678
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:693
 msgid "Higher latency"
 msgstr "Latence la plus haute"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:720
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:735
 msgid "This is VLC's skinnable interface. You can download other skins at"
 msgstr ""
 "Ceci est l'interface habillable de VLC. Vous pouvez télécharger d'autres "
 "habillages sur"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:722
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:737
 msgid "VLC skins website"
 msgstr "le site Web des habillages VLC"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:750
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:765
 msgid "System's default (%1)"
 msgstr "Par défaut du système (%1)"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:982
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:997
 msgid "Configure Hotkeys"
 msgstr "Configurer les raccourcis claviers"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1383
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1441
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1446
 msgid "%1 (partial)"
 msgstr "%1 (partiel)"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1530
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1613
 msgid "File associations"
 msgstr "Association de fichiers"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1607
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1690
 msgid "&Apply"
 msgstr "&Appliquer"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1741
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1751
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1824
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1834
 msgid "Please choose an entry point folder"
 msgstr "Choisissez un dossier de point d'entrée"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:126
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:128
 msgid "Layout direction"
 msgstr "Sens de la disposition"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:139
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:142
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:259
 #: modules/text_renderer/freetype/freetype.c:126
 msgid "Left to right"
 msgstr "De gauche à droite"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:140
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:143
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:259
 #: modules/text_renderer/freetype/freetype.c:126
 msgid "Right to left"
 msgstr "De droite à gauche"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:154
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:157
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:406
 msgid "Theme"
 msgstr "Thème"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:178
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:181
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:406
-#: modules/gui/qt/qt.cpp:332
+#: modules/gui/qt/qt.cpp:333
 msgid "Accent color"
 msgstr "Couleur d'accentuation"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:241
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:244
 msgid "VLC follows the system language."
 msgstr "VLC suit la langue du système."
 
@@ -25507,6 +25509,7 @@ msgid "Lower"
 msgstr "Plus bas"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:106
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:490
 msgid "Usual"
 msgstr "Normale"
 
@@ -25831,7 +25834,7 @@ msgid "Seeking"
 msgstr "Déplacement"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:121
-#: modules/gui/qt/qt.cpp:299
+#: modules/gui/qt/qt.cpp:300
 msgid "Show thumbnail while scrubbing"
 msgstr "Afficher une miniature pendant le déplacement"
 
@@ -27196,13 +27199,22 @@ msgstr "Diffusion : "
 msgid "Schedule: "
 msgstr "Planification : "
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1193
+#: modules/gui/qt/maininterface/mainctx.cpp:1198
 msgid "Paste from clipboard"
 msgstr "Coller depuis le presse-papiers"
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1194
+#: modules/gui/qt/maininterface/mainctx.cpp:1199
 msgid "Do you want to enqueue the following URLs into the play queue?"
 msgstr "Voulez-vous ajouter les URL suivantes à la file de lecture ?"
+
+#. xgettext: The direction your language is written in: "RTL" if from
+#. * right to left (Arabic, Hebrew, Persian, Urdu...), else "LTR". Choosing
+#. * the language lays the interface out in that direction (the user can
+#. * change it under the language).
+#: modules/gui/qt/maininterface/mainctx.cpp:1341
+msgctxt "layout direction"
+msgid "LTR"
+msgstr ""
 
 #: modules/gui/qt/maininterface/qml/MenuTopbar.qml:36
 #: modules/gui/qt/maininterface/qml/LocalTopbar.qml:138
@@ -28953,7 +28965,9 @@ msgstr "Supprimer les éléments filtrés"
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1270
 msgid ""
 "Do you really want to discard the items that are not displayed at the moment?"
-msgstr "Voulez-vous vraiment supprimer les éléments qui ne sont pas affichés actuellement ?"
+msgstr ""
+"Voulez-vous vraiment supprimer les éléments qui ne sont pas affichés "
+"actuellement ?"
 
 #: modules/gui/qt/network/addonsmodel.cpp:330
 msgid "This addon has been installed manually. VLC can't manage it by itself."
@@ -30036,11 +30050,46 @@ msgstr "Recherche de sous-titres…"
 msgid "No subtitles yet"
 msgstr "Pas encore de sous-titres"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:595
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:480
+msgid "Position and size"
+msgstr "Position et taille"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:488
+msgctxt "subtitles"
+msgid "Position"
+msgstr "Position"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:491
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:505
+msgid "%1%"
+msgstr "%1 %"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:492
+msgid "Move the subtitles down"
+msgstr "Descendre les sous-titres"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:493
+msgid "Move the subtitles up"
+msgstr "Monter les sous-titres"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:504
+msgctxt "subtitles"
+msgid "Size"
+msgstr "Taille"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:506
+msgid "Smaller subtitles"
+msgstr "Sous-titres plus petits"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:507
+msgid "Larger subtitles"
+msgstr "Sous-titres plus grands"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:737
 msgid "HI"
 msgstr "SME"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:600
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:742
 msgid "For the hearing impaired"
 msgstr "Pour les sourds et malentendants"
 
@@ -30296,22 +30345,22 @@ msgstr "File de lecture"
 msgid "%1 elements, %2"
 msgstr "%1 élément(s), %2"
 
-#: modules/gui/qt/qt.cpp:171
+#: modules/gui/qt/qt.cpp:172
 msgid "Select the initial preferences view"
 msgstr "Sélectionner la vue initiale des préférences"
 
-#: modules/gui/qt/qt.cpp:172
+#: modules/gui/qt/qt.cpp:173
 msgid ""
 "Select which preferences view to show upon opening the preferences dialog."
 msgstr ""
 "Sélectionnez la vue des préférences à afficher à l'ouverture de la fenêtre "
 "des préférences."
 
-#: modules/gui/qt/qt.cpp:175 modules/gui/skins2/src/skin_main.cpp:482
+#: modules/gui/qt/qt.cpp:176 modules/gui/skins2/src/skin_main.cpp:482
 msgid "Systray icon"
 msgstr "Icône dans la barre système"
 
-#: modules/gui/qt/qt.cpp:176
+#: modules/gui/qt/qt.cpp:177
 msgid ""
 "Show an icon in the systray allowing you to control VLC media player for "
 "basic actions."
@@ -30319,29 +30368,29 @@ msgstr ""
 "Afficher une icône de notification dans la barre des tâches pour contrôler "
 "les actions de base de VLC."
 
-#: modules/gui/qt/qt.cpp:180
+#: modules/gui/qt/qt.cpp:181
 msgid "Start VLC with only a systray icon"
 msgstr "Démarrer VLC avec uniquement une icône de notification"
 
-#: modules/gui/qt/qt.cpp:181
+#: modules/gui/qt/qt.cpp:182
 msgid "VLC will start with just an icon in your taskbar."
 msgstr "VLC démarrera avec seulement une icône dans votre barre des tâches."
 
-#: modules/gui/qt/qt.cpp:190
+#: modules/gui/qt/qt.cpp:191
 msgid "Show playing item name in window title"
 msgstr "Afficher le titre en cours de lecture dans le titre de la fenêtre"
 
-#: modules/gui/qt/qt.cpp:191
+#: modules/gui/qt/qt.cpp:192
 msgid "Show the name of the song or video in the controller window title."
 msgstr ""
 "Afficher le titre de la chanson ou de la vidéo dans le titre de la fenêtre "
 "de contrôle."
 
-#: modules/gui/qt/qt.cpp:194
+#: modules/gui/qt/qt.cpp:195
 msgid "Show notification popup on track change"
 msgstr "Notifier les changements de chanson"
 
-#: modules/gui/qt/qt.cpp:196
+#: modules/gui/qt/qt.cpp:197
 msgid ""
 "Show a notification popup with the artist and track name when the current "
 "play queue item changes, when VLC is minimized or hidden."
@@ -30350,11 +30399,11 @@ msgstr ""
 "l'élément en cours de la file de lecture change, lorsque VLC est réduit ou "
 "masqué."
 
-#: modules/gui/qt/qt.cpp:199
+#: modules/gui/qt/qt.cpp:200
 msgid "Windows opacity between 0.1 and 1"
 msgstr "Facteur d'opacité des fenêtres entre 0,1 et 1."
 
-#: modules/gui/qt/qt.cpp:200
+#: modules/gui/qt/qt.cpp:201
 msgid ""
 "Sets the windows opacity between 0.1 and 1 for main interface, play queue "
 "and extended panel. This option only works with Windows and X11 with "
@@ -30364,11 +30413,11 @@ msgstr ""
 "la file de lecture et le panneau étendu. Cette option ne fonctionne qu'avec "
 "Windows et X11 avec les extensions composite."
 
-#: modules/gui/qt/qt.cpp:205
+#: modules/gui/qt/qt.cpp:206
 msgid "Fullscreen controller opacity between 0.1 and 1"
 msgstr "Facteur d'opacité du contrôleur en mode plein écran entre 0,1 et 1."
 
-#: modules/gui/qt/qt.cpp:206
+#: modules/gui/qt/qt.cpp:207
 msgid ""
 "Sets the fullscreen controller opacity between 0.1 and 1 for main interface, "
 "play queue and extended panel. This option only works with Windows and X11 "
@@ -30378,15 +30427,15 @@ msgstr ""
 "principale, la file de lecture et le panneau étendu. Cette option ne "
 "fonctionne qu'avec Windows et X11 avec les extensions composite."
 
-#: modules/gui/qt/qt.cpp:211
+#: modules/gui/qt/qt.cpp:212
 msgid "Initial user scale factor for the interface, between 0.3 and 3.0"
 msgstr "Facteur d'échelle initial de l'interface, entre 0,3 et 3,0"
 
-#: modules/gui/qt/qt.cpp:213
+#: modules/gui/qt/qt.cpp:214
 msgid "Show unimportant error and warnings dialogs"
 msgstr "Afficher les erreurs non importantes et les avertissements"
 
-#: modules/gui/qt/qt.cpp:214
+#: modules/gui/qt/qt.cpp:215
 msgid ""
 "Show the errors of VLC at the bottom of the window, and ask before removing "
 "media from a playlist or from the play queue, or deleting playlists. Off, "
@@ -30399,11 +30448,11 @@ msgstr ""
 "que dans les messages de VLC et ces retraits sont faits immédiatement ; la "
 "suppression d'un fichier du disque est toujours confirmée."
 
-#: modules/gui/qt/qt.cpp:219
+#: modules/gui/qt/qt.cpp:220
 msgid "Activate the updates availability notification"
 msgstr "Activer la notification de mises à jour disponibles"
 
-#: modules/gui/qt/qt.cpp:220
+#: modules/gui/qt/qt.cpp:221
 msgid ""
 "Activate the automatic notification of new versions of the software. It runs "
 "once every two weeks."
@@ -30411,11 +30460,11 @@ msgstr ""
 "Activer les notification automatiques de nouvelles versions. Ceci est "
 "vérifié toutes les deux semaines."
 
-#: modules/gui/qt/qt.cpp:224
+#: modules/gui/qt/qt.cpp:225
 msgid "set the options for qml debugger"
 msgstr "définir les options du débogueur qml"
 
-#: modules/gui/qt/qt.cpp:225
+#: modules/gui/qt/qt.cpp:226
 msgid ""
 "set the options for qml debugger (see http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
@@ -30423,34 +30472,34 @@ msgstr ""
 "définir les options du débogueur qml (voir http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
 
-#: modules/gui/qt/qt.cpp:227
+#: modules/gui/qt/qt.cpp:228
 msgid "Number of days between two update checks"
 msgstr "Jours entre deux recherches de mise à jour"
 
-#: modules/gui/qt/qt.cpp:229
+#: modules/gui/qt/qt.cpp:230
 msgid "Ask for network policy at start"
 msgstr "Demande sur les politiques réseaux au démarrage"
 
-#: modules/gui/qt/qt.cpp:231
+#: modules/gui/qt/qt.cpp:232
 msgid "Save the recently played items in the menu"
 msgstr "Enregistrer les derniers médias joués dans le menu"
 
-#: modules/gui/qt/qt.cpp:233
+#: modules/gui/qt/qt.cpp:234
 msgid "List of words separated by | to filter"
 msgstr "Liste de mots à filtrer, séparés par des « | »."
 
-#: modules/gui/qt/qt.cpp:234
+#: modules/gui/qt/qt.cpp:235
 msgid ""
 "Regular expression used to filter the recent items played in the player."
 msgstr ""
 "Expression régulière utilisée pour filtrer les éléments récemment lus dans "
 "le lecteur."
 
-#: modules/gui/qt/qt.cpp:237
+#: modules/gui/qt/qt.cpp:238
 msgid "Selection of the starting mode and look"
 msgstr "Sélection du mode et de l'apparence au démarrage"
 
-#: modules/gui/qt/qt.cpp:238
+#: modules/gui/qt/qt.cpp:239
 msgid ""
 "Start VLC with:\n"
 " - normal mode\n"
@@ -30463,11 +30512,11 @@ msgstr ""
 "jaquettes des albums…\n"
 " - un mode minimal aux contrôles limités"
 
-#: modules/gui/qt/qt.cpp:244
+#: modules/gui/qt/qt.cpp:245
 msgid "Show a controller in fullscreen mode"
 msgstr "Afficher un contrôleur en mode plein écran"
 
-#: modules/gui/qt/qt.cpp:245
+#: modules/gui/qt/qt.cpp:246
 msgid ""
 "Show the playback controls in fullscreen when the mouse moves. Off, only the "
 "keyboard shows them (the I key). The skins read it for their fullscreen "
@@ -30477,39 +30526,39 @@ msgstr ""
 "Désactivé, seul le clavier les affiche (la touche I). Les habillages "
 "l'utilisent aussi pour leur contrôleur plein écran."
 
-#: modules/gui/qt/qt.cpp:248
+#: modules/gui/qt/qt.cpp:249
 msgid "Embed the file browser in open dialog"
 msgstr ""
 "Ajouter l'explorateur de fichiers dans la fenêtre de dialogue d'ouverture de "
 "fichier"
 
-#: modules/gui/qt/qt.cpp:250
+#: modules/gui/qt/qt.cpp:251
 msgid "Define which screen fullscreen goes"
 msgstr "Définir l'écran qui passe en plein écran"
 
-#: modules/gui/qt/qt.cpp:251
+#: modules/gui/qt/qt.cpp:252
 msgid "Screennumber of fullscreen, instead of same screen where interface is."
 msgstr ""
 "Numéro de l'écran du plein écran, au lieu de l'écran où se trouve "
 "l'interface."
 
-#: modules/gui/qt/qt.cpp:254
+#: modules/gui/qt/qt.cpp:255
 msgid "Load extensions on startup"
 msgstr "Charger les extensions au démarrage"
 
-#: modules/gui/qt/qt.cpp:255
+#: modules/gui/qt/qt.cpp:256
 msgid "Automatically load the extensions module on startup."
 msgstr "Charger automatiquement le module des extensions au démarrage."
 
-#: modules/gui/qt/qt.cpp:258
+#: modules/gui/qt/qt.cpp:259
 msgid "Start in minimal view (without menus)"
 msgstr "Démarrer avec le style minimal (sans menus)"
 
-#: modules/gui/qt/qt.cpp:260
+#: modules/gui/qt/qt.cpp:261
 msgid "Display background cone or art"
 msgstr "Afficher le cone en arrière-plan ou la jaquette"
 
-#: modules/gui/qt/qt.cpp:261
+#: modules/gui/qt/qt.cpp:262
 msgid ""
 "Display the cover art of the audio playing in the player (the cone in the "
 "compact view). Off, a plain picture takes its place, which also prevents "
@@ -30519,19 +30568,19 @@ msgstr ""
 "vue compacte). Désactivé, une image unie la remplace, ce qui évite aussi le "
 "marquage de l'écran."
 
-#: modules/gui/qt/qt.cpp:264
+#: modules/gui/qt/qt.cpp:265
 msgid "Expanding background cone or art"
 msgstr "Étendre le cône ou la jaquette en arrière-plan"
 
-#: modules/gui/qt/qt.cpp:265
+#: modules/gui/qt/qt.cpp:266
 msgid "Background art fits window's size."
 msgstr "L'image d'arrière-plan s'adapte à la taille de la fenêtre."
 
-#: modules/gui/qt/qt.cpp:267
+#: modules/gui/qt/qt.cpp:268
 msgid "Ignore keyboard volume buttons."
 msgstr "Ignorer le boutons de volumes du clavier."
 
-#: modules/gui/qt/qt.cpp:269
+#: modules/gui/qt/qt.cpp:270
 msgid ""
 "With this option checked, the volume up, volume down and mute buttons on "
 "your keyboard will always change your system volume. With this option "
@@ -30543,11 +30592,11 @@ msgstr ""
 "changeront le volume de VLC quand l'application est sélectionnée ou le "
 "volume système quand VLC n'est pas sélectionné."
 
-#: modules/gui/qt/qt.cpp:284
+#: modules/gui/qt/qt.cpp:285
 msgid "When to raise the interface"
 msgstr "Quand mettre l'interface au premier plan"
 
-#: modules/gui/qt/qt.cpp:285
+#: modules/gui/qt/qt.cpp:286
 msgid ""
 "This option allows the interface to be shown and raised automatically when a "
 "video/audio playback starts, or never."
@@ -30555,11 +30604,11 @@ msgstr ""
 "Cette option permet d'afficher et de mettre au premier plan l'interface "
 "automatiquement au début d'une lecture vidéo/audio, ou jamais."
 
-#: modules/gui/qt/qt.cpp:288
+#: modules/gui/qt/qt.cpp:289
 msgid "Enable window titlebar"
 msgstr "Activer la barre de titre de la fenêtre"
 
-#: modules/gui/qt/qt.cpp:289
+#: modules/gui/qt/qt.cpp:290
 msgid ""
 "This option enables the title bar. Disabling it will remove the titlebar and "
 "move window buttons within the interface (Client Side Decoration)"
@@ -30568,38 +30617,38 @@ msgstr ""
 "titre et déplace les boutons de la fenêtre dans l'interface (décoration côté "
 "client)"
 
-#: modules/gui/qt/qt.cpp:293
+#: modules/gui/qt/qt.cpp:294
 msgid "Show the menu bar"
 msgstr "Afficher la barre de menus"
 
-#: modules/gui/qt/qt.cpp:294
+#: modules/gui/qt/qt.cpp:295
 msgid "This option displays the classic menu bar"
 msgstr "Cette option affiche la barre de menus classique"
 
-#: modules/gui/qt/qt.cpp:296
+#: modules/gui/qt/qt.cpp:297
 msgid "Pin video controls"
 msgstr "Épingler les contrôles vidéo"
 
-#: modules/gui/qt/qt.cpp:297
+#: modules/gui/qt/qt.cpp:298
 msgid "Place video controls above and below the video instead of above"
 msgstr ""
 "Placer les contrôles vidéo au-dessus et en dessous de la vidéo au lieu de "
 "par-dessus"
 
-#: modules/gui/qt/qt.cpp:300
+#: modules/gui/qt/qt.cpp:301
 msgid "Show the frame at the hovered position above the seek bar"
 msgstr ""
 "Afficher l'image à la position survolée au-dessus de la barre de progression"
 
-#: modules/gui/qt/qt.cpp:302
+#: modules/gui/qt/qt.cpp:303
 msgid "Fullscreen controller mouse sensitivity"
 msgstr "Sensibilité de la souris en plein-écran"
 
-#: modules/gui/qt/qt.cpp:304
+#: modules/gui/qt/qt.cpp:305
 msgid "Select Qt video integration backend"
 msgstr "Sélectionner le moteur d'intégration vidéo Qt"
 
-#: modules/gui/qt/qt.cpp:305
+#: modules/gui/qt/qt.cpp:306
 msgid ""
 "Select Qt video integration backend. Use with care, the interface may not "
 "start if an incompatible compositor is selected"
@@ -30608,11 +30657,11 @@ msgstr ""
 "l'interface peut ne pas démarrer si un compositeur incompatible est "
 "sélectionné"
 
-#: modules/gui/qt/qt.cpp:307
+#: modules/gui/qt/qt.cpp:308
 msgid "Use smooth scrolling in Flickable based views"
 msgstr "Utiliser le défilement fluide dans les vues basées sur Flickable"
 
-#: modules/gui/qt/qt.cpp:308
+#: modules/gui/qt/qt.cpp:309
 msgid ""
 "Deactivating this option will disable smooth scrolling in Flickable based "
 "views (such as the Play Queue). This option is only respected with a scroll "
@@ -30622,23 +30671,23 @@ msgstr ""
 "sur Flickable (comme la file de lecture). Cette option n'est respectée "
 "qu'avec un gestionnaire de défilement, voir l'option `qt-use-scroll-handler`."
 
-#: modules/gui/qt/qt.cpp:311
+#: modules/gui/qt/qt.cpp:312
 msgid "Use Kirigami scroll handler for Flickable based views"
 msgstr ""
 "Utiliser le gestionnaire de défilement Kirigami pour les vues basées sur "
 "Flickable"
 
-#: modules/gui/qt/qt.cpp:312
+#: modules/gui/qt/qt.cpp:313
 msgid "Using Kirigami scroll handler may improve scrolling behavior."
 msgstr ""
 "Le gestionnaire de défilement Kirigami peut améliorer le comportement du "
 "défilement."
 
-#: modules/gui/qt/qt.cpp:314
+#: modules/gui/qt/qt.cpp:315
 msgid "Safe area for the user interface"
 msgstr "Zone de sécurité de l'interface utilisateur"
 
-#: modules/gui/qt/qt.cpp:315
+#: modules/gui/qt/qt.cpp:316
 msgid ""
 "Sets the safe area percentage between 0.0 and 100 when you want to ensure "
 "the visibility of the user interface on a constrained viewport"
@@ -30647,21 +30696,21 @@ msgstr ""
 "voulez garantir la visibilité de l'interface utilisateur sur un affichage "
 "restreint"
 
-#: modules/gui/qt/qt.cpp:319
+#: modules/gui/qt/qt.cpp:320
 msgid "Print Qt's important internal messages"
 msgstr "Afficher les messages internes importants de Qt"
 
-#: modules/gui/qt/qt.cpp:320
+#: modules/gui/qt/qt.cpp:321
 msgid "Enable Qt's all own messaging categories except the debug category."
 msgstr ""
 "Activer toutes les catégories de messages propres à Qt, sauf la catégorie de "
 "débogage."
 
-#: modules/gui/qt/qt.cpp:322
+#: modules/gui/qt/qt.cpp:323
 msgid "Hide the window on close"
 msgstr "Masquer la fenêtre à la fermeture"
 
-#: modules/gui/qt/qt.cpp:323
+#: modules/gui/qt/qt.cpp:324
 msgid ""
 "Instead of closing the application, hide the window. This setting is only "
 "applicable when system tray icon is enabled."
@@ -30669,13 +30718,13 @@ msgstr ""
 "Au lieu de fermer l'application, masquer la fenêtre. Ce réglage ne "
 "s'applique que si l'icône de la zone de notification est activée."
 
-#: modules/gui/qt/qt.cpp:325
+#: modules/gui/qt/qt.cpp:326
 msgid "Enable backdrop blur filter for the main window if possible"
 msgstr ""
 "Activer le filtre de flou d'arrière-plan pour la fenêtre principale si "
 "possible"
 
-#: modules/gui/qt/qt.cpp:326
+#: modules/gui/qt/qt.cpp:327
 msgid ""
 "If backdrop blur filter is available, use translucency in the backgrounds of "
 "certain parts of the user interface instead of a solid color. This setting "
@@ -30685,11 +30734,11 @@ msgstr ""
 "dans les arrière-plans de certaines parties de l'interface au lieu d'une "
 "couleur unie. Ce réglage nuit à la lisibilité du texte."
 
-#: modules/gui/qt/qt.cpp:329
+#: modules/gui/qt/qt.cpp:330
 msgid "Enable picture-in-picture (PiP) mode"
 msgstr "Activer le mode image dans l'image (PiP)"
 
-#: modules/gui/qt/qt.cpp:330
+#: modules/gui/qt/qt.cpp:331
 msgid ""
 "Picture-in-picture mode allows playing video contained in a smaller area so "
 "that the interface remains usable."
@@ -30697,7 +30746,7 @@ msgstr ""
 "Le mode image dans l'image permet de lire la vidéo dans une zone plus petite "
 "afin que l'interface reste utilisable."
 
-#: modules/gui/qt/qt.cpp:333
+#: modules/gui/qt/qt.cpp:334
 msgid ""
 "Adjusts the accent color, special values are 'default' and 'system' "
 "(requires Qt 6.6) ."
@@ -30705,23 +30754,23 @@ msgstr ""
 "Ajuste la couleur d'accentuation ; les valeurs spéciales sont 'default' et "
 "'system' (nécessite Qt 6.6)."
 
-#: modules/gui/qt/qt.cpp:343
+#: modules/gui/qt/qt.cpp:344
 msgid "When minimized"
 msgstr "Infobulles depuis la zone de notification si minimisé"
 
-#: modules/gui/qt/qt.cpp:378 modules/video_output/xcb/x11.c:413
+#: modules/gui/qt/qt.cpp:379 modules/video_output/xcb/x11.c:413
 msgid "X11"
 msgstr "X11"
 
-#: modules/gui/qt/qt.cpp:386
+#: modules/gui/qt/qt.cpp:387
 msgid "Qt interface"
 msgstr "Interface Qt"
 
-#: modules/gui/qt/qt.cpp:434
+#: modules/gui/qt/qt.cpp:435
 msgid "Check for VLC Redesign updates"
 msgstr "Rechercher les mises à jour de VLC Redesign"
 
-#: modules/gui/qt/qt.cpp:435
+#: modules/gui/qt/qt.cpp:436
 msgid ""
 "Look for a new release of VLC Redesign on GitHub at startup, at most once a "
 "day."
@@ -30729,11 +30778,11 @@ msgstr ""
 "Rechercher une nouvelle version de VLC Redesign sur GitHub au démarrage, au "
 "plus une fois par jour."
 
-#: modules/gui/qt/qt.cpp:439
+#: modules/gui/qt/qt.cpp:440
 msgid "Resume at"
 msgstr "Reprendre à"
 
-#: modules/gui/qt/qt.cpp:440
+#: modules/gui/qt/qt.cpp:441
 msgid ""
 "Seconds into the media of the command line where playback continues, after "
 "an update."

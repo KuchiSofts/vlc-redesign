@@ -30,21 +30,8 @@ Item {
     signal autoSearchRequested(bool on)
     signal showBothRequested(bool on)
 
-    // the player behind, as on the other steps
-    Rectangle {
-        x: 17
-        y: 19
-        width: parent.width - 34
-        height: 22
-        color: VLCStyle.redesign.color("#191919", "#ababaa")
-    }
-    Rectangle {
-        x: 17
-        y: 41
-        width: parent.width - 34
-        height: 542
-        color: VLCStyle.redesign.color("#090909", "#dedede")
-    }
+    // on the dialog itself, as the shortcuts: the player behind is the
+    // theme step's (its title bar and controls), an empty one looked unfinished
 
     Text {
         id: title

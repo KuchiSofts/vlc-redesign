@@ -35,9 +35,6 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 - **"Subtitl…"**: the name of a tab of the languages and tracks panel was cut short even with room for it.
 - **The library's title bar kept the last song's name** after playback stopped; it shows *VLC Media Player* again.
-- **Titles without ".mp4"**: where the library shows a video's title (the list view, its sorting and sections), a
-  video without a title of its own is named by its file without the extension ("Sintel", not "Sintel.mp4"). The
-  grids keep the file name, as the design shows it.
 - **Windows paths written with "/"** ("C:/Videos/film.mkv", as some apps and scripts pass them) were refused by
   VLC's core; "/" is a separator on Windows too.
 - **The welcome's subtitle and online steps** showed an empty player frame behind them; they are drawn on the

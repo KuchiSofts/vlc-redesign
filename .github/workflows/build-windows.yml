@@ -91,6 +91,18 @@ jobs:
           name: vlc-redesign-win64-${{ github.sha }}
           path: package
 
+      # a crash of vlc.exe leaves a minidump (Windows Error Reporting), uploaded
+      # with the logs: a crash that happens on the runner and not elsewhere can
+      # still be read (the call stack, with the modules and their offsets)
+      - name: Keep crash dumps
+        shell: pwsh
+        run: |
+          $key = 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps\vlc.exe'
+          New-Item -Force $key | Out-Null
+          New-ItemProperty -Force $key -Name DumpFolder -PropertyType ExpandString -Value "${{ runner.temp }}\vlc-launch-test\dumps" | Out-Null
+          New-ItemProperty -Force $key -Name DumpType -PropertyType DWord -Value 1 | Out-Null
+          New-ItemProperty -Force $key -Name DumpCount -PropertyType DWord -Value 5 | Out-Null
+
       - name: Launch and play
         shell: pwsh
         run: ./extras/juxtopposed/ci/launch-test.ps1 -VlcDir package -WorkDir "${{ runner.temp }}"
@@ -103,6 +115,7 @@ jobs:
           path: |
             ${{ runner.temp }}/vlc-launch-test/*.txt
             ${{ runner.temp }}/vlc-launch-test/*.log
+            ${{ runner.temp }}/vlc-launch-test/dumps/*.dmp
           retention-days: 7
 
   # The package that passed the launch test, signed through SignPath

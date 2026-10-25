@@ -76,7 +76,8 @@ counted from this document's own tables and checklists (column *From*); ⚪ idea
 | Samsung TV      | 🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ | 2/7     | 28 %  | [§9](#samsung-smart-tv-tizen)          |
 | iPhone / iPad   | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/3     | 0 %   | [§9](#iphone-ipad-apple-tv)            |
 
-Windows 0.2.6 is released; 0.3.0 counts the lines of section 8 (done since 0.2.6, in progress, left).
+Windows 0.3.0 was released on 2026-10-25 ([v0.3.0](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.3.0));
+the bar counts the lines of section 8, the ones left need the owner (SignPath, Discussions) or hardware not here.
 
 **Areas**
 
@@ -885,7 +886,7 @@ and an accepted request made the TV fail after a pause in a test.
   VLC Redesign's name and version, and the two features that go online are chosen at install (or at the first
   start of a portable copy) with the policy linked; waiting for the user's application to SignPath
 - 🟡 Automated tests in CI: launch, playback, QML warnings (extras/juxtopposed/ci/launch-test.ps1 and its job in
-  build-windows.yml, passing on this PC; it runs on GitHub once uploaded)
+  build-windows.yml, passing on this PC; first run on GitHub started with the 0.3.0 push, 2026-10-25)
 - 🔴 Intel graphics, older PCs, Windows 10 on real hardware, high-DPI multi-monitor (2026-10-24: the app drawn at
   125, 150, 175 and 200 % has the layout of 100 % on every page checked, with sharp text, and its caption buttons
   and top edge answer Windows where they are drawn; still to do: monitors of different scales, a real one above 100 %)
@@ -902,7 +903,8 @@ and an accepted request made the TV fail after a pause in a test.
 - 🟢 Small updates from 0.2.4, 0.2.5 and 0.2.6 built from the release package (2026-10-25, build 203): 21.8 MB each
   (the 72 new translation files go whole), each applied to its old release and every one of the 524 files checked
   against the package; the check itself had to learn to make the new `locale\` folder
-- 🔴 Announcement in Discussions; every fixed issue answered with the release link
+- 🟡 Every fixed issue answered with the release link (#5 and #6, 2026-10-25); the announcement waits for
+  Discussions to be turned on (a setting of the owner)
 
 Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 90 🟢, 5 🟡, 2 🔴 (97), of which 5 🟢 are
 in the app ⏳. The 🟡 and 🔴 left need the upload (CI, the announcement, the replies), SignPath, or hardware not here.
@@ -1338,12 +1340,12 @@ In an organization, a `.github` repository gives every repository these files by
 - 🔴 Shared design assets in `design/`
 - 🔴 Discussions on, five categories and their forms
 - 🟢 Issue forms: design mismatch, TV report, translation (2026-10-25)
-- 🟢 `labels.yml` and its sync workflow (runs once uploaded)
+- 🟢 `labels.yml` and its sync workflow (ran on the 0.3.0 push)
 - 🔴 Roadmap board across repositories, with the votes workflow
 - 🟢 `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, pull request template (2026-10-25; saved replies are a
   GitHub setting of the owner's account)
 - 🔴 In-app *Suggest an idea* / *Report a problem*
-- 🟢 `docs/wiki/` with its *Design check* and *TV compatibility* pages, and `wiki-sync.yml` (runs once uploaded)
+- 🟢 `docs/wiki/` with its *Design check* and *TV compatibility* pages, and `wiki-sync.yml` (ran on the 0.3.0 push)
 - 🟡 Release notes script (`extras/juxtopposed/release/release-notes.py`, 2026-10-25); the pixel-check job with
   automatic screenshots needs a Windows runner with a display: later
 

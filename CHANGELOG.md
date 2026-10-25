@@ -52,6 +52,12 @@ file name of the player bar.
 - **Keyboard Shortcuts and Settings open faster**: Keyboard Shortcuts froze the window for about 140 ms as it
   opened, now about 20 ms (it read its options twice, and its sort translated group names thousands of times);
   Settings about 155 ms, now about 135 ms.
+- **Casting: the picture area works with the mouse**: while a film plays on a TV, a click on the player pauses or
+  plays it, a double click goes fullscreen, and the wheel changes the volume (they did nothing there).
+- **Casting: subtitles change more smoothly**: taking the subtitles off no longer makes a Chromecast load the film
+  again, a subtitle chosen goes into the running conversion, and the look chosen in Settings (font, colours,
+  outline, shadow, bold, position) reaches the TV while the film plays. A note in the top corner (top right, right
+  to left) says which subtitles are now on the TV.
 - **Messages on the video in one language**: "Piste Subtitle", "Дорожка Audio" and "Audio delay" in a translated
   interface: the kind of track and of subtitles was inserted in English. Each message is a whole sentence in the
   language now. The shortcuts that make subtitles bigger and smaller also had each other's name.
@@ -237,7 +243,8 @@ file name of the player bar.
   name, "(partial)"), and [Translating](docs/TRANSLATING.md) explains how to translate, try and send a language.
 - **Move and resize the subtitles while watching**: the subtitle panel of the player has *Position* and *Size*,
   with − and + (and Reset). The subtitles move and grow on the video as you click, and stay so for the next
-  videos and the next starts, as Shift+Up and Shift+Down already kept the position (Ctrl+wheel's size is kept now
+  videos and the next starts, as Shift+Up and Shift+Down already kept the position; the menu fades while they
+  move so they show behind it (Ctrl+wheel's size is kept now
   too). The font, colours, outline, shadow and size chosen in Settings now reach the video already playing, from
   its next line (before: from the next video, the size after a restart). The font of the subtitles is picked in a list of the
   fonts installed (it was a field to type a font name in).

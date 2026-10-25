@@ -109,6 +109,9 @@ bool ControlbarProfileModel::save(bool clearDirty)
 
 bool ControlbarProfileModel::reload()
 {
+    // (the first reading is the start: see below)
+    const bool atStart = !m_started;
+    m_started = true;
     // 0.2.2: the fullscreen button left the title bar (next to Close) for
     // the end of the bottom bar. Done once for the saved profiles, so a
     // user who then takes it out of the bar keeps it out.
@@ -209,11 +212,19 @@ bool ControlbarProfileModel::reload()
     m_settings->endGroup();
     if (!ok || index < 0 || index >= profiles.size()) index = 0;
     if (profiles.isEmpty()) return false;
-    // The saved profiles are kept even when the settings of the selected one
-    // can not be applied (they would be replaced by the defaults at the
-    // next save): it stays selected with the settings in use
+    // At the start the settings in use are those of the selected profile:
+    // VLC keeps them as they change. Its saved settings can be older (a
+    // change the profiles were not saved after: the position and size of
+    // the subtitles, a shortcut key, the classic preferences, VLC ended
+    // unclosed) and put back every setting changed since, at every start;
+    // they are taken again whenever the profile is left or saved. Read again
+    // later (Customize Player cancelled), they come back. The saved profiles
+    // are kept even when the settings of the selected one can not be applied
+    // (they would be replaced by the defaults at the next save): it stays
+    // selected with the settings in use
     QString error;
-    if (auto *ctx = qobject_cast<MainCtx *>(parent()))
+    auto *ctx = qobject_cast<MainCtx *>(parent());
+    if (ctx && !atStart)
         ProfileSettings::apply(ctx, m_settings, profiles[index]->m_settingsSnapshot, &error);
 
     beginResetModel();

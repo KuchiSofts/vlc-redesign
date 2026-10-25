@@ -65,7 +65,7 @@ msgstr "Giao diện"
 #: modules/stream_out/es.c:388 modules/stream_out/transcode/transcode.c:190
 #: share/lua/http/dialogs/create_stream.html:150
 msgid "Audio"
-msgstr "Audio"
+msgstr "Âm thanh"
 
 #: include/vlc_config_cat.h:40 src/input/es_out.c:4795 src/libvlc-module.c:155
 #: src/libvlc-module.c:1695 modules/access/imem.c:63
@@ -20112,7 +20112,7 @@ msgstr "Lưu các thông tin bổ sung"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:19
 #: modules/visualization/visual/visual.c:123
 msgid "General"
-msgstr "Tổng quan"
+msgstr "Chung"
 
 #: modules/gui/macosx/panels/VLCInformationWindowController.m:169
 msgid "Codec Details"
@@ -26507,7 +26507,7 @@ msgstr "Quyền riêng tư"
 #: modules/gui/qt/medialibrary/mlsubtitleassociations_targets.cpp:27
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:116
 msgid "Media"
-msgstr "Phương tiện"
+msgstr "Đa phương tiện"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:31
 msgid "Performance"
@@ -27273,7 +27273,7 @@ msgstr "Kiểm tra lại"
 #: modules/gui/qt/player/qml/CompactLibrary.qml:77
 #: modules/gui/qt/player/qml/CompactLibrary.qml:291
 msgid "Home"
-msgstr "Home"
+msgstr "Trang chủ"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:88

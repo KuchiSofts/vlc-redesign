@@ -34287,7 +34287,7 @@ msgstr "स्वतः आकार बदले और विडियो प�
 
 #: modules/video_filter/canvas.c:106
 msgid "Canvas"
-msgstr "चित्रफलक\t"
+msgstr "चित्रफलक "
 
 #: modules/video_filter/canvas.c:107
 msgid "Canvas video filter"

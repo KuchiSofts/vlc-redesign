@@ -1,0 +1,29 @@
+VLC Redesign - அதிகாரப்பூர்வமற்ற உருவாக்கம்
+
+வடிவமைப்பு
+இடைமுகத்தை வடிவமைத்தவர் Juxtopposed.
+  நிகழ்படம்: https://www.youtube.com/watch?v=ERFeOgqk324
+  சேனல்:     https://www.youtube.com/@juxtopposed
+  Figma:     https://www.figma.com/community/file/1691465999134370980
+Juxtopposed உருவாக்கிய "VLC Redesign (Community)" CC BY 4.0 உரிமத்தின் கீழ் உள்ளது
+(https://creativecommons.org/licenses/by/4.0/). இது Qt/QML-க்கு ஏற்ப மாற்றப்பட்டு,
+அதன் சின்னங்கள் மீண்டும் வரையப்பட்டு மாற்றியமைக்கப்பட்டன. Juxtopposed இந்த
+உருவாக்கத்தை அங்கீகரிக்கவில்லை.
+
+அதிகாரப்பூர்வ VLC அல்ல
+இந்த உருவாக்கம் VLC 4.0 (மேம்பாட்டுப் பதிப்பு) அடிப்படையிலானது. இது VideoLAN-ஆல்
+உருவாக்கப்பட்டதோ, அதனுடன் தொடர்புடையதோ, அங்கீகரிக்கப்பட்டதோ அல்ல. VLC, VLC media player
+மற்றும் கூம்புச் சின்னம் VideoLAN-இன் வர்த்தகமுத்திரைகள். அதிகாரப்பூர்வ இயக்கி: https://www.videolan.org
+
+இது அதிகாரப்பூர்வ VLC-ஐத் தொடாமல் அதன் அருகில் நிறுவப்படும்: இதன் அமைப்புகள்,
+நூலகம் மற்றும் வரலாறு இதன் சொந்தக் கோப்புறையிலேயே இருக்கும்.
+
+உரிமம்
+GNU General Public License, பதிப்பு 2 அல்லது பிந்தையதன் கீழ் இலவச மென்பொருள்;
+libVLC, GNU LGPL 2.1 அல்லது பிந்தையதன் கீழ். Inter மற்றும் DM Mono எழுத்துருக்கள்
+SIL Open Font License 1.1-இன் கீழ். முழு உரைகளும் vlc.exe அருகில் நிறுவப்பட்டுள்ளன
+(COPYING.txt, COPYING.LIB.txt, licenses\). மூலக் குறியீடு:
+https://github.com/KuchiSofts/vlc-redesign
+
+மறுவடிவமைப்பின் முதல் செயலாக்கம்: MrDouglax
+(https://github.com/SrDouglax/JuxtopposedVLC).

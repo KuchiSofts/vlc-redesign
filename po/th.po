@@ -22363,7 +22363,7 @@ msgstr "สว่าง"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:30
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:407
 msgid "Dark"
-msgstr "ความมืด"
+msgstr "มืด"
 
 #: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:90
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:32
@@ -22371,7 +22371,7 @@ msgstr "ความมืด"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:29
 #: modules/gui/qt/util/color_scheme_model.cpp:46
 msgid "System"
-msgstr "ตามระบบ"
+msgstr "ระบบ"
 
 #: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:321
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:208
@@ -26174,7 +26174,7 @@ msgstr "ตรวจอีกครั้ง"
 #: modules/gui/qt/player/qml/CompactLibrary.qml:77
 #: modules/gui/qt/player/qml/CompactLibrary.qml:291
 msgid "Home"
-msgstr "ปุ่ม Home"
+msgstr "หน้าแรก"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:88

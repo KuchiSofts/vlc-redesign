@@ -89,9 +89,13 @@ static struct {
 
 } const language_map[] = {
     { "auto",  N_("Auto") },
+    { "af",    "Afrikaans" },
+    { "sq",    "Shqip" },
     { "en",    "American English" },
     { "ar",    "العربية" },
+    { "be",    "Беларуская" },
     { "bn",    "বাংলা" },
+    { "bs",    "Bosanski" },
     { "pt_BR", "Português (Brasil)" },
     { "en_GB", "British English" },
     { "el",    "Ελληνικά" },
@@ -109,6 +113,7 @@ static struct {
     { "ga",    "Gaeilge" },
     { "gd",    "Gàidhlig" },
     { "gl",    "Galego" },
+    { "gu",    "ગુજરાતી" },
     { "ka",    "ქართული" },
     { "de",    "Deutsch" },
     { "he",    "עברית" },
@@ -123,10 +128,14 @@ static struct {
     { "ko",    "한국어" },
     { "lt",    "Lietuvių" },
     { "lv",    "Latviešu" },
+    { "mk",    "Македонски" },
     { "mn",    "Монгол" },
     { "ms",    "Bahasa Melayu" },
+    { "ml",    "മലയാളം" },
+    { "mr",    "मराठी" },
     { "nb",    "Norsk bokmål" },
     { "nn",    "Norsk nynorsk" },
+    { "kn",    "ಕನ್ನಡ" },
     { "kk",    "Қазақ тілі" },
     { "km",    "ភាសាខ្មែរ" },
     { "ne",    "नेपाली" },
@@ -146,10 +155,12 @@ static struct {
     { "es",    "Español" },
     { "es_MX", "Español (Latinoamérica)" },
     { "sv",    "Svenska" },
+    { "ta",    "தமிழ்" },
     { "te",    "తెలుగు" },
     { "th",    "ไทย" },
     { "tr",    "Türkçe" },
     { "uk",    "Українська" },
+    { "ur",    "اردو" },
     { "vi",    "Tiếng Việt" },
     { "wa",    "Walon" }
 };
@@ -1360,6 +1371,7 @@ static const char *const complete_languages[] = {
     "ja", "ko", "zh_CN", "zh_TW", "cs", "sv",
     "ca", "da", "fi", "el", "hu", "ro", "bg", "sk", "sl", "hr", "sr", "nb", "id", "ms", "vi", "th", "hi",
     "lt", "lv", "fa", "et", "es_MX",
+    "bs", "gl", "gu", "nn", "sq", "eu", "af", "mr", "is", "bn", "be", "mk", "ml", "ta", "te", "kn", "ur",
 };
 
 static bool languageComplete( const char *iso )

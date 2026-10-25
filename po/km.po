@@ -7925,7 +7925,7 @@ msgstr "វេល"
 #: src/text/iso-639_def.h:552
 msgid "Wolof"
 msgstr ""
-" \t\n"
+"  \n"
 "វូឡុហ្វ"
 
 #: src/text/iso-639_def.h:553

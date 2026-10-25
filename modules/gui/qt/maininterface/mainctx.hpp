@@ -150,6 +150,9 @@ class MainCtx : public QObject
     Q_PROPERTY(bool playlistTree READ playlistTree NOTIFY playlistTreeChanged FINAL)
     // "Double click on the video" of the settings: 0 nothing, 1 fullscreen
     Q_PROPERTY(int doubleClickAction READ doubleClickAction NOTIFY doubleClickActionChanged FINAL)
+    // "Single click on the video" is not Nothing (where QML takes the click:
+    // the picture of a cast)
+    Q_PROPERTY(bool clickPauses READ clickPauses NOTIFY clickPausesChanged FINAL)
     // "Show confirmation and error dialogs" of the settings (qt-error-dialogs)
     Q_PROPERTY(bool showErrorDialogs READ showErrorDialogs NOTIFY showErrorDialogsChanged FINAL)
     // "Always show the player bar" of the settings: the bar of the library
@@ -311,6 +314,7 @@ public:
     bool fullscreenControls() const { return m_fullscreenControls; }
     bool playlistTree() const { return m_playlistTree; }
     int doubleClickAction() const { return m_doubleClickAction; }
+    bool clickPauses() const { return m_clickPauses; }
     bool showErrorDialogs() const { return m_showErrorDialogs; }
     bool alwaysShowPlayerBar() const { return m_alwaysShowPlayerBar; }
     bool increaseContrast() const { return m_increaseContrast; }
@@ -564,6 +568,7 @@ protected:
     bool m_fullscreenControls = true;
     bool m_playlistTree = false;
     int m_doubleClickAction = 1;
+    bool m_clickPauses = true;
     bool m_showErrorDialogs = true;
     bool m_alwaysShowPlayerBar = false;
     bool m_increaseContrast = false;
@@ -719,6 +724,7 @@ signals:
     void fullscreenControlsChanged();
     void playlistTreeChanged();
     void doubleClickActionChanged();
+    void clickPausesChanged();
     void showErrorDialogsChanged();
     void alwaysShowPlayerBarChanged();
     void increaseContrastChanged();

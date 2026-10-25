@@ -471,7 +471,36 @@ FocusScope {
 
         Component {
             id: castingComponent
-            Item {}
+            // The picture is on the TV: here a click plays or pauses it, a
+            // double click and the wheel do what they do over a video (the
+            // single click waits to be no double click)
+            MouseArea {
+                acceptedButtons: Qt.LeftButton | Qt.RightButton
+                onClicked: (mouse) => {
+                    if (mouse.button === Qt.RightButton)
+                        rootPlayer.showAudioContextMenu(mapToGlobal(mouse.x, mouse.y))
+                    else if (MainCtx.clickPauses)
+                        castClick.restart()
+                }
+                onDoubleClicked: (mouse) => {
+                    castClick.stop()
+                    if (mouse.button === Qt.LeftButton && MainCtx.doubleClickAction !== 0)
+                        MainCtx.toggleInterfaceFullScreen()
+                }
+                onWheel: (wheel) => {
+                    wheel.accepted = true
+                    castWheel.qmlWheelEvent(wheel)
+                }
+                Timer {
+                    id: castClick
+                    interval: MainCtx.doubleClickAction !== 0 ? Qt.styleHints.mouseDoubleClickInterval : 0
+                    onTriggered: MainPlaylistController.togglePlayPause()
+                }
+                WheelToVLCConverter {
+                    id: castWheel
+                    onVlcWheelKey: (key) => MainCtx.sendVLCHotkey(key)
+                }
+            }
         }
 
         Component {
@@ -984,6 +1013,85 @@ FocusScope {
                            - resumeDialog.y + VLCStyle.dp(8, VLCStyle.scale))
                / playerSpecializationLoader.height
         restoreMode: Binding.RestoreValue
+    }
+
+    // Casting: a subtitle chosen goes to the TV at once; a note in the top
+    // corner where reading starts says which (the right one right to left)
+    Rectangle {
+        id: castSubtitleNote
+        objectName: "castSubtitleNote"
+        property string text: ""
+        // the subtitles last seen ("\u0001": none yet, since the cast began)
+        property string _seen: "\u0001"
+        function refresh() {
+            const model = Player.subtitleTracks
+            const names = []
+            for (let i = 0; i < model.count; ++i) {
+                const index = model.index(i, 0)
+                if (model.data(index, Qt.CheckStateRole))
+                    names.push(model.data(index, Qt.DisplayRole))
+            }
+            const now = names.join(" + ")
+            if (Player.rendererManager.useRenderer && _seen !== "\u0001" && now !== _seen) {
+                text = now.length ? qsTr("Subtitles on the TV: %1").arg(now) : qsTr("Subtitles off on the TV")
+                castNoteTimer.restart()
+            }
+            _seen = Player.rendererManager.useRenderer ? now : "\u0001"
+        }
+        Connections {
+            target: Player.subtitleTracks
+            function onDataChanged() { castSubtitleNote.refresh() }
+            function onModelReset() { castSubtitleNote.refresh() }
+            function onRowsInserted() { castSubtitleNote.refresh() }
+            function onRowsRemoved() { castSubtitleNote.refresh() }
+        }
+        Connections {
+            target: Player.rendererManager
+            function onUseRendererChanged() { castSubtitleNote.refresh() }
+        }
+        Timer { id: castNoteTimer; interval: 3000 }
+
+        z: 3
+        visible: opacity > 0
+        opacity: castNoteTimer.running ? 1 : 0
+        Behavior on opacity { NumberAnimation { duration: VLCStyle.duration_short } }
+        anchors.top: parent.top
+        anchors.topMargin: topBar.height + VLCStyle.dp(12, VLCStyle.scale)
+        anchors.left: parent.left
+        anchors.leftMargin: VLCStyle.dp(16, VLCStyle.scale)
+        width: Math.min(noteRow.implicitWidth + VLCStyle.dp(28, VLCStyle.scale),
+                        rootPlayer.width - VLCStyle.dp(32, VLCStyle.scale))
+        height: VLCStyle.dp(40, VLCStyle.scale)
+        radius: VLCStyle.dp(8, VLCStyle.scale)
+        color: VLCStyle.redesign.color("#141414", "#c4c4c3")
+        border.width: 1
+        border.color: VLCStyle.redesign.color(VLCStyle.redesign.separator, "#9c9c9b")
+        Accessible.role: Accessible.AlertMessage
+        Accessible.name: text
+
+        Row {
+            id: noteRow
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: parent.left
+            anchors.leftMargin: VLCStyle.dp(14, VLCStyle.scale)
+            spacing: VLCStyle.dp(8, VLCStyle.scale)
+            Image {
+                anchors.verticalCenter: parent.verticalCenter
+                source: "qrc:///redesign/track-subtitles-active.png"
+                width: VLCStyle.dp(20, VLCStyle.scale)
+                height: width
+                sourceSize: Qt.size(width, height)
+            }
+            Text {
+                anchors.verticalCenter: parent.verticalCenter
+                width: Math.min(implicitWidth, rootPlayer.width - VLCStyle.dp(90, VLCStyle.scale))
+                text: castSubtitleNote.text
+                elide: Text.ElideRight
+                color: VLCStyle.redesign.color("#EAEAEA", "#2e2e2e")
+                font.family: VLCStyle.redesign.fontFamily
+                font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
+            }
+        }
     }
 
     // Casting: the media plays on a TV (CastButton). Here, which one, and the

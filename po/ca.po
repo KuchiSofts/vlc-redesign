@@ -54730,3 +54730,7 @@ msgstr "Segur que voleu crear el flux de xarxa?"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Usat sovint"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Alçada de la captura (0: proporcional, -1: original)"

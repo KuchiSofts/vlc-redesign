@@ -41201,3 +41201,7 @@ msgstr ""
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "ใช้บ่อย"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "ความสูงของภาพนิ่ง (0: ตามสัดส่วน, -1: ต้นฉบับ)"

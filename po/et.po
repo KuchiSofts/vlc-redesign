@@ -48080,3 +48080,7 @@ msgstr ""
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Sageli kasutatud"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Hetktõmmise kõrgus (0: proportsionaalne, -1: algne)"

@@ -47351,3 +47351,7 @@ msgstr "Volètz crear aqueste flux ?"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Sovent utilizada"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Nautor de la captura (0 : proporcionala, -1 : originala)"

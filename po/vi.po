@@ -45743,3 +45743,7 @@ msgstr "Bạn có chắc muốn tạo luồng dữ liệu?"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Thường dùng"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Chiều cao ảnh chụp (0: theo tỉ lệ, -1: gốc)"

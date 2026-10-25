@@ -44560,3 +44560,7 @@ msgstr "Sind Sie sicher, dass Sie den Stream erstellen möchten?"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Oft verwendet"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Höhe des Schnappschusses (0: proportional, -1: original)"

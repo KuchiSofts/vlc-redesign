@@ -51607,3 +51607,7 @@ msgstr "Czy na pewno chcesz utworzyć ten strumień?"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Często używany"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Wysokość zrzutu (0: proporcjonalnie, -1: oryginalna)"

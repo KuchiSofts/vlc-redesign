@@ -52052,3 +52052,7 @@ msgstr "Ziur zaude transmisio jarraitua sortu nahi duzula?"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Maiz erabilia"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Argazkiaren altuera (0: proportzionala, -1: jatorrizkoa)"

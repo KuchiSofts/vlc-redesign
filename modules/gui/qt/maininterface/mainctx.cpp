@@ -73,6 +73,8 @@
 #include <QKeyEvent>
 
 #include <QUrl>
+#include <QImage>
+#include <cmath>
 #include <QDate>
 #include <QLocale>
 #include <QGuiApplication>
@@ -762,6 +764,29 @@ void MainCtx::sendHotkey(Qt::Key key , Qt::KeyboardModifiers modifiers)
     QKeyEvent event(QEvent::KeyPress, key, modifiers );
     int vlckey = qtEventToVLCKey(&event);
     postHotkey(vlckey);
+}
+
+double MainCtx::imageLuminance(const QVariant &image) const
+{
+    const QImage source = image.value<QImage>();
+    if (source.isNull())
+        return -1;
+    const QImage small = source.scaled(16, 16, Qt::IgnoreAspectRatio, Qt::SmoothTransformation)
+                               .convertToFormat(QImage::Format_RGB32);
+    // sRGB to linear light, as WCAG's relative luminance
+    const auto linear = [](int channel) {
+        const double c = channel / 255.0;
+        return c <= 0.04045 ? c / 12.92 : std::pow((c + 0.055) / 1.055, 2.4);
+    };
+    double sum = 0;
+    for (int y = 0; y < small.height(); ++y)
+    {
+        const QRgb *line = reinterpret_cast<const QRgb *>(small.constScanLine(y));
+        for (int x = 0; x < small.width(); ++x)
+            sum += 0.2126 * linear(qRed(line[x])) + 0.7152 * linear(qGreen(line[x]))
+                 + 0.0722 * linear(qBlue(line[x]));
+    }
+    return sum / (small.width() * small.height());
 }
 
 bool MainCtx::isHotkeyFree(Qt::Key key, Qt::KeyboardModifiers modifiers) const

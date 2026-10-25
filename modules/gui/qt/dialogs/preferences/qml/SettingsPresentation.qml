@@ -137,7 +137,9 @@ readonly property var items: ({
         // Video page of the design
         "video": [qsTr("Output"), qsTr("Enable video"), "", null, { info: true }],
         "fullscreen": [qsTr("Output"), qsTr("Start videos in fullscreen"), "", null, { info: true }],
-        "disable-screensaver": [qsTr("Output"), qsTr("Stop the screensaver during playback"), "inttoggle", null, { info: true }],
+        // a list, not a toggle: VLC has a third value, "When fullscreen",
+        // that a toggle showed as on and lost when switched
+        "disable-screensaver": [qsTr("Output"), qsTr("Stop the screensaver during playback"), "", null, { info: true }],
         "video-wallpaper": [qsTr("Output"), qsTr("Play video as desktop wallpaper"), "", null, { info: true }],
         "deinterlace": [qsTr("Deinterlacing"), qsTr("Deinterlacing"), "",
                         { "-1": qsTr("Automatic"), 0: qsTr("Off"), 1: qsTr("On") }, { info: true }],
@@ -162,7 +164,7 @@ readonly property var items: ({
         "monitor-par": [qsTr("Framing"), qsTr("Monitor pixel aspect ratio"), "", null,
                         { advanced: true, info: true, rowHeight: 42, fieldHeight: 32, placeholder: "1:1" }],
         "vout": [qsTr("Output"), qsTr("Video output module"), "", null, { advanced: true, expert: true }],
-        "snapshot-height": [qsTr("Snapshots"), qsTr("Snapshot height (-1: proportional)"), "", null, { advanced: true, expert: true }],
+        "snapshot-height": [qsTr("Snapshots"), qsTr("Snapshot height (0: proportional, -1: original)"), "", null, { advanced: true, expert: true }],
         "deinterlace-filter": [qsTr("Deinterlacing"), qsTr("Deinterlacing filter"), "", null, { advanced: true, expert: true }],
         // Audio page of the design
         "audio": [qsTr("Output"), qsTr("Enable audio"), "", null, { info: true }],
@@ -298,7 +300,7 @@ readonly property var items: ({
         "auto-preparse": [qsTr("Metadata & Artwork"), qsTr("Read media information automatically"), "", null, { advanced: true }],
         "ignore-filetypes": [qsTr("Opening Files"), qsTr("Ignored file extensions"), "", null, { advanced: true }],
         // Network page of the design
-        "x-buffering": [qsTr("Buffering"), qsTr("Buffering"), "", null, { info: true }],
+        "x-buffering": [qsTr("Buffering"), qsTr("Buffering"), "", null, { info: false }],
         "file-caching": [qsTr("Buffering"), qsTr("Local files"), "", null, { info: false, unit: qsTr("ms"), rowHeight: 48 }],
         "disc-caching": [qsTr("Buffering"), qsTr("Discs"), "", null, { info: false, unit: qsTr("ms"), rowHeight: 48 }],
         "network-caching": [qsTr("Buffering"), qsTr("Network streams"), "", null, { info: false, unit: qsTr("ms"), rowHeight: 48 }],
@@ -323,7 +325,7 @@ readonly property var items: ({
                                      3: qsTr("Non-key frames"), 4: qsTr("Always") }, { info: true }],
         "avcodec-threads": [qsTr("Decoding"), qsTr("Decoding threads"), "", null, { info: true, rowHeight: 48, controlTop: 6 }],
         "drop-late-frames": [qsTr("Smooth Playback"), qsTr("Drop frames when the system can't keep up"), "", null, { info: false }],
-        "high-priority": [qsTr("Smooth Playback"), qsTr("Give VLC real-time priority"), "", null, { info: false }],
+        "high-priority": [qsTr("Smooth Playback"), qsTr("Increase the priority of the process"), "", null, { info: false }],
         "redesign/process-priority": [qsTr("Smooth Playback"), qsTr("Process priority"), "", null, { info: true, rowHeight: 48, controlTop: 6 }],
         "sout-transcode-venc": [qsTr("Developer"), qsTr("Encoder"), "", null, { advanced: true, heading: true, info: true }],
         "codec": [qsTr("Developer"), qsTr("Decoder"), "", null, { advanced: true, heading: true, info: true }],

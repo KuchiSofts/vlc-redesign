@@ -41130,3 +41130,7 @@ msgstr ""
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "زۆر بەکارهاتوو"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "بەرزیی وێنەگرتن (0: ڕێژەیی، ‎-1: ڕەسەن)"

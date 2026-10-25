@@ -41451,3 +41451,7 @@ msgstr "Ertu viss um að þú viljir búa til stauminn?"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Oft notað"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Hæð skjámyndar (0: hlutfallsleg, -1: upprunaleg)"

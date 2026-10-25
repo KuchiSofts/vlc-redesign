@@ -45745,3 +45745,7 @@ msgstr ""
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "প্রায়ই ব্যবহৃত"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "স্ন্যাপশটের উচ্চতা (0: আনুপাতিক, -1: মূল)"

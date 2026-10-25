@@ -50431,3 +50431,7 @@ msgstr "Valóban létre kívánja hozni a közvetítést?"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Gyakran használt"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Pillanatkép magassága (0: arányos, -1: eredeti)"

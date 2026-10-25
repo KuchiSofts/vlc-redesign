@@ -47758,3 +47758,7 @@ msgstr "هل أنت متأكد من رغبتك في إنشاء البث؟"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "مستخدمة كثيرًا"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "ارتفاع اللقطة (0: متناسب، ‎-1: الأصلي)"

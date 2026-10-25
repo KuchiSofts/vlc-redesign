@@ -41234,3 +41234,7 @@ msgstr "Ydych yn sicr am greu'r ffrwd?"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Defnyddir yn aml"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Uchder y ciplun (0: cyfrannol, -1: gwreiddiol)"

@@ -44,6 +44,9 @@ MouseArea {
     required property Item toggleControlBarItem
     required property Item controlBarItem
     property url coverSource
+    // how bright the artwork is (MainCtx.imageLuminance), for the texts over
+    // its backdrop; -1 until measured
+    property real artLuminance: -1
     property alias coverImage: cover
     property alias lyricsPanel: lyricsLoader
     readonly property alias audioControls: audioControls
@@ -214,6 +217,12 @@ MouseArea {
                 onStatusChanged: {
                     if (status === Image.Error)
                         source = VLCStyle.noArtAlbumCover
+                    else if (status === Image.Ready)
+                        cover.grabToImage((result) => {
+                            centerContent.artLuminance = MainCtx.imageLuminance(result.image)
+                        }, Qt.size(16, 16))
+                    else
+                        centerContent.artLuminance = -1
                 }
 
                 Accessible.role: Accessible.Graphic
@@ -284,7 +293,19 @@ MouseArea {
                 font.pixelSize: albumLabel.font.pixelSize * 16
                 text: albumLabel.text
             }
-            color: VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, "#4d4d4d")
+            // the design's grey over a dark artwork; over a bright one (where
+            // the grey would read under 3:1), near white or dark, the more
+            // readable of the two (WCAG contrast with the artwork's luminance)
+            color: {
+                const design = VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, "#4d4d4d")
+                const art = centerContent.artLuminance
+                if (art < 0 || !VLCStyle.palette.isDark)
+                    return design
+                const contrast = (a, b) => (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05)
+                if (contrast(art, 0.3048) >= 3)  // #969696
+                    return design
+                return contrast(art, 0.8228) >= contrast(art, 0.0273) ? "#EAEAEA" : "#2E2E2E"
+            }
             Accessible.description: qsTr("Title and artist")
 
             property bool componentCompleted: false

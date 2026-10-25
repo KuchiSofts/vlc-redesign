@@ -40811,3 +40811,7 @@ msgstr ""
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Air a chleachdadh gu tric"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Àirde a' ghlacaidh (0: co-rèireach, -1: tùsail)"

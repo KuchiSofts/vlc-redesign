@@ -53580,3 +53580,7 @@ msgstr "Adakah pasti anda ingin mencipta strim?"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Kerap digunakan"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Tinggi petikan (0: berkadar, -1: asal)"

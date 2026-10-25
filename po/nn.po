@@ -47536,3 +47536,7 @@ msgstr "Ønskjer du å opprette straumen?"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Brukt ofte"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Høgd på stillbiletet (0: proporsjonal, -1: original)"

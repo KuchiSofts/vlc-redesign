@@ -39443,3 +39443,7 @@ msgstr ""
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Байнга хэрэглэдэг"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Агшин зургийн өндөр (0: харьцаагаар, -1: эх)"

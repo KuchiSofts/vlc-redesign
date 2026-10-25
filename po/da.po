@@ -51165,3 +51165,7 @@ msgstr "Er du sikker på, at du vil oprette streamet?"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Bruges ofte"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Øjebliksbilledets højde (0: proportional, -1: original)"

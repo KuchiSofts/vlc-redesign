@@ -44998,3 +44998,7 @@ msgstr ""
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "ხშირად გამოყენებული"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "კადრის სიმაღლე (0: პროპორციული, -1: საწყისი)"

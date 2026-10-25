@@ -49568,3 +49568,7 @@ msgstr "本当にストリームを生成してもいいですか?"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "よく使う"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "スナップショットの高さ (0: 縦横比を維持、-1: 元のサイズ)"

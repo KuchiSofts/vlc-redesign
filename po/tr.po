@@ -52533,3 +52533,7 @@ msgstr "Akışı oluşturmak istediğinize emin misiniz?"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Sık kullanılan"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Anlık görüntü yüksekliği (0: orantılı, -1: özgün)"

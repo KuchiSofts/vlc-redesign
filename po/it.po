@@ -56554,3 +56554,7 @@ msgstr "Sei sicuro di voler creare il flusso?"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Usata spesso"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Altezza dell'istantanea (0: proporzionale, -1: originale)"

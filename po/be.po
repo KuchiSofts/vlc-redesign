@@ -48525,3 +48525,7 @@ msgstr "Сапраўды жадаеце стварыць паток?"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Часта выкарыстоўваецца"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Вышыня здымка (0: прапарцыйна, -1: арыгінальная)"

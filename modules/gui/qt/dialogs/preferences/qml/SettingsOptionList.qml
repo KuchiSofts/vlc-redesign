@@ -264,8 +264,14 @@ Column {
                     defaultDisplay: presentation.defaultDisplay || ""
                     controlTop: presentation.controlTop
                     labelsBaseline: presentation.labelsBaseline
-                    available: (model.key !== "one-instance-when-started-from-file" && model.key !== "playlist-enqueue"
-                                || !!(root.settingsModel.revision, root.settingsModel.valueFor("one-instance")))
+                    // files opened from the file manager go to the running
+                    // window by themselves (that option alone, VLC's
+                    // system_Configure): adding them to the queue applies
+                    // when either sends them there
+                    available: (model.key !== "playlist-enqueue"
+                                || !!(root.settingsModel.revision, root.settingsModel.valueFor("one-instance"))
+                                || !!(root.settingsModel.revision,
+                                      root.settingsModel.valueFor("one-instance-when-started-from-file")))
                                // the mouse sensitivity of the controls in
                                // fullscreen: while the mouse shows them
                                && (model.key !== "qt-fs-sensitivity"

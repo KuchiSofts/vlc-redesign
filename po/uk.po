@@ -44164,3 +44164,7 @@ msgstr "Справді створити потік?"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Часто використовується"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Висота знімка (0: пропорційно, -1: оригінальна)"

@@ -49738,3 +49738,7 @@ msgstr "Вы действительно хотите создать поток?"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Часто используется"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Высота снимка (0: пропорционально, -1: исходная)"

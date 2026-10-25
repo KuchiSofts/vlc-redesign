@@ -40233,3 +40233,7 @@ msgstr ""
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Gereeld gebruik"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Hoogte van kiekie (0: eweredig, -1: oorspronklik)"

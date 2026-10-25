@@ -44639,3 +44639,7 @@ msgstr ""
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Sovint eployî"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Hôteu del prinde (0 : proporcionele, -1 : oridjinåle)"

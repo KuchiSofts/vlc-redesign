@@ -72,6 +72,9 @@ def main():
             raise SystemExit(f'{e["path"]}: differs from the new release')
         results[e['path']] = data
     for rel, data in results.items():
+        # a file in a folder the old release lacks (0.3.0's locale\ for 0.2.x),
+        # as the app's updater makes its folders (make_parents)
+        os.makedirs(os.path.dirname(os.path.join(folder, rel)), exist_ok=True)
         open(os.path.join(folder, rel), 'wb').write(data)
     for rel in header['removed']:
         p = os.path.join(folder, rel)

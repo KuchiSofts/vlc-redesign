@@ -779,7 +779,7 @@ msgstr "(varsayılan etkin)"
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (varsayılan devredışı)"
+msgstr "(varsayılan devredışı)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -11421,11 +11421,11 @@ msgstr "Negatif"
 
 #: modules/access/v4l2/v4l2.c:165
 msgid "Emboss"
-msgstr "Kakma  "
+msgstr "Kakma"
 
 #: modules/access/v4l2/v4l2.c:165
 msgid "Sketch"
-msgstr "Taslak "
+msgstr "Taslak"
 
 #: modules/access/v4l2/v4l2.c:165
 msgid "Sky blue"
@@ -11685,7 +11685,7 @@ msgstr "Sıkıştırma düzeyi"
 
 #: modules/access/vnc.c:66
 msgid "Transfer compression level from 0 (none) to 9 (max)"
-msgstr "0 (yok) ile 9 (en fazla) arasında aktarım sıkıştırma düzeyi "
+msgstr "0 (yok) ile 9 (en fazla) arasında aktarım sıkıştırma düzeyi"
 
 #: modules/access/vnc.c:67
 msgid "Image quality"
@@ -13168,11 +13168,11 @@ msgstr "Aygıt"
 
 #: modules/audio_output/kai.c:99
 msgid "Select a proper audio device to be used by KAI."
-msgstr "KAI tarafından kullanılacak uygun bir aygıt seçin. "
+msgstr "KAI tarafından kullanılacak uygun bir aygıt seçin."
 
 #: modules/audio_output/kai.c:102
 msgid "Open audio in exclusive mode."
-msgstr " Ses özel kullanım kipinde açılsın"
+msgstr "Ses özel kullanım kipinde açılsın"
 
 #: modules/audio_output/kai.c:104
 msgid ""
@@ -13565,7 +13565,7 @@ msgstr "Kodlayıcı/Çözücü Adı"
 
 #: modules/codec/avcodec/avcodec.h:81
 msgid "Internal libavcodec codec name"
-msgstr " İçsel libavcodec kodlayıcı/çözücü adı"
+msgstr "İçsel libavcodec kodlayıcı/çözücü adı"
 
 #: modules/codec/avcodec/avcodec.h:83
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:399
@@ -14033,7 +14033,7 @@ msgstr "DirectMedia Object Kodlayıcısı"
 
 #: modules/codec/dvbsub.c:87
 msgid "Decoding X coordinate"
-msgstr "Çözülen X koordinatı "
+msgstr "Çözülen X koordinatı"
 
 #: modules/codec/dvbsub.c:88
 msgid "X coordinate of the rendered subtitle"
@@ -14041,7 +14041,7 @@ msgstr "Oluşturulan altyazının X koordinatı."
 
 #: modules/codec/dvbsub.c:90
 msgid "Decoding Y coordinate"
-msgstr "Çözülen Y koordinatı "
+msgstr "Çözülen Y koordinatı"
 
 #: modules/codec/dvbsub.c:91
 msgid "Y coordinate of the rendered subtitle"
@@ -17726,7 +17726,7 @@ msgstr "Özgün Yorumcu"
 
 #: modules/demux/mp4/meta.c:81
 msgid "Providers Source Content"
-msgstr "Sağlayıcının Kaynak İçeriği "
+msgstr "Sağlayıcının Kaynak İçeriği"
 
 #: modules/demux/mp4/meta.c:82 modules/logger/file.c:217
 msgid "Warning"
@@ -18011,7 +18011,7 @@ msgstr ""
 
 #: modules/demux/mpeg/ts.c:128
 msgid "Trust in-stream PCR"
-msgstr "Akışın Program Saat Referansına (PCR) Güven "
+msgstr "Akışın Program Saat Referansına (PCR) Güven"
 
 #: modules/demux/mpeg/ts.c:129
 msgid "Use the stream PCR as a reference."
@@ -21580,7 +21580,7 @@ msgstr "Yeni profil olarak kaydet"
 
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:549
 msgid "%@ stream to %@:%@"
-msgstr "%@ akışı %@ alıcısına:%@ "
+msgstr "%@ akışı %@ alıcısına:%@"
 
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:560
 msgid "No Address given"
@@ -26683,7 +26683,7 @@ msgstr "Bu çoklayıcı bulunamadı. Bu profil kullanılırsa sorun çıkar"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:802
 msgid " Profile Name Missing"
-msgstr "Profil Adı Eksik"
+msgstr " Profil Adı Eksik"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:803
 msgid "You must set a name for the profile."
@@ -27058,11 +27058,11 @@ msgstr "Değiştirin"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:506
 msgid "Broadcast: "
-msgstr "Yayın:"
+msgstr "Yayın: "
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 msgid "Schedule: "
-msgstr "Zaman çizelgesi:"
+msgstr "Zaman çizelgesi: "
 
 #: modules/gui/qt/maininterface/mainctx.cpp:1193
 msgid "Paste from clipboard"
@@ -30349,7 +30349,7 @@ msgstr "Artalan görseli pencere boyutuna uyar."
 
 #: modules/gui/qt/qt.cpp:267
 msgid "Ignore keyboard volume buttons."
-msgstr "Tuş takımı ses düğmeleri yoksayılsın. "
+msgstr "Tuş takımı ses düğmeleri yoksayılsın."
 
 #: modules/gui/qt/qt.cpp:269
 msgid ""
@@ -31451,7 +31451,7 @@ msgstr "Günlükleme"
 #: modules/logger/file.c:234
 #, fuzzy
 msgid "File logger"
-msgstr "Dosyaya günlükleme "
+msgstr "Dosyaya günlükleme"
 
 #: modules/logger/journal.c:79
 msgid "Journal"
@@ -32412,7 +32412,7 @@ msgstr ""
 
 #: modules/misc/gnutls.c:755
 msgid "Performance (prioritize faster ciphers)"
-msgstr "Hızlı (daha hızlı şifreleyicileri kullanılır) "
+msgstr "Hızlı (daha hızlı şifreleyicileri kullanılır)"
 
 #: modules/misc/gnutls.c:757
 msgid "Secure 128-bit (or higher)"
@@ -33838,7 +33838,7 @@ msgstr "Aynı anda görüntülenebilecek en fazla altyazı sayısı."
 
 #: modules/spu/subsdelay.c:60
 msgid "Minimum alpha value"
-msgstr "En küçük alfa değeri "
+msgstr "En küçük alfa değeri"
 
 #: modules/spu/subsdelay.c:62
 msgid ""
@@ -33849,7 +33849,7 @@ msgstr ""
 
 #: modules/spu/subsdelay.c:64
 msgid "Interval between two disappearances"
-msgstr "İki kaybolma arasındaki süre "
+msgstr "İki kaybolma arasındaki süre"
 
 #: modules/spu/subsdelay.c:66
 msgid ""
@@ -33863,7 +33863,7 @@ msgstr ""
 
 #: modules/spu/subsdelay.c:69
 msgid "Interval between disappearance and appearance"
-msgstr "Kaybolma ve görünme arasındaki süre "
+msgstr "Kaybolma ve görünme arasındaki süre"
 
 #: modules/spu/subsdelay.c:71
 msgid ""
@@ -33877,7 +33877,7 @@ msgstr ""
 
 #: modules/spu/subsdelay.c:74
 msgid "Interval between appearance and disappearance"
-msgstr "Görünme ve kaybolma arasındaki süre "
+msgstr "Görünme ve kaybolma arasındaki süre"
 
 #: modules/spu/subsdelay.c:76
 msgid ""
@@ -33899,7 +33899,7 @@ msgstr "Kaynak gecikmesine göre"
 
 #: modules/spu/subsdelay.c:81
 msgid "Relative to source content"
-msgstr "Kaynak içeriğine göre "
+msgstr "Kaynak içeriğine göre"
 
 #: modules/spu/subsdelay.c:266
 msgid "Subsdelay"
@@ -35264,7 +35264,7 @@ msgstr ""
 #: modules/video_chroma/grey_yuv.c:55 modules/video_chroma/i422_i420.c:56
 #: modules/video_chroma/yuy2_i420.c:57 modules/video_chroma/yuy2_i422.c:57
 msgid "Conversions from "
-msgstr "Şundan dönüşümler"
+msgstr "Şundan dönüşümler "
 
 #: modules/video_chroma/i420_nv12.c:239
 msgid "YUV planar to semiplanar conversions"
@@ -35849,7 +35849,7 @@ msgstr ""
 
 #: modules/video_filter/deinterlace/deinterlace.c:285
 msgid "Phosphor old field dimmer strength"
-msgstr "Eski fosfor ekran kısılma gücü "
+msgstr "Eski fosfor ekran kısılma gücü"
 
 #: modules/video_filter/deinterlace/deinterlace.c:286
 msgid ""
@@ -36022,7 +36022,7 @@ msgstr "Güç"
 
 #: modules/video_filter/gradfun.c:54
 msgid "Strength used to modify the value of a pixel"
-msgstr "Piksel değerinin değiştirileceği güç "
+msgstr "Piksel değerinin değiştirileceği güç"
 
 #: modules/video_filter/gradfun.c:57
 msgid "Gradfun video filter"
@@ -36071,11 +36071,11 @@ msgstr "Değişim Görüntü Süzgeci"
 
 #: modules/video_filter/grain.c:53
 msgid "Variance of the gaussian noise"
-msgstr "Gauss gürültüsünün değişimi "
+msgstr "Gauss gürültüsünün değişimi"
 
 #: modules/video_filter/grain.c:57
 msgid "Minimal period"
-msgstr "En küçük aralık "
+msgstr "En küçük aralık"
 
 #: modules/video_filter/grain.c:58
 msgid "Minimal period of the noise grain in pixel"
@@ -36095,7 +36095,7 @@ msgstr "Cızırtı Görüntü Süzgeci"
 
 #: modules/video_filter/grain.c:65
 msgid "Adds filtered gaussian noise"
-msgstr "Süzülmüş Gauss gürültüsü ekler "
+msgstr "Süzülmüş Gauss gürültüsü ekler"
 
 #: modules/video_filter/hqdn3d.c:57
 msgid "Spatial luma strength (0-254)"
@@ -36119,7 +36119,7 @@ msgstr "YK 3B Gürültü Azaltıcı"
 
 #: modules/video_filter/hqdn3d.c:64
 msgid "High Quality 3D Denoiser filter"
-msgstr "Yüksek kaliteli 3B gürültü kaldırma süzgeci "
+msgstr "Yüksek kaliteli 3B gürültü kaldırma süzgeci"
 
 #: modules/video_filter/invert.c:47
 msgid "Invert video filter"
@@ -36296,7 +36296,7 @@ msgstr "Kullanılacak içsel OpenCV uygulama eki süzgecinin adı"
 
 #: modules/video_filter/posterize.c:61
 msgid "Posterize level (number of colors is cube of this value)"
-msgstr "Posterleştirme düzeyi (renk sayısı bu değerin küpüdür) "
+msgstr "Posterleştirme düzeyi (renk sayısı bu değerin küpüdür)"
 
 #: modules/video_filter/posterize.c:67
 msgid "Posterize video filter"
@@ -36304,7 +36304,7 @@ msgstr "Posterleştirme görüntü süzgeci"
 
 #: modules/video_filter/posterize.c:69
 msgid "Posterize video by lowering the number of colors"
-msgstr "Renk sayısını azaltarak görüntüyü posterleştirir "
+msgstr "Renk sayısını azaltarak görüntüyü posterleştirir"
 
 #: modules/video_filter/postproc.c:68
 msgid ""
@@ -36614,7 +36614,7 @@ msgstr "Sahne Görüntü Süzgeci"
 
 #: modules/video_filter/sepia.c:58
 msgid "Sepia intensity"
-msgstr "Sepia Yoğunluğu "
+msgstr "Sepia Yoğunluğu"
 
 #: modules/video_filter/sepia.c:64
 msgid "Sepia video filter"
@@ -36622,7 +36622,7 @@ msgstr "Sepia Görüntü Süzgeci"
 
 #: modules/video_filter/sepia.c:66
 msgid "Gives video a warmer tone by applying sepia effect"
-msgstr "Görüntüye Sepia etkisi uygulayarak daha sıcak bir ton verir "
+msgstr "Görüntüye Sepia etkisi uygulayarak daha sıcak bir ton verir"
 
 #: modules/video_filter/sharpen.c:47
 msgid "Sharpen strength (0-2)"
@@ -36630,7 +36630,7 @@ msgstr "Keskinlik Gücü (0-2)"
 
 #: modules/video_filter/sharpen.c:48
 msgid "Set the Sharpen strength, between 0 and 2. Defaults to 0.05."
-msgstr "Keskinlik gücünü 0 ile 2 arasında ayarlayın. Varsayılan değer 0.05. "
+msgstr "Keskinlik gücünü 0 ile 2 arasında ayarlayın. Varsayılan değer 0.05."
 
 #: modules/video_filter/sharpen.c:59
 msgid "Augment contrast between contours."
@@ -36748,7 +36748,7 @@ msgstr "Görüntü kipi"
 
 #: modules/video_output/kva.c:58
 msgid "Select a proper video mode to be used by KVA."
-msgstr "KVA tarafından kullanılacak doğru görüntü kipini seçin. "
+msgstr "KVA tarafından kullanılacak doğru görüntü kipini seçin."
 
 #: modules/video_output/kva.c:63
 msgid "SNAP"
@@ -37075,7 +37075,7 @@ msgstr "Direct3D Görüntü Çıkışı"
 
 #: modules/video_output/win32/drawable.c:37
 msgid "Window handle (HWND)"
-msgstr "Pencere tutamağı (HWND) "
+msgstr "Pencere tutamağı (HWND)"
 
 #: modules/video_output/win32/drawable.c:39
 #: modules/video_output/xcb/window.c:1249
@@ -37328,7 +37328,7 @@ msgstr "Yüzde olarak karıştırma kuşağının sonundaki Lagrange katsayısı
 
 #: modules/video_splitter/panoramix.c:115
 msgid "middle position (in %)"
-msgstr "Yüzde olarak orta konum "
+msgstr "Yüzde olarak orta konum"
 
 #: modules/video_splitter/panoramix.c:116
 msgid ""
@@ -37761,7 +37761,7 @@ msgstr "#VLM komutlarını buraya yapıştırın"
 
 #: share/lua/http/dialogs/batch_window.html:30
 msgid "#separate commands with a new line or a semi-colon"
-msgstr "#komutları yeni bir satır ya da noktalı virgül ile ayırarak yazın "
+msgstr "#komutları yeni bir satır ya da noktalı virgül ile ayırarak yazın"
 
 #: share/lua/http/dialogs/browse_window.html:41
 #: share/lua/http/mobile_browse.html:48
@@ -37897,7 +37897,7 @@ msgstr "flowplayer yükleniyor..."
 
 #: share/lua/http/index.html:271
 msgid "If nothing appears, check your internet connection."
-msgstr "Hiç bir şey olmuyorsa, İnternet bağlantınızı denetleyin. "
+msgstr "Hiç bir şey olmuyorsa, İnternet bağlantınızı denetleyin."
 
 #: share/lua/http/index.html:282
 msgid ""
@@ -37963,7 +37963,7 @@ msgstr ""
 
 #: share/lua/http/index.html:305
 msgid "Are you sure you wish to create the stream?"
-msgstr " Akışı oluşturmak istediğinize emin misiniz?"
+msgstr "Akışı oluşturmak istediğinize emin misiniz?"
 
 #, c-format
 #~ msgid "%s track: %s"

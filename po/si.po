@@ -1436,7 +1436,7 @@ msgstr ""
 #: src/libvlc-module.c:94
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:100
 msgid "Control interfaces"
-msgstr " පාලන අතුරුමුහුණත්"
+msgstr "පාලන අතුරුමුහුණත්"
 
 #: src/libvlc-module.c:96
 msgid "You can select control interfaces for VLC."
@@ -2480,7 +2480,7 @@ msgstr ""
 #: modules/logger/file.c:217 modules/spu/marq.c:63 modules/spu/rss.c:71
 #: modules/spu/rss.c:168
 msgid "Default"
-msgstr "පෙරනිමි "
+msgstr "පෙරනිමි"
 
 #: src/libvlc-module.c:619
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:239
@@ -3500,7 +3500,7 @@ msgstr ""
 
 #: src/libvlc-module.c:1158
 msgid "Locally collect statistics"
-msgstr "ප්‍රාදේශීය වශයෙන් එක්රැස් කළ සංඛ්‍යාලේඛන දත්ත "
+msgstr "ප්‍රාදේශීය වශයෙන් එක්රැස් කළ සංඛ්‍යාලේඛන දත්ත"
 
 #: src/libvlc-module.c:1160
 msgid "Collect miscellaneous local statistics about the playing media."
@@ -4501,7 +4501,7 @@ msgstr ""
 
 #: src/libvlc-module.c:1516
 msgid "Cycle audio track"
-msgstr "ශ්‍රව්‍ය පථය "
+msgstr "ශ්‍රව්‍ය පථය"
 
 #: src/libvlc-module.c:1517
 msgid "Cycle through the available audio tracks(languages)."
@@ -6247,7 +6247,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:182
 msgid "Esperanto"
-msgstr "එස්පරැන්ටෝ (Latin-3) "
+msgstr "එස්පරැන්ටෝ (Latin-3)"
 
 #: src/text/iso-639_def.h:183
 msgid "Estonian"
@@ -7632,7 +7632,7 @@ msgstr ""
 #: src/text/iso-639_def.h:533
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:80
 msgid "Ukrainian"
-msgstr "යුක්රේනියානු (KOI8-U) "
+msgstr "යුක්රේනියානු (KOI8-U)"
 
 #: src/text/iso-639_def.h:534
 msgid "Umbundu"
@@ -7669,7 +7669,7 @@ msgstr ""
 #: src/text/iso-639_def.h:542
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:81
 msgid "Vietnamese"
-msgstr "වියට්නාමියානු (VISCII) "
+msgstr "වියට්නාමියානු (VISCII)"
 
 #: src/text/iso-639_def.h:543
 msgid "Volapük"
@@ -7830,7 +7830,7 @@ msgstr "ඡේදනය"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:145
 #: modules/gui/qt/player/qml/controlbarcontrols/AspectRatioWidget.qml:41
 msgid "Aspect ratio"
-msgstr "දර්ශන අනුපාතය "
+msgstr "දර්ශන අනුපාතය"
 
 #: src/video_output/vout_intf.c:301
 msgid "Fit Mode"
@@ -8729,11 +8729,11 @@ msgstr "පද්ධති සුසර අවකාශයේ අනන්‍ය
 
 #: modules/access/dtv/access.c:61
 msgid "Network name to create"
-msgstr " තැනීම සඳහා ජාල නාමයක්"
+msgstr "තැනීම සඳහා ජාල නාමයක්"
 
 #: modules/access/dtv/access.c:62
 msgid "Create unique name in the System Tuning Spaces"
-msgstr "පද්ධති සුසර අවකාශය සඳහා අනන්‍ය නමක් තනන්න "
+msgstr "පද්ධති සුසර අවකාශය සඳහා අනන්‍ය නමක් තනන්න"
 
 #: modules/access/dtv/access.c:64
 msgid "Frequency (Hz)"
@@ -9034,19 +9034,19 @@ msgstr "සැටලයිට් දිගංශය අංශකයෙන් ද
 
 #: modules/access/dtv/access.c:231
 msgid "Satellite elevation"
-msgstr "සැටලයිට් උන්නතාංශය "
+msgstr "සැටලයිට් උන්නතාංශය"
 
 #: modules/access/dtv/access.c:232
 msgid "Satellite elevation in tenths of degree"
-msgstr "සැටලයිට් උන්නතාංශය අංශකයෙන් දහයෙන් පංගු වලින් "
+msgstr "සැටලයිට් උන්නතාංශය අංශකයෙන් දහයෙන් පංගු වලින්"
 
 #: modules/access/dtv/access.c:233
 msgid "Satellite longitude"
-msgstr "සැටලයිට් දේශාංශකය "
+msgstr "සැටලයිට් දේශාංශකය"
 
 #: modules/access/dtv/access.c:235
 msgid "Satellite longitude in tenths of degree. West is negative."
-msgstr "සැටලයිට් දේශාංශකය අංශකයෙන් දහයෙන් පංගු වලින්, -ve=බටහිර "
+msgstr "සැටලයිට් දේශාංශකය අංශකයෙන් දහයෙන් පංගු වලින්, -ve=බටහිර"
 
 #: modules/access/dtv/access.c:237
 msgid "Satellite range code"
@@ -9054,7 +9054,7 @@ msgstr "චන්ද්‍රිකා පරාස කේත"
 
 #: modules/access/dtv/access.c:238
 msgid "Satellite range code as defined by manufacturer e.g. DISEqC switch code"
-msgstr "නිෂ්පාදකයා විසින් අර්ථ දක්වා ඇති චන්ද්‍රිකා පරාස කේතය. උදා. DISEqC වහරු කේතය "
+msgstr "නිෂ්පාදකයා විසින් අර්ථ දක්වා ඇති චන්ද්‍රිකා පරාස කේතය. උදා. DISEqC වහරු කේතය"
 
 #: modules/access/dtv/access.c:242
 msgid "Major channel"
@@ -9062,7 +9062,7 @@ msgstr "ප්‍රධානතම නාලිකාව"
 
 #: modules/access/dtv/access.c:243
 msgid "ATSC minor channel"
-msgstr "ATSC අප්‍රධාන නාලිකාව "
+msgstr "ATSC අප්‍රධාන නාලිකාව"
 
 #: modules/access/dtv/access.c:244
 msgid "Physical channel"
@@ -9906,7 +9906,7 @@ msgstr ""
 
 #: modules/access/pulse.c:42
 msgid "PulseAudio"
-msgstr "ශ්‍රව්‍ය "
+msgstr "ශ්‍රව්‍ය"
 
 #: modules/access/pulse.c:43
 msgid "PulseAudio input"
@@ -10721,7 +10721,7 @@ msgstr ""
 
 #: modules/access/v4l2/v4l2.c:102
 msgid "Automatic white balance"
-msgstr "ස්වයං සුදුවර්ණ සංතුලනය  "
+msgstr "ස්වයං සුදුවර්ණ සංතුලනය"
 
 #: modules/access/v4l2/v4l2.c:104
 msgid "Automatically adjust the picture white balance."
@@ -10756,7 +10756,7 @@ msgstr "ගැමා සංතුලනය."
 
 #: modules/access/v4l2/v4l2.c:114
 msgid "Automatic gain"
-msgstr "ස්වයං "
+msgstr "ස්වයං"
 
 #: modules/access/v4l2/v4l2.c:116
 msgid "Automatically set the video gain."
@@ -12207,7 +12207,7 @@ msgstr ""
 #: modules/audio_filter/scaletempo.c:52
 #, fuzzy
 msgid "Audio pitch changer"
-msgstr "ශ්‍රව්‍ය නාලිකා "
+msgstr "ශ්‍රව්‍ය නාලිකා"
 
 #: modules/audio_filter/scaletempo.c:54
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:287
@@ -12758,7 +12758,7 @@ msgstr ""
 #: modules/codec/aom.c:102
 #, fuzzy
 msgid "AOM video decoder"
-msgstr "වීඩියෝ කොඩෙක් "
+msgstr "වීඩියෝ කොඩෙක්"
 
 #: modules/codec/aom.c:110
 msgid "AOM video encoder"
@@ -13207,12 +13207,12 @@ msgstr ""
 #: modules/codec/avcodec/vaapi.c:443
 #, fuzzy
 msgid "VA-API video decoder"
-msgstr "වීඩියෝ කොඩෙක් "
+msgstr "වීඩියෝ කොඩෙක්"
 
 #: modules/codec/bpg.c:48
 #, fuzzy
 msgid "BPG image decoder"
-msgstr "වීඩියෝ කොඩෙක් "
+msgstr "වීඩියෝ කොඩෙක්"
 
 #: modules/codec/cc.c:57 modules/codec/zvbi.c:64
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:443
@@ -13266,7 +13266,7 @@ msgstr ""
 #: modules/codec/daala.c:120
 #, fuzzy
 msgid "Daala video decoder"
-msgstr "වීඩියෝ කොඩෙක් "
+msgstr "වීඩියෝ කොඩෙක්"
 
 #: modules/codec/daala.c:125
 #, fuzzy
@@ -13276,7 +13276,7 @@ msgstr "Flac ශ්‍රව්‍ය පැකැට්ටුකරණය"
 #: modules/codec/daala.c:132
 #, fuzzy
 msgid "Daala video encoder"
-msgstr "වීඩියෝ කොඩෙක් "
+msgstr "වීඩියෝ කොඩෙක්"
 
 #: modules/codec/daala.c:143
 msgid "Chroma format"
@@ -13866,7 +13866,7 @@ msgstr ""
 #: modules/codec/oggspots.c:84
 #, fuzzy
 msgid "OggSpots video decoder"
-msgstr "වීඩියෝ කොඩෙක් "
+msgstr "වීඩියෝ කොඩෙක්"
 
 #: modules/codec/oggspots.c:90
 #, fuzzy
@@ -14148,7 +14148,7 @@ msgstr ""
 #: modules/codec/rtpvideo.c:44
 #, fuzzy
 msgid "Raw video encoder for RTP"
-msgstr "වීඩියෝ කොඩෙක් "
+msgstr "වීඩියෝ කොඩෙක්"
 
 #: modules/codec/scte18.c:41
 #, fuzzy
@@ -14575,7 +14575,7 @@ msgstr ""
 #: modules/codec/svg.c:62
 #, fuzzy
 msgid "SVG video decoder"
-msgstr "වීඩියෝ කොඩෙක් "
+msgstr "වීඩියෝ කොඩෙක්"
 
 #: modules/codec/t140.c:34
 msgid "T.140 text encoder"
@@ -14715,7 +14715,7 @@ msgstr "දෘඩාංග YUV->RGB පරිවර්තනය භාවිත�
 #: modules/codec/videotoolbox/decoder.c:2256
 #, fuzzy
 msgid "VideoToolbox video decoder"
-msgstr "වීඩියෝ කොඩෙක් "
+msgstr "වීඩියෝ කොඩෙක්"
 
 #: modules/codec/vorbis.c:178
 msgid "Maximum encoding bitrate"
@@ -14777,7 +14777,7 @@ msgstr ""
 #: modules/codec/vpx.c:83
 #, fuzzy
 msgid "WebM video encoder"
-msgstr "වීඩියෝ කොඩෙක් "
+msgstr "වීඩියෝ කොඩෙක්"
 
 #: modules/codec/vpx.c:89
 msgid "WebP image encoder"
@@ -17285,7 +17285,7 @@ msgstr ""
 #: modules/demux/rawaud.c:45 modules/stream_out/transcode/transcode.c:100
 #: share/lua/http/dialogs/create_stream.html:316
 msgid "Audio channels"
-msgstr "ශ්‍රව්‍ය නාලිකා "
+msgstr "ශ්‍රව්‍ය නාලිකා"
 
 #: modules/demux/rawaud.c:46
 msgid "Audio channels in input stream. Default is 2 (stereo)."
@@ -19768,7 +19768,7 @@ msgstr "වීඩියෝව පුන්තිර ප්‍රකාරයෙ�
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:459
 msgid "Black screens in Fullscreen mode"
-msgstr "වීඩියෝව පුන්තිර ප්‍රකාරයේදී කළුපැහැ තිර "
+msgstr "වීඩියෝව පුන්තිර ප්‍රකාරයේදී කළුපැහැ තිර"
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:463
 msgid "Video snapshots"
@@ -19893,7 +19893,7 @@ msgstr "ඔබගේ වීඩියෝ සැණරූ සුරැකීම �
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1331
 msgid "Choose the directory or filename where the records will be stored."
-msgstr "රෙකෝඩ් කළ ඩිරෙක්ටරිය හෝ ‍ගොනු නාමය සුරක්‍ෂිත වන ස්ථානය "
+msgstr "රෙකෝඩ් කළ ඩිරෙක්ටරිය හෝ ‍ගොනු නාමය සුරක්‍ෂිත වන ස්ථානය"
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1441
 msgid ""
@@ -20383,7 +20383,7 @@ msgstr "සංක්‍ෂිප්තය"
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:195
 #: share/lua/http/dialogs/create_stream.html:160
 msgid "Video codec"
-msgstr "වීඩියෝ කොඩෙක් "
+msgstr "වීඩියෝ කොඩෙක්"
 
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:196
 #: share/lua/http/dialogs/create_stream.html:178
@@ -20658,7 +20658,7 @@ msgstr ""
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:508
 #, fuzzy, c-format
 msgid "Volume: %i %%"
-msgstr " ශබ්දය   : %3ld%%"
+msgstr "ශබ්දය   : %3ld%%"
 
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:231
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:210
@@ -20948,7 +20948,7 @@ msgstr "[වාදකයා]"
 #: modules/gui/ncurses.c:1063
 #, c-format
 msgid " <up>,<down>            Seek +/-5%%"
-msgstr "<ඉහළට>,<පහළට>     අන්වේෂණය +/-5%%"
+msgstr " <ඉහළට>,<පහළට>     අන්වේෂණය +/-5%%"
 
 #: modules/gui/ncurses.c:1106
 #, c-format
@@ -20977,12 +20977,12 @@ msgstr ""
 #: modules/gui/ncurses.c:1241
 #, c-format
 msgid " Source   : %s"
-msgstr "මූලාශ්‍රය : %s"
+msgstr " මූලාශ්‍රය : %s"
 
 #: modules/gui/ncurses.c:1271
 #, c-format
 msgid " Position : %s/%s"
-msgstr "ස්ථානය : %s/%s"
+msgstr " ස්ථානය : %s/%s"
 
 #: modules/gui/ncurses.c:1276
 msgid " Volume   : Mute"
@@ -21010,7 +21010,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr "මූලාශ්‍රය: <වත්මන් අයිතම නැත>"
+msgstr " මූලාශ්‍රය: <වත්මන් අයිතම නැත>"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -22329,7 +22329,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/help/help.cpp:401
 msgid "&Recheck version"
-msgstr "අනුවාදය නැවත වරක් පිරික්සන්න "
+msgstr "අනුවාදය නැවත වරක් පිරික්සන්න"
 
 #: modules/gui/qt/dialogs/help/help.cpp:404
 msgid "&Yes"
@@ -22515,7 +22515,7 @@ msgstr "ලොග් ගොනුව මෙලෙස සුරකින්න...
 #: modules/gui/qt/dialogs/messages/messages.cpp:361
 #, fuzzy
 msgid "Texts/Logs (*.log *.txt);; All (*.*)"
-msgstr "පෙළ / ලොග් සටහන් (*.log *.txt);; සියල්ල (*.*) "
+msgstr "පෙළ / ලොග් සටහන් (*.log *.txt);; සියල්ල (*.*)"
 
 #: modules/gui/qt/dialogs/messages/messages.cpp:367
 msgid "Application"
@@ -23318,7 +23318,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/expert_model.cpp:207
 #, fuzzy
 msgid "default"
-msgstr "පෙරනිමි "
+msgstr "පෙරනිමි"
 
 #: modules/gui/qt/dialogs/preferences/expert_model.cpp:208
 msgid "modified"
@@ -23981,7 +23981,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:193
 #, fuzzy
 msgid " dB"
-msgstr "dB"
+msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207
@@ -25480,7 +25480,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:802
 msgid " Profile Name Missing"
-msgstr "පැතිකඩ නාමය අස්ථානගත වී ඇත"
+msgstr " පැතිකඩ නාමය අස්ථානගත වී ඇත"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:803
 msgid "You must set a name for the profile."
@@ -27199,7 +27199,7 @@ msgstr "උපසිරුසි &පථය"
 
 #: modules/gui/qt/menus/menus.cpp:455
 msgid "Video &Track"
-msgstr "වීඩියෝ පථය "
+msgstr "වීඩියෝ පථය"
 
 #: modules/gui/qt/menus/menus.cpp:458
 msgid "&3D Output"
@@ -30184,7 +30184,7 @@ msgstr "ප්‍රවේශනය කිරීමය Lua අතුරුමු
 
 #: modules/lua/vlc.c:55
 msgid "Lua interface configuration"
-msgstr " Lua අතුරුමුහුණත් සැකසුම්"
+msgstr "Lua අතුරුමුහුණත් සැකසුම්"
 
 #: modules/lua/vlc.c:56
 msgid ""
@@ -30935,7 +30935,7 @@ msgstr ""
 #: modules/misc/fingerprinter.c:85
 #, fuzzy
 msgid "Track fingerprinter (based on Acoustid)"
-msgstr "ආදානය සොයා ගැනීමට නැත "
+msgstr "ආදානය සොයා ගැනීමට නැත"
 
 #: modules/misc/gnutls.c:472
 msgid ""
@@ -36067,7 +36067,7 @@ msgstr ""
 #: share/lua/http/dialogs/browse_window.html:41
 #: share/lua/http/mobile_browse.html:48
 msgid "Play List"
-msgstr "වාදන ලැයිස්තුව "
+msgstr "වාදන ලැයිස්තුව"
 
 #: share/lua/http/dialogs/create_stream.html:193
 msgid "Subtitle codec"

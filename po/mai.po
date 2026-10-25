@@ -390,7 +390,7 @@ msgstr "निर्देशिका चुनू"
 
 #: include/vlc_intf_strings.h:50
 msgid "Select Folder"
-msgstr " फोल्डर चुनू"
+msgstr "फोल्डर चुनू"
 
 #: include/vlc_intf_strings.h:54
 msgid "Media &Information"
@@ -756,12 +756,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (पूर्वनिर्धारित सक्षम कएल गेल)"
+msgstr "(पूर्वनिर्धारित सक्षम कएल गेल)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (पूर्वनिर्धारित निष्क्रिय कएल गेल)"
+msgstr "(पूर्वनिर्धारित निष्क्रिय कएल गेल)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -876,7 +876,7 @@ msgstr "ट्रैक"
 #: src/input/es_out.c:1949
 #, c-format
 msgid "%s [%s %d]"
-msgstr "%s [%s %d] "
+msgstr "%s [%s %d]"
 
 #: src/input/es_out.c:1950 src/input/es_out.c:1953 src/input/es_out.c:1964
 #: src/libvlc-module.c:643 modules/gui/macosx/menus/VLCMainMenu.m:412
@@ -2070,7 +2070,7 @@ msgstr "हरदम आन विंडोज़ क शीर्ष पर व
 #: src/libvlc-module.c:348
 #, fuzzy
 msgid "Enable wallpaper mode"
-msgstr "वालपेपर मोड सक्षम करू। "
+msgstr "वालपेपर मोड सक्षम करू।"
 
 #: src/libvlc-module.c:350
 msgid ""
@@ -3262,7 +3262,7 @@ msgstr "टीसीपी कनेक्शन समाप्ति"
 #: src/libvlc-module.c:937
 #, fuzzy
 msgid "Default TCP connection timeout (in milliseconds)."
-msgstr "पूर्वनिर्धारित TCP कनेक्शन समाप्ति (मिलीसेकेंड मे)। "
+msgstr "पूर्वनिर्धारित TCP कनेक्शन समाप्ति (मिलीसेकेंड मे)।"
 
 #: src/libvlc-module.c:939
 msgid "HTTP server address"
@@ -3617,7 +3617,7 @@ msgstr "स्ट्रीम फिल्टर माड्यूल"
 #: src/libvlc-module.c:1115
 #, fuzzy
 msgid "Stream filters are used to modify the stream that is being read."
-msgstr "स्ट्रीम फिल्टर क उपयोग पढ़ल जाए रहल धारा केँ संशोधित करबाक लेल कएल जाइत अछि। "
+msgstr "स्ट्रीम फिल्टर क उपयोग पढ़ल जाए रहल धारा केँ संशोधित करबाक लेल कएल जाइत अछि।"
 
 #: src/libvlc-module.c:1117
 #, fuzzy
@@ -3627,7 +3627,7 @@ msgstr "स्ट्रीम फिल्टर माड्यूल"
 #: src/libvlc-module.c:1119
 #, fuzzy
 msgid "Demux filters are used to modify/control the stream that is being read."
-msgstr "स्ट्रीम फिल्टर क उपयोग पढ़ल जाए रहल धारा केँ संशोधित करबाक लेल कएल जाइत अछि। "
+msgstr "स्ट्रीम फिल्टर क उपयोग पढ़ल जाए रहल धारा केँ संशोधित करबाक लेल कएल जाइत अछि।"
 
 #: src/libvlc-module.c:1121
 msgid "Demux module"
@@ -4563,7 +4563,7 @@ msgstr ""
 
 #: src/libvlc-module.c:1472
 msgid "Subtitle sync / synchronize audio & subtitle timestamps"
-msgstr "उपशीर्षक सिंक / आडियो आओर उपशीर्षक समयस्टैम्प केँ सिंक्रनाइज करू. "
+msgstr "उपशीर्षक सिंक / आडियो आओर उपशीर्षक समयस्टैम्प केँ सिंक्रनाइज करू."
 
 #: src/libvlc-module.c:1473
 msgid "Select the key to synchronize bookmarked audio & subtitle timestamps."
@@ -11845,7 +11845,7 @@ msgstr "प्रकार विवरण"
 #: modules/access_output/shout.c:83
 #, fuzzy
 msgid "Genre of the content."
-msgstr "सामग्री क शैली। "
+msgstr "सामग्री क शैली।"
 
 #: modules/access_output/shout.c:85
 #, fuzzy
@@ -11855,17 +11855,17 @@ msgstr "विवरण"
 #: modules/access_output/shout.c:86
 #, fuzzy
 msgid "URL with information about the stream or your channel."
-msgstr "स्ट्रीम अथवा अहाँक चैनल क संबंध मे जानकारी क सँग यूआरएल "
+msgstr "स्ट्रीम अथवा अहाँक चैनल क संबंध मे जानकारी क सँग यूआरएल"
 
 #: modules/access_output/shout.c:93
 #, fuzzy
 msgid "Bitrate information of the transcoded stream."
-msgstr "ट्रांसकोड कएल गेल धारा क बिटरेट जानकारी। "
+msgstr "ट्रांसकोड कएल गेल धारा क बिटरेट जानकारी।"
 
 #: modules/access_output/shout.c:96
 #, fuzzy
 msgid "Samplerate information of the transcoded stream."
-msgstr "ट्रांसकोड कएल गेल धारा क जानकारी samplerate करू। "
+msgstr "ट्रांसकोड कएल गेल धारा क जानकारी samplerate करू।"
 
 #: modules/access_output/shout.c:98
 msgid "Number of channels"
@@ -11874,7 +11874,7 @@ msgstr "चैनल क संख्या"
 #: modules/access_output/shout.c:99
 #, fuzzy
 msgid "Number of channels information of the transcoded stream."
-msgstr "ट्रांसकोड कएल गेल धारा क चैनल जानकारी क संख्या। "
+msgstr "ट्रांसकोड कएल गेल धारा क चैनल जानकारी क संख्या।"
 
 #: modules/access_output/shout.c:101
 msgid "Ogg Vorbis Quality"
@@ -11883,7 +11883,7 @@ msgstr "Ogg Vorbis गुणवत्ता"
 #: modules/access_output/shout.c:102
 #, fuzzy
 msgid "Ogg Vorbis Quality information of the transcoded stream."
-msgstr "ट्रांसकोड कएल गेल धारा क Ogg Vorbis गुणवत्ता क जानकारी। "
+msgstr "ट्रांसकोड कएल गेल धारा क Ogg Vorbis गुणवत्ता क जानकारी।"
 
 #: modules/access_output/shout.c:104
 msgid "Stream public"
@@ -11895,7 +11895,7 @@ msgid ""
 "Make the server publicly available on the 'Yellow Pages' (directory listing "
 "of streams) on the icecast/shoutcast website. Requires the bitrate "
 "information specified for shoutcast. Requires Ogg streaming for icecast."
-msgstr "icecast/shoutcast "
+msgstr "icecast/shoutcast"
 
 #: modules/access_output/shout.c:111
 msgid "IceCAST output"
@@ -16008,7 +16008,7 @@ msgstr "साइ-अनुकूलन क उपयोग करू"
 
 #: modules/codec/x264.c:353
 msgid "Use all visual optimizations that can worsen both PSNR and SSIM"
-msgstr " सबहि दृश्य अनुकूलन क प्रयोग करू जे PSNR आओर SSIM दुनू केँ खराब कए सकैत अछि।"
+msgstr "सबहि दृश्य अनुकूलन क प्रयोग करू जे PSNR आओर SSIM दुनू केँ खराब कए सकैत अछि।"
 
 #: modules/codec/x264.c:357
 msgid ""
@@ -16469,7 +16469,7 @@ msgstr "| achan [X]. . . . . . . . . .  आडियो चैनल केँ �
 
 #: modules/control/cli/cli.c:177
 msgid "| atrack [X] . . . . . . . . . . . set/get audio track"
-msgstr " atrack [X] . . . . . . . . . . . आडियो ट्रैक सेट करू/पाउ"
+msgstr "atrack [X] . . . . . . . . . . . आडियो ट्रैक सेट करू/पाउ"
 
 #: modules/control/cli/cli.c:178
 msgid "| vtrack [X] . . . . . . . . . . . set/get video track"
@@ -19675,7 +19675,7 @@ msgstr "प्रीसेट केँ निकालू"
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:928
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:936
 msgid "Select the preset you would like to remove:"
-msgstr "प्रीसेट क चयन करू जकरा अहाँ निकालब चाहैत अछि: "
+msgstr "प्रीसेट क चयन करू जकरा अहाँ निकालब चाहैत अछि:"
 
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:605
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:929
@@ -21734,16 +21734,16 @@ msgstr " स्थिति : %s/%s"
 
 #: modules/gui/ncurses.c:1276
 msgid " Volume   : Mute"
-msgstr "वाल्यूम   : शांत"
+msgstr " वाल्यूम   : शांत"
 
 #: modules/gui/ncurses.c:1277
 #, c-format
 msgid " Volume   : %3ld%%"
-msgstr "वाल्यूम  : %3ld%%"
+msgstr " वाल्यूम  : %3ld%%"
 
 #: modules/gui/ncurses.c:1277
 msgid " Volume   : ----"
-msgstr "वाल्यूम   : ----"
+msgstr " वाल्यूम   : ----"
 
 #: modules/gui/ncurses.c:1286
 #, c-format
@@ -21758,7 +21758,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr " स्रोत: <no current item> "
+msgstr " स्रोत: <no current item>"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -22018,7 +22018,7 @@ msgstr "खुलल निर्देशिका"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:81
 #: modules/gui/qt/menus/menus.cpp:953 modules/gui/qt/menus/qml/MainMenu.qml:59
 msgid "Open Folder"
-msgstr " फोल्डर खोलू"
+msgstr "फोल्डर खोलू"
 
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:885
 msgid "Save play queue as..."
@@ -23268,7 +23268,7 @@ msgstr "ई नाम सँ लाग फाइल सहेजू..."
 #: modules/gui/qt/dialogs/messages/messages.cpp:361
 #, fuzzy
 msgid "Texts/Logs (*.log *.txt);; All (*.*)"
-msgstr "पाठ / लाग (*.log *.txt);; All (*.*) "
+msgstr "पाठ / लाग (*.log *.txt);; All (*.*)"
 
 #: modules/gui/qt/dialogs/messages/messages.cpp:367
 msgid "Application"
@@ -24259,7 +24259,7 @@ msgstr "हाटकी"
 
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:1308
 msgid "Application level hotkey"
-msgstr "एप्लिकेशन स्तरीय हाटकी "
+msgstr "एप्लिकेशन स्तरीय हाटकी"
 
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:1309
 msgid "Global"
@@ -24267,7 +24267,7 @@ msgstr "वैश्विक"
 
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:1310
 msgid "Desktop level hotkey"
-msgstr " डेस्कटापस्तरीय हाटकी"
+msgstr "डेस्कटापस्तरीय हाटकी"
 
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:1392
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:1393
@@ -27992,7 +27992,7 @@ msgstr "वालपेपर नियत करू (&p)"
 
 #: modules/gui/qt/menus/menus.cpp:471
 msgid "&Zoom"
-msgstr " छोट-पैघकरू (&Z)"
+msgstr "छोट-पैघकरू (&Z)"
 
 #: modules/gui/qt/menus/menus.cpp:472
 msgid "&Aspect Ratio"
@@ -29761,7 +29761,7 @@ msgstr ""
 #: modules/gui/qt/qt.cpp:237
 #, fuzzy
 msgid "Selection of the starting mode and look"
-msgstr "स्टार्टिंग मोड तथा रूप क चयन "
+msgstr "स्टार्टिंग मोड तथा रूप क चयन"
 
 #: modules/gui/qt/qt.cpp:238
 msgid ""
@@ -30226,7 +30226,7 @@ msgstr "कवर आर्ट डाउनलोड करू"
 
 #: modules/gui/qt/widgets/native/interface_widgets.cpp:63
 msgid "Add cover art from file"
-msgstr "फाइल सँ कवर आर्ट जोड़ू "
+msgstr "फाइल सँ कवर आर्ट जोड़ू"
 
 #: modules/gui/qt/widgets/native/interface_widgets.cpp:159
 msgid "Choose Cover Art"
@@ -31432,7 +31432,7 @@ msgstr "प्रोग्रेसिव राक"
 
 #: modules/meta_engine/ID3Genres.h:126
 msgid "Psychedelic Rock"
-msgstr "साइकेडेलिक राक "
+msgstr "साइकेडेलिक राक"
 
 #: modules/meta_engine/ID3Genres.h:127
 msgid "Symphonic Rock"
@@ -31596,7 +31596,7 @@ msgstr "बीट"
 
 #: modules/meta_engine/ID3Genres.h:169
 msgid "Christian Gangsta Rap"
-msgstr "क्रिस्चियन गैंगस्टा रैप "
+msgstr "क्रिस्चियन गैंगस्टा रैप"
 
 #: modules/meta_engine/ID3Genres.h:170
 msgid "Heavy Metal"
@@ -33760,7 +33760,7 @@ msgstr "गंतव्य क नमूना पहलू अनुपात (
 #: modules/stream_out/mosaic_bridge.c:687
 #: modules/stream_out/transcode/transcode.c:79
 msgid "Video filter"
-msgstr "वीडियो फिल्टर "
+msgstr "वीडियो फिल्टर"
 
 #: modules/stream_out/mosaic_bridge.c:689
 msgid "Video filters will be applied to the video stream."
@@ -34045,7 +34045,7 @@ msgstr "आउटपुट कार्ड"
 
 #: modules/stream_out/sdi/sdiout.cpp:55 modules/video_output/decklink.cpp:98
 msgid "DeckLink output card, if multiple exist. The cards are numbered from 0."
-msgstr "डेकलिंक आउटपुट कार्ड, जँ एकाधिक मोजुद अछि. कार्ड केँ 0 सँ नंबर देब जाइत अछि. "
+msgstr "डेकलिंक आउटपुट कार्ड, जँ एकाधिक मोजुद अछि. कार्ड केँ 0 सँ नंबर देब जाइत अछि."
 
 #: modules/stream_out/sdi/sdiout.cpp:58 modules/video_output/decklink.cpp:101
 msgid "Desired output mode"
@@ -34104,7 +34104,7 @@ msgstr "डेकलिंक आडियो विकल्प"
 
 #: modules/stream_out/setid.c:46
 msgid "New ES ID"
-msgstr " नवES ID"
+msgstr "नवES ID"
 
 #: modules/stream_out/setid.c:48
 msgid "Specify an new identifier integer for this elementary stream"
@@ -36417,7 +36417,7 @@ msgstr "Direct3D वीडियो आउटपुट"
 
 #: modules/video_output/win32/direct3d9.c:75
 msgid "The desktop mode allows you to display the video on the desktop."
-msgstr " डेस्कटापमोड अहाँकेँ डेस्कटाप पर वीडियो प्रदर्शित करबाक लेल अनुमति देत अछि."
+msgstr "डेस्कटापमोड अहाँकेँ डेस्कटाप पर वीडियो प्रदर्शित करबाक लेल अनुमति देत अछि."
 
 #: modules/video_output/win32/direct3d9.c:80
 msgid "Use hardware YUV to RGB conversions"
@@ -37233,7 +37233,7 @@ msgstr "लाइब्रेरी नुकाउ / देखाउ"
 
 #: share/lua/http/index.html:234
 msgid "Hide / Show Viewer"
-msgstr "व्यूअर नुकाउ / देखाउ "
+msgstr "व्यूअर नुकाउ / देखाउ"
 
 #: share/lua/http/index.html:235
 msgid "Manage Streams"

@@ -185,7 +185,7 @@ msgstr "آڈیو کی ترتیبات"
 
 #: include/vlc_config_cat.h:74
 msgid "General audio settings"
-msgstr " آڈیو کی عمومی ترتیبات"
+msgstr "آڈیو کی عمومی ترتیبات"
 
 #: include/vlc_config_cat.h:75
 msgid "Audio filters are used to process the audio stream."
@@ -206,7 +206,7 @@ msgstr "ویڈیو کی ترتیبات"
 
 #: include/vlc_config_cat.h:81
 msgid "General video settings"
-msgstr " ویڈیو کی عمومی ترتیبات"
+msgstr "ویڈیو کی عمومی ترتیبات"
 
 #: include/vlc_config_cat.h:82
 msgid "General settings for video output modules."
@@ -19366,7 +19366,7 @@ msgstr ""
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:410
 #, fuzzy
 msgid "General settings"
-msgstr " آڈیو کی عمومی ترتیبات"
+msgstr "آڈیو کی عمومی ترتیبات"
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:415
 msgid "Display end of playback view"

@@ -2281,7 +2281,7 @@ msgstr "ਉਚਾਈ"
 
 #: src/libvlc-module.c:507
 msgid "Custom crop ratios list"
-msgstr "ਕਸਟਮ ਕਰੋਪ ਰੇਸ਼ੋ ਲਿਸਟ "
+msgstr "ਕਸਟਮ ਕਰੋਪ ਰੇਸ਼ੋ ਲਿਸਟ"
 
 #: src/libvlc-module.c:509
 msgid ""
@@ -20280,7 +20280,7 @@ msgstr "ਸਕਿਨ"
 
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:175
 msgid "Convert & Stream"
-msgstr " ਬਦਲੋ ਤੇ ਸਟਰੀਮ ਕਰੋ"
+msgstr "ਬਦਲੋ ਤੇ ਸਟਰੀਮ ਕਰੋ"
 
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:176
 msgid "Go!"
@@ -20713,7 +20713,7 @@ msgstr ""
 
 #: modules/gui/ncurses.c:993
 msgid " L                      Show/Hide messages box"
-msgstr "  L           Show/Hide messages box"
+msgstr " L           Show/Hide messages box"
 
 #: modules/gui/ncurses.c:994
 msgid " P                      Show/Hide playlist box"
@@ -20935,7 +20935,7 @@ msgstr " ਸਥਿਤੀ : %s/%s"
 
 #: modules/gui/ncurses.c:1276
 msgid " Volume   : Mute"
-msgstr "ਆਵਾਜ਼: ਚੁੱਪ"
+msgstr " ਆਵਾਜ਼: ਚੁੱਪ"
 
 #: modules/gui/ncurses.c:1277
 #, c-format
@@ -20959,7 +20959,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr " ਸਰੋਤ: <no current item> "
+msgstr " ਸਰੋਤ: <no current item>"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -21249,7 +21249,7 @@ msgstr "ਮੀਡਿਆ ਫਾਇਲਾਂ"
 #: modules/gui/qt/dialogs/dialogs_provider.hpp:54
 #: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1540
 msgid "Video Files"
-msgstr "ਵਿਡੀਓ ਫਾਇਲਾਂ "
+msgstr "ਵਿਡੀਓ ਫਾਇਲਾਂ"
 
 #: modules/gui/qt/dialogs/dialogs_provider.hpp:55
 #: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1539
@@ -22461,7 +22461,7 @@ msgstr "ਲਾਗ ਫਾਇਲ ਇੰਝ ਸੰਭਾਲੋ..."
 #: modules/gui/qt/dialogs/messages/messages.cpp:361
 #, fuzzy
 msgid "Texts/Logs (*.log *.txt);; All (*.*)"
-msgstr "ਟੈਕਸਟ / ਲਾਗ (*.log *.txt);; ਸਭ (*.*) "
+msgstr "ਟੈਕਸਟ / ਲਾਗ (*.log *.txt);; ਸਭ (*.*)"
 
 #: modules/gui/qt/dialogs/messages/messages.cpp:367
 msgid "Application"
@@ -23927,7 +23927,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:193
 #, fuzzy
 msgid " dB"
-msgstr "dB"
+msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207
@@ -25791,11 +25791,11 @@ msgstr "ਬਦਲੋ"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:506
 msgid "Broadcast: "
-msgstr "ਬਰਾਂਡਕਾਸਟ:"
+msgstr "ਬਰਾਂਡਕਾਸਟ: "
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 msgid "Schedule: "
-msgstr "ਸੈਡਿਊਲ:"
+msgstr "ਸੈਡਿਊਲ: "
 
 #: modules/gui/qt/maininterface/mainctx.cpp:1193
 msgid "Paste from clipboard"
@@ -30548,7 +30548,7 @@ msgstr "ਫੋਲਕ"
 
 #: modules/meta_engine/ID3Genres.h:114
 msgid "Folk-Rock"
-msgstr "ਫੋਲਕ-ਰੌਕ "
+msgstr "ਫੋਲਕ-ਰੌਕ"
 
 #: modules/meta_engine/ID3Genres.h:115
 msgid "National Folk"
@@ -30696,7 +30696,7 @@ msgstr ""
 
 #: modules/meta_engine/ID3Genres.h:154
 msgid "Punk Rock"
-msgstr "ਪੰਕ ਰੌਕ "
+msgstr "ਪੰਕ ਰੌਕ"
 
 #: modules/meta_engine/ID3Genres.h:155
 msgid "Drum Solo"

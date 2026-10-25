@@ -1368,7 +1368,7 @@ msgstr "Webbadress"
 
 #: src/input/meta.c:70 src/input/meta.c:71 modules/notify/notify.c:340
 msgid "Now Playing"
-msgstr "Spelar nu "
+msgstr "Spelar nu"
 
 #: src/input/meta.c:72 modules/demux/mp4/meta.c:98
 msgid "Publisher"
@@ -2464,7 +2464,7 @@ msgstr ""
 
 #: src/libvlc-module.c:535
 msgid "Key press events"
-msgstr "Tangenttryckningshändelser "
+msgstr "Tangenttryckningshändelser"
 
 #: src/libvlc-module.c:537
 msgid "This enables VLC hotkeys from the (non-embedded) video window."
@@ -3293,7 +3293,7 @@ msgstr "Detta är DVD-enheten att använda som standard."
 
 #: src/libvlc-module.c:921
 msgid "This is the default VCD device to use."
-msgstr "Detta är standard-vcd-enheten som används. "
+msgstr "Detta är standard-vcd-enheten som används."
 
 #: src/libvlc-module.c:935
 msgid "TCP connection timeout"
@@ -4646,7 +4646,7 @@ msgstr ""
 
 #: src/libvlc-module.c:1474
 msgid "Subtitle sync / reset audio & subtitle synchronization"
-msgstr "Undertextsynkr. / återställ ljud- & undertextsynkronisering "
+msgstr "Undertextsynkr. / återställ ljud- & undertextsynkronisering"
 
 #: src/libvlc-module.c:1475
 msgid "Select the key to reset synchronization of audio & subtitle timestamps."
@@ -5686,7 +5686,7 @@ msgstr "Volym ned"
 #: src/misc/actions.c:141
 msgctxt "key"
 msgid "Volume Mute"
-msgstr " Volym tyst"
+msgstr "Volym tyst"
 
 #: src/misc/actions.c:142
 msgctxt "key"
@@ -11480,7 +11480,7 @@ msgstr "Komprimerad A/V-inmatning för Video4Linux"
 
 #: modules/access/v4l2/v4l2.c:416
 msgid "Video4Linux radio tuner"
-msgstr "Radiomottagare för Video4Linux "
+msgstr "Radiomottagare för Video4Linux"
 
 #: modules/access/vcd/vcd.c:45
 msgid "Usage hint: [vcd:][device][#[title][,[chapter]]]"
@@ -11919,7 +11919,7 @@ msgstr "Genrebeskrivning"
 #: modules/access_output/shout.c:83
 #, fuzzy
 msgid "Genre of the content."
-msgstr "Genre för innehållet. "
+msgstr "Genre för innehållet."
 
 #: modules/access_output/shout.c:85
 #, fuzzy
@@ -11934,12 +11934,12 @@ msgstr "Webbadress med information om strömmen eller din kanal."
 #: modules/access_output/shout.c:93
 #, fuzzy
 msgid "Bitrate information of the transcoded stream."
-msgstr "Information om bitfrekvens för den omkodade strömmen. "
+msgstr "Information om bitfrekvens för den omkodade strömmen."
 
 #: modules/access_output/shout.c:96
 #, fuzzy
 msgid "Samplerate information of the transcoded stream."
-msgstr "Information om samplingsfrekvensen för den omkodade strömmen. "
+msgstr "Information om samplingsfrekvensen för den omkodade strömmen."
 
 #: modules/access_output/shout.c:98
 msgid "Number of channels"
@@ -11948,7 +11948,7 @@ msgstr "Antal kanaler"
 #: modules/access_output/shout.c:99
 #, fuzzy
 msgid "Number of channels information of the transcoded stream."
-msgstr "Information om antal kanaler för den omkodade strömmen. "
+msgstr "Information om antal kanaler för den omkodade strömmen."
 
 #: modules/access_output/shout.c:101
 msgid "Ogg Vorbis Quality"
@@ -12809,7 +12809,7 @@ msgstr "Stereoförbättring"
 
 #: modules/audio_filter/stereo_widen.c:78
 msgid "Simple stereo widening effect"
-msgstr "Enkel stereobreddningseffekt "
+msgstr "Enkel stereobreddningseffekt"
 
 #: modules/audio_mixer/float.c:47
 msgid "Single precision audio volume"
@@ -14061,7 +14061,7 @@ msgstr ""
 
 #: modules/codec/gstreamer/gstdecode.c:105
 msgid "GStreamer Based Decoder"
-msgstr "Avkodare baserad på GStreamer "
+msgstr "Avkodare baserad på GStreamer"
 
 #: modules/codec/jpeg.c:40
 msgid ""
@@ -15065,7 +15065,7 @@ msgstr "Avkodare för USF-undertexter"
 
 #: modules/codec/svcdsub.c:48
 msgid "Philips OGT (SVCD subtitle) decoder"
-msgstr "Avkodare för Philips OGT (SVCD undertext) "
+msgstr "Avkodare för Philips OGT (SVCD undertext)"
 
 #: modules/codec/svcdsub.c:49
 msgid "SVCD subtitles"
@@ -16947,7 +16947,7 @@ msgstr ""
 
 #: modules/demux/avi/avi.c:71
 msgid "Ask for action"
-msgstr "Fråga efter åtgärd "
+msgstr "Fråga efter åtgärd"
 
 #: modules/demux/avi/avi.c:72
 msgid "Always fix"
@@ -21410,31 +21410,31 @@ msgstr "[Visning]"
 
 #: modules/gui/ncurses.c:990
 msgid " h,H                    Show/Hide help box"
-msgstr "h,H Visa/dölj hjälpruta"
+msgstr " h,H Visa/dölj hjälpruta"
 
 #: modules/gui/ncurses.c:991
 msgid " i                      Show/Hide info box"
-msgstr "i Visa/dölj informationsruta"
+msgstr " i Visa/dölj informationsruta"
 
 #: modules/gui/ncurses.c:992
 msgid " M                      Show/Hide metadata box"
-msgstr "M Visa/dölj metadataruta"
+msgstr " M Visa/dölj metadataruta"
 
 #: modules/gui/ncurses.c:993
 msgid " L                      Show/Hide messages box"
-msgstr "L Visa/dölj meddelanderuta"
+msgstr " L Visa/dölj meddelanderuta"
 
 #: modules/gui/ncurses.c:994
 msgid " P                      Show/Hide playlist box"
-msgstr "P Visa/dölj uppspelningsruta"
+msgstr " P Visa/dölj uppspelningsruta"
 
 #: modules/gui/ncurses.c:995
 msgid " B                      Show/Hide filebrowser"
-msgstr "B Visa/dölj filbläddrare"
+msgstr " B Visa/dölj filbläddrare"
 
 #: modules/gui/ncurses.c:996
 msgid " S                      Show/Hide statistics box"
-msgstr "S Visa/dölj statistikruta"
+msgstr " S Visa/dölj statistikruta"
 
 #: modules/gui/ncurses.c:997
 msgid " E                      Show/Hide equalizer box"
@@ -21442,11 +21442,11 @@ msgstr ""
 
 #: modules/gui/ncurses.c:998
 msgid " Esc                    Close Add/Search entry"
-msgstr "Esc Stäng Lägg till/Sök post"
+msgstr " Esc Stäng Lägg till/Sök post"
 
 #: modules/gui/ncurses.c:999
 msgid " Ctrl-l                 Refresh the screen"
-msgstr "Ctrl-l Uppdatera skärmen"
+msgstr " Ctrl-l Uppdatera skärmen"
 
 #: modules/gui/ncurses.c:1003
 msgid "[Global]"
@@ -21458,7 +21458,7 @@ msgstr " q, Q, Esc              Avsluta"
 
 #: modules/gui/ncurses.c:1006
 msgid " s                      Stop"
-msgstr "s Stoppa"
+msgstr " s Stoppa"
 
 #: modules/gui/ncurses.c:1007
 msgid " <space>                Pause/Play"
@@ -21470,15 +21470,15 @@ msgstr " f                      Växla helskärmsläge"
 
 #: modules/gui/ncurses.c:1009
 msgid " c                      Cycle through audio tracks"
-msgstr "c Växla mellan ljudspår"
+msgstr " c Växla mellan ljudspår"
 
 #: modules/gui/ncurses.c:1010
 msgid " v                      Cycle through subtitles tracks"
-msgstr "v Växla mellan undertextspår"
+msgstr " v Växla mellan undertextspår"
 
 #: modules/gui/ncurses.c:1011
 msgid " b                      Cycle through video tracks"
-msgstr "b Växla mellan videospår"
+msgstr " b Växla mellan videospår"
 
 #: modules/gui/ncurses.c:1012
 msgid " n, p                   Next/Previous playlist item"
@@ -21486,11 +21486,11 @@ msgstr " n, p Nästa/Föregående objekt i spellistan"
 
 #: modules/gui/ncurses.c:1013
 msgid " [, ]                   Next/Previous title"
-msgstr "[, ] Nästa/föregående titel"
+msgstr " [, ] Nästa/föregående titel"
 
 #: modules/gui/ncurses.c:1014
 msgid " <, >                   Next/Previous chapter"
-msgstr "<, > Nästa/föregående kapitel"
+msgstr " <, > Nästa/föregående kapitel"
 
 #. xgettext: You can use ← and → characters
 #: modules/gui/ncurses.c:1016
@@ -21500,11 +21500,11 @@ msgstr " <left>,<right> Sök -/+ 1%%"
 
 #: modules/gui/ncurses.c:1017
 msgid " a, z                   Volume Up/Down"
-msgstr "a, z Volym upp/ned"
+msgstr " a, z Volym upp/ned"
 
 #: modules/gui/ncurses.c:1018
 msgid " m                      Mute"
-msgstr "m Tyst"
+msgstr " m Tyst"
 
 #. xgettext: You can use ↑ and ↓ characters
 #: modules/gui/ncurses.c:1020
@@ -21539,15 +21539,15 @@ msgstr "[Spellista]"
 
 #: modules/gui/ncurses.c:1037
 msgid " r                      Toggle Random playing"
-msgstr "r Växla slumpmässig uppspelning"
+msgstr " r Växla slumpmässig uppspelning"
 
 #: modules/gui/ncurses.c:1038
 msgid " l                      Toggle Loop Playlist"
-msgstr "l Växla slingande spellista"
+msgstr " l Växla slingande spellista"
 
 #: modules/gui/ncurses.c:1039
 msgid " R                      Toggle Repeat item"
-msgstr "R Växla upprepande objekt"
+msgstr " R Växla upprepande objekt"
 
 #: modules/gui/ncurses.c:1040
 msgid " o                      Order Playlist by title"
@@ -21576,7 +21576,7 @@ msgstr " A Lägg till en post"
 #. xgettext: You can use ⌫ character to translate <backspace>
 #: modules/gui/ncurses.c:1047
 msgid " D, <backspace>, <del>  Delete an entry"
-msgstr "D, <backspace>, <del> Radera en post"
+msgstr " D, <backspace>, <del> Radera en post"
 
 #: modules/gui/ncurses.c:1048
 msgid " e                      Eject (if stopped)"
@@ -21592,7 +21592,7 @@ msgstr " <enter> Lägg till valda filen i spellistan"
 
 #: modules/gui/ncurses.c:1055
 msgid " <space>                Add the selected directory to the playlist"
-msgstr "<space> Lägg till den valda katalogen till spellistan"
+msgstr " <space> Lägg till den valda katalogen till spellistan"
 
 #: modules/gui/ncurses.c:1056
 msgid " .                      Show/Hide hidden files"
@@ -21668,7 +21668,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr " Källa: <inget aktuellt objekt> "
+msgstr " Källa: <inget aktuellt objekt>"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -22366,7 +22366,7 @@ msgstr "%1: beskärning i bildpunkter"
 
 #: modules/gui/qt/dialogs/extended/qml/CropInput.qml:87
 msgid "px"
-msgstr " bildpunkter"
+msgstr "bildpunkter"
 
 #: modules/gui/qt/dialogs/extended/qml/CropPanel.qml:60
 msgid "Link top and bottom crop"
@@ -31930,7 +31930,7 @@ msgstr "Acceptera 24 timmar"
 
 #: modules/misc/gnutls.c:510
 msgid "Accept permanently"
-msgstr "Acceptera "
+msgstr "Acceptera"
 
 #: modules/misc/gnutls.c:512
 #, c-format

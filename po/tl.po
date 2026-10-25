@@ -21314,7 +21314,7 @@ msgstr ""
 #: modules/gui/ncurses.c:992
 #, fuzzy
 msgid " M                      Show/Hide metadata box"
-msgstr "_Fayl"
+msgstr " _Fayl"
 
 #: modules/gui/ncurses.c:993
 msgid " L                      Show/Hide messages box"
@@ -21367,32 +21367,32 @@ msgstr ""
 #: modules/gui/ncurses.c:1009
 #, fuzzy
 msgid " c                      Cycle through audio tracks"
-msgstr "_Fayl"
+msgstr " _Fayl"
 
 #: modules/gui/ncurses.c:1010
 #, fuzzy
 msgid " v                      Cycle through subtitles tracks"
-msgstr "_Fayl"
+msgstr " _Fayl"
 
 #: modules/gui/ncurses.c:1011
 #, fuzzy
 msgid " b                      Cycle through video tracks"
-msgstr "_Fayl"
+msgstr " _Fayl"
 
 #: modules/gui/ncurses.c:1012
 #, fuzzy
 msgid " n, p                   Next/Previous playlist item"
-msgstr "_Fayl"
+msgstr " _Fayl"
 
 #: modules/gui/ncurses.c:1013
 #, fuzzy
 msgid " [, ]                   Next/Previous title"
-msgstr "_Fayl"
+msgstr " _Fayl"
 
 #: modules/gui/ncurses.c:1014
 #, fuzzy
 msgid " <, >                   Next/Previous chapter"
-msgstr "_Fayl"
+msgstr " _Fayl"
 
 #. xgettext: You can use ← and → characters
 #: modules/gui/ncurses.c:1016
@@ -21407,7 +21407,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1018
 #, fuzzy
 msgid " m                      Mute"
-msgstr "_Fayl"
+msgstr " _Fayl"
 
 #. xgettext: You can use ↑ and ↓ characters
 #: modules/gui/ncurses.c:1020
@@ -21456,12 +21456,12 @@ msgstr ""
 #: modules/gui/ncurses.c:1040
 #, fuzzy
 msgid " o                      Order Playlist by title"
-msgstr "_Fayl"
+msgstr " _Fayl"
 
 #: modules/gui/ncurses.c:1041
 #, fuzzy
 msgid " O                      Reverse order Playlist by title"
-msgstr "_Fayl"
+msgstr " _Fayl"
 
 #: modules/gui/ncurses.c:1042
 msgid " g                      Go to the current playing item"
@@ -21474,7 +21474,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1044
 #, fuzzy
 msgid " ;                      Look for the next item"
-msgstr "_Fayl"
+msgstr " _Fayl"
 
 #: modules/gui/ncurses.c:1045
 msgid " A                      Add an entry"
@@ -21578,7 +21578,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr "_Makit-an"
+msgstr " _Makit-an"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"

@@ -15642,7 +15642,7 @@ msgid ""
 " - 1: Current x264 default mode\n"
 " - 2: uses log(var)^2 instead of log(var) and attempts to adapt strength per "
 "frame"
-msgstr "Define'l mou de distribución de bits pa AQ, predetermináu "
+msgstr "Define'l mou de distribución de bits pa AQ, predetermináu"
 
 #: modules/codec/x264.c:228
 msgid "Strength of AQ"
@@ -21373,12 +21373,12 @@ msgstr ""
 #: modules/gui/ncurses.c:898
 #, c-format
 msgid "  [%s]"
-msgstr "[%s]"
+msgstr "  [%s]"
 
 #: modules/gui/ncurses.c:901
 #, c-format
 msgid "      %s: %s"
-msgstr "%s: %s"
+msgstr "      %s: %s"
 
 #: modules/gui/ncurses.c:988
 msgid "[Display]"
@@ -21386,11 +21386,11 @@ msgstr "[Pantalla]"
 
 #: modules/gui/ncurses.c:990
 msgid " h,H                    Show/Hide help box"
-msgstr "h,H         Amosar/Anubrir caxa d'ayuda"
+msgstr " h,H         Amosar/Anubrir caxa d'ayuda"
 
 #: modules/gui/ncurses.c:991
 msgid " i                      Show/Hide info box"
-msgstr "i           Amosar/Anubrir caxa d'información"
+msgstr " i           Amosar/Anubrir caxa d'información"
 
 #: modules/gui/ncurses.c:992
 msgid " M                      Show/Hide metadata box"
@@ -21398,19 +21398,19 @@ msgstr ""
 
 #: modules/gui/ncurses.c:993
 msgid " L                      Show/Hide messages box"
-msgstr "L           Amosar/Anubrir caxa de mensaxes"
+msgstr " L           Amosar/Anubrir caxa de mensaxes"
 
 #: modules/gui/ncurses.c:994
 msgid " P                      Show/Hide playlist box"
-msgstr "P           Amosar/Anubrir caxa de llista de reproducción"
+msgstr " P           Amosar/Anubrir caxa de llista de reproducción"
 
 #: modules/gui/ncurses.c:995
 msgid " B                      Show/Hide filebrowser"
-msgstr "B           Amosar/Anubrir esplorador de ficheros"
+msgstr " B           Amosar/Anubrir esplorador de ficheros"
 
 #: modules/gui/ncurses.c:996
 msgid " S                      Show/Hide statistics box"
-msgstr "S           Amosar/Anubrir caxa d'estadístiques"
+msgstr " S           Amosar/Anubrir caxa d'estadístiques"
 
 #: modules/gui/ncurses.c:997
 msgid " E                      Show/Hide equalizer box"
@@ -21418,11 +21418,11 @@ msgstr ""
 
 #: modules/gui/ncurses.c:998
 msgid " Esc                    Close Add/Search entry"
-msgstr "Esc         Zarrar Amestar/Buscar entrada"
+msgstr " Esc         Zarrar Amestar/Buscar entrada"
 
 #: modules/gui/ncurses.c:999
 msgid " Ctrl-l                 Refresh the screen"
-msgstr "Ctrl-l            Enfrescar la pantalla"
+msgstr " Ctrl-l            Enfrescar la pantalla"
 
 #: modules/gui/ncurses.c:1003
 msgid "[Global]"
@@ -21430,19 +21430,19 @@ msgstr "[Global]"
 
 #: modules/gui/ncurses.c:1005
 msgid " q, Q, Esc              Quit"
-msgstr "q, Q, Esc             Salir"
+msgstr " q, Q, Esc             Salir"
 
 #: modules/gui/ncurses.c:1006
 msgid " s                      Stop"
-msgstr "s           Detener"
+msgstr " s           Detener"
 
 #: modules/gui/ncurses.c:1007
 msgid " <space>                Pause/Play"
-msgstr "<espacio>                Posa/Reproducir"
+msgstr " <espacio>                Posa/Reproducir"
 
 #: modules/gui/ncurses.c:1008
 msgid " f                      Toggle Fullscreen"
-msgstr "f                      Camudar a pantalla completa"
+msgstr " f                      Camudar a pantalla completa"
 
 #: modules/gui/ncurses.c:1009
 msgid " c                      Cycle through audio tracks"
@@ -21458,25 +21458,25 @@ msgstr ""
 
 #: modules/gui/ncurses.c:1012
 msgid " n, p                   Next/Previous playlist item"
-msgstr "n, p        Siguiente/Anterior oxetu de la llista de reproducción"
+msgstr " n, p        Siguiente/Anterior oxetu de la llista de reproducción"
 
 #: modules/gui/ncurses.c:1013
 msgid " [, ]                   Next/Previous title"
-msgstr "[, ]        Títulu siguiente/anterior"
+msgstr " [, ]        Títulu siguiente/anterior"
 
 #: modules/gui/ncurses.c:1014
 msgid " <, >                   Next/Previous chapter"
-msgstr "<, >        Capítulu siguiente/anterior"
+msgstr " <, >        Capítulu siguiente/anterior"
 
 #. xgettext: You can use ← and → characters
 #: modules/gui/ncurses.c:1016
 #, c-format
 msgid " <left>,<right>         Seek -/+ 1%%"
-msgstr "<izquierda>,<derecha>         Buscar +1%%"
+msgstr " <izquierda>,<derecha>         Buscar +1%%"
 
 #: modules/gui/ncurses.c:1017
 msgid " a, z                   Volume Up/Down"
-msgstr "a, z                   Baxar/Xubir volume"
+msgstr " a, z                   Baxar/Xubir volume"
 
 #: modules/gui/ncurses.c:1018
 msgid " m                      Mute"
@@ -21485,17 +21485,17 @@ msgstr ""
 #. xgettext: You can use ↑ and ↓ characters
 #: modules/gui/ncurses.c:1020
 msgid " <up>,<down>            Navigate through the box line by line"
-msgstr "<arriba>,<abaxo>            Navegar pola caxa llinia a llinia"
+msgstr " <arriba>,<abaxo>            Navegar pola caxa llinia a llinia"
 
 #. xgettext: You can use ⇞ and ⇟ characters
 #: modules/gui/ncurses.c:1022
 msgid " <pageup>,<pagedown>    Navigate through the box page by page"
-msgstr "<Re Páx>,<Av Páx>    Navegar pola caxa páxina a páxina"
+msgstr " <Re Páx>,<Av Páx>    Navegar pola caxa páxina a páxina"
 
 #. xgettext: You can use ↖ and ↘ characters
 #: modules/gui/ncurses.c:1024
 msgid " <start>,<end>          Navigate to start/end of box"
-msgstr "<aniciu>,<fin>          Navegar al entamu/fin de la caxa"
+msgstr " <aniciu>,<fin>          Navegar al entamu/fin de la caxa"
 
 #: modules/gui/ncurses.c:1028
 msgid "[Equalizer]"
@@ -21515,19 +21515,19 @@ msgstr "[Llista de reproducción]"
 
 #: modules/gui/ncurses.c:1037
 msgid " r                      Toggle Random playing"
-msgstr "r                      Camudar reproducción aleatoria"
+msgstr " r                      Camudar reproducción aleatoria"
 
 #: modules/gui/ncurses.c:1038
 msgid " l                      Toggle Loop Playlist"
-msgstr "l                      Conmutar bucle llista de reproducción"
+msgstr " l                      Conmutar bucle llista de reproducción"
 
 #: modules/gui/ncurses.c:1039
 msgid " R                      Toggle Repeat item"
-msgstr "R                      Camudar repetir oxetu"
+msgstr " R                      Camudar repetir oxetu"
 
 #: modules/gui/ncurses.c:1040
 msgid " o                      Order Playlist by title"
-msgstr "o                      Ordenar llista de reproducción per títulu"
+msgstr " o                      Ordenar llista de reproducción per títulu"
 
 #: modules/gui/ncurses.c:1041
 msgid " O                      Reverse order Playlist by title"
@@ -21536,11 +21536,11 @@ msgstr ""
 
 #: modules/gui/ncurses.c:1042
 msgid " g                      Go to the current playing item"
-msgstr "g                      Dir al oxetu actual reproducíu"
+msgstr " g                      Dir al oxetu actual reproducíu"
 
 #: modules/gui/ncurses.c:1043
 msgid " /                      Look for an item"
-msgstr "/                      Buscar un oxetu"
+msgstr " /                      Buscar un oxetu"
 
 #: modules/gui/ncurses.c:1044
 msgid " ;                      Look for the next item"
@@ -21548,16 +21548,16 @@ msgstr ""
 
 #: modules/gui/ncurses.c:1045
 msgid " A                      Add an entry"
-msgstr "A                      Amestar una entrada"
+msgstr " A                      Amestar una entrada"
 
 #. xgettext: You can use ⌫ character to translate <backspace>
 #: modules/gui/ncurses.c:1047
 msgid " D, <backspace>, <del>  Delete an entry"
-msgstr "D, <borrar>, <supr>  Desaniciar una entrada"
+msgstr " D, <borrar>, <supr>  Desaniciar una entrada"
 
 #: modules/gui/ncurses.c:1048
 msgid " e                      Eject (if stopped)"
-msgstr "y           Espulsar (si deteníu)"
+msgstr " y           Espulsar (si deteníu)"
 
 #: modules/gui/ncurses.c:1052
 msgid "[Filebrowser]"
@@ -21565,15 +21565,15 @@ msgstr "[Esplorador de ficheros]"
 
 #: modules/gui/ncurses.c:1054
 msgid " <enter>                Add the selected file to the playlist"
-msgstr "<intro>     Amiesta ficheru escoyíu a llista de reproducción"
+msgstr " <intro>     Amiesta ficheru escoyíu a llista de reproducción"
 
 #: modules/gui/ncurses.c:1055
 msgid " <space>                Add the selected directory to the playlist"
-msgstr "<espacio>   Amiesta la carpeta escoyida a llista de reproducción"
+msgstr " <espacio>   Amiesta la carpeta escoyida a llista de reproducción"
 
 #: modules/gui/ncurses.c:1056
 msgid " .                      Show/Hide hidden files"
-msgstr ".           Amosar/Anubrir ficheros ocultos"
+msgstr " .           Amosar/Anubrir ficheros ocultos"
 
 #: modules/gui/ncurses.c:1060
 msgid "[Player]"
@@ -21583,7 +21583,7 @@ msgstr "[Reproductor]"
 #: modules/gui/ncurses.c:1063
 #, c-format
 msgid " <up>,<down>            Seek +/-5%%"
-msgstr "<arriba>,<abajo>  Buscar +/-5%%"
+msgstr " <arriba>,<abajo>  Buscar +/-5%%"
 
 #: modules/gui/ncurses.c:1106
 #, c-format
@@ -21612,12 +21612,12 @@ msgstr ""
 #: modules/gui/ncurses.c:1241
 #, c-format
 msgid " Source   : %s"
-msgstr "Orixe   : %s"
+msgstr " Orixe   : %s"
 
 #: modules/gui/ncurses.c:1271
 #, c-format
 msgid " Position : %s/%s"
-msgstr "Posición : %s/%s"
+msgstr " Posición : %s/%s"
 
 #: modules/gui/ncurses.c:1276
 msgid " Volume   : Mute"
@@ -21645,11 +21645,11 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr "Orixe: <ensin oxetu actual>"
+msgstr " Orixe: <ensin oxetu actual>"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
-msgstr "[ h p'ayuda ]"
+msgstr " [ h p'ayuda ]"
 
 #: modules/gui/ncurses.c:1329
 #, c-format
@@ -23327,7 +23327,7 @@ msgstr "La to pantalla va abrise y reproducise pa emitila o guardala."
 #. xgettext: frames per second
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1172
 msgid " f/s"
-msgstr "f/s"
+msgstr " f/s"
 
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1387
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:604
@@ -24624,7 +24624,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:193
 #, fuzzy
 msgid " dB"
-msgstr "dB"
+msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207
@@ -26123,7 +26123,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:802
 msgid " Profile Name Missing"
-msgstr "Nome de perfil ausente"
+msgstr " Nome de perfil ausente"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:803
 msgid "You must set a name for the profile."
@@ -26496,11 +26496,11 @@ msgstr "Camudar"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:506
 msgid "Broadcast: "
-msgstr "Retresmisión:"
+msgstr "Retresmisión: "
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 msgid "Schedule: "
-msgstr "Horariu programáu:"
+msgstr "Horariu programáu: "
 
 #: modules/gui/qt/maininterface/mainctx.cpp:1193
 msgid "Paste from clipboard"
@@ -34505,7 +34505,7 @@ msgstr "Filtráu de videu usando una cadena de módulos de filtru de videu"
 #: modules/video_chroma/grey_yuv.c:55 modules/video_chroma/i422_i420.c:56
 #: modules/video_chroma/yuy2_i420.c:57 modules/video_chroma/yuy2_i422.c:57
 msgid "Conversions from "
-msgstr "Conversiones dende"
+msgstr "Conversiones dende "
 
 #: modules/video_chroma/i420_nv12.c:239
 msgid "YUV planar to semiplanar conversions"

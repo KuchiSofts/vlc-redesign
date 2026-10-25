@@ -18236,11 +18236,11 @@ msgstr ""
 
 #: modules/demux/rawvid.c:47
 msgid "This specifies the width in pixels of the raw video stream."
-msgstr "Паказаць шырыню патоку Raw Video у пікселях "
+msgstr "Паказаць шырыню патоку Raw Video у пікселях"
 
 #: modules/demux/rawvid.c:51
 msgid "This specifies the height in pixels of the raw video stream."
-msgstr "Паказаць вышыню патоку Raw Video у пікселях "
+msgstr "Паказаць вышыню патоку Raw Video у пікселях"
 
 #: modules/demux/rawvid.c:54
 msgid "Force chroma (Use carefully)"
@@ -20104,7 +20104,7 @@ msgstr "Сінхранізацыя дарожкі гуку:"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:270
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:271
 msgid "s"
-msgstr " с"
+msgstr "с"
 
 #: modules/gui/macosx/panels/VLCTrackSynchronizationWindowController.m:88
 msgid "A positive value means that the audio is ahead of the video"
@@ -21731,7 +21731,7 @@ msgstr "[Паказаць]"
 
 #: modules/gui/ncurses.c:990
 msgid " h,H                    Show/Hide help box"
-msgstr "h,H                     Паказаць/схаваць даведку"
+msgstr " h,H                     Паказаць/схаваць даведку"
 
 #: modules/gui/ncurses.c:991
 msgid " i                      Show/Hide info box"
@@ -21820,7 +21820,7 @@ msgstr " <, >                   Наступны/папярэдні раздзе
 #: modules/gui/ncurses.c:1016
 #, c-format
 msgid " <left>,<right>         Seek -/+ 1%%"
-msgstr "<улева>,<управа>       Перамотка -/+ 1%%"
+msgstr " <улева>,<управа>       Перамотка -/+ 1%%"
 
 #: modules/gui/ncurses.c:1017
 msgid " a, z                   Volume Up/Down"
@@ -21992,7 +21992,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr " Крыніца: <няма бягучага аб'екта> "
+msgstr " Крыніца: <няма бягучага аб'екта>"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -23029,7 +23029,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/extensions/extensions_manager.cpp:175
 #, fuzzy
 msgid "Empty"
-msgstr " - Пусто - "
+msgstr "- Пусто -"
 
 #: modules/gui/qt/dialogs/extensions/extensions_manager.cpp:181
 #, fuzzy
@@ -24992,7 +24992,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:193
 #, fuzzy
 msgid " dB"
-msgstr "дБ"
+msgstr " дБ"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207
@@ -26493,7 +26493,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:802
 msgid " Profile Name Missing"
-msgstr "Няма назвы профілю"
+msgstr " Няма назвы профілю"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:803
 msgid "You must set a name for the profile."
@@ -26865,7 +26865,7 @@ msgstr "Змяніць"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:506
 msgid "Broadcast: "
-msgstr "Вяшчанне:"
+msgstr "Вяшчанне: "
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 msgid "Schedule: "
@@ -32379,7 +32379,7 @@ msgstr "Невядомае відэа"
 #: modules/mux/avi.c:55
 #, fuzzy
 msgid "Subject"
-msgstr " Объекты "
+msgstr "Объекты"
 
 #: modules/mux/avi.c:60
 msgid "AVI muxer"
@@ -34984,7 +34984,7 @@ msgstr "Апрацоўка відэа з выкарыстаннем ланцуж
 #: modules/video_chroma/grey_yuv.c:55 modules/video_chroma/i422_i420.c:56
 #: modules/video_chroma/yuy2_i420.c:57 modules/video_chroma/yuy2_i422.c:57
 msgid "Conversions from "
-msgstr "Пераўтварэнні з"
+msgstr "Пераўтварэнні з "
 
 #: modules/video_chroma/i420_nv12.c:239
 msgid "YUV planar to semiplanar conversions"

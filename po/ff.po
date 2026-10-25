@@ -192,7 +192,7 @@ msgstr "Teelte ojoo kuumnuɗe"
 
 #: include/vlc_config_cat.h:75
 msgid "Audio filters are used to process the audio stream."
-msgstr "Ceggi ojoo nafata ko "
+msgstr "Ceggi ojoo nafata ko"
 
 #: include/vlc_config_cat.h:76 src/audio_output/output.c:324
 #: src/libvlc-module.c:227
@@ -714,12 +714,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (goowaaɗo hurminaama)"
+msgstr "(goowaaɗo hurminaama)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (goowaaɗo daaƴaama)"
+msgstr "(goowaaɗo daaƴaama)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -1971,7 +1971,7 @@ msgstr ""
 #: src/libvlc-module.c:348
 #, fuzzy
 msgid "Enable wallpaper mode"
-msgstr "Hurmin mbayka wutte ɓalal "
+msgstr "Hurmin mbayka wutte ɓalal"
 
 #: src/libvlc-module.c:350
 msgid ""
@@ -20945,7 +20945,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr "Refto temre wonaande ndee"
+msgstr " Refto temre wonaande ndee"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"

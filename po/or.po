@@ -196,7 +196,7 @@ msgstr "ଅଡ଼ିଓ ଦୃଶ୍ୟଲବ୍ଧକରୀ"
 
 #: include/vlc_config_cat.h:77
 msgid "General settings for audio output modules."
-msgstr "ଅଡ଼ିଓ ଆଉଟପୁଟ୍ ମଡ୍ୟୁଲ୍‌ଗୁଡିକ ପାଇଁ ସାଧାରଣ ସେଟିଂସମୂହ| "
+msgstr "ଅଡ଼ିଓ ଆଉଟପୁଟ୍ ମଡ୍ୟୁଲ୍‌ଗୁଡିକ ପାଇଁ ସାଧାରଣ ସେଟିଂସମୂହ|"
 
 #: include/vlc_config_cat.h:80
 msgid "Video settings"
@@ -209,7 +209,7 @@ msgstr "ସାଧାରଣ ଭିଡ଼ିଓ ସେଟିଂସମୂହ"
 #: include/vlc_config_cat.h:82
 #, fuzzy
 msgid "General settings for video output modules."
-msgstr "ଅଡ଼ିଓ ଆଉଟପୁଟ୍ ମଡ୍ୟୁଲ୍‌ଗୁଡିକ ପାଇଁ ସାଧାରଣ ସେଟିଂସମୂହ| "
+msgstr "ଅଡ଼ିଓ ଆଉଟପୁଟ୍ ମଡ୍ୟୁଲ୍‌ଗୁଡିକ ପାଇଁ ସାଧାରଣ ସେଟିଂସମୂହ|"
 
 #: include/vlc_config_cat.h:83
 msgid "Video filters are used to process the video stream."
@@ -4231,7 +4231,7 @@ msgstr ""
 #: src/libvlc-module.c:1464
 #, fuzzy
 msgid "Reset subtitles text scale"
-msgstr "ଫାଇଲ ଚୟନ କରନ୍ତୁ "
+msgstr "ଫାଇଲ ଚୟନ କରନ୍ତୁ"
 
 #: src/libvlc-module.c:1465
 #, fuzzy
@@ -20041,7 +20041,7 @@ msgstr ""
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:329
 #, fuzzy
 msgid "Select a subtitle file"
-msgstr "ଫାଇଲ ଚୟନ କରନ୍ତୁ "
+msgstr "ଫାଇଲ ଚୟନ କରନ୍ତୁ"
 
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:330
 msgid "Override parameters"
@@ -29867,7 +29867,7 @@ msgstr "ଫାଇଲ ନାମ"
 #: modules/logger/file.c:223
 #, fuzzy
 msgid "Specify the log filename."
-msgstr "ଫାଇଲ ଚୟନ କରନ୍ତୁ "
+msgstr "ଫାଇଲ ଚୟନ କରନ୍ତୁ"
 
 #: modules/logger/file.c:226
 msgid "Specify the logging format."

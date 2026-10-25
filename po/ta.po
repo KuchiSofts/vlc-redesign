@@ -374,7 +374,7 @@ msgstr "உறையை &திற..."
 
 #: include/vlc_intf_strings.h:49
 msgid "Select one or more files to open"
-msgstr "பலவற்றை கோப்புகளை தெரிவு செய் "
+msgstr "பலவற்றை கோப்புகளை தெரிவு செய்"
 
 #: include/vlc_intf_strings.h:50
 msgid "Select Directory"
@@ -572,7 +572,7 @@ msgstr "வலது"
 
 #: src/audio_output/output.c:515 src/libvlc-module.c:207
 msgid "Reverse stereo"
-msgstr "வரிசைப்படுத்தவும் "
+msgstr "வரிசைப்படுத்தவும்"
 
 #: src/audio_output/output.c:614
 #, fuzzy
@@ -716,12 +716,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (கோடநிலை இயங்கச் செய்)"
+msgstr "(கோடநிலை இயங்கச் செய்)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (கோடநிலை இயங்கச் செய்யாதே)"
+msgstr "(கோடநிலை இயங்கச் செய்யாதே)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -773,7 +773,7 @@ msgstr "இந்த கோடெக் இல்லை விளக்கம
 
 #: src/input/decoder.c:2489
 msgid "Codec not supported"
-msgstr "கோடெக் ஆதரவு இல்லை "
+msgstr "கோடெக் ஆதரவு இல்லை"
 
 #: src/input/decoder.c:2490
 #, c-format
@@ -1306,7 +1306,7 @@ msgstr "சுட்டி"
 
 #: src/input/meta.c:70 src/input/meta.c:71 modules/notify/notify.c:340
 msgid "Now Playing"
-msgstr "இப்போ ஒடுவது "
+msgstr "இப்போ ஒடுவது"
 
 #: src/input/meta.c:72 modules/demux/mp4/meta.c:98
 msgid "Publisher"
@@ -1318,7 +1318,7 @@ msgstr "குறியீடு ஆக்கு by"
 
 #: src/input/meta.c:74
 msgid "Artwork URL"
-msgstr "உருவ சுட்டி "
+msgstr "உருவ சுட்டி"
 
 #: src/input/meta.c:75
 msgid "Track ID"
@@ -1390,7 +1390,7 @@ msgstr ""
 
 #: src/interface/interface.c:104
 msgid "Mouse Gestures"
-msgstr "எலி உடன் முகப்பை காட்டு "
+msgstr "எலி உடன் முகப்பை காட்டு"
 
 #: src/interface/interface.c:215
 msgid ""
@@ -1634,7 +1634,7 @@ msgstr ""
 
 #: src/libvlc-module.c:189
 msgid "Force detection of Dolby Surround"
-msgstr "டால்பி சரவுண்ட் முக்கியமாக கண்டறிதல் "
+msgstr "டால்பி சரவுண்ட் முக்கியமாக கண்டறிதல்"
 
 #: src/libvlc-module.c:191
 msgid ""
@@ -1948,7 +1948,7 @@ msgstr ""
 
 #: src/libvlc-module.c:336
 msgid "Fullscreen video output"
-msgstr "முழுத்திரை நிகழ்படம் வெளிப்போத்து "
+msgstr "முழுத்திரை நிகழ்படம் வெளிப்போத்து"
 
 #: src/libvlc-module.c:338
 msgid "Start video in fullscreen mode"
@@ -3039,7 +3039,7 @@ msgstr "VCD சாதனம்"
 
 #: src/libvlc-module.c:905 modules/access/cdda.c:822
 msgid "Audio CD device"
-msgstr "ஒலித வட்டு சாதனம் "
+msgstr "ஒலித வட்டு சாதனம்"
 
 #: src/libvlc-module.c:909
 msgid ""
@@ -3649,7 +3649,7 @@ msgstr ""
 
 #: src/libvlc-module.c:1275
 msgid "Play files randomly forever"
-msgstr "தோராயமாக எப்போதும் கோப்புகளை ஓடு "
+msgstr "தோராயமாக எப்போதும் கோப்புகளை ஓடு"
 
 #: src/libvlc-module.c:1277
 msgid "VLC will randomly play files in the play queue until interrupted."
@@ -3859,7 +3859,7 @@ msgstr "முழு திரை நிலை இடமாற்றம் ப�
 
 #: src/libvlc-module.c:1364
 msgid "Exit fullscreen"
-msgstr "விலக்கு முழுத்திரை "
+msgstr "விலக்கு முழுத்திரை"
 
 #: src/libvlc-module.c:1365
 msgid "Select the hotkey to use to exit fullscreen state."
@@ -3944,7 +3944,7 @@ msgstr "மெதுவாக (fine)"
 #: modules/gui/qt/player/qml/controlbarcontrols/NextButton.qml:32
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:267 modules/notify/notify.c:361
 msgid "Next"
-msgstr "அடுத்த "
+msgstr "அடுத்த"
 
 #: src/libvlc-module.c:1383
 msgid "Select the hotkey to use to skip to the next item in the play queue."
@@ -4086,7 +4086,7 @@ msgstr "மிக குறுகிய குதி நீளம்"
 
 #: src/libvlc-module.c:1424
 msgid "Very short jump length, in seconds."
-msgstr "மிக குறுகிய குதி நீளம், விநாடிகள் "
+msgstr "மிக குறுகிய குதி நீளம், விநாடிகள்"
 
 #: src/libvlc-module.c:1425
 msgid "Short jump length"
@@ -4094,7 +4094,7 @@ msgstr "குறுகிய குதி நீளம்"
 
 #: src/libvlc-module.c:1426
 msgid "Short jump length, in seconds."
-msgstr "குறுகிய குதி நீளம்,. விநாடிகள் "
+msgstr "குறுகிய குதி நீளம்,. விநாடிகள்"
 
 #: src/libvlc-module.c:1427
 msgid "Medium jump length"
@@ -4102,15 +4102,15 @@ msgstr "நடுத்தர குதி நீளம்"
 
 #: src/libvlc-module.c:1428
 msgid "Medium jump length, in seconds."
-msgstr "நடுத்தர குதி நீளம்,. விநாடிகள் "
+msgstr "நடுத்தர குதி நீளம்,. விநாடிகள்"
 
 #: src/libvlc-module.c:1429
 msgid "Long jump length"
-msgstr "நீண்ட குதி நீளம் "
+msgstr "நீண்ட குதி நீளம்"
 
 #: src/libvlc-module.c:1430
 msgid "Long jump length, in seconds."
-msgstr "நீண்ட குதி நீளம்,. விநாடிகள் "
+msgstr "நீண்ட குதி நீளம்,. விநாடிகள்"
 
 #: src/libvlc-module.c:1432 modules/gui/macosx/main/VLCApplication.m:123
 #: modules/gui/macosx/menus/VLCStatusBarIcon.m:121
@@ -4601,7 +4601,7 @@ msgstr ""
 
 #: src/libvlc-module.c:1550
 msgid "Take video snapshot"
-msgstr "நிகழ்பட திடிரனகைப்பற்று "
+msgstr "நிகழ்பட திடிரனகைப்பற்று"
 
 #: src/libvlc-module.c:1551
 msgid "Takes a video snapshot and writes it to disk."
@@ -10221,7 +10221,7 @@ msgstr ""
 #: modules/access/screen/screen.c:68 modules/access/screen/xcb.c:59
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:280
 msgid "Follow the mouse"
-msgstr "எலி உடன் முகப்பை காட்டு "
+msgstr "எலி உடன் முகப்பை காட்டு"
 
 #: modules/access/screen/screen.c:70 modules/access/screen/xcb.c:61
 msgid "Follow the mouse when capturing a subscreen."
@@ -10628,7 +10628,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/extended/qml/VideoEffectsPanel.qml:36
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPicture.qml:22
 msgid "Saturation"
-msgstr " ஊரவை"
+msgstr "ஊரவை"
 
 #: modules/access/v4l2/v4l2.c:92
 msgid "Picture saturation or chroma gain."
@@ -10967,7 +10967,7 @@ msgstr "நிகழ்படம் உள்ளீடு"
 
 #: modules/access/v4l2/v4l2.c:312
 msgid "Tuner"
-msgstr "ட்யூனர் "
+msgstr "ட்யூனர்"
 
 #: modules/access/v4l2/v4l2.c:326
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:22
@@ -11038,7 +11038,7 @@ msgstr ""
 
 #: modules/access/vdr.c:875
 msgid "Start"
-msgstr "தொடக்கம் "
+msgstr "தொடக்கம்"
 
 #: modules/access/vnc.c:52
 msgid "X.509 Certificate Authority"
@@ -11174,7 +11174,7 @@ msgstr ""
 #: modules/access_output/file.c:389
 #, fuzzy
 msgid "File stream output"
-msgstr "பாலம் ஓடை வெளிப்போத்து "
+msgstr "பாலம் ஓடை வெளிப்போத்து"
 
 #: modules/access_output/http-put.c:126
 msgid "HTTP PUT stream output"
@@ -11223,7 +11223,7 @@ msgstr ""
 
 #: modules/access_output/http.c:72
 msgid "HTTP stream output"
-msgstr "HTTP ஓடை வெளிப்போத்து "
+msgstr "HTTP ஓடை வெளிப்போத்து"
 
 #: modules/access_output/livehttp.c:69
 #, fuzzy
@@ -11335,7 +11335,7 @@ msgstr ""
 #: modules/access_output/livehttp.c:111
 #, fuzzy
 msgid "HTTP Live streaming output"
-msgstr "HTTP ஓடை வெளிப்போத்து "
+msgstr "HTTP ஓடை வெளிப்போத்து"
 
 #: modules/access_output/livehttp.c:112
 msgid "LiveHTTP"
@@ -11421,7 +11421,7 @@ msgstr "கலை விவரம்"
 #: modules/access_output/shout.c:83
 #, fuzzy
 msgid "Genre of the content."
-msgstr "கலைவேலை "
+msgstr "கலைவேலை"
 
 #: modules/access_output/shout.c:85
 #, fuzzy
@@ -11476,7 +11476,7 @@ msgstr "வெளிப்போத்தை உபயோகி"
 #: modules/access_output/srt.c:458
 #, fuzzy
 msgid "SRT stream output"
-msgstr "RTP ஓடை வெளிப்போத்து "
+msgstr "RTP ஓடை வெளிப்போத்து"
 
 #: modules/access_output/srt.c:470
 msgid "SRT maximum payload size (bytes)"
@@ -12588,7 +12588,7 @@ msgstr ""
 
 #: modules/audio_output/waveout.c:139
 msgid "Select Audio Device"
-msgstr "ஒலித சாதனம் தெரிவு "
+msgstr "ஒலித சாதனம் தெரிவு"
 
 #: modules/audio_output/waveout.c:140
 msgid ""
@@ -12766,7 +12766,7 @@ msgstr "rd"
 
 #: modules/codec/avcodec/avcodec.c:62
 msgid "bits"
-msgstr " பிட்கள்"
+msgstr "பிட்கள்"
 
 #: modules/codec/avcodec/avcodec.c:62 modules/codec/qsv.c:169
 msgid "simple"
@@ -13094,7 +13094,7 @@ msgstr ""
 #: modules/codec/avcodec/d3d11va.c:70
 #, fuzzy
 msgid "Direct3D11 Video Acceleration"
-msgstr "மேசைத்தளம்3D நிகழ்படம் வெளிப்போத்து "
+msgstr "மேசைத்தளம்3D நிகழ்படம் வெளிப்போத்து"
 
 #: modules/codec/avcodec/dxva2.c:54
 msgid "DirectX Video Acceleration (DXVA) 2.0"
@@ -13529,12 +13529,12 @@ msgstr "சுருக்கமான"
 #: modules/codec/kate.c:205 modules/spu/marq.c:63 modules/spu/rss.c:71
 #: modules/text_renderer/freetype/freetype.c:110
 msgid "Black"
-msgstr "கறுப்பு "
+msgstr "கறுப்பு"
 
 #: modules/codec/kate.c:205 modules/spu/marq.c:63 modules/spu/rss.c:72
 #: modules/text_renderer/freetype/freetype.c:110
 msgid "Gray"
-msgstr "சாம்பல் "
+msgstr "சாம்பல்"
 
 #: modules/codec/kate.c:205 modules/spu/marq.c:64 modules/spu/rss.c:72
 #: modules/text_renderer/freetype/freetype.c:110
@@ -13545,7 +13545,7 @@ msgstr ""
 #: modules/text_renderer/freetype/freetype.c:110
 #: modules/video_filter/ball.c:122
 msgid "White"
-msgstr "வெள்ளை "
+msgstr "வெள்ளை"
 
 #: modules/codec/kate.c:205 modules/spu/marq.c:64 modules/spu/rss.c:72
 #: modules/text_renderer/freetype/freetype.c:110
@@ -13558,7 +13558,7 @@ msgstr ""
 #: modules/video_filter/ball.c:121 modules/video_filter/colorthres.c:64
 #: modules/video_filter/extract.c:61
 msgid "Red"
-msgstr "சிவப்பு "
+msgstr "சிவப்பு"
 
 #: modules/codec/kate.c:206 modules/spu/marq.c:65 modules/spu/rss.c:73
 #: modules/text_renderer/freetype/freetype.c:111
@@ -13571,7 +13571,7 @@ msgstr ""
 #: modules/spu/rss.c:73 modules/text_renderer/freetype/freetype.c:111
 #: modules/video_filter/colorthres.c:64
 msgid "Yellow"
-msgstr "மஞ்சல் "
+msgstr "மஞ்சல்"
 
 #: modules/codec/kate.c:206 modules/spu/marq.c:65 modules/spu/rss.c:73
 #: modules/text_renderer/freetype/freetype.c:111
@@ -13599,7 +13599,7 @@ msgstr "எழுமிச்சம் பழ நிறம்"
 #: modules/codec/kate.c:207 modules/spu/marq.c:66 modules/spu/rss.c:74
 #: modules/text_renderer/freetype/freetype.c:112
 msgid "Purple"
-msgstr "ஊதா "
+msgstr "ஊதா"
 
 #: modules/codec/kate.c:207 modules/spu/marq.c:66 modules/spu/rss.c:74
 #: modules/text_renderer/freetype/freetype.c:112
@@ -16346,7 +16346,7 @@ msgstr ""
 
 #: modules/demux/avi/avi.c:2839
 msgid "Fixing AVI Index..."
-msgstr "சரிசெய்ய AVI உள்ளடக்கம் "
+msgstr "சரிசெய்ய AVI உள்ளடக்கம்"
 
 #: modules/demux/caf.c:52
 msgid "CAF demuxer"
@@ -17198,7 +17198,7 @@ msgstr ""
 #: modules/demux/playlist/wpl.c:99
 #, fuzzy
 msgid "Total duration"
-msgstr " ஊரவை"
+msgstr "ஊரவை"
 
 #: modules/demux/pva.c:44
 msgid "PVA demuxer"
@@ -18387,7 +18387,7 @@ msgstr "இரட்டிப்பு அளவு"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:436
 msgid "Fit to Screen"
-msgstr "திடிரனகைப்பற்று "
+msgstr "திடிரனகைப்பற்று"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:438
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:454
@@ -18699,7 +18699,7 @@ msgstr "சுட்டி விவரம்"
 #: modules/gui/macosx/menus/VLCStatusBarIcon.m:356
 #, fuzzy
 msgid "Nothing playing"
-msgstr "இப்போ ஒடுவது "
+msgstr "இப்போ ஒடுவது"
 
 #: modules/gui/macosx/menus/VLCStatusBarIcon.m:399
 msgid "Copy URL to Clipboard"
@@ -19257,7 +19257,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:401
 #: modules/video_splitter/clone.c:57
 msgid "Clone"
-msgstr " நகலி"
+msgstr "நகலி"
 
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:320
 #: modules/video_splitter/clone.c:39
@@ -19518,7 +19518,7 @@ msgstr ""
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:392
 msgid "Repair AVI Files"
-msgstr "சரிசெய்ய AVI உள்ளடக்கம் "
+msgstr "சரிசெய்ய AVI உள்ளடக்கம்"
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:393
 msgid "Default Caching Level"
@@ -19961,7 +19961,7 @@ msgstr "வட்டு"
 
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:209
 msgid "Capture"
-msgstr "கைப்பற்று "
+msgstr "கைப்பற்று"
 
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:211
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:322
@@ -20373,7 +20373,7 @@ msgstr "அலைவரிசை பெயர்"
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:238
 #: modules/gui/macosx/windows/convertandsave/VLCOutput.m:111
 msgid "SDP URL"
-msgstr "SDP சுட்டி "
+msgstr "SDP சுட்டி"
 
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:296
 msgid "Invalid container format for HTTP streaming"
@@ -20887,7 +20887,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1241
 #, c-format
 msgid " Source   : %s"
-msgstr "மூலம் : %s"
+msgstr " மூலம் : %s"
 
 #: modules/gui/ncurses.c:1271
 #, c-format
@@ -23520,7 +23520,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:464
 #: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:480
 msgid "Device:"
-msgstr "சாதனம்: "
+msgstr "சாதனம்:"
 
 #: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:611
 msgid "Input & Codecs Settings"
@@ -23885,7 +23885,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:193
 #, fuzzy
 msgid " dB"
-msgstr "dB"
+msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207
@@ -25346,7 +25346,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/sout/convert.cpp:136
 msgid "&Start"
-msgstr "&தொடக்கம் "
+msgstr "&தொடக்கம்"
 
 #: modules/gui/qt/dialogs/sout/convert.cpp:161
 #: modules/gui/qt/dialogs/sout/sout_widgets.cpp:172
@@ -25718,7 +25718,7 @@ msgstr "மீண்டும் செய் தாமதமாக:"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:104
 msgid " days"
-msgstr "நாட்கள்"
+msgstr " நாட்கள்"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:123
 msgid "I&mport"
@@ -25747,11 +25747,11 @@ msgstr "மாற்று"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:506
 msgid "Broadcast: "
-msgstr "ஒளிபரப்பு:"
+msgstr "ஒளிபரப்பு: "
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 msgid "Schedule: "
-msgstr "அட்டவனை:"
+msgstr "அட்டவனை: "
 
 #: modules/gui/qt/maininterface/mainctx.cpp:1193
 msgid "Paste from clipboard"
@@ -29617,7 +29617,7 @@ msgstr ""
 #: modules/hw/d3d9/d3d9_filters.c:476
 #, fuzzy
 msgid "Direct3D9 adjust filter"
-msgstr "மேசைத்தளம்3D நிகழ்படம் வெளிப்போத்து "
+msgstr "மேசைத்தளம்3D நிகழ்படம் வெளிப்போத்து"
 
 #: modules/hw/d3d9/d3d9_filters.c:498
 msgid "Direct3D9 deinterlace filter"
@@ -32455,7 +32455,7 @@ msgstr "பாலம்"
 
 #: modules/stream_out/bridge.c:93
 msgid "Bridge stream output"
-msgstr "பாலம் ஓடை வெளிப்போத்து "
+msgstr "பாலம் ஓடை வெளிப்போத்து"
 
 #: modules/stream_out/bridge.c:95
 msgid "Bridge out"
@@ -32478,7 +32478,7 @@ msgstr "கோடநிலை ஓடை"
 #: modules/stream_out/chromaprint.c:60
 #, fuzzy
 msgid "Chromaprint stream output"
-msgstr "பாலம் ஓடை வெளிப்போத்து "
+msgstr "பாலம் ஓடை வெளிப்போத்து"
 
 #: modules/stream_out/chromecast/cast.cpp:226
 msgid ""
@@ -32507,7 +32507,7 @@ msgstr "Chroma வடிவூட்டம்"
 #: modules/stream_out/chromecast/cast.cpp:243
 #, fuzzy
 msgid "Chromecast stream output"
-msgstr "பாலம் ஓடை வெளிப்போத்து "
+msgstr "பாலம் ஓடை வெளிப்போத்து"
 
 #: modules/stream_out/chromecast/cast.cpp:1162
 #: modules/stream_out/dlna/dlna.cpp:690
@@ -32539,7 +32539,7 @@ msgstr ""
 #: modules/stream_out/cycle.c:322
 #, fuzzy
 msgid "Cyclic stream output"
-msgstr "UDP ஓடை வெளிப்போத்து "
+msgstr "UDP ஓடை வெளிப்போத்து"
 
 #: modules/stream_out/delay.c:151 modules/stream_out/setid.c:42
 msgid "Elementary Stream ID"
@@ -32642,7 +32642,7 @@ msgstr ""
 
 #: modules/stream_out/es.c:365
 msgid "Output URL"
-msgstr "வெளிப்போத்து சுட்டி "
+msgstr "வெளிப்போத்து சுட்டி"
 
 #: modules/stream_out/es.c:367
 msgid "This is the default output URI."
@@ -32650,7 +32650,7 @@ msgstr ""
 
 #: modules/stream_out/es.c:368
 msgid "Audio output URL"
-msgstr "ஒலித வெளிப்போத்து சுட்டி "
+msgstr "ஒலித வெளிப்போத்து சுட்டி"
 
 #: modules/stream_out/es.c:370
 msgid "This is the output URI that will be used for audio."
@@ -32915,7 +32915,7 @@ msgstr ""
 
 #: modules/stream_out/rtp.c:180
 msgid "RTP stream output"
-msgstr "RTP ஓடை வெளிப்போத்து "
+msgstr "RTP ஓடை வெளிப்போத்து"
 
 #: modules/stream_out/sdi/sdiout.cpp:37 modules/video_output/decklink.cpp:80
 msgid "Timelength after which we assume there is no signal."
@@ -33125,7 +33125,7 @@ msgstr ""
 #: share/lua/http/dialogs/create_stream.html:334
 #: share/lua/http/dialogs/create_stream.html:378
 msgid "Output destination"
-msgstr " வெளிப்போத்து சேருமிடம்"
+msgstr "வெளிப்போத்து சேருமிடம்"
 
 #: modules/stream_out/standard.c:49
 msgid ""
@@ -33414,7 +33414,7 @@ msgstr ""
 
 #: modules/stream_out/udp.c:355
 msgid "UDP stream output"
-msgstr "UDP ஓடை வெளிப்போத்து "
+msgstr "UDP ஓடை வெளிப்போத்து"
 
 #: modules/text_renderer/freetype/fonts/fontconfig.c:93
 msgid ""
@@ -35217,7 +35217,7 @@ msgstr ""
 #: modules/video_output/win32/direct3d11.cpp:90
 #, fuzzy
 msgid "Direct3D11 video output"
-msgstr "மேசைத்தளம்3D நிகழ்படம் வெளிப்போத்து "
+msgstr "மேசைத்தளம்3D நிகழ்படம் வெளிப்போத்து"
 
 #: modules/video_output/win32/direct3d9.c:75
 msgid "The desktop mode allows you to display the video on the desktop."
@@ -35260,7 +35260,7 @@ msgstr ""
 #: modules/video_output/win32/direct3d9.c:97
 #, fuzzy
 msgid "Direct3D9 video output"
-msgstr "மேசைத்தளம்3D நிகழ்படம் வெளிப்போத்து "
+msgstr "மேசைத்தளம்3D நிகழ்படம் வெளிப்போத்து"
 
 #: modules/video_output/win32/drawable.c:37
 msgid "Window handle (HWND)"
@@ -35389,7 +35389,7 @@ msgstr "YUV வெளிப்போத்து"
 
 #: modules/video_output/yuv.c:58
 msgid "YUV video output"
-msgstr "YUV நிகழ்படம் வெளிப்போத்து "
+msgstr "YUV நிகழ்படம் வெளிப்போத்து"
 
 #: modules/video_splitter/clone.c:40
 msgid "Number of video windows in which to clone the video."

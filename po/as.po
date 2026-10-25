@@ -200,7 +200,7 @@ msgstr "অডিঅ' দৃশ্যবোৰ"
 
 #: include/vlc_config_cat.h:77
 msgid "General settings for audio output modules."
-msgstr "অডিঅ' আউটপুট মডুলবোৰৰ বাবে সাধাৰণ ছেটিংবোৰ. "
+msgstr "অডিঅ' আউটপুট মডুলবোৰৰ বাবে সাধাৰণ ছেটিংবোৰ."
 
 #: include/vlc_config_cat.h:80
 msgid "Video settings"
@@ -758,12 +758,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (ডিফল্ট হিচাপে সক্ষম কৰা হল)"
+msgstr "(ডিফল্ট হিচাপে সক্ষম কৰা হল)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (ডিফল্ট হিচাপে অক্ষম কৰা হল)"
+msgstr "(ডিফল্ট হিচাপে অক্ষম কৰা হল)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -1498,7 +1498,7 @@ msgstr ""
 #: src/libvlc-module.c:94
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:100
 msgid "Control interfaces"
-msgstr "নিয়ন্ত্ৰণ ইন্টাৰফেছবোৰ "
+msgstr "নিয়ন্ত্ৰণ ইন্টাৰফেছবোৰ"
 
 #: src/libvlc-module.c:96
 msgid "You can select control interfaces for VLC."
@@ -3276,7 +3276,7 @@ msgstr "TCP সংযোগ উকলি গল"
 #: src/libvlc-module.c:937
 #, fuzzy
 msgid "Default TCP connection timeout (in milliseconds)."
-msgstr "ডিফল্ট TCP সংযোগটো উকলি গল (মিলিছেকেণ্ডত). "
+msgstr "ডিফল্ট TCP সংযোগটো উকলি গল (মিলিছেকেণ্ডত)."
 
 #: src/libvlc-module.c:939
 msgid "HTTP server address"
@@ -3637,7 +3637,7 @@ msgstr ""
 
 #: src/libvlc-module.c:1113
 msgid "Stream filter module"
-msgstr "ষ্ট্ৰিম ফিল্টাৰ মডুল "
+msgstr "ষ্ট্ৰিম ফিল্টাৰ মডুল"
 
 #: src/libvlc-module.c:1115
 #, fuzzy
@@ -3647,7 +3647,7 @@ msgstr "পঢ়ি থকা ষ্ট্ৰিমটো সলনি কৰ�
 #: src/libvlc-module.c:1117
 #, fuzzy
 msgid "Demux filter module"
-msgstr "ষ্ট্ৰিম ফিল্টাৰ মডুল "
+msgstr "ষ্ট্ৰিম ফিল্টাৰ মডুল"
 
 #: src/libvlc-module.c:1119
 #, fuzzy
@@ -3732,7 +3732,7 @@ msgstr ""
 
 #: src/libvlc-module.c:1158
 msgid "Locally collect statistics"
-msgstr "স্থানীয়ভাৱে সংগ্ৰহ কৰা পৰিসংখ্যাবোৰ "
+msgstr "স্থানীয়ভাৱে সংগ্ৰহ কৰা পৰিসংখ্যাবোৰ"
 
 #: src/libvlc-module.c:1160
 msgid "Collect miscellaneous local statistics about the playing media."
@@ -8350,7 +8350,7 @@ msgstr ""
 
 #: modules/access/bluray.c:185 modules/services_discovery/udev.c:602
 msgid "Blu-ray"
-msgstr "ব্লু-ৰে "
+msgstr "ব্লু-ৰে"
 
 #: modules/access/bluray.c:186
 msgid "Blu-ray Disc support (libbluray)"
@@ -8935,7 +8935,7 @@ msgstr "উল্লেখিত নমুনাৰ হাৰটোৰ সৈত
 
 #: modules/access/dshow/dshow.cpp:175
 msgid "Audio bits per sample"
-msgstr "নমুনাই প্ৰতি অডিঅ' বিট "
+msgstr "নমুনাই প্ৰতি অডিঅ' বিট"
 
 #: modules/access/dshow/dshow.cpp:177
 msgid "Select audio input format with the given bits/sample (if non 0)"
@@ -10666,7 +10666,7 @@ msgstr "পিক্সেলত অধিগ্ৰহণ কৰা অঞ্চ
 #: modules/access/screen/screen.c:64 modules/access/screen/wayland.c:476
 #: modules/access/screen/xcb.c:51
 msgid "Capture region width"
-msgstr "অঞ্চলটোৰ প্ৰস্থ অধিগ্ৰহণ কৰক "
+msgstr "অঞ্চলটোৰ প্ৰস্থ অধিগ্ৰহণ কৰক"
 
 #: modules/access/screen/screen.c:66 modules/access/screen/wayland.c:480
 #: modules/access/screen/xcb.c:55
@@ -11897,7 +11897,7 @@ msgstr "গেন্ৰে বিৱৰণ"
 #: modules/access_output/shout.c:83
 #, fuzzy
 msgid "Genre of the content."
-msgstr "উপাদনটোৰ গেন্ৰে. "
+msgstr "উপাদনটোৰ গেন্ৰে."
 
 #: modules/access_output/shout.c:85
 #, fuzzy
@@ -11907,17 +11907,17 @@ msgstr "বিৱৰণ"
 #: modules/access_output/shout.c:86
 #, fuzzy
 msgid "URL with information about the stream or your channel."
-msgstr "আপোনাৰ চেনেল বা ষ্ট্ৰিমটোৰ বিষয়ে তথ্যৰ সৈত URL. "
+msgstr "আপোনাৰ চেনেল বা ষ্ট্ৰিমটোৰ বিষয়ে তথ্যৰ সৈত URL."
 
 #: modules/access_output/shout.c:93
 #, fuzzy
 msgid "Bitrate information of the transcoded stream."
-msgstr "ট্ৰেন্সকোড কৰা ষ্ট্ৰিমটোৰ বাইট হাৰ তথ্য. "
+msgstr "ট্ৰেন্সকোড কৰা ষ্ট্ৰিমটোৰ বাইট হাৰ তথ্য."
 
 #: modules/access_output/shout.c:96
 #, fuzzy
 msgid "Samplerate information of the transcoded stream."
-msgstr "ট্ৰেন্সকোড কৰা ষ্ট্ৰিমটোৰ নমুনা হাৰ তথ্য. "
+msgstr "ট্ৰেন্সকোড কৰা ষ্ট্ৰিমটোৰ নমুনা হাৰ তথ্য."
 
 #: modules/access_output/shout.c:98
 msgid "Number of channels"
@@ -11926,7 +11926,7 @@ msgstr "চেনেলবোৰৰ সংখ্যা"
 #: modules/access_output/shout.c:99
 #, fuzzy
 msgid "Number of channels information of the transcoded stream."
-msgstr "ট্ৰেন্সকোড কৰা ষ্ট্ৰিমটোৰ চেনেলবোৰৰ তথ্যৰ সংখ্যা. "
+msgstr "ট্ৰেন্সকোড কৰা ষ্ট্ৰিমটোৰ চেনেলবোৰৰ তথ্যৰ সংখ্যা."
 
 #: modules/access_output/shout.c:101
 msgid "Ogg Vorbis Quality"
@@ -11935,7 +11935,7 @@ msgstr "Ogg ভৰ্বিছ মানদণ্ড"
 #: modules/access_output/shout.c:102
 #, fuzzy
 msgid "Ogg Vorbis Quality information of the transcoded stream."
-msgstr "ট্ৰেন্সকোড কৰা ষ্ট্ৰিমটোৰ Ogg ভৰ্বিছ মানদণ্ড. "
+msgstr "ট্ৰেন্সকোড কৰা ষ্ট্ৰিমটোৰ Ogg ভৰ্বিছ মানদণ্ড."
 
 #: modules/access_output/shout.c:104
 msgid "Stream public"
@@ -12274,7 +12274,7 @@ msgstr "শুকান মিশ্ৰণ"
 
 #: modules/audio_filter/chorus_flanger.c:93
 msgid "Level of input signal"
-msgstr "ইনপুট সংকেতৰ স্তৰ "
+msgstr "ইনপুট সংকেতৰ স্তৰ"
 
 #: modules/audio_filter/compressor.c:70
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:302
@@ -12664,7 +12664,7 @@ msgstr "অডিঅ’ আউটপুট চেনেলবোৰ"
 #: modules/audio_filter/scaletempo.c:54
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:287
 msgid "Audio tempo scaler synched with rate"
-msgstr "অডিঅ’ টেম্পো জোখাটো হাৰৰ সৈতে ছিনক্ৰনাইজ কৰা হল "
+msgstr "অডিঅ’ টেম্পো জোখাটো হাৰৰ সৈতে ছিনক্ৰনাইজ কৰা হল"
 
 #: modules/audio_filter/scaletempo.c:55
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:286
@@ -12977,7 +12977,7 @@ msgstr ""
 
 #: modules/audio_output/file.c:112
 msgid "File audio output"
-msgstr "ফাইল অডিঅ’ আউটপুট "
+msgstr "ফাইল অডিঅ’ আউটপুট"
 
 #: modules/audio_output/jack.c:83
 msgid "Automatically connect to writable clients"
@@ -13741,7 +13741,7 @@ msgstr "VLC য়ে %4.4s %s এনকোডাৰ খুলিব নোৱা�
 #: modules/codec/avcodec/vaapi.c:443
 #, fuzzy
 msgid "VA-API video decoder"
-msgstr "X11 ৰ যোগেদি VA-API ভিডিঅ’ ডিকোডাৰ "
+msgstr "X11 ৰ যোগেদি VA-API ভিডিঅ’ ডিকোডাৰ"
 
 #: modules/codec/bpg.c:48
 #, fuzzy
@@ -14067,7 +14067,7 @@ msgstr "ফ্লুইড ছিন্থেছিছ MIDI ছিন্থে�
 
 #: modules/codec/fluidsynth.c:72
 msgid "FluidSynth"
-msgstr "ফ্লুইড ছিন্থেছিছ "
+msgstr "ফ্লুইড ছিন্থেছিছ"
 
 #: modules/codec/fluidsynth.c:180
 msgid "MIDI synthesis not set up"
@@ -15539,7 +15539,7 @@ msgstr ""
 
 #: modules/codec/x264.c:111
 msgid "Influence (bias) B-frames usage"
-msgstr "B-ফ্ৰেমবোৰৰ উপযোগীতা প্ৰভাৱিত কৰক (বাইয়াছ) "
+msgstr "B-ফ্ৰেমবোৰৰ উপযোগীতা প্ৰভাৱিত কৰক (বাইয়াছ)"
 
 #: modules/codec/x264.c:112
 msgid ""
@@ -16118,7 +16118,7 @@ msgstr "আন্ত: লুমা পৰিণামীকৰণ ডেথজ�
 
 #: modules/codec/x264.c:364
 msgid "Intra luma quantization deadzone"
-msgstr "অন্ত: লুমা পৰিণামীকৰণ ডেথজনটোৰ "
+msgstr "অন্ত: লুমা পৰিণামীকৰণ ডেথজনটোৰ"
 
 #: modules/codec/x264.c:365
 msgid "Set the size of the intra luma quantization deadzone. Range 0 to 32."
@@ -16205,7 +16205,7 @@ msgstr "প্ৰৱেশ ইউনিট অপৰিসীমকৰ্তা 
 
 #: modules/codec/x264.c:400
 msgid "Framecount to use on frametype lookahead"
-msgstr "আগলৈ চোৱা ফ্ৰেম প্ৰকাৰত ব্যৱহাৰ কৰিবলৈ ফ্ৰেম গণনা "
+msgstr "আগলৈ চোৱা ফ্ৰেম প্ৰকাৰত ব্যৱহাৰ কৰিবলৈ ফ্ৰেম গণনা"
 
 #: modules/codec/x264.c:401
 msgid ""
@@ -18128,11 +18128,11 @@ msgstr ""
 
 #: modules/demux/rawvid.c:47
 msgid "This specifies the width in pixels of the raw video stream."
-msgstr "এইটোৱে ৰ' ভিডিঅ' ষ্ট্ৰিমটোৰ প্ৰস্থটো পিক্সেলবোৰত নিৰ্ধাৰণ কৰে. "
+msgstr "এইটোৱে ৰ' ভিডিঅ' ষ্ট্ৰিমটোৰ প্ৰস্থটো পিক্সেলবোৰত নিৰ্ধাৰণ কৰে."
 
 #: modules/demux/rawvid.c:51
 msgid "This specifies the height in pixels of the raw video stream."
-msgstr "এইটোৱে ৰ' ভিডিঅ' ষ্ট্ৰিমটোৰ উচ্চতাটো পিক্সেলবোৰত নিৰ্ধাৰণ কৰে. "
+msgstr "এইটোৱে ৰ' ভিডিঅ' ষ্ট্ৰিমটোৰ উচ্চতাটো পিক্সেলবোৰত নিৰ্ধাৰণ কৰে."
 
 #: modules/demux/rawvid.c:54
 msgid "Force chroma (Use carefully)"
@@ -18757,7 +18757,7 @@ msgstr "সম্পূৰ্ণ দৃশ্যত কলা স্ক্ৰী
 
 #: modules/gui/macosx/main/macosx.m:59
 msgid "In fullscreen mode, keep screen where there is no video displayed black"
-msgstr "সম্পূৰ্ণস্ক্ৰীনৰ ধৰণত, স্ক্ৰীনখন ৰাখক যত কোনো ভিডিঅ' কলাকৈ প্ৰদৰ্শন কৰা নহয় "
+msgstr "সম্পূৰ্ণস্ক্ৰীনৰ ধৰণত, স্ক্ৰীনখন ৰাখক যত কোনো ভিডিঅ' কলাকৈ প্ৰদৰ্শন কৰা নহয়"
 
 #: modules/gui/macosx/main/macosx.m:62
 msgid "Auto-playback of new items"
@@ -21860,7 +21860,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr " উত্স: <no current item> "
+msgstr " উত্স: <no current item>"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -23370,7 +23370,7 @@ msgstr "...ৰ দৰে ল'গ ফাইল ছেভ কৰক"
 #: modules/gui/qt/dialogs/messages/messages.cpp:361
 #, fuzzy
 msgid "Texts/Logs (*.log *.txt);; All (*.*)"
-msgstr "টেক্সটবোৰ / ল'গবোৰ (*.log *.txt);; সকলো (*.*) "
+msgstr "টেক্সটবোৰ / ল'গবোৰ (*.log *.txt);; সকলো (*.*)"
 
 #: modules/gui/qt/dialogs/messages/messages.cpp:367
 msgid "Application"
@@ -24485,7 +24485,7 @@ msgstr "ডিভাইচ:"
 
 #: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:611
 msgid "Input & Codecs Settings"
-msgstr "ইনপুট & কোডেকছ ছেটিংবোৰ "
+msgstr "ইনপুট & কোডেকছ ছেটিংবোৰ"
 
 #: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:616
 msgid ""
@@ -26349,7 +26349,7 @@ msgstr "এই মাক্সাৰটো হেৰাইছে. এই প্�
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:802
 msgid " Profile Name Missing"
-msgstr "প্ৰফাইল নাম হেৰাইছে"
+msgstr " প্ৰফাইল নাম হেৰাইছে"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:803
 msgid "You must set a name for the profile."
@@ -26692,7 +26692,7 @@ msgstr "বিলম্বৰ পুনৰাবৃত্তি কৰক:"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:104
 msgid " days"
-msgstr "দিনবোৰ"
+msgstr " দিনবোৰ"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:123
 msgid "I&mport"
@@ -26721,7 +26721,7 @@ msgstr "সলনি কৰক"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:506
 msgid "Broadcast: "
-msgstr "প্ৰচাৰণ:"
+msgstr "প্ৰচাৰণ: "
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 msgid "Schedule: "
@@ -31812,7 +31812,7 @@ msgstr "আপোনাৰ last.fm একাউন্টৰ পাছৱৰ্�
 
 #: modules/misc/audioscrobbler.c:121
 msgid "Scrobbler URL"
-msgstr "ক্ৰোবলাৰ URL "
+msgstr "ক্ৰোবলাৰ URL"
 
 #: modules/misc/audioscrobbler.c:122
 msgid "The URL set for an alternative scrobbler engine"
@@ -32139,7 +32139,7 @@ msgstr "ASF মন্তব্যবোৰ দিবলৈ লেখক."
 
 #: modules/mux/asf.c:61
 msgid "Copyright string to put in ASF comments."
-msgstr " ASF মন্তব্যবোৰ ৰাখিবলৈ ষ্ট্ৰিং প্ৰতিলিপিস্বত্ব কৰক."
+msgstr "ASF মন্তব্যবোৰ ৰাখিবলৈ ষ্ট্ৰিং প্ৰতিলিপিস্বত্ব কৰক."
 
 #: modules/mux/asf.c:62 modules/mux/avi.c:53
 msgid "Comment"
@@ -33008,7 +33008,7 @@ msgstr "ল'গ'ৰ অভাৰলে"
 
 #: modules/spu/logo.c:94
 msgid "Logo video filter"
-msgstr "ল'গ'ৰ ভিডিঅ' ফিল্টাৰ "
+msgstr "ল'গ'ৰ ভিডিঅ' ফিল্টাৰ"
 
 #: modules/spu/marq.c:93
 #, fuzzy
@@ -34546,7 +34546,7 @@ msgstr "গন্তব্যস্থান অডিঅ’ কোডেক"
 
 #: modules/stream_out/transcode/transcode.c:90
 msgid "This is the audio codec that will be used."
-msgstr "এইটো হল অডিঅ' কোডেক যিটো ব্যৱহাৰ কৰা হব "
+msgstr "এইটো হল অডিঅ' কোডেক যিটো ব্যৱহাৰ কৰা হব"
 
 #: modules/stream_out/transcode/transcode.c:91
 #: share/lua/http/dialogs/create_stream.html:231
@@ -34836,7 +34836,7 @@ msgstr "ভিডিঅ' ফিল্টাৰ মডুলবোৰৰ শৃ�
 #: modules/video_chroma/grey_yuv.c:55 modules/video_chroma/i422_i420.c:56
 #: modules/video_chroma/yuy2_i420.c:57 modules/video_chroma/yuy2_i422.c:57
 msgid "Conversions from "
-msgstr "...ৰ পৰা ৰূপান্তৰণবোৰ"
+msgstr "...ৰ পৰা ৰূপান্তৰণবোৰ "
 
 #: modules/video_chroma/i420_nv12.c:239
 msgid "YUV planar to semiplanar conversions"
@@ -35187,7 +35187,7 @@ msgstr "নীলা স্ক্ৰীন ভিডিঅ' ফিল্টা�
 
 #: modules/video_filter/bluescreen.c:79
 msgid "Bluescreen"
-msgstr "নীলা স্ক্ৰীন "
+msgstr "নীলা স্ক্ৰীন"
 
 #: modules/video_filter/canvas.c:84
 msgid "Output width"
@@ -35374,7 +35374,7 @@ msgstr "ওপৰলৈ ৰূপান্তৰ"
 
 #: modules/video_filter/deinterlace/deinterlace.c:252
 msgid "Streaming deinterlace mode"
-msgstr "ষ্ট্ৰিম কৰা ডিইন্টাৰলেচ ধৰণ "
+msgstr "ষ্ট্ৰিম কৰা ডিইন্টাৰলেচ ধৰণ"
 
 #: modules/video_filter/deinterlace/deinterlace.c:253
 msgid "Deinterlace method to use for streaming."
@@ -35689,7 +35689,7 @@ msgstr "ৰং ওলোটা কৰা"
 
 #: modules/video_filter/magnify.c:48
 msgid "Magnify/Zoom interactive video filter"
-msgstr "বিনিময়ৰ ভিডিঅ' ফিল্টাৰ বিবৰ্ধন/জুম কৰক "
+msgstr "বিনিময়ৰ ভিডিঅ' ফিল্টাৰ বিবৰ্ধন/জুম কৰক"
 
 #: modules/video_filter/magnify.c:49
 msgid "Magnify"
@@ -36469,7 +36469,7 @@ msgstr "ক্ৰোমা"
 #: modules/video_output/vmem.c:51
 msgid ""
 "Output chroma for the memory image as a 4-character string, eg. \"RV32\"."
-msgstr "আপুনি ব্যৱহাৰ কৰিব আগতে নিৰ্বাচিত ফাইলটোৰ সৈতে ছিনক্ৰনাইজত এইটো \"RV32\". "
+msgstr "আপুনি ব্যৱহাৰ কৰিব আগতে নিৰ্বাচিত ফাইলটোৰ সৈতে ছিনক্ৰনাইজত এইটো \"RV32\"."
 
 #: modules/video_output/vmem.c:59
 msgid "Video memory output"
@@ -37081,7 +37081,7 @@ msgstr ""
 
 #: modules/visualization/goom.c:69
 msgid "Goom"
-msgstr "গুম "
+msgstr "গুম"
 
 #: modules/visualization/goom.c:70
 msgid "Goom effect"
@@ -37109,7 +37109,7 @@ msgstr "শিৰোনাম ফন্ট"
 
 #: modules/visualization/projectm.cpp:73
 msgid "Font used for the titles"
-msgstr "শিৰোনামবোৰৰ বাবে ব্যৱহাৰ কৰা ফন্ট "
+msgstr "শিৰোনামবোৰৰ বাবে ব্যৱহাৰ কৰা ফন্ট"
 
 #: modules/visualization/projectm.cpp:75
 msgid "Font menu"
@@ -37117,7 +37117,7 @@ msgstr "ফন্ট তালিকা"
 
 #: modules/visualization/projectm.cpp:76
 msgid "Font used for the menus"
-msgstr "তালিকাবোৰৰ বাবে ব্যৱহাৰ কৰা ফন্ট "
+msgstr "তালিকাবোৰৰ বাবে ব্যৱহাৰ কৰা ফন্ট"
 
 #: modules/visualization/projectm.cpp:79 modules/visualization/vsxu.cpp:52
 msgid "The width of the video window, in pixels."

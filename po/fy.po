@@ -1675,7 +1675,7 @@ msgstr "Dizze lineêre fersterking wurdt tapast op de útfierde audio."
 
 #: src/libvlc-module.c:164
 msgid "Audio output volume step"
-msgstr "Stapgrutte audioútfierfolume "
+msgstr "Stapgrutte audioútfierfolume"
 
 #: src/libvlc-module.c:166
 msgid "The step size of the volume is adjustable using this option."
@@ -3021,7 +3021,7 @@ msgstr "Tiidsferskowingsmap"
 
 #: src/libvlc-module.c:795
 msgid "Directory used to store the timeshift temporary files."
-msgstr "Map foar it bewarjen fan tydlike bestannen foar tiidsferskowing.  "
+msgstr "Map foar it bewarjen fan tydlike bestannen foar tiidsferskowing."
 
 #: src/libvlc-module.c:797
 msgid "Timeshift granularity"
@@ -7433,7 +7433,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:404
 msgid "Occitan; Provençal"
-msgstr "Occitaans; Provençaals "
+msgstr "Occitaans; Provençaals"
 
 #: src/text/iso-639_def.h:405
 msgid "Ojibwa"
@@ -17379,7 +17379,7 @@ msgstr "Bestandsdumper"
 #: modules/demux/directory.c:74
 #, fuzzy
 msgid "Directory import"
-msgstr "Triemtafel soartearfolchoarder "
+msgstr "Triemtafel soartearfolchoarder"
 
 #: modules/demux/filter/noseek.c:75
 #, fuzzy
@@ -19390,7 +19390,7 @@ msgstr "Nei Ofspyljen Ofslute"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:407
 msgid "Step Forward"
-msgstr "Stap Foarút "
+msgstr "Stap Foarút"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:408
 msgid "Step Backward"
@@ -21754,7 +21754,7 @@ msgstr ""
 #: modules/gui/ncurses.c:898
 #, c-format
 msgid "  [%s]"
-msgstr "[%s]"
+msgstr "  [%s]"
 
 #: modules/gui/ncurses.c:901
 #, c-format
@@ -21767,11 +21767,11 @@ msgstr "[Weergave]"
 
 #: modules/gui/ncurses.c:990
 msgid " h,H                    Show/Hide help box"
-msgstr "h,H         Helpvenster weergeven/verbergen"
+msgstr " h,H         Helpvenster weergeven/verbergen"
 
 #: modules/gui/ncurses.c:991
 msgid " i                      Show/Hide info box"
-msgstr "i           Infovenster weergeven/verbergen"
+msgstr " i           Infovenster weergeven/verbergen"
 
 #: modules/gui/ncurses.c:992
 msgid " M                      Show/Hide metadata box"
@@ -21779,19 +21779,19 @@ msgstr " M           Metadatavenster weergeven/verbergen"
 
 #: modules/gui/ncurses.c:993
 msgid " L                      Show/Hide messages box"
-msgstr "L           Berichtvenster weergeven/verbergen"
+msgstr " L           Berichtvenster weergeven/verbergen"
 
 #: modules/gui/ncurses.c:994
 msgid " P                      Show/Hide playlist box"
-msgstr "     P           Afspeellijstvenster weergeven/verbergen"
+msgstr " P           Afspeellijstvenster weergeven/verbergen"
 
 #: modules/gui/ncurses.c:995
 msgid " B                      Show/Hide filebrowser"
-msgstr "B           Bestandsselectievenster weergeven/verbergen"
+msgstr " B           Bestandsselectievenster weergeven/verbergen"
 
 #: modules/gui/ncurses.c:996
 msgid " S                      Show/Hide statistics box"
-msgstr "S           Statistiekenvenster weergeven/verbergen"
+msgstr " S           Statistiekenvenster weergeven/verbergen"
 
 #: modules/gui/ncurses.c:997
 msgid " E                      Show/Hide equalizer box"
@@ -21799,11 +21799,11 @@ msgstr ""
 
 #: modules/gui/ncurses.c:998
 msgid " Esc                    Close Add/Search entry"
-msgstr "Esc         Toevoegen/Zoekingang sluiten"
+msgstr " Esc         Toevoegen/Zoekingang sluiten"
 
 #: modules/gui/ncurses.c:999
 msgid " Ctrl-l                 Refresh the screen"
-msgstr "Ctrl-l          Scherm verversen"
+msgstr " Ctrl-l          Scherm verversen"
 
 #: modules/gui/ncurses.c:1003
 msgid "[Global]"
@@ -21811,7 +21811,7 @@ msgstr "[Globaal]"
 
 #: modules/gui/ncurses.c:1005
 msgid " q, Q, Esc              Quit"
-msgstr "     q, Q, Esc   Afsluiten"
+msgstr " q, Q, Esc   Afsluiten"
 
 #: modules/gui/ncurses.c:1006
 msgid " s                      Stop"
@@ -21819,7 +21819,7 @@ msgstr " s                      Stoppen"
 
 #: modules/gui/ncurses.c:1007
 msgid " <space>                Pause/Play"
-msgstr "     <spatie>    Pauzeren/afspelen"
+msgstr " <spatie>    Pauzeren/afspelen"
 
 #: modules/gui/ncurses.c:1008
 msgid " f                      Toggle Fullscreen"
@@ -21839,7 +21839,7 @@ msgstr " b                      Tussen videosporen schakelen"
 
 #: modules/gui/ncurses.c:1012
 msgid " n, p                   Next/Previous playlist item"
-msgstr "n, p        Volgende/Vorige afspeellijst item"
+msgstr " n, p        Volgende/Vorige afspeellijst item"
 
 #: modules/gui/ncurses.c:1013
 msgid " [, ]                   Next/Previous title"
@@ -21847,17 +21847,17 @@ msgstr " [, ]        Volgende/Vorige titel"
 
 #: modules/gui/ncurses.c:1014
 msgid " <, >                   Next/Previous chapter"
-msgstr "     <, >        Volgende/Vorige hoofdstuk"
+msgstr " <, >        Volgende/Vorige hoofdstuk"
 
 #. xgettext: You can use ← and → characters
 #: modules/gui/ncurses.c:1016
 #, c-format
 msgid " <left>,<right>         Seek -/+ 1%%"
-msgstr "<links>,<rechts>    Zoek -/+ 1%%"
+msgstr " <links>,<rechts>    Zoek -/+ 1%%"
 
 #: modules/gui/ncurses.c:1017
 msgid " a, z                   Volume Up/Down"
-msgstr "a, z           Volume omhoog,omlaag"
+msgstr " a, z           Volume omhoog,omlaag"
 
 #: modules/gui/ncurses.c:1018
 msgid " m                      Mute"
@@ -21866,12 +21866,12 @@ msgstr " m                      Dempen"
 #. xgettext: You can use ↑ and ↓ characters
 #: modules/gui/ncurses.c:1020
 msgid " <up>,<down>            Navigate through the box line by line"
-msgstr "<pijl-omhoog>,<pijl-omlaag>     Navigeer door de box lijn per lijn"
+msgstr " <pijl-omhoog>,<pijl-omlaag>     Navigeer door de box lijn per lijn"
 
 #. xgettext: You can use ⇞ and ⇟ characters
 #: modules/gui/ncurses.c:1022
 msgid " <pageup>,<pagedown>    Navigate through the box page by page"
-msgstr "     <PgUp>,<PgDown> Navigeer door de box pagina per pagina"
+msgstr " <PgUp>,<PgDown> Navigeer door de box pagina per pagina"
 
 #. xgettext: You can use ↖ and ↘ characters
 #: modules/gui/ncurses.c:1024
@@ -21937,7 +21937,7 @@ msgstr " D, <backspace>, <del>  Smiet in ynfier fuort"
 
 #: modules/gui/ncurses.c:1048
 msgid " e                      Eject (if stopped)"
-msgstr "     e           Uitwerpen (indien gestopt)"
+msgstr " e           Uitwerpen (indien gestopt)"
 
 #: modules/gui/ncurses.c:1052
 msgid "[Filebrowser]"
@@ -21950,11 +21950,11 @@ msgstr ""
 
 #: modules/gui/ncurses.c:1055
 msgid " <space>                Add the selected directory to the playlist"
-msgstr "     <spatie>     De geselecteerde map aan de afspeellijst toevoegen"
+msgstr " <spatie>     De geselecteerde map aan de afspeellijst toevoegen"
 
 #: modules/gui/ncurses.c:1056
 msgid " .                      Show/Hide hidden files"
-msgstr "     .           Verborgen bestanden weergeven/verbergen"
+msgstr " .           Verborgen bestanden weergeven/verbergen"
 
 #: modules/gui/ncurses.c:1060
 msgid "[Player]"
@@ -21964,7 +21964,7 @@ msgstr "[Speler]"
 #: modules/gui/ncurses.c:1063
 #, c-format
 msgid " <up>,<down>            Seek +/-5%%"
-msgstr "     <omhoog>,<omlaag>     Zoek +/-5%%"
+msgstr " <omhoog>,<omlaag>     Zoek +/-5%%"
 
 #: modules/gui/ncurses.c:1106
 #, c-format
@@ -22026,11 +22026,11 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr " Bron: <geen huidig item> "
+msgstr " Bron: <geen huidig item>"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
-msgstr "[h voor help]"
+msgstr " [h voor help]"
 
 #: modules/gui/ncurses.c:1329
 #, c-format
@@ -23536,7 +23536,7 @@ msgstr "Logbestand opslaan als..."
 #: modules/gui/qt/dialogs/messages/messages.cpp:361
 #, fuzzy
 msgid "Texts/Logs (*.log *.txt);; All (*.*)"
-msgstr "Teksten / logboeken (*.log *.txt);; Alles (*.*) "
+msgstr "Teksten / logboeken (*.log *.txt);; Alles (*.*)"
 
 #: modules/gui/qt/dialogs/messages/messages.cpp:367
 msgid "Application"
@@ -26517,7 +26517,7 @@ msgstr "De muxer ontbreekt. Gebruik van dit profiel zal mislukken"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:802
 msgid " Profile Name Missing"
-msgstr "Profylnamme Mist"
+msgstr " Profylnamme Mist"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:803
 msgid "You must set a name for the profile."
@@ -26901,7 +26901,7 @@ msgstr "Uitzending: "
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 msgid "Schedule: "
-msgstr "Programmering:"
+msgstr "Programmering: "
 
 #: modules/gui/qt/maininterface/mainctx.cpp:1193
 msgid "Paste from clipboard"
@@ -30957,7 +30957,7 @@ msgstr "Deïnterlace chroma overslaan"
 
 #: modules/hw/vdpau/chroma.c:815
 msgid "Whether temporal deinterlacing applies to luma only"
-msgstr "Of tijdelijke deïnterlacing alleen invloed heeft op luma "
+msgstr "Of tijdelijke deïnterlacing alleen invloed heeft op luma"
 
 #: modules/hw/vdpau/chroma.c:817
 msgid "Noise reduction level"

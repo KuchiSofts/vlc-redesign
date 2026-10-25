@@ -777,12 +777,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (habilitado por defecto)"
+msgstr "(habilitado por defecto)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (deshabilitado por defecto)"
+msgstr "(deshabilitado por defecto)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -1371,7 +1371,7 @@ msgstr "URL del material artístico"
 
 #: src/input/meta.c:75
 msgid "Track ID"
-msgstr "ID de pista "
+msgstr "ID de pista"
 
 #: src/input/meta.c:76
 msgid "Number of Tracks"
@@ -4390,7 +4390,7 @@ msgstr "Seleccione el atajo de teclado para hacer un salto largo atrás."
 
 #: src/libvlc-module.c:1404
 msgid "Very short forward jump"
-msgstr "Salto muy corto adelante "
+msgstr "Salto muy corto adelante"
 
 #: src/libvlc-module.c:1406
 msgid "Select the hotkey to make a very short forward jump."
@@ -9169,7 +9169,7 @@ msgstr ""
 
 #: modules/access/dtv/access.c:49
 msgid "DVB device"
-msgstr "Dispositivo DVB "
+msgstr "Dispositivo DVB"
 
 #: modules/access/dtv/access.c:51
 msgid ""
@@ -9717,7 +9717,7 @@ msgstr ""
 
 #: modules/access/dvdnav.c:94
 msgid "DVD with menus"
-msgstr "DVD con menús "
+msgstr "DVD con menús"
 
 #: modules/access/dvdnav.c:95
 msgid "DVDnav Input"
@@ -12072,7 +12072,7 @@ msgstr "Descripción de género"
 #: modules/access_output/shout.c:83
 #, fuzzy
 msgid "Genre of the content."
-msgstr "Género del contenido. "
+msgstr "Género del contenido."
 
 #: modules/access_output/shout.c:85
 #, fuzzy
@@ -12082,7 +12082,7 @@ msgstr "Descripción"
 #: modules/access_output/shout.c:86
 #, fuzzy
 msgid "URL with information about the stream or your channel."
-msgstr "URL con información sobre la emisión o su canal. "
+msgstr "URL con información sobre la emisión o su canal."
 
 #: modules/access_output/shout.c:93
 #, fuzzy
@@ -14868,7 +14868,7 @@ msgstr ""
 
 #: modules/codec/qsv.c:140
 msgid "Convergence time of 'avbr' RateControl"
-msgstr "Tiempo de convergencia del control de tasa 'avbr' "
+msgstr "Tiempo de convergencia del control de tasa 'avbr'"
 
 #: modules/codec/qsv.c:141
 #, fuzzy
@@ -15121,7 +15121,7 @@ msgstr "Predeterminado (Windows-1252)"
 
 #: modules/codec/subsdec.c:100
 msgid "System codeset"
-msgstr "Conjunto de códigos del sistema "
+msgstr "Conjunto de códigos del sistema"
 
 #: modules/codec/subsdec.c:101
 msgid "Universal (UTF-8)"
@@ -18330,7 +18330,7 @@ msgstr "Demuxor AU"
 
 #: modules/demux/rawaud.c:43
 msgid "Audio sample rate in Hertz. Default is 48000 Hz."
-msgstr "Tasa de muestreo de audio en hercios. Por defecto es 48000 Hz. "
+msgstr "Tasa de muestreo de audio en hercios. Por defecto es 48000 Hz."
 
 #: modules/demux/rawaud.c:45 modules/stream_out/transcode/transcode.c:100
 #: share/lua/http/dialogs/create_stream.html:316
@@ -20259,7 +20259,7 @@ msgstr "Sincronización de pista de audio:"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:270
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:271
 msgid "s"
-msgstr " s"
+msgstr "s"
 
 #: modules/gui/macosx/panels/VLCTrackSynchronizationWindowController.m:88
 msgid "A positive value means that the audio is ahead of the video"
@@ -21817,7 +21817,7 @@ msgstr "Volumen"
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:248
 #, fuzzy
 msgid "Playback time"
-msgstr "Ratio de reproducción "
+msgstr "Ratio de reproducción"
 
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:549
 msgid "No current item"
@@ -21904,7 +21904,7 @@ msgstr " i           Mostrar/Ocultar caja de información"
 
 #: modules/gui/ncurses.c:992
 msgid " M                      Show/Hide metadata box"
-msgstr "M Muestra/Oculta caja de metadatos"
+msgstr " M Muestra/Oculta caja de metadatos"
 
 #: modules/gui/ncurses.c:993
 msgid " L                      Show/Hide messages box"
@@ -21956,15 +21956,15 @@ msgstr " f                      Cambiar a pantalla completa"
 
 #: modules/gui/ncurses.c:1009
 msgid " c                      Cycle through audio tracks"
-msgstr "c Ciclo entre pistas de audio"
+msgstr " c Ciclo entre pistas de audio"
 
 #: modules/gui/ncurses.c:1010
 msgid " v                      Cycle through subtitles tracks"
-msgstr "v Ciclo entre pistas de subtítulos"
+msgstr " v Ciclo entre pistas de subtítulos"
 
 #: modules/gui/ncurses.c:1011
 msgid " b                      Cycle through video tracks"
-msgstr "b Ciclo entre pistas de vídeo"
+msgstr " b Ciclo entre pistas de vídeo"
 
 #: modules/gui/ncurses.c:1012
 msgid " n, p                   Next/Previous playlist item"
@@ -21990,7 +21990,7 @@ msgstr " a, z                   Bajar/Subir volumen"
 
 #: modules/gui/ncurses.c:1018
 msgid " m                      Mute"
-msgstr "m Silenciar"
+msgstr " m Silenciar"
 
 #. xgettext: You can use ↑ and ↓ characters
 #: modules/gui/ncurses.c:1020
@@ -22054,7 +22054,7 @@ msgstr " /                      Buscar un objeto"
 
 #: modules/gui/ncurses.c:1044
 msgid " ;                      Look for the next item"
-msgstr "; Buscar el siguiente archivo"
+msgstr " ; Buscar el siguiente archivo"
 
 #: modules/gui/ncurses.c:1045
 msgid " A                      Add an entry"
@@ -22131,16 +22131,16 @@ msgstr " Posición : %s/%s"
 
 #: modules/gui/ncurses.c:1276
 msgid " Volume   : Mute"
-msgstr "Volumen : Silenciar"
+msgstr " Volumen : Silenciar"
 
 #: modules/gui/ncurses.c:1277
 #, c-format
 msgid " Volume   : %3ld%%"
-msgstr "Volumen : %3ld%%"
+msgstr " Volumen : %3ld%%"
 
 #: modules/gui/ncurses.c:1277
 msgid " Volume   : ----"
-msgstr "Volumen : ----"
+msgstr " Volumen : ----"
 
 #: modules/gui/ncurses.c:1286
 #, c-format
@@ -22491,7 +22491,7 @@ msgstr "Actualizar"
 
 #: modules/gui/qt/dialogs/epg/epg.cpp:161
 msgid " (%1+ rated)"
-msgstr "(valorado %1+)"
+msgstr " (valorado %1+)"
 
 #: modules/gui/qt/dialogs/extended/audio_effects.cpp:319
 msgid "Open audio effects before changing them."
@@ -26768,7 +26768,7 @@ msgstr "El muxer no se encuentra. Usando ester perfil fallará"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:802
 msgid " Profile Name Missing"
-msgstr "Nombre de perfil ausente"
+msgstr " Nombre de perfil ausente"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:803
 msgid "You must set a name for the profile."
@@ -36264,7 +36264,7 @@ msgstr "Reductor de ruido HQ 3D"
 
 #: modules/video_filter/hqdn3d.c:64
 msgid "High Quality 3D Denoiser filter"
-msgstr "Filtro reductor de rudio de alta calidad 3D "
+msgstr "Filtro reductor de rudio de alta calidad 3D"
 
 #: modules/video_filter/invert.c:47
 msgid "Invert video filter"
@@ -37990,7 +37990,7 @@ msgstr "Mosaico de baldosas"
 
 #: share/lua/http/dialogs/offset_window.html:68
 msgid "Playback Rate"
-msgstr "Ratio de reproducción "
+msgstr "Ratio de reproducción"
 
 #: share/lua/http/dialogs/offset_window.html:72
 msgid "Audio Delay"

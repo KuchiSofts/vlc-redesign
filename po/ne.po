@@ -764,12 +764,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (पूर्वनिर्धारित सक्षम पारिएको छ)"
+msgstr "(पूर्वनिर्धारित सक्षम पारिएको छ)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (पूर्वनिर्धारित अक्षम पारिएको छ)"
+msgstr "(पूर्वनिर्धारित अक्षम पारिएको छ)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -1294,7 +1294,7 @@ msgstr ""
 #: src/input/input.c:3131
 #, c-format
 msgid "VLC is unable to open the MRL '%s'. Check the log for details."
-msgstr "VLC को MRL '%s' खोल्न असमर्थ छौ। विवरण को लागि प्रवेश को जाँच गरौ। "
+msgstr "VLC को MRL '%s' खोल्न असमर्थ छौ। विवरण को लागि प्रवेश को जाँच गरौ।"
 
 #: src/input/meta.c:59
 #: modules/gui/macosx/library/VLCLibrarySortingMenuController.m:61
@@ -2071,7 +2071,7 @@ msgstr "भिडियो सञ्झ्याललाई सधै अन्
 #: src/libvlc-module.c:348
 #, fuzzy
 msgid "Enable wallpaper mode"
-msgstr "वालपेपर मोड सक्षम पार्नुहोस् "
+msgstr "वालपेपर मोड सक्षम पार्नुहोस्"
 
 #: src/libvlc-module.c:350
 msgid ""
@@ -2631,7 +2631,7 @@ msgstr "बहुस्त्र्पीय उत्पादन इंटर�
 
 #: src/libvlc-module.c:636
 msgid "Default multicast interface. This overrides the routing table."
-msgstr "डिफ़ॉल्ट बहुस्त्र्पीय इंटरफ़ेस। एस्ले अनुमार्गणले तालिका ओवेऋदेस। "
+msgstr "डिफ़ॉल्ट बहुस्त्र्पीय इंटरफ़ेस। एस्ले अनुमार्गणले तालिका ओवेऋदेस।"
 
 #: src/libvlc-module.c:638
 msgid "DiffServ Code Point"
@@ -3221,7 +3221,7 @@ msgstr "TCP जडान समय समाप्त"
 #: src/libvlc-module.c:937
 #, fuzzy
 msgid "Default TCP connection timeout (in milliseconds)."
-msgstr "पूर्वनिर्धारित TCP जडान समय समाप्त (मिलिसेकेन्डमा) "
+msgstr "पूर्वनिर्धारित TCP जडान समय समाप्त (मिलिसेकेन्डमा)"
 
 #: src/libvlc-module.c:939
 msgid "HTTP server address"
@@ -21290,7 +21290,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr "हालको वस्तु दोहर्याउनुहोस्"
+msgstr " हालको वस्तु दोहर्याउनुहोस्"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -21607,7 +21607,7 @@ msgstr "सबै फाइलहरू"
 
 #: modules/gui/qt/dialogs/epg/EPGWidget.cpp:65
 msgid "No EPG Data Available"
-msgstr "EPG Data उपलब्ध छैन "
+msgstr "EPG Data उपलब्ध छैन"
 
 #: modules/gui/qt/dialogs/epg/epg.cpp:48 modules/gui/qt/menus/menus.cpp:263
 #: modules/gui/qt/menus/menus.cpp:889
@@ -24252,7 +24252,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:193
 #, fuzzy
 msgid " dB"
-msgstr "%.2f dB"
+msgstr " %.2f dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207
@@ -28515,7 +28515,7 @@ msgstr ""
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:458
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:459
 msgid "Sort"
-msgstr "क्रम मा मिलौनुहोस् "
+msgstr "क्रम मा मिलौनुहोस्"
 
 #: modules/gui/qt/player/qml/CompactLibrary.qml:922
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:82
@@ -31816,7 +31816,7 @@ msgstr "समय समाप्त (मिलि सेकेन्ड)"
 #: modules/notify/notify.c:62
 #, fuzzy
 msgid "How long the notification will be displayed."
-msgstr "कति समय सूचना देखाउने "
+msgstr "कति समय सूचना देखाउने"
 
 #: modules/notify/notify.c:66
 msgid "Notify"

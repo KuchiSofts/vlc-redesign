@@ -437,7 +437,7 @@ msgstr "&Mensagens"
 
 #: include/vlc_intf_strings.h:57
 msgid "Jump to Specific &Time"
-msgstr "Ir para &tempo específico "
+msgstr "Ir para &tempo específico"
 
 #: include/vlc_intf_strings.h:58
 #, fuzzy
@@ -774,12 +774,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (predefinição ativada)"
+msgstr "(predefinição ativada)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (predefinição desativada)"
+msgstr "(predefinição desativada)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -5096,7 +5096,7 @@ msgstr "Percorrer pelos dispositivos áudio disponíveis"
 
 #: src/libvlc-module.c:1631
 msgid "core program"
-msgstr " programa de núcleo"
+msgstr "programa de núcleo"
 
 #: src/libvlc-module.c:1748 src/video_output/vout_intf.c:329
 #: modules/gui/macosx/menus/VLCMainMenu.m:439
@@ -5265,7 +5265,7 @@ msgstr "restaurar predefinições da configuração atual"
 
 #: src/libvlc-module.c:2881
 msgid "use alternate config file"
-msgstr "utilizar outro ficheiro de configuração "
+msgstr "utilizar outro ficheiro de configuração"
 
 #: src/libvlc-module.c:2883
 msgid "resets the current plugins cache"
@@ -8872,7 +8872,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/open/open_panels.cpp:886
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1107
 msgid "Audio device name"
-msgstr "Nome do dispositivo de áudio "
+msgstr "Nome do dispositivo de áudio"
 
 #: modules/access/dshow/dshow.cpp:110
 #, fuzzy
@@ -12301,7 +12301,7 @@ msgstr "Atrás direita"
 #: modules/audio_filter/channel_mixer/mono.c:90
 #: modules/audio_filter/channel_mixer/remap.c:65
 msgid "Low-frequency effects"
-msgstr "Efeitos de baixa frequência "
+msgstr "Efeitos de baixa frequência"
 
 #: modules/audio_filter/channel_mixer/mono.c:91
 #: modules/audio_filter/channel_mixer/remap.c:65
@@ -12696,7 +12696,7 @@ msgstr "Frequência 1 (Hz)"
 
 #: modules/audio_filter/param_eq.c:64
 msgid "Freq 1 gain (dB)"
-msgstr "Ganho de frequência 1 (dB) "
+msgstr "Ganho de frequência 1 (dB)"
 
 #: modules/audio_filter/param_eq.c:66
 msgid "Freq 1 Q"
@@ -12708,7 +12708,7 @@ msgstr "Frequência 2 (Hz)"
 
 #: modules/audio_filter/param_eq.c:69
 msgid "Freq 2 gain (dB)"
-msgstr "Ganho de frequência 2 (dB) "
+msgstr "Ganho de frequência 2 (dB)"
 
 #: modules/audio_filter/param_eq.c:71
 msgid "Freq 2 Q"
@@ -12720,7 +12720,7 @@ msgstr "Frequência 3 (Hz)"
 
 #: modules/audio_filter/param_eq.c:74
 msgid "Freq 3 gain (dB)"
-msgstr "Ganho de frequência 3 (dB) "
+msgstr "Ganho de frequência 3 (dB)"
 
 #: modules/audio_filter/param_eq.c:76
 msgid "Freq 3 Q"
@@ -12947,7 +12947,7 @@ msgstr ""
 #: modules/audio_filter/stereo_widen.c:68
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1400
 msgid "Dry mix"
-msgstr "Mistura "
+msgstr "Mistura"
 
 #: modules/audio_filter/stereo_widen.c:69
 msgid "Level of input signal of original channel."
@@ -13745,7 +13745,7 @@ msgstr ""
 
 #: modules/codec/avcodec/avcodec.h:161
 msgid "Fixed quantizer scale"
-msgstr "Escala fixa de quantização "
+msgstr "Escala fixa de quantização"
 
 #: modules/codec/avcodec/avcodec.h:162
 msgid ""
@@ -13954,7 +13954,7 @@ msgstr "Impõe uma qualidade entre 0 (baixo) e 10 (alto)."
 #: modules/codec/daala.c:113
 #, fuzzy
 msgid "Keyframe interval"
-msgstr "Intervalo de indice "
+msgstr "Intervalo de indice"
 
 #: modules/codec/daala.c:115
 #, fuzzy
@@ -14180,7 +14180,7 @@ msgstr "FDKAAC"
 
 #: modules/codec/fdkaac.c:107
 msgid "FDK-AAC Audio encoder"
-msgstr "Codificador de audio FDK-AAC "
+msgstr "Codificador de audio FDK-AAC"
 
 #: modules/codec/flac.c:164
 msgid "Flac audio decoder"
@@ -15915,7 +15915,7 @@ msgstr "VBR baseado em qualidade e de 1 passo. Faixa de 0 a 51."
 
 #: modules/codec/x264.c:197
 msgid "Min QP"
-msgstr "QP Min "
+msgstr "QP Min"
 
 #: modules/codec/x264.c:198
 msgid "Minimum quantizer parameter. 15 to 35 seems to be a useful range."
@@ -17817,7 +17817,7 @@ msgstr ""
 #: modules/demux/mp4/meta.c:522
 #, fuzzy
 msgid "Clean"
-msgstr "Limpar "
+msgstr "Limpar"
 
 #: modules/demux/mp4/mp4.c:60
 #, fuzzy
@@ -18287,7 +18287,7 @@ msgstr "Taxa de amostragem em Hertz. O padrão é 48.000 Hz."
 #: modules/demux/rawaud.c:45 modules/stream_out/transcode/transcode.c:100
 #: share/lua/http/dialogs/create_stream.html:316
 msgid "Audio channels"
-msgstr "Canais de áudio "
+msgstr "Canais de áudio"
 
 #: modules/demux/rawaud.c:46
 msgid "Audio channels in input stream. Default is 2 (stereo)."
@@ -20033,7 +20033,7 @@ msgstr "Adicionar"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml:80
 #: modules/gui/qt/widgets/qml/SearchBox.qml:305
 msgid "Clear"
-msgstr "Limpar "
+msgstr "Limpar"
 
 #: modules/gui/macosx/panels/VLCBookmarksWindowController.m:101
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:478
@@ -21882,7 +21882,7 @@ msgstr " <space>               Reproduzir/Pausa"
 
 #: modules/gui/ncurses.c:1008
 msgid " f                      Toggle Fullscreen"
-msgstr "f Alternar ecrã inteiro"
+msgstr " f Alternar ecrã inteiro"
 
 #: modules/gui/ncurses.c:1009
 msgid " c                      Cycle through audio tracks"
@@ -22051,12 +22051,12 @@ msgstr ""
 #: modules/gui/ncurses.c:1241
 #, c-format
 msgid " Source   : %s"
-msgstr "Fonte   : %s"
+msgstr " Fonte   : %s"
 
 #: modules/gui/ncurses.c:1271
 #, c-format
 msgid " Position : %s/%s"
-msgstr "Posição : %s/%s"
+msgstr " Posição : %s/%s"
 
 #: modules/gui/ncurses.c:1276
 msgid " Volume   : Mute"
@@ -22084,7 +22084,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr " Fonte: <nenhum item> "
+msgstr " Fonte: <nenhum item>"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -22420,7 +22420,7 @@ msgstr "Atualização"
 
 #: modules/gui/qt/dialogs/epg/epg.cpp:161
 msgid " (%1+ rated)"
-msgstr "(%1+ classificado)"
+msgstr " (%1+ classificado)"
 
 #: modules/gui/qt/dialogs/extended/audio_effects.cpp:319
 msgid "Open audio effects before changing them."
@@ -23696,7 +23696,7 @@ msgstr "&Disco"
 
 #: modules/gui/qt/dialogs/open/open.cpp:64
 msgid "&Network"
-msgstr "Rede "
+msgstr "Rede"
 
 #: modules/gui/qt/dialogs/open/open.cpp:66
 msgid "Capture &Device"
@@ -26687,7 +26687,7 @@ msgstr "Este multiplexador está em falta. A utilização deste perfil irá falh
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:802
 msgid " Profile Name Missing"
-msgstr "Falta Nome do Perfil"
+msgstr " Falta Nome do Perfil"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:803
 msgid "You must set a name for the profile."
@@ -26830,7 +26830,7 @@ msgstr "Abrir &ficheiro"
 #: modules/gui/qt/dialogs/systray/systray.cpp:220
 #: modules/gui/qt/menus/menus.cpp:237
 msgid "&Quit"
-msgstr "Sair "
+msgstr "Sair"
 
 #: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:205
 #: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:438
@@ -27951,7 +27951,7 @@ msgstr "Canais:"
 
 #: modules/gui/qt/medialibrary/qml/MusicAlbumSectionDelegate.qml:236
 msgid "Prev"
-msgstr "Anterior "
+msgstr "Anterior"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:82
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:168
@@ -31537,7 +31537,7 @@ msgstr ""
 
 #: modules/lua/extension.c:1099
 msgid "Extension not responding!"
-msgstr "A extensão não responde! "
+msgstr "A extensão não responde!"
 
 #: modules/lua/extension.c:1100
 #, c-format
@@ -32943,7 +32943,7 @@ msgstr "Misturador de múltiplas partes de um JPEG"
 
 #: modules/mux/ogg.c:46
 msgid "Index interval"
-msgstr "Intervalo de indice "
+msgstr "Intervalo de indice"
 
 #: modules/mux/ogg.c:47
 msgid ""
@@ -35313,7 +35313,7 @@ msgstr "Filtragem de vídeo usando uma cadeia de módulos de filtragem de vídeo
 #: modules/video_chroma/grey_yuv.c:55 modules/video_chroma/i422_i420.c:56
 #: modules/video_chroma/yuy2_i420.c:57 modules/video_chroma/yuy2_i422.c:57
 msgid "Conversions from "
-msgstr "Conversões de"
+msgstr "Conversões de "
 
 #: modules/video_chroma/i420_nv12.c:239
 msgid "YUV planar to semiplanar conversions"

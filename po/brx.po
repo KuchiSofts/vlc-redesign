@@ -755,12 +755,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (डिफल्ट हाहोनाय खालामबाय)"
+msgstr "(डिफल्ट हाहोनाय खालामबाय)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (डिफल्ट लोरबां खालामबाय)"
+msgstr "(डिफल्ट लोरबां खालामबाय)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -10672,7 +10672,7 @@ msgstr "स्क्रिन"
 #: modules/access/screen/wayland.c:466 modules/access/screen/xcb.c:41
 #: modules/access/shm.c:44 modules/access/vnc.c:64
 msgid "How many times the screen content should be refreshed per second."
-msgstr "स्क्रिन थानाय-आयदाखौ मोनफा सेकेन्दआव खनबैसे थाजा खालामनांगौ। "
+msgstr "स्क्रिन थानाय-आयदाखौ मोनफा सेकेन्दआव खनबैसे थाजा खालामनांगौ।"
 
 #: modules/access/screen/wayland.c:478 modules/access/screen/xcb.c:53
 msgid "Pixel width of the capture region, or 0 for full width"
@@ -21766,7 +21766,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr " फुंखा: <जेबो दानि आइटेम गैया> "
+msgstr " फुंखा: <जेबो दानि आइटेम गैया>"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -23276,7 +23276,7 @@ msgstr "बादि लग फाइलखौ थिना दोन..."
 #: modules/gui/qt/dialogs/messages/messages.cpp:361
 #, fuzzy
 msgid "Texts/Logs (*.log *.txt);; All (*.*)"
-msgstr "फरा / लग (*.log *.txt);; All (*.*) "
+msgstr "फरा / लग (*.log *.txt);; All (*.*)"
 
 #: modules/gui/qt/dialogs/messages/messages.cpp:367
 msgid "Application"
@@ -26222,7 +26222,7 @@ msgstr "जागाय"
 #: modules/gui/qt/dialogs/sout/convert.cpp:161
 #: modules/gui/qt/dialogs/sout/sout_widgets.cpp:172
 msgid "Save file..."
-msgstr "फाइलखौ थिना दोन... "
+msgstr "फाइलखौ थिना दोन..."
 
 #: modules/gui/qt/dialogs/sout/convert.cpp:163
 msgid "Containers"
@@ -26254,7 +26254,7 @@ msgstr "बे माक्सारआ गोमानाय। बे प्�
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:802
 msgid " Profile Name Missing"
-msgstr "प्रफाइल मुं गोमानाय"
+msgstr " प्रफाइल मुं गोमानाय"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:803
 msgid "You must set a name for the profile."
@@ -26597,7 +26597,7 @@ msgstr "खालामफिननाय गोबाव:"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:104
 msgid " days"
-msgstr "सान"
+msgstr " सान"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:123
 msgid "I&mport"
@@ -31658,7 +31658,7 @@ msgstr "सिन्थपप"
 
 #: modules/meta_engine/folder.c:68
 msgid "Folder meta data"
-msgstr "फल्डार मेटा डाटा "
+msgstr "फल्डार मेटा डाटा"
 
 #: modules/meta_engine/folder.c:70
 msgid "Album art filename"
@@ -33249,7 +33249,7 @@ msgstr "हिसाब फेक्टर"
 #: modules/spu/subsdelay.c:54
 msgid ""
 "Calculation factor. In Absolute delay mode the factor represents seconds."
-msgstr "हिसाब फेक्टर। जोबोद गोबाव म'डआव, फेक्टरआ सेकेन्दखौ दिन्थियो। "
+msgstr "हिसाब फेक्टर। जोबोद गोबाव म'डआव, फेक्टरआ सेकेन्दखौ दिन्थियो।"
 
 #: modules/spu/subsdelay.c:57
 msgid "Maximum overlapping subtitles"
@@ -34672,7 +34672,7 @@ msgstr "भिडिअ' फिल्टार मडुलनि मोनस�
 #: modules/video_chroma/grey_yuv.c:55 modules/video_chroma/i422_i420.c:56
 #: modules/video_chroma/yuy2_i420.c:57 modules/video_chroma/yuy2_i422.c:57
 msgid "Conversions from "
-msgstr "निफ्राय सोलायनाय"
+msgstr "निफ्राय सोलायनाय "
 
 #: modules/video_chroma/i420_nv12.c:239
 msgid "YUV planar to semiplanar conversions"
@@ -36418,7 +36418,7 @@ msgstr ""
 #: modules/video_output/win32/direct3d11.cpp:90
 #, fuzzy
 msgid "Direct3D11 video output"
-msgstr "थोंजों3D भिडिअ' आउटपुट "
+msgstr "थोंजों3D भिडिअ' आउटपुट"
 
 #: modules/video_output/win32/direct3d9.c:75
 msgid "The desktop mode allows you to display the video on the desktop."
@@ -36461,7 +36461,7 @@ msgstr "उइन्ड'स भिस्टा आरो उननि बिस�
 #: modules/video_output/win32/direct3d9.c:97
 #, fuzzy
 msgid "Direct3D9 video output"
-msgstr "थोंजों3D भिडिअ' आउटपुट "
+msgstr "थोंजों3D भिडिअ' आउटपुट"
 
 #: modules/video_output/win32/drawable.c:37
 msgid "Window handle (HWND)"
@@ -36558,7 +36558,7 @@ msgstr "X11 भिडिअ' उइन्ड' (XCB)"
 
 #: modules/video_output/xcb/x11.c:414
 msgid "X11 video output (XCB)"
-msgstr "X11 भिडिअ' आउटपुट(XCB) "
+msgstr "X11 भिडिअ' आउटपुट(XCB)"
 
 #: modules/video_output/yuv.c:39
 msgid "device, fifo or filename"

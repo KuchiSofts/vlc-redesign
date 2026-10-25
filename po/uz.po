@@ -716,12 +716,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (andoza yoqilgan)"
+msgstr "(andoza yoqilgan)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (andoza o'chirilgan)"
+msgstr "(andoza o'chirilgan)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -20926,7 +20926,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr "Joriy elementni qaytarish"
+msgstr " Joriy elementni qaytarish"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"

@@ -22516,7 +22516,7 @@ msgstr ""
 #. xgettext: frames per second
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1172
 msgid " f/s"
-msgstr "ဘောင်နှုန်း"
+msgstr " ဘောင်နှုန်း"
 
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1387
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:604

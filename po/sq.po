@@ -4769,7 +4769,7 @@ msgstr ""
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:248
 #: share/lua/http/dialogs/create_stream.html:153
 msgid "Subtitles"
-msgstr "Titra "
+msgstr "Titra"
 
 #: src/libvlc-module.c:1862 modules/stream_out/transcode/transcode.c:118
 msgid "Overlays"
@@ -9550,7 +9550,7 @@ msgstr "Merr funksionin"
 
 #: modules/access/imem.c:106
 msgid "Address of the get callback function"
-msgstr "Adresa për funksionin merr e thirrmbrapa "
+msgstr "Adresa për funksionin merr e thirrmbrapa"
 
 #: modules/access/imem.c:108
 msgid "Release function"
@@ -11348,7 +11348,7 @@ msgstr "AES dokument çelësi"
 
 #: modules/access_output/livehttp.c:97
 msgid "File containing the 16 bytes encryption key"
-msgstr "Dokument përmbajtës i çelësit kriptues 16 bytes "
+msgstr "Dokument përmbajtës i çelësit kriptues 16 bytes"
 
 #: modules/access_output/livehttp.c:99
 msgid "File where vlc reads key-uri and keyfile-location"
@@ -11363,7 +11363,7 @@ msgstr ""
 
 #: modules/access_output/livehttp.c:104
 msgid "Use randomized IV for encryption"
-msgstr "Përdorimi rastësishëm për kriptimin IV "
+msgstr "Përdorimi rastësishëm për kriptimin IV"
 
 #: modules/access_output/livehttp.c:105
 msgid "Generate IV instead using segment-number as IV"
@@ -12771,12 +12771,12 @@ msgstr ""
 #: modules/codec/arib/aribsub.c:52
 #, fuzzy
 msgid "ARIB subtitles decoder"
-msgstr "Titra kodeks "
+msgstr "Titra kodeks"
 
 #: modules/codec/arib/aribsub.c:53
 #, fuzzy
 msgid "ARIB subtitles"
-msgstr "Titra "
+msgstr "Titra"
 
 #: modules/codec/audiotoolbox_midi.c:46 modules/codec/fluidsynth.c:47
 #, fuzzy
@@ -14594,7 +14594,7 @@ msgstr ""
 #: modules/codec/textst.c:50
 #, fuzzy
 msgid "HDMV TextST subtitles decoder"
-msgstr "Titra kodeks "
+msgstr "Titra kodeks"
 
 #: modules/codec/theora.c:107 modules/codec/vorbis.c:176
 msgid ""
@@ -14626,7 +14626,7 @@ msgstr "dekoder"
 #: modules/codec/ttml/ttml.c:46
 #, fuzzy
 msgid "TTML subtitles decoder"
-msgstr "Titra kodeks "
+msgstr "Titra kodeks"
 
 #: modules/codec/ttml/ttml.c:52 modules/codec/ttml/ttml.c:60
 msgid "TTML"
@@ -14766,12 +14766,12 @@ msgstr "dekoder"
 #: modules/codec/webvtt/webvtt.c:41
 #, fuzzy
 msgid "WEBVTT subtitles decoder"
-msgstr "Titra kodeks "
+msgstr "Titra kodeks"
 
 #: modules/codec/webvtt/webvtt.c:46 modules/codec/webvtt/webvtt.c:53
 #, fuzzy
 msgid "WEBVTT subtitles parser"
-msgstr "Titra kodeks "
+msgstr "Titra kodeks"
 
 #: modules/codec/webvtt/webvtt.c:65
 msgid "Raw WebVTT muxer"
@@ -18636,7 +18636,7 @@ msgstr "Ruaj"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:1514
 msgid "Untitled"
-msgstr "Patitull "
+msgstr "Patitull"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:1535
 msgid "Play Queue is Empty"
@@ -20315,7 +20315,7 @@ msgstr ""
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:420
 #, fuzzy
 msgid "Select Streaming Method"
-msgstr "Zgjedh mënyrën fituese riluaj "
+msgstr "Zgjedh mënyrën fituese riluaj"
 
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:187
 msgid "Save as File"
@@ -20543,12 +20543,12 @@ msgstr ""
 
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:135
 msgid "Backward"
-msgstr "Mbrapsh "
+msgstr "Mbrapsh"
 
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:136
 #, fuzzy
 msgid "Seek backward"
-msgstr "Mbrapsh "
+msgstr "Mbrapsh"
 
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:139
 msgid "Forward"
@@ -36018,7 +36018,7 @@ msgstr ""
 #: share/lua/http/mobile_browse.html:24 share/lua/http/mobile_equalizer.html:24
 #: share/lua/http/mobile_view.html:24
 msgid "VLC media player - Web Interface"
-msgstr "VLC media player - Nderfaqja Web "
+msgstr "VLC media player - Nderfaqja Web"
 
 #: share/lua/http/index.html:233
 msgid "Hide / Show Library"

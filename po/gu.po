@@ -760,12 +760,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (મૂળભૂત રીતે સક્રિય થયેલ છે)"
+msgstr "(મૂળભૂત રીતે સક્રિય થયેલ છે)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (મૂળભૂત રીતે નિષ્ક્રિય થયેલ છે)"
+msgstr "(મૂળભૂત રીતે નિષ્ક્રિય થયેલ છે)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -895,7 +895,7 @@ msgstr ""
 
 #: src/input/es_out.c:2235 src/input/es_out.c:2237
 msgid "Scrambled"
-msgstr "મિશ્રિત કરેલું "
+msgstr "મિશ્રિત કરેલું"
 
 #: src/input/es_out.c:2235 modules/keystore/keychain.m:46
 #: modules/lua/extension.c:1098
@@ -2071,7 +2071,7 @@ msgstr "હંમેશા બીજા વિન્ડોની ટોચે �
 #: src/libvlc-module.c:348
 #, fuzzy
 msgid "Enable wallpaper mode"
-msgstr "વોલપેર સ્થિતિને સક્રિય કરો "
+msgstr "વોલપેર સ્થિતિને સક્રિય કરો"
 
 #: src/libvlc-module.c:350
 msgid ""
@@ -3251,7 +3251,7 @@ msgstr "TCP જોડાણ સમયસમાપ્તિ"
 #: src/libvlc-module.c:937
 #, fuzzy
 msgid "Default TCP connection timeout (in milliseconds)."
-msgstr "મૂળભૂત TCP જોડાણ સમયસમાપ્તિ (મિલિસેકંડમાં). "
+msgstr "મૂળભૂત TCP જોડાણ સમયસમાપ્તિ (મિલિસેકંડમાં)."
 
 #: src/libvlc-module.c:939
 msgid "HTTP server address"
@@ -3604,7 +3604,7 @@ msgstr "સ્ટ્રીમ ફિલ્ટર મોડ્યુલ"
 #: src/libvlc-module.c:1115
 #, fuzzy
 msgid "Stream filters are used to modify the stream that is being read."
-msgstr "સ્ટ્રીમ ફિલ્ટર એ સ્ટ્રીમને બદલવા માટે વાપરેલ છે કે જેને વાંચી દેવામાં આવી છે. "
+msgstr "સ્ટ્રીમ ફિલ્ટર એ સ્ટ્રીમને બદલવા માટે વાપરેલ છે કે જેને વાંચી દેવામાં આવી છે."
 
 #: src/libvlc-module.c:1117
 #, fuzzy
@@ -3614,7 +3614,7 @@ msgstr "સ્ટ્રીમ ફિલ્ટર મોડ્યુલ"
 #: src/libvlc-module.c:1119
 #, fuzzy
 msgid "Demux filters are used to modify/control the stream that is being read."
-msgstr "સ્ટ્રીમ ફિલ્ટર એ સ્ટ્રીમને બદલવા માટે વાપરેલ છે કે જેને વાંચી દેવામાં આવી છે. "
+msgstr "સ્ટ્રીમ ફિલ્ટર એ સ્ટ્રીમને બદલવા માટે વાપરેલ છે કે જેને વાંચી દેવામાં આવી છે."
 
 #: src/libvlc-module.c:1121
 msgid "Demux module"
@@ -4779,7 +4779,7 @@ msgstr "સ્ત્રોત આસ્પેકટ રેસીઓની પહ
 
 #: src/libvlc-module.c:1532
 msgid "Cycle video crop"
-msgstr "વિડિઓ કાપવા વચ્ચેનું આવર્તન "
+msgstr "વિડિઓ કાપવા વચ્ચેનું આવર્તન"
 
 #: src/libvlc-module.c:1533
 msgid "Cycle through a predefined list of crop formats."
@@ -4803,7 +4803,7 @@ msgstr "માપ ફેક્ટરને ઘટાડો"
 
 #: src/libvlc-module.c:1540
 msgid "Toggle deinterlacing"
-msgstr "મિશ્રણ કરતી વખતે અદલાબદલી "
+msgstr "મિશ્રણ કરતી વખતે અદલાબદલી"
 
 #: src/libvlc-module.c:1541
 msgid "Activate or deactivate deinterlacing."
@@ -7761,7 +7761,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:510
 msgid "Tigrinya"
-msgstr "ટિગ્રીન્યા "
+msgstr "ટિગ્રીન્યા"
 
 #: src/text/iso-639_def.h:511
 msgid "Timne"
@@ -10618,7 +10618,7 @@ msgstr "દર્શાવ ID"
 #: modules/access/screen/screen.c:83
 #, fuzzy
 msgid "Display ID. If not specified, main display ID is used."
-msgstr "ID ને દર્શાવો. જો સ્પષ્ટ થયેલ ન હોય તો, મુખ્ય દર્શાવ ID વાપરેલ છે. "
+msgstr "ID ને દર્શાવો. જો સ્પષ્ટ થયેલ ન હોય તો, મુખ્ય દર્શાવ ID વાપરેલ છે."
 
 #: modules/access/screen/screen.c:84
 msgid "Screen index"
@@ -10858,7 +10858,7 @@ msgstr "સમય કોડ"
 
 #: modules/access/timecode.c:43
 msgid "Time code subpicture elementary stream generator"
-msgstr "શરૂઆતી સ્ટ્રીમ ઉપચીત્ર ઉત્પન્ન કરનારનેટાઇમ કોડ કરો "
+msgstr "શરૂઆતી સ્ટ્રીમ ઉપચીત્ર ઉત્પન્ન કરનારનેટાઇમ કોડ કરો"
 
 #: modules/access/udp.c:234
 #, fuzzy
@@ -11636,7 +11636,7 @@ msgstr "ભાગને અલગ કરતા પહેલાં કીફ્�
 
 #: modules/access_output/livehttp.c:76
 msgid "Number of segments"
-msgstr "ભાગોની સંખ્યા "
+msgstr "ભાગોની સંખ્યા"
 
 #: modules/access_output/livehttp.c:77
 msgid "Number of segments to include in index"
@@ -11809,7 +11809,7 @@ msgstr "પ્રકારનું વર્ણન"
 #: modules/access_output/shout.c:83
 #, fuzzy
 msgid "Genre of the content."
-msgstr "સમાવિષ્ટોનાં પ્રકાર. "
+msgstr "સમાવિષ્ટોનાં પ્રકાર."
 
 #: modules/access_output/shout.c:85
 #, fuzzy
@@ -11824,12 +11824,12 @@ msgstr "સ્ટ્રીમ અથવા તમારાં ચેનલ વ�
 #: modules/access_output/shout.c:93
 #, fuzzy
 msgid "Bitrate information of the transcoded stream."
-msgstr "ટ્રાન્સકોડેડ સ્ટ્રીમની બીટરેટ જાણકારી. "
+msgstr "ટ્રાન્સકોડેડ સ્ટ્રીમની બીટરેટ જાણકારી."
 
 #: modules/access_output/shout.c:96
 #, fuzzy
 msgid "Samplerate information of the transcoded stream."
-msgstr "ટ્રાન્સકોડેડ સ્ટ્રીમની નમૂનાદર જાણતાકી. "
+msgstr "ટ્રાન્સકોડેડ સ્ટ્રીમની નમૂનાદર જાણતાકી."
 
 #: modules/access_output/shout.c:98
 msgid "Number of channels"
@@ -11838,7 +11838,7 @@ msgstr "ચેનલોની સંખ્યા"
 #: modules/access_output/shout.c:99
 #, fuzzy
 msgid "Number of channels information of the transcoded stream."
-msgstr "ટ્રાન્સકોડેડ સ્ટ્રીમી ચેનલોની સંખ્યાની જાણકારી. "
+msgstr "ટ્રાન્સકોડેડ સ્ટ્રીમી ચેનલોની સંખ્યાની જાણકારી."
 
 #: modules/access_output/shout.c:101
 msgid "Ogg Vorbis Quality"
@@ -11847,7 +11847,7 @@ msgstr "Ogg વર્બિસ ગુણવત્તા"
 #: modules/access_output/shout.c:102
 #, fuzzy
 msgid "Ogg Vorbis Quality information of the transcoded stream."
-msgstr "ટ્રાન્સકોડેડ સ્ટ્રીમની Ogg વર્બિસ ગુણવત્તા જાણકારી. "
+msgstr "ટ્રાન્સકોડેડ સ્ટ્રીમની Ogg વર્બિસ ગુણવત્તા જાણકારી."
 
 #: modules/access_output/shout.c:104
 msgid "Stream public"
@@ -12292,7 +12292,7 @@ msgstr "10 બેન્ડ સાથેનું ઇક્વાલાઈઝર.
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
 #: share/lua/http/index.html:237
 msgid "Equalizer"
-msgstr "ઇક્વાલાઈઝર "
+msgstr "ઇક્વાલાઈઝર"
 
 #: modules/audio_filter/equalizer_presets.h:53
 msgid "Flat"
@@ -13712,7 +13712,7 @@ msgstr "ક્રોમા બંધારણ"
 #: modules/codec/daala.c:144
 msgid ""
 "Picking chroma format will force a conversion of the video into that format"
-msgstr "ક્રોમા બંધારણ ને પસંદ કરવાનું એ પેલા બંધારણમાં વિડિઓના રૂપાંતરણ માટે દબાણ કરશે "
+msgstr "ક્રોમા બંધારણ ને પસંદ કરવાનું એ પેલા બંધારણમાં વિડિઓના રૂપાંતરણ માટે દબાણ કરશે"
 
 #: modules/codec/dav1d.c:54
 msgid "Frames Threads"
@@ -15190,7 +15190,7 @@ msgstr "સાયકો-એકોસ્ટીક મોડલ"
 
 #: modules/codec/twolame.c:66
 msgid "Integer from -1 (no model) to 4."
-msgstr "-1 (મોડલ નથી) થી 4 પૂર્ણાંક. "
+msgstr "-1 (મોડલ નથી) થી 4 પૂર્ણાંક."
 
 #: modules/codec/twolame.c:70
 msgid "Joint stereo"
@@ -15652,7 +15652,7 @@ msgstr "બફર માપના ભાગ તરીકે શરૂઆતી �
 
 #: modules/codec/x264.c:222
 msgid "How AQ distributes bits"
-msgstr "કેવી રીતે AQ એ બીટની વહેંચણી કરે છે "
+msgstr "કેવી રીતે AQ એ બીટની વહેંચણી કરે છે"
 
 #: modules/codec/x264.c:223
 msgid ""
@@ -15903,7 +15903,7 @@ msgstr "અનુકૂલનશીલ સ્થળલક્ષી બદલા�
 
 #: modules/codec/x264.c:337
 msgid "SATD-based decision for 8x8 transform in inter-MBs."
-msgstr "વચ્ચેના-MB માં 8x8 બદલાવ માટે SATD-આધારિત નિર્ણય "
+msgstr "વચ્ચેના-MB માં 8x8 બદલાવ માટે SATD-આધારિત નિર્ણય"
 
 #: modules/codec/x264.c:339
 msgid "Trellis RD quantization"
@@ -16025,7 +16025,7 @@ msgstr "આંકડાશાસ્ત્ર"
 
 #: modules/codec/x264.c:391
 msgid "Print stats for each frame."
-msgstr "દરેક ફ્રેમ માટે પરિસ્થિતિને છાપો. "
+msgstr "દરેક ફ્રેમ માટે પરિસ્થિતિને છાપો."
 
 #: modules/codec/x264.c:393
 msgid "SPS and PPS id numbers"
@@ -17123,7 +17123,7 @@ msgstr ""
 
 #: modules/demux/image.c:70
 msgid "Frame rate of the elementary stream produced."
-msgstr "પેદા થયેલ પ્રાથમિક સ્ટ્રીમનો ફ્રેમ દર. "
+msgstr "પેદા થયેલ પ્રાથમિક સ્ટ્રીમનો ફ્રેમ દર."
 
 #: modules/demux/image.c:72
 msgid "Real-time"
@@ -19414,7 +19414,7 @@ msgstr "સમય સાથે જાઓ"
 #: modules/gui/macosx/menus/VLCStatusBarIcon.m:116
 #, fuzzy
 msgid "Toggle random order playback"
-msgstr "ટોગલ ગમેતે વગાડવા માટેની યાદીને ફરી વગાડો "
+msgstr "ટોગલ ગમેતે વગાડવા માટેની યાદીને ફરી વગાડો"
 
 #: modules/gui/macosx/menus/VLCStatusBarIcon.m:119
 #, fuzzy
@@ -21479,7 +21479,7 @@ msgstr " <સ્પેસ>                થોભો/વગાડો"
 
 #: modules/gui/ncurses.c:1008
 msgid " f                      Toggle Fullscreen"
-msgstr "f                      સંપૂર્ણસ્ક્રીન બદલો"
+msgstr " f                      સંપૂર્ણસ્ક્રીન બદલો"
 
 #: modules/gui/ncurses.c:1009
 msgid " c                      Cycle through audio tracks"
@@ -21681,7 +21681,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr " સ્ત્રોત: <હાલની વસ્તુ નથી> "
+msgstr " સ્ત્રોત: <હાલની વસ્તુ નથી>"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -22669,7 +22669,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/extended/qml/VideoEffectsPanel.qml:66
 msgid "Anti-Flickering"
-msgstr "ઝબુક ઝબુક થતા અટકાવતું "
+msgstr "ઝબુક ઝબુક થતા અટકાવતું"
 
 #: modules/gui/qt/dialogs/extended/qml/VideoEffectsPanel.qml:67
 msgid "Denoiser"
@@ -23191,7 +23191,7 @@ msgstr "આ તરીકે લૉગ ફાઇલને સંગ્રહો..
 #: modules/gui/qt/dialogs/messages/messages.cpp:361
 #, fuzzy
 msgid "Texts/Logs (*.log *.txt);; All (*.*)"
-msgstr "લખાણો / લૉગો (*.log *.txt);; બધા (*.*) "
+msgstr "લખાણો / લૉગો (*.log *.txt);; બધા (*.*)"
 
 #: modules/gui/qt/dialogs/messages/messages.cpp:367
 msgid "Application"
@@ -29684,7 +29684,7 @@ msgstr "પ્લેયરમાં વગાડેલ તાજેતરની 
 #: modules/gui/qt/qt.cpp:237
 #, fuzzy
 msgid "Selection of the starting mode and look"
-msgstr "શરૂઆતની સ્થિતિ અને જોવાની પસંદગી "
+msgstr "શરૂઆતની સ્થિતિ અને જોવાની પસંદગી"
 
 #: modules/gui/qt/qt.cpp:238
 msgid ""
@@ -32289,7 +32289,7 @@ msgstr "સમયસમાપ્તિ (ms)"
 #: modules/notify/notify.c:62
 #, fuzzy
 msgid "How long the notification will be displayed."
-msgstr "કેટલી લાંબી સૂચના દર્શાવેલ હશે "
+msgstr "કેટલી લાંબી સૂચના દર્શાવેલ હશે"
 
 #: modules/notify/notify.c:66
 msgid "Notify"
@@ -32794,7 +32794,7 @@ msgstr "લૉગો ઉપ સ્ત્રોત"
 
 #: modules/spu/logo.c:77
 msgid "Logo overlay"
-msgstr "લોગો ઓવરલે "
+msgstr "લોગો ઓવરલે"
 
 #: modules/spu/logo.c:94
 msgid "Logo video filter"
@@ -33117,7 +33117,7 @@ msgstr "હંમેશા દૃશ્યમાન રહો"
 
 #: modules/spu/rss.c:168
 msgid "Scroll with feed"
-msgstr "ફીડ સાથે ખસેડો "
+msgstr "ફીડ સાથે ખસેડો"
 
 #: modules/spu/rss.c:176
 msgid "RSS / Atom"
@@ -36361,7 +36361,7 @@ msgstr "વિન્ડો સંચાલન (HWND)"
 msgid ""
 "Video will be embedded in this pre-existing window. If zero, a new window "
 "will be created."
-msgstr "વિડિઓ આ હાલની વિન્ડોમાં જડિત થયેલ હશે. જો શૂન્ય હોય તો, નવી વિન્ડો બનાવેલ હશે. "
+msgstr "વિડિઓ આ હાલની વિન્ડોમાં જડિત થયેલ હશે. જો શૂન્ય હોય તો, નવી વિન્ડો બનાવેલ હશે."
 
 #: modules/video_output/win32/drawable.c:49
 #: modules/video_output/xcb/window.c:1263
@@ -36454,7 +36454,7 @@ msgstr "ઉપકરણ, fifo અથવા ફાઇલનામ"
 
 #: modules/video_output/yuv.c:40
 msgid "device, fifo or filename to write yuv frames too."
-msgstr "yuv માળખાને લખવા માટે ઉપકરણ, fifo અથવા ફાઇલનામ. "
+msgstr "yuv માળખાને લખવા માટે ઉપકરણ, fifo અથવા ફાઇલનામ."
 
 #: modules/video_output/yuv.c:42
 msgid "Chroma used"

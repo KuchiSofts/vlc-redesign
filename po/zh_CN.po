@@ -751,12 +751,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (默认启用)"
+msgstr "(默认启用)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (默认关闭)"
+msgstr "(默认关闭)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -7767,7 +7767,7 @@ msgstr "乌尔都语"
 
 #: src/text/iso-639_def.h:539
 msgid "Uzbek"
-msgstr "乌孜别克语 "
+msgstr "乌孜别克语"
 
 #: src/text/iso-639_def.h:540
 msgid "Vai"
@@ -10019,7 +10019,7 @@ msgstr "采样率"
 msgid ""
 "Samplerate of the captured audio stream, in Hz (eg: 11025, 22050, 44100, "
 "48000)"
-msgstr "捕获音频采样率，以 Hz 为单位 (例如: 11025, 22050, 44100, 48000) "
+msgstr "捕获音频采样率，以 Hz 为单位 (例如: 11025, 22050, 44100, 48000)"
 
 #: modules/access/oss.c:71
 msgid "OSS"
@@ -16194,11 +16194,11 @@ msgstr ""
 #: modules/control/cli/cli.c:355
 #, c-format
 msgid "Unknown command `%s'. Type `help' for help."
-msgstr "未知的命令 `%s'。输入 `help' 获取帮助。  "
+msgstr "未知的命令 `%s'。输入 `help' 获取帮助。"
 
 #: modules/control/cli/cli.c:987
 msgid "Remote control interface initialized. Type `help' for help."
-msgstr "已初始化远程控制接口。输入 `help' 获取帮助。  "
+msgstr "已初始化远程控制接口。输入 `help' 获取帮助。"
 
 #: modules/control/cli/cli.c:1042
 msgid "Show stream position"
@@ -18543,7 +18543,7 @@ msgstr "行为"
 
 #: modules/gui/macosx/main/macosx.m:158
 msgid "Apple Remote and media keys"
-msgstr "Apple Remote 及 "
+msgstr "Apple Remote 及"
 
 #: modules/gui/macosx/main/macosx.m:175
 msgid "Video output"
@@ -21387,7 +21387,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr " 来源  : <当前无项目> "
+msgstr " 来源  : <当前无项目>"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -22410,7 +22410,7 @@ msgstr "%1 的颜色"
 #: modules/gui/qt/widgets/qml/EmptyLabelButton.qml:78
 #: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:67
 msgid "Browse"
-msgstr "浏览 "
+msgstr "浏览"
 
 #: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:340
 msgid "Browse for %1"
@@ -25902,7 +25902,7 @@ msgstr "该混流器缺失。使用该配置文件将失败"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:802
 msgid " Profile Name Missing"
-msgstr "配置文件名称缺失"
+msgstr " 配置文件名称缺失"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:803
 msgid "You must set a name for the profile."
@@ -26271,11 +26271,11 @@ msgstr "更改"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:506
 msgid "Broadcast: "
-msgstr "广播:"
+msgstr "广播: "
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 msgid "Schedule: "
-msgstr "计划:"
+msgstr "计划: "
 
 #: modules/gui/qt/maininterface/mainctx.cpp:1193
 msgid "Paste from clipboard"
@@ -30840,7 +30840,7 @@ msgstr "工业摇滚"
 
 #: modules/meta_engine/ID3Genres.h:53
 msgid "Alternative"
-msgstr "非主流 "
+msgstr "非主流"
 
 #: modules/meta_engine/ID3Genres.h:55
 msgid "Death Metal"
@@ -31024,7 +31024,7 @@ msgstr "低保真乐"
 
 #: modules/meta_engine/ID3Genres.h:105
 msgid "Tribal"
-msgstr "部落音乐 "
+msgstr "部落音乐"
 
 #: modules/meta_engine/ID3Genres.h:106
 msgid "Acid Punk"
@@ -31040,7 +31040,7 @@ msgstr "波尔卡"
 
 #: modules/meta_engine/ID3Genres.h:109
 msgid "Retro"
-msgstr "怀旧 "
+msgstr "怀旧"
 
 #: modules/meta_engine/ID3Genres.h:110
 msgid "Musical"
@@ -34236,7 +34236,7 @@ msgstr "使用一个链式视频滤镜模块过滤视频"
 #: modules/video_chroma/grey_yuv.c:55 modules/video_chroma/i422_i420.c:56
 #: modules/video_chroma/yuy2_i420.c:57 modules/video_chroma/yuy2_i422.c:57
 msgid "Conversions from "
-msgstr "转换从"
+msgstr "转换从 "
 
 #: modules/video_chroma/i420_nv12.c:239
 msgid "YUV planar to semiplanar conversions"

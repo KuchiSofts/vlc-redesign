@@ -480,7 +480,7 @@ msgstr ""
 
 #: src/audio_output/filters.c:288
 msgid "Audio filtering failed"
-msgstr " فشل ترشيح الصوت"
+msgstr "فشل ترشيح الصوت"
 
 #: src/audio_output/filters.c:289
 #, c-format
@@ -552,7 +552,7 @@ msgstr "أُحادي"
 
 #: src/audio_output/output.c:494 src/libvlc-module.c:208
 msgid "Dolby Surround"
-msgstr "Dolby  محيط "
+msgstr "Dolby  محيط"
 
 #: src/audio_output/output.c:499 src/audio_output/output.c:615
 #: src/libvlc-module.c:207 src/libvlc-module.c:218 src/libvlc-module.c:403
@@ -855,7 +855,7 @@ msgstr "فك الشفرة"
 #: modules/codec/avcodec/encoder.c:401 modules/codec/avcodec/encoder.c:955
 #: modules/stream_out/es.c:201 modules/stream_out/es.c:224
 msgid "Streaming / Transcoding failed"
-msgstr "Streaming / Transcoding فشل "
+msgstr "Streaming / Transcoding فشل"
 
 #: src/input/decoder.c:2511
 #, c-format
@@ -1002,7 +1002,7 @@ msgstr "%u Hz"
 
 #: src/input/es_out.c:4745
 msgid "Bits per sample"
-msgstr "بِت لكلّ عيّنة "
+msgstr "بِت لكلّ عيّنة"
 
 #: src/input/es_out.c:4753 src/input/es_out.c:4822
 msgid "Decoded format"
@@ -1278,7 +1278,7 @@ msgstr "تعذّر فتح الوسائط"
 #: src/input/input.c:3131
 #, c-format
 msgid "VLC is unable to open the MRL '%s'. Check the log for details."
-msgstr ".فحص سجل للاطلاع على التفاصيل. '%s'  MRL غير قادر على فتح  VLC "
+msgstr ".فحص سجل للاطلاع على التفاصيل. '%s'  MRL غير قادر على فتح  VLC"
 
 #: src/input/meta.c:59
 #: modules/gui/macosx/library/VLCLibrarySortingMenuController.m:61
@@ -1311,7 +1311,7 @@ msgstr "حقوق النشر"
 #: modules/gui/qt/medialibrary/qml/MusicTracksDisplay.qml:38
 #: modules/gui/qt/player/qml/AudioContent.qml:314
 msgid "Album"
-msgstr "الألبوم "
+msgstr "الألبوم"
 
 #: src/input/meta.c:63
 msgid "Track number"
@@ -1321,7 +1321,7 @@ msgstr "رقم المقطوعة"
 #: modules/gui/macosx/playqueue/VLCPlayQueueSortingMenuController.m:61
 #: modules/mux/asf.c:64
 msgid "Rating"
-msgstr "التقدير "
+msgstr "التقدير"
 
 #: src/input/meta.c:66
 #: modules/gui/macosx/playqueue/VLCPlayQueueSortingMenuController.m:57
@@ -1352,7 +1352,7 @@ msgstr "الناشر"
 
 #: src/input/meta.c:73
 msgid "Encoded by"
-msgstr "مشفر من "
+msgstr "مشفر من"
 
 #: src/input/meta.c:74
 msgid "Artwork URL"
@@ -1484,11 +1484,11 @@ msgstr "واجهات التحكم"
 
 #: src/libvlc-module.c:96
 msgid "You can select control interfaces for VLC."
-msgstr " VLC واجهة التحكم ل "
+msgstr "VLC واجهة التحكم ل"
 
 #: src/libvlc-module.c:98
 msgid "Verbosity (0,1,2)"
-msgstr "(الإسهاب(0,1,2   "
+msgstr "(الإسهاب(0,1,2"
 
 #: src/libvlc-module.c:100
 msgid ""
@@ -1521,13 +1521,13 @@ msgstr ""
 
 #: src/libvlc-module.c:112
 msgid "Interface interaction"
-msgstr " واجهة التفاعل"
+msgstr "واجهة التفاعل"
 
 #: src/libvlc-module.c:114
 msgid ""
 "When this is enabled, the interface will show a dialog box each time some "
 "user input is required."
-msgstr ".لتمكين إظهار  صندوق الحوار في كل مرة بعض مدخلات المستخدمين هو مطلوب "
+msgstr ".لتمكين إظهار  صندوق الحوار في كل مرة بعض مدخلات المستخدمين هو مطلوب"
 
 #: src/libvlc-module.c:124
 msgid ""
@@ -1604,7 +1604,7 @@ msgstr "الاتصالات"
 
 #: src/libvlc-module.c:155 modules/meta_engine/ID3Genres.h:69
 msgid "Game"
-msgstr "اللعبة "
+msgstr "اللعبة"
 
 #: src/libvlc-module.c:156
 msgid "Notification"
@@ -1685,7 +1685,7 @@ msgstr "استخدم هذا الخيار عندما يتعذّر على مخرج
 
 #: src/libvlc-module.c:189
 msgid "Force detection of Dolby Surround"
-msgstr "Dolby Surround إجبارإكتشاف "
+msgstr "Dolby Surround إجبارإكتشاف"
 
 #: src/libvlc-module.c:191
 msgid ""
@@ -1718,7 +1718,7 @@ msgstr "تلقائي"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
 msgid "On"
-msgstr "تشغيل "
+msgstr "تشغيل"
 
 #: src/libvlc-module.c:198 src/libvlc-module.c:374 src/player/osd.c:340
 #: modules/access/dtv/access.c:100 modules/access/v4l2/v4l2.c:137
@@ -1752,7 +1752,7 @@ msgstr ".أضف مرشحات بعد المعالجة السمعي لتغيير �
 
 #: src/libvlc-module.c:229
 msgid "This adds visualization modules (spectrum analyzer, etc.)."
-msgstr " (وحدات التصور السمعي (محلل الطيف، إلخ              "
+msgstr "(وحدات التصور السمعي (محلل الطيف، إلخ"
 
 #: src/libvlc-module.c:233
 msgid "Replay gain mode"
@@ -1894,23 +1894,23 @@ msgstr ""
 
 #: src/libvlc-module.c:293
 msgid "Video X coordinate"
-msgstr "للفديو X الموقع "
+msgstr "للفديو X الموقع"
 
 #: src/libvlc-module.c:295
 msgid ""
 "You can enforce the position of the top left corner of the video window (X "
 "coordinate)."
-msgstr ".( X أجبر الموقع أعلى زاوية على اليسار لنافذة الفديو(إحداثيات "
+msgstr ".( X أجبر الموقع أعلى زاوية على اليسار لنافذة الفديو(إحداثيات"
 
 #: src/libvlc-module.c:298
 msgid "Video Y coordinate"
-msgstr "للفديو Y الموقع "
+msgstr "للفديو Y الموقع"
 
 #: src/libvlc-module.c:300
 msgid ""
 "You can enforce the position of the top left corner of the video window (Y "
 "coordinate)."
-msgstr ".( Y أجبر الموقع أعلى زاوية على اليسار لنافذة الفديو(إحداثيات "
+msgstr ".( Y أجبر الموقع أعلى زاوية على اليسار لنافذة الفديو(إحداثيات"
 
 #: src/libvlc-module.c:303
 msgid "Video title"
@@ -1999,7 +1999,7 @@ msgstr "يمكنك تكبير الفيديو بعامل محدد."
 
 #: src/libvlc-module.c:327
 msgid "Grayscale video output"
-msgstr "فيديو تدرج رمادي "
+msgstr "فيديو تدرج رمادي"
 
 #: src/libvlc-module.c:329
 msgid ""
@@ -2023,7 +2023,7 @@ msgstr "ناتج الفيديو ملء الشاشة"
 
 #: src/libvlc-module.c:338
 msgid "Start video in fullscreen mode"
-msgstr "إبدء بنمط الشاشة الكاملة "
+msgstr "إبدء بنمط الشاشة الكاملة"
 
 #: src/libvlc-module.c:340
 msgid "360 videos projection mode"
@@ -2099,7 +2099,7 @@ msgstr "وضع إزالة التشابك"
 
 #: src/libvlc-module.c:379
 msgid "Deinterlace method to use for video processing."
-msgstr "فض التشابك لاستخدام عمليات الفيديو "
+msgstr "فض التشابك لاستخدام عمليات الفيديو"
 
 #: src/libvlc-module.c:386 modules/video_filter/deinterlace/deinterlace.h:57
 msgid "Discard"
@@ -2171,7 +2171,7 @@ msgstr ".تعطيل حافظة الشاشة أثناء تشغيل الفيديو
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
 #: modules/gui/qt/qt.cpp:343 modules/gui/qt/qt.cpp:350
 msgid "Never"
-msgstr "أبدا "
+msgstr "أبدا"
 
 #: src/libvlc-module.c:432
 msgid "When fullscreen"
@@ -2351,7 +2351,7 @@ msgstr "الارتفاع"
 
 #: src/libvlc-module.c:507
 msgid "Custom crop ratios list"
-msgstr "القائمة العرف نسب  المحاصيل "
+msgstr "القائمة العرف نسب  المحاصيل"
 
 #: src/libvlc-module.c:509
 msgid ""
@@ -2371,7 +2371,7 @@ msgstr "قائمة نسب أبعاد مفصولة بفواصل تُضاف إلى
 
 #: src/libvlc-module.c:517
 msgid "Fix HDTV height"
-msgstr "HDTV صحح إرتفاع "
+msgstr "HDTV صحح إرتفاع"
 
 #: src/libvlc-module.c:519
 msgid ""
@@ -2582,7 +2582,7 @@ msgstr "مكّن"
 
 #: src/libvlc-module.c:621
 msgid "MTU of the network interface"
-msgstr " لواجهة الشبكة MTU    "
+msgstr "لواجهة الشبكة MTU"
 
 #: src/libvlc-module.c:623
 msgid ""
@@ -2594,7 +2594,7 @@ msgstr ""
 
 #: src/libvlc-module.c:628 modules/stream_out/rtp.c:116
 msgid "Hop limit (TTL)"
-msgstr "(TTL)حد القفزة   "
+msgstr "(TTL)حد القفزة"
 
 #: src/libvlc-module.c:630 modules/stream_out/rtp.c:118
 msgid ""
@@ -2607,7 +2607,7 @@ msgstr ""
 
 #: src/libvlc-module.c:634
 msgid "Multicast output interface"
-msgstr "Multicast  واجهة إخراج "
+msgstr "Multicast  واجهة إخراج"
 
 #: src/libvlc-module.c:636
 msgid "Default multicast interface. This overrides the routing table."
@@ -2615,7 +2615,7 @@ msgstr "واجهة الإذاعة المتعددة الإفتراضية. هذا 
 
 #: src/libvlc-module.c:638
 msgid "DiffServ Code Point"
-msgstr "DiffServ  المدونه نقطة "
+msgstr "DiffServ  المدونه نقطة"
 
 #: src/libvlc-module.c:639
 msgid ""
@@ -2664,7 +2664,7 @@ msgstr "مسار الصوت"
 
 #: src/libvlc-module.c:664
 msgid "Stream number of the audio track to use (from 0 to n)."
-msgstr ".( n رقم تدفق قناة السمعي للإستعمال (من 0 إلى  "
+msgstr ".( n رقم تدفق قناة السمعي للإستعمال (من 0 إلى"
 
 #: src/libvlc-module.c:667
 #: modules/gui/qt/medialibrary/qml/VideoInfoExpandPanel.qml:319
@@ -2673,7 +2673,7 @@ msgstr "مسار الترجمة"
 
 #: src/libvlc-module.c:669
 msgid "Stream number of the subtitle track to use (from 0 to n)."
-msgstr ". ( n رقم تدفق قناة العنوان الثانوي للإستعمال (من 0 إلى "
+msgstr ". ( n رقم تدفق قناة العنوان الثانوي للإستعمال (من 0 إلى"
 
 #: src/libvlc-module.c:672 modules/stream_out/transcode/transcode.c:97
 msgid "Audio language"
@@ -2808,7 +2808,7 @@ msgstr "وقت البداية"
 
 #: src/libvlc-module.c:728
 msgid "The stream will start at this position (in seconds)."
-msgstr " (التدفق سيبدء من هذا الموقع ( بالثانية"
+msgstr "(التدفق سيبدء من هذا الموقع ( بالثانية"
 
 #: src/libvlc-module.c:730
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:227
@@ -2817,7 +2817,7 @@ msgstr "وقت التوقّف"
 
 #: src/libvlc-module.c:732
 msgid "The stream will stop at this position (in seconds)."
-msgstr ".(التدفق سينتهي من هذا الموقع ( بالثانية "
+msgstr ".(التدفق سينتهي من هذا الموقع ( بالثانية"
 
 #: src/libvlc-module.c:734
 msgid "Run time"
@@ -3065,7 +3065,7 @@ msgstr "مدة بقاء رسائل العرض على الشاشة، بالملل
 #: src/libvlc-module.c:850 src/libvlc-module.c:1827 src/text/iso-639_def.h:573
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:441
 msgid "On Screen Display"
-msgstr " (OSD)على الشاشة                 "
+msgstr "(OSD)على الشاشة"
 
 #: src/libvlc-module.c:852
 msgid ""
@@ -3076,7 +3076,7 @@ msgstr ""
 
 #: src/libvlc-module.c:855
 msgid "Text rendering module"
-msgstr " وحدة جعل النص"
+msgstr "وحدة جعل النص"
 
 #: src/libvlc-module.c:857
 msgid ""
@@ -3219,7 +3219,7 @@ msgstr ".للإستعمال إفتراضيا  DVD  هذا جهاز"
 
 #: src/libvlc-module.c:921
 msgid "This is the default VCD device to use."
-msgstr ".اللإفتراضي للإستخدام VCDجهاز "
+msgstr ".اللإفتراضي للإستخدام VCDجهاز"
 
 #: src/libvlc-module.c:935
 msgid "TCP connection timeout"
@@ -3368,7 +3368,7 @@ msgstr ".يسمح بتحديد  «فنان» للدخل"
 
 #: src/libvlc-module.c:1005
 msgid "Genre metadata"
-msgstr "النوع "
+msgstr "النوع"
 
 #: src/libvlc-module.c:1007
 msgid "Allows you to specify a \"genre\" metadata for an input."
@@ -3392,7 +3392,7 @@ msgstr ".يسمح بتحديد  « وصف» للدخل"
 
 #: src/libvlc-module.c:1017
 msgid "Date metadata"
-msgstr "التاريخ "
+msgstr "التاريخ"
 
 #: src/libvlc-module.c:1019
 msgid "Allows you to specify a \"date\" metadata for an input."
@@ -3404,7 +3404,7 @@ msgstr "URL"
 
 #: src/libvlc-module.c:1023
 msgid "Allows you to specify a \"url\" metadata for an input."
-msgstr ".للدخل« url» يسمح بتحديد  "
+msgstr ".للدخل« url» يسمح بتحديد"
 
 #: src/libvlc-module.c:1027
 msgid ""
@@ -3546,11 +3546,11 @@ msgstr ".قائمة المحزمون المفضلة"
 #: src/libvlc-module.c:1095
 msgid ""
 "This allows you to select the order in which VLC will choose its packetizers."
-msgstr ".packetizers يختار VLC وهذا يتيح لك ان تختار النظام الترتيب الذي "
+msgstr ".packetizers يختار VLC وهذا يتيح لك ان تختار النظام الترتيب الذي"
 
 #: src/libvlc-module.c:1098
 msgid "SAP announcement interval"
-msgstr "SAP الفترة بين إعلانات "
+msgstr "SAP الفترة بين إعلانات"
 
 #: src/libvlc-module.c:1100
 msgid ""
@@ -3562,7 +3562,7 @@ msgstr ""
 
 #: src/libvlc-module.c:1107
 msgid "Access module"
-msgstr " اذن الوصول"
+msgstr "اذن الوصول"
 
 #: src/libvlc-module.c:1109
 msgid ""
@@ -3594,7 +3594,7 @@ msgstr "تستخدم مرشحات الدفق لتعديل الدفق الذى ي
 
 #: src/libvlc-module.c:1121
 msgid "Demux module"
-msgstr "Demux وحدة "
+msgstr "Demux وحدة"
 
 #: src/libvlc-module.c:1123
 msgid ""
@@ -3620,7 +3620,7 @@ msgstr "VLM ملف تشكيلة"
 
 #: src/libvlc-module.c:1134
 msgid "Read a VLM configuration file as soon as VLM is started."
-msgstr ".VLCحمِّل ملف تشكيل عندما يبدأ "
+msgstr ".VLCحمِّل ملف تشكيل عندما يبدأ"
 
 #: src/libvlc-module.c:1136
 msgid "Use a plugins cache"
@@ -3628,7 +3628,7 @@ msgstr "إستعمل مَخبأ الوحدات"
 
 #: src/libvlc-module.c:1138
 msgid "Use a plugins cache which will greatly improve the startup time of VLC."
-msgstr ".VLC إستعمل خبء للوحدات للتقليل بكثرة من وقت بدأ "
+msgstr ".VLC إستعمل خبء للوحدات للتقليل بكثرة من وقت بدأ"
 
 #: src/libvlc-module.c:1140
 msgid "Scan for new plugins"
@@ -3648,7 +3648,7 @@ msgstr ".قائمة المحزمون المفضلة"
 #: src/libvlc-module.c:1147
 #, fuzzy
 msgid "List of keystores that VLC will use in priority."
-msgstr ".بالأولوية VLC قائمة المرمزين الذين يختارهم  "
+msgstr ".بالأولوية VLC قائمة المرمزين الذين يختارهم"
 
 #: src/libvlc-module.c:1149
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:23
@@ -3709,7 +3709,7 @@ msgstr ".بدأ بفتح ملف تابع VLC"
 
 #: src/libvlc-module.c:1176
 msgid "Tell VLC that it is being launched due to a file association in the OS"
-msgstr ".أنه إنطلق بسبب تجمع ملف في نظام التشغيل VLC أخبر "
+msgstr ".أنه إنطلق بسبب تجمع ملف في نظام التشغيل VLC أخبر"
 
 #: src/libvlc-module.c:1179
 msgid "Use only one instance when started from file manager"
@@ -3817,7 +3817,7 @@ msgstr "توسيع"
 
 #: src/libvlc-module.c:1250
 msgid "Subdirectory behavior"
-msgstr "سلوك الدليل ثانوي "
+msgstr "سلوك الدليل ثانوي"
 
 #: src/libvlc-module.c:1252
 msgid ""
@@ -4025,7 +4025,7 @@ msgstr ""
 
 #: src/libvlc-module.c:1345
 msgid "These settings are the global VLC key bindings, known as \"hotkeys\"."
-msgstr " (« hotkeys ») إعداد الإختصارات"
+msgstr "(« hotkeys ») إعداد الإختصارات"
 
 #: src/libvlc-module.c:1350 modules/gui/macosx/main/VLCMain+OldPrefs.m:117
 #: modules/misc/medialibrary/medialibrary.cpp:469
@@ -4756,7 +4756,7 @@ msgstr ".دورة داخل قائمة بصيغة الشاشة محددة مسب�
 
 #: src/libvlc-module.c:1532
 msgid "Cycle video crop"
-msgstr " دورة تأطير الفديو"
+msgstr "دورة تأطير الفديو"
 
 #: src/libvlc-module.c:1533
 msgid "Cycle through a predefined list of crop formats."
@@ -4833,7 +4833,7 @@ msgstr ".التقاط صورة وحفظها في القرص"
 #: modules/gui/qt/player/qml/controlbarcontrols/RecordButton.qml:29
 #: modules/stream_out/record.c:60
 msgid "Record"
-msgstr "تسجيل "
+msgstr "تسجيل"
 
 #: src/libvlc-module.c:1554
 msgid "Record access filter start/stop."
@@ -4869,7 +4869,7 @@ msgstr "Un-Zoom"
 
 #: src/libvlc-module.c:1568 src/libvlc-module.c:1569
 msgid "Crop one pixel from the top of the video"
-msgstr "محصول واحد عناصر الصورة من قمة الفيديو "
+msgstr "محصول واحد عناصر الصورة من قمة الفيديو"
 
 #: src/libvlc-module.c:1570 src/libvlc-module.c:1571
 msgid "Uncrop one pixel from the top of the video"
@@ -4889,15 +4889,15 @@ msgstr "اقتصاص بكسل واحد من أسفل الفيديو"
 
 #: src/libvlc-module.c:1580 src/libvlc-module.c:1581
 msgid "Uncrop one pixel from the bottom of the video"
-msgstr "احد عناصر الصورة من أسفل الفيديو  Uncrop "
+msgstr "احد عناصر الصورة من أسفل الفيديو  Uncrop"
 
 #: src/libvlc-module.c:1583 src/libvlc-module.c:1584
 msgid "Crop one pixel from the right of the video"
-msgstr "احد عناصر الصورة من يمين الفيديو  Crop "
+msgstr "احد عناصر الصورة من يمين الفيديو  Crop"
 
 #: src/libvlc-module.c:1585 src/libvlc-module.c:1586
 msgid "Uncrop one pixel from the right of the video"
-msgstr "احد عناصر الصورة من يسار الفيديو  Uncrop "
+msgstr "احد عناصر الصورة من يسار الفيديو  Uncrop"
 
 #: src/libvlc-module.c:1589
 msgid "Shrink the viewpoint field of view (360°)"
@@ -5029,7 +5029,7 @@ msgstr "VLM"
 
 #: src/libvlc-module.c:2136
 msgid "Special modules"
-msgstr "الوحدات الخاصة "
+msgstr "الوحدات الخاصة"
 
 #: src/libvlc-module.c:2141 modules/gui/qt/dialogs/plugins/plugins.cpp:91
 msgid "Plugins"
@@ -5118,7 +5118,7 @@ msgstr "إسترداد التشكيل الحالي إلى القيمة الإف�
 
 #: src/libvlc-module.c:2881
 msgid "use alternate config file"
-msgstr "إستعمل ملف تشكيل آخر "
+msgstr "إستعمل ملف تشكيل آخر"
 
 #: src/libvlc-module.c:2883
 msgid "resets the current plugins cache"
@@ -5800,7 +5800,7 @@ msgstr "الحجم الأصلي"
 #: src/player/osd.c:317
 #, c-format
 msgid "Crop: %s"
-msgstr "%s :قص "
+msgstr "%s :قص"
 
 #: src/player/osd.c:320
 #, c-format
@@ -5879,7 +5879,7 @@ msgstr "الفصل التالي"
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:58
 #: modules/gui/qt/player/qml/controlbarcontrols/ChapterPreviousButton.qml:32
 msgid "Previous chapter"
-msgstr "الفصل السابق "
+msgstr "الفصل السابق"
 
 #: src/player/player.c:1814
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
@@ -6140,7 +6140,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:96
 msgid "Bashkir"
-msgstr "باشكير "
+msgstr "باشكير"
 
 #: src/text/iso-639_def.h:97
 msgid "Basque"
@@ -6180,7 +6180,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:106
 msgid "Bihari"
-msgstr "بحاري "
+msgstr "بحاري"
 
 #: src/text/iso-639_def.h:107
 msgid "Bikol"
@@ -6192,7 +6192,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:109
 msgid "Bislama"
-msgstr "البيشلامار "
+msgstr "البيشلامار"
 
 #: src/text/iso-639_def.h:110
 msgid "Blin; Bilin"
@@ -6204,7 +6204,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:112
 msgid "Bosnian"
-msgstr "بوسنى "
+msgstr "بوسنى"
 
 #: src/text/iso-639_def.h:113
 msgid "Braj"
@@ -6276,11 +6276,11 @@ msgstr ""
 
 #: src/text/iso-639_def.h:130
 msgid "Chamorro"
-msgstr "شاورو "
+msgstr "شاورو"
 
 #: src/text/iso-639_def.h:131
 msgid "Chechen"
-msgstr "شيشيني "
+msgstr "شيشيني"
 
 #: src/text/iso-639_def.h:132
 msgid "Cherokee"
@@ -6474,7 +6474,7 @@ msgstr "إسبرنتو"
 
 #: src/text/iso-639_def.h:183
 msgid "Estonian"
-msgstr "أستوني "
+msgstr "أستوني"
 
 #: src/text/iso-639_def.h:184
 msgid "Ewe"
@@ -6611,7 +6611,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:220 modules/meta_engine/ID3Genres.h:82
 msgid "Gothic"
-msgstr "جرماني "
+msgstr "جرماني"
 
 #: src/text/iso-639_def.h:221
 msgid "Grebo"
@@ -6623,7 +6623,7 @@ msgstr "اليونانية، حديثة"
 
 #: src/text/iso-639_def.h:224
 msgid "Guarani"
-msgstr "غواراني "
+msgstr "غواراني"
 
 #: src/text/iso-639_def.h:225
 msgid "Gujarati"
@@ -6707,7 +6707,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:244
 msgid "Icelandic"
-msgstr "أيسلندى "
+msgstr "أيسلندى"
 
 #: src/text/iso-639_def.h:245
 msgid "Ido"
@@ -6760,7 +6760,7 @@ msgstr "Inuktitut"
 
 #: src/text/iso-639_def.h:257
 msgid "Inupiaq"
-msgstr "ينوبياك "
+msgstr "ينوبياك"
 
 #: src/text/iso-639_def.h:258
 msgid "Iranian (Other)"
@@ -6828,7 +6828,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:275
 msgid "Kannada"
-msgstr "مدرسي "
+msgstr "مدرسي"
 
 #: src/text/iso-639_def.h:276
 msgid "Kanuri"
@@ -6896,7 +6896,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:292
 msgid "Kinyarwanda"
-msgstr "رواندا "
+msgstr "رواندا"
 
 #: src/text/iso-639_def.h:293
 msgid "Kirghiz"
@@ -6908,7 +6908,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:295
 msgid "Komi"
-msgstr "كومي "
+msgstr "كومي"
 
 #: src/text/iso-639_def.h:296
 msgid "Kongo"
@@ -6946,7 +6946,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:304
 msgid "Kurdish"
-msgstr "كردي "
+msgstr "كردي"
 
 #: src/text/iso-639_def.h:305
 msgid "Kurukh"
@@ -6970,7 +6970,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:310
 msgid "Lao"
-msgstr "لاو "
+msgstr "لاو"
 
 #: src/text/iso-639_def.h:311 modules/meta_engine/ID3Genres.h:119
 msgid "Latin"
@@ -7074,7 +7074,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:336
 msgid "Malagasy"
-msgstr "مدغشقري "
+msgstr "مدغشقري"
 
 #: src/text/iso-639_def.h:337
 msgid "Malayalam"
@@ -7087,7 +7087,7 @@ msgstr "ملاوية"
 
 #: src/text/iso-639_def.h:339
 msgid "Maltese"
-msgstr "مالطى "
+msgstr "مالطى"
 
 #: src/text/iso-639_def.h:340
 msgid "Manchu"
@@ -7119,11 +7119,11 @@ msgstr "مانويسي"
 
 #: src/text/iso-639_def.h:347
 msgid "Maori"
-msgstr "ماوري "
+msgstr "ماوري"
 
 #: src/text/iso-639_def.h:348
 msgid "Marathi"
-msgstr "ماراثي "
+msgstr "ماراثي"
 
 #: src/text/iso-639_def.h:349
 msgid "Mari"
@@ -7444,7 +7444,7 @@ msgstr "Pushto"
 
 #: src/text/iso-639_def.h:430
 msgid "Quechua"
-msgstr "كيشوا "
+msgstr "كيشوا"
 
 #: src/text/iso-639_def.h:431
 msgid "Quechua, Southern"
@@ -7481,7 +7481,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:439
 msgid "Rundi"
-msgstr "فيجى "
+msgstr "فيجى"
 
 #: src/text/iso-639_def.h:440
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:75
@@ -7651,7 +7651,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:481
 msgid "Sotho, Southern"
-msgstr "سوتو الجنوبيه "
+msgstr "سوتو الجنوبيه"
 
 #: src/text/iso-639_def.h:482
 msgid "South American Indian (Other)"
@@ -7728,7 +7728,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:501
 msgid "Tamil"
-msgstr " تاميلي"
+msgstr "تاميلي"
 
 #: src/text/iso-639_def.h:502
 msgid "Tatar"
@@ -7736,7 +7736,7 @@ msgstr "تتري"
 
 #: src/text/iso-639_def.h:503
 msgid "Telugu"
-msgstr "التيلوغو "
+msgstr "التيلوغو"
 
 #: src/text/iso-639_def.h:504
 msgid "Tereno"
@@ -7765,7 +7765,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:510
 msgid "Tigrinya"
-msgstr "تيجرينيا  "
+msgstr "تيجرينيا"
 
 #: src/text/iso-639_def.h:511
 msgid "Timne"
@@ -7932,7 +7932,7 @@ msgstr "تهرب من السداد"
 
 #: src/text/iso-639_def.h:552
 msgid "Wolof"
-msgstr "لغة ال وولوف الغرب افريقيه "
+msgstr "لغة ال وولوف الغرب افريقيه"
 
 #: src/text/iso-639_def.h:553
 msgid "Wu Chinese"
@@ -7964,7 +7964,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:560
 msgid "Yiddish"
-msgstr " Yiddish (لغة يهود اوروبا)"
+msgstr "Yiddish (لغة يهود اوروبا)"
 
 #: src/text/iso-639_def.h:561
 msgid "Yoruba"
@@ -8387,7 +8387,7 @@ msgstr ""
 
 #: modules/access/cdda.c:830
 msgid "This is the default Audio CD device to use."
-msgstr ".صوتي اللإفتراضي للإستخدام CD جهاز "
+msgstr ".صوتي اللإفتراضي للإستخدام CD جهاز"
 
 #: modules/access/cdda.c:840
 msgid "Usage hint: [cdda:][device][@[track]]"
@@ -8428,7 +8428,7 @@ msgstr "تدوير"
 #: modules/access/concat.c:309
 #, fuzzy
 msgid "Concatenated inputs"
-msgstr "TCP دخل التحكم ب "
+msgstr "TCP دخل التحكم ب"
 
 #: modules/access/data.c:160
 msgid "data"
@@ -8652,11 +8652,11 @@ msgstr "الهوائي"
 
 #: modules/access/dshow/dshow.cpp:98
 msgid "TV"
-msgstr "التلفزيون "
+msgstr "التلفزيون"
 
 #: modules/access/dshow/dshow.cpp:99
 msgid "FM radio"
-msgstr "FM راديو "
+msgstr "FM راديو"
 
 #: modules/access/dshow/dshow.cpp:100
 msgid "AM radio"
@@ -8822,7 +8822,7 @@ msgstr ".تحديد الخرج السمعي. أنظر الخيار   \" دخل �
 
 #: modules/access/dshow/dshow.cpp:162
 msgid "AM Tuner mode"
-msgstr "AM نمط المستقبِل "
+msgstr "AM نمط المستقبِل"
 
 #: modules/access/dshow/dshow.cpp:164
 msgid ""
@@ -8839,7 +8839,7 @@ msgstr ""
 #: modules/stream_out/transcode/transcode.c:94
 #: share/lua/http/dialogs/create_stream.html:281
 msgid "Audio sample rate"
-msgstr "معدل العينه السمعيه "
+msgstr "معدل العينه السمعيه"
 
 #: modules/access/dshow/dshow.cpp:173
 msgid "Select audio input format with the given sample rate (if non 0)"
@@ -8882,7 +8882,7 @@ msgstr ""
 #: modules/access/dshow/dshow.cpp:1074
 #, c-format
 msgid "The capture device \"%s\" does not support the required parameters."
-msgstr ".لا يدعم المعايير المطلوبة  \"%s\" اعتقال جهاز "
+msgstr ".لا يدعم المعايير المطلوبة  \"%s\" اعتقال جهاز"
 
 #: modules/access/dsm/access.c:63
 msgid "Force the SMBv1 protocol (At your own risk)"
@@ -8908,7 +8908,7 @@ msgstr ""
 #: modules/access/dsm/access.c:80
 #, fuzzy
 msgid "libdsm SMB input"
-msgstr "دخْل SMB "
+msgstr "دخْل SMB"
 
 #: modules/access/dsm/access.c:99
 #, fuzzy
@@ -9354,13 +9354,13 @@ msgstr "DV"
 
 #: modules/access/dvb/access.c:65
 msgid "Probe DVB card for capabilities"
-msgstr "DVB  تحقق من قدرة البطاقة "
+msgstr "DVB  تحقق من قدرة البطاقة"
 
 #: modules/access/dvb/access.c:66
 msgid ""
 "Some DVB cards do not like to be probed for their capabilities, you can "
 "disable this feature if you experience some trouble."
-msgstr ".لا تحتمل كشف قابلياتها DVB بعض البطاقات "
+msgstr ".لا تحتمل كشف قابلياتها DVB بعض البطاقات"
 
 #: modules/access/dvb/access.c:69
 #, fuzzy
@@ -9392,7 +9392,7 @@ msgstr "DV"
 
 #: modules/access/dvb/access.c:79
 msgid "DVB input with v4l2 support"
-msgstr "مدخل (V4L2) DVB "
+msgstr "مدخل (V4L2) DVB"
 
 #: modules/access/dvb/scan.c:817
 #, c-format
@@ -9441,7 +9441,7 @@ msgstr ""
 #: modules/access/dvdread.c:220 modules/access/dvdread.c:696
 #: modules/access/dvdread.c:748
 msgid "Playback failure"
-msgstr "فشل اعادة التشغيل "
+msgstr "فشل اعادة التشغيل"
 
 #: modules/access/dvdnav.c:398
 msgid ""
@@ -9450,7 +9450,7 @@ msgstr ""
 
 #: modules/access/dvdread.c:66
 msgid "DVD without menus"
-msgstr "بدون قوائمDVD "
+msgstr "بدون قوائمDVD"
 
 #: modules/access/dvdread.c:67
 msgid "DVDRead Input (no menu support)"
@@ -9507,7 +9507,7 @@ msgstr "مجلد"
 #: modules/access/fs.c:51
 #, fuzzy
 msgid "List special files"
-msgstr "الوحدات الخاصة "
+msgstr "الوحدات الخاصة"
 
 #: modules/access/fs.c:52
 msgid "Include devices and pipes when listing directories"
@@ -9871,7 +9871,7 @@ msgstr ""
 #: modules/access/linsys/linsys_hdsdi.c:76
 #: modules/access/linsys/linsys_sdi.c:72
 msgid "Video ID"
-msgstr "فيديوID "
+msgstr "فيديوID"
 
 #: modules/access/linsys/linsys_hdsdi.c:78
 #: modules/access/linsys/linsys_sdi.c:74
@@ -9979,7 +9979,7 @@ msgstr "نفاذ و RTSP/RTP"
 
 #: modules/access/live555.cpp:113
 msgid "Use RTP over RTSP (TCP)"
-msgstr " (TCP) RTSP انتهى  RTP  استعمال       "
+msgstr "(TCP) RTSP انتهى  RTP  استعمال"
 
 #: modules/access/live555.cpp:116
 msgid "Client port"
@@ -9987,7 +9987,7 @@ msgstr "زبون المنفذ"
 
 #: modules/access/live555.cpp:117
 msgid "Port to use for the RTP source of the session"
-msgstr "اللجلسة RTP لمنفذ من أجل استعمالها لمصدر  "
+msgstr "اللجلسة RTP لمنفذ من أجل استعمالها لمصدر"
 
 #: modules/access/live555.cpp:119
 msgid "Force multicast RTP via RTSP"
@@ -9999,11 +9999,11 @@ msgstr "النفق RTSP و RTP انتهى HTTP"
 
 #: modules/access/live555.cpp:125
 msgid "HTTP tunnel port"
-msgstr " منفذ النفق HTTP"
+msgstr "منفذ النفق HTTP"
 
 #: modules/access/live555.cpp:126
 msgid "Port to use for tunneling the RTSP/RTP over HTTP."
-msgstr "HTTP  انتهى RTSP/RTP  منفذ استعماله لحفر نفق لـ  "
+msgstr "HTTP  انتهى RTSP/RTP  منفذ استعماله لحفر نفق لـ"
 
 #: modules/access/live555.cpp:714
 msgid "RTSP authentication"
@@ -10011,7 +10011,7 @@ msgstr "توثيق RTSP"
 
 #: modules/access/live555.cpp:715
 msgid "Please enter a valid login name and a password."
-msgstr ".يرجى إدخال  إسم دخول وكلمة السرصالحين "
+msgstr ".يرجى إدخال  إسم دخول وكلمة السرصالحين"
 
 #: modules/access/live555.cpp:740
 msgid "RTSP connection failed"
@@ -10425,7 +10425,7 @@ msgstr ""
 
 #: modules/access/samba.c:445
 msgid "SMB input"
-msgstr "دخْل SMB "
+msgstr "دخْل SMB"
 
 #: modules/access/samba.c:446
 msgid "Samba (Windows network shares) input"
@@ -10807,7 +10807,7 @@ msgstr ""
 
 #: modules/access/v4l2/v4l2.c:50 modules/stream_out/standard.c:71
 msgid "Standard"
-msgstr "المعيار "
+msgstr "المعيار"
 
 #: modules/access/v4l2/v4l2.c:52
 msgid "Video standard (Default, SECAM, PAL, or NTSC)."
@@ -11244,7 +11244,7 @@ msgstr "V4L"
 
 #: modules/access/v4l2/v4l2.c:276
 msgid "Video4Linux input"
-msgstr "دخل Video4Linux "
+msgstr "دخل Video4Linux"
 
 #: modules/access/v4l2/v4l2.c:279
 msgid "Video input"
@@ -11418,7 +11418,7 @@ msgstr "ابقِ الملف الموجود"
 #: modules/access_output/file.c:315
 #, fuzzy
 msgid "Overwrite"
-msgstr "تجاوز الصفحة "
+msgstr "تجاوز الصفحة"
 
 #: modules/access_output/file.c:316
 msgid ""
@@ -11691,7 +11691,7 @@ msgstr "وصف محتوى تدفقكم ومعلومات عن قناتكم."
 
 #: modules/access_output/shout.c:72
 msgid "Stream MP3"
-msgstr "MP3 النشر ب "
+msgstr "MP3 النشر ب"
 
 #: modules/access_output/shout.c:73
 msgid ""
@@ -11717,12 +11717,12 @@ msgstr "الوصف"
 #: modules/access_output/shout.c:86
 #, fuzzy
 msgid "URL with information about the stream or your channel."
-msgstr ".معلومات عن تيار أو قناة بلدكم URL "
+msgstr ".معلومات عن تيار أو قناة بلدكم URL"
 
 #: modules/access_output/shout.c:93
 #, fuzzy
 msgid "Bitrate information of the transcoded stream."
-msgstr "transcoded    للتيار   Bitrate معلومات "
+msgstr "transcoded    للتيار   Bitrate معلومات"
 
 #: modules/access_output/shout.c:96
 #, fuzzy
@@ -11763,7 +11763,7 @@ msgstr ""
 
 #: modules/access_output/shout.c:111
 msgid "IceCAST output"
-msgstr "خروج IceCAST "
+msgstr "خروج IceCAST"
 
 #: modules/access_output/srt.c:458
 #, fuzzy
@@ -11853,11 +11853,11 @@ msgstr ""
 
 #: modules/audio_filter/channel_mixer/dolby.c:47
 msgid "Simple decoder for Dolby Surround encoded streams"
-msgstr "Dolby Surround  كاشف الرموز "
+msgstr "Dolby Surround  كاشف الرموز"
 
 #: modules/audio_filter/channel_mixer/dolby.c:48
 msgid "Dolby Surround decoder"
-msgstr "Dolby Surroun كاشف الرموز "
+msgstr "Dolby Surroun كاشف الرموز"
 
 #: modules/audio_filter/channel_mixer/headphone.c:51
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:271
@@ -11892,7 +11892,7 @@ msgstr ""
 
 #: modules/audio_filter/channel_mixer/headphone.c:68
 msgid "No decoding of Dolby Surround"
-msgstr "Dolby Surround عدم كشف الرموز "
+msgstr "Dolby Surround عدم كشف الرموز"
 
 #: modules/audio_filter/channel_mixer/headphone.c:70
 msgid ""
@@ -12099,12 +12099,12 @@ msgstr ""
 
 #: modules/audio_filter/converter/format.c:48
 msgid "Audio filter for PCM format conversion"
-msgstr "PCM مرشح سمعي لتحويل الصيغ "
+msgstr "PCM مرشح سمعي لتحويل الصيغ"
 
 #: modules/audio_filter/converter/tospdif.c:46
 #, fuzzy
 msgid "Audio filter for A/52/DTS->S/PDIF encapsulation"
-msgstr "A/52->S/PDIF مُرشح  الصوت المغلف "
+msgstr "A/52->S/PDIF مُرشح  الصوت المغلف"
 
 #: modules/audio_filter/equalizer.c:57
 #: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:38
@@ -12337,7 +12337,7 @@ msgstr ""
 
 #: modules/audio_filter/param_eq.c:66
 msgid "Freq 1 Q"
-msgstr "Q التردد 1  "
+msgstr "Q التردد 1"
 
 #: modules/audio_filter/param_eq.c:67
 msgid "Freq 2 (Hz)"
@@ -12349,7 +12349,7 @@ msgstr ""
 
 #: modules/audio_filter/param_eq.c:71
 msgid "Freq 2 Q"
-msgstr "Q التردد 2  "
+msgstr "Q التردد 2"
 
 #: modules/audio_filter/param_eq.c:72
 msgid "Freq 3 (Hz)"
@@ -12361,7 +12361,7 @@ msgstr ""
 
 #: modules/audio_filter/param_eq.c:76
 msgid "Freq 3 Q"
-msgstr "Q التردد 3  "
+msgstr "Q التردد 3"
 
 #: modules/audio_filter/resampler/soxr.c:40
 #: modules/audio_filter/resampler/speex.c:36
@@ -12924,7 +12924,7 @@ msgstr ""
 
 #: modules/codec/adpcm.c:47
 msgid "ADPCM audio decoder"
-msgstr "ADPCM كاشف الرموز السمعي "
+msgstr "ADPCM كاشف الرموز السمعي"
 
 #: modules/codec/aes3.c:44
 msgid "AES3/SMPTE 302M audio decoder"
@@ -12996,7 +12996,7 @@ msgstr ""
 #: modules/codec/aom.c:102
 #, fuzzy
 msgid "AOM video decoder"
-msgstr " كاشف الرموز للفديو"
+msgstr "كاشف الرموز للفديو"
 
 #: modules/codec/aom.c:110
 msgid "AOM video encoder"
@@ -13004,11 +13004,11 @@ msgstr ""
 
 #: modules/codec/araw.c:49
 msgid "Raw/Log Audio decoder"
-msgstr "Raw/Log  كاشف الرموز السمعي "
+msgstr "Raw/Log  كاشف الرموز السمعي"
 
 #: modules/codec/araw.c:57
 msgid "Raw audio encoder"
-msgstr "Raw المرمَز السمعي "
+msgstr "Raw المرمَز السمعي"
 
 #: modules/codec/arib/aribsub.c:45
 msgid "Ignore ruby (furigana)"
@@ -13017,17 +13017,17 @@ msgstr ""
 #: modules/codec/arib/aribsub.c:46
 #, fuzzy
 msgid "Ignore ruby (furigana) in the subtitle."
-msgstr "للعنوان الثانوي المعاد X موقع "
+msgstr "للعنوان الثانوي المعاد X موقع"
 
 #: modules/codec/arib/aribsub.c:47
 #, fuzzy
 msgid "Use Core Text renderer"
-msgstr "تَصْيِر النص "
+msgstr "تَصْيِر النص"
 
 #: modules/codec/arib/aribsub.c:48
 #, fuzzy
 msgid "Use Core Text renderer in the subtitle."
-msgstr "للعنوان الثانوي المعاد X موقع "
+msgstr "للعنوان الثانوي المعاد X موقع"
 
 #: modules/codec/arib/aribsub.c:52
 #, fuzzy
@@ -13081,7 +13081,7 @@ msgstr "بت"
 
 #: modules/codec/avcodec/avcodec.c:62 modules/codec/qsv.c:169
 msgid "simple"
-msgstr "بسيط "
+msgstr "بسيط"
 
 #: modules/codec/avcodec/avcodec.c:76
 msgid ""
@@ -13180,7 +13180,7 @@ msgstr ""
 #: modules/codec/avcodec/avcodec.h:83
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:399
 msgid "Skip the loop filter for H.264 decoding"
-msgstr "H.264 لا مرشح الدورة لفك الترميز "
+msgstr "H.264 لا مرشح الدورة لفك الترميز"
 
 #: modules/codec/avcodec/avcodec.h:84
 msgid ""
@@ -13208,7 +13208,7 @@ msgstr ".عدد الإطارات المشفرة للإطار المفتاح وا
 
 #: modules/codec/avcodec/avcodec.h:100
 msgid "Ratio of B frames"
-msgstr "B نسبة الإطارات "
+msgstr "B نسبة الإطارات"
 
 #: modules/codec/avcodec/avcodec.h:101
 msgid "Number of B frames that will be coded between two reference frames."
@@ -13262,7 +13262,7 @@ msgstr "قدرة مراقبة التدفق"
 
 #: modules/codec/avcodec/avcodec.h:125
 msgid "I quantization factor"
-msgstr "I quantization عامل "
+msgstr "I quantization عامل"
 
 #: modules/codec/avcodec/avcodec.h:127
 msgid ""
@@ -13287,7 +13287,7 @@ msgstr ""
 
 #: modules/codec/avcodec/avcodec.h:135
 msgid "MPEG4 quantization matrix"
-msgstr " MPEG4 مصفوفة التقسيمإلى كميّات ل "
+msgstr "MPEG4 مصفوفة التقسيمإلى كميّات ل"
 
 #: modules/codec/avcodec/avcodec.h:136
 msgid ""
@@ -13330,7 +13330,7 @@ msgstr "أقصى سلم لتقسيم الفديو إلى كميات صغيرة"
 
 #: modules/codec/avcodec/avcodec.h:157
 msgid "Trellis quantization"
-msgstr "Trellis التقسيم إلى كميّات صغيرة  ل   "
+msgstr "Trellis التقسيم إلى كميّات صغيرة  ل"
 
 #: modules/codec/avcodec/avcodec.h:158
 msgid "Enable trellis quantization (rate distortion for block coefficients)."
@@ -13339,7 +13339,7 @@ msgstr ""
 
 #: modules/codec/avcodec/avcodec.h:161
 msgid "Fixed quantizer scale"
-msgstr " تحديد سلم التقسيم إلى كميّات صغيرة "
+msgstr "تحديد سلم التقسيم إلى كميّات صغيرة"
 
 #: modules/codec/avcodec/avcodec.h:162
 msgid ""
@@ -13386,7 +13386,7 @@ msgstr ""
 
 #: modules/codec/avcodec/avcodec.h:181
 msgid "Border masking"
-msgstr "إخفاء الحدود "
+msgstr "إخفاء الحدود"
 
 #: modules/codec/avcodec/avcodec.h:182
 msgid ""
@@ -13398,7 +13398,7 @@ msgstr ""
 
 #: modules/codec/avcodec/avcodec.h:185
 msgid "Luminance elimination"
-msgstr "إزالة الإضاءة "
+msgstr "إزالة الإضاءة"
 
 #: modules/codec/avcodec/avcodec.h:186
 msgid ""
@@ -13410,7 +13410,7 @@ msgstr ""
 
 #: modules/codec/avcodec/avcodec.h:190
 msgid "Chrominance elimination"
-msgstr "Chrominance إزالة "
+msgstr "Chrominance إزالة"
 
 #: modules/codec/avcodec/avcodec.h:191
 msgid ""
@@ -13477,12 +13477,12 @@ msgstr ""
 #: modules/codec/avcodec/vaapi.c:443
 #, fuzzy
 msgid "VA-API video decoder"
-msgstr " كاشف الرموز للفديو"
+msgstr "كاشف الرموز للفديو"
 
 #: modules/codec/bpg.c:48
 #, fuzzy
 msgid "BPG image decoder"
-msgstr " كاشف الرموز للفديو"
+msgstr "كاشف الرموز للفديو"
 
 #: modules/codec/cc.c:57 modules/codec/zvbi.c:64
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:443
@@ -13508,11 +13508,11 @@ msgstr ""
 
 #: modules/codec/cvdsub.c:51
 msgid "CVD subtitle decoder"
-msgstr "CVD كاشف الرموز للعنوان الثانوي "
+msgstr "CVD كاشف الرموز للعنوان الثانوي"
 
 #: modules/codec/cvdsub.c:56
 msgid "Chaoji VCD subtitle packetizer"
-msgstr "Chaoji VCD محزَّم العناوين الثانوية ل "
+msgstr "Chaoji VCD محزَّم العناوين الثانوية ل"
 
 #: modules/codec/daala.c:110 modules/codec/speex.c:63
 #: modules/codec/theora.c:105 modules/codec/twolame.c:54
@@ -13536,17 +13536,17 @@ msgstr ""
 #: modules/codec/daala.c:120
 #, fuzzy
 msgid "Daala video decoder"
-msgstr " كاشف الرموز للفديو"
+msgstr "كاشف الرموز للفديو"
 
 #: modules/codec/daala.c:125
 #, fuzzy
 msgid "Daala video packetizer"
-msgstr "محزِّم الفديو Theora "
+msgstr "محزِّم الفديو Theora"
 
 #: modules/codec/daala.c:132
 #, fuzzy
 msgid "Daala video encoder"
-msgstr "مرمز الفديو Theora "
+msgstr "مرمز الفديو Theora"
 
 #: modules/codec/daala.c:143
 msgid "Chroma format"
@@ -13607,23 +13607,23 @@ msgstr "كاشف الرموز  DirectMedia Object"
 
 #: modules/codec/dmo/dmo.c:1621 modules/codec/dmo/dmo.c:1627
 msgid "DirectMedia Object encoder"
-msgstr " مرمّز DirectMedia Object"
+msgstr "مرمّز DirectMedia Object"
 
 #: modules/codec/dvbsub.c:87
 msgid "Decoding X coordinate"
-msgstr "عند كشف الرموز X موقع "
+msgstr "عند كشف الرموز X موقع"
 
 #: modules/codec/dvbsub.c:88
 msgid "X coordinate of the rendered subtitle"
-msgstr "للعنوان الثانوي المعاد X موقع "
+msgstr "للعنوان الثانوي المعاد X موقع"
 
 #: modules/codec/dvbsub.c:90
 msgid "Decoding Y coordinate"
-msgstr "عند كشف الرموز Y موقع "
+msgstr "عند كشف الرموز Y موقع"
 
 #: modules/codec/dvbsub.c:91
 msgid "Y coordinate of the rendered subtitle"
-msgstr "للعنوان الثانوي المعاد Y موقع "
+msgstr "للعنوان الثانوي المعاد Y موقع"
 
 #: modules/codec/dvbsub.c:93
 msgid "Subpicture position"
@@ -13641,19 +13641,19 @@ msgstr ""
 
 #: modules/codec/dvbsub.c:99
 msgid "Encoding X coordinate"
-msgstr " عند  الترميز X  موقع "
+msgstr "عند  الترميز X  موقع"
 
 #: modules/codec/dvbsub.c:100
 msgid "X coordinate of the encoded subtitle"
-msgstr "للعنوان الثانوي المرمّز X موقع "
+msgstr "للعنوان الثانوي المرمّز X موقع"
 
 #: modules/codec/dvbsub.c:101
 msgid "Encoding Y coordinate"
-msgstr "عند  الترميز Y موقع "
+msgstr "عند  الترميز Y موقع"
 
 #: modules/codec/dvbsub.c:102
 msgid "Y coordinate of the encoded subtitle"
-msgstr " للعنوان الثانوي المرمّز Y موقع "
+msgstr "للعنوان الثانوي المرمّز Y موقع"
 
 #: modules/codec/dvbsub.c:135
 msgid "DVB subtitles decoder"
@@ -13665,7 +13665,7 @@ msgstr "عناوين ثانوية DVB"
 
 #: modules/codec/dvbsub.c:149
 msgid "DVB subtitles encoder"
-msgstr " مرمّز العناوين الثانوية DVB"
+msgstr "مرمّز العناوين الثانوية DVB"
 
 #: modules/codec/edummy.c:39
 msgid "Dummy encoder"
@@ -13673,7 +13673,7 @@ msgstr "مُرمِّز إفتراضي"
 
 #: modules/codec/faad.c:61
 msgid "AAC audio decoder (using libfaad2)"
-msgstr "(libfaad2 مستعملاً ) AAC  كاشف الرموز السمعي "
+msgstr "(libfaad2 مستعملاً ) AAC  كاشف الرموز السمعي"
 
 #: modules/codec/faad.c:470
 msgid "AAC extension"
@@ -13758,7 +13758,7 @@ msgstr "كاشف الرموز السمعي Flac"
 
 #: modules/codec/flac.c:171
 msgid "Flac audio encoder"
-msgstr " المرمز السمعي Flac"
+msgstr "المرمز السمعي Flac"
 
 #: modules/codec/fluidsynth.c:51 modules/meta_engine/ID3Genres.h:130
 msgid "Chorus"
@@ -13788,7 +13788,7 @@ msgstr ""
 
 #: modules/codec/fluidsynth.c:62 modules/demux/mod.c:80
 msgid "Reverb"
-msgstr "تردّد "
+msgstr "تردّد"
 
 #: modules/codec/fluidsynth.c:70
 msgid "FluidSynth MIDI synthesizer"
@@ -14111,11 +14111,11 @@ msgstr ""
 
 #: modules/codec/lpcm.c:57
 msgid "Linear PCM audio decoder"
-msgstr "الخطي PCM  كاشف الرموز السمعي ل  "
+msgstr "الخطي PCM  كاشف الرموز السمعي ل"
 
 #: modules/codec/lpcm.c:62
 msgid "Linear PCM audio packetizer"
-msgstr "الخطي Flac   المحزَّم السمعي ل "
+msgstr "الخطي Flac   المحزَّم السمعي ل"
 
 #: modules/codec/lpcm.c:68
 msgid "Linear PCM audio encoder"
@@ -14123,7 +14123,7 @@ msgstr ""
 
 #: modules/codec/mad.c:76
 msgid "MPEG audio layer I/II/III decoder"
-msgstr "III/II/I السمعي الطبقات MPEG  كاشف الرموز "
+msgstr "III/II/I السمعي الطبقات MPEG  كاشف الرموز"
 
 #: modules/codec/mft.cpp:82
 msgid "Extra MFT Debug"
@@ -14140,17 +14140,17 @@ msgstr ""
 #: modules/codec/mpg123.c:66
 #, fuzzy
 msgid "MPEG audio decoder using mpg123"
-msgstr "لسمعي MPEG  كاشف الرموز "
+msgstr "لسمعي MPEG  كاشف الرموز"
 
 #: modules/codec/oggspots.c:84
 #, fuzzy
 msgid "OggSpots video decoder"
-msgstr " كاشف الرموز للفديو"
+msgstr "كاشف الرموز للفديو"
 
 #: modules/codec/oggspots.c:90
 #, fuzzy
 msgid "OggSpots video packetizer"
-msgstr "محزِّم الفديو Theora "
+msgstr "محزِّم الفديو Theora"
 
 #: modules/codec/omxil/mediacodec.c:189
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:398
@@ -14179,7 +14179,7 @@ msgstr ""
 
 #: modules/codec/png.c:90
 msgid "PNG video decoder"
-msgstr " كاشف الرموز للفديو"
+msgstr "كاشف الرموز للفديو"
 
 #: modules/codec/png.c:100
 msgid "PNG video encoder"
@@ -14422,12 +14422,12 @@ msgstr ".شبه كاشف الرموز للفديو خام"
 
 #: modules/codec/rawvideo.c:69
 msgid "Pseudo raw video packetizer"
-msgstr "شبه محزَّم الفديو الخام "
+msgstr "شبه محزَّم الفديو الخام"
 
 #: modules/codec/rtpvideo.c:44
 #, fuzzy
 msgid "Raw video encoder for RTP"
-msgstr "مرمز الفديو Theora "
+msgstr "مرمز الفديو Theora"
 
 #: modules/codec/scte18.c:41
 #, fuzzy
@@ -14555,7 +14555,7 @@ msgstr ""
 
 #: modules/codec/spudec/spudec.c:49
 msgid "DVD subtitles decoder"
-msgstr "DVD كاشف الرموز للعناوين الثانوية ل "
+msgstr "DVD كاشف الرموز للعناوين الثانوية ل"
 
 #: modules/codec/spudec/spudec.c:50
 msgid "DVD subtitles"
@@ -14563,7 +14563,7 @@ msgstr "ترجمات DVD"
 
 #: modules/codec/spudec/spudec.c:58
 msgid "DVD subtitles packetizer"
-msgstr "DVD محزِّم العناوين الثانوية ل "
+msgstr "DVD محزِّم العناوين الثانوية ل"
 
 #: modules/codec/stl.c:45
 msgid "EBU STL subtitles decoder"
@@ -14759,7 +14759,7 @@ msgstr "محاذاة الترجمة"
 
 #: modules/codec/subsdec.c:172 modules/codec/ttml/ttml.c:37
 msgid "Set the justification of subtitles"
-msgstr "تحديد موضع الترجمة "
+msgstr "تحديد موضع الترجمة"
 
 #: modules/codec/subsdec.c:173
 msgid "UTF-8 subtitle autodetection"
@@ -14819,7 +14819,7 @@ msgstr ""
 
 #: modules/codec/svcdsub.c:48
 msgid "Philips OGT (SVCD subtitle) decoder"
-msgstr "(SVCD العنوان الثانوي ) Philips OGT  كاشف الرموز للعناوين الثانوية "
+msgstr "(SVCD العنوان الثانوي ) Philips OGT  كاشف الرموز للعناوين الثانوية"
 
 #: modules/codec/svcdsub.c:49
 msgid "SVCD subtitles"
@@ -14827,7 +14827,7 @@ msgstr "عناوين ثانوية SVCD"
 
 #: modules/codec/svcdsub.c:55
 msgid "Philips OGT (SVCD subtitle) packetizer"
-msgstr "(SVCD  العنوان الثانوي  ) Philips OGT محزِّم العناوين الثانوية  "
+msgstr "(SVCD  العنوان الثانوي  ) Philips OGT محزِّم العناوين الثانوية"
 
 #: modules/codec/svg.c:50 modules/video_filter/scene.c:62
 msgid "Image width"
@@ -14849,17 +14849,17 @@ msgstr "يحدد ديينتيرلاكي نموذج الإستخدام."
 #: modules/codec/svg.c:54
 #, fuzzy
 msgid "Scale factor"
-msgstr "(0.1-2.0)عامل مقياس "
+msgstr "(0.1-2.0)عامل مقياس"
 
 #: modules/codec/svg.c:55
 #, fuzzy
 msgid "Scale factor to apply to image"
-msgstr "عامل مقياس ينطبق على الفيديو بينما الترميز. (مثلا : 0.25) "
+msgstr "عامل مقياس ينطبق على الفيديو بينما الترميز. (مثلا : 0.25)"
 
 #: modules/codec/svg.c:62
 #, fuzzy
 msgid "SVG video decoder"
-msgstr " كاشف الرموز للفديو"
+msgstr "كاشف الرموز للفديو"
 
 #: modules/codec/t140.c:34
 msgid "T.140 text encoder"
@@ -14867,7 +14867,7 @@ msgstr ""
 
 #: modules/codec/telx.c:52
 msgid "Override page"
-msgstr "تجاوز الصفحة "
+msgstr "تجاوز الصفحة"
 
 #: modules/codec/telx.c:53
 msgid ""
@@ -14927,11 +14927,11 @@ msgstr "كاشف رموز الفديو Theora"
 
 #: modules/codec/theora.c:123
 msgid "Theora video packetizer"
-msgstr "محزِّم الفديو Theora "
+msgstr "محزِّم الفديو Theora"
 
 #: modules/codec/theora.c:130
 msgid "Theora video encoder"
-msgstr "مرمز الفديو Theora "
+msgstr "مرمز الفديو Theora"
 
 #: modules/codec/ttml/ttml.c:45
 #, fuzzy
@@ -14950,7 +14950,7 @@ msgstr ""
 #: modules/codec/ttml/ttml.c:53
 #, fuzzy
 msgid "TTML demuxer"
-msgstr "TTA demuxer‎ "
+msgstr "TTA demuxer‎"
 
 #: modules/codec/ttml/ttml.c:61
 msgid "TTML encoder"
@@ -14978,7 +14978,7 @@ msgstr "نمط VBR"
 
 #: modules/codec/twolame.c:63
 msgid "Use Variable BitRate. Default is to use Constant BitRate (CBR)."
-msgstr ".(CBR) إستعمل معدّل بت متغيِّر. إفتراضياً، يستعمل معدّل بت ثابت "
+msgstr ".(CBR) إستعمل معدّل بت متغيِّر. إفتراضياً، يستعمل معدّل بت ثابت"
 
 #: modules/codec/twolame.c:64
 msgid "Psycho-acoustic model"
@@ -15003,7 +15003,7 @@ msgstr ""
 #: modules/codec/videotoolbox/decoder.c:2228
 #, fuzzy
 msgid "Use Hardware decoders only"
-msgstr "إستخدامالاجهزه تحويلات yuv ->  RGB "
+msgstr "إستخدامالاجهزه تحويلات yuv ->  RGB"
 
 #: modules/codec/videotoolbox/decoder.c:2256
 #, fuzzy
@@ -15030,7 +15030,7 @@ msgstr ".أقصى معدّل بت بالكيلوبت. صالح لقناة بحج
 
 #: modules/codec/vorbis.c:186
 msgid "Force a constant bitrate encoding (CBR)."
-msgstr "(CBR)أجبر الترميز بمعدّل بت ثابت  "
+msgstr "(CBR)أجبر الترميز بمعدّل بت ثابت"
 
 #: modules/codec/vorbis.c:190
 msgid "Vorbis audio decoder"
@@ -15070,7 +15070,7 @@ msgstr ""
 #: modules/codec/vpx.c:83
 #, fuzzy
 msgid "WebM video encoder"
-msgstr "مرمز الفديو Theora "
+msgstr "مرمز الفديو Theora"
 
 #: modules/codec/vpx.c:89
 msgid "WebP image encoder"
@@ -15097,7 +15097,7 @@ msgstr ""
 
 #: modules/codec/x264.c:68
 msgid "Maximum GOP size"
-msgstr "GOP الحجم الأقصى ل "
+msgstr "GOP الحجم الأقصى ل"
 
 #: modules/codec/x264.c:69
 #, fuzzy
@@ -15111,7 +15111,7 @@ msgstr ""
 
 #: modules/codec/x264.c:73
 msgid "Minimum GOP size"
-msgstr "GOP الحجم الأدنى ل "
+msgstr "GOP الحجم الأدنى ل"
 
 #: modules/codec/x264.c:74
 msgid ""
@@ -15153,7 +15153,7 @@ msgstr ""
 
 #: modules/codec/x264.c:90
 msgid "Extra I-frames aggressivity"
-msgstr "العدوانيI-frames  خارج "
+msgstr "العدوانيI-frames  خارج"
 
 #: modules/codec/x264.c:91
 msgid ""
@@ -15175,15 +15175,15 @@ msgstr ""
 
 #: modules/codec/x264.c:102
 msgid "B-frames between I and P"
-msgstr "P و I بين B  الإطارات "
+msgstr "P و I بين B  الإطارات"
 
 #: modules/codec/x264.c:103
 msgid "Number of consecutive B-frames between I and P-frames. Range 1 to 16."
-msgstr ".(من 1 إلى 16 ) P  و I  المتتالية بين B  عدد الإطارات   "
+msgstr ".(من 1 إلى 16 ) P  و I  المتتالية بين B  عدد الإطارات"
 
 #: modules/codec/x264.c:106
 msgid "Adaptive B-frame decision"
-msgstr "B إستعمال تكيفي لإطارات "
+msgstr "B إستعمال تكيفي لإطارات"
 
 #: modules/codec/x264.c:107
 #, fuzzy
@@ -15194,7 +15194,7 @@ msgstr ".I- لاستخدامهاالا ربما قبل اطر  ،B-اجبار ع
 
 #: modules/codec/x264.c:111
 msgid "Influence (bias) B-frames usage"
-msgstr "B إستعمال إطارات "
+msgstr "B إستعمال إطارات"
 
 #: modules/codec/x264.c:112
 msgid ""
@@ -15206,7 +15206,7 @@ msgstr ""
 
 #: modules/codec/x264.c:116
 msgid "Keep some B-frames as references"
-msgstr " للإشارات  B ترك بعض الإطارات "
+msgstr "للإشارات  B ترك بعض الإطارات"
 
 #: modules/codec/x264.c:117
 msgid ""
@@ -15261,7 +15261,7 @@ msgstr ".بطّل مرشح الدورة. هذا ينقص الجودة"
 
 #: modules/codec/x264.c:143
 msgid "Loop filter AlphaC0 and Beta parameters alpha:beta"
-msgstr "وبيتا  ، البارامترات  الفا : بيتا C0 الداره مرشح الفا "
+msgstr "وبيتا  ، البارامترات  الفا : بيتا C0 الداره مرشح الفا"
 
 #: modules/codec/x264.c:144
 msgid ""
@@ -15273,7 +15273,7 @@ msgstr ""
 
 #: modules/codec/x264.c:148
 msgid "H.264 level"
-msgstr "H.264 المستوى  "
+msgstr "H.264 المستوى"
 
 #: modules/codec/x264.c:149
 msgid ""
@@ -15293,11 +15293,11 @@ msgstr ""
 
 #: modules/codec/x264.c:161
 msgid "Interlaced mode"
-msgstr "طريقة المشابكه "
+msgstr "طريقة المشابكه"
 
 #: modules/codec/x264.c:162
 msgid "Pure-interlaced mode."
-msgstr ".طريقة المشابكه نقيه "
+msgstr ".طريقة المشابكه نقيه"
 
 #: modules/codec/x264.c:164
 msgid "Frame packing"
@@ -15373,11 +15373,11 @@ msgstr "VBR بالنوعيّة"
 
 #: modules/codec/x264.c:195
 msgid "1-pass Quality-based VBR. Range 0 to 51."
-msgstr ".من 0 إلى 51 .VBR نوعية المرور على اساس "
+msgstr ".من 0 إلى 51 .VBR نوعية المرور على اساس"
 
 #: modules/codec/x264.c:197
 msgid "Min QP"
-msgstr " QP الأدنى"
+msgstr "QP الأدنى"
 
 #: modules/codec/x264.c:198
 msgid "Minimum quantizer parameter. 15 to 35 seems to be a useful range."
@@ -15386,7 +15386,7 @@ msgstr ""
 
 #: modules/codec/x264.c:201
 msgid "Max QP"
-msgstr "الأعلى QP "
+msgstr "الأعلى QP"
 
 #: modules/codec/x264.c:202
 msgid "Maximum quantizer parameter."
@@ -15394,11 +15394,11 @@ msgstr ".اقصى  بارامتر للمقسم الى كميات صغيرة"
 
 #: modules/codec/x264.c:204
 msgid "Max QP step"
-msgstr "QP أعلى خطوة "
+msgstr "QP أعلى خطوة"
 
 #: modules/codec/x264.c:205
 msgid "Max QP step between frames."
-msgstr ".بين إطارين QP  أقصى خطوة "
+msgstr ".بين إطارين QP  أقصى خطوة"
 
 #: modules/codec/x264.c:207
 msgid "Average bitrate tolerance"
@@ -15422,11 +15422,11 @@ msgstr "صِوان VBV"
 
 #: modules/codec/x264.c:215
 msgid "Averaging period for the maximum local bitrate (in kbits)."
-msgstr ".(متوسط مدة اقصاها المحلية معدل البت (في كيلوبايت "
+msgstr ".(متوسط مدة اقصاها المحلية معدل البت (في كيلوبايت"
 
 #: modules/codec/x264.c:218
 msgid "Initial VBV buffer occupancy"
-msgstr "VBV شغل إبتدائي للصِوان "
+msgstr "VBV شغل إبتدائي للصِوان"
 
 #: modules/codec/x264.c:219
 msgid ""
@@ -15461,23 +15461,23 @@ msgstr ""
 
 #: modules/codec/x264.c:235
 msgid "QP factor between I and P"
-msgstr "P و I بين QP العامل "
+msgstr "P و I بين QP العامل"
 
 #: modules/codec/x264.c:236
 msgid "QP factor between I and P. Range 1.0 to 2.0."
-msgstr ".المدى 1.0 إلى 2.0  P و I بين QP العامل "
+msgstr ".المدى 1.0 إلى 2.0  P و I بين QP العامل"
 
 #: modules/codec/x264.c:239
 msgid "QP factor between P and B"
-msgstr "B و P بين QP العامل "
+msgstr "B و P بين QP العامل"
 
 #: modules/codec/x264.c:240
 msgid "QP factor between P and B. Range 1.0 to 2.0."
-msgstr ".المدى 1.0 إلى 2.0  B و P بين QP العامل "
+msgstr ".المدى 1.0 إلى 2.0  B و P بين QP العامل"
 
 #: modules/codec/x264.c:242
 msgid "QP difference between chroma and luma"
-msgstr "بين كروماولما QP الفرق "
+msgstr "بين كروماولما QP الفرق"
 
 #: modules/codec/x264.c:244
 msgid "Multipass ratecontrol"
@@ -15493,7 +15493,7 @@ msgstr ""
 
 #: modules/codec/x264.c:250
 msgid "QP curve compression"
-msgstr "QP منحني الضغط "
+msgstr "QP منحني الضغط"
 
 #: modules/codec/x264.c:251
 msgid "QP curve compression. Range 0.0 (CBR) to 1.0 (QCP)."
@@ -15501,7 +15501,7 @@ msgstr ".(QCP) إلى 1.0(CBR)  من 0.0 QP منحني الضغط"
 
 #: modules/codec/x264.c:253 modules/codec/x264.c:257
 msgid "Reduce fluctuations in QP"
-msgstr "QP  نقص التقلّب في "
+msgstr "QP  نقص التقلّب في"
 
 #: modules/codec/x264.c:254
 msgid ""
@@ -15539,7 +15539,7 @@ msgstr ""
 
 #: modules/codec/x264.c:272
 msgid "Direct MV prediction mode"
-msgstr "MV نمط التوقع لأشعة "
+msgstr "MV نمط التوقع لأشعة"
 
 #: modules/codec/x264.c:274
 msgid "Direct prediction size"
@@ -15555,7 +15555,7 @@ msgstr ""
 
 #: modules/codec/x264.c:280
 msgid "Weighted prediction for B-frames"
-msgstr "B التوقع الموزون للإطارات "
+msgstr "B التوقع الموزون للإطارات"
 
 #: modules/codec/x264.c:282
 msgid "Weighted prediction for P-frames"
@@ -15659,11 +15659,11 @@ msgstr ""
 
 #: modules/codec/x264.c:329
 msgid "Chroma in motion estimation"
-msgstr "إغفال كروما في تقدير الحركة "
+msgstr "إغفال كروما في تقدير الحركة"
 
 #: modules/codec/x264.c:330
 msgid "Chroma ME for subpel and mode decision in P-frames."
-msgstr ".P-frames واسطة قرار في ME  subpel كروما   "
+msgstr ".P-frames واسطة قرار في ME  subpel كروما"
 
 #: modules/codec/x264.c:333
 msgid "Joint bidirectional motion refinement."
@@ -15671,7 +15671,7 @@ msgstr ".مشترك ثنائي الاتجاه اقتراح التنقيح"
 
 #: modules/codec/x264.c:335
 msgid "Adaptive spatial transform size"
-msgstr " حجم التحويل المكيف الملائم"
+msgstr "حجم التحويل المكيف الملائم"
 
 #: modules/codec/x264.c:337
 msgid "SATD-based decision for 8x8 transform in inter-MBs."
@@ -15732,11 +15732,11 @@ msgstr ""
 
 #: modules/codec/x264.c:360
 msgid "Inter luma quantization deadzone"
-msgstr "التقسيم لمى الى كميات منطقة ميتة "
+msgstr "التقسيم لمى الى كميات منطقة ميتة"
 
 #: modules/codec/x264.c:361
 msgid "Set the size of the inter luma quantization deadzone. Range 0 to 32."
-msgstr "حدد حجم المشتركة التقسيم  لمى الى كميات منطقة ميتة. 0 مجموعة الى 32. "
+msgstr "حدد حجم المشتركة التقسيم  لمى الى كميات منطقة ميتة. 0 مجموعة الى 32."
 
 #: modules/codec/x264.c:364
 msgid "Intra luma quantization deadzone"
@@ -15744,7 +15744,7 @@ msgstr "التقسيم لمى الى كميات داخل منطقة ميتة"
 
 #: modules/codec/x264.c:365
 msgid "Set the size of the intra luma quantization deadzone. Range 0 to 32."
-msgstr "حجم مجموعة من داخل التقسيم الى كميات ديادزوني بجروح. 0 مجموعة الى 32. "
+msgstr "حجم مجموعة من داخل التقسيم الى كميات ديادزوني بجروح. 0 مجموعة الى 32."
 
 #: modules/codec/x264.c:370
 msgid "Non-deterministic optimizations when threaded"
@@ -15778,7 +15778,7 @@ msgstr "الحساب PSNR"
 msgid ""
 "Compute and print PSNR stats. This has no effect on the actual encoding "
 "quality."
-msgstr ".احصائيات. وهذا لا يؤثر على نوعية التشفير الفعلي PSNR  حساب  وطبع "
+msgstr ".احصائيات. وهذا لا يؤثر على نوعية التشفير الفعلي PSNR  حساب  وطبع"
 
 #: modules/codec/x264.c:384
 msgid "SSIM computation"
@@ -15788,7 +15788,7 @@ msgstr "الحساب SSIM"
 msgid ""
 "Compute and print SSIM stats. This has no effect on the actual encoding "
 "quality."
-msgstr ".احصائيات. وهذا لا يؤثر على نوعية التشفير الفعلي SSIM  حساب  وطبع "
+msgstr ".احصائيات. وهذا لا يؤثر على نوعية التشفير الفعلي SSIM  حساب  وطبع"
 
 #: modules/codec/x264.c:388
 msgid "Quiet mode"
@@ -15805,7 +15805,7 @@ msgstr ".إعرض الإحصائيات لكل إطار"
 
 #: modules/codec/x264.c:393
 msgid "SPS and PPS id numbers"
-msgstr "SPS وPPS ID  ارقام "
+msgstr "SPS وPPS ID  ارقام"
 
 #: modules/codec/x264.c:394
 msgid ""
@@ -15815,7 +15815,7 @@ msgstr ".مجموعة SPS  و PPS  للسماح لإلساق اعداد الجد
 
 #: modules/codec/x264.c:397
 msgid "Access unit delimiters"
-msgstr "وصول وحدة علامات البداية او النهاية "
+msgstr "وصول وحدة علامات البداية او النهاية"
 
 #: modules/codec/x264.c:398
 msgid "Generate access unit delimiter NAL units."
@@ -16242,15 +16242,15 @@ msgstr ".إعرض الموضع الحالي بالثانية في التدفق �
 
 #: modules/control/cli/cli.c:1046
 msgid "Fake TTY"
-msgstr "TTY مزيف "
+msgstr "TTY مزيف"
 
 #: modules/control/cli/cli.c:1047
 msgid "Force the rc module to use stdin as if it was a TTY."
-msgstr ".TTY كما لو كانت stdin  على إستعمال rc  أجبر الوحدة "
+msgstr ".TTY كما لو كانت stdin  على إستعمال rc  أجبر الوحدة"
 
 #: modules/control/cli/cli.c:1049
 msgid "UNIX socket command input"
-msgstr "UNIX socket دخل التحكم ب "
+msgstr "UNIX socket دخل التحكم ب"
 
 #: modules/control/cli/cli.c:1050
 msgid "Accept commands over a Unix socket rather than stdin."
@@ -16258,7 +16258,7 @@ msgstr ".stdin المقبس بدلا من   UNIX تقبل الاوامر اكث�
 
 #: modules/control/cli/cli.c:1053
 msgid "TCP command input"
-msgstr "TCP دخل التحكم ب "
+msgstr "TCP دخل التحكم ب"
 
 #: modules/control/cli/cli.c:1054
 msgid ""
@@ -16270,7 +16270,7 @@ msgstr ""
 
 #: modules/control/cli/cli.c:1058
 msgid "Do not open a DOS command box interface"
-msgstr "DOS لا تفتح واجهة تحكم "
+msgstr "DOS لا تفتح واجهة تحكم"
 
 #: modules/control/cli/cli.c:1060
 msgid ""
@@ -16389,7 +16389,7 @@ msgstr ""
 
 #: modules/control/dbus/dbus.c:174
 msgid "D-Bus control interface"
-msgstr "D-Bus واجهات السيطرة "
+msgstr "D-Bus واجهات السيطرة"
 
 #: modules/control/dbus/dbus_root.c:78
 #: modules/gui/macosx/menus/VLCStatusBarIcon.m:158
@@ -16492,7 +16492,7 @@ msgstr "موضع الترجمة: ‎%+d%%"
 
 #: modules/control/hotkeys.c:1315
 msgid "Hotkeys management interface"
-msgstr "المفاتيح-الساخنه ادارة الوصل "
+msgstr "المفاتيح-الساخنه ادارة الوصل"
 
 #: modules/control/intromsg.h:33
 msgid ""
@@ -16548,7 +16548,7 @@ msgstr ".غيّر إسم الخدمة"
 
 #: modules/control/ntservice.c:55
 msgid "Configuration options"
-msgstr " خيارات التشكيل"
+msgstr "خيارات التشكيل"
 
 #: modules/control/ntservice.c:57
 msgid ""
@@ -16571,7 +16571,7 @@ msgstr ""
 
 #: modules/control/ntservice.c:68
 msgid "NT Service"
-msgstr "NT خدمة "
+msgstr "NT خدمة"
 
 #: modules/control/ntservice.c:69
 msgid "Windows Service interface"
@@ -16589,12 +16589,12 @@ msgstr "واجهة خدمة الويندوز"
 #: modules/demux/adaptive/adaptive.cpp:68
 #, fuzzy
 msgid "Maximum device width"
-msgstr "اقصى عرض الفيديو "
+msgstr "اقصى عرض الفيديو"
 
 #: modules/demux/adaptive/adaptive.cpp:69
 #, fuzzy
 msgid "Maximum device height"
-msgstr "الطول الاقصى الفيديو "
+msgstr "الطول الاقصى الفيديو"
 
 #: modules/demux/adaptive/adaptive.cpp:71
 msgid "Fixed Bandwidth in KiB/s"
@@ -16641,7 +16641,7 @@ msgstr ""
 #: modules/demux/adaptive/adaptive.cpp:106
 #, fuzzy
 msgid "Predictive"
-msgstr "متأمّل "
+msgstr "متأمّل"
 
 #: modules/demux/adaptive/adaptive.cpp:107
 msgid "Near Optimal"
@@ -16650,7 +16650,7 @@ msgstr ""
 #: modules/demux/adaptive/adaptive.cpp:108
 #, fuzzy
 msgid "Bandwidth Adaptive"
-msgstr "عرض الحدود "
+msgstr "عرض الحدود"
 
 #: modules/demux/adaptive/adaptive.cpp:109
 #, fuzzy
@@ -16672,7 +16672,7 @@ msgstr ""
 #: modules/demux/adaptive/adaptive.cpp:126
 #, fuzzy
 msgid "Adaptive"
-msgstr "متأمّل "
+msgstr "متأمّل"
 
 #: modules/demux/adaptive/adaptive.cpp:127
 msgid "Unified adaptive streaming for DASH/HLS"
@@ -16732,7 +16732,7 @@ msgstr ""
 
 #: modules/demux/avi/avi.c:59
 msgid "Force interleaved method"
-msgstr "اسلوب القوة بين- الاجازه "
+msgstr "اسلوب القوة بين- الاجازه"
 
 #: modules/demux/avi/avi.c:61
 msgid "Force index creation"
@@ -16798,7 +16798,7 @@ msgstr ""
 
 #: modules/demux/avi/avi.c:2839
 msgid "Fixing AVI Index..."
-msgstr "...AVI تثبيث الفهرس "
+msgstr "...AVI تثبيث الفهرس"
 
 #: modules/demux/caf.c:52
 msgid "CAF demuxer"
@@ -16920,11 +16920,11 @@ msgstr ""
 
 #: modules/demux/mjpeg.c:51
 msgid "M-JPEG camera demuxer"
-msgstr " M-JPEG demuxer‎  آلة تصوير"
+msgstr "M-JPEG demuxer‎  آلة تصوير"
 
 #: modules/demux/mkv/mkv.cpp:56
 msgid "Matroska stream demuxer"
-msgstr " demuxer‎  Matroska    تيار "
+msgstr "demuxer‎  Matroska    تيار"
 
 #: modules/demux/mkv/mkv.cpp:62
 msgid "Respect ordered chapters"
@@ -16940,7 +16940,7 @@ msgstr "شفرة الفصل"
 
 #: modules/demux/mkv/mkv.cpp:67
 msgid "Use chapter codecs found in the segment."
-msgstr "إستخدامشفرة الفصل في الجزء "
+msgstr "إستخدامشفرة الفصل في الجزء"
 
 #: modules/demux/mkv/mkv.cpp:70
 msgid "Preload MKV files in the same directory"
@@ -16964,7 +16964,7 @@ msgstr "العناصر الافتراضية"
 
 #: modules/demux/mkv/mkv.cpp:79
 msgid "Read and discard unknown EBML elements (not good for broken files)."
-msgstr "(ليس جيد بانسبة للملفات المعطوبة) EBML قراءة و نبذ مجهول لعناصر "
+msgstr "(ليس جيد بانسبة للملفات المعطوبة) EBML قراءة و نبذ مجهول لعناصر"
 
 #: modules/demux/mkv/mkv.cpp:82
 #, fuzzy
@@ -16991,7 +16991,7 @@ msgstr "(مستوى النتيجة (من 0 إلى 100، القيمة الافت�
 #: modules/demux/mod.c:58
 #, fuzzy
 msgid "Reverberation delay, in ms. Usual values are from 40 to 200ms."
-msgstr "تأخر النتيجة، بـ م ثا.العادي للقيم من 40 إلى 200 م ثا "
+msgstr "تأخر النتيجة، بـ م ثا.العادي للقيم من 40 إلى 200 م ثا"
 
 #: modules/demux/mod.c:60
 msgid "Enable megabass mode"
@@ -17045,7 +17045,7 @@ msgstr "محيطا"
 
 #: modules/demux/mod.c:96
 msgid "Surround level"
-msgstr "محاصرته مستوى "
+msgstr "محاصرته مستوى"
 
 #: modules/demux/mod.c:98
 msgid "Surround delay (ms)"
@@ -17083,7 +17083,7 @@ msgstr "تجاهل"
 #: modules/demux/mp4/meta.c:75
 #, fuzzy
 msgid "Requirements"
-msgstr "القطع "
+msgstr "القطع"
 
 #: modules/demux/mp4/meta.c:76
 #, fuzzy
@@ -17132,7 +17132,7 @@ msgstr "كلمات الأغنية"
 #: modules/demux/mp4/meta.c:85
 #, fuzzy
 msgid "Record Company"
-msgstr "نسبة التسجيل "
+msgstr "نسبة التسجيل"
 
 #: modules/demux/mp4/meta.c:86
 #, fuzzy
@@ -17244,7 +17244,7 @@ msgstr ""
 
 #: modules/demux/mp4/mp4.c:72
 msgid "MP4 stream demuxer"
-msgstr "انساب  MP4 demuxer‎ "
+msgstr "انساب  MP4 demuxer‎"
 
 #: modules/demux/mp4/mp4.c:73
 msgid "MP4"
@@ -17287,7 +17287,7 @@ msgstr ""
 
 #: modules/demux/mpeg/h26x.c:52 modules/demux/mpeg/h26x.c:54
 msgid "H264 video demuxer"
-msgstr "H264  فيديو  demuxer‎ "
+msgstr "H264  فيديو  demuxer‎"
 
 #: modules/demux/mpeg/h26x.c:63 modules/demux/mpeg/h26x.c:65
 msgid "HEVC/H.265 video demuxer"
@@ -17295,11 +17295,11 @@ msgstr ""
 
 #: modules/demux/mpeg/mpgv.c:44
 msgid "MPEG-I/II video demuxer"
-msgstr "MPEG-I/II فيديو  demuxer‎ "
+msgstr "MPEG-I/II فيديو  demuxer‎"
 
 #: modules/demux/mpeg/ps.c:43
 msgid "Trust MPEG timestamps"
-msgstr " MPEG  تأمين  وقت الطوابع "
+msgstr "MPEG  تأمين  وقت الطوابع"
 
 #: modules/demux/mpeg/ps.c:44
 msgid ""
@@ -17312,7 +17312,7 @@ msgstr ""
 
 #: modules/demux/mpeg/ps.c:60
 msgid "MPEG-PS demuxer"
-msgstr "MPEG-PS demuxer‎ "
+msgstr "MPEG-PS demuxer‎"
 
 #: modules/demux/mpeg/ps.c:61
 msgid "PS"
@@ -17329,7 +17329,7 @@ msgstr ""
 
 #: modules/demux/mpeg/ts.c:89
 msgid "Set id of ES to PID"
-msgstr "PID  إلى   ES من  ID مجموعة  "
+msgstr "PID  إلى   ES من  ID مجموعة"
 
 #: modules/demux/mpeg/ts.c:90
 msgid ""
@@ -17409,15 +17409,15 @@ msgstr ""
 
 #: modules/demux/mpeg/ts.c:141
 msgid "MPEG Transport Stream demuxer"
-msgstr "demuxer MPEG جدول النقل "
+msgstr "demuxer MPEG جدول النقل"
 
 #: modules/demux/mpeg/ts_descriptions.h:24
 msgid "clean effects"
-msgstr " مُؤَثرالتنظيف"
+msgstr "مُؤَثرالتنظيف"
 
 #: modules/demux/mpeg/ts_descriptions.h:25
 msgid "visual impaired commentary"
-msgstr "التعليق إعاقة بصريه "
+msgstr "التعليق إعاقة بصريه"
 
 #: modules/demux/mpeg/ts_descriptions.h:27
 #, fuzzy
@@ -17432,7 +17432,7 @@ msgstr "لا يوجد تفاصيل لهذا الكوديك"
 #: modules/demux/mpeg/ts_descriptions.h:29
 #, fuzzy
 msgid "Clean audio for the hearing impaired"
-msgstr "تالف السمع 16:9 "
+msgstr "تالف السمع 16:9"
 
 #: modules/demux/mpeg/ts_descriptions.h:30
 msgid "Spoken subtitles for the visually impaired"
@@ -17492,15 +17492,15 @@ msgstr "NullSoft demuxer"
 
 #: modules/demux/nuv.c:51
 msgid "Nuv demuxer"
-msgstr "Nuv demuxer‎ "
+msgstr "Nuv demuxer‎"
 
 #: modules/demux/ogg.c:65
 msgid "OGG demuxer"
-msgstr "OGG demuxer‎ "
+msgstr "OGG demuxer‎"
 
 #: modules/demux/playlist/playlist.c:46
 msgid "Show shoutcast adult content"
-msgstr "  Shoutcast   إظهار  محتوى   الكبار    "
+msgstr "Shoutcast   إظهار  محتوى   الكبار"
 
 #: modules/demux/playlist/playlist.c:47
 msgid "Show NC17 rated video streams when using shoutcast video playlists."
@@ -17528,7 +17528,7 @@ msgstr "قائمة التشغيل"
 
 #: modules/demux/playlist/playlist.c:64
 msgid "M3U playlist import"
-msgstr "M3U  استيراد قائمة التشغيل "
+msgstr "M3U  استيراد قائمة التشغيل"
 
 #: modules/demux/playlist/playlist.c:70
 msgid "RAM playlist import"
@@ -17536,7 +17536,7 @@ msgstr ""
 
 #: modules/demux/playlist/playlist.c:74
 msgid "PLS playlist import"
-msgstr "PLS  استيراد قائمة التشغيل "
+msgstr "PLS  استيراد قائمة التشغيل"
 
 #: modules/demux/playlist/playlist.c:78
 msgid "B4S playlist import"
@@ -17548,11 +17548,11 @@ msgstr "DVB استيراد قائمة التشغيل"
 
 #: modules/demux/playlist/playlist.c:88
 msgid "Podcast parser"
-msgstr "نشرة المعرب اللغوي "
+msgstr "نشرة المعرب اللغوي"
 
 #: modules/demux/playlist/playlist.c:93
 msgid "XSPF playlist import"
-msgstr "XSPF  إستراد قائمة التشغيل "
+msgstr "XSPF  إستراد قائمة التشغيل"
 
 #: modules/demux/playlist/playlist.c:97
 msgid "ASX playlist import"
@@ -17560,11 +17560,11 @@ msgstr "استيراد قائمة التشغيل ASX"
 
 #: modules/demux/playlist/playlist.c:101
 msgid "Kasenna MediaBase parser"
-msgstr "معرب  قاعده الإعلام  كاسيننا "
+msgstr "معرب  قاعده الإعلام  كاسيننا"
 
 #: modules/demux/playlist/playlist.c:106
 msgid "QuickTime Media Link importer"
-msgstr "QuickTime  إستيراد رابط الإعلام "
+msgstr "QuickTime  إستيراد رابط الإعلام"
 
 #: modules/demux/playlist/playlist.c:111
 msgid "Dummy IFO demux"
@@ -17669,7 +17669,7 @@ msgstr "الإشباع"
 
 #: modules/demux/pva.c:44
 msgid "PVA demuxer"
-msgstr "PVA demuxer‎ "
+msgstr "PVA demuxer‎"
 
 #: modules/demux/rawaud.c:43
 msgid "Audio sample rate in Hertz. Default is 48000 Hz."
@@ -17713,7 +17713,7 @@ msgstr ""
 
 #: modules/demux/rawdv.c:50
 msgid "DV (Digital Video) demuxer"
-msgstr "DV (الفيديو الرقمي) demuxer‎ "
+msgstr "DV (الفيديو الرقمي) demuxer‎"
 
 #: modules/demux/rawvid.c:43
 msgid ""
@@ -17777,7 +17777,7 @@ msgstr ""
 
 #: modules/demux/tta.c:45
 msgid "TTA demuxer"
-msgstr "TTA demuxer‎ "
+msgstr "TTA demuxer‎"
 
 #: modules/demux/ty.c:62
 msgid "TY"
@@ -17817,11 +17817,11 @@ msgstr ""
 
 #: modules/demux/wav.c:737
 msgid "WAV demuxer"
-msgstr "WAV demuxer‎ "
+msgstr "WAV demuxer‎"
 
 #: modules/demux/xa.c:42
 msgid "XA demuxer"
-msgstr "XA demuxer‎ "
+msgstr "XA demuxer‎"
 
 #: modules/demux/xiph_metadata.c:548
 msgid "Unknown category"
@@ -18350,15 +18350,15 @@ msgstr "مجموعة الشفافيه في نتاج الفيديو. 1 غير ش�
 
 #: modules/gui/macosx/main/macosx.m:58
 msgid "Black screens in fullscreen"
-msgstr "الشاشه سوداء في كامل شاشة "
+msgstr "الشاشه سوداء في كامل شاشة"
 
 #: modules/gui/macosx/main/macosx.m:59
 msgid "In fullscreen mode, keep screen where there is no video displayed black"
-msgstr "في اسلوب شاشة كاملة ، تبقى الشاشه التي لا يوجد فيديو يظهر اسود "
+msgstr "في اسلوب شاشة كاملة ، تبقى الشاشه التي لا يوجد فيديو يظهر اسود"
 
 #: modules/gui/macosx/main/macosx.m:62
 msgid "Auto-playback of new items"
-msgstr "الإعادة آلية لبنود جديدة "
+msgstr "الإعادة آلية لبنود جديدة"
 
 #: modules/gui/macosx/main/macosx.m:63
 msgid "Start playback of new items immediately once they were added."
@@ -18804,7 +18804,7 @@ msgstr "تقديم للأمام"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:408
 msgid "Step Backward"
-msgstr "تقديم للخلف "
+msgstr "تقديم للخلف"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:409
 #: modules/gui/macosx/panels/VLCTimeSelectionPanelController.m:52
@@ -18819,7 +18819,7 @@ msgstr "جهاز العرض"
 #: modules/gui/macosx/menus/VLCMainMenu.m:411
 #, fuzzy
 msgid "No renderer"
-msgstr "تَصْيِر النص "
+msgstr "تَصْيِر النص"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:416
 #: modules/gui/macosx/menus/VLCMainMenu.m:417
@@ -18862,7 +18862,7 @@ msgstr "حجم مضاعف"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:436
 msgid "Fit to Screen"
-msgstr "يصلح لفرز "
+msgstr "يصلح لفرز"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:438
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:454
@@ -18919,7 +18919,7 @@ msgstr ""
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:473
 msgid "Background Color"
-msgstr "لون الخلفية "
+msgstr "لون الخلفية"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:475
 #: modules/text_renderer/freetype/freetype.c:134
@@ -19189,7 +19189,7 @@ msgstr ""
 
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:240
 msgid "2 Pass"
-msgstr "ممر 2  "
+msgstr "ممر 2"
 
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:243
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1154
@@ -19279,7 +19279,7 @@ msgstr ""
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:270
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:190
 msgid "Headphone virtualization"
-msgstr "virtualization السماعة "
+msgstr "virtualization السماعة"
 
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:277
 msgid "Volume normalization"
@@ -19454,12 +19454,12 @@ msgstr ""
 
 #: modules/gui/macosx/panels/VLCInformationWindowController.m:192
 msgid "Read at media"
-msgstr "قراءة في الاعلام "
+msgstr "قراءة في الاعلام"
 
 #: modules/gui/macosx/panels/VLCInformationWindowController.m:193
 #: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:587
 msgid "Input bitrate"
-msgstr " مساهمة معدل البت "
+msgstr "مساهمة معدل البت"
 
 #: modules/gui/macosx/panels/VLCInformationWindowController.m:194
 msgid "Read packets"
@@ -19475,7 +19475,7 @@ msgstr ""
 
 #: modules/gui/macosx/panels/VLCInformationWindowController.m:197
 msgid "Stream bitrate"
-msgstr " انساب ‎نسبة البتات    "
+msgstr "انساب ‎نسبة البتات"
 
 #: modules/gui/macosx/panels/VLCInformationWindowController.m:198
 #, fuzzy
@@ -19741,7 +19741,7 @@ msgstr "صفوف"
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:401
 #: modules/video_splitter/clone.c:57
 msgid "Clone"
-msgstr "نسخه "
+msgstr "نسخه"
 
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:320
 #: modules/video_splitter/clone.c:39
@@ -19755,7 +19755,7 @@ msgstr ""
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:325
 #: modules/video_filter/colorthres.c:70
 msgid "Color threshold"
-msgstr "عتبة اللون "
+msgstr "عتبة اللون"
 
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:329
 #: modules/gui/qt/dialogs/extended/qml/VideoEffectsPanel.qml:37
@@ -19776,12 +19776,12 @@ msgstr "درجة التحدر"
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:338
 #: modules/video_filter/gradient.c:74
 msgid "Edge"
-msgstr "الحافه "
+msgstr "الحافه"
 
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:341
 #: modules/video_filter/gradient.c:74
 msgid "Hough"
-msgstr "هوغ "
+msgstr "هوغ"
 
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:345
 #: modules/gui/qt/dialogs/extended/qml/VideoEffectsPanel.qml:43
@@ -19794,7 +19794,7 @@ msgstr ""
 
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:349
 msgid "Invert colors"
-msgstr "عكس الألوان "
+msgstr "عكس الألوان"
 
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:350
 #: modules/gui/qt/dialogs/extended/qml/VideoEffectsPanel.qml:39
@@ -19862,7 +19862,7 @@ msgstr "علامة"
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:403
 #: modules/spu/mosaic.c:88 modules/stream_out/mosaic_bridge.c:696
 msgid "Transparency"
-msgstr "الشفافيه "
+msgstr "الشفافيه"
 
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:467
 msgid "Organize profiles..."
@@ -20068,7 +20068,7 @@ msgstr ""
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:419
 #, fuzzy
 msgid "Playback behaviour"
-msgstr "فشل اعادة التشغيل "
+msgstr "فشل اعادة التشغيل"
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:420
 msgid "Enable notifications on play queue item change"
@@ -20090,7 +20090,7 @@ msgstr "واجهة Qt"
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:429
 #, fuzzy
 msgid "Enable HTTP web interface"
-msgstr "واجهات Skinnable "
+msgstr "واجهات Skinnable"
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:433
 msgid "Default Encoding"
@@ -20171,7 +20171,7 @@ msgstr "املأ الشاشة"
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:458
 #, fuzzy
 msgid "Start in fullscreen"
-msgstr "إبدء بنمط الشاشة الكاملة "
+msgstr "إبدء بنمط الشاشة الكاملة"
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:459
 msgid "Black screens in Fullscreen mode"
@@ -20421,7 +20421,7 @@ msgstr "المصدر المفتوح"
 
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:197
 msgid "Media Resource Locator (MRL)"
-msgstr "موقع المصدر الإعلامي "
+msgstr "موقع المصدر الإعلامي"
 
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:199
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:259
@@ -20925,7 +20925,7 @@ msgstr ""
 
 #: modules/gui/macosx/windows/convertandsave/VLCOutput.m:63
 msgid "Streaming and Transcoding Options"
-msgstr "المسارات وخيارات عابرالشفرة "
+msgstr "المسارات وخيارات عابرالشفرة"
 
 #: modules/gui/macosx/windows/convertandsave/VLCOutput.m:65
 msgid "Display the stream locally"
@@ -20934,7 +20934,7 @@ msgstr "عرض تيار محليا"
 #: modules/gui/macosx/windows/convertandsave/VLCOutput.m:68
 #: modules/gui/qt/dialogs/sout/convert.cpp:107
 msgid "Dump raw input"
-msgstr "مدخلات التدفق الخام "
+msgstr "مدخلات التدفق الخام"
 
 #: modules/gui/macosx/windows/convertandsave/VLCOutput.m:79
 msgid "Encapsulation Method"
@@ -21008,7 +21008,7 @@ msgstr ""
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:136
 #, fuzzy
 msgid "Seek backward"
-msgstr "تقديم للخلف "
+msgstr "تقديم للخلف"
 
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:139
 msgid "Forward"
@@ -21117,7 +21117,7 @@ msgstr ""
 
 #: modules/gui/ncurses.c:82
 msgid "Ncurses interface"
-msgstr "Ncurses الوصله "
+msgstr "Ncurses الوصله"
 
 #: modules/gui/ncurses.c:89
 msgid "ncurses colors config"
@@ -21418,7 +21418,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr "اعادة تشغيل العنصر الحالي"
+msgstr " اعادة تشغيل العنصر الحالي"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -23116,7 +23116,7 @@ msgstr "نظام البث"
 
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1008
 msgid "Transponder/multiplex frequency"
-msgstr "تردد Transponder/multiplex "
+msgstr "تردد Transponder/multiplex"
 
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1018
 msgid "Transponder symbol rate"
@@ -23293,7 +23293,7 @@ msgstr "الإصدار"
 
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:1292
 msgid "Files"
-msgstr "ملفات "
+msgstr "ملفات"
 
 #: modules/gui/qt/dialogs/podcast/podcast_configuration.cpp:34
 msgid "Deletes the selected item"
@@ -24707,7 +24707,7 @@ msgstr "إظهار التحذيرات البسيطة"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:25
 #: modules/logger/file.c:225
 msgid "Log format"
-msgstr "سجل الصيغة "
+msgstr "سجل الصيغة"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:25
 msgid "Plain text"
@@ -25697,7 +25697,7 @@ msgstr "تضمين الفيديو"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
 msgid "Include subtitles"
-msgstr "إدراج العناوين الفرعية "
+msgstr "إدراج العناوين الفرعية"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:345
 msgid "Encoding preset"
@@ -25901,7 +25901,7 @@ msgstr "تم تحديد عدة ملفات."
 #: modules/gui/qt/dialogs/sout/convert.cpp:68 modules/stream_out/rtp.c:78
 #: modules/stream_out/udp.c:341
 msgid "Destination"
-msgstr "مقصد "
+msgstr "مقصد"
 
 #: modules/gui/qt/dialogs/sout/convert.cpp:71
 msgid "Destination file:"
@@ -25966,7 +25966,7 @@ msgstr "أداة الدمج هذه مفقودة. سيفشل استخدام مل�
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:802
 msgid " Profile Name Missing"
-msgstr "اسم الطور ناقص"
+msgstr " اسم الطور ناقص"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:803
 msgid "You must set a name for the profile."
@@ -30255,11 +30255,11 @@ msgstr ""
 
 #: modules/gui/skins2/src/skin_main.cpp:483
 msgid "Show a systray icon for VLC"
-msgstr "تظهر ايقونه سيستراي لل  VLC  "
+msgstr "تظهر ايقونه سيستراي لل  VLC"
 
 #: modules/gui/skins2/src/skin_main.cpp:484
 msgid "Show VLC on the taskbar"
-msgstr "VLCيظهر  على taskbar "
+msgstr "VLCيظهر  على taskbar"
 
 #: modules/gui/skins2/src/skin_main.cpp:485
 msgid "Enable transparency effects"
@@ -30275,7 +30275,7 @@ msgstr ""
 
 #: modules/gui/skins2/src/skin_main.cpp:489
 msgid "Use a skinned playlist"
-msgstr "إستعمال قائمة التشغيل المسلوخة "
+msgstr "إستعمال قائمة التشغيل المسلوخة"
 
 #: modules/gui/skins2/src/skin_main.cpp:490
 msgid "Display video in a skinned window if any"
@@ -30289,7 +30289,7 @@ msgstr ""
 
 #: modules/gui/skins2/src/skin_main.cpp:514
 msgid "Skinnable Interface"
-msgstr "واجهات Skinnable "
+msgstr "واجهات Skinnable"
 
 #: modules/gui/skins2/src/theme_repository.cpp:58
 msgid "Select skin"
@@ -30307,16 +30307,16 @@ msgstr ".مجموعة صورة مقارنة بين 0 و 2. التقصير الى
 
 #: modules/hw/d3d11/d3d11_filters.c:79 modules/hw/d3d9/d3d9_filters.c:69
 msgid "Image hue (0-360)"
-msgstr "  (تدرج لون الصورة(0-360"
+msgstr "(تدرج لون الصورة(0-360"
 
 #: modules/hw/d3d11/d3d11_filters.c:80 modules/hw/d3d9/d3d9_filters.c:70
 msgid "Set the image hue, between 0 and 360. Defaults to 0."
-msgstr "مجموعة صورة الشكل ، بين 0 و 360. 0 الى التقصير. "
+msgstr "مجموعة صورة الشكل ، بين 0 و 360. 0 الى التقصير."
 
 #: modules/hw/d3d11/d3d11_filters.c:81 modules/hw/d3d9/d3d9_filters.c:71
 #: modules/video_filter/adjust.c:60
 msgid "Image saturation (0-3)"
-msgstr "  (اشباع الصورة(0-3"
+msgstr "(اشباع الصورة(0-3"
 
 #: modules/hw/d3d11/d3d11_filters.c:82 modules/hw/d3d9/d3d9_filters.c:72
 #: modules/video_filter/adjust.c:61
@@ -30331,12 +30331,12 @@ msgstr "اضاءة الصورة(0-2)"
 #: modules/hw/d3d11/d3d11_filters.c:84 modules/hw/d3d9/d3d9_filters.c:74
 #: modules/video_filter/adjust.c:63
 msgid "Set the image brightness, between 0 and 2. Defaults to 1."
-msgstr "مجموعة صورة السطوح بين 0 و 2. التقصير الى 1. "
+msgstr "مجموعة صورة السطوح بين 0 و 2. التقصير الى 1."
 
 #: modules/hw/d3d11/d3d11_filters.c:85 modules/hw/d3d9/d3d9_filters.c:75
 #: modules/video_filter/adjust.c:64
 msgid "Image gamma (0-10)"
-msgstr "  (جاما الصورة(0-10"
+msgstr "(جاما الصورة(0-10"
 
 #: modules/hw/d3d11/d3d11_filters.c:86 modules/hw/d3d9/d3d9_filters.c:76
 #: modules/video_filter/adjust.c:65
@@ -30683,7 +30683,7 @@ msgstr "كن هادئا"
 #: modules/logger/console.c:166
 #, fuzzy
 msgid "Turn off all messages on the console."
-msgstr ".في نص ملف VLC سجل كل رسائل "
+msgstr ".في نص ملف VLC سجل كل رسائل"
 
 #: modules/logger/console.c:169
 #, fuzzy
@@ -30705,7 +30705,7 @@ msgstr "سجل في ملف"
 
 #: modules/logger/file.c:220
 msgid "Log all VLC messages to a text file."
-msgstr ".في نص ملف VLC سجل كل رسائل "
+msgstr ".في نص ملف VLC سجل كل رسائل"
 
 #: modules/logger/file.c:222
 msgid "Log filename"
@@ -30866,15 +30866,15 @@ msgstr "SOCKS إسم مستعمل"
 
 #: modules/lua/vlc.c:72
 msgid "User name to be used for connection to the SOCKS proxy."
-msgstr ".SOCKS إسم المستخدم للإستعمال في الإرتباطات مع الخادم   "
+msgstr ".SOCKS إسم المستخدم للإستعمال في الإرتباطات مع الخادم"
 
 #: modules/lua/vlc.c:74
 msgid "SOCKS password"
-msgstr "SOCKS كلمة السر "
+msgstr "SOCKS كلمة السر"
 
 #: modules/lua/vlc.c:76
 msgid "Password to be used for connection to the SOCKS proxy."
-msgstr ".SOCKS كلمة السر للإستعمال في الإرتباطات مع الخادم  "
+msgstr ".SOCKS كلمة السر للإستعمال في الإرتباطات مع الخادم"
 
 #: modules/lua/vlc.c:79
 msgid ""
@@ -30887,7 +30887,7 @@ msgstr ""
 msgid ""
 "This is the TCP port on which this interface will listen. It defaults to "
 "4212."
-msgstr "على هذه الواجهة التي سوف تستمع .افتراضي انه 4212 TCP هذا هو المنفذ "
+msgstr "على هذه الواجهة التي سوف تستمع .افتراضي انه 4212 TCP هذا هو المنفذ"
 
 #: modules/lua/vlc.c:816
 msgid "Lua"
@@ -30971,7 +30971,7 @@ msgstr "ذعر"
 
 #: modules/meta_engine/ID3Genres.h:39
 msgid "Grunge"
-msgstr "الجرونج "
+msgstr "الجرونج"
 
 #: modules/meta_engine/ID3Genres.h:40
 msgid "Hip-Hop"
@@ -31047,7 +31047,7 @@ msgstr "إِذَابَة"
 
 #: modules/meta_engine/ID3Genres.h:64
 msgid "Trance"
-msgstr "غيبوبه "
+msgstr "غيبوبه"
 
 #: modules/meta_engine/ID3Genres.h:66
 msgid "Instrumental"
@@ -31055,11 +31055,11 @@ msgstr "ذو دور فعال"
 
 #: modules/meta_engine/ID3Genres.h:67
 msgid "Acid"
-msgstr "حمض "
+msgstr "حمض"
 
 #: modules/meta_engine/ID3Genres.h:68
 msgid "House"
-msgstr "منزل "
+msgstr "منزل"
 
 #: modules/meta_engine/ID3Genres.h:70
 msgid "Sound Clip"
@@ -31067,7 +31067,7 @@ msgstr ""
 
 #: modules/meta_engine/ID3Genres.h:71
 msgid "Gospel"
-msgstr "الإنجيل "
+msgstr "الإنجيل"
 
 #: modules/meta_engine/ID3Genres.h:72
 msgid "Noise"
@@ -31079,15 +31079,15 @@ msgstr ""
 
 #: modules/meta_engine/ID3Genres.h:74
 msgid "Bass"
-msgstr "البأس "
+msgstr "البأس"
 
 #: modules/meta_engine/ID3Genres.h:75
 msgid "Soul"
-msgstr "الروح "
+msgstr "الروح"
 
 #: modules/meta_engine/ID3Genres.h:76
 msgid "Punk"
-msgstr "شرير "
+msgstr "شرير"
 
 #: modules/meta_engine/ID3Genres.h:77
 msgid "Space"
@@ -31095,7 +31095,7 @@ msgstr "الفضاء"
 
 #: modules/meta_engine/ID3Genres.h:78
 msgid "Meditative"
-msgstr "متأمّل "
+msgstr "متأمّل"
 
 #: modules/meta_engine/ID3Genres.h:79
 msgid "Instrumental Pop"
@@ -31107,11 +31107,11 @@ msgstr ""
 
 #: modules/meta_engine/ID3Genres.h:81
 msgid "Ethnic"
-msgstr "التطهير "
+msgstr "التطهير"
 
 #: modules/meta_engine/ID3Genres.h:83
 msgid "Darkwave"
-msgstr "موجة قاتمه "
+msgstr "موجة قاتمه"
 
 #: modules/meta_engine/ID3Genres.h:84
 msgid "Techno-Industrial"
@@ -31119,7 +31119,7 @@ msgstr "تقنيه صناعيه"
 
 #: modules/meta_engine/ID3Genres.h:85
 msgid "Electronic"
-msgstr "ألكتروني "
+msgstr "ألكتروني"
 
 #: modules/meta_engine/ID3Genres.h:86
 msgid "Pop-Folk"
@@ -31131,7 +31131,7 @@ msgstr "رقص اوروبي"
 
 #: modules/meta_engine/ID3Genres.h:88
 msgid "Dream"
-msgstr "حلم "
+msgstr "حلم"
 
 #: modules/meta_engine/ID3Genres.h:89
 msgid "Southern Rock"
@@ -31139,15 +31139,15 @@ msgstr ""
 
 #: modules/meta_engine/ID3Genres.h:90
 msgid "Comedy"
-msgstr "كوميديا "
+msgstr "كوميديا"
 
 #: modules/meta_engine/ID3Genres.h:91
 msgid "Cult"
-msgstr "طائفه "
+msgstr "طائفه"
 
 #: modules/meta_engine/ID3Genres.h:92
 msgid "Gangsta"
-msgstr "غانغستا "
+msgstr "غانغستا"
 
 #: modules/meta_engine/ID3Genres.h:93
 msgid "Top 40"
@@ -31163,7 +31163,7 @@ msgstr ""
 
 #: modules/meta_engine/ID3Genres.h:96
 msgid "Jungle"
-msgstr "الغابة "
+msgstr "الغابة"
 
 #: modules/meta_engine/ID3Genres.h:97
 msgid "Native American"
@@ -31171,7 +31171,7 @@ msgstr "أمريكي أصلي"
 
 #: modules/meta_engine/ID3Genres.h:98
 msgid "Cabaret"
-msgstr "ملهى "
+msgstr "ملهى"
 
 #: modules/meta_engine/ID3Genres.h:99
 msgid "New Wave"
@@ -31179,7 +31179,7 @@ msgstr ""
 
 #: modules/meta_engine/ID3Genres.h:101
 msgid "Rave"
-msgstr "الهذيان "
+msgstr "الهذيان"
 
 #: modules/meta_engine/ID3Genres.h:102
 msgid "Showtunes"
@@ -31187,7 +31187,7 @@ msgstr "اظهار التردد"
 
 #: modules/meta_engine/ID3Genres.h:103
 msgid "Trailer"
-msgstr "مقطوره "
+msgstr "مقطوره"
 
 #: modules/meta_engine/ID3Genres.h:104
 msgid "Lo-Fi"
@@ -31195,7 +31195,7 @@ msgstr "Lo-Fi"
 
 #: modules/meta_engine/ID3Genres.h:105
 msgid "Tribal"
-msgstr "القبائل "
+msgstr "القبائل"
 
 #: modules/meta_engine/ID3Genres.h:106
 msgid "Acid Punk"
@@ -31207,11 +31207,11 @@ msgstr ""
 
 #: modules/meta_engine/ID3Genres.h:108
 msgid "Polka"
-msgstr "البولكا "
+msgstr "البولكا"
 
 #: modules/meta_engine/ID3Genres.h:109
 msgid "Retro"
-msgstr "ريترو "
+msgstr "ريترو"
 
 #: modules/meta_engine/ID3Genres.h:110
 msgid "Musical"
@@ -31513,7 +31513,7 @@ msgstr ""
 #: modules/misc/addons/vorepository.c:61
 #, fuzzy
 msgid "Videolan.org's addons finder"
-msgstr "تحويل الفيديو المرشح "
+msgstr "تحويل الفيديو المرشح"
 
 #: modules/misc/addons/vorepository.c:63
 msgid "addons.videolan.org addons finder"
@@ -31895,7 +31895,7 @@ msgstr "الخام muxer الإفتراضي"
 
 #: modules/mux/mp4/mp4.c:55
 msgid "Create \"Fast Start\" files"
-msgstr "إنشاء\"بداية سريعه\"   للملفات "
+msgstr "إنشاء\"بداية سريعه\"   للملفات"
 
 #: modules/mux/mp4/mp4.c:57
 msgid ""
@@ -31979,7 +31979,7 @@ msgstr "TS ID"
 
 #: modules/mux/mpeg/ts.c:115
 msgid "Assign a fixed Transport Stream ID."
-msgstr " .ا لى هوية تيار النقل   PID تكليف ثابت"
+msgstr ".ا لى هوية تيار النقل   PID تكليف ثابت"
 
 #: modules/mux/mpeg/ts.c:116
 msgid "NET ID"
@@ -32062,7 +32062,7 @@ msgstr ""
 
 #: modules/mux/mpeg/ts.c:146
 msgid "Use keyframes"
-msgstr "إستخدامالمفتاح الرئيسي "
+msgstr "إستخدامالمفتاح الرئيسي"
 
 #: modules/mux/mpeg/ts.c:147
 msgid ""
@@ -32170,7 +32170,7 @@ msgstr "بليز muxer"
 
 #: modules/notify/notify.c:61
 msgid "Timeout (ms)"
-msgstr "(مهلة(ملي ثا "
+msgstr "(مهلة(ملي ثا"
 
 #: modules/notify/notify.c:62
 #, fuzzy
@@ -32183,7 +32183,7 @@ msgstr "أشعر"
 
 #: modules/notify/notify.c:67
 msgid "LibNotify Notification Plugin"
-msgstr " ابلاغ ملحق  الاخطار -Lib"
+msgstr "ابلاغ ملحق  الاخطار -Lib"
 
 #: modules/notify/osx_notifications.m:335
 msgid "macOS notifications plugin"
@@ -32191,7 +32191,7 @@ msgstr ""
 
 #: modules/packetizer/a52.c:49
 msgid "A/52 audio packetizer"
-msgstr "A/52 المحزَّم السمعي "
+msgstr "A/52 المحزَّم السمعي"
 
 #: modules/packetizer/av1.c:585
 msgid "AV1 video packetizer"
@@ -32203,7 +32203,7 @@ msgstr ""
 
 #: modules/packetizer/copy.c:46
 msgid "Copy packetizer"
-msgstr "نسخة المُحَزَّمْ "
+msgstr "نسخة المُحَزَّمْ"
 
 #: modules/packetizer/dts.c:48
 msgid "DTS audio packetizer"
@@ -32235,7 +32235,7 @@ msgstr "MPEG4 الفيديو  المُحَزَّمْ"
 
 #: modules/packetizer/mpegaudio.c:85
 msgid "MPEG audio layer I/II/III packetizer"
-msgstr "السمعي   المحزَّم MPEG layer I/II/III "
+msgstr "السمعي   المحزَّم MPEG layer I/II/III"
 
 #: modules/packetizer/mpegvideo.c:62
 msgid "Sync on Intra Frame"
@@ -32259,17 +32259,17 @@ msgstr ""
 
 #: modules/packetizer/vc1.c:54
 msgid "VC-1 packetizer"
-msgstr "VC-1 باكيتيزير "
+msgstr "VC-1 باكيتيزير"
 
 #: modules/services_discovery/avahi.c:56 modules/services_discovery/avahi.c:497
 #, fuzzy
 msgid "Zeroconf network services"
-msgstr "الخدمات صباح الخير "
+msgstr "الخدمات صباح الخير"
 
 #: modules/services_discovery/avahi.c:61
 #, fuzzy
 msgid "Zeroconf services"
-msgstr "الخدمات صباح الخير "
+msgstr "الخدمات صباح الخير"
 
 #: modules/services_discovery/avahi.c:69
 msgid "Avahi Renderer Discovery"
@@ -32280,12 +32280,12 @@ msgstr ""
 #: modules/services_discovery/bonjour.m:491
 #, fuzzy
 msgid "Bonjour Network Discovery"
-msgstr "الخدمات صباح الخير "
+msgstr "الخدمات صباح الخير"
 
 #: modules/services_discovery/bonjour.m:71
 #, fuzzy
 msgid "Bonjour Renderer Discovery"
-msgstr "الخدمات صباح الخير "
+msgstr "الخدمات صباح الخير"
 
 #: modules/services_discovery/microdns.c:46
 #: modules/services_discovery/microdns.c:59
@@ -32314,7 +32314,7 @@ msgstr "مواقع قوائم النشرة"
 
 #: modules/services_discovery/podcast.c:57
 msgid "Enter the list of podcasts to retrieve, separated by '|' (pipe)."
-msgstr "دخول قائمة النشرة للاسترجاع ،يفصل '|' (الانابيب). "
+msgstr "دخول قائمة النشرة للاسترجاع ،يفصل '|' (الانابيب)."
 
 #: modules/services_discovery/pulse.c:39 modules/services_discovery/pulse.c:42
 #: modules/services_discovery/pulse.c:82 modules/services_discovery/udev.c:65
@@ -32332,11 +32332,11 @@ msgstr "عام"
 
 #: modules/services_discovery/sap.c:265
 msgid "Session"
-msgstr "الجلسة "
+msgstr "الجلسة"
 
 #: modules/services_discovery/sap.c:265
 msgid "Tool"
-msgstr "أداة "
+msgstr "أداة"
 
 #: modules/services_discovery/sap.c:647 modules/services_discovery/sap.c:710
 #: modules/services_discovery/sap.c:714
@@ -32362,7 +32362,7 @@ msgstr "مدة (ثانية) SAP"
 #: modules/services_discovery/sap.c:702
 msgid ""
 "Delay after which SAP items get deleted if no new announcement is received."
-msgstr "بعد التأخير الذي يحصل  SAP  حذف بنود جديدة اذا لم يرد الاعلان. "
+msgstr "بعد التأخير الذي يحصل  SAP  حذف بنود جديدة اذا لم يرد الاعلان."
 
 #: modules/services_discovery/sap.c:704
 msgid "Try to parse the announce"
@@ -32550,7 +32550,7 @@ msgstr "تطبيقات"
 #: modules/spu/audiobargraph_v.c:47
 #, fuzzy
 msgid "Bar width in pixel"
-msgstr "عرض الحدود "
+msgstr "عرض الحدود"
 
 #: modules/spu/audiobargraph_v.c:48
 msgid "Width in pixel of each bar in the BarGraph to be displayed."
@@ -32582,12 +32582,12 @@ msgstr ""
 #: modules/spu/common.h:27 modules/stream_out/mosaic_bridge.c:700
 #: share/lua/http/dialogs/mosaic_window.html:100
 msgid "X offset"
-msgstr " X جزئيا "
+msgstr "X جزئيا"
 
 #: modules/spu/common.h:28 modules/stream_out/mosaic_bridge.c:704
 #: share/lua/http/dialogs/mosaic_window.html:118
 msgid "Y offset"
-msgstr "Y جزئيا "
+msgstr "Y جزئيا"
 
 #: modules/spu/common.h:29
 msgid "X offset, from top-left, or from relative position."
@@ -32726,7 +32726,7 @@ msgstr "حجم الخط، بيكسل"
 #: modules/spu/marq.c:108 modules/spu/rss.c:146
 #, fuzzy
 msgid "Font size, in pixels. Default is 0 (use default font size)."
-msgstr "حجم الخط في البكسل. التقصير -1 (إستخدامالخط حجم التقصير). "
+msgstr "حجم الخط في البكسل. التقصير -1 (إستخدامالخط حجم التقصير)."
 
 #: modules/spu/marq.c:112 modules/spu/rss.c:150
 msgid ""
@@ -32767,7 +32767,7 @@ msgstr "الطول الاجمالي للالموزاييك في البكسل."
 
 #: modules/spu/mosaic.c:96
 msgid "Total width of the mosaic, in pixels."
-msgstr "العرض الاجمالي للالموزاييك في البكسل.  "
+msgstr "العرض الاجمالي للالموزاييك في البكسل."
 
 #: modules/spu/mosaic.c:98
 msgid "Top left corner X coordinate"
@@ -32787,11 +32787,11 @@ msgstr "المحور العيني من أعلى الزاويه اليسرى من
 
 #: modules/spu/mosaic.c:105
 msgid "Border width"
-msgstr "عرض الحدود "
+msgstr "عرض الحدود"
 
 #: modules/spu/mosaic.c:107
 msgid "Width in pixels of the border between miniatures."
-msgstr "العرض بالبكسل من الحدود بين المصغرون "
+msgstr "العرض بالبكسل من الحدود بين المصغرون"
 
 #: modules/spu/mosaic.c:108
 msgid "Border height"
@@ -32817,7 +32817,7 @@ msgstr ""
 
 #: modules/spu/mosaic.c:118
 msgid "Positioning method"
-msgstr "طريقة وضع "
+msgstr "طريقة وضع"
 
 #: modules/spu/mosaic.c:120
 msgid ""
@@ -32865,7 +32865,7 @@ msgstr "يبقى الحجم الأصلي"
 
 #: modules/spu/mosaic.c:141
 msgid "Keep the original size of mosaic elements."
-msgstr " يبقى الحجم الأصلي من عناصر  الفسيفساء"
+msgstr "يبقى الحجم الأصلي من عناصر  الفسيفساء"
 
 #: modules/spu/mosaic.c:143
 msgid "Elements order"
@@ -32910,11 +32910,11 @@ msgstr "آلي"
 
 #: modules/spu/mosaic.c:167
 msgid "fixed"
-msgstr "ثابت "
+msgstr "ثابت"
 
 #: modules/spu/mosaic.c:167
 msgid "offsets"
-msgstr "التعديلات "
+msgstr "التعديلات"
 
 #: modules/spu/mosaic.c:187
 msgid "Mosaic video sub source"
@@ -32922,7 +32922,7 @@ msgstr ""
 
 #: modules/spu/mosaic.c:188
 msgid "Mosaic"
-msgstr "الفسيفساء "
+msgstr "الفسيفساء"
 
 #: modules/spu/rss.c:132
 msgid "Feed URLs"
@@ -32998,7 +32998,7 @@ msgstr ""
 
 #: modules/spu/rss.c:205
 msgid "RSS and Atom feed display"
-msgstr "مصدر النشرة و الذرة العرض "
+msgstr "مصدر النشرة و الذرة العرض"
 
 #: modules/spu/subsdelay.c:45
 msgid "Change subtitle delay"
@@ -33283,7 +33283,7 @@ msgstr "جسر جدول الانتاج"
 
 #: modules/stream_out/bridge.c:95
 msgid "Bridge out"
-msgstr "خارج  جسرا "
+msgstr "خارج  جسرا"
 
 #: modules/stream_out/bridge.c:106
 msgid "Bridge in"
@@ -33398,11 +33398,11 @@ msgstr ""
 
 #: modules/stream_out/display.c:48
 msgid "Introduces a delay in the display of the stream."
-msgstr "يقدم اي تأخير في عرض للتيار. "
+msgstr "يقدم اي تأخير في عرض للتيار."
 
 #: modules/stream_out/display.c:57
 msgid "Display stream output"
-msgstr "عرض مخرج التيار "
+msgstr "عرض مخرج التيار"
 
 #: modules/stream_out/duplicate.c:46
 msgid "Duplicate stream output"
@@ -33443,7 +33443,7 @@ msgstr ""
 
 #: modules/stream_out/es.c:357
 msgid "This is the default muxer method that will be used."
-msgstr " التي يجب أن تستخدم Muxer  هذا هو التقصير الطريقة."
+msgstr "التي يجب أن تستخدم Muxer  هذا هو التقصير الطريقة."
 
 #: modules/stream_out/es.c:358
 msgid "Audio output muxer"
@@ -33459,7 +33459,7 @@ msgstr "موكسير خرج الفديو"
 
 #: modules/stream_out/es.c:363
 msgid "This is the muxer that will be used for video."
-msgstr "هذا هو موكسير التي ستستخدم فيديو. "
+msgstr "هذا هو موكسير التي ستستخدم فيديو."
 
 #: modules/stream_out/es.c:365
 msgid "Output URL"
@@ -33471,7 +33471,7 @@ msgstr "وهذا التقصير ناتج  URI."
 
 #: modules/stream_out/es.c:368
 msgid "Audio output URL"
-msgstr " الانتاج سمعي    URL"
+msgstr "الانتاج سمعي    URL"
 
 #: modules/stream_out/es.c:370
 msgid "This is the output URI that will be used for audio."
@@ -33483,7 +33483,7 @@ msgstr "مسار خرج الفيديو"
 
 #: modules/stream_out/es.c:373
 msgid "This is the output URI that will be used for video."
-msgstr "هذا هو الناتج  URI التي ستستخدم فيديو. "
+msgstr "هذا هو الناتج  URI التي ستستخدم فيديو."
 
 #: modules/stream_out/es.c:377
 msgid "Elementary stream output"
@@ -33491,11 +33491,11 @@ msgstr "الجدول الناتج الابتداءيه"
 
 #: modules/stream_out/gather.c:43
 msgid "Gathering stream output"
-msgstr "ا جتماع جدول الانتاج  "
+msgstr "ا جتماع جدول الانتاج"
 
 #: modules/stream_out/mosaic_bridge.c:675
 msgid "Specify an identifier string for this subpicture"
-msgstr "يحددوا هوية الخيط لهذا الصورة "
+msgstr "يحددوا هوية الخيط لهذا الصورة"
 
 #: modules/stream_out/mosaic_bridge.c:679
 #: modules/stream_out/transcode/transcode.c:69
@@ -33616,11 +33616,11 @@ msgstr ""
 
 #: modules/stream_out/rtp.c:87
 msgid "SAP announcing"
-msgstr "SAP الاعلان "
+msgstr "SAP الاعلان"
 
 #: modules/stream_out/rtp.c:88
 msgid "Announce this session with SAP."
-msgstr " أعلن هذه الدورة مع SAP."
+msgstr "أعلن هذه الدورة مع SAP."
 
 #: modules/stream_out/rtp.c:91
 msgid ""
@@ -33664,7 +33664,7 @@ msgstr ""
 
 #: modules/stream_out/rtp.c:108
 msgid "This allows you to specify the base port for the RTP streaming."
-msgstr "وهذا يتيح لك ان تحدد الأساس لميناء rtp المسارات. "
+msgstr "وهذا يتيح لك ان تحدد الأساس لميناء rtp المسارات."
 
 #: modules/stream_out/rtp.c:109
 msgid "Audio port"
@@ -33952,7 +33952,7 @@ msgstr ""
 #: share/lua/http/dialogs/create_stream.html:334
 #: share/lua/http/dialogs/create_stream.html:378
 msgid "Output destination"
-msgstr "الناتج المقصد "
+msgstr "الناتج المقصد"
 
 #: modules/stream_out/standard.c:49
 msgid ""
@@ -33997,7 +33997,7 @@ msgstr ""
 
 #: modules/stream_out/transcode/transcode.c:45
 msgid "Video encoder"
-msgstr "أداة ترميز الفيديو "
+msgstr "أداة ترميز الفيديو"
 
 #: modules/stream_out/transcode/transcode.c:47
 msgid ""
@@ -34007,7 +34007,7 @@ msgstr ".(هذا هو نموذج الترميز الفيديو التي ستست
 
 #: modules/stream_out/transcode/transcode.c:49
 msgid "Destination video codec"
-msgstr "المقصد ترميز  الفيديو "
+msgstr "المقصد ترميز  الفيديو"
 
 #: modules/stream_out/transcode/transcode.c:51
 msgid "This is the video codec that will be used."
@@ -34020,7 +34020,7 @@ msgstr "معدل بت الفيديو"
 
 #: modules/stream_out/transcode/transcode.c:54
 msgid "Target bitrate of the transcoded video stream."
-msgstr ".transcoded لتدفق الفيديو bitrate  الهدف "
+msgstr ".transcoded لتدفق الفيديو bitrate  الهدف"
 
 #: modules/stream_out/transcode/transcode.c:55
 msgid "Video scaling"
@@ -34028,7 +34028,7 @@ msgstr "الفيديو  المتسلق"
 
 #: modules/stream_out/transcode/transcode.c:57
 msgid "Scale factor to apply to the video while transcoding (eg: 0.25)"
-msgstr "عامل مقياس ينطبق على الفيديو بينما الترميز. (مثلا : 0.25) "
+msgstr "عامل مقياس ينطبق على الفيديو بينما الترميز. (مثلا : 0.25)"
 
 #: modules/stream_out/transcode/transcode.c:58
 msgid "Video frame-rate"
@@ -34044,7 +34044,7 @@ msgstr "إزالة تشابك الفيديو"
 
 #: modules/stream_out/transcode/transcode.c:63
 msgid "Deinterlace the video before encoding."
-msgstr "ديينتيرلاكي الفيديو قبل التشفير. "
+msgstr "ديينتيرلاكي الفيديو قبل التشفير."
 
 #: modules/stream_out/transcode/transcode.c:64
 msgid "Deinterlace module"
@@ -34056,19 +34056,19 @@ msgstr "يحدد ديينتيرلاكي نموذج الإستخدام."
 
 #: modules/stream_out/transcode/transcode.c:73
 msgid "Maximum video width"
-msgstr "اقصى عرض الفيديو "
+msgstr "اقصى عرض الفيديو"
 
 #: modules/stream_out/transcode/transcode.c:75
 msgid "Maximum output video width."
-msgstr "الناتج الاقصى عرض الفيديو. "
+msgstr "الناتج الاقصى عرض الفيديو."
 
 #: modules/stream_out/transcode/transcode.c:76
 msgid "Maximum video height"
-msgstr "الطول الاقصى الفيديو "
+msgstr "الطول الاقصى الفيديو"
 
 #: modules/stream_out/transcode/transcode.c:78
 msgid "Maximum output video height."
-msgstr "الناتج الاقصى اطول الفيديو. "
+msgstr "الناتج الاقصى اطول الفيديو."
 
 #: modules/stream_out/transcode/transcode.c:81
 msgid ""
@@ -34089,11 +34089,11 @@ msgstr ""
 
 #: modules/stream_out/transcode/transcode.c:88
 msgid "Destination audio codec"
-msgstr "المقصد السمعيه codec "
+msgstr "المقصد السمعيه codec"
 
 #: modules/stream_out/transcode/transcode.c:90
 msgid "This is the audio codec that will be used."
-msgstr "هذا هو ترميز السمعيه التي ستستخدم. "
+msgstr "هذا هو ترميز السمعيه التي ستستخدم."
 
 #: modules/stream_out/transcode/transcode.c:91
 #: share/lua/http/dialogs/create_stream.html:231
@@ -34102,7 +34102,7 @@ msgstr "معدل السمعيه قليلا"
 
 #: modules/stream_out/transcode/transcode.c:93
 msgid "Target bitrate of the transcoded audio stream."
-msgstr ".transcoded لتدفق السمعيbitrate  الهدف "
+msgstr ".transcoded لتدفق السمعيbitrate  الهدف"
 
 #: modules/stream_out/transcode/transcode.c:96
 msgid ""
@@ -34115,11 +34115,11 @@ msgstr ""
 
 #: modules/stream_out/transcode/transcode.c:102
 msgid "Number of audio channels in the transcoded streams."
-msgstr "عدد القنوات السمعيه مشفره عبر الانهار. "
+msgstr "عدد القنوات السمعيه مشفره عبر الانهار."
 
 #: modules/stream_out/transcode/transcode.c:103
 msgid "Audio filter"
-msgstr "مُرشَحات  الصوت "
+msgstr "مُرشَحات  الصوت"
 
 #: modules/stream_out/transcode/transcode.c:105
 msgid ""
@@ -34159,7 +34159,7 @@ msgstr ""
 
 #: modules/stream_out/transcode/transcode.c:125
 msgid "Number of threads"
-msgstr "عدد الخيوط "
+msgstr "عدد الخيوط"
 
 #: modules/stream_out/transcode/transcode.c:127
 msgid "Number of threads used for the transcoding."
@@ -34195,7 +34195,7 @@ msgstr ""
 
 #: modules/stream_out/transcode/transcode.c:157
 msgid "Transcode"
-msgstr "رمز عابر "
+msgstr "رمز عابر"
 
 #: modules/stream_out/transcode/transcode.c:158
 msgid "Transcode stream output"
@@ -34203,7 +34203,7 @@ msgstr "جدول الانتاج عبر مدونة"
 
 #: modules/stream_out/transcode/transcode.c:208
 msgid "Overlays/Subtitles"
-msgstr "يعلو / العناوين الثانوية "
+msgstr "يعلو / العناوين الثانوية"
 
 #: modules/stream_out/udp.c:339
 msgid "Use libavformat"
@@ -34272,7 +34272,7 @@ msgstr ""
 
 #: modules/text_renderer/freetype/freetype.c:69
 msgid "Text default color"
-msgstr "نص التقصير اللون "
+msgstr "نص التقصير اللون"
 
 #: modules/text_renderer/freetype/freetype.c:70
 msgid ""
@@ -34339,11 +34339,11 @@ msgstr "سميك"
 
 #: modules/text_renderer/freetype/freetype.c:139
 msgid "Text renderer"
-msgstr "تَصْيِر النص "
+msgstr "تَصْيِر النص"
 
 #: modules/text_renderer/freetype/freetype.c:140
 msgid "Freetype2 font renderer"
-msgstr "Freetype2 جعل  خط "
+msgstr "Freetype2 جعل  خط"
 
 #: modules/text_renderer/nsspeechsynthesizer.m:45
 msgid "Speech synthesis for Mac OS X"
@@ -34355,12 +34355,12 @@ msgstr ""
 
 #: modules/text_renderer/svg.c:71
 msgid "SVG template file"
-msgstr "SVG تقنية الملف "
+msgstr "SVG تقنية الملف"
 
 #: modules/text_renderer/svg.c:72
 msgid ""
 "Location of a file holding a SVG template for automatic string conversion"
-msgstr "نموذج لالية تحويل سلسلة     SVG      موقع   عقد الملف "
+msgstr "نموذج لالية تحويل سلسلة     SVG      موقع   عقد الملف"
 
 #: modules/text_renderer/tdummy.c:35
 msgid "Dummy font renderer"
@@ -34373,7 +34373,7 @@ msgstr ""
 #: modules/video_chroma/grey_yuv.c:55 modules/video_chroma/i422_i420.c:56
 #: modules/video_chroma/yuy2_i420.c:57 modules/video_chroma/yuy2_i422.c:57
 msgid "Conversions from "
-msgstr "التحويلات من"
+msgstr "التحويلات من "
 
 #: modules/video_chroma/i420_nv12.c:239
 msgid "YUV planar to semiplanar conversions"
@@ -34389,7 +34389,7 @@ msgstr ""
 
 #: modules/video_chroma/rv32.c:51
 msgid "RV32 conversion filter"
-msgstr " RV32 تحويل المرشح "
+msgstr "RV32 تحويل المرشح"
 
 #: modules/video_chroma/swscale.c:54 modules/video_output/xcb/render.c:773
 msgid "Scaling mode"
@@ -34409,7 +34409,7 @@ msgstr "(ثنائي مكعب (جودة عالية"
 
 #: modules/video_chroma/swscale.c:60
 msgid "Experimental"
-msgstr "تجريبى "
+msgstr "تجريبى"
 
 #: modules/video_chroma/swscale.c:60 modules/video_output/xcb/render.c:763
 msgid "Nearest neighbor (bad quality)"
@@ -34669,7 +34669,7 @@ msgstr ""
 
 #: modules/video_filter/bluescreen.c:43
 msgid "Bluescreen U value"
-msgstr " للشاشه الزرقاء   U القيمه"
+msgstr "للشاشه الزرقاء   U القيمه"
 
 #: modules/video_filter/bluescreen.c:45
 msgid ""
@@ -34693,7 +34693,7 @@ msgstr ""
 
 #: modules/video_filter/bluescreen.c:51
 msgid "Bluescreen U tolerance"
-msgstr "للشاشه الزرقاء   U التحمّل "
+msgstr "للشاشه الزرقاء   U التحمّل"
 
 #: modules/video_filter/bluescreen.c:53
 msgid ""
@@ -34705,7 +34705,7 @@ msgstr ""
 
 #: modules/video_filter/bluescreen.c:56
 msgid "Bluescreen V tolerance"
-msgstr "للشاشه الزرقاء   V التحمّل "
+msgstr "للشاشه الزرقاء   V التحمّل"
 
 #: modules/video_filter/bluescreen.c:58
 msgid ""
@@ -34903,7 +34903,7 @@ msgstr ""
 
 #: modules/video_filter/deinterlace/deinterlace.c:252
 msgid "Streaming deinterlace mode"
-msgstr "طريقة جري deinterlace "
+msgstr "طريقة جري deinterlace"
 
 #: modules/video_filter/deinterlace/deinterlace.c:253
 msgid "Deinterlace method to use for streaming."
@@ -34944,7 +34944,7 @@ msgstr ""
 
 #: modules/video_filter/deinterlace/deinterlace.c:300
 msgid "Deinterlacing video filter"
-msgstr "Deinterlacing  المرشح  الفيديو "
+msgstr "Deinterlacing  المرشح  الفيديو"
 
 #: modules/video_filter/dither.c:98
 msgid "Floyd-Steinberg"
@@ -35054,7 +35054,7 @@ msgstr "RGB  مُرشح   الفيديو إستخراج مكّونات"
 #: modules/video_filter/fps.c:45
 #, fuzzy
 msgid "FPS conversion video filter"
-msgstr " المرشح مقلوب الفيديو"
+msgstr "المرشح مقلوب الفيديو"
 
 #: modules/video_filter/fps.c:46
 #, fuzzy
@@ -35145,7 +35145,7 @@ msgstr ""
 
 #: modules/video_filter/gradient.c:79
 msgid "Gradient video filter"
-msgstr "مرشح تدّرج الفيديو "
+msgstr "مرشح تدّرج الفيديو"
 
 #: modules/video_filter/grain.c:53
 msgid "Variance of the gaussian noise"
@@ -35201,7 +35201,7 @@ msgstr ""
 
 #: modules/video_filter/invert.c:47
 msgid "Invert video filter"
-msgstr " المرشح مقلوب الفيديو"
+msgstr "المرشح مقلوب الفيديو"
 
 #: modules/video_filter/invert.c:48
 msgid "Color inversion"
@@ -35209,7 +35209,7 @@ msgstr "عكس اللون"
 
 #: modules/video_filter/magnify.c:48
 msgid "Magnify/Zoom interactive video filter"
-msgstr "تعظم / التصوير المرشح  الفيديو التفاعلي "
+msgstr "تعظم / التصوير المرشح  الفيديو التفاعلي"
 
 #: modules/video_filter/magnify.c:49
 msgid "Magnify"
@@ -35262,7 +35262,7 @@ msgstr ""
 
 #: modules/video_filter/motionblur.c:55
 msgid "Blur factor (1-127)"
-msgstr " (1-127) عامل الضبابيه"
+msgstr "(1-127) عامل الضبابيه"
 
 #: modules/video_filter/motionblur.c:56
 msgid "The degree of blurring from 1 to 127."
@@ -35270,7 +35270,7 @@ msgstr "درجة وضوح من 1 الى 127."
 
 #: modules/video_filter/motionblur.c:62
 msgid "Motion blur filter"
-msgstr "اقتراح مُرشَح   الضبابيه     "
+msgstr "اقتراح مُرشَح   الضبابيه"
 
 #: modules/video_filter/motiondetect.c:47
 msgid "Motion detect video filter"
@@ -35290,11 +35290,11 @@ msgstr "فتحCV   أمام الكشف مثلا المرشح"
 
 #: modules/video_filter/opencv_example.cpp:81
 msgid "OpenCV example"
-msgstr "CV  مثال فتح "
+msgstr "CV  مثال فتح"
 
 #: modules/video_filter/opencv_example.cpp:89
 msgid "Haar cascade filename"
-msgstr "Haar إسم الملف المتسلسل  "
+msgstr "Haar إسم الملف المتسلسل"
 
 #: modules/video_filter/opencv_example.cpp:90
 msgid "Name of XML file containing Haar cascade description"
@@ -35331,18 +35331,18 @@ msgstr "Wrapper  مُرشح  الفيديو  OpenCV"
 
 #: modules/video_filter/opencv_wrapper.cpp:72
 msgid "OpenCV"
-msgstr "CV فتح "
+msgstr "CV فتح"
 
 #: modules/video_filter/opencv_wrapper.cpp:77
 msgid "Scale factor (0.1-2.0)"
-msgstr "(0.1-2.0)عامل مقياس "
+msgstr "(0.1-2.0)عامل مقياس"
 
 #: modules/video_filter/opencv_wrapper.cpp:78
 #, fuzzy
 msgid ""
 "Amount by which to scale the picture before sending it to the internal "
 "OpenCV filter"
-msgstr "المبلغ الذي الحجم الصورة قبل ارساله إلى داخلية فتحCV  مرشح  "
+msgstr "المبلغ الذي الحجم الصورة قبل ارساله إلى داخلية فتحCV  مرشح"
 
 #: modules/video_filter/opencv_wrapper.cpp:80
 msgid "OpenCV filter chroma"
@@ -35351,11 +35351,11 @@ msgstr "chroma مُرشح  OpenCV"
 #: modules/video_filter/opencv_wrapper.cpp:81
 msgid ""
 "Chroma to convert picture to before sending it to the internal OpenCV filter"
-msgstr "OpenCV   كروماتحويل الصورة الى قبل ارساله الى المرشح الداخلية "
+msgstr "OpenCV   كروماتحويل الصورة الى قبل ارساله الى المرشح الداخلية"
 
 #: modules/video_filter/opencv_wrapper.cpp:84
 msgid "Wrapper filter output"
-msgstr "Wrapper  مُرشح  الإخراج "
+msgstr "Wrapper  مُرشح  الإخراج"
 
 #: modules/video_filter/opencv_wrapper.cpp:85
 msgid "Determines what (if any) video is displayed by the wrapper filter"
@@ -35367,7 +35367,7 @@ msgstr "OpenCV  لإسم المرشح الداخلي"
 
 #: modules/video_filter/opencv_wrapper.cpp:89
 msgid "Name of internal OpenCV plugin filter to use"
-msgstr "إسم الداخلي  OpenCV لمُلحَق المرشح  للإستخدام "
+msgstr "إسم الداخلي  OpenCV لمُلحَق المرشح  للإستخدام"
 
 #: modules/video_filter/posterize.c:61
 msgid "Posterize level (number of colors is cube of this value)"
@@ -35395,7 +35395,7 @@ msgstr ""
 
 #: modules/video_filter/postproc.c:73
 msgid "FFmpeg post processing filter chains"
-msgstr "ffmpeg سلاسل مرشح المعالجة المسبقة ل  "
+msgstr "ffmpeg سلاسل مرشح المعالجة المسبقة ل"
 
 #: modules/video_filter/postproc.c:81
 msgid "Video post processing filter"
@@ -35519,7 +35519,7 @@ msgstr "أحجيّة"
 
 #: modules/video_filter/ripple.c:51
 msgid "Ripple video filter"
-msgstr "المرشح  الفيديو الموجة "
+msgstr "المرشح  الفيديو الموجة"
 
 #: modules/video_filter/ripple.c:52
 msgid "Ripple"
@@ -35544,7 +35544,7 @@ msgstr ""
 
 #: modules/video_filter/rotate.c:70
 msgid "Rotate video filter"
-msgstr " المرشح  إدارة الفيديو"
+msgstr "المرشح  إدارة الفيديو"
 
 #: modules/video_filter/sam3.cpp:127
 msgid "Segment Anything Model 3 (SAM3) interactive filter"
@@ -35631,7 +35631,7 @@ msgstr ".نسبة تسجيل الصور. 3 يعني ان الصورة واحدة
 
 #: modules/video_filter/scene.c:76
 msgid "Filename prefix"
-msgstr " بادءه إسم الملف"
+msgstr "بادءه إسم الملف"
 
 #: modules/video_filter/scene.c:77
 msgid ""
@@ -35715,7 +35715,7 @@ msgstr ""
 
 #: modules/video_filter/transform.c:115
 msgid "Video transformation filter"
-msgstr "تحويل الفيديو المرشح "
+msgstr "تحويل الفيديو المرشح"
 
 #: modules/video_filter/transform.c:116
 msgid "Transformation"
@@ -35735,7 +35735,7 @@ msgstr ""
 
 #: modules/video_filter/wave.c:49
 msgid "Wave video filter"
-msgstr "المرشح موجة الفيديو "
+msgstr "المرشح موجة الفيديو"
 
 #: modules/video_filter/wave.c:50
 msgid "Wave"
@@ -35978,7 +35978,7 @@ msgstr ""
 #: modules/video_output/wayland/shm.c:363
 #, fuzzy
 msgid "Wayland shared memory video output"
-msgstr "فيديو تدرج رمادي "
+msgstr "فيديو تدرج رمادي"
 
 #: modules/video_output/wayland/xdg-shell.c:841
 #, fuzzy
@@ -36162,7 +36162,7 @@ msgstr ""
 
 #: modules/video_output/win32/wingdi.c:52
 msgid "Windows GDI video output"
-msgstr "  اخراج الفديو GDI نافذة"
+msgstr "اخراج الفديو GDI نافذة"
 
 #: modules/video_output/xcb/render.c:768
 msgid "RENDER"
@@ -36271,20 +36271,20 @@ msgstr ""
 
 #: modules/video_splitter/clone.c:55
 msgid "Clone video filter"
-msgstr " المرشح نسخة الفيديو"
+msgstr "المرشح نسخة الفيديو"
 
 #: modules/video_splitter/panoramix.c:59
 msgid ""
 "Select the number of horizontal video windows in which to split the video"
-msgstr "إختيارعدد من النوافذ الأفقية للفيديو لتقسيم الفيديو "
+msgstr "إختيارعدد من النوافذ الأفقية للفيديو لتقسيم الفيديو"
 
 #: modules/video_splitter/panoramix.c:63
 msgid "Select the number of vertical video windows in which to split the video"
-msgstr "إختيارعدد من النوافذ العمودية للفيديو لتقسيم الفيديو "
+msgstr "إختيارعدد من النوافذ العمودية للفيديو لتقسيم الفيديو"
 
 #: modules/video_splitter/panoramix.c:66 modules/video_splitter/wall.c:52
 msgid "Active windows"
-msgstr "النوافذ النشطه "
+msgstr "النوافذ النشطه"
 
 #: modules/video_splitter/panoramix.c:67 modules/video_splitter/wall.c:53
 msgid "Comma-separated list of active windows, defaults to all"
@@ -36296,7 +36296,7 @@ msgstr ""
 
 #: modules/video_splitter/panoramix.c:79
 msgid "Panoramix: wall with overlap video filter"
-msgstr "Panoramix: الجدار مع مرشح التداخل الفيديو "
+msgstr "Panoramix: الجدار مع مرشح التداخل الفيديو"
 
 #: modules/video_splitter/panoramix.c:80
 msgid "Panoramix"
@@ -36304,11 +36304,11 @@ msgstr "Panoramix"
 
 #: modules/video_splitter/panoramix.c:91
 msgid "length of the overlapping area (in %)"
-msgstr "طول تداخل المجال (٪) "
+msgstr "طول تداخل المجال (٪)"
 
 #: modules/video_splitter/panoramix.c:92
 msgid "Select in percent the length of the blended zone"
-msgstr "إختياربالنسبة المئوية في طول المنطقة المختلطه "
+msgstr "إختياربالنسبة المئوية في طول المنطقة المختلطه"
 
 #: modules/video_splitter/panoramix.c:95
 msgid "height of the overlapping area (in %)"
@@ -36332,7 +36332,7 @@ msgstr ""
 
 #: modules/video_splitter/panoramix.c:103
 msgid "Attenuation, begin (in %)"
-msgstr "(% تخفيف ,بداية (في "
+msgstr "(% تخفيف ,بداية (في"
 
 #: modules/video_splitter/panoramix.c:104
 msgid ""
@@ -36341,7 +36341,7 @@ msgstr ""
 
 #: modules/video_splitter/panoramix.c:107
 msgid "Attenuation, middle (in %)"
-msgstr "(% تخفيف ,منتصف  (في "
+msgstr "(% تخفيف ,منتصف  (في"
 
 #: modules/video_splitter/panoramix.c:108
 msgid ""
@@ -36350,7 +36350,7 @@ msgstr ""
 
 #: modules/video_splitter/panoramix.c:111
 msgid "Attenuation, end (in %)"
-msgstr "(% تخفيف ,انهاء (في "
+msgstr "(% تخفيف ,انهاء (في"
 
 #: modules/video_splitter/panoramix.c:112
 msgid "Select in percent the Lagrange coefficient of the end of blended zone"
@@ -36358,7 +36358,7 @@ msgstr ""
 
 #: modules/video_splitter/panoramix.c:115
 msgid "middle position (in %)"
-msgstr "(% الموقف الوسط (في "
+msgstr "(% الموقف الوسط (في"
 
 #: modules/video_splitter/panoramix.c:116
 msgid ""
@@ -36379,7 +36379,7 @@ msgstr "( Y إختيارغاما لتصحيح المنطقة المخلوطه (�
 
 #: modules/video_splitter/panoramix.c:122
 msgid "Gamma (Green) correction"
-msgstr "التصحيح (الأخضر )غاما  "
+msgstr "التصحيح (الأخضر )غاما"
 
 #: modules/video_splitter/panoramix.c:123
 msgid ""
@@ -36388,44 +36388,44 @@ msgstr "( U إختيارغاما لتصحيح المنطقة المخلوطه (�
 
 #: modules/video_splitter/panoramix.c:126
 msgid "Gamma (Blue) correction"
-msgstr "التصحيح (ازرق)غاما  "
+msgstr "التصحيح (ازرق)غاما"
 
 #: modules/video_splitter/panoramix.c:127
 msgid ""
 "Select the gamma for the correction of blended zone (Blue or V component)"
-msgstr "(vإختيارغاما لتصحيح ممزوج المنطقة ( الزرقاء او المكون "
+msgstr "(vإختيارغاما لتصحيح ممزوج المنطقة ( الزرقاء او المكون"
 
 #: modules/video_splitter/panoramix.c:130
 msgid "Black Crush for Red"
-msgstr "الاخضر  سحق أسود "
+msgstr "الاخضر  سحق أسود"
 
 #: modules/video_splitter/panoramix.c:131
 msgid "Select the Black Crush of blended zone (Red or Y component)"
-msgstr "(yاختيار سحق  الاسود من  المنطقة الممزوجة   (احمر او مكون "
+msgstr "(yاختيار سحق  الاسود من  المنطقة الممزوجة   (احمر او مكون"
 
 #: modules/video_splitter/panoramix.c:132
 msgid "Black Crush for Green"
-msgstr "الاخضر  سحق أسود "
+msgstr "الاخضر  سحق أسود"
 
 #: modules/video_splitter/panoramix.c:133
 msgid "Select the Black Crush of blended zone (Green or U component)"
-msgstr "(uاختيار سحق  الاسود من  المنطقة الممزوجة   (أخضراو مكون "
+msgstr "(uاختيار سحق  الاسود من  المنطقة الممزوجة   (أخضراو مكون"
 
 #: modules/video_splitter/panoramix.c:134
 msgid "Black Crush for Blue"
-msgstr "سحق أسود  للأزرق "
+msgstr "سحق أسود  للأزرق"
 
 #: modules/video_splitter/panoramix.c:135
 msgid "Select the Black Crush of blended zone (Blue or V component)"
-msgstr "(vاختيار سحق  الاسود من  المنطقة الممزوجة   (الأزرق او مكون "
+msgstr "(vاختيار سحق  الاسود من  المنطقة الممزوجة   (الأزرق او مكون"
 
 #: modules/video_splitter/panoramix.c:137
 msgid "White Crush for Red"
-msgstr "أبيض سحق أحمر "
+msgstr "أبيض سحق أحمر"
 
 #: modules/video_splitter/panoramix.c:138
 msgid "Select the White Crush of blended zone (Red or Y component)"
-msgstr "(yاختيار سحق  الأبيض من  المنطقة الممزوجة   (احمر او مكون "
+msgstr "(yاختيار سحق  الأبيض من  المنطقة الممزوجة   (احمر او مكون"
 
 #: modules/video_splitter/panoramix.c:139
 msgid "White Crush for Green"
@@ -36433,27 +36433,27 @@ msgstr "أبيض سحق الاخضر"
 
 #: modules/video_splitter/panoramix.c:140
 msgid "Select the White Crush of blended zone (Green or U component)"
-msgstr "(uاختيار سحق  الأبيض من  المنطقة الممزوجة   (أخضراو مكون "
+msgstr "(uاختيار سحق  الأبيض من  المنطقة الممزوجة   (أخضراو مكون"
 
 #: modules/video_splitter/panoramix.c:141
 msgid "White Crush for Blue"
-msgstr "سحق الابيض للأزرق "
+msgstr "سحق الابيض للأزرق"
 
 #: modules/video_splitter/panoramix.c:142
 msgid "Select the White Crush of blended zone (Blue or V component)"
-msgstr "(vاختيار سحق  الأبيض من  المنطقة الممزوجة   (الأزرق او مكون "
+msgstr "(vاختيار سحق  الأبيض من  المنطقة الممزوجة   (الأزرق او مكون"
 
 #: modules/video_splitter/panoramix.c:144
 msgid "Black Level for Red"
-msgstr "المستوى أسود  لأحمر "
+msgstr "المستوى أسود  لأحمر"
 
 #: modules/video_splitter/panoramix.c:145
 msgid "Select the Black Level of blended zone (Red or Y component)"
-msgstr "(yإختيار مستوى  الاسو دمن المنطقة الممزوجة (احمر او مكون "
+msgstr "(yإختيار مستوى  الاسو دمن المنطقة الممزوجة (احمر او مكون"
 
 #: modules/video_splitter/panoramix.c:146
 msgid "Black Level for Green"
-msgstr "المستوى أسود  لاخضر "
+msgstr "المستوى أسود  لاخضر"
 
 #: modules/video_splitter/panoramix.c:147
 msgid "Select the Black Level of blended zone (Green or U component)"
@@ -36469,7 +36469,7 @@ msgstr "(vإختيار مستوى  الاسو دمن المنطقة الممزو
 
 #: modules/video_splitter/panoramix.c:151
 msgid "White Level for Red"
-msgstr "المستوى ابيض لأحمر "
+msgstr "المستوى ابيض لأحمر"
 
 #: modules/video_splitter/panoramix.c:152
 msgid "Select the White Level of blended zone (Red or Y component)"
@@ -36477,7 +36477,7 @@ msgstr "(yإختيار مستوى  الأبيض  من المنطقة الممز�
 
 #: modules/video_splitter/panoramix.c:153
 msgid "White Level for Green"
-msgstr "    المستوى ابيض لاخضر "
+msgstr "المستوى ابيض لاخضر"
 
 #: modules/video_splitter/panoramix.c:154
 msgid "Select the White Level of blended zone (Green or U component)"
@@ -36485,7 +36485,7 @@ msgstr "(yإختيار مستوى  الأبيض   من المنطقة الممز
 
 #: modules/video_splitter/panoramix.c:155
 msgid "White Level for Blue"
-msgstr " المستوى ابيض لازرق"
+msgstr "المستوى ابيض لازرق"
 
 #: modules/video_splitter/panoramix.c:156
 msgid "Select the White Level of blended zone (Blue or V component)"
@@ -36501,7 +36501,7 @@ msgstr "عدد النوافذ العمودية فيه الى تقسيم الفي
 
 #: modules/video_splitter/wall.c:62
 msgid "Wall video filter"
-msgstr "المرشح الجدار الفيديو "
+msgstr "المرشح الجدار الفيديو"
 
 #: modules/video_splitter/wall.c:63
 msgid "Image wall"
@@ -36515,7 +36515,7 @@ msgstr ".عرض تأثيرات نافذة  الفيديو, بالبكسل"
 #: modules/visualization/glspectrum.c:56
 #, fuzzy
 msgid "The height of the visualization window, in pixels."
-msgstr ".ذروة اثار نافذة الفيديو , في البكسل "
+msgstr ".ذروة اثار نافذة الفيديو , في البكسل"
 
 #: modules/visualization/glspectrum.c:61
 #, fuzzy
@@ -36647,7 +36647,7 @@ msgstr ".عرض تأثيرات نافذة  الفيديو, بالبكسل"
 
 #: modules/visualization/visual/visual.c:61
 msgid "The height of the effects video window, in pixels."
-msgstr ".ذروة اثار نافذة الفيديو , في البكسل "
+msgstr ".ذروة اثار نافذة الفيديو , في البكسل"
 
 #: modules/visualization/visual/visual.c:63
 msgid "FFT window"
@@ -36693,7 +36693,7 @@ msgstr ""
 
 #: modules/visualization/visual/visual.c:84
 msgid "Enable original graphic spectrum"
-msgstr "  تخطيط الطيف الاصلي ممكن "
+msgstr "تخطيط الطيف الاصلي ممكن"
 
 #: modules/visualization/visual/visual.c:86
 msgid "Enable the \"flat\" spectrum analyzer in the spectrometer."
@@ -36717,7 +36717,7 @@ msgstr ".(قطرها يحدد حجم البكسل ، لعصابات القاعد
 
 #: modules/visualization/visual/visual.c:96
 msgid "Spectral sections"
-msgstr "طيفي الاقسام "
+msgstr "طيفي الاقسام"
 
 #: modules/visualization/visual/visual.c:98
 msgid "Determines how many sections of spectrum will exist."
@@ -36733,7 +36733,7 @@ msgstr "مجموع ذروة  البكسل لذروة العناصر"
 
 #: modules/visualization/visual/visual.c:104
 msgid "Peak extra width"
-msgstr "ذروة الارتفاع  الاضافي "
+msgstr "ذروة الارتفاع  الاضافي"
 
 #: modules/visualization/visual/visual.c:106
 msgid "Additions or subtractions of pixels on the peak width."
@@ -36741,7 +36741,7 @@ msgstr "إضافة او طرح البكسل على قمة العرض."
 
 #: modules/visualization/visual/visual.c:108
 msgid "V-plane color"
-msgstr " V-plane  اللون  "
+msgstr "V-plane  اللون"
 
 #: modules/visualization/visual/visual.c:110
 msgid "YUV-Color cube shifting across the V-plane ( 0 - 127 )."

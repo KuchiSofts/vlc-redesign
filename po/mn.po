@@ -20901,7 +20901,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr "Тухайн зүйлийг давтах"
+msgstr " Тухайн зүйлийг давтах"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -25731,7 +25731,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 msgid "Schedule: "
-msgstr "Хуваарь:"
+msgstr "Хуваарь: "
 
 #: modules/gui/qt/maininterface/mainctx.cpp:1193
 msgid "Paste from clipboard"

@@ -175,7 +175,7 @@ msgstr "Enteekateeka eza'horikureebeera"
 #: include/vlc_config_cat.h:68
 #, fuzzy
 msgid "Settings for the main interface"
-msgstr "Ahorikureebeera omuri Maemo hildon "
+msgstr "Ahorikureebeera omuri Maemo hildon"
 
 #: include/vlc_config_cat.h:69
 msgid "Settings for VLC's control interfaces"
@@ -2545,7 +2545,7 @@ msgstr "Basiza"
 #: src/libvlc-module.c:621
 #, fuzzy
 msgid "MTU of the network interface"
-msgstr "Ahorikureebeera omuri Maemo hildon "
+msgstr "Ahorikureebeera omuri Maemo hildon"
 
 #: src/libvlc-module.c:623
 msgid ""
@@ -3397,7 +3397,7 @@ msgstr ""
 #: src/libvlc-module.c:1064
 #, fuzzy
 msgid "Display while streaming"
-msgstr "Yoreka ebiragarukaho orubiikirwa ahakanyabwengye yaawe "
+msgstr "Yoreka ebiragarukaho orubiikirwa ahakanyabwengye yaawe"
 
 #: src/libvlc-module.c:1066
 msgid "Play locally the stream while streaming it."
@@ -14535,7 +14535,7 @@ msgstr ""
 #: modules/codec/qsv.c:151 modules/codec/x264.c:134
 #, fuzzy
 msgid "Number of reference frames"
-msgstr "yihamu ebikuru bitoreine "
+msgstr "yihamu ebikuru bitoreine"
 
 #: modules/codec/qsv.c:153
 #, fuzzy
@@ -16431,7 +16431,7 @@ msgstr ""
 #: modules/control/cli/cli.c:1069
 #, fuzzy
 msgid "Remote control interface"
-msgstr "Ahorikureebeera omuri Maemo hildon "
+msgstr "Ahorikureebeera omuri Maemo hildon"
 
 #: modules/control/cli/player.c:801 modules/control/hotkeys.c:674
 #, c-format
@@ -16659,7 +16659,7 @@ msgstr ""
 #: modules/control/lirc.c:62
 #, fuzzy
 msgid "Infrared remote control interface"
-msgstr "Ahorikureebeera omuri Maemo hildon "
+msgstr "Ahorikureebeera omuri Maemo hildon"
 
 #: modules/control/ntservice.c:46
 msgid "Install Windows Service"
@@ -18502,7 +18502,7 @@ msgstr ""
 
 #: modules/gui/macosx/main/VLCMain+OldPrefs.m:114
 msgid "Remove old preferences?"
-msgstr "yihamu ebikuru bitoreine "
+msgstr "yihamu ebikuru bitoreine"
 
 #: modules/gui/macosx/main/VLCMain+OldPrefs.m:115
 msgid "We just found an older version of VLC's preferences files."
@@ -21198,7 +21198,7 @@ msgstr "Ebyokutoorana ahari enshohora"
 
 #: modules/gui/macosx/windows/convertandsave/VLCOutput.m:65
 msgid "Display the stream locally"
-msgstr "Yoreka ebiragarukaho orubiikirwa ahakanyabwengye yaawe "
+msgstr "Yoreka ebiragarukaho orubiikirwa ahakanyabwengye yaawe"
 
 #: modules/gui/macosx/windows/convertandsave/VLCOutput.m:68
 #: modules/gui/qt/dialogs/sout/convert.cpp:107
@@ -21662,27 +21662,27 @@ msgstr ""
 #: modules/gui/ncurses.c:1241
 #, fuzzy, c-format
 msgid " Source   : %s"
-msgstr "Oburugo:"
+msgstr " Oburugo:"
 
 #: modules/gui/ncurses.c:1271
 #, fuzzy, c-format
 msgid " Position : %s/%s"
-msgstr "Omwanya"
+msgstr " Omwanya"
 
 #: modules/gui/ncurses.c:1276
 #, fuzzy
 msgid " Volume   : Mute"
-msgstr "Eiraka"
+msgstr " Eiraka"
 
 #: modules/gui/ncurses.c:1277
 #, fuzzy, c-format
 msgid " Volume   : %3ld%%"
-msgstr "Eiraka"
+msgstr " Eiraka"
 
 #: modules/gui/ncurses.c:1277
 #, fuzzy
 msgid " Volume   : ----"
-msgstr "Eiraka"
+msgstr " Eiraka"
 
 #: modules/gui/ncurses.c:1286
 #, c-format
@@ -21697,7 +21697,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr "Sangura enyanjula eyahati"
+msgstr " Sangura enyanjula eyahati"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -24707,7 +24707,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:193
 #, fuzzy
 msgid " dB"
-msgstr "dB"
+msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207
@@ -26220,7 +26220,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:802
 #, fuzzy
 msgid " Profile Name Missing"
-msgstr "Eiziina Eryenyanjula"
+msgstr " Eiziina Eryenyanjula"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:803
 msgid "You must set a name for the profile."
@@ -26589,12 +26589,12 @@ msgstr "Hindura"
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:506
 #, fuzzy
 msgid "Broadcast: "
-msgstr "Janjaza"
+msgstr "Janjaza "
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 #, fuzzy
 msgid "Schedule: "
-msgstr "Gyereka Obwire"
+msgstr "Gyereka Obwire "
 
 #: modules/gui/qt/maininterface/mainctx.cpp:1193
 msgid "Paste from clipboard"
@@ -29830,7 +29830,7 @@ msgstr ""
 #: modules/gui/qt/qt.cpp:284
 #, fuzzy
 msgid "When to raise the interface"
-msgstr "Ahorikureebeera omuri Maemo hildon "
+msgstr "Ahorikureebeera omuri Maemo hildon"
 
 #: modules/gui/qt/qt.cpp:285
 msgid ""
@@ -33292,7 +33292,7 @@ msgstr ""
 #: modules/stream_filter/cache_read.c:571
 #, fuzzy
 msgid "Byte stream cache"
-msgstr "Yoreka ebiragarukaho orubiikirwa ahakanyabwengye yaawe "
+msgstr "Yoreka ebiragarukaho orubiikirwa ahakanyabwengye yaawe"
 
 #: modules/stream_filter/decomp.c:56
 msgid "Zstandard decompression"
@@ -34769,7 +34769,7 @@ msgstr "Ekipimo kya filimu"
 #: modules/video_filter/antiflicker.c:51
 #, fuzzy
 msgid "Number of frames (0 to 100)"
-msgstr "yihamu ebikuru bitoreine "
+msgstr "yihamu ebikuru bitoreine"
 
 #: modules/video_filter/antiflicker.c:53
 msgid "Softening value"
@@ -35602,7 +35602,7 @@ msgstr "Yoreka ebyashohora"
 #: modules/video_filter/opencv_wrapper.cpp:68
 #, fuzzy
 msgid "Display the processed video"
-msgstr "Yoreka ebiragarukaho orubiikirwa ahakanyabwengye yaawe "
+msgstr "Yoreka ebiragarukaho orubiikirwa ahakanyabwengye yaawe"
 
 #: modules/video_filter/opencv_wrapper.cpp:71
 msgid "OpenCV video filter wrapper"

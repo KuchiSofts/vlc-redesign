@@ -21767,27 +21767,27 @@ msgstr ""
 #: modules/gui/ncurses.c:1241
 #, fuzzy, c-format
 msgid " Source   : %s"
-msgstr "Umthombo:"
+msgstr " Umthombo:"
 
 #: modules/gui/ncurses.c:1271
 #, fuzzy, c-format
 msgid " Position : %s/%s"
-msgstr "Indawo"
+msgstr " Indawo"
 
 #: modules/gui/ncurses.c:1276
 #, fuzzy
 msgid " Volume   : Mute"
-msgstr "Ivolumu: %d%%"
+msgstr " Ivolumu: %d%%"
 
 #: modules/gui/ncurses.c:1277
 #, fuzzy, c-format
 msgid " Volume   : %3ld%%"
-msgstr "Ivolumu: %d%%"
+msgstr " Ivolumu: %d%%"
 
 #: modules/gui/ncurses.c:1277
 #, fuzzy
 msgid " Volume   : ----"
-msgstr "Ivolumu: %d%%"
+msgstr " Ivolumu: %d%%"
 
 #: modules/gui/ncurses.c:1286
 #, c-format
@@ -21802,7 +21802,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr "Susa iphrofayili yamanje"
+msgstr " Susa iphrofayili yamanje"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -24818,7 +24818,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:193
 #, fuzzy
 msgid " dB"
-msgstr "dB"
+msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207
@@ -26330,7 +26330,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:802
 #, fuzzy
 msgid " Profile Name Missing"
-msgstr "Igama lephrofayili"
+msgstr " Igama lephrofayili"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:803
 msgid "You must set a name for the profile."
@@ -26699,12 +26699,12 @@ msgstr "Ushintsho"
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:506
 #, fuzzy
 msgid "Broadcast: "
-msgstr "Ukusakaza"
+msgstr "Ukusakaza "
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 #, fuzzy
 msgid "Schedule: "
-msgstr "Hlela"
+msgstr "Hlela "
 
 #: modules/gui/qt/maininterface/mainctx.cpp:1193
 msgid "Paste from clipboard"

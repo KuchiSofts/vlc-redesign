@@ -382,7 +382,7 @@ msgstr "খুলুন D&irectory..."
 
 #: include/vlc_intf_strings.h:48
 msgid "Open &Folder..."
-msgstr " খুলুন ও ফোল্ডার ..."
+msgstr "খুলুন ও ফোল্ডার ..."
 
 #: include/vlc_intf_strings.h:49
 msgid "Select one or more files to open"
@@ -402,7 +402,7 @@ msgstr "মিডিয়া ও তথ্য"
 
 #: include/vlc_intf_strings.h:55
 msgid "&Codec Information"
-msgstr " ও কোডেক তথ্য"
+msgstr "ও কোডেক তথ্য"
 
 #: include/vlc_intf_strings.h:56
 msgid "&Messages"
@@ -410,7 +410,7 @@ msgstr "এবং বার্তা"
 
 #: include/vlc_intf_strings.h:57
 msgid "Jump to Specific &Time"
-msgstr "নির্দিষ্ট ঝাঁপ দাও  &সময় "
+msgstr "নির্দিষ্ট ঝাঁপ দাও  &সময়"
 
 #: include/vlc_intf_strings.h:58
 #, fuzzy
@@ -760,12 +760,12 @@ msgstr ""
 #: src/config/help.c:489
 #, fuzzy
 msgid "(default enabled)"
-msgstr " (ডিফল্টরূপে সক্রিয় করা)"
+msgstr "(ডিফল্টরূপে সক্রিয় করা)"
 
 #: src/config/help.c:490
 #, fuzzy
 msgid "(default disabled)"
-msgstr " (ডিফল্ট অক্ষম)"
+msgstr "(ডিফল্ট অক্ষম)"
 
 #: src/config/help.c:625
 msgid "This module has no options."
@@ -5104,7 +5104,7 @@ msgstr "হট কী"
 
 #: src/libvlc-module.c:2802
 msgid "Jump sizes"
-msgstr "স্থানান্তর করার পরিমাণ "
+msgstr "স্থানান্তর করার পরিমাণ"
 
 #: src/libvlc-module.c:2857
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:271
@@ -5181,12 +5181,12 @@ msgstr "উজ্জ্বলতা বৃদ্ধি করি"
 #: src/misc/actions.c:58
 msgctxt "key"
 msgid "Browser Back"
-msgstr "ব্রাউজার পেছনে "
+msgstr "ব্রাউজার পেছনে"
 
 #: src/misc/actions.c:59
 msgctxt "key"
 msgid "Browser Favorites"
-msgstr "ব্রাউজার পছন্দগুলো "
+msgstr "ব্রাউজার পছন্দগুলো"
 
 #: src/misc/actions.c:60
 msgctxt "key"
@@ -12618,7 +12618,7 @@ msgstr "স্ট্রাইড অধিক্রমণের শতকরা 
 
 #: modules/audio_filter/scaletempo.c:69
 msgid "Search Length"
-msgstr "অনুসন্ধানের দৈর্ঘ্য "
+msgstr "অনুসন্ধানের দৈর্ঘ্য"
 
 #: modules/audio_filter/scaletempo.c:69
 msgid "Length in milliseconds to search for best overlap position"
@@ -16056,7 +16056,7 @@ msgstr "এক্সেস একক ডেলিমিটার NAL একক �
 
 #: modules/codec/x264.c:400
 msgid "Framecount to use on frametype lookahead"
-msgstr "ফ্রেম টাইপ লুকঅ্যাহেড-এ ব্যবহারের জন্য ফ্রেম কাউন্ট করা হবে  "
+msgstr "ফ্রেম টাইপ লুকঅ্যাহেড-এ ব্যবহারের জন্য ফ্রেম কাউন্ট করা হবে"
 
 #: modules/codec/x264.c:401
 msgid ""
@@ -18706,7 +18706,7 @@ msgstr ""
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:453
 #: modules/gui/qt/qt.cpp:184
 msgid "Resize interface to the native video size"
-msgstr "স্থানীয় ভিডিওর আকার অনুসারে ইনটারফেস পুনঃআকৃতি করা হবে "
+msgstr "স্থানীয় ভিডিওর আকার অনুসারে ইনটারফেস পুনঃআকৃতি করা হবে"
 
 #: modules/gui/macosx/main/macosx.m:90 modules/gui/qt/qt.cpp:185
 msgid ""
@@ -20726,7 +20726,7 @@ msgstr "ফাইলের পরিবর্তে একটি পাইপ �
 
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:217
 msgid "Play another media synchronously"
-msgstr "যুগপৎভাবে আরেকটি মিডিয়া চালানো হবে "
+msgstr "যুগপৎভাবে আরেকটি মিডিয়া চালানো হবে"
 
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:219
 msgid "Select another file to play in sync with the previously selected file"
@@ -21652,7 +21652,7 @@ msgstr " উৎস   : %s"
 #: modules/gui/ncurses.c:1271
 #, c-format
 msgid " Position : %s/%s"
-msgstr "অবস্থান : %s/%s"
+msgstr " অবস্থান : %s/%s"
 
 #: modules/gui/ncurses.c:1276
 msgid " Volume   : Mute"
@@ -21680,7 +21680,7 @@ msgstr ""
 #: modules/gui/ncurses.c:1299
 #, fuzzy
 msgid " Source: <no current item>"
-msgstr "উত্স: <no বর্তমান item>"
+msgstr " উত্স: <no বর্তমান item>"
 
 #: modules/gui/ncurses.c:1301
 msgid " [ h for help ]"
@@ -23191,7 +23191,7 @@ msgstr "লগ ফাইল নতুন নামে সংরক্ষণ ক�
 #: modules/gui/qt/dialogs/messages/messages.cpp:361
 #, fuzzy
 msgid "Texts/Logs (*.log *.txt);; All (*.*)"
-msgstr "পাঠ্য / লগ (*.log *.txt);; সব (*.*) "
+msgstr "পাঠ্য / লগ (*.log *.txt);; সব (*.*)"
 
 #: modules/gui/qt/dialogs/messages/messages.cpp:367
 msgid "Application"
@@ -24666,7 +24666,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:193
 #, fuzzy
 msgid " dB"
-msgstr "dB"
+msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207
@@ -26165,7 +26165,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:802
 msgid " Profile Name Missing"
-msgstr "বৃত্তান্ত নাম অনুপস্থিত"
+msgstr " বৃত্তান্ত নাম অনুপস্থিত"
 
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:803
 msgid "You must set a name for the profile."
@@ -26215,7 +26215,7 @@ msgstr "ধরন:"
 
 #: modules/gui/qt/dialogs/sout/sout_widgets.cpp:126
 msgid "This module writes the transcoded stream to a file."
-msgstr "এই মডিউলটি দ্বারা একটি ফাইলে ট্রান্সকোড করা স্ট্রিম লেখা হয়। "
+msgstr "এই মডিউলটি দ্বারা একটি ফাইলে ট্রান্সকোড করা স্ট্রিম লেখা হয়।"
 
 #: modules/gui/qt/dialogs/sout/sout_widgets.cpp:173
 msgid ""
@@ -26539,11 +26539,11 @@ msgstr "পরিবর্তন"
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:506
 msgid "Broadcast: "
-msgstr "ব্রডকাস্ট:"
+msgstr "ব্রডকাস্ট: "
 
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:579
 msgid "Schedule: "
-msgstr "সময়সূচী:"
+msgstr "সময়সূচী: "
 
 #: modules/gui/qt/maininterface/mainctx.cpp:1193
 msgid "Paste from clipboard"
@@ -33619,7 +33619,7 @@ msgstr "আউটপুট URL"
 
 #: modules/stream_out/es.c:367
 msgid "This is the default output URI."
-msgstr "এটি পূর্বনির্ধারিত আউটপুট URI। "
+msgstr "এটি পূর্বনির্ধারিত আউটপুট URI।"
 
 #: modules/stream_out/es.c:368
 msgid "Audio output URL"
@@ -34566,7 +34566,7 @@ msgstr "ভিডিও পরিশোধক মডিউলের একটি
 #: modules/video_chroma/grey_yuv.c:55 modules/video_chroma/i422_i420.c:56
 #: modules/video_chroma/yuy2_i420.c:57 modules/video_chroma/yuy2_i422.c:57
 msgid "Conversions from "
-msgstr "এখান থেকে রূপান্তর"
+msgstr "এখান থেকে রূপান্তর "
 
 #: modules/video_chroma/i420_nv12.c:239
 msgid "YUV planar to semiplanar conversions"

@@ -15,7 +15,9 @@ platforms:
   - name: macOS
     status: idea
   - name: Windows on ARM64
-    status: idea
+    status: planned
+    repository: KuchiSofts/vlc-redesign
+    notes: the next platform (docs/PLATFORMS.md); the x64 build already runs on Windows 11 ARM64 under emulation
   - name: Android (phones, tablets, TV)
     status: idea
   - name: Samsung Smart TV (Tizen)

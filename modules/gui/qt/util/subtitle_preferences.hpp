@@ -12,6 +12,7 @@
 #include <QString>
 #include <QStringList>
 #include <QVariantList>
+#include <QVariantMap>
 
 #include "qt.hpp"
 
@@ -36,6 +37,11 @@ class SubtitlePreferences : public QObject
     Q_PROPERTY(bool chosen READ chosen NOTIFY changed FINAL)
     // { code, name, native }, by name
     Q_PROPERTY(QVariantList languages READ languages CONSTANT FINAL)
+    // how much the user picks each language by hand ({ code: score }), and
+    // the one picked often enough to be chosen by itself after the default
+    // and the second one ("" when none)
+    Q_PROPERTY(QVariantMap usage READ usage NOTIFY changed FINAL)
+    Q_PROPERTY(QString learned READ learned NOTIFY changed FINAL)
 
 public:
     explicit SubtitlePreferences(qt_intf_t *intf, QObject *parent = nullptr);
@@ -57,8 +63,13 @@ public:
     Q_INVOKABLE QString nativeName(const QString &code) const;
     // the language of the system, the default of the setup
     Q_INVOKABLE QString systemLanguage() const;
-    // the languages to look for, the default first
+    // the languages to look for, the default first, then the second one and
+    // the one the user picks most
     QStringList wanted() const;
+    QVariantMap usage() const;
+    QString learned() const;
+    // a subtitle of this language picked by hand
+    Q_INVOKABLE void recordUse(const QString &code);
 
     Q_INVOKABLE void set(const QString &primary, const QString &secondary,
                          bool autoSearch, bool showBoth);

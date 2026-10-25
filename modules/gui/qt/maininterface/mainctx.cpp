@@ -45,6 +45,7 @@
 #include "live_settings.hpp"
 #include "util/renderer_manager.hpp"
 #include "util/csdbuttonmodel.hpp"
+#include "util/subtitle_preferences.hpp"
 
 #include "util/vlchotkeyconverter.hpp"
 #include "util/qt_dirs.hpp"                     // toNativeSeparators
@@ -501,6 +502,15 @@ void MainCtx::applySetupChoices()
         const QVariant rightToLeft = choices.value(QStringLiteral("interface/right-to-left"));
         if (rightToLeft.isValid())
             getSettings()->setValue(QStringLiteral("redesign/right-to-left"), rightToLeft.toBool());
+        // the subtitle language of Setup's Languages page: the default one,
+        // the second one and the rest as they were
+        const QString subtitles = choices.value(QStringLiteral("subtitles/language")).toString();
+        if (!SubtitlePreferences::normalize(subtitles).isEmpty())
+        {
+            SubtitlePreferences preferences(p_intf);
+            preferences.set(subtitles, preferences.secondary(), preferences.autoSearch(), preferences.showBoth());
+            msg_Dbg(p_intf, "setup choices: subtitles in %s", qtu(subtitles));
+        }
         msg_Dbg(p_intf, "setup choices: update check %s, online subtitles %s",
                 updateCheck.isValid() ? (updateCheck.toBool() ? "on" : "off") : "as it was",
                 subtitleSearch.isValid() ? (subtitleSearch.toBool() ? "on" : "off") : "as it was");

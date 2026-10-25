@@ -38,6 +38,13 @@ const char keyAutoSearch[] = "redesign/subtitle-auto-search";
 // (a new name: "show both" was asked by the setup, and taken for the way
 // the second language works; it is the fallback now, both at once a choice)
 const char keyShowBoth[] = "redesign/subtitle-dual";
+// how much the user picks each language by hand: { code: score }, each
+// choice adds 1 after the others fade (x 0.9), so the recent ones weigh most
+const char keyUsage[] = "redesign/subtitle-usage";
+// the score from which a language is chosen by itself, after the default
+// and the second one: about three choices
+constexpr double learnedScore = 2.5;
+constexpr double usageFade = 0.9;
 
 struct Language
 {
@@ -270,7 +277,62 @@ QStringList SubtitlePreferences::wanted() const
     const QString second = secondary();
     if (!second.isEmpty() && second != result.first())
         result.append(second);
+    const QString third = learned();
+    if (!third.isEmpty() && !result.contains(third))
+        result.append(third);
     return result;
+}
+
+QVariantMap SubtitlePreferences::usage() const
+{
+    return m_intf->mainSettings->value(keyUsage).toMap();
+}
+
+// The language the user picks most, when it is neither the default nor the
+// second one and was picked often enough
+QString SubtitlePreferences::learned() const
+{
+    const QVariantMap scores = usage();
+    const QString first = primary();
+    const QString second = secondary();
+    QString best;
+    double bestScore = learnedScore;
+    for (auto it = scores.cbegin(); it != scores.cend(); ++it)
+    {
+        const double score = it.value().toDouble();
+        if (score >= bestScore && it.key() != first && it.key() != second)
+        {
+            best = it.key();
+            bestScore = score;
+        }
+    }
+    return best;
+}
+
+void SubtitlePreferences::recordUse(const QString &code)
+{
+    const QString language = normalize(code);
+    if (language.isEmpty())
+        return;
+    const QString before = learned();
+    QVariantMap scores = usage();
+    for (auto it = scores.begin(); it != scores.end(); )
+    {
+        const double score = it.value().toDouble() * usageFade;
+        // (forgotten in the end: the list stays short)
+        if (score < 0.05)
+            it = scores.erase(it);
+        else
+            *it++ = score;
+    }
+    scores[language] = scores.value(language).toDouble() + 1;
+    QSettings *settings = m_intf->mainSettings;
+    settings->setValue(keyUsage, scores);
+    settings->sync();
+    // a new language chosen by itself: VLC's sub-language follows
+    if (learned() != before)
+        syncCore();
+    emit changed();
 }
 
 void SubtitlePreferences::set(const QString &primary, const QString &secondary,

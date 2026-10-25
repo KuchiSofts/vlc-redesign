@@ -173,6 +173,9 @@ private:
     // the secondary language shown too (SubtitlePreferences::showBoth)
     void ensureSecondary();
     QVariantMap bestOf(const QString &language) const;
+    // the best one of the language the user picks most (learned), unless
+    // the video has it (local) or one is loaded
+    QVariantMap bestOfLearned(const QStringList &local) const;
     // the subtitle chosen for this file last time ({ file, id, language }), if
     // its file is still there
     QStringList rememberedChoice() const;

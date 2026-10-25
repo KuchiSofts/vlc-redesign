@@ -1276,6 +1276,14 @@ bool SubtitleFinder::loadedLanguage(const QString &language) const
     return false;
 }
 
+QVariantMap SubtitleFinder::bestOfLearned(const QStringList &local) const
+{
+    const QString learned = m_preferences->learned();
+    if (learned.isEmpty() || local.contains(learned) || loadedLanguage(learned))
+        return {};
+    return bestOf(learned);
+}
+
 QVariantMap SubtitleFinder::bestOf(const QString &language) const
 {
     for (const QVariant &r : m_results)
@@ -1299,6 +1307,9 @@ void SubtitleFinder::autoPick()
         if (best.isEmpty() && !secondary.isEmpty() && !local.contains(secondary) && !loadedLanguage(secondary))
         {
             best = bestOf(secondary);
+            // none in either: the language the user picks most
+            if (best.isEmpty())
+                best = bestOfLearned(local);
             if (!best.isEmpty())
             {
                 load(best.value(QStringLiteral("id")).toString());
@@ -1306,6 +1317,8 @@ void SubtitleFinder::autoPick()
             }
             return;
         }
+        if (best.isEmpty() && secondary.isEmpty())
+            best = bestOfLearned(local);
         if (!best.isEmpty())
         {
             // the secondary one follows, once this one is shown (selectAdded)

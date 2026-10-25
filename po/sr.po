@@ -46500,3 +46500,8 @@ msgstr ""
 #~ msgstr ""
 #~ "Ово Вам дозвољава да дате контакт е-mail адресу, која ће бити најављена у "
 #~ "SDP-у (Дескриптор Сесије)."
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Често коришћен"

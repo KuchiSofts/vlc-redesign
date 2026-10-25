@@ -39140,3 +39140,8 @@ msgstr ""
 #, fuzzy
 #~ msgid "Effect"
 #~ msgstr "ప్రభావాలు"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "తరచుగా వాడినది"

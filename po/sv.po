@@ -50104,3 +50104,8 @@ msgstr "Är du säker på att du vill skapa strömmen?"
 #, fuzzy
 #~ msgid "Addon Manager"
 #~ msgstr "Tilläggshanterare"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Används ofta"

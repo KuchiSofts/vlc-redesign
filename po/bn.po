@@ -45740,3 +45740,8 @@ msgstr ""
 #, fuzzy
 #~ msgid "Automate picture coding mode"
 #~ msgstr "ছবি কোডিং মোড"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "প্রায়ই ব্যবহৃত"

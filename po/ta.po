@@ -38930,3 +38930,8 @@ msgstr ""
 #, fuzzy
 #~ msgid "Set"
 #~ msgstr "ஈரம்"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "அடிக்கடி பயன்படுத்தியது"

@@ -50684,3 +50684,8 @@ msgstr "Er du sikker på at du vil opprette denne strømmen?"
 
 #~ msgid "Streaming Output"
 #~ msgstr "Strømmeutdata"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Brukes ofte"

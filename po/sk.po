@@ -50196,3 +50196,8 @@ msgstr "Naozaj chcete vytvoriť stream?"
 #, fuzzy
 #~ msgid "Addon Manager"
 #~ msgstr "Manažér doplnkov"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Často používaný"

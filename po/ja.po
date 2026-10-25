@@ -49563,3 +49563,8 @@ msgstr "本当にストリームを生成してもいいですか?"
 #, fuzzy
 #~ msgid "Addon Manager"
 #~ msgstr "アドオン管理"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "よく使う"

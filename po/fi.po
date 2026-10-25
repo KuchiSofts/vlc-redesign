@@ -50096,3 +50096,8 @@ msgstr "Oletko varma että haluat luoda virtautuksen?"
 #, fuzzy
 #~ msgid "VLC media player - Flash Viewer"
 #~ msgstr "VLC-mediasoitin - web-käyttöliittymä"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Usein käytetty"

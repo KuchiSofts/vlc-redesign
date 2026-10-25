@@ -46438,3 +46438,8 @@ msgstr ""
 #, fuzzy
 #~ msgid "Mute "
 #~ msgstr "Без звук"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Често използван"

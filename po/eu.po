@@ -52047,3 +52047,8 @@ msgstr "Ziur zaude transmisio jarraitua sortu nahi duzula?"
 #, fuzzy
 #~ msgid "Shoutcast TV"
 #~ msgstr "Shoutcast"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Maiz erabilia"

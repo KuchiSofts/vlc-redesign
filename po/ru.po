@@ -49733,3 +49733,8 @@ msgstr "Вы действительно хотите создать поток?"
 #, fuzzy
 #~ msgid "Addon Manager"
 #~ msgstr "Менеджер дополнений"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Часто используется"

@@ -44159,3 +44159,8 @@ msgstr "Справді створити потік?"
 
 #~ msgid "Streaming Output"
 #~ msgstr "Потоковий вивід"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Часто використовується"

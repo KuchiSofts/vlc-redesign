@@ -12,6 +12,6 @@
 // the updater and read by extras/juxtopposed/make-release.ps1: the release
 // it is, or the one it prepares (raised once the work for it starts, so a
 // build made in between does not read as the release before).
-#define VLC_REDESIGN_VERSION "0.3.0"
+#define VLC_REDESIGN_VERSION "0.3.1"
 #define VLC_REDESIGN_REPO "KuchiSofts/vlc-redesign"
 #define VLC_REDESIGN_REPO_URL "https://github.com/" VLC_REDESIGN_REPO

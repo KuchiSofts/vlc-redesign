@@ -49131,3 +49131,8 @@ msgstr "Voulez-vous créer ce flux ?"
 
 #~ msgid "Streaming Output"
 #~ msgstr "Diffusion de la sortie"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Souvent utilisée"

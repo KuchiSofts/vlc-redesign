@@ -54725,3 +54725,8 @@ msgstr "Segur que voleu crear el flux de xarxa?"
 #~ msgstr ""
 #~ "Permet especificar una categoria per a la sessió que s'anunciarà si trieu "
 #~ "utilitzar SAP."
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Usat sovint"

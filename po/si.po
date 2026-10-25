@@ -41289,3 +41289,8 @@ msgstr ""
 #, fuzzy
 #~ msgid "Show the current item"
 #~ msgstr "වත්මන් අයිතමය පුනරාවර්තනය කරන්න"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "නිතර භාවිත කරන"

@@ -50221,3 +50221,8 @@ msgstr "是否确定要创建流?"
 #, fuzzy
 #~ msgid "Addon Manager"
 #~ msgstr "插件管理器"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "常用"

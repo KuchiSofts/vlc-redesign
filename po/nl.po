@@ -52222,3 +52222,8 @@ msgstr "Weet u zeker dat u de stream wilt aanmaken?"
 #, fuzzy
 #~ msgid "Addon Manager"
 #~ msgstr "Addon-beheerder"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Vaak gebruikt"

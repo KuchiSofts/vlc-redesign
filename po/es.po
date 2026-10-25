@@ -56156,3 +56156,8 @@ msgstr "¿Desea crear la transmisión?"
 
 #~ msgid "Fingerprinting track..."
 #~ msgstr "Rastreo de huella digital..."
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Usado a menudo"

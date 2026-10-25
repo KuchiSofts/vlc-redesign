@@ -43990,3 +43990,8 @@ msgstr "നിങ്ങള്‍ സ്ട്രീം സൃഷ്ടിക്�
 #, fuzzy
 #~ msgid "Random off"
 #~ msgstr "റാന്‍ഡം ഓഫ്"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "പതിവായി ഉപയോഗിക്കുന്നത്"

@@ -43188,3 +43188,8 @@ msgstr "ਕੀ ਤੁਸੀਂ ਸਟਰੀਮ ਬਣਾਉਣੀ ਚਾਹੁ�
 #, fuzzy
 #~ msgid "Addon Manager"
 #~ msgstr "ਐਡ-ਐਨ ਮੈਨੇਜਰ"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "ਅਕਸਰ ਵਰਤੀ ਗਈ"

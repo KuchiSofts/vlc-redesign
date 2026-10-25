@@ -48237,3 +48237,8 @@ msgstr "តើ​អ្នក​ពិតជា​ចង់​បង្កើត
 #, fuzzy
 #~ msgid "Select the protocol for the URL."
 #~ msgstr "ជ្រើស​ពណ៌​មួយ​នៅ​ក្នុង​វីដេអូ"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "ប្រើញឹកញាប់"

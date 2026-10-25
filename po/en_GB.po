@@ -41436,3 +41436,8 @@ msgstr ""
 #, fuzzy
 #~ msgid "Telnet Interface host"
 #~ msgstr "Control interfaces"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Often used"

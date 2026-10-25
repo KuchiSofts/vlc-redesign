@@ -44993,3 +44993,8 @@ msgstr ""
 
 #~ msgid "Open Subtitles"
 #~ msgstr "ტიტრების გახსნა"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "ხშირად გამოყენებული"

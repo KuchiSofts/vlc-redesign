@@ -44023,3 +44023,8 @@ msgstr "ನೀವು ಸ್ಟ್ರೀಮ್ ರಚಿಸಲು ಖಚಿ
 #, fuzzy
 #~ msgid "General Input"
 #~ msgstr "ಸಾಮಾನ್ಯ"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "ಆಗಾಗ ಬಳಸಿದ್ದು"

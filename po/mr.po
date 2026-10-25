@@ -44243,3 +44243,8 @@ msgstr "तुम्हाला प्रवाह तयार करायच
 #, fuzzy
 #~ msgid "Video Filters..."
 #~ msgstr "ध्वनीचित्रफित धारिका"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "वारंवार वापरलेली"

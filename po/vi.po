@@ -45738,3 +45738,8 @@ msgstr "Bạn có chắc muốn tạo luồng dữ liệu?"
 #, fuzzy
 #~ msgid "Remaining time: %i seconds"
 #~ msgstr "Thời gian tổng cộng/còn lại"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Thường dùng"

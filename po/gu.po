@@ -43456,3 +43456,8 @@ msgstr "શું તમે ખરેખર સ્ટ્રીમને બન�
 #, fuzzy
 #~ msgid "Video Filters..."
 #~ msgstr "વિડિઓ ફાઇલો"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "વારંવાર વપરાયેલી"

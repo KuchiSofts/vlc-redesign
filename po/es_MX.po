@@ -44738,3 +44738,8 @@ msgstr "¿Seguro que desea crear la emisión?"
 #, fuzzy
 #~ msgid "Configure Media Library"
 #~ msgstr "Biblioteca multimedia"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Usado con frecuencia"

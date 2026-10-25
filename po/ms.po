@@ -53575,3 +53575,8 @@ msgstr "Adakah pasti anda ingin mencipta strim?"
 #, fuzzy
 #~ msgid "Addon Manager"
 #~ msgstr "Pengurus Tambahan"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Kerap digunakan"

@@ -49936,3 +49936,8 @@ msgstr "Tem a certeza que deseja criar a transmissão?"
 
 #~ msgid "Fingerprinting track..."
 #~ msgstr "A identificar faixa..."
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Usado com frequência"

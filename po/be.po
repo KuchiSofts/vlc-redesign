@@ -48520,3 +48520,8 @@ msgstr "Сапраўды жадаеце стварыць паток?"
 #, fuzzy
 #~ msgid "Automate picture coding mode"
 #~ msgstr "Рэжым кадавання відарысу"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Часта выкарыстоўваецца"

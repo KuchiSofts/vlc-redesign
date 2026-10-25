@@ -36421,3 +36421,8 @@ msgstr ""
 #, fuzzy
 #~ msgid "[Random]"
 #~ msgstr "بے ترتيب"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "اکثر استعمال شدہ"

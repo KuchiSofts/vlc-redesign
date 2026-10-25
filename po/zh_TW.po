@@ -45982,3 +45982,8 @@ msgstr "您確定要建立串流嗎？"
 #~ msgid ""
 #~ "Allows you to specify the audio sample rate used for the streaming output."
 #~ msgstr "指定輸入的「作者」詮釋資料。"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "常用"

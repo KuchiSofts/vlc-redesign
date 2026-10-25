@@ -1,0 +1,25 @@
+# The programs and platforms of VLC Redesign and where each stands (the
+# platform bar of the README and of the sister repositories reads this file)
+# status: released | beta | planned | idea
+platforms:
+  - name: Windows
+    status: released
+    version: 0.3.0
+    repository: KuchiSofts/vlc-redesign
+    download: https://github.com/KuchiSofts/vlc-redesign/releases/latest
+    notes: Windows 10 and 11, 64-bit; installer and portable zip; small updates in the app
+  - name: Linux
+    status: planned
+    repository: KuchiSofts/vlc-redesign
+    notes: builds from the same tree; the first milestones were checked on Linux, the latest work only on Windows
+  - name: macOS
+    status: idea
+  - name: Windows on ARM64
+    status: idea
+  - name: Android (phones, tablets, TV)
+    status: idea
+  - name: Samsung Smart TV (Tizen)
+    status: planned
+    notes: the TV side of casting
+  - name: iPhone, iPad, Apple TV
+    status: idea

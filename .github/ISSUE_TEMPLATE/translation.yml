@@ -1,0 +1,31 @@
+name: Translation
+description: A wrong, awkward or missing text in your language, or a new language
+title: "Translation: "
+labels: ["translation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        To translate a whole language or more than a few texts, see [Translating](https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/TRANSLATING.md)
+        and open a pull request with your `.po` file. For a few texts, this form is enough.
+  - type: input
+    id: language
+    attributes:
+      label: Language
+      placeholder: "Hebrew"
+    validations:
+      required: true
+  - type: textarea
+    id: texts
+    attributes:
+      label: The texts
+      description: Where they are, what they say now, and what they should say. One per line.
+      placeholder: |
+        Settings → Playback, "…": now "…", should be "…"
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: VLC Redesign version
+      placeholder: "0.3.0"

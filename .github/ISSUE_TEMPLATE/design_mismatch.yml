@@ -1,0 +1,42 @@
+name: Design mismatch
+description: A screen or control that differs from the design by Juxtopposed
+title: "Design: "
+labels: ["design"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Every screen is compared with its Figma frame ([Design check](https://github.com/KuchiSofts/vlc-redesign/wiki/Design-Check)).
+        If you see a difference, say where: a screenshot of the app next to the frame helps most.
+  - type: input
+    id: version
+    attributes:
+      label: VLC Redesign version
+      description: "⋯ menu → About VLC shows it"
+      placeholder: "0.3.0"
+    validations:
+      required: true
+  - type: input
+    id: screen
+    attributes:
+      label: The screen or control
+      placeholder: "Settings → Subtitles, the Font size dropdown"
+    validations:
+      required: true
+  - type: textarea
+    id: difference
+    attributes:
+      label: What differs from the design
+      description: Colour, size, place, spacing, text, missing or extra element.
+    validations:
+      required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: The app, and the frame if you have it (drag the images here).
+  - type: input
+    id: display
+    attributes:
+      label: Display scale and theme
+      placeholder: "150 %, dark theme, orange accent"

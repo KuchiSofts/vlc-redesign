@@ -1,0 +1,50 @@
+# The labels of the repository, applied by .github/workflows/labels.yml
+# (a label removed here is removed there).
+- name: bug
+  color: d73a4a
+  description: Something broken or wrong
+- name: enhancement
+  color: a2eeef
+  description: A feature or an improvement
+- name: design
+  color: c5def5
+  description: A difference from the Figma design, or a design question
+- name: translation
+  color: 0e8a16
+  description: Texts in a language
+- name: casting
+  color: 1d76db
+  description: Casting to a TV or Chromecast
+- name: tv-report
+  color: 5319e7
+  description: A report about one TV, for the TV compatibility page
+- name: performance
+  color: fbca04
+  description: Speed, memory, smoothness
+- name: installer
+  color: bfd4f2
+  description: The installer, the portable zip, updates
+- name: upstream
+  color: e4e669
+  description: A problem of VLC itself
+- name: upstream-sync
+  color: e4e669
+  description: The weekly merge of VLC's changes
+- name: windows
+  color: 0052cc
+  description: Windows only
+- name: good first issue
+  color: 7057ff
+  description: A small, well-described task for a first contribution
+- name: help wanted
+  color: 008672
+  description: Looking for someone to take it
+- name: duplicate
+  color: cfd3d7
+  description: Already reported
+- name: wontfix
+  color: ffffff
+  description: Not planned
+- name: question
+  color: d876e3
+  description: A question rather than a report

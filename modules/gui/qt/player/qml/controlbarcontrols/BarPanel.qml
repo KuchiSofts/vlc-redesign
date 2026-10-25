@@ -102,11 +102,16 @@ Loader {
         // placed above its button, not centred
         if (item.centered !== undefined)
             item.centered = false
-        item.opened.connect(() => loader.panelOpened(item))
-        item.closed.connect(() => {
+    }
+
+    // (not item.opened.connect(): "opened" of a popup is also a property)
+    Connections {
+        target: loader.item
+        function onOpened() { loader.panelOpened(loader.item) }
+        function onClosed() {
             loader._closedAt = Date.now()
             loader.panelClosed()
-        })
+        }
     }
 
     // a window resized while it is open: it stays above the bar

@@ -155,6 +155,8 @@ private:
     int m_selectedProfile = -1;
     QString m_lastError;
     bool m_skipNextApply = false;
+    // the profiles were read once (the start): see reload()
+    bool m_started = false;
     bool m_modified = false;
     bool m_editing = false;
     QString m_profileAction;

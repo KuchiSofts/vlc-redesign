@@ -112,6 +112,7 @@ static struct {
     { "ka",    "ქართული" },
     { "de",    "Deutsch" },
     { "he",    "עברית" },
+    { "hi",    "हिन्दी" },
     { "hr",    "Hrvatski" },
     { "hu",    "Magyar" },
     { "hy",    "Հայերեն" },
@@ -121,6 +122,7 @@ static struct {
     { "ja",    "日本語" },
     { "ko",    "한국어" },
     { "lt",    "Lietuvių" },
+    { "lv",    "Latviešu" },
     { "mn",    "Монгол" },
     { "ms",    "Bahasa Melayu" },
     { "nb",    "Norsk bokmål" },
@@ -142,8 +144,10 @@ static struct {
     { "sl",    "Slovenščina" },
     { "ckb",   "کوردیی سۆرانی" },
     { "es",    "Español" },
+    { "es_MX", "Español (Latinoamérica)" },
     { "sv",    "Svenska" },
     { "te",    "తెలుగు" },
+    { "th",    "ไทย" },
     { "tr",    "Türkçe" },
     { "uk",    "Українська" },
     { "vi",    "Tiếng Việt" },
@@ -1354,6 +1358,8 @@ void SPrefsPanel::changeStyle()
 static const char *const complete_languages[] = {
     "en", "en_GB", "he", "pt_BR", "de", "fr", "es", "it", "pt_PT", "ru", "uk", "pl", "nl", "tr", "ar",
     "ja", "ko", "zh_CN", "zh_TW", "cs", "sv",
+    "ca", "da", "fi", "el", "hu", "ro", "bg", "sk", "sl", "hr", "sr", "nb", "id", "ms", "vi", "th", "hi",
+    "lt", "lv", "fa",
 };
 
 static bool languageComplete( const char *iso )

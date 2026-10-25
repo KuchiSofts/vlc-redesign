@@ -1,0 +1,29 @@
+VLC Redesign - neuradna različica
+
+OBLIKOVANJE
+Vmesnik je oblikovala Juxtopposed.
+  Video:   https://www.youtube.com/watch?v=ERFeOgqk324
+  Kanal:   https://www.youtube.com/@juxtopposed
+  Figma:   https://www.figma.com/community/file/1691465999134370980
+Datoteka »VLC Redesign (Community)« avtorice Juxtopposed je na voljo pod
+licenco CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Prilagojena
+je bila za Qt/QML, njene ikone pa so bile na novo narisane in spremenjene.
+Juxtopposed te različice ne podpira.
+
+TO NI URADNI VLC
+Ta različica temelji na VLC 4.0 (v razvoju). Ni je izdelal VideoLAN, z njim
+ni povezana in je ne podpira. VLC, VLC media player in logotip stožca so
+blagovne znamke VideoLAN. Uradni predvajalnik: https://www.videolan.org
+
+Namesti se poleg uradnega VLC in ga ne spremeni: njene nastavitve, zbirka
+in zgodovina ostanejo v njeni lastni mapi.
+
+LICENCA
+Prosto programje pod licenco GNU General Public License, različica 2 ali
+novejša; libVLC pod licenco GNU LGPL 2.1 ali novejšo. Pisavi Inter in DM Mono
+pod licenco SIL Open Font License 1.1. Celotna besedila so nameščena poleg
+vlc.exe (COPYING.txt, COPYING.LIB.txt, licenses\). Izvorna koda:
+https://github.com/KuchiSofts/vlc-redesign
+
+Prvo izvedbo prenove je ustvaril MrDouglax
+(https://github.com/SrDouglax/JuxtopposedVLC).

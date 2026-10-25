@@ -5899,17 +5899,17 @@ msgstr "Glasnoća: %ld%%"
 #: src/player/osd.c:184
 #, c-format
 msgid "Video tracks: %s"
-msgstr ""
+msgstr "Video zapisi: %s"
 
 #: src/player/osd.c:185
 #, c-format
 msgid "Video track: %s"
-msgstr ""
+msgstr "Video zapis: %s"
 
 #: src/player/osd.c:188
 #, c-format
 msgid "Audio tracks: %s"
-msgstr ""
+msgstr "Zapisi zvuka: %s"
 
 #: src/player/osd.c:189
 #, c-format
@@ -5919,7 +5919,7 @@ msgstr "Zapis zvuka: %s"
 #: src/player/osd.c:192
 #, c-format
 msgid "Subtitle tracks: %s"
-msgstr ""
+msgstr "Zapisi podnaslova: %s"
 
 #: src/player/osd.c:193
 #, c-format
@@ -6047,17 +6047,17 @@ msgstr "Snimanje je završeno"
 #: src/player/player.c:1844
 #, c-format
 msgid "Audio delay %i ms"
-msgstr "Odgađanje zvuka %i ms"
+msgstr "Odgoda zvuka: %i ms"
 
 #: src/player/player.c:1846
 #, c-format
 msgid "Subtitle delay %i ms"
-msgstr "Odgađanje podnaslova %i ms"
+msgstr "Odgoda podnaslova: %i ms"
 
 #: src/player/player.c:1848
 #, c-format
 msgid "Video delay %i ms"
-msgstr ""
+msgstr "Odgoda slike: %i ms"
 
 #: src/player/player.c:1898
 #, c-format
@@ -16953,11 +16953,11 @@ msgstr "Sučelje globalnih tipkovničkih prečica"
 
 #: modules/control/hotkeys.c:507
 msgid "Primary subtitle control"
-msgstr ""
+msgstr "Upravljanje: primarni podnaslovi"
 
 #: modules/control/hotkeys.c:509
 msgid "Secondary subtitle control"
-msgstr ""
+msgstr "Upravljanje: sekundarni podnaslovi"
 
 #: modules/control/hotkeys.c:520
 msgid "Sub sync: bookmarked audio time"
@@ -28696,7 +28696,7 @@ msgstr "Odbaci stavke koje filtar skriva"
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1270
 msgid ""
 "Do you really want to discard the items that are not displayed at the moment?"
-msgstr ""
+msgstr "Želite li zaista odbaciti stavke koje trenutno nisu prikazane?"
 
 #: modules/gui/qt/network/addonsmodel.cpp:330
 msgid "This addon has been installed manually. VLC can't manage it by itself."

@@ -1,0 +1,29 @@
+VLC Redesign - รุ่นที่ไม่เป็นทางการ
+
+การออกแบบ
+ส่วนติดต่อออกแบบโดย Juxtopposed
+  วีดิทัศน์: https://www.youtube.com/watch?v=ERFeOgqk324
+  ช่อง:      https://www.youtube.com/@juxtopposed
+  Figma:     https://www.figma.com/community/file/1691465999134370980
+"VLC Redesign (Community)" โดย Juxtopposed ใช้สัญญาอนุญาต CC BY 4.0
+(https://creativecommons.org/licenses/by/4.0/) ได้รับการดัดแปลงให้ใช้กับ Qt/QML
+และวาดไอคอนขึ้นใหม่พร้อมปรับแก้ ทั้งนี้ Juxtopposed ไม่ได้รับรอง
+รุ่นนี้
+
+ไม่ใช่ VLC ทางการ
+รุ่นนี้พัฒนาจาก VLC 4.0 (รุ่นพัฒนา) ซึ่ง VideoLAN ไม่ได้สร้าง ไม่ได้มีส่วนเกี่ยวข้อง
+และไม่ได้รับรอง ส่วน VLC, VLC media player และโลโก้กรวยเป็น
+เครื่องหมายการค้าของ VideoLAN ดาวน์โหลดตัวเล่นทางการได้ที่ https://www.videolan.org
+
+ติดตั้งไว้ข้าง VLC ทางการโดยไม่แตะต้อง VLC ตัวนั้น: ค่าตั้ง
+คลัง และประวัติจะเก็บอยู่ในโฟลเดอร์ของตัวเอง
+
+สัญญาอนุญาต
+ซอฟต์แวร์เสรีภายใต้ GNU General Public License รุ่น 2 หรือใหม่กว่า
+ส่วน libVLC ภายใต้ GNU LGPL 2.1 หรือใหม่กว่า แบบอักษร Inter และ DM Mono ภายใต้
+SIL Open Font License 1.1 ข้อความฉบับเต็มติดตั้งไว้ข้าง vlc.exe
+(COPYING.txt, COPYING.LIB.txt, licenses\) ซอร์สโค้ด:
+https://github.com/KuchiSofts/vlc-redesign
+
+การพัฒนาการออกแบบใหม่ครั้งแรกโดย MrDouglax
+(https://github.com/SrDouglax/JuxtopposedVLC)

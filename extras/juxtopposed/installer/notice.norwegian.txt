@@ -1,0 +1,29 @@
+VLC Redesign - uoffisiell utgave
+
+DESIGN
+Grensesnittet er designet av Juxtopposed.
+  Video:   https://www.youtube.com/watch?v=ERFeOgqk324
+  Kanal:   https://www.youtube.com/@juxtopposed
+  Figma:   https://www.figma.com/community/file/1691465999134370980
+"VLC Redesign (Community)" av Juxtopposed er lisensiert under CC BY 4.0
+(https://creativecommons.org/licenses/by/4.0/). Det er tilpasset Qt/QML,
+og ikonene er tegnet på nytt og endret. Juxtopposed står ikke bak denne
+utgaven.
+
+IKKE EN OFFISIELL VLC
+Denne utgaven bygger på VLC 4.0 (under utvikling). Den er ikke laget av,
+tilknyttet eller godkjent av VideoLAN. VLC, VLC media player og
+kjeglelogoen er varemerker for VideoLAN. Hent VLC: https://www.videolan.org
+
+Den installeres ved siden av en offisiell VLC uten å røre den:
+innstillingene, biblioteket og historikken ligger i en egen mappe.
+
+LISENS
+Fri programvare under GNU General Public License, versjon 2 eller senere;
+libVLC under GNU LGPL 2.1 eller senere. Skriftene Inter og DM Mono under
+SIL Open Font License 1.1. De fullstendige tekstene installeres ved siden
+av vlc.exe (COPYING.txt, COPYING.LIB.txt, licenses\). Kildekode:
+https://github.com/KuchiSofts/vlc-redesign
+
+Første implementering av redesignet ble laget av MrDouglax
+(https://github.com/SrDouglax/JuxtopposedVLC).

@@ -1,0 +1,29 @@
+VLC Redesign - nem hivatalos kiadás
+
+TERVEZÉS
+A kezelőfelületet Juxtopposed tervezte.
+  Videó:    https://www.youtube.com/watch?v=ERFeOgqk324
+  Csatorna: https://www.youtube.com/@juxtopposed
+  Figma:    https://www.figma.com/community/file/1691465999134370980
+Juxtopposed „VLC Redesign (Community)” című munkája a CC BY 4.0 licenc
+(https://creativecommons.org/licenses/by/4.0/) alatt áll. Qt/QML-re lett
+átültetve, az ikonjait pedig újrarajzolták és módosították. Juxtopposed
+nem támogatja ezt a kiadást.
+
+NEM HIVATALOS VLC
+A kiadás a VLC 4.0-ra (fejlesztői változat) épül. A VideoLAN nem készítette,
+nem áll kapcsolatban vele, és nem is támogatja. A VLC, a VLC media player és
+a kúp logó a VideoLAN védjegyei. Hivatalos lejátszó: https://www.videolan.org
+
+Egy hivatalos VLC mellé települ anélkül, hogy azt módosítaná: a
+beállításai, a médiatára és az előzményei a saját mappájában maradnak.
+
+LICENC
+Szabad szoftver a GNU General Public License 2-es vagy újabb verziója
+alatt; a libVLC a GNU LGPL 2.1-es vagy újabb verziója alatt. Az Inter és
+a DM Mono betűtípus a SIL Open Font License 1.1 alatt. A teljes szövegek
+a vlc.exe mellé települnek (COPYING.txt, COPYING.LIB.txt, licenses\).
+Forráskód: https://github.com/KuchiSofts/vlc-redesign
+
+Az újratervezés első megvalósítása: MrDouglax
+(https://github.com/SrDouglax/JuxtopposedVLC).

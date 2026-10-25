@@ -1,0 +1,29 @@
+VLC Redesign - epävirallinen koontiversio
+
+SUUNNITTELU
+Käyttöliittymän on suunnitellut Juxtopposed.
+  Video:   https://www.youtube.com/watch?v=ERFeOgqk324
+  Kanava:  https://www.youtube.com/@juxtopposed
+  Figma:   https://www.figma.com/community/file/1691465999134370980
+Juxtopposedin teos "VLC Redesign (Community)" on CC BY 4.0 -lisenssin alainen
+(https://creativecommons.org/licenses/by/4.0/). Se on sovitettu Qt/QML:lle,
+ja sen kuvakkeet on piirretty uudelleen ja niitä on muokattu. Juxtopposed ei
+tue tätä koontiversiota.
+
+EI VIRALLINEN VLC
+Tämä koontiversio perustuu VLC 4.0:aan (kehitysversio). VideoLAN ei ole
+tehnyt tai hyväksynyt sitä, eikä se liity VideoLANiin. VLC, VLC media player
+ja kartiologo ovat VideoLANin tavaramerkkejä. Hae VLC: https://www.videolan.org
+
+Se asennetaan virallisen VLC:n rinnalle koskematta siihen: sen asetukset,
+kirjasto ja historia pysyvät sen omassa kansiossa.
+
+LISENSSI
+Vapaa ohjelmisto GNU General Public Licensen version 2 tai uudemman alaisena;
+libVLC GNU LGPL 2.1:n tai uudemman alaisena. Fontit Inter ja DM Mono SIL Open
+Font License 1.1:n alaisena. Täydelliset tekstit asennetaan vlc.exen viereen
+(COPYING.txt, COPYING.LIB.txt, licenses\). Lähdekoodi:
+https://github.com/KuchiSofts/vlc-redesign
+
+Uudistuksen ensimmäisen toteutuksen teki MrDouglax
+(https://github.com/SrDouglax/JuxtopposedVLC).

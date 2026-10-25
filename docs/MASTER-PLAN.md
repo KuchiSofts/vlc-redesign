@@ -12,7 +12,7 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-10-25):
 
-- 🟡 **0.3.1, a small update** (build 209 in progress): what follows, for the copies of 0.2.4 and later through
+- 🟢 **0.3.1, a small update** (build 215, released 2026-10-25): what follows, for the copies of 0.2.4 and later through
   the in-app update (only the changed files).
 - 🟢 **Bar panels open above their button**: Effects, VLC Settings and HDR now open above the bar, aligned to
   their button, exactly as the languages and tracks: a click outside or on the button closes them, the video
@@ -26,8 +26,8 @@ What is being worked on, updated as it changes (2026-10-25):
   for a right-to-left language; `/UILANG=` `/SUBLANG=`. Checked in the wizard (Hebrew: the subtitles followed, the
   toggle showed), cancelled before installing.
 - 🟢 **"Subtitl…" fixed**: the tab names of the tracks panel are no longer cut short (build 205).
-- 🟡 **README**: new captures at 1.5x from a demo library of free films and music (fully English), then a storyboard
-  of the 45 s promo video for approval.
+- 🟢 **README**: a 56 s tour of the smart features (HyperFrames, from real captures; animated WebP + MP4), twelve
+  feature pictures, the platforms; the wiki documents every option (33 pages).
 - 🟡 **A rare crash at shutdown on GitHub's runner**: the launch test ended once with `0xC000041D` (a crash inside a
   window's message handling) on Windows Server 2022 without a GPU, and passed when run again with the same files.
   Not reproduced in 110 runs on this PC and in Windows Sandbox. Done so the next one can be read: the log file keeps

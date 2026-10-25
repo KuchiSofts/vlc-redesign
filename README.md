@@ -11,6 +11,7 @@ The real VLC 4 engine and codecs, a new interface built screen by screen from th
 [![Downloads](https://img.shields.io/github/downloads/KuchiSofts/vlc-redesign/total?color=ff8800)](https://github.com/KuchiSofts/vlc-redesign/releases)
 ![Windows 10 and 11, 64-bit](https://img.shields.io/badge/Windows-10%20%7C%2011%20%C2%B7%2064--bit-0b0a09)
 ![72 languages](https://img.shields.io/badge/languages-72-0b0a09)
+[![Translation status](https://hosted.weblate.org/widget/vlc-redesign/interface/svg-badge.svg)](https://hosted.weblate.org/engage/vlc-redesign/)
 [![License: GPL-2.0-or-later](https://img.shields.io/badge/license-GPL--2.0--or--later-0b0a09)](COPYING)
 
 **[⬇ Download for Windows](https://github.com/KuchiSofts/vlc-redesign/releases/latest)** ·
@@ -139,7 +140,7 @@ themes.
 <img src="docs/media/tour/settings.jpg" alt="Settings, Appearance: interface language, layout direction, theme, accent">
 
 **72 languages, switched live.** Pick one in Settings and the whole interface changes at once, no restart; a
-right-to-left language lays it out right to left. [Translate it into yours](docs/TRANSLATING.md).
+right-to-left language lays it out right to left. [Translate it into yours on Weblate](https://hosted.weblate.org/engage/vlc-redesign/), in the browser.
 </td>
 </tr>
 <tr>
@@ -252,7 +253,7 @@ the [wiki](https://github.com/KuchiSofts/vlc-redesign/wiki/Building-from-Source)
 
 Bug reports, TV reports, design mismatches and translations are welcome: the
 [issue forms](https://github.com/KuchiSofts/vlc-redesign/issues/new/choose) ask for what is needed. Before a pull
-request, read [CONTRIBUTING.md](CONTRIBUTING.md); to translate, [TRANSLATING.md](docs/TRANSLATING.md). Security
+request, read [CONTRIBUTING.md](CONTRIBUTING.md); to translate, [Weblate](https://hosted.weblate.org/engage/vlc-redesign/) (no files or Git needed) or [TRANSLATING.md](docs/TRANSLATING.md). Security
 problems: [SECURITY.md](SECURITY.md). Everyone here follows the [code of conduct](CODE_OF_CONDUCT.md).
 
 ## Staying in sync with VLC

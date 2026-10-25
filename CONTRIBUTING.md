@@ -20,8 +20,8 @@ Security problems are not issues: see [SECURITY.md](SECURITY.md).
 
 ## Translating
 
-Any `.po` editor works, and a new language shows in the language list by itself: see
-[docs/TRANSLATING.md](docs/TRANSLATING.md).
+The easiest way is [Weblate](https://hosted.weblate.org/engage/vlc-redesign/), in the browser. Any `.po` editor works too, and a new language shows in the
+language list by itself: see [docs/TRANSLATING.md](docs/TRANSLATING.md).
 
 ## Code
 

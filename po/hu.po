@@ -27252,7 +27252,7 @@ msgstr "Újraellenőrzés"
 #: modules/gui/qt/player/qml/CompactLibrary.qml:77
 #: modules/gui/qt/player/qml/CompactLibrary.qml:291
 msgid "Home"
-msgstr "Home"
+msgstr "Kezdőlap"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:88

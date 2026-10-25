@@ -19208,7 +19208,7 @@ msgstr ""
 #: modules/gui/qt/player/qml/TracksListPage.qml:103
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1154
 msgid "Add"
-msgstr "اضافه"
+msgstr "افزودن"
 
 #: modules/gui/macosx/panels/VLCBookmarksWindowController.m:98
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:382
@@ -26349,7 +26349,7 @@ msgstr "بررسی دوباره"
 #: modules/gui/qt/player/qml/CompactLibrary.qml:77
 #: modules/gui/qt/player/qml/CompactLibrary.qml:291
 msgid "Home"
-msgstr "Home"
+msgstr "خانه"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:88

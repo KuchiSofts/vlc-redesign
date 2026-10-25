@@ -2430,7 +2430,7 @@ msgstr ""
 #: src/libvlc-module.c:524
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:162
 msgid "Monitor pixel aspect ratio"
-msgstr "Overvåk pikselforhold"
+msgstr "Skjermens pikselforhold"
 
 #: src/libvlc-module.c:526
 msgid ""
@@ -4913,7 +4913,7 @@ msgstr "Velg hurtigtasten for å vise/skjule kontrollene i fullskjermmodus."
 
 #: src/libvlc-module.c:1546
 msgid "Boss key"
-msgstr "Universalnøkkel"
+msgstr "Sjefstast"
 
 #: src/libvlc-module.c:1547
 msgid "Hide the interface and pause playback."
@@ -19822,7 +19822,7 @@ msgstr "Nullstill"
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1333
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1355
 msgid "RMS/peak"
-msgstr "Slumpfeil/topp"
+msgstr "RMS/topp"
 
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:250
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1312
@@ -23628,7 +23628,7 @@ msgstr "Oppdater treet"
 
 #: modules/gui/qt/dialogs/messages/messages.cpp:452
 msgid "Clear the messages"
-msgstr "&Tøm meldingene"
+msgstr "Tøm meldingene"
 
 #: modules/gui/qt/dialogs/messages/messages.cpp:453
 msgid "Clear the errors"
@@ -23850,7 +23850,7 @@ msgstr "Egenskap"
 
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:129
 msgid "Score"
-msgstr "Filmlydspor"
+msgstr "Poengsum"
 
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:142
 msgid "&Search:"
@@ -27196,7 +27196,7 @@ msgstr "Sjekk på nytt"
 #: modules/gui/qt/player/qml/CompactLibrary.qml:77
 #: modules/gui/qt/player/qml/CompactLibrary.qml:291
 msgid "Home"
-msgstr "Home"
+msgstr "Hjem"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:88

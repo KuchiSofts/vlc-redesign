@@ -22738,7 +22738,7 @@ msgstr "Тамно"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:29
 #: modules/gui/qt/util/color_scheme_model.cpp:46
 msgid "System"
-msgstr "Системско"
+msgstr "Систем"
 
 #: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:321
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:208
@@ -26598,7 +26598,7 @@ msgstr "Провери поново"
 #: modules/gui/qt/player/qml/CompactLibrary.qml:77
 #: modules/gui/qt/player/qml/CompactLibrary.qml:291
 msgid "Home"
-msgstr "Home"
+msgstr "Почетна"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:88

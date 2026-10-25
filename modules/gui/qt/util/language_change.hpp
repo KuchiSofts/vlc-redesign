@@ -66,6 +66,25 @@ inline void applyLanguageFonts(const QLocale &locale)
     set(QChar::Script_Hiragana, kana);
     set(QChar::Script_Katakana, kana);
     set(QChar::Script_Hangul, hangul);
+
+    // The other scripts have one font of Windows' own interface: Hindi was
+    // drawn in an installed Arial Unicode MS (Office), thinner and serif,
+    // before Nirmala UI. Whatever the language (a file name can be in them).
+    const QStringList nirmala{ QStringLiteral("Nirmala UI") };
+    for (const QChar::Script script : { QChar::Script_Devanagari, QChar::Script_Bengali, QChar::Script_Gurmukhi,
+                                        QChar::Script_Gujarati, QChar::Script_Oriya, QChar::Script_Tamil,
+                                        QChar::Script_Telugu, QChar::Script_Kannada, QChar::Script_Malayalam })
+        set(script, nirmala);
+    set(QChar::Script_Sinhala, { QStringLiteral("Nirmala UI"), QStringLiteral("Iskoola Pota") });
+    set(QChar::Script_Thai, { QStringLiteral("Leelawadee UI"), QStringLiteral("Tahoma") });
+    set(QChar::Script_Lao, { QStringLiteral("Leelawadee UI"), QStringLiteral("Lao UI") });
+    set(QChar::Script_Khmer, { QStringLiteral("Leelawadee UI"), QStringLiteral("Khmer UI") });
+    set(QChar::Script_Myanmar, { QStringLiteral("Myanmar Text") });
+    set(QChar::Script_Ethiopic, { QStringLiteral("Ebrima") });
+    const QStringList segoe{ QStringLiteral("Segoe UI") };
+    for (const QChar::Script script : { QChar::Script_Arabic, QChar::Script_Hebrew, QChar::Script_Georgian,
+                                        QChar::Script_Armenian })
+        set(script, segoe);
 #else
     Q_UNUSED(locale);
 #endif

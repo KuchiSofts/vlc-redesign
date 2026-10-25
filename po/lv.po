@@ -23311,7 +23311,7 @@ msgstr "Tumšs"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:29
 #: modules/gui/qt/util/color_scheme_model.cpp:46
 msgid "System"
-msgstr "Sistēmas"
+msgstr "Sistēma"
 
 #: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:321
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:208

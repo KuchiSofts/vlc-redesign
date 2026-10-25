@@ -88,6 +88,8 @@ T.Popup {
     // whoever opens it (above the button of the control bar)
     property bool centered: true
     anchors.centerIn: centered ? T.Overlay.overlay : undefined
+    // above the bar, the video stays as it is (the languages and tracks)
+    dim: centered
 
     onOpened: {
         profileError = ""

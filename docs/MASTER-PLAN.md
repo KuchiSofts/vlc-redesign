@@ -1028,7 +1028,7 @@ Text matching needs Inter with the same metrics (distance-field text, no hinting
 - 🟢 Text positions and sizes measured in many other frames (cited in the code)
 - 🟢 Captured at 1:1 and compared (tiles of 32 px, best shift of up to 4 px, a pixel differs above 24 levels), 2026-10-23:
   the 18 Settings frames, the onboarding (7 frames), Keyboard Shortcuts, Open network stream and New playlist;
-  from the demo library (`C:\VLCDemoFigma`: the media, covers, lengths and playback states of the frames), Home,
+  from the demo library (`C:\Users\ChenB\source\vlc-redesign-qa\media\figma`: the media, covers, lengths and playback states of the frames), Home,
   the S01 folder (grid, list, with the mini player), the player (alone, with the library next to it, light, without
   its bars) and the music player (alone, with its folder); Add Subtitles (to a folder, to a file), Customize
   Player, and the file, folder and playlist context menus; 26 components (menus, sort and view options, settings
@@ -1055,7 +1055,7 @@ Text matching needs Inter with the same metrics (distance-field text, no hinting
     are listed in the rows of 1919:8707 (FileRow). Before the first search VLC asks for the account the service
     requires (API key, username, password), a row the design does not draw.
   - Customize Player: the other eight frames are steps of a drag in the editor (the bars as the user moves items).
-- 🟢 Figma references exported: all 103 frames at 1:1 (`C:\VLCQA\figma`; the oversized component sheets in tiles
+- 🟢 Figma references exported: all 103 frames at 1:1 (`C:\Users\ChenB\source\vlc-redesign-qa\qa\figma`; the oversized component sheets in tiles
   joined pixel for pixel)
 - 🟢 Capture scripts that drive the app into each frame's state: settings, dialogs, onboarding, library and player
   (from the demo library and its playback states), the components, and the hover states in Windows Sandbox

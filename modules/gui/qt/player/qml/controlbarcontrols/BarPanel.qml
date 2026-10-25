@@ -88,8 +88,10 @@ Loader {
     function place() {
         const panel = item
         const margin = VLCStyle.dp(8, VLCStyle.scale)
+        // clear of the window's top bar, as the languages and tracks
+        const top = VLCStyle.dp(48, VLCStyle.scale)
         if (maximumHeight > 0)
-            panel.height = Math.min(maximumHeight, Math.max(0, _bottom - 2 * margin))
+            panel.height = Math.min(maximumHeight, Math.max(0, _bottom - margin - top))
         const position = button.mapToItem(container, 0, 0)
         panel.x = Math.max(margin, Math.min(container.width - panel.width - margin,
                                             position.x + button.width - panel.width))
@@ -114,9 +116,16 @@ Loader {
         }
     }
 
-    // a window resized while it is open: it stays above the bar
+    // a window resized while it is open, or a panel measured once shown
+    // (its content's height): it stays above the bar
     Connections {
         target: loader.item ? loader.container : null
+        enabled: loader.opened
+        function onWidthChanged() { loader.place() }
+        function onHeightChanged() { loader.place() }
+    }
+    Connections {
+        target: loader.item
         enabled: loader.opened
         function onWidthChanged() { loader.place() }
         function onHeightChanged() { loader.place() }

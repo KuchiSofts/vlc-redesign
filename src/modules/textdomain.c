@@ -107,6 +107,12 @@ void vlc_settextlanguage(const char *lang)
     else
         unsetenv("LANGUAGE");
 # endif
+    /* What gettext found is kept by message, not by language (libintl,
+     * without the locale of each thread): Arabic then British English
+     * showed the Arabic texts already looked up. Told the catalogs changed,
+     * it looks them up again (the way the gettext manual gives). */
+    extern int _nl_msg_cat_cntr;
+    ++_nl_msg_cat_cntr;
 #else
     (void)lang;
 #endif

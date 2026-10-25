@@ -12,6 +12,22 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-10-25):
 
+- 🟡 **0.3.1, a small update** (build 209 in progress): what follows, for the copies of 0.2.4 and later through
+  the in-app update (only the changed files).
+- 🟢 **Bar panels open above their button**: Audio effects, VLC Settings and HDR now open above the bar, aligned to
+  their button, exactly as the languages and tracks: a click outside or on the button closes them, the video
+  doesn't pause or dim (BarPanel, any button of Customize can use it). Checked on build 208: open, close by the
+  button, close by a click outside, one after another, the playback state never changed.
+- 🟢 **Subtitle languages that learn**: each pick counts (fading x 0.9 a pick), the list orders the picked languages
+  first ("Often used"), and a language picked ~3 times becomes the third automatic one. Checked on build 208: after
+  German picks, German moved up, was marked, VLC's sub-language became `eng,deu`, and a video without English
+  opened with its German track by itself.
+- 🟢 **Setup's Languages page**: interface language (73) and default subtitle language, the right-to-left toggle
+  for a right-to-left language; `/UILANG=` `/SUBLANG=`. Checked in the wizard (Hebrew: the subtitles followed, the
+  toggle showed), cancelled before installing.
+- 🟢 **"Subtitl…" fixed**: the tab names of the tracks panel are no longer cut short (build 205).
+- 🟡 **README**: new captures at 1.5x from a demo library of free films and music (fully English), then a storyboard
+  of the 45 s promo video for approval.
 - 🟡 **A rare crash at shutdown on GitHub's runner**: the launch test ended once with `0xC000041D` (a crash inside a
   window's message handling) on Windows Server 2022 without a GPU, and passed when run again with the same files.
   Not reproduced in 110 runs on this PC and in Windows Sandbox. Done so the next one can be read: the log file keeps

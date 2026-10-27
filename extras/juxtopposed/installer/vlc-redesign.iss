@@ -2634,6 +2634,9 @@ Type: filesandordirs; Name: "{app}\hrtfs"
 Type: filesandordirs; Name: "{app}\licenses"
 Type: filesandordirs; Name: "{app}\sdk"
 Type: files; Name: "{app}\*.dll"
+Type: files; Name: "{app}\*.exe"
+Type: files; Name: "{app}\*.txt"
+Type: files; Name: "{app}\*.ico"
 
 [Icons]
 Name: "{autoprograms}\{#AppName}"; Filename: "{app}\vlc.exe"; Comment: "{cm:ShortcutComment}"

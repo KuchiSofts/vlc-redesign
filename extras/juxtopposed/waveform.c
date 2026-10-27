@@ -48,6 +48,16 @@ static double monotonic_ms(void)
 #endif
 }
 
+/* Decoded 16 times faster than it plays, 8 minutes take about 30 s: past
+ * MAX_WALL_MS, the time allowed grows with the length (a third more, and
+ * 5 s to start), 45 s at most, under the 60 s after which the interface
+ * kills the helper. */
+static double wall_limit_ms(int64_t duration_us)
+{
+    const double scaled = duration_us > 0 ? duration_us / 12000.0 + 5000.0 : 0;
+    return scaled > MAX_WALL_MS ? scaled : MAX_WALL_MS;
+}
+
 static void pause_poll(void)
 {
 #ifdef _WIN32
@@ -176,7 +186,7 @@ static int analyze(const char *path)
             if (current_length > 0) duration_us = current_length;
         } while (atomic_load(&a.stopping_reason) < 0 && state != libvlc_Error &&
                  !atomic_load(&a.overflow) && duration_us <= MAX_DURATION_US &&
-                 monotonic_ms() - start < MAX_WALL_MS);
+                 monotonic_ms() - start < wall_limit_ms(duration_us));
     }
     const float effective_rate = libvlc_media_player_get_rate(player);
     const double elapsed_ms = monotonic_ms() - start;

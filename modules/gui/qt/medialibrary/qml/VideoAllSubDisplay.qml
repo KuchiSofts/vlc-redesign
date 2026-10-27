@@ -37,15 +37,26 @@ Widgets.PageExt {
     property alias currentIndex: videoAll.currentIndex
     property alias initialIndex: videoAll.initialIndex
 
+    // A grouping for this view only (the "See all" of the folders of Home),
+    // -1 for the saved one: choosing one in the sort menu ends it
+    property int groupingOverride: -1
+    readonly property int _grouping: groupingOverride >= 0 ? groupingOverride : MainCtx.grouping
+
     // NOTE: We are exposing a custom SortMenu with grouping options.
     sortMenu: SortMenuVideo {
         ctx: MainCtx
 
-        onGrouping: (grouping) => { MainCtx.grouping = grouping }
+        // the grouping checked in the menu of the header
+        readonly property int shownGrouping: root._grouping
+
+        onGrouping: (grouping) => {
+            root.groupingOverride = -1
+            MainCtx.grouping = grouping
+        }
     }
 
     readonly property QtObject _meta: {
-        const grouping = MainCtx.grouping;
+        const grouping = root._grouping;
 
         if (grouping === MainCtx.GROUPING_NAME)
             return groupComponent.createObject()

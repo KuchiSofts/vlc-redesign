@@ -190,7 +190,13 @@ Widgets.RedesignDialog {
             if (entryParts.every((part, j) => part.toLowerCase() === parts[j].toLowerCase()))
                 depth = entryParts.length
         }
-        const shown = depth > 0 ? [qsTr("Videos")].concat(parts.slice(depth)) : parts.slice(-3)
+        // the section as the folder pages name it (FolderDisplay): Music for
+        // a folder of music, else Videos
+        const destinations = associations.destinations
+        const music = destinations.length > 0 && destinations.every(destination =>
+            /\.(aac|aiff?|alac|ape|flac|m4a|mka|mp3|oga|ogg|opus|wav|wma)$/i.test(String(destination.label)))
+        const shown = depth > 0 ? [music ? qsTr("Music") : qsTr("Videos")].concat(parts.slice(depth))
+                                : parts.slice(-3)
         // right to left: from the right, the names in Latin letters too (a
         // right-to-left mark at each separator keeps them from reading as
         // one left-to-right run)

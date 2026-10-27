@@ -447,23 +447,32 @@ Item {
                     placeholderTextColor: root.c("#8F8F8F")
                     // Figma 6543:15649: the fields of a setting that does
                     // not apply (the buffering of a preset) are empty
-                    text: !root.available || (!root.valueShown && !activeFocus) ? ""
-                          : root.displayValue.length > 0 && !activeFocus ? root.displayValue
-                          : root.defaultDisplay.length > 0 && !activeFocus
-                            && String(root.settingValue) === String(root.onValue) ? root.defaultDisplay
-                          : root.editorKind === "volumepercent" ? String(Math.round(Number(root.settingValue) * 100 / 256))
-                          // a track counted from 1 (VLC's from 0, -1 its choice)
-                          : root.editorKind === "track" ? (Number(root.settingValue) >= 0 ? String(Number(root.settingValue) + 1) : "")
-                          : root.settingType === "float" && root.decimals !== undefined
-                            ? Number(root.settingValue).toFixed(root.decimals)
-                          : root.settingValue === undefined || root.settingValue === null
-                          || (root.defaultText.length > 0 && String(root.settingValue).length === 0)
-                          ? root.defaultText : root.settingType === "float"
-                          ? String(Number(Number(root.settingValue).toFixed(6))) : String(root.settingValue)
+                    text: displayed()
+                    function displayed() {
+                        return !root.available || (!root.valueShown && !activeFocus) ? ""
+                            : root.displayValue.length > 0 && !activeFocus ? root.displayValue
+                            : root.defaultDisplay.length > 0 && !activeFocus
+                              && String(root.settingValue) === String(root.onValue) ? root.defaultDisplay
+                            : root.editorKind === "volumepercent" ? String(Math.round(Number(root.settingValue) * 100 / 256))
+                            // a track counted from 1 (VLC's from 0, -1 its choice)
+                            : root.editorKind === "track" ? (Number(root.settingValue) >= 0 ? String(Number(root.settingValue) + 1) : "")
+                            : root.settingType === "float" && root.decimals !== undefined
+                              ? Number(root.settingValue).toFixed(root.decimals)
+                            : root.settingValue === undefined || root.settingValue === null
+                            || (root.defaultText.length > 0 && String(root.settingValue).length === 0)
+                            ? root.defaultText : root.settingType === "float"
+                            ? String(Number(Number(root.settingValue).toFixed(6))) : String(root.settingValue)
+                    }
                     inputMethodHints: root.settingType === "integer" || root.settingType === "float"
                                       ? Qt.ImhFormattedNumbersOnly : Qt.ImhNone
                     echoMode: root.editorKind === "password" ? TextInput.Password : TextInput.Normal
                     onEditingFinished: {
+                        // whatever happens below (a value ignored, or refused
+                        // by the model), the field shows the value it holds
+                        Qt.callLater(() => {
+                            if (textControl)
+                                textControl.text = Qt.binding(() => textControl.displayed())
+                        })
                         // the empty field of a setting that does not apply
                         if (!root.available || (!root.valueShown && !activeFocus && !text.length))
                             return

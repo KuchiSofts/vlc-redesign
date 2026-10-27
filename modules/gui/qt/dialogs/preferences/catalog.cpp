@@ -169,7 +169,11 @@ static const Option entries[] = {
     {"performance", "avcodec-skiploopfilter"},
     {"performance", "avcodec-threads"},
     {"performance", "drop-late-frames"},
-    {"performance", "high-priority"}, {"performance", "qt:redesign/process-priority"},
+    {"performance", "high-priority"},
+#ifdef _WIN32
+    // (applied with SetPriorityClass: MainCtx::loadPrefs)
+    {"performance", "qt:redesign/process-priority"},
+#endif
     {"performance", "sout-transcode-venc"}, {"performance", "codec"},
     {"performance", "clock-synchro"}, {"performance", "clock-jitter"},
     {"performance", "cr-average"},

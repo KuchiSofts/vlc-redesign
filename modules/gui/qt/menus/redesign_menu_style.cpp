@@ -36,6 +36,7 @@
 #include <QPainterPath>
 #include <QStyleHints>
 #include <QStyleOptionMenuItem>
+#include <QTransform>
 
 #include <algorithm>
 #include <cmath>
@@ -388,9 +389,15 @@ void RedesignMenuStyle::drawControl(ControlElement element, const QStyleOption *
         painter->drawRoundedRect(rect.adjusted(panelPadding, 0, -panelPadding, 0), hoverRadius, hoverRadius);
     }
 
+    // Laid out left to right, then mirrored right to left (Hebrew, Arabic...):
+    // the icon on the right, the label right-aligned, the shortcut on the
+    // left and the arrow pointing left, on the side the submenu opens
+    const Qt::LayoutDirection dir = item->direction;
+
     // Icon, or the check mark of the checkable items without one
-    const QRect iconRect(rect.left() + panelPadding + sidePadding, rect.top() + (rect.height() - iconSize) / 2,
-                         iconSize, iconSize);
+    const QRect iconLogical(rect.left() + panelPadding + sidePadding, rect.top() + (rect.height() - iconSize) / 2,
+                            iconSize, iconSize);
+    const QRect iconRect = visualRect(dir, rect, iconLogical);
     if (!item->icon.isNull())
     {
         if (checked)
@@ -410,7 +417,7 @@ void RedesignMenuStyle::drawControl(ControlElement element, const QStyleOption *
 
     // Label on the left, shortcut on the right, then the submenu arrow
     const bool subMenu = item->menuItemType == QStyleOptionMenuItem::SubMenu;
-    const int left = iconRect.right() + 1 + iconGap;
+    const int left = iconLogical.right() + 1 + iconGap;
     const int right = rect.right() + 1 - panelPadding - sidePadding - (subMenu ? arrowGap + arrowWidth : 0);
     QRect textRect(left, rect.top(), std::max(0, right - left), rect.height());
 
@@ -422,21 +429,29 @@ void RedesignMenuStyle::drawControl(ControlElement element, const QStyleOption *
     // "Properties & Metadata")
     if (!shortcut.isEmpty())
     {
-        drawFigmaText(painter, textRect, Qt::AlignRight, shortcut, item->font,
-                      enabled ? colors.textMuted : colors.disabled);
+        drawFigmaText(painter, visualRect(dir, rect, textRect), visualAlignment(dir, Qt::AlignRight), shortcut,
+                      item->font, enabled ? colors.textMuted : colors.disabled);
         textRect.setRight(textRect.right() - metrics.horizontalAdvance(shortcut) - shortcutGap / 2);
     }
-    drawFigmaText(painter, textRect, Qt::AlignLeft,
+    drawFigmaText(painter, visualRect(dir, rect, textRect), visualAlignment(dir, Qt::AlignLeft),
                   metrics.elidedText(withoutMnemonic(label), Qt::ElideRight, textRect.width()), item->font,
                   !enabled ? colors.disabled : selected ? colors.textHover : colors.text);
 
     if (subMenu)
     {
-        const QRect arrowRect(rect.right() + 1 - panelPadding - sidePadding - arrowWidth,
-                              rect.top() + (rect.height() - arrowWidth) / 2, arrowWidth, arrowWidth);
+        const QRect arrowRect = visualRect(dir, rect,
+            QRect(rect.right() + 1 - panelPadding - sidePadding - arrowWidth,
+                  rect.top() + (rect.height() - arrowWidth) / 2, arrowWidth, arrowWidth));
         // the colour of the labels (#8F8F8F), not of the shortcuts
-        painter->drawPixmap(arrowRect, tinted(QStringLiteral(":/redesign/icons/chevron-right/default.png"),
-                                              enabled ? colors.text : colors.disabled));
+        QPixmap arrow = tinted(QStringLiteral(":/redesign/icons/chevron-right/default.png"),
+                               enabled ? colors.text : colors.disabled);
+        if (dir == Qt::RightToLeft)
+        {
+            const qreal ratio = arrow.devicePixelRatio();
+            arrow = arrow.transformed(QTransform().scale(-1, 1));
+            arrow.setDevicePixelRatio(ratio);
+        }
+        painter->drawPixmap(arrowRect, arrow);
     }
     painter->restore();
 }

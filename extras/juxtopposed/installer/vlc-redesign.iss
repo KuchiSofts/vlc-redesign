@@ -2817,6 +2817,10 @@ function GetWindowRect(Wnd: HWND; var Rect: TWinRect): Boolean;
   external 'GetWindowRect@user32.dll stdcall';
 function ShellExecute(Wnd: HWND; Operation, FileName, Parameters, Directory: String; ShowCmd: Integer): Integer;
   external 'ShellExecuteW@shell32.dll stdcall';
+function GetCurrentProcessId(): Longword;
+  external 'GetCurrentProcessId@kernel32.dll stdcall';
+function ProcessIdToSessionId(ProcessId: Longword; var SessionId: Longword): Boolean;
+  external 'ProcessIdToSessionId@kernel32.dll stdcall';
 
 { ---- Closing and reopening a running copy --------------------------------- }
 
@@ -2825,20 +2829,27 @@ begin
   Result := ExpandConstant('{app}\vlc.exe');
 end;
 
-{ Process ids (as taskkill arguments) and command line of the VLC Redesign
-  instances started from the install folder; other VLCs are left alone. }
-function FindRunning(var Pids: String; var CmdLine: String): Boolean;
+{ Process ids (as taskkill arguments) of the VLC Redesign instances started
+  from the install folder; other VLCs are left alone. All of them go (an
+  install for everyone replaces the files every user runs), but only one in
+  this Windows session (Here) is reopened, with its command line: never
+  another user's media, in this user's session. }
+function FindRunning(var Pids: String; var CmdLine: String; var Here: Boolean): Boolean;
 var
   Locator, Service, Procs, Proc: Variant;
   I: Integer;
+  Session: Longword;
 begin
   Result := False;
+  Here := False;
   Pids := '';
   CmdLine := '';
+  if not ProcessIdToSessionId(GetCurrentProcessId(), Session) then
+    Session := $FFFFFFFF;
   try
     Locator := CreateOleObject('WbemScripting.SWbemLocator');
     Service := Locator.ConnectServer('.', 'root\CIMV2');
-    Procs := Service.ExecQuery('SELECT ProcessId, ExecutablePath, CommandLine FROM Win32_Process WHERE Name = ''vlc.exe''');
+    Procs := Service.ExecQuery('SELECT ProcessId, SessionId, ExecutablePath, CommandLine FROM Win32_Process WHERE Name = ''vlc.exe''');
     for I := 0 to Procs.Count - 1 do
     begin
       Proc := Procs.ItemIndex(I);
@@ -2846,8 +2857,12 @@ begin
       begin
         Result := True;
         Pids := Pids + ' /PID ' + IntToStr(Proc.ProcessId);
-        if not VarIsNull(Proc.CommandLine) then
-          CmdLine := Proc.CommandLine;
+        if (not VarIsNull(Proc.SessionId)) and (Proc.SessionId = Session) then
+        begin
+          Here := True;
+          if not VarIsNull(Proc.CommandLine) then
+            CmdLine := Proc.CommandLine;
+        end;
       end;
     end;
   except
@@ -2905,11 +2920,12 @@ function CloseRunning(): Boolean;
 var
   Pids, CmdLine: String;
   Code, I: Integer;
+  Here: Boolean;
 begin
   Result := True;
-  if not FindRunning(Pids, CmdLine) then
+  if not FindRunning(Pids, CmdLine, Here) then
     Exit;
-  WasRunning := True;
+  WasRunning := Here;
   RunningArgs := ArgsOf(CmdLine);
   if (not WizardSilent) and (not IsUpdate()) then
     MsgBox(CustomMessage('Running'), mbInformation, MB_OK);
@@ -2918,12 +2934,12 @@ begin
   for I := 1 to 30 do
   begin
     Sleep(500);
-    if not FindRunning(Pids, CmdLine) then
+    if not FindRunning(Pids, CmdLine, Here) then
       Exit;
   end;
   Exec(ExpandConstant('{sys}\taskkill.exe'), '/F ' + Trim(Pids), '', SW_HIDE, ewWaitUntilTerminated, Code);
   Sleep(1000);
-  Result := not FindRunning(Pids, CmdLine);
+  Result := not FindRunning(Pids, CmdLine, Here);
 end;
 
 function PrepareToInstall(var NeedsRestart: Boolean): String;
@@ -5006,14 +5022,15 @@ procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
 var
   Pids, CmdLine: String;
   Code: Integer;
+  Here: Boolean;
 begin
   if CurUninstallStep = usUninstall then
   begin
-    if FindRunning(Pids, CmdLine) then
+    if FindRunning(Pids, CmdLine, Here) then
     begin
       Exec(ExpandConstant('{sys}\taskkill.exe'), Trim(Pids), '', SW_HIDE, ewWaitUntilTerminated, Code);
       Sleep(3000);
-      if FindRunning(Pids, CmdLine) then
+      if FindRunning(Pids, CmdLine, Here) then
         Exec(ExpandConstant('{sys}\taskkill.exe'), '/F ' + Trim(Pids), '', SW_HIDE, ewWaitUntilTerminated, Code);
     end;
     UnregisterFileTypes();

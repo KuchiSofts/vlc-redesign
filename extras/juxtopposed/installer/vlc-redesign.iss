@@ -2638,8 +2638,9 @@ Name: "{autodesktop}\{#AppName}"; Filename: "{app}\vlc.exe"; Comment: "{cm:Short
 
 [Run]
 ; Reopen VLC as it was (update or running instance); otherwise the last
-; page's "Open VLC Redesign now" does (CurStepChanged)
-Filename: "{app}\vlc.exe"; Parameters: "{code:RelaunchArgs}"; Flags: nowait; Check: ShouldRelaunch
+; page's "Open VLC Redesign now" does (CurStepChanged). As the user who
+; started Setup, never as an administrator (an install for everyone)
+Filename: "{app}\vlc.exe"; Parameters: "{code:RelaunchArgs}"; Flags: nowait runasoriginaluser; Check: ShouldRelaunch
 
 [Code]
 const
@@ -4951,10 +4952,11 @@ begin
     { Windows may check a new program for seconds the first time it runs
       (up to 10 s measured): let it check VLC and its helpers now, hidden
       and without waiting (all return at once), not when a file is opened.
-      Not --version: it opens a console and waits for a key }
-    Exec(AppExe(), '--prewarm', '', SW_HIDE, ewNoWait, Code);
-    Exec(ExpandConstant('{app}\vlc-preparser.exe'), '--help', '', SW_HIDE, ewNoWait, Code);
-    Exec(ExpandConstant('{app}\vlc-waveform.exe'), '', '', SW_HIDE, ewNoWait, Code);
+      Not --version: it opens a console and waits for a key. As the user
+      who started Setup: nothing of VLC runs as an administrator }
+    ExecAsOriginalUser(AppExe(), '--prewarm', '', SW_HIDE, ewNoWait, Code);
+    ExecAsOriginalUser(ExpandConstant('{app}\vlc-preparser.exe'), '--help', '', SW_HIDE, ewNoWait, Code);
+    ExecAsOriginalUser(ExpandConstant('{app}\vlc-waveform.exe'), '', '', SW_HIDE, ewNoWait, Code);
   end
   else if (CurStep = ssDone) and (not WizardSilent) and (not ShouldRelaunch()) and Checked(T_LAUNCH) then
     ExecAsOriginalUser(AppExe(), '', '', SW_SHOWNORMAL, ewNoWait, Code);

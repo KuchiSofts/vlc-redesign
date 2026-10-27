@@ -15,17 +15,17 @@ Controls.Popup {
         MainCtx.useGlobalShortcuts = false
     }
     onClosed: MainCtx.useGlobalShortcuts = previousGlobalShortcuts
-    width: 344
-    padding: 12
+    width: VLCStyle.dp(344, VLCStyle.scale)
+    padding: VLCStyle.dp(12, VLCStyle.scale)
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutside
     // the colours of the redesign, in the light theme too (Figma "Player - Light")
     background: Rectangle {
         color: VLCStyle.redesign.color("#1b1b1b", "#ababaa")
-        radius: 11
+        radius: VLCStyle.dp(11, VLCStyle.scale)
         border.color: VLCStyle.redesign.color("#252525", "#9c9c9b")
     }
     contentItem: Column {
-        spacing: 4
+        spacing: VLCStyle.dp(4, VLCStyle.scale)
         // a popup does not inherit the mirroring of the window (right to left)
         LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
         LayoutMirroring.childrenInherit: true
@@ -43,21 +43,21 @@ Controls.Popup {
                 required property int index
                 required property string modelData
                 width: root.availableWidth
-                height: 48
+                height: VLCStyle.dp(48, VLCStyle.scale)
                 background: Rectangle {
                     color: parent.hovered ? VLCStyle.redesign.color("#252525", "#9c9c9b") : "transparent"
-                    radius: 6
+                    radius: VLCStyle.dp(6, VLCStyle.scale)
                 }
                 contentItem: Text {
                     text: modelData
                     color: VLCStyle.redesign.color("#969696", "#4d4d4d")
                     font.family: VLCStyle.redesign.fontFamily
-                    font.pixelSize: 16
+                    font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignLeft
                     elide: Text.ElideRight
-                    leftPadding: LayoutMirroring.enabled ? 0 : 12
-                    rightPadding: LayoutMirroring.enabled ? 12 : 0
+                    leftPadding: LayoutMirroring.enabled ? 0 : VLCStyle.dp(12, VLCStyle.scale)
+                    rightPadding: LayoutMirroring.enabled ? VLCStyle.dp(12, VLCStyle.scale) : 0
                 }
                 onClicked: {
                     root.close()

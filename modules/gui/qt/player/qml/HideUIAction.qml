@@ -17,18 +17,18 @@ import VLC.Style
 Controls.ItemDelegate {
     id: root
     objectName: "hidePlayerUIAction"
-    height: 48
+    height: VLCStyle.dp(48, VLCStyle.scale)
     background: Rectangle {
-        radius: 6
+        radius: VLCStyle.dp(6, VLCStyle.scale)
         color: root.hovered ? VLCStyle.redesign.color("#252525", "#9c9c9b") : "transparent"
     }
     contentItem: Text {
         text: MainCtx.minimalView ? qsTr("Show player UI") : qsTr("Hide player UI")
         color: VLCStyle.redesign.color("#969696", "#4d4d4d")
         font.family: VLCStyle.redesign.fontFamily
-        font.pixelSize: 16
+        font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
         verticalAlignment: Text.AlignVCenter
-        leftPadding: 12
+        leftPadding: VLCStyle.dp(12, VLCStyle.scale)
     }
     Accessible.role: Accessible.CheckBox
     Accessible.checkable: true

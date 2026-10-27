@@ -4913,7 +4913,11 @@ begin
   until List = '';
 end;
 
-procedure RemoveOldOpenWith();
+{ The "Open with" entries of 0.1/0.2 (VLCRedesign.Media). A default the
+  user chose for them (UserChoice, which Setup can't rewrite) still names
+  that ProgID: it stays while the program does, pointing at this copy,
+  out of "Open with" }
+procedure RemoveOldOpenWith(Keep: Boolean);
 var
   List, Ext: String;
 begin
@@ -4923,12 +4927,19 @@ begin
     if Ext <> '' then
       RegDeleteValue(HKA, 'Software\Classes\' + Ext + '\OpenWithProgids', 'VLCRedesign.Media');
   until List = '';
-  RegDeleteKeyIncludingSubkeys(HKA, 'Software\Classes\VLCRedesign.Media');
+  if Keep and RegKeyExists(HKA, 'Software\Classes\VLCRedesign.Media') then
+  begin
+    RegWriteStringValue(HKA, 'Software\Classes\VLCRedesign.Media\DefaultIcon', '', '"' + AppExe() + '",0');
+    RegWriteStringValue(HKA, 'Software\Classes\VLCRedesign.Media\shell\open\command', '',
+                        '"' + AppExe() + '" --started-from-file "%1"');
+  end
+  else
+    RegDeleteKeyIncludingSubkeys(HKA, 'Software\Classes\VLCRedesign.Media');
 end;
 
 procedure RegisterFileTypes();
 begin
-  RemoveOldOpenWith();
+  RemoveOldOpenWith(True);
   RegWriteStringValue(HKA, CAPABILITIES, 'ApplicationName', '{#AppName}');
   RegWriteStringValue(HKA, CAPABILITIES, 'ApplicationDescription', CustomMessage('ShortcutComment'));
   RegWriteStringValue(HKA, CAPABILITIES, 'ApplicationIcon', '"' + AppExe() + '",0');
@@ -4965,7 +4976,7 @@ begin
   UnregisterList(AUDIO_EXTS);
   UnregisterList(PLAYLIST_EXTS);
   SetContextMenu('Software\Classes\Directory\shell', False);
-  RemoveOldOpenWith();
+  RemoveOldOpenWith(False);
   RegDeleteValue(HKA, 'Software\RegisteredApplications', '{#AppName}');
   RegDeleteKeyIncludingSubkeys(HKA, CAPABILITIES);
   { (not the profiles the copies noted: the settings of the next copy)

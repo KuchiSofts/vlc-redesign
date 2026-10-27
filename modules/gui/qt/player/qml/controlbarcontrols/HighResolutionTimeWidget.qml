@@ -18,6 +18,8 @@
 
 import QtQuick
 import QtQuick.Window
+// Control: QtQuick.Controls.Basic, the style of the static Qt of Windows
+import QtQuick.Controls.Basic as Controls
 
 
 import VLC.MainInterface
@@ -26,7 +28,7 @@ import VLC.Widgets as Widgets
 import VLC.Style
 
 
-Control {
+Controls.Control {
     id: highResolutionTimeWidget
 
     property bool paintOnly: false

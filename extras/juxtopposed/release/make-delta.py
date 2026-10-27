@@ -119,7 +119,17 @@ def zip_files(path):
 
 
 def version_key(v):
-    return [int(x) if x.isdigit() else x for x in re.split(r'[.\-]', v)]
+    """The order of the app (RedesignUpdater::versionLess): the numbers, then
+    a pre-release before its release, its parts as SemVer compares them
+    (numbers as numbers, before words; fewer parts first)."""
+    v = v.strip().lstrip('vV')
+    core, _, pre = v.partition('-')
+    numbers = [int(x) if x.isdigit() else 0 for x in core.split('.')]
+    numbers += [0] * (3 - len(numbers))
+    while len(numbers) > 3 and numbers[-1] == 0:
+        numbers.pop()
+    parts = tuple((0, int(x), '') if x.isdigit() else (1, 0, x.lower()) for x in pre.split('.')) if pre else ()
+    return (tuple(numbers), not pre, parts)
 
 
 def normalize(package):

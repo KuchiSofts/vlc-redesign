@@ -15,6 +15,7 @@ import VLC.MainInterface
 import VLC.Player
 import VLC.Style
 import VLC.Util
+import VLC.Widgets as Widgets
 
 // Cast to a TV: the Chromecasts, TVs and speakers of the network (found by
 // mDNS and UPnP, Player.rendererManager) and this computer. The media goes
@@ -142,6 +143,7 @@ RedesignIconButton {
                 model: root.manager
                 // (the roles through model: the row has its own name and selected)
                 delegate: DeviceRow {
+                    id: deviceRow
                     width: ListView.view.width
                     name: model.name
                     selected: model.selected
@@ -153,6 +155,12 @@ RedesignIconButton {
                           : model.selected && root.manager.castStatus === RendererManager.CastConnecting
                             ? qsTr("Connecting…")
                           : (model.flags & 2) ? "" : qsTr("Sound only")
+                    // (right click, or the menu key): hidden from the list
+                    hideable: !model.selected
+                    onHideRequested: (x, y) => {
+                        deviceMenu.row = index
+                        deviceMenu.popup(deviceRow, x, y)
+                    }
                     onClicked: {
                         // the one it plays on: again only when it failed
                         if (!model.selected)
@@ -162,6 +170,16 @@ RedesignIconButton {
                         popup.close()
                     }
                 }
+            }
+
+            // the devices hidden from the list (kept in the settings)
+            DeviceRow {
+                objectName: "castShowHidden"
+                Layout.fillWidth: true
+                visible: root.manager.hiddenCount > 0
+                name: qsTr("Show %n hidden device(s)", "", root.manager.hiddenCount)
+                iconName: "refresh"
+                onClicked: root.manager.showHiddenDevices()
             }
 
             Text {
@@ -251,6 +269,21 @@ RedesignIconButton {
         }
     }
 
+    // the menu of a device of the list
+    Widgets.RedesignMenu {
+        id: deviceMenu
+        property int row: -1
+        menuWidth: VLCStyle.dp(220, VLCStyle.scale)
+        Widgets.RedesignMenuItem {
+            // (a menu does not inherit the mirroring of the window)
+            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+            LayoutMirroring.childrenInherit: true
+            text: qsTr("Hide this device")
+            iconName: "remove"
+            onTriggered: root.manager.hideDevice(deviceMenu.row)
+        }
+    }
+
     component DeviceRow: T.ItemDelegate {
         id: row
         property string name
@@ -259,6 +292,21 @@ RedesignIconButton {
         property bool selected: false
         // the detail says it does not work
         property bool alert: false
+        // it has a menu to hide it (hideRequested, where it opens)
+        property bool hideable: false
+        signal hideRequested(real x, real y)
+
+        TapHandler {
+            enabled: row.hideable
+            acceptedButtons: Qt.RightButton
+            onTapped: (eventPoint) => row.hideRequested(eventPoint.position.x, eventPoint.position.y)
+        }
+        Keys.onMenuPressed: (event) => {
+            if (!row.hideable)
+                return
+            event.accepted = true
+            row.hideRequested(0, row.height)
+        }
 
         implicitHeight: VLCStyle.dp(44, VLCStyle.scale)
         focusPolicy: Qt.StrongFocus

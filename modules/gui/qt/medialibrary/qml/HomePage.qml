@@ -382,12 +382,12 @@ Widgets.PageExt {
                 view: foldersRow
                 // The design shows the chevron of every section: the folders
                 // open the folders view of the library (the videos grouped by
-                // folder, as "Group by folder" of the Videos page)
+                // folder, as "Group by folder" of the Videos page), for this
+                // view only: the saved grouping of the Videos page stays
                 seeAllButton.visible: true
 
                 onSeeAllButtonClicked: function (reason) {
-                    MainCtx.grouping = MainCtx.GROUPING_FOLDER
-                    History.push(["video", "all"], reason)
+                    History.push(["video", "all"], { groupingOverride: MainCtx.GROUPING_FOLDER }, reason)
                 }
             }
 
@@ -419,6 +419,20 @@ Widgets.PageExt {
                     ml: MediaLib
                 }
 
+                // Up and Down go to the rows above and below, as from the
+                // other rows (a horizontal list only takes Left and Right)
+                Navigation.parentItem: mediaRows
+                Keys.priority: Keys.AfterItem
+                Keys.onPressed: (event) => Navigation.defaultKeyAction(event)
+
+                onActiveFocusChanged: {
+                    if (activeFocus) {
+                        contentYBehavior.enabled = true
+                        Helpers.positionFlickableToContainItem(flickable, this)
+                        contentYBehavior.enabled = false
+                    }
+                }
+
                 delegate: T.ItemDelegate {
                     id: folderCard
 
@@ -444,6 +458,9 @@ Widgets.PageExt {
                             color: folderCard.hovered
                                    ? VLCStyle.redesign.color(VLCStyle.redesign.controlHoverBackground, "#9c9c9b")
                                    : VLCStyle.redesign.color("#1E1E1E", "#ababaa")
+                            // the card the keys are on
+                            border.width: folderCard.activeFocus ? VLCStyle.dp(1, VLCStyle.scale) : 0
+                            border.color: VLCStyle.redesign.focusColor
 
                             Image {
                                 anchors.centerIn: parent
@@ -478,6 +495,9 @@ Widgets.PageExt {
                     }
 
                     onClicked: History.push(["folder"], { folderUrl: folderCard.model.url }, Qt.MouseFocusReason)
+                    // (an item delegate only takes Space)
+                    Keys.onReturnPressed: clicked()
+                    Keys.onEnterPressed: clicked()
                 }
             }
 

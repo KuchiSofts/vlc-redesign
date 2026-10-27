@@ -66,8 +66,8 @@ Dialog {
         Widgets.DualKawaseBlur {
             id: blur
 
+            // (the overlay is the visible window: MainInterface.qml)
             anchors.fill: parent
-            anchors.margins: MainCtx.windowExtendedMargin
 
             visible: MainCtx.backdropBlurRequested() && blur.available
 

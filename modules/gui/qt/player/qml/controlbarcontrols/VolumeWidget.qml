@@ -107,18 +107,21 @@ T.Pane {
 
             focus: true
             paintOnly: root.paintOnly
-            text: {
-                if (_player.muted)
-                    return VLCIcons.volume_muted
-                else if (_player.volume === 0)
-                    return VLCIcons.volume_muted
-                else if (_player.volume < .33)
-                    return VLCIcons.volume_low
-                else if (_player.volume <= .66)
-                    return VLCIcons.volume_medium
-                else
-                    return VLCIcons.volume_high
+            // Figma "Player": 50 % shows the icon value=high; the glyph (the
+            // editor's preview) and the image of the bar show the same level
+            readonly property string level: {
+                if (root._player.muted || root._player.volume === 0)
+                    return "muted"
+                if (root._player.volume < .25)
+                    return "low"
+                if (root._player.volume < .5)
+                    return "medium"
+                return "high"
             }
+            text: level === "muted" ? VLCIcons.volume_muted
+                  : level === "low" ? VLCIcons.volume_low
+                  : level === "medium" ? VLCIcons.volume_medium
+                  : VLCIcons.volume_high
             font.pixelSize: VLCStyle.redesign.iconSize
             contentItem: Item {
                 implicitWidth: VLCStyle.redesign.iconSize
@@ -128,16 +131,7 @@ T.Pane {
                     width: VLCStyle.redesign.iconSize
                     height: width
                     color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, colorContext.fg.primary)
-                    // Figma "Player": 50 % shows the icon value=high
-                    source: {
-                        if (root._player.muted || root._player.volume === 0)
-                            return "qrc:///redesign/volume-muted.png"
-                        if (root._player.volume < .25)
-                            return "qrc:///redesign/volume-low.png"
-                        if (root._player.volume < .5)
-                            return "qrc:///redesign/volume-medium.png"
-                        return "qrc:///redesign/volume-high.png"
-                    }
+                    source: "qrc:///redesign/volume-" + volumeBtn.level + ".png"
                 }
             }
             description: qsTr("Mute")

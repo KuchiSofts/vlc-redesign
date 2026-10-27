@@ -176,7 +176,8 @@ T.ToolBar {
             text: grouping === MainCtx.GROUPING_NAME ? qsTr("Group by name")
                   : grouping === MainCtx.GROUPING_FOLDER ? qsTr("Group by folder")
                   : qsTr("Do not group videos")
-            checked: MainCtx.grouping === grouping
+            // (the page may show another grouping than the saved one)
+            checked: (root.sortMenu?.shownGrouping ?? MainCtx.grouping) === grouping
             // the page applies it (SortMenuVideo.onGrouping)
             onTriggered: root.sortMenu.grouping(grouping)
         }

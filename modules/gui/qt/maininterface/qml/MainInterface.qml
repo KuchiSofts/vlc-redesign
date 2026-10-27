@@ -59,15 +59,43 @@ Item {
                                       && MainCtx.clientSideDecoration
                                       && (MainCtx.intfMainWindow.visibility === Window.Windowed)
 
-    SetupDialogs { anchors.fill: parent; z: 20 }
+    // The popups and dialogs (in the overlay) size and place themselves in
+    // the window's visible area, as on Windows, not over the margin of the
+    // extended frame (its shadow): the overlay is kept on the interface
+    readonly property rect _overlayRect: Qt.rect(g_mainInterface.x, g_mainInterface.y,
+                                                 g_mainInterface.width, g_mainInterface.height)
+    function _fitOverlay() {
+        const overlay = Overlay.overlay
+        if (!overlay || Qt.platform.os === "windows")
+            return
+        const r = _overlayRect
+        if (overlay.x !== r.x) overlay.x = r.x
+        if (overlay.y !== r.y) overlay.y = r.y
+        if (overlay.width !== r.width) overlay.width = r.width
+        if (overlay.height !== r.height) overlay.height = r.height
+    }
+    on_OverlayRectChanged: _fitOverlay()
+    Component.onCompleted: _fitOverlay()
+    Connections {
+        // Qt puts it back on the whole window when the window is resized
+        target: Qt.platform.os === "windows" ? null : Overlay.overlay
+        function onXChanged() { root._fitOverlay() }
+        function onYChanged() { root._fitOverlay() }
+        function onWidthChanged() { root._fitOverlay() }
+        function onHeightChanged() { root._fitOverlay() }
+    }
+
+    // (on the interface: not over the margin of the extended frame elsewhere
+    // than on Windows, where they are the same)
+    SetupDialogs { anchors.fill: g_mainInterface; z: 20 }
 
     RedesignUpdateBanner {
         z: 19
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
+        anchors.right: g_mainInterface.right
+        anchors.bottom: g_mainInterface.bottom
         anchors.rightMargin: VLCStyle.dp(16, VLCStyle.scale)
         // above the player's control bar, or the library's mini player
-        anchors.bottomMargin: VLCStyle.dp(16, VLCStyle.scale) + MainCtx.windowExtendedMargin
+        anchors.bottomMargin: VLCStyle.dp(16, VLCStyle.scale)
                               + ((MainCtx.playerView || Player.isStarted || MainCtx.alwaysShowPlayerBar)
                                  ? VLCStyle.dp(64, VLCStyle.scale) : 0)
     }

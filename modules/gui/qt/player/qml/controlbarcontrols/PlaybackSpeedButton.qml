@@ -112,7 +112,7 @@ PopupIconToolButton {
 
             onWheel: (wheel) => {
                 if (!root.popup.contentItem || !root.popup.contentItem.slider) {
-                    event.accepted = false
+                    wheel.accepted = false
                     return
                 }
 

@@ -37,6 +37,9 @@ Widgets.PageLoader {
     property bool enableBeginningFade: true
     property bool enableEndFade: true
 
+    // (given to the videos page: VideoAllSubDisplay)
+    property int groupingOverride: -1
+
     // Settings
 
     pageModel: [{

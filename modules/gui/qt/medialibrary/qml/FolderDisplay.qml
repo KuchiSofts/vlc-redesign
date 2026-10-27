@@ -194,7 +194,10 @@ Widgets.PageExt {
               action: (dataList, options, indexes) => {
                   const url = String(fileMenu.file(dataList).url)
                   const parent = url.substring(0, url.lastIndexOf("/"))
-                  if (parent !== String(root.folderUrl).replace(/\/$/, "")) {
+                  // the paths compared: the URLs of the folder and of the
+                  // file are encoded differently ("Rock & Roll")
+                  const path = (link) => Helpers.localPathFromUrl(link).replace(/[\/\\]$/, "")
+                  if (path(parent) !== path(root.folderUrl)) {
                       History.push(["folder"], { folderUrl: parent }, Qt.MouseFocusReason)
                   } else {
                       grid.currentIndex = fileMenu.row(indexes)

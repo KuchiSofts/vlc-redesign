@@ -882,7 +882,6 @@ modules/gui/qt/medialibrary/qml/PlaylistCreateDialog.qml
 modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml
 modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml
 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml
-modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml
 modules/gui/qt/menus/custom_menus.cpp
 modules/gui/qt/menus/custom_menus.hpp
 modules/gui/qt/menus/menus.cpp

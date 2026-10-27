@@ -464,6 +464,22 @@ static void Repoint(const wchar_t *profile, const wchar_t *name, const wchar_t *
     free(text);
 }
 
+/* The folder of the copy installed for all users (HKLM), whose users each
+ * keep their own profile in %APPDATA% (the installer makes no portable
+ * folder there) */
+static BOOL InstalledForEveryone(const wchar_t *folder)
+{
+    wchar_t installed[MAX_PATH];
+    DWORD installed_size = sizeof(installed);
+    if (RegGetValueW(HKEY_LOCAL_MACHINE, UNINSTALL_KEY, L"InstallLocation", RRF_RT_REG_SZ, NULL,
+                     installed, &installed_size) != ERROR_SUCCESS)
+        return FALSE;
+    size_t len = wcslen(installed);
+    while (len > 3 && installed[len - 1] == L'\\')
+        installed[--len] = L'\0';
+    return _wcsicmp(installed, folder) == 0;
+}
+
 /* VLC Redesign keeps its settings apart from those of VLC (%APPDATA%\vlc and
  * HKCU\Software\VideoLAN\VLC, which an installed VLC uses): in its portable
  * folder, made when it is missing, else (a place it can't write to) in
@@ -477,7 +493,10 @@ static BOOL ProfileDir(wchar_t *path, DWORD size)
     if (last != NULL)
     {
         *last = L'\0';
-        if (JoinPath(path, size, path, L"portable") && CreateDirectoryW(path, NULL))
+        /* Never for an install for everyone: a VLC run as administrator
+         * would make one profile for all its users */
+        if (!InstalledForEveryone(path)
+         && JoinPath(path, size, path, L"portable") && CreateDirectoryW(path, NULL))
             return TRUE;
     }
     const wchar_t *appdata = _wgetenv(L"APPDATA");
@@ -533,9 +552,20 @@ static void PruneProfiles(HKEY key)
 static void CarryOverSettings(void)
 {
     wchar_t profile[MAX_PATH], path[MAX_PATH];
-    if (!ProfileDir(profile, MAX_PATH) || !PortableProfile(profile, MAX_PATH)
-     || ExistsIn(profile, L"standalone"))
+    if (!ProfileDir(profile, MAX_PATH) || ExistsIn(profile, L"standalone"))
         return;
+    /* a portable copy's profile, or the user's own of the copy installed
+     * for everyone; not that of a copy that can't write next to itself */
+    if (!PortableProfile(path, MAX_PATH))
+    {
+        const DWORD read = GetModuleFileNameW(NULL, path, MAX_PATH);
+        wchar_t *last = (read != 0 && read != MAX_PATH) ? wcsrchr(path, L'\\') : NULL;
+        if (last == NULL)
+            return;
+        *last = L'\0';
+        if (!InstalledForEveryone(path))
+            return;
+    }
     /* (one name for a folder however VLC was started) */
     const DWORD len = GetLongPathNameW(profile, path, MAX_PATH);
     if (len > 0 && len < MAX_PATH)

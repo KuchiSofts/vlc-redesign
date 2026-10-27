@@ -23,7 +23,9 @@
 ; Privacy: the two features that go online by themselves, the daily update
 ; check (GitHub) and the automatic online subtitles, are asked on the
 ; Privacy page, both on to begin with, with a link to CODE_SIGNING_POLICY.md.
-; The answers go to {app}\portable\setup-choices.ini, which VLC Redesign puts
+; The answers go to {app}\portable\setup-choices.ini (installed for everyone:
+; to %APPDATA%\VLC Redesign of the user who runs Setup, as every
+; {app}\portable\ below), which VLC Redesign puts
 ; into its settings at its next start (MainCtx::applySetupChoices) and then
 ; deletes; the first-run setup doesn't ask them again. Not the settings
 ; themselves: a new install has none yet, and vlc.exe fills an empty profile
@@ -2609,9 +2611,10 @@ Source: "{#SourceDir}\*"; DestDir: "{app}"; Excludes: "\portable\*,*.old-*"; Fla
 ; Its presence keeps VLC's data next to vlc.exe instead of %APPDATA%\vlc,
 ; which an installed official VLC uses
 Name: "{app}\portable"; Flags: uninsneveruninstall; Check: not IsAdminInstallMode
-; Installed for all users (Program Files): its users must be able to write
-; their settings there
-Name: "{app}\portable"; Flags: uninsneveruninstall; Permissions: users-modify; Check: IsAdminInstallMode
+; Installed for all users (Program Files): none. One folder every user can
+; write to would be every user's profile, so one user's vlcrc or Lua script
+; would run in every other user's VLC; each keeps %APPDATA%\VLC Redesign
+; (see ProfileDirOf)
 
 [InstallDelete]
 ; Plugins of a previous version that this one no longer has
@@ -3511,11 +3514,21 @@ begin
     Result := 'false';
 end;
 
-{ The profile of the copy installed: its settings, in portable\ next to
-  vlc.exe (see [Dirs]) }
+{ The profile of a copy installed in a folder: portable\ next to vlc.exe
+  (see [Dirs]); installed for everyone, the user's own %APPDATA%\VLC
+  Redesign, where vlc.exe keeps it then (bin/winvlc.c) }
+function ProfileDirOf(Dir: String): String;
+begin
+  if IsAdminInstallMode then
+    Result := ExpandConstant('{userappdata}\{#AppName}')
+  else
+    Result := AddBackslash(Dir) + 'portable';
+end;
+
+{ The profile of the copy installed: its settings }
 function ProfileFile(Name: String): String;
 begin
-  Result := AddBackslash(WizardDirValue) + 'portable\' + Name;
+  Result := AddBackslash(ProfileDirOf(WizardDirValue)) + Name;
 end;
 
 { A profile that vlc.exe leaves as it is: with settings, or a library
@@ -3758,6 +3771,8 @@ begin
     end;
   end;
   FileName := ProfileFile(CHOICES_FILE);
+  { (%APPDATA%\VLC Redesign of an install for everyone: made here) }
+  ForceDirectories(ExtractFileDir(FileName));
   if not FileExists(FileName) then
     SaveStringToFile(FileName, '; The answers of {#AppName} Setup (its Privacy and Layout pages). {#AppName}' + #13#10 +
                      '; puts them into its settings at its next start, then deletes this file.' + #13#10 +
@@ -3852,13 +3867,13 @@ begin
       Result := I;
 end;
 
-{ The language of the app in a folder (portable\language), '' if none }
+{ The language of the app in a folder (its profile's language), '' if none }
 function LanguageIn(Dir: String): String;
 var
   S: AnsiString;
 begin
   Result := '';
-  if (Dir <> '') and LoadStringFromFile(AddBackslash(Dir) + 'portable\' + LANGUAGE_FILE, S) then
+  if (Dir <> '') and LoadStringFromFile(AddBackslash(ProfileDirOf(Dir)) + LANGUAGE_FILE, S) then
     Result := Trim(S);
 end;
 
@@ -4100,6 +4115,7 @@ begin
   if AppLanguage = '' then
     Exit;
   FileName := ProfileFile(LANGUAGE_FILE);
+  ForceDirectories(ExtractFileDir(FileName));
   if FileExists(FileName) then
     Log('Language: ' + FileName + ' kept')
   else if SaveStringToFile(FileName, AppLanguage, False) then
@@ -4938,10 +4954,32 @@ begin
   DeleteKeyIfEmpty('Software\{#AppName}');
 end;
 
+{ An earlier install for everyone made portable\ there, writable by every
+  user and so every user's profile (see [Dirs]). It is set aside, never a
+  profile again; any user may have changed what it holds, so it is copied
+  into no one's profile. The uninstaller removes it. }
+procedure RetireSharedProfile();
+var
+  Shared, Aside: String;
+begin
+  Shared := ExpandConstant('{app}\portable');
+  Aside := ExpandConstant('{app}\portable-shared');
+  if not DirExists(Shared) then
+    Exit;
+  if DirExists(Aside) then
+    DelTree(Aside, True, True, True);
+  if RenameFile(Shared, Aside) then
+    Log('Shared profile ' + Shared + ' set aside as ' + Aside)
+  else
+    Log('Shared profile ' + Shared + ' could not be set aside');
+end;
+
 procedure CurStepChanged(CurStep: TSetupStep);
 var
   Code: Integer;
 begin
+  if (CurStep = ssInstall) and IsAdminInstallMode then
+    RetireSharedProfile();
   if CurStep = ssPostInstall then
   begin
     SaveLanguage();
@@ -4986,6 +5024,8 @@ begin
       keeps them: it installs over the program, never uninstalls it) }
     if DirExists(ExpandConstant('{app}\portable')) then
       DelTree(ExpandConstant('{app}\portable'), True, True, True);
+    if DirExists(ExpandConstant('{app}\portable-shared')) then
+      DelTree(ExpandConstant('{app}\portable-shared'), True, True, True);
     { no copy starts with these settings any more }
     RegDeleteValue(HKCU, PROFILES, ExpandConstant('{app}\portable'));
     RegDeleteKeyIfEmpty(HKCU, PROFILES);

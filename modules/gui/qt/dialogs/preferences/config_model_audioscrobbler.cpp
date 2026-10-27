@@ -39,11 +39,29 @@ bool ConfigModel::hasOption(const QString& key) const
     return valueFor(key).isValid();
 }
 
+#ifndef _WIN32
+// The path of a file in one of VLC's folders (config_GetSysPath)
+static QString sysPath(vlc_sysdir_t dir, const char *name)
+{
+    char *path = config_GetSysPath(dir, name);
+    const QString result = QString::fromUtf8(path ? path : "");
+    free(path);
+    return result;
+}
+#endif
+
 bool ConfigModel::rescanPlugins()
 {
+#ifdef _WIN32
     const QString folder = QCoreApplication::applicationDirPath();
     const QString generator = folder + QStringLiteral("/vlc-cache-gen.exe");
-    if (!QFileInfo::exists(generator)) {
+    const QString plugins = folder + QStringLiteral("/plugins");
+#else
+    // elsewhere the generator is in libexec, not next to the program
+    const QString generator = sysPath(VLC_PKG_LIBEXEC_DIR, "vlc-cache-gen");
+    const QString plugins = sysPath(VLC_PKG_LIB_DIR, "plugins");
+#endif
+    if (generator.isEmpty() || plugins.isEmpty() || !QFileInfo::exists(generator)) {
         setError(qtr("The plugins can not be rescanned on this installation."));
         return false;
     }
@@ -51,7 +69,6 @@ bool ConfigModel::rescanPlugins()
     // even when it could not write the cache (a folder of Program Files
     // without the rights), which is then older than the scan. Not a child of
     // the model: closing the settings must not kill it.
-    const QString plugins = folder + QStringLiteral("/plugins");
     const QDateTime started = QDateTime::currentDateTime();
     const QPointer<ConfigModel> model(this);
     auto *process = new QProcess;

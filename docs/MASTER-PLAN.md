@@ -16,7 +16,12 @@ What is being worked on, updated as it changes (2026-10-28):
   teletext buttons never loaded on Windows (`Popup` without its import), so dropped on a bar they left an
   invisible slot; fixed, and a control that fails to load shows a placeholder that can be dragged out.
   [#8](https://github.com/KuchiSofts/vlc-redesign/issues/8): VLC master merged (110 commits; conflicts in mmdevice,
-  MainCtx, PIPPlayer resolved). Next: check both in the build.
+  MainCtx, PIPPlayer resolved). Both checked in the build: the speed button shows "1x" in the bar and dropped from
+  Customize Player it lands framed and removable; no QML warning in a full UI tour.
+- 🟢 **The review report (105 bugs)**: checked one by one and fixed in four groups (installer and tooling, core,
+  Qt C++, QML); see the changelog. Checked in the build: SD colours (red 254,0,0 instead of 239,4,0; HD and HDR
+  unchanged), the package check, a UI tour without warnings. Still to test by hand: casting on the owner's test TV, the
+  all-users installer, an update from 0.3.1, the proxy exceptions, Linux builds.
 - 🟢 **0.3.1, a small update** (build 215, released 2026-10-25): what follows, for the copies of 0.2.4 and later through
   the in-app update (only the changed files).
 - 🟢 **Bar panels open above their button**: Effects, VLC Settings and HDR now open above the bar, aligned to

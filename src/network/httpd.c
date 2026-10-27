@@ -147,6 +147,8 @@ struct httpd_client_t
     struct vlc_list node;
 
     bool    b_stream_mode;
+    /* a renderer's stream (httpd_StreamFromStart): it may stay idle long */
+    bool    b_long_idle;
     uint8_t i_state;
 
     vlc_tick_t i_timeout_date;
@@ -173,11 +175,13 @@ struct httpd_client_t
  * Various functions
  *****************************************************************************/
 
-/* How long a client may stay without reading or sending: a client of a
- * stream (a TV, a Chromecast) stops reading for as long as its buffer is
- * full, and gets nothing while the media is paused (the stream waits): it
- * is not gone for that, however long (a connection that broke ends with an
- * error when the stream sends again) */
+/* How long a client may stay without reading or sending: a renderer (a TV)
+ * reading its stream stops reading for as long as its buffer is full, and
+ * gets nothing while the media is paused (the stream waits): it is not gone
+ * for that, however long (a connection that broke ends with an error when
+ * the stream sends again). Only for the renderers' streams: any other
+ * stream client that idles goes after the host's timeout, so that idle
+ * connections can't pile up. */
 static vlc_tick_t httpd_ClientTimeout(const struct httpd_host_t *host,
                                       const httpd_client_t *cl);
 
@@ -744,6 +748,7 @@ static int httpd_StreamCallBack(httpd_callback_sys_t *p_sys,
         if (query->i_type != HTTPD_MSG_HEAD) {
             cl->b_stream_mode = true;
             vlc_mutex_lock(&stream->lock);
+            cl->b_long_idle = stream->b_from_start;
             /* Send the header */
             if (stream->i_header > 0) {
                 answer->i_body = stream->i_header;
@@ -1325,6 +1330,7 @@ static httpd_client_t *httpd_ClientNew(vlc_tls_t *sock)
     cl->p_buffer = xmalloc(cl->i_buffer_size);
     cl->i_keyframe_wait_to_pass = -1;
     cl->b_stream_mode = false;
+    cl->b_long_idle = false;
 
     httpd_MsgInit(&cl->query);
     httpd_MsgInit(&cl->answer);
@@ -1788,7 +1794,7 @@ auth_failed:
 static vlc_tick_t httpd_ClientTimeout(const struct httpd_host_t *host,
                                       const httpd_client_t *cl)
 {
-    if (cl->b_stream_mode)
+    if (cl->b_stream_mode && cl->b_long_idle)
         return VLC_TICK_FROM_SEC(24 * 3600);
     return VLC_TICK_FROM_SEC(host->timeout_sec);
 }

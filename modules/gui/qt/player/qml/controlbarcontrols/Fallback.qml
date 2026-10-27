@@ -18,13 +18,15 @@
 
 import QtQuick
 import QtQuick.Layouts
+// Control: QtQuick.Controls.Basic, the style of the static Qt of Windows
+import QtQuick.Controls.Basic as Controls
 
 import VLC.MainInterface
 import VLC.Widgets as Widgets
 import VLC.Util
 import VLC.Style
 
-Control {
+Controls.Control {
     padding: VLCStyle.focus_border
 
     Keys.priority: Keys.AfterItem

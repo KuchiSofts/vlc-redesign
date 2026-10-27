@@ -147,8 +147,11 @@ def normalize(package):
 
 def make_delta(package, new_files, old_version, old_files, version, out_path):
     import bsdiff4.core as bsdiff
+    # (whatever its case: Windows has one file for Foo.dll and foo.dll, and a
+    # file renamed in its case only must not be removed after it is written)
+    kept = {p.lower() for p in new_files}
     header = {'format': 1, 'from': old_version, 'to': version,
-              'removed': sorted(p for p in old_files if p not in new_files), 'files': []}
+              'removed': sorted(p for p in old_files if p.lower() not in kept), 'files': []}
     blobs = io.BytesIO()
     patched = whole = 0
     for rel in sorted(new_files):

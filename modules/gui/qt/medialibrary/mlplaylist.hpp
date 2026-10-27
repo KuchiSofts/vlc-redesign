@@ -53,6 +53,12 @@ public: // Interface
     // seconds since 1970, with the id it names the chosen thumbnail
     uint32_t getCreationDate() const;
 
+    // the thumbnail chosen for the playlist (a file URL), empty if none:
+    // looked for by the loader, on the media library's thread, not by the
+    // UI thread at each display
+    QString chosenCover() const { return m_chosenCover; }
+    void setChosenCover(const QString & cover) { m_chosenCover = cover; }
+
 private:
     QString m_name;
     QString m_mrl;
@@ -66,6 +72,7 @@ private:
 
     bool m_isFavorite;
     uint32_t m_creationDate;
+    QString m_chosenCover;
 };
 
 #endif

@@ -10,8 +10,13 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 ## Now
 
-What is being worked on, updated as it changes (2026-10-25):
+What is being worked on, updated as it changes (2026-10-28):
 
+- 🟡 **0.3.2**: the open issues. [#9](https://github.com/KuchiSofts/vlc-redesign/issues/9): the playback speed and
+  teletext buttons never loaded on Windows (`Popup` without its import), so dropped on a bar they left an
+  invisible slot; fixed, and a control that fails to load shows a placeholder that can be dragged out.
+  [#8](https://github.com/KuchiSofts/vlc-redesign/issues/8): VLC master merged (110 commits; conflicts in mmdevice,
+  MainCtx, PIPPlayer resolved). Next: check both in the build.
 - 🟢 **0.3.1, a small update** (build 215, released 2026-10-25): what follows, for the copies of 0.2.4 and later through
   the in-app update (only the changed files).
 - 🟢 **Bar panels open above their button**: Effects, VLC Settings and HDR now open above the bar, aligned to

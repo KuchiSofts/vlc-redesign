@@ -525,6 +525,16 @@ static int vlc_sd_probe_Open( vlc_object_t *obj )
 }
 
 #ifdef _WIN32
+/* (Lua 5.1 and LuaJIT: no LUA_OK, and the searchers are "loaders") */
+#ifndef LUA_OK
+# define LUA_OK 0
+#endif
+#if LUA_VERSION_NUM >= 502
+# define VLCLUA_SEARCHERS "searchers"
+#else
+# define VLCLUA_SEARCHERS "loaders"
+#endif
+
 /* Lua opens its files with fopen(), which takes a path in the ANSI code
  * page: in a folder whose name the code page can't write (C:\Users\<a name
  * in another script>\...), no script nor module would open. VLC reads them
@@ -569,8 +579,14 @@ static int vlclua_loadlocal( lua_State *L, const char *path )
         return LUA_ERRFILE;
     }
 
-    /* a first line like "#!/usr/bin/lua" isn't Lua (as luaL_loadfile) */
     const char *data = buf;
+    /* a UTF-8 byte order mark (Notepad writes one): luaL_loadfile skips it */
+    if( size >= 3 && !memcmp( data, "\xEF\xBB\xBF", 3 ) )
+    {
+        data += 3;
+        size -= 3;
+    }
+    /* a first line like "#!/usr/bin/lua" isn't Lua (as luaL_loadfile) */
     if( size > 0 && data[0] == '#' )
         while( size > 0 && *data != '\n' )
         {
@@ -649,7 +665,7 @@ static int vlclua_search_module( lua_State *L )
 /* (package on top of the stack) */
 static void vlclua_add_searcher( lua_State *L )
 {
-    lua_getfield( L, -1, "searchers" );
+    lua_getfield( L, -1, VLCLUA_SEARCHERS );
     if( !lua_istable( L, -1 ) )
     {
         lua_pop( L, 1 );
@@ -660,7 +676,7 @@ static void vlclua_add_searcher( lua_State *L )
     lua_pop( L, 1 );
     if( !added )
     {
-        for( lua_Integer i = luaL_len( L, -1 ); i >= 2; i-- )
+        for( int i = (int)lua_objlen( L, -1 ); i >= 2; i-- )
         {
             lua_rawgeti( L, -1, i );
             lua_rawseti( L, -2, i + 1 );

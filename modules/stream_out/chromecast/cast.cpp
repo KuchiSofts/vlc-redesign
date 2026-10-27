@@ -839,7 +839,9 @@ static void DelInternal(sout_stream_t *p_stream, void *_id, bool reset_config)
         it++;
     }
 
-    if ( p_sys->out_streams.empty() )
+    /* (while the start is held, nothing of this media went to the TV yet:
+     * a track removed then, another chosen, is not its end) */
+    if ( p_sys->out_streams.empty() && p_sys->held_done )
     {
         /* the end of the media: the TV plays what it has (not when the user
          * stopped, or chose another device: it stops at once) */

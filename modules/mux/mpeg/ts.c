@@ -365,6 +365,7 @@ typedef struct
 
     /* an input goes: all that is left is muxed (Drain) */
     bool            b_drain;
+    sout_input_t    *p_drain_input; /* the one that goes */
 
     csa_t           *csa;
     int             i_csa_pkt_size;
@@ -973,8 +974,10 @@ static void Drain( sout_mux_t *p_mux, sout_input_t *p_removed )
     /* (it is out of the inputs already: back in for this) */
     TAB_APPEND( p_mux->i_nb_inputs, p_mux->pp_inputs, p_removed );
     p_sys->b_drain = true;
+    p_sys->p_drain_input = p_removed;
     while( MuxStreams( p_mux ) == VLC_SUCCESS );
     p_sys->b_drain = false;
+    p_sys->p_drain_input = NULL;
     TAB_REMOVE( p_mux->i_nb_inputs, p_mux->pp_inputs, p_removed );
 }
 
@@ -1222,6 +1225,24 @@ static int MuxStreams( sout_mux_t *p_mux )
             p_pcr_stream->state.i_pes_dts + p_pcr_stream->state.i_pes_length )
             continue;
 
+        /* Draining because another input goes (a track changed, mid-stream):
+         * a subtitle read far ahead waits, as it does otherwise. Muxed now,
+         * it would stretch the span the PCR is spread over (MuxStreams).
+         * The input that goes gives all it has. (Once the PCR stream gave
+         * all it had, ahead of the last PCR.) */
+        const vlc_tick_t i_drain_ref = p_pcr_stream->state.i_pes_dts != 0
+                                     ? p_pcr_stream->state.i_pes_dts : p_sys->i_pcr;
+        if( p_sys->b_drain && p_input != p_sys->p_drain_input &&
+            p_input->p_fmt->i_cat == SPU_ES &&
+            block_FifoCount( p_input->p_fifo ) > 0 && i_drain_ref != 0 )
+        {
+            block_t *p_spu = block_FifoShow( p_input->p_fifo );
+            int64_t i_spu_delay = p_spu->i_dts - i_drain_ref;
+            if( ( i_spu_delay > i_shaping_delay ) &&
+                ( i_spu_delay < VLC_TICK_FROM_SEC(100)) )
+                continue;
+        }
+
         /* Need more data */
         if( block_FifoCount( p_input->p_fifo ) <= ( p_sys->b_drain ? 0 : 1 ) )
         {
@@ -1455,18 +1476,24 @@ static int MuxStreams( sout_mux_t *p_mux )
 
     if( p_sys->b_drain )
     {
-        /* all that is left, of every input */
+        /* all that is left, of every input; the span of the sound and the
+         * picture only, when there are some: a subtitle (its display length,
+         * read ahead) can go far past them, and the PCR spread that far
+         * would run ahead of the picture */
         vlc_tick_t i_start = 0, i_end = 0;
-        for (int i = 0; i < p_mux->i_nb_inputs; i++ )
-        {
-            const sout_input_sys_t *p_stream = p_mux->pp_inputs[i]->p_sys;
-            if( p_stream->state.i_pes_dts == 0 )
-                continue;
-            if( i_start == 0 || p_stream->state.i_pes_dts < i_start )
-                i_start = p_stream->state.i_pes_dts;
-            i_end = __MAX( i_end, p_stream->state.i_pes_dts +
-                                  p_stream->state.i_pes_length );
-        }
+        for (int pass = 0; pass < 2 && i_start == 0; pass++ )
+            for (int i = 0; i < p_mux->i_nb_inputs; i++ )
+            {
+                const sout_input_sys_t *p_stream = p_mux->pp_inputs[i]->p_sys;
+                if( p_stream->state.i_pes_dts == 0 )
+                    continue;
+                if( pass == 0 && p_mux->pp_inputs[i]->p_fmt->i_cat == SPU_ES )
+                    continue;
+                if( i_start == 0 || p_stream->state.i_pes_dts < i_start )
+                    i_start = p_stream->state.i_pes_dts;
+                i_end = __MAX( i_end, p_stream->state.i_pes_dts +
+                                      p_stream->state.i_pes_length );
+            }
         if( i_start == 0 )
             return -EAGAIN;
         i_pcr_dts = i_start;

@@ -102,17 +102,19 @@ void vlc_settextlanguage(const char *lang)
         free(env);
     }
 # else
-    if (*lang)
-        setenv("LANGUAGE", lang, 1);
-    else
-        unsetenv("LANGUAGE");
+    /* Empty rather than unset (gettext takes an empty LANGUAGE as none):
+     * once it is there, a change only replaces its value, and the
+     * environment's array is not moved under another thread's getenv() */
+    setenv("LANGUAGE", lang, 1);
 # endif
     /* What gettext found is kept by message, not by language (libintl,
      * without the locale of each thread): Arabic then British English
      * showed the Arabic texts already looked up. Told the catalogs changed,
-     * it looks them up again (the way the gettext manual gives). */
-    extern int _nl_msg_cat_cntr;
-    ++_nl_msg_cat_cntr;
+     * it looks them up again. Setting the text domain tells it (it bumps
+     * _nl_msg_cat_cntr, the counter the gettext manual gives, which only
+     * glibc and GNU libintl have, and links nowhere else); setting the one
+     * it has changes nothing else. */
+    textdomain(textdomain(NULL));
 #else
     (void)lang;
 #endif

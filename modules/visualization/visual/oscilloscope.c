@@ -82,25 +82,23 @@ int vuMeter_Run(visual_effect_t * p_effect, vlc_object_t *p_aout,
     float i_value_l = 0;
     float i_value_r = 0;
 
-    /* Compute the peak values */
+    /* Compute the peak values, over every frame of the buffer (not only
+     * the first) and of both half-waves */
+    const float *p_sample = (const float *)p_buffer->p_buffer;
     for ( unsigned i = 0 ; i < p_buffer->i_nb_samples; i++ )
     {
-        const float *p_sample = (float *)p_buffer->p_buffer;
         float ch;
 
-        ch = p_sample[p_effect->i_idx_left] * 256;
+        ch = fabsf(p_sample[p_effect->i_idx_left]) * 256;
         if (ch > i_value_l)
             i_value_l = ch;
 
-        ch = p_sample[p_effect->i_idx_right] * 256;
+        ch = fabsf(p_sample[p_effect->i_idx_right]) * 256;
         if (ch > i_value_r)
             i_value_r = ch;
 
         p_sample += p_effect->i_nb_chans;
     }
-
-    i_value_l = fabsf(i_value_l);
-    i_value_r = fabsf(i_value_r);
 
     /* Stay under maximum value admitted */
     if ( i_value_l > 200 * M_PI_2 )

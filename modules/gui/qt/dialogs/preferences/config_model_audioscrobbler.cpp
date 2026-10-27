@@ -120,11 +120,9 @@ void ConfigModel::resetAll()
     // once too: MainCtx::reloadPrefs), its state saved at exit as usual
     m_ctx->reloadPrefs();
     m_ctx->reloadFromSettings();
-#ifdef _WIN32
-    // the language of the interface is not a setting (registry, portable file)
+    // the language of the interface is not a setting (a file of the profile)
     resetInterfaceLanguage();
     m_ctx->applyInterfaceLanguage(interfaceLanguage());
-#endif
     m_ctx->setRightToLeft(m_ctx->languageRightToLeft());
     reload();
 }

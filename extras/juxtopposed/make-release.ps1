@@ -31,7 +31,10 @@ if (-not $Version) {
     if (-not $m) { throw "No VLC_REDESIGN_VERSION in $header" }
     $Version = $m.Matches[0].Groups[1].Value
 }
-if ($Version -notmatch '^\d+\.\d+\.\d+([-.][0-9A-Za-z.]+)?$') { throw "Bad version '$Version'" }
+# x.y.z only: configure and meson (the version resources) and Inno Setup's
+# VersionInfoVersion take nothing else, and a bad one must stop the release
+# before anything is written to -Dist
+if ($Version -notmatch '^\d+\.\d+\.\d+$') { throw "Bad version '$Version' (x.y.z)" }
 Write-Host "VLC Redesign $Version"
 
 if (-not $SkipBuild) {

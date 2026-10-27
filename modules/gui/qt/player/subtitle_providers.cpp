@@ -535,7 +535,9 @@ bool isSubtitleName(const QString &name)
 bool validUtf8(const QByteArray &data)
 {
     QStringDecoder utf8(QStringDecoder::Utf8);
-    (void)utf8.decode(data);
+    // decode() is lazy: the text must be made for hasError() to be set
+    const QString text = utf8.decode(data);
+    Q_UNUSED(text);
     return !utf8.hasError();
 }
 

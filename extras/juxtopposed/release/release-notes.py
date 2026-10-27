@@ -2,12 +2,40 @@
 earlier releases: the Juxtopposed credit header, the section of the version,
 the table of files with their SHA-256 (from <dist>\\SHA256SUMS.txt) and the
 unofficial footer. Written to <dist>\\release-notes-<version>.md.
-  python release-notes.py <version> [<dist>]"""
-import os, re, sys
+  python release-notes.py <version> [<dist>] [--signed | --unsigned]
+Whether the files are code-signed is read from the installer (its
+Authenticode signature), unless --signed or --unsigned says it."""
+import os, re, struct, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 version = sys.argv[1]
-dist = sys.argv[2] if len(sys.argv) > 2 else os.path.join(os.path.expanduser('~'), 'source', 'vlc-redesign-dist')
+args = [a for a in sys.argv[2:] if a not in ('--signed', '--unsigned')]
+dist = args[0] if args else os.path.join(os.path.expanduser('~'), 'source', 'vlc-redesign-dist')
+
+
+def pe_signed(path):
+    """Whether a PE file carries a signature (a certificate table)"""
+    try:
+        data = open(path, 'rb').read(4096)
+        pe = struct.unpack_from('<I', data, 0x3C)[0]
+        if data[:2] != b'MZ' or data[pe:pe + 4] != b'PE\0\0':
+            return False
+        optional = pe + 24
+        magic = struct.unpack_from('<H', data, optional)[0]
+        # the security directory, the 5th of the data directories
+        directories = optional + (112 if magic == 0x20B else 96)
+        address, length = struct.unpack_from('<II', data, directories + 4 * 8)
+        return address != 0 and length != 0
+    except (OSError, struct.error):
+        return False
+
+
+if '--signed' in sys.argv:
+    signed = True
+elif '--unsigned' in sys.argv:
+    signed = False
+else:
+    signed = pe_signed(os.path.join(dist, 'vlc-redesign-%s-win64-setup.exe' % version))
 
 changelog = open(os.path.join(ROOT, 'CHANGELOG.md'), encoding='utf-8').read()
 m = re.search(r'^## \[%s\][^\n]*\n(.*?)(?=^## \[|\Z)' % re.escape(version), changelog, re.S | re.M)
@@ -54,13 +82,17 @@ notes = '''# VLC Redesign %(v)s
 |---|---|---|---|
 %(rows)s
 
-Windows SmartScreen may ask for *More info → Run anyway*: the builds are not code-signed yet
-([policy](https://github.com/KuchiSofts/vlc-redesign/blob/main/CODE_SIGNING_POLICY.md)). A copy of 0.2.4 or later
+%(signing)s A copy of 0.2.4 or later
 offers the small update by itself.
 
 ---
 *VLC Redesign is not affiliated with VideoLAN. VLC is a trademark of VideoLAN.*
-''' % {'v': version, 'section': section, 'rows': '\n'.join(rows)}
+''' % {'v': version, 'section': section, 'rows': '\n'.join(rows),
+       'signing': ('The files are code-signed (certificate by SignPath Foundation,\n'
+                   '[policy](https://github.com/KuchiSofts/vlc-redesign/blob/main/CODE_SIGNING_POLICY.md)).')
+                  if signed else
+                  ('Windows SmartScreen may ask for *More info → Run anyway*: the builds are not code-signed yet\n'
+                   '([policy](https://github.com/KuchiSofts/vlc-redesign/blob/main/CODE_SIGNING_POLICY.md)).')}
 out = os.path.join(dist, 'release-notes-%s.md' % version)
 open(out, 'w', encoding='utf-8', newline='\n').write(notes)
-print(out, len(rows), 'files')
+print(out, len(rows), 'files', 'signed' if signed else 'not signed')

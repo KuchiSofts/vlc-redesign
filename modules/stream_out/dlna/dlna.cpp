@@ -2353,11 +2353,10 @@ static void Flush( sout_stream_t *p_stream, void *id )
         else
             ++it;
     id_sys->fresh = true;
-    if ( !p_sys->retime )
-    {
-        p_sys->retime = true;
-        p_sys->retime_since = vlc_tick_now();
-    }
+    /* each seek waits for its own pictures (Retime): a second one soon after
+     * the first starts the wait again */
+    p_sys->retime = true;
+    p_sys->retime_since = vlc_tick_now();
 
     /* a seek once the input read all, while the renderer shows the end: its
      * stream ended, another starts (the renderer is not stopped first) */

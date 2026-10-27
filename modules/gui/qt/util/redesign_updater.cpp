@@ -35,6 +35,14 @@
 #include <cstring>
 #include <memory>
 
+#ifdef _WIN32
+# include <QDirIterator>
+# include <windows.h>
+# include <wincrypt.h>
+# include <wintrust.h>
+# include <softpub.h>
+#endif
+
 #include "dialogs/dialogs_provider.hpp"
 #include "maininterface/mainctx.hpp"
 #include "player/player_controller.hpp"
@@ -59,16 +67,17 @@ QString testApi()
 }
 #endif
 
-// What is downloaded comes from GitHub, over HTTPS (WinHTTP then follows
-// its redirects to its storage, never to plain HTTP)
+// What is downloaded comes from the project's own releases on GitHub, over
+// HTTPS (WinHTTP then follows its redirects to its storage, never to plain
+// HTTP): never a file of another repository the release data could name
 bool trustedUrl(const QString &address)
 {
     const QUrl url(address);
     const QString host = url.host().toLower();
     if (url.isValid() && url.scheme() == QLatin1String("https") && url.userInfo().isEmpty()
-        && url.port(443) == 443
-        && (host == QLatin1String("github.com") || host == QLatin1String("api.github.com")
-            || host == QLatin1String("objects.githubusercontent.com")))
+        && url.port(443) == 443 && host == QLatin1String("github.com")
+        && url.path().startsWith(QLatin1String("/" VLC_REDESIGN_REPO "/releases/download/"), Qt::CaseInsensitive)
+        && !url.path().contains(QLatin1String("/../")))
         return true;
 #ifndef NDEBUG
     // the test server's own files
@@ -78,6 +87,97 @@ bool trustedUrl(const QString &address)
 #else
     return false;
 #endif
+}
+
+#ifdef _WIN32
+// The publisher an Authenticode signature names, if the file carries one
+// Windows trusts; empty otherwise. wintrust.dll and crypt32.dll are loaded
+// here: nothing else of the interface needs them.
+QString trustedSigner(const QString &path)
+{
+    using VerifyFn = LONG(WINAPI *)(HWND, GUID *, LPVOID);
+    using ProvDataFn = CRYPT_PROVIDER_DATA *(WINAPI *)(HANDLE);
+    using ProvSignerFn = CRYPT_PROVIDER_SGNR *(WINAPI *)(CRYPT_PROVIDER_DATA *, DWORD, BOOL, DWORD);
+    using NameFn = DWORD(WINAPI *)(PCCERT_CONTEXT, DWORD, DWORD, void *, LPWSTR, DWORD);
+    static HMODULE wintrust = LoadLibraryExW(L"wintrust.dll", nullptr, LOAD_LIBRARY_SEARCH_SYSTEM32);
+    static HMODULE crypt32 = LoadLibraryExW(L"crypt32.dll", nullptr, LOAD_LIBRARY_SEARCH_SYSTEM32);
+    if (!wintrust || !crypt32)
+        return {};
+    const auto verify = reinterpret_cast<VerifyFn>(
+        reinterpret_cast<void *>(GetProcAddress(wintrust, "WinVerifyTrust")));
+    const auto provData = reinterpret_cast<ProvDataFn>(
+        reinterpret_cast<void *>(GetProcAddress(wintrust, "WTHelperProvDataFromStateData")));
+    const auto provSigner = reinterpret_cast<ProvSignerFn>(
+        reinterpret_cast<void *>(GetProcAddress(wintrust, "WTHelperGetProvSignerFromChain")));
+    const auto nameOf = reinterpret_cast<NameFn>(
+        reinterpret_cast<void *>(GetProcAddress(crypt32, "CertGetNameStringW")));
+    if (!verify || !provData || !provSigner || !nameOf)
+        return {};
+
+    const QString native = QDir::toNativeSeparators(path);
+    WINTRUST_FILE_INFO file = {};
+    file.cbStruct = sizeof(file);
+    file.pcwszFilePath = reinterpret_cast<LPCWSTR>(native.utf16());
+    WINTRUST_DATA data = {};
+    data.cbStruct = sizeof(data);
+    data.dwUIChoice = WTD_UI_NONE;
+    // (no revocation lists: offline, no update would ever be accepted)
+    data.fdwRevocationChecks = WTD_REVOKE_NONE;
+    data.dwUnionChoice = WTD_CHOICE_FILE;
+    data.pFile = &file;
+    data.dwStateAction = WTD_STATEACTION_VERIFY;
+    GUID action = WINTRUST_ACTION_GENERIC_VERIFY_V2;
+    QString name;
+    if (verify(static_cast<HWND>(INVALID_HANDLE_VALUE), &action, &data) == ERROR_SUCCESS) {
+        CRYPT_PROVIDER_DATA *provider = provData(data.hWVTStateData);
+        CRYPT_PROVIDER_SGNR *signer = provider ? provSigner(provider, 0, FALSE, 0) : nullptr;
+        if (signer && signer->csCertChain > 0 && signer->pasCertChain[0].pCert) {
+            wchar_t buffer[256] = {};
+            if (nameOf(signer->pasCertChain[0].pCert, CERT_NAME_SIMPLE_DISPLAY_TYPE, 0, nullptr, buffer, 256) > 1)
+                name = QString::fromWCharArray(buffer);
+        }
+    }
+    data.dwStateAction = WTD_STATEACTION_CLOSE;
+    verify(static_cast<HWND>(INVALID_HANDLE_VALUE), &action, &data);
+    return name;
+}
+#endif
+
+// The checksums come from the same release as the files, so they can't
+// tell a release made by someone else. A copy whose vlc.exe is signed (the
+// releases signed through SignPath, CODE_SIGNING_POLICY.md) therefore takes
+// only programs signed by the same publisher: an error for a file that
+// isn't. A copy that isn't signed has no publisher to compare with (its
+// builds by hand, the releases before signing): the checksum stays the
+// only check.
+QString publisherMismatch(const QString &path)
+{
+#ifdef _WIN32
+    static const QString own = trustedSigner(QCoreApplication::applicationFilePath());
+    if (own.isEmpty() || trustedSigner(path) == own)
+        return {};
+    return qtr("The update isn't signed by the publisher of this copy (%1), so it wasn't used.").arg(own);
+#else
+    Q_UNUSED(path);
+    return {};
+#endif
+}
+
+// The same for every program of a staged small update
+QString stagedPublisherMismatch(const QString &staged)
+{
+#ifdef _WIN32
+    QDirIterator it(staged, { QStringLiteral("*.exe"), QStringLiteral("*.dll") }, QDir::Files,
+                    QDirIterator::Subdirectories);
+    while (it.hasNext()) {
+        const QString error = publisherMismatch(it.next());
+        if (!error.isEmpty())
+            return error;
+    }
+#else
+    Q_UNUSED(staged);
+#endif
+    return {};
 }
 
 HttpRequest githubRequest(const QString &url, qsizetype maxBytes, int timeoutMs)
@@ -608,10 +708,19 @@ void RedesignUpdater::downloadDelta(const QString &expectedSha256)
         const QString dir = appDir();
         const QString version = m_latestVersion;
         QThread *worker = QThread::create([error, delta, expectedSha256, dir, version]() {
-            if (sha256Hex(delta) != expectedSha256)
+            if (sha256Hex(delta) != expectedSha256) {
                 *error = qtr("The update doesn't match its checksum, so it wasn't used.");
-            else
+            } else {
                 *error = stageDelta(delta, dir, version);
+                if (error->isEmpty()) {
+                    *error = stagedPublisherMismatch(dir + QStringLiteral("/.update/staged"));
+                    // (never put in place)
+                    if (!error->isEmpty()) {
+                        QFile::remove(dir + QStringLiteral("/.update/ready.txt"));
+                        QDir(dir + QStringLiteral("/.update/staged")).removeRecursively();
+                    }
+                }
+            }
         });
         connect(worker, &QThread::finished, this, [this, error]() {
             if (error->isEmpty()) {
@@ -853,8 +962,14 @@ void RedesignUpdater::downloadInstaller(const QString &expectedSha256)
                 // (the name of the release's file, never a path)
                 saved->path = dir + QLatin1Char('/') + QFileInfo(name).fileName();
                 QFile file(saved->path);
-                if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate) || file.write(body) != body.size())
+                if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate) || file.write(body) != body.size()) {
                     saved->error = qtr("The installer couldn't be saved to %1.").arg(QDir::toNativeSeparators(dir));
+                } else {
+                    file.close();
+                    saved->error = publisherMismatch(saved->path);
+                    if (!saved->error.isEmpty())
+                        QFile::remove(saved->path);
+                }
             }
         });
         connect(worker, &QThread::finished, this, [this, saved]() {

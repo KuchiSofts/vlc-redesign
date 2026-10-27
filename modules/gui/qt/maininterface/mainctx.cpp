@@ -67,6 +67,7 @@
 #include "menus/redesign_menu_style.hpp"
 
 #include "dialogs/toolbar/controlbar_profile_model.hpp"
+#include "dialogs/toolbar/profile_settings.hpp"
 #include "dialogs/help/help.hpp"
 #include "dialogs/preferences/interface_language.hpp"
 #include "util/language_change.hpp"
@@ -527,8 +528,10 @@ void MainCtx::applySetupChoices()
                 updateCheck.isValid() ? (updateCheck.toBool() ? "on" : "off") : "as it was",
                 subtitleSearch.isValid() ? (subtitleSearch.toBool() ? "on" : "off") : "as it was");
     }
-    setOnlineChoicesMade();
-    if (getSettings()->status() == QSettings::NoError && !QFile::remove(path))
+    getSettings()->setValue(keyPrivacyAsked, true);
+    // (setOnlineChoicesMade, judged by this write): the file stays until
+    // the settings it gave are written
+    if (syncSettings(getSettings()) && !QFile::remove(path))
         msg_Warn(p_intf, "setup choices: %s could not be removed", qtu(QDir::toNativeSeparators(path)));
 }
 

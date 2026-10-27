@@ -22,6 +22,9 @@
 
 #include <QSettings>
 #include <QSet>
+#include <QDateTime>
+#include <QFile>
+#include <QFileInfo>
 #include <QColor>
 #include <vlc_aout.h>
 #include <vlc_modules.h>
@@ -168,6 +171,28 @@ bool applyLive(MainCtx *ctx, const QVariantMap &values)
 }
 }
 
+bool syncSettings(QSettings *settings)
+{
+    if (settings->status() == QSettings::NoError) {
+        settings->sync();
+        return settings->status() == QSettings::NoError;
+    }
+    // Already in error: the file written again tells instead. A QSettings
+    // made to read it back would not do: it shares the values of this one,
+    // the unwritten ones included. QSettings writes the file whole, as a new
+    // one, and keeps what it could not write for the next sync
+    const QString path = settings->fileName();
+    const auto contents = [&path]() {
+        QFile file(path);
+        return file.open(QIODevice::ReadOnly) ? file.readAll() : QByteArray();
+    };
+    const QDateTime before = QFileInfo(path).lastModified();
+    const QByteArray old = contents();
+    settings->sync();
+    const QFileInfo after(path);
+    return after.exists() && (after.lastModified() != before || contents() != old);
+}
+
 QVariantMap ProfileSettings::capture(MainCtx *ctx, QSettings *settings)
 {
     QVariantMap values;
@@ -221,14 +246,14 @@ bool ProfileSettings::apply(MainCtx *ctx, QSettings *settings,
         settings->setValue("redesign/accent", accent);
         settings->setValue("redesign/developer-mode", target.value("developerMode", false).toBool());
         settings->setValue("MainWindow/color-scheme-index", theme);
-        settings->sync();
-    }
-    if (settings->status() != QSettings::NoError) {
-        settings->setValue("redesign/accent", oldAccent);
-        settings->setValue("redesign/developer-mode", oldDeveloperMode);
-        settings->setValue("MainWindow/color-scheme-index", oldTheme);
-        if (error) *error = qtr("Could not save profile appearance.");
-        return false;
+        // (judged by this write alone: nothing written, nothing failed)
+        if (!syncSettings(settings)) {
+            settings->setValue("redesign/accent", oldAccent);
+            settings->setValue("redesign/developer-mode", oldDeveloperMode);
+            settings->setValue("MainWindow/color-scheme-index", oldTheme);
+            if (error) *error = qtr("Could not save profile appearance.");
+            return false;
+        }
     }
     bool ok = true;
     for (auto it = changes.cbegin(); it != changes.cend(); ++it)

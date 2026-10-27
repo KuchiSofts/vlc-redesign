@@ -9,6 +9,7 @@
 
 #include "onboarding.hpp"
 #include "dialogs/preferences/interface_language.hpp"
+#include "dialogs/toolbar/profile_settings.hpp"
 
 #include "maininterface/mainctx.hpp"
 #include "util/language_change.hpp"
@@ -300,8 +301,7 @@ bool OnboardingController::commit()
     const bool hadTheme = settings->contains("MainWindow/color-scheme-index");
 
     settings->setValue("MainWindow/color-scheme-index", themeIndex());
-    settings->sync();
-    if (settings->status() != QSettings::NoError) {
+    if (!syncSettings(settings)) {
         if (hadTheme)
             settings->setValue("MainWindow/color-scheme-index", oldTheme);
         else

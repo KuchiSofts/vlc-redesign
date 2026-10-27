@@ -103,6 +103,15 @@ void CoverArtLabel::mouseDoubleClickEvent( QMouseEvent *event )
     event->accept();
 }
 
+void CoverArtLabel::changeEvent( QEvent *event )
+{
+    QLabel::changeEvent( event );
+    // the placeholder follows the palette of the theme: drawn first in the
+    // constructor, before the window gets the redesign's palette
+    if( event->type() == QEvent::PaletteChange )
+        showArtUpdate();
+}
+
 void CoverArtLabel::showArtUpdate( const QString& url )
 {
     QPixmap pix;

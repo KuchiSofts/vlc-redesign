@@ -96,6 +96,8 @@ Widgets.RedesignContextMenu {
             _dialog = propertiesComponent.createObject(g_mainDisplay)
         return _dialog
     }
+    // made on the main display, not a child: it goes with the menu
+    Component.onDestruction: if (_dialog) _dialog.destroy()
     property Component propertiesComponent: Component { PlaylistPropertiesDialog {} }
 
     function _ids(dataList) {

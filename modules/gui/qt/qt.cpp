@@ -460,11 +460,7 @@ vlc_module_begin ()
 #endif
 
     add_bool( "qt-titlebar",
-#ifdef _WIN32
-              false                              /* use CSD by default on windows */,
-#else
-              true                               /* but not on linux */,
-#endif
+              false                              /* the redesign's own title bar, everywhere */,
               QT_CLIENT_SIDE_DECORATION_TEXT, QT_CLIENT_SIDE_DECORATION_LONGTEXT )
 
     add_bool( "qt-menubar", false, QT_MENUBAR_TEXT, QT_MENUBAR_LONGTEXT )

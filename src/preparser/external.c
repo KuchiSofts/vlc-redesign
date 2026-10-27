@@ -16,6 +16,7 @@
 #endif
 
 #include <assert.h>
+#include <sys/stat.h>
 
 #include <vlc_common.h>
 #include <vlc_configuration.h>

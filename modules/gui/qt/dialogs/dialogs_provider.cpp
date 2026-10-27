@@ -75,6 +75,7 @@
 #include <QPointer>
 #include <QMessageBox>
 #include <QRegularExpression>
+#include <QSet>
 #include <QThreadPool>
 
 #define I_OP_DIR_WINTITLE I_DIR_OR_FOLDER( N_("Open Directory"), \
@@ -702,6 +703,17 @@ static QString hostLinkWithScheme( const QString& text )
     if( !match.hasMatch() )
         return {};
     const QString name = match.captured( 1 );
+    /* "movie.mkv" names a file (opened as a path, as before), not a host */
+    static const QSet<QString> mediaSuffixes = [] {
+        QSet<QString> suffixes;
+        for( const QString &pattern : QStringLiteral( EXTENSIONS_MEDIA )
+                                          .split( QLatin1Char( ';' ), Qt::SkipEmptyParts ) )
+            suffixes.insert( pattern.mid( 2 ).toLower() ); /* without "*." */
+        return suffixes;
+    }();
+    if( match.captured( 5 ).isEmpty()
+     && mediaSuffixes.contains( name.section( QLatin1Char( '.' ), -1 ).toLower() ) )
+        return {};
     const bool address = name.startsWith( QLatin1Char( '[' ) )
                       || name == QLatin1String( "localhost" )
                       || ipv4.match( name ).hasMatch();

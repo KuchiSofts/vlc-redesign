@@ -1670,6 +1670,10 @@ void sout_stream_sys_t::ResetTimeline()
     late_since = VLC_TICK_INVALID;
     video_sent = false;
     input_end = false;
+    /* the next media is tried as it is: the conversion was for this one
+     * (the stream output stays for the whole playlist) */
+    force_transcode = false;
+    fallback_request = false;
     vlc::threads::mutex_locker locker( ctl_lock );
     anchor_date = anchor_ts = VLC_TICK_INVALID;
     segments.clear();

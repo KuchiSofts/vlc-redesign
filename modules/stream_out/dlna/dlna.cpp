@@ -694,7 +694,7 @@ int sout_stream_sys_t::UpdateOutput( sout_stream_t *p_stream )
                            "could quickly drain your battery." ) );
             perf_warning_shown = true;
             if ( res <= 0 )
-                 return false;
+                 return VLC_EGENERIC;
             if ( res == 2 )
                 config_PutInt(RENDERER_CFG_PREFIX "show-perf-warning", 0 );
         }
@@ -776,6 +776,14 @@ int sout_stream_sys_t::UpdateOutput( sout_stream_t *p_stream )
 
     {
         vlc::threads::mutex_locker locker( ctl_lock );
+        /* A new stream: the device is tried again, even when it did not
+         * answer before (it may be on now). The stream output is kept for
+         * the next media and for Retry: without this, nothing would ever be
+         * sent to it again. */
+        unreachable = false;
+        failed_checks = 0;
+        if ( status == RENDERER_FAILED )
+            Report( RENDERER_CONNECTING, "" );
         announce_uri = uri;
         announce_protocol = std::move(stream_protocol);
         announce_at = vlc_tick_now() + VLC_TICK_FROM_MS(500);
@@ -1662,6 +1670,10 @@ void sout_stream_sys_t::ResetTimeline()
     late_since = VLC_TICK_INVALID;
     video_sent = false;
     input_end = false;
+    /* the next media is tried as it is: the conversion was for this one
+     * (the stream output stays for the whole playlist) */
+    force_transcode = false;
+    fallback_request = false;
     vlc::threads::mutex_locker locker( ctl_lock );
     anchor_date = anchor_ts = VLC_TICK_INVALID;
     segments.clear();
@@ -2308,6 +2320,11 @@ static int Send(sout_stream_t *p_stream, void *id,
         || vlc_tick_now() - p_sys->es_changed_at >= VLC_TICK_FROM_MS(300) )
       && p_sys->UpdateOutput( p_stream ) != VLC_SUCCESS )
     {
+        /* The stream could not be made here (no encoder, no address, the
+         * conversion declined): the interface says so, and offers to play
+         * here, instead of "connecting" forever */
+        vlc::threads::mutex_locker locker( p_sys->ctl_lock );
+        p_sys->Fail( p_stream, "local", -1 );
         block_Release( p_buffer );
         return VLC_EGENERIC;
     }
@@ -2336,11 +2353,10 @@ static void Flush( sout_stream_t *p_stream, void *id )
         else
             ++it;
     id_sys->fresh = true;
-    if ( !p_sys->retime )
-    {
-        p_sys->retime = true;
-        p_sys->retime_since = vlc_tick_now();
-    }
+    /* each seek waits for its own pictures (Retime): a second one soon after
+     * the first starts the wait again */
+    p_sys->retime = true;
+    p_sys->retime_since = vlc_tick_now();
 
     /* a seek once the input read all, while the renderer shows the end: its
      * stream ended, another starts (the renderer is not stopped first) */
@@ -2454,8 +2470,12 @@ static void CloseSout( sout_stream_t *p_stream )
         vlc_join( p_sys->ctl_thread, nullptr );
     }
     /* casting stops (another device, or here): now (not when it does not
-     * answer: each round trip would wait for it) */
-    if ( !p_sys->unreachable && ( p_sys->playing || p_sys->stop_at != VLC_TICK_INVALID ) )
+     * answer: each round trip would wait for it). It may not be known as
+     * unreachable yet (that takes two failed checks): the last action that
+     * failed on the network says it too. */
+    const bool gone = p_sys->unreachable
+                   || NetworkError( p_sys->renderer->last_error );
+    if ( !gone && ( p_sys->playing || p_sys->stop_at != VLC_TICK_INVALID ) )
         p_sys->renderer->Stop();
     if ( p_sys->p_ended != nullptr )
         sout_StreamChainDelete( p_sys->p_ended, nullptr );
@@ -2469,7 +2489,7 @@ static void CloseSout( sout_stream_t *p_stream )
     p_sys->held.clear();
     p_sys->StopDisplay();
 
-    if ( !p_sys->unreachable )
+    if ( !gone && !NetworkError( p_sys->renderer->last_error ) )
         p_sys->renderer->ConnectionComplete();
     p_sys->p_upnp->release();
     delete p_sys;

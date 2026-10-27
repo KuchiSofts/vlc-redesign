@@ -365,6 +365,8 @@ static int Open( vlc_object_t *p_this )
         free( psz_dlna );
         if( err != VLC_SUCCESS )
         {
+            httpd_StreamDelete( p_sys->p_httpd_stream );
+            httpd_HostDelete( p_sys->p_httpd_host );
             free( p_sys );
             return err;
         }

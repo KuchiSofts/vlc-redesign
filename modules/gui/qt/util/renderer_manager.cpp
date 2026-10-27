@@ -282,12 +282,16 @@ struct ItemEntry
 {
     ItemEntry(const RendererItemPtr& renderItem, bool current = true)
         : renderItem(renderItem)
+        , copies{ renderItem }
         , currentScan(current)
     {}
 
     ItemEntry(){}
 
     RendererItemPtr renderItem;
+    /* the device as each discovery found it (a Chromecast by mDNS and by
+     * DIAL): the row goes when none has it any more */
+    QVector<RendererItemPtr> copies;
     /**
      * we scan for 20 seconds, when the scan ends render discoverer are destroyed but
      * items are kept in the model, at this moment the items are marked as "old", if
@@ -536,6 +540,8 @@ public:
             /* mark the item as seen during this scan */
             ItemEntry& entry = m_items[key];
             entry.currentScan = true;
+            if (!entry.copies.contains(renderItem))
+                entry.copies.push_back(renderItem);
             /* the same device found the other way: the longer name (with
              * its model) shows; the one playing stays */
             const QString known = qfu(vlc_renderer_item_name(entry.renderItem.get()));
@@ -554,18 +560,31 @@ public:
         Q_Q(RendererManager);
 
         QString key = getItemKey(renderItem);
-        if( m_items.contains( key ) )
+        if( !m_items.contains( key ) )
+            return;
+
+        /* only this discovery lost it: another may still see the device */
+        ItemEntry& entry = m_items[key];
+        entry.copies.removeAll(renderItem);
+        const bool selected = m_selectedItem && getItemKey(m_selectedItem) == key;
+        if (entry.renderItem == renderItem && !entry.copies.isEmpty()
+            && entry.renderItem != m_selectedItem)
         {
-            //only remove the item if we are using it
-            //and if we are actively scanning
-            if( m_selectedItem != renderItem && m_status == RendererManager::RUNNING )
-            {
-                qsizetype index = m_itemsIndex.indexOf(key);
-                emit q->beginRemoveRows({}, index, index);
-                m_items.remove(key);
-                m_itemsIndex.remove(index);
-                emit q->endRemoveRows();
-            }
+            entry.renderItem = entry.copies.first();
+            const auto row = q->index(m_itemsIndex.indexOf(key));
+            emit q->dataChanged(row, row);
+        }
+
+        //only remove the item if no discovery has it, if we are not
+        //using it, and if we are actively scanning
+        if( entry.copies.isEmpty() && !selected
+            && m_status == RendererManager::RUNNING )
+        {
+            qsizetype index = m_itemsIndex.indexOf(key);
+            emit q->beginRemoveRows({}, index, index);
+            m_items.remove(key);
+            m_itemsIndex.remove(index);
+            emit q->endRemoveRows();
         }
     }
 

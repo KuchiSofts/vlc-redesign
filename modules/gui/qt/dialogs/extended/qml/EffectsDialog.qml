@@ -96,6 +96,7 @@ T.Popup {
         previousGlobalShortcuts = MainCtx.useGlobalShortcuts
         MainCtx.useGlobalShortcuts = false
         beginCurrentTab()
+        presetField.reset()
         presetField.refresh()
         tabs.itemAt(currentTab).forceActiveFocus()
     }

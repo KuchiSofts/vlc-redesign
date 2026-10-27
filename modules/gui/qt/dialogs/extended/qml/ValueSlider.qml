@@ -149,6 +149,24 @@ ColumnLayout {
             value: root.modelValue
         }
         onMoved: root.edited(value)
+        // A continuous slider (stepSize 0) steps by 0.1 in its units with the
+        // arrow keys: 1800 presses for a hue from 0 to 180. Its keys step by
+        // 1 % of the range instead; dragging stays continuous
+        Keys.onPressed: (event) => {
+            if (root.stepSize > 0 || to <= from)
+                return
+            const up = event.key === Qt.Key_Up || event.key === (mirrored ? Qt.Key_Left : Qt.Key_Right)
+            const down = event.key === Qt.Key_Down || event.key === (mirrored ? Qt.Key_Right : Qt.Key_Left)
+            if (!up && !down)
+                return
+            event.accepted = true
+            const step = (to - from) / 100
+            const next = Math.max(from, Math.min(to, value + (up ? step : -step)))
+            if (next !== value) {
+                value = next
+                root.edited(next)
+            }
+        }
 
         background: Rectangle {
             y: root.px(4)

@@ -580,7 +580,18 @@ void D3D_SetupQuad(vlc_object_t *o, const video_format_t *fmt, d3d_quad_t *quad,
 
     MultMat43(quad->shaderConstants->Colorspace, ppColorspace, WhitePoint);
 
-    if (fmt->primaries != displayFormat->primaries)
+    /* The gamut conversion is folded into this matrix, which the shader
+     * applies to gamma-encoded values (before sourceToLinear()): right
+     * enough for a wide gamut (BT.2020), not between the SD and HD gamuts,
+     * which are close. And untagged SD video only has guessed primaries
+     * (video_format_AdjustColorSpace): converted from SMPTE-C, its red came
+     * out (239,4,0). Those go to a BT.709 display as they are, as the
+     * OpenGL output does. */
+    const bool sdr_gamuts = (fmt->primaries == COLOR_PRIMARIES_BT601_525 ||
+                             fmt->primaries == COLOR_PRIMARIES_BT601_625 ||
+                             fmt->primaries == COLOR_PRIMARIES_BT709) &&
+                            displayFormat->primaries == COLOR_PRIMARIES_BT709;
+    if (fmt->primaries != displayFormat->primaries && !sdr_gamuts)
     {
         FLOAT Primaries[4*3];
         GetPrimariesTransform(Primaries, fmt->primaries, displayFormat->primaries);

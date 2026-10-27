@@ -72,6 +72,9 @@ public:
 
     bool canDoThreadedSurfaceUpdates() const override { return true; };
 
+    // See `IDCompositionVisual::SetOffset{X,Y}()`:
+    bool supportsFractionalPositioning() const override { return true; }
+
 protected:
     bool canDoCombinedSurfaceUpdates() const override { return true; };
     void commitSurface() override;

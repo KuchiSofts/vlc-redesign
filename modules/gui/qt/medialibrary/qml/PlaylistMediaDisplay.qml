@@ -163,8 +163,9 @@ Widgets.PageExt {
         if (indexes.length === 0)
             return;
 
+        // asked even with the error dialogs turned off: nothing undoes it
         if (DialogsProvider.questionDialog(qsTr("Remove selected media from this playlist?"),
-                                           qsTr("Remove from playlist")))
+                                           qsTr("Remove from playlist"), true))
             model.remove(indexes);
     }
 

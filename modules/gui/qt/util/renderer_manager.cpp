@@ -1204,6 +1204,49 @@ void RendererManager::prepare()
         StartScan();
 }
 
+int RendererManager::hiddenCount() const
+{
+    Q_D(const RendererManager);
+    return d->m_hidden.size();
+}
+
+void RendererManager::hideDevice(int row)
+{
+    Q_D(RendererManager);
+    if (row < 0 || row >= d->m_itemsIndex.size())
+        return;
+    const QString key = d->m_itemsIndex[row];
+    const RendererItemPtr item = d->m_items.value(key).renderItem;
+    // the device playing stays (back to this computer first)
+    if (!item || item == d->m_selectedItem)
+        return;
+    const QString name = qfu(vlc_renderer_item_name(item.get()));
+    if (!d->m_hidden.contains(name, Qt::CaseInsensitive))
+        d->m_hidden.append(name);
+    d->p_intf->mainSettings->setValue( "redesign/cast-hidden-devices", d->m_hidden );
+    beginRemoveRows({}, row, row);
+    d->m_items.remove(key);
+    d->m_itemsIndex.remove(row);
+    endRemoveRows();
+    emit hiddenChanged();
+}
+
+void RendererManager::showHiddenDevices()
+{
+    Q_D(RendererManager);
+    if (d->m_hidden.isEmpty())
+        return;
+    d->m_hidden.clear();
+    d->p_intf->mainSettings->remove( "redesign/cast-hidden-devices" );
+    emit hiddenChanged();
+    // they were left out as they were found: looked for again
+    if (d->m_stop_scan_timer.isActive())
+    {
+        StopScan();
+        StartScan();
+    }
+}
+
 void RendererManager::StartScan()
 {
     Q_D(RendererManager);

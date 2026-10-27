@@ -54,6 +54,13 @@ ColumnLayout {
             chosen = presets.matchingName()
     }
 
+    // a new opening of the window (the bar's keeps the same field): the
+    // preset follows the effects again, with no message of the last time
+    function reset() {
+        userChose = false
+        message = ""
+    }
+
     function openList(byKeyboard) {
         message = ""
         list.byKeyboard = byKeyboard

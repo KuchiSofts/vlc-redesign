@@ -71,10 +71,11 @@ FocusScope {
 
     Connections {
         target: Player
-        function onCanRestorePlaybackChanged() {
+        // (canRestorePlayback notifies through playbackRestoreQueried)
+        function onPlaybackRestoreQueried() {
             if (Player.canRestorePlayback) {
                 showResumePanel()
-            } else {
+            } else if (resumePanel.visible) {
                 hideResumePanel()
             }
         }

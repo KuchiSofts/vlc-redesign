@@ -205,10 +205,11 @@ MainViewLoader {
                 items.push(root.model.data(i, MLPlaylistListModel.PLAYLIST_ID))
             }
             console.assert(items.length > 0)
+            // asked even with the error dialogs turned off: nothing undoes it
             if (DialogsProvider.questionDialog(qsTr("Do you really want to delete the selected playlist?",
                                                     "Do you really want to delete the selected playlists?",
                                                     items.length),
-                                               qsTr("Delete playlist", "Delete playlists", items.length)))
+                                               qsTr("Delete playlist", "Delete playlists", items.length), true))
                 root.model.deletePlaylists(items)
         } else {
             console.warn(root, ": Nothing to delete")

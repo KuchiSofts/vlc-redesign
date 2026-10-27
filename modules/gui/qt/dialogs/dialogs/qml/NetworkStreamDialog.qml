@@ -29,6 +29,9 @@ Widgets.RedesignDialog {
     // links): not opened, nor added to the library as media
     readonly property var notLinks: _words.filter(word => !root.isLink(word))
     readonly property bool canSavePlaylist: MainCtx.mediaLibraryAvailable
+    // The playlist named on Save is still being made and filled: the model
+    // that does it goes with the dialog, so the dialog is kept until then
+    readonly property bool busy: playlistModel.transactionPending
 
     // A scheme ("http:", "rtsp:", "magnet:", a drive "C:"), a path, or a
     // host as withScheme() takes it

@@ -80,6 +80,8 @@ public:
     // retry, or play here)
     Q_PROPERTY(CastStatus castStatus READ castStatus NOTIFY castStatusChanged FINAL)
     Q_PROPERTY(QString castMessage READ castMessage NOTIFY castStatusChanged FINAL)
+    // the devices hidden from the list (hideDevice), kept in the settings
+    Q_PROPERTY(int hiddenCount READ hiddenCount NOTIFY hiddenChanged FINAL)
 
 public:
     RendererManager( qt_intf_t* intf, vlc_player_t* player );
@@ -98,6 +100,10 @@ public:
     // looks for the devices before the list is opened, once: when it was
     // opened before (Windows asked then whether VLC may use the network)
     Q_INVOKABLE void prepare();
+    // the device of that row is not listed any more (not the one playing)
+    Q_INVOKABLE void hideDevice(int row);
+    // the hidden devices are listed again
+    Q_INVOKABLE void showHiddenDevices();
 
 public slots:
     void StartScan();
@@ -125,6 +131,7 @@ public:
     bool displayHereAvailable() const;
     CastStatus castStatus() const;
     QString castMessage() const;
+    int hiddenCount() const;
 signals:
     void statusChanged();
     void scanRemainChanged();
@@ -132,6 +139,7 @@ signals:
     void firewallChanged();
     void displayHereChanged();
     void castStatusChanged();
+    void hiddenChanged();
     // the volume of the device (0 to 1), when it says it as casting starts
     void deviceVolumeReported(float volume);
 

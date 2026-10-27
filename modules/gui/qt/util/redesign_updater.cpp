@@ -289,7 +289,22 @@ bool RedesignUpdater::versionLess(const QString &a, const QString &b)
     // a pre-release comes before its release
     if (pa.isEmpty() != pb.isEmpty())
         return !pa.isEmpty();
-    return QString::compare(pa, pb, Qt::CaseInsensitive) < 0;
+    // part by part, as SemVer does: numbers as numbers (beta.9 before
+    // beta.10), before words; fewer parts first when the rest is the same
+    const QStringList xa = pa.split('.'), xb = pb.split('.');
+    for (qsizetype i = 0; i < std::min(xa.size(), xb.size()); ++i) {
+        bool numa, numb;
+        const qulonglong ia = xa[i].toULongLong(&numa), ib = xb[i].toULongLong(&numb);
+        if (numa && numb) {
+            if (ia != ib)
+                return ia < ib;
+        } else if (numa != numb) {
+            return numa;
+        } else if (const int c = QString::compare(xa[i], xb[i], Qt::CaseInsensitive)) {
+            return c < 0;
+        }
+    }
+    return xa.size() < xb.size();
 }
 
 bool RedesignUpdater::isInstalledCopy() const

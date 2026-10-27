@@ -569,8 +569,14 @@ static int vlclua_loadlocal( lua_State *L, const char *path )
         return LUA_ERRFILE;
     }
 
-    /* a first line like "#!/usr/bin/lua" isn't Lua (as luaL_loadfile) */
     const char *data = buf;
+    /* a UTF-8 byte order mark (Notepad writes one): luaL_loadfile skips it */
+    if( size >= 3 && !memcmp( data, "\xEF\xBB\xBF", 3 ) )
+    {
+        data += 3;
+        size -= 3;
+    }
+    /* a first line like "#!/usr/bin/lua" isn't Lua (as luaL_loadfile) */
     if( size > 0 && data[0] == '#' )
         while( size > 0 && *data != '\n' )
         {

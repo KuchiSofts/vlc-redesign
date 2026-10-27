@@ -89,8 +89,7 @@ bool ControlbarProfileModel::save(bool clearDirty)
 
     m_settings->endArray();
     m_settings->endGroup();
-    m_settings->sync();
-    if (m_settings->status() != QSettings::NoError) {
+    if (!syncSettings(m_settings)) {
         m_settings->beginGroup(groupName);
         m_settings->remove("");
         for (auto it = previous.cbegin(); it != previous.cend(); ++it)

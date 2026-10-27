@@ -110,7 +110,6 @@ qml_modules += {
     'target' : 'medialibrary',
     'outdir' : 'VLC/MediaLibrary',
     'sources': files(
-        '../../medialibrary/qml/SubtitleSourceControls.qml',
 
         '../../medialibrary/qml/ArtistTopBanner.qml',
         '../../medialibrary/qml/AudioGridItem.qml',

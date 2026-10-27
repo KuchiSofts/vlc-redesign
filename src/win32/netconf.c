@@ -118,8 +118,12 @@ static char *SystemProxy(const char *url)
         if (entry != NULL)
         {
             size_t len = strcspn(entry, "; ");
+            /* the scheme of this entry only, not of the ones after it */
+            bool has_scheme = false;
+            for (size_t i = 0; i + 3 <= len && !has_scheme; i++)
+                has_scheme = !strncmp(entry + i, "://", 3);
             if (len > 0 && asprintf(&proxy, "%s%.*s",
-                                    strstr(entry, "://") ? "" : "http://",
+                                    has_scheme ? "" : "http://",
                                     (int)len, entry) < 0)
                 proxy = NULL;
         }

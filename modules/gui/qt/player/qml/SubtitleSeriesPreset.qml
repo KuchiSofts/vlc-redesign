@@ -152,7 +152,7 @@ Item {
 
     function clear() {
         if (!seriesKey) return
-        MainCtx.setSettingValue(storageKey, "")
+        MainCtx.removeSettingValue(storageKey)
         preset = null
         _statusKind = "removed"
     }

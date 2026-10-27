@@ -22,6 +22,7 @@
 # include "config.h"
 #endif
 
+#include <ctype.h>
 #include <string.h>
 
 #include <vlc_common.h>
@@ -34,9 +35,32 @@
 # include <windows.h>
 # include <winhttp.h>
 
+/* Whether the host matches an entry of the bypass list, of len bytes: a '*'
+ * stands for any text, anywhere, as in WinINet ("192.168.*", "*.corp",
+ * "10.*.*.1") */
+static bool HostMatches(const char *pat, size_t len, const char *host)
+{
+    if (len == 0)
+        return *host == '\0';
+    if (*pat == '*')
+    {
+        for (const char *h = host; ; h++)
+        {
+            if (HostMatches(pat + 1, len - 1, h))
+                return true;
+            if (*h == '\0')
+                return false;
+        }
+    }
+    return *host != '\0'
+        && tolower((unsigned char)*pat) == tolower((unsigned char)*host)
+        && HostMatches(pat + 1, len - 1, host + 1);
+}
+
 /* Whether the host of the URL is in the bypass list of Windows (entries
- * separated by ';' or spaces: a host, "*.example.com", or "<local>" for the
- * names without a dot) */
+ * separated by ';' or spaces: a host with '*' wildcards, or "<local>" for the
+ * names without a dot). As WinINet, the computer itself (localhost, 127.*,
+ * ::1) never goes through the proxy, unless the list has "<-loopback>". */
 static bool BypassesProxy(const char *bypass, const char *url)
 {
     vlc_url_t parsed;
@@ -46,22 +70,18 @@ static bool BypassesProxy(const char *bypass, const char *url)
         return false;
     }
     const char *host = parsed.psz_host;
-    const size_t hostlen = strlen(host);
-    bool bypassed = false;
+    bool bypassed = (!strcasecmp(host, "localhost")
+                  || !strcasecmp(host, "loopback")
+                  || !strncmp(host, "127.", 4) || !strcmp(host, "::1"))
+                 && vlc_strcasestr(bypass, "<-loopback>") == NULL;
 
     for (const char *p = bypass; *p != '\0' && !bypassed; )
     {
         size_t len = strcspn(p, "; \t");
         if (len == 7 && !strncasecmp(p, "<local>", 7))
-            bypassed = strchr(host, '.') == NULL;
-        else if (len > 1 && p[0] == '*')
-        {   /* "*.example.com": the end of the host */
-            size_t suffix = len - 1;
-            bypassed = hostlen >= suffix
-                    && !strncasecmp(host + hostlen - suffix, p + 1, suffix);
-        }
-        else if (len > 0)
-            bypassed = len == hostlen && !strncasecmp(host, p, len);
+            bypassed = strchr(host, '.') == NULL && strchr(host, ':') == NULL;
+        else if (len > 0 && p[0] != '<')
+            bypassed = HostMatches(p, len, host);
         p += len;
         p += strspn(p, "; \t");
     }
@@ -83,7 +103,7 @@ static char *SystemProxy(const char *url)
     char *list = config.lpszProxy ? FromWide(config.lpszProxy) : NULL;
     char *bypass = config.lpszProxyBypass ? FromWide(config.lpszProxyBypass) : NULL;
 
-    if (list != NULL && (bypass == NULL || !BypassesProxy(bypass, url)))
+    if (list != NULL && !BypassesProxy(bypass ? bypass : "", url))
     {
         const char *scheme = strncasecmp(url, "https:", 6) ? "http=" : "https=";
         const char *entry = list;

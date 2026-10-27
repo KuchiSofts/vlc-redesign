@@ -174,6 +174,10 @@ readonly property var items: ({
                           { info: false, rowHeight: 67, controlTop: 5 }],
         "volume-save": [qsTr("Volume"), qsTr("Startup volume"), "startupvolume", null, { info: true, rowHeight: 93, controlTop: 10 }],
         "mmdevice-volume": [qsTr("Volume"), qsTr("Startup volume"), "", null, { hidden: true }],
+        "waveout-volume": [qsTr("Volume"), qsTr("Startup volume"), "", null, { hidden: true }],
+        "alsa-gain": [qsTr("Volume"), qsTr("Startup volume"), "", null, { hidden: true }],
+        "auhal-volume": [qsTr("Volume"), qsTr("Startup volume"), "", null, { hidden: true }],
+        "jack-gain": [qsTr("Volume"), qsTr("Startup volume"), "", null, { hidden: true }],
         // in percent, written without the unit as the design does
         "volume-step": [qsTr("Volume"), qsTr("Volume step"), "volumepercent", null, { info: true, rowHeight: 53, controlTop: 11 }],
         "x-filter:normvol": [qsTr("Loudness"), qsTr("Normalize loudness"), "", null, { info: true, rowHeight: 42, controlTop: 5 }],

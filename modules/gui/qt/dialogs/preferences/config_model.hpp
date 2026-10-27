@@ -72,6 +72,13 @@ public:
     Q_INVOKABLE bool setDirectoryUrl(const QString &key, const QUrl &url);
     Q_INVOKABLE QVariant valueFor(const QString &key) const;
     Q_INVOKABLE bool hasOption(const QString &key) const;
+    // The startup volume ("Always starts at"), kept by an option of the
+    // audio output chosen: its name, empty when the output keeps none
+    // (pulse, an automatic choice outside Windows); the volume (1: 100 %),
+    // undefined then
+    Q_INVOKABLE QString startupVolumeOption() const;
+    Q_INVOKABLE QVariant startupVolume() const;
+    Q_INVOKABLE bool setStartupVolume(double volume);
     // What VLC uses when the option is empty (the folder of the recordings...)
     Q_INVOKABLE QString defaultText(const QString &key) const;
     // A folder as the design shows it: from the home of the user ("~/Videos")

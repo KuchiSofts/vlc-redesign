@@ -236,10 +236,11 @@ Column {
                     infoGap: presentation.infoGap !== undefined ? presentation.infoGap : 10
                     unit: presentation.unit || ""
                     onValue: model.defaultValue
+                    // (kept by an option of the audio output chosen)
                     otherValue: model.key === "volume-save"
-                                ? (root.settingsModel.revision, root.settingsModel.valueFor("mmdevice-volume"))
+                                ? (root.settingsModel.revision, root.settingsModel.startupVolume())
                                 : undefined
-                    onCommitOther: (value) => root.settingsModel.setValue("mmdevice-volume", value)
+                    onCommitOther: (value) => root.settingsModel.setStartupVolume(value)
                     defaultText: model.type === "directory" ? root.settingsModel.defaultText(model.key) : ""
                     displayValue: model.type === "directory"
                                   ? root.settingsModel.displayPath(String(model.value || "").length

@@ -10,6 +10,7 @@
 #include <vlc_common.h>
 #include <vlc_configuration.h>
 #include <vlc_modules.h>
+#include <vlc_aout.h>
 
 #include "interface_language.hpp"
 #include "maininterface/mainctx.hpp"
@@ -26,6 +27,8 @@
 #include <QFileInfo>
 #include <QProcess>
 
+#include <cmath>
+
 #include "../../../../audio_filter/equalizer_presets.h"
 
 QVariant ConfigModel::valueFor(const QString& key) const
@@ -38,6 +41,63 @@ QVariant ConfigModel::valueFor(const QString& key) const
 bool ConfigModel::hasOption(const QString& key) const
 {
     return valueFor(key).isValid();
+}
+
+// As the native preferences (getDefaultAudioVolume, simple_preferences.cpp)
+QString ConfigModel::startupVolumeOption() const
+{
+    const QString aout = valueFor(QStringLiteral("aout")).toString();
+    const bool automatic = aout.isEmpty() || aout == QLatin1String("any");
+    QString option;
+#ifdef _WIN32
+    // the outputs Windows chooses automatically all keep it: mmdevice first
+    if (automatic || aout == QLatin1String("mmdevice"))
+        option = QStringLiteral("mmdevice-volume");
+    else if (aout == QLatin1String("waveout"))
+        option = QStringLiteral("waveout-volume");
+#else
+    Q_UNUSED(automatic);
+#endif
+#ifdef __linux__
+    if (aout == QLatin1String("alsa"))
+        option = QStringLiteral("alsa-gain");
+#endif
+#ifdef __APPLE__
+    if (aout == QLatin1String("auhal"))
+        option = QStringLiteral("auhal-volume");
+#endif
+    if (aout == QLatin1String("jack"))
+        option = QStringLiteral("jack-gain");
+    return !option.isEmpty() && hasOption(option) ? option : QString();
+}
+
+// (the gains are the cube of the volume; auhal counts 256 for 100 %)
+QVariant ConfigModel::startupVolume() const
+{
+    const QString option = startupVolumeOption();
+    if (option.isEmpty())
+        return {};
+    const double value = valueFor(option).toDouble();
+    if (option.endsWith(QLatin1String("-gain")))
+        return std::cbrt(value);
+    if (option == QLatin1String("auhal-volume"))
+        return value / AOUT_VOLUME_DEFAULT;
+    return value;
+}
+
+bool ConfigModel::setStartupVolume(double volume)
+{
+    const QString option = startupVolumeOption();
+    if (option.isEmpty()) {
+        setError(qtr("The audio output in use does not keep a startup volume."));
+        return false;
+    }
+    double value = volume;
+    if (option.endsWith(QLatin1String("-gain")))
+        value = volume * volume * volume;
+    else if (option == QLatin1String("auhal-volume"))
+        value = volume * AOUT_VOLUME_DEFAULT;
+    return setValue(option, value);
 }
 
 #ifndef _WIN32

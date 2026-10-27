@@ -64,14 +64,15 @@ FocusScope {
 
     readonly property bool _mlAvailable: MainCtx.mediaLibraryAvailable
     // The folder shown holds the song playing (the paths compared: the same
-    // file has URLs encoded differently)
+    // file has URLs encoded differently), with "/" for the separators: the
+    // native paths have backslashes on Windows only
     readonly property bool _songFolder: {
         if (location.section !== "folder" || !Player.isStarted
             || Player.videoTracks.count > 0 || Player.audioTracks.count === 0)
             return false
-        const folder = Helpers.localPathFromUrl(location.folder ?? "").toLowerCase()
-        const song = Helpers.localPathFromUrl(Player.url).toLowerCase()
-        return folder !== "" && song.startsWith(folder.endsWith("\\") ? folder : folder + "\\")
+        const folder = Helpers.localPathFromUrl(location.folder ?? "").replace(/\\/g, "/").toLowerCase()
+        const song = Helpers.localPathFromUrl(Player.url).replace(/\\/g, "/").toLowerCase()
+        return folder !== "" && song.startsWith(folder.endsWith("/") ? folder : folder + "/")
     }
     readonly property var _sections: [
         { section: "home", icon: "home", title: qsTr("Home") },

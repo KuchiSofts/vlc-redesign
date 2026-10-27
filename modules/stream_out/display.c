@@ -95,6 +95,12 @@ typedef struct
     vlc_object_t *libvlc;
     vlc_mutex_t lock;
     vlc_tick_t latency;
+    /* What the frames get of it: a new measure (every 30 s or so) goes in
+     * gradually, so that the picture does not jump or stall; the first one,
+     * and at a seek (SetPCR), at once. */
+    vlc_tick_t applied_latency;
+    vlc_tick_t applied_date;
+    bool latency_jump;
     bool paused;
     struct VLC_VECTOR(sout_stream_id_sys_t *) ids;
 
@@ -121,11 +127,13 @@ static vlc_tick_t LocalDelay( const sout_stream_sys_t *p_sys )
 static int LatencyChanged( vlc_object_t *obj, char const *var, vlc_value_t old,
                            vlc_value_t cur, void *data )
 {
-    VLC_UNUSED(obj); VLC_UNUSED(var); VLC_UNUSED(old);
+    VLC_UNUSED(obj); VLC_UNUSED(var);
     sout_stream_sys_t *p_sys = data;
 
     vlc_mutex_lock( &p_sys->lock );
     p_sys->latency = VLC_TICK_FROM_MS( cur.i_int );
+    if( old.i_int == 0 )
+        p_sys->latency_jump = true; /* the first measure */
     vlc_mutex_unlock( &p_sys->lock );
     return VLC_SUCCESS;
 }
@@ -237,8 +245,29 @@ static int Send( sout_stream_t *p_stream, void *id, vlc_frame_t *frames )
     }
 
     vlc_mutex_lock( &p_sys->lock );
-    const vlc_tick_t latency = p_sys->latency > LocalDelay( p_sys )
-                             ? p_sys->latency - LocalDelay( p_sys ) : 0;
+    const vlc_tick_t target = p_sys->latency > LocalDelay( p_sys )
+                            ? p_sys->latency - LocalDelay( p_sys ) : 0;
+    const vlc_tick_t now = vlc_tick_now();
+    if( p_sys->applied_latency == VLC_TICK_INVALID || p_sys->latency_jump )
+        p_sys->applied_latency = target;
+    else if( p_sys->applied_latency != target )
+    {
+        /* at most 5% of the time since the last frames (a pause counts
+         * as 100 ms): the frames here go slightly slower or faster */
+        vlc_tick_t elapsed = now - p_sys->applied_date;
+        if( elapsed < 0 )
+            elapsed = 0;
+        else if( elapsed > VLC_TICK_FROM_MS(100) )
+            elapsed = VLC_TICK_FROM_MS(100);
+        const vlc_tick_t step = __MAX( elapsed / 20, 1 );
+        if( target > p_sys->applied_latency )
+            p_sys->applied_latency = __MIN( target, p_sys->applied_latency + step );
+        else
+            p_sys->applied_latency = __MAX( target, p_sys->applied_latency - step );
+    }
+    p_sys->latency_jump = false;
+    p_sys->applied_date = now;
+    const vlc_tick_t latency = p_sys->applied_latency;
     vlc_mutex_unlock( &p_sys->lock );
 
     while( frames )
@@ -308,6 +337,11 @@ static void SetPCR( sout_stream_t *p_stream, vlc_tick_t pcr )
     sout_ClockMainSetFirstPcr( sys->main_clock, pcr );
     sys->first_pcr_signaled = true;
     sys->reanchor = false;
+
+    /* the clock starts again: the renderer's delay as it is now */
+    vlc_mutex_lock( &sys->lock );
+    sys->applied_latency = VLC_TICK_INVALID;
+    vlc_mutex_unlock( &sys->lock );
 }
 
 static const struct sout_stream_operations ops = {
@@ -365,6 +399,9 @@ static int Open( vlc_object_t *p_this )
     vlc_mutex_init( &p_sys->lock );
     vlc_vector_init( &p_sys->ids );
     p_sys->latency = 0;
+    p_sys->applied_latency = VLC_TICK_INVALID;
+    p_sys->applied_date = VLC_TICK_INVALID;
+    p_sys->latency_jump = false;
     p_sys->paused = false;
     p_sys->libvlc = VLC_OBJECT( vlc_object_instance( p_stream ) );
     if( var_Type( p_sys->libvlc, "renderer-latency" ) )

@@ -179,6 +179,8 @@ T.Pane {
 
             visible: root.card
             Layout.fillWidth: true
+            // the buttons in a row for the arrow keys, in reading order
+            readonly property bool mirrored: LayoutMirroring.enabled
             Layout.leftMargin: VLCStyle.dp(18, VLCStyle.scale)
             Layout.rightMargin: VLCStyle.dp(12, VLCStyle.scale)
             Layout.bottomMargin: VLCStyle.dp(6, VLCStyle.scale)
@@ -206,6 +208,10 @@ T.Pane {
                 enabled: MainPlaylistController.count > 1
                 checked: MainPlaylistController.sortKey !== PlaylistController.SORT_KEY_NONE
                 popupAbove: false
+                Navigation.parentItem: root
+                Navigation.downItem: listView
+                Navigation.rightItem: cardHeader.mirrored ? null : cardRepeat
+                Navigation.leftItem: cardHeader.mirrored ? cardRepeat : null
                 model: MainPlaylistController.sortKeyTitleList
                 sortKey: MainPlaylistController.sortKey
                 sortOrder: MainPlaylistController.sortOrder === PlaylistController.SORT_ORDER_DESC
@@ -244,6 +250,11 @@ T.Pane {
             }
 
             CardGlyphButton {
+                id: cardRepeat
+                Navigation.parentItem: root
+                Navigation.downItem: listView
+                Navigation.leftItem: cardHeader.mirrored ? cardShuffle : cardSort
+                Navigation.rightItem: cardHeader.mirrored ? cardSort : cardShuffle
                 text: MainPlaylistController.repeatMode === PlaylistController.PLAYBACK_REPEAT_CURRENT
                       ? VLCIcons.repeat_one : VLCIcons.repeat_all
                 description: qsTr("Repeat")
@@ -252,6 +263,11 @@ T.Pane {
             }
 
             CardGlyphButton {
+                id: cardShuffle
+                Navigation.parentItem: root
+                Navigation.downItem: listView
+                Navigation.leftItem: cardHeader.mirrored ? cardRemove : cardRepeat
+                Navigation.rightItem: cardHeader.mirrored ? cardRepeat : cardRemove
                 text: VLCIcons.shuffle
                 description: qsTr("Shuffle")
                 checked: MainPlaylistController.random
@@ -259,6 +275,11 @@ T.Pane {
             }
 
             CardImageButton {
+                id: cardRemove
+                Navigation.parentItem: root
+                Navigation.downItem: listView
+                Navigation.leftItem: cardHeader.mirrored ? cardAdd : cardShuffle
+                Navigation.rightItem: cardHeader.mirrored ? cardShuffle : cardAdd
                 iconName: "remove"
                 description: qsTr("Remove selected items")
                 enabled: !!root.selectionModel && root.selectionModel.hasSelection
@@ -270,6 +291,11 @@ T.Pane {
             }
 
             CardImageButton {
+                id: cardAdd
+                Navigation.parentItem: root
+                Navigation.downItem: listView
+                Navigation.leftItem: cardHeader.mirrored ? null : cardRemove
+                Navigation.rightItem: cardHeader.mirrored ? cardRemove : null
                 iconName: "add"
                 description: qsTr("Add files to the queue")
                 onClicked: root.addRequested()
@@ -542,7 +568,9 @@ T.Pane {
             }
 
             Navigation.parentItem: root
-            Navigation.upItem: headerColumn.sortButton
+            // the card hides the header: its own buttons are above the rows
+            Navigation.upItem: !root.card ? headerColumn.sortButton
+                               : cardSort.enabled ? cardSort : cardRepeat
 
             onActionAtIndex: (index) => {
                 if (index < 0)

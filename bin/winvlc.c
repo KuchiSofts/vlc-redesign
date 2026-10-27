@@ -309,6 +309,20 @@ static void CopyProfile(const wchar_t *from, const wchar_t *to, int depth)
     FindClose(find);
 }
 
+/* The library of a profile is open (SQLite shares its files with other
+ * readers and writers, never with one that wants them alone) */
+static BOOL LibraryInUse(const wchar_t *profile)
+{
+    wchar_t path[MAX_PATH];
+    if (!JoinPath(path, MAX_PATH, profile, L"ml\\ml.db"))
+        return FALSE;
+    HANDLE file = CreateFileW(path, GENERIC_READ, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+    if (file == INVALID_HANDLE_VALUE)
+        return GetLastError() == ERROR_SHARING_VIOLATION;
+    CloseHandle(file);
+    return FALSE;
+}
+
 /* A path as the settings write it (UTF-8): as is, with its \ doubled (the
  * interface's ini), with / */
 static char *PathText(const wchar_t *path, int form)
@@ -577,7 +591,11 @@ static void CarryOverSettings(void)
     PruneProfiles(key);
     wchar_t last[MAX_PATH];
     if (!HasSettings(profile) && !ExistsIn(profile, L"ml\\ml.db")
-     && LastProfile(key, profile, last, MAX_PATH))
+     && LastProfile(key, profile, last, MAX_PATH)
+     /* its VLC still runs: a copy of a library being written could be torn
+      * (SQLite keeps it in ml.db and ml.db-wal); a later start of this
+      * copy, still empty, copies it */
+     && !LibraryInUse(last))
     {
         CopyProfile(last, profile, 0);
         Repoint(profile, L"vlcrc", last, profile, NULL);

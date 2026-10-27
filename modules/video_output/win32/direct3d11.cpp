@@ -1123,10 +1123,13 @@ static void Prepare(vout_display_t *vd, picture_t *picture,
     /* While video filters are switched, a picture of the former format can
      * still come: its planes do not fit the textures (copying them overruns
      * the mapped memory and the device is removed), and a GPU chroma picture
-     * may have no textures. Keep the last frame shown instead (nothing is
+     * may have no textures, or come once the textures are set up for
+     * another chroma (a CPU one: it would be copied into staging textures
+     * of another layout). Keep the last frame shown instead (nothing is
      * drawn: starting to render clears the target). */
     const bool gpuPicture = is_d3d11_opaque(picture->format.i_chroma);
-    sys->skipDisplay = gpuPicture ? picture->context == nullptr
+    sys->skipDisplay = gpuPicture ? (picture->context == nullptr ||
+                                     picture->format.i_chroma != sys->pictureChroma)
                                   : (is_d3d11_opaque(sys->pictureChroma) ||
                                      picture->format.i_chroma != sys->pictureChroma);
     if (sys->skipDisplay)

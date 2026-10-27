@@ -38,7 +38,7 @@ Item {
     // asked for (unless it was opened again meanwhile)
     function release(loader) {
         Qt.callLater(() => {
-            if (loader.item && !loader.item.visible)
+            if (loader.item && !loader.item.visible && loader.item.busy !== true)
                 loader.active = false
         })
     }
@@ -104,6 +104,11 @@ Item {
         active: false
         source: "qrc:/qt/qml/VLC/Dialogs/NetworkStreamDialog.qml"
         onLoaded: { item.parent = root; item.closed.connect(() => root.release(networkStream)); item.open() }
+    }
+    // Closed while its playlist was still being saved: let go once it is
+    Connections {
+        target: networkStream.item
+        function onBusyChanged() { if (!networkStream.item.busy) root.release(networkStream) }
     }
     Loader {
         id: about

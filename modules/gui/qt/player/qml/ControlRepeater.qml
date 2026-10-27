@@ -119,6 +119,13 @@ Repeater {
 
         source: PlayerControlbarControls.control(model.id).source
 
+        // a control that can't load shows the fallback: an empty slot of no
+        // width could be neither seen nor dragged out while customizing
+        onStatusChanged: {
+            if (status === Loader.Error)
+                source = PlayerControlbarControls.controlPath + "Fallback.qml"
+        }
+
         readonly property int controlId: model.id
 
         // Figma 2160:8732: the divider icon of the top bar before the folder
@@ -320,7 +327,7 @@ Repeater {
         Layout.maximumWidth: Layout.fillWidth ? (item ? item.implicitWidth : -1) : -1
 
         Layout.minimumHeight: 0
-        Layout.maximumHeight: Math.min((item && item.implicitHeight <= 0) ? Number.MAX_VALUE : item.implicitHeight, repeater.availableHeight)
+        Layout.maximumHeight: Math.min((!item || item.implicitHeight <= 0) ? Number.MAX_VALUE : item.implicitHeight, repeater.availableHeight)
         Layout.fillHeight: true
 
         Layout.alignment: repeater.alignment

@@ -19,7 +19,9 @@
  *****************************************************************************/
 
 import QtQuick
-
+// Popup: QtQuick.Controls.Basic, the style registered in the static Qt of
+// Windows (a bare Popup is unknown there: the button never loaded)
+import QtQuick.Controls.Basic as Controls
 
 import VLC.MainInterface
 import VLC.Style
@@ -62,7 +64,7 @@ Widgets.IconToolButton {
 
     // Children
 
-    Popup {
+    Controls.Popup {
         id: popup
 
         x: (parent.width - width) / 2

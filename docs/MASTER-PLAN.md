@@ -862,10 +862,10 @@ All classic windows go through one hook, `redesign_widget_theme.cpp`, applied fr
 - 🟢 TVs listed before the panel opens, the last one used at the top
 - 🟢 Samsung (UE55MU8000): a paused cast is kept (a trickle of null packets while paused)
 - 🟢 Samsung: a film sent as it is goes as MPEG-TS; a TV that stops it gets it converted
-- 🟢 The real-TV gate on the 0.3.0 candidate (build 193, 2026-10-25, [TV]ChenTV): converted with subtitles: started in
+- 🟢 The real-TV gate on the 0.3.0 candidate (build 193, 2026-10-25, the owner's test TV): converted with subtitles: started in
   3.5 s, paused 1 min and 5 min (paused the whole time), resumed, seeked, next file, the last film to its end; sent as
   it is (AVC_TS_NA_ISO): started mid-film in 2.5 s, seeked to 25 s before the end, the TV played to the end and the
-  player stayed playing until it had; quit in 0.5 s. Earlier: 2026-10-24 on build 174 ([TV]ChenTV, Samsung): start, pause 1 min and
+  player stayed playing until it had; quit in 0.5 s. Earlier: 2026-10-24 on build 174 (the owner's test TV, Samsung): start, pause 1 min and
   5 min (paused the whole time), seek, resume, next file, the end (stopped at 29.3 of 30 s), converted with
   subtitles; and on build 178 a cast sent as-is, started mid-film, seeked to 25 s before the end: the TV played to
   the end and the player stayed playing until it had (the end of a cast mid-film, ff54815d10, d0e1f85b1e, and the

@@ -28,7 +28,11 @@ Controls.ItemDelegate {
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
         verticalAlignment: Text.AlignVCenter
-        leftPadding: VLCStyle.dp(12, VLCStyle.scale)
+        horizontalAlignment: Text.AlignLeft
+        elide: Text.ElideRight
+        // 12 in from the start, as the other rows (right to left: the right)
+        leftPadding: LayoutMirroring.enabled ? 0 : VLCStyle.dp(12, VLCStyle.scale)
+        rightPadding: LayoutMirroring.enabled ? VLCStyle.dp(12, VLCStyle.scale) : 0
     }
     Accessible.role: Accessible.CheckBox
     Accessible.checkable: true

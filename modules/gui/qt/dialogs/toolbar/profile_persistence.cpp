@@ -106,6 +106,18 @@ bool ControlbarProfileModel::save(bool clearDirty)
     return true;
 }
 
+void ControlbarProfileModel::forgetSettingsSnapshots()
+{
+    // (an empty snapshot: the settings in use stay when the profile is
+    // chosen; save() takes the current one again)
+    for (auto *profile : m_profiles)
+        profile->m_settingsSnapshot.clear();
+    // the settings cleared took this mark too: the profiles saved now
+    // need no migration at the next start
+    m_settings->setValue(QStringLiteral("redesign/fullscreen-in-bar"), true);
+    save(false);
+}
+
 bool ControlbarProfileModel::reload()
 {
     // (the first reading is the start: see below)

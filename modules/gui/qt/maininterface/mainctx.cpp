@@ -1419,6 +1419,10 @@ void MainCtx::applyInterfaceLanguage(const QString &iso)
         return;
     m_interfaceLanguage = code;
     vlc_settextlanguage(qtu(code));
+    // (Qt asks for setDefault() before other threads use the default locale:
+    // here only the UI thread does, the numbers and dates of QML; the
+    // interface's workers - folder listing, playlist export, subtitle
+    // hashing - must keep from QLocale() and QCollator)
     QLocale::setDefault(QLocale(code));
     applyLanguageFonts(QLocale(code));
     // (the direction is a setting of its own: rightToLeft, chosen with the

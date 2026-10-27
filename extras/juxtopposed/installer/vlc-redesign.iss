@@ -4271,11 +4271,29 @@ end;
 
 procedure ForEveryoneClick(Sender: TObject);
 var
-  Params: String;
+  Params, P, F: String;
+  I: Integer;
 begin
+  Params := '/ALLUSERS';
+  { with what this one was given (/UILANG=, /NOUPDATECHECK, /LOG=...), as
+    Relaunch, but its mode and its language; a log of its own (this one's
+    is still open) }
+  for I := 1 to ParamCount do
+  begin
+    P := ParamStr(I);
+    if (CompareText(Copy(P, 1, 6), '/LANG=') <> 0) and (CompareText(P, '/CURRENTUSER') <> 0) and
+       (CompareText(P, '/ALLUSERS') <> 0) then
+    begin
+      if CompareText(Copy(P, 1, 5), '/LOG=') = 0 then
+      begin
+        F := Copy(P, 6, Length(P));
+        P := '/LOG=' + ChangeFileExt(F, '') + '-allusers' + ExtractFileExt(F);
+      end;
+      Params := Params + ' ' + AddQuotes(P);
+    end;
+  end;
   { in this language, if it was chosen or isn't English (otherwise as
     Setup starts there) }
-  Params := '/ALLUSERS';
   if (AppLanguage <> '') or (Lang <> 0) then
     Params := Params + ' /LANG=' + ActiveLanguage;
   if StartSetup(WizardForm.Handle, 'runas', Params) then

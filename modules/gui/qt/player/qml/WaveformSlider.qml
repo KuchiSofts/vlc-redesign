@@ -38,7 +38,9 @@ SliderBar {
         visible: analysis.ready && peaks.length > 0
         radius: VLCStyle.redesign.controlRadius
         color: VLCStyle.redesign.color(VLCStyle.redesign.seekBackground, "#dedede")
-        readonly property real played: Math.max(0, Math.min(1, Number(Player.position)))
+        // the bar's own value: it follows the pointer while dragging, where
+        // the player's position lags behind the throttled seeks
+        readonly property real played: Math.max(0, Math.min(1, root.visualPosition))
         readonly property real inset: VLCStyle.dp(6, VLCStyle.scale)
         readonly property real pitch: VLCStyle.dp(5, VLCStyle.scale)
         readonly property real barWidth: VLCStyle.dp(2, VLCStyle.scale)

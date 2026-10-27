@@ -444,6 +444,8 @@ public:
 
     Q_INVOKABLE QVariant settingValue(const QString &key, const QVariant &defaultValue) const;
     Q_INVOKABLE void setSettingValue(const QString &key, const QVariant &value);
+    // the setting back to its default: gone from the settings file
+    Q_INVOKABLE void removeSettingValue(const QString &key);
 
     Q_INVOKABLE static void setAttachedToolTip(QObject* toolTip);
 
@@ -757,7 +759,7 @@ signals:
 
     void usingTouchChanged();
 
-    /// a value was set with setSettingValue()
+    /// a value was set with setSettingValue(), or removed (removeSettingValue)
     void settingValueChanged(const QString &key);
 
 private:

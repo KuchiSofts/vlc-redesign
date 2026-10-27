@@ -61,7 +61,7 @@ const QStringList audioOptions {
     "stereowiden-feedback", "stereowiden-crossfeed", "stereowiden-dry-mix"
 };
 const QStringList videoOptions {
-    "video-filter", "crop", "crop-top", "crop-bottom", "crop-left", "crop-right",
+    "video-filter", "crop",
     "hue", "brightness", "contrast", "saturation", "gamma", "sharpen-sigma",
     "gradfun-radius", "grain-variance", "extract-component", "colorthres-color",
     "colorthres-saturationthres", "colorthres-similaritythres", "posterize-level",
@@ -198,7 +198,18 @@ QVariantMap ProfileSettings::capture(MainCtx *ctx, QSettings *settings)
     QVariantMap values;
     for (const QString &key : profileKeys())
         if (safeOption(key)) values.insert(key, ConfigValues::read(key));
-    return {{"version", 1}, {"config", values},
+    // the settings of the interface (qt:), kept by QSettings, not by VLC:
+    // those never set are left out, and go back to their defaults when the
+    // profile is applied
+    QVariantMap qtValues;
+    for (const QString &key : profileKeys()) {
+        if (!key.startsWith(QLatin1String("qt:")))
+            continue;
+        const QString name = key.mid(3);
+        if (settings->contains(name))
+            qtValues.insert(name, settings->value(name));
+    }
+    return {{"version", 1}, {"config", values}, {"qt", qtValues},
             {"accent", settings->value("redesign/accent", "#D37918")},
             // the ini gives "true" / "false" back as text
             {"developerMode", settings->value("redesign/developer-mode", false).toBool()},
@@ -272,10 +283,34 @@ bool ProfileSettings::apply(MainCtx *ctx, QSettings *settings,
         if (error) *error = qtr("Could not apply profile settings; previous values restored.");
         return false;
     }
+    // the settings of the interface: a profile saved before they were kept
+    // has none, and leaves them as they are (as the setters of the Settings
+    // page, settingValueChanged tells the interface)
+    bool qtChanged = false;
+    if (target.contains("qt")) {
+        const QVariantMap qtValues = target.value("qt").toMap();
+        for (const QString &key : allowed) {
+            if (!key.startsWith(QLatin1String("qt:")))
+                continue;
+            const QString name = key.mid(3);
+            if (qtValues.contains(name)) {
+                // (the ini gives the values back as text)
+                const QVariant value = qtValues.value(name);
+                if (settings->contains(name) && settings->value(name).toString() == value.toString())
+                    continue;
+                ctx->setSettingValue(name, value);
+            } else if (settings->contains(name)) {
+                ctx->removeSettingValue(name);
+            } else {
+                continue;
+            }
+            qtChanged = true;
+        }
+    }
     ctx->getColorScheme()->setCurrentIndex(theme);
     // VLC reads some settings once (the hotkeys, the interface options, the
     // play order): applied now, as the Settings dialog does
-    if (!changes.isEmpty()) {
+    if (!changes.isEmpty() || qtChanged) {
         ctx->reloadPrefs();
         static const char *const orderKeys[] = {
             "random", "repeat", "loop", "play-and-stop", "play-and-exit" };

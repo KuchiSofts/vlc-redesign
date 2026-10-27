@@ -143,6 +143,7 @@ typedef struct
     bool hw_first_pending; /* the first picture format is still to come */
     bool hw_first_failed;  /* no hardware: reload now, the block is intact */
     bool hw_first_reload;  /* no hardware any more: reload at a key frame */
+    unsigned hw_first_wait; /* blocks decoded in software since then */
 
     // decoder output seen by lavc, regardless of texture padding
     unsigned decoder_width;
@@ -670,6 +671,7 @@ static int InitVideoDecCommon( decoder_t *p_dec )
     }
     p_sys->hw_first_pending = p_sys->hw_first;
     p_sys->hw_first_failed = p_sys->hw_first_reload = false;
+    p_sys->hw_first_wait = 0;
     if( p_sys->hw_first )
     {
         msg_Dbg( p_dec, "trying hardware decoding with a single thread" );
@@ -1793,7 +1795,11 @@ static int DecodeVideo( decoder_t *p_dec, block_t *p_block )
 {
     decoder_sys_t *p_sys = p_dec->p_sys;
 
-    if( p_block && p_sys->hw_first_reload && (p_block->i_flags & BLOCK_FLAG_TYPE_I) )
+    /* (at a key frame, or after a while: a stream with intra refresh has
+     * none, and a single thread would decode it all in software) */
+    if( p_block && p_sys->hw_first_reload
+     && ( (p_block->i_flags & BLOCK_FLAG_TYPE_I)
+       || ++p_sys->hw_first_wait > 120 ) )
     {
         /* the pictures lavc still holds for reordering go out first */
         DecodeVideoBlock( p_dec, NULL );
@@ -1822,6 +1828,7 @@ static int DecodeVideo( decoder_t *p_dec, block_t *p_block )
         /* nothing to give again: the software decodes until a key frame */
         p_sys->hw_first_failed = p_sys->hw_first_pending = false;
         p_sys->hw_first_reload = true;
+        p_sys->hw_first_wait = 0;
         ret = VLCDEC_SUCCESS;
     }
     if( p_orig != NULL )
@@ -2144,6 +2151,8 @@ static enum AVPixelFormat ffmpeg_HwFirstFallback( decoder_t *p_dec,
         p_sys->hw_first_failed = true;
         return AV_PIX_FMT_NONE;
     }
+    if( !p_sys->hw_first_reload )
+        p_sys->hw_first_wait = 0;
     p_sys->hw_first_reload = true;
     return swfmt;
 }

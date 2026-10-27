@@ -776,6 +776,14 @@ int sout_stream_sys_t::UpdateOutput( sout_stream_t *p_stream )
 
     {
         vlc::threads::mutex_locker locker( ctl_lock );
+        /* A new stream: the device is tried again, even when it did not
+         * answer before (it may be on now). The stream output is kept for
+         * the next media and for Retry: without this, nothing would ever be
+         * sent to it again. */
+        unreachable = false;
+        failed_checks = 0;
+        if ( status == RENDERER_FAILED )
+            Report( RENDERER_CONNECTING, "" );
         announce_uri = uri;
         announce_protocol = std::move(stream_protocol);
         announce_at = vlc_tick_now() + VLC_TICK_FROM_MS(500);

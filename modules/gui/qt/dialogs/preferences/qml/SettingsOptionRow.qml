@@ -94,6 +94,9 @@ Item {
             return null
         const lo = Number(minimum), hi = Number(maximum)
         const range = (values, labels, from, to) => ({ from: from, to: to, ticks: values, labels: labels })
+        // the whole range VLC takes, the design's ticks inside it (a value
+        // set elsewhere, out of the design's scale, is shown and kept)
+        const limits = (from, to) => Number.isFinite(lo) && Number.isFinite(hi) && lo < hi ? [lo, hi] : [from, to]
         const seq = (from, to, step) => { const out = []; for (let v = from; v <= to + 1e-9; v += step) out.push(v); return out }
         switch (settingKey) {
         case "redesign/notification-duration":
@@ -111,14 +114,14 @@ Item {
                                             { value: 50, text: qsTr("+5 s") }], -50, 50)
         case "osd-duration":
             return range(seq(500, 5000, 500), [{ value: 500, text: qsTr("0.5 s") }, { value: 5000, text: qsTr("5 s") }],
-                         500, 5000)
+                         ...limits(500, 5000))
         case "video-title-timeout":
             return range(seq(1000, 10000, 1000), [{ value: 1000, text: qsTr("1 s") }, { value: 10000, text: qsTr("10 s") }],
                          1000, 10000)
         case "rate":
             return range(seq(0.25, 2, 0.25), seq(0.25, 2, 0.25).map(v => ({ value: v, text: String(v) })), 0.25, 2)
         case "qt-max-volume":
-            return range(seq(100, 300, 25), [100, 200, 300].map(v => ({ value: v, text: v + "%" })), 100, 300)
+            return range(seq(100, 300, 25), [100, 200, 300].map(v => ({ value: v, text: v + "%" })), ...limits(100, 300))
         }
         // Low, Medium, High: the pixels the mouse moves before the controls show
         if (editorKind === "sensitivity")
@@ -395,8 +398,9 @@ Item {
                     stepSize: root.settingKey === "rate" ? 0.25
                               : root.editorKind === "sensitivity" ? 1
                               : root.settingKey === "mouse-hide-timeout"
-                                || root.settingKey === "redesign/notification-duration"
-                                || root.settingKey === "osd-duration" ? 500
+                                || root.settingKey === "redesign/notification-duration" ? 500
+                              // (from 100 ms: steps of 500 would miss the ticks)
+                              : root.settingKey === "osd-duration" ? 100
                               : root.settingKey === "video-title-timeout" ? 100
                               : root.settingType === "integer" ? 1 : 0.01
                     onMoved: root.commit(root.editorKind === "sensitivity" ? sensitivityPixels[Math.round(value)]

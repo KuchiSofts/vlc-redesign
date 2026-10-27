@@ -1100,8 +1100,9 @@ QString writePlaylistFile( const QString& path, const QByteArray& module,
         writeHTML( file, medias );
 
     QString error;
+    /* (ferror() sets no errno: the one there may be of anything) */
     if( ferror( file ) )
-        error = QString::fromUtf8( vlc_strerror_c( errno ) );
+        error = qtr( "Write error" );
     if( fclose( file ) != 0 && error.isEmpty() )
         error = QString::fromUtf8( vlc_strerror_c( errno ) );
     return error;
@@ -1130,9 +1131,15 @@ void DialogsProvider::saveMediaToPlaylistFile( const QVector<vlc::playlist::Medi
         if( error.isEmpty() )
             return;
         QMetaObject::invokeMethod( qApp, [provider, path, error]() {
-            if( provider )
-                msg_Err( provider->p_intf, "Could not export the playlist to %s: %s",
-                         qtu( path ), qtu( error ) );
+            if( !provider )
+                return;
+            msg_Err( provider->p_intf, "Could not export the playlist to %s: %s",
+                     qtu( path ), qtu( error ) );
+            /* told, else the user relies on a file missing or cut short */
+            provider->messageDialog( qtr( "The playlist could not be exported to %1:\n%2" )
+                                         .arg( path, error ),
+                                     qtr( "Export Playlist" ), QMessageBox::Ok, QMessageBox::Ok,
+                                     QMessageBox::Warning );
         }, Qt::QueuedConnection );
     });
 }

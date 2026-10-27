@@ -999,6 +999,11 @@ static void *Thread( void *obj )
         // its numbers and dates
         const QString iso = interfaceLanguage();
         QLocale::setDefault( QLocale( iso == QLatin1String( "auto" ) ? QLocale::system().name() : iso ) );
+#ifndef _WIN32
+        // its texts: elsewhere than on Windows, VLC started in the system's
+        if( iso != QLatin1String( "auto" ) )
+            vlc_settextlanguage( qtu( iso ) );
+#endif
         // its fonts for the characters Inter does not have
         applyLanguageFonts( QLocale() );
     }

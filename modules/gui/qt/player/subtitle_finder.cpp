@@ -1580,10 +1580,11 @@ void SubtitleFinder::attach(const QString &file, const QString &id, const QStrin
     downloadNext();
 }
 
-// The subtitle chosen for this file last time, still in the cache
+// The subtitle chosen for this file last time, still in the cache (by its
+// hash, else by its URL: streams and files too small to hash, as it is saved)
 QStringList SubtitleFinder::rememberedChoice() const
 {
-    if (m_media.hash.isEmpty())
+    if (m_media.key.isEmpty())
         return {};
     const QStringList choice = m_intf->mainSettings->value(choiceKey(m_media.key)).toStringList();
     if (choice.size() != 3 || !QFileInfo::exists(choice[0]))

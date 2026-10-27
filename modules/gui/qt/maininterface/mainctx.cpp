@@ -67,6 +67,7 @@
 #include "menus/redesign_menu_style.hpp"
 
 #include "dialogs/toolbar/controlbar_profile_model.hpp"
+#include "dialogs/toolbar/profile_settings.hpp"
 #include "dialogs/help/help.hpp"
 #include "dialogs/preferences/interface_language.hpp"
 #include "util/language_change.hpp"
@@ -527,8 +528,10 @@ void MainCtx::applySetupChoices()
                 updateCheck.isValid() ? (updateCheck.toBool() ? "on" : "off") : "as it was",
                 subtitleSearch.isValid() ? (subtitleSearch.toBool() ? "on" : "off") : "as it was");
     }
-    setOnlineChoicesMade();
-    if (getSettings()->status() == QSettings::NoError && !QFile::remove(path))
+    getSettings()->setValue(keyPrivacyAsked, true);
+    // (setOnlineChoicesMade, judged by this write): the file stays until
+    // the settings it gave are written
+    if (syncSettings(getSettings()) && !QFile::remove(path))
         msg_Warn(p_intf, "setup choices: %s could not be removed", qtu(QDir::toNativeSeparators(path)));
 }
 
@@ -740,6 +743,22 @@ void MainCtx::reloadPrefs()
     /* the log, the interfaces started with VLC, the hotkeys, the speed */
     if (m_liveSettings)
         m_liveSettings->reload();
+}
+
+void MainCtx::applyPlayOrder()
+{
+    using vlc::playlist::PlaylistController;
+    if (!p_intf || !p_intf->p_mainPlaylistController)
+        return;
+    PlaylistController *playlist = p_intf->p_mainPlaylistController;
+    // as the core reads the options at the start (libvlc.c)
+    playlist->setRandom(config_GetInt("random") != 0);
+    playlist->setRepeatMode(config_GetInt("repeat") ? PlaylistController::PLAYBACK_REPEAT_CURRENT
+                            : config_GetInt("loop") ? PlaylistController::PLAYBACK_REPEAT_ALL
+                                                    : PlaylistController::PLAYBACK_REPEAT_NONE);
+    playlist->setMediaStopAction(config_GetInt("play-and-exit") ? PlaylistController::MEDIA_STOPPED_EXIT
+                                 : config_GetInt("play-and-stop") ? PlaylistController::MEDIA_STOPPED_STOP
+                                                                  : PlaylistController::MEDIA_STOPPED_CONTINUE);
 }
 
 void MainCtx::onInputChanged( bool hasInput )
@@ -1400,6 +1419,10 @@ void MainCtx::applyInterfaceLanguage(const QString &iso)
         return;
     m_interfaceLanguage = code;
     vlc_settextlanguage(qtu(code));
+    // (Qt asks for setDefault() before other threads use the default locale:
+    // here only the UI thread does, the numbers and dates of QML; the
+    // interface's workers - folder listing, playlist export, subtitle
+    // hashing - must keep from QLocale() and QCollator)
     QLocale::setDefault(QLocale(code));
     applyLanguageFonts(QLocale(code));
     // (the direction is a setting of its own: rightToLeft, chosen with the
@@ -1434,6 +1457,12 @@ bool MainCtx::languageRightToLeft() const
 void MainCtx::setSettingValue(const QString &key, const QVariant &value)
 {
     settings->setValue(key, value);
+    emit settingValueChanged(key);
+}
+
+void MainCtx::removeSettingValue(const QString &key)
+{
+    settings->remove(key);
     emit settingValueChanged(key);
 }
 

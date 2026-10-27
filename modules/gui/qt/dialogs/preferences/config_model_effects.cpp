@@ -215,8 +215,10 @@ bool ConfigModel::applyWithEffects(AudioEffects *audio, VideoEffects *video)
                        || m_entries[i].key == QLatin1String("play-and-stop");
         notifyEntry(i);
     }
+    // Repeat, Shuffle, Stop after each item, When playback finishes: on the
+    // play queue now (they are its state as well as its defaults)
     if (orderChanged)
-        applyOrder();
+        m_ctx->applyPlayOrder();
     if (!changed.isEmpty()) {
         // Interface options (pinned controls, seek thumbnail...) apply now
         m_ctx->reloadPrefs();
@@ -224,20 +226,4 @@ bool ConfigModel::applyWithEffects(AudioEffects *audio, VideoEffects *video)
     }
     setError({});
     return true;
-}
-
-void ConfigModel::applyOrder()
-{
-    using vlc::playlist::PlaylistController;
-    if (!m_ctx || !m_ctx->getIntf() || !m_ctx->getIntf()->p_mainPlaylistController)
-        return;
-    PlaylistController *playlist = m_ctx->getIntf()->p_mainPlaylistController;
-    // as the core reads the options at the start (libvlc.c)
-    playlist->setRandom(config_GetInt("random") != 0);
-    playlist->setRepeatMode(config_GetInt("repeat") ? PlaylistController::PLAYBACK_REPEAT_CURRENT
-                            : config_GetInt("loop") ? PlaylistController::PLAYBACK_REPEAT_ALL
-                                                    : PlaylistController::PLAYBACK_REPEAT_NONE);
-    playlist->setMediaStopAction(config_GetInt("play-and-exit") ? PlaylistController::MEDIA_STOPPED_EXIT
-                                 : config_GetInt("play-and-stop") ? PlaylistController::MEDIA_STOPPED_STOP
-                                                                  : PlaylistController::MEDIA_STOPPED_CONTINUE);
 }

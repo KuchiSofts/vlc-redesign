@@ -4327,7 +4327,8 @@ AS_IF([test "${enable_qt}" != "no"], [
     QT_PATHS="${QMAKE6} -qtconf ${with_qtconf}"
   ])
 
-  QT_MINIMUM_VERSION=6.2
+  dnl the redesign uses Qt 6.8 APIs in C++ and QML (Windows ships 6.8.3)
+  QT_MINIMUM_VERSION=6.8
   AC_MSG_CHECKING([Qt is at least ${QT_MINIMUM_VERSION}])
   QT_VERSION_CORE="$(${QT_PATHS}          -query QT_VERSION 2>/dev/null)"
   QT_MINIMUM_MAJ=$(echo ${QT_MINIMUM_VERSION} | cut -d "." -f -1)
@@ -4582,6 +4583,14 @@ AM_CONDITIONAL(QT_QML_DEBUG, [test "${enable_qt_qml_debug}" = "yes"])
 AS_IF([test "${enable_qt}" != "no"], [
   ALIASES="${ALIASES} qvlc"
 ])
+dnl The Qt interface's HTTP requests (subtitles, artwork, update check)
+dnl go through WinHTTP on Windows and libcurl elsewhere
+have_qt_libcurl="no"
+AS_IF([test "${enable_qt}" != "no" -a "${SYS}" != "mingw32"], [
+  PKG_CHECK_MODULES([QT_LIBCURL], [libcurl], [have_qt_libcurl="yes"], [
+    AC_MSG_WARN([libcurl was not found: the Qt interface will have no online subtitles, artwork or update check])
+  ])
+])
 AC_SUBST([QT_INDIRECT_LIBS])
 AM_CONDITIONAL([ENABLE_QT], [test "$enable_qt" != "no"])
 AM_CONDITIONAL([HAVE_QT_GTK], [test "${have_qt_gtk}" = "yes"])
@@ -4593,6 +4602,7 @@ AM_CONDITIONAL([HAVE_QT67], [test "${QT_VERSION_MAJ:-0}" -gt "6" || (test "${QT_
 AM_CONDITIONAL([HAVE_QT65], [test "${have_qt65}" = "yes"])
 AM_CONDITIONAL([HAVE_QT_ZSTD], [test "${have_qt_zstd}" = "yes"])
 AM_CONDITIONAL([HAVE_QT_XCB], [test "${have_qt_xcb}" = "yes"])
+AM_CONDITIONAL([HAVE_QT_LIBCURL], [test "${have_qt_libcurl}" = "yes"])
 
 dnl
 dnl detect kde4-config patch (used for kde solids).

@@ -74,7 +74,9 @@ if ($Signed) {
 # VLC trusts plugins\plugins.dat only if every plugin keeps the time and size
 # it had when the cache was made. Zip stores times in steps of 2 s, so give
 # every file one even-second time first, then make the cache: an unzipped
-# copy then starts without scanning its ~600 plugins.
+# copy then starts without scanning its ~600 plugins. (Zip keeps local
+# times: unzipped in another time zone, or across a DST change, the first
+# start scans them and saves the cache again, src/modules/bank.c.)
 # The working folder of the app's updater, left if the package folder was run:
 # never shipped (the zip, the installer and the small updates would carry it)
 if (Test-Path "$Package\.update") { Remove-Item "$Package\.update" -Recurse -Force }

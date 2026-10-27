@@ -28,6 +28,8 @@
 #include <vlc_player.h>
 #include <vlc_variables.h>
 #include <vlc_vout.h>
+#include <algorithm>
+#include <iterator>
 #include <cstdlib>
 #include <cstring>
 
@@ -246,5 +248,15 @@ bool ProfileSettings::apply(MainCtx *ctx, QSettings *settings,
         return false;
     }
     ctx->getColorScheme()->setCurrentIndex(theme);
+    // VLC reads some settings once (the hotkeys, the interface options, the
+    // play order): applied now, as the Settings dialog does
+    if (!changes.isEmpty()) {
+        ctx->reloadPrefs();
+        static const char *const orderKeys[] = {
+            "random", "repeat", "loop", "play-and-stop", "play-and-exit" };
+        if (std::any_of(std::begin(orderKeys), std::end(orderKeys),
+                        [&changes](const char *key) { return changes.contains(QLatin1String(key)); }))
+            ctx->applyPlayOrder();
+    }
     return true;
 }

@@ -663,6 +663,9 @@ public slots:
     void emitShow();
 
     virtual void reloadPrefs();
+    // Repeat, Shuffle, Stop after each item, When playback finishes, from
+    // the saved options: on the play queue now (the core reads them once)
+    void applyPlayOrder();
     VLCVarChoiceModel* getExtraInterfaces();
 
     bool pasteFromClipboard();

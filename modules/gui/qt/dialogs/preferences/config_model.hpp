@@ -178,9 +178,6 @@ private:
     QVariant runningValue(const Entry &entry) const;
     // The values the settings applied since the start had then (by key)
     static QHash<QString, QVariant> &startValues();
-    // Repeat, Shuffle, Stop after each item, When playback finishes: on the
-    // play queue now (they are its state as well as its defaults)
-    void applyOrder();
     void notifyEntry(int entryIndex);
     static bool normalize(const Entry &entry, const QVariant &value, QVariant *normalized);
     static QVariant readValue(const Entry &entry);

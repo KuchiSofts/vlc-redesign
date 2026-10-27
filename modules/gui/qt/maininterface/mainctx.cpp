@@ -742,6 +742,22 @@ void MainCtx::reloadPrefs()
         m_liveSettings->reload();
 }
 
+void MainCtx::applyPlayOrder()
+{
+    using vlc::playlist::PlaylistController;
+    if (!p_intf || !p_intf->p_mainPlaylistController)
+        return;
+    PlaylistController *playlist = p_intf->p_mainPlaylistController;
+    // as the core reads the options at the start (libvlc.c)
+    playlist->setRandom(config_GetInt("random") != 0);
+    playlist->setRepeatMode(config_GetInt("repeat") ? PlaylistController::PLAYBACK_REPEAT_CURRENT
+                            : config_GetInt("loop") ? PlaylistController::PLAYBACK_REPEAT_ALL
+                                                    : PlaylistController::PLAYBACK_REPEAT_NONE);
+    playlist->setMediaStopAction(config_GetInt("play-and-exit") ? PlaylistController::MEDIA_STOPPED_EXIT
+                                 : config_GetInt("play-and-stop") ? PlaylistController::MEDIA_STOPPED_STOP
+                                                                  : PlaylistController::MEDIA_STOPPED_CONTINUE);
+}
+
 void MainCtx::onInputChanged( bool hasInput )
 {
     if( hasInput == false )

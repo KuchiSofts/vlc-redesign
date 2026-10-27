@@ -42,6 +42,9 @@ Widgets.RedesignDialog {
     property int originIndex: 0
     readonly property bool online: originIndex === 2
     readonly property bool singleMedia: associations.destinations.length === 1
+    // a download is linked to the one media only (match() links files of
+    // other names to no media of several): no OpenSubtitles for a folder
+    onSingleMediaChanged: if (!singleMedia && originIndex === 2) originIndex = 0
     // "The_Wand_S01E01.mp4" searched as "The Wand S01E01"
     readonly property string mediaQuery: associations.destinations.length === 1
         ? String(associations.destinations[0].label).replace(/\.[^.]*$/, "").replace(/[_.]+/g, " ").trim()
@@ -54,7 +57,7 @@ Widgets.RedesignDialog {
         if (associations.busy || service.busy)
             return false
         if (root.online)
-            return onlineSelection >= 0 && associations.destinations.length > 0
+            return onlineSelection >= 0 && root.singleMedia
         const rows = associations.sources
         for (let i = 0; i < rows.length; ++i) {
             if (rows[i].destination >= 0)
@@ -240,7 +243,8 @@ Widgets.RedesignDialog {
         Layout.preferredWidth: VLCStyle.dp(200, VLCStyle.scale)
         Layout.preferredHeight: VLCStyle.dp(34, VLCStyle.scale)
         textRole: "label"
-        enabled: !associations.busy
+        // (a target chosen while downloading would save, then cancel it)
+        enabled: !associations.busy && !service.busy
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
         // the chevron at the end: on the left in a right to left layout
@@ -517,7 +521,9 @@ Widgets.RedesignDialog {
                 objectName: "subtitleOriginPicker"
                 textRole: ""
                 model: root.audio ? [qsTr("From Computer")]
-                                  : [qsTr("From Computer"), qsTr("From Link"), qsTr("From OpenSubtitles")]
+                                  : root.singleMedia
+                                    ? [qsTr("From Computer"), qsTr("From Link"), qsTr("From OpenSubtitles")]
+                                    : [qsTr("From Computer"), qsTr("From Link")]
                 currentIndex: root.originIndex
                 onActivated: (index) => {
                     root.originIndex = index
@@ -535,7 +541,7 @@ Widgets.RedesignDialog {
                 Layout.fillWidth: true
                 Layout.preferredHeight: VLCStyle.dp(34, VLCStyle.scale)
                 visible: root.originIndex === 0
-                enabled: !associations.busy
+                enabled: !associations.busy && !service.busy
                 padding: 0
                 Accessible.name: root.audio ? qsTr("Choose the folder of the audio tracks")
                                             : qsTr("Choose the folder of the subtitles")

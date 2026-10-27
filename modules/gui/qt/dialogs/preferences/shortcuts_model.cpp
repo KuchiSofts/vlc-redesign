@@ -18,6 +18,7 @@
 #include "qt.hpp"
 #include "util/vlchotkeyconverter.hpp"
 
+#include <vlc_actions.h>
 #include <vlc_configuration.h>
 #include <vlc_modules.h>
 #include <vlc_plugin.h>
@@ -379,12 +380,19 @@ QVariantMap ShortcutsModel::stageKey(const QString &option, bool global,
         return {{QStringLiteral("ok"), false}};
     }
     setError({});
+    // by the key code, not the text: the modifiers of a default key or of a
+    // vlcrc edited by hand come in any order ("Command+Shift+Alt+Left"),
+    // and in any case ("shift+e")
+    const auto sameKey = [vlcKey](const QString &key) {
+        return vlc_str2keycode(qtu(key)) == static_cast<uint_fast32_t>(vlcKey);
+    };
     QVector<int> conflicts;
     for (int i = 0; i < m_entries.size(); ++i) {
         if (i == target)
             continue;
         const QString &keys = global ? m_entries[i].globalStaged : m_entries[i].staged;
-        if (splitKeys(keys).contains(canonical))
+        const QStringList parts = splitKeys(keys);
+        if (std::any_of(parts.cbegin(), parts.cend(), sameKey))
             conflicts.append(i);
     }
     if (!conflicts.isEmpty() && !replaceConflict)
@@ -397,14 +405,14 @@ QVariantMap ShortcutsModel::stageKey(const QString &option, bool global,
     for (int i : conflicts) {
         QString &keys = global ? m_entries[i].globalStaged : m_entries[i].staged;
         QStringList parts = splitKeys(keys);
-        parts.removeAll(canonical);
+        parts.erase(std::remove_if(parts.begin(), parts.end(), sameKey), parts.end());
         keys = parts.join(QLatin1Char('\t'));
         notifyEntry(i);
     }
     // added after the keys the action has (pressed again: nothing changes)
     QString &targetKeys = global ? m_entries[target].globalStaged : m_entries[target].staged;
     QStringList targetParts = splitKeys(targetKeys);
-    if (!targetParts.contains(canonical))
+    if (std::none_of(targetParts.cbegin(), targetParts.cend(), sameKey))
         targetParts.append(canonical);
     targetKeys = targetParts.join(QLatin1Char('\t'));
     notifyEntry(target);

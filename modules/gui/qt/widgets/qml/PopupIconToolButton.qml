@@ -75,8 +75,9 @@ Widgets.IconToolButton {
         focus: true
 
         // This popup should not exceed the boundaries of the scene.
-        // Setting margins to >=0 makes it sure that this is satisfied.
-        margins: MainCtx.windowExtendedMargin
+        // Setting margins to >=0 makes it sure that this is satisfied
+        // (the overlay is the visible window: MainInterface.qml).
+        margins: 0
 
         // Events
 

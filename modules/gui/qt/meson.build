@@ -202,6 +202,13 @@ if qt6_dep.found()
             cc.find_library('shell32'),
             cc.find_library('iphlpapi'),
         ]
+    else
+        # util/http_request.cpp: libcurl outside Windows
+        libcurl_dep = dependency('libcurl', required: false)
+        if libcurl_dep.found()
+            qt_extra_deps += libcurl_dep
+            qt_cppargs += '-DQT_HAS_LIBCURL'
+        endif
     endif
 
     qt_xcb_check = '''

@@ -359,6 +359,17 @@ parse_entries( const struct rr_entry *p_entries, bool b_renderer,
         }
     }
 
+    /* A TXT record whose name matches no SRV goes to the only SRV of the
+     * packet only if it is the only Cast TXT record in it: answers often
+     * carry records of other services or devices, which must not rename
+     * this one or change what it can play */
+    unsigned i_nb_cast_txt = 0;
+    for( const struct rr_entry *p_entry = p_entries;
+         p_entry != NULL; p_entry = p_entry->next )
+        if( p_entry->type == RR_TXT && p_entry->name != NULL
+         && !strrcmp( p_entry->name, "._googlecast._tcp.local" ) )
+            ++i_nb_cast_txt;
+
     /* The TXT records, in any order with the SRV ones (a Chromecast can send
      * its TXT first: its name and that it shows video were then lost) */
     for( const struct rr_entry *p_entry = p_entries;
@@ -370,7 +381,10 @@ parse_entries( const struct rr_entry *p_entries, bool b_renderer,
         for( unsigned int i = 0; i < i_nb_srv && p_srv == NULL; ++i )
             if( p_entry->name != NULL && !strcasecmp( p_entry->name, p_srvs[i].psz_srv_name ) )
                 p_srv = &p_srvs[i];
-        if( p_srv == NULL && i_nb_srv == 1 )
+        if( p_srv == NULL && i_nb_srv == 1 && i_nb_cast_txt == 1
+         && !strcmp( p_srvs[0].psz_protocol, "chromecast" )
+         && p_entry->name != NULL
+         && !strrcmp( p_entry->name, "._googlecast._tcp.local" ) )
             p_srv = &p_srvs[0];
         if( p_srv != NULL )
         {

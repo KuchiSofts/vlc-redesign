@@ -87,6 +87,24 @@ fi
 # (seconds).
 rm -f po/*.gmo po/stamp-po win64/po/*.gmo win64/po/stamp-po
 
+# A package that lacks a part (an install that stopped half way) never
+# passes: the programs, the core, the translations, the Lua scripts and the
+# plugins every copy needs, and most of the others
+check_package() {
+    for f in vlc.exe libvlc.dll libvlccore.dll vlc-cache-gen.exe vlc-preparser.exe \
+             plugins/gui/libqt_plugin.dll plugins/codec/libavcodec_plugin.dll \
+             plugins/demux/libmkv_plugin.dll plugins/video_output/libdirect3d11_plugin.dll \
+             plugins/audio_output/libmmdevice_plugin.dll plugins/access/libfilesystem_plugin.dll \
+             plugins/lua/liblua_plugin.dll; do
+        test -s "/build/package/$f" || { echo "Not in the package: $f" >&2; return 1; }
+    done
+    plugins=$(find /build/package/plugins -name '*.dll' | wc -l)
+    [ "$plugins" -ge 300 ] || { echo "Only $plugins plugins in the package" >&2; return 1; }
+    translations=$(find /build/package/locale -name '*.mo' 2>/dev/null | wc -l)
+    [ "$translations" -ge 20 ] || { echo "Only $translations translations in the package" >&2; return 1; }
+    test -d /build/package/lua/intf || { echo "No Lua scripts in the package" >&2; return 1; }
+}
+
 # QUICK=1: the tree is configured already, only rebuild what changed. A full
 # build.sh run bootstraps and configures again, which takes minutes.
 if [ "${QUICK:-}" = 1 ] && [ -f win64/Makefile ]; then
@@ -94,6 +112,7 @@ if [ "${QUICK:-}" = 1 ] && [ -f win64/Makefile ]; then
     upnp_from_source || true
     make -C win64 -j"$jobs"
     make -C win64 package-win-common
+    check_package
     build_updater
     strip_package
     rsync -rt --omit-dir-times --delete --checksum --exclude=/portable --exclude='*.old-*' \
@@ -114,19 +133,20 @@ rm -rf /build/package
 # Fail instead of silently rebuilding every contrib from source.
 sed 's/|| PREBUILT_FAILED=yes/|| exit 1/' extras/package/win32/build.sh \
     > extras/package/win32/build-prebuilt-only.sh
-# In release mode (-r) VLC's packaging also tries package-win32-zip, which
-# expects its own folder layout and fails with -o; the package in
-# /build/package is complete by then (it was removed above, so a failure
-# before the install leaves it empty and the checks below catch it).
 # -l: with the translations (--enable-nls), or the language chosen in the
 # settings does nothing (issue #5); a tree configured without them needs a
 # build without -Quick once.
-sh extras/package/win32/build-prebuilt-only.sh -a x86_64 -p -l -o /build/package "$@" \
-    || echo "build.sh failed after packaging (expected in release mode)" >&2
+# With -o and no installer (-i) build.sh only installs the package
+# (package-win-common), release mode (-r) too: any failure is a real one.
+status=0
+sh extras/package/win32/build-prebuilt-only.sh -a x86_64 -p -l -o /build/package "$@" || status=$?
 rm -f extras/package/win32/build-prebuilt-only.sh
+if [ "$status" -ne 0 ]; then
+    echo "build.sh failed ($status)" >&2
+    exit "$status"
+fi
 
-test -s /build/package/vlc.exe
-test -s /build/package/plugins/gui/libqt_plugin.dll
+check_package
 if upnp_from_source; then
     make -C win64 -j"$jobs"
     make -C win64 package-win-common

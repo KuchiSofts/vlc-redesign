@@ -76,11 +76,36 @@ def main():
         # as the app's updater makes its folders (make_parents)
         os.makedirs(os.path.dirname(os.path.join(folder, rel)), exist_ok=True)
         open(os.path.join(folder, rel), 'wb').write(data)
+    written = {rel.lower() for rel in results}
     for rel in header['removed']:
+        # (a file renamed in its case only is the new one, as the app's
+        # updater skips it)
+        if rel.lower() in written:
+            continue
         p = os.path.join(folder, rel)
         if os.path.exists(p):
             os.remove(p)
+    if check:
+        compare_trees(folder, check)
     print(f'{header["from"]} -> {header["to"]}: {len(results)} files written, {len(header["removed"])} removed, all checked')
+
+
+def compare_trees(folder, check):
+    """The whole folder, after the removals, against the new release: the same
+    files (whatever their case, as on Windows), each with the same code"""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location('make_delta', os.path.join(os.path.dirname(__file__), 'make-delta.py'))
+    make_delta = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(make_delta)
+    have = {rel.lower(): path for rel, path in make_delta.package_files(folder).items()}
+    want = {rel.lower(): path for rel, path in make_delta.package_files(check).items()}
+    missing, extra = sorted(want.keys() - have.keys()), sorted(have.keys() - want.keys())
+    if missing or extra:
+        raise SystemExit(f'not the new release: {len(missing)} files missing {missing[:5]}, '
+                         f'{len(extra)} left over {extra[:5]}')
+    for rel in want:
+        if make_delta.comparable(open(have[rel], 'rb').read()) != make_delta.comparable(open(want[rel], 'rb').read()):
+            raise SystemExit(f'{rel}: differs from the new release')
 
 
 if __name__ == '__main__':

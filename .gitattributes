@@ -1,0 +1,21 @@
+# What a shell, autotools or Docker reads keeps LF line endings, whatever
+# core.autocrlf says (a CRLF checkout breaks "set -eu" and every Docker
+# build). Not "* text=auto": files of upstream VLC are stored with CRLF on
+# purpose (patches among them), and would all show as changed.
+*.sh            text eol=lf
+*Dockerfile     text eol=lf
+*.am            text eol=lf
+*.ac            text eol=lf
+*.m4            text eol=lf
+*.mak           text eol=lf
+bootstrap       text eol=lf
+make-alias      text eol=lf
+autotools/config.rpath text eol=lf
+contrib/src/fxc2/fxc   text eol=lf
+src/check_headers      text eol=lf
+src/check_symbols      text eol=lf
+
+*.png  binary
+*.ico  binary
+*.ttf  binary
+*.otf  binary

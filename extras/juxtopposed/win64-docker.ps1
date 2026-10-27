@@ -77,14 +77,23 @@ foreach ($p in $procs) {
 # The volume starts root-owned; hand it to the image's user once.
 docker run --rm -u root -v "${Volume}:/build" $image chown videolan:videolan /build
 if ($LASTEXITCODE -ne 0) { throw 'Cannot prepare the build volume' }
+# Full paths: a relative one (-Out pkg) would be a named Docker volume, and
+# the package would never reach the host
+$cachePath = (Resolve-Path $Cache).Path
+# "$@": every build argument as it was given, spaces and all. Windows
+# PowerShell (and pwsh before 7.3) pass a " inside an argument as is, which
+# the C runtime of docker.exe then drops: escaped for them.
+$legacy = $PSVersionTable.PSVersion -lt [version]'7.3' -or $PSNativeCommandArgumentPassing -eq 'Legacy'
+$q = if ($legacy) { '\"' } else { '"' }
 docker run --rm `
     -e CONTRIB_ARCHIVE="/cache/$archive" -e QUICK=$(if ($Quick) { 1 } else { 0 }) -e STRIP=$(if ($Strip) { 1 } else { 0 }) `
-    -v "${root}:/src:ro" -v "${Cache}:/cache:ro" -v "${Out}:/out" `
+    -v "${root}:/src:ro" -v "${cachePath}:/cache:ro" -v "${outPath}:/out" `
     -v "${Volume}:/build" `
-    $image sh -c 'cp /src/extras/juxtopposed/win64-docker.sh /tmp/build.sh && exec sh /tmp/build.sh $@' `
+    $image sh -c "cp /src/extras/juxtopposed/win64-docker.sh /tmp/build.sh && exec sh /tmp/build.sh $q`$@$q" `
     win64-docker.sh @BuildArgs
 if ($LASTEXITCODE -ne 0) { throw "Windows build failed ($LASTEXITCODE)" }
+if (-not (Test-Path "$outPath\vlc.exe")) { throw "The build left no vlc.exe in $outPath" }
 # Without plugins.dat every start scans all plugins, which takes seconds.
-& "$Out\vlc-cache-gen.exe" "$Out\plugins"
+& "$outPath\vlc-cache-gen.exe" "$outPath\plugins"
 if ($LASTEXITCODE -ne 0) { Write-Warning "vlc-cache-gen failed ($LASTEXITCODE)" }
-Write-Host "Run: $Out\vlc.exe"
+Write-Host "Run: $outPath\vlc.exe"

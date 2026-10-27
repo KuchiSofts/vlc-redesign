@@ -89,6 +89,9 @@ static const Option entries[] = {
     // Visualization, then Advanced Options
     {"audio", "audio"}, {"audio", "mmdevice-audio-device"}, {"audio", "stereo-mode"},
     {"audio", "qt-max-volume"}, {"audio", "volume-save"}, {"audio", "mmdevice-volume"},
+    // the startup volume of the other outputs (ConfigModel::startupVolumeOption)
+    {"audio", "waveout-volume"}, {"audio", "alsa-gain"}, {"audio", "auhal-volume"},
+    {"audio", "jack-gain"},
     {"audio", "volume-step"},
     {"audio", "x:x-filter:normvol"}, {"audio", "norm-max-level"}, {"audio", "x:x-night-mode"},
     {"audio", "audio-replay-gain-mode"}, {"audio", "audio-replay-gain-preamp"},
@@ -166,7 +169,11 @@ static const Option entries[] = {
     {"performance", "avcodec-skiploopfilter"},
     {"performance", "avcodec-threads"},
     {"performance", "drop-late-frames"},
-    {"performance", "high-priority"}, {"performance", "qt:redesign/process-priority"},
+    {"performance", "high-priority"},
+#ifdef _WIN32
+    // (applied with SetPriorityClass: MainCtx::loadPrefs)
+    {"performance", "qt:redesign/process-priority"},
+#endif
     {"performance", "sout-transcode-venc"}, {"performance", "codec"},
     {"performance", "clock-synchro"}, {"performance", "clock-jitter"},
     {"performance", "cr-average"},

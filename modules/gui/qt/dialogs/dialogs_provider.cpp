@@ -75,6 +75,7 @@
 #include <QPointer>
 #include <QMessageBox>
 #include <QRegularExpression>
+#include <QSet>
 #include <QThreadPool>
 
 #define I_OP_DIR_WINTITLE I_DIR_OR_FOLDER( N_("Open Directory"), \
@@ -702,6 +703,17 @@ static QString hostLinkWithScheme( const QString& text )
     if( !match.hasMatch() )
         return {};
     const QString name = match.captured( 1 );
+    /* "movie.mkv" names a file (opened as a path, as before), not a host */
+    static const QSet<QString> mediaSuffixes = [] {
+        QSet<QString> suffixes;
+        for( const QString &pattern : QStringLiteral( EXTENSIONS_MEDIA )
+                                          .split( QLatin1Char( ';' ), Qt::SkipEmptyParts ) )
+            suffixes.insert( pattern.mid( 2 ).toLower() ); /* without "*." */
+        return suffixes;
+    }();
+    if( match.captured( 5 ).isEmpty()
+     && mediaSuffixes.contains( name.section( QLatin1Char( '.' ), -1 ).toLower() ) )
+        return {};
     const bool address = name.startsWith( QLatin1Char( '[' ) )
                       || name == QLatin1String( "localhost" )
                       || ipv4.match( name ).hasMatch();
@@ -1100,8 +1112,9 @@ QString writePlaylistFile( const QString& path, const QByteArray& module,
         writeHTML( file, medias );
 
     QString error;
+    /* (ferror() sets no errno: the one there may be of anything) */
     if( ferror( file ) )
-        error = QString::fromUtf8( vlc_strerror_c( errno ) );
+        error = qtr( "Write error" );
     if( fclose( file ) != 0 && error.isEmpty() )
         error = QString::fromUtf8( vlc_strerror_c( errno ) );
     return error;
@@ -1130,9 +1143,15 @@ void DialogsProvider::saveMediaToPlaylistFile( const QVector<vlc::playlist::Medi
         if( error.isEmpty() )
             return;
         QMetaObject::invokeMethod( qApp, [provider, path, error]() {
-            if( provider )
-                msg_Err( provider->p_intf, "Could not export the playlist to %s: %s",
-                         qtu( path ), qtu( error ) );
+            if( !provider )
+                return;
+            msg_Err( provider->p_intf, "Could not export the playlist to %s: %s",
+                     qtu( path ), qtu( error ) );
+            /* told, else the user relies on a file missing or cut short */
+            provider->messageDialog( qtr( "The playlist could not be exported to %1:\n%2" )
+                                         .arg( path, error ),
+                                     qtr( "Export Playlist" ), QMessageBox::Ok, QMessageBox::Ok,
+                                     QMessageBox::Warning );
         }, Qt::QueuedConnection );
     });
 }

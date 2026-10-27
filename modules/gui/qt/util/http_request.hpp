@@ -16,7 +16,8 @@
 class QObject;
 
 // Small HTTPS client for the interface. VLC's Qt is built without
-// QtNetwork, so requests go through the system stack (WinHTTP on Windows).
+// QtNetwork, so requests go through the system stack (WinHTTP on Windows,
+// libcurl elsewhere).
 struct HttpResponse
 {
     int status = 0;    // HTTP status, 0 when no response was received

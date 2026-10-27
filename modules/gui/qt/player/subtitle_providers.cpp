@@ -31,6 +31,9 @@
 
 #ifdef _WIN32
 # include <windows.h>
+#else
+# include <cerrno>
+# include <cstring>
 #endif
 #ifdef HAVE_ZLIB
 # include <zlib.h>
@@ -38,6 +41,9 @@
 
 #include <vlc_common.h>
 #include <vlc_iso_lang.h>
+#ifndef _WIN32
+# include <vlc_charset.h>
+#endif
 
 #include "util/http_request.hpp"
 #include "util/redesign_version.hpp"
@@ -535,7 +541,9 @@ bool isSubtitleName(const QString &name)
 bool validUtf8(const QByteArray &data)
 {
     QStringDecoder utf8(QStringDecoder::Utf8);
-    (void)utf8.decode(data);
+    // decode() is lazy: the text must be made for hasError() to be set
+    const QString text = utf8.decode(data);
+    Q_UNUSED(text);
     return !utf8.hasError();
 }
 
@@ -640,10 +648,71 @@ unsigned codePageNamed(const QString &encoding)
     return named.value(e, 0);
 }
 
+#ifndef _WIN32
+// The iconv name of a Windows code page number
+QByteArray iconvNameOf(unsigned page)
+{
+    if (page >= 28591 && page <= 28606)
+        return "ISO-8859-" + QByteArray::number(page - 28590);
+    switch (page)
+    {
+        case 20866: return "KOI8-R";
+        case 21866: return "KOI8-U";
+        case 20932: return "EUC-JP";
+        case 54936: return "GB18030";
+        default:    return "CP" + QByteArray::number(page);
+    }
+}
+
+// Converts with iconv; a sequence it cannot convert becomes U+FFFD when
+// decoding (as MultiByteToWideChar), and fails when encoding
+bool convertIconv(const char *to, const char *from, const QByteArray &in, QByteArray &out,
+                  bool replace)
+{
+    vlc_iconv_t cd = vlc_iconv_open(to, from);
+    if (cd == (vlc_iconv_t)(-1))
+        return false;
+    out.resize(in.size() * 4 + 16);
+    const char *src = in.constData();
+    size_t srcLeft = size_t(in.size());
+    char *dst = out.data();
+    size_t dstLeft = size_t(out.size());
+    bool ok = true;
+    while (srcLeft > 0)
+    {
+        if (vlc_iconv(cd, &src, &srcLeft, &dst, &dstLeft) != (size_t)(-1))
+            continue;
+        if ((errno == EILSEQ || errno == EINVAL) && replace && dstLeft >= 3)
+        {
+            ++src;
+            --srcLeft;
+            memcpy(dst, "\xEF\xBF\xBD", 3);
+            dst += 3;
+            dstLeft -= 3;
+            continue;
+        }
+        ok = false;
+        break;
+    }
+    // the last character: some converters hold it back for the combining
+    // marks that may follow (glibc's CP1255 and CP1258)
+    if (ok && vlc_iconv(cd, nullptr, nullptr, &dst, &dstLeft) == (size_t)(-1))
+        ok = false;
+    vlc_iconv_close(cd);
+    out.resize(out.size() - qsizetype(dstLeft));
+    return ok;
+}
+#endif
+
 QString decodePage(const QByteArray &data, unsigned page)
 {
     if (page == 65001)
         return QString::fromUtf8(data);
+#ifndef _WIN32
+    QByteArray utf8;
+    if (convertIconv("UTF-8", iconvNameOf(page).constData(), data, utf8, true))
+        return QString::fromUtf8(utf8);
+#endif
 #ifdef _WIN32
     const int length = MultiByteToWideChar(page, 0, data.constData(), int(data.size()), nullptr, 0);
     if (length > 0)
@@ -700,8 +769,19 @@ QString repairDoubleEncoding(const QString &text, unsigned page)
     const QString repaired = decodePage(bytes, page);
     return hasScriptOf(repaired, page) ? repaired : text;
 #else
-    Q_UNUSED(page);
-    return text;
+    if (hasScriptOf(text, page))
+        return text;
+    int latin = 0;
+    for (const QChar c : text)
+        if (c.unicode() >= 0xC0 && c.unicode() <= 0xFF)
+            ++latin;
+    if (latin < 20)
+        return text;
+    QByteArray bytes;
+    if (!convertIconv("CP1252", "UTF-8", text.toUtf8(), bytes, false))
+        return text;
+    const QString repaired = decodePage(bytes, page);
+    return hasScriptOf(repaired, page) ? repaired : text;
 #endif
 }
 

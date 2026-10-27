@@ -23,4 +23,10 @@ QVariantMap capture(MainCtx *ctx, QSettings *settings);
 bool apply(MainCtx *ctx, QSettings *settings, const QVariantMap &target, QString *error);
 }
 
+// Writes the settings changed since the last sync, and tells whether this
+// write worked. QSettings::status() keeps the first error met for the life
+// of the object: one moment the file was locked (an antivirus, OneDrive)
+// would fail every later save of the interface's settings
+bool syncSettings(QSettings *settings);
+
 #endif

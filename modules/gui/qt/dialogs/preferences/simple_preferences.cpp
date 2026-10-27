@@ -1383,7 +1383,7 @@ static bool languageComplete( const char *iso )
     return false;
 }
 
-#ifdef _WIN32
+// (on every platform, as on Windows: VLC Redesign chooses its language)
 // The languages a catalog was added for (locale\<code>\LC_MESSAGES\vlc.mo, as
 // a translator makes one) that the list above does not name: by their own
 // name, as Qt knows it; not the catalogs with next to nothing translated
@@ -1419,12 +1419,10 @@ static const QVector<QPair<QString, QString>> &addedLanguages()
     }();
     return added;
 }
-#endif
 
 QVariantList interfaceLanguages()
 {
     QVariantList languages;
-#ifdef _WIN32
     // Auto, then the complete languages, then the partial ones, marked so
     // (a language added by its catalog with them)
     QVariantList partial;
@@ -1445,14 +1443,13 @@ QVariantList interfaceLanguages()
         partial.append( QVariantMap{ { QStringLiteral( "value" ), added.first },
                                      { QStringLiteral( "label" ), qtr( "%1 (partial)" ).arg( added.second ) } } );
     languages.append( partial );
-#endif
     return languages;
 }
 
-#ifdef _WIN32
 // The interface language is kept in the profile of VLC Redesign (its portable
-// folder, else %APPDATA%\VLC Redesign: bin/winvlc.c), where vlc.exe reads it
-// at startup; never in the registry of an installed VLC
+// folder, else %APPDATA%\VLC Redesign: bin/winvlc.c, where vlc.exe reads it
+// at startup; never in the registry of an installed VLC); elsewhere in VLC's
+// data folder, read as the interface starts (qt.cpp)
 static QString languageFile()
 {
     char *dir = config_GetUserDir( VLC_USERDATA_DIR );
@@ -1462,6 +1459,25 @@ static QString languageFile()
     free( dir );
     return file;
 }
+
+#ifndef _WIN32
+// Until one is chosen: the system's language when VLC has it (no installer
+// asks for it, as on Windows), else English
+static QString systemInterfaceLanguage()
+{
+    const QString name = QLocale::system().name(); // "he_IL", "pt_BR", "C"
+    const QString base = name.section( QLatin1Char( '_' ), 0, 0 );
+    QString found;
+    for( size_t i = 1; i < ARRAY_SIZE( language_map ); i++ )
+    {
+        const QLatin1String iso( language_map[i].iso );
+        if( iso == name )
+            return iso;
+        if( found.isEmpty() && iso == base )
+            found = iso;
+    }
+    return found.isEmpty() ? QStringLiteral( "en" ) : found;
+}
 #endif
 
 QString interfaceLanguage()
@@ -1469,19 +1485,19 @@ QString interfaceLanguage()
 #ifdef _WIN32
     // English until one is chosen (vlc.exe starts so), not the language of
     // Windows nor the one of an installed VLC
+    const QString fallback = QStringLiteral( "en" );
+#else
+    const QString fallback = systemInterfaceLanguage();
+#endif
     QFile file( languageFile() );
     if( file.fileName().isEmpty() || !file.open( QIODevice::ReadOnly ) )
-        return QStringLiteral( "en" );
+        return fallback;
     const QString code = QString::fromLatin1( file.readAll() ).trimmed();
-    return code.isEmpty() ? QStringLiteral( "en" ) : code;
-#else
-    return QStringLiteral( "auto" );
-#endif
+    return code.isEmpty() ? fallback : code;
 }
 
 bool setInterfaceLanguage( const QString &iso )
 {
-#ifdef _WIN32
     if( iso == interfaceLanguage() )
         return true;
     bool known = false;
@@ -1492,23 +1508,22 @@ bool setInterfaceLanguage( const QString &iso )
     if( known )
     {
         QFile file( languageFile() );
-        if( file.fileName().isEmpty() || !file.open( QIODevice::WriteOnly | QIODevice::Truncate ) )
+        if( file.fileName().isEmpty() )
+            return false;
+        // the data folder may not exist yet (a first start outside Windows)
+        QDir().mkpath( QFileInfo( file.fileName() ).absolutePath() );
+        if( !file.open( QIODevice::WriteOnly | QIODevice::Truncate ) )
             return false;
         return file.write( iso.toLatin1() ) > 0;
     }
-#else
-    VLC_UNUSED( iso );
-#endif
     return false;
 }
 
 void resetInterfaceLanguage()
 {
-#ifdef _WIN32
     const QString file = languageFile();
     if( !file.isEmpty() )
         QFile::remove( file );
-#endif
 }
 
 void SPrefsPanel::langChanged( int i )

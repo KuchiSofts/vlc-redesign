@@ -94,7 +94,9 @@ extern "C" {
 #else
 # define SYSTEM_FONT_PATH                   "/usr/share/fonts/truetype/freefont"
 # define SYSTEM_DEFAULT_FONT_FILE           "FreeSerifBold.ttf"
-# define SYSTEM_DEFAULT_FAMILY              "Serif Bold"
+/* as on Windows (VLC Redesign): fontconfig gives Arial's metric-compatible
+ * Liberation Sans where Arial is not installed */
+# define SYSTEM_DEFAULT_FAMILY              "Arial"
 # define SYSTEM_DEFAULT_MONOSPACE_FONT_FILE "FreeMono.ttf"
 # define SYSTEM_DEFAULT_MONOSPACE_FAMILY    "Monospace"
 #endif

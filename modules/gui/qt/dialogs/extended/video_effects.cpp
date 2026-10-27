@@ -11,6 +11,7 @@
 
 #include "video_effects.hpp"
 #include "maininterface/mainctx.hpp"
+#include "player/player_controller.hpp"
 #include "qt.hpp"
 #include "dialogs/preferences/config_values.hpp"
 #include "util/language_change.hpp"
@@ -132,18 +133,21 @@ void VideoEffects::setCtx(MainCtx* ctx)
     m_transactionActive = false;
     m_snapshotValues.clear();
     m_configSnapshot.clear();
+    disconnect(m_videoOutputConnection);
+    if (ctx && ctx->getIntf() && ctx->getIntf()->p_mainPlayerController)
+        m_videoOutputConnection = connect(ctx->getIntf()->p_mainPlayerController,
+                                          &PlayerController::hasVideoOutputChanged,
+                                          this, &VideoEffects::changed);
     emit ctxChanged(ctx);
     changed();
 }
 bool VideoEffects::available() const { return m_ctx && m_ctx->getIntf() && m_ctx->getIntf()->p_player; }
 bool VideoEffects::activeVideo() const
 {
-    if (!available()) return false;
-    size_t count = 0;
-    vout_thread_t** vouts = vlc_player_vout_HoldAll(m_ctx->getIntf()->p_player, &count);
-    for (size_t i = 0; i < count; ++i) vout_Release(vouts[i]);
-    free(vouts);
-    return count > 0;
+    // (not vlc_player_vout_HoldAll: without video it gives the player's
+    // dummy output, so there would always be one)
+    if (!available() || !m_ctx->getIntf()->p_mainPlayerController) return false;
+    return m_ctx->getIntf()->p_mainPlayerController->hasVideoOutput();
 }
 quintptr VideoEffects::voutToken() const
 {

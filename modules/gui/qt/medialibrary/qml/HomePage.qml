@@ -382,12 +382,12 @@ Widgets.PageExt {
                 view: foldersRow
                 // The design shows the chevron of every section: the folders
                 // open the folders view of the library (the videos grouped by
-                // folder, as "Group by folder" of the Videos page)
+                // folder, as "Group by folder" of the Videos page), for this
+                // view only: the saved grouping of the Videos page stays
                 seeAllButton.visible: true
 
                 onSeeAllButtonClicked: function (reason) {
-                    MainCtx.grouping = MainCtx.GROUPING_FOLDER
-                    History.push(["video", "all"], reason)
+                    History.push(["video", "all"], { groupingOverride: MainCtx.GROUPING_FOLDER }, reason)
                 }
             }
 

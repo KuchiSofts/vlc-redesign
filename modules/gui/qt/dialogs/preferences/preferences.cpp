@@ -35,6 +35,7 @@
 #include "widgets/native/searchlineedit.hpp"
 #include "widgets/native/qvlcframe.hpp"
 #include "maininterface/mainctx.hpp"
+#include "dialogs/toolbar/controlbar_profile_model.hpp"
 
 #include <QHBoxLayout>
 #include <QGroupBox>
@@ -405,6 +406,10 @@ void PrefsDialog::reset()
         {
             p_intf->p_mi->reloadPrefs();
             p_intf->p_mi->reloadFromSettings();
+            /* the profiles would put their own settings back: they take
+             * the defaults now in use */
+            if( auto *profiles = p_intf->p_mi->controlbarProfileModel() )
+                profiles->forgetSettingsSnapshots();
         }
 
 #ifdef _WIN32

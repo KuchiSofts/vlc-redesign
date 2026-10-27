@@ -13,6 +13,7 @@
 
 #include "interface_language.hpp"
 #include "maininterface/mainctx.hpp"
+#include "dialogs/toolbar/controlbar_profile_model.hpp"
 #include "qt.hpp"
 
 #include <QCoreApplication>
@@ -120,6 +121,10 @@ void ConfigModel::resetAll()
     // once too: MainCtx::reloadPrefs), its state saved at exit as usual
     m_ctx->reloadPrefs();
     m_ctx->reloadFromSettings();
+    // the profiles would put their own settings back (when saved, when one
+    // is chosen): they take the defaults now in use
+    if (auto *profiles = m_ctx->controlbarProfileModel())
+        profiles->forgetSettingsSnapshots();
     // the language of the interface is not a setting (a file of the profile)
     resetInterfaceLanguage();
     m_ctx->applyInterfaceLanguage(interfaceLanguage());

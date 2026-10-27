@@ -113,7 +113,8 @@ Widgets.RedesignDialog {
     }
 
     onAccepted: {
-        if (!root.profileError && !shortcuts.apply())
+        // the keys changed since a failed profile save are applied too
+        if (shortcuts.dirty && !shortcuts.apply())
             return
         root.saved = true
         if (!MainCtx.controlbarProfileModel.save()) {

@@ -25,8 +25,12 @@ T.Control {
     property real dragYMax: 0
     property bool queueExpanded: false
     readonly property bool lightTheme: !VLCStyle.palette.isDark
+    // Parent folder of a local media (a stream has none: not its host)
     readonly property string folderName: {
-        const parts = decodeURIComponent(Player.url.toString()).split("/")
+        const url = Player.url.toString()
+        if (!url.startsWith("file://"))
+            return ""
+        const parts = decodeURIComponent(url).split("/")
         return parts.length > 1 ? parts[parts.length - 2] : ""
     }
 

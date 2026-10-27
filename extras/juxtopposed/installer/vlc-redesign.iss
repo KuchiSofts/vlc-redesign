@@ -23,7 +23,9 @@
 ; Privacy: the two features that go online by themselves, the daily update
 ; check (GitHub) and the automatic online subtitles, are asked on the
 ; Privacy page, both on to begin with, with a link to CODE_SIGNING_POLICY.md.
-; The answers go to {app}\portable\setup-choices.ini, which VLC Redesign puts
+; The answers go to {app}\portable\setup-choices.ini (installed for everyone:
+; to %APPDATA%\VLC Redesign of the user who runs Setup, as every
+; {app}\portable\ below), which VLC Redesign puts
 ; into its settings at its next start (MainCtx::applySetupChoices) and then
 ; deletes; the first-run setup doesn't ask them again. Not the settings
 ; themselves: a new install has none yet, and vlc.exe fills an empty profile
@@ -2609,9 +2611,10 @@ Source: "{#SourceDir}\*"; DestDir: "{app}"; Excludes: "\portable\*,*.old-*"; Fla
 ; Its presence keeps VLC's data next to vlc.exe instead of %APPDATA%\vlc,
 ; which an installed official VLC uses
 Name: "{app}\portable"; Flags: uninsneveruninstall; Check: not IsAdminInstallMode
-; Installed for all users (Program Files): its users must be able to write
-; their settings there
-Name: "{app}\portable"; Flags: uninsneveruninstall; Permissions: users-modify; Check: IsAdminInstallMode
+; Installed for all users (Program Files): none. One folder every user can
+; write to would be every user's profile, so one user's vlcrc or Lua script
+; would run in every other user's VLC; each keeps %APPDATA%\VLC Redesign
+; (see ProfileDirOf)
 
 [InstallDelete]
 ; Plugins of a previous version that this one no longer has
@@ -2631,6 +2634,9 @@ Type: filesandordirs; Name: "{app}\hrtfs"
 Type: filesandordirs; Name: "{app}\licenses"
 Type: filesandordirs; Name: "{app}\sdk"
 Type: files; Name: "{app}\*.dll"
+Type: files; Name: "{app}\*.exe"
+Type: files; Name: "{app}\*.txt"
+Type: files; Name: "{app}\*.ico"
 
 [Icons]
 Name: "{autoprograms}\{#AppName}"; Filename: "{app}\vlc.exe"; Comment: "{cm:ShortcutComment}"
@@ -2638,8 +2644,9 @@ Name: "{autodesktop}\{#AppName}"; Filename: "{app}\vlc.exe"; Comment: "{cm:Short
 
 [Run]
 ; Reopen VLC as it was (update or running instance); otherwise the last
-; page's "Open VLC Redesign now" does (CurStepChanged)
-Filename: "{app}\vlc.exe"; Parameters: "{code:RelaunchArgs}"; Flags: nowait; Check: ShouldRelaunch
+; page's "Open VLC Redesign now" does (CurStepChanged). As the user who
+; started Setup, never as an administrator (an install for everyone)
+Filename: "{app}\vlc.exe"; Parameters: "{code:RelaunchArgs}"; Flags: nowait runasoriginaluser; Check: ShouldRelaunch
 
 [Code]
 const
@@ -2813,6 +2820,10 @@ function GetWindowRect(Wnd: HWND; var Rect: TWinRect): Boolean;
   external 'GetWindowRect@user32.dll stdcall';
 function ShellExecute(Wnd: HWND; Operation, FileName, Parameters, Directory: String; ShowCmd: Integer): Integer;
   external 'ShellExecuteW@shell32.dll stdcall';
+function GetCurrentProcessId(): Longword;
+  external 'GetCurrentProcessId@kernel32.dll stdcall';
+function ProcessIdToSessionId(ProcessId: Longword; var SessionId: Longword): Boolean;
+  external 'ProcessIdToSessionId@kernel32.dll stdcall';
 
 { ---- Closing and reopening a running copy --------------------------------- }
 
@@ -2821,20 +2832,27 @@ begin
   Result := ExpandConstant('{app}\vlc.exe');
 end;
 
-{ Process ids (as taskkill arguments) and command line of the VLC Redesign
-  instances started from the install folder; other VLCs are left alone. }
-function FindRunning(var Pids: String; var CmdLine: String): Boolean;
+{ Process ids (as taskkill arguments) of the VLC Redesign instances started
+  from the install folder; other VLCs are left alone. All of them go (an
+  install for everyone replaces the files every user runs), but only one in
+  this Windows session (Here) is reopened, with its command line: never
+  another user's media, in this user's session. }
+function FindRunning(var Pids: String; var CmdLine: String; var Here: Boolean): Boolean;
 var
   Locator, Service, Procs, Proc: Variant;
   I: Integer;
+  Session: Longword;
 begin
   Result := False;
+  Here := False;
   Pids := '';
   CmdLine := '';
+  if not ProcessIdToSessionId(GetCurrentProcessId(), Session) then
+    Session := $FFFFFFFF;
   try
     Locator := CreateOleObject('WbemScripting.SWbemLocator');
     Service := Locator.ConnectServer('.', 'root\CIMV2');
-    Procs := Service.ExecQuery('SELECT ProcessId, ExecutablePath, CommandLine FROM Win32_Process WHERE Name = ''vlc.exe''');
+    Procs := Service.ExecQuery('SELECT ProcessId, SessionId, ExecutablePath, CommandLine FROM Win32_Process WHERE Name = ''vlc.exe''');
     for I := 0 to Procs.Count - 1 do
     begin
       Proc := Procs.ItemIndex(I);
@@ -2842,8 +2860,12 @@ begin
       begin
         Result := True;
         Pids := Pids + ' /PID ' + IntToStr(Proc.ProcessId);
-        if not VarIsNull(Proc.CommandLine) then
-          CmdLine := Proc.CommandLine;
+        if (not VarIsNull(Proc.SessionId)) and (Proc.SessionId = Session) then
+        begin
+          Here := True;
+          if not VarIsNull(Proc.CommandLine) then
+            CmdLine := Proc.CommandLine;
+        end;
       end;
     end;
   except
@@ -2901,11 +2923,12 @@ function CloseRunning(): Boolean;
 var
   Pids, CmdLine: String;
   Code, I: Integer;
+  Here: Boolean;
 begin
   Result := True;
-  if not FindRunning(Pids, CmdLine) then
+  if not FindRunning(Pids, CmdLine, Here) then
     Exit;
-  WasRunning := True;
+  WasRunning := Here;
   RunningArgs := ArgsOf(CmdLine);
   if (not WizardSilent) and (not IsUpdate()) then
     MsgBox(CustomMessage('Running'), mbInformation, MB_OK);
@@ -2914,12 +2937,12 @@ begin
   for I := 1 to 30 do
   begin
     Sleep(500);
-    if not FindRunning(Pids, CmdLine) then
+    if not FindRunning(Pids, CmdLine, Here) then
       Exit;
   end;
   Exec(ExpandConstant('{sys}\taskkill.exe'), '/F ' + Trim(Pids), '', SW_HIDE, ewWaitUntilTerminated, Code);
   Sleep(1000);
-  Result := not FindRunning(Pids, CmdLine);
+  Result := not FindRunning(Pids, CmdLine, Here);
 end;
 
 function PrepareToInstall(var NeedsRestart: Boolean): String;
@@ -3510,11 +3533,21 @@ begin
     Result := 'false';
 end;
 
-{ The profile of the copy installed: its settings, in portable\ next to
-  vlc.exe (see [Dirs]) }
+{ The profile of a copy installed in a folder: portable\ next to vlc.exe
+  (see [Dirs]); installed for everyone, the user's own %APPDATA%\VLC
+  Redesign, where vlc.exe keeps it then (bin/winvlc.c) }
+function ProfileDirOf(Dir: String): String;
+begin
+  if IsAdminInstallMode then
+    Result := ExpandConstant('{userappdata}\{#AppName}')
+  else
+    Result := AddBackslash(Dir) + 'portable';
+end;
+
+{ The profile of the copy installed: its settings }
 function ProfileFile(Name: String): String;
 begin
-  Result := AddBackslash(WizardDirValue) + 'portable\' + Name;
+  Result := AddBackslash(ProfileDirOf(WizardDirValue)) + Name;
 end;
 
 { A profile that vlc.exe leaves as it is: with settings, or a library
@@ -3757,6 +3790,8 @@ begin
     end;
   end;
   FileName := ProfileFile(CHOICES_FILE);
+  { (%APPDATA%\VLC Redesign of an install for everyone: made here) }
+  ForceDirectories(ExtractFileDir(FileName));
   if not FileExists(FileName) then
     SaveStringToFile(FileName, '; The answers of {#AppName} Setup (its Privacy and Layout pages). {#AppName}' + #13#10 +
                      '; puts them into its settings at its next start, then deletes this file.' + #13#10 +
@@ -3851,13 +3886,13 @@ begin
       Result := I;
 end;
 
-{ The language of the app in a folder (portable\language), '' if none }
+{ The language of the app in a folder (its profile's language), '' if none }
 function LanguageIn(Dir: String): String;
 var
   S: AnsiString;
 begin
   Result := '';
-  if (Dir <> '') and LoadStringFromFile(AddBackslash(Dir) + 'portable\' + LANGUAGE_FILE, S) then
+  if (Dir <> '') and LoadStringFromFile(AddBackslash(ProfileDirOf(Dir)) + LANGUAGE_FILE, S) then
     Result := Trim(S);
 end;
 
@@ -4099,6 +4134,7 @@ begin
   if AppLanguage = '' then
     Exit;
   FileName := ProfileFile(LANGUAGE_FILE);
+  ForceDirectories(ExtractFileDir(FileName));
   if FileExists(FileName) then
     Log('Language: ' + FileName + ' kept')
   else if SaveStringToFile(FileName, AppLanguage, False) then
@@ -4235,11 +4271,29 @@ end;
 
 procedure ForEveryoneClick(Sender: TObject);
 var
-  Params: String;
+  Params, P, F: String;
+  I: Integer;
 begin
+  Params := '/ALLUSERS';
+  { with what this one was given (/UILANG=, /NOUPDATECHECK, /LOG=...), as
+    Relaunch, but its mode and its language; a log of its own (this one's
+    is still open) }
+  for I := 1 to ParamCount do
+  begin
+    P := ParamStr(I);
+    if (CompareText(Copy(P, 1, 6), '/LANG=') <> 0) and (CompareText(P, '/CURRENTUSER') <> 0) and
+       (CompareText(P, '/ALLUSERS') <> 0) then
+    begin
+      if CompareText(Copy(P, 1, 5), '/LOG=') = 0 then
+      begin
+        F := Copy(P, 6, Length(P));
+        P := '/LOG=' + ChangeFileExt(F, '') + '-allusers' + ExtractFileExt(F);
+      end;
+      Params := Params + ' ' + AddQuotes(P);
+    end;
+  end;
   { in this language, if it was chosen or isn't English (otherwise as
     Setup starts there) }
-  Params := '/ALLUSERS';
   if (AppLanguage <> '') or (Lang <> 0) then
     Params := Params + ' /LANG=' + ActiveLanguage;
   if StartSetup(WizardForm.Handle, 'runas', Params) then
@@ -4877,7 +4931,11 @@ begin
   until List = '';
 end;
 
-procedure RemoveOldOpenWith();
+{ The "Open with" entries of 0.1/0.2 (VLCRedesign.Media). A default the
+  user chose for them (UserChoice, which Setup can't rewrite) still names
+  that ProgID: it stays while the program does, pointing at this copy,
+  out of "Open with" }
+procedure RemoveOldOpenWith(Keep: Boolean);
 var
   List, Ext: String;
 begin
@@ -4887,12 +4945,19 @@ begin
     if Ext <> '' then
       RegDeleteValue(HKA, 'Software\Classes\' + Ext + '\OpenWithProgids', 'VLCRedesign.Media');
   until List = '';
-  RegDeleteKeyIncludingSubkeys(HKA, 'Software\Classes\VLCRedesign.Media');
+  if Keep and RegKeyExists(HKA, 'Software\Classes\VLCRedesign.Media') then
+  begin
+    RegWriteStringValue(HKA, 'Software\Classes\VLCRedesign.Media\DefaultIcon', '', '"' + AppExe() + '",0');
+    RegWriteStringValue(HKA, 'Software\Classes\VLCRedesign.Media\shell\open\command', '',
+                        '"' + AppExe() + '" --started-from-file "%1"');
+  end
+  else
+    RegDeleteKeyIncludingSubkeys(HKA, 'Software\Classes\VLCRedesign.Media');
 end;
 
 procedure RegisterFileTypes();
 begin
-  RemoveOldOpenWith();
+  RemoveOldOpenWith(True);
   RegWriteStringValue(HKA, CAPABILITIES, 'ApplicationName', '{#AppName}');
   RegWriteStringValue(HKA, CAPABILITIES, 'ApplicationDescription', CustomMessage('ShortcutComment'));
   RegWriteStringValue(HKA, CAPABILITIES, 'ApplicationIcon', '"' + AppExe() + '",0');
@@ -4929,7 +4994,7 @@ begin
   UnregisterList(AUDIO_EXTS);
   UnregisterList(PLAYLIST_EXTS);
   SetContextMenu('Software\Classes\Directory\shell', False);
-  RemoveOldOpenWith();
+  RemoveOldOpenWith(False);
   RegDeleteValue(HKA, 'Software\RegisteredApplications', '{#AppName}');
   RegDeleteKeyIncludingSubkeys(HKA, CAPABILITIES);
   { (not the profiles the copies noted: the settings of the next copy)
@@ -4937,10 +5002,32 @@ begin
   DeleteKeyIfEmpty('Software\{#AppName}');
 end;
 
+{ An earlier install for everyone made portable\ there, writable by every
+  user and so every user's profile (see [Dirs]). It is set aside, never a
+  profile again; any user may have changed what it holds, so it is copied
+  into no one's profile. The uninstaller removes it. }
+procedure RetireSharedProfile();
+var
+  Shared, Aside: String;
+begin
+  Shared := ExpandConstant('{app}\portable');
+  Aside := ExpandConstant('{app}\portable-shared');
+  if not DirExists(Shared) then
+    Exit;
+  if DirExists(Aside) then
+    DelTree(Aside, True, True, True);
+  if RenameFile(Shared, Aside) then
+    Log('Shared profile ' + Shared + ' set aside as ' + Aside)
+  else
+    Log('Shared profile ' + Shared + ' could not be set aside');
+end;
+
 procedure CurStepChanged(CurStep: TSetupStep);
 var
   Code: Integer;
 begin
+  if (CurStep = ssInstall) and IsAdminInstallMode then
+    RetireSharedProfile();
   if CurStep = ssPostInstall then
   begin
     SaveLanguage();
@@ -4951,10 +5038,11 @@ begin
     { Windows may check a new program for seconds the first time it runs
       (up to 10 s measured): let it check VLC and its helpers now, hidden
       and without waiting (all return at once), not when a file is opened.
-      Not --version: it opens a console and waits for a key }
-    Exec(AppExe(), '--prewarm', '', SW_HIDE, ewNoWait, Code);
-    Exec(ExpandConstant('{app}\vlc-preparser.exe'), '--help', '', SW_HIDE, ewNoWait, Code);
-    Exec(ExpandConstant('{app}\vlc-waveform.exe'), '', '', SW_HIDE, ewNoWait, Code);
+      Not --version: it opens a console and waits for a key. As the user
+      who started Setup: nothing of VLC runs as an administrator }
+    ExecAsOriginalUser(AppExe(), '--prewarm', '', SW_HIDE, ewNoWait, Code);
+    ExecAsOriginalUser(ExpandConstant('{app}\vlc-preparser.exe'), '--help', '', SW_HIDE, ewNoWait, Code);
+    ExecAsOriginalUser(ExpandConstant('{app}\vlc-waveform.exe'), '', '', SW_HIDE, ewNoWait, Code);
   end
   else if (CurStep = ssDone) and (not WizardSilent) and (not ShouldRelaunch()) and Checked(T_LAUNCH) then
     ExecAsOriginalUser(AppExe(), '', '', SW_SHOWNORMAL, ewNoWait, Code);
@@ -4966,14 +5054,15 @@ procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
 var
   Pids, CmdLine: String;
   Code: Integer;
+  Here: Boolean;
 begin
   if CurUninstallStep = usUninstall then
   begin
-    if FindRunning(Pids, CmdLine) then
+    if FindRunning(Pids, CmdLine, Here) then
     begin
       Exec(ExpandConstant('{sys}\taskkill.exe'), Trim(Pids), '', SW_HIDE, ewWaitUntilTerminated, Code);
       Sleep(3000);
-      if FindRunning(Pids, CmdLine) then
+      if FindRunning(Pids, CmdLine, Here) then
         Exec(ExpandConstant('{sys}\taskkill.exe'), '/F ' + Trim(Pids), '', SW_HIDE, ewWaitUntilTerminated, Code);
     end;
     UnregisterFileTypes();
@@ -4984,6 +5073,8 @@ begin
       keeps them: it installs over the program, never uninstalls it) }
     if DirExists(ExpandConstant('{app}\portable')) then
       DelTree(ExpandConstant('{app}\portable'), True, True, True);
+    if DirExists(ExpandConstant('{app}\portable-shared')) then
+      DelTree(ExpandConstant('{app}\portable-shared'), True, True, True);
     { no copy starts with these settings any more }
     RegDeleteValue(HKCU, PROFILES, ExpandConstant('{app}\portable'));
     RegDeleteKeyIfEmpty(HKCU, PROFILES);

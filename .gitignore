@@ -63,3 +63,17 @@ static-lib/
 !buildsystem/
 !build.rs
 !extras/package/apple/build.sh
+
+# Python's byte code (the scripts under extras/juxtopposed)
+__pycache__/
+*.pyc
+# The folders of the CI workflows (.github/workflows) in the checkout: the
+# contrib archive, the package and the release files. Never synced into a
+# build (win64-docker.sh copies the files git doesn't ignore).
+/cache/
+/out/
+/dist/
+/package/
+/signed/
+/signed-setup/
+/release/

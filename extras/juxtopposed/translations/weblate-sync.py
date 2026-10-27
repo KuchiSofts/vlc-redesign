@@ -167,7 +167,8 @@ def import_(args):
         n = 0
         for i, e in enumerate(entries):
             w = theirs.get(e.key)
-            if w is None or (w.body == e.body and w.flags == e.flags):
+            # (an empty or fuzzy one on Weblate never replaces a translation)
+            if w is None or not w.translated() or (w.body == e.body and w.flags == e.flags):
                 continue
             entries[i] = Entry(e.comments + w.flags + w.body)
             n += 1

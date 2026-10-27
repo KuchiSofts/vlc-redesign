@@ -2471,8 +2471,12 @@ static void CloseSout( sout_stream_t *p_stream )
         vlc_join( p_sys->ctl_thread, nullptr );
     }
     /* casting stops (another device, or here): now (not when it does not
-     * answer: each round trip would wait for it) */
-    if ( !p_sys->unreachable && ( p_sys->playing || p_sys->stop_at != VLC_TICK_INVALID ) )
+     * answer: each round trip would wait for it). It may not be known as
+     * unreachable yet (that takes two failed checks): the last action that
+     * failed on the network says it too. */
+    const bool gone = p_sys->unreachable
+                   || NetworkError( p_sys->renderer->last_error );
+    if ( !gone && ( p_sys->playing || p_sys->stop_at != VLC_TICK_INVALID ) )
         p_sys->renderer->Stop();
     if ( p_sys->p_ended != nullptr )
         sout_StreamChainDelete( p_sys->p_ended, nullptr );
@@ -2486,7 +2490,7 @@ static void CloseSout( sout_stream_t *p_stream )
     p_sys->held.clear();
     p_sys->StopDisplay();
 
-    if ( !p_sys->unreachable )
+    if ( !gone && !NetworkError( p_sys->renderer->last_error ) )
         p_sys->renderer->ConnectionComplete();
     p_sys->p_upnp->release();
     delete p_sys;

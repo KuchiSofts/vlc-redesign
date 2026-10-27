@@ -34,6 +34,9 @@ Rectangle {
         ? Math.round(frameWidth * frameSource.implicitHeight / frameSource.implicitWidth)
         : Math.round(frameWidth * 9 / 16)
     readonly property real _eDPR: MainCtx.effectiveDevicePixelRatio(Window.window)
+    // The rounded frame is drawn by a shader; Qt's software renderer has
+    // none (no OpenGL), the decoded frame is then shown as it is
+    readonly property bool _shaders: GraphicsInfo.shaderType === GraphicsInfo.RhiShader
 
     implicitWidth: frameWidth + 2 * padding
     // (the line of the time: 17 px, as in Figma 2151:9673, 189 high in all)
@@ -47,7 +50,13 @@ Rectangle {
     Image {
         id: frameSource
 
-        visible: false
+        visible: !root._shaders
+        x: root.padding
+        y: root.padding
+        width: root.frameWidth
+        height: root.frameHeight
+        fillMode: Image.PreserveAspectCrop
+        clip: true
         asynchronous: true
         // The previous frame stays while the next one decodes
         retainWhileLoading: true
@@ -57,6 +66,7 @@ Rectangle {
     }
 
     Widgets.ImageExt {
+        visible: root._shaders
         x: root.padding
         y: root.padding
         width: root.frameWidth

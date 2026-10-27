@@ -694,7 +694,7 @@ int sout_stream_sys_t::UpdateOutput( sout_stream_t *p_stream )
                            "could quickly drain your battery." ) );
             perf_warning_shown = true;
             if ( res <= 0 )
-                 return false;
+                 return VLC_EGENERIC;
             if ( res == 2 )
                 config_PutInt(RENDERER_CFG_PREFIX "show-perf-warning", 0 );
         }
@@ -2316,6 +2316,11 @@ static int Send(sout_stream_t *p_stream, void *id,
         || vlc_tick_now() - p_sys->es_changed_at >= VLC_TICK_FROM_MS(300) )
       && p_sys->UpdateOutput( p_stream ) != VLC_SUCCESS )
     {
+        /* The stream could not be made here (no encoder, no address, the
+         * conversion declined): the interface says so, and offers to play
+         * here, instead of "connecting" forever */
+        vlc::threads::mutex_locker locker( p_sys->ctl_lock );
+        p_sys->Fail( p_stream, "local", -1 );
         block_Release( p_buffer );
         return VLC_EGENERIC;
     }

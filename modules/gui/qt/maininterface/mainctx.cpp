@@ -1456,6 +1456,12 @@ void MainCtx::setSettingValue(const QString &key, const QVariant &value)
     emit settingValueChanged(key);
 }
 
+void MainCtx::removeSettingValue(const QString &key)
+{
+    settings->remove(key);
+    emit settingValueChanged(key);
+}
+
 void MainCtx::setAttachedToolTip(QObject *toolTip)
 {
     // See QQuickToolTipAttachedPrivate::instance(bool create)

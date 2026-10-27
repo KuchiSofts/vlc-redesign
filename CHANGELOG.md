@@ -20,12 +20,43 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - **The playback speed button can be added to the bar again** ([#9](https://github.com/KuchiSofts/vlc-redesign/issues/9)).
   Dropped on a bar in Customize Player, it left an empty slot that could be neither seen nor removed. The teletext
   button had the same fault. A control that ever fails to load now shows a placeholder that can be dragged out.
+- **Colours of SD video on Windows.** Untagged or BT.601 SD video showed shifted colours with Direct3D 11 (pure red
+  came out as (239,4,0)); it now shows as the source, as with OpenGL. HD and HDR are unchanged.
+- **Subtitles in older encodings** (Windows-1255 Hebrew, 1251 Russian, 1256 Arabic, Shift-JIS…) downloaded online
+  show correctly again instead of as garbage.
+- **Installer:** after an all-users install or update, VLC no longer restarts as administrator, and such an install
+  no longer creates one shared profile every user can write to (each user gets their own). "Install for everyone"
+  keeps the command-line switches; an upgrade keeps your default-app choice working; uninstall removes every file.
+- **Updates:** a failed roll back is no longer reported as success; long paths, case-only renames and "nothing to
+  apply" are handled; downloads must come from this project's releases, and a signed copy only accepts updates
+  signed by the same publisher.
+- **Casting:** a TV marked unreachable can be retried; a failure to build the stream shows a message instead of
+  "connecting" for ever; one file the TV couldn't read no longer makes every later one be converted; quitting
+  right after a TV disappears is much quicker; a Chromecast seen two ways no longer vanishes when one goes;
+  devices can be hidden from the Cast list (right-click) and shown again.
+- **Profiles and settings:** switching profile applies its hotkeys, repeat and shuffle at once; one failed write no
+  longer breaks saving for the rest of the session; "Reset all settings" also resets the profiles; sliders cover
+  the whole valid range (maximum volume, OSD duration); a refused value in a text field is put back.
+- **Library and dialogs:** Open Network Stream saves its links into the named playlist; the folders row of Home
+  works with the keyboard; "See all" on folders no longer changes the Videos grouping for good; the waveform
+  follows the pointer while dragging; delete and remove always ask first; menus are mirrored in right-to-left
+  languages; menus follow the interface scale.
+- **Windows proxy:** LAN and localhost addresses go direct again, and exceptions with `*` work as in Windows.
+- **Smaller fixes:** idle HTTP stream clients time out (DLNA streams excepted), stopping a stalled network stream no
+  longer hangs, the VU meter reads the whole signal, Lua scripts saved with a BOM load, a TS stream's clock no
+  longer jumps when a track is removed, and more (the full list: the review report).
 
 ### Technical
 
 - The button, the placeholder and the high resolution time used the `Popup` and `Control` types without importing
   them (upstream dropped `QtQuick.Controls`); the static Qt of Windows doesn't know them. They come from
   `QtQuick.Controls.Basic` now.
+- A two-round code review (105 findings) was checked finding by finding against the code: about 90 were fixed,
+  the rest were already fixed, not bugs, or only partly fixable (for instance updates still have no signature of
+  their own while the releases aren't code-signed). The build now fails on any `build.sh` error and checks the
+  package; the weekly upstream merge gets the Windows build; `.gitattributes` keeps scripts in LF; the minimum Qt
+  is 6.8, as the code needs; the Linux and macOS ports get the HTTP backend (libcurl), code-page decoding and the
+  language picker.
 - Merged VLC master up to `6836ae77ae` (2026-10-27), 110 commits ([#8](https://github.com/KuchiSofts/vlc-redesign/issues/8)):
   upstream's own fix for stopping the Windows audio output under its lock, the playlist recovery question shown
   without blocking, and the rest of upstream's work.

@@ -203,11 +203,12 @@ if [ ! -f Makefile ] || [ "$root/configure" -nt Makefile ]; then
         QMAKE6="$qtdir/bin/qmake6" \
         QT_LIBCURL_CFLAGS="-I$SDKROOT/usr/include" QT_LIBCURL_LIBS="-lcurl"
 fi
-grep -q '^ENABLE_QT_TRUE = $' Makefile || die "configure turned the Qt interface off (see $logs/configure.log)"
-if grep -q '^ENABLE_MACOSX_UI_TRUE = $' Makefile; then
+# (config.log: what configure decided, whatever the Makefile's spacing)
+grep -q "^ENABLE_QT_TRUE=''" config.log || die "configure turned the Qt interface off (see $logs/configure.log)"
+if grep -q "^ENABLE_MACOSX_UI_TRUE=''" config.log; then
     die "the macosx interface is still enabled: it would win over Qt"
 fi
-grep -q '^HAVE_QT_LIBCURL_TRUE = $' Makefile || echo "warning: no libcurl: no online subtitles, artwork or update check"
+grep -q "^HAVE_QT_LIBCURL_TRUE=''" config.log || echo "warning: no libcurl: no online subtitles, artwork or update check"
 
 # ---------------------------------------------------------------------------
 step "Build"

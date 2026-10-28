@@ -14,8 +14,9 @@ import VLC.Style
 Widgets.ComboBoxExt {
     id: root
     property bool paintOnly: false
-    width: VLCStyle.dp(56, VLCStyle.scale)
-    height: VLCStyle.dp(32, VLCStyle.scale)
+    // implicit: the bar lays its controls out by their implicit size
+    implicitWidth: VLCStyle.dp(56, VLCStyle.scale)
+    implicitHeight: VLCStyle.dp(32, VLCStyle.scale)
     model: Player.zoom
     textRole: "display"
     currentIndex: -1

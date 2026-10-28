@@ -30,7 +30,7 @@
 
 #include <QBoxLayout>
 #include <QHeaderView>
-#include <QMessageBox>
+#include "widgets/native/redesign_message_box.hpp"
 #include <QPushButton>
 
 MLFoldersEditor::MLFoldersEditor(QWidget *parent)
@@ -114,7 +114,7 @@ void MLFoldersEditor::handleOpFailure(int operation, const QUrl &url)
         break;
     }
 
-    QMessageBox::warning( this, qtr( "Medialibrary error" ), msg );
+    RedesignMessageBox::warning( nullptr, this, qtr( "Medialibrary error" ), msg );
 }
 
 void MLFoldersEditor::resetFolders()

@@ -25,8 +25,15 @@ T.Popup {
 
     property string title
     property string acceptText: qsTr("Save")
+    // the button on the left (a question: No, Don't restore...)
+    property string cancelText: qsTr("Cancel")
     // a dialog with one action (Close) shows no Cancel
     property bool cancelVisible: true
+    // a dialog with Cancel only (a progress), or no button at all
+    property bool acceptVisible: true
+    // the close button of the title bar (a progress that cannot be
+    // cancelled has none)
+    property bool closeButtonVisible: true
     property bool acceptEnabled: true
     // a second action before the main one (Report a problem: Copy), none
     // when empty
@@ -173,7 +180,7 @@ T.Popup {
                         // to left layout)
                         anchors.left: parent.left
                         anchors.leftMargin: VLCStyle.dp(10, VLCStyle.scale)
-                        anchors.right: closeButton.left
+                        anchors.right: closeButton.visible ? closeButton.left : parent.right
                         height: parent.height
                         text: root.title
                         color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e", root.darkTheme)
@@ -195,6 +202,7 @@ T.Popup {
                         id: closeButton
 
                         anchors.right: parent.right
+                        visible: root.closeButtonVisible
                         width: VLCStyle.dp(32, VLCStyle.scale)
                         height: VLCStyle.dp(32, VLCStyle.scale)
                         padding: VLCStyle.dp(4, VLCStyle.scale)
@@ -252,6 +260,7 @@ T.Popup {
         // "Frame 225": padding 20, space between
         Item {
             Layout.fillWidth: true
+            visible: root.cancelVisible || root.acceptVisible || root.extraText !== ""
             implicitHeight: VLCStyle.dp(72, VLCStyle.scale)
 
             DialogButton {
@@ -260,15 +269,15 @@ T.Popup {
                 anchors.left: parent.left
                 anchors.leftMargin: VLCStyle.dp(20, VLCStyle.scale)
                 y: VLCStyle.dp(20, VLCStyle.scale)
-                text: qsTr("Cancel")
+                text: root.cancelText
                 onClicked: root.close()
             }
 
             DialogButton {
                 objectName: "dialogExtraButton"
                 visible: root.extraText !== ""
-                anchors.right: acceptButton.left
-                anchors.rightMargin: VLCStyle.dp(8, VLCStyle.scale)
+                anchors.right: acceptButton.visible ? acceptButton.left : parent.right
+                anchors.rightMargin: VLCStyle.dp(acceptButton.visible ? 8 : 20, VLCStyle.scale)
                 y: VLCStyle.dp(20, VLCStyle.scale)
                 text: root.extraText
                 onClicked: root.extraClicked()
@@ -277,6 +286,7 @@ T.Popup {
             DialogButton {
                 id: acceptButton
                 objectName: "dialogAcceptButton"
+                visible: root.acceptVisible
                 anchors.right: parent.right
                 anchors.rightMargin: VLCStyle.dp(20, VLCStyle.scale)
                 y: VLCStyle.dp(20, VLCStyle.scale)

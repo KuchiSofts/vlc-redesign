@@ -209,7 +209,8 @@ MainViewLoader {
             if (DialogsProvider.questionDialog(qsTr("Do you really want to delete the selected playlist?",
                                                     "Do you really want to delete the selected playlists?",
                                                     items.length),
-                                               qsTr("Delete playlist", "Delete playlists", items.length), true))
+                                               qsTr("Delete playlist", "Delete playlists", items.length), true,
+                                               qsTr("Delete"), qsTr("Cancel")))
                 root.model.deletePlaylists(items)
         } else {
             console.warn(root, ": Nothing to delete")

@@ -51,7 +51,7 @@
 #include <QApplication>
 #include <QPushButton>
 #include <QRegularExpression>
-#include <QMessageBox>
+#include "widgets/native/redesign_message_box.hpp"
 
 /************************************************************************
  * Single panels
@@ -266,7 +266,7 @@ bool MetaPanel::saveMeta()
     const auto input = p_input.get();
 
     if( input == NULL ) {
-        QMessageBox::warning( this, qtr("Metadata"), qtr("Not editing a file") );
+        RedesignMessageBox::warning( p_intf, this, qtr("Metadata"), qtr("Not editing a file") );
         return false;
     }
 
@@ -291,7 +291,7 @@ bool MetaPanel::saveMeta()
     b_inEditMode = false;
     int vlcret = input_item_WriteMeta( VLC_OBJECT(p_intf), input );
     if (vlcret != VLC_SUCCESS) {
-        QMessageBox::warning( this, qtr("Metadata"), qtr("Failed to save metadata") );
+        RedesignMessageBox::warning( p_intf, this, qtr("Metadata"), qtr("Failed to save metadata") );
         return false;
     }
     art_cover->setItem( p_input );

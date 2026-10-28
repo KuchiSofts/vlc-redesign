@@ -869,7 +869,25 @@ All classic windows go through one hook, `redesign_widget_theme.cpp`, applied fr
   6 runs clean
 - 🟢 Go to time, statistics, plugins list (the same hook) · in the app ⏳
 - 🟢 A stray separator line in the Disc tab (removed, build 121)
-- ⚪ Go to time, statistics, plugins list and folder information redrawn in QML, as another implementation did
+- 🟢 Go to time, statistics, plugins list and folder information redrawn in QML (2026-10-28, build ⏳):
+  `RedesignGoToTimeDialog`, `RedesignStatisticsDialog` (new Tools entry *Media Statistics*, bitrate graph),
+  `RedesignPluginsDialog` (plugins and Lua extensions; add-ons stay in Settings ▸ Extensions),
+  `RedesignFolderInfoDialog` (the folder menu's Info); data from `redesign_tools.cpp`. The classic windows remain
+  for skins; the Statistics tab of Media Information stays · in the app ⏳
+- 🟢 No plain Windows or Qt box left (2026-10-28, build ⏳): every message, question and prompt is a redesign
+  dialog. In the window: `RedesignMessageDialog.qml` (from `DialogsProvider::showRedesignMessage()`): the play
+  queue to restore after a crash (*Restore the play queue?*, *Restore* / *Don't restore*, not blocking), the
+  library's confirmations (named actions), rename playlist, paste links, `messageDialog()`. The core's login,
+  question and progress dialogs (`Dialogs.qml`) and the error banner. Elsewhere (a classic window asking, no
+  interface, the window hidden): `RedesignMessageBox`, frameless, the same sizes and colours. Before Qt
+  (`bin/winvlc_message.c`, GDI + DWM): could not start, the Windows version check, the crash report question
+- 🟢 The extension and fingerprint windows through the hook too
+- ⏳ In the app: the recovery question after a forced kill, a share's login, the start failure (`--foo`
+  does not fail libvlc: rename `plugins` in a test copy), light theme, 150 % scale, right to left
+- 🟢 The classic windows get the redesign's title bar (`redesign_window_frame.cpp`, from the hook): #090909, Inter
+  14 title, the redesign's icons; Windows: native frame kept (snap, resize, shadow, Windows 11 corners), caption
+  removed by `WM_NCCALCSIZE`, the bar hit-tested as `HTCAPTION` · in the app ⏳ (Windows 10 has no top border line;
+  the snap layouts flyout on the maximize button is not offered; Linux and macOS keep the system bar)
 
 ### 8.7 Casting
 

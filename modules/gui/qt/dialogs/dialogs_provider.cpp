@@ -38,6 +38,7 @@
 #include "util/qt_dirs.hpp"
 #include "util/vlchotkeyconverter.hpp"
 #include "maininterface/mainctx.hpp"
+#include "maininterface/compositor.hpp"
 
 /* The dialogs */
 #include "dialogs/bookmarks/bookmarks.hpp"
@@ -77,6 +78,10 @@
 #include <QRegularExpression>
 #include <QSet>
 #include <QThreadPool>
+#include <QEventLoop>
+#include <QDesktopServices>
+#include <QTimer>
+#include <QWindow>
 
 #define I_OP_DIR_WINTITLE I_DIR_OR_FOLDER( N_("Open Directory"), \
                                            N_("Open Folder") )
@@ -319,7 +324,37 @@ void DialogsProvider::messagesDialog(int page)
 
 void DialogsProvider::gotoTimeDialog()
 {
-    toggleDialogVisible(m_gotoTimeDialog);
+    if( p_intf->p_mi && !p_intf->b_isDialogProvider )
+        emit gotoTimeRequested();
+    else
+        toggleDialogVisible(m_gotoTimeDialog);
+}
+
+void DialogsProvider::goToTime( double seconds )
+{
+    if( !THEMIM->isStarted() || !THEMIM->isSeekable() || seconds < 0 )
+        return;
+    THEMIM->setTime( VLC_TICK_FROM_MS( static_cast<int64_t>( seconds * 1000 ) ) );
+}
+
+void DialogsProvider::statisticsDialog()
+{
+    if( p_intf->p_mi && !p_intf->b_isDialogProvider )
+    {
+        emit statisticsRequested();
+        return;
+    }
+    /* the Statistics tab of Media Information */
+    ensureDialog(m_mediaInfoDialog);
+    m_mediaInfoDialog->showTab( MediaInfoDialog::INPUTSTATS_PANEL );
+}
+
+void DialogsProvider::folderInfoDialog( const QUrl &folder )
+{
+    if( p_intf->p_mi && !p_intf->b_isDialogProvider )
+        emit folderInfoRequested( folder );
+    else
+        QDesktopServices::openUrl( folder );
 }
 
 #ifdef ENABLE_VLM
@@ -469,23 +504,20 @@ void DialogsProvider::mediaInfoDialogOf( input_item_t* const inputItem )
     }
 }
 
-bool DialogsProvider::questionDialog(const QString& text, const QString &title, bool always) const
+bool DialogsProvider::questionDialog(const QString& text, const QString &title, bool always,
+                                     const QString &acceptText, const QString &cancelText)
 {
     if (!always && !var_InheritBool(p_intf, "qt-error-dialogs"))
         return true;
 
-    QMessageBox messageBox;
-    messageBox.setText(text);
-    if (!title.isEmpty())
-        messageBox.setWindowTitle(title);
-    messageBox.setIcon(QMessageBox::Question);
-    messageBox.setStandardButtons(QMessageBox::StandardButtons(QMessageBox::Yes | QMessageBox::No));
-    messageBox.setDefaultButton(QMessageBox::No);
-
-    QVLCDialog::setWindowTransientParent(&messageBox, nullptr, p_intf);
-
-    int result = messageBox.exec();
-    return result == QMessageBox::Yes;
+    RedesignMessage message;
+    message.title = title.isEmpty() ? qtr("Confirm") : title;
+    message.heading = text;
+    message.acceptText = acceptText.isEmpty() ? qtr("Yes") : acceptText;
+    message.cancelText = (acceptText.isEmpty() && cancelText.isEmpty()) ? qtr("No") : cancelText;
+    // (No was the default button)
+    message.defaultAccept = false;
+    return execRedesignMessage(message) == RedesignMessage::Accepted;
 }
 
 void DialogsProvider::mediaCodecDialog()
@@ -504,25 +536,244 @@ QMessageBox::StandardButton DialogsProvider::messageDialog(const QString &text,
                                                            const QMessageBox::StandardButton defaultButton,
                                                            const QMessageBox::Icon icon)
 {
-    QMessageBox messageBox;
+    // The buttons of the message box as the two of the redesign's dialogs:
+    // the action on the right, the other one on the left
+    struct Choice { QMessageBox::StandardButton button; const char *text; };
+    static const Choice actions[] = {
+        { QMessageBox::Ok, N_("OK") }, { QMessageBox::Yes, N_("Yes") },
+        { QMessageBox::Save, N_("Save") }, { QMessageBox::Retry, N_("Retry") },
+        { QMessageBox::Apply, N_("Apply") }, { QMessageBox::Open, N_("Open") },
+        { QMessageBox::YesToAll, N_("Yes to All") }, { QMessageBox::Ignore, N_("Ignore") },
+        { QMessageBox::Close, N_("Close") },
+    };
+    static const Choice others[] = {
+        { QMessageBox::Cancel, N_("Cancel") }, { QMessageBox::No, N_("No") },
+        { QMessageBox::Abort, N_("Abort") }, { QMessageBox::Discard, N_("Discard") },
+        { QMessageBox::NoToAll, N_("No to All") }, { QMessageBox::Close, N_("Close") },
+    };
 
-    messageBox.setText(text);
+    QMessageBox::StandardButton accept = QMessageBox::NoButton;
+    QMessageBox::StandardButton reject = QMessageBox::NoButton;
+    RedesignMessage message;
+    for (const Choice &choice : actions)
+    {
+        if (buttons.testFlag(choice.button))
+        {
+            accept = choice.button;
+            message.acceptText = qtr(choice.text);
+            break;
+        }
+    }
+    for (const Choice &choice : others)
+    {
+        if (choice.button != accept && buttons.testFlag(choice.button))
+        {
+            reject = choice.button;
+            message.cancelText = qtr(choice.text);
+            break;
+        }
+    }
+    // no buttons: OK, alone
+    if (accept == QMessageBox::NoButton)
+    {
+        accept = QMessageBox::Ok;
+        message.acceptText = qtr("OK");
+    }
+    message.cancelVisible = reject != QMessageBox::NoButton;
 
-    if (!title.isEmpty())
-        messageBox.setWindowTitle(title);
+    message.title = title;
+    if (message.title.isEmpty())
+        message.title = (icon == QMessageBox::Warning || icon == QMessageBox::Critical)
+                        ? qtr("Error") : qtr("VLC media player");
+    message.heading = text;
+    message.defaultAccept = defaultButton == QMessageBox::NoButton || defaultButton == accept;
 
-    if (icon != QMessageBox::NoIcon)
-        messageBox.setIcon(icon);
+    const int answer = execRedesignMessage(message);
+    if (answer == RedesignMessage::Accepted)
+        return accept;
+    // closed (Escape, the close button): the other button, else the only one
+    return reject != QMessageBox::NoButton ? reject : accept;
+}
 
-    if (buttons != QMessageBox::NoButton)
-        messageBox.setStandardButtons(buttons);
+int DialogsProvider::showRedesignMessage(const RedesignMessage &message, QObject *context,
+                                         RedesignMessageCallback callback)
+{
+    const int id = ++m_lastMessageId;
+    PendingMessage &pending = m_messages[id];
+    pending.message = message;
+    pending.context = context;
+    pending.hasContext = context != nullptr;
+    pending.callback = std::move(callback);
 
-    if (defaultButton != QMessageBox::NoButton)
-        messageBox.setDefaultButton(defaultButton);
+    // without the interface of the redesign (skins, the dialogs only): a
+    // window of its own
+    if (!p_intf->p_mi || p_intf->b_isDialogProvider)
+        showRedesignMessageBox(id);
+    else if (m_messageHost)
+    {
+        pending.delivered = true;
+        emit redesignMessageRequested(m_messageHost, id, message.toVariantMap());
+    }
+    else
+        // at start, before the interface is loaded: shown once it is, else
+        // in a window of its own
+        boxUndeliveredMessages(10000);
+    return id;
+}
 
-    QVLCDialog::setWindowTransientParent(&messageBox, nullptr, p_intf);
+int DialogsProvider::execRedesignMessage(const RedesignMessage &message, QString *input)
+{
+    // in the window of the interface only when it shows: else an answer
+    // would be waited for from a hidden window (in the system tray,
+    // minimized)
+    QWindow *window = nullptr;
+    if (p_intf->p_mi && !p_intf->b_isDialogProvider && p_intf->p_compositor)
+        window = p_intf->p_compositor->interfaceMainWindow();
+    if (!m_messageHost || !window || !window->isVisible()
+        || (window->windowStates() & Qt::WindowMinimized))
+        return RedesignMessageBox::ask(p_intf, message, nullptr, input);
 
-    return static_cast<QMessageBox::StandardButton>(messageBox.exec());
+    QEventLoop loop;
+    int answer = RedesignMessage::Cancelled;
+    QString text;
+    bool answered = false;
+    const int id = showRedesignMessage(message, nullptr,
+                                       [&loop, &answer, &text, &answered](int a, const QString &t) {
+        answer = a;
+        text = t;
+        answered = true;
+        loop.quit();
+    });
+    if (!answered)
+        loop.exec(QEventLoop::DialogExec);
+    // the loop left otherwise (VLC quitting): the message is dropped, its
+    // callback pointing to this frame with it
+    if (!answered)
+    {
+        const auto it = m_messages.find(id);
+        if (it != m_messages.end())
+        {
+            m_messages.erase(it);
+            if (m_messageHost)
+                emit redesignMessageCancelled(m_messageHost, id);
+        }
+    }
+    if (input)
+        *input = text;
+    return answer;
+}
+
+void DialogsProvider::setRedesignMessageHost(QObject *host)
+{
+    if (!host || host == m_messageHost)
+        return;
+    // the messages the previous host shows go to this one
+    if (m_messageHost)
+    {
+        for (const auto &[id, pending] : m_messages)
+        {
+            if (pending.delivered && !pending.boxed)
+                emit redesignMessageCancelled(m_messageHost, id);
+        }
+    }
+    for (auto &entry : m_messages)
+    {
+        if (!entry.second.boxed)
+            entry.second.delivered = false;
+    }
+    m_messageHost = host;
+    // once the host is complete (its connections made)
+    QMetaObject::invokeMethod(this, &DialogsProvider::deliverRedesignMessages, Qt::QueuedConnection);
+}
+
+void DialogsProvider::releaseRedesignMessageHost(QObject *host)
+{
+    if (!host || host != m_messageHost)
+        return;
+    m_messageHost = nullptr;
+    bool waiting = false;
+    for (auto &entry : m_messages)
+    {
+        if (!entry.second.boxed)
+        {
+            entry.second.delivered = false;
+            waiting = true;
+        }
+    }
+    // a host coming back (the interface made again) shows them, else
+    // they get a window of their own
+    if (waiting)
+        boxUndeliveredMessages(3000);
+}
+
+void DialogsProvider::deliverRedesignMessages()
+{
+    if (!m_messageHost)
+        return;
+    std::vector<int> ids;
+    for (const auto &[id, pending] : m_messages)
+    {
+        if (!pending.delivered && !pending.boxed)
+            ids.push_back(id);
+    }
+    for (const int id : ids)
+    {
+        // (a slot may have answered, and so removed, messages)
+        const auto it = m_messages.find(id);
+        if (it == m_messages.end() || it->second.delivered || it->second.boxed)
+            continue;
+        if (!m_messageHost)
+            return;
+        it->second.delivered = true;
+        emit redesignMessageRequested(m_messageHost, id, it->second.message.toVariantMap());
+    }
+}
+
+void DialogsProvider::boxUndeliveredMessages(int delay)
+{
+    QTimer::singleShot(delay, this, [this]() {
+        std::vector<int> ids;
+        for (const auto &[id, pending] : m_messages)
+        {
+            if (!pending.delivered && !pending.boxed)
+                ids.push_back(id);
+        }
+        for (const int id : ids)
+            showRedesignMessageBox(id);
+    });
+}
+
+void DialogsProvider::showRedesignMessageBox(int id)
+{
+    const auto it = m_messages.find(id);
+    if (it == m_messages.end() || it->second.boxed)
+        return;
+    it->second.delivered = true;
+    it->second.boxed = true;
+
+    auto *box = new RedesignMessageBox(p_intf, it->second.message);
+    box->setAttribute(Qt::WA_DeleteOnClose);
+    box->setWindowModality(Qt::ApplicationModal);
+    box->setInterfaceTransientParent();
+    const QPointer<RedesignMessageBox> guard(box);
+    connect(box, &QDialog::finished, this, [this, id, guard]() {
+        if (guard)
+            answerRedesignMessage(id, guard->answer(), guard->inputText());
+    });
+    box->show();
+}
+
+void DialogsProvider::answerRedesignMessage(int id, int answer, const QString &input)
+{
+    const auto it = m_messages.find(id);
+    if (it == m_messages.end())
+        return;
+    PendingMessage pending = std::move(it->second);
+    m_messages.erase(it);
+    if (pending.hasContext && !pending.context)
+        return;
+    if (pending.callback)
+        pending.callback(answer, input);
 }
 
 void DialogsProvider::playlistsDialog( const QVariantList & medias, MLPlaylistListModel::PlaylistType type )
@@ -544,7 +795,10 @@ void DialogsProvider::podcastConfigureDialog()
 
 void DialogsProvider::pluginDialog()
 {
-    toggleDialogVisible(m_pluginDialog);
+    if( p_intf->p_mi && !p_intf->b_isDialogProvider )
+        emit pluginsRequested();
+    else
+        toggleDialogVisible(m_pluginDialog);
 }
 
 void DialogsProvider::epgDialog()

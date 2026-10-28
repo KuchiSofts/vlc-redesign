@@ -40,6 +40,20 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
     Reset Preferences), as a frameless dialog of the same look;
   - before the interface exists: "VLC Redesign could not start" (invalid options, no plugins) and the Windows
     version check, in a small window of the same design, dark or light as Windows is.
+- **The classic windows have the redesign's title bar** (Open, Convert, Media Information, Messages, Bookmarks,
+  Advanced preferences, VLM, Program Guide, extensions…): the dark bar of the dialogs with the title in Inter and
+  the redesign's icons, minimize and maximize only where the window has them. Moving, snapping, double-click to
+  maximize, resizing from every edge, the shadow and the rounded corners of Windows 11 work as before.
+- **Go to Time, Plugins and extensions, Media Statistics and Folder information are redrawn** as dialogs of the
+  redesign, opened from the same places:
+  - *Go to Time* (Ctrl+T) takes a time as the control bar does (1:02:10, 62:10 or 130), with *Start* to go back to
+    the beginning;
+  - *Plugins and extensions* lists the modules, searchable and sorted by name, capability or score (their
+    description on hover), and the Lua extensions with their version, author and link;
+  - *Media Statistics*, new in the Tools menu: input, video and audio live, with a graph of the input bitrate over
+    the last two minutes, and a button to turn statistics on when they're off;
+  - *Folder information* (Info in a folder's menu, which only opened File Explorer): where the folder is, its date
+    and size, and how many files, videos, music, subtitles and folders it holds.
 
 ### Fixed
 
@@ -97,6 +111,13 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   `messageDialog()` and `getTextDialog()` go through it and keep their answers. Before Qt, `bin/winvlc_message.c`
   draws the same design with GDI and DWM (linked with `dwmapi` and `gdi32`). The extension and fingerprint windows
   get `RedesignWidgetTheme`.
+- Title bars: `util/redesign_window_frame.cpp`, installed by `RedesignWidgetTheme` on every classic window: a
+  widget bar over the window's top contents margin; on Windows a native event filter takes the caption out of the
+  frame (`WM_NCCALCSIZE`) and hit-tests the bar as the caption (`WM_NCHITTEST`), as `CSDWin32EventHandler` does for
+  the main window. Other systems keep their title bar.
+- Tool windows: `dialogs/dialogs/redesign_tools.cpp` (`MediaStatistics`, `PluginListModel`, `ExtensionInfoModel`,
+  `FolderInformation`), the dialogs in `SetupDialogs.qml`; `DialogsProvider::gotoTimeDialog()`, `pluginDialog()`,
+  `statisticsDialog()` and `folderInfoDialog()` open the classic windows only without the interface (skins).
 - Merged VLC master up to `6836ae77ae` (2026-10-27), 110 commits ([#8](https://github.com/KuchiSofts/vlc-redesign/issues/8)):
   upstream's own fix for stopping the Windows audio output under its lock, the playlist recovery question shown
   without blocking, and the rest of upstream's work.

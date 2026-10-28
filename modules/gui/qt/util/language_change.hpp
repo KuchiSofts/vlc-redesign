@@ -85,6 +85,35 @@ inline void applyLanguageFonts(const QLocale &locale)
     for (const QChar::Script script : { QChar::Script_Arabic, QChar::Script_Hebrew, QChar::Script_Georgian,
                                         QChar::Script_Armenian })
         set(script, segoe);
+#elif QT_VERSION >= QT_VERSION_CHECK(6, 8, 0) && defined(__APPLE__)
+    // macOS: Core Text finds a font for every script, but the Han
+    // characters follow the system's language; the interface language
+    // picks the fonts of its own (the other scripts keep the system's)
+    QStringList han, kana, hangul;
+    switch (locale.language())
+    {
+    case QLocale::Chinese:
+        han = locale.script() == QLocale::TraditionalHanScript
+            ? QStringList{ QStringLiteral("PingFang TC") }
+            : QStringList{ QStringLiteral("PingFang SC") };
+        break;
+    case QLocale::Japanese:
+        han = kana = { QStringLiteral("Hiragino Sans") };
+        break;
+    case QLocale::Korean:
+        han = hangul = { QStringLiteral("Apple SD Gothic Neo") };
+        break;
+    default:
+        break;
+    }
+    const auto set = [](QChar::Script script, const QStringList &families) {
+        if (QFontDatabase::applicationFallbackFontFamilies(script) != families)
+            QFontDatabase::setApplicationFallbackFontFamilies(script, families);
+    };
+    set(QChar::Script_Han, han);
+    set(QChar::Script_Hiragana, kana);
+    set(QChar::Script_Katakana, kana);
+    set(QChar::Script_Hangul, hangul);
 #else
     Q_UNUSED(locale);
 #endif

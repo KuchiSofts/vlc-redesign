@@ -72,12 +72,21 @@ const char sumsSignatureName[] = "SHA256SUMS.txt.sig";
 // x64 copy never takes an ARM64 file or the other way round, even when it
 // runs emulated. The x64 small updates keep the name they had before ARM64
 // (the copies already installed look for it).
-#if defined(_M_ARM64) || defined(__aarch64__)
+#if defined(_WIN32) && (defined(_M_ARM64) || defined(__aarch64__))
 const char installerSuffix[] = "-winarm64-setup.exe";
 const char deltaInfix[] = "-winarm64";
-#else
+#elif defined(_WIN32)
 const char installerSuffix[] = "-win64-setup.exe";
 const char deltaInfix[] = "";
+#elif defined(__APPLE__)
+// macOS installs nothing from here (no installer, no small update): the
+// release page, and only for a release that has the disk image of this
+// Mac's architecture
+# if defined(__aarch64__) || defined(__arm64__)
+const char ownPackageSuffix[] = "-macos-arm64.dmg";
+# else
+const char ownPackageSuffix[] = "-macos-x86_64.dmg";
+# endif
 #endif
 
 #ifndef NDEBUG
@@ -646,9 +655,14 @@ void RedesignUpdater::onRelease(int status, const QByteArray &body)
     m_deltaSize = 0;
     m_sumsUrl.clear();
     m_sigUrl.clear();
+#ifdef _WIN32
     // the small update from this very version, if the release has one
     const QString deltaName = QStringLiteral("vlc-redesign-%1%2-delta-from-%3.vrdelta")
                                   .arg(m_latestVersion, QLatin1String(deltaInfix), currentVersion());
+#endif
+#ifdef __APPLE__
+    bool ownPackage = false;
+#endif
     for (const QJsonValue asset : release.value(QLatin1String("assets")).toArray()) {
         const QJsonObject a = asset.toObject();
         const QString name = a.value(QLatin1String("name")).toString();
@@ -656,7 +670,13 @@ void RedesignUpdater::onRelease(int status, const QByteArray &body)
         const qint64 size = a.value(QLatin1String("size")).toInteger();
         if (!trustedUrl(url))
             continue;
-        if (name.endsWith(QLatin1String(installerSuffix), Qt::CaseInsensitive)) {
+        if (name.compare(QLatin1String(sumsName), Qt::CaseInsensitive) == 0) {
+            m_sumsUrl = url;
+        } else if (name.compare(QLatin1String(sumsSignatureName), Qt::CaseInsensitive) == 0) {
+            m_sigUrl = url;
+        }
+#ifdef _WIN32
+        else if (name.endsWith(QLatin1String(installerSuffix), Qt::CaseInsensitive)) {
             m_installerUrl = url;
             m_installerName = name;
             m_installerSize = size;
@@ -664,13 +684,24 @@ void RedesignUpdater::onRelease(int status, const QByteArray &body)
             m_deltaUrl = url;
             m_deltaName = name;
             m_deltaSize = size;
-        } else if (name.compare(QLatin1String(sumsName), Qt::CaseInsensitive) == 0) {
-            m_sumsUrl = url;
-        } else if (name.compare(QLatin1String(sumsSignatureName), Qt::CaseInsensitive) == 0) {
-            m_sigUrl = url;
         }
+#else
+        // (the files of Windows are never offered elsewhere)
+        Q_UNUSED(size);
+# ifdef __APPLE__
+        else if (name.endsWith(QLatin1String(ownPackageSuffix), Qt::CaseInsensitive))
+            ownPackage = true;
+# endif
+#endif
     }
 
+#ifdef __APPLE__
+    // a release made for the other systems only is not an update of this one
+    if (!ownPackage) {
+        setState(UpToDate);
+        return;
+    }
+#endif
     setState(versionLess(currentVersion(), m_latestVersion) ? Available : UpToDate);
 }
 

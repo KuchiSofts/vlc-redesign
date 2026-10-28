@@ -12,6 +12,10 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-10-28):
 
+- 🟡 **macOS** (roadmap step 7, branch `feature/macos`): `macos-build.sh` (prebuilt contribs, Qt 6.8.3, the Qt
+  interface only, `VLC Redesign.app`, `vlc-redesign-X.Y.Z-macos-<arch>.dmg`), `build-macos.yml` on Apple Silicon and
+  Intel runners with a launch test, macOS fixes in the code (title bar, menu bar, ⌘ hotkeys, fonts, updater)
+  ([§9](#macos), `extras/juxtopposed/macos/README.md`). Left: push, the first CI run and its fixes, decision 3.
 - 🟡 **Windows on ARM64** (branch `feature/winarm64`): the package builds (`win64-docker.ps1 -Arch aarch64`, every
   binary ARM64), `make-release.ps1 -Arch aarch64` makes the installer, zip and small updates, the updater keeps
   each architecture to its own files ([§9](#windows-on-arm64)). Left: merge, the ARM64 smoke test of the Windows
@@ -119,7 +123,7 @@ counted from this document's own tables and checklists (column *From*); ⚪ idea
 |-----------------|----------------------|---------|-------|----------------------------------------|
 | Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 91/97   | 93 %  | [§8](#8-next-release-030) checklists   |
 | Linux           | 🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 1/7     | 14 %  | [§9](#linux)                           |
-| macOS           | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/4     | 0 %   | [§9](#macos)                           |
+| macOS           | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/5     | 0 %   | [§9](#macos)                           |
 | Windows ARM64   | 🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜ | 1/3     | 33 %  | [§9](#windows-on-arm64)                |
 | Android         | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/7     | 0 %   | [§9](#android-phones-tablets-tv)       |
 | Samsung TV      | 🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ | 2/7     | 28 %  | [§9](#samsung-smart-tv-tizen)          |
@@ -237,7 +241,7 @@ What comes first, and why. Each step starts when what it needs is done.
 | 4  | Release 0.3.0 and announce it (0.3.0 and 0.3.1 out 2026-10-25; 0.3.2 next) | quality gates, steps 1 and 3 | Users get the fixes; the community side is ready for them        | 🟡     |
 | 5  | `platforms.yml`, platform bar, website (built 2026-10-28; Pages to enable) | step 3                     | In place before a second platform exists, so it shows everywhere     | 🟡     |
 | 6  | Design tokens exported (`design/`: tokens, icons, fonts) — `design-1.0` and its CI check in (2026-10-28); left: SVG for the 116 PNG glyphs, the sync workflow to the sister repositories, the §6 differences | step 2 (values checked) | Every other platform reads them; no copying errors | 🟡 |
-| 7  | Linux, then macOS, then Windows ARM64                                 | CI; decision 3 for macOS        | Same code base: the cheapest new platforms first                     | 🔴     |
+| 7  | Linux, then macOS, then Windows ARM64 (macOS started 2026-10-28: build script and CI, first run after the push) | CI; decision 3 for macOS        | Same code base: the cheapest new platforms first                     | 🟡     |
 | 8  | Android                                                               | step 6, decision 6              | The largest new audience (phones and Android TV)                     | 🔴     |
 | 9  | Samsung TV receiver                                                   | step 6, decision 5              | Builds on the casting work and the real-TV testing                   | 🔴     |
 | 10 | iPhone, iPad, Apple TV                                                | step 8, decision 3              | Same approach as Android, reusing its screens                        | 🔴     |
@@ -1098,9 +1102,25 @@ Tracks with checklists; a version number comes with the first published build.
 
 ### macOS
 
-- 🔴 Native build on Apple Silicon and Intel (GitHub-hosted runners), two .dmg or one universal
-- 🔴 Signed and notarized (decision 3)
-- 🔴 Menu bar, media keys, Now Playing, VideoToolbox, updates
+Started 2026-10-28 (branch `feature/macos`); the analysis, decisions and what is left:
+[`extras/juxtopposed/macos/README.md`](../extras/juxtopposed/macos/README.md). Not run on a Mac yet.
+
+- 🟡 Native build on Apple Silicon and Intel: `extras/juxtopposed/macos-build.sh` (VideoLAN's prebuilt macOS
+  contribs of the newest upstream contrib commit, the official Qt 6.8.3 by aqtinstall — the contribs of macOS have
+  no Qt —, `--disable-macosx --enable-qt` so the Qt interface is the only one, `VLC Redesign.app` with
+  `macdeployqt`, every library found inside the bundle); two disk images, not one universal app (contribs per
+  architecture; `lipo` later if wanted). The workflow `build-macos.yml` (`macos-14` arm64, `macos-15-intel`
+  x86_64: GitHub retired `macos-13`) builds both on every pull request, uploads the `.dmg` and runs
+  `ci/macos-smoke.sh` (headless playback, the Qt interface for 10 s, no crash report, no QML warning);
+  `continue-on-error` until the first green run, which comes after the push
+- 🟡 Bundle `org.kuchisofts.vlcredesign` (its settings, library and caches apart from VLC's), macOS 12+, upstream's
+  file types imported with the rank *Alternate*, the icon from the redesign's logo (`macos/AppIcon.svg`)
+- 🔴 Signed and notarized (decision 3): ad hoc until then (Gatekeeper: *Open Anyway* in Privacy & Security); the
+  script already signs with the hardened runtime and notarizes when given a Developer ID
+- 🟡 Menu bar (a minimal native one: About, Preferences, Quit, open, help), the system title bar by default, ⌘
+  hotkeys reach VLC as `Command+`, the CJK fonts of the interface language, the updater shows the release page and
+  only for a release with this Mac's disk image (all in code, not run on a Mac); 🔴 media keys, Now Playing,
+  VideoToolbox and the video in the window checked, the dock menu, in-app updates
 - 🔴 Pixel check of every frame
 
 ### Windows on ARM64

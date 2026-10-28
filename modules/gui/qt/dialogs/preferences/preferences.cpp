@@ -41,7 +41,7 @@
 #include <QGroupBox>
 #include <QRadioButton>
 #include <QPushButton>
-#include <QMessageBox>
+#include "widgets/native/redesign_message_box.hpp"
 #include <QDialogButtonBox>
 #include <QStackedWidget>
 #include <QSplitter>
@@ -388,14 +388,12 @@ void PrefsDialog::cancel()
 /* Reset all the preferences, when you click the button */
 void PrefsDialog::reset()
 {
-    int ret = QMessageBox::question(
-                 this,
+    /* (OK was the default button: Return resets) */
+    if( RedesignMessageBox::question(
+                 p_intf, this,
                  qtr( "Reset Preferences" ),
                  qtr( "Are you sure you want to reset your VLC media player preferences?" ),
-                 QMessageBox::Ok | QMessageBox::Cancel,
-                 QMessageBox::Ok);
-
-    if( ret == QMessageBox::Ok )
+                 qtr( "Reset" ), true ) )
     {
         /* VLC goes on with the defaults at once, as with Reset all
          * settings of the settings of the interface (ConfigModel::resetAll) */

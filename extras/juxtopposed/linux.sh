@@ -37,6 +37,8 @@ if ! pkg-config --atleast-version=0.14.0 medialibrary; then
     make -j"$jobs" .medialibrary > ../logs/medialibrary.log 2>&1
     cd /work
 fi
+# DEPS_ONLY=1: the dependencies only, for linux-qt68.sh (the CI build)
+[ "${DEPS_ONLY:-0}" = 1 ] && exit 0
 
 ./bootstrap > build-m0/logs/bootstrap.log 2>&1
 cd build-m0/linux

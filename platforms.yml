@@ -43,10 +43,26 @@ platforms:
     short: Linux
     status: in-progress
     os: linux
-    requires: glibc 2.35 (Ubuntu 22.04, Debian 12, Fedora 36 or later)
+    requires: glibc 2.38 (Ubuntu 24.04, Debian 13, Fedora 39 or later), x86_64 or ARM64
     repository: KuchiSofts/vlc-redesign
     page: https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/PLATFORMS.md
-    notes: Builds from the same code; AppImage, Flatpak, deb, rpm and tar.gz planned
+    notes: AppImage, deb, rpm and tar.xz for x86_64 and ARM64 in testing; Flatpak next
+    # shown once a version is published
+    downloads:
+      - label: AppImage
+        file: vlc-redesign-{version}-x86_64.AppImage
+      - label: deb
+        file: vlc-redesign_{version}_amd64.deb
+      - label: rpm
+        file: vlc-redesign-{version}-1.x86_64.rpm
+      - label: tar.xz
+        file: vlc-redesign-{version}-linux-x86_64.tar.xz
+      - label: AppImage ARM64
+        file: vlc-redesign-{version}-aarch64.AppImage
+      - label: deb ARM64
+        file: vlc-redesign_{version}_arm64.deb
+      - label: rpm ARM64
+        file: vlc-redesign-{version}-1.aarch64.rpm
 
   - id: macos
     name: macOS

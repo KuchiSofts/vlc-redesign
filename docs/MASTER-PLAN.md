@@ -199,7 +199,7 @@ The desktop program has version numbers; each other platform gets its own when i
 | Platform   | Minimum                                                    | Reason                                         |
 |------------|------------------------------------------------------------|------------------------------------------------|
 | Windows    | Windows 10 1809, x64                                       | Qt 6.8 and VLC 4 (an older Windows gets a message) |
-| Linux      | glibc 2.35 (Ubuntu 22.04, Debian 12, Fedora 36+); Flatpak   | Qt 6.8 and the VLC 4 build image               |
+| Linux      | glibc 2.38 (Ubuntu 24.04, Debian 13, Fedora 39+); Flatpak   | Qt 6.8 and the VLC 4 build image (Ubuntu 24.04) |
 | macOS      | 12 Monterey                                                | Qt 6.8                                         |
 | Android    | 8.0 (API 26)                                               | keeps blur and rounded clipping cheap          |
 | Samsung TV | Tizen 3.0 (2017 models, such as the UE55MU8000)             | web apps with the AVPlay player                |
@@ -1068,10 +1068,31 @@ Tracks with checklists; a version number comes with the first published build.
 - 🟢 X11 CSD: drag to move, double-click to maximize and restore; 🟡 resizing from an edge under openbox with
   synthetic input moved the window instead (to check on a real desktop)
 - 🟡 Xvfb (no DRI3) can't show VA-API pictures directly: copied to software (1080p 84 % CPU with llvmpipe)
-- 🔴 Docker build in CI
-- 🔴 Packages: AppImage, Flatpak (Flathub), .deb, .rpm, .tar.gz
+- 🟡 Docker build in CI: `.github/workflows/build-linux.yml` builds on `ubuntu-24.04` (x86_64) and
+  `ubuntu-24.04-arm` (aarch64), makes the bundle and the packages, then on a clean runner installs the .deb with apt
+  next to the distribution's `vlc`, runs `vlc-redesign --version` and plays a clip to its end headless (dummy
+  interface, video and audio), does the same with the AppImage (`--appimage-extract-and-run`) and with the .rpm in
+  Fedora 44 (dnf), and removes the .deb. Runs once the branch is pushed; `linux-qt68.Dockerfile` takes Qt's ARM64
+  build (`linux_gcc_arm64`) on aarch64, `linux.sh` has `DEPS_ONLY=1`
+- 🟡 Packages (2026-10-28, branch `feature/linux-pkg`): `linux-packages.sh [--arch x86_64|aarch64]` makes from the
+  bundle `vlc-redesign-X.Y.Z-ARCH.AppImage` (+ `.zsync`), `vlc-redesign_X.Y.Z_amd64.deb`,
+  `vlc-redesign-X.Y.Z-1.x86_64.rpm`, `vlc-redesign-X.Y.Z-linux-ARCH.tar.xz` and `SHA256SUMS-linux-ARCH.txt`, with
+  appimagetool 1.9.1 (type2 runtime 20251108) and nfpm 2.47.0, downloaded and checked by SHA-256. The .deb and .rpm
+  put VLC in `/opt/vlc-redesign` and the command `/usr/bin/vlc-redesign`, the desktop entry, metainfo and icons as
+  `org.kuchisofts.VLCRedesign`: no file of the distribution's `vlc`. Dependencies from the libraries the bundle
+  takes from the system (glibc 2.38, libstdc++ of GCC 13, GL/EGL/GBM/DRM, VA-API, VDPAU, udev, systemd); the rpm
+  asks for sonames and provides nothing (its bundled Qt doesn't satisfy other packages). x86_64 made and checked
+  here (dpkg-deb, rpm in Fedora, the AppImage unpacked): AppImage 165 MB, .deb 155 MB, .rpm 155 MB, tarball 126 MB.
+  🔴 Installed and run on GitHub, ARM64 built there
+- 🟡 Flatpak: `flatpak/org.kuchisofts.VLCRedesign.yml` written by the script (KDE 6.8 runtime; libebml, libmatroska,
+  libdvbpsi, taglib, medialibrary of the contribs; network, Wayland/X11, PulseAudio, DRI, the video and music
+  folders, `/media`, screen saver and MPRIS only). 🔴 Not built yet (flatpak-builder), then Flathub
+- 🟡 glibc 2.38 or later (Ubuntu 24.04, Debian 13, Fedora 39): built on Ubuntu 24.04. Ubuntu 22.04 and Debian 12
+  need a build on an older base
 - 🔴 X11, Wayland; PipeWire, PulseAudio; VA-API, VDPAU; Intel, AMD, NVIDIA
-- 🔴 Updates (AppImage update information, Flatpak), file associations (.desktop), casting firewall notes
+- 🟡 Updates: the AppImage carries `gh-releases-zsync|KuchiSofts|vlc-redesign|latest|vlc-redesign-*-ARCH.AppImage.zsync`
+  (AppImageUpdate); file associations: the desktop entry has VLC's MIME types. 🔴 The in-app updater on Linux,
+  casting firewall notes
 - 🔴 Tested on Ubuntu, Fedora, Debian, Arch (VMs and a real PC)
 - 🔴 Pixel check of every frame
 
@@ -1370,7 +1391,7 @@ Windows 0.2.6 · Linux soon · macOS soon · Android soon · Samsung TV soon · 
 |---------------|-----------------------------------------------------------------------------------------------|
 | Windows       | `vlc-redesign-X.Y.Z-win64-setup.exe`, `vlc-redesign-X.Y.Z-win64.zip`, `.vrdelta` small updates, `SHA256SUMS.txt`, `SHA256SUMS.txt.sig` |
 | Windows ARM64 | `vlc-redesign-X.Y.Z-winarm64-setup.exe`, `vlc-redesign-X.Y.Z-winarm64.zip`                    |
-| Linux         | `.AppImage`, `.flatpak` (and Flathub), `.deb`, `.rpm`, `.tar.gz`                              |
+| Linux         | `vlc-redesign-X.Y.Z-x86_64.AppImage` (+ `.zsync`), `vlc-redesign_X.Y.Z_amd64.deb`, `vlc-redesign-X.Y.Z-1.x86_64.rpm`, `vlc-redesign-X.Y.Z-linux-x86_64.tar.xz`, `SHA256SUMS-linux-x86_64.txt`; the same for `aarch64` (`arm64` .deb); Flathub |
 | macOS         | `vlc-redesign-X.Y.Z-macos-arm64.dmg`, `vlc-redesign-X.Y.Z-macos-x86_64.dmg`                   |
 | Android       | `vlc-redesign-X.Y.Z-android-arm64.apk` (and armv7, x86_64), `.aab`                            |
 | Samsung TV    | `vlc-redesign-tv-X.Y.Z.wgt`                                                                   |

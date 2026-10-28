@@ -41,8 +41,8 @@
       "available": false,
       "bar": "Linux soon",
       "os": "linux",
-      "requires": "glibc 2.35 (Ubuntu 22.04, Debian 12, Fedora 36 or later)",
-      "notes": "Builds from the same code; AppImage, Flatpak, deb, rpm and tar.gz planned",
+      "requires": "glibc 2.38 (Ubuntu 24.04, Debian 13, Fedora 39 or later), x86_64 or ARM64",
+      "notes": "AppImage, deb, rpm and tar.xz for x86_64 and ARM64 in testing; Flatpak next",
       "page": "https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/PLATFORMS.md",
       "repository": "KuchiSofts/vlc-redesign",
       "downloads": []

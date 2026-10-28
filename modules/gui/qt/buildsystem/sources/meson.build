@@ -43,6 +43,8 @@ qt_plugin_sources = files(
     '../../dialogs/bookmarks/bookmarks.hpp',
     '../../dialogs/dialogs/dialogmodel.cpp',
     '../../dialogs/dialogs/dialogmodel.hpp',
+    '../../dialogs/dialogs/redesign_tools.cpp',
+    '../../dialogs/dialogs/redesign_tools.hpp',
     '../../dialogs/dialogs_provider.cpp',
     '../../dialogs/dialogs_provider.hpp',
     '../../dialogs/epg/EPGChannels.cpp',

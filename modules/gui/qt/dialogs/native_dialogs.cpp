@@ -153,7 +153,8 @@ void DialogsProvider::nativeEffectsDialog(int page)
 
 void DialogsProvider::setRedesignDialogVisible(const QString& name, bool visible)
 {
-    if (name != "prefsDialog" && name != "firstRunDialog" && name != "extendedDialog")
+    if (name != "prefsDialog" && name != "firstRunDialog" && name != "extendedDialog"
+        && name != "gotoTimeDialog" && name != "pluginDialog")
         return;
     const bool previous = m_redesignDialogs.contains(name);
     if (visible) m_redesignDialogs.insert(name);
@@ -161,5 +162,7 @@ void DialogsProvider::setRedesignDialogVisible(const QString& name, bool visible
     if (previous == visible) return;
     if (name == "prefsDialog") emit prefsDialogVisibleChanged();
     else if (name == "firstRunDialog") emit firstRunDialogVisibleChanged();
+    else if (name == "gotoTimeDialog") emit gotoTimeDialogVisibleChanged();
+    else if (name == "pluginDialog") emit pluginDialogVisibleChanged();
     else emit extendedDialogVisibleChanged();
 }

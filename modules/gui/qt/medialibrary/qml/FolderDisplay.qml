@@ -133,9 +133,9 @@ Widgets.PageExt {
         { text: qsTr("Resync"), icon: "sync",
           action: () => { if (MainCtx.mediaLibraryAvailable) MainCtx.mediaLibrary.reload() },
           enabled: () => MainCtx.mediaLibraryAvailable },
-        // the folder opens in the file manager
+        // what the folder holds (Folder information)
         { text: qsTr("Info"), icon: "info",
-          action: (dataList) => Qt.openUrlExternally(root._folderOf(dataList)) }
+          action: (dataList) => DialogsProvider.folderInfoDialog(root._folderOf(dataList)) }
     ]
 
     Widgets.RedesignContextMenu {

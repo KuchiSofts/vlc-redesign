@@ -60,6 +60,9 @@ changed without a restart. The full list is in the [changelog](CHANGELOG.md).
 - 📋 Linux (AppImage, Flatpak, .deb, .rpm)
 - 📋 macOS (Apple Silicon and Intel)
 - 📋 Windows on ARM64
+- 🔨 The design for every platform: its colours, sizes, fonts and icons in [`design/`](design/README.md)
+  (`design-1.0`), with CSS, Android and Swift files made from them and a check on every pull request that the
+  Windows app still uses the same values
 - 💡 Android (phones, tablets, Android TV), Samsung TV receiver, iPhone and iPad
 
 ## Staying close to VLC

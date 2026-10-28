@@ -123,6 +123,21 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Technical
 
+- **macOS port started.** `extras/juxtopposed/macos-build.sh` builds VLC Redesign on a Mac: VideoLAN's prebuilt
+  macOS contribs of the newest upstream contrib commit (from source when none), the official Qt 6.8.3 by
+  aqtinstall (upstream's macOS contribs have no Qt), VLC configured by upstream's `configure.sh` with
+  `--disable-macosx --enable-qt` (the native interface has the higher priority) and libcurl of macOS, then
+  `VLC Redesign.app` (`org.kuchisofts.vlcredesign`, macOS 12+, Qt deployed by `macdeployqt`, every library found
+  inside the bundle, the icon drawn from the redesign's logo) and `vlc-redesign-X.Y.Z-macos-<arch>.dmg`. It signs
+  ad hoc, or with a Developer ID, the hardened runtime and notarization when given one (decision 3).
+  `make-info-plist.py` takes upstream's file types, imported rather than exported, with the rank *Alternate*.
+  The workflow `build-macos.yml` builds both architectures on every pull request (`macos-14`, `macos-15-intel`:
+  GitHub retired `macos-13`) and runs `ci/macos-smoke.sh` (headless playback, the Qt interface for 10 s, no crash,
+  no QML warning); it doesn't block a pull request yet. On macOS the window has the system's title bar by
+  default, a minimal menu bar sits at the top of the screen, ⌘ reaches VLC's hotkeys as `Command+` (they never
+  matched with the Qt interface), CJK text takes the fonts of the interface language, and the updater never
+  offers a Windows file outside Windows. The analysis and what is left: `extras/juxtopposed/macos/README.md`.
+  Not run on a Mac yet.
 - **Windows on ARM64 build.** `win64-docker.ps1 -Arch aarch64` builds the redesign for ARM64 Windows in VideoLAN's
   llvm-mingw image (`winarm64.Dockerfile`, `vlc-debian-llvm-ucrt:20260611225331`, the image of upstream's
   `win64-arm-llvm` job) with that job's prebuilt contribs (Qt included), UCRT and the Windows 10 API

@@ -51,12 +51,12 @@ platforms:
   - id: macos
     name: macOS
     short: macOS
-    status: planned
+    status: in-progress
     os: macos
     requires: macOS 12 Monterey, Apple Silicon or Intel
     repository: KuchiSofts/vlc-redesign
     page: https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/PLATFORMS.md
-    notes: Builds from the same code; a dmg for Apple Silicon and one for Intel
+    notes: Builds from the same code; a dmg for Apple Silicon and one for Intel, built in CI
 
   - id: windows-arm64
     name: Windows on ARM64

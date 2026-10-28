@@ -13,7 +13,7 @@
 |---|---|---|---|
 | Windows | 🟢 released | 0.3.1 · 2026-10-25 | [installer](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.3.1/vlc-redesign-0.3.1-win64-setup.exe) · [portable](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.3.1/vlc-redesign-0.3.1-win64.zip) |
 | Linux | 🟡 in progress | — | coming soon |
-| macOS | 🔴 planned | — | coming soon |
+| macOS | 🟡 in progress | — | coming soon |
 | Windows ARM64 | 🔴 planned | — | coming soon |
 | Android | ⚪ research | — | coming soon |
 | Samsung TV | ⚪ research | — | coming soon |

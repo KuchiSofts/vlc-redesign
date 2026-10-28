@@ -62,7 +62,9 @@ the website and the *Also on* line of the release notes and of About are made fr
 
 - 🔨 A website for every platform (GitHub Pages): it offers the download for your system and lists the others
 - 🔨 Linux (AppImage, Flatpak, .deb, .rpm)
-- 📋 macOS (Apple Silicon and Intel)
+- 🔨 macOS (Apple Silicon and Intel): the build, the app and its disk image are written and built by GitHub's Macs
+  on every pull request; the first builds and a test on a Mac come before the first release, which is not signed
+  by Apple until there is a developer account (macOS then asks to allow it once)
 - 🔨 Windows on ARM64: the build, the installer, the zip and the updates are ready; a test on an ARM64 PC
   comes before the first release
 - 🔨 The design for every platform: its colours, sizes, fonts and icons in [`design/`](design/README.md)

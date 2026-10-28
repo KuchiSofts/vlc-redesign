@@ -48,7 +48,7 @@ changed without a restart. The full list is in the [changelog](CHANGELOG.md).
 
 - 💡 Subtitle lines marked on the seek bar
 - 💡 A *What's new* card after an update
-- 🔨 The accent colour following Windows': built (a *Windows accent* choice in Settings and the onboarding), in the next release
+- 🔨 The accent colour following Windows': built (*Follow the Windows accent color* in Settings > Appearance), in the next release
 
 ## Other platforms
 

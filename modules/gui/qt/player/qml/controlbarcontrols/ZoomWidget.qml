@@ -16,6 +16,8 @@ Widgets.ComboBoxExt {
     property bool paintOnly: false
     width: VLCStyle.dp(56, VLCStyle.scale)
     height: VLCStyle.dp(32, VLCStyle.scale)
+    // the names of the levels ("1:2 Half"...) were cut to the icon's width
+    popupWidth: Math.max(width, VLCStyle.dp(160, VLCStyle.scale))
     model: Player.zoom
     textRole: "display"
     currentIndex: -1

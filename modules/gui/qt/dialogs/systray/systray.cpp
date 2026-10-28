@@ -43,7 +43,7 @@ VLCSystray::VLCSystray(MainCtx* ctx, QObject* parent)
     if( m_ctx->useXmasCone() )
         iconVLC = QIcon::fromTheme( "vlc-xmas", QIcon( ":/logo/vlc128-xmas.png" ) );
     else
-        iconVLC = QIcon::fromTheme( "vlc", QIcon( ":/logo/vlc256.png" ) );
+        iconVLC = QIcon::fromTheme( "vlc", QIcon( ":/logo/vlc.svg" ) );
 
     setIcon(iconVLC);
     /* the name of what plays: the icon may come while a media plays ("Show
@@ -196,13 +196,13 @@ void VLCSystray::update()
     if( m_ctx->interfaceVisibility() != QWindow::Hidden )
     {
         m_menu->addAction(
-            QIcon( ":/logo/vlc16.png" ), qtr( "&Hide VLC media player in taskbar" ),
+            QIcon( ":/logo/vlc.svg" ), qtr( "&Hide VLC media player in taskbar" ),
             this, &VLCSystray::hideUpdateMenu);
     }
     else
     {
         m_menu->addAction(
-            QIcon( ":/logo/vlc16.png" ), qtr( "Sho&w VLC media player" ),
+            QIcon( ":/logo/vlc.svg" ), qtr( "Sho&w VLC media player" ),
             this, &VLCSystray::showUpdateMenu);
     }
     m_menu->addSeparator();

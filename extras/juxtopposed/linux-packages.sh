@@ -268,7 +268,7 @@ cat > "$share/metainfo/$id.metainfo.xml" <<EOF
   </releases>
 </component>
 EOF
-install -m 644 "$src/design/icons/svg/logo.svg" "$share/icons/hicolor/scalable/apps/$id.svg"
+install -m 644 "$src/share/icons/scalable/vlc.svg" "$share/icons/hicolor/scalable/apps/$id.svg"
 # PNG sizes drawn from the SVG by Qt (the image's Qt 6.8)
 cat > "$stage/svgicon.cpp" <<'EOF'
 #include <QGuiApplication>
@@ -305,7 +305,7 @@ for size in 16 22 24 32 48 64 128 256 512; do
     mkdir -p "$share/icons/hicolor/${size}x$size/apps"
     set -- "$@" "$size" "$share/icons/hicolor/${size}x$size/apps/$id.png"
 done
-LC_ALL=C.UTF-8 QT_QPA_PLATFORM=offscreen "$stage/svgicon" "$src/design/icons/svg/logo.svg" "$@"
+LC_ALL=C.UTF-8 QT_QPA_PLATFORM=offscreen "$stage/svgicon" "$src/share/icons/scalable/vlc.svg" "$@"
 printf '#!/bin/sh\n# VLC Redesign, installed in /opt/vlc-redesign\nexec /opt/vlc-redesign/vlc "$@"\n' > "$stage/launcher"
 chmod 755 "$stage/launcher"
 appimagetool_bin="$stage/tools/appimagetool/usr/bin"

@@ -50,12 +50,15 @@ T.ComboBox {
     property color color: theme.fg.primary
     property color bgColor: theme.bg.primary
     property color borderColor: theme.border
+    // the list can be wider than the box (a box showing only an icon), it
+    // then ends where the box ends
+    property real popupWidth: control.width
 
     Keys.priority: Keys.AfterItem
     Keys.onPressed: (event) => Navigation.defaultKeyAction(event)
 
     delegate: T.ItemDelegate {
-        width: control.width
+        width: control.popupWidth
         height: implicitContentHeight + topPadding + bottomPadding
         padding: VLCStyle.margin_xsmall
         // (the text under the one of the box: from its start)
@@ -111,7 +114,9 @@ T.ComboBox {
         // NOTE: This Popup should be on top of other Popup(s) most of the time.
         z: 100
 
-        width: control.width
+        width: control.popupWidth
+        // (wider than the box: it ends where the box ends, toward the window)
+        x: control.mirrored ? 0 : control.width - width
         padding: 1
 
         contentItem: Item {

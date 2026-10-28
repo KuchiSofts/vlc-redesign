@@ -288,6 +288,17 @@ static int Create(vlc_va_t *va, struct vlc_va_cfg *cfg)
     {
         case AV_CODEC_ID_AV1:
         {
+            /* FFmpeg 6 (Ubuntu 24.04's 6.1.1) crashes when the driver fails
+             * to decode an AV1 frame: with Intel's iHD 24.1 on a 13th
+             * generation Core every AV1 file failed so, and VLC with it
+             * (FFmpeg's own `ffmpeg -hwaccel vaapi` too). AV1 is decoded in
+             * software there (dav1d), as on a GPU without AV1. */
+            if (avcodec_version() < AV_VERSION_INT(61, 0, 0))
+            {
+                msg_Dbg(va, "no VA-API for AV1 with libavcodec %u.%u",
+                        avcodec_version() >> 16, (avcodec_version() >> 8) & 0xff);
+                return VLC_EGENERIC;
+            }
             /* Tested with ffmpeg @2d077f9, and few AV1 samples, 10 extra
              * pictures are needed to avoid deadlocks (cf. commit description)
              * when playing and seeking. */

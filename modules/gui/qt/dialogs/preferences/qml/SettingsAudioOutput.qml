@@ -130,7 +130,8 @@ ColumnLayout {
                 }
                 background: Rectangle {
                     color: VLCStyle.redesign.color("#191919", "#ababaa")
-                    border.color: VLCStyle.redesign.color("#373737", "#8e8e8d")
+                    // the frame of the main window
+                    border.color: VLCStyle.redesign.color(VLCStyle.redesign.windowBorder)
                 }
             }
         }

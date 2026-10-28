@@ -44,7 +44,6 @@
 #define REDESIGN_DWMWA_WINDOW_CORNER_PREFERENCE 33
 #define REDESIGN_DWMWA_BORDER_COLOR 34
 #define REDESIGN_DWMWCP_ROUND 2
-#define REDESIGN_DWMWA_COLOR_NONE 0xFFFFFFFE
 #define REDESIGN_DPI_PER_MONITOR_AWARE_V2 ((HANDLE)(LONG_PTR)-4)
 
 enum
@@ -61,6 +60,7 @@ typedef struct
     COLORREF heading, text;
     COLORREF button, button_hover, button_text;
     COLORREF accent, accent_background, accent_hover;
+    COLORREF border;
 } message_colors;
 
 typedef struct
@@ -111,6 +111,8 @@ static void SetColors(message_colors *c, BOOL light)
         c->button_text = RGB(0x8F, 0x8F, 0x8F);
         c->accent_background = RGB(0x37, 0x1F, 0x06);
         c->accent_hover = RGB(0x3F, 0x24, 0x07);
+        /* the frame of the main window (color.dark.windowBorder) */
+        c->border = RGB(0x4C, 0x4A, 0x48);
     }
     else
     {
@@ -125,6 +127,8 @@ static void SetColors(message_colors *c, BOOL light)
         c->button_text = RGB(0x4D, 0x4D, 0x4D);
         c->accent_background = RGB(0xDA, 0xBB, 0x99);
         c->accent_hover = RGB(0xFA, 0xD6, 0xB0);
+        /* (color.light.windowBorder) */
+        c->border = RGB(0x4C, 0x4A, 0x48);
     }
     c->accent = RGB(0xD3, 0x79, 0x18);
 }
@@ -615,10 +619,10 @@ int RedesignMessageBox(const wchar_t *title, const wchar_t *heading,
     Layout(&box);
     Place(&box, NULL);
 
-    /* Windows 11: the corners rounded, no border of another colour */
+    /* Windows 11: the corners rounded, the 1 px border of the main window */
     const DWORD corner = REDESIGN_DWMWCP_ROUND;
     DwmSetWindowAttribute(hwnd, REDESIGN_DWMWA_WINDOW_CORNER_PREFERENCE, &corner, sizeof (corner));
-    const DWORD border = REDESIGN_DWMWA_COLOR_NONE;
+    const COLORREF border = box.colors.border;
     DwmSetWindowAttribute(hwnd, REDESIGN_DWMWA_BORDER_COLOR, &border, sizeof (border));
 
     ShowWindow(hwnd, SW_SHOW);

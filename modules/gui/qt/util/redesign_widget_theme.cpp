@@ -827,7 +827,8 @@ void ThemeController::refresh()
     m_palette = windowPalette(c, dark);
     m_dark = dark;
     m_scale = scale;
-    m_border = c.separator;
+    // the frame of the main window
+    m_border = RedesignMenuStyle::windowBorder(dark);
 
     // Inter 14 px, drawn as the menus and the QML text (grey antialiasing,
     // no hinting); the style sheet sets the size of the controls only, the

@@ -106,7 +106,8 @@ ColumnLayout {
                         view: popupList
                     }
                 }
-                background: Rectangle { color: VLCStyle.redesign.color("#191919", "#ababaa"); border.color: VLCStyle.redesign.color("#373737", "#8e8e8d") }
+                // the frame of the main window
+                background: Rectangle { color: VLCStyle.redesign.color("#191919", "#ababaa"); border.color: VLCStyle.redesign.color(VLCStyle.redesign.windowBorder) }
             }
         }
     }

@@ -25,6 +25,7 @@
 #include <QString>
 
 class MainCtx;
+class QWindow;
 
 /**
  * Draws the widget menus (right-click menu, track, device and sort menus)
@@ -58,6 +59,11 @@ public:
     static QColor accentDim(const QColor &accent);
     // the family of the bundled Inter, loaded once
     static QString fontFamily();
+    // The 1 px frame of every window (the main window, the classic ones,
+    // the menus; the QML cards draw it as VLCStyle.redesign.windowBorder)
+    static QColor windowBorder(bool dark);
+    // Has the system draw it around the window (Windows 11)
+    static void setWindowBorder(QWindow *window, bool dark);
 
     int pixelMetric(PixelMetric metric, const QStyleOption *option = nullptr,
                     const QWidget *widget = nullptr) const override;

@@ -424,6 +424,7 @@ libqml_module_widgets_a_QML = \
 	widgets/qml/DashedRect.qml \
 	widgets/qml/CustomizeDragArea.qml \
 	widgets/qml/RedesignMenuSeparator.qml \
+	widgets/qml/RedesignWindowBorder.qml \
 	widgets/qml/RedesignContextMenu.qml \
 	widgets/qml/RedesignDialog.qml \
 	widgets/qml/RedesignButton.qml \

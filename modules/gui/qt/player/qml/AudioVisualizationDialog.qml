@@ -102,6 +102,9 @@ Controls.Popup {
                 color: Qt.rgba(0, 0, 0, 0.46)
             }
 
+            // the frame of the main window
+            Widgets.RedesignWindowBorder { }
+
             ListView {
                 id: options
                 objectName: "audioVisualizationModes"

@@ -43,8 +43,9 @@ T.Pane {
     background: Rectangle {
         radius: VLCStyle.dp(6, VLCStyle.scale)
         color: root.darkTheme ? "#F2191919" : "#F2ABABAA"
+        // the frame of the main window
         border.width: 1
-        border.color: VLCStyle.redesign.color("#222222", "#9c9c9b")
+        border.color: VLCStyle.redesign.color(VLCStyle.redesign.windowBorder, undefined, root.darkTheme)
     }
 
     contentItem: ColumnLayout {

@@ -39,6 +39,8 @@
     <color name="vlc_color_dark_divider_bright">#FF373737</color>
     <!-- Settings warnings and errors (not a Figma style). -->
     <color name="vlc_color_dark_status_warning">#FFE4A580</color>
+    <!-- The 1 px frame of every window: what Windows 11 draws around the main window (the system accent, Show accent color on title bars and window borders), set on the main window, the classic windows and the menus (DWMWA_BORDER_COLOR) and drawn by every QML dialog, menu and card opened over the interface (RedesignWindowBorder.qml). Not a Figma style. -->
+    <color name="vlc_color_dark_window_border">#FF4C4A48</color>
     <!-- Scroll bar handle of the classic (widget) dialogs. The QML Settings scroll bar keeps the Basic style's own colours in the dark theme. -->
     <color name="vlc_color_dark_scroll_bar_widget_handle">#FF404040</color>
     <!-- Hovered scroll bar handle of the classic dialogs (both themes). -->
@@ -83,6 +85,8 @@
     <color name="vlc_color_light_status_warning">#FF7A1414</color>
     <!-- Title bar of the classic (widget) dialogs in the light theme: color.light.bg.b2, as the QML dialogs draw theirs (design/light-theme.md). -->
     <color name="vlc_color_light_title_bar_classic">#FFDEDEDE</color>
+    <!-- The frame of every window in the light theme: Windows draws the same one around the main window in both themes. -->
+    <color name="vlc_color_light_window_border">#FF4C4A48</color>
     <!-- Settings scroll bar handle in the light theme (palette.mid of the Basic ScrollBar). -->
     <color name="vlc_color_light_scroll_bar_handle">#FF6B6B6B</color>
     <!-- Settings scroll bar handle, pressed, in the light theme (palette.dark). -->

@@ -102,8 +102,9 @@ FocusScope {
 
         radius: VLCStyle.dp(10, VLCStyle.scale)
         color: resumePanel.darkTheme ? "#F2191919" : "#F2ABABAA"
+        // the frame of the main window
         border.width: 1
-        border.color: VLCStyle.redesign.color(VLCStyle.redesign.separator, "#9c9c9b", resumePanel.darkTheme)
+        border.color: VLCStyle.redesign.color(VLCStyle.redesign.windowBorder, undefined, resumePanel.darkTheme)
 
         RowLayout {
             id: row

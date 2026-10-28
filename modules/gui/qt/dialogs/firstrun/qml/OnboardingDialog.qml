@@ -107,7 +107,12 @@ Controls.Popup {
         radius: 14
         // Figma's onboarding is dark: the light theme as the other dialogs
         color: VLCStyle.redesign.color("#0e0e0e", "#c2c2c1")
-        border.color: VLCStyle.redesign.color("#222222", "#9c9c9b")
+    }
+    // the frame of the main window, over the content (which reaches the
+    // card's edges): the card reads as a window over the interface
+    readonly property Item _windowBorder: Widgets.RedesignWindowBorder {
+        parent: root.background ? root.background.parent : null
+        radius: 14
     }
 
     contentItem: Item {

@@ -30,10 +30,70 @@ FocusScope {
 
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
     function c(value) { return VLCStyle.redesign.color(value, undefined, true) }
-
     readonly property var channel: Iptv.currentChannel
-    readonly property var now: channel.now ?? ({})
-    readonly property var next: channel.next ?? ({})
+    readonly property var liveNow: channel.now ?? ({})
+
+    // Browsing the guide of the channel in the banner (Left, Right, its
+    // arrows, a swipe): 0 is what is on, -1 the programme before, +1 the
+    // next... The programmes around now are asked once per channel.
+    property int browse: 0
+    property var _programmes: []
+    property int _nowIndex: -1
+    property string _browseDescription: ""
+    function _loadProgrammes() {
+        const key = channel.key ?? ""
+        browse = 0
+        _programmes = []
+        _nowIndex = -1
+        if (key === "" || !channel.hasGuide)
+            return
+        Iptv.programmes([key], Iptv.now - 12 * 3600, Iptv.now + 24 * 3600, (result) => {
+            if ((root.channel.key ?? "") !== key)
+                return
+            const list = result[key] || []
+            root._programmes = list
+            root._nowIndex = list.findIndex(p => p.start <= Iptv.now && Iptv.now < p.stop)
+        })
+    }
+    onChannelChanged: if ((channel.key ?? "") !== _loadedKey) { _loadedKey = channel.key ?? ""; _loadProgrammes() }
+    property string _loadedKey: ""
+    readonly property bool canBrowse: _nowIndex >= 0 && !_archive
+    function browseBy(step) {
+        if (!canBrowse)
+            return
+        const target = Math.max(-_nowIndex, Math.min(_programmes.length - 1 - _nowIndex, browse + step))
+        if (target === browse)
+            return
+        browse = target
+        _browseDescription = ""
+        browseTimer.restart()
+        bannerTimer.restart()
+        const p = _programmes[_nowIndex + browse]
+        if (p && p.hasDescription && Iptv.showDescriptions)
+            Iptv.description(channel.key, p.start, (text) => {
+                if (root._programmes[root._nowIndex + root.browse] === p)
+                    root._browseDescription = text
+            })
+    }
+    // Enter on a programme browsed to: a past one from the archive, a
+    // reminder for one to come
+    function browseAction() {
+        const p = now
+        if (browse < 0 && p.archived) {
+            Iptv.playCatchup(channel.key, p.start, p.stop, p.title)
+            browse = 0
+        } else if (browse > 0) {
+            if (Iptv.hasReminder(channel.key, p.start))
+                Iptv.removeReminder(channel.key, p.start)
+            else
+                Iptv.addReminder(channel.key, p.start, p.title)
+            bannerTimer.restart()
+        }
+    }
+
+    // the programme the banner shows: the one browsed to, or what is on
+    readonly property var now: browse !== 0 && _programmes[_nowIndex + browse] ? _programmes[_nowIndex + browse] : liveNow
+    readonly property var next: browse !== 0 ? (_programmes[_nowIndex + browse + 1] ?? ({})) : (channel.next ?? ({}))
     readonly property bool _hasNow: (now.title ?? "") !== ""
     readonly property var catchup: Iptv.catchupProgramme
     readonly property bool _archive: (catchup.start ?? 0) > 0
@@ -93,6 +153,24 @@ FocusScope {
                 return true
             }
         }
+        // the banner shown: Left and Right go through the guide of the
+        // channel (they seek elsewhere, and in a programme of the archive)
+        if (plain && banner.wanted && root.canBrowse) {
+            const back = LayoutMirroring.enabled ? Qt.Key_Right : Qt.Key_Left
+            const forward = LayoutMirroring.enabled ? Qt.Key_Left : Qt.Key_Right
+            if (event.key === back || event.key === forward) {
+                root.browseBy(event.key === forward ? 1 : -1)
+                return true
+            }
+            if (root.browse !== 0 && (event.key === Qt.Key_Return || event.key === Qt.Key_Enter)) {
+                root.browseAction()
+                return true
+            }
+            if (root.browse !== 0 && (event.key === Qt.Key_Escape || event.key === Qt.Key_Back)) {
+                root.browse = 0
+                return true
+            }
+        }
         if (!plain)
             return false
         if (event.key >= Qt.Key_0 && event.key <= Qt.Key_9) {
@@ -145,6 +223,8 @@ FocusScope {
     }
 
     Timer { id: bannerTimer; interval: 5000 }
+    // a while without browsing: back to what is on
+    Timer { id: browseTimer; interval: 15000; onTriggered: root.browse = 0 }
     Timer {
         id: numberTimer
         interval: 1500
@@ -177,7 +257,7 @@ FocusScope {
         id: banner
 
         readonly property bool wanted: Iptv.bannerMode !== 3
-                                       && (bannerTimer.running || bannerHover.hovered || zoneHover.hovered
+                                       && (bannerTimer.running || bannerHover.hovered || zoneHover.hovered || root.browse !== 0
                                            || numberEntry.text.length > 0)
         readonly property bool _dark: VLCStyle.palette.isDark
         function c(value) { return VLCStyle.redesign.color(value, undefined, _dark) }
@@ -204,6 +284,19 @@ FocusScope {
         Behavior on anchors.bottomMargin { NumberAnimation { duration: 180; easing.type: Easing.OutCubic } }
 
         HoverHandler { id: bannerHover }
+        // a swipe across on a touchpad: the programmes before and after
+        WheelHandler {
+            acceptedDevices: PointerDevice.TouchPad
+            orientation: Qt.Horizontal
+            property real _sum: 0
+            onWheel: (event) => {
+                _sum += event.angleDelta.x
+                if (Math.abs(_sum) >= 120) {
+                    root.browseBy((_sum < 0) !== root.LayoutMirroring.enabled ? 1 : -1)
+                    _sum = 0
+                }
+            }
+        }
 
         // the band of the channel and the buttons, the height of the slim bar
         Item {
@@ -276,6 +369,16 @@ FocusScope {
             Row {
                 width: parent.width
                 spacing: root.px(10)
+                // where the programme browsed to is: +1, -2 (none on what is on)
+                Text {
+                    visible: root.browse !== 0
+                    anchors.verticalCenter: parent.verticalCenter
+                    text: root.browse > 0 ? "+" + root.browse : "−" + (-root.browse)
+                    color: VLCStyle.redesign.accent
+                    font.family: VLCStyle.redesign.fontFamily
+                    font.pixelSize: root.px(13)
+                    font.weight: Font.DemiBold
+                }
                 Text {
                     id: nowTimes
                     visible: text !== ""
@@ -313,7 +416,7 @@ FocusScope {
                 Rectangle {
                     id: bannerProgress
                     LayoutMirroring.enabled: false
-                    visible: Iptv.showProgress && root._hasNow && !root._archive
+                    visible: Iptv.showProgress && root._hasNow && !root._archive && root.browse === 0
                     anchors.verticalCenter: parent.verticalCenter
                     width: Math.min(root.px(180), parent.width * 0.3)
                     height: root.px(3)
@@ -331,9 +434,12 @@ FocusScope {
                 }
                 Text {
                     id: bannerLeft
-                    visible: bannerProgress.visible
+                    visible: root._hasNow && !root._archive
                     anchors.verticalCenter: parent.verticalCenter
-                    text: qsTr("%1 left").arg(Iptv.durationText((root.now.stop ?? 0) - Iptv.now))
+                    text: root.browse === 0 ? qsTr("%1 left").arg(Iptv.durationText((root.now.stop ?? 0) - Iptv.now))
+                          : root.now.start > Iptv.now ? qsTr("in %1").arg(Iptv.durationText(root.now.start - Iptv.now))
+                          : root.now.stop <= Iptv.now ? qsTr("ended %1 ago").arg(Iptv.durationText(Iptv.now - root.now.stop))
+                          : qsTr("on now")
                     color: banner.c("#6B6B6B")
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: root.px(13)
@@ -370,8 +476,8 @@ FocusScope {
             Text {
                 width: parent.width
                 visible: Iptv.showDescriptions && !root._archive && Iptv.bannerMode !== 2
-                         && (root.now.description ?? "") !== ""
-                text: (root.now.description ?? "").replace(/\s+/g, " ")
+                         && (root.browse === 0 ? (root.now.description ?? "") : root._browseDescription) !== ""
+                text: (root.browse === 0 ? (root.now.description ?? "") : root._browseDescription).replace(/\s+/g, " ")
                 wrapMode: Text.WordWrap
                 maximumLineCount: 3
                 elide: Text.ElideRight
@@ -406,9 +512,33 @@ FocusScope {
                 tip: qsTr("Catch-up: the past %1 day", "Catch-up: the past %1 days", root.channel.catchupDays ?? 0)
                          .arg(root.channel.catchupDays ?? 0)
             }
+            // the programme browsed to: watch it from the archive, or a
+            // reminder for it
+            Widgets.RedesignButton {
+                anchors.verticalCenter: parent.verticalCenter
+                visible: (root.browse < 0 && !!root.now.archived) || root.browse > 0
+                accent: root.browse < 0
+                implicitHeight: root.px(28)
+                text: root.browse < 0 ? qsTr("Watch")
+                      : (Iptv.reminders.length >= 0 && Iptv.hasReminder(root.channel.key ?? "", root.now.start ?? 0))
+                        ? qsTr("Reminder Set") : qsTr("Remind Me")
+                onClicked: root.browseAction()
+            }
+            BarButton {
+                visible: root.canBrowse
+                glyph: LayoutMirroring.enabled ? "›" : "‹"
+                tip: qsTr("Programme before")
+                onClicked: root.browseBy(-1)
+            }
+            BarButton {
+                visible: root.canBrowse
+                glyph: LayoutMirroring.enabled ? "‹" : "›"
+                tip: qsTr("Programme after")
+                onClicked: root.browseBy(1)
+            }
             Item { width: root.px(4); height: 1 }
             BarButton {
-                visible: !root._archive && (root.channel.catchupDays ?? 0) > 0 && root._hasNow
+                visible: !root._archive && (root.channel.catchupDays ?? 0) > 0 && root._hasNow && root.browse === 0
                 iconName: "recent"
                 tip: qsTr("Watch from the Start")
                 onClicked: Iptv.playFromStart()

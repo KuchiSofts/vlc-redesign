@@ -210,6 +210,10 @@ public:
     // nothing when it is not loaded
     void call(const QJsonObject& request, std::function<void(const QJsonObject&)> done);
 
+    // The address of the channel (or the programme of its archive) playing:
+    // not a film, no subtitles looked for online (SubtitleFinder)
+    static bool isTvUrl(const QString& url);
+
     // A change the module tells (on the interface's thread)
     void onEvent(const QJsonObject& event);
 

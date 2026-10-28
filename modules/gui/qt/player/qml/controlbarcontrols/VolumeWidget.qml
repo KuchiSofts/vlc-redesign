@@ -130,7 +130,7 @@ T.Pane {
                     anchors.centerIn: parent
                     width: VLCStyle.redesign.iconSize
                     height: width
-                    color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, colorContext.fg.primary)
+                    color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                     source: "qrc:///redesign/volume-" + volumeBtn.level + ".png"
                 }
             }
@@ -338,7 +338,7 @@ T.Pane {
                 visible: !root.paintOnly && root.visible
                          && (volControl.hovered || volControl.pressed || volControl.visualFocus || valueTimer.running)
                 background: Rectangle {
-                    color: VLCStyle.redesign.color("#0F0F0F", "#dedede")
+                    color: VLCStyle.redesign.color("#0F0F0F", "#c2c2c1")
                     radius: VLCStyle.dp(6, VLCStyle.scale)
                 }
                 contentItem: Text {

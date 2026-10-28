@@ -47,7 +47,7 @@
     <color name="vlc_color_light_bg_b1">#FFC2C2C1</color>
     <!-- Light of the 95 % B1 over the canvas. -->
     <color name="vlc_color_light_bg_b1_canvas">#FFC2C2C1</color>
-    <!-- Light of Dark/BG/B2 (also the QML dialog title bars: the colour map wins over the fallback the dialog passes). -->
+    <!-- Light of Dark/BG/B2 (also the title bars of the QML and the classic dialogs). -->
     <color name="vlc_color_light_bg_b2">#FFDEDEDE</color>
     <!-- Light of Dark/BG/A1. -->
     <color name="vlc_color_light_bg_a1">#FF9C9C9B</color>
@@ -81,8 +81,8 @@
     <color name="vlc_color_light_divider_bright">#FF8E8E8D</color>
     <!-- Settings warnings and errors in the light theme. -->
     <color name="vlc_color_light_status_warning">#FF7A1414</color>
-    <!-- Title bar of the classic (widget) dialogs in the light theme. The QML dialogs draw theirs in color.light.bg.b2 (#DEDEDE). -->
-    <color name="vlc_color_light_title_bar_classic">#FF9C9C9B</color>
+    <!-- Title bar of the classic (widget) dialogs in the light theme: color.light.bg.b2, as the QML dialogs draw theirs (design/light-theme.md). -->
+    <color name="vlc_color_light_title_bar_classic">#FFDEDEDE</color>
     <!-- Settings scroll bar handle in the light theme (palette.mid of the Basic ScrollBar). -->
     <color name="vlc_color_light_scroll_bar_handle">#FF6B6B6B</color>
     <!-- Settings scroll bar handle, pressed, in the light theme (palette.dark). -->

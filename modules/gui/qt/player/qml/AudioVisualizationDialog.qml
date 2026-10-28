@@ -66,7 +66,7 @@ Controls.Popup {
                 height: parent.height
                 horizontalAlignment: Text.AlignLeft
                 text: root.selectedText
-                color: root.c("#8F8F8F", "#4d4d4d")
+                color: root.c("#8F8F8F", "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: root.px(14)
                 verticalAlignment: Text.AlignVCenter
@@ -184,7 +184,7 @@ Controls.Popup {
                     }
                     contentItem: Text {
                         text: row.text
-                        color: root.c("#8F8F8F", "#4d4d4d")
+                        color: root.c("#8F8F8F", "#2e2e2e")
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: root.px(14)
                         horizontalAlignment: Text.AlignLeft

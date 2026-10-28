@@ -22,6 +22,8 @@ on release day ships.
 
 - ✅ The playback speed button can be added to the bar again ([#9](https://github.com/KuchiSofts/vlc-redesign/issues/9));
   VLC's latest work merged ([#8](https://github.com/KuchiSofts/vlc-redesign/issues/8))
+- ✅ The light theme settled against Figma: every place that asked for its own light colour checked, the
+  classic windows' title bar now as light as the other dialogs
 - ✅ A full code review: about 90 fixes (installer and updates, casting, subtitles in older encodings, colours of SD
   video, profiles and settings, the Windows proxy, library and dialogs)
 - ✅ Every text of VLC Redesign translated in all 72 languages on Weblate, and about 80 wrong translations fixed

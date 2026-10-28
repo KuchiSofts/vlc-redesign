@@ -139,7 +139,7 @@ T.Control {
     background: Widgets.AnimatedBackground {
         color: {
             if (delegate.compact)
-                return (selected || delegate.hovered) ? VLCStyle.redesign.color(VLCStyle.redesign.controlHoverBackground, theme.bg.highlight)
+                return (selected || delegate.hovered) ? VLCStyle.redesign.color(VLCStyle.redesign.controlHoverBackground, "#9c9c9b")
                                                       : "transparent"
             return selected ? theme.bg.highlight : theme.bg.primary
         }
@@ -209,7 +209,7 @@ T.Control {
                         width: VLCStyle.dp(12, VLCStyle.scale)
                         height: VLCStyle.dp(1.5, VLCStyle.scale)
                         radius: height / 2
-                        color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, theme.fg.secondary)
+                        color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                     }
                 }
             }
@@ -320,7 +320,7 @@ T.Control {
                         return theme.fg.primary
                     // The playing item takes the accent
                     return delegate.isCurrent ? VLCStyle.redesign.accent
-                                              : VLCStyle.redesign.color("#C6C6C6", theme.fg.primary)
+                                              : VLCStyle.redesign.color("#C6C6C6", "#2e2e2e")
                 }
             }
 
@@ -342,7 +342,7 @@ T.Control {
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             font.pixelSize: delegate.compact ? VLCStyle.dp(14, VLCStyle.scale) : VLCStyle.fontSize_normal
-            color: delegate.compact ? VLCStyle.redesign.color(VLCStyle.redesign.textMuted, theme.fg.secondary)
+            color: delegate.compact ? VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                                     : theme.fg.primary
             opacity: delegate.compact ? 1.0 : 0.5
         }

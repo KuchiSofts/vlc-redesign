@@ -55,12 +55,12 @@ Widgets.GridItem {
     // "Continue Watching" of Home)
     readonly property bool watched: (model?.playcount ?? 0) > 0
     titleColor: redesignTitle
-                ? VLCStyle.redesign.color(watched ? "#6B6B6B" : VLCStyle.redesign.textSecondary, colorContext.fg.primary,
+                ? VLCStyle.redesign.color(watched ? "#6B6B6B" : VLCStyle.redesign.textSecondary, undefined,
                                           colorContext.palette?.isDark ?? true)
                 : colorContext.fg.primary
     selectedTitleColor: redesignTitle
                         ? VLCStyle.redesign.color(VLCStyle.redesign.textSecondary,
-                                                  colorContext.fg.highlight,
+                                                  "#4d4d4d",
                                                   colorContext.palette?.isDark ?? true)
                         : colorContext.fg.highlight
 

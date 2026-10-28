@@ -32,7 +32,7 @@ T.Popup {
         DialogsProvider.nativeEffectsDialog(page)
     }
 
-    function c(value) { return VLCStyle.redesign.color(value, value) }
+    function c(value) { return VLCStyle.redesign.color(value) }
 
     // The preview of each tab stays until Save or Cancel of the dialog
     function switchTab(index) {

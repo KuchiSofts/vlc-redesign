@@ -34,7 +34,7 @@ T.Button {
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
         color: (button.accent && button.enabled) ? VLCStyle.redesign.accent
-                                                 : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#4d4d4d", button.darkTheme)
+                                                 : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e", button.darkTheme)
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
         font.weight: Font.DemiBold
@@ -46,7 +46,7 @@ T.Button {
                ? (button.down || button.hovered ? Qt.lighter(VLCStyle.redesign.accentBackground, 1.15)
                                                 : VLCStyle.redesign.accentBackground)
                : (button.down || button.hovered) ? VLCStyle.redesign.color(VLCStyle.redesign.controlHoverBackground, "#9c9c9b", button.darkTheme)
-               : VLCStyle.redesign.color(VLCStyle.redesign.playerControlBackground, "#b8b8b7", button.darkTheme)
+               : VLCStyle.redesign.color(VLCStyle.redesign.playerControlBackground, "#ababaa", button.darkTheme)
         border.width: button.visualFocus ? 1 : 0
         border.color: VLCStyle.redesign.focusColor
     }

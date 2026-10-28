@@ -62,7 +62,7 @@ ColumnLayout {
         textFormat: Text.StyledText
         text: root.suffix === "" ? root.text
                                  : "%1 <font color=\"%2\">%3</font>".arg(root.text)
-                                       .arg(VLCStyle.redesign.color("#6B6B6B", "#4d4d4d", root.darkTheme))
+                                       .arg(VLCStyle.redesign.color("#6B6B6B", "#6b6b6b", root.darkTheme))
                                        .arg(root.suffix)
         color: VLCStyle.redesign.color("#C6C6C6", "#2e2e2e", root.darkTheme)
         font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
@@ -76,7 +76,7 @@ ColumnLayout {
         elide: Text.ElideNone
         Layout.preferredHeight: lineCount > 1 ? implicitHeight : Math.ceil(lineHeightPx)
         text: root.description
-        color: VLCStyle.redesign.color("#6B6B6B", "#4d4d4d", root.darkTheme)
+        color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b", root.darkTheme)
         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
     }
 }

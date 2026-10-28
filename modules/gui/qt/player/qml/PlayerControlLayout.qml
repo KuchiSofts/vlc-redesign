@@ -308,7 +308,7 @@ FocusScope {
                 corners: false
                 // Figma 2160:6137: across the empty center, darker (#373737)
                 color: emptyZone.spanning ? VLCStyle.redesign.color("#373737", "#8e8e8d")
-                                          : VLCStyle.redesign.color("#6B6B6B", "#5a5a59")
+                                          : VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
             }
 
             DropArea {

@@ -156,13 +156,17 @@ QtObject {
             "#5a5a5a": "#333333", "#4d4d4d": "#333333", "#929291": "#575756"
         })
 
-        function color(darkValue, fallback, isDark = vlc_style.palette.isDark) {
-            const value = _themed(darkValue, fallback, isDark)
+        // color(dark[, light[, isDark]]): the light value a component gives
+        // is the one drawn in the light theme; without one, the map above
+        // turns the dark value into its light one (a dark value the map does
+        // not know stays as it is). design/light-theme.md lists the decisions.
+        function color(darkValue, lightValue, isDark = vlc_style.palette.isDark) {
+            const value = _themed(darkValue, lightValue, isDark)
             if (!increaseContrast)
                 return value
             return (isDark ? _contrastDark : _contrastLight)[value.toString().toLowerCase()] ?? value
         }
-        function _themed(darkValue, fallback, isDark) {
+        function _themed(darkValue, lightValue, isDark) {
             if (isDark) return darkValue
             // Nothing drawn stays so in both themes (idle button backgrounds)
             if (Qt.colorEqual(darkValue, "transparent")) return darkValue
@@ -170,7 +174,8 @@ QtObject {
             if (Qt.colorEqual(darkValue, accentDim)) return accentDim
             if (Qt.colorEqual(darkValue, accentBackground))
                 return Qt.tint("#dedede", Qt.rgba(accent.r, accent.g, accent.b, 0.35))
-            return _lightColors[darkValue.toString().toLowerCase()] || fallback
+            if (lightValue !== undefined) return lightValue
+            return _lightColors[darkValue.toString().toLowerCase()] || darkValue
         }
     }
 

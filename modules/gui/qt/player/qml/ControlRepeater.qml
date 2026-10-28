@@ -185,7 +185,7 @@ Repeater {
                            : editOverlay.isVolume ? parent.width + 2 * editOverlay.volumeInflate : parent.width
                     height: editOverlay.isPlay ? VLCStyle.dp(34, VLCStyle.scale)
                             : editOverlay.isVolume ? VLCStyle.dp(36, VLCStyle.scale) : parent.height
-                    color: VLCStyle.redesign.color("#6B6B6B", "#5a5a59")
+                    color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                     opacity: dragArea.drag.active ? 0.4 : 1
                 }
 

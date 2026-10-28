@@ -1146,7 +1146,7 @@ FocusScope {
                 Layout.preferredHeight: VLCStyle.dp(48, VLCStyle.scale)
                 source: "qrc:///redesign/icons/cast/large.png"
                 sourceSize: Qt.size(VLCStyle.dp(48, VLCStyle.scale), VLCStyle.dp(48, VLCStyle.scale))
-                color: rootPlayer._castTrouble ? VLCStyle.redesign.color("#8F8F8F", "#4d4d4d")
+                color: rootPlayer._castTrouble ? VLCStyle.redesign.color("#8F8F8F", "#2e2e2e")
                                                : VLCStyle.redesign.accent
                 // connecting: it breathes until the device plays
                 readonly property bool connecting: castingCard.visible
@@ -1170,7 +1170,7 @@ FocusScope {
                         : Player.rendererManager.rendererVideo
                           ? qsTr("Playing on %1").arg(Player.rendererManager.rendererName)
                           : qsTr("The sound plays on %1").arg(Player.rendererManager.rendererName)
-                color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#1e1e1e")
+                color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(18, VLCStyle.scale)
                 font.weight: Font.Medium
@@ -1194,7 +1194,7 @@ FocusScope {
                 wrapMode: Text.WordWrap
                 visible: !rootPlayer._castTrouble
                 text: qsTr("Pause, seek and change the subtitles here: the TV follows.")
-                color: VLCStyle.redesign.color("#8F8F8F", "#4d4d4d")
+                color: VLCStyle.redesign.color("#8F8F8F", "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
             }
@@ -1294,7 +1294,7 @@ FocusScope {
                 text: Player.rendererManager.castStatus === RendererManager.CastConnecting
                       ? qsTr("Connecting to %1…").arg(Player.rendererManager.rendererName)
                       : qsTr("Also on %1").arg(Player.rendererManager.rendererName)
-                color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#1e1e1e")
+                color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                 elide: Text.ElideRight

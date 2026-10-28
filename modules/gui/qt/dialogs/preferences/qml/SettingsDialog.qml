@@ -45,7 +45,7 @@ Dialog {
     readonly property bool dark: VLCStyle.palette.isDark
 
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
-    function c(value) { return VLCStyle.redesign.color(value, value) }
+    function c(value) { return VLCStyle.redesign.color(value) }
 
     // Titles of the pages in the design
     readonly property var titles: ({

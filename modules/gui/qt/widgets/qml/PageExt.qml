@@ -216,7 +216,7 @@ T.Page {
         }
 
         background: Rectangle {
-            color: VLCStyle.redesign.color(VLCStyle.redesign.windowBackground, theme.bg.primary, theme.palette?.isDark ?? true)
+            color: VLCStyle.redesign.color(VLCStyle.redesign.windowBackground, "#c2c2c1", theme.palette?.isDark ?? true)
         }
 
         contentItem: GridLayout {
@@ -231,7 +231,7 @@ T.Page {
                 Layout.column: 0
                 Layout.fillWidth: true
 
-                color: VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, theme.fg.primary, theme.palette?.isDark ?? true)
+                color: VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, "#4d4d4d", theme.palette?.isDark ?? true)
                 font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
             }
 

@@ -5301,12 +5301,14 @@ AS_IF([test -z "${REDESIGN_VERSION_NUMBER}"], [
 ])
 AC_SUBST([REDESIGN_VERSION])
 AC_SUBST([REDESIGN_VERSION_NUMBER])
+dnl VLC Redesign: the builds name the project, never the account or the
+dnl computer that made them (they show in About and in vlc --version)
 AS_IF([test -z "$VLC_COMPILE_BY"],[
-   VLC_COMPILE_BY=`whoami|sed -e 's/\\\/\\\\\\\/g'`
+   VLC_COMPILE_BY="KuchiSofts"
 ])
 AC_DEFINE_UNQUOTED([VLC_COMPILE_BY], "$VLC_COMPILE_BY", [user who ran configure])
 AS_IF([test -z "$VLC_COMPILE_HOST"],[
-   VLC_COMPILE_HOST=`hostname -f 2>/dev/null || hostname`
+   VLC_COMPILE_HOST="vlc-redesign"
 ])
 AC_DEFINE_UNQUOTED([VLC_COMPILE_HOST], "$VLC_COMPILE_HOST", [host which ran configure])
 AC_DEFINE_UNQUOTED([VLC_COMPILER], "`$CC -v 2>&1 | grep -i 'version ' | tail -n 1 | sed -e 's/ *$//'`", [compiler])

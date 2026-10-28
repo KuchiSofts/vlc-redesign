@@ -137,6 +137,7 @@ class MainCtx : public QObject
     // (redesign/right-to-left) is saved by Settings
     Q_PROPERTY(bool rightToLeft READ rightToLeft WRITE setRightToLeft NOTIFY rightToLeftChanged FINAL)
     Q_PROPERTY(bool seekThumbnail READ seekThumbnail NOTIFY seekThumbnailChanged FINAL)
+    Q_PROPERTY(bool seekSubtitleCues READ seekSubtitleCues NOTIFY seekSubtitleCuesChanged FINAL)
     Q_PROPERTY(float pinOpacity READ pinOpacity WRITE setPinOpacity NOTIFY pinOpacityChanged FINAL)
     Q_PROPERTY(ControlbarProfileModel* controlbarProfileModel READ controlbarProfileModel CONSTANT FINAL)
     Q_PROPERTY(bool hasAcrylicSurface READ hasAcrylicSurface NOTIFY hasAcrylicSurfaceChanged FINAL)
@@ -289,6 +290,7 @@ public:
     inline bool pinVideoControls() const { return m_pinVideoControls; }
     inline bool rightToLeft() const { return m_rightToLeft; }
     inline bool seekThumbnail() const { return m_seekThumbnail; }
+    inline bool seekSubtitleCues() const { return m_seekSubtitleCues; }
     inline float pinOpacity() const { return m_pinOpacity; }
 
     inline ControlbarProfileModel* controlbarProfileModel() const { return m_controlbarProfileModel; }
@@ -555,6 +557,7 @@ protected:
     /* Pinned */
     bool                 m_pinVideoControls = false;
     bool                 m_seekThumbnail = true;
+    bool                 m_seekSubtitleCues = true;
     float                m_pinOpacity       = 1.0f;
 
     bool                 m_useGlobalShortcuts = true;
@@ -727,6 +730,7 @@ signals:
     void pinVideoControlsChanged();
     void rightToLeftChanged();
     void seekThumbnailChanged();
+    void seekSubtitleCuesChanged();
     void pinOpacityChanged();
 
     void hasAcrylicSurfaceChanged(bool);

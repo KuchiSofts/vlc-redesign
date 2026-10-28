@@ -238,6 +238,8 @@ libqt_plugin_la_SOURCES = \
 	player/delay_estimator.cpp \
 	player/delay_estimator.hpp \
 	player/waveform.cpp player/waveform.hpp \
+	player/subtitle_cues.cpp player/subtitle_cues.hpp \
+	player/subtitle_cues_parser.cpp player/subtitle_cues_parser.hpp \
 	player/local_folder_model.cpp player/local_folder_model.hpp \
 	player/sleep_timer.cpp player/sleep_timer.hpp \
 	player/player_controller.cpp player/player_controller.hpp player/player_controller_p.hpp \

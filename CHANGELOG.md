@@ -32,6 +32,13 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   colour of Windows and follow it at once when it changes in Personalization > Colors; picking a colour turns it
   off. A colour too dark or too light is brought to the range of the built-in accents so it stays as readable.
   Outside Windows it follows the system accent (the desktop's, or the orange). Profiles keep the choice.
+- **Subtitle lines on the seek bar.** While a subtitle file is shown (one you added, one found next to the video, or
+  one downloaded by the subtitle search), thin marks on the seek bar show where its lines are, so you can see where
+  people talk. The marks follow the subtitle delay, close lines join into one mark, and the part already played
+  covers them. Hovering the bar shows the line at that time in the frame preview (or under the time). SRT, WebVTT,
+  ASS/SSA, MicroDVD, SubViewer/SBV, SAMI and VobSub (`.idx`) files are read once, in the background, and kept for
+  the next time. Subtitles inside the video file and streams that cannot seek have no marks. Settings, Subtitles,
+  Timing: *Show subtitle lines on the seek bar* (`qt-seek-subtitle-cues`, on by default, applies at once).
 
 ### Changed
 

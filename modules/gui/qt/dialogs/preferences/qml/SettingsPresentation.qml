@@ -254,6 +254,8 @@ readonly property var items: ({
         // playing): the subtitles shown move as it does
         "sub-position": [qsTr("Appearance"), qsTr("Vertical position"), "slider", null, { info: true }],
         "sub-delay": [qsTr("Timing"), qsTr("Subtitle delay"), "slider", null, { info: false }],
+        // marks on the seek bar where the lines of a subtitle file are
+        "qt-seek-subtitle-cues": [qsTr("Timing"), qsTr("Show subtitle lines on the seek bar"), "", null, { info: true }],
         "osd": [qsTr("On-Screen Messages"), qsTr("Show feedback for shortcuts"), "", null, { info: true }],
         "osd-duration": [qsTr("On-Screen Messages"), qsTr("Show feedback for"), "slider", null, { info: false }],
         "video-title-show": [qsTr("On-Screen Messages"), qsTr("Show filename when a video starts"), "", null, { info: true }],

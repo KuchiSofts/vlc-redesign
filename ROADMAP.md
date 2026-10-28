@@ -34,6 +34,8 @@ on release day ships.
   an update (it can be turned off in Settings, General); built, to be checked in the running app
 - 🔨 The last checks in the running app: Settings scroll bars, the warning colour, *Show controls in fullscreen*,
   a playlist's own picture, the small classic windows
+- 🔨 Subtitle lines marked on the seek bar (from the subtitle file shown), with the line at the hovered time in
+  the preview: built, being checked in the app
 
 **To do**
 
@@ -48,7 +50,7 @@ changed without a restart. The full list is in the [changelog](CHANGELOG.md).
 
 **Ideas**
 
-- 💡 Subtitle lines marked on the seek bar
+- 🔨 Subtitle lines marked on the seek bar: built (Settings > Subtitles > Timing), in the next release
 - 🔨 The accent colour following Windows': built (*Follow the Windows accent color* in Settings > Appearance), in the next release
 
 ## Other platforms

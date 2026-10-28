@@ -607,6 +607,7 @@ void MainCtx::loadPrefs(const bool callSignals)
     loadFromVLCOption(m_pinVideoControls, "qt-pin-controls", &MainCtx::pinVideoControlsChanged);
 
     loadFromVLCOption(m_seekThumbnail, "qt-seek-thumbnail", &MainCtx::seekThumbnailChanged);
+    loadFromVLCOption(m_seekSubtitleCues, "qt-seek-subtitle-cues", &MainCtx::seekSubtitleCuesChanged);
 
     loadFromVLCOption(m_pinOpacity, "qt-fs-opacity", &MainCtx::pinOpacityChanged);
 

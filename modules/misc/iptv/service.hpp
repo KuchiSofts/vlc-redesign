@@ -53,6 +53,8 @@ struct Host
     // A change for the interface (from any thread)
     virtual void notify(const QJsonObject& event) = 0;
     virtual void log(const QString& message) = 0;
+    // What took how long (VLC's debug messages)
+    virtual void debug(const QString& message) = 0;
     // The worker thread of the service: its downloads stop when killed
     virtual void enterWorker() = 0;
     virtual void killWorker() = 0;

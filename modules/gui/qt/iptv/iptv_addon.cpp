@@ -68,9 +68,11 @@ int refreshHoursOf(int choice)
 const vlc_iptv_owner_cbs ownerCallbacks = {
     [](vlc_iptv_t*, const char* json, void* data) {
         auto* addon = static_cast<IptvAddon*>(data);
-        const QJsonObject event = QJsonDocument::fromJson(QByteArray(json)).object();
+        // read on the interface's thread: this one is the module's
+        const QByteArray text(json);
         // to the interface's thread (the object goes away after the module)
-        QMetaObject::invokeMethod(addon, [addon, event]() {
+        QMetaObject::invokeMethod(addon, [addon, text]() {
+            const QJsonObject event = QJsonDocument::fromJson(text).object();
             addon->onEvent(event);
         }, Qt::QueuedConnection);
     }

@@ -177,7 +177,8 @@ RedesignIconButton {
                 objectName: "castShowHidden"
                 Layout.fillWidth: true
                 visible: root.manager.hiddenCount > 0
-                name: qsTr("Show %n hidden device(s)", "", root.manager.hiddenCount)
+                name: qsTr("Show %1 hidden device", "Show %1 hidden devices",
+                           root.manager.hiddenCount).arg(root.manager.hiddenCount)
                 iconName: "refresh"
                 onClicked: root.manager.showHiddenDevices()
             }

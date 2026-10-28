@@ -35,11 +35,46 @@ Not taken from the frame, on purpose: previous, next and settings stay `#8F8F8F`
 the bar turns `#2E2E2E` (they read as disabled; the app draws them as the other icons), and the library rows are
 the compact library's own light values (already measured, `CompactLibrary.qml`).
 
-The Figma variables and the light variants of the components could not be read (the Figma API refuses the file to
-a view-only seat). Where the frame does not draw a colour, the map's value stands: it is the grey ramp of the frame
-(`#2E2E2E`, `#4D4D4D`, `#6B6B6B`, `#8F8F8F`, `#929291`, `#9C9C9B`, `#ABABAA`, `#B5B5B4`, `#C2C2C1`, `#DEDEDE`), and
-the light values the components gave (`#5A5A59`, `#7C7C7B`, `#1E1E1E`, `#C4C4C3`, `#B8B8B7`, `#FAFAFA`...) appear
-nowhere in Figma. Those rows are marked *to confirm* below: they wait for the Figma light variables.
+### The Light colour styles of the file
+
+The file has no variables (one empty collection) but 24 *Light/* colour styles beside the 25 *Dark/* ones (read
+2026-10-28 from the owner's copy of the file, `the design file`, same node ids):
+
+| Style | Dark | Light | Used in *Player - Light* |
+|---|---|---|---|
+| FG/1 | `#EAEAEA` | `#EAEAEA` | no (the light style keeps the dark value) |
+| FG/2 | `#C6C6C6` | `#C6C6C6` | no (the light style keeps the dark value) |
+| FG/A1 | `#969696` | `#3C3C3C` | no (the frame still uses Dark/FG/A1 for the disabled forward arrow) |
+| FG/A2 | `#8F8F8F` | `#2E2E2E` | yes: icons, title, folder name, times |
+| FG/A3 | `#6B6B6B` | `#6B6B6B` | yes: *15 items*, the panel's icons |
+| FG/A4 | `#404040` | `#3B3B3B` | no |
+| FG/B1 | `#161616` | `#161616` | the play icon uses Dark/FG/B1 |
+| BG/A1 | `#222222` | `#EDEDED` | no |
+| BG/A2 | `#1F1F1F` | `#DDDDDD` | no |
+| BG/A3 | `#1B1B1B` | `#D5D5D5` | as *A3 Transparent* (`#D5D5D5` at 75 %): top bar, control bar, navigation column |
+| BG/A4 | `#191919` | `#B3B3B3` | no |
+| BG/A5 | `#151515` | `#888888` | yes: the volume track (Dark/BG/B2 in the dark frame) |
+| BG/B1 | `#0E0E0E` | `#E7E7E7` | as *B1 Transparent* (`#E7E7E7` at 80 %): the library panel |
+| BG/B2 | `#090909` | `#DEDEDE` | yes: the seek track |
+| Divider/Dim | `#222222` | `#ACACAC` | yes: the control bar's top line (the panel's separator keeps Dark/Divider/Dim) |
+| Divider/Bright | `#373737` | `#9B9B9B` | yes: the top bar's divider |
+| Accent Main / Dim / Bright / Logo | `#D37918`... | `#E8851A`, `#965916`, `#FFA13B`, `#C2711A` | Main on the seek handle and the sort dot, Logo |
+| BG/Accent Bright, Accent Dark | `#371F06`, `#1A1611` | `#D8BA9A`, `#C6AB89` | Accent Bright on the seek fill |
+
+**The frame's greys are translucent panels over the video.** The frame's background is a dark image (`#2D2B29`
+where it shows), and the light panels are *A3 Transparent* and *B1 Transparent* over it: `#D5D5D5` at 75 % over
+`#2D2B29` gives `#ABABAA`, `#E7E7E7` at 80 % gives `#C2C2C1`, exactly the colours measured and used by the app's
+map. The app draws those composites as solid colours on every screen, which matches the only light frame 1:1. The
+opaque *Light/* styles are much lighter (`#E7E7E7`, `#D5D5D5`, `#EDEDED`...); drawing them, or the panels
+translucent over the video, would be a new light theme, no longer the frame's colours: **left to the owner**
+(open decision, §6 of the master plan). The light styles the frame does not use are also not a reliable mapping:
+FG/1 and FG/2 keep their dark values (white text on light grey), FG/A4 `#3B3B3B` is darker than FG/A3 `#6B6B6B`
+(disabled darker than dim), and the volume track is A5 in light but B2 in dark.
+
+So, where the frame does not draw a colour, the map's value stands: it is the grey ramp of the frame (`#2E2E2E`,
+`#4D4D4D`, `#6B6B6B`, `#8F8F8F`, `#929291`, `#9C9C9B`, `#ABABAA`, `#B5B5B4`, `#C2C2C1`, `#DEDEDE`), and the light
+values the components gave (`#5A5A59`, `#7C7C7B`, `#1E1E1E`, `#C4C4C3`, `#B8B8B7`, `#FAFAFA`...) are neither in the
+frame nor among the Light styles.
 
 ## Decisions
 
@@ -67,8 +102,10 @@ dialogs' `#DEDEDE` (B2, the seek track's light value); both are `#DEDEDE` now (`
 | `#373737` | `#8E8E8D` | 3 | `#8f8f8e` ×2, `theme.border` ×1 | Not drawn; Divider/Bright `#8E8E8D` (the map) |
 | `#0F0F0F` | `#C2C2C1` | 2 | `#ababaa` ×1, `#dedede` ×1 | Measured: the library panel, `#0F0F0F` in 187:328, reads `#C2C2C1` |
 
-*To confirm* (not drawn in the frame): `#EAEAEA`, `#C6C6C6`, `#969696`, `#0E0E0E`, `#222222`, `#404040`,
-`#151515`, `#373737`.
+Not drawn in the frame (map kept, the Light style differs): `#969696` (Light/FG/A1 `#3C3C3C`), `#0E0E0E`
+(Light/BG/B1 `#E7E7E7`), `#222222` (Light/BG/A1 `#EDEDED`, Light/Divider/Dim `#ACACAC`), `#404040` (Light/FG/A4
+`#3B3B3B`), `#151515` (Light/BG/A5 `#888888`), `#373737` (Light/Divider/Bright `#9B9B9B`). Their light style keeps
+the dark value: `#EAEAEA`, `#C6C6C6`. These follow the owner's decision on the opaque Light styles.
 
 ## Every call
 

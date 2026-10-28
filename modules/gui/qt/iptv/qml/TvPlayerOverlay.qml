@@ -242,7 +242,7 @@ FocusScope {
             anchors.left: bannerLogo.right
             anchors.leftMargin: root.px(12)
             anchors.verticalCenter: bannerHead.verticalCenter
-            width: Math.min(implicitWidth, banner.width * 0.24)
+            width: Math.min(implicitWidth, banner.width * 0.2)
             text: root.channel.name ?? ""
             elide: Text.ElideRight
             horizontalAlignment: Text.AlignLeft
@@ -407,11 +407,10 @@ FocusScope {
                          .arg(root.channel.catchupDays ?? 0)
             }
             Item { width: root.px(4); height: 1 }
-            Widgets.RedesignButton {
-                anchors.verticalCenter: parent.verticalCenter
+            BarButton {
                 visible: !root._archive && (root.channel.catchupDays ?? 0) > 0 && root._hasNow
-                implicitHeight: root.px(28)
-                text: qsTr("From the Start")
+                icon: "recent"
+                tip: qsTr("Watch from the Start")
                 onClicked: Iptv.playFromStart()
             }
             Widgets.RedesignButton {
@@ -422,30 +421,68 @@ FocusScope {
                 text: qsTr("Back to Live")
                 onClicked: Iptv.backToLive()
             }
-            Widgets.RedesignButton {
-                anchors.verticalCenter: parent.verticalCenter
-                implicitWidth: root.px(28)
-                implicitHeight: root.px(28)
-                text: "▲"
-                Accessible.name: qsTr("Next channel")
+            BarButton {
+                glyph: "▲"
+                tip: qsTr("Next channel")
                 onClicked: Iptv.channelUp()
             }
-            Widgets.RedesignButton {
-                anchors.verticalCenter: parent.verticalCenter
-                implicitWidth: root.px(28)
-                implicitHeight: root.px(28)
-                text: "▼"
-                Accessible.name: qsTr("Previous channel")
+            BarButton {
+                glyph: "▼"
+                tip: qsTr("Previous channel")
                 onClicked: Iptv.channelDown()
             }
-            Widgets.RedesignButton {
-                anchors.verticalCenter: parent.verticalCenter
-                implicitHeight: root.px(28)
-                text: qsTr("Channels")
+            BarButton {
+                icon: "lists"
+                tip: qsTr("Channels")
                 onClicked: root.openList()
             }
         }
     }
+
+    // a small square button of the bar: a two-tone icon or a glyph, its
+    // name in a tool tip
+    component BarButton: T.Button {
+        id: barButton
+        property string icon
+        property string glyph
+        property string tip
+        anchors.verticalCenter: parent ? parent.verticalCenter : undefined
+        implicitWidth: root.px(30)
+        implicitHeight: root.px(30)
+        focusPolicy: Qt.NoFocus
+        Accessible.name: tip
+        T.ToolTip.visible: hovered && tip !== ""
+        T.ToolTip.text: tip
+        T.ToolTip.delay: 650
+        background: Rectangle {
+            radius: root.px(6)
+            color: barButton.down || barButton.hovered ? VLCStyle.redesign.color(VLCStyle.redesign.controlHoverBackground)
+                                                       : "transparent"
+        }
+        contentItem: Item {
+            Image {
+                anchors.centerIn: parent
+                visible: barButton.icon !== ""
+                width: root.px(20)
+                height: width
+                sourceSize: Qt.size(width, height)
+                source: barButton.icon === "" ? ""
+                        : SVGColorImage.colorize("qrc:///redesign/duo/" + barButton.icon + ".svg")
+                                       .color1(VLCStyle.redesign.color(VLCStyle.redesign.textMuted))
+                                       .color2(VLCStyle.redesign.accent).uri()
+            }
+            Text {
+                anchors.centerIn: parent
+                visible: barButton.glyph !== ""
+                text: barButton.glyph
+                color: barButton.hovered ? VLCStyle.redesign.color(VLCStyle.redesign.textPrimary)
+                                         : VLCStyle.redesign.color(VLCStyle.redesign.textMuted)
+                font.family: VLCStyle.redesign.fontFamily
+                font.pixelSize: root.px(12)
+            }
+        }
+    }
+
 
     // ---- the number typed ----
     Rectangle {

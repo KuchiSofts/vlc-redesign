@@ -449,7 +449,11 @@ void FolderInformation::setUrl(const QUrl &url)
 
     const QFileInfo info(path());
     m_exists = !path().isEmpty() && info.isDir();
-    m_modified = m_exists ? QLocale().toString(info.lastModified(), QLocale::LongFormat) : QString();
+    // the long time format names the time zone in the system's language
+    const QDateTime modified = info.lastModified();
+    m_modified = m_exists ? QLocale().toString(modified.date(), QLocale::LongFormat) + QLatin1Char(' ')
+                                + QLocale().toString(modified.time(), QLocale::ShortFormat)
+                          : QString();
     m_busy = m_exists;
     emit urlChanged();
     emit countsChanged();
@@ -489,7 +493,7 @@ QString FolderInformation::path() const
     QString folder = m_url.toLocalFile();
     if (folder.size() > 3 && (folder.endsWith(QLatin1Char('/')) || folder.endsWith(QLatin1Char('\\'))))
         folder.chop(1);
-    return folder;
+    return QDir::toNativeSeparators(folder);
 }
 
 QString FolderInformation::size() const

@@ -36,11 +36,14 @@ on release day ships.
   a playlist's own picture, the small classic windows
 - 🔨 Subtitle lines marked on the seek bar (from the subtitle file shown), with the line at the hovered time in
   the preview: built, being checked in the app
+- 🔨 *Follow the Windows accent color* in Settings, Appearance: built, being checked in the app
+- 🔨 Every message, question and classic window in the redesign's look (its own title bar), and Go to Time,
+  Plugins, Media Statistics and Folder information redrawn: built, being checked in the app
 
 **To do**
 
 - 📋 Code-signed releases (no SmartScreen warning): waiting for SignPath's approval
-- 📋 Discussions and a public roadmap board
+- 📋 A public roadmap board ([Discussions](https://github.com/KuchiSofts/vlc-redesign/discussions) are open)
 - 📋 Testing on Intel graphics, Windows 10 on real PCs and screens of different scales
 
 **Done before** (0.3.0 and 0.3.1): surround sound on every speaker, casting to TVs, a light theme on every screen,
@@ -50,8 +53,7 @@ changed without a restart. The full list is in the [changelog](CHANGELOG.md).
 
 **Ideas**
 
-- 🔨 Subtitle lines marked on the seek bar: built (Settings > Subtitles > Timing), in the next release
-- 🔨 The accent colour following Windows': built (*Follow the Windows accent color* in Settings > Appearance), in the next release
+- 💡 More ideas welcome in [Discussions](https://github.com/KuchiSofts/vlc-redesign/discussions/categories/ideas)
 
 ## Other platforms
 

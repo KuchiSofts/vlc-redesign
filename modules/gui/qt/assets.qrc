@@ -434,6 +434,7 @@
         <file alias="video.svg">pixmaps/redesign/video.svg</file>
         <file alias="music.svg">pixmaps/redesign/music.svg</file>
         <file alias="network.svg">pixmaps/redesign/network.svg</file>
+        <file alias="tv.svg">pixmaps/redesign/tv.svg</file>
         <file alias="settings.svg">pixmaps/redesign/settings.svg</file>
         <file alias="duo/add.svg">pixmaps/redesign/duo/add.svg</file>
         <file alias="duo/album.svg">pixmaps/redesign/duo/album.svg</file>

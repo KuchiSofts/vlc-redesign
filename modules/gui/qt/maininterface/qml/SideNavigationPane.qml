@@ -44,7 +44,7 @@ T.Pane {
     readonly property real _labelsWidth: {
         void labelMetrics.font // (measured again once the font is loaded)
         let widest = 0
-        for (const label of [ qsTr("Home"), qsTr("Videos"), qsTr("Music"), qsTr("Network"),
+        for (const label of [ qsTr("Home"), qsTr("Videos"), qsTr("Music"), qsTr("Network"), qsTr("TV"),
                               qsTr("Playlists"), qsTr("Recent"), qsTr("Add item") ])
             widest = Math.max(widest, labelMetrics.advanceWidth(label))
         for (const label of [ qsTr("Artists"), qsTr("Albums"), qsTr("Tracks"), qsTr("Genres"), qsTr("Playlists") ])
@@ -95,6 +95,9 @@ T.Pane {
                 rows.push({title: entry[1], uri: ["music", entry[0]], icon: "", asset: "", library: true, depth: 1})
         }
         rows.push({title: qsTr("Network"), uri: ["network"], icon: VLCIcons.topbar_network, asset: "network"})
+        // Live TV, while its add-on is there and on
+        if (Iptv.enabled)
+            rows.push({title: qsTr("TV"), uri: ["tv"], icon: "", asset: "tv"})
         // every playlist (the page lists songs ones too, see VideoPlaylistsDisplay)
         rows.push({title: qsTr("Playlists"), uri: ["video", "playlists"], icon: VLCIcons.playlist, asset: "playlists", library: true})
         // the media played last, videos and songs

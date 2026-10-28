@@ -135,6 +135,12 @@ FocusScope {
 
         _keyPressed = true
 
+        // Live TV: the channels up and down, their numbers, the list
+        if (tvOverlay.item && tvOverlay.item.handleKey(event)) {
+            event.accepted = true
+            return
+        }
+
         // the keys of the design (onboarding): Q the queue, L the library
         if (event.modifiers === Qt.NoModifier
                 && (event.key === Qt.Key_Q || event.key === Qt.Key_L)
@@ -883,6 +889,19 @@ FocusScope {
         onClicked: DialogsProvider.audioVisualizationDialog()
 
         AccessibleCompat.id: "videoVisualizationButton"
+    }
+
+    // Live TV over the video while a channel plays: made only then, and
+    // only when its add-on is there and on
+    Loader {
+        id: tvOverlay
+        anchors.fill: parent
+        active: Iptv.enabled && Iptv.playing
+        source: "qrc:///qt/qml/VLC/Network/TvPlayerOverlay.qml"
+        onLoaded: {
+            item.restoreFocus = rootPlayer
+            item.bottomInset = Qt.binding(() => controlBar.state === "visible" ? rootPlayer.height - controlBar.y : 0)
+        }
     }
 
     Widgets.FloatingNotification {

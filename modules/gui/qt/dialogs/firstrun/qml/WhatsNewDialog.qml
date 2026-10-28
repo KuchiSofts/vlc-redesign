@@ -156,7 +156,7 @@ Widgets.RedesignDialog {
                         Layout.fillWidth: true
                         horizontalAlignment: Text.AlignLeft
                         wrapMode: Text.WordWrap
-                        text: qsTr("And %n more", "", group.modelData.more)
+                        text: qsTr("And %1 more", "And %1 more", group.modelData.more).arg(group.modelData.more)
                         color: root.textMuted
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)

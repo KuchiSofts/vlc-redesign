@@ -953,7 +953,13 @@ Tracks with checklists; a version number comes with the first published build.
 ### Linux
 
 - 🟢 Built and smoke-tested once before the Windows work (Docker, X11 and Wayland; `.specs/features/redesign/evidence/`)
-- 🔴 Docker build on Ubuntu 22.04 with Qt 6.8, in CI
+- 🟢 The current code builds in Docker (Ubuntu 24.04, Qt 6.8.3, `linux-qt68.sh`) with no warning from the
+  redesign's code (2026-10-28); `linux-bundle.sh` makes a self-contained tarball, `linux-wslg.sh` runs it through WSLg
+- 🟢 Every player-bar control (59) put in the bar, shown and clicked during playback, on X11 through WSLg with the
+  GPU (D3D12): no QML warning; zoom list and theme of the widget dialogs fixed
+- 🟡 Video on X11 needs `--gl=glx` in the Docker container through WSLg: EGL finds no DRM device there and draws
+  black (upstream code; a PC with /dev/dri uses EGL)
+- 🔴 Docker build in CI
 - 🔴 Packages: AppImage, Flatpak (Flathub), .deb, .rpm, .tar.gz
 - 🔴 X11, Wayland; PipeWire, PulseAudio; VA-API, VDPAU; Intel, AMD, NVIDIA
 - 🔴 Updates (AppImage update information, Flatpak), file associations (.desktop), casting firewall notes

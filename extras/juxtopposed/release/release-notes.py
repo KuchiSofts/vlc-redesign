@@ -59,14 +59,18 @@ def size(name):
 
 rows = []
 for name, what in [('vlc-redesign-%s-win64-setup.exe' % version, 'Installer (Windows 10 and 11, 64-bit)'),
-                   ('vlc-redesign-%s-win64.zip' % version, 'Portable zip')]:
+                   ('vlc-redesign-%s-win64.zip' % version, 'Portable zip'),
+                   ('vlc-redesign-%s-winarm64-setup.exe' % version, 'Installer (Windows on ARM64)'),
+                   ('vlc-redesign-%s-winarm64.zip' % version, 'Portable zip (Windows on ARM64)')]:
     if name in sums:
         rows.append('| [%s](https://github.com/KuchiSofts/vlc-redesign/releases/download/v%s/%s) | %s | %s | `%s` |'
                     % (what, version, name, name, size(name), sums[name]))
 deltas = sorted(n for n in sums if n.endswith('.vrdelta'))
 for name in deltas:
     old = re.search(r'delta-from-(.+)\.vrdelta$', name).group(1)
-    rows.append('| Small update from %s (the app offers it) | %s | %s | `%s` |' % (old, name, size(name), sums[name]))
+    arm = '-winarm64-delta-from-' in name
+    rows.append('| Small update from %s%s (the app offers it) | %s | %s | `%s` |'
+                % (old, ', ARM64' if arm else '', name, size(name), sums[name]))
 
 # "Also on": the other platforms, from platforms.yml (extras/juxtopposed/platforms/render.py)
 sys.path.insert(0, os.path.join(ROOT, 'extras', 'juxtopposed', 'platforms'))

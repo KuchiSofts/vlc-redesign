@@ -509,9 +509,12 @@ Widgets.RedesignDialog {
         readonly property var countries: distinct("countries")
         readonly property var categories: distinct("categories")
         readonly property var added: Iptv.sources.map(s => s.catalogId).filter(id => !!id)
+        // the guides of the catalog already given to a source
+        readonly property var addedGuides: Iptv.sources.reduce((all, s) => all.concat(s.epg || []), [])
         readonly property var shown: {
             const text = catalogSearch.text.trim().toLowerCase()
-            const list = all.filter(s => s.kind !== "epg" || true).filter(s =>
+            // the guides apart (Guides), the playlists otherwise
+            const list = all.filter(s => capability === "guides" ? s.kind === "epg" : s.kind !== "epg").filter(s =>
                 (language === "" || (s.languages || []).indexOf(language) >= 0)
                 && (country === "" || (s.countries || []).indexOf(country) >= 0)
                 && (category === "" || (s.categories || []).indexOf(category) >= 0)
@@ -570,7 +573,7 @@ Widgets.RedesignDialog {
                 Layout.preferredWidth: Math.max(VLCStyle.dp(300, VLCStyle.scale), neededWidth)
                 options: [{ text: qsTr("All"), value: "" }, { text: qsTr("Guide"), value: "epg" },
                           { text: qsTr("Catch-up"), value: "catchup" }, { text: qsTr("Films"), value: "vod" },
-                          { text: qsTr("Free"), value: "free" }]
+                          { text: qsTr("Free"), value: "free" }, { text: qsTr("Guides"), value: "guides" }]
                 value: catalogPage.capability
                 onChosen: (v) => catalogPage.capability = v
             }
@@ -597,7 +600,9 @@ Widgets.RedesignDialog {
             delegate: Item {
                 id: card
                 required property var modelData
-                readonly property bool isAdded: catalogPage.added.indexOf(modelData.id) >= 0
+                readonly property bool isGuide: modelData.kind === "epg"
+                readonly property bool isAdded: isGuide ? catalogPage.addedGuides.indexOf(modelData.url) >= 0
+                                                        : catalogPage.added.indexOf(modelData.id) >= 0
                 width: cards.cellWidth
                 height: cards.cellHeight
 
@@ -685,13 +690,24 @@ Widgets.RedesignDialog {
                         anchors.rightMargin: root.px(14)
                         anchors.bottom: parent.bottom
                         anchors.bottomMargin: root.px(10)
-                        implicitWidth: root.px(80)
-                        text: card.isAdded ? qsTr("Added") : qsTr("Add")
+                        implicitWidth: Math.max(root.px(80), implicitContentWidth + root.px(32))
+                        text: card.isAdded ? qsTr("Added") : card.isGuide ? qsTr("Add Guide") : qsTr("Add")
                         accent: !card.isAdded
-                        enabled: !card.isAdded && card.modelData.kind !== "epg"
-                        onClicked: Iptv.addSource({ kind: card.modelData.kind === "xtream" ? "xtream" : "m3u",
-                                                    name: card.modelData.name, url: card.modelData.url,
-                                                    epg: card.modelData.epg || [], catalogId: card.modelData.id })
+                        // a guide goes with the first source (the guides serve every source)
+                        enabled: !card.isAdded && (!card.isGuide || Iptv.sources.length > 0)
+                        onClicked: {
+                            if (card.isGuide) {
+                                const target = Iptv.sources[0]
+                                Iptv.getSource(target.id, (source) => {
+                                    Iptv.updateSource(target.id, Object.assign(source, {
+                                        epg: (source.epg || []).concat([card.modelData.url]), password: "" }))
+                                })
+                                return
+                            }
+                            Iptv.addSource({ kind: card.modelData.kind === "xtream" ? "xtream" : "m3u",
+                                            name: card.modelData.name, url: card.modelData.url,
+                                            epg: card.modelData.epg || [], catalogId: card.modelData.id })
+                        }
                     }
                 }
             }

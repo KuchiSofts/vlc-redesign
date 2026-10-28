@@ -17,8 +17,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Added
 
-- **Suggest an idea and Report a problem**, at the end of the ⋯ menu and in About. *Suggest an idea* opens the
-  suggestion form on GitHub with the version. *Report a problem* first shows what the report contains (versions,
+- **Suggest an idea and Report a problem**, at the end of the ⋯ menu and in About. *Suggest an idea* opens a new
+  discussion in the Ideas category of GitHub Discussions, with the version. *Report a problem* first shows what the report contains (versions,
   install type, Windows, CPU, graphics adapter and driver, video output and decoding, screens, theme, accent,
   language), with *Copy* and *Open GitHub*, which opens the bug form filled in. Nothing is sent by VLC, and no
   personal data goes in: no file names or paths, no user or computer name, no library, no log.

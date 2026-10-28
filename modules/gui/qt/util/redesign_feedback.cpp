@@ -37,11 +37,10 @@
 
 namespace {
 
-// The forms of the repository. Ideas go to the suggestion form until the
-// Discussions of the repository are open: then "discussions/new?category=ideas"
-// here (its form keeps a "version" field).
+// The forms of the repository: problems go to the bug form, ideas to a new
+// discussion of the Ideas category (the version in its text)
 const char reportForm[] = VLC_REDESIGN_REPO_URL "/issues/new?template=bug_report.yml";
-const char ideaForm[] = VLC_REDESIGN_REPO_URL "/issues/new?template=feature_request.yml";
+const char ideaForm[] = VLC_REDESIGN_REPO_URL "/discussions/new?category=ideas";
 // GitHub refuses longer links
 constexpr int maxUrlLength = 8000;
 
@@ -308,8 +307,8 @@ QString RedesignFeedback::reportUrl(const QString &report) const
 
 QString RedesignFeedback::ideaUrl() const
 {
-    return QString::fromLatin1(QByteArray(ideaForm) + "&version="
-                               + QUrl::toPercentEncoding(QStringLiteral(VLC_REDESIGN_VERSION)));
+    const QString body = QStringLiteral("\n\n---\nVLC Redesign %1").arg(QStringLiteral(VLC_REDESIGN_VERSION));
+    return QString::fromLatin1(QByteArray(ideaForm) + "&body=" + QUrl::toPercentEncoding(body));
 }
 
 void RedesignFeedback::copyText(const QString &text) const

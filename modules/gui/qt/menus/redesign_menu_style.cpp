@@ -239,6 +239,9 @@ bool RedesignMenuStyle::isDark() const
 
 bool RedesignMenuStyle::darkScheme(MainCtx *ctx)
 {
+    // (a window that knows no interface: the one of the menus)
+    if (!ctx)
+        ctx = s_ctx;
     if (ctx && ctx->getColorScheme())
     {
         switch (ctx->getColorScheme()->currentScheme())

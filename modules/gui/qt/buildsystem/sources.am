@@ -338,6 +338,8 @@ libqt_plugin_la_SOURCES = \
 	widgets/native/mlfolderseditor.hpp \
 	widgets/native/qvlcframe.cpp \
 	widgets/native/qvlcframe.hpp \
+	widgets/native/redesign_message_box.cpp \
+	widgets/native/redesign_message_box.hpp \
 	widgets/native/searchlineedit.cpp widgets/native/searchlineedit.hpp \
 	widgets/native/viewblockingrectangle.cpp widgets/native/viewblockingrectangle.hpp \
 	widgets/native/doubleclickignoringitem.hpp

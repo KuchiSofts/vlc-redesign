@@ -410,6 +410,8 @@ qt_plugin_sources = files(
     '../../widgets/native/mlfolderseditor.hpp',
     '../../widgets/native/qvlcframe.cpp',
     '../../widgets/native/qvlcframe.hpp',
+    '../../widgets/native/redesign_message_box.cpp',
+    '../../widgets/native/redesign_message_box.hpp',
     '../../widgets/native/searchlineedit.cpp',
     '../../widgets/native/searchlineedit.hpp',
     '../../widgets/native/viewblockingrectangle.cpp',

@@ -32,6 +32,8 @@ on release day ships.
   helps (version, Windows, graphics card, screens), never anything personal
 - 🔨 The last checks in the running app: Settings scroll bars, the warning colour, *Show controls in fullscreen*,
   a playlist's own picture, the small classic windows
+- 🔨 Subtitle lines marked on the seek bar (from the subtitle file shown), with the line at the hovered time in
+  the preview: built, being checked in the app
 
 **To do**
 
@@ -46,7 +48,6 @@ changed without a restart. The full list is in the [changelog](CHANGELOG.md).
 
 **Ideas**
 
-- 💡 Subtitle lines marked on the seek bar
 - 💡 A *What's new* card after an update
 - 💡 The accent colour following Windows'
 

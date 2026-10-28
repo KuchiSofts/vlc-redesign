@@ -22,6 +22,13 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   install type, Windows, CPU, graphics adapter and driver, video output and decoding, screens, theme, accent,
   language), with *Copy* and *Open GitHub*, which opens the bug form filled in. Nothing is sent by VLC, and no
   personal data goes in: no file names or paths, no user or computer name, no library, no log.
+- **Subtitle lines on the seek bar.** While a subtitle file is shown (one you added, one found next to the video, or
+  one downloaded by the subtitle search), thin marks on the seek bar show where its lines are, so you can see where
+  people talk. The marks follow the subtitle delay, close lines join into one mark, and the part already played
+  covers them. Hovering the bar shows the line at that time in the frame preview (or under the time). SRT, WebVTT,
+  ASS/SSA, MicroDVD, SubViewer/SBV, SAMI and VobSub (`.idx`) files are read once, in the background, and kept for
+  the next time. Subtitles inside the video file and streams that cannot seek have no marks. Settings, Subtitles,
+  Timing: *Show subtitle lines on the seek bar* (`qt-seek-subtitle-cues`, on by default, applies at once).
 
 ### Fixed
 

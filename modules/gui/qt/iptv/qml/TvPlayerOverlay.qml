@@ -409,7 +409,7 @@ FocusScope {
             Item { width: root.px(4); height: 1 }
             BarButton {
                 visible: !root._archive && (root.channel.catchupDays ?? 0) > 0 && root._hasNow
-                icon: "recent"
+                iconName: "recent"
                 tip: qsTr("Watch from the Start")
                 onClicked: Iptv.playFromStart()
             }
@@ -432,7 +432,7 @@ FocusScope {
                 onClicked: Iptv.channelDown()
             }
             BarButton {
-                icon: "lists"
+                iconName: "lists"
                 tip: qsTr("Channels")
                 onClicked: root.openList()
             }
@@ -443,7 +443,7 @@ FocusScope {
     // name in a tool tip
     component BarButton: T.Button {
         id: barButton
-        property string icon
+        property string iconName
         property string glyph
         property string tip
         anchors.verticalCenter: parent ? parent.verticalCenter : undefined
@@ -462,12 +462,12 @@ FocusScope {
         contentItem: Item {
             Image {
                 anchors.centerIn: parent
-                visible: barButton.icon !== ""
+                visible: barButton.iconName !== ""
                 width: root.px(20)
                 height: width
                 sourceSize: Qt.size(width, height)
-                source: barButton.icon === "" ? ""
-                        : SVGColorImage.colorize("qrc:///redesign/duo/" + barButton.icon + ".svg")
+                source: barButton.iconName === "" ? ""
+                        : SVGColorImage.colorize("qrc:///redesign/duo/" + barButton.iconName + ".svg")
                                        .color1(VLCStyle.redesign.color(VLCStyle.redesign.textMuted))
                                        .color2(VLCStyle.redesign.accent).uri()
             }

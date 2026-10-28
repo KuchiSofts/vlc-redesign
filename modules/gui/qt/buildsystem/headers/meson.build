@@ -14,6 +14,7 @@ moc_headers = files(
     '../../dialogs/firstrun/whats_new.hpp',
     '../../dialogs/bookmarks/bookmarks.hpp',
     '../../dialogs/dialogs/dialogmodel.hpp',
+    '../../dialogs/dialogs/redesign_tools.hpp',
     '../../dialogs/dialogs_provider.hpp',
     '../../dialogs/epg/EPGChannels.hpp',
     '../../dialogs/epg/EPGProgram.hpp',

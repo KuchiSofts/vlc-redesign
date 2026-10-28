@@ -51,6 +51,11 @@ libqml_module_dialogs_a_QML = \
 	dialogs/dialogs/qml/NetworkStreamDialog.qml \
 	dialogs/dialogs/qml/RedesignAboutDialog.qml \
 	dialogs/dialogs/qml/RedesignReportDialog.qml \
+	dialogs/dialogs/qml/RedesignMessageDialog.qml \
+	dialogs/dialogs/qml/RedesignGoToTimeDialog.qml \
+	dialogs/dialogs/qml/RedesignStatisticsDialog.qml \
+	dialogs/dialogs/qml/RedesignPluginsDialog.qml \
+	dialogs/dialogs/qml/RedesignFolderInfoDialog.qml \
 	dialogs/extended/qml/VideoOption.qml \
 	dialogs/extended/qml/VideoFilterSection.qml \
 	dialogs/extended/qml/CropInput.qml \
@@ -424,6 +429,8 @@ libqml_module_widgets_a_QML = \
 	widgets/qml/RedesignButton.qml \
 	widgets/qml/LanguagePicker.qml \
 	widgets/qml/RedesignDialogHeading.qml \
+	widgets/qml/RedesignInfoRow.qml \
+	widgets/qml/RedesignSectionTitle.qml \
 	widgets/qml/RedesignTextArea.qml \
 	widgets/qml/CSDMouseStealer.qml \
 	widgets/qml/CurrentIndicator.qml \

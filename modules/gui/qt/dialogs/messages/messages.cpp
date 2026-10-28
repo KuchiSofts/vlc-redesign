@@ -28,7 +28,7 @@
 #include <QTextBlock>
 #include <QFileDialog>
 #include <QTextStream>
-#include <QMessageBox>
+#include "widgets/native/redesign_message_box.hpp"
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
 #include <QScrollBar>
@@ -364,7 +364,7 @@ bool MessagesDialog::save()
     {
         QFile file( saveLogFileName );
         if ( !file.open( QFile::WriteOnly | QFile::Text ) ) {
-            QMessageBox::warning( this, qtr( "Application" ),
+            RedesignMessageBox::warning( p_intf, this, qtr( "Application" ),
                     qtr( "Cannot write to file %1:\n%2." )
                     .arg( saveLogFileName )
                     .arg( file.errorString() ) );

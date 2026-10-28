@@ -82,7 +82,6 @@
 #include <QGuiApplication>
 #include <QMimeData>
 #include <QClipboard>
-#include <QInputDialog>
 
 #include <QQmlProperty>
 
@@ -1278,13 +1277,15 @@ bool MainCtx::pasteFromClipboard()
             placeholder.chop(1);
         }
 
-        bool ok = false;
-        const QString ret = QInputDialog::getMultiLineText(nullptr,
-                                                           qtr("Paste from clipboard"),
-                                                           qtr("Do you want to enqueue the following URLs into the play queue?"),
-                                                           placeholder,
-                                                           &ok);
-        if (!ok)
+        // the URLs in the field of the redesign's dialogs, to edit
+        RedesignMessage message;
+        message.title = qtr("Paste from clipboard");
+        message.heading = qtr("Do you want to enqueue the following URLs into the play queue?");
+        message.acceptText = qtr("Enqueue");
+        message.input = RedesignMessage::TextInput;
+        message.inputText = placeholder;
+        QString ret;
+        if (THEDP->execRedesignMessage(message, &ret) != RedesignMessage::Accepted)
             return false;
 
         for (const auto& i : QStringView(ret).split('\n'))

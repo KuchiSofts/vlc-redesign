@@ -29,7 +29,7 @@
 #include <QToolButton>
 #include <QComboBox>
 #include <QLabel>
-#include <QMessageBox>
+#include "widgets/native/redesign_message_box.hpp"
 #include <QRadioButton>
 #include <QRegularExpression>
 #include <QButtonGroup>
@@ -799,7 +799,7 @@ void VLCProfileEditor::accept()
 {
     if( ui.profileLine->text().isEmpty() )
     {
-        QMessageBox::warning( this, qtr(" Profile Name Missing" ),
+        RedesignMessageBox::warning( p_intf, this, qtr(" Profile Name Missing" ),
                 qtr( "You must set a name for the profile." ) );
         ui.profileLine->setFocus();
         return;

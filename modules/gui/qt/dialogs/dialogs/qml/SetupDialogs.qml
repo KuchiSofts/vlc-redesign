@@ -61,6 +61,13 @@ Item {
             if (!loader.item.visible) loader.item.open()
         }
     }
+    // shown, or closed when it shows
+    function toggle(loader) {
+        if (loader.item && loader.item.visible)
+            loader.item.close()
+        else
+            root.show(loader)
+    }
     // A dialog closed is let go with its pages and models, made again when
     // asked for (unless it was opened again meanwhile)
     function release(loader) {
@@ -74,6 +81,21 @@ Item {
             Qt.callLater(root.showSetupOnStart)
         else if (whatsNewState.pending)
             whatsNewTimer.start()
+    }
+    // The messages and questions of the C++ side (the play queue to restore
+    // after a crash, the confirmations, a text to type), in the window (it
+    // tells DialogsProvider it shows them)
+    RedesignMessageDialog { id: messages; parent: root }
+    Connections {
+        target: DialogsProvider
+        function onRedesignMessageRequested(host, id, message) {
+            if (host === messages)
+                messages.enqueue(id, message)
+        }
+        function onRedesignMessageCancelled(host, id) {
+            if (host === messages)
+                messages.drop(id)
+        }
     }
     Connections {
         target: DialogsProvider
@@ -98,6 +120,18 @@ Item {
         function onSleepTimerRequested() { timerMenu.open() }
         function onAudioVisualizationRequested() { visualization.open() }
         function onHdrOutputRequested() { hdr.open() }
+        // (Ctrl+T and the menus show and hide it, as the classic window)
+        function onGotoTimeRequested() { root.toggle(goToTime) }
+        function onPluginsRequested() { root.toggle(plugins) }
+        function onStatisticsRequested() { root.show(statistics) }
+        function onFolderInfoRequested(folder) {
+            folderInfo.requestedUrl = folder
+            if (folderInfo.item) {
+                folderInfo.item.folderUrl = folder
+                if (!folderInfo.item.visible) folderInfo.item.open()
+            } else
+                folderInfo.active = true
+        }
     }
     Loader {
         id: setup
@@ -183,6 +217,42 @@ Item {
             item.parent = root
             item.currentTab = requestedTab
             item.closed.connect(() => root.release(effects))
+            item.open()
+        }
+    }
+    // The small tool windows (Go to Time, the plugins list, the statistics,
+    // the information of a folder), as the other dialogs
+    Loader {
+        id: goToTime
+        anchors.fill: parent
+        active: false
+        source: "qrc:/qt/qml/VLC/Dialogs/RedesignGoToTimeDialog.qml"
+        onLoaded: { item.parent = root; item.closed.connect(() => root.release(goToTime)); item.open() }
+    }
+    Loader {
+        id: plugins
+        anchors.fill: parent
+        active: false
+        source: "qrc:/qt/qml/VLC/Dialogs/RedesignPluginsDialog.qml"
+        onLoaded: { item.parent = root; item.closed.connect(() => root.release(plugins)); item.open() }
+    }
+    Loader {
+        id: statistics
+        anchors.fill: parent
+        active: false
+        source: "qrc:/qt/qml/VLC/Dialogs/RedesignStatisticsDialog.qml"
+        onLoaded: { item.parent = root; item.closed.connect(() => root.release(statistics)); item.open() }
+    }
+    Loader {
+        id: folderInfo
+        property url requestedUrl
+        anchors.fill: parent
+        active: false
+        source: "qrc:/qt/qml/VLC/Dialogs/RedesignFolderInfoDialog.qml"
+        onLoaded: {
+            item.parent = root
+            item.folderUrl = requestedUrl
+            item.closed.connect(() => root.release(folderInfo))
             item.open()
         }
     }

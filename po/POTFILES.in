@@ -131,6 +131,7 @@ src/video_output/vout_private.h
 src/video_output/vout_subpictures.c
 src/win32/thread.c
 
+bin/winvlc.c
 lib/audio.c
 lib/core.c
 lib/libvlc_internal.h

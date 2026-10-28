@@ -24,9 +24,9 @@ What is being worked on, updated as it changes (2026-10-28):
   all-users installer, an update from 0.3.1, the proxy exceptions, Linux builds.
 - 🟡 **Weblate**: every language has all 1,723 texts again (7,093 translated, `msgfmt -c` clean in all 110
   catalogs), about 80 wrong catalog translations fixed, the volunteers' Estonian and Swedish merged, 12 texts that
-  stay the same in every language flagged `ignore-same`. The component has been locked since 2026-10-27: Weblate
-  can't push to GitHub (no credentials). Waiting for the owner to install the Hosted Weblate GitHub App on the repo,
-  then the push of `main` (Weblate reads the new files from it) and the unlock.
+  stay the same in every language flagged `ignore-same`. The lock of 2026-10-27 (Weblate couldn't push: no
+  credentials) is gone: the component now goes through the Hosted Weblate GitHub App (vlc-redesign only) and is
+  open again. Left: the push of `main`, from which Weblate reads the new files.
 - 🟢 **0.3.1, a small update** (build 215, released 2026-10-25): what follows, for the copies of 0.2.4 and later through
   the in-app update (only the changed files).
 - 🟢 **Bar panels open above their button**: Effects, VLC Settings and HDR now open above the bar, aligned to

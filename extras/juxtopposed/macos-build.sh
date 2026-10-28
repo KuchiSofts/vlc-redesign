@@ -193,12 +193,14 @@ if [ ! -f Makefile ] || [ "$root/configure" -nt Makefile ]; then
     # no Sparkle (its feed is VideoLAN's: it would offer VLC), libcurl of
     # macOS for the interface's online subtitles, artwork and update check
     # (the SDK has its headers but no pkg-config file)
+    # No ncurses (the terminal interface): the app has none, and the
+    # prebuilt ncurses names the SDK of VideoLAN's build machine
     run configure "$root/extras/package/macosx/configure.sh" \
         --build="$BUILD_TRIPLET" --host="$HOST_TRIPLET" \
         --with-contrib="$contrib/$HOST_TRIPLET" \
         --with-macosx-sdk="$SDKROOT" --with-macosx-version-min="$MIN_MACOS" \
         --disable-debug \
-        --disable-macosx --disable-sparkle --disable-skins2 \
+        --disable-macosx --disable-sparkle --disable-skins2 --disable-ncurses \
         --enable-qt --enable-nls \
         QMAKE6="$qtdir/bin/qmake6" \
         QT_LIBCURL_CFLAGS="-I$SDKROOT/usr/include" QT_LIBCURL_LIBS="-lcurl"

@@ -33,6 +33,12 @@ body:
     validations:
       required: true
   - type: textarea
+    id: environment
+    attributes:
+      label: System information
+      description: "⋯ menu → Report a problem fills this in: versions, Windows, graphics, screens, theme. No personal data."
+      render: text
+  - type: textarea
     id: what
     attributes:
       label: What happened?

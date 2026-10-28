@@ -258,6 +258,7 @@ libqt_plugin_la_SOURCES = \
 	util/workerthreadset.hpp util/workerthreadset.cpp \
 	util/http_request.cpp util/http_request.hpp \
 	util/redesign_updater.cpp util/redesign_updater.hpp \
+	util/redesign_feedback.cpp util/redesign_feedback.hpp \
 	util/subtitle_preferences.cpp util/subtitle_preferences.hpp \
 	util/redesign_version.hpp \
 	util/base_model.hpp util/base_model_p.hpp util/base_model.cpp \

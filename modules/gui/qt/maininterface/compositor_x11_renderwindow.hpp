@@ -201,6 +201,8 @@ private:
     void resetClientPixmaps();
     void onWindowExtendedMarginChanged(unsigned margin);
     void setHasExtendedFrame(bool hasExtendedFrame);
+    // the margin of the extended frame (the shadow) lets the clicks through
+    void updateInputShape();
 
     qt_intf_t* m_intf = nullptr;
     xcb_connection_t* m_conn = nullptr;
@@ -217,6 +219,8 @@ private:
     bool m_supportExtendedFrame = false;
     //is extended frame enabled
     bool m_hasExtendedFrame = false;
+    //its margin, in device pixels
+    unsigned m_extendedMargin = 0;
 
     QWindow* m_videoWindow = nullptr;
     std::unique_ptr<CompositorX11RenderClient> m_videoClient;

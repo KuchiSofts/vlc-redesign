@@ -1,0 +1,88 @@
+# platforms.yml is the single source of every platform (docs/MASTER-PLAN.md,
+# 13.3). On main this renders it into the README, site/platforms.json and
+# site/index.html (committed back when they changed) and publishes site/ on
+# GitHub Pages (Settings > Pages > Source: GitHub Actions). A pull request only
+# checks that the rendered files are up to date.
+name: Platforms and website
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'platforms.yml'
+      - 'site/**'
+      - 'docs/media/**'
+      - 'extras/juxtopposed/platforms/**'
+      - '.github/workflows/platforms.yml'
+  pull_request:
+    paths:
+      - 'platforms.yml'
+      - 'site/**'
+      - 'README.md'
+      - 'extras/juxtopposed/platforms/**'
+      - '.github/workflows/platforms.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check the rendered files (pull request)
+        if: github.event_name == 'pull_request'
+        run: python3 extras/juxtopposed/platforms/render.py --check
+
+      - name: Render and commit (main)
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        run: |
+          set -e
+          python3 extras/juxtopposed/platforms/render.py
+          if ! git diff --quiet -- README.md site; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add README.md site
+            git commit -m "Platforms: README and website from platforms.yml (${GITHUB_SHA::8})"
+            # (a protected main refuses it: the website is still published
+            # from the rendered files, and the README waits for a local render)
+            git push || echo "::warning::Could not push the rendered README and site; run extras/juxtopposed/platforms/render.py and commit"
+          fi
+
+      - name: Build the website
+        run: python3 extras/juxtopposed/platforms/render.py --build _site
+
+      - name: Set up Pages
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        uses: actions/configure-pages@v5
+
+      - name: Upload the website
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: render
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish on GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

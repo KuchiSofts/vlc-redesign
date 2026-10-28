@@ -187,6 +187,7 @@ libqt_plugin_la_RES = \
 	pixmaps/redesign/video.svg \
 	pixmaps/redesign/music.svg \
 	pixmaps/redesign/network.svg \
+	pixmaps/redesign/tv.svg \
 	pixmaps/redesign/settings.svg \
 	pixmaps/redesign/duo/add.svg \
 	pixmaps/redesign/duo/album.svg \

@@ -277,6 +277,32 @@ const QtSettingOption qtSettingOptions[] = {
     { "redesign/recentplay-filter", 's', 0, 0, 0, N_("Never remember items matching"),
       N_("A regular expression: the items whose address or name matches it are not saved "
          "in the history, nor their playback position.") },
+    // Live TV (iptv/iptv_addon.cpp reads them)
+    { "redesign/iptv-refresh", 'i', 3, 0, 4, N_("Update the channels and the guide"),
+      N_("How often the playlists and the programme guides are downloaded again, in the background. "
+         "Update in the sources does it at once."),
+      N_("Never|Every 6 hours|Every 12 hours|Every day|Every week") },
+    { "redesign/iptv-guide-days", 'i', 7, 1, 14, N_("Days of the guide kept"),
+      N_("How many days of programmes are kept before and after today. Fewer use less memory "
+         "with a large guide; the archives of the channels reach back as far as this.") },
+    { "redesign/iptv-guide-hours", 'i', 3, 1, 12, N_("Hours across the guide"),
+      N_("The time the guide shows across its width.") },
+    { "redesign/iptv-languages", 's', 0, 0, 0, N_("Guide languages"),
+      N_("Keeps only the programmes in these languages when a guide gives several (codes such as "
+         "en, he, fr, separated by commas). Empty: every language.") },
+    { "redesign/iptv-banner", 'i', 0, 0, 3, N_("Channel banner"),
+      N_("What the banner shows over the video when the channel changes."),
+      N_("Channel, now and next|Channel and now|Channel only|Nothing") },
+    { "redesign/iptv-descriptions", 'b', 1, 0, 0, N_("Show programme descriptions"),
+      N_("Shows the description of what is on in the channel lists and the banner.") },
+    { "redesign/iptv-progress", 'b', 1, 0, 0, N_("Show the progress of what is on"),
+      N_("A bar of how much of the programme has played, from its start and end in the guide.") },
+    { "redesign/iptv-next", 'b', 1, 0, 0, N_("Show what is next"),
+      N_("Shows the next programme in the channel lists and the banner.") },
+    { "redesign/iptv-start-last", 'b', 0, 0, 0, N_("Start on the last channel"),
+      N_("When VLC opens with nothing to play, the channel watched last plays.") },
+    { "redesign/iptv-adult", 'b', 0, 0, 0, N_("Show adult channels"),
+      N_("Lists the channels whose group or name says they are for adults.") },
 };
 
 // The fonts of the subtitles: the system's (VLC's default) first, then the
@@ -1337,8 +1363,13 @@ void ConfigModel::reload()
 // the interface
 void ConfigModel::buildEntries()
 {
+    // Live TV: its page while its add-on is there and on (its switch is the
+    // add-on's own option: without the plugin file there is none)
+    const bool liveTv = module_exists("iptv") && config_GetInt("iptv-enabled") > 0;
     for (size_t i = 0; i < PrefsCatalog::count(); ++i) {
         const PrefsCatalog::Option &option = PrefsCatalog::options()[i];
+        if (!liveTv && qstrcmp(option.category, "tv") == 0)
+            continue;
         if (qstrncmp(option.name, "x:", 2) == 0) {
             // "x:x-filter:<module>", "x:x-night-mode": toggles of the
             // audio filters, where the module exists

@@ -43,6 +43,7 @@ Every picture is the real app, with free films and music.</sub>
 | **[Install and update](Install-and-Update)** | The installer page by page, silent install switches, the portable zip, [small updates](Install-and-Update#small-updates), uninstalling |
 | **[The player](The-Player)** | Every control of the player: seek bar previews, volume up to 200 %, the panels above the bar, speed, sleep timer, A-B loop, picture in picture |
 | **[Library](Library)** | Home, Videos, Music, Network, Playlists, Recent, media folders, and the library next to the video |
+| **[Live TV](Live-TV)** | The TV channels of your own IPTV playlist or Xtream Codes account: channel lists with what is on, a programme guide, catch-up, channel up and down; an add-on you can leave out |
 | **[Queue and playlists](The-Player#the-queue-card)** | The queue card of the player; [playlists](Library#playlists) in the library |
 | **[Subtitles](Subtitles)** | Tracks and languages that learn, online search, sync, position and size, dual subtitles |
 | **[Effects](Effects)** | Equalizer, compressor, spatializer, stereo widener, video effects, presets |

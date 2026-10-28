@@ -28,7 +28,18 @@ What is being worked on, updated as it changes (2026-10-28):
   (`PE_FrameMenu`, also on Windows 10). Checked 2026-10-29: Windows build (main window, main menu, sort menu, About,
   Keyboard Shortcuts, Settings: `#4C4A48` in dark and light); Linux Qt 6.8 build under Xvfb/X11 (main window on
   all four sides, main menu, sort menu, tooltips, the welcome card, dark and light). Not run: Wayland (same QML
-  path), macOS (CI only). Left: merge.
+  path), macOS (CI only). Merged; build 13: the ⋯ menu, Network stream, Keyboard Shortcuts, Customize Player,
+  Settings and About framed on all four sides.
+- 🟡 **Live TV** (branch `feature/iptv`): an add-on of its own, `modules/misc/iptv` (`libiptv_plugin`, QtCore,
+  capability `iptv`, the JSON API of `include/vlc_iptv.h`): M3U, Xtream Codes and XMLTV readers, downloads through
+  VLC's access modules, the cache on disk, the guide's descriptions kept on disk, catch-up addresses, the catalog
+  (built in, a newer one daily). The interface (`modules/gui/qt/iptv`) only looks the plugin up
+  (`module_exists`): the TV page (channels, guide, films and series), the sources dialog with the catalog, the
+  player's banner, number entry and channel list, Settings > TV. `iptv-enabled` on by default; the installer's
+  *Live TV (IPTV) add-on* component leaves the plugin out. A channel zapped makes no library entry
+  (`src/player/medialib.c`: no external media for a `no-save-recentplay` item). Test:
+  `extras/juxtopposed/iptv-parsers.cpp`; the catalog (118 playlists, 157 guides, verified 2026-10-28). Merged into
+  `redesign` 2026-10-29. Left: the owner's "no sound" report (not reproduced), translations, light/RTL captures.
 
 - 🟡 **Final check before 0.3.2** (2026-10-28): VideoLAN's master merged to its latest (`32b160d9e9`), `feature/linux-pkg` and
   `feature/macos` merged; the redrawn tool windows looked at in build 10 (Media Statistics did not load: Canvas,

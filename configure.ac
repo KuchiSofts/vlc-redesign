@@ -4274,6 +4274,9 @@ AM_CONDITIONAL([HAVE_KF6WINDOWSYSTEM], [test "${have_kf6windowsystem}" = "yes"])
 dnl
 dnl QT
 dnl
+AC_ARG_ENABLE([iptv],
+  AS_HELP_STRING([--disable-iptv], [Live TV (IPTV) add-on, with Qt (default enabled)]))
+have_iptv="no"
 AC_ARG_ENABLE([qt],
   AS_HELP_STRING([--disable-qt], [Qt UI support (default enabled)]),, [
   AS_IF([test "${enable_vlc}" != "no"], [enable_qt="yes"])
@@ -4394,6 +4397,26 @@ AS_IF([test "${enable_qt}" != "no"], [
       AC_SUBST([QT_CFLAGS])
       AC_SUBST([QT_LDFLAGS])
       AC_SUBST([QT_MOC_INCLUDE_DIRS])
+
+      dnl The Live TV (IPTV) add-on, a plugin of its own: QtCore only (the
+      dnl paths relative to modules/, where its objects are compiled)
+      AS_IF([test "${enable_iptv}" != "no"], [
+        IPTV_QT_LIBS=$(${PYTHON3} ${srcdir}/modules/gui/qt/scripts/static_dirs.py \
+          --qmake "${QMAKE6}" --qtconf "${with_qtconf}" \
+          --pro ${srcdir_abs}/modules/misc/iptv/iptv.pro \
+          --builddir ${ac_pwd}/modules \
+          --libs \
+          ${qmake_additional_params}) && \
+        IPTV_QT_CFLAGS=$(${PYTHON3} ${srcdir}/modules/gui/qt/scripts/static_dirs.py \
+          --qmake "${QMAKE6}" --qtconf "${with_qtconf}" \
+          --pro ${srcdir_abs}/modules/misc/iptv/iptv.pro \
+          --builddir ${ac_pwd}/modules \
+          --cflags \
+          ${qmake_additional_params}) && \
+        have_iptv="yes"
+      ])
+      AC_SUBST([IPTV_QT_LIBS])
+      AC_SUBST([IPTV_QT_CFLAGS])
 
       QT_LIBEXEC_DIRECTORY="$(${QT_PATHS}     -query QT_HOST_LIBEXECS 2>/dev/null)"
       QT_QML_LIBEXEC_DIRECTORY=${QT_LIBEXEC_DIRECTORY}
@@ -4593,6 +4616,7 @@ AS_IF([test "${enable_qt}" != "no" -a "${SYS}" != "mingw32"], [
 ])
 AC_SUBST([QT_INDIRECT_LIBS])
 AM_CONDITIONAL([ENABLE_QT], [test "$enable_qt" != "no"])
+AM_CONDITIONAL([HAVE_IPTV], [test "${have_iptv}" = "yes" -a "$enable_qt" != "no"])
 AM_CONDITIONAL([HAVE_QT_GTK], [test "${have_qt_gtk}" = "yes"])
 AM_CONDITIONAL([HAVE_QT_QTEST], [test "${have_qt_qtest}" = "yes"])
 AM_CONDITIONAL([HAVE_QT_QUICK_TEST], [test "${have_qt_quick_test}" = "yes"])

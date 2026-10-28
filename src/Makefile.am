@@ -67,6 +67,7 @@ pluginsinclude_HEADERS.h = \
 	../include/vlc_input_item.h \
 	../include/vlc_interface.h \
 	../include/vlc_interrupt.h \
+	../include/vlc_iptv.h \
 	../include/vlc_keystore.h \
 	../include/vlc_list.h \
 	../include/vlc_media_library.h \

@@ -30,6 +30,9 @@ on release day ships.
 
 **In progress**
 
+- 🔨 **Live TV**: the channels of your own IPTV playlist (M3U) or Xtream Codes account in a TV page, with what is
+  on now and next, a programme guide, catch-up of past programmes, channel up and down, numbers and a channel
+  list over the video, and a catalog of free, legal channel lists; an add-on, on by default, that can be left out
 - 🔨 *Suggest an idea* and *Report a problem* in the ⋯ menu and in About: the GitHub form opens filled with what
   helps (version, Windows, graphics card, screens), never anything personal
 - 🔨 A *What's new* card after an update: the highlights of the new version, once, the first time VLC opens after

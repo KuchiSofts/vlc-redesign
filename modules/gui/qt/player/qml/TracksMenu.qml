@@ -36,8 +36,16 @@ T.Popup {
     readonly property var trackTabs: [
         { title: qsTr("Video"), icon: "qrc:///redesign/track-video.png", activeIcon: "qrc:///redesign/track-video-active.png", tab: 2 },
         { title: qsTr("Audio"), icon: "qrc:///redesign/track-audio.png", activeIcon: "qrc:///redesign/track-audio-active.png", tab: 1 },
-        { title: qsTr("Subtitles"), icon: "qrc:///redesign/track-subtitles.png", activeIcon: "qrc:///redesign/track-subtitles-active.png", tab: 0 }
-    ]
+    ].concat(subtitlesOffered
+             ? [{ title: qsTr("Subtitles"), icon: "qrc:///redesign/track-subtitles.png", activeIcon: "qrc:///redesign/track-subtitles-active.png", tab: 0 }]
+             : [])
+    // Subtitles are for films and videos: a live TV channel or music has
+    // no Subtitles tab, unless it carries subtitle tracks of its own
+    // (teletext, DVB, closed captions: then their choice only)
+    readonly property bool subtitlesOffered: (Player.hasVideoOutput && !Iptv.playing)
+                                             || Player.subtitleTracks.count > 0
+    onSubtitlesOfferedChanged: if (!subtitlesOffered && currentTab === 0) currentTab = 1
+    Component.onCompleted: if (!subtitlesOffered && currentTab === 0) currentTab = 1
     // The pictures of the tabs and the checks are drawn in #8F8F8F and the
     // default accent: tinted in the light theme and for the other accents
     readonly property color iconTint: VLCStyle.palette.isDark ? "transparent"

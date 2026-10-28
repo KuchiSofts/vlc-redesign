@@ -77,6 +77,29 @@ if medialibrary_dep.found()
     }
 endif
 
+
+# The Live TV (IPTV) add-on: its own plugin, with QtCore, that the Qt
+# interface finds at run time (include/vlc_iptv.h); a package can leave it out
+iptv_qt_dep = dependency('qt6', modules: ['Core'], required: false)
+if get_option('qt').allowed() and iptv_qt_dep.found()
+    iptv_catalog_h = custom_target('iptv_catalog_h',
+        input: 'iptv/catalog/catalog.json',
+        output: 'catalog.h',
+        command: [find_program('python3'), files('iptv/embed_catalog.py'), '@INPUT@', '@OUTPUT@'])
+    vlc_modules += {
+        'name' : 'iptv',
+        'sources' : [files(
+            'iptv/iptv.cpp',
+            'iptv/service.cpp',
+            'iptv/playlist.cpp',
+            'iptv/guide.cpp',
+            'iptv/xtream.cpp',
+        ), iptv_catalog_h],
+        'dependencies' : [iptv_qt_dep, z_dep],
+        'plugin_dir' : 'misc',
+    }
+endif
+
 # Securetransport
 if host_system == 'darwin'
     vlc_modules += {

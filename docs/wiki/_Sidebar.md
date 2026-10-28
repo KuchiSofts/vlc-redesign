@@ -9,6 +9,7 @@
 **Use it**
 - [The player](The-Player)
 - [Library](Library)
+- [Live TV](Live-TV)
 - [Queue and playlists](The-Player#the-queue-card)
 - [Subtitles](Subtitles)
 - [Effects](Effects)

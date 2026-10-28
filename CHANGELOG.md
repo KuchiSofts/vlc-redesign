@@ -17,6 +17,23 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Added
 
+- **Live TV.** Watch the channels of your own IPTV provider like on a TV box: **TV** in the sidebar lists them
+  with their logos, numbers and groups, what is on now (with its progress) and what is next, your favourites and
+  the ones watched last; **Guide** shows the programmes of every channel across the hours, with the line of now.
+  Add a playlist link or file (M3U, its guide found in it), an Xtream Codes login (with its films and series), or
+  a guide link of your own (XMLTV, several merged), or one of the free, legal channel lists of the **catalog** in a
+  click; *Suggest a Service* proposes a new one on GitHub. While watching: Page Up and Page Down change channel,
+  type a number, Backspace goes back to the last channel, Enter shows the channel list over the video, and a
+  banner shows what is on at every switch. Past programmes play from the archive when the channel keeps one
+  (catch-up), *Watch from the Start* restarts the one on now, and a reminder tells when a programme starts. The
+  channels and the guide update in the background and work offline; links and passwords stay in VLC's keystore.
+  Live TV is an add-on of its own, on by default: *Live TV (IPTV) add-on* in Settings, General turns it off, the
+  installer can leave it out, and without it nothing of it shows. Settings, TV has its sources and options. See
+  [Live TV](https://github.com/KuchiSofts/vlc-redesign/wiki/Live-TV).
+- **Edit Sidebar.** Put the pages of the sidebar in your order (drag them, or the arrows), hide the ones you do
+  not use, or reset them: right-click the sidebar, or Settings, Interface, Sidebar.
+- **Subtitles for films only.** A live TV channel or music shows no subtitle files, online search or sync; the
+  tracks button only shows when there is a track to choose.
 - **Suggest an idea and Report a problem**, at the end of the ⋯ menu and in About. *Suggest an idea* opens a new
   discussion in the Ideas category of GitHub Discussions, with the version. *Report a problem* first shows what the report contains (versions,
   install type, Windows, CPU, graphics adapter and driver, video output and decoding, screens, theme, accent,

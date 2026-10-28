@@ -128,6 +128,8 @@ Controls.Popup {
                                 color: choice.chosen || row.hovered || row.visualFocus
                                        ? root.c("#1F1F1F", "#9c9c9b") : "transparent"
                                 Impl.ColorImage {
+                                    // drawn at the size shown (an SVG: sharp at any scale and zoom)
+                                    sourceSize: Qt.size(width, height)
                                     visible: choice.chosen
                                     anchors.right: parent.right
                                     anchors.rightMargin: root.px(13)

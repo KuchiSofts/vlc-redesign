@@ -362,6 +362,8 @@ RedesignIconButton {
                 }
             }
             Impl.ColorImage {
+                // drawn at the size shown (an SVG: sharp at any scale and zoom)
+                sourceSize: Qt.size(Layout.preferredWidth, Layout.preferredHeight)
                 Layout.rightMargin: VLCStyle.dp(8, VLCStyle.scale)
                 visible: row.selected
                 source: "qrc:///redesign/track-check-active.png"

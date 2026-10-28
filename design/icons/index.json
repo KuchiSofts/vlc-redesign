@@ -9,11 +9,15 @@
     },
     "glyphs-svg": {
       "folder": "svg/glyphs",
-      "description": "SVG sources of the glyphs, from the same Figma symbols (42:356), one per PNG state that has one (design/tools/icon_svgs.py; its report icon_svgs_report.md compares them with the PNGs). 24 x 24 unless noted, Figma's colours of each state."
+      "description": "SVG sources of the glyphs, from the same Figma symbols (42:356), one per PNG state (design/tools/icon_svgs.py; its report icon_svgs_report.md compares them with the PNGs). 24 x 24 unless noted, Figma's colours of each state. The app draws these, at the size shown; the PNGs stay as a fallback."
     },
     "svg": {
       "folder": "svg",
-      "description": "Single-colour SVG icons of the top bar, the sidebar and the player (24 x 24 unless noted)."
+      "description": "SVG icons of the top bar, the sidebar and the player, and the SVG of each raster piece of images/ (same name; design/tools/raster_svgs.json says which Figma node each comes from)."
+    },
+    "player-svg": {
+      "folder": "player/svg",
+      "description": "SVG of each player and window-frame piece of player/ (same name, from Figma; raster_svgs.json)."
     },
     "duo": {
       "folder": "svg/duo",
@@ -4171,6 +4175,36 @@
     },
     {
       "set": "glyphs-svg",
+      "name": "cast",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/cast/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/cast/default.svg",
+          "sha256": "ea4aa6a34e4ef351776a94535965a7619e44f32450c45bd120a7d4acd8fa14f0"
+        },
+        {
+          "state": "large",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/cast/large.svg",
+          "size": [
+            96,
+            96
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/cast/large.svg",
+          "sha256": "344df942956a15c66eac51d0dc5f7966615f520e4fcae67766dded7f1c29df4d"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
       "name": "chapters",
       "states": [
         {
@@ -6244,6 +6278,18 @@
       "name": "repeat",
       "states": [
         {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/repeat/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/repeat/active.svg",
+          "sha256": "e2149490e7301fcd597f963b46626f954421f373aaa5170c15801290c166cd35"
+        },
+        {
           "state": "default",
           "scale": 1,
           "format": "svg",
@@ -6290,6 +6336,24 @@
           ],
           "source": "modules/gui/qt/pixmaps/redesign/icons/right-sidebar/default.svg",
           "sha256": "cd8ebfbcb41bc17b26b68655cf62f0904a81fd32d0e085d1a8449361d80711a4"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "save",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/save/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/save/default.svg",
+          "sha256": "cb35ac4b9eefd53e92f1454415a289c5adb3ab2d66981704f47075f6cbd7dc3d"
         }
       ]
     },
@@ -6400,6 +6464,18 @@
       "name": "shuffle",
       "states": [
         {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/shuffle/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/shuffle/active.svg",
+          "sha256": "b6a9dacb26ad01a1d63bb39dc038011fe8ee6ec0dea627ad000974b748129b47"
+        },
+        {
           "state": "default",
           "scale": 1,
           "format": "svg",
@@ -6507,6 +6583,42 @@
       "set": "glyphs-svg",
       "name": "sort",
       "states": [
+        {
+          "state": "active-accent",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/sort/active-accent.svg",
+          "size": [
+            26,
+            25
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/sort/active-accent.svg",
+          "sha256": "0ae2c6a8b5911dfdaee18c1271f445e7d9bf462f7d4721bacead64396eebf1be"
+        },
+        {
+          "state": "active-grey",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/sort/active-grey.svg",
+          "size": [
+            26,
+            25
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/sort/active-grey.svg",
+          "sha256": "30792f62575ccc1c3b49185ae576d57a91d31b18f2513383cb27dfdc01c7486c"
+        },
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/sort/active.svg",
+          "size": [
+            26,
+            25
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/sort/active.svg",
+          "sha256": "e1dcea9ae1b3e05058e68c5d8079781dc26d2d0a40a1e92d0b3f01913ccd93d7"
+        },
         {
           "state": "default",
           "scale": 1,
@@ -6721,6 +6833,36 @@
     },
     {
       "set": "glyphs-svg",
+      "name": "subtitle",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/subtitle/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/subtitle/default.svg",
+          "sha256": "a745c9c86ac943f6e07119387dabf8759ef0c4d4b5a7f9143b08961df41e6b0e"
+        },
+        {
+          "state": "dim",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/subtitle/dim.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/subtitle/dim.svg",
+          "sha256": "0c943f57bbb6846a0ed3f65b2f321e4f692126560946b8c1292cf2b86386d23f"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
       "name": "subtitles",
       "states": [
         {
@@ -6884,6 +7026,30 @@
           ],
           "source": "modules/gui/qt/pixmaps/redesign/icons/video/active.svg",
           "sha256": "c8a26863983837a90d016717292a3bdfafe3a8af06c0453c0475a8565434f60b"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/video/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/video/default.svg",
+          "sha256": "a6b02ddc8339e60677611b360b5a8401dc23767a2bed5571ba37a97120b77ebf"
+        },
+        {
+          "state": "dim",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/video/dim.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/video/dim.svg",
+          "sha256": "f42130568c44f58b4cd40313f6defd4a87efff2d83784b892c4bb2733e2aabca"
         }
       ]
     },
@@ -6934,6 +7100,18 @@
       "name": "view",
       "states": [
         {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/view/active.svg",
+          "size": [
+            26,
+            25
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/view/active.svg",
+          "sha256": "6b1828acb4bfd7a86060814c52bab21c8b215dc5ee208f74de69cc4bf142c109"
+        },
+        {
           "state": "default",
           "scale": 1,
           "format": "svg",
@@ -6944,6 +7122,48 @@
           ],
           "source": "modules/gui/qt/pixmaps/redesign/icons/view/default.svg",
           "sha256": "b9c576babbc9b8099adeec82ae5c59ce2cc35142aec0ab19df208b390eb83d0c"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "vumeter",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/vumeter/default-accent.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/vumeter/default-accent.svg",
+          "sha256": "f642ccecf8b8b9a371d2311919f1d20bb6c81fb865ed77e6a13c57fd0b74f2d3"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/vumeter/default-grey.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/vumeter/default-grey.svg",
+          "sha256": "19885ee93e9336c23eedff6fd257cfb0b6b01acedecc158cf52d5c31e0bba9c7"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/vumeter/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/vumeter/default.svg",
+          "sha256": "8c77f12322cfc155205c99f21243763e93b7295ccce275f3fdaeeaea007af3df"
         }
       ]
     },
@@ -6986,6 +7206,24 @@
           ],
           "source": "modules/gui/qt/pixmaps/redesign/icons/waveform/default.svg",
           "sha256": "fe3f44a8a4bd7b8bf2a2fad1582af5da2c1e034d20e790018e2bcc7647df2545"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "window",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/window/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/window/default.svg",
+          "sha256": "8565b3971dcf874823a0d62a32089a22331d3ce3471b94d46241fc9d7d664106"
         }
       ]
     },
@@ -7183,7 +7421,7 @@
             24
           ],
           "source": "modules/gui/qt/pixmaps/redesign/grid.svg",
-          "sha256": "a0d0c57a689492bcd809337e03a6d771f18a1b8a1c95bb32dd2be329cc671e59"
+          "sha256": "f37ed4f33b16cbbacfac366c14e6f3bdcf5de4954b4953757de07709a796a170"
         }
       ]
     },
@@ -7202,6 +7440,42 @@
           ],
           "source": "modules/gui/qt/pixmaps/redesign/home.svg",
           "sha256": "ffaafbacfe785b0c9337f52ae4aded6cbc4d4c1bdf9ad9a601847be70875394e"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "line-vertical",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/line-vertical.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/line-vertical.svg",
+          "sha256": "a0d0c57a689492bcd809337e03a6d771f18a1b8a1c95bb32dd2be329cc671e59"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "list",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/list.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/list.svg",
+          "sha256": "0379482015b55411d8fa538010e9165932dd7a6a0a6fc23407bcbe95e19b66f7"
         }
       ]
     },
@@ -7531,6 +7805,24 @@
     },
     {
       "set": "svg",
+      "name": "subtitle-file",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/subtitle-file.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/subtitle-file.svg",
+          "sha256": "a745c9c86ac943f6e07119387dabf8759ef0c4d4b5a7f9143b08961df41e6b0e"
+        }
+      ]
+    },
+    {
+      "set": "svg",
       "name": "subtitles",
       "states": [
         {
@@ -7544,6 +7836,258 @@
           ],
           "source": "modules/gui/qt/pixmaps/redesign/subtitles.svg",
           "sha256": "7848b8707c85be33afdd8a9eb4ca40bf734b4a145fd9c7488e2639a545870f7f"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "theme-bar-knob",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/theme-bar-knob.svg",
+          "size": [
+            12,
+            20
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/theme-bar-knob.svg",
+          "sha256": "40a1f791a0c56958b0f1e7fae05c300bb5cc2f52801518ff260f1db199365410"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "theme-bar-mask",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/theme-bar-mask.svg",
+          "size": [
+            1056,
+            30
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/theme-bar-mask.svg",
+          "sha256": "243da22190eba0f215d2f2ca847117bc2388319bf3e4a8305e93c6e5a0deabbc"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "theme-bar-pill",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/theme-bar-pill.svg",
+          "size": [
+            40,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/theme-bar-pill.svg",
+          "sha256": "7d148e3c959804628d90741d4882cc289978726ac1956fb2b850d641fa7ebbb7"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "theme-bar-play",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/theme-bar-play.svg",
+          "size": [
+            14,
+            14
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/theme-bar-play.svg",
+          "sha256": "ef594cec45ead4eb4028d2e0b32613e3499ca010b072d72e9f1048653fc65714"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "theme-strip-buttons",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/theme-strip-buttons.svg",
+          "size": [
+            1056,
+            22
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/theme-strip-buttons.svg",
+          "sha256": "932bbe6431e40d5e29d6e2efbec6e6406bc9c5a72bc38c6529e8c07164e9af07"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "theme-strip-cone",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/theme-strip-cone.svg",
+          "size": [
+            1056,
+            22
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/theme-strip-cone.svg",
+          "sha256": "9da8b31b21321b9e16dcedc0b205311af633126c92ec76d03105bf699ddd5e75"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "theme-system",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/theme-system.svg",
+          "size": [
+            100,
+            100
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/theme-system.svg",
+          "sha256": "6e5336af95d9b62eeec1b2714b9c139436f1400a11dce8e5b7eaca7c93c1fd94"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "track-audio",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/track-audio.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/track-audio.svg",
+          "sha256": "acb3931baed33735f0a0b6f51bc78f83a5846474bbbfbc3ead7149ee05da3962"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "track-audio-active",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/track-audio-active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/track-audio-active.svg",
+          "sha256": "598955697e2557b4c787c43a11218fbf6a5cbb48c6ab340a3c04e186c8bd0aa5"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "track-check-active",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/track-check-active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/track-check-active.svg",
+          "sha256": "ec8ff5b3e4cb65e84160566f22fbb8ae382fd081cccfec4bed6753e2f7bc0edc"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "track-subtitles",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/track-subtitles.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/track-subtitles.svg",
+          "sha256": "1ac2e1f7c8e81c07973a0f4a968259de34c9312e6d2c0366187704dbc315f094"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "track-subtitles-active",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/track-subtitles-active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/track-subtitles-active.svg",
+          "sha256": "162308a65c74ab8d5ca52f9a48ee72c7ed9bb928e9c8d44abab48b8b2da2849a"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "track-video",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/track-video.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/track-video.svg",
+          "sha256": "a6b02ddc8339e60677611b360b5a8401dc23767a2bed5571ba37a97120b77ebf"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "track-video-active",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/track-video-active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/track-video-active.svg",
+          "sha256": "c8a26863983837a90d016717292a3bdfafe3a8af06c0453c0475a8565434f60b"
         }
       ]
     },
@@ -7621,6 +8165,42 @@
     },
     {
       "set": "svg",
+      "name": "volume-high",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/volume-high.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/volume-high.svg",
+          "sha256": "0c60c26d336bab7f84709c695e5fefa81657b261c40abbc19de1ffac461fbbe2"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "volume-low",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/volume-low.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/volume-low.svg",
+          "sha256": "b33a0e8e10bd109f19b2098afc60f8234beb73a89a6526d675dda18424e3ff28"
+        }
+      ]
+    },
+    {
+      "set": "svg",
       "name": "volume-mask",
       "states": [
         {
@@ -7639,6 +8219,42 @@
     },
     {
       "set": "svg",
+      "name": "volume-medium",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/volume-medium.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/volume-medium.svg",
+          "sha256": "a0a91bd745ec7d2cd8511bfdb68289febd0b818e43d07cf3db70fa7896369a56"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "volume-muted",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/volume-muted.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/volume-muted.svg",
+          "sha256": "0b7696f72d6ff3f4e7560f0c0955682c4c2c0e909798088e3fb362007378eca6"
+        }
+      ]
+    },
+    {
+      "set": "svg",
       "name": "welcome",
       "states": [
         {
@@ -7652,6 +8268,384 @@
           ],
           "source": "modules/gui/qt/pixmaps/redesign/welcome.svg",
           "sha256": "52ec7e7b36ddb69a3962faa08437f54df9018381e8f5b3b11eb2637cbc592317"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "close",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/close.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/close.svg",
+          "sha256": "6cf436174cc3ad2464c7e07365af219e7e6023d3182ffb2908ffa07904829f3f"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "corner-bl-dark",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/corner-bl-dark.svg",
+          "size": [
+            9,
+            9
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/corner-bl-dark.svg",
+          "sha256": "b453dd2ebcdd91ea03d56b9f3b51d2b702a3827b13ffd32290938f6dc43da50c"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "corner-bl-light",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/corner-bl-light.svg",
+          "size": [
+            9,
+            9
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/corner-bl-light.svg",
+          "sha256": "5f725bbb22a4e4f85d29503d060b820bd10a20b68d03f8562cfef717e00b2ba7"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "corner-br-dark",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/corner-br-dark.svg",
+          "size": [
+            9,
+            9
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/corner-br-dark.svg",
+          "sha256": "b04e6c9efbd7b65d57da3d8af1c46cf8994c355b8bd0d6fc9e22db9cb9c25935"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "corner-br-light",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/corner-br-light.svg",
+          "size": [
+            9,
+            9
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/corner-br-light.svg",
+          "sha256": "0e3fe79a46311e9edd23e9c66a626bddc0f4a655fd944468b4fffda66483311d"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "corner-tl-dark",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/corner-tl-dark.svg",
+          "size": [
+            9,
+            9
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/corner-tl-dark.svg",
+          "sha256": "3d74733bcc5f1c42ae0dabaa15d7553f4e7dd7a9ec77dd16cff249fa2e0e91ab"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "corner-tl-light",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/corner-tl-light.svg",
+          "size": [
+            9,
+            9
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/corner-tl-light.svg",
+          "sha256": "fc61556d4fcc01dd4256de6c7605da5c4bdb878ef324f75d2b9756ddf73a6e38"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "corner-tr-dark",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/corner-tr-dark.svg",
+          "size": [
+            9,
+            9
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/corner-tr-dark.svg",
+          "sha256": "2911174a9d2d2e432de872f1a8fa1040a82b2a2e67c0e41aaef36b6135142315"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "corner-tr-light",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/corner-tr-light.svg",
+          "size": [
+            9,
+            9
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/corner-tr-light.svg",
+          "sha256": "1e94ef3f30386b5456a743b48b140fc9e8705b2a69a14107b2c131ed123d3c9f"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "equalizer",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/equalizer.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/equalizer.svg",
+          "sha256": "acb3931baed33735f0a0b6f51bc78f83a5846474bbbfbc3ead7149ee05da3962"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "fullscreen",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/fullscreen.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/fullscreen.svg",
+          "sha256": "508ecefa7ef0b33e76cc0a0d8e103edc5651922b38fa4af437798f5b6ce1986d"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "library-add",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/library-add.svg",
+          "size": [
+            32,
+            32
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/library-add.svg",
+          "sha256": "0720eda348bb9c57d7f553bbcc8cc57702889c580768a1d56aafa314ab05321a"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "library-playlist",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/library-playlist.svg",
+          "size": [
+            32,
+            32
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/library-playlist.svg",
+          "sha256": "fb2b88c73f51120baea8886f76c1eb59121ed4305f0062ef249d93fe090cd622"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "maximize",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/maximize.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/maximize.svg",
+          "sha256": "e07cc8da0fd51dc2e708ba2450c91f86637ecd5b909ffee56c006f2ce554567f"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "minimize",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/minimize.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/minimize.svg",
+          "sha256": "c770894ef8be777c8bfccc7b8a85501eb9892dac44062ce5e2cd1f2dcd621255"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "next",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/next.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/next.svg",
+          "sha256": "f4607e7cfce814a6618c07b23c03564cfa09b5e6f7c0552f10b039067add8398"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "pause",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/pause.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/pause.svg",
+          "sha256": "34ed1acfb6fd939c77d6eb6f1ae3209f36170ca1f7a85d62f1865393b29e3bb4"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "previous",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/previous.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/previous.svg",
+          "sha256": "ccbead5542b5a9b9775b8dd3b7dc000f4782b8930e95596438ee427189bfa136"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "queue",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/queue.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/queue.svg",
+          "sha256": "bc69f2c055a13c8ecf558a76866b7755735e17fe2049866fc8cb69af5f2baa47"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "settings",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/settings.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/settings.svg",
+          "sha256": "78e67ac32d69624bf3e94e7982c9a2625e47dd946a6d7d9abca91d09a0097cae"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "subtitles",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/subtitles.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/subtitles.svg",
+          "sha256": "1ac2e1f7c8e81c07973a0f4a968259de34c9312e6d2c0366187704dbc315f094"
         }
       ]
     },

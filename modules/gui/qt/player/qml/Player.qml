@@ -287,6 +287,8 @@ FocusScope {
 
         // drawn 1:1 (a coloured icon is filtered half a pixel off)
         Image {
+            // drawn at the size shown (an SVG: sharp at any scale and zoom)
+            sourceSize: Qt.size(width, height)
             required property int index
 
             readonly property bool atRight: index === 1 || index === 3

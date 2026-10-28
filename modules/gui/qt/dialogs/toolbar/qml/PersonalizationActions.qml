@@ -54,6 +54,8 @@ Column {
                 Controls.ToolTip.delay: 650
             }
             Image {
+                // drawn at the size shown (an SVG: sharp at any scale and zoom)
+                sourceSize: Qt.size(width, height)
                 width: VLCStyle.dp(24, VLCStyle.scale)
                 height: VLCStyle.dp(24, VLCStyle.scale)
                 anchors.verticalCenter: parent.verticalCenter

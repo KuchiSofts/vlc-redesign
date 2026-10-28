@@ -22,6 +22,7 @@
 #include "redesign_window_frame.hpp"
 
 #include "qt.hpp"
+#include "util/redesign_icon_provider.hpp"
 
 #include <QAbstractButton>
 #include <QAbstractNativeEventFilter>
@@ -155,7 +156,8 @@ private:
     {
         auto *button = new QToolButton(this);
         button->setObjectName(QStringLiteral("redesignTitleButton"));
-        button->setIcon(QIcon(QStringLiteral(":/redesign/icons/%1/default.png").arg(icon)));
+        // drawn from its SVG at the size and scale shown
+        button->setIcon(RedesignIcons::icon(QStringLiteral(":/redesign/icons/%1/default.png").arg(icon)));
         button->setAccessibleName(name);
         button->setToolTip(name);
         button->setAutoRaise(true);

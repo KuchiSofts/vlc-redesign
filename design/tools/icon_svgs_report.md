@@ -12,37 +12,17 @@ and compared with the PNG of the same state, in levels of 0-255:
   frame 42:356), when the state shows the whole symbol; **Qt-Figma** the same for the SVG.
 - **offset**: the subpixel position the PNG was cut at (an instance placed between pixels),
   kept in the SVG.
-- **app**: the app ships the SVG (`assets.qrc`): the exact and same-drawing states but the
-  empty ones. It keeps the PNG at 100 % and takes the SVG on a denser screen.
+- **app**: the app ships the SVG (`assets.qrc`, `icon_svgs.py register`) and draws it in place
+  of the PNG at every scale and interface zoom (the PNG stays as a fallback).
 
 No SVG drawn by QtSvg is the PNG pixel for pixel: Figma's rasteriser antialiases otherwise, and
-most PNGs were cut from the design's screens rather than exported from the symbol. The close
-states keep their PNG on every screen: their PNG is drawn heavier or lighter than Figma's own
-render of the symbol, so the SVG would change their weight at 150 %.
+most PNGs were cut from the design's screens rather than exported from the symbol. The SVG
+follows Figma, shape and colour: where a PNG was drawn heavier or lighter than Figma draws the
+symbol (the close states), the app now draws Figma's weight. The states made without the frame
+(no node here: outlined boolean shapes, the badge icons, cast, the VU meter) are described in
+`raster_svgs.json`.
 
-**224 states: 51 exact, 118 same, 38 close, 17 without SVG; 166 in the app.**
-
-## Without SVG (17)
-
-| State | Why |
-|---|---|
-| `cast/default` | no symbol of 42:356 has this name |
-| `cast/large` | no symbol of 42:356 has this name |
-| `repeat/active` | another drawing than the symbols of this name (closest 187:470: shape 9.4) |
-| `save/default` | Figma's SVG export of 2459:9542 loses its detail (a boolean shape's stroke) |
-| `shuffle/active` | another drawing than the symbols of this name (closest 2461:9618: shape 11.3) |
-| `sort/active-accent` | 26 x 25: the glyph with a badge of the screen it was cut from, not a symbol of 42:356 |
-| `sort/active-grey` | 26 x 25: the glyph with a badge of the screen it was cut from, not a symbol of 42:356 |
-| `sort/active` | 26 x 25: the glyph with a badge of the screen it was cut from, not a symbol of 42:356 |
-| `subtitle/default` | Figma's SVG export of 1911:8286, 2461:9663 loses its detail (a boolean shape's stroke) |
-| `subtitle/dim` | Figma's SVG export of 1911:8286, 2461:9663 loses its detail (a boolean shape's stroke) |
-| `video/default` | Figma's SVG export of 999:4810 loses its detail (a boolean shape's stroke) |
-| `video/dim` | Figma's SVG export of 999:4810 loses its detail (a boolean shape's stroke) |
-| `view/active` | 26 x 25: the glyph with a badge of the screen it was cut from, not a symbol of 42:356 |
-| `vumeter/default-accent` | the speed glyph (2115:7386) with its needle in the accent dim, drawn in this repository for the VU meter (no Figma symbol) |
-| `vumeter/default-grey` | the speed glyph (2115:7386) with its needle in the accent dim, drawn in this repository for the VU meter (no Figma symbol) |
-| `vumeter/default` | the speed glyph (2115:7386) with its needle in the accent dim, drawn in this repository for the VU meter (no Figma symbol) |
-| `window/default` | Figma's SVG export of 2107:6312 loses its detail (a boolean shape's stroke) |
+**224 states: 51 exact, 131 same, 42 close, 0 without SVG; 224 in the app.**
 
 ## Exact: the PNG is Figma's render of the symbol (51)
 
@@ -100,11 +80,11 @@ render of the symbol, so the SVG would change their weight at 150 %.
 | `view/default` | 856:3212 | 20 / 0.54 | 0.5 | 0 | 20 / 0.52 ↓ | 0.05 | 0.83 |  | yes |
 | `waveform/default` | 2139:8078 | 2 / 0.19 | 0.28 | 0 | 2 / 0.12 ↓ | 0.02 | 0.3 |  | yes |
 
-## Same drawing: shape and colour of the PNG, another rasteriser (118)
+## Same drawing: shape and colour of the PNG, another rasteriser (131)
 
 | State | Node | 24 max / mean | shape | colour | 48 max / mean | Figma | Qt-Figma | offset | app |
 |---|---|---|---|---|---|---|---|---|---|
-| `0/default` | 2107:6596 | 0 / 0.0 | 0.0 | 0 | 0 / 0.0 ↓ |  |  |  |  |
+| `0/default` | 2107:6596 | 0 / 0.0 | 0.0 | 0 | 0 / 0.0 ↓ |  |  |  | yes |
 | `add/half` | 463:550 | 11 / 0.14 | 0.16 | 0 | 10 / 0.14 ↓ | 12.38 | 12.4 | 0.5, -0.5 | yes |
 | `arrow-left/default` | 71:890 | 111 / 1.83 | 2.56 | 0 | 102 / 0.32 | 2.66 | 1.0 |  | yes |
 | `arrow-left/disabled` | 71:890 | 111 / 1.1 | 2.56 | 0 | 102 / 0.18 | 2.66 | 1.0 |  | yes |
@@ -114,8 +94,9 @@ render of the symbol, so the SVG would change their weight at 150 %.
 | `artist/default` | 858:5155 | 50 / 2.27 | 2.08 | 0 | 104 / 0.79 | 2.27 | 2.82 |  | yes |
 | `audio/active` | 496:2439 | 29 / 0.38 | 0.49 | 0 | 29 / 0.38 ↓ | 1.06 | 0.78 |  | yes |
 | `backward-10-sec/default` | 45:28 | 73 / 3.25 | 2.23 | 0 | 70 / 2.91 ↓ | 4.56 | 2.31 |  | yes |
+| `cast/default` |  | 171 / 3.33 | 2.94 | 6 | 170 / 3.24 ↓ |  |  |  | yes |
 | `check/active` | 494:2394 | 58 / 0.94 | 0.72 | 0 | 46 / 0.85 ↓ | 1.63 | 0.91 |  | yes |
-| `check/default` | 494:2400 | 0 / 0.0 | 0.0 | 0 | 0 / 0.0 ↓ |  |  |  |  |
+| `check/default` | 494:2400 | 0 / 0.0 | 0.0 | 0 | 0 / 0.0 ↓ |  |  |  | yes |
 | `check/selected` | 2428:14606 | 85 / 0.85 | 0.61 | 0 | 84 / 0.85 ↓ | 1.39 | 0.84 |  | yes |
 | `close/default` | 45:40 | 39 / 0.97 | 1.08 | 0 | 8 / 0.14 | 1.85 | 1.1 |  | yes |
 | `edit/dim` | 2437:14888 | 41 / 0.88 | 1.32 | 0 | 35 / 0.87 ↓ | 16.84 | 17.79 | 0, 0.5 | yes |
@@ -125,7 +106,7 @@ render of the symbol, so the SVG would change their weight at 150 %.
 | `eq-club/default-grey` | 2372:8578 | 31 / 0.12 | 0.12 | 0 | 21 / 0.1 ↓ |  |  |  | yes |
 | `eq-dance/default-accent` | 2372:8588 | 52 / 0.43 | 0.62 | 0 | 30 / 0.29 ↓ |  |  |  | yes |
 | `eq-dance/default-grey` | 2372:8588 | 31 / 0.15 | 0.16 | 0 | 25 / 0.13 ↓ |  |  |  | yes |
-| `eq-flat/default-accent` | 2372:8559 | 0 / 0.0 | 0.0 | 0 | 0 / 0.0 ↓ |  |  |  |  |
+| `eq-flat/default-accent` | 2372:8559 | 0 / 0.0 | 0.0 | 0 | 0 / 0.0 ↓ |  |  |  | yes |
 | `eq-fullbass/default-accent` | 6114:13932 | 27 / 0.27 | 0.36 | 0 | 23 / 0.24 ↓ |  |  |  | yes |
 | `eq-fullbass/default-grey` | 6114:13932 | 31 / 0.21 | 0.26 | 0 | 28 / 0.19 ↓ |  |  |  | yes |
 | `eq-fullbasstreble/default-accent` | 6114:13938 | 29 / 0.28 | 0.4 | 0 | 29 / 0.23 ↓ |  |  |  | yes |
@@ -191,15 +172,20 @@ render of the symbol, so the SVG would change their weight at 150 %.
 | `recent/active-accent` | 2493:9246 | 58 / 0.35 | 0.5 | 0 | 20 / 0.04 |  |  |  | yes |
 | `recent/active-grey` | 2493:9246 | 93 / 2.31 | 2.08 | 0 | 109 / 0.7 |  |  |  | yes |
 | `recent/active` | 2154:9699 | 116 / 3.38 | 2.51 | 0 | 119 / 1.71 | 3.69 | 2.23 |  | yes |
+| `repeat/active` |  | 79 / 1.49 | 1.76 | 0 | 37 / 1.25 ↓ |  |  |  | yes |
 | `right-sidebar/default` | 6586:17393 | 46 / 2.69 | 2.14 | 0 | 46 / 2.58 ↓ | 3.67 | 0.64 |  | yes |
 | `scope/default-accent` | 2139:8064 | 2 / 0.12 | 0.16 | 0 | 2 / 0.07 ↓ |  |  |  | yes |
 | `scope/default-grey` | 2139:8064 | 2 / 0.09 | 0.13 | 0 | 2 / 0.06 ↓ |  |  |  | yes |
 | `search/default` | 856:2147 | 79 / 2.31 | 2.41 | 0 | 66 / 0.6 | 2.74 | 2.45 |  | yes |
 | `search/dim` | 856:2147 | 79 / 1.94 | 2.41 | 0 | 66 / 0.51 | 2.74 | 2.45 |  | yes |
 | `settings/active` | 470:507 | 62 / 1.91 | 2.1 | 0 | 60 / 1.88 ↓ | 3.34 | 1.33 |  | yes |
+| `shuffle/active` |  | 93 / 1.92 | 2.1 | 0 | 47 / 1.68 ↓ |  |  |  | yes |
 | `shuffle/default` | 187:474 | 139 / 2.7 | 2.98 | 0 | 75 / 2.28 ↓ | 3.1 | 2.77 |  | yes |
 | `sidebar/active` | 87:1041 | 34 / 3.07 | 2.68 | 0 | 58 / 3.11 ↓ | 4.51 | 0.64 |  | yes |
 | `sidebar/default` | 69:814 | 48 / 2.33 | 2.56 | 0 | 46 / 2.33 ↓ | 3.34 | 0.64 |  | yes |
+| `sort/active-accent` |  | 20 / 0.13 | 0.07 | 0 | 22 / 0.14 ↓ |  |  |  | yes |
+| `sort/active-grey` |  | 80 / 0.96 | 1.32 | 0 | 50 / 0.75 ↓ |  |  |  | yes |
+| `sort/active` |  | 80 / 1.09 | 1.39 | 0 | 50 / 0.89 ↓ |  |  |  | yes |
 | `sort/default` | 463:564 | 68 / 1.66 | 1.69 | 0 | 43 / 1.5 ↓ | 2.45 | 1.57 |  | yes |
 | `sort/dim` | 463:564 | 68 / 1.4 | 1.69 | 0 | 43 / 1.27 ↓ | 2.45 | 1.57 |  | yes |
 | `spectrometer/default-accent` | 2138:8026 | 40 / 0.86 | 0.93 | 0 | 28 / 0.59 ↓ |  |  |  | yes |
@@ -218,51 +204,62 @@ render of the symbol, so the SVG would change their weight at 150 %.
 | `ui/default-accent` | 6075:14088 | 29 / 0.29 | 0.47 | 1 | 161 / 0.73 |  |  |  | yes |
 | `ui/default-grey` | 6075:14088 | 20 / 0.44 | 0.32 | 0 | 134 / 1.2 |  |  |  | yes |
 | `video/active` | 1102:5055 | 72 / 1.93 | 2.59 | 0 | 73 / 1.88 ↓ | 3.22 | 1.06 |  | yes |
+| `video/default` |  | 46 / 1.11 | 1.02 | 0 | 46 / 1.09 ↓ |  |  |  | yes |
+| `video/dim` |  | 46 / 0.95 | 1.02 | 0 | 46 / 0.92 ↓ |  |  |  | yes |
+| `view/active` |  | 20 / 0.61 | 0.51 | 0 | 22 / 0.6 ↓ |  |  |  | yes |
+| `vumeter/default-accent` |  | 50 / 0.56 | 0.77 | 0 | 49 / 0.39 ↓ |  |  |  | yes |
+| `vumeter/default-grey` |  | 76 / 3.44 | 2.21 | 0 | 76 / 3.43 ↓ |  |  |  | yes |
+| `vumeter/default` |  | 76 / 3.99 | 2.98 | 0 | 76 / 3.81 ↓ |  |  |  | yes |
 | `waveform/default-accent` | 2139:8078 | 2 / 0.09 | 0.12 | 0 | 2 / 0.05 ↓ |  |  |  | yes |
 | `waveform/default-grey` | 2139:8078 | 2 / 0.11 | 0.16 | 0 | 2 / 0.07 ↓ |  |  |  | yes |
+| `window/default` |  | 46 / 0.99 | 0.92 | 0 | 46 / 0.96 ↓ |  |  |  | yes |
 | `wrench/default` | 2107:6319 | 84 / 3.3 | 2.93 | 0 | 84 / 3.2 ↓ | 5.05 | 1.8 |  | yes |
 | `zoom/default` | 2154:9680 | 50 / 2.38 | 2.15 | 0 | 49 / 2.09 ↓ | 2.82 | 2.42 |  | yes |
 
-## Close: the symbol, its PNG drawn heavier or lighter (38)
+## Close: the symbol, its PNG drawn heavier or lighter (42)
 
 | State | Node | 24 max / mean | shape | colour | 48 max / mean | Figma | Qt-Figma | offset | app |
 |---|---|---|---|---|---|---|---|---|---|
-| `accessibility/default` | 999:4914 | 51 / 4.24 | 3.09 | 0 | 56 / 4.42 ↓ | 7.17 | 4.8 |  |  |
-| `album/default` | 6206:13629 | 63 / 4.44 | 5.87 | 0 | 63 / 4.41 ↓ | 6.41 | 1.38 |  |  |
-| `bookmarks/default` | 2127:7548 | 100 / 4.08 | 4.89 | 0 | 82 / 4.02 ↓ | 6.05 | 1.19 |  |  |
-| `chapters/default` | 2127:7531 | 63 / 3.49 | 4.24 | 0 | 63 / 3.49 ↓ | 5.27 | 0.61 |  |  |
-| `collapse-sidebar/default` | 858:5703 | 79 / 3.53 | 4.4 | 0 | 72 / 3.47 ↓ | 5.17 | 1.21 |  |  |
-| `edit/default` | 2437:14888 | 63 / 2.96 | 3.73 | 0 | 63 / 2.97 ↓ | 4.84 | 1.48 |  |  |
-| `expand-sidebar/default` | 858:5697 | 117 / 3.7 | 4.03 | 0 | 63 / 3.55 ↓ | 5.04 | 1.22 |  |  |
-| `favorite/active` | 2430:14666 | 106 / 2.61 | 4.23 | 0 | 54 / 0.8 ↓ | 1.45 | 3.81 |  |  |
-| `file/default` | 2461:9644 | 198 / 4.69 | 4.4 | 0 | 198 / 4.58 ↓ | 8.35 | 3.58 |  |  |
-| `folder/default` | 51:808 | 73 / 4.36 | 5.48 | 0 | 74 / 4.28 ↓ | 6.32 | 1.47 |  |  |
-| `grid/default` | 2107:6523 | 60 / 4.32 | 4.79 | 0 | 60 / 4.37 ↓ | 6.41 | 1.57 |  |  |
-| `grid/dim` | 2107:6523 | 60 / 3.62 | 4.79 | 0 | 60 / 3.68 ↓ | 6.41 | 1.57 |  |  |
-| `HDR/default` | 2146:9032 | 81 / 7.11 | 7.81 | 0 | 66 / 6.95 ↓ | 10.77 | 2.99 |  |  |
-| `home/default` | 70:828 | 67 / 2.9 | 3.05 | 0 | 44 / 0.37 | 4.02 | 1.34 |  |  |
-| `hotkeys/active` | 1089:4464 | 44 / 3.21 | 3.89 | 0 | 44 / 3.3 ↓ | 6.66 | 2.64 |  |  |
-| `open/default` | 330:267 | 137 / 2.73 | 3.72 | 0 | 74 / 2.54 ↓ | 3.82 | 1.62 |  |  |
-| `open/dim` | 330:267 | 137 / 2.28 | 3.72 | 0 | 74 / 2.13 ↓ | 3.82 | 1.62 |  |  |
-| `pause/default` | 44:427 | 60 / 3.38 | 4.06 | 0 | 59 / 3.34 ↓ | 5.05 | 0.33 |  |  |
-| `PiP/default` | 2139:8439 | 78 / 4.09 | 5.79 | 0 | 63 / 4.35 ↓ | 7.19 | 1.41 |  |  |
-| `playlist/default` | 42:357 | 94 / 3.56 | 3.99 | 0 | 122 / 1.1 | 4.36 | 2.12 |  |  |
-| `plugins/active` | 2516:9375 | 90 / 2.97 | 3.34 | 0 | 96 / 2.48 ↓ | 3.85 | 2.26 |  |  |
-| `preferences/default` | 1803:2965 | 93 / 3.57 | 5.32 | 0 | 93 / 3.69 ↓ | 6.44 | 1.19 |  |  |
-| `queue/default` | 2127:7523 | 63 / 3.48 | 3.53 | 0 | 98 / 2.17 | 4.89 | 0.72 |  |  |
-| `quit/default` | 6073:14046 | 119 / 3.57 | 4.57 | 0 | 176 / 1.27 | 4.76 | 1.62 |  |  |
-| `record/active` | 6571:16751 | 92 / 3.73 | 3.53 | 0 | 92 / 3.63 ↓ | 5.55 | 2.73 |  |  |
-| `record/default` | 2115:7482 | 75 / 4.1 | 3.35 | 0 | 75 / 4.04 ↓ | 5.85 | 2.73 |  |  |
-| `refresh/default` | 1622:3137 | 114 / 5.12 | 4.95 | 0 | 86 / 5.06 ↓ | 8.16 | 5.56 |  |  |
-| `repeat/default` | 187:470 | 109 / 2.56 | 3.14 | 0 | 63 / 2.13 ↓ | 3.2 | 2.01 |  |  |
-| `replay/default` | 1919:9572 | 87 / 3.6 | 3.81 | 0 | 84 / 3.65 ↓ | 6.26 | 4.7 |  |  |
-| `snapshot/default` | 2115:7492 | 81 / 5.02 | 5.8 | 0 | 76 / 4.93 ↓ | 7.5 | 1.54 |  |  |
-| `songs/active` | 87:1009 | 86 / 3.39 | 4.83 | 0 | 86 / 3.37 ↓ | 5.68 | 1.28 |  |  |
-| `songs/default` | 71:851 | 86 / 5.17 | 5.93 | 0 | 86 / 5.13 ↓ | 7.77 | 2.14 |  |  |
-| `songs/selected` | 470:592 | 87 / 3.39 | 4.46 | 0 | 73 / 3.26 ↓ | 4.96 | 1.28 |  |  |
-| `speed/active` | 2115:7391 | 74 / 2.92 | 3.06 | 0 | 74 / 2.76 ↓ | 4.83 | 3.47 |  |  |
-| `streaming/active` | 477:1202 | 92 / 3.82 | 3.31 | 0 | 84 / 3.53 ↓ | 5.86 | 3.09 |  |  |
-| `videos/active` | 87:1015 | 64 / 2.63 | 3.89 | 0 | 63 / 2.5 ↓ | 4.25 | 1.11 |  |  |
-| `videos/default` | 71:857 | 63 / 5.35 | 5.89 | 0 | 63 / 5.06 ↓ | 7.43 | 1.88 |  |  |
-| `videos/selected` | 470:587 | 77 / 3.57 | 4.81 | 0 | 63 / 3.44 ↓ | 5.22 | 1.11 |  |  |
+| `accessibility/default` | 999:4914 | 51 / 4.24 | 3.09 | 0 | 56 / 4.42 ↓ | 7.17 | 4.8 |  | yes |
+| `album/default` | 6206:13629 | 63 / 4.44 | 5.87 | 0 | 63 / 4.41 ↓ | 6.41 | 1.38 |  | yes |
+| `bookmarks/default` | 2127:7548 | 100 / 4.08 | 4.89 | 0 | 82 / 4.02 ↓ | 6.05 | 1.19 |  | yes |
+| `cast/large` |  | 255 / 3.1 | 3.42 | 3 | 255 / 3.11 ↓ |  |  |  | yes |
+| `chapters/default` | 2127:7531 | 63 / 3.49 | 4.24 | 0 | 63 / 3.49 ↓ | 5.27 | 0.61 |  | yes |
+| `collapse-sidebar/default` | 858:5703 | 79 / 3.53 | 4.4 | 0 | 72 / 3.47 ↓ | 5.17 | 1.21 |  | yes |
+| `edit/default` | 2437:14888 | 63 / 2.96 | 3.73 | 0 | 63 / 2.97 ↓ | 4.84 | 1.48 |  | yes |
+| `expand-sidebar/default` | 858:5697 | 117 / 3.7 | 4.03 | 0 | 63 / 3.55 ↓ | 5.04 | 1.22 |  | yes |
+| `favorite/active` | 2430:14666 | 106 / 2.61 | 4.23 | 0 | 54 / 0.8 ↓ | 1.45 | 3.81 |  | yes |
+| `file/default` | 2461:9644 | 198 / 4.69 | 4.4 | 0 | 198 / 4.58 ↓ | 8.35 | 3.58 |  | yes |
+| `folder/default` | 51:808 | 73 / 4.36 | 5.48 | 0 | 74 / 4.28 ↓ | 6.32 | 1.47 |  | yes |
+| `grid/default` | 2107:6523 | 60 / 4.32 | 4.79 | 0 | 60 / 4.37 ↓ | 6.41 | 1.57 |  | yes |
+| `grid/dim` | 2107:6523 | 60 / 3.62 | 4.79 | 0 | 60 / 3.68 ↓ | 6.41 | 1.57 |  | yes |
+| `HDR/default` | 2146:9032 | 81 / 7.11 | 7.81 | 0 | 66 / 6.95 ↓ | 10.77 | 2.99 |  | yes |
+| `home/default` | 70:828 | 67 / 2.9 | 3.05 | 0 | 44 / 0.37 | 4.02 | 1.34 |  | yes |
+| `hotkeys/active` | 1089:4464 | 44 / 3.21 | 3.89 | 0 | 44 / 3.3 ↓ | 6.66 | 2.64 |  | yes |
+| `open/default` | 330:267 | 137 / 2.73 | 3.72 | 0 | 74 / 2.54 ↓ | 3.82 | 1.62 |  | yes |
+| `open/dim` | 330:267 | 137 / 2.28 | 3.72 | 0 | 74 / 2.13 ↓ | 3.82 | 1.62 |  | yes |
+| `pause/default` | 44:427 | 60 / 3.38 | 4.06 | 0 | 59 / 3.34 ↓ | 5.05 | 0.33 |  | yes |
+| `PiP/default` | 2139:8439 | 78 / 4.09 | 5.79 | 0 | 63 / 4.35 ↓ | 7.19 | 1.41 |  | yes |
+| `playlist/default` | 42:357 | 94 / 3.56 | 3.99 | 0 | 122 / 1.1 | 4.36 | 2.12 |  | yes |
+| `plugins/active` | 2516:9375 | 90 / 2.97 | 3.34 | 0 | 96 / 2.48 ↓ | 3.85 | 2.26 |  | yes |
+| `preferences/default` | 1803:2965 | 93 / 3.57 | 5.32 | 0 | 93 / 3.69 ↓ | 6.44 | 1.19 |  | yes |
+| `queue/default` | 2127:7523 | 63 / 3.48 | 3.53 | 0 | 98 / 2.17 | 4.89 | 0.72 |  | yes |
+| `quit/default` | 6073:14046 | 119 / 3.57 | 4.57 | 0 | 176 / 1.27 | 4.76 | 1.62 |  | yes |
+| `record/active` | 6571:16751 | 92 / 3.73 | 3.53 | 0 | 92 / 3.63 ↓ | 5.55 | 2.73 |  | yes |
+| `record/default` | 2115:7482 | 75 / 4.1 | 3.35 | 0 | 75 / 4.04 ↓ | 5.85 | 2.73 |  | yes |
+| `refresh/default` | 1622:3137 | 114 / 5.12 | 4.95 | 0 | 86 / 5.06 ↓ | 8.16 | 5.56 |  | yes |
+| `repeat/default` | 187:470 | 109 / 2.56 | 3.14 | 0 | 63 / 2.13 ↓ | 3.2 | 2.01 |  | yes |
+| `replay/default` | 1919:9572 | 87 / 3.6 | 3.81 | 0 | 84 / 3.65 ↓ | 6.26 | 4.7 |  | yes |
+| `save/default` |  | 69 / 4.14 | 3.23 | 0 | 68 / 4.17 ↓ |  |  |  | yes |
+| `snapshot/default` | 2115:7492 | 81 / 5.02 | 5.8 | 0 | 76 / 4.93 ↓ | 7.5 | 1.54 |  | yes |
+| `songs/active` | 87:1009 | 86 / 3.39 | 4.83 | 0 | 86 / 3.37 ↓ | 5.68 | 1.28 |  | yes |
+| `songs/default` | 71:851 | 86 / 5.17 | 5.93 | 0 | 86 / 5.13 ↓ | 7.77 | 2.14 |  | yes |
+| `songs/selected` | 470:592 | 87 / 3.39 | 4.46 | 0 | 73 / 3.26 ↓ | 4.96 | 1.28 |  | yes |
+| `speed/active` | 2115:7391 | 74 / 2.92 | 3.06 | 0 | 74 / 2.76 ↓ | 4.83 | 3.47 |  | yes |
+| `streaming/active` | 477:1202 | 92 / 3.82 | 3.31 | 0 | 84 / 3.53 ↓ | 5.86 | 3.09 |  | yes |
+| `subtitle/default` |  | 63 / 3.72 | 3.4 | 0 | 62 / 3.72 ↓ |  |  |  | yes |
+| `subtitle/dim` |  | 63 / 3.12 | 3.4 | 0 | 62 / 3.13 ↓ |  |  |  | yes |
+| `videos/active` | 87:1015 | 64 / 2.63 | 3.89 | 0 | 63 / 2.5 ↓ | 4.25 | 1.11 |  | yes |
+| `videos/default` | 71:857 | 63 / 5.35 | 5.89 | 0 | 63 / 5.06 ↓ | 7.43 | 1.88 |  | yes |
+| `videos/selected` | 470:587 | 77 / 3.57 | 4.81 | 0 | 63 / 3.44 ↓ | 5.22 | 1.11 |  | yes |
 

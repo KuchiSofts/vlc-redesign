@@ -9,9 +9,10 @@ Derived from *VLC Redesign (Community)* by Juxtopposed, CC BY 4.0 (see `design/R
 **SVG sources.** The glyphs of the Figma *Icon* set (42:356) are the PNG files exported from Figma
 (`png/`, with `@2x` where the app needs it) and their SVG sources (`svg/glyphs/`), cut from Figma's
 SVG export of the set by `design/tools/icon_svgs.py`; `design/tools/icon_svgs_report.md` compares
-each with its PNG and says why a state has none. The app shows the PNG at 100 % and the SVG on a
-denser screen. The top bar, sidebar and player icons (`svg/`), the two-tone menu icons
-(`svg/duo/`) and the widget chevrons (`svg/widgets/`) are SVG.
+each with its PNG. Every other raster piece (`images/`, `player/`) has its SVG too (`svg/`,
+`player/svg/`; `design/tools/raster_svgs.json` names its Figma node). The app draws the SVGs, at
+the size shown times the screen's scale and the interface zoom; the PNGs stay as a fallback. The
+two-tone menu icons (`svg/duo/`) and the widget chevrons (`svg/widgets/`) are SVG only.
 
 **States.** `default`: idle, #8F8F8F (Dark/FG/A2); `active`: active or hovered, #D37918 (the default accent; the app tints it with the chosen one); `selected`: selected (outline variant); `dim`: dimmed, #6B6B6B or #404040; `disabled`: disabled, #343434; `default-grey`: idle, grey variant; `default-accent`: idle, drawn in the accent; `active-grey`: active, grey variant; `active-accent`: active, drawn in the accent; `outline-active`: active, outline only; `large`: large variant; `half`: half (volume, rating).
 
@@ -138,9 +139,9 @@ The icons of the Figma "Icon" component set (42:356), exported as PNG, one folde
 | `wrench` | <img src="png/wrench/default.png" height="24" alt="wrench default"> `default` | 24 x 24 |
 | `zoom` | <img src="png/zoom/default.png" height="24" alt="zoom default"> `default` | 24 x 24 |
 
-## glyphs-svg (`svg/glyphs/`, 111 icons, 207 files)
+## glyphs-svg (`svg/glyphs/`, 116 icons, 224 files)
 
-SVG sources of the glyphs, from the same Figma symbols (42:356), one per PNG state that has one (design/tools/icon_svgs.py; its report icon_svgs_report.md compares them with the PNGs). 24 x 24 unless noted, Figma's colours of each state.
+SVG sources of the glyphs, from the same Figma symbols (42:356), one per PNG state (design/tools/icon_svgs.py; its report icon_svgs_report.md compares them with the PNGs). 24 x 24 unless noted, Figma's colours of each state. The app draws these, at the size shown; the PNGs stay as a fallback.
 
 | Icon | States | Size |
 |---|---|---|
@@ -157,6 +158,7 @@ SVG sources of the glyphs, from the same Figma symbols (42:356), one per PNG sta
 | `bookmark` | <img src="svg/glyphs/bookmark/default.svg" height="24" alt="bookmark default"> `default` | 24 x 24 |
 | `bookmarks` | <img src="svg/glyphs/bookmarks/default.svg" height="24" alt="bookmarks default"> `default` | 24 x 24 |
 | `capture-device` | <img src="svg/glyphs/capture-device/default.svg" height="24" alt="capture-device default"> `default` | 24 x 24 |
+| `cast` | <img src="svg/glyphs/cast/default.svg" height="24" alt="cast default"> `default` <img src="svg/glyphs/cast/large.svg" height="24" alt="cast large"> `large` | 24 x 24, 96 x 96 |
 | `chapters` | <img src="svg/glyphs/chapters/default.svg" height="24" alt="chapters default"> `default` | 24 x 24 |
 | `check` | <img src="svg/glyphs/check/active.svg" height="24" alt="check active"> `active` <img src="svg/glyphs/check/default.svg" height="24" alt="check default"> `default` <img src="svg/glyphs/check/selected.svg" height="24" alt="check selected"> `selected` | 24 x 24 |
 | `chevron-down` | <img src="svg/glyphs/chevron-down/default.svg" height="24" alt="chevron-down default"> `default` | 24 x 24 |
@@ -228,37 +230,41 @@ SVG sources of the glyphs, from the same Figma symbols (42:356), one per PNG sta
 | `record` | <img src="svg/glyphs/record/active.svg" height="24" alt="record active"> `active` <img src="svg/glyphs/record/default.svg" height="24" alt="record default"> `default` | 24 x 24 |
 | `refresh` | <img src="svg/glyphs/refresh/default.svg" height="24" alt="refresh default"> `default` | 24 x 24 |
 | `remove` | <img src="svg/glyphs/remove/default.svg" height="24" alt="remove default"> `default` | 24 x 24 |
-| `repeat` | <img src="svg/glyphs/repeat/default.svg" height="24" alt="repeat default"> `default` | 24 x 24 |
+| `repeat` | <img src="svg/glyphs/repeat/active.svg" height="24" alt="repeat active"> `active` <img src="svg/glyphs/repeat/default.svg" height="24" alt="repeat default"> `default` | 24 x 24 |
 | `replay` | <img src="svg/glyphs/replay/default.svg" height="24" alt="replay default"> `default` | 24 x 24 |
 | `right-sidebar` | <img src="svg/glyphs/right-sidebar/default.svg" height="24" alt="right-sidebar default"> `default` | 24 x 24 |
+| `save` | <img src="svg/glyphs/save/default.svg" height="24" alt="save default"> `default` | 24 x 24 |
 | `scope` | <img src="svg/glyphs/scope/default-accent.svg" height="24" alt="scope default-accent"> `default-accent` <img src="svg/glyphs/scope/default-grey.svg" height="24" alt="scope default-grey"> `default-grey` <img src="svg/glyphs/scope/default.svg" height="24" alt="scope default"> `default` | 24 x 24 |
 | `search` | <img src="svg/glyphs/search/default.svg" height="24" alt="search default"> `default` <img src="svg/glyphs/search/dim.svg" height="24" alt="search dim"> `dim` | 24 x 24 |
 | `settings` | <img src="svg/glyphs/settings/active.svg" height="24" alt="settings active"> `active` <img src="svg/glyphs/settings/default.svg" height="24" alt="settings default"> `default` | 24 x 24 |
-| `shuffle` | <img src="svg/glyphs/shuffle/default.svg" height="24" alt="shuffle default"> `default` | 24 x 24 |
+| `shuffle` | <img src="svg/glyphs/shuffle/active.svg" height="24" alt="shuffle active"> `active` <img src="svg/glyphs/shuffle/default.svg" height="24" alt="shuffle default"> `default` | 24 x 24 |
 | `sidebar` | <img src="svg/glyphs/sidebar/active.svg" height="24" alt="sidebar active"> `active` <img src="svg/glyphs/sidebar/default.svg" height="24" alt="sidebar default"> `default` | 24 x 24 |
 | `snapshot` | <img src="svg/glyphs/snapshot/default.svg" height="24" alt="snapshot default"> `default` | 24 x 24 |
 | `songs` | <img src="svg/glyphs/songs/active.svg" height="24" alt="songs active"> `active` <img src="svg/glyphs/songs/default.svg" height="24" alt="songs default"> `default` <img src="svg/glyphs/songs/selected.svg" height="24" alt="songs selected"> `selected` | 24 x 24 |
-| `sort` | <img src="svg/glyphs/sort/default.svg" height="24" alt="sort default"> `default` <img src="svg/glyphs/sort/dim.svg" height="24" alt="sort dim"> `dim` | 24 x 24 |
+| `sort` | <img src="svg/glyphs/sort/active-accent.svg" height="24" alt="sort active-accent"> `active-accent` <img src="svg/glyphs/sort/active-grey.svg" height="24" alt="sort active-grey"> `active-grey` <img src="svg/glyphs/sort/active.svg" height="24" alt="sort active"> `active` <img src="svg/glyphs/sort/default.svg" height="24" alt="sort default"> `default` <img src="svg/glyphs/sort/dim.svg" height="24" alt="sort dim"> `dim` | 24 x 24, 26 x 25 |
 | `spectrometer` | <img src="svg/glyphs/spectrometer/default-accent.svg" height="24" alt="spectrometer default-accent"> `default-accent` <img src="svg/glyphs/spectrometer/default-grey.svg" height="24" alt="spectrometer default-grey"> `default-grey` <img src="svg/glyphs/spectrometer/default.svg" height="24" alt="spectrometer default"> `default` | 24 x 24 |
 | `spectrum` | <img src="svg/glyphs/spectrum/default-accent.svg" height="24" alt="spectrum default-accent"> `default-accent` <img src="svg/glyphs/spectrum/default-grey.svg" height="24" alt="spectrum default-grey"> `default-grey` <img src="svg/glyphs/spectrum/default.svg" height="24" alt="spectrum default"> `default` <img src="svg/glyphs/spectrum/dim.svg" height="24" alt="spectrum dim"> `dim` | 24 x 24 |
 | `speed` | <img src="svg/glyphs/speed/active.svg" height="24" alt="speed active"> `active` <img src="svg/glyphs/speed/default.svg" height="24" alt="speed default"> `default` | 24 x 24 |
 | `stop` | <img src="svg/glyphs/stop/default.svg" height="24" alt="stop default"> `default` | 24 x 24 |
 | `streaming` | <img src="svg/glyphs/streaming/active.svg" height="24" alt="streaming active"> `active` <img src="svg/glyphs/streaming/default.svg" height="24" alt="streaming default"> `default` <img src="svg/glyphs/streaming/selected.svg" height="24" alt="streaming selected"> `selected` | 24 x 24 |
+| `subtitle` | <img src="svg/glyphs/subtitle/default.svg" height="24" alt="subtitle default"> `default` <img src="svg/glyphs/subtitle/dim.svg" height="24" alt="subtitle dim"> `dim` | 24 x 24 |
 | `subtitles` | <img src="svg/glyphs/subtitles/active.svg" height="24" alt="subtitles active"> `active` <img src="svg/glyphs/subtitles/default.svg" height="24" alt="subtitles default"> `default` | 24 x 24 |
 | `swap` | <img src="svg/glyphs/swap/default.svg" height="24" alt="swap default"> `default` | 24 x 24 |
 | `thumbnail` | <img src="svg/glyphs/thumbnail/default.svg" height="24" alt="thumbnail default"> `default` | 24 x 24 |
 | `tv` | <img src="svg/glyphs/tv/active.svg" height="24" alt="tv active"> `active` <img src="svg/glyphs/tv/default.svg" height="24" alt="tv default"> `default` <img src="svg/glyphs/tv/selected.svg" height="24" alt="tv selected"> `selected` | 24 x 24 |
 | `ui` | <img src="svg/glyphs/ui/default-accent.svg" height="24" alt="ui default-accent"> `default-accent` <img src="svg/glyphs/ui/default-grey.svg" height="24" alt="ui default-grey"> `default-grey` <img src="svg/glyphs/ui/default.svg" height="24" alt="ui default"> `default` | 24 x 24 |
-| `video` | <img src="svg/glyphs/video/active.svg" height="24" alt="video active"> `active` | 24 x 24 |
+| `video` | <img src="svg/glyphs/video/active.svg" height="24" alt="video active"> `active` <img src="svg/glyphs/video/default.svg" height="24" alt="video default"> `default` <img src="svg/glyphs/video/dim.svg" height="24" alt="video dim"> `dim` | 24 x 24 |
 | `videos` | <img src="svg/glyphs/videos/active.svg" height="24" alt="videos active"> `active` <img src="svg/glyphs/videos/default.svg" height="24" alt="videos default"> `default` <img src="svg/glyphs/videos/selected.svg" height="24" alt="videos selected"> `selected` | 24 x 24 |
-| `view` | <img src="svg/glyphs/view/default.svg" height="24" alt="view default"> `default` | 24 x 24 |
+| `view` | <img src="svg/glyphs/view/active.svg" height="24" alt="view active"> `active` <img src="svg/glyphs/view/default.svg" height="24" alt="view default"> `default` | 24 x 24, 26 x 25 |
+| `vumeter` | <img src="svg/glyphs/vumeter/default-accent.svg" height="24" alt="vumeter default-accent"> `default-accent` <img src="svg/glyphs/vumeter/default-grey.svg" height="24" alt="vumeter default-grey"> `default-grey` <img src="svg/glyphs/vumeter/default.svg" height="24" alt="vumeter default"> `default` | 24 x 24 |
 | `waveform` | <img src="svg/glyphs/waveform/default-accent.svg" height="24" alt="waveform default-accent"> `default-accent` <img src="svg/glyphs/waveform/default-grey.svg" height="24" alt="waveform default-grey"> `default-grey` <img src="svg/glyphs/waveform/default.svg" height="24" alt="waveform default"> `default` | 24 x 24 |
+| `window` | <img src="svg/glyphs/window/default.svg" height="24" alt="window default"> `default` | 24 x 24 |
 | `wrench` | <img src="svg/glyphs/wrench/default.svg" height="24" alt="wrench default"> `default` | 24 x 24 |
 | `zoom` | <img src="svg/glyphs/zoom/default.svg" height="24" alt="zoom default"> `default` | 24 x 24 |
 
-## svg (`svg/`, 35 icons, 35 files)
+## svg (`svg/`, 56 icons, 56 files)
 
-Single-colour SVG icons of the top bar, the sidebar and the player (24 x 24 unless noted).
+SVG icons of the top bar, the sidebar and the player, and the SVG of each raster piece of images/ (same name; design/tools/raster_svgs.json says which Figma node each comes from).
 
 | Icon | States | Size |
 |---|---|---|
@@ -272,6 +278,8 @@ Single-colour SVG icons of the top bar, the sidebar and the player (24 x 24 unle
 | `fullscreen` | <img src="svg/fullscreen.svg" height="24" alt="fullscreen default"> `default` | 24 x 24 |
 | `grid` | <img src="svg/grid.svg" height="24" alt="grid default"> `default` | 24 x 24 |
 | `home` | <img src="svg/home.svg" height="24" alt="home default"> `default` | 24 x 24 |
+| `line-vertical` | <img src="svg/line-vertical.svg" height="24" alt="line-vertical default"> `default` | 24 x 24 |
+| `list` | <img src="svg/list.svg" height="24" alt="list default"> `default` | 24 x 24 |
 | `logo` | <img src="svg/logo.svg" height="24" alt="logo default"> `default` | 24 x 24 |
 | `maximize` | <img src="svg/maximize.svg" height="24" alt="maximize default"> `default` | 24 x 24 |
 | `menu` | <img src="svg/menu.svg" height="24" alt="menu default"> `default` | 18 x 18 |
@@ -290,13 +298,60 @@ Single-colour SVG icons of the top bar, the sidebar and the player (24 x 24 unle
 | `settings` | <img src="svg/settings.svg" height="24" alt="settings default"> `default` | 24 x 24 |
 | `sidebar` | <img src="svg/sidebar.svg" height="24" alt="sidebar default"> `default` | 18 x 18 |
 | `sort` | <img src="svg/sort.svg" height="24" alt="sort default"> `default` | 26 x 25 |
+| `subtitle-file` | <img src="svg/subtitle-file.svg" height="24" alt="subtitle-file default"> `default` | 24 x 24 |
 | `subtitles` | <img src="svg/subtitles.svg" height="24" alt="subtitles default"> `default` | 24 x 24 |
+| `theme-bar-knob` | <img src="svg/theme-bar-knob.svg" height="24" alt="theme-bar-knob default"> `default` | 12 x 20 |
+| `theme-bar-mask` | <img src="svg/theme-bar-mask.svg" height="24" alt="theme-bar-mask default"> `default` | 1056 x 30 |
+| `theme-bar-pill` | <img src="svg/theme-bar-pill.svg" height="24" alt="theme-bar-pill default"> `default` | 40 x 24 |
+| `theme-bar-play` | <img src="svg/theme-bar-play.svg" height="24" alt="theme-bar-play default"> `default` | 14 x 14 |
+| `theme-strip-buttons` | <img src="svg/theme-strip-buttons.svg" height="24" alt="theme-strip-buttons default"> `default` | 1056 x 22 |
+| `theme-strip-cone` | <img src="svg/theme-strip-cone.svg" height="24" alt="theme-strip-cone default"> `default` | 1056 x 22 |
+| `theme-system` | <img src="svg/theme-system.svg" height="24" alt="theme-system default"> `default` | 100 x 100 |
+| `track-audio` | <img src="svg/track-audio.svg" height="24" alt="track-audio default"> `default` | 24 x 24 |
+| `track-audio-active` | <img src="svg/track-audio-active.svg" height="24" alt="track-audio-active default"> `default` | 24 x 24 |
+| `track-check-active` | <img src="svg/track-check-active.svg" height="24" alt="track-check-active default"> `default` | 24 x 24 |
+| `track-subtitles` | <img src="svg/track-subtitles.svg" height="24" alt="track-subtitles default"> `default` | 24 x 24 |
+| `track-subtitles-active` | <img src="svg/track-subtitles-active.svg" height="24" alt="track-subtitles-active default"> `default` | 24 x 24 |
+| `track-video` | <img src="svg/track-video.svg" height="24" alt="track-video default"> `default` | 24 x 24 |
+| `track-video-active` | <img src="svg/track-video-active.svg" height="24" alt="track-video-active default"> `default` | 24 x 24 |
 | `video` | <img src="svg/video.svg" height="24" alt="video default"> `default` | 24 x 24 |
 | `volume` | <img src="svg/volume.svg" height="24" alt="volume default"> `default` | 24 x 24 |
 | `volume-background` | <img src="svg/volume-background.svg" height="24" alt="volume-background default"> `default` | 89 x 27.3633 |
 | `volume-fill` | <img src="svg/volume-fill.svg" height="24" alt="volume-fill default"> `default` | 86 x 24.56 |
+| `volume-high` | <img src="svg/volume-high.svg" height="24" alt="volume-high default"> `default` | 24 x 24 |
+| `volume-low` | <img src="svg/volume-low.svg" height="24" alt="volume-low default"> `default` | 24 x 24 |
 | `volume-mask` | <img src="svg/volume-mask.svg" height="24" alt="volume-mask default"> `default` | 33 x 30 |
+| `volume-medium` | <img src="svg/volume-medium.svg" height="24" alt="volume-medium default"> `default` | 24 x 24 |
+| `volume-muted` | <img src="svg/volume-muted.svg" height="24" alt="volume-muted default"> `default` | 24 x 24 |
 | `welcome` | <img src="svg/welcome.svg" height="24" alt="welcome default"> `default` | 141 x 141 |
+
+## player-svg (`player/svg/`, 21 icons, 21 files)
+
+SVG of each player and window-frame piece of player/ (same name, from Figma; raster_svgs.json).
+
+| Icon | States | Size |
+|---|---|---|
+| `close` | <img src="player/svg/close.svg" height="24" alt="close default"> `default` | 24 x 24 |
+| `corner-bl-dark` | <img src="player/svg/corner-bl-dark.svg" height="24" alt="corner-bl-dark default"> `default` | 9 x 9 |
+| `corner-bl-light` | <img src="player/svg/corner-bl-light.svg" height="24" alt="corner-bl-light default"> `default` | 9 x 9 |
+| `corner-br-dark` | <img src="player/svg/corner-br-dark.svg" height="24" alt="corner-br-dark default"> `default` | 9 x 9 |
+| `corner-br-light` | <img src="player/svg/corner-br-light.svg" height="24" alt="corner-br-light default"> `default` | 9 x 9 |
+| `corner-tl-dark` | <img src="player/svg/corner-tl-dark.svg" height="24" alt="corner-tl-dark default"> `default` | 9 x 9 |
+| `corner-tl-light` | <img src="player/svg/corner-tl-light.svg" height="24" alt="corner-tl-light default"> `default` | 9 x 9 |
+| `corner-tr-dark` | <img src="player/svg/corner-tr-dark.svg" height="24" alt="corner-tr-dark default"> `default` | 9 x 9 |
+| `corner-tr-light` | <img src="player/svg/corner-tr-light.svg" height="24" alt="corner-tr-light default"> `default` | 9 x 9 |
+| `equalizer` | <img src="player/svg/equalizer.svg" height="24" alt="equalizer default"> `default` | 24 x 24 |
+| `fullscreen` | <img src="player/svg/fullscreen.svg" height="24" alt="fullscreen default"> `default` | 24 x 24 |
+| `library-add` | <img src="player/svg/library-add.svg" height="24" alt="library-add default"> `default` | 32 x 32 |
+| `library-playlist` | <img src="player/svg/library-playlist.svg" height="24" alt="library-playlist default"> `default` | 32 x 32 |
+| `maximize` | <img src="player/svg/maximize.svg" height="24" alt="maximize default"> `default` | 24 x 24 |
+| `minimize` | <img src="player/svg/minimize.svg" height="24" alt="minimize default"> `default` | 24 x 24 |
+| `next` | <img src="player/svg/next.svg" height="24" alt="next default"> `default` | 24 x 24 |
+| `pause` | <img src="player/svg/pause.svg" height="24" alt="pause default"> `default` | 24 x 24 |
+| `previous` | <img src="player/svg/previous.svg" height="24" alt="previous default"> `default` | 24 x 24 |
+| `queue` | <img src="player/svg/queue.svg" height="24" alt="queue default"> `default` | 24 x 24 |
+| `settings` | <img src="player/svg/settings.svg" height="24" alt="settings default"> `default` | 24 x 24 |
+| `subtitles` | <img src="player/svg/subtitles.svg" height="24" alt="subtitles default"> `default` | 24 x 24 |
 
 ## duo (`svg/duo/`, 56 icons, 56 files)
 

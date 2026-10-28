@@ -1329,6 +1329,12 @@ Saved replies keep answers consistent; duplicates are linked to the first report
   attached by the user, from *Settings → Global → Diagnostics → Save a log*).
 - A card shows exactly what goes into the link, with *Copy* and *Open GitHub*; the user submits on GitHub; the app
   sends nothing itself. The link stays under 8,000 characters.
+- 🟡 Done 2026-10-28 (branch `feature/feedback`, not built yet): `util/redesign_feedback.cpp` (singleton
+  `RedesignFeedback`), the card `RedesignReportDialog.qml` (opened from `SetupDialogs.qml`), the two links in About.
+  Until Discussions are on, *Suggest an idea* opens `issues/new?template=feature_request.yml` (one constant,
+  `ideaForm`); the form got an optional `version` field and the bug form an `environment` field (System
+  information) that carries the whole text. The log is under *Settings → General → Diagnostics* (the sidebar has
+  no *Global*).
 
 ### 13.13 Wiki
 
@@ -1380,7 +1386,7 @@ In an organization, a `.github` repository gives every repository these files by
 - 🔴 Roadmap board across repositories, with the votes workflow
 - 🟢 `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, pull request template (2026-10-25; saved replies are a
   GitHub setting of the owner's account)
-- 🔴 In-app *Suggest an idea* / *Report a problem*
+- 🟡 In-app *Suggest an idea* / *Report a problem* (2026-10-28, branch `feature/feedback`, to build and test)
 - 🟢 `docs/wiki/` with its *Design check* and *TV compatibility* pages, and `wiki-sync.yml` (ran on the 0.3.0 push)
 - 🟡 Release notes script (`extras/juxtopposed/release/release-notes.py`, 2026-10-25); the pixel-check job with
   automatic screenshots needs a Windows runner with a display: later

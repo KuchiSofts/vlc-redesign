@@ -8,6 +8,12 @@ body:
         Ideas are welcome! The look follows [Juxtopposed's design](https://www.figma.com/community/file/1691465999134370980),
         so suggestions that fit it, or fill a gap it doesn't cover, are the easiest to take on.
         Check the [roadmap](https://github.com/KuchiSofts/vlc-redesign/blob/main/ROADMAP.md) first: it may already be planned.
+  - type: input
+    id: version
+    attributes:
+      label: VLC Redesign version
+      description: "⋯ menu → About VLC shows it (⋯ menu → Suggest an idea fills it in)"
+      placeholder: "0.3.2"
   - type: dropdown
     id: area
     attributes:

@@ -66,7 +66,7 @@ Item {
         horizontalAlignment: TextEdit.AlignRight
         color: VLCStyle.redesign.color("#C6C6C6", "#2e2e2e", root.darkTheme)
         selectionColor: VLCStyle.redesign.color(VLCStyle.redesign.accentBackground, "#dedede", root.darkTheme)
-        selectedTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#191919", root.darkTheme)
+        selectedTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e", root.darkTheme)
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
         activeFocusOnPress: false

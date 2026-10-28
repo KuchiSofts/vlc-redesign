@@ -61,7 +61,7 @@ Item {
             Layout.preferredHeight: 0
 
             background: Rectangle {
-                color: VLCStyle.redesign.color("#0e0e0e", theme.bg.primary)
+                color: VLCStyle.redesign.color("#0e0e0e", "#c2c2c1")
             }
 
             readonly property int currentIdentifier: currentItem ? currentItem.identifier : -1
@@ -205,9 +205,9 @@ Item {
                             readonly property int count: item ? item.count : 0
 
                             sourceComponent: Rectangle {
-                                color: VLCStyle.redesign.color("#151515", theme.bg.primary)
+                                color: VLCStyle.redesign.color("#151515", "#b5b5b4")
 
-                                border.color: VLCStyle.redesign.color("#373737", theme.border)
+                                border.color: VLCStyle.redesign.color("#373737", "#8e8e8d")
                                 border.width: VLCStyle.border
                                 border.pixelAligned: (radius < Number.EPSILON)
 
@@ -255,7 +255,7 @@ Item {
                                         text: root.previewHost ? "" : repeater.getMetric(index).text
                                         verticalAlignment: Text.AlignVCenter
                                         font.pixelSize: VLCStyle.fontSize_xxlarge
-                                        color: VLCStyle.redesign.color("#969696", theme.fg.secondary)
+                                        color: VLCStyle.redesign.color("#969696", "#4d4d4d")
                                         horizontalAlignment: Text.AlignHCenter
                                         visible: (count === 0)
                                     }

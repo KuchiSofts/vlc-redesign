@@ -193,7 +193,7 @@ T.ToolBar {
 
     background: Rectangle {
         color: VLCStyle.redesign.color(VLCStyle.redesign.windowBackground,
-                                       theme.bg.primary, root.darkTheme)
+                                       "#c2c2c1", root.darkTheme)
         // Figma "Vector": #222222, 1 px centred on the top of the content:
         // half of it on each of the last two rows
         Rectangle {
@@ -201,7 +201,7 @@ T.ToolBar {
             y: parent.height - 1
             width: parent.width - root.leftPadding - root.rightPadding
             height: 1
-            color: root.darkTheme ? "#181818" : VLCStyle.redesign.color(VLCStyle.redesign.separator, theme.border, false)
+            color: root.darkTheme ? "#181818" : VLCStyle.redesign.color(VLCStyle.redesign.separator, "#9c9c9b", false)
         }
         // over the first row of the content
         Rectangle {
@@ -319,7 +319,7 @@ T.ToolBar {
                             font.family: VLCStyle.redesign.fontFamily
                             font.pixelSize: VLCStyle.dp(8, VLCStyle.scale)
                             color: VLCStyle.redesign.color(VLCStyle.redesign.textDisabled,
-                                                           theme.fg.secondary, root.darkTheme)
+                                                           "#929291", root.darkTheme)
                         }
 
                         T.AbstractButton {
@@ -356,8 +356,7 @@ T.ToolBar {
                                 topPadding: root._topPadding(crumb.height, font.pixelSize, crumbMetrics.ascent, false)
                                 color: VLCStyle.redesign.color(crumb.current ? VLCStyle.redesign.textSecondary
                                                                : crumb.hovered ? VLCStyle.redesign.textPrimary
-                                                                               : VLCStyle.redesign.textMuted,
-                                                               theme.fg.primary, root.darkTheme)
+                                                                               : VLCStyle.redesign.textMuted, undefined, root.darkTheme)
                                 FontMetrics {
                                     id: crumbMetrics
                                     font: crumbText.font
@@ -394,7 +393,7 @@ T.ToolBar {
                 topPadding: root._topPadding(height, font.pixelSize, titleMetrics.ascent, false)
                 bottomPadding: 0
                 color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted,
-                                               theme.fg.primary, root.darkTheme)
+                                               "#2e2e2e", root.darkTheme)
                 FontMetrics {
                     id: titleMetrics
                     font: titleLabel.font
@@ -417,7 +416,7 @@ T.ToolBar {
             Layout.preferredHeight: root._rowHeight
             visible: root.itemCount >= 0
             text: qsTr("%1 item", "%1 items", root.itemCount).arg(root.itemCount)
-            color: VLCStyle.redesign.color("#6B6B6B", theme.fg.secondary,
+            color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b",
                                            root.darkTheme)
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
@@ -525,7 +524,7 @@ T.ToolBar {
                 Layout.preferredWidth: VLCStyle.dp(325, VLCStyle.scale)
                 Layout.preferredHeight: VLCStyle.dp(34, VLCStyle.scale)
                 radius: VLCStyle.dp(6, VLCStyle.scale)
-                color: VLCStyle.redesign.color("#151515", theme.bg.secondary,
+                color: VLCStyle.redesign.color("#151515", "#b5b5b4",
                                                root.darkTheme)
                 border.width: searchField.activeFocus ? 1 : 0
                 border.color: VLCStyle.redesign.focusColor
@@ -567,9 +566,9 @@ T.ToolBar {
                     topPadding: root._topPadding(height, font.pixelSize, searchMetrics.ascent)
                     placeholderText: qsTr("Search")
                     placeholderTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textDisabled,
-                                                                  theme.fg.secondary, root.darkTheme)
+                                                                  "#929291", root.darkTheme)
                     color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted,
-                                                   theme.fg.primary, root.darkTheme)
+                                                   "#2e2e2e", root.darkTheme)
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                     FontMetrics {

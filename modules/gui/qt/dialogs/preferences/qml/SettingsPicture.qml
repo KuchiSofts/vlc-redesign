@@ -27,7 +27,7 @@ SettingsSectionTitle {
     readonly property var parameters: { effects.revision; return effects.parameters("adjust") }
     visible: { effects.revision; return effects.filterAvailable("adjust") }
 
-    function c(value) { return VLCStyle.redesign.color(value, value) }
+    function c(value) { return VLCStyle.redesign.color(value) }
 
     Repeater {
         model: root.adjustments

@@ -68,7 +68,7 @@ Widgets.RedesignDialog {
         radius: VLCStyle.dp(6, VLCStyle.scale)
         color: VLCStyle.redesign.color("#090909", "#dedede", root.darkTheme)
         border.width: VLCStyle.dp(2, VLCStyle.scale)
-        border.color: VLCStyle.redesign.color("#191919", "#c4c4c3", root.darkTheme)
+        border.color: VLCStyle.redesign.color("#191919", "#ababaa", root.darkTheme)
 
         Flickable {
             id: reportView
@@ -95,7 +95,7 @@ Widgets.RedesignDialog {
                 text: root.report
                 color: VLCStyle.redesign.color("#C6C6C6", "#2e2e2e", root.darkTheme)
                 selectionColor: VLCStyle.redesign.color(VLCStyle.redesign.accentBackground, "#dedede", root.darkTheme)
-                selectedTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#191919", root.darkTheme)
+                selectedTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e", root.darkTheme)
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
                 Accessible.role: Accessible.EditableText
@@ -110,7 +110,7 @@ Widgets.RedesignDialog {
         wrapMode: Text.WordWrap
         horizontalAlignment: Text.AlignLeft
         text: qsTr("No file names, user names or logs. To add a log: Settings → General → Diagnostics → Save a log.")
-        color: VLCStyle.redesign.color("#6B6B6B", "#4d4d4d", root.darkTheme)
+        color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b", root.darkTheme)
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
         lineHeight: 1.3

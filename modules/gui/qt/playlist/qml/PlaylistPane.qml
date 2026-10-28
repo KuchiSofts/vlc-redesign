@@ -125,7 +125,7 @@ T.Pane {
     }
 
     background: Rectangle {
-        color: root.drawBackground ? VLCStyle.redesign.color(VLCStyle.redesign.sidebarBackground, "#c2c2c1", VLCStyle.palette.isDark)
+        color: root.drawBackground ? VLCStyle.redesign.color(VLCStyle.redesign.sidebarBackground, "#ababaa", VLCStyle.palette.isDark)
                                    : "transparent"
     }
 
@@ -168,7 +168,7 @@ T.Pane {
             elide: Text.ElideRight
             // (the right in a right to left layout)
             horizontalAlignment: Text.AlignLeft
-            color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, theme.fg.primary)
+            color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(18, VLCStyle.scale)
         }
@@ -196,7 +196,7 @@ T.Pane {
                 }
                 elide: Text.ElideRight
                 horizontalAlignment: Text.AlignLeft
-                color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, theme.fg.secondary)
+                color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
             }
@@ -508,7 +508,7 @@ T.Pane {
                         const parts = folderHeading.section.split(/[\\/]/).filter(part => part.length > 0)
                         return parts.length > 0 ? parts[parts.length - 1] : folderHeading.section
                     }
-                    color: VLCStyle.redesign.color("#6B6B6B", "#4d4d4d")
+                    color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
                     elide: Text.ElideMiddle
@@ -697,7 +697,7 @@ T.Pane {
         implicitHeight: VLCStyle.dp(32, VLCStyle.scale)
         font.pixelSize: VLCStyle.dp(20, VLCStyle.scale)
         color: checked ? VLCStyle.redesign.accent
-                       : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#5a5a59")
+                       : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
         background: CardButtonBackground { button: glyphButton }
     }
 

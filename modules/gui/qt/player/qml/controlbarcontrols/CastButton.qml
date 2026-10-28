@@ -98,7 +98,7 @@ RedesignIconButton {
                     horizontalAlignment: Text.AlignLeft
                     elide: Text.ElideRight
                     text: qsTr("Cast to")
-                    color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#1e1e1e")
+                    color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
                     font.weight: Font.Medium
@@ -192,7 +192,7 @@ RedesignIconButton {
                 text: root.manager.status === RendererManager.RUNNING
                       ? qsTr("Looking for TVs and Chromecasts on your network…")
                       : qsTr("No device found. Turn your TV or Chromecast on, on the same network as this computer.")
-                color: VLCStyle.redesign.color("#8F8F8F", "#4d4d4d")
+                color: VLCStyle.redesign.color("#8F8F8F", "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
             }
@@ -238,7 +238,7 @@ RedesignIconButton {
                     horizontalAlignment: Text.AlignLeft
                     verticalAlignment: Text.AlignVCenter
                     text: displayHere.text
-                    color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#1e1e1e")
+                    color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                     elide: Text.ElideRight
@@ -252,7 +252,7 @@ RedesignIconButton {
                 wrapMode: Text.WordWrap
                 horizontalAlignment: Text.AlignLeft
                 text: qsTr("With a Chromecast, the video plays only there.")
-                color: VLCStyle.redesign.color("#8F8F8F", "#4d4d4d")
+                color: VLCStyle.redesign.color("#8F8F8F", "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(12, VLCStyle.scale)
             }
@@ -315,8 +315,8 @@ RedesignIconButton {
 
         background: Rectangle {
             radius: VLCStyle.dp(6, VLCStyle.scale)
-            color: row.selected ? VLCStyle.redesign.color("#1b1b1b", "#b4b4b3")
-                 : row.hovered || row.activeFocus ? VLCStyle.redesign.color("#151515", "#9c9c9b") : "transparent"
+            color: row.selected ? VLCStyle.redesign.color("#1b1b1b", "#ababaa")
+                 : row.hovered || row.activeFocus ? VLCStyle.redesign.color("#151515", "#b5b5b4") : "transparent"
             border.width: row.visualFocus ? 1 : 0
             border.color: VLCStyle.redesign.focusColor
         }
@@ -345,7 +345,7 @@ RedesignIconButton {
                     Layout.fillWidth: true
                     text: row.name
                     color: row.selected ? VLCStyle.redesign.accent
-                                        : VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#1e1e1e")
+                                        : VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                     elide: Text.ElideRight
@@ -354,7 +354,7 @@ RedesignIconButton {
                     Layout.fillWidth: true
                     visible: row.detail !== ""
                     text: row.detail
-                    color: row.alert ? VLCStyle.redesign.accent : VLCStyle.redesign.color("#6B6B6B", "#5a5a59")
+                    color: row.alert ? VLCStyle.redesign.accent : VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(11, VLCStyle.scale)
                     elide: Text.ElideRight

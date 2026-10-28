@@ -357,7 +357,7 @@ Item {
 
         color: VLCStyle.redesign.color("#C6C6C6", "#2e2e2e")
         selectionColor: VLCStyle.redesign.color(VLCStyle.redesign.accentBackground, "#dedede")
-        selectedTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#191919")
+        selectedTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
         selectByMouse: true
@@ -366,7 +366,7 @@ Item {
             radius: VLCStyle.dp(6, VLCStyle.scale)
             color: VLCStyle.redesign.color("#090909", "#dedede")
             border.width: passwordField.border
-            border.color: VLCStyle.redesign.color("#191919", "#c4c4c3")
+            border.color: VLCStyle.redesign.color("#191919", "#ababaa")
         }
     }
 

@@ -34,7 +34,7 @@ Item {
     ]
 
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
-    function c(value) { return VLCStyle.redesign.color(value, value) }
+    function c(value) { return VLCStyle.redesign.color(value) }
 
     // Sidebar of the design: 200 px, #191919 at 95 %, radius 6, 6 px padding,
     // 8 px between the 33 px group titles and the 40 px items

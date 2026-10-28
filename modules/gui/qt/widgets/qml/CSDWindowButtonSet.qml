@@ -129,7 +129,7 @@ Row {
                     width: parent.width
                     height: VLCStyle.dp(24, VLCStyle.scale)
                     visible: VLCStyle.customizing
-                    color: VLCStyle.redesign.color("#6B6B6B", "#5a5a59")
+                    color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                 }
 
                 // Preserve the native Windows hit-test/snap rectangles.
@@ -177,7 +177,7 @@ Row {
                     width: parent.width
                     height: VLCStyle.dp(24, VLCStyle.scale)
                     visible: VLCStyle.customizing
-                    color: VLCStyle.redesign.color("#6B6B6B", "#5a5a59")
+                    color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                 }
                 CustomizeDragArea {
                     controlId: root.fullscreenControlId

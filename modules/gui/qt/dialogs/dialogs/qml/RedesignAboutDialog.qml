@@ -148,21 +148,52 @@ T.Popup {
                         font.pixelSize: VLCStyle.dp(28, VLCStyle.scale)
                         font.weight: Font.Light
                     }
-                    Text {
-                        id: versionText
+                    RowLayout {
                         Layout.fillWidth: true
-                        elide: Text.ElideRight
-                        horizontalAlignment: Text.AlignLeft
-                        // the system too: the same version exists for several
-                        text: qsTr("Version %1 for %2 · based on VLC %3").arg(RedesignUpdater.currentVersion)
-                                  .arg(RedesignUpdater.platformName).arg(AboutModel.version.split(" ")[0])
-                        color: root.textMuted
-                        font.family: VLCStyle.redesign.fontFamily
-                        font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
-                        HoverHandler { id: versionHover }
-                        T.ToolTip.visible: versionHover.hovered && versionText.truncated
-                        T.ToolTip.text: versionText.text
-                        T.ToolTip.delay: 650
+                        spacing: VLCStyle.dp(8, VLCStyle.scale)
+
+                        Text {
+                            id: versionText
+                            Layout.fillWidth: true
+                            Layout.maximumWidth: implicitWidth
+                            elide: Text.ElideRight
+                            horizontalAlignment: Text.AlignLeft
+                            text: qsTr("Version %1 · based on VLC %2").arg(RedesignUpdater.currentVersion).arg(AboutModel.version.split(" ")[0])
+                            color: root.textMuted
+                            font.family: VLCStyle.redesign.fontFamily
+                            font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
+                            HoverHandler { id: versionHover }
+                            T.ToolTip.visible: versionHover.hovered && versionText.truncated
+                            T.ToolTip.text: versionText.text
+                            T.ToolTip.delay: 650
+                        }
+                        // The system this copy is made for (the same version
+                        // exists for several), the one it runs on in its tooltip
+                        Rectangle {
+                            id: platformBadge
+                            implicitWidth: platformText.implicitWidth + VLCStyle.dp(16, VLCStyle.scale)
+                            implicitHeight: VLCStyle.dp(20, VLCStyle.scale)
+                            radius: height / 2
+                            color: VLCStyle.redesign.color("#262626")
+                            border.width: 1
+                            border.color: VLCStyle.redesign.windowBorder
+                            Accessible.role: Accessible.StaticText
+                            Accessible.name: RedesignUpdater.platformName
+                            Text {
+                                id: platformText
+                                anchors.centerIn: parent
+                                text: RedesignUpdater.platformName
+                                color: root.textPrimary
+                                font.family: VLCStyle.redesign.fontFamily
+                                font.pixelSize: VLCStyle.dp(12, VLCStyle.scale)
+                                font.weight: Font.Medium
+                            }
+                            HoverHandler { id: platformHover }
+                            T.ToolTip.visible: platformHover.hovered
+                            T.ToolTip.text: RedesignUpdater.platformDetails
+                            T.ToolTip.delay: 650
+                        }
+                        Item { Layout.fillWidth: true }
                     }
                     Text {
                         id: updateText

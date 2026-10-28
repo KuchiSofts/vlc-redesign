@@ -116,6 +116,16 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Technical
 
+- **Design tokens, icons and fonts in `design/` (`design-1.0`)**, for the other platforms. `design/tokens.json`
+  (W3C Design Tokens format, 203 tokens) holds the colours of both themes, the 9 accents and their Dim/Bright
+  rule, fonts and line metrics, sizes, radii, icon boxes, shadows, opacities and window sizes, each with its Figma
+  node and the places in the code that hold it. `design/icons/` has every icon the app ships (405 files: the Icon
+  set's PNG per state with `@2x`, the SVG and two-tone icons) with `index.json` and a preview; `design/fonts/` the
+  modified Inter, DM Mono and their OFL licenses. `design/tools/export.py` writes `design/build/tokens.css`,
+  `colors.xml` (Android) and `Tokens.swift`; `sync_assets.py` copies the icons and fonts from the app.
+  `design/tools/check_qml.py` (a *Design tokens* job in the Windows build workflow, on every pull request) fails
+  when a value in `VLCStyle.qml`, the menu and widget styles or the QML components differs from `tokens.json`
+  (205 places), when the light colour map or the accents do not match, or when `design/` is stale.
 - **Signed checksums (security).** Releases have `SHA256SUMS.txt.sig`: an ECDSA P-256 signature (SHA-256, raw
   r‖s, 64 bytes) of `SHA256SUMS.txt`. The updater downloads it with the checksums and checks it with Windows' CNG
   (`BCryptImportKeyPair` / `BCryptVerifySignature`, `bcrypt.dll` loaded from System32) against the public key in

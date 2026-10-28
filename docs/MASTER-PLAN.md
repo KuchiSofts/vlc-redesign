@@ -378,7 +378,9 @@ put it in the top bar. Editing the music bar is verified (§8.8).
 | 2425:13624 | Player - Light | 1920 × 1080 | 🟢     | 🟢    | The light theme, greys measured from this frame      | VLCStyle.qml (`redesign.color()`), redesign_icon_provider.cpp |
 
 Notes: the whole app was checked in light in build 115 (player, tracks and subtitles window, cast window, ⋯ menu,
-classic dialogs). The last fixes, Settings scroll bar handles and the warning colour, are in the app ⏳ (§8.3).
+classic dialogs). 2026-10-28: the light values the colour map overrode settled
+([design/light-theme.md](../design/light-theme.md)); the frame against the app per region within 2.4 per channel;
+dark unchanged (28 captures, no pixel over 1 of 255). The last fixes, Settings scroll bar handles and the warning colour, are in the app ⏳ (§8.3).
 
 ### 5.9 Add Subtitles (4)
 

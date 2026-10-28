@@ -41,7 +41,7 @@ Item {
         x: Math.round((parent.width - width) / 2)
         y: 116
         source: "qrc:///redesign/welcome.svg"
-        sourceSize: Qt.size(141, 141)
+        sourceSize: Qt.size(width, height)
         fillMode: Image.PreserveAspectFit
         Accessible.name: qsTr("VLC")
     }
@@ -147,7 +147,7 @@ Item {
             Accessible.name: text
             contentItem: Image {
                 source: "qrc:///redesign/icons/close/default.png"
-                sourceSize: Qt.size(24, 24)
+                sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
                 fillMode: Image.Pad
                 opacity: clearFolder.hovered || clearFolder.down ? 1 : 0.6
             }

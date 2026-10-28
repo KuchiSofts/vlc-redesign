@@ -7,9 +7,17 @@
       "folder": "png",
       "description": "The icons of the Figma \"Icon\" component set (42:356), exported as PNG, one folder per icon, one file per state. 24 x 24 unless noted; @2x files are the same state at twice the size."
     },
+    "glyphs-svg": {
+      "folder": "svg/glyphs",
+      "description": "SVG sources of the glyphs, from the same Figma symbols (42:356), one per PNG state (design/tools/icon_svgs.py; its report icon_svgs_report.md compares them with the PNGs). 24 x 24 unless noted, Figma's colours of each state. The app draws these, at the size shown; the PNGs stay as a fallback."
+    },
     "svg": {
       "folder": "svg",
-      "description": "Single-colour SVG icons of the top bar, the sidebar and the player (24 x 24 unless noted)."
+      "description": "SVG icons of the top bar, the sidebar and the player, and the SVG of each raster piece of images/ (same name; design/tools/raster_svgs.json says which Figma node each comes from)."
+    },
+    "player-svg": {
+      "folder": "player/svg",
+      "description": "SVG of each player and window-frame piece of player/ (same name, from Figma; raster_svgs.json)."
     },
     "duo": {
       "folder": "svg/duo",
@@ -3872,6 +3880,3390 @@
       ]
     },
     {
+      "set": "glyphs-svg",
+      "name": "0",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/0/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/0/default.svg",
+          "sha256": "60e0adb79591111d31d4ae7ebdc17c37fa6efac5157a62e2812dcefc9a983e58"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "accessibility",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/accessibility/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/accessibility/default.svg",
+          "sha256": "10be88f1aed53a8f7b27fb79b3730add42e0709cc54c547103d3b0307983b508"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "add",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/add/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/add/default.svg",
+          "sha256": "87498f4558869940a4ef1f237c935fe5870d3fdd9e4bfb9bf125913731585796"
+        },
+        {
+          "state": "half",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/add/half.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/add/half.svg",
+          "sha256": "7651f03579fc9ce04d3daedb5750a4fdbafccea5d62004f1470cdc9374151c91"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "album",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/album/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/album/default.svg",
+          "sha256": "90b4f048c39b89191e3f44623433a294193ce6902e4ebd8d0a4ab78de5ee8c51"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "arrow-left",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/arrow-left/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/arrow-left/default.svg",
+          "sha256": "a9c4b957c027d4dd0f647eae98841919cbf4abb3cb540fdb07977e46e18702af"
+        },
+        {
+          "state": "disabled",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/arrow-left/disabled.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/arrow-left/disabled.svg",
+          "sha256": "3cd2f2798bf50fb5dcebced0ec88dc13bd313e345f765f267b9b866acf2eb55e"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "arrow-right",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/arrow-right/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/arrow-right/default.svg",
+          "sha256": "47f83960ed07bd81eebb66dbf2400f25156318786bc2b6294b2c899e7a49cd0a"
+        },
+        {
+          "state": "disabled",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/arrow-right/disabled.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/arrow-right/disabled.svg",
+          "sha256": "3adbfa19c71fd852cb8ea4709e26adc7deeb9390aeee1e34552ef44354baac76"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "artist",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/artist/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/artist/active.svg",
+          "sha256": "268cb72c2e57173b0eb7326930500f8e96706dd113b104977b66d1d2d0ef8fa7"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/artist/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/artist/default.svg",
+          "sha256": "0cd03476cdb070f2a9a326f9499409508905a2b813bac07a5fa19b78dc587a0a"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "audio",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/audio/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/audio/active.svg",
+          "sha256": "598955697e2557b4c787c43a11218fbf6a5cbb48c6ab340a3c04e186c8bd0aa5"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/audio/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/audio/default.svg",
+          "sha256": "acb3931baed33735f0a0b6f51bc78f83a5846474bbbfbc3ead7149ee05da3962"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "backward-10-sec",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/backward-10-sec/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/backward-10-sec/default.svg",
+          "sha256": "200473a6a5fbc2488cb15ba34d3c7f2c8513161690ed422311dd785de7514899"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "backward-15-sec",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/backward-15-sec/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/backward-15-sec/default.svg",
+          "sha256": "30a44b1dcc1c44abbf10bf23961bf2c10a0c2c7f89f0202ba9128eda84605a45"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "bookmark",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/bookmark/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/bookmark/default.svg",
+          "sha256": "c6082ac5ea44ec47834d7343eaafdc6300276e701eb89219e1aceed00a16b07d"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "bookmarks",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/bookmarks/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/bookmarks/default.svg",
+          "sha256": "3f9abd3d405a10f35d3377c5283805f0a64e7c248e7dc0588ad60a12fcf82070"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "capture-device",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/capture-device/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/capture-device/default.svg",
+          "sha256": "91457df99253d17080fb02969ecb2da0f1820a2f5e7e33287bc9164027152aad"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "cast",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/cast/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/cast/default.svg",
+          "sha256": "ea4aa6a34e4ef351776a94535965a7619e44f32450c45bd120a7d4acd8fa14f0"
+        },
+        {
+          "state": "large",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/cast/large.svg",
+          "size": [
+            96,
+            96
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/cast/large.svg",
+          "sha256": "344df942956a15c66eac51d0dc5f7966615f520e4fcae67766dded7f1c29df4d"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "chapters",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/chapters/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/chapters/default.svg",
+          "sha256": "9c8360c9af65950fc2acfdd14c804e5795bf64d00355309a07ec8d0174bc526e"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "check",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/check/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/check/active.svg",
+          "sha256": "ec8ff5b3e4cb65e84160566f22fbb8ae382fd081cccfec4bed6753e2f7bc0edc"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/check/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/check/default.svg",
+          "sha256": "60e0adb79591111d31d4ae7ebdc17c37fa6efac5157a62e2812dcefc9a983e58"
+        },
+        {
+          "state": "selected",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/check/selected.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/check/selected.svg",
+          "sha256": "34f79669edee9229fe5a8fd4f78b57d03f7a8ca50ca22f75b408a13a52769694"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "chevron-down",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/chevron-down/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/chevron-down/default.svg",
+          "sha256": "216270ffcf1d7b978824a81a38775bf8a143156bc025f93a19afe8b96e7adbac"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "chevron-right",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/chevron-right/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/chevron-right/default.svg",
+          "sha256": "8ef9385a5f65f187d8f77a668b6950f455c55027795b5148ce3e09f0489d2542"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "close",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/close/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/close/default.svg",
+          "sha256": "6cf436174cc3ad2464c7e07365af219e7e6023d3182ffb2908ffa07904829f3f"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "collapse-sidebar",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/collapse-sidebar/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/collapse-sidebar/default.svg",
+          "sha256": "8bab0a6fa4741afd691e2624dea87e4d4328f4e70dc1df02cb790f7977a2abf2"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "disc",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/disc/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/disc/default.svg",
+          "sha256": "c8556f80d518858cd2b85f2c70da3dcfa529b5c4c332354ee554d4604b46431d"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "divider",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/divider/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/divider/default.svg",
+          "sha256": "adb917b5efc1cd79d39a95e63a55c189d488f718b3450f0d9b9abcb450681ecb"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "edit",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/edit/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/edit/default.svg",
+          "sha256": "0bd427a8e031506d96f4881b1d960084f70c6dd7f63dd31df4f8a386ae1d7623"
+        },
+        {
+          "state": "dim",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/edit/dim.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/edit/dim.svg",
+          "sha256": "e51f5e1b2f13e574c9beacf5de1cb761eb0894f59b0d9b0d3e0a19c8625ad71d"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "EQ",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/EQ/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/EQ/default.svg",
+          "sha256": "87253006d35a453054da9dc9f374d582d460d1d79a790e64f2b885b791fd5440"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "eq-classical",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-classical/default-accent.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-classical/default-accent.svg",
+          "sha256": "95f69631146e53e7904de23acae7d7b6f51a0a610a192407251ad0346c76ccd3"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-classical/default-grey.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-classical/default-grey.svg",
+          "sha256": "87253006d35a453054da9dc9f374d582d460d1d79a790e64f2b885b791fd5440"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-classical/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-classical/default.svg",
+          "sha256": "df45b769e75f5ad011ed3b51e3fc232cb844b451527359c477f55a52f885334b"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "eq-club",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-club/default-accent.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-club/default-accent.svg",
+          "sha256": "c2b7adf23ea2dab9d1aa56d7ed7149d1bf9cf3c13373e02eb5982deee03a81ee"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-club/default-grey.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-club/default-grey.svg",
+          "sha256": "87253006d35a453054da9dc9f374d582d460d1d79a790e64f2b885b791fd5440"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-club/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-club/default.svg",
+          "sha256": "dca09df3c661670c18999e408f6d1ad02eea4a1dedd98e5732305d2e39ee650e"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "eq-dance",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-dance/default-accent.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-dance/default-accent.svg",
+          "sha256": "c07c1ae42cfed0b8c5b961b7fc8f85259a3c69e50a69b3de2522a5d836244071"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-dance/default-grey.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-dance/default-grey.svg",
+          "sha256": "87253006d35a453054da9dc9f374d582d460d1d79a790e64f2b885b791fd5440"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-dance/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-dance/default.svg",
+          "sha256": "d4976e975d453a1cf9f1d6b9c5f6f4ae668ec8572c4392fa8a7e13e4ae08bc85"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "eq-flat",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-flat/default-accent.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-flat/default-accent.svg",
+          "sha256": "60e0adb79591111d31d4ae7ebdc17c37fa6efac5157a62e2812dcefc9a983e58"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-flat/default-grey.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-flat/default-grey.svg",
+          "sha256": "87253006d35a453054da9dc9f374d582d460d1d79a790e64f2b885b791fd5440"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-flat/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-flat/default.svg",
+          "sha256": "87253006d35a453054da9dc9f374d582d460d1d79a790e64f2b885b791fd5440"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "eq-fullbass",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-fullbass/default-accent.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-fullbass/default-accent.svg",
+          "sha256": "94a6a3fbbc192aac26708255317b9a515cfacf7bd85b7dfd58ed1418b43d347c"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-fullbass/default-grey.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-fullbass/default-grey.svg",
+          "sha256": "87253006d35a453054da9dc9f374d582d460d1d79a790e64f2b885b791fd5440"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-fullbass/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-fullbass/default.svg",
+          "sha256": "32ad78413dc0cc2046c85f7587101bbca6496bf4bec9a36ea8b73135998eee2d"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "eq-fullbasstreble",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-fullbasstreble/default-accent.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-fullbasstreble/default-accent.svg",
+          "sha256": "2872b0823ea303e8453e7b2290b8a62fcc3cf1feb41149eabfe8cf901ec53e07"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-fullbasstreble/default-grey.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-fullbasstreble/default-grey.svg",
+          "sha256": "87253006d35a453054da9dc9f374d582d460d1d79a790e64f2b885b791fd5440"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-fullbasstreble/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-fullbasstreble/default.svg",
+          "sha256": "833fc3e9771d48273d7a3baff38af11f4de42cdccbe231447812d17da0d1e065"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "eq-fulltreble",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-fulltreble/default-accent.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-fulltreble/default-accent.svg",
+          "sha256": "9c7000bf61e831a9c6ad2368c0a45328500df37ae972f59a29e35e85a2208c61"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-fulltreble/default-grey.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-fulltreble/default-grey.svg",
+          "sha256": "87253006d35a453054da9dc9f374d582d460d1d79a790e64f2b885b791fd5440"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-fulltreble/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-fulltreble/default.svg",
+          "sha256": "fa39de8ec46bf7e6c782205957a4ccdf6dc207a715edc2cb66fe90d60b1a0b43"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "eq-headphones",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-headphones/default-accent.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-headphones/default-accent.svg",
+          "sha256": "e59927930d5c88f188486e6d9c69d2f8723b51d94b131d46a24eb5ac3688d81f"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-headphones/default-grey.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-headphones/default-grey.svg",
+          "sha256": "87253006d35a453054da9dc9f374d582d460d1d79a790e64f2b885b791fd5440"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-headphones/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-headphones/default.svg",
+          "sha256": "c34b983a9c3cccf3da771fc75110e32ab1cab593dccb2ee2d67d843c5838ca8e"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "eq-largehall",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-largehall/default-accent.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-largehall/default-accent.svg",
+          "sha256": "b874495856c27dd0c473311b4a039faf91608344d4d38c80f36ded327f78ee71"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-largehall/default-grey.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-largehall/default-grey.svg",
+          "sha256": "87253006d35a453054da9dc9f374d582d460d1d79a790e64f2b885b791fd5440"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-largehall/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-largehall/default.svg",
+          "sha256": "ce2714cc3b971e38851ad2acf63b9409b55723d228136eb9878b25f44be66f7c"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "eq-live",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-live/default-accent.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-live/default-accent.svg",
+          "sha256": "a658ee499e7c85cb8f694d068a69f1c68708f73f18a8d107bed70e894e041e52"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-live/default-grey.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-live/default-grey.svg",
+          "sha256": "87253006d35a453054da9dc9f374d582d460d1d79a790e64f2b885b791fd5440"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-live/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-live/default.svg",
+          "sha256": "b44e8740701872b958b9e5e057d833c9828776cea92ed12824581a39449c46fb"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "eq-party",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-party/default-accent.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-party/default-accent.svg",
+          "sha256": "f158f022884d7e6fc9c43b4a69ff0e869f38d0892f01021e42b4c258f44b8cc1"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-party/default-grey.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-party/default-grey.svg",
+          "sha256": "87253006d35a453054da9dc9f374d582d460d1d79a790e64f2b885b791fd5440"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-party/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-party/default.svg",
+          "sha256": "22a69ab3ab9c88c936262f992c973c00aae551009a98c1561ada073e27eb1414"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "eq-pop",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-pop/default-accent.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-pop/default-accent.svg",
+          "sha256": "2d598e00b5de8421903d53ec088af1bed404a41218d29996ce11e007d55662c9"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-pop/default-grey.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-pop/default-grey.svg",
+          "sha256": "87253006d35a453054da9dc9f374d582d460d1d79a790e64f2b885b791fd5440"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-pop/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-pop/default.svg",
+          "sha256": "5ee0d2f835600f29b1b303d6d777f8a21c7595856202472b8643740840498db5"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "eq-reggae",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-reggae/default-accent.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-reggae/default-accent.svg",
+          "sha256": "e7f3b936c943a5c88a72e597ee009a169d89bf0cafa11f4756167272b01aad56"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-reggae/default-grey.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-reggae/default-grey.svg",
+          "sha256": "87253006d35a453054da9dc9f374d582d460d1d79a790e64f2b885b791fd5440"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-reggae/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-reggae/default.svg",
+          "sha256": "40bc6df56475d838a151c876dc1a9dd1cfb1a1c578de0bf83c98b46989dd78ff"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "eq-rock",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-rock/default-accent.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-rock/default-accent.svg",
+          "sha256": "1084c792a22985e5e7e2d977d447a65a27b7e775087d68e5707001d9a92dbf50"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-rock/default-grey.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-rock/default-grey.svg",
+          "sha256": "87253006d35a453054da9dc9f374d582d460d1d79a790e64f2b885b791fd5440"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-rock/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-rock/default.svg",
+          "sha256": "fc7dda20b31fd01dbc3efe8ce2388af2471d36c337af78653a38ad5400233818"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "eq-ska",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-ska/default-accent.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-ska/default-accent.svg",
+          "sha256": "9231e507797080c191f7279968565d6da5a8ef92b755d003616846167cbb2adb"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-ska/default-grey.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-ska/default-grey.svg",
+          "sha256": "87253006d35a453054da9dc9f374d582d460d1d79a790e64f2b885b791fd5440"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-ska/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-ska/default.svg",
+          "sha256": "6eac5aff622310ad08330eceffce478fac0b731c46edc7b7845f682ba3716256"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "eq-soft",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-soft/default-accent.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-soft/default-accent.svg",
+          "sha256": "319485acd84d8e95dfcacf91539016aa8128ecd894662c7b1713b12cbc2e4637"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-soft/default-grey.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-soft/default-grey.svg",
+          "sha256": "87253006d35a453054da9dc9f374d582d460d1d79a790e64f2b885b791fd5440"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-soft/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-soft/default.svg",
+          "sha256": "2838e919ccadc5a6ef8f5700b59bee5583887378b1602bf71ac41191da5017b4"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "eq-softrock",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-softrock/default-accent.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-softrock/default-accent.svg",
+          "sha256": "583487114927a013e1cdfeaea628dd61c553d47ee617ce942e4c951c756f6d0c"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-softrock/default-grey.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-softrock/default-grey.svg",
+          "sha256": "87253006d35a453054da9dc9f374d582d460d1d79a790e64f2b885b791fd5440"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-softrock/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-softrock/default.svg",
+          "sha256": "efacd7f847c7a89d602e2bb7cdc9a65e8e14d4f0c0323637ad78ba10e02fbd7d"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "eq-techno",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-techno/default-accent.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-techno/default-accent.svg",
+          "sha256": "bd5a7c9a522332985300d872b7a5449c7b2c28f16a14bde26ae9930825c33f97"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-techno/default-grey.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-techno/default-grey.svg",
+          "sha256": "87253006d35a453054da9dc9f374d582d460d1d79a790e64f2b885b791fd5440"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/eq-techno/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-techno/default.svg",
+          "sha256": "3113176dd245982ed268573b3bffec0a7c484cb8fe06148e570bb8eb70542ec8"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "expand-sidebar",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/expand-sidebar/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/expand-sidebar/default.svg",
+          "sha256": "758eab92c6161cfcd9ce7655d383b0809264f48d7f985637bcec0b099e702236"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "favorite",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/favorite/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/favorite/active.svg",
+          "sha256": "8e45c4443d4ee04e7b0668c175d17d94c4c7040d75c77052107e34c5a1953d25"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/favorite/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/favorite/default.svg",
+          "sha256": "b52ce66167d2e5ccdd634fd5fdad0e3e9be510716cecf786c4662eb5bfcf9ca0"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "file",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/file/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/file/default.svg",
+          "sha256": "53c2890dcfcdfc29a06a8016982f72aca9fc6e1a63ab0a21fc9c14c98e6ca339"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "folder",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/folder/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/folder/active.svg",
+          "sha256": "f3f3b0db2a717be68dc4672f338acaf4602fa20955a1d26907496b17aa7f9d45"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/folder/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/folder/default.svg",
+          "sha256": "5e6cd23661dae90df640bacb5b975767507022c8865354069e607bd60ad3815f"
+        },
+        {
+          "state": "large",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/folder/large.svg",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/folder/large.svg",
+          "sha256": "f24542c9df9b992ffb7a4aa6d35bd93d924ce910f78345f11999e56fd59743f6"
+        },
+        {
+          "state": "selected",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/folder/selected.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/folder/selected.svg",
+          "sha256": "65a5b8c250cb0a2369294515a582006c963f4fb61cdfcee879f76e172a78633b"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "forward-10-sec",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/forward-10-sec/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/forward-10-sec/default.svg",
+          "sha256": "38a6322d90bf34917dadf059a6c2f14f1bc35cee5042090129d5759810902afd"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "forward-15-sec",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/forward-15-sec/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/forward-15-sec/default.svg",
+          "sha256": "ac850ca47663f029d0a3fc9ee1549601e6542cf35048ddcb983c69e1f75d6621"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "fullscreen",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/fullscreen/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/fullscreen/active.svg",
+          "sha256": "75504aa909228e039972f2d751138829098e71535d13acf7a43f4b373cccd504"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/fullscreen/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/fullscreen/default.svg",
+          "sha256": "508ecefa7ef0b33e76cc0a0d8e103edc5651922b38fa4af437798f5b6ce1986d"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "genre",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/genre/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/genre/default.svg",
+          "sha256": "a68df73239f519a51e9605a21e75349d9042bcfe40054ad06c5f010e13078afc"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "grid",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/grid/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/grid/default.svg",
+          "sha256": "f37ed4f33b16cbbacfac366c14e6f3bdcf5de4954b4953757de07709a796a170"
+        },
+        {
+          "state": "dim",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/grid/dim.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/grid/dim.svg",
+          "sha256": "64a9bba9aeb3513952c20b6c6e92545ec67215a279d360230ddcd205e89c544b"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "HDR",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/HDR/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/HDR/default.svg",
+          "sha256": "3e0c5db87d6593c12292e399dc437d313e5e3821bf2983343c2317c0c40e87d6"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "home",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/home/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/home/active.svg",
+          "sha256": "1a8ddb0a9667d430a4ff9636de6b4e6bc2963e9ca5fee53ab038130c78becdad"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/home/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/home/default.svg",
+          "sha256": "b4005924570e329361d0429e1f24575f383fe7f0e5c1d37fdfe7c034a4ad6231"
+        },
+        {
+          "state": "selected",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/home/selected.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/home/selected.svg",
+          "sha256": "1d164f5535a2628b2abb56966a4da8a20776c2d349e8d0ed445904de70dc2fe1"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "hotkeys",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/hotkeys/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/hotkeys/active.svg",
+          "sha256": "92fd4fcb8a82cf6771b2d106c69b847cf4d85e30d27e23f86a187dc91ea560af"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/hotkeys/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/hotkeys/default.svg",
+          "sha256": "9f081c928e1296cbb73f92396987dd15a743fa77e5a95abd2b1ccfb8ae7d0a3d"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "info",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/info/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/info/default.svg",
+          "sha256": "af0fea4284124082005aa2432ea4400bd69a8295e82522beb5365f71498ad84f"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "interface",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/interface/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/interface/active.svg",
+          "sha256": "15892d1ed3e181e7b213ba23fa8bcc40ecd07d005a54c411f56c24a9c3ae0e7f"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/interface/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/interface/default.svg",
+          "sha256": "dcdc61a968d88d52779026044bb1a36557e980c513e2307ba2be2c9e6aedb1ac"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "link",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/link/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/link/active.svg",
+          "sha256": "e7fc91e4d7f03906a7552d0501038ec401fcd5f2c8088b4898df4d9805db615b"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/link/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/link/default.svg",
+          "sha256": "aed55c48d738f2f8667d9df9398353416b8d6a9a879a83a4774f64171f4d9010"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "list",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/list/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/list/default.svg",
+          "sha256": "0379482015b55411d8fa538010e9165932dd7a6a0a6fc23407bcbe95e19b66f7"
+        },
+        {
+          "state": "dim",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/list/dim.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/list/dim.svg",
+          "sha256": "3c4bf5e61951878beead5ecd010010e20dda3b3dd5b9c35c2c70c8b9a38a8557"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "lists",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/lists/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/lists/active.svg",
+          "sha256": "51e1a95f092b7320cbfa6581ea63d2072b4611fcdb3e2c512138b9cdc6125766"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/lists/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/lists/default.svg",
+          "sha256": "bc69f2c055a13c8ecf558a76866b7755735e17fe2049866fc8cb69af5f2baa47"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "maximize",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/maximize/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/maximize/default.svg",
+          "sha256": "e07cc8da0fd51dc2e708ba2450c91f86637ecd5b909ffee56c006f2ce554567f"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "minimize",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/minimize/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/minimize/default.svg",
+          "sha256": "c770894ef8be777c8bfccc7b8a85501eb9892dac44062ce5e2cd1f2dcd621255"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "more",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/more/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/more/default.svg",
+          "sha256": "93363785f3a60036f2556d33cdacdb299f3f92c1d7468837a9503e5ba0153b31"
+        },
+        {
+          "state": "dim",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/more/dim.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/more/dim.svg",
+          "sha256": "806fdbd2c289b4b5ff469026cc988662094b8ae122995f4e82361a8d54859a9f"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "move",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/move/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/move/default.svg",
+          "sha256": "0c20d44c797122486c7414596fbf220e70d7168ec0b81420bf1ffbaf1eb9da2c"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "music",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/music/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/music/default.svg",
+          "sha256": "85e74e9f43ae6cd168ed3c26fa6c75a043ceb79854dd37f4ccb52ac7d8974e7a"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "new-folder",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/new-folder/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/new-folder/default.svg",
+          "sha256": "f94f68b5edf861eec7f96f39fa1d957205ec7cebc0479b11ec9963eb04168255"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "next",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/next/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/next/default.svg",
+          "sha256": "f4607e7cfce814a6618c07b23c03564cfa09b5e6f7c0552f10b039067add8398"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "open",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/open/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/open/default.svg",
+          "sha256": "ed0573dd1699f223e33de67681f2b154abf4e3c97a8309716a0e018b9d5d2059"
+        },
+        {
+          "state": "dim",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/open/dim.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/open/dim.svg",
+          "sha256": "74c5dd311dfbe9719fdfa0070ac7719b6c5b9e9d6832587152ad6217eba09a59"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "paint",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/paint/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/paint/active.svg",
+          "sha256": "2a04779c19325e6e5de2f966286c92f859881e98cbc9fc456eef85a426fc8b72"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/paint/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/paint/default.svg",
+          "sha256": "fed58dc55fb7c0424529f033d417f6f7af1416bb84f5421b5eff1f67b2c7f4d9"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "pause",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/pause/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/pause/default.svg",
+          "sha256": "86dbf7aa1455ba58efe9b006af9738635d2a01be32cab6cd5c13cb8e0189724d"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "PiP",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/PiP/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/PiP/default.svg",
+          "sha256": "6f5bd8959b19e29d29dd2d35b1d6de85c6aaadf234de3dcd00dff92f733d7f9c"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "play",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/play/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/play/default.svg",
+          "sha256": "7f163d4ef5413c5c70523c941f45be0d5dc8c6f1dde34f939e8b3a45dd8fdbb6"
+        },
+        {
+          "state": "outline-active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/play/outline-active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/play/outline-active.svg",
+          "sha256": "42913fc69e60d484dbcd1396dc37b4734b9619a0b5744c6daed9f68e96f867e8"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "playback",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/playback/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/playback/active.svg",
+          "sha256": "c2d3b68cc5e9e42aa1387e11310a743a005b7056d3f9dd84fc0a03f98762f956"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/playback/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/playback/default.svg",
+          "sha256": "ed91ea6bd014a913b6759ce526cb0df7364ca5ef0202ba3d16df7c5205172d52"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "playback-settings",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/playback-settings/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/playback-settings/active.svg",
+          "sha256": "7d5f44cd59af3cc177dd09c67bfd705aaf69faf6af8dbd612cdde46a38b63e2c"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/playback-settings/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/playback-settings/default.svg",
+          "sha256": "78e67ac32d69624bf3e94e7982c9a2625e47dd946a6d7d9abca91d09a0097cae"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "playlist",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/playlist/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/playlist/active.svg",
+          "sha256": "898dfea6f666ae7559ef397c3db92bbb75fb21d1e79dad32836cb660a9fc4f7d"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/playlist/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/playlist/default.svg",
+          "sha256": "7eaab90093c29d1c31b0e9d4e948e3a7d14b1b215e40bedf708be01234775b87"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "plugins",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/plugins/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/plugins/active.svg",
+          "sha256": "d19ff089eec503ce5ea358a11de8fbfcd2f1e60ba293318f1a7bdc8306297f19"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/plugins/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/plugins/default.svg",
+          "sha256": "14a5c603e9fd897d36c71ea3e038cf308e9994a40767c928cf96de49e54eb0eb"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "preferences",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/preferences/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/preferences/active.svg",
+          "sha256": "785dde5974fabffac72d11b3d0cb340a931abe83dd39d114e8b7e90316f22bcd"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/preferences/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/preferences/default.svg",
+          "sha256": "fcb5fc717d2d745802924a785a15f82aebac83a85d9377f704e275c2190d66f3"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "previous",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/previous/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/previous/default.svg",
+          "sha256": "ccbead5542b5a9b9775b8dd3b7dc000f4782b8930e95596438ee427189bfa136"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "privacy",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/privacy/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/privacy/active.svg",
+          "sha256": "3b37c3b58742d95eccdcd6e9f99d4214d37585f181d24f6325d5a43e84107d79"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/privacy/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/privacy/default.svg",
+          "sha256": "5b2adf564632a20202c7f0ac36ef8fbc8e77858e2a147105250ab14a50f3f545"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "profile",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/profile/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/profile/default.svg",
+          "sha256": "ea5da95c0e8908281de127bb11198a84fdbcf1a87a894f7977ca9df58f6c9b2d"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "queue",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/queue/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/queue/default.svg",
+          "sha256": "6e85026c2593e88b0b58ebeaa183c3353005355510f56fa77e71aa9f850dfd3a"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "quit",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/quit/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/quit/default.svg",
+          "sha256": "df284921b3b284869509b4f763f42518aa3e766ef44018a2596dbc5fac41937e"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "recent",
+      "states": [
+        {
+          "state": "active-accent",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/recent/active-accent.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/recent/active-accent.svg",
+          "sha256": "f3c3cc2acff79ef483374b99d2f8f08b56766661f927d2b648a261393e401375"
+        },
+        {
+          "state": "active-grey",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/recent/active-grey.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/recent/active-grey.svg",
+          "sha256": "97d1ee5efef4f6c8d24babae377aef121e4a156e12f665c9a881425166f1e9fc"
+        },
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/recent/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/recent/active.svg",
+          "sha256": "ed7f28cf0db1daa16eda246ce847e5050a695a50b9371cec83770405eda54932"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/recent/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/recent/default.svg",
+          "sha256": "ed7f28cf0db1daa16eda246ce847e5050a695a50b9371cec83770405eda54932"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "record",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/record/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/record/active.svg",
+          "sha256": "762b0de9d95139b4eafc832be7b8f5b00df45a109b7fbce24fadf771b0af6840"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/record/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/record/default.svg",
+          "sha256": "fd21c64af5615c5d68784425394cc67b523f42102b51dad479e3bdf42a06255a"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "refresh",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/refresh/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/refresh/default.svg",
+          "sha256": "5bc8c0bcf7c4a109f83a9a0b306540b0ad7bba1b7b609b82e570c6464c5c74a5"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "remove",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/remove/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/remove/default.svg",
+          "sha256": "153b35df0b3a59229617539c930ca3492950e9d2e3a7a9b858a34ee3d9e51a21"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "repeat",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/repeat/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/repeat/active.svg",
+          "sha256": "e2149490e7301fcd597f963b46626f954421f373aaa5170c15801290c166cd35"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/repeat/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/repeat/default.svg",
+          "sha256": "4b4a1d958e8c35fbd0c5a76dfb627b4c41018ad6cf260cf08b87d1d645bf0964"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "replay",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/replay/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/replay/default.svg",
+          "sha256": "47d0d24e6d58db9c46ac511793befbcfbfd397b95231c018b3b9e114a4a6cc1e"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "right-sidebar",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/right-sidebar/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/right-sidebar/default.svg",
+          "sha256": "cd8ebfbcb41bc17b26b68655cf62f0904a81fd32d0e085d1a8449361d80711a4"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "save",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/save/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/save/default.svg",
+          "sha256": "cb35ac4b9eefd53e92f1454415a289c5adb3ab2d66981704f47075f6cbd7dc3d"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "scope",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/scope/default-accent.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/scope/default-accent.svg",
+          "sha256": "8883bf6ed00302b39af8c49f83b98cd3877aaa46d56c63133ecb2740302d7362"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/scope/default-grey.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/scope/default-grey.svg",
+          "sha256": "b4474539a9ea316c3ee46aec9a13dc037dcb62313ed4312583384c32616d1610"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/scope/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/scope/default.svg",
+          "sha256": "569391b0dd7a8aae98a720575c90701a7554b4cbb2fa1e6831c7b63f4bf9d02c"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "search",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/search/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/search/default.svg",
+          "sha256": "aa3aa422898fed3b0b439edb95f9c5359b29cfafcc2ae43158413889727c3e3d"
+        },
+        {
+          "state": "dim",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/search/dim.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/search/dim.svg",
+          "sha256": "78c981f10affab2c0bcb017a25dd70046859352cf38506dac326514c921929e3"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "settings",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/settings/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/settings/active.svg",
+          "sha256": "45d341c9daa86058e3716b6b0109bd4c01c026b7d6f7f8fbd75f9d29796a6ed6"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/settings/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/settings/default.svg",
+          "sha256": "eb4ed0fefb0c431023199bcfa6064d34487adf94598f8a91292ee7256069c246"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "shuffle",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/shuffle/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/shuffle/active.svg",
+          "sha256": "b6a9dacb26ad01a1d63bb39dc038011fe8ee6ec0dea627ad000974b748129b47"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/shuffle/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/shuffle/default.svg",
+          "sha256": "151ae01cf3e3120e6263fea98931a847fe19fa10ba8a7aa533c4d9149de0b389"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "sidebar",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/sidebar/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/sidebar/active.svg",
+          "sha256": "b98f907fa49bbeb62a8a171e8571cd154191e0d8453ec1d7ceaf794eeba80777"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/sidebar/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/sidebar/default.svg",
+          "sha256": "ab29e5a92775572b430c3ce370a01424f2ae8869b07bfac887650a26670e73b9"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "snapshot",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/snapshot/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/snapshot/default.svg",
+          "sha256": "df1807894ebb7082faf5c3580456a797b639f025c7e55e3bdea92b2f80126008"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "songs",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/songs/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/songs/active.svg",
+          "sha256": "afe74d2e94398f495f8ba43a374e756b990e2f8a4071270bf3e9ea9925ea23f3"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/songs/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/songs/default.svg",
+          "sha256": "1742cd46fbe712e2332aa58339f23bdd083e7c67e919b278df9a6172a30e66f1"
+        },
+        {
+          "state": "selected",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/songs/selected.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/songs/selected.svg",
+          "sha256": "6fc4f2c65e81fe778490304a55adedece0503085194ec9ba616f9e1fd7edfcdc"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "sort",
+      "states": [
+        {
+          "state": "active-accent",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/sort/active-accent.svg",
+          "size": [
+            26,
+            25
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/sort/active-accent.svg",
+          "sha256": "0ae2c6a8b5911dfdaee18c1271f445e7d9bf462f7d4721bacead64396eebf1be"
+        },
+        {
+          "state": "active-grey",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/sort/active-grey.svg",
+          "size": [
+            26,
+            25
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/sort/active-grey.svg",
+          "sha256": "30792f62575ccc1c3b49185ae576d57a91d31b18f2513383cb27dfdc01c7486c"
+        },
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/sort/active.svg",
+          "size": [
+            26,
+            25
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/sort/active.svg",
+          "sha256": "e1dcea9ae1b3e05058e68c5d8079781dc26d2d0a40a1e92d0b3f01913ccd93d7"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/sort/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/sort/default.svg",
+          "sha256": "4ad4b7b239fe2259c08d45c67f24031b4a4baf2377e4645dc6fa92cf2b7e4744"
+        },
+        {
+          "state": "dim",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/sort/dim.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/sort/dim.svg",
+          "sha256": "f1b8c8ce1b5376e68c07f6f4ec438ad472738a3d24afe2076d2334df03ed589c"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "spectrometer",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/spectrometer/default-accent.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/spectrometer/default-accent.svg",
+          "sha256": "1d69743b95abf9854fd9264682a5685c6eb180894e1131c24361b82c8b619f71"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/spectrometer/default-grey.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/spectrometer/default-grey.svg",
+          "sha256": "bbf5346c4bf955f54f9014ae0b9fd6964eb9d42da5ca631cad19bfe7ee629d2e"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/spectrometer/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/spectrometer/default.svg",
+          "sha256": "0732b318978532c79edb3ba92d279e80797fb19a8acba2d18c3c977da94c3b24"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "spectrum",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/spectrum/default-accent.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/spectrum/default-accent.svg",
+          "sha256": "4222ac0ccff41466403ce710211edacfdcd6a1e910f80644752e9c4d087b6e0c"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/spectrum/default-grey.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/spectrum/default-grey.svg",
+          "sha256": "2e48c9399466a2a99dc624a026cf9db510f69c6b068ad6e3d0e215a37ad725f7"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/spectrum/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/spectrum/default.svg",
+          "sha256": "cca2b709eeb3a827e5e838d91ccbba4b02a2aec0de1a78f407e5d70a199a4333"
+        },
+        {
+          "state": "dim",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/spectrum/dim.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/spectrum/dim.svg",
+          "sha256": "ac10f32f16cbbcf46f8402ebc11ffa4e9e8c4da6724fc6ed2ccf805745eb90b7"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "speed",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/speed/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/speed/active.svg",
+          "sha256": "3f5621382d9711f200d6514a1c592563168cfc615d1cf239864a7168bd977c0d"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/speed/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/speed/default.svg",
+          "sha256": "29e4bacadcc0291061243bc9b81d9a6f2585988aa6de385d253a588221967565"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "stop",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/stop/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/stop/default.svg",
+          "sha256": "cd5a37d2e3bc4abe1e43b70c3b6e040fc8e482e9a5a8ca7774533d68cc99df16"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "streaming",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/streaming/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/streaming/active.svg",
+          "sha256": "45e083c1065683b095abf53ffd5e55326f1c5e760e12711ca03828687c54ff57"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/streaming/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/streaming/default.svg",
+          "sha256": "83e64fb120287b6da92c27f9e6dfd96b54737ef9802d341ab08fadb5c669f171"
+        },
+        {
+          "state": "selected",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/streaming/selected.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/streaming/selected.svg",
+          "sha256": "70fc320f0b2905b840e07238c0b0137cb4decb78880be5d6acc447392fc5f3c2"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "subtitle",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/subtitle/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/subtitle/default.svg",
+          "sha256": "a745c9c86ac943f6e07119387dabf8759ef0c4d4b5a7f9143b08961df41e6b0e"
+        },
+        {
+          "state": "dim",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/subtitle/dim.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/subtitle/dim.svg",
+          "sha256": "0c943f57bbb6846a0ed3f65b2f321e4f692126560946b8c1292cf2b86386d23f"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "subtitles",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/subtitles/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/subtitles/active.svg",
+          "sha256": "162308a65c74ab8d5ca52f9a48ee72c7ed9bb928e9c8d44abab48b8b2da2849a"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/subtitles/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/subtitles/default.svg",
+          "sha256": "1ac2e1f7c8e81c07973a0f4a968259de34c9312e6d2c0366187704dbc315f094"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "swap",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/swap/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/swap/default.svg",
+          "sha256": "21065d508b94824dcc8e134668052ef8b015441b95fe6c1eb6a33f4bc22418c9"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "thumbnail",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/thumbnail/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/thumbnail/default.svg",
+          "sha256": "db420da924ef59d2cd0a015abd34f91cb3a85f3a0e902b1409b099fd66d05557"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "tv",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/tv/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/tv/active.svg",
+          "sha256": "52fca46bc4b8d951b243471829390e0bc33b99645c3672f942491e7d983ebfec"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/tv/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/tv/default.svg",
+          "sha256": "1730a01be20d34766f62042fa1794289fef9e6f8261533091d07390e5f3ab8e8"
+        },
+        {
+          "state": "selected",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/tv/selected.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/tv/selected.svg",
+          "sha256": "d5042bcd424aec094b120317cadac6d9eaeccec47ab6a61dcfa7ad503d7626dc"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "ui",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/ui/default-accent.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/ui/default-accent.svg",
+          "sha256": "b1a4ae2117d6f7f8861608bbb104fd5fff4877720d35ef950aacbd0107bbef9e"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/ui/default-grey.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/ui/default-grey.svg",
+          "sha256": "88d77b72e7f3921764b79eea8e786e418199aefe953e8e5561b254b9e3b70b1b"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/ui/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/ui/default.svg",
+          "sha256": "01e668a3d187bf63a0da4a33dc5636bc1db03a31417afc1433f4a13b29dcbaed"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "video",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/video/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/video/active.svg",
+          "sha256": "c8a26863983837a90d016717292a3bdfafe3a8af06c0453c0475a8565434f60b"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/video/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/video/default.svg",
+          "sha256": "a6b02ddc8339e60677611b360b5a8401dc23767a2bed5571ba37a97120b77ebf"
+        },
+        {
+          "state": "dim",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/video/dim.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/video/dim.svg",
+          "sha256": "f42130568c44f58b4cd40313f6defd4a87efff2d83784b892c4bb2733e2aabca"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "videos",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/videos/active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/videos/active.svg",
+          "sha256": "6be450824f13dbc1f0d4f1c2ac2de86def48b1fbbf16c47db1480f47bd88334d"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/videos/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/videos/default.svg",
+          "sha256": "f975ec5f6ae04066ab3c1806ca91d98c2b00edfeead3745b42e841de87cea928"
+        },
+        {
+          "state": "selected",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/videos/selected.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/videos/selected.svg",
+          "sha256": "f98a686d7cba959a761ffa35855d1d8a3cbefda57f81295b31d52bda7c86de0e"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "view",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/view/active.svg",
+          "size": [
+            26,
+            25
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/view/active.svg",
+          "sha256": "6b1828acb4bfd7a86060814c52bab21c8b215dc5ee208f74de69cc4bf142c109"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/view/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/view/default.svg",
+          "sha256": "b9c576babbc9b8099adeec82ae5c59ce2cc35142aec0ab19df208b390eb83d0c"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "vumeter",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/vumeter/default-accent.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/vumeter/default-accent.svg",
+          "sha256": "f642ccecf8b8b9a371d2311919f1d20bb6c81fb865ed77e6a13c57fd0b74f2d3"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/vumeter/default-grey.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/vumeter/default-grey.svg",
+          "sha256": "19885ee93e9336c23eedff6fd257cfb0b6b01acedecc158cf52d5c31e0bba9c7"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/vumeter/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/vumeter/default.svg",
+          "sha256": "8c77f12322cfc155205c99f21243763e93b7295ccce275f3fdaeeaea007af3df"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "waveform",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/waveform/default-accent.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/waveform/default-accent.svg",
+          "sha256": "d951ec9f0fc9fd472a9988b1ef4021a574ba7604b6e61d0570e46ee291d34e1b"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/waveform/default-grey.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/waveform/default-grey.svg",
+          "sha256": "7949c1b4aecf5cc847dce0251db70ffcada90d6407856593b54290ab63244046"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/waveform/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/waveform/default.svg",
+          "sha256": "fe3f44a8a4bd7b8bf2a2fad1582af5da2c1e034d20e790018e2bcc7647df2545"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "window",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/window/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/window/default.svg",
+          "sha256": "8565b3971dcf874823a0d62a32089a22331d3ce3471b94d46241fc9d7d664106"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "wrench",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/wrench/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/wrench/default.svg",
+          "sha256": "592a02555fcbb3042f1f73e32de06a24c7468e44f78cb805a68ee5abb448524a"
+        }
+      ]
+    },
+    {
+      "set": "glyphs-svg",
+      "name": "zoom",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/zoom/default.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/zoom/default.svg",
+          "sha256": "eda50fb5d3c399770f7e6e815fae4d62f9aea00a6756da24f83bee7eadeb1259"
+        }
+      ]
+    },
+    {
       "set": "svg",
       "name": "add",
       "states": [
@@ -4029,7 +7421,7 @@
             24
           ],
           "source": "modules/gui/qt/pixmaps/redesign/grid.svg",
-          "sha256": "a0d0c57a689492bcd809337e03a6d771f18a1b8a1c95bb32dd2be329cc671e59"
+          "sha256": "f37ed4f33b16cbbacfac366c14e6f3bdcf5de4954b4953757de07709a796a170"
         }
       ]
     },
@@ -4048,6 +7440,42 @@
           ],
           "source": "modules/gui/qt/pixmaps/redesign/home.svg",
           "sha256": "ffaafbacfe785b0c9337f52ae4aded6cbc4d4c1bdf9ad9a601847be70875394e"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "line-vertical",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/line-vertical.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/line-vertical.svg",
+          "sha256": "a0d0c57a689492bcd809337e03a6d771f18a1b8a1c95bb32dd2be329cc671e59"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "list",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/list.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/list.svg",
+          "sha256": "0379482015b55411d8fa538010e9165932dd7a6a0a6fc23407bcbe95e19b66f7"
         }
       ]
     },
@@ -4377,6 +7805,24 @@
     },
     {
       "set": "svg",
+      "name": "subtitle-file",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/subtitle-file.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/subtitle-file.svg",
+          "sha256": "a745c9c86ac943f6e07119387dabf8759ef0c4d4b5a7f9143b08961df41e6b0e"
+        }
+      ]
+    },
+    {
+      "set": "svg",
       "name": "subtitles",
       "states": [
         {
@@ -4390,6 +7836,258 @@
           ],
           "source": "modules/gui/qt/pixmaps/redesign/subtitles.svg",
           "sha256": "7848b8707c85be33afdd8a9eb4ca40bf734b4a145fd9c7488e2639a545870f7f"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "theme-bar-knob",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/theme-bar-knob.svg",
+          "size": [
+            12,
+            20
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/theme-bar-knob.svg",
+          "sha256": "40a1f791a0c56958b0f1e7fae05c300bb5cc2f52801518ff260f1db199365410"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "theme-bar-mask",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/theme-bar-mask.svg",
+          "size": [
+            1056,
+            30
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/theme-bar-mask.svg",
+          "sha256": "243da22190eba0f215d2f2ca847117bc2388319bf3e4a8305e93c6e5a0deabbc"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "theme-bar-pill",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/theme-bar-pill.svg",
+          "size": [
+            40,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/theme-bar-pill.svg",
+          "sha256": "7d148e3c959804628d90741d4882cc289978726ac1956fb2b850d641fa7ebbb7"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "theme-bar-play",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/theme-bar-play.svg",
+          "size": [
+            14,
+            14
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/theme-bar-play.svg",
+          "sha256": "ef594cec45ead4eb4028d2e0b32613e3499ca010b072d72e9f1048653fc65714"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "theme-strip-buttons",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/theme-strip-buttons.svg",
+          "size": [
+            1056,
+            22
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/theme-strip-buttons.svg",
+          "sha256": "932bbe6431e40d5e29d6e2efbec6e6406bc9c5a72bc38c6529e8c07164e9af07"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "theme-strip-cone",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/theme-strip-cone.svg",
+          "size": [
+            1056,
+            22
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/theme-strip-cone.svg",
+          "sha256": "9da8b31b21321b9e16dcedc0b205311af633126c92ec76d03105bf699ddd5e75"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "theme-system",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/theme-system.svg",
+          "size": [
+            100,
+            100
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/theme-system.svg",
+          "sha256": "6e5336af95d9b62eeec1b2714b9c139436f1400a11dce8e5b7eaca7c93c1fd94"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "track-audio",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/track-audio.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/track-audio.svg",
+          "sha256": "acb3931baed33735f0a0b6f51bc78f83a5846474bbbfbc3ead7149ee05da3962"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "track-audio-active",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/track-audio-active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/track-audio-active.svg",
+          "sha256": "598955697e2557b4c787c43a11218fbf6a5cbb48c6ab340a3c04e186c8bd0aa5"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "track-check-active",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/track-check-active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/track-check-active.svg",
+          "sha256": "ec8ff5b3e4cb65e84160566f22fbb8ae382fd081cccfec4bed6753e2f7bc0edc"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "track-subtitles",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/track-subtitles.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/track-subtitles.svg",
+          "sha256": "1ac2e1f7c8e81c07973a0f4a968259de34c9312e6d2c0366187704dbc315f094"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "track-subtitles-active",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/track-subtitles-active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/track-subtitles-active.svg",
+          "sha256": "162308a65c74ab8d5ca52f9a48ee72c7ed9bb928e9c8d44abab48b8b2da2849a"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "track-video",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/track-video.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/track-video.svg",
+          "sha256": "a6b02ddc8339e60677611b360b5a8401dc23767a2bed5571ba37a97120b77ebf"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "track-video-active",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/track-video-active.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/track-video-active.svg",
+          "sha256": "c8a26863983837a90d016717292a3bdfafe3a8af06c0453c0475a8565434f60b"
         }
       ]
     },
@@ -4467,6 +8165,42 @@
     },
     {
       "set": "svg",
+      "name": "volume-high",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/volume-high.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/volume-high.svg",
+          "sha256": "0c60c26d336bab7f84709c695e5fefa81657b261c40abbc19de1ffac461fbbe2"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "volume-low",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/volume-low.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/volume-low.svg",
+          "sha256": "b33a0e8e10bd109f19b2098afc60f8234beb73a89a6526d675dda18424e3ff28"
+        }
+      ]
+    },
+    {
+      "set": "svg",
       "name": "volume-mask",
       "states": [
         {
@@ -4485,6 +8219,42 @@
     },
     {
       "set": "svg",
+      "name": "volume-medium",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/volume-medium.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/volume-medium.svg",
+          "sha256": "a0a91bd745ec7d2cd8511bfdb68289febd0b818e43d07cf3db70fa7896369a56"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "volume-muted",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/volume-muted.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/volume-muted.svg",
+          "sha256": "0b7696f72d6ff3f4e7560f0c0955682c4c2c0e909798088e3fb362007378eca6"
+        }
+      ]
+    },
+    {
+      "set": "svg",
       "name": "welcome",
       "states": [
         {
@@ -4498,6 +8268,384 @@
           ],
           "source": "modules/gui/qt/pixmaps/redesign/welcome.svg",
           "sha256": "52ec7e7b36ddb69a3962faa08437f54df9018381e8f5b3b11eb2637cbc592317"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "close",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/close.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/close.svg",
+          "sha256": "6cf436174cc3ad2464c7e07365af219e7e6023d3182ffb2908ffa07904829f3f"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "corner-bl-dark",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/corner-bl-dark.svg",
+          "size": [
+            9,
+            9
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/corner-bl-dark.svg",
+          "sha256": "b453dd2ebcdd91ea03d56b9f3b51d2b702a3827b13ffd32290938f6dc43da50c"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "corner-bl-light",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/corner-bl-light.svg",
+          "size": [
+            9,
+            9
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/corner-bl-light.svg",
+          "sha256": "5f725bbb22a4e4f85d29503d060b820bd10a20b68d03f8562cfef717e00b2ba7"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "corner-br-dark",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/corner-br-dark.svg",
+          "size": [
+            9,
+            9
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/corner-br-dark.svg",
+          "sha256": "b04e6c9efbd7b65d57da3d8af1c46cf8994c355b8bd0d6fc9e22db9cb9c25935"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "corner-br-light",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/corner-br-light.svg",
+          "size": [
+            9,
+            9
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/corner-br-light.svg",
+          "sha256": "0e3fe79a46311e9edd23e9c66a626bddc0f4a655fd944468b4fffda66483311d"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "corner-tl-dark",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/corner-tl-dark.svg",
+          "size": [
+            9,
+            9
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/corner-tl-dark.svg",
+          "sha256": "3d74733bcc5f1c42ae0dabaa15d7553f4e7dd7a9ec77dd16cff249fa2e0e91ab"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "corner-tl-light",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/corner-tl-light.svg",
+          "size": [
+            9,
+            9
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/corner-tl-light.svg",
+          "sha256": "fc61556d4fcc01dd4256de6c7605da5c4bdb878ef324f75d2b9756ddf73a6e38"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "corner-tr-dark",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/corner-tr-dark.svg",
+          "size": [
+            9,
+            9
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/corner-tr-dark.svg",
+          "sha256": "2911174a9d2d2e432de872f1a8fa1040a82b2a2e67c0e41aaef36b6135142315"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "corner-tr-light",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/corner-tr-light.svg",
+          "size": [
+            9,
+            9
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/corner-tr-light.svg",
+          "sha256": "1e94ef3f30386b5456a743b48b140fc9e8705b2a69a14107b2c131ed123d3c9f"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "equalizer",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/equalizer.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/equalizer.svg",
+          "sha256": "acb3931baed33735f0a0b6f51bc78f83a5846474bbbfbc3ead7149ee05da3962"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "fullscreen",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/fullscreen.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/fullscreen.svg",
+          "sha256": "508ecefa7ef0b33e76cc0a0d8e103edc5651922b38fa4af437798f5b6ce1986d"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "library-add",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/library-add.svg",
+          "size": [
+            32,
+            32
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/library-add.svg",
+          "sha256": "0720eda348bb9c57d7f553bbcc8cc57702889c580768a1d56aafa314ab05321a"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "library-playlist",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/library-playlist.svg",
+          "size": [
+            32,
+            32
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/library-playlist.svg",
+          "sha256": "fb2b88c73f51120baea8886f76c1eb59121ed4305f0062ef249d93fe090cd622"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "maximize",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/maximize.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/maximize.svg",
+          "sha256": "e07cc8da0fd51dc2e708ba2450c91f86637ecd5b909ffee56c006f2ce554567f"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "minimize",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/minimize.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/minimize.svg",
+          "sha256": "c770894ef8be777c8bfccc7b8a85501eb9892dac44062ce5e2cd1f2dcd621255"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "next",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/next.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/next.svg",
+          "sha256": "f4607e7cfce814a6618c07b23c03564cfa09b5e6f7c0552f10b039067add8398"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "pause",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/pause.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/pause.svg",
+          "sha256": "34ed1acfb6fd939c77d6eb6f1ae3209f36170ca1f7a85d62f1865393b29e3bb4"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "previous",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/previous.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/previous.svg",
+          "sha256": "ccbead5542b5a9b9775b8dd3b7dc000f4782b8930e95596438ee427189bfa136"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "queue",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/queue.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/queue.svg",
+          "sha256": "bc69f2c055a13c8ecf558a76866b7755735e17fe2049866fc8cb69af5f2baa47"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "settings",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/settings.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/settings.svg",
+          "sha256": "78e67ac32d69624bf3e94e7982c9a2625e47dd946a6d7d9abca91d09a0097cae"
+        }
+      ]
+    },
+    {
+      "set": "player-svg",
+      "name": "subtitles",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "player/svg/subtitles.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/subtitles.svg",
+          "sha256": "1ac2e1f7c8e81c07973a0f4a968259de34c9312e6d2c0366187704dbc315f094"
         }
       ]
     },

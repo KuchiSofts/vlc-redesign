@@ -1441,7 +1441,9 @@ static void *Thread( void *obj )
     if( QDate::currentDate().dayOfYear() >= QT_XMAS_JOKE_DAY && var_InheritBool( p_intf, "qt-icon-change" ) )
         app.setWindowIcon( QIcon::fromTheme( "vlc-xmas", QIcon( ":/logo/vlc128-xmas.png" ) ) );
     else
-        app.setWindowIcon( QIcon::fromTheme( "vlc", QIcon( ":/logo/vlc256.png" ) ) );
+        // the vector (the cone of vlc.exe's icon): the title bar and the
+        // taskbar draw it at their size and the screen's scale
+        app.setWindowIcon( QIcon::fromTheme( "vlc", QIcon( ":/logo/vlc.svg" ) ) );
 
     app.setDesktopFileName( PACKAGE );
 

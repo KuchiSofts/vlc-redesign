@@ -114,6 +114,8 @@ T.ComboBox {
             // drawn in grey and the accent: with another accent, the grey
             // part and the rest tinted above it
             Image {
+                // drawn at the size shown (an SVG: sharp at any scale and zoom)
+                sourceSize: Qt.size(width, height)
                 id: choiceIcon
                 visible: option.iconDir.length > 0
                 readonly property bool twoTone: !VLCStyle.redesign.defaultAccent
@@ -124,6 +126,8 @@ T.ComboBox {
                 height: width
                 source: visible ? option.iconDir + (twoTone ? "/default-grey.png" : "/default.png") : ""
                 Impl.ColorImage {
+                    // drawn at the size shown (an SVG: sharp at any scale and zoom)
+                    sourceSize: Qt.size(width, height)
                     anchors.fill: parent
                     visible: choiceIcon.twoTone
                     source: visible ? option.iconDir + "/default-accent.png" : ""
@@ -131,6 +135,8 @@ T.ComboBox {
                 }
             }
             Impl.ColorImage {
+                // drawn at the size shown (an SVG: sharp at any scale and zoom)
+                sourceSize: Qt.size(width, height)
                 visible: option.chosen
                 anchors.right: parent.right
                 anchors.rightMargin: root.px(13)

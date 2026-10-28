@@ -32,8 +32,15 @@ SETS = [
     ("glyphs", REDESIGN / "icons", "*/*.png", "png",
      "The icons of the Figma \"Icon\" component set (42:356), exported as PNG, one folder per icon, "
      "one file per state. 24 x 24 unless noted; @2x files are the same state at twice the size."),
+    ("glyphs-svg", REDESIGN / "icons", "*/*.svg", "svg/glyphs",
+     "SVG sources of the glyphs, from the same Figma symbols (42:356), one per PNG state (design/tools/"
+     "icon_svgs.py; its report icon_svgs_report.md compares them with the PNGs). 24 x 24 unless noted, "
+     "Figma's colours of each state. The app draws these, at the size shown; the PNGs stay as a fallback."),
     ("svg", REDESIGN, "*.svg", "svg",
-     "Single-colour SVG icons of the top bar, the sidebar and the player (24 x 24 unless noted)."),
+     "SVG icons of the top bar, the sidebar and the player, and the SVG of each raster piece of "
+     "images/ (same name; design/tools/raster_svgs.json says which Figma node each comes from)."),
+    ("player-svg", REDESIGN / "player", "*.svg", "player/svg",
+     "SVG of each player and window-frame piece of player/ (same name, from Figma; raster_svgs.json)."),
     ("duo", REDESIGN / "duo", "*.svg", "svg/duo",
      "Two-tone menu icons. Placeholder colours (ColorizedSvgIcon): #FF00FF = outline (Dark/FG/A2 #8F8F8F, "
      "light #2E2E2E), #FF8800 = details (Accent Dim), #00FFFF = the full accent."),
@@ -102,7 +109,7 @@ def plan():
         for src in sorted(src_dir.glob(pattern)):
             if not src.is_file():
                 continue
-            if set_name == "glyphs":
+            if set_name in ("glyphs", "glyphs-svg"):
                 name = src.parent.name
                 stem = src.stem
                 scale = 2 if stem.endswith("@2x") else 1
@@ -145,10 +152,13 @@ def build_readme(index):
            "`modules/gui/qt/pixmaps/redesign`; do not edit by hand. `index.json` lists every file with its",
            "name, state, scale, size and checksum.", "",
            "Derived from *VLC Redesign (Community)* by Juxtopposed, CC BY 4.0 (see `design/README.md`).", "",
-           "**SVG sources.** The glyphs of the Figma *Icon* set (42:356) exist only as the PNG files exported",
-           "from Figma (`png/`, with `@2x` where the app needs it); the repository has no SVG source for them.",
-           "The top bar, sidebar and player icons (`svg/`), the two-tone menu icons (`svg/duo/`) and the",
-           "widget chevrons (`svg/widgets/`) are SVG.", "",
+           "**SVG sources.** The glyphs of the Figma *Icon* set (42:356) are the PNG files exported from Figma",
+           "(`png/`, with `@2x` where the app needs it) and their SVG sources (`svg/glyphs/`), cut from Figma's",
+           "SVG export of the set by `design/tools/icon_svgs.py`; `design/tools/icon_svgs_report.md` compares",
+           "each with its PNG. Every other raster piece (`images/`, `player/`) has its SVG too (`svg/`,",
+           "`player/svg/`; `design/tools/raster_svgs.json` names its Figma node). The app draws the SVGs, at",
+           "the size shown times the screen's scale and the interface zoom; the PNGs stay as a fallback. The",
+           "two-tone menu icons (`svg/duo/`) and the widget chevrons (`svg/widgets/`) are SVG only.", "",
            "**States.** " + "; ".join(f"`{k}`: {v}" for k, v in STATE_NOTES.items()) + ".", ""]
     by_set = {}
     for icon in index["icons"]:

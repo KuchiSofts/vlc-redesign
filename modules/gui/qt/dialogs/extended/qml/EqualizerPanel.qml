@@ -92,6 +92,8 @@ ExpandPanel {
                     Accessible.role: Accessible.Graphic
                     Accessible.name: qsTr("%1 equalizer curve").arg(presetOption.modelData.name)
                     Impl.ColorImage {
+                        // drawn at the size shown (an SVG: sharp at any scale and zoom)
+                        sourceSize: Qt.size(width, height)
                         anchors.fill: parent
                         visible: curve.twoTone
                         source: visible ? curve.iconDir + "/default-accent.png" : ""
@@ -100,6 +102,8 @@ ExpandPanel {
                 }
 
                 Impl.ColorImage {
+                    // drawn at the size shown (an SVG: sharp at any scale and zoom)
+                    sourceSize: Qt.size(width, height)
                     visible: presetOption.chosen
                     anchors.right: parent.right
                     anchors.rightMargin: root.px(13)

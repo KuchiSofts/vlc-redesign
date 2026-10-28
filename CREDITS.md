@@ -33,6 +33,28 @@ The same credit is shown in the app, under **⋯ → About VLC**, and in the Cre
   effects, validated on Linux). This repository keeps that history.
 - **This fork**: the Windows build and everything listed under *Unreleased* in the [changelog](CHANGELOG.md).
 
+## Community
+
+Thank you to everyone who tested, reported and translated:
+
+- **Bug reports:**
+  - [@Darkdevworker](https://github.com/Darkdevworker): fullscreen ([#1](https://github.com/KuchiSofts/vlc-redesign/issues/1)).
+  - [@zaidmonis](https://github.com/zaidmonis): the setup that hung
+    ([#2](https://github.com/KuchiSofts/vlc-redesign/issues/2)).
+  - [@OldAncient](https://github.com/OldAncient): the audio device switch
+    ([#3](https://github.com/KuchiSofts/vlc-redesign/issues/3)) and the library and player bugs
+    ([#4](https://github.com/KuchiSofts/vlc-redesign/issues/4)).
+  - [@Kinglucas962](https://github.com/Kinglucas962): the missing translations
+    ([#5](https://github.com/KuchiSofts/vlc-redesign/issues/5)).
+  - [@Brackets124](https://github.com/Brackets124): the playback speed button
+    ([#9](https://github.com/KuchiSofts/vlc-redesign/issues/9)).
+- **Translations:**
+  - [@Kinglucas962](https://github.com/Kinglucas962): Brazilian Portuguese
+    ([#6](https://github.com/KuchiSofts/vlc-redesign/pull/6)).
+  - On [Weblate](https://hosted.weblate.org/projects/vlc-redesign/):
+    - Priit Jõerüüt: Estonian.
+    - bittin: Swedish.
+
 ## VLC
 
 VLC media player is made by the volunteers of the [VideoLAN](https://www.videolan.org/) community.

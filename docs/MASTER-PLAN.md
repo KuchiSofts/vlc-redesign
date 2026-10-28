@@ -12,10 +12,14 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-10-28):
 
+- 🟡 **Final check before 0.3.2** (2026-10-28): VideoLAN's master merged to its latest (`32b160d9e9`), `feature/linux-pkg` and
+  `feature/macos` merged; the redrawn tool windows looked at in build 10 (Media Statistics did not load: Canvas,
+  fixed; Folder information: native path, no time-zone name); the Visualizer opens from Audio › Visualizations and its
+  button over a visualization. Build 11 (everything merged) is being built.
 - 🟡 **macOS** (roadmap step 7, branch `feature/macos`): `macos-build.sh` (prebuilt contribs, Qt 6.8.3, the Qt
   interface only, `VLC Redesign.app`, `vlc-redesign-X.Y.Z-macos-<arch>.dmg`), `build-macos.yml` on Apple Silicon and
   Intel runners with a launch test, macOS fixes in the code (title bar, menu bar, ⌘ hotkeys, fonts, updater)
-  ([§9](#macos), `extras/juxtopposed/macos/README.md`). Left: push, the first CI run and its fixes, decision 3.
+  ([§9](#macos), `extras/juxtopposed/macos/README.md`). Merged. Left: push, the first CI run and its fixes, decision 3.
 - 🟡 **Windows on ARM64** (branch `feature/winarm64`): the package builds (`win64-docker.ps1 -Arch aarch64`, every
   binary ARM64), `make-release.ps1 -Arch aarch64` makes the installer, zip and small updates, the updater keeps
   each architecture to its own files ([§9](#windows-on-arm64)). Left: merge, the ARM64 smoke test of the Windows

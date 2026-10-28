@@ -164,6 +164,11 @@ if [ ! -d "$contrib/$HOST_TRIPLET/lib" ]; then
     fi
     if [ -n "$prebuilt" ] && make prebuilt PREBUILT_URL="$prebuilt" > "$logs/contrib-prebuilt.log" 2>&1; then
         echo "prebuilt: $prebuilt"
+        # The archive's pkg-config and libtool files name the SDK of the
+        # machine that built it (-isysroot .../MacOSX26.2.sdk): this one's
+        # instead, or the link finds no libm
+        find "$contrib/$HOST_TRIPLET/lib" \( -name '*.pc' -o -name '*.la' \) -type f -exec \
+            sed -E -i '' "s#/Applications/Xcode[^ ]*\.app/Contents/Developer/Platforms/MacOSX\.platform/Developer/SDKs/MacOSX[0-9.]*\.sdk#$SDKROOT#g" {} +
         run contrib-tools make -j"$jobs" tools
     else
         echo "contribs from source (no prebuilt archive for this tree): an hour or more"

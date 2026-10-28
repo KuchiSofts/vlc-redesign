@@ -204,6 +204,8 @@ Widgets.RedesignDialog {
 
         ListView {
             id: sourceList
+            // (the body of the dialog is as high as its content)
+            Layout.preferredHeight: root.bodyHeight - VLCStyle.dp(150, VLCStyle.scale)
             Layout.fillWidth: true
             Layout.fillHeight: true
             clip: true
@@ -572,6 +574,7 @@ Widgets.RedesignDialog {
 
         GridView {
             id: cards
+            Layout.preferredHeight: root.bodyHeight - VLCStyle.dp(120, VLCStyle.scale)
             Layout.fillWidth: true
             Layout.fillHeight: true
             clip: true

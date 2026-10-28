@@ -66,7 +66,7 @@ constexpr int downloadDeadlineMs = 30 * 60 * 1000;
 // (SHA256SUMS.txt.sig, redesign_update_key.h): from it on, a release whose
 // checksums don't carry a good signature is never installed. The releases
 // before it have no signature.
-const char FIRST_SIGNED_VERSION[] = "0.3.2";
+const char FIRST_SIGNED_VERSION[] = "0.4.0";
 const char sumsName[] = "SHA256SUMS.txt";
 const char sumsSignatureName[] = "SHA256SUMS.txt.sig";
 // The files of this build's architecture (docs/MASTER-PLAN.md, 13.5): an

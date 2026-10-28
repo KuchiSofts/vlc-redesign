@@ -16,7 +16,7 @@ If a check fails, nothing is pushed or packaged; the report says what to fix. Th
 
 ```
 python extras/juxtopposed/release/release-check.py                  # the upload of work in progress
-python extras/juxtopposed/release/release-check.py --release 0.3.2  # the release of 0.3.2
+python extras/juxtopposed/release/release-check.py --release 0.4.0  # the release of 0.4.0
 ```
 
 ## What the check covers

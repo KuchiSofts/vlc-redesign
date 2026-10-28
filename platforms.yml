@@ -26,7 +26,7 @@ platforms:
     status: released
     version: 0.3.1
     date: 2026-10-25
-    next: 0.3.2
+    next: 0.4.0
     os: windows
     requires: Windows 10 (1809) or 11, 64-bit
     repository: KuchiSofts/vlc-redesign

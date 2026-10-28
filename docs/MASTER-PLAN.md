@@ -41,7 +41,7 @@ What is being worked on, updated as it changes (2026-10-28):
   `extras/juxtopposed/iptv-parsers.cpp`; the catalog (118 playlists, 157 guides, verified 2026-10-28). Merged into
   `redesign` 2026-10-29. Left: the owner's "no sound" report (not reproduced), translations, light/RTL captures.
 
-- 🟡 **Final check before 0.3.2** (2026-10-28): VideoLAN's master merged to its latest (`32b160d9e9`), `feature/linux-pkg` and
+- 🟡 **Final check before 0.4.0** (2026-10-28): VideoLAN's master merged to its latest (`32b160d9e9`), `feature/linux-pkg` and
   `feature/macos` merged; the redrawn tool windows looked at in build 10 (Media Statistics did not load: Canvas,
   fixed; Folder information: native path, no time-zone name); the Visualizer opens from Audio › Visualizations and its
   button over a visualization. Build 11 found Media Statistics still not loading (its graph's `top` clashed with
@@ -67,7 +67,7 @@ What is being worked on, updated as it changes (2026-10-28):
   `feature/light`): the light values the colour map overrode (228 calls, [design/light-theme.md](../design/light-theme.md))
   and the classic dialogs' light title bar (`#DEDEDE`, as the QML dialogs).
 
-- 🟡 **0.3.2**: the open issues. [#9](https://github.com/KuchiSofts/vlc-redesign/issues/9): the playback speed and
+- 🟡 **0.4.0** (was 0.3.2; renumbered 2026-10-29 for the size of the release): the open issues. [#9](https://github.com/KuchiSofts/vlc-redesign/issues/9): the playback speed and
   teletext buttons never loaded on Windows (`Popup` without its import), so dropped on a bar they left an
   invisible slot; fixed, and a control that fails to load shows a placeholder that can be dragged out.
   [#8](https://github.com/KuchiSofts/vlc-redesign/issues/8): VLC master merged (110 commits; conflicts in mmdevice,
@@ -280,7 +280,7 @@ What comes first, and why. Each step starts when what it needs is done.
 | 1  | Finish the 0.3.x items (§8): the 6 lines in the app ⏳                 | —                               | Mostly done: finishing costs less than switching                    | 🟡     |
 | 2  | Figma references exported, capture script, pixel check of 103 frames  | step 1 (screens stable)         | "Pixel for pixel" needs proof; capturing moving screens is wasted    | 🟢     |
 | 3  | Community setup: in-app *Suggest an idea* / *Report a problem* (13.12), hub, Discussions, board | decisions 1 and 9 | Feedback must land in the right place before the announcement | 🟡 |
-| 4  | Release 0.3.0 and announce it (0.3.0 and 0.3.1 out 2026-10-25; 0.3.2 next) | quality gates, steps 1 and 3 | Users get the fixes; the community side is ready for them        | 🟡     |
+| 4  | Release 0.3.0 and announce it (0.3.0 and 0.3.1 out 2026-10-25; 0.4.0 next) | quality gates, steps 1 and 3 | Users get the fixes; the community side is ready for them        | 🟡     |
 | 5  | `platforms.yml`, platform bar, website (built 2026-10-28; Pages to enable) | step 3                     | In place before a second platform exists, so it shows everywhere     | 🟡     |
 | 6  | Design tokens exported (`design/`: tokens, icons, fonts) — `design-1.0` and its CI check in (2026-10-28); every icon an SVG from Figma, drawn sharp at every scale and zoom (2026-10-29); left: the sync workflow to the sister repositories, the §6 differences | step 2 (values checked) | Every other platform reads them; no copying errors | 🟡 |
 | 7  | Linux, then macOS, then Windows ARM64 (macOS started 2026-10-28: build script and CI, first run after the push) | CI; decision 3 for macOS        | Same code base: the cheapest new platforms first                     | 🟡     |
@@ -859,10 +859,10 @@ Shipped in 0.1.0 to 0.2.6 ([changelog](../CHANGELOG.md)). Work since 0.2.6 is in
 - 🟢 Uninstall gives every file type back to the app it had before
 - 🟢 Daily update check; small updates (binary deltas), SHA-256 checked, rolled back on failure
 - 🟢 Signed checksums (BUG-006, 2026-10-28): `SHA256SUMS.txt.sig` by the project's release key (ECDSA P-256),
-  checked with CNG before any checksum is used; required from 0.3.2 on (`FIRST_SIGNED_VERSION`). Key and
+  checked with CNG before any checksum is used; required from 0.4.0 on (`FIRST_SIGNED_VERSION`). Key and
   commands: `extras/juxtopposed/signing/release-key.ps1`; `make-release.ps1` signs. Tested: sign/verify round
   trip, openssl cross-check, the C verifier on good, tampered, flipped and wrong-key signatures. Still to test: an
-  update from a 0.3.2 build to a signed release.
+  update from a 0.4.0 build to a signed release.
 - 🟢 *Restart now* reopens the media where it was in about two seconds; portable copies update too
 
 **Windows and robustness**
@@ -1438,7 +1438,7 @@ repository.
 - The workflow `.github/workflows/platforms.yml` does it on `main` (commits the rendered files back when they
   changed), checks pull requests, and deploys `site/` to GitHub Pages; a pull request in each sister repository
   that replaces the same block comes when the first one exists.
-- 🟢 Built 2026-10-28 (Windows 0.3.1 released, 0.3.2 next; Linux in progress; macOS and Windows ARM64 planned;
+- 🟢 Built 2026-10-28 (Windows 0.3.1 released, 0.4.0 next; Linux in progress; macOS and Windows ARM64 planned;
   Android and Samsung TV research; iPhone/iPad later). After each release: set `version`, `date` and `next` of
   Windows and run the renderer (`release-notes.py` reminds it).
 - The platform bar at the top of every README:
@@ -1682,7 +1682,7 @@ Mitigation: the dated inventory, reference exports in the repository, the export
 
 **Update security.** A download is tampered with.
 Mitigation: HTTPS from GitHub only and SHA-256 checks (done); the checksums signed by the project's release key
-and checked by the app (done, from 0.3.2); code signing (decision 2); `SECURITY.md`.
+and checked by the app (done, from 0.4.0); code signing (decision 2); `SECURITY.md`.
 
 ## 16. Definition of done
 

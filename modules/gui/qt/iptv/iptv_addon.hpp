@@ -232,6 +232,8 @@ public:
     Q_INVOKABLE void playCatchup(const QString& key, qint64 start, qint64 stop, const QString& title);
     // the programme on now from its start, when the channel has an archive
     Q_INVOKABLE void playFromStart();
+    // the list of the channels over the video (the TV button of the bar)
+    Q_INVOKABLE void showChannelList() { emit channelListRequested(); }
     Q_INVOKABLE void backToLive();
     Q_INVOKABLE void channelUp();
     Q_INVOKABLE void channelDown();
@@ -272,6 +274,7 @@ signals:
     void optionsChanged();
     // a channel was switched to (the banner shows)
     void channelSwitched();
+    void channelListRequested();
     // a short message for the player (no archive, the source failed...)
     void message(const QString& text);
     void reminderDue(const QVariantMap& reminder);

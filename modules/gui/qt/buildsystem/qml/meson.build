@@ -111,6 +111,8 @@ qml_modules += {
         '../../maininterface/qml/Sidebar.qml',
         '../../maininterface/qml/PaneResizeHandle.qml',
         '../../maininterface/qml/SideNavigationDelegate.qml',
+        '../../maininterface/qml/SidebarItems.qml',
+        '../../maininterface/qml/SidebarEditDialog.qml',
     ),
 }
 qml_modules += {
@@ -309,6 +311,7 @@ qml_modules += {
        '../../player/qml/controlbarcontrols/ExtendedSettingsButton.qml',
        '../../player/qml/controlbarcontrols/SettingsButton.qml',
        '../../player/qml/controlbarcontrols/RedesignIconButton.qml',
+       '../../player/qml/controlbarcontrols/TvButton.qml',
        '../../player/qml/controlbarcontrols/FasterButton.qml',
        '../../player/qml/controlbarcontrols/FrameNextButton.qml',
        '../../player/qml/controlbarcontrols/FramePrevButton.qml',

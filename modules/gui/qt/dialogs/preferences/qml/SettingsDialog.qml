@@ -39,6 +39,8 @@ Dialog {
     property bool applyFailed: false
     property bool previousGlobalShortcuts: true
     property bool advancedExpanded: false
+    // Edit Sidebar (Interface), made when first opened
+    property var _sidebarDialog: null
     readonly property string searchText: searchField.text
     // Advanced Options start closed on every page
     onSelectedCategoryChanged: advancedExpanded = false
@@ -528,6 +530,34 @@ Dialog {
                     }
                 }
 
+                // The order of the library's sidebar and its pages shown, after
+                // the sections of the interface page (Edit Sidebar)
+                SettingsSectionTitle {
+                    id: sidebarSection
+                    width: parent.width
+                    visible: searchField.text.length === 0
+                             ? root.selectedCategory === "interface"
+                             : root.searchMatches([qsTr("Sidebar"), qsTr("Edit Sidebar"),
+                                                   qsTr("Order and pages of the sidebar")])
+                    text: qsTr("Sidebar")
+
+                    SettingsActionRow {
+                        label: qsTr("Order and pages of the sidebar")
+                        buttonText: qsTr("Edit Sidebar")
+                        onClicked: {
+                            if (!root._sidebarDialog) {
+                                const component = Qt.createComponent("qrc:///qt/qml/VLC/MainInterface/SidebarEditDialog.qml")
+                                if (component.status !== Component.Ready) {
+                                    console.warn(component.errorString())
+                                    return
+                                }
+                                root._sidebarDialog = component.createObject(root)
+                            }
+                            root._sidebarDialog.open()
+                        }
+                    }
+                }
+
                 // (below the sections of the design)
                 SettingsSubtitleLanguages {
                     id: subtitleLanguages
@@ -597,7 +627,7 @@ Dialog {
                     visible: optionList.availableCount === 0 && !appearance.visible
                              && !subtitleLanguages.visible
                              && !developerMode.visible
-                             && !lastfm.visible && !shortcutsSection.visible
+                             && !lastfm.visible && !shortcutsSection.visible && !sidebarSection.visible
                              && !inlineEffects.visible && !extensions.visible
                     text: searchField.text.length > 0
                           ? qsTr("No matching settings")

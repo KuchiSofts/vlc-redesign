@@ -108,6 +108,9 @@ public:
         WIDGET_SPACER_EXTEND,
         WIDGET_MAX,
 
+        // Live TV (its add-on), saved in the profiles by this id
+        TV_BUTTON = 0x50,
+
         // Use a reserved ID without changing persisted control identifiers.
         SETTINGS_BUTTON = RESERVED_0X2B,
         HDR_BUTTON = RESERVED_0X2C,

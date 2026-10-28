@@ -95,7 +95,9 @@ QtObject {
         { id: ControlListModel.REPLAY_BUTTON, file: "ReplayButton.qml", label: VLCIcons.skip_back, icon: "qrc:///redesign/icons/replay/default.png", text: qsTr("Replay") },
         { id: ControlListModel.CHAPTERS_BUTTON, file: "ChaptersButton.qml", label: VLCIcons.bookmark, icon: "qrc:///redesign/icons/chapters/default.png", text: qsTr("Chapters") },
         { id: ControlListModel.BOOKMARKS_BUTTON, file: "BookmarksButton.qml", label: VLCIcons.bookmark, icon: "qrc:///redesign/icons/bookmarks/default.png", text: qsTr("Bookmarks") },
-        { id: ControlListModel.PLAYLISTS_BUTTON, file: "PlaylistsButton.qml", label: VLCIcons.playlist, icon: "qrc:///redesign/icons/playlist/default.png", text: qsTr("Playlists") }
+        { id: ControlListModel.PLAYLISTS_BUTTON, file: "PlaylistsButton.qml", label: VLCIcons.playlist, icon: "qrc:///redesign/icons/playlist/default.png", text: qsTr("Playlists") },
+        // Live TV: offered while its add-on is on (paletteList)
+        { id: ControlListModel.TV_BUTTON, file: "TvButton.qml", label: VLCIcons.tv, icon: "qrc:///redesign/icons/tv/default.png", text: qsTr("TV") }
     ]
 
     // Figma "Customize Player": the names of the palette broken as the design
@@ -128,7 +130,7 @@ QtObject {
         ControlListModel.VOLUME, ControlListModel.LANG_BUTTON, ControlListModel.EXTENDED_BUTTON,
         ControlListModel.PLAYLIST_BUTTON, ControlListModel.FULLSCREEN_BUTTON, ControlListModel.ATOB_BUTTON,
         ControlListModel.FRAME_PREV_BUTTON, ControlListModel.FRAME_NEXT_BUTTON, ControlListModel.MENU_BUTTON
-    ]
+    ].concat(Iptv.enabled ? [ControlListModel.TV_BUTTON] : [])  // Live TV, while its add-on is on
 
     function control(id) {
         const entry = controlList.find( function(e) { return ( e.id === id ) } )

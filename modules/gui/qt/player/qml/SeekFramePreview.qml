@@ -25,6 +25,9 @@ Rectangle {
     // Position of the frame, from 0 to 1
     property real position: 0
     property string timeText
+    // the subtitle line at that time (a subtitle file shown), over the
+    // bottom of the frame as the player shows it
+    property string cueText
     property bool darkTheme: true
 
     readonly property real padding: VLCStyle.dp(10, VLCStyle.scale)
@@ -75,6 +78,27 @@ Rectangle {
         backgroundColor: "#0E0E0E"
         fillMode: Image.PreserveAspectCrop
         textureProviderItem: frameSource
+    }
+
+    Text {
+        id: cueLabel
+
+        visible: text.length > 0
+        x: root.padding + VLCStyle.dp(8, VLCStyle.scale)
+        width: root.frameWidth - VLCStyle.dp(16, VLCStyle.scale)
+        y: root.padding + root.frameHeight - height - VLCStyle.dp(6, VLCStyle.scale)
+        text: root.cueText
+        // (plain: the tags of the file are gone, a "<" of the words stays)
+        textFormat: Text.PlainText
+        horizontalAlignment: Text.AlignHCenter
+        wrapMode: Text.Wrap
+        maximumLineCount: 2
+        elide: Text.ElideRight
+        color: "#FFFFFF"
+        style: Text.Outline
+        styleColor: "#000000"
+        font.family: VLCStyle.redesign.fontFamily
+        font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
     }
 
     Text {

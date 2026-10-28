@@ -108,6 +108,7 @@ moc_headers = files(
     '../../player/input_models.hpp',
     '../../player/delay_estimator.hpp',
     '../../player/waveform.hpp',
+    '../../player/subtitle_cues.hpp',
     '../../player/local_folder_model.hpp',
     '../../player/sleep_timer.hpp',
     '../../util/redesign_updater.hpp',

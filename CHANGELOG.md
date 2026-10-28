@@ -123,6 +123,11 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Technical
 
+- **Every upload checked for the whole project.** `extras/juxtopposed/release/release-check.py` checks the version,
+  the changelog, the roadmap and the plan, the README, the platforms and the website, the wiki, the design tokens,
+  the translations, VideoLAN's master, the credits and every open issue; the pre-push hook runs it for every push
+  to this repository (a `vX.Y.Z` tag as the release of X.Y.Z) and `make-release.ps1` before packaging.
+  [docs/RELEASE-CHECKLIST.md](docs/RELEASE-CHECKLIST.md) lists the steps around it.
 - **macOS port started.** `extras/juxtopposed/macos-build.sh` builds VLC Redesign on a Mac: VideoLAN's prebuilt
   macOS contribs of the newest upstream contrib commit (from source when none), the official Qt 6.8.3 by
   aqtinstall (upstream's macOS contribs have no Qt), VLC configured by upstream's `configure.sh` with

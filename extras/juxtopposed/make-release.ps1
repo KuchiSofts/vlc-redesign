@@ -63,6 +63,15 @@ if (-not $Version) {
 if ($Version -notmatch '^\d+\.\d+\.\d+$') { throw "Bad version '$Version' (x.y.z)" }
 Write-Host "VLC Redesign $Version"
 
+# A release leaves nothing of the project behind (the changelog, roadmap,
+# plan, README, platforms, wiki, translations, VideoLAN, credits, issues):
+# docs/RELEASE-CHECKLIST.md. Not in the GitHub workflow, whose packages of
+# every pull request are tests, not releases.
+if (-not $env:GITHUB_ACTIONS) {
+    & python "$PSScriptRoot\release\release-check.py" --release $Version
+    if ($LASTEXITCODE -ne 0) { throw "The project is not ready for $Version (release-check.py above)" }
+}
+
 if (-not $SkipBuild) {
     # named parameters as a hashtable: an array would pass "-Out" as a value
     $buildArgs = @{ Arch = $Arch; Out = $Package; Strip = $true; Jobs = $Jobs

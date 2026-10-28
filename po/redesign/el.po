@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-28 13:15+0000\n"
+"POT-Creation-Date: 2026-10-28 18:41+0000\n"
 "PO-Revision-Date: 2015-12-05 19:04+0000\n"
 "Last-Translator: Savvas Nesseris <nesseris@yahoo.com>\n"
 "Language-Team: Greek (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -1563,14 +1563,15 @@ msgstr "Λειτουργία προσαρμογής"
 
 #: bin/winvlc.c:710
 msgid "VLC Redesign cannot run on this version of Windows"
-msgstr "Το VLC Redesign δεν μπορεί να εκτελεστεί σε αυτήν την έκδοση των Windows"
+msgstr ""
+"Το VLC Redesign δεν μπορεί να εκτελεστεί σε αυτήν την έκδοση των Windows"
 
 #: bin/winvlc.c:711
 msgid "It needs Windows 10 version 1809 or later."
 msgstr "Απαιτούνται Windows 10 έκδοση 1809 ή νεότερη."
 
 #: bin/winvlc.c:712 bin/winvlc.c:825
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:312
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:319
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:547
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:552
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:142
@@ -1591,7 +1592,8 @@ msgstr "Δεν ήταν δυνατή η εκκίνηση του VLC Redesign"
 
 #: bin/winvlc.c:824
 msgid "Either the command line options were invalid or no plugins were found."
-msgstr "Είτε οι επιλογές της γραμμής εντολών ήταν άκυρες είτε δεν βρέθηκαν πρόσθετα."
+msgstr ""
+"Είτε οι επιλογές της γραμμής εντολών ήταν άκυρες είτε δεν βρέθηκαν πρόσθετα."
 
 #: modules/access_output/http.c:65
 msgid "DLNA content features"
@@ -1942,17 +1944,21 @@ msgid "the VideoLAN team and contributors"
 msgstr "την ομάδα του VideoLAN και τους συνεισφέροντες"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:279
+msgid "Also on: %1"
+msgstr "Επίσης για: %1"
+
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:286
 #: modules/gui/qt/menus/qml/MainMenu.qml:173
 msgid "Suggest an idea"
 msgstr "Προτείνετε μια ιδέα"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:281
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:288
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:28
 #: modules/gui/qt/menus/qml/MainMenu.qml:178
 msgid "Report a problem"
 msgstr "Αναφορά προβλήματος"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:292
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:299
 msgid ""
 "An unofficial build, not affiliated with or endorsed by VideoLAN or "
 "Juxtopposed. VLC, VLC media player and the cone logo are trademarks of "
@@ -1963,11 +1969,11 @@ msgstr ""
 "εμπορικά σήματα του VideoLAN. Ελεύθερο λογισμικό υπό την άδεια GNU GPL v2 ή "
 "νεότερη."
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:302
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:309
 msgid "Licenses & authors"
 msgstr "Άδειες και δημιουργοί"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:306
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:313
 msgid "GitHub"
 msgstr "GitHub"
 
@@ -1986,7 +1992,9 @@ msgstr "Τι περιέχει η αναφορά"
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:57
 msgid ""
 "GitHub opens with this filled in. Nothing is sent until you submit it there."
-msgstr "Το GitHub ανοίγει με αυτά τα στοιχεία συμπληρωμένα. Τίποτα δεν αποστέλλεται μέχρι να την υποβάλετε εκεί."
+msgstr ""
+"Το GitHub ανοίγει με αυτά τα στοιχεία συμπληρωμένα. Τίποτα δεν αποστέλλεται "
+"μέχρι να την υποβάλετε εκεί."
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:102
 msgid "Report"
@@ -1996,7 +2004,10 @@ msgstr "Αναφορά"
 msgid ""
 "No file names, user names or logs. To add a log: Settings → General → "
 "Diagnostics → Save a log."
-msgstr "Χωρίς ονόματα αρχείων, ονόματα χρηστών ή αρχεία καταγραφής. Για να προσθέσετε αρχείο καταγραφής: Ρυθμίσεις → Γενικά → Διαγνωστικά → Αποθήκευση αρχείου καταγραφής."
+msgstr ""
+"Χωρίς ονόματα αρχείων, ονόματα χρηστών ή αρχεία καταγραφής. Για να "
+"προσθέσετε αρχείο καταγραφής: Ρυθμίσεις → Γενικά → Διαγνωστικά → Αποθήκευση "
+"αρχείου καταγραφής."
 
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:514
 msgid "Confirm"
@@ -2476,6 +2487,89 @@ msgstr "Περιήγηση για %1"
 msgid "Image Files (*.png *.jpg);;All Files (*)"
 msgstr "Αρχεία εικόνας (*.png *.jpg);;Όλα τα αρχεία (*)"
 
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:40
+msgid "Welcome"
+msgstr "Καλώς ορίσατε"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:51
+msgid ""
+"<p>In order to protect your privacy, <i>VLC media player</i> does <b>not</b> "
+"collect personal data or transmit them, not even in anonymized form, to "
+"anyone.</p>\n"
+"<p>Nevertheless, <i>VLC</i> is able to automatically retrieve information "
+"about the media in your play queue from third party Internet-based services. "
+"This includes cover art, track names, artist names and other meta-data.</p>\n"
+"<p>Consequently, this may entail identifying some of your media files to "
+"third party entities. Therefore the <i>VLC</i> developers require your "
+"express consent for the media player to access the Internet automatically.</"
+"p>\n"
+msgstr ""
+"<p>Για την προστασία του απορρήτου σας, ο <i>αναπαραγωγός πολυμέσων VLC</i> "
+"<b>δεν</b> συλλέγει προσωπικά δεδομένα ούτε τα μεταδίδει σε κανέναν, ούτε "
+"καν σε ανώνυμη μορφή.</p>\n"
+"<p>Ωστόσο, το <i>VLC</i> μπορεί να ανακτά αυτόματα πληροφορίες για τα "
+"πολυμέσα της ουράς αναπαραγωγής σας από διαδικτυακές υπηρεσίες τρίτων. Αυτές "
+"περιλαμβάνουν εξώφυλλα, ονόματα κομματιών, ονόματα καλλιτεχνών και άλλα "
+"μεταδεδομένα.</p>\n"
+"<p>Κατά συνέπεια, αυτό μπορεί να συνεπάγεται την ταυτοποίηση ορισμένων από "
+"τα αρχεία πολυμέσων σας από τρίτους. Γι' αυτό οι προγραμματιστές του <i>VLC</"
+"i> ζητούν τη ρητή συγκατάθεσή σας ώστε ο αναπαραγωγός πολυμέσων να έχει "
+"αυτόματα πρόσβαση στο Διαδίκτυο.</p>\n"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:90
+msgid ""
+"<ul><li>No client-side decoration</li><li>Toolbar menu</li><li>Pinned video "
+"controls</li></ul>"
+msgstr ""
+"<ul><li>Χωρίς διακόσμηση παραθύρου από την εφαρμογή</li><li>Μενού γραμμής "
+"εργαλείων</li><li>Καρφιτσωμένα στοιχεία ελέγχου βίντεο</li></ul>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:96
+msgid ""
+"<ul><li>Client-side decoration</li><li>No toolbar menu</li><li>Video "
+"controls unpinned</li></ul>"
+msgstr ""
+"<ul><li>Διακόσμηση παραθύρου από την εφαρμογή</li><li>Χωρίς μενού γραμμής "
+"εργαλείων</li><li>Ξεκαρφίτσωτα στοιχεία ελέγχου βίντεο</li></ul>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:193
+msgid "Choose a folder to add to the Media Library"
+msgstr "Επιλέξτε έναν φάκελο για προσθήκη στη βιβλιοθήκη πολυμέσων"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:210
+msgid ""
+"<i>VLC will automatically switch to dark mode accordingly with system "
+"settings</i>"
+msgstr ""
+"<i>Το VLC θα αλλάζει αυτόματα σε σκούρα λειτουργία σύμφωνα με τις ρυθμίσεις "
+"του συστήματος</i>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:213
+msgid "<i>VLC will automatically use light mode</i>"
+msgstr "<i>Το VLC θα χρησιμοποιεί αυτόματα φωτεινή λειτουργία</i>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:216
+msgid "<i>VLC will automatically use dark mode</i>"
+msgstr "<i>Το VLC θα χρησιμοποιεί αυτόματα σκούρα λειτουργία</i>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:230
+msgid ""
+"<i>VLC will use a modern layout with no menubar or pinned controls but with "
+"client-side decoration</i>"
+msgstr ""
+"<i>Το VLC θα χρησιμοποιεί μια σύγχρονη διάταξη χωρίς γραμμή μενού ή "
+"καρφιτσωμένα στοιχεία ελέγχου, αλλά με διακόσμηση παραθύρου από την "
+"εφαρμογή</i>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:233
+msgid ""
+"<i>VLC will use a classic layout with a menubar and pinned controls but with "
+"no client-side decoration</i>"
+msgstr ""
+"<i>Το VLC θα χρησιμοποιεί μια κλασική διάταξη με γραμμή μενού και "
+"καρφιτσωμένα στοιχεία ελέγχου, αλλά χωρίς διακόσμηση παραθύρου από την "
+"εφαρμογή</i>"
+
 #: modules/gui/qt/dialogs/firstrun/onboarding.cpp:48
 msgid "Could not add the media folder: %1"
 msgstr "Δεν ήταν δυνατή η προσθήκη του φακέλου πολυμέσων: %1"
@@ -2556,15 +2650,15 @@ msgstr ""
 msgid "Finish"
 msgstr "Τερματισμός"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:108
+#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:110
 msgid "Learn the basic keyboard shortcuts."
 msgstr "Μάθετε τις βασικές συντομεύσεις πληκτρολογίου."
 
-#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:116
+#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:118
 msgid "No playback shortcuts are currently assigned."
 msgstr "Δεν έχουν αντιστοιχιστεί συντομεύσεις αναπαραγωγής."
 
-#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:200
+#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:202
 msgid "Find the full list in the menu."
 msgstr "Θα βρείτε την πλήρη λίστα στο μενού."
 
@@ -2856,7 +2950,10 @@ msgstr "Εμφάνιση των νέων μετά από ενημέρωση"
 msgid ""
 "The first time VLC opens after an update, a card lists what is new in the "
 "version, with a link to the full changelog. The notes are in English."
-msgstr "Την πρώτη φορά που ανοίγει το VLC μετά από μια ενημέρωση, μια κάρτα παραθέτει τι νέο υπάρχει στην έκδοση, με σύνδεσμο προς το πλήρες αρχείο αλλαγών. Οι σημειώσεις είναι στα Αγγλικά."
+msgstr ""
+"Την πρώτη φορά που ανοίγει το VLC μετά από μια ενημέρωση, μια κάρτα "
+"παραθέτει τι νέο υπάρχει στην έκδοση, με σύνδεσμο προς το πλήρες αρχείο "
+"αλλαγών. Οι σημειώσεις είναι στα Αγγλικά."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:256
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
@@ -3261,7 +3358,7 @@ msgstr ""
 "αποθηκεύτηκαν."
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:79
-#: modules/gui/qt/qt.cpp:340
+#: modules/gui/qt/qt.cpp:344
 msgid "Expert"
 msgstr "Για ειδικούς"
 
@@ -3346,7 +3443,7 @@ msgstr "Θέμα"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:192
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:409
-#: modules/gui/qt/qt.cpp:335
+#: modules/gui/qt/qt.cpp:339
 msgid "Accent color"
 msgstr "Χρώμα έμφασης"
 
@@ -4137,7 +4234,7 @@ msgid "Seeking"
 msgstr "Μετάβαση"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:122
-#: modules/gui/qt/qt.cpp:299
+#: modules/gui/qt/qt.cpp:303
 msgid "Show thumbnail while scrubbing"
 msgstr "Εμφάνιση μικρογραφίας κατά τη σάρωση"
 
@@ -4418,7 +4515,7 @@ msgid "Timing"
 msgstr "Χρονισμός"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
-#: modules/gui/qt/qt.cpp:301
+#: modules/gui/qt/qt.cpp:305
 msgid "Show subtitle lines on the seek bar"
 msgstr "Εμφάνιση των γραμμών υποτίτλων στη γραμμή προόδου"
 
@@ -5694,7 +5791,7 @@ msgstr "Προβολή πολυμέσων"
 msgid "Unknown Title"
 msgstr "Άγνωστος τίτλος"
 
-#: modules/gui/qt/medialibrary/qml/MediaView.qml:350
+#: modules/gui/qt/medialibrary/qml/MediaView.qml:351
 msgid ""
 "No media found\n"
 "Please try adding sources"
@@ -5720,7 +5817,7 @@ msgid "%1 - %2 - %3 - %4"
 msgstr "%1 - %2 - %3 - %4"
 
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:406
-#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:941
+#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:942
 msgid "#"
 msgstr "#"
 
@@ -7512,16 +7609,6 @@ msgstr ""
 msgid "Duration unavailable"
 msgstr "Η διάρκεια δεν είναι διαθέσιμη"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/Fallback.qml:48
-msgid ""
-"WIDGET\n"
-"NOT\n"
-"FOUND"
-msgstr ""
-"ΣΤΟΙΧΕΙΟ\n"
-"ΔΕΝ\n"
-"ΒΡΕΘΗΚΕ"
-
 #: modules/gui/qt/player/qml/controlbarcontrols/FavoriteButton.qml:21
 msgid "Available for items in your library"
 msgstr "Διαθέσιμο για στοιχεία της βιβλιοθήκης σας"
@@ -7657,11 +7744,11 @@ msgstr "Εμπρός 15 δευτερόλεπτα"
 msgid "%1 %"
 msgstr "%1 %"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:38
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:40
 msgid "Choose a video zoom level"
 msgstr "Επιλέξτε επίπεδο μεγέθυνσης βίντεο"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:39
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:41
 msgid "Zoom is unavailable without video"
 msgstr "Η μεγέθυνση δεν είναι διαθέσιμη χωρίς βίντεο"
 
@@ -7705,18 +7792,18 @@ msgstr "Ουρά αναπαραγωγής"
 msgid "%1 elements, %2"
 msgstr "%1 στοιχεία, %2"
 
-#: modules/gui/qt/qt.cpp:171
+#: modules/gui/qt/qt.cpp:175
 msgid "Select the initial preferences view"
 msgstr "Επιλογή της αρχικής προβολής προτιμήσεων"
 
-#: modules/gui/qt/qt.cpp:172
+#: modules/gui/qt/qt.cpp:176
 msgid ""
 "Select which preferences view to show upon opening the preferences dialog."
 msgstr ""
 "Επιλέξτε ποια προβολή προτιμήσεων θα εμφανίζεται όταν ανοίγει το παράθυρο "
 "προτιμήσεων."
 
-#: modules/gui/qt/qt.cpp:196
+#: modules/gui/qt/qt.cpp:200
 msgid ""
 "Show a notification popup with the artist and track name when the current "
 "play queue item changes, when VLC is minimized or hidden."
@@ -7725,7 +7812,7 @@ msgstr ""
 "κομματιού όταν αλλάζει το τρέχον στοιχείο της ουράς αναπαραγωγής, ενώ το VLC "
 "είναι ελαχιστοποιημένο ή κρυφό."
 
-#: modules/gui/qt/qt.cpp:200
+#: modules/gui/qt/qt.cpp:204
 msgid ""
 "Sets the windows opacity between 0.1 and 1 for main interface, play queue "
 "and extended panel. This option only works with Windows and X11 with "
@@ -7735,7 +7822,7 @@ msgstr ""
 "την ουρά αναπαραγωγής και τον εκτεταμένο πίνακα. Αυτή η επιλογή λειτουργεί "
 "μόνο με Windows και X11 με επεκτάσεις σύνθεσης."
 
-#: modules/gui/qt/qt.cpp:206
+#: modules/gui/qt/qt.cpp:210
 msgid ""
 "Sets the fullscreen controller opacity between 0.1 and 1 for main interface, "
 "play queue and extended panel. This option only works with Windows and X11 "
@@ -7745,11 +7832,11 @@ msgstr ""
 "κύρια διεπαφή, την ουρά αναπαραγωγής και τον εκτεταμένο πίνακα. Αυτή η "
 "επιλογή λειτουργεί μόνο με Windows και X11 με επεκτάσεις σύνθεσης."
 
-#: modules/gui/qt/qt.cpp:211
+#: modules/gui/qt/qt.cpp:215
 msgid "Initial user scale factor for the interface, between 0.3 and 3.0"
 msgstr "Αρχικός συντελεστής κλίμακας της διεπαφής, μεταξύ 0.3 και 3.0"
 
-#: modules/gui/qt/qt.cpp:214
+#: modules/gui/qt/qt.cpp:218
 msgid ""
 "Show the errors of VLC at the bottom of the window, and ask before removing "
 "media from a playlist or from the play queue, or deleting playlists. Off, "
@@ -7763,11 +7850,11 @@ msgstr ""
 "γίνονται αμέσως· η διαγραφή ενός αρχείου από τον δίσκο ζητά πάντα "
 "επιβεβαίωση."
 
-#: modules/gui/qt/qt.cpp:224
+#: modules/gui/qt/qt.cpp:228
 msgid "set the options for qml debugger"
 msgstr "ορισμός των επιλογών για τον αποσφαλματωτή qml"
 
-#: modules/gui/qt/qt.cpp:225
+#: modules/gui/qt/qt.cpp:229
 msgid ""
 "set the options for qml debugger (see http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
@@ -7775,7 +7862,7 @@ msgstr ""
 "ορισμός των επιλογών για τον αποσφαλματωτή qml (δείτε http://doc.qt.io/qt-5/"
 "qtquick-debugging.html#starting-applications)"
 
-#: modules/gui/qt/qt.cpp:245
+#: modules/gui/qt/qt.cpp:249
 msgid ""
 "Show the playback controls in fullscreen when the mouse moves. Off, only the "
 "keyboard shows them (the I key). The skins read it for their fullscreen "
@@ -7786,7 +7873,7 @@ msgstr ""
 "(πλήκτρο I). Οι προσόψεις το χρησιμοποιούν επίσης για τον ελεγκτή πλήρους "
 "οθόνης τους."
 
-#: modules/gui/qt/qt.cpp:261
+#: modules/gui/qt/qt.cpp:265
 msgid ""
 "Display the cover art of the audio playing in the player (the cone in the "
 "compact view). Off, a plain picture takes its place, which also prevents "
@@ -7796,7 +7883,7 @@ msgstr ""
 "στη συμπαγή προβολή). Όταν είναι απενεργοποιημένο, τη θέση του παίρνει μια "
 "απλή εικόνα, κάτι που αποτρέπει επίσης το κάψιμο της οθόνης."
 
-#: modules/gui/qt/qt.cpp:285
+#: modules/gui/qt/qt.cpp:289
 msgid ""
 "This option allows the interface to be shown and raised automatically when a "
 "video/audio playback starts, or never."
@@ -7804,11 +7891,11 @@ msgstr ""
 "Αυτή η επιλογή επιτρέπει στη διεπαφή να εμφανίζεται και να έρχεται αυτόματα "
 "στο προσκήνιο όταν ξεκινά η αναπαραγωγή βίντεο/ήχου, ή ποτέ."
 
-#: modules/gui/qt/qt.cpp:288
+#: modules/gui/qt/qt.cpp:292
 msgid "Enable window titlebar"
 msgstr "Ενεργοποίηση γραμμής τίτλου παραθύρου"
 
-#: modules/gui/qt/qt.cpp:289
+#: modules/gui/qt/qt.cpp:293
 msgid ""
 "This option enables the title bar. Disabling it will remove the titlebar and "
 "move window buttons within the interface (Client Side Decoration)"
@@ -7817,41 +7904,43 @@ msgstr ""
 "τη γραμμή τίτλου και μεταφέρει τα κουμπιά του παραθύρου μέσα στη διεπαφή "
 "(Client Side Decoration)"
 
-#: modules/gui/qt/qt.cpp:293
+#: modules/gui/qt/qt.cpp:297
 msgid "Show the menu bar"
 msgstr "Εμφάνιση της γραμμής μενού"
 
-#: modules/gui/qt/qt.cpp:294
+#: modules/gui/qt/qt.cpp:298
 msgid "This option displays the classic menu bar"
 msgstr "Αυτή η επιλογή εμφανίζει την κλασική γραμμή μενού"
 
-#: modules/gui/qt/qt.cpp:296
+#: modules/gui/qt/qt.cpp:300
 msgid "Pin video controls"
 msgstr "Καρφίτσωμα στοιχείων ελέγχου βίντεο"
 
-#: modules/gui/qt/qt.cpp:297
+#: modules/gui/qt/qt.cpp:301
 msgid "Place video controls above and below the video instead of above"
 msgstr ""
 "Τοποθέτηση των στοιχείων ελέγχου βίντεο επάνω και κάτω από το βίντεο αντί "
 "για επάνω του"
 
-#: modules/gui/qt/qt.cpp:300
+#: modules/gui/qt/qt.cpp:304
 msgid "Show the frame at the hovered position above the seek bar"
 msgstr ""
 "Εμφάνιση του καρέ της θέσης όπου βρίσκεται ο δείκτης, πάνω από τη γραμμή "
 "προόδου"
 
-#: modules/gui/qt/qt.cpp:302
+#: modules/gui/qt/qt.cpp:306
 msgid ""
 "Mark on the seek bar where the lines of the subtitle shown are, when it "
 "comes from a subtitle file"
-msgstr "Σήμανση στη γραμμή προόδου των θέσεων των γραμμών του εμφανιζόμενου υποτίτλου, όταν προέρχεται από αρχείο υποτίτλων"
+msgstr ""
+"Σήμανση στη γραμμή προόδου των θέσεων των γραμμών του εμφανιζόμενου "
+"υποτίτλου, όταν προέρχεται από αρχείο υποτίτλων"
 
-#: modules/gui/qt/qt.cpp:307
+#: modules/gui/qt/qt.cpp:311
 msgid "Select Qt video integration backend"
 msgstr "Επιλογή συστήματος ενσωμάτωσης βίντεο του Qt"
 
-#: modules/gui/qt/qt.cpp:308
+#: modules/gui/qt/qt.cpp:312
 msgid ""
 "Select Qt video integration backend. Use with care, the interface may not "
 "start if an incompatible compositor is selected"
@@ -7859,11 +7948,11 @@ msgstr ""
 "Επιλογή συστήματος ενσωμάτωσης βίντεο του Qt. Χρησιμοποιήστε το με προσοχή· "
 "η διεπαφή μπορεί να μην ξεκινήσει αν επιλεγεί ασύμβατος συνθέτης"
 
-#: modules/gui/qt/qt.cpp:310
+#: modules/gui/qt/qt.cpp:314
 msgid "Use smooth scrolling in Flickable based views"
 msgstr "Ομαλή κύλιση στις προβολές που βασίζονται σε Flickable"
 
-#: modules/gui/qt/qt.cpp:311
+#: modules/gui/qt/qt.cpp:315
 msgid ""
 "Deactivating this option will disable smooth scrolling in Flickable based "
 "views (such as the Play Queue). This option is only respected with a scroll "
@@ -7874,23 +7963,23 @@ msgstr ""
 "επιλογή ισχύει μόνο με χειριστή κύλισης· δείτε την επιλογή `qt-use-scroll-"
 "handler`."
 
-#: modules/gui/qt/qt.cpp:314
+#: modules/gui/qt/qt.cpp:318
 msgid "Use Kirigami scroll handler for Flickable based views"
 msgstr ""
 "Χρήση του χειριστή κύλισης Kirigami για τις προβολές που βασίζονται σε "
 "Flickable"
 
-#: modules/gui/qt/qt.cpp:315
+#: modules/gui/qt/qt.cpp:319
 msgid "Using Kirigami scroll handler may improve scrolling behavior."
 msgstr ""
 "Η χρήση του χειριστή κύλισης Kirigami μπορεί να βελτιώσει τη συμπεριφορά της "
 "κύλισης."
 
-#: modules/gui/qt/qt.cpp:317
+#: modules/gui/qt/qt.cpp:321
 msgid "Safe area for the user interface"
 msgstr "Ασφαλής περιοχή για τη διεπαφή χρήστη"
 
-#: modules/gui/qt/qt.cpp:318
+#: modules/gui/qt/qt.cpp:322
 msgid ""
 "Sets the safe area percentage between 0.0 and 100 when you want to ensure "
 "the visibility of the user interface on a constrained viewport"
@@ -7899,21 +7988,21 @@ msgstr ""
 "εξασφαλίσετε την ορατότητα της διεπαφής χρήστη σε περιορισμένη περιοχή "
 "προβολής"
 
-#: modules/gui/qt/qt.cpp:322
+#: modules/gui/qt/qt.cpp:326
 msgid "Print Qt's important internal messages"
 msgstr "Εμφάνιση των σημαντικών εσωτερικών μηνυμάτων του Qt"
 
-#: modules/gui/qt/qt.cpp:323
+#: modules/gui/qt/qt.cpp:327
 msgid "Enable Qt's all own messaging categories except the debug category."
 msgstr ""
 "Ενεργοποίηση όλων των κατηγοριών μηνυμάτων του Qt εκτός από την κατηγορία "
 "αποσφαλμάτωσης."
 
-#: modules/gui/qt/qt.cpp:325
+#: modules/gui/qt/qt.cpp:329
 msgid "Hide the window on close"
 msgstr "Απόκρυψη του παραθύρου κατά το κλείσιμο"
 
-#: modules/gui/qt/qt.cpp:326
+#: modules/gui/qt/qt.cpp:330
 msgid ""
 "Instead of closing the application, hide the window. This setting is only "
 "applicable when system tray icon is enabled."
@@ -7921,12 +8010,12 @@ msgstr ""
 "Απόκρυψη του παραθύρου αντί για κλείσιμο της εφαρμογής. Αυτή η ρύθμιση "
 "ισχύει μόνο όταν είναι ενεργοποιημένο το εικονίδιο στην περιοχή ειδοποιήσεων."
 
-#: modules/gui/qt/qt.cpp:328
+#: modules/gui/qt/qt.cpp:332
 msgid "Enable backdrop blur filter for the main window if possible"
 msgstr ""
 "Ενεργοποίηση φίλτρου θολώματος φόντου για το κύριο παράθυρο, αν είναι δυνατό"
 
-#: modules/gui/qt/qt.cpp:329
+#: modules/gui/qt/qt.cpp:333
 msgid ""
 "If backdrop blur filter is available, use translucency in the backgrounds of "
 "certain parts of the user interface instead of a solid color. This setting "
@@ -7936,11 +8025,11 @@ msgstr ""
 "στο φόντο ορισμένων τμημάτων της διεπαφής χρήστη αντί για συμπαγές χρώμα. "
 "Αυτή η ρύθμιση μειώνει την αναγνωσιμότητα του κειμένου."
 
-#: modules/gui/qt/qt.cpp:332
+#: modules/gui/qt/qt.cpp:336
 msgid "Enable picture-in-picture (PiP) mode"
 msgstr "Ενεργοποίηση λειτουργίας εικόνας μέσα σε εικόνα (PiP)"
 
-#: modules/gui/qt/qt.cpp:333
+#: modules/gui/qt/qt.cpp:337
 msgid ""
 "Picture-in-picture mode allows playing video contained in a smaller area so "
 "that the interface remains usable."
@@ -7948,7 +8037,7 @@ msgstr ""
 "Η λειτουργία εικόνας μέσα σε εικόνα επιτρέπει την αναπαραγωγή βίντεο σε "
 "μικρότερη περιοχή, ώστε η διεπαφή να παραμένει χρησιμοποιήσιμη."
 
-#: modules/gui/qt/qt.cpp:336
+#: modules/gui/qt/qt.cpp:340
 msgid ""
 "Adjusts the accent color, special values are 'default' and 'system' "
 "(requires Qt 6.6) ."
@@ -7956,11 +8045,11 @@ msgstr ""
 "Προσαρμόζει το χρώμα έμφασης· ειδικές τιμές είναι οι 'default' και 'system' "
 "(απαιτεί Qt 6.6) ."
 
-#: modules/gui/qt/qt.cpp:437
+#: modules/gui/qt/qt.cpp:441
 msgid "Check for VLC Redesign updates"
 msgstr "Έλεγχος για ενημερώσεις του VLC Redesign"
 
-#: modules/gui/qt/qt.cpp:438
+#: modules/gui/qt/qt.cpp:442
 msgid ""
 "Look for a new release of VLC Redesign on GitHub at startup, at most once a "
 "day."
@@ -7968,11 +8057,11 @@ msgstr ""
 "Αναζήτηση νέας έκδοσης του VLC Redesign στο GitHub κατά την εκκίνηση, το "
 "πολύ μία φορά την ημέρα."
 
-#: modules/gui/qt/qt.cpp:442
+#: modules/gui/qt/qt.cpp:446
 msgid "Resume at"
 msgstr "Συνέχιση από"
 
-#: modules/gui/qt/qt.cpp:443
+#: modules/gui/qt/qt.cpp:447
 msgid ""
 "Seconds into the media of the command line where playback continues, after "
 "an update."
@@ -8019,7 +8108,9 @@ msgstr "Επαναφορά της ουράς αναπαραγωγής;"
 
 #: modules/gui/qt/util/model_recovery_agent.hpp:88
 msgid "VLC Redesign closed unexpectedly on %1. Restore the play queue it had?"
-msgstr "Το VLC Redesign έκλεισε απροσδόκητα στις %1. Επαναφορά της ουράς αναπαραγωγής που είχε;"
+msgstr ""
+"Το VLC Redesign έκλεισε απροσδόκητα στις %1. Επαναφορά της ουράς "
+"αναπαραγωγής που είχε;"
 
 #: modules/gui/qt/util/model_recovery_agent.hpp:90
 msgctxt "play queue"
@@ -8030,7 +8121,7 @@ msgstr "Επαναφορά"
 msgid "Don't restore"
 msgstr "Χωρίς επαναφορά"
 
-#: modules/gui/qt/util/redesign_updater.cpp:194
+#: modules/gui/qt/util/redesign_updater.cpp:215
 msgid ""
 "The update isn't signed by the publisher of this copy (%1), so it wasn't "
 "used."
@@ -8038,69 +8129,79 @@ msgstr ""
 "Η ενημέρωση δεν είναι υπογεγραμμένη από τον εκδότη αυτού του αντιγράφου "
 "(%1), γι' αυτό δεν χρησιμοποιήθηκε."
 
-#: modules/gui/qt/util/redesign_updater.cpp:550
+#: modules/gui/qt/util/redesign_updater.cpp:460
+msgid "%1 (later)"
+msgstr "%1 (αργότερα)"
+
+#: modules/gui/qt/util/redesign_updater.cpp:462
+msgid "%1 (soon)"
+msgstr "%1 (σύντομα)"
+
+#: modules/gui/qt/util/redesign_updater.cpp:610
 msgid "This build cannot check for updates."
 msgstr "Αυτή η έκδοση δεν μπορεί να ελέγξει για ενημερώσεις."
 
-#: modules/gui/qt/util/redesign_updater.cpp:564
+#: modules/gui/qt/util/redesign_updater.cpp:624
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr ""
 "Δεν ήταν δυνατή η σύνδεση με το GitHub. Ελέγξτε τη σύνδεσή σας και δοκιμάστε "
 "ξανά."
 
-#: modules/gui/qt/util/redesign_updater.cpp:581
+#: modules/gui/qt/util/redesign_updater.cpp:641
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "Το GitHub έστειλε μια μη αναμενόμενη απάντηση (%1)."
 
-#: modules/gui/qt/util/redesign_updater.cpp:677
+#: modules/gui/qt/util/redesign_updater.cpp:759
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
-msgstr "Αυτή η ενημέρωση δεν είναι υπογεγραμμένη από το VLC Redesign, επομένως δεν χρησιμοποιήθηκε. Κατεβάστε την από τη σελίδα της έκδοσης."
+msgstr ""
+"Αυτή η ενημέρωση δεν είναι υπογεγραμμένη από το VLC Redesign, επομένως δεν "
+"χρησιμοποιήθηκε. Κατεβάστε την από τη σελίδα της έκδοσης."
 
-#: modules/gui/qt/util/redesign_updater.cpp:699
-#: modules/gui/qt/util/redesign_updater.cpp:740
+#: modules/gui/qt/util/redesign_updater.cpp:781
+#: modules/gui/qt/util/redesign_updater.cpp:822
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr ""
 "Λείπει το άθροισμα ελέγχου της ενημέρωσης· κατεβάστε την από τη σελίδα της "
 "έκδοσης."
 
-#: modules/gui/qt/util/redesign_updater.cpp:714
-#: modules/gui/qt/util/redesign_updater.cpp:786
+#: modules/gui/qt/util/redesign_updater.cpp:796
+#: modules/gui/qt/util/redesign_updater.cpp:868
 msgid "The download failed. Check your connection and try again."
 msgstr "Η λήψη απέτυχε. Ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά."
 
-#: modules/gui/qt/util/redesign_updater.cpp:799
+#: modules/gui/qt/util/redesign_updater.cpp:881
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr ""
 "Η ενημέρωση δεν αντιστοιχεί στο άθροισμα ελέγχου της, γι' αυτό δεν "
 "χρησιμοποιήθηκε."
 
-#: modules/gui/qt/util/redesign_updater.cpp:830
+#: modules/gui/qt/util/redesign_updater.cpp:912
 msgid "The update isn't in a format this version knows."
 msgstr "Η ενημέρωση δεν είναι σε μορφή που αναγνωρίζει αυτή η έκδοση."
 
-#: modules/gui/qt/util/redesign_updater.cpp:833
-#: modules/gui/qt/util/redesign_updater.cpp:857
-#: modules/gui/qt/util/redesign_updater.cpp:868
-#: modules/gui/qt/util/redesign_updater.cpp:874
+#: modules/gui/qt/util/redesign_updater.cpp:915
+#: modules/gui/qt/util/redesign_updater.cpp:939
+#: modules/gui/qt/util/redesign_updater.cpp:950
+#: modules/gui/qt/util/redesign_updater.cpp:956
 msgid "The update is damaged."
 msgstr "Η ενημέρωση είναι κατεστραμμένη."
 
-#: modules/gui/qt/util/redesign_updater.cpp:838
+#: modules/gui/qt/util/redesign_updater.cpp:920
 msgid "The update isn't for this version."
 msgstr "Η ενημέρωση δεν προορίζεται για αυτή την έκδοση."
 
-#: modules/gui/qt/util/redesign_updater.cpp:847
-#: modules/gui/qt/util/redesign_updater.cpp:884
-#: modules/gui/qt/util/redesign_updater.cpp:893
-#: modules/gui/qt/util/redesign_updater.cpp:897
-#: modules/gui/qt/util/redesign_updater.cpp:901
+#: modules/gui/qt/util/redesign_updater.cpp:929
+#: modules/gui/qt/util/redesign_updater.cpp:966
+#: modules/gui/qt/util/redesign_updater.cpp:975
+#: modules/gui/qt/util/redesign_updater.cpp:979
+#: modules/gui/qt/util/redesign_updater.cpp:983
 msgid "The update can't be written in %1."
 msgstr "Δεν είναι δυνατή η εγγραφή της ενημέρωσης στο %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:849
+#: modules/gui/qt/util/redesign_updater.cpp:931
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -8109,34 +8210,34 @@ msgstr ""
 "ενημέρωση δεν μπορεί να χρησιμοποιηθεί: ενημερώστε με το πρόγραμμα "
 "εγκατάστασης."
 
-#: modules/gui/qt/util/redesign_updater.cpp:879
+#: modules/gui/qt/util/redesign_updater.cpp:961
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr ""
 "Η ενημέρωση είναι κατεστραμμένη: ένα αρχείο δεν αντιστοιχεί στο άθροισμα "
 "ελέγχου του."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1004
+#: modules/gui/qt/util/redesign_updater.cpp:1086
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr ""
 "Δεν ήταν δυνατή η έναρξη της ενημέρωσης. Θα γίνει νέα προσπάθεια την επόμενη "
 "φορά."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1031
+#: modules/gui/qt/util/redesign_updater.cpp:1113
 msgid "The download failed. Try again, or download it from the release page."
 msgstr ""
 "Η λήψη απέτυχε. Δοκιμάστε ξανά ή κατεβάστε την από τη σελίδα της έκδοσης."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1044
+#: modules/gui/qt/util/redesign_updater.cpp:1126
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr ""
 "Το πρόγραμμα εγκατάστασης που λήφθηκε δεν αντιστοιχεί στο άθροισμα ελέγχου "
 "του, γι' αυτό δεν εκτελέστηκε."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1053
+#: modules/gui/qt/util/redesign_updater.cpp:1135
 msgid "The installer couldn't be saved to %1."
 msgstr "Δεν ήταν δυνατή η αποθήκευση του προγράμματος εγκατάστασης στο %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1087
+#: modules/gui/qt/util/redesign_updater.cpp:1169
 msgid "The installer couldn't be started."
 msgstr "Δεν ήταν δυνατή η εκκίνηση του προγράμματος εγκατάστασης."
 

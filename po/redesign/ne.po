@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-28 13:15+0000\n"
+"POT-Creation-Date: 2026-10-28 18:41+0000\n"
 "PO-Revision-Date: 2017-02-06 13:43+0000\n"
 "Last-Translator: Christoph Miebach <christoph.miebach@web.de>\n"
 "Language-Team: Nepali (Nepal) (http://www.transifex.com/yaron/vlc-trans/"
@@ -1514,7 +1514,7 @@ msgid "It needs Windows 10 version 1809 or later."
 msgstr "यसका लागि Windows 10 संस्करण 1809 वा पछिको संस्करण आवश्यक छ।"
 
 #: bin/winvlc.c:712 bin/winvlc.c:825
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:312
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:319
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:547
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:552
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:142
@@ -1874,17 +1874,21 @@ msgid "the VideoLAN team and contributors"
 msgstr "VideoLAN टोली र योगदानकर्ताहरू"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:279
+msgid "Also on: %1"
+msgstr "यसमा पनि: %1"
+
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:286
 #: modules/gui/qt/menus/qml/MainMenu.qml:173
 msgid "Suggest an idea"
 msgstr "विचार सुझाउनुहोस्"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:281
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:288
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:28
 #: modules/gui/qt/menus/qml/MainMenu.qml:178
 msgid "Report a problem"
 msgstr "समस्या रिपोर्ट गर्नुहोस्"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:292
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:299
 msgid ""
 "An unofficial build, not affiliated with or endorsed by VideoLAN or "
 "Juxtopposed. VLC, VLC media player and the cone logo are trademarks of "
@@ -1894,11 +1898,11 @@ msgstr ""
 "VLC, VLC media player र कोन लोगो VideoLAN का ट्रेडमार्क हुन्। GNU GPL v2 वा पछिको "
 "संस्करण अन्तर्गत निःशुल्क सफ्टवेयर।"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:302
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:309
 msgid "Licenses & authors"
 msgstr "इजाजतपत्र र लेखकहरू"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:306
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:313
 msgid "GitHub"
 msgstr "GitHub"
 
@@ -1917,7 +1921,8 @@ msgstr "रिपोर्टमा के समावेश छ"
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:57
 msgid ""
 "GitHub opens with this filled in. Nothing is sent until you submit it there."
-msgstr "GitHub यो विवरण भरिएको अवस्थामा खुल्छ। तपाईंले त्यहाँ पेस नगरेसम्म केही पनि पठाइँदैन।"
+msgstr ""
+"GitHub यो विवरण भरिएको अवस्थामा खुल्छ। तपाईंले त्यहाँ पेस नगरेसम्म केही पनि पठाइँदैन।"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:102
 msgid "Report"
@@ -1927,7 +1932,9 @@ msgstr "रिपोर्ट"
 msgid ""
 "No file names, user names or logs. To add a log: Settings → General → "
 "Diagnostics → Save a log."
-msgstr "कुनै फाइल नाम, प्रयोगकर्ता नाम वा लग छैन। लग थप्न: सेटिङ्हरू → सामान्य → निदान → लग बचत गर्नुहोस्।"
+msgstr ""
+"कुनै फाइल नाम, प्रयोगकर्ता नाम वा लग छैन। लग थप्न: सेटिङ्हरू → सामान्य → निदान → लग "
+"बचत गर्नुहोस्।"
 
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:514
 msgid "Confirm"
@@ -2398,6 +2405,82 @@ msgstr "%1 का लागि ब्राउज गर्नुहोस्"
 msgid "Image Files (*.png *.jpg);;All Files (*)"
 msgstr "छवि फाइलहरू (*.png *.jpg);;सबै फाइलहरू (*)"
 
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:40
+msgid "Welcome"
+msgstr "स्वागत छ"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:51
+msgid ""
+"<p>In order to protect your privacy, <i>VLC media player</i> does <b>not</b> "
+"collect personal data or transmit them, not even in anonymized form, to "
+"anyone.</p>\n"
+"<p>Nevertheless, <i>VLC</i> is able to automatically retrieve information "
+"about the media in your play queue from third party Internet-based services. "
+"This includes cover art, track names, artist names and other meta-data.</p>\n"
+"<p>Consequently, this may entail identifying some of your media files to "
+"third party entities. Therefore the <i>VLC</i> developers require your "
+"express consent for the media player to access the Internet automatically.</"
+"p>\n"
+msgstr ""
+"<p>तपाईंको गोपनीयता सुरक्षित राख्न, <i>VLC मिडिया प्लेयर</i> ले व्यक्तिगत डेटा सङ्कलन "
+"गर्दैन र कसैलाई पठाउँदैन, बेनामी रूपमा पनि <b>पठाउँदैन</b>।</p>\n"
+"<p>तथापि, <i>VLC</i> ले तपाईंको बजाउने लाममा भएका मिडियाबारे जानकारी तेस्रो पक्षका "
+"इन्टरनेट सेवाहरूबाट स्वचालित रूपमा प्राप्त गर्न सक्छ। यसमा कभर चित्र, ट्रयाकका नाम, "
+"कलाकारका नाम र अन्य मेटाडेटा पर्छन्।</p>\n"
+"<p>फलस्वरूप, यसले तपाईंका केही मिडिया फाइलहरू तेस्रो पक्षलाई चिनाउन सक्छ। त्यसैले <i>VLC</"
+"i> विकासकर्ताहरूलाई मिडिया प्लेयरले स्वचालित रूपमा इन्टरनेट प्रयोग गर्न तपाईंको स्पष्ट "
+"सहमति चाहिन्छ।</p>\n"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:90
+msgid ""
+"<ul><li>No client-side decoration</li><li>Toolbar menu</li><li>Pinned video "
+"controls</li></ul>"
+msgstr ""
+"<ul><li>क्लाइन्ट-साइड सजावट छैन</li><li>उपकरणपट्टी मेनु</li><li>पिन गरिएका भिडियो "
+"नियन्त्रणहरू</li></ul>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:96
+msgid ""
+"<ul><li>Client-side decoration</li><li>No toolbar menu</li><li>Video "
+"controls unpinned</li></ul>"
+msgstr ""
+"<ul><li>क्लाइन्ट-साइड सजावट</li><li>उपकरणपट्टी मेनु छैन</li><li>भिडियो नियन्त्रणहरू "
+"पिन नगरिएका</li></ul>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:193
+msgid "Choose a folder to add to the Media Library"
+msgstr "मिडिया पुस्तकालयमा थप्न फोल्डर छान्नुहोस्"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:210
+msgid ""
+"<i>VLC will automatically switch to dark mode accordingly with system "
+"settings</i>"
+msgstr "<i>VLC प्रणाली सेटिङअनुसार स्वचालित रूपमा डार्क मोडमा जानेछ</i>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:213
+msgid "<i>VLC will automatically use light mode</i>"
+msgstr "<i>VLC ले स्वचालित रूपमा लाइट मोड प्रयोग गर्नेछ</i>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:216
+msgid "<i>VLC will automatically use dark mode</i>"
+msgstr "<i>VLC ले स्वचालित रूपमा डार्क मोड प्रयोग गर्नेछ</i>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:230
+msgid ""
+"<i>VLC will use a modern layout with no menubar or pinned controls but with "
+"client-side decoration</i>"
+msgstr ""
+"<i>VLC ले मेनुबार वा पिन गरिएका नियन्त्रणहरू बिनाको, तर क्लाइन्ट-साइड सजावटसहितको "
+"आधुनिक लेआउट प्रयोग गर्नेछ</i>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:233
+msgid ""
+"<i>VLC will use a classic layout with a menubar and pinned controls but with "
+"no client-side decoration</i>"
+msgstr ""
+"<i>VLC ले मेनुबार र पिन गरिएका नियन्त्रणहरूसहितको, तर क्लाइन्ट-साइड सजावट बिनाको "
+"क्लासिक लेआउट प्रयोग गर्नेछ</i>"
+
 #: modules/gui/qt/dialogs/firstrun/onboarding.cpp:48
 msgid "Could not add the media folder: %1"
 msgstr "मिडिया फोल्डर थप्न सकिएन: %1"
@@ -2473,15 +2556,15 @@ msgstr "दुवै सेटिङहरूमा रहन्छन्: अ�
 msgid "Finish"
 msgstr "समाप्त"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:108
+#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:110
 msgid "Learn the basic keyboard shortcuts."
 msgstr "आधारभूत किबोर्ड सर्टकटहरू सिक्नुहोस्।"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:116
+#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:118
 msgid "No playback shortcuts are currently assigned."
 msgstr "हाल कुनै प्लेब्याक सर्टकट तोकिएको छैन।"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:200
+#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:202
 msgid "Find the full list in the menu."
 msgstr "पूरा सूची मेनुमा पाउनुहोस्।"
 
@@ -2761,7 +2844,9 @@ msgstr "अद्यावधिकपछि के नयाँ छ देख�
 msgid ""
 "The first time VLC opens after an update, a card lists what is new in the "
 "version, with a link to the full changelog. The notes are in English."
-msgstr "अद्यावधिकपछि VLC पहिलो पटक खुल्दा, एउटा कार्डले यस संस्करणमा के नयाँ छ भनेर पूर्ण परिवर्तन लगको लिङ्कसहित देखाउँछ। टिप्पणीहरू अङ्ग्रेजीमा छन्।"
+msgstr ""
+"अद्यावधिकपछि VLC पहिलो पटक खुल्दा, एउटा कार्डले यस संस्करणमा के नयाँ छ भनेर पूर्ण "
+"परिवर्तन लगको लिङ्कसहित देखाउँछ। टिप्पणीहरू अङ्ग्रेजीमा छन्।"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:256
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
@@ -3139,7 +3224,7 @@ msgid ""
 msgstr "%1 सेटिङहरूबाहिर परिवर्तन भयो वा उपलब्ध छैन। तपाईंका परिवर्तनहरू बचत गरिएनन्।"
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:79
-#: modules/gui/qt/qt.cpp:340
+#: modules/gui/qt/qt.cpp:344
 msgid "Expert"
 msgstr "विशेषज्ञ"
 
@@ -3222,7 +3307,7 @@ msgstr "थिम"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:192
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:409
-#: modules/gui/qt/qt.cpp:335
+#: modules/gui/qt/qt.cpp:339
 msgid "Accent color"
 msgstr "एक्सेन्ट रङ"
 
@@ -3997,7 +4082,7 @@ msgid "Seeking"
 msgstr "सिक गर्दा"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:122
-#: modules/gui/qt/qt.cpp:299
+#: modules/gui/qt/qt.cpp:303
 msgid "Show thumbnail while scrubbing"
 msgstr "स्क्रब गर्दा थम्बनेल देखाउनुहोस्"
 
@@ -4277,7 +4362,7 @@ msgid "Timing"
 msgstr "समय मिलान"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
-#: modules/gui/qt/qt.cpp:301
+#: modules/gui/qt/qt.cpp:305
 msgid "Show subtitle lines on the seek bar"
 msgstr "सिक पट्टीमा उपशीर्षकका पङ्क्तिहरू देखाउनुहोस्"
 
@@ -5520,7 +5605,7 @@ msgstr "मिडिया दृश्य"
 msgid "Unknown Title"
 msgstr "अज्ञात शीर्षक"
 
-#: modules/gui/qt/medialibrary/qml/MediaView.qml:350
+#: modules/gui/qt/medialibrary/qml/MediaView.qml:351
 msgid ""
 "No media found\n"
 "Please try adding sources"
@@ -5546,7 +5631,7 @@ msgid "%1 - %2 - %3 - %4"
 msgstr "%1 - %2 - %3 - %4"
 
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:406
-#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:941
+#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:942
 msgid "#"
 msgstr "#"
 
@@ -7307,16 +7392,6 @@ msgstr ""
 msgid "Duration unavailable"
 msgstr "अवधि उपलब्ध छैन"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/Fallback.qml:48
-msgid ""
-"WIDGET\n"
-"NOT\n"
-"FOUND"
-msgstr ""
-"विजेट\n"
-"फेला\n"
-"परेन"
-
 #: modules/gui/qt/player/qml/controlbarcontrols/FavoriteButton.qml:21
 msgid "Available for items in your library"
 msgstr "तपाईंको पुस्तकालयका वस्तुहरूका लागि उपलब्ध"
@@ -7449,11 +7524,11 @@ msgstr "15 सेकेन्ड अगाडि"
 msgid "%1 %"
 msgstr "%1 %"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:38
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:40
 msgid "Choose a video zoom level"
 msgstr "भिडियो जुम स्तर छान्नुहोस्"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:39
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:41
 msgid "Zoom is unavailable without video"
 msgstr "भिडियोबिना जुम उपलब्ध छैन"
 
@@ -7497,16 +7572,16 @@ msgstr "बजाउने लाम"
 msgid "%1 elements, %2"
 msgstr "%1 तत्वहरू, %2"
 
-#: modules/gui/qt/qt.cpp:171
+#: modules/gui/qt/qt.cpp:175
 msgid "Select the initial preferences view"
 msgstr "सुरुको प्राथमिकता दृश्य छान्नुहोस्"
 
-#: modules/gui/qt/qt.cpp:172
+#: modules/gui/qt/qt.cpp:176
 msgid ""
 "Select which preferences view to show upon opening the preferences dialog."
 msgstr "प्राथमिकता संवाद खोल्दा कुन प्राथमिकता दृश्य देखाउने छान्नुहोस्।"
 
-#: modules/gui/qt/qt.cpp:196
+#: modules/gui/qt/qt.cpp:200
 msgid ""
 "Show a notification popup with the artist and track name when the current "
 "play queue item changes, when VLC is minimized or hidden."
@@ -7514,7 +7589,7 @@ msgstr ""
 "VLC सानो पारिएको वा लुकाइएको बेला हालको बजाउने लाम वस्तु परिवर्तन हुँदा कलाकार र "
 "ट्रयाकको नामसहित सूचना पपअप देखाउनुहोस्।"
 
-#: modules/gui/qt/qt.cpp:200
+#: modules/gui/qt/qt.cpp:204
 msgid ""
 "Sets the windows opacity between 0.1 and 1 for main interface, play queue "
 "and extended panel. This option only works with Windows and X11 with "
@@ -7523,7 +7598,7 @@ msgstr ""
 "मुख्य इन्टरफेस, बजाउने लाम र विस्तारित प्यानलका लागि विन्डो अपारदर्शिता 0.1 र 1 बीच "
 "सेट गर्छ। यो विकल्प Windows र कम्पोजिट एक्सटेन्सनसहितको X11 मा मात्र काम गर्छ।"
 
-#: modules/gui/qt/qt.cpp:206
+#: modules/gui/qt/qt.cpp:210
 msgid ""
 "Sets the fullscreen controller opacity between 0.1 and 1 for main interface, "
 "play queue and extended panel. This option only works with Windows and X11 "
@@ -7532,11 +7607,11 @@ msgstr ""
 "मुख्य इन्टरफेस, बजाउने लाम र विस्तारित प्यानलका लागि पूरापर्दा नियन्त्रक अपारदर्शिता 0.1 "
 "र 1 बीच सेट गर्छ। यो विकल्प Windows र कम्पोजिट एक्सटेन्सनसहितको X11 मा मात्र काम गर्छ।"
 
-#: modules/gui/qt/qt.cpp:211
+#: modules/gui/qt/qt.cpp:215
 msgid "Initial user scale factor for the interface, between 0.3 and 3.0"
 msgstr "इन्टरफेसका लागि सुरुको प्रयोगकर्ता स्केल गुणक, 0.3 र 3.0 बीच"
 
-#: modules/gui/qt/qt.cpp:214
+#: modules/gui/qt/qt.cpp:218
 msgid ""
 "Show the errors of VLC at the bottom of the window, and ask before removing "
 "media from a playlist or from the play queue, or deleting playlists. Off, "
@@ -7547,11 +7622,11 @@ msgstr ""
 "हटाउनुअघि, वा बजाउने सूचीहरू मेटाउनुअघि सोध्नुहोस्। बन्द हुँदा, त्रुटिहरू VLC का सन्देशहरूमा "
 "मात्र राखिन्छन् र यी हटाउने कार्य तुरुन्तै हुन्छन्; डिस्कबाट फाइल मेटाउँदा सधैँ पुष्टि गरिन्छ।"
 
-#: modules/gui/qt/qt.cpp:224
+#: modules/gui/qt/qt.cpp:228
 msgid "set the options for qml debugger"
 msgstr "qml डिबगरका विकल्पहरू सेट गर्नुहोस्"
 
-#: modules/gui/qt/qt.cpp:225
+#: modules/gui/qt/qt.cpp:229
 msgid ""
 "set the options for qml debugger (see http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
@@ -7559,7 +7634,7 @@ msgstr ""
 "qml डिबगरका विकल्पहरू सेट गर्नुहोस् (हेर्नुहोस् http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
 
-#: modules/gui/qt/qt.cpp:245
+#: modules/gui/qt/qt.cpp:249
 msgid ""
 "Show the playback controls in fullscreen when the mouse moves. Off, only the "
 "keyboard shows them (the I key). The skins read it for their fullscreen "
@@ -7568,7 +7643,7 @@ msgstr ""
 "माउस चल्दा पूरापर्दामा प्लेब्याक नियन्त्रणहरू देखाउनुहोस्। बन्द हुँदा, किबोर्डले मात्र देखाउँछ "
 "(I कुञ्जी)। स्किनहरूले पनि आफ्नो पूरापर्दा नियन्त्रकका लागि यो पढ्छन्।"
 
-#: modules/gui/qt/qt.cpp:261
+#: modules/gui/qt/qt.cpp:265
 msgid ""
 "Display the cover art of the audio playing in the player (the cone in the "
 "compact view). Off, a plain picture takes its place, which also prevents "
@@ -7577,7 +7652,7 @@ msgstr ""
 "प्लेयरमा बजिरहेको अडियोको कभर चित्र देखाउनुहोस् (कम्प्याक्ट दृश्यमा कोन)। बन्द हुँदा, त्यसको "
 "ठाउँमा सादा चित्र आउँछ, जसले स्क्रिन जल्नबाट पनि जोगाउँछ।"
 
-#: modules/gui/qt/qt.cpp:285
+#: modules/gui/qt/qt.cpp:289
 msgid ""
 "This option allows the interface to be shown and raised automatically when a "
 "video/audio playback starts, or never."
@@ -7585,11 +7660,11 @@ msgstr ""
 "यो विकल्पले भिडियो/अडियो प्लेब्याक सुरु हुँदा इन्टरफेसलाई स्वचालित रूपमा देखाउन र अगाडि "
 "ल्याउन, वा कहिल्यै नल्याउन दिन्छ।"
 
-#: modules/gui/qt/qt.cpp:288
+#: modules/gui/qt/qt.cpp:292
 msgid "Enable window titlebar"
 msgstr "विन्डोको शीर्षक पट्टी सक्षम पार्नुहोस्"
 
-#: modules/gui/qt/qt.cpp:289
+#: modules/gui/qt/qt.cpp:293
 msgid ""
 "This option enables the title bar. Disabling it will remove the titlebar and "
 "move window buttons within the interface (Client Side Decoration)"
@@ -7597,37 +7672,39 @@ msgstr ""
 "यो विकल्पले शीर्षक पट्टी सक्षम गर्छ। यसलाई अक्षम गर्दा शीर्षक पट्टी हट्छ र विन्डो बटनहरू "
 "इन्टरफेसभित्र सर्छन् (क्लाइन्ट साइड डेकोरेसन)"
 
-#: modules/gui/qt/qt.cpp:293
+#: modules/gui/qt/qt.cpp:297
 msgid "Show the menu bar"
 msgstr "मेनु पट्टी देखाउनुहोस्"
 
-#: modules/gui/qt/qt.cpp:294
+#: modules/gui/qt/qt.cpp:298
 msgid "This option displays the classic menu bar"
 msgstr "यो विकल्पले क्लासिक मेनु पट्टी देखाउँछ"
 
-#: modules/gui/qt/qt.cpp:296
+#: modules/gui/qt/qt.cpp:300
 msgid "Pin video controls"
 msgstr "भिडियो नियन्त्रणहरू पिन गर्नुहोस्"
 
-#: modules/gui/qt/qt.cpp:297
+#: modules/gui/qt/qt.cpp:301
 msgid "Place video controls above and below the video instead of above"
 msgstr "भिडियो नियन्त्रणहरू भिडियोमाथि मात्र नभई भिडियोको माथि र तल राख्नुहोस्"
 
-#: modules/gui/qt/qt.cpp:300
+#: modules/gui/qt/qt.cpp:304
 msgid "Show the frame at the hovered position above the seek bar"
 msgstr "सिक पट्टीमाथि होभर गरिएको स्थानको फ्रेम देखाउनुहोस्"
 
-#: modules/gui/qt/qt.cpp:302
+#: modules/gui/qt/qt.cpp:306
 msgid ""
 "Mark on the seek bar where the lines of the subtitle shown are, when it "
 "comes from a subtitle file"
-msgstr "उपशीर्षक कुनै उपशीर्षक फाइलबाट आउँदा, देखाइएको उपशीर्षकका पङ्क्तिहरू कहाँ छन् भनेर सिक पट्टीमा चिन्ह लगाउनुहोस्"
+msgstr ""
+"उपशीर्षक कुनै उपशीर्षक फाइलबाट आउँदा, देखाइएको उपशीर्षकका पङ्क्तिहरू कहाँ छन् भनेर सिक "
+"पट्टीमा चिन्ह लगाउनुहोस्"
 
-#: modules/gui/qt/qt.cpp:307
+#: modules/gui/qt/qt.cpp:311
 msgid "Select Qt video integration backend"
 msgstr "Qt भिडियो एकीकरण ब्याकएन्ड छान्नुहोस्"
 
-#: modules/gui/qt/qt.cpp:308
+#: modules/gui/qt/qt.cpp:312
 msgid ""
 "Select Qt video integration backend. Use with care, the interface may not "
 "start if an incompatible compositor is selected"
@@ -7635,11 +7712,11 @@ msgstr ""
 "Qt भिडियो एकीकरण ब्याकएन्ड छान्नुहोस्। सावधानीपूर्वक प्रयोग गर्नुहोस्, नमिल्दो कम्पोजिटर "
 "छानिएमा इन्टरफेस सुरु नहुन सक्छ"
 
-#: modules/gui/qt/qt.cpp:310
+#: modules/gui/qt/qt.cpp:314
 msgid "Use smooth scrolling in Flickable based views"
 msgstr "Flickable आधारित दृश्यहरूमा सहज स्क्रोलिङ प्रयोग गर्नुहोस्"
 
-#: modules/gui/qt/qt.cpp:311
+#: modules/gui/qt/qt.cpp:315
 msgid ""
 "Deactivating this option will disable smooth scrolling in Flickable based "
 "views (such as the Play Queue). This option is only respected with a scroll "
@@ -7649,19 +7726,19 @@ msgstr ""
 "अक्षम हुन्छ। यो विकल्प स्क्रोल ह्यान्डलरसँग मात्र मानिन्छ, विकल्प `qt-use-scroll-"
 "handler` हेर्नुहोस्।"
 
-#: modules/gui/qt/qt.cpp:314
+#: modules/gui/qt/qt.cpp:318
 msgid "Use Kirigami scroll handler for Flickable based views"
 msgstr "Flickable आधारित दृश्यहरूका लागि Kirigami स्क्रोल ह्यान्डलर प्रयोग गर्नुहोस्"
 
-#: modules/gui/qt/qt.cpp:315
+#: modules/gui/qt/qt.cpp:319
 msgid "Using Kirigami scroll handler may improve scrolling behavior."
 msgstr "Kirigami स्क्रोल ह्यान्डलर प्रयोग गर्दा स्क्रोलिङ व्यवहार सुधारिन सक्छ।"
 
-#: modules/gui/qt/qt.cpp:317
+#: modules/gui/qt/qt.cpp:321
 msgid "Safe area for the user interface"
 msgstr "प्रयोगकर्ता इन्टरफेसका लागि सुरक्षित क्षेत्र"
 
-#: modules/gui/qt/qt.cpp:318
+#: modules/gui/qt/qt.cpp:322
 msgid ""
 "Sets the safe area percentage between 0.0 and 100 when you want to ensure "
 "the visibility of the user interface on a constrained viewport"
@@ -7669,19 +7746,19 @@ msgstr ""
 "सीमित दृश्य क्षेत्रमा प्रयोगकर्ता इन्टरफेस देखिने सुनिश्चित गर्न चाहँदा सुरक्षित क्षेत्रको "
 "प्रतिशत 0.0 र 100 बीच सेट गर्छ"
 
-#: modules/gui/qt/qt.cpp:322
+#: modules/gui/qt/qt.cpp:326
 msgid "Print Qt's important internal messages"
 msgstr "Qt का महत्त्वपूर्ण आन्तरिक सन्देशहरू छाप्नुहोस्"
 
-#: modules/gui/qt/qt.cpp:323
+#: modules/gui/qt/qt.cpp:327
 msgid "Enable Qt's all own messaging categories except the debug category."
 msgstr "डिबग वर्गबाहेक Qt का आफ्नै सबै सन्देश वर्गहरू सक्षम पार्नुहोस्।"
 
-#: modules/gui/qt/qt.cpp:325
+#: modules/gui/qt/qt.cpp:329
 msgid "Hide the window on close"
 msgstr "बन्द गर्दा विन्डो लुकाउनुहोस्"
 
-#: modules/gui/qt/qt.cpp:326
+#: modules/gui/qt/qt.cpp:330
 msgid ""
 "Instead of closing the application, hide the window. This setting is only "
 "applicable when system tray icon is enabled."
@@ -7689,11 +7766,11 @@ msgstr ""
 "अनुप्रयोग बन्द गर्नुको सट्टा विन्डो लुकाउनुहोस्। यो सेटिङ प्रणाली ट्रे आइकन सक्षम हुँदा मात्र "
 "लागू हुन्छ।"
 
-#: modules/gui/qt/qt.cpp:328
+#: modules/gui/qt/qt.cpp:332
 msgid "Enable backdrop blur filter for the main window if possible"
 msgstr "सम्भव भए मुख्य विन्डोका लागि ब्याकड्रप ब्लर फिल्टर सक्षम पार्नुहोस्"
 
-#: modules/gui/qt/qt.cpp:329
+#: modules/gui/qt/qt.cpp:333
 msgid ""
 "If backdrop blur filter is available, use translucency in the backgrounds of "
 "certain parts of the user interface instead of a solid color. This setting "
@@ -7702,11 +7779,11 @@ msgstr ""
 "ब्याकड्रप ब्लर फिल्टर उपलब्ध भए, प्रयोगकर्ता इन्टरफेसका केही भागहरूको पृष्ठभूमिमा ठोस रङको "
 "सट्टा पारभासकता प्रयोग गर्नुहोस्। यो सेटिङले पाठ पढ्न कठिन बनाउँछ।"
 
-#: modules/gui/qt/qt.cpp:332
+#: modules/gui/qt/qt.cpp:336
 msgid "Enable picture-in-picture (PiP) mode"
 msgstr "चित्रभित्र चित्र (PiP) मोड सक्षम पार्नुहोस्"
 
-#: modules/gui/qt/qt.cpp:333
+#: modules/gui/qt/qt.cpp:337
 msgid ""
 "Picture-in-picture mode allows playing video contained in a smaller area so "
 "that the interface remains usable."
@@ -7714,27 +7791,27 @@ msgstr ""
 "चित्रभित्र चित्र मोडले भिडियोलाई सानो क्षेत्रभित्र बजाउन दिन्छ, जसले गर्दा इन्टरफेस "
 "प्रयोगयोग्य रहन्छ।"
 
-#: modules/gui/qt/qt.cpp:336
+#: modules/gui/qt/qt.cpp:340
 msgid ""
 "Adjusts the accent color, special values are 'default' and 'system' "
 "(requires Qt 6.6) ."
 msgstr "एक्सेन्ट रङ मिलाउँछ, विशेष मानहरू 'default' र 'system' हुन् (Qt 6.6 चाहिन्छ) ।"
 
-#: modules/gui/qt/qt.cpp:437
+#: modules/gui/qt/qt.cpp:441
 msgid "Check for VLC Redesign updates"
 msgstr "VLC Redesign अद्यावधिकहरू जाँच गर्नुहोस्"
 
-#: modules/gui/qt/qt.cpp:438
+#: modules/gui/qt/qt.cpp:442
 msgid ""
 "Look for a new release of VLC Redesign on GitHub at startup, at most once a "
 "day."
 msgstr "सुरुमा GitHub मा VLC Redesign को नयाँ रिलिज खोज्नुहोस्, दिनमा बढीमा एक पटक।"
 
-#: modules/gui/qt/qt.cpp:442
+#: modules/gui/qt/qt.cpp:446
 msgid "Resume at"
 msgstr "यहाँबाट जारी राख्नुहोस्"
 
-#: modules/gui/qt/qt.cpp:443
+#: modules/gui/qt/qt.cpp:447
 msgid ""
 "Seconds into the media of the command line where playback continues, after "
 "an update."
@@ -7790,70 +7867,80 @@ msgstr "पुनर्स्थापना गर्नुहोस्"
 msgid "Don't restore"
 msgstr "पुनर्स्थापना नगर्नुहोस्"
 
-#: modules/gui/qt/util/redesign_updater.cpp:194
+#: modules/gui/qt/util/redesign_updater.cpp:215
 msgid ""
 "The update isn't signed by the publisher of this copy (%1), so it wasn't "
 "used."
 msgstr ""
 "यो अद्यावधिक यस प्रतिको प्रकाशक (%1) द्वारा हस्ताक्षरित छैन, त्यसैले यो प्रयोग गरिएन।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:550
+#: modules/gui/qt/util/redesign_updater.cpp:460
+msgid "%1 (later)"
+msgstr "%1 (पछि)"
+
+#: modules/gui/qt/util/redesign_updater.cpp:462
+msgid "%1 (soon)"
+msgstr "%1 (छिट्टै)"
+
+#: modules/gui/qt/util/redesign_updater.cpp:610
 msgid "This build cannot check for updates."
 msgstr "यो बिल्डले अद्यावधिकहरू जाँच गर्न सक्दैन।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:564
+#: modules/gui/qt/util/redesign_updater.cpp:624
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "GitHub सम्म पुग्न सकिएन। आफ्नो जडान जाँचेर फेरि प्रयास गर्नुहोस्।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:581
+#: modules/gui/qt/util/redesign_updater.cpp:641
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "GitHub ले अनपेक्षित जवाफ पठायो (%1)।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:677
+#: modules/gui/qt/util/redesign_updater.cpp:759
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
-msgstr "यो अद्यावधिक VLC Redesign द्वारा हस्ताक्षर गरिएको छैन, त्यसैले यसलाई प्रयोग गरिएन। यसको सट्टा रिलिज पृष्ठबाट यसलाई डाउनलोड गर्नुहोस्।"
+msgstr ""
+"यो अद्यावधिक VLC Redesign द्वारा हस्ताक्षर गरिएको छैन, त्यसैले यसलाई प्रयोग गरिएन। "
+"यसको सट्टा रिलिज पृष्ठबाट यसलाई डाउनलोड गर्नुहोस्।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:699
-#: modules/gui/qt/util/redesign_updater.cpp:740
+#: modules/gui/qt/util/redesign_updater.cpp:781
+#: modules/gui/qt/util/redesign_updater.cpp:822
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr "अद्यावधिकको चेकसम छैन; बरु यसलाई रिलिज पृष्ठबाट डाउनलोड गर्नुहोस्।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:714
-#: modules/gui/qt/util/redesign_updater.cpp:786
+#: modules/gui/qt/util/redesign_updater.cpp:796
+#: modules/gui/qt/util/redesign_updater.cpp:868
 msgid "The download failed. Check your connection and try again."
 msgstr "डाउनलोड असफल भयो। आफ्नो जडान जाँचेर फेरि प्रयास गर्नुहोस्।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:799
+#: modules/gui/qt/util/redesign_updater.cpp:881
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "अद्यावधिक आफ्नो चेकससँग मेल खाएन, त्यसैले प्रयोग गरिएन।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:830
+#: modules/gui/qt/util/redesign_updater.cpp:912
 msgid "The update isn't in a format this version knows."
 msgstr "अद्यावधिक यो संस्करणले चिन्ने ढाँचामा छैन।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:833
-#: modules/gui/qt/util/redesign_updater.cpp:857
-#: modules/gui/qt/util/redesign_updater.cpp:868
-#: modules/gui/qt/util/redesign_updater.cpp:874
+#: modules/gui/qt/util/redesign_updater.cpp:915
+#: modules/gui/qt/util/redesign_updater.cpp:939
+#: modules/gui/qt/util/redesign_updater.cpp:950
+#: modules/gui/qt/util/redesign_updater.cpp:956
 msgid "The update is damaged."
 msgstr "अद्यावधिक बिग्रिएको छ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:838
+#: modules/gui/qt/util/redesign_updater.cpp:920
 msgid "The update isn't for this version."
 msgstr "अद्यावधिक यो संस्करणका लागि होइन।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:847
-#: modules/gui/qt/util/redesign_updater.cpp:884
-#: modules/gui/qt/util/redesign_updater.cpp:893
-#: modules/gui/qt/util/redesign_updater.cpp:897
-#: modules/gui/qt/util/redesign_updater.cpp:901
+#: modules/gui/qt/util/redesign_updater.cpp:929
+#: modules/gui/qt/util/redesign_updater.cpp:966
+#: modules/gui/qt/util/redesign_updater.cpp:975
+#: modules/gui/qt/util/redesign_updater.cpp:979
+#: modules/gui/qt/util/redesign_updater.cpp:983
 msgid "The update can't be written in %1."
 msgstr "अद्यावधिक %1 मा लेख्न सकिँदैन।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:849
+#: modules/gui/qt/util/redesign_updater.cpp:931
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -7861,27 +7948,27 @@ msgstr ""
 "VLC Redesign को एउटा फाइल स्थापनापछि परिवर्तन गरिएको छ, त्यसैले सानो अद्यावधिक "
 "प्रयोग गर्न सकिँदैन: बरु स्थापनाकर्ताबाट अद्यावधिक गर्नुहोस्।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:879
+#: modules/gui/qt/util/redesign_updater.cpp:961
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr "अद्यावधिक बिग्रिएको छ: एउटा फाइल आफ्नो चेकससँग मेल खाँदैन।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1004
+#: modules/gui/qt/util/redesign_updater.cpp:1086
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr "अद्यावधिक सुरु गर्न सकिएन। अर्को पटक फेरि प्रयास गरिनेछ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1031
+#: modules/gui/qt/util/redesign_updater.cpp:1113
 msgid "The download failed. Try again, or download it from the release page."
 msgstr "डाउनलोड असफल भयो। फेरि प्रयास गर्नुहोस्, वा रिलिज पृष्ठबाट डाउनलोड गर्नुहोस्।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1044
+#: modules/gui/qt/util/redesign_updater.cpp:1126
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr "डाउनलोड गरिएको स्थापनाकर्ता आफ्नो चेकससँग मेल खाएन, त्यसैले चलाइएन।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1053
+#: modules/gui/qt/util/redesign_updater.cpp:1135
 msgid "The installer couldn't be saved to %1."
 msgstr "स्थापनाकर्ता %1 मा बचत गर्न सकिएन।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1087
+#: modules/gui/qt/util/redesign_updater.cpp:1169
 msgid "The installer couldn't be started."
 msgstr "स्थापनाकर्ता सुरु गर्न सकिएन।"
 

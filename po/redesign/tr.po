@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 2.2.7\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-28 13:15+0000\n"
+"POT-Creation-Date: 2026-10-28 18:41+0000\n"
 "PO-Revision-Date: 2017-11-16 03:12+0100\n"
 "Last-Translator: Kaya Zeren <kayazeren@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -1560,7 +1560,7 @@ msgid "It needs Windows 10 version 1809 or later."
 msgstr "Windows 10 sürüm 1809 ya da üzeri gereklidir."
 
 #: bin/winvlc.c:712 bin/winvlc.c:825
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:312
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:319
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:547
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:552
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:142
@@ -1928,17 +1928,21 @@ msgid "the VideoLAN team and contributors"
 msgstr "VideoLAN ekibi ve katkıda bulunanlar"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:279
+msgid "Also on: %1"
+msgstr "Şunlarda da: %1"
+
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:286
 #: modules/gui/qt/menus/qml/MainMenu.qml:173
 msgid "Suggest an idea"
 msgstr "Bir fikir önerin"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:281
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:288
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:28
 #: modules/gui/qt/menus/qml/MainMenu.qml:178
 msgid "Report a problem"
 msgstr "Bir sorun bildirin"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:292
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:299
 msgid ""
 "An unofficial build, not affiliated with or endorsed by VideoLAN or "
 "Juxtopposed. VLC, VLC media player and the cone logo are trademarks of "
@@ -1949,11 +1953,11 @@ msgstr ""
 "VideoLAN'ın ticari markalarıdır. GNU GPL v2 ya da sonraki sürümleri "
 "kapsamında özgür yazılımdır."
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:302
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:309
 msgid "Licenses & authors"
 msgstr "Lisanslar ve yazarlar"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:306
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:313
 msgid "GitHub"
 msgstr "GitHub"
 
@@ -1972,7 +1976,9 @@ msgstr "Raporun içeriği"
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:57
 msgid ""
 "GitHub opens with this filled in. Nothing is sent until you submit it there."
-msgstr "GitHub bu bilgiler doldurulmuş olarak açılır. Siz orada gönderene kadar hiçbir şey gönderilmez."
+msgstr ""
+"GitHub bu bilgiler doldurulmuş olarak açılır. Siz orada gönderene kadar "
+"hiçbir şey gönderilmez."
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:102
 msgid "Report"
@@ -1982,7 +1988,9 @@ msgstr "Rapor"
 msgid ""
 "No file names, user names or logs. To add a log: Settings → General → "
 "Diagnostics → Save a log."
-msgstr "Dosya adları, kullanıcı adları ya da günlükler eklenmez. Günlük eklemek için: Ayarlar → Genel → Tanılama → Günlük kaydedilsin."
+msgstr ""
+"Dosya adları, kullanıcı adları ya da günlükler eklenmez. Günlük eklemek "
+"için: Ayarlar → Genel → Tanılama → Günlük kaydedilsin."
 
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:514
 msgid "Confirm"
@@ -2455,6 +2463,83 @@ msgstr "%1 için göz at"
 msgid "Image Files (*.png *.jpg);;All Files (*)"
 msgstr "Görsel Dosyaları (*.png *.jpg);;Tüm Dosyalar (*)"
 
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:40
+msgid "Welcome"
+msgstr "Hoş geldiniz"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:51
+msgid ""
+"<p>In order to protect your privacy, <i>VLC media player</i> does <b>not</b> "
+"collect personal data or transmit them, not even in anonymized form, to "
+"anyone.</p>\n"
+"<p>Nevertheless, <i>VLC</i> is able to automatically retrieve information "
+"about the media in your play queue from third party Internet-based services. "
+"This includes cover art, track names, artist names and other meta-data.</p>\n"
+"<p>Consequently, this may entail identifying some of your media files to "
+"third party entities. Therefore the <i>VLC</i> developers require your "
+"express consent for the media player to access the Internet automatically.</"
+"p>\n"
+msgstr ""
+"<p>Kişisel bilgilerinizi korumak için <i>VLC ortam oynatıcı</i> kişisel "
+"verileri <b>toplamaz</b> ve anonimleştirilmiş biçimde bile olsa kimseye "
+"aktarmaz.</p>\n"
+"<p>Ancak <i>VLC</i>, oynatma kuyruğunuzdaki ortamlar hakkındaki bilgileri 3. "
+"taraf İnternet hizmetlerinden otomatik olarak alabilir. Bu bilgiler kapak "
+"görselleri, kayıt adları, sanatçı adları ve diğer üst verilerdir.</p>\n"
+"<p>Bu nedenle bazı ortam dosyalarınız 3. taraf kuruluşlarca tanımlanabilir. "
+"Bu yüzden <i>VLC</i> geliştiricileri, ortam oynatıcının İnternet'e otomatik "
+"olarak erişmesi için açık onayınızı ister.</p>\n"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:90
+msgid ""
+"<ul><li>No client-side decoration</li><li>Toolbar menu</li><li>Pinned video "
+"controls</li></ul>"
+msgstr ""
+"<ul><li>İstemci taraflı pencere süslemesi yok</li><li>Araç çubuğu menüsü</"
+"li><li>Sabitlenmiş video denetimleri</li></ul>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:96
+msgid ""
+"<ul><li>Client-side decoration</li><li>No toolbar menu</li><li>Video "
+"controls unpinned</li></ul>"
+msgstr ""
+"<ul><li>İstemci taraflı pencere süslemesi</li><li>Araç çubuğu menüsü yok</"
+"li><li>Video denetimleri sabitlenmemiş</li></ul>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:193
+msgid "Choose a folder to add to the Media Library"
+msgstr "Ortam Kitaplığına eklenecek bir klasör seçin"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:210
+msgid ""
+"<i>VLC will automatically switch to dark mode accordingly with system "
+"settings</i>"
+msgstr "<i>VLC, sistem ayarlarına göre otomatik olarak koyu kipe geçer</i>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:213
+msgid "<i>VLC will automatically use light mode</i>"
+msgstr "<i>VLC otomatik olarak açık kipi kullanır</i>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:216
+msgid "<i>VLC will automatically use dark mode</i>"
+msgstr "<i>VLC otomatik olarak koyu kipi kullanır</i>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:230
+msgid ""
+"<i>VLC will use a modern layout with no menubar or pinned controls but with "
+"client-side decoration</i>"
+msgstr ""
+"<i>VLC menü çubuğu ve sabit denetimler olmadan, istemci taraflı pencere "
+"süslemesiyle modern bir yerleşim kullanır</i>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:233
+msgid ""
+"<i>VLC will use a classic layout with a menubar and pinned controls but with "
+"no client-side decoration</i>"
+msgstr ""
+"<i>VLC menü çubuğu ve sabit denetimlerle, istemci taraflı pencere süslemesi "
+"olmadan klasik bir yerleşim kullanır</i>"
+
 #: modules/gui/qt/dialogs/firstrun/onboarding.cpp:48
 msgid "Could not add the media folder: %1"
 msgstr "Ortam klasörü eklenemedi: %1"
@@ -2532,15 +2617,15 @@ msgstr ""
 msgid "Finish"
 msgstr "Bitti"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:108
+#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:110
 msgid "Learn the basic keyboard shortcuts."
 msgstr "Temel klavye kısayollarını öğrenin."
 
-#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:116
+#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:118
 msgid "No playback shortcuts are currently assigned."
 msgstr "Şu anda atanmış bir oynatma kısayolu yok."
 
-#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:200
+#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:202
 msgid "Find the full list in the menu."
 msgstr "Tam listeyi menüde bulabilirsiniz."
 
@@ -2824,7 +2909,10 @@ msgstr "Bir güncellemeden sonra yenilikler görüntülensin"
 msgid ""
 "The first time VLC opens after an update, a card lists what is new in the "
 "version, with a link to the full changelog. The notes are in English."
-msgstr "VLC bir güncellemeden sonra ilk kez açıldığında, sürümdeki yenilikleri tüm değişiklik günlüğünün bağlantısıyla birlikte listeleyen bir kart görüntülenir. Notlar İngilizcedir."
+msgstr ""
+"VLC bir güncellemeden sonra ilk kez açıldığında, sürümdeki yenilikleri tüm "
+"değişiklik günlüğünün bağlantısıyla birlikte listeleyen bir kart "
+"görüntülenir. Notlar İngilizcedir."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:256
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
@@ -3216,7 +3304,7 @@ msgstr ""
 "kaydedilmedi."
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:79
-#: modules/gui/qt/qt.cpp:340
+#: modules/gui/qt/qt.cpp:344
 msgid "Expert"
 msgstr "Uzman"
 
@@ -3300,7 +3388,7 @@ msgstr "Tema"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:192
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:409
-#: modules/gui/qt/qt.cpp:335
+#: modules/gui/qt/qt.cpp:339
 msgid "Accent color"
 msgstr "Vurgu rengi"
 
@@ -4080,7 +4168,7 @@ msgid "Seeking"
 msgstr "Sarma"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:122
-#: modules/gui/qt/qt.cpp:299
+#: modules/gui/qt/qt.cpp:303
 msgid "Show thumbnail while scrubbing"
 msgstr "Sararken küçük resim görüntülensin"
 
@@ -4360,7 +4448,7 @@ msgid "Timing"
 msgstr "Zamanlama"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
-#: modules/gui/qt/qt.cpp:301
+#: modules/gui/qt/qt.cpp:305
 msgid "Show subtitle lines on the seek bar"
 msgstr "Sarma çubuğunda altyazı satırları görüntülensin"
 
@@ -5615,7 +5703,7 @@ msgstr "Ortam görünümü"
 msgid "Unknown Title"
 msgstr "Bilinmeyen Başlık"
 
-#: modules/gui/qt/medialibrary/qml/MediaView.qml:350
+#: modules/gui/qt/medialibrary/qml/MediaView.qml:351
 msgid ""
 "No media found\n"
 "Please try adding sources"
@@ -5641,7 +5729,7 @@ msgid "%1 - %2 - %3 - %4"
 msgstr "%1 - %2 - %3 - %4"
 
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:406
-#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:941
+#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:942
 msgid "#"
 msgstr "#"
 
@@ -7412,16 +7500,6 @@ msgstr ""
 msgid "Duration unavailable"
 msgstr "Süre bilgisi yok"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/Fallback.qml:48
-msgid ""
-"WIDGET\n"
-"NOT\n"
-"FOUND"
-msgstr ""
-"ARAÇ\n"
-"BULU-\n"
-"NAMADI"
-
 #: modules/gui/qt/player/qml/controlbarcontrols/FavoriteButton.qml:21
 msgid "Available for items in your library"
 msgstr "Kitaplığınızdaki ögeler için kullanılabilir"
@@ -7556,11 +7634,11 @@ msgstr "15 saniye ileri"
 msgid "%1 %"
 msgstr "%1 %"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:38
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:40
 msgid "Choose a video zoom level"
 msgstr "Video yakınlaştırma düzeyini seçin"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:39
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:41
 msgid "Zoom is unavailable without video"
 msgstr "Video olmadan yakınlaştırma kullanılamaz"
 
@@ -7604,16 +7682,16 @@ msgstr "Oynatma kuyruğu"
 msgid "%1 elements, %2"
 msgstr "%1 öge, %2"
 
-#: modules/gui/qt/qt.cpp:171
+#: modules/gui/qt/qt.cpp:175
 msgid "Select the initial preferences view"
 msgstr "Başlangıç ayarlar görünümünü seçin"
 
-#: modules/gui/qt/qt.cpp:172
+#: modules/gui/qt/qt.cpp:176
 msgid ""
 "Select which preferences view to show upon opening the preferences dialog."
 msgstr "Ayarlar penceresi açıldığında gösterilecek ayarlar görünümünü seçin."
 
-#: modules/gui/qt/qt.cpp:196
+#: modules/gui/qt/qt.cpp:200
 msgid ""
 "Show a notification popup with the artist and track name when the current "
 "play queue item changes, when VLC is minimized or hidden."
@@ -7621,7 +7699,7 @@ msgstr ""
 "VLC küçültülmüş ya da gizliyken, oynatma kuyruğundaki geçerli öge "
 "değiştiğinde sanatçı ve kayıt adını gösteren bir bildirim görüntüler."
 
-#: modules/gui/qt/qt.cpp:200
+#: modules/gui/qt/qt.cpp:204
 msgid ""
 "Sets the windows opacity between 0.1 and 1 for main interface, play queue "
 "and extended panel. This option only works with Windows and X11 with "
@@ -7631,7 +7709,7 @@ msgstr ""
 "0.1 ile 1 arasında ayarlar. Bu seçenek yalnızca Windows ve kompozit uzantılı "
 "X11 üzerinde çalışır."
 
-#: modules/gui/qt/qt.cpp:206
+#: modules/gui/qt/qt.cpp:210
 msgid ""
 "Sets the fullscreen controller opacity between 0.1 and 1 for main interface, "
 "play queue and extended panel. This option only works with Windows and X11 "
@@ -7641,11 +7719,11 @@ msgstr ""
 "denetleyicisinin matlığını 0.1 ile 1 arasında ayarlar. Bu seçenek yalnızca "
 "Windows ve kompozit uzantılı X11 üzerinde çalışır."
 
-#: modules/gui/qt/qt.cpp:211
+#: modules/gui/qt/qt.cpp:215
 msgid "Initial user scale factor for the interface, between 0.3 and 3.0"
 msgstr "Arayüz için başlangıç kullanıcı ölçek çarpanı (0.3 ile 3.0 arasında)"
 
-#: modules/gui/qt/qt.cpp:214
+#: modules/gui/qt/qt.cpp:218
 msgid ""
 "Show the errors of VLC at the bottom of the window, and ask before removing "
 "media from a playlist or from the play queue, or deleting playlists. Off, "
@@ -7657,11 +7735,11 @@ msgstr ""
 "sorar. Kapalıyken hatalar yalnızca VLC iletilerinde tutulur ve bu kaldırma "
 "işlemleri hemen yapılır; diskten dosya silme her zaman onaylatılır."
 
-#: modules/gui/qt/qt.cpp:224
+#: modules/gui/qt/qt.cpp:228
 msgid "set the options for qml debugger"
 msgstr "qml hata ayıklayıcı seçeneklerini ayarlar"
 
-#: modules/gui/qt/qt.cpp:225
+#: modules/gui/qt/qt.cpp:229
 msgid ""
 "set the options for qml debugger (see http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
@@ -7669,7 +7747,7 @@ msgstr ""
 "qml hata ayıklayıcı seçeneklerini ayarlar (bkz. http://doc.qt.io/qt-5/"
 "qtquick-debugging.html#starting-applications)"
 
-#: modules/gui/qt/qt.cpp:245
+#: modules/gui/qt/qt.cpp:249
 msgid ""
 "Show the playback controls in fullscreen when the mouse moves. Off, only the "
 "keyboard shows them (the I key). The skins read it for their fullscreen "
@@ -7679,7 +7757,7 @@ msgstr ""
 "Kapalıyken onları yalnızca klavye (I tuşu) gösterir. Kaplamalar da tam ekran "
 "denetleyicileri için bu ayarı okur."
 
-#: modules/gui/qt/qt.cpp:261
+#: modules/gui/qt/qt.cpp:265
 msgid ""
 "Display the cover art of the audio playing in the player (the cone in the "
 "compact view). Off, a plain picture takes its place, which also prevents "
@@ -7688,7 +7766,7 @@ msgstr ""
 "Oynatılan sesin kapak görselini oynatıcıda görüntüler (kompakt görünümde "
 "koni). Kapalıyken yerine düz bir görsel gelir; bu da ekran yanmasını önler."
 
-#: modules/gui/qt/qt.cpp:285
+#: modules/gui/qt/qt.cpp:289
 msgid ""
 "This option allows the interface to be shown and raised automatically when a "
 "video/audio playback starts, or never."
@@ -7696,11 +7774,11 @@ msgstr ""
 "Bu seçenek, görüntü/ses oynatımı başladığında arayüzün otomatik olarak "
 "gösterilip öne getirilmesini ya da hiç getirilmemesini sağlar."
 
-#: modules/gui/qt/qt.cpp:288
+#: modules/gui/qt/qt.cpp:292
 msgid "Enable window titlebar"
 msgstr "Pencere başlık çubuğu kullanılsın"
 
-#: modules/gui/qt/qt.cpp:289
+#: modules/gui/qt/qt.cpp:293
 msgid ""
 "This option enables the title bar. Disabling it will remove the titlebar and "
 "move window buttons within the interface (Client Side Decoration)"
@@ -7709,40 +7787,42 @@ msgstr ""
 "çubuğu kaldırılır ve pencere düğmeleri arayüzün içine taşınır (İstemci "
 "Taraflı Süsleme)"
 
-#: modules/gui/qt/qt.cpp:293
+#: modules/gui/qt/qt.cpp:297
 msgid "Show the menu bar"
 msgstr "Menü çubuğu görüntülensin"
 
-#: modules/gui/qt/qt.cpp:294
+#: modules/gui/qt/qt.cpp:298
 msgid "This option displays the classic menu bar"
 msgstr "Bu seçenek klasik menü çubuğunu görüntüler"
 
-#: modules/gui/qt/qt.cpp:296
+#: modules/gui/qt/qt.cpp:300
 msgid "Pin video controls"
 msgstr "Video denetimleri sabitlensin"
 
-#: modules/gui/qt/qt.cpp:297
+#: modules/gui/qt/qt.cpp:301
 msgid "Place video controls above and below the video instead of above"
 msgstr ""
 "Video denetimlerini videonun üzerine bindirmek yerine videonun üstüne ve "
 "altına yerleştirir"
 
-#: modules/gui/qt/qt.cpp:300
+#: modules/gui/qt/qt.cpp:304
 msgid "Show the frame at the hovered position above the seek bar"
 msgstr ""
 "Sarma çubuğunun üzerinde, imlecin bulunduğu konumdaki kare görüntülensin"
 
-#: modules/gui/qt/qt.cpp:302
+#: modules/gui/qt/qt.cpp:306
 msgid ""
 "Mark on the seek bar where the lines of the subtitle shown are, when it "
 "comes from a subtitle file"
-msgstr "Altyazı bir altyazı dosyasından geliyorsa, görüntülenen altyazının satırlarının yerleri sarma çubuğunda işaretlenir"
+msgstr ""
+"Altyazı bir altyazı dosyasından geliyorsa, görüntülenen altyazının "
+"satırlarının yerleri sarma çubuğunda işaretlenir"
 
-#: modules/gui/qt/qt.cpp:307
+#: modules/gui/qt/qt.cpp:311
 msgid "Select Qt video integration backend"
 msgstr "Qt video tümleştirme arka ucunu seçin"
 
-#: modules/gui/qt/qt.cpp:308
+#: modules/gui/qt/qt.cpp:312
 msgid ""
 "Select Qt video integration backend. Use with care, the interface may not "
 "start if an incompatible compositor is selected"
@@ -7750,11 +7830,11 @@ msgstr ""
 "Qt video tümleştirme arka ucunu seçin. Dikkatli kullanın; uyumsuz bir "
 "birleştirici seçilirse arayüz başlamayabilir"
 
-#: modules/gui/qt/qt.cpp:310
+#: modules/gui/qt/qt.cpp:314
 msgid "Use smooth scrolling in Flickable based views"
 msgstr "Flickable tabanlı görünümlerde yumuşak kaydırma kullanılsın"
 
-#: modules/gui/qt/qt.cpp:311
+#: modules/gui/qt/qt.cpp:315
 msgid ""
 "Deactivating this option will disable smooth scrolling in Flickable based "
 "views (such as the Play Queue). This option is only respected with a scroll "
@@ -7764,20 +7844,20 @@ msgstr ""
 "Kuyruğu gibi) yumuşak kaydırma kapatılır. Bu seçenek yalnızca bir kaydırma "
 "işleyicisiyle dikkate alınır, `qt-use-scroll-handler` seçeneğine bakın."
 
-#: modules/gui/qt/qt.cpp:314
+#: modules/gui/qt/qt.cpp:318
 msgid "Use Kirigami scroll handler for Flickable based views"
 msgstr ""
 "Flickable tabanlı görünümler için Kirigami kaydırma işleyicisi kullanılsın"
 
-#: modules/gui/qt/qt.cpp:315
+#: modules/gui/qt/qt.cpp:319
 msgid "Using Kirigami scroll handler may improve scrolling behavior."
 msgstr "Kirigami kaydırma işleyicisi kaydırma davranışını iyileştirebilir."
 
-#: modules/gui/qt/qt.cpp:317
+#: modules/gui/qt/qt.cpp:321
 msgid "Safe area for the user interface"
 msgstr "Kullanıcı arayüzü için güvenli alan"
 
-#: modules/gui/qt/qt.cpp:318
+#: modules/gui/qt/qt.cpp:322
 msgid ""
 "Sets the safe area percentage between 0.0 and 100 when you want to ensure "
 "the visibility of the user interface on a constrained viewport"
@@ -7785,21 +7865,21 @@ msgstr ""
 "Kısıtlı bir görüntüleme alanında kullanıcı arayüzünün görünür olmasını "
 "sağlamak için güvenli alan yüzdesini 0.0 ile 100 arasında ayarlar"
 
-#: modules/gui/qt/qt.cpp:322
+#: modules/gui/qt/qt.cpp:326
 msgid "Print Qt's important internal messages"
 msgstr "Qt'nin önemli iç iletileri yazdırılsın"
 
-#: modules/gui/qt/qt.cpp:323
+#: modules/gui/qt/qt.cpp:327
 msgid "Enable Qt's all own messaging categories except the debug category."
 msgstr ""
 "Hata ayıklama kategorisi dışında Qt'nin tüm ileti kategorilerini "
 "etkinleştirir."
 
-#: modules/gui/qt/qt.cpp:325
+#: modules/gui/qt/qt.cpp:329
 msgid "Hide the window on close"
 msgstr "Kapatıldığında pencere gizlensin"
 
-#: modules/gui/qt/qt.cpp:326
+#: modules/gui/qt/qt.cpp:330
 msgid ""
 "Instead of closing the application, hide the window. This setting is only "
 "applicable when system tray icon is enabled."
@@ -7807,11 +7887,11 @@ msgstr ""
 "Uygulamayı kapatmak yerine pencereyi gizler. Bu ayar yalnızca sistem tepsisi "
 "simgesi etkinken geçerlidir."
 
-#: modules/gui/qt/qt.cpp:328
+#: modules/gui/qt/qt.cpp:332
 msgid "Enable backdrop blur filter for the main window if possible"
 msgstr "Mümkünse ana pencerede artalan bulanıklaştırma süzgeci kullanılsın"
 
-#: modules/gui/qt/qt.cpp:329
+#: modules/gui/qt/qt.cpp:333
 msgid ""
 "If backdrop blur filter is available, use translucency in the backgrounds of "
 "certain parts of the user interface instead of a solid color. This setting "
@@ -7821,11 +7901,11 @@ msgstr ""
 "bazı bölümlerinin artalanında düz renk yerine yarı saydamlık kullanır. Bu "
 "ayar metnin okunabilirliğini azaltır."
 
-#: modules/gui/qt/qt.cpp:332
+#: modules/gui/qt/qt.cpp:336
 msgid "Enable picture-in-picture (PiP) mode"
 msgstr "Resim içinde resim (PiP) kipi kullanılsın"
 
-#: modules/gui/qt/qt.cpp:333
+#: modules/gui/qt/qt.cpp:337
 msgid ""
 "Picture-in-picture mode allows playing video contained in a smaller area so "
 "that the interface remains usable."
@@ -7833,7 +7913,7 @@ msgstr ""
 "Resim içinde resim kipi, arayüzün kullanılabilir kalması için videonun daha "
 "küçük bir alanda oynatılmasını sağlar."
 
-#: modules/gui/qt/qt.cpp:336
+#: modules/gui/qt/qt.cpp:340
 msgid ""
 "Adjusts the accent color, special values are 'default' and 'system' "
 "(requires Qt 6.6) ."
@@ -7841,11 +7921,11 @@ msgstr ""
 "Vurgu rengini ayarlar, özel değerler 'default' ve 'system' değerleridir (Qt "
 "6.6 gerekir) ."
 
-#: modules/gui/qt/qt.cpp:437
+#: modules/gui/qt/qt.cpp:441
 msgid "Check for VLC Redesign updates"
 msgstr "VLC Redesign güncellemeleri denetlensin"
 
-#: modules/gui/qt/qt.cpp:438
+#: modules/gui/qt/qt.cpp:442
 msgid ""
 "Look for a new release of VLC Redesign on GitHub at startup, at most once a "
 "day."
@@ -7853,11 +7933,11 @@ msgstr ""
 "Başlangıçta, günde en çok bir kez, GitHub'da yeni bir VLC Redesign sürümü "
 "arar."
 
-#: modules/gui/qt/qt.cpp:442
+#: modules/gui/qt/qt.cpp:446
 msgid "Resume at"
 msgstr "Sürdürme konumu"
 
-#: modules/gui/qt/qt.cpp:443
+#: modules/gui/qt/qt.cpp:447
 msgid ""
 "Seconds into the media of the command line where playback continues, after "
 "an update."
@@ -7904,7 +7984,9 @@ msgstr "Oynatma kuyruğu geri yüklensin mi?"
 
 #: modules/gui/qt/util/model_recovery_agent.hpp:88
 msgid "VLC Redesign closed unexpectedly on %1. Restore the play queue it had?"
-msgstr "VLC Redesign beklenmedik şekilde kapandı (%1). O sıradaki oynatma kuyruğu geri yüklensin mi?"
+msgstr ""
+"VLC Redesign beklenmedik şekilde kapandı (%1). O sıradaki oynatma kuyruğu "
+"geri yüklensin mi?"
 
 #: modules/gui/qt/util/model_recovery_agent.hpp:90
 msgctxt "play queue"
@@ -7915,7 +7997,7 @@ msgstr "Geri yükle"
 msgid "Don't restore"
 msgstr "Geri yükleme"
 
-#: modules/gui/qt/util/redesign_updater.cpp:194
+#: modules/gui/qt/util/redesign_updater.cpp:215
 msgid ""
 "The update isn't signed by the publisher of this copy (%1), so it wasn't "
 "used."
@@ -7923,64 +8005,74 @@ msgstr ""
 "Güncelleme bu kopyanın yayıncısı (%1) tarafından imzalanmadığı için "
 "kullanılmadı."
 
-#: modules/gui/qt/util/redesign_updater.cpp:550
+#: modules/gui/qt/util/redesign_updater.cpp:460
+msgid "%1 (later)"
+msgstr "%1 (daha sonra)"
+
+#: modules/gui/qt/util/redesign_updater.cpp:462
+msgid "%1 (soon)"
+msgstr "%1 (yakında)"
+
+#: modules/gui/qt/util/redesign_updater.cpp:610
 msgid "This build cannot check for updates."
 msgstr "Bu derleme güncellemeleri denetleyemez."
 
-#: modules/gui/qt/util/redesign_updater.cpp:564
+#: modules/gui/qt/util/redesign_updater.cpp:624
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "GitHub'a ulaşılamadı. Bağlantınızı denetleyip yeniden deneyin."
 
-#: modules/gui/qt/util/redesign_updater.cpp:581
+#: modules/gui/qt/util/redesign_updater.cpp:641
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "GitHub beklenmeyen bir yanıt gönderdi (%1)."
 
-#: modules/gui/qt/util/redesign_updater.cpp:677
+#: modules/gui/qt/util/redesign_updater.cpp:759
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
-msgstr "Bu güncelleme VLC Redesign tarafından imzalanmamış, bu nedenle kullanılmadı. Bunun yerine sürüm sayfasından indirin."
+msgstr ""
+"Bu güncelleme VLC Redesign tarafından imzalanmamış, bu nedenle kullanılmadı. "
+"Bunun yerine sürüm sayfasından indirin."
 
-#: modules/gui/qt/util/redesign_updater.cpp:699
-#: modules/gui/qt/util/redesign_updater.cpp:740
+#: modules/gui/qt/util/redesign_updater.cpp:781
+#: modules/gui/qt/util/redesign_updater.cpp:822
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr ""
 "Güncellemenin sağlama toplamı eksik; güncellemeyi sürüm sayfasından indirin."
 
-#: modules/gui/qt/util/redesign_updater.cpp:714
-#: modules/gui/qt/util/redesign_updater.cpp:786
+#: modules/gui/qt/util/redesign_updater.cpp:796
+#: modules/gui/qt/util/redesign_updater.cpp:868
 msgid "The download failed. Check your connection and try again."
 msgstr "İndirme başarısız oldu. Bağlantınızı denetleyip yeniden deneyin."
 
-#: modules/gui/qt/util/redesign_updater.cpp:799
+#: modules/gui/qt/util/redesign_updater.cpp:881
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "Güncelleme sağlama toplamıyla eşleşmediği için kullanılmadı."
 
-#: modules/gui/qt/util/redesign_updater.cpp:830
+#: modules/gui/qt/util/redesign_updater.cpp:912
 msgid "The update isn't in a format this version knows."
 msgstr "Güncelleme bu sürümün tanıdığı bir biçimde değil."
 
-#: modules/gui/qt/util/redesign_updater.cpp:833
-#: modules/gui/qt/util/redesign_updater.cpp:857
-#: modules/gui/qt/util/redesign_updater.cpp:868
-#: modules/gui/qt/util/redesign_updater.cpp:874
+#: modules/gui/qt/util/redesign_updater.cpp:915
+#: modules/gui/qt/util/redesign_updater.cpp:939
+#: modules/gui/qt/util/redesign_updater.cpp:950
+#: modules/gui/qt/util/redesign_updater.cpp:956
 msgid "The update is damaged."
 msgstr "Güncelleme hasarlı."
 
-#: modules/gui/qt/util/redesign_updater.cpp:838
+#: modules/gui/qt/util/redesign_updater.cpp:920
 msgid "The update isn't for this version."
 msgstr "Güncelleme bu sürüm için değil."
 
-#: modules/gui/qt/util/redesign_updater.cpp:847
-#: modules/gui/qt/util/redesign_updater.cpp:884
-#: modules/gui/qt/util/redesign_updater.cpp:893
-#: modules/gui/qt/util/redesign_updater.cpp:897
-#: modules/gui/qt/util/redesign_updater.cpp:901
+#: modules/gui/qt/util/redesign_updater.cpp:929
+#: modules/gui/qt/util/redesign_updater.cpp:966
+#: modules/gui/qt/util/redesign_updater.cpp:975
+#: modules/gui/qt/util/redesign_updater.cpp:979
+#: modules/gui/qt/util/redesign_updater.cpp:983
 msgid "The update can't be written in %1."
 msgstr "Güncelleme %1 konumuna yazılamıyor."
 
-#: modules/gui/qt/util/redesign_updater.cpp:849
+#: modules/gui/qt/util/redesign_updater.cpp:931
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -7988,30 +8080,30 @@ msgstr ""
 "Bir VLC Redesign dosyası kurulumdan sonra değiştirildiği için küçük "
 "güncelleme kullanılamıyor: bunun yerine kurulum programıyla güncelleyin."
 
-#: modules/gui/qt/util/redesign_updater.cpp:879
+#: modules/gui/qt/util/redesign_updater.cpp:961
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr "Güncelleme hasarlı: bir dosya sağlama toplamıyla eşleşmiyor."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1004
+#: modules/gui/qt/util/redesign_updater.cpp:1086
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr "Güncelleme başlatılamadı. Bir dahaki sefere yeniden denenecek."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1031
+#: modules/gui/qt/util/redesign_updater.cpp:1113
 msgid "The download failed. Try again, or download it from the release page."
 msgstr ""
 "İndirme başarısız oldu. Yeniden deneyin ya da sürüm sayfasından indirin."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1044
+#: modules/gui/qt/util/redesign_updater.cpp:1126
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr ""
 "İndirilen kurulum programı sağlama toplamıyla eşleşmediği için "
 "çalıştırılmadı."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1053
+#: modules/gui/qt/util/redesign_updater.cpp:1135
 msgid "The installer couldn't be saved to %1."
 msgstr "Kurulum programı %1 konumuna kaydedilemedi."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1087
+#: modules/gui/qt/util/redesign_updater.cpp:1169
 msgid "The installer couldn't be started."
 msgstr "Kurulum programı başlatılamadı."
 

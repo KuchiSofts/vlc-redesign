@@ -2609,6 +2609,12 @@ LanguageQuestion_armenian=Տեղադրե՞լ {#AppName}-ը հայերենով
 LanguageYes_armenian=Այո
 LanguageNo_armenian=Ոչ
 
+[Components]
+; The app, and Live TV, an add-on of its own (plugins\misc\libiptv_plugin.dll):
+; left out, the app has no TV at all (nothing shows of it)
+Name: "app"; Description: "{#AppName}"; Types: full compact custom; Flags: fixed
+Name: "livetv"; Description: "Live TV (IPTV) add-on: the channels and the programme guide of your own TV playlist"; Types: full custom
+
 [Files]
 ; The wizard's pieces and fonts: read by the [Code], never installed
 Source: "art\ui\*.png"; Flags: dontcopy noencryption
@@ -2616,7 +2622,9 @@ Source: "art\fonts\*.ttf"; Flags: dontcopy noencryption
 ; (notice.txt in English, notice.<language>.txt in the others)
 Source: "notice*.txt"; Flags: dontcopy noencryption
 ; portable\ holds the user's settings and library: never shipped, never replaced
-Source: "{#SourceDir}\*"; DestDir: "{app}"; Excludes: "\portable\*,*.old-*"; Flags: recursesubdirs createallsubdirs ignoreversion
+Source: "{#SourceDir}\*"; DestDir: "{app}"; Excludes: "\portable\*,*.old-*,\plugins\misc\libiptv_plugin.dll"; Components: app; Flags: recursesubdirs createallsubdirs ignoreversion
+; Live TV, when chosen (unchecked: its plugin is not installed at all)
+Source: "{#SourceDir}\plugins\misc\libiptv_plugin.dll"; DestDir: "{app}\plugins\misc"; Components: livetv; Flags: ignoreversion skipifsourcedoesntexist
 
 [Dirs]
 ; Its presence keeps VLC's data next to vlc.exe instead of %APPDATA%\vlc,

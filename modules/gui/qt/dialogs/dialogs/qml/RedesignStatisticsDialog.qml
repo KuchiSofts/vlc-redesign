@@ -80,58 +80,33 @@ Widgets.RedesignDialog {
         readonly property real top: Math.max(1, stats.bitrateMax * 1.15)
         readonly property real inset: VLCStyle.dp(8, VLCStyle.scale)
 
-        // (a Canvas: QtQuick.Shapes is not in every build of Qt)
-        Canvas {
+        // Bars of Rectangles: VLC's Qt Quick is built without Canvas (and
+        // QtQuick.Shapes is not in every build), as the waveform of the music
+        Item {
             id: plot
 
             anchors.fill: parent
+            anchors.margins: graph.inset
             visible: graph.points.length > 1
-            onWidthChanged: requestPaint()
-            onHeightChanged: requestPaint()
-            Connections {
-                target: graph
-                function onPointsChanged() { plot.requestPaint() }
-            }
+            // two minutes across, the newest at the end (on the left, right
+            // to left: the layout mirrors the bars)
+            readonly property real step: width / 120
 
-            onPaint: {
-                const ctx = getContext("2d")
-                ctx.reset()
-                const points = graph.points
-                const count = points.length
-                if (count < 2)
-                    return
-                const inset = graph.inset
-                const w = width - 2 * inset
-                const h = height - 2 * inset
-                // two minutes across, the newest at the end of the line
-                // (on the left, right to left)
-                const rtl = Qt.application.layoutDirection === Qt.RightToLeft
-                const step = w / 119
-                const xOf = (i) => {
-                    const x = inset + w - (count - 1 - i) * step
-                    return rtl ? width - x : x
+            Repeater {
+                model: graph.points.length
+
+                Rectangle {
+                    required property int index
+                    readonly property real value: graph.points[index] ?? 0
+
+                    x: plot.width - (graph.points.length - index) * plot.step
+                    width: Math.max(1, plot.step - VLCStyle.dp(1, VLCStyle.scale))
+                    height: Math.max(VLCStyle.dp(1, VLCStyle.scale), plot.height * value / graph.top)
+                    y: plot.height - height
+                    radius: VLCStyle.dp(1, VLCStyle.scale)
+                    color: VLCStyle.redesign.accent
+                    opacity: 0.85
                 }
-                const yOf = (i) => inset + h * (1 - points[i] / graph.top)
-                const accent = VLCStyle.redesign.accent
-
-                ctx.beginPath()
-                ctx.moveTo(xOf(0), height)
-                for (let i = 0; i < count; i++)
-                    ctx.lineTo(xOf(i), yOf(i))
-                ctx.lineTo(xOf(count - 1), height)
-                ctx.closePath()
-                ctx.fillStyle = Qt.rgba(accent.r, accent.g, accent.b, 0.15)
-                ctx.fill()
-
-                ctx.beginPath()
-                ctx.moveTo(xOf(0), yOf(0))
-                for (let i = 1; i < count; i++)
-                    ctx.lineTo(xOf(i), yOf(i))
-                ctx.lineWidth = VLCStyle.dp(2, VLCStyle.scale)
-                ctx.lineJoin = "round"
-                ctx.lineCap = "round"
-                ctx.strokeStyle = accent
-                ctx.stroke()
             }
         }
 

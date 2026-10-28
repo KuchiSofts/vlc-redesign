@@ -30,6 +30,10 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   Live TV is an add-on of its own, on by default: *Live TV (IPTV) add-on* in Settings, General turns it off, the
   installer can leave it out, and without it nothing of it shows. Settings, TV has its sources and options. See
   [Live TV](https://github.com/KuchiSofts/vlc-redesign/wiki/Live-TV).
+- **Edit Sidebar.** Put the pages of the sidebar in your order (drag them, or the arrows), hide the ones you do
+  not use, or reset them: right-click the sidebar, or Settings, Interface, Sidebar.
+- **Subtitles for films only.** A live TV channel or music shows no subtitle files, online search or sync; the
+  tracks button only shows when there is a track to choose.
 - **Suggest an idea and Report a problem**, at the end of the ⋯ menu and in About. *Suggest an idea* opens a new
   discussion in the Ideas category of GitHub Discussions, with the version. *Report a problem* first shows what the report contains (versions,
   install type, Windows, CPU, graphics adapter and driver, video output and decoding, screens, theme, accent,

@@ -74,10 +74,28 @@ A channel plays alone in the queue, as a TV switches channels, and is not added 
 | **Backspace** | back to the previous channel |
 | **Enter** | the channel list over the video: Up and Down, Enter plays, Left and Right switch the group, Esc closes |
 | **I** | the banner of the channel again |
+| **Left / Right** (banner shown) | the programmes before and after on the channel's guide; Enter watches a past one from the archive or sets a reminder for one to come, Esc goes back to what is on (elsewhere they seek, as always) |
 
-At every switch the **banner** shows the channel, what is on with its progress and the time left, and what is
-next; it hides by itself. With catch-up, **Watch from the Start** plays the programme on now from its beginning,
-and **Back to Live** returns. When a channel has no archive, VLC says so.
+At every switch the **banner**, a slim bar centred over the video, shows the channel, what is on with its
+progress and the time left, and what is next; with *Show programme descriptions* it grows for the episode, the
+category and three lines of the description. It hides by itself, and stays while you type a number or browse the
+guide (its ‹ › buttons, or a swipe across a touchpad). Its buttons: the programme on now from its start (with
+catch-up), the channel up and down, the channel list. While a programme of the archive plays, **Back to Live**
+returns. When a channel has no archive, VLC says so.
+
+**Subtitles** are for films and videos: a live channel (and music) has no subtitle files, online search or sync,
+and the *Languages and tracks* button only shows when the stream carries subtitle or audio tracks to choose from.
+Films and series of an Xtream account have every subtitle feature.
+
+**Customize Player** has a **TV** button (while the add-on is on): the channel list over the video while a channel
+plays, the TV page otherwise. A bar that has it keeps working without the add-on: the button then takes no room.
+
+## The sidebar
+
+**Edit Sidebar…** (right-click the sidebar, or *Settings > Interface > Sidebar*) puts its pages in your order: drag
+a page by its handle, or move it with ▲ ▼ (Ctrl+Up and Ctrl+Down), show or hide each one (one at least stays),
+**Reset to Default**. TV takes its place after Network while the add-on is on; off, its place is kept for when it
+comes back.
 
 ## Settings > TV
 

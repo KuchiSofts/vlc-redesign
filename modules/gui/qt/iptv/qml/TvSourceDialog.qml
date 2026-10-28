@@ -546,6 +546,7 @@ Widgets.RedesignDialog {
             Widgets.RedesignTextArea {
                 id: catalogSearch
                 Layout.preferredWidth: root.px(240)
+                Layout.minimumWidth: root.px(140)
                 Layout.fillWidth: false
                 placeholderText: qsTr("Search the catalog")
                 Accessible.name: qsTr("Search the catalog")
@@ -569,19 +570,20 @@ Widgets.RedesignDialog {
                 text: current === "" ? label : label + ": " + current
                 onPicked: (v) => catalogPage.category = v
             }
-            SettingsSegmented {
-                Layout.preferredWidth: Math.max(VLCStyle.dp(300, VLCStyle.scale), neededWidth)
-                options: [{ text: qsTr("All"), value: "" }, { text: qsTr("Guide"), value: "epg" },
-                          { text: qsTr("Catch-up"), value: "catchup" }, { text: qsTr("Films"), value: "vod" },
-                          { text: qsTr("Free"), value: "free" }, { text: qsTr("Guides"), value: "guides" }]
-                value: catalogPage.capability
-                onChosen: (v) => catalogPage.capability = v
-            }
             Item { Layout.fillWidth: true }
             Widgets.RedesignButton {
                 text: catalogPage.sort === "name" ? qsTr("A-Z") : qsTr("Most channels")
                 onClicked: catalogPage.sort = catalogPage.sort === "name" ? "channels" : "name"
             }
+        }
+        // what the sources can do (a row of its own: the dialog's width)
+        SettingsSegmented {
+            Layout.preferredWidth: Math.min(catalogPage.width, Math.max(VLCStyle.dp(480, VLCStyle.scale), neededWidth))
+            options: [{ text: qsTr("All"), value: "" }, { text: qsTr("Guide"), value: "epg" },
+                      { text: qsTr("Catch-up"), value: "catchup" }, { text: qsTr("Films"), value: "vod" },
+                      { text: qsTr("Free"), value: "free" }, { text: qsTr("Guides"), value: "guides" }]
+            value: catalogPage.capability
+            onChosen: (v) => catalogPage.capability = v
         }
 
         GridView {
@@ -732,6 +734,8 @@ Widgets.RedesignDialog {
             spacing: root.px(12)
             Text {
                 Layout.fillWidth: true
+                // (its room is what the button leaves: wrapped, not wider)
+                Layout.preferredWidth: 0
                 text: qsTr("Only free, legal sources are listed. Suggestions are reviewed before they reach the catalog.")
                 wrapMode: Text.WordWrap
                 horizontalAlignment: Text.AlignLeft

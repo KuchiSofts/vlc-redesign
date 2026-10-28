@@ -19,9 +19,7 @@
  *****************************************************************************/
 
 import QtQuick
-// Popup: QtQuick.Controls.Basic, the style registered in the static Qt of
-// Windows (a bare Popup is unknown there: the button never loaded)
-import QtQuick.Controls.Basic as Controls
+import QtQuick.Templates as T
 
 import VLC.MainInterface
 import VLC.Style
@@ -64,8 +62,13 @@ Widgets.IconToolButton {
 
     // Children
 
-    Controls.Popup {
+    T.Popup {
         id: popup
+
+        implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+                                implicitContentWidth + leftPadding + rightPadding)
+        implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+                                 implicitContentHeight + topPadding + bottomPadding)
 
         x: (parent.width - width) / 2
         y: -height - VLCStyle.margin_xxxsmall
@@ -75,9 +78,8 @@ Widgets.IconToolButton {
         focus: true
 
         // This popup should not exceed the boundaries of the scene.
-        // Setting margins to >=0 makes it sure that this is satisfied
-        // (the overlay is the visible window: MainInterface.qml).
-        margins: 0
+        // Setting margins to >=0 makes it sure that this is satisfied.
+        margins: MainCtx.windowExtendedMargin
 
         // Events
 

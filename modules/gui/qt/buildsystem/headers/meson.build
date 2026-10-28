@@ -114,6 +114,7 @@ moc_headers = files(
     '../../player/local_folder_model.hpp',
     '../../player/sleep_timer.hpp',
     '../../util/redesign_updater.hpp',
+    '../../iptv/iptv_addon.hpp',
     '../../util/redesign_feedback.hpp',
     '../../util/redesign_accent.hpp',
     '../../util/subtitle_preferences.hpp',

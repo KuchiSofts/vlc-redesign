@@ -306,6 +306,8 @@ qt_plugin_sources = files(
     '../../util/workerthreadset.hpp',
     '../../util/http_request.cpp',
     '../../util/http_request.hpp',
+    '../../iptv/iptv_addon.cpp',
+    '../../iptv/iptv_addon.hpp',
     '../../util/redesign_updater.cpp',
     '../../util/redesign_updater.hpp',
     '../../util/redesign_update_key.h',

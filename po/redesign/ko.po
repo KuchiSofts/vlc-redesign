@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-25 11:16+0000\n"
+"POT-Creation-Date: 2026-10-28 10:16+0000\n"
 "PO-Revision-Date: 2017-09-20 03:42+0000\n"
 "Last-Translator: Potato <sheppaul@naver.com>\n"
 "Language-Team: Korean (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -41,7 +41,7 @@ msgid "Media Library Settings"
 msgstr "미디어 라이브러리 설정"
 
 #: src/audio_output/output.c:337
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1176
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
 msgid "Waveform"
 msgstr "파형"
 
@@ -180,45 +180,43 @@ msgstr "미디어를 열 수 없습니다"
 
 #: src/interface/interface.c:100
 msgid "Upnp"
-msgstr ""
+msgstr "UPnP"
 
 #: src/libvlc-module.c:139
 msgid "Enable bit-exact mode (pure mode)"
-msgstr ""
+msgstr "비트 정확 모드(순수 모드) 사용하기"
 
 #: src/libvlc-module.c:141
 msgid ""
 "This will disable all audio filters, even audio converters. This may result "
 "on audio not working if the output can't adapt to the input format."
-msgstr ""
+msgstr "오디오 변환기를 포함한 모든 오디오 필터를 비활성화합니다. 출력이 입력 형식에 맞출 수 없으면 오디오가 작동하지 않을 수 있습니다."
 
 #: src/libvlc-module.c:275
 msgid ""
 "This is the video output method used by VLC. The default behavior is to "
 "automatically select the best method available."
-msgstr ""
-"VLC 이 사용하는 비디오 출력 방식 입니다. 기본 동작은 자동적으로 최적인 방식"
-"이 선택됩니다. "
+msgstr "VLC가 사용하는 비디오 출력 방식입니다. 기본적으로 사용 가능한 최적의 방식이 자동으로 선택됩니다."
 
 #: src/libvlc-module.c:285
 msgid ""
 "This requests a specific pixel width for the video window. By default (-1), "
 "the width is requested according to the zoom setting."
-msgstr ""
+msgstr "비디오 창의 너비를 픽셀 단위로 지정합니다. 기본값(-1)에서는 화면 크기 설정에 따라 너비가 정해집니다."
 
 #: src/libvlc-module.c:290
 msgid ""
 "This requests a specific pixel height for the video window. By default (-1), "
 "the height is requested according to the zoom setting."
-msgstr ""
+msgstr "비디오 창의 높이를 픽셀 단위로 지정합니다. 기본값(-1)에서는 화면 크기 설정에 따라 높이가 정해집니다."
 
 #: src/libvlc-module.c:340
 msgid "360 videos projection mode"
-msgstr ""
+msgstr "360 비디오 투영 방식"
 
 #: src/libvlc-module.c:342
 msgid "Change the 360 video projection mode."
-msgstr ""
+msgstr "360 비디오의 투영 방식을 변경합니다."
 
 #: src/libvlc-module.c:391
 msgid "Deinterlace filter"
@@ -230,11 +228,11 @@ msgstr "사용할 디인터레이스 모듈입니다."
 
 #: src/libvlc-module.c:394
 msgid "Video Stereo 3D mode"
-msgstr ""
+msgstr "비디오 스테레오 3D 모드"
 
 #: src/libvlc-module.c:395
 msgid "Set the Video Stereo 3D mode."
-msgstr ""
+msgstr "비디오 스테레오 3D 모드를 설정합니다."
 
 #: src/libvlc-module.c:403 src/video_output/vout_intf.c:168
 msgid "Left Only"
@@ -254,11 +252,11 @@ msgstr "전체화면일 때"
 
 #: src/libvlc-module.c:495
 msgid "Video fitting"
-msgstr ""
+msgstr "비디오 맞춤"
 
 #: src/libvlc-module.c:497
 msgid "This selects the dimension according to which the video will be scaled."
-msgstr ""
+msgstr "비디오 크기를 조절할 때 기준으로 삼을 치수를 선택합니다."
 
 #: src/libvlc-module.c:543
 msgid "Mouse Pause Policy"
@@ -270,8 +268,9 @@ msgstr "마우스 클릭으로 일시중지하는 방식을 설정합니다"
 
 #: src/libvlc-module.c:552 modules/access/rist.h:85
 #: modules/audio_output/mmdevice.c:1621
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1174
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:181
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1195
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:23
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:141
 msgid "Disabled"
@@ -283,7 +282,7 @@ msgstr "마우스 버튼을 놓으면 즉시 일시중지 전환"
 
 #: src/libvlc-module.c:596
 msgid "Clock master source"
-msgstr ""
+msgstr "클럭 마스터 소스"
 
 #: src/libvlc-module.c:597
 msgid ""
@@ -296,15 +295,15 @@ msgid ""
 "audio: if an audio track is playing, the audio output will drive the clock "
 "(Fallback to Monotonic if there is no audio tracks).\n"
 "monotonic: all tracks are driven by the monotonic clock of the system."
-msgstr ""
+msgstr "클럭 마스터 소스를 선택합니다:\nauto: 가장 적합한 클럭 소스입니다. 액세스 속도를 조절할 수 없으면(라이브 콘텐츠 재생 시) 입력을, 그 밖의 경우(대부분)에는 오디오를 사용합니다.\ninput: 모든 트랙이 디먹서의 PCR 업데이트를 통해 입력 클럭을 따릅니다. 오디오와 비디오 트랙 모두 입력을 따라잡도록 조정될 수 있는 VLC 3.0의 클럭 동작을 되살립니다.\naudio: 오디오 트랙이 재생 중이면 오디오 출력이 클럭을 제어합니다(오디오 트랙이 없으면 모노토닉으로 대체).\nmonotonic: 모든 트랙이 시스템의 모노토닉 클럭을 따릅니다."
 
 #: src/libvlc-module.c:612
 msgid "Input (PCR)"
-msgstr ""
+msgstr "입력 (PCR)"
 
 #: src/libvlc-module.c:614
 msgid "Monotonic"
-msgstr ""
+msgstr "모노토닉"
 
 #: src/libvlc-module.c:657
 #: modules/gui/qt/medialibrary/qml/VideoInfoExpandPanel.qml:295
@@ -313,7 +312,7 @@ msgstr "비디오 트랙"
 
 #: src/libvlc-module.c:659
 msgid "Stream number of the video track to use (from 0 to n)."
-msgstr ""
+msgstr "사용할 비디오 트랙의 스트림 번호 (0부터 n까지)."
 
 #: src/libvlc-module.c:674
 msgid ""
@@ -342,21 +341,21 @@ msgstr ""
 
 #: src/libvlc-module.c:687
 msgid "Video track ID"
-msgstr ""
+msgstr "비디오 트랙 ID"
 
 #: src/libvlc-module.c:689
 msgid "Stream ID of the video track to use."
-msgstr ""
+msgstr "사용할 비디오 트랙의 스트림 ID."
 
 #: src/libvlc-module.c:717
 msgid "Low delay mode"
-msgstr ""
+msgstr "저지연 모드"
 
 #: src/libvlc-module.c:719
 msgid ""
 "Try to minimize delay along decoding chain. Might break with non compliant "
 "streams."
-msgstr ""
+msgstr "디코딩 과정 전반의 지연을 최소화합니다. 규격을 따르지 않는 스트림에서는 문제가 생길 수 있습니다."
 
 #: src/libvlc-module.c:766
 msgid "Should the playback resume where it was left off?"
@@ -399,30 +398,30 @@ msgstr ""
 
 #: src/libvlc-module.c:834
 msgid "Display sub-pictures on full window"
-msgstr ""
+msgstr "창 전체에 서브픽처 표시"
 
 #: src/libvlc-module.c:836
 msgid "It allows showing subtitles in black bars."
-msgstr ""
+msgstr "검은 여백에도 자막을 표시할 수 있게 합니다."
 
 #: src/libvlc-module.c:838
 msgid "Position of secondary subtitles"
-msgstr ""
+msgstr "보조 자막 위치"
 
 #: src/libvlc-module.c:840
 msgid ""
 "Place on video where to display secondary subtitles (default bottom center)."
-msgstr ""
+msgstr "비디오에서 보조 자막을 표시할 위치 (기본값: 하단 가운데)."
 
 #: src/libvlc-module.c:842
 msgid "Force secondary subtitle position"
-msgstr ""
+msgstr "보조 자막 위치 지정하기"
 
 #: src/libvlc-module.c:844
 msgid ""
 "You can use this option to vertically adjust the position secondary "
 "subtitles are displayed."
-msgstr ""
+msgstr "이 옵션으로 보조 자막이 표시되는 세로 위치를 조정할 수 있습니다."
 
 #: src/libvlc-module.c:847
 msgid "On Screen Display duration"
@@ -434,33 +433,33 @@ msgstr "OSD 메시지가 표시되는 시간입니다(밀리초 단위)."
 
 #: src/libvlc-module.c:889
 msgid "Subtitle Frames per Second"
-msgstr ""
+msgstr "자막 초당 프레임 수"
 
 #: src/libvlc-module.c:891
 msgid "Override the normal frames per second settings. "
-msgstr ""
+msgstr "기본 초당 프레임 수 설정을 재정의합니다. "
 
 #: src/libvlc-module.c:976
 msgid ""
 "This X.509 certificate file (PEM format) is used for server-side TLS. On OS "
 "X, the string is used as a label to search the certificate in the keychain."
-msgstr ""
+msgstr "이 X.509 인증서 파일(PEM 형식)은 서버 측 TLS에 사용됩니다. OS X에서는 이 문자열이 키체인에서 인증서를 찾는 레이블로 사용됩니다."
 
 #: src/libvlc-module.c:1027
 msgid ""
 "These options allow you to control the preferred modules used for accessing, "
 "demuxing and decoding (or encoding) inputs."
-msgstr ""
+msgstr "입력의 접근, 디먹싱, 디코딩(또는 인코딩)에 우선 사용할 모듈을 지정하는 옵션입니다."
 
 #: src/libvlc-module.c:1037
 msgid "Enable hardware decoders"
-msgstr ""
+msgstr "하드웨어 디코더 사용하기"
 
 #: src/libvlc-module.c:1039
 msgid ""
 "VLC will fallback automatically to software decoders in case of hardware "
 "decoder failure."
-msgstr ""
+msgstr "하드웨어 디코더에 오류가 생기면 VLC가 자동으로 소프트웨어 디코더로 전환합니다."
 
 #: src/libvlc-module.c:1042
 msgid "Preferred decoder hardware device"
@@ -474,11 +473,11 @@ msgstr "여러 재생 대기열 항목에 걸쳐 하나의 스트림 출력 인�
 
 #: src/libvlc-module.c:1128
 msgid "Tracer module"
-msgstr ""
+msgstr "트레이서 모듈"
 
 #: src/libvlc-module.c:1130
 msgid "This allow to select which tracer module you want to use."
-msgstr ""
+msgstr "사용할 트레이서 모듈을 선택합니다."
 
 #: src/libvlc-module.c:1149
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:23
@@ -501,11 +500,11 @@ msgstr ""
 
 #: src/libvlc-module.c:1162
 msgid "Statistics collection frequency"
-msgstr ""
+msgstr "통계 수집 주기"
 
 #: src/libvlc-module.c:1164
 msgid "Collection frequency of the statistics in ms."
-msgstr ""
+msgstr "통계 수집 주기 (ms)."
 
 #: src/libvlc-module.c:1208
 msgid "Enqueue items into play queue in one instance mode"
@@ -523,7 +522,7 @@ msgstr ""
 msgid ""
 "These options define the behavior of the play queue. Some of them can be "
 "overridden in the play queue dialog box."
-msgstr ""
+msgstr "재생 대기열의 동작을 정의하는 옵션입니다. 일부는 재생 대기열 대화 상자에서 변경할 수 있습니다."
 
 #: src/libvlc-module.c:1228
 msgid ""
@@ -535,19 +534,19 @@ msgstr ""
 
 #: src/libvlc-module.c:1235
 msgid "Preparsing threads"
-msgstr ""
+msgstr "사전 분석 스레드"
 
 #: src/libvlc-module.c:1237
 msgid "Maximum number of threads used to preparse items"
-msgstr ""
+msgstr "항목 사전 분석에 사용할 최대 스레드 수"
 
 #: src/libvlc-module.c:1239
 msgid "Fetch-art threads"
-msgstr ""
+msgstr "아트워크 가져오기 스레드"
 
 #: src/libvlc-module.c:1241
 msgid "Maximum number of threads used to fetch art"
-msgstr ""
+msgstr "아트워크를 가져오는 데 사용할 최대 스레드 수"
 
 #: src/libvlc-module.c:1252
 msgid ""
@@ -574,7 +573,7 @@ msgstr ""
 
 #: src/libvlc-module.c:1268
 msgid "Flatten files listed by extractors (archive)"
-msgstr ""
+msgstr "추출기(압축 파일)가 나열한 파일 평탄화"
 
 #: src/libvlc-module.c:1277
 msgid "VLC will randomly play files in the play queue until interrupted."
@@ -594,7 +593,7 @@ msgstr "재생 대기열의 각 항목을 재생한 후 정지합니다."
 
 #: src/libvlc-module.c:1293
 msgid "Exit if there are no more items in the play queue."
-msgstr ""
+msgstr "재생 대기열에 항목이 더 이상 없으면 종료합니다."
 
 #: src/libvlc-module.c:1297
 msgid "Pause each item in the play queue on the last frame."
@@ -609,7 +608,7 @@ msgid "Automatically start playing the play queue content once it's loaded."
 msgstr "재생 대기열의 내용을 불러오면 자동으로 재생을 시작합니다."
 
 #: src/libvlc-module.c:1317
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
 msgid "Use the media library"
 msgstr "미디어 라이브러리 사용"
 
@@ -636,47 +635,47 @@ msgstr ""
 
 #: src/libvlc-module.c:1328
 msgid "Play queue bookmark 1"
-msgstr ""
+msgstr "재생 대기열 책갈피 1"
 
 #: src/libvlc-module.c:1329
 msgid "Play queue bookmark 2"
-msgstr ""
+msgstr "재생 대기열 책갈피 2"
 
 #: src/libvlc-module.c:1330
 msgid "Play queue bookmark 3"
-msgstr ""
+msgstr "재생 대기열 책갈피 3"
 
 #: src/libvlc-module.c:1331
 msgid "Play queue bookmark 4"
-msgstr ""
+msgstr "재생 대기열 책갈피 4"
 
 #: src/libvlc-module.c:1332
 msgid "Play queue bookmark 5"
-msgstr ""
+msgstr "재생 대기열 책갈피 5"
 
 #: src/libvlc-module.c:1333
 msgid "Play queue bookmark 6"
-msgstr ""
+msgstr "재생 대기열 책갈피 6"
 
 #: src/libvlc-module.c:1334
 msgid "Play queue bookmark 7"
-msgstr ""
+msgstr "재생 대기열 책갈피 7"
 
 #: src/libvlc-module.c:1335
 msgid "Play queue bookmark 8"
-msgstr ""
+msgstr "재생 대기열 책갈피 8"
 
 #: src/libvlc-module.c:1336
 msgid "Play queue bookmark 9"
-msgstr ""
+msgstr "재생 대기열 책갈피 9"
 
 #: src/libvlc-module.c:1337
 msgid "Play queue bookmark 10"
-msgstr ""
+msgstr "재생 대기열 책갈피 10"
 
 #: src/libvlc-module.c:1338
 msgid "This allows you to define play queue bookmarks."
-msgstr ""
+msgstr "재생 대기열 책갈피를 지정할 수 있습니다."
 
 #: src/libvlc-module.c:1383
 msgid "Select the hotkey to use to skip to the next item in the play queue."
@@ -835,11 +834,11 @@ msgstr "시점(360°)을 시계 반대 방향으로 회전할 단축키를 선�
 
 #: src/libvlc-module.c:1868
 msgid "Multiple Subtitles"
-msgstr ""
+msgstr "다중 자막"
 
 #: src/libvlc-module.c:2070
 msgid "Input access and codecs"
-msgstr ""
+msgstr "입력 접근 및 코덱"
 
 #: src/libvlc-module.c:2153
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:506
@@ -856,22 +855,22 @@ msgstr "시작"
 
 #: src/libvlc-module.c:2860
 msgid "print help for VLC (can be combined with --help-verbose)"
-msgstr ""
+msgstr "VLC 도움말 출력 (--help-verbose와 함께 사용 가능)"
 
 #: src/libvlc-module.c:2862
 msgid ""
 "print help for VLC and all its modules (can be combined with --help-verbose)"
-msgstr ""
+msgstr "VLC 및 모든 모듈의 도움말 출력 (--help-verbose와 함께 사용 가능)"
 
 #: src/libvlc-module.c:2865
 msgid "print complete help (same as --longhelp --help-verbose)"
-msgstr ""
+msgstr "전체 도움말 출력 (--longhelp --help-verbose와 동일)"
 
 #: src/libvlc-module.c:2873
 msgid ""
 "print help on a specific module (can be combined with --help-verbose). "
 "Prefix the module name with = for strict matches."
-msgstr ""
+msgstr "특정 모듈의 도움말 출력 (--help-verbose와 함께 사용 가능). 정확히 일치하는 모듈만 찾으려면 모듈 이름 앞에 =를 붙이세요."
 
 #: src/misc/actions.c:55
 msgctxt "key"
@@ -1426,23 +1425,23 @@ msgstr "다음 프레임 오류"
 msgid "Previous frame error"
 msgstr "이전 프레임 오류"
 
-#: src/text/iso-639_def.h:123 modules/gui/qt/util/subtitle_preferences.cpp:53
+#: src/text/iso-639_def.h:123 modules/gui/qt/util/subtitle_preferences.cpp:60
 msgid "Cebuano"
 msgstr "세부아노어"
 
-#: src/text/iso-639_def.h:231 modules/gui/qt/util/subtitle_preferences.cpp:56
+#: src/text/iso-639_def.h:231 modules/gui/qt/util/subtitle_preferences.cpp:63
 msgid "Hawaiian"
 msgstr "하와이어"
 
-#: src/text/iso-639_def.h:239 modules/gui/qt/util/subtitle_preferences.cpp:57
+#: src/text/iso-639_def.h:239 modules/gui/qt/util/subtitle_preferences.cpp:64
 msgid "Hmong"
 msgstr "몽어"
 
-#: src/text/iso-639_def.h:344 modules/gui/qt/util/subtitle_preferences.cpp:58
+#: src/text/iso-639_def.h:344 modules/gui/qt/util/subtitle_preferences.cpp:65
 msgid "Manipuri"
 msgstr "마니푸르어"
 
-#: src/text/iso-639_def.h:494 modules/gui/qt/util/subtitle_preferences.cpp:60
+#: src/text/iso-639_def.h:494 modules/gui/qt/util/subtitle_preferences.cpp:67
 msgid "Syriac"
 msgstr "시리아어"
 
@@ -1476,13 +1475,13 @@ msgstr "맞춤 모드"
 
 #: modules/access_output/http.c:65
 msgid "DLNA content features"
-msgstr ""
+msgstr "DLNA 콘텐츠 기능"
 
 #: modules/access_output/http.c:66
 msgid ""
 "Answer with the headers of a DLNA media server, with these content features: "
 "a TV reading the stream may refuse it without them."
-msgstr ""
+msgstr "이 콘텐츠 기능을 담은 DLNA 미디어 서버의 헤더로 응답합니다. 이 헤더가 없으면 스트림을 읽는 TV가 스트림을 거부할 수 있습니다."
 
 #: modules/audio_filter/expander.c:65
 #: modules/gui/qt/dialogs/extended/extended.cpp:82
@@ -1514,7 +1513,7 @@ msgstr "사용"
 
 #: modules/audio_output/wasapi.c:1008
 msgid "Use exclusive mode"
-msgstr ""
+msgstr "독점 모드 사용하기"
 
 #: modules/audio_output/wasapi.c:1010
 msgid ""
@@ -1522,10 +1521,10 @@ msgid ""
 "can be used to reduce the audio latency or to assure that the audio stream "
 "won't be modified by the OS. This mode is more likely to fail if the "
 "soundcard format is not handled by VLC."
-msgstr ""
+msgstr "VLC가 오디오 엔드포인트 장치에 직접 연결합니다. 이 모드는 오디오 지연 시간을 줄이거나 OS가 오디오 스트림을 변경하지 못하게 할 때 사용할 수 있습니다. 사운드 카드 형식을 VLC가 처리하지 못하면 이 모드는 실패할 가능성이 큽니다."
 
 #: modules/codec/vpx.c:62
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:211
 #: modules/video_output/xcb/render.c:764
 msgid "Best"
 msgstr "최고"
@@ -1559,18 +1558,18 @@ msgstr "자막 위치: %+d%%"
 
 #: modules/gui/macosx/library/VLCLibraryController.m:317
 #: modules/gui/macosx/library/VLCLibraryMenuController.m:126
-#: modules/gui/qt/medialibrary/mlplaylistlistmodel.cpp:293
+#: modules/gui/qt/medialibrary/mlplaylistlistmodel.cpp:304
 msgid "Rename playlist"
 msgstr "재생목록 이름 바꾸기"
 
 #: modules/gui/macosx/library/VLCLibraryController.m:318
-#: modules/gui/qt/medialibrary/mlplaylistlistmodel.cpp:294
+#: modules/gui/qt/medialibrary/mlplaylistlistmodel.cpp:305
 msgid "Please enter the new playlist name:"
 msgstr "새 재생목록 이름을 입력하세요:"
 
 #: modules/gui/macosx/library/VLCLibraryController.m:319
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:395
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:441
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:402
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:448
 #: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:127
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:401
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:104
@@ -1581,7 +1580,7 @@ msgid "Rename"
 msgstr "이름 바꾸기"
 
 #: modules/gui/macosx/library/VLCLibraryController.m:339
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:126
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:129
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:94
 msgid "Playlist Name"
 msgstr "재생목록 이름"
@@ -1599,12 +1598,6 @@ msgstr "미디어 라이브러리에 추가"
 msgid "Remove from Favorites"
 msgstr "즐겨찾기에서 제거"
 
-#: modules/gui/macosx/library/VLCLibraryTableCellView.m:144
-#: modules/gui/macosx/library/video-library/VLCLibraryVideoGroupDescriptor.m:42
-#: modules/gui/macosx/library/video-library/VLCLibraryVideoDataSource.m:534
-msgid "Recents"
-msgstr ""
-
 #: modules/gui/macosx/library/VLCLibraryTableCellView.m:147
 #: modules/gui/macosx/library/video-library/VLCLibraryVideoGroupDescriptor.m:47
 #: modules/gui/macosx/library/video-library/VLCLibraryVideoDataSource.m:536
@@ -1614,25 +1607,6 @@ msgstr ""
 #: modules/gui/qt/player/qml/controlbarcontrols/LibraryButton.qml:23
 msgid "Library"
 msgstr "라이브러리"
-
-#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:682
-#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:899
-msgid "All genres"
-msgstr ""
-
-#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:684
-#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:900
-msgid "All artists"
-msgstr ""
-
-#: modules/gui/macosx/library/home-library/VLCLibraryHomeViewSectionHeaderView.m:72
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:474
-msgid "Show all"
-msgstr "모두 보기"
-
-#: modules/gui/macosx/library/home-library/VLCLibraryHomeViewSectionHeaderView.m:122
-msgid "Open %@ in the library"
-msgstr ""
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1604
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:126
@@ -1686,49 +1660,49 @@ msgstr "비밀번호 저장"
 msgid "Ok"
 msgstr "확인"
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:60
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:63
 #: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:37
 #: modules/gui/qt/menus/menus.cpp:955 modules/gui/qt/menus/qml/MainMenu.qml:65
 msgid "Open Network Stream"
 msgstr "네트워크 스트림 열기"
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:92
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:106
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:95
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:109
 msgid "Network URL"
 msgstr "네트워크 URL"
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:94
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:97
 msgid ""
 "“%1” is not a link: links start with http://, rtsp://… or a site's address."
 msgstr ""
 "“%1”은(는) 링크가 아닙니다. 링크는 http://, rtsp://… 또는 사이트 주소로 시작"
 "합니다."
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:95
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:98
 msgid "You can enter multiple links to load."
 msgstr "여러 링크를 입력해 한꺼번에 불러올 수 있습니다."
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:105
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:108
 msgid "e.g., https://www.example.com/stream.avi"
 msgstr "예: https://www.example.com/stream.avi"
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:127
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:130
 msgid "(optional)"
 msgstr "(선택 사항)"
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:128
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:131
 msgid "The playlist will be saved and displayed with this title."
 msgstr "재생목록이 이 제목으로 저장되고 표시됩니다."
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:129
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:132
 msgid "Playlists need the media library."
 msgstr "재생목록을 사용하려면 미디어 라이브러리가 필요합니다."
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:139
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:142
 msgid "e.g., Favorite TV Channels"
 msgstr "예: 즐겨 보는 TV 채널"
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:140
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:143
 msgid "Playlist name"
 msgstr "재생목록 이름"
 
@@ -1845,7 +1819,7 @@ msgid "GitHub"
 msgstr "GitHub"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:291
-#: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:136
+#: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:142
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:293
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:111
 #: modules/gui/qt/widgets/qml/CSDWindowButtonSet.qml:87
@@ -1856,19 +1830,35 @@ msgstr "GitHub"
 msgid "Close"
 msgstr "닫기"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:885
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:897
 msgid "Save play queue as..."
 msgstr "재생 대기열을 다른 이름으로 저장..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1121
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1117
+msgid "Write error"
+msgstr "쓰기 오류"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1134
 msgid "Export playlist as..."
 msgstr "재생목록을 다른 이름으로 내보내기..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1260
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1151
+msgid ""
+"The playlist could not be exported to %1:\n"
+"%2"
+msgstr "재생목록을 %1(으)로 내보낼 수 없습니다:\n%2"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1153
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:49
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
+msgid "Export Playlist"
+msgstr "재생목록 내보내기"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1279
 msgid "Open audio..."
 msgstr "오디오 열기..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1265
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1284
 msgid "Open video..."
 msgstr "비디오 열기..."
 
@@ -1940,68 +1930,68 @@ msgid "Audio effect settings could not be saved (error %1)."
 msgstr "오디오 효과 설정을 저장할 수 없습니다(오류 %1)."
 
 #: modules/gui/qt/dialogs/extended/audio_effects.cpp:525
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:525
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:529
 msgid "The setting \"%1\" changed outside this dialog."
 msgstr "\"%1\" 설정이 이 대화 상자 밖에서 변경되었습니다."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:314
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:318
 msgid "Open video effects before changing them."
 msgstr "변경하기 전에 비디오 효과를 여세요."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:315
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:321
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:353
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:417
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:431
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:468
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:319
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:325
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:357
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:421
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:435
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:472
 msgid "No active video output is available."
 msgstr "사용 가능한 활성 비디오 출력이 없습니다."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:316
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:320
 msgid "Video output changed during the preview."
 msgstr "미리 보기 중에 비디오 출력이 바뀌었습니다."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:350
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:354
 msgid "Video effect option is unavailable."
 msgstr "비디오 효과 옵션을 사용할 수 없습니다."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:360
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:364
 msgid "The video effect value could not be prepared."
 msgstr "비디오 효과 값을 준비할 수 없습니다."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:401
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:405
 msgid "The video effect value could not be applied."
 msgstr "비디오 효과 값을 적용할 수 없습니다."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:408
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:412
 msgid "Video filter is unavailable."
 msgstr "비디오 필터를 사용할 수 없습니다."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:421
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:425
 msgid "The video filter could not be applied."
 msgstr "비디오 필터를 적용할 수 없습니다."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:427
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:431
 msgid "Invalid crop value."
 msgstr "잘라내기 값이 올바르지 않습니다."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:439
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:443
 msgid "Crop could not be applied to every video output."
 msgstr "일부 비디오 출력에 잘라내기를 적용할 수 없습니다."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:456
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:460
 msgid "Video output changed; the previous preview can no longer be restored."
 msgstr "비디오 출력이 바뀌어 이전 미리 보기를 더 이상 복원할 수 없습니다."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:480
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:484
 msgid "Video preview could not be restored."
 msgstr "비디오 미리 보기를 복원할 수 없습니다."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:493
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:497
 msgid "A video effect value is unavailable."
 msgstr "비디오 효과 값 중 하나를 사용할 수 없습니다."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:524
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:528
 msgid "Video effect settings could not be saved (error %1)."
 msgstr "비디오 효과 설정을 저장할 수 없습니다(오류 %1)."
 
@@ -2017,71 +2007,71 @@ msgstr "위/아래 잘라내기 연결"
 msgid "Link left and right crop"
 msgstr "왼쪽/오른쪽 잘라내기 연결"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:95
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:102
 #: modules/gui/qt/dialogs/extended/qml/EffectPresets.qml:244
 msgid "Play a media to save its effects as a preset."
 msgstr "미디어를 재생해야 효과를 프리셋으로 저장할 수 있습니다."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:132
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:139
 msgid "Effect preset: %1"
 msgstr "효과 프리셋: %1"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:247
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:254
 msgid "Effect presets"
 msgstr "효과 프리셋"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:262
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:440
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:269
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:447
 msgid "New Preset"
 msgstr "새 프리셋"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:279
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:286
 msgid "Chosen preset"
 msgstr "선택한 프리셋"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:358
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:101
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:365
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:102
 msgid "Actions of %1"
 msgstr "%1 작업"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:406
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:413
 msgid "Update with current effects"
 msgstr "현재 효과로 업데이트"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:440
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:447
 msgid "Rename Preset"
 msgstr "프리셋 이름 바꾸기"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:483
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:490
 msgid "Preset Name"
 msgstr "프리셋 이름"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:484
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:491
 msgid "The preset keeps its effects."
 msgstr "프리셋의 효과는 그대로 유지됩니다."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:485
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:492
 msgid "The preset keeps the audio and video effects in use."
 msgstr "현재 사용 중인 오디오 및 비디오 효과가 프리셋에 저장됩니다."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:493
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:500
 msgid "e.g., Late Night Movies"
 msgstr "예: 심야 영화"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:494
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:501
 msgid "Preset name"
 msgstr "프리셋 이름"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:512
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:519
 msgid "Delete Preset"
 msgstr "프리셋 삭제"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:538
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:545
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:481
 msgid "Delete %1?"
 msgstr "%1을(를) 삭제할까요?"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:539
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:546
 msgid "The effects in use stay as they are."
 msgstr "사용 중인 효과는 그대로 유지됩니다."
 
@@ -2135,15 +2125,15 @@ msgstr ""
 msgid "Some effects of the preset could not be applied."
 msgstr "프리셋의 일부 효과를 적용할 수 없습니다."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:225
+#: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:231
 msgid "Play audio to preview and edit audio effects."
 msgstr "오디오를 재생하면 오디오 효과를 미리 보고 편집할 수 있습니다."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:247
+#: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:253
 msgid "Play video to preview and edit effects."
 msgstr "비디오를 재생하면 효과를 미리 보고 편집할 수 있습니다."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:266
+#: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:272
 msgid "Open synchronization"
 msgstr "동기화 열기"
 
@@ -2279,19 +2269,19 @@ msgstr "%1 찾아보기"
 msgid "Image Files (*.png *.jpg);;All Files (*)"
 msgstr "이미지 파일 (*.png *.jpg);;모든 파일 (*)"
 
-#: modules/gui/qt/dialogs/firstrun/onboarding.cpp:47
+#: modules/gui/qt/dialogs/firstrun/onboarding.cpp:48
 msgid "Could not add the media folder: %1"
 msgstr "미디어 폴더를 추가할 수 없습니다: %1"
 
-#: modules/gui/qt/dialogs/firstrun/onboarding.cpp:199
+#: modules/gui/qt/dialogs/firstrun/onboarding.cpp:200
 msgid "The media library is unavailable."
 msgstr "미디어 라이브러리를 사용할 수 없습니다."
 
-#: modules/gui/qt/dialogs/firstrun/onboarding.cpp:206
+#: modules/gui/qt/dialogs/firstrun/onboarding.cpp:207
 msgid "Choose a local media folder."
 msgstr "로컬 미디어 폴더를 선택하세요."
 
-#: modules/gui/qt/dialogs/firstrun/onboarding.cpp:211
+#: modules/gui/qt/dialogs/firstrun/onboarding.cpp:212
 msgid "The media folder does not exist or cannot be read: %1"
 msgstr "미디어 폴더가 없거나 읽을 수 없습니다: %1"
 
@@ -2307,11 +2297,11 @@ msgstr "첫 실행 설정을 저장할 수 없습니다."
 msgid "Choose a media folder"
 msgstr "미디어 폴더 선택"
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:200
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:187
 msgid "Choose what VLC does online by itself."
 msgstr "VLC가 알아서 온라인으로 할 일을 선택하세요."
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:213
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:200
 msgid ""
 "No telemetry, no ads, no account. These two connect to the internet without "
 "being asked each time, and send only what is written under them."
@@ -2319,19 +2309,19 @@ msgstr ""
 "원격 분석, 광고, 계정이 없습니다. 아래 두 항목은 매번 묻지 않고 인터넷에 연결"
 "하며, 각 항목 아래에 적힌 정보만 보냅니다."
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:231
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:218
 msgid "Check for updates once a day"
 msgstr "하루에 한 번 업데이트 확인"
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:232
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:219
 msgid "Asks GitHub (api.github.com) for the latest release of VLC Redesign."
 msgstr "GitHub(api.github.com)에 VLC Redesign의 최신 릴리스를 요청합니다."
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:238
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:225
 msgid "Find subtitles online automatically"
 msgstr "온라인에서 자막 자동으로 찾기"
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:239
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:226
 msgid ""
 "When a video has none in your languages: its name and a fingerprint of the "
 "file to subtitle services (OpenSubtitles.org, Wizdom, Gestdown, YIFY "
@@ -2341,17 +2331,17 @@ msgstr ""
 "Wizdom, Gestdown, YIFY Subtitles)에는 파일 이름과 파일 지문을, 영화를 식별하"
 "기 위해 IMDb, Wikidata, Cinemeta에는 이름을 보냅니다."
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:255
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:242
 msgid "Privacy and code signing policy"
 msgstr "개인정보 및 코드 서명 정책"
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:275
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:262
 msgid ""
 "Both stay in Settings: General for the updates, Subtitles for the subtitles."
 msgstr ""
 "두 항목 모두 설정에 있습니다: 업데이트는 일반에, 자막은 자막에 있습니다."
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:338
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:325
 msgid "Finish"
 msgstr "완료"
 
@@ -2367,11 +2357,11 @@ msgstr "현재 지정된 재생 단축키가 없습니다."
 msgid "Find the full list in the menu."
 msgstr "전체 목록은 메뉴에서 볼 수 있습니다."
 
-#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:56
+#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:43
 msgid "Choose the languages of your subtitles."
 msgstr "자막 언어를 선택하세요."
 
-#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:69
+#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:56
 msgid ""
 "Subtitles in your language show by themselves: from the video, from a file "
 "next to it, or found online. When there are none in it, not even online, the "
@@ -2381,21 +2371,21 @@ msgstr ""
 "일 또는 온라인에서 찾은 자막을 사용합니다. 온라인에도 해당 언어 자막이 없으"
 "면 두 번째 언어를 사용합니다."
 
-#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:87
+#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:74
 msgid "Default language"
 msgstr "기본 언어"
 
-#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:106
+#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:93
 msgid "Second language (when there are none)"
 msgstr "두 번째 언어(해당 자막이 없을 때)"
 
-#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:135
+#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:122
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:102
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:528
 msgid "Find subtitles online when a video has none in these languages"
 msgstr "비디오에 이 언어의 자막이 없으면 온라인에서 찾기"
 
-#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:148
+#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:135
 msgid ""
 "Online subtitles come from free services (OpenSubtitles, and more for some "
 "languages). Change all of it in Settings, Subtitles."
@@ -2527,7 +2517,7 @@ msgid "System language"
 msgstr "시스템 언어"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:138
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:107
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:110
 msgid "Higher"
 msgstr "더 높음"
 
@@ -2547,40 +2537,40 @@ msgstr "높게"
 msgid "%1 MiB"
 msgstr "%1 MiB"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:177
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:185
 msgid "Same as video"
 msgstr "비디오와 같음"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:179
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:181
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:187
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:189
 msgid "%1 px wide"
 msgstr "너비 %1 px"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:245
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:253
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
 msgid "Discover cast devices"
 msgstr "캐스트 장치 검색"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:246
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:254
 msgid ""
 "Looks for the cast devices of the local network when the Renderer menu opens."
 msgstr "렌더러 메뉴를 열 때 로컬 네트워크의 캐스트 장치를 찾습니다."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:247
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:255
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:51
 msgid "Remember window size and position"
 msgstr "창 크기 및 위치 기억"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:248
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:256
 msgid "Opens the window where it was when VLC was closed."
 msgstr "VLC를 닫았을 때의 위치에 창을 엽니다."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:249
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:257
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:70
 msgid "Always show the player bar"
 msgstr "항상 플레이어 막대 표시"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:250
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:258
 msgid ""
 "Keeps the player bar at the bottom of the library while nothing plays: Play "
 "starts the play queue, or opens files when it is empty."
@@ -2588,12 +2578,12 @@ msgstr ""
 "아무것도 재생하지 않을 때도 라이브러리 아래쪽에 플레이어 막대를 표시합니다. "
 "재생을 누르면 재생 대기열을 시작하고, 대기열이 비어 있으면 파일을 엽니다."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:252
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:260
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:72
 msgid "Increase text contrast"
 msgstr "텍스트 대비 높이기"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:253
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:261
 msgid ""
 "Draws the dim texts of the design (hints, descriptions, watched items) "
 "brighter, to the contrast the WCAG accessibility guidelines ask for (AA)."
@@ -2601,55 +2591,55 @@ msgstr ""
 "디자인의 흐린 텍스트(힌트, 설명, 시청한 항목)를 WCAG 접근성 지침(AA)이 요구하"
 "는 대비가 되도록 더 밝게 표시합니다."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:255
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:263
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:65
 msgid "Popup duration"
 msgstr "팝업 표시 시간"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:256
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:264
 msgid "How long the popup of the track changes stays on the screen."
 msgstr "트랙 변경 팝업이 화면에 표시되는 시간입니다."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:257
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:327
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:265
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
 msgid "Process priority"
 msgstr "프로세스 우선순위"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:258
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:266
 msgid ""
 "How much processor time the system gives VLC compared with the other "
 "programs."
 msgstr "시스템이 다른 프로그램에 비해 VLC에 할당하는 프로세서 시간입니다."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:259
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:275
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:267
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:281
 msgid "Double click on the video"
 msgstr "비디오 더블 클릭"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:260
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:268
 msgid "What a double click on the video does."
 msgstr "비디오를 더블 클릭할 때 수행할 동작입니다."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:260
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:268
 msgid "Nothing|Toggle fullscreen"
 msgstr "없음|전체화면 전환"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:261
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:228
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:269
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:234
 msgid "Size values"
 msgstr "크기 값"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:262
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:270
 msgid ""
 "Choose the size of the subtitles by name (relative to the picture), or in "
 "pixels."
 msgstr "자막 크기를 이름(화면 기준 상대 크기) 또는 픽셀로 선택합니다."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:263
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:271
 msgid "Relative|Pixels"
 msgstr "상대 크기|픽셀"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:265
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:273
 msgid ""
 "How opaque the box behind the subtitles is when there is one (kept while "
 "there is none)."
@@ -2657,12 +2647,12 @@ msgstr ""
 "자막 뒤에 상자가 있을 때 그 상자의 불투명도입니다(상자가 없을 때도 값은 유지"
 "됩니다)."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:266
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:274
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:94
 msgid "Never remember items matching"
 msgstr "다음과 일치하는 항목은 기억 안 함"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:267
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:275
 msgid ""
 "A regular expression: the items whose address or name matches it are not "
 "saved in the history, nor their playback position."
@@ -2670,222 +2660,226 @@ msgstr ""
 "정규식입니다. 주소나 이름이 일치하는 항목은 기록에 저장되지 않으며 재생 위치"
 "도 저장되지 않습니다."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:281
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:264
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:289
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:270
 msgid "System monospace"
 msgstr "시스템 고정폭"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:281
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:289
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:233
 msgid "System, sans-serif"
 msgstr "시스템, 산세리프"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:334
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:342
 msgid "Ultra fast"
 msgstr "가장 빠르게"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:334
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:342
 msgid "Super fast"
 msgstr "아주 빠르게"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:335
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:343
 msgid "Very fast"
 msgstr "매우 빠르게"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:337
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:345
 msgid "Very slow"
 msgstr "매우 느리게"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:337
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:345
 msgid "Placebo"
 msgstr "플라시보"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:339
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:347
 msgid "Film"
 msgstr "영화"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:340
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:348
 msgid "Still image"
 msgstr "정지 이미지"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:341
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:349
 msgid "Fast decoding"
 msgstr "빠른 디코딩"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:341
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:349
 msgid "Zero latency"
 msgstr "지연 없음"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:908
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:916
 msgid "%1: this value can not be used."
 msgstr "%1: 이 값은 사용할 수 없습니다."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:958
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:987
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:979
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1008
 msgid "%1 is not available in this VLC installation."
 msgstr "이 VLC 설치에서는 %1을(를) 사용할 수 없습니다."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:972
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:993
 msgid "This setting"
 msgstr "이 설정"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:982
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1003
 msgid "%1: choose a folder of this computer."
 msgstr "%1: 이 컴퓨터의 폴더를 선택하세요."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1011
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1032
 msgid "Select a category to reset."
 msgstr "초기화할 범주를 선택하세요."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1073
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1094
 msgid "Repeat the current item (One) or the whole play queue (All)."
 msgstr "현재 항목(한 개) 또는 재생 대기열 전체(전체)를 반복합니다."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1081
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1102
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:119
 msgid "When playback finishes"
 msgstr "재생이 끝나면"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1082
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1103
 msgid "Stop, or quit VLC at the end of the play queue."
 msgstr "재생 대기열이 끝나면 정지하거나 VLC를 종료합니다."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1090
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1111
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:46
 msgid "Use a custom skin"
 msgstr "사용자 지정 스킨 사용"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1091
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1112
 msgid "Starts VLC with the skin chosen below instead of this interface."
 msgstr "이 인터페이스 대신 아래에서 선택한 스킨으로 VLC를 시작합니다."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1107
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1128
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:93
 msgid "Remember the playback position"
 msgstr "재생 위치 기억"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1108
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1129
 msgid "Lets VLC continue the media where you left off."
 msgstr "중단한 위치부터 미디어를 이어서 재생합니다."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1122
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1143
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
 msgid "Reverse scroll direction"
 msgstr "스크롤 방향 반대로"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1123
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1144
 msgid "The wheels that seek go backwards when turned forwards."
 msgstr "탐색용 휠을 앞으로 돌리면 뒤로 이동합니다."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1138
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:281
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1159
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:287
 msgid "Web remote control"
 msgstr "웹 원격 제어"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1139
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1160
 msgid ""
 "Lets a web browser control VLC. Set its password in the Advanced Options."
 msgstr ""
 "웹 브라우저로 VLC를 제어할 수 있습니다. 비밀번호는 고급 옵션에서 설정하세요."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1157
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1178
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
 msgid "Video post-processing"
 msgstr "비디오 후처리"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1158
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1179
 msgid ""
 "Improves the picture of poorly encoded videos, at the cost of processing "
 "power."
 msgstr ""
 "처리 성능을 더 사용하여 품질이 낮게 인코딩된 비디오의 화질을 개선합니다."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1207
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1228
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:214
 msgid "Visualization size"
 msgstr "시각화 크기"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1208
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1229
 msgid "The size the visualizations are drawn at."
 msgstr "시각화를 그리는 크기입니다."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1209
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1230
 msgid "Match window"
 msgstr "창에 맞춤"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1250
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1271
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:120
 msgid "Seek precisely"
 msgstr "정확하게 탐색"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1251
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1272
 msgid ""
 "Seek to the exact time asked, slower than seeking to the nearest key frame."
 msgstr ""
 "요청한 시간으로 정확하게 탐색합니다. 가장 가까운 키 프레임으로 탐색하는 것보"
 "다 느립니다."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1347
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1368
 msgid "From the file only"
 msgstr "파일에서만"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1349
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1370
 msgid "From the file and the internet"
 msgstr "파일 및 인터넷에서"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1366
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1387
 msgid "Box"
 msgstr "상자"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1426
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1447
 msgid "Above normal"
 msgstr "보통 초과"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1427
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1448
 msgid "Below normal"
 msgstr "보통 미만"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1427
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1448
 msgid "Idle"
 msgstr "유휴"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1545
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1567
 msgid "Current screen"
 msgstr "현재 화면"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1550
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1572
 msgid "Screen %1 (%2)"
 msgstr "화면 %1 (%2)"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1556
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1578
 msgid "Screen %1"
 msgstr "화면 %1"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1565
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1587
 msgid "Any title"
 msgstr "모든 제목"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1565
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1587
 msgid "Contains title"
 msgstr "제목 포함"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1566
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1588
 msgid "Title with extra characters"
 msgstr "추가 문자가 있는 제목"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1566
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1588
 msgid "Exact title match"
 msgstr "제목과 정확히 일치"
 
-#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:47
+#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:92
+msgid "The audio output in use does not keep a startup volume."
+msgstr "사용 중인 오디오 출력은 시작 볼륨을 유지하지 않습니다."
+
+#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:126
 msgid "The plugins can not be rescanned on this installation."
 msgstr "이 설치에서는 플러그인을 다시 검색할 수 없습니다."
 
-#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:63
+#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:141
 msgid "The plugins could not be rescanned."
 msgstr "플러그인을 다시 검색할 수 없습니다."
 
-#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:75
+#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:153
 msgid ""
 "The plugins could not be rescanned: the folder of VLC may need administrator "
 "rights."
@@ -2893,16 +2887,16 @@ msgstr ""
 "플러그인을 다시 검색할 수 없습니다. VLC 폴더에 관리자 권한이 필요할 수 있습니"
 "다."
 
-#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:87
+#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:165
 msgid "The configurations folder could not be opened."
 msgstr "구성 폴더를 열 수 없습니다."
 
-#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:177
+#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:257
 msgid "Last.fm is unavailable in this VLC installation."
 msgstr "이 VLC 설치에서는 Last.fm을 사용할 수 없습니다."
 
 #: modules/gui/qt/dialogs/preferences/config_model_effects.cpp:128
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:460
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:468
 msgid "VLC preferences are unavailable."
 msgstr "VLC 환경설정을 사용할 수 없습니다."
 
@@ -2935,39 +2929,39 @@ msgstr ""
 "%1이(가) 설정 밖에서 변경되었거나 사용할 수 없습니다. 변경 내용이 저장되지 않"
 "았습니다."
 
-#: modules/gui/qt/dialogs/preferences/preferences.cpp:78
-#: modules/gui/qt/qt.cpp:338
+#: modules/gui/qt/dialogs/preferences/preferences.cpp:79
+#: modules/gui/qt/qt.cpp:337
 msgid "Expert"
 msgstr "전문가"
 
-#: modules/gui/qt/dialogs/preferences/preferences.cpp:79
+#: modules/gui/qt/dialogs/preferences/preferences.cpp:80
 msgid "Switch to expert preferences view"
 msgstr "전문가 환경설정 보기로 전환"
 
-#: modules/gui/qt/dialogs/preferences/preferences.cpp:203
+#: modules/gui/qt/dialogs/preferences/preferences.cpp:204
 msgid "Modified only"
 msgstr "수정된 항목만"
 
-#: modules/gui/qt/dialogs/preferences/preferences.cpp:232
+#: modules/gui/qt/dialogs/preferences/preferences.cpp:233
 msgid "Expert Preferences"
 msgstr "전문가 환경설정"
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:216
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:217
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:62
 msgid "Navigation"
 msgstr "탐색"
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:367
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:422
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:440
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:368
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:430
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:448
 msgid "This shortcut is unavailable."
 msgstr "이 단축키는 사용할 수 없습니다."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:378
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:379
 msgid "This key combination cannot be used by VLC."
 msgstr "VLC에서 이 키 조합을 사용할 수 없습니다."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:474
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:482
 msgid ""
 "The global hotkeys of \"%1\" changed outside this dialog. Cancel and reopen "
 "the shortcuts."
@@ -2975,7 +2969,7 @@ msgstr ""
 "\"%1\"의 전역 단축키가 이 대화 상자 밖에서 변경되었습니다. 취소한 후 단축키"
 "를 다시 여세요."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:475
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:483
 msgid ""
 "The hotkeys of \"%1\" changed outside this dialog. Cancel and reopen the "
 "shortcuts."
@@ -2983,11 +2977,11 @@ msgstr ""
 "\"%1\"의 단축키가 이 대화 상자 밖에서 변경되었습니다. 취소한 후 단축키를 다"
 "시 여세요."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:489
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:497
 msgid "A shortcut could not be changed. Changes were reverted in memory."
 msgstr "단축키를 변경할 수 없습니다. 메모리의 변경 내용을 되돌렸습니다."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:497
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:505
 msgid ""
 "Could not save shortcuts (error %1). Changes were reverted in memory; verify "
 "the configuration file."
@@ -2999,13 +2993,13 @@ msgstr ""
 msgid "System's default (%1)"
 msgstr "시스템 기본값 (%1)"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1441
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1446
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1439
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1444
 msgid "%1 (partial)"
 msgstr "%1 (일부)"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1824
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1834
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1839
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1849
 msgid "Please choose an entry point folder"
 msgstr "시작 지점 폴더를 선택하세요"
 
@@ -3020,7 +3014,7 @@ msgstr "테마"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:181
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:409
-#: modules/gui/qt/qt.cpp:333
+#: modules/gui/qt/qt.cpp:332
 msgid "Accent color"
 msgstr "강조 색"
 
@@ -3183,6 +3177,10 @@ msgid "%1 more matching shortcut"
 msgid_plural "%1 more matching shortcuts"
 msgstr[0] "일치하는 단축키 %1개 더 있음"
 
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:474
+msgid "Show all"
+msgstr "모두 보기"
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:514
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:93
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:109
@@ -3245,7 +3243,7 @@ msgid "All VLC options"
 msgstr "모든 VLC 옵션"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:748
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:349
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:356
 msgid "Reset all settings"
 msgstr "모든 설정 초기화"
 
@@ -3281,7 +3279,7 @@ msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:187
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:193
 msgid "Two-pass"
 msgstr "2패스"
 
@@ -3358,12 +3356,12 @@ msgid "Play video to adjust and preview the picture."
 msgstr "비디오를 재생하면 화면을 조정하고 미리 볼 수 있습니다."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:114
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:188
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:194
 msgid "Spatial audio"
 msgstr "공간 음향"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:122
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:191
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:197
 msgid "Stereo widening"
 msgstr "스테레오 확장"
 
@@ -3388,7 +3386,7 @@ msgid "The address the played tracks are sent to."
 msgstr "재생한 트랙을 보낼 주소입니다."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:216
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:273
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:279
 msgid "Nothing"
 msgstr "없음"
 
@@ -3396,7 +3394,7 @@ msgstr "없음"
 msgid "Seek"
 msgstr "탐색"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:286
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:293
 msgid ""
 "Set a web remote password in the Advanced Options: the remote stays locked "
 "without one."
@@ -3404,102 +3402,102 @@ msgstr ""
 "고급 옵션에서 웹 원격 제어 비밀번호를 설정하세요. 비밀번호가 없으면 원격 제어"
 "가 잠긴 상태로 유지됩니다."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:291
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:298
 msgid "Applies the next time VLC starts"
 msgstr "다음에 VLC를 시작할 때 적용됩니다"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:303
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:310
 msgid "Choose a snapshot folder"
 msgstr "스냅샷 폴더 선택"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:304
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:311
 msgid "Choose a time-shift buffer folder"
 msgstr "타임시프트 버퍼 폴더 선택"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:305
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:312
 msgid "Choose a recording folder"
 msgstr "녹화 폴더 선택"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:307
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:314
 msgid "Choose a folder"
 msgstr "폴더 선택"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:311
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:318
 msgid "Choose a skin"
 msgstr "스킨 선택"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:312
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:319
 msgid "Skin files (*.vlt *.wsz *.xml)"
 msgstr "스킨 파일 (*.vlt *.wsz *.xml)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:315
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:322
 msgid "Choose a log file"
 msgstr "로그 파일 선택"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:341
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:348
 msgid "Open configurations folder"
 msgstr "구성 폴더 열기"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:342
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:349
 msgid "Shows the folder of the settings of VLC."
 msgstr "VLC 설정이 저장된 폴더를 표시합니다."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:350
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:357
 msgid "Puts every setting of VLC back to its default."
 msgstr "VLC의 모든 설정을 기본값으로 되돌립니다."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:366
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:373
 msgid "Rescan plugins"
 msgstr "플러그인 다시 검색"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:367
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:374
 msgid "Rescan"
 msgstr "다시 검색"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:101
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:110
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:104
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:113
 msgid "0 s"
 msgstr "0초"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:101
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:113
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:104
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:116
 msgid "5 s"
 msgstr "5초"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:102
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:105
 msgid "10s"
 msgstr "10초"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:105
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:108
 msgid "Lower"
 msgstr "더 낮음"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:106
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:494
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:109
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:513
 msgid "Usual"
 msgstr "기본"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:110
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:113
 msgid "-5 s"
 msgstr "-5초"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:111
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:114
 msgid "+5 s"
 msgstr "+5초"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:113
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:116
 msgid "0.5 s"
 msgstr "0.5초"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:116
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:119
 msgid "1 s"
 msgstr "1초"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:116
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:119
 msgid "10 s"
 msgstr "10초"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:591
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:604
 msgid "Choose a color"
 msgstr "색 선택"
 
@@ -3733,8 +3731,8 @@ msgstr "다른 앱이 오디오를 사용하면 일시중지"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:112
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:114
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:115
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:196
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:202
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
 msgctxt "media streams"
 msgid "Tracks"
 msgstr "트랙"
@@ -3786,7 +3784,7 @@ msgid "Seeking"
 msgstr "탐색"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:121
-#: modules/gui/qt/qt.cpp:300
+#: modules/gui/qt/qt.cpp:299
 msgid "Show thumbnail while scrubbing"
 msgstr "탐색 중 썸네일 표시"
 
@@ -3837,583 +3835,583 @@ msgstr "마지막 재생 상태 복원 (트랙, 속도...)"
 msgid "Start videos in fullscreen"
 msgstr "비디오를 전체화면으로 시작"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:140
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:142
 msgid "Stop the screensaver during playback"
 msgstr "재생 중 화면 보호기 끄기"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:141
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
 msgid "Play video as desktop wallpaper"
 msgstr "비디오를 바탕 화면 배경으로 재생"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:144
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:146
 msgid "Method"
 msgstr "방식"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:145
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:146
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:147
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:148
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:149
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:158
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:150
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:151
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:160
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:162
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:376
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:164
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:382
 msgid "Framing"
 msgstr "화면 구성"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:147
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:149
 msgid "Scale video to the window"
 msgstr "창에 맞게 비디오 크기 조정"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:149
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:151
 msgid "Position in the window"
 msgstr "창 내 위치"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:150
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:151
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:152
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:153
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:154
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:155
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:156
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:165
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:157
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:158
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:167
 msgid "Snapshots"
 msgstr "스냅샷"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:150
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:152
 msgid "Save to"
 msgstr "저장 위치"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:151
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:153
 msgid "File name prefix"
 msgstr "파일 이름 접두어"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:155
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:157
 msgid "Number files sequentially"
 msgstr "파일에 일련번호 붙이기"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:156
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:158
 msgid "Show a preview after capture"
 msgstr "캡처 후 미리 보기 표시"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:158
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:160
 msgid "Custom aspect ratios"
 msgstr "사용자 지정 화면 비율"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:160
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:162
 msgid "Custom crop ratios"
 msgstr "사용자 지정 잘라내기 비율"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:165
-msgid "Snapshot height (-1: proportional)"
-msgstr "스냅샷 높이 (-1: 비율 유지)"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:167
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "스냅샷 높이 (0: 비율 유지, -1: 원본)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:166
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:168
 msgid "Deinterlacing filter"
 msgstr "디인터레이스 필터"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:170
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:172
 msgid "Speaker setup"
 msgstr "스피커 구성"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:171
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:173
 msgid "Maximum volume"
 msgstr "최대 볼륨"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:173
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:174
-#: modules/gui/qt/dialogs/preferences/qml/SettingsStartupVolume.qml:139
-msgid "Startup volume"
-msgstr "시작 볼륨"
-
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:175
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:176
-msgid "Volume step"
-msgstr "볼륨 단계"
-
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:177
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:178
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:179
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:180
+#: modules/gui/qt/dialogs/preferences/qml/SettingsStartupVolume.qml:139
+msgid "Startup volume"
+msgstr "시작 볼륨"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:182
+msgid "Volume step"
+msgstr "볼륨 단계"
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:183
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:185
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:186
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
 msgid "Loudness"
 msgstr "라우드니스"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:177
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:183
 msgid "Normalize loudness"
 msgstr "라우드니스 정규화"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:178
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
 msgid "Target level"
 msgstr "목표 레벨"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:179
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:185
 msgid "Night mode"
 msgstr "야간 모드"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:183
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
 msgid "Replay gain preamp"
 msgstr "리플레이 게인 프리앰프"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:195
 msgid "Spatial audio mode"
 msgstr "공간 음향 모드"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:193
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:199
 msgid "Pitch shift"
 msgstr "음조 변경"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:194
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:200
 msgid "Chorus/flanger"
 msgstr "코러스/플랜저"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:196
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:202
 msgid "Preferred audio language"
 msgstr "선호하는 오디오 언어"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:197
-#: modules/gui/qt/player/qml/TracksMenu.qml:263
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
+#: modules/gui/qt/player/qml/TracksMenu.qml:266
 msgid "Audio delay"
 msgstr "오디오 지연"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:201
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:207
 msgid "Pass compressed audio to the receiver"
 msgstr "압축 오디오를 리시버로 그대로 전달"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:202
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
 msgid "Detect Dolby Surround"
 msgstr "돌비 서라운드 감지"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:211
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
 msgid "Fastest"
 msgstr "가장 빠름"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:211
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
 msgid "Balanced"
 msgstr "균형"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:210
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:216
 msgid "Output gain"
 msgstr "출력 게인"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:211
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:217
 msgid "Keep the pitch when changing the speed"
 msgstr "속도를 바꿀 때 음조 유지"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:212
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:218
 msgid "Equalizer preamp"
 msgstr "이퀄라이저 프리앰프"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:214
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:220
 msgid "Compressor ratio"
 msgstr "컴프레서 비율"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:215
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
 msgid "Compressor threshold"
 msgstr "컴프레서 임계값"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:216
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:222
 msgid "Compressor makeup gain"
 msgstr "컴프레서 메이크업 게인"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:218
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:222
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:228
 msgid "Tracks & Languages"
 msgstr "트랙 및 언어"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
 msgid "Preferred language"
 msgstr "선호하는 언어"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:222
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:228
 msgid "Text encoding"
 msgstr "텍스트 인코딩"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:223
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:255
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:229
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:261
 msgid "Loading Subtitles"
 msgstr "자막 불러오기"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:223
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:229
 msgid "Load subtitle files automatically"
 msgstr "자막 파일 자동으로 불러오기"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
 msgid "File name matching"
 msgstr "파일 이름 일치"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:233
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:239
 msgid "Bold"
 msgstr "굵게"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:234
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:240
 msgid "Text color"
 msgstr "텍스트 색"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:248
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:254
 msgid "Vertical position"
 msgstr "세로 위치"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:249
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:255
 msgid "Timing"
 msgstr "타이밍"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:250
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:251
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:252
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:266
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:256
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:257
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:259
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:272
 msgid "On-Screen Messages"
 msgstr "화면 메시지"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:250
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:256
 msgid "Show feedback for shortcuts"
 msgstr "단축키 사용 시 화면에 표시"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:251
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:257
 msgid "Show feedback for"
 msgstr "화면 표시 시간"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:252
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
 msgid "Show filename when a video starts"
 msgstr "비디오 시작 시 파일 이름 표시"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:259
 msgid "Show filename for"
 msgstr "파일 이름 표시 시간"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:255
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:261
 msgid "Load subtitles from these folders"
 msgstr "다음 폴더에서 자막 불러오기"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:263
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:269
 msgid "Monospace font"
 msgstr "고정폭 글꼴"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:265
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:271
 msgid "Text alignment"
 msgstr "텍스트 정렬"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:266
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:272
 msgid "Position of the filename"
 msgstr "파일 이름 위치"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:268
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:269
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:270
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:271
-msgid "Skip Amounts"
-msgstr "건너뛰기 간격"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:268
-msgid "Very short skip"
-msgstr "아주 짧은 건너뛰기"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:269
-msgid "Short skip"
-msgstr "짧은 건너뛰기"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:270
-msgid "Medium skip"
-msgstr "중간 건너뛰기"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:271
-msgid "Long skip"
-msgstr "긴 건너뛰기"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:272
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:274
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:275
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:276
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:277
+msgid "Skip Amounts"
+msgstr "건너뛰기 간격"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:274
+msgid "Very short skip"
+msgstr "아주 짧은 건너뛰기"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:275
+msgid "Short skip"
+msgstr "짧은 건너뛰기"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:276
+msgid "Medium skip"
+msgstr "중간 건너뛰기"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:277
+msgid "Long skip"
+msgstr "긴 건너뛰기"
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:281
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:283
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:286
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:289
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:292
 msgid "Mouse"
 msgstr "마우스"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:272
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
 msgid "Single click on the video"
 msgstr "비디오 한 번 클릭"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:273
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:279
 msgid "Play / Pause"
 msgstr "재생 / 일시중지"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:274
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:280
 msgid "Play / Pause on release"
 msgstr "버튼을 놓을 때 재생 / 일시중지"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:276
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
 msgid "Scroll wheel"
 msgstr "스크롤 휠"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:277
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:283
 msgid "Horizontal scroll"
 msgstr "가로 스크롤"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:281
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:285
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:377
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:287
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:288
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:290
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:291
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:383
 msgid "Remotes"
 msgstr "원격 제어"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:283
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:289
 msgid "Handle mouse clicks in the video"
 msgstr "비디오에서 마우스 클릭 처리"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:290
 msgid "Web remote password"
 msgstr "웹 원격 제어 비밀번호"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:285
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:291
 msgid "Web remote address"
 msgstr "웹 원격 제어 주소"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:286
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:292
 msgid "Ignore the volume keys of the keyboard"
 msgstr "키보드의 볼륨 키 무시"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:288
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:289
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:290
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:291
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:294
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:300
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
 msgid "Opening Files"
 msgstr "파일 열기"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:288
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:294
 msgid "Only allow one VLC window"
 msgstr "VLC 창 하나만 허용"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:289
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
 msgid "Apply to files opened from the file manager"
 msgstr "파일 관리자에서 연 파일에도 적용"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:290
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
 msgid "Add to the playlist instead of replacing it"
 msgstr "재생목록을 바꾸지 않고 추가"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:291
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
 msgid "When opening a folder"
 msgstr "폴더를 열 때"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:292
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
 msgid "Only this folder"
 msgstr "이 폴더만"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:292
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
 msgid "Include subfolders"
 msgstr "하위 폴더 포함"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:293
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
 msgid "Include and expand subfolders"
 msgstr "하위 폴더 포함 및 펼치기"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
 msgid "Metadata & Artwork"
 msgstr "메타데이터 및 아트워크"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
 msgid "Fetch titles and artwork"
 msgstr "제목 및 아트워크 가져오기"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
 msgid "Read media information automatically"
 msgstr "미디어 정보 자동으로 읽기"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
 msgid "Ignored file extensions"
 msgstr "무시할 파일 확장자"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:307
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
 msgid "Buffering"
 msgstr "버퍼링"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
 msgid "Local files"
 msgstr "로컬 파일"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Network streams"
 msgstr "네트워크 스트림"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
 msgid "Live capture"
 msgstr "라이브 캡처"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:306
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:307
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:312
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
 msgid "Proxy"
 msgstr "프록시"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:306
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:312
 msgid "System proxy"
 msgstr "시스템 프록시"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
 msgid "Security"
 msgstr "보안"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 msgid "Verify certificates against the system trust store"
 msgstr "시스템 신뢰 저장소로 인증서 확인"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
 msgid "Cipher preference"
 msgstr "암호화 방식 선호"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
 msgid "Secure (128-bit)"
 msgstr "안전 (128비트)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
 msgid "Most secure (256-bit)"
 msgstr "가장 안전 (256비트)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:320
 msgid "Connections"
 msgstr "연결"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
 msgid "Connection timeout"
 msgstr "연결 시간 제한"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:320
 msgid "HTTP user agent"
 msgstr "HTTP 사용자 에이전트"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
 msgid "Trusted certificates folder"
 msgstr "신뢰할 수 있는 인증서 폴더"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:320
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
 msgid "Post-processing quality"
 msgstr "후처리 품질"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:327
 msgid "Skip the H.264 loop filter"
 msgstr "H.264 루프 필터 건너뛰기"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:328
 msgid "Non-reference frames"
 msgstr "비참조 프레임"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:328
 msgid "Bidirectional frames"
 msgstr "양방향 프레임"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:323
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
 msgid "Non-key frames"
 msgstr "비키 프레임"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
 msgid "Decoding threads"
 msgstr "디코딩 스레드"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:327
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
 msgid "Smooth Playback"
 msgstr "부드러운 재생"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
 msgid "Drop frames when the system can't keep up"
 msgstr "시스템이 따라가지 못하면 프레임 버리기"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
-msgid "Give VLC real-time priority"
-msgstr "VLC에 실시간 우선순위 부여"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:328
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:336
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
 msgid "Developer"
 msgstr "개발자"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
 msgid "Decoder"
 msgstr "디코더"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
 msgid "Clock reference averaging"
 msgstr "클럭 참조 평균"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
 msgid "Save recordings to"
 msgstr "녹화 저장 위치"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:340
 msgid "Record without re-encoding when possible"
 msgstr "가능하면 다시 인코딩하지 않고 녹화"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:348
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:353
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:354
 msgid "Casting"
 msgstr "캐스트"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
 msgid "Cast quality"
 msgstr "캐스트 품질"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:345
 msgid "Low CPU"
 msgstr "CPU 절약"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
 msgid "Play locally while streaming"
 msgstr "스트리밍 중에도 로컬에서 재생"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:348
 msgid "Include audio"
 msgstr "오디오 포함"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:343
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:349
 msgid "Include video"
 msgstr "비디오 포함"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:350
 msgid "Include subtitles"
 msgstr "자막을 포함하기"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:345
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:351
 msgid "Encoding preset"
 msgstr "인코딩 프리셋"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:346
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:352
 msgid "Tuning"
 msgstr "튜닝"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:353
 msgid "Send Dolby audio as is"
 msgstr "돌비 오디오를 그대로 전송"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:348
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:354
 msgid "Cast HTTP port"
 msgstr "캐스트 HTTP 포트"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:349
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:355
 msgid "Keep the stream output open between items"
 msgstr "항목 사이에 스트림 출력 유지"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:395
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:401
 #: modules/gui/qt/widgets/qml/SplitButton.qml:142
 msgid "More options"
 msgstr "추가 옵션"
@@ -4479,7 +4477,7 @@ msgstr "끔"
 
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:90
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:74
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:594
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:595
 msgid "Global Hotkey"
 msgstr "전역 단축키"
 
@@ -4535,27 +4533,27 @@ msgstr "다음 프로그램 / 서비스 ID"
 msgid "All Fields"
 msgstr "모든 필드"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:225
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:226
 msgid "%1. Press to add a key"
 msgstr "%1. 눌러서 키 추가"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:226
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:227
 msgid "No key. Press to add one"
 msgstr "키 없음. 눌러서 키 추가"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:340
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:341
 msgid "Remove %1"
 msgstr "%1 제거"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:422
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:423
 msgid "Search Keyboard Shortcuts..."
 msgstr "단축키 검색..."
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:688
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:689
 msgid "Hotkey of %1"
 msgstr "%1 단축키"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:697
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:698
 msgid "Global hotkey of %1"
 msgstr "%1 전역 단축키"
 
@@ -4631,32 +4629,32 @@ msgstr "시리즈"
 msgid "Work"
 msgstr "업무"
 
-#: modules/gui/qt/dialogs/toolbar/profile_persistence.cpp:100
+#: modules/gui/qt/dialogs/toolbar/profile_persistence.cpp:99
 msgid "Could not save the selected profile."
 msgstr "선택한 프로필을 저장할 수 없습니다."
 
-#: modules/gui/qt/dialogs/toolbar/profile_settings.cpp:186
+#: modules/gui/qt/dialogs/toolbar/profile_settings.cpp:224
 msgid "Profile settings are unavailable or incompatible."
 msgstr "프로필 설정을 사용할 수 없거나 호환되지 않습니다."
 
-#: modules/gui/qt/dialogs/toolbar/profile_settings.cpp:211
+#: modules/gui/qt/dialogs/toolbar/profile_settings.cpp:249
 msgid "Profile appearance is invalid."
 msgstr "프로필 모양이 올바르지 않습니다."
 
-#: modules/gui/qt/dialogs/toolbar/profile_settings.cpp:228
+#: modules/gui/qt/dialogs/toolbar/profile_settings.cpp:265
 msgid "Could not save profile appearance."
 msgstr "프로필 모양을 저장할 수 없습니다."
 
-#: modules/gui/qt/dialogs/toolbar/profile_settings.cpp:245
+#: modules/gui/qt/dialogs/toolbar/profile_settings.cpp:283
 msgid "Could not apply profile settings; previous values restored."
 msgstr "프로필 설정을 적용할 수 없어 이전 값을 복원했습니다."
 
-#: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:41
+#: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:40
 #: modules/gui/qt/menus/qml/MainMenu.qml:117
 msgid "Profile (%1)"
 msgstr "프로필 (%1)"
 
-#: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:87
+#: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:86
 msgid "Customize player"
 msgstr "플레이어 사용자 지정"
 
@@ -4746,11 +4744,11 @@ msgstr "프로필 삭제"
 msgid "Its layout and its settings go with it."
 msgstr "레이아웃과 설정도 함께 삭제됩니다."
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1209
+#: modules/gui/qt/maininterface/mainctx.cpp:1283
 msgid "Paste from clipboard"
 msgstr "클립보드에서 붙여넣기"
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1210
+#: modules/gui/qt/maininterface/mainctx.cpp:1284
 msgid "Do you want to enqueue the following URLs into the play queue?"
 msgstr "다음 URL을 재생 대기열에 추가할까요?"
 
@@ -4758,10 +4756,10 @@ msgstr "다음 URL을 재생 대기열에 추가할까요?"
 #. * right to left (Arabic, Hebrew, Persian, Urdu...), else "LTR". Choosing
 #. * the language lays the interface out in that direction (the user can
 #. * change it under the language).
-#: modules/gui/qt/maininterface/mainctx.cpp:1352
+#: modules/gui/qt/maininterface/mainctx.cpp:1441
 msgctxt "layout direction"
 msgid "LTR"
-msgstr ""
+msgstr "LTR"
 
 #: modules/gui/qt/maininterface/qml/LocalTopbar.qml:37
 msgid "Local top bar"
@@ -4771,7 +4769,7 @@ msgstr "로컬 상단 막대"
 msgid "Show navigation menu"
 msgstr "탐색 메뉴 표시"
 
-#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:241
+#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:243
 #: modules/gui/qt/player/qml/TopBar.qml:493
 msgid "VLC Media Player"
 msgstr "VLC 미디어 재생기"
@@ -4795,18 +4793,10 @@ msgstr "홈 화면"
 msgid "Open Disc"
 msgstr "디스크 열기"
 
-#: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:34
-msgid "Open Multiple Files"
-msgstr "여러 파일 열기"
-
 #: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:38
 #: modules/gui/qt/menus/menus.cpp:959 modules/gui/qt/menus/qml/MainMenu.qml:77
 msgid "Open Capture Device"
 msgstr "캡처 장치 열기"
-
-#: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:39
-msgid "Open Location from clipboard"
-msgstr "클립보드의 위치 열기"
 
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:29
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:30
@@ -4904,14 +4894,14 @@ msgstr "다시 확인"
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:88
 #: modules/gui/qt/medialibrary/qml/VideoGroupDisplay.qml:40
-#: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:73
+#: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:84
 #: modules/gui/qt/medialibrary/qml/VideoListDisplay.qml:90
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:81
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:190
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:198
 #: modules/gui/qt/network/standardpathmodel.cpp:152
-#: modules/gui/qt/player/qml/CompactLibrary.qml:78
-#: modules/gui/qt/player/qml/CompactLibrary.qml:197
-#: modules/gui/qt/player/qml/CompactLibrary.qml:292
+#: modules/gui/qt/player/qml/CompactLibrary.qml:79
+#: modules/gui/qt/player/qml/CompactLibrary.qml:198
+#: modules/gui/qt/player/qml/CompactLibrary.qml:293
 msgid "Videos"
 msgstr "비디오"
 
@@ -4926,8 +4916,8 @@ msgstr "비디오"
 #: modules/gui/qt/medialibrary/qml/VideoDisplay.qml:53
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:62
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:98
-#: modules/gui/qt/player/qml/CompactLibrary.qml:81
-#: modules/gui/qt/player/qml/CompactLibrary.qml:295
+#: modules/gui/qt/player/qml/CompactLibrary.qml:82
+#: modules/gui/qt/player/qml/CompactLibrary.qml:296
 #: modules/gui/qt/player/qml/controlbarcontrols/PlaylistsButton.qml:31
 msgid "Playlists"
 msgstr "재생목록"
@@ -4935,8 +4925,8 @@ msgstr "재생목록"
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:101
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:224
-#: modules/gui/qt/player/qml/CompactLibrary.qml:82
-#: modules/gui/qt/player/qml/CompactLibrary.qml:296
+#: modules/gui/qt/player/qml/CompactLibrary.qml:83
+#: modules/gui/qt/player/qml/CompactLibrary.qml:297
 msgid "Recent"
 msgstr "최근"
 
@@ -4950,8 +4940,8 @@ msgstr "항목 추가"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml:234
 #: modules/gui/qt/medialibrary/qml/MusicArtistsDisplay.qml:54
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:37
-#: modules/gui/qt/player/qml/CompactLibrary.qml:299
-#: modules/gui/qt/player/qml/CompactLibrary.qml:506
+#: modules/gui/qt/player/qml/CompactLibrary.qml:300
+#: modules/gui/qt/player/qml/CompactLibrary.qml:507
 msgid "Artists"
 msgstr "아티스트"
 
@@ -4960,8 +4950,8 @@ msgstr "아티스트"
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsDisplay.qml:30
 #: modules/gui/qt/medialibrary/qml/MusicArtist.qml:404
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:42
-#: modules/gui/qt/player/qml/CompactLibrary.qml:298
-#: modules/gui/qt/player/qml/CompactLibrary.qml:505
+#: modules/gui/qt/player/qml/CompactLibrary.qml:299
+#: modules/gui/qt/player/qml/CompactLibrary.qml:506
 msgid "Albums"
 msgstr "앨범"
 
@@ -4969,8 +4959,8 @@ msgstr "앨범"
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:93
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:50
 #: modules/gui/qt/medialibrary/qml/MusicGenresDisplay.qml:51
-#: modules/gui/qt/player/qml/CompactLibrary.qml:300
-#: modules/gui/qt/player/qml/CompactLibrary.qml:507
+#: modules/gui/qt/player/qml/CompactLibrary.qml:301
+#: modules/gui/qt/player/qml/CompactLibrary.qml:508
 msgid "Genres"
 msgstr "장르"
 
@@ -5106,12 +5096,12 @@ msgid ""
 msgstr "자막 파일 (*.srt *.ass *.ssa *.sub *.vtt *.ttml *.smi);;모든 파일 (*)"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:369
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:540
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:552
 msgid "Choose the folder of the audio tracks"
 msgstr "오디오 트랙 폴더 선택"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:370
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:541
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:553
 msgid "Choose the folder of the subtitles"
 msgstr "자막 폴더 선택"
 
@@ -5224,8 +5214,8 @@ msgid_plural "%1 Songs"
 msgstr[0] "%1곡"
 
 #: modules/gui/qt/medialibrary/qml/ArtistTopBanner.qml:253
-#: modules/gui/qt/player/qml/CompactLibrary.qml:794
-#: modules/gui/qt/player/qml/CompactLibrary.qml:808
+#: modules/gui/qt/player/qml/CompactLibrary.qml:795
+#: modules/gui/qt/player/qml/CompactLibrary.qml:809
 msgid "Play all"
 msgstr "모두 재생"
 
@@ -5252,32 +5242,32 @@ msgstr "알 수 없는 아티스트"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:96
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:228
-#: modules/gui/qt/player/qml/ResumeDialog.qml:145
-#: modules/gui/qt/player/qml/CompactLibrary.qml:400
+#: modules/gui/qt/player/qml/ResumeDialog.qml:146
+#: modules/gui/qt/player/qml/CompactLibrary.qml:401
 msgid "Continue Watching"
 msgstr "이어서 보기"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:146
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:488
-#: modules/gui/qt/player/qml/CompactLibrary.qml:403
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:508
+#: modules/gui/qt/player/qml/CompactLibrary.qml:404
 msgid "Favorites"
 msgstr "즐겨찾기"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:180
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:569
-#: modules/gui/qt/player/qml/CompactLibrary.qml:404
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:589
+#: modules/gui/qt/player/qml/CompactLibrary.qml:405
 msgid "New Videos"
 msgstr "새 비디오"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:254
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:310
-#: modules/gui/qt/player/qml/CompactLibrary.qml:401
+#: modules/gui/qt/player/qml/CompactLibrary.qml:402
 msgid "Listen Again"
 msgstr "다시 듣기"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:287
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:651
-#: modules/gui/qt/player/qml/CompactLibrary.qml:405
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:671
+#: modules/gui/qt/player/qml/CompactLibrary.qml:406
 msgid "New Music"
 msgstr "새 음악"
 
@@ -5296,7 +5286,7 @@ msgid "Alphabetic"
 msgstr "가나다순"
 
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:381
-#: modules/gui/qt/player/qml/CompactLibrary.qml:402
+#: modules/gui/qt/player/qml/CompactLibrary.qml:403
 msgid "Frequently Visited Folders"
 msgstr "자주 방문한 폴더"
 
@@ -5409,20 +5399,20 @@ msgstr "위로 이동"
 msgid "Move down"
 msgstr "아래로 이동"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:166
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:167
 msgid "Remove selected media from this playlist?"
 msgstr "선택한 미디어를 이 재생목록에서 제거할까요?"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:167
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:168
 msgid "Remove from playlist"
 msgstr "재생목록에서 제거"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:220
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:250
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:221
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:251
 msgid "Processing..."
 msgstr "처리 중..."
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:316
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:317
 msgid "No media found"
 msgstr "미디어가 없습니다"
 
@@ -5430,25 +5420,25 @@ msgstr "미디어가 없습니다"
 msgid "Playlist media list"
 msgstr "재생목록 미디어 목록"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:208
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:209
 msgid "Do you really want to delete the selected playlist?"
 msgid_plural "Do you really want to delete the selected playlists?"
 msgstr[0] "선택한 재생목록을 삭제할까요?"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:211
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:212
 msgid "Delete playlist"
 msgid_plural "Delete playlists"
 msgstr[0] "재생목록 삭제"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:366
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:367
 msgid "Items"
 msgstr "항목"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:453
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:454
 msgid "No playlists found"
 msgstr "재생목록이 없습니다"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:454
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:455
 msgid "Create a playlist with files or add media from the library"
 msgstr "파일로 재생목록을 만들거나 라이브러리에서 미디어를 추가하세요"
 
@@ -5462,7 +5452,7 @@ msgstr "파일로 재생목록을 만들거나 라이브러리에서 미디어�
 msgid "Url"
 msgstr "URL"
 
-#: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:121
+#: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:132
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:77
 msgid "%1 Video"
 msgid_plural "%1 Videos"
@@ -5543,22 +5533,22 @@ msgid "Go to Source"
 msgstr "소스로 이동"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:134
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:204
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:207
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:57
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:899
 msgid "Add Subtitle Tracks"
 msgstr "자막 트랙 추가"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:140
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:206
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:209
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:62
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:72
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:75
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:903
 msgid "Add Audio Tracks"
 msgstr "오디오 트랙 추가"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:146
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:208
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:211
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:69
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:31
 msgid "Properties & Metadata"
@@ -5621,11 +5611,11 @@ msgstr "오디오 트랙 편집"
 msgid "Resync"
 msgstr "다시 동기화"
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:545
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:548
 msgid "No media matches the search"
 msgstr "검색과 일치하는 미디어가 없습니다"
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:546
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:549
 msgid "No media in this folder"
 msgstr "이 폴더에 미디어가 없습니다"
 
@@ -5645,19 +5635,14 @@ msgstr "이 폴더를 라이브러리에 추가할 수 없습니다: %1"
 msgid "Media library"
 msgstr "미디어 라이브러리"
 
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:49
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
-msgid "Export Playlist"
-msgstr "재생목록 내보내기"
-
 #: modules/gui/qt/medialibrary/qml/OpenMediaButton.qml:58
-#: modules/gui/qt/player/qml/CompactLibrary.qml:618
+#: modules/gui/qt/player/qml/CompactLibrary.qml:619
 #: modules/gui/qt/player/qml/controlbarcontrols/OpenButton.qml:31
 msgid "Open media"
 msgstr "미디어 열기"
 
 #: modules/gui/qt/medialibrary/qml/OpenMediaButton.qml:76
-#: modules/gui/qt/player/qml/CompactLibrary.qml:761
+#: modules/gui/qt/player/qml/CompactLibrary.qml:762
 msgid "Add folder to library…"
 msgstr "라이브러리에 폴더 추가…"
 
@@ -5719,7 +5704,6 @@ msgid "These files will be added to the playlist."
 msgstr "이 파일들이 재생목록에 추가됩니다."
 
 #: modules/gui/qt/medialibrary/qml/PlaylistCreateDialog.qml:228
-#: modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml:88
 msgid "Choose files"
 msgstr "파일 선택"
 
@@ -5744,11 +5728,11 @@ msgid_plural "%1 videos"
 msgstr[0] "비디오 %1개"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:49
-#: modules/gui/qt/player/qml/CompactLibrary.qml:848
+#: modules/gui/qt/player/qml/CompactLibrary.qml:849
 #: modules/gui/qt/player/qml/MiniPlayerQueue.qml:107
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:193
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:195
 #: modules/gui/qt/widgets/qml/DragItem.qml:620
-#: modules/gui/qt/widgets/qml/LibraryHeader.qml:418
+#: modules/gui/qt/widgets/qml/LibraryHeader.qml:419
 msgid "%1 item"
 msgid_plural "%1 items"
 msgstr[0] "항목 %1개"
@@ -5769,76 +5753,64 @@ msgstr "이 재생목록에"
 msgid "To This File"
 msgstr "이 파일에"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:72
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:75
 msgid "Add Subtitles"
 msgstr "자막 추가"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:519
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:520
-#: modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml:66
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:529
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:531
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:532
 msgid "From Computer"
 msgstr "컴퓨터에서"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:520
-#: modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml:66
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:531
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:532
 msgid "From Link"
 msgstr "링크에서"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:520
-#: modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml:66
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:531
 msgid "From OpenSubtitles"
 msgstr "OpenSubtitles에서"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:589
-#: modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml:126
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:601
 msgid "Direct HTTPS link to a subtitle file"
 msgstr "자막 파일의 HTTPS 직접 링크"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:604
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:616
 msgid "Title or episode"
 msgstr "제목 또는 에피소드"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:771
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:783
 msgid "OpenSubtitles API key"
 msgstr "OpenSubtitles API 키"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:886
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:898
 msgid "Searching OpenSubtitles…"
 msgstr "OpenSubtitles 검색 중…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:888
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:900
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "OpenSubtitles를 검색하면 자막 파일이 표시됩니다."
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:891
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:903
 msgid "Working on audio tracks…"
 msgstr "오디오 트랙 처리 중…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:891
-#: modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml:170
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:903
 msgid "Working on subtitles…"
 msgstr "자막 처리 중…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:894
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:906
 msgid "Enter a direct link to a subtitle file above."
 msgstr "위에 자막 파일의 직접 링크를 입력하세요."
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:895
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:907
 msgid "No audio file in this folder: choose another one above."
 msgstr "이 폴더에 오디오 파일이 없습니다. 위에서 다른 폴더를 선택하세요."
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:896
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:908
 msgid "No subtitle file in this folder: choose another one above."
 msgstr "이 폴더에 자막 파일이 없습니다. 위에서 다른 폴더를 선택하세요."
-
-#: modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml:108
-msgid "%1 media file"
-msgid_plural "%1 media files"
-msgstr[0] "미디어 파일 %1개"
-
-#: modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml:140
-msgid "Add link"
-msgstr "링크 추가"
 
 #: modules/gui/qt/menus/custom_menus.cpp:116
 msgid "Search for cast devices"
@@ -6068,11 +6040,11 @@ msgid "Shuffle the play queue"
 msgstr "재생 대기열 섞기"
 
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1263
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1269
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1272
 msgid "Discard the filtered out items"
 msgstr "필터링으로 제외된 항목 버리기"
 
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1270
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1271
 msgid ""
 "Do you really want to discard the items that are not displayed at the moment?"
 msgstr "현재 표시되지 않은 항목을 버리시겠습니까?"
@@ -6188,7 +6160,7 @@ msgid "This build can't search the internet."
 msgstr "이 빌드에서는 인터넷을 검색할 수 없습니다."
 
 #: modules/gui/qt/player/subtitle_finder.cpp:1219
-#: modules/gui/qt/player/subtitle_finder.cpp:1459
+#: modules/gui/qt/player/subtitle_finder.cpp:1472
 msgid "No connection to the internet."
 msgstr "인터넷에 연결되어 있지 않습니다."
 
@@ -6204,62 +6176,62 @@ msgstr "\"%1\"을(를) 찾을 수 없습니다. 제목으로 검색하세요."
 msgid "No subtitles were found for %1."
 msgstr "%1의 자막을 찾을 수 없습니다."
 
-#: modules/gui/qt/player/subtitle_finder.cpp:1460
+#: modules/gui/qt/player/subtitle_finder.cpp:1473
 msgid "The subtitle couldn't be downloaded (%1)."
 msgstr "자막을 다운로드할 수 없습니다(%1)."
 
-#: modules/gui/qt/player/subtitle_finder.cpp:1490
+#: modules/gui/qt/player/subtitle_finder.cpp:1503
 msgid "The subtitle couldn't be saved."
 msgstr "자막을 저장할 수 없습니다."
 
-#: modules/gui/qt/player/subtitle_finder.cpp:1500
-#: modules/gui/qt/player/subtitle_providers.cpp:842
-#: modules/gui/qt/player/subtitle_providers.cpp:875
+#: modules/gui/qt/player/subtitle_finder.cpp:1513
+#: modules/gui/qt/player/subtitle_providers.cpp:922
+#: modules/gui/qt/player/subtitle_providers.cpp:955
 msgid "The subtitle couldn't be unpacked."
 msgstr "자막의 압축을 풀 수 없습니다."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:81
+#: modules/gui/qt/player/subtitle_providers.cpp:87
 msgid "%1 didn't answer."
 msgstr "%1에서 응답하지 않았습니다."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:83
+#: modules/gui/qt/player/subtitle_providers.cpp:89
 msgid "%1 asks to wait a moment (too many searches)."
 msgstr "%1에서 잠시 기다려 달라고 요청했습니다(검색이 너무 많음)."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:84
+#: modules/gui/qt/player/subtitle_providers.cpp:90
 msgid "%1 didn't answer (%2)."
 msgstr "%1에서 응답하지 않았습니다(%2)."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:778
+#: modules/gui/qt/player/subtitle_providers.cpp:858
 msgid "All languages · movies and series · finds those made for your file"
 msgstr "모든 언어 · 영화 및 시리즈 · 파일에 맞게 제작된 자막을 찾음"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:780
+#: modules/gui/qt/player/subtitle_providers.cpp:860
 msgid "Hebrew · movies and series"
 msgstr "히브리어 · 영화 및 시리즈"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:782
+#: modules/gui/qt/player/subtitle_providers.cpp:862
 msgid "Series · many languages"
 msgstr "시리즈 · 다양한 언어"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:784
+#: modules/gui/qt/player/subtitle_providers.cpp:864
 msgid "Movies · many languages"
 msgstr "영화 · 다양한 언어"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:830
+#: modules/gui/qt/player/subtitle_providers.cpp:910
 msgid "This subtitle comes as a RAR archive, which can't be opened here."
 msgstr "이 자막은 RAR 압축 파일로 제공되어 여기에서 열 수 없습니다."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:876
+#: modules/gui/qt/player/subtitle_providers.cpp:956
 msgid "The archive has no subtitle in it."
 msgstr "압축 파일에 자막이 없습니다."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:888
+#: modules/gui/qt/player/subtitle_providers.cpp:968
 msgid ""
 "OpenSubtitles keeps this subtitle for its paying members. Choose another one."
 msgstr "이 자막은 OpenSubtitles 유료 회원 전용입니다. 다른 자막을 선택하세요."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:894
+#: modules/gui/qt/player/subtitle_providers.cpp:974
 msgid "The subtitle is empty."
 msgstr "자막이 비어 있습니다."
 
@@ -6276,7 +6248,7 @@ msgid "Waveform analysis did not complete."
 msgstr "파형 분석이 완료되지 않았습니다."
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:41
-#: modules/gui/qt/player/qml/controlbarcontrols/SettingsButton.qml:26
+#: modules/gui/qt/player/qml/controlbarcontrols/SettingsButton.qml:27
 msgid "VLC Settings"
 msgstr "VLC 설정"
 
@@ -6305,9 +6277,10 @@ msgstr "15초 앞으로"
 msgid "Properties"
 msgstr "속성"
 
-#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:60
-msgid "Volume Widget"
-msgstr "볼륨 위젯"
+#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:56
+#: modules/gui/qt/player/qml/controlbarcontrols/LangButton.qml:54
+msgid "Languages and tracks"
+msgstr "언어 및 트랙"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:61
 msgid "Navigation Box"
@@ -6318,7 +6291,7 @@ msgid "Program Button"
 msgstr "프로그램 버튼"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:67
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:32
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:33
 msgid "Cast to TV"
 msgstr "TV로 캐스트"
 
@@ -6441,69 +6414,69 @@ msgstr "프리셋:"
 msgid "Player"
 msgstr "플레이어"
 
-#: modules/gui/qt/player/qml/Player.qml:1036
+#: modules/gui/qt/player/qml/Player.qml:1038
 msgid "Subtitles on the TV: %1"
 msgstr "TV 자막: %1"
 
-#: modules/gui/qt/player/qml/Player.qml:1036
+#: modules/gui/qt/player/qml/Player.qml:1038
 msgid "Subtitles off on the TV"
 msgstr "TV 자막 꺼짐"
 
-#: modules/gui/qt/player/qml/Player.qml:1146
+#: modules/gui/qt/player/qml/Player.qml:1148
 msgid "Not playing on %1"
 msgstr "%1에서 재생하고 있지 않음"
 
-#: modules/gui/qt/player/qml/Player.qml:1148
-#: modules/gui/qt/player/qml/Player.qml:1274
+#: modules/gui/qt/player/qml/Player.qml:1150
+#: modules/gui/qt/player/qml/Player.qml:1276
 msgid "Connecting to %1…"
 msgstr "%1에 연결 중…"
 
-#: modules/gui/qt/player/qml/Player.qml:1150
+#: modules/gui/qt/player/qml/Player.qml:1152
 msgid "Playing on %1"
 msgstr "%1에서 재생 중"
 
-#: modules/gui/qt/player/qml/Player.qml:1151
+#: modules/gui/qt/player/qml/Player.qml:1153
 msgid "The sound plays on %1"
 msgstr "소리는 %1에서 재생됩니다"
 
-#: modules/gui/qt/player/qml/Player.qml:1175
+#: modules/gui/qt/player/qml/Player.qml:1177
 msgid "Pause, seek and change the subtitles here: the TV follows."
 msgstr "여기에서 일시중지, 탐색, 자막 변경을 하면 TV가 그대로 따라갑니다."
 
-#: modules/gui/qt/player/qml/Player.qml:1192
+#: modules/gui/qt/player/qml/Player.qml:1194
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the media."
 msgstr ""
 "Windows 방화벽 때문에 %1이(가) 미디어를 읽으려고 이 컴퓨터에 연결할 수 없습니"
 "다."
 
-#: modules/gui/qt/player/qml/Player.qml:1204
+#: modules/gui/qt/player/qml/Player.qml:1206
 msgid "Waiting for Windows…"
 msgstr "Windows 대기 중…"
 
-#: modules/gui/qt/player/qml/Player.qml:1205
+#: modules/gui/qt/player/qml/Player.qml:1207
 msgid "Allow on public networks too"
 msgstr "공용 네트워크에서도 허용"
 
-#: modules/gui/qt/player/qml/Player.qml:1206
+#: modules/gui/qt/player/qml/Player.qml:1208
 msgid "Allow on private networks"
 msgstr "개인 네트워크에서 허용"
 
-#: modules/gui/qt/player/qml/Player.qml:1218
+#: modules/gui/qt/player/qml/Player.qml:1220
 msgid "Try again"
 msgstr "다시 시도"
 
-#: modules/gui/qt/player/qml/Player.qml:1223
-#: modules/gui/qt/player/qml/Player.qml:1233
+#: modules/gui/qt/player/qml/Player.qml:1225
+#: modules/gui/qt/player/qml/Player.qml:1235
 msgid "Play here"
 msgstr "여기서 재생"
 
-#: modules/gui/qt/player/qml/Player.qml:1233
-#: modules/gui/qt/player/qml/Player.qml:1284
+#: modules/gui/qt/player/qml/Player.qml:1235
+#: modules/gui/qt/player/qml/Player.qml:1286
 msgid "Stop casting"
 msgstr "캐스트 중지"
 
-#: modules/gui/qt/player/qml/Player.qml:1275
+#: modules/gui/qt/player/qml/Player.qml:1277
 msgid "Also on %1"
 msgstr "%1에서도 재생 중"
 
@@ -6511,11 +6484,11 @@ msgstr "%1에서도 재생 중"
 msgid "Resume dialog"
 msgstr "이어서 재생 대화 상자"
 
-#: modules/gui/qt/player/qml/ResumeDialog.qml:134
+#: modules/gui/qt/player/qml/ResumeDialog.qml:135
 msgid "You’ve watched till %1 already."
 msgstr "이미 %1까지 시청했습니다."
 
-#: modules/gui/qt/player/qml/ResumeDialog.qml:136
+#: modules/gui/qt/player/qml/ResumeDialog.qml:137
 msgid "Continue where you left off?"
 msgstr "중단한 위치부터 계속할까요?"
 
@@ -6527,57 +6500,57 @@ msgstr "플레이어 상단 막대"
 msgid "Show %1 in the library"
 msgstr "라이브러리에서 %1 보기"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:177
-#: modules/gui/qt/player/qml/TracksMenu.qml:274
+#: modules/gui/qt/player/qml/TracksMenu.qml:180
+#: modules/gui/qt/player/qml/TracksMenu.qml:277
 msgid "Embedded Tracks"
 msgstr "내장 트랙"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:200
+#: modules/gui/qt/player/qml/TracksMenu.qml:203
 msgid "No audio tracks in this media"
 msgstr "이 미디어에 오디오 트랙이 없습니다"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:217
+#: modules/gui/qt/player/qml/TracksMenu.qml:220
 msgid "Output Device"
 msgstr "출력 장치"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:226
+#: modules/gui/qt/player/qml/TracksMenu.qml:229
 msgid "Refresh output devices"
 msgstr "출력 장치 새로 고침"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:249
+#: modules/gui/qt/player/qml/TracksMenu.qml:252
 msgid "No output device available"
 msgstr "사용 가능한 출력 장치가 없습니다"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:298
+#: modules/gui/qt/player/qml/TracksMenu.qml:301
 msgid "No video tracks in this media"
 msgstr "이 미디어에 비디오 트랙이 없습니다"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:316
+#: modules/gui/qt/player/qml/TracksMenu.qml:319
 msgid "Current: %1×"
 msgstr "현재: %1×"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:333
+#: modules/gui/qt/player/qml/TracksMenu.qml:336
 msgid "Speed cannot be changed for this media"
 msgstr "이 미디어는 속도를 변경할 수 없습니다"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:338
+#: modules/gui/qt/player/qml/TracksMenu.qml:341
 #: modules/gui/qt/player/qml/QueueCard.qml:220
 msgid "No chapters in this media"
 msgstr "이 미디어에 챕터가 없습니다"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:354
+#: modules/gui/qt/player/qml/TracksMenu.qml:357
 msgid "Manage bookmarks…"
 msgstr "책갈피 관리…"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:360
+#: modules/gui/qt/player/qml/TracksMenu.qml:363
 msgid "Bookmarks require the media library"
 msgstr "책갈피를 사용하려면 미디어 라이브러리가 필요합니다"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:389
+#: modules/gui/qt/player/qml/TracksMenu.qml:392
 msgid "Show Preferences"
 msgstr "환경설정 보기"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:535
+#: modules/gui/qt/player/qml/TracksMenu.qml:538
 #: modules/gui/qt/player/qml/TracksPageAudio.qml:37
 #: modules/gui/qt/player/qml/TracksPageSubtitle.qml:37
 #: modules/gui/qt/player/qml/SubtitleSyncTimeline.qml:42
@@ -6605,27 +6578,27 @@ msgstr "비디오 트랙"
 msgid "Track list"
 msgstr "트랙 목록"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:288
+#: modules/gui/qt/player/qml/AudioContent.qml:321
 msgid "Title and artist"
 msgstr "제목 및 아티스트"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:418
+#: modules/gui/qt/player/qml/AudioContent.qml:451
 msgid "Step back"
 msgstr "뒤로 건너뛰기"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:443
+#: modules/gui/qt/player/qml/AudioContent.qml:476
 msgid "Toggle lyrics view"
 msgstr "가사 보기 전환"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:480
+#: modules/gui/qt/player/qml/AudioContent.qml:513
 msgid "Sync lyrics to playback"
 msgstr "가사를 재생에 맞춤"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:495
+#: modules/gui/qt/player/qml/AudioContent.qml:528
 msgid "Sync lyrics to playback position"
 msgstr "가사를 재생 위치에 맞춤"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:515
+#: modules/gui/qt/player/qml/AudioContent.qml:548
 msgid "Volume %1%"
 msgstr "볼륨 %1%"
 
@@ -6633,103 +6606,103 @@ msgstr "볼륨 %1%"
 msgid "Play audio to select a visualization."
 msgstr "시각화를 선택하려면 오디오를 재생하세요."
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:198
 #: modules/gui/qt/player/qml/CompactLibrary.qml:199
-#: modules/gui/qt/player/qml/CompactLibrary.qml:297
-#: modules/gui/qt/player/qml/CompactLibrary.qml:504
+#: modules/gui/qt/player/qml/CompactLibrary.qml:200
+#: modules/gui/qt/player/qml/CompactLibrary.qml:298
+#: modules/gui/qt/player/qml/CompactLibrary.qml:505
 msgid "Songs"
 msgstr "노래"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:726
+#: modules/gui/qt/player/qml/CompactLibrary.qml:727
 msgid "More"
 msgstr "더 보기"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:751
-#: modules/gui/qt/player/qml/CompactLibrary.qml:766
+#: modules/gui/qt/player/qml/CompactLibrary.qml:752
+#: modules/gui/qt/player/qml/CompactLibrary.qml:767
 msgid "Rescan library"
 msgstr "라이브러리 다시 검색"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:776
+#: modules/gui/qt/player/qml/CompactLibrary.qml:777
 msgid "Add network stream…"
 msgstr "네트워크 스트림 추가…"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:785
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1154
+#: modules/gui/qt/player/qml/CompactLibrary.qml:786
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1155
 msgid "Create playlist"
 msgstr "재생목록 만들기"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:799
-#: modules/gui/qt/player/qml/CompactLibrary.qml:813
+#: modules/gui/qt/player/qml/CompactLibrary.qml:800
+#: modules/gui/qt/player/qml/CompactLibrary.qml:814
 msgid "Add all to queue"
 msgstr "모두 대기열에 추가"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:818
+#: modules/gui/qt/player/qml/CompactLibrary.qml:819
 msgid "Up one folder"
 msgstr "상위 폴더로"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:828
+#: modules/gui/qt/player/qml/CompactLibrary.qml:829
 msgid "Open in the library"
 msgstr "라이브러리에서 열기"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:887
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:205
+#: modules/gui/qt/player/qml/CompactLibrary.qml:888
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:207
 #: modules/gui/qt/playlist/qml/QueueHeader.qml:74
 #: modules/gui/qt/widgets/qml/GridSortFilterControls.qml:42
 #: modules/gui/qt/widgets/qml/SortControl.qml:64
-#: modules/gui/qt/widgets/qml/LibraryHeader.qml:458
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:459
+#: modules/gui/qt/widgets/qml/LibraryHeader.qml:460
 msgid "Sort"
 msgstr "정렬"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:922
+#: modules/gui/qt/player/qml/CompactLibrary.qml:923
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:82
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:83
 msgid "Title A-Z"
 msgstr "제목 A-Z"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:926
+#: modules/gui/qt/player/qml/CompactLibrary.qml:927
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:82
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:83
 msgid "Title Z-A"
 msgstr "제목 Z-A"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:930
+#: modules/gui/qt/player/qml/CompactLibrary.qml:931
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:80
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:81
 msgid "Newest First"
 msgstr "최신순"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:935
+#: modules/gui/qt/player/qml/CompactLibrary.qml:936
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:80
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:81
 msgid "Oldest First"
 msgstr "오래된 순"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:954
-#: modules/gui/qt/widgets/qml/LibraryHeader.qml:503
+#: modules/gui/qt/player/qml/CompactLibrary.qml:955
+#: modules/gui/qt/widgets/qml/LibraryHeader.qml:504
 msgid "Grid View"
 msgstr "격자 보기"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:959
-#: modules/gui/qt/widgets/qml/LibraryHeader.qml:509
+#: modules/gui/qt/player/qml/CompactLibrary.qml:960
+#: modules/gui/qt/widgets/qml/LibraryHeader.qml:510
 msgid "List View"
 msgstr "목록 보기"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1068
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1069
 msgid "See all"
 msgstr "모두 보기"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1214
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1215
 msgid "Add Network Stream"
 msgstr "네트워크 스트림 추가"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1323
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1339
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1324
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1340
 msgid "The media library is not available."
 msgstr "미디어 라이브러리를 사용할 수 없습니다."
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1324
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1340
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1325
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1341
 msgid "Nothing here yet."
 msgstr "아직 아무것도 없습니다."
 
@@ -6757,11 +6730,11 @@ msgstr "플레이어 UI 표시"
 msgid "Hide player UI"
 msgstr "플레이어 UI 숨기기"
 
-#: modules/gui/qt/player/qml/LibraryMiniPlayer.qml:281
+#: modules/gui/qt/player/qml/LibraryMiniPlayer.qml:285
 msgid "Hide queue"
 msgstr "대기열 숨기기"
 
-#: modules/gui/qt/player/qml/LibraryMiniPlayer.qml:281
+#: modules/gui/qt/player/qml/LibraryMiniPlayer.qml:285
 msgid "Show queue"
 msgstr "대기열 표시"
 
@@ -6794,27 +6767,27 @@ msgstr "선택한 항목을 대기열에서 제거"
 msgid "Add files to queue"
 msgstr "대기열에 파일 추가"
 
-#: modules/gui/qt/player/qml/PIPPlayer.qml:49
+#: modules/gui/qt/player/qml/PIPPlayer.qml:70
 msgid "video content"
 msgstr "비디오 콘텐츠"
 
-#: modules/gui/qt/player/qml/PIPPlayer.qml:192
+#: modules/gui/qt/player/qml/PIPPlayer.qml:224
 msgid "Previous item"
 msgstr "이전 항목"
 
-#: modules/gui/qt/player/qml/PIPPlayer.qml:212
+#: modules/gui/qt/player/qml/PIPPlayer.qml:244
 msgid "Play or pause"
 msgstr "재생 또는 일시중지"
 
-#: modules/gui/qt/player/qml/PIPPlayer.qml:238
+#: modules/gui/qt/player/qml/PIPPlayer.qml:270
 msgid "Next item"
 msgstr "다음 항목"
 
-#: modules/gui/qt/player/qml/PIPPlayer.qml:255
+#: modules/gui/qt/player/qml/PIPPlayer.qml:287
 msgid "close video"
 msgstr "비디오 닫기"
 
-#: modules/gui/qt/player/qml/PIPPlayer.qml:278
+#: modules/gui/qt/player/qml/PIPPlayer.qml:310
 msgid "maximize player"
 msgstr "플레이어 최대화"
 
@@ -6959,131 +6932,136 @@ msgstr "직접 연 파일"
 msgid "%1k downloads"
 msgstr "다운로드 %1k회"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:135
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:139
 msgid "Unknown language"
 msgstr "알 수 없는 언어"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:173
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:189
 msgid "Foreign parts only"
 msgstr "외국어 부분만"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:237
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:254
 msgid "Identifying the video…"
 msgstr "비디오 식별 중…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:240
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:257
 msgid "Searching %1…"
 msgstr "%1 검색 중…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:240
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:257
 msgid "Searching subtitles online…"
 msgstr "온라인에서 자막 검색 중…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:244
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:261
 msgid "Downloading…"
 msgstr "다운로드 중…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:246
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:263
 msgid "%1 · %2 found"
 msgstr "%1 · %2개 찾음"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:247
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:264
 msgid "%1 found for this file"
 msgstr "이 파일용 자막 %1개 찾음"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:251
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:268
 msgid "Subtitles of this video"
 msgstr "이 비디오의 자막"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:270
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:287
 msgid "The video is another one: search by its title"
 msgstr "다른 비디오입니다: 제목으로 검색"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:281
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:298
 msgid "Search subtitles online"
 msgstr "온라인에서 자막 검색"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:282
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:299
 msgid "Search subtitles online again"
 msgstr "온라인에서 자막 다시 검색"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:292
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:309
 msgid "Add subtitles to the library"
 msgstr "라이브러리에 자막 추가"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:293
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:310
 msgid "Library association needs a local media file and media library."
 msgstr ""
 "라이브러리에 연결하려면 로컬 미디어 파일과 미디어 라이브러리가 필요합니다."
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:303
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:320
 msgid "Load a subtitle file for playback"
 msgstr "재생할 자막 파일 불러오기"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:322
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:339
 msgid "Title of the movie or series"
 msgstr "영화 또는 시리즈 제목"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:343
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:360
 msgid "Searching…"
 msgstr "검색 중…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:386
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:403
 msgid "Second"
 msgstr "두 번째"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:421
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:404
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "자주 사용"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:439
 msgid "For this file"
 msgstr "이 파일용"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:441
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:460
 msgid "Looking for subtitles…"
 msgstr "자막 찾는 중…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:442
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:461
 msgid "No subtitles yet"
 msgstr "아직 자막이 없습니다"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:484
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:503
 msgid "Position and size"
 msgstr "위치 및 크기"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:492
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:511
 msgctxt "subtitles"
 msgid "Position"
 msgstr "위치"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:495
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:509
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:514
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:528
 msgid "%1%"
 msgstr "%1%"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:496
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:515
 msgid "Move the subtitles down"
 msgstr "자막을 아래로 이동"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:497
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:516
 msgid "Move the subtitles up"
 msgstr "자막을 위로 이동"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:508
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:527
 msgctxt "subtitles"
 msgid "Size"
 msgstr "크기"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:510
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:529
 msgid "Smaller subtitles"
 msgstr "자막 작게"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:511
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:530
 msgid "Larger subtitles"
 msgstr "자막 크게"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:743
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:762
 msgid "HI"
 msgstr "청각"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:748
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:767
 msgid "For the hearing impaired"
 msgstr "청각 장애인용"
 
@@ -7109,9 +7087,15 @@ msgstr ""
 msgid "Duration unavailable"
 msgstr "재생시간 정보 없음"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ExtendedSettingsButton.qml:32
-msgid "Audio effects"
-msgstr "오디오 효과"
+#: modules/gui/qt/player/qml/controlbarcontrols/Fallback.qml:48
+msgid ""
+"WIDGET\n"
+"NOT\n"
+"FOUND"
+msgstr ""
+"위젯을\n"
+"찾을 수\n"
+"없음"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/FavoriteButton.qml:21
 msgid "Available for items in your library"
@@ -7141,13 +7125,9 @@ msgstr "프레임 레이트 정보 없음"
 msgid "Exit Fullscreen"
 msgstr "전체화면 종료"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:9
+#: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"
 msgstr "HDR 출력"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/LangButton.qml:54
-msgid "Languages and tracks"
-msgstr "언어 및 트랙"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/LoopButton.qml:29
 msgid "Repeat one"
@@ -7165,35 +7145,40 @@ msgstr "1x"
 msgid "Play Queue (%1/%2)"
 msgstr "재생 대기열 (%1/%2)"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:31
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:32
 msgid "Casting to %1"
 msgstr "%1(으)로 캐스트 중"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:99
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:100
 msgid "Cast to"
 msgstr "캐스트 대상"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:124
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:125
 msgid "This computer"
 msgstr "이 컴퓨터"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:152
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:154
 msgid "Not playing: choose it to try again"
 msgstr "재생 안 됨: 선택하면 다시 시도합니다"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:154
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:156
 msgid "Connecting…"
 msgstr "연결 중…"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:155
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:157
 msgid "Sound only"
 msgstr "소리만"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:174
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:180
+msgid "Show %1 hidden device"
+msgid_plural "Show %1 hidden devices"
+msgstr[0] "숨긴 장치 %1개 표시"
+
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:193
 msgid "Looking for TVs and Chromecasts on your network…"
 msgstr "네트워크에서 TV와 Chromecast를 찾는 중…"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:175
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:194
 msgid ""
 "No device found. Turn your TV or Chromecast on, on the same network as this "
 "computer."
@@ -7201,19 +7186,23 @@ msgstr ""
 "장치를 찾을 수 없습니다. 이 컴퓨터와 같은 네트워크에 있는 TV 또는 Chromecast"
 "를 켜세요."
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:189
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:208
 msgid "Show the video here too"
 msgstr "여기에도 비디오 표시"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:235
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:254
 msgid "With a Chromecast, the video plays only there."
 msgstr "Chromecast를 사용하면 비디오가 Chromecast에서만 재생됩니다."
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:246
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:265
 msgid "The subtitles shown go to the TV with the picture."
 msgstr "표시 중인 자막이 화면과 함께 TV로 전송됩니다."
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:265
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:282
+msgid "Hide this device"
+msgstr "이 장치 숨기기"
+
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:314
 msgid "playing here"
 msgstr "여기서 재생 중"
 
@@ -7237,7 +7226,7 @@ msgstr "10초 앞으로"
 msgid "Forward 15 seconds"
 msgstr "15초 앞으로"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/VolumeWidget.qml:351
+#: modules/gui/qt/player/qml/controlbarcontrols/VolumeWidget.qml:345
 msgid "%1 %"
 msgstr "%1 %"
 
@@ -7257,31 +7246,31 @@ msgstr "재생 중"
 msgid "Media cover"
 msgstr "미디어 커버"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:192
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:194
 msgid "No items"
 msgstr "항목 없음"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:263
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:284
 msgid "Remove selected items"
 msgstr "선택한 항목 제거"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:274
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:300
 msgid "Add files to the queue"
 msgstr "대기열에 파일 추가"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:601
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:629
 msgid "No results"
 msgstr "결과 없음"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:602
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:630
 msgid "No content yet"
 msgstr "아직 콘텐츠가 없습니다"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:618
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:646
 msgid "Drag & Drop some content here!"
 msgstr "여기에 콘텐츠를 끌어다 놓으세요!"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:683
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:711
 msgid "Play queue"
 msgstr "재생 대기열"
 
@@ -7289,16 +7278,16 @@ msgstr "재생 대기열"
 msgid "%1 elements, %2"
 msgstr "항목 %1개, %2"
 
-#: modules/gui/qt/qt.cpp:172
+#: modules/gui/qt/qt.cpp:171
 msgid "Select the initial preferences view"
 msgstr "처음 표시할 환경설정 보기 선택"
 
-#: modules/gui/qt/qt.cpp:173
+#: modules/gui/qt/qt.cpp:172
 msgid ""
 "Select which preferences view to show upon opening the preferences dialog."
 msgstr "환경설정 대화 상자를 열 때 표시할 보기를 선택합니다."
 
-#: modules/gui/qt/qt.cpp:197
+#: modules/gui/qt/qt.cpp:196
 msgid ""
 "Show a notification popup with the artist and track name when the current "
 "play queue item changes, when VLC is minimized or hidden."
@@ -7306,7 +7295,7 @@ msgstr ""
 "VLC가 최소화되거나 숨겨져 있을 때 현재 재생 대기열 항목이 바뀌면 아티스트와 "
 "트랙 이름이 담긴 알림 팝업을 표시합니다."
 
-#: modules/gui/qt/qt.cpp:201
+#: modules/gui/qt/qt.cpp:200
 msgid ""
 "Sets the windows opacity between 0.1 and 1 for main interface, play queue "
 "and extended panel. This option only works with Windows and X11 with "
@@ -7315,7 +7304,7 @@ msgstr ""
 "메인 인터페이스, 재생 대기열 및 확장 패널의 창 불투명도를 0.1에서 1 사이로 설"
 "정합니다. 이 옵션은 Windows 및 컴포지트 확장이 있는 X11에서만 작동합니다."
 
-#: modules/gui/qt/qt.cpp:207
+#: modules/gui/qt/qt.cpp:206
 msgid ""
 "Sets the fullscreen controller opacity between 0.1 and 1 for main interface, "
 "play queue and extended panel. This option only works with Windows and X11 "
@@ -7325,11 +7314,11 @@ msgstr ""
 "에서 1 사이로 설정합니다. 이 옵션은 Windows 및 컴포지트 확장이 있는 X11에서"
 "만 작동합니다."
 
-#: modules/gui/qt/qt.cpp:212
+#: modules/gui/qt/qt.cpp:211
 msgid "Initial user scale factor for the interface, between 0.3 and 3.0"
 msgstr "인터페이스의 초기 사용자 배율 (0.3에서 3.0 사이)"
 
-#: modules/gui/qt/qt.cpp:215
+#: modules/gui/qt/qt.cpp:214
 msgid ""
 "Show the errors of VLC at the bottom of the window, and ask before removing "
 "media from a playlist or from the play queue, or deleting playlists. Off, "
@@ -7340,11 +7329,11 @@ msgstr ""
 "거나 재생목록을 삭제하기 전에 확인합니다. 끄면 오류는 VLC 메시지에만 남고 이"
 "러한 제거는 바로 실행됩니다. 디스크에서 파일을 삭제할 때는 항상 확인합니다."
 
-#: modules/gui/qt/qt.cpp:225
+#: modules/gui/qt/qt.cpp:224
 msgid "set the options for qml debugger"
 msgstr "QML 디버거 옵션 설정"
 
-#: modules/gui/qt/qt.cpp:226
+#: modules/gui/qt/qt.cpp:225
 msgid ""
 "set the options for qml debugger (see http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
@@ -7352,7 +7341,7 @@ msgstr ""
 "QML 디버거 옵션 설정 (http://doc.qt.io/qt-5/qtquick-debugging.html#starting-"
 "applications 참조)"
 
-#: modules/gui/qt/qt.cpp:246
+#: modules/gui/qt/qt.cpp:245
 msgid ""
 "Show the playback controls in fullscreen when the mouse moves. Off, only the "
 "keyboard shows them (the I key). The skins read it for their fullscreen "
@@ -7361,7 +7350,7 @@ msgstr ""
 "전체화면에서 마우스를 움직이면 재생 컨트롤을 표시합니다. 끄면 키보드(I 키)로"
 "만 표시됩니다. 스킨의 전체화면 컨트롤러에도 이 설정이 적용됩니다."
 
-#: modules/gui/qt/qt.cpp:262
+#: modules/gui/qt/qt.cpp:261
 msgid ""
 "Display the cover art of the audio playing in the player (the cone in the "
 "compact view). Off, a plain picture takes its place, which also prevents "
@@ -7370,7 +7359,7 @@ msgstr ""
 "재생 중인 오디오의 커버 아트를 플레이어에 표시합니다(컴팩트 보기에서는 원"
 "뿔). 끄면 단순한 그림이 대신 표시되며, 화면 번인도 방지됩니다."
 
-#: modules/gui/qt/qt.cpp:286
+#: modules/gui/qt/qt.cpp:285
 msgid ""
 "This option allows the interface to be shown and raised automatically when a "
 "video/audio playback starts, or never."
@@ -7378,11 +7367,11 @@ msgstr ""
 "비디오/오디오 재생이 시작될 때 인터페이스를 자동으로 표시하고 앞으로 가져올"
 "지, 또는 절대 그렇게 하지 않을지 설정합니다."
 
-#: modules/gui/qt/qt.cpp:289
+#: modules/gui/qt/qt.cpp:288
 msgid "Enable window titlebar"
 msgstr "창 제목 표시줄 사용"
 
-#: modules/gui/qt/qt.cpp:290
+#: modules/gui/qt/qt.cpp:289
 msgid ""
 "This option enables the title bar. Disabling it will remove the titlebar and "
 "move window buttons within the interface (Client Side Decoration)"
@@ -7390,32 +7379,32 @@ msgstr ""
 "제목 표시줄을 사용합니다. 사용하지 않으면 제목 표시줄이 사라지고 창 버튼이 인"
 "터페이스 안으로 이동합니다(클라이언트 측 창 장식)"
 
-#: modules/gui/qt/qt.cpp:294
+#: modules/gui/qt/qt.cpp:293
 msgid "Show the menu bar"
 msgstr "메뉴 막대 표시"
 
-#: modules/gui/qt/qt.cpp:295
+#: modules/gui/qt/qt.cpp:294
 msgid "This option displays the classic menu bar"
 msgstr "클래식 메뉴 막대를 표시합니다"
 
-#: modules/gui/qt/qt.cpp:297
+#: modules/gui/qt/qt.cpp:296
 msgid "Pin video controls"
 msgstr "비디오 컨트롤 고정"
 
-#: modules/gui/qt/qt.cpp:298
+#: modules/gui/qt/qt.cpp:297
 msgid "Place video controls above and below the video instead of above"
 msgstr ""
 "비디오 컨트롤을 비디오 위에 겹치지 않고 비디오의 위와 아래에 배치합니다"
 
-#: modules/gui/qt/qt.cpp:301
+#: modules/gui/qt/qt.cpp:300
 msgid "Show the frame at the hovered position above the seek bar"
 msgstr "탐색 막대에서 마우스를 올린 위치의 프레임을 위에 표시"
 
-#: modules/gui/qt/qt.cpp:305
+#: modules/gui/qt/qt.cpp:304
 msgid "Select Qt video integration backend"
 msgstr "Qt 비디오 통합 백엔드 선택"
 
-#: modules/gui/qt/qt.cpp:306
+#: modules/gui/qt/qt.cpp:305
 msgid ""
 "Select Qt video integration backend. Use with care, the interface may not "
 "start if an incompatible compositor is selected"
@@ -7423,11 +7412,11 @@ msgstr ""
 "Qt 비디오 통합 백엔드를 선택합니다. 호환되지 않는 컴포지터를 선택하면 인터페"
 "이스가 시작되지 않을 수 있으니 주의해서 사용하세요"
 
-#: modules/gui/qt/qt.cpp:308
+#: modules/gui/qt/qt.cpp:307
 msgid "Use smooth scrolling in Flickable based views"
 msgstr "Flickable 기반 보기에서 부드러운 스크롤 사용"
 
-#: modules/gui/qt/qt.cpp:309
+#: modules/gui/qt/qt.cpp:308
 msgid ""
 "Deactivating this option will disable smooth scrolling in Flickable based "
 "views (such as the Play Queue). This option is only respected with a scroll "
@@ -7437,19 +7426,19 @@ msgstr ""
 "성화됩니다. 이 옵션은 스크롤 핸들러를 사용할 때만 적용됩니다. `qt-use-scroll-"
 "handler` 옵션을 참조하세요."
 
-#: modules/gui/qt/qt.cpp:312
+#: modules/gui/qt/qt.cpp:311
 msgid "Use Kirigami scroll handler for Flickable based views"
 msgstr "Flickable 기반 보기에 Kirigami 스크롤 핸들러 사용"
 
-#: modules/gui/qt/qt.cpp:313
+#: modules/gui/qt/qt.cpp:312
 msgid "Using Kirigami scroll handler may improve scrolling behavior."
 msgstr "Kirigami 스크롤 핸들러를 사용하면 스크롤 동작이 개선될 수 있습니다."
 
-#: modules/gui/qt/qt.cpp:315
+#: modules/gui/qt/qt.cpp:314
 msgid "Safe area for the user interface"
 msgstr "사용자 인터페이스 안전 영역"
 
-#: modules/gui/qt/qt.cpp:316
+#: modules/gui/qt/qt.cpp:315
 msgid ""
 "Sets the safe area percentage between 0.0 and 100 when you want to ensure "
 "the visibility of the user interface on a constrained viewport"
@@ -7457,19 +7446,19 @@ msgstr ""
 "제한된 화면에서도 사용자 인터페이스가 보이도록 안전 영역 비율을 0.0에서 100 "
 "사이로 설정합니다"
 
-#: modules/gui/qt/qt.cpp:320
+#: modules/gui/qt/qt.cpp:319
 msgid "Print Qt's important internal messages"
 msgstr "Qt의 중요한 내부 메시지 출력"
 
-#: modules/gui/qt/qt.cpp:321
+#: modules/gui/qt/qt.cpp:320
 msgid "Enable Qt's all own messaging categories except the debug category."
 msgstr "디버그 범주를 제외한 Qt 자체의 모든 메시지 범주를 사용합니다."
 
-#: modules/gui/qt/qt.cpp:323
+#: modules/gui/qt/qt.cpp:322
 msgid "Hide the window on close"
 msgstr "닫을 때 창 숨기기"
 
-#: modules/gui/qt/qt.cpp:324
+#: modules/gui/qt/qt.cpp:323
 msgid ""
 "Instead of closing the application, hide the window. This setting is only "
 "applicable when system tray icon is enabled."
@@ -7477,11 +7466,11 @@ msgstr ""
 "응용 프로그램을 닫는 대신 창을 숨깁니다. 이 설정은 시스템 트레이 아이콘을 사"
 "용할 때만 적용됩니다."
 
-#: modules/gui/qt/qt.cpp:326
+#: modules/gui/qt/qt.cpp:325
 msgid "Enable backdrop blur filter for the main window if possible"
 msgstr "가능하면 메인 창에 배경 흐림 필터 사용"
 
-#: modules/gui/qt/qt.cpp:327
+#: modules/gui/qt/qt.cpp:326
 msgid ""
 "If backdrop blur filter is available, use translucency in the backgrounds of "
 "certain parts of the user interface instead of a solid color. This setting "
@@ -7490,11 +7479,11 @@ msgstr ""
 "배경 흐림 필터를 사용할 수 있으면 사용자 인터페이스 일부의 배경에 단색 대신 "
 "반투명 효과를 사용합니다. 이 설정은 텍스트 가독성을 떨어뜨립니다."
 
-#: modules/gui/qt/qt.cpp:330
+#: modules/gui/qt/qt.cpp:329
 msgid "Enable picture-in-picture (PiP) mode"
 msgstr "화면 속 화면(PiP) 모드 사용"
 
-#: modules/gui/qt/qt.cpp:331
+#: modules/gui/qt/qt.cpp:330
 msgid ""
 "Picture-in-picture mode allows playing video contained in a smaller area so "
 "that the interface remains usable."
@@ -7502,29 +7491,29 @@ msgstr ""
 "화면 속 화면 모드는 비디오를 작은 영역에서 재생하여 인터페이스를 계속 사용할 "
 "수 있게 합니다."
 
-#: modules/gui/qt/qt.cpp:334
+#: modules/gui/qt/qt.cpp:333
 msgid ""
 "Adjusts the accent color, special values are 'default' and 'system' "
 "(requires Qt 6.6) ."
 msgstr ""
 "강조 색을 조정합니다. 특수 값은 'default'와 'system'입니다(Qt 6.6 필요)."
 
-#: modules/gui/qt/qt.cpp:435
+#: modules/gui/qt/qt.cpp:434
 msgid "Check for VLC Redesign updates"
 msgstr "VLC Redesign 업데이트 확인"
 
-#: modules/gui/qt/qt.cpp:436
+#: modules/gui/qt/qt.cpp:435
 msgid ""
 "Look for a new release of VLC Redesign on GitHub at startup, at most once a "
 "day."
 msgstr ""
 "시작할 때 GitHub에서 VLC Redesign의 새 릴리스를 확인합니다(하루 최대 한 번)."
 
-#: modules/gui/qt/qt.cpp:440
+#: modules/gui/qt/qt.cpp:439
 msgid "Resume at"
 msgstr "재개 위치"
 
-#: modules/gui/qt/qt.cpp:441
+#: modules/gui/qt/qt.cpp:440
 msgid ""
 "Seconds into the media of the command line where playback continues, after "
 "an update."
@@ -7559,55 +7548,61 @@ msgstr "%1시간 %2분"
 msgid "%1ms"
 msgstr "%1 ms"
 
-#: modules/gui/qt/util/redesign_updater.cpp:400
+#: modules/gui/qt/util/redesign_updater.cpp:159
+msgid ""
+"The update isn't signed by the publisher of this copy (%1), so it wasn't "
+"used."
+msgstr "이 업데이트는 이 사본의 게시자(%1)가 서명하지 않았으므로 사용하지 않았습니다."
+
+#: modules/gui/qt/util/redesign_updater.cpp:515
 msgid "This build cannot check for updates."
 msgstr "이 빌드에서는 업데이트를 확인할 수 없습니다."
 
-#: modules/gui/qt/util/redesign_updater.cpp:414
+#: modules/gui/qt/util/redesign_updater.cpp:529
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "GitHub에 연결할 수 없습니다. 연결을 확인하고 다시 시도하세요."
 
-#: modules/gui/qt/util/redesign_updater.cpp:431
+#: modules/gui/qt/util/redesign_updater.cpp:546
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "GitHub에서 예기치 않은 응답을 보냈습니다(%1)."
 
-#: modules/gui/qt/util/redesign_updater.cpp:537
+#: modules/gui/qt/util/redesign_updater.cpp:652
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr "업데이트의 체크섬이 없습니다. 대신 릴리스 페이지에서 다운로드하세요."
 
-#: modules/gui/qt/util/redesign_updater.cpp:584
+#: modules/gui/qt/util/redesign_updater.cpp:699
 msgid "The download failed. Check your connection and try again."
 msgstr "다운로드에 실패했습니다. 연결을 확인하고 다시 시도하세요."
 
-#: modules/gui/qt/util/redesign_updater.cpp:597
+#: modules/gui/qt/util/redesign_updater.cpp:712
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "업데이트가 체크섬과 일치하지 않아 사용하지 않았습니다."
 
-#: modules/gui/qt/util/redesign_updater.cpp:619
+#: modules/gui/qt/util/redesign_updater.cpp:743
 msgid "The update isn't in a format this version knows."
 msgstr "이 버전에서 인식할 수 없는 형식의 업데이트입니다."
 
-#: modules/gui/qt/util/redesign_updater.cpp:622
-#: modules/gui/qt/util/redesign_updater.cpp:646
-#: modules/gui/qt/util/redesign_updater.cpp:657
-#: modules/gui/qt/util/redesign_updater.cpp:663
+#: modules/gui/qt/util/redesign_updater.cpp:746
+#: modules/gui/qt/util/redesign_updater.cpp:770
+#: modules/gui/qt/util/redesign_updater.cpp:781
+#: modules/gui/qt/util/redesign_updater.cpp:787
 msgid "The update is damaged."
 msgstr "업데이트가 손상되었습니다."
 
-#: modules/gui/qt/util/redesign_updater.cpp:627
+#: modules/gui/qt/util/redesign_updater.cpp:751
 msgid "The update isn't for this version."
 msgstr "이 버전용 업데이트가 아닙니다."
 
-#: modules/gui/qt/util/redesign_updater.cpp:636
-#: modules/gui/qt/util/redesign_updater.cpp:673
-#: modules/gui/qt/util/redesign_updater.cpp:682
-#: modules/gui/qt/util/redesign_updater.cpp:686
-#: modules/gui/qt/util/redesign_updater.cpp:690
+#: modules/gui/qt/util/redesign_updater.cpp:760
+#: modules/gui/qt/util/redesign_updater.cpp:797
+#: modules/gui/qt/util/redesign_updater.cpp:806
+#: modules/gui/qt/util/redesign_updater.cpp:810
+#: modules/gui/qt/util/redesign_updater.cpp:814
 msgid "The update can't be written in %1."
 msgstr "%1에 업데이트를 쓸 수 없습니다."
 
-#: modules/gui/qt/util/redesign_updater.cpp:638
+#: modules/gui/qt/util/redesign_updater.cpp:762
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -7615,32 +7610,32 @@ msgstr ""
 "설치 후 VLC Redesign 파일이 변경되어 부분 업데이트를 사용할 수 없습니다. 대"
 "신 설치 프로그램으로 업데이트하세요."
 
-#: modules/gui/qt/util/redesign_updater.cpp:668
+#: modules/gui/qt/util/redesign_updater.cpp:792
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr "업데이트가 손상되었습니다. 파일이 체크섬과 일치하지 않습니다."
 
-#: modules/gui/qt/util/redesign_updater.cpp:793
+#: modules/gui/qt/util/redesign_updater.cpp:917
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr "업데이트를 시작할 수 없습니다. 다음에 다시 시도합니다."
 
-#: modules/gui/qt/util/redesign_updater.cpp:820
+#: modules/gui/qt/util/redesign_updater.cpp:944
 msgid "The download failed. Try again, or download it from the release page."
 msgstr ""
 "다운로드에 실패했습니다. 다시 시도하거나 릴리스 페이지에서 다운로드하세요."
 
-#: modules/gui/qt/util/redesign_updater.cpp:833
+#: modules/gui/qt/util/redesign_updater.cpp:957
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr "다운로드한 설치 프로그램이 체크섬과 일치하지 않아 실행하지 않았습니다."
 
-#: modules/gui/qt/util/redesign_updater.cpp:842
+#: modules/gui/qt/util/redesign_updater.cpp:966
 msgid "The installer couldn't be saved to %1."
 msgstr "설치 프로그램을 %1에 저장할 수 없습니다."
 
-#: modules/gui/qt/util/redesign_updater.cpp:870
+#: modules/gui/qt/util/redesign_updater.cpp:1000
 msgid "The installer couldn't be started."
 msgstr "설치 프로그램을 시작할 수 없습니다."
 
-#: modules/gui/qt/util/renderer_manager.cpp:867
+#: modules/gui/qt/util/renderer_manager.cpp:886
 msgid ""
 "%1 doesn't answer. Check that it's on, and on the same network as this "
 "computer."
@@ -7648,66 +7643,66 @@ msgstr ""
 "%1이(가) 응답하지 않습니다. 장치가 켜져 있고 이 컴퓨터와 같은 네트워크에 있는"
 "지 확인하세요."
 
-#: modules/gui/qt/util/renderer_manager.cpp:870
+#: modules/gui/qt/util/renderer_manager.cpp:889
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the video."
 msgstr ""
 "Windows 방화벽 때문에 %1이(가) 비디오를 읽으려고 이 컴퓨터에 연결할 수 없습니"
 "다."
 
-#: modules/gui/qt/util/renderer_manager.cpp:871
+#: modules/gui/qt/util/renderer_manager.cpp:890
 msgid "%1 couldn't read the video from this computer."
 msgstr "%1이(가) 이 컴퓨터의 비디오를 읽을 수 없습니다."
 
-#: modules/gui/qt/util/renderer_manager.cpp:873
+#: modules/gui/qt/util/renderer_manager.cpp:892
 msgid "%1 refused to play this video."
 msgstr "%1이(가) 이 비디오 재생을 거부했습니다."
 
-#: modules/gui/qt/util/renderer_manager.cpp:875
+#: modules/gui/qt/util/renderer_manager.cpp:894
 msgid "%1 stopped playing."
 msgstr "%1에서 재생이 중지되었습니다."
 
-#: modules/gui/qt/util/renderer_manager.cpp:877
+#: modules/gui/qt/util/renderer_manager.cpp:896
 msgid "%1 is playing something else now."
 msgstr "%1에서 지금 다른 항목을 재생하고 있습니다."
 
-#: modules/gui/qt/util/renderer_manager.cpp:878
+#: modules/gui/qt/util/renderer_manager.cpp:897
 msgid "%1 couldn't play the video."
 msgstr "%1에서 비디오를 재생할 수 없습니다."
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:52
+#: modules/gui/qt/util/subtitle_preferences.cpp:59
 msgid "Asturian"
 msgstr "아스투리아스어"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:54
+#: modules/gui/qt/util/subtitle_preferences.cpp:61
 msgid "Central Kurdish"
 msgstr "중앙 쿠르드어"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:55
+#: modules/gui/qt/util/subtitle_preferences.cpp:62
 msgid "Montenegrin"
 msgstr "몬테네그로어"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:59
+#: modules/gui/qt/util/subtitle_preferences.cpp:66
 msgid "Dari"
 msgstr "다리어"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:61
+#: modules/gui/qt/util/subtitle_preferences.cpp:68
 msgid "Cantonese"
 msgstr "광둥어"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:62
+#: modules/gui/qt/util/subtitle_preferences.cpp:69
 msgid "Standard Moroccan Tamazight"
 msgstr "표준 모로코 타마지트어"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:63
+#: modules/gui/qt/util/subtitle_preferences.cpp:70
 msgid "Portuguese (Brazil)"
 msgstr "포르투갈어(브라질)"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:64
+#: modules/gui/qt/util/subtitle_preferences.cpp:71
 msgid "Chinese (Traditional)"
 msgstr "중국어(번체)"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:65
+#: modules/gui/qt/util/subtitle_preferences.cpp:72
 msgid "Spanish (Latin America)"
 msgstr "스페인어(중남미)"
 
@@ -7726,7 +7721,7 @@ msgid_plural "%1 selected"
 msgstr[0] "%1개 선택됨"
 
 #: modules/gui/qt/widgets/qml/GridSortFilterControls.qml:30
-#: modules/gui/qt/widgets/qml/LibraryHeader.qml:482
+#: modules/gui/qt/widgets/qml/LibraryHeader.qml:483
 msgid "List/Grid"
 msgstr "목록/격자"
 
@@ -7800,7 +7795,7 @@ msgstr "디스크 번호 내림차순"
 
 #: modules/lua/vlc.c:51
 msgid "Enable Lua plugins"
-msgstr ""
+msgstr "Lua 플러그인 사용하기"
 
 #: modules/misc/gnutls.c:757
 msgid "Secure 128-bit (or higher)"
@@ -7810,35 +7805,35 @@ msgstr "보안 128비트 (이상)"
 msgid "Secure 256-bit (exclude 128-bit ciphers)"
 msgstr "보안 256비트 (128비트 암호 제외)"
 
-#: modules/misc/medialibrary/medialibrary.cpp:469
+#: modules/misc/medialibrary/medialibrary.cpp:471
 msgid "Recover"
 msgstr "복구"
 
-#: modules/misc/medialibrary/medialibrary.cpp:470
+#: modules/misc/medialibrary/medialibrary.cpp:472
 msgid "Recreate"
 msgstr "다시 만들기"
 
-#: modules/misc/medialibrary/medialibrary.cpp:470
+#: modules/misc/medialibrary/medialibrary.cpp:472
 msgid "Media database corrupted"
 msgstr "미디어 데이터베이스 손상됨"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2728
+#: modules/misc/medialibrary/medialibrary.cpp:2750
 msgid "Folders discovered by the media library"
 msgstr "미디어 라이브러리가 검색할 폴더"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2729
+#: modules/misc/medialibrary/medialibrary.cpp:2751
 msgid "Semicolon separated list of folders to discover media from"
 msgstr "미디어를 검색할 폴더 목록(세미콜론으로 구분)"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2732
+#: modules/misc/medialibrary/medialibrary.cpp:2754
 msgid "Extra verbose media library logs"
 msgstr "미디어 라이브러리 상세 로그"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2735
+#: modules/misc/medialibrary/medialibrary.cpp:2757
 msgid "media library"
 msgstr "미디어 라이브러리"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2736
+#: modules/misc/medialibrary/medialibrary.cpp:2758
 msgid "Organize your media"
 msgstr "미디어 정리"
 
@@ -7846,7 +7841,7 @@ msgstr "미디어 정리"
 msgid ""
 "Sets PID to the ID of the incoming ES. This is for use with --ts-es-id-pid, "
 "and allows having the same PIDs in the input and output streams."
-msgstr ""
+msgstr "PID를 들어오는 ES의 ID로 설정합니다. --ts-es-id-pid와 함께 사용하며, 입력 스트림과 출력 스트림에서 같은 PID를 쓸 수 있게 합니다."
 
 #: modules/services_discovery/upnp.cpp:66
 msgid ""
@@ -7917,18 +7912,18 @@ msgstr "UPnP/DLNA 디먹스 필터"
 msgid "Universal Plug'n'Play Server"
 msgstr "유니버셜 플러그앤플레이 서버"
 
-#: modules/stream_out/chromecast/cast.cpp:1189
+#: modules/stream_out/chromecast/cast.cpp:1191
 #: modules/stream_out/dlna/dlna.cpp:690
 msgid "OK, don't warn me again"
 msgstr "확인, 다시 경고하지 않음"
 
-#: modules/stream_out/chromecast/cast.cpp:1190
+#: modules/stream_out/chromecast/cast.cpp:1192
 #: modules/stream_out/dlna/dlna.cpp:691
 #: modules/stream_out/renderer_common.hpp:35
 msgid "Performance warning"
 msgstr "성능 경고"
 
-#: modules/stream_out/chromecast/cast.cpp:1191
+#: modules/stream_out/chromecast/cast.cpp:1193
 #: modules/stream_out/dlna/dlna.cpp:692
 msgid ""
 "Casting this video requires conversion. This conversion can use all the "
@@ -7939,39 +7934,39 @@ msgstr ""
 
 #: modules/stream_out/renderer_common.hpp:36
 msgid "Display a performance warning when transcoding"
-msgstr ""
+msgstr "트랜스코딩 시 성능 경고 표시"
 
 #: modules/stream_out/renderer_common.hpp:37
 msgid "Enable Audio passthrough"
-msgstr ""
+msgstr "오디오 패스스루 사용하기"
 
 #: modules/stream_out/renderer_common.hpp:38
 msgid "Disable if your receiver does not support Dolby®."
-msgstr ""
+msgstr "수신기가 Dolby®를 지원하지 않으면 비활성화하세요."
 
 #: modules/stream_out/renderer_common.hpp:39
 msgid "Conversion quality"
-msgstr ""
+msgstr "변환 품질"
 
 #: modules/stream_out/renderer_common.hpp:40
 msgid "Change conversion speed or quality."
-msgstr ""
+msgstr "변환 속도 또는 품질을 변경합니다."
 
 #: modules/stream_out/renderer_common.hpp:63
 msgid "High (high quality and high bandwidth)"
-msgstr ""
+msgstr "높음 (고품질, 높은 대역폭)"
 
 #: modules/stream_out/renderer_common.hpp:64
 msgid "Medium (medium quality and medium bandwidth)"
-msgstr ""
+msgstr "보통 (중간 품질, 중간 대역폭)"
 
 #: modules/stream_out/renderer_common.hpp:65
 msgid "Low (low quality and low bandwidth)"
-msgstr ""
+msgstr "낮음 (저품질, 낮은 대역폭)"
 
 #: modules/stream_out/renderer_common.hpp:66
 msgid "Low CPU (low quality but high bandwidth)"
-msgstr ""
+msgstr "낮은 CPU (저품질이지만 높은 대역폭)"
 
 #: modules/text_renderer/freetype/freetype.c:77
 msgid ""
@@ -7983,83 +7978,74 @@ msgstr ""
 
 #: modules/text_renderer/freetype/freetype.c:91
 msgid "Cache size"
-msgstr ""
+msgstr "캐시 크기"
 
 #: modules/text_renderer/freetype/freetype.c:92
 msgid "Cache size in kBytes"
-msgstr ""
+msgstr "캐시 크기 (KB)"
 
 #: modules/text_renderer/freetype/freetype.c:101
 msgid "Blending Mode"
-msgstr ""
+msgstr "혼합 모드"
 
 #: modules/text_renderer/freetype/freetype.c:102
 msgid "Blending mode for the font, can be transparent or overlay"
-msgstr ""
+msgstr "글꼴의 혼합 모드로, 투명 또는 오버레이를 사용할 수 있습니다."
 
 #: modules/video_filter/extract.c:55
 msgid ""
 "RGB component to extract, as an RGB hexadecimal mask. E.g. 0xFF0000 for red; "
 "0x00FF00 for green and 0x0000FF for blue."
-msgstr ""
+msgstr "추출할 RGB 성분을 RGB 16진수 마스크로 지정합니다. 예: 빨강은 0xFF0000, 초록은 0x00FF00, 파랑은 0x0000FF."
 
 #: modules/video_filter/gradient.c:64
 msgid "Keep color"
-msgstr ""
+msgstr "색상 유지"
 
 #: modules/video_filter/gradient.c:65
 msgid "This will keep the colors, otherwise the image will be turned white."
-msgstr ""
+msgstr "색상을 유지합니다. 사용하지 않으면 이미지가 흰색으로 바뀝니다."
 
 #: modules/video_output/win32/direct3d11.cpp:72
 msgid "Video Upscaling Mode"
-msgstr ""
+msgstr "비디오 업스케일링 모드"
 
 #: modules/video_output/win32/direct3d11.cpp:73
 msgid "Select the upscaling mode for video."
-msgstr ""
+msgstr "비디오 업스케일링 모드를 선택합니다."
 
 #: modules/video_output/win32/direct3d11.cpp:78
 msgid "Linear Sampler"
-msgstr ""
+msgstr "선형 샘플러"
 
 #: modules/video_output/win32/direct3d11.cpp:78
 msgid "Point Sampler"
-msgstr ""
+msgstr "포인트 샘플러"
 
 #: modules/video_output/win32/direct3d11.cpp:78
 msgid "Video Processor"
-msgstr ""
+msgstr "비디오 프로세서"
 
 #: modules/video_output/win32/direct3d11.cpp:78
 msgid "Super Resolution"
-msgstr ""
+msgstr "초해상도"
 
 #: modules/video_output/win32/direct3d11.cpp:80
 msgid "HDR Output Mode"
-msgstr ""
+msgstr "HDR 출력 모드"
 
 #: modules/video_output/win32/direct3d11.cpp:81
 msgid "Use HDR output even if the source is SDR."
-msgstr ""
+msgstr "소스가 SDR이어도 HDR 출력을 사용합니다."
 
 #: modules/video_output/win32/direct3d11.cpp:86
 msgid "Never out HDR"
-msgstr ""
+msgstr "HDR 출력 안 함"
 
 #: modules/video_output/win32/direct3d11.cpp:86
 msgid "Always output HDR"
-msgstr ""
+msgstr "항상 HDR 출력"
 
 #: modules/video_output/win32/direct3d11.cpp:86
 msgid "Generate HDR from SDR"
-msgstr ""
-
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
-msgctxt "subtitle language"
-msgid "Often used"
-msgstr "자주 사용"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
-msgid "Snapshot height (0: proportional, -1: original)"
-msgstr "스냅샷 높이 (0: 비율 유지, -1: 원본)"
+msgstr "SDR에서 HDR 생성"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-25 11:16+0000\n"
+"POT-Creation-Date: 2026-10-28 10:16+0000\n"
 "PO-Revision-Date: 2014-05-01 15:57+0000\n"
 "Last-Translator: rohitharikiran <rohithharikiran@gmail.com>\n"
 "Language-Team: Telugu (http://www.transifex.com/projects/p/vlc-trans/"
@@ -37,7 +37,7 @@ msgid "Media Library Settings"
 msgstr "మాధ్యమ లైబ్రరీ అమరికలు"
 
 #: src/audio_output/output.c:337
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1176
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
 msgid "Waveform"
 msgstr "తరంగరూపం"
 
@@ -176,17 +176,17 @@ msgstr "మీ మాధ్యమాన్ని తెరవలేము"
 
 #: src/interface/interface.c:100
 msgid "Upnp"
-msgstr ""
+msgstr "UPnP"
 
 #: src/libvlc-module.c:139
 msgid "Enable bit-exact mode (pure mode)"
-msgstr ""
+msgstr "బిట్-కచ్చిత విధాన్ని (శుద్ధ విధం) చేతనపరుచు"
 
 #: src/libvlc-module.c:141
 msgid ""
 "This will disable all audio filters, even audio converters. This may result "
 "on audio not working if the output can't adapt to the input format."
-msgstr ""
+msgstr "ఇది అన్ని ఆడియో వడబోతలను, ఆడియో మార్పిడిలను కూడా, అచేతనపరుస్తుంది. అవుట్‌పుట్ ఇన్‌పుట్ ఆకృతికి అనుగుణంగా మారలేకపోతే ఆడియో పనిచేయకపోవచ్చు."
 
 #: src/libvlc-module.c:275
 msgid ""
@@ -200,21 +200,21 @@ msgstr ""
 msgid ""
 "This requests a specific pixel width for the video window. By default (-1), "
 "the width is requested according to the zoom setting."
-msgstr ""
+msgstr "ఇది వీడియో కిటికీకి నిర్దిష్ట పిక్సెల్ వెడల్పును అభ్యర్థిస్తుంది. అప్రమేయంగా (-1), వెడల్పు జూమ్ అమరిక ప్రకారం అభ్యర్థించబడుతుంది."
 
 #: src/libvlc-module.c:290
 msgid ""
 "This requests a specific pixel height for the video window. By default (-1), "
 "the height is requested according to the zoom setting."
-msgstr ""
+msgstr "ఇది వీడియో కిటికీకి నిర్దిష్ట పిక్సెల్ ఎత్తును అభ్యర్థిస్తుంది. అప్రమేయంగా (-1), ఎత్తు జూమ్ అమరిక ప్రకారం అభ్యర్థించబడుతుంది."
 
 #: src/libvlc-module.c:340
 msgid "360 videos projection mode"
-msgstr ""
+msgstr "360 వీడియోల ప్రక్షేపణ విధం"
 
 #: src/libvlc-module.c:342
 msgid "Change the 360 video projection mode."
-msgstr ""
+msgstr "360 వీడియో ప్రక్షేపణ విధాన్ని మార్చు."
 
 #: src/libvlc-module.c:391
 msgid "Deinterlace filter"
@@ -226,11 +226,11 @@ msgstr "ఉపయోగించాల్సిన విజాలీకరణ �
 
 #: src/libvlc-module.c:394
 msgid "Video Stereo 3D mode"
-msgstr ""
+msgstr "వీడియో స్టీరియో 3D విధం"
 
 #: src/libvlc-module.c:395
 msgid "Set the Video Stereo 3D mode."
-msgstr ""
+msgstr "వీడియో స్టీరియో 3D విధాన్ని అమర్చు."
 
 #: src/libvlc-module.c:403 src/video_output/vout_intf.c:168
 msgid "Left Only"
@@ -250,11 +250,11 @@ msgstr "పూర్తితెరలో ఉన్నప్పుడు"
 
 #: src/libvlc-module.c:495
 msgid "Video fitting"
-msgstr ""
+msgstr "వీడియో అమరిక"
 
 #: src/libvlc-module.c:497
 msgid "This selects the dimension according to which the video will be scaled."
-msgstr ""
+msgstr "వీడియో ఏ కొలత ప్రకారం పరిమాణం మార్చబడుతుందో దాన్ని ఇది ఎంచుకుంటుంది."
 
 #: src/libvlc-module.c:543
 msgid "Mouse Pause Policy"
@@ -266,8 +266,9 @@ msgstr "మౌస్ నొక్కుపై నిలిపివేత ఎల
 
 #: src/libvlc-module.c:552 modules/access/rist.h:85
 #: modules/audio_output/mmdevice.c:1621
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1174
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:181
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1195
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:23
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:141
 msgid "Disabled"
@@ -279,7 +280,7 @@ msgstr "మౌస్ వదిలిన వెంటనే నిలిపివ
 
 #: src/libvlc-module.c:596
 msgid "Clock master source"
-msgstr ""
+msgstr "ప్రధాన గడియార మూలం"
 
 #: src/libvlc-module.c:597
 msgid ""
@@ -292,15 +293,15 @@ msgid ""
 "audio: if an audio track is playing, the audio output will drive the clock "
 "(Fallback to Monotonic if there is no audio tracks).\n"
 "monotonic: all tracks are driven by the monotonic clock of the system."
-msgstr ""
+msgstr "ప్రధాన గడియార మూలాన్ని ఎంచుకోండి:\nauto: ఉత్తమ గడియార మూలం; ప్రాప్యత వేగాన్ని నియంత్రించలేకపోతే (ప్రత్యక్ష కంటెంట్ ఆడిస్తున్నప్పుడు) ఇన్‌పుట్, లేకపోతే (చాలావరకు) ఆడియో.\ninput: అన్ని ట్రాక్‌లు ఇన్‌పుట్ గడియారంతో నడుస్తాయి, ఇది డీమక్సర్ నుండి వచ్చే PCR నవీకరణల ద్వారా లభిస్తుంది. ఇది VLC 3.0 గడియార ప్రవర్తనను పునరుద్ధరిస్తుంది, ఇందులో ఇన్‌పుట్‌తో సమానంగా ఉండటానికి ఆడియో, వీడియో రెండు ట్రాక్‌లనూ మార్చవచ్చు.\naudio: ఏదైనా ఆడియో ట్రాక్ ఆడుతుంటే, ఆడియో అవుట్‌పుట్ గడియారాన్ని నడుపుతుంది (ఆడియో ట్రాక్‌లు లేకపోతే మోనోటోనిక్ వాడబడుతుంది).\nmonotonic: అన్ని ట్రాక్‌లు వ్యవస్థ యొక్క మోనోటోనిక్ గడియారంతో నడుస్తాయి."
 
 #: src/libvlc-module.c:612
 msgid "Input (PCR)"
-msgstr ""
+msgstr "ఇన్‌పుట్ (PCR)"
 
 #: src/libvlc-module.c:614
 msgid "Monotonic"
-msgstr ""
+msgstr "మోనోటోనిక్"
 
 #: src/libvlc-module.c:657
 #: modules/gui/qt/medialibrary/qml/VideoInfoExpandPanel.qml:295
@@ -309,7 +310,7 @@ msgstr "వీడియో ట్రాక్"
 
 #: src/libvlc-module.c:659
 msgid "Stream number of the video track to use (from 0 to n)."
-msgstr ""
+msgstr "ఉపయోగించాల్సిన వీడియో ట్రాక్ యొక్క ప్రవాహ సంఖ్య (0 నుండి n వరకు)."
 
 #: src/libvlc-module.c:674
 msgid ""
@@ -338,21 +339,21 @@ msgstr ""
 
 #: src/libvlc-module.c:687
 msgid "Video track ID"
-msgstr ""
+msgstr "వీడియో ట్రాక్ ఐడీ"
 
 #: src/libvlc-module.c:689
 msgid "Stream ID of the video track to use."
-msgstr ""
+msgstr "ఉపయోగించాల్సిన వీడియో ట్రాక్ యొక్క ప్రవాహ ఐడీ."
 
 #: src/libvlc-module.c:717
 msgid "Low delay mode"
-msgstr ""
+msgstr "తక్కువ జాప్య విధం"
 
 #: src/libvlc-module.c:719
 msgid ""
 "Try to minimize delay along decoding chain. Might break with non compliant "
 "streams."
-msgstr ""
+msgstr "డీకోడింగ్ గొలుసులో జాప్యాన్ని వీలైనంత తగ్గించడానికి ప్రయత్నించు. ప్రమాణాలను పాటించని ప్రవాహాలతో సమస్యలు రావచ్చు."
 
 #: src/libvlc-module.c:766
 msgid "Should the playback resume where it was left off?"
@@ -395,30 +396,30 @@ msgstr ""
 
 #: src/libvlc-module.c:834
 msgid "Display sub-pictures on full window"
-msgstr ""
+msgstr "ఉపచిత్రాలను పూర్తి కిటికీపై చూపించు"
 
 #: src/libvlc-module.c:836
 msgid "It allows showing subtitles in black bars."
-msgstr ""
+msgstr "ఇది ఉపశీర్షికలను నల్లని పట్టీలలో చూపించడానికి అనుమతిస్తుంది."
 
 #: src/libvlc-module.c:838
 msgid "Position of secondary subtitles"
-msgstr ""
+msgstr "ద్వితీయ ఉపశీర్షికల స్థానం"
 
 #: src/libvlc-module.c:840
 msgid ""
 "Place on video where to display secondary subtitles (default bottom center)."
-msgstr ""
+msgstr "ద్వితీయ ఉపశీర్షికలను చూపించాల్సిన వీడియోపై స్థలం (అప్రమేయం: కింద మధ్యలో)."
 
 #: src/libvlc-module.c:842
 msgid "Force secondary subtitle position"
-msgstr ""
+msgstr "ద్వితీయ ఉపశీర్షిక స్థానాన్ని బలవంతం చేయి"
 
 #: src/libvlc-module.c:844
 msgid ""
 "You can use this option to vertically adjust the position secondary "
 "subtitles are displayed."
-msgstr ""
+msgstr "ద్వితీయ ఉపశీర్షికలు చూపించబడే స్థానాన్ని నిలువుగా సర్దుబాటు చేయడానికి మీరు ఈ ఐచ్ఛికాన్ని ఉపయోగించవచ్చు."
 
 #: src/libvlc-module.c:847
 msgid "On Screen Display duration"
@@ -430,33 +431,33 @@ msgstr "తెరపై ప్రదర్శన సందేశాలు ఎం
 
 #: src/libvlc-module.c:889
 msgid "Subtitle Frames per Second"
-msgstr ""
+msgstr "ఉపశీర్షిక సెకనుకు చట్రాలు"
 
 #: src/libvlc-module.c:891
 msgid "Override the normal frames per second settings. "
-msgstr ""
+msgstr "సాధారణ సెకనుకు చట్రాల అమరికలను అధిగమించు. "
 
 #: src/libvlc-module.c:976
 msgid ""
 "This X.509 certificate file (PEM format) is used for server-side TLS. On OS "
 "X, the string is used as a label to search the certificate in the keychain."
-msgstr ""
+msgstr "ఈ X.509 ధ్రువపత్ర దస్త్రం (PEM ఆకృతి) సర్వర్-వైపు TLS కోసం ఉపయోగించబడుతుంది. OS X లో, కీచైన్‌లో ధ్రువపత్రాన్ని వెతకడానికి ఈ పదబంధం లేబుల్‌గా ఉపయోగించబడుతుంది."
 
 #: src/libvlc-module.c:1027
 msgid ""
 "These options allow you to control the preferred modules used for accessing, "
 "demuxing and decoding (or encoding) inputs."
-msgstr ""
+msgstr "ఇన్‌పుట్‌లను ప్రాప్యత, డీమక్స్, డీకోడ్ (లేదా ఎన్‌కోడ్) చేయడానికి ఉపయోగించే ప్రాధాన్య పర్వికాలను నియంత్రించడానికి ఈ ఐచ్ఛికాలు మిమ్మల్ని అనుమతిస్తాయి."
 
 #: src/libvlc-module.c:1037
 msgid "Enable hardware decoders"
-msgstr ""
+msgstr "హార్డ్‌వేర్ డీకోడర్‌లను చేతనపరుచు"
 
 #: src/libvlc-module.c:1039
 msgid ""
 "VLC will fallback automatically to software decoders in case of hardware "
 "decoder failure."
-msgstr ""
+msgstr "హార్డ్‌వేర్ డీకోడర్ విఫలమైతే VLC స్వయంచాలకంగా సాఫ్ట్‌వేర్ డీకోడర్‌లకు మారుతుంది."
 
 #: src/libvlc-module.c:1042
 msgid "Preferred decoder hardware device"
@@ -472,11 +473,11 @@ msgstr ""
 
 #: src/libvlc-module.c:1128
 msgid "Tracer module"
-msgstr ""
+msgstr "ట్రేసర్ పర్వికం"
 
 #: src/libvlc-module.c:1130
 msgid "This allow to select which tracer module you want to use."
-msgstr ""
+msgstr "ఏ ట్రేసర్ పర్వికాన్ని ఉపయోగించాలో ఎంచుకోవడానికి ఇది అనుమతిస్తుంది."
 
 #: src/libvlc-module.c:1149
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:23
@@ -498,11 +499,11 @@ msgstr ""
 
 #: src/libvlc-module.c:1162
 msgid "Statistics collection frequency"
-msgstr ""
+msgstr "గణాంకాల సేకరణ పౌనఃపున్యం"
 
 #: src/libvlc-module.c:1164
 msgid "Collection frequency of the statistics in ms."
-msgstr ""
+msgstr "గణాంకాల సేకరణ పౌనఃపున్యం, ms లో."
 
 #: src/libvlc-module.c:1208
 msgid "Enqueue items into play queue in one instance mode"
@@ -520,7 +521,7 @@ msgstr ""
 msgid ""
 "These options define the behavior of the play queue. Some of them can be "
 "overridden in the play queue dialog box."
-msgstr ""
+msgstr "ఈ ఐచ్ఛికాలు ప్రదర్శన వరుస ప్రవర్తనను నిర్వచిస్తాయి. వీటిలో కొన్నింటిని ప్రదర్శన వరుస సంభాషణ పెట్టెలో అధిగమించవచ్చు."
 
 #: src/libvlc-module.c:1228
 msgid ""
@@ -530,19 +531,19 @@ msgstr "ప్రదర్శన వరుసకు జతచేసిన అం
 
 #: src/libvlc-module.c:1235
 msgid "Preparsing threads"
-msgstr ""
+msgstr "ముందస్తు విశ్లేషణ థ్రెడ్‌లు"
 
 #: src/libvlc-module.c:1237
 msgid "Maximum number of threads used to preparse items"
-msgstr ""
+msgstr "అంశాలను ముందే విశ్లేషించడానికి ఉపయోగించే థ్రెడ్‌ల గరిష్ఠ సంఖ్య"
 
 #: src/libvlc-module.c:1239
 msgid "Fetch-art threads"
-msgstr ""
+msgstr "కళాకృతి తెచ్చే థ్రెడ్‌లు"
 
 #: src/libvlc-module.c:1241
 msgid "Maximum number of threads used to fetch art"
-msgstr ""
+msgstr "కళాకృతిని తెచ్చేందుకు ఉపయోగించే థ్రెడ్‌ల గరిష్ఠ సంఖ్య"
 
 #: src/libvlc-module.c:1252
 msgid ""
@@ -569,7 +570,7 @@ msgstr ""
 
 #: src/libvlc-module.c:1268
 msgid "Flatten files listed by extractors (archive)"
-msgstr ""
+msgstr "ఎక్స్‌ట్రాక్టర్‌లు (ఆర్కైవ్) జాబితా చేసిన దస్త్రాలను ఒకే స్థాయికి తెచ్చు"
 
 #: src/libvlc-module.c:1277
 msgid "VLC will randomly play files in the play queue until interrupted."
@@ -589,7 +590,7 @@ msgstr "ప్రదర్శన వరుసలోని ప్రతి అం
 
 #: src/libvlc-module.c:1293
 msgid "Exit if there are no more items in the play queue."
-msgstr ""
+msgstr "ప్రదర్శన వరుసలో మరిన్ని అంశాలు లేకపోతే నిష్క్రమించు."
 
 #: src/libvlc-module.c:1297
 msgid "Pause each item in the play queue on the last frame."
@@ -604,7 +605,7 @@ msgid "Automatically start playing the play queue content once it's loaded."
 msgstr "ప్రదర్శన వరుస విషయం లోడ్ అయిన వెంటనే స్వయంచాలకంగా ఆడించడం ప్రారంభించు."
 
 #: src/libvlc-module.c:1317
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
 msgid "Use the media library"
 msgstr "మాధ్యమ లైబ్రరీని వాడు"
 
@@ -629,47 +630,47 @@ msgstr "ప్రదర్శన వరుస డైరెక్టరీ వి
 
 #: src/libvlc-module.c:1328
 msgid "Play queue bookmark 1"
-msgstr ""
+msgstr "ప్రదర్శన వరుస ఇష్టాంశం 1"
 
 #: src/libvlc-module.c:1329
 msgid "Play queue bookmark 2"
-msgstr ""
+msgstr "ప్రదర్శన వరుస ఇష్టాంశం 2"
 
 #: src/libvlc-module.c:1330
 msgid "Play queue bookmark 3"
-msgstr ""
+msgstr "ప్రదర్శన వరుస ఇష్టాంశం 3"
 
 #: src/libvlc-module.c:1331
 msgid "Play queue bookmark 4"
-msgstr ""
+msgstr "ప్రదర్శన వరుస ఇష్టాంశం 4"
 
 #: src/libvlc-module.c:1332
 msgid "Play queue bookmark 5"
-msgstr ""
+msgstr "ప్రదర్శన వరుస ఇష్టాంశం 5"
 
 #: src/libvlc-module.c:1333
 msgid "Play queue bookmark 6"
-msgstr ""
+msgstr "ప్రదర్శన వరుస ఇష్టాంశం 6"
 
 #: src/libvlc-module.c:1334
 msgid "Play queue bookmark 7"
-msgstr ""
+msgstr "ప్రదర్శన వరుస ఇష్టాంశం 7"
 
 #: src/libvlc-module.c:1335
 msgid "Play queue bookmark 8"
-msgstr ""
+msgstr "ప్రదర్శన వరుస ఇష్టాంశం 8"
 
 #: src/libvlc-module.c:1336
 msgid "Play queue bookmark 9"
-msgstr ""
+msgstr "ప్రదర్శన వరుస ఇష్టాంశం 9"
 
 #: src/libvlc-module.c:1337
 msgid "Play queue bookmark 10"
-msgstr ""
+msgstr "ప్రదర్శన వరుస ఇష్టాంశం 10"
 
 #: src/libvlc-module.c:1338
 msgid "This allows you to define play queue bookmarks."
-msgstr ""
+msgstr "ప్రదర్శన వరుస ఇష్టాంశాలను నిర్వచించడానికి ఇది మిమ్మల్ని అనుమతిస్తుంది."
 
 #: src/libvlc-module.c:1383
 msgid "Select the hotkey to use to skip to the next item in the play queue."
@@ -828,11 +829,11 @@ msgstr "దృక్కోణాన్ని (360°) అపసవ్యదిశ
 
 #: src/libvlc-module.c:1868
 msgid "Multiple Subtitles"
-msgstr ""
+msgstr "బహుళ ఉపశీర్షికలు"
 
 #: src/libvlc-module.c:2070
 msgid "Input access and codecs"
-msgstr ""
+msgstr "ఇన్‌పుట్ ప్రాప్యత మరియు కొడెక్‌లు"
 
 #: src/libvlc-module.c:2153
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:506
@@ -849,22 +850,22 @@ msgstr "ప్రారంభం"
 
 #: src/libvlc-module.c:2860
 msgid "print help for VLC (can be combined with --help-verbose)"
-msgstr ""
+msgstr "VLC కోసం సహాయం చూపించు (--help-verbose తో కలిపి వాడవచ్చు)"
 
 #: src/libvlc-module.c:2862
 msgid ""
 "print help for VLC and all its modules (can be combined with --help-verbose)"
-msgstr ""
+msgstr "VLC మరియు దాని అన్ని పర్వికాల కోసం సహాయం చూపించు (--help-verbose తో కలిపి వాడవచ్చు)"
 
 #: src/libvlc-module.c:2865
 msgid "print complete help (same as --longhelp --help-verbose)"
-msgstr ""
+msgstr "పూర్తి సహాయం చూపించు (--longhelp --help-verbose లాగే)"
 
 #: src/libvlc-module.c:2873
 msgid ""
 "print help on a specific module (can be combined with --help-verbose). "
 "Prefix the module name with = for strict matches."
-msgstr ""
+msgstr "నిర్దిష్ట పర్వికం కోసం సహాయం చూపించు (--help-verbose తో కలిపి వాడవచ్చు). కచ్చితమైన సరిపోలిక కోసం పర్వికం పేరుకు ముందు = పెట్టండి."
 
 #: src/misc/actions.c:55
 msgctxt "key"
@@ -1419,23 +1420,23 @@ msgstr "తదుపరి ఫ్రేమ్ దోషం"
 msgid "Previous frame error"
 msgstr "మునుపటి ఫ్రేమ్ దోషం"
 
-#: src/text/iso-639_def.h:123 modules/gui/qt/util/subtitle_preferences.cpp:53
+#: src/text/iso-639_def.h:123 modules/gui/qt/util/subtitle_preferences.cpp:60
 msgid "Cebuano"
 msgstr "సెబువానో"
 
-#: src/text/iso-639_def.h:231 modules/gui/qt/util/subtitle_preferences.cpp:56
+#: src/text/iso-639_def.h:231 modules/gui/qt/util/subtitle_preferences.cpp:63
 msgid "Hawaiian"
 msgstr "హవాయియన్"
 
-#: src/text/iso-639_def.h:239 modules/gui/qt/util/subtitle_preferences.cpp:57
+#: src/text/iso-639_def.h:239 modules/gui/qt/util/subtitle_preferences.cpp:64
 msgid "Hmong"
 msgstr "మోంగ్"
 
-#: src/text/iso-639_def.h:344 modules/gui/qt/util/subtitle_preferences.cpp:58
+#: src/text/iso-639_def.h:344 modules/gui/qt/util/subtitle_preferences.cpp:65
 msgid "Manipuri"
 msgstr "మణిపురి"
 
-#: src/text/iso-639_def.h:494 modules/gui/qt/util/subtitle_preferences.cpp:60
+#: src/text/iso-639_def.h:494 modules/gui/qt/util/subtitle_preferences.cpp:67
 msgid "Syriac"
 msgstr "సిరియాక్"
 
@@ -1469,13 +1470,13 @@ msgstr "సరిపెట్టు విధం"
 
 #: modules/access_output/http.c:65
 msgid "DLNA content features"
-msgstr ""
+msgstr "DLNA కంటెంట్ లక్షణాలు"
 
 #: modules/access_output/http.c:66
 msgid ""
 "Answer with the headers of a DLNA media server, with these content features: "
 "a TV reading the stream may refuse it without them."
-msgstr ""
+msgstr "DLNA మాధ్యమ సర్వర్ శీర్షికలతో, ఈ కంటెంట్ లక్షణాలతో జవాబివ్వు: ఇవి లేకుండా ప్రవాహాన్ని చదివే TV దాన్ని తిరస్కరించవచ్చు."
 
 #: modules/audio_filter/expander.c:65
 #: modules/gui/qt/dialogs/extended/extended.cpp:82
@@ -1507,7 +1508,7 @@ msgstr "చేతనం"
 
 #: modules/audio_output/wasapi.c:1008
 msgid "Use exclusive mode"
-msgstr ""
+msgstr "ప్రత్యేక విధాన్ని ఉపయోగించు"
 
 #: modules/audio_output/wasapi.c:1010
 msgid ""
@@ -1515,10 +1516,10 @@ msgid ""
 "can be used to reduce the audio latency or to assure that the audio stream "
 "won't be modified by the OS. This mode is more likely to fail if the "
 "soundcard format is not handled by VLC."
-msgstr ""
+msgstr "VLC కు ఆడియో ఎండ్‌పాయింట్ పరికరంతో ప్రత్యక్ష అనుసంధానం ఉంటుంది. ఆడియో జాప్యాన్ని తగ్గించడానికి లేదా ఆపరేటింగ్ సిస్టమ్ ఆడియో ప్రవాహాన్ని మార్చదని నిర్ధారించడానికి ఈ విధాన్ని ఉపయోగించవచ్చు. సౌండ్‌కార్డ్ ఆకృతిని VLC నిర్వహించలేకపోతే ఈ విధం విఫలమయ్యే అవకాశం ఎక్కువ."
 
 #: modules/codec/vpx.c:62
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:211
 #: modules/video_output/xcb/render.c:764
 msgid "Best"
 msgstr "ఉత్తమం"
@@ -1552,18 +1553,18 @@ msgstr "ఉపశీర్షిక స్థానం: %+d%%"
 
 #: modules/gui/macosx/library/VLCLibraryController.m:317
 #: modules/gui/macosx/library/VLCLibraryMenuController.m:126
-#: modules/gui/qt/medialibrary/mlplaylistlistmodel.cpp:293
+#: modules/gui/qt/medialibrary/mlplaylistlistmodel.cpp:304
 msgid "Rename playlist"
 msgstr "ప్రదర్శనజాబితా పేరుమార్చు"
 
 #: modules/gui/macosx/library/VLCLibraryController.m:318
-#: modules/gui/qt/medialibrary/mlplaylistlistmodel.cpp:294
+#: modules/gui/qt/medialibrary/mlplaylistlistmodel.cpp:305
 msgid "Please enter the new playlist name:"
 msgstr "దయచేసి కొత్త ప్రదర్శనజాబితా పేరును ఇవ్వండి:"
 
 #: modules/gui/macosx/library/VLCLibraryController.m:319
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:395
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:441
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:402
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:448
 #: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:127
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:401
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:104
@@ -1574,7 +1575,7 @@ msgid "Rename"
 msgstr "పేరుమార్చు"
 
 #: modules/gui/macosx/library/VLCLibraryController.m:339
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:126
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:129
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:94
 msgid "Playlist Name"
 msgstr "ప్రదర్శనజాబితా పేరు"
@@ -1592,12 +1593,6 @@ msgstr "మాధ్యమ లైబ్రరీకి జతచేయి"
 msgid "Remove from Favorites"
 msgstr "ఇష్టమైనవాటి నుండి తీసివేయి"
 
-#: modules/gui/macosx/library/VLCLibraryTableCellView.m:144
-#: modules/gui/macosx/library/video-library/VLCLibraryVideoGroupDescriptor.m:42
-#: modules/gui/macosx/library/video-library/VLCLibraryVideoDataSource.m:534
-msgid "Recents"
-msgstr ""
-
 #: modules/gui/macosx/library/VLCLibraryTableCellView.m:147
 #: modules/gui/macosx/library/video-library/VLCLibraryVideoGroupDescriptor.m:47
 #: modules/gui/macosx/library/video-library/VLCLibraryVideoDataSource.m:536
@@ -1607,25 +1602,6 @@ msgstr ""
 #: modules/gui/qt/player/qml/controlbarcontrols/LibraryButton.qml:23
 msgid "Library"
 msgstr "లైబ్రరీ"
-
-#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:682
-#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:899
-msgid "All genres"
-msgstr ""
-
-#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:684
-#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:900
-msgid "All artists"
-msgstr ""
-
-#: modules/gui/macosx/library/home-library/VLCLibraryHomeViewSectionHeaderView.m:72
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:474
-msgid "Show all"
-msgstr "అన్నీ చూపించు"
-
-#: modules/gui/macosx/library/home-library/VLCLibraryHomeViewSectionHeaderView.m:122
-msgid "Open %@ in the library"
-msgstr ""
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1604
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:126
@@ -1679,47 +1655,47 @@ msgstr "సంకేతపదాన్ని భద్రపరుచు"
 msgid "Ok"
 msgstr "సరే"
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:60
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:63
 #: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:37
 #: modules/gui/qt/menus/menus.cpp:955 modules/gui/qt/menus/qml/MainMenu.qml:65
 msgid "Open Network Stream"
 msgstr "నెట్‌వర్క్ ప్రవాహాన్ని తెరువు"
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:92
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:106
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:95
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:109
 msgid "Network URL"
 msgstr "నెట్‌వర్క్ URL"
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:94
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:97
 msgid ""
 "“%1” is not a link: links start with http://, rtsp://… or a site's address."
 msgstr "“%1” లింక్ కాదు: లింకులు http://, rtsp://… లేదా ఒక సైట్ చిరునామాతో మొదలవుతాయి."
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:95
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:98
 msgid "You can enter multiple links to load."
 msgstr "లోడ్ చేయడానికి మీరు అనేక లింకులను ఇవ్వవచ్చు."
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:105
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:108
 msgid "e.g., https://www.example.com/stream.avi"
 msgstr "ఉదా., https://www.example.com/stream.avi"
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:127
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:130
 msgid "(optional)"
 msgstr "(ఐచ్ఛికం)"
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:128
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:131
 msgid "The playlist will be saved and displayed with this title."
 msgstr "ప్రదర్శనజాబితా ఈ శీర్షికతో భద్రపరచబడి ప్రదర్శించబడుతుంది."
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:129
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:132
 msgid "Playlists need the media library."
 msgstr "ప్రదర్శనజాబితాలకు మాధ్యమ లైబ్రరీ అవసరం."
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:139
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:142
 msgid "e.g., Favorite TV Channels"
 msgstr "ఉదా., ఇష్టమైన TV ఛానళ్లు"
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:140
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:143
 msgid "Playlist name"
 msgstr "ప్రదర్శనజాబితా పేరు"
 
@@ -1836,7 +1812,7 @@ msgid "GitHub"
 msgstr "GitHub"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:291
-#: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:136
+#: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:142
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:293
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:111
 #: modules/gui/qt/widgets/qml/CSDWindowButtonSet.qml:87
@@ -1847,19 +1823,35 @@ msgstr "GitHub"
 msgid "Close"
 msgstr "మూసివేయి"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:885
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:897
 msgid "Save play queue as..."
 msgstr "ప్రదర్శన వరుసను ఇలా భద్రపరుచు..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1121
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1117
+msgid "Write error"
+msgstr "రాయడంలో దోషం"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1134
 msgid "Export playlist as..."
 msgstr "ప్రదర్శనజాబితాను ఇలా ఎగుమతి చేయి..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1260
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1151
+msgid ""
+"The playlist could not be exported to %1:\n"
+"%2"
+msgstr "ప్లేజాబితాను %1 కు ఎగుమతి చేయలేకపోయాం:\n%2"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1153
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:49
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
+msgid "Export Playlist"
+msgstr "ప్రదర్శనజాబితాను ఎగుమతి చేయి"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1279
 msgid "Open audio..."
 msgstr "ఆడియోను తెరువు..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1265
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1284
 msgid "Open video..."
 msgstr "వీడియోను తెరువు..."
 
@@ -1931,68 +1923,68 @@ msgid "Audio effect settings could not be saved (error %1)."
 msgstr "ఆడియో ప్రభావ అమరికలను భద్రపరచలేకపోయింది (దోషం %1)."
 
 #: modules/gui/qt/dialogs/extended/audio_effects.cpp:525
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:525
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:529
 msgid "The setting \"%1\" changed outside this dialog."
 msgstr "\"%1\" అమరిక ఈ డైలాగ్ వెలుపల మారింది."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:314
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:318
 msgid "Open video effects before changing them."
 msgstr "వీడియో ప్రభావాలను మార్చే ముందు వాటిని తెరవండి."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:315
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:321
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:353
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:417
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:431
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:468
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:319
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:325
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:357
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:421
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:435
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:472
 msgid "No active video output is available."
 msgstr "సక్రియ వీడియో అవుట్‌పుట్ ఏదీ అందుబాటులో లేదు."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:316
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:320
 msgid "Video output changed during the preview."
 msgstr "మునుజూపు సమయంలో వీడియో అవుట్‌పుట్ మారింది."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:350
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:354
 msgid "Video effect option is unavailable."
 msgstr "వీడియో ప్రభావ ఐచ్ఛికం అందుబాటులో లేదు."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:360
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:364
 msgid "The video effect value could not be prepared."
 msgstr "వీడియో ప్రభావ విలువను సిద్ధం చేయలేకపోయింది."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:401
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:405
 msgid "The video effect value could not be applied."
 msgstr "వీడియో ప్రభావ విలువను వర్తింపజేయలేకపోయింది."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:408
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:412
 msgid "Video filter is unavailable."
 msgstr "వీడియో వడబోత అందుబాటులో లేదు."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:421
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:425
 msgid "The video filter could not be applied."
 msgstr "వీడియో వడబోతను వర్తింపజేయలేకపోయింది."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:427
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:431
 msgid "Invalid crop value."
 msgstr "చెల్లని కత్తిరింపు విలువ."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:439
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:443
 msgid "Crop could not be applied to every video output."
 msgstr "కత్తిరింపును ప్రతి వీడియో అవుట్‌పుట్‌కు వర్తింపజేయలేకపోయింది."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:456
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:460
 msgid "Video output changed; the previous preview can no longer be restored."
 msgstr "వీడియో అవుట్‌పుట్ మారింది; మునుపటి మునుజూపును ఇక పునరుద్ధరించలేము."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:480
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:484
 msgid "Video preview could not be restored."
 msgstr "వీడియో మునుజూపును పునరుద్ధరించలేకపోయింది."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:493
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:497
 msgid "A video effect value is unavailable."
 msgstr "ఒక వీడియో ప్రభావ విలువ అందుబాటులో లేదు."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:524
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:528
 msgid "Video effect settings could not be saved (error %1)."
 msgstr "వీడియో ప్రభావ అమరికలను భద్రపరచలేకపోయింది (దోషం %1)."
 
@@ -2008,71 +2000,71 @@ msgstr "పై, కింది కత్తిరింపులను కల�
 msgid "Link left and right crop"
 msgstr "ఎడమ, కుడి కత్తిరింపులను కలిపి ఉంచు"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:95
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:102
 #: modules/gui/qt/dialogs/extended/qml/EffectPresets.qml:244
 msgid "Play a media to save its effects as a preset."
 msgstr "దాని ప్రభావాలను ప్రిసెట్‌గా భద్రపరచడానికి ఒక మాధ్యమాన్ని ఆడించండి."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:132
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:139
 msgid "Effect preset: %1"
 msgstr "ప్రభావ ప్రిసెట్: %1"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:247
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:254
 msgid "Effect presets"
 msgstr "ప్రభావ ప్రిసెట్‌లు"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:262
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:440
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:269
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:447
 msgid "New Preset"
 msgstr "కొత్త ప్రిసెట్"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:279
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:286
 msgid "Chosen preset"
 msgstr "ఎంచుకున్న ప్రిసెట్"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:358
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:101
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:365
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:102
 msgid "Actions of %1"
 msgstr "%1 చర్యలు"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:406
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:413
 msgid "Update with current effects"
 msgstr "ప్రస్తుత ప్రభావాలతో నవీకరించు"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:440
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:447
 msgid "Rename Preset"
 msgstr "ప్రిసెట్ పేరుమార్చు"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:483
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:490
 msgid "Preset Name"
 msgstr "ప్రిసెట్ పేరు"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:484
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:491
 msgid "The preset keeps its effects."
 msgstr "ప్రిసెట్ దాని ప్రభావాలను ఉంచుకుంటుంది."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:485
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:492
 msgid "The preset keeps the audio and video effects in use."
 msgstr "ప్రిసెట్ వాడుకలో ఉన్న ఆడియో మరియు వీడియో ప్రభావాలను ఉంచుకుంటుంది."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:493
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:500
 msgid "e.g., Late Night Movies"
 msgstr "ఉదా., అర్ధరాత్రి సినిమాలు"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:494
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:501
 msgid "Preset name"
 msgstr "ప్రిసెట్ పేరు"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:512
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:519
 msgid "Delete Preset"
 msgstr "ప్రిసెట్‌ను తొలగించు"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:538
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:545
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:481
 msgid "Delete %1?"
 msgstr "%1ను తొలగించాలా?"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:539
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:546
 msgid "The effects in use stay as they are."
 msgstr "వాడుకలో ఉన్న ప్రభావాలు అలాగే ఉంటాయి."
 
@@ -2124,15 +2116,15 @@ msgstr "ఈ ప్రిసెట్‌లో ఆడియో ప్రభావ
 msgid "Some effects of the preset could not be applied."
 msgstr "ప్రిసెట్‌లోని కొన్ని ప్రభావాలను వర్తింపజేయలేకపోయింది."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:225
+#: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:231
 msgid "Play audio to preview and edit audio effects."
 msgstr "ఆడియో ప్రభావాలను మునుజూపు చూసి సవరించడానికి ఆడియోను ఆడించండి."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:247
+#: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:253
 msgid "Play video to preview and edit effects."
 msgstr "ప్రభావాలను మునుజూపు చూసి సవరించడానికి వీడియోను ఆడించండి."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:266
+#: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:272
 msgid "Open synchronization"
 msgstr "సమకాలీకరణను తెరువు"
 
@@ -2268,19 +2260,19 @@ msgstr "%1 కోసం విహరించు"
 msgid "Image Files (*.png *.jpg);;All Files (*)"
 msgstr "చిత్ర దస్త్రాలు (*.png *.jpg);;అన్ని దస్త్రాలు (*)"
 
-#: modules/gui/qt/dialogs/firstrun/onboarding.cpp:47
+#: modules/gui/qt/dialogs/firstrun/onboarding.cpp:48
 msgid "Could not add the media folder: %1"
 msgstr "మాధ్యమ సంచయాన్ని జతచేయలేకపోయింది: %1"
 
-#: modules/gui/qt/dialogs/firstrun/onboarding.cpp:199
+#: modules/gui/qt/dialogs/firstrun/onboarding.cpp:200
 msgid "The media library is unavailable."
 msgstr "మాధ్యమ లైబ్రరీ అందుబాటులో లేదు."
 
-#: modules/gui/qt/dialogs/firstrun/onboarding.cpp:206
+#: modules/gui/qt/dialogs/firstrun/onboarding.cpp:207
 msgid "Choose a local media folder."
 msgstr "ఒక స్థానిక మాధ్యమ సంచయాన్ని ఎంచుకోండి."
 
-#: modules/gui/qt/dialogs/firstrun/onboarding.cpp:211
+#: modules/gui/qt/dialogs/firstrun/onboarding.cpp:212
 msgid "The media folder does not exist or cannot be read: %1"
 msgstr "మాధ్యమ సంచయం లేదు లేదా దాన్ని చదవలేము: %1"
 
@@ -2296,11 +2288,11 @@ msgstr "మొదటి-నడక ప్రాధాన్యతలను భద
 msgid "Choose a media folder"
 msgstr "ఒక మాధ్యమ సంచయాన్ని ఎంచుకోండి"
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:200
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:187
 msgid "Choose what VLC does online by itself."
 msgstr "VLC తనంతట తానుగా ఆన్‌లైన్‌లో ఏమి చేస్తుందో ఎంచుకోండి."
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:213
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:200
 msgid ""
 "No telemetry, no ads, no account. These two connect to the internet without "
 "being asked each time, and send only what is written under them."
@@ -2308,19 +2300,19 @@ msgstr ""
 "టెలిమెట్రీ లేదు, ప్రకటనలు లేవు, ఖాతా లేదు. ఈ రెండూ ప్రతిసారి అడగకుండానే అంతర్జాలానికి అనుసంధానమవుతాయి, "
 "మరియు వాటి కింద రాసిన దాన్ని మాత్రమే పంపుతాయి."
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:231
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:218
 msgid "Check for updates once a day"
 msgstr "రోజుకు ఒకసారి నవీకరణల కోసం తనిఖీ చేయి"
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:232
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:219
 msgid "Asks GitHub (api.github.com) for the latest release of VLC Redesign."
 msgstr "VLC Redesign యొక్క సరికొత్త విడుదల కోసం GitHub (api.github.com)ను అడుగుతుంది."
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:238
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:225
 msgid "Find subtitles online automatically"
 msgstr "ఉపశీర్షికలను ఆన్‌లైన్‌లో స్వయంచాలకంగా కనుగొను"
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:239
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:226
 msgid ""
 "When a video has none in your languages: its name and a fingerprint of the "
 "file to subtitle services (OpenSubtitles.org, Wizdom, Gestdown, YIFY "
@@ -2330,16 +2322,16 @@ msgstr ""
 "(OpenSubtitles.org, Wizdom, Gestdown, YIFY Subtitles), సినిమాను గుర్తించడానికి దాని "
 "పేరు IMDb, Wikidata మరియు Cinemetaకు."
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:255
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:242
 msgid "Privacy and code signing policy"
 msgstr "గోప్యత మరియు కోడ్ సంతకం విధానం"
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:275
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:262
 msgid ""
 "Both stay in Settings: General for the updates, Subtitles for the subtitles."
 msgstr "రెండూ అమరికలలో ఉంటాయి: నవీకరణల కోసం సాధారణ, ఉపశీర్షికల కోసం ఉపశీర్షికలు."
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:338
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:325
 msgid "Finish"
 msgstr "ముగించు"
 
@@ -2355,11 +2347,11 @@ msgstr "ప్రస్తుతం ప్లేబ్యాక్ అడ్డ�
 msgid "Find the full list in the menu."
 msgstr "పూర్తి జాబితాను మెనూలో కనుగొనండి."
 
-#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:56
+#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:43
 msgid "Choose the languages of your subtitles."
 msgstr "మీ ఉపశీర్షికల భాషలను ఎంచుకోండి."
 
-#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:69
+#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:56
 msgid ""
 "Subtitles in your language show by themselves: from the video, from a file "
 "next to it, or found online. When there are none in it, not even online, the "
@@ -2368,21 +2360,21 @@ msgstr ""
 "మీ భాషలోని ఉపశీర్షికలు వాటంతట అవే కనిపిస్తాయి: వీడియో నుండి, దాని పక్కన ఉన్న దస్త్రం నుండి, లేదా ఆన్‌లైన్‌లో "
 "కనుగొన్నవి. ఆ భాషలో ఏవీ లేనప్పుడు, ఆన్‌లైన్‌లో కూడా లేనప్పుడు, రెండవ భాష వాడబడుతుంది."
 
-#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:87
+#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:74
 msgid "Default language"
 msgstr "అప్రమేయ భాష"
 
-#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:106
+#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:93
 msgid "Second language (when there are none)"
 msgstr "రెండవ భాష (ఏవీ లేనప్పుడు)"
 
-#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:135
+#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:122
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:102
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:528
 msgid "Find subtitles online when a video has none in these languages"
 msgstr "ఒక వీడియోకు ఈ భాషలలో ఏవీ లేనప్పుడు ఉపశీర్షికలను ఆన్‌లైన్‌లో కనుగొను"
 
-#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:148
+#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:135
 msgid ""
 "Online subtitles come from free services (OpenSubtitles, and more for some "
 "languages). Change all of it in Settings, Subtitles."
@@ -2512,7 +2504,7 @@ msgid "System language"
 msgstr "వ్యవస్థ భాష"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:138
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:107
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:110
 msgid "Higher"
 msgstr "మరింత ఎక్కువ"
 
@@ -2532,40 +2524,40 @@ msgstr "పైకి"
 msgid "%1 MiB"
 msgstr "%1 MiB"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:177
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:185
 msgid "Same as video"
 msgstr "వీడియో లాగానే"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:179
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:181
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:187
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:189
 msgid "%1 px wide"
 msgstr "%1 px వెడల్పు"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:245
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:253
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
 msgid "Discover cast devices"
 msgstr "ప్రసార పరికరాలను కనుగొను"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:246
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:254
 msgid ""
 "Looks for the cast devices of the local network when the Renderer menu opens."
 msgstr "రెండరర్ మెనూ తెరుచుకున్నప్పుడు స్థానిక నెట్‌వర్క్‌లోని ప్రసార పరికరాల కోసం వెతుకుతుంది."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:247
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:255
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:51
 msgid "Remember window size and position"
 msgstr "కిటికీ పరిమాణం మరియు స్థానాన్ని గుర్తుంచుకో"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:248
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:256
 msgid "Opens the window where it was when VLC was closed."
 msgstr "VLC మూసినప్పుడు కిటికీ ఎక్కడ ఉందో అక్కడే దాన్ని తెరుస్తుంది."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:249
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:257
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:70
 msgid "Always show the player bar"
 msgstr "ప్రదర్శకం పట్టీని ఎల్లప్పుడూ చూపించు"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:250
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:258
 msgid ""
 "Keeps the player bar at the bottom of the library while nothing plays: Play "
 "starts the play queue, or opens files when it is empty."
@@ -2573,12 +2565,12 @@ msgstr ""
 "ఏదీ ఆడనప్పుడు కూడా ప్రదర్శకం పట్టీని లైబ్రరీ కింద ఉంచుతుంది: ఆడించు ప్రదర్శన వరుసను "
 "ప్రారంభిస్తుంది, లేదా అది ఖాళీగా ఉంటే దస్త్రాలను తెరుస్తుంది."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:252
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:260
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:72
 msgid "Increase text contrast"
 msgstr "పాఠ్య వ్యత్యాసాన్ని పెంచు"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:253
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:261
 msgid ""
 "Draws the dim texts of the design (hints, descriptions, watched items) "
 "brighter, to the contrast the WCAG accessibility guidelines ask for (AA)."
@@ -2586,55 +2578,55 @@ msgstr ""
 "రూపకల్పనలోని మసక పాఠ్యాలను (సూచనలు, వివరణలు, చూసిన అంశాలు) WCAG అందుబాటు మార్గదర్శకాలు కోరే "
 "వ్యత్యాసం (AA) వచ్చేలా ప్రకాశవంతంగా గీస్తుంది."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:255
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:263
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:65
 msgid "Popup duration"
 msgstr "పాప్అప్ నిడివి"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:256
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:264
 msgid "How long the popup of the track changes stays on the screen."
 msgstr "ట్రాక్ మార్పుల పాప్అప్ తెరపై ఎంతసేపు ఉంటుందో."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:257
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:327
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:265
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
 msgid "Process priority"
 msgstr "ప్రాసెస్ ప్రాధాన్యత"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:258
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:266
 msgid ""
 "How much processor time the system gives VLC compared with the other "
 "programs."
 msgstr "ఇతర కార్యక్రమాలతో పోలిస్తే వ్యవస్థ VLCకి ఎంత ప్రాసెసర్ సమయం ఇస్తుందో."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:259
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:275
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:267
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:281
 msgid "Double click on the video"
 msgstr "వీడియోపై రెండుసార్లు నొక్కు"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:260
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:268
 msgid "What a double click on the video does."
 msgstr "వీడియోపై రెండుసార్లు నొక్కితే ఏమి జరుగుతుందో."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:260
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:268
 msgid "Nothing|Toggle fullscreen"
 msgstr "ఏమీ లేదు|పూర్తితెరను మార్చు"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:261
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:228
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:269
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:234
 msgid "Size values"
 msgstr "పరిమాణ విలువలు"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:262
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:270
 msgid ""
 "Choose the size of the subtitles by name (relative to the picture), or in "
 "pixels."
 msgstr "ఉపశీర్షికల పరిమాణాన్ని పేరుతో (చిత్రానికి సాపేక్షంగా), లేదా పిక్సెల్‌లలో ఎంచుకోండి."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:263
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:271
 msgid "Relative|Pixels"
 msgstr "సాపేక్షం|పిక్సెల్‌లు"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:265
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:273
 msgid ""
 "How opaque the box behind the subtitles is when there is one (kept while "
 "there is none)."
@@ -2642,12 +2634,12 @@ msgstr ""
 "ఉపశీర్షికల వెనుక పెట్టె ఉన్నప్పుడు అది ఎంత అపారదర్శకంగా ఉంటుందో (లేనప్పుడు కూడా ఈ విలువ "
 "ఉంచబడుతుంది)."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:266
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:274
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:94
 msgid "Never remember items matching"
 msgstr "సరిపోలే అంశాలను ఎప్పుడూ గుర్తుంచుకోవద్దు"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:267
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:275
 msgid ""
 "A regular expression: the items whose address or name matches it are not "
 "saved in the history, nor their playback position."
@@ -2655,233 +2647,237 @@ msgstr ""
 "ఒక రెగ్యులర్ ఎక్స్‌ప్రెషన్: దీనికి చిరునామా లేదా పేరు సరిపోలే అంశాలు చరిత్రలో భద్రపరచబడవు, వాటి ప్లేబ్యాక్ "
 "స్థానం కూడా భద్రపరచబడదు."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:281
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:264
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:289
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:270
 msgid "System monospace"
 msgstr "వ్యవస్థ మోనోస్పేస్"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:281
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:289
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:233
 msgid "System, sans-serif"
 msgstr "వ్యవస్థ, sans-serif"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:334
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:342
 msgid "Ultra fast"
 msgstr "అతి వేగవంతం"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:334
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:342
 msgid "Super fast"
 msgstr "సూపర్ వేగవంతం"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:335
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:343
 msgid "Very fast"
 msgstr "చాలా వేగవంతం"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:337
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:345
 msgid "Very slow"
 msgstr "చాలా నెమ్మది"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:337
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:345
 msgid "Placebo"
 msgstr "ప్లాసిబో"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:339
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:347
 msgid "Film"
 msgstr "ఫిల్మ్"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:340
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:348
 msgid "Still image"
 msgstr "నిశ్చల చిత్రం"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:341
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:349
 msgid "Fast decoding"
 msgstr "వేగవంతమైన డీకోడింగ్"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:341
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:349
 msgid "Zero latency"
 msgstr "సున్నా జాప్యం"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:908
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:916
 msgid "%1: this value can not be used."
 msgstr "%1: ఈ విలువను వాడలేము."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:958
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:987
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:979
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1008
 msgid "%1 is not available in this VLC installation."
 msgstr "ఈ VLC స్థాపనలో %1 అందుబాటులో లేదు."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:972
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:993
 msgid "This setting"
 msgstr "ఈ అమరిక"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:982
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1003
 msgid "%1: choose a folder of this computer."
 msgstr "%1: ఈ కంప్యూటర్‌లోని ఒక సంచయాన్ని ఎంచుకోండి."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1011
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1032
 msgid "Select a category to reset."
 msgstr "తిరిగి అమర్చడానికి ఒక వర్గాన్ని ఎంచుకోండి."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1073
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1094
 msgid "Repeat the current item (One) or the whole play queue (All)."
 msgstr "ప్రస్తుత అంశాన్ని (ఒకటి) లేదా మొత్తం ప్రదర్శన వరుసను (అన్నీ) పునరావృతం చేయి."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1081
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1102
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:119
 msgid "When playback finishes"
 msgstr "ప్లేబ్యాక్ ముగిసినప్పుడు"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1082
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1103
 msgid "Stop, or quit VLC at the end of the play queue."
 msgstr "ప్రదర్శన వరుస చివరలో ఆపు, లేదా VLC నుండి నిష్క్రమించు."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1090
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1111
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:46
 msgid "Use a custom skin"
 msgstr "అనురూపిత తొడుగును వాడు"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1091
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1112
 msgid "Starts VLC with the skin chosen below instead of this interface."
 msgstr "ఈ అంతరవర్తికి బదులుగా కింద ఎంచుకున్న తొడుగుతో VLCని ప్రారంభిస్తుంది."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1107
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1128
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:93
 msgid "Remember the playback position"
 msgstr "ప్లేబ్యాక్ స్థానాన్ని గుర్తుంచుకో"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1108
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1129
 msgid "Lets VLC continue the media where you left off."
 msgstr "మీరు ఆపిన చోటు నుండి VLC మాధ్యమాన్ని కొనసాగించేలా చేస్తుంది."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1122
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1143
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
 msgid "Reverse scroll direction"
 msgstr "స్క్రోల్ దిశను తిరగవేయి"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1123
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1144
 msgid "The wheels that seek go backwards when turned forwards."
 msgstr "జరిపే చక్రాలు ముందుకు తిప్పినప్పుడు వెనుకకు జరుపుతాయి."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1138
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:281
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1159
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:287
 msgid "Web remote control"
 msgstr "వెబ్ రిమోట్ కంట్రోల్"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1139
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1160
 msgid ""
 "Lets a web browser control VLC. Set its password in the Advanced Options."
 msgstr "వెబ్ బ్రౌజర్ VLCని నియంత్రించేలా చేస్తుంది. దాని సంకేతపదాన్ని అధునాతన ఐచ్ఛికాలలో అమర్చండి."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1157
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1178
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
 msgid "Video post-processing"
 msgstr "వీడియో పోస్ట్-ప్రాసెసింగ్"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1158
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1179
 msgid ""
 "Improves the picture of poorly encoded videos, at the cost of processing "
 "power."
 msgstr "ప్రాసెసింగ్ శక్తిని వెచ్చించి, సరిగా ఎన్కోడ్ చేయని వీడియోల చిత్రాన్ని మెరుగుపరుస్తుంది."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1207
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1228
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:214
 msgid "Visualization size"
 msgstr "దృశ్యీకరణ పరిమాణం"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1208
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1229
 msgid "The size the visualizations are drawn at."
 msgstr "దృశ్యీకరణలు గీయబడే పరిమాణం."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1209
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1230
 msgid "Match window"
 msgstr "కిటికీకి సరిపోలు"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1250
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1271
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:120
 msgid "Seek precisely"
 msgstr "ఖచ్చితంగా జరుపు"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1251
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1272
 msgid ""
 "Seek to the exact time asked, slower than seeking to the nearest key frame."
 msgstr "అడిగిన ఖచ్చితమైన సమయానికి జరుపు, దగ్గరి కీ ఫ్రేమ్‌కు జరపడం కంటే నెమ్మదిగా."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1347
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1368
 msgid "From the file only"
 msgstr "దస్త్రం నుండి మాత్రమే"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1349
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1370
 msgid "From the file and the internet"
 msgstr "దస్త్రం మరియు అంతర్జాలం నుండి"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1366
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1387
 msgid "Box"
 msgstr "పెట్టె"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1426
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1447
 msgid "Above normal"
 msgstr "సాధారణం కంటే ఎక్కువ"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1427
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1448
 msgid "Below normal"
 msgstr "సాధారణం కంటే తక్కువ"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1427
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1448
 msgid "Idle"
 msgstr "నిష్క్రియ"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1545
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1567
 msgid "Current screen"
 msgstr "ప్రస్తుత తెర"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1550
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1572
 msgid "Screen %1 (%2)"
 msgstr "తెర %1 (%2)"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1556
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1578
 msgid "Screen %1"
 msgstr "తెర %1"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1565
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1587
 msgid "Any title"
 msgstr "ఏ శీర్షికైనా"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1565
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1587
 msgid "Contains title"
 msgstr "శీర్షికను కలిగి ఉన్నది"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1566
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1588
 msgid "Title with extra characters"
 msgstr "అదనపు అక్షరాలతో శీర్షిక"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1566
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1588
 msgid "Exact title match"
 msgstr "శీర్షిక ఖచ్చితంగా సరిపోలాలి"
 
-#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:47
+#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:92
+msgid "The audio output in use does not keep a startup volume."
+msgstr "వాడుకలో ఉన్న ఆడియో అవుట్‌పుట్ ప్రారంభ శబ్దాన్ని నిలుపుకోదు."
+
+#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:126
 msgid "The plugins can not be rescanned on this installation."
 msgstr "ఈ స్థాపనలో చొప్పింతలను మళ్ళీ స్కాన్ చేయలేము."
 
-#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:63
+#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:141
 msgid "The plugins could not be rescanned."
 msgstr "చొప్పింతలను మళ్ళీ స్కాన్ చేయలేకపోయింది."
 
-#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:75
+#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:153
 msgid ""
 "The plugins could not be rescanned: the folder of VLC may need administrator "
 "rights."
 msgstr "చొప్పింతలను మళ్ళీ స్కాన్ చేయలేకపోయింది: VLC సంచయానికి నిర్వాహక హక్కులు అవసరం కావచ్చు."
 
-#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:87
+#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:165
 msgid "The configurations folder could not be opened."
 msgstr "స్వరూపణాల సంచయాన్ని తెరవలేకపోయింది."
 
-#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:177
+#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:257
 msgid "Last.fm is unavailable in this VLC installation."
 msgstr "ఈ VLC స్థాపనలో Last.fm అందుబాటులో లేదు."
 
 #: modules/gui/qt/dialogs/preferences/config_model_effects.cpp:128
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:460
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:468
 msgid "VLC preferences are unavailable."
 msgstr "VLC ప్రాధాన్యతలు అందుబాటులో లేవు."
 
@@ -2910,56 +2906,56 @@ msgid ""
 "saved."
 msgstr "%1 అమరికల వెలుపల మారింది లేదా అందుబాటులో లేదు. మీ మార్పులు భద్రపరచబడలేదు."
 
-#: modules/gui/qt/dialogs/preferences/preferences.cpp:78
-#: modules/gui/qt/qt.cpp:338
+#: modules/gui/qt/dialogs/preferences/preferences.cpp:79
+#: modules/gui/qt/qt.cpp:337
 msgid "Expert"
 msgstr "నిపుణ"
 
-#: modules/gui/qt/dialogs/preferences/preferences.cpp:79
+#: modules/gui/qt/dialogs/preferences/preferences.cpp:80
 msgid "Switch to expert preferences view"
 msgstr "నిపుణ ప్రాధాన్యతల వీక్షణకు మారు"
 
-#: modules/gui/qt/dialogs/preferences/preferences.cpp:203
+#: modules/gui/qt/dialogs/preferences/preferences.cpp:204
 msgid "Modified only"
 msgstr "మార్చినవి మాత్రమే"
 
-#: modules/gui/qt/dialogs/preferences/preferences.cpp:232
+#: modules/gui/qt/dialogs/preferences/preferences.cpp:233
 msgid "Expert Preferences"
 msgstr "నిపుణ ప్రాధాన్యతలు"
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:216
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:217
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:62
 msgid "Navigation"
 msgstr "విహరణ"
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:367
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:422
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:440
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:368
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:430
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:448
 msgid "This shortcut is unavailable."
 msgstr "ఈ అడ్డదారి అందుబాటులో లేదు."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:378
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:379
 msgid "This key combination cannot be used by VLC."
 msgstr "ఈ మీటల కలయికను VLC వాడలేదు."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:474
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:482
 msgid ""
 "The global hotkeys of \"%1\" changed outside this dialog. Cancel and reopen "
 "the shortcuts."
 msgstr ""
 "\"%1\" యొక్క సార్వత్రిక వేగపుమీటలు ఈ డైలాగ్ వెలుపల మారాయి. రద్దుచేసి అడ్డదారులను మళ్ళీ తెరవండి."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:475
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:483
 msgid ""
 "The hotkeys of \"%1\" changed outside this dialog. Cancel and reopen the "
 "shortcuts."
 msgstr "\"%1\" యొక్క వేగపుమీటలు ఈ డైలాగ్ వెలుపల మారాయి. రద్దుచేసి అడ్డదారులను మళ్ళీ తెరవండి."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:489
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:497
 msgid "A shortcut could not be changed. Changes were reverted in memory."
 msgstr "ఒక అడ్డదారిని మార్చలేకపోయింది. మార్పులు మెమరీలో వెనక్కి తీసుకోబడ్డాయి."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:497
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:505
 msgid ""
 "Could not save shortcuts (error %1). Changes were reverted in memory; verify "
 "the configuration file."
@@ -2971,13 +2967,13 @@ msgstr ""
 msgid "System's default (%1)"
 msgstr "వ్యవస్థ అప్రమేయం (%1)"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1441
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1446
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1439
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1444
 msgid "%1 (partial)"
 msgstr "%1 (పాక్షికం)"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1824
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1834
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1839
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1849
 msgid "Please choose an entry point folder"
 msgstr "దయచేసి ఒక ప్రవేశ స్థాన సంచయాన్ని ఎంచుకోండి"
 
@@ -2992,7 +2988,7 @@ msgstr "థీమ్"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:181
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:409
-#: modules/gui/qt/qt.cpp:333
+#: modules/gui/qt/qt.cpp:332
 msgid "Accent color"
 msgstr "యాస రంగు"
 
@@ -3155,6 +3151,10 @@ msgid_plural "%1 more matching shortcuts"
 msgstr[0] "మరో %1 సరిపోలే అడ్డదారి"
 msgstr[1] "మరో %1 సరిపోలే అడ్డదారులు"
 
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:474
+msgid "Show all"
+msgstr "అన్నీ చూపించు"
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:514
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:93
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:109
@@ -3217,7 +3217,7 @@ msgid "All VLC options"
 msgstr "అన్ని VLC ఐచ్ఛికాలు"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:748
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:349
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:356
 msgid "Reset all settings"
 msgstr "అన్ని అమరికలను తిరిగి అమర్చు"
 
@@ -3253,7 +3253,7 @@ msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:187
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:193
 msgid "Two-pass"
 msgstr "రెండు దఫాలు"
 
@@ -3330,12 +3330,12 @@ msgid "Play video to adjust and preview the picture."
 msgstr "చిత్రాన్ని సర్దుబాటు చేసి మునుజూపు చూడడానికి వీడియోను ఆడించండి."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:114
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:188
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:194
 msgid "Spatial audio"
 msgstr "ప్రాదేశిక ఆడియో"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:122
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:191
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:197
 msgid "Stereo widening"
 msgstr "స్టీరియో విస్తరణ"
 
@@ -3360,7 +3360,7 @@ msgid "The address the played tracks are sent to."
 msgstr "ఆడిన ట్రాక్‌లు పంపబడే చిరునామా."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:216
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:273
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:279
 msgid "Nothing"
 msgstr "ఏమీ లేదు"
 
@@ -3368,108 +3368,108 @@ msgstr "ఏమీ లేదు"
 msgid "Seek"
 msgstr "జరుపు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:286
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:293
 msgid ""
 "Set a web remote password in the Advanced Options: the remote stays locked "
 "without one."
 msgstr "అధునాతన ఐచ్ఛికాలలో వెబ్ రిమోట్ సంకేతపదాన్ని అమర్చండి: అది లేకుండా రిమోట్ తాళం వేసే ఉంటుంది."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:291
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:298
 msgid "Applies the next time VLC starts"
 msgstr "తదుపరిసారి VLC ప్రారంభమైనప్పుడు వర్తిస్తుంది"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:303
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:310
 msgid "Choose a snapshot folder"
 msgstr "తక్షణచిత్రాల సంచయాన్ని ఎంచుకోండి"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:304
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:311
 msgid "Choose a time-shift buffer folder"
 msgstr "టైమ్‌షిఫ్ట్ బఫర్ సంచయాన్ని ఎంచుకోండి"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:305
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:312
 msgid "Choose a recording folder"
 msgstr "రికార్డింగుల సంచయాన్ని ఎంచుకోండి"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:307
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:314
 msgid "Choose a folder"
 msgstr "ఒక సంచయాన్ని ఎంచుకోండి"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:311
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:318
 msgid "Choose a skin"
 msgstr "ఒక తొడుగును ఎంచుకోండి"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:312
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:319
 msgid "Skin files (*.vlt *.wsz *.xml)"
 msgstr "తొడుగు దస్త్రాలు (*.vlt *.wsz *.xml)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:315
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:322
 msgid "Choose a log file"
 msgstr "ఒక లాగ్ దస్త్రాన్ని ఎంచుకోండి"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:341
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:348
 msgid "Open configurations folder"
 msgstr "స్వరూపణాల సంచయాన్ని తెరువు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:342
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:349
 msgid "Shows the folder of the settings of VLC."
 msgstr "VLC అమరికల సంచయాన్ని చూపిస్తుంది."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:350
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:357
 msgid "Puts every setting of VLC back to its default."
 msgstr "VLC యొక్క ప్రతి అమరికను దాని అప్రమేయానికి తిరిగి అమరుస్తుంది."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:366
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:373
 msgid "Rescan plugins"
 msgstr "చొప్పింతలను మళ్ళీ స్కాన్ చేయి"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:367
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:374
 msgid "Rescan"
 msgstr "మళ్ళీ స్కాన్ చేయి"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:101
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:110
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:104
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:113
 msgid "0 s"
 msgstr "0 సె"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:101
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:113
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:104
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:116
 msgid "5 s"
 msgstr "5 సె"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:102
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:105
 msgid "10s"
 msgstr "10సె"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:105
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:108
 msgid "Lower"
 msgstr "కింద"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:106
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:494
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:109
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:513
 msgid "Usual"
 msgstr "సాధారణం"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:110
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:113
 msgid "-5 s"
 msgstr "-5 సె"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:111
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:114
 msgid "+5 s"
 msgstr "+5 సె"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:113
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:116
 msgid "0.5 s"
 msgstr "0.5 సె"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:116
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:119
 msgid "1 s"
 msgstr "1 సె"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:116
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:119
 msgid "10 s"
 msgstr "10 సె"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:591
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:604
 msgid "Choose a color"
 msgstr "ఒక రంగును ఎంచుకోండి"
 
@@ -3703,8 +3703,8 @@ msgstr "మరొక అనువర్తనం ఆడియోను వాడ
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:112
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:114
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:115
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:196
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:202
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
 msgctxt "media streams"
 msgid "Tracks"
 msgstr "ట్రాక్‌లు"
@@ -3756,7 +3756,7 @@ msgid "Seeking"
 msgstr "జరపడం"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:121
-#: modules/gui/qt/qt.cpp:300
+#: modules/gui/qt/qt.cpp:299
 msgid "Show thumbnail while scrubbing"
 msgstr "జరుపుతున్నప్పుడు సూక్ష్మచిత్రాన్ని చూపించు"
 
@@ -3807,583 +3807,583 @@ msgstr "చివరి ప్లేబ్యాక్ స్థితులన�
 msgid "Start videos in fullscreen"
 msgstr "వీడియోలను పూర్తితెరలో ప్రారంభించు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:140
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:142
 msgid "Stop the screensaver during playback"
 msgstr "ప్లేబ్యాక్ సమయంలో తెరకాపరిని ఆపు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:141
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
 msgid "Play video as desktop wallpaper"
 msgstr "వీడియోను డెస్క్‌టాప్ వాల్‌పేపర్‌గా ఆడించు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:144
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:146
 msgid "Method"
 msgstr "పద్ధతి"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:145
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:146
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:147
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:148
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:149
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:158
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:150
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:151
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:160
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:162
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:376
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:164
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:382
 msgid "Framing"
 msgstr "ఫ్రేమింగ్"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:147
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:149
 msgid "Scale video to the window"
 msgstr "వీడియోను కిటికీకి స్కేల్ చేయి"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:149
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:151
 msgid "Position in the window"
 msgstr "కిటికీలో స్థానం"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:150
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:151
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:152
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:153
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:154
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:155
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:156
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:165
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:157
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:158
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:167
 msgid "Snapshots"
 msgstr "తక్షణచిత్రాలు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:150
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:152
 msgid "Save to"
 msgstr "ఇక్కడ భద్రపరుచు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:151
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:153
 msgid "File name prefix"
 msgstr "దస్త్రం పేరు ఉపసర్గ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:155
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:157
 msgid "Number files sequentially"
 msgstr "దస్త్రాలకు వరుసగా సంఖ్యలివ్వు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:156
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:158
 msgid "Show a preview after capture"
 msgstr "సంగ్రహణ తర్వాత మునుజూపును చూపించు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:158
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:160
 msgid "Custom aspect ratios"
 msgstr "అనురూపిత రూప నిష్పత్తులు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:160
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:162
 msgid "Custom crop ratios"
 msgstr "అనురూపిత కత్తిరింపు నిష్పత్తులు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:165
-msgid "Snapshot height (-1: proportional)"
-msgstr "తక్షణచిత్రం ఎత్తు (-1: అనుపాతంగా)"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:167
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "స్నాప్‌షాట్ ఎత్తు (0: నిష్పత్తి ప్రకారం, -1: అసలు)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:166
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:168
 msgid "Deinterlacing filter"
 msgstr "విజాలీకరణ వడబోత"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:170
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:172
 msgid "Speaker setup"
 msgstr "స్పీకర్ అమరిక"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:171
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:173
 msgid "Maximum volume"
 msgstr "గరిష్ఠ శబ్దం"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:173
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:174
-#: modules/gui/qt/dialogs/preferences/qml/SettingsStartupVolume.qml:139
-msgid "Startup volume"
-msgstr "ప్రారంభ శబ్దం"
-
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:175
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:176
-msgid "Volume step"
-msgstr "శబ్ద అంచె"
-
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:177
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:178
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:179
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:180
+#: modules/gui/qt/dialogs/preferences/qml/SettingsStartupVolume.qml:139
+msgid "Startup volume"
+msgstr "ప్రారంభ శబ్దం"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:182
+msgid "Volume step"
+msgstr "శబ్ద అంచె"
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:183
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:185
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:186
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
 msgid "Loudness"
 msgstr "ధ్వని తీవ్రత"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:177
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:183
 msgid "Normalize loudness"
 msgstr "ధ్వని తీవ్రతను సాధారణీకరించు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:178
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
 msgid "Target level"
 msgstr "లక్ష్య స్థాయి"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:179
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:185
 msgid "Night mode"
 msgstr "రాత్రి విధం"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:183
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
 msgid "Replay gain preamp"
 msgstr "రీప్లే గెయిన్ ప్రీయాంప్"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:195
 msgid "Spatial audio mode"
 msgstr "ప్రాదేశిక ఆడియో విధం"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:193
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:199
 msgid "Pitch shift"
 msgstr "పిచ్ మార్పు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:194
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:200
 msgid "Chorus/flanger"
 msgstr "కోరస్/ఫ్లాంజర్"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:196
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:202
 msgid "Preferred audio language"
 msgstr "ప్రాధాన్య ఆడియో భాష"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:197
-#: modules/gui/qt/player/qml/TracksMenu.qml:263
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
+#: modules/gui/qt/player/qml/TracksMenu.qml:266
 msgid "Audio delay"
 msgstr "ఆడియో ఆలస్యం"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:201
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:207
 msgid "Pass compressed audio to the receiver"
 msgstr "సంపీడిత ఆడియోను రిసీవర్‌కు పంపు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:202
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
 msgid "Detect Dolby Surround"
 msgstr "Dolby Surroundను గుర్తించు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:211
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
 msgid "Fastest"
 msgstr "అత్యంత వేగవంతం"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:211
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
 msgid "Balanced"
 msgstr "సమతుల్యం"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:210
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:216
 msgid "Output gain"
 msgstr "అవుట్‌పుట్ గెయిన్"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:211
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:217
 msgid "Keep the pitch when changing the speed"
 msgstr "వేగాన్ని మార్చినప్పుడు పిచ్‌ను అలాగే ఉంచు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:212
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:218
 msgid "Equalizer preamp"
 msgstr "ఈక్వలైజర్ ప్రీయాంప్"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:214
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:220
 msgid "Compressor ratio"
 msgstr "కంప్రెసర్ నిష్పత్తి"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:215
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
 msgid "Compressor threshold"
 msgstr "కంప్రెసర్ త్రెషోల్డ్"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:216
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:222
 msgid "Compressor makeup gain"
 msgstr "కంప్రెసర్ మేకప్ గెయిన్"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:218
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:222
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:228
 msgid "Tracks & Languages"
 msgstr "ట్రాక్‌లు & భాషలు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
 msgid "Preferred language"
 msgstr "ప్రాధాన్య భాష"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:222
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:228
 msgid "Text encoding"
 msgstr "పాఠ్య ఎన్కోడింగ్"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:223
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:255
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:229
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:261
 msgid "Loading Subtitles"
 msgstr "ఉపశీర్షికలను లోడ్ చేయడం"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:223
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:229
 msgid "Load subtitle files automatically"
 msgstr "ఉపశీర్షిక దస్త్రాలను స్వయంచాలకంగా లోడ్ చేయి"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
 msgid "File name matching"
 msgstr "దస్త్రం పేరు సరిపోలిక"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:233
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:239
 msgid "Bold"
 msgstr "బొద్దు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:234
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:240
 msgid "Text color"
 msgstr "పాఠ్య రంగు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:248
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:254
 msgid "Vertical position"
 msgstr "నిలువు స్థానం"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:249
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:255
 msgid "Timing"
 msgstr "సమయం"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:250
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:251
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:252
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:266
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:256
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:257
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:259
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:272
 msgid "On-Screen Messages"
 msgstr "తెరపై సందేశాలు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:250
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:256
 msgid "Show feedback for shortcuts"
 msgstr "అడ్డదారులకు ఫీడ్‌బ్యాక్ చూపించు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:251
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:257
 msgid "Show feedback for"
 msgstr "ఫీడ్‌బ్యాక్ చూపే సమయం"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:252
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
 msgid "Show filename when a video starts"
 msgstr "వీడియో ప్రారంభమైనప్పుడు దస్త్రం పేరును చూపించు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:259
 msgid "Show filename for"
 msgstr "దస్త్రం పేరు చూపే సమయం"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:255
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:261
 msgid "Load subtitles from these folders"
 msgstr "ఈ సంచయాల నుండి ఉపశీర్షికలను లోడ్ చేయి"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:263
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:269
 msgid "Monospace font"
 msgstr "మోనోస్పేస్ ఖతి"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:265
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:271
 msgid "Text alignment"
 msgstr "పాఠ్య సమలేఖనం"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:266
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:272
 msgid "Position of the filename"
 msgstr "దస్త్రం పేరు స్థానం"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:268
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:269
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:270
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:271
-msgid "Skip Amounts"
-msgstr "గెంతు నిడివులు"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:268
-msgid "Very short skip"
-msgstr "అతి చిన్న గెంతు"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:269
-msgid "Short skip"
-msgstr "చిన్న గెంతు"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:270
-msgid "Medium skip"
-msgstr "మధ్యస్థ గెంతు"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:271
-msgid "Long skip"
-msgstr "పెద్ద గెంతు"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:272
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:274
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:275
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:276
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:277
+msgid "Skip Amounts"
+msgstr "గెంతు నిడివులు"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:274
+msgid "Very short skip"
+msgstr "అతి చిన్న గెంతు"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:275
+msgid "Short skip"
+msgstr "చిన్న గెంతు"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:276
+msgid "Medium skip"
+msgstr "మధ్యస్థ గెంతు"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:277
+msgid "Long skip"
+msgstr "పెద్ద గెంతు"
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:281
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:283
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:286
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:289
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:292
 msgid "Mouse"
 msgstr "మౌస్"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:272
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
 msgid "Single click on the video"
 msgstr "వీడియోపై ఒక్కసారి నొక్కు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:273
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:279
 msgid "Play / Pause"
 msgstr "ఆడించు / నిలిపివేయి"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:274
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:280
 msgid "Play / Pause on release"
 msgstr "వదిలినప్పుడు ఆడించు / నిలిపివేయి"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:276
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
 msgid "Scroll wheel"
 msgstr "స్క్రోల్ చక్రం"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:277
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:283
 msgid "Horizontal scroll"
 msgstr "అడ్డు స్క్రోల్"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:281
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:285
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:377
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:287
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:288
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:290
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:291
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:383
 msgid "Remotes"
 msgstr "రిమోట్‌లు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:283
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:289
 msgid "Handle mouse clicks in the video"
 msgstr "వీడియోలో మౌస్ నొక్కులను నిర్వహించు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:290
 msgid "Web remote password"
 msgstr "వెబ్ రిమోట్ సంకేతపదం"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:285
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:291
 msgid "Web remote address"
 msgstr "వెబ్ రిమోట్ చిరునామా"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:286
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:292
 msgid "Ignore the volume keys of the keyboard"
 msgstr "కీబోర్డు శబ్ద మీటలను విస్మరించు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:288
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:289
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:290
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:291
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:294
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:300
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
 msgid "Opening Files"
 msgstr "దస్త్రాలను తెరవడం"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:288
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:294
 msgid "Only allow one VLC window"
 msgstr "ఒకే VLC కిటికీని అనుమతించు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:289
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
 msgid "Apply to files opened from the file manager"
 msgstr "దస్త్ర నిర్వాహకం నుండి తెరిచిన దస్త్రాలకు వర్తింపజేయి"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:290
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
 msgid "Add to the playlist instead of replacing it"
 msgstr "ప్రదర్శనజాబితాను భర్తీ చేయకుండా దానికి జతచేయి"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:291
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
 msgid "When opening a folder"
 msgstr "సంచయాన్ని తెరిచినప్పుడు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:292
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
 msgid "Only this folder"
 msgstr "ఈ సంచయం మాత్రమే"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:292
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
 msgid "Include subfolders"
 msgstr "ఉపసంచయాలను చేర్చు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:293
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
 msgid "Include and expand subfolders"
 msgstr "ఉపసంచయాలను చేర్చి విస్తరించు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
 msgid "Metadata & Artwork"
 msgstr "మెటాడేటా & కళాకృతి"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
 msgid "Fetch titles and artwork"
 msgstr "శీర్షికలు మరియు కళాకృతిని పొందు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
 msgid "Read media information automatically"
 msgstr "మాధ్యమ సమాచారాన్ని స్వయంచాలకంగా చదువు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
 msgid "Ignored file extensions"
 msgstr "విస్మరించే దస్త్ర పొడిగింపులు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:307
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
 msgid "Buffering"
 msgstr "బఫరింగ్"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
 msgid "Local files"
 msgstr "స్థానిక దస్త్రాలు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Network streams"
 msgstr "నెట్‌వర్క్ ప్రవాహాలు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
 msgid "Live capture"
 msgstr "ప్రత్యక్ష సంగ్రహణ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:306
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:307
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:312
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
 msgid "Proxy"
 msgstr "ప్రోక్సీ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:306
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:312
 msgid "System proxy"
 msgstr "వ్యవస్థ ప్రోక్సీ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
 msgid "Security"
 msgstr "భద్రత"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 msgid "Verify certificates against the system trust store"
 msgstr "వ్యవస్థ విశ్వసనీయ నిల్వతో ధృవపత్రాలను తనిఖీ చేయి"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
 msgid "Cipher preference"
 msgstr "సైఫర్ ప్రాధాన్యత"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
 msgid "Secure (128-bit)"
 msgstr "సురక్షితం (128-బిట్)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
 msgid "Most secure (256-bit)"
 msgstr "అత్యంత సురక్షితం (256-బిట్)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:320
 msgid "Connections"
 msgstr "అనుసంధానాలు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
 msgid "Connection timeout"
 msgstr "అనుసంధాన కాలపరిమితి"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:320
 msgid "HTTP user agent"
 msgstr "HTTP వాడుకరి ఏజెంట్"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
 msgid "Trusted certificates folder"
 msgstr "విశ్వసనీయ ధృవపత్రాల సంచయం"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:320
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
 msgid "Post-processing quality"
 msgstr "పోస్ట్-ప్రాసెసింగ్ నాణ్యత"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:327
 msgid "Skip the H.264 loop filter"
 msgstr "H.264 లూప్ వడబోతను దాటవేయి"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:328
 msgid "Non-reference frames"
 msgstr "రెఫరెన్స్ కాని ఫ్రేమ్‌లు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:328
 msgid "Bidirectional frames"
 msgstr "ద్విదిశ ఫ్రేమ్‌లు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:323
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
 msgid "Non-key frames"
 msgstr "కీ కాని ఫ్రేమ్‌లు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
 msgid "Decoding threads"
 msgstr "డీకోడింగ్ థ్రెడ్‌లు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:327
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
 msgid "Smooth Playback"
 msgstr "సాఫీ ప్లేబ్యాక్"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
 msgid "Drop frames when the system can't keep up"
 msgstr "వ్యవస్థ అందుకోలేనప్పుడు ఫ్రేమ్‌లను వదిలివేయి"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
-msgid "Give VLC real-time priority"
-msgstr "VLCకి వాస్తవ-సమయ ప్రాధాన్యత ఇవ్వు"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:328
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:336
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
 msgid "Developer"
 msgstr "అభివృద్ధికర్త"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
 msgid "Decoder"
 msgstr "డీకోడర్"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
 msgid "Clock reference averaging"
 msgstr "గడియార సూచిక సగటు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
 msgid "Save recordings to"
 msgstr "రికార్డింగులను ఇక్కడ భద్రపరుచు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:340
 msgid "Record without re-encoding when possible"
 msgstr "సాధ్యమైనప్పుడు మళ్ళీ ఎన్కోడ్ చేయకుండా రికార్డు చేయి"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:348
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:353
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:354
 msgid "Casting"
 msgstr "ప్రసారం"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
 msgid "Cast quality"
 msgstr "ప్రసార నాణ్యత"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:345
 msgid "Low CPU"
 msgstr "తక్కువ CPU"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
 msgid "Play locally while streaming"
 msgstr "ప్రవహింపజేస్తూ స్థానికంగా ఆడించు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:348
 msgid "Include audio"
 msgstr "ఆడియోను చేర్చు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:343
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:349
 msgid "Include video"
 msgstr "వీడియోను చేర్చు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:350
 msgid "Include subtitles"
 msgstr "ఉపశీర్షికలను ఉంచు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:345
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:351
 msgid "Encoding preset"
 msgstr "ఎన్కోడింగ్ ప్రిసెట్"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:346
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:352
 msgid "Tuning"
 msgstr "ట్యూనింగ్"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:353
 msgid "Send Dolby audio as is"
 msgstr "Dolby ఆడియోను ఉన్నదున్నట్లు పంపు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:348
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:354
 msgid "Cast HTTP port"
 msgstr "ప్రసార HTTP పోర్టు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:349
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:355
 msgid "Keep the stream output open between items"
 msgstr "అంశాల మధ్య ప్రవాహ అవుట్‌పుట్‌ను తెరిచే ఉంచు"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:395
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:401
 #: modules/gui/qt/widgets/qml/SplitButton.qml:142
 msgid "More options"
 msgstr "మరిన్ని ఐచ్ఛికాలు"
@@ -4449,7 +4449,7 @@ msgstr "ఆఫ్"
 
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:90
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:74
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:594
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:595
 msgid "Global Hotkey"
 msgstr "సార్వత్రిక వేగపుమీట"
 
@@ -4505,27 +4505,27 @@ msgstr "తదుపరి కార్యక్రమం / సర్వీస�
 msgid "All Fields"
 msgstr "అన్ని క్షేత్రాలు"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:225
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:226
 msgid "%1. Press to add a key"
 msgstr "%1. మీటను జతచేయడానికి నొక్కండి"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:226
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:227
 msgid "No key. Press to add one"
 msgstr "మీట లేదు. ఒకటి జతచేయడానికి నొక్కండి"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:340
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:341
 msgid "Remove %1"
 msgstr "%1ను తీసివేయి"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:422
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:423
 msgid "Search Keyboard Shortcuts..."
 msgstr "కీబోర్డు అడ్డదారులను శోధించు..."
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:688
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:689
 msgid "Hotkey of %1"
 msgstr "%1 యొక్క వేగపుమీట"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:697
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:698
 msgid "Global hotkey of %1"
 msgstr "%1 యొక్క సార్వత్రిక వేగపుమీట"
 
@@ -4601,32 +4601,32 @@ msgstr "ధారావాహికలు"
 msgid "Work"
 msgstr "పని"
 
-#: modules/gui/qt/dialogs/toolbar/profile_persistence.cpp:100
+#: modules/gui/qt/dialogs/toolbar/profile_persistence.cpp:99
 msgid "Could not save the selected profile."
 msgstr "ఎంచుకున్న ప్రొఫైల్‌ను భద్రపరచలేకపోయింది."
 
-#: modules/gui/qt/dialogs/toolbar/profile_settings.cpp:186
+#: modules/gui/qt/dialogs/toolbar/profile_settings.cpp:224
 msgid "Profile settings are unavailable or incompatible."
 msgstr "ప్రొఫైల్ అమరికలు అందుబాటులో లేవు లేదా అననుకూలంగా ఉన్నాయి."
 
-#: modules/gui/qt/dialogs/toolbar/profile_settings.cpp:211
+#: modules/gui/qt/dialogs/toolbar/profile_settings.cpp:249
 msgid "Profile appearance is invalid."
 msgstr "ప్రొఫైల్ రూపురేఖలు చెల్లవు."
 
-#: modules/gui/qt/dialogs/toolbar/profile_settings.cpp:228
+#: modules/gui/qt/dialogs/toolbar/profile_settings.cpp:265
 msgid "Could not save profile appearance."
 msgstr "ప్రొఫైల్ రూపురేఖలను భద్రపరచలేకపోయింది."
 
-#: modules/gui/qt/dialogs/toolbar/profile_settings.cpp:245
+#: modules/gui/qt/dialogs/toolbar/profile_settings.cpp:283
 msgid "Could not apply profile settings; previous values restored."
 msgstr "ప్రొఫైల్ అమరికలను వర్తింపజేయలేకపోయింది; మునుపటి విలువలు పునరుద్ధరించబడ్డాయి."
 
-#: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:41
+#: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:40
 #: modules/gui/qt/menus/qml/MainMenu.qml:117
 msgid "Profile (%1)"
 msgstr "ప్రొఫైల్ (%1)"
 
-#: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:87
+#: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:86
 msgid "Customize player"
 msgstr "ప్రదర్శకాన్ని అనుకూలీకరించు"
 
@@ -4716,11 +4716,11 @@ msgstr "ప్రొఫైల్‌ను తొలగించు"
 msgid "Its layout and its settings go with it."
 msgstr "దాని లేఅవుట్ మరియు అమరికలు కూడా దానితో పాటు పోతాయి."
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1209
+#: modules/gui/qt/maininterface/mainctx.cpp:1283
 msgid "Paste from clipboard"
 msgstr "క్లిప్‌బోర్డ్ నుండి అతుకు"
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1210
+#: modules/gui/qt/maininterface/mainctx.cpp:1284
 msgid "Do you want to enqueue the following URLs into the play queue?"
 msgstr "కింది URLలను ప్రదర్శన వరుసలో చేర్చాలనుకుంటున్నారా?"
 
@@ -4728,10 +4728,10 @@ msgstr "కింది URLలను ప్రదర్శన వరుసలో
 #. * right to left (Arabic, Hebrew, Persian, Urdu...), else "LTR". Choosing
 #. * the language lays the interface out in that direction (the user can
 #. * change it under the language).
-#: modules/gui/qt/maininterface/mainctx.cpp:1352
+#: modules/gui/qt/maininterface/mainctx.cpp:1441
 msgctxt "layout direction"
 msgid "LTR"
-msgstr ""
+msgstr "LTR"
 
 #: modules/gui/qt/maininterface/qml/LocalTopbar.qml:37
 msgid "Local top bar"
@@ -4741,7 +4741,7 @@ msgstr "స్థానిక పై పట్టీ"
 msgid "Show navigation menu"
 msgstr "నావిగేషన్ మెనూను చూపించు"
 
-#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:241
+#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:243
 #: modules/gui/qt/player/qml/TopBar.qml:493
 msgid "VLC Media Player"
 msgstr "VLC మాధ్యమ ప్రదర్శకం"
@@ -4765,18 +4765,10 @@ msgstr "ముంగిలి వీక్షణ"
 msgid "Open Disc"
 msgstr "డిస్కును తెరువు"
 
-#: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:34
-msgid "Open Multiple Files"
-msgstr "అనేక దస్త్రాలను తెరువు"
-
 #: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:38
 #: modules/gui/qt/menus/menus.cpp:959 modules/gui/qt/menus/qml/MainMenu.qml:77
 msgid "Open Capture Device"
 msgstr "సంగ్రహణ పరికరాన్ని తెరువు"
-
-#: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:39
-msgid "Open Location from clipboard"
-msgstr "క్లిప్‌బోర్డ్ నుండి స్థానాన్ని తెరువు"
 
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:29
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:30
@@ -4875,14 +4867,14 @@ msgstr "మళ్ళీ తనిఖీ చేయి"
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:88
 #: modules/gui/qt/medialibrary/qml/VideoGroupDisplay.qml:40
-#: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:73
+#: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:84
 #: modules/gui/qt/medialibrary/qml/VideoListDisplay.qml:90
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:81
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:190
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:198
 #: modules/gui/qt/network/standardpathmodel.cpp:152
-#: modules/gui/qt/player/qml/CompactLibrary.qml:78
-#: modules/gui/qt/player/qml/CompactLibrary.qml:197
-#: modules/gui/qt/player/qml/CompactLibrary.qml:292
+#: modules/gui/qt/player/qml/CompactLibrary.qml:79
+#: modules/gui/qt/player/qml/CompactLibrary.qml:198
+#: modules/gui/qt/player/qml/CompactLibrary.qml:293
 msgid "Videos"
 msgstr "వీడియోలు"
 
@@ -4897,8 +4889,8 @@ msgstr "వీడియోలు"
 #: modules/gui/qt/medialibrary/qml/VideoDisplay.qml:53
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:62
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:98
-#: modules/gui/qt/player/qml/CompactLibrary.qml:81
-#: modules/gui/qt/player/qml/CompactLibrary.qml:295
+#: modules/gui/qt/player/qml/CompactLibrary.qml:82
+#: modules/gui/qt/player/qml/CompactLibrary.qml:296
 #: modules/gui/qt/player/qml/controlbarcontrols/PlaylistsButton.qml:31
 msgid "Playlists"
 msgstr "ప్రదర్శనజాబితాలు"
@@ -4906,8 +4898,8 @@ msgstr "ప్రదర్శనజాబితాలు"
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:101
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:224
-#: modules/gui/qt/player/qml/CompactLibrary.qml:82
-#: modules/gui/qt/player/qml/CompactLibrary.qml:296
+#: modules/gui/qt/player/qml/CompactLibrary.qml:83
+#: modules/gui/qt/player/qml/CompactLibrary.qml:297
 msgid "Recent"
 msgstr "ఇటీవలివి"
 
@@ -4921,8 +4913,8 @@ msgstr "అంశాన్ని జతచేయి"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml:234
 #: modules/gui/qt/medialibrary/qml/MusicArtistsDisplay.qml:54
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:37
-#: modules/gui/qt/player/qml/CompactLibrary.qml:299
-#: modules/gui/qt/player/qml/CompactLibrary.qml:506
+#: modules/gui/qt/player/qml/CompactLibrary.qml:300
+#: modules/gui/qt/player/qml/CompactLibrary.qml:507
 msgid "Artists"
 msgstr "కళాకారులు"
 
@@ -4931,8 +4923,8 @@ msgstr "కళాకారులు"
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsDisplay.qml:30
 #: modules/gui/qt/medialibrary/qml/MusicArtist.qml:404
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:42
-#: modules/gui/qt/player/qml/CompactLibrary.qml:298
-#: modules/gui/qt/player/qml/CompactLibrary.qml:505
+#: modules/gui/qt/player/qml/CompactLibrary.qml:299
+#: modules/gui/qt/player/qml/CompactLibrary.qml:506
 msgid "Albums"
 msgstr "ఆల్బమ్‌లు"
 
@@ -4940,8 +4932,8 @@ msgstr "ఆల్బమ్‌లు"
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:93
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:50
 #: modules/gui/qt/medialibrary/qml/MusicGenresDisplay.qml:51
-#: modules/gui/qt/player/qml/CompactLibrary.qml:300
-#: modules/gui/qt/player/qml/CompactLibrary.qml:507
+#: modules/gui/qt/player/qml/CompactLibrary.qml:301
+#: modules/gui/qt/player/qml/CompactLibrary.qml:508
 msgid "Genres"
 msgstr "శైలులు"
 
@@ -5078,12 +5070,12 @@ msgstr ""
 "ఉపశీర్షిక దస్త్రాలు (*.srt *.ass *.ssa *.sub *.vtt *.ttml *.smi);;అన్ని దస్త్రాలు (*)"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:369
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:540
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:552
 msgid "Choose the folder of the audio tracks"
 msgstr "ఆడియో ట్రాక్‌ల సంచయాన్ని ఎంచుకోండి"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:370
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:541
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:553
 msgid "Choose the folder of the subtitles"
 msgstr "ఉపశీర్షికల సంచయాన్ని ఎంచుకోండి"
 
@@ -5196,8 +5188,8 @@ msgstr[0] "%1 పాట"
 msgstr[1] "%1 పాటలు"
 
 #: modules/gui/qt/medialibrary/qml/ArtistTopBanner.qml:253
-#: modules/gui/qt/player/qml/CompactLibrary.qml:794
-#: modules/gui/qt/player/qml/CompactLibrary.qml:808
+#: modules/gui/qt/player/qml/CompactLibrary.qml:795
+#: modules/gui/qt/player/qml/CompactLibrary.qml:809
 msgid "Play all"
 msgstr "అన్నీ ఆడించు"
 
@@ -5224,32 +5216,32 @@ msgstr "తెలియని కళాకారుడు"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:96
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:228
-#: modules/gui/qt/player/qml/ResumeDialog.qml:145
-#: modules/gui/qt/player/qml/CompactLibrary.qml:400
+#: modules/gui/qt/player/qml/ResumeDialog.qml:146
+#: modules/gui/qt/player/qml/CompactLibrary.qml:401
 msgid "Continue Watching"
 msgstr "చూడటం కొనసాగించు"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:146
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:488
-#: modules/gui/qt/player/qml/CompactLibrary.qml:403
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:508
+#: modules/gui/qt/player/qml/CompactLibrary.qml:404
 msgid "Favorites"
 msgstr "ఇష్టమైనవి"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:180
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:569
-#: modules/gui/qt/player/qml/CompactLibrary.qml:404
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:589
+#: modules/gui/qt/player/qml/CompactLibrary.qml:405
 msgid "New Videos"
 msgstr "కొత్త వీడియోలు"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:254
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:310
-#: modules/gui/qt/player/qml/CompactLibrary.qml:401
+#: modules/gui/qt/player/qml/CompactLibrary.qml:402
 msgid "Listen Again"
 msgstr "మళ్ళీ వినండి"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:287
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:651
-#: modules/gui/qt/player/qml/CompactLibrary.qml:405
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:671
+#: modules/gui/qt/player/qml/CompactLibrary.qml:406
 msgid "New Music"
 msgstr "కొత్త సంగీతం"
 
@@ -5268,7 +5260,7 @@ msgid "Alphabetic"
 msgstr "అక్షర క్రమం"
 
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:381
-#: modules/gui/qt/player/qml/CompactLibrary.qml:402
+#: modules/gui/qt/player/qml/CompactLibrary.qml:403
 msgid "Frequently Visited Folders"
 msgstr "తరచుగా సందర్శించే సంచయాలు"
 
@@ -5384,20 +5376,20 @@ msgstr "పైకి జరుపు"
 msgid "Move down"
 msgstr "కిందికి జరుపు"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:166
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:167
 msgid "Remove selected media from this playlist?"
 msgstr "ఎంచుకున్న మాధ్యమాన్ని ఈ ప్రదర్శనజాబితా నుండి తీసివేయాలా?"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:167
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:168
 msgid "Remove from playlist"
 msgstr "ప్రదర్శనజాబితా నుండి తీసివేయి"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:220
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:250
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:221
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:251
 msgid "Processing..."
 msgstr "ప్రాసెస్ చేస్తోంది..."
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:316
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:317
 msgid "No media found"
 msgstr "మాధ్యమం ఏదీ కనబడలేదు"
 
@@ -5405,27 +5397,27 @@ msgstr "మాధ్యమం ఏదీ కనబడలేదు"
 msgid "Playlist media list"
 msgstr "ప్రదర్శనజాబితా మాధ్యమ జాబితా"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:208
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:209
 msgid "Do you really want to delete the selected playlist?"
 msgid_plural "Do you really want to delete the selected playlists?"
 msgstr[0] "ఎంచుకున్న ప్రదర్శనజాబితాను మీరు నిజంగా తొలగించాలనుకుంటున్నారా?"
 msgstr[1] "ఎంచుకున్న ప్రదర్శనజాబితాలను మీరు నిజంగా తొలగించాలనుకుంటున్నారా?"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:211
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:212
 msgid "Delete playlist"
 msgid_plural "Delete playlists"
 msgstr[0] "ప్రదర్శనజాబితాను తొలగించు"
 msgstr[1] "ప్రదర్శనజాబితాలను తొలగించు"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:366
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:367
 msgid "Items"
 msgstr "అంశాలు"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:453
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:454
 msgid "No playlists found"
 msgstr "ప్రదర్శనజాబితాలు ఏవీ కనబడలేదు"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:454
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:455
 msgid "Create a playlist with files or add media from the library"
 msgstr "దస్త్రాలతో ప్రదర్శనజాబితాను సృష్టించండి లేదా లైబ్రరీ నుండి మాధ్యమాన్ని జతచేయండి"
 
@@ -5439,7 +5431,7 @@ msgstr "దస్త్రాలతో ప్రదర్శనజాబిత�
 msgid "Url"
 msgstr "URL"
 
-#: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:121
+#: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:132
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:77
 msgid "%1 Video"
 msgid_plural "%1 Videos"
@@ -5521,22 +5513,22 @@ msgid "Go to Source"
 msgstr "మూలానికి వెళ్ళు"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:134
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:204
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:207
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:57
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:899
 msgid "Add Subtitle Tracks"
 msgstr "ఉపశీర్షిక ట్రాక్‌లను జతచేయి"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:140
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:206
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:209
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:62
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:72
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:75
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:903
 msgid "Add Audio Tracks"
 msgstr "ఆడియో ట్రాక్‌లను జతచేయి"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:146
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:208
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:211
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:69
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:31
 msgid "Properties & Metadata"
@@ -5599,11 +5591,11 @@ msgstr "ఆడియో ట్రాక్‌లను సవరించు"
 msgid "Resync"
 msgstr "మళ్ళీ సమకాలీకరించు"
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:545
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:548
 msgid "No media matches the search"
 msgstr "శోధనకు ఏ మాధ్యమమూ సరిపోలలేదు"
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:546
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:549
 msgid "No media in this folder"
 msgstr "ఈ సంచయంలో మాధ్యమం ఏదీ లేదు"
 
@@ -5623,19 +5615,14 @@ msgstr "ఈ సంచయాన్ని లైబ్రరీకి జతచే
 msgid "Media library"
 msgstr "మాధ్యమ లైబ్రరీ"
 
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:49
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
-msgid "Export Playlist"
-msgstr "ప్రదర్శనజాబితాను ఎగుమతి చేయి"
-
 #: modules/gui/qt/medialibrary/qml/OpenMediaButton.qml:58
-#: modules/gui/qt/player/qml/CompactLibrary.qml:618
+#: modules/gui/qt/player/qml/CompactLibrary.qml:619
 #: modules/gui/qt/player/qml/controlbarcontrols/OpenButton.qml:31
 msgid "Open media"
 msgstr "మాధ్యమాన్ని తెరువు"
 
 #: modules/gui/qt/medialibrary/qml/OpenMediaButton.qml:76
-#: modules/gui/qt/player/qml/CompactLibrary.qml:761
+#: modules/gui/qt/player/qml/CompactLibrary.qml:762
 msgid "Add folder to library…"
 msgstr "లైబ్రరీకి సంచయాన్ని జతచేయి…"
 
@@ -5697,7 +5684,6 @@ msgid "These files will be added to the playlist."
 msgstr "ఈ దస్త్రాలు ప్రదర్శనజాబితాకు జతచేయబడతాయి."
 
 #: modules/gui/qt/medialibrary/qml/PlaylistCreateDialog.qml:228
-#: modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml:88
 msgid "Choose files"
 msgstr "దస్త్రాలను ఎంచుకోండి"
 
@@ -5725,11 +5711,11 @@ msgstr[0] "%1 వీడియో"
 msgstr[1] "%1 వీడియోలు"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:49
-#: modules/gui/qt/player/qml/CompactLibrary.qml:848
+#: modules/gui/qt/player/qml/CompactLibrary.qml:849
 #: modules/gui/qt/player/qml/MiniPlayerQueue.qml:107
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:193
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:195
 #: modules/gui/qt/widgets/qml/DragItem.qml:620
-#: modules/gui/qt/widgets/qml/LibraryHeader.qml:418
+#: modules/gui/qt/widgets/qml/LibraryHeader.qml:419
 msgid "%1 item"
 msgid_plural "%1 items"
 msgstr[0] "%1 అంశం"
@@ -5751,77 +5737,64 @@ msgstr "ఈ ప్రదర్శనజాబితాకు"
 msgid "To This File"
 msgstr "ఈ దస్త్రానికి"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:72
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:75
 msgid "Add Subtitles"
 msgstr "ఉపశీర్షికలను జతచేయి"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:519
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:520
-#: modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml:66
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:529
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:531
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:532
 msgid "From Computer"
 msgstr "కంప్యూటర్ నుండి"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:520
-#: modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml:66
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:531
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:532
 msgid "From Link"
 msgstr "లింకు నుండి"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:520
-#: modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml:66
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:531
 msgid "From OpenSubtitles"
 msgstr "OpenSubtitles నుండి"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:589
-#: modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml:126
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:601
 msgid "Direct HTTPS link to a subtitle file"
 msgstr "ఉపశీర్షిక దస్త్రానికి నేరు HTTPS లింకు"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:604
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:616
 msgid "Title or episode"
 msgstr "శీర్షిక లేదా ఎపిసోడ్"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:771
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:783
 msgid "OpenSubtitles API key"
 msgstr "OpenSubtitles API కీ"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:886
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:898
 msgid "Searching OpenSubtitles…"
 msgstr "OpenSubtitlesలో శోధిస్తోంది…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:888
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:900
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "ఉపశీర్షిక దస్త్రాలను చూడడానికి OpenSubtitlesలో శోధించండి."
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:891
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:903
 msgid "Working on audio tracks…"
 msgstr "ఆడియో ట్రాక్‌లపై పని చేస్తోంది…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:891
-#: modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml:170
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:903
 msgid "Working on subtitles…"
 msgstr "ఉపశీర్షికలపై పని చేస్తోంది…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:894
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:906
 msgid "Enter a direct link to a subtitle file above."
 msgstr "పైన ఉపశీర్షిక దస్త్రానికి నేరు లింకును ఇవ్వండి."
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:895
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:907
 msgid "No audio file in this folder: choose another one above."
 msgstr "ఈ సంచయంలో ఆడియో దస్త్రం లేదు: పైన మరొకదాన్ని ఎంచుకోండి."
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:896
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:908
 msgid "No subtitle file in this folder: choose another one above."
 msgstr "ఈ సంచయంలో ఉపశీర్షిక దస్త్రం లేదు: పైన మరొకదాన్ని ఎంచుకోండి."
-
-#: modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml:108
-msgid "%1 media file"
-msgid_plural "%1 media files"
-msgstr[0] "%1 మాధ్యమ దస్త్రం"
-msgstr[1] "%1 మాధ్యమ దస్త్రాలు"
-
-#: modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml:140
-msgid "Add link"
-msgstr "లింకును జతచేయి"
 
 #: modules/gui/qt/menus/custom_menus.cpp:116
 msgid "Search for cast devices"
@@ -6051,11 +6024,11 @@ msgid "Shuffle the play queue"
 msgstr "ప్రదర్శన వరుసను యాదృచ్ఛికంగా కలుపు"
 
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1263
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1269
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1272
 msgid "Discard the filtered out items"
 msgstr "వడపోసిన అంశాలను విస్మరించు"
 
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1270
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1271
 msgid ""
 "Do you really want to discard the items that are not displayed at the moment?"
 msgstr "ప్రస్తుతం ప్రదర్శించని అంశాలను మీరు నిజంగా విస్మరించాలనుకుంటున్నారా?"
@@ -6167,7 +6140,7 @@ msgid "This build can't search the internet."
 msgstr "ఈ బిల్డ్ అంతర్జాలంలో శోధించలేదు."
 
 #: modules/gui/qt/player/subtitle_finder.cpp:1219
-#: modules/gui/qt/player/subtitle_finder.cpp:1459
+#: modules/gui/qt/player/subtitle_finder.cpp:1472
 msgid "No connection to the internet."
 msgstr "అంతర్జాలానికి అనుసంధానం లేదు."
 
@@ -6183,62 +6156,62 @@ msgstr "\"%1\" కనబడలేదు. దాని శీర్షిక క�
 msgid "No subtitles were found for %1."
 msgstr "%1 కోసం ఉపశీర్షికలు ఏవీ కనబడలేదు."
 
-#: modules/gui/qt/player/subtitle_finder.cpp:1460
+#: modules/gui/qt/player/subtitle_finder.cpp:1473
 msgid "The subtitle couldn't be downloaded (%1)."
 msgstr "ఉపశీర్షికను దింపుకోలేకపోయింది (%1)."
 
-#: modules/gui/qt/player/subtitle_finder.cpp:1490
+#: modules/gui/qt/player/subtitle_finder.cpp:1503
 msgid "The subtitle couldn't be saved."
 msgstr "ఉపశీర్షికను భద్రపరచలేకపోయింది."
 
-#: modules/gui/qt/player/subtitle_finder.cpp:1500
-#: modules/gui/qt/player/subtitle_providers.cpp:842
-#: modules/gui/qt/player/subtitle_providers.cpp:875
+#: modules/gui/qt/player/subtitle_finder.cpp:1513
+#: modules/gui/qt/player/subtitle_providers.cpp:922
+#: modules/gui/qt/player/subtitle_providers.cpp:955
 msgid "The subtitle couldn't be unpacked."
 msgstr "ఉపశీర్షికను విప్పలేకపోయింది."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:81
+#: modules/gui/qt/player/subtitle_providers.cpp:87
 msgid "%1 didn't answer."
 msgstr "%1 స్పందించలేదు."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:83
+#: modules/gui/qt/player/subtitle_providers.cpp:89
 msgid "%1 asks to wait a moment (too many searches)."
 msgstr "%1 కొంతసేపు ఆగమని అడుగుతోంది (చాలా ఎక్కువ శోధనలు)."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:84
+#: modules/gui/qt/player/subtitle_providers.cpp:90
 msgid "%1 didn't answer (%2)."
 msgstr "%1 స్పందించలేదు (%2)."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:778
+#: modules/gui/qt/player/subtitle_providers.cpp:858
 msgid "All languages · movies and series · finds those made for your file"
 msgstr "అన్ని భాషలు · సినిమాలు మరియు ధారావాహికలు · మీ దస్త్రం కోసం తయారైనవాటిని కనుగొంటుంది"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:780
+#: modules/gui/qt/player/subtitle_providers.cpp:860
 msgid "Hebrew · movies and series"
 msgstr "హీబ్రూ · సినిమాలు మరియు ధారావాహికలు"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:782
+#: modules/gui/qt/player/subtitle_providers.cpp:862
 msgid "Series · many languages"
 msgstr "ధారావాహికలు · అనేక భాషలు"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:784
+#: modules/gui/qt/player/subtitle_providers.cpp:864
 msgid "Movies · many languages"
 msgstr "సినిమాలు · అనేక భాషలు"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:830
+#: modules/gui/qt/player/subtitle_providers.cpp:910
 msgid "This subtitle comes as a RAR archive, which can't be opened here."
 msgstr "ఈ ఉపశీర్షిక RAR ఆర్కైవ్‌గా వస్తుంది, దాన్ని ఇక్కడ తెరవలేము."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:876
+#: modules/gui/qt/player/subtitle_providers.cpp:956
 msgid "The archive has no subtitle in it."
 msgstr "ఆర్కైవ్‌లో ఉపశీర్షిక ఏదీ లేదు."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:888
+#: modules/gui/qt/player/subtitle_providers.cpp:968
 msgid ""
 "OpenSubtitles keeps this subtitle for its paying members. Choose another one."
 msgstr "OpenSubtitles ఈ ఉపశీర్షికను తన చెల్లింపు సభ్యుల కోసం ఉంచుతుంది. మరొకదాన్ని ఎంచుకోండి."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:894
+#: modules/gui/qt/player/subtitle_providers.cpp:974
 msgid "The subtitle is empty."
 msgstr "ఉపశీర్షిక ఖాళీగా ఉంది."
 
@@ -6255,7 +6228,7 @@ msgid "Waveform analysis did not complete."
 msgstr "తరంగరూప విశ్లేషణ పూర్తి కాలేదు."
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:41
-#: modules/gui/qt/player/qml/controlbarcontrols/SettingsButton.qml:26
+#: modules/gui/qt/player/qml/controlbarcontrols/SettingsButton.qml:27
 msgid "VLC Settings"
 msgstr "VLC అమరికలు"
 
@@ -6284,9 +6257,10 @@ msgstr "15సె ముందుకు"
 msgid "Properties"
 msgstr "లక్షణాలు"
 
-#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:60
-msgid "Volume Widget"
-msgstr "శబ్ద విడ్జెట్"
+#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:56
+#: modules/gui/qt/player/qml/controlbarcontrols/LangButton.qml:54
+msgid "Languages and tracks"
+msgstr "భాషలు మరియు ట్రాక్‌లు"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:61
 msgid "Navigation Box"
@@ -6297,7 +6271,7 @@ msgid "Program Button"
 msgstr "కార్యక్రమ బొత్తం"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:67
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:32
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:33
 msgid "Cast to TV"
 msgstr "TVకి ప్రసారం చేయి"
 
@@ -6420,68 +6394,68 @@ msgstr "ప్రిసెట్‌లు:"
 msgid "Player"
 msgstr "ప్రదర్శకం"
 
-#: modules/gui/qt/player/qml/Player.qml:1036
+#: modules/gui/qt/player/qml/Player.qml:1038
 msgid "Subtitles on the TV: %1"
 msgstr "టీవీలో ఉపశీర్షికలు: %1"
 
-#: modules/gui/qt/player/qml/Player.qml:1036
+#: modules/gui/qt/player/qml/Player.qml:1038
 msgid "Subtitles off on the TV"
 msgstr "టీవీలో ఉపశీర్షికలు ఆపివేయబడ్డాయి"
 
-#: modules/gui/qt/player/qml/Player.qml:1146
+#: modules/gui/qt/player/qml/Player.qml:1148
 msgid "Not playing on %1"
 msgstr "%1లో ఆడటం లేదు"
 
-#: modules/gui/qt/player/qml/Player.qml:1148
-#: modules/gui/qt/player/qml/Player.qml:1274
+#: modules/gui/qt/player/qml/Player.qml:1150
+#: modules/gui/qt/player/qml/Player.qml:1276
 msgid "Connecting to %1…"
 msgstr "%1కు అనుసంధానిస్తోంది…"
 
-#: modules/gui/qt/player/qml/Player.qml:1150
+#: modules/gui/qt/player/qml/Player.qml:1152
 msgid "Playing on %1"
 msgstr "%1లో ఆడుతోంది"
 
-#: modules/gui/qt/player/qml/Player.qml:1151
+#: modules/gui/qt/player/qml/Player.qml:1153
 msgid "The sound plays on %1"
 msgstr "ధ్వని %1లో వినిపిస్తోంది"
 
-#: modules/gui/qt/player/qml/Player.qml:1175
+#: modules/gui/qt/player/qml/Player.qml:1177
 msgid "Pause, seek and change the subtitles here: the TV follows."
 msgstr "ఇక్కడే నిలిపివేయండి, జరపండి, ఉపశీర్షికలు మార్చండి: TV అనుసరిస్తుంది."
 
-#: modules/gui/qt/player/qml/Player.qml:1192
+#: modules/gui/qt/player/qml/Player.qml:1194
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the media."
 msgstr ""
 "మాధ్యమాన్ని చదవడానికి %1 ఈ కంప్యూటర్‌కు అనుసంధానం కావడానికి Windows Firewall అనుమతించడం లేదు."
 
-#: modules/gui/qt/player/qml/Player.qml:1204
+#: modules/gui/qt/player/qml/Player.qml:1206
 msgid "Waiting for Windows…"
 msgstr "Windows కోసం వేచి ఉంది…"
 
-#: modules/gui/qt/player/qml/Player.qml:1205
+#: modules/gui/qt/player/qml/Player.qml:1207
 msgid "Allow on public networks too"
 msgstr "పబ్లిక్ నెట్‌వర్క్‌లలో కూడా అనుమతించు"
 
-#: modules/gui/qt/player/qml/Player.qml:1206
+#: modules/gui/qt/player/qml/Player.qml:1208
 msgid "Allow on private networks"
 msgstr "ప్రైవేట్ నెట్‌వర్క్‌లలో అనుమతించు"
 
-#: modules/gui/qt/player/qml/Player.qml:1218
+#: modules/gui/qt/player/qml/Player.qml:1220
 msgid "Try again"
 msgstr "మళ్ళీ ప్రయత్నించు"
 
-#: modules/gui/qt/player/qml/Player.qml:1223
-#: modules/gui/qt/player/qml/Player.qml:1233
+#: modules/gui/qt/player/qml/Player.qml:1225
+#: modules/gui/qt/player/qml/Player.qml:1235
 msgid "Play here"
 msgstr "ఇక్కడ ఆడించు"
 
-#: modules/gui/qt/player/qml/Player.qml:1233
-#: modules/gui/qt/player/qml/Player.qml:1284
+#: modules/gui/qt/player/qml/Player.qml:1235
+#: modules/gui/qt/player/qml/Player.qml:1286
 msgid "Stop casting"
 msgstr "ప్రసారం ఆపు"
 
-#: modules/gui/qt/player/qml/Player.qml:1275
+#: modules/gui/qt/player/qml/Player.qml:1277
 msgid "Also on %1"
 msgstr "%1లో కూడా"
 
@@ -6489,11 +6463,11 @@ msgstr "%1లో కూడా"
 msgid "Resume dialog"
 msgstr "కొనసాగింపు డైలాగ్"
 
-#: modules/gui/qt/player/qml/ResumeDialog.qml:134
+#: modules/gui/qt/player/qml/ResumeDialog.qml:135
 msgid "You’ve watched till %1 already."
 msgstr "మీరు ఇప్పటికే %1 వరకు చూశారు."
 
-#: modules/gui/qt/player/qml/ResumeDialog.qml:136
+#: modules/gui/qt/player/qml/ResumeDialog.qml:137
 msgid "Continue where you left off?"
 msgstr "మీరు ఆపిన చోటు నుండి కొనసాగించాలా?"
 
@@ -6505,57 +6479,57 @@ msgstr "ప్రదర్శకం పై పట్టీ"
 msgid "Show %1 in the library"
 msgstr "%1ను లైబ్రరీలో చూపించు"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:177
-#: modules/gui/qt/player/qml/TracksMenu.qml:274
+#: modules/gui/qt/player/qml/TracksMenu.qml:180
+#: modules/gui/qt/player/qml/TracksMenu.qml:277
 msgid "Embedded Tracks"
 msgstr "పొందుపరిచిన ట్రాక్‌లు"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:200
+#: modules/gui/qt/player/qml/TracksMenu.qml:203
 msgid "No audio tracks in this media"
 msgstr "ఈ మాధ్యమంలో ఆడియో ట్రాక్‌లు లేవు"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:217
+#: modules/gui/qt/player/qml/TracksMenu.qml:220
 msgid "Output Device"
 msgstr "అవుట్‌పుట్ పరికరం"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:226
+#: modules/gui/qt/player/qml/TracksMenu.qml:229
 msgid "Refresh output devices"
 msgstr "అవుట్‌పుట్ పరికరాలను తాజాపరుచు"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:249
+#: modules/gui/qt/player/qml/TracksMenu.qml:252
 msgid "No output device available"
 msgstr "అవుట్‌పుట్ పరికరం ఏదీ అందుబాటులో లేదు"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:298
+#: modules/gui/qt/player/qml/TracksMenu.qml:301
 msgid "No video tracks in this media"
 msgstr "ఈ మాధ్యమంలో వీడియో ట్రాక్‌లు లేవు"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:316
+#: modules/gui/qt/player/qml/TracksMenu.qml:319
 msgid "Current: %1×"
 msgstr "ప్రస్తుతం: %1×"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:333
+#: modules/gui/qt/player/qml/TracksMenu.qml:336
 msgid "Speed cannot be changed for this media"
 msgstr "ఈ మాధ్యమానికి వేగాన్ని మార్చలేము"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:338
+#: modules/gui/qt/player/qml/TracksMenu.qml:341
 #: modules/gui/qt/player/qml/QueueCard.qml:220
 msgid "No chapters in this media"
 msgstr "ఈ మాధ్యమంలో అధ్యాయాలు లేవు"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:354
+#: modules/gui/qt/player/qml/TracksMenu.qml:357
 msgid "Manage bookmarks…"
 msgstr "ఇష్టాంశాలను నిర్వహించు…"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:360
+#: modules/gui/qt/player/qml/TracksMenu.qml:363
 msgid "Bookmarks require the media library"
 msgstr "ఇష్టాంశాలకు మాధ్యమ లైబ్రరీ అవసరం"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:389
+#: modules/gui/qt/player/qml/TracksMenu.qml:392
 msgid "Show Preferences"
 msgstr "ప్రాధాన్యతలను చూపించు"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:535
+#: modules/gui/qt/player/qml/TracksMenu.qml:538
 #: modules/gui/qt/player/qml/TracksPageAudio.qml:37
 #: modules/gui/qt/player/qml/TracksPageSubtitle.qml:37
 #: modules/gui/qt/player/qml/SubtitleSyncTimeline.qml:42
@@ -6583,27 +6557,27 @@ msgstr "వీడియో ట్రాక్‌లు"
 msgid "Track list"
 msgstr "ట్రాక్ జాబితా"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:288
+#: modules/gui/qt/player/qml/AudioContent.qml:321
 msgid "Title and artist"
 msgstr "శీర్షిక మరియు కళాకారుడు"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:418
+#: modules/gui/qt/player/qml/AudioContent.qml:451
 msgid "Step back"
 msgstr "ఒక అడుగు వెనుకకు"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:443
+#: modules/gui/qt/player/qml/AudioContent.qml:476
 msgid "Toggle lyrics view"
 msgstr "సాహిత్య వీక్షణను మార్చు"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:480
+#: modules/gui/qt/player/qml/AudioContent.qml:513
 msgid "Sync lyrics to playback"
 msgstr "సాహిత్యాన్ని ప్లేబ్యాక్‌కు సమకాలీకరించు"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:495
+#: modules/gui/qt/player/qml/AudioContent.qml:528
 msgid "Sync lyrics to playback position"
 msgstr "సాహిత్యాన్ని ప్లేబ్యాక్ స్థానానికి సమకాలీకరించు"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:515
+#: modules/gui/qt/player/qml/AudioContent.qml:548
 msgid "Volume %1%"
 msgstr "శబ్దం %1%"
 
@@ -6611,103 +6585,103 @@ msgstr "శబ్దం %1%"
 msgid "Play audio to select a visualization."
 msgstr "దృశ్యీకరణను ఎంచుకోవడానికి ఆడియోను ఆడించండి."
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:198
 #: modules/gui/qt/player/qml/CompactLibrary.qml:199
-#: modules/gui/qt/player/qml/CompactLibrary.qml:297
-#: modules/gui/qt/player/qml/CompactLibrary.qml:504
+#: modules/gui/qt/player/qml/CompactLibrary.qml:200
+#: modules/gui/qt/player/qml/CompactLibrary.qml:298
+#: modules/gui/qt/player/qml/CompactLibrary.qml:505
 msgid "Songs"
 msgstr "పాటలు"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:726
+#: modules/gui/qt/player/qml/CompactLibrary.qml:727
 msgid "More"
 msgstr "మరిన్ని"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:751
-#: modules/gui/qt/player/qml/CompactLibrary.qml:766
+#: modules/gui/qt/player/qml/CompactLibrary.qml:752
+#: modules/gui/qt/player/qml/CompactLibrary.qml:767
 msgid "Rescan library"
 msgstr "లైబ్రరీని మళ్ళీ స్కాన్ చేయి"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:776
+#: modules/gui/qt/player/qml/CompactLibrary.qml:777
 msgid "Add network stream…"
 msgstr "నెట్‌వర్క్ ప్రవాహాన్ని జతచేయి…"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:785
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1154
+#: modules/gui/qt/player/qml/CompactLibrary.qml:786
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1155
 msgid "Create playlist"
 msgstr "ప్రదర్శనజాబితాను సృష్టించు"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:799
-#: modules/gui/qt/player/qml/CompactLibrary.qml:813
+#: modules/gui/qt/player/qml/CompactLibrary.qml:800
+#: modules/gui/qt/player/qml/CompactLibrary.qml:814
 msgid "Add all to queue"
 msgstr "అన్నింటినీ వరుసకు జతచేయి"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:818
+#: modules/gui/qt/player/qml/CompactLibrary.qml:819
 msgid "Up one folder"
 msgstr "ఒక సంచయం పైకి"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:828
+#: modules/gui/qt/player/qml/CompactLibrary.qml:829
 msgid "Open in the library"
 msgstr "లైబ్రరీలో తెరువు"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:887
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:205
+#: modules/gui/qt/player/qml/CompactLibrary.qml:888
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:207
 #: modules/gui/qt/playlist/qml/QueueHeader.qml:74
 #: modules/gui/qt/widgets/qml/GridSortFilterControls.qml:42
 #: modules/gui/qt/widgets/qml/SortControl.qml:64
-#: modules/gui/qt/widgets/qml/LibraryHeader.qml:458
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:459
+#: modules/gui/qt/widgets/qml/LibraryHeader.qml:460
 msgid "Sort"
 msgstr "క్రమబద్ధీకరించు"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:922
+#: modules/gui/qt/player/qml/CompactLibrary.qml:923
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:82
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:83
 msgid "Title A-Z"
 msgstr "శీర్షిక A-Z"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:926
+#: modules/gui/qt/player/qml/CompactLibrary.qml:927
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:82
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:83
 msgid "Title Z-A"
 msgstr "శీర్షిక Z-A"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:930
+#: modules/gui/qt/player/qml/CompactLibrary.qml:931
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:80
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:81
 msgid "Newest First"
 msgstr "కొత్తవి ముందుగా"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:935
+#: modules/gui/qt/player/qml/CompactLibrary.qml:936
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:80
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:81
 msgid "Oldest First"
 msgstr "పాతవి ముందుగా"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:954
-#: modules/gui/qt/widgets/qml/LibraryHeader.qml:503
+#: modules/gui/qt/player/qml/CompactLibrary.qml:955
+#: modules/gui/qt/widgets/qml/LibraryHeader.qml:504
 msgid "Grid View"
 msgstr "గ్రిడ్ వీక్షణ"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:959
-#: modules/gui/qt/widgets/qml/LibraryHeader.qml:509
+#: modules/gui/qt/player/qml/CompactLibrary.qml:960
+#: modules/gui/qt/widgets/qml/LibraryHeader.qml:510
 msgid "List View"
 msgstr "జాబితా వీక్షణ"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1068
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1069
 msgid "See all"
 msgstr "అన్నీ చూడు"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1214
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1215
 msgid "Add Network Stream"
 msgstr "నెట్‌వర్క్ ప్రవాహాన్ని జతచేయి"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1323
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1339
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1324
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1340
 msgid "The media library is not available."
 msgstr "మాధ్యమ లైబ్రరీ అందుబాటులో లేదు."
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1324
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1340
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1325
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1341
 msgid "Nothing here yet."
 msgstr "ఇక్కడ ఇంకా ఏమీ లేదు."
 
@@ -6735,11 +6709,11 @@ msgstr "ప్రదర్శకం అంతరవర్తిని చూప�
 msgid "Hide player UI"
 msgstr "ప్రదర్శకం అంతరవర్తిని దాచు"
 
-#: modules/gui/qt/player/qml/LibraryMiniPlayer.qml:281
+#: modules/gui/qt/player/qml/LibraryMiniPlayer.qml:285
 msgid "Hide queue"
 msgstr "వరుసను దాచు"
 
-#: modules/gui/qt/player/qml/LibraryMiniPlayer.qml:281
+#: modules/gui/qt/player/qml/LibraryMiniPlayer.qml:285
 msgid "Show queue"
 msgstr "వరుసను చూపించు"
 
@@ -6772,27 +6746,27 @@ msgstr "ఎంచుకున్న అంశాన్ని వరుస ను
 msgid "Add files to queue"
 msgstr "వరుసకు దస్త్రాలను జతచేయి"
 
-#: modules/gui/qt/player/qml/PIPPlayer.qml:49
+#: modules/gui/qt/player/qml/PIPPlayer.qml:70
 msgid "video content"
 msgstr "వీడియో విషయం"
 
-#: modules/gui/qt/player/qml/PIPPlayer.qml:192
+#: modules/gui/qt/player/qml/PIPPlayer.qml:224
 msgid "Previous item"
 msgstr "మునుపటి అంశం"
 
-#: modules/gui/qt/player/qml/PIPPlayer.qml:212
+#: modules/gui/qt/player/qml/PIPPlayer.qml:244
 msgid "Play or pause"
 msgstr "ఆడించు లేదా నిలిపివేయి"
 
-#: modules/gui/qt/player/qml/PIPPlayer.qml:238
+#: modules/gui/qt/player/qml/PIPPlayer.qml:270
 msgid "Next item"
 msgstr "తదుపరి అంశం"
 
-#: modules/gui/qt/player/qml/PIPPlayer.qml:255
+#: modules/gui/qt/player/qml/PIPPlayer.qml:287
 msgid "close video"
 msgstr "వీడియోను మూసివేయి"
 
-#: modules/gui/qt/player/qml/PIPPlayer.qml:278
+#: modules/gui/qt/player/qml/PIPPlayer.qml:310
 msgid "maximize player"
 msgstr "ప్రదర్శకాన్ని గరిష్ఠీకరించు"
 
@@ -6938,130 +6912,135 @@ msgstr "తెరిచిన దస్త్రం"
 msgid "%1k downloads"
 msgstr "%1k దింపుకోళ్ళు"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:135
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:139
 msgid "Unknown language"
 msgstr "తెలియని భాష"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:173
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:189
 msgid "Foreign parts only"
 msgstr "విదేశీ భాగాలు మాత్రమే"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:237
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:254
 msgid "Identifying the video…"
 msgstr "వీడియోను గుర్తిస్తోంది…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:240
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:257
 msgid "Searching %1…"
 msgstr "%1లో శోధిస్తోంది…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:240
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:257
 msgid "Searching subtitles online…"
 msgstr "ఆన్‌లైన్‌లో ఉపశీర్షికల కోసం శోధిస్తోంది…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:244
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:261
 msgid "Downloading…"
 msgstr "దింపుకుంటోంది…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:246
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:263
 msgid "%1 · %2 found"
 msgstr "%1 · %2 కనబడ్డాయి"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:247
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:264
 msgid "%1 found for this file"
 msgstr "ఈ దస్త్రం కోసం %1 కనబడ్డాయి"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:251
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:268
 msgid "Subtitles of this video"
 msgstr "ఈ వీడియో ఉపశీర్షికలు"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:270
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:287
 msgid "The video is another one: search by its title"
 msgstr "ఇది వేరే వీడియో: దాని శీర్షికతో శోధించండి"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:281
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:298
 msgid "Search subtitles online"
 msgstr "ఉపశీర్షికలను ఆన్‌లైన్‌లో శోధించు"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:282
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:299
 msgid "Search subtitles online again"
 msgstr "ఉపశీర్షికలను ఆన్‌లైన్‌లో మళ్ళీ శోధించు"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:292
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:309
 msgid "Add subtitles to the library"
 msgstr "ఉపశీర్షికలను లైబ్రరీకి జతచేయి"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:293
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:310
 msgid "Library association needs a local media file and media library."
 msgstr "లైబ్రరీ అనుబంధానికి స్థానిక మాధ్యమ దస్త్రం మరియు మాధ్యమ లైబ్రరీ అవసరం."
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:303
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:320
 msgid "Load a subtitle file for playback"
 msgstr "ప్లేబ్యాక్ కోసం ఉపశీర్షిక దస్త్రాన్ని లోడ్ చేయి"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:322
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:339
 msgid "Title of the movie or series"
 msgstr "సినిమా లేదా ధారావాహిక శీర్షిక"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:343
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:360
 msgid "Searching…"
 msgstr "శోధిస్తోంది…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:386
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:403
 msgid "Second"
 msgstr "రెండవ"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:421
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:404
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "తరచుగా వాడినది"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:439
 msgid "For this file"
 msgstr "ఈ దస్త్రం కోసం"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:441
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:460
 msgid "Looking for subtitles…"
 msgstr "ఉపశీర్షికల కోసం వెతుకుతోంది…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:442
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:461
 msgid "No subtitles yet"
 msgstr "ఇంకా ఉపశీర్షికలు లేవు"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:484
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:503
 msgid "Position and size"
 msgstr "స్థానం మరియు పరిమాణం"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:492
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:511
 msgctxt "subtitles"
 msgid "Position"
 msgstr "స్థానం"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:495
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:509
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:514
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:528
 msgid "%1%"
 msgstr "%1%"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:496
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:515
 msgid "Move the subtitles down"
 msgstr "ఉపశీర్షికలను కిందికి జరుపు"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:497
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:516
 msgid "Move the subtitles up"
 msgstr "ఉపశీర్షికలను పైకి జరుపు"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:508
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:527
 msgctxt "subtitles"
 msgid "Size"
 msgstr "పరిమాణం"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:510
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:529
 msgid "Smaller subtitles"
 msgstr "చిన్న ఉపశీర్షికలు"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:511
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:530
 msgid "Larger subtitles"
 msgstr "పెద్ద ఉపశీర్షికలు"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:743
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:762
 msgid "HI"
 msgstr "HI"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:748
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:767
 msgid "For the hearing impaired"
 msgstr "వినికిడి లోపం ఉన్నవారి కోసం"
 
@@ -7087,9 +7066,15 @@ msgstr ""
 msgid "Duration unavailable"
 msgstr "నిడివి అందుబాటులో లేదు"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ExtendedSettingsButton.qml:32
-msgid "Audio effects"
-msgstr "ఆడియో ప్రభావాలు"
+#: modules/gui/qt/player/qml/controlbarcontrols/Fallback.qml:48
+msgid ""
+"WIDGET\n"
+"NOT\n"
+"FOUND"
+msgstr ""
+"విడ్జెట్\n"
+"కనబడ\n"
+"లేదు"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/FavoriteButton.qml:21
 msgid "Available for items in your library"
@@ -7119,13 +7104,9 @@ msgstr "ఫ్రేమ్ రేటు అందుబాటులో లేద
 msgid "Exit Fullscreen"
 msgstr "పూర్తితెర నుండి నిష్క్రమించు"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:9
+#: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"
 msgstr "HDR అవుట్‌పుట్"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/LangButton.qml:54
-msgid "Languages and tracks"
-msgstr "భాషలు మరియు ట్రాక్‌లు"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/LoopButton.qml:29
 msgid "Repeat one"
@@ -7143,53 +7124,63 @@ msgstr "1x"
 msgid "Play Queue (%1/%2)"
 msgstr "ప్రదర్శన వరుస (%1/%2)"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:31
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:32
 msgid "Casting to %1"
 msgstr "%1కు ప్రసారం చేస్తోంది"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:99
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:100
 msgid "Cast to"
 msgstr "ప్రసారం చేయి"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:124
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:125
 msgid "This computer"
 msgstr "ఈ కంప్యూటర్"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:152
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:154
 msgid "Not playing: choose it to try again"
 msgstr "ఆడటం లేదు: మళ్ళీ ప్రయత్నించడానికి దీన్ని ఎంచుకోండి"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:154
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:156
 msgid "Connecting…"
 msgstr "అనుసంధానిస్తోంది…"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:155
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:157
 msgid "Sound only"
 msgstr "ధ్వని మాత్రమే"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:174
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:180
+msgid "Show %1 hidden device"
+msgid_plural "Show %1 hidden devices"
+msgstr[0] "దాచిన %1 పరికరాన్ని చూపించు"
+msgstr[1] "దాచిన %1 పరికరాలను చూపించు"
+
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:193
 msgid "Looking for TVs and Chromecasts on your network…"
 msgstr "మీ నెట్‌వర్క్‌లో TVలు మరియు Chromecastల కోసం వెతుకుతోంది…"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:175
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:194
 msgid ""
 "No device found. Turn your TV or Chromecast on, on the same network as this "
 "computer."
 msgstr "పరికరం ఏదీ కనబడలేదు. ఈ కంప్యూటర్ ఉన్న నెట్‌వర్క్‌లోనే మీ TV లేదా Chromecastను ఆన్ చేయండి."
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:189
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:208
 msgid "Show the video here too"
 msgstr "వీడియోను ఇక్కడ కూడా చూపించు"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:235
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:254
 msgid "With a Chromecast, the video plays only there."
 msgstr "Chromecastతో, వీడియో అక్కడ మాత్రమే ఆడుతుంది."
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:246
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:265
 msgid "The subtitles shown go to the TV with the picture."
 msgstr "చూపిన ఉపశీర్షికలు చిత్రంతో పాటు TVకి వెళ్తాయి."
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:265
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:282
+msgid "Hide this device"
+msgstr "ఈ పరికరాన్ని దాచు"
+
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:314
 msgid "playing here"
 msgstr "ఇక్కడ ఆడుతోంది"
 
@@ -7213,7 +7204,7 @@ msgstr "10 సెకన్లు ముందుకు"
 msgid "Forward 15 seconds"
 msgstr "15 సెకన్లు ముందుకు"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/VolumeWidget.qml:351
+#: modules/gui/qt/player/qml/controlbarcontrols/VolumeWidget.qml:345
 msgid "%1 %"
 msgstr "%1 %"
 
@@ -7233,31 +7224,31 @@ msgstr "ఆడుతోంది"
 msgid "Media cover"
 msgstr "మాధ్యమ ముఖచిత్రం"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:192
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:194
 msgid "No items"
 msgstr "అంశాలు లేవు"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:263
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:284
 msgid "Remove selected items"
 msgstr "ఎంచుకున్న అంశాలను తీసివేయి"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:274
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:300
 msgid "Add files to the queue"
 msgstr "వరుసకు దస్త్రాలను జతచేయి"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:601
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:629
 msgid "No results"
 msgstr "ఫలితాలు లేవు"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:602
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:630
 msgid "No content yet"
 msgstr "ఇంకా విషయం లేదు"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:618
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:646
 msgid "Drag & Drop some content here!"
 msgstr "ఇక్కడ కొంత విషయాన్ని లాగి వదలండి!"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:683
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:711
 msgid "Play queue"
 msgstr "ప్రదర్శన వరుస"
 
@@ -7265,16 +7256,16 @@ msgstr "ప్రదర్శన వరుస"
 msgid "%1 elements, %2"
 msgstr "%1 అంశాలు, %2"
 
-#: modules/gui/qt/qt.cpp:172
+#: modules/gui/qt/qt.cpp:171
 msgid "Select the initial preferences view"
 msgstr "ప్రారంభ ప్రాధాన్యతల వీక్షణను ఎంచుకో"
 
-#: modules/gui/qt/qt.cpp:173
+#: modules/gui/qt/qt.cpp:172
 msgid ""
 "Select which preferences view to show upon opening the preferences dialog."
 msgstr "ప్రాధాన్యతల డైలాగ్ తెరిచినప్పుడు ఏ ప్రాధాన్యతల వీక్షణను చూపించాలో ఎంచుకోండి."
 
-#: modules/gui/qt/qt.cpp:197
+#: modules/gui/qt/qt.cpp:196
 msgid ""
 "Show a notification popup with the artist and track name when the current "
 "play queue item changes, when VLC is minimized or hidden."
@@ -7282,7 +7273,7 @@ msgstr ""
 "VLC కనిష్ఠీకరించబడినప్పుడు లేదా దాచబడినప్పుడు, ప్రస్తుత ప్రదర్శన వరుస అంశం మారితే కళాకారుడు మరియు "
 "ట్రాక్ పేరుతో గమనింపు పాప్అప్‌ను చూపించు."
 
-#: modules/gui/qt/qt.cpp:201
+#: modules/gui/qt/qt.cpp:200
 msgid ""
 "Sets the windows opacity between 0.1 and 1 for main interface, play queue "
 "and extended panel. This option only works with Windows and X11 with "
@@ -7291,7 +7282,7 @@ msgstr ""
 "ప్రధాన అంతరవర్తి, ప్రదర్శన వరుస మరియు విస్తృత ప్యానెల్ కోసం కిటికీల అపారదర్శకతను 0.1 మరియు 1 మధ్య "
 "అమరుస్తుంది. ఈ ఐచ్ఛికం Windows మరియు composite పొడిగింతలు ఉన్న X11తో మాత్రమే పనిచేస్తుంది."
 
-#: modules/gui/qt/qt.cpp:207
+#: modules/gui/qt/qt.cpp:206
 msgid ""
 "Sets the fullscreen controller opacity between 0.1 and 1 for main interface, "
 "play queue and extended panel. This option only works with Windows and X11 "
@@ -7301,11 +7292,11 @@ msgstr ""
 "మరియు 1 మధ్య అమరుస్తుంది. ఈ ఐచ్ఛికం Windows మరియు composite పొడిగింతలు ఉన్న X11తో మాత్రమే "
 "పనిచేస్తుంది."
 
-#: modules/gui/qt/qt.cpp:212
+#: modules/gui/qt/qt.cpp:211
 msgid "Initial user scale factor for the interface, between 0.3 and 3.0"
 msgstr "అంతరవర్తి కోసం ప్రారంభ వాడుకరి స్కేల్ గుణకం, 0.3 మరియు 3.0 మధ్య"
 
-#: modules/gui/qt/qt.cpp:215
+#: modules/gui/qt/qt.cpp:214
 msgid ""
 "Show the errors of VLC at the bottom of the window, and ask before removing "
 "media from a playlist or from the play queue, or deleting playlists. Off, "
@@ -7317,11 +7308,11 @@ msgstr ""
 "ఉంచబడతాయి మరియు ఈ తీసివేతలు వెంటనే జరుగుతాయి; డిస్క్ నుండి దస్త్రాన్ని తొలగించడం ఎల్లప్పుడూ "
 "నిర్ధారించబడుతుంది."
 
-#: modules/gui/qt/qt.cpp:225
+#: modules/gui/qt/qt.cpp:224
 msgid "set the options for qml debugger"
 msgstr "qml డీబగ్గర్ కోసం ఐచ్ఛికాలను అమర్చు"
 
-#: modules/gui/qt/qt.cpp:226
+#: modules/gui/qt/qt.cpp:225
 msgid ""
 "set the options for qml debugger (see http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
@@ -7329,7 +7320,7 @@ msgstr ""
 "qml డీబగ్గర్ కోసం ఐచ్ఛికాలను అమర్చు (http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications చూడండి)"
 
-#: modules/gui/qt/qt.cpp:246
+#: modules/gui/qt/qt.cpp:245
 msgid ""
 "Show the playback controls in fullscreen when the mouse moves. Off, only the "
 "keyboard shows them (the I key). The skins read it for their fullscreen "
@@ -7338,7 +7329,7 @@ msgstr ""
 "మౌస్ కదిలినప్పుడు పూర్తితెరలో ప్లేబ్యాక్ నియంత్రణలను చూపించు. ఆపివేస్తే, కీబోర్డు మాత్రమే వాటిని చూపుతుంది "
 "(I మీట). తొడుగులు కూడా తమ పూర్తితెర నియంత్రకం కోసం దీన్ని చదువుతాయి."
 
-#: modules/gui/qt/qt.cpp:262
+#: modules/gui/qt/qt.cpp:261
 msgid ""
 "Display the cover art of the audio playing in the player (the cone in the "
 "compact view). Off, a plain picture takes its place, which also prevents "
@@ -7347,7 +7338,7 @@ msgstr ""
 "ప్రదర్శకంలో ఆడుతున్న ఆడియో యొక్క ముఖచిత్రాన్ని ప్రదర్శించు (సంక్షిప్త వీక్షణలో కోన్). ఆపివేస్తే, దాని "
 "స్థానంలో సాదా చిత్రం వస్తుంది, ఇది తెరపై చిత్రం ముద్రపడిపోవడాన్ని కూడా నివారిస్తుంది."
 
-#: modules/gui/qt/qt.cpp:286
+#: modules/gui/qt/qt.cpp:285
 msgid ""
 "This option allows the interface to be shown and raised automatically when a "
 "video/audio playback starts, or never."
@@ -7355,11 +7346,11 @@ msgstr ""
 "వీడియో/ఆడియో ప్లేబ్యాక్ ప్రారంభమైనప్పుడు అంతరవర్తి స్వయంచాలకంగా చూపబడి ముందుకు రావడానికి, లేదా ఎప్పటికీ "
 "రాకుండా ఉండటానికి ఈ ఐచ్ఛికం అనుమతిస్తుంది."
 
-#: modules/gui/qt/qt.cpp:289
+#: modules/gui/qt/qt.cpp:288
 msgid "Enable window titlebar"
 msgstr "కిటికీ శీర్షిక పట్టీని చేతనపరుచు"
 
-#: modules/gui/qt/qt.cpp:290
+#: modules/gui/qt/qt.cpp:289
 msgid ""
 "This option enables the title bar. Disabling it will remove the titlebar and "
 "move window buttons within the interface (Client Side Decoration)"
@@ -7367,31 +7358,31 @@ msgstr ""
 "ఈ ఐచ్ఛికం శీర్షిక పట్టీని చేతనపరుస్తుంది. దీన్ని అచేతనపరిస్తే శీర్షిక పట్టీ తీసివేయబడి కిటికీ బొత్తాలు "
 "అంతరవర్తి లోపలికి జరుగుతాయి (క్లయింట్-వైపు అలంకరణ)"
 
-#: modules/gui/qt/qt.cpp:294
+#: modules/gui/qt/qt.cpp:293
 msgid "Show the menu bar"
 msgstr "మెనూపట్టీని చూపించు"
 
-#: modules/gui/qt/qt.cpp:295
+#: modules/gui/qt/qt.cpp:294
 msgid "This option displays the classic menu bar"
 msgstr "ఈ ఐచ్ఛికం సంప్రదాయ మెనూపట్టీని ప్రదర్శిస్తుంది"
 
-#: modules/gui/qt/qt.cpp:297
+#: modules/gui/qt/qt.cpp:296
 msgid "Pin video controls"
 msgstr "వీడియో నియంత్రణలను స్థిరపరచు"
 
-#: modules/gui/qt/qt.cpp:298
+#: modules/gui/qt/qt.cpp:297
 msgid "Place video controls above and below the video instead of above"
 msgstr "వీడియో నియంత్రణలను వీడియో పైన మాత్రమే కాకుండా వీడియో పైన మరియు కింద ఉంచు"
 
-#: modules/gui/qt/qt.cpp:301
+#: modules/gui/qt/qt.cpp:300
 msgid "Show the frame at the hovered position above the seek bar"
 msgstr "జరుపు పట్టీపై కర్సర్ ఉన్న స్థానంలోని ఫ్రేమ్‌ను దాని పైన చూపించు"
 
-#: modules/gui/qt/qt.cpp:305
+#: modules/gui/qt/qt.cpp:304
 msgid "Select Qt video integration backend"
 msgstr "Qt వీడియో సమీకరణ బ్యాకెండ్‌ను ఎంచుకో"
 
-#: modules/gui/qt/qt.cpp:306
+#: modules/gui/qt/qt.cpp:305
 msgid ""
 "Select Qt video integration backend. Use with care, the interface may not "
 "start if an incompatible compositor is selected"
@@ -7399,11 +7390,11 @@ msgstr ""
 "Qt వీడియో సమీకరణ బ్యాకెండ్‌ను ఎంచుకోండి. జాగ్రత్తగా వాడండి, అననుకూల కంపోజిటర్‌ను ఎంచుకుంటే అంతరవర్తి "
 "ప్రారంభం కాకపోవచ్చు"
 
-#: modules/gui/qt/qt.cpp:308
+#: modules/gui/qt/qt.cpp:307
 msgid "Use smooth scrolling in Flickable based views"
 msgstr "Flickable ఆధారిత వీక్షణలలో సాఫీ స్క్రోలింగ్‌ను వాడు"
 
-#: modules/gui/qt/qt.cpp:309
+#: modules/gui/qt/qt.cpp:308
 msgid ""
 "Deactivating this option will disable smooth scrolling in Flickable based "
 "views (such as the Play Queue). This option is only respected with a scroll "
@@ -7413,19 +7404,19 @@ msgstr ""
 "అచేతనమవుతుంది. ఈ ఐచ్ఛికం స్క్రోల్ హ్యాండ్లర్‌తో మాత్రమే పాటించబడుతుంది, `qt-use-scroll-handler` "
 "ఐచ్ఛికాన్ని చూడండి."
 
-#: modules/gui/qt/qt.cpp:312
+#: modules/gui/qt/qt.cpp:311
 msgid "Use Kirigami scroll handler for Flickable based views"
 msgstr "Flickable ఆధారిత వీక్షణల కోసం Kirigami స్క్రోల్ హ్యాండ్లర్‌ను వాడు"
 
-#: modules/gui/qt/qt.cpp:313
+#: modules/gui/qt/qt.cpp:312
 msgid "Using Kirigami scroll handler may improve scrolling behavior."
 msgstr "Kirigami స్క్రోల్ హ్యాండ్లర్‌ను వాడటం స్క్రోలింగ్ ప్రవర్తనను మెరుగుపరచవచ్చు."
 
-#: modules/gui/qt/qt.cpp:315
+#: modules/gui/qt/qt.cpp:314
 msgid "Safe area for the user interface"
 msgstr "వాడుకరి అంతరవర్తి కోసం సురక్షిత ప్రాంతం"
 
-#: modules/gui/qt/qt.cpp:316
+#: modules/gui/qt/qt.cpp:315
 msgid ""
 "Sets the safe area percentage between 0.0 and 100 when you want to ensure "
 "the visibility of the user interface on a constrained viewport"
@@ -7433,19 +7424,19 @@ msgstr ""
 "పరిమిత వీక్షణ ప్రాంతంలో వాడుకరి అంతరవర్తి కనిపించేలా చూడాలనుకున్నప్పుడు సురక్షిత ప్రాంత శాతాన్ని 0.0 "
 "మరియు 100 మధ్య అమరుస్తుంది"
 
-#: modules/gui/qt/qt.cpp:320
+#: modules/gui/qt/qt.cpp:319
 msgid "Print Qt's important internal messages"
 msgstr "Qt యొక్క ముఖ్యమైన అంతర్గత సందేశాలను ముద్రించు"
 
-#: modules/gui/qt/qt.cpp:321
+#: modules/gui/qt/qt.cpp:320
 msgid "Enable Qt's all own messaging categories except the debug category."
 msgstr "డీబగ్ వర్గం తప్ప Qt యొక్క అన్ని సొంత సందేశ వర్గాలను చేతనపరుచు."
 
-#: modules/gui/qt/qt.cpp:323
+#: modules/gui/qt/qt.cpp:322
 msgid "Hide the window on close"
 msgstr "మూసినప్పుడు కిటికీని దాచు"
 
-#: modules/gui/qt/qt.cpp:324
+#: modules/gui/qt/qt.cpp:323
 msgid ""
 "Instead of closing the application, hide the window. This setting is only "
 "applicable when system tray icon is enabled."
@@ -7453,11 +7444,11 @@ msgstr ""
 "అనువర్తనాన్ని మూసివేసే బదులు, కిటికీని దాచు. వ్యవస్థ ట్రే ప్రతీక చేతనమై ఉన్నప్పుడు మాత్రమే ఈ అమరిక "
 "వర్తిస్తుంది."
 
-#: modules/gui/qt/qt.cpp:326
+#: modules/gui/qt/qt.cpp:325
 msgid "Enable backdrop blur filter for the main window if possible"
 msgstr "సాధ్యమైతే ప్రధాన కిటికీ కోసం నేపథ్య మసక వడబోతను చేతనపరుచు"
 
-#: modules/gui/qt/qt.cpp:327
+#: modules/gui/qt/qt.cpp:326
 msgid ""
 "If backdrop blur filter is available, use translucency in the backgrounds of "
 "certain parts of the user interface instead of a solid color. This setting "
@@ -7466,11 +7457,11 @@ msgstr ""
 "నేపథ్య మసక వడబోత అందుబాటులో ఉంటే, వాడుకరి అంతరవర్తిలోని కొన్ని భాగాల నేపథ్యాలలో ఘన రంగుకు బదులుగా "
 "అర్ధపారదర్శకతను వాడు. ఈ అమరిక పాఠ్యం చదవడాన్ని కష్టతరం చేస్తుంది."
 
-#: modules/gui/qt/qt.cpp:330
+#: modules/gui/qt/qt.cpp:329
 msgid "Enable picture-in-picture (PiP) mode"
 msgstr "చిత్రంలో-చిత్రం (PiP) విధాన్ని చేతనపరుచు"
 
-#: modules/gui/qt/qt.cpp:331
+#: modules/gui/qt/qt.cpp:330
 msgid ""
 "Picture-in-picture mode allows playing video contained in a smaller area so "
 "that the interface remains usable."
@@ -7478,7 +7469,7 @@ msgstr ""
 "చిత్రంలో-చిత్రం విధం అంతరవర్తి వాడుకకు వీలుగా ఉండేలా వీడియోను ఒక చిన్న ప్రాంతంలో ఆడించడానికి "
 "అనుమతిస్తుంది."
 
-#: modules/gui/qt/qt.cpp:334
+#: modules/gui/qt/qt.cpp:333
 msgid ""
 "Adjusts the accent color, special values are 'default' and 'system' "
 "(requires Qt 6.6) ."
@@ -7486,22 +7477,22 @@ msgstr ""
 "యాస రంగును సర్దుబాటు చేస్తుంది, ప్రత్యేక విలువలు 'default' మరియు 'system' (Qt 6.6 "
 "అవసరం) ."
 
-#: modules/gui/qt/qt.cpp:435
+#: modules/gui/qt/qt.cpp:434
 msgid "Check for VLC Redesign updates"
 msgstr "VLC Redesign నవీకరణల కోసం తనిఖీ చేయి"
 
-#: modules/gui/qt/qt.cpp:436
+#: modules/gui/qt/qt.cpp:435
 msgid ""
 "Look for a new release of VLC Redesign on GitHub at startup, at most once a "
 "day."
 msgstr ""
 "ప్రారంభంలో, రోజుకు గరిష్ఠంగా ఒకసారి, GitHubలో VLC Redesign యొక్క కొత్త విడుదల కోసం వెతుకు."
 
-#: modules/gui/qt/qt.cpp:440
+#: modules/gui/qt/qt.cpp:439
 msgid "Resume at"
 msgstr "ఇక్కడి నుండి కొనసాగించు"
 
-#: modules/gui/qt/qt.cpp:441
+#: modules/gui/qt/qt.cpp:440
 msgid ""
 "Seconds into the media of the command line where playback continues, after "
 "an update."
@@ -7536,55 +7527,61 @@ msgstr "%1గం%2"
 msgid "%1ms"
 msgstr "%1ms"
 
-#: modules/gui/qt/util/redesign_updater.cpp:400
+#: modules/gui/qt/util/redesign_updater.cpp:159
+msgid ""
+"The update isn't signed by the publisher of this copy (%1), so it wasn't "
+"used."
+msgstr "ఈ నవీకరణ ఈ ప్రతి యొక్క ప్రచురణకర్త (%1) సంతకం చేసినది కాదు, కాబట్టి అది ఉపయోగించబడలేదు."
+
+#: modules/gui/qt/util/redesign_updater.cpp:515
 msgid "This build cannot check for updates."
 msgstr "ఈ బిల్డ్ నవీకరణల కోసం తనిఖీ చేయలేదు."
 
-#: modules/gui/qt/util/redesign_updater.cpp:414
+#: modules/gui/qt/util/redesign_updater.cpp:529
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "GitHubను చేరుకోలేకపోయింది. మీ అనుసంధానాన్ని తనిఖీ చేసి మళ్ళీ ప్రయత్నించండి."
 
-#: modules/gui/qt/util/redesign_updater.cpp:431
+#: modules/gui/qt/util/redesign_updater.cpp:546
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "GitHub అనూహ్య స్పందనను పంపింది (%1)."
 
-#: modules/gui/qt/util/redesign_updater.cpp:537
+#: modules/gui/qt/util/redesign_updater.cpp:652
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr "నవీకరణ యొక్క చెక్‌సమ్ లేదు; బదులుగా దాన్ని విడుదల పేజీ నుండి దింపుకోండి."
 
-#: modules/gui/qt/util/redesign_updater.cpp:584
+#: modules/gui/qt/util/redesign_updater.cpp:699
 msgid "The download failed. Check your connection and try again."
 msgstr "దింపుకోలు విఫలమైంది. మీ అనుసంధానాన్ని తనిఖీ చేసి మళ్ళీ ప్రయత్నించండి."
 
-#: modules/gui/qt/util/redesign_updater.cpp:597
+#: modules/gui/qt/util/redesign_updater.cpp:712
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "నవీకరణ దాని చెక్‌సమ్‌కు సరిపోలలేదు, కాబట్టి అది వాడబడలేదు."
 
-#: modules/gui/qt/util/redesign_updater.cpp:619
+#: modules/gui/qt/util/redesign_updater.cpp:743
 msgid "The update isn't in a format this version knows."
 msgstr "నవీకరణ ఈ రూపాంతరానికి తెలిసిన ఆకృతిలో లేదు."
 
-#: modules/gui/qt/util/redesign_updater.cpp:622
-#: modules/gui/qt/util/redesign_updater.cpp:646
-#: modules/gui/qt/util/redesign_updater.cpp:657
-#: modules/gui/qt/util/redesign_updater.cpp:663
+#: modules/gui/qt/util/redesign_updater.cpp:746
+#: modules/gui/qt/util/redesign_updater.cpp:770
+#: modules/gui/qt/util/redesign_updater.cpp:781
+#: modules/gui/qt/util/redesign_updater.cpp:787
 msgid "The update is damaged."
 msgstr "నవీకరణ పాడైంది."
 
-#: modules/gui/qt/util/redesign_updater.cpp:627
+#: modules/gui/qt/util/redesign_updater.cpp:751
 msgid "The update isn't for this version."
 msgstr "ఈ నవీకరణ ఈ రూపాంతరం కోసం కాదు."
 
-#: modules/gui/qt/util/redesign_updater.cpp:636
-#: modules/gui/qt/util/redesign_updater.cpp:673
-#: modules/gui/qt/util/redesign_updater.cpp:682
-#: modules/gui/qt/util/redesign_updater.cpp:686
-#: modules/gui/qt/util/redesign_updater.cpp:690
+#: modules/gui/qt/util/redesign_updater.cpp:760
+#: modules/gui/qt/util/redesign_updater.cpp:797
+#: modules/gui/qt/util/redesign_updater.cpp:806
+#: modules/gui/qt/util/redesign_updater.cpp:810
+#: modules/gui/qt/util/redesign_updater.cpp:814
 msgid "The update can't be written in %1."
 msgstr "నవీకరణను %1లో రాయలేము."
 
-#: modules/gui/qt/util/redesign_updater.cpp:638
+#: modules/gui/qt/util/redesign_updater.cpp:762
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -7592,95 +7589,95 @@ msgstr ""
 "స్థాపించినప్పటి నుండి VLC Redesign యొక్క ఒక దస్త్రం మార్చబడింది, కాబట్టి చిన్న నవీకరణను వాడలేము: "
 "బదులుగా స్థాపకంతో నవీకరించండి."
 
-#: modules/gui/qt/util/redesign_updater.cpp:668
+#: modules/gui/qt/util/redesign_updater.cpp:792
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr "నవీకరణ పాడైంది: ఒక దస్త్రం దాని చెక్‌సమ్‌కు సరిపోలడం లేదు."
 
-#: modules/gui/qt/util/redesign_updater.cpp:793
+#: modules/gui/qt/util/redesign_updater.cpp:917
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr "నవీకరణను ప్రారంభించలేకపోయింది. తదుపరిసారి మళ్ళీ ప్రయత్నించబడుతుంది."
 
-#: modules/gui/qt/util/redesign_updater.cpp:820
+#: modules/gui/qt/util/redesign_updater.cpp:944
 msgid "The download failed. Try again, or download it from the release page."
 msgstr "దింపుకోలు విఫలమైంది. మళ్ళీ ప్రయత్నించండి, లేదా విడుదల పేజీ నుండి దింపుకోండి."
 
-#: modules/gui/qt/util/redesign_updater.cpp:833
+#: modules/gui/qt/util/redesign_updater.cpp:957
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr "దింపుకున్న స్థాపకం దాని చెక్‌సమ్‌కు సరిపోలలేదు, కాబట్టి అది నడపబడలేదు."
 
-#: modules/gui/qt/util/redesign_updater.cpp:842
+#: modules/gui/qt/util/redesign_updater.cpp:966
 msgid "The installer couldn't be saved to %1."
 msgstr "స్థాపకాన్ని %1కు భద్రపరచలేకపోయింది."
 
-#: modules/gui/qt/util/redesign_updater.cpp:870
+#: modules/gui/qt/util/redesign_updater.cpp:1000
 msgid "The installer couldn't be started."
 msgstr "స్థాపకాన్ని ప్రారంభించలేకపోయింది."
 
-#: modules/gui/qt/util/renderer_manager.cpp:867
+#: modules/gui/qt/util/renderer_manager.cpp:886
 msgid ""
 "%1 doesn't answer. Check that it's on, and on the same network as this "
 "computer."
 msgstr "%1 స్పందించడం లేదు. అది ఆన్‌లో ఉందో, ఈ కంప్యూటర్ ఉన్న నెట్‌వర్క్‌లోనే ఉందో తనిఖీ చేయండి."
 
-#: modules/gui/qt/util/renderer_manager.cpp:870
+#: modules/gui/qt/util/renderer_manager.cpp:889
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the video."
 msgstr ""
 "వీడియోను చదవడానికి %1 ఈ కంప్యూటర్‌కు అనుసంధానం కావడానికి Windows Firewall అనుమతించడం లేదు."
 
-#: modules/gui/qt/util/renderer_manager.cpp:871
+#: modules/gui/qt/util/renderer_manager.cpp:890
 msgid "%1 couldn't read the video from this computer."
 msgstr "%1 ఈ కంప్యూటర్ నుండి వీడియోను చదవలేకపోయింది."
 
-#: modules/gui/qt/util/renderer_manager.cpp:873
+#: modules/gui/qt/util/renderer_manager.cpp:892
 msgid "%1 refused to play this video."
 msgstr "%1 ఈ వీడియోను ఆడించడానికి నిరాకరించింది."
 
-#: modules/gui/qt/util/renderer_manager.cpp:875
+#: modules/gui/qt/util/renderer_manager.cpp:894
 msgid "%1 stopped playing."
 msgstr "%1 ఆడటం ఆపివేసింది."
 
-#: modules/gui/qt/util/renderer_manager.cpp:877
+#: modules/gui/qt/util/renderer_manager.cpp:896
 msgid "%1 is playing something else now."
 msgstr "%1 ఇప్పుడు వేరేదాన్ని ఆడిస్తోంది."
 
-#: modules/gui/qt/util/renderer_manager.cpp:878
+#: modules/gui/qt/util/renderer_manager.cpp:897
 msgid "%1 couldn't play the video."
 msgstr "%1 వీడియోను ఆడించలేకపోయింది."
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:52
+#: modules/gui/qt/util/subtitle_preferences.cpp:59
 msgid "Asturian"
 msgstr "అస్టూరియన్"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:54
+#: modules/gui/qt/util/subtitle_preferences.cpp:61
 msgid "Central Kurdish"
 msgstr "మధ్య కుర్దిష్"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:55
+#: modules/gui/qt/util/subtitle_preferences.cpp:62
 msgid "Montenegrin"
 msgstr "మాంటెనెగ్రిన్"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:59
+#: modules/gui/qt/util/subtitle_preferences.cpp:66
 msgid "Dari"
 msgstr "దరీ"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:61
+#: modules/gui/qt/util/subtitle_preferences.cpp:68
 msgid "Cantonese"
 msgstr "కాంటొనీస్"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:62
+#: modules/gui/qt/util/subtitle_preferences.cpp:69
 msgid "Standard Moroccan Tamazight"
 msgstr "ప్రామాణిక మొరాకన్ టమజైట్"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:63
+#: modules/gui/qt/util/subtitle_preferences.cpp:70
 msgid "Portuguese (Brazil)"
 msgstr "పోర్చుగీస్ (బ్రెజిల్)"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:64
+#: modules/gui/qt/util/subtitle_preferences.cpp:71
 msgid "Chinese (Traditional)"
 msgstr "చైనీస్ (సాంప్రదాయ)"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:65
+#: modules/gui/qt/util/subtitle_preferences.cpp:72
 msgid "Spanish (Latin America)"
 msgstr "స్పానిష్ (లాటిన్ అమెరికా)"
 
@@ -7700,7 +7697,7 @@ msgstr[0] "%1 ఎంచుకోబడింది"
 msgstr[1] "%1 ఎంచుకోబడ్డాయి"
 
 #: modules/gui/qt/widgets/qml/GridSortFilterControls.qml:30
-#: modules/gui/qt/widgets/qml/LibraryHeader.qml:482
+#: modules/gui/qt/widgets/qml/LibraryHeader.qml:483
 msgid "List/Grid"
 msgstr "జాబితా/గ్రిడ్"
 
@@ -7774,7 +7771,7 @@ msgstr "డిస్క్ సంఖ్య అవరోహణ"
 
 #: modules/lua/vlc.c:51
 msgid "Enable Lua plugins"
-msgstr ""
+msgstr "Lua ప్లగిన్‌లను చేతనపరుచు"
 
 #: modules/misc/gnutls.c:757
 msgid "Secure 128-bit (or higher)"
@@ -7784,35 +7781,35 @@ msgstr "సురక్షిత 128-బిట్ (లేదా ఎక్కు�
 msgid "Secure 256-bit (exclude 128-bit ciphers)"
 msgstr "సురక్షిత 256-బిట్ (128-బిట్ సైఫర్లను మినహాయించు)"
 
-#: modules/misc/medialibrary/medialibrary.cpp:469
+#: modules/misc/medialibrary/medialibrary.cpp:471
 msgid "Recover"
 msgstr "పునరుద్ధరించు"
 
-#: modules/misc/medialibrary/medialibrary.cpp:470
+#: modules/misc/medialibrary/medialibrary.cpp:472
 msgid "Recreate"
 msgstr "మళ్ళీ సృష్టించు"
 
-#: modules/misc/medialibrary/medialibrary.cpp:470
+#: modules/misc/medialibrary/medialibrary.cpp:472
 msgid "Media database corrupted"
 msgstr "మాధ్యమ డేటాబేస్ పాడైంది"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2728
+#: modules/misc/medialibrary/medialibrary.cpp:2750
 msgid "Folders discovered by the media library"
 msgstr "మాధ్యమ లైబ్రరీ కనుగొన్న సంచయాలు"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2729
+#: modules/misc/medialibrary/medialibrary.cpp:2751
 msgid "Semicolon separated list of folders to discover media from"
 msgstr "మాధ్యమాన్ని కనుగొనాల్సిన సంచయాల సెమీకోలన్‌తో వేరుచేసిన జాబితా"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2732
+#: modules/misc/medialibrary/medialibrary.cpp:2754
 msgid "Extra verbose media library logs"
 msgstr "అదనపు వివరణాత్మక మాధ్యమ లైబ్రరీ లాగ్‌లు"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2735
+#: modules/misc/medialibrary/medialibrary.cpp:2757
 msgid "media library"
 msgstr "మాధ్యమ లైబ్రరీ"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2736
+#: modules/misc/medialibrary/medialibrary.cpp:2758
 msgid "Organize your media"
 msgstr "మీ మాధ్యమాన్ని వ్యవస్థీకరించండి"
 
@@ -7820,7 +7817,7 @@ msgstr "మీ మాధ్యమాన్ని వ్యవస్థీకర�
 msgid ""
 "Sets PID to the ID of the incoming ES. This is for use with --ts-es-id-pid, "
 "and allows having the same PIDs in the input and output streams."
-msgstr ""
+msgstr "PID ను వచ్చే ES యొక్క ఐడీకి అమర్చుతుంది. ఇది --ts-es-id-pid తో ఉపయోగించడానికి, మరియు ఇన్‌పుట్, అవుట్‌పుట్ ప్రవాహాలలో ఒకే PID లు ఉండేలా అనుమతిస్తుంది."
 
 #: modules/services_discovery/upnp.cpp:66
 msgid ""
@@ -7890,18 +7887,18 @@ msgstr "UPnP/DLNA డీమక్స్ వడబోత"
 msgid "Universal Plug'n'Play Server"
 msgstr "Universal Plug'n'Play సేవకం"
 
-#: modules/stream_out/chromecast/cast.cpp:1189
+#: modules/stream_out/chromecast/cast.cpp:1191
 #: modules/stream_out/dlna/dlna.cpp:690
 msgid "OK, don't warn me again"
 msgstr "సరే, మళ్ళీ హెచ్చరించవద్దు"
 
-#: modules/stream_out/chromecast/cast.cpp:1190
+#: modules/stream_out/chromecast/cast.cpp:1192
 #: modules/stream_out/dlna/dlna.cpp:691
 #: modules/stream_out/renderer_common.hpp:35
 msgid "Performance warning"
 msgstr "పనితీరు హెచ్చరిక"
 
-#: modules/stream_out/chromecast/cast.cpp:1191
+#: modules/stream_out/chromecast/cast.cpp:1193
 #: modules/stream_out/dlna/dlna.cpp:692
 msgid ""
 "Casting this video requires conversion. This conversion can use all the "
@@ -7912,39 +7909,39 @@ msgstr ""
 
 #: modules/stream_out/renderer_common.hpp:36
 msgid "Display a performance warning when transcoding"
-msgstr ""
+msgstr "ట్రాన్స్‌కోడ్ చేస్తున్నప్పుడు పనితీరు హెచ్చరికను చూపించు"
 
 #: modules/stream_out/renderer_common.hpp:37
 msgid "Enable Audio passthrough"
-msgstr ""
+msgstr "ఆడియో పాస్‌త్రూను చేతనపరుచు"
 
 #: modules/stream_out/renderer_common.hpp:38
 msgid "Disable if your receiver does not support Dolby®."
-msgstr ""
+msgstr "మీ రిసీవర్ Dolby® కు మద్దతు ఇవ్వకపోతే దీన్ని అచేతనపరుచు."
 
 #: modules/stream_out/renderer_common.hpp:39
 msgid "Conversion quality"
-msgstr ""
+msgstr "మార్పిడి నాణ్యత"
 
 #: modules/stream_out/renderer_common.hpp:40
 msgid "Change conversion speed or quality."
-msgstr ""
+msgstr "మార్పిడి వేగాన్ని లేదా నాణ్యతను మార్చు."
 
 #: modules/stream_out/renderer_common.hpp:63
 msgid "High (high quality and high bandwidth)"
-msgstr ""
+msgstr "అధికం (అధిక నాణ్యత, అధిక బ్యాండ్‌విడ్త్)"
 
 #: modules/stream_out/renderer_common.hpp:64
 msgid "Medium (medium quality and medium bandwidth)"
-msgstr ""
+msgstr "మధ్యస్థం (మధ్యస్థ నాణ్యత, మధ్యస్థ బ్యాండ్‌విడ్త్)"
 
 #: modules/stream_out/renderer_common.hpp:65
 msgid "Low (low quality and low bandwidth)"
-msgstr ""
+msgstr "అల్పం (తక్కువ నాణ్యత, తక్కువ బ్యాండ్‌విడ్త్)"
 
 #: modules/stream_out/renderer_common.hpp:66
 msgid "Low CPU (low quality but high bandwidth)"
-msgstr ""
+msgstr "తక్కువ CPU (తక్కువ నాణ్యత, కానీ అధిక బ్యాండ్‌విడ్త్)"
 
 #: modules/text_renderer/freetype/freetype.c:77
 msgid ""
@@ -7955,83 +7952,74 @@ msgstr ""
 
 #: modules/text_renderer/freetype/freetype.c:91
 msgid "Cache size"
-msgstr ""
+msgstr "క్యాష్ పరిమాణం"
 
 #: modules/text_renderer/freetype/freetype.c:92
 msgid "Cache size in kBytes"
-msgstr ""
+msgstr "క్యాష్ పరిమాణం, kBytes లో"
 
 #: modules/text_renderer/freetype/freetype.c:101
 msgid "Blending Mode"
-msgstr ""
+msgstr "మిశ్రమ విధం"
 
 #: modules/text_renderer/freetype/freetype.c:102
 msgid "Blending mode for the font, can be transparent or overlay"
-msgstr ""
+msgstr "ఖతి కోసం మిశ్రమ విధం, పారదర్శకం లేదా పైపొర కావచ్చు"
 
 #: modules/video_filter/extract.c:55
 msgid ""
 "RGB component to extract, as an RGB hexadecimal mask. E.g. 0xFF0000 for red; "
 "0x00FF00 for green and 0x0000FF for blue."
-msgstr ""
+msgstr "వెలికితీయాల్సిన RGB భాగం, RGB షోడశాంశ ముసుగుగా. ఉదా. ఎరుపుకు 0xFF0000; ఆకుపచ్చకు 0x00FF00, నీలానికి 0x0000FF."
 
 #: modules/video_filter/gradient.c:64
 msgid "Keep color"
-msgstr ""
+msgstr "రంగును ఉంచు"
 
 #: modules/video_filter/gradient.c:65
 msgid "This will keep the colors, otherwise the image will be turned white."
-msgstr ""
+msgstr "ఇది రంగులను ఉంచుతుంది, లేకపోతే చిత్రం తెల్లగా మారుతుంది."
 
 #: modules/video_output/win32/direct3d11.cpp:72
 msgid "Video Upscaling Mode"
-msgstr ""
+msgstr "వీడియో అప్‌స్కేలింగ్ విధం"
 
 #: modules/video_output/win32/direct3d11.cpp:73
 msgid "Select the upscaling mode for video."
-msgstr ""
+msgstr "వీడియో కోసం అప్‌స్కేలింగ్ విధాన్ని ఎంచుకోండి."
 
 #: modules/video_output/win32/direct3d11.cpp:78
 msgid "Linear Sampler"
-msgstr ""
+msgstr "రేఖీయ శాంప్లర్"
 
 #: modules/video_output/win32/direct3d11.cpp:78
 msgid "Point Sampler"
-msgstr ""
+msgstr "పాయింట్ శాంప్లర్"
 
 #: modules/video_output/win32/direct3d11.cpp:78
 msgid "Video Processor"
-msgstr ""
+msgstr "వీడియో ప్రాసెసర్"
 
 #: modules/video_output/win32/direct3d11.cpp:78
 msgid "Super Resolution"
-msgstr ""
+msgstr "సూపర్ రిజల్యూషన్"
 
 #: modules/video_output/win32/direct3d11.cpp:80
 msgid "HDR Output Mode"
-msgstr ""
+msgstr "HDR అవుట్‌పుట్ విధం"
 
 #: modules/video_output/win32/direct3d11.cpp:81
 msgid "Use HDR output even if the source is SDR."
-msgstr ""
+msgstr "మూలం SDR అయినా HDR అవుట్‌పుట్‌ను ఉపయోగించు."
 
 #: modules/video_output/win32/direct3d11.cpp:86
 msgid "Never out HDR"
-msgstr ""
+msgstr "ఎప్పుడూ HDR అవుట్‌పుట్ వద్దు"
 
 #: modules/video_output/win32/direct3d11.cpp:86
 msgid "Always output HDR"
-msgstr ""
+msgstr "ఎల్లప్పుడూ HDR అవుట్‌పుట్"
 
 #: modules/video_output/win32/direct3d11.cpp:86
 msgid "Generate HDR from SDR"
-msgstr ""
-
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
-msgctxt "subtitle language"
-msgid "Often used"
-msgstr "తరచుగా వాడినది"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
-msgid "Snapshot height (0: proportional, -1: original)"
-msgstr "స్నాప్‌షాట్ ఎత్తు (0: నిష్పత్తి ప్రకారం, -1: అసలు)"
+msgstr "SDR నుండి HDR ను సృష్టించు"

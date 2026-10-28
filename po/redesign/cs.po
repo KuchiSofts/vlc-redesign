@@ -30,7 +30,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-25 11:16+0000\n"
+"POT-Creation-Date: 2026-10-28 10:16+0000\n"
 "PO-Revision-Date: 2017-09-23 19:54+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Czech (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -57,7 +57,7 @@ msgid "Media Library Settings"
 msgstr "Nastavení knihovny médií"
 
 #: src/audio_output/output.c:337
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1176
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
 msgid "Waveform"
 msgstr "Vlnový průběh"
 
@@ -196,17 +196,17 @@ msgstr "Médium nelze otevřít"
 
 #: src/interface/interface.c:100
 msgid "Upnp"
-msgstr ""
+msgstr "UPnP"
 
 #: src/libvlc-module.c:139
 msgid "Enable bit-exact mode (pure mode)"
-msgstr ""
+msgstr "Zapnout bitově přesný režim (čistý režim)"
 
 #: src/libvlc-module.c:141
 msgid ""
 "This will disable all audio filters, even audio converters. This may result "
 "on audio not working if the output can't adapt to the input format."
-msgstr ""
+msgstr "Vypne všechny zvukové filtry, dokonce i převodníky zvuku. Zvuk pak nemusí fungovat, pokud se výstup nedokáže přizpůsobit vstupnímu formátu."
 
 #: src/libvlc-module.c:275
 msgid ""
@@ -220,21 +220,21 @@ msgstr ""
 msgid ""
 "This requests a specific pixel width for the video window. By default (-1), "
 "the width is requested according to the zoom setting."
-msgstr ""
+msgstr "Požaduje určitou šířku okna videa v pixelech. Ve výchozím nastavení (-1) se šířka určuje podle nastavení přiblížení."
 
 #: src/libvlc-module.c:290
 msgid ""
 "This requests a specific pixel height for the video window. By default (-1), "
 "the height is requested according to the zoom setting."
-msgstr ""
+msgstr "Požaduje určitou výšku okna videa v pixelech. Ve výchozím nastavení (-1) se výška určuje podle nastavení přiblížení."
 
 #: src/libvlc-module.c:340
 msgid "360 videos projection mode"
-msgstr ""
+msgstr "Režim projekce videí 360°"
 
 #: src/libvlc-module.c:342
 msgid "Change the 360 video projection mode."
-msgstr ""
+msgstr "Změní režim projekce videí 360°."
 
 #: src/libvlc-module.c:391
 msgid "Deinterlace filter"
@@ -246,11 +246,11 @@ msgstr "Modul pro odstranění prokládání, který se má použít."
 
 #: src/libvlc-module.c:394
 msgid "Video Stereo 3D mode"
-msgstr ""
+msgstr "Režim stereo 3D videa"
 
 #: src/libvlc-module.c:395
 msgid "Set the Video Stereo 3D mode."
-msgstr ""
+msgstr "Nastaví režim stereo 3D videa."
 
 #: src/libvlc-module.c:403 src/video_output/vout_intf.c:168
 msgid "Left Only"
@@ -270,11 +270,11 @@ msgstr "V režimu celé obrazovky"
 
 #: src/libvlc-module.c:495
 msgid "Video fitting"
-msgstr ""
+msgstr "Přizpůsobení videa"
 
 #: src/libvlc-module.c:497
 msgid "This selects the dimension according to which the video will be scaled."
-msgstr ""
+msgstr "Vybere rozměr, podle kterého se bude video škálovat."
 
 #: src/libvlc-module.c:543
 msgid "Mouse Pause Policy"
@@ -286,8 +286,9 @@ msgstr "Určuje, jak se zachází s pozastavením po kliknutí myší"
 
 #: src/libvlc-module.c:552 modules/access/rist.h:85
 #: modules/audio_output/mmdevice.c:1621
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1174
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:181
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1195
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:23
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:141
 msgid "Disabled"
@@ -299,7 +300,7 @@ msgstr "Přepnout pozastavení ihned po uvolnění tlačítka myši"
 
 #: src/libvlc-module.c:596
 msgid "Clock master source"
-msgstr ""
+msgstr "Hlavní zdroj hodin"
 
 #: src/libvlc-module.c:597
 msgid ""
@@ -312,15 +313,15 @@ msgid ""
 "audio: if an audio track is playing, the audio output will drive the clock "
 "(Fallback to Monotonic if there is no audio tracks).\n"
 "monotonic: all tracks are driven by the monotonic clock of the system."
-msgstr ""
+msgstr "Vyberte hlavní zdroj hodin:\nauto: nejlepší zdroj hodin – vstup, pokud nelze řídit tempo přístupu (při přehrávání živého obsahu), jinak (nejčastěji) zvuk.\ninput: všechny stopy řídí hodiny vstupu pomocí aktualizací PCR z demultiplexeru. Obnoví se tak chování hodin z VLC 3.0, kdy se zvukové i video stopy mohou upravovat, aby dohnaly vstup.\naudio: pokud se přehrává zvuková stopa, hodiny řídí zvukový výstup (pokud zvukové stopy nejsou, použijí se monotónní hodiny).\nmonotonic: všechny stopy řídí monotónní hodiny systému."
 
 #: src/libvlc-module.c:612
 msgid "Input (PCR)"
-msgstr ""
+msgstr "Vstup (PCR)"
 
 #: src/libvlc-module.c:614
 msgid "Monotonic"
-msgstr ""
+msgstr "Monotónní"
 
 #: src/libvlc-module.c:657
 #: modules/gui/qt/medialibrary/qml/VideoInfoExpandPanel.qml:295
@@ -329,7 +330,7 @@ msgstr "Stopa videa"
 
 #: src/libvlc-module.c:659
 msgid "Stream number of the video track to use (from 0 to n)."
-msgstr ""
+msgstr "Číslo proudu stopy videa k použití (od 0 do n)."
 
 #: src/libvlc-module.c:674
 msgid ""
@@ -359,21 +360,21 @@ msgstr ""
 
 #: src/libvlc-module.c:687
 msgid "Video track ID"
-msgstr ""
+msgstr "ID stopy videa"
 
 #: src/libvlc-module.c:689
 msgid "Stream ID of the video track to use."
-msgstr ""
+msgstr "ID proudu stopy videa k použití."
 
 #: src/libvlc-module.c:717
 msgid "Low delay mode"
-msgstr ""
+msgstr "Režim nízké latence"
 
 #: src/libvlc-module.c:719
 msgid ""
 "Try to minimize delay along decoding chain. Might break with non compliant "
 "streams."
-msgstr ""
+msgstr "Pokusí se minimalizovat zpoždění v řetězci dekódování. Může selhat u proudů, které nedodržují standard."
 
 #: src/libvlc-module.c:766
 msgid "Should the playback resume where it was left off?"
@@ -419,30 +420,30 @@ msgstr ""
 
 #: src/libvlc-module.c:834
 msgid "Display sub-pictures on full window"
-msgstr ""
+msgstr "Zobrazovat překryvné obrazy přes celé okno"
 
 #: src/libvlc-module.c:836
 msgid "It allows showing subtitles in black bars."
-msgstr ""
+msgstr "Umožňuje zobrazovat titulky v černých pruzích."
 
 #: src/libvlc-module.c:838
 msgid "Position of secondary subtitles"
-msgstr ""
+msgstr "Pozice sekundárních titulků"
 
 #: src/libvlc-module.c:840
 msgid ""
 "Place on video where to display secondary subtitles (default bottom center)."
-msgstr ""
+msgstr "Místo ve videu, kde se zobrazují sekundární titulky (výchozí je dole uprostřed)."
 
 #: src/libvlc-module.c:842
 msgid "Force secondary subtitle position"
-msgstr ""
+msgstr "Vynutit pozici sekundárních titulků"
 
 #: src/libvlc-module.c:844
 msgid ""
 "You can use this option to vertically adjust the position secondary "
 "subtitles are displayed."
-msgstr ""
+msgstr "Pomocí této volby můžete svisle upravit pozici, ve které se zobrazují sekundární titulky."
 
 #: src/libvlc-module.c:847
 msgid "On Screen Display duration"
@@ -456,33 +457,33 @@ msgstr ""
 
 #: src/libvlc-module.c:889
 msgid "Subtitle Frames per Second"
-msgstr ""
+msgstr "Snímky za sekundu titulků"
 
 #: src/libvlc-module.c:891
 msgid "Override the normal frames per second settings. "
-msgstr ""
+msgstr "Přepíše běžné nastavení počtu snímků za sekundu. "
 
 #: src/libvlc-module.c:976
 msgid ""
 "This X.509 certificate file (PEM format) is used for server-side TLS. On OS "
 "X, the string is used as a label to search the certificate in the keychain."
-msgstr ""
+msgstr "Tento soubor certifikátu X.509 (ve formátu PEM) se používá pro TLS na straně serveru. V OS X se řetězec používá jako popisek pro vyhledání certifikátu v klíčence."
 
 #: src/libvlc-module.c:1027
 msgid ""
 "These options allow you to control the preferred modules used for accessing, "
 "demuxing and decoding (or encoding) inputs."
-msgstr ""
+msgstr "Tyto volby umožňují určit preferované moduly pro přístup, demultiplexování a dekódování (nebo kódování) vstupů."
 
 #: src/libvlc-module.c:1037
 msgid "Enable hardware decoders"
-msgstr ""
+msgstr "Zapnout hardwarové dekodéry"
 
 #: src/libvlc-module.c:1039
 msgid ""
 "VLC will fallback automatically to software decoders in case of hardware "
 "decoder failure."
-msgstr ""
+msgstr "Při selhání hardwarového dekodéru VLC automaticky přejde na softwarové dekodéry."
 
 #: src/libvlc-module.c:1042
 msgid "Preferred decoder hardware device"
@@ -498,11 +499,11 @@ msgstr ""
 
 #: src/libvlc-module.c:1128
 msgid "Tracer module"
-msgstr ""
+msgstr "Modul trasování"
 
 #: src/libvlc-module.c:1130
 msgid "This allow to select which tracer module you want to use."
-msgstr ""
+msgstr "Umožňuje vybrat modul trasování, který chcete použít."
 
 #: src/libvlc-module.c:1149
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:23
@@ -526,11 +527,11 @@ msgstr ""
 
 #: src/libvlc-module.c:1162
 msgid "Statistics collection frequency"
-msgstr ""
+msgstr "Frekvence sběru statistik"
 
 #: src/libvlc-module.c:1164
 msgid "Collection frequency of the statistics in ms."
-msgstr ""
+msgstr "Frekvence sběru statistik v ms."
 
 #: src/libvlc-module.c:1208
 msgid "Enqueue items into play queue in one instance mode"
@@ -548,7 +549,7 @@ msgstr ""
 msgid ""
 "These options define the behavior of the play queue. Some of them can be "
 "overridden in the play queue dialog box."
-msgstr ""
+msgstr "Tyto volby určují chování fronty přehrávání. Některé z nich lze přepsat v dialogu fronty přehrávání."
 
 #: src/libvlc-module.c:1228
 msgid ""
@@ -560,19 +561,19 @@ msgstr ""
 
 #: src/libvlc-module.c:1235
 msgid "Preparsing threads"
-msgstr ""
+msgstr "Vlákna předběžné analýzy"
 
 #: src/libvlc-module.c:1237
 msgid "Maximum number of threads used to preparse items"
-msgstr ""
+msgstr "Maximální počet vláken pro předběžnou analýzu položek"
 
 #: src/libvlc-module.c:1239
 msgid "Fetch-art threads"
-msgstr ""
+msgstr "Vlákna stahování obalů"
 
 #: src/libvlc-module.c:1241
 msgid "Maximum number of threads used to fetch art"
-msgstr ""
+msgstr "Maximální počet vláken pro stahování obalů"
 
 #: src/libvlc-module.c:1252
 msgid ""
@@ -600,7 +601,7 @@ msgstr ""
 
 #: src/libvlc-module.c:1268
 msgid "Flatten files listed by extractors (archive)"
-msgstr ""
+msgstr "Rozbalovat soubory uvedené extraktory (archivy)"
 
 #: src/libvlc-module.c:1277
 msgid "VLC will randomly play files in the play queue until interrupted."
@@ -622,7 +623,7 @@ msgstr "Zastavit přehrávání po každé položce ve frontě přehrávání."
 
 #: src/libvlc-module.c:1293
 msgid "Exit if there are no more items in the play queue."
-msgstr ""
+msgstr "Ukončit, pokud ve frontě přehrávání nezbývají žádné položky."
 
 #: src/libvlc-module.c:1297
 msgid "Pause each item in the play queue on the last frame."
@@ -638,7 +639,7 @@ msgstr ""
 "Automaticky spustit přehrávání obsahu fronty přehrávání, jakmile je načtena."
 
 #: src/libvlc-module.c:1317
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
 msgid "Use the media library"
 msgstr "Používat knihovnu médií"
 
@@ -666,47 +667,47 @@ msgstr ""
 
 #: src/libvlc-module.c:1328
 msgid "Play queue bookmark 1"
-msgstr ""
+msgstr "Záložka fronty přehrávání 1"
 
 #: src/libvlc-module.c:1329
 msgid "Play queue bookmark 2"
-msgstr ""
+msgstr "Záložka fronty přehrávání 2"
 
 #: src/libvlc-module.c:1330
 msgid "Play queue bookmark 3"
-msgstr ""
+msgstr "Záložka fronty přehrávání 3"
 
 #: src/libvlc-module.c:1331
 msgid "Play queue bookmark 4"
-msgstr ""
+msgstr "Záložka fronty přehrávání 4"
 
 #: src/libvlc-module.c:1332
 msgid "Play queue bookmark 5"
-msgstr ""
+msgstr "Záložka fronty přehrávání 5"
 
 #: src/libvlc-module.c:1333
 msgid "Play queue bookmark 6"
-msgstr ""
+msgstr "Záložka fronty přehrávání 6"
 
 #: src/libvlc-module.c:1334
 msgid "Play queue bookmark 7"
-msgstr ""
+msgstr "Záložka fronty přehrávání 7"
 
 #: src/libvlc-module.c:1335
 msgid "Play queue bookmark 8"
-msgstr ""
+msgstr "Záložka fronty přehrávání 8"
 
 #: src/libvlc-module.c:1336
 msgid "Play queue bookmark 9"
-msgstr ""
+msgstr "Záložka fronty přehrávání 9"
 
 #: src/libvlc-module.c:1337
 msgid "Play queue bookmark 10"
-msgstr ""
+msgstr "Záložka fronty přehrávání 10"
 
 #: src/libvlc-module.c:1338
 msgid "This allows you to define play queue bookmarks."
-msgstr ""
+msgstr "Umožňuje definovat záložky fronty přehrávání."
 
 #: src/libvlc-module.c:1383
 msgid "Select the hotkey to use to skip to the next item in the play queue."
@@ -875,11 +876,11 @@ msgstr ""
 
 #: src/libvlc-module.c:1868
 msgid "Multiple Subtitles"
-msgstr ""
+msgstr "Více titulků"
 
 #: src/libvlc-module.c:2070
 msgid "Input access and codecs"
-msgstr ""
+msgstr "Přístup ke vstupům a kodeky"
 
 #: src/libvlc-module.c:2153
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:506
@@ -896,22 +897,22 @@ msgstr "Spuštění"
 
 #: src/libvlc-module.c:2860
 msgid "print help for VLC (can be combined with --help-verbose)"
-msgstr ""
+msgstr "zobrazit nápovědu k VLC (lze kombinovat s --help-verbose)"
 
 #: src/libvlc-module.c:2862
 msgid ""
 "print help for VLC and all its modules (can be combined with --help-verbose)"
-msgstr ""
+msgstr "zobrazit nápovědu k VLC a všem jeho modulům (lze kombinovat s --help-verbose)"
 
 #: src/libvlc-module.c:2865
 msgid "print complete help (same as --longhelp --help-verbose)"
-msgstr ""
+msgstr "zobrazit úplnou nápovědu (stejné jako --longhelp --help-verbose)"
 
 #: src/libvlc-module.c:2873
 msgid ""
 "print help on a specific module (can be combined with --help-verbose). "
 "Prefix the module name with = for strict matches."
-msgstr ""
+msgstr "zobrazit nápovědu ke konkrétnímu modulu (lze kombinovat s --help-verbose). Pro přesnou shodu uveďte před názvem modulu =."
 
 #: src/misc/actions.c:55
 msgctxt "key"
@@ -1466,23 +1467,23 @@ msgstr "Chyba přechodu na následující snímek"
 msgid "Previous frame error"
 msgstr "Chyba přechodu na předchozí snímek"
 
-#: src/text/iso-639_def.h:123 modules/gui/qt/util/subtitle_preferences.cpp:53
+#: src/text/iso-639_def.h:123 modules/gui/qt/util/subtitle_preferences.cpp:60
 msgid "Cebuano"
 msgstr "Cebuánský"
 
-#: src/text/iso-639_def.h:231 modules/gui/qt/util/subtitle_preferences.cpp:56
+#: src/text/iso-639_def.h:231 modules/gui/qt/util/subtitle_preferences.cpp:63
 msgid "Hawaiian"
 msgstr "Havajský"
 
-#: src/text/iso-639_def.h:239 modules/gui/qt/util/subtitle_preferences.cpp:57
+#: src/text/iso-639_def.h:239 modules/gui/qt/util/subtitle_preferences.cpp:64
 msgid "Hmong"
 msgstr "Hmongský"
 
-#: src/text/iso-639_def.h:344 modules/gui/qt/util/subtitle_preferences.cpp:58
+#: src/text/iso-639_def.h:344 modules/gui/qt/util/subtitle_preferences.cpp:65
 msgid "Manipuri"
 msgstr "Manipurský"
 
-#: src/text/iso-639_def.h:494 modules/gui/qt/util/subtitle_preferences.cpp:60
+#: src/text/iso-639_def.h:494 modules/gui/qt/util/subtitle_preferences.cpp:67
 msgid "Syriac"
 msgstr "Syrský"
 
@@ -1516,13 +1517,13 @@ msgstr "Režim přizpůsobení"
 
 #: modules/access_output/http.c:65
 msgid "DLNA content features"
-msgstr ""
+msgstr "Funkce obsahu DLNA"
 
 #: modules/access_output/http.c:66
 msgid ""
 "Answer with the headers of a DLNA media server, with these content features: "
 "a TV reading the stream may refuse it without them."
-msgstr ""
+msgstr "Odpovídat hlavičkami mediálního serveru DLNA s těmito funkcemi obsahu: televizor, který proud přehrává, ho bez nich může odmítnout."
 
 #: modules/audio_filter/expander.c:65
 #: modules/gui/qt/dialogs/extended/extended.cpp:82
@@ -1556,7 +1557,7 @@ msgstr "Zapnuto"
 
 #: modules/audio_output/wasapi.c:1008
 msgid "Use exclusive mode"
-msgstr ""
+msgstr "Použít exkluzivní režim"
 
 #: modules/audio_output/wasapi.c:1010
 msgid ""
@@ -1564,10 +1565,10 @@ msgid ""
 "can be used to reduce the audio latency or to assure that the audio stream "
 "won't be modified by the OS. This mode is more likely to fail if the "
 "soundcard format is not handled by VLC."
-msgstr ""
+msgstr "VLC se připojí přímo ke zvukovému zařízení. Tento režim lze použít ke snížení latence zvuku nebo k zajištění, že systém zvukový proud nezmění. V tomto režimu je selhání pravděpodobnější, pokud VLC nepodporuje formát zvukové karty."
 
 #: modules/codec/vpx.c:62
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:211
 #: modules/video_output/xcb/render.c:764
 msgid "Best"
 msgstr "Nejlepší"
@@ -1603,18 +1604,18 @@ msgstr "Pozice titulků: %+d%%"
 
 #: modules/gui/macosx/library/VLCLibraryController.m:317
 #: modules/gui/macosx/library/VLCLibraryMenuController.m:126
-#: modules/gui/qt/medialibrary/mlplaylistlistmodel.cpp:293
+#: modules/gui/qt/medialibrary/mlplaylistlistmodel.cpp:304
 msgid "Rename playlist"
 msgstr "Přejmenovat seznam skladeb"
 
 #: modules/gui/macosx/library/VLCLibraryController.m:318
-#: modules/gui/qt/medialibrary/mlplaylistlistmodel.cpp:294
+#: modules/gui/qt/medialibrary/mlplaylistlistmodel.cpp:305
 msgid "Please enter the new playlist name:"
 msgstr "Zadejte nový název seznamu skladeb:"
 
 #: modules/gui/macosx/library/VLCLibraryController.m:319
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:395
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:441
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:402
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:448
 #: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:127
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:401
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:104
@@ -1625,7 +1626,7 @@ msgid "Rename"
 msgstr "Přejmenovat"
 
 #: modules/gui/macosx/library/VLCLibraryController.m:339
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:126
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:129
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:94
 msgid "Playlist Name"
 msgstr "Název seznamu skladeb"
@@ -1643,12 +1644,6 @@ msgstr "Přidat do knihovny médií"
 msgid "Remove from Favorites"
 msgstr "Odebrat z oblíbených"
 
-#: modules/gui/macosx/library/VLCLibraryTableCellView.m:144
-#: modules/gui/macosx/library/video-library/VLCLibraryVideoGroupDescriptor.m:42
-#: modules/gui/macosx/library/video-library/VLCLibraryVideoDataSource.m:534
-msgid "Recents"
-msgstr ""
-
 #: modules/gui/macosx/library/VLCLibraryTableCellView.m:147
 #: modules/gui/macosx/library/video-library/VLCLibraryVideoGroupDescriptor.m:47
 #: modules/gui/macosx/library/video-library/VLCLibraryVideoDataSource.m:536
@@ -1658,25 +1653,6 @@ msgstr ""
 #: modules/gui/qt/player/qml/controlbarcontrols/LibraryButton.qml:23
 msgid "Library"
 msgstr "Knihovna"
-
-#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:682
-#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:899
-msgid "All genres"
-msgstr ""
-
-#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:684
-#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:900
-msgid "All artists"
-msgstr ""
-
-#: modules/gui/macosx/library/home-library/VLCLibraryHomeViewSectionHeaderView.m:72
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:474
-msgid "Show all"
-msgstr "Zobrazit vše"
-
-#: modules/gui/macosx/library/home-library/VLCLibraryHomeViewSectionHeaderView.m:122
-msgid "Open %@ in the library"
-msgstr ""
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1604
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:126
@@ -1731,47 +1707,47 @@ msgstr "Uložit heslo"
 msgid "Ok"
 msgstr "OK"
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:60
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:63
 #: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:37
 #: modules/gui/qt/menus/menus.cpp:955 modules/gui/qt/menus/qml/MainMenu.qml:65
 msgid "Open Network Stream"
 msgstr "Otevřít síťový proud"
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:92
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:106
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:95
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:109
 msgid "Network URL"
 msgstr "Síťová adresa URL"
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:94
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:97
 msgid ""
 "“%1” is not a link: links start with http://, rtsp://… or a site's address."
 msgstr "„%1“ není odkaz: odkazy začínají http://, rtsp://… nebo adresou webu."
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:95
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:98
 msgid "You can enter multiple links to load."
 msgstr "Můžete zadat více odkazů k načtení."
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:105
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:108
 msgid "e.g., https://www.example.com/stream.avi"
 msgstr "např. https://www.example.com/stream.avi"
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:127
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:130
 msgid "(optional)"
 msgstr "(volitelné)"
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:128
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:131
 msgid "The playlist will be saved and displayed with this title."
 msgstr "Seznam skladeb bude uložen a zobrazen pod tímto názvem."
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:129
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:132
 msgid "Playlists need the media library."
 msgstr "Seznamy skladeb vyžadují knihovnu médií."
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:139
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:142
 msgid "e.g., Favorite TV Channels"
 msgstr "např. Oblíbené TV kanály"
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:140
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:143
 msgid "Playlist name"
 msgstr "Název seznamu skladeb"
 
@@ -1889,7 +1865,7 @@ msgid "GitHub"
 msgstr "GitHub"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:291
-#: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:136
+#: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:142
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:293
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:111
 #: modules/gui/qt/widgets/qml/CSDWindowButtonSet.qml:87
@@ -1900,19 +1876,35 @@ msgstr "GitHub"
 msgid "Close"
 msgstr "Zavřít"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:885
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:897
 msgid "Save play queue as..."
 msgstr "Uložit frontu přehrávání jako..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1121
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1117
+msgid "Write error"
+msgstr "Chyba zápisu"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1134
 msgid "Export playlist as..."
 msgstr "Exportovat seznam skladeb jako..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1260
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1151
+msgid ""
+"The playlist could not be exported to %1:\n"
+"%2"
+msgstr "Seznam skladeb nelze exportovat do %1:\n%2"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1153
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:49
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
+msgid "Export Playlist"
+msgstr "Exportovat seznam skladeb"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1279
 msgid "Open audio..."
 msgstr "Otevřít zvuk..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1265
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1284
 msgid "Open video..."
 msgstr "Otevřít video..."
 
@@ -1984,68 +1976,68 @@ msgid "Audio effect settings could not be saved (error %1)."
 msgstr "Nastavení zvukových efektů se nepodařilo uložit (chyba %1)."
 
 #: modules/gui/qt/dialogs/extended/audio_effects.cpp:525
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:525
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:529
 msgid "The setting \"%1\" changed outside this dialog."
 msgstr "Nastavení „%1“ bylo změněno mimo tento dialog."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:314
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:318
 msgid "Open video effects before changing them."
 msgstr "Než začnete efekty videa měnit, otevřete je."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:315
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:321
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:353
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:417
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:431
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:468
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:319
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:325
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:357
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:421
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:435
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:472
 msgid "No active video output is available."
 msgstr "Není k dispozici žádný aktivní výstup videa."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:316
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:320
 msgid "Video output changed during the preview."
 msgstr "Během náhledu se změnil výstup videa."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:350
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:354
 msgid "Video effect option is unavailable."
 msgstr "Možnost efektu videa není k dispozici."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:360
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:364
 msgid "The video effect value could not be prepared."
 msgstr "Hodnotu efektu videa se nepodařilo připravit."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:401
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:405
 msgid "The video effect value could not be applied."
 msgstr "Hodnotu efektu videa se nepodařilo použít."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:408
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:412
 msgid "Video filter is unavailable."
 msgstr "Filtr videa není k dispozici."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:421
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:425
 msgid "The video filter could not be applied."
 msgstr "Filtr videa se nepodařilo použít."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:427
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:431
 msgid "Invalid crop value."
 msgstr "Neplatná hodnota ořezu."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:439
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:443
 msgid "Crop could not be applied to every video output."
 msgstr "Ořez se nepodařilo použít na všechny výstupy videa."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:456
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:460
 msgid "Video output changed; the previous preview can no longer be restored."
 msgstr "Výstup videa se změnil; předchozí náhled již nelze obnovit."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:480
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:484
 msgid "Video preview could not be restored."
 msgstr "Náhled videa se nepodařilo obnovit."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:493
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:497
 msgid "A video effect value is unavailable."
 msgstr "Hodnota efektu videa není k dispozici."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:524
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:528
 msgid "Video effect settings could not be saved (error %1)."
 msgstr "Nastavení efektů videa se nepodařilo uložit (chyba %1)."
 
@@ -2061,72 +2053,72 @@ msgstr "Propojit horní a dolní ořez"
 msgid "Link left and right crop"
 msgstr "Propojit levý a pravý ořez"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:95
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:102
 #: modules/gui/qt/dialogs/extended/qml/EffectPresets.qml:244
 msgid "Play a media to save its effects as a preset."
 msgstr ""
 "Spusťte přehrávání média, abyste mohli uložit jeho efekty jako předvolbu."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:132
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:139
 msgid "Effect preset: %1"
 msgstr "Předvolba efektů: %1"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:247
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:254
 msgid "Effect presets"
 msgstr "Předvolby efektů"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:262
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:440
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:269
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:447
 msgid "New Preset"
 msgstr "Nová předvolba"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:279
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:286
 msgid "Chosen preset"
 msgstr "Vybraná předvolba"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:358
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:101
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:365
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:102
 msgid "Actions of %1"
 msgstr "Akce pro %1"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:406
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:413
 msgid "Update with current effects"
 msgstr "Aktualizovat podle aktuálních efektů"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:440
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:447
 msgid "Rename Preset"
 msgstr "Přejmenovat předvolbu"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:483
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:490
 msgid "Preset Name"
 msgstr "Název předvolby"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:484
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:491
 msgid "The preset keeps its effects."
 msgstr "Předvolba si ponechá své efekty."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:485
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:492
 msgid "The preset keeps the audio and video effects in use."
 msgstr "Předvolba uchová právě používané zvukové a obrazové efekty."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:493
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:500
 msgid "e.g., Late Night Movies"
 msgstr "např. Noční filmy"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:494
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:501
 msgid "Preset name"
 msgstr "Název předvolby"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:512
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:519
 msgid "Delete Preset"
 msgstr "Smazat předvolbu"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:538
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:545
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:481
 msgid "Delete %1?"
 msgstr "Smazat %1?"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:539
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:546
 msgid "The effects in use stay as they are."
 msgstr "Používané efekty zůstanou beze změny."
 
@@ -2182,16 +2174,16 @@ msgstr ""
 msgid "Some effects of the preset could not be applied."
 msgstr "Některé efekty předvolby se nepodařilo použít."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:225
+#: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:231
 msgid "Play audio to preview and edit audio effects."
 msgstr ""
 "Přehrajte zvuk, abyste mohli zvukové efekty zobrazit v náhledu a upravit."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:247
+#: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:253
 msgid "Play video to preview and edit effects."
 msgstr "Přehrajte video, abyste mohli efekty zobrazit v náhledu a upravit."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:266
+#: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:272
 msgid "Open synchronization"
 msgstr "Otevřít synchronizaci"
 
@@ -2327,19 +2319,19 @@ msgstr "Procházet: %1"
 msgid "Image Files (*.png *.jpg);;All Files (*)"
 msgstr "Obrázky (*.png *.jpg);;Všechny soubory (*)"
 
-#: modules/gui/qt/dialogs/firstrun/onboarding.cpp:47
+#: modules/gui/qt/dialogs/firstrun/onboarding.cpp:48
 msgid "Could not add the media folder: %1"
 msgstr "Složku médií se nepodařilo přidat: %1"
 
-#: modules/gui/qt/dialogs/firstrun/onboarding.cpp:199
+#: modules/gui/qt/dialogs/firstrun/onboarding.cpp:200
 msgid "The media library is unavailable."
 msgstr "Knihovna médií není k dispozici."
 
-#: modules/gui/qt/dialogs/firstrun/onboarding.cpp:206
+#: modules/gui/qt/dialogs/firstrun/onboarding.cpp:207
 msgid "Choose a local media folder."
 msgstr "Vyberte místní složku médií."
 
-#: modules/gui/qt/dialogs/firstrun/onboarding.cpp:211
+#: modules/gui/qt/dialogs/firstrun/onboarding.cpp:212
 msgid "The media folder does not exist or cannot be read: %1"
 msgstr "Složka médií neexistuje nebo ji nelze číst: %1"
 
@@ -2355,11 +2347,11 @@ msgstr "Nastavení prvního spuštění se nepodařilo uložit."
 msgid "Choose a media folder"
 msgstr "Vyberte složku médií"
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:200
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:187
 msgid "Choose what VLC does online by itself."
 msgstr "Vyberte, co bude VLC dělat online samo od sebe."
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:213
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:200
 msgid ""
 "No telemetry, no ads, no account. These two connect to the internet without "
 "being asked each time, and send only what is written under them."
@@ -2368,19 +2360,19 @@ msgstr ""
 "internetu, aniž by se pokaždé ptaly, a odesílají pouze to, co je uvedeno pod "
 "nimi."
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:231
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:218
 msgid "Check for updates once a day"
 msgstr "Kontrolovat aktualizace jednou denně"
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:232
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:219
 msgid "Asks GitHub (api.github.com) for the latest release of VLC Redesign."
 msgstr "Zjišťuje na GitHubu (api.github.com) nejnovější vydání VLC Redesign."
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:238
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:225
 msgid "Find subtitles online automatically"
 msgstr "Automaticky hledat titulky online"
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:239
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:226
 msgid ""
 "When a video has none in your languages: its name and a fingerprint of the "
 "file to subtitle services (OpenSubtitles.org, Wizdom, Gestdown, YIFY "
@@ -2391,17 +2383,17 @@ msgstr ""
 "Subtitles) a jeho název do IMDb, Wikidata a Cinemeta, aby se zjistilo, o "
 "jaký film jde."
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:255
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:242
 msgid "Privacy and code signing policy"
 msgstr "Zásady ochrany soukromí a podepisování kódu"
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:275
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:262
 msgid ""
 "Both stay in Settings: General for the updates, Subtitles for the subtitles."
 msgstr ""
 "Obě volby najdete v Nastavení: Obecné pro aktualizace, Titulky pro titulky."
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:338
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:325
 msgid "Finish"
 msgstr "Dokončit"
 
@@ -2417,11 +2409,11 @@ msgstr "Momentálně nejsou přiřazeny žádné zkratky přehrávání."
 msgid "Find the full list in the menu."
 msgstr "Úplný seznam najdete v nabídce."
 
-#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:56
+#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:43
 msgid "Choose the languages of your subtitles."
 msgstr "Vyberte jazyky titulků."
 
-#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:69
+#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:56
 msgid ""
 "Subtitles in your language show by themselves: from the video, from a file "
 "next to it, or found online. When there are none in it, not even online, the "
@@ -2430,21 +2422,21 @@ msgstr ""
 "Titulky ve vašem jazyce se zobrazí samy: z videa, ze souboru vedle něj nebo "
 "nalezené online. Když v něm žádné nejsou, ani online, použije se druhý jazyk."
 
-#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:87
+#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:74
 msgid "Default language"
 msgstr "Výchozí jazyk"
 
-#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:106
+#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:93
 msgid "Second language (when there are none)"
 msgstr "Druhý jazyk (když žádné nejsou)"
 
-#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:135
+#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:122
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:102
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:528
 msgid "Find subtitles online when a video has none in these languages"
 msgstr "Hledat titulky online, když video nemá titulky v těchto jazycích"
 
-#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:148
+#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:135
 msgid ""
 "Online subtitles come from free services (OpenSubtitles, and more for some "
 "languages). Change all of it in Settings, Subtitles."
@@ -2576,7 +2568,7 @@ msgid "System language"
 msgstr "Jazyk systému"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:138
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:107
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:110
 msgid "Higher"
 msgstr "Vyšší"
 
@@ -2596,41 +2588,41 @@ msgstr "Zvýšená"
 msgid "%1 MiB"
 msgstr "%1 MiB"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:177
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:185
 msgid "Same as video"
 msgstr "Stejné jako video"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:179
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:181
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:187
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:189
 msgid "%1 px wide"
 msgstr "Šířka %1 px"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:245
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:253
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
 msgid "Discover cast devices"
 msgstr "Hledat zařízení pro přenos"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:246
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:254
 msgid ""
 "Looks for the cast devices of the local network when the Renderer menu opens."
 msgstr ""
 "Hledá zařízení pro přenos v místní síti, když se otevře nabídka Vykreslovač."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:247
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:255
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:51
 msgid "Remember window size and position"
 msgstr "Pamatovat si velikost a umístění okna"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:248
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:256
 msgid "Opens the window where it was when VLC was closed."
 msgstr "Otevře okno tam, kde bylo při zavření VLC."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:249
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:257
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:70
 msgid "Always show the player bar"
 msgstr "Vždy zobrazovat panel přehrávače"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:250
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:258
 msgid ""
 "Keeps the player bar at the bottom of the library while nothing plays: Play "
 "starts the play queue, or opens files when it is empty."
@@ -2638,12 +2630,12 @@ msgstr ""
 "Ponechá panel přehrávače dole v knihovně, i když se nic nepřehrává: Přehrát "
 "spustí frontu přehrávání, nebo otevře soubory, když je prázdná."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:252
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:260
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:72
 msgid "Increase text contrast"
 msgstr "Zvýšit kontrast textu"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:253
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:261
 msgid ""
 "Draws the dim texts of the design (hints, descriptions, watched items) "
 "brighter, to the contrast the WCAG accessibility guidelines ask for (AA)."
@@ -2651,57 +2643,57 @@ msgstr ""
 "Vykresluje tlumené texty návrhu (nápovědy, popisy, zhlédnuté položky) "
 "jasněji, s kontrastem, který vyžadují pravidla přístupnosti WCAG (AA)."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:255
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:263
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:65
 msgid "Popup duration"
 msgstr "Doba zobrazení oznámení"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:256
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:264
 msgid "How long the popup of the track changes stays on the screen."
 msgstr "Jak dlouho zůstane na obrazovce oznámení o změně skladby."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:257
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:327
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:265
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
 msgid "Process priority"
 msgstr "Priorita procesu"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:258
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:266
 msgid ""
 "How much processor time the system gives VLC compared with the other "
 "programs."
 msgstr ""
 "Kolik procesorového času dává systém VLC ve srovnání s ostatními programy."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:259
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:275
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:267
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:281
 msgid "Double click on the video"
 msgstr "Dvojklik na video"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:260
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:268
 msgid "What a double click on the video does."
 msgstr "Co udělá dvojklik na video."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:260
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:268
 msgid "Nothing|Toggle fullscreen"
 msgstr "Nic|Přepnout celou obrazovku"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:261
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:228
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:269
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:234
 msgid "Size values"
 msgstr "Hodnoty velikosti"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:262
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:270
 msgid ""
 "Choose the size of the subtitles by name (relative to the picture), or in "
 "pixels."
 msgstr ""
 "Vyberte velikost titulků podle názvu (vzhledem k obrazu), nebo v pixelech."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:263
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:271
 msgid "Relative|Pixels"
 msgstr "Relativní|Pixely"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:265
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:273
 msgid ""
 "How opaque the box behind the subtitles is when there is one (kept while "
 "there is none)."
@@ -2709,12 +2701,12 @@ msgstr ""
 "Jak neprůhledný je rámeček za titulky, pokud nějaký je (hodnota se zachová, "
 "i když žádný není)."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:266
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:274
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:94
 msgid "Never remember items matching"
 msgstr "Nikdy si nepamatovat položky odpovídající"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:267
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:275
 msgid ""
 "A regular expression: the items whose address or name matches it are not "
 "saved in the history, nor their playback position."
@@ -2722,224 +2714,228 @@ msgstr ""
 "Regulární výraz: položky, jejichž adresa nebo název mu odpovídá, se "
 "neukládají do historie, a to ani s pozicí přehrávání."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:281
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:264
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:289
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:270
 msgid "System monospace"
 msgstr "Systémové neproporcionální"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:281
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:289
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:233
 msgid "System, sans-serif"
 msgstr "Systémové, bezpatkové"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:334
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:342
 msgid "Ultra fast"
 msgstr "Ultra rychlá"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:334
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:342
 msgid "Super fast"
 msgstr "Super rychlá"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:335
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:343
 msgid "Very fast"
 msgstr "Velmi rychlá"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:337
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:345
 msgid "Very slow"
 msgstr "Velmi pomalá"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:337
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:345
 msgid "Placebo"
 msgstr "Placebo"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:339
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:347
 msgid "Film"
 msgstr "Film"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:340
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:348
 msgid "Still image"
 msgstr "Statický obraz"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:341
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:349
 msgid "Fast decoding"
 msgstr "Rychlé dekódování"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:341
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:349
 msgid "Zero latency"
 msgstr "Nulová latence"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:908
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:916
 msgid "%1: this value can not be used."
 msgstr "%1: tuto hodnotu nelze použít."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:958
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:987
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:979
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1008
 msgid "%1 is not available in this VLC installation."
 msgstr "%1 není v této instalaci VLC k dispozici."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:972
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:993
 msgid "This setting"
 msgstr "Toto nastavení"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:982
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1003
 msgid "%1: choose a folder of this computer."
 msgstr "%1: vyberte složku v tomto počítači."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1011
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1032
 msgid "Select a category to reset."
 msgstr "Vyberte kategorii k obnovení."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1073
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1094
 msgid "Repeat the current item (One) or the whole play queue (All)."
 msgstr "Opakovat aktuální položku (Jednu) nebo celou frontu přehrávání (Vše)."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1081
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1102
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:119
 msgid "When playback finishes"
 msgstr "Po skončení přehrávání"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1082
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1103
 msgid "Stop, or quit VLC at the end of the play queue."
 msgstr "Na konci fronty přehrávání zastavit, nebo ukončit VLC."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1090
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1111
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:46
 msgid "Use a custom skin"
 msgstr "Použít vlastní vzhled"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1091
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1112
 msgid "Starts VLC with the skin chosen below instead of this interface."
 msgstr "Spustí VLC se vzhledem vybraným níže namísto tohoto rozhraní."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1107
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1128
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:93
 msgid "Remember the playback position"
 msgstr "Pamatovat si pozici přehrávání"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1108
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1129
 msgid "Lets VLC continue the media where you left off."
 msgstr "Umožní VLC pokračovat v médiu tam, kde jste přestali."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1122
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1143
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
 msgid "Reverse scroll direction"
 msgstr "Obrátit směr posouvání"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1123
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1144
 msgid "The wheels that seek go backwards when turned forwards."
 msgstr ""
 "Kolečka, která posouvají přehrávání, při otočení dopředu posouvají zpět."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1138
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:281
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1159
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:287
 msgid "Web remote control"
 msgstr "Webové dálkové ovládání"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1139
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1160
 msgid ""
 "Lets a web browser control VLC. Set its password in the Advanced Options."
 msgstr ""
 "Umožní ovládat VLC z webového prohlížeče. Heslo nastavte v Pokročilých "
 "možnostech."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1157
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1178
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
 msgid "Video post-processing"
 msgstr "Dodatečné zpracování videa"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1158
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1179
 msgid ""
 "Improves the picture of poorly encoded videos, at the cost of processing "
 "power."
 msgstr ""
 "Zlepšuje obraz špatně zakódovaných videí za cenu vyššího výpočetního výkonu."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1207
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1228
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:214
 msgid "Visualization size"
 msgstr "Velikost vizualizace"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1208
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1229
 msgid "The size the visualizations are drawn at."
 msgstr "Velikost, ve které se vizualizace vykreslují."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1209
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1230
 msgid "Match window"
 msgstr "Podle okna"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1250
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1271
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:120
 msgid "Seek precisely"
 msgstr "Přesné posouvání"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1251
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1272
 msgid ""
 "Seek to the exact time asked, slower than seeking to the nearest key frame."
 msgstr ""
 "Posune přesně na požadovaný čas, pomaleji než posun na nejbližší klíčový "
 "snímek."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1347
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1368
 msgid "From the file only"
 msgstr "Pouze ze souboru"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1349
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1370
 msgid "From the file and the internet"
 msgstr "Ze souboru a z internetu"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1366
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1387
 msgid "Box"
 msgstr "Rámeček"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1426
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1447
 msgid "Above normal"
 msgstr "Nadprůměrná"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1427
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1448
 msgid "Below normal"
 msgstr "Podprůměrná"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1427
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1448
 msgid "Idle"
 msgstr "Nízká"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1545
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1567
 msgid "Current screen"
 msgstr "Aktuální obrazovka"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1550
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1572
 msgid "Screen %1 (%2)"
 msgstr "Obrazovka %1 (%2)"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1556
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1578
 msgid "Screen %1"
 msgstr "Obrazovka %1"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1565
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1587
 msgid "Any title"
 msgstr "Libovolný název"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1565
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1587
 msgid "Contains title"
 msgstr "Obsahuje název"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1566
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1588
 msgid "Title with extra characters"
 msgstr "Název s dalšími znaky"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1566
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1588
 msgid "Exact title match"
 msgstr "Přesná shoda názvu"
 
-#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:47
+#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:92
+msgid "The audio output in use does not keep a startup volume."
+msgstr "Používaný zvukový výstup neuchovává hlasitost při spuštění."
+
+#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:126
 msgid "The plugins can not be rescanned on this installation."
 msgstr "Moduly v této instalaci nelze znovu prohledat."
 
-#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:63
+#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:141
 msgid "The plugins could not be rescanned."
 msgstr "Moduly se nepodařilo znovu prohledat."
 
-#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:75
+#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:153
 msgid ""
 "The plugins could not be rescanned: the folder of VLC may need administrator "
 "rights."
@@ -2947,16 +2943,16 @@ msgstr ""
 "Moduly se nepodařilo znovu prohledat: složka VLC může vyžadovat práva "
 "správce."
 
-#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:87
+#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:165
 msgid "The configurations folder could not be opened."
 msgstr "Složku s nastavením se nepodařilo otevřít."
 
-#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:177
+#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:257
 msgid "Last.fm is unavailable in this VLC installation."
 msgstr "Last.fm není v této instalaci VLC k dispozici."
 
 #: modules/gui/qt/dialogs/preferences/config_model_effects.cpp:128
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:460
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:468
 msgid "VLC preferences are unavailable."
 msgstr "Nastavení VLC není k dispozici."
 
@@ -2991,39 +2987,39 @@ msgstr ""
 "%1 bylo změněno mimo nastavení nebo není k dispozici. Vaše změny nebyly "
 "uloženy."
 
-#: modules/gui/qt/dialogs/preferences/preferences.cpp:78
-#: modules/gui/qt/qt.cpp:338
+#: modules/gui/qt/dialogs/preferences/preferences.cpp:79
+#: modules/gui/qt/qt.cpp:337
 msgid "Expert"
 msgstr "Expert"
 
-#: modules/gui/qt/dialogs/preferences/preferences.cpp:79
+#: modules/gui/qt/dialogs/preferences/preferences.cpp:80
 msgid "Switch to expert preferences view"
 msgstr "Přepnout do zobrazení nastavení pro experty"
 
-#: modules/gui/qt/dialogs/preferences/preferences.cpp:203
+#: modules/gui/qt/dialogs/preferences/preferences.cpp:204
 msgid "Modified only"
 msgstr "Pouze změněné"
 
-#: modules/gui/qt/dialogs/preferences/preferences.cpp:232
+#: modules/gui/qt/dialogs/preferences/preferences.cpp:233
 msgid "Expert Preferences"
 msgstr "Nastavení pro experty"
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:216
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:217
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:62
 msgid "Navigation"
 msgstr "Navigace"
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:367
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:422
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:440
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:368
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:430
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:448
 msgid "This shortcut is unavailable."
 msgstr "Tato zkratka není k dispozici."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:378
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:379
 msgid "This key combination cannot be used by VLC."
 msgstr "Tuto kombinaci kláves nemůže VLC použít."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:474
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:482
 msgid ""
 "The global hotkeys of \"%1\" changed outside this dialog. Cancel and reopen "
 "the shortcuts."
@@ -3031,7 +3027,7 @@ msgstr ""
 "Globální klávesové zkratky „%1“ byly změněny mimo tento dialog. Zrušte a "
 "znovu otevřete zkratky."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:475
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:483
 msgid ""
 "The hotkeys of \"%1\" changed outside this dialog. Cancel and reopen the "
 "shortcuts."
@@ -3039,11 +3035,11 @@ msgstr ""
 "Klávesové zkratky „%1“ byly změněny mimo tento dialog. Zrušte a znovu "
 "otevřete zkratky."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:489
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:497
 msgid "A shortcut could not be changed. Changes were reverted in memory."
 msgstr "Zkratku se nepodařilo změnit. Změny byly v paměti vráceny zpět."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:497
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:505
 msgid ""
 "Could not save shortcuts (error %1). Changes were reverted in memory; verify "
 "the configuration file."
@@ -3055,13 +3051,13 @@ msgstr ""
 msgid "System's default (%1)"
 msgstr "Výchozí nastavení systému (%1)"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1441
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1446
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1439
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1444
 msgid "%1 (partial)"
 msgstr "%1 (částečně)"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1824
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1834
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1839
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1849
 msgid "Please choose an entry point folder"
 msgstr "Vyberte složku vstupního bodu"
 
@@ -3076,7 +3072,7 @@ msgstr "Motiv"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:181
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:409
-#: modules/gui/qt/qt.cpp:333
+#: modules/gui/qt/qt.cpp:332
 msgid "Accent color"
 msgstr "Barva zvýraznění"
 
@@ -3241,6 +3237,10 @@ msgstr[0] "Další %1 odpovídající zkratka"
 msgstr[1] "Další %1 odpovídající zkratky"
 msgstr[2] "Dalších %1 odpovídajících zkratek"
 
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:474
+msgid "Show all"
+msgstr "Zobrazit vše"
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:514
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:93
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:109
@@ -3304,7 +3304,7 @@ msgid "All VLC options"
 msgstr "Všechny možnosti VLC"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:748
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:349
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:356
 msgid "Reset all settings"
 msgstr "Obnovit všechna nastavení"
 
@@ -3341,7 +3341,7 @@ msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:187
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:193
 msgid "Two-pass"
 msgstr "Dvouprůchodový"
 
@@ -3419,12 +3419,12 @@ msgid "Play video to adjust and preview the picture."
 msgstr "Přehrajte video, abyste mohli upravit obraz a zobrazit jeho náhled."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:114
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:188
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:194
 msgid "Spatial audio"
 msgstr "Prostorový zvuk"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:122
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:191
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:197
 msgid "Stereo widening"
 msgstr "Rozšíření sterea"
 
@@ -3449,7 +3449,7 @@ msgid "The address the played tracks are sent to."
 msgstr "Adresa, na kterou se odesílají přehrané skladby."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:216
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:273
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:279
 msgid "Nothing"
 msgstr "Nic"
 
@@ -3457,7 +3457,7 @@ msgstr "Nic"
 msgid "Seek"
 msgstr "Posun"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:286
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:293
 msgid ""
 "Set a web remote password in the Advanced Options: the remote stays locked "
 "without one."
@@ -3465,102 +3465,102 @@ msgstr ""
 "Nastavte heslo webového dálkového ovládání v Pokročilých možnostech: bez něj "
 "zůstane ovládání zamčené."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:291
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:298
 msgid "Applies the next time VLC starts"
 msgstr "Projeví se při příštím spuštění VLC"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:303
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:310
 msgid "Choose a snapshot folder"
 msgstr "Vyberte složku pro snímky"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:304
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:311
 msgid "Choose a time-shift buffer folder"
 msgstr "Vyberte složku vyrovnávací paměti časového posunu"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:305
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:312
 msgid "Choose a recording folder"
 msgstr "Vyberte složku pro nahrávky"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:307
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:314
 msgid "Choose a folder"
 msgstr "Vyberte složku"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:311
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:318
 msgid "Choose a skin"
 msgstr "Vyberte vzhled"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:312
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:319
 msgid "Skin files (*.vlt *.wsz *.xml)"
 msgstr "Soubory vzhledů (*.vlt *.wsz *.xml)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:315
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:322
 msgid "Choose a log file"
 msgstr "Vyberte soubor záznamu"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:341
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:348
 msgid "Open configurations folder"
 msgstr "Otevřít složku s nastavením"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:342
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:349
 msgid "Shows the folder of the settings of VLC."
 msgstr "Zobrazí složku s nastavením VLC."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:350
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:357
 msgid "Puts every setting of VLC back to its default."
 msgstr "Vrátí všechna nastavení VLC na výchozí hodnoty."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:366
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:373
 msgid "Rescan plugins"
 msgstr "Znovu prohledat moduly"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:367
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:374
 msgid "Rescan"
 msgstr "Prohledat znovu"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:101
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:110
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:104
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:113
 msgid "0 s"
 msgstr "0 s"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:101
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:113
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:104
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:116
 msgid "5 s"
 msgstr "5 s"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:102
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:105
 msgid "10s"
 msgstr "10 s"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:105
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:108
 msgid "Lower"
 msgstr "Nižší"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:106
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:494
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:109
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:513
 msgid "Usual"
 msgstr "Obvyklá"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:110
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:113
 msgid "-5 s"
 msgstr "-5 s"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:111
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:114
 msgid "+5 s"
 msgstr "+5 s"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:113
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:116
 msgid "0.5 s"
 msgstr "0,5 s"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:116
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:119
 msgid "1 s"
 msgstr "1 s"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:116
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:119
 msgid "10 s"
 msgstr "10 s"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:591
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:604
 msgid "Choose a color"
 msgstr "Vyberte barvu"
 
@@ -3794,8 +3794,8 @@ msgstr "Pozastavit, když zvuk používá jiná aplikace"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:112
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:114
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:115
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:196
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:202
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
 msgctxt "media streams"
 msgid "Tracks"
 msgstr "Stopy"
@@ -3847,7 +3847,7 @@ msgid "Seeking"
 msgstr "Posouvání"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:121
-#: modules/gui/qt/qt.cpp:300
+#: modules/gui/qt/qt.cpp:299
 msgid "Show thumbnail while scrubbing"
 msgstr "Zobrazovat miniaturu při posouvání"
 
@@ -3898,583 +3898,583 @@ msgstr "Obnovit poslední stav přehrávání (stopy, rychlost...)"
 msgid "Start videos in fullscreen"
 msgstr "Spouštět videa na celé obrazovce"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:140
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:142
 msgid "Stop the screensaver during playback"
 msgstr "Zakázat spořič obrazovky během přehrávání"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:141
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
 msgid "Play video as desktop wallpaper"
 msgstr "Přehrávat video jako tapetu plochy"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:144
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:146
 msgid "Method"
 msgstr "Metoda"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:145
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:146
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:147
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:148
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:149
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:158
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:150
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:151
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:160
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:162
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:376
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:164
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:382
 msgid "Framing"
 msgstr "Rámování"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:147
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:149
 msgid "Scale video to the window"
 msgstr "Přizpůsobit video oknu"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:149
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:151
 msgid "Position in the window"
 msgstr "Pozice v okně"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:150
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:151
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:152
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:153
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:154
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:155
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:156
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:165
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:157
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:158
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:167
 msgid "Snapshots"
 msgstr "Snímky"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:150
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:152
 msgid "Save to"
 msgstr "Uložit do"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:151
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:153
 msgid "File name prefix"
 msgstr "Předpona názvu souboru"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:155
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:157
 msgid "Number files sequentially"
 msgstr "Číslovat soubory postupně"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:156
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:158
 msgid "Show a preview after capture"
 msgstr "Po pořízení zobrazit náhled"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:158
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:160
 msgid "Custom aspect ratios"
 msgstr "Vlastní poměry stran"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:160
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:162
 msgid "Custom crop ratios"
 msgstr "Vlastní poměry ořezu"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:165
-msgid "Snapshot height (-1: proportional)"
-msgstr "Výška snímku (-1: proporcionálně)"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:167
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Výška snímku (0: poměrně, -1: původní)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:166
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:168
 msgid "Deinterlacing filter"
 msgstr "Filtr odstranění prokládání"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:170
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:172
 msgid "Speaker setup"
 msgstr "Nastavení reproduktorů"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:171
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:173
 msgid "Maximum volume"
 msgstr "Maximální hlasitost"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:173
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:174
-#: modules/gui/qt/dialogs/preferences/qml/SettingsStartupVolume.qml:139
-msgid "Startup volume"
-msgstr "Hlasitost při spuštění"
-
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:175
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:176
-msgid "Volume step"
-msgstr "Krok hlasitosti"
-
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:177
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:178
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:179
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:180
+#: modules/gui/qt/dialogs/preferences/qml/SettingsStartupVolume.qml:139
+msgid "Startup volume"
+msgstr "Hlasitost při spuštění"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:182
+msgid "Volume step"
+msgstr "Krok hlasitosti"
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:183
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:185
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:186
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
 msgid "Loudness"
 msgstr "Vnímaná hlasitost"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:177
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:183
 msgid "Normalize loudness"
 msgstr "Normalizovat hlasitost"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:178
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
 msgid "Target level"
 msgstr "Cílová úroveň"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:179
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:185
 msgid "Night mode"
 msgstr "Noční režim"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:183
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
 msgid "Replay gain preamp"
 msgstr "Předzesílení Replay Gain"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:195
 msgid "Spatial audio mode"
 msgstr "Režim prostorového zvuku"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:193
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:199
 msgid "Pitch shift"
 msgstr "Posun výšky tónu"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:194
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:200
 msgid "Chorus/flanger"
 msgstr "Chorus/flanger"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:196
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:202
 msgid "Preferred audio language"
 msgstr "Preferovaný jazyk zvuku"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:197
-#: modules/gui/qt/player/qml/TracksMenu.qml:263
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
+#: modules/gui/qt/player/qml/TracksMenu.qml:266
 msgid "Audio delay"
 msgstr "Zpoždění zvuku"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:201
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:207
 msgid "Pass compressed audio to the receiver"
 msgstr "Předávat komprimovaný zvuk do přijímače"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:202
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
 msgid "Detect Dolby Surround"
 msgstr "Rozpoznávat Dolby Surround"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:211
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
 msgid "Fastest"
 msgstr "Nejrychlejší"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:211
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
 msgid "Balanced"
 msgstr "Vyvážená"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:210
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:216
 msgid "Output gain"
 msgstr "Výstupní zisk"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:211
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:217
 msgid "Keep the pitch when changing the speed"
 msgstr "Zachovat výšku tónu při změně rychlosti"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:212
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:218
 msgid "Equalizer preamp"
 msgstr "Předzesílení ekvalizéru"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:214
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:220
 msgid "Compressor ratio"
 msgstr "Poměr kompresoru"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:215
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
 msgid "Compressor threshold"
 msgstr "Práh kompresoru"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:216
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:222
 msgid "Compressor makeup gain"
 msgstr "Kompenzační zisk kompresoru"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:218
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:222
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:228
 msgid "Tracks & Languages"
 msgstr "Stopy a jazyky"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
 msgid "Preferred language"
 msgstr "Preferovaný jazyk"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:222
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:228
 msgid "Text encoding"
 msgstr "Kódování textu"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:223
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:255
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:229
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:261
 msgid "Loading Subtitles"
 msgstr "Načítání titulků"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:223
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:229
 msgid "Load subtitle files automatically"
 msgstr "Automaticky načítat soubory titulků"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
 msgid "File name matching"
 msgstr "Párování názvů souborů"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:233
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:239
 msgid "Bold"
 msgstr "Tučné"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:234
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:240
 msgid "Text color"
 msgstr "Barva textu"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:248
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:254
 msgid "Vertical position"
 msgstr "Svislá poloha"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:249
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:255
 msgid "Timing"
 msgstr "Časování"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:250
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:251
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:252
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:266
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:256
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:257
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:259
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:272
 msgid "On-Screen Messages"
 msgstr "Zprávy na obrazovce"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:250
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:256
 msgid "Show feedback for shortcuts"
 msgstr "Zobrazovat odezvu klávesových zkratek"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:251
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:257
 msgid "Show feedback for"
 msgstr "Zobrazovat odezvu po dobu"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:252
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
 msgid "Show filename when a video starts"
 msgstr "Zobrazit název souboru při spuštění videa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:259
 msgid "Show filename for"
 msgstr "Zobrazovat název souboru po dobu"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:255
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:261
 msgid "Load subtitles from these folders"
 msgstr "Načítat titulky z těchto složek"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:263
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:269
 msgid "Monospace font"
 msgstr "Neproporcionální písmo"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:265
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:271
 msgid "Text alignment"
 msgstr "Zarovnání textu"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:266
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:272
 msgid "Position of the filename"
 msgstr "Poloha názvu souboru"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:268
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:269
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:270
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:271
-msgid "Skip Amounts"
-msgstr "Délky skoků"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:268
-msgid "Very short skip"
-msgstr "Velmi krátký skok"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:269
-msgid "Short skip"
-msgstr "Krátký skok"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:270
-msgid "Medium skip"
-msgstr "Střední skok"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:271
-msgid "Long skip"
-msgstr "Dlouhý skok"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:272
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:274
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:275
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:276
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:277
+msgid "Skip Amounts"
+msgstr "Délky skoků"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:274
+msgid "Very short skip"
+msgstr "Velmi krátký skok"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:275
+msgid "Short skip"
+msgstr "Krátký skok"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:276
+msgid "Medium skip"
+msgstr "Střední skok"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:277
+msgid "Long skip"
+msgstr "Dlouhý skok"
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:281
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:283
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:286
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:289
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:292
 msgid "Mouse"
 msgstr "Myš"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:272
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
 msgid "Single click on the video"
 msgstr "Jednoduché kliknutí na video"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:273
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:279
 msgid "Play / Pause"
 msgstr "Přehrát / Pozastavit"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:274
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:280
 msgid "Play / Pause on release"
 msgstr "Přehrát / Pozastavit po uvolnění"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:276
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
 msgid "Scroll wheel"
 msgstr "Kolečko myši"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:277
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:283
 msgid "Horizontal scroll"
 msgstr "Vodorovné posouvání"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:281
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:285
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:377
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:287
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:288
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:290
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:291
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:383
 msgid "Remotes"
 msgstr "Dálková ovládání"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:283
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:289
 msgid "Handle mouse clicks in the video"
 msgstr "Zpracovávat kliknutí myši ve videu"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:290
 msgid "Web remote password"
 msgstr "Heslo webového dálkového ovládání"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:285
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:291
 msgid "Web remote address"
 msgstr "Adresa webového dálkového ovládání"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:286
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:292
 msgid "Ignore the volume keys of the keyboard"
 msgstr "Ignorovat klávesy hlasitosti na klávesnici"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:288
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:289
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:290
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:291
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:294
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:300
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
 msgid "Opening Files"
 msgstr "Otevírání souborů"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:288
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:294
 msgid "Only allow one VLC window"
 msgstr "Povolit jen jedno okno VLC"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:289
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
 msgid "Apply to files opened from the file manager"
 msgstr "Použít i pro soubory otevřené ze správce souborů"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:290
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
 msgid "Add to the playlist instead of replacing it"
 msgstr "Přidat do seznamu skladeb místo jeho nahrazení"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:291
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
 msgid "When opening a folder"
 msgstr "Při otevření složky"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:292
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
 msgid "Only this folder"
 msgstr "Pouze tuto složku"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:292
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
 msgid "Include subfolders"
 msgstr "Včetně podsložek"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:293
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
 msgid "Include and expand subfolders"
 msgstr "Včetně podsložek a jejich rozbalení"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
 msgid "Metadata & Artwork"
 msgstr "Metadata a obaly"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
 msgid "Fetch titles and artwork"
 msgstr "Načítat názvy a obaly"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
 msgid "Read media information automatically"
 msgstr "Automaticky načítat informace o médiích"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
 msgid "Ignored file extensions"
 msgstr "Ignorované přípony souborů"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:307
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
 msgid "Buffering"
 msgstr "Vyrovnávací paměť"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
 msgid "Local files"
 msgstr "Místní soubory"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Network streams"
 msgstr "Síťové proudy"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
 msgid "Live capture"
 msgstr "Živé zachytávání"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:306
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:307
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:312
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
 msgid "Proxy"
 msgstr "Proxy"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:306
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:312
 msgid "System proxy"
 msgstr "Systémový proxy server"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
 msgid "Security"
 msgstr "Zabezpečení"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 msgid "Verify certificates against the system trust store"
 msgstr "Ověřovat certifikáty v systémovém úložišti důvěryhodných certifikátů"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
 msgid "Cipher preference"
 msgstr "Preference šifrování"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
 msgid "Secure (128-bit)"
 msgstr "Bezpečné (128bitové)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
 msgid "Most secure (256-bit)"
 msgstr "Nejbezpečnější (256bitové)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:320
 msgid "Connections"
 msgstr "Připojení"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
 msgid "Connection timeout"
 msgstr "Časový limit připojení"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:320
 msgid "HTTP user agent"
 msgstr "HTTP user agent"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
 msgid "Trusted certificates folder"
 msgstr "Složka důvěryhodných certifikátů"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:320
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
 msgid "Post-processing quality"
 msgstr "Kvalita dodatečného zpracování"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:327
 msgid "Skip the H.264 loop filter"
 msgstr "Přeskočit smyčkový filtr H.264"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:328
 msgid "Non-reference frames"
 msgstr "Nereferenční snímky"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:328
 msgid "Bidirectional frames"
 msgstr "Obousměrné snímky"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:323
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
 msgid "Non-key frames"
 msgstr "Neklíčové snímky"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
 msgid "Decoding threads"
 msgstr "Vlákna dekódování"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:327
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
 msgid "Smooth Playback"
 msgstr "Plynulé přehrávání"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
 msgid "Drop frames when the system can't keep up"
 msgstr "Zahazovat snímky, když systém nestíhá"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
-msgid "Give VLC real-time priority"
-msgstr "Dát VLC prioritu reálného času"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:328
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:336
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
 msgid "Developer"
 msgstr "Vývojář"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
 msgid "Decoder"
 msgstr "Dekodér"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
 msgid "Clock reference averaging"
 msgstr "Průměrování referenčních hodin"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
 msgid "Save recordings to"
 msgstr "Ukládat nahrávky do"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:340
 msgid "Record without re-encoding when possible"
 msgstr "Nahrávat bez překódování, pokud je to možné"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:348
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:353
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:354
 msgid "Casting"
 msgstr "Přenos do TV"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
 msgid "Cast quality"
 msgstr "Kvalita přenosu"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:345
 msgid "Low CPU"
 msgstr "Nízké vytížení CPU"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
 msgid "Play locally while streaming"
 msgstr "Přehrávat i místně během streamování"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:348
 msgid "Include audio"
 msgstr "Zahrnout zvuk"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:343
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:349
 msgid "Include video"
 msgstr "Zahrnout video"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:350
 msgid "Include subtitles"
 msgstr "Vložit titulky"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:345
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:351
 msgid "Encoding preset"
 msgstr "Předvolba kódování"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:346
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:352
 msgid "Tuning"
 msgstr "Ladění"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:353
 msgid "Send Dolby audio as is"
 msgstr "Odesílat zvuk Dolby beze změny"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:348
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:354
 msgid "Cast HTTP port"
 msgstr "HTTP port přenosu"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:349
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:355
 msgid "Keep the stream output open between items"
 msgstr "Ponechat výstup proudu otevřený mezi položkami"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:395
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:401
 #: modules/gui/qt/widgets/qml/SplitButton.qml:142
 msgid "More options"
 msgstr "Další možnosti"
@@ -4540,7 +4540,7 @@ msgstr "VYP"
 
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:90
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:74
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:594
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:595
 msgid "Global Hotkey"
 msgstr "Globální zkratka"
 
@@ -4596,27 +4596,27 @@ msgstr "Následující program / ID služby"
 msgid "All Fields"
 msgstr "Všechna pole"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:225
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:226
 msgid "%1. Press to add a key"
 msgstr "%1. Stiskněte pro přidání klávesy"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:226
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:227
 msgid "No key. Press to add one"
 msgstr "Žádná klávesa. Stiskněte pro přidání"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:340
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:341
 msgid "Remove %1"
 msgstr "Odebrat %1"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:422
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:423
 msgid "Search Keyboard Shortcuts..."
 msgstr "Hledat klávesové zkratky..."
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:688
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:689
 msgid "Hotkey of %1"
 msgstr "Klávesová zkratka pro %1"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:697
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:698
 msgid "Global hotkey of %1"
 msgstr "Globální klávesová zkratka pro %1"
 
@@ -4692,33 +4692,33 @@ msgstr "Seriály"
 msgid "Work"
 msgstr "Práce"
 
-#: modules/gui/qt/dialogs/toolbar/profile_persistence.cpp:100
+#: modules/gui/qt/dialogs/toolbar/profile_persistence.cpp:99
 msgid "Could not save the selected profile."
 msgstr "Vybraný profil se nepodařilo uložit."
 
-#: modules/gui/qt/dialogs/toolbar/profile_settings.cpp:186
+#: modules/gui/qt/dialogs/toolbar/profile_settings.cpp:224
 msgid "Profile settings are unavailable or incompatible."
 msgstr "Nastavení profilu není k dispozici nebo není kompatibilní."
 
-#: modules/gui/qt/dialogs/toolbar/profile_settings.cpp:211
+#: modules/gui/qt/dialogs/toolbar/profile_settings.cpp:249
 msgid "Profile appearance is invalid."
 msgstr "Vzhled profilu je neplatný."
 
-#: modules/gui/qt/dialogs/toolbar/profile_settings.cpp:228
+#: modules/gui/qt/dialogs/toolbar/profile_settings.cpp:265
 msgid "Could not save profile appearance."
 msgstr "Vzhled profilu se nepodařilo uložit."
 
-#: modules/gui/qt/dialogs/toolbar/profile_settings.cpp:245
+#: modules/gui/qt/dialogs/toolbar/profile_settings.cpp:283
 msgid "Could not apply profile settings; previous values restored."
 msgstr ""
 "Nastavení profilu se nepodařilo použít; byly obnoveny předchozí hodnoty."
 
-#: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:41
+#: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:40
 #: modules/gui/qt/menus/qml/MainMenu.qml:117
 msgid "Profile (%1)"
 msgstr "Profil (%1)"
 
-#: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:87
+#: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:86
 msgid "Customize player"
 msgstr "Přizpůsobit přehrávač"
 
@@ -4808,11 +4808,11 @@ msgstr "Smazat profil"
 msgid "Its layout and its settings go with it."
 msgstr "Jeho rozvržení a nastavení budou smazány s ním."
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1209
+#: modules/gui/qt/maininterface/mainctx.cpp:1283
 msgid "Paste from clipboard"
 msgstr "Vložit ze schránky"
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1210
+#: modules/gui/qt/maininterface/mainctx.cpp:1284
 msgid "Do you want to enqueue the following URLs into the play queue?"
 msgstr "Chcete zařadit následující adresy URL do fronty přehrávání?"
 
@@ -4820,10 +4820,10 @@ msgstr "Chcete zařadit následující adresy URL do fronty přehrávání?"
 #. * right to left (Arabic, Hebrew, Persian, Urdu...), else "LTR". Choosing
 #. * the language lays the interface out in that direction (the user can
 #. * change it under the language).
-#: modules/gui/qt/maininterface/mainctx.cpp:1352
+#: modules/gui/qt/maininterface/mainctx.cpp:1441
 msgctxt "layout direction"
 msgid "LTR"
-msgstr ""
+msgstr "LTR"
 
 #: modules/gui/qt/maininterface/qml/LocalTopbar.qml:37
 msgid "Local top bar"
@@ -4833,7 +4833,7 @@ msgstr "Místní horní panel"
 msgid "Show navigation menu"
 msgstr "Zobrazit navigační nabídku"
 
-#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:241
+#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:243
 #: modules/gui/qt/player/qml/TopBar.qml:493
 msgid "VLC Media Player"
 msgstr "VLC Media Player"
@@ -4857,18 +4857,10 @@ msgstr "Domovské zobrazení"
 msgid "Open Disc"
 msgstr "Otevřít disk"
 
-#: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:34
-msgid "Open Multiple Files"
-msgstr "Otevřít více souborů"
-
 #: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:38
 #: modules/gui/qt/menus/menus.cpp:959 modules/gui/qt/menus/qml/MainMenu.qml:77
 msgid "Open Capture Device"
 msgstr "Otevřít zachytávací zařízení"
-
-#: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:39
-msgid "Open Location from clipboard"
-msgstr "Otevřít umístění ze schránky"
 
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:29
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:30
@@ -4969,14 +4961,14 @@ msgstr "Znovu zkontrolovat"
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:88
 #: modules/gui/qt/medialibrary/qml/VideoGroupDisplay.qml:40
-#: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:73
+#: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:84
 #: modules/gui/qt/medialibrary/qml/VideoListDisplay.qml:90
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:81
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:190
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:198
 #: modules/gui/qt/network/standardpathmodel.cpp:152
-#: modules/gui/qt/player/qml/CompactLibrary.qml:78
-#: modules/gui/qt/player/qml/CompactLibrary.qml:197
-#: modules/gui/qt/player/qml/CompactLibrary.qml:292
+#: modules/gui/qt/player/qml/CompactLibrary.qml:79
+#: modules/gui/qt/player/qml/CompactLibrary.qml:198
+#: modules/gui/qt/player/qml/CompactLibrary.qml:293
 msgid "Videos"
 msgstr "Videa"
 
@@ -4991,8 +4983,8 @@ msgstr "Videa"
 #: modules/gui/qt/medialibrary/qml/VideoDisplay.qml:53
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:62
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:98
-#: modules/gui/qt/player/qml/CompactLibrary.qml:81
-#: modules/gui/qt/player/qml/CompactLibrary.qml:295
+#: modules/gui/qt/player/qml/CompactLibrary.qml:82
+#: modules/gui/qt/player/qml/CompactLibrary.qml:296
 #: modules/gui/qt/player/qml/controlbarcontrols/PlaylistsButton.qml:31
 msgid "Playlists"
 msgstr "Seznamy skladeb"
@@ -5000,8 +4992,8 @@ msgstr "Seznamy skladeb"
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:101
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:224
-#: modules/gui/qt/player/qml/CompactLibrary.qml:82
-#: modules/gui/qt/player/qml/CompactLibrary.qml:296
+#: modules/gui/qt/player/qml/CompactLibrary.qml:83
+#: modules/gui/qt/player/qml/CompactLibrary.qml:297
 msgid "Recent"
 msgstr "Nedávné"
 
@@ -5015,8 +5007,8 @@ msgstr "Přidat položku"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml:234
 #: modules/gui/qt/medialibrary/qml/MusicArtistsDisplay.qml:54
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:37
-#: modules/gui/qt/player/qml/CompactLibrary.qml:299
-#: modules/gui/qt/player/qml/CompactLibrary.qml:506
+#: modules/gui/qt/player/qml/CompactLibrary.qml:300
+#: modules/gui/qt/player/qml/CompactLibrary.qml:507
 msgid "Artists"
 msgstr "Umělci"
 
@@ -5025,8 +5017,8 @@ msgstr "Umělci"
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsDisplay.qml:30
 #: modules/gui/qt/medialibrary/qml/MusicArtist.qml:404
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:42
-#: modules/gui/qt/player/qml/CompactLibrary.qml:298
-#: modules/gui/qt/player/qml/CompactLibrary.qml:505
+#: modules/gui/qt/player/qml/CompactLibrary.qml:299
+#: modules/gui/qt/player/qml/CompactLibrary.qml:506
 msgid "Albums"
 msgstr "Alba"
 
@@ -5034,8 +5026,8 @@ msgstr "Alba"
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:93
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:50
 #: modules/gui/qt/medialibrary/qml/MusicGenresDisplay.qml:51
-#: modules/gui/qt/player/qml/CompactLibrary.qml:300
-#: modules/gui/qt/player/qml/CompactLibrary.qml:507
+#: modules/gui/qt/player/qml/CompactLibrary.qml:301
+#: modules/gui/qt/player/qml/CompactLibrary.qml:508
 msgid "Genres"
 msgstr "Žánry"
 
@@ -5175,12 +5167,12 @@ msgstr ""
 "soubory (*)"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:369
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:540
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:552
 msgid "Choose the folder of the audio tracks"
 msgstr "Vyberte složku se zvukovými stopami"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:370
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:541
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:553
 msgid "Choose the folder of the subtitles"
 msgstr "Vyberte složku s titulky"
 
@@ -5296,8 +5288,8 @@ msgstr[1] "%1 skladby"
 msgstr[2] "%1 skladeb"
 
 #: modules/gui/qt/medialibrary/qml/ArtistTopBanner.qml:253
-#: modules/gui/qt/player/qml/CompactLibrary.qml:794
-#: modules/gui/qt/player/qml/CompactLibrary.qml:808
+#: modules/gui/qt/player/qml/CompactLibrary.qml:795
+#: modules/gui/qt/player/qml/CompactLibrary.qml:809
 msgid "Play all"
 msgstr "Přehrát vše"
 
@@ -5324,32 +5316,32 @@ msgstr "Neznámý umělec"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:96
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:228
-#: modules/gui/qt/player/qml/ResumeDialog.qml:145
-#: modules/gui/qt/player/qml/CompactLibrary.qml:400
+#: modules/gui/qt/player/qml/ResumeDialog.qml:146
+#: modules/gui/qt/player/qml/CompactLibrary.qml:401
 msgid "Continue Watching"
 msgstr "Pokračovat ve sledování"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:146
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:488
-#: modules/gui/qt/player/qml/CompactLibrary.qml:403
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:508
+#: modules/gui/qt/player/qml/CompactLibrary.qml:404
 msgid "Favorites"
 msgstr "Oblíbené"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:180
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:569
-#: modules/gui/qt/player/qml/CompactLibrary.qml:404
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:589
+#: modules/gui/qt/player/qml/CompactLibrary.qml:405
 msgid "New Videos"
 msgstr "Nová videa"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:254
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:310
-#: modules/gui/qt/player/qml/CompactLibrary.qml:401
+#: modules/gui/qt/player/qml/CompactLibrary.qml:402
 msgid "Listen Again"
 msgstr "Poslechnout znovu"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:287
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:651
-#: modules/gui/qt/player/qml/CompactLibrary.qml:405
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:671
+#: modules/gui/qt/player/qml/CompactLibrary.qml:406
 msgid "New Music"
 msgstr "Nová hudba"
 
@@ -5368,7 +5360,7 @@ msgid "Alphabetic"
 msgstr "Abecedně"
 
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:381
-#: modules/gui/qt/player/qml/CompactLibrary.qml:402
+#: modules/gui/qt/player/qml/CompactLibrary.qml:403
 msgid "Frequently Visited Folders"
 msgstr "Často navštěvované složky"
 
@@ -5487,20 +5479,20 @@ msgstr "Posunout nahoru"
 msgid "Move down"
 msgstr "Posunout dolů"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:166
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:167
 msgid "Remove selected media from this playlist?"
 msgstr "Odebrat vybraná média z tohoto seznamu skladeb?"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:167
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:168
 msgid "Remove from playlist"
 msgstr "Odebrat ze seznamu skladeb"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:220
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:250
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:221
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:251
 msgid "Processing..."
 msgstr "Zpracování..."
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:316
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:317
 msgid "No media found"
 msgstr "Nebyla nalezena žádná média"
 
@@ -5508,29 +5500,29 @@ msgstr "Nebyla nalezena žádná média"
 msgid "Playlist media list"
 msgstr "Seznam médií seznamu skladeb"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:208
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:209
 msgid "Do you really want to delete the selected playlist?"
 msgid_plural "Do you really want to delete the selected playlists?"
 msgstr[0] "Opravdu chcete smazat vybraný seznam skladeb?"
 msgstr[1] "Opravdu chcete smazat vybrané seznamy skladeb?"
 msgstr[2] "Opravdu chcete smazat vybrané seznamy skladeb?"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:211
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:212
 msgid "Delete playlist"
 msgid_plural "Delete playlists"
 msgstr[0] "Smazat seznam skladeb"
 msgstr[1] "Smazat seznamy skladeb"
 msgstr[2] "Smazat seznamy skladeb"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:366
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:367
 msgid "Items"
 msgstr "Položky"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:453
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:454
 msgid "No playlists found"
 msgstr "Nebyly nalezeny žádné seznamy skladeb"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:454
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:455
 msgid "Create a playlist with files or add media from the library"
 msgstr "Vytvořte seznam skladeb ze souborů nebo přidejte média z knihovny"
 
@@ -5544,7 +5536,7 @@ msgstr "Vytvořte seznam skladeb ze souborů nebo přidejte média z knihovny"
 msgid "Url"
 msgstr "URL"
 
-#: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:121
+#: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:132
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:77
 msgid "%1 Video"
 msgid_plural "%1 Videos"
@@ -5627,22 +5619,22 @@ msgid "Go to Source"
 msgstr "Přejít na zdroj"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:134
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:204
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:207
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:57
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:899
 msgid "Add Subtitle Tracks"
 msgstr "Přidat stopy titulků"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:140
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:206
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:209
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:62
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:72
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:75
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:903
 msgid "Add Audio Tracks"
 msgstr "Přidat zvukové stopy"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:146
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:208
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:211
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:69
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:31
 msgid "Properties & Metadata"
@@ -5705,11 +5697,11 @@ msgstr "Upravit zvukové stopy"
 msgid "Resync"
 msgstr "Znovu synchronizovat"
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:545
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:548
 msgid "No media matches the search"
 msgstr "Hledání neodpovídají žádná média"
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:546
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:549
 msgid "No media in this folder"
 msgstr "V této složce nejsou žádná média"
 
@@ -5729,19 +5721,14 @@ msgstr "Tuto složku se nepodařilo přidat do knihovny: %1"
 msgid "Media library"
 msgstr "Knihovna médií"
 
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:49
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
-msgid "Export Playlist"
-msgstr "Exportovat seznam skladeb"
-
 #: modules/gui/qt/medialibrary/qml/OpenMediaButton.qml:58
-#: modules/gui/qt/player/qml/CompactLibrary.qml:618
+#: modules/gui/qt/player/qml/CompactLibrary.qml:619
 #: modules/gui/qt/player/qml/controlbarcontrols/OpenButton.qml:31
 msgid "Open media"
 msgstr "Otevřít médium"
 
 #: modules/gui/qt/medialibrary/qml/OpenMediaButton.qml:76
-#: modules/gui/qt/player/qml/CompactLibrary.qml:761
+#: modules/gui/qt/player/qml/CompactLibrary.qml:762
 msgid "Add folder to library…"
 msgstr "Přidat složku do knihovny…"
 
@@ -5803,7 +5790,6 @@ msgid "These files will be added to the playlist."
 msgstr "Tyto soubory budou přidány do seznamu skladeb."
 
 #: modules/gui/qt/medialibrary/qml/PlaylistCreateDialog.qml:228
-#: modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml:88
 msgid "Choose files"
 msgstr "Vybrat soubory"
 
@@ -5834,11 +5820,11 @@ msgstr[1] "%1 videa"
 msgstr[2] "%1 videí"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:49
-#: modules/gui/qt/player/qml/CompactLibrary.qml:848
+#: modules/gui/qt/player/qml/CompactLibrary.qml:849
 #: modules/gui/qt/player/qml/MiniPlayerQueue.qml:107
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:193
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:195
 #: modules/gui/qt/widgets/qml/DragItem.qml:620
-#: modules/gui/qt/widgets/qml/LibraryHeader.qml:418
+#: modules/gui/qt/widgets/qml/LibraryHeader.qml:419
 msgid "%1 item"
 msgid_plural "%1 items"
 msgstr[0] "%1 položka"
@@ -5861,78 +5847,64 @@ msgstr "K tomuto seznamu skladeb"
 msgid "To This File"
 msgstr "K tomuto souboru"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:72
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:75
 msgid "Add Subtitles"
 msgstr "Přidat titulky"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:519
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:520
-#: modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml:66
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:529
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:531
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:532
 msgid "From Computer"
 msgstr "Z počítače"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:520
-#: modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml:66
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:531
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:532
 msgid "From Link"
 msgstr "Z odkazu"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:520
-#: modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml:66
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:531
 msgid "From OpenSubtitles"
 msgstr "Z OpenSubtitles"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:589
-#: modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml:126
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:601
 msgid "Direct HTTPS link to a subtitle file"
 msgstr "Přímý odkaz HTTPS na soubor titulků"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:604
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:616
 msgid "Title or episode"
 msgstr "Název nebo epizoda"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:771
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:783
 msgid "OpenSubtitles API key"
 msgstr "Klíč API OpenSubtitles"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:886
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:898
 msgid "Searching OpenSubtitles…"
 msgstr "Hledání na OpenSubtitles…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:888
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:900
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "Vyhledejte na OpenSubtitles a zobrazí se soubory titulků."
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:891
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:903
 msgid "Working on audio tracks…"
 msgstr "Zpracování zvukových stop…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:891
-#: modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml:170
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:903
 msgid "Working on subtitles…"
 msgstr "Zpracování titulků…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:894
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:906
 msgid "Enter a direct link to a subtitle file above."
 msgstr "Výše zadejte přímý odkaz na soubor titulků."
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:895
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:907
 msgid "No audio file in this folder: choose another one above."
 msgstr "V této složce není žádný zvukový soubor: výše vyberte jinou."
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:896
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:908
 msgid "No subtitle file in this folder: choose another one above."
 msgstr "V této složce není žádný soubor titulků: výše vyberte jinou."
-
-#: modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml:108
-msgid "%1 media file"
-msgid_plural "%1 media files"
-msgstr[0] "%1 mediální soubor"
-msgstr[1] "%1 mediální soubory"
-msgstr[2] "%1 mediálních souborů"
-
-#: modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml:140
-msgid "Add link"
-msgstr "Přidat odkaz"
 
 #: modules/gui/qt/menus/custom_menus.cpp:116
 msgid "Search for cast devices"
@@ -6162,11 +6134,11 @@ msgid "Shuffle the play queue"
 msgstr "Zamíchat frontu přehrávání"
 
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1263
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1269
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1272
 msgid "Discard the filtered out items"
 msgstr "Zahodit odfiltrované položky"
 
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1270
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1271
 msgid ""
 "Do you really want to discard the items that are not displayed at the moment?"
 msgstr "Opravdu chcete zahodit položky, které se právě nezobrazují?"
@@ -6283,7 +6255,7 @@ msgid "This build can't search the internet."
 msgstr "Toto sestavení neumí vyhledávat na internetu."
 
 #: modules/gui/qt/player/subtitle_finder.cpp:1219
-#: modules/gui/qt/player/subtitle_finder.cpp:1459
+#: modules/gui/qt/player/subtitle_finder.cpp:1472
 msgid "No connection to the internet."
 msgstr "Žádné připojení k internetu."
 
@@ -6299,64 +6271,64 @@ msgstr "„%1“ nebylo nalezeno. Vyhledejte jeho název."
 msgid "No subtitles were found for %1."
 msgstr "Pro %1 nebyly nalezeny žádné titulky."
 
-#: modules/gui/qt/player/subtitle_finder.cpp:1460
+#: modules/gui/qt/player/subtitle_finder.cpp:1473
 msgid "The subtitle couldn't be downloaded (%1)."
 msgstr "Titulky se nepodařilo stáhnout (%1)."
 
-#: modules/gui/qt/player/subtitle_finder.cpp:1490
+#: modules/gui/qt/player/subtitle_finder.cpp:1503
 msgid "The subtitle couldn't be saved."
 msgstr "Titulky se nepodařilo uložit."
 
-#: modules/gui/qt/player/subtitle_finder.cpp:1500
-#: modules/gui/qt/player/subtitle_providers.cpp:842
-#: modules/gui/qt/player/subtitle_providers.cpp:875
+#: modules/gui/qt/player/subtitle_finder.cpp:1513
+#: modules/gui/qt/player/subtitle_providers.cpp:922
+#: modules/gui/qt/player/subtitle_providers.cpp:955
 msgid "The subtitle couldn't be unpacked."
 msgstr "Titulky se nepodařilo rozbalit."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:81
+#: modules/gui/qt/player/subtitle_providers.cpp:87
 msgid "%1 didn't answer."
 msgstr "%1 neodpovídá."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:83
+#: modules/gui/qt/player/subtitle_providers.cpp:89
 msgid "%1 asks to wait a moment (too many searches)."
 msgstr "%1 žádá o chvíli strpení (příliš mnoho vyhledávání)."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:84
+#: modules/gui/qt/player/subtitle_providers.cpp:90
 msgid "%1 didn't answer (%2)."
 msgstr "%1 neodpovídá (%2)."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:778
+#: modules/gui/qt/player/subtitle_providers.cpp:858
 msgid "All languages · movies and series · finds those made for your file"
 msgstr ""
 "Všechny jazyky · filmy a seriály · najde titulky vytvořené pro váš soubor"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:780
+#: modules/gui/qt/player/subtitle_providers.cpp:860
 msgid "Hebrew · movies and series"
 msgstr "Hebrejština · filmy a seriály"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:782
+#: modules/gui/qt/player/subtitle_providers.cpp:862
 msgid "Series · many languages"
 msgstr "Seriály · mnoho jazyků"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:784
+#: modules/gui/qt/player/subtitle_providers.cpp:864
 msgid "Movies · many languages"
 msgstr "Filmy · mnoho jazyků"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:830
+#: modules/gui/qt/player/subtitle_providers.cpp:910
 msgid "This subtitle comes as a RAR archive, which can't be opened here."
 msgstr "Tyto titulky jsou v archivu RAR, který zde nelze otevřít."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:876
+#: modules/gui/qt/player/subtitle_providers.cpp:956
 msgid "The archive has no subtitle in it."
 msgstr "Archiv neobsahuje žádné titulky."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:888
+#: modules/gui/qt/player/subtitle_providers.cpp:968
 msgid ""
 "OpenSubtitles keeps this subtitle for its paying members. Choose another one."
 msgstr ""
 "OpenSubtitles tyto titulky poskytuje pouze platícím členům. Vyberte jiné."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:894
+#: modules/gui/qt/player/subtitle_providers.cpp:974
 msgid "The subtitle is empty."
 msgstr "Titulky jsou prázdné."
 
@@ -6373,7 +6345,7 @@ msgid "Waveform analysis did not complete."
 msgstr "Analýza vlnového průběhu nebyla dokončena."
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:41
-#: modules/gui/qt/player/qml/controlbarcontrols/SettingsButton.qml:26
+#: modules/gui/qt/player/qml/controlbarcontrols/SettingsButton.qml:27
 msgid "VLC Settings"
 msgstr "Nastavení VLC"
 
@@ -6402,9 +6374,10 @@ msgstr "Vpřed o 15 s"
 msgid "Properties"
 msgstr "Vlastnosti"
 
-#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:60
-msgid "Volume Widget"
-msgstr "Ovládání hlasitosti"
+#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:56
+#: modules/gui/qt/player/qml/controlbarcontrols/LangButton.qml:54
+msgid "Languages and tracks"
+msgstr "Jazyky a stopy"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:61
 msgid "Navigation Box"
@@ -6415,7 +6388,7 @@ msgid "Program Button"
 msgstr "Tlačítko programu"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:67
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:32
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:33
 msgid "Cast to TV"
 msgstr "Přehrát na TV"
 
@@ -6538,70 +6511,70 @@ msgstr "Předvolby:"
 msgid "Player"
 msgstr "Přehrávač"
 
-#: modules/gui/qt/player/qml/Player.qml:1036
+#: modules/gui/qt/player/qml/Player.qml:1038
 msgid "Subtitles on the TV: %1"
 msgstr "Titulky na televizoru: %1"
 
-#: modules/gui/qt/player/qml/Player.qml:1036
+#: modules/gui/qt/player/qml/Player.qml:1038
 msgid "Subtitles off on the TV"
 msgstr "Titulky na televizoru vypnuty"
 
-#: modules/gui/qt/player/qml/Player.qml:1146
+#: modules/gui/qt/player/qml/Player.qml:1148
 msgid "Not playing on %1"
 msgstr "Nepřehrává se na %1"
 
-#: modules/gui/qt/player/qml/Player.qml:1148
-#: modules/gui/qt/player/qml/Player.qml:1274
+#: modules/gui/qt/player/qml/Player.qml:1150
+#: modules/gui/qt/player/qml/Player.qml:1276
 msgid "Connecting to %1…"
 msgstr "Připojování k %1…"
 
-#: modules/gui/qt/player/qml/Player.qml:1150
+#: modules/gui/qt/player/qml/Player.qml:1152
 msgid "Playing on %1"
 msgstr "Přehrává se na %1"
 
-#: modules/gui/qt/player/qml/Player.qml:1151
+#: modules/gui/qt/player/qml/Player.qml:1153
 msgid "The sound plays on %1"
 msgstr "Zvuk hraje na %1"
 
-#: modules/gui/qt/player/qml/Player.qml:1175
+#: modules/gui/qt/player/qml/Player.qml:1177
 msgid "Pause, seek and change the subtitles here: the TV follows."
 msgstr ""
 "Pozastavení, posun i změnu titulků ovládáte zde: televize se přizpůsobí."
 
-#: modules/gui/qt/player/qml/Player.qml:1192
+#: modules/gui/qt/player/qml/Player.qml:1194
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the media."
 msgstr ""
 "Brána Windows Firewall nedovoluje zařízení %1 připojit se k tomuto počítači "
 "a číst médium."
 
-#: modules/gui/qt/player/qml/Player.qml:1204
+#: modules/gui/qt/player/qml/Player.qml:1206
 msgid "Waiting for Windows…"
 msgstr "Čekání na Windows…"
 
-#: modules/gui/qt/player/qml/Player.qml:1205
+#: modules/gui/qt/player/qml/Player.qml:1207
 msgid "Allow on public networks too"
 msgstr "Povolit i ve veřejných sítích"
 
-#: modules/gui/qt/player/qml/Player.qml:1206
+#: modules/gui/qt/player/qml/Player.qml:1208
 msgid "Allow on private networks"
 msgstr "Povolit v privátních sítích"
 
-#: modules/gui/qt/player/qml/Player.qml:1218
+#: modules/gui/qt/player/qml/Player.qml:1220
 msgid "Try again"
 msgstr "Zkusit znovu"
 
-#: modules/gui/qt/player/qml/Player.qml:1223
-#: modules/gui/qt/player/qml/Player.qml:1233
+#: modules/gui/qt/player/qml/Player.qml:1225
+#: modules/gui/qt/player/qml/Player.qml:1235
 msgid "Play here"
 msgstr "Přehrát zde"
 
-#: modules/gui/qt/player/qml/Player.qml:1233
-#: modules/gui/qt/player/qml/Player.qml:1284
+#: modules/gui/qt/player/qml/Player.qml:1235
+#: modules/gui/qt/player/qml/Player.qml:1286
 msgid "Stop casting"
 msgstr "Ukončit přenos"
 
-#: modules/gui/qt/player/qml/Player.qml:1275
+#: modules/gui/qt/player/qml/Player.qml:1277
 msgid "Also on %1"
 msgstr "Také na %1"
 
@@ -6609,11 +6582,11 @@ msgstr "Také na %1"
 msgid "Resume dialog"
 msgstr "Dialog pokračování"
 
-#: modules/gui/qt/player/qml/ResumeDialog.qml:134
+#: modules/gui/qt/player/qml/ResumeDialog.qml:135
 msgid "You’ve watched till %1 already."
 msgstr "Už jste sledovali do %1."
 
-#: modules/gui/qt/player/qml/ResumeDialog.qml:136
+#: modules/gui/qt/player/qml/ResumeDialog.qml:137
 msgid "Continue where you left off?"
 msgstr "Pokračovat tam, kde jste přestali?"
 
@@ -6625,57 +6598,57 @@ msgstr "Horní panel přehrávače"
 msgid "Show %1 in the library"
 msgstr "Zobrazit %1 v knihovně"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:177
-#: modules/gui/qt/player/qml/TracksMenu.qml:274
+#: modules/gui/qt/player/qml/TracksMenu.qml:180
+#: modules/gui/qt/player/qml/TracksMenu.qml:277
 msgid "Embedded Tracks"
 msgstr "Vložené stopy"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:200
+#: modules/gui/qt/player/qml/TracksMenu.qml:203
 msgid "No audio tracks in this media"
 msgstr "Toto médium nemá žádné zvukové stopy"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:217
+#: modules/gui/qt/player/qml/TracksMenu.qml:220
 msgid "Output Device"
 msgstr "Výstupní zařízení"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:226
+#: modules/gui/qt/player/qml/TracksMenu.qml:229
 msgid "Refresh output devices"
 msgstr "Aktualizovat výstupní zařízení"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:249
+#: modules/gui/qt/player/qml/TracksMenu.qml:252
 msgid "No output device available"
 msgstr "Není k dispozici žádné výstupní zařízení"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:298
+#: modules/gui/qt/player/qml/TracksMenu.qml:301
 msgid "No video tracks in this media"
 msgstr "Toto médium nemá žádné stopy videa"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:316
+#: modules/gui/qt/player/qml/TracksMenu.qml:319
 msgid "Current: %1×"
 msgstr "Aktuální: %1×"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:333
+#: modules/gui/qt/player/qml/TracksMenu.qml:336
 msgid "Speed cannot be changed for this media"
 msgstr "U tohoto média nelze měnit rychlost"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:338
+#: modules/gui/qt/player/qml/TracksMenu.qml:341
 #: modules/gui/qt/player/qml/QueueCard.qml:220
 msgid "No chapters in this media"
 msgstr "Toto médium nemá žádné kapitoly"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:354
+#: modules/gui/qt/player/qml/TracksMenu.qml:357
 msgid "Manage bookmarks…"
 msgstr "Spravovat záložky…"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:360
+#: modules/gui/qt/player/qml/TracksMenu.qml:363
 msgid "Bookmarks require the media library"
 msgstr "Záložky vyžadují knihovnu médií"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:389
+#: modules/gui/qt/player/qml/TracksMenu.qml:392
 msgid "Show Preferences"
 msgstr "Zobrazit nastavení"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:535
+#: modules/gui/qt/player/qml/TracksMenu.qml:538
 #: modules/gui/qt/player/qml/TracksPageAudio.qml:37
 #: modules/gui/qt/player/qml/TracksPageSubtitle.qml:37
 #: modules/gui/qt/player/qml/SubtitleSyncTimeline.qml:42
@@ -6703,27 +6676,27 @@ msgstr "Stopy videa"
 msgid "Track list"
 msgstr "Seznam stop"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:288
+#: modules/gui/qt/player/qml/AudioContent.qml:321
 msgid "Title and artist"
 msgstr "Název a umělec"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:418
+#: modules/gui/qt/player/qml/AudioContent.qml:451
 msgid "Step back"
 msgstr "Krok zpět"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:443
+#: modules/gui/qt/player/qml/AudioContent.qml:476
 msgid "Toggle lyrics view"
 msgstr "Přepnout zobrazení textu písně"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:480
+#: modules/gui/qt/player/qml/AudioContent.qml:513
 msgid "Sync lyrics to playback"
 msgstr "Synchronizovat text s přehráváním"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:495
+#: modules/gui/qt/player/qml/AudioContent.qml:528
 msgid "Sync lyrics to playback position"
 msgstr "Synchronizovat text s pozicí přehrávání"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:515
+#: modules/gui/qt/player/qml/AudioContent.qml:548
 msgid "Volume %1%"
 msgstr "Hlasitost %1%"
 
@@ -6731,103 +6704,103 @@ msgstr "Hlasitost %1%"
 msgid "Play audio to select a visualization."
 msgstr "Přehrajte zvuk, abyste mohli vybrat vizualizaci."
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:198
 #: modules/gui/qt/player/qml/CompactLibrary.qml:199
-#: modules/gui/qt/player/qml/CompactLibrary.qml:297
-#: modules/gui/qt/player/qml/CompactLibrary.qml:504
+#: modules/gui/qt/player/qml/CompactLibrary.qml:200
+#: modules/gui/qt/player/qml/CompactLibrary.qml:298
+#: modules/gui/qt/player/qml/CompactLibrary.qml:505
 msgid "Songs"
 msgstr "Skladby"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:726
+#: modules/gui/qt/player/qml/CompactLibrary.qml:727
 msgid "More"
 msgstr "Více"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:751
-#: modules/gui/qt/player/qml/CompactLibrary.qml:766
+#: modules/gui/qt/player/qml/CompactLibrary.qml:752
+#: modules/gui/qt/player/qml/CompactLibrary.qml:767
 msgid "Rescan library"
 msgstr "Znovu prohledat knihovnu"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:776
+#: modules/gui/qt/player/qml/CompactLibrary.qml:777
 msgid "Add network stream…"
 msgstr "Přidat síťový proud…"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:785
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1154
+#: modules/gui/qt/player/qml/CompactLibrary.qml:786
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1155
 msgid "Create playlist"
 msgstr "Vytvořit seznam skladeb"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:799
-#: modules/gui/qt/player/qml/CompactLibrary.qml:813
+#: modules/gui/qt/player/qml/CompactLibrary.qml:800
+#: modules/gui/qt/player/qml/CompactLibrary.qml:814
 msgid "Add all to queue"
 msgstr "Přidat vše do fronty"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:818
+#: modules/gui/qt/player/qml/CompactLibrary.qml:819
 msgid "Up one folder"
 msgstr "O složku výš"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:828
+#: modules/gui/qt/player/qml/CompactLibrary.qml:829
 msgid "Open in the library"
 msgstr "Otevřít v knihovně"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:887
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:205
+#: modules/gui/qt/player/qml/CompactLibrary.qml:888
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:207
 #: modules/gui/qt/playlist/qml/QueueHeader.qml:74
 #: modules/gui/qt/widgets/qml/GridSortFilterControls.qml:42
 #: modules/gui/qt/widgets/qml/SortControl.qml:64
-#: modules/gui/qt/widgets/qml/LibraryHeader.qml:458
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:459
+#: modules/gui/qt/widgets/qml/LibraryHeader.qml:460
 msgid "Sort"
 msgstr "Seřadit"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:922
+#: modules/gui/qt/player/qml/CompactLibrary.qml:923
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:82
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:83
 msgid "Title A-Z"
 msgstr "Název A–Z"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:926
+#: modules/gui/qt/player/qml/CompactLibrary.qml:927
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:82
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:83
 msgid "Title Z-A"
 msgstr "Název Z–A"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:930
+#: modules/gui/qt/player/qml/CompactLibrary.qml:931
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:80
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:81
 msgid "Newest First"
 msgstr "Nejnovější první"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:935
+#: modules/gui/qt/player/qml/CompactLibrary.qml:936
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:80
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:81
 msgid "Oldest First"
 msgstr "Nejstarší první"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:954
-#: modules/gui/qt/widgets/qml/LibraryHeader.qml:503
+#: modules/gui/qt/player/qml/CompactLibrary.qml:955
+#: modules/gui/qt/widgets/qml/LibraryHeader.qml:504
 msgid "Grid View"
 msgstr "Mřížka"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:959
-#: modules/gui/qt/widgets/qml/LibraryHeader.qml:509
+#: modules/gui/qt/player/qml/CompactLibrary.qml:960
+#: modules/gui/qt/widgets/qml/LibraryHeader.qml:510
 msgid "List View"
 msgstr "Seznam"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1068
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1069
 msgid "See all"
 msgstr "Zobrazit vše"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1214
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1215
 msgid "Add Network Stream"
 msgstr "Přidat síťový proud"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1323
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1339
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1324
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1340
 msgid "The media library is not available."
 msgstr "Knihovna médií není k dispozici."
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1324
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1340
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1325
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1341
 msgid "Nothing here yet."
 msgstr "Zatím tu nic není."
 
@@ -6855,11 +6828,11 @@ msgstr "Zobrazit rozhraní přehrávače"
 msgid "Hide player UI"
 msgstr "Skrýt rozhraní přehrávače"
 
-#: modules/gui/qt/player/qml/LibraryMiniPlayer.qml:281
+#: modules/gui/qt/player/qml/LibraryMiniPlayer.qml:285
 msgid "Hide queue"
 msgstr "Skrýt frontu"
 
-#: modules/gui/qt/player/qml/LibraryMiniPlayer.qml:281
+#: modules/gui/qt/player/qml/LibraryMiniPlayer.qml:285
 msgid "Show queue"
 msgstr "Zobrazit frontu"
 
@@ -6892,27 +6865,27 @@ msgstr "Odebrat vybranou položku z fronty"
 msgid "Add files to queue"
 msgstr "Přidat soubory do fronty"
 
-#: modules/gui/qt/player/qml/PIPPlayer.qml:49
+#: modules/gui/qt/player/qml/PIPPlayer.qml:70
 msgid "video content"
 msgstr "obsah videa"
 
-#: modules/gui/qt/player/qml/PIPPlayer.qml:192
+#: modules/gui/qt/player/qml/PIPPlayer.qml:224
 msgid "Previous item"
 msgstr "Předchozí položka"
 
-#: modules/gui/qt/player/qml/PIPPlayer.qml:212
+#: modules/gui/qt/player/qml/PIPPlayer.qml:244
 msgid "Play or pause"
 msgstr "Přehrát nebo pozastavit"
 
-#: modules/gui/qt/player/qml/PIPPlayer.qml:238
+#: modules/gui/qt/player/qml/PIPPlayer.qml:270
 msgid "Next item"
 msgstr "Následující položka"
 
-#: modules/gui/qt/player/qml/PIPPlayer.qml:255
+#: modules/gui/qt/player/qml/PIPPlayer.qml:287
 msgid "close video"
 msgstr "zavřít video"
 
-#: modules/gui/qt/player/qml/PIPPlayer.qml:278
+#: modules/gui/qt/player/qml/PIPPlayer.qml:310
 msgid "maximize player"
 msgstr "maximalizovat přehrávač"
 
@@ -7061,130 +7034,135 @@ msgstr "Otevřený soubor"
 msgid "%1k downloads"
 msgstr "%1 tis. stažení"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:135
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:139
 msgid "Unknown language"
 msgstr "Neznámý jazyk"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:173
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:189
 msgid "Foreign parts only"
 msgstr "Pouze cizojazyčné pasáže"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:237
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:254
 msgid "Identifying the video…"
 msgstr "Identifikace videa…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:240
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:257
 msgid "Searching %1…"
 msgstr "Hledání na %1…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:240
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:257
 msgid "Searching subtitles online…"
 msgstr "Hledání titulků online…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:244
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:261
 msgid "Downloading…"
 msgstr "Stahování…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:246
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:263
 msgid "%1 · %2 found"
 msgstr "%1 · nalezeno: %2"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:247
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:264
 msgid "%1 found for this file"
 msgstr "Nalezeno pro tento soubor: %1"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:251
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:268
 msgid "Subtitles of this video"
 msgstr "Titulky tohoto videa"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:270
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:287
 msgid "The video is another one: search by its title"
 msgstr "Jde o jiné video: hledat podle názvu"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:281
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:298
 msgid "Search subtitles online"
 msgstr "Hledat titulky online"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:282
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:299
 msgid "Search subtitles online again"
 msgstr "Znovu hledat titulky online"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:292
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:309
 msgid "Add subtitles to the library"
 msgstr "Přidat titulky do knihovny"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:293
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:310
 msgid "Library association needs a local media file and media library."
 msgstr "Přiřazení v knihovně vyžaduje místní mediální soubor a knihovnu médií."
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:303
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:320
 msgid "Load a subtitle file for playback"
 msgstr "Načíst soubor titulků pro přehrávání"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:322
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:339
 msgid "Title of the movie or series"
 msgstr "Název filmu nebo seriálu"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:343
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:360
 msgid "Searching…"
 msgstr "Hledání…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:386
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:403
 msgid "Second"
 msgstr "Druhý"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:421
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:404
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Často používaný"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:439
 msgid "For this file"
 msgstr "Pro tento soubor"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:441
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:460
 msgid "Looking for subtitles…"
 msgstr "Hledání titulků…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:442
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:461
 msgid "No subtitles yet"
 msgstr "Zatím žádné titulky"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:484
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:503
 msgid "Position and size"
 msgstr "Pozice a velikost"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:492
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:511
 msgctxt "subtitles"
 msgid "Position"
 msgstr "Pozice"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:495
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:509
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:514
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:528
 msgid "%1%"
 msgstr "%1 %"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:496
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:515
 msgid "Move the subtitles down"
 msgstr "Posunout titulky dolů"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:497
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:516
 msgid "Move the subtitles up"
 msgstr "Posunout titulky nahoru"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:508
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:527
 msgctxt "subtitles"
 msgid "Size"
 msgstr "Velikost"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:510
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:529
 msgid "Smaller subtitles"
 msgstr "Menší titulky"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:511
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:530
 msgid "Larger subtitles"
 msgstr "Větší titulky"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:743
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:762
 msgid "HI"
 msgstr "HI"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:748
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:767
 msgid "For the hearing impaired"
 msgstr "Pro sluchově postižené"
 
@@ -7210,9 +7188,15 @@ msgstr ""
 msgid "Duration unavailable"
 msgstr "Délka není k dispozici"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ExtendedSettingsButton.qml:32
-msgid "Audio effects"
-msgstr "Zvukové efekty"
+#: modules/gui/qt/player/qml/controlbarcontrols/Fallback.qml:48
+msgid ""
+"WIDGET\n"
+"NOT\n"
+"FOUND"
+msgstr ""
+"PRVEK\n"
+"NEBYL\n"
+"NALEZEN"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/FavoriteButton.qml:21
 msgid "Available for items in your library"
@@ -7242,13 +7226,9 @@ msgstr "Snímková frekvence není k dispozici"
 msgid "Exit Fullscreen"
 msgstr "Ukončit celou obrazovku"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:9
+#: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"
 msgstr "Výstup HDR"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/LangButton.qml:54
-msgid "Languages and tracks"
-msgstr "Jazyky a stopy"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/LoopButton.qml:29
 msgid "Repeat one"
@@ -7266,35 +7246,42 @@ msgstr "1x"
 msgid "Play Queue (%1/%2)"
 msgstr "Fronta přehrávání (%1/%2)"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:31
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:32
 msgid "Casting to %1"
 msgstr "Přehrávání na %1"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:99
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:100
 msgid "Cast to"
 msgstr "Přehrát na"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:124
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:125
 msgid "This computer"
 msgstr "Tento počítač"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:152
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:154
 msgid "Not playing: choose it to try again"
 msgstr "Nepřehrává se: vyberte ho a zkuste to znovu"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:154
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:156
 msgid "Connecting…"
 msgstr "Připojování…"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:155
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:157
 msgid "Sound only"
 msgstr "Pouze zvuk"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:174
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:180
+msgid "Show %1 hidden device"
+msgid_plural "Show %1 hidden devices"
+msgstr[0] "Zobrazit %1 skryté zařízení"
+msgstr[1] "Zobrazit %1 skrytá zařízení"
+msgstr[2] "Zobrazit %1 skrytých zařízení"
+
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:193
 msgid "Looking for TVs and Chromecasts on your network…"
 msgstr "Hledání televizorů a zařízení Chromecast ve vaší síti…"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:175
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:194
 msgid ""
 "No device found. Turn your TV or Chromecast on, on the same network as this "
 "computer."
@@ -7302,19 +7289,23 @@ msgstr ""
 "Nebylo nalezeno žádné zařízení. Zapněte televizor nebo Chromecast ve stejné "
 "síti, ve které je tento počítač."
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:189
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:208
 msgid "Show the video here too"
 msgstr "Zobrazit video i zde"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:235
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:254
 msgid "With a Chromecast, the video plays only there."
 msgstr "S Chromecastem se video přehrává pouze na něm."
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:246
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:265
 msgid "The subtitles shown go to the TV with the picture."
 msgstr "Zobrazené titulky se posílají do TV spolu s obrazem."
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:265
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:282
+msgid "Hide this device"
+msgstr "Skrýt toto zařízení"
+
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:314
 msgid "playing here"
 msgstr "přehrává se zde"
 
@@ -7338,7 +7329,7 @@ msgstr "Vpřed o 10 sekund"
 msgid "Forward 15 seconds"
 msgstr "Vpřed o 15 sekund"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/VolumeWidget.qml:351
+#: modules/gui/qt/player/qml/controlbarcontrols/VolumeWidget.qml:345
 msgid "%1 %"
 msgstr "%1 %"
 
@@ -7358,31 +7349,31 @@ msgstr "Přehrává se"
 msgid "Media cover"
 msgstr "Obal média"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:192
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:194
 msgid "No items"
 msgstr "Žádné položky"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:263
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:284
 msgid "Remove selected items"
 msgstr "Odebrat vybrané položky"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:274
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:300
 msgid "Add files to the queue"
 msgstr "Přidat soubory do fronty"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:601
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:629
 msgid "No results"
 msgstr "Žádné výsledky"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:602
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:630
 msgid "No content yet"
 msgstr "Zatím žádný obsah"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:618
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:646
 msgid "Drag & Drop some content here!"
 msgstr "Sem přetáhněte nějaký obsah!"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:683
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:711
 msgid "Play queue"
 msgstr "Fronta přehrávání"
 
@@ -7390,17 +7381,17 @@ msgstr "Fronta přehrávání"
 msgid "%1 elements, %2"
 msgstr "Položky: %1, %2"
 
-#: modules/gui/qt/qt.cpp:172
+#: modules/gui/qt/qt.cpp:171
 msgid "Select the initial preferences view"
 msgstr "Vyberte výchozí zobrazení nastavení"
 
-#: modules/gui/qt/qt.cpp:173
+#: modules/gui/qt/qt.cpp:172
 msgid ""
 "Select which preferences view to show upon opening the preferences dialog."
 msgstr ""
 "Vyberte, které zobrazení nastavení se ukáže po otevření dialogu nastavení."
 
-#: modules/gui/qt/qt.cpp:197
+#: modules/gui/qt/qt.cpp:196
 msgid ""
 "Show a notification popup with the artist and track name when the current "
 "play queue item changes, when VLC is minimized or hidden."
@@ -7408,7 +7399,7 @@ msgstr ""
 "Zobrazit oznámení se jménem umělce a názvem skladby, když se změní aktuální "
 "položka fronty přehrávání a VLC je minimalizováno nebo skryto."
 
-#: modules/gui/qt/qt.cpp:201
+#: modules/gui/qt/qt.cpp:200
 msgid ""
 "Sets the windows opacity between 0.1 and 1 for main interface, play queue "
 "and extended panel. This option only works with Windows and X11 with "
@@ -7418,7 +7409,7 @@ msgstr ""
 "rozšířeného panelu v rozsahu 0,1 až 1. Tato možnost funguje pouze ve Windows "
 "a v X11 s rozšířením composite."
 
-#: modules/gui/qt/qt.cpp:207
+#: modules/gui/qt/qt.cpp:206
 msgid ""
 "Sets the fullscreen controller opacity between 0.1 and 1 for main interface, "
 "play queue and extended panel. This option only works with Windows and X11 "
@@ -7428,11 +7419,11 @@ msgstr ""
 "přehrávání a rozšířený panel v rozsahu 0,1 až 1. Tato možnost funguje pouze "
 "ve Windows a v X11 s rozšířením composite."
 
-#: modules/gui/qt/qt.cpp:212
+#: modules/gui/qt/qt.cpp:211
 msgid "Initial user scale factor for the interface, between 0.3 and 3.0"
 msgstr "Výchozí uživatelské měřítko rozhraní, v rozsahu 0,3 až 3,0"
 
-#: modules/gui/qt/qt.cpp:215
+#: modules/gui/qt/qt.cpp:214
 msgid ""
 "Show the errors of VLC at the bottom of the window, and ask before removing "
 "media from a playlist or from the play queue, or deleting playlists. Off, "
@@ -7444,11 +7435,11 @@ msgstr ""
 "Je-li vypnuto, chyby se uchovávají pouze ve zprávách VLC a tato odebrání "
 "proběhnou okamžitě; smazání souboru z disku se vždy potvrzuje."
 
-#: modules/gui/qt/qt.cpp:225
+#: modules/gui/qt/qt.cpp:224
 msgid "set the options for qml debugger"
 msgstr "nastavit možnosti ladicího nástroje QML"
 
-#: modules/gui/qt/qt.cpp:226
+#: modules/gui/qt/qt.cpp:225
 msgid ""
 "set the options for qml debugger (see http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
@@ -7456,7 +7447,7 @@ msgstr ""
 "nastavit možnosti ladicího nástroje QML (viz http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
 
-#: modules/gui/qt/qt.cpp:246
+#: modules/gui/qt/qt.cpp:245
 msgid ""
 "Show the playback controls in fullscreen when the mouse moves. Off, only the "
 "keyboard shows them (the I key). The skins read it for their fullscreen "
@@ -7466,7 +7457,7 @@ msgstr ""
 "vypnuto, zobrazí ho pouze klávesnice (klávesa I). Vzhledy toto nastavení "
 "používají i pro svůj ovladač na celé obrazovce."
 
-#: modules/gui/qt/qt.cpp:262
+#: modules/gui/qt/qt.cpp:261
 msgid ""
 "Display the cover art of the audio playing in the player (the cone in the "
 "compact view). Off, a plain picture takes its place, which also prevents "
@@ -7476,7 +7467,7 @@ msgstr ""
 "kužel). Je-li vypnuto, nahradí ho prostý obrázek, což také brání vypálení "
 "obrazovky."
 
-#: modules/gui/qt/qt.cpp:286
+#: modules/gui/qt/qt.cpp:285
 msgid ""
 "This option allows the interface to be shown and raised automatically when a "
 "video/audio playback starts, or never."
@@ -7484,11 +7475,11 @@ msgstr ""
 "Tato možnost umožňuje automaticky zobrazit a přenést rozhraní do popředí při "
 "spuštění přehrávání videa/zvuku, nebo nikdy."
 
-#: modules/gui/qt/qt.cpp:289
+#: modules/gui/qt/qt.cpp:288
 msgid "Enable window titlebar"
 msgstr "Zapnout záhlaví okna"
 
-#: modules/gui/qt/qt.cpp:290
+#: modules/gui/qt/qt.cpp:289
 msgid ""
 "This option enables the title bar. Disabling it will remove the titlebar and "
 "move window buttons within the interface (Client Side Decoration)"
@@ -7496,31 +7487,31 @@ msgstr ""
 "Tato možnost zapne záhlaví okna. Jeho vypnutím se záhlaví odstraní a "
 "tlačítka okna se přesunou do rozhraní (dekorace na straně klienta)"
 
-#: modules/gui/qt/qt.cpp:294
+#: modules/gui/qt/qt.cpp:293
 msgid "Show the menu bar"
 msgstr "Zobrazovat panel nabídek"
 
-#: modules/gui/qt/qt.cpp:295
+#: modules/gui/qt/qt.cpp:294
 msgid "This option displays the classic menu bar"
 msgstr "Tato možnost zobrazí klasický panel nabídek"
 
-#: modules/gui/qt/qt.cpp:297
+#: modules/gui/qt/qt.cpp:296
 msgid "Pin video controls"
 msgstr "Připnout ovládání videa"
 
-#: modules/gui/qt/qt.cpp:298
+#: modules/gui/qt/qt.cpp:297
 msgid "Place video controls above and below the video instead of above"
 msgstr "Umístit ovládání videa nad a pod video namísto přes něj"
 
-#: modules/gui/qt/qt.cpp:301
+#: modules/gui/qt/qt.cpp:300
 msgid "Show the frame at the hovered position above the seek bar"
 msgstr "Zobrazovat nad posuvníkem snímek z pozice pod kurzorem"
 
-#: modules/gui/qt/qt.cpp:305
+#: modules/gui/qt/qt.cpp:304
 msgid "Select Qt video integration backend"
 msgstr "Vyberte backend integrace videa v Qt"
 
-#: modules/gui/qt/qt.cpp:306
+#: modules/gui/qt/qt.cpp:305
 msgid ""
 "Select Qt video integration backend. Use with care, the interface may not "
 "start if an incompatible compositor is selected"
@@ -7528,11 +7519,11 @@ msgstr ""
 "Vyberte backend integrace videa v Qt. Používejte opatrně, rozhraní se nemusí "
 "spustit, pokud vyberete nekompatibilní kompozitor"
 
-#: modules/gui/qt/qt.cpp:308
+#: modules/gui/qt/qt.cpp:307
 msgid "Use smooth scrolling in Flickable based views"
 msgstr "Používat plynulé posouvání v zobrazeních založených na Flickable"
 
-#: modules/gui/qt/qt.cpp:309
+#: modules/gui/qt/qt.cpp:308
 msgid ""
 "Deactivating this option will disable smooth scrolling in Flickable based "
 "views (such as the Play Queue). This option is only respected with a scroll "
@@ -7542,21 +7533,21 @@ msgstr ""
 "na Flickable (například ve frontě přehrávání). Tato možnost se uplatní pouze "
 "s obslužnou rutinou posouvání, viz možnost `qt-use-scroll-handler`."
 
-#: modules/gui/qt/qt.cpp:312
+#: modules/gui/qt/qt.cpp:311
 msgid "Use Kirigami scroll handler for Flickable based views"
 msgstr ""
 "Používat obslužnou rutinu posouvání Kirigami pro zobrazení založená na "
 "Flickable"
 
-#: modules/gui/qt/qt.cpp:313
+#: modules/gui/qt/qt.cpp:312
 msgid "Using Kirigami scroll handler may improve scrolling behavior."
 msgstr "Obslužná rutina posouvání Kirigami může zlepšit chování posouvání."
 
-#: modules/gui/qt/qt.cpp:315
+#: modules/gui/qt/qt.cpp:314
 msgid "Safe area for the user interface"
 msgstr "Bezpečná oblast uživatelského rozhraní"
 
-#: modules/gui/qt/qt.cpp:316
+#: modules/gui/qt/qt.cpp:315
 msgid ""
 "Sets the safe area percentage between 0.0 and 100 when you want to ensure "
 "the visibility of the user interface on a constrained viewport"
@@ -7564,19 +7555,19 @@ msgstr ""
 "Nastaví procento bezpečné oblasti v rozsahu 0,0 až 100, pokud chcete "
 "zajistit viditelnost uživatelského rozhraní na omezené zobrazovací ploše"
 
-#: modules/gui/qt/qt.cpp:320
+#: modules/gui/qt/qt.cpp:319
 msgid "Print Qt's important internal messages"
 msgstr "Vypisovat důležité interní zprávy Qt"
 
-#: modules/gui/qt/qt.cpp:321
+#: modules/gui/qt/qt.cpp:320
 msgid "Enable Qt's all own messaging categories except the debug category."
 msgstr "Zapnout všechny vlastní kategorie zpráv Qt kromě kategorie ladění."
 
-#: modules/gui/qt/qt.cpp:323
+#: modules/gui/qt/qt.cpp:322
 msgid "Hide the window on close"
 msgstr "Při zavření skrýt okno"
 
-#: modules/gui/qt/qt.cpp:324
+#: modules/gui/qt/qt.cpp:323
 msgid ""
 "Instead of closing the application, hide the window. This setting is only "
 "applicable when system tray icon is enabled."
@@ -7584,11 +7575,11 @@ msgstr ""
 "Namísto zavření aplikace skrýt okno. Toto nastavení platí pouze tehdy, když "
 "je zapnuta ikona v oznamovací oblasti."
 
-#: modules/gui/qt/qt.cpp:326
+#: modules/gui/qt/qt.cpp:325
 msgid "Enable backdrop blur filter for the main window if possible"
 msgstr "Zapnout rozostření pozadí hlavního okna, je-li to možné"
 
-#: modules/gui/qt/qt.cpp:327
+#: modules/gui/qt/qt.cpp:326
 msgid ""
 "If backdrop blur filter is available, use translucency in the backgrounds of "
 "certain parts of the user interface instead of a solid color. This setting "
@@ -7598,11 +7589,11 @@ msgstr ""
 "uživatelského rozhraní průsvitnost namísto plné barvy. Toto nastavení "
 "zhoršuje čitelnost textu."
 
-#: modules/gui/qt/qt.cpp:330
+#: modules/gui/qt/qt.cpp:329
 msgid "Enable picture-in-picture (PiP) mode"
 msgstr "Zapnout režim obrazu v obraze (PiP)"
 
-#: modules/gui/qt/qt.cpp:331
+#: modules/gui/qt/qt.cpp:330
 msgid ""
 "Picture-in-picture mode allows playing video contained in a smaller area so "
 "that the interface remains usable."
@@ -7610,7 +7601,7 @@ msgstr ""
 "Režim obrazu v obraze umožňuje přehrávat video v menší oblasti, takže "
 "rozhraní zůstane použitelné."
 
-#: modules/gui/qt/qt.cpp:334
+#: modules/gui/qt/qt.cpp:333
 msgid ""
 "Adjusts the accent color, special values are 'default' and 'system' "
 "(requires Qt 6.6) ."
@@ -7618,11 +7609,11 @@ msgstr ""
 "Upraví barvu zvýraznění, speciální hodnoty jsou 'default' a 'system' "
 "(vyžaduje Qt 6.6) ."
 
-#: modules/gui/qt/qt.cpp:435
+#: modules/gui/qt/qt.cpp:434
 msgid "Check for VLC Redesign updates"
 msgstr "Kontrolovat aktualizace VLC Redesign"
 
-#: modules/gui/qt/qt.cpp:436
+#: modules/gui/qt/qt.cpp:435
 msgid ""
 "Look for a new release of VLC Redesign on GitHub at startup, at most once a "
 "day."
@@ -7630,11 +7621,11 @@ msgstr ""
 "Při spuštění hledat nové vydání VLC Redesign na GitHubu, nejvýše jednou "
 "denně."
 
-#: modules/gui/qt/qt.cpp:440
+#: modules/gui/qt/qt.cpp:439
 msgid "Resume at"
 msgstr "Pokračovat od"
 
-#: modules/gui/qt/qt.cpp:441
+#: modules/gui/qt/qt.cpp:440
 msgid ""
 "Seconds into the media of the command line where playback continues, after "
 "an update."
@@ -7671,57 +7662,63 @@ msgstr "%1h%2"
 msgid "%1ms"
 msgstr "%1 ms"
 
-#: modules/gui/qt/util/redesign_updater.cpp:400
+#: modules/gui/qt/util/redesign_updater.cpp:159
+msgid ""
+"The update isn't signed by the publisher of this copy (%1), so it wasn't "
+"used."
+msgstr "Aktualizace není podepsána vydavatelem této kopie (%1), proto nebyla použita."
+
+#: modules/gui/qt/util/redesign_updater.cpp:515
 msgid "This build cannot check for updates."
 msgstr "Toto sestavení nemůže kontrolovat aktualizace."
 
-#: modules/gui/qt/util/redesign_updater.cpp:414
+#: modules/gui/qt/util/redesign_updater.cpp:529
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr ""
 "Nepodařilo se spojit s GitHubem. Zkontrolujte připojení a zkuste to znovu."
 
-#: modules/gui/qt/util/redesign_updater.cpp:431
+#: modules/gui/qt/util/redesign_updater.cpp:546
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "GitHub odeslal neočekávanou odpověď (%1)."
 
-#: modules/gui/qt/util/redesign_updater.cpp:537
+#: modules/gui/qt/util/redesign_updater.cpp:652
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr ""
 "Kontrolní součet aktualizace chybí; stáhněte ji raději ze stránky vydání."
 
-#: modules/gui/qt/util/redesign_updater.cpp:584
+#: modules/gui/qt/util/redesign_updater.cpp:699
 msgid "The download failed. Check your connection and try again."
 msgstr "Stahování selhalo. Zkontrolujte připojení a zkuste to znovu."
 
-#: modules/gui/qt/util/redesign_updater.cpp:597
+#: modules/gui/qt/util/redesign_updater.cpp:712
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "Aktualizace neodpovídá svému kontrolnímu součtu, proto nebyla použita."
 
-#: modules/gui/qt/util/redesign_updater.cpp:619
+#: modules/gui/qt/util/redesign_updater.cpp:743
 msgid "The update isn't in a format this version knows."
 msgstr "Aktualizace není ve formátu, který tato verze zná."
 
-#: modules/gui/qt/util/redesign_updater.cpp:622
-#: modules/gui/qt/util/redesign_updater.cpp:646
-#: modules/gui/qt/util/redesign_updater.cpp:657
-#: modules/gui/qt/util/redesign_updater.cpp:663
+#: modules/gui/qt/util/redesign_updater.cpp:746
+#: modules/gui/qt/util/redesign_updater.cpp:770
+#: modules/gui/qt/util/redesign_updater.cpp:781
+#: modules/gui/qt/util/redesign_updater.cpp:787
 msgid "The update is damaged."
 msgstr "Aktualizace je poškozená."
 
-#: modules/gui/qt/util/redesign_updater.cpp:627
+#: modules/gui/qt/util/redesign_updater.cpp:751
 msgid "The update isn't for this version."
 msgstr "Aktualizace není pro tuto verzi."
 
-#: modules/gui/qt/util/redesign_updater.cpp:636
-#: modules/gui/qt/util/redesign_updater.cpp:673
-#: modules/gui/qt/util/redesign_updater.cpp:682
-#: modules/gui/qt/util/redesign_updater.cpp:686
-#: modules/gui/qt/util/redesign_updater.cpp:690
+#: modules/gui/qt/util/redesign_updater.cpp:760
+#: modules/gui/qt/util/redesign_updater.cpp:797
+#: modules/gui/qt/util/redesign_updater.cpp:806
+#: modules/gui/qt/util/redesign_updater.cpp:810
+#: modules/gui/qt/util/redesign_updater.cpp:814
 msgid "The update can't be written in %1."
 msgstr "Aktualizaci nelze zapsat do %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:638
+#: modules/gui/qt/util/redesign_updater.cpp:762
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -7729,35 +7726,35 @@ msgstr ""
 "Soubor VLC Redesign byl od instalace změněn, takže malou aktualizaci nelze "
 "použít: aktualizujte raději pomocí instalačního programu."
 
-#: modules/gui/qt/util/redesign_updater.cpp:668
+#: modules/gui/qt/util/redesign_updater.cpp:792
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr "Aktualizace je poškozená: soubor neodpovídá svému kontrolnímu součtu."
 
-#: modules/gui/qt/util/redesign_updater.cpp:793
+#: modules/gui/qt/util/redesign_updater.cpp:917
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr "Aktualizaci se nepodařilo spustit. Pokus se zopakuje příště."
 
-#: modules/gui/qt/util/redesign_updater.cpp:820
+#: modules/gui/qt/util/redesign_updater.cpp:944
 msgid "The download failed. Try again, or download it from the release page."
 msgstr ""
 "Stahování selhalo. Zkuste to znovu nebo aktualizaci stáhněte ze stránky "
 "vydání."
 
-#: modules/gui/qt/util/redesign_updater.cpp:833
+#: modules/gui/qt/util/redesign_updater.cpp:957
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr ""
 "Stažený instalační program neodpovídá svému kontrolnímu součtu, proto nebyl "
 "spuštěn."
 
-#: modules/gui/qt/util/redesign_updater.cpp:842
+#: modules/gui/qt/util/redesign_updater.cpp:966
 msgid "The installer couldn't be saved to %1."
 msgstr "Instalační program se nepodařilo uložit do %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:870
+#: modules/gui/qt/util/redesign_updater.cpp:1000
 msgid "The installer couldn't be started."
 msgstr "Instalační program se nepodařilo spustit."
 
-#: modules/gui/qt/util/renderer_manager.cpp:867
+#: modules/gui/qt/util/renderer_manager.cpp:886
 msgid ""
 "%1 doesn't answer. Check that it's on, and on the same network as this "
 "computer."
@@ -7765,66 +7762,66 @@ msgstr ""
 "Zařízení %1 neodpovídá. Zkontrolujte, zda je zapnuté a ve stejné síti jako "
 "tento počítač."
 
-#: modules/gui/qt/util/renderer_manager.cpp:870
+#: modules/gui/qt/util/renderer_manager.cpp:889
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the video."
 msgstr ""
 "Brána Windows Firewall nedovoluje zařízení %1 připojit se k tomuto počítači "
 "a číst video."
 
-#: modules/gui/qt/util/renderer_manager.cpp:871
+#: modules/gui/qt/util/renderer_manager.cpp:890
 msgid "%1 couldn't read the video from this computer."
 msgstr "Zařízení %1 nemohlo z tohoto počítače číst video."
 
-#: modules/gui/qt/util/renderer_manager.cpp:873
+#: modules/gui/qt/util/renderer_manager.cpp:892
 msgid "%1 refused to play this video."
 msgstr "Zařízení %1 odmítlo přehrát toto video."
 
-#: modules/gui/qt/util/renderer_manager.cpp:875
+#: modules/gui/qt/util/renderer_manager.cpp:894
 msgid "%1 stopped playing."
 msgstr "Zařízení %1 přestalo přehrávat."
 
-#: modules/gui/qt/util/renderer_manager.cpp:877
+#: modules/gui/qt/util/renderer_manager.cpp:896
 msgid "%1 is playing something else now."
 msgstr "Zařízení %1 nyní přehrává něco jiného."
 
-#: modules/gui/qt/util/renderer_manager.cpp:878
+#: modules/gui/qt/util/renderer_manager.cpp:897
 msgid "%1 couldn't play the video."
 msgstr "Zařízení %1 nemohlo přehrát video."
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:52
+#: modules/gui/qt/util/subtitle_preferences.cpp:59
 msgid "Asturian"
 msgstr "Asturský"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:54
+#: modules/gui/qt/util/subtitle_preferences.cpp:61
 msgid "Central Kurdish"
 msgstr "Středokurdský"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:55
+#: modules/gui/qt/util/subtitle_preferences.cpp:62
 msgid "Montenegrin"
 msgstr "Černohorský"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:59
+#: modules/gui/qt/util/subtitle_preferences.cpp:66
 msgid "Dari"
 msgstr "Darí"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:61
+#: modules/gui/qt/util/subtitle_preferences.cpp:68
 msgid "Cantonese"
 msgstr "Kantonský"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:62
+#: modules/gui/qt/util/subtitle_preferences.cpp:69
 msgid "Standard Moroccan Tamazight"
 msgstr "Standardní marocký tamazight"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:63
+#: modules/gui/qt/util/subtitle_preferences.cpp:70
 msgid "Portuguese (Brazil)"
 msgstr "Portugalský (Brazílie)"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:64
+#: modules/gui/qt/util/subtitle_preferences.cpp:71
 msgid "Chinese (Traditional)"
 msgstr "Čínský (tradiční)"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:65
+#: modules/gui/qt/util/subtitle_preferences.cpp:72
 msgid "Spanish (Latin America)"
 msgstr "Španělský (Latinská Amerika)"
 
@@ -7845,7 +7842,7 @@ msgstr[1] "Vybráno: %1"
 msgstr[2] "Vybráno: %1"
 
 #: modules/gui/qt/widgets/qml/GridSortFilterControls.qml:30
-#: modules/gui/qt/widgets/qml/LibraryHeader.qml:482
+#: modules/gui/qt/widgets/qml/LibraryHeader.qml:483
 msgid "List/Grid"
 msgstr "Seznam/mřížka"
 
@@ -7919,7 +7916,7 @@ msgstr "Číslo disku sestupně"
 
 #: modules/lua/vlc.c:51
 msgid "Enable Lua plugins"
-msgstr ""
+msgstr "Zapnout zásuvné moduly Lua"
 
 #: modules/misc/gnutls.c:757
 msgid "Secure 128-bit (or higher)"
@@ -7929,35 +7926,35 @@ msgstr "Bezpečnost 128 bitů (nebo více)"
 msgid "Secure 256-bit (exclude 128-bit ciphers)"
 msgstr "Bezpečnost 256 bitů (bez 128bitových šifer)"
 
-#: modules/misc/medialibrary/medialibrary.cpp:469
+#: modules/misc/medialibrary/medialibrary.cpp:471
 msgid "Recover"
 msgstr "Obnovit"
 
-#: modules/misc/medialibrary/medialibrary.cpp:470
+#: modules/misc/medialibrary/medialibrary.cpp:472
 msgid "Recreate"
 msgstr "Vytvořit znovu"
 
-#: modules/misc/medialibrary/medialibrary.cpp:470
+#: modules/misc/medialibrary/medialibrary.cpp:472
 msgid "Media database corrupted"
 msgstr "Databáze médií je poškozená"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2728
+#: modules/misc/medialibrary/medialibrary.cpp:2750
 msgid "Folders discovered by the media library"
 msgstr "Složky prohledávané knihovnou médií"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2729
+#: modules/misc/medialibrary/medialibrary.cpp:2751
 msgid "Semicolon separated list of folders to discover media from"
 msgstr "Seznam složek oddělených středníky, ve kterých se mají hledat média"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2732
+#: modules/misc/medialibrary/medialibrary.cpp:2754
 msgid "Extra verbose media library logs"
 msgstr "Velmi podrobné záznamy knihovny médií"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2735
+#: modules/misc/medialibrary/medialibrary.cpp:2757
 msgid "media library"
 msgstr "knihovna médií"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2736
+#: modules/misc/medialibrary/medialibrary.cpp:2758
 msgid "Organize your media"
 msgstr "Uspořádejte svá média"
 
@@ -7965,7 +7962,7 @@ msgstr "Uspořádejte svá média"
 msgid ""
 "Sets PID to the ID of the incoming ES. This is for use with --ts-es-id-pid, "
 "and allows having the same PIDs in the input and output streams."
-msgstr ""
+msgstr "Nastaví PID na ID příchozího ES. Používá se s --ts-es-id-pid a umožňuje mít stejné PID ve vstupním i výstupním proudu."
 
 #: modules/services_discovery/upnp.cpp:66
 msgid ""
@@ -8036,18 +8033,18 @@ msgstr "Filtr demultiplexeru UPnP/DLNA"
 msgid "Universal Plug'n'Play Server"
 msgstr "Server Universal Plug'n'Play"
 
-#: modules/stream_out/chromecast/cast.cpp:1189
+#: modules/stream_out/chromecast/cast.cpp:1191
 #: modules/stream_out/dlna/dlna.cpp:690
 msgid "OK, don't warn me again"
 msgstr "OK, příště už nevarovat"
 
-#: modules/stream_out/chromecast/cast.cpp:1190
+#: modules/stream_out/chromecast/cast.cpp:1192
 #: modules/stream_out/dlna/dlna.cpp:691
 #: modules/stream_out/renderer_common.hpp:35
 msgid "Performance warning"
 msgstr "Upozornění na výkon"
 
-#: modules/stream_out/chromecast/cast.cpp:1191
+#: modules/stream_out/chromecast/cast.cpp:1193
 #: modules/stream_out/dlna/dlna.cpp:692
 msgid ""
 "Casting this video requires conversion. This conversion can use all the "
@@ -8058,39 +8055,39 @@ msgstr ""
 
 #: modules/stream_out/renderer_common.hpp:36
 msgid "Display a performance warning when transcoding"
-msgstr ""
+msgstr "Zobrazit upozornění na výkon při překódování"
 
 #: modules/stream_out/renderer_common.hpp:37
 msgid "Enable Audio passthrough"
-msgstr ""
+msgstr "Zapnout průchozí přenos zvuku"
 
 #: modules/stream_out/renderer_common.hpp:38
 msgid "Disable if your receiver does not support Dolby®."
-msgstr ""
+msgstr "Vypněte, pokud váš přijímač nepodporuje Dolby®."
 
 #: modules/stream_out/renderer_common.hpp:39
 msgid "Conversion quality"
-msgstr ""
+msgstr "Kvalita převodu"
 
 #: modules/stream_out/renderer_common.hpp:40
 msgid "Change conversion speed or quality."
-msgstr ""
+msgstr "Změní rychlost nebo kvalitu převodu."
 
 #: modules/stream_out/renderer_common.hpp:63
 msgid "High (high quality and high bandwidth)"
-msgstr ""
+msgstr "Vysoká (vysoká kvalita a vysoké nároky na přenosovou rychlost)"
 
 #: modules/stream_out/renderer_common.hpp:64
 msgid "Medium (medium quality and medium bandwidth)"
-msgstr ""
+msgstr "Střední (střední kvalita a střední nároky na přenosovou rychlost)"
 
 #: modules/stream_out/renderer_common.hpp:65
 msgid "Low (low quality and low bandwidth)"
-msgstr ""
+msgstr "Nízká (nízká kvalita a nízké nároky na přenosovou rychlost)"
 
 #: modules/stream_out/renderer_common.hpp:66
 msgid "Low CPU (low quality but high bandwidth)"
-msgstr ""
+msgstr "Nízké vytížení CPU (nízká kvalita, ale vysoké nároky na přenosovou rychlost)"
 
 #: modules/text_renderer/freetype/freetype.c:77
 msgid ""
@@ -8101,83 +8098,74 @@ msgstr ""
 
 #: modules/text_renderer/freetype/freetype.c:91
 msgid "Cache size"
-msgstr ""
+msgstr "Velikost mezipaměti"
 
 #: modules/text_renderer/freetype/freetype.c:92
 msgid "Cache size in kBytes"
-msgstr ""
+msgstr "Velikost mezipaměti v kB"
 
 #: modules/text_renderer/freetype/freetype.c:101
 msgid "Blending Mode"
-msgstr ""
+msgstr "Režim prolínání"
 
 #: modules/text_renderer/freetype/freetype.c:102
 msgid "Blending mode for the font, can be transparent or overlay"
-msgstr ""
+msgstr "Režim prolínání písma: průhledný nebo překrytí"
 
 #: modules/video_filter/extract.c:55
 msgid ""
 "RGB component to extract, as an RGB hexadecimal mask. E.g. 0xFF0000 for red; "
 "0x00FF00 for green and 0x0000FF for blue."
-msgstr ""
+msgstr "Komponenta RGB k extrakci jako šestnáctková maska RGB. Např. 0xFF0000 pro červenou, 0x00FF00 pro zelenou a 0x0000FF pro modrou."
 
 #: modules/video_filter/gradient.c:64
 msgid "Keep color"
-msgstr ""
+msgstr "Zachovat barvu"
 
 #: modules/video_filter/gradient.c:65
 msgid "This will keep the colors, otherwise the image will be turned white."
-msgstr ""
+msgstr "Zachová barvy, jinak bude obraz převeden na bílý."
 
 #: modules/video_output/win32/direct3d11.cpp:72
 msgid "Video Upscaling Mode"
-msgstr ""
+msgstr "Režim zvětšování videa"
 
 #: modules/video_output/win32/direct3d11.cpp:73
 msgid "Select the upscaling mode for video."
-msgstr ""
+msgstr "Vyberte režim zvětšování videa."
 
 #: modules/video_output/win32/direct3d11.cpp:78
 msgid "Linear Sampler"
-msgstr ""
+msgstr "Lineární vzorkování"
 
 #: modules/video_output/win32/direct3d11.cpp:78
 msgid "Point Sampler"
-msgstr ""
+msgstr "Bodové vzorkování"
 
 #: modules/video_output/win32/direct3d11.cpp:78
 msgid "Video Processor"
-msgstr ""
+msgstr "Videoprocesor"
 
 #: modules/video_output/win32/direct3d11.cpp:78
 msgid "Super Resolution"
-msgstr ""
+msgstr "Super rozlišení"
 
 #: modules/video_output/win32/direct3d11.cpp:80
 msgid "HDR Output Mode"
-msgstr ""
+msgstr "Režim výstupu HDR"
 
 #: modules/video_output/win32/direct3d11.cpp:81
 msgid "Use HDR output even if the source is SDR."
-msgstr ""
+msgstr "Použít výstup HDR, i když je zdroj v SDR."
 
 #: modules/video_output/win32/direct3d11.cpp:86
 msgid "Never out HDR"
-msgstr ""
+msgstr "Nikdy nepoužívat výstup HDR"
 
 #: modules/video_output/win32/direct3d11.cpp:86
 msgid "Always output HDR"
-msgstr ""
+msgstr "Vždy používat výstup HDR"
 
 #: modules/video_output/win32/direct3d11.cpp:86
 msgid "Generate HDR from SDR"
-msgstr ""
-
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
-msgctxt "subtitle language"
-msgid "Often used"
-msgstr "Často používaný"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
-msgid "Snapshot height (0: proportional, -1: original)"
-msgstr "Výška snímku (0: poměrně, -1: původní)"
+msgstr "Generovat HDR ze SDR"

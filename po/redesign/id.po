@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-25 11:16+0000\n"
+"POT-Creation-Date: 2026-10-28 10:16+0000\n"
 "PO-Revision-Date: 2015-12-04 10:01+0000\n"
 "Last-Translator: Christoph Miebach <christoph.miebach@web.de>\n"
 "Language-Team: Indonesian (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -39,7 +39,7 @@ msgid "Media Library Settings"
 msgstr "Pengaturan Pustaka Media"
 
 #: src/audio_output/output.c:337
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1176
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
 msgid "Waveform"
 msgstr "Bentuk gelombang"
 
@@ -178,17 +178,17 @@ msgstr "Media Anda tidak dapat dibuka"
 
 #: src/interface/interface.c:100
 msgid "Upnp"
-msgstr ""
+msgstr "UPnP"
 
 #: src/libvlc-module.c:139
 msgid "Enable bit-exact mode (pure mode)"
-msgstr ""
+msgstr "Aktifkan mode bit-exact (mode murni)"
 
 #: src/libvlc-module.c:141
 msgid ""
 "This will disable all audio filters, even audio converters. This may result "
 "on audio not working if the output can't adapt to the input format."
-msgstr ""
+msgstr "Ini akan menonaktifkan semua filter audio, termasuk konverter audio. Audio mungkin tidak berfungsi jika output tidak dapat menyesuaikan dengan format input."
 
 #: src/libvlc-module.c:275
 msgid ""
@@ -202,21 +202,21 @@ msgstr ""
 msgid ""
 "This requests a specific pixel width for the video window. By default (-1), "
 "the width is requested according to the zoom setting."
-msgstr ""
+msgstr "Ini meminta lebar piksel tertentu untuk jendela video. Secara default (-1), lebar diminta sesuai pengaturan zum."
 
 #: src/libvlc-module.c:290
 msgid ""
 "This requests a specific pixel height for the video window. By default (-1), "
 "the height is requested according to the zoom setting."
-msgstr ""
+msgstr "Ini meminta tinggi piksel tertentu untuk jendela video. Secara default (-1), tinggi diminta sesuai pengaturan zum."
 
 #: src/libvlc-module.c:340
 msgid "360 videos projection mode"
-msgstr ""
+msgstr "Mode proyeksi video 360"
 
 #: src/libvlc-module.c:342
 msgid "Change the 360 video projection mode."
-msgstr ""
+msgstr "Ubah mode proyeksi video 360."
 
 #: src/libvlc-module.c:391
 msgid "Deinterlace filter"
@@ -228,11 +228,11 @@ msgstr "Modul deinterlace yang digunakan."
 
 #: src/libvlc-module.c:394
 msgid "Video Stereo 3D mode"
-msgstr ""
+msgstr "Mode Stereo 3D Video"
 
 #: src/libvlc-module.c:395
 msgid "Set the Video Stereo 3D mode."
-msgstr ""
+msgstr "Atur mode Stereo 3D video."
 
 #: src/libvlc-module.c:403 src/video_output/vout_intf.c:168
 msgid "Left Only"
@@ -252,11 +252,11 @@ msgstr "Saat layar penuh"
 
 #: src/libvlc-module.c:495
 msgid "Video fitting"
-msgstr ""
+msgstr "Penyesuaian video"
 
 #: src/libvlc-module.c:497
 msgid "This selects the dimension according to which the video will be scaled."
-msgstr ""
+msgstr "Ini memilih dimensi yang menjadi acuan untuk menskalakan video."
 
 #: src/libvlc-module.c:543
 msgid "Mouse Pause Policy"
@@ -268,8 +268,9 @@ msgstr "Ini mengatur cara penanganan jeda dengan klik mouse"
 
 #: src/libvlc-module.c:552 modules/access/rist.h:85
 #: modules/audio_output/mmdevice.c:1621
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1174
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:181
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1195
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:23
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:141
 msgid "Disabled"
@@ -281,7 +282,7 @@ msgstr "Alihkan jeda segera saat tombol mouse dilepas"
 
 #: src/libvlc-module.c:596
 msgid "Clock master source"
-msgstr ""
+msgstr "Sumber utama jam"
 
 #: src/libvlc-module.c:597
 msgid ""
@@ -294,15 +295,15 @@ msgid ""
 "audio: if an audio track is playing, the audio output will drive the clock "
 "(Fallback to Monotonic if there is no audio tracks).\n"
 "monotonic: all tracks are driven by the monotonic clock of the system."
-msgstr ""
+msgstr "Pilih sumber utama jam:\nauto: sumber jam terbaik, yaitu input jika akses tidak dapat diatur kecepatannya (saat memutar konten langsung), atau audio jika tidak (paling umum).\ninput: semua trek dikendalikan oleh jam input, melalui pembaruan PCR dari demultiplekser. Ini mengembalikan perilaku jam VLC 3.0, di mana trek audio maupun video dapat diubah agar menyusul input.\naudio: jika trek audio sedang diputar, output audio akan mengendalikan jam (beralih ke monotonik jika tidak ada trek audio).\nmonotonic: semua trek dikendalikan oleh jam monotonik sistem."
 
 #: src/libvlc-module.c:612
 msgid "Input (PCR)"
-msgstr ""
+msgstr "Input (PCR)"
 
 #: src/libvlc-module.c:614
 msgid "Monotonic"
-msgstr ""
+msgstr "Monotonik"
 
 #: src/libvlc-module.c:657
 #: modules/gui/qt/medialibrary/qml/VideoInfoExpandPanel.qml:295
@@ -311,7 +312,7 @@ msgstr "Trek video"
 
 #: src/libvlc-module.c:659
 msgid "Stream number of the video track to use (from 0 to n)."
-msgstr ""
+msgstr "Nomor stream dari trek video yang digunakan (dari 0 hingga n)."
 
 #: src/libvlc-module.c:674
 msgid ""
@@ -342,21 +343,21 @@ msgstr ""
 
 #: src/libvlc-module.c:687
 msgid "Video track ID"
-msgstr ""
+msgstr "ID trek video"
 
 #: src/libvlc-module.c:689
 msgid "Stream ID of the video track to use."
-msgstr ""
+msgstr "ID stream trek video yang digunakan."
 
 #: src/libvlc-module.c:717
 msgid "Low delay mode"
-msgstr ""
+msgstr "Mode latensi rendah"
 
 #: src/libvlc-module.c:719
 msgid ""
 "Try to minimize delay along decoding chain. Might break with non compliant "
 "streams."
-msgstr ""
+msgstr "Berusaha meminimalkan penundaan di sepanjang rantai pendekodean. Dapat gagal pada stream yang tidak sesuai standar."
 
 #: src/libvlc-module.c:766
 msgid "Should the playback resume where it was left off?"
@@ -402,30 +403,30 @@ msgstr ""
 
 #: src/libvlc-module.c:834
 msgid "Display sub-pictures on full window"
-msgstr ""
+msgstr "Tampilkan sub-gambar di seluruh jendela"
 
 #: src/libvlc-module.c:836
 msgid "It allows showing subtitles in black bars."
-msgstr ""
+msgstr "Memungkinkan subtitle ditampilkan di bilah hitam."
 
 #: src/libvlc-module.c:838
 msgid "Position of secondary subtitles"
-msgstr ""
+msgstr "Posisi subtitle sekunder"
 
 #: src/libvlc-module.c:840
 msgid ""
 "Place on video where to display secondary subtitles (default bottom center)."
-msgstr ""
+msgstr "Tempat pada video untuk menampilkan subtitle sekunder (default tengah bawah)."
 
 #: src/libvlc-module.c:842
 msgid "Force secondary subtitle position"
-msgstr ""
+msgstr "Paksa posisi subtitle sekunder"
 
 #: src/libvlc-module.c:844
 msgid ""
 "You can use this option to vertically adjust the position secondary "
 "subtitles are displayed."
-msgstr ""
+msgstr "Anda dapat menggunakan opsi ini untuk menyesuaikan posisi vertikal tampilan subtitle sekunder."
 
 #: src/libvlc-module.c:847
 msgid "On Screen Display duration"
@@ -437,33 +438,33 @@ msgstr "Berapa lama pesan On Screen Display ditampilkan, dalam milidetik."
 
 #: src/libvlc-module.c:889
 msgid "Subtitle Frames per Second"
-msgstr ""
+msgstr "Bingkai per Detik Subtitle"
 
 #: src/libvlc-module.c:891
 msgid "Override the normal frames per second settings. "
-msgstr ""
+msgstr "Timpa pengaturan bingkai per detik yang normal. "
 
 #: src/libvlc-module.c:976
 msgid ""
 "This X.509 certificate file (PEM format) is used for server-side TLS. On OS "
 "X, the string is used as a label to search the certificate in the keychain."
-msgstr ""
+msgstr "File sertifikat X.509 ini (format PEM) digunakan untuk TLS sisi server. Di OS X, string ini digunakan sebagai label untuk mencari sertifikat di keychain."
 
 #: src/libvlc-module.c:1027
 msgid ""
 "These options allow you to control the preferred modules used for accessing, "
 "demuxing and decoding (or encoding) inputs."
-msgstr ""
+msgstr "Opsi ini memungkinkan Anda mengontrol modul pilihan yang digunakan untuk mengakses, demultipleks, dan mendekode (atau mengenkode) input."
 
 #: src/libvlc-module.c:1037
 msgid "Enable hardware decoders"
-msgstr ""
+msgstr "Aktifkan dekoder perangkat keras"
 
 #: src/libvlc-module.c:1039
 msgid ""
 "VLC will fallback automatically to software decoders in case of hardware "
 "decoder failure."
-msgstr ""
+msgstr "VLC akan otomatis beralih ke dekoder perangkat lunak jika dekoder perangkat keras gagal."
 
 #: src/libvlc-module.c:1042
 msgid "Preferred decoder hardware device"
@@ -479,11 +480,11 @@ msgstr ""
 
 #: src/libvlc-module.c:1128
 msgid "Tracer module"
-msgstr ""
+msgstr "Modul pelacak"
 
 #: src/libvlc-module.c:1130
 msgid "This allow to select which tracer module you want to use."
-msgstr ""
+msgstr "Ini memungkinkan Anda memilih modul pelacak yang ingin digunakan."
 
 #: src/libvlc-module.c:1149
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:23
@@ -507,11 +508,11 @@ msgstr ""
 
 #: src/libvlc-module.c:1162
 msgid "Statistics collection frequency"
-msgstr ""
+msgstr "Frekuensi pengumpulan statistik"
 
 #: src/libvlc-module.c:1164
 msgid "Collection frequency of the statistics in ms."
-msgstr ""
+msgstr "Frekuensi pengumpulan statistik dalam ms."
 
 #: src/libvlc-module.c:1208
 msgid "Enqueue items into play queue in one instance mode"
@@ -529,7 +530,7 @@ msgstr ""
 msgid ""
 "These options define the behavior of the play queue. Some of them can be "
 "overridden in the play queue dialog box."
-msgstr ""
+msgstr "Opsi ini menentukan perilaku antrean putar. Beberapa di antaranya dapat ditimpa di kotak dialog antrean putar."
 
 #: src/libvlc-module.c:1228
 msgid ""
@@ -541,19 +542,19 @@ msgstr ""
 
 #: src/libvlc-module.c:1235
 msgid "Preparsing threads"
-msgstr ""
+msgstr "Thread pra-penguraian"
 
 #: src/libvlc-module.c:1237
 msgid "Maximum number of threads used to preparse items"
-msgstr ""
+msgstr "Jumlah maksimum thread yang digunakan untuk pra-penguraian item"
 
 #: src/libvlc-module.c:1239
 msgid "Fetch-art threads"
-msgstr ""
+msgstr "Thread pengambilan sampul"
 
 #: src/libvlc-module.c:1241
 msgid "Maximum number of threads used to fetch art"
-msgstr ""
+msgstr "Jumlah maksimum thread yang digunakan untuk mengambil sampul"
 
 #: src/libvlc-module.c:1252
 msgid ""
@@ -581,7 +582,7 @@ msgstr ""
 
 #: src/libvlc-module.c:1268
 msgid "Flatten files listed by extractors (archive)"
-msgstr ""
+msgstr "Ratakan file yang didaftarkan oleh ekstraktor (arsip)"
 
 #: src/libvlc-module.c:1277
 msgid "VLC will randomly play files in the play queue until interrupted."
@@ -602,7 +603,7 @@ msgstr "Hentikan pemutaran setelah setiap item dalam antrean putar."
 
 #: src/libvlc-module.c:1293
 msgid "Exit if there are no more items in the play queue."
-msgstr ""
+msgstr "Keluar jika tidak ada lagi item di antrean putar."
 
 #: src/libvlc-module.c:1297
 msgid "Pause each item in the play queue on the last frame."
@@ -617,7 +618,7 @@ msgid "Automatically start playing the play queue content once it's loaded."
 msgstr "Mulai memutar isi antrean putar secara otomatis setelah dimuat."
 
 #: src/libvlc-module.c:1317
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
 msgid "Use the media library"
 msgstr "Gunakan pustaka media"
 
@@ -645,47 +646,47 @@ msgstr ""
 
 #: src/libvlc-module.c:1328
 msgid "Play queue bookmark 1"
-msgstr ""
+msgstr "Penanda antrean putar 1"
 
 #: src/libvlc-module.c:1329
 msgid "Play queue bookmark 2"
-msgstr ""
+msgstr "Penanda antrean putar 2"
 
 #: src/libvlc-module.c:1330
 msgid "Play queue bookmark 3"
-msgstr ""
+msgstr "Penanda antrean putar 3"
 
 #: src/libvlc-module.c:1331
 msgid "Play queue bookmark 4"
-msgstr ""
+msgstr "Penanda antrean putar 4"
 
 #: src/libvlc-module.c:1332
 msgid "Play queue bookmark 5"
-msgstr ""
+msgstr "Penanda antrean putar 5"
 
 #: src/libvlc-module.c:1333
 msgid "Play queue bookmark 6"
-msgstr ""
+msgstr "Penanda antrean putar 6"
 
 #: src/libvlc-module.c:1334
 msgid "Play queue bookmark 7"
-msgstr ""
+msgstr "Penanda antrean putar 7"
 
 #: src/libvlc-module.c:1335
 msgid "Play queue bookmark 8"
-msgstr ""
+msgstr "Penanda antrean putar 8"
 
 #: src/libvlc-module.c:1336
 msgid "Play queue bookmark 9"
-msgstr ""
+msgstr "Penanda antrean putar 9"
 
 #: src/libvlc-module.c:1337
 msgid "Play queue bookmark 10"
-msgstr ""
+msgstr "Penanda antrean putar 10"
 
 #: src/libvlc-module.c:1338
 msgid "This allows you to define play queue bookmarks."
-msgstr ""
+msgstr "Ini memungkinkan Anda menentukan penanda antrean putar."
 
 #: src/libvlc-module.c:1383
 msgid "Select the hotkey to use to skip to the next item in the play queue."
@@ -853,11 +854,11 @@ msgstr ""
 
 #: src/libvlc-module.c:1868
 msgid "Multiple Subtitles"
-msgstr ""
+msgstr "Beberapa Subtitle"
 
 #: src/libvlc-module.c:2070
 msgid "Input access and codecs"
-msgstr ""
+msgstr "Akses input dan kodek"
 
 #: src/libvlc-module.c:2153
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:506
@@ -874,22 +875,22 @@ msgstr "Saat memulai"
 
 #: src/libvlc-module.c:2860
 msgid "print help for VLC (can be combined with --help-verbose)"
-msgstr ""
+msgstr "cetak bantuan untuk VLC (dapat digabung dengan --help-verbose)"
 
 #: src/libvlc-module.c:2862
 msgid ""
 "print help for VLC and all its modules (can be combined with --help-verbose)"
-msgstr ""
+msgstr "cetak bantuan untuk VLC dan semua modulnya (dapat digabung dengan --help-verbose)"
 
 #: src/libvlc-module.c:2865
 msgid "print complete help (same as --longhelp --help-verbose)"
-msgstr ""
+msgstr "cetak bantuan lengkap (sama dengan --longhelp --help-verbose)"
 
 #: src/libvlc-module.c:2873
 msgid ""
 "print help on a specific module (can be combined with --help-verbose). "
 "Prefix the module name with = for strict matches."
-msgstr ""
+msgstr "cetak bantuan untuk modul tertentu (dapat digabung dengan --help-verbose). Awali nama modul dengan = untuk pencocokan persis."
 
 #: src/misc/actions.c:55
 msgctxt "key"
@@ -1444,23 +1445,23 @@ msgstr "Kesalahan bingkai berikutnya"
 msgid "Previous frame error"
 msgstr "Kesalahan bingkai sebelumnya"
 
-#: src/text/iso-639_def.h:123 modules/gui/qt/util/subtitle_preferences.cpp:53
+#: src/text/iso-639_def.h:123 modules/gui/qt/util/subtitle_preferences.cpp:60
 msgid "Cebuano"
 msgstr "Cebuano"
 
-#: src/text/iso-639_def.h:231 modules/gui/qt/util/subtitle_preferences.cpp:56
+#: src/text/iso-639_def.h:231 modules/gui/qt/util/subtitle_preferences.cpp:63
 msgid "Hawaiian"
 msgstr "Hawaii"
 
-#: src/text/iso-639_def.h:239 modules/gui/qt/util/subtitle_preferences.cpp:57
+#: src/text/iso-639_def.h:239 modules/gui/qt/util/subtitle_preferences.cpp:64
 msgid "Hmong"
 msgstr "Hmong"
 
-#: src/text/iso-639_def.h:344 modules/gui/qt/util/subtitle_preferences.cpp:58
+#: src/text/iso-639_def.h:344 modules/gui/qt/util/subtitle_preferences.cpp:65
 msgid "Manipuri"
 msgstr "Manipuri"
 
-#: src/text/iso-639_def.h:494 modules/gui/qt/util/subtitle_preferences.cpp:60
+#: src/text/iso-639_def.h:494 modules/gui/qt/util/subtitle_preferences.cpp:67
 msgid "Syriac"
 msgstr "Suryani"
 
@@ -1494,13 +1495,13 @@ msgstr "Mode Penyesuaian"
 
 #: modules/access_output/http.c:65
 msgid "DLNA content features"
-msgstr ""
+msgstr "Fitur konten DLNA"
 
 #: modules/access_output/http.c:66
 msgid ""
 "Answer with the headers of a DLNA media server, with these content features: "
 "a TV reading the stream may refuse it without them."
-msgstr ""
+msgstr "Jawab dengan header server media DLNA, dengan fitur konten ini: TV yang membaca stream mungkin menolaknya tanpa header tersebut."
 
 #: modules/audio_filter/expander.c:65
 #: modules/gui/qt/dialogs/extended/extended.cpp:82
@@ -1534,7 +1535,7 @@ msgstr "Aktif"
 
 #: modules/audio_output/wasapi.c:1008
 msgid "Use exclusive mode"
-msgstr ""
+msgstr "Gunakan mode eksklusif"
 
 #: modules/audio_output/wasapi.c:1010
 msgid ""
@@ -1542,10 +1543,10 @@ msgid ""
 "can be used to reduce the audio latency or to assure that the audio stream "
 "won't be modified by the OS. This mode is more likely to fail if the "
 "soundcard format is not handled by VLC."
-msgstr ""
+msgstr "VLC akan terhubung langsung ke perangkat endpoint audio. Mode ini dapat digunakan untuk mengurangi latensi audio atau memastikan stream audio tidak diubah oleh OS. Mode ini lebih mungkin gagal jika format kartu suara tidak ditangani oleh VLC."
 
 #: modules/codec/vpx.c:62
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:211
 #: modules/video_output/xcb/render.c:764
 msgid "Best"
 msgstr "Terbaik"
@@ -1581,18 +1582,18 @@ msgstr "Posisi subtitle: %+d%%"
 
 #: modules/gui/macosx/library/VLCLibraryController.m:317
 #: modules/gui/macosx/library/VLCLibraryMenuController.m:126
-#: modules/gui/qt/medialibrary/mlplaylistlistmodel.cpp:293
+#: modules/gui/qt/medialibrary/mlplaylistlistmodel.cpp:304
 msgid "Rename playlist"
 msgstr "Ganti nama daftar putar"
 
 #: modules/gui/macosx/library/VLCLibraryController.m:318
-#: modules/gui/qt/medialibrary/mlplaylistlistmodel.cpp:294
+#: modules/gui/qt/medialibrary/mlplaylistlistmodel.cpp:305
 msgid "Please enter the new playlist name:"
 msgstr "Masukkan nama baru daftar putar:"
 
 #: modules/gui/macosx/library/VLCLibraryController.m:319
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:395
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:441
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:402
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:448
 #: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:127
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:401
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:104
@@ -1603,7 +1604,7 @@ msgid "Rename"
 msgstr "Ganti nama"
 
 #: modules/gui/macosx/library/VLCLibraryController.m:339
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:126
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:129
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:94
 msgid "Playlist Name"
 msgstr "Nama Daftar Putar"
@@ -1621,12 +1622,6 @@ msgstr "Tambahkan ke Pustaka Media"
 msgid "Remove from Favorites"
 msgstr "Hapus dari Favorit"
 
-#: modules/gui/macosx/library/VLCLibraryTableCellView.m:144
-#: modules/gui/macosx/library/video-library/VLCLibraryVideoGroupDescriptor.m:42
-#: modules/gui/macosx/library/video-library/VLCLibraryVideoDataSource.m:534
-msgid "Recents"
-msgstr ""
-
 #: modules/gui/macosx/library/VLCLibraryTableCellView.m:147
 #: modules/gui/macosx/library/video-library/VLCLibraryVideoGroupDescriptor.m:47
 #: modules/gui/macosx/library/video-library/VLCLibraryVideoDataSource.m:536
@@ -1636,25 +1631,6 @@ msgstr ""
 #: modules/gui/qt/player/qml/controlbarcontrols/LibraryButton.qml:23
 msgid "Library"
 msgstr "Pustaka"
-
-#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:682
-#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:899
-msgid "All genres"
-msgstr ""
-
-#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:684
-#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:900
-msgid "All artists"
-msgstr ""
-
-#: modules/gui/macosx/library/home-library/VLCLibraryHomeViewSectionHeaderView.m:72
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:474
-msgid "Show all"
-msgstr "Tampilkan semua"
-
-#: modules/gui/macosx/library/home-library/VLCLibraryHomeViewSectionHeaderView.m:122
-msgid "Open %@ in the library"
-msgstr ""
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1604
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:126
@@ -1709,48 +1685,48 @@ msgstr "Simpan kata sandi"
 msgid "Ok"
 msgstr "OK"
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:60
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:63
 #: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:37
 #: modules/gui/qt/menus/menus.cpp:955 modules/gui/qt/menus/qml/MainMenu.qml:65
 msgid "Open Network Stream"
 msgstr "Buka Stream Jaringan"
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:92
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:106
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:95
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:109
 msgid "Network URL"
 msgstr "URL Jaringan"
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:94
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:97
 msgid ""
 "“%1” is not a link: links start with http://, rtsp://… or a site's address."
 msgstr ""
 "“%1” bukan tautan: tautan diawali dengan http://, rtsp://… atau alamat situs."
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:95
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:98
 msgid "You can enter multiple links to load."
 msgstr "Anda dapat memasukkan beberapa tautan untuk dimuat."
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:105
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:108
 msgid "e.g., https://www.example.com/stream.avi"
 msgstr "mis., https://www.example.com/stream.avi"
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:127
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:130
 msgid "(optional)"
 msgstr "(opsional)"
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:128
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:131
 msgid "The playlist will be saved and displayed with this title."
 msgstr "Daftar putar akan disimpan dan ditampilkan dengan judul ini."
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:129
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:132
 msgid "Playlists need the media library."
 msgstr "Daftar putar memerlukan pustaka media."
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:139
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:142
 msgid "e.g., Favorite TV Channels"
 msgstr "mis., Saluran TV Favorit"
 
-#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:140
+#: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:143
 msgid "Playlist name"
 msgstr "Nama daftar putar"
 
@@ -1868,7 +1844,7 @@ msgid "GitHub"
 msgstr "GitHub"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:291
-#: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:136
+#: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:142
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:293
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:111
 #: modules/gui/qt/widgets/qml/CSDWindowButtonSet.qml:87
@@ -1879,19 +1855,35 @@ msgstr "GitHub"
 msgid "Close"
 msgstr "Tutup"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:885
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:897
 msgid "Save play queue as..."
 msgstr "Simpan antrean putar sebagai..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1121
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1117
+msgid "Write error"
+msgstr "Kesalahan penulisan"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1134
 msgid "Export playlist as..."
 msgstr "Ekspor daftar putar sebagai..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1260
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1151
+msgid ""
+"The playlist could not be exported to %1:\n"
+"%2"
+msgstr "Daftar putar tidak dapat diekspor ke %1:\n%2"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1153
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:49
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
+msgid "Export Playlist"
+msgstr "Ekspor Daftar Putar"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1279
 msgid "Open audio..."
 msgstr "Buka audio..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1265
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1284
 msgid "Open video..."
 msgstr "Buka video..."
 
@@ -1964,69 +1956,69 @@ msgid "Audio effect settings could not be saved (error %1)."
 msgstr "Pengaturan efek audio tidak dapat disimpan (kesalahan %1)."
 
 #: modules/gui/qt/dialogs/extended/audio_effects.cpp:525
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:525
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:529
 msgid "The setting \"%1\" changed outside this dialog."
 msgstr "Pengaturan \"%1\" diubah di luar dialog ini."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:314
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:318
 msgid "Open video effects before changing them."
 msgstr "Buka efek video sebelum mengubahnya."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:315
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:321
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:353
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:417
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:431
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:468
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:319
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:325
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:357
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:421
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:435
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:472
 msgid "No active video output is available."
 msgstr "Tidak ada output video aktif yang tersedia."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:316
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:320
 msgid "Video output changed during the preview."
 msgstr "Output video berubah selama pratinjau."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:350
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:354
 msgid "Video effect option is unavailable."
 msgstr "Opsi efek video tidak tersedia."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:360
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:364
 msgid "The video effect value could not be prepared."
 msgstr "Nilai efek video tidak dapat disiapkan."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:401
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:405
 msgid "The video effect value could not be applied."
 msgstr "Nilai efek video tidak dapat diterapkan."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:408
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:412
 msgid "Video filter is unavailable."
 msgstr "Filter video tidak tersedia."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:421
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:425
 msgid "The video filter could not be applied."
 msgstr "Filter video tidak dapat diterapkan."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:427
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:431
 msgid "Invalid crop value."
 msgstr "Nilai pemotongan tidak valid."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:439
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:443
 msgid "Crop could not be applied to every video output."
 msgstr "Pemotongan tidak dapat diterapkan ke semua output video."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:456
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:460
 msgid "Video output changed; the previous preview can no longer be restored."
 msgstr ""
 "Output video berubah; pratinjau sebelumnya tidak dapat dipulihkan lagi."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:480
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:484
 msgid "Video preview could not be restored."
 msgstr "Pratinjau video tidak dapat dipulihkan."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:493
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:497
 msgid "A video effect value is unavailable."
 msgstr "Salah satu nilai efek video tidak tersedia."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:524
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:528
 msgid "Video effect settings could not be saved (error %1)."
 msgstr "Pengaturan efek video tidak dapat disimpan (kesalahan %1)."
 
@@ -2042,71 +2034,71 @@ msgstr "Tautkan pemotongan atas dan bawah"
 msgid "Link left and right crop"
 msgstr "Tautkan pemotongan kiri dan kanan"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:95
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:102
 #: modules/gui/qt/dialogs/extended/qml/EffectPresets.qml:244
 msgid "Play a media to save its effects as a preset."
 msgstr "Putar media untuk menyimpan efeknya sebagai preset."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:132
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:139
 msgid "Effect preset: %1"
 msgstr "Preset efek: %1"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:247
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:254
 msgid "Effect presets"
 msgstr "Preset efek"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:262
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:440
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:269
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:447
 msgid "New Preset"
 msgstr "Preset Baru"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:279
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:286
 msgid "Chosen preset"
 msgstr "Preset terpilih"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:358
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:101
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:365
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:102
 msgid "Actions of %1"
 msgstr "Tindakan untuk %1"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:406
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:413
 msgid "Update with current effects"
 msgstr "Perbarui dengan efek saat ini"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:440
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:447
 msgid "Rename Preset"
 msgstr "Ganti Nama Preset"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:483
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:490
 msgid "Preset Name"
 msgstr "Nama Preset"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:484
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:491
 msgid "The preset keeps its effects."
 msgstr "Preset tetap menyimpan efeknya."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:485
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:492
 msgid "The preset keeps the audio and video effects in use."
 msgstr "Preset menyimpan efek audio dan video yang sedang digunakan."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:493
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:500
 msgid "e.g., Late Night Movies"
 msgstr "mis., Film Tengah Malam"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:494
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:501
 msgid "Preset name"
 msgstr "Nama preset"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:512
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:519
 msgid "Delete Preset"
 msgstr "Hapus Preset"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:538
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:545
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:481
 msgid "Delete %1?"
 msgstr "Hapus %1?"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:539
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:546
 msgid "The effects in use stay as they are."
 msgstr "Efek yang sedang digunakan tetap seperti semula."
 
@@ -2159,15 +2151,15 @@ msgstr ""
 msgid "Some effects of the preset could not be applied."
 msgstr "Beberapa efek dari preset tidak dapat diterapkan."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:225
+#: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:231
 msgid "Play audio to preview and edit audio effects."
 msgstr "Putar audio untuk melihat pratinjau dan mengedit efek audio."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:247
+#: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:253
 msgid "Play video to preview and edit effects."
 msgstr "Putar video untuk melihat pratinjau dan mengedit efek."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:266
+#: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:272
 msgid "Open synchronization"
 msgstr "Buka sinkronisasi"
 
@@ -2303,19 +2295,19 @@ msgstr "Telusuri %1"
 msgid "Image Files (*.png *.jpg);;All Files (*)"
 msgstr "File Gambar (*.png *.jpg);;Semua File (*)"
 
-#: modules/gui/qt/dialogs/firstrun/onboarding.cpp:47
+#: modules/gui/qt/dialogs/firstrun/onboarding.cpp:48
 msgid "Could not add the media folder: %1"
 msgstr "Tidak dapat menambahkan folder media: %1"
 
-#: modules/gui/qt/dialogs/firstrun/onboarding.cpp:199
+#: modules/gui/qt/dialogs/firstrun/onboarding.cpp:200
 msgid "The media library is unavailable."
 msgstr "Pustaka media tidak tersedia."
 
-#: modules/gui/qt/dialogs/firstrun/onboarding.cpp:206
+#: modules/gui/qt/dialogs/firstrun/onboarding.cpp:207
 msgid "Choose a local media folder."
 msgstr "Pilih folder media lokal."
 
-#: modules/gui/qt/dialogs/firstrun/onboarding.cpp:211
+#: modules/gui/qt/dialogs/firstrun/onboarding.cpp:212
 msgid "The media folder does not exist or cannot be read: %1"
 msgstr "Folder media tidak ada atau tidak dapat dibaca: %1"
 
@@ -2331,11 +2323,11 @@ msgstr "Tidak dapat menyimpan preferensi penggunaan pertama."
 msgid "Choose a media folder"
 msgstr "Pilih folder media"
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:200
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:187
 msgid "Choose what VLC does online by itself."
 msgstr "Pilih apa yang dilakukan VLC secara online dengan sendirinya."
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:213
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:200
 msgid ""
 "No telemetry, no ads, no account. These two connect to the internet without "
 "being asked each time, and send only what is written under them."
@@ -2344,19 +2336,19 @@ msgstr ""
 "internet tanpa ditanya setiap kali, dan hanya mengirim apa yang tertulis di "
 "bawahnya."
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:231
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:218
 msgid "Check for updates once a day"
 msgstr "Periksa pembaruan sekali sehari"
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:232
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:219
 msgid "Asks GitHub (api.github.com) for the latest release of VLC Redesign."
 msgstr "Menanyakan rilis terbaru VLC Redesign ke GitHub (api.github.com)."
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:238
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:225
 msgid "Find subtitles online automatically"
 msgstr "Cari subtitle online secara otomatis"
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:239
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:226
 msgid ""
 "When a video has none in your languages: its name and a fingerprint of the "
 "file to subtitle services (OpenSubtitles.org, Wizdom, Gestdown, YIFY "
@@ -2366,18 +2358,18 @@ msgstr ""
 "filenya ke layanan subtitle (OpenSubtitles.org, Wizdom, Gestdown, YIFY "
 "Subtitles), namanya ke IMDb, Wikidata, dan Cinemeta untuk mengenali filmnya."
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:255
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:242
 msgid "Privacy and code signing policy"
 msgstr "Kebijakan privasi dan penandatanganan kode"
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:275
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:262
 msgid ""
 "Both stay in Settings: General for the updates, Subtitles for the subtitles."
 msgstr ""
 "Keduanya tetap ada di Pengaturan: Umum untuk pembaruan, Subtitle untuk "
 "subtitle."
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:338
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:325
 msgid "Finish"
 msgstr "Selesai"
 
@@ -2393,11 +2385,11 @@ msgstr "Saat ini belum ada pintasan pemutaran yang ditetapkan."
 msgid "Find the full list in the menu."
 msgstr "Temukan daftar lengkapnya di menu."
 
-#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:56
+#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:43
 msgid "Choose the languages of your subtitles."
 msgstr "Pilih bahasa subtitle Anda."
 
-#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:69
+#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:56
 msgid ""
 "Subtitles in your language show by themselves: from the video, from a file "
 "next to it, or found online. When there are none in it, not even online, the "
@@ -2407,22 +2399,22 @@ msgstr ""
 "file di sebelahnya, atau yang ditemukan online. Bila tidak ada dalam bahasa "
 "itu, bahkan secara online, bahasa kedua yang digunakan."
 
-#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:87
+#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:74
 msgid "Default language"
 msgstr "Bahasa default"
 
-#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:106
+#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:93
 msgid "Second language (when there are none)"
 msgstr "Bahasa kedua (bila tidak ada)"
 
-#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:135
+#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:122
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:102
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:528
 msgid "Find subtitles online when a video has none in these languages"
 msgstr ""
 "Cari subtitle online bila video tidak memilikinya dalam bahasa-bahasa ini"
 
-#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:148
+#: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:135
 msgid ""
 "Online subtitles come from free services (OpenSubtitles, and more for some "
 "languages). Change all of it in Settings, Subtitles."
@@ -2554,7 +2546,7 @@ msgid "System language"
 msgstr "Bahasa sistem"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:138
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:107
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:110
 msgid "Higher"
 msgstr "Lebih tinggi"
 
@@ -2574,41 +2566,41 @@ msgstr "Dinaikkan"
 msgid "%1 MiB"
 msgstr "%1 MiB"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:177
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:185
 msgid "Same as video"
 msgstr "Sama dengan video"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:179
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:181
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:187
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:189
 msgid "%1 px wide"
 msgstr "Lebar %1 px"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:245
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:253
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
 msgid "Discover cast devices"
 msgstr "Temukan perangkat transmisi"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:246
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:254
 msgid ""
 "Looks for the cast devices of the local network when the Renderer menu opens."
 msgstr ""
 "Mencari perangkat transmisi di jaringan lokal saat menu Perender dibuka."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:247
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:255
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:51
 msgid "Remember window size and position"
 msgstr "Ingat ukuran dan posisi jendela"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:248
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:256
 msgid "Opens the window where it was when VLC was closed."
 msgstr "Membuka jendela di posisi terakhirnya saat VLC ditutup."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:249
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:257
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:70
 msgid "Always show the player bar"
 msgstr "Selalu tampilkan bilah pemutar"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:250
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:258
 msgid ""
 "Keeps the player bar at the bottom of the library while nothing plays: Play "
 "starts the play queue, or opens files when it is empty."
@@ -2616,12 +2608,12 @@ msgstr ""
 "Mempertahankan bilah pemutar di bagian bawah pustaka saat tidak ada yang "
 "diputar: Putar memulai antrean putar, atau membuka file bila antrean kosong."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:252
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:260
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:72
 msgid "Increase text contrast"
 msgstr "Tingkatkan kontras teks"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:253
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:261
 msgid ""
 "Draws the dim texts of the design (hints, descriptions, watched items) "
 "brighter, to the contrast the WCAG accessibility guidelines ask for (AA)."
@@ -2630,21 +2622,21 @@ msgstr ""
 "ditonton) lebih terang, hingga kontras yang diminta pedoman aksesibilitas "
 "WCAG (AA)."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:255
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:263
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:65
 msgid "Popup duration"
 msgstr "Durasi pop-up"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:256
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:264
 msgid "How long the popup of the track changes stays on the screen."
 msgstr "Berapa lama pop-up perubahan trek tetap di layar."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:257
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:327
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:265
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
 msgid "Process priority"
 msgstr "Prioritas proses"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:258
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:266
 msgid ""
 "How much processor time the system gives VLC compared with the other "
 "programs."
@@ -2652,25 +2644,25 @@ msgstr ""
 "Seberapa banyak waktu prosesor yang diberikan sistem kepada VLC dibandingkan "
 "program lain."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:259
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:275
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:267
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:281
 msgid "Double click on the video"
 msgstr "Klik ganda pada video"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:260
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:268
 msgid "What a double click on the video does."
 msgstr "Tindakan klik ganda pada video."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:260
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:268
 msgid "Nothing|Toggle fullscreen"
 msgstr "Tidak ada|Alihkan layar penuh"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:261
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:228
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:269
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:234
 msgid "Size values"
 msgstr "Nilai ukuran"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:262
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:270
 msgid ""
 "Choose the size of the subtitles by name (relative to the picture), or in "
 "pixels."
@@ -2678,11 +2670,11 @@ msgstr ""
 "Pilih ukuran subtitle berdasarkan nama (relatif terhadap gambar), atau dalam "
 "piksel."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:263
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:271
 msgid "Relative|Pixels"
 msgstr "Relatif|Piksel"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:265
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:273
 msgid ""
 "How opaque the box behind the subtitles is when there is one (kept while "
 "there is none)."
@@ -2690,12 +2682,12 @@ msgstr ""
 "Seberapa pekat kotak di belakang subtitle bila ada (tetap disimpan selama "
 "tidak ada)."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:266
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:274
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:94
 msgid "Never remember items matching"
 msgstr "Jangan pernah ingat item yang cocok dengan"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:267
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:275
 msgid ""
 "A regular expression: the items whose address or name matches it are not "
 "saved in the history, nor their playback position."
@@ -2703,132 +2695,132 @@ msgstr ""
 "Ekspresi reguler: item yang alamat atau namanya cocok tidak disimpan dalam "
 "riwayat, begitu pula posisi pemutarannya."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:281
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:264
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:289
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:270
 msgid "System monospace"
 msgstr "Monospace sistem"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:281
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:289
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:233
 msgid "System, sans-serif"
 msgstr "Sistem, sans-serif"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:334
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:342
 msgid "Ultra fast"
 msgstr "Ultra cepat"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:334
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:342
 msgid "Super fast"
 msgstr "Super cepat"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:335
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:343
 msgid "Very fast"
 msgstr "Sangat cepat"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:337
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:345
 msgid "Very slow"
 msgstr "Sangat lambat"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:337
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:345
 msgid "Placebo"
 msgstr "Placebo"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:339
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:347
 msgid "Film"
 msgstr "Film"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:340
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:348
 msgid "Still image"
 msgstr "Gambar diam"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:341
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:349
 msgid "Fast decoding"
 msgstr "Dekode cepat"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:341
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:349
 msgid "Zero latency"
 msgstr "Latensi nol"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:908
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:916
 msgid "%1: this value can not be used."
 msgstr "%1: nilai ini tidak dapat digunakan."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:958
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:987
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:979
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1008
 msgid "%1 is not available in this VLC installation."
 msgstr "%1 tidak tersedia dalam instalasi VLC ini."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:972
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:993
 msgid "This setting"
 msgstr "Pengaturan ini"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:982
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1003
 msgid "%1: choose a folder of this computer."
 msgstr "%1: pilih folder di komputer ini."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1011
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1032
 msgid "Select a category to reset."
 msgstr "Pilih kategori yang akan direset."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1073
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1094
 msgid "Repeat the current item (One) or the whole play queue (All)."
 msgstr "Ulangi item saat ini (Satu) atau seluruh antrean putar (Semua)."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1081
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1102
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:119
 msgid "When playback finishes"
 msgstr "Saat pemutaran selesai"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1082
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1103
 msgid "Stop, or quit VLC at the end of the play queue."
 msgstr "Berhenti, atau keluar dari VLC di akhir antrean putar."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1090
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1111
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:46
 msgid "Use a custom skin"
 msgstr "Gunakan skin kustom"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1091
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1112
 msgid "Starts VLC with the skin chosen below instead of this interface."
 msgstr ""
 "Menjalankan VLC dengan skin yang dipilih di bawah alih-alih antarmuka ini."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1107
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1128
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:93
 msgid "Remember the playback position"
 msgstr "Ingat posisi pemutaran"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1108
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1129
 msgid "Lets VLC continue the media where you left off."
 msgstr "Memungkinkan VLC melanjutkan media dari posisi terakhir Anda."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1122
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1143
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
 msgid "Reverse scroll direction"
 msgstr "Balikkan arah gulir"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1123
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1144
 msgid "The wheels that seek go backwards when turned forwards."
 msgstr "Roda yang menggeser posisi akan mundur saat diputar ke depan."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1138
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:281
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1159
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:287
 msgid "Web remote control"
 msgstr "Kontrol jarak jauh web"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1139
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1160
 msgid ""
 "Lets a web browser control VLC. Set its password in the Advanced Options."
 msgstr ""
 "Memungkinkan browser web mengontrol VLC. Atur kata sandinya di Pilihan "
 "Lanjutan."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1157
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1178
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
 msgid "Video post-processing"
 msgstr "Pascaproses video"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1158
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1179
 msgid ""
 "Improves the picture of poorly encoded videos, at the cost of processing "
 "power."
@@ -2836,92 +2828,96 @@ msgstr ""
 "Memperbaiki gambar video yang dienkode dengan buruk, dengan mengorbankan "
 "daya pemrosesan."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1207
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1228
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:214
 msgid "Visualization size"
 msgstr "Ukuran visualisasi"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1208
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1229
 msgid "The size the visualizations are drawn at."
 msgstr "Ukuran saat visualisasi digambar."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1209
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1230
 msgid "Match window"
 msgstr "Sesuai jendela"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1250
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1271
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:120
 msgid "Seek precisely"
 msgstr "Lompat dengan presisi"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1251
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1272
 msgid ""
 "Seek to the exact time asked, slower than seeking to the nearest key frame."
 msgstr ""
 "Melompat tepat ke waktu yang diminta, lebih lambat daripada melompat ke key "
 "frame terdekat."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1347
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1368
 msgid "From the file only"
 msgstr "Hanya dari file"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1349
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1370
 msgid "From the file and the internet"
 msgstr "Dari file dan internet"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1366
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1387
 msgid "Box"
 msgstr "Kotak"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1426
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1447
 msgid "Above normal"
 msgstr "Di atas normal"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1427
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1448
 msgid "Below normal"
 msgstr "Di bawah normal"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1427
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1448
 msgid "Idle"
 msgstr "Rendah"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1545
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1567
 msgid "Current screen"
 msgstr "Layar saat ini"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1550
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1572
 msgid "Screen %1 (%2)"
 msgstr "Layar %1 (%2)"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1556
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1578
 msgid "Screen %1"
 msgstr "Layar %1"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1565
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1587
 msgid "Any title"
 msgstr "Judul apa pun"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1565
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1587
 msgid "Contains title"
 msgstr "Mengandung judul"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1566
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1588
 msgid "Title with extra characters"
 msgstr "Judul dengan karakter tambahan"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1566
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1588
 msgid "Exact title match"
 msgstr "Judul sama persis"
 
-#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:47
+#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:92
+msgid "The audio output in use does not keep a startup volume."
+msgstr "Output audio yang digunakan tidak menyimpan volume awal."
+
+#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:126
 msgid "The plugins can not be rescanned on this installation."
 msgstr "Plugin tidak dapat dipindai ulang pada instalasi ini."
 
-#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:63
+#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:141
 msgid "The plugins could not be rescanned."
 msgstr "Plugin tidak dapat dipindai ulang."
 
-#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:75
+#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:153
 msgid ""
 "The plugins could not be rescanned: the folder of VLC may need administrator "
 "rights."
@@ -2929,16 +2925,16 @@ msgstr ""
 "Plugin tidak dapat dipindai ulang: folder VLC mungkin memerlukan hak "
 "administrator."
 
-#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:87
+#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:165
 msgid "The configurations folder could not be opened."
 msgstr "Folder konfigurasi tidak dapat dibuka."
 
-#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:177
+#: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:257
 msgid "Last.fm is unavailable in this VLC installation."
 msgstr "Last.fm tidak tersedia dalam instalasi VLC ini."
 
 #: modules/gui/qt/dialogs/preferences/config_model_effects.cpp:128
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:460
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:468
 msgid "VLC preferences are unavailable."
 msgstr "Preferensi VLC tidak tersedia."
 
@@ -2973,39 +2969,39 @@ msgstr ""
 "%1 diubah di luar pengaturan atau tidak tersedia. Perubahan Anda tidak "
 "disimpan."
 
-#: modules/gui/qt/dialogs/preferences/preferences.cpp:78
-#: modules/gui/qt/qt.cpp:338
+#: modules/gui/qt/dialogs/preferences/preferences.cpp:79
+#: modules/gui/qt/qt.cpp:337
 msgid "Expert"
 msgstr "Ahli"
 
-#: modules/gui/qt/dialogs/preferences/preferences.cpp:79
+#: modules/gui/qt/dialogs/preferences/preferences.cpp:80
 msgid "Switch to expert preferences view"
 msgstr "Beralih ke tampilan preferensi ahli"
 
-#: modules/gui/qt/dialogs/preferences/preferences.cpp:203
+#: modules/gui/qt/dialogs/preferences/preferences.cpp:204
 msgid "Modified only"
 msgstr "Hanya yang diubah"
 
-#: modules/gui/qt/dialogs/preferences/preferences.cpp:232
+#: modules/gui/qt/dialogs/preferences/preferences.cpp:233
 msgid "Expert Preferences"
 msgstr "Preferensi Ahli"
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:216
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:217
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:62
 msgid "Navigation"
 msgstr "Navigasi"
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:367
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:422
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:440
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:368
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:430
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:448
 msgid "This shortcut is unavailable."
 msgstr "Pintasan ini tidak tersedia."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:378
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:379
 msgid "This key combination cannot be used by VLC."
 msgstr "Kombinasi tombol ini tidak dapat digunakan oleh VLC."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:474
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:482
 msgid ""
 "The global hotkeys of \"%1\" changed outside this dialog. Cancel and reopen "
 "the shortcuts."
@@ -3013,7 +3009,7 @@ msgstr ""
 "Tombol pintas global untuk \"%1\" diubah di luar dialog ini. Batalkan dan "
 "buka kembali pintasan."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:475
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:483
 msgid ""
 "The hotkeys of \"%1\" changed outside this dialog. Cancel and reopen the "
 "shortcuts."
@@ -3021,11 +3017,11 @@ msgstr ""
 "Tombol pintas untuk \"%1\" diubah di luar dialog ini. Batalkan dan buka "
 "kembali pintasan."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:489
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:497
 msgid "A shortcut could not be changed. Changes were reverted in memory."
 msgstr "Sebuah pintasan tidak dapat diubah. Perubahan dikembalikan di memori."
 
-#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:497
+#: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:505
 msgid ""
 "Could not save shortcuts (error %1). Changes were reverted in memory; verify "
 "the configuration file."
@@ -3037,13 +3033,13 @@ msgstr ""
 msgid "System's default (%1)"
 msgstr "Default sistem (%1)"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1441
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1446
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1439
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1444
 msgid "%1 (partial)"
 msgstr "%1 (sebagian)"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1824
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1834
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1839
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1849
 msgid "Please choose an entry point folder"
 msgstr "Pilih folder titik masuk"
 
@@ -3058,7 +3054,7 @@ msgstr "Tema"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:181
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:409
-#: modules/gui/qt/qt.cpp:333
+#: modules/gui/qt/qt.cpp:332
 msgid "Accent color"
 msgstr "Warna aksen"
 
@@ -3222,6 +3218,10 @@ msgid "%1 more matching shortcut"
 msgid_plural "%1 more matching shortcuts"
 msgstr[0] "%1 pintasan lain yang cocok"
 
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:474
+msgid "Show all"
+msgstr "Tampilkan semua"
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:514
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:93
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:109
@@ -3285,7 +3285,7 @@ msgid "All VLC options"
 msgstr "Semua opsi VLC"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:748
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:349
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:356
 msgid "Reset all settings"
 msgstr "Reset semua pengaturan"
 
@@ -3321,7 +3321,7 @@ msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:207
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:187
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:193
 msgid "Two-pass"
 msgstr "Dua tahap"
 
@@ -3398,12 +3398,12 @@ msgid "Play video to adjust and preview the picture."
 msgstr "Putar video untuk menyesuaikan dan melihat pratinjau gambar."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:114
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:188
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:194
 msgid "Spatial audio"
 msgstr "Audio spasial"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:122
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:191
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:197
 msgid "Stereo widening"
 msgstr "Pelebaran stereo"
 
@@ -3428,7 +3428,7 @@ msgid "The address the played tracks are sent to."
 msgstr "Alamat tujuan pengiriman trek yang diputar."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:216
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:273
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:279
 msgid "Nothing"
 msgstr "Tidak ada"
 
@@ -3436,7 +3436,7 @@ msgstr "Tidak ada"
 msgid "Seek"
 msgstr "Geser posisi"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:286
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:293
 msgid ""
 "Set a web remote password in the Advanced Options: the remote stays locked "
 "without one."
@@ -3444,102 +3444,102 @@ msgstr ""
 "Atur kata sandi kontrol jarak jauh web di Pilihan Lanjutan: tanpa kata "
 "sandi, kontrol jarak jauh tetap terkunci."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:291
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:298
 msgid "Applies the next time VLC starts"
 msgstr "Berlaku saat VLC dijalankan berikutnya"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:303
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:310
 msgid "Choose a snapshot folder"
 msgstr "Pilih folder snapshot"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:304
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:311
 msgid "Choose a time-shift buffer folder"
 msgstr "Pilih folder buffer time-shift"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:305
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:312
 msgid "Choose a recording folder"
 msgstr "Pilih folder rekaman"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:307
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:314
 msgid "Choose a folder"
 msgstr "Pilih folder"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:311
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:318
 msgid "Choose a skin"
 msgstr "Pilih skin"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:312
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:319
 msgid "Skin files (*.vlt *.wsz *.xml)"
 msgstr "File skin (*.vlt *.wsz *.xml)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:315
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:322
 msgid "Choose a log file"
 msgstr "Pilih file log"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:341
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:348
 msgid "Open configurations folder"
 msgstr "Buka folder konfigurasi"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:342
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:349
 msgid "Shows the folder of the settings of VLC."
 msgstr "Menampilkan folder pengaturan VLC."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:350
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:357
 msgid "Puts every setting of VLC back to its default."
 msgstr "Mengembalikan setiap pengaturan VLC ke default-nya."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:366
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:373
 msgid "Rescan plugins"
 msgstr "Pindai ulang plugin"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:367
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:374
 msgid "Rescan"
 msgstr "Pindai ulang"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:101
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:110
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:104
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:113
 msgid "0 s"
 msgstr "0 s"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:101
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:113
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:104
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:116
 msgid "5 s"
 msgstr "5 s"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:102
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:105
 msgid "10s"
 msgstr "10 s"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:105
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:108
 msgid "Lower"
 msgstr "Lebih rendah"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:106
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:494
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:109
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:513
 msgid "Usual"
 msgstr "Biasa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:110
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:113
 msgid "-5 s"
 msgstr "-5 s"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:111
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:114
 msgid "+5 s"
 msgstr "+5 s"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:113
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:116
 msgid "0.5 s"
 msgstr "0,5 s"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:116
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:119
 msgid "1 s"
 msgstr "1 s"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:116
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:119
 msgid "10 s"
 msgstr "10 s"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:591
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:604
 msgid "Choose a color"
 msgstr "Pilih warna"
 
@@ -3773,8 +3773,8 @@ msgstr "Jeda saat aplikasi lain menggunakan audio"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:112
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:114
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:115
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:196
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:202
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
 msgctxt "media streams"
 msgid "Tracks"
 msgstr "Trek"
@@ -3826,7 +3826,7 @@ msgid "Seeking"
 msgstr "Lompat posisi"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:121
-#: modules/gui/qt/qt.cpp:300
+#: modules/gui/qt/qt.cpp:299
 msgid "Show thumbnail while scrubbing"
 msgstr "Tampilkan thumbnail saat menggeser posisi"
 
@@ -3877,583 +3877,583 @@ msgstr "Pulihkan status pemutaran terakhir (trek, kecepatan...)"
 msgid "Start videos in fullscreen"
 msgstr "Mulai video dalam layar penuh"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:140
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:142
 msgid "Stop the screensaver during playback"
 msgstr "Hentikan screensaver selama pemutaran"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:141
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
 msgid "Play video as desktop wallpaper"
 msgstr "Putar video sebagai wallpaper desktop"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:144
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:146
 msgid "Method"
 msgstr "Metode"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:145
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:146
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:147
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:148
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:149
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:158
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:150
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:151
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:160
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:162
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:376
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:164
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:382
 msgid "Framing"
 msgstr "Pembingkaian"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:147
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:149
 msgid "Scale video to the window"
 msgstr "Skalakan video ke jendela"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:149
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:151
 msgid "Position in the window"
 msgstr "Posisi di jendela"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:150
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:151
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:152
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:153
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:154
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:155
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:156
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:165
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:157
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:158
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:167
 msgid "Snapshots"
 msgstr "Snapshot"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:150
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:152
 msgid "Save to"
 msgstr "Simpan ke"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:151
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:153
 msgid "File name prefix"
 msgstr "Awalan nama file"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:155
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:157
 msgid "Number files sequentially"
 msgstr "Beri nomor file secara berurutan"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:156
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:158
 msgid "Show a preview after capture"
 msgstr "Tampilkan pratinjau setelah pengambilan"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:158
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:160
 msgid "Custom aspect ratios"
 msgstr "Rasio aspek kustom"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:160
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:162
 msgid "Custom crop ratios"
 msgstr "Rasio pemotongan kustom"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:165
-msgid "Snapshot height (-1: proportional)"
-msgstr "Tinggi snapshot (-1: proporsional)"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:167
+msgid "Snapshot height (0: proportional, -1: original)"
+msgstr "Tinggi cuplikan (0: proporsional, -1: asli)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:166
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:168
 msgid "Deinterlacing filter"
 msgstr "Filter deinterlace"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:170
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:172
 msgid "Speaker setup"
 msgstr "Konfigurasi speaker"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:171
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:173
 msgid "Maximum volume"
 msgstr "Volume maksimum"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:173
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:174
-#: modules/gui/qt/dialogs/preferences/qml/SettingsStartupVolume.qml:139
-msgid "Startup volume"
-msgstr "Volume awal"
-
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:175
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:176
-msgid "Volume step"
-msgstr "Langkah volume"
-
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:177
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:178
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:179
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:180
+#: modules/gui/qt/dialogs/preferences/qml/SettingsStartupVolume.qml:139
+msgid "Startup volume"
+msgstr "Volume awal"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:182
+msgid "Volume step"
+msgstr "Langkah volume"
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:183
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:185
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:186
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
 msgid "Loudness"
 msgstr "Kenyaringan"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:177
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:183
 msgid "Normalize loudness"
 msgstr "Normalisasi kenyaringan"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:178
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
 msgid "Target level"
 msgstr "Level target"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:179
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:185
 msgid "Night mode"
 msgstr "Mode malam"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:183
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
 msgid "Replay gain preamp"
 msgstr "Preamp replay gain"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:195
 msgid "Spatial audio mode"
 msgstr "Mode audio spasial"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:193
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:199
 msgid "Pitch shift"
 msgstr "Pergeseran nada"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:194
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:200
 msgid "Chorus/flanger"
 msgstr "Chorus/flanger"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:196
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:202
 msgid "Preferred audio language"
 msgstr "Bahasa audio pilihan"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:197
-#: modules/gui/qt/player/qml/TracksMenu.qml:263
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
+#: modules/gui/qt/player/qml/TracksMenu.qml:266
 msgid "Audio delay"
 msgstr "Penundaan audio"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:201
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:207
 msgid "Pass compressed audio to the receiver"
 msgstr "Teruskan audio terkompresi ke receiver"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:202
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
 msgid "Detect Dolby Surround"
 msgstr "Deteksi Dolby Surround"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:211
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
 msgid "Fastest"
 msgstr "Tercepat"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:211
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
 msgid "Balanced"
 msgstr "Seimbang"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:210
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:216
 msgid "Output gain"
 msgstr "Penguatan output"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:211
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:217
 msgid "Keep the pitch when changing the speed"
 msgstr "Pertahankan nada saat mengubah kecepatan"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:212
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:218
 msgid "Equalizer preamp"
 msgstr "Preamp equalizer"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:214
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:220
 msgid "Compressor ratio"
 msgstr "Rasio kompresor"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:215
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
 msgid "Compressor threshold"
 msgstr "Ambang kompresor"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:216
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:222
 msgid "Compressor makeup gain"
 msgstr "Penguatan makeup kompresor"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:218
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:222
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:228
 msgid "Tracks & Languages"
 msgstr "Trek & Bahasa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
 msgid "Preferred language"
 msgstr "Bahasa pilihan"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:222
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:228
 msgid "Text encoding"
 msgstr "Enkode teks"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:223
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:255
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:229
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:261
 msgid "Loading Subtitles"
 msgstr "Memuat Subtitle"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:223
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:229
 msgid "Load subtitle files automatically"
 msgstr "Muat file subtitle secara otomatis"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
 msgid "File name matching"
 msgstr "Pencocokan nama file"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:233
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:239
 msgid "Bold"
 msgstr "Tebal"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:234
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:240
 msgid "Text color"
 msgstr "Warna teks"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:248
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:254
 msgid "Vertical position"
 msgstr "Posisi vertikal"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:249
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:255
 msgid "Timing"
 msgstr "Pengaturan waktu"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:250
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:251
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:252
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:266
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:256
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:257
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:259
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:272
 msgid "On-Screen Messages"
 msgstr "Pesan di Layar"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:250
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:256
 msgid "Show feedback for shortcuts"
 msgstr "Tampilkan umpan balik untuk pintasan"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:251
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:257
 msgid "Show feedback for"
 msgstr "Tampilkan umpan balik selama"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:252
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
 msgid "Show filename when a video starts"
 msgstr "Tampilkan nama file saat video dimulai"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:259
 msgid "Show filename for"
 msgstr "Tampilkan nama file selama"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:255
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:261
 msgid "Load subtitles from these folders"
 msgstr "Muat subtitle dari folder berikut"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:263
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:269
 msgid "Monospace font"
 msgstr "Font monospace"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:265
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:271
 msgid "Text alignment"
 msgstr "Perataan teks"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:266
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:272
 msgid "Position of the filename"
 msgstr "Posisi nama file"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:268
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:269
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:270
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:271
-msgid "Skip Amounts"
-msgstr "Besar Lompatan"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:268
-msgid "Very short skip"
-msgstr "Lompatan sangat pendek"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:269
-msgid "Short skip"
-msgstr "Lompatan pendek"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:270
-msgid "Medium skip"
-msgstr "Lompatan sedang"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:271
-msgid "Long skip"
-msgstr "Lompatan panjang"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:272
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:274
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:275
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:276
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:277
+msgid "Skip Amounts"
+msgstr "Besar Lompatan"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:274
+msgid "Very short skip"
+msgstr "Lompatan sangat pendek"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:275
+msgid "Short skip"
+msgstr "Lompatan pendek"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:276
+msgid "Medium skip"
+msgstr "Lompatan sedang"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:277
+msgid "Long skip"
+msgstr "Lompatan panjang"
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:281
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:283
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:286
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:289
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:292
 msgid "Mouse"
 msgstr "Mouse"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:272
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
 msgid "Single click on the video"
 msgstr "Klik sekali pada video"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:273
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:279
 msgid "Play / Pause"
 msgstr "Putar / Jeda"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:274
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:280
 msgid "Play / Pause on release"
 msgstr "Putar / Jeda saat dilepas"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:276
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
 msgid "Scroll wheel"
 msgstr "Roda gulir"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:277
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:283
 msgid "Horizontal scroll"
 msgstr "Gulir horizontal"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:281
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:285
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:377
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:287
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:288
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:290
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:291
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:383
 msgid "Remotes"
 msgstr "Kontrol Jarak Jauh"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:283
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:289
 msgid "Handle mouse clicks in the video"
 msgstr "Tangani klik mouse di video"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:290
 msgid "Web remote password"
 msgstr "Kata sandi kontrol jarak jauh web"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:285
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:291
 msgid "Web remote address"
 msgstr "Alamat kontrol jarak jauh web"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:286
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:292
 msgid "Ignore the volume keys of the keyboard"
 msgstr "Abaikan tombol volume keyboard"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:288
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:289
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:290
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:291
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:294
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:300
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
 msgid "Opening Files"
 msgstr "Membuka File"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:288
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:294
 msgid "Only allow one VLC window"
 msgstr "Hanya izinkan satu jendela VLC"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:289
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
 msgid "Apply to files opened from the file manager"
 msgstr "Terapkan untuk file yang dibuka dari pengelola file"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:290
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
 msgid "Add to the playlist instead of replacing it"
 msgstr "Tambahkan ke daftar putar alih-alih menggantinya"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:291
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
 msgid "When opening a folder"
 msgstr "Saat membuka folder"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:292
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
 msgid "Only this folder"
 msgstr "Hanya folder ini"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:292
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
 msgid "Include subfolders"
 msgstr "Sertakan subfolder"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:293
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
 msgid "Include and expand subfolders"
 msgstr "Sertakan dan perluas subfolder"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
 msgid "Metadata & Artwork"
 msgstr "Metadata & Sampul"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
 msgid "Fetch titles and artwork"
 msgstr "Ambil judul dan sampul"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
 msgid "Read media information automatically"
 msgstr "Baca informasi media secara otomatis"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
 msgid "Ignored file extensions"
 msgstr "Ekstensi file yang diabaikan"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:307
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
 msgid "Buffering"
 msgstr "Buffering"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
 msgid "Local files"
 msgstr "File lokal"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Network streams"
 msgstr "Stream jaringan"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
 msgid "Live capture"
 msgstr "Tangkapan langsung"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:306
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:307
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:312
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
 msgid "Proxy"
 msgstr "Proxy"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:306
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:312
 msgid "System proxy"
 msgstr "Proxy sistem"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
 msgid "Security"
 msgstr "Keamanan"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 msgid "Verify certificates against the system trust store"
 msgstr "Verifikasi sertifikat dengan penyimpanan kepercayaan sistem"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
 msgid "Cipher preference"
 msgstr "Preferensi cipher"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
 msgid "Secure (128-bit)"
 msgstr "Aman (128-bit)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
 msgid "Most secure (256-bit)"
 msgstr "Paling aman (256-bit)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:320
 msgid "Connections"
 msgstr "Koneksi"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
 msgid "Connection timeout"
 msgstr "Batas waktu koneksi"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:320
 msgid "HTTP user agent"
 msgstr "Agen pengguna HTTP"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
 msgid "Trusted certificates folder"
 msgstr "Folder sertifikat tepercaya"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:320
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
 msgid "Post-processing quality"
 msgstr "Kualitas pascaproses"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:327
 msgid "Skip the H.264 loop filter"
 msgstr "Lewati filter loop H.264"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:328
 msgid "Non-reference frames"
 msgstr "Bingkai non-referensi"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:328
 msgid "Bidirectional frames"
 msgstr "Bingkai dua arah"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:323
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
 msgid "Non-key frames"
 msgstr "Bingkai non-kunci"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
 msgid "Decoding threads"
 msgstr "Thread dekode"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:327
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
 msgid "Smooth Playback"
 msgstr "Pemutaran Mulus"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
 msgid "Drop frames when the system can't keep up"
 msgstr "Lewati bingkai saat sistem tidak dapat mengimbangi"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
-msgid "Give VLC real-time priority"
-msgstr "Beri VLC prioritas waktu nyata"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:328
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:336
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
 msgid "Developer"
 msgstr "Pengembang"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
 msgid "Decoder"
 msgstr "Dekoder"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
 msgid "Clock reference averaging"
 msgstr "Perataan referensi jam"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
 msgid "Save recordings to"
 msgstr "Simpan rekaman ke"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:340
 msgid "Record without re-encoding when possible"
 msgstr "Rekam tanpa enkode ulang bila memungkinkan"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:348
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:353
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:354
 msgid "Casting"
 msgstr "Transmisi"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
 msgid "Cast quality"
 msgstr "Kualitas transmisi"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:345
 msgid "Low CPU"
 msgstr "CPU rendah"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
 msgid "Play locally while streaming"
 msgstr "Putar secara lokal saat streaming"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:348
 msgid "Include audio"
 msgstr "Sertakan audio"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:343
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:349
 msgid "Include video"
 msgstr "Sertakan video"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:350
 msgid "Include subtitles"
 msgstr "Sertakan subtitle"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:345
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:351
 msgid "Encoding preset"
 msgstr "Preset enkode"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:346
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:352
 msgid "Tuning"
 msgstr "Penyetelan"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:353
 msgid "Send Dolby audio as is"
 msgstr "Kirim audio Dolby apa adanya"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:348
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:354
 msgid "Cast HTTP port"
 msgstr "Port HTTP transmisi"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:349
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:355
 msgid "Keep the stream output open between items"
 msgstr "Biarkan output stream tetap terbuka di antara item"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:395
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:401
 #: modules/gui/qt/widgets/qml/SplitButton.qml:142
 msgid "More options"
 msgstr "Opsi lainnya"
@@ -4519,7 +4519,7 @@ msgstr "NONAKTIF"
 
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:90
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:74
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:594
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:595
 msgid "Global Hotkey"
 msgstr "Tombol Pintas Global"
 
@@ -4575,27 +4575,27 @@ msgstr "Program / Service ID berikutnya"
 msgid "All Fields"
 msgstr "Semua Kolom"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:225
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:226
 msgid "%1. Press to add a key"
 msgstr "%1. Tekan untuk menambahkan tombol"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:226
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:227
 msgid "No key. Press to add one"
 msgstr "Tidak ada tombol. Tekan untuk menambahkan"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:340
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:341
 msgid "Remove %1"
 msgstr "Hapus %1"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:422
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:423
 msgid "Search Keyboard Shortcuts..."
 msgstr "Cari Pintasan Keyboard..."
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:688
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:689
 msgid "Hotkey of %1"
 msgstr "Tombol pintas untuk %1"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:697
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:698
 msgid "Global hotkey of %1"
 msgstr "Tombol pintas global untuk %1"
 
@@ -4671,32 +4671,32 @@ msgstr "Acara"
 msgid "Work"
 msgstr "Kerja"
 
-#: modules/gui/qt/dialogs/toolbar/profile_persistence.cpp:100
+#: modules/gui/qt/dialogs/toolbar/profile_persistence.cpp:99
 msgid "Could not save the selected profile."
 msgstr "Tidak dapat menyimpan profil yang dipilih."
 
-#: modules/gui/qt/dialogs/toolbar/profile_settings.cpp:186
+#: modules/gui/qt/dialogs/toolbar/profile_settings.cpp:224
 msgid "Profile settings are unavailable or incompatible."
 msgstr "Pengaturan profil tidak tersedia atau tidak kompatibel."
 
-#: modules/gui/qt/dialogs/toolbar/profile_settings.cpp:211
+#: modules/gui/qt/dialogs/toolbar/profile_settings.cpp:249
 msgid "Profile appearance is invalid."
 msgstr "Tampilan profil tidak valid."
 
-#: modules/gui/qt/dialogs/toolbar/profile_settings.cpp:228
+#: modules/gui/qt/dialogs/toolbar/profile_settings.cpp:265
 msgid "Could not save profile appearance."
 msgstr "Tidak dapat menyimpan tampilan profil."
 
-#: modules/gui/qt/dialogs/toolbar/profile_settings.cpp:245
+#: modules/gui/qt/dialogs/toolbar/profile_settings.cpp:283
 msgid "Could not apply profile settings; previous values restored."
 msgstr "Tidak dapat menerapkan pengaturan profil; nilai sebelumnya dipulihkan."
 
-#: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:41
+#: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:40
 #: modules/gui/qt/menus/qml/MainMenu.qml:117
 msgid "Profile (%1)"
 msgstr "Profil (%1)"
 
-#: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:87
+#: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:86
 msgid "Customize player"
 msgstr "Sesuaikan pemutar"
 
@@ -4788,11 +4788,11 @@ msgstr "Hapus Profil"
 msgid "Its layout and its settings go with it."
 msgstr "Tata letak dan pengaturannya ikut terhapus."
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1209
+#: modules/gui/qt/maininterface/mainctx.cpp:1283
 msgid "Paste from clipboard"
 msgstr "Tempel dari papan klip"
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1210
+#: modules/gui/qt/maininterface/mainctx.cpp:1284
 msgid "Do you want to enqueue the following URLs into the play queue?"
 msgstr "Apakah Anda ingin memasukkan URL berikut ke antrean putar?"
 
@@ -4800,10 +4800,10 @@ msgstr "Apakah Anda ingin memasukkan URL berikut ke antrean putar?"
 #. * right to left (Arabic, Hebrew, Persian, Urdu...), else "LTR". Choosing
 #. * the language lays the interface out in that direction (the user can
 #. * change it under the language).
-#: modules/gui/qt/maininterface/mainctx.cpp:1352
+#: modules/gui/qt/maininterface/mainctx.cpp:1441
 msgctxt "layout direction"
 msgid "LTR"
-msgstr ""
+msgstr "LTR"
 
 #: modules/gui/qt/maininterface/qml/LocalTopbar.qml:37
 msgid "Local top bar"
@@ -4813,7 +4813,7 @@ msgstr "Bilah atas lokal"
 msgid "Show navigation menu"
 msgstr "Tampilkan menu navigasi"
 
-#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:241
+#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:243
 #: modules/gui/qt/player/qml/TopBar.qml:493
 msgid "VLC Media Player"
 msgstr "VLC Media Player"
@@ -4837,18 +4837,10 @@ msgstr "Tampilan Beranda"
 msgid "Open Disc"
 msgstr "Buka Disk"
 
-#: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:34
-msgid "Open Multiple Files"
-msgstr "Buka Beberapa File"
-
 #: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:38
 #: modules/gui/qt/menus/menus.cpp:959 modules/gui/qt/menus/qml/MainMenu.qml:77
 msgid "Open Capture Device"
 msgstr "Buka Perangkat Tangkap"
-
-#: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:39
-msgid "Open Location from clipboard"
-msgstr "Buka Lokasi dari papan klip"
 
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:29
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:30
@@ -4952,14 +4944,14 @@ msgstr "Periksa ulang"
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:88
 #: modules/gui/qt/medialibrary/qml/VideoGroupDisplay.qml:40
-#: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:73
+#: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:84
 #: modules/gui/qt/medialibrary/qml/VideoListDisplay.qml:90
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:81
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:190
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:198
 #: modules/gui/qt/network/standardpathmodel.cpp:152
-#: modules/gui/qt/player/qml/CompactLibrary.qml:78
-#: modules/gui/qt/player/qml/CompactLibrary.qml:197
-#: modules/gui/qt/player/qml/CompactLibrary.qml:292
+#: modules/gui/qt/player/qml/CompactLibrary.qml:79
+#: modules/gui/qt/player/qml/CompactLibrary.qml:198
+#: modules/gui/qt/player/qml/CompactLibrary.qml:293
 msgid "Videos"
 msgstr "Video"
 
@@ -4974,8 +4966,8 @@ msgstr "Video"
 #: modules/gui/qt/medialibrary/qml/VideoDisplay.qml:53
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:62
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:98
-#: modules/gui/qt/player/qml/CompactLibrary.qml:81
-#: modules/gui/qt/player/qml/CompactLibrary.qml:295
+#: modules/gui/qt/player/qml/CompactLibrary.qml:82
+#: modules/gui/qt/player/qml/CompactLibrary.qml:296
 #: modules/gui/qt/player/qml/controlbarcontrols/PlaylistsButton.qml:31
 msgid "Playlists"
 msgstr "Daftar Putar"
@@ -4983,8 +4975,8 @@ msgstr "Daftar Putar"
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:101
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:224
-#: modules/gui/qt/player/qml/CompactLibrary.qml:82
-#: modules/gui/qt/player/qml/CompactLibrary.qml:296
+#: modules/gui/qt/player/qml/CompactLibrary.qml:83
+#: modules/gui/qt/player/qml/CompactLibrary.qml:297
 msgid "Recent"
 msgstr "Terbaru"
 
@@ -4998,8 +4990,8 @@ msgstr "Tambah item"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml:234
 #: modules/gui/qt/medialibrary/qml/MusicArtistsDisplay.qml:54
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:37
-#: modules/gui/qt/player/qml/CompactLibrary.qml:299
-#: modules/gui/qt/player/qml/CompactLibrary.qml:506
+#: modules/gui/qt/player/qml/CompactLibrary.qml:300
+#: modules/gui/qt/player/qml/CompactLibrary.qml:507
 msgid "Artists"
 msgstr "Artis"
 
@@ -5008,8 +5000,8 @@ msgstr "Artis"
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsDisplay.qml:30
 #: modules/gui/qt/medialibrary/qml/MusicArtist.qml:404
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:42
-#: modules/gui/qt/player/qml/CompactLibrary.qml:298
-#: modules/gui/qt/player/qml/CompactLibrary.qml:505
+#: modules/gui/qt/player/qml/CompactLibrary.qml:299
+#: modules/gui/qt/player/qml/CompactLibrary.qml:506
 msgid "Albums"
 msgstr "Album"
 
@@ -5017,8 +5009,8 @@ msgstr "Album"
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:93
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:50
 #: modules/gui/qt/medialibrary/qml/MusicGenresDisplay.qml:51
-#: modules/gui/qt/player/qml/CompactLibrary.qml:300
-#: modules/gui/qt/player/qml/CompactLibrary.qml:507
+#: modules/gui/qt/player/qml/CompactLibrary.qml:301
+#: modules/gui/qt/player/qml/CompactLibrary.qml:508
 msgid "Genres"
 msgstr "Genre"
 
@@ -5158,12 +5150,12 @@ msgstr ""
 "File subtitle (*.srt *.ass *.ssa *.sub *.vtt *.ttml *.smi);;Semua file (*)"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:369
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:540
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:552
 msgid "Choose the folder of the audio tracks"
 msgstr "Pilih folder trek audio"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:370
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:541
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:553
 msgid "Choose the folder of the subtitles"
 msgstr "Pilih folder subtitle"
 
@@ -5277,8 +5269,8 @@ msgid_plural "%1 Songs"
 msgstr[0] "%1 Lagu"
 
 #: modules/gui/qt/medialibrary/qml/ArtistTopBanner.qml:253
-#: modules/gui/qt/player/qml/CompactLibrary.qml:794
-#: modules/gui/qt/player/qml/CompactLibrary.qml:808
+#: modules/gui/qt/player/qml/CompactLibrary.qml:795
+#: modules/gui/qt/player/qml/CompactLibrary.qml:809
 msgid "Play all"
 msgstr "Putar semua"
 
@@ -5305,32 +5297,32 @@ msgstr "Artis tidak dikenal"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:96
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:228
-#: modules/gui/qt/player/qml/ResumeDialog.qml:145
-#: modules/gui/qt/player/qml/CompactLibrary.qml:400
+#: modules/gui/qt/player/qml/ResumeDialog.qml:146
+#: modules/gui/qt/player/qml/CompactLibrary.qml:401
 msgid "Continue Watching"
 msgstr "Lanjutkan Menonton"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:146
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:488
-#: modules/gui/qt/player/qml/CompactLibrary.qml:403
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:508
+#: modules/gui/qt/player/qml/CompactLibrary.qml:404
 msgid "Favorites"
 msgstr "Favorit"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:180
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:569
-#: modules/gui/qt/player/qml/CompactLibrary.qml:404
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:589
+#: modules/gui/qt/player/qml/CompactLibrary.qml:405
 msgid "New Videos"
 msgstr "Video Baru"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:254
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:310
-#: modules/gui/qt/player/qml/CompactLibrary.qml:401
+#: modules/gui/qt/player/qml/CompactLibrary.qml:402
 msgid "Listen Again"
 msgstr "Dengarkan Lagi"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:287
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:651
-#: modules/gui/qt/player/qml/CompactLibrary.qml:405
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:671
+#: modules/gui/qt/player/qml/CompactLibrary.qml:406
 msgid "New Music"
 msgstr "Musik Baru"
 
@@ -5349,7 +5341,7 @@ msgid "Alphabetic"
 msgstr "Alfabetis"
 
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:381
-#: modules/gui/qt/player/qml/CompactLibrary.qml:402
+#: modules/gui/qt/player/qml/CompactLibrary.qml:403
 msgid "Frequently Visited Folders"
 msgstr "Folder yang Sering Dikunjungi"
 
@@ -5462,20 +5454,20 @@ msgstr "Pindah ke atas"
 msgid "Move down"
 msgstr "Pindah ke bawah"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:166
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:167
 msgid "Remove selected media from this playlist?"
 msgstr "Hapus media yang dipilih dari daftar putar ini?"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:167
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:168
 msgid "Remove from playlist"
 msgstr "Hapus dari daftar putar"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:220
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:250
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:221
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:251
 msgid "Processing..."
 msgstr "Memproses..."
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:316
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:317
 msgid "No media found"
 msgstr "Media tidak ditemukan"
 
@@ -5483,25 +5475,25 @@ msgstr "Media tidak ditemukan"
 msgid "Playlist media list"
 msgstr "Daftar media daftar putar"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:208
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:209
 msgid "Do you really want to delete the selected playlist?"
 msgid_plural "Do you really want to delete the selected playlists?"
 msgstr[0] "Yakin ingin menghapus daftar putar yang dipilih?"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:211
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:212
 msgid "Delete playlist"
 msgid_plural "Delete playlists"
 msgstr[0] "Hapus daftar putar"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:366
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:367
 msgid "Items"
 msgstr "Item"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:453
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:454
 msgid "No playlists found"
 msgstr "Daftar putar tidak ditemukan"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:454
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:455
 msgid "Create a playlist with files or add media from the library"
 msgstr "Buat daftar putar dengan file atau tambahkan media dari pustaka"
 
@@ -5515,7 +5507,7 @@ msgstr "Buat daftar putar dengan file atau tambahkan media dari pustaka"
 msgid "Url"
 msgstr "URL"
 
-#: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:121
+#: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:132
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:77
 msgid "%1 Video"
 msgid_plural "%1 Videos"
@@ -5596,22 +5588,22 @@ msgid "Go to Source"
 msgstr "Buka Sumber"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:134
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:204
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:207
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:57
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:899
 msgid "Add Subtitle Tracks"
 msgstr "Tambah Trek Subtitle"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:140
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:206
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:209
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:62
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:72
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:75
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:903
 msgid "Add Audio Tracks"
 msgstr "Tambah Trek Audio"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:146
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:208
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:211
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:69
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:31
 msgid "Properties & Metadata"
@@ -5674,11 +5666,11 @@ msgstr "Edit Trek Audio"
 msgid "Resync"
 msgstr "Sinkronkan ulang"
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:545
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:548
 msgid "No media matches the search"
 msgstr "Tidak ada media yang cocok dengan pencarian"
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:546
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:549
 msgid "No media in this folder"
 msgstr "Tidak ada media di folder ini"
 
@@ -5698,19 +5690,14 @@ msgstr "Tidak dapat menambahkan folder ini ke pustaka: %1"
 msgid "Media library"
 msgstr "Pustaka media"
 
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:49
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
-msgid "Export Playlist"
-msgstr "Ekspor Daftar Putar"
-
 #: modules/gui/qt/medialibrary/qml/OpenMediaButton.qml:58
-#: modules/gui/qt/player/qml/CompactLibrary.qml:618
+#: modules/gui/qt/player/qml/CompactLibrary.qml:619
 #: modules/gui/qt/player/qml/controlbarcontrols/OpenButton.qml:31
 msgid "Open media"
 msgstr "Buka media"
 
 #: modules/gui/qt/medialibrary/qml/OpenMediaButton.qml:76
-#: modules/gui/qt/player/qml/CompactLibrary.qml:761
+#: modules/gui/qt/player/qml/CompactLibrary.qml:762
 msgid "Add folder to library…"
 msgstr "Tambahkan folder ke pustaka…"
 
@@ -5773,7 +5760,6 @@ msgid "These files will be added to the playlist."
 msgstr "File-file ini akan ditambahkan ke daftar putar."
 
 #: modules/gui/qt/medialibrary/qml/PlaylistCreateDialog.qml:228
-#: modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml:88
 msgid "Choose files"
 msgstr "Pilih file"
 
@@ -5798,11 +5784,11 @@ msgid_plural "%1 videos"
 msgstr[0] "%1 video"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:49
-#: modules/gui/qt/player/qml/CompactLibrary.qml:848
+#: modules/gui/qt/player/qml/CompactLibrary.qml:849
 #: modules/gui/qt/player/qml/MiniPlayerQueue.qml:107
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:193
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:195
 #: modules/gui/qt/widgets/qml/DragItem.qml:620
-#: modules/gui/qt/widgets/qml/LibraryHeader.qml:418
+#: modules/gui/qt/widgets/qml/LibraryHeader.qml:419
 msgid "%1 item"
 msgid_plural "%1 items"
 msgstr[0] "%1 item"
@@ -5823,76 +5809,64 @@ msgstr "Ke Daftar Putar Ini"
 msgid "To This File"
 msgstr "Ke File Ini"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:72
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:75
 msgid "Add Subtitles"
 msgstr "Tambah Subtitle"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:519
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:520
-#: modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml:66
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:529
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:531
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:532
 msgid "From Computer"
 msgstr "Dari Komputer"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:520
-#: modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml:66
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:531
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:532
 msgid "From Link"
 msgstr "Dari Tautan"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:520
-#: modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml:66
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:531
 msgid "From OpenSubtitles"
 msgstr "Dari OpenSubtitles"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:589
-#: modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml:126
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:601
 msgid "Direct HTTPS link to a subtitle file"
 msgstr "Tautan HTTPS langsung ke file subtitle"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:604
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:616
 msgid "Title or episode"
 msgstr "Judul atau episode"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:771
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:783
 msgid "OpenSubtitles API key"
 msgstr "Kunci API OpenSubtitles"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:886
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:898
 msgid "Searching OpenSubtitles…"
 msgstr "Mencari di OpenSubtitles…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:888
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:900
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "Cari di OpenSubtitles untuk melihat file subtitle."
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:891
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:903
 msgid "Working on audio tracks…"
 msgstr "Memproses trek audio…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:891
-#: modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml:170
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:903
 msgid "Working on subtitles…"
 msgstr "Memproses subtitle…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:894
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:906
 msgid "Enter a direct link to a subtitle file above."
 msgstr "Masukkan tautan langsung ke file subtitle di atas."
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:895
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:907
 msgid "No audio file in this folder: choose another one above."
 msgstr "Tidak ada file audio di folder ini: pilih folder lain di atas."
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:896
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:908
 msgid "No subtitle file in this folder: choose another one above."
 msgstr "Tidak ada file subtitle di folder ini: pilih folder lain di atas."
-
-#: modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml:108
-msgid "%1 media file"
-msgid_plural "%1 media files"
-msgstr[0] "%1 file media"
-
-#: modules/gui/qt/medialibrary/qml/SubtitleSourceControls.qml:140
-msgid "Add link"
-msgstr "Tambah tautan"
 
 #: modules/gui/qt/menus/custom_menus.cpp:116
 msgid "Search for cast devices"
@@ -6122,11 +6096,11 @@ msgid "Shuffle the play queue"
 msgstr "Acak antrean putar"
 
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1263
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1269
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1272
 msgid "Discard the filtered out items"
 msgstr "Buang item yang tersaring"
 
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1270
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1271
 msgid ""
 "Do you really want to discard the items that are not displayed at the moment?"
 msgstr "Yakin ingin membuang item yang saat ini tidak ditampilkan?"
@@ -6243,7 +6217,7 @@ msgid "This build can't search the internet."
 msgstr "Build ini tidak dapat mencari di internet."
 
 #: modules/gui/qt/player/subtitle_finder.cpp:1219
-#: modules/gui/qt/player/subtitle_finder.cpp:1459
+#: modules/gui/qt/player/subtitle_finder.cpp:1472
 msgid "No connection to the internet."
 msgstr "Tidak ada koneksi internet."
 
@@ -6259,64 +6233,64 @@ msgstr "\"%1\" tidak ditemukan. Cari berdasarkan judulnya."
 msgid "No subtitles were found for %1."
 msgstr "Tidak ditemukan subtitle untuk %1."
 
-#: modules/gui/qt/player/subtitle_finder.cpp:1460
+#: modules/gui/qt/player/subtitle_finder.cpp:1473
 msgid "The subtitle couldn't be downloaded (%1)."
 msgstr "Subtitle tidak dapat diunduh (%1)."
 
-#: modules/gui/qt/player/subtitle_finder.cpp:1490
+#: modules/gui/qt/player/subtitle_finder.cpp:1503
 msgid "The subtitle couldn't be saved."
 msgstr "Subtitle tidak dapat disimpan."
 
-#: modules/gui/qt/player/subtitle_finder.cpp:1500
-#: modules/gui/qt/player/subtitle_providers.cpp:842
-#: modules/gui/qt/player/subtitle_providers.cpp:875
+#: modules/gui/qt/player/subtitle_finder.cpp:1513
+#: modules/gui/qt/player/subtitle_providers.cpp:922
+#: modules/gui/qt/player/subtitle_providers.cpp:955
 msgid "The subtitle couldn't be unpacked."
 msgstr "Subtitle tidak dapat diekstrak."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:81
+#: modules/gui/qt/player/subtitle_providers.cpp:87
 msgid "%1 didn't answer."
 msgstr "%1 tidak merespons."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:83
+#: modules/gui/qt/player/subtitle_providers.cpp:89
 msgid "%1 asks to wait a moment (too many searches)."
 msgstr "%1 meminta Anda menunggu sebentar (terlalu banyak pencarian)."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:84
+#: modules/gui/qt/player/subtitle_providers.cpp:90
 msgid "%1 didn't answer (%2)."
 msgstr "%1 tidak merespons (%2)."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:778
+#: modules/gui/qt/player/subtitle_providers.cpp:858
 msgid "All languages · movies and series · finds those made for your file"
 msgstr "Semua bahasa · film dan serial · menemukan yang dibuat untuk file Anda"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:780
+#: modules/gui/qt/player/subtitle_providers.cpp:860
 msgid "Hebrew · movies and series"
 msgstr "Ibrani · film dan serial"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:782
+#: modules/gui/qt/player/subtitle_providers.cpp:862
 msgid "Series · many languages"
 msgstr "Serial · banyak bahasa"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:784
+#: modules/gui/qt/player/subtitle_providers.cpp:864
 msgid "Movies · many languages"
 msgstr "Film · banyak bahasa"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:830
+#: modules/gui/qt/player/subtitle_providers.cpp:910
 msgid "This subtitle comes as a RAR archive, which can't be opened here."
 msgstr "Subtitle ini berupa arsip RAR, yang tidak dapat dibuka di sini."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:876
+#: modules/gui/qt/player/subtitle_providers.cpp:956
 msgid "The archive has no subtitle in it."
 msgstr "Arsip tidak berisi subtitle."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:888
+#: modules/gui/qt/player/subtitle_providers.cpp:968
 msgid ""
 "OpenSubtitles keeps this subtitle for its paying members. Choose another one."
 msgstr ""
 "OpenSubtitles menyediakan subtitle ini hanya untuk anggota berbayar. Pilih "
 "yang lain."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:894
+#: modules/gui/qt/player/subtitle_providers.cpp:974
 msgid "The subtitle is empty."
 msgstr "Subtitle kosong."
 
@@ -6333,7 +6307,7 @@ msgid "Waveform analysis did not complete."
 msgstr "Analisis bentuk gelombang tidak selesai."
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:41
-#: modules/gui/qt/player/qml/controlbarcontrols/SettingsButton.qml:26
+#: modules/gui/qt/player/qml/controlbarcontrols/SettingsButton.qml:27
 msgid "VLC Settings"
 msgstr "Pengaturan VLC"
 
@@ -6362,9 +6336,10 @@ msgstr "Maju 15s"
 msgid "Properties"
 msgstr "Properti"
 
-#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:60
-msgid "Volume Widget"
-msgstr "Widget Volume"
+#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:56
+#: modules/gui/qt/player/qml/controlbarcontrols/LangButton.qml:54
+msgid "Languages and tracks"
+msgstr "Bahasa dan trek"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:61
 msgid "Navigation Box"
@@ -6375,7 +6350,7 @@ msgid "Program Button"
 msgstr "Tombol Program"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:67
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:32
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:33
 msgid "Cast to TV"
 msgstr "Transmisikan ke TV"
 
@@ -6498,69 +6473,69 @@ msgstr "Preset:"
 msgid "Player"
 msgstr "Pemutar"
 
-#: modules/gui/qt/player/qml/Player.qml:1036
+#: modules/gui/qt/player/qml/Player.qml:1038
 msgid "Subtitles on the TV: %1"
 msgstr "Subtitle di TV: %1"
 
-#: modules/gui/qt/player/qml/Player.qml:1036
+#: modules/gui/qt/player/qml/Player.qml:1038
 msgid "Subtitles off on the TV"
 msgstr "Subtitle di TV mati"
 
-#: modules/gui/qt/player/qml/Player.qml:1146
+#: modules/gui/qt/player/qml/Player.qml:1148
 msgid "Not playing on %1"
 msgstr "Tidak diputar di %1"
 
-#: modules/gui/qt/player/qml/Player.qml:1148
-#: modules/gui/qt/player/qml/Player.qml:1274
+#: modules/gui/qt/player/qml/Player.qml:1150
+#: modules/gui/qt/player/qml/Player.qml:1276
 msgid "Connecting to %1…"
 msgstr "Menghubungkan ke %1…"
 
-#: modules/gui/qt/player/qml/Player.qml:1150
+#: modules/gui/qt/player/qml/Player.qml:1152
 msgid "Playing on %1"
 msgstr "Diputar di %1"
 
-#: modules/gui/qt/player/qml/Player.qml:1151
+#: modules/gui/qt/player/qml/Player.qml:1153
 msgid "The sound plays on %1"
 msgstr "Suara diputar di %1"
 
-#: modules/gui/qt/player/qml/Player.qml:1175
+#: modules/gui/qt/player/qml/Player.qml:1177
 msgid "Pause, seek and change the subtitles here: the TV follows."
 msgstr "Jeda, geser posisi, dan ganti subtitle di sini: TV akan mengikuti."
 
-#: modules/gui/qt/player/qml/Player.qml:1192
+#: modules/gui/qt/player/qml/Player.qml:1194
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the media."
 msgstr ""
 "Windows Firewall tidak mengizinkan %1 terhubung ke komputer ini untuk "
 "membaca media."
 
-#: modules/gui/qt/player/qml/Player.qml:1204
+#: modules/gui/qt/player/qml/Player.qml:1206
 msgid "Waiting for Windows…"
 msgstr "Menunggu Windows…"
 
-#: modules/gui/qt/player/qml/Player.qml:1205
+#: modules/gui/qt/player/qml/Player.qml:1207
 msgid "Allow on public networks too"
 msgstr "Izinkan juga di jaringan publik"
 
-#: modules/gui/qt/player/qml/Player.qml:1206
+#: modules/gui/qt/player/qml/Player.qml:1208
 msgid "Allow on private networks"
 msgstr "Izinkan di jaringan pribadi"
 
-#: modules/gui/qt/player/qml/Player.qml:1218
+#: modules/gui/qt/player/qml/Player.qml:1220
 msgid "Try again"
 msgstr "Coba lagi"
 
-#: modules/gui/qt/player/qml/Player.qml:1223
-#: modules/gui/qt/player/qml/Player.qml:1233
+#: modules/gui/qt/player/qml/Player.qml:1225
+#: modules/gui/qt/player/qml/Player.qml:1235
 msgid "Play here"
 msgstr "Putar di sini"
 
-#: modules/gui/qt/player/qml/Player.qml:1233
-#: modules/gui/qt/player/qml/Player.qml:1284
+#: modules/gui/qt/player/qml/Player.qml:1235
+#: modules/gui/qt/player/qml/Player.qml:1286
 msgid "Stop casting"
 msgstr "Hentikan transmisi"
 
-#: modules/gui/qt/player/qml/Player.qml:1275
+#: modules/gui/qt/player/qml/Player.qml:1277
 msgid "Also on %1"
 msgstr "Juga di %1"
 
@@ -6568,11 +6543,11 @@ msgstr "Juga di %1"
 msgid "Resume dialog"
 msgstr "Dialog lanjutkan pemutaran"
 
-#: modules/gui/qt/player/qml/ResumeDialog.qml:134
+#: modules/gui/qt/player/qml/ResumeDialog.qml:135
 msgid "You’ve watched till %1 already."
 msgstr "Anda sudah menonton hingga %1."
 
-#: modules/gui/qt/player/qml/ResumeDialog.qml:136
+#: modules/gui/qt/player/qml/ResumeDialog.qml:137
 msgid "Continue where you left off?"
 msgstr "Lanjutkan dari posisi terakhir?"
 
@@ -6584,57 +6559,57 @@ msgstr "Bilah atas pemutar"
 msgid "Show %1 in the library"
 msgstr "Tampilkan %1 di pustaka"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:177
-#: modules/gui/qt/player/qml/TracksMenu.qml:274
+#: modules/gui/qt/player/qml/TracksMenu.qml:180
+#: modules/gui/qt/player/qml/TracksMenu.qml:277
 msgid "Embedded Tracks"
 msgstr "Trek Tertanam"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:200
+#: modules/gui/qt/player/qml/TracksMenu.qml:203
 msgid "No audio tracks in this media"
 msgstr "Tidak ada trek audio di media ini"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:217
+#: modules/gui/qt/player/qml/TracksMenu.qml:220
 msgid "Output Device"
 msgstr "Perangkat Output"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:226
+#: modules/gui/qt/player/qml/TracksMenu.qml:229
 msgid "Refresh output devices"
 msgstr "Segarkan perangkat output"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:249
+#: modules/gui/qt/player/qml/TracksMenu.qml:252
 msgid "No output device available"
 msgstr "Tidak ada perangkat output yang tersedia"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:298
+#: modules/gui/qt/player/qml/TracksMenu.qml:301
 msgid "No video tracks in this media"
 msgstr "Tidak ada trek video di media ini"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:316
+#: modules/gui/qt/player/qml/TracksMenu.qml:319
 msgid "Current: %1×"
 msgstr "Saat ini: %1×"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:333
+#: modules/gui/qt/player/qml/TracksMenu.qml:336
 msgid "Speed cannot be changed for this media"
 msgstr "Kecepatan tidak dapat diubah untuk media ini"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:338
+#: modules/gui/qt/player/qml/TracksMenu.qml:341
 #: modules/gui/qt/player/qml/QueueCard.qml:220
 msgid "No chapters in this media"
 msgstr "Tidak ada bab di media ini"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:354
+#: modules/gui/qt/player/qml/TracksMenu.qml:357
 msgid "Manage bookmarks…"
 msgstr "Kelola penanda…"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:360
+#: modules/gui/qt/player/qml/TracksMenu.qml:363
 msgid "Bookmarks require the media library"
 msgstr "Penanda memerlukan pustaka media"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:389
+#: modules/gui/qt/player/qml/TracksMenu.qml:392
 msgid "Show Preferences"
 msgstr "Tampilkan Preferensi"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:535
+#: modules/gui/qt/player/qml/TracksMenu.qml:538
 #: modules/gui/qt/player/qml/TracksPageAudio.qml:37
 #: modules/gui/qt/player/qml/TracksPageSubtitle.qml:37
 #: modules/gui/qt/player/qml/SubtitleSyncTimeline.qml:42
@@ -6662,27 +6637,27 @@ msgstr "Trek Video"
 msgid "Track list"
 msgstr "Daftar trek"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:288
+#: modules/gui/qt/player/qml/AudioContent.qml:321
 msgid "Title and artist"
 msgstr "Judul dan artis"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:418
+#: modules/gui/qt/player/qml/AudioContent.qml:451
 msgid "Step back"
 msgstr "Mundur sedikit"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:443
+#: modules/gui/qt/player/qml/AudioContent.qml:476
 msgid "Toggle lyrics view"
 msgstr "Alihkan tampilan lirik"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:480
+#: modules/gui/qt/player/qml/AudioContent.qml:513
 msgid "Sync lyrics to playback"
 msgstr "Sinkronkan lirik dengan pemutaran"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:495
+#: modules/gui/qt/player/qml/AudioContent.qml:528
 msgid "Sync lyrics to playback position"
 msgstr "Sinkronkan lirik dengan posisi pemutaran"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:515
+#: modules/gui/qt/player/qml/AudioContent.qml:548
 msgid "Volume %1%"
 msgstr "Volume %1%"
 
@@ -6690,103 +6665,103 @@ msgstr "Volume %1%"
 msgid "Play audio to select a visualization."
 msgstr "Putar audio untuk memilih visualisasi."
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:198
 #: modules/gui/qt/player/qml/CompactLibrary.qml:199
-#: modules/gui/qt/player/qml/CompactLibrary.qml:297
-#: modules/gui/qt/player/qml/CompactLibrary.qml:504
+#: modules/gui/qt/player/qml/CompactLibrary.qml:200
+#: modules/gui/qt/player/qml/CompactLibrary.qml:298
+#: modules/gui/qt/player/qml/CompactLibrary.qml:505
 msgid "Songs"
 msgstr "Lagu"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:726
+#: modules/gui/qt/player/qml/CompactLibrary.qml:727
 msgid "More"
 msgstr "Lainnya"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:751
-#: modules/gui/qt/player/qml/CompactLibrary.qml:766
+#: modules/gui/qt/player/qml/CompactLibrary.qml:752
+#: modules/gui/qt/player/qml/CompactLibrary.qml:767
 msgid "Rescan library"
 msgstr "Pindai ulang pustaka"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:776
+#: modules/gui/qt/player/qml/CompactLibrary.qml:777
 msgid "Add network stream…"
 msgstr "Tambah stream jaringan…"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:785
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1154
+#: modules/gui/qt/player/qml/CompactLibrary.qml:786
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1155
 msgid "Create playlist"
 msgstr "Buat daftar putar"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:799
-#: modules/gui/qt/player/qml/CompactLibrary.qml:813
+#: modules/gui/qt/player/qml/CompactLibrary.qml:800
+#: modules/gui/qt/player/qml/CompactLibrary.qml:814
 msgid "Add all to queue"
 msgstr "Tambahkan semua ke antrean"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:818
+#: modules/gui/qt/player/qml/CompactLibrary.qml:819
 msgid "Up one folder"
 msgstr "Naik satu folder"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:828
+#: modules/gui/qt/player/qml/CompactLibrary.qml:829
 msgid "Open in the library"
 msgstr "Buka di pustaka"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:887
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:205
+#: modules/gui/qt/player/qml/CompactLibrary.qml:888
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:207
 #: modules/gui/qt/playlist/qml/QueueHeader.qml:74
 #: modules/gui/qt/widgets/qml/GridSortFilterControls.qml:42
 #: modules/gui/qt/widgets/qml/SortControl.qml:64
-#: modules/gui/qt/widgets/qml/LibraryHeader.qml:458
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:459
+#: modules/gui/qt/widgets/qml/LibraryHeader.qml:460
 msgid "Sort"
 msgstr "Urutkan"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:922
+#: modules/gui/qt/player/qml/CompactLibrary.qml:923
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:82
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:83
 msgid "Title A-Z"
 msgstr "Judul A-Z"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:926
+#: modules/gui/qt/player/qml/CompactLibrary.qml:927
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:82
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:83
 msgid "Title Z-A"
 msgstr "Judul Z-A"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:930
+#: modules/gui/qt/player/qml/CompactLibrary.qml:931
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:80
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:81
 msgid "Newest First"
 msgstr "Terbaru Dulu"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:935
+#: modules/gui/qt/player/qml/CompactLibrary.qml:936
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:80
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:81
 msgid "Oldest First"
 msgstr "Terlama Dulu"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:954
-#: modules/gui/qt/widgets/qml/LibraryHeader.qml:503
+#: modules/gui/qt/player/qml/CompactLibrary.qml:955
+#: modules/gui/qt/widgets/qml/LibraryHeader.qml:504
 msgid "Grid View"
 msgstr "Tampilan Kisi"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:959
-#: modules/gui/qt/widgets/qml/LibraryHeader.qml:509
+#: modules/gui/qt/player/qml/CompactLibrary.qml:960
+#: modules/gui/qt/widgets/qml/LibraryHeader.qml:510
 msgid "List View"
 msgstr "Tampilan Daftar"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1068
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1069
 msgid "See all"
 msgstr "Lihat semua"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1214
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1215
 msgid "Add Network Stream"
 msgstr "Tambah Stream Jaringan"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1323
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1339
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1324
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1340
 msgid "The media library is not available."
 msgstr "Pustaka media tidak tersedia."
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1324
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1340
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1325
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1341
 msgid "Nothing here yet."
 msgstr "Belum ada apa pun di sini."
 
@@ -6814,11 +6789,11 @@ msgstr "Tampilkan UI pemutar"
 msgid "Hide player UI"
 msgstr "Sembunyikan UI pemutar"
 
-#: modules/gui/qt/player/qml/LibraryMiniPlayer.qml:281
+#: modules/gui/qt/player/qml/LibraryMiniPlayer.qml:285
 msgid "Hide queue"
 msgstr "Sembunyikan antrean"
 
-#: modules/gui/qt/player/qml/LibraryMiniPlayer.qml:281
+#: modules/gui/qt/player/qml/LibraryMiniPlayer.qml:285
 msgid "Show queue"
 msgstr "Tampilkan antrean"
 
@@ -6851,27 +6826,27 @@ msgstr "Hapus item yang dipilih dari antrean"
 msgid "Add files to queue"
 msgstr "Tambahkan file ke antrean"
 
-#: modules/gui/qt/player/qml/PIPPlayer.qml:49
+#: modules/gui/qt/player/qml/PIPPlayer.qml:70
 msgid "video content"
 msgstr "konten video"
 
-#: modules/gui/qt/player/qml/PIPPlayer.qml:192
+#: modules/gui/qt/player/qml/PIPPlayer.qml:224
 msgid "Previous item"
 msgstr "Item sebelumnya"
 
-#: modules/gui/qt/player/qml/PIPPlayer.qml:212
+#: modules/gui/qt/player/qml/PIPPlayer.qml:244
 msgid "Play or pause"
 msgstr "Putar atau jeda"
 
-#: modules/gui/qt/player/qml/PIPPlayer.qml:238
+#: modules/gui/qt/player/qml/PIPPlayer.qml:270
 msgid "Next item"
 msgstr "Item berikutnya"
 
-#: modules/gui/qt/player/qml/PIPPlayer.qml:255
+#: modules/gui/qt/player/qml/PIPPlayer.qml:287
 msgid "close video"
 msgstr "tutup video"
 
-#: modules/gui/qt/player/qml/PIPPlayer.qml:278
+#: modules/gui/qt/player/qml/PIPPlayer.qml:310
 msgid "maximize player"
 msgstr "maksimalkan pemutar"
 
@@ -7016,130 +6991,135 @@ msgstr "File yang dibuka"
 msgid "%1k downloads"
 msgstr "%1 rb unduhan"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:135
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:139
 msgid "Unknown language"
 msgstr "Bahasa tidak dikenal"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:173
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:189
 msgid "Foreign parts only"
 msgstr "Hanya bagian bahasa asing"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:237
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:254
 msgid "Identifying the video…"
 msgstr "Mengenali video…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:240
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:257
 msgid "Searching %1…"
 msgstr "Mencari di %1…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:240
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:257
 msgid "Searching subtitles online…"
 msgstr "Mencari subtitle online…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:244
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:261
 msgid "Downloading…"
 msgstr "Mengunduh…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:246
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:263
 msgid "%1 · %2 found"
 msgstr "%1 · %2 ditemukan"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:247
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:264
 msgid "%1 found for this file"
 msgstr "%1 ditemukan untuk file ini"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:251
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:268
 msgid "Subtitles of this video"
 msgstr "Subtitle video ini"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:270
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:287
 msgid "The video is another one: search by its title"
 msgstr "Videonya berbeda: cari berdasarkan judulnya"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:281
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:298
 msgid "Search subtitles online"
 msgstr "Cari subtitle online"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:282
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:299
 msgid "Search subtitles online again"
 msgstr "Cari subtitle online lagi"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:292
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:309
 msgid "Add subtitles to the library"
 msgstr "Tambahkan subtitle ke pustaka"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:293
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:310
 msgid "Library association needs a local media file and media library."
 msgstr "Asosiasi pustaka memerlukan file media lokal dan pustaka media."
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:303
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:320
 msgid "Load a subtitle file for playback"
 msgstr "Muat file subtitle untuk pemutaran"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:322
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:339
 msgid "Title of the movie or series"
 msgstr "Judul film atau serial"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:343
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:360
 msgid "Searching…"
 msgstr "Mencari…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:386
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:403
 msgid "Second"
 msgstr "Kedua"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:421
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:404
+msgctxt "subtitle language"
+msgid "Often used"
+msgstr "Sering dipakai"
+
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:439
 msgid "For this file"
 msgstr "Untuk file ini"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:441
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:460
 msgid "Looking for subtitles…"
 msgstr "Mencari subtitle…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:442
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:461
 msgid "No subtitles yet"
 msgstr "Belum ada subtitle"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:484
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:503
 msgid "Position and size"
 msgstr "Posisi dan ukuran"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:492
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:511
 msgctxt "subtitles"
 msgid "Position"
 msgstr "Posisi"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:495
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:509
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:514
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:528
 msgid "%1%"
 msgstr "%1%"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:496
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:515
 msgid "Move the subtitles down"
 msgstr "Pindahkan subtitle ke bawah"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:497
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:516
 msgid "Move the subtitles up"
 msgstr "Pindahkan subtitle ke atas"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:508
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:527
 msgctxt "subtitles"
 msgid "Size"
 msgstr "Ukuran"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:510
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:529
 msgid "Smaller subtitles"
 msgstr "Subtitle lebih kecil"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:511
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:530
 msgid "Larger subtitles"
 msgstr "Subtitle lebih besar"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:743
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:762
 msgid "HI"
 msgstr "HI"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:748
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:767
 msgid "For the hearing impaired"
 msgstr "Untuk penyandang tunarungu"
 
@@ -7165,9 +7145,15 @@ msgstr ""
 msgid "Duration unavailable"
 msgstr "Durasi tidak tersedia"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ExtendedSettingsButton.qml:32
-msgid "Audio effects"
-msgstr "Efek audio"
+#: modules/gui/qt/player/qml/controlbarcontrols/Fallback.qml:48
+msgid ""
+"WIDGET\n"
+"NOT\n"
+"FOUND"
+msgstr ""
+"WIDGET\n"
+"TIDAK\n"
+"DITEMUKAN"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/FavoriteButton.qml:21
 msgid "Available for items in your library"
@@ -7197,13 +7183,9 @@ msgstr "Laju bingkai tidak tersedia"
 msgid "Exit Fullscreen"
 msgstr "Keluar dari Layar Penuh"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:9
+#: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"
 msgstr "Output HDR"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/LangButton.qml:54
-msgid "Languages and tracks"
-msgstr "Bahasa dan trek"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/LoopButton.qml:29
 msgid "Repeat one"
@@ -7221,35 +7203,40 @@ msgstr "1x"
 msgid "Play Queue (%1/%2)"
 msgstr "Antrean Putar (%1/%2)"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:31
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:32
 msgid "Casting to %1"
 msgstr "Mentransmisikan ke %1"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:99
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:100
 msgid "Cast to"
 msgstr "Transmisikan ke"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:124
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:125
 msgid "This computer"
 msgstr "Komputer ini"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:152
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:154
 msgid "Not playing: choose it to try again"
 msgstr "Tidak diputar: pilih untuk mencoba lagi"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:154
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:156
 msgid "Connecting…"
 msgstr "Menghubungkan…"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:155
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:157
 msgid "Sound only"
 msgstr "Hanya suara"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:174
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:180
+msgid "Show %1 hidden device"
+msgid_plural "Show %1 hidden devices"
+msgstr[0] "Tampilkan %1 perangkat tersembunyi"
+
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:193
 msgid "Looking for TVs and Chromecasts on your network…"
 msgstr "Mencari TV dan Chromecast di jaringan Anda…"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:175
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:194
 msgid ""
 "No device found. Turn your TV or Chromecast on, on the same network as this "
 "computer."
@@ -7257,19 +7244,23 @@ msgstr ""
 "Perangkat tidak ditemukan. Nyalakan TV atau Chromecast Anda, di jaringan "
 "yang sama dengan komputer ini."
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:189
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:208
 msgid "Show the video here too"
 msgstr "Tampilkan video di sini juga"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:235
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:254
 msgid "With a Chromecast, the video plays only there."
 msgstr "Dengan Chromecast, video hanya diputar di sana."
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:246
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:265
 msgid "The subtitles shown go to the TV with the picture."
 msgstr "Subtitle yang ditampilkan dikirim ke TV bersama gambar."
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:265
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:282
+msgid "Hide this device"
+msgstr "Sembunyikan perangkat ini"
+
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:314
 msgid "playing here"
 msgstr "diputar di sini"
 
@@ -7293,7 +7284,7 @@ msgstr "Maju 10 detik"
 msgid "Forward 15 seconds"
 msgstr "Maju 15 detik"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/VolumeWidget.qml:351
+#: modules/gui/qt/player/qml/controlbarcontrols/VolumeWidget.qml:345
 msgid "%1 %"
 msgstr "%1 %"
 
@@ -7313,31 +7304,31 @@ msgstr "Sedang diputar"
 msgid "Media cover"
 msgstr "Sampul media"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:192
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:194
 msgid "No items"
 msgstr "Tidak ada item"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:263
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:284
 msgid "Remove selected items"
 msgstr "Hapus item yang dipilih"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:274
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:300
 msgid "Add files to the queue"
 msgstr "Tambahkan file ke antrean"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:601
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:629
 msgid "No results"
 msgstr "Tidak ada hasil"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:602
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:630
 msgid "No content yet"
 msgstr "Belum ada konten"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:618
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:646
 msgid "Drag & Drop some content here!"
 msgstr "Seret & lepas konten di sini!"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:683
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:711
 msgid "Play queue"
 msgstr "Antrean putar"
 
@@ -7345,17 +7336,17 @@ msgstr "Antrean putar"
 msgid "%1 elements, %2"
 msgstr "%1 elemen, %2"
 
-#: modules/gui/qt/qt.cpp:172
+#: modules/gui/qt/qt.cpp:171
 msgid "Select the initial preferences view"
 msgstr "Pilih tampilan awal preferensi"
 
-#: modules/gui/qt/qt.cpp:173
+#: modules/gui/qt/qt.cpp:172
 msgid ""
 "Select which preferences view to show upon opening the preferences dialog."
 msgstr ""
 "Pilih tampilan preferensi yang ditampilkan saat membuka dialog preferensi."
 
-#: modules/gui/qt/qt.cpp:197
+#: modules/gui/qt/qt.cpp:196
 msgid ""
 "Show a notification popup with the artist and track name when the current "
 "play queue item changes, when VLC is minimized or hidden."
@@ -7363,7 +7354,7 @@ msgstr ""
 "Tampilkan pop-up notifikasi berisi nama artis dan trek saat item antrean "
 "putar berganti, ketika VLC diminimalkan atau disembunyikan."
 
-#: modules/gui/qt/qt.cpp:201
+#: modules/gui/qt/qt.cpp:200
 msgid ""
 "Sets the windows opacity between 0.1 and 1 for main interface, play queue "
 "and extended panel. This option only works with Windows and X11 with "
@@ -7373,7 +7364,7 @@ msgstr ""
 "putar, dan panel lanjutan. Opsi ini hanya berfungsi di Windows dan X11 "
 "dengan ekstensi composite."
 
-#: modules/gui/qt/qt.cpp:207
+#: modules/gui/qt/qt.cpp:206
 msgid ""
 "Sets the fullscreen controller opacity between 0.1 and 1 for main interface, "
 "play queue and extended panel. This option only works with Windows and X11 "
@@ -7383,11 +7374,11 @@ msgstr ""
 "utama, antrean putar, dan panel lanjutan. Opsi ini hanya berfungsi di "
 "Windows dan X11 dengan ekstensi composite."
 
-#: modules/gui/qt/qt.cpp:212
+#: modules/gui/qt/qt.cpp:211
 msgid "Initial user scale factor for the interface, between 0.3 and 3.0"
 msgstr "Faktor skala awal antarmuka, antara 0,3 dan 3,0"
 
-#: modules/gui/qt/qt.cpp:215
+#: modules/gui/qt/qt.cpp:214
 msgid ""
 "Show the errors of VLC at the bottom of the window, and ask before removing "
 "media from a playlist or from the play queue, or deleting playlists. Off, "
@@ -7399,11 +7390,11 @@ msgstr ""
 "putar. Bila nonaktif, kesalahan hanya disimpan di pesan VLC dan penghapusan "
 "tersebut langsung dilakukan; penghapusan file dari disk selalu dikonfirmasi."
 
-#: modules/gui/qt/qt.cpp:225
+#: modules/gui/qt/qt.cpp:224
 msgid "set the options for qml debugger"
 msgstr "atur opsi untuk debugger qml"
 
-#: modules/gui/qt/qt.cpp:226
+#: modules/gui/qt/qt.cpp:225
 msgid ""
 "set the options for qml debugger (see http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
@@ -7411,7 +7402,7 @@ msgstr ""
 "atur opsi untuk debugger qml (lihat http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
 
-#: modules/gui/qt/qt.cpp:246
+#: modules/gui/qt/qt.cpp:245
 msgid ""
 "Show the playback controls in fullscreen when the mouse moves. Off, only the "
 "keyboard shows them (the I key). The skins read it for their fullscreen "
@@ -7421,7 +7412,7 @@ msgstr ""
 "nonaktif, hanya keyboard yang menampilkannya (tombol I). Skin juga membaca "
 "opsi ini untuk kontroler layar penuhnya."
 
-#: modules/gui/qt/qt.cpp:262
+#: modules/gui/qt/qt.cpp:261
 msgid ""
 "Display the cover art of the audio playing in the player (the cone in the "
 "compact view). Off, a plain picture takes its place, which also prevents "
@@ -7431,7 +7422,7 @@ msgstr ""
 "tampilan ringkas). Bila nonaktif, gambar polos menggantikannya, yang juga "
 "mencegah layar terbakar (burn-in)."
 
-#: modules/gui/qt/qt.cpp:286
+#: modules/gui/qt/qt.cpp:285
 msgid ""
 "This option allows the interface to be shown and raised automatically when a "
 "video/audio playback starts, or never."
@@ -7439,11 +7430,11 @@ msgstr ""
 "Opsi ini memungkinkan antarmuka ditampilkan dan dimunculkan secara otomatis "
 "saat pemutaran video/audio dimulai, atau tidak pernah."
 
-#: modules/gui/qt/qt.cpp:289
+#: modules/gui/qt/qt.cpp:288
 msgid "Enable window titlebar"
 msgstr "Aktifkan bilah judul jendela"
 
-#: modules/gui/qt/qt.cpp:290
+#: modules/gui/qt/qt.cpp:289
 msgid ""
 "This option enables the title bar. Disabling it will remove the titlebar and "
 "move window buttons within the interface (Client Side Decoration)"
@@ -7452,32 +7443,32 @@ msgstr ""
 "judul dan memindahkan tombol jendela ke dalam antarmuka (Client Side "
 "Decoration)"
 
-#: modules/gui/qt/qt.cpp:294
+#: modules/gui/qt/qt.cpp:293
 msgid "Show the menu bar"
 msgstr "Tampilkan bilah menu"
 
-#: modules/gui/qt/qt.cpp:295
+#: modules/gui/qt/qt.cpp:294
 msgid "This option displays the classic menu bar"
 msgstr "Opsi ini menampilkan bilah menu klasik"
 
-#: modules/gui/qt/qt.cpp:297
+#: modules/gui/qt/qt.cpp:296
 msgid "Pin video controls"
 msgstr "Sematkan kontrol video"
 
-#: modules/gui/qt/qt.cpp:298
+#: modules/gui/qt/qt.cpp:297
 msgid "Place video controls above and below the video instead of above"
 msgstr ""
 "Tempatkan kontrol video di atas dan di bawah video, bukan hanya di atasnya"
 
-#: modules/gui/qt/qt.cpp:301
+#: modules/gui/qt/qt.cpp:300
 msgid "Show the frame at the hovered position above the seek bar"
 msgstr "Tampilkan bingkai pada posisi yang ditunjuk di atas bilah posisi"
 
-#: modules/gui/qt/qt.cpp:305
+#: modules/gui/qt/qt.cpp:304
 msgid "Select Qt video integration backend"
 msgstr "Pilih backend integrasi video Qt"
 
-#: modules/gui/qt/qt.cpp:306
+#: modules/gui/qt/qt.cpp:305
 msgid ""
 "Select Qt video integration backend. Use with care, the interface may not "
 "start if an incompatible compositor is selected"
@@ -7485,11 +7476,11 @@ msgstr ""
 "Pilih backend integrasi video Qt. Gunakan dengan hati-hati, antarmuka "
 "mungkin tidak dapat dimulai jika compositor yang tidak kompatibel dipilih"
 
-#: modules/gui/qt/qt.cpp:308
+#: modules/gui/qt/qt.cpp:307
 msgid "Use smooth scrolling in Flickable based views"
 msgstr "Gunakan gulir halus di tampilan berbasis Flickable"
 
-#: modules/gui/qt/qt.cpp:309
+#: modules/gui/qt/qt.cpp:308
 msgid ""
 "Deactivating this option will disable smooth scrolling in Flickable based "
 "views (such as the Play Queue). This option is only respected with a scroll "
@@ -7499,19 +7490,19 @@ msgstr ""
 "Flickable (seperti Antrean Putar). Opsi ini hanya berlaku dengan penangan "
 "gulir, lihat opsi `qt-use-scroll-handler`."
 
-#: modules/gui/qt/qt.cpp:312
+#: modules/gui/qt/qt.cpp:311
 msgid "Use Kirigami scroll handler for Flickable based views"
 msgstr "Gunakan penangan gulir Kirigami untuk tampilan berbasis Flickable"
 
-#: modules/gui/qt/qt.cpp:313
+#: modules/gui/qt/qt.cpp:312
 msgid "Using Kirigami scroll handler may improve scrolling behavior."
 msgstr "Menggunakan penangan gulir Kirigami dapat memperbaiki perilaku gulir."
 
-#: modules/gui/qt/qt.cpp:315
+#: modules/gui/qt/qt.cpp:314
 msgid "Safe area for the user interface"
 msgstr "Area aman untuk antarmuka pengguna"
 
-#: modules/gui/qt/qt.cpp:316
+#: modules/gui/qt/qt.cpp:315
 msgid ""
 "Sets the safe area percentage between 0.0 and 100 when you want to ensure "
 "the visibility of the user interface on a constrained viewport"
@@ -7519,19 +7510,19 @@ msgstr ""
 "Mengatur persentase area aman antara 0,0 dan 100 bila Anda ingin memastikan "
 "antarmuka pengguna tetap terlihat pada viewport yang terbatas"
 
-#: modules/gui/qt/qt.cpp:320
+#: modules/gui/qt/qt.cpp:319
 msgid "Print Qt's important internal messages"
 msgstr "Cetak pesan internal penting Qt"
 
-#: modules/gui/qt/qt.cpp:321
+#: modules/gui/qt/qt.cpp:320
 msgid "Enable Qt's all own messaging categories except the debug category."
 msgstr "Aktifkan semua kategori pesan milik Qt kecuali kategori debug."
 
-#: modules/gui/qt/qt.cpp:323
+#: modules/gui/qt/qt.cpp:322
 msgid "Hide the window on close"
 msgstr "Sembunyikan jendela saat ditutup"
 
-#: modules/gui/qt/qt.cpp:324
+#: modules/gui/qt/qt.cpp:323
 msgid ""
 "Instead of closing the application, hide the window. This setting is only "
 "applicable when system tray icon is enabled."
@@ -7539,11 +7530,11 @@ msgstr ""
 "Alih-alih menutup aplikasi, sembunyikan jendela. Pengaturan ini hanya "
 "berlaku bila ikon baki sistem diaktifkan."
 
-#: modules/gui/qt/qt.cpp:326
+#: modules/gui/qt/qt.cpp:325
 msgid "Enable backdrop blur filter for the main window if possible"
 msgstr "Aktifkan filter blur latar untuk jendela utama jika memungkinkan"
 
-#: modules/gui/qt/qt.cpp:327
+#: modules/gui/qt/qt.cpp:326
 msgid ""
 "If backdrop blur filter is available, use translucency in the backgrounds of "
 "certain parts of the user interface instead of a solid color. This setting "
@@ -7553,11 +7544,11 @@ msgstr ""
 "belakang bagian tertentu antarmuka pengguna, bukan warna solid. Pengaturan "
 "ini mengurangi keterbacaan teks."
 
-#: modules/gui/qt/qt.cpp:330
+#: modules/gui/qt/qt.cpp:329
 msgid "Enable picture-in-picture (PiP) mode"
 msgstr "Aktifkan mode gambar-dalam-gambar (PiP)"
 
-#: modules/gui/qt/qt.cpp:331
+#: modules/gui/qt/qt.cpp:330
 msgid ""
 "Picture-in-picture mode allows playing video contained in a smaller area so "
 "that the interface remains usable."
@@ -7565,7 +7556,7 @@ msgstr ""
 "Mode gambar-dalam-gambar memungkinkan video diputar di area yang lebih kecil "
 "sehingga antarmuka tetap dapat digunakan."
 
-#: modules/gui/qt/qt.cpp:334
+#: modules/gui/qt/qt.cpp:333
 msgid ""
 "Adjusts the accent color, special values are 'default' and 'system' "
 "(requires Qt 6.6) ."
@@ -7573,11 +7564,11 @@ msgstr ""
 "Menyesuaikan warna aksen, nilai khusus adalah 'default' dan 'system' "
 "(memerlukan Qt 6.6) ."
 
-#: modules/gui/qt/qt.cpp:435
+#: modules/gui/qt/qt.cpp:434
 msgid "Check for VLC Redesign updates"
 msgstr "Periksa pembaruan VLC Redesign"
 
-#: modules/gui/qt/qt.cpp:436
+#: modules/gui/qt/qt.cpp:435
 msgid ""
 "Look for a new release of VLC Redesign on GitHub at startup, at most once a "
 "day."
@@ -7585,11 +7576,11 @@ msgstr ""
 "Cari rilis baru VLC Redesign di GitHub saat memulai, paling banyak sekali "
 "sehari."
 
-#: modules/gui/qt/qt.cpp:440
+#: modules/gui/qt/qt.cpp:439
 msgid "Resume at"
 msgstr "Lanjutkan pada"
 
-#: modules/gui/qt/qt.cpp:441
+#: modules/gui/qt/qt.cpp:440
 msgid ""
 "Seconds into the media of the command line where playback continues, after "
 "an update."
@@ -7626,56 +7617,62 @@ msgstr "%1j%2"
 msgid "%1ms"
 msgstr "%1ms"
 
-#: modules/gui/qt/util/redesign_updater.cpp:400
+#: modules/gui/qt/util/redesign_updater.cpp:159
+msgid ""
+"The update isn't signed by the publisher of this copy (%1), so it wasn't "
+"used."
+msgstr "Pembaruan tidak ditandatangani oleh penerbit salinan ini (%1), sehingga tidak digunakan."
+
+#: modules/gui/qt/util/redesign_updater.cpp:515
 msgid "This build cannot check for updates."
 msgstr "Build ini tidak dapat memeriksa pembaruan."
 
-#: modules/gui/qt/util/redesign_updater.cpp:414
+#: modules/gui/qt/util/redesign_updater.cpp:529
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "Tidak dapat menghubungi GitHub. Periksa koneksi Anda dan coba lagi."
 
-#: modules/gui/qt/util/redesign_updater.cpp:431
+#: modules/gui/qt/util/redesign_updater.cpp:546
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "GitHub mengirim respons yang tidak terduga (%1)."
 
-#: modules/gui/qt/util/redesign_updater.cpp:537
+#: modules/gui/qt/util/redesign_updater.cpp:652
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr ""
 "Checksum pembaruan tidak ada; unduh dari halaman rilis sebagai gantinya."
 
-#: modules/gui/qt/util/redesign_updater.cpp:584
+#: modules/gui/qt/util/redesign_updater.cpp:699
 msgid "The download failed. Check your connection and try again."
 msgstr "Unduhan gagal. Periksa koneksi Anda dan coba lagi."
 
-#: modules/gui/qt/util/redesign_updater.cpp:597
+#: modules/gui/qt/util/redesign_updater.cpp:712
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "Pembaruan tidak cocok dengan checksum-nya, sehingga tidak digunakan."
 
-#: modules/gui/qt/util/redesign_updater.cpp:619
+#: modules/gui/qt/util/redesign_updater.cpp:743
 msgid "The update isn't in a format this version knows."
 msgstr "Pembaruan tidak dalam format yang dikenali versi ini."
 
-#: modules/gui/qt/util/redesign_updater.cpp:622
-#: modules/gui/qt/util/redesign_updater.cpp:646
-#: modules/gui/qt/util/redesign_updater.cpp:657
-#: modules/gui/qt/util/redesign_updater.cpp:663
+#: modules/gui/qt/util/redesign_updater.cpp:746
+#: modules/gui/qt/util/redesign_updater.cpp:770
+#: modules/gui/qt/util/redesign_updater.cpp:781
+#: modules/gui/qt/util/redesign_updater.cpp:787
 msgid "The update is damaged."
 msgstr "Pembaruan rusak."
 
-#: modules/gui/qt/util/redesign_updater.cpp:627
+#: modules/gui/qt/util/redesign_updater.cpp:751
 msgid "The update isn't for this version."
 msgstr "Pembaruan ini bukan untuk versi ini."
 
-#: modules/gui/qt/util/redesign_updater.cpp:636
-#: modules/gui/qt/util/redesign_updater.cpp:673
-#: modules/gui/qt/util/redesign_updater.cpp:682
-#: modules/gui/qt/util/redesign_updater.cpp:686
-#: modules/gui/qt/util/redesign_updater.cpp:690
+#: modules/gui/qt/util/redesign_updater.cpp:760
+#: modules/gui/qt/util/redesign_updater.cpp:797
+#: modules/gui/qt/util/redesign_updater.cpp:806
+#: modules/gui/qt/util/redesign_updater.cpp:810
+#: modules/gui/qt/util/redesign_updater.cpp:814
 msgid "The update can't be written in %1."
 msgstr "Pembaruan tidak dapat ditulis di %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:638
+#: modules/gui/qt/util/redesign_updater.cpp:762
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -7683,33 +7680,33 @@ msgstr ""
 "Sebuah file VLC Redesign telah berubah sejak dipasang, sehingga pembaruan "
 "kecil tidak dapat digunakan: perbarui dengan installer sebagai gantinya."
 
-#: modules/gui/qt/util/redesign_updater.cpp:668
+#: modules/gui/qt/util/redesign_updater.cpp:792
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr "Pembaruan rusak: sebuah file tidak cocok dengan checksum-nya."
 
-#: modules/gui/qt/util/redesign_updater.cpp:793
+#: modules/gui/qt/util/redesign_updater.cpp:917
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr "Pembaruan tidak dapat dimulai. Akan dicoba lagi lain kali."
 
-#: modules/gui/qt/util/redesign_updater.cpp:820
+#: modules/gui/qt/util/redesign_updater.cpp:944
 msgid "The download failed. Try again, or download it from the release page."
 msgstr "Unduhan gagal. Coba lagi, atau unduh dari halaman rilis."
 
-#: modules/gui/qt/util/redesign_updater.cpp:833
+#: modules/gui/qt/util/redesign_updater.cpp:957
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr ""
 "Installer yang diunduh tidak cocok dengan checksum-nya, sehingga tidak "
 "dijalankan."
 
-#: modules/gui/qt/util/redesign_updater.cpp:842
+#: modules/gui/qt/util/redesign_updater.cpp:966
 msgid "The installer couldn't be saved to %1."
 msgstr "Installer tidak dapat disimpan ke %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:870
+#: modules/gui/qt/util/redesign_updater.cpp:1000
 msgid "The installer couldn't be started."
 msgstr "Installer tidak dapat dijalankan."
 
-#: modules/gui/qt/util/renderer_manager.cpp:867
+#: modules/gui/qt/util/renderer_manager.cpp:886
 msgid ""
 "%1 doesn't answer. Check that it's on, and on the same network as this "
 "computer."
@@ -7717,66 +7714,66 @@ msgstr ""
 "%1 tidak merespons. Pastikan perangkat menyala dan berada di jaringan yang "
 "sama dengan komputer ini."
 
-#: modules/gui/qt/util/renderer_manager.cpp:870
+#: modules/gui/qt/util/renderer_manager.cpp:889
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the video."
 msgstr ""
 "Windows Firewall tidak mengizinkan %1 terhubung ke komputer ini untuk "
 "membaca video."
 
-#: modules/gui/qt/util/renderer_manager.cpp:871
+#: modules/gui/qt/util/renderer_manager.cpp:890
 msgid "%1 couldn't read the video from this computer."
 msgstr "%1 tidak dapat membaca video dari komputer ini."
 
-#: modules/gui/qt/util/renderer_manager.cpp:873
+#: modules/gui/qt/util/renderer_manager.cpp:892
 msgid "%1 refused to play this video."
 msgstr "%1 menolak memutar video ini."
 
-#: modules/gui/qt/util/renderer_manager.cpp:875
+#: modules/gui/qt/util/renderer_manager.cpp:894
 msgid "%1 stopped playing."
 msgstr "%1 berhenti memutar."
 
-#: modules/gui/qt/util/renderer_manager.cpp:877
+#: modules/gui/qt/util/renderer_manager.cpp:896
 msgid "%1 is playing something else now."
 msgstr "%1 sekarang sedang memutar konten lain."
 
-#: modules/gui/qt/util/renderer_manager.cpp:878
+#: modules/gui/qt/util/renderer_manager.cpp:897
 msgid "%1 couldn't play the video."
 msgstr "%1 tidak dapat memutar video."
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:52
+#: modules/gui/qt/util/subtitle_preferences.cpp:59
 msgid "Asturian"
 msgstr "Asturia"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:54
+#: modules/gui/qt/util/subtitle_preferences.cpp:61
 msgid "Central Kurdish"
 msgstr "Kurdi Tengah"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:55
+#: modules/gui/qt/util/subtitle_preferences.cpp:62
 msgid "Montenegrin"
 msgstr "Montenegro"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:59
+#: modules/gui/qt/util/subtitle_preferences.cpp:66
 msgid "Dari"
 msgstr "Dari"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:61
+#: modules/gui/qt/util/subtitle_preferences.cpp:68
 msgid "Cantonese"
 msgstr "Kanton"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:62
+#: modules/gui/qt/util/subtitle_preferences.cpp:69
 msgid "Standard Moroccan Tamazight"
 msgstr "Tamazight Maroko Standar"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:63
+#: modules/gui/qt/util/subtitle_preferences.cpp:70
 msgid "Portuguese (Brazil)"
 msgstr "Portugis (Brasil)"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:64
+#: modules/gui/qt/util/subtitle_preferences.cpp:71
 msgid "Chinese (Traditional)"
 msgstr "Tionghoa (Tradisional)"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:65
+#: modules/gui/qt/util/subtitle_preferences.cpp:72
 msgid "Spanish (Latin America)"
 msgstr "Spanyol (Amerika Latin)"
 
@@ -7795,7 +7792,7 @@ msgid_plural "%1 selected"
 msgstr[0] "%1 dipilih"
 
 #: modules/gui/qt/widgets/qml/GridSortFilterControls.qml:30
-#: modules/gui/qt/widgets/qml/LibraryHeader.qml:482
+#: modules/gui/qt/widgets/qml/LibraryHeader.qml:483
 msgid "List/Grid"
 msgstr "Daftar/Kisi"
 
@@ -7869,7 +7866,7 @@ msgstr "Nomor Disk Turun"
 
 #: modules/lua/vlc.c:51
 msgid "Enable Lua plugins"
-msgstr ""
+msgstr "Aktifkan plugin Lua"
 
 #: modules/misc/gnutls.c:757
 msgid "Secure 128-bit (or higher)"
@@ -7879,35 +7876,35 @@ msgstr "Aman 128-bit (atau lebih tinggi)"
 msgid "Secure 256-bit (exclude 128-bit ciphers)"
 msgstr "Aman 256-bit (kecualikan cipher 128-bit)"
 
-#: modules/misc/medialibrary/medialibrary.cpp:469
+#: modules/misc/medialibrary/medialibrary.cpp:471
 msgid "Recover"
 msgstr "Pulihkan"
 
-#: modules/misc/medialibrary/medialibrary.cpp:470
+#: modules/misc/medialibrary/medialibrary.cpp:472
 msgid "Recreate"
 msgstr "Buat ulang"
 
-#: modules/misc/medialibrary/medialibrary.cpp:470
+#: modules/misc/medialibrary/medialibrary.cpp:472
 msgid "Media database corrupted"
 msgstr "Basis data media rusak"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2728
+#: modules/misc/medialibrary/medialibrary.cpp:2750
 msgid "Folders discovered by the media library"
 msgstr "Folder yang ditemukan oleh pustaka media"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2729
+#: modules/misc/medialibrary/medialibrary.cpp:2751
 msgid "Semicolon separated list of folders to discover media from"
 msgstr "Daftar folder yang dipisahkan titik koma untuk menemukan media"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2732
+#: modules/misc/medialibrary/medialibrary.cpp:2754
 msgid "Extra verbose media library logs"
 msgstr "Log pustaka media yang sangat rinci"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2735
+#: modules/misc/medialibrary/medialibrary.cpp:2757
 msgid "media library"
 msgstr "pustaka media"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2736
+#: modules/misc/medialibrary/medialibrary.cpp:2758
 msgid "Organize your media"
 msgstr "Atur media Anda"
 
@@ -7915,7 +7912,7 @@ msgstr "Atur media Anda"
 msgid ""
 "Sets PID to the ID of the incoming ES. This is for use with --ts-es-id-pid, "
 "and allows having the same PIDs in the input and output streams."
-msgstr ""
+msgstr "Mengatur PID ke ID dari ES yang masuk. Ini digunakan bersama --ts-es-id-pid, dan memungkinkan PID yang sama pada stream input dan output."
 
 #: modules/services_discovery/upnp.cpp:66
 msgid ""
@@ -7987,18 +7984,18 @@ msgstr "Filter demux UPnP/DLNA"
 msgid "Universal Plug'n'Play Server"
 msgstr "Server Universal Plug'n'Play"
 
-#: modules/stream_out/chromecast/cast.cpp:1189
+#: modules/stream_out/chromecast/cast.cpp:1191
 #: modules/stream_out/dlna/dlna.cpp:690
 msgid "OK, don't warn me again"
 msgstr "OK, jangan peringatkan saya lagi"
 
-#: modules/stream_out/chromecast/cast.cpp:1190
+#: modules/stream_out/chromecast/cast.cpp:1192
 #: modules/stream_out/dlna/dlna.cpp:691
 #: modules/stream_out/renderer_common.hpp:35
 msgid "Performance warning"
 msgstr "Peringatan performa"
 
-#: modules/stream_out/chromecast/cast.cpp:1191
+#: modules/stream_out/chromecast/cast.cpp:1193
 #: modules/stream_out/dlna/dlna.cpp:692
 msgid ""
 "Casting this video requires conversion. This conversion can use all the "
@@ -8010,39 +8007,39 @@ msgstr ""
 
 #: modules/stream_out/renderer_common.hpp:36
 msgid "Display a performance warning when transcoding"
-msgstr ""
+msgstr "Tampilkan peringatan performa saat transkode"
 
 #: modules/stream_out/renderer_common.hpp:37
 msgid "Enable Audio passthrough"
-msgstr ""
+msgstr "Aktifkan passthrough audio"
 
 #: modules/stream_out/renderer_common.hpp:38
 msgid "Disable if your receiver does not support Dolby®."
-msgstr ""
+msgstr "Nonaktifkan jika penerima Anda tidak mendukung Dolby®."
 
 #: modules/stream_out/renderer_common.hpp:39
 msgid "Conversion quality"
-msgstr ""
+msgstr "Kualitas konversi"
 
 #: modules/stream_out/renderer_common.hpp:40
 msgid "Change conversion speed or quality."
-msgstr ""
+msgstr "Ubah kecepatan atau kualitas konversi."
 
 #: modules/stream_out/renderer_common.hpp:63
 msgid "High (high quality and high bandwidth)"
-msgstr ""
+msgstr "Tinggi (kualitas tinggi dan bandwidth tinggi)"
 
 #: modules/stream_out/renderer_common.hpp:64
 msgid "Medium (medium quality and medium bandwidth)"
-msgstr ""
+msgstr "Sedang (kualitas sedang dan bandwidth sedang)"
 
 #: modules/stream_out/renderer_common.hpp:65
 msgid "Low (low quality and low bandwidth)"
-msgstr ""
+msgstr "Rendah (kualitas rendah dan bandwidth rendah)"
 
 #: modules/stream_out/renderer_common.hpp:66
 msgid "Low CPU (low quality but high bandwidth)"
-msgstr ""
+msgstr "CPU rendah (kualitas rendah tetapi bandwidth tinggi)"
 
 #: modules/text_renderer/freetype/freetype.c:77
 msgid ""
@@ -8054,83 +8051,74 @@ msgstr ""
 
 #: modules/text_renderer/freetype/freetype.c:91
 msgid "Cache size"
-msgstr ""
+msgstr "Ukuran cache"
 
 #: modules/text_renderer/freetype/freetype.c:92
 msgid "Cache size in kBytes"
-msgstr ""
+msgstr "Ukuran cache dalam kB"
 
 #: modules/text_renderer/freetype/freetype.c:101
 msgid "Blending Mode"
-msgstr ""
+msgstr "Mode Pencampuran"
 
 #: modules/text_renderer/freetype/freetype.c:102
 msgid "Blending mode for the font, can be transparent or overlay"
-msgstr ""
+msgstr "Mode pencampuran untuk font, dapat berupa transparan atau overlay"
 
 #: modules/video_filter/extract.c:55
 msgid ""
 "RGB component to extract, as an RGB hexadecimal mask. E.g. 0xFF0000 for red; "
 "0x00FF00 for green and 0x0000FF for blue."
-msgstr ""
+msgstr "Komponen RGB yang akan diekstrak, sebagai mask heksadesimal RGB. Mis. 0xFF0000 untuk merah; 0x00FF00 untuk hijau dan 0x0000FF untuk biru."
 
 #: modules/video_filter/gradient.c:64
 msgid "Keep color"
-msgstr ""
+msgstr "Pertahankan warna"
 
 #: modules/video_filter/gradient.c:65
 msgid "This will keep the colors, otherwise the image will be turned white."
-msgstr ""
+msgstr "Ini akan mempertahankan warna, jika tidak gambar akan menjadi putih."
 
 #: modules/video_output/win32/direct3d11.cpp:72
 msgid "Video Upscaling Mode"
-msgstr ""
+msgstr "Mode Upscaling Video"
 
 #: modules/video_output/win32/direct3d11.cpp:73
 msgid "Select the upscaling mode for video."
-msgstr ""
+msgstr "Pilih mode upscaling untuk video."
 
 #: modules/video_output/win32/direct3d11.cpp:78
 msgid "Linear Sampler"
-msgstr ""
+msgstr "Sampler Linear"
 
 #: modules/video_output/win32/direct3d11.cpp:78
 msgid "Point Sampler"
-msgstr ""
+msgstr "Sampler Titik"
 
 #: modules/video_output/win32/direct3d11.cpp:78
 msgid "Video Processor"
-msgstr ""
+msgstr "Prosesor Video"
 
 #: modules/video_output/win32/direct3d11.cpp:78
 msgid "Super Resolution"
-msgstr ""
+msgstr "Resolusi Super"
 
 #: modules/video_output/win32/direct3d11.cpp:80
 msgid "HDR Output Mode"
-msgstr ""
+msgstr "Mode Output HDR"
 
 #: modules/video_output/win32/direct3d11.cpp:81
 msgid "Use HDR output even if the source is SDR."
-msgstr ""
+msgstr "Gunakan output HDR meskipun sumbernya SDR."
 
 #: modules/video_output/win32/direct3d11.cpp:86
 msgid "Never out HDR"
-msgstr ""
+msgstr "Jangan pernah output HDR"
 
 #: modules/video_output/win32/direct3d11.cpp:86
 msgid "Always output HDR"
-msgstr ""
+msgstr "Selalu output HDR"
 
 #: modules/video_output/win32/direct3d11.cpp:86
 msgid "Generate HDR from SDR"
-msgstr ""
-
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
-msgctxt "subtitle language"
-msgid "Often used"
-msgstr "Sering dipakai"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
-msgid "Snapshot height (0: proportional, -1: original)"
-msgstr "Tinggi cuplikan (0: proporsional, -1: asli)"
+msgstr "Buat HDR dari SDR"

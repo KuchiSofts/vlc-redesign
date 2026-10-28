@@ -4,6 +4,8 @@
 #   vlc-redesign-<version>-win64.zip        portable package
 #   vlc-redesign-<version>-win64-setup.exe  installer (Inno Setup 6.7+)
 #   SHA256SUMS.txt
+#   SHA256SUMS.txt.sig                     its signature by the release key
+#                                            (signing/release-key.ps1)
 #   vlc-redesign-<version>-delta-from-<old>.vrdelta  small updates from the
 #                                            3 latest releases whose zip is in -Dist
 # The version comes from modules/gui/qt/util/redesign_version.hpp unless
@@ -12,13 +14,18 @@
 # binaries are signed already (the signed package of the Windows build
 # workflow, docs/code-signing.md): never built, its binaries never changed.
 # Needs Python with bsdiff4 for the small updates (pip install bsdiff4).
+# The release key must be on this PC (signing/release-key.ps1): the app takes
+# no release from 0.3.2 on without SHA256SUMS.txt.sig. -NoSumsSignature leaves
+# it out (the GitHub workflow, which never has the key: SHA256SUMS.txt is
+# signed here once the release files are final, docs/code-signing.md).
 param(
     [string]$Version,
     [string]$Package = "$env:USERPROFILE\source\vlc-redesign-release",
     [string]$Dist = "$env:USERPROFILE\source\vlc-redesign-dist",
     [switch]$Quick,
     [switch]$SkipBuild,
-    [switch]$Signed
+    [switch]$Signed,
+    [switch]$NoSumsSignature
 )
 if ($Signed) { $SkipBuild = $true }
 $ErrorActionPreference = 'Stop'
@@ -150,5 +157,15 @@ $sums = foreach ($f in $files) {
     '{0}  {1}' -f (Get-FileHash "$Dist\$f" -Algorithm SHA256).Hash.ToLower(), $f
 }
 [System.IO.File]::WriteAllText("$Dist\SHA256SUMS.txt", ($sums -join "`n") + "`n")
-Get-ChildItem $Dist -File | Where-Object { $_.Name -in $files -or $_.Name -eq 'SHA256SUMS.txt' } |
+# (never the signature of an earlier SHA256SUMS.txt)
+Remove-Item "$Dist\SHA256SUMS.txt.sig" -ErrorAction SilentlyContinue
+if ($NoSumsSignature) {
+    Write-Warning 'SHA256SUMS.txt is not signed: sign it before publishing (signing\release-key.ps1 sign <file>)'
+} else {
+    & "$PSScriptRoot\signing\release-key.ps1" sign "$Dist\SHA256SUMS.txt"
+    # checked again with the key the app carries
+    & "$PSScriptRoot\signing\release-key.ps1" verify "$Dist\SHA256SUMS.txt"
+    if ($LASTEXITCODE) { throw 'The signature of SHA256SUMS.txt does not verify' }
+}
+Get-ChildItem $Dist -File | Where-Object { $_.Name -in $files -or $_.Name -in 'SHA256SUMS.txt', 'SHA256SUMS.txt.sig' } |
     Select-Object Name, @{n = 'MB'; e = { [math]::Round($_.Length / 1MB, 1) } } | Format-Table -AutoSize

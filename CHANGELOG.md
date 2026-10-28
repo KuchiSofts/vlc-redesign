@@ -27,6 +27,11 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   this changelog, with *Full changelog* for the release notes on GitHub. It shows once per version, on the
   library: a file opened with VLC plays first, and a new install shows the welcome instead. *Show what's new
   after an update* in Settings, General turns it off. The notes are in English.
+- **Follow the Windows accent color**: a switch in Settings > Appearance, under the accent colours (off by
+  default). On, the interface, the classic windows, the right-click menus and the two-tone icons take the accent
+  colour of Windows and follow it at once when it changes in Personalization > Colors; picking a colour turns it
+  off. A colour too dark or too light is brought to the range of the built-in accents so it stays as readable.
+  Outside Windows it follows the system accent (the desktop's, or the orange). Profiles keep the choice.
 
 ### Changed
 

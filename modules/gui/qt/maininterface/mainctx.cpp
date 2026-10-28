@@ -51,6 +51,7 @@
 #include "util/qt_dirs.hpp"                     // toNativeSeparators
 
 #include "util/color_scheme_model.hpp"
+#include "util/redesign_accent.hpp"
 #include "util/model_recovery_agent.hpp"
 
 #include "widgets/native/interface_widgets.hpp"     // bgWidget, videoWidget
@@ -186,6 +187,9 @@ MainCtx::MainCtx(qt_intf_t *_p_intf)
 
     settings = getSettings();
     m_colorScheme = new ColorSchemeModel(this);
+    // the accent of the system, for "Follow the Windows accent color"
+    m_redesignAccent = new RedesignAccent(this);
+    connect(m_redesignAccent, &RedesignAccent::systemAccentChanged, this, &MainCtx::systemAccentChanged);
     // Widget menus (right-click, tracks...) get the redesign look; the style
     // lives with the application, as the menus using it may outlive MainCtx
     auto *menuStyle = new RedesignMenuStyle(this);
@@ -1453,6 +1457,11 @@ bool MainCtx::languageRightToLeft() const
             code = QLocale::system().name();
     }
     return QLocale(code).textDirection() == Qt::RightToLeft;
+}
+
+QColor MainCtx::systemAccent() const
+{
+    return m_redesignAccent ? m_redesignAccent->systemAccent() : RedesignAccent::defaultAccent();
 }
 
 void MainCtx::setSettingValue(const QString &key, const QVariant &value)

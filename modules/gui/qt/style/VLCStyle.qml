@@ -63,11 +63,24 @@ QtObject {
         // show at half opacity)
         readonly property var accentChoices: ["#d37918", "#e15033", "#c49d24", "#18a235", "#18aad3", "#185dd4", "#8e41ff", "#f051b5", "#afafaf"]
         readonly property color logoColor: "#D37918"
-        property color accent: MainCtx.settingValue("redesign/accent", "#D37918")
+        // The accent chosen (redesign/accent): one of accentChoices, or
+        // "system" (Follow the Windows accent color, Settings): the color of the
+        // system as MainCtx.systemAccent gives it, made as readable as the
+        // others (RedesignAccent) and followed while VLC runs. Settings and
+        // the onboarding set accentChoice to show a choice at once.
+        readonly property string systemAccentChoice: "system"
+        property string accentChoice: MainCtx.settingValue("redesign/accent", "#D37918")
+        readonly property bool followsSystemAccent: accentChoice === systemAccentChoice
+        readonly property color systemAccent: MainCtx.systemAccent
+        readonly property color accent: followsSystemAccent ? systemAccent : accentChoice
+        // The color a choice stands for
+        function accentOf(choice) {
+            return choice === systemAccentChoice ? systemAccent : choice
+        }
         readonly property Connections profileAppearanceSync: Connections {
             target: MainCtx.controlbarProfileModel
             function onSelectedProfileChanged() {
-                vlc_style.redesign.accent = MainCtx.controlbarProfileModel.profileAccent
+                vlc_style.redesign.accentChoice = MainCtx.controlbarProfileModel.profileAccent
             }
         }
         // Accent Dim and Accent Bright of the design (#AB6314 and #371F06 for

@@ -29,7 +29,8 @@ public:
     // The system information of the report, one "Name: value" per line, in
     // English (read by the maintainers). The look is the interface's:
     // colorScheme as ColorSchemeModel (System, Day, Night), whether it is
-    // dark now, the accent ("#d37918").
+    // dark now, the accent ("#d37918", or "system #0078d4" for the Windows
+    // accent).
     Q_INVOKABLE QString reportText(int colorScheme, bool darkTheme, const QString &accent) const;
     // The bug form prefilled with it (cut at a line to stay under 8,000
     // characters)

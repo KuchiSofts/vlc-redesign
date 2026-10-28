@@ -590,6 +590,22 @@ the default's (the design's values); rounding may change a channel by 1.
 | 8  | `#F051B5` pink     | `#C24293` | `#3E152F` | `#E4ADD0`      |
 | 9  | `#AFAFAF` grey     | `#8E8E8E` | `#2E2E2E` | `#CECECE`      |
 
+**Follow the Windows accent color** (not in the design; `redesign/accent` = `system`, `RedesignAccent` in
+`util/redesign_accent.cpp`): a toggle row under the swatches in Settings > Appearance, as Developer mode (42 high,
+label 14 px `#8F8F8F`, the Toggle at the end), off by default and shown at once; on, no swatch shows as chosen, and
+picking one turns it off (off goes back to the colour chosen before, else the orange). The 9 swatches and the
+onboarding's 9 discs stay as Figma draws them. The colour is Qt's
+`QPalette::Accent` (Qt 6.6+ reads it from the system), on Windows else
+`HKCU\Software\Microsoft\Windows\DWM\AccentColor`; it is read again on `ApplicationPaletteChange`,
+`colorSchemeChanged`, `WM_SETTINGCHANGE` "ImmersiveColorSet", `WM_DWMCOLORIZATIONCOLORCHANGED` and
+`WM_SYSCOLORCHANGE` (after 250 ms), and if Windows changes the registry without Qt's palette following, the
+registry wins. Without a system accent (Linux without one, Qt's default highlight `#308CC6`): the redesign orange.
+**Readability rule:** the 9 accents are drawn unchanged on both themes and range in WCAG relative luminance from
+0.128 (the blue, 3.3:1 on `#0E0E0E`) to 0.429 (the grey). A system colour outside that range keeps its hue and
+saturation and gets the HSL lightness that brings its luminance to the nearest end, so it is never darker than the
+blue on the dark theme nor lighter than the grey on the light theme; Dim, Bright and the light tint then come from
+it as for the others.
+
 ### Typography
 
 Inter 3.19 (variable) with every advance one unit wider (Qt truncates advances to 1/64 px), distance-field
@@ -940,7 +956,8 @@ and an accepted request made the TV fail after a pause in a test.
   CHANGELOG.md (carried in the resources), with *Full changelog*; once a version (`redesign/whats-new-seen`), not
   on a new install (the welcome), after the film when VLC opened with one; Settings, General, *Show what's new
   after an update* (on). The notes stay in English · in the app ⏳
-- ⚪ The accent following the Windows accent colour (an option)
+- 🟢 The accent following the Windows accent colour (an option): *Follow the Windows accent color* under the
+  swatches in Settings > Appearance (`redesign/accent` = `system`), followed live, made readable (§6 Accents) · in the app ⏳
 
 ### 8.9 Quality and hardware
 

@@ -118,6 +118,7 @@ nodist_libqt_plugin_la_SOURCES = \
 	util/asynctask.moc.cpp \
 	util/redesign_updater.moc.cpp \
 	util/redesign_feedback.moc.cpp \
+	util/redesign_accent.moc.cpp \
 	util/subtitle_preferences.moc.cpp \
 	player/subtitle_finder.moc.cpp \
 	util/accessible_compat_attached.moc.cpp \

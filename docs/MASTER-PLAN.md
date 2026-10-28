@@ -184,6 +184,10 @@ the bar counts the lines of section 8, the ones left need the owner (SignPath, D
    every supported OS version: every release passes the quality gates (section 14).
 5. **Users shape it.** Ideas, votes and reports on GitHub set the order of the work; every report gets an answer.
    The program never sends anything by itself.
+6. **Every upload brings the whole project up to date.** The changelog, the roadmap, this plan, the README, the
+   platforms and the website, the wiki, the translations, VideoLAN's master, the credits and an answer for every
+   issue: the pre-push hook and `make-release.ps1` refuse an upload that leaves one behind
+   ([RELEASE-CHECKLIST.md](RELEASE-CHECKLIST.md)).
 6. **Credit and honesty.** The design credit (CC BY 4.0) is in every program, README, store page and release. Every
    program says it is unofficial; the VLC name and cone are VideoLAN trademarks.
 7. **Open source.** Every binary has its source, build scripts and licenses next to it.

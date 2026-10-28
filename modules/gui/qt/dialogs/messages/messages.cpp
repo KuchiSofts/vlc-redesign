@@ -48,6 +48,7 @@
 #include "dialogs/messages/messages.hpp"
 #include "dialogs/dialogs/dialogmodel.hpp"
 
+#include "menus/redesign_menu_style.hpp"
 enum {
     MsgEvent_Type = QEvent::User + MsgEventTypeOffset + 1,
 };
@@ -124,7 +125,7 @@ MessagesDialog::MessagesDialog( qt_intf_t *_p_intf)
     ui.filterEdit->setText( getSettings()->value( "Messages/messages-filter" ).toString() );
 
     updateButton = new QToolButton;
-    updateButton->setIcon( QIcon(":/menu/update.svg") );
+    updateButton->setIcon( RedesignMenuStyle::menuIcon( ":/menu/update.svg" ) );
     updateButton->setAutoRaise( true );
     ui.mainTab->setCornerWidget( updateButton );
 
@@ -447,7 +448,7 @@ void MessagesDialog::updateOrClear()
 
 void MessagesDialog::tabChanged( int i )
 {
-    updateButton->setIcon( i > 1 ? QIcon(":/menu/update.svg") : QIcon(":/menu/clear.svg") );
+    updateButton->setIcon( i > 1 ? RedesignMenuStyle::menuIcon( ":/menu/update.svg" ) : RedesignMenuStyle::menuIcon( ":/menu/clear.svg" ) );
     updateButton->setToolTip( i > 1 ? qtr("Update the tree")
                                      : i == 0 ? qtr("Clear the messages")
                                               : qtr("Clear the errors"));

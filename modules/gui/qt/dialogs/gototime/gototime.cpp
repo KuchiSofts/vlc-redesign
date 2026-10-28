@@ -28,6 +28,7 @@
 #include "player/player_controller.hpp"
 #include "util/vlctick.hpp"
 
+#include "menus/redesign_menu_style.hpp"
 #include <QLabel>
 #include <QTimeEdit>
 #include <QDialogButtonBox>
@@ -61,7 +62,7 @@ GotoTimeDialog::GotoTimeDialog( qt_intf_t *_p_intf)
     timeEdit->setAlignment( Qt::AlignRight );
     timeEdit->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Minimum );
 
-    QPushButton *resetButton = new QPushButton( QIcon(":/menu/update.svg"), "" );
+    QPushButton *resetButton = new QPushButton( RedesignMenuStyle::menuIcon( ":/menu/update.svg" ), "" );
     resetButton->setToolTip( qtr("Reset") );
 
     mainLayout->addWidget( timeIntro, 0, 0, 1, 1 );

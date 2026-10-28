@@ -12,6 +12,12 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-10-28):
 
+- 🟢 **macOS builds and runs** (2026-10-29): Apple Silicon (macos-14) and Intel (macos-15-intel) both build, make
+  their `.dmg` and pass the 9 launch checks (signature, headless playback, the Qt interface loaded and playing,
+  no QML warning, clean quit, no crash report); a screenshot shows the library on macOS. Seven fixes on the way
+  (workflow env, configure checks, ncurses, prebuilt SDK paths, Qt SQL drivers, signing of the plugin cache and
+  other non-code files, an updater `#else`). Left: the window has both the system title bar and ours (a unified
+  title bar with the traffic lights in our top bar), the Intel job needs more than 75 minutes.
 - 🟡 **Window borders** (branch `feature/borders`): every QML dialog, menu, panel, dropdown list, tooltip and card
   over the interface draws the main window's 1 px frame (`Widgets.RedesignWindowBorder`, token
   `color.dark.windowBorder` / `color.light.windowBorder`, `#4C4A48`: what Windows 11 drew around the main window in

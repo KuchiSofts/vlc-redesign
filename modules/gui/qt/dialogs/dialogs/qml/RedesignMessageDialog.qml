@@ -46,7 +46,7 @@ Widgets.RedesignDialog {
     Component.onDestruction: DialogsProvider.releaseRedesignMessageHost(root)
 
     function enqueue(id, message) {
-        _queue.push({ id: id, message: message })
+        _queue = _queue.concat([{ id: id, message: message }])
         if (messageId < 0 && !visible)
             showNext()
     }
@@ -64,7 +64,8 @@ Widgets.RedesignDialog {
     function showNext() {
         if (messageId >= 0 || _queue.length === 0)
             return
-        const entry = _queue.shift()
+        const entry = _queue[0]
+        _queue = _queue.slice(1)
         const message = entry.message
         messageId = entry.id
         _answer = 0

@@ -22,7 +22,7 @@ ColumnLayout {
             text: qsTr("Equalizer")
             elide: Text.ElideRight
             horizontalAlignment: Text.AlignLeft
-            color: VLCStyle.redesign.color("#8F8F8F", "#7c7c7b")
+            color: VLCStyle.redesign.color("#8F8F8F", "#2e2e2e")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
         }
@@ -41,7 +41,7 @@ ColumnLayout {
             text: qsTr("Equalizer preset")
             elide: Text.ElideRight
             horizontalAlignment: Text.AlignLeft
-            color: VLCStyle.redesign.color("#8F8F8F", "#7c7c7b")
+            color: VLCStyle.redesign.color("#8F8F8F", "#2e2e2e")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
         }
@@ -113,7 +113,7 @@ ColumnLayout {
     Rectangle {
         Layout.fillWidth: true
         implicitHeight: root.expanded ? VLCStyle.dp(480, VLCStyle.scale) : VLCStyle.dp(42, VLCStyle.scale)
-        color: VLCStyle.redesign.color("#1b1b1b", VLCStyle.palette.lightGrey200)
+        color: VLCStyle.redesign.color("#1b1b1b", "#ababaa")
         ColumnLayout {
             anchors.fill: parent
             anchors.margins: VLCStyle.dp(16, VLCStyle.scale)
@@ -123,7 +123,7 @@ ColumnLayout {
                 text: root.expanded ? qsTr("Close Equalizer") : qsTr("Open Equalizer")
                 onClicked: root.expanded = !root.expanded
                 background: Item {}
-                contentItem: Label { text: parent.text; color: VLCStyle.redesign.color("#8F8F8F", "#7c7c7b"); font.pixelSize: VLCStyle.dp(14, VLCStyle.scale) }
+                contentItem: Label { text: parent.text; color: VLCStyle.redesign.color("#8F8F8F", "#2e2e2e"); font.pixelSize: VLCStyle.dp(14, VLCStyle.scale) }
             }
             RowLayout {
                 id: bandsRow
@@ -185,7 +185,7 @@ ColumnLayout {
                             elide: Text.ElideRight
                             text: index === 0 ? qsTr("Preamp")
                                   : Math.round(Number(root.effects.frequencies[index - 1] || 0)) + qsTr(" Hz")
-                            color: VLCStyle.redesign.color("#8F8F8F", "#7c7c7b")
+                            color: VLCStyle.redesign.color("#8F8F8F", "#2e2e2e")
                             font.pixelSize: VLCStyle.dp(10, VLCStyle.scale)
                         }
                         Label {
@@ -201,7 +201,7 @@ ColumnLayout {
     }
     RowLayout {
         Layout.fillWidth: true
-        Label { Layout.fillWidth: true; elide: Text.ElideRight; horizontalAlignment: Text.AlignLeft; text: qsTr("Two-pass"); color: VLCStyle.redesign.color("#8F8F8F", "#7c7c7b"); font.pixelSize: VLCStyle.dp(14, VLCStyle.scale) }
+        Label { Layout.fillWidth: true; elide: Text.ElideRight; horizontalAlignment: Text.AlignLeft; text: qsTr("Two-pass"); color: VLCStyle.redesign.color("#8F8F8F", "#2e2e2e"); font.pixelSize: VLCStyle.dp(14, VLCStyle.scale) }
         SettingsToggle {
             id: twoPassSwitch
             Accessible.name: qsTr("Two-pass")

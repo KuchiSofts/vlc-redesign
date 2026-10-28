@@ -42,7 +42,7 @@ Item {
             ToolTip.text: clearLabel.text
             ToolTip.delay: 650
             text: qsTr("Clear history now")
-            color: VLCStyle.redesign.color("#8F8F8F", "#8F8F8F")
+            color: VLCStyle.redesign.color("#8F8F8F", "#2e2e2e")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
         }
@@ -53,7 +53,7 @@ Item {
             height: width
             sourceSize: Qt.size(width, height)
             source: SVGColorImage.colorize("qrc:///redesign/duo/info-small.svg")
-                                 .color1(VLCStyle.redesign.color("#404040", "#404040")).uri()
+                                 .color1(VLCStyle.redesign.color("#404040", "#929291")).uri()
             HoverHandler { id: clearHelpHover }
             ToolTip.visible: clearHelpHover.hovered
             ToolTip.text: root.available ? qsTr("Removes the recently played items of the media library.")

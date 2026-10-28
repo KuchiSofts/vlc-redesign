@@ -41,7 +41,7 @@ Rectangle {
     radius: VLCStyle.dp(10, VLCStyle.scale)
     color: VLCStyle.redesign.color("#191919", "#ABABAA", darkTheme)
     border.width: 1
-    border.color: VLCStyle.redesign.color(VLCStyle.redesign.border, "#8f8f8e", darkTheme)
+    border.color: VLCStyle.redesign.color(VLCStyle.redesign.border, "#8e8e8d", darkTheme)
 
     // the transient results of a manual check go away by themselves
     Timer {
@@ -81,7 +81,7 @@ Rectangle {
                 T.ToolTip.visible: titleHover.hovered && titleText.truncated
                 T.ToolTip.text: titleText.text
                 T.ToolTip.delay: VLCStyle.delayToolTipAppear
-                color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#1d1d1d", root.darkTheme)
+                color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e", root.darkTheme)
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(15, VLCStyle.scale)
                 font.weight: Font.Medium
@@ -119,7 +119,7 @@ Rectangle {
                     text: "×"
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
-                    color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#4d4d4d", root.darkTheme)
+                    color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e", root.darkTheme)
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(18, VLCStyle.scale)
                 }
@@ -133,7 +133,7 @@ Rectangle {
             wrapMode: Text.WordWrap
             maximumLineCount: 5
             elide: Text.ElideRight
-            color: VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, "#3d3d3d", root.darkTheme)
+            color: VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, "#4d4d4d", root.darkTheme)
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
             lineHeight: 1.25
@@ -164,7 +164,7 @@ Rectangle {
             visible: root.busy
             implicitHeight: VLCStyle.dp(4, VLCStyle.scale)
             radius: height / 2
-            color: VLCStyle.redesign.color("#0E0E0E", "#8f8f8e", root.darkTheme)
+            color: VLCStyle.redesign.color("#0E0E0E", "#c2c2c1", root.darkTheme)
 
             Rectangle {
                 // (fills from the right in a right to left layout)

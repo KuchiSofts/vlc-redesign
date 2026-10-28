@@ -15,7 +15,7 @@ T.Button {
     property bool destructive: false
 
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
-    function c(value) { return VLCStyle.redesign.color(value, value) }
+    function c(value) { return VLCStyle.redesign.color(value) }
 
     // wider than the design's 100 for a longer translation
     implicitWidth: Math.max(px(100), Math.ceil(implicitContentWidth) + leftPadding + rightPadding)

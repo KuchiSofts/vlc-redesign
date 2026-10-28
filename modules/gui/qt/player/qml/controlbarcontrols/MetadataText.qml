@@ -41,7 +41,7 @@ T.Control {
             width: Math.min(implicitWidth, VLCStyle.dp(240, VLCStyle.scale))
             height: root.availableHeight
             elide: Text.ElideRight
-            color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, root.colorContext.fg.primary)
+            color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
             // the text box of the design centred, on a whole pixel

@@ -23,7 +23,7 @@ T.Slider {
     property real labelsInset: 0
 
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
-    function c(value) { return VLCStyle.redesign.color(value, value) }
+    function c(value) { return VLCStyle.redesign.color(value) }
     function fraction(value) { return to > from ? Math.max(0, Math.min(1, (value - from) / (to - from))) : 0 }
     // Right to left, the low end is on the right (as visualPosition)
     function visualFraction(value) { return mirrored ? 1 - fraction(value) : fraction(value) }

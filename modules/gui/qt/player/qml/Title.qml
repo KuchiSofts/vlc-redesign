@@ -49,7 +49,7 @@ T.Label {
 
     leftPadding: VLCStyle.margin_small
     rightPadding: VLCStyle.margin_small
-    color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, theme.fg.primary, (theme.palette?.isDark ?? VLCStyle.darkPalette.isDark))
+    color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e", (theme.palette?.isDark ?? VLCStyle.darkPalette.isDark))
     font.family: VLCStyle.redesign.fontFamily
     font.pixelSize: VLCStyle.redesign.fontNormal
     font.weight: Font.Normal

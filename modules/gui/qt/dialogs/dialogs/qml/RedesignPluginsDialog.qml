@@ -201,7 +201,7 @@ Widgets.RedesignDialog {
                     Text {
                         text: [card.version !== "" ? qsTr("Version %1").arg(card.version) : "",
                                card.author].filter((part) => part !== "").join(" · ")
-                        color: VLCStyle.redesign.color("#6B6B6B", "#4d4d4d")
+                        color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: VLCStyle.dp(12, VLCStyle.scale)
                     }
@@ -224,7 +224,7 @@ Widgets.RedesignDialog {
                     linkColor: VLCStyle.redesign.accent
                     elide: Text.ElideRight
                     horizontalAlignment: Text.AlignLeft
-                    color: VLCStyle.redesign.color("#6B6B6B", "#4d4d4d")
+                    color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(12, VLCStyle.scale)
                     onLinkActivated: (link) => Qt.openUrlExternally(link)
@@ -286,11 +286,11 @@ Widgets.RedesignDialog {
                 textFormat: Text.StyledText
                 text: row.firstDetail === "" ? row._plain(row.first)
                                              : "%1 <font color=\"%2\">%3</font>".arg(row._plain(row.first))
-                                                   .arg(VLCStyle.redesign.color("#6B6B6B", "#4d4d4d"))
+                                                   .arg(VLCStyle.redesign.color("#6B6B6B", "#6b6b6b"))
                                                    .arg(row._plain(row.firstDetail))
                 elide: Text.ElideRight
                 horizontalAlignment: Text.AlignLeft
-                color: row.heading ? VLCStyle.redesign.color("#6B6B6B", "#4d4d4d")
+                color: row.heading ? VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                                    : VLCStyle.redesign.color("#C6C6C6", "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(row.heading ? 12 : 14, VLCStyle.scale)
@@ -301,7 +301,7 @@ Widgets.RedesignDialog {
                 text: row.second
                 elide: Text.ElideRight
                 horizontalAlignment: Text.AlignLeft
-                color: row.heading ? VLCStyle.redesign.color("#6B6B6B", "#4d4d4d")
+                color: row.heading ? VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                                    : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(row.heading ? 12 : 14, VLCStyle.scale)
@@ -310,7 +310,7 @@ Widgets.RedesignDialog {
                 Layout.preferredWidth: VLCStyle.dp(64, VLCStyle.scale)
                 text: row.third
                 horizontalAlignment: Text.AlignRight
-                color: row.heading ? VLCStyle.redesign.color("#6B6B6B", "#4d4d4d")
+                color: row.heading ? VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                                    : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(row.heading ? 12 : 14, VLCStyle.scale)

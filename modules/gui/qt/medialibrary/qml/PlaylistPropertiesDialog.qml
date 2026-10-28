@@ -64,7 +64,7 @@ Widgets.RedesignDialog {
             id: labelText
             Layout.preferredWidth: row.labelWidth
             text: row.label
-            color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#4d4d4d")
+            color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
             // from the start of the line (the right, right to left)
@@ -79,7 +79,7 @@ Widgets.RedesignDialog {
         Text {
             Layout.fillWidth: true
             text: row.value
-            color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#1d1d1d")
+            color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
             horizontalAlignment: Text.AlignLeft

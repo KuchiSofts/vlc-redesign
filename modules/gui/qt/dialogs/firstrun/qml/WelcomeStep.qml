@@ -109,7 +109,7 @@ Item {
         visible: root.folderAvailable
         color: VLCStyle.redesign.color("#090909", "#dedede")
         border.width: 2
-        border.color: VLCStyle.redesign.color("#191919", "#c4c4c3")
+        border.color: VLCStyle.redesign.color("#191919", "#ababaa")
         radius: 6
         Text {
             id: folderText

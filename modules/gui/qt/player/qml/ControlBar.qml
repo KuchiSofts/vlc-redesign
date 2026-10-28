@@ -242,7 +242,7 @@ T.Pane {
                                                  | (length.isSubSecond() ? VLCTick.SubSecondFormattedAsMS : 0))
                 }
                 color: editing ? "transparent"
-                               : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, theme.fg.primary, theme.palette?.isDark ?? VLCStyle.darkPalette.isDark)
+                               : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e", theme.palette?.isDark ?? VLCStyle.darkPalette.isDark)
                 font: timeTextMetrics.font
 
                 // Figma "Current Time" (1904:7238): under the pointer, the box
@@ -559,7 +559,7 @@ T.Pane {
             height: VLCStyle.dp(36, VLCStyle.scale)
             stretch: true
             corners: false
-            color: VLCStyle.redesign.color("#6B6B6B", "#5a5a59")
+            color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
 
             // the timeline dragged: on its row only from the one row bar,
             // back only from its row above an empty center

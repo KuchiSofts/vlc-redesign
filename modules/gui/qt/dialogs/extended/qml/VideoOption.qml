@@ -44,7 +44,7 @@ ColumnLayout {
     spacing: 0
 
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
-    function c(value) { return VLCStyle.redesign.color(value, value) }
+    function c(value) { return VLCStyle.redesign.color(value) }
     function hex(value) {
         const number = Number(value)
         return "#" + (Number.isFinite(number) ? number : 0).toString(16).padStart(6, "0").toUpperCase()

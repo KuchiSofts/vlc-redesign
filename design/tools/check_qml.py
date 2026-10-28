@@ -20,7 +20,10 @@ It also checks:
     (0.81 x, 0.26 x, #DEDEDE tinted 35 %; 1 per channel of rounding allowed),
   - the light colour map of VLCStyle.redesign.color() against the light
     tokens, both ways (a light token whose dark value the map turns into
-    something else fails: the map wins over a fallback),
+    something else fails),
+  - every color(dark, light) call of the QML: a light value given wins over
+    the map, so one that differs from the map's value fails unless it is a
+    listed exception (LIGHT_EXCEPTIONS, design/light-theme.md),
   - design/icons and design/fonts against the app's files (sync_assets.py),
   - design/build against what export.py generates now.
 
@@ -218,6 +221,66 @@ def check_light_map(tokens, style):
     return problems
 
 
+# Calls whose light value is meant to differ from the map's (file, dark value,
+# light value); design/light-theme.md gives the Figma evidence of each. None
+# today: wherever Figma "Player - Light" shows a value, it is the map's.
+LIGHT_EXCEPTIONS = set()
+
+
+def _call_args(text, start):
+    """The top-level arguments of the call whose "(" ends at start"""
+    depth, begin, out = 0, start, []
+    for i in range(start, len(text)):
+        ch = text[i]
+        if ch in "([{":
+            depth += 1
+        elif ch in ")]}":
+            if depth == 0:
+                out.append(text[begin:i].strip())
+                return out
+            depth -= 1
+        elif ch == "," and depth == 0:
+            out.append(text[begin:i].strip())
+            begin = i + 1
+    return out
+
+
+def check_light_calls(style):
+    """A color(dark, light) call gives its light value, which wins over the
+    map: one that differs from the map's must be a listed exception"""
+    problems = []
+    m = re.search(r"_lightColors:\s*\(\{(.*?)\}\)", style, re.S)
+    if not m:
+        return ["VLCStyle.qml: _lightColors not found"]
+    table = {k.upper(): v.upper() for k, v in re.findall(r'"(#[0-9A-Fa-f]{6})":\s*"(#[0-9A-Fa-f]{6})"', m.group(1))}
+    props = {k: v.upper() for k, v in re.findall(r'readonly property color (\w+):\s*"(#[0-9A-Fa-f]{6})"', style)}
+
+    def resolve(arg):
+        if re.fullmatch(r'"#[0-9A-Fa-f]{6}"', arg):
+            return arg.strip('"').upper()
+        ref = re.fullmatch(r"VLCStyle\.redesign\.(\w+)", arg)
+        return props.get(ref.group(1)) if ref else None
+
+    qml = ROOT / "modules" / "gui" / "qt"
+    for path in sorted(list(qml.rglob("*.qml")) + list(qml.rglob("*.js"))):
+        text = path.read_text(encoding="utf-8")
+        rel = path.relative_to(ROOT).as_posix()
+        for call in re.finditer(r"VLCStyle\.redesign\.color\(", text):
+            args = _call_args(text, call.end())
+            if len(args) < 2 or args[1] == "undefined":
+                continue
+            dark = resolve(args[0])
+            if dark not in table:
+                continue
+            light = resolve(args[1]) if args[1].startswith('"') else None
+            if light == table[dark] or (rel, dark, light) in LIGHT_EXCEPTIONS:
+                continue
+            line = text.count("\n", 0, call.start()) + 1
+            problems.append(f"{rel}:{line}: color({dark}, {args[1]}) differs from the map's {table[dark]} "
+                            "(write the map's value, leave the light value out, or list the exception)")
+    return problems
+
+
 def check_tokens(tokens):
     problems, checked, unchecked, refs = [], 0, [], 0
     for path, token, kind in walk(tokens):
@@ -240,7 +303,7 @@ def main():
     style = VLCSTYLE.read_text(encoding="utf-8")
     problems, checked, unchecked, refs = check_tokens(tokens)
     accent = check_accents(tokens, style)
-    light = check_light_map(tokens, style)
+    light = check_light_map(tokens, style) + check_light_calls(style)
     assets = sync_assets.compare()
     build = export.compare()
     for title, items in (("tokens and code", problems), ("accents", accent), ("light colours", light),

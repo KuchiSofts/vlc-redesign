@@ -1049,7 +1049,26 @@ Tracks with checklists; a version number comes with the first published build.
 ### Linux
 
 - 🟢 Built and smoke-tested once before the Windows work (Docker, X11 and Wayland; `.specs/features/redesign/evidence/`)
-- 🔴 Docker build on Ubuntu 22.04 with Qt 6.8, in CI
+- 🟢 The current code builds in Docker (Ubuntu 24.04, Qt 6.8.3, `linux-qt68.sh`) with no warning from the
+  redesign's code (2026-10-28); `linux-bundle.sh` makes a self-contained tarball, `linux-wslg.sh` runs it through WSLg
+- 🟢 Every player-bar control (59) put in the bar, shown and clicked during playback, on X11 through WSLg with the
+  GPU (D3D12): no QML warning; zoom list and theme of the widget dialogs fixed
+- 🟡 Video on X11 needs `--gl=glx` in the Docker container through WSLg: EGL finds no DRM device there and draws
+  black (upstream code; a PC with /dev/dri uses EGL)
+- 🟢 Onboarding, library (a folder indexed, thumbnails), dialogs, Settings, effects, queue, fullscreen, dark/light,
+  right to left and 1.5× scale shown through WSLg with no QML warning; idle CPU 0.0 %, paused 3.5 %
+- 🟢 VA-API on Intel Iris Xe (Ubuntu 24.04 server, tarball): H.264, HEVC 8/10-bit, VP9 0/2 decode in hardware,
+  0.3–0.7 s of CPU for 20 s of 4K instead of 5–19 s; AV1 by VA-API crashed inside FFmpeg 6.1.1 of Ubuntu (its own
+  `ffmpeg -hwaccel vaapi` too): below libavcodec 61 dav1d decodes AV1 now, every AV1 file plays
+- 🟢 Memory: pages and panels opened 77 times, flat (303→308 MB); switching files grew 90 MB a minute (glibc arenas
+  per thread), fixed in `bin/vlc.c` (two arenas): 30 min of files, panels and pages stay near 480–510 MB
+- 🟢 Wayland (headless Weston, native client, Qt's Wayland compositor for the video): play, pause, seek, quit, no
+  QML warning; 🟡 a strip of the desktop shows between the video and the right edge of the window (also in the
+  first Linux pass); WSLg's Wayland not checked by eye
+- 🟢 X11 CSD: drag to move, double-click to maximize and restore; 🟡 resizing from an edge under openbox with
+  synthetic input moved the window instead (to check on a real desktop)
+- 🟡 Xvfb (no DRI3) can't show VA-API pictures directly: copied to software (1080p 84 % CPU with llvmpipe)
+- 🔴 Docker build in CI
 - 🔴 Packages: AppImage, Flatpak (Flathub), .deb, .rpm, .tar.gz
 - 🔴 X11, Wayland; PipeWire, PulseAudio; VA-API, VDPAU; Intel, AMD, NVIDIA
 - 🔴 Updates (AppImage update information, Flatpak), file associations (.desktop), casting firewall notes

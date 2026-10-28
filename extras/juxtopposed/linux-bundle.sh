@@ -1,0 +1,59 @@
+#!/bin/sh
+# Copyright (C) 2026 VLC authors and VideoLAN
+# SPDX-License-Identifier: GPL-2.0-or-later
+# A self-contained tarball of the Linux build (linux-qt68.sh) for test PCs
+# without the Docker image: VLC installed in a folder, Qt 6.8.3 (libraries,
+# plugins, QML modules), medialibrary, and the libraries of Ubuntu 24.04 it
+# needs, except those that belong to the PC (C library, OpenGL/EGL/GBM/DRM,
+# VA-API/VDPAU drivers, udev/systemd). Run inside the image of
+# linux-qt68.Dockerfile:
+#   docker run --rm -v "$PWD:/work" vlc-redesign-linux:qt68 sh extras/juxtopposed/linux-bundle.sh
+# Writes build-qt68/vlc-redesign-linux-x86_64.tar.xz; on the PC:
+#   tar xf vlc-redesign-linux-x86_64.tar.xz && vlc-redesign/vlc [options]
+set -eu
+build=/work/build-qt68/linux
+out=/work/build-qt68
+root=/tmp/bundle/vlc-redesign
+rm -rf /tmp/bundle /tmp/vlcinst
+mkdir -p "$root"
+
+make -C "$build" install DESTDIR=/tmp/vlcinst > "$out/logs/bundle-install.log" 2>&1
+cp -a /tmp/vlcinst/usr/local/. "$root/"
+# (medialibrary is static, in its plugin)
+
+mkdir -p "$root/qt/lib"
+cp -a "$QTDIR"/lib/libQt6*.so* "$QTDIR"/lib/libicu*.so* "$root/qt/lib/" 2>/dev/null || true
+cp -a "$QTDIR/plugins" "$QTDIR/qml" "$root/qt/"
+# (no debug or design-time files)
+find "$root/qt" \( -name '*.debug' -o -name '*.qmltypes' -o -name 'designer' \) -prune -exec rm -rf {} +
+
+# The libraries of the system they need, but those of the PC
+mkdir -p "$root/syslib"
+keep='^(libc|libm|libpthread|libdl|librt|ld-linux.*|libGL|libGLX.*|libGLdispatch|libEGL.*|libOpenGL|libgbm|libdrm.*|libva.*|libvdpau|libgallium.*|libudev|libsystemd|libstdc\+\+|libgcc_s)\.so'
+export LD_LIBRARY_PATH="$root/lib:$root/lib/vlc:$root/qt/lib:/work/build-m0/deps/lib"
+find "$root" -type f \( -name '*.so*' -o -perm -u+x \) -print | while read -r f; do
+    file -b "$f" | grep -q '^ELF' || continue
+    ldd "$f" 2>/dev/null | sed -n 's/^\s*\(\S*\) => \(\/\S*\) .*/\1 \2/p'
+done | sort -u | while read -r name path; do
+    case "$path" in "$root"/*) continue;; esac
+    echo "$name" | grep -Eq "$keep" && continue
+    [ -e "$root/syslib/$name" ] || cp -L "$path" "$root/syslib/$name"
+done
+
+cat > "$root/vlc" <<'EOF'
+#!/bin/sh
+# VLC Redesign from this folder
+here=$(cd "$(dirname "$0")" && pwd)
+export LD_LIBRARY_PATH="$here/lib:$here/lib/vlc:$here/qt/lib:$here/syslib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+export VLC_PLUGIN_PATH="$here/lib/vlc/plugins"
+export VLC_DATA_PATH="$here/share/vlc"
+export VLC_LIB_PATH="$here/lib/vlc"
+export QT_PLUGIN_PATH="$here/qt/plugins"
+export QML_IMPORT_PATH="$here/qt/qml" QML2_IMPORT_PATH="$here/qt/qml"
+exec "$here/bin/vlc" "$@"
+EOF
+chmod +x "$root/vlc"
+"$root/lib/vlc/vlc-cache-gen" "$root/lib/vlc/plugins" 2>/dev/null || true
+
+tar -C /tmp/bundle -cJf "$out/vlc-redesign-linux-x86_64.tar.xz" vlc-redesign
+du -sh "$root" "$out/vlc-redesign-linux-x86_64.tar.xz"

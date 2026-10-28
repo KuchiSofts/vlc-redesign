@@ -197,8 +197,13 @@ QVector<LocalFolderModel::Entry> LocalFolderModel::listFolder(const QString& pat
             continue;
         const QString filePath = info.absoluteFilePath();
         const QString mrl = coreMrl(filePath);
-        entries.push_back({ info.fileName(), mrl, coreUrl(filePath, mrl), isFolder,
-                            info.lastModified().toMSecsSinceEpoch() });
+        Entry entry;
+        entry.name = info.fileName();
+        entry.mrl = mrl;
+        entry.url = coreUrl(filePath, mrl);
+        entry.isFolder = isFolder;
+        entry.modified = info.lastModified().toMSecsSinceEpoch();
+        entries.push_back(std::move(entry));
     }
     return entries;
 }

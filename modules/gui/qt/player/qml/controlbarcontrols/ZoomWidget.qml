@@ -17,6 +17,8 @@ Widgets.ComboBoxExt {
     // implicit: the bar lays its controls out by their implicit size
     implicitWidth: VLCStyle.dp(56, VLCStyle.scale)
     implicitHeight: VLCStyle.dp(32, VLCStyle.scale)
+    // the names of the levels ("1:2 Half"...) were cut to the icon's width
+    popupWidth: Math.max(width, VLCStyle.dp(160, VLCStyle.scale))
     model: Player.zoom
     textRole: "display"
     currentIndex: -1

@@ -110,6 +110,13 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   encoding, Persian and Malay key names in English, a reversed Arabic help text…); the Cast list's "Show N hidden
   devices" has its plural forms. The Estonian and Swedish translations made on Weblate are in: thank you, Priit
   Jõerüüt and bittin. Everyone who reported or translated is credited in [CREDITS.md](CREDITS.md#community).
+- **Linux:** the zoom control's list showed its levels cut ("1:..."), now their names; with the System theme on a
+  desktop that tells no light or dark (no portal setting, X11 window managers) the menus and dialogs were dark over
+  a light interface, now they follow it; on X11 the shadow around the window no longer catches the clicks meant
+  for the windows below. Going from file to file no longer makes VLC's memory grow by about 90 MB a minute
+  (360 MB to 1 GB in 8 minutes): glibc kept the freed pictures of every thread; it now stays near 480 MB.
+  An AV1 file no longer makes VLC quit on Ubuntu 24.04 with a recent Intel GPU: VA-API decoding of AV1 crashed
+  inside FFmpeg 6, so dav1d decodes AV1 there.
 - **Smaller fixes:** idle HTTP stream clients time out (DLNA streams excepted), stopping a stalled network stream no
   longer hangs, the VU meter reads the whole signal, Lua scripts saved with a BOM load, a TS stream's clock no
   longer jumps when a track is removed, and more (the full list: the review report).
@@ -191,6 +198,10 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - Tool windows: `dialogs/dialogs/redesign_tools.cpp` (`MediaStatistics`, `PluginListModel`, `ExtensionInfoModel`,
   `FolderInformation`), the dialogs in `SetupDialogs.qml`; `DialogsProvider::gotoTimeDialog()`, `pluginDialog()`,
   `statisticsDialog()` and `folderInfoDialog()` open the classic windows only without the interface (skins).
+- **Linux build of the current code** (x86_64, Qt 6.8.3, Docker, `extras/juxtopposed/linux-qt68.sh`): builds with
+  no warning from the redesign's code; `linux-bundle.sh` makes a self-contained tarball (VLC, Qt 6.8.3 and the
+  libraries of Ubuntu 24.04 it needs) for test PCs, `linux-wslg.sh` runs it on the Windows desktop through WSLg.
+  Every control of the player bar (59) was put in the bar, shown and clicked during playback: no QML warning.
 - Merged VLC master up to `6836ae77ae` (2026-10-27), 110 commits ([#8](https://github.com/KuchiSofts/vlc-redesign/issues/8)):
   upstream's own fix for stopping the Windows audio output under its lock, the playlist recovery question shown
   without blocking, and the rest of upstream's work.

@@ -33,10 +33,12 @@ if !HAVE_WIN32
 vlc_SOURCES = vlc.c override.c
 vlc_LDADD += $(LIBDL)
 else
-vlc_SOURCES = winvlc.c
+vlc_SOURCES = winvlc.c winvlc_message.c winvlc_message.h
 EXTRA_vlc_DEPENDENCIES = vlc_win32_rc.$(OBJEXT)
 vlc_LDFLAGS = -mwindows -Wc,-static
 vlc_LDADD += -lole32 vlc_win32_rc.$(OBJEXT)
+# the messages before the interface (winvlc_message.c)
+vlc_LDADD += -ldwmapi -lgdi32
 libbreakpad_wrapper_la_SOURCES = breakpad.cpp
 libbreakpad_wrapper_la_LIBADD = $(BREAKPAD_LIBS)
 libbreakpad_wrapper_la_LDFLAGS = -static

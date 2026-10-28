@@ -15,15 +15,16 @@ msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
 "POT-Creation-Date: 2026-10-25 11:16+0000\n"
-"PO-Revision-Date: 2014-07-12 17:35+0000\n"
-"Last-Translator: Joel Limberg <joel@stuudium.com>\n"
-"Language-Team: Estonian (http://www.transifex.com/projects/p/vlc-trans/"
-"language/et/)\n"
+"PO-Revision-Date: 2026-10-27 05:51+0000\n"
+"Last-Translator: Priit Jõerüüt <jrthwlate@users.noreply.hosted.weblate.org>\n"
+"Language-Team: Estonian <https://hosted.weblate.org/projects/vlc-redesign/"
+"interface/et/>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2026.11.dev0\n"
 
 #: include/vlc_config_cat.h:43 src/libvlc-module.c:2181
 #: modules/gui/qt/menus/menus.cpp:907
@@ -180,17 +181,20 @@ msgstr "Meediat ei saa avada"
 
 #: src/interface/interface.c:100
 msgid "Upnp"
-msgstr ""
+msgstr "Upnp"
 
 #: src/libvlc-module.c:139
 msgid "Enable bit-exact mode (pure mode)"
-msgstr ""
+msgstr "Kasuta bititäpset režiimi (ehtsat režiimi)"
 
 #: src/libvlc-module.c:141
 msgid ""
 "This will disable all audio filters, even audio converters. This may result "
 "on audio not working if the output can't adapt to the input format."
 msgstr ""
+"See lülitab välja kõik helifiltrid, sealhulgas helikonverterid. See võib "
+"põhjustada heli mittetoimimist, kui väljund ei suuda sisendvorminguga "
+"kohaneda."
 
 #: src/libvlc-module.c:275
 msgid ""
@@ -205,12 +209,16 @@ msgid ""
 "This requests a specific pixel width for the video window. By default (-1), "
 "the width is requested according to the zoom setting."
 msgstr ""
+"See määrab videoakna konkreetse pikselilaiuse. Vaikimisi (-1) määratakse "
+"laius vastavalt suumiseadistusele."
 
 #: src/libvlc-module.c:290
 msgid ""
 "This requests a specific pixel height for the video window. By default (-1), "
 "the height is requested according to the zoom setting."
 msgstr ""
+"See määrab videoakna konkreetse pikselikõrguse. Vaikimisi (-1) määratakse "
+"kõrgus vastavalt suumiseadistusele."
 
 #: src/libvlc-module.c:340
 msgid "360 videos projection mode"
@@ -646,47 +654,47 @@ msgstr ""
 
 #: src/libvlc-module.c:1328
 msgid "Play queue bookmark 1"
-msgstr ""
+msgstr "Esitusjärjekorra 1. järjehoidja"
 
 #: src/libvlc-module.c:1329
 msgid "Play queue bookmark 2"
-msgstr ""
+msgstr "Esitusjärjekorra 2. järjehoidja"
 
 #: src/libvlc-module.c:1330
 msgid "Play queue bookmark 3"
-msgstr ""
+msgstr "Esitusjärjekorra 3. järjehoidja"
 
 #: src/libvlc-module.c:1331
 msgid "Play queue bookmark 4"
-msgstr ""
+msgstr "Esitusjärjekorra 4. järjehoidja"
 
 #: src/libvlc-module.c:1332
 msgid "Play queue bookmark 5"
-msgstr ""
+msgstr "Esitusjärjekorra 5. järjehoidja"
 
 #: src/libvlc-module.c:1333
 msgid "Play queue bookmark 6"
-msgstr ""
+msgstr "Esitusjärjekorra 6. järjehoidja"
 
 #: src/libvlc-module.c:1334
 msgid "Play queue bookmark 7"
-msgstr ""
+msgstr "Esitusjärjekorra 7. järjehoidja"
 
 #: src/libvlc-module.c:1335
 msgid "Play queue bookmark 8"
-msgstr ""
+msgstr "Esitusjärjekorra 8. järjehoidja"
 
 #: src/libvlc-module.c:1336
 msgid "Play queue bookmark 9"
-msgstr ""
+msgstr "Esitusjärjekorra 9. järjehoidja"
 
 #: src/libvlc-module.c:1337
 msgid "Play queue bookmark 10"
-msgstr ""
+msgstr "Esitusjärjekorra 10. järjehoidja"
 
 #: src/libvlc-module.c:1338
 msgid "This allows you to define play queue bookmarks."
-msgstr ""
+msgstr "Vee võimaldab sul määratleda esitusjärjekorra järjehoidjaid."
 
 #: src/libvlc-module.c:1383
 msgid "Select the hotkey to use to skip to the next item in the play queue."
@@ -847,7 +855,7 @@ msgstr "Vali kiirklahv vaatepunkti (360°) vastupäeva pööramiseks."
 
 #: src/libvlc-module.c:1868
 msgid "Multiple Subtitles"
-msgstr ""
+msgstr "Mitu subtiitrit"
 
 #: src/libvlc-module.c:2070
 msgid "Input access and codecs"
@@ -1618,7 +1626,7 @@ msgstr "Eemalda lemmikutest"
 #: modules/gui/macosx/library/video-library/VLCLibraryVideoGroupDescriptor.m:42
 #: modules/gui/macosx/library/video-library/VLCLibraryVideoDataSource.m:534
 msgid "Recents"
-msgstr ""
+msgstr "Hiljutised"
 
 #: modules/gui/macosx/library/VLCLibraryTableCellView.m:147
 #: modules/gui/macosx/library/video-library/VLCLibraryVideoGroupDescriptor.m:47
@@ -1633,12 +1641,12 @@ msgstr "Meediakogu"
 #: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:682
 #: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:899
 msgid "All genres"
-msgstr ""
+msgstr "Kõik žanrid"
 
 #: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:684
 #: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:900
 msgid "All artists"
-msgstr ""
+msgstr "Kõik esitajad"
 
 #: modules/gui/macosx/library/home-library/VLCLibraryHomeViewSectionHeaderView.m:72
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:474
@@ -1647,7 +1655,7 @@ msgstr "Kuva kõik"
 
 #: modules/gui/macosx/library/home-library/VLCLibraryHomeViewSectionHeaderView.m:122
 msgid "Open %@ in the library"
-msgstr ""
+msgstr "Ava kogust: %@"
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1604
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:126
@@ -1700,7 +1708,7 @@ msgstr "Salvesta parool"
 
 #: modules/gui/qt/dialogs/dialogs/qml/Dialogs.qml:411
 msgid "Ok"
-msgstr "OK"
+msgstr "Sobib"
 
 #: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:60
 #: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:37
@@ -5491,7 +5499,7 @@ msgstr "Loo failidega esitusloend või lisa meediat meediakogust"
 #: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:78
 #: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:264
 msgid "Url"
-msgstr "URL"
+msgstr "Võrguaadress"
 
 #: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:121
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:77
@@ -6815,7 +6823,7 @@ msgstr "Järjekord on tühi"
 
 #: modules/gui/qt/player/qml/MiniPlayerQueue.qml:104
 msgid "%1h %2m"
-msgstr "%1 h %2 min"
+msgstr "%1 t %2 min"
 
 #: modules/gui/qt/player/qml/MiniPlayerQueue.qml:106
 #, no-c-format
@@ -7583,7 +7591,7 @@ msgstr "Öö"
 
 #: modules/gui/qt/util/vlctick.cpp:88
 msgid "%1 h %2 min"
-msgstr "%1 h %2 min"
+msgstr "%1 t %2 min"
 
 #: modules/gui/qt/util/vlctick.cpp:100
 msgid "%1 min %2 s"
@@ -8032,11 +8040,11 @@ msgstr ""
 
 #: modules/text_renderer/freetype/freetype.c:91
 msgid "Cache size"
-msgstr ""
+msgstr "Puhvri suurus"
 
 #: modules/text_renderer/freetype/freetype.c:92
 msgid "Cache size in kBytes"
-msgstr ""
+msgstr "Puhvri suurus kilobaitides"
 
 #: modules/text_renderer/freetype/freetype.c:101
 msgid "Blending Mode"
@@ -8078,31 +8086,31 @@ msgstr ""
 
 #: modules/video_output/win32/direct3d11.cpp:78
 msgid "Video Processor"
-msgstr ""
+msgstr "Videoprotsessor"
 
 #: modules/video_output/win32/direct3d11.cpp:78
 msgid "Super Resolution"
-msgstr ""
+msgstr "Superresolutsioon"
 
 #: modules/video_output/win32/direct3d11.cpp:80
 msgid "HDR Output Mode"
-msgstr ""
+msgstr "HDR-i väljundrežiim"
 
 #: modules/video_output/win32/direct3d11.cpp:81
 msgid "Use HDR output even if the source is SDR."
-msgstr ""
+msgstr "Kasuta HDR-väljundit ka siis, kui sisend on SDR."
 
 #: modules/video_output/win32/direct3d11.cpp:86
 msgid "Never out HDR"
-msgstr ""
+msgstr "Ära iialgi kasuta HDR-väljundit"
 
 #: modules/video_output/win32/direct3d11.cpp:86
 msgid "Always output HDR"
-msgstr ""
+msgstr "Kasuta alati HDR-väljundit"
 
 #: modules/video_output/win32/direct3d11.cpp:86
 msgid "Generate HDR from SDR"
-msgstr ""
+msgstr "Loo SDR-ist HDR"
 
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml
 msgctxt "subtitle language"

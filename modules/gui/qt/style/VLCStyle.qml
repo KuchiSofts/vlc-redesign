@@ -63,11 +63,32 @@ QtObject {
         // show at half opacity)
         readonly property var accentChoices: ["#d37918", "#e15033", "#c49d24", "#18a235", "#18aad3", "#185dd4", "#8e41ff", "#f051b5", "#afafaf"]
         readonly property color logoColor: "#D37918"
-        property color accent: MainCtx.settingValue("redesign/accent", "#D37918")
+        // The accent chosen (redesign/accent): one of accentChoices, or
+        // "system" (the Windows accent, after the colors): the color of the
+        // system as MainCtx.systemAccent gives it, made as readable as the
+        // others (RedesignAccent) and followed while VLC runs. Settings and
+        // the onboarding set accentChoice to show a choice at once.
+        readonly property string systemAccentChoice: "system"
+        property string accentChoice: MainCtx.settingValue("redesign/accent", "#D37918")
+        readonly property bool followsSystemAccent: accentChoice === systemAccentChoice
+        readonly property color systemAccent: MainCtx.systemAccent
+        readonly property color accent: followsSystemAccent ? systemAccent : accentChoice
+        // The color a choice stands for (a swatch of the choices)
+        function accentOf(choice) {
+            return choice === systemAccentChoice ? systemAccent : choice
+        }
+        // The mark drawn on the swatch of the system accent (the Windows
+        // logo): near black on a light accent, white on a dark one, the one
+        // of more contrast (relative luminance above or below 0.19)
+        readonly property color systemAccentMark: _luminance(systemAccent) > 0.19 ? "#0e0e0e" : "#ffffff"
+        function _luminance(c) {
+            const f = v => v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4)
+            return 0.2126 * f(c.r) + 0.7152 * f(c.g) + 0.0722 * f(c.b)
+        }
         readonly property Connections profileAppearanceSync: Connections {
             target: MainCtx.controlbarProfileModel
             function onSelectedProfileChanged() {
-                vlc_style.redesign.accent = MainCtx.controlbarProfileModel.profileAccent
+                vlc_style.redesign.accentChoice = MainCtx.controlbarProfileModel.profileAccent
             }
         }
         // Accent Dim and Accent Bright of the design (#AB6314 and #371F06 for

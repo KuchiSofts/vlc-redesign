@@ -15,11 +15,16 @@ import VLC.Style
 Item {
     id: root
     property int themeIndex: 0
-    property color accent: "#d37918"
+    // the accent chosen: a color, or "system" (the Windows accent)
+    property string accentChoice: "#d37918"
+    readonly property color accent: VLCStyle.redesign.accentOf(accentChoice)
     signal themeRequested(int index)
-    signal accentRequested(color colorValue)
+    signal accentRequested(string choice)
 
-    readonly property var accentChoices: VLCStyle.redesign.accentChoices
+    // the colors, then the Windows accent
+    readonly property var accentChoices: VLCStyle.redesign.accentChoices.concat([VLCStyle.redesign.systemAccentChoice])
+    readonly property string systemAccentName: Qt.platform.os === "windows" ? qsTr("Windows accent color")
+                                                                          : qsTr("System accent color")
     readonly property bool _light: root.themeIndex === 1
 
     // Figma: the player behind the choices, scaled down: the title strip
@@ -272,13 +277,15 @@ Item {
         }
     }
 
-    // Figma 1902:4020: discs of 40 every 80 from x 53 at y 667, the chosen
-    // one in a ring of 64 (4 thick, the accent at 30 %)
+    // Figma 1902:4020: discs of 40 from x 53 at y 667, the chosen one in a
+    // ring of 64 (4 thick, the accent at 30 %). The design's 9 come every 80;
+    // with the Windows accent after them, 10 come every 71, in the same 704
+    // px (clear of Back and Finish)
     Row {
         // (right to left: 41 from the right, the colors in the mirrored order)
         x: LayoutMirroring.enabled ? parent.width - width - 41 : 41
         y: 655
-        spacing: 16
+        spacing: 7
         Repeater {
             model: root.accentChoices
             delegate: Item {
@@ -286,7 +293,9 @@ Item {
 
                 required property int index
                 required property var modelData
-                readonly property bool chosen: root.accent.toString().toLowerCase() === modelData
+                readonly property bool system: modelData === VLCStyle.redesign.systemAccentChoice
+                readonly property color colorValue: VLCStyle.redesign.accentOf(modelData)
+                readonly property bool chosen: root.accentChoice.toLowerCase() === modelData
 
                 width: 64
                 height: 64
@@ -296,15 +305,57 @@ Item {
                     radius: width / 2
                     color: "transparent"
                     border.width: choice.chosen ? 4 : 0
-                    border.color: Qt.alpha(choice.modelData, 0.3)
+                    border.color: Qt.alpha(choice.colorValue, 0.3)
                     Rectangle {
                         anchors.centerIn: parent
                         width: 40
                         height: 40
                         radius: 20
-                        color: choice.modelData
+                        color: choice.colorValue
                         // The others are dimmed
                         opacity: choice.chosen ? 1.0 : 0.5
+
+                        // The Windows accent: the color of the system with
+                        // the Windows logo on it, four panes of 6 px
+                        Grid {
+                            visible: choice.system && Qt.platform.os === "windows"
+                            anchors.centerIn: parent
+                            columns: 2
+                            spacing: 2
+                            Repeater {
+                                model: 4
+                                delegate: Rectangle {
+                                    width: 6
+                                    height: 6
+                                    color: VLCStyle.redesign.systemAccentMark
+                                }
+                            }
+                        }
+                        // elsewhere: a ring of 16, its first half filled
+                        // (the mark of "as the system")
+                        Rectangle {
+                            visible: choice.system && Qt.platform.os !== "windows"
+                            anchors.centerIn: parent
+                            width: 16
+                            height: 16
+                            radius: 8
+                            color: "transparent"
+                            border.width: 2
+                            border.color: VLCStyle.redesign.systemAccentMark
+                            Item {
+                                x: LayoutMirroring.enabled ? parent.width / 2 : 0
+                                width: parent.width / 2
+                                height: parent.height
+                                clip: true
+                                Rectangle {
+                                    x: LayoutMirroring.enabled ? -parent.width : 0
+                                    width: parent.parent.width
+                                    height: parent.height
+                                    radius: width / 2
+                                    color: VLCStyle.redesign.systemAccentMark
+                                }
+                            }
+                        }
                     }
                 }
                 Controls.Button {
@@ -318,7 +369,11 @@ Item {
                         border.color: VLCStyle.redesign.color("#eaeaea", "#2e2e2e")
                     }
                     contentItem: Item {}
-                    Accessible.name: qsTr("Accent color %1").arg(index + 1)
+                    Accessible.name: choice.system ? root.systemAccentName
+                                                   : qsTr("Accent color %1").arg(index + 1)
+                    Controls.ToolTip.visible: choice.system && hovered
+                    Controls.ToolTip.text: root.systemAccentName
+                    Controls.ToolTip.delay: 650
                     onClicked: root.accentRequested(modelData)
                 }
             }

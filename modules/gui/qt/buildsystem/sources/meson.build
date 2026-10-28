@@ -328,6 +328,8 @@ qt_plugin_sources = files(
     '../../util/redesign_icon_provider.hpp',
     '../../util/redesign_widget_theme.cpp',
     '../../util/redesign_widget_theme.hpp',
+    '../../util/redesign_accent.cpp',
+    '../../util/redesign_accent.hpp',
     '../../util/covergenerator.cpp',
     '../../util/covergenerator.hpp',
     '../../util/csdbuttonmodel.cpp',

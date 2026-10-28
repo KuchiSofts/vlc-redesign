@@ -13,8 +13,9 @@ SettingsSectionTitle {
     text: qsTr("Appearance")
     property int selectedTheme: 0
     property int initialTheme: 0
-    property color selectedAccent: VLCStyle.redesign.accent
-    property color initialAccent: VLCStyle.redesign.accent
+    // (a color, or "system": the Windows accent)
+    property string selectedAccent: VLCStyle.redesign.accentChoice
+    property string initialAccent: VLCStyle.redesign.accentChoice
     property string selectedLanguage: "auto"
     property string initialLanguage: "auto"
     property bool selectedRightToLeft: false
@@ -22,7 +23,7 @@ SettingsSectionTitle {
     readonly property var languages: themeBridge.interfaceLanguages()
     readonly property bool dark: VLCStyle.palette.isDark
     readonly property bool dirty: selectedTheme !== initialTheme
-                                  || selectedAccent.toString() !== initialAccent.toString()
+                                  || selectedAccent.toLowerCase() !== initialAccent.toLowerCase()
                                   || selectedLanguage !== initialLanguage
                                   || selectedRightToLeft !== initialRightToLeft
 
@@ -31,7 +32,10 @@ SettingsSectionTitle {
         { text: qsTr("Light"), index: 1 },
         { text: qsTr("System"), index: 0 }
     ]
-    readonly property var accentChoices: VLCStyle.redesign.accentChoices
+    // the colors, then the Windows accent (the system's, followed live)
+    readonly property var accentChoices: VLCStyle.redesign.accentChoices.concat([VLCStyle.redesign.systemAccentChoice])
+    readonly property string systemAccentName: Qt.platform.os === "windows" ? qsTr("Windows accent color")
+                                                                          : qsTr("System accent color")
 
     OnboardingController { id: themeBridge; ctx: MainCtx }
 
@@ -39,7 +43,7 @@ SettingsSectionTitle {
         themeBridge.begin()
         initialTheme = themeBridge.themeIndex
         selectedTheme = initialTheme
-        initialAccent = VLCStyle.redesign.accent
+        initialAccent = VLCStyle.redesign.accentChoice
         selectedAccent = initialAccent
         initialLanguage = themeBridge.interfaceLanguage()
         selectedLanguage = initialLanguage
@@ -67,9 +71,9 @@ SettingsSectionTitle {
         MainCtx.rightToLeft = rightToLeft
     }
 
-    function chooseAccent(color) {
-        selectedAccent = color
-        VLCStyle.redesign.accent = color
+    function chooseAccent(choice) {
+        selectedAccent = choice
+        VLCStyle.redesign.accentChoice = choice
     }
 
     function resetDefaults() {
@@ -84,7 +88,7 @@ SettingsSectionTitle {
         themeBridge.cancel()
         selectedTheme = initialTheme
         selectedAccent = initialAccent
-        VLCStyle.redesign.accent = initialAccent
+        VLCStyle.redesign.accentChoice = initialAccent
         if (selectedLanguage !== initialLanguage)
             chooseLanguage(initialLanguage)
         if (selectedRightToLeft !== initialRightToLeft)
@@ -93,7 +97,7 @@ SettingsSectionTitle {
 
     function save() {
         themeBridge.acceptTheme()
-        MainCtx.setSettingValue("redesign/accent", selectedAccent.toString())
+        MainCtx.setSettingValue("redesign/accent", selectedAccent)
         if (selectedLanguage !== initialLanguage)
             themeBridge.setInterfaceLanguage(selectedLanguage)
         initialTheme = selectedTheme
@@ -169,8 +173,11 @@ SettingsSectionTitle {
         }
     }
 
-    // Accent color: 9 cells of 31.56 x 32 (6 px padding, 4 px gap) in a
-    // 320 x 36 well; the chosen cell in Accent Bright, the others at 70 %
+    // Accent color: the 9 colors of the design and the Windows accent, 10
+    // cells of 28 x 32 (6 px padding, 4 px gap) in a 320 x 36 well; the chosen
+    // cell in Accent Bright, the others at 70 %. The Windows accent shows the
+    // color of the system with the Windows logo on it (elsewhere: a disc half
+    // filled, the mark of "as the system")
     Item {
         width: parent.width
         height: root.px(46)
@@ -201,19 +208,24 @@ SettingsSectionTitle {
                     delegate: Button {
                         id: swatch
                         required property var modelData
-                        readonly property bool chosen: root.selectedAccent.toString().toLowerCase() === modelData.toLowerCase()
+                        readonly property bool system: modelData === VLCStyle.redesign.systemAccentChoice
+                        readonly property color colorValue: VLCStyle.redesign.accentOf(modelData)
+                        readonly property bool chosen: root.selectedAccent.toLowerCase() === modelData.toLowerCase()
                         width: (parent.width - root.px(4) * (root.accentChoices.length - 1)) / root.accentChoices.length
                         height: parent.height
                         padding: root.px(6)
                         // (Basic adds 2 px each side otherwise: 16 wide, not 20)
                         horizontalPadding: root.px(6)
                         onClicked: root.chooseAccent(modelData)
-                        Accessible.name: qsTr("Accent color %1").arg(modelData)
+                        Accessible.name: system ? root.systemAccentName : qsTr("Accent color %1").arg(modelData)
+                        ToolTip.visible: system && hovered
+                        ToolTip.text: root.systemAccentName
+                        ToolTip.delay: 650
                         background: Rectangle {
                             radius: root.px(4)
-                            color: swatch.chosen ? Qt.rgba(Qt.color(swatch.modelData).r * 0.26,
-                                                           Qt.color(swatch.modelData).g * 0.26,
-                                                           Qt.color(swatch.modelData).b * 0.26, 1)
+                            color: swatch.chosen ? Qt.rgba(swatch.colorValue.r * 0.26,
+                                                           swatch.colorValue.g * 0.26,
+                                                           swatch.colorValue.b * 0.26, 1)
                                                  : "transparent"
                             border.width: swatch.visualFocus ? 1 : 0
                             border.color: VLCStyle.redesign.accent
@@ -224,8 +236,49 @@ SettingsSectionTitle {
                                 width: parent.width
                                 height: root.px(20)
                                 radius: root.px(1)
-                                color: swatch.modelData
+                                color: swatch.colorValue
                                 opacity: swatch.chosen ? 1.0 : 0.7
+
+                                // Windows: its logo, four panes of 3 px
+                                Grid {
+                                    visible: swatch.system && Qt.platform.os === "windows"
+                                    anchors.centerIn: parent
+                                    columns: 2
+                                    spacing: root.px(1)
+                                    Repeater {
+                                        model: 4
+                                        delegate: Rectangle {
+                                            width: root.px(3)
+                                            height: root.px(3)
+                                            color: VLCStyle.redesign.systemAccentMark
+                                        }
+                                    }
+                                }
+                                // elsewhere: a ring of 8 px, its first half
+                                // filled (mirrored right to left)
+                                Rectangle {
+                                    visible: swatch.system && Qt.platform.os !== "windows"
+                                    anchors.centerIn: parent
+                                    width: root.px(8)
+                                    height: width
+                                    radius: width / 2
+                                    color: "transparent"
+                                    border.width: 1
+                                    border.color: VLCStyle.redesign.systemAccentMark
+                                    Item {
+                                        x: LayoutMirroring.enabled ? parent.width / 2 : 0
+                                        width: parent.width / 2
+                                        height: parent.height
+                                        clip: true
+                                        Rectangle {
+                                            x: LayoutMirroring.enabled ? -parent.width : 0
+                                            width: parent.parent.width
+                                            height: parent.height
+                                            radius: width / 2
+                                            color: VLCStyle.redesign.systemAccentMark
+                                        }
+                                    }
+                                }
                             }
                         }
                     }

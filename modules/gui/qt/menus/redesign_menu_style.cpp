@@ -24,6 +24,7 @@
 #include "maininterface/mainctx.hpp"
 #include "util/color_scheme_model.hpp"
 #include "util/colorizedsvgicon.hpp"
+#include "util/redesign_accent.hpp"
 
 #include <QApplication>
 #include <QEvent>
@@ -159,11 +160,9 @@ QColor RedesignMenuStyle::accentColor(MainCtx *ctx)
 {
     if (!ctx)
         ctx = s_ctx;
-    QColor accent(ctx ? ctx->settingValue(QStringLiteral("redesign/accent"), QStringLiteral("#D37918")).toString()
-                      : QStringLiteral("#D37918"));
-    if (!accent.isValid())
-        accent = QColor(0xD3, 0x79, 0x18);
-    return accent;
+    // a color, or "system": the one of the system as RedesignAccent reads it
+    return RedesignAccent::resolve(ctx ? ctx->settingValue(QStringLiteral("redesign/accent"), QStringLiteral("#D37918")).toString()
+                                       : QStringLiteral("#D37918"));
 }
 
 QColor RedesignMenuStyle::accentDim(const QColor &accent)

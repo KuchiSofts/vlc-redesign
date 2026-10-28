@@ -55,6 +55,8 @@ Frameworks
 
 # Ignore build dirs
 build*/
+# the generated design files are kept (design/tools/export.py)
+!design/build/
 target*/
 contrib-*
 install-*

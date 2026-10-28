@@ -27,6 +27,22 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # design/tokens.json against the values the code uses (VLCStyle.qml, the
+  # menu and widget styles, the QML components), design/icons and fonts
+  # against the app's files, design/build against export.py
+  design-tokens:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check the design tokens
+        run: python design/tools/check_qml.py
+
   win64:
     # pinned: ubuntu-latest moves to a new release under the build
     runs-on: ubuntu-24.04

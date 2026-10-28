@@ -1,0 +1,6467 @@
+{
+  "$description": "The icon set of the VLC Redesign (design-1.0): every icon the desktop app ships, copied from modules/gui/qt/pixmaps/redesign by design/tools/sync_assets.py.",
+  "version": "design-1.0",
+  "license": "CC BY 4.0, derived from \"VLC Redesign (Community)\" by Juxtopposed",
+  "sets": {
+    "glyphs": {
+      "folder": "png",
+      "description": "The icons of the Figma \"Icon\" component set (42:356), exported as PNG, one folder per icon, one file per state. 24 x 24 unless noted; @2x files are the same state at twice the size."
+    },
+    "svg": {
+      "folder": "svg",
+      "description": "Single-colour SVG icons of the top bar, the sidebar and the player (24 x 24 unless noted)."
+    },
+    "duo": {
+      "folder": "svg/duo",
+      "description": "Two-tone menu icons. Placeholder colours (ColorizedSvgIcon): #FF00FF = outline (Dark/FG/A2 #8F8F8F, light #2E2E2E), #FF8800 = details (Accent Dim), #00FFFF = the full accent."
+    },
+    "widgets": {
+      "folder": "svg/widgets",
+      "description": "Chevrons and checks of the classic (widget) dialogs, one file per theme and state."
+    },
+    "player": {
+      "folder": "player",
+      "description": "Raster player and window-frame pieces (corners per theme)."
+    },
+    "images": {
+      "folder": "images",
+      "description": "Other raster pieces: onboarding theme previews, track icons, volume states, list/grid toggles."
+    }
+  },
+  "states": {
+    "default": "idle, #8F8F8F (Dark/FG/A2)",
+    "active": "active or hovered, #D37918 (the default accent; the app tints it with the chosen one)",
+    "selected": "selected (outline variant)",
+    "dim": "dimmed, #6B6B6B or #404040",
+    "disabled": "disabled, #343434",
+    "default-grey": "idle, grey variant",
+    "default-accent": "idle, drawn in the accent",
+    "active-grey": "active, grey variant",
+    "active-accent": "active, drawn in the accent",
+    "outline-active": "active, outline only",
+    "large": "large variant",
+    "half": "half (volume, rating)"
+  },
+  "icons": [
+    {
+      "set": "glyphs",
+      "name": "0",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/0/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/0/default.png",
+          "sha256": "724360f70d89b0618e3e28667e1981392bcc4c6777c8e91ac3f0b4d42fed81b2"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "accessibility",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/accessibility/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/accessibility/default.png",
+          "sha256": "38b4a2b5df44c7a4d854cdcdf134734e32a0f0c24b51118300e98fe1985a8819"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "add",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/add/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/add/default.png",
+          "sha256": "788b0a31e8e056d72aaf0ae470dcfa02f006338fa68d97f8a37e735b8dd174af"
+        },
+        {
+          "state": "default",
+          "scale": 2,
+          "format": "png",
+          "file": "png/add/default@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/add/default@2x.png",
+          "sha256": "c9c89f7191ad59b9f2f24c3752c6083779fa3427d4efdd5b3a6173fd26fde076"
+        },
+        {
+          "state": "half",
+          "scale": 1,
+          "format": "png",
+          "file": "png/add/half.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/add/half.png",
+          "sha256": "bb4db57278bf1b31346e94e22ce014d0a10c6a9ed294ad5342cc4f1a294046c3"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "album",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/album/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/album/default.png",
+          "sha256": "1005aeab3b81820d6d26eee2a923eccbaba3804f6f4b187c471c19ea404f9ba6"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "arrow-left",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/arrow-left/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/arrow-left/default.png",
+          "sha256": "641d0bc0946d46a4abee32c7863f71d25c9f3d22650d1165cb44a3c7fc1b8aa6"
+        },
+        {
+          "state": "default",
+          "scale": 2,
+          "format": "png",
+          "file": "png/arrow-left/default@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/arrow-left/default@2x.png",
+          "sha256": "406ca4bf4710009691a3d1e11a488d854c2af929bd09c019b60606bf2b384f98"
+        },
+        {
+          "state": "disabled",
+          "scale": 1,
+          "format": "png",
+          "file": "png/arrow-left/disabled.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/arrow-left/disabled.png",
+          "sha256": "14ef3f4a68f11b364361ba5dad160c1abe13c25b7af06f61b0e09047b5d526bd"
+        },
+        {
+          "state": "disabled",
+          "scale": 2,
+          "format": "png",
+          "file": "png/arrow-left/disabled@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/arrow-left/disabled@2x.png",
+          "sha256": "1f44fa83e94ecf1a349513e013dbf58f08df16c54d64b1d6be98ee80b02a01fe"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "arrow-right",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/arrow-right/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/arrow-right/default.png",
+          "sha256": "80642454a8901bae9c2e0ef610cb8aa7e677f429366ba4edf1de301a1061adc4"
+        },
+        {
+          "state": "default",
+          "scale": 2,
+          "format": "png",
+          "file": "png/arrow-right/default@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/arrow-right/default@2x.png",
+          "sha256": "a33a77d12ab3ec7cde6c6e9f72db1fe1878df6650074254eb4cdba00c0d249b6"
+        },
+        {
+          "state": "disabled",
+          "scale": 1,
+          "format": "png",
+          "file": "png/arrow-right/disabled.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/arrow-right/disabled.png",
+          "sha256": "c90b5329e38d23f489904d3573f30fced30675daa3c9ca7c8b3ad18143972bd5"
+        },
+        {
+          "state": "disabled",
+          "scale": 2,
+          "format": "png",
+          "file": "png/arrow-right/disabled@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/arrow-right/disabled@2x.png",
+          "sha256": "f8b8c846d6c7f009824b404919bb3e44ca1578fa9a96b2c79baaa02906b8392b"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "artist",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/artist/active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/artist/active.png",
+          "sha256": "1f2d27e96c79ec767dfc15a8ed1aee150376f85b22b95f3db5deaf73385196c2"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/artist/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/artist/default.png",
+          "sha256": "2ec0b2d37e38df7809109da791c28cd219d953a4cf9b2aa10d2a14413ec10bf2"
+        },
+        {
+          "state": "default",
+          "scale": 2,
+          "format": "png",
+          "file": "png/artist/default@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/artist/default@2x.png",
+          "sha256": "b68f861edb3f59e1c4ca00893d14dfa89b87f3e5f282b141baecd1194625a242"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "audio",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/audio/active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/audio/active.png",
+          "sha256": "d356f77c43990cf869045bb18827e213fa5b922562965502e3d4422689f7a814"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/audio/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/audio/default.png",
+          "sha256": "c66aa66eabd83ba25f91682f296d11d023f3f91448f3412cae0b5c34b0374f27"
+        },
+        {
+          "state": "default",
+          "scale": 2,
+          "format": "png",
+          "file": "png/audio/default@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/audio/default@2x.png",
+          "sha256": "2497d71f2a34fb7c3ab914824505d54e93314567969fb88de6db64e340a0641e"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "backward-10-sec",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/backward-10-sec/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/backward-10-sec/default.png",
+          "sha256": "14af400404f1c1c55ecb8d9b5ffbe01d20ff4c50983735cdd9abd385a22c2ebb"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "backward-15-sec",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/backward-15-sec/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/backward-15-sec/default.png",
+          "sha256": "614d14e566e63121bf266429f30fa37d69123d5bce0fc8646ab854d7298d114e"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "bookmark",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/bookmark/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/bookmark/default.png",
+          "sha256": "70c78ed53f0ee571e589aec7c441be7286c3e6b5105055f86bb8bf3c99b62f76"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "bookmarks",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/bookmarks/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/bookmarks/default.png",
+          "sha256": "65974fb492e5ee56cfa50067601b5400ed62a2d00e7471742b380dca5cea5f7b"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "capture-device",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/capture-device/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/capture-device/default.png",
+          "sha256": "147889b5556f75df2e192b425e5cad2a210d804d34880aea2b684c75469c788e"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "cast",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/cast/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/cast/default.png",
+          "sha256": "a92106931e6b2c4fa46825393aac03da561f29d55858ac7181dace07a975b19c"
+        },
+        {
+          "state": "large",
+          "scale": 1,
+          "format": "png",
+          "file": "png/cast/large.png",
+          "size": [
+            96,
+            96
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/cast/large.png",
+          "sha256": "e29542d169697ed2b9b6c5fb1415b68fd1bf82017d4a172ce5c45ae04f57216c"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "chapters",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/chapters/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/chapters/default.png",
+          "sha256": "45a5b9913869882bea46120db4183bfcf43e70cbcf0d2cc620bb53a9b9138a56"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "check",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/check/active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/check/active.png",
+          "sha256": "e92cfad2fd00beb57356e8b08bf06e82f96d6e57ad2069dbd5fb9f5c9670f65e"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/check/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/check/default.png",
+          "sha256": "724360f70d89b0618e3e28667e1981392bcc4c6777c8e91ac3f0b4d42fed81b2"
+        },
+        {
+          "state": "selected",
+          "scale": 1,
+          "format": "png",
+          "file": "png/check/selected.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/check/selected.png",
+          "sha256": "0e0b47a04b5d2ed98f406d023bc517e24b5ae9b6b67026ae4a4ea4d657e75533"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "chevron-down",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/chevron-down/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/chevron-down/default.png",
+          "sha256": "71431189434f51024a4bda8e1d8b6f3141242be939cc9f9205ff3b7011486b2b"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "chevron-right",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/chevron-right/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/chevron-right/default.png",
+          "sha256": "0b968411f8981139e4444dae78de2ce5d1de29caf5d40878b083d7278c3c9277"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "close",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/close/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/close/default.png",
+          "sha256": "e382450210cb831811e93fc99718c8a91add35eeaeb42049ba3a420824e82f3f"
+        },
+        {
+          "state": "default",
+          "scale": 2,
+          "format": "png",
+          "file": "png/close/default@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/close/default@2x.png",
+          "sha256": "435809cc2324d3514a6b1ddcbae1028dfc9af7909d97b736eb9c6b6518eb1b5b"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "collapse-sidebar",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/collapse-sidebar/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/collapse-sidebar/default.png",
+          "sha256": "befb4be1f92546fa0a5d4235fa7e89c1aaa4708462b1da25ad583f948f63a2d8"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "disc",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/disc/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/disc/default.png",
+          "sha256": "27ecf0742a2d5f81108644210eeaeeb5075a34733bc89e97139f9f894db22d5c"
+        },
+        {
+          "state": "default",
+          "scale": 2,
+          "format": "png",
+          "file": "png/disc/default@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/disc/default@2x.png",
+          "sha256": "676013d0b3602182be985d2e2ba6e81a17e024807e6bd954b1046497dd5d7694"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "divider",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/divider/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/divider/default.png",
+          "sha256": "3ff58a8d88b7ffae6d19774a082bba1f73f392d8e4b0f2fc6e850b8d0980b350"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "edit",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/edit/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/edit/default.png",
+          "sha256": "5c5c9075d82333e05d688340d4c8ab7c885a8ad8f18ddd5505691e7b2c750e2b"
+        },
+        {
+          "state": "dim",
+          "scale": 1,
+          "format": "png",
+          "file": "png/edit/dim.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/edit/dim.png",
+          "sha256": "f15e715efe03d8ea8224e4b38221c5b093d9c5cf86c5c8858abb1f9bf32c102f"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "EQ",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/EQ/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/EQ/default.png",
+          "sha256": "341d01210ae7a9a01e2ffa76c31b25965060bffec504bbcb99a63602a324f4de"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "eq-classical",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-classical/default-accent.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-classical/default-accent.png",
+          "sha256": "a5362fee8c694bd2a21bf3e6f32b26cab562ec61fb27f4aee4ae092a858be7d1"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-classical/default-grey.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-classical/default-grey.png",
+          "sha256": "348a965c02928db7901710f17d0fdce818855b18b1eb32897c4ce325714a826b"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-classical/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-classical/default.png",
+          "sha256": "e9ba3b791320601e15c6be791078a9ec765396234a166c78a42d5da5821e9bd9"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "eq-club",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-club/default-accent.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-club/default-accent.png",
+          "sha256": "fa7924464d920bdf3f9efabf9c73fc4b543b02dbb06dbc861b1b95e67bdfb813"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-club/default-grey.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-club/default-grey.png",
+          "sha256": "348a965c02928db7901710f17d0fdce818855b18b1eb32897c4ce325714a826b"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-club/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-club/default.png",
+          "sha256": "b4a28ee28bc859c800118cda87f1a08a4a7a39dcd61989bd22865b09ed788111"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "eq-dance",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-dance/default-accent.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-dance/default-accent.png",
+          "sha256": "611c11506bd268ac7b93820771933741314bfcbf0a98e2300cd6f700e6b3daac"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-dance/default-grey.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-dance/default-grey.png",
+          "sha256": "cbe934f7bb1f8cc4c0189c77d4dad83be449b5145178b25c7c3722c8130f691e"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-dance/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-dance/default.png",
+          "sha256": "d9a2169c7e02b94a01aab6dc95eb48c162656bb19cc30939fa749e65c32515eb"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "eq-flat",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-flat/default-accent.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-flat/default-accent.png",
+          "sha256": "73af7a37c0e1c0eb7a127ae402ea438e8e36a98b4ae5612f65400013ce836d17"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-flat/default-grey.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-flat/default-grey.png",
+          "sha256": "348a965c02928db7901710f17d0fdce818855b18b1eb32897c4ce325714a826b"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-flat/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-flat/default.png",
+          "sha256": "348a965c02928db7901710f17d0fdce818855b18b1eb32897c4ce325714a826b"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "eq-fullbass",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-fullbass/default-accent.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-fullbass/default-accent.png",
+          "sha256": "932ada4b52c4abe150c3842d8ee6b38d1359590803d0da3e6e4a45a19c8040d7"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-fullbass/default-grey.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-fullbass/default-grey.png",
+          "sha256": "2ef9ec741aed3e6d1a59dfdc457f1af05a31a4541781358919ccb1f40d99f315"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-fullbass/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-fullbass/default.png",
+          "sha256": "5349fcaa2d1cb0f2970870aca1a1421c676873d469976a40f284fe7975513957"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "eq-fullbasstreble",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-fullbasstreble/default-accent.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-fullbasstreble/default-accent.png",
+          "sha256": "1a9c0d2ab5c45db9b0b2c10a632fb73ffd94f01c931b70d651accccd96ef5cd5"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-fullbasstreble/default-grey.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-fullbasstreble/default-grey.png",
+          "sha256": "348a965c02928db7901710f17d0fdce818855b18b1eb32897c4ce325714a826b"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-fullbasstreble/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-fullbasstreble/default.png",
+          "sha256": "e581417ea4f83fe4fbf54953682f5bbc615647a39e52c51df3b45e45c5e9f45c"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "eq-fulltreble",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-fulltreble/default-accent.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-fulltreble/default-accent.png",
+          "sha256": "c4f82abbcee3aa1511da721c4e448826e1f5d947552ec8a570b304c30dbac03d"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-fulltreble/default-grey.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-fulltreble/default-grey.png",
+          "sha256": "348a965c02928db7901710f17d0fdce818855b18b1eb32897c4ce325714a826b"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-fulltreble/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-fulltreble/default.png",
+          "sha256": "e120c38df96753db4b3cdb7777e04ed3a98efe40141711ef00c42c0162cd7b36"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "eq-headphones",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-headphones/default-accent.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-headphones/default-accent.png",
+          "sha256": "00c07c5c1e61d520c2477799bedeb7846a6a6a485d5d910fbc39a5b29406c064"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-headphones/default-grey.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-headphones/default-grey.png",
+          "sha256": "ab76c9290ea70315f8aeaf57e24d4390f99abc9cb302298672cbb0d7c89f1087"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-headphones/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-headphones/default.png",
+          "sha256": "cf383e3dba92eacb85a025ab5375fd8589494271cf2063760ebbb16e442a6c1b"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "eq-largehall",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-largehall/default-accent.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-largehall/default-accent.png",
+          "sha256": "2193f4ee7fb6b97dcf2fbc6e66c483356298e99fd54e8bcfe4db742aaea67e3b"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-largehall/default-grey.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-largehall/default-grey.png",
+          "sha256": "9d04fbc4a6a8c71775c0f8a42e193724ccbe7aa3d46891a09e284338a1d585e1"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-largehall/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-largehall/default.png",
+          "sha256": "a41b2b0591cd39f63bb034d6a2cdf931dd265e5af02380123cc3486927b4b758"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "eq-live",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-live/default-accent.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-live/default-accent.png",
+          "sha256": "247da39968b95eacae4c57df61238e3b5b72067a8e9b3b5abb224619c7420530"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-live/default-grey.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-live/default-grey.png",
+          "sha256": "fa1d2f007d313da1e212e21c3e0a7257c0812814461acd3e2de21a47acfd34f2"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-live/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-live/default.png",
+          "sha256": "f5dceb61f5e52377efcd8fb842cb5af215f0642a89d0c3538906110aa80de486"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "eq-party",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-party/default-accent.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-party/default-accent.png",
+          "sha256": "ae756b59237ac4b985a3be031a9c45fa92c4598f88eefeab694c745d1bb4c7b8"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-party/default-grey.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-party/default-grey.png",
+          "sha256": "348a965c02928db7901710f17d0fdce818855b18b1eb32897c4ce325714a826b"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-party/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-party/default.png",
+          "sha256": "e052e8665bee3f64909fd715480bee97d3210dd6b11cbbc6e93028b664b26d55"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "eq-pop",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-pop/default-accent.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-pop/default-accent.png",
+          "sha256": "dca275acffc93d8adc1df8401ed1e9ff129970f3403e93ac3298dbfb9a08ec9d"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-pop/default-grey.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-pop/default-grey.png",
+          "sha256": "348a965c02928db7901710f17d0fdce818855b18b1eb32897c4ce325714a826b"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-pop/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-pop/default.png",
+          "sha256": "f97ddda876a96dcf7f2f609b9208db1e6c0adb18705d7b8ce00809ddca62a50b"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "eq-reggae",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-reggae/default-accent.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-reggae/default-accent.png",
+          "sha256": "dec5733e5b3910ece55d5614f27ccaff1ecd3f113ddbde440deafecde3fb83f0"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-reggae/default-grey.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-reggae/default-grey.png",
+          "sha256": "348a965c02928db7901710f17d0fdce818855b18b1eb32897c4ce325714a826b"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-reggae/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-reggae/default.png",
+          "sha256": "aa6ae678bbc0d95bf4f75f3a6b98e4fee0115353f98bdb990fa95f1bcfa27ad0"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "eq-rock",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-rock/default-accent.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-rock/default-accent.png",
+          "sha256": "9b07a7a6f0cd2798cd6effe9f422cc71952c777bed66e566318336f697ebb4d4"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-rock/default-grey.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-rock/default-grey.png",
+          "sha256": "78f2258f741b964de45cf8859f11121e148ec371d35c815c88a7b92b0ad4b11d"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-rock/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-rock/default.png",
+          "sha256": "26d31508203b048a40f87c5652f0b1cb3fa1603782170e5ac18f90aa43ef92f5"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "eq-ska",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-ska/default-accent.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-ska/default-accent.png",
+          "sha256": "79093e59187a74bbc70905cc4edd97805990a42eca25b3297d20f887c3a313e2"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-ska/default-grey.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-ska/default-grey.png",
+          "sha256": "4943037be952e29fd616cabfbbc839fdbcafe16f97033339ddf201d214e9ec63"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-ska/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-ska/default.png",
+          "sha256": "5407a9f3b43502f4f70fb92ade2a5cc4d2b7843407e90c4ccf1bc3efdb1fc6f2"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "eq-soft",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-soft/default-accent.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-soft/default-accent.png",
+          "sha256": "f44e5ade87ed24c5b9c0d25f3f5cf47d2fb0c785e985206eb28382cbf9711fc5"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-soft/default-grey.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-soft/default-grey.png",
+          "sha256": "348a965c02928db7901710f17d0fdce818855b18b1eb32897c4ce325714a826b"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-soft/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-soft/default.png",
+          "sha256": "6aed1ac3a7b9a8d41094a02080a6994621c733638ad21b5353c830bbe5a9a9a0"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "eq-softrock",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-softrock/default-accent.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-softrock/default-accent.png",
+          "sha256": "6d01fe4a92408c87a29a6cb2e450eb7ab585395fdcf9a2544cc1cf4715c3f3fa"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-softrock/default-grey.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-softrock/default-grey.png",
+          "sha256": "348a965c02928db7901710f17d0fdce818855b18b1eb32897c4ce325714a826b"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-softrock/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-softrock/default.png",
+          "sha256": "1272e5ff2f9d8b4d0e62606d7878e9fb7bf27c6aa5fc1f238148f1bb03e41499"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "eq-techno",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-techno/default-accent.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-techno/default-accent.png",
+          "sha256": "cc99bf3fc2f10ab06cc6392536ac3a42f05201a9e9ea2304cb6a2ebabd72571f"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-techno/default-grey.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-techno/default-grey.png",
+          "sha256": "348a965c02928db7901710f17d0fdce818855b18b1eb32897c4ce325714a826b"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/eq-techno/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-techno/default.png",
+          "sha256": "2dc5d0644e85d3be2294bad3cf07e0f4335e3188bc69efeebcaabeb008828574"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "expand-sidebar",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/expand-sidebar/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/expand-sidebar/default.png",
+          "sha256": "0caccfbde48607c5a1695f8f760f08c3727390f8745a9f0b72562d368f4872ba"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "favorite",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/favorite/active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/favorite/active.png",
+          "sha256": "15a438f39921ffdee7d3073df477b915c1317a177580da5340c169f111da6010"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/favorite/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/favorite/default.png",
+          "sha256": "1f0c4cdaf41cc3cec5b36c7d178424dd058ec6dd0db0cf8c70d7e75cb4ec1263"
+        },
+        {
+          "state": "default",
+          "scale": 2,
+          "format": "png",
+          "file": "png/favorite/default@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/favorite/default@2x.png",
+          "sha256": "1d595257d2141596e5462c9fbc190a15d70ef719b5082e55a37aab1fa6dd5dc9"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "file",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/file/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/file/default.png",
+          "sha256": "5cc73d5c660fdb04acd7b502a88507f7763dce90e3f16e8fca99e4c3488be097"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "folder",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/folder/active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/folder/active.png",
+          "sha256": "243a12dbb054e824adddafa1e2f3eff6e37533769c0d8d5bedc3ea66c94bbc85"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/folder/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/folder/default.png",
+          "sha256": "869cd2b8af2243ac849aa839b6b2052aecbe2b9dd617aa69fefe3b17244bc717"
+        },
+        {
+          "state": "large",
+          "scale": 1,
+          "format": "png",
+          "file": "png/folder/large.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/folder/large.png",
+          "sha256": "f95ca81fa8ea11c1d37a2758b728f2550dba79fbad537aba3068d76b4c7c2fe1"
+        },
+        {
+          "state": "selected",
+          "scale": 1,
+          "format": "png",
+          "file": "png/folder/selected.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/folder/selected.png",
+          "sha256": "ead3054f71f47aa9ae5cc052fa4df5e9022f513ade24d2f0860864e9700f96e2"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "forward-10-sec",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/forward-10-sec/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/forward-10-sec/default.png",
+          "sha256": "f426e5a36fe9d243a89f2c119d87066b277408833b2dfe559e616575e0d5cbb2"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "forward-15-sec",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/forward-15-sec/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/forward-15-sec/default.png",
+          "sha256": "5f7c5768435f583b61f64f0a9f82cde7c746b9b82d53e4f2798bd0a193f4dd9c"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "fullscreen",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/fullscreen/active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/fullscreen/active.png",
+          "sha256": "84e11927c9b2059fc444e4c8b138b91d7d14a2ac7c37c9cd180a650b8ed4c51b"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/fullscreen/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/fullscreen/default.png",
+          "sha256": "84f8ea588c5127a03dc713e89a6e7b8f7f6245f8656e1d4b48a3b1799ac9c709"
+        },
+        {
+          "state": "default",
+          "scale": 2,
+          "format": "png",
+          "file": "png/fullscreen/default@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/fullscreen/default@2x.png",
+          "sha256": "3f3b47a5883a34c49d97ed41aff33e8e688c494ab560511250b4f409808fd6dc"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "genre",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/genre/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/genre/default.png",
+          "sha256": "0f63cdaecc4e49cb7797e5981335d0e3fab25a5745a86c923486e151a760e52a"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "grid",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/grid/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/grid/default.png",
+          "sha256": "a7261fdd655f901763340b050fe8027a197245d4bf07d893f581e8d3e176eee9"
+        },
+        {
+          "state": "dim",
+          "scale": 1,
+          "format": "png",
+          "file": "png/grid/dim.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/grid/dim.png",
+          "sha256": "e42f3b6e3a94e96eca9dabe3a174557f2926ec61218dcd919dc723197404b589"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "HDR",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/HDR/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/HDR/default.png",
+          "sha256": "88ff9bd7ed45147f976c42dff85e0d11e383ca03ceced970f9f7a713901c2baa"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "home",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/home/active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/home/active.png",
+          "sha256": "46c84dc46d1e8fe055799a63f74ae81406906694cfe863df028135c3b4353697"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/home/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/home/default.png",
+          "sha256": "76d2d1be465ceb5e49c456a67945b034b6dc0900007b99d7e368d24e69986646"
+        },
+        {
+          "state": "default",
+          "scale": 2,
+          "format": "png",
+          "file": "png/home/default@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/home/default@2x.png",
+          "sha256": "1f262a39d948883b9603c6c7e8d321409dbb38f1c184e77910d985325ee0e82a"
+        },
+        {
+          "state": "selected",
+          "scale": 1,
+          "format": "png",
+          "file": "png/home/selected.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/home/selected.png",
+          "sha256": "9fad8c136727efa6c6797876796a9bbc76fb20c57e249324e1f9731ed9982253"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "hotkeys",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/hotkeys/active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/hotkeys/active.png",
+          "sha256": "40df2c97ba2613ef8788632042f771d74f8fff749d74d4368355af38c844f9e2"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/hotkeys/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/hotkeys/default.png",
+          "sha256": "e2d89576bb6a59ab79021d7633aa04214baf0bd8518de0525a884da8f402f56e"
+        },
+        {
+          "state": "default",
+          "scale": 2,
+          "format": "png",
+          "file": "png/hotkeys/default@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/hotkeys/default@2x.png",
+          "sha256": "4615e1b98590b9257222b156c6a35f129d84eb3f1b409272d34a7b5904742461"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "info",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/info/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/info/default.png",
+          "sha256": "1b00ca16e5165f45542b1ab8b6622a76adbd6ab86f314a978cb964a289c6275f"
+        },
+        {
+          "state": "default",
+          "scale": 2,
+          "format": "png",
+          "file": "png/info/default@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/info/default@2x.png",
+          "sha256": "ff54b56a801ea8374f85c76674f4d437071136a519f94dd84ca1071f54afcf45"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "interface",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/interface/active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/interface/active.png",
+          "sha256": "1a49e6526d54452ec60d18a92583b6f6964d0f6e95f64af9ad300b7df02e8363"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/interface/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/interface/default.png",
+          "sha256": "435a555c0e7e6191e3fc0d583eaff3af47ad6de517abeb80e38368b6215387d6"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "link",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/link/active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/link/active.png",
+          "sha256": "7741764cdaa41f5057c28763a0c8b54943e7646c278ff77fdf80fdb6479bf0d3"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/link/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/link/default.png",
+          "sha256": "760de5f878aab3370677891ee8234740232c73d023b459f388c5ee214ca36a83"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "list",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/list/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/list/default.png",
+          "sha256": "08326d6f2e131cb3b1eb10283df63ec54a8c1ef988f9a9062244fa2e5a292f44"
+        },
+        {
+          "state": "dim",
+          "scale": 1,
+          "format": "png",
+          "file": "png/list/dim.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/list/dim.png",
+          "sha256": "6415417da971dc813a2970ce83774d3e812c3a809efa6ec27b44f6bdf6ff7ab3"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "lists",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/lists/active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/lists/active.png",
+          "sha256": "694f2cd032edfc33cb793e9169481754a370d98a94f267ddb7dafc3ba0b2eb32"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/lists/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/lists/default.png",
+          "sha256": "059c64c891fd756555c638fd31d1ccf0ab86f99601bbf17d49e5c3487a35f076"
+        },
+        {
+          "state": "default",
+          "scale": 2,
+          "format": "png",
+          "file": "png/lists/default@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/lists/default@2x.png",
+          "sha256": "4c778f3e7eda6e6a5dd8c4ebf44bf88e7dac574b33bc3b32624c771736d0527a"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "maximize",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/maximize/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/maximize/default.png",
+          "sha256": "5c67d98952e15783261b61c65c1c56ffa49856d97bc1589b8a03ee6cb3245d5c"
+        },
+        {
+          "state": "default",
+          "scale": 2,
+          "format": "png",
+          "file": "png/maximize/default@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/maximize/default@2x.png",
+          "sha256": "3338ea72ea4ed22812cedac0c69bd8f6b2f694e373599680404950dbaeb79b5f"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "minimize",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/minimize/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/minimize/default.png",
+          "sha256": "d92c316e025ec8932a5872d7d5b2e894d8136ac990dfbc88fe55cb6dc04dfefb"
+        },
+        {
+          "state": "default",
+          "scale": 2,
+          "format": "png",
+          "file": "png/minimize/default@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/minimize/default@2x.png",
+          "sha256": "2e24b71bc90c73e77158225fbd12f3b7b913f17746f10d2d524ecb9357d16f4e"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "more",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/more/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/more/default.png",
+          "sha256": "4cc06a0b67c2385c92e2cef2c57b7ab07ba976755e93df8199b9feffb6521de2"
+        },
+        {
+          "state": "dim",
+          "scale": 1,
+          "format": "png",
+          "file": "png/more/dim.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/more/dim.png",
+          "sha256": "71addcfdb672f33929324b4a7e634ac1ab3acb787a62325251dd6519cd4381c6"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "move",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/move/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/move/default.png",
+          "sha256": "2b9358159946ba886797a0abe1852e4d4eed71cf8b05f0a9a317599a25300754"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "music",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/music/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/music/default.png",
+          "sha256": "533ba7028cf665d20d5ab3ef7676b6fff794cad8d2d4e61a4d8a15a0db5c3f58"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "new-folder",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/new-folder/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/new-folder/default.png",
+          "sha256": "b63f9399640f01c23d945f51bfc37ac0eca5136d2111e8b2c513f2e022e7c095"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "next",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/next/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/next/default.png",
+          "sha256": "0c5f38b51d7cc295c090fce564ac31ad909aeefd05c31f123dbf01940fa5c988"
+        },
+        {
+          "state": "default",
+          "scale": 2,
+          "format": "png",
+          "file": "png/next/default@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/next/default@2x.png",
+          "sha256": "2340ce1e85fa2466588e3845ef011785dad8ddd486567026d6566c0d4494c59d"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "open",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/open/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/open/default.png",
+          "sha256": "19d1fe2bd8e656c691a58f5fe306661615a1e959553c684e3b705ab1c7cddd01"
+        },
+        {
+          "state": "dim",
+          "scale": 1,
+          "format": "png",
+          "file": "png/open/dim.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/open/dim.png",
+          "sha256": "0cc43dcb114bfed3fd6b2e83b6f746a28e1456c9bdbfccf45dca82e1ed1109c2"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "paint",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/paint/active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/paint/active.png",
+          "sha256": "ec2e846f703763ac1bc7fc0dd0d26af9101ba774ef3a55976dba2cff9fa98171"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/paint/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/paint/default.png",
+          "sha256": "2e0b84bd33aaa3b53a9ee3fda08923a4963a63e0b1225e52e69e1446b5abc99a"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "pause",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/pause/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/pause/default.png",
+          "sha256": "199c35c44cca6ac62221bc5412487a6ca4d23bf911fe1fa9c9c2f78fabda399a"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "PiP",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/PiP/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/PiP/default.png",
+          "sha256": "79818e264c39c06633e050012187f624b0a7da220c1fcc481bf2851aea1e567b"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "play",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/play/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/play/default.png",
+          "sha256": "34b227795b5a99d60e525f4d7ac616e1bf0b47a66c5ac86aab1b7feb83950b8c"
+        },
+        {
+          "state": "default",
+          "scale": 2,
+          "format": "png",
+          "file": "png/play/default@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/play/default@2x.png",
+          "sha256": "9d81ab1b8b8b5811be800cbdd555fbad15e9a386ceee418ef378a48ffa2ca7b1"
+        },
+        {
+          "state": "outline-active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/play/outline-active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/play/outline-active.png",
+          "sha256": "6bba1d4cfb9b89898171970100f25616f8a6eb777e4cbb77f1fa9e4dbad1cc15"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "playback",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/playback/active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/playback/active.png",
+          "sha256": "bff5dea7da84e250859178a14dec88d07d441f146736e96d131f8cb187b0a04d"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/playback/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/playback/default.png",
+          "sha256": "6a2ff8465e5efdb92f2eaabb32ef107edab5123ce25110ef89363aa7f0fc34c3"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "playback-settings",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/playback-settings/active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/playback-settings/active.png",
+          "sha256": "7fd163b4b14bed9d461e848995ca7e22988b687bded37b3abee49ae8a72c7e77"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/playback-settings/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/playback-settings/default.png",
+          "sha256": "0551fef7eb0b88d3000cd631bc109bfb05a92f7f6d58558bb575e0fa3ef9099f"
+        },
+        {
+          "state": "default",
+          "scale": 2,
+          "format": "png",
+          "file": "png/playback-settings/default@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/playback-settings/default@2x.png",
+          "sha256": "df8abc35a96ccbe5d4957315efebc8ef4fee48bbb59b407084dd5560f2ed8826"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "playlist",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/playlist/active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/playlist/active.png",
+          "sha256": "04bbcf17a3c1617e9976f852fd62900b374653893f63b794a3d179bb6ea2f7b8"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/playlist/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/playlist/default.png",
+          "sha256": "949a4026239ffe2050edc75d4de6b70a2b92aa1006ffd1ff00643beb08c00551"
+        },
+        {
+          "state": "default",
+          "scale": 2,
+          "format": "png",
+          "file": "png/playlist/default@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/playlist/default@2x.png",
+          "sha256": "b8aeabb3d20ae772484cfd1a0d75538480e053816494e44fe060c5389d169eb3"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "plugins",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/plugins/active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/plugins/active.png",
+          "sha256": "9c54b182ef058684c59ebe2584cb2a0e794f4f29fec66cf179e0f52257c87538"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/plugins/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/plugins/default.png",
+          "sha256": "c346aa570ab78c8cef461ee91d41c43c83acfc5cfdd25ea9de55dfd82a32c28d"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "preferences",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/preferences/active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/preferences/active.png",
+          "sha256": "ff0a55a408e3148a16133a69718c82cd65525cc35b3547174f72c35367bb275f"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/preferences/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/preferences/default.png",
+          "sha256": "7db9c96459246d00805b7c3b11c508a835563094830576eb2f3cd812893d700e"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "previous",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/previous/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/previous/default.png",
+          "sha256": "62cce27ad6ea7c6f2159f540877c4f47ee65796de9b0f98152d37e1700018272"
+        },
+        {
+          "state": "default",
+          "scale": 2,
+          "format": "png",
+          "file": "png/previous/default@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/previous/default@2x.png",
+          "sha256": "e6a1350cb3c12913acda2d326aa8154b3bfe973a8fc9b995ca4b3c1ea4063cac"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "privacy",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/privacy/active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/privacy/active.png",
+          "sha256": "acd375f9dbc47fc8e30fdd7481c93956e6234aa408a676037c185e50cb044ddf"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/privacy/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/privacy/default.png",
+          "sha256": "30d91da63e6178a07fcd627dd76a56f2670f565f447483ae9e73d42f2f2a5dae"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "profile",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/profile/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/profile/default.png",
+          "sha256": "7cdec0a6f589a5f4d3bc1ec20cb551c9b5dab3f450f64cdb15f3fd4a4c39c441"
+        },
+        {
+          "state": "default",
+          "scale": 2,
+          "format": "png",
+          "file": "png/profile/default@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/profile/default@2x.png",
+          "sha256": "d47256b749021ad61c52384ed1db27c75f981b393aab3e96f3af1eb010f982a2"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "queue",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/queue/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/queue/default.png",
+          "sha256": "8198925f4046b5dabdb697e30fb5225de73354b539cffe9c5efe831f640b656a"
+        },
+        {
+          "state": "default",
+          "scale": 2,
+          "format": "png",
+          "file": "png/queue/default@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/queue/default@2x.png",
+          "sha256": "87402d532cd98219038af171b6eaf2810ad50804907dad23b4ca3b2a24406ff3"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "quit",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/quit/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/quit/default.png",
+          "sha256": "135d79457aaee8442e2c2f0ce81abc5dcf387a680e595681958eb3cbc8302ead"
+        },
+        {
+          "state": "default",
+          "scale": 2,
+          "format": "png",
+          "file": "png/quit/default@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/quit/default@2x.png",
+          "sha256": "185d1dc123266e59e95e447656c6e668b6af22d11eb4f1b68f76db7728a20d11"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "recent",
+      "states": [
+        {
+          "state": "active-accent",
+          "scale": 1,
+          "format": "png",
+          "file": "png/recent/active-accent.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/recent/active-accent.png",
+          "sha256": "ecb27c2876cd8630a2c17a4eaab488b4a27821ac2d35709a35583d7af9ec50a0"
+        },
+        {
+          "state": "active-accent",
+          "scale": 2,
+          "format": "png",
+          "file": "png/recent/active-accent@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/recent/active-accent@2x.png",
+          "sha256": "b8db295d363b74d33bc869032d1e50c3d3e3bbd9831c49147eb0f81ae811816a"
+        },
+        {
+          "state": "active-grey",
+          "scale": 1,
+          "format": "png",
+          "file": "png/recent/active-grey.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/recent/active-grey.png",
+          "sha256": "7cc2ff991ebe8df98e032224a66454e8c4dce92851f792288ad46a6a8b1e39bc"
+        },
+        {
+          "state": "active-grey",
+          "scale": 2,
+          "format": "png",
+          "file": "png/recent/active-grey@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/recent/active-grey@2x.png",
+          "sha256": "744992018e4222b7a3bbc39f695e1f12c93fe048358baa9053c1415ac44f696e"
+        },
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/recent/active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/recent/active.png",
+          "sha256": "6f64bb2ed21e13fd6f5515269284dc94543a9ca3c0ef26e19744d133d831d5d0"
+        },
+        {
+          "state": "active",
+          "scale": 2,
+          "format": "png",
+          "file": "png/recent/active@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/recent/active@2x.png",
+          "sha256": "c0e7d769c35846dab9c5b5d2c90d87baf63b89597f590dfdfee62fbc44cbe8c9"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/recent/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/recent/default.png",
+          "sha256": "ae90971d68d9fe11d6413909753f2bf441500078dce6351d451ce2457dbb73be"
+        },
+        {
+          "state": "default",
+          "scale": 2,
+          "format": "png",
+          "file": "png/recent/default@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/recent/default@2x.png",
+          "sha256": "d69ba3a17884f6466bc728b155fd6b16fcf333b471612b442cfa97045956ac6b"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "record",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/record/active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/record/active.png",
+          "sha256": "d610e7782f070b0875063030501b451e6bdc2402d4f0c9fcd542ca64d522472a"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/record/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/record/default.png",
+          "sha256": "15601158f42ef03ac35e86eaa7bad485e31c3703b61c8b02a6338394b8e768fc"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "refresh",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/refresh/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/refresh/default.png",
+          "sha256": "9e0d20af0e734f3582876a64e9832cf6bb5f12a3ad2dcfedd2c4be0a932f0729"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "remove",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/remove/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/remove/default.png",
+          "sha256": "75c892fb78d03a094320c0281bc4718a94e2e19f6ded9c34110a7c3b14c9b3bc"
+        },
+        {
+          "state": "default",
+          "scale": 2,
+          "format": "png",
+          "file": "png/remove/default@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/remove/default@2x.png",
+          "sha256": "f15e715666854b785e56d72f9ccbaa2971462347fd07cb620cb25b3b69d672ed"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "repeat",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/repeat/active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/repeat/active.png",
+          "sha256": "bd1cb88d5cf533ba74e548b49ed813810ca8e07ede804f95c80575fa437d3e1b"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/repeat/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/repeat/default.png",
+          "sha256": "2e996a818faa78044c21a8ef55e84692f5c947a6d8c7e478a241424fb1fdcb5d"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "replay",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/replay/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/replay/default.png",
+          "sha256": "964027a6bf77f0ccb672c7c04cbfb3044bed8b663d774c7a9221fd0201290459"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "right-sidebar",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/right-sidebar/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/right-sidebar/default.png",
+          "sha256": "a674d8cee33e95f0b8ed66cb43c801a7693402755ee68e81282db7658e8dd5c4"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "save",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/save/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/save/default.png",
+          "sha256": "4ac99152ee2648a7e0dd94921af9607ef6d81eedea891a47ba6f64d67a8d2448"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "scope",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "png",
+          "file": "png/scope/default-accent.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/scope/default-accent.png",
+          "sha256": "ae5acf87c9f04f5c0c7cc66482e1fc8e3a4ed69f7662ea09a8744d02731e459c"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "png",
+          "file": "png/scope/default-grey.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/scope/default-grey.png",
+          "sha256": "17f9e45907be381274f3d399e7831f52faa02b9873fa33feb43379a58c865b6e"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/scope/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/scope/default.png",
+          "sha256": "a52fc18bde9bf334c20977ba65b869f6756f15de974eefc0cd82482d467f61c8"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "search",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/search/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/search/default.png",
+          "sha256": "51ccc7ad9e3692ccfabcfb4ee242a93e3335af261206fcecb0a8c2072de2091f"
+        },
+        {
+          "state": "default",
+          "scale": 2,
+          "format": "png",
+          "file": "png/search/default@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/search/default@2x.png",
+          "sha256": "fe801e3f8d99618eb7bcf45812af2cc4b77074aad280d094775337bef38001a5"
+        },
+        {
+          "state": "dim",
+          "scale": 1,
+          "format": "png",
+          "file": "png/search/dim.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/search/dim.png",
+          "sha256": "1a7028500df6d28c3a13903e25b16a34272e3e94437ac55d47671b2c99eb302d"
+        },
+        {
+          "state": "dim",
+          "scale": 2,
+          "format": "png",
+          "file": "png/search/dim@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/search/dim@2x.png",
+          "sha256": "7710ee9bae2fd901defd2ad1abc5b49994f6c39966d9cbfe603610e5509aada0"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "settings",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/settings/active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/settings/active.png",
+          "sha256": "add840b7c2ffcbb4cb5b9bc146c7967a7a3c3f7ed5720457561534b1b7dab5d4"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/settings/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/settings/default.png",
+          "sha256": "43b24dc9c6892150b527ea18e0876db8f4127b724120c1a0ced7866bc7bcf95f"
+        },
+        {
+          "state": "default",
+          "scale": 2,
+          "format": "png",
+          "file": "png/settings/default@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/settings/default@2x.png",
+          "sha256": "0b68046e59b96530e52753b12e466f34569cda5032db51ff02b7e167b8b44266"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "shuffle",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/shuffle/active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/shuffle/active.png",
+          "sha256": "a6d4be402949de6c07211f476bb3df4cc582f268deda1d3b191ee9ecaa4d4bdb"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/shuffle/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/shuffle/default.png",
+          "sha256": "5314e2fc54d1bcb742e290fa442e63a2267f2c7e51334aa64c1028e195009f32"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "sidebar",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/sidebar/active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/sidebar/active.png",
+          "sha256": "d656aba7c7589afca278df17c7b14a2bc7861935b6394619fae21110b0ad8bb1"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/sidebar/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/sidebar/default.png",
+          "sha256": "735a4990edd52f5fa712633ac39ab9f1da2dea0c4485d0d26bbc538bd10ccecd"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "snapshot",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/snapshot/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/snapshot/default.png",
+          "sha256": "c97235721167c9ec2f80344abad4dc6a429ddc7191d11a7ecb13c4d51768af66"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "songs",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/songs/active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/songs/active.png",
+          "sha256": "70dbd11503970394ea4b1abd0c2c7d75f1cb56bd3bddec53cf342b8c784c3bf5"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/songs/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/songs/default.png",
+          "sha256": "b767a0faac6f12e35e5ddc22c74a7af703463f68b86ae02db4efc9775b1370b5"
+        },
+        {
+          "state": "selected",
+          "scale": 1,
+          "format": "png",
+          "file": "png/songs/selected.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/songs/selected.png",
+          "sha256": "bc79a94307d0be19568743e79c2225d929ef8ba3dfafae43ab23cc86202fadca"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "sort",
+      "states": [
+        {
+          "state": "active-accent",
+          "scale": 1,
+          "format": "png",
+          "file": "png/sort/active-accent.png",
+          "size": [
+            26,
+            25
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/sort/active-accent.png",
+          "sha256": "549594966be5cacd1a46ff114a47e516fb6ef4a2631d9f8d2244eb2c88c2c3aa"
+        },
+        {
+          "state": "active-grey",
+          "scale": 1,
+          "format": "png",
+          "file": "png/sort/active-grey.png",
+          "size": [
+            26,
+            25
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/sort/active-grey.png",
+          "sha256": "552c7e6c5c987cfc16c2de676dd24220f31a39031767f2c44ad211f8b6d31be7"
+        },
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/sort/active.png",
+          "size": [
+            26,
+            25
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/sort/active.png",
+          "sha256": "ca4f18c2022a72a663830f77ef6564d4270850a198140452667c71e12ac362df"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/sort/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/sort/default.png",
+          "sha256": "2d53f41d09294d9a9df6e8d1f88d2939b2ee84c142f1eeaa9d1ace9b57aaca6e"
+        },
+        {
+          "state": "dim",
+          "scale": 1,
+          "format": "png",
+          "file": "png/sort/dim.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/sort/dim.png",
+          "sha256": "3d0aaa353d62418e72bcf35b20d456aaec210633a3eef8893d38ca7e2f3133aa"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "spectrometer",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "png",
+          "file": "png/spectrometer/default-accent.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/spectrometer/default-accent.png",
+          "sha256": "e26364b68fb3b34f611860c0cb747aacc20bd0d51d183ba023f06edc804ff4fa"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "png",
+          "file": "png/spectrometer/default-grey.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/spectrometer/default-grey.png",
+          "sha256": "2044627e26636e65c08a35a85c4aef82971c6bb59f68fe45307a3343212e97fd"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/spectrometer/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/spectrometer/default.png",
+          "sha256": "a6cdde1e392adec1312d50dea6b9c86e272221e05eb28bb075395a817aebe8fb"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "spectrum",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "png",
+          "file": "png/spectrum/default-accent.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/spectrum/default-accent.png",
+          "sha256": "9be448286523f9abaed3f341dcd1886e2113e0e1ad7a982c9c30fec15d82d8a9"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "png",
+          "file": "png/spectrum/default-grey.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/spectrum/default-grey.png",
+          "sha256": "7a631571b9bc1afc9399c136b5204d19d38ad7ff879e5992134b93925885fe37"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/spectrum/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/spectrum/default.png",
+          "sha256": "95e281fcfbe2bd6c43754cc524695a68f23dfa80fb92a2c56fb5359ac3a19037"
+        },
+        {
+          "state": "dim",
+          "scale": 1,
+          "format": "png",
+          "file": "png/spectrum/dim.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/spectrum/dim.png",
+          "sha256": "0cf55d8db4519e35dc75df95828e210fb385a879c39ef5fbf3316d816d0099b6"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "speed",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/speed/active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/speed/active.png",
+          "sha256": "b487201c9b7606f96166de332208e9771495dd3f21f9666b2d5e2b70f516c6f8"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/speed/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/speed/default.png",
+          "sha256": "d7f1076282e2ccbbef01bf599fd9da2df4d114876fe6d48cca2eeec65d1f44fb"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "stop",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/stop/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/stop/default.png",
+          "sha256": "6d70bb12098a2021d0bca319f13f06c3ec3f67299b4d511df5ea1df6f56a6010"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "streaming",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/streaming/active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/streaming/active.png",
+          "sha256": "686f5be24d8487c77d6879254ae7b35bee0e84d65b2a858aa667f59c530ee366"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/streaming/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/streaming/default.png",
+          "sha256": "2874f2ef15f9e21da5d30d8d8e6138151a57e34eccc469beb4def9e39ade7c83"
+        },
+        {
+          "state": "selected",
+          "scale": 1,
+          "format": "png",
+          "file": "png/streaming/selected.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/streaming/selected.png",
+          "sha256": "ad3c74e19fba4f6b1d80d217d311fa0ac4bb5693c264a3334763dd1d2fc2ad00"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "subtitle",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/subtitle/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/subtitle/default.png",
+          "sha256": "3ee667bd5277854d72dfdbb28224bcf769662d40d1e75e4be1fa2224d132cd5e"
+        },
+        {
+          "state": "dim",
+          "scale": 1,
+          "format": "png",
+          "file": "png/subtitle/dim.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/subtitle/dim.png",
+          "sha256": "e26120cfc4460a05427394b353e210c13c30cc1d49a369469ebc679cb774fc86"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "subtitles",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/subtitles/active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/subtitles/active.png",
+          "sha256": "2d0125c329b5ad0d4e20946ff22222af62c7638dcb0a4b1e877a114af0ab0787"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/subtitles/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/subtitles/default.png",
+          "sha256": "4aac98845d26f4e54e961ea493a6b7263ada8f131f9164c8d439e72fefb51065"
+        },
+        {
+          "state": "default",
+          "scale": 2,
+          "format": "png",
+          "file": "png/subtitles/default@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/subtitles/default@2x.png",
+          "sha256": "9e56b02f044c8838230974055971f88e773a88b533fa066b76bed8cf6953672e"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "swap",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/swap/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/swap/default.png",
+          "sha256": "46f1c9b655f248c0da2db8d3fde61044e05c064991978cd006f6c6980671cdae"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "thumbnail",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/thumbnail/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/thumbnail/default.png",
+          "sha256": "182b8a8df961d70912899278ad3023077206a506cbfe7c196807383bce437e72"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "tv",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/tv/active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/tv/active.png",
+          "sha256": "c1df10ee1fa9908a83cbee082782954c3320e76830bb31bfb08ce408e93da2aa"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/tv/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/tv/default.png",
+          "sha256": "ad7f8ecf547f7e8b9019b9f4d4b3e8d2bc93c4a91d80d68abc325836ab1e027d"
+        },
+        {
+          "state": "selected",
+          "scale": 1,
+          "format": "png",
+          "file": "png/tv/selected.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/tv/selected.png",
+          "sha256": "afff2a9a7c8a1f42fd36c0d6cfc45102b3ad0e06985544d28854d62d3fa71993"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "ui",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "png",
+          "file": "png/ui/default-accent.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/ui/default-accent.png",
+          "sha256": "5ec2037d8f26104d736fa959a666fdd9256a425b11aec90f13b4fc9d32baf57b"
+        },
+        {
+          "state": "default-accent",
+          "scale": 2,
+          "format": "png",
+          "file": "png/ui/default-accent@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/ui/default-accent@2x.png",
+          "sha256": "e39e4370eaeae87459160b26d7cc1ae9dc5b1d70705ac379cd910dba35c573c1"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "png",
+          "file": "png/ui/default-grey.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/ui/default-grey.png",
+          "sha256": "0e7e5bac122d56e303d0ca3e6a5c68ad46197228959674f67a8c2dbac97153fc"
+        },
+        {
+          "state": "default-grey",
+          "scale": 2,
+          "format": "png",
+          "file": "png/ui/default-grey@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/ui/default-grey@2x.png",
+          "sha256": "f62704a21f0ed1308be881ee5dede1b68a00f9efd6b1d8700d482542bc80c425"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/ui/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/ui/default.png",
+          "sha256": "c4c8e0e1325b905d5586c899c4326e23e3177b2184d699aa65c09ec5dff3d729"
+        },
+        {
+          "state": "default",
+          "scale": 2,
+          "format": "png",
+          "file": "png/ui/default@2x.png",
+          "size": [
+            48,
+            48
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/ui/default@2x.png",
+          "sha256": "7ba7d220f9721b0bd0f874aad6b0962d4ce296a2a0b0929e4401c8afe88f3a8c"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "video",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/video/active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/video/active.png",
+          "sha256": "a64c8c8b5874bea9b4906b10aedfa916c415499d494f166bf92c537a72e9a072"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/video/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/video/default.png",
+          "sha256": "ec48c037247978054f6d3d0b556cd1f6727cc3dee541a3d2808b36cd5dbac3ad"
+        },
+        {
+          "state": "dim",
+          "scale": 1,
+          "format": "png",
+          "file": "png/video/dim.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/video/dim.png",
+          "sha256": "e53f80f0164fd0aa3f49206c621f139194fecdb0c74bc729f5dabda97b868022"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "videos",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/videos/active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/videos/active.png",
+          "sha256": "67b49d683712f0781db1614ec1e8a62cfa2a7c73faf9a669015b291891012d28"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/videos/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/videos/default.png",
+          "sha256": "2be2a18e26f8ab362cced35b54f39e6eb668ac3c4fb1a6d0f413e28355d1495b"
+        },
+        {
+          "state": "selected",
+          "scale": 1,
+          "format": "png",
+          "file": "png/videos/selected.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/videos/selected.png",
+          "sha256": "19f4ef97d2e20035331176bdb677faed7ac5611f303ffc3219c1a8f8ba00fed2"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "view",
+      "states": [
+        {
+          "state": "active",
+          "scale": 1,
+          "format": "png",
+          "file": "png/view/active.png",
+          "size": [
+            26,
+            25
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/view/active.png",
+          "sha256": "89a6f9325b58feb740b0f3542770deac7e28643aa87c1d69c2bf62e8a713dba4"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/view/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/view/default.png",
+          "sha256": "2bbaea5302320aa35dc397caed70529067fc3b0c857f3e041062b252e8442162"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "vumeter",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "png",
+          "file": "png/vumeter/default-accent.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/vumeter/default-accent.png",
+          "sha256": "89c8d7f2381e70e64c84479cd3be85443729ad987004ba752d0b0fe637b054b8"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "png",
+          "file": "png/vumeter/default-grey.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/vumeter/default-grey.png",
+          "sha256": "e86a6f5c23c488c49ab1b5eb928cf1d241a4b8c6da6493192efc58ec5f55354e"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/vumeter/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/vumeter/default.png",
+          "sha256": "8583ebe0b1e421908500dae9d6ca5fc0b82b4fd35a5321c9089492ac6553a793"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "waveform",
+      "states": [
+        {
+          "state": "default-accent",
+          "scale": 1,
+          "format": "png",
+          "file": "png/waveform/default-accent.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/waveform/default-accent.png",
+          "sha256": "bd6e0605b644512f11b97f9568ca00f26edff9f4fcf13595d1fca220a3e8c53b"
+        },
+        {
+          "state": "default-grey",
+          "scale": 1,
+          "format": "png",
+          "file": "png/waveform/default-grey.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/waveform/default-grey.png",
+          "sha256": "73e6aca83b9095c4343c0c70be5c64119ded488e3fb0b2a8d0744a520e5c55d7"
+        },
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/waveform/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/waveform/default.png",
+          "sha256": "13d4365f888c3b38fa9130b02901be8cb0d6895cacb3bee3b17fe06084f735d8"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "window",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/window/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/window/default.png",
+          "sha256": "cf4f3bd0a924ad49791eee0d2bf2474792a82ae0c6e3c9b65cefdb7d6a801d09"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "wrench",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/wrench/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/wrench/default.png",
+          "sha256": "6d4fd0753ab1fc4041d31c64459b2c1e3defe88280e2e909b5789b55b8c327c4"
+        }
+      ]
+    },
+    {
+      "set": "glyphs",
+      "name": "zoom",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "png/zoom/default.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/zoom/default.png",
+          "sha256": "3e7e36c8b8b5759a61037e4ec55bfd73e7e72f3e88d87e2ae2b110a832ab59fa"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "add",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/add.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/add.svg",
+          "sha256": "153af0590671ec1412b7046ae2c460836a9b8647d9db887b302b74f5fc6cb4d0"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "arrow-left",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/arrow-left.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/arrow-left.svg",
+          "sha256": "1fbc77e07ddecd03e1b6d62d75b0d48e0000dfd08c155693d4c8a064361acb54"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "arrow-right",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/arrow-right.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/arrow-right.svg",
+          "sha256": "ca0b31d936b91ceb05fad47e6edf5ce2538ca965b0d73e4f7f3a5071a7d02183"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "artist",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/artist.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/artist.svg",
+          "sha256": "c2a5dca8b580970a3d315fc075b0e2c69a588f91edab3a1eeb0cb5f7b4526168"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "close",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/close.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/close.svg",
+          "sha256": "c9b833efe92ee91a4c5b58132adebd5588649ad55bbc1fe15c37394a7b95fba7"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "equalizer",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/equalizer.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/equalizer.svg",
+          "sha256": "2529f9f3677d28344629769650c36a445b0eae6f63a1ea6f3228a291a33de297"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "folder",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/folder.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/folder.svg",
+          "sha256": "fd2eb46f1e1081b85b92db3398d24b67027ca0cf75fbfb037efac72733fd4438"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "fullscreen",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/fullscreen.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/fullscreen.svg",
+          "sha256": "89438e334ab0eea50ee88c00e0c0e911d666968cd1a205ce64c1f01d4770df32"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "grid",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/grid.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/grid.svg",
+          "sha256": "a0d0c57a689492bcd809337e03a6d771f18a1b8a1c95bb32dd2be329cc671e59"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "home",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/home.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/home.svg",
+          "sha256": "ffaafbacfe785b0c9337f52ae4aded6cbc4d4c1bdf9ad9a601847be70875394e"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "logo",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/logo.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/logo.svg",
+          "sha256": "b28cdbc9bd29fbfb9259d7c635491b5ffdefe32b8df0d4156c7b400b86a7cff5"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "maximize",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/maximize.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/maximize.svg",
+          "sha256": "7f9dcefccf1e1c57093fd31e92980aaad71dacf7486eb2509579314db6d40e14"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "menu",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/menu.svg",
+          "size": [
+            18,
+            18
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/menu.svg",
+          "sha256": "c5713ee955f5fb3a7f8980a41d6bd056158df6072c5885c94d4b2aa61d00971b"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "mini-queue",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/mini-queue.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/mini-queue.svg",
+          "sha256": "456d37af09e1d6b968e87f7e9cd53ff45bf1a8de6765e9eccfc0a7c3aee20e20"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "minimize",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/minimize.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/minimize.svg",
+          "sha256": "4a0735f6911decdbc34af47f3ddbc1faa6ccca1c33baeeacbbf7593b841f1684"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "music",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/music.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/music.svg",
+          "sha256": "dd67ca894afec852c1ba9da30c37cc7b1a6f23669e9d5ca08a74d27f334f4430"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "network",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/network.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/network.svg",
+          "sha256": "a698452dbfbdf4c977f84a2d67acacea3a16c81f0887e450331cb298bc47c764"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "next",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/next.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/next.svg",
+          "sha256": "a4c9fc6995c57b2bd58ec7742231f76cac51bc0224a0141d97b095122719789a"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "play",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/play.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/play.svg",
+          "sha256": "8dea52e8a5e430639e30580dc7c5073f9ad8c435e7dbab3f5d0129d763553d1e"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "player-settings",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/player-settings.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player-settings.svg",
+          "sha256": "247aa8b8faa8475fa70cd4be01fc5584113cb02270d0ad20472fc867cff29af8"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "playlists",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/playlists.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/playlists.svg",
+          "sha256": "486900819c6fd18670e4898215acce32e990887ecf8ddf01f192ceb0c8225c8d"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "previous",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/previous.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/previous.svg",
+          "sha256": "85c1e56019dd75147fa0eacc59671c9e1ec78f45d35cd3b406d6fa16d1d11119"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "queue",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/queue.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/queue.svg",
+          "sha256": "456d37af09e1d6b968e87f7e9cd53ff45bf1a8de6765e9eccfc0a7c3aee20e20"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "recent",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/recent.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/recent.svg",
+          "sha256": "e2d44d2f0fe7dad2a23cb0226ac748c20d6dc8e82ed835051a3e1f26f8e363fc"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "search",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/search.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/search.svg",
+          "sha256": "0bb8c4d213d9a873b932594fbe0dfe63b0103fa0ec15463496156deab8266e15"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "settings",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/settings.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/settings.svg",
+          "sha256": "bcf3dfcc00e219e04441b10a858de5543ac36b2aad3630f14d2f2a00a5c6c0c3"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "sidebar",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/sidebar.svg",
+          "size": [
+            18,
+            18
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/sidebar.svg",
+          "sha256": "f31551ed015cc8be030d9eaeddfc9854407e025ffd3d1bf473b8c8e2abe2f82e"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "sort",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/sort.svg",
+          "size": [
+            26,
+            25
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/sort.svg",
+          "sha256": "39ed7e664c24d3a33441500575b1b2a1056daeb1acc5110c812fdc41e59268c8"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "subtitles",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/subtitles.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/subtitles.svg",
+          "sha256": "7848b8707c85be33afdd8a9eb4ca40bf734b4a145fd9c7488e2639a545870f7f"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "video",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/video.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/video.svg",
+          "sha256": "b92c9ac905d80a2b36076c39d70993287fbb0566c2452cc030c2aa0e47049133"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "volume",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/volume.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/volume.svg",
+          "sha256": "372ae6acc727cc5a75c8d7705f604afe3fce45a2359051181003dcbd603433b8"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "volume-background",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/volume-background.svg",
+          "size": [
+            89,
+            27.3633
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/volume-background.svg",
+          "sha256": "66ddd1f28b5719d24eb727be8e4374bd4df01bc55c5147b4418d50c2a7555cf8"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "volume-fill",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/volume-fill.svg",
+          "size": [
+            86,
+            24.56
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/volume-fill.svg",
+          "sha256": "c10db43b935701e6b37762a4af99367703e137cb5e92d90b9301298f4b8c756e"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "volume-mask",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/volume-mask.svg",
+          "size": [
+            33,
+            30
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/volume-mask.svg",
+          "sha256": "fd5d59a978656dbe48261e830eff0a33d32d87306174d70414fb9ab300300eaa"
+        }
+      ]
+    },
+    {
+      "set": "svg",
+      "name": "welcome",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/welcome.svg",
+          "size": [
+            141,
+            141
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/welcome.svg",
+          "sha256": "52ec7e7b36ddb69a3962faa08437f54df9018381e8f5b3b11eb2637cbc592317"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "add",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/add.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/add.svg",
+          "sha256": "7b541c4a3b33a535c54510454294999fdcf70eb3c92269367d9efd0752dd7364"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "album",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/album.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/album.svg",
+          "sha256": "1f164ea2db99d8baf9275d1162a5fff45b38b772795d3b4811ec082709584e57"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "audio",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/audio.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/audio.svg",
+          "sha256": "96160df2329acf7a2e8b2e6efce699b54ddbb6793fe6ae8bf8471ee45f567b53"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "backward-10",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/backward-10.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/backward-10.svg",
+          "sha256": "aceface29859b11ef910465e903499ce76ae2c1fa3b5fabc0550bc57cf9306e7"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "capture-device",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/capture-device.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/capture-device.svg",
+          "sha256": "d0e5af20667675a02036e100f205d22cebc9094b0a91da48264cc6baea199036"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "close",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/close.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/close.svg",
+          "sha256": "d395206fd381a7685315e6cd69602c8a5b79546fbf03ca803cb0f9cd7d570cb1"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "disc",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/disc.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/disc.svg",
+          "sha256": "0dde3c8de048b80ffb8338345109724106daffa866b1355dd60761fccb28bfe7"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "edit",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/edit.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/edit.svg",
+          "sha256": "fa75440d95b211cdc461888ea3bb2c6bece2b1b6232931c8771dd567429c4e94"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "export",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/export.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/export.svg",
+          "sha256": "9c25da57b7b6c4e00648693c2fbea40c26a59f4c61a2448f5134f90f1d313441"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "faster",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/faster.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/faster.svg",
+          "sha256": "8af44a444e2c2dbb4d5b755c87d84ebc62f586dbde1efab6efcf5df823db63b1"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "favorite",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/favorite.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/favorite.svg",
+          "sha256": "eff4b355009c899d25c8f02c41e5c2632a9d4e673182ed027cd701858ff08ce8"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "file",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/file.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/file.svg",
+          "sha256": "4dcbd598989a12187ee34a5325c84ff575e7b1435cb22c7cf64d739d9b0c01e2"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "folder",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/folder.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/folder.svg",
+          "sha256": "4318b56744632a05554b28a88cdb25374a7db58e5afcc20336d17641e646d706"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "folder-add",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/folder-add.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/folder-add.svg",
+          "sha256": "d1aae0b6f712be3cee66734975959f565a6fb2fe6081cb8dfa5494c9b096be21"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "folder-open",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/folder-open.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/folder-open.svg",
+          "sha256": "e858e45ad52b994a15647db8afc76259a74020819c364586140808abaaa43e83"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "forward-10",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/forward-10.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/forward-10.svg",
+          "sha256": "9ca8d397b0994152e4648089eaa4cb2d2476614baa9bb82dd167ba8920c105a8"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "go-to",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/go-to.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/go-to.svg",
+          "sha256": "11a12ed826cb55f77e7e394e360bc31443688c62cc082535110247a9d48b0c4c"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "help",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/help.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/help.svg",
+          "sha256": "fb0e7142480c8c855c22ccc36c9b556de56595a7e9a1031f088e79f8c781db9c"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "hotkeys",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/hotkeys.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/hotkeys.svg",
+          "sha256": "f61bf49ba1c8e26c5162814150898759a8ffc4088ee9915513d78cb302084a2a"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "info",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/info.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/info.svg",
+          "sha256": "c2f23d7028ee8cde64cba16e9e0d02d8d338e74c854b8d5f8468106d27b0edb8"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "info-small",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/info-small.svg",
+          "size": [
+            18,
+            18
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/info-small.svg",
+          "sha256": "361b8e712196f120cae0ffe3ba4c39fc52cdba28115c2baed0fe1ccceb6f9f4c"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "lists",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/lists.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/lists.svg",
+          "sha256": "c154e4d3fe5215ceb594f2e9456e9fed9f733c3ea4b9225ba5aa8fc3f532b892"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "mark-watched",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/mark-watched.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/mark-watched.svg",
+          "sha256": "75948a731625c64f64ba3cb20a0ff589c140f8424df1f5418d1bd9f0bd4e7ce2"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "next",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/next.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/next.svg",
+          "sha256": "210c0adf40b906e2e806f1f784d2a4694bfdebe3d38816cc334f268605905892"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "open",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/open.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/open.svg",
+          "sha256": "edf879fb59f516a2c8aa48dca35b10e4219a88ca9685bca5eb3efc82a59d132e"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "paint",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/paint.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/paint.svg",
+          "sha256": "2c972769c5504d3d80fa63c7359c5c9a33ae9849e48dbe216c3e233c9f6f8dcb"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "pause",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/pause.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/pause.svg",
+          "sha256": "5d49c045cb7e2f7dec98f8b77e2035d8b8f8328db85c779dc4f1be03b709a779"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "play",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/play.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/play.svg",
+          "sha256": "c6bcd07dcc5e195d70b1a7cb937a0207bad8c656515a07d77908b1619c8a3a23"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "playback",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/playback.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/playback.svg",
+          "sha256": "86d8a24e8a6ac297d41fd9cfc025657f16b361f3ac1fee340a0ba265abdb65be"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "playback-settings",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/playback-settings.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/playback-settings.svg",
+          "sha256": "85c1b617cd54604ce3a5dd3c35d60a8dce621c80f92ca5215f39231365557555"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "playlist",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/playlist.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/playlist.svg",
+          "sha256": "22293ac9168323190e8b5a809a1ff05ea4d864c95c2ea4470d78c9a130bdfec8"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "plugins",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/plugins.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/plugins.svg",
+          "sha256": "1fbd77fffdb653e59221bd4854cdfa62684c9b452b34eec1cbdb85dc949cc434"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "previous",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/previous.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/previous.svg",
+          "sha256": "6d8a0cafd12c99a41f689817968c87536d6c257feb652dbaf082f9ad674df4b0"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "profile",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/profile.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/profile.svg",
+          "sha256": "2c73dd12ca15a9b0811e0bfe0f2af727b08bbed970be3603a115262f258f597b"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "queue",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/queue.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/queue.svg",
+          "sha256": "9f2402703cb4aa0c7a60fd78ec5d175bffe41687a3cf50b2ed688e08267756b6"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "quit",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/quit.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/quit.svg",
+          "sha256": "9f94f2fc862ac9a479d9d7ef9e93bdfae7cc3f7043c7fdac3377f4e73bb80706"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "recent",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/recent.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/recent.svg",
+          "sha256": "32de4459648439762636efb1686ae7231546b881ce8d4403634810deee4fb22d"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "record",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/record.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/record.svg",
+          "sha256": "7bd1477e3aeb02f4db94c76b317685696486a13f94e69360afa0b473adea9fd1"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "remove",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/remove.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/remove.svg",
+          "sha256": "7674ef4429b8e2123652cbb162f4b1b42e0c73bc8c3b9eddf1ff1257f6977693"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "settings",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/settings.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/settings.svg",
+          "sha256": "5fe8513cc425b6fd1c77a6067c4e8bc999e869d15f0996db38dca0d7df3a413e"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "shuffle",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/shuffle.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/shuffle.svg",
+          "sha256": "164d4653d34e81858474f60e9ce4a7446eefe9987718efd3271de74d76c19f22"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "slower",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/slower.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/slower.svg",
+          "sha256": "d84a80d974a04af44aad4632f476c1b945799da4dc77713b4d123632ecd99e89"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "spectrum",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/spectrum.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/spectrum.svg",
+          "sha256": "3dd8419505f41e20b83094785ab03c41dfabea4f12d773dbb0431696dc372e71"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "stop",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/stop.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/stop.svg",
+          "sha256": "9035bffb4367491565347c9024d66546fd41aa749be601ea8919e87b7b010edc"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "streaming",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/streaming.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/streaming.svg",
+          "sha256": "7df4f327625747bc419b9530ddc0492a36160efd0dd1d1ebcfe379014b7b7e93"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "subtitle",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/subtitle.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/subtitle.svg",
+          "sha256": "600317dc41bbbecf6067dc259ce41158fb80af247a85a979f21ad6710c135c15"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "subtitles",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/subtitles.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/subtitles.svg",
+          "sha256": "600317dc41bbbecf6067dc259ce41158fb80af247a85a979f21ad6710c135c15"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "swap",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/swap.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/swap.svg",
+          "sha256": "b5612b8ee95ee98e6f62a515652c403e17ce863376ed95371237cf506c386aed"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "sync",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/sync.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/sync.svg",
+          "sha256": "7dd2ea38b158a1dbe24d5c57db8cdf07105897564ec74c66084d0296ddc0283f"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "tv",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/tv.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/tv.svg",
+          "sha256": "23d4852f96b7b0e98133d7cd7c994206c1bd3c798a178f6c9269bbd34ac17bc4"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "ui",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/ui.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/ui.svg",
+          "sha256": "d57e6533b3c0f49b0ce226be8a7d6a7d1169c9218ff0084c20069f35c5aaa079"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "video",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/video.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/video.svg",
+          "sha256": "fe2db1765bcb3a62f9c263a2370a152278545faafe52936763f3b144a68e6a4c"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "view",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/view.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/view.svg",
+          "sha256": "c3b866f14cc99188b84bdf9367458f8d4651fe082afb46b9d3b1d191fa378f00"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "volume-high",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/volume-high.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/volume-high.svg",
+          "sha256": "ad07fa867c79b84bcd5400740df508853e681f7fc3da532b8004f512e508f4ac"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "volume-low",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/volume-low.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/volume-low.svg",
+          "sha256": "e4b464e1bef3d07c9f525c05f483df0cb875505b099829d42e420552362051d9"
+        }
+      ]
+    },
+    {
+      "set": "duo",
+      "name": "volume-muted",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/volume-muted.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/volume-muted.svg",
+          "sha256": "f2b164be9689fd598ba334a4501afa82436bdcd3d1931bc432fab060a8e1291b"
+        }
+      ]
+    },
+    {
+      "set": "widgets",
+      "name": "check",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/widgets/check.svg",
+          "size": [
+            16,
+            16
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/widgets/check.svg",
+          "sha256": "1416b7cd81311a755b100c97dc58da673ed9cac79757ec57f6e60508d65792a7"
+        }
+      ]
+    },
+    {
+      "set": "widgets",
+      "name": "chevron-down-dark",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/widgets/chevron-down-dark.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/widgets/chevron-down-dark.svg",
+          "sha256": "19e3a1476eb188ed5b58d52a86ff0c26060cc18bb788058cdf671b629115e4c3"
+        }
+      ]
+    },
+    {
+      "set": "widgets",
+      "name": "chevron-down-disabled-dark",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/widgets/chevron-down-disabled-dark.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/widgets/chevron-down-disabled-dark.svg",
+          "sha256": "dcd79bdc88ffa909e0aa2c97bfbe2308ccca46a5200d67ee8bde1de92cfb303c"
+        }
+      ]
+    },
+    {
+      "set": "widgets",
+      "name": "chevron-down-disabled-light",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/widgets/chevron-down-disabled-light.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/widgets/chevron-down-disabled-light.svg",
+          "sha256": "6f079ca82210fc1b7f00a69d2f7aa5e943cb1a0e6246c7a98c72c0957efcfa00"
+        }
+      ]
+    },
+    {
+      "set": "widgets",
+      "name": "chevron-down-light",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/widgets/chevron-down-light.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/widgets/chevron-down-light.svg",
+          "sha256": "d070173e61c8763f990c43037f14f429bcdb2eb4dfdda335aaa6b0ccf06f32f1"
+        }
+      ]
+    },
+    {
+      "set": "widgets",
+      "name": "chevron-right-dark",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/widgets/chevron-right-dark.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/widgets/chevron-right-dark.svg",
+          "sha256": "e671c24fd15dd7d4f983be9c6a7137bb70169d514d907cfb25ff5c38d1e48f56"
+        }
+      ]
+    },
+    {
+      "set": "widgets",
+      "name": "chevron-right-light",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/widgets/chevron-right-light.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/widgets/chevron-right-light.svg",
+          "sha256": "518ae93b9ee2f30468ba8b9c374e448e13a79efcd7db1849fbc2ac963c0e6fcf"
+        }
+      ]
+    },
+    {
+      "set": "widgets",
+      "name": "chevron-up-dark",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/widgets/chevron-up-dark.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/widgets/chevron-up-dark.svg",
+          "sha256": "a7e09d7342d2cd4e1aa5eadadf08ca7e479679edb85727dba3b33f880fac4309"
+        }
+      ]
+    },
+    {
+      "set": "widgets",
+      "name": "chevron-up-disabled-dark",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/widgets/chevron-up-disabled-dark.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/widgets/chevron-up-disabled-dark.svg",
+          "sha256": "dfef47b7ff5c3844752dd4ba772266ebfaa59fd19a4cd7a4cf9f17f433271460"
+        }
+      ]
+    },
+    {
+      "set": "widgets",
+      "name": "chevron-up-disabled-light",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/widgets/chevron-up-disabled-light.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/widgets/chevron-up-disabled-light.svg",
+          "sha256": "b23bcec35132d31d4046a1591a0af01b071a59fd38f677a69d3388fb9178bc37"
+        }
+      ]
+    },
+    {
+      "set": "widgets",
+      "name": "chevron-up-light",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/widgets/chevron-up-light.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/widgets/chevron-up-light.svg",
+          "sha256": "09fe1e0daa7a1c878f23b2240e0721db11f35d4a89c8aef08d37d600fe8a62e1"
+        }
+      ]
+    },
+    {
+      "set": "player",
+      "name": "close",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "player/close.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/close.png",
+          "sha256": "e382450210cb831811e93fc99718c8a91add35eeaeb42049ba3a420824e82f3f"
+        }
+      ]
+    },
+    {
+      "set": "player",
+      "name": "corner-bl-dark",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "player/corner-bl-dark.png",
+          "size": [
+            9,
+            9
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/corner-bl-dark.png",
+          "sha256": "abc388c3f0917fde4ddf8cedf8c48e220244943f48c96637486fd9b57f3e72e0"
+        }
+      ]
+    },
+    {
+      "set": "player",
+      "name": "corner-bl-light",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "player/corner-bl-light.png",
+          "size": [
+            9,
+            9
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/corner-bl-light.png",
+          "sha256": "7f91901850503bd1870459a4bd406c848c9f684ebbd008de87d4b08a7d386745"
+        }
+      ]
+    },
+    {
+      "set": "player",
+      "name": "corner-br-dark",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "player/corner-br-dark.png",
+          "size": [
+            9,
+            9
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/corner-br-dark.png",
+          "sha256": "0417c4651ca8c1683b4ecc1901ea1609d07589270810b5c460f43724d168725a"
+        }
+      ]
+    },
+    {
+      "set": "player",
+      "name": "corner-br-light",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "player/corner-br-light.png",
+          "size": [
+            9,
+            9
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/corner-br-light.png",
+          "sha256": "83180448bc23a601c189c9f41991202b125212cf1a4d87b84580b04c0cac903b"
+        }
+      ]
+    },
+    {
+      "set": "player",
+      "name": "corner-tl-dark",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "player/corner-tl-dark.png",
+          "size": [
+            9,
+            9
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/corner-tl-dark.png",
+          "sha256": "5fd24adf7e8ac6a708975ab4bdda668b43b65358b98b9003f0c0576f7f52c14b"
+        }
+      ]
+    },
+    {
+      "set": "player",
+      "name": "corner-tl-light",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "player/corner-tl-light.png",
+          "size": [
+            9,
+            9
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/corner-tl-light.png",
+          "sha256": "3fdb8fc4735d6bb86bf50bf8d7d6cd16915ca06812506c024d179e0779ecc531"
+        }
+      ]
+    },
+    {
+      "set": "player",
+      "name": "corner-tr-dark",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "player/corner-tr-dark.png",
+          "size": [
+            9,
+            9
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/corner-tr-dark.png",
+          "sha256": "8b38b5006291145d54f1723b9b0dc05de25f4e40e1696279a1f36b905a0ae836"
+        }
+      ]
+    },
+    {
+      "set": "player",
+      "name": "corner-tr-light",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "player/corner-tr-light.png",
+          "size": [
+            9,
+            9
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/corner-tr-light.png",
+          "sha256": "26a5a9524531d35d538ef53b114c04262ca37bc94ce59c4b1e3439ea2b9472e5"
+        }
+      ]
+    },
+    {
+      "set": "player",
+      "name": "equalizer",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "player/equalizer.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/equalizer.png",
+          "sha256": "15d5a7b7e8ea9190061ef78c659261cc95af02211cc0706b8873b0d98a469911"
+        }
+      ]
+    },
+    {
+      "set": "player",
+      "name": "fullscreen",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "player/fullscreen.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/fullscreen.png",
+          "sha256": "84f8ea588c5127a03dc713e89a6e7b8f7f6245f8656e1d4b48a3b1799ac9c709"
+        }
+      ]
+    },
+    {
+      "set": "player",
+      "name": "library-add",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "player/library-add.png",
+          "size": [
+            32,
+            32
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/library-add.png",
+          "sha256": "a8068221a5591596d1d7d1264aa7e8e46bd50a5111a69825dce723c966685978"
+        }
+      ]
+    },
+    {
+      "set": "player",
+      "name": "library-playlist",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "player/library-playlist.png",
+          "size": [
+            32,
+            32
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/library-playlist.png",
+          "sha256": "0b3729b7502837a22002915946734d41e4f6ce3f2aa75fabf4ba52aadadf9b9f"
+        }
+      ]
+    },
+    {
+      "set": "player",
+      "name": "maximize",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "player/maximize.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/maximize.png",
+          "sha256": "5c67d98952e15783261b61c65c1c56ffa49856d97bc1589b8a03ee6cb3245d5c"
+        }
+      ]
+    },
+    {
+      "set": "player",
+      "name": "minimize",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "player/minimize.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/minimize.png",
+          "sha256": "e24f88ddf46c8635a8902d31e9d3243b08afa767d2cc3ddebeaa63eabc8bfac5"
+        }
+      ]
+    },
+    {
+      "set": "player",
+      "name": "next",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "player/next.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/next.png",
+          "sha256": "0c5f38b51d7cc295c090fce564ac31ad909aeefd05c31f123dbf01940fa5c988"
+        }
+      ]
+    },
+    {
+      "set": "player",
+      "name": "pause",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "player/pause.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/pause.png",
+          "sha256": "a143779b163901333f3ed45941fac882a3aa75f208abb74b49c8ddc6b8230b54"
+        }
+      ]
+    },
+    {
+      "set": "player",
+      "name": "previous",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "player/previous.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/previous.png",
+          "sha256": "62cce27ad6ea7c6f2159f540877c4f47ee65796de9b0f98152d37e1700018272"
+        }
+      ]
+    },
+    {
+      "set": "player",
+      "name": "queue",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "player/queue.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/queue.png",
+          "sha256": "c8f214605d0c81049931a8a56047a59cf6ed32670783bd5d8a9008e521abc910"
+        }
+      ]
+    },
+    {
+      "set": "player",
+      "name": "settings",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "player/settings.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/settings.png",
+          "sha256": "0551fef7eb0b88d3000cd631bc109bfb05a92f7f6d58558bb575e0fa3ef9099f"
+        }
+      ]
+    },
+    {
+      "set": "player",
+      "name": "subtitles",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "player/subtitles.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/player/subtitles.png",
+          "sha256": "90806ae3e029a5638398f15785ae0821c391f3ffaca070eded31acc41c75572d"
+        }
+      ]
+    },
+    {
+      "set": "images",
+      "name": "grid",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "images/grid.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/grid.png",
+          "sha256": "0c69bf5fc0777fea79ed7be3851a16200569cd4546fb6a002043e21ca6d5513d"
+        }
+      ]
+    },
+    {
+      "set": "images",
+      "name": "list",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "images/list.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/list.png",
+          "sha256": "d471e6be22dc7106e028ef5b010e69419af0d2a36afba76aa31727a51c8ae6c0"
+        }
+      ]
+    },
+    {
+      "set": "images",
+      "name": "subtitle-file",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "images/subtitle-file.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/subtitle-file.png",
+          "sha256": "e385a0fd0d75c3ec2ecbb602e93ac9ce68bf095b68e2c1d1c10d1c3cd5741363"
+        }
+      ]
+    },
+    {
+      "set": "images",
+      "name": "theme-bar-knob",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "images/theme-bar-knob.png",
+          "size": [
+            12,
+            20
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/theme-bar-knob.png",
+          "sha256": "de9d0a92813d4675fbd486e5645a61ba78be9050cb0b920da5f0ffb8e74e5f63"
+        }
+      ]
+    },
+    {
+      "set": "images",
+      "name": "theme-bar-mask",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "images/theme-bar-mask.png",
+          "size": [
+            1056,
+            30
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/theme-bar-mask.png",
+          "sha256": "19fba2dbce9c5185840717a0bfa1fcb69cc3d84c021c5c5b5b9143e7a0334bc8"
+        }
+      ]
+    },
+    {
+      "set": "images",
+      "name": "theme-bar-pill",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "images/theme-bar-pill.png",
+          "size": [
+            40,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/theme-bar-pill.png",
+          "sha256": "f54170933e261d607875f432cea4615b7eb27267d097b7800fcdc53beba900f5"
+        }
+      ]
+    },
+    {
+      "set": "images",
+      "name": "theme-bar-play",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "images/theme-bar-play.png",
+          "size": [
+            14,
+            14
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/theme-bar-play.png",
+          "sha256": "d15de4b7cc2f424e52277b78b18631e0ec429b3b1dce981afee14787419be5cc"
+        }
+      ]
+    },
+    {
+      "set": "images",
+      "name": "theme-strip-buttons",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "images/theme-strip-buttons.png",
+          "size": [
+            1056,
+            22
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/theme-strip-buttons.png",
+          "sha256": "013003c62793658e08def02cd7be8943c74dba7000f2b35ede15c7c7f00ead57"
+        }
+      ]
+    },
+    {
+      "set": "images",
+      "name": "theme-strip-cone",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "images/theme-strip-cone.png",
+          "size": [
+            1056,
+            22
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/theme-strip-cone.png",
+          "sha256": "8e4dfcbf6edce0b244bbdb94bbcb9839b1d380117648d6be662c199cb6e43ce3"
+        }
+      ]
+    },
+    {
+      "set": "images",
+      "name": "theme-system",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "images/theme-system.png",
+          "size": [
+            100,
+            100
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/theme-system.png",
+          "sha256": "d34c66b5d733e4fc040480a386ec99796f90c08b3d01ddd0b1550586ccd7ed61"
+        }
+      ]
+    },
+    {
+      "set": "images",
+      "name": "track-audio",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "images/track-audio.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/track-audio.png",
+          "sha256": "c66aa66eabd83ba25f91682f296d11d023f3f91448f3412cae0b5c34b0374f27"
+        }
+      ]
+    },
+    {
+      "set": "images",
+      "name": "track-audio-active",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "images/track-audio-active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/track-audio-active.png",
+          "sha256": "a223d91624850c6eef5f5d3b21d2aaccf4a1750129840271ef1ef4441c7e8c85"
+        }
+      ]
+    },
+    {
+      "set": "images",
+      "name": "track-check-active",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "images/track-check-active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/track-check-active.png",
+          "sha256": "0b6884570a132b52d447fc5a0292bc5010680e4e5dbed66002c3cdef97669461"
+        }
+      ]
+    },
+    {
+      "set": "images",
+      "name": "track-subtitles",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "images/track-subtitles.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/track-subtitles.png",
+          "sha256": "4aac98845d26f4e54e961ea493a6b7263ada8f131f9164c8d439e72fefb51065"
+        }
+      ]
+    },
+    {
+      "set": "images",
+      "name": "track-subtitles-active",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "images/track-subtitles-active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/track-subtitles-active.png",
+          "sha256": "bb060988b17d63b89a5f9009da51502f893798cfc925cafada58dc31baabb9f4"
+        }
+      ]
+    },
+    {
+      "set": "images",
+      "name": "track-video",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "images/track-video.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/track-video.png",
+          "sha256": "ec48c037247978054f6d3d0b556cd1f6727cc3dee541a3d2808b36cd5dbac3ad"
+        }
+      ]
+    },
+    {
+      "set": "images",
+      "name": "track-video-active",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "images/track-video-active.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/track-video-active.png",
+          "sha256": "ca466e9e995e66bcb088d98fa30ba20fd068a0017a68c7c5b4f359d4f63aa0ea"
+        }
+      ]
+    },
+    {
+      "set": "images",
+      "name": "volume-high",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "images/volume-high.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/volume-high.png",
+          "sha256": "3bc325717765a78887d991d40236c33d8e3e909d43e1bee5292e778d40450556"
+        }
+      ]
+    },
+    {
+      "set": "images",
+      "name": "volume-low",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "images/volume-low.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/volume-low.png",
+          "sha256": "7669baa4e667040605488b9a9905c43acf3adfdec1af1c518a3a7cb728266e41"
+        }
+      ]
+    },
+    {
+      "set": "images",
+      "name": "volume-medium",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "images/volume-medium.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/volume-medium.png",
+          "sha256": "54b79ae2aae2da01b796e0a1a1157338b357cdbda175628c6966c20e04353868"
+        }
+      ]
+    },
+    {
+      "set": "images",
+      "name": "volume-muted",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "png",
+          "file": "images/volume-muted.png",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/volume-muted.png",
+          "sha256": "8052aa0b71fd461c28eeae7de93c64b32cc621bc2a88e19e63bbc0705e09405b"
+        }
+      ]
+    }
+  ]
+}

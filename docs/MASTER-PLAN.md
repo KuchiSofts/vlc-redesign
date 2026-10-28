@@ -17,6 +17,9 @@ What is being worked on, updated as it changes (2026-10-28):
   into the README's platform bar and table, `site/` (the website: OS detection, every platform, screenshots, the
   design credit), the *Also on* line of the release notes and of About; the Platforms workflow deploys the site.
   Left: merge, enable GitHub Pages (Source: GitHub Actions), check About in a build.
+- 🟡 **Roadmap step 6, design tokens** (branch `feature/tokens`): `design/` exported (`design-1.0`: tokens.json,
+  icons, fonts, CSS/Android/Swift files) with `design/tools/check_qml.py` in CI, passing. The export found
+  differences between §6 and the code (listed in §6); they wait for a decision.
 
 - 🟡 **0.3.2**: the open issues. [#9](https://github.com/KuchiSofts/vlc-redesign/issues/9): the playback speed and
   teletext buttons never loaded on Windows (`Popup` without its import), so dropped on a bar they left an
@@ -229,7 +232,7 @@ What comes first, and why. Each step starts when what it needs is done.
 | 3  | Community setup: in-app *Suggest an idea* / *Report a problem* (13.12), hub, Discussions, board | decisions 1 and 9 | Feedback must land in the right place before the announcement | 🟡 |
 | 4  | Release 0.3.0 and announce it (0.3.0 and 0.3.1 out 2026-10-25; 0.3.2 next) | quality gates, steps 1 and 3 | Users get the fixes; the community side is ready for them        | 🟡     |
 | 5  | `platforms.yml`, platform bar, website (built 2026-10-28; Pages to enable) | step 3                     | In place before a second platform exists, so it shows everywhere     | 🟡     |
-| 6  | Design tokens exported (`design/`: tokens, icons, fonts)              | step 2 (values checked)         | Every other platform reads them; no copying errors                   | 🔴     |
+| 6  | Design tokens exported (`design/`: tokens, icons, fonts) — `design-1.0` and its CI check in (2026-10-28); left: SVG for the 116 PNG glyphs, the sync workflow to the sister repositories, the §6 differences | step 2 (values checked) | Every other platform reads them; no copying errors | 🟡 |
 | 7  | Linux, then macOS, then Windows ARM64                                 | CI; decision 3 for macOS        | Same code base: the cheapest new platforms first                     | 🔴     |
 | 8  | Android                                                               | step 6, decision 6              | The largest new audience (phones and Android TV)                     | 🔴     |
 | 9  | Samsung TV receiver                                                   | step 6, decision 5              | Builds on the casting work and the real-TV testing                   | 🔴     |
@@ -545,8 +548,37 @@ the new playlist's thumbnail and empty playlists, the resume card, the classic d
 
 ## 6. Design tokens
 
-The values the app uses at 100 % (1 px = 1 Figma px; `MainCtx.dp()` scales them). Source:
-`modules/gui/qt/style/VLCStyle.qml` (object `redesign`) and the components named.
+The values the app uses at 100 % (1 px = 1 Figma px; `MainCtx.dp()` scales them). **The source of these values
+is [`design/tokens.json`](../design/tokens.json)** (`design-1.0`, W3C Design Tokens format, each token with its
+Figma node and the places in the code that hold it); the tables below are its summary. In the code they live in
+`modules/gui/qt/style/VLCStyle.qml` (object `redesign`), `menus/redesign_menu_style.cpp`,
+`util/redesign_widget_theme.cpp` and the components named; `design/tools/check_qml.py` (CI, every pull request)
+fails when the code and `tokens.json` differ. Icons and fonts: `design/icons/`, `design/fonts/`; CSS, Android and
+Swift files: `design/build/` (`design/README.md`).
+
+**Differences between these tables and the code** (found by the export, 2026-10-28; `tokens.json` follows the
+code, the tables are left as they were until each is decided):
+
+- *Dark/BG/A2* `#1F1F1F` is not "Figma only": it is the hovered row of the widget (right-click) menus
+  (`RedesignMenuStyle`), `#9C9C9B` in the light theme.
+- *Dark/FG/B1* `#161616` is not "Figma only": onboarding primary button text, ThemeStep, sleep timer, the New
+  playlist icon wrapper (light `#B8B8B7` there).
+- Scroll bar handle: Settings keeps the Basic style's own colours in the dark theme (not `#6B6B6B`); in the light
+  theme the handle is `#6B6B6B` and `#2E2E2E` only when pressed. The classic dialogs: `#404040` dark, `#8E8E8D`
+  light, `#6B6B6B` hovered.
+- Dialog title bars, light theme: the QML dialogs draw `#DEDEDE` (the table's B2), the classic dialogs `#9C9C9B`
+  (`redesign_widget_theme.cpp`); `RedesignDialog.qml` passes `#9c9c9b` as its fallback, which the colour map
+  overrides. The same happens in 113 `color(dark, fallback)` calls (the fallback is ignored when the dark value is
+  in the map), e.g. text inputs' border `#C4C4C3` → `#ABABAA`, `#6B6B6B` fallbacks `#5A5A59`/`#4D4D4D` → `#6B6B6B`.
+- Typography: dialog titles are 14 px (`#8F8F8F`, box 17 in a 32 row), not 16 px at 175 %; 16 px is the Settings
+  header title. Widget (right-click) menus are 14 px, not 16. Onboarding: "Welcome to VLC!" is 32 px; some
+  onboarding texts are 15 px with a line of 1.3.
+- The Inter descender is 0.2421875 em (1.2109375 − 0.96875), not 0.2412.
+- Seek preview: the frame is 252 wide in a 272 × 189 card (Figma 2151:9673), radius 12, not 224 and 10.
+- Accent red, Bright: `#3B150D` is 0.26 × rounded half up; Qt's float rounding can give `#3A150D` (within the
+  1-per-channel rounding the table allows).
+- Not in the tables: Home folder cards `#1E1E1E` (light `#ABABAA`), the 95 % B1 over the canvas `#0F0F0F`, the
+  modal scrim (black 45 %).
 
 ### Colours
 
@@ -1251,6 +1283,12 @@ vlc-redesign-tv/               Tizen web app, our own code
 accents, fonts, sizes, radii), icons as SVG, the fonts (OFL). Exported once and checked by the pixel check; desktop CI
 compares `VLCStyle.qml` with them; Android, iOS and the TV generate their own files from them; a workflow opens a pull
 request in each repository when they change. They have their own version (`design-1.0`), named in every release.
+🟡 In place since 2026-10-28 ([`design/README.md`](../design/README.md)): `tokens.json` (203 tokens, 138 of them
+checked against 205 places in the code by `design/tools/check_qml.py`, the *Design tokens* job of
+`build-windows.yml`), `icons/` (405 files: the 116 glyphs of the Icon set as PNG per state with `@2x`, the
+SVG icons, the two-tone menu icons, `index.json` and a preview), `fonts/` (Inter modified, DM Mono, licenses),
+`build/` (`tokens.css`, `colors.xml`, `Tokens.swift` from `design/tools/export.py`). The Icon set's glyphs have no
+SVG source in the repository (PNG exports only); the sync workflow comes with the first sister repository.
 
 ### 13.3 Every repository shows every version
 
@@ -1450,7 +1488,8 @@ In an organization, a `.github` repository gives every repository these files by
 - 🟢 `platforms.yml` and the platform bar in the README (2026-10-25; the sister repositories read the same file)
 - 🟡 Website on GitHub Pages with OS detection (`site/`, 2026-10-28; the owner enables Pages: Settings → Pages →
   Source: GitHub Actions)
-- 🔴 Shared design assets in `design/`
+- 🟡 Shared design assets in `design/` (2026-10-28: tokens, icons, fonts, generated CSS/Android/Swift, CI check;
+  left: SVG for the PNG glyphs, the sync workflow to the sister repositories)
 - 🔴 Discussions on, five categories and their forms
 - 🟢 Issue forms: design mismatch, TV report, translation (2026-10-25)
 - 🟢 `labels.yml` and its sync workflow (ran on the 0.3.0 push)

@@ -371,6 +371,7 @@ FocusScope {
                 spacing: root.px(10)
                 // where the programme browsed to is: +1, -2 (none on what is on)
                 Text {
+                    id: browseHint
                     visible: root.browse !== 0
                     anchors.verticalCenter: parent.verticalCenter
                     text: root.browse > 0 ? "+" + root.browse : "−" + (-root.browse)
@@ -394,6 +395,7 @@ FocusScope {
                 Text {
                     anchors.verticalCenter: parent.verticalCenter
                     width: parent.width - (nowTimes.visible ? nowTimes.width + parent.spacing : 0)
+                           - (browseHint.visible ? browseHint.width + parent.spacing : 0)
                     text: root._archive ? (root.catchup.title || qsTr("Programme"))
                           : Iptv.bannerMode === 2 ? ""
                           : root._hasNow ? root.now.title
@@ -512,18 +514,6 @@ FocusScope {
                 tip: qsTr("Catch-up: the past %1 day", "Catch-up: the past %1 days", root.channel.catchupDays ?? 0)
                          .arg(root.channel.catchupDays ?? 0)
             }
-            // the programme browsed to: watch it from the archive, or a
-            // reminder for it
-            Widgets.RedesignButton {
-                anchors.verticalCenter: parent.verticalCenter
-                visible: (root.browse < 0 && !!root.now.archived) || root.browse > 0
-                accent: root.browse < 0
-                implicitHeight: root.px(28)
-                text: root.browse < 0 ? qsTr("Watch")
-                      : (Iptv.reminders.length >= 0 && Iptv.hasReminder(root.channel.key ?? "", root.now.start ?? 0))
-                        ? qsTr("Reminder Set") : qsTr("Remind Me")
-                onClicked: root.browseAction()
-            }
             BarButton {
                 visible: root.canBrowse
                 glyph: LayoutMirroring.enabled ? "›" : "‹"
@@ -536,20 +526,46 @@ FocusScope {
                 tip: qsTr("Programme after")
                 onClicked: root.browseBy(1)
             }
-            Item { width: root.px(4); height: 1 }
-            BarButton {
-                visible: !root._archive && (root.channel.catchupDays ?? 0) > 0 && root._hasNow && root.browse === 0
-                iconName: "recent"
-                tip: qsTr("Watch from the Start")
-                onClicked: Iptv.playFromStart()
-            }
-            Widgets.RedesignButton {
+            // the action of the programme shown, in a place of its own: the
+            // buttons around it never move while browsing
+            Item {
                 anchors.verticalCenter: parent.verticalCenter
-                visible: root._archive
-                accent: true
-                implicitHeight: root.px(28)
-                text: qsTr("Back to Live")
-                onClicked: Iptv.backToLive()
+                width: root.px(124)
+                height: root.px(30)
+
+                // what is on: from its start (the archive)
+                BarButton {
+                    anchors.right: parent.right
+                    visible: !root._archive && (root.channel.catchupDays ?? 0) > 0 && root._hasNow && root.browse === 0
+                    iconName: "recent"
+                    tip: qsTr("Watch from the Start")
+                    onClicked: Iptv.playFromStart()
+                }
+                // a programme browsed to: watch it from the archive, or a
+                // reminder for it
+                Widgets.RedesignButton {
+                    anchors.right: parent.right
+                    anchors.verticalCenter: parent.verticalCenter
+                    visible: (root.browse < 0 && !!root.now.archived) || root.browse > 0
+                    accent: root.browse < 0
+                    implicitWidth: Math.min(parent.width, Math.max(root.px(90), implicitContentWidth + root.px(24)))
+                    implicitHeight: root.px(28)
+                    text: root.browse < 0 ? qsTr("Watch")
+                          : (Iptv.reminders.length >= 0 && Iptv.hasReminder(root.channel.key ?? "", root.now.start ?? 0))
+                            ? qsTr("Reminder Set") : qsTr("Remind Me")
+                    onClicked: root.browseAction()
+                }
+                // a programme of the archive plays
+                Widgets.RedesignButton {
+                    anchors.right: parent.right
+                    anchors.verticalCenter: parent.verticalCenter
+                    visible: root._archive
+                    accent: true
+                    implicitWidth: Math.min(parent.width, Math.max(root.px(90), implicitContentWidth + root.px(24)))
+                    implicitHeight: root.px(28)
+                    text: qsTr("Back to Live")
+                    onClicked: Iptv.backToLive()
+                }
             }
             BarButton {
                 glyph: "▲"

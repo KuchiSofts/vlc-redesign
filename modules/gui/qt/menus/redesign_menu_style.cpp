@@ -33,6 +33,7 @@
 #include <QFontDatabase>
 #include <QRegularExpression>
 #include <QMenu>
+#include <QOperatingSystemVersion>
 #include <QPainter>
 #include <QPainterPath>
 #include <QStyleHints>
@@ -159,6 +160,17 @@ RedesignMenuStyle::RedesignMenuStyle(MainCtx *ctx)
     if (ctx)
         connect(ctx->getColorScheme(), &ColorSchemeModel::currentChanged, this, reframe);
     connect(QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, this, reframe);
+}
+
+// Windows 11 draws a border around a menu window (DWMWA_BORDER_COLOR)
+static bool systemDrawsMenuFrame()
+{
+#ifdef _WIN32
+    static const bool drawn = QOperatingSystemVersion::current() >= QOperatingSystemVersion::Windows11;
+    return drawn;
+#else
+    return false;
+#endif
 }
 
 QColor RedesignMenuStyle::windowBorder(bool dark)
@@ -350,7 +362,9 @@ int RedesignMenuStyle::pixelMetric(PixelMetric metric, const QStyleOption *optio
         case PM_SmallIconSize:
             return iconSize;
         case PM_MenuPanelWidth:
-            return 0;
+            // the frame of the main window: Windows 11 draws it
+            // (eventFilter), elsewhere PE_FrameMenu
+            return systemDrawsMenuFrame() ? 0 : 1;
         case PM_MenuHMargin:
             return 0;
         case PM_MenuVMargin:
@@ -403,7 +417,19 @@ void RedesignMenuStyle::drawPrimitive(PrimitiveElement element, const QStyleOpti
             return;
         }
         if (element == PE_FrameMenu)
+        {
+            // no system frame around a menu (Linux, macOS, Windows 10):
+            // the main window's, over the rows' edges
+            if (!systemDrawsMenuFrame())
+            {
+                painter->save();
+                painter->setPen(QPen(windowBorder(isDark()), 1));
+                painter->setBrush(Qt::NoBrush);
+                painter->drawRect(option->rect.adjusted(0, 0, -1, -1));
+                painter->restore();
+            }
             return;
+        }
     }
     QProxyStyle::drawPrimitive(element, option, painter, widget);
 }

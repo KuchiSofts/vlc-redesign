@@ -125,7 +125,7 @@ static const Option entries[] = {
     {"subtitles", "x:x-sub-background"}, {"subtitles", "freetype-background-color"},
     {"subtitles", "freetype-background-opacity"}, {"subtitles", "qt:redesign/subtitle-background-opacity"},
     {"subtitles", "sub-position"},
-    {"subtitles", "sub-delay"},
+    {"subtitles", "sub-delay"}, {"subtitles", "qt-seek-subtitle-cues"},
     {"subtitles", "osd"}, {"subtitles", "osd-duration"},
     {"subtitles", "video-title-show"}, {"subtitles", "video-title-timeout"},
     {"subtitles", "sub-autodetect-path"},

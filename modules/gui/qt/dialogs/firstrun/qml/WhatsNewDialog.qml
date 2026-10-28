@@ -29,9 +29,9 @@ Widgets.RedesignDialog {
     // read when the dialog opens
     property var groups: []
 
-    readonly property color textPrimary: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#1d1d1d", darkTheme)
-    readonly property color textSecondary: VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, "#3d3d3d", darkTheme)
-    readonly property color textMuted: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#4d4d4d", darkTheme)
+    readonly property color textPrimary: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#1d1d1d", root.darkTheme)
+    readonly property color textSecondary: VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, "#3d3d3d", root.darkTheme)
+    readonly property color textMuted: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#4d4d4d", root.darkTheme)
 
     title: qsTr("What's new")
     preferredWidth: VLCStyle.dp(560, VLCStyle.scale)
@@ -113,8 +113,6 @@ Widgets.RedesignDialog {
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                         font.weight: Font.DemiBold
-                        Accessible.role: Accessible.Heading
-                        Accessible.name: text
                     }
 
                     Repeater {

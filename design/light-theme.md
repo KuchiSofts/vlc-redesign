@@ -112,12 +112,12 @@ the dark value: `#EAEAEA`, `#C6C6C6`. These follow the owner's decision on the o
 The build with this change against the one before it (`e8db0b3b8f`, the same interface code without it), both
 with the Figma demo library at 1920 × 1080 and the design's scale, in light and in dark: Home, the S01 folder, the
 ⋯ menu, a card's menu, the player, the player with the library panel, the music player, the 13 Settings pages,
-Open network stream, Keyboard shortcuts, New playlist and a classic window (Media Information). 28 captures per
+Open network stream, Keyboard shortcuts, New playlist and a classic window (Media Information). 27 captures per
 theme.
 
 - **Dark:** no pixel differs by more than 1 of 255 in any capture (the rendering's own noise), the classic window
   identical: the dark theme is unchanged.
-- **Light:** the same, except the classic window's title bar (608 × 49 px, `#9C9C9B` → `#DEDEDE`).
+- **Light:** the same, except the classic window (the 600 × 50 px of its title bar, `#9C9C9B` → `#DEDEDE`).
 - **Light against Figma *Player - Light***, the player with the library panel, mean colour per region (Figma → app):
   top bar `#ABABAA` → `#ABABAA`, navigation column `#ABAAAA` → `#ABABAA`, library panel `#B9B8B7` → `#B9B9B7`,
   panel header `#C2C2C1` → `#C2C2C1`, control bar `#AAAAA9` → `#ABABAA`, seek track `#DEDEDE` → `#DCDCDC`, seek

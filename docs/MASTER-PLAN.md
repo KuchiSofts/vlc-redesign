@@ -380,7 +380,7 @@ put it in the top bar. Editing the music bar is verified (§8.8).
 Notes: the whole app was checked in light in build 115 (player, tracks and subtitles window, cast window, ⋯ menu,
 classic dialogs). 2026-10-28: the light values the colour map overrode settled
 ([design/light-theme.md](../design/light-theme.md)); the frame against the app per region within 2.4 per channel;
-dark unchanged (28 captures, no pixel over 1 of 255). The last fixes, Settings scroll bar handles and the warning colour, are in the app ⏳ (§8.3).
+dark unchanged (27 captures, no pixel over 1 of 255). The last fixes, Settings scroll bar handles and the warning colour, are in the app ⏳ (§8.3).
 
 ### 5.9 Add Subtitles (4)
 

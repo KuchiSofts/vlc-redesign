@@ -27,6 +27,7 @@
 #include <QRegularExpression>
 #include <QSettings>
 #include <QStandardPaths>
+#include <QStringList>
 #include <QThread>
 #include <QtEndian>
 #include <QUrl>
@@ -402,6 +403,45 @@ QString RedesignUpdater::currentVersion() const
 QString RedesignUpdater::repositoryUrl() const
 {
     return QStringLiteral(VLC_REDESIGN_REPO_URL);
+}
+
+QString RedesignUpdater::alsoOn() const
+{
+    // platforms.yml as extras/juxtopposed/platforms/render.py writes it for the
+    // website (site/platforms.json), built in by assets.qrc: nothing is fetched
+#if defined(_WIN32) && (defined(_M_ARM64) || defined(__aarch64__))
+    const QString self = QStringLiteral("windows-arm64");
+#elif defined(_WIN32)
+    const QString self = QStringLiteral("windows");
+#elif defined(__APPLE__)
+    const QString self = QStringLiteral("macos");
+#elif defined(__ANDROID__)
+    const QString self = QStringLiteral("android");
+#else
+    const QString self = QStringLiteral("linux");
+#endif
+    QFile file(QStringLiteral(":/redesign/platforms.json"));
+    if (!file.open(QIODevice::ReadOnly))
+        return {};
+    const QJsonArray platforms = QJsonDocument::fromJson(file.readAll()).object()
+                                     .value(QLatin1String("platforms")).toArray();
+    QStringList items;
+    for (const QJsonValue &value : platforms)
+    {
+        const QJsonObject p = value.toObject();
+        if (p.value(QLatin1String("id")).toString() == self)
+            continue;
+        const QString name = p.value(QLatin1String("short")).toString();
+        if (name.isEmpty())
+            continue;
+        if (p.value(QLatin1String("available")).toBool())
+            items << QStringLiteral("%1 %2").arg(name, p.value(QLatin1String("version")).toString());
+        else if (p.value(QLatin1String("status")).toString() == QLatin1String("later"))
+            items << qtr("%1 (later)").arg(name);
+        else
+            items << qtr("%1 (soon)").arg(name);
+    }
+    return items.join(QLatin1String(", "));
 }
 
 QString RedesignUpdater::appDir() const

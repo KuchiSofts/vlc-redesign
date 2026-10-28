@@ -406,6 +406,8 @@
         <file alias="welcome.svg">pixmaps/redesign/welcome.svg</file>
         <!-- What's new after an update (dialogs/firstrun/whats_new.cpp) -->
         <file alias="CHANGELOG.md">../../../CHANGELOG.md</file>
+        <!-- "Also on" in About: platforms.yml as render.py writes it (util/redesign_updater.cpp) -->
+        <file alias="platforms.json">../../../site/platforms.json</file>
         <file alias="theme-system.png">pixmaps/redesign/theme-system.png</file>
         <file alias="theme-bar-mask.png">pixmaps/redesign/theme-bar-mask.png</file>
         <file alias="theme-bar-pill.png">pixmaps/redesign/theme-bar-pill.png</file>

@@ -62,6 +62,7 @@
 
 #include "../../../eject.c"
 
+#include "menus/redesign_menu_style.hpp"
 /* Populate a combobox with the devices matching a pattern.
    Combobox will automatically do autocompletion on the edit zone */
 #define POPULATE_WITH_DEVS(ppsz_devlist, targetCombo) \
@@ -84,6 +85,7 @@ FileOpenPanel::FileOpenPanel( QWidget *_parent, qt_intf_t *_p_intf ) :
 {
     /* Classic UI Setup */
     ui.setupUi( this );
+    ui.removeFileButton->setIcon( RedesignMenuStyle::menuIcon( ":/menu/remove.svg" ) );
 
     setAcceptDrops( true );
 

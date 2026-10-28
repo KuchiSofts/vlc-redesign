@@ -28,6 +28,7 @@
 #include "dialogs/dialogs_provider.hpp"
 #include "widgets/native/qvlcframe.hpp"
 
+#include "menus/redesign_menu_style.hpp"
 using namespace vlc::playlist;
 
 VLCSystray::VLCSystray(MainCtx* ctx, QObject* parent)
@@ -213,11 +214,11 @@ void VLCSystray::update()
     VLCMenuBar::VolumeEntries( m_intf, m_menu.get() );
     m_menu->addSeparator();
     m_menu->addAction(
-        QIcon(":/menu/file.svg"), qtr( "&Open Media" ),
+        RedesignMenuStyle::menuIcon( ":/menu/file.svg" ), qtr( "&Open Media" ),
         THEDP, &DialogsProvider::openFileDialog);
 
     m_menu->addAction(
-        QIcon(":/menu/exit.svg"), qtr( "&Quit" ),
+        RedesignMenuStyle::menuIcon( ":/menu/exit.svg" ), qtr( "&Quit" ),
         THEDP, &DialogsProvider::quit);
 
     /* Set the menu */

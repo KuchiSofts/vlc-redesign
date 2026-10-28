@@ -27,6 +27,7 @@
 #include "searchlineedit.hpp"
 #include "customwidgets.hpp"
 
+#include "menus/redesign_menu_style.hpp"
 #include <QPainter>
 #include <QRect>
 #include <QStyle>
@@ -37,7 +38,7 @@
 SearchLineEdit::SearchLineEdit( QWidget *parent ) : QLineEdit( parent )
 {
     clearButton = new QFramelessButton( this );
-    clearButton->setIcon( QIcon( ":/menu/search_clear.svg" ) );
+    clearButton->setIcon( RedesignMenuStyle::menuIcon( ":/menu/search_clear.svg" ) );
     clearButton->setIconSize( QSize( 16, 16 ) );
     clearButton->setCursor( Qt::ArrowCursor );
     clearButton->setToolTip( qfu(vlc_pgettext("Tooltip|Clear", "Clear")) );

@@ -441,18 +441,21 @@ void RedesignMessageBox::showEvent(QShowEvent *event)
         setFocus(Qt::OtherFocusReason);
 }
 
+void RedesignMessageBox::setInterfaceTransientParent()
+{
+    QWindow *window = interfaceWindow(p_intf);
+    if (!window)
+        return;
+    createWinId();
+    if (QWindow *handle = windowHandle())
+        handle->setTransientParent(window);
+}
+
 int RedesignMessageBox::ask(qt_intf_t *p_intf, const RedesignMessage &message, QWidget *parent, QString *input)
 {
     RedesignMessageBox box(p_intf, message, parent);
     if (!parent)
-    {
-        if (QWindow *window = interfaceWindow(p_intf))
-        {
-            box.createWinId();
-            if (QWindow *handle = box.windowHandle())
-                handle->setTransientParent(window);
-        }
-    }
+        box.setInterfaceTransientParent();
     box.exec();
     if (input)
         *input = box.inputText();

@@ -91,6 +91,9 @@ public:
     static bool question(qt_intf_t *p_intf, QWidget *parent, const QString &title, const QString &text,
                          const QString &acceptText, bool defaultAccept = false);
 
+    // Kept over the window of the interface (no parent given)
+    void setInterfaceTransientParent();
+
     void done(int r) override;
 
 protected:

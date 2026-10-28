@@ -11,7 +11,6 @@
 #include "extended/extended.hpp"
 #include "maininterface/mainctx.hpp"
 #include <QFileDialog>
-#include <QInputDialog>
 
 QString DialogsProvider::getSaveFileName( QWidget *parent,
                                           const QString &caption,
@@ -29,13 +28,24 @@ QVariant DialogsProvider::getTextDialog(QWidget *parent,
                                         const QString &placeholder,
                                         bool *ok)
 {
-    bool _ok = false;
-    QString ret = QInputDialog::getText(parent,
-                                        title,
-                                        label,
-                                        QLineEdit::Normal,
-                                        placeholder,
-                                        ok ? ok : &_ok);
+    // the field of the redesign's dialogs, the text given in it
+    RedesignMessage message;
+    message.title = title;
+    message.heading = label;
+    message.acceptText = qtr("OK");
+    message.input = RedesignMessage::LineInput;
+    message.inputText = placeholder;
+
+    QString ret;
+    int answer;
+    DialogsProvider *provider = Singleton<DialogsProvider>::getInstance<false>();
+    if (parent || !provider)
+        answer = RedesignMessageBox::ask(provider ? provider->p_intf : nullptr, message, parent, &ret);
+    else
+        answer = provider->execRedesignMessage(message, &ret);
+    const bool _ok = answer == RedesignMessage::Accepted;
+    if (ok)
+        *ok = _ok;
 
     if (!ok)
     {

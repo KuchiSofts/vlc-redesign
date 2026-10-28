@@ -20,6 +20,9 @@ ColumnLayout {
     property string text
     property string suffix
     property string description
+    // a title longer than the line (a message, a question) goes on more
+    // lines, else it is cut
+    property bool headingWraps: false
     property bool darkTheme: VLCStyle.palette.isDark
 
     Layout.fillWidth: true
@@ -50,6 +53,12 @@ ColumnLayout {
 
     FigmaText {
         lineHeightPx: VLCStyle.dp(28, VLCStyle.scale)
+        wrapMode: root.headingWraps ? Text.Wrap : Text.NoWrap
+        elide: root.headingWraps ? Text.ElideNone : Text.ElideRight
+        // the lines 28 apart, as Figma sets them (one line: as before)
+        lineHeightMode: root.headingWraps ? Text.FixedHeight : Text.ProportionalHeight
+        lineHeight: root.headingWraps ? lineHeightPx : 1.0
+        Layout.preferredHeight: root.headingWraps && lineCount > 1 ? implicitHeight : Math.ceil(lineHeightPx)
         textFormat: Text.StyledText
         text: root.suffix === "" ? root.text
                                  : "%1 <font color=\"%2\">%3</font>".arg(root.text)

@@ -1269,7 +1269,8 @@ void PlaylistContextMenu::popup(int selectedIndex, QPoint pos )
                         // (the question, then the title; asked always: the items
                         // removed can not be brought back)
                         proceed = dp->questionDialog(qtr("Do you really want to discard the items that are not displayed at the moment?"),
-                                                     qtr("Discard the filtered out items"), true);
+                                                     qtr("Discard the filtered out items"), true,
+                                                     qtr("Discard"), qtr("Cancel"));
                     }
 
                     const auto count = m_model->rowCount() - m_proxyModel->rowCount();

@@ -25,6 +25,8 @@ T.Popup {
 
     property string title
     property string acceptText: qsTr("Save")
+    // the button on the left (a question: No, Don't restore...)
+    property string cancelText: qsTr("Cancel")
     // a dialog with one action (Close) shows no Cancel
     property bool cancelVisible: true
     property bool acceptEnabled: true
@@ -260,7 +262,7 @@ T.Popup {
                 anchors.left: parent.left
                 anchors.leftMargin: VLCStyle.dp(20, VLCStyle.scale)
                 y: VLCStyle.dp(20, VLCStyle.scale)
-                text: qsTr("Cancel")
+                text: root.cancelText
                 onClicked: root.close()
             }
 

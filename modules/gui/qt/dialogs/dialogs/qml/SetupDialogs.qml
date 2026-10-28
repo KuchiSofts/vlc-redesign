@@ -43,6 +43,21 @@ Item {
         })
     }
     Component.onCompleted: if (setupState.needsSetup) Qt.callLater(root.showSetupOnStart)
+    // The messages and questions of the C++ side (the play queue to restore
+    // after a crash, the confirmations, a text to type), in the window (it
+    // tells DialogsProvider it shows them)
+    RedesignMessageDialog { id: messages; parent: root }
+    Connections {
+        target: DialogsProvider
+        function onRedesignMessageRequested(host, id, message) {
+            if (host === messages)
+                messages.enqueue(id, message)
+        }
+        function onRedesignMessageCancelled(host, id) {
+            if (host === messages)
+                messages.drop(id)
+        }
+    }
     Connections {
         target: DialogsProvider
         function onPreferencesRequested() { root.show(preferences) }

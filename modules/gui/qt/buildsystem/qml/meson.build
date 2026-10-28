@@ -51,6 +51,7 @@ qml_modules += {
         '../../dialogs/dialogs/qml/NetworkStreamDialog.qml',
         '../../dialogs/dialogs/qml/RedesignAboutDialog.qml',
         '../../dialogs/dialogs/qml/RedesignReportDialog.qml',
+        '../../dialogs/dialogs/qml/RedesignMessageDialog.qml',
         '../../dialogs/extended/qml/VideoOption.qml',
         '../../dialogs/extended/qml/VideoFilterSection.qml',
         '../../dialogs/extended/qml/CropInput.qml',

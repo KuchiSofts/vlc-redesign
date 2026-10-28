@@ -38,7 +38,7 @@ the compact library's own light values (already measured, `CompactLibrary.qml`).
 ### The Light colour styles of the file
 
 The file has no variables (one empty collection) but 24 *Light/* colour styles beside the 25 *Dark/* ones (read
-2026-10-28 from the owner's copy of the file, `the design file`, same node ids):
+2026-10-28 from an editable copy of the community file, same node ids):
 
 | Style | Dark | Light | Used in *Player - Light* |
 |---|---|---|---|

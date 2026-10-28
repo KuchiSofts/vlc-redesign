@@ -8,11 +8,14 @@
 # VA-API/VDPAU drivers, udev/systemd). Run inside the image of
 # linux-qt68.Dockerfile:
 #   docker run --rm -v "$PWD:/work" vlc-redesign-linux:qt68 sh extras/juxtopposed/linux-bundle.sh
-# Writes build-qt68/vlc-redesign-linux-x86_64.tar.xz; on the PC:
+# Writes build-qt68/vlc-redesign-linux-ARCH.tar.xz (x86_64 or aarch64, the
+# machine's); on the PC:
 #   tar xf vlc-redesign-linux-x86_64.tar.xz && vlc-redesign/vlc [options]
+# linux-packages.sh makes the AppImage, .deb, .rpm and Flatpak manifest from it.
 set -eu
 build=/work/build-qt68/linux
 out=/work/build-qt68
+arch=$(uname -m)
 root=/tmp/bundle/vlc-redesign
 rm -rf /tmp/bundle /tmp/vlcinst
 mkdir -p "$root"
@@ -26,6 +29,9 @@ cp -a "$QTDIR"/lib/libQt6*.so* "$QTDIR"/lib/libicu*.so* "$root/qt/lib/" 2>/dev/n
 cp -a "$QTDIR/plugins" "$QTDIR/qml" "$root/qt/"
 # (no debug or design-time files)
 find "$root/qt" \( -name '*.debug' -o -name '*.qmltypes' -o -name 'designer' \) -prune -exec rm -rf {} +
+# (nor the SQL drivers for database servers: their client libraries are not
+# there, and VLC uses none)
+find "$root/qt/plugins/sqldrivers" -name 'libqsql*.so' ! -name libqsqlite.so -delete
 
 # The libraries of the system they need, but those of the PC
 mkdir -p "$root/syslib"
@@ -55,5 +61,5 @@ EOF
 chmod +x "$root/vlc"
 "$root/lib/vlc/vlc-cache-gen" "$root/lib/vlc/plugins" 2>/dev/null || true
 
-tar -C /tmp/bundle -cJf "$out/vlc-redesign-linux-x86_64.tar.xz" vlc-redesign
-du -sh "$root" "$out/vlc-redesign-linux-x86_64.tar.xz"
+tar -C /tmp/bundle -cJf "$out/vlc-redesign-linux-$arch.tar.xz" vlc-redesign
+du -sh "$root" "$out/vlc-redesign-linux-$arch.tar.xz"

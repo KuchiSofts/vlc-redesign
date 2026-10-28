@@ -6,10 +6,12 @@ name, state, scale, size and checksum.
 
 Derived from *VLC Redesign (Community)* by Juxtopposed, CC BY 4.0 (see `design/README.md`).
 
-**SVG sources.** The glyphs of the Figma *Icon* set (42:356) exist only as the PNG files exported
-from Figma (`png/`, with `@2x` where the app needs it); the repository has no SVG source for them.
-The top bar, sidebar and player icons (`svg/`), the two-tone menu icons (`svg/duo/`) and the
-widget chevrons (`svg/widgets/`) are SVG.
+**SVG sources.** The glyphs of the Figma *Icon* set (42:356) are the PNG files exported from Figma
+(`png/`, with `@2x` where the app needs it) and their SVG sources (`svg/glyphs/`), cut from Figma's
+SVG export of the set by `design/tools/icon_svgs.py`; `design/tools/icon_svgs_report.md` compares
+each with its PNG and says why a state has none. The app shows the PNG at 100 % and the SVG on a
+denser screen. The top bar, sidebar and player icons (`svg/`), the two-tone menu icons
+(`svg/duo/`) and the widget chevrons (`svg/widgets/`) are SVG.
 
 **States.** `default`: idle, #8F8F8F (Dark/FG/A2); `active`: active or hovered, #D37918 (the default accent; the app tints it with the chosen one); `selected`: selected (outline variant); `dim`: dimmed, #6B6B6B or #404040; `disabled`: disabled, #343434; `default-grey`: idle, grey variant; `default-accent`: idle, drawn in the accent; `active-grey`: active, grey variant; `active-accent`: active, drawn in the accent; `outline-active`: active, outline only; `large`: large variant; `half`: half (volume, rating).
 
@@ -135,6 +137,124 @@ The icons of the Figma "Icon" component set (42:356), exported as PNG, one folde
 | `window` | <img src="png/window/default.png" height="24" alt="window default"> `default` | 24 x 24 |
 | `wrench` | <img src="png/wrench/default.png" height="24" alt="wrench default"> `default` | 24 x 24 |
 | `zoom` | <img src="png/zoom/default.png" height="24" alt="zoom default"> `default` | 24 x 24 |
+
+## glyphs-svg (`svg/glyphs/`, 111 icons, 207 files)
+
+SVG sources of the glyphs, from the same Figma symbols (42:356), one per PNG state that has one (design/tools/icon_svgs.py; its report icon_svgs_report.md compares them with the PNGs). 24 x 24 unless noted, Figma's colours of each state.
+
+| Icon | States | Size |
+|---|---|---|
+| `0` | <img src="svg/glyphs/0/default.svg" height="24" alt="0 default"> `default` | 24 x 24 |
+| `accessibility` | <img src="svg/glyphs/accessibility/default.svg" height="24" alt="accessibility default"> `default` | 24 x 24 |
+| `add` | <img src="svg/glyphs/add/default.svg" height="24" alt="add default"> `default` <img src="svg/glyphs/add/half.svg" height="24" alt="add half"> `half` | 24 x 24 |
+| `album` | <img src="svg/glyphs/album/default.svg" height="24" alt="album default"> `default` | 24 x 24 |
+| `arrow-left` | <img src="svg/glyphs/arrow-left/default.svg" height="24" alt="arrow-left default"> `default` <img src="svg/glyphs/arrow-left/disabled.svg" height="24" alt="arrow-left disabled"> `disabled` | 24 x 24 |
+| `arrow-right` | <img src="svg/glyphs/arrow-right/default.svg" height="24" alt="arrow-right default"> `default` <img src="svg/glyphs/arrow-right/disabled.svg" height="24" alt="arrow-right disabled"> `disabled` | 24 x 24 |
+| `artist` | <img src="svg/glyphs/artist/active.svg" height="24" alt="artist active"> `active` <img src="svg/glyphs/artist/default.svg" height="24" alt="artist default"> `default` | 24 x 24 |
+| `audio` | <img src="svg/glyphs/audio/active.svg" height="24" alt="audio active"> `active` <img src="svg/glyphs/audio/default.svg" height="24" alt="audio default"> `default` | 24 x 24 |
+| `backward-10-sec` | <img src="svg/glyphs/backward-10-sec/default.svg" height="24" alt="backward-10-sec default"> `default` | 24 x 24 |
+| `backward-15-sec` | <img src="svg/glyphs/backward-15-sec/default.svg" height="24" alt="backward-15-sec default"> `default` | 24 x 24 |
+| `bookmark` | <img src="svg/glyphs/bookmark/default.svg" height="24" alt="bookmark default"> `default` | 24 x 24 |
+| `bookmarks` | <img src="svg/glyphs/bookmarks/default.svg" height="24" alt="bookmarks default"> `default` | 24 x 24 |
+| `capture-device` | <img src="svg/glyphs/capture-device/default.svg" height="24" alt="capture-device default"> `default` | 24 x 24 |
+| `chapters` | <img src="svg/glyphs/chapters/default.svg" height="24" alt="chapters default"> `default` | 24 x 24 |
+| `check` | <img src="svg/glyphs/check/active.svg" height="24" alt="check active"> `active` <img src="svg/glyphs/check/default.svg" height="24" alt="check default"> `default` <img src="svg/glyphs/check/selected.svg" height="24" alt="check selected"> `selected` | 24 x 24 |
+| `chevron-down` | <img src="svg/glyphs/chevron-down/default.svg" height="24" alt="chevron-down default"> `default` | 24 x 24 |
+| `chevron-right` | <img src="svg/glyphs/chevron-right/default.svg" height="24" alt="chevron-right default"> `default` | 24 x 24 |
+| `close` | <img src="svg/glyphs/close/default.svg" height="24" alt="close default"> `default` | 24 x 24 |
+| `collapse-sidebar` | <img src="svg/glyphs/collapse-sidebar/default.svg" height="24" alt="collapse-sidebar default"> `default` | 24 x 24 |
+| `disc` | <img src="svg/glyphs/disc/default.svg" height="24" alt="disc default"> `default` | 24 x 24 |
+| `divider` | <img src="svg/glyphs/divider/default.svg" height="24" alt="divider default"> `default` | 24 x 24 |
+| `edit` | <img src="svg/glyphs/edit/default.svg" height="24" alt="edit default"> `default` <img src="svg/glyphs/edit/dim.svg" height="24" alt="edit dim"> `dim` | 24 x 24 |
+| `EQ` | <img src="svg/glyphs/EQ/default.svg" height="24" alt="EQ default"> `default` | 24 x 24 |
+| `eq-classical` | <img src="svg/glyphs/eq-classical/default-accent.svg" height="24" alt="eq-classical default-accent"> `default-accent` <img src="svg/glyphs/eq-classical/default-grey.svg" height="24" alt="eq-classical default-grey"> `default-grey` <img src="svg/glyphs/eq-classical/default.svg" height="24" alt="eq-classical default"> `default` | 24 x 24 |
+| `eq-club` | <img src="svg/glyphs/eq-club/default-accent.svg" height="24" alt="eq-club default-accent"> `default-accent` <img src="svg/glyphs/eq-club/default-grey.svg" height="24" alt="eq-club default-grey"> `default-grey` <img src="svg/glyphs/eq-club/default.svg" height="24" alt="eq-club default"> `default` | 24 x 24 |
+| `eq-dance` | <img src="svg/glyphs/eq-dance/default-accent.svg" height="24" alt="eq-dance default-accent"> `default-accent` <img src="svg/glyphs/eq-dance/default-grey.svg" height="24" alt="eq-dance default-grey"> `default-grey` <img src="svg/glyphs/eq-dance/default.svg" height="24" alt="eq-dance default"> `default` | 24 x 24 |
+| `eq-flat` | <img src="svg/glyphs/eq-flat/default-accent.svg" height="24" alt="eq-flat default-accent"> `default-accent` <img src="svg/glyphs/eq-flat/default-grey.svg" height="24" alt="eq-flat default-grey"> `default-grey` <img src="svg/glyphs/eq-flat/default.svg" height="24" alt="eq-flat default"> `default` | 24 x 24 |
+| `eq-fullbass` | <img src="svg/glyphs/eq-fullbass/default-accent.svg" height="24" alt="eq-fullbass default-accent"> `default-accent` <img src="svg/glyphs/eq-fullbass/default-grey.svg" height="24" alt="eq-fullbass default-grey"> `default-grey` <img src="svg/glyphs/eq-fullbass/default.svg" height="24" alt="eq-fullbass default"> `default` | 24 x 24 |
+| `eq-fullbasstreble` | <img src="svg/glyphs/eq-fullbasstreble/default-accent.svg" height="24" alt="eq-fullbasstreble default-accent"> `default-accent` <img src="svg/glyphs/eq-fullbasstreble/default-grey.svg" height="24" alt="eq-fullbasstreble default-grey"> `default-grey` <img src="svg/glyphs/eq-fullbasstreble/default.svg" height="24" alt="eq-fullbasstreble default"> `default` | 24 x 24 |
+| `eq-fulltreble` | <img src="svg/glyphs/eq-fulltreble/default-accent.svg" height="24" alt="eq-fulltreble default-accent"> `default-accent` <img src="svg/glyphs/eq-fulltreble/default-grey.svg" height="24" alt="eq-fulltreble default-grey"> `default-grey` <img src="svg/glyphs/eq-fulltreble/default.svg" height="24" alt="eq-fulltreble default"> `default` | 24 x 24 |
+| `eq-headphones` | <img src="svg/glyphs/eq-headphones/default-accent.svg" height="24" alt="eq-headphones default-accent"> `default-accent` <img src="svg/glyphs/eq-headphones/default-grey.svg" height="24" alt="eq-headphones default-grey"> `default-grey` <img src="svg/glyphs/eq-headphones/default.svg" height="24" alt="eq-headphones default"> `default` | 24 x 24 |
+| `eq-largehall` | <img src="svg/glyphs/eq-largehall/default-accent.svg" height="24" alt="eq-largehall default-accent"> `default-accent` <img src="svg/glyphs/eq-largehall/default-grey.svg" height="24" alt="eq-largehall default-grey"> `default-grey` <img src="svg/glyphs/eq-largehall/default.svg" height="24" alt="eq-largehall default"> `default` | 24 x 24 |
+| `eq-live` | <img src="svg/glyphs/eq-live/default-accent.svg" height="24" alt="eq-live default-accent"> `default-accent` <img src="svg/glyphs/eq-live/default-grey.svg" height="24" alt="eq-live default-grey"> `default-grey` <img src="svg/glyphs/eq-live/default.svg" height="24" alt="eq-live default"> `default` | 24 x 24 |
+| `eq-party` | <img src="svg/glyphs/eq-party/default-accent.svg" height="24" alt="eq-party default-accent"> `default-accent` <img src="svg/glyphs/eq-party/default-grey.svg" height="24" alt="eq-party default-grey"> `default-grey` <img src="svg/glyphs/eq-party/default.svg" height="24" alt="eq-party default"> `default` | 24 x 24 |
+| `eq-pop` | <img src="svg/glyphs/eq-pop/default-accent.svg" height="24" alt="eq-pop default-accent"> `default-accent` <img src="svg/glyphs/eq-pop/default-grey.svg" height="24" alt="eq-pop default-grey"> `default-grey` <img src="svg/glyphs/eq-pop/default.svg" height="24" alt="eq-pop default"> `default` | 24 x 24 |
+| `eq-reggae` | <img src="svg/glyphs/eq-reggae/default-accent.svg" height="24" alt="eq-reggae default-accent"> `default-accent` <img src="svg/glyphs/eq-reggae/default-grey.svg" height="24" alt="eq-reggae default-grey"> `default-grey` <img src="svg/glyphs/eq-reggae/default.svg" height="24" alt="eq-reggae default"> `default` | 24 x 24 |
+| `eq-rock` | <img src="svg/glyphs/eq-rock/default-accent.svg" height="24" alt="eq-rock default-accent"> `default-accent` <img src="svg/glyphs/eq-rock/default-grey.svg" height="24" alt="eq-rock default-grey"> `default-grey` <img src="svg/glyphs/eq-rock/default.svg" height="24" alt="eq-rock default"> `default` | 24 x 24 |
+| `eq-ska` | <img src="svg/glyphs/eq-ska/default-accent.svg" height="24" alt="eq-ska default-accent"> `default-accent` <img src="svg/glyphs/eq-ska/default-grey.svg" height="24" alt="eq-ska default-grey"> `default-grey` <img src="svg/glyphs/eq-ska/default.svg" height="24" alt="eq-ska default"> `default` | 24 x 24 |
+| `eq-soft` | <img src="svg/glyphs/eq-soft/default-accent.svg" height="24" alt="eq-soft default-accent"> `default-accent` <img src="svg/glyphs/eq-soft/default-grey.svg" height="24" alt="eq-soft default-grey"> `default-grey` <img src="svg/glyphs/eq-soft/default.svg" height="24" alt="eq-soft default"> `default` | 24 x 24 |
+| `eq-softrock` | <img src="svg/glyphs/eq-softrock/default-accent.svg" height="24" alt="eq-softrock default-accent"> `default-accent` <img src="svg/glyphs/eq-softrock/default-grey.svg" height="24" alt="eq-softrock default-grey"> `default-grey` <img src="svg/glyphs/eq-softrock/default.svg" height="24" alt="eq-softrock default"> `default` | 24 x 24 |
+| `eq-techno` | <img src="svg/glyphs/eq-techno/default-accent.svg" height="24" alt="eq-techno default-accent"> `default-accent` <img src="svg/glyphs/eq-techno/default-grey.svg" height="24" alt="eq-techno default-grey"> `default-grey` <img src="svg/glyphs/eq-techno/default.svg" height="24" alt="eq-techno default"> `default` | 24 x 24 |
+| `expand-sidebar` | <img src="svg/glyphs/expand-sidebar/default.svg" height="24" alt="expand-sidebar default"> `default` | 24 x 24 |
+| `favorite` | <img src="svg/glyphs/favorite/active.svg" height="24" alt="favorite active"> `active` <img src="svg/glyphs/favorite/default.svg" height="24" alt="favorite default"> `default` | 24 x 24 |
+| `file` | <img src="svg/glyphs/file/default.svg" height="24" alt="file default"> `default` | 24 x 24 |
+| `folder` | <img src="svg/glyphs/folder/active.svg" height="24" alt="folder active"> `active` <img src="svg/glyphs/folder/default.svg" height="24" alt="folder default"> `default` <img src="svg/glyphs/folder/large.svg" height="24" alt="folder large"> `large` <img src="svg/glyphs/folder/selected.svg" height="24" alt="folder selected"> `selected` | 24 x 24, 48 x 48 |
+| `forward-10-sec` | <img src="svg/glyphs/forward-10-sec/default.svg" height="24" alt="forward-10-sec default"> `default` | 24 x 24 |
+| `forward-15-sec` | <img src="svg/glyphs/forward-15-sec/default.svg" height="24" alt="forward-15-sec default"> `default` | 24 x 24 |
+| `fullscreen` | <img src="svg/glyphs/fullscreen/active.svg" height="24" alt="fullscreen active"> `active` <img src="svg/glyphs/fullscreen/default.svg" height="24" alt="fullscreen default"> `default` | 24 x 24 |
+| `genre` | <img src="svg/glyphs/genre/default.svg" height="24" alt="genre default"> `default` | 24 x 24 |
+| `grid` | <img src="svg/glyphs/grid/default.svg" height="24" alt="grid default"> `default` <img src="svg/glyphs/grid/dim.svg" height="24" alt="grid dim"> `dim` | 24 x 24 |
+| `HDR` | <img src="svg/glyphs/HDR/default.svg" height="24" alt="HDR default"> `default` | 24 x 24 |
+| `home` | <img src="svg/glyphs/home/active.svg" height="24" alt="home active"> `active` <img src="svg/glyphs/home/default.svg" height="24" alt="home default"> `default` <img src="svg/glyphs/home/selected.svg" height="24" alt="home selected"> `selected` | 24 x 24 |
+| `hotkeys` | <img src="svg/glyphs/hotkeys/active.svg" height="24" alt="hotkeys active"> `active` <img src="svg/glyphs/hotkeys/default.svg" height="24" alt="hotkeys default"> `default` | 24 x 24 |
+| `info` | <img src="svg/glyphs/info/default.svg" height="24" alt="info default"> `default` | 24 x 24 |
+| `interface` | <img src="svg/glyphs/interface/active.svg" height="24" alt="interface active"> `active` <img src="svg/glyphs/interface/default.svg" height="24" alt="interface default"> `default` | 24 x 24 |
+| `link` | <img src="svg/glyphs/link/active.svg" height="24" alt="link active"> `active` <img src="svg/glyphs/link/default.svg" height="24" alt="link default"> `default` | 24 x 24 |
+| `list` | <img src="svg/glyphs/list/default.svg" height="24" alt="list default"> `default` <img src="svg/glyphs/list/dim.svg" height="24" alt="list dim"> `dim` | 24 x 24 |
+| `lists` | <img src="svg/glyphs/lists/active.svg" height="24" alt="lists active"> `active` <img src="svg/glyphs/lists/default.svg" height="24" alt="lists default"> `default` | 24 x 24 |
+| `maximize` | <img src="svg/glyphs/maximize/default.svg" height="24" alt="maximize default"> `default` | 24 x 24 |
+| `minimize` | <img src="svg/glyphs/minimize/default.svg" height="24" alt="minimize default"> `default` | 24 x 24 |
+| `more` | <img src="svg/glyphs/more/default.svg" height="24" alt="more default"> `default` <img src="svg/glyphs/more/dim.svg" height="24" alt="more dim"> `dim` | 24 x 24 |
+| `move` | <img src="svg/glyphs/move/default.svg" height="24" alt="move default"> `default` | 24 x 24 |
+| `music` | <img src="svg/glyphs/music/default.svg" height="24" alt="music default"> `default` | 24 x 24 |
+| `new-folder` | <img src="svg/glyphs/new-folder/default.svg" height="24" alt="new-folder default"> `default` | 24 x 24 |
+| `next` | <img src="svg/glyphs/next/default.svg" height="24" alt="next default"> `default` | 24 x 24 |
+| `open` | <img src="svg/glyphs/open/default.svg" height="24" alt="open default"> `default` <img src="svg/glyphs/open/dim.svg" height="24" alt="open dim"> `dim` | 24 x 24 |
+| `paint` | <img src="svg/glyphs/paint/active.svg" height="24" alt="paint active"> `active` <img src="svg/glyphs/paint/default.svg" height="24" alt="paint default"> `default` | 24 x 24 |
+| `pause` | <img src="svg/glyphs/pause/default.svg" height="24" alt="pause default"> `default` | 24 x 24 |
+| `PiP` | <img src="svg/glyphs/PiP/default.svg" height="24" alt="PiP default"> `default` | 24 x 24 |
+| `play` | <img src="svg/glyphs/play/default.svg" height="24" alt="play default"> `default` <img src="svg/glyphs/play/outline-active.svg" height="24" alt="play outline-active"> `outline-active` | 24 x 24 |
+| `playback` | <img src="svg/glyphs/playback/active.svg" height="24" alt="playback active"> `active` <img src="svg/glyphs/playback/default.svg" height="24" alt="playback default"> `default` | 24 x 24 |
+| `playback-settings` | <img src="svg/glyphs/playback-settings/active.svg" height="24" alt="playback-settings active"> `active` <img src="svg/glyphs/playback-settings/default.svg" height="24" alt="playback-settings default"> `default` | 24 x 24 |
+| `playlist` | <img src="svg/glyphs/playlist/active.svg" height="24" alt="playlist active"> `active` <img src="svg/glyphs/playlist/default.svg" height="24" alt="playlist default"> `default` | 24 x 24 |
+| `plugins` | <img src="svg/glyphs/plugins/active.svg" height="24" alt="plugins active"> `active` <img src="svg/glyphs/plugins/default.svg" height="24" alt="plugins default"> `default` | 24 x 24 |
+| `preferences` | <img src="svg/glyphs/preferences/active.svg" height="24" alt="preferences active"> `active` <img src="svg/glyphs/preferences/default.svg" height="24" alt="preferences default"> `default` | 24 x 24 |
+| `previous` | <img src="svg/glyphs/previous/default.svg" height="24" alt="previous default"> `default` | 24 x 24 |
+| `privacy` | <img src="svg/glyphs/privacy/active.svg" height="24" alt="privacy active"> `active` <img src="svg/glyphs/privacy/default.svg" height="24" alt="privacy default"> `default` | 24 x 24 |
+| `profile` | <img src="svg/glyphs/profile/default.svg" height="24" alt="profile default"> `default` | 24 x 24 |
+| `queue` | <img src="svg/glyphs/queue/default.svg" height="24" alt="queue default"> `default` | 24 x 24 |
+| `quit` | <img src="svg/glyphs/quit/default.svg" height="24" alt="quit default"> `default` | 24 x 24 |
+| `recent` | <img src="svg/glyphs/recent/active-accent.svg" height="24" alt="recent active-accent"> `active-accent` <img src="svg/glyphs/recent/active-grey.svg" height="24" alt="recent active-grey"> `active-grey` <img src="svg/glyphs/recent/active.svg" height="24" alt="recent active"> `active` <img src="svg/glyphs/recent/default.svg" height="24" alt="recent default"> `default` | 24 x 24 |
+| `record` | <img src="svg/glyphs/record/active.svg" height="24" alt="record active"> `active` <img src="svg/glyphs/record/default.svg" height="24" alt="record default"> `default` | 24 x 24 |
+| `refresh` | <img src="svg/glyphs/refresh/default.svg" height="24" alt="refresh default"> `default` | 24 x 24 |
+| `remove` | <img src="svg/glyphs/remove/default.svg" height="24" alt="remove default"> `default` | 24 x 24 |
+| `repeat` | <img src="svg/glyphs/repeat/default.svg" height="24" alt="repeat default"> `default` | 24 x 24 |
+| `replay` | <img src="svg/glyphs/replay/default.svg" height="24" alt="replay default"> `default` | 24 x 24 |
+| `right-sidebar` | <img src="svg/glyphs/right-sidebar/default.svg" height="24" alt="right-sidebar default"> `default` | 24 x 24 |
+| `scope` | <img src="svg/glyphs/scope/default-accent.svg" height="24" alt="scope default-accent"> `default-accent` <img src="svg/glyphs/scope/default-grey.svg" height="24" alt="scope default-grey"> `default-grey` <img src="svg/glyphs/scope/default.svg" height="24" alt="scope default"> `default` | 24 x 24 |
+| `search` | <img src="svg/glyphs/search/default.svg" height="24" alt="search default"> `default` <img src="svg/glyphs/search/dim.svg" height="24" alt="search dim"> `dim` | 24 x 24 |
+| `settings` | <img src="svg/glyphs/settings/active.svg" height="24" alt="settings active"> `active` <img src="svg/glyphs/settings/default.svg" height="24" alt="settings default"> `default` | 24 x 24 |
+| `shuffle` | <img src="svg/glyphs/shuffle/default.svg" height="24" alt="shuffle default"> `default` | 24 x 24 |
+| `sidebar` | <img src="svg/glyphs/sidebar/active.svg" height="24" alt="sidebar active"> `active` <img src="svg/glyphs/sidebar/default.svg" height="24" alt="sidebar default"> `default` | 24 x 24 |
+| `snapshot` | <img src="svg/glyphs/snapshot/default.svg" height="24" alt="snapshot default"> `default` | 24 x 24 |
+| `songs` | <img src="svg/glyphs/songs/active.svg" height="24" alt="songs active"> `active` <img src="svg/glyphs/songs/default.svg" height="24" alt="songs default"> `default` <img src="svg/glyphs/songs/selected.svg" height="24" alt="songs selected"> `selected` | 24 x 24 |
+| `sort` | <img src="svg/glyphs/sort/default.svg" height="24" alt="sort default"> `default` <img src="svg/glyphs/sort/dim.svg" height="24" alt="sort dim"> `dim` | 24 x 24 |
+| `spectrometer` | <img src="svg/glyphs/spectrometer/default-accent.svg" height="24" alt="spectrometer default-accent"> `default-accent` <img src="svg/glyphs/spectrometer/default-grey.svg" height="24" alt="spectrometer default-grey"> `default-grey` <img src="svg/glyphs/spectrometer/default.svg" height="24" alt="spectrometer default"> `default` | 24 x 24 |
+| `spectrum` | <img src="svg/glyphs/spectrum/default-accent.svg" height="24" alt="spectrum default-accent"> `default-accent` <img src="svg/glyphs/spectrum/default-grey.svg" height="24" alt="spectrum default-grey"> `default-grey` <img src="svg/glyphs/spectrum/default.svg" height="24" alt="spectrum default"> `default` <img src="svg/glyphs/spectrum/dim.svg" height="24" alt="spectrum dim"> `dim` | 24 x 24 |
+| `speed` | <img src="svg/glyphs/speed/active.svg" height="24" alt="speed active"> `active` <img src="svg/glyphs/speed/default.svg" height="24" alt="speed default"> `default` | 24 x 24 |
+| `stop` | <img src="svg/glyphs/stop/default.svg" height="24" alt="stop default"> `default` | 24 x 24 |
+| `streaming` | <img src="svg/glyphs/streaming/active.svg" height="24" alt="streaming active"> `active` <img src="svg/glyphs/streaming/default.svg" height="24" alt="streaming default"> `default` <img src="svg/glyphs/streaming/selected.svg" height="24" alt="streaming selected"> `selected` | 24 x 24 |
+| `subtitles` | <img src="svg/glyphs/subtitles/active.svg" height="24" alt="subtitles active"> `active` <img src="svg/glyphs/subtitles/default.svg" height="24" alt="subtitles default"> `default` | 24 x 24 |
+| `swap` | <img src="svg/glyphs/swap/default.svg" height="24" alt="swap default"> `default` | 24 x 24 |
+| `thumbnail` | <img src="svg/glyphs/thumbnail/default.svg" height="24" alt="thumbnail default"> `default` | 24 x 24 |
+| `tv` | <img src="svg/glyphs/tv/active.svg" height="24" alt="tv active"> `active` <img src="svg/glyphs/tv/default.svg" height="24" alt="tv default"> `default` <img src="svg/glyphs/tv/selected.svg" height="24" alt="tv selected"> `selected` | 24 x 24 |
+| `ui` | <img src="svg/glyphs/ui/default-accent.svg" height="24" alt="ui default-accent"> `default-accent` <img src="svg/glyphs/ui/default-grey.svg" height="24" alt="ui default-grey"> `default-grey` <img src="svg/glyphs/ui/default.svg" height="24" alt="ui default"> `default` | 24 x 24 |
+| `video` | <img src="svg/glyphs/video/active.svg" height="24" alt="video active"> `active` | 24 x 24 |
+| `videos` | <img src="svg/glyphs/videos/active.svg" height="24" alt="videos active"> `active` <img src="svg/glyphs/videos/default.svg" height="24" alt="videos default"> `default` <img src="svg/glyphs/videos/selected.svg" height="24" alt="videos selected"> `selected` | 24 x 24 |
+| `view` | <img src="svg/glyphs/view/default.svg" height="24" alt="view default"> `default` | 24 x 24 |
+| `waveform` | <img src="svg/glyphs/waveform/default-accent.svg" height="24" alt="waveform default-accent"> `default-accent` <img src="svg/glyphs/waveform/default-grey.svg" height="24" alt="waveform default-grey"> `default-grey` <img src="svg/glyphs/waveform/default.svg" height="24" alt="waveform default"> `default` | 24 x 24 |
+| `wrench` | <img src="svg/glyphs/wrench/default.svg" height="24" alt="wrench default"> `default` | 24 x 24 |
+| `zoom` | <img src="svg/glyphs/zoom/default.svg" height="24" alt="zoom default"> `default` | 24 x 24 |
 
 ## svg (`svg/`, 35 icons, 35 files)
 

@@ -1,0 +1,2829 @@
+{
+ "$description": "Each PNG state of the icon glyphs: its symbol in Figma 42:356 (node), the part shown (colours: Figma colour -> colour of the state, null = left out) and the subpixel offset of the PNG. Written by icon_svgs.py map; \"pinned\" entries are kept.",
+ "frame": "42:356",
+ "states": {
+  "0/default": {
+   "node": "2107:6596",
+   "empty": true,
+   "why": "an empty picture (the Figma symbol draws nothing)"
+  },
+  "accessibility/default": {
+   "node": "999:4914",
+   "symbol": "name=accessibility, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 3.09,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 3.09,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "add/default": {
+   "node": "463:550",
+   "symbol": "name=add, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 0.11,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.11,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "add/half": {
+   "node": "463:550",
+   "symbol": "name=add, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 6.27,
+   "offset": [
+    0.5,
+    -0.5
+   ],
+   "shape": 0.16,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "album/default": {
+   "node": "6206:13629",
+   "symbol": "name=album, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 5.87,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 5.87,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "arrow-left/default": {
+   "node": "71:890",
+   "symbol": "name=arrow, direction=left, state=default, value=default, EQ=default, two-tone=no",
+   "match": 2.56,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.56,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "arrow-left/disabled": {
+   "node": "71:890",
+   "symbol": "name=arrow, direction=left, state=default, value=default, EQ=default, two-tone=no",
+   "match": 2.56,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.56,
+   "colours": {
+    "#8F8F8F": "#343434"
+   }
+  },
+  "arrow-right/default": {
+   "node": "71:887",
+   "symbol": "name=arrow, direction=right, state=default, value=default, EQ=default, two-tone=no",
+   "match": 2.7,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.7,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "arrow-right/disabled": {
+   "node": "71:887",
+   "symbol": "name=arrow, direction=right, state=default, value=default, EQ=default, two-tone=no",
+   "match": 2.7,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.7,
+   "colours": {
+    "#8F8F8F": "#343434"
+   }
+  },
+  "artist/active": {
+   "node": "858:5164",
+   "symbol": "name=artist, direction=default, state=active, value=default, EQ=default, two-tone=no",
+   "match": 2.81,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.81,
+   "colours": {
+    "#D37918": "#D37918"
+   }
+  },
+  "artist/default": {
+   "node": "858:5155",
+   "symbol": "name=artist, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 2.08,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.08,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "audio/active": {
+   "node": "496:2439",
+   "symbol": "name=audio, direction=default, state=active, value=default, EQ=default, two-tone=no",
+   "match": 0.49,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.49,
+   "colours": {
+    "#D37918": "#D37918"
+   }
+  },
+  "audio/default": {
+   "node": "44:407",
+   "symbol": "name=audio, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 0.2,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.2,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "backward-10-sec/default": {
+   "node": "45:28",
+   "symbol": "name=backward-10-sec, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 2.23,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.23,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "backward-15-sec/default": {
+   "node": "45:36",
+   "symbol": "name=backward-15-sec, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 1.24,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 1.24,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "bookmark/default": {
+   "node": "2127:7779",
+   "symbol": "name=bookmark, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 0.68,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.68,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "bookmarks/default": {
+   "node": "2127:7548",
+   "symbol": "name=bookmarks, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 4.89,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 4.89,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "capture-device/default": {
+   "node": "2493:9307",
+   "symbol": "name=capture-device, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 3.17,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 3.17,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "cast/default": {
+   "node": null,
+   "why": "no symbol of 42:356 has this name"
+  },
+  "cast/large": {
+   "node": null,
+   "why": "no symbol of 42:356 has this name"
+  },
+  "chapters/default": {
+   "node": "2127:7531",
+   "symbol": "name=chapters, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 4.24,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 4.24,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "check/active": {
+   "node": "494:2394",
+   "symbol": "name=check, direction=default, state=active, value=default, EQ=default, two-tone=no",
+   "match": 0.72,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.72,
+   "colours": {
+    "#D37918": "#D37918"
+   }
+  },
+  "check/default": {
+   "node": "494:2400",
+   "empty": true,
+   "why": "an empty picture (the Figma symbol draws nothing)"
+  },
+  "check/selected": {
+   "node": "2428:14606",
+   "symbol": "name=check, direction=default, state=selected, value=default, EQ=default, two-tone=no",
+   "match": 0.61,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.61,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "chevron-down/default": {
+   "node": "71:868",
+   "symbol": "name=chevron, direction=down, state=default, value=default, EQ=default, two-tone=no",
+   "match": 0.52,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.52,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "chevron-right/default": {
+   "node": "71:875",
+   "symbol": "name=chevron, direction=right, state=default, value=default, EQ=default, two-tone=no",
+   "match": 0.52,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.52,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "close/default": {
+   "node": "45:40",
+   "symbol": "name=close, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 1.08,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 1.08,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "collapse-sidebar/default": {
+   "node": "858:5703",
+   "symbol": "name=collapse-sidebar, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 4.4,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 4.4,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "disc/default": {
+   "node": "5884:24330",
+   "symbol": "name=disc, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 3.46,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 3.46,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "divider/default": {
+   "node": "71:863",
+   "symbol": "name=divider, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 0.07,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.07,
+   "colours": {
+    "#373737": "#373737"
+   }
+  },
+  "edit/default": {
+   "node": "2437:14888",
+   "symbol": "name=edit, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 3.73,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 3.73,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "edit/dim": {
+   "node": "2437:14888",
+   "symbol": "name=edit, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 8.1,
+   "offset": [
+    0.0,
+    0.5
+   ],
+   "shape": 1.32,
+   "colours": {
+    "#8F8F8F": "#404040"
+   }
+  },
+  "EQ/default": {
+   "node": "2372:8559",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 0.51,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.51,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "eq-classical/default-accent": {
+   "node": "2372:8571",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=classical, two-tone=no",
+   "match": 0.17,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.17,
+   "colours": {
+    "#8F8F8F": null,
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-classical/default-grey": {
+   "node": "2372:8571",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=classical, two-tone=no",
+   "match": 0.12,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.12,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": null
+   }
+  },
+  "eq-classical/default": {
+   "node": "2372:8571",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=classical, two-tone=no",
+   "match": 0.29,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.29,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-club/default-accent": {
+   "node": "2372:8578",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=club, two-tone=no",
+   "match": 0.25,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.25,
+   "colours": {
+    "#8F8F8F": null,
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-club/default-grey": {
+   "node": "2372:8578",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=club, two-tone=no",
+   "match": 0.12,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.12,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": null
+   }
+  },
+  "eq-club/default": {
+   "node": "2372:8578",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=club, two-tone=no",
+   "match": 0.37,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.37,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-dance/default-accent": {
+   "node": "2372:8588",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=dance, two-tone=no",
+   "match": 0.62,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.62,
+   "colours": {
+    "#8F8F8F": null,
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-dance/default-grey": {
+   "node": "2372:8588",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=dance, two-tone=no",
+   "match": 0.16,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.16,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": null
+   }
+  },
+  "eq-dance/default": {
+   "node": "2372:8588",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=dance, two-tone=no",
+   "match": 0.76,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.76,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-flat/default-accent": {
+   "node": "2372:8559",
+   "empty": true,
+   "why": "an empty picture (the Figma symbol draws nothing)"
+  },
+  "eq-flat/default-grey": {
+   "node": "2372:8559",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 0.12,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.12,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "eq-flat/default": {
+   "node": "2372:8559",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 0.12,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.12,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "eq-fullbass/default-accent": {
+   "node": "6114:13932",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=full bass, two-tone=no",
+   "match": 0.36,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.36,
+   "colours": {
+    "#8F8F8F": null,
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-fullbass/default-grey": {
+   "node": "6114:13932",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=full bass, two-tone=no",
+   "match": 0.26,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.26,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": null
+   }
+  },
+  "eq-fullbass/default": {
+   "node": "6114:13932",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=full bass, two-tone=no",
+   "match": 0.44,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.44,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-fullbasstreble/default-accent": {
+   "node": "6114:13938",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=full bass and treble, two-tone=no",
+   "match": 0.4,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.4,
+   "colours": {
+    "#8F8F8F": null,
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-fullbasstreble/default-grey": {
+   "node": "6114:13938",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=full bass and treble, two-tone=no",
+   "match": 0.12,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.12,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": null
+   }
+  },
+  "eq-fullbasstreble/default": {
+   "node": "6114:13938",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=full bass and treble, two-tone=no",
+   "match": 0.52,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.52,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-fulltreble/default-accent": {
+   "node": "6114:13944",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=full treble, two-tone=no",
+   "match": 0.46,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.46,
+   "colours": {
+    "#8F8F8F": null,
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-fulltreble/default-grey": {
+   "node": "6114:13944",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=full treble, two-tone=no",
+   "match": 0.12,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.12,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": null
+   }
+  },
+  "eq-fulltreble/default": {
+   "node": "6114:13944",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=full treble, two-tone=no",
+   "match": 0.58,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.58,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-headphones/default-accent": {
+   "node": "6114:13955",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=headphones, two-tone=no",
+   "match": 0.33,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.33,
+   "colours": {
+    "#8F8F8F": null,
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-headphones/default-grey": {
+   "node": "6114:13955",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=headphones, two-tone=no",
+   "match": 0.25,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.25,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": null
+   }
+  },
+  "eq-headphones/default": {
+   "node": "6114:13955",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=headphones, two-tone=no",
+   "match": 0.56,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.56,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-largehall/default-accent": {
+   "node": "6114:13961",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=large hall, two-tone=no",
+   "match": 0.3,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.3,
+   "colours": {
+    "#8F8F8F": null,
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-largehall/default-grey": {
+   "node": "6114:13961",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=large hall, two-tone=no",
+   "match": 0.16,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.16,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": null
+   }
+  },
+  "eq-largehall/default": {
+   "node": "6114:13961",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=large hall, two-tone=no",
+   "match": 0.47,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.47,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-live/default-accent": {
+   "node": "6114:13973",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=live, two-tone=no",
+   "match": 0.31,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.31,
+   "colours": {
+    "#8F8F8F": null,
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-live/default-grey": {
+   "node": "6114:13973",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=live, two-tone=no",
+   "match": 0.16,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.16,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": null
+   }
+  },
+  "eq-live/default": {
+   "node": "6114:13973",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=live, two-tone=no",
+   "match": 0.41,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.41,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-party/default-accent": {
+   "node": "6114:13979",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=party, two-tone=no",
+   "match": 0.0,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.0,
+   "colours": {
+    "#8F8F8F": null,
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-party/default-grey": {
+   "node": "6114:13979",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=party, two-tone=no",
+   "match": 0.12,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.12,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": null
+   }
+  },
+  "eq-party/default": {
+   "node": "6114:13979",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=party, two-tone=no",
+   "match": 0.12,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.12,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-pop/default-accent": {
+   "node": "6114:13985",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=pop, two-tone=no",
+   "match": 0.06,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.06,
+   "colours": {
+    "#8F8F8F": null,
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-pop/default-grey": {
+   "node": "6114:13985",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=pop, two-tone=no",
+   "match": 0.12,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.12,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": null
+   }
+  },
+  "eq-pop/default": {
+   "node": "6114:13985",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=pop, two-tone=no",
+   "match": 0.19,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.19,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-reggae/default-accent": {
+   "node": "6114:13967",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=reggae, two-tone=no",
+   "match": 0.0,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.0,
+   "colours": {
+    "#8F8F8F": null,
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-reggae/default-grey": {
+   "node": "6114:13967",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=reggae, two-tone=no",
+   "match": 0.12,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.12,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": null
+   }
+  },
+  "eq-reggae/default": {
+   "node": "6114:13967",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=reggae, two-tone=no",
+   "match": 0.12,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.12,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-rock/default-accent": {
+   "node": "6114:13996",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=rock, two-tone=no",
+   "match": 0.26,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.26,
+   "colours": {
+    "#8F8F8F": null,
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-rock/default-grey": {
+   "node": "6114:13996",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=rock, two-tone=no",
+   "match": 0.16,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.16,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": null
+   }
+  },
+  "eq-rock/default": {
+   "node": "6114:13996",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=rock, two-tone=no",
+   "match": 0.41,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.41,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-ska/default-accent": {
+   "node": "6114:14002",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=ska, two-tone=no",
+   "match": 0.39,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.39,
+   "colours": {
+    "#8F8F8F": null,
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-ska/default-grey": {
+   "node": "6114:14002",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=ska, two-tone=no",
+   "match": 0.16,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.16,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": null
+   }
+  },
+  "eq-ska/default": {
+   "node": "6114:14002",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=ska, two-tone=no",
+   "match": 0.54,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.54,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-soft/default-accent": {
+   "node": "6114:14008",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=soft, two-tone=no",
+   "match": 0.45,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.45,
+   "colours": {
+    "#8F8F8F": null,
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-soft/default-grey": {
+   "node": "6114:14008",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=soft, two-tone=no",
+   "match": 0.12,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.12,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": null
+   }
+  },
+  "eq-soft/default": {
+   "node": "6114:14008",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=soft, two-tone=no",
+   "match": 0.57,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.57,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-softrock/default-accent": {
+   "node": "6114:14014",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=soft rock, two-tone=no",
+   "match": 0.43,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.43,
+   "colours": {
+    "#8F8F8F": null,
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-softrock/default-grey": {
+   "node": "6114:14014",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=soft rock, two-tone=no",
+   "match": 0.12,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.12,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": null
+   }
+  },
+  "eq-softrock/default": {
+   "node": "6114:14014",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=soft rock, two-tone=no",
+   "match": 0.55,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.55,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-techno/default-accent": {
+   "node": "6114:14021",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=techno, two-tone=no",
+   "match": 0.37,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.37,
+   "colours": {
+    "#8F8F8F": null,
+    "#D37918": "#D37918"
+   }
+  },
+  "eq-techno/default-grey": {
+   "node": "6114:14021",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=techno, two-tone=no",
+   "match": 0.12,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.12,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": null
+   }
+  },
+  "eq-techno/default": {
+   "node": "6114:14021",
+   "symbol": "name=EQ, direction=default, state=default, value=default, EQ=techno, two-tone=no",
+   "match": 0.49,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.49,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": "#D37918"
+   }
+  },
+  "expand-sidebar/default": {
+   "node": "858:5697",
+   "symbol": "name=expand-sidebar, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 4.03,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 4.03,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "favorite/active": {
+   "node": "2430:14666",
+   "symbol": "name=favorite, direction=default, state=active, value=default, EQ=default, two-tone=no",
+   "match": 4.23,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 4.23,
+   "colours": {
+    "#D37918": "#D37918"
+   }
+  },
+  "favorite/default": {
+   "node": "2430:14629",
+   "symbol": "name=favorite, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 2.25,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.25,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "file/default": {
+   "node": "2461:9644",
+   "symbol": "name=file, direction=default, state=default, value=default, EQ=default, two-tone=yes",
+   "match": 5.98,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 5.98,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#AB6314": [
+     "#8F8F8F",
+     0.78
+    ]
+   }
+  },
+  "folder/active": {
+   "node": "87:1031",
+   "symbol": "name=folder, direction=default, state=active, value=default, EQ=default, two-tone=no",
+   "match": 2.62,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.62,
+   "colours": {
+    "#D37918": "#D37918"
+   }
+  },
+  "folder/default": {
+   "node": "51:808",
+   "symbol": "name=folder, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 5.48,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 5.48,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "folder/large": {
+   "node": "51:808",
+   "symbol": "name=folder, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 0.92,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.92,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "folder/selected": {
+   "node": "467:502",
+   "symbol": "name=folder, direction=default, state=selected, value=default, EQ=default, two-tone=no",
+   "match": 2.21,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.21,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "forward-10-sec/default": {
+   "node": "45:22",
+   "symbol": "name=forward-10-sec, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 1.64,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 1.64,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "forward-15-sec/default": {
+   "node": "45:32",
+   "symbol": "name=forward-15-sec, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 1.74,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 1.74,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "fullscreen/active": {
+   "node": "6031:13553",
+   "symbol": "name=fullscreen, direction=default, state=active, value=default, EQ=default, two-tone=no",
+   "match": 2.59,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.59,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "fullscreen/default": {
+   "node": "48:54",
+   "symbol": "name=fullscreen, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 1.81,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 1.81,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "genre/default": {
+   "node": "6191:13585",
+   "symbol": "name=genre, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 1.31,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 1.31,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "grid/default": {
+   "node": "2107:6523",
+   "symbol": "name=grid, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 4.79,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 4.79,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "grid/dim": {
+   "node": "2107:6523",
+   "symbol": "name=grid, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 4.79,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 4.79,
+   "colours": {
+    "#8F8F8F": "#6B6B6B"
+   }
+  },
+  "HDR/default": {
+   "node": "2146:9032",
+   "symbol": "name=HDR, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 7.81,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 7.81,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "home/active": {
+   "node": "87:1026",
+   "symbol": "name=home, direction=default, state=active, value=default, EQ=default, two-tone=no",
+   "match": 1.5,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 1.5,
+   "colours": {
+    "#D37918": "#D37918"
+   }
+  },
+  "home/default": {
+   "node": "70:828",
+   "symbol": "name=home, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 3.05,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 3.05,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "home/selected": {
+   "node": "470:597",
+   "symbol": "name=home, direction=default, state=selected, value=default, EQ=default, two-tone=no",
+   "match": 1.21,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 1.21,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "hotkeys/active": {
+   "node": "1089:4464",
+   "symbol": "name=hotkeys, direction=default, state=active, value=default, EQ=default, two-tone=no",
+   "match": 3.89,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 3.89,
+   "colours": {
+    "#D37918": "#D37918"
+   }
+  },
+  "hotkeys/default": {
+   "node": "1089:4450",
+   "symbol": "name=hotkeys, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 0.87,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.87,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "info/default": {
+   "node": "2139:8985",
+   "symbol": "name=info, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 3.0,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 3.0,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "interface/active": {
+   "node": "1088:4044",
+   "symbol": "name=interface, direction=default, state=active, value=default, EQ=default, two-tone=no",
+   "match": 0.99,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.99,
+   "colours": {
+    "#D37918": "#D37918"
+   }
+  },
+  "interface/default": {
+   "node": "999:4960",
+   "symbol": "name=interface, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 0.98,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.98,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "link/active": {
+   "node": "774:1075",
+   "symbol": "name=link, direction=default, state=active, value=default, EQ=default, two-tone=no",
+   "match": 2.14,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.14,
+   "colours": {
+    "#D37918": "#D37918"
+   }
+  },
+  "link/default": {
+   "node": "774:1038",
+   "symbol": "name=link, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 2.73,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.73,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "list/default": {
+   "node": "2107:6531",
+   "symbol": "name=list, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 2.14,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.14,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "list/dim": {
+   "node": "2107:6531",
+   "symbol": "name=list, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 2.14,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.14,
+   "colours": {
+    "#8F8F8F": "#6B6B6B"
+   }
+  },
+  "lists/active": {
+   "node": "467:492",
+   "symbol": "name=lists, direction=default, state=active, value=default, EQ=default, two-tone=no",
+   "match": 2.01,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.01,
+   "colours": {
+    "#D37918": "#D37918"
+   }
+  },
+  "lists/default": {
+   "node": "217:191",
+   "symbol": "name=lists, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 0.19,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.19,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "maximize/default": {
+   "node": "48:51",
+   "symbol": "name=maximize, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 2.62,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.62,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "minimize/default": {
+   "node": "48:46",
+   "symbol": "name=minimize, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 0.05,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.05,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "more/default": {
+   "node": "247:418",
+   "symbol": "name=more, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 0.56,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.56,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "more/dim": {
+   "node": "247:418",
+   "symbol": "name=more, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 0.56,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.56,
+   "colours": {
+    "#8F8F8F": "#6B6B6B"
+   }
+  },
+  "move/default": {
+   "node": "463:417",
+   "symbol": "name=move, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 0.1,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.1,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "music/default": {
+   "node": "999:4806",
+   "symbol": "name=music, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 2.33,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.33,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "new-folder/default": {
+   "node": "2139:9022",
+   "symbol": "name=new folder, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 1.06,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 1.06,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "next/default": {
+   "node": "45:12",
+   "symbol": "name=next, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 2.95,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.95,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "open/default": {
+   "node": "330:267",
+   "symbol": "name=open, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 3.72,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 3.72,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "open/dim": {
+   "node": "330:267",
+   "symbol": "name=open, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 3.72,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 3.72,
+   "colours": {
+    "#8F8F8F": "#6B6B6B"
+   }
+  },
+  "paint/active": {
+   "node": "2150:9248",
+   "symbol": "name=paint, direction=default, state=active, value=default, EQ=default, two-tone=no",
+   "match": 2.08,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.08,
+   "colours": {
+    "#D37918": "#D37918"
+   }
+  },
+  "paint/default": {
+   "node": "2150:9212",
+   "symbol": "name=paint, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 2.13,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.13,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "pause/default": {
+   "node": "44:427",
+   "symbol": "name=pause, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 4.06,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 4.06,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "PiP/default": {
+   "node": "2139:8439",
+   "symbol": "name=PiP, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 5.79,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 5.79,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "play/default": {
+   "node": "44:419",
+   "symbol": "name=play, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 0.68,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.68,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "play/outline-active": {
+   "node": "4004:12338",
+   "symbol": "name=playback, direction=default, state=default, value=default, EQ=default, two-tone=yes",
+   "match": 5.23,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 5.23,
+   "colours": {
+    "#AB6314": [
+     "#D37918",
+     0.68
+    ]
+   }
+  },
+  "playback/active": {
+   "node": "3180:17978",
+   "symbol": "name=playback, direction=default, state=active, value=default, EQ=default, two-tone=no",
+   "match": 2.42,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.42,
+   "colours": {
+    "#D37918": "#D37918"
+   }
+  },
+  "playback/default": {
+   "node": "999:4802",
+   "symbol": "name=playback, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 0.76,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.76,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "playback-settings/active": {
+   "node": "2238:9232",
+   "symbol": "name=playback settings, direction=default, state=active, value=default, EQ=default, two-tone=no",
+   "match": 1.9,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 1.9,
+   "colours": {
+    "#D37918": "#D37918"
+   }
+  },
+  "playback-settings/default": {
+   "node": "2230:9222",
+   "symbol": "name=playback settings, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 2.61,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.61,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "playlist/active": {
+   "node": "858:5098",
+   "symbol": "name=playlist, direction=default, state=active, value=default, EQ=default, two-tone=no",
+   "match": 2.11,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.11,
+   "colours": {
+    "#D37918": "#D37918"
+   }
+  },
+  "playlist/default": {
+   "node": "42:357",
+   "symbol": "name=playlist, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 3.99,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 3.99,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "plugins/active": {
+   "node": "2516:9375",
+   "symbol": "name=plugins, direction=default, state=active, value=default, EQ=default, two-tone=no",
+   "match": 3.34,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 3.34,
+   "colours": {
+    "#D37918": "#D37918"
+   }
+  },
+  "plugins/default": {
+   "node": "2516:9369",
+   "symbol": "name=plugins, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 1.43,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 1.43,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "preferences/active": {
+   "node": "1803:2965",
+   "symbol": "name=preferences, direction=default, state=active, value=default, EQ=default, two-tone=no",
+   "match": 1.6,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 1.6,
+   "colours": {
+    "#D37918": "#D37918"
+   }
+  },
+  "preferences/default": {
+   "node": "1803:2965",
+   "symbol": "name=preferences, direction=default, state=active, value=default, EQ=default, two-tone=no",
+   "match": 5.32,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 5.32,
+   "colours": {
+    "#D37918": "#8F8F8F"
+   }
+  },
+  "previous/default": {
+   "node": "45:18",
+   "symbol": "name=previous, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 1.22,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 1.22,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "privacy/active": {
+   "node": "3050:10424",
+   "symbol": "name=privacy, direction=default, state=active, value=default, EQ=default, two-tone=no",
+   "match": 2.19,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.19,
+   "colours": {
+    "#D37918": "#D37918"
+   }
+  },
+  "privacy/default": {
+   "node": "3046:10386",
+   "symbol": "name=privacy, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 1.71,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 1.71,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "profile/default": {
+   "node": "2437:14784",
+   "symbol": "name=profile, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 1.51,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 1.51,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "queue/default": {
+   "node": "2127:7523",
+   "symbol": "name=queue, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 3.53,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 3.53,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "quit/default": {
+   "node": "6073:14046",
+   "symbol": "name=quit, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 4.57,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 4.57,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "recent/active-accent": {
+   "node": "2493:9246",
+   "symbol": "name=recent, direction=default, state=default, value=default, EQ=default, two-tone=yes",
+   "match": 0.5,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.5,
+   "colours": {
+    "#8F8F8F": null,
+    "#AB6314": "#D37918"
+   }
+  },
+  "recent/active-grey": {
+   "node": "2493:9246",
+   "symbol": "name=recent, direction=default, state=default, value=default, EQ=default, two-tone=yes",
+   "match": 2.08,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.08,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#AB6314": null
+   }
+  },
+  "recent/active": {
+   "node": "2154:9699",
+   "symbol": "name=recent, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 2.51,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.51,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "recent/default": {
+   "node": "2154:9699",
+   "symbol": "name=recent, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 1.29,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 1.29,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "record/active": {
+   "node": "6571:16751",
+   "symbol": "name=record, direction=default, state=active, value=default, EQ=default, two-tone=no",
+   "match": 3.53,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 3.53,
+   "colours": {
+    "#D37918": "#D37918"
+   }
+  },
+  "record/default": {
+   "node": "2115:7482",
+   "symbol": "name=record, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 3.35,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 3.35,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "refresh/default": {
+   "node": "1622:3137",
+   "symbol": "name=refresh, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 3.33,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 3.33,
+   "colours": {
+    "#8F8F8F": [
+     "#8F8F8F",
+     0.88
+    ]
+   }
+  },
+  "remove/default": {
+   "node": "463:560",
+   "symbol": "name=remove, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 0.06,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.06,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "repeat/active": {
+   "node": null,
+   "why": "another drawing than the symbols of this name (closest 187:470: shape 9.4)"
+  },
+  "repeat/default": {
+   "node": "187:470",
+   "symbol": "name=repeat, direction=right, state=default, value=default, EQ=default, two-tone=no",
+   "match": 3.14,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 3.14,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "replay/default": {
+   "node": "1919:9572",
+   "symbol": "name=replay, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 2.22,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.22,
+   "colours": {
+    "#8F8F8F": [
+     "#8F8F8F",
+     0.87
+    ]
+   }
+  },
+  "right-sidebar/default": {
+   "node": "6586:17393",
+   "symbol": "name=sidebar, direction=right, state=default, value=default, EQ=default, two-tone=no",
+   "match": 2.14,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.14,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "save/default": {
+   "node": null,
+   "why": "Figma's SVG export of 2459:9542 loses its detail (a boolean shape's stroke)"
+  },
+  "scope/default-accent": {
+   "node": "2139:8064",
+   "symbol": "name=scope, direction=default, state=default, value=default, EQ=default, two-tone=yes",
+   "match": 0.16,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.16,
+   "colours": {
+    "#8F8F8F": null,
+    "#AB6314": "#AB6314"
+   }
+  },
+  "scope/default-grey": {
+   "node": "2139:8064",
+   "symbol": "name=scope, direction=default, state=default, value=default, EQ=default, two-tone=yes",
+   "match": 0.13,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.13,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#AB6314": null
+   }
+  },
+  "scope/default": {
+   "node": "2139:8064",
+   "symbol": "name=scope, direction=default, state=default, value=default, EQ=default, two-tone=yes",
+   "match": 0.29,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.29,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#AB6314": "#AB6314"
+   }
+  },
+  "search/default": {
+   "node": "856:2147",
+   "symbol": "name=search, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 2.41,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.41,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "search/dim": {
+   "node": "856:2147",
+   "symbol": "name=search, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 2.41,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.41,
+   "colours": {
+    "#8F8F8F": "#6B6B6B"
+   }
+  },
+  "settings/active": {
+   "node": "470:507",
+   "symbol": "name=settings, direction=default, state=active, value=default, EQ=default, two-tone=no",
+   "match": 2.1,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.1,
+   "colours": {
+    "#D37918": "#D37918"
+   }
+  },
+  "settings/default": {
+   "node": "42:355",
+   "symbol": "name=settings, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 2.04,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.04,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "shuffle/active": {
+   "node": null,
+   "why": "another drawing than the symbols of this name (closest 2461:9618: shape 11.3)"
+  },
+  "shuffle/default": {
+   "node": "187:474",
+   "symbol": "name=shuffle, direction=right, state=default, value=default, EQ=default, two-tone=no",
+   "match": 2.98,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.98,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "sidebar/active": {
+   "node": "87:1041",
+   "symbol": "name=sidebar, direction=default, state=active, value=default, EQ=default, two-tone=no",
+   "match": 2.68,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.68,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "sidebar/default": {
+   "node": "69:814",
+   "symbol": "name=sidebar, direction=left, state=default, value=default, EQ=default, two-tone=no",
+   "match": 2.56,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.56,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "snapshot/default": {
+   "node": "2115:7492",
+   "symbol": "name=snapshot, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 5.8,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 5.8,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "songs/active": {
+   "node": "87:1009",
+   "symbol": "name=songs, direction=default, state=active, value=default, EQ=default, two-tone=no",
+   "match": 4.83,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 4.83,
+   "colours": {
+    "#D37918": "#D37918"
+   }
+  },
+  "songs/default": {
+   "node": "71:851",
+   "symbol": "name=songs, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 5.93,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 5.93,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "songs/selected": {
+   "node": "470:592",
+   "symbol": "name=songs, direction=default, state=selected, value=default, EQ=default, two-tone=no",
+   "match": 4.46,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 4.46,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "sort/active-accent": {
+   "node": null,
+   "why": "26 x 25: the glyph with a badge of the screen it was cut from, not a symbol of 42:356"
+  },
+  "sort/active-grey": {
+   "node": null,
+   "why": "26 x 25: the glyph with a badge of the screen it was cut from, not a symbol of 42:356"
+  },
+  "sort/active": {
+   "node": null,
+   "why": "26 x 25: the glyph with a badge of the screen it was cut from, not a symbol of 42:356"
+  },
+  "sort/default": {
+   "node": "463:564",
+   "symbol": "name=sort, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 1.69,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 1.69,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "sort/dim": {
+   "node": "463:564",
+   "symbol": "name=sort, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 1.69,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 1.69,
+   "colours": {
+    "#8F8F8F": "#6B6B6B"
+   }
+  },
+  "spectrometer/default-accent": {
+   "node": "2138:8026",
+   "symbol": "name=spectometer, direction=default, state=default, value=default, EQ=default, two-tone=yes",
+   "match": 0.93,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.93,
+   "colours": {
+    "#8F8F8F": null,
+    "#AB6314": "#AB6314"
+   }
+  },
+  "spectrometer/default-grey": {
+   "node": "2138:8026",
+   "symbol": "name=spectometer, direction=default, state=default, value=default, EQ=default, two-tone=yes",
+   "match": 1.78,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 1.78,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#AB6314": null
+   }
+  },
+  "spectrometer/default": {
+   "node": "2138:8026",
+   "symbol": "name=spectometer, direction=default, state=default, value=default, EQ=default, two-tone=yes",
+   "match": 2.16,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.16,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#AB6314": "#AB6314"
+   }
+  },
+  "spectrum/default-accent": {
+   "node": "2139:8048",
+   "symbol": "name=spectrum, direction=default, state=default, value=default, EQ=default, two-tone=yes",
+   "match": 0.11,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.11,
+   "colours": {
+    "#8F8F8F": null,
+    "#AB6314": "#AB6314"
+   }
+  },
+  "spectrum/default-grey": {
+   "node": "2139:8048",
+   "symbol": "name=spectrum, direction=default, state=default, value=default, EQ=default, two-tone=yes",
+   "match": 0.29,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.29,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#AB6314": null
+   }
+  },
+  "spectrum/default": {
+   "node": "2139:8048",
+   "symbol": "name=spectrum, direction=default, state=default, value=default, EQ=default, two-tone=yes",
+   "match": 0.4,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.4,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#AB6314": "#AB6314"
+   }
+  },
+  "spectrum/dim": {
+   "node": "2139:8048",
+   "symbol": "name=spectrum, direction=default, state=default, value=default, EQ=default, two-tone=yes",
+   "match": 0.4,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.4,
+   "colours": {
+    "#8F8F8F": "#6B6B6B",
+    "#AB6314": "#6B6B6B"
+   }
+  },
+  "speed/active": {
+   "node": "2115:7391",
+   "symbol": "name=speed, direction=default, state=active, value=default, EQ=default, two-tone=no",
+   "match": 3.06,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 3.06,
+   "colours": {
+    "#D37918": "#D37918"
+   }
+  },
+  "speed/default": {
+   "node": "2115:7386",
+   "symbol": "name=speed, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 2.98,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.98,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "stop/default": {
+   "node": "187:322",
+   "symbol": "name=stop, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 2.51,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.51,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "streaming/active": {
+   "node": "477:1202",
+   "symbol": "name=streaming, direction=default, state=active, value=default, EQ=default, two-tone=no",
+   "match": 3.31,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 3.31,
+   "colours": {
+    "#D37918": "#D37918"
+   }
+  },
+  "streaming/default": {
+   "node": "70:833",
+   "symbol": "name=streaming, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 2.76,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.76,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "streaming/selected": {
+   "node": "477:1208",
+   "symbol": "name=streaming, direction=default, state=selected, value=default, EQ=default, two-tone=no",
+   "match": 2.68,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.68,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "subtitle/default": {
+   "node": null,
+   "why": "Figma's SVG export of 1911:8286, 2461:9663 loses its detail (a boolean shape's stroke)"
+  },
+  "subtitle/dim": {
+   "node": null,
+   "why": "Figma's SVG export of 1911:8286, 2461:9663 loses its detail (a boolean shape's stroke)"
+  },
+  "subtitles/active": {
+   "node": "467:497",
+   "symbol": "name=subtitles, direction=default, state=active, value=default, EQ=default, two-tone=no",
+   "match": 2.83,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.83,
+   "colours": {
+    "#D37918": "#D37918"
+   }
+  },
+  "subtitles/default": {
+   "node": "42:398",
+   "symbol": "name=subtitles, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 0.9,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.9,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "swap/default": {
+   "node": "1915:8362",
+   "symbol": "name=swap, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 2.42,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.42,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "thumbnail/default": {
+   "node": "2404:9198",
+   "symbol": "name=thumbnail, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 0.08,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.08,
+   "colours": {
+    "#303030": "#303030"
+   }
+  },
+  "tv/active": {
+   "node": "477:1101",
+   "symbol": "name=tv, direction=default, state=active, value=default, EQ=default, two-tone=no",
+   "match": 1.83,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 1.83,
+   "colours": {
+    "#D37918": "#D37918"
+   }
+  },
+  "tv/default": {
+   "node": "477:1096",
+   "symbol": "name=tv, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 2.39,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.39,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "tv/selected": {
+   "node": "477:1107",
+   "symbol": "name=tv, direction=default, state=selected, value=default, EQ=default, two-tone=no",
+   "match": 2.19,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.19,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "ui/default-accent": {
+   "node": "6075:14088",
+   "symbol": "name=ui, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 0.49,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.49,
+   "colours": {
+    "#8F8F8F": null,
+    "#AB6314": [
+     "#AB6314",
+     0.89
+    ]
+   }
+  },
+  "ui/default-grey": {
+   "node": "6075:14088",
+   "symbol": "name=ui, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 0.32,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.32,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#AB6314": null
+   }
+  },
+  "ui/default": {
+   "node": "6075:14088",
+   "symbol": "name=ui, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 0.81,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.81,
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#AB6314": [
+     "#AB6314",
+     0.89
+    ]
+   }
+  },
+  "video/active": {
+   "node": "1102:5055",
+   "symbol": "name=video, direction=default, state=active, value=default, EQ=default, two-tone=no",
+   "match": 2.59,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.59,
+   "colours": {
+    "#D37918": "#D37918"
+   }
+  },
+  "video/default": {
+   "node": null,
+   "why": "Figma's SVG export of 999:4810 loses its detail (a boolean shape's stroke)"
+  },
+  "video/dim": {
+   "node": null,
+   "why": "Figma's SVG export of 999:4810 loses its detail (a boolean shape's stroke)"
+  },
+  "videos/active": {
+   "node": "87:1015",
+   "symbol": "name=videos, direction=default, state=active, value=default, EQ=default, two-tone=no",
+   "match": 3.89,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 3.89,
+   "colours": {
+    "#D37918": "#D37918"
+   }
+  },
+  "videos/default": {
+   "node": "71:857",
+   "symbol": "name=videos, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 5.89,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 5.89,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "videos/selected": {
+   "node": "470:587",
+   "symbol": "name=videos, direction=default, state=selected, value=default, EQ=default, two-tone=no",
+   "match": 4.81,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 4.81,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "view/active": {
+   "node": null,
+   "why": "26 x 25: the glyph with a badge of the screen it was cut from, not a symbol of 42:356"
+  },
+  "view/default": {
+   "node": "856:3212",
+   "symbol": "name=view, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 0.5,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.5,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "vumeter/default-accent": {
+   "node": null,
+   "why": "the speed glyph (2115:7386) with its needle in the accent dim, drawn in this repository for the VU meter (no Figma symbol)"
+  },
+  "vumeter/default-grey": {
+   "node": null,
+   "why": "the speed glyph (2115:7386) with its needle in the accent dim, drawn in this repository for the VU meter (no Figma symbol)"
+  },
+  "vumeter/default": {
+   "node": null,
+   "why": "the speed glyph (2115:7386) with its needle in the accent dim, drawn in this repository for the VU meter (no Figma symbol)"
+  },
+  "waveform/default-accent": {
+   "node": "2139:8078",
+   "symbol": "name=waveform, direction=default, state=default, value=default, EQ=default, two-tone=yes",
+   "match": 0.12,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.12,
+   "colours": {
+    "#AB6314": "#AB6314",
+    "#8F8F8F": null
+   }
+  },
+  "waveform/default-grey": {
+   "node": "2139:8078",
+   "symbol": "name=waveform, direction=default, state=default, value=default, EQ=default, two-tone=yes",
+   "match": 0.16,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.16,
+   "colours": {
+    "#AB6314": null,
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "waveform/default": {
+   "node": "2139:8078",
+   "symbol": "name=waveform, direction=default, state=default, value=default, EQ=default, two-tone=yes",
+   "match": 0.28,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 0.28,
+   "colours": {
+    "#AB6314": "#AB6314",
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "window/default": {
+   "node": null,
+   "why": "Figma's SVG export of 2107:6312 loses its detail (a boolean shape's stroke)"
+  },
+  "wrench/default": {
+   "node": "2107:6319",
+   "symbol": "name=wrench, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 2.93,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.93,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  },
+  "zoom/default": {
+   "node": "2154:9680",
+   "symbol": "name=zoom, direction=default, state=default, value=default, EQ=default, two-tone=no",
+   "match": 2.15,
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "shape": 2.15,
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   }
+  }
+ }
+}

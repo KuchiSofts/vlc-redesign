@@ -165,6 +165,8 @@ Controls.Popup {
                             readonly property bool twoTone: visible && !VLCStyle.redesign.defaultAccent
                             source: visible ? row.iconDir + (twoTone ? "/default-grey.png" : "/default.png") : ""
                             Impl.ColorImage {
+                                // drawn at the size shown (an SVG: sharp at any scale and zoom)
+                                sourceSize: Qt.size(width, height)
                                 anchors.fill: parent
                                 visible: modeIcon.twoTone
                                 source: visible ? row.iconDir + "/default-accent.png" : ""
@@ -172,6 +174,8 @@ Controls.Popup {
                             }
                         }
                         Impl.ColorImage {
+                            // drawn at the size shown (an SVG: sharp at any scale and zoom)
+                            sourceSize: Qt.size(width, height)
                             visible: row.checked
                             anchors.right: parent.right
                             anchors.rightMargin: root.px(13)

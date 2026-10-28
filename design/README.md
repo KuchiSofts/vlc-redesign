@@ -7,7 +7,7 @@ generate their own files from this folder instead of copying values by hand.
 | Path | What |
 |---|---|
 | [`tokens.json`](tokens.json) | The design tokens: colours (dark and light), accents and their rule, fonts, sizes and spacing, corner radii, icon sizes, shadows, opacities, window sizes |
-| [`icons/`](icons/) | The icon set, per name and state (PNG with `@2x`, SVG where it exists), with [`index.json`](icons/index.json) and a [preview](icons/README.md) |
+| [`icons/`](icons/) | The icon set, per name and state (the SVG of every icon from Figma, and the PNG with `@2x` it replaced), with [`index.json`](icons/index.json) and a [preview](icons/README.md) |
 | [`fonts/`](fonts/) | Inter 3.19 (modified) and DM Mono, with their licenses and [a note on the change to Inter](fonts/README.md) |
 | [`build/`](build/) | Generated: `tokens.css` (CSS variables), `colors.xml` (Android), `Tokens.swift` (Swift) |
 | [`tools/`](tools/) | `export.py` (writes `build/`), `sync_assets.py` (copies icons and fonts from the app), `check_qml.py` (the CI check) |

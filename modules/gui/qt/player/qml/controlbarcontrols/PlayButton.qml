@@ -206,6 +206,8 @@ T.Control {
         // Figma "play": the triangle in the 22 px between the paddings of
         // 17 and 15 px, the pause bars in the middle
         Image {
+            // drawn at the size shown (an SVG: sharp at any scale and zoom)
+            sourceSize: Qt.size(width, height)
             anchors.centerIn: parent
             anchors.horizontalCenterOffset: visible ? VLCStyle.dp(1, VLCStyle.scale) : 0
             source: "qrc:/redesign/play.svg"

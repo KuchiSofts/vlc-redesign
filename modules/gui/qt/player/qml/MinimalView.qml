@@ -104,6 +104,8 @@ FocusScope {
         focus: visible
 
         Image {
+            // drawn at the size shown (an SVG: sharp at any scale and zoom)
+            sourceSize: Qt.size(width, height)
             id: logo
 
             source: MainCtx.useXmasCone()

@@ -74,6 +74,20 @@ QPixmap ImageHelper::loadSvgToPixmap( const QString &path, qint32 i_width, qint3
     return QPixmap::fromImage(image);
 }
 
+QImage ImageHelper::loadSvgToImage(const QString &path, const QSize &size)
+{
+    QImage image;
+    const auto svgHandler = QScopedPointer<QImageIOHandler>(createSvgImageIOHandler());
+    QFile file(path);
+    if (!svgHandler || !file.open(QFile::ReadOnly))
+        return image;
+    svgHandler->setDevice(&file);
+    svgHandler->setOption(QImageIOHandler::ScaledSize, size);
+    if (svgHandler->canRead())
+        svgHandler->read(&image);
+    return image;
+}
+
 QImageIOHandler *ImageHelper::createSvgImageIOHandler()
 {
     static const auto plugin = []() {

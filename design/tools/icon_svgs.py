@@ -601,12 +601,14 @@ def write_report(rows):
            "  frame 42:356), when the state shows the whole symbol; **Qt-Figma** the same for the SVG.",
            "- **offset**: the subpixel position the PNG was cut at (an instance placed between pixels),",
            "  kept in the SVG.",
-           "- **app**: the app ships the SVG (`assets.qrc`): the exact and same-drawing states but the",
-           "  empty ones. It keeps the PNG at 100 % and takes the SVG on a denser screen.", "",
+           "- **app**: the app ships the SVG (`assets.qrc`, `icon_svgs.py register`) and draws it in place",
+           "  of the PNG at every scale and interface zoom (the PNG stays as a fallback).", "",
            "No SVG drawn by QtSvg is the PNG pixel for pixel: Figma's rasteriser antialiases otherwise, and",
-           "most PNGs were cut from the design's screens rather than exported from the symbol. The close",
-           "states keep their PNG on every screen: their PNG is drawn heavier or lighter than Figma's own",
-           "render of the symbol, so the SVG would change their weight at 150 %.", "",
+           "most PNGs were cut from the design's screens rather than exported from the symbol. The SVG",
+           "follows Figma, shape and colour: where a PNG was drawn heavier or lighter than Figma draws the",
+           "symbol (the close states), the app now draws Figma's weight. The states made without the frame",
+           "(no node here: outlined boolean shapes, the badge icons, cast, the VU meter) are described in",
+           "`raster_svgs.json`.", "",
            f"**{len(rows)} states: " + ", ".join(f"{len(groups[c])} {c}" for c in CLASSES)
            + f", {len(none)} without SVG; {len(shipped)} in the app.**", ""]
 
@@ -634,6 +636,65 @@ def write_report(rows):
           + f", {len(none)} without SVG -> {REPORT.name}")
 
 
+AM = ROOT / "modules" / "gui" / "qt" / "buildsystem" / "resources.am"
+QT = ROOT / "modules" / "gui" / "qt"
+
+
+def cmd_register(args):
+    """Every PNG of pixmaps/redesign with an SVG next to it has that SVG in
+    assets.qrc (after the PNG, its alias with .svg) and resources.am; an SVG
+    entry standing for a PNG whose file is gone is removed. The app takes the
+    SVG in place of the PNG (RedesignIconInterceptor, RedesignIcons)."""
+    def svg_of(rel_png):
+        return QT / (rel_png[:-4] + ".svg")
+
+    qrc = QRC.read_text("utf-8")
+    lines = qrc.split("\n")
+    out, added, removed = [], 0, 0
+    # (aliases repeat across the prefixes: the files are what is listed)
+    files = set(re.findall(r'<file alias="[^"]+">([^<]+)</file>', qrc))
+    for i, line in enumerate(lines):
+        m = re.search(r'<file alias="([^"]+)\.svg">(pixmaps/redesign/[^<]+)\.svg</file>', line)
+        if m and (m.group(2) + ".png") in files and not svg_of(m.group(2) + ".png").exists():
+            removed += 1
+            continue
+        out.append(line)
+        m = re.search(r'<file alias="([^"]+?)(@2x)?\.png">(pixmaps/redesign/[^<]+?)(@2x)?\.png</file>', line)
+        if not m:
+            continue
+        alias, rel = m.group(1), m.group(3) + ".png"
+        nxt = lines[i + 1] if i + 1 < len(lines) else ""
+        # after the @2x line when the 1x one is followed by it
+        if not m.group(2) and f'alias="{alias}@2x.png"' in nxt:
+            continue
+        if svg_of(rel).exists() and m.group(3) + ".svg" not in files:
+            indent = line[:len(line) - len(line.lstrip())]
+            out.append(f'{indent}<file alias="{alias}.svg">{m.group(3)}.svg</file>')
+            files.add(m.group(3) + ".svg")
+            added += 1
+    QRC.write_text("\n".join(out), "utf-8", newline="\n")
+
+    am = AM.read_text("utf-8")
+    listed = set(re.findall(r"pixmaps/redesign/\S+?\.svg", am))
+    am_added = 0
+
+    def add(m):
+        nonlocal am_added
+        svg = m.group(1) + ".svg"
+        if svg_of(m.group(1) + ".png").exists() and svg not in listed:
+            listed.add(svg)
+            am_added += 1
+            return m.group(0) + " \t" + svg
+        return m.group(0)
+    am = re.sub(r"(pixmaps/redesign/[^\s@]+?)\.png(?:[ \t]+pixmaps/redesign/\S+?@2x\.png)?(?=\s)", add, am)
+    gone = sorted(s for s in listed if not (QT / s).exists())
+    for s in gone:
+        am = re.sub(r"[ \t]+" + re.escape(s) + r"(?=[ \t])", "", am)
+    AM.write_text(am, "utf-8", newline="\n")
+    print(f"assets.qrc: {added} added, {removed} removed; resources.am: {am_added} added, {len(gone)} removed")
+    return 0
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     sub = parser.add_subparsers(dest="command", required=True)
@@ -643,8 +704,10 @@ def main():
     p = sub.add_parser("compare")
     p.add_argument("--figma", help="Figma's PNG render of the frame 42:356 at 1x, without its background")
     p.add_argument("--json", help="also write the numbers to this file")
+    sub.add_parser("register")
     args = parser.parse_args()
-    return {"map": cmd_map, "extract": cmd_extract, "compare": cmd_compare}[args.command](args)
+    return {"map": cmd_map, "extract": cmd_extract, "compare": cmd_compare,
+            "register": cmd_register}[args.command](args)
 
 
 if __name__ == "__main__":

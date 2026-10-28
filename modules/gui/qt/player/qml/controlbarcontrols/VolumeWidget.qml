@@ -127,6 +127,8 @@ T.Pane {
                 implicitWidth: VLCStyle.redesign.iconSize
                 implicitHeight: VLCStyle.redesign.iconSize
                 Impl.IconImage {
+                    // drawn at the size shown (an SVG: sharp at any scale and zoom)
+                    sourceSize: Qt.size(width, height)
                     anchors.centerIn: parent
                     width: VLCStyle.redesign.iconSize
                     height: width
@@ -195,6 +197,8 @@ T.Pane {
                 height: volControl.availableHeight
 
                 Image {
+                    // drawn at the size shown (an SVG: sharp at any scale and zoom)
+                    sourceSize: Qt.size(width, height)
                     anchors.centerIn: parent
                     // Drawn for the dark theme (#090909); Figma "Player -
                     // Light": #888888
@@ -214,6 +218,8 @@ T.Pane {
                     clip: true
 
                     Image {
+                        // drawn at the size shown (an SVG: sharp at any scale and zoom)
+                        sourceSize: Qt.size(width, height)
                         // the gradient under black at 20 %; Figma "Player -
                         // Light": under white at 20 %
                         source: VLCStyle.palette.isDark

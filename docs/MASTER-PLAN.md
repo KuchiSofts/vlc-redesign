@@ -251,7 +251,7 @@ What comes first, and why. Each step starts when what it needs is done.
 | 3  | Community setup: in-app *Suggest an idea* / *Report a problem* (13.12), hub, Discussions, board | decisions 1 and 9 | Feedback must land in the right place before the announcement | 🟡 |
 | 4  | Release 0.3.0 and announce it (0.3.0 and 0.3.1 out 2026-10-25; 0.3.2 next) | quality gates, steps 1 and 3 | Users get the fixes; the community side is ready for them        | 🟡     |
 | 5  | `platforms.yml`, platform bar, website (built 2026-10-28; Pages to enable) | step 3                     | In place before a second platform exists, so it shows everywhere     | 🟡     |
-| 6  | Design tokens exported (`design/`: tokens, icons, fonts) — `design-1.0` and its CI check in (2026-10-28); left: SVG for the 116 PNG glyphs, the sync workflow to the sister repositories, the §6 differences | step 2 (values checked) | Every other platform reads them; no copying errors | 🟡 |
+| 6  | Design tokens exported (`design/`: tokens, icons, fonts) — `design-1.0` and its CI check in (2026-10-28); every icon an SVG from Figma, drawn sharp at every scale and zoom (2026-10-29); left: the sync workflow to the sister repositories, the §6 differences | step 2 (values checked) | Every other platform reads them; no copying errors | 🟡 |
 | 7  | Linux, then macOS, then Windows ARM64 (macOS started 2026-10-28: build script and CI, first run after the push) | CI; decision 3 for macOS        | Same code base: the cheapest new platforms first                     | 🟡     |
 | 8  | Android                                                               | step 6, decision 6              | The largest new audience (phones and Android TV)                     | 🔴     |
 | 9  | Samsung TV receiver                                                   | step 6, decision 5              | Builds on the casting work and the real-TV testing                   | 🔴     |
@@ -1371,10 +1371,16 @@ compares `VLCStyle.qml` with them; Android, iOS and the TV generate their own fi
 request in each repository when they change. They have their own version (`design-1.0`), named in every release.
 🟡 In place since 2026-10-28 ([`design/README.md`](../design/README.md)): `tokens.json` (203 tokens, 138 of them
 checked against 205 places in the code by `design/tools/check_qml.py`, the *Design tokens* job of
-`build-windows.yml`), `icons/` (405 files: the 116 glyphs of the Icon set as PNG per state with `@2x`, the
-SVG icons, the two-tone menu icons, `index.json` and a preview), `fonts/` (Inter modified, DM Mono, licenses),
-`build/` (`tokens.css`, `colors.xml`, `Tokens.swift` from `design/tools/export.py`). The Icon set's glyphs have no
-SVG source in the repository (PNG exports only); the sync workflow comes with the first sister repository.
+`build-windows.yml`), `icons/` (677 files: the 116 glyphs of the Icon set as PNG per state with `@2x` and their
+SVG sources, the other raster pieces and their SVGs, the SVG icons, the two-tone menu icons, `index.json` and a
+preview), `fonts/` (Inter modified, DM Mono, licenses), `build/` (`tokens.css`, `colors.xml`, `Tokens.swift` from
+`design/tools/export.py`). 🟢 Every raster has its SVG from Figma (2026-10-29): the 224 glyph states, cut from
+Figma's SVG export of the Icon set by `design/tools/icon_svgs.py` and compared with their PNG in
+[`design/tools/icon_svgs_report.md`](../design/tools/icon_svgs_report.md) (51 exact, 131 the same drawing, 42
+close), and the 41 other pieces (`design/tools/raster_svgs.json`). The app draws the SVGs at the size shown times the
+scale and the zoom (QML, menus, window buttons, message boxes; checked at 100/150/200 % and zoom 3), the PNGs stay
+as a fallback; the app icon is a 10-size `.ico` from the vector. The sync workflow comes with the first sister
+repository.
 
 ### 13.3 Every repository shows every version
 
@@ -1574,8 +1580,8 @@ In an organization, a `.github` repository gives every repository these files by
 - 🟢 `platforms.yml` and the platform bar in the README (2026-10-25; the sister repositories read the same file)
 - 🟡 Website on GitHub Pages with OS detection (`site/`, 2026-10-28; the owner enables Pages: Settings → Pages →
   Source: GitHub Actions)
-- 🟡 Shared design assets in `design/` (2026-10-28: tokens, icons, fonts, generated CSS/Android/Swift, CI check;
-  left: SVG for the PNG glyphs, the sync workflow to the sister repositories)
+- 🟡 Shared design assets in `design/` (2026-10-28: tokens, icons and their SVG sources, fonts, generated
+  CSS/Android/Swift, CI check; left: the sync workflow to the sister repositories)
 - 🔴 Discussions on, five categories and their forms
 - 🟢 Issue forms: design mismatch, TV report, translation (2026-10-25)
 - 🟢 `labels.yml` and its sync workflow (ran on the 0.3.0 push)

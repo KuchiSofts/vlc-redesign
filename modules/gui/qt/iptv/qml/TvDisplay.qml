@@ -32,6 +32,10 @@ Widgets.PageExt {
     onViewChanged: MainCtx.setSettingValue("iptv/view", view)
 
     readonly property bool _hasSources: Iptv.sources.length > 0
+    // an Xtream Codes account with films, with series
+    readonly property bool _hasFilms: Iptv.sources.some(s => s.enabled && s.vod)
+    readonly property bool _hasSeries: Iptv.sources.some(s => s.enabled && s.series)
+    readonly property bool _library: view === "movies" || view === "series"
     readonly property bool _listMode: !MainCtx.gridView
 
     title: qsTr("TV")
@@ -70,6 +74,8 @@ Widgets.PageExt {
                 Layout.preferredHeight: VLCStyle.dp(34, VLCStyle.scale)
                 options: [{ text: qsTr("Channels"), value: "channels" },
                           { text: qsTr("Guide"), value: "guide" }]
+                         .concat(root._hasFilms ? [{ text: qsTr("Films"), value: "movies" }] : [])
+                         .concat(root._hasSeries ? [{ text: qsTr("Series"), value: "series" }] : [])
                 value: root.view
                 onChosen: (value) => root.view = value
             }
@@ -217,14 +223,14 @@ Widgets.PageExt {
         // provider's (chips of the segmented controls of the design)
         ListView {
             id: chips
-            visible: root._hasSources
+            visible: root._hasSources && !root._library
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.top: parent.top
             anchors.leftMargin: root.px(20)
             anchors.rightMargin: root.px(20)
             anchors.topMargin: root.px(16)
-            height: root.px(30)
+            height: visible ? root.px(30) : 0
             orientation: ListView.Horizontal
             spacing: root.px(8)
             clip: true
@@ -496,6 +502,17 @@ Widgets.PageExt {
                 color: root.c("#6B6B6B", "#4d4d4d")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.redesign.fontMedium
+            }
+
+            Loader {
+                anchors.fill: parent
+                active: root._library
+                visible: active
+                source: "qrc:///qt/qml/VLC/Network/TvLibraryView.qml"
+                onLoaded: {
+                    item.kind = Qt.binding(() => root.view === "series" ? "series" : "movies")
+                    item.search = Qt.binding(() => root.search.pattern)
+                }
             }
 
             Loader {

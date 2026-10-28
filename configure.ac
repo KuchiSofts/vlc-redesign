@@ -4398,18 +4398,19 @@ AS_IF([test "${enable_qt}" != "no"], [
       AC_SUBST([QT_LDFLAGS])
       AC_SUBST([QT_MOC_INCLUDE_DIRS])
 
-      dnl The Live TV (IPTV) add-on, a plugin of its own: QtCore only
+      dnl The Live TV (IPTV) add-on, a plugin of its own: QtCore only (the
+      dnl paths relative to modules/, where its objects are compiled)
       AS_IF([test "${enable_iptv}" != "no"], [
         IPTV_QT_LIBS=$(${PYTHON3} ${srcdir}/modules/gui/qt/scripts/static_dirs.py \
           --qmake "${QMAKE6}" --qtconf "${with_qtconf}" \
           --pro ${srcdir_abs}/modules/misc/iptv/iptv.pro \
-          --builddir ${ac_pwd}/modules/gui/qt \
+          --builddir ${ac_pwd}/modules \
           --libs \
           ${qmake_additional_params}) && \
         IPTV_QT_CFLAGS=$(${PYTHON3} ${srcdir}/modules/gui/qt/scripts/static_dirs.py \
           --qmake "${QMAKE6}" --qtconf "${with_qtconf}" \
           --pro ${srcdir_abs}/modules/misc/iptv/iptv.pro \
-          --builddir ${ac_pwd}/modules/gui/qt \
+          --builddir ${ac_pwd}/modules \
           --cflags \
           ${qmake_additional_params}) && \
         have_iptv="yes"

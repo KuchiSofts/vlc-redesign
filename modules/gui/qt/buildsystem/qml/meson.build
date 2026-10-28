@@ -206,6 +206,7 @@ qml_modules += {
         '../../iptv/qml/TvChannelRow.qml',
         '../../iptv/qml/TvDisplay.qml',
         '../../iptv/qml/TvGuideView.qml',
+        '../../iptv/qml/TvLibraryView.qml',
         '../../iptv/qml/TvLogo.qml',
         '../../iptv/qml/TvPlayerOverlay.qml',
         '../../iptv/qml/TvProgrammeDialog.qml',

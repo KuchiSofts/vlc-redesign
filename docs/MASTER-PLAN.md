@@ -12,6 +12,16 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-10-28):
 
+- 🟡 **Live TV** (branch `feature/iptv`): an add-on of its own, `modules/misc/iptv` (`libiptv_plugin`, QtCore,
+  capability `iptv`, the JSON API of `include/vlc_iptv.h`): M3U, Xtream Codes and XMLTV readers, downloads through
+  VLC's access modules, the cache on disk, the guide's descriptions kept on disk, catch-up addresses, the catalog
+  (built in, a newer one daily). The interface (`modules/gui/qt/iptv`) only looks the plugin up
+  (`module_exists`): the TV page (channels, guide, films and series), the sources dialog with the catalog, the
+  player's banner, number entry and channel list, Settings > TV. `iptv-enabled` on by default; the installer's
+  *Live TV (IPTV) add-on* component leaves the plugin out. A channel zapped makes no library entry
+  (`src/player/medialib.c`: no external media for a `no-save-recentplay` item). Test:
+  `extras/juxtopposed/iptv-parsers.cpp`. Left: the catalog's data, merging.
+
 - 🟡 **Final check before 0.3.2** (2026-10-28): VideoLAN's master merged to its latest (`32b160d9e9`), `feature/linux-pkg` and
   `feature/macos` merged; the redrawn tool windows looked at in build 10 (Media Statistics did not load: Canvas,
   fixed; Folder information: native path, no time-zone name); the Visualizer opens from Audio › Visualizations and its

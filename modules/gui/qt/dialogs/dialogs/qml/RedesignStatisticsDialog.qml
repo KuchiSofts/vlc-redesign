@@ -77,7 +77,7 @@ Widgets.RedesignDialog {
         Accessible.name: qsTr("Input bitrate")
 
         readonly property var points: stats.bitrates
-        readonly property real top: Math.max(1, stats.bitrateMax * 1.15)
+        readonly property real peak: Math.max(1, stats.bitrateMax * 1.15)
         readonly property real inset: VLCStyle.dp(8, VLCStyle.scale)
 
         // Bars of Rectangles: VLC's Qt Quick is built without Canvas (and
@@ -101,7 +101,7 @@ Widgets.RedesignDialog {
 
                     x: plot.width - (graph.points.length - index) * plot.step
                     width: Math.max(1, plot.step - VLCStyle.dp(1, VLCStyle.scale))
-                    height: Math.max(VLCStyle.dp(1, VLCStyle.scale), plot.height * value / graph.top)
+                    height: Math.max(VLCStyle.dp(1, VLCStyle.scale), plot.height * value / graph.peak)
                     y: plot.height - height
                     radius: VLCStyle.dp(1, VLCStyle.scale)
                     color: VLCStyle.redesign.accent

@@ -959,6 +959,12 @@ Tracks with checklists; a version number comes with the first published build.
   GPU (D3D12): no QML warning; zoom list and theme of the widget dialogs fixed
 - 🟡 Video on X11 needs `--gl=glx` in the Docker container through WSLg: EGL finds no DRM device there and draws
   black (upstream code; a PC with /dev/dri uses EGL)
+- 🟢 Onboarding, library (a folder indexed, thumbnails), dialogs, Settings, effects, queue, fullscreen, dark/light,
+  right to left and 1.5× scale shown through WSLg with no QML warning; idle CPU 0.0 %, paused 3.5 %
+- 🟢 VA-API on Intel Iris Xe (Ubuntu 24.04 server, tarball): H.264, HEVC 8/10-bit, VP9 0/2 decode in hardware,
+  0.3–0.7 s of CPU for 20 s of 4K instead of 5–19 s; 🟡 AV1 by VA-API crashes inside FFmpeg 6.1.1 of Ubuntu
+  (its own `ffmpeg -hwaccel vaapi` crashes the same way); `--dec-dev=none` or dav1d plays it
+- 🟡 Xvfb (no DRI3) can't use VA-API: the interface there decodes in software (1080p 84 % CPU, 4K HEVC drops)
 - 🔴 Docker build in CI
 - 🔴 Packages: AppImage, Flatpak (Flathub), .deb, .rpm, .tar.gz
 - 🔴 X11, Wayland; PipeWire, PulseAudio; VA-API, VDPAU; Intel, AMD, NVIDIA

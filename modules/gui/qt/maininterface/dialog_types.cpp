@@ -5,6 +5,7 @@
 #include "mainui.hpp"
 #include "dialogs/dialogs_provider.hpp"
 #include "dialogs/dialogs/dialogmodel.hpp"
+#include "dialogs/dialogs/redesign_tools.hpp"
 #include "dialogs/preferences/config_model.hpp"
 #include "dialogs/preferences/audio_output_preview.hpp"
 #include "dialogs/preferences/shortcuts_model.hpp"
@@ -39,6 +40,11 @@ void MainUI::registerDialogTypes()
         qmlRegisterType<ShortcutsModel>(uri, versionMajor, versionMinor, "ShortcutsModel");
         qmlRegisterType<VideoEffects>(uri, versionMajor, versionMinor, "VideoEffects");
         qmlRegisterType<HdrOutput>(uri, versionMajor, versionMinor, "HdrOutput");
+        // the small tool windows redrawn in QML
+        qmlRegisterType<MediaStatistics>(uri, versionMajor, versionMinor, "MediaStatistics");
+        qmlRegisterType<PluginListModel>(uri, versionMajor, versionMinor, "PluginListModel");
+        qmlRegisterType<ExtensionInfoModel>(uri, versionMajor, versionMinor, "ExtensionInfoModel");
+        qmlRegisterType<FolderInformation>(uri, versionMajor, versionMinor, "FolderInformation");
         qmlRegisterModule(uri, versionMajor, versionMinor);
         qmlProtectModule(uri, versionMajor);
     }

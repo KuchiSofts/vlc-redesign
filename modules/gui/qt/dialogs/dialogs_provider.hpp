@@ -314,9 +314,16 @@ public slots:
     void aboutDialog();
     // the classic About (licence, authors, thanks), behind the redesign's
     void nativeAboutDialog();
+    // Go to time, the plugins list, the statistics and the information of a
+    // folder: drawn in the window of the interface (SetupDialogs.qml), the
+    // classic windows without it (a skin)
     void gotoTimeDialog();
     void podcastConfigureDialog();
     void pluginDialog();
+    void statisticsDialog();
+    void folderInfoDialog(const QUrl &folder);
+    // Go to time: the time chosen (seconds)
+    void goToTime(double seconds);
     void epgDialog();
     void setPopupMenu();
     void destroyPopupMenu();
@@ -384,6 +391,10 @@ signals:
     void aboutRequested();
     void setupRequested();
     void effectsRequested(int page);
+    void gotoTimeRequested();
+    void pluginsRequested();
+    void statisticsRequested();
+    void folderInfoRequested(const QUrl &folder);
     void releaseMouseEvents();
     void showToolbarEditorDialog();
     // for the host given (RedesignMessageDialog.qml): show the message, or

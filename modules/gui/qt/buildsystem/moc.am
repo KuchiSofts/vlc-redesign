@@ -11,6 +11,7 @@ nodist_libqt_plugin_la_SOURCES = \
 	dialogs/firstrun/onboarding.moc.cpp \
 	dialogs/bookmarks/bookmarks.moc.cpp \
 	dialogs/dialogs/dialogmodel.moc.cpp \
+	dialogs/dialogs/redesign_tools.moc.cpp \
 	dialogs/dialogs_provider.moc.cpp \
 	dialogs/epg/EPGChannels.moc.cpp \
 	dialogs/epg/EPGProgram.moc.cpp \

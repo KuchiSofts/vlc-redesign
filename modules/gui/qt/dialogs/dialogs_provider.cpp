@@ -79,6 +79,7 @@
 #include <QSet>
 #include <QThreadPool>
 #include <QEventLoop>
+#include <QDesktopServices>
 #include <QTimer>
 #include <QWindow>
 
@@ -323,7 +324,37 @@ void DialogsProvider::messagesDialog(int page)
 
 void DialogsProvider::gotoTimeDialog()
 {
-    toggleDialogVisible(m_gotoTimeDialog);
+    if( p_intf->p_mi && !p_intf->b_isDialogProvider )
+        emit gotoTimeRequested();
+    else
+        toggleDialogVisible(m_gotoTimeDialog);
+}
+
+void DialogsProvider::goToTime( double seconds )
+{
+    if( !THEMIM->isStarted() || !THEMIM->isSeekable() || seconds < 0 )
+        return;
+    THEMIM->setTime( VLC_TICK_FROM_MS( static_cast<int64_t>( seconds * 1000 ) ) );
+}
+
+void DialogsProvider::statisticsDialog()
+{
+    if( p_intf->p_mi && !p_intf->b_isDialogProvider )
+    {
+        emit statisticsRequested();
+        return;
+    }
+    /* the Statistics tab of Media Information */
+    ensureDialog(m_mediaInfoDialog);
+    m_mediaInfoDialog->showTab( MediaInfoDialog::INPUTSTATS_PANEL );
+}
+
+void DialogsProvider::folderInfoDialog( const QUrl &folder )
+{
+    if( p_intf->p_mi && !p_intf->b_isDialogProvider )
+        emit folderInfoRequested( folder );
+    else
+        QDesktopServices::openUrl( folder );
 }
 
 #ifdef ENABLE_VLM
@@ -764,7 +795,10 @@ void DialogsProvider::podcastConfigureDialog()
 
 void DialogsProvider::pluginDialog()
 {
-    toggleDialogVisible(m_pluginDialog);
+    if( p_intf->p_mi && !p_intf->b_isDialogProvider )
+        emit pluginsRequested();
+    else
+        toggleDialogVisible(m_pluginDialog);
 }
 
 void DialogsProvider::epgDialog()

@@ -13,7 +13,7 @@ body:
     attributes:
       label: VLC Redesign version
       description: "⋯ menu → About VLC shows it (⋯ menu → Suggest an idea fills it in)"
-      placeholder: "0.3.2"
+      placeholder: "0.4.0"
   - type: dropdown
     id: area
     attributes:

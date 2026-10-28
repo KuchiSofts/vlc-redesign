@@ -17,7 +17,7 @@ its file types and the privacy texts and changes what names the program:
   smb) are left to them; the streaming ones stay;
 - macOS 12 at least (Qt 6.8).
 
-    make-info-plist.py --template share/Info.plist.in --version 0.3.2 \\
+    make-info-plist.py --template share/Info.plist.in --version 0.4.0 \\
         --vlc-version 4.0.0-dev --executable "VLC Redesign" --out Info.plist
 
 Python 3.8 or later, standard library only.

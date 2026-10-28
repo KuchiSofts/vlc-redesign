@@ -129,7 +129,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - **Updates:** a failed roll back is no longer reported as success; long paths, case-only renames and "nothing to
   apply" are handled; downloads must come from this project's releases, and a signed copy only accepts updates
   signed by the same publisher.
-- **Updates are signed by the project.** From 0.3.2 on, every release's checksums carry a signature by the
+- **Updates are signed by the project.** From 0.4.0 on, every release's checksums carry a signature by the
   project's own release key, and the app installs an update only when that signature is good: a release put on
   GitHub by anyone else (a stolen account or token) is refused with a message, never installed.
 - **Casting:** a TV marked unreachable can be retried; a failure to build the stream shows a message instead of
@@ -194,7 +194,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   `.dll` of the package is ARM64 (PE machine `0xAA64`); it has no OpenGL plugins (upstream's ARM64 contribs have
   no OpenGL: video goes through Direct3D 11) and no plugin cache when made on an x64 PC (the copy makes it at its
   first start; an install for everyone makes it during Setup). `make-release.ps1 -Arch aarch64` makes
-  `vlc-redesign-X.Y.Z-winarm64.zip` (80 MB for 0.3.2; x64 0.3.1: 107 MB), `vlc-redesign-X.Y.Z-winarm64-setup.exe`
+  `vlc-redesign-X.Y.Z-winarm64.zip` (80 MB for 0.4.0; x64 0.3.1: 107 MB), `vlc-redesign-X.Y.Z-winarm64-setup.exe`
   (45 MB; x64: 59 MB) (the same `.iss` with `/DArm64`:
   `ArchitecturesAllowed=arm64`, the same AppId) and `vlc-redesign-X.Y.Z-winarm64-delta-from-<old>.vrdelta`
   (`make-delta.py --platform winarm64`); `SHA256SUMS.txt` lists the files of both architectures of the version,
@@ -246,7 +246,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   r‖s, 64 bytes) of `SHA256SUMS.txt`. The updater downloads it with the checksums and checks it with Windows' CNG
   (`BCryptImportKeyPair` / `BCryptVerifySignature`, `bcrypt.dll` loaded from System32) against the public key in
   `modules/gui/qt/util/redesign_update_key.h` before it reads any checksum. For a release at or after
-  `FIRST_SIGNED_VERSION` (0.3.2) a missing or bad signature refuses the update, and the signed checksums must
+  `FIRST_SIGNED_VERSION` (0.4.0) a missing or bad signature refuses the update, and the signed checksums must
   name files of that very version; older targets keep the earlier checks. The same-publisher Authenticode check
   stays. `extras/juxtopposed/signing/release-key.ps1` makes the key (`new`; kept DPAPI-encrypted for the
   release PC's user in `%USERPROFILE%\source\vlc-redesign-keys`, outside every repository), signs, verifies and
@@ -286,7 +286,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   with appimagetool 1.9.1 and nfpm 2.47.0 checked by SHA-256. The .deb and .rpm install VLC in `/opt/vlc-redesign`
   with the command `vlc-redesign`, a desktop entry with VLC's media types, AppStream metainfo and the logo of
   `design/icons` in the hicolor sizes, so they install next to the distribution's `vlc`; their dependencies come
-  from the libraries the bundle takes from the system (glibc 2.38, GL/EGL/GBM/DRM, VA-API, VDPAU). For 0.3.2 on
+  from the libraries the bundle takes from the system (glibc 2.38, GL/EGL/GBM/DRM, VA-API, VDPAU). For 0.4.0 on
   x86_64: AppImage 165 MB, .deb and .rpm 155 MB. The bundle no longer has Qt's SQL drivers for database servers
   (their client libraries were missing), is named after its architecture, and `linux-qt68.Dockerfile` takes Qt's
   ARM64 build on aarch64. A new workflow (`build-linux.yml`) builds on x86_64 and ARM64 runners and tests the

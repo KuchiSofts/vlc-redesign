@@ -21,7 +21,7 @@
 # workflow, docs/code-signing.md): never built, its binaries never changed.
 # Needs Python with bsdiff4 for the small updates (pip install bsdiff4).
 # The release key must be on this PC (signing/release-key.ps1): the app takes
-# no release from 0.3.2 on without SHA256SUMS.txt.sig. -NoSumsSignature leaves
+# no release from 0.4.0 on without SHA256SUMS.txt.sig. -NoSumsSignature leaves
 # it out (the GitHub workflow, which never has the key: SHA256SUMS.txt is
 # signed here once the release files are final, docs/code-signing.md).
 param(

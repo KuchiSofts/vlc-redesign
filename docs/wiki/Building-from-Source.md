@@ -57,7 +57,7 @@ release mode) and makes in `-Dist`:
 | `vlc-redesign-<version>-win64.zip` | The portable package |
 | `vlc-redesign-<version>-win64-setup.exe` | The installer (Inno Setup) |
 | `SHA256SUMS.txt` | The SHA-256 of the files |
-| `SHA256SUMS.txt.sig` | Its signature by the project's release key (ECDSA P-256), which the app checks before any update from 0.3.2 on. Made with `extras\juxtopposed\signing\release-key.ps1`, whose key exists only on the release PC: without it, `make-release.ps1` stops (or leaves the signature out with `-NoSumsSignature`, and then the app installs none of these files) |
+| `SHA256SUMS.txt.sig` | Its signature by the project's release key (ECDSA P-256), which the app checks before any update from 0.4.0 on. Made with `extras\juxtopposed\signing\release-key.ps1`, whose key exists only on the release PC: without it, `make-release.ps1` stops (or leaves the signature out with `-NoSumsSignature`, and then the app installs none of these files) |
 | `vlc-redesign-<version>-delta-from-<old>.vrdelta` | [Small updates](Install-and-Update#small-updates) from the 3 latest releases whose zip is in `-Dist`; each is checked by applying it to the old release |
 
 | Parameter | Default | What it does |

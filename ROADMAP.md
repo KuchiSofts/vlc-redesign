@@ -13,7 +13,7 @@ Status: ✅ done · 🔨 in progress · 📋 to do · 💡 idea
 The full plan, with every Figma frame, its status and the design tokens, is the
 [master plan](docs/MASTER-PLAN.md).
 
-## Next release: 0.3.2
+## Next release: 0.4.0
 
 Everything below belongs to the next release until it is published. What is ready and passes the quality checks
 on release day ships.

@@ -25,6 +25,6 @@ talks to the TV you choose on your own network. There is no telemetry.
 
 ## Checking a download
 
-Every release lists the SHA-256 of its files in `SHA256SUMS.txt`, signed (from 0.3.2 on) by the project's release
+Every release lists the SHA-256 of its files in `SHA256SUMS.txt`, signed (from 0.4.0 on) by the project's release
 key in `SHA256SUMS.txt.sig`; the app checks that signature before it installs an update. Builds are not code-signed yet (see
 [CODE_SIGNING_POLICY.md](CODE_SIGNING_POLICY.md)); Windows SmartScreen may ask for *More info → Run anyway*.

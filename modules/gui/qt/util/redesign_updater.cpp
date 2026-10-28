@@ -18,6 +18,7 @@
 #include <QDesktopServices>
 #include <QDir>
 #include <QFile>
+#include <QSysInfo>
 #include <QFileInfo>
 #include <QJsonArray>
 #include <QJsonDocument>
@@ -487,6 +488,13 @@ QString RedesignUpdater::platformName() const
         name += QStringLiteral(" · Flatpak");
     return name;
 #endif
+}
+
+QString RedesignUpdater::platformDetails() const
+{
+    return QStringLiteral("%1 (%2) · %3 · Qt %4")
+        .arg(QSysInfo::prettyProductName(), QSysInfo::kernelVersion(),
+             QSysInfo::currentCpuArchitecture(), QString::fromLatin1(qVersion()));
 }
 
 QString RedesignUpdater::appDir() const

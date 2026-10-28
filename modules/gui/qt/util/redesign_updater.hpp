@@ -60,6 +60,9 @@ class RedesignUpdater : public QObject
     // the system and processor this copy is built for (About): "Windows x64",
     // "macOS Apple Silicon", "Linux x86_64 · AppImage"...
     Q_PROPERTY(QString platformName READ platformName CONSTANT FINAL)
+    // the system it runs on, for the tooltip of that name (About): "Windows 11
+    // (10.0.26100) · x86_64 · Qt 6.8.3"
+    Q_PROPERTY(QString platformDetails READ platformDetails CONSTANT FINAL)
 
 public:
     enum State {
@@ -96,6 +99,7 @@ public:
     QString repositoryUrl() const;
     QString alsoOn() const;
     QString platformName() const;
+    QString platformDetails() const;
 
     // The daily check (option redesign-update-check), for the first-run
     // setup: turned on, it starts as at a start of VLC

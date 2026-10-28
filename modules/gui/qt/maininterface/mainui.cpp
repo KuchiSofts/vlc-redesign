@@ -59,6 +59,7 @@
 #include "util/thumbnail_image_provider.hpp"
 #include "util/redesign_icon_provider.hpp"
 #include "util/redesign_updater.hpp"
+#include "iptv/iptv_addon.hpp"
 #include "util/redesign_feedback.hpp"
 #include "util/subtitle_preferences.hpp"
 #include "player/subtitle_finder.hpp"
@@ -263,6 +264,9 @@ bool MainUI::setup(QQmlEngine* engine)
         new EffectsImageProvider(engine);
     engine->addImageProvider(QStringLiteral("svgcolor"), new SVGColorImageImageProvider());
     engine->addImageProvider(QStringLiteral("vlcaccess"), new VLCAccessImageProvider());
+    // the logos of the channels (Live TV), from the cache of its add-on
+    if (m_iptv && m_iptv->available())
+        engine->addImageProvider(QStringLiteral("iptvlogo"), new IptvLogoProvider(m_iptv->bridge()));
     engine->addImageProvider(QLatin1String(ThumbnailImageProvider::providerId),
                              new ThumbnailImageProvider(m_intf));
     // Icons of the redesign in the light theme
@@ -361,6 +365,11 @@ void MainUI::registerQMLTypes()
 #ifdef UPDATE_CHECK
         qmlRegisterSingletonInstance<UpdateModel>( uri, versionMajor, versionMinor, "UpdateModel", m_mainCtx->getUpdateModel() );
 #endif
+        // Live TV: inert (nothing loaded) when its add-on is missing or off
+        m_iptv = new IptvAddon(m_intf, this);
+        qmlRegisterSingletonInstance<IptvAddon>(uri, versionMajor, versionMinor, "Iptv", m_iptv);
+        qmlRegisterUncreatableType<IptvChannelModel>(uri, versionMajor, versionMinor, "IptvChannelModel",
+                                                     "the channels of Live TV (Iptv.channelModel)");
 
         qmlRegisterTypesAndRevisions<NavigationModel>( uri, versionMajor);
         qmlRegisterTypesAndRevisions<NavigationBarContextMenu>( uri, versionMajor );

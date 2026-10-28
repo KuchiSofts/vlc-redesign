@@ -118,6 +118,7 @@ nodist_libqt_plugin_la_SOURCES = \
 	playlist/playlist_model.moc.cpp \
 	util/asynctask.moc.cpp \
 	util/redesign_updater.moc.cpp \
+	iptv/iptv_addon.moc.cpp \
 	util/redesign_feedback.moc.cpp \
 	util/redesign_accent.moc.cpp \
 	util/subtitle_preferences.moc.cpp \

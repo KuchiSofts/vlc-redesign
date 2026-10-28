@@ -123,11 +123,13 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   `~\source\vlc-redesign-build-arm64`; a full build takes about 9 minutes here. The redesign's code built for
   ARM64 with clang unchanged; the build scripts no longer assume x86_64 (`win64-docker.sh` reads `ARCH`: build
   and contrib folders, the GCC-only `-lgcc_s` fix, the updater helper built with the toolchain's compiler), a
-  git worktree builds too (its main `.git` is mounted), and `-Jobs` limits the compile jobs. Every `.exe` and
+  git worktree builds too (its main `.git` is mounted), `-Jobs` limits the compile jobs, and a release-mode build
+  (`-r`, x64 too) no longer fails at its end on upstream's zip of a folder `-o` never writes. Every `.exe` and
   `.dll` of the package is ARM64 (PE machine `0xAA64`); it has no OpenGL plugins (upstream's ARM64 contribs have
   no OpenGL: video goes through Direct3D 11) and no plugin cache when made on an x64 PC (the copy makes it at its
   first start; an install for everyone makes it during Setup). `make-release.ps1 -Arch aarch64` makes
-  `vlc-redesign-X.Y.Z-winarm64.zip`, `vlc-redesign-X.Y.Z-winarm64-setup.exe` (the same `.iss` with `/DArm64`:
+  `vlc-redesign-X.Y.Z-winarm64.zip` (80 MB for 0.3.2; x64 0.3.1: 107 MB), `vlc-redesign-X.Y.Z-winarm64-setup.exe`
+  (45 MB; x64: 59 MB) (the same `.iss` with `/DArm64`:
   `ArchitecturesAllowed=arm64`, the same AppId) and `vlc-redesign-X.Y.Z-winarm64-delta-from-<old>.vrdelta`
   (`make-delta.py --platform winarm64`); `SHA256SUMS.txt` lists the files of both architectures of the version,
   signed as before. The app's updater takes the installer and the small update of its own architecture only (an

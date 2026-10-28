@@ -179,6 +179,8 @@ FocusScope {
 
     ListView {
         id: rows
+        // (a vertical list keeps its rows at x 0: the margin is the list's)
+        anchors.leftMargin: root.px(20)
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: timeline.bottom
@@ -219,8 +221,7 @@ FocusScope {
             required property var model
             required property int index
             readonly property string key: model.key
-            width: ListView.view.width - root.px(20)
-            x: root.px(20)
+            width: ListView.view.width
             height: root.rowHeight
 
             // the programmes of the blocks asked, by start
@@ -395,6 +396,7 @@ FocusScope {
                                 color: VLCStyle.redesign.accent
                             }
                             contentItem: Item {
+                                visible: cell.width > root.px(28)
                                 clip: true
                                 // the text stays in sight while its start is
                                 // left of the grid

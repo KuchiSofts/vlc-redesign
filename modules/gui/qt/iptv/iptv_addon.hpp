@@ -9,6 +9,7 @@
 #pragma once
 
 #include <QAbstractListModel>
+#include <QElapsedTimer>
 #include <QHash>
 #include <QJSValue>
 #include <QJsonObject>
@@ -27,6 +28,7 @@
 #include <memory>
 
 #include "qt.hpp"
+#include "util/shared_input_item.hpp"
 
 struct vlc_iptv;
 class IptvAddon;
@@ -319,6 +321,8 @@ private:
     QString m_currentKey;
     QString m_previousKey;
     QString m_currentUrl;
+    SharedInputItem m_currentMedia;
+    QElapsedTimer m_switchTime;
     QVariantMap m_catchup;
     bool m_playing = false;
     bool m_startedLast = false;

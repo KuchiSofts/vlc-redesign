@@ -766,6 +766,14 @@ void IptvAddon::startMedia(const QString& url, const QString& name, const QStrin
     all << QStringLiteral(":no-save-recentplay");
     vlc::playlist::Media media(url, name, all);
     m_currentUrl = url;
+    // the item itself tells the channel playing from another media
+    m_currentMedia.reset(media.raw());
+    m_switchTime.start();
+    if (!m_playing)
+    {
+        m_playing = true;
+        emit playingChanged();
+    }
     m_intf->p_mainPlaylistController->clear();
     m_intf->p_mainPlaylistController->append(QVector<vlc::playlist::Media> { media }, true);
 }
@@ -903,13 +911,23 @@ void IptvAddon::playUrl(const QString& url, const QString& title)
 {
     m_catchup.clear();
     startMedia(url, title, {});
+    // a film or an episode: no channel, no keys of the TV
+    m_currentMedia.reset();
+    if (m_playing)
+    {
+        m_playing = false;
+        emit playingChanged();
+    }
 }
 
 void IptvAddon::checkPlaying()
 {
     const PlaylistItem item = m_intf->p_mainPlaylistController->getCurrentItem();
-    const bool playing = item && !m_currentUrl.isEmpty()
-                         && item.getUrl().toString(QUrl::FullyEncoded) == QUrl(m_currentUrl).toString(QUrl::FullyEncoded);
+    // (none for a moment while a channel is switched to: nothing changes;
+    // none later, the queue was emptied or ended)
+    if (!item && m_switchTime.isValid() && m_switchTime.elapsed() < 3000)
+        return;
+    const bool playing = item && m_currentMedia && item.inputItem() == m_currentMedia.get();
     if (playing != m_playing)
     {
         m_playing = playing;

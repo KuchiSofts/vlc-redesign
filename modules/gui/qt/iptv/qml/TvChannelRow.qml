@@ -44,7 +44,8 @@ T.ItemDelegate {
         return Math.max(0, Math.min(1, (Iptv.now - start) / (stop - start)))
     }
 
-    implicitHeight: px(56)
+    // a third line for the description of what is on (Settings > TV)
+    implicitHeight: px(!compact && Iptv.showDescriptions ? 72 : 56)
     padding: 0
     focusPolicy: Qt.StrongFocus
     Accessible.name: (model.number > 0 ? model.number + " " : "") + model.name
@@ -203,6 +204,9 @@ T.ItemDelegate {
         Row {
             id: marks
             anchors.right: parent.right
+            // the same room on every row: the column before it stays in line
+            width: root.px(64)
+            layoutDirection: Qt.RightToLeft
             anchors.rightMargin: root.px(12)
             anchors.verticalCenter: parent.verticalCenter
             spacing: root.px(8)

@@ -17,12 +17,21 @@ if [ "${WSLG_GPU:-1}" = 1 ]; then
 fi
 qpa=${QPA:-xcb}
 profile=${PROFILE:-/work/build-qt68/wslg-profile}
+# X11: no Wayland display (VLC would put the video in a Wayland window of
+# its own), and GLX for the video: EGL finds no DRM device in the container
+# and draws black
+wayland="-e WAYLAND_DISPLAY=/mnt/wslg/runtime-dir/wayland-0"
+glx=
+if [ "$qpa" = xcb ]; then
+    wayland=
+    glx=--gl=glx
+fi
 # shellcheck disable=SC2086
 exec docker run --rm ${DOCKER_ARGS:-} $gpu \
     -v "$src:/work" \
     -v /run/desktop/mnt/host/wslg/.X11-unix:/tmp/.X11-unix \
     -v /run/desktop/mnt/host/wslg:/mnt/wslg \
-    -e DISPLAY=:0 -e WAYLAND_DISPLAY=/mnt/wslg/runtime-dir/wayland-0 \
+    -e DISPLAY=:0 $wayland -e VLC_GL="$glx" \
     -e PULSE_SERVER=unix:/mnt/wslg/PulseServer \
     -e QT_QPA_PLATFORM="$qpa" -e LANG=C.UTF-8 \
     -e XDG_CONFIG_HOME="$profile/config" -e XDG_CACHE_HOME="$profile/cache" \
@@ -32,4 +41,4 @@ exec docker run --rm ${DOCKER_ARGS:-} $gpu \
         export LD_LIBRARY_PATH="/work/build-m0/deps/lib:$LD_LIBRARY_PATH"
         [ ! -d /usr/lib/wsl/lib ] || export LD_LIBRARY_PATH="/usr/lib/wsl/lib:$LD_LIBRARY_PATH"
         cd /work/build-qt68/linux
-        exec dbus-run-session -- ./vlc --no-one-instance "$@"' vlc "$@"
+        exec dbus-run-session -- ./vlc --no-one-instance $VLC_GL "$@"' vlc "$@"

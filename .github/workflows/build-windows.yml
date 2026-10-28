@@ -263,10 +263,11 @@ jobs:
           $global:LASTEXITCODE = 0
           Get-ChildItem dist | Format-Table Name, Length
 
-      # (full paths: .NET resolves the relative ones elsewhere)
+      # (full paths: .NET resolves the relative ones elsewhere; the release key
+      # is never here: SHA256SUMS.txt is signed on the release PC)
       - name: Package
         shell: pwsh
-        run: ./extras/juxtopposed/make-release.ps1 -Signed -Package "$PWD\package" -Dist "$PWD\dist"
+        run: ./extras/juxtopposed/make-release.ps1 -Signed -Package "$PWD\package" -Dist "$PWD\dist" -NoSumsSignature
 
       - name: Upload the installer to sign
         id: unsigned
@@ -293,7 +294,8 @@ jobs:
           output-artifact-directory: signed-setup
 
       # the files to publish; SHA256SUMS.txt as make-release.ps1 writes it,
-      # with the signed installer
+      # with the signed installer; its signature (SHA256SUMS.txt.sig, which the
+      # app requires) is made on the release PC: release-key.ps1 sign
       - name: Release files
         shell: pwsh
         run: |

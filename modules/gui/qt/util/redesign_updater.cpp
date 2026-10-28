@@ -41,6 +41,8 @@
 # include <wincrypt.h>
 # include <wintrust.h>
 # include <softpub.h>
+# include "util/redesign_update_key.h"
+# include "util/redesign_update_verify.h"
 #endif
 
 #include "dialogs/dialogs_provider.hpp"
@@ -58,6 +60,13 @@ const char keySkipped[] = "redesign/update-skip";
 // each step of a download (a stalled read ends it), and the whole of it
 constexpr int downloadStepMs = 30 * 1000;
 constexpr int downloadDeadlineMs = 30 * 60 * 1000;
+// The first release whose SHA256SUMS.txt is signed with the project's key
+// (SHA256SUMS.txt.sig, redesign_update_key.h): from it on, a release whose
+// checksums don't carry a good signature is never installed. The releases
+// before it have no signature.
+const char FIRST_SIGNED_VERSION[] = "0.3.2";
+const char sumsName[] = "SHA256SUMS.txt";
+const char sumsSignatureName[] = "SHA256SUMS.txt.sig";
 
 #ifndef NDEBUG
 // for testing updates against a local server, not GitHub (debug builds only)
@@ -143,13 +152,39 @@ QString trustedSigner(const QString &path)
 }
 #endif
 
-// The checksums come from the same release as the files, so they can't
-// tell a release made by someone else. A copy whose vlc.exe is signed (the
-// releases signed through SignPath, CODE_SIGNING_POLICY.md) therefore takes
-// only programs signed by the same publisher: an error for a file that
-// isn't. A copy that isn't signed has no publisher to compare with (its
-// builds by hand, the releases before signing): the checksum stays the
-// only check.
+// Whether a release must come with signed checksums: from the first signed
+// one on. (Every build of this version or later only updates to such a
+// release; the older targets keep the checks they had.)
+bool signatureRequired(const QString &version)
+{
+    return !RedesignUpdater::versionLess(version, QLatin1String(FIRST_SIGNED_VERSION));
+}
+
+// SHA256SUMS.txt checked against its signature by the key the app carries:
+// whoever can publish on GitHub (an account, a token) still can't make the
+// checksums of an update without the private key, which never leaves the
+// release PC (extras/juxtopposed/signing/release-key.ps1)
+bool goodSignature(const QByteArray &sums, const QByteArray &signature)
+{
+#ifdef _WIN32
+    return vlc_redesign_verify_signature(vlc_redesign_update_key, sums.constData(),
+                                         static_cast<size_t>(sums.size()),
+                                         reinterpret_cast<const unsigned char *>(signature.constData()),
+                                         static_cast<size_t>(signature.size())) == 1;
+#else
+    // (no updater: nothing is installed from here)
+    Q_UNUSED(sums);
+    Q_UNUSED(signature);
+    return false;
+#endif
+}
+
+// The checksums don't tell who built the files they list unless they are
+// signed (above). A copy whose vlc.exe is signed (the releases signed
+// through SignPath, CODE_SIGNING_POLICY.md) also takes only programs signed
+// by the same publisher: an error for a file that isn't. A copy that isn't
+// signed has no publisher to compare with (its builds by hand, the releases
+// before signing): the checksums are then the check.
 QString publisherMismatch(const QString &path)
 {
 #ifdef _WIN32
@@ -559,6 +594,7 @@ void RedesignUpdater::onRelease(int status, const QByteArray &body)
     m_deltaName.clear();
     m_deltaSize = 0;
     m_sumsUrl.clear();
+    m_sigUrl.clear();
     // the small update from this very version, if the release has one
     const QString deltaName = QStringLiteral("vlc-redesign-%1-delta-from-%2.vrdelta")
                                   .arg(m_latestVersion, currentVersion());
@@ -577,8 +613,10 @@ void RedesignUpdater::onRelease(int status, const QByteArray &body)
             m_deltaUrl = url;
             m_deltaName = name;
             m_deltaSize = size;
-        } else if (name.compare(QLatin1String("SHA256SUMS.txt"), Qt::CaseInsensitive) == 0) {
+        } else if (name.compare(QLatin1String(sumsName), Qt::CaseInsensitive) == 0) {
             m_sumsUrl = url;
+        } else if (name.compare(QLatin1String(sumsSignatureName), Qt::CaseInsensitive) == 0) {
+            m_sigUrl = url;
         }
     }
 
@@ -635,25 +673,74 @@ void RedesignUpdater::install()
 void RedesignUpdater::withChecksum(const QString &assetName, std::function<void(const QString &)> next)
 {
     const quint64 attempt = m_attempt;
+    const bool signedRelease = signatureRequired(m_latestVersion);
+    const QString unsignedError = qtr("This update isn't signed by VLC Redesign, so it wasn't used. "
+                                      "Download it from the release page instead.");
+    if (signedRelease) {
+        if (m_sigUrl.isEmpty()) {
+            msg_Warn(m_intf, "update to %s: the release has no %s", qtu(m_latestVersion), sumsSignatureName);
+            setState(Failed, unsignedError);
+            return;
+        }
+        // The signed checksums name the files of one version: never those
+        // of another (signed) release published under this one's tag
+        if (!assetName.startsWith(QStringLiteral("vlc-redesign-%1-").arg(m_latestVersion), Qt::CaseInsensitive)) {
+            msg_Warn(m_intf, "update to %s: %s is not a file of that version", qtu(m_latestVersion), qtu(assetName));
+            setState(Failed, unsignedError);
+            return;
+        }
+    }
     m_cancel = httpRequestAsync(this, githubRequest(m_sumsUrl, 64 * 1024, 30000),
-                                [this, attempt, assetName, next](const HttpResponse &response) {
+                                [this, attempt, assetName, next, signedRelease,
+                                 unsignedError](const HttpResponse &response) {
         if (attempt != m_attempt)
             return; // cancelled
-        QString expected;
-        if (response.error.isEmpty() && response.status == 200) {
-            for (const QString &line : QString::fromUtf8(response.body).split('\n')) {
-                QStringList parts = line.trimmed().split(QRegularExpression(QStringLiteral("\\s+")));
-                // "<hash>  <name>", or "<hash> *<name>" in binary mode
-                if (parts.size() == 2 && parts[1].remove('*') == assetName)
-                    expected = parts[0].toLower();
-            }
-        }
-        if (expected.size() != 64) {
+        if (!response.error.isEmpty() || response.status != 200) {
             setState(Failed, qtr("The update's checksum is missing; download it from the release page instead."));
             return;
         }
-        next(expected);
+        if (!signedRelease) {
+            useChecksums(response.body, assetName, next);
+            return;
+        }
+        // Nothing of the checksums is used before their signature is checked
+        const QByteArray sums = response.body;
+        m_cancel = httpRequestAsync(this, githubRequest(m_sigUrl, 4096, 30000),
+                                    [this, attempt, assetName, next, sums,
+                                     unsignedError](const HttpResponse &signature) {
+            if (attempt != m_attempt)
+                return; // cancelled
+            if (!signature.error.isEmpty() || signature.status == 0) {
+                setState(Failed, qtr("The download failed. Check your connection and try again."));
+                return;
+            }
+            if (signature.status != 200 || !goodSignature(sums, signature.body)) {
+                msg_Warn(m_intf, "update to %s: %s doesn't carry a good signature (HTTP %d, %d bytes)",
+                         qtu(m_latestVersion), sumsName, signature.status, int(signature.body.size()));
+                setState(Failed, unsignedError);
+                return;
+            }
+            msg_Dbg(m_intf, "update to %s: %s signed by the release key", qtu(m_latestVersion), sumsName);
+            useChecksums(sums, assetName, next);
+        });
     });
+}
+
+void RedesignUpdater::useChecksums(const QByteArray &sums, const QString &assetName,
+                                   const std::function<void(const QString &)> &next)
+{
+    QString expected;
+    for (const QString &line : QString::fromUtf8(sums).split('\n')) {
+        QStringList parts = line.trimmed().split(QRegularExpression(QStringLiteral("\\s+")));
+        // "<hash>  <name>", or "<hash> *<name>" in binary mode
+        if (parts.size() == 2 && parts[1].remove('*') == assetName)
+            expected = parts[0].toLower();
+    }
+    if (expected.size() != 64) {
+        setState(Failed, qtr("The update's checksum is missing; download it from the release page instead."));
+        return;
+    }
+    next(expected);
 }
 
 // The progress of a download, from its worker thread, at most once a percent.

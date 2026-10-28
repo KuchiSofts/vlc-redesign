@@ -202,7 +202,8 @@ VLC Redesign checks this repository for a new release once a day (Settings → G
 automatically*, or ⋯ → About → *Check for updates*). When one is out, a card offers **Update now**:
 
 - **A small update** (installed or portable copy): only the files that changed, usually a few megabytes, downloaded in
-  the background and checked against the release's `SHA256SUMS.txt` file by file. **Restart now** puts it in place in
+  the background and checked against the release's `SHA256SUMS.txt` file by file (from 0.3.2 on, only once that
+  file's signature by the project's release key is checked). **Restart now** puts it in place in
   about two seconds and reopens VLC Redesign on what was playing, where it was; **Later** puts it in place when you
   close it. If anything goes wrong, every file goes back as it was.
 - **The installer**, when no small update fits (more than three releases behind, or installed for everyone):

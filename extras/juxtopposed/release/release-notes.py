@@ -83,11 +83,15 @@ notes = '''# VLC Redesign %(v)s
 %(rows)s
 
 %(signing)s A copy of 0.2.4 or later
-offers the small update by itself.
+offers the small update by itself.%(sums_signed)s
 
 ---
 *VLC Redesign is not affiliated with VideoLAN. VLC is a trademark of VideoLAN.*
 ''' % {'v': version, 'section': section, 'rows': '\n'.join(rows),
+       # (the app checks it before any update: docs/code-signing.md, The release key)
+       'sums_signed': (' `SHA256SUMS.txt.sig` is the signature of the checksums by the project\'s release\n'
+                       'key, which the app checks before it installs an update.')
+                      if os.path.exists(os.path.join(dist, 'SHA256SUMS.txt.sig')) else '',
        'signing': ('The files are code-signed (certificate by SignPath Foundation,\n'
                    '[policy](https://github.com/KuchiSofts/vlc-redesign/blob/main/CODE_SIGNING_POLICY.md)).')
                   if signed else

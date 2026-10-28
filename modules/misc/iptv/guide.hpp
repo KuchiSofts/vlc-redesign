@@ -10,11 +10,13 @@
 
 #include <QByteArray>
 #include <QHash>
+#include <QIODevice>
 #include <QSet>
 #include <QString>
 #include <QVector>
 
-class QIODevice;
+#include <atomic>
+#include <memory>
 
 // The programme guide (EPG) of the channels, read from XMLTV (the format
 // IPTV guides use). A guide covers thousands of channels and weeks: only
@@ -29,6 +31,8 @@ struct Programme
     QString subtitle;   // the episode title
     QString description;
     QString category;
+    QString episode;    // "S01E02", as the guide numbers it
+    QString language;   // of the title ("he", "en"), empty when not given
 };
 
 struct Guide
@@ -38,6 +42,8 @@ struct Guide
     // the guide's display names of a channel id, to match channels that
     // have no tvg-id by their name
     QHash<QString, QString> idByName;
+    // the languages of the titles the guide gives
+    QSet<QString> languages;
     QString error;
 };
 
@@ -49,7 +55,34 @@ struct GuideFilter
     QSet<QString> keys;
     qint64 from = 0;     // programmes ending before are dropped
     qint64 until = 0;    // programmes starting after are dropped (0: none)
+    // the languages kept ("he", "en"), lower case; empty: all of them
+    QSet<QString> languages;
+    // set from another thread to stop the reading (VLC quitting)
+    const std::atomic<bool>* cancel = nullptr;
 };
+
+// A gzip-compressed device read inflated, a piece at a time: a guide of
+// hundreds of megabytes is read without holding it whole in memory. Reads
+// fail past limit bytes (a decompression bomb) or on corrupt data.
+class GunzipDevice : public QIODevice
+{
+public:
+    explicit GunzipDevice(QIODevice* source, qint64 limit = 4LL * 1024 * 1024 * 1024);
+    ~GunzipDevice() override;
+    bool isSequential() const override { return true; }
+    bool atEnd() const override;
+
+protected:
+    qint64 readData(char* data, qint64 maxSize) override;
+    qint64 writeData(const char*, qint64) override { return -1; }
+
+private:
+    struct State;
+    std::unique_ptr<State> d;
+};
+
+// Reads the guide of a file, gzip-compressed or not (on a worker thread)
+Guide parseXmltvFile(const QString& path, const GuideFilter& filter);
 
 // The key a channel or a guide entry is matched by: the id when there is
 // one, else the name, both folded (case, spaces, "HD"/"FHD" suffixes).

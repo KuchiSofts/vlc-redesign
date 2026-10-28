@@ -8,7 +8,7 @@
  *****************************************************************************/
 #pragma once
 
-#include "iptv_playlist.hpp"
+#include "playlist.hpp"
 
 #include <QByteArray>
 #include <QString>

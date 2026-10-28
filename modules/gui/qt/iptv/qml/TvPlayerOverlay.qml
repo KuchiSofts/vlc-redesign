@@ -138,6 +138,7 @@ FocusScope {
     Connections {
         target: Iptv
         function onChannelSwitched() { root.showBanner() }
+        function onChannelListRequested() { root.listOpen ? root.closeList() : root.openList() }
     }
     Component.onCompleted: {
         console.debug("Live TV: the overlay of the player is made")
@@ -448,12 +449,29 @@ FocusScope {
             }
         }
 
+        // the guide of the TV page, the channels down and the time across
+        Widgets.RedesignButton {
+            id: guideButton
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.bottom: parent.bottom
+            anchors.margins: root.px(12)
+            darkTheme: true
+            text: qsTr("Guide")
+            onClicked: {
+                root.closeList()
+                MainCtx.setSettingValue("iptv/view", "guide")
+                History.push(["tv"])
+                MainCtx.playerView = false
+            }
+        }
+
         ListView {
             id: listView
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.top: groupBar.bottom
-            anchors.bottom: parent.bottom
+            anchors.bottom: guideButton.top
             anchors.margins: root.px(8)
             clip: true
             model: listPanel.visible ? Iptv.playerModel : null

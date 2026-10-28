@@ -82,27 +82,49 @@ T.Pane {
     // only when this changes, not on every navigation)
     readonly property bool _musicExpanded: History.viewPath[0] === "music" && delegateShowText
 
+    // the rows in the user's order, the ones hidden left out (Edit Sidebar)
+    SidebarItems { id: sidebarItems }
+
     readonly property var entries: {
-        const rows = [
-            {title: qsTr("Home"), uri: ["home"], icon: VLCIcons.home, asset: "home"},
-            {title: qsTr("Videos"), uri: ["video", "all"], icon: VLCIcons.topbar_video, asset: "video", library: true},
-            {title: qsTr("Music"), uri: ["music"], icon: VLCIcons.topbar_music, asset: "music", library: true}
-        ]
-        if (_musicExpanded) {
-            for (const entry of [ ["artists", qsTr("Artists")], ["albums", qsTr("Albums")],
-                                  ["tracks", qsTr("Tracks")], ["genres", qsTr("Genres")],
-                                  ["playlists", qsTr("Playlists")] ])
-                rows.push({title: entry[1], uri: ["music", entry[0]], icon: "", asset: "", library: true, depth: 1})
+        const rows = []
+        for (const item of sidebarItems.shown) {
+            rows.push(item)
+            // the pages of Music under it, wherever it is
+            if (item.key === "music" && _musicExpanded) {
+                for (const entry of [ ["artists", qsTr("Artists")], ["albums", qsTr("Albums")],
+                                      ["tracks", qsTr("Tracks")], ["genres", qsTr("Genres")],
+                                      ["playlists", qsTr("Playlists")] ])
+                    rows.push({title: entry[1], uri: ["music", entry[0]], icon: "", asset: "", library: true, depth: 1})
+            }
         }
-        rows.push({title: qsTr("Network"), uri: ["network"], icon: VLCIcons.topbar_network, asset: "network"})
-        // Live TV, while its add-on is there and on
-        if (Iptv.enabled)
-            rows.push({title: qsTr("TV"), uri: ["tv"], icon: "", asset: "tv"})
-        // every playlist (the page lists songs ones too, see VideoPlaylistsDisplay)
-        rows.push({title: qsTr("Playlists"), uri: ["video", "playlists"], icon: VLCIcons.playlist, asset: "playlists", library: true})
-        // the media played last, videos and songs
-        rows.push({title: qsTr("Recent"), uri: ["home", "recent"], icon: VLCIcons.history, asset: "recent", library: true})
         return rows
+    }
+
+    // Edit Sidebar (its right-click menu, Settings > Interface), made when
+    // first opened
+    property var _editDialog: null
+    function editSidebar() {
+        if (!_editDialog) {
+            const component = Qt.createComponent("qrc:///qt/qml/VLC/MainInterface/SidebarEditDialog.qml")
+            if (component.status !== Component.Ready) {
+                console.warn(component.errorString())
+                return
+            }
+            _editDialog = component.createObject(root)
+        }
+        _editDialog.open()
+    }
+
+    Widgets.RedesignContextMenu {
+        id: sidebarMenu
+        parentItem: root
+        actions: [ { text: qsTr("Edit Sidebar…"), icon: "edit", action: () => root.editSidebar() } ]
+        onRequestData: (requestID, indexes) => setData(requestID, [{}])
+    }
+
+    TapHandler {
+        acceptedButtons: Qt.RightButton
+        onTapped: (eventPoint) => sidebarMenu.popup([0], root.mapToGlobal(eventPoint.position))
     }
 
     // The entry of the page shown (-1: none, e.g. a folder page)

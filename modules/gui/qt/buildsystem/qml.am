@@ -102,6 +102,8 @@ libqml_module_maininterface_a_QML = \
 	maininterface/qml/Sidebar.qml \
 	maininterface/qml/PaneResizeHandle.qml \
 	maininterface/qml/SideNavigationDelegate.qml \
+	maininterface/qml/SidebarItems.qml \
+	maininterface/qml/SidebarEditDialog.qml \
 	maininterface/qml/NoMedialibHome.qml \
 	maininterface/qml/OpenFileSplitButton.qml
 
@@ -313,6 +315,7 @@ libqml_module_playercontrols_a_QML = \
 	player/qml/controlbarcontrols/ExtendedSettingsButton.qml \
 	player/qml/controlbarcontrols/SettingsButton.qml \
 	player/qml/controlbarcontrols/RedesignIconButton.qml \
+	player/qml/controlbarcontrols/TvButton.qml \
 	player/qml/controlbarcontrols/FasterButton.qml \
 	player/qml/controlbarcontrols/FrameNextButton.qml \
 	player/qml/controlbarcontrols/FramePrevButton.qml \

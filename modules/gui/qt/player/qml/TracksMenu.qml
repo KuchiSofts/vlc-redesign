@@ -25,6 +25,7 @@ import VLC.Dialogs
 import VLC.MainInterface
 import VLC.Player
 import VLC.Style
+import VLC.Widgets as Widgets
 
 T.Popup {
     id: root
@@ -77,6 +78,13 @@ T.Popup {
 
     background: Rectangle {
         color: VLCStyle.redesign.color(VLCStyle.redesign.windowBackground, "#c2c2c1")
+        radius: VLCStyle.dp(6, VLCStyle.scale)
+    }
+
+    // the frame of the main window, over the content (which reaches the
+    // card's edges): the card reads as a window over the interface
+    readonly property Item _windowBorder: Widgets.RedesignWindowBorder {
+        parent: root.background ? root.background.parent : null
         radius: VLCStyle.dp(6, VLCStyle.scale)
     }
 

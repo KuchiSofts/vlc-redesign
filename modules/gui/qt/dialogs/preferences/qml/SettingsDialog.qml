@@ -187,6 +187,13 @@ Dialog {
         color: root.c("#0E0E0E")
     }
 
+    // the frame of the main window, over the content (which reaches the
+    // card's edges): the card reads as a window over the interface
+    readonly property Item _windowBorder: Widgets.RedesignWindowBorder {
+        parent: root.background ? root.background.parent : null
+        radius: root.px(14)
+    }
+
     contentItem: Item {
         // A popup is not under the main interface: right to left in Hebrew,
         // Arabic... (the sidebar on the right) as it is

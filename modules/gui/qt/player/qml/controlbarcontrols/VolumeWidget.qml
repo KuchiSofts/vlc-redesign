@@ -340,6 +340,8 @@ T.Pane {
                 background: Rectangle {
                     color: VLCStyle.redesign.color("#0F0F0F", "#c2c2c1")
                     radius: VLCStyle.dp(6, VLCStyle.scale)
+                    // the frame of the main window
+                    Widgets.RedesignWindowBorder { }
                 }
                 contentItem: Text {
                     text: qsTr("%1 %").arg(Math.round(Player.volume * 100))

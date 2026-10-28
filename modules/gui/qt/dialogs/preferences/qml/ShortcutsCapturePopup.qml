@@ -39,7 +39,8 @@ Popup {
     onOpened: keyInput.forceActiveFocus(Qt.PopupFocusReason)
     background: Rectangle {
         color: VLCStyle.redesign.color("#1b1b1b", "#ababaa")
-        border.color: VLCStyle.redesign.color("#555555", "#8e8e8d")
+        // the frame of the main window
+        border.color: VLCStyle.redesign.color(VLCStyle.redesign.windowBorder)
         radius: 6
     }
     contentItem: FocusScope {

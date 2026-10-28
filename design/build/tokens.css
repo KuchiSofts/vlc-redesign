@@ -20,6 +20,7 @@
   --vlc-color-dark-divider-dim: #222222;
   --vlc-color-dark-divider-bright: #373737;
   --vlc-color-dark-status-warning: #E4A580;
+  --vlc-color-dark-window-border: #4C4A48;
   --vlc-color-dark-scroll-bar-widget-handle: #404040;
   --vlc-color-dark-scroll-bar-widget-handle-hover: #6B6B6B;
   --vlc-color-light-bg-b1: #C2C2C1;
@@ -42,6 +43,7 @@
   --vlc-color-light-divider-bright: #8E8E8D;
   --vlc-color-light-status-warning: #7A1414;
   --vlc-color-light-title-bar-classic: #DEDEDE;
+  --vlc-color-light-window-border: #4C4A48;
   --vlc-color-light-scroll-bar-handle: #6B6B6B;
   --vlc-color-light-scroll-bar-handle-pressed: #2E2E2E;
   --vlc-color-light-scroll-bar-widget-handle: #8E8E8D;
@@ -227,6 +229,7 @@
   --vlc-theme-divider-dim: var(--vlc-color-dark-divider-dim);
   --vlc-theme-divider-bright: var(--vlc-color-dark-divider-bright);
   --vlc-theme-status-warning: var(--vlc-color-dark-status-warning);
+  --vlc-theme-window-border: var(--vlc-color-dark-window-border);
   --vlc-theme-scroll-bar-widget-handle: var(--vlc-color-dark-scroll-bar-widget-handle);
   --vlc-theme-scroll-bar-widget-handle-hover: var(--vlc-color-dark-scroll-bar-widget-handle-hover);
 }
@@ -251,6 +254,7 @@
   --vlc-theme-divider-bright: var(--vlc-color-light-divider-bright);
   --vlc-theme-status-warning: var(--vlc-color-light-status-warning);
   --vlc-theme-title-bar-classic: var(--vlc-color-light-title-bar-classic);
+  --vlc-theme-window-border: var(--vlc-color-light-window-border);
   --vlc-theme-scroll-bar-handle: var(--vlc-color-light-scroll-bar-handle);
   --vlc-theme-scroll-bar-handle-pressed: var(--vlc-color-light-scroll-bar-handle-pressed);
   --vlc-theme-scroll-bar-widget-handle: var(--vlc-color-light-scroll-bar-widget-handle);

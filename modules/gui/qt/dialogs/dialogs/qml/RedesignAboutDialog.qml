@@ -58,8 +58,9 @@ T.Popup {
     background: Rectangle {
         radius: VLCStyle.dp(14, VLCStyle.scale)
         color: VLCStyle.redesign.color("#191919", "#ABABAA", root.darkTheme)
+        // the frame of the main window
         border.width: 1
-        border.color: VLCStyle.redesign.color(VLCStyle.redesign.border, "#8e8e8d", root.darkTheme)
+        border.color: VLCStyle.redesign.color(VLCStyle.redesign.windowBorder, undefined, root.darkTheme)
     }
 
     // A link of the about box: the accent colour, underlined on hover; with

@@ -160,6 +160,9 @@ Column {
 
             }
 
+            // the frame of the main window
+            RedesignWindowBorder { }
+
             SubtitleLabel {
                 id: notifText
 

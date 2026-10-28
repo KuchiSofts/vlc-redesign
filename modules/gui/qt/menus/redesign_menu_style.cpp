@@ -33,11 +33,13 @@
 #include <QFontDatabase>
 #include <QRegularExpression>
 #include <QMenu>
+#include <QOperatingSystemVersion>
 #include <QPainter>
 #include <QPainterPath>
 #include <QStyleHints>
 #include <QStyleOptionMenuItem>
 #include <QTransform>
+#include <QWindow>
 
 #include <algorithm>
 #include <cmath>
@@ -144,6 +146,55 @@ RedesignMenuStyle::RedesignMenuStyle(MainCtx *ctx)
 {
     s_ctx = ctx;
     m_fontFamily = fontFamily();
+
+    // the frame of the windows shown follows the theme
+    const auto reframe = [this]() {
+        const bool dark = isDark();
+        const QWindowList windows = QGuiApplication::topLevelWindows();
+        for (QWindow *window : windows)
+        {
+            if (window->handle() && window->isVisible())
+                setWindowBorder(window, dark);
+        }
+    };
+    if (ctx)
+        connect(ctx->getColorScheme(), &ColorSchemeModel::currentChanged, this, reframe);
+    connect(QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, this, reframe);
+}
+
+// Windows 11 draws a border around a menu window (DWMWA_BORDER_COLOR)
+static bool systemDrawsMenuFrame()
+{
+#ifdef _WIN32
+    static const bool drawn = QOperatingSystemVersion::current() >= QOperatingSystemVersion::Windows11;
+    return drawn;
+#else
+    return false;
+#endif
+}
+
+QColor RedesignMenuStyle::windowBorder(bool dark)
+{
+    // What Windows 11 draws around the main window (its accent #4C4A48,
+    // "Show accent color on title bars and window borders"), set on every
+    // window so that the frame is the same on every system, in both themes
+    return dark ? QColor(0x4C, 0x4A, 0x48) : QColor(0x4C, 0x4A, 0x48);
+}
+
+void RedesignMenuStyle::setWindowBorder(QWindow *window, bool dark)
+{
+#ifdef _WIN32
+    if (!window || !window->handle())
+        return;
+    const QColor border = windowBorder(dark);
+    const COLORREF colour = RGB(border.red(), border.green(), border.blue());
+    // older systems ignore it
+    DwmSetWindowAttribute(reinterpret_cast<HWND>(window->winId()), 34 /* DWMWA_BORDER_COLOR */,
+                          &colour, sizeof(colour));
+#else
+    (void)window;
+    (void)dark;
+#endif
 }
 
 QString RedesignMenuStyle::fontFamily()
@@ -311,7 +362,9 @@ int RedesignMenuStyle::pixelMetric(PixelMetric metric, const QStyleOption *optio
         case PM_SmallIconSize:
             return iconSize;
         case PM_MenuPanelWidth:
-            return 0;
+            // the frame of the main window: Windows 11 draws it
+            // (eventFilter), elsewhere PE_FrameMenu
+            return systemDrawsMenuFrame() ? 0 : 1;
         case PM_MenuHMargin:
             return 0;
         case PM_MenuVMargin:
@@ -364,7 +417,19 @@ void RedesignMenuStyle::drawPrimitive(PrimitiveElement element, const QStyleOpti
             return;
         }
         if (element == PE_FrameMenu)
+        {
+            // no system frame around a menu (Linux, macOS, Windows 10):
+            // the main window's, over the rows' edges
+            if (!systemDrawsMenuFrame())
+            {
+                painter->save();
+                painter->setPen(QPen(windowBorder(isDark()), 1));
+                painter->setBrush(Qt::NoBrush);
+                painter->drawRect(option->rect.adjusted(0, 0, -1, -1));
+                painter->restore();
+            }
             return;
+        }
     }
     QProxyStyle::drawPrimitive(element, option, painter, widget);
 }
@@ -500,6 +565,16 @@ bool RedesignMenuStyle::eventFilter(QObject *watched, QEvent *event)
     if (type != QEvent::Polish && type != QEvent::Show)
         return false;
 
+    // every window shown (the main window, the detached playlist, the
+    // classic dialogs and the menus) gets the frame of the main window
+    if (type == QEvent::Show && watched->isWindowType())
+    {
+        auto *window = static_cast<QWindow *>(watched);
+        if (!window->parent())
+            setWindowBorder(window, isDark());
+        return false;
+    }
+
     auto *menu = qobject_cast<QMenu *>(watched);
     if (!menu)
         return false;
@@ -530,7 +605,7 @@ bool RedesignMenuStyle::eventFilter(QObject *watched, QEvent *event)
         const HWND hwnd = reinterpret_cast<HWND>(menu->winId());
         const DWORD corner = 2; // DWMWCP_ROUND
         DwmSetWindowAttribute(hwnd, 33 /* DWMWA_WINDOW_CORNER_PREFERENCE */, &corner, sizeof(corner));
-        const QColor border = palette().separator;
+        const QColor border = windowBorder(isDark());
         const COLORREF color = RGB(border.red(), border.green(), border.blue());
         DwmSetWindowAttribute(hwnd, 34 /* DWMWA_BORDER_COLOR */, &color, sizeof(color));
     }

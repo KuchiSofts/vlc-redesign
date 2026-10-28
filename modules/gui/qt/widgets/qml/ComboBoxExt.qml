@@ -154,7 +154,8 @@ T.ComboBox {
 
         background: Rectangle {
             color: control.bgColor
-            border.color: control.borderColor
+            // the frame of the main window
+            border.color: VLCStyle.redesign.color(VLCStyle.redesign.windowBorder)
             border.pixelAligned: (radius < Number.EPSILON)
             radius: 2
         }

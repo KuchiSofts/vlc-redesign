@@ -114,6 +114,14 @@ T.Popup {
         }
     }
 
+    // the frame of the main window, over the content (which reaches the
+    // card's edges): the card reads as a window over the interface
+    readonly property Item _windowBorder: Widgets.RedesignWindowBorder {
+        parent: root.background ? root.background.parent : null
+        radius: VLCStyle.dp(14, VLCStyle.scale)
+        darkTheme: root.darkTheme
+    }
+
     contentItem: ColumnLayout {
         // right to left (Hebrew, Arabic...): a popup is not under the
         // mirrored interface, its content mirrors itself (the action on the

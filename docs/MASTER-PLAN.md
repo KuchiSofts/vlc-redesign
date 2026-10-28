@@ -6,7 +6,7 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 **Status:** 🟢 done · 🟡 in progress or partly done · 🔴 to do or missing · ⚪ idea or research
 **Pixel check:** 🟢 measured identical to the Figma frame · ⏳ not measured yet
-**In the app ⏳:** merged and built, not yet checked in the running program (5 lines today)
+**In the app ⏳:** merged and built, not yet checked in the running program (6 lines today)
 
 ## Now
 
@@ -218,7 +218,7 @@ What comes first, and why. Each step starts when what it needs is done.
 
 | #  | Step                                                                  | Needs first                     | Why in this order                                                   | Status |
 |----|-----------------------------------------------------------------------|---------------------------------|---------------------------------------------------------------------|--------|
-| 1  | Finish the 0.3.x items (§8): the 5 lines in the app ⏳                 | —                               | Mostly done: finishing costs less than switching                    | 🟡     |
+| 1  | Finish the 0.3.x items (§8): the 6 lines in the app ⏳                 | —                               | Mostly done: finishing costs less than switching                    | 🟡     |
 | 2  | Figma references exported, capture script, pixel check of 103 frames  | step 1 (screens stable)         | "Pixel for pixel" needs proof; capturing moving screens is wasted    | 🟢     |
 | 3  | Community setup: in-app *Suggest an idea* / *Report a problem* (13.12), hub, Discussions, board | decisions 1 and 9 | Feedback must land in the right place before the announcement | 🟡 |
 | 4  | Release 0.3.0 and announce it (0.3.0 and 0.3.1 out 2026-10-25; 0.3.2 next) | quality gates, steps 1 and 3 | Users get the fixes; the community side is ready for them        | 🟡     |
@@ -917,7 +917,11 @@ and an accepted request made the TV fail after a pause in a test.
 - 🟢 Pixel check of all 103 frames (§11): the two hover states (177:98, 2151:9673) in Windows Sandbox, where real
   mouse input stays inside it: the button's hover box 30 x 32 at white 6 %, the preview's time 15 px
 - ⚪ Subtitle cues drawn on the seek bar
-- ⚪ A *What's new* card after an update
+- 🟢 A *What's new* card after an update: the first start of a new version (installer, small update, a portable
+  copy that took an older one's settings) shows the bold headlines of its *Added*, *Changed* and *Fixed* in
+  CHANGELOG.md (carried in the resources), with *Full changelog*; once a version (`redesign/whats-new-seen`), not
+  on a new install (the welcome), after the film when VLC opened with one; Settings, General, *Show what's new
+  after an update* (on). The notes stay in English · in the app ⏳
 - ⚪ The accent following the Windows accent colour (an option)
 
 ### 8.9 Quality and hardware
@@ -949,7 +953,7 @@ and an accepted request made the TV fail after a pause in a test.
   posted with the next release. Also on 2026-10-28: the SignPath application was sent by the owner, and Weblate's
   Libre plan is pending approval.
 
-Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 91 🟢, 5 🟡, 1 🔴 (97), of which 5 🟢 are
+Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 92 🟢, 5 🟡, 1 🔴 (98), of which 6 🟢 are
 in the app ⏳. The 🟡 and 🔴 left need the upload (CI, the announcement, the replies), SignPath, or hardware not here.
 Languages (§12) and the community (§13) have bars of their own.
 

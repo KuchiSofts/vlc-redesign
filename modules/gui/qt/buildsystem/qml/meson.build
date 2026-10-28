@@ -21,6 +21,7 @@ qml_modules += {
         '../../dialogs/firstrun/qml/OnboardingButton.qml',
         '../../dialogs/firstrun/qml/ThemeStep.qml',
         '../../dialogs/firstrun/qml/OnboardingDialog.qml',
+        '../../dialogs/firstrun/qml/WhatsNewDialog.qml',
         '../../dialogs/firstrun/qml/ShortcutsStep.qml',
         '../../dialogs/firstrun/qml/SubtitleLanguagesStep.qml',
         '../../dialogs/preferences/qml/SettingsAppearance.qml',

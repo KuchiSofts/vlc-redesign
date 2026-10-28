@@ -714,6 +714,7 @@ modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml
 modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml
 modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml
 modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml
+modules/gui/qt/dialogs/firstrun/qml/WhatsNewDialog.qml
 modules/gui/qt/dialogs/gototime/gototime.cpp
 modules/gui/qt/dialogs/gototime/gototime.hpp
 modules/gui/qt/dialogs/help/help.cpp

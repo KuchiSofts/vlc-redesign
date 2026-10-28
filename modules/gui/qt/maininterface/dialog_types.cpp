@@ -9,6 +9,7 @@
 #include "dialogs/preferences/audio_output_preview.hpp"
 #include "dialogs/preferences/shortcuts_model.hpp"
 #include "dialogs/firstrun/onboarding.hpp"
+#include "dialogs/firstrun/whats_new.hpp"
 #include "dialogs/extended/audio_effects.hpp"
 #include "dialogs/extended/video_effects.hpp"
 #include "player/sleep_timer.hpp"
@@ -34,6 +35,7 @@ void MainUI::registerDialogTypes()
         qmlRegisterType<AudioOutputPreview>(uri, versionMajor, versionMinor, "AudioOutputPreview");
         qmlRegisterType<ConfigModel>(uri, versionMajor, versionMinor, "ConfigModel");
         qmlRegisterType<OnboardingController>(uri, versionMajor, versionMinor, "OnboardingController");
+        qmlRegisterType<WhatsNewController>(uri, versionMajor, versionMinor, "WhatsNewController");
         qmlRegisterType<AudioEffects>(uri, versionMajor, versionMinor, "AudioEffects");
         qmlRegisterType<SleepTimerController>(uri, versionMajor, versionMinor, "SleepTimerController");
         qmlRegisterType<ShortcutsModel>(uri, versionMajor, versionMinor, "ShortcutsModel");

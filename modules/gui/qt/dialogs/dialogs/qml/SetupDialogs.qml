@@ -25,6 +25,33 @@ Item {
         if (!setupState.playlistHasMedia())
             root.show(setup)
     }
+    // What's new after an update: once a version, on the library once the
+    // window is up (not over the welcome of a new install, which records the
+    // version instead). VLC opened to play something: once it has stopped
+    WhatsNewController { id: whatsNewState; ctx: MainCtx }
+    function showWhatsNew() {
+        if (!whatsNewState.pending || setupState.needsSetup
+                || Player.playingState !== Player.PLAYING_STATE_STOPPED)
+            return
+        if (whatsNew.item && whatsNew.item.visible)
+            return
+        if (whatsNewState.showWanted())
+            root.show(whatsNew)
+    }
+    // the library drawn first; a file opened with VLC waits for its end
+    Timer {
+        id: whatsNewTimer
+        interval: 1500
+        onTriggered: if (!setupState.playlistHasMedia()) root.showWhatsNew()
+    }
+    Connections {
+        target: Player
+        enabled: whatsNewState.pending
+        function onPlayingStateChanged() {
+            if (Player.playingState === Player.PLAYING_STATE_STOPPED)
+                Qt.callLater(root.showWhatsNew)
+        }
+    }
     // centred on whole pixels: the text stays crisp
     function centeredX(width) { return Math.round((root.width - width) / 2) }
     function centeredY(height) { return Math.round((root.height - height) / 2) }
@@ -42,7 +69,12 @@ Item {
                 loader.active = false
         })
     }
-    Component.onCompleted: if (setupState.needsSetup) Qt.callLater(root.showSetupOnStart)
+    Component.onCompleted: {
+        if (setupState.needsSetup)
+            Qt.callLater(root.showSetupOnStart)
+        else if (whatsNewState.pending)
+            whatsNewTimer.start()
+    }
     Connections {
         target: DialogsProvider
         function onPreferencesRequested() { root.show(preferences) }
@@ -73,6 +105,18 @@ Item {
         active: false
         source: "qrc:/qt/qml/VLC/Dialogs/OnboardingDialog.qml"
         onLoaded: { item.parent = root; item.open() }
+    }
+    Loader {
+        id: whatsNew
+        anchors.fill: parent
+        active: false
+        source: "qrc:/qt/qml/VLC/Dialogs/WhatsNewDialog.qml"
+        onLoaded: {
+            item.parent = root
+            item.controller = whatsNewState
+            item.closed.connect(() => root.release(whatsNew))
+            item.open()
+        }
     }
     Loader {
         id: preferences

@@ -17,6 +17,8 @@ static const Option entries[] = {
     // Startup of the design: the error popup and the confirmations of the
     // interface read qt-error-dialogs (Dialogs.qml, questionDialog)
     {"general", "qt-error-dialogs"}, {"general", "redesign-update-check"},
+    // the card of the new version after an update (whats_new.cpp)
+    {"general", "qt:redesign/show-whats-new"},
     {"general", "file-logging"}, {"general", "logfile"},
     {"general", "log-verbose"},
     // extra-options: read by the core at the start (libvlc.c)

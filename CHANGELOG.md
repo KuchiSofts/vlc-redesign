@@ -22,6 +22,11 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   install type, Windows, CPU, graphics adapter and driver, video output and decoding, screens, theme, accent,
   language), with *Copy* and *Open GitHub*, which opens the bug form filled in. Nothing is sent by VLC, and no
   personal data goes in: no file names or paths, no user or computer name, no library, no log.
+- **What's new after an update.** The first time VLC opens after an update (the installer, a small update, or a
+  new portable copy that took the settings of an older one), a card lists the highlights of the version, from
+  this changelog, with *Full changelog* for the release notes on GitHub. It shows once per version, on the
+  library: a file opened with VLC plays first, and a new install shows the welcome instead. *Show what's new
+  after an update* in Settings, General turns it off. The notes are in English.
 
 ### Fixed
 

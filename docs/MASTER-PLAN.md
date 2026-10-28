@@ -15,7 +15,10 @@ What is being worked on, updated as it changes (2026-10-28):
 - 🟡 **Final check before 0.3.2** (2026-10-28): VideoLAN's master merged to its latest (`32b160d9e9`), `feature/linux-pkg` and
   `feature/macos` merged; the redrawn tool windows looked at in build 10 (Media Statistics did not load: Canvas,
   fixed; Folder information: native path, no time-zone name); the Visualizer opens from Audio › Visualizations and its
-  button over a visualization. Build 11 (everything merged) is being built.
+  button over a visualization. Build 11 found Media Statistics still not loading (its graph's `top` clashed with
+  Qt Quick's own); build 12 checked: Statistics with its live graph, Folder information, no QML warning.
+  Every upload now passes `release-check.py` ([RELEASE-CHECKLIST.md](RELEASE-CHECKLIST.md)); left before 0.3.2:
+  the new texts in the 72 languages.
 - 🟡 **macOS** (roadmap step 7, branch `feature/macos`): `macos-build.sh` (prebuilt contribs, Qt 6.8.3, the Qt
   interface only, `VLC Redesign.app`, `vlc-redesign-X.Y.Z-macos-<arch>.dmg`), `build-macos.yml` on Apple Silicon and
   Intel runners with a launch test, macOS fixes in the code (title bar, menu bar, ⌘ hotkeys, fonts, updater)

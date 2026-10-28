@@ -152,7 +152,9 @@ if [ ! -d "$contrib/$HOST_TRIPLET/lib" ]; then
         # touched the contribs (extras/ci/get-contrib-sha.sh); the
         # redesign's own changes there have none: the last upstream one
         group=macos-$( [ "$arch" = arm64 ] && echo arm64 || echo x86_64 )
-        for sha in $(git -C "$root" rev-list -n 40 HEAD -- extras/tools contrib extras/ci extras/package/macosx); do
+        # VLC_CONTRIB_SHA names that commit for a tree without its history
+        # (a shallow clone, a snapshot)
+        for sha in ${VLC_CONTRIB_SHA:-$(git -C "$root" rev-list -n 40 HEAD -- extras/tools contrib extras/ci extras/package/macosx)}; do
             url="https://artifacts.videolan.org/vlc/$group/vlc-contrib-$HOST_TRIPLET-$sha.tar.zst"
             if curl -fsIL --retry 2 -o /dev/null "$url"; then
                 prebuilt=$url

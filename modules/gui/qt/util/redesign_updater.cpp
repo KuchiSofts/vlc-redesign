@@ -685,13 +685,13 @@ void RedesignUpdater::onRelease(int status, const QByteArray &body)
             m_deltaName = name;
             m_deltaSize = size;
         }
-#else
-        // (the files of Windows are never offered elsewhere)
-        Q_UNUSED(size);
-# ifdef __APPLE__
+#elif defined(__APPLE__)
         else if (name.endsWith(QLatin1String(ownPackageSuffix), Qt::CaseInsensitive))
             ownPackage = true;
-# endif
+#endif
+#ifndef _WIN32
+        // (the files of Windows are never offered elsewhere)
+        Q_UNUSED(size);
 #endif
     }
 

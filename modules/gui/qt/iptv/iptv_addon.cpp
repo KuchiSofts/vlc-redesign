@@ -38,6 +38,7 @@
 #include "playlist/playlist_item.hpp"
 
 #include <algorithm>
+#include <mutex>
 
 namespace {
 
@@ -761,6 +762,23 @@ QString IptvAddon::suggestionUrl() const
 
 /* Watching */
 
+namespace {
+// the address of the channel playing, read by SubtitleFinder on its thread
+std::mutex s_tvUrlLock;
+QString s_tvUrl;
+void setTvUrl(const QString& url)
+{
+    std::lock_guard<std::mutex> guard(s_tvUrlLock);
+    s_tvUrl = url;
+}
+}
+
+bool IptvAddon::isTvUrl(const QString& url)
+{
+    std::lock_guard<std::mutex> guard(s_tvUrlLock);
+    return !s_tvUrl.isEmpty() && QUrl(url) == QUrl(s_tvUrl);
+}
+
 void IptvAddon::startMedia(const QString& url, const QString& name, const QStringList& options)
 {
     if (!m_intf->p_mainPlaylistController)
@@ -768,13 +786,12 @@ void IptvAddon::startMedia(const QString& url, const QString& name, const QStrin
     // the channel alone in the queue, as a TV switches channels; not kept
     // in the history nor in the library (no entry for every channel zapped)
     QStringList all = options;
-    all << QStringLiteral(":no-save-recentplay")
-        // the banner names the channel: not the title of the stream too
-        << QStringLiteral(":no-video-title-show");
+    all << QStringLiteral(":no-save-recentplay");
     vlc::playlist::Media media(url, name, all);
     m_currentUrl = url;
     // the item itself tells the channel playing from another media
     m_currentMedia.reset(media.raw());
+    setTvUrl(url);
     m_switchTime.start();
     if (!m_playing)
     {
@@ -920,6 +937,7 @@ void IptvAddon::playUrl(const QString& url, const QString& title)
     m_catchup.clear();
     startMedia(url, title, {});
     // a film or an episode: no channel, no keys of the TV
+    setTvUrl(QString());
     m_currentMedia.reset();
     if (m_playing)
     {
@@ -952,12 +970,13 @@ void IptvAddon::checkPlaying()
         const QString url = uri ? QString::fromUtf8(uri) : QString();
         free(uri);
         call(QJsonObject { { QStringLiteral("op"), QStringLiteral("channelOfUrl") }, { QStringLiteral("url"), url } },
-             [this, media](const QJsonObject& answer) {
+             [this, media, url](const QJsonObject& answer) {
                  const QString key = answer.value(QLatin1String("key")).toString();
                  const PlaylistItem now = m_intf->p_mainPlaylistController->getCurrentItem();
                  if (key.isEmpty() || !now || now.inputItem() != media.get())
                      return;
                  m_currentMedia = media;
+                 setTvUrl(url);
                  m_currentKey = key;
                  m_catchup.clear();
                  m_playing = true;

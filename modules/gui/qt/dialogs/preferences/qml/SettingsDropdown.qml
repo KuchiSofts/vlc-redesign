@@ -209,6 +209,9 @@ T.ComboBox {
                 blurRadius: 7.5 * VLCStyle.scale
                 color: Qt.rgba(0, 0, 0, 0.46)
             }
+
+            // the frame of the main window
+            Widgets.RedesignWindowBorder { }
         }
     }
 }

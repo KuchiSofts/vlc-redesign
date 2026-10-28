@@ -31,7 +31,13 @@ Controls.Popup {
     background: Rectangle {
         color: VLCStyle.redesign.color("#1b1b1b", "#ababaa")
         radius: VLCStyle.dp(11, VLCStyle.scale)
-        border.color: VLCStyle.redesign.color("#252525", "#9c9c9b")
+    }
+
+    // the frame of the main window, over the content (which reaches the
+    // card's edges): the card reads as a window over the interface
+    readonly property Item _windowBorder: Widgets.RedesignWindowBorder {
+        parent: root.background ? root.background.parent : null
+        radius: VLCStyle.dp(11, VLCStyle.scale)
     }
 
     contentItem: Column {

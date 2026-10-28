@@ -77,8 +77,9 @@ RedesignIconButton {
         background: Rectangle {
             color: VLCStyle.redesign.color(VLCStyle.redesign.windowBackground, "#c2c2c1")
             radius: VLCStyle.dp(10, VLCStyle.scale)
+            // the frame of the main window
             border.width: 1
-            border.color: VLCStyle.redesign.color(VLCStyle.redesign.separator, "#9c9c9b")
+            border.color: VLCStyle.redesign.color(VLCStyle.redesign.windowBorder)
         }
 
         contentItem: ColumnLayout {

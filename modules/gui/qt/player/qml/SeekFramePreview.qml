@@ -49,6 +49,9 @@ Rectangle {
     // Menu surface of the design: #191919 at 95%
     color: root.darkTheme ? "#F2191919" : "#F2ABABAA"
 
+    // the frame of the main window
+    Widgets.RedesignWindowBorder { darkTheme: root.darkTheme }
+
     // Positions are rounded to a thousandth: close hovers share a request
     Image {
         id: frameSource

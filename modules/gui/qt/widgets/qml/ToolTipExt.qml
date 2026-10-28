@@ -120,7 +120,8 @@ T.ToolTip {
     }
 
     background: Rectangle {
-        border.color: theme.border
+        // the frame of the main window
+        border.color: VLCStyle.redesign.color(VLCStyle.redesign.windowBorder)
         border.pixelAligned: (radius < Number.EPSILON)
         color: theme.bg.primary
         radius: control.radius

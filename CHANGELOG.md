@@ -42,6 +42,14 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Changed
 
+- **Every window and popup has a border like the main window.** Dialogs (Restore the play queue, confirmations,
+  Go to Time, Media Statistics, Plugins, Folder information, What's new, Settings, Keyboard Shortcuts, the welcome),
+  menus, the panels that open from the player's buttons (tracks and subtitles, the queue card, cast, sleep timer,
+  speed, effects), dropdown lists, tooltips and the seek preview now have the same thin 1 px frame as the main
+  window, so they stand out from the dimmed interface instead of melting into it. The classic windows, the
+  right-click menus and the "VLC could not start" message take the same colour. It is the grey Windows 11 draws
+  around the main window (`#4C4A48`, in the dark and the light theme), now set on every window so that the frame
+  looks the same whatever the Windows colour settings.
 - **Every message and question looks like the rest of VLC Redesign.** The ones that were plain Windows boxes are
   drawn as the redesign's dialogs (title bar with its close button, heading, the Cancel button on the left and the
   action in the accent on the right), in the window when it shows:

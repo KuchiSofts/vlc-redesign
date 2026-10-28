@@ -245,7 +245,13 @@ Item {
     // The help; over a label cut short (a long translation), the whole
     // label first
     ToolTip {
+        id: helpTip
         parent: helpIcon.visible ? helpIcon : settingLabel
+        // the Basic style's card, in the frame of the main window
+        background: Rectangle {
+            color: helpTip.palette.toolTipBase
+            border.color: VLCStyle.redesign.color(VLCStyle.redesign.windowBorder)
+        }
         visible: (labelHover.hovered && (root.help.length > 0 || settingLabel.truncated))
                  || (helpHover.hovered && root.help.length > 0)
         text: !settingLabel.truncated ? root.help

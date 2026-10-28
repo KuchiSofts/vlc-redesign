@@ -12,6 +12,7 @@
 #include <QCryptographicHash>
 #include <QDateTime>
 #include <QDir>
+#include <QElapsedTimer>
 #include <QFile>
 #include <QFileInfo>
 #include <QJsonDocument>
@@ -295,6 +296,8 @@ void Service::startup()
         std::lock_guard<std::mutex> guard(m_lock);
         sources = m_sources;
     }
+    QElapsedTimer took;
+    took.start();
     for (const SourceConfig& cfg : sources)
     {
         SourceState state;
@@ -304,9 +307,14 @@ void Service::startup()
     }
     rebuild();
     changed("channels");
+    {
+        std::lock_guard<std::mutex> guard(m_lock);
+        m_host.debug(QStringLiteral("%1 channels of the cache in %2 ms").arg(m_channels.size()).arg(took.elapsed()));
+    }
     loadGuides(false, QString());
     rebuild();
     changed("guide");
+    m_host.debug(QStringLiteral("the guides of the cache in %1 ms").arg(took.elapsed()));
     for (const SourceConfig& cfg : sources)
     {
         bool missing;
@@ -587,6 +595,8 @@ void Service::loadGuides(bool download, const QString& onlySource)
             result.insert(w.url, data);
             continue;
         }
+        QElapsedTimer took;
+        took.start();
         Guide guide = parseXmltvFile(path, filter);
         if (m_quit)
             return;
@@ -642,6 +652,8 @@ void Service::loadGuides(bool download, const QString& onlySource)
         desc.close();
         data->idByName = std::move(guide.idByName);
         data->languages = std::move(guide.languages);
+        m_host.debug(QStringLiteral("guide of %1: %2 programmes of %3 channels, read in %4 ms")
+                         .arg(hostOf(w.url)).arg(data->programmes).arg(data->byKey.size()).arg(took.elapsed()));
         result.insert(w.url, data);
     }
 

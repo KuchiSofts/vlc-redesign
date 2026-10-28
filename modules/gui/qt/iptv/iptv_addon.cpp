@@ -411,6 +411,7 @@ void IptvAddon::load()
         m_bridge->object = obj;
         m_module = module;
     }
+    m_loadTime.start();
     sendOptions();
     call(QJsonObject { { QStringLiteral("op"), QStringLiteral("start") } }, nullptr);
     loadStatus();
@@ -561,6 +562,9 @@ void IptvAddon::loadChannels()
             if (ok && revision != a->m_channelsRevision)
             {
                 a->m_channelsRevision = revision;
+                if (!a->m_channelsLoaded)
+                    msg_Dbg(a->m_intf, "Live TV: %d channels shown %lld ms after the add-on started",
+                            int(items->size()), (long long)a->m_loadTime.elapsed());
                 a->m_channels = std::move(*items);
                 a->m_channelIndex.clear();
                 QVariantList groups;

@@ -315,6 +315,7 @@ private:
     int m_channelsRevision = -1;
     bool m_channelsLoading = false;
     bool m_channelsAgain = false;
+    QElapsedTimer m_loadTime;
     IptvChannelModel* m_channelModel = nullptr;
     IptvChannelModel* m_playerModel = nullptr;
 

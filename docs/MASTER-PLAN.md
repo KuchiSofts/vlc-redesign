@@ -218,10 +218,10 @@ What comes first, and why. Each step starts when what it needs is done.
 
 | #  | Step                                                                  | Needs first                     | Why in this order                                                   | Status |
 |----|-----------------------------------------------------------------------|---------------------------------|---------------------------------------------------------------------|--------|
-| 1  | Check build 115 in the app (11 lines), finish the 0.3.0 items (§8)     | —                               | Mostly done: finishing costs less than switching                    | 🟡     |
-| 2  | Figma references exported, capture script, pixel check of 103 frames  | step 1 (screens stable)         | "Pixel for pixel" needs proof; capturing moving screens is wasted    | 🔴     |
-| 3  | Community setup: hub, Discussions, forms, labels, board, files        | decisions 1 and 9               | Feedback must land in the right place before the announcement       | 🔴     |
-| 4  | Release 0.3.0 and announce it                                         | quality gates, steps 1 and 3    | Users get the fixes; the community side is ready for them            | 🔴     |
+| 1  | Finish the 0.3.x items (§8): the 5 lines in the app ⏳                 | —                               | Mostly done: finishing costs less than switching                    | 🟡     |
+| 2  | Figma references exported, capture script, pixel check of 103 frames  | step 1 (screens stable)         | "Pixel for pixel" needs proof; capturing moving screens is wasted    | 🟢     |
+| 3  | Community setup: in-app *Suggest an idea* / *Report a problem* (13.12), hub, Discussions, board | decisions 1 and 9 | Feedback must land in the right place before the announcement | 🟡 |
+| 4  | Release 0.3.0 and announce it (0.3.0 and 0.3.1 out 2026-10-25; 0.3.2 next) | quality gates, steps 1 and 3 | Users get the fixes; the community side is ready for them        | 🟡     |
 | 5  | `platforms.yml`, platform bar, website                                | step 3                          | In place before a second platform exists, so it shows everywhere     | 🔴     |
 | 6  | Design tokens exported (`design/`: tokens, icons, fonts)              | step 2 (values checked)         | Every other platform reads them; no copying errors                   | 🔴     |
 | 7  | Linux, then macOS, then Windows ARM64                                 | CI; decision 3 for macOS        | Same code base: the cheapest new platforms first                     | 🔴     |

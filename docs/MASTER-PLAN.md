@@ -974,7 +974,11 @@ and an accepted request made the TV fail after a pause in a test.
 - 🔴 Intel graphics, older PCs, Windows 10 on real hardware, high-DPI multi-monitor (2026-10-24: the app drawn at
   125, 150, 175 and 200 % has the layout of 100 % on every page checked, with sharp text, and its caption buttons
   and top edge answer Windows where they are drawn; still to do: monitors of different scales, a real one above 100 %)
-- ⚪ Our VLC core fixes (pipes, freezes, filters, conversion, casting) offered to VideoLAN
+- 🟡 Our VLC core fixes (pipes, freezes, filters, conversion, casting) offered to VideoLAN: prepared, waiting for
+  the owner (2026-10-28): 66 patches on VideoLAN's `master` (0c23b0d4b1) in `~\source\vlc-redesign-upstream\patches`,
+  one fix each in VLC's commit style, applying as a series (all but four alone too) and building for win64; the
+  README there lists each bug, how to reproduce it and the risk, the redesign-only and mixed commits left out, and
+  the merge request steps on code.videolan.org. Nothing sent
 
 ### 8.10 Release checklist
 

@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VLC Redesign (unofficial)</title>
+  <meta name="description" content="The VLC you know, with the interface designed by Juxtopposed. An unofficial build on the real VLC 4 engine, for Windows 10 and 11; Linux, macOS and more on the way.">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0E0E0E" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#C2C2C1" media="(prefers-color-scheme: light)">
+  <meta property="og:title" content="VLC Redesign (unofficial)">
+  <meta property="og:description" content="The VLC you know, with the interface designed by Juxtopposed.">
+  <meta property="og:image" content="https://kuchisofts.github.io/vlc-redesign/media/home.jpg">
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/Inter-latin.woff" as="font" type="font/woff" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to the content</a>
+
+  <header class="top">
+    <div class="wrap top-inner">
+      <a class="brand" href="./" aria-label="VLC Redesign, home">
+        <img src="logo.svg" alt="" width="28" height="28">
+        <span>VLC Redesign</span>
+      </a>
+      <nav aria-label="Main">
+        <ul class="nav">
+          <li><a href="#platforms">Platforms</a></li>
+          <li><a href="#involved">Get involved</a></li>
+          <li><a href="https://github.com/KuchiSofts/vlc-redesign">GitHub</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="title">
+      <div class="wrap hero-inner">
+        <div class="hero-text">
+          <p class="eyebrow"><span class="pill">Unofficial</span> Built on the real VLC 4 engine</p>
+          <h1 id="title">VLC Redesign</h1>
+          <p class="lead">The VLC you know, with the interface designed by
+            <a href="https://www.youtube.com/@juxtopposed">Juxtopposed</a>. Every codec and feature of VLC, a new
+            interface built screen by screen from the design.</p>
+
+          <div class="download" id="download" aria-live="polite">
+          <!-- download:start -->
+          <p class="download-title" id="download-title">VLC Redesign for Windows</p>
+          <div class="download-buttons" id="download-buttons"><a class="button accent large" href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.3.1/vlc-redesign-0.3.1-win64-setup.exe">Download for Windows</a><a class="button large" href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.3.1/vlc-redesign-0.3.1-win64.zip">Portable</a></div>
+          <p class="download-meta" id="download-meta">Version 0.3.1 · <time datetime="2026-10-25">25 October 2026</time> · Windows 10 (1809) or 11, 64-bit</p>
+          <!-- download:end -->
+          <p class="download-more"><a href="#platforms">Every platform</a> ·
+            <a href="https://github.com/KuchiSofts/vlc-redesign/releases">All releases and checksums</a></p>
+          </div>
+        </div>
+        <figure class="hero-shot">
+          <picture>
+            <source srcset="media/home-light.jpg" media="(prefers-color-scheme: light)">
+            <img src="media/home.jpg" alt="VLC Redesign's Home: Continue Watching, the library and the sidebar, in the dark theme" width="1920" height="1080" fetchpriority="high">
+          </picture>
+        </figure>
+      </div>
+    </section>
+
+    <section class="credit" aria-labelledby="credit-title">
+      <div class="wrap">
+        <div class="card credit-card">
+          <h2 id="credit-title">Interface designed by <span class="accent-text">Juxtopposed</span></h2>
+          <p>Every screen of this interface comes from Juxtopposed's
+            <a href="https://www.figma.com/community/file/1691465999134370980">VLC Redesign (Community)</a> Figma file,
+            licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. This project turns
+            that design into working software: it was implemented in Qt/QML inside VLC 4, its icons were redrawn,
+            and some layouts were adapted to VLC's features and to window sizes the design doesn't cover.
+            Juxtopposed does not endorse this project.</p>
+          <p class="links">
+            <a href="https://www.youtube.com/watch?v=ERFeOgqk324">Watch the video: I Redesigned VLC After 25 Years</a>
+            <a href="https://www.youtube.com/@juxtopposed">YouTube</a>
+            <a href="https://juxtopposed.com">Website</a>
+            <a href="https://www.figma.com/@juxtopposed">Figma</a>
+            <a href="https://twitter.com/juxtopposed">X / Twitter</a>
+            <a href="https://bsky.app/profile/juxtopposed.bsky.social">Bluesky</a>
+            <a href="https://instagram.com/juxtopposed">Instagram</a>
+            <a href="https://github.com/juxtopposed">GitHub</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="shots" aria-labelledby="shots-title">
+      <div class="wrap">
+        <h2 id="shots-title">The real app</h2>
+        <p class="section-lead">Every picture is VLC Redesign itself, with free films and music.</p>
+        <ul class="gallery">
+          <li><figure><img src="media/seek-preview.jpg" alt="The player with a frame preview above the seek bar" width="1920" height="1080" loading="lazy" decoding="async"><figcaption>Frame previews on the seek bar</figcaption></figure></li>
+          <li><figure><img src="media/music.jpg" alt="Music playing, with the waveform seek bar" width="1920" height="1080" loading="lazy" decoding="async"><figcaption>Music with a waveform seek bar</figcaption></figure></li>
+          <li><figure><img src="media/subtitles-learn.jpg" alt="The subtitle panel suggesting the languages you use" width="1920" height="1080" loading="lazy" decoding="async"><figcaption>Subtitles that learn your languages</figcaption></figure></li>
+          <li><figure><img src="media/player-light.jpg" alt="The player in the light theme" width="1920" height="1080" loading="lazy" decoding="async"><figcaption>Light and dark themes, nine accents</figcaption></figure></li>
+          <li><figure><img src="media/customize.jpg" alt="Customizing the buttons of the control bar" width="1920" height="1080" loading="lazy" decoding="async"><figcaption>Your own control bar</figcaption></figure></li>
+          <li><figure><img src="media/settings.jpg" alt="Settings, drawn in the design" width="1920" height="1080" loading="lazy" decoding="async"><figcaption>Settings in 72 languages</figcaption></figure></li>
+        </ul>
+        <p class="tour"><a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/tour/tour.mp4">Watch the 56-second tour</a></p>
+      </div>
+    </section>
+
+    <section class="platforms" id="platforms" aria-labelledby="platforms-title">
+      <div class="wrap">
+        <h2 id="platforms-title">Every platform</h2>
+        <p class="section-lead">Windows first; the same code base builds for Linux and macOS next. Where each one stands:</p>
+        <ul class="platform-list" id="platform-list">
+        <!-- platforms:start -->
+        <!-- Written by render.py from platforms.yml -->
+        <li class="platform" id="platform-windows" data-os="windows">
+          <div class="platform-head"><h3>Windows</h3><span class="status status-released">released</span></div>
+          <p class="latest">Version 0.3.1 · <time datetime="2026-10-25">25 October 2026</time></p>
+          <p class="requires">Windows 10 (1809) or 11, 64-bit</p>
+          <p class="notes">Installer and portable zip; small updates in the app</p>
+          <div class="actions"><a class="button small accent" href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.3.1/vlc-redesign-0.3.1-win64-setup.exe">Installer</a><a class="button small" href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.3.1/vlc-redesign-0.3.1-win64.zip">Portable</a></div>
+        </li>
+        <li class="platform" id="platform-linux" data-os="linux">
+          <div class="platform-head"><h3>Linux</h3><span class="status status-in-progress">in progress</span></div>
+          <p class="latest">Coming soon</p>
+          <p class="requires">glibc 2.35 (Ubuntu 22.04, Debian 12, Fedora 36 or later)</p>
+          <p class="notes">Builds from the same code; AppImage, Flatpak, deb, rpm and tar.gz planned</p>
+          <div class="actions"><a class="link" href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/PLATFORMS.md">Follow the progress</a></div>
+        </li>
+        <li class="platform" id="platform-macos" data-os="macos">
+          <div class="platform-head"><h3>macOS</h3><span class="status status-planned">planned</span></div>
+          <p class="latest">Coming soon</p>
+          <p class="requires">macOS 12 Monterey, Apple Silicon or Intel</p>
+          <p class="notes">Builds from the same code; a dmg for Apple Silicon and one for Intel</p>
+          <div class="actions"><a class="link" href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/PLATFORMS.md">Follow the progress</a></div>
+        </li>
+        <li class="platform" id="platform-windows-arm64" data-os="windows-arm64">
+          <div class="platform-head"><h3>Windows on ARM64</h3><span class="status status-planned">planned</span></div>
+          <p class="latest">Coming soon</p>
+          <p class="requires">Windows 11 on ARM64</p>
+          <p class="notes">The x64 build already runs on Windows 11 ARM64 under emulation</p>
+          <div class="actions"><a class="link" href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/PLATFORMS.md">Follow the progress</a></div>
+        </li>
+        <li class="platform" id="platform-android" data-os="android">
+          <div class="platform-head"><h3>Android (phones, tablets, TV)</h3><span class="status status-research">research</span></div>
+          <p class="latest">Coming soon</p>
+          <p class="requires">Android 8.0 or later</p>
+          <p class="notes">A fork of VLC for Android with the design</p>
+          <div class="actions"><a class="link" href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/PLATFORMS.md">Follow the progress</a></div>
+        </li>
+        <li class="platform" id="platform-samsung-tv" data-os="tizen">
+          <div class="platform-head"><h3>Samsung Smart TV (Tizen)</h3><span class="status status-research">research</span></div>
+          <p class="latest">Coming soon</p>
+          <p class="requires">Tizen 3.0 (2017 models) or later</p>
+          <p class="notes">The TV side of casting, drawn in the design</p>
+          <div class="actions"><a class="link" href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/PLATFORMS.md">Follow the progress</a></div>
+        </li>
+        <li class="platform" id="platform-ios" data-os="ios">
+          <div class="platform-head"><h3>iPhone, iPad, Apple TV</h3><span class="status status-later">later</span></div>
+          <p class="latest">Coming later</p>
+          <p class="requires">iOS, iPadOS, tvOS</p>
+          <p class="notes">A fork of VLC for iOS, after Android</p>
+          <div class="actions"><a class="link" href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/PLATFORMS.md">Follow the progress</a></div>
+        </li>
+        <!-- platforms:end -->
+        </ul>
+      </div>
+    </section>
+
+    <section class="involved" id="involved" aria-labelledby="involved-title">
+      <div class="wrap">
+        <h2 id="involved-title">Get involved</h2>
+        <ul class="tiles">
+          <li><a class="card tile" href="https://github.com/KuchiSofts/vlc-redesign/discussions"><strong>Discussions</strong><span>Ask, share and follow the announcements</span></a></li>
+          <li><a class="card tile" href="https://github.com/KuchiSofts/vlc-redesign/discussions/new?category=ideas"><strong>Suggest an idea</strong><span>In the Ideas category; the most wanted move up</span></a></li>
+          <li><a class="card tile" href="https://github.com/KuchiSofts/vlc-redesign/issues/new?template=bug_report.yml"><strong>Report a problem</strong><span>The bug form; the app's Report a problem fills it in</span></a></li>
+          <li><a class="card tile" href="https://hosted.weblate.org/projects/vlc-redesign/"><strong>Translate</strong><span>72 languages on Weblate</span></a></li>
+          <li><a class="card tile" href="https://github.com/KuchiSofts/vlc-redesign/blob/main/CHANGELOG.md"><strong>Changelog</strong><span>What changed in every version</span></a></li>
+          <li><a class="card tile" href="https://github.com/KuchiSofts/vlc-redesign/blob/main/ROADMAP.md"><strong>Roadmap</strong><span>What comes next, and in which order</span></a></li>
+          <li><a class="card tile" href="https://github.com/KuchiSofts/vlc-redesign"><strong>Source code</strong><span>GitHub, GPL v2 or later</span></a></li>
+          <li><a class="card tile" href="https://github.com/KuchiSofts/vlc-redesign/wiki"><strong>Wiki</strong><span>Every setting, troubleshooting and the FAQ</span></a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bottom">
+    <div class="wrap">
+      <p>VLC Redesign is an unofficial build, not affiliated with or endorsed by VideoLAN or Juxtopposed. VLC,
+        VLC media player and the cone logo are trademarks of VideoLAN; the official VLC is at
+        <a href="https://www.videolan.org/vlc/">videolan.org</a>. Free software under the
+        <a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/COPYING">GNU GPL v2 or later</a>; the design
+        under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+        (<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/CREDITS.md">credits</a>).</p>
+      <p>This page has no cookies, trackers or analytics, and loads nothing from other sites.</p>
+    </div>
+  </footer>
+</body>
+</html>

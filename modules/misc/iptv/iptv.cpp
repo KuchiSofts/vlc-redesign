@@ -30,6 +30,13 @@
 
 #include <cstdlib>
 #include <cstring>
+#include <condition_variable>
+#include <deque>
+#include <functional>
+#include <future>
+#include <string>
+#include <thread>
+#include <vector>
 #include <memory>
 #include <mutex>
 
@@ -238,47 +245,147 @@ private:
     vlc_interrupt_t* m_interrupt = nullptr;
 };
 
+// The threads the requests of the interface are answered on. They come
+// from the interface's threads, but the Qt of this plugin (its own copy,
+// static on Windows) keeps data per thread, freed when a thread ends: on
+// threads it does not own that came too late (a crash at exit). Every
+// answer is made on a thread of the plugin, which ends before it closes.
+class Executor
+{
+public:
+    explicit Executor(int count)
+    {
+        for (int i = 0; i < count; ++i)
+        {
+            vlc_interrupt_t* interrupt = vlc_interrupt_create();
+            m_interrupts.push_back(interrupt);
+            m_threads.emplace_back([this, interrupt]() {
+                if (interrupt)
+                    vlc_interrupt_set(interrupt);
+                run();
+            });
+        }
+    }
+
+    ~Executor()
+    {
+        {
+            std::lock_guard<std::mutex> guard(m_lock);
+            m_quit = true;
+        }
+        // a download in progress (a logo, the films of an account) stops
+        for (vlc_interrupt_t* interrupt : m_interrupts)
+            if (interrupt)
+                vlc_interrupt_kill(interrupt);
+        m_wait.notify_all();
+        for (std::thread& t : m_threads)
+            t.join();
+        for (vlc_interrupt_t* interrupt : m_interrupts)
+            if (interrupt)
+                vlc_interrupt_destroy(interrupt);
+    }
+
+    // Runs job on one of the threads and waits for it; false when closing
+    bool runAndWait(const std::function<void()>& job)
+    {
+        auto done = std::make_shared<std::promise<void>>();
+        std::future<void> result = done->get_future();
+        {
+            std::lock_guard<std::mutex> guard(m_lock);
+            if (m_quit)
+                return false;
+            m_jobs.push_back([job, done]() {
+                job();
+                done->set_value();
+            });
+        }
+        m_wait.notify_one();
+        result.wait();
+        return true;
+    }
+
+private:
+    void run()
+    {
+        for (;;)
+        {
+            std::function<void()> job;
+            {
+                std::unique_lock<std::mutex> guard(m_lock);
+                m_wait.wait(guard, [this]() { return m_quit || !m_jobs.empty(); });
+                if (m_jobs.empty())
+                    return;
+                job = std::move(m_jobs.front());
+                m_jobs.pop_front();
+            }
+            job();
+        }
+    }
+
+    std::mutex m_lock;
+    std::condition_variable m_wait;
+    std::deque<std::function<void()>> m_jobs;
+    bool m_quit = false;
+    std::vector<std::thread> m_threads;
+    std::vector<vlc_interrupt_t*> m_interrupts;
+};
+
 struct Sys
 {
     std::unique_ptr<VlcHost> host;
     std::unique_ptr<iptv::Service> service;
+    std::unique_ptr<Executor> executor;
 };
 
-QString userDir(vlc_userdir_t type)
+QString userDir(const char* dir)
 {
-    char* dir = config_GetUserDir(type);
-    const QString out = dir ? QString::fromUtf8(dir) + QStringLiteral("/iptv") : QString();
-    free(dir);
-    return out;
+    return dir ? QString::fromUtf8(dir) + QStringLiteral("/iptv") : QString();
 }
 
 char* Request(vlc_iptv_t* obj, const char* json)
 {
     auto* sys = static_cast<Sys*>(obj->sys);
-    QJsonParseError error;
-    const QJsonDocument doc = QJsonDocument::fromJson(QByteArray(json), &error);
-    QJsonObject answer;
-    if (!doc.isObject())
-        answer.insert(QLatin1String("error"), QStringLiteral("not a JSON object"));
-    else
-        answer = sys->service->request(doc.object());
-    const QByteArray out = QJsonDocument(answer).toJson(QJsonDocument::Compact);
-    return strdup(out.constData());
+    const std::string request(json);
+    std::string answer;
+    // (on a thread of the plugin, see Executor)
+    if (!sys->executor->runAndWait([&]() {
+            const QJsonDocument doc = QJsonDocument::fromJson(QByteArray::fromStdString(request));
+            QJsonObject out;
+            if (!doc.isObject())
+                out.insert(QLatin1String("error"), QStringLiteral("not a JSON object"));
+            else
+                out = sys->service->request(doc.object());
+            answer = QJsonDocument(out).toJson(QJsonDocument::Compact).toStdString();
+        }))
+        answer = "{\"error\":\"closing\"}";
+    return strdup(answer.c_str());
 }
 
 int Open(vlc_object_t* p_this)
 {
     auto* obj = reinterpret_cast<vlc_iptv_t*>(p_this);
-    const QString data = userDir(VLC_USERDATA_DIR);
-    const QString cache = userDir(VLC_CACHE_DIR);
-    if (data.isEmpty() || cache.isEmpty())
+    char* data = config_GetUserDir(VLC_USERDATA_DIR);
+    char* cache = config_GetUserDir(VLC_CACHE_DIR);
+    const bool dirs = data && cache;
+    std::string dataDir = data ? data : "", cacheDir = cache ? cache : "";
+    free(data);
+    free(cache);
+    if (!dirs)
         return VLC_EGENERIC;
     try
     {
         auto sys = std::make_unique<Sys>();
         sys->host = std::make_unique<VlcHost>(obj);
-        sys->service = std::make_unique<iptv::Service>(
-            *sys->host, data, cache, QByteArray::fromRawData(iptv_catalog, int(sizeof(iptv_catalog) - 1)));
+        // the requests, the logos and the films of an account at the same time
+        sys->executor = std::make_unique<Executor>(3);
+        Sys* s = sys.get();
+        s->executor->runAndWait([&]() {
+            s->service = std::make_unique<iptv::Service>(
+                *s->host, userDir(dataDir.c_str()), userDir(cacheDir.c_str()),
+                QByteArray::fromRawData(iptv_catalog, int(sizeof(iptv_catalog) - 1)));
+        });
+        if (!s->service)
+            return VLC_EGENERIC;
         obj->sys = sys.release();
     }
     catch (const std::exception&)
@@ -293,8 +400,10 @@ void Close(vlc_object_t* p_this)
 {
     auto* obj = reinterpret_cast<vlc_iptv_t*>(p_this);
     auto* sys = static_cast<Sys*>(obj->sys);
-    // the worker stops first (its downloads are interrupted), then the host
-    sys->service.reset();
+    // the service stops on a thread of the plugin (its worker's downloads
+    // are interrupted), then those threads, then the host
+    sys->executor->runAndWait([sys]() { sys->service.reset(); });
+    sys->executor.reset();
     delete sys;
 }
 

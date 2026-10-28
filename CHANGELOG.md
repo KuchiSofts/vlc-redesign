@@ -5,7 +5,7 @@ Changes of **VLC Redesign**, an unofficial VLC 4 build with the interface design
 For changes to VLC itself, see [NEWS](NEWS).
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
-what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `6836ae77ae` (2026-10-27).
+what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `32b160d9e9` (2026-10-28).
 
 **Contents:** [Unreleased](#unreleased) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
@@ -215,6 +215,9 @@ fixes found by documenting every option.
 
 ### Added
 
+- Merged VLC master up to `32b160d9e9` (2026-10-28), 9 more commits: VideoLAN fixed the same missing imports of
+  #9 with `QtQuick.Templates` and added a *broken control* indicator to `Fallback.qml`; their fix replaces ours
+  (our own fallback switch in `ControlRepeater` removed, our hidden-control fix kept).
 - **Subtitle languages that learn.** Each subtitle you pick counts for its language. The languages panel lists your
   default and second language, then the ones you pick, the most picked first (marked *Often used*), then the
   video's own. A language you pick about three times is then chosen by itself after your default and second ones:

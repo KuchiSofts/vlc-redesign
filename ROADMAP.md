@@ -57,7 +57,11 @@ changed without a restart. The full list is in the [changelog](CHANGELOG.md).
 
 ## Other platforms
 
-- 📋 Linux (AppImage, Flatpak, .deb, .rpm)
+Where each platform stands is kept in one file, [`platforms.yml`](platforms.yml): the bar at the top of the README,
+the website and the *Also on* line of the release notes and of About are made from it.
+
+- 🔨 A website for every platform (GitHub Pages): it offers the download for your system and lists the others
+- 🔨 Linux (AppImage, Flatpak, .deb, .rpm)
 - 📋 macOS (Apple Silicon and Intel)
 - 📋 Windows on ARM64
 - 💡 Android (phones, tablets, Android TV), Samsung TV receiver, iPhone and iPad

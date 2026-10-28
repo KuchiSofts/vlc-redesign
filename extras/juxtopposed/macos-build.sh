@@ -381,6 +381,9 @@ sign_code() {
 if VLC_LIB_PATH="$contents/Frameworks" "$build/vlc/bin/vlc-cache-gen" "$contents/Frameworks/plugins" \
         > "$logs/cache-gen.log" 2>&1; then
     echo "plugin cache: $(du -h "$contents/Frameworks/plugins/plugins.dat" | cut -f1)"
+    # a file among code: signed too, as upstream's codesign.sh does, or
+    # the app's signature finds it unsigned
+    sign_code "$contents/Frameworks/plugins/plugins.dat" >> "$logs/sign.log" 2>&1
 else
     echo "warning: no plugin cache (made at the first start)"
     rm -f "$contents/Frameworks/plugins/plugins.dat"

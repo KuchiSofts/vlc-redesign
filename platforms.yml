@@ -1,27 +1,99 @@
-# The programs and platforms of VLC Redesign and where each stands (the
-# platform bar of the README and of the sister repositories reads this file)
-# status: released | beta | planned | idea
+# Every program and platform of VLC Redesign and where each stands: the single
+# source of the platform bar and table of the README, the "Also on" line of the
+# release notes, the website (site/platforms.json) and the "Also on" line of
+# About, built into each release (nothing is fetched for it).
+#
+# After a change: python extras/juxtopposed/platforms/render.py
+# (the Platforms workflow does it on main and deploys the website).
+#
+# status: released | beta | in-progress | planned | research | later
+# version, date: the latest published version and its day (none yet: leave out)
+# next: the version being prepared
+# downloads: the files of a release; {version} is replaced, and the link is
+#   https://github.com/<repository>/releases/download/v<version>/<file>
+# os: what the website matches the visitor's system with
+#   (windows, windows-arm64, linux, macos, android, ios, tizen)
+# The file is read by a small reader of its own (render.py): keep to this
+# shape, one "key: value" per line, lists of mappings with "- ".
+
+repository: KuchiSofts/vlc-redesign
+site: https://kuchisofts.github.io/vlc-redesign/
+
 platforms:
-  - name: Windows
+  - id: windows
+    name: Windows
+    short: Windows
     status: released
-    version: 0.3.0
+    version: 0.3.1
+    date: 2026-10-25
+    next: 0.3.2
+    os: windows
+    requires: Windows 10 (1809) or 11, 64-bit
     repository: KuchiSofts/vlc-redesign
-    download: https://github.com/KuchiSofts/vlc-redesign/releases/latest
-    notes: Windows 10 and 11, 64-bit; installer and portable zip; small updates in the app
-  - name: Linux
-    status: planned
+    page: https://github.com/KuchiSofts/vlc-redesign/releases/latest
+    notes: Installer and portable zip; small updates in the app
+    downloads:
+      - label: Installer
+        file: vlc-redesign-{version}-win64-setup.exe
+      - label: Portable
+        file: vlc-redesign-{version}-win64.zip
+
+  - id: linux
+    name: Linux
+    short: Linux
+    status: in-progress
+    os: linux
+    requires: glibc 2.35 (Ubuntu 22.04, Debian 12, Fedora 36 or later)
     repository: KuchiSofts/vlc-redesign
-    notes: builds from the same tree; the first milestones were checked on Linux, the latest work only on Windows
-  - name: macOS
-    status: idea
-  - name: Windows on ARM64
+    page: https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/PLATFORMS.md
+    notes: Builds from the same code; AppImage, Flatpak, deb, rpm and tar.gz planned
+
+  - id: macos
+    name: macOS
+    short: macOS
     status: planned
+    os: macos
+    requires: macOS 12 Monterey, Apple Silicon or Intel
     repository: KuchiSofts/vlc-redesign
-    notes: the next platform (docs/PLATFORMS.md); the x64 build already runs on Windows 11 ARM64 under emulation
-  - name: Android (phones, tablets, TV)
-    status: idea
-  - name: Samsung Smart TV (Tizen)
+    page: https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/PLATFORMS.md
+    notes: Builds from the same code; a dmg for Apple Silicon and one for Intel
+
+  - id: windows-arm64
+    name: Windows on ARM64
+    short: Windows ARM64
     status: planned
-    notes: the TV side of casting
-  - name: iPhone, iPad, Apple TV
-    status: idea
+    os: windows-arm64
+    requires: Windows 11 on ARM64
+    repository: KuchiSofts/vlc-redesign
+    page: https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/PLATFORMS.md
+    notes: The x64 build already runs on Windows 11 ARM64 under emulation
+
+  - id: android
+    name: Android (phones, tablets, TV)
+    short: Android
+    status: research
+    os: android
+    requires: Android 8.0 or later
+    repository: KuchiSofts/vlc-redesign-android
+    page: https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/PLATFORMS.md
+    notes: A fork of VLC for Android with the design
+
+  - id: samsung-tv
+    name: Samsung Smart TV (Tizen)
+    short: Samsung TV
+    status: research
+    os: tizen
+    requires: Tizen 3.0 (2017 models) or later
+    repository: KuchiSofts/vlc-redesign-tv
+    page: https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/PLATFORMS.md
+    notes: The TV side of casting, drawn in the design
+
+  - id: ios
+    name: iPhone, iPad, Apple TV
+    short: iPhone/iPad
+    status: later
+    os: ios
+    requires: iOS, iPadOS, tvOS
+    repository: KuchiSofts/vlc-redesign-ios
+    page: https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/PLATFORMS.md
+    notes: A fork of VLC for iOS, after Android

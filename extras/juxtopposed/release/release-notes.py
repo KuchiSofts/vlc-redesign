@@ -68,6 +68,16 @@ for name in deltas:
     old = re.search(r'delta-from-(.+)\.vrdelta$', name).group(1)
     rows.append('| Small update from %s (the app offers it) | %s | %s | `%s` |' % (old, name, size(name), sums[name]))
 
+# "Also on": the other platforms, from platforms.yml (extras/juxtopposed/platforms/render.py)
+sys.path.insert(0, os.path.join(ROOT, 'extras', 'juxtopposed', 'platforms'))
+import render as platforms
+platform_data = platforms.load()
+also_on = platforms.also_on(platform_data, 'windows')
+windows = next((p for p in platform_data['platforms'] if p['id'] == 'windows'), {})
+if windows.get('version') != version:
+    print('Note: platforms.yml names Windows %s: set its version and date to %s, then run '
+          'extras/juxtopposed/platforms/render.py' % (windows.get('version'), version))
+
 notes = '''# VLC Redesign %(v)s
 
 > 🎨 The interface is the design of **[Juxtopposed](https://www.youtube.com/@juxtopposed)**
@@ -85,9 +95,11 @@ notes = '''# VLC Redesign %(v)s
 %(signing)s A copy of 0.2.4 or later
 offers the small update by itself.%(sums_signed)s
 
+%(also_on)s
+
 ---
 *VLC Redesign is not affiliated with VideoLAN. VLC is a trademark of VideoLAN.*
-''' % {'v': version, 'section': section, 'rows': '\n'.join(rows),
+''' % {'v': version, 'section': section, 'rows': '\n'.join(rows), 'also_on': also_on,
        # (the app checks it before any update: docs/code-signing.md, The release key)
        'sums_signed': (' `SHA256SUMS.txt.sig` is the signature of the checksums by the project\'s release\n'
                        'key, which the app checks before it installs an update.')

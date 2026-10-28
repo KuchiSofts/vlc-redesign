@@ -388,8 +388,8 @@ fi
 # The files in Frameworks that are not code (the plugin cache,
 # libbluray's .jar): signed too, as upstream's codesign.sh does, or the
 # app's signature finds them unsigned
-find "$contents/Frameworks" -name '*.framework' -prune -o -type f ! -name '*.dylib' -print     | while read -r f; do sign_code "$f"; done \
-    >> "$logs/sign.log" 2>&1
+find "$contents/Frameworks" -name '*.framework' -prune -o -type f ! -name '*.dylib' -print \
+    | while read -r f; do sign_code "$f"; done >> "$logs/sign.log" 2>&1
 for f in "$contents/MacOS/"*; do
     [ "$(basename "$f")" = "$APP_NAME" ] || sign_program "$f"
 done >> "$logs/sign.log" 2>&1

@@ -31,7 +31,7 @@ if ! pkg-config --atleast-version=1.23.0 wayland-scanner; then
     cd /work
 fi
 
-if ! pkg-config --atleast-version=0.13.0 medialibrary; then
+if ! pkg-config --atleast-version=0.14.0 medialibrary; then
     cd /work/build-m0/contrib
     ../../contrib/bootstrap --prefix=/work/build-m0/deps --disable-all --enable-medialibrary
     make -j"$jobs" .medialibrary > ../logs/medialibrary.log 2>&1

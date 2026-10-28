@@ -129,6 +129,10 @@ extern "C" char **environ;
 
 #include <QQuickWindow>
 #include <QOpenGLContext> // Available in Qt GUI, no need for Qt OpenGL module
+#ifdef Q_OS_MACOS
+# include <QMenuBar>
+# include <vlc_intf_strings.h>
+#endif
 
 #ifndef X_DISPLAY_MISSING
 # include <vlc_xlib.h>
@@ -463,7 +467,12 @@ vlc_module_begin ()
 #endif
 
     add_bool( "qt-titlebar",
-              false                              /* the redesign's own title bar, everywhere */,
+#ifdef __APPLE__
+              true                               /* macOS: the system's title bar (traffic lights,
+                                                    full screen in its own Space, edge resizing) */,
+#else
+              false                              /* the redesign's own title bar */,
+#endif
               QT_CLIENT_SIDE_DECORATION_TEXT, QT_CLIENT_SIDE_DECORATION_LONGTEXT )
 
     add_bool( "qt-menubar", false, QT_MENUBAR_TEXT, QT_MENUBAR_LONGTEXT )
@@ -1602,6 +1611,31 @@ static void *Thread( void *obj )
         }
     }
 #undef QTSTYLE_KEY
+
+#ifdef Q_OS_MACOS
+    /* The menu bar at the top of the screen: the window keeps the
+     * redesign's own menus. Its actions have no shortcut (the QML ones
+     * would become ambiguous): About, Settings and Quit go to the
+     * application menu by their roles, where Cmd+, and Cmd+Q are the
+     * system's. Destroyed after ThreadCleanup, before the QApplication. */
+    std::unique_ptr<QMenuBar> macMenuBar;
+    if( !p_intf->b_isDialogProvider )
+    {
+        macMenuBar = std::make_unique<QMenuBar>( nullptr ); // parentless: the global one
+        QMenu *media = macMenuBar->addMenu( qtr( "&Media" ) );
+        media->addAction( qtr( "Open &File..." ), []() { THEDP->simpleOpenDialog(); } );
+        media->addAction( qtr( "Open &Network Stream..." ), []() { THEDP->openNetDialog(); } );
+        QAction *about = media->addAction( qfut( I_MENU_ABOUT ), []() { THEDP->aboutDialog(); } );
+        about->setMenuRole( QAction::AboutRole );
+        QAction *prefs = media->addAction( qtr( "&Preferences" ), []() { THEDP->prefsDialog(); } );
+        prefs->setMenuRole( QAction::PreferencesRole );
+        prefs->setShortcut( QKeySequence::Preferences );
+        QAction *quit = media->addAction( qtr( "Quit" ), []() { THEDP->quit(); } );
+        quit->setMenuRole( QAction::QuitRole );
+        QMenu *help = macMenuBar->addMenu( qtr( "&Help" ) );
+        help->addAction( qtr( "&Help" ), []() { THEDP->helpDialog(); } );
+    }
+#endif
 
     /* Launch */
     app.exec();

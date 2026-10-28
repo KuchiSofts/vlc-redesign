@@ -7,6 +7,7 @@
 ; the orange accent. The pieces come from make-art.py (art\ui, art\fonts).
 ; Built by make-release.ps1:
 ;   ISCC /DAppVersion=0.2.0 /DSourceDir=<package> /DOutputDir=<dist> vlc-redesign.iss
+; and /DArm64 for the Windows on ARM64 one (-winarm64-setup.exe).
 ;
 ; Updates: a running VLC Redesign from the install folder is closed politely
 ; (then forced after 15 s) and opened again afterwards. The app's updater
@@ -120,12 +121,22 @@ LanguageDetectionMethod=none
 UsePreviousLanguage=yes
 UninstallDisplayName={#AppName}
 UninstallDisplayIcon={app}\vlc.exe
+; /DArm64: the Windows on ARM64 package (make-release.ps1 -Arch aarch64),
+; only for ARM64 Windows. The x64 one also installs there (emulated). Both
+; share the AppId: either replaces the other as an update would.
+#ifdef Arm64
+ArchitecturesAllowed=arm64
+ArchitecturesInstallIn64BitMode=arm64
+#define Platform "winarm64"
+#else
 ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
+#define Platform "win64"
+#endif
 ; Qt 6.8 supports Windows 10 from version 1809 (build 17763)
 MinVersion=10.0.17763
 OutputDir={#OutputDir}
-OutputBaseFilename=vlc-redesign-{#AppVersion}-win64-setup
+OutputBaseFilename=vlc-redesign-{#AppVersion}-{#Platform}-setup
 SetupIconFile=art\setup.ico
 Compression=lzma2/ultra64
 SolidCompression=yes
@@ -2643,6 +2654,13 @@ Name: "{autoprograms}\{#AppName}"; Filename: "{app}\vlc.exe"; Comment: "{cm:Shor
 Name: "{autodesktop}\{#AppName}"; Filename: "{app}\vlc.exe"; Comment: "{cm:ShortcutComment}"; Check: WantDesktopIcon
 
 [Run]
+#ifdef Arm64
+; The ARM64 package has no plugin cache (it is made on an x64 PC, where the
+; ARM64 vlc-cache-gen can't run). A per-user install makes it at its first
+; start; Program Files is not the user's to write, so Setup makes it there,
+; in the background (it loads every plugin: never waited for)
+Filename: "{app}\vlc-cache-gen.exe"; Parameters: """{app}\plugins"""; Flags: nowait runhidden; Check: IsAdminInstallMode
+#endif
 ; Reopen VLC as it was (update or running instance); otherwise the last
 ; page's "Open VLC Redesign now" does (CurStepChanged). As the user who
 ; started Setup, never as an administrator (an install for everyone)

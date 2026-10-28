@@ -68,6 +68,17 @@ constexpr int downloadDeadlineMs = 30 * 60 * 1000;
 const char FIRST_SIGNED_VERSION[] = "0.3.2";
 const char sumsName[] = "SHA256SUMS.txt";
 const char sumsSignatureName[] = "SHA256SUMS.txt.sig";
+// The files of this build's architecture (docs/MASTER-PLAN.md, 13.5): an
+// x64 copy never takes an ARM64 file or the other way round, even when it
+// runs emulated. The x64 small updates keep the name they had before ARM64
+// (the copies already installed look for it).
+#if defined(_M_ARM64) || defined(__aarch64__)
+const char installerSuffix[] = "-winarm64-setup.exe";
+const char deltaInfix[] = "-winarm64";
+#else
+const char installerSuffix[] = "-win64-setup.exe";
+const char deltaInfix[] = "";
+#endif
 
 #ifndef NDEBUG
 // for testing updates against a local server, not GitHub (debug builds only)
@@ -636,8 +647,8 @@ void RedesignUpdater::onRelease(int status, const QByteArray &body)
     m_sumsUrl.clear();
     m_sigUrl.clear();
     // the small update from this very version, if the release has one
-    const QString deltaName = QStringLiteral("vlc-redesign-%1-delta-from-%2.vrdelta")
-                                  .arg(m_latestVersion, currentVersion());
+    const QString deltaName = QStringLiteral("vlc-redesign-%1%2-delta-from-%3.vrdelta")
+                                  .arg(m_latestVersion, QLatin1String(deltaInfix), currentVersion());
     for (const QJsonValue asset : release.value(QLatin1String("assets")).toArray()) {
         const QJsonObject a = asset.toObject();
         const QString name = a.value(QLatin1String("name")).toString();
@@ -645,7 +656,7 @@ void RedesignUpdater::onRelease(int status, const QByteArray &body)
         const qint64 size = a.value(QLatin1String("size")).toInteger();
         if (!trustedUrl(url))
             continue;
-        if (name.endsWith(QLatin1String("-win64-setup.exe"), Qt::CaseInsensitive)) {
+        if (name.endsWith(QLatin1String(installerSuffix), Qt::CaseInsensitive)) {
             m_installerUrl = url;
             m_installerName = name;
             m_installerSize = size;

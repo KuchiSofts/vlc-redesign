@@ -17,8 +17,8 @@ What is being worked on, updated as it changes (2026-10-28):
   fixed; Folder information: native path, no time-zone name); the Visualizer opens from Audio › Visualizations and its
   button over a visualization. Build 11 found Media Statistics still not loading (its graph's `top` clashed with
   Qt Quick's own); build 12 checked: Statistics with its live graph, Folder information, no QML warning.
-  Every upload now passes `release-check.py` ([RELEASE-CHECKLIST.md](RELEASE-CHECKLIST.md)); left before 0.3.2:
-  the new texts in the 72 languages.
+  Every upload now passes `release-check.py` ([RELEASE-CHECKLIST.md](RELEASE-CHECKLIST.md)). The new texts are
+  in the 72 languages (1,790 Weblate texts, all at 100 %); the check passes 22 of 22. Left: the upload.
 - 🟡 **macOS** (roadmap step 7, branch `feature/macos`): `macos-build.sh` (prebuilt contribs, Qt 6.8.3, the Qt
   interface only, `VLC Redesign.app`, `vlc-redesign-X.Y.Z-macos-<arch>.dmg`), `build-macos.yml` on Apple Silicon and
   Intel runners with a launch test, macOS fixes in the code (title bar, menu bar, ⌘ hotkeys, fonts, updater)

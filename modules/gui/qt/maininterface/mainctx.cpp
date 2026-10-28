@@ -188,7 +188,7 @@ MainCtx::MainCtx(qt_intf_t *_p_intf)
 
     settings = getSettings();
     m_colorScheme = new ColorSchemeModel(this);
-    // the accent of the system, for the "Windows accent" choice
+    // the accent of the system, for "Follow the Windows accent color"
     m_redesignAccent = new RedesignAccent(this);
     connect(m_redesignAccent, &RedesignAccent::systemAccentChanged, this, &MainCtx::systemAccentChanged);
     // Widget menus (right-click, tracks...) get the redesign look; the style

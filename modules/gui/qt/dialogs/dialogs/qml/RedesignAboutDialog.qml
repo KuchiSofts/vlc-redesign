@@ -137,35 +137,21 @@ T.Popup {
                     Layout.fillWidth: true
                     spacing: VLCStyle.dp(2, VLCStyle.scale)
 
-                    Text {
-                        // (the column is the room left by the button)
-                        Layout.fillWidth: true
-                        elide: Text.ElideRight
-                        horizontalAlignment: Text.AlignLeft
-                        text: qsTr("VLC Redesign")
-                        color: root.textPrimary
-                        font.family: VLCStyle.redesign.fontFamily
-                        font.pixelSize: VLCStyle.dp(28, VLCStyle.scale)
-                        font.weight: Font.Light
-                    }
                     RowLayout {
                         Layout.fillWidth: true
-                        spacing: VLCStyle.dp(8, VLCStyle.scale)
+                        spacing: VLCStyle.dp(10, VLCStyle.scale)
 
                         Text {
-                            id: versionText
+                            // (the column is the room left by the button)
                             Layout.fillWidth: true
                             Layout.maximumWidth: implicitWidth
                             elide: Text.ElideRight
                             horizontalAlignment: Text.AlignLeft
-                            text: qsTr("Version %1 · based on VLC %2").arg(RedesignUpdater.currentVersion).arg(AboutModel.version.split(" ")[0])
-                            color: root.textMuted
+                            text: qsTr("VLC Redesign")
+                            color: root.textPrimary
                             font.family: VLCStyle.redesign.fontFamily
-                            font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
-                            HoverHandler { id: versionHover }
-                            T.ToolTip.visible: versionHover.hovered && versionText.truncated
-                            T.ToolTip.text: versionText.text
-                            T.ToolTip.delay: 650
+                            font.pixelSize: VLCStyle.dp(28, VLCStyle.scale)
+                            font.weight: Font.Light
                         }
                         // The system this copy is made for (the same version
                         // exists for several), the one it runs on in its tooltip
@@ -194,6 +180,20 @@ T.Popup {
                             T.ToolTip.delay: 650
                         }
                         Item { Layout.fillWidth: true }
+                    }
+                    Text {
+                        id: versionText
+                        Layout.fillWidth: true
+                        elide: Text.ElideRight
+                        horizontalAlignment: Text.AlignLeft
+                        text: qsTr("Version %1 · based on VLC %2").arg(RedesignUpdater.currentVersion).arg(AboutModel.version.split(" ")[0])
+                        color: root.textMuted
+                        font.family: VLCStyle.redesign.fontFamily
+                        font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
+                        HoverHandler { id: versionHover }
+                        T.ToolTip.visible: versionHover.hovered && versionText.truncated
+                        T.ToolTip.text: versionText.text
+                        T.ToolTip.delay: 650
                     }
                     Text {
                         id: updateText
@@ -307,12 +307,14 @@ T.Popup {
                     spacing: VLCStyle.dp(6, VLCStyle.scale)
                     Body { Layout.maximumWidth: implicitWidth; text: qsTr("First implementation by") }
                     Link { text: "MrDouglax"; url: "https://github.com/SrDouglax/JuxtopposedVLC" }
+                    Item { Layout.fillWidth: true }
                 }
                 RowLayout {
                     Layout.maximumWidth: parent.width
                     spacing: VLCStyle.dp(6, VLCStyle.scale)
                     Body { Layout.maximumWidth: implicitWidth; text: qsTr("Built on VLC media player by") }
                     Link { text: qsTr("the VideoLAN team and contributors"); url: "https://www.videolan.org/" }
+                    Item { Layout.fillWidth: true }
                 }
                 // The other platforms, from the copy of platforms.yml built
                 // into this release (nothing is fetched)

@@ -22,11 +22,11 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   install type, Windows, CPU, graphics adapter and driver, video output and decoding, screens, theme, accent,
   language), with *Copy* and *Open GitHub*, which opens the bug form filled in. Nothing is sent by VLC, and no
   personal data goes in: no file names or paths, no user or computer name, no library, no log.
-- **Windows accent**: a tenth accent choice, after the nine colours in Settings > Appearance and in the onboarding,
-  marked with the Windows logo. The interface, the classic windows, the right-click menus and the two-tone icons
-  take the accent colour of Windows and follow it at once when it changes in Personalization > Colors. A colour too
-  dark or too light is brought to the range of the built-in accents so it stays as readable. Outside Windows it is
-  *System accent* (the desktop's, or the orange). The orange stays the default, and a colour already chosen is kept.
+- **Follow the Windows accent color**: a switch in Settings > Appearance, under the accent colours (off by
+  default). On, the interface, the classic windows, the right-click menus and the two-tone icons take the accent
+  colour of Windows and follow it at once when it changes in Personalization > Colors; picking a colour turns it
+  off. A colour too dark or too light is brought to the range of the built-in accents so it stays as readable.
+  Outside Windows it follows the system accent (the desktop's, or the orange). Profiles keep the choice.
 
 ### Fixed
 

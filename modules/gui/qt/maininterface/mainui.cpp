@@ -58,6 +58,7 @@
 #include "util/thumbnail_image_provider.hpp"
 #include "util/redesign_icon_provider.hpp"
 #include "util/redesign_updater.hpp"
+#include "util/redesign_feedback.hpp"
 #include "util/subtitle_preferences.hpp"
 #include "player/subtitle_finder.hpp"
 #include "util/renderer_manager.hpp"
@@ -354,6 +355,8 @@ void MainUI::registerQMLTypes()
         qmlRegisterTypesAndRevisions<AboutModel>( uri, versionMajor );
         qmlRegisterSingletonInstance<RedesignUpdater>(uri, versionMajor, versionMinor, "RedesignUpdater",
                                                       new RedesignUpdater(m_intf, this));
+        qmlRegisterSingletonInstance<RedesignFeedback>(uri, versionMajor, versionMinor, "RedesignFeedback",
+                                                       new RedesignFeedback(m_intf, this));
 #ifdef UPDATE_CHECK
         qmlRegisterSingletonInstance<UpdateModel>( uri, versionMajor, versionMinor, "UpdateModel", m_mainCtx->getUpdateModel() );
 #endif

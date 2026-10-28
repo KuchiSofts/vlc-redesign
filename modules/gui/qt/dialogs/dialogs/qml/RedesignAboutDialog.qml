@@ -62,10 +62,12 @@ T.Popup {
         border.color: VLCStyle.redesign.color(VLCStyle.redesign.border, "#8f8f8e", root.darkTheme)
     }
 
-    // A link of the about box: the accent colour, underlined on hover
+    // A link of the about box: the accent colour, underlined on hover; with
+    // no url, it only says it was clicked
     component Link: Text {
         id: link
         property string url
+        signal activated()
         color: VLCStyle.redesign.accent
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
@@ -78,7 +80,12 @@ T.Popup {
             anchors.fill: parent
             hoverEnabled: true
             cursorShape: Qt.PointingHandCursor
-            onClicked: Qt.openUrlExternally(link.url)
+            onClicked: {
+                if (link.url !== "")
+                    Qt.openUrlExternally(link.url)
+                else
+                    link.activated()
+            }
         }
     }
 
@@ -263,6 +270,20 @@ T.Popup {
                     spacing: VLCStyle.dp(6, VLCStyle.scale)
                     Body { Layout.maximumWidth: implicitWidth; text: qsTr("Built on VLC media player by") }
                     Link { text: qsTr("the VideoLAN team and contributors"); url: "https://www.videolan.org/" }
+                }
+                // The forms of the GitHub repository (as in the ⋯ menu)
+                Flow {
+                    Layout.fillWidth: true
+                    Layout.topMargin: VLCStyle.dp(6, VLCStyle.scale)
+                    spacing: VLCStyle.dp(18, VLCStyle.scale)
+                    Link { text: qsTr("Suggest an idea"); url: RedesignFeedback.ideaUrl() }
+                    Link {
+                        text: qsTr("Report a problem")
+                        onActivated: {
+                            root.close()
+                            RedesignFeedback.openReport()
+                        }
+                    }
                 }
                 Body {
                     Layout.topMargin: VLCStyle.dp(6, VLCStyle.scale)

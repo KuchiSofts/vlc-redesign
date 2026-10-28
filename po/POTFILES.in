@@ -662,6 +662,7 @@ modules/gui/qt/dialogs/dialogs/qml/CustomDialog.qml
 modules/gui/qt/dialogs/dialogs/qml/Dialogs.qml
 modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml
 modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml
+modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml
 modules/gui/qt/dialogs/dialogs/qml/WindowDialog.qml
 modules/gui/qt/dialogs/dialogs_provider.cpp
 modules/gui/qt/dialogs/dialogs_provider.hpp

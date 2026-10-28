@@ -123,7 +123,8 @@ soliddata_DATA = $(DIST_solid)
 endif
 
 DIST_icons = \
-	vlc512x512.png
+	vlc512x512.png \
+	icons/scalable/vlc.svg
 
 DIST_skins2 = \
 	skins2/fonts/FreeSans.ttf \

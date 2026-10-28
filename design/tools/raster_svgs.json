@@ -1,0 +1,673 @@
+{
+ "$description": "The rasters of the redesign that had no SVG: where each SVG comes from in the Figma file (the design file) and how close it is. qt_vs_png: QtSvg 6.8 against the PNG (mean alpha, 0-255; shape: the same of 3 x 3 averages); qt_vs_figma: against Figma's own 1x render of the symbol (frame 42:356), when the state shows the whole symbol in its colours. how: frame symbol (cut from the SVG export of 42:356), outlined stroke (the stroke outline Figma fills, strokeGeometry clipped to fillGeometry: the export draws these boolean shapes as their outline only), node export (groups of an onboarding node export), composed (drawn here: not in the file, or simple geometry).",
+ "states": {
+  "grid.png": {
+   "node": "2107:6523",
+   "how": "frame symbol",
+   "symbol": "grid",
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   },
+   "notes": "",
+   "qt_vs_png_mean_alpha": 1.64,
+   "qt_vs_png_shape": 1.35,
+   "qt_vs_figma_mean_alpha": 1.57,
+   "svg": "grid.svg"
+  },
+  "icons/0/default.png": {
+   "node": null,
+   "how": "empty",
+   "svg": "existing",
+   "notes": "an empty picture (the Figma symbol draws nothing); its empty 24 x 24 SVG was written by icon_svgs.py extract"
+  },
+  "icons/cast/default.png": {
+   "node": null,
+   "how": "composed",
+   "qt_vs_png_mean_alpha": 4.22,
+   "qt_vs_png_shape": 2.94,
+   "notes": "not in the Figma file (no cast icon in 42:356 or any frame): the drawing of the PNG made vector, its screen, two arcs and quarter disc fitted to both PNGs (stroke 1.5, #8F8F8F)",
+   "svg": "icons/cast/default.svg"
+  },
+  "icons/cast/large.png": {
+   "node": null,
+   "how": "composed",
+   "qt_vs_png_mean_alpha": 3.93,
+   "qt_vs_png_shape": 3.42,
+   "notes": "not in the Figma file (no cast icon in 42:356 or any frame): the drawing of the PNG made vector, its screen, two arcs and quarter disc fitted to both PNGs (stroke 1.5, #8F8F8F)",
+   "svg": "icons/cast/large.svg"
+  },
+  "icons/check/default.png": {
+   "node": null,
+   "how": "empty",
+   "svg": "existing",
+   "notes": "an empty picture (the Figma symbol draws nothing); its empty 24 x 24 SVG was written by icon_svgs.py extract"
+  },
+  "icons/eq-flat/default-accent.png": {
+   "node": null,
+   "how": "empty",
+   "svg": "existing",
+   "notes": "an empty picture (the Figma symbol draws nothing); its empty 24 x 24 SVG was written by icon_svgs.py extract"
+  },
+  "icons/repeat/active.png": {
+   "node": "2460:9614",
+   "how": "frame symbol",
+   "symbol": "repeat, direction=right, two-tone=yes",
+   "colours": {
+    "#8F8F8F": [
+     "#D37918",
+     0.6
+    ],
+    "#AB6314": [
+     "#D37918",
+     0.83
+    ]
+   },
+   "notes": "the two-tone symbol, both tones as the PNG state shows them (Figma draws the symbol grey: no Figma comparison)",
+   "qt_vs_png_mean_alpha": 2.48,
+   "qt_vs_png_shape": 1.76,
+   "svg": "icons/repeat/active.svg"
+  },
+  "icons/save/default.png": {
+   "node": "2459:9542",
+   "how": "outlined stroke",
+   "colour": "#8F8F8F",
+   "notes": "the stroke outline Figma fills (strokeGeometry of the vector, read with the plugin API): the SVG export strokes the boolean shape's outline only",
+   "qt_vs_png_mean_alpha": 6.17,
+   "qt_vs_png_shape": 3.23,
+   "qt_vs_figma_mean_alpha": 2.55,
+   "svg": "icons/save/default.svg"
+  },
+  "icons/shuffle/active.png": {
+   "node": "2461:9618",
+   "how": "frame symbol",
+   "symbol": "shuffle, direction=right, two-tone=yes",
+   "colours": {
+    "#8F8F8F": [
+     "#D37918",
+     0.6
+    ],
+    "#AB6314": [
+     "#D37918",
+     0.8
+    ]
+   },
+   "notes": "the two-tone symbol, both tones as the PNG state shows them (Figma draws the symbol grey: no Figma comparison)",
+   "qt_vs_png_mean_alpha": 3.2,
+   "qt_vs_png_shape": 2.1,
+   "svg": "icons/shuffle/active.svg"
+  },
+  "icons/sort/active-accent.png": {
+   "node": "856:2206",
+   "how": "frame symbol",
+   "symbol": "sort, state=active",
+   "colours": {
+    "#8F8F8F": null,
+    "#D37918": "#D37918"
+   },
+   "notes": "the dot of the active state (r 2 at 24, 1) outside the 24 box: view box 0 -1 26 25 as the PNG",
+   "qt_vs_png_mean_alpha": 0.22,
+   "qt_vs_png_shape": 0.07,
+   "svg": "icons/sort/active-accent.svg"
+  },
+  "icons/sort/active-grey.png": {
+   "node": "856:2206",
+   "how": "frame symbol",
+   "symbol": "sort, state=active",
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": null
+   },
+   "notes": "the dot of the active state (r 2 at 24, 1) outside the 24 box: view box 0 -1 26 25 as the PNG",
+   "qt_vs_png_mean_alpha": 1.42,
+   "qt_vs_png_shape": 1.32,
+   "svg": "icons/sort/active-grey.svg"
+  },
+  "icons/sort/active.png": {
+   "node": "856:2206",
+   "how": "frame symbol",
+   "symbol": "sort, state=active",
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": "#D37918"
+   },
+   "notes": "the dot of the active state (r 2 at 24, 1) outside the 24 box: view box 0 -1 26 25 as the PNG",
+   "qt_vs_png_mean_alpha": 1.64,
+   "qt_vs_png_shape": 1.39,
+   "svg": "icons/sort/active.svg"
+  },
+  "icons/subtitle/default.png": {
+   "node": "1911:8286",
+   "how": "outlined stroke",
+   "colour": "#8F8F8F",
+   "notes": "the stroke outline Figma fills (strokeGeometry of the vector, read with the plugin API): the SVG export strokes the boolean shape's outline only",
+   "qt_vs_png_mean_alpha": 5.54,
+   "qt_vs_png_shape": 3.4,
+   "qt_vs_figma_mean_alpha": 2.55,
+   "svg": "icons/subtitle/default.svg"
+  },
+  "icons/subtitle/dim.png": {
+   "node": "1911:8286",
+   "how": "outlined stroke",
+   "colour": "#6B6B6B",
+   "notes": "the stroke outline Figma fills (strokeGeometry of the vector, read with the plugin API): the SVG export strokes the boolean shape's outline only",
+   "qt_vs_png_mean_alpha": 5.54,
+   "qt_vs_png_shape": 3.4,
+   "svg": "icons/subtitle/dim.svg"
+  },
+  "icons/video/default.png": {
+   "node": "999:4810",
+   "how": "outlined stroke",
+   "colour": "#8F8F8F",
+   "notes": "the stroke outline Figma fills (strokeGeometry of the vector, read with the plugin API): the SVG export strokes the boolean shape's outline only",
+   "qt_vs_png_mean_alpha": 1.64,
+   "qt_vs_png_shape": 1.02,
+   "qt_vs_figma_mean_alpha": 1.57,
+   "svg": "icons/video/default.svg"
+  },
+  "icons/video/dim.png": {
+   "node": "999:4810",
+   "how": "outlined stroke",
+   "colour": "#6B6B6B",
+   "notes": "the stroke outline Figma fills (strokeGeometry of the vector, read with the plugin API): the SVG export strokes the boolean shape's outline only",
+   "qt_vs_png_mean_alpha": 1.64,
+   "qt_vs_png_shape": 1.02,
+   "svg": "icons/video/dim.svg"
+  },
+  "icons/view/active.png": {
+   "node": "856:3220",
+   "how": "frame symbol",
+   "symbol": "view, state=active",
+   "colours": {
+    "#8F8F8F": "#8F8F8F",
+    "#D37918": "#D37918"
+   },
+   "notes": "the dot of the active state (r 2 at 24, 1) outside the 24 box: view box 0 -1 26 25 as the PNG",
+   "qt_vs_png_mean_alpha": 0.93,
+   "qt_vs_png_shape": 0.51,
+   "svg": "icons/view/active.svg"
+  },
+  "icons/vumeter/default-accent.png": {
+   "node": "2115:7386",
+   "how": "composed",
+   "symbol": "speed",
+   "notes": "the speed symbol: arc #8F8F8F, needle #AB6314 (accent dim), split as the other -grey/-accent pairs",
+   "qt_vs_png_mean_alpha": 1.04,
+   "qt_vs_png_shape": 0.77,
+   "svg": "icons/vumeter/default-accent.svg"
+  },
+  "icons/vumeter/default-grey.png": {
+   "node": "2115:7386",
+   "how": "composed",
+   "symbol": "speed",
+   "notes": "the speed symbol: arc #8F8F8F, needle #AB6314 (accent dim), split as the other -grey/-accent pairs",
+   "qt_vs_png_mean_alpha": 5.12,
+   "qt_vs_png_shape": 2.21,
+   "svg": "icons/vumeter/default-grey.svg"
+  },
+  "icons/vumeter/default.png": {
+   "node": "2115:7386",
+   "how": "composed",
+   "symbol": "speed",
+   "notes": "the speed symbol: arc #8F8F8F, needle #AB6314 (accent dim), split as the other -grey/-accent pairs",
+   "qt_vs_png_mean_alpha": 6.16,
+   "qt_vs_png_shape": 2.98,
+   "svg": "icons/vumeter/default.svg"
+  },
+  "icons/window/default.png": {
+   "node": "2107:6312",
+   "how": "outlined stroke",
+   "colour": "#8F8F8F",
+   "notes": "the stroke outline Figma fills (strokeGeometry of the vector, read with the plugin API): the SVG export strokes the boolean shape's outline only",
+   "qt_vs_png_mean_alpha": 1.46,
+   "qt_vs_png_shape": 0.92,
+   "qt_vs_figma_mean_alpha": 1.4,
+   "svg": "icons/window/default.svg"
+  },
+  "list.png": {
+   "node": "2107:6531",
+   "how": "frame symbol",
+   "symbol": "list",
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   },
+   "notes": "",
+   "qt_vs_png_mean_alpha": 1.2,
+   "qt_vs_png_shape": 1.05,
+   "qt_vs_figma_mean_alpha": 1.19,
+   "svg": "list.svg"
+  },
+  "player/close.png": {
+   "node": "45:40",
+   "how": "frame symbol",
+   "symbol": "close",
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   },
+   "notes": "",
+   "qt_vs_png_mean_alpha": 1.42,
+   "qt_vs_png_shape": 1.08,
+   "qt_vs_figma_mean_alpha": 1.1,
+   "svg": "player/close.svg"
+  },
+  "player/corner-bl-dark.png": {
+   "node": null,
+   "how": "composed",
+   "notes": "the 9 x 9 square outside the window's 9 px corner radius, the frame colour of the theme (the PNG's)",
+   "qt_vs_png_mean_alpha": 1.28,
+   "qt_vs_png_shape": 0.98,
+   "svg": "player/corner-bl-dark.svg"
+  },
+  "player/corner-bl-light.png": {
+   "node": null,
+   "how": "composed",
+   "notes": "the 9 x 9 square outside the window's 9 px corner radius, the frame colour of the theme (the PNG's)",
+   "qt_vs_png_mean_alpha": 1.28,
+   "qt_vs_png_shape": 0.98,
+   "svg": "player/corner-bl-light.svg"
+  },
+  "player/corner-br-dark.png": {
+   "node": null,
+   "how": "composed",
+   "notes": "the 9 x 9 square outside the window's 9 px corner radius, the frame colour of the theme (the PNG's)",
+   "qt_vs_png_mean_alpha": 1.49,
+   "qt_vs_png_shape": 1.15,
+   "svg": "player/corner-br-dark.svg"
+  },
+  "player/corner-br-light.png": {
+   "node": null,
+   "how": "composed",
+   "notes": "the 9 x 9 square outside the window's 9 px corner radius, the frame colour of the theme (the PNG's)",
+   "qt_vs_png_mean_alpha": 1.49,
+   "qt_vs_png_shape": 1.15,
+   "svg": "player/corner-br-light.svg"
+  },
+  "player/corner-tl-dark.png": {
+   "node": null,
+   "how": "composed",
+   "notes": "the 9 x 9 square outside the window's 9 px corner radius, the frame colour of the theme (the PNG's)",
+   "qt_vs_png_mean_alpha": 1.4,
+   "qt_vs_png_shape": 1.08,
+   "svg": "player/corner-tl-dark.svg"
+  },
+  "player/corner-tl-light.png": {
+   "node": null,
+   "how": "composed",
+   "notes": "the 9 x 9 square outside the window's 9 px corner radius, the frame colour of the theme (the PNG's)",
+   "qt_vs_png_mean_alpha": 1.4,
+   "qt_vs_png_shape": 1.08,
+   "svg": "player/corner-tl-light.svg"
+  },
+  "player/corner-tr-dark.png": {
+   "node": null,
+   "how": "composed",
+   "notes": "the 9 x 9 square outside the window's 9 px corner radius, the frame colour of the theme (the PNG's)",
+   "qt_vs_png_mean_alpha": 1.28,
+   "qt_vs_png_shape": 0.98,
+   "svg": "player/corner-tr-dark.svg"
+  },
+  "player/corner-tr-light.png": {
+   "node": null,
+   "how": "composed",
+   "notes": "the 9 x 9 square outside the window's 9 px corner radius, the frame colour of the theme (the PNG's)",
+   "qt_vs_png_mean_alpha": 1.28,
+   "qt_vs_png_shape": 0.98,
+   "svg": "player/corner-tr-light.svg"
+  },
+  "player/equalizer.png": {
+   "node": "44:407",
+   "how": "frame symbol",
+   "symbol": "audio",
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   },
+   "notes": "the audio symbol, as the player bar of the design shows the effects button (onboarding 1902:3682, Icon Wrapper > Icon = 44:407)",
+   "qt_vs_png_mean_alpha": 8.37,
+   "qt_vs_png_shape": 8.22,
+   "qt_vs_figma_mean_alpha": 0.22,
+   "svg": "player/equalizer.svg"
+  },
+  "player/fullscreen.png": {
+   "node": "48:54",
+   "how": "frame symbol",
+   "symbol": "fullscreen",
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   },
+   "notes": "",
+   "qt_vs_png_mean_alpha": 2.5,
+   "qt_vs_png_shape": 1.81,
+   "qt_vs_figma_mean_alpha": 0.74,
+   "svg": "player/fullscreen.svg"
+  },
+  "player/library-add.png": {
+   "node": "463:550",
+   "how": "frame symbol",
+   "symbol": "add",
+   "colours": "#6B6B6B",
+   "notes": "the 24 px symbol 463:550 in a 32 px box (4 px around it, view box -4 -4 32 32), as the compact library card of the design (856:2450) has it; colour #6B6B6B (the PNG's)",
+   "qt_vs_png_mean_alpha": 2.12,
+   "qt_vs_png_shape": 0.94,
+   "svg": "player/library-add.svg"
+  },
+  "player/library-playlist.png": {
+   "node": "42:357",
+   "how": "frame symbol",
+   "symbol": "playlist",
+   "colours": "#8F8F8F",
+   "notes": "the 24 px symbol 42:357 in a 32 px box (4 px around it, view box -4 -4 32 32), as the compact library card of the design (856:2450) has it; colour #8F8F8F (the PNG's)",
+   "qt_vs_png_mean_alpha": 5.36,
+   "qt_vs_png_shape": 2.28,
+   "svg": "player/library-playlist.svg"
+  },
+  "player/maximize.png": {
+   "node": "48:51",
+   "how": "frame symbol",
+   "symbol": "maximize",
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   },
+   "notes": "",
+   "qt_vs_png_mean_alpha": 4.04,
+   "qt_vs_png_shape": 2.62,
+   "qt_vs_figma_mean_alpha": 0.39,
+   "svg": "player/maximize.svg"
+  },
+  "player/minimize.png": {
+   "node": "48:46",
+   "how": "frame symbol",
+   "symbol": "minimize",
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   },
+   "notes": "",
+   "qt_vs_png_mean_alpha": 1.62,
+   "qt_vs_png_shape": 1.56,
+   "qt_vs_figma_mean_alpha": 0.05,
+   "svg": "player/minimize.svg"
+  },
+  "player/next.png": {
+   "node": "45:12",
+   "how": "frame symbol",
+   "symbol": "next",
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   },
+   "notes": "",
+   "qt_vs_png_mean_alpha": 4.57,
+   "qt_vs_png_shape": 2.95,
+   "qt_vs_figma_mean_alpha": 0.76,
+   "svg": "player/next.svg"
+  },
+  "player/pause.png": {
+   "node": "44:427",
+   "how": "frame symbol",
+   "symbol": "pause",
+   "colours": {
+    "#8F8F8F": "#161616"
+   },
+   "notes": "",
+   "qt_vs_png_mean_alpha": 4.76,
+   "qt_vs_png_shape": 4.63,
+   "qt_vs_figma_mean_alpha": 0.33,
+   "svg": "player/pause.svg"
+  },
+  "player/previous.png": {
+   "node": "45:18",
+   "how": "frame symbol",
+   "symbol": "previous",
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   },
+   "notes": "",
+   "qt_vs_png_mean_alpha": 1.82,
+   "qt_vs_png_shape": 1.22,
+   "qt_vs_figma_mean_alpha": 0.72,
+   "svg": "player/previous.svg"
+  },
+  "player/queue.png": {
+   "node": "217:191",
+   "how": "frame symbol",
+   "symbol": "lists",
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   },
+   "notes": "",
+   "qt_vs_png_mean_alpha": 4.03,
+   "qt_vs_png_shape": 3.29,
+   "qt_vs_figma_mean_alpha": 0.21,
+   "svg": "player/queue.svg"
+  },
+  "player/settings.png": {
+   "node": "2230:9222",
+   "how": "frame symbol",
+   "symbol": "playback settings",
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   },
+   "notes": "",
+   "qt_vs_png_mean_alpha": 4.03,
+   "qt_vs_png_shape": 2.61,
+   "qt_vs_figma_mean_alpha": 2.78,
+   "svg": "player/settings.svg"
+  },
+  "player/subtitles.png": {
+   "node": "42:398",
+   "how": "frame symbol",
+   "symbol": "subtitles",
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   },
+   "notes": "",
+   "qt_vs_png_mean_alpha": 14.49,
+   "qt_vs_png_shape": 4.29,
+   "qt_vs_figma_mean_alpha": 1.36,
+   "svg": "player/subtitles.svg"
+  },
+  "subtitle-file.png": {
+   "node": "1911:8286",
+   "how": "outlined stroke",
+   "colour": "#8F8F8F",
+   "notes": "the stroke outline Figma fills (strokeGeometry of the vector, read with the plugin API): the SVG export strokes the boolean shape's outline only",
+   "qt_vs_png_mean_alpha": 2.61,
+   "qt_vs_png_shape": 1.4,
+   "qt_vs_figma_mean_alpha": 2.55,
+   "svg": "subtitle-file.svg"
+  },
+  "theme-bar-knob.png": {
+   "node": "1902:3682",
+   "how": "node export",
+   "notes": "groups ['Rectangle 10'] of the onboarding node, at (186, 5), white (a mask ThemeStep tints)",
+   "qt_vs_png_mean_alpha": 4.56,
+   "qt_vs_png_shape": 4.38,
+   "svg": "theme-bar-knob.svg"
+  },
+  "theme-bar-mask.png": {
+   "node": "1902:3682",
+   "how": "node export",
+   "notes": "groups ['Frame 8', 'Frame 10', 'Current Time', 'Duration', 'Icon_4', 'Frame 23'] of the onboarding node, at (0, 0), white (a mask ThemeStep tints)",
+   "qt_vs_png_mean_alpha": 1.04,
+   "qt_vs_png_shape": 0.66,
+   "svg": "theme-bar-mask.svg"
+  },
+  "theme-bar-pill.png": {
+   "node": "1902:3682",
+   "how": "node export",
+   "notes": "groups ['play'] of the onboarding node, at (27, 3), white (a mask ThemeStep tints)",
+   "qt_vs_png_mean_alpha": 5.48,
+   "qt_vs_png_shape": 5.4,
+   "svg": "theme-bar-pill.svg"
+  },
+  "theme-bar-play.png": {
+   "node": "1902:3682",
+   "how": "node export",
+   "notes": "groups ['Icon_2'] of the onboarding node, at (41, 9), white (a mask ThemeStep tints)",
+   "qt_vs_png_mean_alpha": 5.4,
+   "qt_vs_png_shape": 4.66,
+   "svg": "theme-bar-play.svg"
+  },
+  "theme-strip-buttons.png": {
+   "node": "1902:3673",
+   "how": "node export",
+   "notes": "groups ['Frame 10'] of the onboarding node, at (0, 0), white (a mask ThemeStep tints)",
+   "qt_vs_png_mean_alpha": 0.25,
+   "qt_vs_png_shape": 0.15,
+   "svg": "theme-strip-buttons.svg"
+  },
+  "theme-strip-cone.png": {
+   "node": "1902:3673",
+   "how": "node export",
+   "notes": "groups ['Frame 8'] of the onboarding node, at (0, 0), white (a mask ThemeStep tints)",
+   "qt_vs_png_mean_alpha": 0.02,
+   "qt_vs_png_shape": 0.01,
+   "svg": "theme-strip-cone.svg"
+  },
+  "theme-system.png": {
+   "node": null,
+   "how": "composed",
+   "notes": "the System tile of the onboarding theme step: radius 12, dark #222222 left of (16,0)-(77,100), light #AEAEAE (the colours of the PNG; ThemeStep.qml)",
+   "qt_vs_png_mean_alpha": 0.23,
+   "qt_vs_png_shape": 0.2,
+   "svg": "theme-system.svg"
+  },
+  "track-audio-active.png": {
+   "node": "496:2439",
+   "how": "frame symbol",
+   "symbol": "audio, state=active",
+   "colours": {
+    "#D37918": "#D37918"
+   },
+   "notes": "",
+   "qt_vs_png_mean_alpha": 0.76,
+   "qt_vs_png_shape": 0.76,
+   "qt_vs_figma_mean_alpha": 0.78,
+   "svg": "track-audio-active.svg"
+  },
+  "track-audio.png": {
+   "node": "44:407",
+   "how": "frame symbol",
+   "symbol": "audio",
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   },
+   "notes": "",
+   "qt_vs_png_mean_alpha": 0.2,
+   "qt_vs_png_shape": 0.2,
+   "qt_vs_figma_mean_alpha": 0.22,
+   "svg": "track-audio.svg"
+  },
+  "track-check-active.png": {
+   "node": "494:2394",
+   "how": "frame symbol",
+   "symbol": "check, state=active",
+   "colours": {
+    "#D37918": "#D37918"
+   },
+   "notes": "",
+   "qt_vs_png_mean_alpha": 0.9,
+   "qt_vs_png_shape": 0.54,
+   "qt_vs_figma_mean_alpha": 0.91,
+   "svg": "track-check-active.svg"
+  },
+  "track-subtitles-active.png": {
+   "node": "467:497",
+   "how": "frame symbol",
+   "symbol": "subtitles, state=active",
+   "colours": {
+    "#D37918": "#D37918"
+   },
+   "notes": "",
+   "qt_vs_png_mean_alpha": 1.69,
+   "qt_vs_png_shape": 1.68,
+   "qt_vs_figma_mean_alpha": 1.69,
+   "svg": "track-subtitles-active.svg"
+  },
+  "track-subtitles.png": {
+   "node": "42:398",
+   "how": "frame symbol",
+   "symbol": "subtitles",
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   },
+   "notes": "",
+   "qt_vs_png_mean_alpha": 1.41,
+   "qt_vs_png_shape": 0.9,
+   "qt_vs_figma_mean_alpha": 1.36,
+   "svg": "track-subtitles.svg"
+  },
+  "track-video-active.png": {
+   "node": "1102:5055",
+   "how": "frame symbol",
+   "symbol": "video, state=active",
+   "colours": {
+    "#D37918": "#D37918"
+   },
+   "notes": "",
+   "qt_vs_png_mean_alpha": 1.09,
+   "qt_vs_png_shape": 0.8,
+   "qt_vs_figma_mean_alpha": 1.06,
+   "svg": "track-video-active.svg"
+  },
+  "track-video.png": {
+   "node": "999:4810",
+   "how": "outlined stroke",
+   "colour": "#8F8F8F",
+   "notes": "the stroke outline Figma fills (strokeGeometry of the vector, read with the plugin API): the SVG export strokes the boolean shape's outline only",
+   "qt_vs_png_mean_alpha": 1.64,
+   "qt_vs_png_shape": 1.02,
+   "qt_vs_figma_mean_alpha": 1.57,
+   "svg": "track-video.svg"
+  },
+  "volume-high.png": {
+   "node": "182:179",
+   "how": "frame symbol",
+   "symbol": "volume, value=high",
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   },
+   "notes": "",
+   "qt_vs_png_mean_alpha": 7.09,
+   "qt_vs_png_shape": 6.27,
+   "qt_vs_figma_mean_alpha": 1.07,
+   "svg": "volume-high.svg"
+  },
+  "volume-low.png": {
+   "node": "182:193",
+   "how": "frame symbol",
+   "symbol": "close, value=low",
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   },
+   "notes": "",
+   "qt_vs_png_mean_alpha": 2.1,
+   "qt_vs_png_shape": 0.95,
+   "qt_vs_figma_mean_alpha": 1.01,
+   "svg": "volume-low.svg"
+  },
+  "volume-medium.png": {
+   "node": "182:187",
+   "how": "frame symbol",
+   "symbol": "close, value=medium",
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   },
+   "notes": "",
+   "qt_vs_png_mean_alpha": 3.03,
+   "qt_vs_png_shape": 2.32,
+   "qt_vs_figma_mean_alpha": 1.03,
+   "svg": "volume-medium.svg"
+  },
+  "volume-muted.png": {
+   "node": "182:198",
+   "how": "frame symbol",
+   "symbol": "close, value=none",
+   "colours": {
+    "#8F8F8F": "#8F8F8F"
+   },
+   "notes": "",
+   "qt_vs_png_mean_alpha": 2.62,
+   "qt_vs_png_shape": 1.8,
+   "qt_vs_figma_mean_alpha": 2.39,
+   "svg": "volume-muted.svg"
+  }
+ }
+}

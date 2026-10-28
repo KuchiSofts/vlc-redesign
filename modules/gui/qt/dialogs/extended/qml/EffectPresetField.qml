@@ -314,6 +314,8 @@ ColumnLayout {
 
                             // the plus of "New Preset", dimmed as its name
                             Impl.ColorImage {
+                                // drawn at the size shown (an SVG: sharp at any scale and zoom)
+                                sourceSize: Qt.size(width, height)
                                 visible: row.kind === "new"
                                 anchors.left: parent.left
                                 anchors.leftMargin: root.px(14)
@@ -325,6 +327,8 @@ ColumnLayout {
                             }
 
                             Impl.ColorImage {
+                                // drawn at the size shown (an SVG: sharp at any scale and zoom)
+                                sourceSize: Qt.size(width, height)
                                 visible: row.chosen
                                 anchors.right: parent.right
                                 anchors.rightMargin: root.px(14)

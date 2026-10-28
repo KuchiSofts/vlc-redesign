@@ -51,6 +51,11 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   around the main window (`#4C4A48`, in the dark and the light theme), now set on every window so that the frame
   looks the same whatever the Windows colour settings. On Linux (X11 and Wayland), where the system draws no frame
   around VLC's own title bar, the main window and the menus draw the same border themselves.
+- **Sharp icons at every size.** Every icon of the interface is drawn from an SVG of the design, at the size it
+  is shown: sharp at 100, 125, 150 and 200 % Windows scaling and when the interface is zoomed (Ctrl + mouse wheel),
+  where they were blurry or stayed small. The player bar's buttons now grow with the zoom like the rest. Some icons
+  are a little lighter or heavier than before: they now match the Figma design. The app icon (`vlc.exe`, the
+  taskbar, the title bar, the tray) has every size Windows asks for.
 - **Every message and question looks like the rest of VLC Redesign.** The ones that were plain Windows boxes are
   drawn as the redesign's dialogs (title bar with its close button, heading, the Cancel button on the left and the
   action in the accent on the right), in the window when it shows:
@@ -195,13 +200,31 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - **Design tokens, icons and fonts in `design/` (`design-1.0`)**, for the other platforms. `design/tokens.json`
   (W3C Design Tokens format, 203 tokens) holds the colours of both themes, the 9 accents and their Dim/Bright
   rule, fonts and line metrics, sizes, radii, icon boxes, shadows, opacities and window sizes, each with its Figma
-  node and the places in the code that hold it. `design/icons/` has every icon the app ships (405 files: the Icon
-  set's PNG per state with `@2x`, the SVG and two-tone icons) with `index.json` and a preview; `design/fonts/` the
+  node and the places in the code that hold it. `design/icons/` has every icon the app ships (614 files: the Icon
+  set's PNG per state with `@2x` and their SVG sources, the SVG and two-tone icons) with `index.json` and a preview; `design/fonts/` the
   modified Inter, DM Mono and their OFL licenses. `design/tools/export.py` writes `design/build/tokens.css`,
   `colors.xml` (Android) and `Tokens.swift`; `sync_assets.py` copies the icons and fonts from the app.
   `design/tools/check_qml.py` (a *Design tokens* job in the Windows build workflow, on every pull request) fails
   when a value in `VLCStyle.qml`, the menu and widget styles or the QML components differs from `tokens.json`
   (205 places), when the light colour map or the accents do not match, or when `design/` is stale.
+- **Every icon from an SVG of the design.** Each raster of `pixmaps/redesign` now has its SVG next to it (368):
+  the 224 states of the 116 glyphs of the Figma Icon set (42:356), cut from Figma's SVG export of the set by
+  `design/tools/icon_svgs.py` (the symbol of the icon's name, the part a two-tone icon shows, Figma's colours of
+  the state), and the 41 other pieces (player and window buttons, track, volume and list/grid icons, onboarding
+  masks, window corners), each from its Figma node (`design/tools/raster_svgs.json`). Boolean shapes Figma's export
+  draws as their outline (save, subtitle, video, window) take the outline Figma fills; cast, absent from the file,
+  is drawn after the app's picture. [`design/tools/icon_svgs_report.md`](design/tools/icon_svgs_report.md) compares
+  each glyph with its PNG and with Figma's render (51 states are Figma's render, 131 the same drawing, 42 close: the
+  PNG was drawn heavier or lighter than Figma, the SVG follows Figma). `icon_svgs.py register` lists them in
+  `assets.qrc` and `resources.am`; `design/icons/` carries them. The URL interceptor sends every icon to its SVG
+  (the light theme through its provider, with an `.svg` id so Qt asks the size times the device pixel ratio), the
+  images showing one draw it at their `sourceSize` (now set from the size shown on the 38 that had none or a fixed
+  small one, `Impl.IconImage` and `Impl.ColorImage` included), and the menus, window buttons and message boxes
+  draw them through an icon engine (`RedesignIcons`) at each size and scale, cached per size. The PNGs stay as a
+  fallback. The unused `grid.svg` (a line) is `line-vertical.svg`.
+- **App icon at every size.** `share/icons/vlc.ico` has 16, 20, 24, 32, 40, 48, 64, 96, 128 and 256 px, each
+  rendered from the vector (`share/icons/scalable/vlc.svg`, `extras/juxtopposed/make-app-icon.py`); the window,
+  taskbar and tray icons take the SVG; the installer's `setup.ico` draws each size at its own size (96 added).
 - **Signed checksums (security).** Releases have `SHA256SUMS.txt.sig`: an ECDSA P-256 signature (SHA-256, raw
   r‖s, 64 bytes) of `SHA256SUMS.txt`. The updater downloads it with the checksums and checks it with Windows' CNG
   (`BCryptImportKeyPair` / `BCryptVerifySignature`, `bcrypt.dll` loaded from System32) against the public key in

@@ -25,6 +25,7 @@
 #include "maininterface/mainctx.hpp"
 #include "maininterface/compositor.hpp"
 #include "menus/redesign_menu_style.hpp"
+#include "util/redesign_icon_provider.hpp"
 
 #include <QColor>
 #include <QFont>
@@ -206,7 +207,7 @@ RedesignMessageBox::RedesignMessageBox(qt_intf_t *intf, const RedesignMessage &m
     auto *close = new QToolButton(m_titleBar);
     close->setObjectName(QStringLiteral("redesignMessageClose"));
     close->setFixedSize(dp(32), dp(32));
-    close->setIcon(QIcon(QStringLiteral(":/redesign/icons/close/default.png")));
+    close->setIcon(RedesignIcons::icon(QStringLiteral(":/redesign/icons/close/default.png")));
     close->setIconSize(QSize(dp(24), dp(24)));
     close->setFocusPolicy(Qt::TabFocus);
     close->setAccessibleName(qtr("Close"));

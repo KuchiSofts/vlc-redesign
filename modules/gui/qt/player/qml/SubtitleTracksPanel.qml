@@ -721,6 +721,8 @@ ColumnLayout {
                 Layout.preferredHeight: VLCStyle.dp(20, VLCStyle.scale)
                 Layout.leftMargin: VLCStyle.dp(6, VLCStyle.scale)
                 Impl.ColorImage {
+                    // drawn at the size shown (an SVG: sharp at any scale and zoom)
+                    sourceSize: Qt.size(width, height)
                     anchors.fill: parent
                     visible: row.checked
                     source: "qrc:///redesign/track-check-active.png"

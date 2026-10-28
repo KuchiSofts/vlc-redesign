@@ -272,6 +272,8 @@ ColumnLayout {
                                     border.color: Qt.rgba(1, 1, 1, 0.2)
                                 }
                                 Impl.ColorImage {
+                                    // drawn at the size shown (an SVG: sharp at any scale and zoom)
+                                    sourceSize: Qt.size(width, height)
                                     visible: colorChoice.chosen
                                     anchors.right: parent.right
                                     anchors.rightMargin: root.px(13)

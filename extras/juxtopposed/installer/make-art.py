@@ -211,9 +211,11 @@ def main():
                     toggle(on, sx, sy, label, rtl).save(os.path.join(ui, f'{name}-{n}.png'), optimize=True)
         mark(round(28 * s)).save(os.path.join(ui, f'mark-{n}.png'), optimize=True)
     write_fonts()
-    sizes = [16, 20, 24, 32, 40, 48, 64, 128, 256]
+    # each size drawn at its size (not the 256 one scaled down)
+    sizes = [16, 20, 24, 32, 40, 48, 64, 96, 128, 256]
     big = mark(256)
-    big.save(os.path.join(OUT, 'setup.ico'), sizes=[(s, s) for s in sizes])
+    big.save(os.path.join(OUT, 'setup.ico'), sizes=[(s, s) for s in sizes],
+             append_images=[mark(s) for s in sizes if s != 256])
     big.save(os.path.join(OUT, 'mark-256.png'))
     print('art written to', OUT)
 

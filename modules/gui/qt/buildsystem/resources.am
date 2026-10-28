@@ -1,182 +1,182 @@
 libqt_plugin_la_RES = \
-	pixmaps/redesign/track-video.png \
-	pixmaps/redesign/track-video-active.png \
-	pixmaps/redesign/track-audio.png \
-	pixmaps/redesign/track-audio-active.png \
-	pixmaps/redesign/track-subtitles.png \
-	pixmaps/redesign/track-subtitles-active.png \
-	pixmaps/redesign/track-check-active.png \
-	pixmaps/redesign/icons/replay/default.png \
-	pixmaps/redesign/icons/favorite/active.png \
-	pixmaps/redesign/icons/fullscreen/default.png 	pixmaps/redesign/icons/fullscreen/default@2x.png \
-	pixmaps/redesign/icons/preferences/active.png \
-	pixmaps/redesign/icons/preferences/default.png \
-	pixmaps/redesign/icons/list/default.png \
-	pixmaps/redesign/icons/stop/default.png \
-	pixmaps/redesign/icons/backward-15-sec/default.png \
-	pixmaps/redesign/icons/speed/active.png \
-	pixmaps/redesign/icons/sort/default.png \
-	pixmaps/redesign/icons/0/default.png \
-	pixmaps/redesign/icons/sort/active.png \
-	pixmaps/redesign/icons/sort/active-grey.png \
-	pixmaps/redesign/icons/sort/active-accent.png \
-	pixmaps/redesign/icons/fullscreen/active.png \
-	pixmaps/redesign/icons/streaming/selected.png \
-	pixmaps/redesign/icons/link/active.png \
-	pixmaps/redesign/icons/check/selected.png \
-	pixmaps/redesign/icons/songs/selected.png \
-	pixmaps/redesign/icons/songs/active.png \
-	pixmaps/redesign/icons/forward-15-sec/default.png \
-	pixmaps/redesign/icons/grid/default.png \
-	pixmaps/redesign/icons/new-folder/default.png \
-	pixmaps/redesign/icons/tv/selected.png \
-	pixmaps/redesign/icons/queue/default.png 	pixmaps/redesign/icons/queue/default@2x.png \
-	pixmaps/redesign/icons/link/default.png \
-	pixmaps/redesign/icons/search/default.png 	pixmaps/redesign/icons/search/default@2x.png \
-	pixmaps/redesign/icons/window/default.png \
-	pixmaps/redesign/icons/play/default.png 	pixmaps/redesign/icons/play/default@2x.png \
-	pixmaps/redesign/icons/interface/active.png \
-	pixmaps/redesign/icons/home/active.png \
-	pixmaps/redesign/icons/hotkeys/default.png 	pixmaps/redesign/icons/hotkeys/default@2x.png \
-	pixmaps/redesign/icons/edit/default.png \
-	pixmaps/redesign/icons/PiP/default.png \
-	pixmaps/redesign/icons/cast/default.png \
-	pixmaps/redesign/icons/cast/large.png \
-	pixmaps/redesign/icons/artist/default.png 	pixmaps/redesign/icons/artist/default@2x.png \
-	pixmaps/redesign/icons/ui/default.png 	pixmaps/redesign/icons/ui/default@2x.png \
-	pixmaps/redesign/icons/ui/default-grey.png 	pixmaps/redesign/icons/ui/default-grey@2x.png \
-	pixmaps/redesign/icons/ui/default-accent.png 	pixmaps/redesign/icons/ui/default-accent@2x.png \
-	pixmaps/redesign/icons/close/default.png 	pixmaps/redesign/icons/close/default@2x.png \
-	pixmaps/redesign/icons/home/selected.png \
-	pixmaps/redesign/icons/chevron-right/default.png \
-	pixmaps/redesign/icons/chevron-down/default.png \
-	pixmaps/redesign/icons/view/active.png \
-	pixmaps/redesign/icons/record/default.png \
-	pixmaps/redesign/icons/streaming/default.png \
-	pixmaps/redesign/icons/folder/default.png \
-	pixmaps/redesign/icons/album/default.png \
-	pixmaps/redesign/icons/subtitle/default.png \
-	pixmaps/redesign/icons/open/default.png \
-	pixmaps/redesign/icons/chapters/default.png \
-	pixmaps/redesign/icons/playlist/active.png \
-	pixmaps/redesign/icons/file/default.png \
-	pixmaps/redesign/icons/audio/active.png \
-	pixmaps/redesign/icons/HDR/default.png \
-	pixmaps/redesign/icons/tv/default.png \
-	pixmaps/redesign/icons/wrench/default.png \
-	pixmaps/redesign/icons/subtitles/default.png 	pixmaps/redesign/icons/subtitles/default@2x.png \
-	pixmaps/redesign/icons/privacy/default.png \
-	pixmaps/redesign/icons/sidebar/active.png \
-	pixmaps/redesign/icons/sidebar/default.png \
-	pixmaps/redesign/icons/speed/default.png \
-	pixmaps/redesign/icons/profile/default.png 	pixmaps/redesign/icons/profile/default@2x.png \
-	pixmaps/redesign/icons/EQ/default.png \
-	pixmaps/redesign/icons/videos/active.png \
-	pixmaps/redesign/icons/remove/default.png 	pixmaps/redesign/icons/remove/default@2x.png \
-	pixmaps/redesign/icons/view/default.png \
-	pixmaps/redesign/icons/interface/default.png \
-	pixmaps/redesign/icons/more/default.png \
-	pixmaps/redesign/icons/refresh/default.png \
-	pixmaps/redesign/icons/hotkeys/active.png \
-	pixmaps/redesign/icons/quit/default.png 	pixmaps/redesign/icons/quit/default@2x.png \
-	pixmaps/redesign/icons/minimize/default.png 	pixmaps/redesign/icons/minimize/default@2x.png \
-	pixmaps/redesign/icons/divider/default.png \
-	pixmaps/redesign/icons/videos/default.png \
-	pixmaps/redesign/icons/home/default.png 	pixmaps/redesign/icons/home/default@2x.png \
-	pixmaps/redesign/icons/playback/default.png \
-	pixmaps/redesign/icons/video/active.png \
-	pixmaps/redesign/icons/previous/default.png 	pixmaps/redesign/icons/previous/default@2x.png \
-	pixmaps/redesign/icons/next/default.png 	pixmaps/redesign/icons/next/default@2x.png \
-	pixmaps/redesign/icons/subtitles/active.png \
-	pixmaps/redesign/icons/check/active.png \
-	pixmaps/redesign/icons/disc/default.png 	pixmaps/redesign/icons/disc/default@2x.png \
-	pixmaps/redesign/icons/recent/default.png 	pixmaps/redesign/icons/recent/default@2x.png \
-	pixmaps/redesign/icons/recent/active.png 	pixmaps/redesign/icons/recent/active@2x.png \
-	pixmaps/redesign/icons/recent/active-grey.png 	pixmaps/redesign/icons/recent/active-grey@2x.png \
-	pixmaps/redesign/icons/recent/active-accent.png 	pixmaps/redesign/icons/recent/active-accent@2x.png \
-	pixmaps/redesign/icons/folder/large.png \
-	pixmaps/redesign/icons/repeat/default.png \
-	pixmaps/redesign/icons/repeat/active.png \
-	pixmaps/redesign/icons/shuffle/default.png \
-	pixmaps/redesign/icons/shuffle/active.png \
-	pixmaps/redesign/icons/right-sidebar/default.png \
-	pixmaps/redesign/icons/play/outline-active.png \
-	pixmaps/redesign/icons/arrow-left/default.png 	pixmaps/redesign/icons/arrow-left/default@2x.png \
-	pixmaps/redesign/icons/arrow-left/disabled.png 	pixmaps/redesign/icons/arrow-left/disabled@2x.png \
-	pixmaps/redesign/icons/arrow-right/default.png 	pixmaps/redesign/icons/arrow-right/default@2x.png \
-	pixmaps/redesign/icons/arrow-right/disabled.png 	pixmaps/redesign/icons/arrow-right/disabled@2x.png \
-	pixmaps/redesign/icons/sort/dim.png \
-	pixmaps/redesign/icons/grid/dim.png \
-	pixmaps/redesign/icons/list/dim.png \
-	pixmaps/redesign/icons/search/dim.png 	pixmaps/redesign/icons/search/dim@2x.png \
-	pixmaps/redesign/icons/more/dim.png \
-	pixmaps/redesign/icons/video/dim.png \
-	pixmaps/redesign/icons/subtitle/dim.png \
-	pixmaps/redesign/icons/spectrum/dim.png \
-	pixmaps/redesign/icons/edit/dim.png \
-	pixmaps/redesign/icons/open/dim.png \
-	pixmaps/redesign/icons/privacy/active.png \
-	pixmaps/redesign/icons/settings/active.png \
-	pixmaps/redesign/icons/folder/active.png \
-	pixmaps/redesign/icons/lists/active.png \
-	pixmaps/redesign/icons/bookmarks/default.png \
-	pixmaps/redesign/icons/save/default.png \
-	pixmaps/redesign/icons/songs/default.png \
-	pixmaps/redesign/icons/artist/active.png \
-	pixmaps/redesign/icons/plugins/default.png \
-	pixmaps/redesign/icons/plugins/active.png \
-	pixmaps/redesign/icons/snapshot/default.png \
-	pixmaps/redesign/icons/favorite/default.png 	pixmaps/redesign/icons/favorite/default@2x.png \
-	pixmaps/redesign/icons/forward-10-sec/default.png \
-	pixmaps/redesign/icons/playback-settings/active.png \
-	pixmaps/redesign/icons/expand-sidebar/default.png \
-	pixmaps/redesign/icons/maximize/default.png 	pixmaps/redesign/icons/maximize/default@2x.png \
-	pixmaps/redesign/icons/paint/default.png \
-	pixmaps/redesign/icons/thumbnail/default.png \
-	pixmaps/redesign/icons/check/default.png \
-	pixmaps/redesign/icons/settings/default.png 	pixmaps/redesign/icons/settings/default@2x.png \
-	pixmaps/redesign/icons/lists/default.png 	pixmaps/redesign/icons/lists/default@2x.png \
-	pixmaps/redesign/icons/video/default.png \
-	pixmaps/redesign/icons/pause/default.png \
-	pixmaps/redesign/icons/record/active.png \
-	pixmaps/redesign/icons/streaming/active.png \
-	pixmaps/redesign/icons/music/default.png \
-	pixmaps/redesign/icons/playback-settings/default.png 	pixmaps/redesign/icons/playback-settings/default@2x.png \
-	pixmaps/redesign/icons/videos/selected.png \
-	pixmaps/redesign/icons/swap/default.png \
-	pixmaps/redesign/icons/zoom/default.png \
-	pixmaps/redesign/icons/playlist/default.png 	pixmaps/redesign/icons/playlist/default@2x.png \
-	pixmaps/redesign/icons/collapse-sidebar/default.png \
-	pixmaps/redesign/icons/audio/default.png 	pixmaps/redesign/icons/audio/default@2x.png \
-	pixmaps/redesign/icons/capture-device/default.png \
-	pixmaps/redesign/icons/paint/active.png \
-	pixmaps/redesign/icons/genre/default.png \
-	pixmaps/redesign/icons/tv/active.png \
-	pixmaps/redesign/icons/playback/active.png \
-	pixmaps/redesign/icons/move/default.png \
-	pixmaps/redesign/icons/bookmark/default.png \
-	pixmaps/redesign/icons/folder/selected.png \
-	pixmaps/redesign/icons/info/default.png 	pixmaps/redesign/icons/info/default@2x.png \
-	pixmaps/redesign/icons/add/default.png 	pixmaps/redesign/icons/add/default@2x.png 	pixmaps/redesign/icons/add/half.png \
-	pixmaps/redesign/icons/backward-10-sec/default.png \
-	pixmaps/redesign/icons/accessibility/default.png \
+	pixmaps/redesign/track-video.png 	pixmaps/redesign/track-video.svg \
+	pixmaps/redesign/track-video-active.png 	pixmaps/redesign/track-video-active.svg \
+	pixmaps/redesign/track-audio.png 	pixmaps/redesign/track-audio.svg \
+	pixmaps/redesign/track-audio-active.png 	pixmaps/redesign/track-audio-active.svg \
+	pixmaps/redesign/track-subtitles.png 	pixmaps/redesign/track-subtitles.svg \
+	pixmaps/redesign/track-subtitles-active.png 	pixmaps/redesign/track-subtitles-active.svg \
+	pixmaps/redesign/track-check-active.png 	pixmaps/redesign/track-check-active.svg \
+	pixmaps/redesign/icons/replay/default.png 	pixmaps/redesign/icons/replay/default.svg \
+	pixmaps/redesign/icons/favorite/active.png 	pixmaps/redesign/icons/favorite/active.svg \
+	pixmaps/redesign/icons/fullscreen/default.png 	pixmaps/redesign/icons/fullscreen/default@2x.png 	pixmaps/redesign/icons/fullscreen/default.svg \
+	pixmaps/redesign/icons/preferences/active.png 	pixmaps/redesign/icons/preferences/active.svg \
+	pixmaps/redesign/icons/preferences/default.png 	pixmaps/redesign/icons/preferences/default.svg \
+	pixmaps/redesign/icons/list/default.png 	pixmaps/redesign/icons/list/default.svg \
+	pixmaps/redesign/icons/stop/default.png 	pixmaps/redesign/icons/stop/default.svg \
+	pixmaps/redesign/icons/backward-15-sec/default.png 	pixmaps/redesign/icons/backward-15-sec/default.svg \
+	pixmaps/redesign/icons/speed/active.png 	pixmaps/redesign/icons/speed/active.svg \
+	pixmaps/redesign/icons/sort/default.png 	pixmaps/redesign/icons/sort/default.svg \
+	pixmaps/redesign/icons/0/default.png 	pixmaps/redesign/icons/0/default.svg \
+	pixmaps/redesign/icons/sort/active.png 	pixmaps/redesign/icons/sort/active.svg \
+	pixmaps/redesign/icons/sort/active-grey.png 	pixmaps/redesign/icons/sort/active-grey.svg \
+	pixmaps/redesign/icons/sort/active-accent.png 	pixmaps/redesign/icons/sort/active-accent.svg \
+	pixmaps/redesign/icons/fullscreen/active.png 	pixmaps/redesign/icons/fullscreen/active.svg \
+	pixmaps/redesign/icons/streaming/selected.png 	pixmaps/redesign/icons/streaming/selected.svg \
+	pixmaps/redesign/icons/link/active.png 	pixmaps/redesign/icons/link/active.svg \
+	pixmaps/redesign/icons/check/selected.png 	pixmaps/redesign/icons/check/selected.svg \
+	pixmaps/redesign/icons/songs/selected.png 	pixmaps/redesign/icons/songs/selected.svg \
+	pixmaps/redesign/icons/songs/active.png 	pixmaps/redesign/icons/songs/active.svg \
+	pixmaps/redesign/icons/forward-15-sec/default.png 	pixmaps/redesign/icons/forward-15-sec/default.svg \
+	pixmaps/redesign/icons/grid/default.png 	pixmaps/redesign/icons/grid/default.svg \
+	pixmaps/redesign/icons/new-folder/default.png 	pixmaps/redesign/icons/new-folder/default.svg \
+	pixmaps/redesign/icons/tv/selected.png 	pixmaps/redesign/icons/tv/selected.svg \
+	pixmaps/redesign/icons/queue/default.png 	pixmaps/redesign/icons/queue/default@2x.png 	pixmaps/redesign/icons/queue/default.svg \
+	pixmaps/redesign/icons/link/default.png 	pixmaps/redesign/icons/link/default.svg \
+	pixmaps/redesign/icons/search/default.png 	pixmaps/redesign/icons/search/default@2x.png 	pixmaps/redesign/icons/search/default.svg \
+	pixmaps/redesign/icons/window/default.png 	pixmaps/redesign/icons/window/default.svg \
+	pixmaps/redesign/icons/play/default.png 	pixmaps/redesign/icons/play/default@2x.png 	pixmaps/redesign/icons/play/default.svg \
+	pixmaps/redesign/icons/interface/active.png 	pixmaps/redesign/icons/interface/active.svg \
+	pixmaps/redesign/icons/home/active.png 	pixmaps/redesign/icons/home/active.svg \
+	pixmaps/redesign/icons/hotkeys/default.png 	pixmaps/redesign/icons/hotkeys/default@2x.png 	pixmaps/redesign/icons/hotkeys/default.svg \
+	pixmaps/redesign/icons/edit/default.png 	pixmaps/redesign/icons/edit/default.svg \
+	pixmaps/redesign/icons/PiP/default.png 	pixmaps/redesign/icons/PiP/default.svg \
+	pixmaps/redesign/icons/cast/default.png 	pixmaps/redesign/icons/cast/default.svg \
+	pixmaps/redesign/icons/cast/large.png 	pixmaps/redesign/icons/cast/large.svg \
+	pixmaps/redesign/icons/artist/default.png 	pixmaps/redesign/icons/artist/default@2x.png 	pixmaps/redesign/icons/artist/default.svg \
+	pixmaps/redesign/icons/ui/default.png 	pixmaps/redesign/icons/ui/default@2x.png 	pixmaps/redesign/icons/ui/default.svg \
+	pixmaps/redesign/icons/ui/default-grey.png 	pixmaps/redesign/icons/ui/default-grey@2x.png 	pixmaps/redesign/icons/ui/default-grey.svg \
+	pixmaps/redesign/icons/ui/default-accent.png 	pixmaps/redesign/icons/ui/default-accent@2x.png 	pixmaps/redesign/icons/ui/default-accent.svg \
+	pixmaps/redesign/icons/close/default.png 	pixmaps/redesign/icons/close/default@2x.png 	pixmaps/redesign/icons/close/default.svg \
+	pixmaps/redesign/icons/home/selected.png 	pixmaps/redesign/icons/home/selected.svg \
+	pixmaps/redesign/icons/chevron-right/default.png 	pixmaps/redesign/icons/chevron-right/default.svg \
+	pixmaps/redesign/icons/chevron-down/default.png 	pixmaps/redesign/icons/chevron-down/default.svg \
+	pixmaps/redesign/icons/view/active.png 	pixmaps/redesign/icons/view/active.svg \
+	pixmaps/redesign/icons/record/default.png 	pixmaps/redesign/icons/record/default.svg \
+	pixmaps/redesign/icons/streaming/default.png 	pixmaps/redesign/icons/streaming/default.svg \
+	pixmaps/redesign/icons/folder/default.png 	pixmaps/redesign/icons/folder/default.svg \
+	pixmaps/redesign/icons/album/default.png 	pixmaps/redesign/icons/album/default.svg \
+	pixmaps/redesign/icons/subtitle/default.png 	pixmaps/redesign/icons/subtitle/default.svg \
+	pixmaps/redesign/icons/open/default.png 	pixmaps/redesign/icons/open/default.svg \
+	pixmaps/redesign/icons/chapters/default.png 	pixmaps/redesign/icons/chapters/default.svg \
+	pixmaps/redesign/icons/playlist/active.png 	pixmaps/redesign/icons/playlist/active.svg \
+	pixmaps/redesign/icons/file/default.png 	pixmaps/redesign/icons/file/default.svg \
+	pixmaps/redesign/icons/audio/active.png 	pixmaps/redesign/icons/audio/active.svg \
+	pixmaps/redesign/icons/HDR/default.png 	pixmaps/redesign/icons/HDR/default.svg \
+	pixmaps/redesign/icons/tv/default.png 	pixmaps/redesign/icons/tv/default.svg \
+	pixmaps/redesign/icons/wrench/default.png 	pixmaps/redesign/icons/wrench/default.svg \
+	pixmaps/redesign/icons/subtitles/default.png 	pixmaps/redesign/icons/subtitles/default@2x.png 	pixmaps/redesign/icons/subtitles/default.svg \
+	pixmaps/redesign/icons/privacy/default.png 	pixmaps/redesign/icons/privacy/default.svg \
+	pixmaps/redesign/icons/sidebar/active.png 	pixmaps/redesign/icons/sidebar/active.svg \
+	pixmaps/redesign/icons/sidebar/default.png 	pixmaps/redesign/icons/sidebar/default.svg \
+	pixmaps/redesign/icons/speed/default.png 	pixmaps/redesign/icons/speed/default.svg \
+	pixmaps/redesign/icons/profile/default.png 	pixmaps/redesign/icons/profile/default@2x.png 	pixmaps/redesign/icons/profile/default.svg \
+	pixmaps/redesign/icons/EQ/default.png 	pixmaps/redesign/icons/EQ/default.svg \
+	pixmaps/redesign/icons/videos/active.png 	pixmaps/redesign/icons/videos/active.svg \
+	pixmaps/redesign/icons/remove/default.png 	pixmaps/redesign/icons/remove/default@2x.png 	pixmaps/redesign/icons/remove/default.svg \
+	pixmaps/redesign/icons/view/default.png 	pixmaps/redesign/icons/view/default.svg \
+	pixmaps/redesign/icons/interface/default.png 	pixmaps/redesign/icons/interface/default.svg \
+	pixmaps/redesign/icons/more/default.png 	pixmaps/redesign/icons/more/default.svg \
+	pixmaps/redesign/icons/refresh/default.png 	pixmaps/redesign/icons/refresh/default.svg \
+	pixmaps/redesign/icons/hotkeys/active.png 	pixmaps/redesign/icons/hotkeys/active.svg \
+	pixmaps/redesign/icons/quit/default.png 	pixmaps/redesign/icons/quit/default@2x.png 	pixmaps/redesign/icons/quit/default.svg \
+	pixmaps/redesign/icons/minimize/default.png 	pixmaps/redesign/icons/minimize/default@2x.png 	pixmaps/redesign/icons/minimize/default.svg \
+	pixmaps/redesign/icons/divider/default.png 	pixmaps/redesign/icons/divider/default.svg \
+	pixmaps/redesign/icons/videos/default.png 	pixmaps/redesign/icons/videos/default.svg \
+	pixmaps/redesign/icons/home/default.png 	pixmaps/redesign/icons/home/default@2x.png 	pixmaps/redesign/icons/home/default.svg \
+	pixmaps/redesign/icons/playback/default.png 	pixmaps/redesign/icons/playback/default.svg \
+	pixmaps/redesign/icons/video/active.png 	pixmaps/redesign/icons/video/active.svg \
+	pixmaps/redesign/icons/previous/default.png 	pixmaps/redesign/icons/previous/default@2x.png 	pixmaps/redesign/icons/previous/default.svg \
+	pixmaps/redesign/icons/next/default.png 	pixmaps/redesign/icons/next/default@2x.png 	pixmaps/redesign/icons/next/default.svg \
+	pixmaps/redesign/icons/subtitles/active.png 	pixmaps/redesign/icons/subtitles/active.svg \
+	pixmaps/redesign/icons/check/active.png 	pixmaps/redesign/icons/check/active.svg \
+	pixmaps/redesign/icons/disc/default.png 	pixmaps/redesign/icons/disc/default@2x.png 	pixmaps/redesign/icons/disc/default.svg \
+	pixmaps/redesign/icons/recent/default.png 	pixmaps/redesign/icons/recent/default@2x.png 	pixmaps/redesign/icons/recent/default.svg \
+	pixmaps/redesign/icons/recent/active.png 	pixmaps/redesign/icons/recent/active@2x.png 	pixmaps/redesign/icons/recent/active.svg \
+	pixmaps/redesign/icons/recent/active-grey.png 	pixmaps/redesign/icons/recent/active-grey@2x.png 	pixmaps/redesign/icons/recent/active-grey.svg \
+	pixmaps/redesign/icons/recent/active-accent.png 	pixmaps/redesign/icons/recent/active-accent@2x.png 	pixmaps/redesign/icons/recent/active-accent.svg \
+	pixmaps/redesign/icons/folder/large.png 	pixmaps/redesign/icons/folder/large.svg \
+	pixmaps/redesign/icons/repeat/default.png 	pixmaps/redesign/icons/repeat/default.svg \
+	pixmaps/redesign/icons/repeat/active.png 	pixmaps/redesign/icons/repeat/active.svg \
+	pixmaps/redesign/icons/shuffle/default.png 	pixmaps/redesign/icons/shuffle/default.svg \
+	pixmaps/redesign/icons/shuffle/active.png 	pixmaps/redesign/icons/shuffle/active.svg \
+	pixmaps/redesign/icons/right-sidebar/default.png 	pixmaps/redesign/icons/right-sidebar/default.svg \
+	pixmaps/redesign/icons/play/outline-active.png 	pixmaps/redesign/icons/play/outline-active.svg \
+	pixmaps/redesign/icons/arrow-left/default.png 	pixmaps/redesign/icons/arrow-left/default@2x.png 	pixmaps/redesign/icons/arrow-left/default.svg \
+	pixmaps/redesign/icons/arrow-left/disabled.png 	pixmaps/redesign/icons/arrow-left/disabled@2x.png 	pixmaps/redesign/icons/arrow-left/disabled.svg \
+	pixmaps/redesign/icons/arrow-right/default.png 	pixmaps/redesign/icons/arrow-right/default@2x.png 	pixmaps/redesign/icons/arrow-right/default.svg \
+	pixmaps/redesign/icons/arrow-right/disabled.png 	pixmaps/redesign/icons/arrow-right/disabled@2x.png 	pixmaps/redesign/icons/arrow-right/disabled.svg \
+	pixmaps/redesign/icons/sort/dim.png 	pixmaps/redesign/icons/sort/dim.svg \
+	pixmaps/redesign/icons/grid/dim.png 	pixmaps/redesign/icons/grid/dim.svg \
+	pixmaps/redesign/icons/list/dim.png 	pixmaps/redesign/icons/list/dim.svg \
+	pixmaps/redesign/icons/search/dim.png 	pixmaps/redesign/icons/search/dim@2x.png 	pixmaps/redesign/icons/search/dim.svg \
+	pixmaps/redesign/icons/more/dim.png 	pixmaps/redesign/icons/more/dim.svg \
+	pixmaps/redesign/icons/video/dim.png 	pixmaps/redesign/icons/video/dim.svg \
+	pixmaps/redesign/icons/subtitle/dim.png 	pixmaps/redesign/icons/subtitle/dim.svg \
+	pixmaps/redesign/icons/spectrum/dim.png 	pixmaps/redesign/icons/spectrum/dim.svg \
+	pixmaps/redesign/icons/edit/dim.png 	pixmaps/redesign/icons/edit/dim.svg \
+	pixmaps/redesign/icons/open/dim.png 	pixmaps/redesign/icons/open/dim.svg \
+	pixmaps/redesign/icons/privacy/active.png 	pixmaps/redesign/icons/privacy/active.svg \
+	pixmaps/redesign/icons/settings/active.png 	pixmaps/redesign/icons/settings/active.svg \
+	pixmaps/redesign/icons/folder/active.png 	pixmaps/redesign/icons/folder/active.svg \
+	pixmaps/redesign/icons/lists/active.png 	pixmaps/redesign/icons/lists/active.svg \
+	pixmaps/redesign/icons/bookmarks/default.png 	pixmaps/redesign/icons/bookmarks/default.svg \
+	pixmaps/redesign/icons/save/default.png 	pixmaps/redesign/icons/save/default.svg \
+	pixmaps/redesign/icons/songs/default.png 	pixmaps/redesign/icons/songs/default.svg \
+	pixmaps/redesign/icons/artist/active.png 	pixmaps/redesign/icons/artist/active.svg \
+	pixmaps/redesign/icons/plugins/default.png 	pixmaps/redesign/icons/plugins/default.svg \
+	pixmaps/redesign/icons/plugins/active.png 	pixmaps/redesign/icons/plugins/active.svg \
+	pixmaps/redesign/icons/snapshot/default.png 	pixmaps/redesign/icons/snapshot/default.svg \
+	pixmaps/redesign/icons/favorite/default.png 	pixmaps/redesign/icons/favorite/default@2x.png 	pixmaps/redesign/icons/favorite/default.svg \
+	pixmaps/redesign/icons/forward-10-sec/default.png 	pixmaps/redesign/icons/forward-10-sec/default.svg \
+	pixmaps/redesign/icons/playback-settings/active.png 	pixmaps/redesign/icons/playback-settings/active.svg \
+	pixmaps/redesign/icons/expand-sidebar/default.png 	pixmaps/redesign/icons/expand-sidebar/default.svg \
+	pixmaps/redesign/icons/maximize/default.png 	pixmaps/redesign/icons/maximize/default@2x.png 	pixmaps/redesign/icons/maximize/default.svg \
+	pixmaps/redesign/icons/paint/default.png 	pixmaps/redesign/icons/paint/default.svg \
+	pixmaps/redesign/icons/thumbnail/default.png 	pixmaps/redesign/icons/thumbnail/default.svg \
+	pixmaps/redesign/icons/check/default.png 	pixmaps/redesign/icons/check/default.svg \
+	pixmaps/redesign/icons/settings/default.png 	pixmaps/redesign/icons/settings/default@2x.png 	pixmaps/redesign/icons/settings/default.svg \
+	pixmaps/redesign/icons/lists/default.png 	pixmaps/redesign/icons/lists/default@2x.png 	pixmaps/redesign/icons/lists/default.svg \
+	pixmaps/redesign/icons/video/default.png 	pixmaps/redesign/icons/video/default.svg \
+	pixmaps/redesign/icons/pause/default.png 	pixmaps/redesign/icons/pause/default.svg \
+	pixmaps/redesign/icons/record/active.png 	pixmaps/redesign/icons/record/active.svg \
+	pixmaps/redesign/icons/streaming/active.png 	pixmaps/redesign/icons/streaming/active.svg \
+	pixmaps/redesign/icons/music/default.png 	pixmaps/redesign/icons/music/default.svg \
+	pixmaps/redesign/icons/playback-settings/default.png 	pixmaps/redesign/icons/playback-settings/default@2x.png 	pixmaps/redesign/icons/playback-settings/default.svg \
+	pixmaps/redesign/icons/videos/selected.png 	pixmaps/redesign/icons/videos/selected.svg \
+	pixmaps/redesign/icons/swap/default.png 	pixmaps/redesign/icons/swap/default.svg \
+	pixmaps/redesign/icons/zoom/default.png 	pixmaps/redesign/icons/zoom/default.svg \
+	pixmaps/redesign/icons/playlist/default.png 	pixmaps/redesign/icons/playlist/default@2x.png 	pixmaps/redesign/icons/playlist/default.svg \
+	pixmaps/redesign/icons/collapse-sidebar/default.png 	pixmaps/redesign/icons/collapse-sidebar/default.svg \
+	pixmaps/redesign/icons/audio/default.png 	pixmaps/redesign/icons/audio/default@2x.png 	pixmaps/redesign/icons/audio/default.svg \
+	pixmaps/redesign/icons/capture-device/default.png 	pixmaps/redesign/icons/capture-device/default.svg \
+	pixmaps/redesign/icons/paint/active.png 	pixmaps/redesign/icons/paint/active.svg \
+	pixmaps/redesign/icons/genre/default.png 	pixmaps/redesign/icons/genre/default.svg \
+	pixmaps/redesign/icons/tv/active.png 	pixmaps/redesign/icons/tv/active.svg \
+	pixmaps/redesign/icons/playback/active.png 	pixmaps/redesign/icons/playback/active.svg \
+	pixmaps/redesign/icons/move/default.png 	pixmaps/redesign/icons/move/default.svg \
+	pixmaps/redesign/icons/bookmark/default.png 	pixmaps/redesign/icons/bookmark/default.svg \
+	pixmaps/redesign/icons/folder/selected.png 	pixmaps/redesign/icons/folder/selected.svg \
+	pixmaps/redesign/icons/info/default.png 	pixmaps/redesign/icons/info/default@2x.png 	pixmaps/redesign/icons/info/default.svg \
+	pixmaps/redesign/icons/add/default.png 	pixmaps/redesign/icons/add/default@2x.png 	pixmaps/redesign/icons/add/default.svg 	pixmaps/redesign/icons/add/half.png 	pixmaps/redesign/icons/add/half.svg \
+	pixmaps/redesign/icons/backward-10-sec/default.png 	pixmaps/redesign/icons/backward-10-sec/default.svg \
+	pixmaps/redesign/icons/accessibility/default.png 	pixmaps/redesign/icons/accessibility/default.svg \
 	pixmaps/redesign/welcome.svg \
-	pixmaps/redesign/theme-system.png \
-	pixmaps/redesign/theme-bar-mask.png \
-	pixmaps/redesign/theme-bar-pill.png \
-	pixmaps/redesign/theme-bar-play.png \
-	pixmaps/redesign/theme-bar-knob.png \
-	pixmaps/redesign/theme-strip-cone.png \
-	pixmaps/redesign/theme-strip-buttons.png \
-	pixmaps/redesign/grid.png \
-	pixmaps/redesign/list.png \
-	pixmaps/redesign/subtitle-file.png \
+	pixmaps/redesign/theme-system.png 	pixmaps/redesign/theme-system.svg \
+	pixmaps/redesign/theme-bar-mask.png 	pixmaps/redesign/theme-bar-mask.svg \
+	pixmaps/redesign/theme-bar-pill.png 	pixmaps/redesign/theme-bar-pill.svg \
+	pixmaps/redesign/theme-bar-play.png 	pixmaps/redesign/theme-bar-play.svg \
+	pixmaps/redesign/theme-bar-knob.png 	pixmaps/redesign/theme-bar-knob.svg \
+	pixmaps/redesign/theme-strip-cone.png 	pixmaps/redesign/theme-strip-cone.svg \
+	pixmaps/redesign/theme-strip-buttons.png 	pixmaps/redesign/theme-strip-buttons.svg \
+	pixmaps/redesign/grid.png 	pixmaps/redesign/grid.svg \
+	pixmaps/redesign/list.png 	pixmaps/redesign/list.svg \
+	pixmaps/redesign/subtitle-file.png 	pixmaps/redesign/subtitle-file.svg \
 	pixmaps/redesign/playlists.svg \
 	pixmaps/redesign/recent.svg \
 	pixmaps/redesign/add.svg \
 	pixmaps/redesign/search.svg \
 	pixmaps/redesign/sort.svg \
-	pixmaps/redesign/grid.svg \
+	pixmaps/redesign/line-vertical.svg \
 	pixmaps/redesign/folder.svg \
 	pixmaps/redesign/artist.svg \
 	pixmaps/redesign/arrow-left.svg \
@@ -267,100 +267,100 @@ libqt_plugin_la_RES = \
 	pixmaps/redesign/volume-fill.svg \
 	pixmaps/redesign/volume-mask.svg \
 	pixmaps/redesign/volume.svg \
-	pixmaps/redesign/icons/scope/default.png \
-	pixmaps/redesign/icons/scope/default-grey.png \
-	pixmaps/redesign/icons/scope/default-accent.png \
-	pixmaps/redesign/icons/spectrometer/default.png \
-	pixmaps/redesign/icons/spectrometer/default-grey.png \
-	pixmaps/redesign/icons/spectrometer/default-accent.png \
-	pixmaps/redesign/icons/eq-flat/default.png \
-	pixmaps/redesign/icons/eq-flat/default-grey.png \
-	pixmaps/redesign/icons/eq-flat/default-accent.png \
-	pixmaps/redesign/icons/eq-classical/default.png \
-	pixmaps/redesign/icons/eq-classical/default-grey.png \
-	pixmaps/redesign/icons/eq-classical/default-accent.png \
-	pixmaps/redesign/icons/eq-club/default.png \
-	pixmaps/redesign/icons/eq-club/default-grey.png \
-	pixmaps/redesign/icons/eq-club/default-accent.png \
-	pixmaps/redesign/icons/eq-dance/default.png \
-	pixmaps/redesign/icons/eq-dance/default-grey.png \
-	pixmaps/redesign/icons/eq-dance/default-accent.png \
-	pixmaps/redesign/icons/eq-fullbass/default.png \
-	pixmaps/redesign/icons/eq-fullbass/default-grey.png \
-	pixmaps/redesign/icons/eq-fullbass/default-accent.png \
-	pixmaps/redesign/icons/eq-fullbasstreble/default.png \
-	pixmaps/redesign/icons/eq-fullbasstreble/default-grey.png \
-	pixmaps/redesign/icons/eq-fullbasstreble/default-accent.png \
-	pixmaps/redesign/icons/eq-fulltreble/default.png \
-	pixmaps/redesign/icons/eq-fulltreble/default-grey.png \
-	pixmaps/redesign/icons/eq-fulltreble/default-accent.png \
-	pixmaps/redesign/icons/eq-headphones/default.png \
-	pixmaps/redesign/icons/eq-headphones/default-grey.png \
-	pixmaps/redesign/icons/eq-headphones/default-accent.png \
-	pixmaps/redesign/icons/eq-rock/default.png \
-	pixmaps/redesign/icons/eq-rock/default-grey.png \
-	pixmaps/redesign/icons/eq-rock/default-accent.png \
-	pixmaps/redesign/icons/eq-ska/default.png \
-	pixmaps/redesign/icons/eq-ska/default-grey.png \
-	pixmaps/redesign/icons/eq-ska/default-accent.png \
-	pixmaps/redesign/icons/eq-soft/default.png \
-	pixmaps/redesign/icons/eq-soft/default-grey.png \
-	pixmaps/redesign/icons/eq-soft/default-accent.png \
-	pixmaps/redesign/icons/eq-techno/default.png \
-	pixmaps/redesign/icons/eq-techno/default-grey.png \
-	pixmaps/redesign/icons/eq-techno/default-accent.png \
-	pixmaps/redesign/icons/eq-softrock/default.png \
-	pixmaps/redesign/icons/eq-softrock/default-grey.png \
-	pixmaps/redesign/icons/eq-softrock/default-accent.png \
-	pixmaps/redesign/icons/eq-largehall/default.png \
-	pixmaps/redesign/icons/eq-largehall/default-grey.png \
-	pixmaps/redesign/icons/eq-largehall/default-accent.png \
-	pixmaps/redesign/icons/eq-reggae/default.png \
-	pixmaps/redesign/icons/eq-reggae/default-grey.png \
-	pixmaps/redesign/icons/eq-reggae/default-accent.png \
-	pixmaps/redesign/icons/eq-pop/default.png \
-	pixmaps/redesign/icons/eq-pop/default-grey.png \
-	pixmaps/redesign/icons/eq-pop/default-accent.png \
-	pixmaps/redesign/icons/eq-party/default.png \
-	pixmaps/redesign/icons/eq-party/default-grey.png \
-	pixmaps/redesign/icons/eq-party/default-accent.png \
-	pixmaps/redesign/icons/eq-live/default.png \
-	pixmaps/redesign/icons/eq-live/default-grey.png \
-	pixmaps/redesign/icons/eq-live/default-accent.png \
-	pixmaps/redesign/icons/spectrum/default.png \
-	pixmaps/redesign/icons/spectrum/default-grey.png \
-	pixmaps/redesign/icons/spectrum/default-accent.png \
-	pixmaps/redesign/icons/waveform/default.png \
-	pixmaps/redesign/icons/waveform/default-grey.png \
-	pixmaps/redesign/icons/waveform/default-accent.png \
-	pixmaps/redesign/icons/vumeter/default.png \
-	pixmaps/redesign/icons/vumeter/default-grey.png \
-	pixmaps/redesign/icons/vumeter/default-accent.png \
-	pixmaps/redesign/player/corner-tl-dark.png \
-	pixmaps/redesign/player/corner-tr-dark.png \
-	pixmaps/redesign/player/corner-bl-dark.png \
-	pixmaps/redesign/player/corner-br-dark.png \
-	pixmaps/redesign/player/corner-tl-light.png \
-	pixmaps/redesign/player/corner-tr-light.png \
-	pixmaps/redesign/player/corner-bl-light.png \
-	pixmaps/redesign/player/corner-br-light.png \
-	pixmaps/redesign/player/library-add.png \
-	pixmaps/redesign/player/library-playlist.png \
-	pixmaps/redesign/player/previous.png \
-	pixmaps/redesign/player/next.png \
-	pixmaps/redesign/player/equalizer.png \
-	pixmaps/redesign/player/subtitles.png \
-	pixmaps/redesign/player/settings.png \
-	pixmaps/redesign/player/queue.png \
-	pixmaps/redesign/player/minimize.png \
-	pixmaps/redesign/player/maximize.png \
-	pixmaps/redesign/player/fullscreen.png \
-	pixmaps/redesign/player/close.png \
-	pixmaps/redesign/player/pause.png \
-	pixmaps/redesign/volume-high.png \
-	pixmaps/redesign/volume-medium.png \
-	pixmaps/redesign/volume-low.png \
-	pixmaps/redesign/volume-muted.png \
+	pixmaps/redesign/icons/scope/default.png 	pixmaps/redesign/icons/scope/default.svg \
+	pixmaps/redesign/icons/scope/default-grey.png 	pixmaps/redesign/icons/scope/default-grey.svg \
+	pixmaps/redesign/icons/scope/default-accent.png 	pixmaps/redesign/icons/scope/default-accent.svg \
+	pixmaps/redesign/icons/spectrometer/default.png 	pixmaps/redesign/icons/spectrometer/default.svg \
+	pixmaps/redesign/icons/spectrometer/default-grey.png 	pixmaps/redesign/icons/spectrometer/default-grey.svg \
+	pixmaps/redesign/icons/spectrometer/default-accent.png 	pixmaps/redesign/icons/spectrometer/default-accent.svg \
+	pixmaps/redesign/icons/eq-flat/default.png 	pixmaps/redesign/icons/eq-flat/default.svg \
+	pixmaps/redesign/icons/eq-flat/default-grey.png 	pixmaps/redesign/icons/eq-flat/default-grey.svg \
+	pixmaps/redesign/icons/eq-flat/default-accent.png 	pixmaps/redesign/icons/eq-flat/default-accent.svg \
+	pixmaps/redesign/icons/eq-classical/default.png 	pixmaps/redesign/icons/eq-classical/default.svg \
+	pixmaps/redesign/icons/eq-classical/default-grey.png 	pixmaps/redesign/icons/eq-classical/default-grey.svg \
+	pixmaps/redesign/icons/eq-classical/default-accent.png 	pixmaps/redesign/icons/eq-classical/default-accent.svg \
+	pixmaps/redesign/icons/eq-club/default.png 	pixmaps/redesign/icons/eq-club/default.svg \
+	pixmaps/redesign/icons/eq-club/default-grey.png 	pixmaps/redesign/icons/eq-club/default-grey.svg \
+	pixmaps/redesign/icons/eq-club/default-accent.png 	pixmaps/redesign/icons/eq-club/default-accent.svg \
+	pixmaps/redesign/icons/eq-dance/default.png 	pixmaps/redesign/icons/eq-dance/default.svg \
+	pixmaps/redesign/icons/eq-dance/default-grey.png 	pixmaps/redesign/icons/eq-dance/default-grey.svg \
+	pixmaps/redesign/icons/eq-dance/default-accent.png 	pixmaps/redesign/icons/eq-dance/default-accent.svg \
+	pixmaps/redesign/icons/eq-fullbass/default.png 	pixmaps/redesign/icons/eq-fullbass/default.svg \
+	pixmaps/redesign/icons/eq-fullbass/default-grey.png 	pixmaps/redesign/icons/eq-fullbass/default-grey.svg \
+	pixmaps/redesign/icons/eq-fullbass/default-accent.png 	pixmaps/redesign/icons/eq-fullbass/default-accent.svg \
+	pixmaps/redesign/icons/eq-fullbasstreble/default.png 	pixmaps/redesign/icons/eq-fullbasstreble/default.svg \
+	pixmaps/redesign/icons/eq-fullbasstreble/default-grey.png 	pixmaps/redesign/icons/eq-fullbasstreble/default-grey.svg \
+	pixmaps/redesign/icons/eq-fullbasstreble/default-accent.png 	pixmaps/redesign/icons/eq-fullbasstreble/default-accent.svg \
+	pixmaps/redesign/icons/eq-fulltreble/default.png 	pixmaps/redesign/icons/eq-fulltreble/default.svg \
+	pixmaps/redesign/icons/eq-fulltreble/default-grey.png 	pixmaps/redesign/icons/eq-fulltreble/default-grey.svg \
+	pixmaps/redesign/icons/eq-fulltreble/default-accent.png 	pixmaps/redesign/icons/eq-fulltreble/default-accent.svg \
+	pixmaps/redesign/icons/eq-headphones/default.png 	pixmaps/redesign/icons/eq-headphones/default.svg \
+	pixmaps/redesign/icons/eq-headphones/default-grey.png 	pixmaps/redesign/icons/eq-headphones/default-grey.svg \
+	pixmaps/redesign/icons/eq-headphones/default-accent.png 	pixmaps/redesign/icons/eq-headphones/default-accent.svg \
+	pixmaps/redesign/icons/eq-rock/default.png 	pixmaps/redesign/icons/eq-rock/default.svg \
+	pixmaps/redesign/icons/eq-rock/default-grey.png 	pixmaps/redesign/icons/eq-rock/default-grey.svg \
+	pixmaps/redesign/icons/eq-rock/default-accent.png 	pixmaps/redesign/icons/eq-rock/default-accent.svg \
+	pixmaps/redesign/icons/eq-ska/default.png 	pixmaps/redesign/icons/eq-ska/default.svg \
+	pixmaps/redesign/icons/eq-ska/default-grey.png 	pixmaps/redesign/icons/eq-ska/default-grey.svg \
+	pixmaps/redesign/icons/eq-ska/default-accent.png 	pixmaps/redesign/icons/eq-ska/default-accent.svg \
+	pixmaps/redesign/icons/eq-soft/default.png 	pixmaps/redesign/icons/eq-soft/default.svg \
+	pixmaps/redesign/icons/eq-soft/default-grey.png 	pixmaps/redesign/icons/eq-soft/default-grey.svg \
+	pixmaps/redesign/icons/eq-soft/default-accent.png 	pixmaps/redesign/icons/eq-soft/default-accent.svg \
+	pixmaps/redesign/icons/eq-techno/default.png 	pixmaps/redesign/icons/eq-techno/default.svg \
+	pixmaps/redesign/icons/eq-techno/default-grey.png 	pixmaps/redesign/icons/eq-techno/default-grey.svg \
+	pixmaps/redesign/icons/eq-techno/default-accent.png 	pixmaps/redesign/icons/eq-techno/default-accent.svg \
+	pixmaps/redesign/icons/eq-softrock/default.png 	pixmaps/redesign/icons/eq-softrock/default.svg \
+	pixmaps/redesign/icons/eq-softrock/default-grey.png 	pixmaps/redesign/icons/eq-softrock/default-grey.svg \
+	pixmaps/redesign/icons/eq-softrock/default-accent.png 	pixmaps/redesign/icons/eq-softrock/default-accent.svg \
+	pixmaps/redesign/icons/eq-largehall/default.png 	pixmaps/redesign/icons/eq-largehall/default.svg \
+	pixmaps/redesign/icons/eq-largehall/default-grey.png 	pixmaps/redesign/icons/eq-largehall/default-grey.svg \
+	pixmaps/redesign/icons/eq-largehall/default-accent.png 	pixmaps/redesign/icons/eq-largehall/default-accent.svg \
+	pixmaps/redesign/icons/eq-reggae/default.png 	pixmaps/redesign/icons/eq-reggae/default.svg \
+	pixmaps/redesign/icons/eq-reggae/default-grey.png 	pixmaps/redesign/icons/eq-reggae/default-grey.svg \
+	pixmaps/redesign/icons/eq-reggae/default-accent.png 	pixmaps/redesign/icons/eq-reggae/default-accent.svg \
+	pixmaps/redesign/icons/eq-pop/default.png 	pixmaps/redesign/icons/eq-pop/default.svg \
+	pixmaps/redesign/icons/eq-pop/default-grey.png 	pixmaps/redesign/icons/eq-pop/default-grey.svg \
+	pixmaps/redesign/icons/eq-pop/default-accent.png 	pixmaps/redesign/icons/eq-pop/default-accent.svg \
+	pixmaps/redesign/icons/eq-party/default.png 	pixmaps/redesign/icons/eq-party/default.svg \
+	pixmaps/redesign/icons/eq-party/default-grey.png 	pixmaps/redesign/icons/eq-party/default-grey.svg \
+	pixmaps/redesign/icons/eq-party/default-accent.png 	pixmaps/redesign/icons/eq-party/default-accent.svg \
+	pixmaps/redesign/icons/eq-live/default.png 	pixmaps/redesign/icons/eq-live/default.svg \
+	pixmaps/redesign/icons/eq-live/default-grey.png 	pixmaps/redesign/icons/eq-live/default-grey.svg \
+	pixmaps/redesign/icons/eq-live/default-accent.png 	pixmaps/redesign/icons/eq-live/default-accent.svg \
+	pixmaps/redesign/icons/spectrum/default.png 	pixmaps/redesign/icons/spectrum/default.svg \
+	pixmaps/redesign/icons/spectrum/default-grey.png 	pixmaps/redesign/icons/spectrum/default-grey.svg \
+	pixmaps/redesign/icons/spectrum/default-accent.png 	pixmaps/redesign/icons/spectrum/default-accent.svg \
+	pixmaps/redesign/icons/waveform/default.png 	pixmaps/redesign/icons/waveform/default.svg \
+	pixmaps/redesign/icons/waveform/default-grey.png 	pixmaps/redesign/icons/waveform/default-grey.svg \
+	pixmaps/redesign/icons/waveform/default-accent.png 	pixmaps/redesign/icons/waveform/default-accent.svg \
+	pixmaps/redesign/icons/vumeter/default.png 	pixmaps/redesign/icons/vumeter/default.svg \
+	pixmaps/redesign/icons/vumeter/default-grey.png 	pixmaps/redesign/icons/vumeter/default-grey.svg \
+	pixmaps/redesign/icons/vumeter/default-accent.png 	pixmaps/redesign/icons/vumeter/default-accent.svg \
+	pixmaps/redesign/player/corner-tl-dark.png 	pixmaps/redesign/player/corner-tl-dark.svg \
+	pixmaps/redesign/player/corner-tr-dark.png 	pixmaps/redesign/player/corner-tr-dark.svg \
+	pixmaps/redesign/player/corner-bl-dark.png 	pixmaps/redesign/player/corner-bl-dark.svg \
+	pixmaps/redesign/player/corner-br-dark.png 	pixmaps/redesign/player/corner-br-dark.svg \
+	pixmaps/redesign/player/corner-tl-light.png 	pixmaps/redesign/player/corner-tl-light.svg \
+	pixmaps/redesign/player/corner-tr-light.png 	pixmaps/redesign/player/corner-tr-light.svg \
+	pixmaps/redesign/player/corner-bl-light.png 	pixmaps/redesign/player/corner-bl-light.svg \
+	pixmaps/redesign/player/corner-br-light.png 	pixmaps/redesign/player/corner-br-light.svg \
+	pixmaps/redesign/player/library-add.png 	pixmaps/redesign/player/library-add.svg \
+	pixmaps/redesign/player/library-playlist.png 	pixmaps/redesign/player/library-playlist.svg \
+	pixmaps/redesign/player/previous.png 	pixmaps/redesign/player/previous.svg \
+	pixmaps/redesign/player/next.png 	pixmaps/redesign/player/next.svg \
+	pixmaps/redesign/player/equalizer.png 	pixmaps/redesign/player/equalizer.svg \
+	pixmaps/redesign/player/subtitles.png 	pixmaps/redesign/player/subtitles.svg \
+	pixmaps/redesign/player/settings.png 	pixmaps/redesign/player/settings.svg \
+	pixmaps/redesign/player/queue.png 	pixmaps/redesign/player/queue.svg \
+	pixmaps/redesign/player/minimize.png 	pixmaps/redesign/player/minimize.svg \
+	pixmaps/redesign/player/maximize.png 	pixmaps/redesign/player/maximize.svg \
+	pixmaps/redesign/player/fullscreen.png 	pixmaps/redesign/player/fullscreen.svg \
+	pixmaps/redesign/player/close.png 	pixmaps/redesign/player/close.svg \
+	pixmaps/redesign/player/pause.png 	pixmaps/redesign/player/pause.svg \
+	pixmaps/redesign/volume-high.png 	pixmaps/redesign/volume-high.svg \
+	pixmaps/redesign/volume-medium.png 	pixmaps/redesign/volume-medium.svg \
+	pixmaps/redesign/volume-low.png 	pixmaps/redesign/volume-low.svg \
+	pixmaps/redesign/volume-muted.png 	pixmaps/redesign/volume-muted.svg \
 	pixmaps/redesign/queue.svg \
 	pixmaps/redesign/player-settings.svg \
 	pixmaps/redesign/subtitles.svg \

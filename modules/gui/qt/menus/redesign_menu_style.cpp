@@ -24,6 +24,7 @@
 #include "maininterface/mainctx.hpp"
 #include "util/color_scheme_model.hpp"
 #include "util/colorizedsvgicon.hpp"
+#include "util/redesign_icon_provider.hpp"
 #include "util/redesign_accent.hpp"
 
 #include <QApplication>
@@ -120,15 +121,12 @@ void drawFigmaText(QPainter *painter, const QRect &rect, Qt::Alignment align,
     painter->restore();
 }
 
-QPixmap tinted(const QString &path, const QColor &color)
+// The icon drawn at that size for the painter's device (its SVG when it has
+// one: sharp at any scale), in one colour
+QPixmap tinted(const QString &path, const QColor &color, const QSize &size, const QPainter *painter)
 {
-    QPixmap pixmap(path);
-    if (pixmap.isNull())
-        return pixmap;
-    QPainter painter(&pixmap);
-    painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
-    painter.fillRect(pixmap.rect(), color);
-    return pixmap;
+    const qreal ratio = painter && painter->device() ? painter->device()->devicePixelRatioF() : qApp->devicePixelRatio();
+    return RedesignIcons::pixmap(path, size, ratio, color);
 }
 
 // The interface the menus belong to, for the menus built without it
@@ -278,11 +276,12 @@ QIcon RedesignMenuStyle::accentIcon(MainCtx *ctx, const QString &name)
     if (QFile::exists(duo))
         return ColorizedSvgIcon(duo, darkScheme(ctx) ? QColor(0x8F, 0x8F, 0x8F) : QColor(0x2E, 0x2E, 0x2E),
                                 accent, accentDim(accent));
-    QPixmap pixmap = tinted(QStringLiteral(":/redesign/icons/%1/default.png").arg(name), accent);
+    // drawn from its SVG at each size asked (sharp at any scale)
+    QString file = QStringLiteral(":/redesign/icons/%1/default.png").arg(name);
     // Some icons of the design only have their active state
-    if (pixmap.isNull())
-        pixmap = tinted(QStringLiteral(":/redesign/icons/%1/active.png").arg(name), accent);
-    return pixmap.isNull() ? QIcon() : QIcon(pixmap);
+    if (!QFile::exists(file))
+        file = QStringLiteral(":/redesign/icons/%1/active.png").arg(name);
+    return RedesignIcons::icon(file, accent);
 }
 
 bool RedesignMenuStyle::isDark() const
@@ -498,7 +497,7 @@ void RedesignMenuStyle::drawControl(ControlElement element, const QStyleOption *
     {
         // icons/check is empty: the check of the track lists
         painter->drawPixmap(iconRect, tinted(QStringLiteral(":/redesign/track-check-active.png"),
-                                             enabled ? colors.accent : colors.disabled));
+                                             enabled ? colors.accent : colors.disabled, iconRect.size(), painter));
     }
 
     // Label on the left, shortcut on the right, then the submenu arrow
@@ -530,7 +529,7 @@ void RedesignMenuStyle::drawControl(ControlElement element, const QStyleOption *
                   rect.top() + (rect.height() - arrowWidth) / 2, arrowWidth, arrowWidth));
         // the colour of the labels (#8F8F8F), not of the shortcuts
         QPixmap arrow = tinted(QStringLiteral(":/redesign/icons/chevron-right/default.png"),
-                               enabled ? colors.text : colors.disabled);
+                               enabled ? colors.text : colors.disabled, arrowRect.size(), painter);
         if (dir == Qt::RightToLeft)
         {
             const qreal ratio = arrow.devicePixelRatio();

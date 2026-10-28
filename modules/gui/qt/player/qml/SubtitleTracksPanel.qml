@@ -34,6 +34,9 @@ ColumnLayout {
     readonly property bool localMedia: Player.url.toString().startsWith("file://")
     // a video, here or on a TV (no video output here while casting)
     readonly property bool _video: Player.hasVideoOutput
+    // a film or a video: files, online search and sync; a live TV channel
+    // (or music) shows the choice of its own tracks only
+    readonly property bool _fileFeatures: _video && !Iptv.playing
         || (Player.rendererManager.useRenderer && Player.rendererManager.rendererVideo
             && Player.videoTracks.count > 0)
     readonly property real _rowHeight: VLCStyle.dp(36, VLCStyle.scale)
@@ -217,7 +220,7 @@ ColumnLayout {
     // when subtitles are found online by themselves (else: the refresh
     // button, as the user turned it off or wasn't asked yet)
     onVisibleChanged: {
-        if (visible && root._video && SubtitleFinder.state === SubtitleFinder.Idle
+        if (visible && root._fileFeatures && SubtitleFinder.state === SubtitleFinder.Idle
             && SubtitleFinder.searchesByItself())
             SubtitleFinder.search()
     }
@@ -285,7 +288,7 @@ ColumnLayout {
             objectName: "subtitleTitleSearchButton"
             iconName: "search"
             description: qsTr("The video is another one: search by its title")
-            visible: SubtitleFinder.supported && root._video
+            visible: SubtitleFinder.supported && root._fileFeatures
             onClicked: {
                 titleSearch.visible = !titleSearch.visible
                 if (titleSearch.visible)
@@ -297,13 +300,14 @@ ColumnLayout {
             iconName: "refresh"
             description: SubtitleFinder.state === SubtitleFinder.Idle ? qsTr("Search subtitles online")
                                                                      : qsTr("Search subtitles online again")
-            visible: SubtitleFinder.supported && root._video
+            visible: SubtitleFinder.supported && root._fileFeatures
             enabled: SubtitleFinder.state !== SubtitleFinder.Identifying
                      && SubtitleFinder.state !== SubtitleFinder.Searching
             onClicked: SubtitleFinder.search()
         }
         HeaderButton {
             objectName: "associateSubtitleButton"
+            visible: root._fileFeatures
             iconName: "edit"
             description: root.localMedia && MainCtx.mediaLibraryAvailable
                          ? qsTr("Add subtitles to the library")
@@ -316,6 +320,7 @@ ColumnLayout {
         }
         HeaderButton {
             objectName: "addSubtitleButton"
+            visible: root._fileFeatures
             iconName: "add"
             description: qsTr("Load a subtitle file for playback")
             onClicked: DialogsProvider.loadSubtitlesFile()
@@ -467,6 +472,7 @@ ColumnLayout {
     }
 
     Rectangle {
+        visible: root._fileFeatures
         Layout.fillWidth: true
         Layout.topMargin: VLCStyle.dp(4, VLCStyle.scale)
         implicitHeight: 1
@@ -474,6 +480,7 @@ ColumnLayout {
     }
 
     SubtitleSyncTimeline {
+        visible: root._fileFeatures
         Layout.fillWidth: true
         presets: SubtitleSeriesPreset
         reveal: root.reveal

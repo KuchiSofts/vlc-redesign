@@ -185,7 +185,9 @@ FocusScope {
         // about two thirds of the video, from a 720p window to a 4K screen
         width: Math.max(Math.min(root.px(560), parent.width - root.px(32)),
                         Math.min(parent.width * 0.66, root.px(1100), parent.width - root.px(32)))
-        height: root.px(76)
+        // the slim bar, taller only for a description
+        height: Math.max(root.px(76), bannerInfo.y + bannerInfo.implicitHeight + root.px(18))
+        Behavior on height { NumberAnimation { duration: 180; easing.type: Easing.OutCubic } }
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
         anchors.bottomMargin: root.bottomInset + root.px(24) + (wanted ? 0 : -root.px(8))
@@ -203,12 +205,19 @@ FocusScope {
 
         HoverHandler { id: bannerHover }
 
+        // the band of the channel and the buttons, the height of the slim bar
+        Item {
+            id: bannerHead
+            width: parent.width
+            height: root.px(76)
+        }
+
         // the channel
         Text {
             id: bannerNumber
             anchors.left: parent.left
             anchors.leftMargin: root.px(16)
-            anchors.verticalCenter: parent.verticalCenter
+            anchors.verticalCenter: bannerHead.verticalCenter
             width: root.px(36)
             horizontalAlignment: Text.AlignRight
             text: root.channel.number > 0 ? root.channel.number : ""
@@ -222,7 +231,7 @@ FocusScope {
             id: bannerLogo
             anchors.left: bannerNumber.right
             anchors.leftMargin: root.px(12)
-            anchors.verticalCenter: parent.verticalCenter
+            anchors.verticalCenter: bannerHead.verticalCenter
             width: root.px(44)
             height: width
             source: root.channel.logo ?? ""
@@ -232,7 +241,7 @@ FocusScope {
             id: bannerName
             anchors.left: bannerLogo.right
             anchors.leftMargin: root.px(12)
-            anchors.verticalCenter: parent.verticalCenter
+            anchors.verticalCenter: bannerHead.verticalCenter
             width: Math.min(implicitWidth, banner.width * 0.24)
             text: root.channel.name ?? ""
             elide: Text.ElideRight
@@ -246,19 +255,22 @@ FocusScope {
             id: bannerDivider
             anchors.left: bannerName.right
             anchors.leftMargin: root.px(16)
-            anchors.verticalCenter: parent.verticalCenter
+            anchors.verticalCenter: bannerHead.verticalCenter
             width: 1
             height: root.px(36)
             color: banner.c(VLCStyle.redesign.separator)
         }
 
-        // what is on, and next
+        // what is on, and next; with Settings > TV, its description
+        // (the bar grows to it, smoothly, and stays slim without one)
         Column {
+            id: bannerInfo
             anchors.left: bannerDivider.right
             anchors.leftMargin: root.px(16)
             anchors.right: bannerEnd.left
             anchors.rightMargin: root.px(16)
-            anchors.verticalCenter: parent.verticalCenter
+            anchors.top: parent.top
+            anchors.topMargin: root.px(18)
             spacing: root.px(6)
 
             Row {
@@ -287,7 +299,8 @@ FocusScope {
                     horizontalAlignment: Text.AlignLeft
                     color: banner.c("#C6C6C6")
                     font.family: VLCStyle.redesign.fontFamily
-                    font.pixelSize: root.px(14)
+                    font.pixelSize: root.px(16)
+                    font.weight: Font.Medium
                 }
             }
 
@@ -323,7 +336,7 @@ FocusScope {
                     text: qsTr("%1 left").arg(Iptv.durationText((root.now.stop ?? 0) - Iptv.now))
                     color: banner.c("#6B6B6B")
                     font.family: VLCStyle.redesign.fontFamily
-                    font.pixelSize: root.px(12)
+                    font.pixelSize: root.px(13)
                 }
                 Text {
                     anchors.verticalCenter: parent.verticalCenter
@@ -335,8 +348,38 @@ FocusScope {
                     horizontalAlignment: Text.AlignLeft
                     color: banner.c("#6B6B6B")
                     font.family: VLCStyle.redesign.fontFamily
-                    font.pixelSize: root.px(12)
+                    font.pixelSize: root.px(13)
                 }
+            }
+
+            // Settings > TV: the episode, its category and its description
+            // (up to three lines; the whole text in the programme's details)
+            Text {
+                readonly property string meta: [root.now.subtitle, root.now.episode, root.now.category]
+                                                .filter(t => !!t).join("  ·  ")
+                width: parent.width
+                visible: Iptv.showDescriptions && !root._archive && Iptv.bannerMode !== 2 && meta !== ""
+                topPadding: root.px(4)
+                text: meta
+                elide: Text.ElideRight
+                horizontalAlignment: Text.AlignLeft
+                color: banner.c("#8F8F8F")
+                font.family: VLCStyle.redesign.fontFamily
+                font.pixelSize: root.px(13)
+            }
+            Text {
+                width: parent.width
+                visible: Iptv.showDescriptions && !root._archive && Iptv.bannerMode !== 2
+                         && (root.now.description ?? "") !== ""
+                text: (root.now.description ?? "").replace(/\s+/g, " ")
+                wrapMode: Text.WordWrap
+                maximumLineCount: 3
+                elide: Text.ElideRight
+                lineHeight: 1.35
+                horizontalAlignment: Text.AlignLeft
+                color: banner.c("#8F8F8F")
+                font.family: VLCStyle.redesign.fontFamily
+                font.pixelSize: root.px(13)
             }
         }
 
@@ -345,7 +388,7 @@ FocusScope {
             id: bannerEnd
             anchors.right: parent.right
             anchors.rightMargin: root.px(14)
-            anchors.verticalCenter: parent.verticalCenter
+            anchors.verticalCenter: bannerHead.verticalCenter
             spacing: root.px(6)
 
             TvBadge {

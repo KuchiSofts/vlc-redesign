@@ -295,6 +295,10 @@ run macdeployqt "$qtdir/bin/macdeployqt" "$app" \
     -always-overwrite -verbose=1
 [ -d "$contents/Frameworks/QtQuick.framework" ] || die "macdeployqt did not deploy Qt Quick (see $logs/macdeployqt.log)"
 [ -f "$contents/PlugIns/platforms/libqcocoa.dylib" ] || die "no Qt cocoa platform plugin"
+# The SQL drivers come along with Qt's other plugins, and the Mimer one
+# links a library of the build machine (/usr/local/lib): the interface
+# uses no Qt SQL (the media library is VLC's), so none of them ships
+rm -rf "$contents/PlugIns/sqldrivers"
 
 # The bundle's binaries find their libraries in it, never in the build
 # folders or in Qt's download: every reference to one of them becomes

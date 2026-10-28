@@ -14,6 +14,7 @@
 #endif
 
 #include "subtitle_cues.hpp"
+#include "subtitle_finder.hpp"
 
 #include <vlc_configuration.h>
 #include <vlc_input_item.h>
@@ -38,7 +39,7 @@ namespace {
 constexpr int maxCacheEntries = 8;
 // a file added is in the media a moment after its track: asked again
 constexpr int retryMs = 300;
-constexpr int maxRetries = 10;
+constexpr int maxRetries = 30; // 9 s: the folder of a video on a slow drive is read on a worker thread
 
 struct CacheEntry
 {
@@ -174,8 +175,10 @@ void SubtitleCues::setCues(std::shared_ptr<const CueList> cues)
 }
 
 // The file of the subtitle track shown: VLC names the tracks of a file
-// added to a media by the MD5 of its MRL ("<md5>/spu/<id>"), the media
-// keeps the MRLs of the files it loaded (its slaves)
+// added to a media by the MD5 of its MRL ("<md5>/spu/<id>"). The subtitle
+// finder knows the files VLC found next to the video and those added or
+// downloaded (the media gives its slaves to the input when it starts, so
+// its own list is empty while it plays; it is still looked at)
 void SubtitleCues::resolve()
 {
     QString path;
@@ -192,7 +195,10 @@ void SubtitleCues::resolve()
             const char *last = strrchr(id, '/');
             streamIndex = last && last[1] ? atoi(last + 1) : -1;
             pending = true;
-            input_item_t *media = vlc_player_GetCurrentMedia(player);
+            path = SubtitleFinder::externalPath(id);
+            if (!path.isEmpty())
+                pending = false;
+            input_item_t *media = path.isEmpty() ? vlc_player_GetCurrentMedia(player) : nullptr;
             if (media) {
                 vlc_mutex_lock(&media->lock);
                 for (int i = 0; i < media->i_slaves; ++i) {

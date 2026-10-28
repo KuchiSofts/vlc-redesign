@@ -245,6 +245,7 @@ struct Source
     QString name;     // the release, or the name of the file
     QString provider; // the service it was found on
     QString folder;
+    QString path;     // the local file, for whoever reads it again
 };
 
 QHash<QString, Source> &sources()
@@ -441,6 +442,15 @@ QVariantMap SubtitleFinder::externalSource(const char *trackId)
              { QStringLiteral("provider"), it->provider }, { QStringLiteral("folder"), it->folder } };
 }
 
+QString SubtitleFinder::externalPath(const char *trackId)
+{
+    const char *slash = trackId ? strchr(trackId, '/') : nullptr;
+    if (!slash)
+        return {};
+    const auto it = sources().constFind(QString::fromLatin1(trackId, slash - trackId));
+    return it != sources().constEnd() ? it->path : QString();
+}
+
 void SubtitleFinder::noteFile(const QString &mrl, const QString &kind, const QString &name,
                               const QString &provider)
 {
@@ -450,8 +460,9 @@ void SubtitleFinder::noteFile(const QString &mrl, const QString &kind, const QSt
     if (it != sources().constEnd() && it->kind == QLatin1String("online") && kind != QLatin1String("online"))
         return;
     const QUrl url(mrl);
-    const QString folder = url.isLocalFile() ? QFileInfo(url.toLocalFile()).absolutePath() : QString();
-    sources().insert(key, { kind, name, provider, folder });
+    const QString local = url.isLocalFile() ? url.toLocalFile() : QString();
+    const QString folder = local.isEmpty() ? QString() : QFileInfo(local).absolutePath();
+    sources().insert(key, { kind, name, provider, folder, local });
     if (finderInstance())
         emit finderInstance()->sourcesChanged();
 }

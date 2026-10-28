@@ -93,6 +93,8 @@ public:
     // provider: the service it was found on; folder: where the file is };
     // empty for the tracks of the media itself and unknown files
     static QVariantMap externalSource(const char *trackId);
+    // the local file of an external track (empty when it isn't known)
+    static QString externalPath(const char *trackId);
     // a subtitle file added to the media (its MRL as VLC has it)
     static void noteFile(const QString &mrl, const QString &kind, const QString &name,
                          const QString &provider = {});

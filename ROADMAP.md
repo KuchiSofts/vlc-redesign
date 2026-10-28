@@ -61,7 +61,8 @@ Where each platform stands is kept in one file, [`platforms.yml`](platforms.yml)
 the website and the *Also on* line of the release notes and of About are made from it.
 
 - 🔨 A website for every platform (GitHub Pages): it offers the download for your system and lists the others
-- 🔨 Linux (AppImage, Flatpak, .deb, .rpm)
+- 🔨 Linux (AppImage, Flatpak, .deb, .rpm): the AppImage, .deb, .rpm and tarball are made for x86_64 and ARM64, and
+  a GitHub workflow builds and tests them on both before the first release; the Flatpak manifest is written
 - 📋 macOS (Apple Silicon and Intel)
 - 🔨 Windows on ARM64: the build, the installer, the zip and the updates are ready; a test on an ARM64 PC
   comes before the first release

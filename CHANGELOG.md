@@ -202,6 +202,19 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   no warning from the redesign's code; `linux-bundle.sh` makes a self-contained tarball (VLC, Qt 6.8.3 and the
   libraries of Ubuntu 24.04 it needs) for test PCs, `linux-wslg.sh` runs it on the Windows desktop through WSLg.
   Every control of the player bar (59) was put in the bar, shown and clicked during playback: no QML warning.
+- **Linux packages.** `extras/juxtopposed/linux-packages.sh [--arch x86_64|aarch64]` makes from the bundle an
+  AppImage (`vlc-redesign-X.Y.Z-ARCH.AppImage`, with update information for the GitHub releases and its `.zsync`),
+  a .deb (`vlc-redesign_X.Y.Z_amd64.deb`), an .rpm (`vlc-redesign-X.Y.Z-1.x86_64.rpm`), the versioned tarball,
+  `SHA256SUMS-linux-ARCH.txt` and a Flatpak manifest (`org.kuchisofts.VLCRedesign`, KDE 6.8 runtime, written only),
+  with appimagetool 1.9.1 and nfpm 2.47.0 checked by SHA-256. The .deb and .rpm install VLC in `/opt/vlc-redesign`
+  with the command `vlc-redesign`, a desktop entry with VLC's media types, AppStream metainfo and the logo of
+  `design/icons` in the hicolor sizes, so they install next to the distribution's `vlc`; their dependencies come
+  from the libraries the bundle takes from the system (glibc 2.38, GL/EGL/GBM/DRM, VA-API, VDPAU). For 0.3.2 on
+  x86_64: AppImage 165 MB, .deb and .rpm 155 MB. The bundle no longer has Qt's SQL drivers for database servers
+  (their client libraries were missing), is named after its architecture, and `linux-qt68.Dockerfile` takes Qt's
+  ARM64 build on aarch64. A new workflow (`build-linux.yml`) builds on x86_64 and ARM64 runners and tests the
+  packages on a clean runner: the .deb installed with apt next to the distribution's VLC, the AppImage, and the
+  .rpm in Fedora 44, each printing its version and playing a clip to its end without a window or sound.
 - Merged VLC master up to `6836ae77ae` (2026-10-27), 110 commits ([#8](https://github.com/KuchiSofts/vlc-redesign/issues/8)):
   upstream's own fix for stopping the Windows audio output under its lock, the playlist recovery question shown
   without blocking, and the rest of upstream's work.

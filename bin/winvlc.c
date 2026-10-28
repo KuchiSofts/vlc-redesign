@@ -44,6 +44,7 @@
 #include <wchar.h>
 
 #include "../lib/libvlc_internal.h"
+#include "winvlc_message.h"
 
 #ifdef HAVE_BREAKPAD
 void CheckCrashDump( const wchar_t* crashdump_path );
@@ -704,8 +705,11 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
     if (!WindowsSupported())
     {
-        MessageBox(NULL, TEXT("This version of VLC media player needs Windows 10 version 1809 or later."),
-                   TEXT("VLC media player"), MB_OK|MB_ICONERROR);
+        /* (before libvlc: in English) */
+        RedesignMessageBoxUtf8("VLC Redesign",
+                               _("VLC Redesign cannot run on this version of Windows"),
+                               _("It needs Windows 10 version 1809 or later."),
+                               _("Close"), NULL);
         return 1;
     }
 
@@ -814,10 +818,11 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
         libvlc_release (vlc);
     }
     else
-        MessageBox (NULL, TEXT("VLC media player could not start.\n"
-                    "Either the command line options were invalid or no plugins were found.\n"),
-                    TEXT("VLC media player"),
-                    MB_OK|MB_ICONERROR);
+        /* drawn as the dialogs of the interface, which could not start */
+        RedesignMessageBoxUtf8("VLC Redesign",
+                               _("VLC Redesign could not start"),
+                               _("Either the command line options were invalid or no plugins were found."),
+                               _("Close"), NULL);
 
 
 #ifdef HAVE_BREAKPAD

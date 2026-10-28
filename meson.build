@@ -1035,8 +1035,8 @@ cdata.set_quoted('COPYRIGHT_MESSAGE',   f'Copyright © @vlc_copyright_years@ the
 
 # Compiler and build system info
 cdata.set_quoted('VLC_COMPILER',        cc.get_id() + ' ' + cc.version())
-cdata.set_quoted('VLC_COMPILE_BY',      '[not implemented with meson]') # TODO
-cdata.set_quoted('VLC_COMPILE_HOST',    '[not implemented with meson]') # TODO
+cdata.set_quoted('VLC_COMPILE_BY',      'KuchiSofts') # the project, never the account
+cdata.set_quoted('VLC_COMPILE_HOST',    'vlc-redesign')
 
 # Paths
 prefix_path = get_option('prefix')

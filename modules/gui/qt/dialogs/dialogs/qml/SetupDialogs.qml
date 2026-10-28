@@ -110,6 +110,7 @@ Item {
         function onShortcutsRequested() { root.show(shortcuts) }
         function onNetworkStreamRequested() { root.show(networkStream) }
         function onAboutRequested() { root.show(about) }
+        function onWhatsNewRequested() { root.show(whatsNew) }
         function onSetupRequested() { if (!setup.item || !setup.item.visible) root.show(setup) }
         function onEffectsRequested(page) {
             effects.requestedTab = page

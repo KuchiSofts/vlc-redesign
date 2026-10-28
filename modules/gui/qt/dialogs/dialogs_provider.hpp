@@ -322,6 +322,8 @@ public slots:
     void pluginDialog();
     void statisticsDialog();
     void folderInfoDialog(const QUrl &folder);
+    // What's new of this version, again (About)
+    void whatsNewDialog();
     // Go to time: the time chosen (seconds)
     void goToTime(double seconds);
     void epgDialog();
@@ -395,6 +397,7 @@ signals:
     void pluginsRequested();
     void statisticsRequested();
     void folderInfoRequested(const QUrl &folder);
+    void whatsNewRequested();
     void releaseMouseEvents();
     void showToolbarEditorDialog();
     // for the host given (RedesignMessageDialog.qml): show the message, or

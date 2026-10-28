@@ -152,7 +152,9 @@ T.Popup {
                         Layout.fillWidth: true
                         elide: Text.ElideRight
                         horizontalAlignment: Text.AlignLeft
-                        text: qsTr("Version %1 · based on VLC %2").arg(RedesignUpdater.currentVersion).arg(AboutModel.version.split(" ")[0])
+                        // the system too: the same version exists for several
+                        text: qsTr("Version %1 for %2 · based on VLC %3").arg(RedesignUpdater.currentVersion)
+                                  .arg(RedesignUpdater.platformName).arg(AboutModel.version.split(" ")[0])
                         color: root.textMuted
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
@@ -186,6 +188,15 @@ T.Popup {
                             case RedesignUpdater.Failed: return RedesignUpdater.errorText
                             default: return ""
                             }
+                        }
+                    }
+                    // the card shown after an update, open again at any time
+                    Link {
+                        Layout.topMargin: VLCStyle.dp(2, VLCStyle.scale)
+                        text: qsTr("What's new in %1").arg(RedesignUpdater.currentVersion)
+                        onActivated: {
+                            root.close()
+                            DialogsProvider.whatsNewDialog()
                         }
                     }
                 }

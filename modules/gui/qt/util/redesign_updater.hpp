@@ -57,6 +57,9 @@ class RedesignUpdater : public QObject
     // "Also on: Linux (soon), macOS (soon)…": the other platforms, from the
     // copy of platforms.yml built in (:/redesign/platforms.json); empty without it
     Q_PROPERTY(QString alsoOn READ alsoOn CONSTANT FINAL)
+    // the system and processor this copy is built for (About): "Windows x64",
+    // "macOS Apple Silicon", "Linux x86_64 · AppImage"...
+    Q_PROPERTY(QString platformName READ platformName CONSTANT FINAL)
 
 public:
     enum State {
@@ -92,6 +95,7 @@ public:
     void setAboutOpen(bool open);
     QString repositoryUrl() const;
     QString alsoOn() const;
+    QString platformName() const;
 
     // The daily check (option redesign-update-check), for the first-run
     // setup: turned on, it starts as at a start of VLC

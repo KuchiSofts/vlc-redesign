@@ -464,6 +464,31 @@ QString RedesignUpdater::alsoOn() const
     return items.join(QLatin1String(", "));
 }
 
+QString RedesignUpdater::platformName() const
+{
+#if defined(_WIN32) && (defined(_M_ARM64) || defined(__aarch64__))
+    return QStringLiteral("Windows ARM64");
+#elif defined(_WIN32)
+    return QStringLiteral("Windows x64");
+#elif defined(__APPLE__) && (defined(__aarch64__) || defined(__arm64__))
+    return QStringLiteral("macOS Apple Silicon");
+#elif defined(__APPLE__)
+    return QStringLiteral("macOS Intel");
+#else
+# if defined(__aarch64__)
+    QString name = QStringLiteral("Linux ARM64");
+# else
+    QString name = QStringLiteral("Linux x86_64");
+# endif
+    // the package it runs from, when it says so
+    if (qEnvironmentVariableIsSet("APPIMAGE"))
+        name += QStringLiteral(" · AppImage");
+    else if (qEnvironmentVariableIsSet("FLATPAK_ID"))
+        name += QStringLiteral(" · Flatpak");
+    return name;
+#endif
+}
+
 QString RedesignUpdater::appDir() const
 {
     return QCoreApplication::applicationDirPath();

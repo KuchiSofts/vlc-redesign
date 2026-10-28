@@ -16,7 +16,6 @@
 #include <QDateTime>
 #include <QFile>
 #include <QTimeZone>
-#include <QRegularExpression>
 #include <QXmlStreamReader>
 
 #include <algorithm>
@@ -26,20 +25,54 @@
 
 namespace iptv {
 
+// (no regular expressions in this plugin: their per-thread JIT stacks of
+// the plugin's static Qt crashed VLC when the threads ended)
 QString guideKey(const QString& idOrName)
 {
-    static const QRegularExpression suffix(
-        QStringLiteral("\\s*\\b(uhd|fhd|hd|sd|4k|hevc|h265|\\+1|orig|original)\\b\\s*$"),
-        QRegularExpression::CaseInsensitiveOption);
-    static const QRegularExpression space(QStringLiteral("[\\s._\\-:|]+"));
     QString key = idOrName.trimmed().toLower();
     // a country prefix "IL: " is part of a name only
-    static const QRegularExpression prefix(QStringLiteral("^[a-z]{2,3}\\s*[:|]\\s+"));
-    key.remove(prefix);
-    for (int i = 0; i < 2; ++i)
-        key.remove(suffix);
-    key.replace(space, QStringLiteral(" "));
-    return key.trimmed();
+    {
+        qsizetype i = 0;
+        while (i < key.size() && key[i] >= u'a' && key[i] <= u'z')
+            ++i;
+        qsizetype j = i;
+        while (j < key.size() && key[j].isSpace())
+            ++j;
+        if (i >= 2 && i <= 3 && j < key.size() && (key[j] == u':' || key[j] == u'|')
+            && j + 1 < key.size() && key[j + 1].isSpace())
+            key.remove(0, j + 1);
+    }
+    // the separators as one space
+    QString folded;
+    folded.reserve(key.size());
+    for (const QChar c : std::as_const(key))
+    {
+        const bool separator = c.isSpace() || c == u'.' || c == u'_' || c == u'-' || c == u':' || c == u'|';
+        if (!separator)
+            folded += c;
+        else if (!folded.isEmpty() && !folded.endsWith(u' '))
+            folded += u' ';
+    }
+    key = folded.trimmed();
+    // the quality at the end ("HD", "FHD", "4K", "+1"...), twice
+    static const char* const suffixes[] = { "uhd", "fhd", "hd", "sd", "4k", "hevc", "h265", "+1",
+                                            "orig", "original" };
+    for (int pass = 0; pass < 2; ++pass)
+        for (const char* suffix : suffixes)
+        {
+            const QLatin1String s(suffix);
+            if (key.size() > s.size() && key.endsWith(s))
+            {
+                const QChar before = key[key.size() - s.size() - 1];
+                if (!before.isLetterOrNumber() || s == QLatin1String("+1"))
+                {
+                    key.chop(s.size());
+                    key = key.trimmed();
+                    break;
+                }
+            }
+        }
+    return key;
 }
 
 qint64 parseXmltvTime(QStringView text)

@@ -8,7 +8,6 @@
  *****************************************************************************/
 #include "playlist.hpp"
 
-#include <QRegularExpression>
 #include <QUrl>
 #include <QUrlQuery>
 
@@ -108,9 +107,14 @@ CatchupMode modeOf(const QString& type)
 bool looksFlussonic(const QString& url)
 {
     const QString path = QUrl(url).path();
-    static const QRegularExpression re(
-        QStringLiteral("/(mono|index|video|tracks-[^/]+)\\.m3u8$|/mpegts$"));
-    return re.match(path).hasMatch();
+    const QString last = path.section(u'/', -1);
+    if (last == QLatin1String("mpegts"))
+        return true;
+    if (!last.endsWith(QLatin1String(".m3u8")))
+        return false;
+    const QString name = last.chopped(5);
+    return name == QLatin1String("mono") || name == QLatin1String("index") || name == QLatin1String("video")
+           || (name.startsWith(QLatin1String("tracks-")) && name.size() > 7);
 }
 
 QString fillTemplate(QString tpl, const QDateTime& start, int duration, const QDateTime& now)
@@ -119,15 +123,22 @@ QString fillTemplate(QString tpl, const QDateTime& start, int duration, const QD
     const QDateTime utc = start.toUTC();
     const auto num = [](qint64 v) { return QString::number(v); };
     // {duration:60} -> minutes, {offset:1} -> seconds ago
-    static const QRegularExpression scaled(QStringLiteral("\\{(duration|offset):(\\d+)\\}"));
-    QRegularExpressionMatch m;
-    while ((m = scaled.match(tpl)).hasMatch())
+    for (const QLatin1String name : { QLatin1String("{duration:"), QLatin1String("{offset:") })
     {
-        const qint64 divisor = qMax<qint64>(1, m.captured(2).toLongLong());
-        const qint64 value = m.captured(1) == "duration"
-                                 ? duration
-                                 : start.secsTo(now);
-        tpl.replace(m.capturedStart(), m.capturedLength(), num(value / divisor));
+        qsizetype at;
+        while ((at = tpl.indexOf(name)) >= 0)
+        {
+            const qsizetype close = tpl.indexOf(u'}', at);
+            if (close < 0)
+                break;
+            const QStringView digits = QStringView(tpl).mid(at + name.size(), close - at - name.size());
+            bool ok = false;
+            const qint64 divisor = qMax<qint64>(1, digits.toLongLong(&ok));
+            if (!ok)
+                break;
+            const qint64 value = name == QLatin1String("{duration:") ? duration : start.secsTo(now);
+            tpl.replace(at, close - at + 1, num(value / divisor));
+        }
     }
     const QList<QPair<QString, QString>> keys = {
         { "{utc}", num(start.toSecsSinceEpoch()) },
@@ -346,20 +357,73 @@ QString catchupUrl(const Channel& channel, const QDateTime& start, int durationS
 
 QString displayGroup(const QString& group)
 {
-    static const QRegularExpression numbered(QStringLiteral("^\\s*\\d{1,3}\\s*[.)\\-:]\\s*"));
-    QString out = group;
-    out.remove(numbered);
-    return out.trimmed();
+    // "1. Israel", "02) News": the number and its mark
+    const QString g = group.trimmed();
+    qsizetype i = 0;
+    while (i < g.size() && i < 4 && g[i].isDigit())
+        ++i;
+    if (i == 0 || i > 3)
+        return g;
+    qsizetype j = i;
+    while (j < g.size() && g[j].isSpace())
+        ++j;
+    if (j < g.size() && (g[j] == u'.' || g[j] == u')' || g[j] == u'-' || g[j] == u':'))
+        return g.mid(j + 1).trimmed();
+    return g;
+}
+
+namespace {
+bool adultText(const QString& text)
+{
+    const QString t = text.toLower();
+    // the words, of letters and digits
+    QStringList words;
+    QString word;
+    for (const QChar c : t)
+    {
+        if (c.isLetterOrNumber())
+            word += c;
+        else if (!word.isEmpty())
+        {
+            words << word;
+            word.clear();
+        }
+    }
+    if (!word.isEmpty())
+        words << word;
+    for (qsizetype i = 0; i < words.size(); ++i)
+    {
+        const QString& w = words[i];
+        if (w == QLatin1String("xxx") || w == QLatin1String("adult") || w == QLatin1String("adults")
+            || w.startsWith(QLatin1String("porn")) || w.startsWith(QLatin1String("erotic"))
+            || w == QLatin1String("eroluxe") || w.startsWith(QLatin1String("erox"))
+            || w == QLatin1String("hustler") || w == QLatin1String("playboy") || w == QLatin1String("brazzers")
+            || w == QLatin1String("privatetv") || w == QLatin1String("redlight") || w == QLatin1String("dorcel")
+            || w == QLatin1String("vivid")
+            || (w == QLatin1String("private") && i + 1 < words.size() && words[i + 1] == QLatin1String("tv")))
+            return true;
+    }
+    // "18+" or "+18" alone (not "118+", not "18+1")
+    for (const QLatin1String mark : { QLatin1String("18+"), QLatin1String("+18") })
+    {
+        qsizetype at = 0;
+        while ((at = t.indexOf(mark, at)) >= 0)
+        {
+            const bool before = at == 0 || !(t[at - 1].isLetterOrNumber() || t[at - 1] == u'+');
+            const qsizetype after = at + mark.size();
+            const bool afterOk = after >= t.size() || !(t[after].isLetterOrNumber() || t[after] == u'+');
+            if (before && afterOk)
+                return true;
+            at = after;
+        }
+    }
+    return false;
+}
 }
 
 bool looksAdult(const QString& group, const QString& name)
 {
-    static const QRegularExpression re(
-        QStringLiteral("\\b(xxx|adults?|porn\\w*|erotic\\w*|eroluxe|erox\\w*|hustler|"
-                       "playboy|brazzers|private\\s?tv|redlight|dorcel|vivid)\\b"
-                       "|(^|[^\\w+])(18\\+|\\+18)([^\\w+]|$)"),
-        QRegularExpression::CaseInsensitiveOption);
-    return re.match(group).hasMatch() || re.match(name).hasMatch();
+    return adultText(group) || adultText(name);
 }
 
 }

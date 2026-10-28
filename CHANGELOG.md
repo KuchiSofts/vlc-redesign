@@ -23,6 +23,24 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   language), with *Copy* and *Open GitHub*, which opens the bug form filled in. Nothing is sent by VLC, and no
   personal data goes in: no file names or paths, no user or computer name, no library, no log.
 
+### Changed
+
+- **Every message and question looks like the rest of VLC Redesign.** The ones that were plain Windows boxes are
+  drawn as the redesign's dialogs (title bar with its close button, heading, the Cancel button on the left and the
+  action in the accent on the right), in the window when it shows:
+  - after VLC closed unexpectedly: *Restore the play queue?* ("VLC Redesign closed unexpectedly on 28 October 2026
+    at 10:16. Restore the play queue it had?") with *Restore* and *Don't restore*, instead of "The application
+    closed abruptly" and Yes / No;
+  - the confirmations of the library (delete a file, a playlist, remove from a playlist, discard the filtered out
+    items) name their action (*Delete*, *Remove*, *Discard*); renaming a playlist and pasting several links use
+    the redesign's field;
+  - the login, question and progress dialogs VLC asks for while playing (a password for a share or a stream, a
+    certificate), and the error banner at the bottom;
+  - the warnings of the classic windows (Media Information, Messages, Convert profiles, media library folders,
+    Reset Preferences), as a frameless dialog of the same look;
+  - before the interface exists: "VLC Redesign could not start" (invalid options, no plugins) and the Windows
+    version check, in a small window of the same design, dark or light as Windows is.
+
 ### Fixed
 
 - **The playback speed button can be added to the bar again** ([#9](https://github.com/KuchiSofts/vlc-redesign/issues/9)).
@@ -73,6 +91,12 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   package; the weekly upstream merge gets the Windows build; `.gitattributes` keeps scripts in LF; the minimum Qt
   is 6.8, as the code needs; the Linux and macOS ports get the HTTP backend (libcurl), code-page decoding and the
   language picker.
+- Messages: `DialogsProvider::showRedesignMessage()` / `execRedesignMessage()` show a message in the window
+  (`RedesignMessageDialog.qml`, hosted by `SetupDialogs.qml`) or, without the interface or while it is hidden, as
+  `RedesignMessageBox` (frameless widgets in `RedesignDialog`'s sizes and colours). `questionDialog()`,
+  `messageDialog()` and `getTextDialog()` go through it and keep their answers. Before Qt, `bin/winvlc_message.c`
+  draws the same design with GDI and DWM (linked with `dwmapi` and `gdi32`). The extension and fingerprint windows
+  get `RedesignWidgetTheme`.
 - Merged VLC master up to `6836ae77ae` (2026-10-27), 110 commits ([#8](https://github.com/KuchiSofts/vlc-redesign/issues/8)):
   upstream's own fix for stopping the Windows audio output under its lock, the playlist recovery question shown
   without blocking, and the rest of upstream's work.

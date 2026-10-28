@@ -865,6 +865,17 @@ All classic windows go through one hook, `redesign_widget_theme.cpp`, applied fr
 - 🟢 Go to time, statistics, plugins list (the same hook) · in the app ⏳
 - 🟢 A stray separator line in the Disc tab (removed, build 121)
 - ⚪ Go to time, statistics, plugins list and folder information redrawn in QML, as another implementation did
+- 🟢 No plain Windows or Qt box left (2026-10-28, build ⏳): every message, question and prompt is a redesign
+  dialog. In the window: `RedesignMessageDialog.qml` (from `DialogsProvider::showRedesignMessage()`): the play
+  queue to restore after a crash (*Restore the play queue?*, *Restore* / *Don't restore*, not blocking), the
+  library's confirmations (named actions), rename playlist, paste links, `messageDialog()`. The core's login,
+  question and progress dialogs (`Dialogs.qml`) and the error banner. Elsewhere (a classic window asking, no
+  interface, the window hidden): `RedesignMessageBox`, frameless, the same sizes and colours. Before Qt
+  (`bin/winvlc_message.c`, GDI + DWM): could not start, the Windows version check, the crash report question
+- 🟢 The extension and fingerprint windows through the hook too
+- ⏳ In the app: the recovery question after a forced kill, a share's login, the start failure (`--foo`
+  does not fail libvlc: rename `plugins` in a test copy), light theme, 150 % scale, right to left
+- ⚪ The classic windows themselves (Open, Convert, Media Information...) keep the system title bar
 
 ### 8.7 Casting
 

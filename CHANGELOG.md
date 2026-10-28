@@ -116,6 +116,24 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Technical
 
+- **Windows on ARM64 build.** `win64-docker.ps1 -Arch aarch64` builds the redesign for ARM64 Windows in VideoLAN's
+  llvm-mingw image (`winarm64.Dockerfile`, `vlc-debian-llvm-ucrt:20260611225331`, the image of upstream's
+  `win64-arm-llvm` job) with that job's prebuilt contribs (Qt included), UCRT and the Windows 10 API
+  (`build.sh -a aarch64 -u -S 0x0A000006`), in the volume `vlc-winarm64-build`, to
+  `~\source\vlc-redesign-build-arm64`; a full build takes about 9 minutes here. The redesign's code built for
+  ARM64 with clang unchanged; the build scripts no longer assume x86_64 (`win64-docker.sh` reads `ARCH`: build
+  and contrib folders, the GCC-only `-lgcc_s` fix, the updater helper built with the toolchain's compiler), a
+  git worktree builds too (its main `.git` is mounted), and `-Jobs` limits the compile jobs. Every `.exe` and
+  `.dll` of the package is ARM64 (PE machine `0xAA64`); it has no OpenGL plugins (upstream's ARM64 contribs have
+  no OpenGL: video goes through Direct3D 11) and no plugin cache when made on an x64 PC (the copy makes it at its
+  first start; an install for everyone makes it during Setup). `make-release.ps1 -Arch aarch64` makes
+  `vlc-redesign-X.Y.Z-winarm64.zip`, `vlc-redesign-X.Y.Z-winarm64-setup.exe` (the same `.iss` with `/DArm64`:
+  `ArchitecturesAllowed=arm64`, the same AppId) and `vlc-redesign-X.Y.Z-winarm64-delta-from-<old>.vrdelta`
+  (`make-delta.py --platform winarm64`); `SHA256SUMS.txt` lists the files of both architectures of the version,
+  signed as before. The app's updater takes the installer and the small update of its own architecture only (an
+  x64 copy keeps the names it always used). The Windows build workflow builds the ARM64 package and runs
+  `ci/arm64-smoke.ps1` on a `windows-11-arm` runner (the binaries, the plugin cache, then the launch test); it has
+  not run yet, and no ARM64 PC has run the package.
 - **Platforms in one file, and a website.** `platforms.yml` is the single source of every platform (status, latest
   version and date, the next version, the files of a release, its page). `extras/juxtopposed/platforms/render.py`
   (standard library only, with a reader for the file's YAML) writes the platform bar and table at the top of the

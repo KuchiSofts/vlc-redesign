@@ -12,6 +12,10 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-10-28):
 
+- 🟡 **Windows on ARM64** (branch `feature/winarm64`): the package builds (`win64-docker.ps1 -Arch aarch64`, every
+  binary ARM64), `make-release.ps1 -Arch aarch64` makes the installer, zip and small updates, the updater keeps
+  each architecture to its own files ([§9](#windows-on-arm64)). Left: merge, the ARM64 smoke test of the Windows
+  build workflow (`windows-11-arm`), a run on a real ARM64 PC.
 - 🟡 **Platforms and website** (roadmap step 5, branch `feature/platforms`): `platforms.yml` rewritten as the single
   source (status, version, date, next, download files, page), `extras/juxtopposed/platforms/render.py` renders it
   into the README's platform bar and table, `site/` (the website: OS detection, every platform, screenshots, the
@@ -116,7 +120,7 @@ counted from this document's own tables and checklists (column *From*); ⚪ idea
 | Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 91/97   | 93 %  | [§8](#8-next-release-030) checklists   |
 | Linux           | 🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 1/7     | 14 %  | [§9](#linux)                           |
 | macOS           | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/4     | 0 %   | [§9](#macos)                           |
-| Windows ARM64   | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/3     | 0 %   | [§9](#windows-on-arm64)                |
+| Windows ARM64   | 🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜ | 1/3     | 33 %  | [§9](#windows-on-arm64)                |
 | Android         | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/7     | 0 %   | [§9](#android-phones-tablets-tv)       |
 | Samsung TV      | 🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ | 2/7     | 28 %  | [§9](#samsung-smart-tv-tizen)          |
 | iPhone / iPad   | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/3     | 0 %   | [§9](#iphone-ipad-apple-tv)            |
@@ -1061,9 +1065,18 @@ Tracks with checklists; a version number comes with the first published build.
 
 ### Windows on ARM64
 
-- 🔴 Build with VLC's ARM64 toolchain and contribs
-- 🔴 Installer, zip and updates for ARM64
-- 🔴 Tested on a Snapdragon PC or an ARM64 VM
+- 🟢 Build with VLC's ARM64 toolchain and contribs (2026-10-28, branch `feature/winarm64`):
+  `win64-docker.ps1 -Arch aarch64`, llvm-mingw `vlc-debian-llvm-ucrt:20260611225331` (`winarm64.Dockerfile`) with
+  the prebuilt contribs of upstream's `win64-arm-llvm` job, UCRT, `-S 0x0A000006`; volume `vlc-winarm64-build`,
+  package in `~\source\vlc-redesign-build-arm64`; about 9 minutes. The redesign's code needed no change; every
+  binary is ARM64 (`0xAA64`). No OpenGL plugins (none in the ARM64 contribs; Direct3D 11 draws the video)
+- 🟡 Installer, zip and updates for ARM64: `make-release.ps1 -Arch aarch64` makes the files of 13.5 and
+  `-winarm64-delta-from-` small updates, one `SHA256SUMS.txt` for both architectures; the `.iss` with `/DArm64`
+  (`ArchitecturesAllowed=arm64`, the same AppId); the updater takes the files of its own architecture only. Not run
+  on ARM64 Windows yet; the package has no plugin cache when made here (made at the first start, or by Setup for an
+  install for everyone)
+- 🔴 Tested on a Snapdragon PC or an ARM64 VM: `ci/arm64-smoke.ps1` (binaries, plugin cache, launch test) runs in
+  the Windows build workflow on `windows-11-arm` once the branch is pushed
 
 ### Android (phones, tablets, TV)
 

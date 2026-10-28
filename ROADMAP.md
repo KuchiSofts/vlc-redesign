@@ -63,7 +63,8 @@ the website and the *Also on* line of the release notes and of About are made fr
 - 🔨 A website for every platform (GitHub Pages): it offers the download for your system and lists the others
 - 🔨 Linux (AppImage, Flatpak, .deb, .rpm)
 - 📋 macOS (Apple Silicon and Intel)
-- 📋 Windows on ARM64
+- 🔨 Windows on ARM64: the build, the installer, the zip and the updates are ready; a test on an ARM64 PC
+  comes before the first release
 - 🔨 The design for every platform: its colours, sizes, fonts and icons in [`design/`](design/README.md)
   (`design-1.0`), with CSS, Android and Swift files made from them and a check on every pull request that the
   Windows app still uses the same values

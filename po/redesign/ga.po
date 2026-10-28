@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-28 13:15+0000\n"
+"POT-Creation-Date: 2026-10-28 18:41+0000\n"
 "PO-Revision-Date: 2017-10-04 04:27+0000\n"
 "Last-Translator: Seán Ó Séaghdha <sean.anseo@gmail.com>\n"
 "Language-Team: Irish (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -1555,7 +1555,7 @@ msgid "It needs Windows 10 version 1809 or later."
 msgstr "Teastaíonn Windows 10 leagan 1809 nó níos déanaí uaidh."
 
 #: bin/winvlc.c:712 bin/winvlc.c:825
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:312
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:319
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:547
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:552
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:142
@@ -1576,7 +1576,8 @@ msgstr "Níorbh fhéidir VLC Redesign a thosú"
 
 #: bin/winvlc.c:824
 msgid "Either the command line options were invalid or no plugins were found."
-msgstr "Bhí roghanna na líne ordaithe neamhbhailí, nó níor aimsíodh aon bhreiseán."
+msgstr ""
+"Bhí roghanna na líne ordaithe neamhbhailí, nó níor aimsíodh aon bhreiseán."
 
 #: modules/access_output/http.c:65
 msgid "DLNA content features"
@@ -1922,17 +1923,21 @@ msgid "the VideoLAN team and contributors"
 msgstr "foireann VideoLAN agus rannpháirtithe"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:279
+msgid "Also on: %1"
+msgstr "Ar fáil freisin ar: %1"
+
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:286
 #: modules/gui/qt/menus/qml/MainMenu.qml:173
 msgid "Suggest an idea"
 msgstr "Mol smaoineamh"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:281
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:288
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:28
 #: modules/gui/qt/menus/qml/MainMenu.qml:178
 msgid "Report a problem"
 msgstr "Tuairiscigh fadhb"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:292
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:299
 msgid ""
 "An unofficial build, not affiliated with or endorsed by VideoLAN or "
 "Juxtopposed. VLC, VLC media player and the cone logo are trademarks of "
@@ -1943,11 +1948,11 @@ msgstr ""
 "iad VLC, seinnteoir meán VLC agus lógó an choirn. Bogearraí saora faoi GNU "
 "GPL v2 nó leagan níos déanaí."
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:302
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:309
 msgid "Licenses & authors"
 msgstr "Ceadúnais & údair"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:306
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:313
 msgid "GitHub"
 msgstr "GitHub"
 
@@ -1966,7 +1971,9 @@ msgstr "A bhfuil sa tuairisc"
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:57
 msgid ""
 "GitHub opens with this filled in. Nothing is sent until you submit it there."
-msgstr "Osclaítear GitHub agus é seo líonta isteach cheana. Ní sheoltar aon rud go dtí go gcuireann tú isteach ansin é."
+msgstr ""
+"Osclaítear GitHub agus é seo líonta isteach cheana. Ní sheoltar aon rud go "
+"dtí go gcuireann tú isteach ansin é."
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:102
 msgid "Report"
@@ -1976,7 +1983,9 @@ msgstr "Tuairisc"
 msgid ""
 "No file names, user names or logs. To add a log: Settings → General → "
 "Diagnostics → Save a log."
-msgstr "Gan ainmneacha comhad, ainmneacha úsáideoirí ná logaí. Chun loga a chur leis: Socruithe → Coiteann → Diagnóisic → Sábháil loga."
+msgstr ""
+"Gan ainmneacha comhad, ainmneacha úsáideoirí ná logaí. Chun loga a chur "
+"leis: Socruithe → Coiteann → Diagnóisic → Sábháil loga."
 
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:514
 msgid "Confirm"
@@ -2462,6 +2471,87 @@ msgstr "Siortaigh le haghaidh %1"
 msgid "Image Files (*.png *.jpg);;All Files (*)"
 msgstr "Comhaid íomhá (*.png *.jpg);;Gach comhad (*)"
 
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:40
+msgid "Welcome"
+msgstr "Fáilte"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:51
+msgid ""
+"<p>In order to protect your privacy, <i>VLC media player</i> does <b>not</b> "
+"collect personal data or transmit them, not even in anonymized form, to "
+"anyone.</p>\n"
+"<p>Nevertheless, <i>VLC</i> is able to automatically retrieve information "
+"about the media in your play queue from third party Internet-based services. "
+"This includes cover art, track names, artist names and other meta-data.</p>\n"
+"<p>Consequently, this may entail identifying some of your media files to "
+"third party entities. Therefore the <i>VLC</i> developers require your "
+"express consent for the media player to access the Internet automatically.</"
+"p>\n"
+msgstr ""
+"<p>Chun do phríobháideachas a chosaint, <b>ní</b> bhailíonn <i>seinnteoir "
+"meán VLC</i> sonraí pearsanta agus ní sheolann sé iad chuig aon duine, fiú i "
+"bhfoirm gan ainm.</p>\n"
+"<p>Mar sin féin, is féidir le <i>VLC</i> eolas faoi na meáin i do scuaine "
+"sheinnte a fháil go huathoibríoch ó sheirbhísí Idirlín tríú páirtí. Áirítear "
+"leis seo ealaín chlúdaigh, ainmneacha rianta, ainmneacha ealaíontóirí agus "
+"meiteashonraí eile.</p>\n"
+"<p>Dá bharr sin, d'fhéadfadh sé go n-aithneofaí cuid de do chomhaid mheán "
+"d'eintitis tríú páirtí. Dá bhrí sin, éilíonn forbróirí <i>VLC</i> do thoiliú "
+"sainráite sula rachaidh an seinnteoir meán ar an Idirlíon go huathoibríoch.</"
+"p>\n"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:90
+msgid ""
+"<ul><li>No client-side decoration</li><li>Toolbar menu</li><li>Pinned video "
+"controls</li></ul>"
+msgstr ""
+"<ul><li>Gan maisiú ar thaobh an chliaint</li><li>Roghchlár an bharra "
+"uirlisí</li><li>Rialtáin físeáin greamaithe</li></ul>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:96
+msgid ""
+"<ul><li>Client-side decoration</li><li>No toolbar menu</li><li>Video "
+"controls unpinned</li></ul>"
+msgstr ""
+"<ul><li>Maisiú ar thaobh an chliaint</li><li>Gan roghchlár an bharra "
+"uirlisí</li><li>Rialtáin físeáin gan ghreamú</li></ul>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:193
+msgid "Choose a folder to add to the Media Library"
+msgstr "Roghnaigh fillteán le cur leis an leabharlann meán"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:210
+msgid ""
+"<i>VLC will automatically switch to dark mode accordingly with system "
+"settings</i>"
+msgstr ""
+"<i>Athróidh VLC go dtí an mód dorcha go huathoibríoch de réir shocruithe an "
+"chórais</i>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:213
+msgid "<i>VLC will automatically use light mode</i>"
+msgstr "<i>Úsáidfidh VLC an mód geal go huathoibríoch</i>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:216
+msgid "<i>VLC will automatically use dark mode</i>"
+msgstr "<i>Úsáidfidh VLC an mód dorcha go huathoibríoch</i>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:230
+msgid ""
+"<i>VLC will use a modern layout with no menubar or pinned controls but with "
+"client-side decoration</i>"
+msgstr ""
+"<i>Úsáidfidh VLC leagan amach nua-aimseartha gan barra roghchláir ná "
+"rialtáin ghreamaithe, ach le maisiú ar thaobh an chliaint</i>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:233
+msgid ""
+"<i>VLC will use a classic layout with a menubar and pinned controls but with "
+"no client-side decoration</i>"
+msgstr ""
+"<i>Úsáidfidh VLC leagan amach clasaiceach le barra roghchláir agus rialtáin "
+"ghreamaithe, ach gan maisiú ar thaobh an chliaint</i>"
+
 #: modules/gui/qt/dialogs/firstrun/onboarding.cpp:48
 msgid "Could not add the media folder: %1"
 msgstr "Níorbh fhéidir an fillteán meán a chur leis: %1"
@@ -2542,15 +2632,15 @@ msgstr ""
 msgid "Finish"
 msgstr "Críochnaigh"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:108
+#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:110
 msgid "Learn the basic keyboard shortcuts."
 msgstr "Foghlaim na haicearraí bunúsacha méarchláir."
 
-#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:116
+#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:118
 msgid "No playback shortcuts are currently assigned."
 msgstr "Níl aon aicearraí athsheinma sannta faoi láthair."
 
-#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:200
+#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:202
 msgid "Find the full list in the menu."
 msgstr "Tá an liosta iomlán le fáil sa roghchlár."
 
@@ -2843,7 +2933,10 @@ msgstr "Taispeáin cad atá nua tar éis nuashonraithe"
 msgid ""
 "The first time VLC opens after an update, a card lists what is new in the "
 "version, with a link to the full changelog. The notes are in English."
-msgstr "An chéad uair a osclaítear VLC tar éis nuashonraithe, liostaíonn cárta cad atá nua sa leagan, le nasc chuig loga iomlán na n-athruithe. Tá na nótaí i mBéarla."
+msgstr ""
+"An chéad uair a osclaítear VLC tar éis nuashonraithe, liostaíonn cárta cad "
+"atá nua sa leagan, le nasc chuig loga iomlán na n-athruithe. Tá na nótaí i "
+"mBéarla."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:256
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
@@ -3244,7 +3337,7 @@ msgstr ""
 "d'athruithe."
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:79
-#: modules/gui/qt/qt.cpp:340
+#: modules/gui/qt/qt.cpp:344
 msgid "Expert"
 msgstr "Saineolaí"
 
@@ -3328,7 +3421,7 @@ msgstr "Téama"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:192
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:409
-#: modules/gui/qt/qt.cpp:335
+#: modules/gui/qt/qt.cpp:339
 msgid "Accent color"
 msgstr "Dath béime"
 
@@ -4115,7 +4208,7 @@ msgid "Seeking"
 msgstr "Léim sa mheán"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:122
-#: modules/gui/qt/qt.cpp:299
+#: modules/gui/qt/qt.cpp:303
 msgid "Show thumbnail while scrubbing"
 msgstr "Taispeáin mionsamhail agus an barra á tharraingt"
 
@@ -4395,7 +4488,7 @@ msgid "Timing"
 msgstr "Uainiú"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
-#: modules/gui/qt/qt.cpp:301
+#: modules/gui/qt/qt.cpp:305
 msgid "Show subtitle lines on the seek bar"
 msgstr "Taispeáin línte fotheideal ar an mbarra léime"
 
@@ -5657,7 +5750,7 @@ msgstr "Amharc na meán"
 msgid "Unknown Title"
 msgstr "Teideal anaithnid"
 
-#: modules/gui/qt/medialibrary/qml/MediaView.qml:350
+#: modules/gui/qt/medialibrary/qml/MediaView.qml:351
 msgid ""
 "No media found\n"
 "Please try adding sources"
@@ -5686,7 +5779,7 @@ msgid "%1 - %2 - %3 - %4"
 msgstr "%1 - %2 - %3 - %4"
 
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:406
-#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:941
+#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:942
 msgid "#"
 msgstr "#"
 
@@ -7501,16 +7594,6 @@ msgstr ""
 msgid "Duration unavailable"
 msgstr "Níl an t-aga ar fáil"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/Fallback.qml:48
-msgid ""
-"WIDGET\n"
-"NOT\n"
-"FOUND"
-msgstr ""
-"NÍOR\n"
-"AIMSÍODH\n"
-"GIUIRLÉID"
-
 #: modules/gui/qt/player/qml/controlbarcontrols/FavoriteButton.qml:21
 msgid "Available for items in your library"
 msgstr "Ar fáil do mhíreanna i do leabharlann"
@@ -7648,11 +7731,11 @@ msgstr "15 soicind ar aghaidh"
 msgid "%1 %"
 msgstr "%1 %"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:38
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:40
 msgid "Choose a video zoom level"
 msgstr "Roghnaigh leibhéal súmála físeáin"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:39
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:41
 msgid "Zoom is unavailable without video"
 msgstr "Níl súmáil ar fáil gan físeán"
 
@@ -7696,18 +7779,18 @@ msgstr "Scuaine sheinnte"
 msgid "%1 elements, %2"
 msgstr "Míreanna: %1, %2"
 
-#: modules/gui/qt/qt.cpp:171
+#: modules/gui/qt/qt.cpp:175
 msgid "Select the initial preferences view"
 msgstr "Roghnaigh amharc tosaigh na sainroghanna"
 
-#: modules/gui/qt/qt.cpp:172
+#: modules/gui/qt/qt.cpp:176
 msgid ""
 "Select which preferences view to show upon opening the preferences dialog."
 msgstr ""
 "Roghnaigh an t-amharc sainroghanna le taispeáint nuair a osclaítear dialóg "
 "na sainroghanna."
 
-#: modules/gui/qt/qt.cpp:196
+#: modules/gui/qt/qt.cpp:200
 msgid ""
 "Show a notification popup with the artist and track name when the current "
 "play queue item changes, when VLC is minimized or hidden."
@@ -7716,7 +7799,7 @@ msgstr ""
 "athraíonn an mhír reatha sa scuaine sheinnte, nuair atá VLC íoslaghdaithe nó "
 "i bhfolach."
 
-#: modules/gui/qt/qt.cpp:200
+#: modules/gui/qt/qt.cpp:204
 msgid ""
 "Sets the windows opacity between 0.1 and 1 for main interface, play queue "
 "and extended panel. This option only works with Windows and X11 with "
@@ -7727,7 +7810,7 @@ msgstr ""
 "oibríonn an rogha seo ach le Windows agus le X11 a bhfuil eisínteachtaí "
 "comhshuite aige."
 
-#: modules/gui/qt/qt.cpp:206
+#: modules/gui/qt/qt.cpp:210
 msgid ""
 "Sets the fullscreen controller opacity between 0.1 and 1 for main interface, "
 "play queue and extended panel. This option only works with Windows and X11 "
@@ -7738,12 +7821,12 @@ msgstr ""
 "oibríonn an rogha seo ach le Windows agus le X11 a bhfuil eisínteachtaí "
 "comhshuite aige."
 
-#: modules/gui/qt/qt.cpp:211
+#: modules/gui/qt/qt.cpp:215
 msgid "Initial user scale factor for the interface, between 0.3 and 3.0"
 msgstr ""
 "Fachtóir scálaithe tosaigh an úsáideora don chomhéadan, idir 0.3 agus 3.0"
 
-#: modules/gui/qt/qt.cpp:214
+#: modules/gui/qt/qt.cpp:218
 msgid ""
 "Show the errors of VLC at the bottom of the window, and ask before removing "
 "media from a playlist or from the play queue, or deleting playlists. Off, "
@@ -7756,11 +7839,11 @@ msgstr ""
 "agus déantar na baintí seo láithreach; iarrtar deimhniú i gcónaí sula "
 "scriostar comhad ón diosca."
 
-#: modules/gui/qt/qt.cpp:224
+#: modules/gui/qt/qt.cpp:228
 msgid "set the options for qml debugger"
 msgstr "socraigh na roghanna don dífhabhtóir qml"
 
-#: modules/gui/qt/qt.cpp:225
+#: modules/gui/qt/qt.cpp:229
 msgid ""
 "set the options for qml debugger (see http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
@@ -7768,7 +7851,7 @@ msgstr ""
 "socraigh na roghanna don dífhabhtóir qml (féach http://doc.qt.io/qt-5/"
 "qtquick-debugging.html#starting-applications)"
 
-#: modules/gui/qt/qt.cpp:245
+#: modules/gui/qt/qt.cpp:249
 msgid ""
 "Show the playback controls in fullscreen when the mouse moves. Off, only the "
 "keyboard shows them (the I key). The skins read it for their fullscreen "
@@ -7778,7 +7861,7 @@ msgstr ""
 "tá sé múchta, ní thaispeánann ach an méarchlár iad (an eochair I). Léann na "
 "craicinn é dá rialaitheoir lánscáileáin freisin."
 
-#: modules/gui/qt/qt.cpp:261
+#: modules/gui/qt/qt.cpp:265
 msgid ""
 "Display the cover art of the audio playing in the player (the cone in the "
 "compact view). Off, a plain picture takes its place, which also prevents "
@@ -7788,7 +7871,7 @@ msgstr ""
 "amharc dlúth). Má tá sé múchta, cuirtear pictiúr simplí ina háit, rud a "
 "choisceann dó an scáileáin freisin."
 
-#: modules/gui/qt/qt.cpp:285
+#: modules/gui/qt/qt.cpp:289
 msgid ""
 "This option allows the interface to be shown and raised automatically when a "
 "video/audio playback starts, or never."
@@ -7797,11 +7880,11 @@ msgstr ""
 "tosaigh go huathoibríoch nuair a thosaíonn athsheinm físeáin/fuaime, nó "
 "riamh."
 
-#: modules/gui/qt/qt.cpp:288
+#: modules/gui/qt/qt.cpp:292
 msgid "Enable window titlebar"
 msgstr "Cumasaigh barra teidil na fuinneoige"
 
-#: modules/gui/qt/qt.cpp:289
+#: modules/gui/qt/qt.cpp:293
 msgid ""
 "This option enables the title bar. Disabling it will remove the titlebar and "
 "move window buttons within the interface (Client Side Decoration)"
@@ -7810,39 +7893,41 @@ msgstr ""
 "barra teidil agus bogfar cnaipí na fuinneoige isteach sa chomhéadan (maisiú "
 "ar thaobh an chliaint)"
 
-#: modules/gui/qt/qt.cpp:293
+#: modules/gui/qt/qt.cpp:297
 msgid "Show the menu bar"
 msgstr "Taispeáin an barra roghchláir"
 
-#: modules/gui/qt/qt.cpp:294
+#: modules/gui/qt/qt.cpp:298
 msgid "This option displays the classic menu bar"
 msgstr "Taispeánann an rogha seo an barra roghchláir clasaiceach"
 
-#: modules/gui/qt/qt.cpp:296
+#: modules/gui/qt/qt.cpp:300
 msgid "Pin video controls"
 msgstr "Greamaigh rialtáin an fhíseáin"
 
-#: modules/gui/qt/qt.cpp:297
+#: modules/gui/qt/qt.cpp:301
 msgid "Place video controls above and below the video instead of above"
 msgstr ""
 "Cuir rialtáin an fhíseáin os cionn agus faoi bhun an fhíseáin in ionad os a "
 "chionn amháin"
 
-#: modules/gui/qt/qt.cpp:300
+#: modules/gui/qt/qt.cpp:304
 msgid "Show the frame at the hovered position above the seek bar"
 msgstr "Taispeáin an fráma ag an suíomh faoin luch os cionn an bharra léime"
 
-#: modules/gui/qt/qt.cpp:302
+#: modules/gui/qt/qt.cpp:306
 msgid ""
 "Mark on the seek bar where the lines of the subtitle shown are, when it "
 "comes from a subtitle file"
-msgstr "Marcáil ar an mbarra léime cá bhfuil línte an fhotheidil a thaispeántar, nuair a thagann sé ó chomhad fotheideal"
+msgstr ""
+"Marcáil ar an mbarra léime cá bhfuil línte an fhotheidil a thaispeántar, "
+"nuair a thagann sé ó chomhad fotheideal"
 
-#: modules/gui/qt/qt.cpp:307
+#: modules/gui/qt/qt.cpp:311
 msgid "Select Qt video integration backend"
 msgstr "Roghnaigh inneall cúil chomhtháthú físeáin Qt"
 
-#: modules/gui/qt/qt.cpp:308
+#: modules/gui/qt/qt.cpp:312
 msgid ""
 "Select Qt video integration backend. Use with care, the interface may not "
 "start if an incompatible compositor is selected"
@@ -7851,11 +7936,11 @@ msgstr ""
 "b'fhéidir nach dtosóidh an comhéadan má roghnaítear comhshuiteoir neamh-"
 "chomhoiriúnach"
 
-#: modules/gui/qt/qt.cpp:310
+#: modules/gui/qt/qt.cpp:314
 msgid "Use smooth scrolling in Flickable based views"
 msgstr "Úsáid scrollú réidh in amhairc bunaithe ar Flickable"
 
-#: modules/gui/qt/qt.cpp:311
+#: modules/gui/qt/qt.cpp:315
 msgid ""
 "Deactivating this option will disable smooth scrolling in Flickable based "
 "views (such as the Play Queue). This option is only respected with a scroll "
@@ -7865,21 +7950,21 @@ msgstr ""
 "bunaithe ar Flickable (mar an Scuaine sheinnte). Ní urramaítear an rogha seo "
 "ach le láimhseálaí scrollaithe; féach an rogha `qt-use-scroll-handler`."
 
-#: modules/gui/qt/qt.cpp:314
+#: modules/gui/qt/qt.cpp:318
 msgid "Use Kirigami scroll handler for Flickable based views"
 msgstr "Úsáid láimhseálaí scrollaithe Kirigami d'amhairc bunaithe ar Flickable"
 
-#: modules/gui/qt/qt.cpp:315
+#: modules/gui/qt/qt.cpp:319
 msgid "Using Kirigami scroll handler may improve scrolling behavior."
 msgstr ""
 "D'fhéadfadh láimhseálaí scrollaithe Kirigami iompar an scrollaithe a "
 "fheabhsú."
 
-#: modules/gui/qt/qt.cpp:317
+#: modules/gui/qt/qt.cpp:321
 msgid "Safe area for the user interface"
 msgstr "Limistéar sábháilte don chomhéadan úsáideora"
 
-#: modules/gui/qt/qt.cpp:318
+#: modules/gui/qt/qt.cpp:322
 msgid ""
 "Sets the safe area percentage between 0.0 and 100 when you want to ensure "
 "the visibility of the user interface on a constrained viewport"
@@ -7888,21 +7973,21 @@ msgstr ""
 "mian leat a chinntiú go bhfuil an comhéadan úsáideora le feiceáil ar "
 "limistéar amhairc teoranta"
 
-#: modules/gui/qt/qt.cpp:322
+#: modules/gui/qt/qt.cpp:326
 msgid "Print Qt's important internal messages"
 msgstr "Priontáil teachtaireachtaí inmheánacha tábhachtacha Qt"
 
-#: modules/gui/qt/qt.cpp:323
+#: modules/gui/qt/qt.cpp:327
 msgid "Enable Qt's all own messaging categories except the debug category."
 msgstr ""
 "Cumasaigh catagóirí teachtaireachta uile Qt ach amháin an chatagóir "
 "dífhabhtaithe."
 
-#: modules/gui/qt/qt.cpp:325
+#: modules/gui/qt/qt.cpp:329
 msgid "Hide the window on close"
 msgstr "Folaigh an fhuinneog nuair a dhúntar í"
 
-#: modules/gui/qt/qt.cpp:326
+#: modules/gui/qt/qt.cpp:330
 msgid ""
 "Instead of closing the application, hide the window. This setting is only "
 "applicable when system tray icon is enabled."
@@ -7910,11 +7995,11 @@ msgstr ""
 "In ionad an feidhmchlár a dhúnadh, folaigh an fhuinneog. Ní bhaineann an "
 "socrú seo ach nuair atá deilbhín thráidire an chórais cumasaithe."
 
-#: modules/gui/qt/qt.cpp:328
+#: modules/gui/qt/qt.cpp:332
 msgid "Enable backdrop blur filter for the main window if possible"
 msgstr "Cumasaigh scagaire doiléirithe cúlra don phríomhfhuinneog más féidir"
 
-#: modules/gui/qt/qt.cpp:329
+#: modules/gui/qt/qt.cpp:333
 msgid ""
 "If backdrop blur filter is available, use translucency in the backgrounds of "
 "certain parts of the user interface instead of a solid color. This setting "
@@ -7924,11 +8009,11 @@ msgstr ""
 "codanna áirithe den chomhéadan úsáideora in ionad datha sholadaigh. "
 "Laghdaíonn an socrú seo inléiteacht an téacs."
 
-#: modules/gui/qt/qt.cpp:332
+#: modules/gui/qt/qt.cpp:336
 msgid "Enable picture-in-picture (PiP) mode"
 msgstr "Cumasaigh an mód pictiúr i bpictiúr (PiP)"
 
-#: modules/gui/qt/qt.cpp:333
+#: modules/gui/qt/qt.cpp:337
 msgid ""
 "Picture-in-picture mode allows playing video contained in a smaller area so "
 "that the interface remains usable."
@@ -7936,7 +8021,7 @@ msgstr ""
 "Ligeann an mód pictiúr i bpictiúr duit físeán a sheinm i limistéar níos lú "
 "ionas gur féidir an comhéadan a úsáid fós."
 
-#: modules/gui/qt/qt.cpp:336
+#: modules/gui/qt/qt.cpp:340
 msgid ""
 "Adjusts the accent color, special values are 'default' and 'system' "
 "(requires Qt 6.6) ."
@@ -7944,11 +8029,11 @@ msgstr ""
 "Coigeartaíonn sé an dath béime; is iad 'default' agus 'system' na luachanna "
 "speisialta (teastaíonn Qt 6.6) ."
 
-#: modules/gui/qt/qt.cpp:437
+#: modules/gui/qt/qt.cpp:441
 msgid "Check for VLC Redesign updates"
 msgstr "Seiceáil le haghaidh nuashonruithe VLC Redesign"
 
-#: modules/gui/qt/qt.cpp:438
+#: modules/gui/qt/qt.cpp:442
 msgid ""
 "Look for a new release of VLC Redesign on GitHub at startup, at most once a "
 "day."
@@ -7956,11 +8041,11 @@ msgstr ""
 "Lorg eisiúint nua de VLC Redesign ar GitHub ag an tosú, uair sa lá ar a "
 "mhéad."
 
-#: modules/gui/qt/qt.cpp:442
+#: modules/gui/qt/qt.cpp:446
 msgid "Resume at"
 msgstr "Lean ar aghaidh ag"
 
-#: modules/gui/qt/qt.cpp:443
+#: modules/gui/qt/qt.cpp:447
 msgid ""
 "Seconds into the media of the command line where playback continues, after "
 "an update."
@@ -8007,7 +8092,9 @@ msgstr "Athchóirigh an scuaine sheinnte?"
 
 #: modules/gui/qt/util/model_recovery_agent.hpp:88
 msgid "VLC Redesign closed unexpectedly on %1. Restore the play queue it had?"
-msgstr "Dúnadh VLC Redesign gan choinne ar %1. Athchóirigh an scuaine sheinnte a bhí aige?"
+msgstr ""
+"Dúnadh VLC Redesign gan choinne ar %1. Athchóirigh an scuaine sheinnte a bhí "
+"aige?"
 
 #: modules/gui/qt/util/model_recovery_agent.hpp:90
 msgctxt "play queue"
@@ -8018,7 +8105,7 @@ msgstr "Athchóirigh"
 msgid "Don't restore"
 msgstr "Ná hathchóirigh"
 
-#: modules/gui/qt/util/redesign_updater.cpp:194
+#: modules/gui/qt/util/redesign_updater.cpp:215
 msgid ""
 "The update isn't signed by the publisher of this copy (%1), so it wasn't "
 "used."
@@ -8026,68 +8113,78 @@ msgstr ""
 "Níl an nuashonrú sínithe ag foilsitheoir na cóipe seo (%1), mar sin níor "
 "úsáideadh é."
 
-#: modules/gui/qt/util/redesign_updater.cpp:550
+#: modules/gui/qt/util/redesign_updater.cpp:460
+msgid "%1 (later)"
+msgstr "%1 (níos déanaí)"
+
+#: modules/gui/qt/util/redesign_updater.cpp:462
+msgid "%1 (soon)"
+msgstr "%1 (go luath)"
+
+#: modules/gui/qt/util/redesign_updater.cpp:610
 msgid "This build cannot check for updates."
 msgstr "Ní féidir leis an leagan seo nuashonruithe a sheiceáil."
 
-#: modules/gui/qt/util/redesign_updater.cpp:564
+#: modules/gui/qt/util/redesign_updater.cpp:624
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr ""
 "Níorbh fhéidir teacht ar GitHub. Seiceáil do cheangal agus bain triail eile "
 "as."
 
-#: modules/gui/qt/util/redesign_updater.cpp:581
+#: modules/gui/qt/util/redesign_updater.cpp:641
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "Sheol GitHub freagra gan choinne (%1)."
 
-#: modules/gui/qt/util/redesign_updater.cpp:677
+#: modules/gui/qt/util/redesign_updater.cpp:759
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
-msgstr "Níl an nuashonrú seo sínithe ag VLC Redesign, mar sin níor úsáideadh é. Íoslódáil é ó leathanach an eisiúna ina ionad sin."
+msgstr ""
+"Níl an nuashonrú seo sínithe ag VLC Redesign, mar sin níor úsáideadh é. "
+"Íoslódáil é ó leathanach an eisiúna ina ionad sin."
 
-#: modules/gui/qt/util/redesign_updater.cpp:699
-#: modules/gui/qt/util/redesign_updater.cpp:740
+#: modules/gui/qt/util/redesign_updater.cpp:781
+#: modules/gui/qt/util/redesign_updater.cpp:822
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr ""
 "Tá suim sheiceála an nuashonraithe ar iarraidh; íoslódáil é ó leathanach an "
 "eisiúna ina ionad sin."
 
-#: modules/gui/qt/util/redesign_updater.cpp:714
-#: modules/gui/qt/util/redesign_updater.cpp:786
+#: modules/gui/qt/util/redesign_updater.cpp:796
+#: modules/gui/qt/util/redesign_updater.cpp:868
 msgid "The download failed. Check your connection and try again."
 msgstr "Theip ar an íoslódáil. Seiceáil do cheangal agus bain triail eile as."
 
-#: modules/gui/qt/util/redesign_updater.cpp:799
+#: modules/gui/qt/util/redesign_updater.cpp:881
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr ""
 "Ní mheaitseálann an nuashonrú a shuim sheiceála, mar sin níor úsáideadh é."
 
-#: modules/gui/qt/util/redesign_updater.cpp:830
+#: modules/gui/qt/util/redesign_updater.cpp:912
 msgid "The update isn't in a format this version knows."
 msgstr "Níl an nuashonrú i bhformáid a aithníonn an leagan seo."
 
-#: modules/gui/qt/util/redesign_updater.cpp:833
-#: modules/gui/qt/util/redesign_updater.cpp:857
-#: modules/gui/qt/util/redesign_updater.cpp:868
-#: modules/gui/qt/util/redesign_updater.cpp:874
+#: modules/gui/qt/util/redesign_updater.cpp:915
+#: modules/gui/qt/util/redesign_updater.cpp:939
+#: modules/gui/qt/util/redesign_updater.cpp:950
+#: modules/gui/qt/util/redesign_updater.cpp:956
 msgid "The update is damaged."
 msgstr "Tá an nuashonrú damáistithe."
 
-#: modules/gui/qt/util/redesign_updater.cpp:838
+#: modules/gui/qt/util/redesign_updater.cpp:920
 msgid "The update isn't for this version."
 msgstr "Níl an nuashonrú don leagan seo."
 
-#: modules/gui/qt/util/redesign_updater.cpp:847
-#: modules/gui/qt/util/redesign_updater.cpp:884
-#: modules/gui/qt/util/redesign_updater.cpp:893
-#: modules/gui/qt/util/redesign_updater.cpp:897
-#: modules/gui/qt/util/redesign_updater.cpp:901
+#: modules/gui/qt/util/redesign_updater.cpp:929
+#: modules/gui/qt/util/redesign_updater.cpp:966
+#: modules/gui/qt/util/redesign_updater.cpp:975
+#: modules/gui/qt/util/redesign_updater.cpp:979
+#: modules/gui/qt/util/redesign_updater.cpp:983
 msgid "The update can't be written in %1."
 msgstr "Ní féidir an nuashonrú a scríobh i %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:849
+#: modules/gui/qt/util/redesign_updater.cpp:931
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -8095,33 +8192,33 @@ msgstr ""
 "Athraíodh comhad de VLC Redesign ó suiteáladh é, mar sin ní féidir an "
 "nuashonrú beag a úsáid: nuashonraigh leis an suiteálaí ina ionad sin."
 
-#: modules/gui/qt/util/redesign_updater.cpp:879
+#: modules/gui/qt/util/redesign_updater.cpp:961
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr ""
 "Tá an nuashonrú damáistithe: ní mheaitseálann comhad a shuim sheiceála."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1004
+#: modules/gui/qt/util/redesign_updater.cpp:1086
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr ""
 "Níorbh fhéidir an nuashonrú a thosú. Triailfear arís é an chéad uair eile."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1031
+#: modules/gui/qt/util/redesign_updater.cpp:1113
 msgid "The download failed. Try again, or download it from the release page."
 msgstr ""
 "Theip ar an íoslódáil. Bain triail eile as, nó íoslódáil é ó leathanach an "
 "eisiúna."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1044
+#: modules/gui/qt/util/redesign_updater.cpp:1126
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr ""
 "Ní mheaitseálann an suiteálaí íoslódáilte a shuim sheiceála, mar sin níor "
 "ritheadh é."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1053
+#: modules/gui/qt/util/redesign_updater.cpp:1135
 msgid "The installer couldn't be saved to %1."
 msgstr "Níorbh fhéidir an suiteálaí a shábháil i %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1087
+#: modules/gui/qt/util/redesign_updater.cpp:1169
 msgid "The installer couldn't be started."
 msgstr "Níorbh fhéidir an suiteálaí a thosú."
 

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-28 13:15+0000\n"
+"POT-Creation-Date: 2026-10-28 18:41+0000\n"
 "PO-Revision-Date: 2016-04-04 16:53+0000\n"
 "Last-Translator: Alexander Gabilondo <alexgabi@openmailbox.org>\n"
 "Language-Team: Basque (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -1558,7 +1558,7 @@ msgid "It needs Windows 10 version 1809 or later."
 msgstr "Windows 10 1809 bertsioa edo berriagoa behar du."
 
 #: bin/winvlc.c:712 bin/winvlc.c:825
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:312
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:319
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:547
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:552
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:142
@@ -1927,17 +1927,21 @@ msgid "the VideoLAN team and contributors"
 msgstr "VideoLAN taldea eta laguntzaileak"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:279
+msgid "Also on: %1"
+msgstr "Hemen ere bai: %1"
+
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:286
 #: modules/gui/qt/menus/qml/MainMenu.qml:173
 msgid "Suggest an idea"
 msgstr "Iradoki ideia bat"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:281
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:288
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:28
 #: modules/gui/qt/menus/qml/MainMenu.qml:178
 msgid "Report a problem"
 msgstr "Eman arazo baten berri"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:292
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:299
 msgid ""
 "An unofficial build, not affiliated with or endorsed by VideoLAN or "
 "Juxtopposed. VLC, VLC media player and the cone logo are trademarks of "
@@ -1948,11 +1952,11 @@ msgstr ""
 "en marka erregistratuak dira. Software librea, GNU GPL v2 edo berriagoaren "
 "lizentziapean."
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:302
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:309
 msgid "Licenses & authors"
 msgstr "Lizentziak eta egileak"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:306
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:313
 msgid "GitHub"
 msgstr "GitHub"
 
@@ -1971,7 +1975,9 @@ msgstr "Txostenak zer daukan"
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:57
 msgid ""
 "GitHub opens with this filled in. Nothing is sent until you submit it there."
-msgstr "GitHub hau beteta dagoela irekitzen da. Ez da ezer bidaltzen han bidaltzen duzun arte."
+msgstr ""
+"GitHub hau beteta dagoela irekitzen da. Ez da ezer bidaltzen han bidaltzen "
+"duzun arte."
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:102
 msgid "Report"
@@ -1981,7 +1987,9 @@ msgstr "Txostena"
 msgid ""
 "No file names, user names or logs. To add a log: Settings → General → "
 "Diagnostics → Save a log."
-msgstr "Fitxategi-izenik, erabiltzaile-izenik edo erregistrorik gabe. Erregistro bat gehitzeko: Ezarpenak → Orokorra → Diagnostikoak → Gorde erregistro bat."
+msgstr ""
+"Fitxategi-izenik, erabiltzaile-izenik edo erregistrorik gabe. Erregistro bat "
+"gehitzeko: Ezarpenak → Orokorra → Diagnostikoak → Gorde erregistro bat."
 
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:514
 msgid "Confirm"
@@ -2457,6 +2465,86 @@ msgstr "Arakatu: %1"
 msgid "Image Files (*.png *.jpg);;All Files (*)"
 msgstr "Irudi-fitxategiak (*.png *.jpg);;Fitxategi guztiak (*)"
 
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:40
+msgid "Welcome"
+msgstr "Ongi etorri"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:51
+msgid ""
+"<p>In order to protect your privacy, <i>VLC media player</i> does <b>not</b> "
+"collect personal data or transmit them, not even in anonymized form, to "
+"anyone.</p>\n"
+"<p>Nevertheless, <i>VLC</i> is able to automatically retrieve information "
+"about the media in your play queue from third party Internet-based services. "
+"This includes cover art, track names, artist names and other meta-data.</p>\n"
+"<p>Consequently, this may entail identifying some of your media files to "
+"third party entities. Therefore the <i>VLC</i> developers require your "
+"express consent for the media player to access the Internet automatically.</"
+"p>\n"
+msgstr ""
+"<p>Zure pribatutasuna babesteko, <i>VLC media player</i>-ek <b>ez</b> du "
+"datu pertsonalik biltzen, ezta inori bidaltzen ere, ez eta modu anonimoan "
+"ere.</p>\n"
+"<p>Hala ere, <i>VLC</i> gai da zure erreprodukzio-ilarako multimediari "
+"buruzko informazioa automatikoki eskuratzeko Interneteko hirugarrenen "
+"zerbitzuetatik. Horien artean daude azalak, pisten izenak, artisten izenak "
+"eta beste metadatu batzuk.</p>\n"
+"<p>Ondorioz, baliteke zure multimedia-fitxategi batzuk hirugarrenen aurrean "
+"identifikatzea. Horregatik, <i>VLC</i>ren garatzaileek zure baimen "
+"esplizitua behar dute multimedia-erreproduzigailua Internetera automatikoki "
+"konekta dadin.</p>\n"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:90
+msgid ""
+"<ul><li>No client-side decoration</li><li>Toolbar menu</li><li>Pinned video "
+"controls</li></ul>"
+msgstr ""
+"<ul><li>Bezeroaren aldeko dekoraziorik ez</li><li>Tresna-barrako menua</"
+"li><li>Bideo-kontrol finkoak</li></ul>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:96
+msgid ""
+"<ul><li>Client-side decoration</li><li>No toolbar menu</li><li>Video "
+"controls unpinned</li></ul>"
+msgstr ""
+"<ul><li>Bezeroaren aldeko dekorazioa</li><li>Tresna-barrako menurik ez</"
+"li><li>Bideo-kontrol ez-finkoak</li></ul>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:193
+msgid "Choose a folder to add to the Media Library"
+msgstr "Aukeratu multimedia liburutegira gehitzeko karpeta bat"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:210
+msgid ""
+"<i>VLC will automatically switch to dark mode accordingly with system "
+"settings</i>"
+msgstr ""
+"<i>VLC automatikoki aldatuko da modu ilunera sistemaren ezarpenen arabera</i>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:213
+msgid "<i>VLC will automatically use light mode</i>"
+msgstr "<i>VLCk automatikoki modu argia erabiliko du</i>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:216
+msgid "<i>VLC will automatically use dark mode</i>"
+msgstr "<i>VLCk automatikoki modu iluna erabiliko du</i>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:230
+msgid ""
+"<i>VLC will use a modern layout with no menubar or pinned controls but with "
+"client-side decoration</i>"
+msgstr ""
+"<i>VLCk diseinu modernoa erabiliko du, menu-barrarik eta kontrol finkorik "
+"gabe, baina bezeroaren aldeko dekorazioarekin</i>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:233
+msgid ""
+"<i>VLC will use a classic layout with a menubar and pinned controls but with "
+"no client-side decoration</i>"
+msgstr ""
+"<i>VLCk diseinu klasikoa erabiliko du, menu-barrarekin eta kontrol "
+"finkoekin, baina bezeroaren aldeko dekoraziorik gabe</i>"
+
 #: modules/gui/qt/dialogs/firstrun/onboarding.cpp:48
 msgid "Could not add the media folder: %1"
 msgstr "Ezin izan da multimedia-karpeta gehitu: %1"
@@ -2536,15 +2624,15 @@ msgstr ""
 msgid "Finish"
 msgstr "Amaitu"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:108
+#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:110
 msgid "Learn the basic keyboard shortcuts."
 msgstr "Ikasi oinarrizko teklatuko laster-bideak."
 
-#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:116
+#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:118
 msgid "No playback shortcuts are currently assigned."
 msgstr "Une honetan ez dago erreprodukzioko laster-biderik esleituta."
 
-#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:200
+#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:202
 msgid "Find the full list in the menu."
 msgstr "Zerrenda osoa menuan duzu."
 
@@ -2835,7 +2923,10 @@ msgstr "Erakutsi berrikuntzak eguneratze baten ondoren"
 msgid ""
 "The first time VLC opens after an update, a card lists what is new in the "
 "version, with a link to the full changelog. The notes are in English."
-msgstr "Eguneratze baten ondoren VLC lehen aldiz irekitzean, txartel batek bertsioko berrikuntzak zerrendatzen ditu, aldaketen erregistro osorako esteka batekin. Oharrak ingelesez daude."
+msgstr ""
+"Eguneratze baten ondoren VLC lehen aldiz irekitzean, txartel batek bertsioko "
+"berrikuntzak zerrendatzen ditu, aldaketen erregistro osorako esteka batekin. "
+"Oharrak ingelesez daude."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:256
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
@@ -3232,7 +3323,7 @@ msgstr ""
 "dira gorde."
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:79
-#: modules/gui/qt/qt.cpp:340
+#: modules/gui/qt/qt.cpp:344
 msgid "Expert"
 msgstr "Aditua"
 
@@ -3316,7 +3407,7 @@ msgstr "Gaia"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:192
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:409
-#: modules/gui/qt/qt.cpp:335
+#: modules/gui/qt/qt.cpp:339
 msgid "Accent color"
 msgstr "Nabarmentze-kolorea"
 
@@ -4100,7 +4191,7 @@ msgid "Seeking"
 msgstr "Bilaketa"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:122
-#: modules/gui/qt/qt.cpp:299
+#: modules/gui/qt/qt.cpp:303
 msgid "Show thumbnail while scrubbing"
 msgstr "Erakutsi miniatura posizio-barra arrastatzean"
 
@@ -4380,7 +4471,7 @@ msgid "Timing"
 msgstr "Sinkronizazioa"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
-#: modules/gui/qt/qt.cpp:301
+#: modules/gui/qt/qt.cpp:305
 msgid "Show subtitle lines on the seek bar"
 msgstr "Erakutsi azpitituluen lerroak bilaketa-barran"
 
@@ -5645,7 +5736,7 @@ msgstr "Multimedia-ikuspegia"
 msgid "Unknown Title"
 msgstr "Titulu ezezaguna"
 
-#: modules/gui/qt/medialibrary/qml/MediaView.qml:350
+#: modules/gui/qt/medialibrary/qml/MediaView.qml:351
 msgid ""
 "No media found\n"
 "Please try adding sources"
@@ -5671,7 +5762,7 @@ msgid "%1 - %2 - %3 - %4"
 msgstr "%1 - %2 - %3 - %4"
 
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:406
-#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:941
+#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:942
 msgid "#"
 msgstr "#"
 
@@ -7453,16 +7544,6 @@ msgstr ""
 msgid "Duration unavailable"
 msgstr "Iraupena ez dago erabilgarri"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/Fallback.qml:48
-msgid ""
-"WIDGET\n"
-"NOT\n"
-"FOUND"
-msgstr ""
-"TREPETA\n"
-"EZ DA\n"
-"AURKITU"
-
 #: modules/gui/qt/player/qml/controlbarcontrols/FavoriteButton.qml:21
 msgid "Available for items in your library"
 msgstr "Zure liburutegiko elementuetarako erabilgarri"
@@ -7597,11 +7678,11 @@ msgstr "Aurrera 15 segundo"
 msgid "%1 %"
 msgstr "% %1"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:38
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:40
 msgid "Choose a video zoom level"
 msgstr "Aukeratu bideoaren zoom-maila"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:39
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:41
 msgid "Zoom is unavailable without video"
 msgstr "Zooma ez dago erabilgarri bideorik gabe"
 
@@ -7645,17 +7726,17 @@ msgstr "Erreprodukzio-ilara"
 msgid "%1 elements, %2"
 msgstr "%1 elementu, %2"
 
-#: modules/gui/qt/qt.cpp:171
+#: modules/gui/qt/qt.cpp:175
 msgid "Select the initial preferences view"
 msgstr "Hautatu hobespenen hasierako ikuspegia"
 
-#: modules/gui/qt/qt.cpp:172
+#: modules/gui/qt/qt.cpp:176
 msgid ""
 "Select which preferences view to show upon opening the preferences dialog."
 msgstr ""
 "Hautatu hobespenen elkarrizketa-koadroa irekitzean zer ikuspegi erakutsi."
 
-#: modules/gui/qt/qt.cpp:196
+#: modules/gui/qt/qt.cpp:200
 msgid ""
 "Show a notification popup with the artist and track name when the current "
 "play queue item changes, when VLC is minimized or hidden."
@@ -7664,7 +7745,7 @@ msgstr ""
 "erreprodukzio-ilarako uneko elementua aldatzean, VLC minimizatuta edo "
 "ezkutatuta dagoenean."
 
-#: modules/gui/qt/qt.cpp:200
+#: modules/gui/qt/qt.cpp:204
 msgid ""
 "Sets the windows opacity between 0.1 and 1 for main interface, play queue "
 "and extended panel. This option only works with Windows and X11 with "
@@ -7674,7 +7755,7 @@ msgstr ""
 "erreprodukzio-ilararako eta panel hedaturako. Aukera honek Windows-en eta "
 "konposizio-hedapenak dituen X11-n soilik funtzionatzen du."
 
-#: modules/gui/qt/qt.cpp:206
+#: modules/gui/qt/qt.cpp:210
 msgid ""
 "Sets the fullscreen controller opacity between 0.1 and 1 for main interface, "
 "play queue and extended panel. This option only works with Windows and X11 "
@@ -7685,11 +7766,11 @@ msgstr ""
 "honek Windows-en eta konposizio-hedapenak dituen X11-n soilik funtzionatzen "
 "du."
 
-#: modules/gui/qt/qt.cpp:211
+#: modules/gui/qt/qt.cpp:215
 msgid "Initial user scale factor for the interface, between 0.3 and 3.0"
 msgstr "Interfazearen hasierako eskala-faktorea, 0,3 eta 3,0 artean"
 
-#: modules/gui/qt/qt.cpp:214
+#: modules/gui/qt/qt.cpp:218
 msgid ""
 "Show the errors of VLC at the bottom of the window, and ask before removing "
 "media from a playlist or from the play queue, or deleting playlists. Off, "
@@ -7702,11 +7783,11 @@ msgstr ""
 "mezuetan soilik gordetzen dira eta kentze horiek berehala egiten dira; "
 "diskotik fitxategi bat ezabatzea beti berresten da."
 
-#: modules/gui/qt/qt.cpp:224
+#: modules/gui/qt/qt.cpp:228
 msgid "set the options for qml debugger"
 msgstr "ezarri QML araztailearen aukerak"
 
-#: modules/gui/qt/qt.cpp:225
+#: modules/gui/qt/qt.cpp:229
 msgid ""
 "set the options for qml debugger (see http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
@@ -7714,7 +7795,7 @@ msgstr ""
 "ezarri QML araztailearen aukerak (ikus http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
 
-#: modules/gui/qt/qt.cpp:245
+#: modules/gui/qt/qt.cpp:249
 msgid ""
 "Show the playback controls in fullscreen when the mouse moves. Off, only the "
 "keyboard shows them (the I key). The skins read it for their fullscreen "
@@ -7724,7 +7805,7 @@ msgstr ""
 "Desaktibatuta, teklatuak soilik erakusten ditu (I tekla). Azalek ere "
 "irakurtzen dute beren pantaila osoko kontrolatzailerako."
 
-#: modules/gui/qt/qt.cpp:261
+#: modules/gui/qt/qt.cpp:265
 msgid ""
 "Display the cover art of the audio playing in the player (the cone in the "
 "compact view). Off, a plain picture takes its place, which also prevents "
@@ -7734,7 +7815,7 @@ msgstr ""
 "(ikuspegi trinkoko konoa). Desaktibatuta, irudi soil bat jartzen da haren "
 "lekuan, eta horrek pantaila erretzea ere eragozten du."
 
-#: modules/gui/qt/qt.cpp:285
+#: modules/gui/qt/qt.cpp:289
 msgid ""
 "This option allows the interface to be shown and raised automatically when a "
 "video/audio playback starts, or never."
@@ -7742,11 +7823,11 @@ msgstr ""
 "Aukera honek interfazea automatikoki erakustea eta aurrera ekartzea "
 "ahalbidetzen du bideo/audio erreprodukzio bat hastean, edo inoiz ez."
 
-#: modules/gui/qt/qt.cpp:288
+#: modules/gui/qt/qt.cpp:292
 msgid "Enable window titlebar"
 msgstr "Gaitu leihoaren titulu-barra"
 
-#: modules/gui/qt/qt.cpp:289
+#: modules/gui/qt/qt.cpp:293
 msgid ""
 "This option enables the title bar. Disabling it will remove the titlebar and "
 "move window buttons within the interface (Client Side Decoration)"
@@ -7755,40 +7836,42 @@ msgstr ""
 "eta leihoaren botoiak interfazearen barrura eramango dira (bezeroaren aldeko "
 "dekorazioa)"
 
-#: modules/gui/qt/qt.cpp:293
+#: modules/gui/qt/qt.cpp:297
 msgid "Show the menu bar"
 msgstr "Erakutsi menu-barra"
 
-#: modules/gui/qt/qt.cpp:294
+#: modules/gui/qt/qt.cpp:298
 msgid "This option displays the classic menu bar"
 msgstr "Aukera honek menu-barra klasikoa bistaratzen du"
 
-#: modules/gui/qt/qt.cpp:296
+#: modules/gui/qt/qt.cpp:300
 msgid "Pin video controls"
 msgstr "Finkatu bideo-kontrolak"
 
-#: modules/gui/qt/qt.cpp:297
+#: modules/gui/qt/qt.cpp:301
 msgid "Place video controls above and below the video instead of above"
 msgstr ""
 "Jarri bideo-kontrolak bideoaren gainean eta azpian, gainean soilik jarri "
 "beharrean"
 
-#: modules/gui/qt/qt.cpp:300
+#: modules/gui/qt/qt.cpp:304
 msgid "Show the frame at the hovered position above the seek bar"
 msgstr ""
 "Erakutsi sagua gainean dagoen posizioko markoa bilaketa-barraren gainean"
 
-#: modules/gui/qt/qt.cpp:302
+#: modules/gui/qt/qt.cpp:306
 msgid ""
 "Mark on the seek bar where the lines of the subtitle shown are, when it "
 "comes from a subtitle file"
-msgstr "Markatu bilaketa-barran erakutsitako azpitituluaren lerroak non dauden, azpititulu-fitxategi batetik datorrenean"
+msgstr ""
+"Markatu bilaketa-barran erakutsitako azpitituluaren lerroak non dauden, "
+"azpititulu-fitxategi batetik datorrenean"
 
-#: modules/gui/qt/qt.cpp:307
+#: modules/gui/qt/qt.cpp:311
 msgid "Select Qt video integration backend"
 msgstr "Hautatu Qt bideo-integrazioaren motorra"
 
-#: modules/gui/qt/qt.cpp:308
+#: modules/gui/qt/qt.cpp:312
 msgid ""
 "Select Qt video integration backend. Use with care, the interface may not "
 "start if an incompatible compositor is selected"
@@ -7796,11 +7879,11 @@ msgstr ""
 "Hautatu Qt bideo-integrazioaren motorra. Kontuz erabili; baliteke interfazea "
 "ez abiaraztea konposatzaile bateraezin bat hautatzen bada"
 
-#: modules/gui/qt/qt.cpp:310
+#: modules/gui/qt/qt.cpp:314
 msgid "Use smooth scrolling in Flickable based views"
 msgstr "Erabili korritze leuna Flickable oinarritutako ikuspegietan"
 
-#: modules/gui/qt/qt.cpp:311
+#: modules/gui/qt/qt.cpp:315
 msgid ""
 "Deactivating this option will disable smooth scrolling in Flickable based "
 "views (such as the Play Queue). This option is only respected with a scroll "
@@ -7811,22 +7894,22 @@ msgstr ""
 "korritze-kudeatzaile batekin soilik errespetatzen da; ikus `qt-use-scroll-"
 "handler` aukera."
 
-#: modules/gui/qt/qt.cpp:314
+#: modules/gui/qt/qt.cpp:318
 msgid "Use Kirigami scroll handler for Flickable based views"
 msgstr ""
 "Erabili Kirigami korritze-kudeatzailea Flickable oinarritutako "
 "ikuspegietarako"
 
-#: modules/gui/qt/qt.cpp:315
+#: modules/gui/qt/qt.cpp:319
 msgid "Using Kirigami scroll handler may improve scrolling behavior."
 msgstr ""
 "Kirigami korritze-kudeatzailea erabiltzeak korritzearen portaera hobe dezake."
 
-#: modules/gui/qt/qt.cpp:317
+#: modules/gui/qt/qt.cpp:321
 msgid "Safe area for the user interface"
 msgstr "Erabiltzaile-interfazearen eremu segurua"
 
-#: modules/gui/qt/qt.cpp:318
+#: modules/gui/qt/qt.cpp:322
 msgid ""
 "Sets the safe area percentage between 0.0 and 100 when you want to ensure "
 "the visibility of the user interface on a constrained viewport"
@@ -7834,19 +7917,19 @@ msgstr ""
 "Eremu seguruaren ehunekoa ezartzen du 0,0 eta 100 artean, erabiltzaile-"
 "interfazea ikus-eremu mugatu batean ikusgai dagoela ziurtatu nahi duzunean"
 
-#: modules/gui/qt/qt.cpp:322
+#: modules/gui/qt/qt.cpp:326
 msgid "Print Qt's important internal messages"
 msgstr "Inprimatu Qt-ren barne-mezu garrantzitsuak"
 
-#: modules/gui/qt/qt.cpp:323
+#: modules/gui/qt/qt.cpp:327
 msgid "Enable Qt's all own messaging categories except the debug category."
 msgstr "Gaitu Qt-ren mezu-kategoria guztiak, arazketa-kategoria izan ezik."
 
-#: modules/gui/qt/qt.cpp:325
+#: modules/gui/qt/qt.cpp:329
 msgid "Hide the window on close"
 msgstr "Ezkutatu leihoa ixtean"
 
-#: modules/gui/qt/qt.cpp:326
+#: modules/gui/qt/qt.cpp:330
 msgid ""
 "Instead of closing the application, hide the window. This setting is only "
 "applicable when system tray icon is enabled."
@@ -7854,11 +7937,11 @@ msgstr ""
 "Aplikazioa itxi beharrean, ezkutatu leihoa. Ezarpen hau sistemaren "
 "erretiluko ikonoa gaituta dagoenean soilik aplikatzen da."
 
-#: modules/gui/qt/qt.cpp:328
+#: modules/gui/qt/qt.cpp:332
 msgid "Enable backdrop blur filter for the main window if possible"
 msgstr "Gaitu atzeko planoaren lausotze-iragazkia leiho nagusirako, ahal bada"
 
-#: modules/gui/qt/qt.cpp:329
+#: modules/gui/qt/qt.cpp:333
 msgid ""
 "If backdrop blur filter is available, use translucency in the backgrounds of "
 "certain parts of the user interface instead of a solid color. This setting "
@@ -7869,11 +7952,11 @@ msgstr ""
 "kolore solido baten ordez. Ezarpen honek testuaren irakurgarritasuna "
 "kaltetzen du."
 
-#: modules/gui/qt/qt.cpp:332
+#: modules/gui/qt/qt.cpp:336
 msgid "Enable picture-in-picture (PiP) mode"
 msgstr "Gaitu irudia irudian (PiP) modua"
 
-#: modules/gui/qt/qt.cpp:333
+#: modules/gui/qt/qt.cpp:337
 msgid ""
 "Picture-in-picture mode allows playing video contained in a smaller area so "
 "that the interface remains usable."
@@ -7881,7 +7964,7 @@ msgstr ""
 "Irudia irudian moduak bideoa eremu txikiago batean erreproduzitzea "
 "ahalbidetzen du, interfazea erabilgarri egon dadin."
 
-#: modules/gui/qt/qt.cpp:336
+#: modules/gui/qt/qt.cpp:340
 msgid ""
 "Adjusts the accent color, special values are 'default' and 'system' "
 "(requires Qt 6.6) ."
@@ -7889,11 +7972,11 @@ msgstr ""
 "Nabarmentze-kolorea doitzen du; balio bereziak 'default' eta 'system' dira "
 "(Qt 6.6 behar du) ."
 
-#: modules/gui/qt/qt.cpp:437
+#: modules/gui/qt/qt.cpp:441
 msgid "Check for VLC Redesign updates"
 msgstr "Bilatu VLC Redesign-en eguneratzeak"
 
-#: modules/gui/qt/qt.cpp:438
+#: modules/gui/qt/qt.cpp:442
 msgid ""
 "Look for a new release of VLC Redesign on GitHub at startup, at most once a "
 "day."
@@ -7901,11 +7984,11 @@ msgstr ""
 "Bilatu VLC Redesign-en bertsio berri bat GitHub-en abioan, gehienez egunean "
 "behin."
 
-#: modules/gui/qt/qt.cpp:442
+#: modules/gui/qt/qt.cpp:446
 msgid "Resume at"
 msgstr "Jarraitzeko unea"
 
-#: modules/gui/qt/qt.cpp:443
+#: modules/gui/qt/qt.cpp:447
 msgid ""
 "Seconds into the media of the command line where playback continues, after "
 "an update."
@@ -7952,7 +8035,9 @@ msgstr "Erreprodukzio-ilara leheneratu?"
 
 #: modules/gui/qt/util/model_recovery_agent.hpp:88
 msgid "VLC Redesign closed unexpectedly on %1. Restore the play queue it had?"
-msgstr "VLC Redesign ustekabean itxi zen (%1). Zuen erreprodukzio-ilara leheneratu nahi duzu?"
+msgstr ""
+"VLC Redesign ustekabean itxi zen (%1). Zuen erreprodukzio-ilara leheneratu "
+"nahi duzu?"
 
 #: modules/gui/qt/util/model_recovery_agent.hpp:90
 msgctxt "play queue"
@@ -7963,7 +8048,7 @@ msgstr "Leheneratu"
 msgid "Don't restore"
 msgstr "Ez leheneratu"
 
-#: modules/gui/qt/util/redesign_updater.cpp:194
+#: modules/gui/qt/util/redesign_updater.cpp:215
 msgid ""
 "The update isn't signed by the publisher of this copy (%1), so it wasn't "
 "used."
@@ -7971,65 +8056,75 @@ msgstr ""
 "Eguneraketa ez dago kopia honen argitaratzaileak (%1) sinatuta; beraz, ez da "
 "erabili."
 
-#: modules/gui/qt/util/redesign_updater.cpp:550
+#: modules/gui/qt/util/redesign_updater.cpp:460
+msgid "%1 (later)"
+msgstr "%1 (geroago)"
+
+#: modules/gui/qt/util/redesign_updater.cpp:462
+msgid "%1 (soon)"
+msgstr "%1 (laster)"
+
+#: modules/gui/qt/util/redesign_updater.cpp:610
 msgid "This build cannot check for updates."
 msgstr "Konpilazio honek ezin ditu eguneratzeak bilatu."
 
-#: modules/gui/qt/util/redesign_updater.cpp:564
+#: modules/gui/qt/util/redesign_updater.cpp:624
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr ""
 "Ezin izan da GitHub-era iritsi. Egiaztatu zure konexioa eta saiatu berriro."
 
-#: modules/gui/qt/util/redesign_updater.cpp:581
+#: modules/gui/qt/util/redesign_updater.cpp:641
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "GitHub-ek ustekabeko erantzuna bidali du (%1)."
 
-#: modules/gui/qt/util/redesign_updater.cpp:677
+#: modules/gui/qt/util/redesign_updater.cpp:759
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
-msgstr "Eguneratze hau ez dago VLC Redesign-ek sinatuta; beraz, ez da erabili. Deskargatu argitalpenaren orritik."
+msgstr ""
+"Eguneratze hau ez dago VLC Redesign-ek sinatuta; beraz, ez da erabili. "
+"Deskargatu argitalpenaren orritik."
 
-#: modules/gui/qt/util/redesign_updater.cpp:699
-#: modules/gui/qt/util/redesign_updater.cpp:740
+#: modules/gui/qt/util/redesign_updater.cpp:781
+#: modules/gui/qt/util/redesign_updater.cpp:822
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr ""
 "Eguneratzearen kontrol-batura falta da; deskargatu argitalpenaren orritik."
 
-#: modules/gui/qt/util/redesign_updater.cpp:714
-#: modules/gui/qt/util/redesign_updater.cpp:786
+#: modules/gui/qt/util/redesign_updater.cpp:796
+#: modules/gui/qt/util/redesign_updater.cpp:868
 msgid "The download failed. Check your connection and try again."
 msgstr "Deskargak huts egin du. Egiaztatu zure konexioa eta saiatu berriro."
 
-#: modules/gui/qt/util/redesign_updater.cpp:799
+#: modules/gui/qt/util/redesign_updater.cpp:881
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "Eguneratzea ez dator bat bere kontrol-baturarekin, eta ez da erabili."
 
-#: modules/gui/qt/util/redesign_updater.cpp:830
+#: modules/gui/qt/util/redesign_updater.cpp:912
 msgid "The update isn't in a format this version knows."
 msgstr "Eguneratzea ez dago bertsio honek ezagutzen duen formatu batean."
 
-#: modules/gui/qt/util/redesign_updater.cpp:833
-#: modules/gui/qt/util/redesign_updater.cpp:857
-#: modules/gui/qt/util/redesign_updater.cpp:868
-#: modules/gui/qt/util/redesign_updater.cpp:874
+#: modules/gui/qt/util/redesign_updater.cpp:915
+#: modules/gui/qt/util/redesign_updater.cpp:939
+#: modules/gui/qt/util/redesign_updater.cpp:950
+#: modules/gui/qt/util/redesign_updater.cpp:956
 msgid "The update is damaged."
 msgstr "Eguneratzea hondatuta dago."
 
-#: modules/gui/qt/util/redesign_updater.cpp:838
+#: modules/gui/qt/util/redesign_updater.cpp:920
 msgid "The update isn't for this version."
 msgstr "Eguneratzea ez da bertsio honetarako."
 
-#: modules/gui/qt/util/redesign_updater.cpp:847
-#: modules/gui/qt/util/redesign_updater.cpp:884
-#: modules/gui/qt/util/redesign_updater.cpp:893
-#: modules/gui/qt/util/redesign_updater.cpp:897
-#: modules/gui/qt/util/redesign_updater.cpp:901
+#: modules/gui/qt/util/redesign_updater.cpp:929
+#: modules/gui/qt/util/redesign_updater.cpp:966
+#: modules/gui/qt/util/redesign_updater.cpp:975
+#: modules/gui/qt/util/redesign_updater.cpp:979
+#: modules/gui/qt/util/redesign_updater.cpp:983
 msgid "The update can't be written in %1."
 msgstr "Eguneratzea ezin da hemen idatzi: %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:849
+#: modules/gui/qt/util/redesign_updater.cpp:931
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -8037,33 +8132,33 @@ msgstr ""
 "VLC Redesign-en fitxategi bat aldatu egin da instalatu zenetik, eta ezin da "
 "eguneratze txikia erabili: eguneratu instalatzailearekin."
 
-#: modules/gui/qt/util/redesign_updater.cpp:879
+#: modules/gui/qt/util/redesign_updater.cpp:961
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr ""
 "Eguneratzea hondatuta dago: fitxategi bat ez dator bat bere kontrol-"
 "baturarekin."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1004
+#: modules/gui/qt/util/redesign_updater.cpp:1086
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr "Ezin izan da eguneratzea abiarazi. Hurrengoan berriro saiatuko da."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1031
+#: modules/gui/qt/util/redesign_updater.cpp:1113
 msgid "The download failed. Try again, or download it from the release page."
 msgstr ""
 "Deskargak huts egin du. Saiatu berriro, edo deskargatu argitalpenaren "
 "orritik."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1044
+#: modules/gui/qt/util/redesign_updater.cpp:1126
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr ""
 "Deskargatutako instalatzailea ez dator bat bere kontrol-baturarekin, eta ez "
 "da exekutatu."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1053
+#: modules/gui/qt/util/redesign_updater.cpp:1135
 msgid "The installer couldn't be saved to %1."
 msgstr "Ezin izan da instalatzailea hemen gorde: %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1087
+#: modules/gui/qt/util/redesign_updater.cpp:1169
 msgid "The installer couldn't be started."
 msgstr "Ezin izan da instalatzailea abiarazi."
 

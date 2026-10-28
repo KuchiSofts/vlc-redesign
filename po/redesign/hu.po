@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 2.2.7\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-28 13:15+0000\n"
+"POT-Creation-Date: 2026-10-28 18:41+0000\n"
 "PO-Revision-Date: 2017-11-16 02:54+0100\n"
 "Last-Translator: Balázs Meskó <meskobalazs@gmail.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -1554,7 +1554,7 @@ msgid "It needs Windows 10 version 1809 or later."
 msgstr "Windows 10 1809-es vagy újabb verzió szükséges hozzá."
 
 #: bin/winvlc.c:712 bin/winvlc.c:825
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:312
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:319
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:547
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:552
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:142
@@ -1575,7 +1575,9 @@ msgstr "A VLC Redesign nem tudott elindulni"
 
 #: bin/winvlc.c:824
 msgid "Either the command line options were invalid or no plugins were found."
-msgstr "Vagy érvénytelenek voltak a parancssori kapcsolók, vagy nem található egy bővítmény sem."
+msgstr ""
+"Vagy érvénytelenek voltak a parancssori kapcsolók, vagy nem található egy "
+"bővítmény sem."
 
 #: modules/access_output/http.c:65
 msgid "DLNA content features"
@@ -1921,17 +1923,21 @@ msgid "the VideoLAN team and contributors"
 msgstr "a VideoLAN csapata és közreműködői"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:279
+msgid "Also on: %1"
+msgstr "Elérhető még: %1"
+
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:286
 #: modules/gui/qt/menus/qml/MainMenu.qml:173
 msgid "Suggest an idea"
 msgstr "Ötlet javaslása"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:281
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:288
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:28
 #: modules/gui/qt/menus/qml/MainMenu.qml:178
 msgid "Report a problem"
 msgstr "Probléma jelentése"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:292
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:299
 msgid ""
 "An unofficial build, not affiliated with or endorsed by VideoLAN or "
 "Juxtopposed. VLC, VLC media player and the cone logo are trademarks of "
@@ -1941,11 +1947,11 @@ msgstr ""
 "vele, és nem is támogatja. A VLC, a VLC media player és a kúp logó a "
 "VideoLAN védjegyei. Szabad szoftver a GNU GPL v2 vagy újabb licenc alatt."
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:302
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:309
 msgid "Licenses & authors"
 msgstr "Licencek és szerzők"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:306
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:313
 msgid "GitHub"
 msgstr "GitHub"
 
@@ -1964,7 +1970,9 @@ msgstr "A jelentés tartalma"
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:57
 msgid ""
 "GitHub opens with this filled in. Nothing is sent until you submit it there."
-msgstr "A GitHub ezekkel az adatokkal kitöltve nyílik meg. Semmi sem kerül elküldésre, amíg ott be nem küldi."
+msgstr ""
+"A GitHub ezekkel az adatokkal kitöltve nyílik meg. Semmi sem kerül "
+"elküldésre, amíg ott be nem küldi."
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:102
 msgid "Report"
@@ -1974,7 +1982,9 @@ msgstr "Jelentés"
 msgid ""
 "No file names, user names or logs. To add a log: Settings → General → "
 "Diagnostics → Save a log."
-msgstr "Nem tartalmaz fájlneveket, felhasználóneveket és naplókat. Napló hozzáadása: Beállítások → Általános → Diagnosztika → Napló mentése."
+msgstr ""
+"Nem tartalmaz fájlneveket, felhasználóneveket és naplókat. Napló hozzáadása: "
+"Beállítások → Általános → Diagnosztika → Napló mentése."
 
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:514
 msgid "Confirm"
@@ -2450,6 +2460,87 @@ msgstr "Tallózás: %1"
 msgid "Image Files (*.png *.jpg);;All Files (*)"
 msgstr "Képfájlok (*.png *.jpg);;Minden fájl (*)"
 
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:40
+msgid "Welcome"
+msgstr "Üdvözöljük"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:51
+msgid ""
+"<p>In order to protect your privacy, <i>VLC media player</i> does <b>not</b> "
+"collect personal data or transmit them, not even in anonymized form, to "
+"anyone.</p>\n"
+"<p>Nevertheless, <i>VLC</i> is able to automatically retrieve information "
+"about the media in your play queue from third party Internet-based services. "
+"This includes cover art, track names, artist names and other meta-data.</p>\n"
+"<p>Consequently, this may entail identifying some of your media files to "
+"third party entities. Therefore the <i>VLC</i> developers require your "
+"express consent for the media player to access the Internet automatically.</"
+"p>\n"
+msgstr ""
+"<p>Adatainak védelme érdekében a <i>VLC médialejátszó</i> <b>nem</b> gyűjt "
+"személyes adatokat, és nem is továbbítja azokat senkinek, még névtelenített "
+"formában sem.</p>\n"
+"<p>Ennek ellenére a <i>VLC</i> képes automatikusan információkat lekérni a "
+"lejátszási sorában lévő médiákról külső, internetes szolgáltatásokból. Ide "
+"tartoznak a borítóképek, a számok és az előadók nevei, valamint egyéb "
+"metaadatok.</p>\n"
+"<p>Emiatt előfordulhat, hogy egyes médiafájljai azonosíthatóvá válnak külső "
+"felek számára. Ezért a <i>VLC</i> fejlesztői az Ön kifejezett hozzájárulását "
+"kérik ahhoz, hogy a médialejátszó automatikusan hozzáférjen az internethez.</"
+"p>\n"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:90
+msgid ""
+"<ul><li>No client-side decoration</li><li>Toolbar menu</li><li>Pinned video "
+"controls</li></ul>"
+msgstr ""
+"<ul><li>Nincs kliensoldali ablakdíszítés</li><li>Eszköztármenü</"
+"li><li>Rögzített videovezérlők</li></ul>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:96
+msgid ""
+"<ul><li>Client-side decoration</li><li>No toolbar menu</li><li>Video "
+"controls unpinned</li></ul>"
+msgstr ""
+"<ul><li>Kliensoldali ablakdíszítés</li><li>Nincs eszköztármenü</li><li>Nem "
+"rögzített videovezérlők</li></ul>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:193
+msgid "Choose a folder to add to the Media Library"
+msgstr "Válasszon egy mappát, amelyet hozzáad a médiatárhoz"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:210
+msgid ""
+"<i>VLC will automatically switch to dark mode accordingly with system "
+"settings</i>"
+msgstr ""
+"<i>A VLC a rendszerbeállításoknak megfelelően automatikusan sötét módra "
+"vált</i>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:213
+msgid "<i>VLC will automatically use light mode</i>"
+msgstr "<i>A VLC automatikusan világos módot használ</i>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:216
+msgid "<i>VLC will automatically use dark mode</i>"
+msgstr "<i>A VLC automatikusan sötét módot használ</i>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:230
+msgid ""
+"<i>VLC will use a modern layout with no menubar or pinned controls but with "
+"client-side decoration</i>"
+msgstr ""
+"<i>A VLC modern elrendezést használ menüsor és rögzített vezérlők nélkül, de "
+"kliensoldali ablakdíszítéssel</i>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:233
+msgid ""
+"<i>VLC will use a classic layout with a menubar and pinned controls but with "
+"no client-side decoration</i>"
+msgstr ""
+"<i>A VLC klasszikus elrendezést használ menüsorral és rögzített vezérlőkkel, "
+"de kliensoldali ablakdíszítés nélkül</i>"
+
 #: modules/gui/qt/dialogs/firstrun/onboarding.cpp:48
 msgid "Could not add the media folder: %1"
 msgstr "Nem sikerült hozzáadni a médiamappát: %1"
@@ -2530,15 +2621,15 @@ msgstr ""
 msgid "Finish"
 msgstr "Befejezés"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:108
+#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:110
 msgid "Learn the basic keyboard shortcuts."
 msgstr "Ismerje meg az alapvető gyorsbillentyűket."
 
-#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:116
+#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:118
 msgid "No playback shortcuts are currently assigned."
 msgstr "Jelenleg nincs lejátszási gyorsbillentyű hozzárendelve."
 
-#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:200
+#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:202
 msgid "Find the full list in the menu."
 msgstr "A teljes lista a menüben található."
 
@@ -2829,7 +2920,10 @@ msgstr "Újdonságok megjelenítése frissítés után"
 msgid ""
 "The first time VLC opens after an update, a card lists what is new in the "
 "version, with a link to the full changelog. The notes are in English."
-msgstr "A VLC frissítés utáni első indításakor egy kártya felsorolja a verzió újdonságait, a teljes változásnaplóra mutató hivatkozással. A megjegyzések angol nyelvűek."
+msgstr ""
+"A VLC frissítés utáni első indításakor egy kártya felsorolja a verzió "
+"újdonságait, a teljes változásnaplóra mutató hivatkozással. A megjegyzések "
+"angol nyelvűek."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:256
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
@@ -3224,7 +3318,7 @@ msgstr ""
 "lettek mentve."
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:79
-#: modules/gui/qt/qt.cpp:340
+#: modules/gui/qt/qt.cpp:344
 msgid "Expert"
 msgstr "Szakértő"
 
@@ -3310,7 +3404,7 @@ msgstr "Téma"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:192
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:409
-#: modules/gui/qt/qt.cpp:335
+#: modules/gui/qt/qt.cpp:339
 msgid "Accent color"
 msgstr "Kiemelőszín"
 
@@ -4090,7 +4184,7 @@ msgid "Seeking"
 msgstr "Tekerés"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:122
-#: modules/gui/qt/qt.cpp:299
+#: modules/gui/qt/qt.cpp:303
 msgid "Show thumbnail while scrubbing"
 msgstr "Bélyegkép megjelenítése tekerés közben"
 
@@ -4370,7 +4464,7 @@ msgid "Timing"
 msgstr "Időzítés"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
-#: modules/gui/qt/qt.cpp:301
+#: modules/gui/qt/qt.cpp:305
 msgid "Show subtitle lines on the seek bar"
 msgstr "Feliratsorok megjelenítése a tekerősávon"
 
@@ -5632,7 +5726,7 @@ msgstr "Médianézet"
 msgid "Unknown Title"
 msgstr "Ismeretlen cím"
 
-#: modules/gui/qt/medialibrary/qml/MediaView.qml:350
+#: modules/gui/qt/medialibrary/qml/MediaView.qml:351
 msgid ""
 "No media found\n"
 "Please try adding sources"
@@ -5658,7 +5752,7 @@ msgid "%1 - %2 - %3 - %4"
 msgstr "%1 - %2 - %3 - %4"
 
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:406
-#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:941
+#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:942
 msgid "#"
 msgstr "#"
 
@@ -7430,16 +7524,6 @@ msgstr ""
 msgid "Duration unavailable"
 msgstr "Időtartam nem elérhető"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/Fallback.qml:48
-msgid ""
-"WIDGET\n"
-"NOT\n"
-"FOUND"
-msgstr ""
-"VEZÉRLŐ\n"
-"NEM\n"
-"TALÁLHATÓ"
-
 #: modules/gui/qt/player/qml/controlbarcontrols/FavoriteButton.qml:21
 msgid "Available for items in your library"
 msgstr "A médiatár elemeinél érhető el"
@@ -7574,11 +7658,11 @@ msgstr "15 másodperc előre"
 msgid "%1 %"
 msgstr "%1 %"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:38
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:40
 msgid "Choose a video zoom level"
 msgstr "Válasszon nagyítási szintet"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:39
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:41
 msgid "Zoom is unavailable without video"
 msgstr "Videó nélkül a nagyítás nem érhető el"
 
@@ -7622,18 +7706,18 @@ msgstr "Lejátszási sor"
 msgid "%1 elements, %2"
 msgstr "%1 elem, %2"
 
-#: modules/gui/qt/qt.cpp:171
+#: modules/gui/qt/qt.cpp:175
 msgid "Select the initial preferences view"
 msgstr "Kezdeti beállításnézet kiválasztása"
 
-#: modules/gui/qt/qt.cpp:172
+#: modules/gui/qt/qt.cpp:176
 msgid ""
 "Select which preferences view to show upon opening the preferences dialog."
 msgstr ""
 "Válassza ki, melyik beállításnézet jelenjen meg a beállítások párbeszédablak "
 "megnyitásakor."
 
-#: modules/gui/qt/qt.cpp:196
+#: modules/gui/qt/qt.cpp:200
 msgid ""
 "Show a notification popup with the artist and track name when the current "
 "play queue item changes, when VLC is minimized or hidden."
@@ -7642,7 +7726,7 @@ msgstr ""
 "lejátszási sor aktuális eleme megváltozik, ha a VLC kis méretre van állítva "
 "vagy rejtett."
 
-#: modules/gui/qt/qt.cpp:200
+#: modules/gui/qt/qt.cpp:204
 msgid ""
 "Sets the windows opacity between 0.1 and 1 for main interface, play queue "
 "and extended panel. This option only works with Windows and X11 with "
@@ -7652,7 +7736,7 @@ msgstr ""
 "lejátszási sor és a kibővített panel számára. Ez a beállítás csak Windows "
 "alatt, illetve kompozit kiterjesztésekkel rendelkező X11 alatt működik."
 
-#: modules/gui/qt/qt.cpp:206
+#: modules/gui/qt/qt.cpp:210
 msgid ""
 "Sets the fullscreen controller opacity between 0.1 and 1 for main interface, "
 "play queue and extended panel. This option only works with Windows and X11 "
@@ -7663,11 +7747,11 @@ msgstr ""
 "beállítás csak Windows alatt, illetve kompozit kiterjesztésekkel rendelkező "
 "X11 alatt működik."
 
-#: modules/gui/qt/qt.cpp:211
+#: modules/gui/qt/qt.cpp:215
 msgid "Initial user scale factor for the interface, between 0.3 and 3.0"
 msgstr "A kezelőfelület kezdeti méretezési tényezője 0,3 és 3,0 között"
 
-#: modules/gui/qt/qt.cpp:214
+#: modules/gui/qt/qt.cpp:218
 msgid ""
 "Show the errors of VLC at the bottom of the window, and ask before removing "
 "media from a playlist or from the play queue, or deleting playlists. Off, "
@@ -7680,11 +7764,11 @@ msgstr ""
 "maradnak meg, és ezek az eltávolítások azonnal megtörténnek; a fájlok "
 "lemezről való törlését mindig meg kell erősíteni."
 
-#: modules/gui/qt/qt.cpp:224
+#: modules/gui/qt/qt.cpp:228
 msgid "set the options for qml debugger"
 msgstr "a QML-hibakereső beállításai"
 
-#: modules/gui/qt/qt.cpp:225
+#: modules/gui/qt/qt.cpp:229
 msgid ""
 "set the options for qml debugger (see http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
@@ -7692,7 +7776,7 @@ msgstr ""
 "a QML-hibakereső beállításai (lásd: http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
 
-#: modules/gui/qt/qt.cpp:245
+#: modules/gui/qt/qt.cpp:249
 msgid ""
 "Show the playback controls in fullscreen when the mouse moves. Off, only the "
 "keyboard shows them (the I key). The skins read it for their fullscreen "
@@ -7702,7 +7786,7 @@ msgstr ""
 "Kikapcsolva csak a billentyűzettel jeleníthetők meg (I billentyű). A sminkek "
 "a saját teljes képernyős vezérlőjükhöz is ezt használják."
 
-#: modules/gui/qt/qt.cpp:261
+#: modules/gui/qt/qt.cpp:265
 msgid ""
 "Display the cover art of the audio playing in the player (the cone in the "
 "compact view). Off, a plain picture takes its place, which also prevents "
@@ -7712,7 +7796,7 @@ msgstr ""
 "nézetben a kúp). Kikapcsolva egy egyszerű kép kerül a helyére, ami a "
 "képernyő beégését is megelőzi."
 
-#: modules/gui/qt/qt.cpp:285
+#: modules/gui/qt/qt.cpp:289
 msgid ""
 "This option allows the interface to be shown and raised automatically when a "
 "video/audio playback starts, or never."
@@ -7720,11 +7804,11 @@ msgstr ""
 "Ezzel a beállítással a kezelőfelület automatikusan megjelenik és előtérbe "
 "kerül videó/hang lejátszásának indulásakor, vagy soha."
 
-#: modules/gui/qt/qt.cpp:288
+#: modules/gui/qt/qt.cpp:292
 msgid "Enable window titlebar"
 msgstr "Ablak címsorának engedélyezése"
 
-#: modules/gui/qt/qt.cpp:289
+#: modules/gui/qt/qt.cpp:293
 msgid ""
 "This option enables the title bar. Disabling it will remove the titlebar and "
 "move window buttons within the interface (Client Side Decoration)"
@@ -7732,37 +7816,39 @@ msgstr ""
 "Ez a beállítás engedélyezi a címsort. Letiltása eltávolítja a címsort, és az "
 "ablakgombokat a kezelőfelületen belülre helyezi (kliensoldali ablakdíszítés)"
 
-#: modules/gui/qt/qt.cpp:293
+#: modules/gui/qt/qt.cpp:297
 msgid "Show the menu bar"
 msgstr "Menüsor megjelenítése"
 
-#: modules/gui/qt/qt.cpp:294
+#: modules/gui/qt/qt.cpp:298
 msgid "This option displays the classic menu bar"
 msgstr "Ez a beállítás megjeleníti a klasszikus menüsort"
 
-#: modules/gui/qt/qt.cpp:296
+#: modules/gui/qt/qt.cpp:300
 msgid "Pin video controls"
 msgstr "Videovezérlők rögzítése"
 
-#: modules/gui/qt/qt.cpp:297
+#: modules/gui/qt/qt.cpp:301
 msgid "Place video controls above and below the video instead of above"
 msgstr "A videovezérlők a videó felett és alatt jelennek meg, nem rajta"
 
-#: modules/gui/qt/qt.cpp:300
+#: modules/gui/qt/qt.cpp:304
 msgid "Show the frame at the hovered position above the seek bar"
 msgstr "A mutató alatti pozíció képkockájának megjelenítése a tekerősáv felett"
 
-#: modules/gui/qt/qt.cpp:302
+#: modules/gui/qt/qt.cpp:306
 msgid ""
 "Mark on the seek bar where the lines of the subtitle shown are, when it "
 "comes from a subtitle file"
-msgstr "Megjelöli a tekerősávon a megjelenített felirat sorainak helyét, ha a felirat feliratfájlból származik"
+msgstr ""
+"Megjelöli a tekerősávon a megjelenített felirat sorainak helyét, ha a "
+"felirat feliratfájlból származik"
 
-#: modules/gui/qt/qt.cpp:307
+#: modules/gui/qt/qt.cpp:311
 msgid "Select Qt video integration backend"
 msgstr "Qt videointegrációs háttérrendszer kiválasztása"
 
-#: modules/gui/qt/qt.cpp:308
+#: modules/gui/qt/qt.cpp:312
 msgid ""
 "Select Qt video integration backend. Use with care, the interface may not "
 "start if an incompatible compositor is selected"
@@ -7770,11 +7856,11 @@ msgstr ""
 "Qt videointegrációs háttérrendszer kiválasztása. Óvatosan használja, a "
 "kezelőfelület nem indulhat el, ha nem kompatibilis kompozitor van kiválasztva"
 
-#: modules/gui/qt/qt.cpp:310
+#: modules/gui/qt/qt.cpp:314
 msgid "Use smooth scrolling in Flickable based views"
 msgstr "Finom görgetés használata a Flickable alapú nézetekben"
 
-#: modules/gui/qt/qt.cpp:311
+#: modules/gui/qt/qt.cpp:315
 msgid ""
 "Deactivating this option will disable smooth scrolling in Flickable based "
 "views (such as the Play Queue). This option is only respected with a scroll "
@@ -7785,19 +7871,19 @@ msgstr ""
 "görgetéskezelővel veszi figyelembe, lásd a `qt-use-scroll-handler` "
 "beállítást."
 
-#: modules/gui/qt/qt.cpp:314
+#: modules/gui/qt/qt.cpp:318
 msgid "Use Kirigami scroll handler for Flickable based views"
 msgstr "Kirigami görgetéskezelő használata a Flickable alapú nézetekhez"
 
-#: modules/gui/qt/qt.cpp:315
+#: modules/gui/qt/qt.cpp:319
 msgid "Using Kirigami scroll handler may improve scrolling behavior."
 msgstr "A Kirigami görgetéskezelő használata javíthatja a görgetést."
 
-#: modules/gui/qt/qt.cpp:317
+#: modules/gui/qt/qt.cpp:321
 msgid "Safe area for the user interface"
 msgstr "A kezelőfelület biztonsági területe"
 
-#: modules/gui/qt/qt.cpp:318
+#: modules/gui/qt/qt.cpp:322
 msgid ""
 "Sets the safe area percentage between 0.0 and 100 when you want to ensure "
 "the visibility of the user interface on a constrained viewport"
@@ -7805,21 +7891,21 @@ msgstr ""
 "Beállítja a biztonsági terület százalékát 0,0 és 100 között, ha korlátozott "
 "megjelenítési területen is biztosítani szeretné a kezelőfelület láthatóságát"
 
-#: modules/gui/qt/qt.cpp:322
+#: modules/gui/qt/qt.cpp:326
 msgid "Print Qt's important internal messages"
 msgstr "A Qt fontos belső üzeneteinek kiírása"
 
-#: modules/gui/qt/qt.cpp:323
+#: modules/gui/qt/qt.cpp:327
 msgid "Enable Qt's all own messaging categories except the debug category."
 msgstr ""
 "A Qt összes saját üzenetkategóriájának engedélyezése a hibakeresési "
 "kategória kivételével."
 
-#: modules/gui/qt/qt.cpp:325
+#: modules/gui/qt/qt.cpp:329
 msgid "Hide the window on close"
 msgstr "Ablak elrejtése bezáráskor"
 
-#: modules/gui/qt/qt.cpp:326
+#: modules/gui/qt/qt.cpp:330
 msgid ""
 "Instead of closing the application, hide the window. This setting is only "
 "applicable when system tray icon is enabled."
@@ -7827,11 +7913,11 @@ msgstr ""
 "Az alkalmazás bezárása helyett az ablak elrejtése. Ez a beállítás csak akkor "
 "érvényes, ha a rendszertálca-ikon engedélyezve van."
 
-#: modules/gui/qt/qt.cpp:328
+#: modules/gui/qt/qt.cpp:332
 msgid "Enable backdrop blur filter for the main window if possible"
 msgstr "Háttérelmosás engedélyezése a főablakhoz, ha lehetséges"
 
-#: modules/gui/qt/qt.cpp:329
+#: modules/gui/qt/qt.cpp:333
 msgid ""
 "If backdrop blur filter is available, use translucency in the backgrounds of "
 "certain parts of the user interface instead of a solid color. This setting "
@@ -7841,11 +7927,11 @@ msgstr ""
 "egyszínű helyett áttetszőség lesz használva. Ez a beállítás rontja a szöveg "
 "olvashatóságát."
 
-#: modules/gui/qt/qt.cpp:332
+#: modules/gui/qt/qt.cpp:336
 msgid "Enable picture-in-picture (PiP) mode"
 msgstr "Kép a képben (PiP) mód engedélyezése"
 
-#: modules/gui/qt/qt.cpp:333
+#: modules/gui/qt/qt.cpp:337
 msgid ""
 "Picture-in-picture mode allows playing video contained in a smaller area so "
 "that the interface remains usable."
@@ -7853,7 +7939,7 @@ msgstr ""
 "A kép a képben mód kisebb területen játssza le a videót, így a kezelőfelület "
 "használható marad."
 
-#: modules/gui/qt/qt.cpp:336
+#: modules/gui/qt/qt.cpp:340
 msgid ""
 "Adjusts the accent color, special values are 'default' and 'system' "
 "(requires Qt 6.6) ."
@@ -7861,11 +7947,11 @@ msgstr ""
 "Beállítja a kiemelőszínt; különleges értékek: 'default' és 'system' (Qt 6.6 "
 "szükséges) ."
 
-#: modules/gui/qt/qt.cpp:437
+#: modules/gui/qt/qt.cpp:441
 msgid "Check for VLC Redesign updates"
 msgstr "VLC Redesign frissítések keresése"
 
-#: modules/gui/qt/qt.cpp:438
+#: modules/gui/qt/qt.cpp:442
 msgid ""
 "Look for a new release of VLC Redesign on GitHub at startup, at most once a "
 "day."
@@ -7873,11 +7959,11 @@ msgstr ""
 "Indításkor új VLC Redesign kiadás keresése a GitHubon, legfeljebb naponta "
 "egyszer."
 
-#: modules/gui/qt/qt.cpp:442
+#: modules/gui/qt/qt.cpp:446
 msgid "Resume at"
 msgstr "Folytatás innen"
 
-#: modules/gui/qt/qt.cpp:443
+#: modules/gui/qt/qt.cpp:447
 msgid ""
 "Seconds into the media of the command line where playback continues, after "
 "an update."
@@ -7924,7 +8010,9 @@ msgstr "Visszaállítja a lejátszási sort?"
 
 #: modules/gui/qt/util/model_recovery_agent.hpp:88
 msgid "VLC Redesign closed unexpectedly on %1. Restore the play queue it had?"
-msgstr "A VLC Redesign váratlanul bezárult ekkor: %1. Visszaállítja az akkori lejátszási sort?"
+msgstr ""
+"A VLC Redesign váratlanul bezárult ekkor: %1. Visszaállítja az akkori "
+"lejátszási sort?"
 
 #: modules/gui/qt/util/model_recovery_agent.hpp:90
 msgctxt "play queue"
@@ -7935,7 +8023,7 @@ msgstr "Visszaállítás"
 msgid "Don't restore"
 msgstr "Nincs visszaállítás"
 
-#: modules/gui/qt/util/redesign_updater.cpp:194
+#: modules/gui/qt/util/redesign_updater.cpp:215
 msgid ""
 "The update isn't signed by the publisher of this copy (%1), so it wasn't "
 "used."
@@ -7943,65 +8031,75 @@ msgstr ""
 "A frissítést nem ennek a példánynak a kiadója (%1) írta alá, ezért nem lett "
 "felhasználva."
 
-#: modules/gui/qt/util/redesign_updater.cpp:550
+#: modules/gui/qt/util/redesign_updater.cpp:460
+msgid "%1 (later)"
+msgstr "%1 (később)"
+
+#: modules/gui/qt/util/redesign_updater.cpp:462
+msgid "%1 (soon)"
+msgstr "%1 (hamarosan)"
+
+#: modules/gui/qt/util/redesign_updater.cpp:610
 msgid "This build cannot check for updates."
 msgstr "Ez a kiadás nem tud frissítéseket keresni."
 
-#: modules/gui/qt/util/redesign_updater.cpp:564
+#: modules/gui/qt/util/redesign_updater.cpp:624
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "A GitHub nem érhető el. Ellenőrizze a kapcsolatot, és próbálja újra."
 
-#: modules/gui/qt/util/redesign_updater.cpp:581
+#: modules/gui/qt/util/redesign_updater.cpp:641
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "A GitHub váratlan választ küldött (%1)."
 
-#: modules/gui/qt/util/redesign_updater.cpp:677
+#: modules/gui/qt/util/redesign_updater.cpp:759
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
-msgstr "Ezt a frissítést nem a VLC Redesign írta alá, ezért nem lett felhasználva. Töltse le inkább a kiadási oldalról."
+msgstr ""
+"Ezt a frissítést nem a VLC Redesign írta alá, ezért nem lett felhasználva. "
+"Töltse le inkább a kiadási oldalról."
 
-#: modules/gui/qt/util/redesign_updater.cpp:699
-#: modules/gui/qt/util/redesign_updater.cpp:740
+#: modules/gui/qt/util/redesign_updater.cpp:781
+#: modules/gui/qt/util/redesign_updater.cpp:822
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr ""
 "A frissítés ellenőrzőösszege hiányzik; töltse le inkább a kiadási oldalról."
 
-#: modules/gui/qt/util/redesign_updater.cpp:714
-#: modules/gui/qt/util/redesign_updater.cpp:786
+#: modules/gui/qt/util/redesign_updater.cpp:796
+#: modules/gui/qt/util/redesign_updater.cpp:868
 msgid "The download failed. Check your connection and try again."
 msgstr "A letöltés sikertelen. Ellenőrizze a kapcsolatot, és próbálja újra."
 
-#: modules/gui/qt/util/redesign_updater.cpp:799
+#: modules/gui/qt/util/redesign_updater.cpp:881
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr ""
 "A frissítés nem egyezik az ellenőrzőösszegével, ezért nem lett felhasználva."
 
-#: modules/gui/qt/util/redesign_updater.cpp:830
+#: modules/gui/qt/util/redesign_updater.cpp:912
 msgid "The update isn't in a format this version knows."
 msgstr "A frissítés formátumát ez a verzió nem ismeri."
 
-#: modules/gui/qt/util/redesign_updater.cpp:833
-#: modules/gui/qt/util/redesign_updater.cpp:857
-#: modules/gui/qt/util/redesign_updater.cpp:868
-#: modules/gui/qt/util/redesign_updater.cpp:874
+#: modules/gui/qt/util/redesign_updater.cpp:915
+#: modules/gui/qt/util/redesign_updater.cpp:939
+#: modules/gui/qt/util/redesign_updater.cpp:950
+#: modules/gui/qt/util/redesign_updater.cpp:956
 msgid "The update is damaged."
 msgstr "A frissítés sérült."
 
-#: modules/gui/qt/util/redesign_updater.cpp:838
+#: modules/gui/qt/util/redesign_updater.cpp:920
 msgid "The update isn't for this version."
 msgstr "A frissítés nem ehhez a verzióhoz készült."
 
-#: modules/gui/qt/util/redesign_updater.cpp:847
-#: modules/gui/qt/util/redesign_updater.cpp:884
-#: modules/gui/qt/util/redesign_updater.cpp:893
-#: modules/gui/qt/util/redesign_updater.cpp:897
-#: modules/gui/qt/util/redesign_updater.cpp:901
+#: modules/gui/qt/util/redesign_updater.cpp:929
+#: modules/gui/qt/util/redesign_updater.cpp:966
+#: modules/gui/qt/util/redesign_updater.cpp:975
+#: modules/gui/qt/util/redesign_updater.cpp:979
+#: modules/gui/qt/util/redesign_updater.cpp:983
 msgid "The update can't be written in %1."
 msgstr "A frissítés nem írható ide: %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:849
+#: modules/gui/qt/util/redesign_updater.cpp:931
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -8009,30 +8107,30 @@ msgstr ""
 "A VLC Redesign egyik fájlja módosult a telepítés óta, ezért a kis frissítés "
 "nem használható: frissítsen inkább a telepítővel."
 
-#: modules/gui/qt/util/redesign_updater.cpp:879
+#: modules/gui/qt/util/redesign_updater.cpp:961
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr "A frissítés sérült: egy fájl nem egyezik az ellenőrzőösszegével."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1004
+#: modules/gui/qt/util/redesign_updater.cpp:1086
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr "A frissítés nem indítható el. A program legközelebb újra megpróbálja."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1031
+#: modules/gui/qt/util/redesign_updater.cpp:1113
 msgid "The download failed. Try again, or download it from the release page."
 msgstr ""
 "A letöltés sikertelen. Próbálja újra, vagy töltse le a kiadási oldalról."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1044
+#: modules/gui/qt/util/redesign_updater.cpp:1126
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr ""
 "A letöltött telepítő nem egyezik az ellenőrzőösszegével, ezért nem lett "
 "elindítva."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1053
+#: modules/gui/qt/util/redesign_updater.cpp:1135
 msgid "The installer couldn't be saved to %1."
 msgstr "A telepítő nem menthető ide: %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1087
+#: modules/gui/qt/util/redesign_updater.cpp:1169
 msgid "The installer couldn't be started."
 msgstr "A telepítő nem indítható el."
 

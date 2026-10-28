@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-28 13:15+0000\n"
+"POT-Creation-Date: 2026-10-28 18:41+0000\n"
 "PO-Revision-Date: 2008-08-23 18:31+0200\n"
 "Last-Translator: Alexander Didebulidze <didebuli@in.tum.de>\n"
 "Language-Team: Georgian <geognome@googlegroups.com>\n"
@@ -1530,7 +1530,7 @@ msgid "It needs Windows 10 version 1809 or later."
 msgstr "საჭიროა Windows 10, ვერსია 1809 ან უფრო ახალი."
 
 #: bin/winvlc.c:712 bin/winvlc.c:825
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:312
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:319
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:547
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:552
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:142
@@ -1551,7 +1551,8 @@ msgstr "VLC Redesign ვერ გაეშვა"
 
 #: bin/winvlc.c:824
 msgid "Either the command line options were invalid or no plugins were found."
-msgstr "ან ბრძანების სტრიქონის პარამეტრები არასწორი იყო, ან პლაგინები ვერ მოიძებნა."
+msgstr ""
+"ან ბრძანების სტრიქონის პარამეტრები არასწორი იყო, ან პლაგინები ვერ მოიძებნა."
 
 #: modules/access_output/http.c:65
 msgid "DLNA content features"
@@ -1895,17 +1896,21 @@ msgid "the VideoLAN team and contributors"
 msgstr "VideoLAN-ის გუნდმა და მონაწილეებმა"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:279
+msgid "Also on: %1"
+msgstr "ასევე: %1"
+
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:286
 #: modules/gui/qt/menus/qml/MainMenu.qml:173
 msgid "Suggest an idea"
 msgstr "იდეის შეთავაზება"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:281
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:288
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:28
 #: modules/gui/qt/menus/qml/MainMenu.qml:178
 msgid "Report a problem"
 msgstr "პრობლემის შეტყობინება"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:292
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:299
 msgid ""
 "An unofficial build, not affiliated with or endorsed by VideoLAN or "
 "Juxtopposed. VLC, VLC media player and the cone logo are trademarks of "
@@ -1916,11 +1921,11 @@ msgstr ""
 "კონუსის ლოგო VideoLAN-ის სავაჭრო ნიშნებია. თავისუფალი პროგრამა GNU GPL v2 ან "
 "უფრო ახალი ლიცენზიით."
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:302
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:309
 msgid "Licenses & authors"
 msgstr "ლიცენზიები და ავტორები"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:306
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:313
 msgid "GitHub"
 msgstr "GitHub"
 
@@ -1939,7 +1944,9 @@ msgstr "რას შეიცავს ანგარიში"
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:57
 msgid ""
 "GitHub opens with this filled in. Nothing is sent until you submit it there."
-msgstr "GitHub გაიხსნება ამ მონაცემებით შევსებული. არაფერი გაიგზავნება, სანამ იქ არ გააგზავნით."
+msgstr ""
+"GitHub გაიხსნება ამ მონაცემებით შევსებული. არაფერი გაიგზავნება, სანამ იქ არ "
+"გააგზავნით."
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:102
 msgid "Report"
@@ -1949,7 +1956,9 @@ msgstr "ანგარიში"
 msgid ""
 "No file names, user names or logs. To add a log: Settings → General → "
 "Diagnostics → Save a log."
-msgstr "ფაილების სახელების, მომხმარებლის სახელების და ჟურნალების გარეშე. ჟურნალის დასამატებლად: პარამეტრები → ზოგადი → დიაგნოსტიკა → ჟურნალის შენახვა."
+msgstr ""
+"ფაილების სახელების, მომხმარებლის სახელების და ჟურნალების გარეშე. ჟურნალის "
+"დასამატებლად: პარამეტრები → ზოგადი → დიაგნოსტიკა → ჟურნალის შენახვა."
 
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:514
 msgid "Confirm"
@@ -2422,6 +2431,86 @@ msgstr "დათვალიერება: %1"
 msgid "Image Files (*.png *.jpg);;All Files (*)"
 msgstr "სურათის ფაილები (*.png *.jpg);;ყველა ფაილი (*)"
 
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:40
+msgid "Welcome"
+msgstr "მოგესალმებით"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:51
+msgid ""
+"<p>In order to protect your privacy, <i>VLC media player</i> does <b>not</b> "
+"collect personal data or transmit them, not even in anonymized form, to "
+"anyone.</p>\n"
+"<p>Nevertheless, <i>VLC</i> is able to automatically retrieve information "
+"about the media in your play queue from third party Internet-based services. "
+"This includes cover art, track names, artist names and other meta-data.</p>\n"
+"<p>Consequently, this may entail identifying some of your media files to "
+"third party entities. Therefore the <i>VLC</i> developers require your "
+"express consent for the media player to access the Internet automatically.</"
+"p>\n"
+msgstr ""
+"<p>თქვენი კონფიდენციალურობის დასაცავად <i>VLC media player</i> <b>არ</b> "
+"აგროვებს პერსონალურ მონაცემებს და არავის გადასცემს მათ, თუნდაც ანონიმური "
+"სახით.</p>\n"
+"<p>მიუხედავად ამისა, <i>VLC</i>-ს შეუძლია თქვენი დაკვრის რიგის მედიის "
+"შესახებ ინფორმაცია ავტომატურად მიიღოს მესამე მხარის ინტერნეტ-სერვისებიდან. "
+"ეს მოიცავს გარეკანებს, ტრეკების სახელებს, შემსრულებლების სახელებს და სხვა "
+"მეტამონაცემებს.</p>\n"
+"<p>შესაბამისად, ამან შეიძლება გამოიწვიოს თქვენი ზოგიერთი მედიაფაილის "
+"იდენტიფიცირება მესამე მხარეების მიერ. ამიტომ <i>VLC</i>-ის დეველოპერები "
+"ითხოვენ თქვენს აშკარა თანხმობას, რომ მედიადამკვრელმა ინტერნეტთან ავტომატურად "
+"დაკავშირება შეძლოს.</p>\n"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:90
+msgid ""
+"<ul><li>No client-side decoration</li><li>Toolbar menu</li><li>Pinned video "
+"controls</li></ul>"
+msgstr ""
+"<ul><li>კლიენტის მხარის დეკორაციის გარეშე</li><li>ხელსაწყოთა ზოლის მენიუ</"
+"li><li>მიმაგრებული ვიდეოს მართვის ელემენტები</li></ul>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:96
+msgid ""
+"<ul><li>Client-side decoration</li><li>No toolbar menu</li><li>Video "
+"controls unpinned</li></ul>"
+msgstr ""
+"<ul><li>კლიენტის მხარის დეკორაცია</li><li>ხელსაწყოთა ზოლის მენიუს გარეშე</"
+"li><li>ვიდეოს მართვის ელემენტები არ არის მიმაგრებული</li></ul>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:193
+msgid "Choose a folder to add to the Media Library"
+msgstr "აირჩიეთ საქაღალდე მედიაბიბლიოთეკაში დასამატებლად"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:210
+msgid ""
+"<i>VLC will automatically switch to dark mode accordingly with system "
+"settings</i>"
+msgstr ""
+"<i>VLC ავტომატურად გადავა მუქ რეჟიმზე სისტემის პარამეტრების შესაბამისად</i>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:213
+msgid "<i>VLC will automatically use light mode</i>"
+msgstr "<i>VLC ავტომატურად გამოიყენებს ღია რეჟიმს</i>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:216
+msgid "<i>VLC will automatically use dark mode</i>"
+msgstr "<i>VLC ავტომატურად გამოიყენებს მუქ რეჟიმს</i>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:230
+msgid ""
+"<i>VLC will use a modern layout with no menubar or pinned controls but with "
+"client-side decoration</i>"
+msgstr ""
+"<i>VLC გამოიყენებს თანამედროვე განლაგებას მენიუს ზოლისა და მიმაგრებული "
+"მართვის ელემენტების გარეშე, მაგრამ კლიენტის მხარის დეკორაციით</i>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:233
+msgid ""
+"<i>VLC will use a classic layout with a menubar and pinned controls but with "
+"no client-side decoration</i>"
+msgstr ""
+"<i>VLC გამოიყენებს კლასიკურ განლაგებას მენიუს ზოლით და მიმაგრებული მართვის "
+"ელემენტებით, მაგრამ კლიენტის მხარის დეკორაციის გარეშე</i>"
+
 #: modules/gui/qt/dialogs/firstrun/onboarding.cpp:48
 msgid "Could not add the media folder: %1"
 msgstr "მედიასაქაღალდის დამატება ვერ მოხერხდა: %1"
@@ -2501,15 +2590,15 @@ msgstr ""
 msgid "Finish"
 msgstr "დასრულება"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:108
+#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:110
 msgid "Learn the basic keyboard shortcuts."
 msgstr "გაეცანით კლავიატურის ძირითად მალსახმობებს."
 
-#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:116
+#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:118
 msgid "No playback shortcuts are currently assigned."
 msgstr "დაკვრის მალსახმობები ამჟამად მინიჭებული არ არის."
 
-#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:200
+#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:202
 msgid "Find the full list in the menu."
 msgstr "სრული სია მენიუშია."
 
@@ -2797,7 +2886,9 @@ msgstr "სიახლეების ჩვენება განახლ�
 msgid ""
 "The first time VLC opens after an update, a card lists what is new in the "
 "version, with a link to the full changelog. The notes are in English."
-msgstr "განახლების შემდეგ VLC-ის პირველი გახსნისას ბარათი აჩვენებს ვერსიის სიახლეებს, ცვლილებების სრული სიის ბმულით. შენიშვნები ინგლისურადაა."
+msgstr ""
+"განახლების შემდეგ VLC-ის პირველი გახსნისას ბარათი აჩვენებს ვერსიის "
+"სიახლეებს, ცვლილებების სრული სიის ბმულით. შენიშვნები ინგლისურადაა."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:256
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
@@ -3192,7 +3283,7 @@ msgstr ""
 "%1 პარამეტრების გარეთ შეიცვალა ან მიუწვდომელია. თქვენი ცვლილებები არ შეინახა."
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:79
-#: modules/gui/qt/qt.cpp:340
+#: modules/gui/qt/qt.cpp:344
 msgid "Expert"
 msgstr "ექსპერტი"
 
@@ -3276,7 +3367,7 @@ msgstr "თემა"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:192
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:409
-#: modules/gui/qt/qt.cpp:335
+#: modules/gui/qt/qt.cpp:339
 msgid "Accent color"
 msgstr "აქცენტის ფერი"
 
@@ -4056,7 +4147,7 @@ msgid "Seeking"
 msgstr "გადახვევა"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:122
-#: modules/gui/qt/qt.cpp:299
+#: modules/gui/qt/qt.cpp:303
 msgid "Show thumbnail while scrubbing"
 msgstr "მინიატურის ჩვენება გადახვევისას"
 
@@ -4336,7 +4427,7 @@ msgid "Timing"
 msgstr "დროის მორგება"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
-#: modules/gui/qt/qt.cpp:301
+#: modules/gui/qt/qt.cpp:305
 msgid "Show subtitle lines on the seek bar"
 msgstr "ტიტრების ხაზების ჩვენება გადახვევის ზოლზე"
 
@@ -5589,7 +5680,7 @@ msgstr "მედიის ხედი"
 msgid "Unknown Title"
 msgstr "უცნობი სათაური"
 
-#: modules/gui/qt/medialibrary/qml/MediaView.qml:350
+#: modules/gui/qt/medialibrary/qml/MediaView.qml:351
 msgid ""
 "No media found\n"
 "Please try adding sources"
@@ -5614,7 +5705,7 @@ msgid "%1 - %2 - %3 - %4"
 msgstr "%1 - %2 - %3 - %4"
 
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:406
-#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:941
+#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:942
 msgid "#"
 msgstr "#"
 
@@ -7372,16 +7463,6 @@ msgstr ""
 msgid "Duration unavailable"
 msgstr "ხანგრძლივობა მიუწვდომელია"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/Fallback.qml:48
-msgid ""
-"WIDGET\n"
-"NOT\n"
-"FOUND"
-msgstr ""
-"ვიჯეტი\n"
-"ვერ\n"
-"მოიძებნა"
-
 #: modules/gui/qt/player/qml/controlbarcontrols/FavoriteButton.qml:21
 msgid "Available for items in your library"
 msgstr "ხელმისაწვდომია თქვენი ბიბლიოთეკის ელემენტებისთვის"
@@ -7515,11 +7596,11 @@ msgstr "წინ 15 წამით"
 msgid "%1 %"
 msgstr "%1 %"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:38
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:40
 msgid "Choose a video zoom level"
 msgstr "აირჩიეთ ვიდეოს მასშტაბი"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:39
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:41
 msgid "Zoom is unavailable without video"
 msgstr "მასშტაბი ვიდეოს გარეშე მიუწვდომელია"
 
@@ -7563,17 +7644,17 @@ msgstr "დაკვრის რიგი"
 msgid "%1 elements, %2"
 msgstr "%1 ელემენტი, %2"
 
-#: modules/gui/qt/qt.cpp:171
+#: modules/gui/qt/qt.cpp:175
 msgid "Select the initial preferences view"
 msgstr "პარამეტრების საწყისი ხედის არჩევა"
 
-#: modules/gui/qt/qt.cpp:172
+#: modules/gui/qt/qt.cpp:176
 msgid ""
 "Select which preferences view to show upon opening the preferences dialog."
 msgstr ""
 "აირჩიეთ, პარამეტრების რომელი ხედი გამოჩნდეს პარამეტრების ფანჯრის გახსნისას."
 
-#: modules/gui/qt/qt.cpp:196
+#: modules/gui/qt/qt.cpp:200
 msgid ""
 "Show a notification popup with the artist and track name when the current "
 "play queue item changes, when VLC is minimized or hidden."
@@ -7581,7 +7662,7 @@ msgstr ""
 "შემსრულებლისა და ტრეკის სახელის შეტყობინების ჩვენება დაკვრის რიგის მიმდინარე "
 "ელემენტის შეცვლისას, როცა VLC ჩაკეცილი ან დამალულია."
 
-#: modules/gui/qt/qt.cpp:200
+#: modules/gui/qt/qt.cpp:204
 msgid ""
 "Sets the windows opacity between 0.1 and 1 for main interface, play queue "
 "and extended panel. This option only works with Windows and X11 with "
@@ -7591,7 +7672,7 @@ msgstr ""
 "დაკვრის რიგისა და გაფართოებული პანელისთვის. ეს პარამეტრი მუშაობს მხოლოდ "
 "Windows-ში და X11-ში კომპოზიციის გაფართოებებით."
 
-#: modules/gui/qt/qt.cpp:206
+#: modules/gui/qt/qt.cpp:210
 msgid ""
 "Sets the fullscreen controller opacity between 0.1 and 1 for main interface, "
 "play queue and extended panel. This option only works with Windows and X11 "
@@ -7601,11 +7682,11 @@ msgstr ""
 "ინტერფეისისთვის, დაკვრის რიგისა და გაფართოებული პანელისთვის. ეს პარამეტრი "
 "მუშაობს მხოლოდ Windows-ში და X11-ში კომპოზიციის გაფართოებებით."
 
-#: modules/gui/qt/qt.cpp:211
+#: modules/gui/qt/qt.cpp:215
 msgid "Initial user scale factor for the interface, between 0.3 and 3.0"
 msgstr "ინტერფეისის საწყისი მასშტაბის კოეფიციენტი, 0.3-დან 3.0-მდე"
 
-#: modules/gui/qt/qt.cpp:214
+#: modules/gui/qt/qt.cpp:218
 msgid ""
 "Show the errors of VLC at the bottom of the window, and ask before removing "
 "media from a playlist or from the play queue, or deleting playlists. Off, "
@@ -7617,11 +7698,11 @@ msgstr ""
 "შეცდომები მხოლოდ VLC-ის შეტყობინებებში ინახება და ეს ამოშლები მაშინვე "
 "სრულდება; ფაილის დისკიდან წაშლა ყოველთვის დადასტურებას მოითხოვს."
 
-#: modules/gui/qt/qt.cpp:224
+#: modules/gui/qt/qt.cpp:228
 msgid "set the options for qml debugger"
 msgstr "QML გამმართველის პარამეტრების დაყენება"
 
-#: modules/gui/qt/qt.cpp:225
+#: modules/gui/qt/qt.cpp:229
 msgid ""
 "set the options for qml debugger (see http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
@@ -7629,7 +7710,7 @@ msgstr ""
 "QML გამმართველის პარამეტრების დაყენება (იხ. http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
 
-#: modules/gui/qt/qt.cpp:245
+#: modules/gui/qt/qt.cpp:249
 msgid ""
 "Show the playback controls in fullscreen when the mouse moves. Off, only the "
 "keyboard shows them (the I key). The skins read it for their fullscreen "
@@ -7639,7 +7720,7 @@ msgstr ""
 "გამორთვისას მათ მხოლოდ კლავიატურა აჩენს (I კლავიში). გარსებიც ამას იყენებენ "
 "თავიანთი სრული ეკრანის მართვის პანელისთვის."
 
-#: modules/gui/qt/qt.cpp:261
+#: modules/gui/qt/qt.cpp:265
 msgid ""
 "Display the cover art of the audio playing in the player (the cone in the "
 "compact view). Off, a plain picture takes its place, which also prevents "
@@ -7649,7 +7730,7 @@ msgstr ""
 "გამორთვისას მის ადგილას უბრალო სურათია, რაც ეკრანის გადაწვასაც თავიდან "
 "აიცილებს."
 
-#: modules/gui/qt/qt.cpp:285
+#: modules/gui/qt/qt.cpp:289
 msgid ""
 "This option allows the interface to be shown and raised automatically when a "
 "video/audio playback starts, or never."
@@ -7657,11 +7738,11 @@ msgstr ""
 "ეს პარამეტრი საშუალებას აძლევს ინტერფეისს ავტომატურად გამოჩნდეს და წინა "
 "პლანზე გადმოვიდეს ვიდეოს/აუდიოს დაკვრის დაწყებისას, ან არასდროს."
 
-#: modules/gui/qt/qt.cpp:288
+#: modules/gui/qt/qt.cpp:292
 msgid "Enable window titlebar"
 msgstr "ფანჯრის სათაურის ზოლის ჩართვა"
 
-#: modules/gui/qt/qt.cpp:289
+#: modules/gui/qt/qt.cpp:293
 msgid ""
 "This option enables the title bar. Disabling it will remove the titlebar and "
 "move window buttons within the interface (Client Side Decoration)"
@@ -7669,39 +7750,41 @@ msgstr ""
 "ეს პარამეტრი რთავს სათაურის ზოლს. მისი გამორთვა წაშლის სათაურის ზოლს და "
 "ფანჯრის ღილაკებს ინტერფეისში გადაიტანს (კლიენტის მხარის დეკორაცია)"
 
-#: modules/gui/qt/qt.cpp:293
+#: modules/gui/qt/qt.cpp:297
 msgid "Show the menu bar"
 msgstr "მენიუს ზოლის ჩვენება"
 
-#: modules/gui/qt/qt.cpp:294
+#: modules/gui/qt/qt.cpp:298
 msgid "This option displays the classic menu bar"
 msgstr "ეს პარამეტრი აჩვენებს კლასიკურ მენიუს ზოლს"
 
-#: modules/gui/qt/qt.cpp:296
+#: modules/gui/qt/qt.cpp:300
 msgid "Pin video controls"
 msgstr "ვიდეოს მართვის ელემენტების მიმაგრება"
 
-#: modules/gui/qt/qt.cpp:297
+#: modules/gui/qt/qt.cpp:301
 msgid "Place video controls above and below the video instead of above"
 msgstr ""
 "ვიდეოს მართვის ელემენტების განთავსება ვიდეოს ზემოთ და ქვემოთ, ზედ გადაფარვის "
 "ნაცვლად"
 
-#: modules/gui/qt/qt.cpp:300
+#: modules/gui/qt/qt.cpp:304
 msgid "Show the frame at the hovered position above the seek bar"
 msgstr "კადრის ჩვენება გადახვევის ზოლის ზემოთ, მაუსის მიტანის ადგილას"
 
-#: modules/gui/qt/qt.cpp:302
+#: modules/gui/qt/qt.cpp:306
 msgid ""
 "Mark on the seek bar where the lines of the subtitle shown are, when it "
 "comes from a subtitle file"
-msgstr "გადახვევის ზოლზე ნაჩვენები ტიტრების ხაზების ადგილების აღნიშვნა, როცა ტიტრები ტიტრების ფაილიდანაა"
+msgstr ""
+"გადახვევის ზოლზე ნაჩვენები ტიტრების ხაზების ადგილების აღნიშვნა, როცა ტიტრები "
+"ტიტრების ფაილიდანაა"
 
-#: modules/gui/qt/qt.cpp:307
+#: modules/gui/qt/qt.cpp:311
 msgid "Select Qt video integration backend"
 msgstr "Qt ვიდეოინტეგრაციის ბექენდის არჩევა"
 
-#: modules/gui/qt/qt.cpp:308
+#: modules/gui/qt/qt.cpp:312
 msgid ""
 "Select Qt video integration backend. Use with care, the interface may not "
 "start if an incompatible compositor is selected"
@@ -7709,11 +7792,11 @@ msgstr ""
 "Qt ვიდეოინტეგრაციის ბექენდის არჩევა. გამოიყენეთ სიფრთხილით: შეუთავსებელი "
 "კომპოზიტორის არჩევისას ინტერფეისი შეიძლება არ გაეშვას"
 
-#: modules/gui/qt/qt.cpp:310
+#: modules/gui/qt/qt.cpp:314
 msgid "Use smooth scrolling in Flickable based views"
 msgstr "გლუვი გადახვევის გამოყენება Flickable-ზე დაფუძნებულ ხედებში"
 
-#: modules/gui/qt/qt.cpp:311
+#: modules/gui/qt/qt.cpp:315
 msgid ""
 "Deactivating this option will disable smooth scrolling in Flickable based "
 "views (such as the Play Queue). This option is only respected with a scroll "
@@ -7723,21 +7806,21 @@ msgstr ""
 "ხედებში (მაგ. დაკვრის რიგში). ეს პარამეტრი მხოლოდ გადახვევის დამმუშავებლით "
 "მოქმედებს, იხ. პარამეტრი `qt-use-scroll-handler`."
 
-#: modules/gui/qt/qt.cpp:314
+#: modules/gui/qt/qt.cpp:318
 msgid "Use Kirigami scroll handler for Flickable based views"
 msgstr ""
 "Kirigami-ს გადახვევის დამმუშავებლის გამოყენება Flickable-ზე დაფუძნებულ "
 "ხედებში"
 
-#: modules/gui/qt/qt.cpp:315
+#: modules/gui/qt/qt.cpp:319
 msgid "Using Kirigami scroll handler may improve scrolling behavior."
 msgstr "Kirigami-ს გადახვევის დამმუშავებელმა შეიძლება გადახვევა გააუმჯობესოს."
 
-#: modules/gui/qt/qt.cpp:317
+#: modules/gui/qt/qt.cpp:321
 msgid "Safe area for the user interface"
 msgstr "მომხმარებლის ინტერფეისის უსაფრთხო არე"
 
-#: modules/gui/qt/qt.cpp:318
+#: modules/gui/qt/qt.cpp:322
 msgid ""
 "Sets the safe area percentage between 0.0 and 100 when you want to ensure "
 "the visibility of the user interface on a constrained viewport"
@@ -7745,21 +7828,21 @@ msgstr ""
 "აყენებს უსაფრთხო არის პროცენტს 0.0-დან 100-მდე, როცა შეზღუდულ ხილვად არეში "
 "ინტერფეისის ხილვადობის უზრუნველყოფა გსურთ"
 
-#: modules/gui/qt/qt.cpp:322
+#: modules/gui/qt/qt.cpp:326
 msgid "Print Qt's important internal messages"
 msgstr "Qt-ის მნიშვნელოვანი შიდა შეტყობინებების გამოტანა"
 
-#: modules/gui/qt/qt.cpp:323
+#: modules/gui/qt/qt.cpp:327
 msgid "Enable Qt's all own messaging categories except the debug category."
 msgstr ""
 "Qt-ის ყველა საკუთარი შეტყობინების კატეგორიის ჩართვა, გამართვის კატეგორიის "
 "გარდა."
 
-#: modules/gui/qt/qt.cpp:325
+#: modules/gui/qt/qt.cpp:329
 msgid "Hide the window on close"
 msgstr "ფანჯრის დამალვა დახურვისას"
 
-#: modules/gui/qt/qt.cpp:326
+#: modules/gui/qt/qt.cpp:330
 msgid ""
 "Instead of closing the application, hide the window. This setting is only "
 "applicable when system tray icon is enabled."
@@ -7767,12 +7850,12 @@ msgstr ""
 "აპლიკაციის დახურვის ნაცვლად ფანჯრის დამალვა. ეს პარამეტრი მოქმედებს მხოლოდ "
 "მაშინ, როცა სისტემური ზონის ხატულა ჩართულია."
 
-#: modules/gui/qt/qt.cpp:328
+#: modules/gui/qt/qt.cpp:332
 msgid "Enable backdrop blur filter for the main window if possible"
 msgstr ""
 "მთავარი ფანჯრისთვის ფონის გაბუნდოვნების ფილტრის ჩართვა, თუ შესაძლებელია"
 
-#: modules/gui/qt/qt.cpp:329
+#: modules/gui/qt/qt.cpp:333
 msgid ""
 "If backdrop blur filter is available, use translucency in the backgrounds of "
 "certain parts of the user interface instead of a solid color. This setting "
@@ -7782,11 +7865,11 @@ msgstr ""
 "ფონში მყარი ფერის ნაცვლად ნახევრად გამჭვირვალობა გამოიყენება. ეს პარამეტრი "
 "ტექსტის წაკითხვადობას აუარესებს."
 
-#: modules/gui/qt/qt.cpp:332
+#: modules/gui/qt/qt.cpp:336
 msgid "Enable picture-in-picture (PiP) mode"
 msgstr "„სურათი სურათში“ (PiP) რეჟიმის ჩართვა"
 
-#: modules/gui/qt/qt.cpp:333
+#: modules/gui/qt/qt.cpp:337
 msgid ""
 "Picture-in-picture mode allows playing video contained in a smaller area so "
 "that the interface remains usable."
@@ -7794,7 +7877,7 @@ msgstr ""
 "„სურათი სურათში“ რეჟიმი ვიდეოს პატარა არეში უკრავს, რომ ინტერფეისი "
 "გამოყენებადი დარჩეს."
 
-#: modules/gui/qt/qt.cpp:336
+#: modules/gui/qt/qt.cpp:340
 msgid ""
 "Adjusts the accent color, special values are 'default' and 'system' "
 "(requires Qt 6.6) ."
@@ -7802,11 +7885,11 @@ msgstr ""
 "არეგულირებს აქცენტის ფერს, სპეციალური მნიშვნელობებია 'default' და 'system' "
 "(საჭიროა Qt 6.6) ."
 
-#: modules/gui/qt/qt.cpp:437
+#: modules/gui/qt/qt.cpp:441
 msgid "Check for VLC Redesign updates"
 msgstr "VLC Redesign-ის განახლებების შემოწმება"
 
-#: modules/gui/qt/qt.cpp:438
+#: modules/gui/qt/qt.cpp:442
 msgid ""
 "Look for a new release of VLC Redesign on GitHub at startup, at most once a "
 "day."
@@ -7814,11 +7897,11 @@ msgstr ""
 "VLC Redesign-ის ახალი გამოშვების ძებნა GitHub-ზე გაშვებისას, დღეში მაქსიმუმ "
 "ერთხელ."
 
-#: modules/gui/qt/qt.cpp:442
+#: modules/gui/qt/qt.cpp:446
 msgid "Resume at"
 msgstr "გაგრძელება წამიდან"
 
-#: modules/gui/qt/qt.cpp:443
+#: modules/gui/qt/qt.cpp:447
 msgid ""
 "Seconds into the media of the command line where playback continues, after "
 "an update."
@@ -7865,7 +7948,9 @@ msgstr "აღვადგინოთ დაკვრის რიგი?"
 
 #: modules/gui/qt/util/model_recovery_agent.hpp:88
 msgid "VLC Redesign closed unexpectedly on %1. Restore the play queue it had?"
-msgstr "VLC Redesign მოულოდნელად დაიხურა (%1). აღვადგინოთ დაკვრის რიგი, რომელიც მაშინ ჰქონდა?"
+msgstr ""
+"VLC Redesign მოულოდნელად დაიხურა (%1). აღვადგინოთ დაკვრის რიგი, რომელიც "
+"მაშინ ჰქონდა?"
 
 #: modules/gui/qt/util/model_recovery_agent.hpp:90
 msgctxt "play queue"
@@ -7876,7 +7961,7 @@ msgstr "აღდგეს"
 msgid "Don't restore"
 msgstr "არ აღდგეს"
 
-#: modules/gui/qt/util/redesign_updater.cpp:194
+#: modules/gui/qt/util/redesign_updater.cpp:215
 msgid ""
 "The update isn't signed by the publisher of this copy (%1), so it wasn't "
 "used."
@@ -7884,66 +7969,76 @@ msgstr ""
 "განახლება ამ ასლის გამომცემლის (%1) მიერ არ არის ხელმოწერილი, ამიტომ არ იქნა "
 "გამოყენებული."
 
-#: modules/gui/qt/util/redesign_updater.cpp:550
+#: modules/gui/qt/util/redesign_updater.cpp:460
+msgid "%1 (later)"
+msgstr "%1 (მოგვიანებით)"
+
+#: modules/gui/qt/util/redesign_updater.cpp:462
+msgid "%1 (soon)"
+msgstr "%1 (მალე)"
+
+#: modules/gui/qt/util/redesign_updater.cpp:610
 msgid "This build cannot check for updates."
 msgstr "ამ ანაწყობს განახლებების შემოწმება არ შეუძლია."
 
-#: modules/gui/qt/util/redesign_updater.cpp:564
+#: modules/gui/qt/util/redesign_updater.cpp:624
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr ""
 "GitHub-თან დაკავშირება ვერ მოხერხდა. შეამოწმეთ კავშირი და სცადეთ ხელახლა."
 
-#: modules/gui/qt/util/redesign_updater.cpp:581
+#: modules/gui/qt/util/redesign_updater.cpp:641
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "GitHub-მა მოულოდნელი პასუხი გამოგზავნა (%1)."
 
-#: modules/gui/qt/util/redesign_updater.cpp:677
+#: modules/gui/qt/util/redesign_updater.cpp:759
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
-msgstr "ეს განახლება არ არის ხელმოწერილი VLC Redesign-ის მიერ, ამიტომ არ იქნა გამოყენებული. ამის ნაცვლად ჩამოტვირთეთ ის გამოშვების გვერდიდან."
+msgstr ""
+"ეს განახლება არ არის ხელმოწერილი VLC Redesign-ის მიერ, ამიტომ არ იქნა "
+"გამოყენებული. ამის ნაცვლად ჩამოტვირთეთ ის გამოშვების გვერდიდან."
 
-#: modules/gui/qt/util/redesign_updater.cpp:699
-#: modules/gui/qt/util/redesign_updater.cpp:740
+#: modules/gui/qt/util/redesign_updater.cpp:781
+#: modules/gui/qt/util/redesign_updater.cpp:822
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr ""
 "განახლების საკონტროლო ჯამი არ არის; ჩამოტვირთეთ ის გამოშვების გვერდიდან."
 
-#: modules/gui/qt/util/redesign_updater.cpp:714
-#: modules/gui/qt/util/redesign_updater.cpp:786
+#: modules/gui/qt/util/redesign_updater.cpp:796
+#: modules/gui/qt/util/redesign_updater.cpp:868
 msgid "The download failed. Check your connection and try again."
 msgstr "ჩამოტვირთვა ვერ მოხერხდა. შეამოწმეთ კავშირი და სცადეთ ხელახლა."
 
-#: modules/gui/qt/util/redesign_updater.cpp:799
+#: modules/gui/qt/util/redesign_updater.cpp:881
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr ""
 "განახლება თავის საკონტროლო ჯამს არ ემთხვევა, ამიტომ არ იქნა გამოყენებული."
 
-#: modules/gui/qt/util/redesign_updater.cpp:830
+#: modules/gui/qt/util/redesign_updater.cpp:912
 msgid "The update isn't in a format this version knows."
 msgstr "განახლება ისეთ ფორმატშია, რომელიც ამ ვერსიისთვის უცნობია."
 
-#: modules/gui/qt/util/redesign_updater.cpp:833
-#: modules/gui/qt/util/redesign_updater.cpp:857
-#: modules/gui/qt/util/redesign_updater.cpp:868
-#: modules/gui/qt/util/redesign_updater.cpp:874
+#: modules/gui/qt/util/redesign_updater.cpp:915
+#: modules/gui/qt/util/redesign_updater.cpp:939
+#: modules/gui/qt/util/redesign_updater.cpp:950
+#: modules/gui/qt/util/redesign_updater.cpp:956
 msgid "The update is damaged."
 msgstr "განახლება დაზიანებულია."
 
-#: modules/gui/qt/util/redesign_updater.cpp:838
+#: modules/gui/qt/util/redesign_updater.cpp:920
 msgid "The update isn't for this version."
 msgstr "განახლება ამ ვერსიისთვის არ არის."
 
-#: modules/gui/qt/util/redesign_updater.cpp:847
-#: modules/gui/qt/util/redesign_updater.cpp:884
-#: modules/gui/qt/util/redesign_updater.cpp:893
-#: modules/gui/qt/util/redesign_updater.cpp:897
-#: modules/gui/qt/util/redesign_updater.cpp:901
+#: modules/gui/qt/util/redesign_updater.cpp:929
+#: modules/gui/qt/util/redesign_updater.cpp:966
+#: modules/gui/qt/util/redesign_updater.cpp:975
+#: modules/gui/qt/util/redesign_updater.cpp:979
+#: modules/gui/qt/util/redesign_updater.cpp:983
 msgid "The update can't be written in %1."
 msgstr "განახლების ჩაწერა შეუძლებელია აქ: %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:849
+#: modules/gui/qt/util/redesign_updater.cpp:931
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -7951,29 +8046,29 @@ msgstr ""
 "VLC Redesign-ის ერთ-ერთი ფაილი ინსტალაციის შემდეგ შეიცვალა, ამიტომ მცირე "
 "განახლების გამოყენება შეუძლებელია: განაახლეთ ინსტალატორით."
 
-#: modules/gui/qt/util/redesign_updater.cpp:879
+#: modules/gui/qt/util/redesign_updater.cpp:961
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr "განახლება დაზიანებულია: ერთ-ერთი ფაილი საკონტროლო ჯამს არ ემთხვევა."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1004
+#: modules/gui/qt/util/redesign_updater.cpp:1086
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr "განახლების დაწყება ვერ მოხერხდა. შემდეგ ჯერზე ხელახლა ვცდით."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1031
+#: modules/gui/qt/util/redesign_updater.cpp:1113
 msgid "The download failed. Try again, or download it from the release page."
 msgstr ""
 "ჩამოტვირთვა ვერ მოხერხდა. სცადეთ ხელახლა ან ჩამოტვირთეთ გამოშვების გვერდიდან."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1044
+#: modules/gui/qt/util/redesign_updater.cpp:1126
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr ""
 "ჩამოტვირთული ინსტალატორი საკონტროლო ჯამს არ ემთხვევა, ამიტომ არ გაეშვა."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1053
+#: modules/gui/qt/util/redesign_updater.cpp:1135
 msgid "The installer couldn't be saved to %1."
 msgstr "ინსტალატორის შენახვა ვერ მოხერხდა აქ: %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1087
+#: modules/gui/qt/util/redesign_updater.cpp:1169
 msgid "The installer couldn't be started."
 msgstr "ინსტალატორის გაშვება ვერ მოხერხდა."
 

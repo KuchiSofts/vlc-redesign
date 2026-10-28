@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-28 13:15+0000\n"
+"POT-Creation-Date: 2026-10-28 18:41+0000\n"
 "PO-Revision-Date: 2014-06-27 23:01+0000\n"
 "Last-Translator: Sortale <sortale.zerok@gmail.com>\n"
 "Language-Team: Vietnamese (http://www.transifex.com/projects/p/vlc-trans/"
@@ -1528,7 +1528,7 @@ msgid "It needs Windows 10 version 1809 or later."
 msgstr "Cần Windows 10 phiên bản 1809 trở lên."
 
 #: bin/winvlc.c:712 bin/winvlc.c:825
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:312
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:319
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:547
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:552
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:142
@@ -1894,17 +1894,21 @@ msgid "the VideoLAN team and contributors"
 msgstr "nhóm VideoLAN và những người đóng góp"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:279
+msgid "Also on: %1"
+msgstr "Có trên: %1"
+
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:286
 #: modules/gui/qt/menus/qml/MainMenu.qml:173
 msgid "Suggest an idea"
 msgstr "Đề xuất ý tưởng"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:281
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:288
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:28
 #: modules/gui/qt/menus/qml/MainMenu.qml:178
 msgid "Report a problem"
 msgstr "Báo cáo sự cố"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:292
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:299
 msgid ""
 "An unofficial build, not affiliated with or endorsed by VideoLAN or "
 "Juxtopposed. VLC, VLC media player and the cone logo are trademarks of "
@@ -1914,11 +1918,11 @@ msgstr ""
 "Juxtopposed bảo trợ. VLC, VLC media player và biểu tượng hình nón là thương "
 "hiệu của VideoLAN. Phần mềm tự do theo giấy phép GNU GPL v2 hoặc mới hơn."
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:302
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:309
 msgid "Licenses & authors"
 msgstr "Giấy phép & tác giả"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:306
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:313
 msgid "GitHub"
 msgstr "GitHub"
 
@@ -1937,7 +1941,9 @@ msgstr "Nội dung của báo cáo"
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:57
 msgid ""
 "GitHub opens with this filled in. Nothing is sent until you submit it there."
-msgstr "GitHub sẽ mở với các thông tin này đã được điền sẵn. Không có gì được gửi đi cho đến khi bạn gửi nó ở đó."
+msgstr ""
+"GitHub sẽ mở với các thông tin này đã được điền sẵn. Không có gì được gửi đi "
+"cho đến khi bạn gửi nó ở đó."
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:102
 msgid "Report"
@@ -1947,7 +1953,9 @@ msgstr "Báo cáo"
 msgid ""
 "No file names, user names or logs. To add a log: Settings → General → "
 "Diagnostics → Save a log."
-msgstr "Không có tên tập tin, tên người dùng hay nhật ký. Để thêm nhật ký: Thiết lập → Chung → Chẩn đoán → Lưu nhật ký."
+msgstr ""
+"Không có tên tập tin, tên người dùng hay nhật ký. Để thêm nhật ký: Thiết lập "
+"→ Chung → Chẩn đoán → Lưu nhật ký."
 
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:514
 msgid "Confirm"
@@ -2421,6 +2429,84 @@ msgstr "Duyệt tìm %1"
 msgid "Image Files (*.png *.jpg);;All Files (*)"
 msgstr "Tập tin hình ảnh (*.png *.jpg);;Mọi tập tin (*)"
 
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:40
+msgid "Welcome"
+msgstr "Chào mừng"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:51
+msgid ""
+"<p>In order to protect your privacy, <i>VLC media player</i> does <b>not</b> "
+"collect personal data or transmit them, not even in anonymized form, to "
+"anyone.</p>\n"
+"<p>Nevertheless, <i>VLC</i> is able to automatically retrieve information "
+"about the media in your play queue from third party Internet-based services. "
+"This includes cover art, track names, artist names and other meta-data.</p>\n"
+"<p>Consequently, this may entail identifying some of your media files to "
+"third party entities. Therefore the <i>VLC</i> developers require your "
+"express consent for the media player to access the Internet automatically.</"
+"p>\n"
+msgstr ""
+"<p>Để bảo vệ quyền riêng tư của bạn, <i>VLC media player</i> <b>không</b> "
+"thu thập dữ liệu cá nhân hay truyền chúng cho bất kỳ ai, kể cả dưới dạng ẩn "
+"danh.</p>\n"
+"<p>Tuy vậy, <i>VLC</i> có thể tự động lấy thông tin về các phương tiện trong "
+"hàng đợi phát của bạn từ các dịch vụ Internet của bên thứ ba. Thông tin này "
+"gồm ảnh bìa, tên bài hát, tên nghệ sĩ và các siêu dữ liệu khác.</p>\n"
+"<p>Do đó, việc này có thể khiến một số tập tin phương tiện của bạn bị bên "
+"thứ ba nhận biết. Vì vậy, các nhà phát triển <i>VLC</i> cần bạn đồng ý rõ "
+"ràng để trình phát được tự động truy cập Internet.</p>\n"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:90
+msgid ""
+"<ul><li>No client-side decoration</li><li>Toolbar menu</li><li>Pinned video "
+"controls</li></ul>"
+msgstr ""
+"<ul><li>Không dùng khung cửa sổ tùy chỉnh</li><li>Menu thanh công cụ</"
+"li><li>Ghim nút điều khiển video</li></ul>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:96
+msgid ""
+"<ul><li>Client-side decoration</li><li>No toolbar menu</li><li>Video "
+"controls unpinned</li></ul>"
+msgstr ""
+"<ul><li>Dùng khung cửa sổ tùy chỉnh</li><li>Không có menu thanh công cụ</"
+"li><li>Không ghim nút điều khiển video</li></ul>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:193
+msgid "Choose a folder to add to the Media Library"
+msgstr "Chọn một thư mục để thêm vào thư viện phương tiện"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:210
+msgid ""
+"<i>VLC will automatically switch to dark mode accordingly with system "
+"settings</i>"
+msgstr ""
+"<i>VLC sẽ tự động chuyển sang chế độ tối theo thiết lập của hệ thống</i>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:213
+msgid "<i>VLC will automatically use light mode</i>"
+msgstr "<i>VLC sẽ tự động dùng chế độ sáng</i>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:216
+msgid "<i>VLC will automatically use dark mode</i>"
+msgstr "<i>VLC sẽ tự động dùng chế độ tối</i>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:230
+msgid ""
+"<i>VLC will use a modern layout with no menubar or pinned controls but with "
+"client-side decoration</i>"
+msgstr ""
+"<i>VLC sẽ dùng bố cục hiện đại, không có thanh menu hay nút điều khiển được "
+"ghim nhưng có khung cửa sổ tùy chỉnh</i>"
+
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:233
+msgid ""
+"<i>VLC will use a classic layout with a menubar and pinned controls but with "
+"no client-side decoration</i>"
+msgstr ""
+"<i>VLC sẽ dùng bố cục cổ điển, có thanh menu và nút điều khiển được ghim "
+"nhưng không có khung cửa sổ tùy chỉnh</i>"
+
 #: modules/gui/qt/dialogs/firstrun/onboarding.cpp:48
 msgid "Could not add the media folder: %1"
 msgstr "Không thể thêm thư mục phương tiện: %1"
@@ -2499,15 +2585,15 @@ msgstr ""
 msgid "Finish"
 msgstr "Hoàn tất"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:108
+#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:110
 msgid "Learn the basic keyboard shortcuts."
 msgstr "Tìm hiểu các phím tắt cơ bản."
 
-#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:116
+#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:118
 msgid "No playback shortcuts are currently assigned."
 msgstr "Hiện chưa gán phím tắt phát nào."
 
-#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:200
+#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:202
 msgid "Find the full list in the menu."
 msgstr "Xem danh sách đầy đủ trong menu."
 
@@ -2789,7 +2875,10 @@ msgstr "Hiện có gì mới sau khi cập nhật"
 msgid ""
 "The first time VLC opens after an update, a card lists what is new in the "
 "version, with a link to the full changelog. The notes are in English."
-msgstr "Lần đầu VLC mở sau khi cập nhật, một thẻ sẽ liệt kê những điểm mới trong phiên bản, kèm liên kết tới nhật ký thay đổi đầy đủ. Các ghi chú bằng tiếng Anh."
+msgstr ""
+"Lần đầu VLC mở sau khi cập nhật, một thẻ sẽ liệt kê những điểm mới trong "
+"phiên bản, kèm liên kết tới nhật ký thay đổi đầy đủ. Các ghi chú bằng tiếng "
+"Anh."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:256
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
@@ -3180,7 +3269,7 @@ msgstr ""
 "bạn chưa được lưu."
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:79
-#: modules/gui/qt/qt.cpp:340
+#: modules/gui/qt/qt.cpp:344
 msgid "Expert"
 msgstr "Chuyên gia"
 
@@ -3265,7 +3354,7 @@ msgstr "Chủ đề"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:192
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:409
-#: modules/gui/qt/qt.cpp:335
+#: modules/gui/qt/qt.cpp:339
 msgid "Accent color"
 msgstr "Màu nhấn"
 
@@ -4045,7 +4134,7 @@ msgid "Seeking"
 msgstr "Tua"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:122
-#: modules/gui/qt/qt.cpp:299
+#: modules/gui/qt/qt.cpp:303
 msgid "Show thumbnail while scrubbing"
 msgstr "Hiện hình thu nhỏ khi kéo thanh tua"
 
@@ -4325,7 +4414,7 @@ msgid "Timing"
 msgstr "Căn thời gian"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
-#: modules/gui/qt/qt.cpp:301
+#: modules/gui/qt/qt.cpp:305
 msgid "Show subtitle lines on the seek bar"
 msgstr "Hiện các dòng phụ đề trên thanh tua"
 
@@ -5577,7 +5666,7 @@ msgstr "Chế độ xem phương tiện"
 msgid "Unknown Title"
 msgstr "Không rõ tiêu đề"
 
-#: modules/gui/qt/medialibrary/qml/MediaView.qml:350
+#: modules/gui/qt/medialibrary/qml/MediaView.qml:351
 msgid ""
 "No media found\n"
 "Please try adding sources"
@@ -5602,7 +5691,7 @@ msgid "%1 - %2 - %3 - %4"
 msgstr "%1 - %2 - %3 - %4"
 
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:406
-#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:941
+#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:942
 msgid "#"
 msgstr "#"
 
@@ -7364,16 +7453,6 @@ msgstr ""
 msgid "Duration unavailable"
 msgstr "Không có thông tin thời lượng"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/Fallback.qml:48
-msgid ""
-"WIDGET\n"
-"NOT\n"
-"FOUND"
-msgstr ""
-"TIỆN ÍCH\n"
-"KHÔNG\n"
-"TÌM THẤY"
-
 #: modules/gui/qt/player/qml/controlbarcontrols/FavoriteButton.qml:21
 msgid "Available for items in your library"
 msgstr "Dành cho các mục trong thư viện của bạn"
@@ -7507,11 +7586,11 @@ msgstr "Tiến 15 giây"
 msgid "%1 %"
 msgstr "%1 %"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:38
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:40
 msgid "Choose a video zoom level"
 msgstr "Chọn mức thu phóng video"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:39
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:41
 msgid "Zoom is unavailable without video"
 msgstr "Không thể thu phóng khi không có video"
 
@@ -7555,16 +7634,16 @@ msgstr "Hàng đợi phát"
 msgid "%1 elements, %2"
 msgstr "%1 mục, %2"
 
-#: modules/gui/qt/qt.cpp:171
+#: modules/gui/qt/qt.cpp:175
 msgid "Select the initial preferences view"
 msgstr "Chọn chế độ xem tùy chọn ban đầu"
 
-#: modules/gui/qt/qt.cpp:172
+#: modules/gui/qt/qt.cpp:176
 msgid ""
 "Select which preferences view to show upon opening the preferences dialog."
 msgstr "Chọn chế độ xem tùy chọn sẽ hiển thị khi mở hộp thoại tùy chọn."
 
-#: modules/gui/qt/qt.cpp:196
+#: modules/gui/qt/qt.cpp:200
 msgid ""
 "Show a notification popup with the artist and track name when the current "
 "play queue item changes, when VLC is minimized or hidden."
@@ -7572,7 +7651,7 @@ msgstr ""
 "Hiện cửa sổ thông báo với tên nghệ sĩ và bài hát khi mục hiện tại trong hàng "
 "đợi phát thay đổi, khi VLC đang thu nhỏ hoặc bị ẩn."
 
-#: modules/gui/qt/qt.cpp:200
+#: modules/gui/qt/qt.cpp:204
 msgid ""
 "Sets the windows opacity between 0.1 and 1 for main interface, play queue "
 "and extended panel. This option only works with Windows and X11 with "
@@ -7582,7 +7661,7 @@ msgstr ""
 "mở rộng. Tùy chọn này chỉ hoạt động trên Windows và X11 có phần mở rộng "
 "composite."
 
-#: modules/gui/qt/qt.cpp:206
+#: modules/gui/qt/qt.cpp:210
 msgid ""
 "Sets the fullscreen controller opacity between 0.1 and 1 for main interface, "
 "play queue and extended panel. This option only works with Windows and X11 "
@@ -7592,11 +7671,11 @@ msgstr ""
 "chính, hàng đợi phát và bảng mở rộng. Tùy chọn này chỉ hoạt động trên "
 "Windows và X11 có phần mở rộng composite."
 
-#: modules/gui/qt/qt.cpp:211
+#: modules/gui/qt/qt.cpp:215
 msgid "Initial user scale factor for the interface, between 0.3 and 3.0"
 msgstr "Hệ số tỉ lệ ban đầu của giao diện, từ 0,3 đến 3,0"
 
-#: modules/gui/qt/qt.cpp:214
+#: modules/gui/qt/qt.cpp:218
 msgid ""
 "Show the errors of VLC at the bottom of the window, and ask before removing "
 "media from a playlist or from the play queue, or deleting playlists. Off, "
@@ -7608,11 +7687,11 @@ msgstr ""
 "lỗi chỉ được lưu trong thông báo của VLC và việc xóa được thực hiện ngay; "
 "việc xóa tập tin khỏi ổ đĩa luôn cần xác nhận."
 
-#: modules/gui/qt/qt.cpp:224
+#: modules/gui/qt/qt.cpp:228
 msgid "set the options for qml debugger"
 msgstr "đặt tùy chọn cho trình gỡ lỗi qml"
 
-#: modules/gui/qt/qt.cpp:225
+#: modules/gui/qt/qt.cpp:229
 msgid ""
 "set the options for qml debugger (see http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
@@ -7620,7 +7699,7 @@ msgstr ""
 "đặt tùy chọn cho trình gỡ lỗi qml (xem http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
 
-#: modules/gui/qt/qt.cpp:245
+#: modules/gui/qt/qt.cpp:249
 msgid ""
 "Show the playback controls in fullscreen when the mouse moves. Off, only the "
 "keyboard shows them (the I key). The skins read it for their fullscreen "
@@ -7630,7 +7709,7 @@ msgstr ""
 "bàn phím mới hiện chúng (phím I). Các skin cũng đọc tùy chọn này cho bộ điều "
 "khiển toàn màn hình của chúng."
 
-#: modules/gui/qt/qt.cpp:261
+#: modules/gui/qt/qt.cpp:265
 msgid ""
 "Display the cover art of the audio playing in the player (the cone in the "
 "compact view). Off, a plain picture takes its place, which also prevents "
@@ -7640,7 +7719,7 @@ msgstr ""
 "xem thu gọn). Khi tắt, một hình ảnh đơn giản sẽ thay thế, điều này cũng giúp "
 "tránh lưu ảnh trên màn hình (burn-in)."
 
-#: modules/gui/qt/qt.cpp:285
+#: modules/gui/qt/qt.cpp:289
 msgid ""
 "This option allows the interface to be shown and raised automatically when a "
 "video/audio playback starts, or never."
@@ -7648,11 +7727,11 @@ msgstr ""
 "Tùy chọn này cho phép giao diện tự động hiện và đưa lên trước khi bắt đầu "
 "phát video/âm thanh, hoặc không bao giờ."
 
-#: modules/gui/qt/qt.cpp:288
+#: modules/gui/qt/qt.cpp:292
 msgid "Enable window titlebar"
 msgstr "Bật thanh tiêu đề cửa sổ"
 
-#: modules/gui/qt/qt.cpp:289
+#: modules/gui/qt/qt.cpp:293
 msgid ""
 "This option enables the title bar. Disabling it will remove the titlebar and "
 "move window buttons within the interface (Client Side Decoration)"
@@ -7660,38 +7739,40 @@ msgstr ""
 "Tùy chọn này bật thanh tiêu đề. Tắt đi sẽ bỏ thanh tiêu đề và đưa các nút "
 "cửa sổ vào trong giao diện (Client Side Decoration)"
 
-#: modules/gui/qt/qt.cpp:293
+#: modules/gui/qt/qt.cpp:297
 msgid "Show the menu bar"
 msgstr "Hiện thanh menu"
 
-#: modules/gui/qt/qt.cpp:294
+#: modules/gui/qt/qt.cpp:298
 msgid "This option displays the classic menu bar"
 msgstr "Tùy chọn này hiển thị thanh menu cổ điển"
 
-#: modules/gui/qt/qt.cpp:296
+#: modules/gui/qt/qt.cpp:300
 msgid "Pin video controls"
 msgstr "Ghim nút điều khiển video"
 
-#: modules/gui/qt/qt.cpp:297
+#: modules/gui/qt/qt.cpp:301
 msgid "Place video controls above and below the video instead of above"
 msgstr ""
 "Đặt nút điều khiển video ở trên và dưới video thay vì đè lên trên video"
 
-#: modules/gui/qt/qt.cpp:300
+#: modules/gui/qt/qt.cpp:304
 msgid "Show the frame at the hovered position above the seek bar"
 msgstr "Hiện khung hình tại vị trí di chuột phía trên thanh tua"
 
-#: modules/gui/qt/qt.cpp:302
+#: modules/gui/qt/qt.cpp:306
 msgid ""
 "Mark on the seek bar where the lines of the subtitle shown are, when it "
 "comes from a subtitle file"
-msgstr "Đánh dấu trên thanh tua vị trí các dòng của phụ đề đang hiển thị, khi phụ đề đến từ một tập tin phụ đề"
+msgstr ""
+"Đánh dấu trên thanh tua vị trí các dòng của phụ đề đang hiển thị, khi phụ đề "
+"đến từ một tập tin phụ đề"
 
-#: modules/gui/qt/qt.cpp:307
+#: modules/gui/qt/qt.cpp:311
 msgid "Select Qt video integration backend"
 msgstr "Chọn back-end tích hợp video của Qt"
 
-#: modules/gui/qt/qt.cpp:308
+#: modules/gui/qt/qt.cpp:312
 msgid ""
 "Select Qt video integration backend. Use with care, the interface may not "
 "start if an incompatible compositor is selected"
@@ -7699,11 +7780,11 @@ msgstr ""
 "Chọn back-end tích hợp video của Qt. Hãy thận trọng, giao diện có thể không "
 "khởi động nếu chọn compositor không tương thích"
 
-#: modules/gui/qt/qt.cpp:310
+#: modules/gui/qt/qt.cpp:314
 msgid "Use smooth scrolling in Flickable based views"
 msgstr "Dùng cuộn mượt trong các chế độ xem dựa trên Flickable"
 
-#: modules/gui/qt/qt.cpp:311
+#: modules/gui/qt/qt.cpp:315
 msgid ""
 "Deactivating this option will disable smooth scrolling in Flickable based "
 "views (such as the Play Queue). This option is only respected with a scroll "
@@ -7713,19 +7794,19 @@ msgstr ""
 "(như Hàng đợi phát). Tùy chọn này chỉ có tác dụng khi có trình xử lý cuộn, "
 "xem tùy chọn `qt-use-scroll-handler`."
 
-#: modules/gui/qt/qt.cpp:314
+#: modules/gui/qt/qt.cpp:318
 msgid "Use Kirigami scroll handler for Flickable based views"
 msgstr "Dùng trình xử lý cuộn Kirigami cho các chế độ xem dựa trên Flickable"
 
-#: modules/gui/qt/qt.cpp:315
+#: modules/gui/qt/qt.cpp:319
 msgid "Using Kirigami scroll handler may improve scrolling behavior."
 msgstr "Dùng trình xử lý cuộn Kirigami có thể cải thiện việc cuộn."
 
-#: modules/gui/qt/qt.cpp:317
+#: modules/gui/qt/qt.cpp:321
 msgid "Safe area for the user interface"
 msgstr "Vùng an toàn cho giao diện người dùng"
 
-#: modules/gui/qt/qt.cpp:318
+#: modules/gui/qt/qt.cpp:322
 msgid ""
 "Sets the safe area percentage between 0.0 and 100 when you want to ensure "
 "the visibility of the user interface on a constrained viewport"
@@ -7733,19 +7814,19 @@ msgstr ""
 "Đặt phần trăm vùng an toàn từ 0,0 đến 100 khi bạn muốn đảm bảo giao diện "
 "người dùng luôn hiển thị trên khung nhìn bị giới hạn"
 
-#: modules/gui/qt/qt.cpp:322
+#: modules/gui/qt/qt.cpp:326
 msgid "Print Qt's important internal messages"
 msgstr "In các thông báo nội bộ quan trọng của Qt"
 
-#: modules/gui/qt/qt.cpp:323
+#: modules/gui/qt/qt.cpp:327
 msgid "Enable Qt's all own messaging categories except the debug category."
 msgstr "Bật mọi danh mục thông báo riêng của Qt trừ danh mục gỡ lỗi."
 
-#: modules/gui/qt/qt.cpp:325
+#: modules/gui/qt/qt.cpp:329
 msgid "Hide the window on close"
 msgstr "Ẩn cửa sổ khi đóng"
 
-#: modules/gui/qt/qt.cpp:326
+#: modules/gui/qt/qt.cpp:330
 msgid ""
 "Instead of closing the application, hide the window. This setting is only "
 "applicable when system tray icon is enabled."
@@ -7753,11 +7834,11 @@ msgstr ""
 "Thay vì đóng ứng dụng, ẩn cửa sổ đi. Thiết lập này chỉ áp dụng khi biểu "
 "tượng ở khay hệ thống được bật."
 
-#: modules/gui/qt/qt.cpp:328
+#: modules/gui/qt/qt.cpp:332
 msgid "Enable backdrop blur filter for the main window if possible"
 msgstr "Bật bộ lọc làm mờ nền cho cửa sổ chính nếu có thể"
 
-#: modules/gui/qt/qt.cpp:329
+#: modules/gui/qt/qt.cpp:333
 msgid ""
 "If backdrop blur filter is available, use translucency in the backgrounds of "
 "certain parts of the user interface instead of a solid color. This setting "
@@ -7766,11 +7847,11 @@ msgstr ""
 "Nếu có bộ lọc làm mờ nền, dùng nền trong mờ cho một số phần của giao diện "
 "người dùng thay vì màu đặc. Thiết lập này làm giảm độ dễ đọc của chữ."
 
-#: modules/gui/qt/qt.cpp:332
+#: modules/gui/qt/qt.cpp:336
 msgid "Enable picture-in-picture (PiP) mode"
 msgstr "Bật chế độ hình trong hình (PiP)"
 
-#: modules/gui/qt/qt.cpp:333
+#: modules/gui/qt/qt.cpp:337
 msgid ""
 "Picture-in-picture mode allows playing video contained in a smaller area so "
 "that the interface remains usable."
@@ -7778,7 +7859,7 @@ msgstr ""
 "Chế độ hình trong hình cho phép phát video trong một vùng nhỏ hơn để giao "
 "diện vẫn dùng được."
 
-#: modules/gui/qt/qt.cpp:336
+#: modules/gui/qt/qt.cpp:340
 msgid ""
 "Adjusts the accent color, special values are 'default' and 'system' "
 "(requires Qt 6.6) ."
@@ -7786,11 +7867,11 @@ msgstr ""
 "Điều chỉnh màu nhấn, các giá trị đặc biệt là 'default' và 'system' (cần Qt "
 "6.6) ."
 
-#: modules/gui/qt/qt.cpp:437
+#: modules/gui/qt/qt.cpp:441
 msgid "Check for VLC Redesign updates"
 msgstr "Kiểm tra bản cập nhật VLC Redesign"
 
-#: modules/gui/qt/qt.cpp:438
+#: modules/gui/qt/qt.cpp:442
 msgid ""
 "Look for a new release of VLC Redesign on GitHub at startup, at most once a "
 "day."
@@ -7798,11 +7879,11 @@ msgstr ""
 "Tìm bản phát hành mới của VLC Redesign trên GitHub khi khởi động, tối đa mỗi "
 "ngày một lần."
 
-#: modules/gui/qt/qt.cpp:442
+#: modules/gui/qt/qt.cpp:446
 msgid "Resume at"
 msgstr "Phát tiếp tại"
 
-#: modules/gui/qt/qt.cpp:443
+#: modules/gui/qt/qt.cpp:447
 msgid ""
 "Seconds into the media of the command line where playback continues, after "
 "an update."
@@ -7860,7 +7941,7 @@ msgstr "Khôi phục"
 msgid "Don't restore"
 msgstr "Không khôi phục"
 
-#: modules/gui/qt/util/redesign_updater.cpp:194
+#: modules/gui/qt/util/redesign_updater.cpp:215
 msgid ""
 "The update isn't signed by the publisher of this copy (%1), so it wasn't "
 "used."
@@ -7868,65 +7949,75 @@ msgstr ""
 "Bản cập nhật không được ký bởi nhà phát hành của bản sao này (%1) nên không "
 "được dùng."
 
-#: modules/gui/qt/util/redesign_updater.cpp:550
+#: modules/gui/qt/util/redesign_updater.cpp:460
+msgid "%1 (later)"
+msgstr "%1 (sau này)"
+
+#: modules/gui/qt/util/redesign_updater.cpp:462
+msgid "%1 (soon)"
+msgstr "%1 (sắp có)"
+
+#: modules/gui/qt/util/redesign_updater.cpp:610
 msgid "This build cannot check for updates."
 msgstr "Bản dựng này không thể kiểm tra bản cập nhật."
 
-#: modules/gui/qt/util/redesign_updater.cpp:564
+#: modules/gui/qt/util/redesign_updater.cpp:624
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "Không thể kết nối tới GitHub. Hãy kiểm tra kết nối và thử lại."
 
-#: modules/gui/qt/util/redesign_updater.cpp:581
+#: modules/gui/qt/util/redesign_updater.cpp:641
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "GitHub gửi phản hồi không mong đợi (%1)."
 
-#: modules/gui/qt/util/redesign_updater.cpp:677
+#: modules/gui/qt/util/redesign_updater.cpp:759
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
-msgstr "Bản cập nhật này không được VLC Redesign ký nên đã không được sử dụng. Thay vào đó, hãy tải nó từ trang phát hành."
+msgstr ""
+"Bản cập nhật này không được VLC Redesign ký nên đã không được sử dụng. Thay "
+"vào đó, hãy tải nó từ trang phát hành."
 
-#: modules/gui/qt/util/redesign_updater.cpp:699
-#: modules/gui/qt/util/redesign_updater.cpp:740
+#: modules/gui/qt/util/redesign_updater.cpp:781
+#: modules/gui/qt/util/redesign_updater.cpp:822
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr ""
 "Thiếu mã kiểm tra (checksum) của bản cập nhật; hãy tải xuống từ trang phát "
 "hành."
 
-#: modules/gui/qt/util/redesign_updater.cpp:714
-#: modules/gui/qt/util/redesign_updater.cpp:786
+#: modules/gui/qt/util/redesign_updater.cpp:796
+#: modules/gui/qt/util/redesign_updater.cpp:868
 msgid "The download failed. Check your connection and try again."
 msgstr "Tải xuống thất bại. Hãy kiểm tra kết nối và thử lại."
 
-#: modules/gui/qt/util/redesign_updater.cpp:799
+#: modules/gui/qt/util/redesign_updater.cpp:881
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "Bản cập nhật không khớp với mã kiểm tra nên không được dùng."
 
-#: modules/gui/qt/util/redesign_updater.cpp:830
+#: modules/gui/qt/util/redesign_updater.cpp:912
 msgid "The update isn't in a format this version knows."
 msgstr "Bản cập nhật có định dạng mà phiên bản này không nhận biết được."
 
-#: modules/gui/qt/util/redesign_updater.cpp:833
-#: modules/gui/qt/util/redesign_updater.cpp:857
-#: modules/gui/qt/util/redesign_updater.cpp:868
-#: modules/gui/qt/util/redesign_updater.cpp:874
+#: modules/gui/qt/util/redesign_updater.cpp:915
+#: modules/gui/qt/util/redesign_updater.cpp:939
+#: modules/gui/qt/util/redesign_updater.cpp:950
+#: modules/gui/qt/util/redesign_updater.cpp:956
 msgid "The update is damaged."
 msgstr "Bản cập nhật bị hỏng."
 
-#: modules/gui/qt/util/redesign_updater.cpp:838
+#: modules/gui/qt/util/redesign_updater.cpp:920
 msgid "The update isn't for this version."
 msgstr "Bản cập nhật không dành cho phiên bản này."
 
-#: modules/gui/qt/util/redesign_updater.cpp:847
-#: modules/gui/qt/util/redesign_updater.cpp:884
-#: modules/gui/qt/util/redesign_updater.cpp:893
-#: modules/gui/qt/util/redesign_updater.cpp:897
-#: modules/gui/qt/util/redesign_updater.cpp:901
+#: modules/gui/qt/util/redesign_updater.cpp:929
+#: modules/gui/qt/util/redesign_updater.cpp:966
+#: modules/gui/qt/util/redesign_updater.cpp:975
+#: modules/gui/qt/util/redesign_updater.cpp:979
+#: modules/gui/qt/util/redesign_updater.cpp:983
 msgid "The update can't be written in %1."
 msgstr "Không thể ghi bản cập nhật vào %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:849
+#: modules/gui/qt/util/redesign_updater.cpp:931
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -7934,28 +8025,28 @@ msgstr ""
 "Một tập tin của VLC Redesign đã bị thay đổi kể từ khi cài đặt, nên không thể "
 "dùng bản cập nhật nhỏ: hãy cập nhật bằng trình cài đặt."
 
-#: modules/gui/qt/util/redesign_updater.cpp:879
+#: modules/gui/qt/util/redesign_updater.cpp:961
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr "Bản cập nhật bị hỏng: một tập tin không khớp với mã kiểm tra."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1004
+#: modules/gui/qt/util/redesign_updater.cpp:1086
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr "Không thể bắt đầu cập nhật. Sẽ thử lại vào lần sau."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1031
+#: modules/gui/qt/util/redesign_updater.cpp:1113
 msgid "The download failed. Try again, or download it from the release page."
 msgstr "Tải xuống thất bại. Hãy thử lại, hoặc tải từ trang phát hành."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1044
+#: modules/gui/qt/util/redesign_updater.cpp:1126
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr ""
 "Trình cài đặt đã tải xuống không khớp với mã kiểm tra nên không được chạy."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1053
+#: modules/gui/qt/util/redesign_updater.cpp:1135
 msgid "The installer couldn't be saved to %1."
 msgstr "Không thể lưu trình cài đặt vào %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1087
+#: modules/gui/qt/util/redesign_updater.cpp:1169
 msgid "The installer couldn't be started."
 msgstr "Không thể khởi chạy trình cài đặt."
 

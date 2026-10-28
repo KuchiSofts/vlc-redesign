@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-28 13:15+0000\n"
+"POT-Creation-Date: 2026-10-28 18:41+0000\n"
 "PO-Revision-Date: 2015-12-04 10:01+0000\n"
 "Last-Translator: Christoph Miebach <christoph.miebach@web.de>\n"
 "Language-Team: Indonesian (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -62,7 +62,7 @@ msgstr "Antarmuka"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:26
 #: modules/gui/qt/menus/menus.cpp:863
 #: modules/gui/qt/player/qml/TracksMenu.qml:37
-#: modules/gui/qt/player/qml/TracksListPage.qml:90 modules/gui/qt/qt.cpp:353
+#: modules/gui/qt/player/qml/TracksListPage.qml:90 modules/gui/qt/qt.cpp:357
 #: modules/stream_out/es.c:388 modules/stream_out/transcode/transcode.c:190
 #: share/lua/http/dialogs/create_stream.html:150
 msgid "Audio"
@@ -84,7 +84,7 @@ msgstr "Audio"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:79
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:25
 #: modules/gui/qt/menus/menus.cpp:859
-#: modules/gui/qt/player/qml/TracksMenu.qml:36 modules/gui/qt/qt.cpp:353
+#: modules/gui/qt/player/qml/TracksMenu.qml:36 modules/gui/qt/qt.cpp:357
 #: modules/services_discovery/upnp.cpp:70 modules/stream_out/es.c:395
 #: modules/stream_out/transcode/transcode.c:163
 #: share/lua/http/dialogs/create_stream.html:147
@@ -116,7 +116,7 @@ msgstr "Antrean Putar"
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:305
 #: modules/gui/qt/dialogs/extended/extended.cpp:110
 #: modules/gui/qt/dialogs/extended/qml/VideoEffectsPanel.qml:82
-#: modules/gui/qt/qt.cpp:340
+#: modules/gui/qt/qt.cpp:344
 msgid "Advanced"
 msgstr "Tingkat Lanjut"
 
@@ -663,7 +663,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:239
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:268
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:327
-#: modules/gui/qt/qt.cpp:371
+#: modules/gui/qt/qt.cpp:375
 msgid "Automatic"
 msgstr "Otomatis"
 
@@ -917,14 +917,14 @@ msgstr "Ya"
 #: modules/gui/qt/dialogs/open/open_panels.cpp:518
 #: modules/gui/qt/dialogs/open/open_panels.cpp:531
 #: modules/gui/qt/dialogs/open/open_panels.cpp:555
-#: modules/gui/qt/medialibrary/qml/MediaView.qml:248
-#: modules/gui/qt/medialibrary/qml/MediaView.qml:274
-#: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:202
-#: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:217
+#: modules/gui/qt/medialibrary/qml/MediaView.qml:249
+#: modules/gui/qt/medialibrary/qml/MediaView.qml:275
+#: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:203
+#: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:218
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:386
-#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:926
-#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:953
-#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:977
+#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:927
+#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:954
+#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:978
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml:59
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml:62
 #: modules/gui/qt/medialibrary/qml/MusicTrackListDisplay.qml:46
@@ -1282,7 +1282,7 @@ msgstr "VLC tidak dapat membuka MRL '%s'. Periksa catatan log untuk perincian."
 #: modules/gui/macosx/library/VLCLibrarySortingMenuController.m:61
 #: modules/gui/macosx/playqueue/VLCPlayQueueSortingMenuController.m:53
 #: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:59
-#: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:230
+#: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:231
 #: modules/gui/qt/medialibrary/qml/MusicTrackListDisplay.qml:67
 #: modules/gui/qt/medialibrary/qml/MusicTracksDisplay.qml:39
 #: modules/gui/qt/player/qml/controlbarcontrols/ArtworkInfoWidget.qml:259
@@ -1304,7 +1304,7 @@ msgstr "Hakcipta"
 #: modules/gui/macosx/library/VLCLibrarySortingMenuController.m:63
 #: modules/gui/macosx/playqueue/VLCPlayQueueSortingMenuController.m:54
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:188
-#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:988
+#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:989
 #: modules/gui/qt/medialibrary/qml/MusicTrackListDisplay.qml:59
 #: modules/gui/qt/medialibrary/qml/MusicTracksDisplay.qml:38
 #: modules/gui/qt/player/qml/AudioContent.qml:347
@@ -2196,7 +2196,7 @@ msgstr "Matikan screensaver selama pemutaran video."
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:104
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:125
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
-#: modules/gui/qt/qt.cpp:346 modules/gui/qt/qt.cpp:353
+#: modules/gui/qt/qt.cpp:350 modules/gui/qt/qt.cpp:357
 msgid "Never"
 msgstr "Tidak pernah"
 
@@ -2210,7 +2210,7 @@ msgstr "Saat layar penuh"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:104
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:125
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
-#: modules/gui/qt/qt.cpp:346 modules/keystore/keychain.m:55
+#: modules/gui/qt/qt.cpp:350 modules/keystore/keychain.m:55
 msgid "Always"
 msgstr "Selalu"
 
@@ -4429,7 +4429,7 @@ msgstr "Panjang lompatan panjang, dalam detik."
 #: src/libvlc-module.c:1432 modules/gui/macosx/main/VLCApplication.m:123
 #: modules/gui/macosx/menus/VLCStatusBarIcon.m:121
 #: modules/gui/qt/menus/menus.cpp:702 modules/gui/qt/menus/menus.cpp:1114
-#: modules/gui/skins2/commands/cmd_quit.cpp:40
+#: modules/gui/qt/qt.cpp:1633 modules/gui/skins2/commands/cmd_quit.cpp:40
 msgid "Quit"
 msgstr "Keluar"
 
@@ -4957,7 +4957,7 @@ msgstr "Alihkan pemutaran acak antrean putar"
 #: src/video_output/vout_intf.c:233 modules/gui/macosx/menus/VLCMainMenu.m:484
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:151
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:80
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:37
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:39
 msgid "Zoom"
 msgstr "Zum"
 
@@ -5896,6 +5896,7 @@ msgstr "Trek subtitle: %s"
 
 #: src/player/osd.c:208 src/player/osd.c:251
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:98
+#: modules/gui/qt/player/qml/controlbarcontrols/Fallback.qml:69
 msgid "N/A"
 msgstr "N/A"
 
@@ -8188,7 +8189,7 @@ msgid "It needs Windows 10 version 1809 or later."
 msgstr "Diperlukan Windows 10 versi 1809 atau yang lebih baru."
 
 #: bin/winvlc.c:712 bin/winvlc.c:825
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:312
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:319
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:547
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:552
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:142
@@ -9876,7 +9877,7 @@ msgstr ""
 #: modules/access/idummy.c:40 modules/access_output/dummy.c:43
 #: modules/audio_output/adummy.c:36 modules/codec/ddummy.c:45
 #: modules/codec/edummy.c:38 modules/control/dummy.c:39
-#: modules/gui/qt/qt.cpp:383 modules/text_renderer/tdummy.c:34
+#: modules/gui/qt/qt.cpp:387 modules/text_renderer/tdummy.c:34
 #: modules/video_output/vdummy.c:48
 msgid "Dummy"
 msgstr "Dummy"
@@ -13760,7 +13761,7 @@ msgstr ""
 msgid "VLC could not open the %4.4s %s encoder."
 msgstr ""
 
-#: modules/codec/avcodec/vaapi.c:443
+#: modules/codec/avcodec/vaapi.c:454
 #, fuzzy
 msgid "VA-API video decoder"
 msgstr "Dekoder video PNG"
@@ -16752,7 +16753,7 @@ msgstr "Antarmuka kontrol D-Bus"
 #: modules/gui/qt/dialogs/systray/systray.cpp:79
 #: modules/gui/qt/dialogs/systray/systray.cpp:82
 #: modules/gui/qt/dialogs/systray/systray.cpp:137
-#: modules/gui/qt/dialogs/systray/systray.cpp:152 modules/gui/qt/qt.cpp:1429
+#: modules/gui/qt/dialogs/systray/systray.cpp:152 modules/gui/qt/qt.cpp:1438
 #: modules/lua/libs/httpd.c:80 modules/video_output/wayland/xdg-shell.c:732
 #: modules/video_output/xcb/window.c:959
 msgid "VLC media player"
@@ -18526,12 +18527,12 @@ msgstr ""
 #: modules/gui/macosx/playqueue/VLCPlayQueueSortingMenuController.m:52
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:43
 #: modules/gui/qt/medialibrary/qml/MediaView.qml:80
-#: modules/gui/qt/medialibrary/qml/MediaView.qml:261
+#: modules/gui/qt/medialibrary/qml/MediaView.qml:262
 #: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:57
-#: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:238
+#: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:239
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:422
-#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:964
-#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:996
+#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:965
+#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:997
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml:65
 #: modules/gui/qt/medialibrary/qml/MusicTrackListDisplay.qml:75
 #: modules/gui/qt/medialibrary/qml/MusicTracksDisplay.qml:40
@@ -18809,11 +18810,11 @@ msgstr ""
 
 #: modules/gui/macosx/main/macosx.m:89
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:453
-#: modules/gui/qt/qt.cpp:184
+#: modules/gui/qt/qt.cpp:188
 msgid "Resize interface to the native video size"
 msgstr "Ubah ukuran antarmuka sesuai dengan ukuran asli video"
 
-#: modules/gui/macosx/main/macosx.m:90 modules/gui/qt/qt.cpp:185
+#: modules/gui/macosx/main/macosx.m:90 modules/gui/qt/qt.cpp:189
 msgid ""
 "You have two choices:\n"
 " - The interface will resize to the native video size\n"
@@ -18827,11 +18828,11 @@ msgstr ""
 
 #: modules/gui/macosx/main/macosx.m:95
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:452
-#: modules/gui/qt/qt.cpp:274
+#: modules/gui/qt/qt.cpp:278
 msgid "Pause the video playback when minimized"
 msgstr "Hentikan playback video ketika diminimalkan"
 
-#: modules/gui/macosx/main/macosx.m:96 modules/gui/qt/qt.cpp:276
+#: modules/gui/macosx/main/macosx.m:96 modules/gui/qt/qt.cpp:280
 msgid ""
 "With this option enabled, the playback will be automatically paused when "
 "minimizing the window."
@@ -18839,11 +18840,11 @@ msgstr ""
 "Dengan menghidupkan pilihan ini, playback akan secara otomatis dihentikan "
 "ketika window diminimalkan."
 
-#: modules/gui/macosx/main/macosx.m:99 modules/gui/qt/qt.cpp:278
+#: modules/gui/macosx/main/macosx.m:99 modules/gui/qt/qt.cpp:282
 msgid "Allow automatic icon changes"
 msgstr "Izinkan perubahan ikon otomatis"
 
-#: modules/gui/macosx/main/macosx.m:100 modules/gui/qt/qt.cpp:280
+#: modules/gui/macosx/main/macosx.m:100 modules/gui/qt/qt.cpp:284
 msgid ""
 "This option allows the interface to change its icon on various occasions."
 msgstr ""
@@ -18911,7 +18912,7 @@ msgstr ""
 msgid "Ask"
 msgstr "Tanya"
 
-#: modules/gui/macosx/main/macosx.m:128 modules/gui/qt/qt.cpp:282
+#: modules/gui/macosx/main/macosx.m:128 modules/gui/qt/qt.cpp:286
 msgid "Maximum Volume displayed"
 msgstr "Volume Maksimum yang ditampilkan"
 
@@ -19927,7 +19928,7 @@ msgstr ""
 
 #: modules/gui/macosx/panels/VLCTrackSynchronizationWindowController.m:85
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1485
-#: modules/gui/qt/qt.cpp:353
+#: modules/gui/qt/qt.cpp:357
 msgid "Audio/Video"
 msgstr "Audio/Video"
 
@@ -22038,17 +22039,21 @@ msgid "the VideoLAN team and contributors"
 msgstr "tim VideoLAN dan para kontributor"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:279
+msgid "Also on: %1"
+msgstr "Juga tersedia di: %1"
+
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:286
 #: modules/gui/qt/menus/qml/MainMenu.qml:173
 msgid "Suggest an idea"
 msgstr "Usulkan ide"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:281
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:288
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:28
 #: modules/gui/qt/menus/qml/MainMenu.qml:178
 msgid "Report a problem"
 msgstr "Laporkan masalah"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:292
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:299
 msgid ""
 "An unofficial build, not affiliated with or endorsed by VideoLAN or "
 "Juxtopposed. VLC, VLC media player and the cone logo are trademarks of "
@@ -22059,11 +22064,11 @@ msgstr ""
 "dagang VideoLAN. Perangkat lunak bebas di bawah GNU GPL v2 atau yang lebih "
 "baru."
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:302
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:309
 msgid "Licenses & authors"
 msgstr "Lisensi & penulis"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:306
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:313
 msgid "GitHub"
 msgstr "GitHub"
 
@@ -22082,7 +22087,9 @@ msgstr "Isi laporan"
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:57
 msgid ""
 "GitHub opens with this filled in. Nothing is sent until you submit it there."
-msgstr "GitHub terbuka dengan informasi ini sudah terisi. Tidak ada yang dikirim sampai Anda mengirimkannya di sana."
+msgstr ""
+"GitHub terbuka dengan informasi ini sudah terisi. Tidak ada yang dikirim "
+"sampai Anda mengirimkannya di sana."
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:102
 msgid "Report"
@@ -22092,7 +22099,9 @@ msgstr "Laporan"
 msgid ""
 "No file names, user names or logs. To add a log: Settings → General → "
 "Diagnostics → Save a log."
-msgstr "Tanpa nama file, nama pengguna, atau log. Untuk menambahkan log: Pengaturan → Umum → Diagnostik → Simpan log."
+msgstr ""
+"Tanpa nama file, nama pengguna, atau log. Untuk menambahkan log: Pengaturan "
+"→ Umum → Diagnostik → Simpan log."
 
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:86
 #: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:35
@@ -22979,11 +22988,11 @@ msgstr ""
 "<ul><li>Dekorasi sisi klien</li><li>Tanpa menu bilah alat</li><li>Kontrol "
 "video tidak disematkan</li></ul>"
 
-#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:188
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:193
 msgid "Choose a folder to add to the Media Library"
 msgstr "Pilih folder untuk ditambahkan ke Pustaka Media"
 
-#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:205
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:210
 msgid ""
 "<i>VLC will automatically switch to dark mode accordingly with system "
 "settings</i>"
@@ -22991,15 +23000,15 @@ msgstr ""
 "<i>VLC akan otomatis beralih ke mode gelap sesuai dengan pengaturan sistem</"
 "i>"
 
-#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:208
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:213
 msgid "<i>VLC will automatically use light mode</i>"
 msgstr "<i>VLC akan otomatis menggunakan mode terang</i>"
 
-#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:211
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:216
 msgid "<i>VLC will automatically use dark mode</i>"
 msgstr "<i>VLC akan otomatis menggunakan mode gelap</i>"
 
-#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:225
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:230
 msgid ""
 "<i>VLC will use a modern layout with no menubar or pinned controls but with "
 "client-side decoration</i>"
@@ -23007,7 +23016,7 @@ msgstr ""
 "<i>VLC akan menggunakan tata letak modern tanpa bilah menu atau kontrol yang "
 "disematkan, tetapi dengan dekorasi sisi klien</i>"
 
-#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:228
+#: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:233
 msgid ""
 "<i>VLC will use a classic layout with a menubar and pinned controls but with "
 "no client-side decoration</i>"
@@ -23100,15 +23109,15 @@ msgstr "Kembali"
 msgid "Finish"
 msgstr "Selesai"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:108
+#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:110
 msgid "Learn the basic keyboard shortcuts."
 msgstr "Pelajari pintasan keyboard dasar."
 
-#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:116
+#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:118
 msgid "No playback shortcuts are currently assigned."
 msgstr "Saat ini belum ada pintasan pemutaran yang ditetapkan."
 
-#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:200
+#: modules/gui/qt/dialogs/firstrun/qml/ShortcutsStep.qml:202
 msgid "Find the full list in the menu."
 msgstr "Temukan daftar lengkapnya di menu."
 
@@ -23942,7 +23951,10 @@ msgstr "Tampilkan yang baru setelah pembaruan"
 msgid ""
 "The first time VLC opens after an update, a card lists what is new in the "
 "version, with a link to the full changelog. The notes are in English."
-msgstr "Saat VLC pertama kali dibuka setelah pembaruan, sebuah kartu menampilkan yang baru di versi tersebut, dengan tautan ke log perubahan lengkap. Catatannya dalam bahasa Inggris."
+msgstr ""
+"Saat VLC pertama kali dibuka setelah pembaruan, sebuah kartu menampilkan "
+"yang baru di versi tersebut, dengan tautan ke log perubahan lengkap. "
+"Catatannya dalam bahasa Inggris."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:256
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
@@ -24450,7 +24462,7 @@ msgid "Show settings"
 msgstr "Tampilkan setting"
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:75
-#: modules/gui/qt/qt.cpp:340
+#: modules/gui/qt/qt.cpp:344
 msgid "Simple"
 msgstr "Sederhana"
 
@@ -24463,7 +24475,7 @@ msgid "Switch to full preferences view"
 msgstr "Berpindah ke tampilan preferensi lengkap"
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:79
-#: modules/gui/qt/qt.cpp:340
+#: modules/gui/qt/qt.cpp:344
 msgid "Expert"
 msgstr "Ahli"
 
@@ -24753,7 +24765,7 @@ msgstr "Tema"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:192
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:409
-#: modules/gui/qt/qt.cpp:335
+#: modules/gui/qt/qt.cpp:339
 msgid "Accent color"
 msgstr "Warna aksen"
 
@@ -25578,7 +25590,7 @@ msgid "Seeking"
 msgstr "Lompat posisi"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:122
-#: modules/gui/qt/qt.cpp:299
+#: modules/gui/qt/qt.cpp:303
 msgid "Show thumbnail while scrubbing"
 msgstr "Tampilkan thumbnail saat menggeser posisi"
 
@@ -25900,7 +25912,7 @@ msgid "Timing"
 msgstr "Pengaturan waktu"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
-#: modules/gui/qt/qt.cpp:301
+#: modules/gui/qt/qt.cpp:305
 msgid "Show subtitle lines on the seek bar"
 msgstr "Tampilkan baris subtitle di bilah posisi"
 
@@ -27558,7 +27570,7 @@ msgstr "Tampilan media"
 msgid "Unknown Title"
 msgstr "Judul Tidak Dikenal"
 
-#: modules/gui/qt/medialibrary/qml/MediaView.qml:350
+#: modules/gui/qt/medialibrary/qml/MediaView.qml:351
 msgid ""
 "No media found\n"
 "Please try adding sources"
@@ -27566,7 +27578,7 @@ msgstr ""
 "Media tidak ditemukan\n"
 "Coba tambahkan sumber"
 
-#: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:298
+#: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:299
 msgid ""
 "No albums found\n"
 "Please try adding sources"
@@ -27591,7 +27603,7 @@ msgid "%1 - %2 - %3 - %4"
 msgstr "%1 - %2 - %3 - %4"
 
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:406
-#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:941
+#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:942
 msgid "#"
 msgstr "#"
 
@@ -28161,7 +28173,7 @@ msgstr "Kosongkan"
 msgid "&Manage"
 msgstr "&Kelola"
 
-#: modules/gui/qt/menus/menus.cpp:183
+#: modules/gui/qt/menus/menus.cpp:183 modules/gui/qt/qt.cpp:1626
 msgid "Open &File..."
 msgstr "Buka &File..."
 
@@ -28173,7 +28185,7 @@ msgstr "Buka Beberapa File..."
 msgid "Open &Disc..."
 msgstr "Buka &Disk..."
 
-#: modules/gui/qt/menus/menus.cpp:191
+#: modules/gui/qt/menus/menus.cpp:191 modules/gui/qt/qt.cpp:1627
 msgid "Open &Network Stream..."
 msgstr "Buka Stream Jari&ngan..."
 
@@ -28226,6 +28238,7 @@ msgid "Customi&ze Interface..."
 msgstr "&Sesuaikan Antarmuka..."
 
 #: modules/gui/qt/menus/menus.cpp:280 modules/gui/qt/menus/menus.cpp:896
+#: modules/gui/qt/qt.cpp:1630
 msgid "&Preferences"
 msgstr "&Preferensi"
 
@@ -28379,7 +28392,8 @@ msgstr "Bab Berikutnya"
 
 #: modules/gui/qt/menus/menus.cpp:562
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:304
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:379
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:379 modules/gui/qt/qt.cpp:1635
+#: modules/gui/qt/qt.cpp:1636
 msgid "&Help"
 msgstr "&Bantuan"
 
@@ -28545,7 +28559,7 @@ msgid "Album sections"
 msgstr "Bagian album"
 
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:281
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:365
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:365 modules/gui/qt/qt.cpp:1625
 msgid "&Media"
 msgstr "&Media"
 
@@ -29798,7 +29812,7 @@ msgstr "Ulang A ke B"
 msgid "Duration unavailable"
 msgstr "Durasi tidak tersedia"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/Fallback.qml:48
+#: modules/gui/qt/player/qml/controlbarcontrols/Fallback.qml:65
 msgid ""
 "WIDGET\n"
 "NOT\n"
@@ -29807,6 +29821,12 @@ msgstr ""
 "WIDGET\n"
 "TIDAK\n"
 "DITEMUKAN"
+
+#: modules/gui/qt/player/qml/controlbarcontrols/Fallback.qml:67
+msgid ""
+"BROKEN\n"
+"WIDGET"
+msgstr "WIDGET\nRUSAK"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/FavoriteButton.qml:21
 msgid "Available for items in your library"
@@ -29973,11 +29993,11 @@ msgstr "Tombol biru"
 msgid "%1 %"
 msgstr "%1 %"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:38
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:40
 msgid "Choose a video zoom level"
 msgstr "Pilih tingkat zoom video"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:39
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:41
 msgid "Zoom is unavailable without video"
 msgstr "Zoom tidak tersedia tanpa video"
 
@@ -30025,21 +30045,21 @@ msgstr "Antrean putar"
 msgid "%1 elements, %2"
 msgstr "%1 elemen, %2"
 
-#: modules/gui/qt/qt.cpp:171
+#: modules/gui/qt/qt.cpp:175
 msgid "Select the initial preferences view"
 msgstr "Pilih tampilan awal preferensi"
 
-#: modules/gui/qt/qt.cpp:172
+#: modules/gui/qt/qt.cpp:176
 msgid ""
 "Select which preferences view to show upon opening the preferences dialog."
 msgstr ""
 "Pilih tampilan preferensi yang ditampilkan saat membuka dialog preferensi."
 
-#: modules/gui/qt/qt.cpp:175 modules/gui/skins2/src/skin_main.cpp:482
+#: modules/gui/qt/qt.cpp:179 modules/gui/skins2/src/skin_main.cpp:482
 msgid "Systray icon"
 msgstr "Systray icon"
 
-#: modules/gui/qt/qt.cpp:176
+#: modules/gui/qt/qt.cpp:180
 msgid ""
 "Show an icon in the systray allowing you to control VLC media player for "
 "basic actions."
@@ -30047,27 +30067,27 @@ msgstr ""
 "Tampilkan ikon di baki sistem yang memungkinkan Anda mengontrol VLC media "
 "player untuk tindakan dasar."
 
-#: modules/gui/qt/qt.cpp:180
+#: modules/gui/qt/qt.cpp:184
 msgid "Start VLC with only a systray icon"
 msgstr "Mulai VLC hanya dengan sebuah icon systray"
 
-#: modules/gui/qt/qt.cpp:181
+#: modules/gui/qt/qt.cpp:185
 msgid "VLC will start with just an icon in your taskbar."
 msgstr "VLC akan dimulai hanya dengan ikon di taskbar Anda."
 
-#: modules/gui/qt/qt.cpp:190
+#: modules/gui/qt/qt.cpp:194
 msgid "Show playing item name in window title"
 msgstr "Tampilkan nama item yang sedang diputar dalam judul window"
 
-#: modules/gui/qt/qt.cpp:191
+#: modules/gui/qt/qt.cpp:195
 msgid "Show the name of the song or video in the controller window title."
 msgstr "Tampilkan nama dari lagu atau video dalam judul window controler."
 
-#: modules/gui/qt/qt.cpp:194
+#: modules/gui/qt/qt.cpp:198
 msgid "Show notification popup on track change"
 msgstr "Tampilkan popup notifikasi pada perubahan trek"
 
-#: modules/gui/qt/qt.cpp:196
+#: modules/gui/qt/qt.cpp:200
 msgid ""
 "Show a notification popup with the artist and track name when the current "
 "play queue item changes, when VLC is minimized or hidden."
@@ -30075,11 +30095,11 @@ msgstr ""
 "Tampilkan pop-up notifikasi berisi nama artis dan trek saat item antrean "
 "putar berganti, ketika VLC diminimalkan atau disembunyikan."
 
-#: modules/gui/qt/qt.cpp:199
+#: modules/gui/qt/qt.cpp:203
 msgid "Windows opacity between 0.1 and 1"
 msgstr "Opasitas jendela antara 0,1 dan 1"
 
-#: modules/gui/qt/qt.cpp:200
+#: modules/gui/qt/qt.cpp:204
 msgid ""
 "Sets the windows opacity between 0.1 and 1 for main interface, play queue "
 "and extended panel. This option only works with Windows and X11 with "
@@ -30089,11 +30109,11 @@ msgstr ""
 "putar, dan panel lanjutan. Opsi ini hanya berfungsi di Windows dan X11 "
 "dengan ekstensi composite."
 
-#: modules/gui/qt/qt.cpp:205
+#: modules/gui/qt/qt.cpp:209
 msgid "Fullscreen controller opacity between 0.1 and 1"
 msgstr "Opasitas kontroler layar penuh antara 0,1 dan 1"
 
-#: modules/gui/qt/qt.cpp:206
+#: modules/gui/qt/qt.cpp:210
 msgid ""
 "Sets the fullscreen controller opacity between 0.1 and 1 for main interface, "
 "play queue and extended panel. This option only works with Windows and X11 "
@@ -30103,15 +30123,15 @@ msgstr ""
 "utama, antrean putar, dan panel lanjutan. Opsi ini hanya berfungsi di "
 "Windows dan X11 dengan ekstensi composite."
 
-#: modules/gui/qt/qt.cpp:211
+#: modules/gui/qt/qt.cpp:215
 msgid "Initial user scale factor for the interface, between 0.3 and 3.0"
 msgstr "Faktor skala awal antarmuka, antara 0,3 dan 3,0"
 
-#: modules/gui/qt/qt.cpp:213
+#: modules/gui/qt/qt.cpp:217
 msgid "Show unimportant error and warnings dialogs"
 msgstr "Tampilkan dialog kesalahan dan peringatan yang tidak penting"
 
-#: modules/gui/qt/qt.cpp:214
+#: modules/gui/qt/qt.cpp:218
 msgid ""
 "Show the errors of VLC at the bottom of the window, and ask before removing "
 "media from a playlist or from the play queue, or deleting playlists. Off, "
@@ -30123,11 +30143,11 @@ msgstr ""
 "putar. Bila nonaktif, kesalahan hanya disimpan di pesan VLC dan penghapusan "
 "tersebut langsung dilakukan; penghapusan file dari disk selalu dikonfirmasi."
 
-#: modules/gui/qt/qt.cpp:219
+#: modules/gui/qt/qt.cpp:223
 msgid "Activate the updates availability notification"
 msgstr "Aktifkan notifikasi tersedianya update"
 
-#: modules/gui/qt/qt.cpp:220
+#: modules/gui/qt/qt.cpp:224
 msgid ""
 "Activate the automatic notification of new versions of the software. It runs "
 "once every two weeks."
@@ -30135,11 +30155,11 @@ msgstr ""
 "Aktifkan notifikasi otomatis terhadap versi baru dari perangkat lunak. Ini "
 "akan berjalan sekali tiap dua minggu."
 
-#: modules/gui/qt/qt.cpp:224
+#: modules/gui/qt/qt.cpp:228
 msgid "set the options for qml debugger"
 msgstr "atur opsi untuk debugger qml"
 
-#: modules/gui/qt/qt.cpp:225
+#: modules/gui/qt/qt.cpp:229
 msgid ""
 "set the options for qml debugger (see http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
@@ -30147,34 +30167,34 @@ msgstr ""
 "atur opsi untuk debugger qml (lihat http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
 
-#: modules/gui/qt/qt.cpp:227
+#: modules/gui/qt/qt.cpp:231
 msgid "Number of days between two update checks"
 msgstr "Jumlah hari antara dua pemeriksaan update"
 
-#: modules/gui/qt/qt.cpp:229
+#: modules/gui/qt/qt.cpp:233
 msgid "Ask for network policy at start"
 msgstr "Tanyakan kebijakan jaringan pada saat mulai"
 
-#: modules/gui/qt/qt.cpp:231
+#: modules/gui/qt/qt.cpp:235
 msgid "Save the recently played items in the menu"
 msgstr "Simpan item yang baru dimainkan ke dalam menu"
 
-#: modules/gui/qt/qt.cpp:233
+#: modules/gui/qt/qt.cpp:237
 msgid "List of words separated by | to filter"
 msgstr "Daftar kata yang dipisahkan | untuk disaring"
 
-#: modules/gui/qt/qt.cpp:234
+#: modules/gui/qt/qt.cpp:238
 msgid ""
 "Regular expression used to filter the recent items played in the player."
 msgstr ""
 "Ekspresi reguler yang digunakan untuk menyaring item terbaru yang diputar di "
 "pemutar."
 
-#: modules/gui/qt/qt.cpp:237
+#: modules/gui/qt/qt.cpp:241
 msgid "Selection of the starting mode and look"
 msgstr "Pemilihan mode awal dan tampilan"
 
-#: modules/gui/qt/qt.cpp:238
+#: modules/gui/qt/qt.cpp:242
 msgid ""
 "Start VLC with:\n"
 " - normal mode\n"
@@ -30187,11 +30207,11 @@ msgstr ""
 "album art...\n"
 " - mode minimal mode dengan kontrol terbatas"
 
-#: modules/gui/qt/qt.cpp:244
+#: modules/gui/qt/qt.cpp:248
 msgid "Show a controller in fullscreen mode"
 msgstr "Tampilkan kontroler pada mode layar penuh"
 
-#: modules/gui/qt/qt.cpp:245
+#: modules/gui/qt/qt.cpp:249
 msgid ""
 "Show the playback controls in fullscreen when the mouse moves. Off, only the "
 "keyboard shows them (the I key). The skins read it for their fullscreen "
@@ -30201,37 +30221,37 @@ msgstr ""
 "nonaktif, hanya keyboard yang menampilkannya (tombol I). Skin juga membaca "
 "opsi ini untuk kontroler layar penuhnya."
 
-#: modules/gui/qt/qt.cpp:248
+#: modules/gui/qt/qt.cpp:252
 msgid "Embed the file browser in open dialog"
 msgstr "Sematkan penjelajah file di dialog buka"
 
-#: modules/gui/qt/qt.cpp:250
+#: modules/gui/qt/qt.cpp:254
 msgid "Define which screen fullscreen goes"
 msgstr "Tentukan layar untuk mode layar penuh"
 
-#: modules/gui/qt/qt.cpp:251
+#: modules/gui/qt/qt.cpp:255
 msgid "Screennumber of fullscreen, instead of same screen where interface is."
 msgstr ""
 "Nomor layar untuk layar penuh, alih-alih layar yang sama tempat antarmuka "
 "berada."
 
-#: modules/gui/qt/qt.cpp:254
+#: modules/gui/qt/qt.cpp:258
 msgid "Load extensions on startup"
 msgstr "Muat ekstensi ketika memulai"
 
-#: modules/gui/qt/qt.cpp:255
+#: modules/gui/qt/qt.cpp:259
 msgid "Automatically load the extensions module on startup."
 msgstr "Muat modul ekstensi secara otomatis saat memulai."
 
-#: modules/gui/qt/qt.cpp:258
+#: modules/gui/qt/qt.cpp:262
 msgid "Start in minimal view (without menus)"
 msgstr "Memulai dengan tampilan minimal (tanpa menu)"
 
-#: modules/gui/qt/qt.cpp:260
+#: modules/gui/qt/qt.cpp:264
 msgid "Display background cone or art"
 msgstr "Tampilkan kerucut atau sampul latar belakang"
 
-#: modules/gui/qt/qt.cpp:261
+#: modules/gui/qt/qt.cpp:265
 msgid ""
 "Display the cover art of the audio playing in the player (the cone in the "
 "compact view). Off, a plain picture takes its place, which also prevents "
@@ -30241,19 +30261,19 @@ msgstr ""
 "tampilan ringkas). Bila nonaktif, gambar polos menggantikannya, yang juga "
 "mencegah layar terbakar (burn-in)."
 
-#: modules/gui/qt/qt.cpp:264
+#: modules/gui/qt/qt.cpp:268
 msgid "Expanding background cone or art"
 msgstr "Perluas kerucut atau sampul latar belakang"
 
-#: modules/gui/qt/qt.cpp:265
+#: modules/gui/qt/qt.cpp:269
 msgid "Background art fits window's size."
 msgstr "Sampul latar belakang menyesuaikan ukuran jendela."
 
-#: modules/gui/qt/qt.cpp:267
+#: modules/gui/qt/qt.cpp:271
 msgid "Ignore keyboard volume buttons."
 msgstr "Abaikan tombol volume pada keyboard."
 
-#: modules/gui/qt/qt.cpp:269
+#: modules/gui/qt/qt.cpp:273
 msgid ""
 "With this option checked, the volume up, volume down and mute buttons on "
 "your keyboard will always change your system volume. With this option "
@@ -30265,11 +30285,11 @@ msgstr ""
 "dicentang, tombol volume akan mengubah volume VLC saat VLC dipilih dan "
 "mengubah volume sistem saat VLC tidak dipilih."
 
-#: modules/gui/qt/qt.cpp:284
+#: modules/gui/qt/qt.cpp:288
 msgid "When to raise the interface"
 msgstr "Kapan antarmuka dimunculkan"
 
-#: modules/gui/qt/qt.cpp:285
+#: modules/gui/qt/qt.cpp:289
 msgid ""
 "This option allows the interface to be shown and raised automatically when a "
 "video/audio playback starts, or never."
@@ -30277,11 +30297,11 @@ msgstr ""
 "Opsi ini memungkinkan antarmuka ditampilkan dan dimunculkan secara otomatis "
 "saat pemutaran video/audio dimulai, atau tidak pernah."
 
-#: modules/gui/qt/qt.cpp:288
+#: modules/gui/qt/qt.cpp:292
 msgid "Enable window titlebar"
 msgstr "Aktifkan bilah judul jendela"
 
-#: modules/gui/qt/qt.cpp:289
+#: modules/gui/qt/qt.cpp:293
 msgid ""
 "This option enables the title bar. Disabling it will remove the titlebar and "
 "move window buttons within the interface (Client Side Decoration)"
@@ -30290,42 +30310,44 @@ msgstr ""
 "judul dan memindahkan tombol jendela ke dalam antarmuka (Client Side "
 "Decoration)"
 
-#: modules/gui/qt/qt.cpp:293
+#: modules/gui/qt/qt.cpp:297
 msgid "Show the menu bar"
 msgstr "Tampilkan bilah menu"
 
-#: modules/gui/qt/qt.cpp:294
+#: modules/gui/qt/qt.cpp:298
 msgid "This option displays the classic menu bar"
 msgstr "Opsi ini menampilkan bilah menu klasik"
 
-#: modules/gui/qt/qt.cpp:296
+#: modules/gui/qt/qt.cpp:300
 msgid "Pin video controls"
 msgstr "Sematkan kontrol video"
 
-#: modules/gui/qt/qt.cpp:297
+#: modules/gui/qt/qt.cpp:301
 msgid "Place video controls above and below the video instead of above"
 msgstr ""
 "Tempatkan kontrol video di atas dan di bawah video, bukan hanya di atasnya"
 
-#: modules/gui/qt/qt.cpp:300
+#: modules/gui/qt/qt.cpp:304
 msgid "Show the frame at the hovered position above the seek bar"
 msgstr "Tampilkan bingkai pada posisi yang ditunjuk di atas bilah posisi"
 
-#: modules/gui/qt/qt.cpp:302
+#: modules/gui/qt/qt.cpp:306
 msgid ""
 "Mark on the seek bar where the lines of the subtitle shown are, when it "
 "comes from a subtitle file"
-msgstr "Tandai di bilah posisi letak baris-baris subtitle yang ditampilkan, jika subtitle berasal dari file subtitle"
+msgstr ""
+"Tandai di bilah posisi letak baris-baris subtitle yang ditampilkan, jika "
+"subtitle berasal dari file subtitle"
 
-#: modules/gui/qt/qt.cpp:305
+#: modules/gui/qt/qt.cpp:309
 msgid "Fullscreen controller mouse sensitivity"
 msgstr "Sensitivitas mouse kontroler layar penuh"
 
-#: modules/gui/qt/qt.cpp:307
+#: modules/gui/qt/qt.cpp:311
 msgid "Select Qt video integration backend"
 msgstr "Pilih backend integrasi video Qt"
 
-#: modules/gui/qt/qt.cpp:308
+#: modules/gui/qt/qt.cpp:312
 msgid ""
 "Select Qt video integration backend. Use with care, the interface may not "
 "start if an incompatible compositor is selected"
@@ -30333,11 +30355,11 @@ msgstr ""
 "Pilih backend integrasi video Qt. Gunakan dengan hati-hati, antarmuka "
 "mungkin tidak dapat dimulai jika compositor yang tidak kompatibel dipilih"
 
-#: modules/gui/qt/qt.cpp:310
+#: modules/gui/qt/qt.cpp:314
 msgid "Use smooth scrolling in Flickable based views"
 msgstr "Gunakan gulir halus di tampilan berbasis Flickable"
 
-#: modules/gui/qt/qt.cpp:311
+#: modules/gui/qt/qt.cpp:315
 msgid ""
 "Deactivating this option will disable smooth scrolling in Flickable based "
 "views (such as the Play Queue). This option is only respected with a scroll "
@@ -30347,19 +30369,19 @@ msgstr ""
 "Flickable (seperti Antrean Putar). Opsi ini hanya berlaku dengan penangan "
 "gulir, lihat opsi `qt-use-scroll-handler`."
 
-#: modules/gui/qt/qt.cpp:314
+#: modules/gui/qt/qt.cpp:318
 msgid "Use Kirigami scroll handler for Flickable based views"
 msgstr "Gunakan penangan gulir Kirigami untuk tampilan berbasis Flickable"
 
-#: modules/gui/qt/qt.cpp:315
+#: modules/gui/qt/qt.cpp:319
 msgid "Using Kirigami scroll handler may improve scrolling behavior."
 msgstr "Menggunakan penangan gulir Kirigami dapat memperbaiki perilaku gulir."
 
-#: modules/gui/qt/qt.cpp:317
+#: modules/gui/qt/qt.cpp:321
 msgid "Safe area for the user interface"
 msgstr "Area aman untuk antarmuka pengguna"
 
-#: modules/gui/qt/qt.cpp:318
+#: modules/gui/qt/qt.cpp:322
 msgid ""
 "Sets the safe area percentage between 0.0 and 100 when you want to ensure "
 "the visibility of the user interface on a constrained viewport"
@@ -30367,19 +30389,19 @@ msgstr ""
 "Mengatur persentase area aman antara 0,0 dan 100 bila Anda ingin memastikan "
 "antarmuka pengguna tetap terlihat pada viewport yang terbatas"
 
-#: modules/gui/qt/qt.cpp:322
+#: modules/gui/qt/qt.cpp:326
 msgid "Print Qt's important internal messages"
 msgstr "Cetak pesan internal penting Qt"
 
-#: modules/gui/qt/qt.cpp:323
+#: modules/gui/qt/qt.cpp:327
 msgid "Enable Qt's all own messaging categories except the debug category."
 msgstr "Aktifkan semua kategori pesan milik Qt kecuali kategori debug."
 
-#: modules/gui/qt/qt.cpp:325
+#: modules/gui/qt/qt.cpp:329
 msgid "Hide the window on close"
 msgstr "Sembunyikan jendela saat ditutup"
 
-#: modules/gui/qt/qt.cpp:326
+#: modules/gui/qt/qt.cpp:330
 msgid ""
 "Instead of closing the application, hide the window. This setting is only "
 "applicable when system tray icon is enabled."
@@ -30387,11 +30409,11 @@ msgstr ""
 "Alih-alih menutup aplikasi, sembunyikan jendela. Pengaturan ini hanya "
 "berlaku bila ikon baki sistem diaktifkan."
 
-#: modules/gui/qt/qt.cpp:328
+#: modules/gui/qt/qt.cpp:332
 msgid "Enable backdrop blur filter for the main window if possible"
 msgstr "Aktifkan filter blur latar untuk jendela utama jika memungkinkan"
 
-#: modules/gui/qt/qt.cpp:329
+#: modules/gui/qt/qt.cpp:333
 msgid ""
 "If backdrop blur filter is available, use translucency in the backgrounds of "
 "certain parts of the user interface instead of a solid color. This setting "
@@ -30401,11 +30423,11 @@ msgstr ""
 "belakang bagian tertentu antarmuka pengguna, bukan warna solid. Pengaturan "
 "ini mengurangi keterbacaan teks."
 
-#: modules/gui/qt/qt.cpp:332
+#: modules/gui/qt/qt.cpp:336
 msgid "Enable picture-in-picture (PiP) mode"
 msgstr "Aktifkan mode gambar-dalam-gambar (PiP)"
 
-#: modules/gui/qt/qt.cpp:333
+#: modules/gui/qt/qt.cpp:337
 msgid ""
 "Picture-in-picture mode allows playing video contained in a smaller area so "
 "that the interface remains usable."
@@ -30413,7 +30435,7 @@ msgstr ""
 "Mode gambar-dalam-gambar memungkinkan video diputar di area yang lebih kecil "
 "sehingga antarmuka tetap dapat digunakan."
 
-#: modules/gui/qt/qt.cpp:336
+#: modules/gui/qt/qt.cpp:340
 msgid ""
 "Adjusts the accent color, special values are 'default' and 'system' "
 "(requires Qt 6.6) ."
@@ -30421,23 +30443,23 @@ msgstr ""
 "Menyesuaikan warna aksen, nilai khusus adalah 'default' dan 'system' "
 "(memerlukan Qt 6.6) ."
 
-#: modules/gui/qt/qt.cpp:346
+#: modules/gui/qt/qt.cpp:350
 msgid "When minimized"
 msgstr "Ketika diminimalkan"
 
-#: modules/gui/qt/qt.cpp:381 modules/video_output/xcb/x11.c:413
+#: modules/gui/qt/qt.cpp:385 modules/video_output/xcb/x11.c:413
 msgid "X11"
 msgstr "X11"
 
-#: modules/gui/qt/qt.cpp:389
+#: modules/gui/qt/qt.cpp:393
 msgid "Qt interface"
 msgstr "Antarmuka Qt"
 
-#: modules/gui/qt/qt.cpp:437
+#: modules/gui/qt/qt.cpp:441
 msgid "Check for VLC Redesign updates"
 msgstr "Periksa pembaruan VLC Redesign"
 
-#: modules/gui/qt/qt.cpp:438
+#: modules/gui/qt/qt.cpp:442
 msgid ""
 "Look for a new release of VLC Redesign on GitHub at startup, at most once a "
 "day."
@@ -30445,11 +30467,11 @@ msgstr ""
 "Cari rilis baru VLC Redesign di GitHub saat memulai, paling banyak sekali "
 "sehari."
 
-#: modules/gui/qt/qt.cpp:442
+#: modules/gui/qt/qt.cpp:446
 msgid "Resume at"
 msgstr "Lanjutkan pada"
 
-#: modules/gui/qt/qt.cpp:443
+#: modules/gui/qt/qt.cpp:447
 msgid ""
 "Seconds into the media of the command line where playback continues, after "
 "an update."
@@ -30508,7 +30530,9 @@ msgstr "Pulihkan antrean putar?"
 
 #: modules/gui/qt/util/model_recovery_agent.hpp:88
 msgid "VLC Redesign closed unexpectedly on %1. Restore the play queue it had?"
-msgstr "VLC Redesign tertutup secara tak terduga pada %1. Pulihkan antrean putar yang dimilikinya?"
+msgstr ""
+"VLC Redesign tertutup secara tak terduga pada %1. Pulihkan antrean putar "
+"yang dimilikinya?"
 
 #: modules/gui/qt/util/model_recovery_agent.hpp:90
 msgctxt "play queue"
@@ -30519,7 +30543,7 @@ msgstr "Pulihkan"
 msgid "Don't restore"
 msgstr "Jangan pulihkan"
 
-#: modules/gui/qt/util/redesign_updater.cpp:194
+#: modules/gui/qt/util/redesign_updater.cpp:215
 msgid ""
 "The update isn't signed by the publisher of this copy (%1), so it wasn't "
 "used."
@@ -30527,64 +30551,74 @@ msgstr ""
 "Pembaruan tidak ditandatangani oleh penerbit salinan ini (%1), sehingga "
 "tidak digunakan."
 
-#: modules/gui/qt/util/redesign_updater.cpp:550
+#: modules/gui/qt/util/redesign_updater.cpp:460
+msgid "%1 (later)"
+msgstr "%1 (nanti)"
+
+#: modules/gui/qt/util/redesign_updater.cpp:462
+msgid "%1 (soon)"
+msgstr "%1 (segera)"
+
+#: modules/gui/qt/util/redesign_updater.cpp:610
 msgid "This build cannot check for updates."
 msgstr "Build ini tidak dapat memeriksa pembaruan."
 
-#: modules/gui/qt/util/redesign_updater.cpp:564
+#: modules/gui/qt/util/redesign_updater.cpp:624
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "Tidak dapat menghubungi GitHub. Periksa koneksi Anda dan coba lagi."
 
-#: modules/gui/qt/util/redesign_updater.cpp:581
+#: modules/gui/qt/util/redesign_updater.cpp:641
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "GitHub mengirim respons yang tidak terduga (%1)."
 
-#: modules/gui/qt/util/redesign_updater.cpp:677
+#: modules/gui/qt/util/redesign_updater.cpp:759
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
-msgstr "Pembaruan ini tidak ditandatangani oleh VLC Redesign, jadi tidak digunakan. Unduh dari halaman rilis sebagai gantinya."
+msgstr ""
+"Pembaruan ini tidak ditandatangani oleh VLC Redesign, jadi tidak digunakan. "
+"Unduh dari halaman rilis sebagai gantinya."
 
-#: modules/gui/qt/util/redesign_updater.cpp:699
-#: modules/gui/qt/util/redesign_updater.cpp:740
+#: modules/gui/qt/util/redesign_updater.cpp:781
+#: modules/gui/qt/util/redesign_updater.cpp:822
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr ""
 "Checksum pembaruan tidak ada; unduh dari halaman rilis sebagai gantinya."
 
-#: modules/gui/qt/util/redesign_updater.cpp:714
-#: modules/gui/qt/util/redesign_updater.cpp:786
+#: modules/gui/qt/util/redesign_updater.cpp:796
+#: modules/gui/qt/util/redesign_updater.cpp:868
 msgid "The download failed. Check your connection and try again."
 msgstr "Unduhan gagal. Periksa koneksi Anda dan coba lagi."
 
-#: modules/gui/qt/util/redesign_updater.cpp:799
+#: modules/gui/qt/util/redesign_updater.cpp:881
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "Pembaruan tidak cocok dengan checksum-nya, sehingga tidak digunakan."
 
-#: modules/gui/qt/util/redesign_updater.cpp:830
+#: modules/gui/qt/util/redesign_updater.cpp:912
 msgid "The update isn't in a format this version knows."
 msgstr "Pembaruan tidak dalam format yang dikenali versi ini."
 
-#: modules/gui/qt/util/redesign_updater.cpp:833
-#: modules/gui/qt/util/redesign_updater.cpp:857
-#: modules/gui/qt/util/redesign_updater.cpp:868
-#: modules/gui/qt/util/redesign_updater.cpp:874
+#: modules/gui/qt/util/redesign_updater.cpp:915
+#: modules/gui/qt/util/redesign_updater.cpp:939
+#: modules/gui/qt/util/redesign_updater.cpp:950
+#: modules/gui/qt/util/redesign_updater.cpp:956
 msgid "The update is damaged."
 msgstr "Pembaruan rusak."
 
-#: modules/gui/qt/util/redesign_updater.cpp:838
+#: modules/gui/qt/util/redesign_updater.cpp:920
 msgid "The update isn't for this version."
 msgstr "Pembaruan ini bukan untuk versi ini."
 
-#: modules/gui/qt/util/redesign_updater.cpp:847
-#: modules/gui/qt/util/redesign_updater.cpp:884
-#: modules/gui/qt/util/redesign_updater.cpp:893
-#: modules/gui/qt/util/redesign_updater.cpp:897
-#: modules/gui/qt/util/redesign_updater.cpp:901
+#: modules/gui/qt/util/redesign_updater.cpp:929
+#: modules/gui/qt/util/redesign_updater.cpp:966
+#: modules/gui/qt/util/redesign_updater.cpp:975
+#: modules/gui/qt/util/redesign_updater.cpp:979
+#: modules/gui/qt/util/redesign_updater.cpp:983
 msgid "The update can't be written in %1."
 msgstr "Pembaruan tidak dapat ditulis di %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:849
+#: modules/gui/qt/util/redesign_updater.cpp:931
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -30592,29 +30626,29 @@ msgstr ""
 "Sebuah file VLC Redesign telah berubah sejak dipasang, sehingga pembaruan "
 "kecil tidak dapat digunakan: perbarui dengan installer sebagai gantinya."
 
-#: modules/gui/qt/util/redesign_updater.cpp:879
+#: modules/gui/qt/util/redesign_updater.cpp:961
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr "Pembaruan rusak: sebuah file tidak cocok dengan checksum-nya."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1004
+#: modules/gui/qt/util/redesign_updater.cpp:1086
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr "Pembaruan tidak dapat dimulai. Akan dicoba lagi lain kali."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1031
+#: modules/gui/qt/util/redesign_updater.cpp:1113
 msgid "The download failed. Try again, or download it from the release page."
 msgstr "Unduhan gagal. Coba lagi, atau unduh dari halaman rilis."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1044
+#: modules/gui/qt/util/redesign_updater.cpp:1126
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr ""
 "Installer yang diunduh tidak cocok dengan checksum-nya, sehingga tidak "
 "dijalankan."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1053
+#: modules/gui/qt/util/redesign_updater.cpp:1135
 msgid "The installer couldn't be saved to %1."
 msgstr "Installer tidak dapat disimpan ke %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1087
+#: modules/gui/qt/util/redesign_updater.cpp:1169
 msgid "The installer couldn't be started."
 msgstr "Installer tidak dapat dijalankan."
 

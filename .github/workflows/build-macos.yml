@@ -39,7 +39,8 @@ jobs:
     timeout-minutes: 360
     env:
       BUILD_DIR: ${{ github.workspace }}/build-macos-${{ matrix.arch }}
-      OUT_DIR: ${{ runner.temp }}/out
+      # (the runner context is not available here: the workspace)
+      OUT_DIR: ${{ github.workspace }}/out-macos-${{ matrix.arch }}
     steps:
       - uses: actions/checkout@v5
         with:
@@ -69,8 +70,8 @@ jobs:
         with:
           name: vlc-redesign-macos-${{ matrix.arch }}-${{ github.sha }}
           path: |
-            ${{ runner.temp }}/out/*.dmg
-            ${{ runner.temp }}/out/*.sha256
+            ${{ env.OUT_DIR }}/*.dmg
+            ${{ env.OUT_DIR }}/*.sha256
           retention-days: ${{ github.event_name == 'pull_request' && 2 || 7 }}
 
       - name: Launch test

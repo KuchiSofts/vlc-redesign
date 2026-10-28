@@ -20,6 +20,7 @@
 #include <vlc_iptv.h>
 #include <vlc_keystore.h>
 #include <vlc_stream.h>
+#include <vlc_fs.h>
 
 #include "service.hpp"
 
@@ -50,11 +51,14 @@ namespace {
 class VlcHost : public iptv::Host
 {
 public:
-    explicit VlcHost(vlc_iptv_t* obj) : m_obj(obj)
+    VlcHost(vlc_iptv_t* obj, const std::string& keystoreFile) : m_obj(obj)
     {
         // a keystore that keeps the secrets (not the one in memory)
         var_Create(obj, "keystore", VLC_VAR_STRING);
         var_SetString(obj, "keystore", "secret,kwallet,keychain,file_crypt,none");
+        // (the encrypted file of Windows and macOS needs its path: VLC sets none)
+        var_Create(obj, "keystore-file", VLC_VAR_STRING);
+        var_SetString(obj, "keystore-file", keystoreFile.c_str());
         m_keystore = vlc_keystore_create(obj);
         m_interrupt = vlc_interrupt_create();
     }
@@ -375,7 +379,9 @@ int Open(vlc_object_t* p_this)
     try
     {
         auto sys = std::make_unique<Sys>();
-        sys->host = std::make_unique<VlcHost>(obj);
+        const std::string folder = dataDir + "/iptv";
+        vlc_mkdir(folder.c_str(), 0700);
+        sys->host = std::make_unique<VlcHost>(obj, folder + "/keystore");
         // the requests, the logos and the films of an account at the same time
         sys->executor = std::make_unique<Executor>(3);
         Sys* s = sys.get();

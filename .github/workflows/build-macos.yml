@@ -88,5 +88,6 @@ jobs:
             ${{ runner.temp }}/smoke/*.txt
             ${{ runner.temp }}/smoke/*.log
             ${{ runner.temp }}/smoke/*.out
+            ${{ runner.temp }}/smoke/*.png
             ${{ runner.temp }}/smoke/crashes
           retention-days: 7

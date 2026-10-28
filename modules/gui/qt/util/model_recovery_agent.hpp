@@ -86,7 +86,8 @@ public:
                                                              locale.toString(saved.time(), QLocale::ShortFormat));
                     m_questionMessage.title = qtr("Restore the play queue?");
                     m_questionMessage.heading = qtr("VLC Redesign closed unexpectedly on %1. Restore the play queue it had?").arg(when);
-                    m_questionMessage.acceptText = qtr("Restore");
+                    // (a context: "Restore" alone is the window's, its previous size)
+                    m_questionMessage.acceptText = qfu(vlc_pgettext("play queue", "Restore"));
                     m_questionMessage.cancelText = qtr("Don't restore");
                     // (Yes was the default button)
                     m_questionMessage.defaultAccept = true;

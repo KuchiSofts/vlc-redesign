@@ -77,3 +77,11 @@ __pycache__/
 /signed/
 /signed-setup/
 /release/
+# Private keys, never committed: the release signing key and its backups
+# (extras/juxtopposed/signing/release-key.ps1 keeps the key outside every
+# repository; the pre-push hook refuses them too)
+*.key
+*.p8
+*.pfx
+*.p12
+update-signing*

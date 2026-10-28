@@ -300,6 +300,8 @@ qt_plugin_sources = files(
     '../../util/http_request.hpp',
     '../../util/redesign_updater.cpp',
     '../../util/redesign_updater.hpp',
+    '../../util/redesign_update_key.h',
+    '../../util/redesign_update_verify.h',
     '../../util/redesign_feedback.cpp',
     '../../util/redesign_feedback.hpp',
     '../../util/subtitle_preferences.cpp',

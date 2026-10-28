@@ -271,6 +271,13 @@ T.Popup {
                     Body { Layout.maximumWidth: implicitWidth; text: qsTr("Built on VLC media player by") }
                     Link { text: qsTr("the VideoLAN team and contributors"); url: "https://www.videolan.org/" }
                 }
+                // The other platforms, from the copy of platforms.yml built
+                // into this release (nothing is fetched)
+                Body {
+                    visible: RedesignUpdater.alsoOn.length > 0
+                    color: root.textMuted
+                    text: qsTr("Also on: %1").arg(RedesignUpdater.alsoOn)
+                }
                 // The forms of the GitHub repository (as in the ⋯ menu)
                 Flow {
                     Layout.fillWidth: true

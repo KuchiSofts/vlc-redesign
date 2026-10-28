@@ -54,6 +54,9 @@ class RedesignUpdater : public QObject
     // About shows the state itself: no banner while it is open
     Q_PROPERTY(bool aboutOpen READ aboutOpen WRITE setAboutOpen NOTIFY stateChanged FINAL)
     Q_PROPERTY(QString repositoryUrl READ repositoryUrl CONSTANT FINAL)
+    // "Also on: Linux (soon), macOS (soon)…": the other platforms, from the
+    // copy of platforms.yml built in (:/redesign/platforms.json); empty without it
+    Q_PROPERTY(QString alsoOn READ alsoOn CONSTANT FINAL)
 
 public:
     enum State {
@@ -88,6 +91,7 @@ public:
     bool aboutOpen() const { return m_aboutOpen; }
     void setAboutOpen(bool open);
     QString repositoryUrl() const;
+    QString alsoOn() const;
 
     // The daily check (option redesign-update-check), for the first-run
     // setup: turned on, it starts as at a start of VLC

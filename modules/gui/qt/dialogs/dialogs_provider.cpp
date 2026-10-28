@@ -357,6 +357,12 @@ void DialogsProvider::folderInfoDialog( const QUrl &folder )
         QDesktopServices::openUrl( folder );
 }
 
+void DialogsProvider::whatsNewDialog()
+{
+    if( p_intf->p_mi && !p_intf->b_isDialogProvider )
+        emit whatsNewRequested();
+}
+
 #ifdef ENABLE_VLM
 void DialogsProvider::vlmDialog()
 {

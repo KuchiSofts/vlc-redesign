@@ -12,6 +12,12 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-10-28):
 
+- 🟡 **Platforms and website** (roadmap step 5, branch `feature/platforms`): `platforms.yml` rewritten as the single
+  source (status, version, date, next, download files, page), `extras/juxtopposed/platforms/render.py` renders it
+  into the README's platform bar and table, `site/` (the website: OS detection, every platform, screenshots, the
+  design credit), the *Also on* line of the release notes and of About; the Platforms workflow deploys the site.
+  Left: merge, enable GitHub Pages (Source: GitHub Actions), check About in a build.
+
 - 🟡 **0.3.2**: the open issues. [#9](https://github.com/KuchiSofts/vlc-redesign/issues/9): the playback speed and
   teletext buttons never loaded on Windows (`Popup` without its import), so dropped on a bar they left an
   invisible slot; fixed, and a control that fails to load shows a placeholder that can be dragged out.
@@ -222,7 +228,7 @@ What comes first, and why. Each step starts when what it needs is done.
 | 2  | Figma references exported, capture script, pixel check of 103 frames  | step 1 (screens stable)         | "Pixel for pixel" needs proof; capturing moving screens is wasted    | 🟢     |
 | 3  | Community setup: in-app *Suggest an idea* / *Report a problem* (13.12), hub, Discussions, board | decisions 1 and 9 | Feedback must land in the right place before the announcement | 🟡 |
 | 4  | Release 0.3.0 and announce it (0.3.0 and 0.3.1 out 2026-10-25; 0.3.2 next) | quality gates, steps 1 and 3 | Users get the fixes; the community side is ready for them        | 🟡     |
-| 5  | `platforms.yml`, platform bar, website                                | step 3                          | In place before a second platform exists, so it shows everywhere     | 🔴     |
+| 5  | `platforms.yml`, platform bar, website (built 2026-10-28; Pages to enable) | step 3                     | In place before a second platform exists, so it shows everywhere     | 🟡     |
 | 6  | Design tokens exported (`design/`: tokens, icons, fonts)              | step 2 (values checked)         | Every other platform reads them; no copying errors                   | 🔴     |
 | 7  | Linux, then macOS, then Windows ARM64                                 | CI; decision 3 for macOS        | Same code base: the cheapest new platforms first                     | 🔴     |
 | 8  | Android                                                               | step 6, decision 6              | The largest new audience (phones and Android TV)                     | 🔴     |
@@ -1249,8 +1255,16 @@ request in each repository when they change. They have their own version (`desig
 ### 13.3 Every repository shows every version
 
 - `platforms.yml` in the hub is the single source: name, status, latest version, date, download link, page.
-- A workflow renders it into the hub's README, the website, and a pull request in each repository that replaces the
-  block between `<!-- platforms:start -->` and `<!-- platforms:end -->` at the top of its README.
+- `extras/juxtopposed/platforms/render.py` (Python, standard library) renders it: the block between
+  `<!-- platforms:start -->` and `<!-- platforms:end -->` at the top of the README (the bar, and the table in a
+  *details*), `site/platforms.json` and the platform list and download box of `site/index.html` (so the page works
+  without JavaScript), `--also-on <id>` for the release notes, `--check` for pull requests, `--build DIR` for Pages.
+- The workflow `.github/workflows/platforms.yml` does it on `main` (commits the rendered files back when they
+  changed), checks pull requests, and deploys `site/` to GitHub Pages; a pull request in each sister repository
+  that replaces the same block comes when the first one exists.
+- 🟢 Built 2026-10-28 (Windows 0.3.1 released, 0.3.2 next; Linux in progress; macOS and Windows ARM64 planned;
+  Android and Samsung TV research; iPhone/iPad later). After each release: set `version`, `date` and `next` of
+  Windows and run the renderer (`release-notes.py` reminds it).
 - The platform bar at the top of every README:
 
 ```
@@ -1266,9 +1280,11 @@ Windows 0.2.6 · Linux soon · macOS soon · Android soon · Samsung TV soon · 
 | Samsung TV   | ⚪ research   | —      | coming soon            |
 | iPhone/iPad  | ⚪ later      | —      | coming soon            |
 
-- Release notes end with *Also on: …* from the same file.
+- Release notes end with *Also on: …* from the same file (🟢 `release-notes.py` imports the renderer).
 - In the app, About and the update card show *Also on: …* from a copy of `platforms.yml` built into each release:
-  nothing is fetched for it.
+  nothing is fetched for it. 🟡 About: one muted line under *Built on VLC media player by…*
+  (`RedesignUpdater.alsoOn`, from `site/platforms.json` in `assets.qrc` as `:/redesign/platforms.json`; About is
+  outside the Figma file, §5.15). The update card keeps its three lines for now.
 
 ### 13.4 Versions
 
@@ -1432,7 +1448,8 @@ In an organization, a `.github` repository gives every repository these files by
 - 🟢 `ROADMAP.md` with 👍 voting
 - 🔴 Hub: the existing repository or an organization (decision 1)
 - 🟢 `platforms.yml` and the platform bar in the README (2026-10-25; the sister repositories read the same file)
-- 🔴 Website on GitHub Pages with OS detection
+- 🟡 Website on GitHub Pages with OS detection (`site/`, 2026-10-28; the owner enables Pages: Settings → Pages →
+  Source: GitHub Actions)
 - 🔴 Shared design assets in `design/`
 - 🔴 Discussions on, five categories and their forms
 - 🟢 Issue forms: design mismatch, TV report, translation (2026-10-25)

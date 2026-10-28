@@ -116,6 +116,18 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Technical
 
+- **Platforms in one file, and a website.** `platforms.yml` is the single source of every platform (status, latest
+  version and date, the next version, the files of a release, its page). `extras/juxtopposed/platforms/render.py`
+  (standard library only, with a reader for the file's YAML) writes the platform bar and table at the top of the
+  README (between `<!-- platforms:start -->` and `<!-- platforms:end -->`), `site/platforms.json` and the platform
+  list and download box of `site/index.html`; `--check` fails when they are out of date, `--also-on <id>` prints
+  the line `release-notes.py` now ends the notes with, `--build DIR` adds the screenshots of `docs/media` for
+  publishing. `site/` is the website: plain HTML, CSS and JavaScript in the app's colours and Inter (a 40 KB
+  Latin subset of the app's font), light and dark from the system, the download for the visitor's system (Windows
+  on ARM through the client hints; `?os=` to preview another), the design credit, every platform and the project's
+  links; no cookies, trackers or requests to other sites. `.github/workflows/platforms.yml` checks pull requests,
+  renders on `main` and deploys `site/` to GitHub Pages. About shows *Also on: …* (the other platforms) from
+  `site/platforms.json`, built in as `:/redesign/platforms.json` (`RedesignUpdater.alsoOn`): nothing is fetched.
 - **Signed checksums (security).** Releases have `SHA256SUMS.txt.sig`: an ECDSA P-256 signature (SHA-256, raw
   r‖s, 64 bytes) of `SHA256SUMS.txt`. The updater downloads it with the checksums and checks it with Windows' CNG
   (`BCryptImportKeyPair` / `BCryptVerifySignature`, `bcrypt.dll` loaded from System32) against the public key in

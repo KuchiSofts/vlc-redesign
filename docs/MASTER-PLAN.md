@@ -740,6 +740,11 @@ Shipped in 0.1.0 to 0.2.6 ([changelog](../CHANGELOG.md)). Work since 0.2.6 is in
 - 🟢 File associations (about 130 formats) without taking over the user's choices; Explorer entries
 - 🟢 Uninstall gives every file type back to the app it had before
 - 🟢 Daily update check; small updates (binary deltas), SHA-256 checked, rolled back on failure
+- 🟢 Signed checksums (BUG-006, 2026-10-28): `SHA256SUMS.txt.sig` by the project's release key (ECDSA P-256),
+  checked with CNG before any checksum is used; required from 0.3.2 on (`FIRST_SIGNED_VERSION`). Key and
+  commands: `extras/juxtopposed/signing/release-key.ps1`; `make-release.ps1` signs. Tested: sign/verify round
+  trip, openssl cross-check, the C verifier on good, tampered, flipped and wrong-key signatures. Still to test: an
+  update from a 0.3.2 build to a signed release.
 - 🟢 *Restart now* reopens the media where it was in about two seconds; portable copies update too
 
 **Windows and robustness**
@@ -1228,7 +1233,7 @@ Windows 0.2.6 · Linux soon · macOS soon · Android soon · Samsung TV soon · 
 
 | Platform      | Files                                                                                         |
 |---------------|-----------------------------------------------------------------------------------------------|
-| Windows       | `vlc-redesign-X.Y.Z-win64-setup.exe`, `vlc-redesign-X.Y.Z-win64.zip`, `.vrdelta` small updates, `SHA256SUMS.txt` |
+| Windows       | `vlc-redesign-X.Y.Z-win64-setup.exe`, `vlc-redesign-X.Y.Z-win64.zip`, `.vrdelta` small updates, `SHA256SUMS.txt`, `SHA256SUMS.txt.sig` |
 | Windows ARM64 | `vlc-redesign-X.Y.Z-winarm64-setup.exe`, `vlc-redesign-X.Y.Z-winarm64.zip`                    |
 | Linux         | `.AppImage`, `.flatpak` (and Flathub), `.deb`, `.rpm`, `.tar.gz`                              |
 | macOS         | `vlc-redesign-X.Y.Z-macos-arm64.dmg`, `vlc-redesign-X.Y.Z-macos-x86_64.dmg`                   |
@@ -1433,7 +1438,8 @@ secrets kept in GitHub, not on one PC; a second maintainer with release rights.
 Mitigation: the dated inventory, reference exports in the repository, the exported design assets.
 
 **Update security.** A download is tampered with.
-Mitigation: HTTPS from GitHub only and SHA-256 checks (done); code signing (decision 2); `SECURITY.md`.
+Mitigation: HTTPS from GitHub only and SHA-256 checks (done); the checksums signed by the project's release key
+and checked by the app (done, from 0.3.2); code signing (decision 2); `SECURITY.md`.
 
 ## 16. Definition of done
 

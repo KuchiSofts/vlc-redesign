@@ -38,6 +38,9 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - **Updates:** a failed roll back is no longer reported as success; long paths, case-only renames and "nothing to
   apply" are handled; downloads must come from this project's releases, and a signed copy only accepts updates
   signed by the same publisher.
+- **Updates are signed by the project.** From 0.3.2 on, every release's checksums carry a signature by the
+  project's own release key, and the app installs an update only when that signature is good: a release put on
+  GitHub by anyone else (a stolen account or token) is refused with a message, never installed.
 - **Casting:** a TV marked unreachable can be retried; a failure to build the stream shows a message instead of
   "connecting" for ever; one file the TV couldn't read no longer makes every later one be converted; quitting
   right after a TV disappears is much quicker; a Chromecast seen two ways no longer vanishes when one goes;
@@ -60,6 +63,17 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Technical
 
+- **Signed checksums (security).** Releases have `SHA256SUMS.txt.sig`: an ECDSA P-256 signature (SHA-256, raw
+  r‖s, 64 bytes) of `SHA256SUMS.txt`. The updater downloads it with the checksums and checks it with Windows' CNG
+  (`BCryptImportKeyPair` / `BCryptVerifySignature`, `bcrypt.dll` loaded from System32) against the public key in
+  `modules/gui/qt/util/redesign_update_key.h` before it reads any checksum. For a release at or after
+  `FIRST_SIGNED_VERSION` (0.3.2) a missing or bad signature refuses the update, and the signed checksums must
+  name files of that very version; older targets keep the earlier checks. The same-publisher Authenticode check
+  stays. `extras/juxtopposed/signing/release-key.ps1` makes the key (`new`; kept DPAPI-encrypted for the
+  release PC's user in `%USERPROFILE%\source\vlc-redesign-keys`, outside every repository), signs, verifies and
+  exports a backup; `make-release.ps1` signs `SHA256SUMS.txt` (`-NoSumsSignature` in the GitHub workflow, which
+  never has the key). `.gitignore` and the pre-push hook refuse key files. `signing/verify-test.c` tests the
+  verifier as the app compiles it.
 - The button, the placeholder and the high resolution time used the `Popup` and `Control` types without importing
   them (upstream dropped `QtQuick.Controls`); the static Qt of Windows doesn't know them. They come from
   `QtQuick.Controls.Basic` now.

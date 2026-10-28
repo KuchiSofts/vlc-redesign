@@ -1,3 +1,29 @@
+<!-- platforms:start -->
+<!-- Written by extras/juxtopposed/platforms/render.py from platforms.yml: edit that file. -->
+<p align="center"><sub>
+
+**[Windows 0.3.1](https://github.com/KuchiSofts/vlc-redesign/releases/latest)** · Linux soon · macOS soon · Windows ARM64 soon · Android soon · Samsung TV soon · iPhone/iPad later
+
+</sub></p>
+
+<details>
+<summary>Every platform and its status</summary>
+
+| Platform | Status | Latest | Get it |
+|---|---|---|---|
+| Windows | 🟢 released | 0.3.1 · 2026-10-25 | [installer](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.3.1/vlc-redesign-0.3.1-win64-setup.exe) · [portable](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.3.1/vlc-redesign-0.3.1-win64.zip) |
+| Linux | 🟡 in progress | — | coming soon |
+| macOS | 🔴 planned | — | coming soon |
+| Windows ARM64 | 🔴 planned | — | coming soon |
+| Android | ⚪ research | — | coming soon |
+| Samsung TV | ⚪ research | — | coming soon |
+| iPhone/iPad | ⚪ later | — | coming soon |
+
+<sub>From [`platforms.yml`](platforms.yml) · [every platform on the website](https://kuchisofts.github.io/vlc-redesign/).</sub>
+
+</details>
+<!-- platforms:end -->
+
 <div align="center">
 
 <img src="modules/gui/qt/pixmaps/misc/cone.svg" alt="" width="84">

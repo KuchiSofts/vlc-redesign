@@ -32,8 +32,8 @@ Rectangle {
     implicitWidth: row.implicitWidth + px(12)
     implicitHeight: px(20)
     radius: px(4)
-    color: accent ? VLCStyle.redesign.color(VLCStyle.redesign.accentBackground, "", _dark)
-                  : VLCStyle.redesign.color("#191919", "#ababaa", _dark)
+    color: accent ? VLCStyle.redesign.color(VLCStyle.redesign.accentBackground, undefined, _dark)
+                  : VLCStyle.redesign.color("#191919", undefined, _dark)
 
     Row {
         id: row
@@ -49,14 +49,14 @@ Rectangle {
             source: root.icon === "" ? ""
                     : SVGColorImage.colorize("qrc:///redesign/duo/" + root.icon + ".svg")
                                    .color1(root.accent ? VLCStyle.redesign.accent
-                                                       : VLCStyle.redesign.color("#8F8F8F", "#5A5A59", root._dark))
+                                                       : VLCStyle.redesign.color("#8F8F8F", undefined, root._dark))
                                    .color2(VLCStyle.redesign.accent).uri()
         }
 
         Text {
             anchors.verticalCenter: parent.verticalCenter
             text: root.text
-            color: root.accent ? VLCStyle.redesign.accent : VLCStyle.redesign.color("#8F8F8F", "#2e2e2e", root._dark)
+            color: root.accent ? VLCStyle.redesign.accent : VLCStyle.redesign.color("#8F8F8F", undefined, root._dark)
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: root.px(11)
             font.weight: Font.Medium

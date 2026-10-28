@@ -38,7 +38,7 @@ Rectangle {
     width: Math.min(row.implicitWidth + px(32), parent ? parent.width - px(40) : row.implicitWidth)
     height: px(48)
     radius: px(10)
-    color: _dark ? Qt.rgba(25 / 255, 25 / 255, 25 / 255, 0.95) : VLCStyle.redesign.color("#191919", "#ababaa", false)
+    color: _dark ? Qt.rgba(25 / 255, 25 / 255, 25 / 255, 0.95) : VLCStyle.redesign.color("#191919", undefined, false)
 
     Connections {
         target: Iptv
@@ -63,7 +63,7 @@ Rectangle {
             width: Math.min(implicitWidth, root.parent ? root.parent.width - root.px(200) : implicitWidth)
             text: root.text
             elide: Text.ElideRight
-            color: VLCStyle.redesign.color("#C6C6C6", "#2e2e2e", root._dark)
+            color: VLCStyle.redesign.color("#C6C6C6", undefined, root._dark)
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: root.px(14)
         }

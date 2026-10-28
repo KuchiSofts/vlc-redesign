@@ -34,7 +34,8 @@ T.ItemDelegate {
     signal menu(point globalPos)
 
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
-    function c(dark, light) { return VLCStyle.redesign.color(dark, light, root._dark) }
+    // (the light theme from the map of the design: VLCStyle.redesign.color)
+    function c(dark, light) { return VLCStyle.redesign.color(dark, undefined, root._dark) }
 
     readonly property bool _hasNow: (model.nowTitle ?? "") !== ""
     readonly property real _progress: {
@@ -65,7 +66,7 @@ T.ItemDelegate {
     background: Rectangle {
         radius: root.px(6)
         color: root.model.current ? (root._dark ? VLCStyle.redesign.accentBackground
-                                                : VLCStyle.redesign.color(VLCStyle.redesign.accentBackground, "", false))
+                                                : VLCStyle.redesign.color(VLCStyle.redesign.accentBackground, undefined, false))
                : (root.hovered || root.visualFocus) ? root.c("#151515", "#b5b5b4")
                : "transparent"
         border.width: root.visualFocus ? 1 : 0

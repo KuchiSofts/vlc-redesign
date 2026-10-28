@@ -26,7 +26,8 @@ FocusScope {
     signal programmeClicked(var channel, var programme)
 
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
-    function c(dark, light) { return VLCStyle.redesign.color(dark, light) }
+    // (the light theme from the map of the design: VLCStyle.redesign.color)
+    function c(dark, light) { return VLCStyle.redesign.color(dark) }
 
     LayoutMirroring.enabled: false
     LayoutMirroring.childrenInherit: true
@@ -295,7 +296,7 @@ FocusScope {
                 onClicked: Iptv.play(row.model.key)
                 background: Rectangle {
                     radius: root.px(6)
-                    color: row.model.current ? VLCStyle.redesign.color(VLCStyle.redesign.accentBackground, "")
+                    color: row.model.current ? VLCStyle.redesign.color(VLCStyle.redesign.accentBackground)
                            : (channelCell.hovered || (rows.currentIndex === row.index && rows.activeFocus))
                              ? root.c("#151515", "#b5b5b4") : "transparent"
                     border.width: rows.currentIndex === row.index && rows.activeFocus ? 1 : 0

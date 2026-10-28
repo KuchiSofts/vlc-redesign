@@ -136,7 +136,7 @@ The icons of the Figma "Icon" component set (42:356), exported as PNG, one folde
 | `wrench` | <img src="png/wrench/default.png" height="24" alt="wrench default"> `default` | 24 x 24 |
 | `zoom` | <img src="png/zoom/default.png" height="24" alt="zoom default"> `default` | 24 x 24 |
 
-## svg (`svg/`, 35 icons, 35 files)
+## svg (`svg/`, 36 icons, 36 files)
 
 Single-colour SVG icons of the top bar, the sidebar and the player (24 x 24 unless noted).
 
@@ -171,6 +171,7 @@ Single-colour SVG icons of the top bar, the sidebar and the player (24 x 24 unle
 | `sidebar` | <img src="svg/sidebar.svg" height="24" alt="sidebar default"> `default` | 18 x 18 |
 | `sort` | <img src="svg/sort.svg" height="24" alt="sort default"> `default` | 26 x 25 |
 | `subtitles` | <img src="svg/subtitles.svg" height="24" alt="subtitles default"> `default` | 24 x 24 |
+| `tv` | <img src="svg/tv.svg" height="24" alt="tv default"> `default` | 24 x 24 |
 | `video` | <img src="svg/video.svg" height="24" alt="video default"> `default` | 24 x 24 |
 | `volume` | <img src="svg/volume.svg" height="24" alt="volume default"> `default` | 24 x 24 |
 | `volume-background` | <img src="svg/volume-background.svg" height="24" alt="volume-background default"> `default` | 89 x 27.3633 |

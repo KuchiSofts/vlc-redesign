@@ -25,7 +25,8 @@ FocusScope {
     property string search: ""
 
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
-    function c(dark, light) { return VLCStyle.redesign.color(dark, light) }
+    // (the light theme from the map of the design: VLCStyle.redesign.color)
+    function c(dark, light) { return VLCStyle.redesign.color(dark) }
 
     readonly property var accounts: Iptv.sources.filter(s => s.kind === "xtream" && s.enabled
                                                         && (kind === "series" ? s.series : s.vod))
@@ -37,7 +38,7 @@ FocusScope {
     property var series: ({})
     property var episodes: []
 
-    readonly property var categories: [...new Set(items.map(i => i.category).filter(c => !!c))]
+    readonly property var categories: items.map(i => i.category).filter((c, i, all) => !!c && all.indexOf(c) === i)
     readonly property var shown: {
         const text = search.trim().toLowerCase()
         return items.filter(i => (category === "" || i.category === category)
@@ -94,7 +95,7 @@ FocusScope {
             onClicked: root.category = modelData
             background: Rectangle {
                 radius: root.px(6)
-                color: chip.selected ? VLCStyle.redesign.color(VLCStyle.redesign.accentBackground, "")
+                color: chip.selected ? VLCStyle.redesign.color(VLCStyle.redesign.accentBackground)
                                      : chip.hovered ? root.c("#222222", "#9c9c9b") : root.c("#191919", "#ababaa")
             }
             contentItem: Text {

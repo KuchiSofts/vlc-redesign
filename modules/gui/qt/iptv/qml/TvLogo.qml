@@ -22,7 +22,7 @@ Rectangle {
     readonly property bool _dark: forceDark || VLCStyle.palette.isDark
 
     radius: VLCStyle.dp(6, VLCStyle.scale)
-    color: VLCStyle.redesign.color("#171717", "#dedede", _dark)
+    color: VLCStyle.redesign.color("#171717", undefined, _dark)
     clip: true
 
     Image {
@@ -45,7 +45,7 @@ Rectangle {
         // "Channel 12 HD" -> "C1", "BBC One" -> "BO"
         text: root.name.replace(/^[A-Za-z]{2,3}\s*[:|]\s+/, "").split(/\s+/).filter(w => w.length > 0)
                   .slice(0, 2).map(w => w.charAt(0).toUpperCase()).join("")
-        color: VLCStyle.redesign.color("#6B6B6B", "#5a5a59", root._dark)
+        color: VLCStyle.redesign.color("#6B6B6B", undefined, root._dark)
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: Math.round(root.height * 0.34)
         font.weight: Font.DemiBold

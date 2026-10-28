@@ -111,6 +111,7 @@ moc_headers = files(
     '../../player/local_folder_model.hpp',
     '../../player/sleep_timer.hpp',
     '../../util/redesign_updater.hpp',
+    '../../util/redesign_feedback.hpp',
     '../../util/subtitle_preferences.hpp',
     '../../player/subtitle_finder.hpp',
     '../../player/player_controller.hpp',

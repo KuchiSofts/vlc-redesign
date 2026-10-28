@@ -28,6 +28,9 @@ T.Popup {
     // a dialog with one action (Close) shows no Cancel
     property bool cancelVisible: true
     property bool acceptEnabled: true
+    // a second action before the main one (Report a problem: Copy), none
+    // when empty
+    property string extraText: ""
     property bool darkTheme: VLCStyle.palette.isDark
     // 1048 for Open network stream, 713 for New Playlist
     property real preferredWidth: VLCStyle.dp(1048, VLCStyle.scale)
@@ -49,6 +52,7 @@ T.Popup {
     property bool _previousGlobalShortcuts: true
 
     signal accepted()
+    signal extraClicked()
 
     // false: the dialog closes itself once its action is done (Add Subtitles)
     property bool closeOnAccept: true
@@ -261,6 +265,17 @@ T.Popup {
             }
 
             DialogButton {
+                objectName: "dialogExtraButton"
+                visible: root.extraText !== ""
+                anchors.right: acceptButton.left
+                anchors.rightMargin: VLCStyle.dp(8, VLCStyle.scale)
+                y: VLCStyle.dp(20, VLCStyle.scale)
+                text: root.extraText
+                onClicked: root.extraClicked()
+            }
+
+            DialogButton {
+                id: acceptButton
                 objectName: "dialogAcceptButton"
                 anchors.right: parent.right
                 anchors.rightMargin: VLCStyle.dp(20, VLCStyle.scale)

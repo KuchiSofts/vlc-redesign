@@ -117,6 +117,18 @@ Item {
         source: "qrc:/qt/qml/VLC/Dialogs/RedesignAboutDialog.qml"
         onLoaded: { item.parent = root; item.closed.connect(() => root.release(about)); item.open() }
     }
+    // Report a problem (the ⋯ menu, About)
+    Loader {
+        id: report
+        anchors.fill: parent
+        active: false
+        source: "qrc:/qt/qml/VLC/Dialogs/RedesignReportDialog.qml"
+        onLoaded: { item.parent = root; item.closed.connect(() => root.release(report)); item.open() }
+    }
+    Connections {
+        target: RedesignFeedback
+        function onReportRequested() { root.show(report) }
+    }
     Loader {
         id: effects
         property int requestedTab: 0

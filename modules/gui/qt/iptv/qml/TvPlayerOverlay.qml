@@ -152,10 +152,22 @@ FocusScope {
         }
     }
 
+    // the pointer at the bottom of the video, where the banner shows, brings
+    // it back with its buttons (the clicks go through to the video)
+    Item {
+        id: bannerZone
+        anchors.left: parent.left
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: root.bottomInset
+        width: Math.min(root.px(680), parent.width)
+        height: root.px(240)
+        HoverHandler { id: zoneHover }
+    }
+
     // ---- the banner ----
     Rectangle {
         id: banner
-        readonly property bool wanted: bannerTimer.running || bannerHover.hovered
+        readonly property bool wanted: bannerTimer.running || bannerHover.hovered || zoneHover.hovered
         visible: opacity > 0
         opacity: wanted && Iptv.bannerMode !== 3 ? 1 : 0
         Behavior on opacity { NumberAnimation { duration: VLCStyle.duration_short } }
@@ -315,13 +327,32 @@ FocusScope {
                 }
             }
 
-            // the ways from here: the start of what is on, back to live
+            // the ways from here: the channels up and down, their list, the
+            // start of what is on, back to live
             Row {
                 spacing: root.px(8)
-                visible: root._archive || ((root.channel.catchupDays ?? 0) > 0 && root._hasNow)
                 Widgets.RedesignButton {
                     darkTheme: true
-                    visible: !root._archive
+                    implicitWidth: root.px(40)
+                    text: "▲"
+                    Accessible.name: qsTr("Next channel")
+                    onClicked: Iptv.channelUp()
+                }
+                Widgets.RedesignButton {
+                    darkTheme: true
+                    implicitWidth: root.px(40)
+                    text: "▼"
+                    Accessible.name: qsTr("Previous channel")
+                    onClicked: Iptv.channelDown()
+                }
+                Widgets.RedesignButton {
+                    darkTheme: true
+                    text: qsTr("Channels")
+                    onClicked: root.openList()
+                }
+                Widgets.RedesignButton {
+                    darkTheme: true
+                    visible: !root._archive && (root.channel.catchupDays ?? 0) > 0 && root._hasNow
                     text: qsTr("Watch from the Start")
                     onClicked: Iptv.playFromStart()
                 }

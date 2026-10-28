@@ -53,6 +53,15 @@ T.Pane {
                                         [70, 46], [80, 51], [90, 56], [100, 61], [150, 73], [200, 85]]
     readonly property real _designWidth: 86
 
+    // the value shown for a volume (1 = 100 %); below 0 the audio output
+    // has no volume to report (not started yet, or none of its own):
+    // never a negative number
+    function volumeText(volume) {
+        if (!(volume >= 0))
+            return "–"
+        return qsTr("%1 %").arg(Math.round(volume * 100))
+    }
+
     // the drawn position (0 to 1) of a volume (1 = 100 %)
     function designPosition(volume) {
         const d = volume * 100 * 200 / _maxvol
@@ -110,7 +119,8 @@ T.Pane {
             // Figma "Player": 50 % shows the icon value=high; the glyph (the
             // editor's preview) and the image of the bar show the same level
             readonly property string level: {
-                if (root._player.muted || root._player.volume === 0)
+                // (a volume below 0: the output has none to report yet)
+                if (root._player.muted || root._player.volume <= 0)
                     return "muted"
                 if (root._player.volume < .25)
                     return "low"
@@ -252,7 +262,7 @@ T.Pane {
                 // from bounds of this widget and we want to show the current
                 // volume here, so directly use Player.volume instead of "value"
 
-                return Math.round(Player.volume * 100) + "%"
+                return root.volumeText(Player.volume)
             }
 
             Accessible.name: qsTr("Volume")
@@ -350,7 +360,7 @@ T.Pane {
                     Widgets.RedesignWindowBorder { }
                 }
                 contentItem: Text {
-                    text: qsTr("%1 %").arg(Math.round(Player.volume * 100))
+                    text: root.volumeText(Player.volume)
                     color: VLCStyle.redesign.color("#969696", "#4d4d4d")
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)

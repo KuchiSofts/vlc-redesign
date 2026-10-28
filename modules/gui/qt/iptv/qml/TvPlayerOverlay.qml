@@ -139,7 +139,10 @@ FocusScope {
         target: Iptv
         function onChannelSwitched() { root.showBanner() }
     }
-    Component.onCompleted: showBanner()
+    Component.onCompleted: {
+        console.debug("Live TV: the overlay of the player is made")
+        showBanner()
+    }
 
     Timer { id: bannerTimer; interval: 5000 }
     Timer {

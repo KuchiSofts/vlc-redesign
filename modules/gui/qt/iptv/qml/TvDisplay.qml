@@ -52,6 +52,11 @@ Widgets.PageExt {
             if (!Iptv.enabled)
                 History.push(["home"])
         }
+        // a channel chosen here: to the player at once, as a TV box
+        function onChannelSwitched() {
+            if (root.visible)
+                History.push(["player"])
+        }
     }
     Component.onCompleted: {
         if (!Iptv.enabled)

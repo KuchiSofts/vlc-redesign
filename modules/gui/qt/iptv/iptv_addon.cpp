@@ -774,6 +774,7 @@ void IptvAddon::startMedia(const QString& url, const QString& name, const QStrin
     if (!m_playing)
     {
         m_playing = true;
+        msg_Dbg(m_intf, "Live TV: a channel plays");
         emit playingChanged();
     }
     m_intf->p_mainPlaylistController->clear();
@@ -933,6 +934,7 @@ void IptvAddon::checkPlaying()
     if (playing != m_playing)
     {
         m_playing = playing;
+        msg_Dbg(m_intf, "Live TV: a channel %s", playing ? "plays" : "no longer plays");
         emit playingChanged();
     }
 }

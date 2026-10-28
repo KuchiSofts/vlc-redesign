@@ -97,6 +97,10 @@ int main(int argc, char** argv)
     CHECK(isChannelList("#EXTM3U\n#EXTINF:-1,A\nhttp://a/b\n"));
     CHECK(!isChannelList("#EXTM3U\n#EXT-X-TARGETDURATION:6\n#EXTINF:6,\nseg1.ts\n"));
     CHECK(!parseM3u("<html>not a list</html>").error.isEmpty());
+    CHECK(looksAdult("XXX", "") && looksAdult("", "Playboy TV") && looksAdult("Private TV", ""));
+    CHECK(looksAdult("18+", "") && !looksAdult("Kids", "Channel 118+") && !looksAdult("News", "Adultery Drama"));
+    CHECK(displayGroup("02) News") == "News" && displayGroup("2026 Olympics") == "2026 Olympics");
+    CHECK(guideKey("BBC One +1") == "bbc one" && guideKey("UK| Sky-News FHD") == "sky news");
 
     // catch-up addresses: an hour from 18:00, two hours later
     const QDateTime start = QDateTime::fromSecsSinceEpoch(utc(2026, 10, 25, 18, 0), QTimeZone::utc());

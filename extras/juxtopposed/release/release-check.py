@@ -180,6 +180,21 @@ else:
         if not who.startswith('app/') and (mentioned(n, body_of_target) or i['state'] == 'CLOSED'):
             check(('@' + who) in credits, 'Credit for @%s (#%d)' % (who, n), 'add them to CREDITS.md')
 
+# --- the designer's credit ------------------------------------------------------------
+# Juxtopposed designed every screen (CC BY 4.0): named in every version and
+# every place a user meets the program
+for path in ('modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml', 'README.md', 'site/index.html',
+             'CREDITS.md', 'docs/wiki/Credits-and-License.md'):
+    check('Juxtopposed' in read(path), 'Designer credited: %s' % path, 'Juxtopposed is not named')
+android = os.path.join(os.path.dirname(os.path.dirname(ROOT)), 'vlc-android-redesign')
+if os.path.isdir(android):
+    # a text the app shows (strings.xml), not a comment in the code
+    found = subprocess.run(['git', '-C', android, 'grep', '-l', 'Juxtopposed', '--', 'application/**/strings*.xml'],
+                           capture_output=True, text=True).stdout.strip()
+    check(found, 'Designer credited: the Android app', 'Juxtopposed is not named in the Android app')
+if release:
+    todo.append('The release notes start with the Juxtopposed credit header (release-notes.py)')
+
 # --- outside the repository --------------------------------------------------------
 private = os.path.join(os.path.dirname(os.path.dirname(ROOT)), 'VLC-Redesign-Roadmap.md')
 if os.path.exists(private):

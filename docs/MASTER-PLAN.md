@@ -944,8 +944,10 @@ and an accepted request made the TV fail after a pause in a test.
 - 🟢 Small updates from 0.2.4, 0.2.5 and 0.2.6 built from the release package (2026-10-25, build 203): 21.8 MB each
   (the 72 new translation files go whole), each applied to its old release and every one of the 524 files checked
   against the package; the check itself had to learn to make the new `locale\` folder
-- 🟡 Every fixed issue answered with the release link (#5 and #6, 2026-10-25); the announcement waits for
-  Discussions to be turned on (a setting of the owner)
+- 🟡 Every fixed issue answered with the release link (#5 and #6, 2026-10-25). Discussions were turned on
+  2026-10-28 (with the Ideas category, where *Suggest an idea* now opens a new discussion). The announcement is
+  posted with the next release. Also on 2026-10-28: the SignPath application was sent by the owner, and Weblate's
+  Libre plan is pending approval.
 
 Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 91 🟢, 5 🟡, 1 🔴 (97), of which 5 🟢 are
 in the app ⏳. The 🟡 and 🔴 left need the upload (CI, the announcement, the replies), SignPath, or hardware not here.

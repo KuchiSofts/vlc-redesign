@@ -28,6 +28,9 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - **The playback speed button can be added to the bar again** ([#9](https://github.com/KuchiSofts/vlc-redesign/issues/9)).
   Dropped on a bar in Customize Player, it left an empty slot that could be neither seen nor removed. The teletext
   button had the same fault. A control that ever fails to load now shows a placeholder that can be dragged out.
+  Thanks to @Brackets124 for the report. Every control type was then put in the bar: the folder name after the
+  thumbnail stayed hidden (the centre zone measured its room by its own shown controls), the aspect ratio box was
+  empty, and the zoom icon was stretched; all three are fixed.
 - **Colours of SD video on Windows.** Untagged or BT.601 SD video showed shifted colours with Direct3D 11 (pure red
   came out as (239,4,0)); it now shows as the source, as with OpenGL. HD and HDR are unchanged.
 - **Subtitles in older encodings** (Windows-1255 Hebrew, 1251 Russian, 1256 Arabic, Shift-JIS…) downloaded online
@@ -53,7 +56,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - **Translations:** the 72 languages on Weblate have every text of VLC Redesign again, the settings' help of
   VLC's newer options included; about 80 wrong translations fixed where they show (Hebrew "decoding" that said
   encoding, Persian and Malay key names in English, a reversed Arabic help text…); the Cast list's "Show N hidden
-  devices" has its plural forms. The Estonian and Swedish translations made on Weblate are in.
+  devices" has its plural forms. The Estonian and Swedish translations made on Weblate are in: thank you, Priit
+  Jõerüüt and bittin. Everyone who reported or translated is credited in [CREDITS.md](CREDITS.md#community).
 - **Smaller fixes:** idle HTTP stream clients time out (DLNA streams excepted), stopping a stalled network stream no
   longer hangs, the VU meter reads the whole signal, Lua scripts saved with a BOM load, a TS stream's clock no
   longer jumps when a track is removed, and more (the full list: the review report).

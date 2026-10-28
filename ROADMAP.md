@@ -30,6 +30,8 @@ on release day ships.
 
 - 🔨 *Suggest an idea* and *Report a problem* in the ⋯ menu and in About: the GitHub form opens filled with what
   helps (version, Windows, graphics card, screens), never anything personal
+- 🔨 A *What's new* card after an update: the highlights of the new version, once, the first time VLC opens after
+  an update (it can be turned off in Settings, General); built, to be checked in the running app
 - 🔨 The last checks in the running app: Settings scroll bars, the warning colour, *Show controls in fullscreen*,
   a playlist's own picture, the small classic windows
 
@@ -47,7 +49,6 @@ changed without a restart. The full list is in the [changelog](CHANGELOG.md).
 **Ideas**
 
 - 💡 Subtitle lines marked on the seek bar
-- 💡 A *What's new* card after an update
 - 💡 The accent colour following Windows'
 
 ## Other platforms

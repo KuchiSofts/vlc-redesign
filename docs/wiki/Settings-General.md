@@ -27,6 +27,7 @@ On systems other than Windows, VLC follows the system language: the **Interface 
 |---|---|---|---|
 | **Show confirmation and error dialogs** | Toggle. Default: on. | On: VLC's errors appear at the bottom of the window (a media that cannot open, for example), and VLC asks before removing media from a playlist or from the play queue, or deleting playlists. Off: errors are only kept in VLC's messages and those removals happen at once. Deleting a file from the disk is always confirmed. | `qt-error-dialogs` |
 | **Check for updates automatically** | Toggle. Default: on. | Looks for a new release of VLC Redesign on GitHub when VLC starts, at most once a day. See [Install and update](Install-and-Update). | `redesign-update-check` |
+| **Show what's new after an update** | Toggle. Default: on. | The first time VLC opens after an update, a card lists the highlights of the new version (the headlines of its *Added*, *Changed* and *Fixed* in the changelog, in English) with a link to the full release notes. It shows once per version, never on a new install. | `redesign/show-whats-new` (interface setting) |
 
 ## Diagnostics
 

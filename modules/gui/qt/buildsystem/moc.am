@@ -9,6 +9,7 @@ nodist_libqt_plugin_la_SOURCES = \
 	dialogs/preferences/shortcuts_model.moc.cpp \
 	dialogs/preferences/config_model.moc.cpp \
 	dialogs/firstrun/onboarding.moc.cpp \
+	dialogs/firstrun/whats_new.moc.cpp \
 	dialogs/bookmarks/bookmarks.moc.cpp \
 	dialogs/dialogs/dialogmodel.moc.cpp \
 	dialogs/dialogs_provider.moc.cpp \

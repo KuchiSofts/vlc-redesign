@@ -11,6 +11,7 @@ moc_headers = files(
     '../../dialogs/preferences/shortcuts_model.hpp',
     '../../dialogs/preferences/config_model.hpp',
     '../../dialogs/firstrun/onboarding.hpp',
+    '../../dialogs/firstrun/whats_new.hpp',
     '../../dialogs/bookmarks/bookmarks.hpp',
     '../../dialogs/dialogs/dialogmodel.hpp',
     '../../dialogs/dialogs_provider.hpp',

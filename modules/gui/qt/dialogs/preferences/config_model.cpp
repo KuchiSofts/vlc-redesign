@@ -250,6 +250,9 @@ struct QtSettingOption
 };
 
 const QtSettingOption qtSettingOptions[] = {
+    { "redesign/show-whats-new", 'b', 1, 0, 0, N_("Show what's new after an update"),
+      N_("The first time VLC opens after an update, a card lists what is new in the version, "
+         "with a link to the full changelog. The notes are in English.") },
     { "redesign/discover-cast-devices", 'b', 1, 0, 0, N_("Discover cast devices"),
       N_("Looks for the cast devices of the local network when the Renderer menu opens.") },
     { "redesign/remember-window-geometry", 'b', 1, 0, 0, N_("Remember window size and position"),

@@ -242,6 +242,8 @@ endif
 EXTRA_DIST += $(libqt_plugin_la_QML)
 
 assets.cpp: $(libqt_plugin_la_RES)
+# the changelog, for What's new after an update (dialogs/firstrun/whats_new.cpp)
+assets.cpp: $(top_srcdir)/CHANGELOG.md
 assets.cpp: assets.qrc
 	$(AM_V_GEN)$(RCC) $(RCC_EXTRA_PARAMS) --name assets -o $@ $<
 

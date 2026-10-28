@@ -11,6 +11,7 @@ qml_modules += {
         '../../dialogs/preferences/qml/SettingsStartupVolume.qml',
         '../../dialogs/preferences/qml/SettingsPicture.qml',
         '../../dialogs/preferences/qml/SettingsLastfm.qml',
+        '../../dialogs/preferences/qml/SettingsTv.qml',
         '../../dialogs/preferences/qml/SettingsDeveloperMode.qml',
         '../../dialogs/preferences/qml/SettingsAudioOutput.qml',
         '../../player/qml/AudioVisualizationDialog.qml',
@@ -200,7 +201,16 @@ qml_modules += {
         '../../network/qml/NetworkThumbnailItem.qml',
         '../../network/qml/ServicesHomeDisplay.qml',
         '../../network/qml/ServicesManage.qml',
-        '../../network/qml/ServicesSources.qml'
+        '../../network/qml/ServicesSources.qml',
+        '../../iptv/qml/TvBadge.qml',
+        '../../iptv/qml/TvChannelRow.qml',
+        '../../iptv/qml/TvDisplay.qml',
+        '../../iptv/qml/TvGuideView.qml',
+        '../../iptv/qml/TvLogo.qml',
+        '../../iptv/qml/TvPlayerOverlay.qml',
+        '../../iptv/qml/TvProgrammeDialog.qml',
+        '../../iptv/qml/TvSourceDialog.qml',
+        '../../iptv/qml/TvToast.qml'
     ),
 }
 

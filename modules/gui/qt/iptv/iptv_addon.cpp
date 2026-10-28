@@ -907,7 +907,7 @@ void IptvAddon::playUrl(const QString& url, const QString& title)
 
 void IptvAddon::checkPlaying()
 {
-    const vlc::playlist::PlaylistItem item = m_intf->p_mainPlaylistController->getCurrentItem();
+    const PlaylistItem item = m_intf->p_mainPlaylistController->getCurrentItem();
     const bool playing = item && !m_currentUrl.isEmpty()
                          && item.getUrl().toString(QUrl::FullyEncoded) == QUrl(m_currentUrl).toString(QUrl::FullyEncoded);
     if (playing != m_playing)

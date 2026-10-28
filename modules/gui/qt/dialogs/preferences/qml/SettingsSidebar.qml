@@ -26,6 +26,7 @@ Item {
         { key: "audio", label: qsTr("Audio"), icon: "audio" },
         { key: "subtitles", label: qsTr("Subtitles"), icon: "subtitles" },
         { key: "library", label: qsTr("Library"), icon: "folder" },
+        { key: "tv", label: qsTr("TV"), icon: "tv" },
         { kind: "heading", label: qsTr("System") },
         { key: "network", label: qsTr("Network"), icon: "streaming" },
         { key: "performance", label: qsTr("Performance"), icon: "preferences" },

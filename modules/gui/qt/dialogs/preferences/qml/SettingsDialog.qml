@@ -55,7 +55,8 @@ Dialog {
         playback: qsTr("Playback Preferences"), video: qsTr("Video Defaults"),
         audio: qsTr("Audio Defaults"), subtitles: qsTr("Subtitle Defaults"),
         library: qsTr("Playlists, Folders & Files"), network: qsTr("Network Connections & Security"),
-        performance: qsTr("Performance Settings"), recording: qsTr("Recording, Casting & Streaming Out")
+        performance: qsTr("Performance Settings"), recording: qsTr("Recording, Casting & Streaming Out"),
+        tv: qsTr("Live TV")
     })
 
     function openSettings(category) {
@@ -93,6 +94,8 @@ Dialog {
         subtitleLanguages.save()
         developerMode.save()
         MainCtx.controlbarProfileModel.save()
+        // Live TV switched on or off: its entry, its page and its keys follow
+        Iptv.reloadSettings()
         return true
     }
 
@@ -483,6 +486,14 @@ Dialog {
                     visible: root.selectedCategory === "extensions" && !searchField.text.length
                     settingsModel: config
                 }
+                // Live TV: its sources above its options (made while the add-on is on)
+                Loader {
+                    width: parent.width
+                    active: Iptv.enabled && root.selectedCategory === "tv" && !searchField.text.length
+                    visible: active
+                    source: "qrc:///qt/qml/VLC/Dialogs/SettingsTv.qml"
+                }
+
                 // The Last.fm rows continue the Network section of the privacy page
                 Column {
                     width: parent.width

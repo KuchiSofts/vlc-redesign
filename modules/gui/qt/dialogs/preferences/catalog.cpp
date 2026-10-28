@@ -190,6 +190,14 @@ static const Option entries[] = {
     {"recording", "sout-chromecast-audio-passthrough"},
     {"recording", "sout-chromecast-http-port"},
     {"recording", "sout-keep"},
+    // Live TV: the switch of its add-on (General, Startup), then its
+    // page: its sources (SettingsTv.qml), Guide, Watching and Lists
+    {"general", "iptv-enabled"},
+    {"tv", "qt:redesign/iptv-refresh"}, {"tv", "qt:redesign/iptv-guide-days"},
+    {"tv", "qt:redesign/iptv-guide-hours"}, {"tv", "qt:redesign/iptv-languages"},
+    {"tv", "qt:redesign/iptv-banner"}, {"tv", "qt:redesign/iptv-start-last"},
+    {"tv", "qt:redesign/iptv-progress"}, {"tv", "qt:redesign/iptv-next"},
+    {"tv", "qt:redesign/iptv-descriptions"}, {"tv", "qt:redesign/iptv-adult"},
     {"extensions", "qt-autoload-extensions"},
 };
 

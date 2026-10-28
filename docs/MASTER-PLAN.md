@@ -589,6 +589,21 @@ the default's (the design's values); rounding may change a channel by 1.
 | 7  | `#8E41FF` purple   | `#7335CF` | `#251142` | `#C2A7EA`      |
 | 8  | `#F051B5` pink     | `#C24293` | `#3E152F` | `#E4ADD0`      |
 | 9  | `#AFAFAF` grey     | `#8E8E8E` | `#2E2E2E` | `#CECECE`      |
+| 10 | Windows accent     | 0.81 ×    | 0.26 ×    | 35 % tint      |
+
+**Windows accent** (not in the design; `redesign/accent` = `system`, `RedesignAccent` in
+`util/redesign_accent.cpp`): the swatch shows the system's colour with the Windows logo (elsewhere a half-filled
+ring); in the onboarding the 10 discs come every 71 px instead of 80, in the same 704 px. The colour is Qt's
+`QPalette::Accent` (Qt 6.6+ reads it from the system), on Windows else
+`HKCU\Software\Microsoft\Windows\DWM\AccentColor`; it is read again on `ApplicationPaletteChange`,
+`colorSchemeChanged`, `WM_SETTINGCHANGE` "ImmersiveColorSet", `WM_DWMCOLORIZATIONCOLORCHANGED` and
+`WM_SYSCOLORCHANGE` (after 250 ms), and if Windows changes the registry without Qt's palette following, the
+registry wins. Without a system accent (Linux without one, Qt's default highlight `#308CC6`): the redesign orange.
+**Readability rule:** the 9 accents are drawn unchanged on both themes and range in WCAG relative luminance from
+0.128 (the blue, 3.3:1 on `#0E0E0E`) to 0.429 (the grey). A system colour outside that range keeps its hue and
+saturation and gets the HSL lightness that brings its luminance to the nearest end, so it is never darker than the
+blue on the dark theme nor lighter than the grey on the light theme; Dim, Bright and the light tint then come from
+it as for the others. The logo on the swatch is `#0E0E0E` above luminance 0.19, white below.
 
 ### Typography
 
@@ -918,7 +933,8 @@ and an accepted request made the TV fail after a pause in a test.
   mouse input stays inside it: the button's hover box 30 x 32 at white 6 %, the preview's time 15 px
 - ⚪ Subtitle cues drawn on the seek bar
 - ⚪ A *What's new* card after an update
-- ⚪ The accent following the Windows accent colour (an option)
+- 🟢 The accent following the Windows accent colour (an option): *Windows accent* after the 9 colours in Settings >
+  Appearance and the onboarding (`redesign/accent` = `system`), followed live, made readable (§6 Accents) · in the app ⏳
 
 ### 8.9 Quality and hardware
 

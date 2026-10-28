@@ -962,9 +962,16 @@ Tracks with checklists; a version number comes with the first published build.
 - 🟢 Onboarding, library (a folder indexed, thumbnails), dialogs, Settings, effects, queue, fullscreen, dark/light,
   right to left and 1.5× scale shown through WSLg with no QML warning; idle CPU 0.0 %, paused 3.5 %
 - 🟢 VA-API on Intel Iris Xe (Ubuntu 24.04 server, tarball): H.264, HEVC 8/10-bit, VP9 0/2 decode in hardware,
-  0.3–0.7 s of CPU for 20 s of 4K instead of 5–19 s; 🟡 AV1 by VA-API crashes inside FFmpeg 6.1.1 of Ubuntu
-  (its own `ffmpeg -hwaccel vaapi` crashes the same way); `--dec-dev=none` or dav1d plays it
-- 🟡 Xvfb (no DRI3) can't use VA-API: the interface there decodes in software (1080p 84 % CPU, 4K HEVC drops)
+  0.3–0.7 s of CPU for 20 s of 4K instead of 5–19 s; AV1 by VA-API crashed inside FFmpeg 6.1.1 of Ubuntu (its own
+  `ffmpeg -hwaccel vaapi` too): below libavcodec 61 dav1d decodes AV1 now, every AV1 file plays
+- 🟢 Memory: pages and panels opened 77 times, flat (303→308 MB); switching files grew 90 MB a minute (glibc arenas
+  per thread), fixed in `bin/vlc.c` (two arenas): 30 min of files, panels and pages stay near 480–510 MB
+- 🟢 Wayland (headless Weston, native client, Qt's Wayland compositor for the video): play, pause, seek, quit, no
+  QML warning; 🟡 a strip of the desktop shows between the video and the right edge of the window (also in the
+  first Linux pass); WSLg's Wayland not checked by eye
+- 🟢 X11 CSD: drag to move, double-click to maximize and restore; 🟡 resizing from an edge under openbox with
+  synthetic input moved the window instead (to check on a real desktop)
+- 🟡 Xvfb (no DRI3) can't show VA-API pictures directly: copied to software (1080p 84 % CPU with llvmpipe)
 - 🔴 Docker build in CI
 - 🔴 Packages: AppImage, Flatpak (Flathub), .deb, .rpm, .tar.gz
 - 🔴 X11, Wayland; PipeWire, PulseAudio; VA-API, VDPAU; Intel, AMD, NVIDIA

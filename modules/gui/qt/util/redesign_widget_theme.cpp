@@ -743,7 +743,7 @@ ThemeController::ThemeController(MainCtx *ctx)
     connect(ctx->getColorScheme(), &ColorSchemeModel::currentChanged, this, changed);
     connect(QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, this, changed);
     connect(ctx, &MainCtx::intfScaleFactorChanged, this, changed);
-    // the "Windows accent" choice follows the system (refresh() sees whether
+    // "Follow the Windows accent color" follows the system (refresh() sees whether
     // the accent the windows have changed)
     connect(ctx, &MainCtx::systemAccentChanged, this, changed);
     connect(ctx, &MainCtx::settingValueChanged, this, [this](const QString &key) {

@@ -141,9 +141,12 @@ Controls.Popup {
                 anchors.fill: parent
                 visible: root.step === 1
                 themeIndex: controller.themeIndex
-                accentChoice: root.selectedAccent
+                // (the Windows accent if Settings follows it; the discs are
+                // the design's, unchanged)
+                accent: VLCStyle.redesign.accentOf(root.selectedAccent)
                 onThemeRequested: index => controller.previewTheme(index)
-                onAccentRequested: choice => {
+                onAccentRequested: colorValue => {
+                    const choice = colorValue.toString()
                     root.selectedAccent = choice
                     VLCStyle.redesign.accentChoice = choice
                 }

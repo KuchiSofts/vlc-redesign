@@ -123,7 +123,7 @@ class MainCtx : public QObject
     Q_PROPERTY(Grouping grouping READ grouping WRITE setGrouping NOTIFY groupingChanged FINAL)
     Q_PROPERTY(ColorSchemeModel* colorScheme READ getColorScheme CONSTANT FINAL)
     // The accent of the system, made readable (RedesignAccent): the one of
-    // the "Windows accent" choice of Settings > Appearance, followed live
+    // "Follow the Windows accent color" of Settings > Appearance, followed live
     Q_PROPERTY(QColor systemAccent READ systemAccent NOTIFY systemAccentChanged FINAL)
     Q_PROPERTY(bool hasVLM READ hasVLM CONSTANT FINAL)
     Q_PROPERTY(bool clientSideDecoration READ useClientSideDecoration NOTIFY useClientSideDecorationChanged FINAL)
@@ -770,7 +770,7 @@ signals:
     /// a value was set with setSettingValue(), or removed (removeSettingValue)
     void settingValueChanged(const QString &key);
 
-    /// the accent of the system changed (Windows accent choice)
+    /// the accent of the system changed (Follow the Windows accent color)
     void systemAccentChanged();
 
 private:

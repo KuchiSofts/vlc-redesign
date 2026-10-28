@@ -765,7 +765,9 @@ void IptvAddon::startMedia(const QString& url, const QString& name, const QStrin
     // the channel alone in the queue, as a TV switches channels; not kept
     // in the history nor in the library (no entry for every channel zapped)
     QStringList all = options;
-    all << QStringLiteral(":no-save-recentplay");
+    all << QStringLiteral(":no-save-recentplay")
+        // the banner names the channel: not the title of the stream too
+        << QStringLiteral(":no-video-title-show");
     vlc::playlist::Media media(url, name, all);
     m_currentUrl = url;
     // the item itself tells the channel playing from another media

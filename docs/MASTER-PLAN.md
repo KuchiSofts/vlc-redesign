@@ -34,7 +34,9 @@ What is being worked on, updated as it changes (2026-10-28):
   Left: merge, enable GitHub Pages (Source: GitHub Actions), check About in a build.
 - 🟡 **Roadmap step 6, design tokens** (branch `feature/tokens`): `design/` exported (`design-1.0`: tokens.json,
   icons, fonts, CSS/Android/Swift files) with `design/tools/check_qml.py` in CI, passing. The export found
-  differences between §6 and the code (listed in §6); they wait for a decision.
+  differences between §6 and the code (listed in §6); they wait for a decision. Settled 2026-10-28 (branch
+  `feature/light`): the light values the colour map overrode (228 calls, [design/light-theme.md](../design/light-theme.md))
+  and the classic dialogs' light title bar (`#DEDEDE`, as the QML dialogs).
 
 - 🟡 **0.3.2**: the open issues. [#9](https://github.com/KuchiSofts/vlc-redesign/issues/9): the playback speed and
   teletext buttons never loaded on Windows (`Popup` without its import), so dropped on a bar they left an
@@ -585,10 +587,17 @@ code, the tables are left as they were until each is decided):
 - Scroll bar handle: Settings keeps the Basic style's own colours in the dark theme (not `#6B6B6B`); in the light
   theme the handle is `#6B6B6B` and `#2E2E2E` only when pressed. The classic dialogs: `#404040` dark, `#8E8E8D`
   light, `#6B6B6B` hovered.
-- Dialog title bars, light theme: the QML dialogs draw `#DEDEDE` (the table's B2), the classic dialogs `#9C9C9B`
-  (`redesign_widget_theme.cpp`); `RedesignDialog.qml` passes `#9c9c9b` as its fallback, which the colour map
-  overrides. The same happens in 113 `color(dark, fallback)` calls (the fallback is ignored when the dark value is
-  in the map), e.g. text inputs' border `#C4C4C3` → `#ABABAA`, `#6B6B6B` fallbacks `#5A5A59`/`#4D4D4D` → `#6B6B6B`.
+- ✅ Dialog title bars, light theme, and the light values the colour map overrode: **settled 2026-10-28**
+  ([design/light-theme.md](../design/light-theme.md)). The QML dialogs drew `#DEDEDE` (B2), the classic dialogs
+  `#9C9C9B`; both draw `#DEDEDE` now. `color(dark, light)` ignored the light value whenever the map knew the dark
+  one: 113 calls with two literal colours, 228 in all (through VLCStyle properties, helpers, dynamic values). A
+  light value given now wins over the map, and each of the 228 was checked against *Player - Light* (2425:13624,
+  pixel-compared with its dark twin 187:328): wherever the frame draws the colour it is the map's (e.g. *15 items*
+  `#6B6B6B`, not the `#7C7C7B` given; the crumb and the times `#2E2E2E`, not `#4D4D4D`), so all 228 now write the
+  map's value or leave the light value out: the light theme looks as before, the dark theme is unchanged.
+  `check_qml.py` fails on a light value that differs from the map's unless listed. Eight dark values the frame does
+  not draw (`#EAEAEA`, `#C6C6C6`, `#969696`, `#0E0E0E`, `#222222`, `#404040`, `#151515`, `#373737`) keep the map's
+  value until the Figma light variables can be read.
 - Typography: dialog titles are 14 px (`#8F8F8F`, box 17 in a 32 row), not 16 px at 175 %; 16 px is the Settings
   header title. Widget (right-click) menus are 14 px, not 16. Onboarding: "Welcome to VLC!" is 32 px; some
   onboarding texts are 15 px with a line of 1.3.
@@ -881,7 +890,8 @@ becomes 1.0 when every frame is pixel-checked, the light theme is complete and V
 - 🟢 The whole app checked in light: player, tracks and subtitles window, cast window, ⋯ menu, classic dialogs
 - 🟢 Text contrast measured (WCAG 2.1, 2026-10-23): the texts of the design pass AA (4.5:1) on every panel but its
   dim greys: dark `#6B6B6B` 3.3 to 3.7 and `#5F5F5F` 2.8 to 3.1 (hints, descriptions, watched videos), light
-  `#5A5A59` 3.3 to 5.1 and `#4D4D4D` 4.1 on lists. Kept as the design draws them; *Increase text contrast*
+  `#6B6B6B` 2.3 to 3.0 on the panels and `#4D4D4D` 4.1 on lists (the `#5A5A59` measured first was never drawn:
+  the colour map won, [design/light-theme.md](../design/light-theme.md)). Kept as the design draws them; *Increase text contrast*
   (Interface › Accessibility, off) draws them `#8A8A8A` (dark) and `#333333` (light), at least 4.6:1 on every panel
   and hover background, and the (i) icons `#707070` / `#575756`, at least 3.1:1 (the 3:1 of icons), in
   `VLCStyle.redesign.color()`

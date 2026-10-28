@@ -134,6 +134,97 @@ jobs:
             ${{ runner.temp }}/vlc-launch-test/dumps/*.dmp
           retention-days: 7
 
+  # The Windows on ARM64 package: the same build in VideoLAN's llvm-mingw
+  # image (the one of its win64-arm-llvm job), with that job's prebuilt
+  # contribs (win64-docker.ps1 -Arch aarch64 does the same on a PC)
+  winarm64:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Build image
+        run: docker build -t vlc-winarm64-redesign -f extras/juxtopposed/winarm64.Dockerfile extras/juxtopposed
+
+      - name: Prebuilt contribs
+        run: |
+          mkdir -p cache
+          for sha in $(git rev-list -n 20 HEAD -- extras/tools contrib extras/ci extras/package/win32); do
+            name="vlc-contrib-aarch64-w64-mingw32-$sha.tar.zst"
+            if curl -fsSL --retry 3 -o "cache/$name" "https://artifacts.videolan.org/vlc/win64-arm-llvm/$name"; then
+              echo "CONTRIB=$name" >> "$GITHUB_ENV"; break
+            fi
+            rm -f "cache/$name"
+          done
+          test -n "$(ls cache)"
+
+      - name: Build
+        run: |
+          mkdir -p out
+          # (the image has a /build of its own, which fills an empty volume:
+          # a file keeps the volume's owner)
+          docker run --rm -u root -v vlc-build:/build vlc-winarm64-redesign sh -c 'chown videolan:videolan /build && touch /build/.volume'
+          chmod 777 out
+          docker run --rm \
+            -e ARCH=aarch64 -e CONTRIB_ARCHIVE="/cache/$CONTRIB" -e STRIP=1 \
+            -v "$PWD:/src:ro" -v "$PWD/cache:/cache:ro" -v "$PWD/out:/out" -v vlc-build:/build \
+            vlc-winarm64-redesign sh -c 'cp /src/extras/juxtopposed/win64-docker.sh /tmp/build.sh && exec sh /tmp/build.sh -r'
+          test -s out/vlc.exe
+          test -s out/plugins/gui/libqt_plugin.dll
+
+      - name: ARM64 binaries
+        shell: pwsh
+        run: ./extras/juxtopposed/ci/arm64-smoke.ps1 -VlcDir out -CheckOnly
+
+      - name: Upload the package
+        uses: actions/upload-artifact@v5
+        with:
+          name: vlc-redesign-winarm64-${{ github.sha }}
+          path: out
+          retention-days: ${{ github.event_name == 'pull_request' && 2 || 7 }}
+
+  # The ARM64 package on ARM64 Windows: its binaries, the plugin cache made
+  # (every plugin loaded), then the launch test above
+  launch-test-arm64:
+    needs: winarm64
+    runs-on: windows-11-arm
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          sparse-checkout: extras/juxtopposed/ci
+
+      - uses: actions/download-artifact@v5
+        with:
+          name: vlc-redesign-winarm64-${{ github.sha }}
+          path: package
+
+      - name: Keep crash dumps
+        shell: pwsh
+        run: |
+          $key = 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps\vlc.exe'
+          New-Item -Force $key | Out-Null
+          New-ItemProperty -Force $key -Name DumpFolder -PropertyType ExpandString -Value "${{ runner.temp }}\vlc-launch-test\dumps" | Out-Null
+          New-ItemProperty -Force $key -Name DumpType -PropertyType DWord -Value 1 | Out-Null
+          New-ItemProperty -Force $key -Name DumpCount -PropertyType DWord -Value 5 | Out-Null
+
+      - name: Smoke test
+        shell: pwsh
+        run: ./extras/juxtopposed/ci/arm64-smoke.ps1 -VlcDir package -WorkDir "${{ runner.temp }}"
+
+      - name: Upload the logs
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: launch-test-arm64-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/vlc-launch-test/*.txt
+            ${{ runner.temp }}/vlc-launch-test/*.log
+            ${{ runner.temp }}/vlc-launch-test/dumps/*.dmp
+          retention-days: 7
+
   # The package that passed the launch test, signed through SignPath
   # (docs/code-signing.md): only in a run started by hand with a signing
   # policy, once the SignPath variables exist; the jobs above don't change.

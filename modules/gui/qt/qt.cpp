@@ -298,6 +298,9 @@ static void ShowDialog   ( intf_thread_t *, int, int, intf_dialog_args_t * );
 
 #define QT_SEEK_THUMBNAIL_TEXT N_("Show thumbnail while scrubbing")
 #define QT_SEEK_THUMBNAIL_LONGTEXT N_("Show the frame at the hovered position above the seek bar")
+#define QT_SEEK_SUBTITLE_CUES_TEXT N_("Show subtitle lines on the seek bar")
+#define QT_SEEK_SUBTITLE_CUES_LONGTEXT N_("Mark on the seek bar where the lines of the subtitle shown are, " \
+                                         "when it comes from a subtitle file")
 
 #define FULLSCREEN_CONTROL_PIXELS N_( "Fullscreen controller mouse sensitivity" )
 
@@ -471,6 +474,7 @@ vlc_module_begin ()
     /* On: the video sits between the bars, which only hide in fullscreen */
     add_bool( "qt-pin-controls", true, QT_PIN_CONTROLS_TEXT, QT_PIN_CONTROLS_LONGTEXT )
     add_bool( "qt-seek-thumbnail", true, QT_SEEK_THUMBNAIL_TEXT, QT_SEEK_THUMBNAIL_LONGTEXT )
+    add_bool( "qt-seek-subtitle-cues", true, QT_SEEK_SUBTITLE_CUES_TEXT, QT_SEEK_SUBTITLE_CUES_LONGTEXT )
 
 
     add_obsolete_bool( "qt-advanced-pref" ) /* since 4.0.0 */

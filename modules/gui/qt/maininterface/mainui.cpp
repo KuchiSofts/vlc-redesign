@@ -36,6 +36,7 @@
 
 #include "player/player_controller.hpp"
 #include "player/waveform.hpp"
+#include "player/subtitle_cues.hpp"
 #include "player/local_folder_model.hpp"
 #include "player/delay_estimator.hpp"
 
@@ -404,6 +405,7 @@ void MainUI::registerQMLTypes()
 
         // @uri VLC.Player
         qmlRegisterType<Waveform>(uri, versionMajor, versionMinor, "Waveform");
+        qmlRegisterType<SubtitleCues>(uri, versionMajor, versionMinor, "SubtitleCues");
         qmlRegisterType<LocalFolderModel>(uri, versionMajor, versionMinor, "LocalFolderModel");
         qmlRegisterUncreatableType<TrackListModel>(uri, versionMajor, versionMinor, "TrackListModel", "available tracks of a media (audio/video/sub)" );
         qmlRegisterUncreatableType<RendererManager>(uri, versionMajor, versionMinor, "RendererManager", "the devices to cast to (Player.rendererManager)" );

@@ -106,6 +106,7 @@ nodist_libqt_plugin_la_SOURCES = \
 	player/delay_estimator.moc.cpp \
 	player/input_models.moc.cpp \
 	player/waveform.moc.cpp \
+	player/subtitle_cues.moc.cpp \
 	player/local_folder_model.moc.cpp \
 	player/sleep_timer.moc.cpp \
 	player/player_controller.moc.cpp \

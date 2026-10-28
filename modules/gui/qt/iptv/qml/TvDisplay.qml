@@ -25,7 +25,8 @@ Widgets.PageExt {
     id: root
 
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
-    function c(dark, light) { return VLCStyle.redesign.color(dark, light) }
+    // (the light theme from the map of the design: VLCStyle.redesign.color)
+    function c(dark, light) { return VLCStyle.redesign.color(dark) }
 
     // "channels" or "guide", kept between the visits
     property string view: MainCtx.settingValue("iptv/view", "channels")
@@ -253,7 +254,7 @@ Widgets.PageExt {
 
                 background: Rectangle {
                     radius: root.px(6)
-                    color: chip.selected ? VLCStyle.redesign.color(VLCStyle.redesign.accentBackground, "")
+                    color: chip.selected ? VLCStyle.redesign.color(VLCStyle.redesign.accentBackground)
                                          : chip.hovered ? root.c("#222222", "#9c9c9b") : root.c("#191919", "#ababaa")
                     border.width: chip.visualFocus ? 1 : 0
                     border.color: VLCStyle.redesign.accent
@@ -394,7 +395,7 @@ Widgets.PageExt {
                             width: channelGrid.cardWidth
                             height: width * 9 / 16
                             radius: root.px(12)
-                            color: card.model.current ? VLCStyle.redesign.color(VLCStyle.redesign.accentBackground, "")
+                            color: card.model.current ? VLCStyle.redesign.color(VLCStyle.redesign.accentBackground)
                                                       : root.c("#171717", "#dedede")
                             border.width: card.visualFocus ? 1 : 0
                             border.color: VLCStyle.redesign.focusColor

@@ -26,7 +26,8 @@ Widgets.RedesignDialog {
     objectName: "tvSourceDialog"
 
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
-    function c(dark, light) { return VLCStyle.redesign.color(dark, light, root.darkTheme) }
+    // (the light theme from the map of the design: VLCStyle.redesign.color)
+    function c(dark, light) { return VLCStyle.redesign.color(dark, undefined, root.darkTheme) }
 
     // "sources", "link" or "catalog"
     property string page: "sources"
@@ -496,9 +497,17 @@ Widgets.RedesignDialog {
         property string category: ""
         property string capability: ""
         property string sort: "name"
-        readonly property var languages: [...new Set(all.flatMap(s => s.languages || []))].sort()
-        readonly property var countries: [...new Set(all.flatMap(s => s.countries || []))].sort()
-        readonly property var categories: [...new Set(all.flatMap(s => s.categories || []))].sort()
+        // the values of a field of the sources, once each
+        function distinct(field) {
+            const seen = {}
+            for (const s of all)
+                for (const v of (s[field] || []))
+                    seen[v] = true
+            return Object.keys(seen).sort()
+        }
+        readonly property var languages: distinct("languages")
+        readonly property var countries: distinct("countries")
+        readonly property var categories: distinct("categories")
         readonly property var added: Iptv.sources.map(s => s.catalogId).filter(id => !!id)
         readonly property var shown: {
             const text = catalogSearch.text.trim().toLowerCase()

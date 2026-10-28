@@ -29,7 +29,7 @@ FocusScope {
     property Item restoreFocus: null
 
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
-    function c(value) { return VLCStyle.redesign.color(value, value, true) }
+    function c(value) { return VLCStyle.redesign.color(value, undefined, true) }
 
     readonly property var channel: Iptv.currentChannel
     readonly property var now: channel.now ?? ({})

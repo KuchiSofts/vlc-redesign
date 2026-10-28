@@ -124,7 +124,7 @@ Widgets.RedesignDialog {
         elide: Text.ElideRight
         horizontalAlignment: Text.AlignLeft
         lineHeight: 1.35
-        color: VLCStyle.redesign.color("#8F8F8F", "#2e2e2e")
+        color: VLCStyle.redesign.color("#8F8F8F")
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
     }

@@ -4395,6 +4395,24 @@
     },
     {
       "set": "svg",
+      "name": "tv",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/tv.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/tv.svg",
+          "sha256": "5c94d8016851d723b9f088e237b534e235418696ab78f40b92808a5a5f13a744"
+        }
+      ]
+    },
+    {
+      "set": "svg",
       "name": "video",
       "states": [
         {

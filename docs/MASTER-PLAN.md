@@ -916,7 +916,11 @@ and an accepted request made the TV fail after a pause in a test.
   to edit its bars in place
 - 🟢 Pixel check of all 103 frames (§11): the two hover states (177:98, 2151:9673) in Windows Sandbox, where real
   mouse input stays inside it: the button's hover box 30 x 32 at white 6 %, the preview's time 15 px
-- ⚪ Subtitle cues drawn on the seek bar
+- 🟢 Subtitle cues drawn on the seek bar: the lines of the subtitle file shown (added, found next to the video,
+  downloaded), `#6B6B6B` dark / `#5A5A59` light, 4 px high in the middle of the bar, under the played fill, joined
+  under 2 px, painted once per width; the line at the hovered time in the frame preview; Settings, Subtitles,
+  Timing *Show subtitle lines on the seek bar* (`qt-seek-subtitle-cues`, live). Embedded text tracks: not drawn
+  (VLC 4 reads their lines only as they play) · in the app ⏳
 - ⚪ A *What's new* card after an update
 - ⚪ The accent following the Windows accent colour (an option)
 
@@ -1026,7 +1030,7 @@ author, since 2026-10-13), is ahead on:
 | Classic dialogs restyled with one Qt style hook                     | Yes          | §8.6 (done)              |
 | Redesigned Go to time, statistics, folder info, plugins list        | Yes          | §8.6 (idea)              |
 | Geometry, overlay, advanced video filters in the panel              | Yes          | §8.8                     |
-| Subtitle cues on the seek bar                                       | Nice to have | §8.8 (idea)              |
+| Subtitle cues on the seek bar                                       | Nice to have | §8.8 (built)             |
 | About 85 automated QML and C++ tests                                | Yes          | §8.9                     |
 
 We are ahead on: the installer, delta updates with rollback, casting (a real TV), Windows integration, surround

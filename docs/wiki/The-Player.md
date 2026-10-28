@@ -115,6 +115,11 @@ controls: they show in a bar that has them, but the palette does not offer them.
   while scrubbing* in [Settings: Playback](Settings-Playback) (option `qt-seek-thumbnail`, on by default).
 - **Chapters.** A media with chapters shows them as sections of the bar while the pointer is over it, and for three
   seconds after. The time tooltip adds the name of the chapter.
+- **Subtitle lines.** While a subtitle file is shown (one you added, found next to the video, or downloaded by the
+  subtitle search), thin grey marks in the bar show where its lines are; the part already played covers them, and
+  the frame preview (or the time tooltip) shows the line at the pointer. Subtitles inside the video file have no
+  marks. The setting is *Show subtitle lines on the seek bar* in [Settings: Subtitles](Settings-Subtitles) (option
+  `qt-seek-subtitle-cues`, on by default).
 - **Waveform.** A song shows its waveform in the bar, the part already played lit. It is made for local files up to
   1 GB and 8 minutes; other media get the plain bar.
 - **The times.** The time played is on the left, the length on the right, always with hours (`00:02:10`).

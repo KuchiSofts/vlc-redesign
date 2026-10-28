@@ -1,0 +1,91 @@
+# Copyright (C) 2026 VLC authors and VideoLAN
+# SPDX-License-Identifier: GPL-2.0-or-later
+#
+# Builds VLC Redesign for macOS on GitHub's Macs, Apple Silicon and Intel
+# (extras/juxtopposed/macos-build.sh: VideoLAN's prebuilt contribs, Qt
+# 6.8.3, the Qt interface), uploads each disk image and starts it
+# (extras/juxtopposed/ci/macos-smoke.sh). The macOS port is starting: a
+# failure here never blocks a pull request (continue-on-error) until the
+# first builds are green (extras/juxtopposed/macos/README.md).
+name: macOS build
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: macos-build-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  macos:
+    name: macOS ${{ matrix.arch }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Apple Silicon
+          - arch: arm64
+            runner: macos-14
+          # Intel: GitHub retired its macos-13 image (December 2025);
+          # macos-15-intel is its Intel image now
+          - arch: x86_64
+            runner: macos-15-intel
+    runs-on: ${{ matrix.runner }}
+    continue-on-error: true
+    timeout-minutes: 360
+    env:
+      BUILD_DIR: ${{ github.workspace }}/build-macos-${{ matrix.arch }}
+      OUT_DIR: ${{ runner.temp }}/out
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          # the prebuilt contrib archive is named after the commit that last
+          # touched contrib/ and the packaging
+          fetch-depth: 0
+
+      # Qt 6.8.3 for macOS (universal), downloaded once and kept
+      - name: Cache Qt
+        uses: actions/cache@v4
+        with:
+          path: build-macos-${{ matrix.arch }}/qt
+          key: qt-6.8.3-macos-shadertools-${{ matrix.arch }}
+
+      - name: Tools
+        run: |
+          xcodebuild -version
+          # (the app icon is drawn from its SVG; the build falls back on
+          # Quick Look without it)
+          brew install librsvg || true
+
+      - name: Build
+        run: bash extras/juxtopposed/macos-build.sh -a ${{ matrix.arch }} -b "$BUILD_DIR" -o "$OUT_DIR"
+
+      - name: Upload the disk image
+        uses: actions/upload-artifact@v5
+        with:
+          name: vlc-redesign-macos-${{ matrix.arch }}-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/out/*.dmg
+            ${{ runner.temp }}/out/*.sha256
+          retention-days: ${{ github.event_name == 'pull_request' && 2 || 7 }}
+
+      - name: Launch test
+        run: bash extras/juxtopposed/ci/macos-smoke.sh "$(ls "$OUT_DIR"/*.dmg | head -n 1)" "$RUNNER_TEMP/smoke"
+
+      - name: Upload the logs
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: macos-logs-${{ matrix.arch }}-${{ github.sha }}
+          path: |
+            build-macos-${{ matrix.arch }}/logs
+            build-macos-${{ matrix.arch }}/vlc/config.log
+            ${{ runner.temp }}/smoke/*.txt
+            ${{ runner.temp }}/smoke/*.log
+            ${{ runner.temp }}/smoke/*.out
+            ${{ runner.temp }}/smoke/crashes
+          retention-days: 7

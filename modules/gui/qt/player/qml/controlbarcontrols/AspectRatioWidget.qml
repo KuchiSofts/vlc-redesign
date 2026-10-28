@@ -37,6 +37,8 @@ Widgets.ComboBoxExt {
     textRole: "display"
     model: Player.aspectRatio
     currentIndex: -1
+    // the ratio in use (the box stayed empty: no index is ever current)
+    displayText: Player.aspectRatio.currentText || qsTr("Default")
     onCurrentIndexChanged: model.toggleIndex(currentIndex)
     Accessible.name: qsTr("Aspect ratio")
 

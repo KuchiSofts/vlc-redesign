@@ -381,13 +381,15 @@ sign_code() {
 if VLC_LIB_PATH="$contents/Frameworks" "$build/vlc/bin/vlc-cache-gen" "$contents/Frameworks/plugins" \
         > "$logs/cache-gen.log" 2>&1; then
     echo "plugin cache: $(du -h "$contents/Frameworks/plugins/plugins.dat" | cut -f1)"
-    # a file among code: signed too, as upstream's codesign.sh does, or
-    # the app's signature finds it unsigned
-    sign_code "$contents/Frameworks/plugins/plugins.dat" >> "$logs/sign.log" 2>&1
 else
     echo "warning: no plugin cache (made at the first start)"
     rm -f "$contents/Frameworks/plugins/plugins.dat"
 fi
+# The files in Frameworks that are not code (the plugin cache,
+# libbluray's .jar): signed too, as upstream's codesign.sh does, or the
+# app's signature finds them unsigned
+find "$contents/Frameworks" -name '*.framework' -prune -o -type f ! -name '*.dylib' -print     | while read -r f; do sign_code "$f"; done \
+    >> "$logs/sign.log" 2>&1
 for f in "$contents/MacOS/"*; do
     [ "$(basename "$f")" = "$APP_NAME" ] || sign_program "$f"
 done >> "$logs/sign.log" 2>&1

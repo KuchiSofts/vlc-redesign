@@ -22,9 +22,9 @@ T.Popup {
     id: root
 
     readonly property bool darkTheme: VLCStyle.palette.isDark
-    readonly property color textPrimary: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#1d1d1d", darkTheme)
-    readonly property color textSecondary: VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, "#3d3d3d", darkTheme)
-    readonly property color textMuted: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#4d4d4d", darkTheme)
+    readonly property color textPrimary: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e", darkTheme)
+    readonly property color textSecondary: VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, "#4d4d4d", darkTheme)
+    readonly property color textMuted: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e", darkTheme)
 
     parent: T.Overlay.overlay
     x: parent ? Math.round((parent.width - width) / 2) : 0
@@ -59,7 +59,7 @@ T.Popup {
         radius: VLCStyle.dp(14, VLCStyle.scale)
         color: VLCStyle.redesign.color("#191919", "#ABABAA", root.darkTheme)
         border.width: 1
-        border.color: VLCStyle.redesign.color(VLCStyle.redesign.border, "#8f8f8e", root.darkTheme)
+        border.color: VLCStyle.redesign.color(VLCStyle.redesign.border, "#8e8e8d", root.darkTheme)
     }
 
     // A link of the about box: the accent colour, underlined on hover; with
@@ -218,7 +218,7 @@ T.Popup {
                 Layout.fillWidth: true
                 implicitHeight: designColumn.implicitHeight + 2 * VLCStyle.dp(18, VLCStyle.scale)
                 radius: VLCStyle.dp(10, VLCStyle.scale)
-                color: VLCStyle.redesign.color("#0E0E0E", "#9c9c9b", root.darkTheme)
+                color: VLCStyle.redesign.color("#0E0E0E", "#c2c2c1", root.darkTheme)
 
                 ColumnLayout {
                     id: designColumn

@@ -54,7 +54,7 @@ SettingsSectionTitle {
             secondary = ""
     }
 
-    function c(value) { return VLCStyle.redesign.color(value, value) }
+    function c(value) { return VLCStyle.redesign.color(value) }
     readonly property real controlWidth: Math.min(px(320), width * 0.46)
 
     component Label: Text {

@@ -33,7 +33,7 @@ SettingsSectionTitle {
         MainCtx.setSettingValue("redesign/developer-mode", selected)
         initial = selected
     }
-    function c(value) { return VLCStyle.redesign.color(value, value) }
+    function c(value) { return VLCStyle.redesign.color(value) }
 
     Item {
         width: parent.width

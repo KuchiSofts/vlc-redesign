@@ -46,9 +46,9 @@ T.TextArea {
     wrapMode: multiLine ? TextEdit.WrapAnywhere : TextEdit.NoWrap
 
     color: VLCStyle.redesign.color("#C6C6C6", "#2e2e2e", root.darkTheme)
-    placeholderTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textDisabled, "#7c7c7b", root.darkTheme)
+    placeholderTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textDisabled, "#929291", root.darkTheme)
     selectionColor: VLCStyle.redesign.color(VLCStyle.redesign.accentBackground, "#dedede", root.darkTheme)
-    selectedTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#191919", root.darkTheme)
+    selectedTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e", root.darkTheme)
     font.family: VLCStyle.redesign.fontFamily
     font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
     selectByMouse: true
@@ -81,7 +81,7 @@ T.TextArea {
         radius: VLCStyle.dp(6, VLCStyle.scale)
         color: VLCStyle.redesign.color("#090909", "#dedede", root.darkTheme)
         border.width: root.border
-        border.color: VLCStyle.redesign.color("#191919", "#c4c4c3", root.darkTheme)
+        border.color: VLCStyle.redesign.color("#191919", "#ababaa", root.darkTheme)
     }
 
     // The placeholder of T.TextArea is drawn by the style; draw it here

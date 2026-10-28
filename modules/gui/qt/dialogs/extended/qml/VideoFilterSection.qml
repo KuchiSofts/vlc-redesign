@@ -31,7 +31,7 @@ ColumnLayout {
     property var items: []
 
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
-    function c(value) { return VLCStyle.redesign.color(value, value) }
+    function c(value) { return VLCStyle.redesign.color(value) }
     function isSlider(option) {
         return (option.type === "float" || option.type === "integer")
             && option.minimum !== undefined && option.maximum !== undefined

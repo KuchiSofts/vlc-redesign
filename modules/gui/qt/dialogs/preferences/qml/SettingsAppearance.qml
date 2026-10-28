@@ -115,7 +115,7 @@ SettingsSectionTitle {
         initialRightToLeft = selectedRightToLeft
     }
 
-    function c(value) { return VLCStyle.redesign.color(value, value) }
+    function c(value) { return VLCStyle.redesign.color(value) }
 
     SettingsLanguageAction {
         width: parent.width

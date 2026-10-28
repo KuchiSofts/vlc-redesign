@@ -135,7 +135,7 @@ Flickable {
             horizontalAlignment: Text.AlignHCenter
             wrapMode: Text.WordWrap
             text: qsTr("Drop here to remove from the player")
-            color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, theme.fg.secondary)
+            color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
         }
@@ -223,7 +223,7 @@ Flickable {
 
                         Widgets.DashedRect {
                             anchors.fill: parent
-                            color: VLCStyle.redesign.color("#6B6B6B", "#5a5a59")
+                            color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                         }
 
                         Image {
@@ -245,7 +245,7 @@ Flickable {
                         id: label
                         width: parent.width
                         text: PlayerControlbarControls.paletteText[item.modelData] ?? (item.entry.text ?? "")
-                        color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#4d4d4d")
+                        color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                         horizontalAlignment: Text.AlignHCenter

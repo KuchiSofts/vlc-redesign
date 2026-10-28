@@ -24,7 +24,7 @@ SettingsSectionTitle {
     // The add-ons (null until the page first shows)
     readonly property var addons: addonsLoader.item
 
-    function c(value) { return VLCStyle.redesign.color(value, value) }
+    function c(value) { return VLCStyle.redesign.color(value) }
 
     onInstalledOnlyChanged: addonsView.currentIndex = -1
 

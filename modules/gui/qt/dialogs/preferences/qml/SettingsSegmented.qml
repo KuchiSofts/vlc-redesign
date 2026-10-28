@@ -19,7 +19,7 @@ Rectangle {
     signal chosen(var value)
 
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
-    function c(value) { return VLCStyle.redesign.color(value, value) }
+    function c(value) { return VLCStyle.redesign.color(value) }
 
     // the width where every option shows its whole text: a row gives a long
     // translation ("Da esquerda para a direita") more room than the design's

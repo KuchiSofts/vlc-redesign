@@ -70,7 +70,7 @@ public enum VLCTokens {
         public static let lightBgB1 = VLCColor(0xC2C2C1, alpha: 1)
         /// Light of the 95 % B1 over the canvas.
         public static let lightBgB1Canvas = VLCColor(0xC2C2C1, alpha: 1)
-        /// Light of Dark/BG/B2 (also the QML dialog title bars: the colour map wins over the fallback the dialog passes).
+        /// Light of Dark/BG/B2 (also the title bars of the QML and the classic dialogs).
         public static let lightBgB2 = VLCColor(0xDEDEDE, alpha: 1)
         /// Light of Dark/BG/A1.
         public static let lightBgA1 = VLCColor(0x9C9C9B, alpha: 1)
@@ -104,8 +104,8 @@ public enum VLCTokens {
         public static let lightDividerBright = VLCColor(0x8E8E8D, alpha: 1)
         /// Settings warnings and errors in the light theme.
         public static let lightStatusWarning = VLCColor(0x7A1414, alpha: 1)
-        /// Title bar of the classic (widget) dialogs in the light theme. The QML dialogs draw theirs in color.light.bg.b2 (#DEDEDE).
-        public static let lightTitleBarClassic = VLCColor(0x9C9C9B, alpha: 1)
+        /// Title bar of the classic (widget) dialogs in the light theme: color.light.bg.b2, as the QML dialogs draw theirs (design/light-theme.md).
+        public static let lightTitleBarClassic = VLCColor(0xDEDEDE, alpha: 1)
         /// Settings scroll bar handle in the light theme (palette.mid of the Basic ScrollBar).
         public static let lightScrollBarHandle = VLCColor(0x6B6B6B, alpha: 1)
         /// Settings scroll bar handle, pressed, in the light theme (palette.dark).

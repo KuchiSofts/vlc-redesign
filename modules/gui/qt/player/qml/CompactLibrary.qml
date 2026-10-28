@@ -667,7 +667,7 @@ FocusScope {
                 elide: Text.ElideRight
                 // (from the right in a right to left layout)
                 horizontalAlignment: Text.AlignLeft
-                color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#4d4d4d")
+                color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
                 // a line of 100 % centred in the 24 px of the row
@@ -849,7 +849,7 @@ FocusScope {
                 text: root._counted ? qsTr("%1 item", "%1 items", root._count).arg(root._count) : ""
                 elide: Text.ElideRight
                 horizontalAlignment: Text.AlignLeft
-                color: VLCStyle.redesign.color("#6B6B6B", "#7c7c7b")
+                color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.redesign.fontNormal
                 // the text box (17 px) centred in the 24 px of the row
@@ -872,7 +872,7 @@ FocusScope {
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.redesign.fontNormal
                 placeholderText: qsTr("Search")
-                placeholderTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#7c7c7b")
+                placeholderTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                 horizontalAlignment: TextInput.AlignLeft
                 onTextChanged: {
                     const models = root._toolModels.filter(model => model && model.searchPattern !== undefined)
@@ -1323,7 +1323,7 @@ FocusScope {
                 wrapMode: Text.WordWrap
                 text: !root._model ? qsTr("The media library is not available.")
                                    : qsTr("Nothing here yet.")
-                color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#7c7c7b")
+                color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.redesign.fontNormal
             }
@@ -1339,7 +1339,7 @@ FocusScope {
             wrapMode: Text.WordWrap
             text: !root._mlAvailable ? qsTr("The media library is not available.")
                                      : qsTr("Nothing here yet.")
-            color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#7c7c7b")
+            color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.redesign.fontNormal
         }

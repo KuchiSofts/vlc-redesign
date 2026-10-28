@@ -157,7 +157,7 @@ T.Popup {
             implicitHeight: headerColumn.implicitHeight + 2 * VLCStyle.dp(9, VLCStyle.scale)
             topLeftRadius: VLCStyle.dp(14, VLCStyle.scale)
             topRightRadius: topLeftRadius
-            color: VLCStyle.redesign.color("#090909", "#9c9c9b", root.darkTheme)
+            color: VLCStyle.redesign.color("#090909", "#dedede", root.darkTheme)
 
             ColumnLayout {
                 id: headerColumn
@@ -324,7 +324,7 @@ T.Popup {
                 text: button.text
                 verticalAlignment: Text.AlignTop
                 color: (button.accent && button.enabled) ? VLCStyle.redesign.accent
-                                                         : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#4d4d4d", root.darkTheme)
+                                                         : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e", root.darkTheme)
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                 font.weight: Font.DemiBold
@@ -350,9 +350,9 @@ T.Popup {
             color: (button.accent && button.enabled)
                    ? (button.down || button.hovered ? Qt.lighter(VLCStyle.redesign.accentBackground, 1.15)
                                                     : VLCStyle.redesign.accentBackground)
-                   : !button.enabled ? VLCStyle.redesign.color(VLCStyle.redesign.controlHoverBackground, "#b8b8b7", root.darkTheme)
+                   : !button.enabled ? VLCStyle.redesign.color(VLCStyle.redesign.controlHoverBackground, "#9c9c9b", root.darkTheme)
                    : (button.down || button.hovered) ? VLCStyle.redesign.color(VLCStyle.redesign.controlHoverBackground, "#9c9c9b", root.darkTheme)
-                   : VLCStyle.redesign.color(VLCStyle.redesign.playerControlBackground, "#b8b8b7", root.darkTheme)
+                   : VLCStyle.redesign.color(VLCStyle.redesign.playerControlBackground, "#ababaa", root.darkTheme)
             border.width: button.visualFocus ? 1 : 0
             border.color: VLCStyle.redesign.focusColor
         }

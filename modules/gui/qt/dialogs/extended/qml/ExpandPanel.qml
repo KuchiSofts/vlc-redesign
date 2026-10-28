@@ -27,7 +27,7 @@ Item {
     default property alias content: body.data
 
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
-    function c(value) { return VLCStyle.redesign.color(value, value) }
+    function c(value) { return VLCStyle.redesign.color(value) }
 
     implicitHeight: expanded ? header.height + topSpacing + body.implicitHeight + bottomSpacing
                              : header.height

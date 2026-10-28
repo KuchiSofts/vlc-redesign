@@ -16,14 +16,21 @@ RUN apt-get update \
        libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-shape0 \
        libwayland-dev x11-utils libcurl4-openssl-dev \
     && rm -rf /var/lib/apt/lists/*
-RUN python3 -m venv /opt/aqt \
+# On ARM64 (aarch64) Qt's own build is linux_gcc_arm64, in gcc_arm64: linked
+# as gcc_64 so that the paths below are the same on both
+RUN case "$(uname -m)" in \
+         aarch64) qthost=linux_arm64 qtarch=linux_gcc_arm64 qtdir=gcc_arm64 ;; \
+         *) qthost=linux qtarch=linux_gcc_64 qtdir=gcc_64 ;; \
+       esac \
+    && python3 -m venv /opt/aqt \
     && /opt/aqt/bin/pip install --no-cache-dir aqtinstall \
     && for base in https://download.qt.io/ https://mirrors.ocf.berkeley.edu/qt/ \
                    https://qt.mirror.constant.com/ https://mirror.netcologne.de/qtproject/; do \
          rm -rf /opt/qt; \
-         /opt/aqt/bin/aqt install-qt --base "$base" linux desktop 6.8.3 linux_gcc_64 \
+         /opt/aqt/bin/aqt install-qt --base "$base" "$qthost" desktop 6.8.3 "$qtarch" \
            -m qtshadertools qtwaylandcompositor -O /opt/qt && break; \
        done \
+    && { [ "$qtdir" = gcc_64 ] || ln -s "$qtdir" /opt/qt/6.8.3/gcc_64; } \
     && test -x /opt/qt/6.8.3/gcc_64/bin/qmake \
     && ln -sf qmake /opt/qt/6.8.3/gcc_64/bin/qmake6 \
     && rm -rf /root/.cache

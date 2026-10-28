@@ -39,6 +39,8 @@ Dialog {
     property bool applyFailed: false
     property bool previousGlobalShortcuts: true
     property bool advancedExpanded: false
+    // Edit Sidebar (Interface), made when first opened
+    property var _sidebarDialog: null
     readonly property string searchText: searchField.text
     // Advanced Options start closed on every page
     onSelectedCategoryChanged: advancedExpanded = false
@@ -55,7 +57,8 @@ Dialog {
         playback: qsTr("Playback Preferences"), video: qsTr("Video Defaults"),
         audio: qsTr("Audio Defaults"), subtitles: qsTr("Subtitle Defaults"),
         library: qsTr("Playlists, Folders & Files"), network: qsTr("Network Connections & Security"),
-        performance: qsTr("Performance Settings"), recording: qsTr("Recording, Casting & Streaming Out")
+        performance: qsTr("Performance Settings"), recording: qsTr("Recording, Casting & Streaming Out"),
+        tv: qsTr("Live TV")
     })
 
     function openSettings(category) {
@@ -93,6 +96,8 @@ Dialog {
         subtitleLanguages.save()
         developerMode.save()
         MainCtx.controlbarProfileModel.save()
+        // Live TV switched on or off: its entry, its page and its keys follow
+        Iptv.reloadSettings()
         return true
     }
 
@@ -490,6 +495,14 @@ Dialog {
                     visible: root.selectedCategory === "extensions" && !searchField.text.length
                     settingsModel: config
                 }
+                // Live TV: its sources above its options (made while the add-on is on)
+                Loader {
+                    width: parent.width
+                    active: Iptv.enabled && root.selectedCategory === "tv" && !searchField.text.length
+                    visible: active
+                    source: "qrc:///qt/qml/VLC/Dialogs/SettingsTv.qml"
+                }
+
                 // The Last.fm rows continue the Network section of the privacy page
                 Column {
                     width: parent.width
@@ -521,6 +534,34 @@ Dialog {
                                  || root.searchMatches(["Last.fm", "lastfm", qsTr("Submit played tracks to last.fm"),
                                                         qsTr("Last.fm username"), qsTr("Last.fm password"),
                                                         qsTr("Last.fm submission URL")])
+                    }
+                }
+
+                // The order of the library's sidebar and its pages shown, after
+                // the sections of the interface page (Edit Sidebar)
+                SettingsSectionTitle {
+                    id: sidebarSection
+                    width: parent.width
+                    visible: searchField.text.length === 0
+                             ? root.selectedCategory === "interface"
+                             : root.searchMatches([qsTr("Sidebar"), qsTr("Edit Sidebar"),
+                                                   qsTr("Order and pages of the sidebar")])
+                    text: qsTr("Sidebar")
+
+                    SettingsActionRow {
+                        label: qsTr("Order and pages of the sidebar")
+                        buttonText: qsTr("Edit Sidebar")
+                        onClicked: {
+                            if (!root._sidebarDialog) {
+                                const component = Qt.createComponent("qrc:///qt/qml/VLC/MainInterface/SidebarEditDialog.qml")
+                                if (component.status !== Component.Ready) {
+                                    console.warn(component.errorString())
+                                    return
+                                }
+                                root._sidebarDialog = component.createObject(root)
+                            }
+                            root._sidebarDialog.open()
+                        }
                     }
                 }
 
@@ -593,7 +634,7 @@ Dialog {
                     visible: optionList.availableCount === 0 && !appearance.visible
                              && !subtitleLanguages.visible
                              && !developerMode.visible
-                             && !lastfm.visible && !shortcutsSection.visible
+                             && !lastfm.visible && !shortcutsSection.visible && !sidebarSection.visible
                              && !inlineEffects.visible && !extensions.visible
                     text: searchField.text.length > 0
                           ? qsTr("No matching settings")

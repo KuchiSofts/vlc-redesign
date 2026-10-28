@@ -11,6 +11,7 @@ qml_modules += {
         '../../dialogs/preferences/qml/SettingsStartupVolume.qml',
         '../../dialogs/preferences/qml/SettingsPicture.qml',
         '../../dialogs/preferences/qml/SettingsLastfm.qml',
+        '../../dialogs/preferences/qml/SettingsTv.qml',
         '../../dialogs/preferences/qml/SettingsDeveloperMode.qml',
         '../../dialogs/preferences/qml/SettingsAudioOutput.qml',
         '../../player/qml/AudioVisualizationDialog.qml',
@@ -110,6 +111,8 @@ qml_modules += {
         '../../maininterface/qml/Sidebar.qml',
         '../../maininterface/qml/PaneResizeHandle.qml',
         '../../maininterface/qml/SideNavigationDelegate.qml',
+        '../../maininterface/qml/SidebarItems.qml',
+        '../../maininterface/qml/SidebarEditDialog.qml',
     ),
 }
 qml_modules += {
@@ -200,7 +203,17 @@ qml_modules += {
         '../../network/qml/NetworkThumbnailItem.qml',
         '../../network/qml/ServicesHomeDisplay.qml',
         '../../network/qml/ServicesManage.qml',
-        '../../network/qml/ServicesSources.qml'
+        '../../network/qml/ServicesSources.qml',
+        '../../iptv/qml/TvBadge.qml',
+        '../../iptv/qml/TvChannelRow.qml',
+        '../../iptv/qml/TvDisplay.qml',
+        '../../iptv/qml/TvGuideView.qml',
+        '../../iptv/qml/TvLibraryView.qml',
+        '../../iptv/qml/TvLogo.qml',
+        '../../iptv/qml/TvPlayerOverlay.qml',
+        '../../iptv/qml/TvProgrammeDialog.qml',
+        '../../iptv/qml/TvSourceDialog.qml',
+        '../../iptv/qml/TvToast.qml'
     ),
 }
 
@@ -298,6 +311,7 @@ qml_modules += {
        '../../player/qml/controlbarcontrols/ExtendedSettingsButton.qml',
        '../../player/qml/controlbarcontrols/SettingsButton.qml',
        '../../player/qml/controlbarcontrols/RedesignIconButton.qml',
+       '../../player/qml/controlbarcontrols/TvButton.qml',
        '../../player/qml/controlbarcontrols/FasterButton.qml',
        '../../player/qml/controlbarcontrols/FrameNextButton.qml',
        '../../player/qml/controlbarcontrols/FramePrevButton.qml',

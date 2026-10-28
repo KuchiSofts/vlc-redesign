@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- A small synthetic XMLTV guide for extras/juxtopposed/iptv-parsers.cpp -->
+<tv generator-info-name="vlc-redesign test">
+  <channel id="news.example">
+    <display-name lang="en">Example News HD</display-name>
+  </channel>
+  <channel id="ch42">
+    <display-name lang="he">ערוץ בדיקה</display-name>
+    <display-name lang="en">Test Channel</display-name>
+  </channel>
+  <channel id="unused.example">
+    <display-name>Not In The Playlist</display-name>
+  </channel>
+  <programme start="20261025180000 +0000" stop="20261025190000 +0000" channel="news.example">
+    <title lang="en">Evening News</title>
+    <desc lang="en">The news of the day.</desc>
+    <category lang="en">News</category>
+  </programme>
+  <programme start="20261025190000 +0000" channel="news.example">
+    <title lang="en">Weather</title>
+  </programme>
+  <programme start="20261025200000 +0000" stop="20261025210000 +0000" channel="news.example">
+    <title lang="en">Late Show</title>
+    <episode-num system="xmltv_ns">1.4.</episode-num>
+  </programme>
+  <programme start="20261025203000 +0300" stop="20261025213000 +0300" channel="ch42">
+    <title lang="he">תוכנית</title>
+    <title lang="en">Programme</title>
+    <sub-title>Pilot</sub-title>
+  </programme>
+  <programme start="20261025180000 +0000" stop="20261025190000 +0000" channel="unused.example">
+    <title>Dropped</title>
+  </programme>
+  <programme start="20261101180000 +0000" stop="20261101190000 +0000" channel="news.example">
+    <title>Too far ahead</title>
+  </programme>
+</tv>

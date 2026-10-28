@@ -262,7 +262,7 @@ SVG sources of the glyphs, from the same Figma symbols (42:356), one per PNG sta
 | `wrench` | <img src="svg/glyphs/wrench/default.svg" height="24" alt="wrench default"> `default` | 24 x 24 |
 | `zoom` | <img src="svg/glyphs/zoom/default.svg" height="24" alt="zoom default"> `default` | 24 x 24 |
 
-## svg (`svg/`, 56 icons, 56 files)
+## svg (`svg/`, 57 icons, 57 files)
 
 SVG icons of the top bar, the sidebar and the player, and the SVG of each raster piece of images/ (same name; design/tools/raster_svgs.json says which Figma node each comes from).
 
@@ -314,6 +314,7 @@ SVG icons of the top bar, the sidebar and the player, and the SVG of each raster
 | `track-subtitles-active` | <img src="svg/track-subtitles-active.svg" height="24" alt="track-subtitles-active default"> `default` | 24 x 24 |
 | `track-video` | <img src="svg/track-video.svg" height="24" alt="track-video default"> `default` | 24 x 24 |
 | `track-video-active` | <img src="svg/track-video-active.svg" height="24" alt="track-video-active default"> `default` | 24 x 24 |
+| `tv` | <img src="svg/tv.svg" height="24" alt="tv default"> `default` | 24 x 24 |
 | `video` | <img src="svg/video.svg" height="24" alt="video default"> `default` | 24 x 24 |
 | `volume` | <img src="svg/volume.svg" height="24" alt="volume default"> `default` | 24 x 24 |
 | `volume-background` | <img src="svg/volume-background.svg" height="24" alt="volume-background default"> `default` | 89 x 27.3633 |

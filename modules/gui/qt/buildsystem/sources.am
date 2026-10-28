@@ -263,6 +263,7 @@ libqt_plugin_la_SOURCES = \
 	util/audio_device_model.hpp \
 	util/workerthreadset.hpp util/workerthreadset.cpp \
 	util/http_request.cpp util/http_request.hpp \
+	iptv/iptv_addon.cpp iptv/iptv_addon.hpp \
 	util/redesign_updater.cpp util/redesign_updater.hpp \
 	util/redesign_update_key.h util/redesign_update_verify.h \
 	util/redesign_feedback.cpp util/redesign_feedback.hpp \

@@ -220,6 +220,11 @@ vlc_player_UpdateMLStates(vlc_player_t *player, struct vlc_player_input* input)
     vlc_ml_media_t* media = vlc_ml_get_media_by_mrl(ml, item->psz_uri);
     if (!media)
     {
+        /* A media kept out of the history (no-save-recentplay: the "Never
+         * remember items matching" filter, the channels of Live TV) is not
+         * added to the library just to store its states */
+        if (!var_GetBool(input->thread, "save-recentplay"))
+            return;
         /* We don't know this media yet, let's add it as an external media so
          * we can still store its playback preferences
          */

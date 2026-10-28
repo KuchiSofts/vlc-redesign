@@ -58,6 +58,10 @@ SideNavigationPane {
             name: "discover",
             url: "qrc:///qt/qml/VLC/Network/DiscoverDisplay.qml"
         }, {
+            // Live TV (its page sends back home when the add-on is off)
+            name: "tv",
+            url: "qrc:///qt/qml/VLC/Network/TvDisplay.qml"
+        }, {
             name: "mlsettings",
             url: "qrc:///qt/qml/VLC/MediaLibrary/MLFoldersSettings.qml"
         }, {

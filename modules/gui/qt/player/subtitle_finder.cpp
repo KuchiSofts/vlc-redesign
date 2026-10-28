@@ -54,6 +54,7 @@
 #include "player/player_controller.hpp"
 #include "player/subtitle_providers.hpp"
 #include "util/http_request.hpp"
+#include "iptv/iptv_addon.hpp"
 #include "util/redesign_version.hpp"
 #include "util/subtitle_preferences.hpp"
 
@@ -623,6 +624,13 @@ void SubtitleFinder::onStarted()
 {
     if (!m_player->hasVideoOutput())
         return; // music: no subtitles to look for
+    // a TV channel, or a programme of its archive (the subtitles stay as
+    // the channel has them), or another live stream: no film
+    if (IptvAddon::isTvUrl(m_player->getUrl().toString()))
+        return;
+    if (!m_player->getUrl().isLocalFile()
+        && (!m_player->getLength().valid() || m_player->getLength().toSecf() <= 0))
+        return;
     prepareMedia([this]() {
         const QStringList local = localLanguages();
         const QString primary = m_preferences->primary();

@@ -19,6 +19,7 @@
 import QtQuick
 
 
+import VLC.MainInterface
 import VLC.Widgets as Widgets
 import VLC.Style
 import VLC.Player
@@ -26,6 +27,14 @@ import VLC.Util
 
 RedesignIconButton {
     iconSource: "qrc:///redesign/player/subtitles.png"
+    // Subtitles are for films and videos: for a live TV channel or music the
+    // button only shows when there is a track to choose (subtitles carried
+    // by the stream, several audio tracks), and takes no room otherwise
+    readonly property bool _offered: (Player.hasVideoOutput && !Iptv.playing) || Player.subtitleTracks.count > 0
+                                     || Player.audioTracks.count > 1
+    implicitWidth: _offered ? VLCStyle.dp(30, VLCStyle.scale) : 0
+    enabled: _offered
+    opacity: _offered ? 1 : 0
     id: root
 
     // Proprerties

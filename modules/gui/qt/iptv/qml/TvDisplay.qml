@@ -55,7 +55,7 @@ Widgets.PageExt {
         // a channel chosen here: to the player at once, as a TV box
         function onChannelSwitched() {
             if (root.visible)
-                History.push(["player"])
+                MainCtx.playerView = true
         }
     }
     Component.onCompleted: {

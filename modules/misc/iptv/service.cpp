@@ -836,6 +836,17 @@ QJsonObject Service::request(const QJsonObject& r)
         return vod(r);
     if (op == QLatin1String("seriesInfo"))
         return seriesInfo(r);
+    // the channel an address plays (a queue restored at the start, a list
+    // opened elsewhere): the interface then shows it as TV
+    if (op == QLatin1String("channelOfUrl"))
+    {
+        const QString url = r.value(QLatin1String("url")).toString();
+        std::lock_guard<std::mutex> guard(m_lock);
+        for (const ChannelEntry& c : std::as_const(m_channels))
+            if (c.channel.url == url)
+                return QJsonObject { { QStringLiteral("key"), c.key } };
+        return QJsonObject();
+    }
     if (op == QLatin1String("logo"))
         return logo(r);
     if (op == QLatin1String("getSource"))

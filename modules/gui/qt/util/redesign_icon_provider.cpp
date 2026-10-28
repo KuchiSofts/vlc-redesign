@@ -23,6 +23,7 @@
 
 #include "maininterface/mainctx.hpp"
 #include "util/color_scheme_model.hpp"
+#include "menus/redesign_menu_style.hpp"
 
 #include <QFile>
 #include <QGuiApplication>
@@ -175,7 +176,8 @@ RedesignIconInterceptor::RedesignIconInterceptor(MainCtx *ctx, QObject *parent)
 
 void RedesignIconInterceptor::updateTheme()
 {
-    bool light = QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Light;
+    // (as the menus: a desktop telling no scheme follows the palette)
+    bool light = !RedesignMenuStyle::darkScheme(nullptr);
     if (ColorSchemeModel *scheme = m_ctx ? m_ctx->getColorScheme() : nullptr)
     {
         switch (scheme->currentScheme())

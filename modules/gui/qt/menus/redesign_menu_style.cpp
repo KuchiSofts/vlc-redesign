@@ -256,7 +256,23 @@ bool RedesignMenuStyle::darkScheme(MainCtx *ctx)
             break;
         }
     }
-    return QGuiApplication::styleHints()->colorScheme() != Qt::ColorScheme::Light;
+    switch (QGuiApplication::styleHints()->colorScheme())
+    {
+    case Qt::ColorScheme::Light:
+        return false;
+    case Qt::ColorScheme::Dark:
+        return true;
+    default:
+        // A desktop that tells no scheme (Linux without a portal setting,
+        // X11 window managers): as the interface's own System theme
+        // (SystemPalette), from the colours of the application palette;
+        // the menus and dialogs were dark over a light interface
+        {
+            const QPalette palette = QGuiApplication::palette();
+            return palette.color(QPalette::Normal, QPalette::Base).lightness()
+                   < palette.color(QPalette::Normal, QPalette::Text).lightness();
+        }
+    }
 }
 
 RedesignMenuStyle::Palette RedesignMenuStyle::palette() const

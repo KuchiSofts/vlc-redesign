@@ -49,7 +49,7 @@ changed without a restart. The full list is in the [changelog](CHANGELOG.md).
 **Ideas**
 
 - 💡 Subtitle lines marked on the seek bar
-- 💡 The accent colour following Windows'
+- 🔨 The accent colour following Windows': built (*Follow the Windows accent color* in Settings > Appearance), in the next release
 
 ## Other platforms
 

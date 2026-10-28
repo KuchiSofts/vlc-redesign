@@ -13,8 +13,9 @@ SettingsSectionTitle {
     text: qsTr("Appearance")
     property int selectedTheme: 0
     property int initialTheme: 0
-    property color selectedAccent: VLCStyle.redesign.accent
-    property color initialAccent: VLCStyle.redesign.accent
+    // a color, or "system": Follow the Windows accent color
+    property string selectedAccent: VLCStyle.redesign.accentChoice
+    property string initialAccent: VLCStyle.redesign.accentChoice
     property string selectedLanguage: "auto"
     property string initialLanguage: "auto"
     property bool selectedRightToLeft: false
@@ -22,7 +23,7 @@ SettingsSectionTitle {
     readonly property var languages: themeBridge.interfaceLanguages()
     readonly property bool dark: VLCStyle.palette.isDark
     readonly property bool dirty: selectedTheme !== initialTheme
-                                  || selectedAccent.toString() !== initialAccent.toString()
+                                  || selectedAccent.toLowerCase() !== initialAccent.toLowerCase()
                                   || selectedLanguage !== initialLanguage
                                   || selectedRightToLeft !== initialRightToLeft
 
@@ -39,7 +40,7 @@ SettingsSectionTitle {
         themeBridge.begin()
         initialTheme = themeBridge.themeIndex
         selectedTheme = initialTheme
-        initialAccent = VLCStyle.redesign.accent
+        initialAccent = VLCStyle.redesign.accentChoice
         selectedAccent = initialAccent
         initialLanguage = themeBridge.interfaceLanguage()
         selectedLanguage = initialLanguage
@@ -67,9 +68,19 @@ SettingsSectionTitle {
         MainCtx.rightToLeft = rightToLeft
     }
 
-    function chooseAccent(color) {
-        selectedAccent = color
-        VLCStyle.redesign.accent = color
+    function chooseAccent(choice) {
+        selectedAccent = choice
+        VLCStyle.redesign.accentChoice = choice
+    }
+
+    // Follow the Windows accent color: on, the accent is the system's
+    // ("system"); off, the color chosen before it (the default if none)
+    readonly property bool followSystemAccent: selectedAccent === VLCStyle.redesign.systemAccentChoice
+    function chooseFollowSystemAccent(on) {
+        if (on)
+            chooseAccent(VLCStyle.redesign.systemAccentChoice)
+        else
+            chooseAccent(initialAccent !== VLCStyle.redesign.systemAccentChoice ? initialAccent : "#D37918")
     }
 
     function resetDefaults() {
@@ -84,7 +95,7 @@ SettingsSectionTitle {
         themeBridge.cancel()
         selectedTheme = initialTheme
         selectedAccent = initialAccent
-        VLCStyle.redesign.accent = initialAccent
+        VLCStyle.redesign.accentChoice = initialAccent
         if (selectedLanguage !== initialLanguage)
             chooseLanguage(initialLanguage)
         if (selectedRightToLeft !== initialRightToLeft)
@@ -93,7 +104,7 @@ SettingsSectionTitle {
 
     function save() {
         themeBridge.acceptTheme()
-        MainCtx.setSettingValue("redesign/accent", selectedAccent.toString())
+        MainCtx.setSettingValue("redesign/accent", selectedAccent)
         if (selectedLanguage !== initialLanguage)
             themeBridge.setInterfaceLanguage(selectedLanguage)
         initialTheme = selectedTheme
@@ -201,7 +212,7 @@ SettingsSectionTitle {
                     delegate: Button {
                         id: swatch
                         required property var modelData
-                        readonly property bool chosen: root.selectedAccent.toString().toLowerCase() === modelData.toLowerCase()
+                        readonly property bool chosen: root.selectedAccent.toLowerCase() === modelData.toLowerCase()
                         width: (parent.width - root.px(4) * (root.accentChoices.length - 1)) / root.accentChoices.length
                         height: parent.height
                         padding: root.px(6)
@@ -231,6 +242,38 @@ SettingsSectionTitle {
                     }
                 }
             }
+        }
+    }
+
+    // Follow the Windows accent color: a toggle row as Developer mode (42
+    // high, the label at 14 in #8F8F8F, the Toggle on the end side); on, the
+    // swatches above show no choice, and picking one turns it off
+    Item {
+        width: parent.width
+        height: root.px(42)
+        Text {
+            anchors.left: parent.left
+            anchors.right: followAccentToggle.left
+            anchors.rightMargin: root.px(20)
+            anchors.baseline: parent.verticalCenter
+            anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
+            text: followAccentToggle.label
+            color: root.c("#8F8F8F")
+            font.family: VLCStyle.redesign.fontFamily
+            font.pixelSize: root.px(14)
+            horizontalAlignment: Text.AlignLeft
+            elide: Text.ElideRight
+        }
+        SettingsToggle {
+            id: followAccentToggle
+            readonly property string label: Qt.platform.os === "windows" ? qsTr("Follow the Windows accent color")
+                                                                        : qsTr("Follow the system accent color")
+            objectName: "settingsFollowSystemAccent"
+            anchors.right: parent.right
+            anchors.verticalCenter: parent.verticalCenter
+            checked: root.followSystemAccent
+            onSwitched: (on) => root.chooseFollowSystemAccent(on)
+            Accessible.name: label
         }
     }
 

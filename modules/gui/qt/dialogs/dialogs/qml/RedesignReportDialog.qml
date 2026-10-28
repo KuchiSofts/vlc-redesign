@@ -34,7 +34,8 @@ Widgets.RedesignDialog {
     onAboutToShow: {
         _copied = false
         report = RedesignFeedback.reportText(MainCtx.colorScheme.scheme, VLCStyle.palette.isDark,
-                                             VLCStyle.redesign.accent.toString())
+                                             (VLCStyle.redesign.followsSystemAccent ? "system " : "")
+                                             + VLCStyle.redesign.accent.toString())
     }
     onExtraClicked: {
         RedesignFeedback.copyText(report)

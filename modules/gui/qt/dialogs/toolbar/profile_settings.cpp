@@ -18,6 +18,7 @@
 #include "dialogs/preferences/config_values.hpp"
 #include "maininterface/mainctx.hpp"
 #include "util/color_scheme_model.hpp"
+#include "util/redesign_accent.hpp"
 #include "qt.hpp"
 
 #include <QSettings>
@@ -244,7 +245,8 @@ bool ProfileSettings::apply(MainCtx *ctx, QSettings *settings,
     const int oldTheme = ctx->getColorScheme()->currentIndex();
     const QString accent = target.value("accent").toString();
     const int theme = target.value("theme").toInt();
-    if (!QColor(accent).isValid() || theme < 0
+    // (a color, or "system": the Windows accent)
+    if (!RedesignAccent::isValidChoice(accent) || theme < 0
         || theme >= ctx->getColorScheme()->rowCount(QModelIndex())) {
         if (error) *error = qtr("Profile appearance is invalid.");
         return false;

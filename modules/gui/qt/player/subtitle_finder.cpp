@@ -624,7 +624,8 @@ void SubtitleFinder::onStarted()
     if (!m_player->hasVideoOutput())
         return; // music: no subtitles to look for
     // a live stream (a TV channel: no length, no seeking) is no film
-    if (!m_player->getUrl().isLocalFile() && !m_player->isSeekable() && !m_player->getLength().valid())
+    if (!m_player->getUrl().isLocalFile()
+        && (!m_player->getLength().valid() || m_player->getLength().toSecf() <= 0))
         return;
     prepareMedia([this]() {
         const QStringList local = localLanguages();

@@ -579,6 +579,9 @@ void IptvAddon::loadChannels()
                     groups.append(QVariantMap { { QStringLiteral("name"), g }, { QStringLiteral("count"), counts.value(g) } });
                 a->m_groups = groups;
                 a->m_channelsLoaded = true;
+                // a channel VLC put back in the queue at its start: TV again
+                if (!a->m_playing && a->m_intf->p_mainPlaylistController)
+                    a->checkPlaying();
                 a->m_channelModel->refilter();
                 a->m_playerModel->refilter();
                 emit a->channelsChanged();
@@ -938,6 +941,31 @@ void IptvAddon::checkPlaying()
         m_playing = playing;
         msg_Dbg(m_intf, "Live TV: a channel %s", playing ? "plays" : "no longer plays");
         emit playingChanged();
+    }
+    // another item: a channel all the same (the queue VLC restored at its
+    // start, a playlist opened elsewhere)? It is then watched as TV
+    if (item && !playing && m_enabled)
+    {
+        const SharedInputItem media(item.inputItem());
+        // (the address as VLC keeps it: the URL classes would re-encode it)
+        char* uri = input_item_GetURI(item.inputItem());
+        const QString url = uri ? QString::fromUtf8(uri) : QString();
+        free(uri);
+        call(QJsonObject { { QStringLiteral("op"), QStringLiteral("channelOfUrl") }, { QStringLiteral("url"), url } },
+             [this, media](const QJsonObject& answer) {
+                 const QString key = answer.value(QLatin1String("key")).toString();
+                 const PlaylistItem now = m_intf->p_mainPlaylistController->getCurrentItem();
+                 if (key.isEmpty() || !now || now.inputItem() != media.get())
+                     return;
+                 m_currentMedia = media;
+                 m_currentKey = key;
+                 m_catchup.clear();
+                 m_playing = true;
+                 msg_Dbg(m_intf, "Live TV: a channel plays");
+                 emit playingChanged();
+                 emit currentChannelChanged();
+                 emit channelSwitched();
+             });
     }
 }
 

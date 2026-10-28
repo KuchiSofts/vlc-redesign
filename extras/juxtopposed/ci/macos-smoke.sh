@@ -108,6 +108,9 @@ start interface --extraintf=rc --rc-host=127.0.0.1:$port --aout=dummy
 sleep 10
 if kill -0 $pid 2>/dev/null; then
     note "ok: the Qt interface still runs after 10 s"
+    # what the window looks like (kept with the logs; not a check: the
+    # runner may refuse the screen recording)
+    screencapture -x "$work/interface.png" 2>/dev/null || true
 else
     wait $pid
     fail "the app ended within 10 s (exit code $?)"

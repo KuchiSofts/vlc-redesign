@@ -42,6 +42,10 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   follows the pointer while dragging; delete and remove always ask first; menus are mirrored in right-to-left
   languages; menus follow the interface scale.
 - **Windows proxy:** LAN and localhost addresses go direct again, and exceptions with `*` work as in Windows.
+- **Translations:** the 72 languages on Weblate have every text of VLC Redesign again, the settings' help of
+  VLC's newer options included; about 80 wrong translations fixed where they show (Hebrew "decoding" that said
+  encoding, Persian and Malay key names in English, a reversed Arabic help text…); the Cast list's "Show N hidden
+  devices" has its plural forms. The Estonian and Swedish translations made on Weblate are in.
 - **Smaller fixes:** idle HTTP stream clients time out (DLNA streams excepted), stopping a stalled network stream no
   longer hangs, the VU meter reads the whole signal, Lua scripts saved with a BOM load, a TS stream's clock no
   longer jumps when a track is removed, and more (the full list: the review report).

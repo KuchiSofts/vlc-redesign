@@ -96,6 +96,8 @@ Item {
             loginDialog.dialogId = dialogId
             loginDialog.title = title
             loginDialog.defaultUsername = defaultUsername
+            loginDialog.text = text
+            loginDialog.askStore = askStore
             loginDialog.open()
         }
 
@@ -128,22 +130,19 @@ Item {
             progressDialog.position = position
         }
 
+        // (the id let go first: closing would dismiss it again)
         onCancelled: (dialogId) => {
             if (questionDialog.dialogId === dialogId) {
-                questionDialog.close()
                 questionDialog.dialogId = null
-                dismiss(dialogId)
+                questionDialog.close()
             } else if (loginDialog.dialogId === dialogId)  {
-                loginDialog.close()
                 loginDialog.dialogId = null
-                dismiss(dialogId)
+                loginDialog.close()
             } else if (progressDialog.dialogId === dialogId) {
-                progressDialog.close()
                 progressDialog.dialogId = null
-                dismiss(dialogId)
-            } else {
-                dismiss(dialogId)
+                progressDialog.close()
             }
+            dismiss(dialogId)
         }
     }
 
@@ -184,59 +183,83 @@ Item {
         height: contentItem?.height ?? 0
         z: 10
 
-        ColorContext {
-            id: errorMsgTheme
-            palette: VLCStyle.palette
-            colorSet: ColorContext.Window
-        }
-
+        // As the panels of the redesign: "Dark/BG/A4" at 95 %, radius 14,
+        // the shadow of the menus and dialogs; the message in Inter 14, the
+        // details as the action of the dialogs (Accent Bright and the
+        // accent), the close button of their title bar
         component: Rectangle {
-            color: errorMsgTheme.bg.negative
+            color: VLCStyle.redesign.color(Qt.rgba(0x19 / 255, 0x19 / 255, 0x19 / 255, 0.95), "#ABABAA")
 
-            height: messageText.implicitHeight + VLCStyle.margin_normal
-            radius: VLCStyle.fontHeight_normal / 2
+            height: VLCStyle.dp(52, VLCStyle.scale)
+            radius: VLCStyle.dp(14, VLCStyle.scale)
 
-            property real layoutWidth: layout.width
+            property real layoutWidth: layout.implicitWidth + 2 * VLCStyle.dp(10, VLCStyle.scale)
 
             Accessible.role: Accessible.AlertMessage
             Accessible.name: qsTr("error popup")
 
+            Widgets.RoundedRectangleShadow {
+                yOffset: VLCStyle.dp(8, VLCStyle.scale)
+                blurRadius: 7.5 * VLCStyle.scale
+                color: Qt.rgba(0, 0, 0, 0.46)
+            }
+
             RowLayout {
                 id: layout
 
-                spacing: VLCStyle.margin_xsmall
-                anchors.top: parent.top
-                anchors.bottom: parent.bottom
+                // a popup of its own: right to left, the message on the right
+                LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+                LayoutMirroring.childrenInherit: true
 
-                Widgets.IconLabel {
-                    text: VLCIcons.info
-                    color: errorMsgTheme.fg.primary
-                    Layout.leftMargin: VLCStyle.margin_xxsmall
-                }
+                anchors.verticalCenter: parent.verticalCenter
+                x: VLCStyle.dp(10, VLCStyle.scale)
+                spacing: VLCStyle.dp(8, VLCStyle.scale)
 
                 T.Label {
                     id: messageText
 
                     Layout.maximumWidth: root.width * 0.5
-                    Layout.leftMargin: VLCStyle.margin_xxsmall
-                    Layout.rightMargin: VLCStyle.margin_xxsmall
+                    Layout.leftMargin: VLCStyle.dp(10, VLCStyle.scale)
+                    Layout.rightMargin: VLCStyle.dp(8, VLCStyle.scale)
 
                     text: (DialogErrorModel.repeatedMessageCount > 1 ? '[' + DialogErrorModel.repeatedMessageCount + '] ' : '')
                           + DialogErrorModel.notificationText
 
-                    wrapMode: Text.WrapAnywhere
+                    elide: Text.ElideRight
+                    maximumLineCount: 1
                     horizontalAlignment: Text.AlignLeft
-                    font.pixelSize: VLCStyle.fontSize_normal
-                    font.bold: true
-                    color: errorMsgTheme.fg.primary
+                    font.family: VLCStyle.redesign.fontFamily
+                    font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
+                    color: VLCStyle.redesign.color("#C6C6C6", "#2e2e2e")
                 }
 
-                Widgets.TextToolButton {
+                T.Button {
                     id: detailsBtn
 
                     text: qsTr("Show Details")
+                    implicitWidth: Math.max(VLCStyle.dp(100, VLCStyle.scale),
+                                            detailsText.implicitWidth + 2 * VLCStyle.dp(16, VLCStyle.scale))
+                    implicitHeight: VLCStyle.dp(32, VLCStyle.scale)
+                    Accessible.name: text
 
-                    colorContext.colorSet: ColorContext.ButtonAccent
+                    contentItem: Text {
+                        id: detailsText
+                        text: detailsBtn.text
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                        color: VLCStyle.redesign.accent
+                        font.family: VLCStyle.redesign.fontFamily
+                        font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
+                        font.weight: Font.DemiBold
+                    }
+                    background: Rectangle {
+                        radius: VLCStyle.dp(6, VLCStyle.scale)
+                        color: detailsBtn.down || detailsBtn.hovered
+                               ? Qt.lighter(VLCStyle.redesign.accentBackground, 1.15)
+                               : VLCStyle.redesign.accentBackground
+                        border.width: detailsBtn.visualFocus ? 1 : 0
+                        border.color: VLCStyle.redesign.focusColor
+                    }
 
                     onClicked: {
                         hideErrorPopupTimer.stop()
@@ -246,15 +269,28 @@ Item {
                     }
                 }
 
-                Widgets.IconToolButton {
+                T.Button {
                     id: closeBtn
-                    font.pixelSize: VLCStyle.icon_normal
-                    text: VLCIcons.clear
-                    description: qsTr("Dismiss")
-                    Layout.rightMargin: VLCStyle.margin_xxsmall
 
-                    color: closeBtn.colorContext.fg.primary
-                    backgroundColor: closeBtn.colorContext.bg.negative
+                    implicitWidth: VLCStyle.dp(32, VLCStyle.scale)
+                    implicitHeight: VLCStyle.dp(32, VLCStyle.scale)
+                    padding: VLCStyle.dp(4, VLCStyle.scale)
+                    Accessible.name: qsTr("Dismiss")
+
+                    background: Rectangle {
+                        radius: VLCStyle.dp(4, VLCStyle.scale)
+                        color: (closeBtn.hovered || closeBtn.down)
+                               ? VLCStyle.redesign.color(VLCStyle.redesign.controlHoverBackground, "#9c9c9b")
+                               : "transparent"
+                        border.width: closeBtn.visualFocus ? 1 : 0
+                        border.color: VLCStyle.redesign.focusColor
+                    }
+                    contentItem: Image {
+                        source: "qrc:///redesign/icons/close/default.png"
+                        sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
+                        fillMode: Image.Pad
+                        smooth: false
+                    }
 
                     onClicked: {
                         hideErrorPopupTimer.stop()
@@ -262,17 +298,6 @@ Item {
                         DialogErrorModel.resetRepeatedMessageCount()
                     }
                 }
-            }
-
-            Widgets.RoundedRectangleShadow {
-                yOffset: VLCStyle.dp(4, VLCStyle.scale)
-                blurRadius: VLCStyle.dp(3, VLCStyle.scale)
-
-                opacity: 0.2
-
-                visible: (color.a > 0.0)
-
-                color: Qt.darker(parent.color)
             }
         }
 
@@ -289,159 +314,164 @@ Item {
         }
     }
 
-    ModalDialog {
+    // The dialogs the core asks for (vlc_dialog: a login, a question, a
+    // progress), as the other dialogs of the redesign (RedesignDialog)
+
+    // a text of the core, not markup (a path, an address)
+    function plainText(text) {
+        return (text || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+                           .replace(/\n/g, "<br>")
+    }
+
+    // a label over its field (Inter 14, "Dark/FG/A2")
+    component FieldLabel: Text {
+        Layout.fillWidth: true
+        // (in a popup: not under the mirrored interface)
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        horizontalAlignment: Text.AlignLeft
+        elide: Text.ElideRight
+        color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
+        font.family: VLCStyle.redesign.fontFamily
+        font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
+    }
+
+    // The password: a field of one line as Widgets.RedesignTextArea (a text
+    // area has no hidden echo)
+    component PasswordField: T.TextField {
+        id: passwordField
+
+        readonly property real border: VLCStyle.dp(2, VLCStyle.scale)
+        readonly property bool _mirrored: LayoutMirroring.enabled
+
+        Layout.fillWidth: true
+        Layout.topMargin: VLCStyle.dp(2, VLCStyle.scale)
+        Layout.bottomMargin: VLCStyle.dp(2, VLCStyle.scale)
+        implicitHeight: VLCStyle.dp(8 + 21 + 8, VLCStyle.scale)
+        topPadding: border + VLCStyle.dp(8, VLCStyle.scale)
+        bottomPadding: border + VLCStyle.dp(8, VLCStyle.scale)
+        leftPadding: border + VLCStyle.dp(_mirrored ? 18 : 12, VLCStyle.scale)
+        rightPadding: border + VLCStyle.dp(_mirrored ? 12 : 18, VLCStyle.scale)
+        horizontalAlignment: TextInput.AlignLeft
+        verticalAlignment: TextInput.AlignVCenter
+        echoMode: TextInput.Password
+
+        color: VLCStyle.redesign.color("#C6C6C6", "#2e2e2e")
+        selectionColor: VLCStyle.redesign.color(VLCStyle.redesign.accentBackground, "#dedede")
+        selectedTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#191919")
+        font.family: VLCStyle.redesign.fontFamily
+        font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
+        selectByMouse: true
+
+        background: Rectangle {
+            radius: VLCStyle.dp(6, VLCStyle.scale)
+            color: VLCStyle.redesign.color("#090909", "#dedede")
+            border.width: passwordField.border
+            border.color: VLCStyle.redesign.color("#191919", "#c4c4c3")
+        }
+    }
+
+    Widgets.RedesignDialog {
         id: loginDialog
+
+        objectName: "vlcLoginDialog"
 
         //use var here as DialogId is a QGadget and passed by value
         property var dialogId: null
         property string defaultUsername: ""
+        property string text: ""
+        property bool askStore: false
 
-        onAboutToHide: restoreFocus()
-        rootWindow: root.bgContent
+        acceptText: qsTr("Log in")
+        preferredWidth: VLCStyle.dp(560, VLCStyle.scale)
 
-        contentItem: GridLayout {
-            columns: 2
-
-            // a popup does not inherit the mirroring of the window (right to left)
-            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
-            LayoutMirroring.childrenInherit: true
-
-            readonly property ColorContext colorContext: ColorContext {
-                id: loginContentTheme
-                palette: VLCStyle.palette
-                colorSet: ColorContext.Window
-            }
-
-            Text {
-                text: qsTr("User")
-                color: loginContentTheme.fg.primary
-                font.pixelSize: VLCStyle.fontSize_normal
-            }
-
-            Widgets.TextFieldExt {
-                id: username
-
-                focus: true
-                text: loginDialog.defaultUsername
-
-                Layout.fillWidth:true
-
-                Navigation.downItem: password
-                Keys.priority: Keys.AfterItem
-                Keys.onPressed: (event) => Navigation.defaultKeyAction(event)
-            }
-
-            Text {
-                text: qsTr("Password")
-                color: loginContentTheme.fg.primary
-                font.pixelSize: VLCStyle.fontSize_normal
-            }
-
-            Widgets.TextFieldExt {
-                id: password
-
-                echoMode: TextInput.Password
-                font.pixelSize: VLCStyle.fontSize_normal
-                Layout.fillWidth:true
-
-                Navigation.upItem: username
-                Navigation.downItem: savePassword
-                Keys.priority: Keys.AfterItem
-                Keys.onPressed: (event) => Navigation.defaultKeyAction(event)
-            }
-
-            Text {
-                text: qsTr("Save password")
-                color: loginContentTheme.fg.primary
-                font.pixelSize: VLCStyle.fontSize_normal
-            }
-            Widgets.CheckBoxExt {
-                id: savePassword
-
-                Navigation.upItem: password
-                Navigation.downItem: loginButtons
-                Keys.priority: Keys.AfterItem
-                Keys.onPressed: (event) => Navigation.defaultKeyAction(event)
-            }
+        onAboutToShow: {
+            username.text = loginDialog.defaultUsername
+            password.text = ""
+            savePassword.checked = false
         }
-
-        footer: FocusScope {
-            id: loginButtons
-            implicitHeight: VLCStyle.icon_normal
-
-            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
-            LayoutMirroring.childrenInherit: true
-
-            readonly property ColorContext colorContext: ColorContext {
-                id: loginFooterTheme
-                palette: VLCStyle.palette
-                colorSet: ColorContext.Window
-            }
-
-            Rectangle {
-                color: loginFooterTheme.bg.primary
-                anchors.fill: parent
-
-                RowLayout {
-                    anchors.fill: parent
-                    anchors.leftMargin: VLCStyle.margin_xxsmall
-                    anchors.rightMargin: VLCStyle.margin_xxsmall
-
-                    Widgets.TextToolButton {
-                        id: loginCancel
-                        Layout.fillWidth: true
-                        text: qsTr("cancel")
-
-                        Navigation.upItem: savePassword
-                        // the row is mirrored right to left
-                        Navigation.leftItem: LayoutMirroring.enabled ? loginOk : null
-                        Navigation.rightItem: LayoutMirroring.enabled ? null : loginOk
-                        Keys.priority: Keys.AfterItem
-                        Keys.onPressed: (event) => Navigation.defaultKeyAction(event)
-
-                        onClicked: {
-                            loginDialog.reject()
-                            loginDialog.close()
-                        }
-                    }
-
-                    Widgets.TextToolButton {
-                        id: loginOk
-                        Layout.fillWidth: true
-                        text: qsTr("Ok")
-                        focus: true
-
-                        Navigation.upItem: savePassword
-                        Navigation.leftItem: LayoutMirroring.enabled ? null : loginCancel
-                        Navigation.rightItem: LayoutMirroring.enabled ? loginCancel : null
-                        Keys.priority: Keys.AfterItem
-                        Keys.onPressed: (event) => Navigation.defaultKeyAction(event)
-
-                        onClicked: {
-                            loginDialog.accept()
-                            loginDialog.close()
-                        }
-                    }
-                }
-            }
-        }
-
+        onOpened: (username.text === "" ? username : password).forceActiveFocus()
+        onAboutToHide: root.restoreFocus()
         onAccepted: {
             if (loginDialog.dialogId !== null) {
-                vlcDialog.post_login(loginDialog.dialogId, username.text, password.text, savePassword.checked)
+                const id = loginDialog.dialogId
                 loginDialog.dialogId = null
+                vlcDialog.post_login(id, username.text, password.text, savePassword.checked)
             }
         }
-        onRejected: {
+        // Cancel, the close button, Escape
+        onClosed: {
             if (loginDialog.dialogId !== null) {
-                vlcDialog.dismiss(loginDialog.dialogId)
+                const id = loginDialog.dialogId
                 loginDialog.dialogId = null
+                vlcDialog.dismiss(id)
+            }
+            password.text = ""
+        }
+
+        Widgets.RedesignDialogHeading {
+            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+            LayoutMirroring.childrenInherit: true
+            visible: loginDialog.text !== ""
+            headingWraps: true
+            text: root.plainText(loginDialog.text)
+        }
+
+        ColumnLayout {
+            Layout.fillWidth: true
+            spacing: VLCStyle.dp(8, VLCStyle.scale)
+
+            FieldLabel { text: qsTr("User") }
+
+            Widgets.RedesignTextArea {
+                id: username
+
+                objectName: "vlcLoginUser"
+                LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+                Accessible.name: qsTr("User")
+                onAccepted: password.forceActiveFocus()
+            }
+
+            FieldLabel {
+                Layout.topMargin: VLCStyle.dp(12, VLCStyle.scale)
+                text: qsTr("Password")
+            }
+
+            PasswordField {
+                id: password
+
+                objectName: "vlcLoginPassword"
+                LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+                Accessible.name: qsTr("Password")
+                onAccepted: loginDialog.accept()
+            }
+        }
+
+        // "Save password", as the toggles of the settings
+        RowLayout {
+            Layout.fillWidth: true
+            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+            LayoutMirroring.childrenInherit: true
+            visible: loginDialog.askStore
+            spacing: VLCStyle.dp(20, VLCStyle.scale)
+
+            FieldLabel {
+                Layout.fillWidth: true
+                text: qsTr("Save password")
+            }
+
+            Widgets.CheckButton {
+                id: savePassword
+
+                objectName: "vlcLoginSavePassword"
+                Accessible.name: qsTr("Save password")
             }
         }
     }
 
-    ModalDialog {
+    Widgets.RedesignDialog {
         id: progressDialog
+
+        objectName: "vlcProgressDialog"
 
         property var dialogId: null
 
@@ -450,184 +480,120 @@ Item {
         property bool interderminate: false
         property real position: 0.0
 
-        onAboutToHide: restoreFocus()
-        rootWindow: root.bgContent
+        preferredWidth: VLCStyle.dp(560, VLCStyle.scale)
+        // Cancel only, when the core gives one: else it cannot be closed
+        acceptVisible: false
+        cancelVisible: cancelTxt !== ""
+        cancelText: cancelTxt
+        closeButtonVisible: cancelTxt !== ""
+        closePolicy: cancelTxt !== "" ? T.Popup.CloseOnEscape : T.Popup.NoAutoClose
 
-        contentItem:  ColumnLayout {
-
-            // a popup does not inherit the mirroring of the window (right to left)
-            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
-            LayoutMirroring.childrenInherit: true
-
-            readonly property ColorContext colorContext: ColorContext {
-                id: progressContentTheme
-                palette: VLCStyle.palette
-                colorSet: ColorContext.Window
-            }
-
-            Text {
-                // as wide as the dialog: a long text wraps in it
-                Layout.fillWidth: true
-                focus: false
-                font.pixelSize: VLCStyle.fontSize_normal
-                color: progressContentTheme.fg.primary
-                text: progressDialog.text
-                wrapMode: Text.WordWrap
-                horizontalAlignment: Text.AlignLeft
-            }
-
-            Widgets.ProgressBarExt {
-                Layout.fillWidth:true
-
-                from: 0.0
-                to: 1.0
-
-                indeterminate: progressDialog.interderminate
-                value: progressDialog.position
+        onAboutToHide: root.restoreFocus()
+        onClosed: {
+            if (progressDialog.dialogId !== null) {
+                const id = progressDialog.dialogId
+                progressDialog.dialogId = null
+                vlcDialog.dismiss(id)
             }
         }
 
-
-        footer: FocusScope {
-            focus: true
-            implicitHeight: VLCStyle.icon_normal
-
+        Widgets.RedesignDialogHeading {
             LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
             LayoutMirroring.childrenInherit: true
+            visible: progressDialog.text !== ""
+            headingWraps: true
+            text: root.plainText(progressDialog.text)
+        }
 
-            readonly property ColorContext colorContext: ColorContext {
-                palette: VLCStyle.palette
-                colorSet: ColorContext.Window
-            }
+        // the bar: a well of "Dark/BG/B2" filled with the accent (as the
+        // seek bar); not known how far: a part of it going across
+        Rectangle {
+            id: progressWell
+
+            Layout.fillWidth: true
+            implicitHeight: VLCStyle.dp(8, VLCStyle.scale)
+            radius: VLCStyle.dp(4, VLCStyle.scale)
+            color: VLCStyle.redesign.color("#090909", "#dedede")
+            clip: true
+
+            Accessible.role: Accessible.ProgressBar
+            Accessible.name: progressDialog.text
 
             Rectangle {
-                color: questionDialog.colorContext.bg.primary
-                anchors.fill: parent
-                anchors.leftMargin: VLCStyle.margin_xxsmall
-                anchors.rightMargin: VLCStyle.margin_xxsmall
+                id: progressFill
 
-                Widgets.TextToolButton {
-                    anchors.right: parent.right
-                    focus: true
-                    visible: text !== ""
-                    text: progressDialog.cancelTxt
+                height: parent.height
+                radius: parent.radius
+                color: VLCStyle.redesign.accent
+                width: progressDialog.interderminate ? parent.width * 0.3
+                                                     : parent.width * Math.max(0, Math.min(1, progressDialog.position))
+                x: LayoutMirroring.enabled && !progressDialog.interderminate ? parent.width - width : 0
 
-                    onClicked: {
-                        vlcDialog.dismiss(progressDialog.dialogId)
-                        progressDialog.dialogId = null
-                        progressDialog.close()
+                SequentialAnimation on x {
+                    running: progressDialog.visible && progressDialog.interderminate
+                    loops: Animation.Infinite
+                    NumberAnimation {
+                        from: -progressFill.width
+                        to: progressWell.width
+                        duration: 1200
+                        easing.type: Easing.InOutQuad
                     }
                 }
             }
         }
     }
 
-    ModalDialog {
+    Widgets.RedesignDialog {
         id: questionDialog
+
+        objectName: "vlcQuestionDialog"
 
         //use var here as DialogId is a QGadget and passed by value
         property var dialogId: null
-        property alias text: content.text
-        property alias cancelTxt: cancel.text
-        property alias action1Txt: action1.text
-        property alias action2Txt: action2.text
+        property string text: ""
+        property string cancelTxt: ""
+        property string action1Txt: ""
+        property string action2Txt: ""
 
-        rootWindow: root.bgContent
+        preferredWidth: VLCStyle.dp(560, VLCStyle.scale)
+        // Cancel on the left, the first action on the right (in the accent),
+        // the second one before it
+        cancelVisible: cancelTxt !== ""
+        cancelText: cancelTxt
+        acceptVisible: action1Txt !== ""
+        acceptText: action1Txt
+        extraText: action2Txt
 
-        onAboutToHide: restoreFocus()
-
-        contentItem: Text {
-            id: content
-            // a popup does not inherit the mirroring of the window (right to left)
-            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
-            focus: false
-            font.pixelSize: VLCStyle.fontSize_normal
-            color: questionDialog.colorContext.fg.primary
-            wrapMode: Text.WordWrap
-            horizontalAlignment: Text.AlignLeft
+        onAboutToHide: root.restoreFocus()
+        onAccepted: {
+            if (questionDialog.dialogId !== null) {
+                const id = questionDialog.dialogId
+                questionDialog.dialogId = null
+                vlcDialog.post_action1(id)
+            }
+        }
+        onExtraClicked: {
+            if (questionDialog.dialogId !== null) {
+                const id = questionDialog.dialogId
+                questionDialog.dialogId = null
+                vlcDialog.post_action2(id)
+            }
+            questionDialog.close()
+        }
+        // Cancel, the close button, Escape
+        onClosed: {
+            if (questionDialog.dialogId !== null) {
+                const id = questionDialog.dialogId
+                questionDialog.dialogId = null
+                vlcDialog.dismiss(id)
+            }
         }
 
-        footer: FocusScope {
-            focus: true
-            id: questionButtons
-            implicitHeight: VLCStyle.icon_normal
-
+        Widgets.RedesignDialogHeading {
             LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
             LayoutMirroring.childrenInherit: true
-
-            readonly property ColorContext colorContext: ColorContext {
-                palette: VLCStyle.palette
-                colorSet: ColorContext.Window
-            }
-
-            Rectangle {
-                color: questionDialog.colorContext.bg.primary
-                anchors.fill: parent
-                anchors.leftMargin: VLCStyle.margin_xxsmall
-                anchors.rightMargin: VLCStyle.margin_xxsmall
-
-                RowLayout {
-                    anchors.fill: parent
-
-                    Widgets.TextToolButton {
-                        id: cancel
-
-                        focus: true
-                        visible: cancel.text !== ""
-
-                        Layout.fillWidth: true
-
-                        // the row is mirrored right to left
-                        Navigation.leftItem: LayoutMirroring.enabled ? action1 : null
-                        Navigation.rightItem: LayoutMirroring.enabled ? null : action1
-                        Keys.priority: Keys.AfterItem
-                        Keys.onPressed: (event) => Navigation.defaultKeyAction(event)
-
-                        onClicked: {
-                            vlcDialog.dismiss(questionDialog.dialogId)
-                            questionDialog.dialogId = null
-                            questionDialog.close()
-                        }
-                    }
-
-                    Widgets.TextToolButton {
-                        id: action1
-
-                        visible: action1.text !== ""
-
-                        Layout.fillWidth: true
-
-                        Navigation.leftItem: LayoutMirroring.enabled ? action2 : cancel
-                        Navigation.rightItem: LayoutMirroring.enabled ? cancel : action2
-                        Keys.priority: Keys.AfterItem
-                        Keys.onPressed: (event) => Navigation.defaultKeyAction(event)
-
-                        onClicked: {
-                            vlcDialog.post_action1(questionDialog.dialogId)
-                            questionDialog.dialogId = null
-                            questionDialog.close()
-                        }
-                    }
-
-                    Widgets.TextToolButton {
-                        id: action2
-                        visible: action2.text !== ""
-
-                        Layout.fillWidth: true
-
-                        Navigation.leftItem: LayoutMirroring.enabled ? null : action1
-                        Navigation.rightItem: LayoutMirroring.enabled ? action1 : null
-                        Keys.priority: Keys.AfterItem
-                        Keys.onPressed: (event) => Navigation.defaultKeyAction(event)
-
-                        onClicked: {
-                            vlcDialog.post_action2(questionDialog.dialogId)
-                            questionDialog.dialogId = null
-                            questionDialog.close()
-                        }
-                    }
-                }
-            }
+            headingWraps: true
+            text: root.plainText(questionDialog.text)
         }
     }
 

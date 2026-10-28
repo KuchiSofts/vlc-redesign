@@ -116,7 +116,7 @@ SliderBar {
                         height: graph.peakHeight(peak)
                         y: (graph.height - height) / 2
                         radius: width / 2
-                        color: VLCStyle.redesign.color("#404040", "#9c9c9b")
+                        color: VLCStyle.redesign.color("#404040", "#929291")
                     }
                 }
             }

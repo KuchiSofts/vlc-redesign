@@ -342,7 +342,7 @@ FocusScope{
                 Widgets.DashedRect {
                     anchors.fill: parent
                     visible: VLCStyle.customizing
-                    color: VLCStyle.redesign.color("#6B6B6B", "#5a5a59")
+                    color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                 }
                 Widgets.CustomizeDragArea {
                     controlId: ControlListModel.MENU_BUTTON
@@ -382,7 +382,7 @@ FocusScope{
                 Widgets.DashedRect {
                     anchors.fill: parent
                     visible: VLCStyle.customizing
-                    color: VLCStyle.redesign.color("#6B6B6B", "#5a5a59")
+                    color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                 }
                 Widgets.CustomizeDragArea {
                     controlId: ControlListModel.BACK_BUTTON
@@ -403,7 +403,7 @@ FocusScope{
                     width: parent.width
                     height: VLCStyle.dp(28, VLCStyle.scale)
                     visible: VLCStyle.customizing
-                    color: VLCStyle.redesign.color("#6B6B6B", "#5a5a59")
+                    color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                 }
             }
 
@@ -428,8 +428,7 @@ FocusScope{
                 description: qsTr("Show %1 in the library").arg(folderName)
                 AccessibleCompat.id: "topBarFolderButton"
 
-                backgroundColor: VLCStyle.redesign.color(hovered || down ? VLCStyle.redesign.controlHoverBackground : "transparent",
-                                                         colorContext.bg.primary)
+                backgroundColor: VLCStyle.redesign.color(hovered || down ? VLCStyle.redesign.controlHoverBackground : "transparent")
                 radius: VLCStyle.redesign.controlRadius
 
                 // (the icon first: on the right in a right to left bar)
@@ -453,7 +452,7 @@ FocusScope{
                         anchors.baselineOffset: VLCStyle.redesign.textBaseline(
                             Math.round((parent.height - Math.round(1.2109375 * font.pixelSize)) / 2), font.pixelSize)
                         text: folderButton.folderName
-                        color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, theme.fg.primary)
+                        color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: VLCStyle.redesign.fontNormal
                     }
@@ -469,7 +468,7 @@ FocusScope{
                 Widgets.DashedRect {
                     anchors.fill: parent
                     visible: VLCStyle.customizing
-                    color: VLCStyle.redesign.color("#6B6B6B", "#5a5a59")
+                    color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                 }
                 Widgets.CustomizeDragArea {
                     controlId: ControlListModel.FOLDER_NAME_WIDGET
@@ -513,7 +512,7 @@ FocusScope{
             width: Math.round(centerTitleText.contentWidth + VLCStyle.dp(16, VLCStyle.scale))
             height: VLCStyle.dp(28, VLCStyle.scale)
             visible: VLCStyle.customizing
-            color: VLCStyle.redesign.color("#6B6B6B", "#5a5a59")
+            color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
 
             Widgets.CustomizeDragArea {
                 controlId: ControlListModel.FILE_NAME_WIDGET

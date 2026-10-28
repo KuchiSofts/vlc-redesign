@@ -41,7 +41,7 @@ ColumnLayout {
     signal edited(real value)
 
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
-    function c(value) { return VLCStyle.redesign.color(value, value) }
+    function c(value) { return VLCStyle.redesign.color(value) }
     function shown(value) { return Number(value * displayScale).toFixed(decimals) }
     function formatted(value) { return shown(value) + (unit.length ? " " + unit : "") }
 

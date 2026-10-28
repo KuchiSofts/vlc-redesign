@@ -29,13 +29,12 @@ Widgets.IconToolButton {
     font.pixelSize: VLCStyle.redesign.iconSize
     implicitWidth: VLCStyle.dp(30, VLCStyle.scale)
     implicitHeight: VLCStyle.dp(32, VLCStyle.scale)
-    color: VLCStyle.redesign.color(checked ? VLCStyle.redesign.accent : VLCStyle.redesign.textMuted,
-                                   colorContext.fg.primary)
+    color: VLCStyle.redesign.color(checked ? VLCStyle.redesign.accent : VLCStyle.redesign.textMuted)
     // Figma 177:98: the hover box is white at 6 % over the bar, 30 x 32 even
     // where the bar's row is lower (the box reaches over it)
     backgroundColor: !(hovered || down) ? "transparent"
                      : VLCStyle.palette.isDark ? Qt.rgba(1, 1, 1, 0.06)
-                     : VLCStyle.redesign.color(VLCStyle.redesign.controlHoverBackground, colorContext.bg.primary)
+                     : VLCStyle.redesign.color(VLCStyle.redesign.controlHoverBackground, "#9c9c9b")
     topInset: Math.min(0, (height - VLCStyle.dp(32, VLCStyle.scale)) / 2)
     bottomInset: topInset
     radius: VLCStyle.dp(4, VLCStyle.scale)

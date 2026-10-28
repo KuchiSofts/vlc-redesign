@@ -53,7 +53,7 @@ ColumnLayout {
             text: qsTr("Current output device")
             elide: Text.ElideRight
             horizontalAlignment: Text.AlignLeft
-            color: VLCStyle.redesign.color("#8F8F8F", "#7c7c7b")
+            color: VLCStyle.redesign.color("#8F8F8F", "#2e2e2e")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
         }
@@ -140,7 +140,7 @@ ColumnLayout {
         text: qsTr("Device changes affect only the current audio output. Apply keeps this selection while it remains active.")
         wrapMode: Text.WordWrap
         horizontalAlignment: Text.AlignLeft
-        color: VLCStyle.redesign.color("#8F8F8F", "#7c7c7b")
+        color: VLCStyle.redesign.color("#8F8F8F", "#2e2e2e")
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.dp(12, VLCStyle.scale)
     }

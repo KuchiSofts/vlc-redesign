@@ -87,6 +87,14 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Fixed
 
+- **Light theme: the classic windows' title bar matches the other dialogs.** The classic windows (the
+  ones from VLC's older interface, in the redesign's look) had a darker grey title bar (`#9C9C9B`) than the
+  redesign's own dialogs; it is the same light grey now (`#DEDEDE`). Nothing else looks different: the 228 places
+  where a part of the interface asked for its own light colour and the general light colours won were each checked
+  against the Figma *Player - Light* frame, which draws the general colour wherever it shows one (for example
+  *15 items* `#6B6B6B`, the times and the folder name `#2E2E2E`), so they now ask for that colour. A light colour a
+  part asks for now wins over the general ones, and `design/tools/check_qml.py` fails when one differs from them
+  without being listed. The decisions, with the Figma evidence: [design/light-theme.md](design/light-theme.md).
 - **The playback speed button can be added to the bar again** ([#9](https://github.com/KuchiSofts/vlc-redesign/issues/9)).
   Dropped on a bar in Customize Player, it left an empty slot that could be neither seen nor removed. The teletext
   button had the same fault. A control that ever fails to load now shows a placeholder that can be dragged out.

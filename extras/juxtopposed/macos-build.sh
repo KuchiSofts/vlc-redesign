@@ -164,6 +164,11 @@ if [ ! -d "$contrib/$HOST_TRIPLET/lib" ]; then
     fi
     if [ -n "$prebuilt" ] && make prebuilt PREBUILT_URL="$prebuilt" > "$logs/contrib-prebuilt.log" 2>&1; then
         echo "prebuilt: $prebuilt"
+        # The archive's pkg-config and libtool files name the SDK of the
+        # machine that built it (-isysroot .../MacOSX26.2.sdk): this one's
+        # instead, or the link finds no libm
+        find "$contrib/$HOST_TRIPLET/lib" \( -name '*.pc' -o -name '*.la' \) -type f -exec \
+            sed -E -i '' "s#/Applications/Xcode[^ ]*\.app/Contents/Developer/Platforms/MacOSX\.platform/Developer/SDKs/MacOSX[0-9.]*\.sdk#$SDKROOT#g" {} +
         run contrib-tools make -j"$jobs" tools
     else
         echo "contribs from source (no prebuilt archive for this tree): an hour or more"
@@ -193,21 +198,24 @@ if [ ! -f Makefile ] || [ "$root/configure" -nt Makefile ]; then
     # no Sparkle (its feed is VideoLAN's: it would offer VLC), libcurl of
     # macOS for the interface's online subtitles, artwork and update check
     # (the SDK has its headers but no pkg-config file)
+    # No ncurses (the terminal interface): the app has none, and the
+    # prebuilt ncurses names the SDK of VideoLAN's build machine
     run configure "$root/extras/package/macosx/configure.sh" \
         --build="$BUILD_TRIPLET" --host="$HOST_TRIPLET" \
         --with-contrib="$contrib/$HOST_TRIPLET" \
         --with-macosx-sdk="$SDKROOT" --with-macosx-version-min="$MIN_MACOS" \
         --disable-debug \
-        --disable-macosx --disable-sparkle --disable-skins2 \
+        --disable-macosx --disable-sparkle --disable-skins2 --disable-ncurses \
         --enable-qt --enable-nls \
         QMAKE6="$qtdir/bin/qmake6" \
         QT_LIBCURL_CFLAGS="-I$SDKROOT/usr/include" QT_LIBCURL_LIBS="-lcurl"
 fi
-grep -q '^ENABLE_QT_TRUE = $' Makefile || die "configure turned the Qt interface off (see $logs/configure.log)"
-if grep -q '^ENABLE_MACOSX_UI_TRUE = $' Makefile; then
+# (config.log: what configure decided, whatever the Makefile's spacing)
+grep -q "^ENABLE_QT_TRUE=''" config.log || die "configure turned the Qt interface off (see $logs/configure.log)"
+if grep -q "^ENABLE_MACOSX_UI_TRUE=''" config.log; then
     die "the macosx interface is still enabled: it would win over Qt"
 fi
-grep -q '^HAVE_QT_LIBCURL_TRUE = $' Makefile || echo "warning: no libcurl: no online subtitles, artwork or update check"
+grep -q "^HAVE_QT_LIBCURL_TRUE=''" config.log || echo "warning: no libcurl: no online subtitles, artwork or update check"
 
 # ---------------------------------------------------------------------------
 step "Build"
@@ -287,6 +295,10 @@ run macdeployqt "$qtdir/bin/macdeployqt" "$app" \
     -always-overwrite -verbose=1
 [ -d "$contents/Frameworks/QtQuick.framework" ] || die "macdeployqt did not deploy Qt Quick (see $logs/macdeployqt.log)"
 [ -f "$contents/PlugIns/platforms/libqcocoa.dylib" ] || die "no Qt cocoa platform plugin"
+# The SQL drivers come along with Qt's other plugins, and the Mimer one
+# links a library of the build machine (/usr/local/lib): the interface
+# uses no Qt SQL (the media library is VLC's), so none of them ships
+rm -rf "$contents/PlugIns/sqldrivers"
 
 # The bundle's binaries find their libraries in it, never in the build
 # folders or in Qt's download: every reference to one of them becomes
@@ -369,6 +381,9 @@ sign_code() {
 if VLC_LIB_PATH="$contents/Frameworks" "$build/vlc/bin/vlc-cache-gen" "$contents/Frameworks/plugins" \
         > "$logs/cache-gen.log" 2>&1; then
     echo "plugin cache: $(du -h "$contents/Frameworks/plugins/plugins.dat" | cut -f1)"
+    # a file among code: signed too, as upstream's codesign.sh does, or
+    # the app's signature finds it unsigned
+    sign_code "$contents/Frameworks/plugins/plugins.dat" >> "$logs/sign.log" 2>&1
 else
     echo "warning: no plugin cache (made at the first start)"
     rm -f "$contents/Frameworks/plugins/plugins.dat"

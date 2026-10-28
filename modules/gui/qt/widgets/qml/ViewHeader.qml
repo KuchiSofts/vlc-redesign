@@ -94,7 +94,7 @@ T.Pane {
             Layout.preferredHeight: Math.round(1.2109375 * font.pixelSize)
 
             elide: Text.ElideRight
-            color: VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, theme.fg.primary)
+            color: VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, "#4d4d4d")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(20, VLCStyle.scale)
             verticalAlignment: Text.AlignTop

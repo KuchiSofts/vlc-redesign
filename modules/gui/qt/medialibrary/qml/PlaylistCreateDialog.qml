@@ -151,7 +151,7 @@ Widgets.RedesignDialog {
                 border.width: VLCStyle.dp(2, VLCStyle.scale)
                 border.color: (thumbnail.visualFocus || thumbnailDrop.containsDrag)
                               ? VLCStyle.redesign.focusColor
-                              : VLCStyle.redesign.color("#191919", "#c4c4c3", root.darkTheme)
+                              : VLCStyle.redesign.color("#191919", "#ababaa", root.darkTheme)
             }
             contentItem: Item {
                 Image {
@@ -272,7 +272,7 @@ Widgets.RedesignDialog {
                     text: root.files.length === 0
                           ? qsTr("Drag files into the box or click here to select files.")
                           : qsTr("%1 file selected", "%1 files selected", root.files.length).arg(root.files.length)
-                    color: VLCStyle.redesign.color(VLCStyle.redesign.textDisabled, "#7c7c7b", root.darkTheme)
+                    color: VLCStyle.redesign.color(VLCStyle.redesign.textDisabled, "#929291", root.darkTheme)
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                     verticalAlignment: Text.AlignTop

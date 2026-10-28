@@ -629,8 +629,9 @@ Colors colors(bool dark, const QColor &accent)
         c.handle = QColor(0x8E, 0x8E, 0x8D);
     }
     c.muted = QColor(0x6B, 0x6B, 0x6B);
-    // "Dark/BG/B2" of the dialogs' title bar (RedesignDialog.qml)
-    c.titleBar = dark ? QColor(0x09, 0x09, 0x09) : QColor(0x9C, 0x9C, 0x9B);
+    // "Dark/BG/B2" of the dialogs' title bar, as RedesignDialog.qml draws it
+    // (#DEDEDE in the light theme, Figma "Player - Light" B2)
+    c.titleBar = dark ? QColor(0x09, 0x09, 0x09) : QColor(0xDE, 0xDE, 0xDE);
     c.outline = QColor(0x40, 0x40, 0x40);
     c.handleHover = QColor(0x6B, 0x6B, 0x6B);
 

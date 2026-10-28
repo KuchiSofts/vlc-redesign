@@ -125,6 +125,8 @@ private:
     void setProgress(double progress);
     void onRelease(int status, const QByteArray &body);
     void withChecksum(const QString &assetName, std::function<void(const QString &)> next);
+    void useChecksums(const QByteArray &sums, const QString &assetName,
+                      const std::function<void(const QString &)> &next);
     void downloadDelta(const QString &expectedSha256);
     void downloadInstaller(const QString &expectedSha256);
     void launchInstaller(const QString &path);
@@ -163,5 +165,7 @@ private:
     QString m_deltaName;
     qint64 m_deltaSize = 0;
     QString m_sumsUrl;
+    // its signature (SHA256SUMS.txt.sig), from the first signed release on
+    QString m_sigUrl;
     QString m_error;
 };

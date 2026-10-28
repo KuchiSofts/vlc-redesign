@@ -404,8 +404,7 @@ Widgets.PageExt {
                         horizontalAlignment: Text.AlignLeft
                         elide: Text.ElideMiddle
                         color: card.hovered ? VLCStyle.redesign.accent
-                                            : VLCStyle.redesign.color(card.played ? "#6B6B6B" : VLCStyle.redesign.textSecondary,
-                                                                      card.played ? "#5a5a59" : "#4d4d4d")
+                                            : VLCStyle.redesign.color(card.played ? "#6B6B6B" : VLCStyle.redesign.textSecondary)
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                         // the text box of the design (17 px) centred, on a whole pixel;
@@ -501,8 +500,7 @@ Widgets.PageExt {
                         elide: Text.ElideRight
                         // #6B6B6B once played
                         color: card.hovered ? VLCStyle.redesign.accent
-                                            : VLCStyle.redesign.color(card.played ? "#6B6B6B" : VLCStyle.redesign.textSecondary,
-                                                                      card.played ? "#5a5a59" : "#4d4d4d")
+                                            : VLCStyle.redesign.color(card.played ? "#6B6B6B" : VLCStyle.redesign.textSecondary)
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
                         verticalAlignment: Text.AlignTop
@@ -547,7 +545,7 @@ Widgets.PageExt {
             visible: grid.count === 0
             text: folderModel.searchPattern !== "" ? qsTr("No media matches the search")
                                                    : qsTr("No media in this folder")
-            color: VLCStyle.redesign.color("#6B6B6B", "#4d4d4d")
+            color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.redesign.fontMedium
         }

@@ -192,7 +192,7 @@ T.Control {
             return ""
         }
 
-        color: VLCStyle.redesign.color(VLCStyle.redesign.windowBackground, theme.fg.primary, theme.palette?.isDark ?? VLCStyle.darkPalette.isDark)
+        color: VLCStyle.redesign.color(VLCStyle.redesign.windowBackground, "#c2c2c1", theme.palette?.isDark ?? VLCStyle.darkPalette.isDark)
 
         font.pixelSize: VLCStyle.redesign.iconSize
 
@@ -254,7 +254,7 @@ T.Control {
             radius: VLCStyle.redesign.controlRadius
             // Figma "play" type=pause: a grey pill while playing
             color: root._redesignPlaying
-                   ? VLCStyle.redesign.color("#6B6B6B", "#9c9c9b", theme.palette?.isDark ?? VLCStyle.darkPalette.isDark)
+                   ? VLCStyle.redesign.color("#6B6B6B", "#6b6b6b", theme.palette?.isDark ?? VLCStyle.darkPalette.isDark)
                    : VLCStyle.redesign.color(VLCStyle.redesign.accent, theme.accent, theme.palette?.isDark ?? VLCStyle.darkPalette.isDark)
             opacity: state === "diminished" ? 0.75 : 1
         }

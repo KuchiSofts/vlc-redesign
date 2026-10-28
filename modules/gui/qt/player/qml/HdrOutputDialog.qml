@@ -60,7 +60,7 @@ Controls.Popup {
                 height: parent.height
                 horizontalAlignment: Text.AlignLeft
                 text: output.selectedIndex >= 0 ? output.choices[output.selectedIndex].label : qsTr("HDR unavailable")
-                color: root.c("#8F8F8F", "#4d4d4d")
+                color: root.c("#8F8F8F", "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: root.px(14)
                 verticalAlignment: Text.AlignVCenter
@@ -141,7 +141,7 @@ Controls.Popup {
                             contentItem: Text {
                                 text: choice.modelData.label
                                 opacity: row.enabled ? 1 : 0.45
-                                color: root.c("#8F8F8F", "#4d4d4d")
+                                color: root.c("#8F8F8F", "#2e2e2e")
                                 font.family: VLCStyle.redesign.fontFamily
                                 font.pixelSize: root.px(14)
                                 horizontalAlignment: Text.AlignLeft
@@ -161,7 +161,7 @@ Controls.Popup {
             text: output.message
             wrapMode: Text.WordWrap
             horizontalAlignment: Text.AlignLeft
-            color: root.c("#6B6B6B", "#4d4d4d")
+            color: root.c("#6B6B6B", "#6b6b6b")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: root.px(12)
         }

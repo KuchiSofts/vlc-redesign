@@ -44,7 +44,7 @@ T.MenuItem {
     readonly property bool _hasDuo: _icon !== "" && _duoIcons.indexOf(_icon) >= 0
     // Figma menus: labels 14 #8F8F8F (hovered too), shortcuts 14 #6B6B6B
     readonly property color _textColor: VLCStyle.redesign.color(
-        enabled ? VLCStyle.redesign.textMuted : VLCStyle.redesign.textDisabled, "#2e2e2e")
+        enabled ? VLCStyle.redesign.textMuted : VLCStyle.redesign.textDisabled)
 
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
                             implicitContentWidth + leftPadding + rightPadding)
@@ -69,7 +69,7 @@ T.MenuItem {
             opacity: root.enabled ? 1 : 0.4
             source: !root._hasDuo ? ""
                     : SVGColorImage.colorize("qrc:///redesign/duo/" + root._icon + ".svg")
-                                   .color1(VLCStyle.redesign.color("#8F8F8F", "#5A5A59"))
+                                   .color1(VLCStyle.redesign.color("#8F8F8F", "#2e2e2e"))
                                    // Figma: Accent Dim, the full accent where
                                    // the icon has it (#00FFFF: video)
                                    .color2(VLCStyle.redesign.accent)
@@ -124,7 +124,7 @@ T.MenuItem {
             Layout.fillHeight: true
             visible: root.shortcutText !== "" && !root.subMenu
             text: root.shortcutText
-            color: VLCStyle.redesign.color(enabled ? "#6B6B6B" : VLCStyle.redesign.textDisabled, "#4d4d4d")
+            color: VLCStyle.redesign.color(enabled ? "#6B6B6B" : VLCStyle.redesign.textDisabled)
             font: label.font
             // the item is the text width rounded up: the text ends at the
             // row's padding as in the design (not up to 1 px before it)

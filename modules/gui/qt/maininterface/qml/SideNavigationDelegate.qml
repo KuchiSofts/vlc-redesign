@@ -131,7 +131,7 @@ T.ItemDelegate {
         // Figma "sidebar": the current page has its icon in the accent
         // color, no background; hovered and pressed items do
         color: VLCStyle.redesign.color(control.down || control.hovered ? VLCStyle.redesign.controlHoverBackground
-                                                                       : "transparent", theme.bg.primary)
+                                                                       : "transparent")
         border.color: visualFocus ? VLCStyle.redesign.color(VLCStyle.redesign.focusColor, theme.visualFocus) : "transparent"
 
         radius: control.radius
@@ -185,7 +185,7 @@ T.ItemDelegate {
                     if (VLCStyle.palette.isDark)
                         return control.imageSource
                     return SVGColorImage.colorize(control.imageSource)
-                                        .any({ "#8F8F8F": VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#5a5a59") }).uri()
+                                        .any({ "#8F8F8F": VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e") }).uri()
                 }
                 visible: source.toString().length > 0 && status === Image.Ready
                 opacity: control.enabled ? 1.0 : 0.4
@@ -217,8 +217,7 @@ T.ItemDelegate {
 
                 color: VLCStyle.redesign.color(!control.enabled ? VLCStyle.redesign.textDisabled
                                                                : control.checked ? VLCStyle.redesign.accent
-                                                                                 : VLCStyle.redesign.textMuted,
-                                             (control.highlighted || control.checked) ? theme.accent : theme.fg.primary)
+                                                                                 : VLCStyle.redesign.textMuted)
 
                 font.pixelSize: VLCStyle.redesign.iconSize
             }
@@ -251,8 +250,7 @@ T.ItemDelegate {
             // Figma: #C6C6C6 for the current page
             color: VLCStyle.redesign.color(!control.enabled ? VLCStyle.redesign.textDisabled
                                                            : control.checked ? "#C6C6C6"
-                                                                             : VLCStyle.redesign.textMuted,
-                                           control.checked ? theme.fg.secondary : theme.fg.primary)
+                                                                             : VLCStyle.redesign.textMuted)
 
             elide: Text.ElideRight
 

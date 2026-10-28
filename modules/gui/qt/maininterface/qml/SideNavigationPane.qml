@@ -120,12 +120,12 @@ T.Pane {
     }
 
     background: Rectangle {
-        color: VLCStyle.redesign.color(VLCStyle.redesign.windowBackground, theme.bg.primary)
+        color: VLCStyle.redesign.color(VLCStyle.redesign.windowBackground, "#c2c2c1")
         Rectangle {
             anchors.fill: parent
             anchors.margins: VLCStyle.margin_xsmall
             radius: VLCStyle.redesign.controlRadius
-            color: VLCStyle.redesign.color(VLCStyle.redesign.sidebarBackground, theme.bg.primary)
+            color: VLCStyle.redesign.color(VLCStyle.redesign.sidebarBackground, "#ababaa")
         }
     }
 

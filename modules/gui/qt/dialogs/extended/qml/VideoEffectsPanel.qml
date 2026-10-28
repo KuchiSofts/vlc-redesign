@@ -13,7 +13,7 @@ ColumnLayout {
     id: root
     required property var effects
     property int section: 0
-    function c(value) { return VLCStyle.redesign.color(value, value) }
+    function c(value) { return VLCStyle.redesign.color(value) }
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
 
     // The filters of each section, ONE panel each as the design groups them

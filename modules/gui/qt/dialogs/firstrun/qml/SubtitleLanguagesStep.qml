@@ -79,9 +79,9 @@ Item {
                 height: 46
                 code: root.primary
                 fontSize: 15
-                fieldColor: VLCStyle.redesign.color("#090909", "#c4c4c3")
-                borderColor: VLCStyle.redesign.color("#191919", "#9c9c9b")
-                textColor: VLCStyle.redesign.color("#eaeaea", "#1e1e1e")
+                fieldColor: VLCStyle.redesign.color("#090909", "#dedede")
+                borderColor: VLCStyle.redesign.color("#191919", "#ababaa")
+                textColor: VLCStyle.redesign.color("#eaeaea", "#2e2e2e")
                 mutedColor: VLCStyle.redesign.color("#6f6f6f", "#6b6b6b")
                 listColor: VLCStyle.redesign.color("#141414", "#b4b4b3")
                 onPicked: (code) => root.primaryRequested(code)
@@ -99,9 +99,9 @@ Item {
                 code: root.secondary
                 allowNone: true
                 fontSize: 15
-                fieldColor: VLCStyle.redesign.color("#090909", "#c4c4c3")
-                borderColor: VLCStyle.redesign.color("#191919", "#9c9c9b")
-                textColor: VLCStyle.redesign.color("#eaeaea", "#1e1e1e")
+                fieldColor: VLCStyle.redesign.color("#090909", "#dedede")
+                borderColor: VLCStyle.redesign.color("#191919", "#ababaa")
+                textColor: VLCStyle.redesign.color("#eaeaea", "#2e2e2e")
                 mutedColor: VLCStyle.redesign.color("#6f6f6f", "#6b6b6b")
                 listColor: VLCStyle.redesign.color("#141414", "#b4b4b3")
                 onPicked: (code) => root.secondaryRequested(code)

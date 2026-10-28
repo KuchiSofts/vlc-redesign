@@ -97,7 +97,7 @@ T.ProgressBar {
     property bool _currentChapterHovered: false
     property real _tooltipPosition: (Widgets.PointingToolTipAttached.instance?.pos.x ?? 0.0) / width
 
-    property color backgroundColor: redesign ? VLCStyle.redesign.color(VLCStyle.redesign.seekBackground, theme.bg.primary, theme.palette?.isDark ?? VLCStyle.darkPalette.isDark) : theme.bg.primary
+    property color backgroundColor: redesign ? VLCStyle.redesign.color(VLCStyle.redesign.seekBackground, "#dedede", theme.palette?.isDark ?? VLCStyle.darkPalette.isDark) : theme.bg.primary
     readonly property color progressColor: redesign ? VLCStyle.redesign.color(VLCStyle.redesign.seekFill, theme.fg.primary, theme.palette?.isDark ?? VLCStyle.darkPalette.isDark) : theme.fg.primary
     property real touchHandlerMargin: VLCStyle.touchHandlerMargin
 

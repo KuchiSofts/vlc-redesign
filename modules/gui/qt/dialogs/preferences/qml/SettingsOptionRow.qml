@@ -144,7 +144,7 @@ Item {
     signal colorRequested()
 
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
-    function c(value) { return VLCStyle.redesign.color(value, value) }
+    function c(value) { return VLCStyle.redesign.color(value) }
 
     // A height of the design for the row (48 for the skips, the buffers),
     // the top of its control (centred if undefined) and the baseline of the

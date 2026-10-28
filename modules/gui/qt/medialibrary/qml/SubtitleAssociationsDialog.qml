@@ -73,7 +73,7 @@ Widgets.RedesignDialog {
     }
 
     title: root.audio ? qsTr("Add Audio Tracks") : qsTr("Add Subtitles")
-    cardColor: VLCStyle.redesign.color("#0F0F0F", "#ABABAA")
+    cardColor: VLCStyle.redesign.color("#0F0F0F", "#c2c2c1")
     preferredWidth: VLCStyle.dp(1048, VLCStyle.scale)
     bodyHeight: VLCStyle.dp(632, VLCStyle.scale)
     bodyHorizontalPadding: 0
@@ -230,7 +230,7 @@ Widgets.RedesignDialog {
         elide: Text.ElideRight
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
-        color: VLCStyle.redesign.color("#969696", "#2e2e2e")
+        color: VLCStyle.redesign.color("#969696", "#4d4d4d")
         topPadding: VLCStyle.redesign.textBaseline(Math.round((boxHeight - Math.round(1.2109375 * font.pixelSize)) / 2),
                                                    font.pixelSize) - centeredMetrics.ascent
         FontMetrics {
@@ -264,8 +264,8 @@ Widgets.RedesignDialog {
 
         background: Rectangle {
             radius: VLCStyle.dp(6, VLCStyle.scale)
-            color: dropdown.hovered || dropdown.popup.visible ? VLCStyle.redesign.color("#1B1B1B", "#9c9c9b")
-                                                              : VLCStyle.redesign.color("#151515", "#b8b8b7")
+            color: dropdown.hovered || dropdown.popup.visible ? VLCStyle.redesign.color("#1B1B1B", "#ababaa")
+                                                              : VLCStyle.redesign.color("#151515", "#b5b5b4")
             border.width: dropdown.visualFocus ? 1 : 0
             border.color: VLCStyle.redesign.focusColor
         }
@@ -337,7 +337,7 @@ Widgets.RedesignDialog {
             }
             background: Rectangle {
                 radius: VLCStyle.dp(6, VLCStyle.scale)
-                color: VLCStyle.redesign.color("#191919", "#b8b8b7")
+                color: VLCStyle.redesign.color("#191919", "#ababaa")
                 border.width: 1
                 border.color: VLCStyle.redesign.color("#222222", "#9c9c9b")
             }
@@ -352,7 +352,7 @@ Widgets.RedesignDialog {
 
         Layout.preferredHeight: VLCStyle.dp(34, VLCStyle.scale)
         radius: VLCStyle.dp(6, VLCStyle.scale)
-        color: VLCStyle.redesign.color("#151515", "#b8b8b7")
+        color: VLCStyle.redesign.color("#151515", "#b5b5b4")
 
         // (anchored: from the right in a right to left layout)
         Image {
@@ -390,7 +390,7 @@ Widgets.RedesignDialog {
         clip: true
         selectByMouse: true
         enabled: !associations.busy
-        color: VLCStyle.redesign.color("#969696", "#2e2e2e")
+        color: VLCStyle.redesign.color("#969696", "#4d4d4d")
         selectionColor: VLCStyle.redesign.accentBackground
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
@@ -403,7 +403,7 @@ Widgets.RedesignDialog {
             width: parent.width
             visible: headerInput.length === 0 && !headerInput.activeFocus
             text: headerInput.placeholderText
-            color: VLCStyle.redesign.color(VLCStyle.redesign.textDisabled, "#7c7c7b")
+            color: VLCStyle.redesign.color(VLCStyle.redesign.textDisabled, "#929291")
             font: headerInput.font
             horizontalAlignment: Text.AlignLeft
             elide: Text.ElideRight
@@ -459,7 +459,7 @@ Widgets.RedesignDialog {
 
         background: Rectangle {
             radius: VLCStyle.dp(6, VLCStyle.scale)
-            color: fileRow.selected ? VLCStyle.redesign.color("#090909", "#c4c4c3")
+            color: fileRow.selected ? VLCStyle.redesign.color("#090909", "#dedede")
                  : fileRow.hovered ? VLCStyle.redesign.color("#141414", "#b8b8b7")
                  : "transparent"
             border.width: fileRow.visualFocus ? 1 : 0
@@ -554,8 +554,8 @@ Widgets.RedesignDialog {
 
                 background: Rectangle {
                     radius: VLCStyle.dp(6, VLCStyle.scale)
-                    color: folderButton.hovered ? VLCStyle.redesign.color("#1B1B1B", "#9c9c9b")
-                                                : VLCStyle.redesign.color("#151515", "#b8b8b7")
+                    color: folderButton.hovered ? VLCStyle.redesign.color("#1B1B1B", "#ababaa")
+                                                : VLCStyle.redesign.color("#151515", "#b5b5b4")
                     border.width: folderButton.visualFocus ? 1 : 0
                     border.color: VLCStyle.redesign.focusColor
                 }
@@ -815,9 +815,9 @@ Widgets.RedesignDialog {
                     Accessible.name: placeholderText
 
                     color: VLCStyle.redesign.color("#C6C6C6", "#2e2e2e")
-                    placeholderTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textDisabled, "#7c7c7b")
+                    placeholderTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textDisabled, "#929291")
                     selectionColor: VLCStyle.redesign.color(VLCStyle.redesign.accentBackground, "#dedede")
-                    selectedTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#191919")
+                    selectedTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                     selectByMouse: true
@@ -831,7 +831,7 @@ Widgets.RedesignDialog {
                         radius: VLCStyle.dp(6, VLCStyle.scale)
                         color: VLCStyle.redesign.color("#090909", "#dedede")
                         border.width: passwordField.border
-                        border.color: VLCStyle.redesign.color("#191919", "#c4c4c3")
+                        border.color: VLCStyle.redesign.color("#191919", "#ababaa")
                     }
 
                     // the placeholder, drawn by the style otherwise
@@ -887,7 +887,7 @@ Widgets.RedesignDialog {
             elide: Text.ElideNone
             visible: text.length > 0
             color: (associations.error.length > 0 || service.error.length > 0)
-                   ? VLCStyle.redesign.accent : VLCStyle.redesign.color("#6B6B6B", "#4d4d4d")
+                   ? VLCStyle.redesign.accent : VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
             text: {
                 if (associations.error.length > 0)
                     return associations.error

@@ -106,6 +106,10 @@ QtObject {
         readonly property color textDisabled: "#404040"
         readonly property color separator: "#222222"
         readonly property color border: "#373737"
+        // The 1 px frame of a window (the main window's, which the system
+        // draws: RedesignMenuStyle::windowBorder), around every dialog, menu
+        // and card opened over the interface (Widgets.RedesignWindowBorder)
+        readonly property color windowBorder: "#4C4A48"
         readonly property color focusColor: accent
         readonly property int topbarHeight: MainCtx.dp(40, vlc_style.scale)
         readonly property int sidebarWidth: MainCtx.dp(217, vlc_style.scale)
@@ -139,7 +143,7 @@ QtObject {
             "#222222": "#9c9c9b", "#eaeaea": "#2e2e2e", "#969696": "#4d4d4d",
             "#8f8f8f": "#2e2e2e", "#404040": "#929291", "#373737": "#8e8e8d",
             "#090909": "#dedede", "#151515": "#b5b5b4", "#6b6b6b": "#6b6b6b",
-            "#c6c6c6": "#2e2e2e"
+            "#c6c6c6": "#2e2e2e", "#4c4a48": "#4c4a48"
         })
 
         // "Increase text contrast" (Interface > Accessibility): the dim texts

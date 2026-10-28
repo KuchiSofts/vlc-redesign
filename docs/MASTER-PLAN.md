@@ -12,6 +12,18 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-10-28):
 
+- 🟡 **Window borders** (branch `feature/borders`): every QML dialog, menu, panel, dropdown list, tooltip and card
+  over the interface draws the main window's 1 px frame (`Widgets.RedesignWindowBorder`, token
+  `color.dark.windowBorder` / `color.light.windowBorder`, `#4C4A48`: what Windows 11 drew around the main window in
+  both themes), inside its outline and over a title bar that reaches the edges; the main window, the classic
+  windows, the QMenus and the "could not start" window get the same colour as DWMWA_BORDER_COLOR
+  (`RedesignMenuStyle::windowBorder`). Where the system draws no frame (Linux X11 and Wayland, macOS with the
+  interface's own title bar) the main window draws it itself (`MainInterface.qml`) and the widget menus paint it
+  (`PE_FrameMenu`, also on Windows 10). Checked 2026-10-29: Windows build (main window, main menu, sort menu, About,
+  Keyboard Shortcuts, Settings: `#4C4A48` in dark and light); Linux Qt 6.8 build under Xvfb/X11 (main window on
+  all four sides, main menu, sort menu, tooltips, the welcome card, dark and light). Not run: Wayland (same QML
+  path), macOS (CI only). Left: merge.
+
 - 🟡 **Final check before 0.3.2** (2026-10-28): VideoLAN's master merged to its latest (`32b160d9e9`), `feature/linux-pkg` and
   `feature/macos` merged; the redrawn tool windows looked at in build 10 (Media Statistics did not load: Canvas,
   fixed; Folder information: native path, no time-zone name); the Visualizer opens from Audio › Visualizations and its

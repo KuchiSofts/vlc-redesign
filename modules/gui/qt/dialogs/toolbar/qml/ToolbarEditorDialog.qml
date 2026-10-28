@@ -369,6 +369,11 @@ Controls.Popup {
                     }
                 }
             }
+
+            // the frame of the main window, over the title bar
+            Widgets.RedesignWindowBorder {
+                radius: panel.radius
+            }
         }
 
         // the same while the editor is open

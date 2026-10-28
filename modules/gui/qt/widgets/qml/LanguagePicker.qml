@@ -118,8 +118,9 @@ T.Button {
         background: Rectangle {
             radius: VLCStyle.dp(8, VLCStyle.scale)
             color: root.listColor
+            // the frame of the main window
             border.width: 1
-            border.color: root.borderColor
+            border.color: VLCStyle.redesign.color(VLCStyle.redesign.windowBorder)
         }
 
         contentItem: ColumnLayout {

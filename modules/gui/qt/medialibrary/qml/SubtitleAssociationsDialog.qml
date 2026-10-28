@@ -338,8 +338,9 @@ Widgets.RedesignDialog {
             background: Rectangle {
                 radius: VLCStyle.dp(6, VLCStyle.scale)
                 color: VLCStyle.redesign.color("#191919", "#ababaa")
+                // the frame of the main window
                 border.width: 1
-                border.color: VLCStyle.redesign.color("#222222", "#9c9c9b")
+                border.color: VLCStyle.redesign.color(VLCStyle.redesign.windowBorder)
             }
         }
     }

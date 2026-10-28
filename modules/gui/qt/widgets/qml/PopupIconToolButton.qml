@@ -108,6 +108,9 @@ Widgets.IconToolButton {
 
             // NOTE: The opacity should be stronger on a light background for readability.
             color: popupTheme.bg.primary.alpha(popupTheme.palette.isDark ? 0.8 : 0.96)
+
+            // the frame of the main window
+            RedesignWindowBorder { darkTheme: popupTheme.palette.isDark }
         }
     }
 

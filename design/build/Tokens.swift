@@ -62,6 +62,8 @@ public enum VLCTokens {
         public static let darkDividerBright = VLCColor(0x373737, alpha: 1)
         /// Settings warnings and errors (not a Figma style).
         public static let darkStatusWarning = VLCColor(0xE4A580, alpha: 1)
+        /// The 1 px frame of every window: what Windows 11 draws around the main window (the system accent, Show accent color on title bars and window borders), set on the main window, the classic windows and the menus (DWMWA_BORDER_COLOR) and drawn by every QML dialog, menu and card opened over the interface (RedesignWindowBorder.qml). Not a Figma style.
+        public static let darkWindowBorder = VLCColor(0x4C4A48, alpha: 1)
         /// Scroll bar handle of the classic (widget) dialogs. The QML Settings scroll bar keeps the Basic style's own colours in the dark theme.
         public static let darkScrollBarWidgetHandle = VLCColor(0x404040, alpha: 1)
         /// Hovered scroll bar handle of the classic dialogs (both themes).
@@ -106,6 +108,8 @@ public enum VLCTokens {
         public static let lightStatusWarning = VLCColor(0x7A1414, alpha: 1)
         /// Title bar of the classic (widget) dialogs in the light theme: color.light.bg.b2, as the QML dialogs draw theirs (design/light-theme.md).
         public static let lightTitleBarClassic = VLCColor(0xDEDEDE, alpha: 1)
+        /// The frame of every window in the light theme: Windows draws the same one around the main window in both themes.
+        public static let lightWindowBorder = VLCColor(0x4C4A48, alpha: 1)
         /// Settings scroll bar handle in the light theme (palette.mid of the Basic ScrollBar).
         public static let lightScrollBarHandle = VLCColor(0x6B6B6B, alpha: 1)
         /// Settings scroll bar handle, pressed, in the light theme (palette.dark).

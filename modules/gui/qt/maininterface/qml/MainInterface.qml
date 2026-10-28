@@ -439,4 +439,19 @@ Item {
             }
         }
     }
+
+    // The frame of the main window where the system draws none: the
+    // interface's own title bar (client-side decoration) on Linux, X11 and
+    // Wayland, and on macOS when chosen there. The same 1 px border as
+    // Windows 11 draws around it (RedesignMenuStyle::windowBorder) and as
+    // every dialog and menu over it; none maximized or full screen
+    Widgets.RedesignWindowBorder {
+        parent: g_mainInterface
+        visible: MainCtx.clientSideDecoration && !MainCtx.platformHandlesShadowsWithCSD()
+                 && MainCtx.intfMainWindow.visibility === Window.Windowed
+        radius: 0
+        antialiasing: false
+        // over the views and the shadow
+        z: 100
+    }
 }

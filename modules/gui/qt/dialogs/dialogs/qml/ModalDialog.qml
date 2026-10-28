@@ -96,6 +96,9 @@ Dialog {
 
             color: "black"
         }
+
+        // the frame of the main window
+        Widgets.RedesignWindowBorder { }
     }
 
     //FIXME use the right xxxLabel class

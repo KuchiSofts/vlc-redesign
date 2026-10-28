@@ -1078,8 +1078,10 @@ Tracks with checklists; a version number comes with the first published build.
 - 🟢 Memory: pages and panels opened 77 times, flat (303→308 MB); switching files grew 90 MB a minute (glibc arenas
   per thread), fixed in `bin/vlc.c` (two arenas): 30 min of files, panels and pages stay near 480–510 MB
 - 🟢 Wayland (headless Weston, native client, Qt's Wayland compositor for the video): play, pause, seek, quit, no
-  QML warning; 🟡 a strip of the desktop shows between the video and the right edge of the window (also in the
-  first Linux pass); WSLg's Wayland not checked by eye
+  QML warning; 🟡 without a GPU (software `wl_shm` output) the picture is drawn from the left at its own aspect,
+  not centred, and the bars are not filled: the desktop shows through on the right (upstream `wl_shm` ignores the
+  placement; the interface asks for the right area, measured). With a GPU the OpenGL output fills the area;
+  a real Wayland desktop with a GPU is still to check
 - 🟢 X11 CSD: drag to move, double-click to maximize and restore; 🟡 resizing from an edge under openbox with
   synthetic input moved the window instead (to check on a real desktop)
 - 🟡 Xvfb (no DRI3) can't show VA-API pictures directly: copied to software (1080p 84 % CPU with llvmpipe)

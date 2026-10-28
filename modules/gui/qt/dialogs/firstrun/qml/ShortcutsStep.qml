@@ -28,7 +28,9 @@ Item {
     // "Shift+s" reads SHIFT, S; "Left" ←; letters are capitals
     function keysOf(sequence) {
         const names = { "Left": "←", "Right": "→", "Up": "↑", "Down": "↓",
-                        "Shift": "SHIFT", "Ctrl": "CTRL", "Alt": "ALT", "Meta": "META" }
+                        "Shift": "SHIFT", "Ctrl": "CTRL", "Alt": "ALT", "Meta": "META",
+                        // VLC's hotkeys of macOS ("Command+...")
+                        "Command": "⌘" }
         // "+" itself is a key ("Ctrl++")
         const parts = sequence.replace(/\+\+$/, "+plus").split("+").filter(part => part.length > 0)
         return parts.map(part => part === "plus" ? "+"

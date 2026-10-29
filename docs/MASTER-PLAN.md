@@ -145,6 +145,19 @@ What is being worked on, updated as it changes (2026-10-28):
     on a page ~9 ms each.
   - 🟢 One table of labels for the four lists, and no rows for the hidden lists (an explicit condition): Settings
     112 → 92 ms freeze, 147 → 122 ms settled, 3 MB less (b199 → b200). Full report: [PERFORMANCE.md](PERFORMANCE.md).
+- 🟢 **Performance and memory pass 2 (2026-10-29, Live TV, soaks, CPU)**, details in [PERFORMANCE.md](PERFORMANCE.md):
+  - 🟢 Live TV guides read once into an index: guide ready 0.5–0.6 s after a start instead of 3.9 (216 MB guide;
+    5,891 public channels: 3.8 → 0.6 s), the start's CPU 4.9 → 1.1 s; the description file left at every start
+    (13 MB a guide) deleted; sources refreshed together (each guide read once, 6 → 4 readings on a cold start of
+    two sources); unreachable logos asked again after an hour.
+  - 🟢 The guide crashed VLC moving through the hours (3 of 3 runs): the answers' JavaScript callbacks were copied
+    and freed on the worker thread. Fixed; the guide asks for its rows at once, keeps its cells and draws them
+    without a clip each (16 moves: 5–6 → 3.4 s of CPU, freeze 220 → 70 ms; scrolling: render thread −25 %).
+  - 🟢 Soaks flat: 1 h of playback, 300 channel switches, 800 dialog openings (levels off at +5 MB), 203 page
+    switches, 40 theme switches (memory, handles, GDI/USER, threads). Idle CPU ~0 % (0.08–0.23 %); paused 0.9 %
+    is upstream's 80 ms redisplay (left). Zapping ~0.95 s is the provider's network (network caching changes nothing).
+  - ⚪ Open: Page Up/Down (and the digits) of the TV banner may be taken by VLC's hotkeys while a channel plays
+    (seen with posted keys only); the guide's fast scroll still keeps the render thread busy.
 - 🟢 **Casting (2026-10-25, build 202, fake Chromecast)**: a click on the casting screen plays or pauses (it did
   nothing), a double click toggles fullscreen, the wheel changes the volume (it did nothing); a subtitle changed
   while casting is noted in the top corner where reading starts ("Subtitles on the TV: …", 72 languages). Taking the

@@ -304,6 +304,10 @@ private:
     std::shared_ptr<IptvBridge> m_bridge;
     void* m_module = nullptr;
     QThreadPool m_pool;
+    // the functions waiting for an answer of the module, by number (on the
+    // thread of the interface only: see call())
+    QHash<quint64, std::function<void(const QJsonObject&)>> m_answers;
+    quint64 m_lastCall = 0;
 
     QVariantList m_sources;
     bool m_busy = false;
@@ -315,6 +319,7 @@ private:
     int m_channelsRevision = -1;
     bool m_channelsLoading = false;
     bool m_channelsAgain = false;
+    QElapsedTimer m_loadTime;
     IptvChannelModel* m_channelModel = nullptr;
     IptvChannelModel* m_playerModel = nullptr;
 

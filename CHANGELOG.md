@@ -28,8 +28,9 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   (catch-up), *Watch from the Start* restarts the one on now, and a reminder tells when a programme starts. The
   channels and the guide update in the background and work offline; links and passwords stay in VLC's keystore.
   Live TV is an add-on of its own, on by default: *Live TV (IPTV) add-on* in Settings, General turns it off, the
-  installer can leave it out, and without it nothing of it shows. Settings, TV has its sources and options. See
-  [Live TV](https://github.com/KuchiSofts/vlc-redesign/wiki/Live-TV).
+  installer can leave it out, and without it nothing of it shows. Settings, TV has its sources and options. A guide
+  is read once into an index kept beside it: VLC starts with the guide ready in about half a second, even for a
+  guide of 200 MB. See [Live TV](https://github.com/KuchiSofts/vlc-redesign/wiki/Live-TV).
 - **Edit Sidebar.** Put the pages of the sidebar in your order (drag them, or the arrows), hide the ones you do
   not use, or reset them: right-click the sidebar, or Settings, Interface, Sidebar.
 - **Subtitles for films only.** A live TV channel or music shows no subtitle files, online search or sync; the

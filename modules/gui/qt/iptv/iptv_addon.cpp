@@ -411,6 +411,7 @@ void IptvAddon::load()
         m_bridge->object = obj;
         m_module = module;
     }
+    m_loadTime.start();
     sendOptions();
     call(QJsonObject { { QStringLiteral("op"), QStringLiteral("start") } }, nullptr);
     loadStatus();
@@ -451,12 +452,25 @@ void IptvAddon::call(const QJsonObject& request, std::function<void(const QJsonO
         return;
     QPointer<IptvAddon> self(this);
     std::shared_ptr<IptvBridge> bridge = m_bridge;
-    m_pool.start([self, bridge, request, done = std::move(done)]() {
+    // The function to call with the answer stays on this thread, kept by a
+    // number: it often holds JavaScript values (QJSValue), which the engine
+    // lets no other thread copy or free. Copied and freed on the worker,
+    // they crashed the interface while the guide scrolled.
+    quint64 id = 0;
+    if (done)
+    {
+        id = ++m_lastCall;
+        m_answers.insert(id, std::move(done));
+    }
+    m_pool.start([self, bridge, request, id]() {
         const QJsonObject answer = bridge->call(request);
-        if (!done || !self)
+        if (!id || !self)
             return;
-        QMetaObject::invokeMethod(self.data(), [self, done, answer]() {
-            if (self)
+        QMetaObject::invokeMethod(self.data(), [self, id, answer]() {
+            if (!self)
+                return;
+            const auto done = self->m_answers.take(id);
+            if (done)
                 done(answer);
         }, Qt::QueuedConnection);
     });
@@ -561,7 +575,33 @@ void IptvAddon::loadChannels()
             if (ok && revision != a->m_channelsRevision)
             {
                 a->m_channelsRevision = revision;
+                // the same rows (the guide came, a refresh changed nothing
+                // shown): kept, the lists keep their place and delegates
+                const bool sameRows = a->m_channelsLoaded && a->m_channels.size() == items->size()
+                    && std::equal(a->m_channels.cbegin(), a->m_channels.cend(), items->cbegin(),
+                                  [](const IptvChannelModel::Item& x, const IptvChannelModel::Item& y) {
+                                      return x.key == y.key && x.group == y.group && x.adult == y.adult
+                                             && x.name == y.name;
+                                  });
                 a->m_channels = std::move(*items);
+                if (a->m_loadTime.isValid() && !a->m_channels.isEmpty())
+                {
+                    msg_Dbg(a->m_intf, "Live TV: %d channels shown %lld ms after the add-on started",
+                            int(a->m_channels.size()), (long long)a->m_loadTime.elapsed());
+                    a->m_loadTime.invalidate();
+                }
+                if (sameRows)
+                {
+                    a->m_channelModel->nowNextChanged({});
+                    a->m_playerModel->nowNextChanged({});
+                    emit a->currentChannelChanged();
+                    if (a->m_channelsAgain)
+                    {
+                        a->m_channelsAgain = false;
+                        a->loadChannels();
+                    }
+                    return;
+                }
                 a->m_channelIndex.clear();
                 QVariantList groups;
                 QHash<QString, int> counts;

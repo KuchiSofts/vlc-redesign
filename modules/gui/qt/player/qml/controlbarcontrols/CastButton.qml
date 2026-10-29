@@ -233,6 +233,10 @@ RedesignIconButton {
                 focusPolicy: Qt.StrongFocus
                 text: qsTr("Show the video here too")
                 checked: root.manager.displayHere
+                // (casting to a Chromecast: it has no picture here, the
+                // note under it says why)
+                enabled: root.manager.displayHereAvailable
+                opacity: enabled ? 1 : 0.45
                 onToggled: root.manager.displayHere = checked
                 Accessible.name: text
 
@@ -328,6 +332,18 @@ RedesignIconButton {
             acceptedButtons: Qt.RightButton
             onTapped: (eventPoint) => row.hideRequested(eventPoint.position.x, eventPoint.position.y)
         }
+        // the arrows go from row to row as Tab does (and Space or Enter
+        // chooses one)
+        Keys.onDownPressed: (event) => {
+            const next = row.nextItemInFocusChain(true)
+            if (next)
+                next.forceActiveFocus(Qt.TabFocusReason)
+        }
+        Keys.onUpPressed: (event) => {
+            const previous = row.nextItemInFocusChain(false)
+            if (previous)
+                previous.forceActiveFocus(Qt.BacktabFocusReason)
+        }
         Keys.onMenuPressed: (event) => {
             if (!row.hideable)
                 return
@@ -369,6 +385,9 @@ RedesignIconButton {
                 spacing: 0
                 Text {
                     Layout.fillWidth: true
+                    // (a device's name in Latin letters on the side where
+                    // reading starts in Hebrew too, under its Hebrew rows)
+                    horizontalAlignment: Text.AlignLeft
                     text: row.name
                     color: row.selected ? VLCStyle.redesign.accent
                                         : VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")

@@ -12,6 +12,24 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-10-29):
 
+- 🟡 **macOS and Windows ARM64 ready for 0.4.0** (branch `feature/mac-arm-final`, 2026-10-29):
+  - 🟢 macOS unified title bar in code (`maininterface/macos_titlebar.cpp`): the system frame kept, its title bar
+    transparent and untitled, the content under it; the top bars start after the traffic lights; no redesign
+    window buttons on macOS; `qt-titlebar` off by default there too. Compiled for macOS for syntax only (Qt 6.8.3
+    headers, both `objc_msgSend` branches); 🔴 its first run on a Mac is the public CI at the upload.
+  - 🟢 macOS app: Live TV add-on required (`-t` without), 20+ translations, README, licences, credits and the fonts'
+    OFL in `Resources`, every Mach-O verified signed. `macos-smoke.sh` checks them plus the icon, the About badge,
+    the Live TV plugin loaded and the unified title bar, and captures the main window light and dark and About.
+  - 🟢 macOS CI: free on the public repository (every pull request and push to main); private only by hand, Apple
+    Silicon only, 40 minutes at most (about 150-250 of the 2,000 monthly minutes); none before 1 November.
+  - 🟢 Windows ARM64 checked statically (`ci/pe-check.py` on the integration build): 399 binaries all ARM64, every
+    import in the package or in Windows (Vulkan's loader from the graphics driver, as on x64), Qt and its QML built
+    in, About badge *Windows ARM64*, Live TV add-on, 100 translations, credits; 21 x64-only plugins are upstream's
+    (OpenGL, NVDEC/QSV/AMF, x86 SIMD, projectM), 2 ARM64-only (NEON/SVE deinterlace). No 0.4.0 ARM64 installer
+    built yet: the `.iss` installs the package's files plus the Live TV component.
+  - 🟢 `install-test-arm64` job (public repository, `windows-11-arm`): the installer made and installed silently,
+    every file checked, the ARM64 smoke test on the installed copy, screenshots of the main window and About,
+    uninstall. 🔴 Runs first at the upload.
 - 🟡 **Last desktop issues before 0.4.0** (branch `feature/leftovers`, 2026-10-29): Live TV's keys win over VLC's
   hotkeys while a channel plays (`MainCtx.keysBeforeHotkeys`; Page Up/Down, digits, Backspace, Enter, I; in
   Settings › Shortcuts, group *Live TV*); Backspace with an empty navigation history no longer ends VLC; the
@@ -55,8 +73,8 @@ What is being worked on, updated as it changes (2026-10-29):
   their `.dmg` and pass the 9 launch checks (signature, headless playback, the Qt interface loaded and playing,
   no QML warning, clean quit, no crash report); a screenshot shows the library on macOS. Seven fixes on the way
   (workflow env, configure checks, ncurses, prebuilt SDK paths, Qt SQL drivers, signing of the plugin cache and
-  other non-code files, an updater `#else`). Left: the window has both the system title bar and ours (a unified
-  title bar with the traffic lights in our top bar), the Intel job needs more than 75 minutes.
+  other non-code files, an updater `#else`). Left: the unified title bar (done in code in `feature/mac-arm-final`,
+  above) run on a Mac; the Intel job needs more than 75 minutes.
 - 🟡 **Window borders** (branch `feature/borders`): every QML dialog, menu, panel, dropdown list, tooltip and card
   over the interface draws the main window's 1 px frame (`Widgets.RedesignWindowBorder`, token
   `color.dark.windowBorder` / `color.light.windowBorder`, `#4C4A48`: what Windows 11 drew around the main window in
@@ -213,8 +231,8 @@ counted from this document's own tables and checklists (column *From*); ⚪ idea
 |-----------------|----------------------|---------|-------|----------------------------------------|
 | Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 91/97   | 93 %  | [§8](#8-next-release-030) checklists   |
 | Linux           | 🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 1/7     | 14 %  | [§9](#linux)                           |
-| macOS           | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/5     | 0 %   | [§9](#macos)                           |
-| Windows ARM64   | 🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜ | 1/3     | 33 %  | [§9](#windows-on-arm64)                |
+| macOS           | 🟩🟩🟩🟩⬜⬜⬜⬜⬜⬜ | 2/5     | 40 %  | [§9](#macos)                           |
+| Windows ARM64   | 🟩🟩🟩🟩🟩⬜⬜⬜⬜⬜ | 2/4     | 50 %  | [§9](#windows-on-arm64)                |
 | Android         | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/7     | 0 %   | [§9](#android-phones-tablets-tv)       |
 | Samsung TV      | 🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ | 2/7     | 28 %  | [§9](#samsung-smart-tv-tizen)          |
 | iPhone / iPad   | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/3     | 0 %   | [§9](#iphone-ipad-apple-tv)            |
@@ -1236,21 +1254,26 @@ Tracks with checklists; a version number comes with the first published build.
 ### macOS
 
 Started 2026-10-28 (branch `feature/macos`); the analysis, decisions and what is left:
-[`extras/juxtopposed/macos/README.md`](../extras/juxtopposed/macos/README.md). Not run on a Mac yet.
+[`extras/juxtopposed/macos/README.md`](../extras/juxtopposed/macos/README.md). Built and launched on GitHub's Macs
+(2026-10-28); the 0.4.0 checks run first at the upload.
 
-- 🟡 Native build on Apple Silicon and Intel: `extras/juxtopposed/macos-build.sh` (VideoLAN's prebuilt macOS
+- 🟢 Native build on Apple Silicon and Intel: `extras/juxtopposed/macos-build.sh` (VideoLAN's prebuilt macOS
   contribs of the newest upstream contrib commit, the official Qt 6.8.3 by aqtinstall — the contribs of macOS have
   no Qt —, `--disable-macosx --enable-qt` so the Qt interface is the only one, `VLC Redesign.app` with
   `macdeployqt`, every library found inside the bundle); two disk images, not one universal app (contribs per
   architecture; `lipo` later if wanted). The workflow `build-macos.yml` (`macos-14` arm64, `macos-15-intel`
   x86_64: GitHub retired `macos-13`) builds both on every pull request, uploads the `.dmg` and runs
-  `ci/macos-smoke.sh` (headless playback, the Qt interface for 10 s, no crash report, no QML warning);
-  `continue-on-error` until the first green run, which comes after the push
-- 🟡 Bundle `org.kuchisofts.vlcredesign` (its settings, library and caches apart from VLC's), macOS 12+, upstream's
-  file types imported with the rank *Alternate*, the icon from the redesign's logo (`macos/AppIcon.svg`)
+  `ci/macos-smoke.sh` (the bundle's signatures, icon, translations, Live TV plugin, About badge and credits;
+  headless playback, the Qt interface and its unified title bar, no crash report, no QML warning; screenshots light,
+  dark and About); free on the public repository, by hand only (Apple Silicon, 40 minutes) on a private one;
+  `continue-on-error` until the 0.4.0 checks pass once
+- 🟢 Bundle `org.kuchisofts.vlcredesign` (its settings, library and caches apart from VLC's), macOS 12+, upstream's
+  file types imported with the rank *Alternate*, the icon from the redesign's logo (`macos/AppIcon.svg`), the Live TV
+  add-on (Settings turns it off: a disk image has no components), the translations, the texts and licences
 - 🔴 Signed and notarized (decision 3): ad hoc until then (Gatekeeper: *Open Anyway* in Privacy & Security); the
   script already signs with the hardened runtime and notarizes when given a Developer ID
-- 🟡 Menu bar (a minimal native one: About, Preferences, Quit, open, help), the system title bar by default, ⌘
+- 🟡 Menu bar (a minimal native one: About, Preferences, Quit, open, help), a unified title bar (the traffic lights
+  in the redesign's top bar, `macos_titlebar.cpp`), ⌘
   hotkeys reach VLC as `Command+`, the CJK fonts of the interface language, the updater shows the release page and
   only for a release with this Mac's disk image (all in code, not run on a Mac); 🔴 media keys, Now Playing,
   VideoToolbox and the video in the window checked, the dock menu, in-app updates
@@ -1268,8 +1291,12 @@ Started 2026-10-28 (branch `feature/macos`); the analysis, decisions and what is
   (`ArchitecturesAllowed=arm64`, the same AppId); the updater takes the files of its own architecture only. Not run
   on ARM64 Windows yet; the package has no plugin cache when made here (made at the first start, or by Setup for an
   install for everyone)
-- 🔴 Tested on a Snapdragon PC or an ARM64 VM: `ci/arm64-smoke.ps1` (binaries, plugin cache, launch test) runs in
-  the Windows build workflow on `windows-11-arm` once the branch is pushed
+- 🟢 Checked statically (`ci/pe-check.py`, 2026-10-29): every binary ARM64, every import in the package or in
+  Windows, Qt and its QML built in, the About badge, the Live TV add-on, the translations, the credits; the
+  Windows build runs it on the ARM64 package
+- 🔴 Tested on ARM64 Windows: `ci/arm64-smoke.ps1` (binaries, plugin cache, launch test) and
+  `ci/arm64-install-test.ps1` (the installer installed, the smoke test on it, screenshots, uninstall) run in the
+  Windows build workflow on `windows-11-arm`, public repository only: at the upload
 
 ### Android (phones, tablets, TV)
 

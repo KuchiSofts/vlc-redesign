@@ -51,6 +51,45 @@ python extras/juxtopposed/release/release-check.py --release 0.4.0  # the releas
 7. `CREDITS.md`: everyone who reported, translated or contributed.
 8. `release-check.py`, then push.
 
+## At the upload: macOS and Windows ARM64
+
+macOS and Windows on ARM64 run only on GitHub's runners, which are free on the public repository. The private test
+repository counts macOS minutes ten times (2,000 free a month): there `build-macos.yml` runs only when started by
+hand, Apple Silicon only, within 40 minutes (about 150-250 minutes of the month), and the `windows-11-arm` jobs
+never run. Nothing is started there before the month's minutes allow it.
+
+After the push to the public repository, before the release is published:
+
+1. **macOS build** (`build-macos.yml`, both architectures): green, and in each `macos-logs-<arch>` artifact
+   `result.txt` has 0 failures, among them:
+   - `ok: the N binaries are signed` (N ≥ 300), `ok: icon AppIcon.icns`, `ok: N translations` (≥ 20);
+   - `ok: Live TV add-on (libiptv_plugin.dylib) loaded`;
+   - `ok: About badge "macOS Apple Silicon"` on arm64, `"macOS Intel"` on x86_64;
+   - `ok: designer credited (CREDITS.txt)`;
+   - `ok: unified title bar: the traffic lights take … px on the left`.
+2. **macOS screenshots** (same artifact): `main-light.png` and `main-dark.png` show one bar (the traffic lights at
+   the start of the redesign's top bar, the cone and ⋯ after them, nothing over them), the light and the dark
+   theme, the window's border and shadow; `about.png` shows About with its *macOS* badge and the Juxtopposed credit
+   (a `note:` instead when the runner refused System Events: open About by hand on a Mac then).
+3. **macOS disk images**: `vlc-redesign-X.Y.Z-macos-arm64.dmg` and `-macos-x86_64.dmg` with their `.sha256` in the
+   `vlc-redesign-macos-<arch>` artifacts go to the release; the notes say they are signed ad hoc (*Open Anyway*,
+   `extras/juxtopposed/macos/README.md` §4) and that Live TV is turned off in Settings, Startup.
+4. **macOS by hand, when a Mac is at hand** (the CI can't click): the top bar's buttons under the title bar's band
+   answer clicks; dragging the top bar moves the window, a double-click zooms; full screen and back keep one bar; a
+   restart keeps the window's size and place; *Show window decorations* brings the system's title bar back.
+5. **Windows ARM64 build** (`build-windows.yml`, job `winarm64`): `ARM64 binaries` and `ARM64 package check`
+   (`ci/pe-check.py`: every binary ARM64, every import found, Qt and QML built in, the badge, Live TV,
+   translations, credits) green.
+6. **Windows ARM64 on ARM64 Windows**: `launch-test-arm64` (plugin cache, window, quit, a clip played silently,
+   no QML warning) and `install-test-arm64` green; its artifact has `install-result.txt` with 0 failures (every
+   file of the package installed, Live TV installed, uninstalled), `main.png` and `about.png` (About with the
+   *Windows ARM64* badge and the credit).
+7. **Windows ARM64 release files**: `make-release.ps1 -Arch aarch64` on the release PC (`-winarm64.zip`,
+   `-winarm64-setup.exe`, `-winarm64-delta-from-*.vrdelta`, one `SHA256SUMS.txt` for both architectures), then
+   `ci/pe-check.py <package> --arch arm64` on the package it used.
+8. Once 1 and 6 have passed: `continue-on-error` off in `build-macos.yml`; the plan, the roadmap and
+   `platforms.yml` say macOS and Windows ARM64 run (and which checks were by hand).
+
 ## A release X.Y.Z
 
 1. Everything of *Before every upload*.

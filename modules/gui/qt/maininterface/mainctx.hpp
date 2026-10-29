@@ -206,6 +206,9 @@ class MainCtx : public QObject
     // the subtitles (the keys of "Scale up/down subtitles text"), elsewhere
     // it zooms the interface (the keys of qt-key-intf-zoom-in/out)
     Q_PROPERTY(QObject* subtitleWheelArea READ subtitleWheelArea WRITE setSubtitleWheelArea NOTIFY subtitleWheelAreaChanged FINAL)
+    // An item over the video that is not the video (the player's library
+    // beside it): the wheel with Ctrl over it zooms the interface
+    Q_PROPERTY(QObject* subtitleWheelExclusion READ subtitleWheelExclusion WRITE setSubtitleWheelExclusion NOTIFY subtitleWheelExclusionChanged FINAL)
     // a shortcut is being captured (Settings › Shortcuts): the wheel with
     // Ctrl goes to it, not to the zoom
     Q_PROPERTY(bool wheelCapture MEMBER m_wheelCapture NOTIFY wheelCaptureChanged FINAL)
@@ -502,6 +505,8 @@ public:
 
     QObject* keysBeforeHotkeys() const { return m_keysBeforeHotkeys; }
     QObject* subtitleWheelArea() const { return m_subtitleWheelArea; }
+    QObject* subtitleWheelExclusion() const { return m_subtitleWheelExclusion; }
+    void setSubtitleWheelExclusion(QObject *item);
     void setSubtitleWheelArea(QObject *item);
     void setKeysBeforeHotkeys(QObject* item);
 
@@ -641,6 +646,7 @@ protected:
     bool m_preferHotkeys = false;
     QPointer<QObject> m_keysBeforeHotkeys;
     QPointer<QObject> m_subtitleWheelArea;
+    QPointer<QObject> m_subtitleWheelExclusion;
     bool m_wheelCapture = false;
 
     int m_maxVolume = 125;
@@ -805,6 +811,7 @@ signals:
     void preferHotkeysChanged();
     void keysBeforeHotkeysChanged();
     void subtitleWheelAreaChanged();
+    void subtitleWheelExclusionChanged();
     void wheelCaptureChanged();
 
     void useGlobalShortcutsChanged( bool );

@@ -39901,6 +39901,23 @@ msgstr "Control de timp"
 msgid "Media Manager List"
 msgstr "Lista gestionarului media"
 
+#: modules/gui/qt/qt.cpp:352
+msgid "Zoom the interface in"
+msgstr "Mărește interfața"
+
+#: modules/gui/qt/qt.cpp:353
+msgid "Zoom the interface out"
+msgstr "Micșorează interfața"
+
+#: modules/gui/qt/player/qml/Player.qml:951
+#, no-c-format
+msgid "Subtitle size %1%"
+msgstr "Dimensiunea subtitrărilor %1%"
+
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:153
+msgid "Or turn the mouse wheel while holding Ctrl, Alt or Shift"
+msgstr "Sau rotiți rotița mouse-ului ținând apăsat Ctrl, Alt sau Shift"
+
 #~ msgid "Ok"
 #~ msgstr "OK"
 

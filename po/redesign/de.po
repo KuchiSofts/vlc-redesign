@@ -8659,3 +8659,20 @@ msgstr "Immer HDR ausgeben"
 #: modules/video_output/win32/direct3d11.cpp:86
 msgid "Generate HDR from SDR"
 msgstr "HDR aus SDR erzeugen"
+
+#: modules/gui/qt/qt.cpp:352
+msgid "Zoom the interface in"
+msgstr "Oberfläche vergrößern"
+
+#: modules/gui/qt/qt.cpp:353
+msgid "Zoom the interface out"
+msgstr "Oberfläche verkleinern"
+
+#: modules/gui/qt/player/qml/Player.qml:951
+#, no-c-format
+msgid "Subtitle size %1%"
+msgstr "Untertitelgröße %1%"
+
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:153
+msgid "Or turn the mouse wheel while holding Ctrl, Alt or Shift"
+msgstr "Oder das Mausrad drehen und dabei Ctrl, Alt oder Shift gedrückt halten"

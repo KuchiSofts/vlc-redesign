@@ -8405,3 +8405,20 @@ msgstr "હંમેશા HDR આઉટપુટ"
 #: modules/video_output/win32/direct3d11.cpp:86
 msgid "Generate HDR from SDR"
 msgstr "SDR માંથી HDR બનાવો"
+
+#: modules/gui/qt/qt.cpp:352
+msgid "Zoom the interface in"
+msgstr "ઇન્ટરફેસ મોટું કરો"
+
+#: modules/gui/qt/qt.cpp:353
+msgid "Zoom the interface out"
+msgstr "ઇન્ટરફેસ નાનું કરો"
+
+#: modules/gui/qt/player/qml/Player.qml:951
+#, no-c-format
+msgid "Subtitle size %1%"
+msgstr "ઉપશીર્ષકનું કદ %1%"
+
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:153
+msgid "Or turn the mouse wheel while holding Ctrl, Alt or Shift"
+msgstr "અથવા Ctrl, Alt અથવા Shift દબાવી રાખીને માઉસનું વ્હીલ ફેરવો"

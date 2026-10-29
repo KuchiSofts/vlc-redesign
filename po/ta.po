@@ -38836,6 +38836,23 @@ msgstr "நேரம் கட்டுப்பாடு"
 msgid "Media Manager List"
 msgstr ""
 
+#: modules/gui/qt/qt.cpp:352
+msgid "Zoom the interface in"
+msgstr "இடைமுகத்தைப் பெரிதாக்கு"
+
+#: modules/gui/qt/qt.cpp:353
+msgid "Zoom the interface out"
+msgstr "இடைமுகத்தைச் சிறிதாக்கு"
+
+#: modules/gui/qt/player/qml/Player.qml:951
+#, no-c-format
+msgid "Subtitle size %1%"
+msgstr "வசன அளவு %1%"
+
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:153
+msgid "Or turn the mouse wheel while holding Ctrl, Alt or Shift"
+msgstr "அல்லது Ctrl, Alt அல்லது Shift ஐ அழுத்திப் பிடித்தபடி சுட்டிச் சக்கரத்தைச் சுழற்றவும்"
+
 #~ msgid "Ok"
 #~ msgstr "சரி"
 

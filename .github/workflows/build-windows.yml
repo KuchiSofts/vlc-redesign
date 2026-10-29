@@ -58,10 +58,12 @@ jobs:
           mkdir -p out
           docker run --rm -u root -v vlc-build:/build vlc-win64-redesign chown videolan:videolan /build
           # the image's user is not the runner's: let it write the package
-          chmod 777 out
+          # (and the symbol maps)
+          mkdir -p symbols
+          chmod 777 out symbols
           docker run --rm \
-            -e CONTRIB_ARCHIVE="/cache/$CONTRIB" -e STRIP=1 \
-            -v "$PWD:/src:ro" -v "$PWD/cache:/cache:ro" -v "$PWD/out:/out" -v vlc-build:/build \
+            -e CONTRIB_ARCHIVE="/cache/$CONTRIB" -e STRIP=1 -e SYMBOLS=/symbols \
+            -v "$PWD:/src:ro" -v "$PWD/cache:/cache:ro" -v "$PWD/out:/out" -v "$PWD/symbols:/symbols" -v vlc-build:/build \
             vlc-win64-redesign sh -c 'cp /src/extras/juxtopposed/win64-docker.sh /tmp/build.sh && exec sh /tmp/build.sh -r'
           test -s out/vlc.exe
           test -s out/plugins/gui/libqt_plugin.dll
@@ -72,6 +74,16 @@ jobs:
         with:
           name: vlc-redesign-win64-${{ github.sha }}
           path: out
+          retention-days: ${{ github.event_name == 'pull_request' && 2 || 7 }}
+
+      # the function addresses of the binaries before they were stripped (see
+      # SYMBOLS in win64-docker.sh): with them, the offsets in a crash dump of
+      # the launch test name functions
+      - name: Upload the symbol maps
+        uses: actions/upload-artifact@v5
+        with:
+          name: vlc-redesign-win64-symbols-${{ github.sha }}
+          path: symbols
           retention-days: ${{ github.event_name == 'pull_request' && 2 || 7 }}
 
   # The package started and a clip played on Windows (a runner without a GPU
@@ -91,16 +103,18 @@ jobs:
           name: vlc-redesign-win64-${{ github.sha }}
           path: package
 
-      # a crash of vlc.exe leaves a minidump (Windows Error Reporting), uploaded
+      # a crash of vlc.exe leaves a full dump (Windows Error Reporting), uploaded
       # with the logs: a crash that happens on the runner and not elsewhere can
-      # still be read (the call stack, with the modules and their offsets)
+      # still be read (the call stacks with the modules and their offsets, and
+      # the heap: a minidump could not tell a freed object from a missing page;
+      # the vlc-redesign-win64-symbols artifact names the functions)
       - name: Keep crash dumps
         shell: pwsh
         run: |
           $key = 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps\vlc.exe'
           New-Item -Force $key | Out-Null
           New-ItemProperty -Force $key -Name DumpFolder -PropertyType ExpandString -Value "${{ runner.temp }}\vlc-launch-test\dumps" | Out-Null
-          New-ItemProperty -Force $key -Name DumpType -PropertyType DWord -Value 1 | Out-Null
+          New-ItemProperty -Force $key -Name DumpType -PropertyType DWord -Value 2 | Out-Null
           New-ItemProperty -Force $key -Name DumpCount -PropertyType DWord -Value 5 | Out-Null
 
       - name: Launch and play

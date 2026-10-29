@@ -1,5 +1,14 @@
 blank_issues_enabled: false
 contact_links:
+  - name: Ask a question
+    url: https://github.com/KuchiSofts/vlc-redesign/discussions/categories/q-a
+    about: How do I…? Questions and help go to Discussions, where others can answer and find them later.
+  - name: Report a security problem
+    url: https://github.com/KuchiSofts/vlc-redesign/security/policy
+    about: Never in a public issue. See how to report it privately.
+  - name: Translate on Weblate
+    url: https://hosted.weblate.org/engage/vlc-redesign/
+    about: Fix or add translations directly in the browser.
   - name: The official VLC media player
     url: https://www.videolan.org/vlc/
     about: Problems with the official VLC (not this redesign) go to VideoLAN.

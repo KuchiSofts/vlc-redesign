@@ -1,0 +1,118 @@
+# VLC Redesign 0.4.0
+
+<!-- DRAFT: not dated, not published. Before the upload: the date, the file table (release-notes.py writes it
+     with the checksums), the Android paragraph confirmed by the owner, the screenshots checked once more. -->
+
+## 🎨 Design by [Juxtopposed](https://www.youtube.com/@juxtopposed)
+
+Every screen of this interface was designed by **Juxtopposed**. ▶ **[Watch the video: *I Redesigned VLC After 25 Years*](https://www.youtube.com/watch?v=ERFeOgqk324)** · the ["VLC Redesign (Community)"](https://www.figma.com/community/file/1691465999134370980) Figma file, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) · Juxtopposed does not endorse this project.
+
+---
+
+Live TV, your own order of the sidebar, subtitles that read right in every language, sharp icons at every size,
+a frame around every window, and the first builds for Windows on ARM64, Linux and macOS. Every change, with its
+technical details, is in the [changelog](https://github.com/KuchiSofts/vlc-redesign/blob/main/CHANGELOG.md).
+
+## Highlights
+
+### Live TV
+
+![The TV page: the channels with their logos, numbers and groups, what is on and what is next](tv-page.png)
+
+Watch the channels of your own IPTV provider like on a TV box. **TV** in the sidebar lists them with their logos,
+numbers and groups, what is on now (with its progress) and what is next, your favourites and the ones watched last;
+**Guide** shows the programmes of every channel across the hours, with the line of now.
+
+- **Your sources**: a playlist link or file (M3U, its guide found in it), an Xtream Codes login (with its films and
+  series), a guide of your own (XMLTV, several merged), or one of the free, legal channel lists of the **catalog**
+  in a click. *Suggest a Service* proposes a new one.
+- **Like a TV box**: Page Up and Page Down change channel, type a number, Backspace goes back to the last channel,
+  Enter shows the channel list over the video, and a banner shows what is on at every switch.
+- **Catch-up**: past programmes play from the archive when the channel keeps one, *Watch from the Start* restarts
+  the one on now, and a reminder tells when a programme starts.
+- **Fast and private**: the guide is ready about half a second after VLC starts, even a guide of 200 MB; links and
+  passwords stay in VLC's keystore, and a channel zapped leaves nothing in the library or the history.
+- **An add-on**, on by default: *Live TV (IPTV) add-on* in Settings › General turns it off, and the installer can
+  leave it out. Without it nothing of it shows.
+
+![Settings › TV: the sources with their channels, the guide, the banner and the lists](settings-tv.png)
+
+How to add a source, the catalog and the keys: [Live TV](https://github.com/KuchiSofts/vlc-redesign/wiki/Live-TV)
+in the wiki.
+
+### The sidebar in your order
+
+Drag the pages of the sidebar into your order (or use the arrows), hide the ones you do not use, or reset them:
+right-click the sidebar, or *Settings › Interface › Sidebar*.
+
+### Subtitles that read right
+
+![The subtitles panel: the languages of the video, a subtitle downloaded from OpenSubtitles](tracks.png)
+
+- **Every language, whatever its encoding**: Hebrew, Arabic, Russian, Greek, Japanese, Chinese, Korean, Thai and
+  the rest are read right from old encodings too (Windows-1255, Shift-JIS…): 212 test files out of 212.
+- **Right-to-left lines** in the right order, with their punctuation where it belongs (SRT and ASS).
+- **Picture subtitles** (DVD, Blu-ray, DVB) stay smooth when the video is scaled.
+- **Subtitle lines on the seek bar**: thin marks show where the lines of the subtitle file are; hovering the bar
+  shows the line at that time.
+- **Online subtitles only for the right film**: a subtitle found online is loaded by itself only when it was made
+  for that very file or the title is sure; a guess from the file name alone waits in the list.
+- **Subtitles only for films**: a live channel or music shows no subtitle search or sync.
+
+### Sharp icons and a frame around every window
+
+![The ⋯ menu in the light theme: sharp icons, Suggest an idea and Report a problem](menu.png)
+
+Every icon is drawn from the design's SVG at the size it is shown: sharp at 100 to 200 % Windows scaling and when
+the interface is zoomed. Every dialog, menu, panel, list and tooltip has the thin frame of the main window, and text
+buttons are framed so they never melt into their dialog.
+
+### About, What's new, Suggest an idea, Report a problem
+
+![About: the Windows x64 badge, What's new in 0.4.0, the designer's credit](about.png)
+
+- **About** shows the system it runs on, *What's new in 0.4.0* and the credit of the design.
+- **What's new** after an update: the highlights, once, the first time VLC opens.
+- **Suggest an idea** and **Report a problem** at the end of the ⋯ menu: the GitHub form opens filled with what helps
+  (versions, Windows, graphics card, screens), never anything personal, and nothing is sent by VLC.
+
+### And more
+
+- **Follow the Windows accent color** (*Settings › Appearance*): the interface takes the accent of Windows, and
+  follows it when it changes.
+- **Every message and question in the redesign's look**, and the classic windows with the redesign's title bar;
+  *Go to Time*, *Plugins and extensions*, *Media Statistics* and *Folder information* redrawn.
+- **The mouse wheel changes the volume** over the video and over the slider, and the volume never reads "-100 %".
+- **Accessibility**: every button and field has a name for screen readers, the dialogs are named by their title,
+  and Tab moves through every field.
+
+## Platforms
+
+| Platform | In 0.4.0 |
+|---|---|
+| **Windows 10 and 11, x64** | Installer and portable zip, small updates from the last three versions |
+| **Windows on ARM64** | Installer and portable zip, built natively for ARM64 (first release; not yet run on ARM64 hardware by the project) |
+| **Linux** (x86_64) | <!-- owner: published or not --> `.deb`, `.rpm` and AppImage, built and tested by the Linux workflow |
+| **macOS** (Apple Silicon, Intel) | <!-- owner: published or not --> `.dmg`, ad-hoc signed (Gatekeeper asks once) |
+| **Android** | <!-- owner: confirm --> The phone app with the redesign is in progress (about 95 % of the phone screens); not part of this release's downloads |
+
+## Updating
+
+- From **0.2.4** or later: ⋯ → About → *Check for updates* downloads only what changed. From 0.2.3 or earlier, use
+  the installer.
+- **Signed checksums**: from 0.4.0 on, `SHA256SUMS.txt` is signed with the project's key
+  (`SHA256SUMS.txt.sig`), and the app checks it before it installs an update.
+
+<!-- release-notes.py adds the table of files with their SHA-256 here -->
+
+## Source code
+
+VLC Redesign is free software, GPL v2 or later. The source of these files is `vlc-redesign-0.4.0-source.tar.gz` on
+this page and the tag [`v0.4.0`](https://github.com/KuchiSofts/vlc-redesign/tree/v0.4.0); the libraries VLC uses and
+the written offer for their source: [SOURCE.md](https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/SOURCE.md).
+
+[CHANGELOG](https://github.com/KuchiSofts/vlc-redesign/blob/main/CHANGELOG.md) · [ROADMAP](https://github.com/KuchiSofts/vlc-redesign/blob/main/ROADMAP.md) · [Wiki](https://github.com/KuchiSofts/vlc-redesign/wiki)
+
+---
+
+**Unofficial build**, not affiliated with or endorsed by [VideoLAN](https://www.videolan.org/). *VLC* and the cone are VideoLAN trademarks. GPL v2 or later; source: the `v0.4.0` tag.

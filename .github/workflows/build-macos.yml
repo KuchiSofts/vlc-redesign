@@ -4,14 +4,30 @@
 # Builds VLC Redesign for macOS on GitHub's Macs, Apple Silicon and Intel
 # (extras/juxtopposed/macos-build.sh: VideoLAN's prebuilt contribs, Qt
 # 6.8.3, the Qt interface), uploads each disk image and starts it
-# (extras/juxtopposed/ci/macos-smoke.sh). The macOS port is starting: a
-# failure here never blocks a pull request (continue-on-error) until the
-# first builds are green (extras/juxtopposed/macos/README.md).
+# (extras/juxtopposed/ci/macos-smoke.sh: the bundle, the launch, the
+# unified title bar, screenshots light, dark and About). A failure never
+# blocks a pull request (continue-on-error) until the checks added for
+# 0.4.0 have passed once on GitHub's Macs (docs/RELEASE-CHECKLIST.md).
+#
+# Minutes: free on the public repository, where it runs on every pull
+# request and push to main. On a private one (the test repository) macOS
+# minutes count ten times and the free 2,000 a month go fast, so it runs
+# only when started by hand, Apple Silicon only, within 40 minutes: about
+# 15-25 minutes with Qt cached (150-250 of the month's minutes), the first
+# run (Qt downloaded) a few more. Intel builds take 60-75 minutes (600-750).
 name: macOS build
 
 on:
   pull_request:
+  push:
+    branches: [main]
   workflow_dispatch:
+    inputs:
+      arch:
+        description: 'Architectures (a private repository builds arm64 only)'
+        type: choice
+        options: [arm64, both, x86_64]
+        default: arm64
 
 concurrency:
   group: macos-build-${{ github.ref }}
@@ -23,20 +39,22 @@ permissions:
 jobs:
   macos:
     name: macOS ${{ matrix.arch }}
+    # public: always (free); private: by hand only (see the minutes above)
+    if: ${{ !github.event.repository.private || github.event_name == 'workflow_dispatch' }}
     strategy:
       fail-fast: false
       matrix:
-        include:
-          # Apple Silicon
-          - arch: arm64
-            runner: macos-14
-          # Intel: GitHub retired its macos-13 image (December 2025);
-          # macos-15-intel is its Intel image now
-          - arch: x86_64
-            runner: macos-15-intel
-    runs-on: ${{ matrix.runner }}
+        # both on the public repository and when chosen; arm64 alone on a
+        # private one
+        arch: ${{ fromJSON(github.event.repository.private && '["arm64"]'
+                           || (github.event_name == 'workflow_dispatch' && inputs.arch != 'both'
+                               && format('["{0}"]', inputs.arch))
+                           || '["arm64", "x86_64"]') }}
+    # Apple Silicon: macos-14; Intel: macos-15-intel (GitHub retired its
+    # macos-13 image in December 2025)
+    runs-on: ${{ matrix.arch == 'arm64' && 'macos-14' || 'macos-15-intel' }}
     continue-on-error: true
-    timeout-minutes: 360
+    timeout-minutes: ${{ github.event.repository.private && 40 || 360 }}
     env:
       BUILD_DIR: ${{ github.workspace }}/build-macos-${{ matrix.arch }}
       # (the runner context is not available here: the workspace)

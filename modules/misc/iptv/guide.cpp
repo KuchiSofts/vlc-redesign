@@ -370,7 +370,8 @@ Guide parseXmltv(QIODevice& device, const GuideFilter& filter)
                 else if (name == u"episode-num" && p.episode.isEmpty())
                 {
                     // "onscreen" (S01E02) reads as it is; xmltv_ns is
-                    // "season.episode.part", counted from 0
+                    // "season.episode.part", counted from 0; the other
+                    // systems are skipped (a guide gives several)
                     const QString system = xml.attributes().value(QLatin1String("system")).toString();
                     const QString text = xml.readElementText().simplified();
                     if (system == u"xmltv_ns")
@@ -383,8 +384,10 @@ Guide parseXmltv(QIODevice& device, const GuideFilter& filter)
                                             ? QStringLiteral("E%1").arg(episode)
                                             : QStringLiteral("S%1E%2").arg(season).arg(episode);
                     }
-                    else
+                    else if (system.isEmpty() || system == u"onscreen" || system == u"common")
                         p.episode = text;
+                    // the others are no episode to show: "original-air-date"
+                    // (19990101080000 +0000), "dd_progid", a provider's ids
                 }
                 else
                     xml.skipCurrentElement();

@@ -21,6 +21,7 @@
   </programme>
   <programme start="20261025200000 +0000" stop="20261025210000 +0000" channel="news.example">
     <title lang="en">Late Show</title>
+    <episode-num system="original-air-date">19990101080000 +0000</episode-num>
     <episode-num system="xmltv_ns">1.4.</episode-num>
   </programme>
   <programme start="20261025203000 +0300" stop="20261025213000 +0300" channel="ch42">

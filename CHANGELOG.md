@@ -60,7 +60,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   for the windows below. Going from file to file no longer makes VLC's memory grow by about 90 MB a minute
   (360 MB to 1 GB in 8 minutes): glibc kept the freed pictures of every thread; it now stays near 480 MB.
   An AV1 file no longer makes VLC quit on Ubuntu 24.04 with a recent Intel GPU: VA-API decoding of AV1 crashed
-  inside FFmpeg 6, so dav1d decodes AV1 there.
+  inside FFmpeg 6, so dav1d decodes AV1 there. On Wayland with Intel or AMD graphics the video was drawn from
+  the left with no black bars, the desktop showing through beside it; it is now centred over black.
 - **Smaller fixes:** idle HTTP stream clients time out (DLNA streams excepted), stopping a stalled network stream no
   longer hangs, the VU meter reads the whole signal, Lua scripts saved with a BOM load, a TS stream's clock no
   longer jumps when a track is removed, and more (the full list: the review report).

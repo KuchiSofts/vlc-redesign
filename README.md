@@ -36,6 +36,7 @@ The real VLC 4 engine and codecs, a new interface built screen by screen from th
 [![Latest release](https://img.shields.io/github/v/release/KuchiSofts/vlc-redesign?label=release&color=ff8800)](https://github.com/KuchiSofts/vlc-redesign/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/KuchiSofts/vlc-redesign/total?color=ff8800)](https://github.com/KuchiSofts/vlc-redesign/releases)
 ![Windows 10 and 11, 64-bit](https://img.shields.io/badge/Windows-10%20%7C%2011%20%C2%B7%2064--bit-0b0a09)
+[![Linux: AppImage, .deb, .rpm, Flatpak](https://img.shields.io/badge/Linux-AppImage%20%7C%20.deb%20%7C%20.rpm%20%7C%20Flatpak-0b0a09)](https://github.com/KuchiSofts/vlc-redesign/releases/latest)
 ![72 languages](https://img.shields.io/badge/languages-72-0b0a09)
 [![Translation status](https://hosted.weblate.org/widget/vlc-redesign/interface/svg-badge.svg)](https://hosted.weblate.org/engage/vlc-redesign/)
 [![License: GPL-2.0-or-later](https://img.shields.io/badge/license-GPL--2.0--or--later-0b0a09)](COPYING)

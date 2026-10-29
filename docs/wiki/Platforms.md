@@ -14,7 +14,7 @@ platform is kept in [`platforms.yml`](https://github.com/KuchiSofts/vlc-redesign
 |---|---|---|
 | **Windows 10 and 11, 64-bit (x64)** | **Available** | The installer and the portable zip, with small updates in the app: [Install and update](Install-and-Update) |
 | Windows on ARM64 | Planned (next) | The x64 build already runs on Windows 11 ARM64 under emulation |
-| Linux (x64) | Planned | Builds from the same source; the first milestones were checked on Linux, the latest work only on Windows |
+| Linux (x86_64) | 0.4.0 | .deb, .rpm, AppImage, Flatpak and a folder: [below](#linux-x86_64-from-040) |
 | Samsung Smart TV (Tizen) | Planned | A receiver for casting, not VLC itself |
 | macOS | Idea | |
 | Android (phones, tablets, TV) | Idea | |
@@ -29,6 +29,31 @@ platform is kept in [`platforms.yml`](https://github.com/KuchiSofts/vlc-redesign
 - **No graphics card needed**: it also runs in Windows Sandbox, decoding on the processor.
 - **On Windows 11 ARM64**, the x64 installer runs and installs (the installer accepts any x64-compatible Windows);
   Windows emulates it, which is slower. A native ARM64 build is the next step below.
+
+## Linux x86_64 (from 0.4.0)
+
+One build, five downloads; each installs next to the distribution's own `vlc` and replaces nothing of it:
+
+| Download | For | Install |
+|---|---|---|
+| `vlc-redesign_X.Y.Z_amd64.deb` (+ `vlc-redesign-livetv_X.Y.Z_amd64.deb`) | Ubuntu 24.04 and later, Debian 13 | `sudo apt install ./vlc-redesign_*.deb ./vlc-redesign-livetv_*.deb` |
+| `vlc-redesign-X.Y.Z-1.x86_64.rpm` (+ `vlc-redesign-livetv-X.Y.Z-1.x86_64.rpm`) | Fedora 40 and later | `sudo dnf install ./vlc-redesign-*.rpm` |
+| `vlc-redesign-X.Y.Z-x86_64.AppImage` | any distribution with glibc 2.38 or later (Arch, openSUSE Tumbleweed…) | `chmod +x` it and run it |
+| `vlc-redesign-X.Y.Z-x86_64.flatpak` | any distribution with Flatpak | `flatpak install --user vlc-redesign-X.Y.Z-x86_64.flatpak` (the KDE 6.8 runtime comes from Flathub) |
+| `vlc-redesign-X.Y.Z-linux-x86_64.tar.xz` | a folder to run from | unpack, run `vlc-redesign/vlc` |
+
+The .deb and .rpm put VLC in `/opt/vlc-redesign` and the command `vlc-redesign`; the menu entry is *VLC Redesign*.
+Older systems (Ubuntu 22.04, Debian 12: glibc 2.35 and 2.36) are refused by apt, and the AppImage and the folder
+say which glibc they need instead of starting.
+
+**Live TV is an add-on you can leave out**, as in the Windows installer:
+
+- .deb and .rpm: it is the package `vlc-redesign-livetv`. Leave its file out at installation, or remove it later
+  (`sudo apt remove vlc-redesign-livetv`, `sudo dnf remove vlc-redesign-livetv`): VLC then has no TV page, button or
+  setting, and nothing of Live TV is loaded.
+- AppImage, Flatpak and the folder are one file each: turn it off in *Settings › General › Live TV (IPTV) add-on*
+  (or start with `--no-iptv-enabled`); off, nothing of it is loaded and the TV page and button are gone.
+- Building from the source: `./configure --disable-iptv` leaves the add-on out of the build.
 
 ## What is planned, in this order
 

@@ -24,6 +24,8 @@ RedesignIconButton {
     AccessibleCompat.id: "barMenuButton"
 
     onClicked: mainMenu.toggleFrom(root, 0, root.height)
+    // open while its menu shows
+    active: mainMenu.opened
 
     Menus.MainMenu {
         id: mainMenu

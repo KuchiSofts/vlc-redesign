@@ -626,6 +626,7 @@ FocusScope {
             BarButton {
                 iconName: "lists"
                 tip: qsTr("Channels")
+                active: root.listOpen
                 onClicked: root.openList()
             }
         }
@@ -638,6 +639,9 @@ FocusScope {
         property string iconName
         property string glyph
         property string tip
+        // open: what it opens shows (the accent on a tint of it, as the
+        // buttons of the player's bar)
+        property bool active: false
         anchors.verticalCenter: parent ? parent.verticalCenter : undefined
         implicitWidth: root.px(30)
         implicitHeight: root.px(30)
@@ -648,8 +652,12 @@ FocusScope {
         T.ToolTip.delay: 650
         background: Rectangle {
             radius: root.px(6)
-            color: barButton.down || barButton.hovered ? VLCStyle.redesign.color(VLCStyle.redesign.controlHoverBackground)
-                                                       : "transparent"
+            color: barButton.active ? (barButton.down || barButton.hovered
+                                       ? Qt.tint(VLCStyle.redesign.accentBackground, Qt.rgba(1, 1, 1, 0.06))
+                                       : VLCStyle.redesign.accentBackground)
+                   : barButton.down || barButton.hovered ? VLCStyle.redesign.color(VLCStyle.redesign.controlHoverBackground)
+                   : "transparent"
+            Behavior on color { ColorAnimation { duration: 120 } }
         }
         contentItem: Item {
             Image {
@@ -660,7 +668,8 @@ FocusScope {
                 sourceSize: Qt.size(width, height)
                 source: barButton.iconName === "" ? ""
                         : SVGColorImage.colorize("qrc:///redesign/duo/" + barButton.iconName + ".svg")
-                                       .color1(VLCStyle.redesign.color(VLCStyle.redesign.textMuted))
+                                       .color1(barButton.active ? VLCStyle.redesign.accent
+                                                                : VLCStyle.redesign.color(VLCStyle.redesign.textMuted))
                                        .color2(VLCStyle.redesign.accent).uri()
             }
             Text {

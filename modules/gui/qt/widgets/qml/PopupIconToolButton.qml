@@ -40,6 +40,8 @@ Widgets.IconToolButton {
 
     // Settings
 
+    // open while its popup shows
+    active: popup.visible
     color: (popup.visible) ? control.colorContext.accent : control.colorContext.fg.primary
 
     // FIXME: We can't use upItem because a Popup is not an Item.

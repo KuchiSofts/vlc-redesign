@@ -249,12 +249,13 @@ InterfaceWindowHandler::InterfaceWindowHandler(qt_intf_t *_p_intf, MainCtx* main
             w->alert(0);
     });
 
+    // a whole step of the wheel taken (see eventFilter): the subtitles'
+    // size over the video, the interface's zoom elsewhere (Settings ›
+    // Shortcuts: Ctrl+wheel for both by default)
     connect(
-        &m_wheelAccumulator, &WheelToVLCConverter::wheelUpDown,
-        this, [this] (int steps, Qt::KeyboardModifiers modifiers) {
-            if (modifiers != Qt::ControlModifier)
-                return;
-            emit incrementIntfUserScaleFactor(steps > 0);
+        &m_wheelAccumulator, &WheelToVLCConverter::vlcWheelKey,
+        this, [this] (int vlcKey) {
+            m_mainCtx->wheelKeyAction(vlcKey, m_wheelPosition, true);
     });
 
     m_window->installEventFilter(this);
@@ -376,6 +377,18 @@ bool InterfaceWindowHandler::eventFilter(QObject*, QEvent* event)
             return true;
         }
 
+        // The keys of the subtitles' size (Ctrl+0...) while the hotkeys
+        // play the video: done by the interface, which shows the size (VLC's
+        // hotkeys would change it unseen); the keys given to the interface's
+        // zoom in Settings › Shortcuts: from anywhere, as Ctrl+wheel (not
+        // while a text field or a focused item takes the keys)
+        if (m_mainCtx->getUseGlobalShortcuts() && !focusedItemTakesKeys()
+            && m_mainCtx->takeSizeKey(qtEventToVLCKey(keyEvent), m_mainCtx->preferHotkeys()))
+        {
+            event->accept();
+            return true;
+        }
+
         if (applyKeyEvent(keyEvent) == false)
             return false;
 
@@ -390,11 +403,26 @@ bool InterfaceWindowHandler::eventFilter(QObject*, QEvent* event)
     case QEvent::Wheel:
     {
         QWheelEvent* wheelEvent = static_cast<QWheelEvent*>(event);
-        if (wheelEvent->modifiers() == Qt::ControlModifier)
+        // With a modifier, the wheel's key (its direction, up or down) may
+        // size the subtitles or zoom the interface: taken here, before the
+        // items and the video (a list scrolls with Shift, the hotkeys of
+        // VLC have the other keys of the wheel)
+        if ((wheelEvent->modifiers() & ~Qt::KeyboardModifiers(Qt::KeypadModifier)) != Qt::NoModifier)
         {
-            m_wheelAccumulator.wheelEvent(wheelEvent);
-            wheelEvent->accept();
-            return true;
+            QPoint delta = wheelEvent->angleDelta();
+            if (wheelEvent->inverted())
+                delta = -delta;
+            const int vertical = qAbs(delta.y()) >= qAbs(delta.x()) ? delta.y() : 0;
+            const int vlcKey = vertical == 0 ? 0
+                             : qtKeyModifiersToVLC(*wheelEvent)
+                               | (vertical > 0 ? KEY_MOUSEWHEELUP : KEY_MOUSEWHEELDOWN);
+            if (m_mainCtx->wheelKeyAction(vlcKey, wheelEvent->position(), false))
+            {
+                m_wheelPosition = wheelEvent->position();
+                m_wheelAccumulator.wheelEvent(wheelEvent);
+                wheelEvent->accept();
+                return true;
+            }
         }
         break;
     }

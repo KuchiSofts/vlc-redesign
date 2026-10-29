@@ -528,12 +528,14 @@ ColumnLayout {
             value: qsTr("%1%").arg(Player.subtitleTextScale)
             lowerName: qsTr("Smaller subtitles")
             higherName: qsTr("Larger subtitles")
-            lowerEnabled: Player.subtitleTextScale > 30
-            higherEnabled: Player.subtitleTextScale < 300
+            // the steps and the range of Ctrl+wheel over the video (10 near
+            // 100 %, 25 further, 25 to 500 %)
+            lowerEnabled: Player.subtitleTextScale > 25
+            higherEnabled: Player.subtitleTextScale < 500
             resetEnabled: Player.subtitleTextScale !== 100
-            onLower: Player.subtitleTextScale = Player.subtitleTextScale - 10
-            onHigher: Player.subtitleTextScale = Player.subtitleTextScale + 10
-            onReset: Player.subtitleTextScale = 100
+            onLower: Player.stepSubtitleTextScale(-1, false)
+            onHigher: Player.stepSubtitleTextScale(1, false)
+            onReset: Player.stepSubtitleTextScale(0, false)
         }
     }
 

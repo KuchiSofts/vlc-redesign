@@ -40,8 +40,10 @@ python extras/juxtopposed/release/release-check.py --release 0.4.0  # the releas
 
 1. Merge VideoLAN's master (`git fetch origin master`), build, and test what it touched: the controls of the bar,
    the dialogs, playback, the library, a UI tour without QML warnings. Write down the merged commit.
-2. New or changed texts: `potgen`, `msgmerge` for every catalog, translate the 72 languages, `msgfmt -c` for all,
-   then `weblate-sync.py export --upstream <merged VideoLAN commit>`.
+2. New or changed texts: a new file with texts goes into `po/POTFILES.in`; `potgen` (xgettext, plus the `.ui`
+   forms of `extras/juxtopposed/translations/ui-pot.py` merged by `msgcat --use-first`), `msgmerge` for every
+   catalog, translate the 72 languages, `msgfmt -c` for all, then
+   `weblate-sync.py export --upstream <merged VideoLAN commit>`.
 3. `CHANGELOG.md` `[Unreleased]`: every change, in the user's words, with its issue number (`[#9](…/issues/9)`).
 4. `ROADMAP.md`: what moved to done, what is next; `docs/MASTER-PLAN.md`: the **Now** section and the dashboard.
 5. `platforms.yml` changed? `python extras/juxtopposed/platforms/render.py` (README bar, table, `site/`).

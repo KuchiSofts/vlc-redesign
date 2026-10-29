@@ -161,6 +161,10 @@ debpkg() {
         libva-x11.so.2) echo libva-x11-2 ;;
         libva-wayland.so.2) echo libva-wayland2 ;;
         libvdpau.so.1) echo libvdpau1 ;;
+        libwayland-client.so.0) echo libwayland-client0 ;;
+        libwayland-cursor.so.0) echo libwayland-cursor0 ;;
+        libwayland-egl.so.1) echo libwayland-egl1 ;;
+        libwayland-server.so.0) echo libwayland-server0 ;;
         libudev.so.1) echo libudev1 ;;
         libsystemd.so.0) echo libsystemd0 ;;
         *) return 1 ;;

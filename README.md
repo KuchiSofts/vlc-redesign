@@ -195,6 +195,11 @@ the [wiki](https://github.com/KuchiSofts/vlc-redesign/wiki)**, and everything ne
 
 ## See it in action
 
+**One film per platform**, silent, every clip of the tour with a caption:
+[Windows 0.4.0](docs/media/films/vlc-redesign-0.4.0-windows.mp4) (2 min 37 s) ·
+[Linux and macOS](docs/media/films/vlc-redesign-0.4.0-linux-macos.mp4) (24 s, in progress) ·
+[Android](docs/media/films/vlc-redesign-0.4.0-android.mp4) (2 min 13 s, in testing).
+
 <table>
 <tr>
 <td width="50%" valign="top"><a href="docs/media/demo/tv-zapping.mp4"><img src="docs/media/demo/tv-zapping.gif" alt="Live TV: Page Up and Page Down change channel, and a banner shows what is on"></a><br><b>Live TV.</b> Change channel with Page Up and Page Down; the banner tells what is on.</td>

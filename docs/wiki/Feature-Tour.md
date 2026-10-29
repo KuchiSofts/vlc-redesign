@@ -19,6 +19,12 @@ to the page that explains the feature in full.
 
 Where each platform stands, with its requirements and files: [Platforms](Platforms).
 
+**The whole tour as one film per platform** (silent, 1920 × 1080, the clips at 1.5× speed with a caption each):
+
+| [![The Windows film](https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/films/windows.jpg)](https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/films/vlc-redesign-0.4.0-windows.mp4) | [![The Linux and macOS film](https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/films/linux-macos.jpg)](https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/films/vlc-redesign-0.4.0-linux-macos.mp4) | [![The Android film](https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/films/android.jpg)](https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/films/vlc-redesign-0.4.0-android.mp4) |
+|---|---|---|
+| **Windows**, 0.4.0: the 17 clips, 2 min 37 s (12.7 MB) | **Linux and macOS**, in progress: 24 s (1.0 MB) | **Android**, in testing: 9 clips, 2 min 13 s (3.8 MB) |
+
 **Media in the clips:** the Blender open movies *Sintel*, *Big Buck Bunny*, *Elephants Dream*, *Tears of Steel* and
 *Caminandes* (CC BY), music by Kevin MacLeod (incompetech.com, CC BY 4.0), the public, free Pluto TV channel list of
 the Live TV catalog, and a test Chromecast that runs on the recording PC (no real device). The subtitles of *Sintel*

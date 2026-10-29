@@ -3,13 +3,23 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 #
 # The launch test of a macOS build (the macOS build workflow; any Mac):
+#   0. the bundle: every Mach-O signed, the icon, the translations, the Live
+#      TV add-on (loaded by VLC: --list), the About badge of this Mac's
+#      processor ("macOS Apple Silicon" / "macOS Intel"), the designer's
+#      credit (CREDITS.txt, Juxtopposed);
 #   1. headless: a generated clip played to its end with the dummy
 #      interface, video and audio outputs;
-#   2. the Qt interface: the app started, still running after 10 s, then
-#      asked to quit over the rc interface; no QML warning in its log;
+#   2. the Qt interface: the app started, still running after 10 s, the
+#      unified title bar on its window (the traffic lights in the top bar),
+#      then asked to quit over the rc interface; no QML warning in its log;
 #   3. the Qt interface playing the clip (reported, not counted: a CI Mac
-#      may have no GPU for the video).
+#      may have no GPU for the video);
+#   4. screenshots, not counted (kept with the logs): the main window in
+#      the light and the dark appearance of macOS (the System theme follows
+#      it), and About opened from the application menu (System Events: the
+#      runner may refuse the accessibility).
 # A crash report of the app (~/Library/Logs/DiagnosticReports) fails it.
+# NO_IPTV=1: a build made without the Live TV add-on (macos-build.sh -t).
 #
 #   extras/juxtopposed/ci/macos-smoke.sh <VLC Redesign.app | vlc-redesign-*.dmg> [work dir]
 
@@ -48,6 +58,78 @@ exe=$app/Contents/MacOS/$(/usr/libexec/PlistBuddy -c 'Print :CFBundleExecutable'
 [ -x "$exe" ] || { echo "no executable in $app"; exit 1; }
 note "launch test of $app ($(uname -m), macOS $(sw_vers -productVersion))"
 codesign --verify --deep --strict "$app" && note "ok: signature" || fail "the signature does not verify"
+
+# 0. The bundle
+contents=$app/Contents
+plist() { /usr/libexec/PlistBuddy -c "Print :$1" "$contents/Info.plist" 2>/dev/null; }
+macho() { file -b "$1" | grep -q 'Mach-O'; }
+# every Mach-O signed on its own (a plugin, a Qt plugin, a helper)
+machos=0
+unsigned=
+while IFS= read -r -d '' f; do
+    macho "$f" || continue
+    machos=$((machos + 1))
+    codesign --verify --strict "$f" 2>/dev/null || unsigned="$unsigned ${f#"$contents"/}"
+done < <(find "$contents" -type f \( -perm -u+x -o -name '*.dylib' \) ! -path '*/_CodeSignature/*' -print0)
+if [ -z "$unsigned" ] && [ "$machos" -ge 300 ]; then
+    note "ok: the $machos binaries are signed"
+else
+    fail "$machos binaries, not signed:${unsigned:- (too few binaries)}"
+fi
+# the icon (the redesign's logo, AppIcon.svg)
+icon=$(plist CFBundleIconFile)
+icon=${icon%.icns}
+if [ -n "$icon" ] && [ "$(stat -f %z "$contents/Resources/$icon.icns" 2>/dev/null || echo 0)" -gt 20000 ]; then
+    note "ok: icon $icon.icns ($(( $(stat -f %z "$contents/Resources/$icon.icns") / 1024 )) KB)"
+else
+    fail "no app icon (CFBundleIconFile \"$icon\")"
+fi
+note "bundle: $(plist CFBundleIdentifier) $(plist CFBundleShortVersionString), macOS $(plist LSMinimumSystemVersion) or later"
+# the translations (po/, as in the Windows package)
+translations=$(find "$contents/Resources/share/locale" -name 'vlc.mo' 2>/dev/null | wc -l | tr -d ' ')
+[ "$translations" -ge 20 ] && note "ok: $translations translations" || fail "only $translations translations in Resources/share/locale"
+# the About badge of this processor, in the interface (a UTF-16 string of Qt)
+case $(uname -m) in
+    arm64) badge="macOS Apple Silicon"; other="macOS Intel" ;;
+    *) badge="macOS Intel"; other="macOS Apple Silicon" ;;
+esac
+has_text() {
+    python3 - "$1" "$2" <<'EOF'
+import sys
+data = open(sys.argv[1], 'rb').read()
+text = sys.argv[2]
+sys.exit(0 if text.encode('utf-16-le') in data or text.encode() in data else 1)
+EOF
+}
+qtplugin=$contents/Frameworks/plugins/libqt_plugin.dylib
+if has_text "$qtplugin" "$badge" && ! has_text "$qtplugin" "$other"; then
+    note "ok: About badge \"$badge\""
+else
+    fail "the About badge is not \"$badge\" alone"
+fi
+# the designer's credit (CC BY 4.0), with the app and in About
+if grep -q Juxtopposed "$contents/Resources/CREDITS.txt" 2>/dev/null; then
+    note "ok: designer credited (CREDITS.txt)"
+else
+    fail "no Resources/CREDITS.txt naming Juxtopposed"
+fi
+[ -f "$contents/Resources/licenses/Inter-OFL.txt" ] || fail "no licence of the Inter font (Resources/licenses)"
+# the Live TV (IPTV) add-on: there, and a plugin VLC loads
+if [ -z "$NO_IPTV" ]; then
+    if [ -f "$contents/Frameworks/plugins/libiptv_plugin.dylib" ]; then
+        if "$exe" --intf=dummy --no-qt-privacy-ask --list 2>/dev/null | grep -qwE '^ *iptv'; then
+            note "ok: Live TV add-on (libiptv_plugin.dylib) loaded"
+        else
+            fail "the Live TV add-on is in the app but VLC does not list the iptv module"
+        fi
+    else
+        fail "no Live TV add-on (Frameworks/plugins/libiptv_plugin.dylib)"
+    fi
+elif [ -f "$contents/Frameworks/plugins/libiptv_plugin.dylib" ]; then
+    fail "NO_IPTV: the Live TV add-on is in the app"
+else
+    note "ok: no Live TV add-on (NO_IPTV)"
+fi
 
 # A clip VLC reads without a decoder: 2 s of 320 x 240 YUV 4:2:0 at 25 fps
 # (Y4M), a bar moving across it
@@ -117,6 +199,13 @@ else
 fi
 grep -E 'using interface module "qt"' "$work/interface.log" > /dev/null \
     && note "ok: the Qt interface was loaded" || fail "the Qt interface was not loaded"
+# the unified title bar (maininterface/macos_titlebar.cpp): the traffic
+# lights in the redesign's top bar, the only bar of the window
+if line=$(grep -m 1 'unified title bar:' "$work/interface.log"); then
+    note "ok: ${line#*: }"
+else
+    fail "no unified title bar on the window (the system's title bar above the redesign's)"
+fi
 grep -E 'Qt check failed|cannot start any interface' "$work/interface.log" "$work/interface.out" \
     && fail "Qt did not start"
 printf 'quit\n' | nc -w 2 127.0.0.1 $port > /dev/null 2>&1 || fail "rc interface: no answer"
@@ -140,6 +229,45 @@ else
     note "note: the Qt interface did not play the clip (exit code $code; a CI Mac may have no GPU)"
 fi
 qml_warnings playback | head -n 20 | sed 's/^/note: /' | tee -a "$result"
+
+# 4. Screenshots (not counted): the main window in the light and the dark
+# appearance (the System theme follows macOS), then About from the
+# application menu
+appearance=$(defaults read -g AppleInterfaceStyle 2>/dev/null || true)
+set_appearance() {
+    if [ "$1" = dark ]; then defaults write -g AppleInterfaceStyle Dark
+    else defaults delete -g AppleInterfaceStyle 2>/dev/null || true; fi
+}
+app_name=$(basename "$exe")
+for look in light dark; do
+    set_appearance $look
+    start "main-$look" --extraintf=rc --rc-host=127.0.0.1:$port --aout=dummy
+    sleep 8
+    if kill -0 $pid 2>/dev/null; then
+        osascript -e "tell application \"System Events\" to set frontmost of (first process whose unix id is $pid) to true" \
+            > /dev/null 2>&1 || true
+        sleep 1
+        screencapture -x "$work/main-$look.png" 2>/dev/null && note "screenshot: main-$look.png" \
+            || note "note: no screenshot of the $look window (screen recording refused)"
+        if [ $look = dark ]; then
+            # About: the first item of the application menu (qt.cpp)
+            if osascript -e "tell application \"System Events\" to tell (first process whose unix id is $pid) to click menu item 1 of menu 1 of menu bar item 2 of menu bar 1" \
+                    > "$work/about.out" 2>&1; then
+                sleep 3
+                screencapture -x "$work/about.png" 2>/dev/null && note "screenshot: about.png"
+            else
+                note "note: About not opened (System Events: $(head -n 1 "$work/about.out"))"
+            fi
+        fi
+        printf 'quit\n' | nc -w 2 127.0.0.1 $port > /dev/null 2>&1 || true
+        wait_exit $pid 30 > /dev/null || true
+    else
+        note "note: the $look run ended early"
+    fi
+done
+# the Mac's own appearance again
+if [ "$appearance" = Dark ]; then set_appearance dark; else set_appearance light; fi
+note "note: $app_name screenshots in $work"
 
 # No crash
 reports_after=$(ls ~/Library/Logs/DiagnosticReports 2>/dev/null | sort)

@@ -10,7 +10,7 @@
 # vlc-redesign-X.Y.Z-macos-<arch>.dmg (docs/MASTER-PLAN.md, 13.5).
 # extras/juxtopposed/macos/README.md tells why each step is what it is.
 #
-#   extras/juxtopposed/macos-build.sh [-a arm64|x86_64] [-j jobs] [-b dir] [-o dir] [-c] [-n] [-g]
+#   extras/juxtopposed/macos-build.sh [-a arm64|x86_64] [-j jobs] [-b dir] [-o dir] [-c] [-n] [-g] [-t]
 #
 #   -a  the architecture: the Mac's own (the default; no cross build yet)
 #   -j  parallel jobs (the number of cores)
@@ -19,6 +19,8 @@
 #   -c  the contribs from source, even when prebuilt ones exist
 #   -n  no disk image: VLC Redesign.app only
 #   -g  keep the debug symbols (not stripped)
+#   -t  without the Live TV (IPTV) add-on (libiptv_plugin.dylib); the
+#       release has it, and Settings > Startup turns it off
 #
 # Signing: ad hoc unless MACOS_SIGN_IDENTITY names a "Developer ID
 # Application" identity of the keychain; then also notarized when
@@ -39,7 +41,8 @@ out=
 from_source=
 make_dmg=yes
 keep_symbols=
-while getopts "a:j:b:o:cngh" opt; do
+iptv=yes
+while getopts "a:j:b:o:cngth" opt; do
     case $opt in
         a) arch=$OPTARG ;;
         j) jobs=$OPTARG ;;
@@ -48,7 +51,8 @@ while getopts "a:j:b:o:cngh" opt; do
         c) from_source=yes ;;
         n) make_dmg= ;;
         g) keep_symbols=yes ;;
-        *) sed -n '5,28p' "$0"; exit 1 ;;
+        t) iptv= ;;
+        *) sed -n '5,30p' "$0"; exit 1 ;;
     esac
 done
 
@@ -206,7 +210,7 @@ if [ ! -f Makefile ] || [ "$root/configure" -nt Makefile ]; then
         --with-macosx-sdk="$SDKROOT" --with-macosx-version-min="$MIN_MACOS" \
         --disable-debug \
         --disable-macosx --disable-sparkle --disable-skins2 --disable-ncurses \
-        --enable-qt --enable-nls \
+        --enable-qt --enable-nls $( [ -n "$iptv" ] || echo --disable-iptv ) \
         QMAKE6="$qtdir/bin/qmake6" \
         QT_LIBCURL_CFLAGS="-I$SDKROOT/usr/include" QT_LIBCURL_LIBS="-lcurl"
 fi
@@ -216,6 +220,12 @@ if grep -q "^ENABLE_MACOSX_UI_TRUE=''" config.log; then
     die "the macosx interface is still enabled: it would win over Qt"
 fi
 grep -q "^HAVE_QT_LIBCURL_TRUE=''" config.log || echo "warning: no libcurl: no online subtitles, artwork or update check"
+# (the configure of an earlier run may have had the other choice)
+if [ -n "$iptv" ]; then
+    grep -q "^HAVE_IPTV_TRUE=''" config.log || die "configure left the Live TV add-on out (see $logs/configure.log; -t builds without it)"
+elif grep -q "^HAVE_IPTV_TRUE=''" config.log; then
+    die "the Live TV add-on is configured in this build folder: -t needs a fresh one (-b)"
+fi
 
 # ---------------------------------------------------------------------------
 step "Build"
@@ -250,12 +260,38 @@ find "$dest/lib/vlc/plugins" -name 'lib*_plugin.dylib' -exec cp -a {} "$contents
 [ -f "$contents/Frameworks/plugins/libqt_plugin.dylib" ] || die "the Qt interface plugin was not built"
 [ ! -f "$contents/Frameworks/plugins/libmacosx_plugin.dylib" ] || die "the macosx interface was built"
 [ -f "$contents/Frameworks/plugins/libmedialibrary_plugin.dylib" ]     || echo "warning: no medialibrary in the contribs: no library pages"
+# The Live TV (IPTV) add-on: a plugin of its own, with QtCore (deployed
+# with the interface's Qt below); the interface shows Live TV only when it
+# is there, Settings > Startup turns it off
+if [ -n "$iptv" ]; then
+    [ -f "$contents/Frameworks/plugins/libiptv_plugin.dylib" ] || die "the Live TV add-on (libiptv_plugin.dylib) was not built"
+else
+    rm -f "$contents/Frameworks/plugins/libiptv_plugin.dylib"
+fi
 # (the compiled Lua scripts: where upstream's VLC.app has them)
 [ -d "$libexec/lua" ] && cp -R "$libexec/lua" "$contents/Frameworks/"
 cp -R "$dest/share/vlc/." "$contents/Resources/share/"
 [ -d "$dest/share/locale" ] && cp -R "$dest/share/locale" "$contents/Resources/share/"
+# the interface in every language of the redesign (po/, --enable-nls): as
+# the Windows package, never a build without them
+translations=$(find "$contents/Resources/share/locale" -name 'vlc.mo' 2>/dev/null | wc -l | tr -d ' ')
+[ "$translations" -ge 20 ] || die "only $translations translations in the app (gettext's msgfmt missing?)"
+echo "translations: $translations"
 [ -d "$root/share/hrtfs" ] && cp -R "$root/share/hrtfs" "$contents/Resources/share/"
 cp "$contrib/$HOST_TRIPLET"/share/java/libbluray*.jar "$contents/Frameworks/plugins/" 2>/dev/null || true
+# The texts every copy carries, as the Windows package (package.mak): the
+# README, the licences, the credits (Juxtopposed, the design's author, CC BY
+# 4.0) and the changelog; the fonts' licence (the OFL) with the fonts
+docs=$contents/Resources
+cp "$root/README.md" "$docs/README.txt"
+cp "$root/COPYING" "$docs/COPYING.txt"
+cp "$root/COPYING.LIB" "$docs/COPYING.LIB.txt"
+cp "$root/CREDITS.md" "$docs/CREDITS.txt"
+cp "$root/CHANGELOG.md" "$docs/CHANGELOG.txt"
+mkdir -p "$docs/licenses"
+cp "$root/modules/gui/qt/pixmaps/fonts/LICENSE.txt" "$docs/licenses/Inter-OFL.txt"
+cp "$root/modules/gui/qt/pixmaps/fonts/DMMono-OFL.txt" "$docs/licenses/DMMono-OFL.txt"
+grep -q Juxtopposed "$docs/CREDITS.txt" || die "CREDITS.md does not credit the designer"
 
 python3 "$root/extras/juxtopposed/macos/make-info-plist.py" \
     --template "$root/share/Info.plist.in" --version "$version" --vlc-version "$vlc_version" \
@@ -395,6 +431,13 @@ for f in "$contents/MacOS/"*; do
 done >> "$logs/sign.log" 2>&1
 sign_program "$app" >> "$logs/sign.log" 2>&1 || { tail -n 40 "$logs/sign.log"; die "signing the app failed"; }
 codesign --verify --deep --strict "$app"
+# every Mach-O of the bundle signed on its own too (--deep stops at what the
+# app's seal names; a plugin or Qt plugin left out shows here)
+unsigned=$(find "$contents" -type f \( -perm -u+x -o -name '*.dylib' \) ! -path '*/_CodeSignature/*' -print0 \
+           | while IFS= read -r -d '' f; do
+                 macho "$f" && ! codesign --verify --strict "$f" 2>/dev/null && echo "${f#"$contents"/}"
+             done; true)
+[ -z "$unsigned" ] || die "binaries without a valid signature: $unsigned"
 codesign -dv "$app" 2>&1 | grep -E '^(Identifier|Format|Signature|Authority|TeamIdentifier)' || true
 du -sh "$app"
 

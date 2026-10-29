@@ -731,11 +731,11 @@ code, the tables are left as they were until each is decided):
   `check_qml.py` fails on a light value that differs from the map's unless listed. Eight dark values the frame does
   not draw (`#EAEAEA`, `#C6C6C6`, `#969696`, `#0E0E0E`, `#222222`, `#404040`, `#151515`, `#373737`) keep the map's
   value.
-- 🟡 **Open, for the owner: the opaque Light styles.** The file has 24 *Light/* colour styles (no variables). The
-  light frame draws its panels as *Light/BG/A3 Transparent* (`#D5D5D5` 75 %) and *B1 Transparent* (`#E7E7E7` 80 %)
-  over the dark video, which gives the `#ABABAA` and `#C2C2C1` the app draws everywhere as solid colours. Drawing
-  the opaque styles instead (`#E7E7E7`, `#D5D5D5`, `#EDEDED`, FG/A1 `#3C3C3C`...) would be a lighter theme than the
-  frame; keep the frame's colours (now) or move to the styles. The table: [design/light-theme.md](../design/light-theme.md).
+- ✅ **The opaque Light styles: decided 2026-10-29, keep the frame's colours.** The file has 24 *Light/* colour
+  styles (no variables). The light frame draws its panels as *Light/BG/A3 Transparent* (`#D5D5D5` 75 %) and *B1
+  Transparent* (`#E7E7E7` 80 %) over the dark video, which gives the `#ABABAA` and `#C2C2C1` the app draws as solid
+  colours; the app stays 1:1 with that frame. The opaque styles are not used: several do not work as a theme (FG/1
+  and FG/2 keep their dark values, FG/A4 is darker than FG/A3). [design/light-theme.md](../design/light-theme.md).
 - Typography: dialog titles are 14 px (`#8F8F8F`, box 17 in a 32 row), not 16 px at 175 %; 16 px is the Settings
   header title. Widget (right-click) menus are 14 px, not 16. Onboarding: "Welcome to VLC!" is 32 px; some
   onboarding texts are 15 px with a line of 1.3.

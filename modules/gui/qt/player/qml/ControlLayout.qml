@@ -80,6 +80,12 @@ FocusScope {
 
     property alias alignment: repeater.alignment
 
+    // the room the controls may take; by default the zone's own width. The
+    // centre zone is only as wide as its shown controls, so it gets the room
+    // of the bar instead: a control it hid could never come back otherwise
+    property real availableWidth: -1
+    readonly property alias neededWidth: repeater.neededWidth
+
     // where the first and the last controls are (Figma "Player - customize":
     // the dashed free room of the zone goes up to them)
     readonly property real firstControlX: {
@@ -177,7 +183,7 @@ FocusScope {
 
             Navigation.parentItem: controlLayout
 
-            availableWidth: rowLayout.width
+            availableWidth: (controlLayout.availableWidth >= 0) ? controlLayout.availableWidth : rowLayout.width
             availableHeight: rowLayout.height
 
             Component.onCompleted: {

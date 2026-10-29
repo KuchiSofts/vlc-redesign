@@ -16,7 +16,7 @@ import VLC.Util
 RedesignIconButton {
     readonly property bool _hasPlayer: (typeof rootPlayer !== "undefined") && rootPlayer !== null
 
-    iconSource: "qrc:///redesign/icons/sidebar/default.png"
+    iconSource: "qrc:///redesign/icons/sidebar/default.svg"
     // In the bar of the mini player the library is the page shown: the
     // button leaves it for the player
     checked: _hasPlayer ? rootPlayer.libraryVisible : !MainCtx.playerView

@@ -27,7 +27,7 @@ RedesignIconButton {
 
     signal requestLockUnlockAutoHide(bool lock)
 
-    iconSource: "qrc:///redesign/icons/chapters/default.png"
+    iconSource: "qrc:///redesign/icons/chapters/default.svg"
     enabled: !paintOnly && (Player.hasChapters || Player.hasTitles)
     onClicked: menu.popup(this.mapToGlobal(0, 0), true)
     // open while its menu shows (a menu of the system: told by its signals)

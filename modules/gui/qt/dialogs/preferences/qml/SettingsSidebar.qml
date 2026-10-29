@@ -131,7 +131,7 @@ Item {
                                     sourceSize: Qt.size(width, height)
                                     fillMode: Image.PreserveAspectFit
                                     source: !modelData.icon ? "" : "qrc:///redesign/icons/" + modelData.icon + "/"
-                                            + (entry.current ? "active" : "default") + ".png"
+                                            + (entry.current ? "active" : "default") + ".svg"
                                     color: entry.current ? VLCStyle.redesign.accentTint : "transparent"
                                 }
                             }

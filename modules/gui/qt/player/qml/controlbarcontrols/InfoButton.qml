@@ -24,7 +24,7 @@ import VLC.Util
 RedesignIconButton {
     id: infoBtn
     enabled: Player.isStarted
-    iconSource: "qrc:///redesign/icons/info/default.png"
+    iconSource: "qrc:///redesign/icons/info/default.svg"
     onClicked: DialogsProvider.mediaInfoDialog()
     description: qsTr("Properties")
     AccessibleCompat.id: "infoButton"

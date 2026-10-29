@@ -73,9 +73,9 @@ Row {
                                                 && MainCtx.intfMainWindow.visibility === Window.Maximized
                 iconSource: {
                     switch (modelData.type) {
-                    case CSDButton.Minimize: return "qrc:///redesign/player/minimize.png"
-                    case CSDButton.MaximizeRestore: return restore ? "" : "qrc:///redesign/player/maximize.png"
-                    case CSDButton.Close: return "qrc:///redesign/player/close.png"
+                    case CSDButton.Minimize: return "qrc:///redesign/player/minimize.svg"
+                    case CSDButton.MaximizeRestore: return restore ? "" : "qrc:///redesign/player/maximize.svg"
+                    case CSDButton.Close: return "qrc:///redesign/player/close.svg"
                     }
                     return ""
                 }
@@ -163,7 +163,7 @@ Row {
                 color: root.color
                 hoverColor: root.hoverColor
                 isThemeDark: theme.palette.isDark
-                iconSource: "qrc:///redesign/player/fullscreen.png"
+                iconSource: "qrc:///redesign/player/fullscreen.svg"
                 description: qsTr("Fullscreen")
                 onClicked: {
                     if (Player.hasVideoOutput)
@@ -181,7 +181,7 @@ Row {
                 }
                 CustomizeDragArea {
                     controlId: root.fullscreenControlId
-                    iconSource: "qrc:///redesign/player/fullscreen.png"
+                    iconSource: "qrc:///redesign/player/fullscreen.svg"
                 }
             }
         }

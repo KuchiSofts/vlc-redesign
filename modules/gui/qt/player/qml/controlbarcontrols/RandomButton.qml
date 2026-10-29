@@ -23,7 +23,7 @@ import VLC.Util
 RedesignIconButton {
     id: randomBtn
     checked: MainPlaylistController.random
-    iconSource: checked ? "qrc:///redesign/icons/shuffle/active.png" : "qrc:///redesign/icons/shuffle/default.png"
+    iconSource: checked ? "qrc:///redesign/icons/shuffle/active.svg" : "qrc:///redesign/icons/shuffle/default.svg"
     onClicked: MainPlaylistController.toggleRandom()
     description: qsTr("Shuffle")
     AccessibleCompat.id: "randomButton"

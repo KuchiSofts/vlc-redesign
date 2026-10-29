@@ -34,10 +34,10 @@ T.Popup {
     property int currentTab: 0
     property bool previousGlobalShortcuts: true
     readonly property var trackTabs: [
-        { title: qsTr("Video"), icon: "qrc:///redesign/track-video.png", activeIcon: "qrc:///redesign/track-video-active.png", tab: 2 },
-        { title: qsTr("Audio"), icon: "qrc:///redesign/track-audio.png", activeIcon: "qrc:///redesign/track-audio-active.png", tab: 1 },
+        { title: qsTr("Video"), icon: "qrc:///redesign/track-video.svg", activeIcon: "qrc:///redesign/track-video-active.svg", tab: 2 },
+        { title: qsTr("Audio"), icon: "qrc:///redesign/track-audio.svg", activeIcon: "qrc:///redesign/track-audio-active.svg", tab: 1 },
     ].concat(subtitlesOffered
-             ? [{ title: qsTr("Subtitles"), icon: "qrc:///redesign/track-subtitles.png", activeIcon: "qrc:///redesign/track-subtitles-active.png", tab: 0 }]
+             ? [{ title: qsTr("Subtitles"), icon: "qrc:///redesign/track-subtitles.svg", activeIcon: "qrc:///redesign/track-subtitles-active.svg", tab: 0 }]
              : [])
     // Subtitles are for films and videos: a live TV channel or music has
     // no Subtitles tab, unless it carries subtitle tracks of its own
@@ -257,7 +257,7 @@ T.Popup {
                                 border.color: VLCStyle.redesign.focusColor
                             }
                             contentItem: Image {
-                                source: "qrc:///redesign/icons/refresh/default.png"
+                                source: "qrc:///redesign/icons/refresh/default.svg"
                                 sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
                                 fillMode: Image.Pad
                             }
@@ -501,7 +501,7 @@ T.Popup {
                 anchors.left: parent.left
                 anchors.leftMargin: VLCStyle.dp(12, VLCStyle.scale)
                 anchors.verticalCenter: parent.verticalCenter
-                source: "qrc:///redesign/track-check-active.png"
+                source: "qrc:///redesign/track-check-active.svg"
                 color: root.accentTint
                 visible: parent.parent.checked
                 width: VLCStyle.dp(24, VLCStyle.scale)

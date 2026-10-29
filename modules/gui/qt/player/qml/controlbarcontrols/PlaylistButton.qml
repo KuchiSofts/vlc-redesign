@@ -25,7 +25,7 @@ import VLC.Util
 
 
 RedesignIconButton {
-    iconSource: "qrc:///redesign/player/queue.png"
+    iconSource: "qrc:///redesign/player/queue.svg"
     id: playlistBtn
 
     text: VLCIcons.playlist

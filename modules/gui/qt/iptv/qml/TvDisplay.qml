@@ -440,7 +440,7 @@ Widgets.PageExt {
                                     anchors.centerIn: parent
                                     width: VLCStyle.redesign.iconSize
                                     height: width
-                                    source: "qrc:///redesign/icons/play/outline-active.png"
+                                    source: "qrc:///redesign/icons/play/outline-active.svg"
                                     sourceSize: Qt.size(width, height)
                                 }
                             }

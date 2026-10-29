@@ -223,7 +223,7 @@ Controls.Popup {
                             border.color: VLCStyle.redesign.focusColor
                         }
                         contentItem: Image {
-                            source: "qrc:///redesign/icons/close/default.png"
+                            source: "qrc:///redesign/icons/close/default.svg"
                             sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
                             fillMode: Image.Pad
                             smooth: true

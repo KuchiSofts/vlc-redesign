@@ -22,7 +22,7 @@ import VLC.Util
 
 RedesignIconButton {
     id: quitBtn
-    iconSource: "qrc:///redesign/icons/quit/default.png"
+    iconSource: "qrc:///redesign/icons/quit/default.svg"
     onClicked: DialogsProvider.quit()
     description: qsTr("Quit VLC")
     AccessibleCompat.id: "quitButton"

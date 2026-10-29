@@ -23,7 +23,7 @@ import VLC.Util
 RedesignIconButton {
     id: repeatBtn
     checked: MainPlaylistController.repeatMode !== PlaylistController.PLAYBACK_REPEAT_NONE
-    iconSource: checked ? "qrc:///redesign/icons/repeat/active.png" : "qrc:///redesign/icons/repeat/default.png"
+    iconSource: checked ? "qrc:///redesign/icons/repeat/active.svg" : "qrc:///redesign/icons/repeat/default.svg"
     onClicked: MainPlaylistController.toggleRepeatMode()
     description: MainPlaylistController.repeatMode === PlaylistController.PLAYBACK_REPEAT_CURRENT
                  ? qsTr("Repeat one") : qsTr("Repeat")

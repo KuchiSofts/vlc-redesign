@@ -355,7 +355,7 @@ FocusScope{
                 }
                 Widgets.CustomizeDragArea {
                     controlId: ControlListModel.MENU_BUTTON
-                    iconSource: "qrc:///redesign/icons/more/default.png"
+                    iconSource: "qrc:///redesign/icons/more/default.svg"
                 }
 
                 Menus.MainMenu {
@@ -397,7 +397,7 @@ FocusScope{
                 }
                 Widgets.CustomizeDragArea {
                     controlId: ControlListModel.BACK_BUTTON
-                    iconSource: "qrc:///redesign/icons/sidebar/default.png"
+                    iconSource: "qrc:///redesign/icons/sidebar/default.svg"
                 }
             }
 
@@ -406,7 +406,7 @@ FocusScope{
                 width: VLCStyle.redesign.iconSize
                 height: width
                 sourceSize: Qt.size(width, height)
-                source: "qrc:///redesign/icons/divider/default.png"
+                source: "qrc:///redesign/icons/divider/default.svg"
                 visible: folderButton.visible && (menuButton.visible || libraryButton.visible)
 
                 Widgets.DashedRect {
@@ -451,7 +451,7 @@ FocusScope{
                         width: VLCStyle.redesign.iconSize
                         height: width
                         sourceSize: Qt.size(width, height)
-                        source: "qrc:///redesign/icons/folder/default.png"
+                        source: "qrc:///redesign/icons/folder/default.svg"
                     }
                     Text {
                         id: folderText
@@ -483,7 +483,7 @@ FocusScope{
                 }
                 Widgets.CustomizeDragArea {
                     controlId: ControlListModel.FOLDER_NAME_WIDGET
-                    iconSource: "qrc:///redesign/icons/folder/default.png"
+                    iconSource: "qrc:///redesign/icons/folder/default.svg"
                 }
             }
         }
@@ -527,7 +527,7 @@ FocusScope{
 
             Widgets.CustomizeDragArea {
                 controlId: ControlListModel.FILE_NAME_WIDGET
-                iconSource: "qrc:///redesign/icons/file/default.png"
+                iconSource: "qrc:///redesign/icons/file/default.svg"
             }
         }
     }
@@ -645,7 +645,7 @@ FocusScope{
                 width: VLCStyle.redesign.iconSize
                 height: width
                 sourceSize: Qt.size(width, height)
-                source: "qrc:///redesign/icons/" + topBarButton.iconName + "/" + topBarButton.iconState + ".png"
+                source: "qrc:///redesign/icons/" + topBarButton.iconName + "/" + topBarButton.iconState + ".svg"
                 // the image's own colours, the accent while open (transparent: no tint)
                 color: !topBarButton.lit ? "transparent"
                        : VLCStyle.palette.isDark ? VLCStyle.redesign.accent : VLCStyle.redesign.accentDim

@@ -38,7 +38,7 @@ Item {
             sourceSize: Qt.size(width, height)
             width: 1056
             height: 22
-            source: "qrc:///redesign/theme-strip-cone.png"
+            source: "qrc:///redesign/theme-strip-cone.svg"
             smooth: false
             color: root.accent
         }
@@ -47,7 +47,7 @@ Item {
             sourceSize: Qt.size(width, height)
             width: 1056
             height: 22
-            source: "qrc:///redesign/theme-strip-buttons.png"
+            source: "qrc:///redesign/theme-strip-buttons.svg"
             smooth: false
             color: root._light ? "#4d4d4d" : "#8f8f8f"
         }
@@ -128,7 +128,7 @@ Item {
                         y: 12
                         width: 100
                         height: 100
-                        source: "qrc:///redesign/theme-system.png"
+                        source: "qrc:///redesign/theme-system.svg"
                         smooth: false
                     }
                 }
@@ -204,7 +204,7 @@ Item {
             sourceSize: Qt.size(width, height)
             width: 1056
             height: 30
-            source: "qrc:///redesign/theme-bar-mask.png"
+            source: "qrc:///redesign/theme-bar-mask.svg"
             smooth: false
             color: sample.iconColor
         }
@@ -216,7 +216,7 @@ Item {
             y: 3
             width: 40
             height: 24
-            source: "qrc:///redesign/theme-bar-pill.png"
+            source: "qrc:///redesign/theme-bar-pill.svg"
             smooth: false
             color: root.accent
         }
@@ -227,7 +227,7 @@ Item {
             y: 9
             width: 14
             height: 14
-            source: "qrc:///redesign/theme-bar-play.png"
+            source: "qrc:///redesign/theme-bar-play.svg"
             smooth: false
             color: "#161616"
         }
@@ -256,7 +256,7 @@ Item {
             y: 5
             width: 12
             height: 20
-            source: "qrc:///redesign/theme-bar-knob.png"
+            source: "qrc:///redesign/theme-bar-knob.svg"
             smooth: false
             color: root.accent
         }

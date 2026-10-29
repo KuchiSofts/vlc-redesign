@@ -88,7 +88,7 @@ ExpandPanel {
                     width: root.px(24)
                     height: width
                     sourceSize: Qt.size(width, height)
-                    source: iconDir + (twoTone ? "/default-grey.png" : "/default.png")
+                    source: iconDir + (twoTone ? "/default-grey.svg" : "/default.svg")
                     Accessible.role: Accessible.Graphic
                     Accessible.name: qsTr("%1 equalizer curve").arg(presetOption.modelData.name)
                     Impl.ColorImage {
@@ -96,7 +96,7 @@ ExpandPanel {
                         sourceSize: Qt.size(width, height)
                         anchors.fill: parent
                         visible: curve.twoTone
-                        source: visible ? curve.iconDir + "/default-accent.png" : ""
+                        source: visible ? curve.iconDir + "/default-accent.svg" : ""
                         color: VLCStyle.redesign.accent
                     }
                 }
@@ -110,7 +110,7 @@ ExpandPanel {
                     anchors.verticalCenter: parent.verticalCenter
                     width: root.px(24)
                     height: width
-                    source: "qrc:///redesign/track-check-active.png"
+                    source: "qrc:///redesign/track-check-active.svg"
                     color: VLCStyle.redesign.accentTint
                 }
             }

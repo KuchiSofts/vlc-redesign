@@ -178,6 +178,15 @@ jobs:
         shell: pwsh
         run: ./extras/juxtopposed/ci/arm64-smoke.ps1 -VlcDir out -CheckOnly
 
+      # every binary ARM64, every imported DLL in the package or in Windows,
+      # Qt and its QML built in, the Live TV add-on, the translations, the
+      # credits (the release-mode package: stripped)
+      - name: ARM64 package check
+        run: |
+          python3 -m venv "$RUNNER_TEMP/pe"
+          "$RUNNER_TEMP/pe/bin/pip" install --quiet pefile
+          "$RUNNER_TEMP/pe/bin/python" extras/juxtopposed/ci/pe-check.py out --arch arm64
+
       - name: Upload the package
         uses: actions/upload-artifact@v5
         with:
@@ -186,9 +195,11 @@ jobs:
           retention-days: ${{ github.event_name == 'pull_request' && 2 || 7 }}
 
   # The ARM64 package on ARM64 Windows: its binaries, the plugin cache made
-  # (every plugin loaded), then the launch test above
+  # (every plugin loaded), then the launch test above. GitHub's Windows on
+  # ARM runners are free on public repositories only: never on a private one
   launch-test-arm64:
     needs: winarm64
+    if: ${{ !github.event.repository.private }}
     runs-on: windows-11-arm
     timeout-minutes: 30
     steps:
@@ -222,6 +233,79 @@ jobs:
           path: |
             ${{ runner.temp }}/vlc-launch-test/*.txt
             ${{ runner.temp }}/vlc-launch-test/*.log
+            ${{ runner.temp }}/vlc-launch-test/dumps/*.dmp
+          retention-days: 7
+
+  # The ARM64 installer made from that package (make-release.ps1's Inno
+  # Setup call, unsigned), installed on ARM64 Windows: every file of the
+  # package installed, the smoke test above on the installed copy, the main
+  # window and About captured, then uninstalled (arm64-install-test.ps1).
+  # Public repositories only (the runner), as above
+  install-test-arm64:
+    needs: winarm64
+    if: ${{ !github.event.repository.private }}
+    runs-on: windows-11-arm
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          sparse-checkout: |
+            extras/juxtopposed/ci
+            extras/juxtopposed/installer
+            modules/gui/qt/util
+
+      - uses: actions/download-artifact@v5
+        with:
+          name: vlc-redesign-winarm64-${{ github.sha }}
+          path: package
+
+      # (the Inno Setup the releases are made with; x86, emulated here)
+      - name: Inno Setup
+        shell: pwsh
+        run: |
+          $iscc = "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe"
+          if (-not (Test-Path $iscc) -and (Get-Command choco -ErrorAction SilentlyContinue)) {
+            choco upgrade innosetup --version 6.7.1 --allow-downgrade -y --no-progress
+          }
+          if (-not (Test-Path $iscc)) {
+            $setup = Join-Path $env:RUNNER_TEMP 'innosetup.exe'
+            Invoke-WebRequest https://files.jrsoftware.org/is/6/innosetup-6.7.1.exe -OutFile $setup
+            Start-Process $setup -Wait -ArgumentList '/VERYSILENT', '/SUPPRESSMSGBOXES', '/NORESTART', '/SP-'
+          }
+          if (-not (Test-Path $iscc)) { throw 'No Inno Setup' }
+          "ISCC=$iscc" >> $env:GITHUB_ENV
+
+      - name: Installer
+        shell: pwsh
+        run: |
+          $m = Select-String -Path modules/gui/qt/util/redesign_version.hpp -Pattern 'VLC_REDESIGN_VERSION\s+"([^"]+)"'
+          $version = $m.Matches[0].Groups[1].Value
+          & $env:ISCC /Q "/DAppVersion=$version" "/DSourceDir=$((Resolve-Path package).Path)" "/DOutputDir=$PWD\dist" /DArm64 extras/juxtopposed/installer/vlc-redesign.iss
+          if ($LASTEXITCODE) { throw "Installer build failed ($LASTEXITCODE)" }
+          "SETUP=$PWD\dist\vlc-redesign-$version-winarm64-setup.exe" >> $env:GITHUB_ENV
+
+      - name: Keep crash dumps
+        shell: pwsh
+        run: |
+          $key = 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps\vlc.exe'
+          New-Item -Force $key | Out-Null
+          New-ItemProperty -Force $key -Name DumpFolder -PropertyType ExpandString -Value "${{ runner.temp }}\vlc-launch-test\dumps" | Out-Null
+          New-ItemProperty -Force $key -Name DumpType -PropertyType DWord -Value 1 | Out-Null
+          New-ItemProperty -Force $key -Name DumpCount -PropertyType DWord -Value 5 | Out-Null
+
+      - name: Install, start, play, About, uninstall
+        shell: pwsh
+        run: ./extras/juxtopposed/ci/arm64-install-test.ps1 -Setup $env:SETUP -Package package -WorkDir "${{ runner.temp }}"
+
+      - name: Upload the logs and screenshots
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: install-test-arm64-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/vlc-launch-test/*.txt
+            ${{ runner.temp }}/vlc-launch-test/*.log
+            ${{ runner.temp }}/vlc-launch-test/*.png
             ${{ runner.temp }}/vlc-launch-test/dumps/*.dmp
           retention-days: 7
 

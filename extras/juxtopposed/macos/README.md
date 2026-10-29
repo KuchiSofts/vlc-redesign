@@ -1,16 +1,19 @@
 # VLC Redesign on macOS
 
 The macOS port of VLC Redesign: Apple Silicon and Intel, macOS 12 Monterey or later (Qt 6.8). Roadmap step 7,
-[MASTER-PLAN.md §9](../../../docs/MASTER-PLAN.md#macos). Nothing here has run on a Mac yet: the first builds run
-on GitHub's macOS runners (`.github/workflows/build-macos.yml`) once the branch is pushed.
+[MASTER-PLAN.md §9](../../../docs/MASTER-PLAN.md#macos). Both architectures build and pass the launch test on
+GitHub's Macs (28 October 2026, 0.3.2 tree); the checks added for 0.4.0 (the unified title bar, the bundle checks,
+the screenshots) run first on the public repository at the upload
+([RELEASE-CHECKLIST.md](../../../docs/RELEASE-CHECKLIST.md)).
 
 | File | What it does |
 |------|--------------|
 | `extras/juxtopposed/macos-build.sh` | The build on a Mac: contribs, Qt, VLC, `VLC Redesign.app`, the `.dmg` |
 | `extras/juxtopposed/macos/make-info-plist.py` | The app's `Info.plist` from upstream's `share/Info.plist.in` |
 | `extras/juxtopposed/macos/AppIcon.svg` | The app icon (the redesign's logo on its card), drawn into `AppIcon.icns` |
-| `extras/juxtopposed/ci/macos-smoke.sh` | The launch test of a build: headless playback, the Qt interface for 10 s |
-| `.github/workflows/build-macos.yml` | Both architectures on every pull request and by hand; never blocking yet |
+| `extras/juxtopposed/ci/macos-smoke.sh` | The launch test: the bundle (signatures, icon, translations, Live TV, About badge, credits), headless playback, the Qt interface and its unified title bar, screenshots light, dark and About |
+| `.github/workflows/build-macos.yml` | Public repository: both architectures on every pull request and push to main (free). Private: by hand only, Apple Silicon only, 40 minutes at most (macOS minutes count ×10) |
+| `modules/gui/qt/maininterface/macos_titlebar.cpp` | The unified title bar (the traffic lights in the redesign's top bar) |
 
 On a Mac with Xcode: `extras/juxtopposed/macos-build.sh` (its own architecture; `-h` lists the options), then
 `extras/juxtopposed/ci/macos-smoke.sh build-macos-arm64/vlc-redesign-*.dmg`.
@@ -94,6 +97,12 @@ VLC Redesign.app/Contents/
   document icons: upstream's are VideoLAN's cone.
 - **Icon**: the redesign's logo (`design/icons/svg/logo.svg`) on its card colour in the macOS icon grid. The Windows
   executable still has upstream's `vlc.ico`; one icon for both is a question for the owner.
+- **Live TV (IPTV) add-on**: `Frameworks/plugins/libiptv_plugin.dylib` (QtCore, from the bundle's Qt). A disk image
+  has no components to choose, unlike the Windows installer: the app always carries it, and *Settings → Startup →
+  Live TV (IPTV) add-on* (`iptv-enabled`) turns it off. Deleting the file would break the app's signature;
+  `macos-build.sh -t` makes an app without it.
+- **Texts**: `Resources/README.txt`, `CREDITS.txt` (Juxtopposed, the design's author, CC BY 4.0), `COPYING.txt`,
+  `COPYING.LIB.txt`, `CHANGELOG.txt` and `licenses/` (the fonts' OFL), as in the Windows package.
 - **Disk image**: `vlc-redesign-X.Y.Z-macos-arm64.dmg`, `vlc-redesign-X.Y.Z-macos-x86_64.dmg` (§13.5), the app and a
   link to Applications, compressed (UDZO), with a `.sha256` beside it.
 
@@ -139,14 +148,22 @@ download.
 Fixed here (each guarded by `__APPLE__` / `Q_OS_MACOS`; compiled for Linux in Docker, the macOS branches only
 checked for syntax with their guards forced, as no Mac is at hand):
 
-- **Window frame: the system's title bar by default.** `qt-titlebar` defaults to on on macOS (and the first-run
-  dialogs keep it): the traffic lights, full screen in its own Space, tiling, resizing from every edge and the window
-  shadow are the system's. The redesign's frameless window has none of them on macOS (no traffic lights: the
-  redesign's own buttons instead; no system full screen or tiling). The redesign's top bar stays
-  inside the window, under the title bar; the frameless look is still in *Settings → Presentation*. Later, on a
-  Mac: a unified title bar (the traffic lights in the redesign's top bar, as macOS apps do) through
-  `NSWindow.titlebarAppearsTransparent` and `NSWindowStyleMaskFullSizeContentView` on the window's `NSView`, or the
-  `Qt::ExpandedClientAreaHint` of a newer Qt than 6.8.
+- **Window frame: a unified title bar** (`maininterface/macos_titlebar.cpp`), the way macOS apps draw their own bar.
+  The window keeps its system frame, so the traffic lights, full screen in its own Space, tiling, resizing from every
+  edge, the shadow and the border stay the system's; its title bar is made transparent and untitled
+  (`titlebarAppearsTransparent`, `titleVisibility`) and the content fills the whole window under it
+  (`NSWindowStyleMaskFullSizeContentView`). The redesign's top bar (the library's, the player's and the menu bar's) is
+  then the only bar: it leaves room for the traffic lights at its start (`MainCtx.windowButtonsInsetLeft/Right`, read
+  from AppKit's buttons, on the right in a right to left system language) and drags and zooms the window as on
+  Windows (`startSystemMove`). The redesign's own minimize, maximize and close buttons are not made on macOS
+  (`CSDButtonModel`); the system draws the resize edges, shadow and border (`platformHandles*WithCSD`). Applied
+  before the saved geometry is restored and again whenever the native window is made, shown or leaves full screen;
+  the content keeps its place on the screen when it changes (the frame moves), so a saved geometry never grows by a
+  title bar. Qt 6.8 has no flag for it (`Qt::ExpandedClientAreaHint` is 6.9); the few AppKit calls go through the
+  Objective-C runtime (`objc_msgSend`, the Qt module is C++ only; `-lobjc`). `qt-titlebar` is off by default as on
+  the other systems (it was on for macOS until 0.4.0, which drew the system's title bar above the redesign's);
+  *Settings → Presentation → Show window decorations* still brings the system's title bar back. The classic windows
+  (`redesign_window_frame.cpp`) keep the system's frame.
 - **Menu bar**: a minimal one at the top of the screen (`qt.cpp`): the application menu gets *About*, *Preferences…*
   (⌘,) and *Quit* by their roles, a *Media* menu opens a file or a stream, *Help* the help. Its items have no
   shortcuts of their own, so the QML shortcuts are not made ambiguous. The in-window menu bar (`qt-menubar`) is
@@ -175,14 +192,19 @@ Checked, nothing to change:
 
 ## 7. Still to do on a Mac
 
-- 🔴 The first green build of each architecture; then `continue-on-error` off.
+- ✅ The first green build of each architecture (28 October 2026). `continue-on-error` off once the 0.4.0 checks
+  pass on the public repository.
+- 🟡 The unified title bar on a real Mac: the look in the smoke screenshots, then by hand: clicks on the top bar's
+  buttons under the title bar's band, dragging, double-click to zoom, full screen and back, a saved geometry that
+  stays the same over restarts, always on top.
 - 🔴 Now Playing and media keys (`MPRemoteCommandCenter`, `MPNowPlayingInfoCenter`): the `macosx` interface does it,
   the Qt interface has nothing on macOS (Windows has its SMTC).
 - 🔴 The video in the window (CompositorPlatform's `NSView`), VideoToolbox decoding, HDR, AirPlay audio, the
   audio devices of `auhal`.
 - 🔴 The dock menu, opening files from Finder while running (`QFileOpenEvent`), drag and drop on the dock icon.
 - 🔴 Signed and notarized releases (decision 3), Sparkle or an in-app update.
-- 🔴 Pixel check of every frame (Retina: the 2× assets), dark and light with the system appearance.
+- 🔴 Pixel check of every frame (Retina: the 2× assets), dark and light with the system appearance (the smoke
+  test's screenshots `main-light.png`, `main-dark.png`, `about.png` are the first look).
 
 ## 8. What the first CI run will likely hit
 

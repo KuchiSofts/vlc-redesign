@@ -104,6 +104,12 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   - *Folder information* (Info in a folder's menu, which only opened File Explorer): where the folder is, its date
     and size, and how many files, videos, music, subtitles and folders it holds.
 
+- **macOS: one title bar.** On a Mac the window had two bars, the system's title bar and VLC Redesign's own
+  below it. Now there is one: the red, yellow and green buttons sit at the start of VLC Redesign's top bar, as in
+  other Mac apps, and the window keeps everything macOS gives it (full screen in its own Space, tiling, resizing
+  from every edge, its shadow). Drag the top bar to move the window, double-click it to zoom. *Show window
+  decorations* in Settings, Presentation brings the separate title bar back.
+
 ### Fixed
 
 - **Live TV: Page Up, Page Down, the numbers and Backspace change the channel.** VLC's own shortcuts got these
@@ -265,11 +271,11 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   `make-info-plist.py` takes upstream's file types, imported rather than exported, with the rank *Alternate*.
   The workflow `build-macos.yml` builds both architectures on every pull request (`macos-14`, `macos-15-intel`:
   GitHub retired `macos-13`) and runs `ci/macos-smoke.sh` (headless playback, the Qt interface for 10 s, no crash,
-  no QML warning); it doesn't block a pull request yet. On macOS the window has the system's title bar by
-  default, a minimal menu bar sits at the top of the screen, ⌘ reaches VLC's hotkeys as `Command+` (they never
+  no QML warning); it doesn't block a pull request yet. On macOS the window has one unified title bar (below), a
+  minimal menu bar sits at the top of the screen, ⌘ reaches VLC's hotkeys as `Command+` (they never
   matched with the Qt interface), CJK text takes the fonts of the interface language, and the updater never
   offers a Windows file outside Windows. The analysis and what is left: `extras/juxtopposed/macos/README.md`.
-  Not run on a Mac yet.
+  Both architectures built and passed the launch test on GitHub's Macs (28 October).
 - **Windows on ARM64 build.** `win64-docker.ps1 -Arch aarch64` builds the redesign for ARM64 Windows in VideoLAN's
   llvm-mingw image (`winarm64.Dockerfile`, `vlc-debian-llvm-ucrt:20260611225331`, the image of upstream's
   `win64-arm-llvm` job) with that job's prebuilt contribs (Qt included), UCRT and the Windows 10 API
@@ -290,6 +296,33 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   x64 copy keeps the names it always used). The Windows build workflow builds the ARM64 package and runs
   `ci/arm64-smoke.ps1` on a `windows-11-arm` runner (the binaries, the plugin cache, then the launch test); it has
   not run yet, and no ARM64 PC has run the package.
+- **macOS unified title bar.** `maininterface/macos_titlebar.cpp` keeps the main window's system frame and makes
+  its title bar transparent and untitled, the content under it (`NSWindowStyleMaskFullSizeContentView`), through
+  the Objective-C runtime (Qt 6.8 has no flag for it; the Qt plugin links `libobjc` on macOS). The content keeps its
+  place on the screen when the style changes, so a saved geometry never grows by a title bar. The top bars (library,
+  player, menu bar) start after the traffic lights (`MainCtx.windowButtonsInsetLeft/Right`, read from AppKit, on
+  the right in a right to left system language); the redesign's own window buttons are not made on macOS and the
+  system draws the resize edges, shadow and border. `qt-titlebar` is now off by default on macOS too. Compiled
+  for macOS only for syntax here (Qt 6.8.3 headers, both branches of `objc_msgSend`); the first run on a Mac is the
+  public CI at the upload.
+- **macOS app and launch test complete for 0.4.0.** `macos-build.sh` requires the Live TV add-on in the app (`-t`
+  builds without it; a disk image has no components, Settings turns Live TV off), at least 20 translations, and
+  puts the README, licences, credits (Juxtopposed) and the fonts' OFL in `Resources` as the Windows package does;
+  it verifies every Mach-O of the bundle is signed. `ci/macos-smoke.sh` also checks the signatures one by one, the
+  icon, the translations, the Live TV plugin (loaded: `--list`), the About badge of the processor (*macOS Apple
+  Silicon* / *macOS Intel*), the credits and the unified title bar, and captures the main window light and dark
+  and About. `build-macos.yml` runs on every pull request and push to main of the public repository (free), and on
+  a private one only by hand, Apple Silicon only, within 40 minutes (macOS minutes count ten times there: about
+  150-250 of the free 2,000 a month).
+- **Windows ARM64 package checks.** `ci/pe-check.py` checks a package without running it: every `.exe` and
+  `.dll` has the package's PE machine, every imported DLL (delay-loaded too) is in the package or in Windows, Qt
+  and its QML are built into the interface, the About badge, the Live TV add-on, the translations, the credits and
+  licences. On the 0.4.0 integration build: the 399 binaries ARM64, every import found (Vulkan's loader comes with
+  a graphics driver, as for x64); the x64 build passes too. The Windows build runs it on the ARM64 package. A new
+  job `install-test-arm64` makes the ARM64 installer and runs `ci/arm64-install-test.ps1` on `windows-11-arm`:
+  silent install, every file of the package installed, the ARM64 smoke test on the installed copy (plugin cache,
+  window, a clip played silently), screenshots of the main window and About, uninstall. The `windows-11-arm` jobs
+  run on public repositories only, where they are free.
 - **Platforms in one file, and a website.** `platforms.yml` is the single source of every platform (status, latest
   version and date, the next version, the files of a release, its page). `extras/juxtopposed/platforms/render.py`
   (standard library only, with a reader for the file's YAML) writes the platform bar and table at the top of the

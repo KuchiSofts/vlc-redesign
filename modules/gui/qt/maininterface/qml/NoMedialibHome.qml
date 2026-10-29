@@ -129,7 +129,7 @@ FocusScope {
                                                                : buttons.implicitHeight * 1.618 * _eDPR) // 1.618 = golden ratio approximation
 
             source: MainCtx.useXmasCone() ? "qrc:///logo/vlc48-xmas.png" // TODO: new xmas cone designs
-                                          : "qrc:///misc/cone.svg"
+                                          : "qrc:///redesign/logo.svg"
 
             Connections {
                 target: MainCtx

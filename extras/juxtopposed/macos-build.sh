@@ -66,7 +66,6 @@ esac
 
 # (found before the environment of the build, which keeps the PATH of macOS)
 brew=$(command -v brew || true)
-rsvg=$(command -v rsvg-convert || true)
 
 QT_VERSION=${QT_VERSION:-6.8.3}
 # Qt 6.8 needs macOS 12
@@ -299,28 +298,9 @@ python3 "$root/extras/juxtopposed/macos/make-info-plist.py" \
 plutil -lint "$contents/Info.plist" > /dev/null
 printf 'APPL????' > "$contents/PkgInfo"
 
-# The icon: AppIcon.svg (the redesign's logo on its card) in every size
-iconset=$build/AppIcon.iconset
-rm -rf "$iconset"
-mkdir -p "$iconset"
-svg=$root/extras/juxtopposed/macos/AppIcon.svg
-master=$build/AppIcon-1024.png
-if [ -z "$rsvg" ] && [ -n "$brew" ]; then
-    run librsvg "$brew" install librsvg
-    rsvg=$("$brew" --prefix)/bin/rsvg-convert
-fi
-if [ -n "$rsvg" ] && [ -x "$rsvg" ]; then
-    "$rsvg" -w 1024 -h 1024 "$svg" -o "$master"
-else
-    # (Quick Look draws SVG too)
-    qlmanage -t -s 1024 -o "$build" "$svg" > /dev/null 2>&1
-    mv "$build/AppIcon.svg.png" "$master"
-fi
-for size in 16 32 128 256 512; do
-    sips -z $size $size "$master" --out "$iconset/icon_${size}x${size}.png" > /dev/null
-    sips -z $((size * 2)) $((size * 2)) "$master" --out "$iconset/icon_${size}x${size}@2x.png" > /dev/null
-done
-iconutil -c icns "$iconset" -o "$contents/Resources/AppIcon.icns"
+# The icon: the designer's logo (AppIcon.icns, 16 ... 512@2x, the small sizes
+# hinted; made by extras/juxtopposed/make-app-icon.py from the vector)
+cp "$root/extras/juxtopposed/macos/AppIcon.icns" "$contents/Resources/AppIcon.icns"
 
 # Qt: its frameworks, plugins (cocoa, the mac style, image formats) and
 # the QML modules the interface imports; qt.conf in Resources

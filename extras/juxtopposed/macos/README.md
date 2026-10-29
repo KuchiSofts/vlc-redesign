@@ -10,7 +10,7 @@ the screenshots) run first on the public repository at the upload
 |------|--------------|
 | `extras/juxtopposed/macos-build.sh` | The build on a Mac: contribs, Qt, VLC, `VLC Redesign.app`, the `.dmg` |
 | `extras/juxtopposed/macos/make-info-plist.py` | The app's `Info.plist` from upstream's `share/Info.plist.in` |
-| `extras/juxtopposed/macos/AppIcon.svg` | The app icon (the redesign's logo on its card), drawn into `AppIcon.icns` |
+| `extras/juxtopposed/macos/AppIcon.icns`, `AppIcon.svg` | The app icon: the designer's logo, 16 to 512@2x (the small sizes hinted), from `extras/juxtopposed/make-app-icon.py` |
 | `extras/juxtopposed/ci/macos-smoke.sh` | The launch test: the bundle (signatures, icon, translations, Live TV, About badge, credits), headless playback, the Qt interface and its unified title bar, screenshots light, dark and About |
 | `.github/workflows/build-macos.yml` | Public repository: both architectures on every pull request and push to main (free). Private: by hand only, Apple Silicon only, 40 minutes at most (macOS minutes count ×10) |
 | `modules/gui/qt/maininterface/macos_titlebar.cpp` | The unified title bar (the traffic lights in the redesign's top bar) |
@@ -80,7 +80,7 @@ VLC Redesign.app/Contents/
   Resources/qml/                                     Qt's QML modules (the interface's own QML is in its resources)
   Resources/qt.conf                                  macdeployqt: where Qt finds the above
   Resources/share/{lua,locale,hrtfs,...}             dirs.m: VLC's data
-  Resources/AppIcon.icns                             AppIcon.svg in every size (rsvg-convert, sips, iconutil)
+  Resources/AppIcon.icns                             the app icon (macos/AppIcon.icns, from make-app-icon.py)
 ```
 
 - **Bundle id `org.kuchisofts.vlcredesign`**, the package name planned for Android. VLC names its folders after the
@@ -95,8 +95,9 @@ VLC Redesign.app/Contents/
   `Alternate` (VLC Redesign is offered in *Open With* and can be made the default; it never takes the files of the
   player in use at install), and `http`, `https`, `ftp`, `sftp`, `smb` are left to the browser and Finder. No
   document icons: upstream's are VideoLAN's cone.
-- **Icon**: the redesign's logo (`design/icons/svg/logo.svg`) on its card colour in the macOS icon grid. The Windows
-  executable still has upstream's `vlc.ico`; one icon for both is a question for the owner.
+- **Icon**: the designer's logo (`design/icons/svg/logo.svg`, Juxtopposed's cone from the Figma file) as drawn, on
+  no card, the same icon as Windows, Linux and Android. It is not reshaped to the macOS icon grid: the design has no
+  macOS-shaped icon.
 - **Live TV (IPTV) add-on**: `Frameworks/plugins/libiptv_plugin.dylib` (QtCore, from the bundle's Qt). A disk image
   has no components to choose, unlike the Windows installer: the app always carries it, and *Settings → Startup →
   Live TV (IPTV) add-on* (`iptv-enabled`) turns it off. Deleting the file would break the app's signature;

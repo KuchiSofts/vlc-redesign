@@ -12,6 +12,23 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-10-29):
 
+- 🟢 **One app icon everywhere: the designer's** (branch `feature/app-icon`, 2026-10-29; Android: its own
+  `feature/app-icon`). The owner's rule: every program and app uses Juxtopposed's app icon. The design has no
+  separate app-icon frame; its icon is the logo (the orange cone of the Icon set 42:356, Frame 4, also the
+  onboarding's), `design/icons/svg/logo.svg` (the Figma export, its SHA-256 checked). Our old icon put that logo
+  on a `#191919` card with a `#373737` line, which the design doesn't have: replaced by the logo as drawn.
+  - 🟢 `extras/juxtopposed/make-app-icon.py` draws every size from the vector, hinting 16-40 px:
+    `vlc.ico` (16, 20, 24, 32, 40, 48, 64, 96, 128, 256 PNG), `macos/AppIcon.icns` (16 ... 512@2x, copied by
+    `macos-build.sh`; no more rsvg/sips), hicolor 16, 22, 24, 32, 48, 64, 128, 256, 512 + SVG (installed by
+    `share/Makefile.am` and `linux-packages.sh`), the XPMs, the UPnP server's and the web interface's icons, the
+    site's `favicon.ico` and touch icon. The installer's `setup.ico` and side mark (was a play glyph) are the
+    same icon (`make-art.py` uses the script). The start page, player background and update notice draw the
+    logo in place of upstream's cone; the seasonal cones are off (`qt-icon-change` kept, no effect).
+  - 🟢 Checks: the vector is pixel-identical to the Figma export at 1024 and 2048; renders match Figma's own
+    frames (onboarding 141 px, title bar 24 px) within 0.5/255; vlc.exe's compiled icon resource is
+    byte-identical to `vlc.ico` (windres + MinGW of the build image). Contact sheets (dark/light, 100/150/200 %)
+    in the QA folder `app-icon/`. A full Docker rebuild waits for disk space on the build drive.
+
 - 🟡 **macOS and Windows ARM64 ready for 0.4.0** (branch `feature/mac-arm-final`, 2026-10-29):
   - 🟢 macOS unified title bar in code (`maininterface/macos_titlebar.cpp`): the system frame kept, its title bar
     transparent and untitled, the content under it; the top bars start after the traffic lights; no redesign
@@ -1283,7 +1300,7 @@ Started 2026-10-28 (branch `feature/macos`); the analysis, decisions and what is
   dark and About); free on the public repository, by hand only (Apple Silicon, 40 minutes) on a private one;
   `continue-on-error` until the 0.4.0 checks pass once
 - 🟢 Bundle `org.kuchisofts.vlcredesign` (its settings, library and caches apart from VLC's), macOS 12+, upstream's
-  file types imported with the rank *Alternate*, the icon from the redesign's logo (`macos/AppIcon.svg`), the Live TV
+  file types imported with the rank *Alternate*, the icon from the designer's logo (`macos/AppIcon.icns`), the Live TV
   add-on (Settings turns it off: a disk image has no components), the translations, the texts and licences
 - 🔴 Signed and notarized (decision 3): ad hoc until then (Gatekeeper: *Open Anyway* in Privacy & Security); the
   script already signs with the hardened runtime and notarizes when given a Developer ID

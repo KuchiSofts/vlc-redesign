@@ -4,6 +4,10 @@ Watch the TV channels of your own IPTV provider in VLC Redesign, like on a TV bo
 logos and numbers, what is on now and next, a programme guide, channel up and down, and the past programmes
 when your provider keeps an archive (catch-up).
 
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/tv-zapping.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/tv-zapping.gif" alt="Live TV: Page Up and Page Down change channel, and the banner shows the number, the programme, its progress and description" width="800"></a>
+
+<sub>Page Up and Page Down change channel; at every switch the banner shows the number, the programme on now with its progress, and its description. Click for the MP4 · every clip: [Feature tour](Feature-Tour#live-tv).</sub>
+
 Live TV is an **add-on**: its own plugin, `plugins\misc\libiptv_plugin.dll` (on Linux and macOS
 `plugins/misc/libiptv_plugin.so` / `.dylib`). It is on by default. You can turn it off in **Settings > General >
 Live TV (IPTV) add-on**, or leave it out when installing (the installer's *Live TV (IPTV) add-on* component).
@@ -32,6 +36,10 @@ on Linux, the Keychain on macOS), never written to the log.
 
 ### The catalog
 
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/tv-catalog.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/tv-catalog.gif" alt="Live TV: the catalog of free, legal sources, a search for Pluto TV, Add, and its channels with logos, numbers, groups and what is on" width="960"></a>
+
+<sub>The catalog: a search for Pluto TV, *Add*, and its channels with their logos, numbers, groups and what is on. Click for the MP4 · every clip: [Feature tour](Feature-Tour#live-tv).</sub>
+
 **Catalog** lists free, legal channel lists, with what each one has: the number of channels, a guide, catch-up,
 films and series, free or paid, its languages and countries. Filter them by language, country, category or what
 they can do, search, sort, and **Add** one in a click (with its guide). The catalog of the version is built in; a
@@ -53,6 +61,10 @@ they reach the catalog.
 - The marks at the end of a row: ↺ *7 d* is a channel with an archive of the past 7 days; the heart a favourite.
 
 ### The guide
+
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/tv-guide.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/tv-guide.gif" alt="The Live TV guide with the line of now, each programme's progress, Later and Now, and the Kids group" width="960"></a>
+
+<sub>The guide: the line of now and each programme's progress, *Later* and *Now*, and the Kids group. Click for the MP4 · every clip: [Feature tour](Feature-Tour#live-tv).</sub>
 
 **Guide** at the top of the TV page: the channels down, the time across, the accent line at now.
 

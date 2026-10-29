@@ -44,7 +44,7 @@ in Hebrew, Arabic and Japanese were written for these clips.
 
 ## Android
 
-The Android app (phone and tablet, recorded on the emulator; not part of 0.4.0 yet). Portrait phone clips are 360 px wide, the tablet clip 960 px.
+The Android app (phone and tablet, recorded on the emulator; not part of 0.4.0 yet). Portrait phone clips are 360 px wide (Home 400 px), the tablet clip 960 px.
 
 | Clip | What it shows |
 |---|---|

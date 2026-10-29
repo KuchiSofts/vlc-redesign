@@ -4,6 +4,10 @@ The player opens when a video or a song plays. A video sits in a frame with roun
 the control bar; in fullscreen it fills the screen and the bars float over it. A song opens the music view: the
 cover over a blurred copy of itself, the title and the artist, and a waveform for a seek bar.
 
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/player-bar.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/player-bar.gif" alt="The player bar: play and pause, dragging the seek bar with its subtitle marks, the mouse wheel over the volume" width="720"></a>
+
+<sub>Play and pause, a drag along the seek bar (its marks are the lines of the subtitle file), and the mouse wheel over the volume. Click for the MP4 · every clip: [Feature tour](Feature-Tour#player).</sub>
+
 This page describes every part of the player: the bars, every button the control bar can hold, the panels the
 buttons open, the seek bar, the volume, the queue, and what the mouse and the keys do.
 
@@ -124,8 +128,9 @@ controls: they show in a bar that has them, but the palette does not offer them.
   1 GB and 8 minutes; other media get the plain bar.
 - **The times.** The time played is on the left, the length on the right, always with hours (`00:02:10`).
   - Click the **time played** to type a time to go to, `1:02:10`, `62:10` or `130` (hours, minutes, seconds), then
-    <kbd>Enter</kbd>. <kbd>Esc</kbd> or a click elsewhere leaves it. <kbd>Ctrl</kbd>+<kbd>T</kbd> opens VLC's
-    *Go to time* dialog.
+    <kbd>Enter</kbd>. <kbd>Esc</kbd> or a click elsewhere leaves it. <kbd>Ctrl</kbd>+<kbd>T</kbd> opens the
+    *Go to Time* dialog, drawn in the redesign's look since 0.4.0: it takes a time the same way, with *Start* to go
+    back to the beginning.
   - Click the **length** to show the **time left** instead (`-00:41:12`); click again for the length. At a speed
     other than 1x, the tooltip of the time left gives the real time left at that speed.
 - **Right to left.** In Hebrew, Arabic and the other right-to-left languages, time still runs from left to right
@@ -158,9 +163,17 @@ three tabs:
 
 ## Panels that open above the bar
 
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/open-state.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/open-state.gif" alt="Buttons that light up while what they open is open: tracks and subtitles, effects, the player menu, the more menu" width="800"></a>
+
+<sub>Each button lights up while what it opens shows: tracks and subtitles, effects, the player menu, the ⋯ menu ([#10](https://github.com/KuchiSofts/vlc-redesign/issues/10)). Click for the MP4 · every clip: [Feature tour](Feature-Tour#player).</sub>
+
 Five buttons open a panel right above them: **Languages and tracks**, **Effects**, **VLC Settings**, **HDR** and
 **Cast to TV**.
 
+- **The button shows that its panel is open** (since 0.4.0, suggested in
+  [#10](https://github.com/KuchiSofts/vlc-redesign/issues/10)): the accent icon on a tint of the accent, with no
+  border, the same look as a toggle that is on. Chapters, Bookmarks, Programs, Zoom, the ⋯ menu, the top bar's menu
+  and library buttons and Live TV's channel list do the same while their popup or menu shows.
 - A second click on the button closes the panel; so does a click anywhere outside it, and <kbd>Esc</kbd>.
 - That outside click only closes the panel: it does not pause the video or press the button under it.
 - Opening one panel closes the one that was open.
@@ -296,7 +309,7 @@ See [Library](Library).
 | Double-click | Fullscreen. | *Double click on the video*: Nothing or Toggle fullscreen |
 | Wheel | Volume. | *Scroll wheel*: Nothing, Volume or Seek |
 | Horizontal wheel (or a touchpad swipe) | Seek. | *Horizontal scroll*: Nothing, Volume or Seek; *Reverse scroll direction* reverses seeking |
-| <kbd>Ctrl</kbd>+wheel | Subtitles larger or smaller. | [Keyboard shortcuts](Keyboard-Shortcuts#subtitles) |
+| <kbd>Ctrl</kbd>+wheel | Subtitles larger or smaller, 25 % to 500 %, with a short *Subtitle size* message; <kbd>Ctrl</kbd>+<kbd>0</kbd> back to 100 %. Elsewhere in the window, <kbd>Ctrl</kbd>+wheel zooms the interface. | [Keyboard shortcuts](Keyboard-Shortcuts#subtitles): *Scale up/down subtitles text* |
 | Right-click | The player's menu (below). | |
 
 The right-click menu has: **Play** / **Pause**, **Stop**, **Previous Item**, **Next Item**, **Record**, **Hide UI**

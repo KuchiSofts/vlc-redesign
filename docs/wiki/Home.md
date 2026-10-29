@@ -7,7 +7,8 @@ from the design. This wiki explains every screen, every option and every switch 
 <a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/tour/tour.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/tour/tour.webp" alt="A 56-second tour of VLC Redesign: the welcome steps, Home, seek bar previews, subtitles, music, the panels above the control bar, casting, themes, customizing the controls, languages and the library" width="960"></a>
 
 <sub>The 56-second tour (animated picture). [Watch it in full quality (MP4)](https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/tour/tour.mp4).
-Every picture is the real app, with free films and music.</sub>
+Every picture is the real app, with free films and music.
+Every feature of 0.4.0 in short clips, Windows, Linux, macOS and the Android app in testing: the **[Feature tour](Feature-Tour)**.</sub>
 
 > **Design by Juxtopposed.** Every screen comes from the
 > ["VLC Redesign (Community)"](https://www.figma.com/community/file/1691465999134370980) Figma file by Juxtopposed,
@@ -40,6 +41,7 @@ Every picture is the real app, with free films and music.</sub>
 
 | Page | What it covers |
 |---|---|
+| **[Feature tour](Feature-Tour)** | Every feature of 0.4.0 in short clips, platform by platform, each linked to the page that explains it |
 | **[Install and update](Install-and-Update)** | The installer page by page, silent install switches, the portable zip, [small updates](Install-and-Update#small-updates), uninstalling |
 | **[The player](The-Player)** | Every control of the player: seek bar previews, volume up to 200 %, the panels above the bar, speed, sleep timer, A-B loop, picture in picture |
 | **[Library](Library)** | Home, Videos, Music, Network, Playlists, Recent, media folders, and the library next to the video |
@@ -54,7 +56,7 @@ Every picture is the real app, with free films and music.</sub>
 | **[Casting to a TV](Casting)** | Chromecast and DLNA TVs; [when a TV does not play](Casting-Troubleshooting); [TV compatibility](TV-Compatibility) |
 | **[Settings](Settings)** | Every option of the Settings window, page by page |
 | **[Troubleshooting and FAQ](Troubleshooting-and-FAQ)** | SmartScreen, where settings live, logs, video problems, reporting a bug |
-| **[Platforms](Platforms)** | Windows today; what may come next, in which order, and what is not planned |
+| **[Platforms](Platforms)** | Windows today; Linux and macOS in progress, Windows on ARM64 planned, the Android app in testing; what is not planned |
 | **[Building from source](Building-from-Source)** | The Windows build in Docker, the release script, signing |
 | **[Design check](Design-Check)** | How the app is compared with the 103 frames of the Figma design, and the results |
 | **[Credits and license](Credits-and-License)** | Who made what, and the licenses |
@@ -68,6 +70,10 @@ Every picture is the real app, with free films and music.</sub>
    languages, what VLC does online, and the basic keys.
 3. **Play** something: drop a file on the window, open one from Explorer, or pick it on [Home](Library#home).
 4. VLC Redesign checks for a new release once a day and offers a **small update** when one is out.
+
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/onboarding.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/onboarding.gif" alt="The welcome steps: a media folder, the theme and accent colour, the subtitle languages, what VLC does online, the basic shortcuts, then Home" width="960"></a>
+
+<sub>The welcome steps of 0.4.0, from the media folder to Home. Click for the MP4; every clip: [Feature tour](Feature-Tour).</sub>
 
 | The first start | What may go online |
 |---|---|
@@ -95,4 +101,4 @@ public issue. To help: [CONTRIBUTING.md](https://github.com/KuchiSofts/vlc-redes
 The pages are written in the repository, in
 [`docs/wiki`](https://github.com/KuchiSofts/vlc-redesign/tree/main/docs/wiki), and copied to this wiki by a GitHub
 workflow whenever they change. A correction is welcome as a pull request on those files. The pictures are captures
-of version 0.3.1.
+of version 0.3.1; the clips of the [Feature tour](Feature-Tour) and at the top of the pages are version 0.4.0.

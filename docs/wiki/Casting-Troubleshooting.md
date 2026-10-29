@@ -7,7 +7,7 @@ How casting works is on the [Casting](Casting) page; what is known of each TV is
 
 | Symptom | First thing to try |
 |---|---|
-| The TV is not listed | Turn it on (not standby), same network, wait 20 s, open the panel again |
+| The TV is not listed | Turn it on (not standby), same network, and keep the panel open: it keeps looking |
 | *Windows Firewall doesn't let...* | **Allow on private networks** on the card, and approve Windows' question |
 | *...couldn't read the video...* | Another firewall or security program; ports 7070 (DLNA) and 8010 (Chromecast) |
 | The picture stutters on the TV | Subtitles off (no conversion), or a lower *Cast quality* for a Chromecast |
@@ -16,8 +16,10 @@ How casting works is on the [Casting](Casting) page; what is known of each TV is
 ## The TV is not in the list
 
 - The TV (or Chromecast) must be **on** and on the **same network** as this computer. A TV in standby may not answer.
-- Give the search its time: the dot next to *Cast to* pulses while VLC looks (about 20 seconds). Close the panel and
-  open it again to search again.
+- Give the search its time: the dot next to *Cast to* pulses while VLC looks, and it keeps looking as long as the
+  panel is open, so a TV turned on now shows up by itself. After a few seconds with no device, the panel says so.
+- A device you hid from the list (right-click it) stays hidden, also when the network finds it under its short name;
+  the list can show the hidden devices again.
 - With **Discover cast devices** off (Settings › Recording), the *Renderer* menu (right click on the video →
   *Playback → Renderer*) only looks when you choose *Search for cast devices*. The cast panel always looks.
 - VLC Redesign does not look for devices when it starts: only when you open the cast panel (or the *Renderer* menu),

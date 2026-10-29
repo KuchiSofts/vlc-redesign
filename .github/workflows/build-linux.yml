@@ -154,7 +154,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends vlc-bin vlc-plugin-base
-          sudo apt-get install -y ./packages/vlc-redesign_*_${{ matrix.deb }}.deb
+          sudo apt-get install -y ./packages/vlc-redesign_*_${{ matrix.deb }}.deb ./packages/vlc-redesign-livetv_*_${{ matrix.deb }}.deb
           dpkg -L vlc-redesign | grep -v '^/opt/'
           test "$(dpkg -S /usr/bin/vlc | cut -d: -f1)" = vlc-bin
 
@@ -177,7 +177,7 @@ jobs:
 
       - name: Remove the .deb
         run: |
-          sudo apt-get remove -y vlc-redesign
+          sudo apt-get remove -y vlc-redesign vlc-redesign-livetv
           test ! -e /usr/bin/vlc-redesign
           test ! -e /opt/vlc-redesign/bin/vlc
           vlc --version > /dev/null
@@ -187,7 +187,7 @@ jobs:
         run: |
           docker run --name fedora-rpm -v "$PWD/packages:/packages:ro" \
             fedora:44@sha256:43b29f65a41eb9c35e1cd5323e3bdf3b655c2357a9f4f1ff2f9c2798e5045d80 \
-            sh -c 'dnf install -y /packages/vlc-redesign-*-1.${{ matrix.arch }}.rpm && rpm -V vlc-redesign'
+            sh -c 'dnf install -y /packages/vlc-redesign-*-1.${{ matrix.arch }}.rpm && rpm -V vlc-redesign vlc-redesign-livetv'
           docker commit fedora-rpm vlc-redesign-fedora-test
           docker run --rm --user 1000:1000 -e HOME=/tmp -v "$PWD/clip:/clip:ro" vlc-redesign-fedora-test \
             sh -c "vlc-redesign --version && timeout 120 vlc-redesign $PLAY -vv /clip/clip.mp4 2> /tmp/play.log; \

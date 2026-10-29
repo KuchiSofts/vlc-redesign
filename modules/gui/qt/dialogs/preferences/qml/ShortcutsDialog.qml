@@ -148,6 +148,7 @@ Widgets.RedesignDialog {
     ShortcutsModel {
         id: shortcuts
         ctx: MainCtx
+        liveTv: Iptv.enabled
         search: searchField.text
         searchField: root.scopes[Math.max(0, scopePicker.currentIndex)].value
     }
@@ -630,6 +631,7 @@ Widgets.RedesignDialog {
                 required property string action
                 required property var hotkeys
                 required property var globalHotkeys
+                required property bool hasGlobal
                 required property bool dirty
                 // Names of the design for the actions it shows
                 readonly property string label: root.actionLabels[key] ?? action
@@ -693,6 +695,8 @@ Widgets.RedesignDialog {
                     }
                     KeyField {
                         objectName: "globalHotkey_" + shortcutRow.key
+                        // (the keys of live TV are the window's only)
+                        visible: shortcutRow.hasGlobal
                         x: LayoutMirroring.enabled ? parent.width - width - content.globalX : content.globalX
                         onActiveFocusChanged: if (activeFocus) shortcutList.positionViewAtIndex(shortcutRow.index, ListView.Contain)
                         keyList: shortcutRow.globalHotkeys

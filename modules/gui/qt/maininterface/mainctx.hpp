@@ -32,6 +32,7 @@
 #include <QColor>
 #include <QRectF>
 #include <QTimer>
+#include <QPointer>
 
 #include <atomic>
 #include <memory>
@@ -189,6 +190,12 @@ class MainCtx : public QObject
 
     // NOTE: This is useful when we want to prioritize player hotkeys over QML keyboard navigation.
     Q_PROPERTY(bool preferHotkeys READ preferHotkeys WRITE setPreferHotkeys NOTIFY preferHotkeysChanged FINAL)
+    // An item that may take keys before the hotkeys and the focused item
+    // (live TV over the video: its channels on Page Up, Page Down, the
+    // digits...): its function takeKey(key, modifiers) does what the key
+    // does there (true: done); wantsKey(key, modifiers) lets other keys go
+    // to the items (its list); the others stay hotkeys
+    Q_PROPERTY(QObject* keysBeforeHotkeys READ keysBeforeHotkeys WRITE setKeysBeforeHotkeys NOTIFY keysBeforeHotkeysChanged FINAL)
 
     //Property for Activating bgCone in player view
     Q_PROPERTY(bool bgCone READ isbgCone WRITE setbgCone NOTIFY bgConeToggled FINAL)
@@ -340,6 +347,13 @@ public:
 
     // no hotkey of VLC takes the key: the interface may (Q, L of the onboarding)
     Q_INVOKABLE bool isHotkeyFree(Qt::Key key, Qt::KeyboardModifiers modifiers) const;
+    // The action of live TV the key has in the shortcuts ("channel-up",
+    // "channel-down", "previous", "list", "info"), "" none
+    Q_INVOKABLE QString tvKeyAction(Qt::Key key, Qt::KeyboardModifiers modifiers) const;
+    // The item of keysBeforeHotkeys did what the key does
+    bool keyTakenBeforeHotkeys(int key, Qt::KeyboardModifiers modifiers) const;
+    // The item of keysBeforeHotkeys wants the key to go to the items
+    bool keyGoesBeforeHotkeys(int key, Qt::KeyboardModifiers modifiers) const;
     // The relative luminance (WCAG, 0 black to 1 white) of an area of the
     // window as shown (in its coordinates): what a text drawn there is over,
     // to choose a readable colour; -1 when it can't be read
@@ -446,6 +460,9 @@ public:
 
     bool preferHotkeys() const;
     void setPreferHotkeys(bool enable);
+
+    QObject* keysBeforeHotkeys() const { return m_keysBeforeHotkeys; }
+    void setKeysBeforeHotkeys(QObject* item);
 
     QWindow *intfMainWindow() const;
 
@@ -580,6 +597,7 @@ protected:
     bool m_smoothScroll = true;
 
     bool m_preferHotkeys = false;
+    QPointer<QObject> m_keysBeforeHotkeys;
 
     int m_maxVolume = 125;
 
@@ -740,6 +758,7 @@ signals:
     void smoothScrollChanged();
 
     void preferHotkeysChanged();
+    void keysBeforeHotkeysChanged();
 
     void useGlobalShortcutsChanged( bool );
 

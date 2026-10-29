@@ -117,6 +117,20 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   panel under them; they have the window's frame colour around them now, in both themes. Icon buttons stay as
   they are. In the light theme the classic windows' selected tabs, rows and main buttons write their text in a
   darker accent, readable on the pale tint.
+- **Subtitles in every language read right, whatever their encoding.** A subtitle file saved in an old encoding
+  (Hebrew Windows-1255, Arabic 1256, Russian 1251 or KOI8, Greek, Turkish, Polish and Czech, Baltic, Vietnamese,
+  Thai, Japanese Shift-JIS, Chinese GBK or Big5, Korean…) showed as gibberish unless the interface was in that same
+  language. VLC now recognises the encoding by itself, from the text, the language in the file name
+  (`movie.he.srt`) and your preferred subtitle language; UTF-8, UTF-16 and UTF-32 files are read as before. It
+  works for SRT, MicroDVD, ASS/SSA, SAMI, WebVTT, the text tracks inside videos and the subtitle lines on the seek
+  bar, on every system. *Settings › Subtitles › Encoding* still forces one when you choose it. A character that
+  cannot be read shows as `�`, never as a wrong letter.
+- **Hebrew and Arabic ASS/SSA subtitles in the right order.** Their full stops, question marks, brackets and
+  numbers showed on the wrong side of the line (ASS subtitles were laid out left to right, as the old VSFilter did);
+  they now read as SRT subtitles always did.
+- **Picture subtitles (DVD, Blu-ray, DVB) stay smooth** on Windows when the video is scaled with the *Point*,
+  *Video processor* or *Super Resolution* upscaler: they were blocky there. Text subtitles were already drawn at the
+  size of the screen and are unchanged.
 - **Light theme: the classic windows' title bar matches the other dialogs.** The classic windows (the
   ones from VLC's older interface, in the redesign's look) had a darker grey title bar (`#9C9C9B`) than the
   redesign's own dialogs; it is the same light grey now (`#DEDEDE`). Nothing else looks different: the 228 places
@@ -175,6 +189,24 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Technical
 
+- **Encoding detection of text subtitles** (`modules/codec/subs_charset.c`): a byte order mark, UTF-16 without
+  one, valid UTF-8, else the legacy encoding whose decoding reads most like text (letters of the encoding's script,
+  one script per word, letter case, marks after letters, Hebrew final letters, Russian and Greek letter
+  frequencies, Thai vowel order, the frequent rows of the CJK encodings, no control characters or undefined bytes),
+  the languages of the file name, the track and `sub-language` and the interface code page breaking ties. The
+  subtitle demux and the WebVTT demux convert whole files to UTF-8 (`subs_charset_LoadUTF8`, so libass gets UTF-8
+  too), subsdec detects the packets of a track that are not UTF-8 (a Matroska "UTF-8" track in Windows-1255), the
+  seek bar's cue reader uses the same detection. Test: `extras/juxtopposed/subtitle-charset-test.py` over the corpus
+  of `extras/juxtopposed/fixtures/subtitles` (28 encodings, 19 languages and mixed lines, BOM or not, CRLF or LF, five formats,
+  files without a language in their name, one-line cues): 212/212 decoded right with glibc iconv (Linux) and with
+  GNU libiconv as VLC uses it on Windows.
+- **libass: base direction from the text** (style Encoding -1, `ASS_FEATURE_WHOLE_TEXT_LAYOUT`,
+  `ASS_FEATURE_BIDI_BRACKETS`): right-to-left lines follow the Unicode bidi algorithm, as freetype does;
+  left-to-right lines are unchanged.
+- **direct3d11: subpicture regions get a bilinear sampler of their own**; they were drawn with the sampler the video
+  quad left bound (a point one with the point, processor and super resolution upscalers). Measured on captures:
+  text subtitles are pixel for pixel the same (they are rasterised at the display size and drawn 1:1), PGS drawn
+  with `--d3d11-upscale-mode=point` now matches the linear mode.
 - **Every upload checked for the whole project.** `extras/juxtopposed/release/release-check.py` checks the version,
   the changelog, the roadmap and the plan, the README, the platforms and the website, the wiki, the design tokens,
   the translations, VideoLAN's master, the credits and every open issue; the pre-push hook runs it for every push

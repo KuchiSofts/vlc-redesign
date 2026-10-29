@@ -1,0 +1,2 @@
+# The corpus is bytes in legacy encodings, with CRLF or LF on purpose
+corpus/** -text -diff

@@ -507,9 +507,10 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   ARM64 build on aarch64. A new workflow (`build-linux.yml`) builds on x86_64 and ARM64 runners and tests the
   packages on a clean runner: the .deb installed with apt next to the distribution's VLC, the AppImage, and the
   .rpm in Fedora 44, each printing its version and playing a clip to its end without a window or sound.
-- Merged VLC master up to `6836ae77ae` (2026-10-27), 110 commits ([#8](https://github.com/KuchiSofts/vlc-redesign/issues/8)):
+- Merged VLC master up to `12023233ef` (2026-10-29), 123 commits ([#8](https://github.com/KuchiSofts/vlc-redesign/issues/8)):
   upstream's own fix for stopping the Windows audio output under its lock, the playlist recovery question shown
-  without blocking, and the rest of upstream's work.
+  without blocking, the picture-in-picture player aligned to the screen's pixels, a placeholder for a bar control
+  that fails to load, mpg123 1.33.7 in the contribs, and the rest of upstream's work.
 
 ---
 

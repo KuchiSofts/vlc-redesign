@@ -42,8 +42,9 @@ case $pm in
          apt-get update -qq
          apt-get install -y -qq --no-install-recommends xvfb xdotool imagemagick dbus dbus-x11 \
              fonts-dejavu-core weston file binutils xz-utils desktop-file-utils locales \
-             ${FLATPAK:+flatpak} > "$out/tools.log" 2>&1
-         # (not ca-certificates: the package must bring it)
+             ${FLATPAK:+flatpak ca-certificates} > "$out/tools.log" 2>&1
+         # (not ca-certificates: the package must bring it; flatpak itself
+         # needs them for Flathub, and the app has the runtime's)
          sed -i -E 's/^# *(en_US|he_IL)(\.UTF-8 UTF-8)/\1\2/' /etc/locale.gen
          locale-gen en_US.UTF-8 he_IL.UTF-8 >> "$out/tools.log" 2>&1 ;;
     dnf) dnf install -y -q xorg-x11-server-Xvfb xdotool ImageMagick dbus-daemon dbus-x11 \
@@ -61,10 +62,18 @@ snapshot() {
     find / -xdev \( -path /proc -o -path /sys -o -path /dev -o -path /tmp -o -path /run -o -path /out \
         -o -path /pkg -o -path /media -o -path /harness -o -path /var/cache -o -path /var/log \
         -o -path /var/lib/apt -o -path /var/lib/dpkg -o -path /var/lib/dnf -o -path /var/lib/rpm \
-        -o -path /usr/lib/sysimage/rpm -o -path /var/lib/pacman -o -path /home/tester \
+        -o -path /usr/lib/sysimage/rpm -o -path /var/lib/pacman -o -path /home/tester -o -path /root \
         -o -path /var/lib/flatpak/repo -o -path /var/tmp \) -prune -o -print 2>/dev/null | sort
 }
 snapshot > /tmp/before.txt
+packages() {
+    case $pm in
+        apt) dpkg-query -W -f '${Package}\n' ;;
+        dnf) rpm -qa --qf '%{NAME}\n' ;;
+        pacman) pacman -Qq ;;
+    esac | sort -u
+}
+packages > /tmp/packages-before.txt
 
 # --- install ----------------------------------------------------------------
 main=$(ls /pkg/vlc-redesign_*.deb /pkg/vlc-redesign-[0-9]*.rpm 2>/dev/null | grep -E "\.$kind\$" | head -n 1)
@@ -92,6 +101,8 @@ case $kind in
          vlc=/opt/vlc-redesign/vlc
          pass "tarball unpacked" ;;
     flatpak) fp=$(ls /pkg/vlc-redesign-*.flatpak | head -n 1)
+         # (flatpak run talks to the system bus: "Could not connect" without it)
+         mkdir -p /run/dbus && dbus-daemon --system --fork
          flatpak remote-add --system --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
          flatpak install --system -y --noninteractive "$fp" > "$out/install.log" 2>&1 \
             && pass "flatpak installed: $(basename "$fp")" \
@@ -295,9 +306,23 @@ comm -13 /tmp/before.txt /tmp/after.txt > "$out/left-behind.txt"
 # purges ca-certificates, a dependency, as for any package bringing it;
 # lastlog: the login record of the test's su)
 grep -v -E '^/var/lib/flatpak/(runtime|repo)|^/var/lib/flatpak/(\.changed|appstream|exports)' "$out/left-behind.txt" \
-    | grep -v -E '^/etc/ssl(/|$)|^/etc/ca-certificates|^/var/lib/lastlog(/|$)' > "$out/left-behind-pkg.txt" || true
+    | grep -v -E '^/etc/ssl(/|$)|^/etc/ca-certificates|^/usr/local/share/ca-certificates$|^/var/lib/lastlog(/|$)' > "$out/left-behind-unfiltered.txt" || true
 grep -q -E '^/etc/ssl/certs/' "$out/left-behind.txt" \
     && info "left by ca-certificates (a dependency): /etc/ssl/certs, generated at its installation"
+# The files of a package still installed are not left behind: a dependency
+# the package manager keeps (another package needs or recommends it: apt
+# keeps what the test tools recommend, ca-certificates and openssl)
+owned() {
+    case $pm in
+        apt) dpkg -S "$1" > /dev/null 2>&1 ;;
+        dnf) rpm -qf "$1" > /dev/null 2>&1 ;;
+        pacman) pacman -Qo "$1" > /dev/null 2>&1 ;;
+    esac
+}
+while read -r f; do owned "$f" || echo "$f"; done < "$out/left-behind-unfiltered.txt" > "$out/left-behind-pkg.txt"
+packages > /tmp/packages-after.txt
+kept=$(comm -13 /tmp/packages-before.txt /tmp/packages-after.txt | tr '\n' ' ')
+[ -n "$kept" ] && info "dependencies kept by $pm (other packages need or recommend them): $kept"
 if [ -s "$out/left-behind-pkg.txt" ]; then fail "left behind: $(head -n 8 "$out/left-behind-pkg.txt" | tr '\n' ' ')"
 else pass "removed: nothing left behind outside the user's folder"; fi
 ls -A /home/tester/.config /home/tester/.local/share 2>/dev/null | sed 's/^/INFO user files kept: /' | head -n 5 | tee -a "$summary"

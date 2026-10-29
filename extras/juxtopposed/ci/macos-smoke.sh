@@ -76,7 +76,7 @@ if [ -z "$unsigned" ] && [ "$machos" -ge 300 ]; then
 else
     fail "$machos binaries, not signed:${unsigned:- (too few binaries)}"
 fi
-# the icon (the redesign's logo, AppIcon.svg)
+# the icon (the designer's logo, AppIcon.icns)
 icon=$(plist CFBundleIconFile)
 icon=${icon%.icns}
 if [ -n "$icon" ] && [ "$(stat -f %z "$contents/Resources/$icon.icns" 2>/dev/null || echo 0)" -gt 20000 ]; then

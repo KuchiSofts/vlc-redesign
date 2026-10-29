@@ -11,12 +11,13 @@ art/ (next to this script):
 The wizard's client area is 596 x 432 at 100 % DPI and grows with the
 font, not exactly with the DPI (Inno Setup: WizardBackImageFile), so
 every piece is drawn for each of these sizes; the installer picks the one
-of its window. Needs Pillow and fontTools.
+of its window. Needs Pillow and fontTools (and, for the icon, what
+../make-app-icon.py needs: numpy and resvg-py).
 
     python make-art.py
 """
 import os
-from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
+from PIL import Image, ImageDraw, ImageFont, ImageOps
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, 'art')
@@ -88,26 +89,23 @@ def rounded(w, h, r, fill, border=None, bw=0, alpha=255):
 
 
 def mark(size):
-    """The installer's own mark: an orange play glyph in a rounded card
-    (not the VLC cone, which is VideoLAN's trademark)."""
-    s = size * 4
-    img = Image.new('RGBA', (s, s), (0, 0, 0, 0))
-    d = ImageDraw.Draw(img)
-    r = int(s * 0.22)
-    d.rounded_rectangle((0, 0, s - 1, s - 1), r, fill=CARD + (255,), outline=(55, 55, 55, 255),
-                        width=max(4, s // 64))
-    cx, cy, h = s * 0.53, s * 0.5, s * 0.40
-    tri = [(cx - h * 0.45, cy - h * 0.55), (cx - h * 0.45, cy + h * 0.55), (cx + h * 0.55, cy)]
-    glow = Image.new('RGBA', (s, s), (0, 0, 0, 0))
-    ImageDraw.Draw(glow).polygon(tri, fill=ACCENT + (150,))
-    img = Image.alpha_composite(img, glow.filter(ImageFilter.GaussianBlur(s * 0.05)))
-    d = ImageDraw.Draw(img)
-    lw = int(s * 0.06)
-    d.polygon(tri, fill=ACCENT + (255,))
-    d.line(tri + [tri[0], tri[1]], fill=ACCENT + (255,), width=lw, joint='curve')
-    for x, y in tri:
-        d.ellipse((x - lw / 2, y - lw / 2, x + lw / 2, y + lw / 2), fill=ACCENT + (255,))
-    return img.resize((size, size), Image.LANCZOS)
+    """The installer's icon and the wizard's side mark: the app icon (the
+    designer's logo, drawn and hinted by ../make-app-icon.py)"""
+    return _app_icon().icon(size)
+
+
+_module = None
+
+
+def _app_icon():
+    global _module
+    if _module is None:
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            'make_app_icon', os.path.join(HERE, '..', 'make-app-icon.py'))
+        _module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(_module)
+    return _module
 
 
 def background(w, h):
@@ -211,12 +209,9 @@ def main():
                     toggle(on, sx, sy, label, rtl).save(os.path.join(ui, f'{name}-{n}.png'), optimize=True)
         mark(round(28 * s)).save(os.path.join(ui, f'mark-{n}.png'), optimize=True)
     write_fonts()
-    # each size drawn at its size (not the 256 one scaled down)
-    sizes = [16, 20, 24, 32, 40, 48, 64, 96, 128, 256]
-    big = mark(256)
-    big.save(os.path.join(OUT, 'setup.ico'), sizes=[(s, s) for s in sizes],
-             append_images=[mark(s) for s in sizes if s != 256])
-    big.save(os.path.join(OUT, 'mark-256.png'))
+    # the app icon: each size drawn at its size (vlc.ico's sizes)
+    _app_icon().write_ico(os.path.join(OUT, 'setup.ico'), _app_icon().ICO_SIZES)
+    mark(256).save(os.path.join(OUT, 'mark-256.png'), optimize=True)
     print('art written to', OUT)
 
 

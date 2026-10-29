@@ -60,6 +60,13 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Changed
 
+- **One app icon everywhere: the designer's.** The icon of VLC Redesign is now Juxtopposed's own logo from the
+  Figma file (the orange cone), as drawn, on no card: `vlc.exe` and its taskbar button, shortcuts and files, the
+  installer and uninstaller, the macOS app, the Linux menus (hicolor 16 to 512 px and the SVG), the UPnP server
+  as TVs see it, the web interface, the site's favicon and the README. The small sizes (16 to 40 px) are hinted so
+  the cone stays sharp; `.ico` has 16, 20, 24, 32, 40, 48, 64, 96, 128 and 256 px, `.icns` 16 to 512@2x, all from
+  the vector (`extras/juxtopposed/make-app-icon.py`). The start page, the player's background and the update
+  notice draw the same logo in place of upstream's cone, and the seasonal cones (Christmas, April Fools) are gone.
 - **Every window and popup has a border like the main window.** Dialogs (Restore the play queue, confirmations,
   Go to Time, Media Statistics, Plugins, Folder information, What's new, Settings, Keyboard Shortcuts, the welcome),
   menus, the panels that open from the player's buttons (tracks and subtitles, the queue card, cast, sleep timer,

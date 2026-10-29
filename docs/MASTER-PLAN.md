@@ -114,7 +114,7 @@ What is being worked on, updated as it changes (2026-10-29):
   Customize Player it lands framed and removable; no QML warning in a full UI tour.
 - 🟢 **The review report (105 bugs)**: checked one by one and fixed in four groups (installer and tooling, core,
   Qt C++, QML); see the changelog. Checked in the build: SD colours (red 254,0,0 instead of 239,4,0; HD and HDR
-  unchanged), the package check, a UI tour without warnings. Still to test by hand: casting on the owner's test TV, the
+  unchanged), the package check, a UI tour without warnings. Still to test by hand: casting on the real test TV, the
   all-users installer, an update from 0.3.1, the proxy exceptions, Linux builds.
 - 🟡 **Weblate**: every language has all 1,723 texts again (7,093 translated, `msgfmt -c` clean in all 110
   catalogs), about 80 wrong catalog translations fixed, the volunteers' Estonian and Swedish merged, 12 texts that
@@ -1091,10 +1091,10 @@ All classic windows go through one hook, `redesign_widget_theme.cpp`, applied fr
 - 🟢 TVs listed before the panel opens, the last one used at the top
 - 🟢 Samsung (UE55MU8000): a paused cast is kept (a trickle of null packets while paused)
 - 🟢 Samsung: a film sent as it is goes as MPEG-TS; a TV that stops it gets it converted
-- 🟢 The real-TV gate on the 0.3.0 candidate (build 193, 2026-10-25, the owner's test TV): converted with subtitles: started in
+- 🟢 The real-TV gate on the 0.3.0 candidate (build 193, 2026-10-25, the real test TV): converted with subtitles: started in
   3.5 s, paused 1 min and 5 min (paused the whole time), resumed, seeked, next file, the last film to its end; sent as
   it is (AVC_TS_NA_ISO): started mid-film in 2.5 s, seeked to 25 s before the end, the TV played to the end and the
-  player stayed playing until it had; quit in 0.5 s. Earlier: 2026-10-24 on build 174 (the owner's test TV, Samsung): start, pause 1 min and
+  player stayed playing until it had; quit in 0.5 s. Earlier: 2026-10-24 on build 174 (the real test TV, a Samsung): start, pause 1 min and
   5 min (paused the whole time), seek, resume, next file, the end (stopped at 29.3 of 30 s), converted with
   subtitles; and on build 178 a cast sent as-is, started mid-film, seeked to 25 s before the end: the TV played to
   the end and the player stayed playing until it had (the end of a cast mid-film, ff54815d10, d0e1f85b1e, and the

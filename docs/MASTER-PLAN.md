@@ -285,7 +285,7 @@ counted from this document's own tables and checklists (column *From*); ⚪ idea
 | Program         | Progress             | Done    | %     | From                                   |
 |-----------------|----------------------|---------|-------|----------------------------------------|
 | Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 91/97   | 93 %  | [§8](#8-next-release-030) checklists   |
-| Linux           | 🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 1/7     | 14 %  | [§9](#linux)                           |
+| Linux           | 🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ | 2/7     | 28 %  | [§9](#linux)                           |
 | macOS           | 🟩🟩🟩🟩⬜⬜⬜⬜⬜⬜ | 2/5     | 40 %  | [§9](#macos)                           |
 | Windows ARM64   | 🟩🟩🟩🟩🟩⬜⬜⬜⬜⬜ | 2/4     | 50 %  | [§9](#windows-on-arm64)                |
 | Android         | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/7     | 0 %   | [§9](#android-phones-tablets-tv)       |
@@ -1314,17 +1314,29 @@ Tracks with checklists; a version number comes with the first published build.
   takes from the system (glibc 2.38, libstdc++ of GCC 13, GL/EGL/GBM/DRM, VA-API, VDPAU, udev, systemd); the rpm
   asks for sonames and provides nothing (its bundled Qt doesn't satisfy other packages). x86_64 made and checked
   here (dpkg-deb, rpm in Fedora, the AppImage unpacked): AppImage 165 MB, .deb 155 MB, .rpm 155 MB, tarball 126 MB.
-  🔴 Installed and run on GitHub, ARM64 built there
+  2026-10-29 (`feature/linux-final`): Live TV is the package `vlc-redesign-livetv` (recommended, removable alone),
+  ca-certificates and (rpm) hicolor-icon-theme are dependencies, libwayland comes from the system. Installed, run
+  and removed in clean containers (below). 🔴 ARM64 built on GitHub (the workflow runs after the push)
 - 🟡 Flatpak: `flatpak/org.kuchisofts.VLCRedesign.yml` written by the script (KDE 6.8 runtime; libebml, libmatroska,
   libdvbpsi, taglib, medialibrary of the contribs; network, Wayland/X11, PulseAudio, DRI, the video and music
-  folders, `/media`, screen saver and MPRIS only). 🔴 Not built yet (flatpak-builder), then Flathub
-- 🟡 glibc 2.38 or later (Ubuntu 24.04, Debian 13, Fedora 39): built on Ubuntu 24.04. Ubuntu 22.04 and Debian 12
-  need a build on an older base
+  folders, `/media`, screen saver and MPRIS only). 🟢 `linux-flatpak.sh` builds the one-file bundle from the
+  tarball (2026-10-29), installed and toured in a container; its plugin cache made with OSTree's file times (it
+  was stale at every start). Its runtime pulls `org.freedesktop.Platform.GL.default` 24.08, now marked
+  end-of-life: KDE 6.9 or later before Flathub. 🔴 Flathub
+- 🟢 glibc 2.38 or later (Ubuntu 24.04, Debian 13, Fedora 39): built on Ubuntu 24.04. On Ubuntu 22.04 and Debian 12
+  apt refuses the .deb (libc6 >= 2.38, libstdc++6 >= 13) and the folder and AppImage launcher says "VLC Redesign
+  needs glibc 2.38 or later … This system has glibc 2.35" (checked 2026-10-29); no build on an older base planned
 - 🔴 X11, Wayland; PipeWire, PulseAudio; VA-API, VDPAU; Intel, AMD, NVIDIA
 - 🟡 Updates: the AppImage carries `gh-releases-zsync|KuchiSofts|vlc-redesign|latest|vlc-redesign-*-ARCH.AppImage.zsync`
   (AppImageUpdate); file associations: the desktop entry has VLC's MIME types. 🔴 The in-app updater on Linux,
   casting firewall notes
-- 🔴 Tested on Ubuntu, Fedora, Debian, Arch (VMs and a real PC)
+- 🟡 Tested on Ubuntu, Fedora, Debian, Arch: 🟢 clean containers (2026-10-29, `linux-pkg-test.sh`): .deb on
+  Ubuntu 24.04 and 26.04 and Debian 13, .rpm on Fedora 41 and 43, the AppImage on Arch, the Flatpak; install,
+  libraries, UI tour on Xvfb (borders, Pluto TV, Hebrew right to left, the *· AppImage* badge), headless Weston
+  13/14/15, Live TV removed alone, nothing left after removal: every check passed
+  ([table](qa/0.4.0-ui-audit.md#linux-x86_64-packages-branch-featurelinux-final-2026-10-29)). Weston 14 and 15
+  hung VLC at the end of every video (`wl_shm` waited for a buffer Weston keeps until the surface goes): fixed
+  (`befa6802a3`). 🔴 VMs and a real PC (GPU, PipeWire, a desktop)
 - 🔴 Pixel check of every frame
 
 ### macOS

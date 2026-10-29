@@ -1,7 +1,7 @@
 name: TV report
 description: Tell how casting to your TV or Chromecast went, good or bad (it fills the TV compatibility page)
 title: "TV report: "
-labels: ["casting", "tv-report"]
+labels: ["area:casting", "tv-report"]
 body:
   - type: markdown
     attributes:

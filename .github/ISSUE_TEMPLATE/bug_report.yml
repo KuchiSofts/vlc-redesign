@@ -63,3 +63,16 @@ body:
     attributes:
       label: Screenshots or a short recording
       description: Drag images or videos here. Compare with the design if it's a visual problem.
+  - type: textarea
+    id: log
+    attributes:
+      label: Log (optional)
+      description: Turn on Settings › General › Diagnostics › Save a log, restart VLC Redesign, repeat the problem, and drag the log file here. Remove anything private from it first.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I searched the existing issues, open and closed, and this is not one of them
+          required: true
+        - label: I use the latest release, or I say above why not

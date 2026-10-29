@@ -34,9 +34,21 @@ T.ToolButton {
 
     required property string description
 
-    property color color: (control.checked) ? theme.accent : theme.fg.primary
+    // Open: the panel, popup or menu the button opens shows (its "open"
+    // state); drawn as an ON toggle (checked): the accent, an accent tint
+    // behind, no border (the focus ring stays the keyboard's)
+    property bool active: false
 
-    property color backgroundColor: theme.bg.primary
+    readonly property bool lit: control.checked || control.active
+
+    property color color: control.lit ? theme.accent : theme.fg.primary
+
+    property color backgroundColor: control.lit && !(control.hovered || control.down)
+                                    ? Qt.alpha(theme.accent, theme.palette.isDark ? 0.18 : 0.14)
+                                    : theme.bg.primary
+
+    // the open and ON states come and go quickly
+    property int backgroundAnimationDuration: VLCStyle.duration_long
 
     property real radius: VLCStyle.button_radius
 
@@ -108,6 +120,8 @@ T.ToolButton {
         implicitHeight: control.font.pixelSize
 
         enabled: theme.initialized
+
+        animationDuration: control.backgroundAnimationDuration
 
         color: control.backgroundColor
 

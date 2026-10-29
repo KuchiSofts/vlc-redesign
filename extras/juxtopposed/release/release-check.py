@@ -189,7 +189,7 @@ for path in ('modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml', 'READ
 android = os.path.join(os.path.dirname(os.path.dirname(ROOT)), 'vlc-android-redesign')
 if os.path.isdir(android):
     # a text the app shows (strings.xml), not a comment in the code
-    found = subprocess.run(['git', '-C', android, 'grep', '-l', 'Juxtopposed', '--', 'application/**/strings*.xml'],
+    found = subprocess.run(['git', '-C', android, 'grep', '-l', 'Juxtopposed', '--', 'application/*strings*.xml'],
                            capture_output=True, text=True).stdout.strip()
     check(found, 'Designer credited: the Android app', 'Juxtopposed is not named in the Android app')
 if release:

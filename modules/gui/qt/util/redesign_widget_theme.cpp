@@ -31,6 +31,7 @@
 #include <QEvent>
 #include <QFont>
 #include <QGuiApplication>
+#include <QPushButton>
 #include <QHash>
 #include <QList>
 #include <QMenu>
@@ -117,7 +118,7 @@ QTabBar::tab:hover {
 }
 QTabBar::tab:selected {
     background: $(accentBackground);
-    color: $(accent);
+    color: $(onAccent);
 }
 QTabBar::tab:disabled {
     color: $(disabled);
@@ -131,7 +132,7 @@ QTabBar QToolButton {
 QPushButton {
     background: $(raised);
     color: $(text);
-    border: 1px solid transparent;
+    border: 1px solid $(windowBorder);
     border-radius: $(dp:6)px;
     padding: $(dp:5)px $(dp:12)px;
     font-size: $(dp:14)px;
@@ -145,7 +146,8 @@ QPushButton:pressed {
 }
 QPushButton:checked, QPushButton:default {
     background: $(accentBackground);
-    color: $(accent);
+    border-color: $(accentBackground);
+    color: $(onAccent);
 }
 QPushButton:default:hover {
     background: $(accentHover);
@@ -153,8 +155,14 @@ QPushButton:default:hover {
 QPushButton:focus {
     border-color: $(accent);
 }
+QPushButton:flat, QPushButton[vlcIconOnly="true"] {
+    border-color: transparent;
+}
 QPushButton:flat {
     background: transparent;
+}
+QPushButton:flat:focus, QPushButton[vlcIconOnly="true"]:focus {
+    border-color: $(accent);
 }
 QPushButton:disabled {
     background: $(raised);
@@ -187,7 +195,7 @@ QToolButton:pressed {
 }
 QToolButton:checked {
     background: $(accentBackground);
-    color: $(accent);
+    color: $(onAccent);
 }
 QToolButton:focus {
     border-color: $(accent);
@@ -197,7 +205,7 @@ QToolButton:disabled {
 }
 QToolButton#playButton {
     background: $(accentBackground);
-    color: $(accent);
+    color: $(onAccent);
     border-radius: $(dp:6)px;
     padding: $(dp:5)px $(dp:30)px $(dp:5)px $(dp:14)px;
     font-size: $(dp:14)px;
@@ -230,7 +238,7 @@ QLineEdit, QAbstractSpinBox, QTextEdit, QPlainTextEdit {
     border: $(dp:2)px solid $(raised);
     border-radius: $(dp:6)px;
     selection-background-color: $(accentBackground);
-    selection-color: $(accent);
+    selection-color: $(onAccent);
     font-size: $(dp:14)px;
 }
 QLineEdit, QAbstractSpinBox {
@@ -291,7 +299,7 @@ QComboBox {
     border-radius: $(dp:6)px;
     padding: $(dp:3)px $(dp:4)px $(dp:3)px $(dp:12)px;
     selection-background-color: $(accentBackground);
-    selection-color: $(accent);
+    selection-color: $(onAccent);
     font-size: $(dp:14)px;
 }
 QComboBox:hover, QComboBox:on {
@@ -328,7 +336,7 @@ QComboBox QAbstractItemView {
     border-radius: 0px;
     padding: $(dp:2)px;
     selection-background-color: $(hover);
-    selection-color: $(accent);
+    selection-color: $(onAccent);
 }
 
 QAbstractItemView {
@@ -339,7 +347,7 @@ QAbstractItemView {
     border-radius: $(dp:6)px;
     padding: $(dp:2)px;
     selection-background-color: $(accentBackground);
-    selection-color: $(accent);
+    selection-color: $(onAccent);
     outline: 0px;
     font-size: $(dp:14)px;
 }
@@ -351,7 +359,7 @@ QAbstractItemView::item:hover {
 }
 QAbstractItemView::item:selected {
     background: $(accentBackground);
-    color: $(accent);
+    color: $(onAccent);
 }
 QTreeView {
     show-decoration-selected: 1;
@@ -583,6 +591,8 @@ struct Colors
     QColor window, raised, hover, field, separator;
     QColor text, bright, muted, disabled, outline, handle, handleHover;
     QColor accent, accentDim, accentBackground, accentHover;
+    // the text on accentBackground; the frame of the window (buttons)
+    QColor onAccent, windowBorder;
     QColor titleBar;
 };
 
@@ -646,6 +656,13 @@ Colors colors(bool dark, const QColor &accent)
     else
         c.accentBackground = mix(QColor(0xDE, 0xDE, 0xDE), accent, 0.35f);
     c.accentHover = dark ? c.accentBackground.lighter(140) : c.accentBackground.darker(110);
+    // the accent reads 1.8:1 on the light theme's pale tint of it: darkened
+    // there to the 4.5:1 of WCAG AA (5.1 to 6.4:1 for the 9 accents)
+    c.onAccent = dark ? accent : accent.darker(220);
+    // a neutral button (#191919 on the dialogs' #191919 panels, the same grey
+    // in the light theme) has the frame of the window around it, so it never
+    // melts into its panel (docs/MASTER-PLAN.md §6)
+    c.windowBorder = QColor(0x4C, 0x4A, 0x48);
     return c;
 }
 
@@ -701,6 +718,8 @@ QString styleSheet(const Colors &c, bool dark, const QString &family, double sca
         { QStringLiteral("accentDim"), c.accentDim.name() },
         { QStringLiteral("accentBackground"), c.accentBackground.name() },
         { QStringLiteral("accentHover"), c.accentHover.name() },
+        { QStringLiteral("onAccent"), c.onAccent.name() },
+        { QStringLiteral("windowBorder"), c.windowBorder.name() },
         { QStringLiteral("titleBar"), c.titleBar.name() },
         { QStringLiteral("theme"), dark ? QStringLiteral("dark") : QStringLiteral("light") },
         { QStringLiteral("family"), family },
@@ -859,6 +878,12 @@ void ThemeController::update(QWidget *window)
         if (qobject_cast<RedesignMenuStyle *>(menu->style()))
             menu->setStyle(nullptr);
     }
+    // a button of an icon only keeps no frame (the frame is for the text
+    // buttons that melt into their panel): marked before the sheet polishes
+    // it
+    const QList<QPushButton *> buttons = window->findChildren<QPushButton *>();
+    for (QPushButton *button : buttons)
+        button->setProperty("vlcIconOnly", button->text().isEmpty() && !button->icon().isNull());
     // the palette and the font before the style sheet: polishing the
     // children for it takes them up
     window->setPalette(m_palette);

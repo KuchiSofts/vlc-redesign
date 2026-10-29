@@ -633,6 +633,14 @@ FocusScope {
         }
     }
 
+    // Ctrl+wheel over the library beside the video zooms the interface
+    // (not the subtitles: the video goes on behind it)
+    Binding {
+        target: MainCtx
+        property: "subtitleWheelExclusion"
+        value: compactLibrary
+    }
+
     Loader {
         id: compactLibrary
 

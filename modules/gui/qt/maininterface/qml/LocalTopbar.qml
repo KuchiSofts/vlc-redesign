@@ -126,6 +126,7 @@ T.ToolBar {
                         width: VLCStyle.redesign.iconSize
                         height: VLCStyle.redesign.iconSize
                         sourceSize: Qt.size(width, height)
+                        smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                         color: VLCStyle.redesign.logoColor
                     }
                 }

@@ -137,6 +137,7 @@ Repeater {
             width: VLCStyle.redesign.iconSize
             height: width
             sourceSize: Qt.size(width, height)
+            smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
             source: "qrc:///redesign/icons/divider/default.svg"
         }
 
@@ -252,6 +253,7 @@ Repeater {
                         height: width
                         source: PlayerControlbarControls.control(loader.controlId).icon ?? ""
                         sourceSize: Qt.size(width, height)
+                        smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                     }
                 }
 

@@ -280,6 +280,7 @@ Widgets.RedesignDialog {
             height: width
             sourceSize: Qt.size(width, height)
             source: "qrc:///redesign/icons/chevron-down/default.svg"
+            smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
             rotation: dropdown.popup.visible ? 180 : 0
         }
         delegate: T.ItemDelegate {

@@ -208,6 +208,8 @@ T.Control {
         Image {
             // drawn at the size shown (an SVG: sharp at any scale and zoom)
             sourceSize: Qt.size(width, height)
+            // (filtered while the press scales the button)
+            smooth: root.scale !== 1 || !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
             anchors.centerIn: parent
             anchors.horizontalCenterOffset: visible ? VLCStyle.dp(1, VLCStyle.scale) : 0
             source: "qrc:/redesign/play.svg"
@@ -222,6 +224,8 @@ T.Control {
             width: VLCStyle.redesign.iconSize
             height: VLCStyle.redesign.iconSize
             sourceSize: Qt.size(width, height)
+            // (filtered while the press scales the button)
+            smooth: root.scale !== 1 || !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
             visible: root._redesignPlaying
         }
 

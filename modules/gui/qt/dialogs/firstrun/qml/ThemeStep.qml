@@ -268,6 +268,7 @@ Item {
             height: 15
             source: "qrc:///redesign/volume-background.svg"
             sourceSize: Qt.size(width, height)
+            smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
             // the level: the gradient of the whole track shown over its
             // first 17 px (Figma)
             Item {
@@ -281,6 +282,7 @@ Item {
                     height: parent.height
                     source: "qrc:///redesign/volume-fill.svg"
                     sourceSize: Qt.size(width, height)
+                    smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                 }
             }
         }

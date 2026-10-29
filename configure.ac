@@ -3134,18 +3134,26 @@ AS_IF([test "${enable_vpx}" != "no"],[
         VLC_ADD_PLUGIN([vpx])
         VLC_ADD_CPPFLAGS([vpx], [${VPX_CFLAGS}])
         VLC_ADD_LIBS([vpx], [${VPX_LIBS}])
+        vpx_has_feature=no
         AC_CHECK_LIB([vpx],[vpx_codec_vp8_dx], [
             VLC_ADD_CPPFLAGS([vpx], [-DENABLE_VP8_DECODER])
+            vpx_has_feature=yes
         ], [], [${VPX_LIBS}])
         AC_CHECK_LIB([vpx],[vpx_codec_vp9_dx], [
             VLC_ADD_CPPFLAGS([vpx], [-DENABLE_VP9_DECODER])
+            vpx_has_feature=yes
         ], [], [${VPX_LIBS}])
         AC_CHECK_LIB([vpx],[vpx_codec_vp8_cx], [
             VLC_ADD_CPPFLAGS([vpx], [-DENABLE_VP8_ENCODER])
+            vpx_has_feature=yes
         ], [], [${VPX_LIBS}])
         AC_CHECK_LIB([vpx],[vpx_codec_vp9_cx], [
             VLC_ADD_CPPFLAGS([vpx], [-DENABLE_VP9_ENCODER])
+            vpx_has_feature=yes
         ], [], [${VPX_LIBS}])
+        AS_IF([test "${enable_vpx}" = "yes" && test "${vpx_has_feature}" = "no" ],[
+            AC_MSG_ERROR([libvpx does not link with any feature])
+        ])
     ], [
     AS_IF([test "${enable_vpx}" = "yes"],[
         AC_MSG_ERROR([libvpx 1.5.0 or higher was not found])
@@ -5099,7 +5107,7 @@ dnl Libnotify notification plugin
 dnl
 PKG_ENABLE_MODULES_VLC([NOTIFY], [], [libnotify], [libnotify notification], [auto])
 
-PKG_ENABLE_MODULES_VLC([MEDIALIBRARY], [medialibrary], [medialibrary >= 0.13.0], (medialibrary support), [auto])
+PKG_ENABLE_MODULES_VLC([MEDIALIBRARY], [medialibrary], [medialibrary >= 0.14.0 medialibrary < 0.15.0], (medialibrary support), [auto])
 
 dnl
 dnl  Endianness check

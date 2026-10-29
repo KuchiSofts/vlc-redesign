@@ -324,7 +324,14 @@ T.Popup {
                 onClicked: {
                     if (root.cancelEffects()) root.close()
                 }
-                background: Rectangle { color: root.c(VLCStyle.redesign.controlBackground); radius: VLCStyle.dp(5, VLCStyle.scale) }
+                // #191919 on #0E0E0E: the frame of the window around it
+                // (docs/MASTER-PLAN.md section 6)
+                background: Rectangle {
+                    color: root.c(VLCStyle.redesign.controlBackground)
+                    radius: VLCStyle.dp(5, VLCStyle.scale)
+                    border.width: 1
+                    border.color: parent.visualFocus ? VLCStyle.redesign.focusColor : root.c(VLCStyle.redesign.windowBorder)
+                }
                 contentItem: Text {
                     text: parent.text
                     color: root.c(VLCStyle.redesign.textSecondary)

@@ -62,6 +62,9 @@ RedesignIconButton {
 
     description: qsTr("Languages and tracks")
 
+    // open while its panel shows
+    active: !!menuLoader.item && menuLoader.item.opened
+
     AccessibleCompat.id: "langButton"
 
     // Events

@@ -196,9 +196,9 @@ the [wiki](https://github.com/KuchiSofts/vlc-redesign/wiki)**, and everything ne
 ## See it in action
 
 **One film per platform**, silent, every clip of the tour with a caption:
-[Windows 0.4.0](docs/media/films/vlc-redesign-0.4.0-windows.mp4) (2 min 37 s) ·
-[Linux and macOS](docs/media/films/vlc-redesign-0.4.0-linux-macos.mp4) (24 s, in progress) ·
-[Android](docs/media/films/vlc-redesign-0.4.0-android.mp4) (2 min 13 s, in testing).
+[Windows 0.4.0](docs/media/films/vlc-redesign-0.4.0-windows.mp4) (2 min 55 s) ·
+[Linux and macOS](docs/media/films/vlc-redesign-0.4.0-linux-macos.mp4) (21 s, in progress) ·
+[Android](docs/media/films/vlc-redesign-0.4.0-android.mp4) (2 min 2 s, in testing).
 
 <table>
 <tr>
@@ -219,7 +219,7 @@ the [wiki](https://github.com/KuchiSofts/vlc-redesign/wiki)**, and everything ne
 
 <table>
 <tr>
-<td width="40%" valign="top"><a href="docs/media/demo/linux.mp4"><img src="docs/media/demo/linux.gif" alt="The Linux AppImage on Arch Linux: About, Settings in the dark theme, the Live TV channels, Home in the light theme"></a><br><b>Linux</b> (in progress). The AppImage on Arch Linux: About, Settings, Live TV, Home.</td>
+<td width="40%" valign="top"><a href="docs/media/demo/linux.mp4"><img src="docs/media/demo/linux.gif" alt="The Linux AppImage on Arch Linux: About, Settings in the dark theme, Home in the light theme"></a><br><b>Linux</b> (in progress). The AppImage on Arch Linux: About, Settings, Home.</td>
 <td width="40%" valign="top"><a href="docs/media/demo/macos.png"><img src="docs/media/demo/macos.png" alt="The macOS app on an Intel Mac, Home"></a><br><b>macOS</b> (in progress). The app on an Intel Mac, from the launch test of the build.</td>
 <td width="20%" valign="top"><a href="docs/media/demo/android/home.mp4"><img src="docs/media/demo/android/home.gif" alt="The Android app in testing: Home and the library on a phone"></a><br><b>Android</b> (in testing, not part of 0.4.0). Home on a phone; <a href="docs/media/demo/android/tablet.mp4">the tablet</a>.</td>
 </tr>

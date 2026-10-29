@@ -36,9 +36,9 @@ on Linux, the Keychain on macOS), never written to the log.
 
 ### The catalog
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/tv-catalog.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/tv-catalog.gif" alt="Live TV: the catalog of free, legal sources, a search for Pluto TV, Add, and its channels with logos, numbers, groups and what is on" width="960"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/tv-catalog.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/tv-catalog.gif" alt="Live TV: the sources, the catalog of free, legal lists, then the channels of a source with their logos, numbers and groups" width="960"></a>
 
-<sub>The catalog: a search for Pluto TV, *Add*, and its channels with their logos, numbers, groups and what is on. Click for the MP4 · every clip: [Feature tour](Feature-Tour#live-tv).</sub>
+<sub>Sources and the catalog of free, legal lists, then the channels of a source with their logos, numbers, groups and what is on (a made-up demo provider). Click for the MP4 · every clip: [Feature tour](Feature-Tour#live-tv).</sub>
 
 **Catalog** lists free, legal channel lists, with what each one has: the number of channels, a guide, catch-up,
 films and series, free or paid, its languages and countries. Filter them by language, country, category or what

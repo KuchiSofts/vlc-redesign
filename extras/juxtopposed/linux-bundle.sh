@@ -33,9 +33,11 @@ find "$root/qt" \( -name '*.debug' -o -name '*.qmltypes' -o -name 'designer' \) 
 # there, and VLC uses none)
 find "$root/qt/plugins/sqldrivers" -name 'libqsql*.so' ! -name libqsqlite.so -delete
 
-# The libraries of the system they need, but those of the PC
+# The libraries of the system they need, but those of the PC. libwayland-*
+# too: the PC's Mesa needs its own (Debian 13's EGL wants a symbol of
+# libwayland 1.23 the bundled 1.22 lacked, and VLC quit on Wayland)
 mkdir -p "$root/syslib"
-keep='^(libc|libm|libpthread|libdl|librt|ld-linux.*|libGL|libGLX.*|libGLdispatch|libEGL.*|libOpenGL|libgbm|libdrm.*|libva.*|libvdpau|libgallium.*|libudev|libsystemd|libstdc\+\+|libgcc_s)\.so'
+keep='^(libc|libm|libpthread|libdl|librt|ld-linux.*|libGL|libGLX.*|libGLdispatch|libEGL.*|libOpenGL|libgbm|libdrm.*|libva.*|libwayland-.*|libgallium.*|libudev|libsystemd|libstdc\+\+|libgcc_s)\.so'
 export LD_LIBRARY_PATH="$root/lib:$root/lib/vlc:$root/qt/lib:/work/build-m0/deps/lib"
 find "$root" -type f \( -name '*.so*' -o -perm -u+x \) -print | while read -r f; do
     file -b "$f" | grep -q '^ELF' || continue

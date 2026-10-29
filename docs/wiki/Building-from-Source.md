@@ -92,7 +92,7 @@ release mode) and makes in `-Dist`:
 ## Signed builds
 
 Signing is prepared and not active yet: the files of the releases are unsigned, and their SHA-256 is listed in
-`SHA256SUMS.txt`. The Windows files are to be signed through [SignPath Foundation](https://signpath.org/)'s free
+`SHA256SUMS.txt`. The Windows files would be signed, once the application is answered (paused until then), through [SignPath Foundation](https://signpath.org/)'s free
 program for open-source projects. SignPath signs only what this repository's GitHub workflow built, so a package
 made on your own PC can't be signed, and builds from source stay unsigned.
 

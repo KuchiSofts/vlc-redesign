@@ -232,8 +232,8 @@ the [wiki](https://github.com/KuchiSofts/vlc-redesign/wiki)**, and everything ne
 ## Download
 
 **Windows 10 or 11, 64-bit.** Go to **[Releases](https://github.com/KuchiSofts/vlc-redesign/releases/latest)** and
-pick one. Code signing: free code signing provided by [SignPath.io](https://about.signpath.io/), certificate by
-[SignPath Foundation](https://signpath.org/) ([Code signing policy](https://github.com/KuchiSofts/vlc-redesign/blob/main/CODE_SIGNING_POLICY.md)).
+pick one. The files are not code-signed, so Windows SmartScreen may warn the first time; every file's SHA-256 is in
+`SHA256SUMS.txt`, and the app installs only updates whose list is signed by the project.
 
 | | |
 |---|---|
@@ -358,10 +358,9 @@ Details in [CREDITS.md](CREDITS.md).
 
 ## Code signing policy
 
-Free code signing provided by [SignPath.io](https://about.signpath.io/), certificate by
-[SignPath Foundation](https://signpath.org/). What is signed, the team roles and the privacy policy:
-[CODE_SIGNING_POLICY.md](CODE_SIGNING_POLICY.md). Until the first signed release, the files are unsigned and their
-SHA-256 is listed in `SHA256SUMS.txt`.
+The releases are not code-signed. Code signing is paused: an application to SignPath Foundation's free program for
+open-source projects waits for its answer, and nothing is signed until then. The policy it would follow:
+[CODE_SIGNING_POLICY.md](CODE_SIGNING_POLICY.md). Until then the SHA-256 of every file is listed in `SHA256SUMS.txt`.
 
 ## License
 

@@ -708,6 +708,26 @@ saturation and gets the HSL lightness that brings its luminance to the nearest e
 blue on the dark theme nor lighter than the grey on the light theme; Dim, Bright and the light tint then come from
 it as for the others.
 
+### Buttons on their panels (decided 2026-10-29, the owner's report)
+
+Figma draws the neutral buttons in the fill of the panel they sit on, or one step from it: *Cancel*, *Licenses &
+authors*, *GitHub*, *Don't restore* `#1B1B1B` on the dialogs' `#191919` (1.0:1), Settings' *Browse* / *Reset* /
+*Edit Keyboard Shortcuts* `#191919` on `#0E0E0E` (1.1:1), the classic dialogs' buttons `#191919`; in the light theme
+`#ABABAA` on `#ABABAA`. They melted into the panel. Measured (WCAG relative luminance), dark and light:
+
+| Button | Fill on panel | Text on fill | Decision |
+|---|---|---|---|
+| Neutral (RedesignButton, RedesignDialog's Cancel, About) | 1.0:1 (both themes) | `#8F8F8F` 5.3:1, light `#2E2E2E` 5.9:1 | 🟢 + 1 px frame `#4C4A48` (the window border token): 2.0:1 on `#191919`, 3.8:1 on `#ABABAA` |
+| Settings buttons (SettingsButton) | 1.1:1 | 5.3:1 / 5.9:1 | 🟢 + the same frame |
+| Classic dialogs (QPushButton) | 1.0–1.1:1 | 5.3:1 / 5.9:1 | 🟢 + the same frame (`redesign_widget_theme.cpp`); default and checked buttons keep their accent fill, flat ones none |
+| Accent buttons of the QML dialogs (Save, Close) | `#371F06` on `#191919`, the same in the light theme | accent 4.8:1 | unchanged |
+| Accent fill of the classic dialogs, light theme (default button, selected tab, row, selection) | tint `#DABB99` | accent **1.4–2.7:1** ✗ (orange 1.8) | 🟢 text `accent.darker(220)` (`$(onAccent)`): 5.1–6.4:1 on each of the 9 tints (orange 5.6) |
+| Settings ActionButton | `#202020` + `#353535` frame | `#D0D0D0` | already framed: unchanged |
+| Icon-only buttons (bar, top bar, sidebar toggles, ×, ⋯, sort/view, chips; icon-only QPushButtons of the classic dialogs) | transparent by design (the glyph is the button) | icons `#8F8F8F` 5.3:1 on `#1B1B1B` | **never a frame** (owner rule): readable by the glyph colour and the design's hover, pressed, active and focus states only |
+
+The frame is the one colour both themes share (the light map keeps `#4C4A48`), so a button reads as one in either
+theme and over the video.
+
 ### Typography
 
 Inter 3.19 (variable) with every advance one unit wider (Qt truncates advances to 1/64 px), distance-field

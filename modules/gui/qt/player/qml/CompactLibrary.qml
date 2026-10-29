@@ -1511,9 +1511,10 @@ FocusScope {
                 text: libraryRow.label
                 elide: Text.ElideMiddle
                 horizontalAlignment: Text.AlignLeft
-                // Figma "Player - Light": as dark, #969696 and dimmed #6B6B6B
+                // Figma "Player - Light" (2425:13624): #8F8F8F, the watched
+                // ones #6B6B6B; dark: #969696
                 color: libraryRow.dimmed ? VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
-                                         : (VLCStyle.palette.isDark ? VLCStyle.redesign.textSecondary : "#969696")
+                                         : (VLCStyle.palette.isDark ? VLCStyle.redesign.textSecondary : "#8f8f8f")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.redesign.fontNormal
             }

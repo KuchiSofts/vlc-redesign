@@ -29,6 +29,19 @@
 #include <vlc_aout.h>
 #include <vlc_cpu.h>
 
+typedef struct aout_sys
+{
+    vlc_tick_t first_pts;
+    vlc_tick_t first_play_date;
+    vlc_tick_t last_timing_date;
+    vlc_tick_t paused_date;
+
+    float soft_gain;
+    bool soft_mute;
+} aout_sys_t;
+
+#include "volume.h"
+
 static int Open(vlc_object_t *);
 static void Close(vlc_object_t *);
 
@@ -38,15 +51,9 @@ vlc_module_begin ()
     set_capability( "audio output", 0 )
     set_callbacks( Open, Close )
     add_shortcut( "dummy" )
+    add_sw_gain()
 vlc_module_end ()
 
-struct aout_sys
-{
-    vlc_tick_t first_pts;
-    vlc_tick_t first_play_date;
-    vlc_tick_t last_timing_date;
-    vlc_tick_t paused_date;
-};
 
 static void Play(audio_output_t *aout, block_t *block, vlc_tick_t date)
 {
@@ -100,7 +107,6 @@ static void Flush(audio_output_t *aout)
 
 static int Start(audio_output_t *aout, audio_sample_format_t *restrict fmt)
 {
-    (void) aout;
 
     switch (fmt->i_format)
     {
@@ -127,6 +133,7 @@ static int Start(audio_output_t *aout, audio_sample_format_t *restrict fmt)
             break;
     }
 
+    aout_SoftVolumeStart(aout);
     return VLC_SUCCESS;
 }
 
@@ -152,7 +159,7 @@ static int Open(vlc_object_t *obj)
     aout->pause = Pause;
     aout->flush = Flush;
     aout->stop = Flush;
-    aout->volume_set = NULL;
-    aout->mute_set = NULL;
+    /* a volume to show and change, as with a sound card */
+    aout_SoftVolumeInit(aout);
     return VLC_SUCCESS;
 }

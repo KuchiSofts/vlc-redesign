@@ -545,7 +545,7 @@ MouseArea {
 
         visible: false
 
-        text: qsTr("Volume %1%").arg(Math.round(Player.volume * 100))
+        text: qsTr("Volume %1%").arg(Math.round(Math.max(0, Player.volume) * 100))
 
         color: centerTheme.fg.primary
 

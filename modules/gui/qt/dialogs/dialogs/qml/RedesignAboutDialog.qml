@@ -90,6 +90,27 @@ T.Popup {
         }
     }
 
+    // A credit and its link in one text: a longer translation wraps as a
+    // sentence does (the link follows its words, on their baseline, in
+    // either direction); two items in a row split its width between them
+    component CreditText: Body {
+        id: credit
+        property string prefix
+        property string linkText
+        property string url
+        function escaped(text) {
+            return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+        }
+        textFormat: Text.StyledText
+        text: escaped(prefix) + " <a href=\"" + url + "\">" + escaped(linkText) + "</a>"
+        linkColor: VLCStyle.redesign.accent
+        Accessible.name: prefix + " " + linkText
+        onLinkActivated: (link) => Qt.openUrlExternally(link)
+        HoverHandler {
+            cursorShape: credit.hoveredLink.length > 0 ? Qt.PointingHandCursor : Qt.ArrowCursor
+        }
+    }
+
     component Body: Text {
         Layout.fillWidth: true
         wrapMode: Text.WordWrap
@@ -119,12 +140,27 @@ T.Popup {
             width: parent.width
             spacing: VLCStyle.dp(18, VLCStyle.scale)
 
-            // The app, its version and its updates
-            RowLayout {
+            // The app, its version and its updates. The button beside the
+            // name while the name, its badge and the version line fit beside
+            // it, else under them (a long translation of the button: German
+            // cut the name to "VLC ...")
+            GridLayout {
+                id: header
                 Layout.fillWidth: true
-                spacing: VLCStyle.dp(18, VLCStyle.scale)
+                columnSpacing: VLCStyle.dp(18, VLCStyle.scale)
+                rowSpacing: VLCStyle.dp(12, VLCStyle.scale)
+                readonly property real _textWidth: Math.max(titleText.implicitWidth + VLCStyle.dp(10, VLCStyle.scale)
+                                                            + platformBadge.implicitWidth,
+                                                            versionText.implicitWidth)
+                readonly property bool _wide: width - VLCStyle.dp(64, VLCStyle.scale) - 2 * columnSpacing
+                                             - updateButton.implicitWidth >= _textWidth
+                columns: _wide ? 3 : 2
 
                 Image {
+                    Layout.row: 0
+                    Layout.column: 0
+                    Layout.rowSpan: header._wide ? 1 : 2
+                    Layout.alignment: Qt.AlignTop
                     Layout.preferredWidth: VLCStyle.dp(64, VLCStyle.scale)
                     Layout.preferredHeight: VLCStyle.dp(64, VLCStyle.scale)
                     source: "qrc:///redesign/welcome.svg"
@@ -134,6 +170,8 @@ T.Popup {
                 }
 
                 ColumnLayout {
+                    Layout.row: 0
+                    Layout.column: 1
                     Layout.fillWidth: true
                     spacing: VLCStyle.dp(2, VLCStyle.scale)
 
@@ -141,8 +179,13 @@ T.Popup {
                         Layout.fillWidth: true
                         spacing: VLCStyle.dp(10, VLCStyle.scale)
 
+                        // The name as wide as it is, cut only when the column
+                        // (the room left by the button) has none left beside
+                        // the badge, which keeps its width; the room left
+                        // stays at the end (a second item filling the row
+                        // shared the room with the name and cut it)
                         Text {
-                            // (the column is the room left by the button)
+                            id: titleText
                             Layout.fillWidth: true
                             Layout.maximumWidth: implicitWidth
                             elide: Text.ElideRight
@@ -157,10 +200,13 @@ T.Popup {
                         // exists for several), the one it runs on in its tooltip
                         Rectangle {
                             id: platformBadge
+                            Layout.minimumWidth: implicitWidth
                             implicitWidth: platformText.implicitWidth + VLCStyle.dp(16, VLCStyle.scale)
                             implicitHeight: VLCStyle.dp(20, VLCStyle.scale)
                             radius: height / 2
-                            color: VLCStyle.redesign.color("#262626")
+                            // (the light theme: a light pill, the dark one
+                            // kept its dark text unreadable on it)
+                            color: VLCStyle.redesign.color("#262626", "#dedede", root.darkTheme)
                             border.width: 1
                             border.color: VLCStyle.redesign.windowBorder
                             Accessible.role: Accessible.StaticText
@@ -179,7 +225,6 @@ T.Popup {
                             T.ToolTip.text: RedesignUpdater.platformDetails
                             T.ToolTip.delay: 650
                         }
-                        Item { Layout.fillWidth: true }
                     }
                     Text {
                         id: versionText
@@ -234,7 +279,10 @@ T.Popup {
                 }
 
                 Widgets.RedesignButton {
-                    Layout.alignment: Qt.AlignTop
+                    id: updateButton
+                    Layout.row: header._wide ? 0 : 1
+                    Layout.column: header._wide ? 2 : 1
+                    Layout.alignment: Qt.AlignTop | Qt.AlignLeft
                     accent: RedesignUpdater.state === RedesignUpdater.Available || RedesignUpdater.state === RedesignUpdater.Ready
                     text: RedesignUpdater.state === RedesignUpdater.Ready ? qsTr("Restart now")
                           : RedesignUpdater.state === RedesignUpdater.Available
@@ -300,21 +348,15 @@ T.Popup {
                 Layout.fillWidth: true
                 spacing: VLCStyle.dp(6, VLCStyle.scale)
 
-                // A longer translation wraps the text before its link, inside
-                // the dialog (the text as wide as it is, at most)
-                RowLayout {
-                    Layout.maximumWidth: parent.width
-                    spacing: VLCStyle.dp(6, VLCStyle.scale)
-                    Body { Layout.maximumWidth: implicitWidth; text: qsTr("First implementation by") }
-                    Link { text: "MrDouglax"; url: "https://github.com/SrDouglax/JuxtopposedVLC" }
-                    Item { Layout.fillWidth: true }
+                CreditText {
+                    prefix: qsTr("First implementation by")
+                    linkText: "MrDouglax"
+                    url: "https://github.com/SrDouglax/JuxtopposedVLC"
                 }
-                RowLayout {
-                    Layout.maximumWidth: parent.width
-                    spacing: VLCStyle.dp(6, VLCStyle.scale)
-                    Body { Layout.maximumWidth: implicitWidth; text: qsTr("Built on VLC media player by") }
-                    Link { text: qsTr("the VideoLAN team and contributors"); url: "https://www.videolan.org/" }
-                    Item { Layout.fillWidth: true }
+                CreditText {
+                    prefix: qsTr("Built on VLC media player by")
+                    linkText: qsTr("the VideoLAN team and contributors")
+                    url: "https://www.videolan.org/"
                 }
                 // The other platforms, from the copy of platforms.yml built
                 // into this release (nothing is fetched)

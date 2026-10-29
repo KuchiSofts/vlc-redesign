@@ -757,7 +757,7 @@ void SubtitleFinder::identify()
     const QStringList remembered = m_intf->mainSettings->value(matchKey(m_media.key)).toStringList();
     if (remembered.size() == 4 && remembered[0].startsWith(QLatin1String("tt")))
     {
-        m_match = { remembered[0], remembered[1], remembered[2].toInt(), remembered[3] == QLatin1String("series") };
+        m_match = { remembered[0], remembered[1], remembered[2].toInt(), remembered[3] == QLatin1String("series"), true };
         querySubtitles();
         return;
     }
@@ -983,6 +983,7 @@ void SubtitleFinder::onTitles(const QVariantList &candidates, bool forMedia,
     const bool wantSeries = m_media.season >= 0;
     double bestScore = -1e9;
     QVariantMap best;
+    bool bestStrong = false;
     for (const QVariant &c : candidates)
     {
         const QVariantMap entry = c.toMap();
@@ -1001,6 +1002,7 @@ void SubtitleFinder::onTitles(const QVariantList &candidates, bool forMedia,
         {
             bestScore = score;
             best = entry;
+            bestStrong = strongTitle(similarity, year, series);
         }
     }
     if (best.isEmpty())
@@ -1012,8 +1014,21 @@ void SubtitleFinder::onTitles(const QVariantList &candidates, bool forMedia,
         return;
     }
     m_match = { best.value(QStringLiteral("imdb")).toString(), best.value(QStringLiteral("label")).toString(),
-                best.value(QStringLiteral("year")).toInt(), best.value(QStringLiteral("series")).toBool() };
+                best.value(QStringLiteral("year")).toInt(), best.value(QStringLiteral("series")).toBool(), bestStrong };
     querySubtitles();
+}
+
+bool SubtitleFinder::strongTitle(double similarity, int year, bool series) const
+{
+    if (similarity < 0.999)
+        return false;
+    const bool yearsKnown = m_media.year > 0 && year > 0;
+    if (yearsKnown)
+        return std::abs(year - m_media.year) <= 1;
+    if (series && m_media.season >= 0 && m_media.episode >= 0)
+        return true;
+    // one word without a year ("silent", "home"): too many titles share it
+    return simplified(m_media.title).count(QLatin1Char(' ')) >= 1;
 }
 
 // Stremio's catalogue, when Wikidata doesn't know the title
@@ -1052,7 +1067,7 @@ void SubtitleFinder::searchCinemeta()
             if (score > bestScore)
             {
                 bestScore = score;
-                best = { id, name, year, series };
+                best = { id, name, year, series, strongTitle(similarity, year, series) };
             }
         }
         // (not identified: a file of a known release is found by its hash)
@@ -1068,9 +1083,10 @@ void SubtitleFinder::querySubtitles()
 {
     ++m_searchRevision;
     const quint64 revision = m_searchRevision;
-    msg_Dbg(m_intf, "online subtitles: \"%s\" is %s (%s), the hash %s",
+    msg_Dbg(m_intf, "online subtitles: \"%s\" is %s (%s%s), the hash %s",
             qtu(m_media.title), m_match.imdb.isEmpty() ? "unknown" : qtu(m_match.title),
             m_match.imdb.isEmpty() ? "-" : qtu(m_match.imdb),
+            m_match.imdb.isEmpty() ? "" : m_match.strong ? ", sure" : ", a guess: not loaded by itself",
             m_media.hash.isEmpty() ? "unknown" : qtu(m_media.hash));
     setState(Searching);
     m_found.clear();
@@ -1306,8 +1322,13 @@ QVariantMap SubtitleFinder::bestOfLearned(const QStringList &local) const
 QVariantMap SubtitleFinder::bestOf(const QString &language) const
 {
     for (const QVariant &r : m_results)
-        if (r.toMap().value(QStringLiteral("language")).toString() == language)
-            return r.toMap();
+    {
+        const QVariantMap map = r.toMap();
+        if (map.value(QStringLiteral("language")).toString() != language)
+            continue;
+        if (map.value(QStringLiteral("exact")).toBool() || m_match.strong)
+            return map;
+    }
     return {};
 }
 
@@ -1395,7 +1416,7 @@ void SubtitleFinder::useTitle(int index)
         return;
     const QVariantMap entry = m_titleResults[index].toMap();
     m_match = { entry.value(QStringLiteral("imdb")).toString(), entry.value(QStringLiteral("label")).toString(),
-                entry.value(QStringLiteral("year")).toInt(), entry.value(QStringLiteral("series")).toBool() };
+                entry.value(QStringLiteral("year")).toInt(), entry.value(QStringLiteral("series")).toBool(), true };
     // this file is that title from now on
     m_intf->mainSettings->setValue(matchKey(m_media.key),
                                    QStringList{ m_match.imdb, m_match.title, QString::number(m_match.year),

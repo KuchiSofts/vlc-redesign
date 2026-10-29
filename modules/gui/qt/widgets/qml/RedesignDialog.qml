@@ -123,6 +123,11 @@ T.Popup {
     }
 
     contentItem: ColumnLayout {
+        // a screen reader names the dialog by its title (the popup's own
+        // item has no name of its own)
+        Accessible.role: Accessible.Dialog
+        Accessible.name: root.title
+
         // right to left (Hebrew, Arabic...): a popup is not under the
         // mirrored interface, its content mirrors itself (the action on the
         // left, Cancel on the right)

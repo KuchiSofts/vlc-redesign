@@ -59,9 +59,11 @@ T.TextArea {
     }
 
     // Return accepts; in multiple lines it adds a line, Ctrl+Return accepts.
-    // On one line Tab goes to the next field (the text area would type it).
+    // Tab and Shift+Tab go to the next and the previous control, in
+    // multiple lines too (links, a list: no tab is ever typed there), so the
+    // keyboard never stays trapped in the field.
     Keys.onPressed: (event) => {
-        if (!root.multiLine && (event.key === Qt.Key_Tab || event.key === Qt.Key_Backtab)) {
+        if (event.key === Qt.Key_Tab || event.key === Qt.Key_Backtab) {
             event.accepted = true
             const forward = event.key === Qt.Key_Tab && !(event.modifiers & Qt.ShiftModifier)
             const next = root.nextItemInFocusChain(forward)

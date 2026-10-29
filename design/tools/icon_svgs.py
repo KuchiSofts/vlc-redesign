@@ -35,6 +35,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 ICONS = ROOT / "modules" / "gui" / "qt" / "pixmaps" / "redesign" / "icons"
+# the PNG exports the SVGs were matched to (the app has only the SVGs)
+PNGS = ROOT / "design" / "icons" / "png"
 MAP = Path(__file__).with_name("icon_svgs.json")
 REPORT = Path(__file__).with_name("icon_svgs_report.md")
 QRC = ROOT / "modules" / "gui" / "qt" / "assets.qrc"
@@ -299,7 +301,7 @@ def premultiplied(a):
 def png_files():
     """[(icon, state, path of the 1x PNG, path of the @2x PNG or None)]"""
     out = []
-    for path in sorted(ICONS.glob("*/*.png")):
+    for path in sorted(PNGS.glob("*/*.png")):
         if path.stem.endswith("@2x"):
             continue
         twice = path.with_name(path.stem + "@2x.png")

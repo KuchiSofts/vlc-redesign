@@ -24,7 +24,7 @@ import VLC.Dialogs
 import VLC.Util
 
 RedesignIconButton {
-    iconSource: "qrc:///redesign/player/equalizer.png"
+    iconSource: "qrc:///redesign/player/equalizer.svg"
     id: extdSettingsBtn
 
     text: VLCIcons.effect_filter

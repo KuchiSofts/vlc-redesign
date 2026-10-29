@@ -82,7 +82,7 @@ T.MenuItem {
             Layout.preferredWidth: VLCStyle.redesign.iconSize
             Layout.preferredHeight: VLCStyle.redesign.iconSize
             visible: root.checked
-            source: "qrc:///redesign/icons/check/active.png"
+            source: "qrc:///redesign/icons/check/active.svg"
             color: VLCStyle.redesign.accentTint
             sourceSize: Qt.size(width, height)
             fillMode: Image.Pad

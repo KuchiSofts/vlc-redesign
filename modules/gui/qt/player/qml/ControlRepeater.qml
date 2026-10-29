@@ -137,7 +137,7 @@ Repeater {
             width: VLCStyle.redesign.iconSize
             height: width
             sourceSize: Qt.size(width, height)
-            source: "qrc:///redesign/icons/divider/default.png"
+            source: "qrc:///redesign/icons/divider/default.svg"
         }
 
         // Figma "Player - customize": the control outlined, dragged around

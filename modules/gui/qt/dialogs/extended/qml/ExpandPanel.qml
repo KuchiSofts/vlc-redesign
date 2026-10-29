@@ -77,8 +77,8 @@ Item {
                 width: root.px(24)
                 height: width
                 sourceSize: Qt.size(width, height)
-                source: root.expanded ? "qrc:///redesign/icons/chevron-down/default.png"
-                                      : "qrc:///redesign/icons/chevron-right/default.png"
+                source: root.expanded ? "qrc:///redesign/icons/chevron-down/default.svg"
+                                      : "qrc:///redesign/icons/chevron-right/default.svg"
                 // closed, it points to the end (right to left: the left)
                 mirror: LayoutMirroring.enabled
                 color: root.c("#6B6B6B")

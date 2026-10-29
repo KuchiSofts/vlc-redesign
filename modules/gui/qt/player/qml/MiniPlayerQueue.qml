@@ -138,7 +138,7 @@ Item {
                        ? Qt.AscendingOrder : Qt.DescendingOrder
             // the sort icon of the design (#6B6B6B)
             contentItem: Image {
-                source: "qrc:///redesign/icons/sort/dim.png"
+                source: "qrc:///redesign/icons/sort/dim.svg"
                 sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
                 fillMode: Image.Pad
                 opacity: sortControl.enabled ? 1 : 0.35
@@ -156,13 +156,13 @@ Item {
         }
         // (Figma: "−" drawn as "+", no row picked: it stays so, unusable)
         QueueButton {
-            iconSource: "qrc:///redesign/icons/remove/default.png"
+            iconSource: "qrc:///redesign/icons/remove/default.svg"
             description: qsTr("Remove selected item from queue")
             enabled: root.selectedIndex >= 0 && root.selectedIndex < queueModel.count
             onClicked: queueModel.removeItems([root.selectedIndex])
         }
         QueueButton {
-            iconSource: "qrc:///redesign/icons/add/default.png"
+            iconSource: "qrc:///redesign/icons/add/default.svg"
             description: qsTr("Add files to queue")
             onClicked: {
                 const selected = filePicker.chooseFiles(qsTr("Add files to queue"))
@@ -217,7 +217,7 @@ Item {
                     anchors.verticalCenter: parent.verticalCenter
                     width: VLCStyle.redesign.iconSize
                     height: width
-                    source: "qrc:///redesign/icons/move/default.png"
+                    source: "qrc:///redesign/icons/move/default.svg"
                     sourceSize: Qt.size(width, height)
                     fillMode: Image.Pad
                     color: root.lightTheme ? "#2e2e2e" : "transparent"

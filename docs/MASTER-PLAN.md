@@ -12,6 +12,22 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-10-29):
 
+- 🟡 **Desktop polish before 0.4.0** (branch `feature/desktop-polish`, 2026-10-29):
+  - 🟢 Icons at 125-200 % (`3673a7a74d`): the QML named them by their old PNG files; Qt 6 draws an image at the
+    device pixel ratio only when the URL *as written* ends in `.svg` (the interceptor's `.svg` comes too late), so
+    every icon was drawn for 100 % and stretched. Named by their SVG now. Queue icon strokes (coverage per row):
+    200 % `19 57 76 76 57 19` → `50 100 100 50` (exact); 100 % unchanged `76 76` = Figma's 75/75 (`#737373` /
+    `#4D4D4D`). The 1.9 px of the light-theme audit was the PNG build `g6da8c7cd1a` (before `f637ae1bfa`).
+  - 🟡 At 125 and 150 % the strokes have the right width but sit on fractional device pixels (logical × 1.25/1.5):
+    150 % `32 81 81 32` where whole pixels give `13 100 100 13`. Needs the icon snapped to device pixels (scene
+    position, not bound in QML): open.
+  - 🟢 DLNA live channels (`96287f0157`): a restarted picture goes on in the same stream (one stream per channel,
+    was two); the first stream of a channel waits up to 3 s for its sound and picture (a cast on a playing channel
+    sent both: PIDs 100 + 200, 3 of 3 runs). Fake DLNA TV, Pluto TV.
+  - 🟡 A cast started on a playing live channel can stall the adaptive demuxer (seen once on the old build:
+    `fakeesout restarting`, nothing sent for 60 s); not seen in 4 runs since. Pluto reports itself seekable, so
+    restarting live inputs on a renderer change was dropped (untested path).
+
 - 🟢 **One app icon everywhere: the designer's** (branch `feature/app-icon`, 2026-10-29; Android: its own
   `feature/app-icon`). The owner's rule: every program and app uses Juxtopposed's app icon. The design has no
   separate app-icon frame; its icon is the logo (the orange cone of the Icon set 42:356, Frame 4, also the

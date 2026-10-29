@@ -27,7 +27,7 @@ RedesignIconButton {
     id: fullScreenBtn
 
     enabled: Player.hasVideoOutput
-    iconSource: "qrc:///redesign/icons/fullscreen/default.png"
+    iconSource: "qrc:///redesign/icons/fullscreen/default.svg"
     checked: Player.fullscreen
     onClicked: Player.fullscreen = !Player.fullscreen
     description: Player.fullscreen ? qsTr("Exit Fullscreen") : qsTr("Fullscreen")

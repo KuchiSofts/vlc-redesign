@@ -89,7 +89,7 @@ T.Button {
         Item { Layout.fillWidth: !(root._native !== "" && root._native !== root._name) }
         Image {
             Layout.rightMargin: VLCStyle.dp(12, VLCStyle.scale)
-            source: "qrc:///redesign/icons/chevron-down/default.png"
+            source: "qrc:///redesign/icons/chevron-down/default.svg"
             sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
             opacity: 0.8
         }

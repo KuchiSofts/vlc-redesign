@@ -26,7 +26,7 @@ import VLC.Player
 import VLC.Util
 
 RedesignIconButton {
-    iconSource: "qrc:///redesign/player/subtitles.png"
+    iconSource: "qrc:///redesign/player/subtitles.svg"
     // Subtitles are for films and videos: for a live TV channel or music the
     // button only shows when there is a track to choose (subtitles carried
     // by the stream, several audio tracks), and takes no room otherwise

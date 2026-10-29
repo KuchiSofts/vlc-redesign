@@ -27,7 +27,7 @@ RedesignIconButton {
     // Without the picture in picture of the library (canShowVideoPIP), going
     // there would only hide the video
     enabled: Player.isStarted && MainCtx.canShowVideoPIP
-    iconSource: "qrc:///redesign/icons/PiP/default.png"
+    iconSource: "qrc:///redesign/icons/PiP/default.svg"
     onClicked: MainCtx.playerView = false
     description: qsTr("Picture in Picture")
     AccessibleCompat.id: "pipButton"

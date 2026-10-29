@@ -163,9 +163,15 @@ CSDButtonModel::CSDButtonModel(MainCtx *mainCtx, QObject *parent)
         m_windowCSDButtons.append(button);
     };
 
+#ifdef Q_OS_MACOS
+    /* none on macOS: the unified title bar keeps the system's traffic
+     * lights (maininterface/macos_titlebar.hpp) */
+    Q_UNUSED(newButton);
+#else
     newButton(CSDButton::Minimize, &CSDButtonModel::minimizeButtonClicked);
     newButton(CSDButton::MaximizeRestore, &CSDButtonModel::maximizeRestoreButtonClicked);
     newButton(CSDButton::Close, &CSDButtonModel::closeButtonClicked);
+#endif
 }
 
 const QList<CSDButton *> &CSDButtonModel::windowCSDButtons() const

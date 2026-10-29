@@ -31,6 +31,7 @@
 #include <QQuickItem>
 #include <QColor>
 #include <QRectF>
+#include <QMargins>
 #include <QTimer>
 #include <QPointer>
 
@@ -130,6 +131,11 @@ class MainCtx : public QObject
     Q_PROPERTY(bool clientSideDecoration READ useClientSideDecoration NOTIFY useClientSideDecorationChanged FINAL)
     Q_PROPERTY(bool hasFirstrun READ hasFirstrun CONSTANT FINAL)
     Q_PROPERTY(int  csdBorderSize READ CSDBorderSize NOTIFY useClientSideDecorationChanged FINAL)
+    // The room the system's window buttons take in the interface's top bar
+    // (macOS: the traffic lights of the unified title bar), on the left and
+    // the right of the window whatever the layout direction; 0 elsewhere
+    Q_PROPERTY(int windowButtonsInsetLeft READ windowButtonsInsetLeft NOTIFY windowButtonsInsetChanged FINAL)
+    Q_PROPERTY(int windowButtonsInsetRight READ windowButtonsInsetRight NOTIFY windowButtonsInsetChanged FINAL)
     Q_PROPERTY(bool hasToolbarMenu READ hasToolbarMenu WRITE setHasToolbarMenu NOTIFY hasToolbarMenuChanged FINAL)
     Q_PROPERTY(bool canShowVideoPIP READ canShowVideoPIP CONSTANT FINAL)
     Q_PROPERTY(bool pinVideoControls READ pinVideoControls WRITE setPinVideoControls NOTIFY pinVideoControlsChanged FINAL)
@@ -438,9 +444,28 @@ public:
         });
     }
 
+#ifdef Q_OS_MACOS
+    // the unified title bar keeps the system's frame: its edges, buttons
+    // (the traffic lights), shadow and border (macos_titlebar.hpp)
+    Q_INVOKABLE virtual bool platformHandlesResizeWithCSD() const { return true; };
+    Q_INVOKABLE virtual bool platformHandlesTitleBarButtonsWithCSD() const { return true; };
+    Q_INVOKABLE virtual bool platformHandlesShadowsWithCSD() const { return true; };
+#else
     Q_INVOKABLE virtual bool platformHandlesResizeWithCSD() const { return false; };
     Q_INVOKABLE virtual bool platformHandlesTitleBarButtonsWithCSD() const { return false; };
     Q_INVOKABLE virtual bool platformHandlesShadowsWithCSD() const { return false; };
+#endif
+
+    QMargins windowButtonsInset() const { return m_windowButtonsInset; }
+    int windowButtonsInsetLeft() const { return m_windowButtonsInset.left(); }
+    int windowButtonsInsetRight() const { return m_windowButtonsInset.right(); }
+    void setWindowButtonsInset(const QMargins &inset)
+    {
+        if (inset == m_windowButtonsInset)
+            return;
+        m_windowButtonsInset = inset;
+        emit windowButtonsInsetChanged();
+    }
 
     void setUsingTouch(bool touch)
     {
@@ -567,6 +592,7 @@ protected:
     ColorSchemeModel*    m_colorScheme = nullptr;
     RedesignAccent*      m_redesignAccent = nullptr;
     bool                 m_windowTitlebar = true;
+    QMargins             m_windowButtonsInset;
     // NOTE: Ideally this should be a QVLCBool.
     bool                 m_hasToolbarMenu = false;
     bool                 m_canShowVideoPIP = false;
@@ -730,6 +756,7 @@ signals:
     void lyricsModeChanged( bool );
     void colorSchemeChanged( QString );
     void useClientSideDecorationChanged();
+    void windowButtonsInsetChanged();
     void hasToolbarMenuChanged();
 
     /// forward window maximise query to the actual window or widget

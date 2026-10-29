@@ -15,6 +15,7 @@
 
 #include "subtitle_cues.hpp"
 #include "subtitle_finder.hpp"
+#include "../../../codec/subs_charset.h"
 
 #include <vlc_configuration.h>
 #include <vlc_input_item.h>
@@ -270,13 +271,44 @@ void SubtitleCues::startReading(const QString &key, const QString &path, int str
     s_threads.removeIf([](const QPointer<QThread> &thread) { return thread.isNull(); });
     s_reading.append(key);
 
-    QThread *thread = QThread::create([key, path, streamIndex, fps] {
-        const auto read = [](const QString &name) {
+    // The encoding of the text, as the player finds it (subtitle demux):
+    // the language in the file name ("movie.he.srt"), the preferred
+    // subtitle languages, the code page of the interface language
+    QList<QByteArray> langs;
+    const QString name = QFileInfo(path).fileName();
+    const qsizetype ext = name.lastIndexOf(QLatin1Char('.'));
+    const qsizetype dot = ext > 0 ? name.lastIndexOf(QLatin1Char('.'), ext - 1) : -1;
+    if (dot >= 0)
+        langs << name.mid(dot + 1, ext - dot - 1).toUtf8();
+    if (char *pref = config_GetPsz("sub-language")) {
+        for (const QByteArray &lang : QByteArray(pref).split(','))
+            if (!lang.trimmed().isEmpty() && langs.size() < 4)
+                langs << lang.trimmed();
+        free(pref);
+    }
+    const QByteArray uiCharset = vlc_pgettext("GetACP", "CP1252");
+
+    QThread *thread = QThread::create([key, path, streamIndex, fps, langs, uiCharset] {
+        const auto read = [&langs, &uiCharset](const QString &name) {
             QFile file(name);
             if (!file.open(QIODevice::ReadOnly) || file.size() > qint64(subtitlecues::maxFileBytes))
                 return std::string();
             const QByteArray bytes = file.readAll();
-            return std::string(bytes.constData(), size_t(bytes.size()));
+            const char *hints[4];
+            size_t count = 0;
+            for (const QByteArray &lang : langs)
+                if (count < 4)
+                    hints[count++] = lang.constData();
+            const subs_charset_t cs = subs_charset_Detect(bytes.constData(), size_t(bytes.size()),
+                                                          hints, count, uiCharset.constData());
+            size_t size = 0;
+            char *utf8 = subs_charset_ToUTF8(bytes.constData() + cs.bom_size,
+                                             size_t(bytes.size()) - cs.bom_size, cs.charset, &size);
+            if (!utf8)
+                return std::string(bytes.constData(), size_t(bytes.size()));
+            std::string text(utf8, size);
+            free(utf8);
+            return text;
         };
         auto cues = std::make_shared<CueList>(subtitlecues::parse(read(path), fps, streamIndex));
         // a VobSub .sub (pictures) has its times in the .idx beside it

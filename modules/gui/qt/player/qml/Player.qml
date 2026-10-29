@@ -345,6 +345,13 @@ FocusScope {
 
                 focus: true
 
+                // Ctrl+wheel over it sizes the subtitles (interface_window_handler.cpp)
+                Binding {
+                    target: MainCtx
+                    property: "subtitleWheelArea"
+                    value: videoSurface
+                }
+
                 VideoSurface {
                     id: videoSurface
 
@@ -881,6 +888,24 @@ FocusScope {
         onClicked: DialogsProvider.audioVisualizationDialog()
 
         AccessibleCompat.id: "videoVisualizationButton"
+    }
+
+    // The subtitles' size Ctrl+wheel over the video (or its keys) made, a
+    // moment, under the top bar
+    PlayerToast {
+        id: subtitleSizeToast
+        objectName: "subtitleSizeToast"
+        anchors.horizontalCenter: parent.horizontalCenter
+        y: VLCStyle.dp(24, VLCStyle.scale) + (topBar.opacity > 0.5 ? Math.max(0, topBar.y + topBar.height) : 0)
+        z: 10
+
+        Connections {
+            target: Player
+            function onSubtitleTextScaleStepped(scale) {
+                // xgettext:no-c-format
+                subtitleSizeToast.say(qsTr("Subtitle size %1%").arg(scale))
+            }
+        }
     }
 
     Widgets.FloatingNotification {

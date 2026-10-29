@@ -4,6 +4,7 @@
  ****************************************************************************/
 import QtQuick
 import QtQuick.Controls.Basic
+import VLC.MainInterface
 import VLC.Style
 
 Popup {
@@ -13,6 +14,8 @@ Popup {
     property string conflictAction: ""
     property string errorText: ""
     signal keyCaptured(int key, int modifiers)
+    // the wheel turned (up or down) with a modifier held: "Ctrl+Mouse Wheel Up"
+    signal wheelCaptured(bool up, int modifiers)
     signal clearRequested()
     signal replaceRequested()
     // Esc while asking whether to take the key from another action
@@ -35,8 +38,11 @@ Popup {
     closePolicy: Popup.NoAutoClose
     // taller when a longer translation of the message takes more lines
     height: Math.max(VLCStyle.dp(205, VLCStyle.scale),
-                     topPadding + bottomPadding + 52 + message.implicitHeight + 8 + 76)
+                     topPadding + bottomPadding + 52 + message.implicitHeight + 8 + 76
+                     + (wheelHint.visible ? wheelHint.implicitHeight + 8 : 0))
     onOpened: keyInput.forceActiveFocus(Qt.PopupFocusReason)
+    // the window lets the wheel with Ctrl come here (not the zoom)
+    onOpenedChanged: MainCtx.wheelCapture = opened
     background: Rectangle {
         color: VLCStyle.redesign.color("#1b1b1b", "#ababaa")
         border.color: VLCStyle.redesign.color("#555555", "#8e8e8d")
@@ -52,6 +58,30 @@ Popup {
         Keys.onEscapePressed: (event) => {
             event.accepted = true
             capturePopup.cancel()
+        }
+        // Ctrl (Alt, Shift) and a turn of the wheel: a key of the wheel (a
+        // whole step, once: a touchpad sends many small ones)
+        MouseArea {
+            anchors.fill: parent
+            acceptedButtons: Qt.NoButton
+            property int turned: 0
+            onWheel: (wheel) => {
+                wheel.accepted = true
+                const modifiers = wheel.modifiers & (Qt.ControlModifier | Qt.AltModifier
+                                                     | Qt.ShiftModifier | Qt.MetaModifier)
+                if (capturePopup.captureGlobal || capturePopup.conflictAction.length > 0
+                        || modifiers === 0)
+                    return
+                const dy = wheel.inverted ? -wheel.angleDelta.y : wheel.angleDelta.y
+                if (Math.abs(dy) < Math.abs(wheel.angleDelta.x))
+                    return
+                turned += dy
+                if (Math.abs(turned) < 120)
+                    return
+                const up = turned > 0
+                turned = 0
+                capturePopup.wheelCaptured(up, modifiers)
+            }
         }
         TextInput {
             id: keyInput
@@ -107,6 +137,23 @@ Popup {
             wrapMode: Text.WordWrap
             horizontalAlignment: Text.AlignLeft
             font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
+        }
+        Label {
+            id: wheelHint
+            // (not for a global hotkey: the system's keys, no wheel)
+            visible: !capturePopup.captureGlobal && capturePopup.conflictAction.length === 0
+                     && capturePopup.errorText.length === 0
+            anchors.top: message.bottom
+            anchors.topMargin: 8
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.leftMargin: 14
+            anchors.rightMargin: 14
+            text: qsTr("Or turn the mouse wheel while holding Ctrl, Alt or Shift")
+            color: VLCStyle.redesign.color("#6b6b6b", "#6b6b6b")
+            wrapMode: Text.WordWrap
+            horizontalAlignment: Text.AlignLeft
+            font.pixelSize: VLCStyle.dp(12, VLCStyle.scale)
         }
         Label {
             visible: capturePopup.errorText.length > 0

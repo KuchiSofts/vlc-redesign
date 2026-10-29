@@ -237,6 +237,7 @@ libqml_module_player_a_QML = \
 	player/qml/WaveformSlider.qml \
 	player/qml/SliderBar.qml \
 	player/qml/TopBar.qml \
+	player/qml/PlayerToast.qml \
 	player/qml/Title.qml \
 	player/qml/TracksMenu.qml \
 	player/qml/TracksPage.qml \

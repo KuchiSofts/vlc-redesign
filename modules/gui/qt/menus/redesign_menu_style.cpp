@@ -279,7 +279,7 @@ QIcon RedesignMenuStyle::accentIcon(MainCtx *ctx, const QString &name)
     // drawn from its SVG at each size asked (sharp at any scale)
     QString file = QStringLiteral(":/redesign/icons/%1/default.png").arg(name);
     // Some icons of the design only have their active state
-    if (!QFile::exists(file))
+    if (RedesignIcons::svgOf(file).isEmpty() && !QFile::exists(file))
         file = QStringLiteral(":/redesign/icons/%1/active.png").arg(name);
     return RedesignIcons::icon(file, accent);
 }

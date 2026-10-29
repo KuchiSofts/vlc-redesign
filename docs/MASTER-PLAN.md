@@ -56,6 +56,20 @@ What is being worked on, updated as it changes (2026-10-29):
     warning. Linux under Xvfb: start, Home, TV, Settings, About, a clip, quit, no QML warning. macOS not built.
     Details: [0.4.0-ui-audit.md](qa/0.4.0-ui-audit.md#integration-build-branch-featureintegration-2026-10-29).
 
+- 🟡 **Upstream and the audit's leftovers** (branch `feature/upstream-final`, 2026-10-29): VideoLAN's master
+  merged to `12023233ef` — **4 commits behind before** (`32b160d9e9` → `e0baa29690` mpg123 1.33.7 and its ARM64
+  FPU patch, then `12023233ef` Qt moc include dirs and a medialibrary header), **0 after**, no conflict, nothing of
+  ours changed. Fixed: Live TV's *All* counted the hidden adult channels (5,891 vs 5,881); the automatic online
+  subtitles load by themselves only for a hash match or a sure title (`silent.mp4` → *Silent Hill* is now only
+  listed); a channel address that is a playlist (Plex catch-up parts) left a library entry named by its token
+  (`src/playlist/preparse.c`); accessibility (UI Automation sweep: every control named but the Settings search,
+  dialogs named by their title, Tab out of multi-line fields); the 303 PNG icons removed (every one had its SVG of
+  the same size; the originals stay in `design/icons`); the GPL source archive in `make-release.ps1`
+  ([SOURCE.md](SOURCE.md)); the 0.4.0 release notes drafted (`docs/release/0.4.0`). Proven on the Windows x64
+  build: the 7 UI tours, the IPTV parser test (Qt 6.8.3, Docker: PASS), the subtitle corpus (212/212), the
+  pause/seek regressions (0 late, 0 dropped, clean quits), the border sweep, right-to-left captures.
+  Details: [0.4.0-ui-audit.md](qa/0.4.0-ui-audit.md#upstream-merge-and-leftovers-branch-featureupstream-final-2026-10-29).
+
 - 🟡 **Subtitle quality** (branch `feature/subs-quality`, for 0.4.0): measured first on Windows (d3d11, 480p,
   720p and 1080p sources in a 1440×1000 window and full screen 2560×1440): SRT and ASS were already rasterised at
   the display size (the same crop whatever the source size), picture subtitles were blocky with the point,
@@ -98,7 +112,8 @@ What is being worked on, updated as it changes (2026-10-29):
   `extras/juxtopposed/iptv-parsers.cpp`; the catalog (118 playlists, 157 guides, verified 2026-10-28). Merged into
   `redesign` 2026-10-29. Left: the owner's "no sound" report (not reproduced), translations, light/RTL captures.
 
-- 🟡 **Final check before 0.4.0** (2026-10-28): VideoLAN's master merged to its latest (`32b160d9e9`), `feature/linux-pkg` and
+- 🟡 **Final check before 0.4.0** (2026-10-28): VideoLAN's master merged to its latest then (`32b160d9e9`; now
+  `12023233ef`, above), `feature/linux-pkg` and
   `feature/macos` merged; the redrawn tool windows looked at in build 10 (Media Statistics did not load: Canvas,
   fixed; Folder information: native path, no time-zone name); the Visualizer opens from Audio › Visualizations and its
   button over a visualization. Build 11 found Media Statistics still not loading (its graph's `top` clashed with

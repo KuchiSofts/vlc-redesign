@@ -119,6 +119,10 @@ T.Popup {
     }
 
     contentItem: ColumnLayout {
+        // a screen reader names the dialog
+        Accessible.role: Accessible.Dialog
+        Accessible.name: qsTr("Effects")
+
         spacing: 0
 
         // a popup does not inherit the mirroring of the window (right to left)

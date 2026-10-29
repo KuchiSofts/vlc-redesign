@@ -26,16 +26,20 @@ ROOT = Path(__file__).resolve().parents[2]
 DESIGN = ROOT / "design"
 PIXMAPS = ROOT / "modules" / "gui" / "qt" / "pixmaps"
 REDESIGN = PIXMAPS / "redesign"
+# the PNG files exported from Figma, read back from design/icons (the app
+# has only the SVGs since 0.4.0)
+ARCHIVE = DESIGN / "icons"
 
 # (set name, source folder, pattern, destination folder, description)
 SETS = [
-    ("glyphs", REDESIGN / "icons", "*/*.png", "png",
+    # the PNG originals are kept here only: the app draws the SVGs (0.4.0)
+    ("glyphs", ARCHIVE / "png", "*/*.png", "png",
      "The icons of the Figma \"Icon\" component set (42:356), exported as PNG, one folder per icon, "
      "one file per state. 24 x 24 unless noted; @2x files are the same state at twice the size."),
     ("glyphs-svg", REDESIGN / "icons", "*/*.svg", "svg/glyphs",
      "SVG sources of the glyphs, from the same Figma symbols (42:356), one per PNG state (design/tools/"
      "icon_svgs.py; its report icon_svgs_report.md compares them with the PNGs). 24 x 24 unless noted, "
-     "Figma's colours of each state. The app draws these, at the size shown; the PNGs stay as a fallback."),
+     "Figma's colours of each state. The app draws these, at the size shown; it ships no PNG of them."),
     ("svg", REDESIGN, "*.svg", "svg",
      "SVG icons of the top bar, the sidebar and the player, and the SVG of each raster piece of "
      "images/ (same name; design/tools/raster_svgs.json says which Figma node each comes from)."),
@@ -46,9 +50,9 @@ SETS = [
      "light #2E2E2E), #FF8800 = details (Accent Dim), #00FFFF = the full accent."),
     ("widgets", REDESIGN / "widgets", "*.svg", "svg/widgets",
      "Chevrons and checks of the classic (widget) dialogs, one file per theme and state."),
-    ("player", REDESIGN / "player", "*.png", "player",
+    ("player", ARCHIVE / "player", "*.png", "player",
      "Raster player and window-frame pieces (corners per theme)."),
-    ("images", REDESIGN, "*.png", "images",
+    ("images", ARCHIVE / "images", "*.png", "images",
      "Other raster pieces: onboarding theme previews, track icons, volume states, list/grid toggles."),
 ]
 
@@ -157,7 +161,7 @@ def build_readme(index):
            "SVG export of the set by `design/tools/icon_svgs.py`; `design/tools/icon_svgs_report.md` compares",
            "each with its PNG. Every other raster piece (`images/`, `player/`) has its SVG too (`svg/`,",
            "`player/svg/`; `design/tools/raster_svgs.json` names its Figma node). The app draws the SVGs, at",
-           "the size shown times the screen's scale and the interface zoom; the PNGs stay as a fallback. The",
+           "the size shown times the screen's scale and the interface zoom; the PNGs are kept here only. The",
            "two-tone menu icons (`svg/duo/`) and the widget chevrons (`svg/widgets/`) are SVG only.", "",
            "**States.** " + "; ".join(f"`{k}`: {v}" for k, v in STATE_NOTES.items()) + ".", ""]
     by_set = {}

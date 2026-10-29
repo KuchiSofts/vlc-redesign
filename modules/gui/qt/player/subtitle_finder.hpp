@@ -132,6 +132,11 @@ private:
         QString title;
         int year = 0;
         bool series = false;
+        // the user's choice, or the same title with its year (or episode,
+        // or two words or more): subtitles of it are loaded by themselves.
+        // A guess from a name alone (silent.mp4 → "Silent Hill") is only
+        // offered in the list
+        bool strong = false;
     };
     struct Media
     {
@@ -174,7 +179,10 @@ private:
     void downloadNext();
     // the secondary language shown too (SubtitlePreferences::showBoth)
     void ensureSecondary();
+    // the best subtitle of a language that can be loaded by itself: made
+    // for this file (its hash), or of a title identified for sure
     QVariantMap bestOf(const QString &language) const;
+    bool strongTitle(double similarity, int year, bool series) const;
     // the best one of the language the user picks most (learned), unless
     // the video has it (local) or one is loaded
     QVariantMap bestOfLearned(const QStringList &local) const;

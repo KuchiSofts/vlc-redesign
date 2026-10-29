@@ -65,6 +65,10 @@ for name, what in [('vlc-redesign-%s-win64-setup.exe' % version, 'Installer (Win
     if name in sums:
         rows.append('| [%s](https://github.com/KuchiSofts/vlc-redesign/releases/download/v%s/%s) | %s | %s | `%s` |'
                     % (what, version, name, name, size(name), sums[name]))
+source = 'vlc-redesign-%s-source.tar.gz' % version
+if source in sums:
+    rows.append('| [Source code](https://github.com/KuchiSofts/vlc-redesign/releases/download/v%s/%s) (GPL) | %s | %s | `%s` |'
+                % (version, source, source, size(source), sums[source]))
 deltas = sorted(n for n in sums if n.endswith('.vrdelta'))
 for name in deltas:
     old = re.search(r'delta-from-(.+)\.vrdelta$', name).group(1)
@@ -101,9 +105,15 @@ offers the small update by itself.%(sums_signed)s
 
 %(also_on)s
 
+## Source code
+
+VLC Redesign is free software, GPL v2 or later. The source of these files is `%(source)s` above and the tag
+[`v%(v)s`](https://github.com/KuchiSofts/vlc-redesign/tree/v%(v)s); the libraries VLC uses and the written offer
+for their source: [SOURCE.md](https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/SOURCE.md).
+
 ---
 *VLC Redesign is not affiliated with VideoLAN. VLC is a trademark of VideoLAN.*
-''' % {'v': version, 'section': section, 'rows': '\n'.join(rows), 'also_on': also_on,
+''' % {'v': version, 'section': section, 'source': source, 'rows': '\n'.join(rows), 'also_on': also_on,
        # (the app checks it before any update: docs/code-signing.md, The release key)
        'sums_signed': (' `SHA256SUMS.txt.sig` is the signature of the checksums by the project\'s release\n'
                        'key, which the app checks before it installs an update.')

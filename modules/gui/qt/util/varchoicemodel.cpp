@@ -146,7 +146,10 @@ void VLCVarChoiceModel::onDataUpdated(const vlc_object_t* object, QVariant , QVa
         }
 
     if (m_current != oldCurrent)
+    {
         emit hasCurrentChanged(m_current != -1);
+        emit currentTextChanged();
+    }
     if (m_current != -1)
         emit dataChanged(index(m_current), index(m_current), { Qt::CheckStateRole } );
     if (oldCurrent != -1)
@@ -232,6 +235,11 @@ bool VLCVarChoiceModel::hasCurrent() const
 int VLCVarChoiceModel::currentRow() const
 {
     return m_current;
+}
+
+QString VLCVarChoiceModel::currentText() const
+{
+    return (m_current >= 0 && m_current < m_titles.count()) ? m_titles[m_current] : QString{};
 }
 
 void VLCVarChoiceModel::toggleIndex(int index)

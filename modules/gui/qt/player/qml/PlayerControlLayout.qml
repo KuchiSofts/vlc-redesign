@@ -397,6 +397,12 @@ FocusScope {
 
             spacing: playerControlLayout.spacing
 
+            // centred: what the wider side needs, on both sides
+            availableWidth: {
+                const side = Math.max(loaderLeft.item?.neededWidth ?? 0, loaderRight.item?.neededWidth ?? 0)
+                return Math.max(0, loaderCenter.parent.width - 2 * (side + playerControlLayout.layoutSpacing))
+            }
+
             altFocusAction: () => Navigation.defaultNavigationUp()
 
             Navigation.parentItem: playerControlLayout

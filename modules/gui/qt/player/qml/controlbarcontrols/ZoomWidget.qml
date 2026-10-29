@@ -21,12 +21,17 @@ Widgets.ComboBoxExt {
     currentIndex: -1
     enabled: Player.zoom.hasCurrent && !paintOnly
     onActivated: (index) => Player.zoom.toggleIndex(index)
-    contentItem: Image {
-        source: "qrc:///redesign/icons/zoom/default.png"
-        width: VLCStyle.dp(20, VLCStyle.scale)
-        height: width
-        anchors.centerIn: parent
-        opacity: root.enabled ? 1 : 0.4
+    // the icon in an item: as the content itself it was stretched over the box
+    contentItem: Item {
+        Image {
+            source: "qrc:///redesign/icons/zoom/default.png"
+            width: VLCStyle.dp(20, VLCStyle.scale)
+            height: width
+            sourceSize: Qt.size(width, height)
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: parent.left
+            opacity: root.enabled ? 1 : 0.4
+        }
     }
     Accessible.name: qsTr("Zoom")
     Accessible.description: enabled ? qsTr("Choose a video zoom level")

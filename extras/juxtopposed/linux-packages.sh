@@ -191,6 +191,13 @@ while read -r so; do
     echo "$so()(64bit)" >> "$stage/rpm-depends"
 done < "$stage/system"
 echo "libc.so.6($glibc)(64bit)" >> "$stage/rpm-depends"
+# the certificates of the system: without them every HTTPS access (the TV
+# catalog, updates, subtitle search) asks about an "insecure site"
+echo ca-certificates >> "$stage/deb-depends"
+echo ca-certificates >> "$stage/rpm-depends"
+# the icon folders (/usr/share/icons/hicolor/*/apps) belong to it on Fedora:
+# without it, removing VLC left them behind, unowned
+echo hicolor-icon-theme >> "$stage/rpm-depends"
 [ -n "$glibcxx" ] && grep -qx 'libstdc++.so.6' "$stage/system" \
     && echo "libstdc++.so.6($glibcxx)(64bit)" >> "$stage/rpm-depends"
 sort -u -o "$stage/deb-depends" "$stage/deb-depends"

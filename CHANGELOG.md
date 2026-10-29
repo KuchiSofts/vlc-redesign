@@ -106,6 +106,22 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Fixed
 
+- **Live TV: Page Up, Page Down, the numbers and Backspace change the channel.** VLC's own shortcuts got these
+  keys first: Page Up restarted the stream instead of going to the next channel. While a channel plays, the keys
+  of the TV now come first; every other key keeps its shortcut, and outside Live TV nothing changes. The keys of
+  the channels (next, previous, last channel, channel list, banner) are in **Settings › Shortcuts**, group *Live
+  TV*, and can be changed there.
+- **Backspace no longer closes VLC** when the player was opened with a file and a message (such as *Restore the
+  play queue?*) was over it: the player's "back" went back from a history that was still empty.
+- **Hebrew and Arabic: a text not yet translated keeps its punctuation at its end.** *Advanced options...* showed
+  its dots first, a label its colon first; such texts now read left to right inside the right-to-left layout.
+- **Open Media › Capture Device: the video and audio device lists line up.**
+- **Live TV guide: no air date where the episode goes.** Pluto TV's guide showed *19990101080000 +0000* under its
+  programmes; the episode (*S17E52*) shows now.
+- **No QML error when *Open File(s)* or *Open Folder* is chosen from the ⋯ menu** (seen at zoom 2): the system's
+  dialog opens once the menu has closed.
+- **No QML error when the player closes while its library panel opens** ("Object destroyed while one of its QML
+  signal handlers is in progress", seen in Hebrew): the panel is made in the background.
 - **The mouse wheel changes the volume again, and the volume never reads "-100 %".** With an audio output that
   has no volume of its own (the *File* and *Dummy* outputs of Settings, Audio), the wheel over the video and over
   the volume slider did nothing and the slider's value read *-100 %*. Those outputs now apply the volume to the
@@ -190,6 +206,15 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Technical
 
+- **Keys before the hotkeys** (`MainCtx.keysBeforeHotkeys`): an item of the interface may take keys before VLC's
+  hotkeys and the focused item; the window's event filter asks its `takeKey(key, modifiers)` (done there) and
+  `wantsKey(key, modifiers)` (sent on to the items). Live TV over the video is that item while a channel plays.
+  Its keys are options of the Qt interface (`qt-key-tv-channel-up`, `-channel-down`, `-previous`, `-list`,
+  `-info`, hidden in the classic preferences), listed by the shortcuts model in their own group, without a global
+  key, in conflict only with one another. `NavigationHistory::previous()` returns on an empty history.
+- **Untranslated texts in a right-to-left interface**: the Qt translator puts a left-to-right mark at both ends of
+  a text gettext returned untranslated when it starts or ends with punctuation; the `.ui` texts go through it
+  (`Q_` is `QObject::tr` in `Makefile.am`, as uic does for meson).
 - **Encoding detection of text subtitles** (`modules/codec/subs_charset.c`): a byte order mark, UTF-16 without
   one, valid UTF-8, else the legacy encoding whose decoding reads most like text (letters of the encoding's script,
   one script per word, letter case, marks after letters, Hebrew final letters, Russian and Greek letter

@@ -973,8 +973,8 @@ Tracks with checklists; a version number comes with the first published build.
   picture is centred in a subsurface over black (Weston and WSLg, fullscreen, windowed, next file)
 - 🟢 Fullscreen on headless Weston keeps the window where it was and runs off the screen; not VLC: it asks for
   the right geometry and buffer (traced), and a plain Qt 6.8 window does the same there. To see on a real desktop
-- 🟢 X11 CSD: drag to move, double-click to maximize and restore; 🟡 resizing from an edge under openbox with
-  synthetic input moved the window instead (to check on a real desktop)
+- 🟢 X11 CSD (openbox): drag the title bar to move, resize from each edge and corner, double-click to maximize
+  and restore (an earlier "moved instead of resized" was the test clicking a hidden helper window)
 - 🟡 Xvfb (no DRI3) can't show VA-API pictures directly: copied to software (1080p 84 % CPU with llvmpipe)
 - 🔴 Docker build in CI
 - 🔴 Packages: AppImage, Flatpak (Flathub), .deb, .rpm, .tar.gz

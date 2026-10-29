@@ -101,6 +101,7 @@ struct GuideData
     QHash<QString, QString> idByName;
     QSet<QString> languages;
     qint64 updated = 0;      // when it was downloaded
+    QByteArray signature;    // the channels and days it was read for
     int programmes = 0;
     QString error;
 };
@@ -154,9 +155,9 @@ private:
     void run();
     void startup();
     void schedule();
-    void refreshSource(const QString& id, bool force, bool guides);
+    void refreshSources(const QStringList& ids, bool guides);
     bool loadPlaylist(const SourceConfig& cfg, bool download, SourceState& state);
-    void loadGuides(bool download, const QString& onlySource);
+    void loadGuides(bool download, const QStringList& onlySources);
     void rebuild();
     void updateCatalog(bool force);
     void progress(const QString& id, const QString& stage, qint64 received, qint64 total);

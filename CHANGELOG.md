@@ -23,9 +23,12 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   placeholder that can be dragged out. Every control type was then put in the bar: the folder name after the
   thumbnail stayed hidden (the centre zone measured its room by its own shown controls), the aspect ratio box was
   empty, and the zoom icon was stretched; all three are fixed.
+- Windows: VLC no longer crashes while it quits with the mouse resting over its window (the window's title-bar
+  handling read the interface after it was gone; it ended with `0xC000041D` or a heap corruption).
 
 ### Technical
 
+- CI: the launch test keeps a full crash dump, and the build keeps the symbol maps of the stripped binaries.
 - Merged VLC master up to `12023233ef` (2026-10-29), 123 commits ([#8](https://github.com/KuchiSofts/vlc-redesign/issues/8)):
   upstream's own fix for stopping the Windows audio output under its lock, the playlist recovery question shown
   without blocking, the picture-in-picture player aligned to the screen's pixels, a placeholder for a bar control

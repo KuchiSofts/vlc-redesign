@@ -503,12 +503,17 @@ public:
 
 
     // a device by its name, with or without its model after it ("Living
-    // Room TV (Chromecast Ultra)", as mDNS names it)
+    // Room TV (Chromecast Ultra)", as mDNS names it; "Living Room TV" by
+    // DIAL): either way round, a device hidden from its row with the model
+    // stays hidden when the other discovery finds it without
     static bool isDevice(const QString &name, const QString &device)
     {
         const QString d = device.trimmed();
-        return !d.isEmpty() && (name.compare(d, Qt::CaseInsensitive) == 0
-                                || name.startsWith(d + QStringLiteral(" ("), Qt::CaseInsensitive));
+        const QString n = name.trimmed();
+        return !d.isEmpty() && !n.isEmpty()
+            && (n.compare(d, Qt::CaseInsensitive) == 0
+                || n.startsWith(d + QStringLiteral(" ("), Qt::CaseInsensitive)
+                || d.startsWith(n + QStringLiteral(" ("), Qt::CaseInsensitive));
     }
 
     // a device not to show
@@ -1200,6 +1205,10 @@ void RendererManager::prepare()
     Q_D(RendererManager);
     if( std::exchange( d->m_prepared, true ) )
         return;
+    /* "Discover cast devices" off (Settings): it looks only when asked (the
+     * list opened, the Renderer menu), never by itself */
+    if( !d->p_intf->mainSettings->value( "redesign/discover-cast-devices", true ).toBool() )
+        return;
     if( d->p_intf->mainSettings->value( "redesign/cast-scanned", false ).toBool() )
         StartScan();
 }
@@ -1259,6 +1268,13 @@ void RendererManager::StartScan()
         return;
     }
     d->p_intf->mainSettings->setValue( "redesign/cast-scanned", true );
+
+    /* The discoveries of the last scan are gone (their items are not
+     * removed when they close): what each found is forgotten, so that a
+     * device the new ones lose leaves the list during this scan, not at its
+     * end (the row itself stays until then, see ItemEntry::currentScan) */
+    for (ItemEntry &entry : d->m_items)
+        entry.copies.clear();
 
     /* SD subnodes */
     char **ppsz_longnames;

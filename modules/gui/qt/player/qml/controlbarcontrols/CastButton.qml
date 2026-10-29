@@ -71,8 +71,33 @@ RedesignIconButton {
         onOpened: {
             root.requestLockUnlockAutoHide(true)
             root.manager.StartScan()
+            popup.searchedLong = false
+            searchTimer.restart()
         }
-        onClosed: root.requestLockUnlockAutoHide(false)
+        onClosed: {
+            root.requestLockUnlockAutoHide(false)
+            searchTimer.stop()
+        }
+
+        // it looks for devices as long as the list is open (a TV turned on
+        // then shows up, one turned off goes), not for one scan only; after
+        // a while with none, the text says so (the dot still shows it looks)
+        property bool searchedLong: false
+        Timer {
+            id: searchTimer
+            interval: 1000
+            repeat: true
+            property int ticks: 0
+            onRunningChanged: if (running) ticks = 0
+            onTriggered: {
+                ticks++
+                if (ticks >= 8)
+                    popup.searchedLong = true
+                // (StartScan while one runs: 20 s more from now)
+                if (ticks % 15 === 0)
+                    root.manager.StartScan()
+            }
+        }
 
         background: Rectangle {
             color: VLCStyle.redesign.color(VLCStyle.redesign.windowBackground, "#c2c2c1")
@@ -190,7 +215,7 @@ RedesignIconButton {
                 visible: devices.count === 0
                 wrapMode: Text.WordWrap
                 horizontalAlignment: Text.AlignLeft
-                text: root.manager.status === RendererManager.RUNNING
+                text: root.manager.status === RendererManager.RUNNING && !popup.searchedLong
                       ? qsTr("Looking for TVs and Chromecasts on your network…")
                       : qsTr("No device found. Turn your TV or Chromecast on, on the same network as this computer.")
                 color: VLCStyle.redesign.color("#8F8F8F", "#2e2e2e")
@@ -208,6 +233,10 @@ RedesignIconButton {
                 focusPolicy: Qt.StrongFocus
                 text: qsTr("Show the video here too")
                 checked: root.manager.displayHere
+                // (casting to a Chromecast: it has no picture here, the
+                // note under it says why)
+                enabled: root.manager.displayHereAvailable
+                opacity: enabled ? 1 : 0.45
                 onToggled: root.manager.displayHere = checked
                 Accessible.name: text
 
@@ -303,6 +332,18 @@ RedesignIconButton {
             acceptedButtons: Qt.RightButton
             onTapped: (eventPoint) => row.hideRequested(eventPoint.position.x, eventPoint.position.y)
         }
+        // the arrows go from row to row as Tab does (and Space or Enter
+        // chooses one)
+        Keys.onDownPressed: (event) => {
+            const next = row.nextItemInFocusChain(true)
+            if (next)
+                next.forceActiveFocus(Qt.TabFocusReason)
+        }
+        Keys.onUpPressed: (event) => {
+            const previous = row.nextItemInFocusChain(false)
+            if (previous)
+                previous.forceActiveFocus(Qt.BacktabFocusReason)
+        }
         Keys.onMenuPressed: (event) => {
             if (!row.hideable)
                 return
@@ -344,6 +385,9 @@ RedesignIconButton {
                 spacing: 0
                 Text {
                     Layout.fillWidth: true
+                    // (a device's name in Latin letters on the side where
+                    // reading starts in Hebrew too, under its Hebrew rows)
+                    horizontalAlignment: Text.AlignLeft
                     text: row.name
                     color: row.selected ? VLCStyle.redesign.accent
                                         : VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")

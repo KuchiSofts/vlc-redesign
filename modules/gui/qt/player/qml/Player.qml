@@ -487,9 +487,14 @@ FocusScope {
             id: castingComponent
             // The picture is on the TV: here a click plays or pauses it, a
             // double click and the wheel do what they do over a video (the
-            // single click waits to be no double click)
+            // single click waits to be no double click). On the window's own
+            // background (the card over it), not the grey of no picture
             MouseArea {
                 acceptedButtons: Qt.LeftButton | Qt.RightButton
+                Rectangle {
+                    anchors.fill: parent
+                    color: VLCStyle.redesign.color(VLCStyle.redesign.windowBackground)
+                }
                 onClicked: (mouse) => {
                     if (mouse.button === Qt.RightButton)
                         rootPlayer.showAudioContextMenu(mapToGlobal(mouse.x, mouse.y))
@@ -1205,7 +1210,8 @@ FocusScope {
                 Layout.alignment: Qt.AlignHCenter
                 Layout.maximumWidth: rootPlayer.width - VLCStyle.dp(96, VLCStyle.scale)
                 visible: text !== ""
-                text: Player.title
+                // (a file without a title: its name, as the window says it)
+                text: Player.title !== "" ? Player.title : Player.name
                 color: VLCStyle.redesign.color("#B8B8B8", "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)

@@ -210,11 +210,15 @@ What is being worked on, updated as it changes (2026-10-29):
 - 🟢 **"Subtitl…" fixed**: the tab names of the tracks panel are no longer cut short (build 205).
 - 🟢 **README**: a 56 s tour of the smart features (HyperFrames, from real captures; animated WebP + MP4), twelve
   feature pictures, the platforms; the wiki documents every option (33 pages).
-- 🟡 **A rare crash at shutdown on GitHub's runner**: the launch test ended once with `0xC000041D` (a crash inside a
-  window's message handling) on Windows Server 2022 without a GPU, and passed when run again with the same files.
-  Not reproduced in 110 runs on this PC and in Windows Sandbox. Done so the next one can be read: the log file keeps
-  its last lines on a crash (build 204, checked by killing VLC: every line kept, against a cut at 4 KB before), and
-  the CI job keeps a crash dump. Next: read the dump when it crashes again.
+- 🟢 **The crash at shutdown on GitHub's runner, found and fixed (2026-10-29, PR #21)**: the launch test ended with
+  `0xC000041D` in 4 of the last 5 runs. The dumps showed a `WM_NCHITTEST` reaching `CSDWin32EventHandler` (the title
+  bar's native event filter, upstream code) after `MainCtx` and its CSD button model were deleted: the handler is a
+  child of the window, which outlives the interface. The runner's mouse rests over the window; here it never did,
+  so 110 local runs passed. Named by matching the stripped CI binary against a local unstripped build (the static Qt
+  code is identical once call targets are masked). Reproduced on a hidden desktop by sending hit tests while VLC
+  quits: 7 of 8 crashed before, 0 of 6 after (`0xC000041D` or heap corruption `0xC0000374`). Fix: the handler is
+  deleted with `InterfaceWindowHandlerWin32` and keeps `QPointer`s (here and on main). CI: full dumps instead of
+  minidumps, and the symbol maps of the stripped binaries as an artifact (main only: this branch's workflow differs).
 - 🟢 **Languages**: 72 languages and British English cover the whole interface: every language the list offers
   (the last 13 done on 2026-10-25; in build 197 and later). VLC's other catalogs follow as "(partial)".
 - 🟡 **The direction comes with the language**: choosing a right-to-left language (in Settings, the classic

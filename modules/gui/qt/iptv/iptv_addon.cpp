@@ -368,6 +368,12 @@ void IptvAddon::reloadSettings()
     {
         m_channelModel->refilter();
         m_playerModel->refilter();
+        if (m_channelsLoaded)
+        {
+            // "All" and the groups count what the list shows
+            countGroups();
+            emit channelsChanged();
+        }
     }
     if (refetch)
     {
@@ -603,22 +609,9 @@ void IptvAddon::loadChannels()
                     return;
                 }
                 a->m_channelIndex.clear();
-                QVariantList groups;
-                QHash<QString, int> counts;
-                QStringList order;
                 for (int i = 0; i < a->m_channels.size(); ++i)
-                {
-                    const auto& c = a->m_channels[i];
-                    a->m_channelIndex.insert(c.key, i);
-                    if (c.adult && !a->m_showAdult)
-                        continue;
-                    if (!c.group.isEmpty() && !counts.contains(c.group))
-                        order << c.group;
-                    ++counts[c.group];
-                }
-                for (const QString& g : std::as_const(order))
-                    groups.append(QVariantMap { { QStringLiteral("name"), g }, { QStringLiteral("count"), counts.value(g) } });
-                a->m_groups = groups;
+                    a->m_channelIndex.insert(a->m_channels[i].key, i);
+                a->countGroups();
                 a->m_channelsLoaded = true;
                 // a channel VLC put back in the queue at its start: TV again
                 if (!a->m_playing && a->m_intf->p_mainPlaylistController)
@@ -657,6 +650,27 @@ QVariantMap IptvAddon::nowNextOf(const QString& key)
             m_nowNextTimer.start();
     }
     return QVariantMap();
+}
+
+void IptvAddon::countGroups()
+{
+    QVariantList groups;
+    QHash<QString, int> counts;
+    QStringList order;
+    int shown = 0;
+    for (const auto& c : std::as_const(m_channels))
+    {
+        if (c.adult && !m_showAdult)
+            continue;
+        ++shown;
+        if (!c.group.isEmpty() && !counts.contains(c.group))
+            order << c.group;
+        ++counts[c.group];
+    }
+    for (const QString& g : std::as_const(order))
+        groups.append(QVariantMap { { QStringLiteral("name"), g }, { QStringLiteral("count"), counts.value(g) } });
+    m_groups = groups;
+    m_shownCount = shown;
 }
 
 void IptvAddon::fetchNowNext()

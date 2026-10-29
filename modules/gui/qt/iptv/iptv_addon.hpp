@@ -179,7 +179,9 @@ public:
     bool busy() const { return m_busy; }
     QStringList guideLanguages() const { return m_guideLanguages; }
     QVariantList groups() const { return m_groups; }
-    int channelCount() const { return int(m_channels.size()); }
+    // the channels shown: adult channels count only when they are shown
+    // (Settings > TV), as in the list and the groups
+    int channelCount() const { return m_shownCount; }
     bool channelsLoaded() const { return m_channelsLoaded; }
     IptvChannelModel* channelModel() const { return m_channelModel; }
     IptvChannelModel* playerModel() const { return m_playerModel; }
@@ -289,6 +291,8 @@ private:
     void sendOptions();
     void loadStatus();
     void loadChannels();
+    // the groups and their counts, and channelCount(), from m_channels
+    void countGroups();
     void fetchNowNext();
     void startMedia(const QString& url, const QString& name, const QStringList& options);
     void checkPlaying();
@@ -315,6 +319,7 @@ private:
     QVector<IptvChannelModel::Item> m_channels;
     QHash<QString, int> m_channelIndex;
     QVariantList m_groups;
+    int m_shownCount = 0;
     bool m_channelsLoaded = false;
     int m_channelsRevision = -1;
     bool m_channelsLoading = false;

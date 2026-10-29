@@ -106,6 +106,24 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Fixed
 
+- **Casting a live TV channel crashed VLC.** A live channel (or any HLS or DASH stream) cast to a Chromecast crashed
+  VLC when it ended: changing channel while casting, stopping the cast, quitting. Zapping while casting now works,
+  and a channel that restarts its picture after an advert makes the TV reload it once, not twice in a second
+  (once with the sound only).
+- **Quitting while casting took 16 seconds** and left the Chromecast playing on its own. VLC now quits in about
+  2 s and the TV goes back to its idle screen; a playlist cast to its end still shows each film to its last picture.
+- **The cast list keeps looking while it is open**: a TV turned on shows up, one turned off goes (it searched for
+  20 s only, then showed what it found until it was opened again). After a few seconds with no device it says so.
+  A device hidden from the list stays hidden when the network finds it under its short name (a Chromecast is named
+  with and without its model). With *Discover cast devices* off, VLC no longer searches by itself while a video
+  plays.
+- **The casting screen**: on the window's dark (or light) background instead of a flat grey, with the file name
+  when the media has no title; the subtitles button stays in the bar while a video plays on the TV (the subtitles
+  are chosen here and the TV follows).
+- **The cast list in Hebrew and by keyboard**: a device name in Latin letters sits on the reading side with the
+  Hebrew rows (it sat at the far end); the arrow keys move from row to row; *Show the video here too* is greyed
+  while a Chromecast plays (it has no picture here).
+
 - **Live TV: Page Up, Page Down, the numbers and Backspace change the channel.** VLC's own shortcuts got these
   keys first: Page Up restarted the stream instead of going to the next channel. While a channel plays, the keys
   of the TV now come first; every other key keeps its shortcut, and outside Live TV nothing changes. The keys of
@@ -214,6 +232,20 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   longer jumps when a track is removed, and more (the full list: the review report).
 
 ### Technical
+
+- **`DEMUX_GET_LENGTH` with its second argument.** Since upstream's d3a2408afa the adaptive demux writes the live
+  state through a second `bool *` whether the caller passed one or not. The Chromecast demux filter (and the chained
+  demux) asked with one argument: the bool went to whatever followed, the filter's own logger pointer, and the
+  input crashed in `module_unneed()`'s log at its end (found with cdb: the filter's logger read as `0xabababab`;
+  a hardware write breakpoint showed `PlaylistManager::doControl` writing it). Both now pass it.
+- **Chromecast output: held again after a stream restart.** When the picture or the sound is removed while the
+  other stays (an ES restart), the blocks wait as at the start of a media until both are back (`held_again`): one
+  new chain, one `LOAD`. The end of the media plays to the end only after the input's EOF (`cc_eof`): at quit
+  the interface goes before the input and could not say that the user stopped.
+- **Renderer list**: `StartScan()` clears what the previous discoveries found (`ItemEntry::copies`: they do not
+  remove their items when they close), so a device a new discovery loses goes during the scan; `isDevice()`
+  matches a hidden name either way round (with or without the model in parentheses); `prepare()` honours
+  `redesign/discover-cast-devices`.
 
 - **`po/vlc.pot` with the `.ui` forms and every file of the redesign.** xgettext cannot read Qt Designer forms;
   VideoLAN's `vlc.pot` takes their texts from the `ui_*.h` of a build. `extras/juxtopposed/translations/ui-pot.py`

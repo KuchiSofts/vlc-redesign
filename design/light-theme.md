@@ -66,8 +66,8 @@ where it shows), and the light panels are *A3 Transparent* and *B1 Transparent* 
 `#2D2B29` gives `#ABABAA`, `#E7E7E7` at 80 % gives `#C2C2C1`, exactly the colours measured and used by the app's
 map. The app draws those composites as solid colours on every screen, which matches the only light frame 1:1. The
 opaque *Light/* styles are much lighter (`#E7E7E7`, `#D5D5D5`, `#EDEDED`...); drawing them, or the panels
-translucent over the video, would be a new light theme, no longer the frame's colours: **left to the owner**
-(open decision, §6 of the master plan). The light styles the frame does not use are also not a reliable mapping:
+translucent over the video, would be a new light theme, no longer the frame's colours. **Decided 2026-10-29: the
+frame's colours stay** (§6 of the master plan). The light styles the frame does not use are also not a reliable mapping:
 FG/1 and FG/2 keep their dark values (white text on light grey), FG/A4 `#3B3B3B` is darker than FG/A3 `#6B6B6B`
 (disabled darker than dim), and the volume track is A5 in light but B2 in dark.
 
@@ -105,7 +105,7 @@ dialogs' `#DEDEDE` (B2, the seek track's light value); both are `#DEDEDE` now (`
 Not drawn in the frame (map kept, the Light style differs): `#969696` (Light/FG/A1 `#3C3C3C`), `#0E0E0E`
 (Light/BG/B1 `#E7E7E7`), `#222222` (Light/BG/A1 `#EDEDED`, Light/Divider/Dim `#ACACAC`), `#404040` (Light/FG/A4
 `#3B3B3B`), `#151515` (Light/BG/A5 `#888888`), `#373737` (Light/Divider/Bright `#9B9B9B`). Their light style keeps
-the dark value: `#EAEAEA`, `#C6C6C6`. These follow the owner's decision on the opaque Light styles.
+the dark value: `#EAEAEA`, `#C6C6C6`. They keep the map's value, as decided for the opaque Light styles.
 
 ## Checked in the app (build `4.0.0-dev-40347-g6da8c7cd1a`, 2026-10-28)
 

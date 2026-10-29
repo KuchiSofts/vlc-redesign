@@ -189,6 +189,27 @@ And more: a sleep timer, A-B loop, speed, picture-in-picture, a mini player with
 bookmarks and chapters, audio and video effects that apply live, small in-app updates. **Every option is explained in
 the [wiki](https://github.com/KuchiSofts/vlc-redesign/wiki)**, and everything new is in the [changelog](CHANGELOG.md).
 
+## See it in action
+
+<table>
+<tr>
+<td width="50%" valign="top"><a href="docs/media/demo/tv-zapping.mp4"><img src="docs/media/demo/tv-zapping.gif" alt="Live TV: Page Up and Page Down change channel, and a banner shows what is on"></a><br><b>Live TV.</b> Change channel with Page Up and Page Down; the banner tells what is on.</td>
+<td width="50%" valign="top"><a href="docs/media/demo/tv-guide.mp4"><img src="docs/media/demo/tv-guide.gif" alt="The Live TV guide with the line of now, Later and Now, and the Kids group"></a><br><b>The guide.</b> Every channel across the hours, with the line of now.</td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="docs/media/demo/subtitles-he-ar-ja.mp4"><img src="docs/media/demo/subtitles-he-ar-ja.gif" alt="English, Hebrew, Japanese and Arabic subtitles in turn"></a><br><b>Subtitles in every language,</b> sharp and in the right order.</td>
+<td width="50%" valign="top"><a href="docs/media/demo/customize-player.mp4"><img src="docs/media/demo/customize-player.gif" alt="Customize Player: Playback Speed and Cast to TV dragged onto the bar"></a><br><b>Your own control bar.</b> Drag buttons in, such as the playback speed.</td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="docs/media/demo/theme-accent.mp4"><img src="docs/media/demo/theme-accent.gif" alt="The light theme and the accent colours applied at once"></a><br><b>Light or dark, nine accents,</b> applied at once.</td>
+<td width="50%" valign="top"><a href="docs/media/demo/cast.mp4"><img src="docs/media/demo/cast.gif" alt="Casting to a Chromecast from the Cast to panel"></a><br><b>Cast to a TV</b> and control it from the bar.</td>
+</tr>
+</table>
+
+<sub>Click a clip for its MP4. All of them, Android included: [the demo clips](docs/media/demo/README.md) and the
+[Feature tour](https://github.com/KuchiSofts/vlc-redesign/wiki/Feature-Tour) of the wiki. Interface design by
+[Juxtopposed](https://www.youtube.com/@juxtopposed).</sub>
+
 ## Download
 
 **Windows 10 or 11, 64-bit.** Go to **[Releases](https://github.com/KuchiSofts/vlc-redesign/releases/latest)** and

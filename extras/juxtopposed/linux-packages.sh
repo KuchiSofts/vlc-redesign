@@ -269,43 +269,12 @@ cat > "$share/metainfo/$id.metainfo.xml" <<EOF
 </component>
 EOF
 install -m 644 "$src/share/icons/scalable/vlc.svg" "$share/icons/hicolor/scalable/apps/$id.svg"
-# PNG sizes drawn from the SVG by Qt (the image's Qt 6.8)
-cat > "$stage/svgicon.cpp" <<'EOF'
-#include <QGuiApplication>
-#include <QImage>
-#include <QPainter>
-#include <QSvgRenderer>
-#include <cstdlib>
-// svgicon FILE.svg SIZE OUT.png [SIZE OUT.png...]
-int main(int argc, char **argv)
-{
-    QGuiApplication app(argc, argv);
-    QSvgRenderer svg(QString::fromLocal8Bit(argv[1]));
-    if (!svg.isValid())
-        return 1;
-    for (int i = 2; i + 1 < argc; i += 2)
-    {
-        const int size = std::atoi(argv[i]);
-        QImage image(size, size, QImage::Format_ARGB32_Premultiplied);
-        image.fill(Qt::transparent);
-        QPainter painter(&image);
-        painter.setRenderHint(QPainter::Antialiasing);
-        svg.render(&painter);
-        painter.end();
-        if (!image.save(QString::fromLocal8Bit(argv[i + 1]), "PNG"))
-            return 1;
-    }
-    return 0;
-}
-EOF
-g++ -std=c++17 -fPIC -O1 -o "$stage/svgicon" "$stage/svgicon.cpp" \
-    $(pkg-config --cflags --libs Qt6Svg Qt6Gui Qt6Core) -Wl,-rpath,"${QTDIR:-/usr}/lib"
-set --
+# the PNG sizes, drawn from the designer's vector by make-app-icon.py (the
+# small ones hinted, so they stay sharp)
 for size in 16 22 24 32 48 64 128 256 512; do
     mkdir -p "$share/icons/hicolor/${size}x$size/apps"
-    set -- "$@" "$size" "$share/icons/hicolor/${size}x$size/apps/$id.png"
+    install -m 644 "$src/share/icons/${size}x$size/vlc.png" "$share/icons/hicolor/${size}x$size/apps/$id.png"
 done
-LC_ALL=C.UTF-8 QT_QPA_PLATFORM=offscreen "$stage/svgicon" "$src/share/icons/scalable/vlc.svg" "$@"
 printf '#!/bin/sh\n# VLC Redesign, installed in /opt/vlc-redesign\nexec /opt/vlc-redesign/vlc "$@"\n' > "$stage/launcher"
 chmod 755 "$stage/launcher"
 appimagetool_bin="$stage/tools/appimagetool/usr/bin"

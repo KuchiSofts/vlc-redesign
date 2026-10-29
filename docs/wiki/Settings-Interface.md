@@ -81,7 +81,7 @@ To come back from a skin, start VLC once with `--intf=qt` (for example from a sh
 | **Bring VLC to the front when playback starts** | Dropdown: *Never* / *Video* / *Audio* / *Audio and video*. Default: *Video*. | Shows and raises the window when that kind of media starts playing. | `qt-auto-raise` (0 to 3) |
 | **Show cover art in the window when playing audio** | Toggle. Default: on. | Shows the cover art of the playing audio in the player (the cone in the compact view). Off: a plain placeholder takes its place, which also avoids screen burn-in. | `qt-bgcone` |
 | **Show the file browser inside the open dialog** | Toggle. Default: off. | The Open dialog shows VLC's own file browser instead of the Windows file dialog. | `qt-embedded-open` |
-| **Allow the app icon to change** | Toggle. Default: on. | Lets the interface change its icon on some occasions (the seasonal cone at the end of the year). | `qt-icon-change` |
+| **Allow the app icon to change** | Toggle. Default: on. | Kept from the design; the app icon is the designer's logo all year in VLC Redesign (no seasonal cone), so it changes nothing. | `qt-icon-change` |
 | **Fullscreen controls opacity** | Slider 10 % to 100 %. Default: 80 %. | The opacity of the controls shown in fullscreen. | `qt-fs-opacity` (0.1 to 1) |
 | **Fullscreen controls sensitivity** | Slider *Low* / *Medium* / *High*. Default: *Medium*. | How far the mouse must move before the fullscreen controls appear: Low = 12 pixels, Medium = 3, High = 1. Dimmed while **Show controls in fullscreen** is off. | `qt-fs-sensitivity` (pixels) |
 

@@ -70,7 +70,7 @@ T.Pane {
                 id: cone
 
                 sourceSize: Qt.size(VLCStyle.icon_normal, VLCStyle.icon_normal)
-                source: SVGColorImage.colorize("qrc:///misc/cone.svg").accent(theme.accent).uri()
+                source: "qrc:///redesign/logo.svg"
             }
 
             Widgets.LabelExt {

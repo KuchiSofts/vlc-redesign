@@ -1488,12 +1488,10 @@ static void *Thread( void *obj )
     app.setApplicationDisplayName( qtr("VLC media player") );
     app.setApplicationVersion( QString::fromUtf8(VERSION_MESSAGE) );
 
-    if( QDate::currentDate().dayOfYear() >= QT_XMAS_JOKE_DAY && var_InheritBool( p_intf, "qt-icon-change" ) )
-        app.setWindowIcon( QIcon::fromTheme( "vlc-xmas", QIcon( ":/logo/vlc128-xmas.png" ) ) );
-    else
-        // the vector (the cone of vlc.exe's icon): the title bar and the
-        // taskbar draw it at their size and the screen's scale
-        app.setWindowIcon( QIcon::fromTheme( "vlc", QIcon( ":/logo/vlc.svg" ) ) );
+    // the app icon (the designer's logo, as vlc.exe's icon) all year: the
+    // title bar and the taskbar draw the vector at their size and the
+    // screen's scale (no seasonal cone: one icon on every platform)
+    app.setWindowIcon( QIcon::fromTheme( "vlc", QIcon( ":/logo/vlc.svg" ) ) );
 
     app.setDesktopFileName( PACKAGE );
 

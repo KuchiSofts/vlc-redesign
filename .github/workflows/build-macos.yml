@@ -76,9 +76,6 @@ jobs:
       - name: Tools
         run: |
           xcodebuild -version
-          # (the app icon is drawn from its SVG; the build falls back on
-          # Quick Look without it)
-          brew install librsvg || true
 
       - name: Build
         run: bash extras/juxtopposed/macos-build.sh -a ${{ matrix.arch }} -b "$BUILD_DIR" -o "$OUT_DIR"

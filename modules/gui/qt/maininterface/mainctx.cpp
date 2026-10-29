@@ -1607,8 +1607,9 @@ double MainCtx::dp(const double px) const
 
 bool MainCtx::useXmasCone() const
 {
-    return (QDate::currentDate().dayOfYear() >= QT_XMAS_JOKE_DAY)
-            && var_InheritBool( p_intf, "qt-icon-change" );
+    // VLC Redesign: the app icon is the designer's logo all year (upstream's
+    // seasonal cones are not drawn)
+    return false;
 }
 
 bool WindowStateHolder::holdFullscreen(QWindow *window, Source source, bool hold)

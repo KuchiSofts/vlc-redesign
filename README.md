@@ -26,7 +26,7 @@
 
 <div align="center">
 
-<img src="modules/gui/qt/pixmaps/misc/cone.svg" alt="" width="84">
+<img src="share/icons/scalable/vlc.svg" alt="" width="84">
 
 # VLC Redesign <sub><sup>(unofficial)</sup></sub>
 

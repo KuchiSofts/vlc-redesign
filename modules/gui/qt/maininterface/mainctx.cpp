@@ -51,6 +51,7 @@
 #include "util/qt_dirs.hpp"                     // toNativeSeparators
 
 #include "util/color_scheme_model.hpp"
+#include "util/model_recovery_agent.hpp"
 
 #include "widgets/native/interface_widgets.hpp"     // bgWidget, videoWidget
 
@@ -362,6 +363,15 @@ MainCtx::MainCtx(qt_intf_t *_p_intf)
     m_hotkeyThread->start();
 
     m_liveSettings = std::make_unique<LiveSettings>(p_intf);
+
+    try {
+        m_playlistRecoveryAgent = std::make_unique<ModelRecoveryAgent>(settings,
+                                                                       QStringLiteral("Playlist"),
+                                                                       p_intf->p_mainPlaylistController);
+        QMetaObject::invokeMethod(this, [this]() {
+            m_playlistRecoveryAgent->prompt(p_intf);
+        }, Qt::QueuedConnection);
+    } catch (...) { }
 
     m_initialEffectiveMainInterfaceMode = getEffectiveMainInterfaceMode();
 }
@@ -1365,6 +1375,17 @@ QWindow *MainCtx::intfMainWindow() const
         return p_intf->p_compositor->interfaceMainWindow();
     else
         return nullptr;
+}
+
+bool MainCtx::videoSurfaceCanHaveFractionalPosition() const
+{
+    assert(p_intf->p_compositor);
+    if (p_intf->p_compositor->type() == vlc::Compositor::DummyCompositor)
+        return true; // Does not matter, there is no video embedding in this case.
+
+    // We can avoid dynamic cast here, since we early return if the type is not `CompositorVideo`:
+    const auto videoCompositor = static_cast<vlc::CompositorVideo*>(p_intf->p_compositor.get());
+    return videoCompositor->supportsFractionalPositioning();
 }
 
 QVariant MainCtx::settingValue(const QString &key, const QVariant &defaultValue) const

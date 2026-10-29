@@ -18,6 +18,10 @@ VLCMacOSXTests_SOURCES = \
 	gui/macosx/tests/VLCInputItemTestSupport.m \
 	gui/macosx/tests/VLCInputNodeTest.m \
 	gui/macosx/tests/VLCMediaSourceTableViewSortingTest.m \
+	gui/macosx/tests/VLCLibraryModelTest.m \
+	gui/macosx/tests/VLCLibraryModelIntegrationTest.m \
+	gui/macosx/tests/VLCLibraryModelConcurrencyTest.m \
+	gui/macosx/tests/VLCLibraryModelTestSupport.m \
 	gui/macosx/tests/VLCLibraryDataTypesIntegrationTest.m \
 	gui/macosx/tests/VLCLibraryDataTypesIntegrationTestSupport.m \
 	gui/macosx/tests/VLCLibraryHomeBrowseCardTest.m \
@@ -42,6 +46,7 @@ VLCMacOSXTests_SOURCES = \
 	gui/macosx/library/VLCLibraryCarouselView.m \
 	gui/macosx/library/VLCLibraryCollectionViewDelegate.m \
 	gui/macosx/library/VLCLibraryCollectionViewFlowLayout.m \
+	gui/macosx/extensions/NSArray+VLCAdditions.m \
 	gui/macosx/library/VLCLibraryDataTypes.m \
 	gui/macosx/library/VLCInputItem.m \
 	gui/macosx/library/VLCInputNode.m \
@@ -52,6 +57,9 @@ VLCMacOSXTests_SOURCES = \
 	gui/macosx/library/home-library/VLCLibraryHomeViewBrowseCarouselItemCell.m \
 	gui/macosx/library/home-library/VLCLibraryHomeViewBrowseCarouselItemView.m \
 	gui/macosx/library/media-source/VLCMediaSourceTableViewSorting.m \
+	gui/macosx/library/VLCLibraryModel.m \
+	gui/macosx/library/VLCLibraryModelChangeDelegate.m \
+	gui/macosx/library/VLCMediaLibraryFolderObserver.m \
 	gui/macosx/windows/logging/VLCLogMessage.m \
 	gui/macosx/views/VLCCarouselView.m \
 	gui/macosx/views/VLCSubScrollView.m \
@@ -63,6 +71,7 @@ noinst_HEADERS += \
 	gui/macosx/tests/VLCAppKitMockingTestCase.h \
 	gui/macosx/tests/VLCInputItemTestSupport.h \
 	gui/macosx/tests/VLCLibraryDataTypesTestSupport.h \
+	gui/macosx/tests/VLCLibraryModelTestSupport.h \
 	gui/macosx/tests/VLCLibraryDataTypesIntegrationTestSupport.h \
 	gui/macosx/tests/VLCMacOSXTestDefaults.h
 
@@ -119,6 +128,7 @@ mostlyclean-local-macosx-xctest:
 	rm -rf $(macosx_gui_xctest_bundles)
 
 check-macosx: VLCMacOSXTests.xctest
+	$(MAKE) -C $(top_builddir)/bin ../modules/plugins.dat
 	$(XCTEST_LOG_COMPILER) $<
 
 else

@@ -658,6 +658,22 @@ int MediaLibrary::Control( int query, va_list args )
             m_ml->clearHistory( type );
             break;
         }
+        case VLC_ML_CLEAR_HISTORY_BY_MEDIA_TYPE:
+        {
+            medialibrary::IMedia::Type type;
+            switch ( va_arg( args, int ) )
+            {
+                case VLC_ML_MEDIA_TYPE_AUDIO:
+                    type = medialibrary::IMedia::Type::Audio;
+                    break;
+                case VLC_ML_MEDIA_TYPE_VIDEO:
+                    type = medialibrary::IMedia::Type::Video;
+                    break;
+                default:
+                    return VLC_EGENERIC;
+            }
+            return m_ml->clearHistoryByMediaType( type ) ? VLC_SUCCESS : VLC_EGENERIC;
+        }
         case VLC_ML_NEW_EXTERNAL_MEDIA:
         {
             auto priorityAccess = m_ml->acquirePriorityAccess();
@@ -1802,6 +1818,10 @@ medialibrary::SortingCriteria MediaLibrary::sortingCriteria(int sort)
             return medialibrary::SortingCriteria::Filename;
         case VLC_ML_SORTING_TRACKNUMBER:
             return medialibrary::SortingCriteria::TrackNumber;
+        case VLC_ML_SORTING_RATING:
+            return medialibrary::SortingCriteria::Rating;
+        case VLC_ML_SORTING_TRACKNUMBER_ALBUM_RELEASE_YEAR:
+            return medialibrary::SortingCriteria::TrackNumberAlbumReleaseYear;
         default:
             vlc_assert_unreachable();
     }
@@ -1960,7 +1980,7 @@ int MediaLibrary::controlMedia( int query, va_list args )
         {
             auto mrl = va_arg( args, const char* );
             auto sizeType = va_arg( args, int );
-            m->setThumbnail( mrl, static_cast<medialibrary::ThumbnailSizeType>( sizeType ) );
+            m->setThumbnail( mrl, static_cast<medialibrary::ThumbnailSizeType>( sizeType ), false );
             return VLC_SUCCESS;
         }
         case VLC_ML_MEDIA_ADD_EXTERNAL_MRL:

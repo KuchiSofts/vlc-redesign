@@ -151,7 +151,8 @@ static HRESULT can_map(filter_sys_t *sys, ID3D11DeviceContext *context)
     return hr;
 }
 
-static int assert_staging(filter_t *p_filter, filter_sys_t *sys, DXGI_FORMAT format)
+static int assert_staging(filter_t *p_filter, filter_sys_t *sys,
+                          DXGI_FORMAT format, vlc_fourcc_t cpu_chroma)
 {
     HRESULT hr;
 
@@ -173,16 +174,29 @@ static int assert_staging(filter_t *p_filter, filter_sys_t *sys, DXGI_FORMAT for
 
     d3d11_device_t *d3d_dev = sys->d3d_dev;
     sys->staging = NULL;
-    hr = ID3D11Device_CreateTexture2D( d3d_dev->d3ddevice, &texDesc, NULL, &sys->staging);
-    /* test if mapping the texture works ref #18746 */
-    if (SUCCEEDED(hr) && FAILED(hr = can_map(sys, d3d_dev->d3dcontext)))
-        msg_Dbg(p_filter, "can't map default staging texture (hr=0x%lX)", hr);
+    if (DxgiFormatFourcc(texDesc.Format) == cpu_chroma)
+    {
+        hr = ID3D11Device_CreateTexture2D( d3d_dev->d3ddevice, &texDesc, NULL, &sys->staging);
+        /* test if mapping the texture works ref #18746 */
+        if (SUCCEEDED(hr) && FAILED(hr = can_map(sys, d3d_dev->d3dcontext)))
+            msg_Dbg(p_filter, "can't map default staging texture (hr=0x%lX)", hr);
+    }
+    else
+    {
+        /* the CPU copy only reads the layout matching the output chroma, so
+         * packed 4:2:2/4:4:4 decoder formats (AYUV, Y210, Y410, ...) have to
+         * go through a processor conversion first */
+        msg_Dbg(p_filter, "%s pictures need a conversion to %4.4s",
+                DxgiFormatToStr(texDesc.Format), (const char*)&cpu_chroma);
+        hr = E_FAIL;
+    }
 #if CAN_PROCESSOR
     if (FAILED(hr)) {
-        /* failed with the this format, try a different one */
+        /* convert to the exact layout the CPU copy reads, any other one would
+         * be interpreted with the wrong pitches or bit depth */
         UINT supportFlags = D3D11_FORMAT_SUPPORT_SHADER_LOAD | D3D11_FORMAT_SUPPORT_VIDEO_PROCESSOR_OUTPUT;
         const d3d_format_t *new_fmt =
-                FindD3D11Format( p_filter, d3d_dev, 0, DXGI_RGB_FORMAT|DXGI_YUV_FORMAT, 0, 0, 0, 0, DXGI_CHROMA_CPU, supportFlags );
+                FindD3D11Format( p_filter, d3d_dev, cpu_chroma, DXGI_RGB_FORMAT|DXGI_YUV_FORMAT, 0, 0, 0, -1, DXGI_CHROMA_CPU, supportFlags );
         if (new_fmt && texDesc.Format != new_fmt->formatTexture)
         {
             DXGI_FORMAT srcFormat = texDesc.Format;
@@ -377,27 +391,8 @@ static void D3D11_YUY2(filter_t *p_filter, picture_t *src, picture_t *dst)
 
     ID3D11Texture2D_GetDesc(sys->staging, &desc);
 
-    if (desc.Format == DXGI_FORMAT_YUY2) {
-        size_t chroma_pitch = (lock.RowPitch / 2);
-
-        const size_t pitch[3] = {
-            lock.RowPitch,
-            chroma_pitch,
-            chroma_pitch,
-        };
-
-        const uint8_t *plane[3] = {
-            (uint8_t*)lock.pData,
-            (uint8_t*)lock.pData + pitch[0] * desc.Height,
-            (uint8_t*)lock.pData + pitch[0] * desc.Height
-                                 + pitch[1] * desc.Height / 2,
-        };
-
-        Copy420_P_to_P(dst, plane, pitch,
-                       src->format.i_visible_height + src->format.i_y_offset,
-                       &sys->cache);
-    } else if (desc.Format == DXGI_FORMAT_NV12 ||
-               desc.Format == DXGI_FORMAT_P010) {
+    if (desc.Format == DXGI_FORMAT_NV12 ||
+        desc.Format == DXGI_FORMAT_P010) {
         const uint8_t *plane[2] = {
             lock.pData,
             (uint8_t*)lock.pData + lock.RowPitch * desc.Height
@@ -829,39 +824,47 @@ int D3D11OpenConverter( filter_t *p_filter )
     }
 
     uint8_t pixel_bytes = 1;
+    /* the layout each copy function reads from the mapped staging texture */
+    vlc_fourcc_t cpu_chroma;
     switch( p_filter->fmt_out.video.i_chroma ) {
     case VLC_CODEC_I420:
     case VLC_CODEC_YV12:
         if( p_filter->fmt_in.video.i_chroma != VLC_CODEC_D3D11_OPAQUE )
             return VLC_EGENERIC;
         p_filter->ops = &D3D11_YUY2_ops;
+        cpu_chroma = VLC_CODEC_NV12;
         break;
     case VLC_CODEC_I420_10L:
         if( p_filter->fmt_in.video.i_chroma != VLC_CODEC_D3D11_OPAQUE_10B )
             return VLC_EGENERIC;
         p_filter->ops = &D3D11_YUY2_ops;
+        cpu_chroma = VLC_CODEC_P010;
         pixel_bytes = 2;
         break;
     case VLC_CODEC_NV12:
         if( p_filter->fmt_in.video.i_chroma != VLC_CODEC_D3D11_OPAQUE )
             return VLC_EGENERIC;
         p_filter->ops = &D3D11_NV12_ops;
+        cpu_chroma = VLC_CODEC_NV12;
         break;
     case VLC_CODEC_P010:
         if( p_filter->fmt_in.video.i_chroma != VLC_CODEC_D3D11_OPAQUE_10B )
             return VLC_EGENERIC;
         p_filter->ops = &D3D11_NV12_ops;
+        cpu_chroma = VLC_CODEC_P010;
         pixel_bytes = 2;
         break;
     case VLC_CODEC_RGBA:
         if( p_filter->fmt_in.video.i_chroma != VLC_CODEC_D3D11_OPAQUE_RGBA )
             return VLC_EGENERIC;
         p_filter->ops = &D3D11_RGBA_ops;
+        cpu_chroma = VLC_CODEC_RGBA;
         break;
     case VLC_CODEC_BGRA:
         if( p_filter->fmt_in.video.i_chroma != VLC_CODEC_D3D11_OPAQUE_BGRA )
             return VLC_EGENERIC;
         p_filter->ops = &D3D11_RGBA_ops;
+        cpu_chroma = VLC_CODEC_BGRA;
         break;
     default:
         return VLC_EGENERIC;
@@ -875,7 +878,7 @@ int D3D11OpenConverter( filter_t *p_filter )
     d3d11_decoder_device_t *dev_sys = GetD3D11OpaqueContext(p_filter->vctx_in);
     p_sys->d3d_dev = &dev_sys->d3d_dev;
 
-    if (assert_staging(p_filter, p_sys, vctx_sys->format) != VLC_SUCCESS)
+    if (assert_staging(p_filter, p_sys, vctx_sys->format, cpu_chroma) != VLC_SUCCESS)
     {
         return VLC_EGENERIC;
     }

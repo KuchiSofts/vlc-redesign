@@ -223,14 +223,14 @@ T.Pane {
                     // above the grey arrows
                     readonly property bool twoTone: cardSort.checked && !VLCStyle.redesign.defaultAccent
                     source: "qrc:///redesign/icons/sort/" + (twoTone ? "active-grey"
-                                                             : cardSort.checked ? "active" : "default") + ".png"
+                                                             : cardSort.checked ? "active" : "default") + ".svg"
                     sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
                     fillMode: Image.Pad
                     opacity: cardSort.enabled ? 1 : 0.4
                     Impl.ColorImage {
                         anchors.fill: parent
                         visible: sortIcon.twoTone
-                        source: visible ? "qrc:///redesign/icons/sort/active-accent.png" : ""
+                        source: visible ? "qrc:///redesign/icons/sort/active-accent.svg" : ""
                         sourceSize: parent.sourceSize
                         fillMode: parent.fillMode
                         color: VLCStyle.redesign.accent
@@ -494,7 +494,7 @@ T.Pane {
                     width: VLCStyle.dp(20, VLCStyle.scale)
                     height: width
                     sourceSize: Qt.size(width, height)
-                    source: "qrc:///redesign/icons/folder/default.png"
+                    source: "qrc:///redesign/icons/folder/default.svg"
                     color: VLCStyle.palette.isDark ? "transparent" : "#2e2e2e"
                 }
                 Text {
@@ -681,7 +681,7 @@ T.Pane {
         implicitHeight: VLCStyle.dp(32, VLCStyle.scale)
 
         contentItem: Image {
-            source: "qrc:///redesign/icons/" + imageButton.iconName + "/default.png"
+            source: "qrc:///redesign/icons/" + imageButton.iconName + "/default.svg"
             sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
             fillMode: Image.Pad
             opacity: imageButton.enabled ? 1 : 0.4

@@ -13,8 +13,8 @@ import VLC.PlayerControls
 
 RedesignIconButton {
     id: root
-    iconSource: state.favorite ? "qrc:///redesign/icons/favorite/active.png"
-                               : "qrc:///redesign/icons/favorite/default.png"
+    iconSource: state.favorite ? "qrc:///redesign/icons/favorite/active.svg"
+                               : "qrc:///redesign/icons/favorite/default.svg"
     checked: state.favorite
     enabled: !paintOnly && state.available && !state.busy
     description: state.error.length ? state.error

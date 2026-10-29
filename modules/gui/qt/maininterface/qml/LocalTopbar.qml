@@ -133,7 +133,7 @@ T.ToolBar {
                 Widgets.IconToolButton {
                     id: menuButton
                     contentItem: Image {
-                        source: "qrc:///redesign/icons/more/default.png"
+                        source: "qrc:///redesign/icons/more/default.svg"
                         sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
                         fillMode: Image.Pad
                     }
@@ -174,7 +174,7 @@ T.ToolBar {
                     id: navigationVisibilty
                     visible: VLCStyle.isScreenSmall
                     contentItem: Image {
-                        source: "qrc:///redesign/icons/sidebar/active.png"
+                        source: "qrc:///redesign/icons/sidebar/active.svg"
                         sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
                         fillMode: Image.Pad
                         opacity: navigationVisibilty.checked ? 1.0 : 0.6

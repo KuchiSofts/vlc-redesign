@@ -678,7 +678,7 @@ ColumnLayout {
             border.color: VLCStyle.redesign.focusColor
         }
         contentItem: Image {
-            source: "qrc:///redesign/icons/" + headerButton.iconName + "/default.png"
+            source: "qrc:///redesign/icons/" + headerButton.iconName + "/default.svg"
             sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
             fillMode: Image.Pad
             opacity: headerButton.enabled ? 1 : 0.4
@@ -732,7 +732,7 @@ ColumnLayout {
                     sourceSize: Qt.size(width, height)
                     anchors.fill: parent
                     visible: row.checked
-                    source: "qrc:///redesign/track-check-active.png"
+                    source: "qrc:///redesign/track-check-active.svg"
                     color: root._accentTint
                 }
                 BusyDot {

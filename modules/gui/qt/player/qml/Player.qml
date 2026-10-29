@@ -314,7 +314,7 @@ FocusScope {
             height: width
             smooth: false
             source: "qrc:///redesign/player/corner-" + (atBottom ? "b" : "t") + (atRight ? "r" : "l")
-                    + (VLCStyle.palette.isDark ? "-dark" : "-light") + ".png"
+                    + (VLCStyle.palette.isDark ? "-dark" : "-light") + ".svg"
         }
     }
 
@@ -1127,7 +1127,7 @@ FocusScope {
             spacing: VLCStyle.dp(8, VLCStyle.scale)
             Image {
                 anchors.verticalCenter: parent.verticalCenter
-                source: "qrc:///redesign/track-subtitles-active.png"
+                source: "qrc:///redesign/track-subtitles-active.svg"
                 width: VLCStyle.dp(20, VLCStyle.scale)
                 height: width
                 sourceSize: Qt.size(width, height)
@@ -1173,7 +1173,7 @@ FocusScope {
                 Layout.alignment: Qt.AlignHCenter
                 Layout.preferredWidth: VLCStyle.dp(48, VLCStyle.scale)
                 Layout.preferredHeight: VLCStyle.dp(48, VLCStyle.scale)
-                source: "qrc:///redesign/icons/cast/large.png"
+                source: "qrc:///redesign/icons/cast/large.svg"
                 sourceSize: Qt.size(VLCStyle.dp(48, VLCStyle.scale), VLCStyle.dp(48, VLCStyle.scale))
                 color: rootPlayer._castTrouble ? VLCStyle.redesign.color("#8F8F8F", "#2e2e2e")
                                                : VLCStyle.redesign.accent
@@ -1315,7 +1315,7 @@ FocusScope {
             Impl.IconImage {
                 Layout.preferredWidth: VLCStyle.dp(20, VLCStyle.scale)
                 Layout.preferredHeight: VLCStyle.dp(20, VLCStyle.scale)
-                source: "qrc:///redesign/icons/cast/large.png"
+                source: "qrc:///redesign/icons/cast/large.svg"
                 sourceSize: Qt.size(VLCStyle.dp(20, VLCStyle.scale), VLCStyle.dp(20, VLCStyle.scale))
                 color: VLCStyle.redesign.accent
             }

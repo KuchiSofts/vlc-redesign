@@ -253,7 +253,7 @@ T.Pane {
                     width: VLCStyle.dp(18, VLCStyle.scale)
                     height: width
                     sourceSize: Qt.size(width, height)
-                    source: "qrc:///redesign/icons/" + tab.iconName + "/default.png"
+                    source: "qrc:///redesign/icons/" + tab.iconName + "/default.svg"
                     color: tab.current ? VLCStyle.redesign.accent
                                        : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                 }
@@ -343,7 +343,7 @@ T.Pane {
         implicitHeight: VLCStyle.dp(32, VLCStyle.scale)
 
         contentItem: Image {
-            source: "qrc:///redesign/icons/" + cardButton.iconName + "/default.png"
+            source: "qrc:///redesign/icons/" + cardButton.iconName + "/default.svg"
             sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
             fillMode: Image.Pad
             opacity: cardButton.enabled ? 1 : 0.4

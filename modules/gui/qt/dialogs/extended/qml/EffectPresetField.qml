@@ -179,7 +179,7 @@ ColumnLayout {
                 width: root.px(24)
                 height: width
                 sourceSize: Qt.size(width, height)
-                source: "qrc:///redesign/icons/chevron-down/default.png"
+                source: "qrc:///redesign/icons/chevron-down/default.svg"
                 color: root.c("#8F8F8F", "#2e2e2e")
                 rotation: list.visible ? 180 : 0
             }
@@ -322,7 +322,7 @@ ColumnLayout {
                                 anchors.verticalCenter: parent.verticalCenter
                                 width: root.px(24)
                                 height: width
-                                source: visible ? "qrc:///redesign/icons/add/default.png" : ""
+                                source: visible ? "qrc:///redesign/icons/add/default.svg" : ""
                                 color: root.c("#6B6B6B", "#6b6b6b")
                             }
 
@@ -335,7 +335,7 @@ ColumnLayout {
                                 anchors.verticalCenter: parent.verticalCenter
                                 width: root.px(24)
                                 height: width
-                                source: "qrc:///redesign/track-check-active.png"
+                                source: "qrc:///redesign/track-check-active.svg"
                                 color: VLCStyle.redesign.accentTint
                             }
                         }
@@ -382,7 +382,7 @@ ColumnLayout {
                                 border.color: VLCStyle.redesign.focusColor
                             }
                             contentItem: Impl.ColorImage {
-                                source: "qrc:///redesign/icons/more/default.png"
+                                source: "qrc:///redesign/icons/more/default.svg"
                                 sourceSize: Qt.size(root.px(24), root.px(24))
                                 fillMode: Image.Pad
                                 color: root.c("#8F8F8F", "#2e2e2e")

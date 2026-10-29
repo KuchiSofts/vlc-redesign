@@ -403,8 +403,11 @@ QUrl RedesignIconInterceptor::intercept(const QUrl &url, QQmlAbstractUrlIntercep
     else if (path.endsWith(QLatin1String(".svg")))
         path = path.chopped(4) + QLatin1String(".png");
     // its SVG when it has one: an Image draws it at its sourceSize times the
-    // device pixel ratio, sharp at any scale and zoom (Qt reads the ratio
-    // from the ".svg" of the URL, image:// ones included)
+    // device pixel ratio, sharp at any scale and zoom. Qt decides that from
+    // the URL as the QML wrote it, not from the one returned here (the
+    // interceptor runs when the image loads): the QML names the icons by
+    // their ".svg". With a ".png" name the icon was drawn at 1x and stretched
+    // at 125-200 % (strokes 76 % strong, spread over 4 to 6 pixels)
     const bool vector = QFile::exists(QLatin1Char(':') + path.chopped(4) + QLatin1String(".svg"));
 
     QString id;

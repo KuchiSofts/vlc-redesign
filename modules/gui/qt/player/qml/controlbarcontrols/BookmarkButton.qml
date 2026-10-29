@@ -32,7 +32,7 @@ RedesignIconButton {
 
     signal requestLockUnlockAutoHide(bool lock)
 
-    iconSource: "qrc:///redesign/icons/bookmark/default.png"
+    iconSource: "qrc:///redesign/icons/bookmark/default.svg"
     text: VLCIcons.bookmark
     description: qsTr("Bookmarks")
 

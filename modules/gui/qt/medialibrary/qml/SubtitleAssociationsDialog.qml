@@ -279,7 +279,7 @@ Widgets.RedesignDialog {
             width: VLCStyle.redesign.iconSize
             height: width
             sourceSize: Qt.size(width, height)
-            source: "qrc:///redesign/icons/chevron-down/default.png"
+            source: "qrc:///redesign/icons/chevron-down/default.svg"
             rotation: dropdown.popup.visible ? 180 : 0
         }
         delegate: T.ItemDelegate {
@@ -473,8 +473,8 @@ Widgets.RedesignDialog {
                 anchors.left: parent.left
                 anchors.leftMargin: VLCStyle.dp(8, VLCStyle.scale)
                 y: VLCStyle.dp(6, VLCStyle.scale)
-                source: root.audio ? "qrc:///redesign/icons/spectrum/dim.png"
-                                   : "qrc:///redesign/icons/subtitle/dim.png"
+                source: root.audio ? "qrc:///redesign/icons/spectrum/dim.svg"
+                                   : "qrc:///redesign/icons/subtitle/dim.svg"
             }
             CenteredText {
                 x: VLCStyle.dp(8 + 24 + 14, VLCStyle.scale)
@@ -491,7 +491,7 @@ Widgets.RedesignDialog {
                 width: VLCStyle.redesign.iconSize
                 height: width
                 sourceSize: Qt.size(width, height)
-                source: "qrc:///redesign/icons/check/active.png"
+                source: "qrc:///redesign/icons/check/active.svg"
                 color: VLCStyle.redesign.accentTint
                 smooth: false
             }
@@ -570,7 +570,7 @@ Widgets.RedesignDialog {
                         width: VLCStyle.redesign.iconSize
                         height: width
                         sourceSize: Qt.size(width, height)
-                        source: "qrc:///redesign/icons/folder/default.png"
+                        source: "qrc:///redesign/icons/folder/default.svg"
                         smooth: false
                     }
                     CenteredText {
@@ -594,7 +594,7 @@ Widgets.RedesignDialog {
             HeaderField {
                 Layout.fillWidth: true
                 visible: root.originIndex === 1
-                iconSource: "qrc:///redesign/icons/link/default.png"
+                iconSource: "qrc:///redesign/icons/link/default.svg"
 
                 HeaderInput {
                     id: linkField
@@ -609,7 +609,7 @@ Widgets.RedesignDialog {
                 Layout.preferredWidth: VLCStyle.dp(400, VLCStyle.scale)
                 Layout.fillWidth: true
                 visible: root.online
-                iconSource: "qrc:///redesign/icons/search/default.png"
+                iconSource: "qrc:///redesign/icons/search/default.svg"
 
                 HeaderInput {
                     id: queryField
@@ -693,7 +693,7 @@ Widgets.RedesignDialog {
                     anchors.left: parent.left
                     anchors.leftMargin: VLCStyle.dp(30, VLCStyle.scale)
                     y: VLCStyle.dp(8, VLCStyle.scale)
-                    source: "qrc:///redesign/icons/video/dim.png"
+                    source: "qrc:///redesign/icons/video/dim.svg"
                 }
                 CenteredText {
                     id: mediaName

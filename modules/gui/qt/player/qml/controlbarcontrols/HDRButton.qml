@@ -5,7 +5,7 @@ import VLC.Player
 import VLC.Style
 RedesignIconButton {
     id: root
-    iconSource: "qrc:///redesign/icons/HDR/default.png"
+    iconSource: "qrc:///redesign/icons/HDR/default.svg"
     text: "HDR"
     description: qsTr("HDR output")
     enabled: !paintOnly && Player.videoTracks.count > 0

@@ -350,7 +350,7 @@ Widgets.PageExt {
                             width: card.model.isFolder ? VLCStyle.dp(32, VLCStyle.scale) : VLCStyle.redesign.iconSize
                             height: width
                             source: card.model.isFolder ? "qrc:///redesign/folder.svg"
-                                                        : "qrc:///redesign/icons/file/default.png"
+                                                        : "qrc:///redesign/icons/file/default.svg"
                             sourceSize: Qt.size(width, height)
                         }
                         // the progress, at the bottom of the thumbnail (a time
@@ -385,7 +385,7 @@ Widgets.PageExt {
                                 anchors.centerIn: parent
                                 width: VLCStyle.redesign.iconSize
                                 height: width
-                                source: "qrc:///redesign/icons/play/outline-active.png"
+                                source: "qrc:///redesign/icons/play/outline-active.svg"
                                 color: VLCStyle.redesign.accentTint
                                 sourceSize: Qt.size(width, height)
                                 fillMode: Image.Pad
@@ -481,8 +481,8 @@ Widgets.PageExt {
                             visible: preview.status !== Image.Ready
                             width: card.model.isFolder ? VLCStyle.dp(48, VLCStyle.scale) : VLCStyle.redesign.iconSize
                             height: width
-                            source: card.model.isFolder ? "qrc:///redesign/icons/folder/large.png"
-                                                        : "qrc:///redesign/icons/file/default.png"
+                            source: card.model.isFolder ? "qrc:///redesign/icons/folder/large.svg"
+                                                        : "qrc:///redesign/icons/file/default.svg"
                             sourceSize: Qt.size(width, height)
                             fillMode: Image.Pad
                             smooth: false

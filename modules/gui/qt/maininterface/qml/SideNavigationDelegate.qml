@@ -177,7 +177,7 @@ T.ItemDelegate {
                                + (referenceIcon._twoTone ? "active-grey"
                                   : control.checked ? "active"
                                   : control.contextual && control.iconSetName === "videos" ? "selected"
-                                  : "default") + ".png"
+                                  : "default") + ".svg"
                     if (control.imageSource.toString().length === 0)
                         return ""
                     if (control.checked)
@@ -195,7 +195,7 @@ T.ItemDelegate {
                 Impl.ColorImage {
                     anchors.fill: parent
                     visible: referenceIcon._twoTone
-                    source: visible ? "qrc:///redesign/icons/recent/active-accent.png" : ""
+                    source: visible ? "qrc:///redesign/icons/recent/active-accent.svg" : ""
                     sourceSize: parent.sourceSize
                     fillMode: parent.fillMode
                     smooth: parent.smooth

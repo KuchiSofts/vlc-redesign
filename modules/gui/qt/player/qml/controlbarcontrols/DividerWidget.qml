@@ -16,7 +16,7 @@ Image {
     width: VLCStyle.dp(24, VLCStyle.scale)
     height: VLCStyle.dp(32, VLCStyle.scale)
     fillMode: Image.PreserveAspectFit
-    source: "qrc:///redesign/icons/divider/default.png"
+    source: "qrc:///redesign/icons/divider/default.svg"
     Accessible.role: Accessible.Indicator
     Accessible.name: qsTr("Divider")
 }

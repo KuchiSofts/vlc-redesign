@@ -146,7 +146,7 @@ Item {
             text: qsTr("Remove the folder")
             Accessible.name: text
             contentItem: Image {
-                source: "qrc:///redesign/icons/close/default.png"
+                source: "qrc:///redesign/icons/close/default.svg"
                 sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
                 fillMode: Image.Pad
                 opacity: clearFolder.hovered || clearFolder.down ? 1 : 0.6

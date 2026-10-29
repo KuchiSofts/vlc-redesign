@@ -27,7 +27,7 @@ Widgets.ComboBoxExt {
     // the icon in an item: as the content itself it was stretched over the box
     contentItem: Item {
         Image {
-            source: "qrc:///redesign/icons/zoom/default.png"
+            source: "qrc:///redesign/icons/zoom/default.svg"
             width: VLCStyle.dp(20, VLCStyle.scale)
             height: width
             sourceSize: Qt.size(width, height)

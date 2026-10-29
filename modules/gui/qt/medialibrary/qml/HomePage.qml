@@ -466,7 +466,7 @@ Widgets.PageExt {
                                 anchors.centerIn: parent
                                 width: VLCStyle.dp(48, VLCStyle.scale)
                                 height: width
-                                source: "qrc:///redesign/icons/folder/large.png"
+                                source: "qrc:///redesign/icons/folder/large.svg"
                                 sourceSize: Qt.size(width, height)
                                 fillMode: Image.Pad
                                 smooth: false

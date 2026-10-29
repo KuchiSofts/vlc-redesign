@@ -19,7 +19,7 @@ RedesignIconButton {
 
     signal requestLockUnlockAutoHide(bool lock)
 
-    iconSource: "qrc:///redesign/icons/more/default.png"
+    iconSource: "qrc:///redesign/icons/more/default.svg"
     description: qsTr("Menu")
     AccessibleCompat.id: "barMenuButton"
 

@@ -245,7 +245,7 @@ T.Control {
                         anchors.verticalCenter: parent.verticalCenter
                         width: VLCStyle.redesign.iconSize
                         height: width
-                        source: "qrc:///redesign/icons/" + detail.modelData.iconName + "/default.png"
+                        source: "qrc:///redesign/icons/" + detail.modelData.iconName + "/default.svg"
                         sourceSize: Qt.size(width, height)
                         fillMode: Image.Pad
                         smooth: false
@@ -295,8 +295,8 @@ T.Control {
                 Impl.ColorImage {
                     width: VLCStyle.redesign.iconSize
                     height: width
-                    source: root.queueExpanded ? "qrc:///redesign/icons/lists/active.png"
-                                               : "qrc:///redesign/icons/lists/default.png"
+                    source: root.queueExpanded ? "qrc:///redesign/icons/lists/active.svg"
+                                               : "qrc:///redesign/icons/lists/default.svg"
                     sourceSize: Qt.size(width, height)
                     fillMode: Image.Pad
                     smooth: false

@@ -48,10 +48,27 @@ done | sort -u | while read -r name path; do
     [ -e "$root/syslib/$name" ] || cp -L "$path" "$root/syslib/$name"
 done
 
+# The newest glibc it needs (the build's distribution): an older system gets
+# a message instead of the loader's "GLIBC_2.38 not found"
+glibc=$(find "$root" -type f \( -name '*.so*' -o -perm -u+x \) -exec objdump -p {} + 2>/dev/null \
+    | grep -o 'GLIBC_2\.[0-9][0-9]*' | sort -u -V | tail -n 1 | sed 's/^GLIBC_//')
+[ -n "$glibc" ] || { echo "no glibc version found in the bundle" >&2; exit 1; }
 cat > "$root/vlc" <<'EOF'
 #!/bin/sh
 # VLC Redesign from this folder
 here=$(cd "$(dirname "$0")" && pwd)
+need=@GLIBC@
+have=$(getconf GNU_LIBC_VERSION 2>/dev/null | sed -n 's/^glibc //p')
+if [ -n "$have" ] && [ "$(printf '%s\n%s\n' "$need" "$have" | sort -V | head -n 1)" != "$need" ]; then
+    msg="VLC Redesign needs glibc $need or later (Ubuntu 24.04, Debian 13, Fedora 39 or later). This system has glibc $have."
+    echo "$msg" >&2
+    if [ -n "${DISPLAY:-}${WAYLAND_DISPLAY:-}" ]; then
+        if command -v zenity > /dev/null; then zenity --error --title="VLC Redesign" --text="$msg" 2> /dev/null
+        elif command -v kdialog > /dev/null; then kdialog --title "VLC Redesign" --error "$msg" 2> /dev/null
+        fi
+    fi
+    exit 1
+fi
 export LD_LIBRARY_PATH="$here/lib:$here/lib/vlc:$here/qt/lib:$here/syslib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 export VLC_PLUGIN_PATH="$here/lib/vlc/plugins"
 export VLC_DATA_PATH="$here/share/vlc"
@@ -60,6 +77,7 @@ export QT_PLUGIN_PATH="$here/qt/plugins"
 export QML_IMPORT_PATH="$here/qt/qml" QML2_IMPORT_PATH="$here/qt/qml"
 exec "$here/bin/vlc" "$@"
 EOF
+sed -i "s/@GLIBC@/$glibc/" "$root/vlc"
 chmod +x "$root/vlc"
 "$root/lib/vlc/vlc-cache-gen" "$root/lib/vlc/plugins" 2>/dev/null || true
 

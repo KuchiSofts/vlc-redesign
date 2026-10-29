@@ -2,8 +2,8 @@
 
 <!-- DRAFT: not dated, not published. Before the upload: the date, the file table (release-notes.py writes it
      with the checksums), the Android, Linux and macOS rows confirmed by the owner. The five screenshots are of the
-     0.4.0 build with the demo library of the Figma frames and the public Pluto TV and Plex lists (nothing
-     personal). -->
+     0.4.0 build with the demo library of the Figma frames and a made-up TV provider (nothing personal,
+     no broadcaster's content). -->
 
 ## 🎨 Design by [Juxtopposed](https://www.youtube.com/@juxtopposed)
 
@@ -19,7 +19,7 @@ technical details, is in the [changelog](https://github.com/KuchiSofts/vlc-redes
 
 ### Live TV
 
-![The TV page: the channels of the public Pluto TV and Plex lists with their logos, numbers, groups and what is on](tv-page.png)
+![The TV page: the channels of a source with their logos, numbers, groups and what is on](tv-page.png)
 
 Watch the channels of your own IPTV provider like on a TV box. **TV** in the sidebar lists them with their logos,
 numbers and groups, what is on now (with its progress) and what is next, your favourites and the ones watched last;

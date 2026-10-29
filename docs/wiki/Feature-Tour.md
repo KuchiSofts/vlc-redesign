@@ -23,11 +23,11 @@ Where each platform stands, with its requirements and files: [Platforms](Platfor
 
 | [![The Windows film](https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/films/windows.jpg)](https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/films/vlc-redesign-0.4.0-windows.mp4) | [![The Linux and macOS film](https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/films/linux-macos.jpg)](https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/films/vlc-redesign-0.4.0-linux-macos.mp4) | [![The Android film](https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/films/android.jpg)](https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/films/vlc-redesign-0.4.0-android.mp4) |
 |---|---|---|
-| **Windows**, 0.4.0: the 17 clips, 2 min 37 s (12.7 MB) | **Linux and macOS**, in progress: 24 s (1.0 MB) | **Android**, in testing: 9 clips, 2 min 13 s (3.8 MB) |
+| **Windows**, 0.4.0: the 17 clips, 2 min 55 s (14.0 MB) | **Linux and macOS**, in progress: 21 s (0.9 MB) | **Android**, in testing: 9 clips, 2 min 2 s (3.9 MB) |
 
 **Media in the clips:** the Blender open movies *Sintel*, *Big Buck Bunny*, *Elephants Dream*, *Tears of Steel* and
-*Caminandes* (CC BY), music by Kevin MacLeod (incompetech.com, CC BY 4.0), the public, free Pluto TV channel list of
-the Live TV catalog, and a test Chromecast that runs on the recording PC (no real device). The subtitles of *Sintel*
+*Caminandes* (CC BY), music by Kevin MacLeod (incompetech.com, CC BY 4.0), a made-up TV provider for the Live TV clips
+(invented channels, logos and programmes, showing these same open movies), and a test Chromecast that runs on the recording PC (no real device). The subtitles of *Sintel*
 in Hebrew, Arabic and Japanese were written for these clips.
 
 ---
@@ -140,10 +140,11 @@ In depth: [Settings](Settings) · [Search](Settings#search)
 
 New in 0.4.0. Live TV is an add-on, on by default; without it nothing of it shows.
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/tv-catalog.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/tv-catalog.gif" alt="Live TV: the catalog of free, legal sources, a search for Pluto TV, Add, and its channels with logos, numbers, groups and what is on" width="960"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/tv-catalog.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/tv-catalog.gif" alt="Live TV: the sources, the catalog of free, legal lists, then the channels of a source with their logos, numbers and groups" width="960"></a>
 
-**Add a source from the catalog.** The catalog of free, legal channel lists, a search for Pluto TV, *Add*, and the
-432 channels of that list at the time of the recording, with their logos, numbers, groups and what is on now.
+**Sources and the catalog.** *Sources* lists your TV sources; the catalog offers free, legal channel lists (the films
+filter, then all); then the channels of a source, with their logos, numbers, groups and what is on now, filtered by
+group. The channels are those of a made-up demo provider.
 
 In depth: [The catalog](Live-TV#the-catalog) · [The TV page](Live-TV#the-tv-page) · [Add your TV](Live-TV#add-your-tv)
 
@@ -205,10 +206,10 @@ In depth: [Languages](Languages) · [Right to left](Languages#right-to-left)
 **In progress, no release yet.** The AppImage, .deb, .rpm and tar.xz for x86_64 and ARM64 are in testing; a Flatpak
 comes next. Requirements and what is tested: [Platforms: Linux](Platforms#linux).
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/linux.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/linux.gif" alt="The Linux AppImage on Arch Linux: About with Linux x86_64 AppImage, Settings in the dark theme, the Live TV channels, Home in the light theme" width="960"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/linux.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/linux.gif" alt="The Linux AppImage on Arch Linux: About with Linux x86_64 AppImage, Settings in the dark theme, Home in the light theme" width="960"></a>
 
-**The Linux AppImage on Arch Linux.** About with its badge *Linux x86_64 · AppImage*, Settings in the dark theme, the
-Live TV channels, then Home in the light theme. The same interface as on Windows, from the same code.
+**The Linux AppImage on Arch Linux.** About with its badge *Linux x86_64 · AppImage*, Settings in the dark theme, then
+Home in the light theme. The same interface as on Windows, from the same code.
 
 In depth: [Platforms: Linux](Platforms#linux)
 
@@ -244,7 +245,7 @@ Portrait phone clips (Home at 400 px wide, the others at 360 px), then the table
 <td valign="top"><a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/android/subtitles-hebrew.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/android/subtitles-hebrew.gif" alt="Android phone: the tracks panel over the video, the subtitle files next to it, Hebrew picked and read right to left" width="300"></a><br><b>Tracks and subtitles in Hebrew.</b> The tracks panel over the video: the subtitle files next to it, Hebrew picked, read right to left.<br><sub>Desktop: <a href="Subtitles">Subtitles</a></sub></td>
 </tr>
 <tr>
-<td valign="top"><a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/android/tv-zapping.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/android/tv-zapping.gif" alt="Android phone: a Pluto TV channel, then Page Up and Page Down with the banner" width="300"></a><br><b>Live TV zapping.</b> A channel from the free Pluto TV list, then Page Up and Page Down: the banner shows the number, the programme, its progress and description.<br><sub>Desktop: <a href="Live-TV#watching">Live TV: Watching</a></sub></td>
+<td valign="top"><a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/android/tv-zapping.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/android/tv-zapping.gif" alt="Android phone: a channel of the demo provider, then the next ones with the banner" width="300"></a><br><b>Live TV zapping.</b> A channel of the demo provider, then the next ones: the banner shows the number, the programme, its progress and description.<br><sub>Desktop: <a href="Live-TV#watching">Live TV: Watching</a></sub></td>
 <td valign="top"><a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/android/tv-guide.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/android/tv-guide.gif" alt="Android phone: the Live TV guide with the line of now, swiped through the hours and the channels" width="300"></a><br><b>Live TV guide.</b> The guide on a phone: the line of now, swiped through the hours and the channels.<br><sub>Desktop: <a href="Live-TV#the-guide">Live TV: The guide</a></sub></td>
 </tr>
 <tr>

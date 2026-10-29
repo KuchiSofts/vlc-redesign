@@ -62,10 +62,10 @@ The tour of every Windows feature in clips: [Feature tour: Windows](Feature-Tour
 | **Needs** | glibc 2.38 or later (Ubuntu 24.04, Debian 13, Fedora 39 or later), x86_64 or ARM64 |
 | **Files, once published** | `vlc-redesign-X.Y.Z-x86_64.AppImage`, `vlc-redesign_X.Y.Z_amd64.deb`, `vlc-redesign-X.Y.Z-1.x86_64.rpm`, `vlc-redesign-X.Y.Z-linux-x86_64.tar.xz`; for ARM64 `vlc-redesign-X.Y.Z-aarch64.AppImage`, `vlc-redesign_X.Y.Z_arm64.deb`, `vlc-redesign-X.Y.Z-1.aarch64.rpm` |
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/linux.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/linux.gif" alt="The Linux AppImage on Arch Linux: About with Linux x86_64 AppImage, Settings in the dark theme, the Live TV channels, Home in the light theme" width="960"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/linux.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/linux.gif" alt="The Linux AppImage on Arch Linux: About with Linux x86_64 AppImage, Settings in the dark theme, Home in the light theme" width="960"></a>
 
-<sub>The Linux AppImage on Arch Linux: About with *Linux x86_64 · AppImage*, Settings in the dark theme, the Live TV
-channels, Home in the light theme. Click for the MP4.</sub>
+<sub>The Linux AppImage on Arch Linux: About with *Linux x86_64 · AppImage*, Settings in the dark theme,
+Home in the light theme. Click for the MP4.</sub>
 
 - **The packages.** An AppImage (with update information for the GitHub releases), a .deb, an .rpm and a tarball,
   for x86_64 and ARM64, are in testing; a Flatpak manifest is written (KDE 6.8 runtime), and the Flatpak comes

@@ -9,8 +9,8 @@ Interface design by [Juxtopposed](https://www.youtube.com/@juxtopposed) (the
 ["VLC Redesign (Community)"](https://www.figma.com/community/file/1691465999134370980) Figma file, CC BY 4.0).
 
 Media in the clips: the Blender open movies *Sintel*, *Big Buck Bunny*, *Elephants Dream*, *Tears of Steel* and
-*Caminandes* (CC BY), music by Kevin MacLeod (incompetech.com, CC BY 4.0), the public, free Pluto TV channel list of
-the Live TV catalog, and a test Chromecast that runs on the recording PC (no real device). The subtitles of *Sintel*
+*Caminandes* (CC BY), music by Kevin MacLeod (incompetech.com, CC BY 4.0), a made-up TV provider for the Live TV clips
+(invented channels, logos and programmes, showing these same open movies), and a test Chromecast that runs on the recording PC (no real device). The subtitles of *Sintel*
 in Hebrew, Arabic and Japanese were written for these clips.
 
 ## Windows
@@ -27,7 +27,7 @@ in Hebrew, Arabic and Japanese were written for these clips.
 | [customize-player.gif](customize-player.gif) · [MP4](customize-player.mp4) | Customize Player: Playback Speed and Cast to TV dragged onto the bar, saved, then 1.5× chosen from the new speed button. |
 | [theme-accent.gif](theme-accent.gif) · [MP4](theme-accent.mp4) | Settings, General: the light theme and the accent colours (blue, green, pink), applied at once, then the library in light pink. |
 | [settings-search.gif](settings-search.gif) · [MP4](settings-search.mp4) | Settings: Interface, Playback and Subtitles pages, then a search for "speed" across every page. |
-| [tv-catalog.gif](tv-catalog.gif) · [MP4](tv-catalog.mp4) | Live TV: the catalog of free, legal sources, a search for Pluto TV, *Add*, and the 432 channels with their logos, numbers, groups and what is on. |
+| [tv-catalog.gif](tv-catalog.gif) · [MP4](tv-catalog.mp4) | Live TV: *Sources* with your TV sources, the catalog of free, legal lists (films, then all), then the channels of a source with their logos, numbers and groups, by group (a made-up demo provider). |
 | [tv-zapping.gif](tv-zapping.gif) · [MP4](tv-zapping.mp4) | Live TV: Page Up and Page Down change channel; the banner shows the number, the programme with its progress and its description at every switch. |
 | [tv-guide.gif](tv-guide.gif) · [MP4](tv-guide.mp4) | Live TV: the Guide with the line of now and each programme's progress, *Later* and *Now*, and the Kids group. |
 | [cast.gif](cast.gif) · [MP4](cast.mp4) | Cast to a TV: the devices found (real ones hidden here), a Chromecast picked, *Playing on Living Room TV*, pause and play from the bar. |
@@ -39,7 +39,7 @@ in Hebrew, Arabic and Japanese were written for these clips.
 
 | Clip | What it shows |
 |---|---|
-| [linux.gif](linux.gif) · [MP4](linux.mp4) | The Linux AppImage (Arch Linux): About with *Linux x86_64 · AppImage*, Settings in the dark theme, the Live TV channels, Home in the light theme. |
+| [linux.gif](linux.gif) · [MP4](linux.mp4) | The Linux AppImage (Arch Linux): About with *Linux x86_64 · AppImage*, Settings in the dark theme, Home in the light theme. |
 | [macos.png](macos.png) | The macOS app (Intel), Home, from the smoke test of the build. |
 
 ## Android
@@ -52,7 +52,7 @@ The Android app (phone and tablet, recorded on the emulator; not part of 0.4.0 y
 | [android/customize-player.gif](android/customize-player.gif) · [MP4](android/customize-player.mp4) | **Player bar and Customize Player.** The player's menu, then Customize Player: the bar's three zones, Playback speed and Queue added, saved. |
 | [android/context-menu.gif](android/context-menu.gif) · [MP4](android/context-menu.mp4) | **The compact context menu.** The ⋯ of a video opens a compact menu; a long press selects. |
 | [android/subtitles-hebrew.gif](android/subtitles-hebrew.gif) · [MP4](android/subtitles-hebrew.mp4) | **Tracks and subtitles in Hebrew.** The tracks panel over the video: the subtitle files next to it, Hebrew picked, read right to left. |
-| [android/tv-zapping.gif](android/tv-zapping.gif) · [MP4](android/tv-zapping.mp4) | **Live TV zapping.** A channel from the free Pluto TV list, then Page Up and Page Down: the banner shows the number, the programme, its progress and description. |
+| [android/tv-zapping.gif](android/tv-zapping.gif) · [MP4](android/tv-zapping.mp4) | **Live TV zapping.** A channel of the demo provider, then the next ones: the banner shows the number, the programme, its progress and description. |
 | [android/tv-guide.gif](android/tv-guide.gif) · [MP4](android/tv-guide.mp4) | **Live TV guide.** The guide on a phone: the line of now, swiped through the hours and the channels. |
 | [android/cast.gif](android/cast.gif) · [MP4](android/cast.mp4) | **Casting card.** The Cast to list (a test Chromecast of the recording PC), then the card that shows while the video plays on the TV. |
 | [android/tablet.gif](android/tablet.gif) · [MP4](android/tablet.mp4) | **Tablet layout.** The sidebar and list + detail on a tablet: an artist and an album beside their list, More, and the settings pages beside their list. |

@@ -452,12 +452,25 @@ void IptvAddon::call(const QJsonObject& request, std::function<void(const QJsonO
         return;
     QPointer<IptvAddon> self(this);
     std::shared_ptr<IptvBridge> bridge = m_bridge;
-    m_pool.start([self, bridge, request, done = std::move(done)]() {
+    // The function to call with the answer stays on this thread, kept by a
+    // number: it often holds JavaScript values (QJSValue), which the engine
+    // lets no other thread copy or free. Copied and freed on the worker,
+    // they crashed the interface while the guide scrolled.
+    quint64 id = 0;
+    if (done)
+    {
+        id = ++m_lastCall;
+        m_answers.insert(id, std::move(done));
+    }
+    m_pool.start([self, bridge, request, id]() {
         const QJsonObject answer = bridge->call(request);
-        if (!done || !self)
+        if (!id || !self)
             return;
-        QMetaObject::invokeMethod(self.data(), [self, done, answer]() {
-            if (self)
+        QMetaObject::invokeMethod(self.data(), [self, id, answer]() {
+            if (!self)
+                return;
+            const auto done = self->m_answers.take(id);
+            if (done)
                 done(answer);
         }, Qt::QueuedConnection);
     });

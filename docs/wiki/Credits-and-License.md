@@ -74,10 +74,10 @@ The films appear in pictures only. The music covers were made for the demo.
 
 ## Code signing
 
-Free code signing provided by [SignPath.io](https://about.signpath.io/), certificate by
-[SignPath Foundation](https://signpath.org/). What is signed, the team roles and the privacy policy:
-[CODE_SIGNING_POLICY.md](https://github.com/KuchiSofts/vlc-redesign/blob/main/CODE_SIGNING_POLICY.md). Until the
-first signed release, the files are unsigned and their SHA-256 is listed in `SHA256SUMS.txt`.
+The releases are not code-signed. Code signing is paused: an application to SignPath Foundation's free program for
+open-source projects waits for its answer. The policy it would follow:
+[CODE_SIGNING_POLICY.md](https://github.com/KuchiSofts/vlc-redesign/blob/main/CODE_SIGNING_POLICY.md). Until then
+the SHA-256 of every file is listed in `SHA256SUMS.txt`.
 
 ## License
 

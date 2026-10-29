@@ -273,8 +273,17 @@ static void Close(vout_display_t *vd)
 
     if (sys->video != NULL)
     {
+        /* The picture's surface goes away before the wait: Weston 14 and
+         * later keep the buffer last shown by a surface emptied (unmapped)
+         * until something else is attached or the surface is destroyed, so
+         * Close waited for it forever */
         wl_surface_attach(sys->video, NULL, 0, 0);
         wl_surface_commit(sys->video);
+        if (sys->viewport != NULL)
+            wp_viewport_destroy(sys->viewport);
+        sys->viewport = NULL;
+        wl_subsurface_destroy(sys->subsurface);
+        wl_surface_destroy(sys->video);
     }
     wl_surface_attach(surface, NULL, 0, 0);
     wl_surface_commit(surface);
@@ -291,8 +300,6 @@ static void Close(vout_display_t *vd)
     if (sys->video != NULL)
     {
         wp_viewport_destroy(sys->background_viewport);
-        wl_subsurface_destroy(sys->subsurface);
-        wl_surface_destroy(sys->video);
         wl_buffer_destroy(sys->black);
     }
     if (sys->subcompositor != NULL)

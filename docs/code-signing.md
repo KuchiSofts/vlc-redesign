@@ -229,7 +229,7 @@ The policy is chosen each time the workflow is started. Until `SIGNPATH_ORGANIZA
    Get-Content "$d\SHA256SUMS.txt"; Get-FileHash "$d\*" -Algorithm SHA256 | Format-Table Hash, Path
    ```
    `Status` is `Valid` and the signer is SignPath Foundation. The clean-PC test in Windows Sandbox works as before.
-   Then sign the checksums with the release key (the workflow never has it; the app installs no release from 0.3.2
+   Then sign the checksums with the release key (the workflow never has it; the app installs no release from 0.4.0
    on without this file, [The release key](#the-release-key-signed-checksums)):
    ```powershell
    .\extras\juxtopposed\signing\release-key.ps1 sign "$d\SHA256SUMS.txt"     # writes SHA256SUMS.txt.sig
@@ -246,7 +246,7 @@ signs only what the workflow built), so prefer fixing the job and starting a new
 ## The release key (signed checksums)
 
 Authenticode tells who built a program, but the checksums come from the same GitHub release as the files: whoever
-can publish there (a stolen account or token) could publish both. So from 0.3.2 on, `SHA256SUMS.txt` is signed by
+can publish there (a stolen account or token) could publish both. So from 0.4.0 on, `SHA256SUMS.txt` is signed by
 the project's own key, which never leaves the release PC, and the app checks that signature before it uses any
 checksum (`modules/gui/qt/util/redesign_updater.cpp`, `FIRST_SIGNED_VERSION`). A release at or after that version
 without a good `SHA256SUMS.txt.sig` is refused; the publisher check stays as well.

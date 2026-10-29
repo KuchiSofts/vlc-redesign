@@ -12,10 +12,10 @@ The files of version 0.4.0 ([release page](https://github.com/KuchiSofts/vlc-red
 
 | File | Size | What it is |
 |---|---|---|
-| `vlc-redesign-0.4.0-win64-setup.exe` | @SETUP@ | **The installer.** Recommended: no administrator rights, a Start menu entry, file types, small updates. |
-| `vlc-redesign-0.4.0-win64.zip` | @ZIP@ | **The portable copy**: unzip anywhere and run `vlc.exe`. |
-| `vlc-redesign-0.4.0-delta-from-0.3.1.vrdelta` | @D031@ | A small update from 0.3.1, used by the app itself (see [Small updates](#small-updates)). |
-| `vlc-redesign-0.4.0-delta-from-0.3.0.vrdelta`, `...-from-0.2.6.vrdelta` | @DOLD@ | The small updates from 0.3.0 and 0.2.6. |
+| `vlc-redesign-0.4.0-win64-setup.exe` | 59.4 MB | **The installer.** Recommended: no administrator rights, a Start menu entry, file types, small updates. |
+| `vlc-redesign-0.4.0-win64.zip` | 107.8 MB | **The portable copy**: unzip anywhere and run `vlc.exe`. |
+| `vlc-redesign-0.4.0-delta-from-0.3.1.vrdelta` | 26.1 MB | A small update from 0.3.1, used by the app itself (see [Small updates](#small-updates)). |
+| `vlc-redesign-0.4.0-delta-from-0.3.0.vrdelta`, `...-from-0.2.6.vrdelta` | 26.1 MB and 35.3 MB | The small updates from 0.3.0 and from 0.2.6. |
 | `SHA256SUMS.txt` | | The SHA-256 of every file of the release, to check a download. |
 | `SHA256SUMS.txt.sig` | | The signature of `SHA256SUMS.txt`: from 0.4.0 on, the app installs only an update whose list is signed. |
 
@@ -204,7 +204,7 @@ updates** in **⋯ → About VLC**. When one is out, a card offers it:
 
 | Card | Buttons |
 |---|---|
-| *VLC Redesign 0.4.0 is available* · *You have 0.3.1.* | **What's new**, **Skip**, **Update now · @D031@** (or **Download**) |
+| *VLC Redesign 0.4.0 is available* · *You have 0.3.1.* | **What's new**, **Skip**, **Update now · 26.1 MB** (or **Download**) |
 | *Downloading VLC Redesign 0.4.0… 40%* · *Only what changed: keep watching, it's checked in the background.* | **×** (cancels) |
 | *Preparing VLC Redesign 0.4.0…* | |
 | *VLC Redesign 0.4.0 is ready* · *It takes a few seconds: restart now, or it's done when you close VLC Redesign.* | **Restart now**, **Later** |

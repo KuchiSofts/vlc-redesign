@@ -86,6 +86,11 @@ modules:
       - mkdir -p /app/vlc-redesign
       - cp -a vlc-redesign/. /app/vlc-redesign/
       - rm -rf /app/vlc-redesign/include /app/vlc-redesign/lib/pkgconfig
+      # the plugins cache again, with the times of the files once installed:
+      # OSTree gives every file the time 0, and the bundle's cache, of their
+      # build times, was stale at every start (each plugin loaded to check)
+      - "find /app/vlc-redesign/lib/vlc/plugins -name '*.so' -exec touch -h -d @0 {} +"
+      - LD_LIBRARY_PATH=/app/vlc-redesign/lib:/app/vlc-redesign/syslib /app/vlc-redesign/libexec/vlc/vlc-cache-gen /app/vlc-redesign/lib/vlc/plugins
       # VLC's own entries name the distribution's VLC
       - rm -rf /app/vlc-redesign/share/applications /app/vlc-redesign/share/metainfo
       - printf '#!/bin/sh\nexec /app/vlc-redesign/vlc "\$@"\n' > vlc && install -Dm755 vlc /app/bin/vlc

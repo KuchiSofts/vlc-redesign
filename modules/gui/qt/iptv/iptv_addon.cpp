@@ -562,10 +562,33 @@ void IptvAddon::loadChannels()
             if (ok && revision != a->m_channelsRevision)
             {
                 a->m_channelsRevision = revision;
-                if (!a->m_channelsLoaded)
-                    msg_Dbg(a->m_intf, "Live TV: %d channels shown %lld ms after the add-on started",
-                            int(items->size()), (long long)a->m_loadTime.elapsed());
+                // the same rows (the guide came, a refresh changed nothing
+                // shown): kept, the lists keep their place and delegates
+                const bool sameRows = a->m_channelsLoaded && a->m_channels.size() == items->size()
+                    && std::equal(a->m_channels.cbegin(), a->m_channels.cend(), items->cbegin(),
+                                  [](const IptvChannelModel::Item& x, const IptvChannelModel::Item& y) {
+                                      return x.key == y.key && x.group == y.group && x.adult == y.adult
+                                             && x.name == y.name;
+                                  });
                 a->m_channels = std::move(*items);
+                if (a->m_loadTime.isValid() && !a->m_channels.isEmpty())
+                {
+                    msg_Dbg(a->m_intf, "Live TV: %d channels shown %lld ms after the add-on started",
+                            int(a->m_channels.size()), (long long)a->m_loadTime.elapsed());
+                    a->m_loadTime.invalidate();
+                }
+                if (sameRows)
+                {
+                    a->m_channelModel->nowNextChanged({});
+                    a->m_playerModel->nowNextChanged({});
+                    emit a->currentChannelChanged();
+                    if (a->m_channelsAgain)
+                    {
+                        a->m_channelsAgain = false;
+                        a->loadChannels();
+                    }
+                    return;
+                }
                 a->m_channelIndex.clear();
                 QVariantList groups;
                 QHash<QString, int> counts;

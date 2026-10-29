@@ -29,6 +29,7 @@
 #include "player/player_controller.hpp"
 #include "interface_window_handler.hpp"
 #include <QAbstractNativeEventFilter>
+#include <QPointer>
 #include <QOperatingSystemVersion>
 #include <wrl/client.h>
 
@@ -130,7 +131,8 @@ protected:
 
 private:
     void updateCSDWindowSettings() override;
-    QObject *m_CSDWindowEventHandler {};
+    // a child of the window, which outlives this handler: see the destructor
+    QPointer<QObject> m_CSDWindowEventHandler;
 
     bool m_disableVolumeKeys = false;
 };

@@ -30,6 +30,9 @@ RedesignIconButton {
     iconSource: "qrc:///redesign/icons/chapters/default.png"
     enabled: !paintOnly && (Player.hasChapters || Player.hasTitles)
     onClicked: menu.popup(this.mapToGlobal(0, 0), true)
+    // open while its menu shows (a menu of the system: told by its signals)
+    property bool _menuShown: false
+    active: _menuShown
     description: qsTr("Chapters")
     AccessibleCompat.id: "chaptersButton"
 
@@ -37,8 +40,8 @@ RedesignIconButton {
         id: menu
         ctx: MainCtx
         player: Player
-        onAboutToShow: root.requestLockUnlockAutoHide(true)
-        onAboutToHide: root.requestLockUnlockAutoHide(false)
+        onAboutToShow: { root._menuShown = true; root.requestLockUnlockAutoHide(true) }
+        onAboutToHide: { root._menuShown = false; root.requestLockUnlockAutoHide(false) }
     }
 
     function forceUnlock() {

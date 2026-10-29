@@ -971,8 +971,8 @@ Tracks with checklists; a version number comes with the first published build.
   GPU: VLC's EGL output needs `EGL_KHR_display_reference`, which Mesa 25.2 lacks (seen on WSLg with the GPU).
   `wl_shm` drew the picture from the left with no bars, the desktop showing through on the right: fixed, the
   picture is centred in a subsurface over black (Weston and WSLg, fullscreen, windowed, next file)
-- 🟡 Fullscreen on headless Weston: the whole video area sits about 100 px to the right and runs off the screen
-  (the same before the `wl_shm` fix; to check on a real Wayland desktop)
+- 🟢 Fullscreen on headless Weston keeps the window where it was and runs off the screen; not VLC: it asks for
+  the right geometry and buffer (traced), and a plain Qt 6.8 window does the same there. To see on a real desktop
 - 🟢 X11 CSD: drag to move, double-click to maximize and restore; 🟡 resizing from an edge under openbox with
   synthetic input moved the window instead (to check on a real desktop)
 - 🟡 Xvfb (no DRI3) can't show VA-API pictures directly: copied to software (1080p 84 % CPU with llvmpipe)

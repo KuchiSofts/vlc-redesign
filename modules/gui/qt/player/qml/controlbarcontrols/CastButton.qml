@@ -71,8 +71,33 @@ RedesignIconButton {
         onOpened: {
             root.requestLockUnlockAutoHide(true)
             root.manager.StartScan()
+            popup.searchedLong = false
+            searchTimer.restart()
         }
-        onClosed: root.requestLockUnlockAutoHide(false)
+        onClosed: {
+            root.requestLockUnlockAutoHide(false)
+            searchTimer.stop()
+        }
+
+        // it looks for devices as long as the list is open (a TV turned on
+        // then shows up, one turned off goes), not for one scan only; after
+        // a while with none, the text says so (the dot still shows it looks)
+        property bool searchedLong: false
+        Timer {
+            id: searchTimer
+            interval: 1000
+            repeat: true
+            property int ticks: 0
+            onRunningChanged: if (running) ticks = 0
+            onTriggered: {
+                ticks++
+                if (ticks >= 8)
+                    popup.searchedLong = true
+                // (StartScan while one runs: 20 s more from now)
+                if (ticks % 15 === 0)
+                    root.manager.StartScan()
+            }
+        }
 
         background: Rectangle {
             color: VLCStyle.redesign.color(VLCStyle.redesign.windowBackground, "#c2c2c1")
@@ -190,7 +215,7 @@ RedesignIconButton {
                 visible: devices.count === 0
                 wrapMode: Text.WordWrap
                 horizontalAlignment: Text.AlignLeft
-                text: root.manager.status === RendererManager.RUNNING
+                text: root.manager.status === RendererManager.RUNNING && !popup.searchedLong
                       ? qsTr("Looking for TVs and Chromecasts on your network…")
                       : qsTr("No device found. Turn your TV or Chromecast on, on the same network as this computer.")
                 color: VLCStyle.redesign.color("#8F8F8F", "#2e2e2e")

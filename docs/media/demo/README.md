@@ -43,3 +43,17 @@ in Hebrew, Arabic and Japanese were written for these clips.
 | [macos.png](macos.png) | The macOS app (Intel), Home, from the smoke test of the build. |
 
 ## Android
+
+The Android app (phone and tablet, recorded on the emulator; not part of 0.4.0 yet). Portrait phone clips are 360 px wide, the tablet clip 960 px.
+
+| Clip | What it shows |
+|---|---|
+| [android/home.gif](android/home.gif) · [MP4](android/home.mp4) | **Home and the library.** The phone's Home with Continue Watching, folders, new videos and music, then Videos, Music and TV. |
+| [android/customize-player.gif](android/customize-player.gif) · [MP4](android/customize-player.mp4) | **Player bar and Customize Player.** The player's menu, then Customize Player: the bar's three zones, Playback speed and Queue added, saved. |
+| [android/context-menu.gif](android/context-menu.gif) · [MP4](android/context-menu.mp4) | **The compact context menu.** The ⋯ of a video opens a compact menu; a long press selects. |
+| [android/subtitles-hebrew.gif](android/subtitles-hebrew.gif) · [MP4](android/subtitles-hebrew.mp4) | **Tracks and subtitles in Hebrew.** The tracks panel over the video: the subtitle files next to it, Hebrew picked, read right to left. |
+| [android/tv-zapping.gif](android/tv-zapping.gif) · [MP4](android/tv-zapping.mp4) | **Live TV zapping.** A channel from the free Pluto TV list, then Page Up and Page Down: the banner shows the number, the programme, its progress and description. |
+| [android/tv-guide.gif](android/tv-guide.gif) · [MP4](android/tv-guide.mp4) | **Live TV guide.** The guide on a phone: the line of now, swiped through the hours and the channels. |
+| [android/cast.gif](android/cast.gif) · [MP4](android/cast.mp4) | **Casting card.** The Cast to list (a test Chromecast of the recording PC), then the card that shows while the video plays on the TV. |
+| [android/tablet.gif](android/tablet.gif) · [MP4](android/tablet.mp4) | **Tablet layout.** The sidebar and list + detail on a tablet: an artist and an album beside their list, More, and the settings pages beside their list. |
+| [android/settings.gif](android/settings.gif) · [MP4](android/settings.mp4) | **Settings.** The settings pages, General with theme and accents, a page, and the search. |

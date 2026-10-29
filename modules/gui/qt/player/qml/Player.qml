@@ -893,6 +893,12 @@ FocusScope {
         AccessibleCompat.id: "videoVisualizationButton"
     }
 
+    // its keys win over the hotkeys (interface_window_handler.cpp)
+    Binding {
+        target: MainCtx
+        property: "keysBeforeHotkeys"
+        value: tvOverlay.item
+    }
     // Live TV over the video while a channel plays: made only then, and
     // only when its add-on is there and on
     Loader {

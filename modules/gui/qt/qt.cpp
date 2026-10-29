@@ -339,6 +339,14 @@ static void ShowDialog   ( intf_thread_t *, int, int, intf_dialog_args_t * );
 #define ACCENT_COLOR_TEXT N_( "Accent color" )
 #define ACCENT_COLOR_LONGTEXT N_( "Adjusts the accent color, special values are 'default' and 'system' (requires Qt 6.6) ." )
 
+/* The keys of live TV over the video (Settings > Shortcuts, "Live TV"): they
+ * win over the hotkeys only while a channel plays */
+#define TV_CHANNEL_UP_TEXT N_( "Next channel" )
+#define TV_CHANNEL_DOWN_TEXT N_( "Previous channel" )
+#define TV_PREVIOUS_TEXT N_( "Last channel watched" )
+#define TV_LIST_TEXT N_( "Channel list" )
+#define TV_INFO_TEXT N_( "Channel banner" )
+
 static const int initial_prefs_view_list[] = { 0, 1, 2 };
 static const char *const initial_prefs_view_list_texts[] =
     { N_("Simple"), N_("Advanced"), N_("Expert") };
@@ -535,6 +543,14 @@ vlc_module_begin ()
     add_float_with_range( "qt-safe-area", 0, 0, 100.0, SAFE_AREA_TEXT, SAFE_AREA_LONGTEXT )
 
     add_string( "qt-accent-color", "default", ACCENT_COLOR_TEXT, ACCENT_COLOR_LONGTEXT )
+
+    /* edited in the shortcuts only (no global hotkey: the interface's) */
+    set_subcategory( SUBCAT_HIDDEN )
+    add_string_inner( CONFIG_ITEM_KEY, "qt-key-tv-channel-up", TV_CHANNEL_UP_TEXT, nullptr, "Page Up" )
+    add_string_inner( CONFIG_ITEM_KEY, "qt-key-tv-channel-down", TV_CHANNEL_DOWN_TEXT, nullptr, "Page Down" )
+    add_string_inner( CONFIG_ITEM_KEY, "qt-key-tv-previous", TV_PREVIOUS_TEXT, nullptr, "Backspace" )
+    add_string_inner( CONFIG_ITEM_KEY, "qt-key-tv-list", TV_LIST_TEXT, nullptr, "Enter" )
+    add_string_inner( CONFIG_ITEM_KEY, "qt-key-tv-info", TV_INFO_TEXT, nullptr, "i" )
 
     cannot_unload_broken_library()
 

@@ -1124,10 +1124,12 @@ Tracks with checklists; a version number comes with the first published build.
 - 🟢 Memory: pages and panels opened 77 times, flat (303→308 MB); switching files grew 90 MB a minute (glibc arenas
   per thread), fixed in `bin/vlc.c` (two arenas): 30 min of files, panels and pages stay near 480–510 MB
 - 🟢 Wayland (headless Weston, native client, Qt's Wayland compositor for the video): play, pause, seek, quit, no
-  QML warning; 🟡 without a GPU (software `wl_shm` output) the picture is drawn from the left at its own aspect,
-  not centred, and the bars are not filled: the desktop shows through on the right (upstream `wl_shm` ignores the
-  placement; the interface asks for the right area, measured). With a GPU the OpenGL output fills the area;
-  a real Wayland desktop with a GPU is still to check
+  QML warning. The video on Wayland goes through the software `wl_shm` output with Mesa (Intel, AMD) even with a
+  GPU: VLC's EGL output needs `EGL_KHR_display_reference`, which Mesa 25.2 lacks (seen on WSLg with the GPU).
+  `wl_shm` drew the picture from the left with no bars, the desktop showing through on the right: fixed, the
+  picture is centred in a subsurface over black (Weston and WSLg, fullscreen, windowed, next file)
+- 🟡 Fullscreen on headless Weston: the whole video area sits about 100 px to the right and runs off the screen
+  (the same before the `wl_shm` fix; to check on a real Wayland desktop)
 - 🟢 X11 CSD: drag to move, double-click to maximize and restore; 🟡 resizing from an edge under openbox with
   synthetic input moved the window instead (to check on a real desktop)
 - 🟡 Xvfb (no DRI3) can't show VA-API pictures directly: copied to software (1080p 84 % CPU with llvmpipe)

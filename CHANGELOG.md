@@ -256,6 +256,11 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   An AV1 file no longer makes VLC quit on Ubuntu 24.04 with a recent Intel GPU: VA-API decoding of AV1 crashed
   inside FFmpeg 6, so dav1d decodes AV1 there. On Wayland with Intel or AMD graphics the video was drawn from
   the left with no black bars, the desktop showing through beside it; it is now centred over black.
+  The packages: on Debian 13 (and any distribution with a newer Wayland) VLC quit at start on Wayland, as it
+  brought Ubuntu 24.04's Wayland libraries, older than the ones the system's graphics driver needs; it now uses
+  the system's. On a minimal install without the VDPAU library nothing played; it comes with VLC now. Removing the
+  .rpm on Fedora no longer leaves empty icon folders behind. A TV channel without a logo no longer puts a warning
+  in the log.
 - **Smaller fixes:** idle HTTP stream clients time out (DLNA streams excepted), stopping a stalled network stream no
   longer hangs, the VU meter reads the whole signal, Lua scripts saved with a BOM load, a TS stream's clock no
   longer jumps when a track is removed, and more (the full list: the review report).

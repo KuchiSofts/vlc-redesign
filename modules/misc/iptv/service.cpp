@@ -124,7 +124,8 @@ QString readDescription(const QString& path, qint64 offset, int length)
  * texts once each, and names the file of the descriptions it goes with. */
 
 const quint32 kIndexMagic = 0x56544749;   // "VTGI"
-const qint32 kIndexVersion = 1;
+// 2: no episode from the "original-air-date" and other ids of episode-num
+const qint32 kIndexVersion = 2;
 
 struct GuideIndex
 {

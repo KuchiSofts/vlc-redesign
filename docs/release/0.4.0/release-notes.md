@@ -1,7 +1,9 @@
 # VLC Redesign 0.4.0
 
 <!-- DRAFT: not dated, not published. Before the upload: the date, the file table (release-notes.py writes it
-     with the checksums), the Android paragraph confirmed by the owner, the screenshots checked once more. -->
+     with the checksums), the Android, Linux and macOS rows confirmed by the owner. The five screenshots are of the
+     0.4.0 build with the demo library of the Figma frames and the public Pluto TV and Plex lists (nothing
+     personal). -->
 
 ## 🎨 Design by [Juxtopposed](https://www.youtube.com/@juxtopposed)
 
@@ -17,7 +19,7 @@ technical details, is in the [changelog](https://github.com/KuchiSofts/vlc-redes
 
 ### Live TV
 
-![The TV page: the channels with their logos, numbers and groups, what is on and what is next](tv-page.png)
+![The TV page: the channels of the public Pluto TV and Plex lists with their logos, numbers, groups and what is on](tv-page.png)
 
 Watch the channels of your own IPTV provider like on a TV box. **TV** in the sidebar lists them with their logos,
 numbers and groups, what is on now (with its progress) and what is next, your favourites and the ones watched last;
@@ -35,7 +37,7 @@ numbers and groups, what is on now (with its progress) and what is next, your fa
 - **An add-on**, on by default: *Live TV (IPTV) add-on* in Settings › General turns it off, and the installer can
   leave it out. Without it nothing of it shows.
 
-![Settings › TV: the sources with their channels, the guide, the banner and the lists](settings-tv.png)
+![Settings › Live TV: the sources with their channels and guides, the guide, the banner and the lists](settings-tv.png)
 
 How to add a source, the catalog and the keys: [Live TV](https://github.com/KuchiSofts/vlc-redesign/wiki/Live-TV)
 in the wiki.
@@ -47,7 +49,7 @@ right-click the sidebar, or *Settings › Interface › Sidebar*.
 
 ### Subtitles that read right
 
-![The subtitles panel: the languages of the video, a subtitle downloaded from OpenSubtitles](tracks.png)
+![The subtitles panel over the player: the subtitle file next to the video, the online search, the timing](tracks.png)
 
 - **Every language, whatever its encoding**: Hebrew, Arabic, Russian, Greek, Japanese, Chinese, Korean, Thai and
   the rest are read right from old encodings too (Windows-1255, Shift-JIS…): 212 test files out of 212.
@@ -63,8 +65,10 @@ right-click the sidebar, or *Settings › Interface › Sidebar*.
 
 ![The ⋯ menu in the light theme: sharp icons, Suggest an idea and Report a problem](menu.png)
 
-Every icon is drawn from the design's SVG at the size it is shown: sharp at 100 to 200 % Windows scaling and when
-the interface is zoomed. Every dialog, menu, panel, list and tooltip has the thin frame of the main window, and text
+Every icon is drawn from the design's SVG at the size it is shown, at the screen's density: sharp at 100 to 200 %
+ Windows scaling and when the interface is zoomed (at 100 % its 1.5 px lines match the design to the pixel).
+Before, an icon was drawn for 100 % and stretched at 125 % and more.
+Every dialog, menu, panel, list and tooltip has the thin frame of the main window, and text
 buttons are framed so they never melt into their dialog.
 
 ### About, What's new, Suggest an idea, Report a problem
@@ -82,6 +86,8 @@ buttons are framed so they never melt into their dialog.
   follows it when it changes.
 - **Every message and question in the redesign's look**, and the classic windows with the redesign's title bar;
   *Go to Time*, *Plugins and extensions*, *Media Statistics* and *Folder information* redrawn.
+- **Live TV on a DLNA TV**: a channel cast to a TV goes as one stream with its picture and its sound, also when it
+  was already playing and when it restarts its picture after an advert; the TV no longer loads each channel twice.
 - **The mouse wheel changes the volume** over the video and over the slider, and the volume never reads "-100 %".
 - **Accessibility**: every button and field has a name for screen readers, the dialogs are named by their title,
   and Tab moves through every field.

@@ -29,6 +29,8 @@ Widgets.RedesignDialog {
     property bool captureGlobal: false
     property int capturedKey: 0
     property int capturedModifiers: 0
+    // the wheel captured, not a key: 1 up, -1 down
+    property int capturedWheel: 0
     property string conflictAction: ""
     readonly property bool dark: VLCStyle.palette.isDark
     // the scroll bar and the fields look their colours up here
@@ -95,6 +97,23 @@ Widgets.RedesignDialog {
         }
         if (result.needsConfirmation) {
             capturedKey = key
+            capturedWheel = 0
+            capturedModifiers = modifiers
+            conflictAction = result.conflictAction
+        }
+    }
+
+    // Ctrl+wheel (the subtitles' size over the video, the zoom elsewhere)
+    function assignWheel(up, modifiers, replaceConflict) {
+        const result = shortcuts.stageWheel(captureOption, captureGlobal,
+                                            up, modifiers, replaceConflict)
+        if (result.ok) {
+            capturePopup.close()
+            return
+        }
+        if (result.needsConfirmation) {
+            capturedKey = 0
+            capturedWheel = up ? 1 : -1
             capturedModifiers = modifiers
             conflictAction = result.conflictAction
         }
@@ -245,7 +264,7 @@ Widgets.RedesignDialog {
                     width: VLCStyle.redesign.iconSize
                     height: width
                     sourceSize: Qt.size(width, height)
-                    source: "qrc:///redesign/icons/edit/dim.png"
+                    source: "qrc:///redesign/icons/edit/dim.svg"
                     smooth: false
                 }
             }
@@ -390,7 +409,7 @@ Widgets.RedesignDialog {
                     width: VLCStyle.redesign.iconSize
                     height: width
                     sourceSize: Qt.size(width, height)
-                    source: "qrc:///redesign/icons/search/default.png"
+                    source: "qrc:///redesign/icons/search/default.svg"
                     smooth: false
                 }
                 TextInput {
@@ -474,7 +493,7 @@ Widgets.RedesignDialog {
                     width: VLCStyle.redesign.iconSize
                     height: width
                     sourceSize: Qt.size(width, height)
-                    source: "qrc:///redesign/icons/chevron-down/default.png"
+                    source: "qrc:///redesign/icons/chevron-down/default.svg"
                     rotation: scopePicker.popup.visible ? 180 : 0
                 }
                 delegate: T.ItemDelegate {
@@ -732,12 +751,14 @@ Widgets.RedesignDialog {
         conflictAction: root.conflictAction
         errorText: shortcuts.error
         onKeyCaptured: (key, modifiers) => root.assignCaptured(key, modifiers, false)
+        onWheelCaptured: (up, modifiers) => root.assignWheel(up, modifiers, false)
         onClearRequested: {
             shortcuts.clearKey(root.captureOption, root.captureGlobal)
             capturePopup.close()
         }
-        onReplaceRequested: root.assignCaptured(root.capturedKey,
-                                                 root.capturedModifiers, true)
+        onReplaceRequested: root.capturedWheel !== 0
+                            ? root.assignWheel(root.capturedWheel > 0, root.capturedModifiers, true)
+                            : root.assignCaptured(root.capturedKey, root.capturedModifiers, true)
         // back to waiting for another key
         onConflictCancelled: root.conflictAction = ""
     }

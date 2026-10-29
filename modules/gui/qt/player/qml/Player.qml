@@ -314,7 +314,7 @@ FocusScope {
             height: width
             smooth: false
             source: "qrc:///redesign/player/corner-" + (atBottom ? "b" : "t") + (atRight ? "r" : "l")
-                    + (VLCStyle.palette.isDark ? "-dark" : "-light") + ".png"
+                    + (VLCStyle.palette.isDark ? "-dark" : "-light") + ".svg"
         }
     }
 
@@ -358,6 +358,13 @@ FocusScope {
                 // Video
 
                 focus: true
+
+                // Ctrl+wheel over it sizes the subtitles (interface_window_handler.cpp)
+                Binding {
+                    target: MainCtx
+                    property: "subtitleWheelArea"
+                    value: videoSurface
+                }
 
                 VideoSurface {
                     id: videoSurface
@@ -648,6 +655,14 @@ FocusScope {
         }
     }
 
+    // Ctrl+wheel over the library beside the video zooms the interface
+    // (not the subtitles: the video goes on behind it)
+    Binding {
+        target: MainCtx
+        property: "subtitleWheelExclusion"
+        value: compactLibrary
+    }
+
     Loader {
         id: compactLibrary
 
@@ -933,6 +948,24 @@ FocusScope {
         }
     }
 
+    // The subtitles' size Ctrl+wheel over the video (or its keys) made, a
+    // moment, under the top bar
+    PlayerToast {
+        id: subtitleSizeToast
+        objectName: "subtitleSizeToast"
+        anchors.horizontalCenter: parent.horizontalCenter
+        y: VLCStyle.dp(24, VLCStyle.scale) + (topBar.opacity > 0.5 ? Math.max(0, topBar.y + topBar.height) : 0)
+        z: 10
+
+        Connections {
+            target: Player
+            function onSubtitleTextScaleStepped(scale) {
+                // xgettext:no-c-format
+                subtitleSizeToast.say(qsTr("Subtitle size %1%").arg(scale))
+            }
+        }
+    }
+
     Widgets.FloatingNotification {
         id: notif
 
@@ -1127,7 +1160,7 @@ FocusScope {
             spacing: VLCStyle.dp(8, VLCStyle.scale)
             Image {
                 anchors.verticalCenter: parent.verticalCenter
-                source: "qrc:///redesign/track-subtitles-active.png"
+                source: "qrc:///redesign/track-subtitles-active.svg"
                 width: VLCStyle.dp(20, VLCStyle.scale)
                 height: width
                 sourceSize: Qt.size(width, height)
@@ -1173,7 +1206,7 @@ FocusScope {
                 Layout.alignment: Qt.AlignHCenter
                 Layout.preferredWidth: VLCStyle.dp(48, VLCStyle.scale)
                 Layout.preferredHeight: VLCStyle.dp(48, VLCStyle.scale)
-                source: "qrc:///redesign/icons/cast/large.png"
+                source: "qrc:///redesign/icons/cast/large.svg"
                 sourceSize: Qt.size(VLCStyle.dp(48, VLCStyle.scale), VLCStyle.dp(48, VLCStyle.scale))
                 color: rootPlayer._castTrouble ? VLCStyle.redesign.color("#8F8F8F", "#2e2e2e")
                                                : VLCStyle.redesign.accent
@@ -1315,7 +1348,7 @@ FocusScope {
             Impl.IconImage {
                 Layout.preferredWidth: VLCStyle.dp(20, VLCStyle.scale)
                 Layout.preferredHeight: VLCStyle.dp(20, VLCStyle.scale)
-                source: "qrc:///redesign/icons/cast/large.png"
+                source: "qrc:///redesign/icons/cast/large.svg"
                 sourceSize: Qt.size(VLCStyle.dp(20, VLCStyle.scale), VLCStyle.dp(20, VLCStyle.scale))
                 color: VLCStyle.redesign.accent
             }

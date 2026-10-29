@@ -252,6 +252,7 @@ qml_modules += {
        '../../player/qml/QueueCard.qml',
        '../../player/qml/SliderBar.qml',
        '../../player/qml/TopBar.qml',
+       '../../player/qml/PlayerToast.qml',
        '../../player/qml/Title.qml',
        '../../player/qml/TracksMenu.qml',
        '../../player/qml/TracksPage.qml',

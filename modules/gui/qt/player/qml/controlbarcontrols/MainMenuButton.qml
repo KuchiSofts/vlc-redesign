@@ -19,11 +19,13 @@ RedesignIconButton {
 
     signal requestLockUnlockAutoHide(bool lock)
 
-    iconSource: "qrc:///redesign/icons/more/default.png"
+    iconSource: "qrc:///redesign/icons/more/default.svg"
     description: qsTr("Menu")
     AccessibleCompat.id: "barMenuButton"
 
     onClicked: mainMenu.toggleFrom(root, 0, root.height)
+    // open while its menu shows
+    active: mainMenu.opened
 
     Menus.MainMenu {
         id: mainMenu

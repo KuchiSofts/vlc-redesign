@@ -66,7 +66,7 @@ T.ComboBox {
         width: root.px(24)
         height: width
         sourceSize: Qt.size(width, height)
-        source: "qrc:///redesign/icons/chevron-down/default.png"
+        source: "qrc:///redesign/icons/chevron-down/default.svg"
     }
 
     // Figma 6456:13892 / 2372:8300: rows of 44, 2 apart, the text 14 in,
@@ -124,13 +124,13 @@ T.ComboBox {
                 anchors.verticalCenter: parent.verticalCenter
                 width: root.px(24)
                 height: width
-                source: visible ? option.iconDir + (twoTone ? "/default-grey.png" : "/default.png") : ""
+                source: visible ? option.iconDir + (twoTone ? "/default-grey.svg" : "/default.svg") : ""
                 Impl.ColorImage {
                     // drawn at the size shown (an SVG: sharp at any scale and zoom)
                     sourceSize: Qt.size(width, height)
                     anchors.fill: parent
                     visible: choiceIcon.twoTone
-                    source: visible ? option.iconDir + "/default-accent.png" : ""
+                    source: visible ? option.iconDir + "/default-accent.svg" : ""
                     color: VLCStyle.redesign.accent
                 }
             }
@@ -143,7 +143,7 @@ T.ComboBox {
                 anchors.verticalCenter: parent.verticalCenter
                 width: root.px(24)
                 height: width
-                source: "qrc:///redesign/track-check-active.png"
+                source: "qrc:///redesign/track-check-active.svg"
                 color: VLCStyle.redesign.accentTint
             }
         }

@@ -39976,6 +39976,23 @@ msgstr "ടൈം കണ്‍ട്രോള്‍"
 msgid "Media Manager List"
 msgstr "മീഡിയ മാനേജര്‍ ലിസ്റ്റ്"
 
+#: modules/gui/qt/qt.cpp:352
+msgid "Zoom the interface in"
+msgstr "ഇന്റർഫേസ് വലുതാക്കുക"
+
+#: modules/gui/qt/qt.cpp:353
+msgid "Zoom the interface out"
+msgstr "ഇന്റർഫേസ് ചെറുതാക്കുക"
+
+#: modules/gui/qt/player/qml/Player.qml:951
+#, no-c-format
+msgid "Subtitle size %1%"
+msgstr "ഉപശീർഷക വലുപ്പം %1%"
+
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:153
+msgid "Or turn the mouse wheel while holding Ctrl, Alt or Shift"
+msgstr "അല്ലെങ്കിൽ Ctrl, Alt അല്ലെങ്കിൽ Shift അമർത്തിപ്പിടിച്ച് മൗസ് വീൽ തിരിക്കുക"
+
 #~ msgid "Ok"
 #~ msgstr "ശരി"
 

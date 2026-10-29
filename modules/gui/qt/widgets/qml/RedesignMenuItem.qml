@@ -93,8 +93,8 @@ T.MenuItem {
             // (not loaded behind a two-tone icon: some have no PNG)
             source: root._icon !== ""
                     ? (root._hasDuo && duoIcon.status !== Image.Error
-                       ? "" : "qrc:///redesign/icons/" + root._icon + "/default.png")
-                    : "qrc:///redesign/track-check-active.png"
+                       ? "" : "qrc:///redesign/icons/" + root._icon + "/default.svg")
+                    : "qrc:///redesign/track-check-active.svg"
         }
 
         Text {
@@ -138,7 +138,7 @@ T.MenuItem {
             Layout.preferredHeight: VLCStyle.redesign.iconSize
             visible: !!root.subMenu
             sourceSize: Qt.size(width, height)
-            source: "qrc:///redesign/icons/chevron-right/default.png"
+            source: "qrc:///redesign/icons/chevron-right/default.svg"
             // to the submenu: it opens on the left in a right to left menu
             mirror: root.mirrored
         }

@@ -12,6 +12,22 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-10-29):
 
+- 🟡 **Desktop polish before 0.4.0** (branch `feature/desktop-polish`, 2026-10-29):
+  - 🟢 Icons at 125-200 % (`3673a7a74d`): the QML named them by their old PNG files; Qt 6 draws an image at the
+    device pixel ratio only when the URL *as written* ends in `.svg` (the interceptor's `.svg` comes too late), so
+    every icon was drawn for 100 % and stretched. Named by their SVG now. Queue icon strokes (coverage per row):
+    200 % `19 57 76 76 57 19` → `50 100 100 50` (exact); 100 % unchanged `76 76` = Figma's 75/75 (`#737373` /
+    `#4D4D4D`). The 1.9 px of the light-theme audit was the PNG build `g6da8c7cd1a` (before `f637ae1bfa`).
+  - 🟡 At 125 and 150 % the strokes have the right width but sit on fractional device pixels (logical × 1.25/1.5):
+    150 % `32 81 81 32` where whole pixels give `13 100 100 13`. Needs the icon snapped to device pixels (scene
+    position, not bound in QML): open.
+  - 🟢 DLNA live channels (`96287f0157`): a restarted picture goes on in the same stream (one stream per channel,
+    was two); the first stream of a channel waits up to 3 s for its sound and picture (a cast on a playing channel
+    sent both: PIDs 100 + 200, 3 of 3 runs). Fake DLNA TV, Pluto TV.
+  - 🟡 A cast started on a playing live channel can stall the adaptive demuxer (seen once on the old build:
+    `fakeesout restarting`, nothing sent for 60 s); not seen in 4 runs since. Pluto reports itself seekable, so
+    restarting live inputs on a renderer change was dropped (untested path).
+
 - 🟢 **One app icon everywhere: the designer's** (branch `feature/app-icon`, 2026-10-29; Android: its own
   `feature/app-icon`). The owner's rule: every program and app uses Juxtopposed's app icon. The design has no
   separate app-icon frame; its icon is the logo (the orange cone of the Icon set 42:356, Frame 4, also the
@@ -28,6 +44,13 @@ What is being worked on, updated as it changes (2026-10-29):
     frames (onboarding 141 px, title bar 24 px) within 0.5/255; vlc.exe's compiled icon resource is
     byte-identical to `vlc.ico` (windres + MinGW of the build image). Contact sheets (dark/light, 100/150/200 %)
     in the QA folder `app-icon/`. A full Docker rebuild waits for disk space on the build drive.
+- 🟡 **Issue [#10](https://github.com/KuchiSofts/vlc-redesign/issues/10)** (branch `feature/issue10`, both apps,
+  2026-10-29): open state of the buttons (accent icon on an accent tint, no border, 120 ms; `IconToolButton.active`)
+  on the player bar, the top bar and Live TV; Ctrl+wheel over the video sizes the subtitles (VLC's steps, 25-500 %,
+  toast), elsewhere zooms the interface (new shortcuts `qt-key-intf-zoom-in/out`), Ctrl+0 through the interface,
+  Shortcuts takes wheel turns, libass follows the size live. 4 texts in the 72 languages (msgfmt -c passes, the
+  xgettext pot matches). Android: done and checked on the emulator (open state, Ctrl + wheel, Ctrl+0, slider,
+  Hebrew; ASS keeps its size under libvlc 3). Desktop built in Docker and tested on Windows: Ctrl+wheel over the video 100 > 120 > 200 % with the toast, ASS follows live, over the player's library it zooms the interface (fixed: the library is drawn over the video), Ctrl+0 back to 100 %, Shortcuts shows both pairs and takes a Ctrl+wheel turn (conflict asked), open state on settings, tracks, the menu and the library button in dark, light, Hebrew at zoom 2; no new QML warning.
 
 - 🟡 **macOS and Windows ARM64 ready for 0.4.0** (branch `feature/mac-arm-final`, 2026-10-29):
   - 🟢 macOS unified title bar in code (`maininterface/macos_titlebar.cpp`): the system frame kept, its title bar

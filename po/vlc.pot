@@ -38061,3 +38061,20 @@ msgstr ""
 #: modules/gui/qt/dialogs/vlm/vlm.ui:193
 msgid "Media Manager List"
 msgstr ""
+
+#: modules/gui/qt/qt.cpp:352
+msgid "Zoom the interface in"
+msgstr ""
+
+#: modules/gui/qt/qt.cpp:353
+msgid "Zoom the interface out"
+msgstr ""
+
+#: modules/gui/qt/player/qml/Player.qml:951
+#, no-c-format
+msgid "Subtitle size %1%"
+msgstr ""
+
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:153
+msgid "Or turn the mouse wheel while holding Ctrl, Alt or Shift"
+msgstr ""

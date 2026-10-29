@@ -143,7 +143,7 @@ T.Pane {
                     width: VLCStyle.redesign.iconSize
                     height: width
                     color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
-                    source: "qrc:///redesign/volume-" + volumeBtn.level + ".png"
+                    source: "qrc:///redesign/volume-" + volumeBtn.level + ".svg"
                 }
             }
             description: qsTr("Mute")

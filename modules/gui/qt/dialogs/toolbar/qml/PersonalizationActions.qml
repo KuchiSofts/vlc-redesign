@@ -59,7 +59,7 @@ Column {
                 width: VLCStyle.dp(24, VLCStyle.scale)
                 height: VLCStyle.dp(24, VLCStyle.scale)
                 anchors.verticalCenter: parent.verticalCenter
-                source: "qrc:///redesign/icons/chevron-right/default.png"
+                source: "qrc:///redesign/icons/chevron-right/default.svg"
                 mirror: LayoutMirroring.enabled
             }
         }

@@ -19,7 +19,7 @@ import VLC.Playlist
 
 // Figma "Customize Player": "Playlist Name", the play queue the media is in
 MetadataText {
-    iconSource: "qrc:///redesign/icons/playlist/default.png"
+    iconSource: "qrc:///redesign/icons/playlist/default.svg"
     value: MainPlaylistController.count > 0
            ? qsTr("Play Queue (%1/%2)").arg(MainPlaylistController.currentIndex + 1).arg(MainPlaylistController.count)
            : ""

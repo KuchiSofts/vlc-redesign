@@ -178,7 +178,7 @@ Widgets.RedesignDialog {
                     anchors.centerIn: parent
                     width: VLCStyle.redesign.iconSize
                     height: width
-                    source: "qrc:///redesign/icons/move/default.png"
+                    source: "qrc:///redesign/icons/move/default.svg"
                     color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted)
                 }
 

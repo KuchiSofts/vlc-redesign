@@ -121,6 +121,7 @@ FocusScope {
                 Layout.preferredHeight: VLCStyle.redesign.iconSize
                 source: "qrc:///redesign/icons/replay/default.svg"
                 sourceSize: Qt.size(width, height)
+                smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
             }
 
             T.Label {

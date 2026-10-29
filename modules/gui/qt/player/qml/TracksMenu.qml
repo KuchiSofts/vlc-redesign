@@ -498,6 +498,7 @@ T.Popup {
             Impl.ColorImage {
                 // drawn at the size shown (an SVG: sharp at any scale and zoom)
                 sourceSize: Qt.size(width, height)
+                smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                 anchors.left: parent.left
                 anchors.leftMargin: VLCStyle.dp(12, VLCStyle.scale)
                 anchors.verticalCenter: parent.verticalCenter

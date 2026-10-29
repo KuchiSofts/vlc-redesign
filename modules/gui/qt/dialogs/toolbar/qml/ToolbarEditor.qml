@@ -314,6 +314,7 @@ Item {
             visible: source.toString().length > 0
             source: buttonDragItem.iconSource
             sourceSize: Qt.size(width, height)
+            smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
         }
         EditorDummyButton {
             anchors.centerIn: parent

@@ -219,6 +219,7 @@ Item {
                     height: width
                     source: "qrc:///redesign/icons/move/default.svg"
                     sourceSize: Qt.size(width, height)
+                    smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                     fillMode: Image.Pad
                     color: root.lightTheme ? "#2e2e2e" : "transparent"
 

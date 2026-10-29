@@ -33,6 +33,7 @@ T.Control {
             width: visible ? VLCStyle.redesign.iconSize : 0
             height: width
             sourceSize: Qt.size(width, height)
+            smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
             anchors.verticalCenter: parent.verticalCenter
         }
         Text {

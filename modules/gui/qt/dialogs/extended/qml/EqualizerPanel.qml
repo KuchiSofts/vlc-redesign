@@ -88,12 +88,14 @@ ExpandPanel {
                     width: root.px(24)
                     height: width
                     sourceSize: Qt.size(width, height)
+                    smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                     source: iconDir + (twoTone ? "/default-grey.svg" : "/default.svg")
                     Accessible.role: Accessible.Graphic
                     Accessible.name: qsTr("%1 equalizer curve").arg(presetOption.modelData.name)
                     Impl.ColorImage {
                         // drawn at the size shown (an SVG: sharp at any scale and zoom)
                         sourceSize: Qt.size(width, height)
+                        smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                         anchors.fill: parent
                         visible: curve.twoTone
                         source: visible ? curve.iconDir + "/default-accent.svg" : ""
@@ -104,6 +106,7 @@ ExpandPanel {
                 Impl.ColorImage {
                     // drawn at the size shown (an SVG: sharp at any scale and zoom)
                     sourceSize: Qt.size(width, height)
+                    smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                     visible: presetOption.chosen
                     anchors.right: parent.right
                     anchors.rightMargin: root.px(13)

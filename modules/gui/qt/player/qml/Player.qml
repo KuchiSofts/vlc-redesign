@@ -1164,6 +1164,7 @@ FocusScope {
                 width: VLCStyle.dp(20, VLCStyle.scale)
                 height: width
                 sourceSize: Qt.size(width, height)
+                smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
             }
             Text {
                 anchors.verticalCenter: parent.verticalCenter

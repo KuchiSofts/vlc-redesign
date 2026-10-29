@@ -253,6 +253,7 @@ T.Pane {
                     width: VLCStyle.dp(18, VLCStyle.scale)
                     height: width
                     sourceSize: Qt.size(width, height)
+                    smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                     source: "qrc:///redesign/icons/" + tab.iconName + "/default.svg"
                     color: tab.current ? VLCStyle.redesign.accent
                                        : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")

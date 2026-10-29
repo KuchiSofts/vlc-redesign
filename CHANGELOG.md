@@ -147,6 +147,14 @@ a border on every window, sharp icons at every scale, and signed updates.
   were still named by the PNG files they once were. Now named by their SVG: at 200 % the lines are three pixels,
   two of them full, as the design draws them; at 100 % they match Figma (1.5 px, `#737373` on the dark bar,
   `#4D4D4D` on the light one).
+- **Icons as crisp at 125 and 150 % as Qt draws them.** At these scalings an icon whose place falls between two
+  screen pixels (a logical pixel is 1.25 or 1.5 of them) was blurred by half a pixel: the queue icon's lines at
+  150 % read `32 81 81 32` instead of the `63 100 63` of the drawing. The icons drawn at their size are now copied
+  pixel for pixel wherever they sit (no filtering when the size divides into whole screen pixels), without moving
+  them; 100, 175 and 200 % unchanged. The Settings sidebar icons and the crop panel's link icon were measured
+  against Figma at 100 %: the same amount of ink (not heavier).
+- **Cast panel: the arrows no longer stop at *Show the video here too*.** Down from it goes round to the first
+  row, Up goes back up the list; opened from the keyboard, the panel puts the keyboard on its first row.
 - **Live TV on a DLNA TV: one stream per channel, with its picture and its sound.** A channel restarting its
   picture a few seconds in (after an advert, or the adaptive stream changing its format) made a second stream,
   which the TV loaded again; now the new picture goes on in the same stream. A cast started on a channel already

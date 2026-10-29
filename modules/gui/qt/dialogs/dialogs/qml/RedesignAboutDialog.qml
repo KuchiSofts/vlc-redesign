@@ -169,6 +169,7 @@ T.Popup {
                     Layout.preferredHeight: VLCStyle.dp(64, VLCStyle.scale)
                     source: "qrc:///redesign/welcome.svg"
                     sourceSize: Qt.size(width, height)
+                    smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                     fillMode: Image.PreserveAspectFit
                     Accessible.ignored: true
                 }

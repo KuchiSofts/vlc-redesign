@@ -180,6 +180,7 @@ ColumnLayout {
                 height: width
                 sourceSize: Qt.size(width, height)
                 source: "qrc:///redesign/icons/chevron-down/default.svg"
+                smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                 color: root.c("#8F8F8F", "#2e2e2e")
                 rotation: list.visible ? 180 : 0
             }
@@ -316,6 +317,7 @@ ColumnLayout {
                             Impl.ColorImage {
                                 // drawn at the size shown (an SVG: sharp at any scale and zoom)
                                 sourceSize: Qt.size(width, height)
+                                smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                                 visible: row.kind === "new"
                                 anchors.left: parent.left
                                 anchors.leftMargin: root.px(14)
@@ -329,6 +331,7 @@ ColumnLayout {
                             Impl.ColorImage {
                                 // drawn at the size shown (an SVG: sharp at any scale and zoom)
                                 sourceSize: Qt.size(width, height)
+                                smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                                 visible: row.chosen
                                 anchors.right: parent.right
                                 anchors.rightMargin: root.px(14)

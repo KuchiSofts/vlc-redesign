@@ -179,6 +179,7 @@ protected:
     bool eventFilter(QObject *watched, QEvent *event) override;
 
 private:
+    void showSimpleOpenAndAppend( bool start );
     DialogsProvider( qt_intf_t * );
     virtual ~DialogsProvider() override;
 

@@ -69,6 +69,8 @@
 #include <QRegularExpression>
 
 #include <cassert>
+#include <clocale>
+#include <cstring>
 #include <math.h>
 #ifdef _WIN32
 #include <wrl/client.h>
@@ -1465,6 +1467,17 @@ static QString languageFile()
 // asks for it, as on Windows), else English
 static QString systemInterfaceLanguage()
 {
+    // Texts come translated only when the C library took the system's
+    // locale: LANG naming a locale that was never generated (he_IL.UTF-8 on
+    // a system without it) leaves the messages in "C", and gettext then
+    // ignores the language VLC asks for. Qt reads LANG alone: Hebrew would
+    // have mirrored the layout around English texts
+#ifdef __GLIBC__
+    const char *messages = setlocale( LC_MESSAGES, nullptr );
+    if( messages == nullptr || !strcmp( messages, "C" ) || !strcmp( messages, "POSIX" )
+     || !strncmp( messages, "C.", 2 ) )
+        return QStringLiteral( "en" );
+#endif
     const QString name = QLocale::system().name(); // "he_IL", "pt_BR", "C"
     const QString base = name.section( QLatin1Char( '_' ), 0, 0 );
     QString found;

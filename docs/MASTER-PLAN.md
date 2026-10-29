@@ -1153,6 +1153,27 @@ All classic windows go through one hook, `redesign_widget_theme.cpp`, applied fr
   subtitles, pause, play, seek, another subtitle, subtitles off: the device stayed PLAYING through the subtitle
   change, no reload, no error); the living-room Android TV (Mi TV) was off; no LG or Sony on this network: through
   device reports
+- 🟢 **Casting final pass (2026-10-29, `feature/cast-final`, fakes)**: a live TV channel (Pluto TV, HLS) cast to a
+  Chromecast crashed VLC at its end (zapping, stop, quit): `DEMUX_GET_LENGTH` without its live argument
+  (`52ce2e82fc`); zapping while casting now works, and a stream restarting its picture reloads the TV once
+  (`1880587aa0`); quitting while casting took 16.5 s and left the TV playing: 2 s, the TV stopped (same commit);
+  the cast list searches as long as it is open, hidden devices stay hidden under both names, no search by itself
+  with *Discover cast devices* off, the casting screen on the window background with the file name, the subtitles
+  button kept while casting (`59935ee51d`). Checked with the fakes: start, pause, resume, seek, volume, back here,
+  a playlist to its end (both films to their last picture), quit; DLNA errors 716 (*couldn't read*), the TV
+  stopping by itself (*stopped playing*), with *Try again* / *Play here*.
+- 🟢 Memory over 20 cast / back rounds (fake Chromecast, 70-min film, hidden desktop): private 286 → 290 MB,
+  threads 242–246, handles 1,510–1,530, the time going on each way; a Hebrew subtitle file burnt into the cast in
+  the right order (fake Chromecast's stream checked), VLC 1.2 cores while converting 1080p with subtitles; the
+  panel and the casting card in light, Hebrew (dark) and zoom 1.5 and 2.
+- 🟡 DLNA and live channels (fake TV, Pluto TV): no crash, zapping works, but a channel's picture restarting just
+  after it starts makes the TV get a new stream 3–5 s after the first (two `SetAVTransportURI` per channel), and a
+  cast started on a channel already playing went out with the sound only. The DLNA output needs the Chromecast's
+  hold-again (`1880587aa0`): not done, no build was possible (Docker stopped for the disk clean-up).
+- ⬜ the owner's test TV not re-checked on this branch: the test copy (`qapp`) has no firewall rule, and casting would
+  have shown the owner Windows' administrator prompt. Last real-TV check: build 193.
+- 🟡 A TV that keeps its connection but stops answering (the fake's *off* mode) is noticed only after libupnp's
+  30 s timeouts (twice), and a quit then waits for the call in flight: a limit of libupnp's blocking SOAP calls.
 - 🟢 A *TV compatibility* wiki page fed by the reports (docs/wiki/TV-Compatibility.md, and the issue form
   `.github/ISSUE_TEMPLATE/tv_report.yml` it links to)
 
@@ -1341,6 +1362,36 @@ phone and TV layouts need frames of their own (decision 6).
 - 🔴 Design tokens from the hub; the player: control bar, seek previews, volume, gestures
 - 🔴 Library, queue, playlists, settings; themes; 9 accents
 - 🔴 Casting with the desktop's fixes; subtitles
+  - Reviewed 2026-10-29 (code only, no phone): the app builds against libvlc 3.7.7, so the desktop's
+    `renderer-*` variables do not exist there. To fix in the phone session, by priority:
+    1. **High**: stopping a cast never brings the video back to the phone (`PlaybackService.setRenderer()` tests
+       `wasOnRenderer && !hasRenderer()` before `setRenderer(item)`: always false).
+    2. **High**: no message when a cast fails (device off, unreachable, format refused): only the generic
+       *Invalid location* path. A cast state (connecting / playing / failed + why) with *Try again* / *Play here*.
+    3. **High**: the same TV found by two discoveries is listed twice (`RendererItem.equals` compares the native
+       object): de-duplicate by name and type in `RendererDelegate`.
+    4. **High**: discovery runs for the whole process while the network is up, in the background too, and `stop()`
+       never `release()`s the discoverers (a leak per network change): scan only while a picker or the player
+       shows, release on stop.
+    5. **Medium**: the device playing can vanish unnoticed (`ItemDeleted`, network loss) with no message.
+    6. **Medium**: the cast button is hidden until a device is found; no scanning state, no empty state.
+    7. **Medium**: no *Sound only*: `RendererItem.flags` has no getter (add `canVideo()`), DLNA TVs get the
+       "unknown" icon.
+    8. **Medium**: picker rows: highlight not reset on recycled rows, `renderers[position]` vs `dataset` size, only
+       the name clickable, *Connected* shown before any connection, one device casts at once with no picker.
+    9. **Medium** (to check on the phone): `:no-sout-chromecast-video` is added to every media in
+       `PlaylistManager`, whatever the *Audio only* setting.
+    10. **Medium**: passthrough default `false` for the instance, `true` for the media; VLC 4 builds skip the
+        casting options.
+    11. **Medium**: the casting screen (`player_remote_control.xml`) shows a cone only: no device name, no *Stop
+        casting*; volume keys change the phone's volume, not the TV's.
+    12. **Low**: subtitles blocked while casting (the Chromecast output can burn them in); hard-coded
+        *Disabled* / *Enabled* and a debug toast; left/right instead of start/end in the cast layouts;
+        `colorPrimary` instead of the accent; a fixed `minWidth="384dp"` dialog.
+  - UI parity: none yet. The phone has the old *Displays* dialog (names, a Chromecast or unknown icon, a
+    *Disconnect* button); the desktop panel (*Cast to*, scanning dot, *This computer* row, TV / music icons,
+    *Sound only*, check mark, *Connecting…*, hide device, empty states, the casting card with *Stop casting*,
+    *Try again*, *Play here*) is to be built as a redesign bottom sheet with the desktop's English texts.
 - 🔴 Android TV / Google TV layout (remote control)
 - 🔴 APK and AAB on GitHub, then F-Droid; Google Play only after decision 4
 

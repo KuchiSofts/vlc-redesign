@@ -7,6 +7,9 @@
 #   vlc-redesign_X.Y.Z_DEBARCH.deb, vlc-redesign-X.Y.Z-1.ARCH.rpm: VLC in
 #       /opt/vlc-redesign and the command vlc-redesign, so nothing of the
 #       distribution's vlc package is replaced and both can be installed
+#   vlc-redesign-livetv_X.Y.Z_DEBARCH.deb, vlc-redesign-livetv-X.Y.Z-1.ARCH.rpm:
+#       the Live TV add-on (its plugin), recommended by the main package and
+#       removable on its own, like the installer's component on Windows
 #   vlc-redesign-X.Y.Z-linux-ARCH.tar.xz: the bundle itself
 #   flatpak/org.kuchisofts.VLCRedesign.yml: a Flatpak manifest (KDE 6.8
 #       runtime) with its desktop entry, metainfo and icon, written only:
@@ -161,6 +164,10 @@ debpkg() {
         libva-x11.so.2) echo libva-x11-2 ;;
         libva-wayland.so.2) echo libva-wayland2 ;;
         libvdpau.so.1) echo libvdpau1 ;;
+        libwayland-client.so.0) echo libwayland-client0 ;;
+        libwayland-cursor.so.0) echo libwayland-cursor0 ;;
+        libwayland-egl.so.1) echo libwayland-egl1 ;;
+        libwayland-server.so.0) echo libwayland-server0 ;;
         libudev.so.1) echo libudev1 ;;
         libsystemd.so.0) echo libsystemd0 ;;
         *) return 1 ;;
@@ -187,6 +194,13 @@ while read -r so; do
     echo "$so()(64bit)" >> "$stage/rpm-depends"
 done < "$stage/system"
 echo "libc.so.6($glibc)(64bit)" >> "$stage/rpm-depends"
+# the certificates of the system: without them every HTTPS access (the TV
+# catalog, updates, subtitle search) asks about an "insecure site"
+echo ca-certificates >> "$stage/deb-depends"
+echo ca-certificates >> "$stage/rpm-depends"
+# the icon folders (/usr/share/icons/hicolor/*/apps) belong to it on Fedora:
+# without it, removing VLC left them behind, unowned
+echo hicolor-icon-theme >> "$stage/rpm-depends"
 [ -n "$glibcxx" ] && grep -qx 'libstdc++.so.6' "$stage/system" \
     && echo "libstdc++.so.6($glibcxx)(64bit)" >> "$stage/rpm-depends"
 sort -u -o "$stage/deb-depends" "$stage/deb-depends"
@@ -323,9 +337,13 @@ EOF
     echo '  deb:'
     echo '    depends:'
     list "$stage/deb-depends"
+    echo '    recommends:'
+    echo '      - "vlc-redesign-livetv"'
     echo '  rpm:'
     echo '    depends:'
     list "$stage/rpm-depends"
+    echo '    recommends:'
+    echo '      - "vlc-redesign-livetv"'
     cat <<EOF
 deb:
   compression: xz
@@ -335,11 +353,60 @@ rpm:
   compression: xz
 EOF
 } > "$stage/nfpm.yaml"
+# Live TV is an add-on of its own, as in the Windows installer (a component
+# that can be left out): its plugin in the package vlc-redesign-livetv, which
+# the main package recommends (installed by default by apt and dnf, removable
+# alone). Without the plugin VLC has no TV page, button or settings.
+livetv_plugin=libiptv_plugin.so
+{
+    cat <<EOF
+name: vlc-redesign-livetv
+arch: $deb_arch
+platform: linux
+version: $version
+release: 1
+section: video
+priority: optional
+maintainer: $maintainer
+vendor: KuchiSofts
+homepage: $homepage
+license: GPL-2.0-or-later
+description: |-
+  Live TV (IPTV) add-on of VLC Redesign
+  The channels and the programme guide of your own TV playlist (M3U, Xtream
+  Codes, XMLTV) in VLC Redesign: the TV page, the guide and the channel
+  banner. Remove this package to use VLC Redesign without Live TV.
+depends:
+  - vlc-redesign (= $version-1)
+contents:
+  - src: $stage/livetv/$livetv_plugin
+    dst: /opt/vlc-redesign/lib/vlc/plugins/misc/$livetv_plugin
+    file_info:
+      mode: 0755
+deb:
+  compression: xz
+rpm:
+  summary: Live TV (IPTV) add-on of VLC Redesign
+  group: Applications/Multimedia
+  compression: xz
+EOF
+} > "$stage/nfpm-livetv.yaml"
+mkdir -p "$stage/livetv"
+[ -f "$b/lib/vlc/plugins/misc/$livetv_plugin" ] \
+    || { echo "no Live TV plugin in the bundle (lib/vlc/plugins/misc/$livetv_plugin)" >&2; exit 1; }
+mv "$b/lib/vlc/plugins/misc/$livetv_plugin" "$stage/livetv/"
 deb="$out/vlc-redesign_${version}_$deb_arch.deb"
 rpm="$out/vlc-redesign-$version-1.$arch.rpm"
-rm -f "$deb" "$rpm"
+deb_tv="$out/vlc-redesign-livetv_${version}_$deb_arch.deb"
+rpm_tv="$out/vlc-redesign-livetv-$version-1.$arch.rpm"
+rm -f "$deb" "$rpm" "$deb_tv" "$rpm_tv"
 "$nfpm" package --config "$stage/nfpm.yaml" --packager deb --target "$deb"
 "$nfpm" package --config "$stage/nfpm.yaml" --packager rpm --target "$rpm"
+"$nfpm" package --config "$stage/nfpm-livetv.yaml" --packager deb --target "$deb_tv"
+"$nfpm" package --config "$stage/nfpm-livetv.yaml" --packager rpm --target "$rpm_tv"
+# (the AppImage, the tarball and the Flatpak are one file each: there Live TV
+# is turned off in Settings)
+mv "$stage/livetv/$livetv_plugin" "$b/lib/vlc/plugins/misc/"
 
 # --- AppImage ---------------------------------------------------------------
 app="$stage/AppDir"
@@ -491,7 +558,8 @@ modules:
 EOF
 
 # --- checksums --------------------------------------------------------------
-(cd "$out" && sha256sum "$appimage" "$appimage.zsync" "$(basename "$deb")" "$(basename "$rpm")" "$tarball" \
+(cd "$out" && sha256sum "$appimage" "$appimage.zsync" "$(basename "$deb")" "$(basename "$rpm")" \
+    "$(basename "$deb_tv")" "$(basename "$rpm_tv")" "$tarball" \
     > "SHA256SUMS-linux-$arch.txt")
 rm -rf "$stage"
 ls -l "$out"

@@ -1,0 +1,87 @@
+# The UI tour of linux-pkg-test.sh on Xvfb (1280x800, no window manager: the
+# main window opens at 128,80, 1024x640). Commands: launch [VAR=VALUE...]
+# (VLC, LANG=en_US.UTF-8 unless given), click X Y, key KEYS, type TEXT,
+# sleep S, shot NAME, border (the frame's pixels in the last capture),
+# quit (Ctrl+Q, VLC must end within 20 s).
+
+# --- English, a new profile: the onboarding, light theme (the system's) ---
+launch
+sleep 14
+shot onboarding
+click 991 648
+sleep 2
+shot onboarding-theme
+click 991 648
+sleep 2
+click 991 648
+sleep 2
+# no online subtitle search: the Hebrew file next to the clip is its subtitle
+click 380 398
+sleep 1
+shot onboarding-online
+click 991 648
+sleep 2
+click 990 648
+sleep 3
+shot home-light
+border
+key ctrl+p
+sleep 3
+shot settings-light
+border
+click 845 320
+sleep 2
+shot settings-dark
+key Escape
+sleep 1
+key shift+F1
+sleep 2
+shot about
+key Escape
+sleep 1
+# Live TV: Pluto TV (Argentina) from the catalog, a channel played
+click 199 340
+sleep 3
+shot tv-empty
+click 805 566
+sleep 4
+click 290 244
+type Pluto
+sleep 3
+shot tv-catalog
+click 1048 443
+sleep 15
+click 221 660
+sleep 8
+shot tv-channels
+click 463 396
+sleep 20
+shot tv-playing
+# the clip with its Hebrew subtitle (cues at 1-3.5 s and 4-6.5 s)
+click 800 100
+key ctrl+o
+sleep 3
+type zq7731.mp4
+key Return
+sleep 2.3
+shot subtitle-1
+sleep 3
+shot subtitle-2
+quit
+
+# --- Hebrew (the system's language): right to left, dark ---
+launch LANG=he_IL.UTF-8
+sleep 12
+shot he-home
+border
+key ctrl+p
+sleep 3
+shot he-settings
+key Escape
+sleep 1
+key shift+F1
+sleep 2
+shot he-about
+key Escape
+sleep 1
+quit

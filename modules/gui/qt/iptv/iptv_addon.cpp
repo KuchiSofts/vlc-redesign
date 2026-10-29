@@ -1245,7 +1245,15 @@ QQuickImageResponse* IptvLogoProvider::requestImageResponse(const QString& id, c
                 reader.setScaledSize(size.scaled(requestedSize, Qt::KeepAspectRatio));
             image = reader.read();
         }
-        response->finish(image, image.isNull() ? QStringLiteral("no logo") : QString());
+        // A channel without a logo (or one that can't be fetched) is no
+        // error: an empty pixel, and TvLogo shows the initials (an error
+        // string put a warning in the log for every such channel)
+        if (image.isNull())
+        {
+            image = QImage(1, 1, QImage::Format_ARGB32_Premultiplied);
+            image.fill(Qt::transparent);
+        }
+        response->finish(image, QString());
     });
     return response;
 }

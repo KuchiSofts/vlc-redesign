@@ -64,6 +64,13 @@ a border on every window, sharp icons at every scale, and signed updates.
   ASS/SSA, MicroDVD, SubViewer/SBV, SAMI and VobSub (`.idx`) files are read once, in the background, and kept for
   the next time. Subtitles inside the video file and streams that cannot seek have no marks. Settings, Subtitles,
   Timing: *Show subtitle lines on the seek bar* (`qt-seek-subtitle-cues`, on by default, applies at once).
+- **Linux (x86_64).** VLC Redesign as a .deb (Ubuntu 24.04 and later, Debian 13), an .rpm (Fedora), an AppImage
+  (any distribution with glibc 2.38 or later, Arch among them), a Flatpak (KDE 6.8 runtime) and a folder to run
+  from. The .deb and .rpm install next to the distribution's own `vlc` (`/opt/vlc-redesign`, the command
+  `vlc-redesign`, the menu entry *VLC Redesign*) and replace nothing of it. Live TV is the package
+  `vlc-redesign-livetv`, installed by default and removable alone, as the installer's component on Windows; in
+  the AppImage, the Flatpak and the folder it is turned off in Settings. Older systems are refused with a clear
+  message. See [Platforms](https://github.com/KuchiSofts/vlc-redesign/wiki/Platforms).
 
 ### Changed
 
@@ -301,6 +308,16 @@ a border on every window, sharp icons at every scale, and signed updates.
   An AV1 file no longer makes VLC quit on Ubuntu 24.04 with a recent Intel GPU: VA-API decoding of AV1 crashed
   inside FFmpeg 6, so dav1d decodes AV1 there. On Wayland with Intel or AMD graphics the video was drawn from
   the left with no black bars, the desktop showing through beside it; it is now centred over black.
+  The packages: on Debian 13 (and any distribution with a newer Wayland) VLC quit at start on Wayland, as it
+  brought Ubuntu 24.04's Wayland libraries, older than the ones the system's graphics driver needs; it now uses
+  the system's. On a minimal install without the VDPAU library nothing played; it comes with VLC now. Removing the
+  .rpm on Fedora no longer leaves empty icon folders behind. A TV channel without a logo no longer puts a warning
+  in the log. On Wayland with Weston 14 or later (Debian 13, Ubuntu 26.04, Fedora 41 and 43, Arch) VLC hung at
+  the end of every video, waiting for a picture the compositor never gave back; it now closes at once. The
+  Flatpak checked all its plugins again at every start (its plugin list was out of date); no longer. The
+  packages bring the system's certificates (on a minimal install every HTTPS access, the TV catalog among them,
+  asked about an insecure site), and on Ubuntu 22.04 or Debian 12 the AppImage and the folder say that they need
+  glibc 2.38 instead of failing with the loader's error.
 - **Smaller fixes:** idle HTTP stream clients time out (DLNA streams excepted), stopping a stalled network stream no
   longer hangs, the VU meter reads the whole signal, Lua scripts saved with a BOM load, a TS stream's clock no
   longer jumps when a track is removed, and more (the full list: the review report).
@@ -531,6 +548,16 @@ a border on every window, sharp icons at every scale, and signed updates.
   packages on a clean runner: the .deb installed with apt next to the distribution's VLC, the AppImage, and the
   .rpm in Fedora 44, each printing its version and playing a clip to its end without a window or sound.
 - Merged VLC master up to `12023233ef` (2026-10-29), 123 commits ([#8](https://github.com/KuchiSofts/vlc-redesign/issues/8)):
+- **Linux packages, 0.4.0.** Live TV is its own package (`vlc-redesign-livetv`, .deb and .rpm, recommended by the
+  main one); the packages depend on ca-certificates (and hicolor-icon-theme on Fedora) and take libwayland from
+  the system; the launcher of the folder and the AppImage checks glibc (2.38) first. `linux-flatpak.sh` makes the
+  Flatpak as one file from the same tarball (KDE 6.8 runtime, its plugin cache made with OSTree's file times).
+  `linux-pkg-test.sh` installs a package in a clean container, checks its files and libraries, runs a UI tour
+  under Xvfb (`linux-pkg-tour.txt`: onboarding, themes, About, Live TV with Pluto TV, a Hebrew subtitle, Hebrew
+  right to left), plays a clip on headless Weston, removes Live TV alone, uninstalls and lists what was left;
+  every package passed it on Ubuntu 24.04 and 26.04, Debian 13, Fedora 41 and 43, Arch (AppImage) and the
+  Flatpak, and apt refuses the .deb on Ubuntu 22.04 and Debian 12 ([the table](docs/qa/0.4.0-ui-audit.md)).
+- Merged VLC master up to `6836ae77ae` (2026-10-27), 110 commits ([#8](https://github.com/KuchiSofts/vlc-redesign/issues/8)):
   upstream's own fix for stopping the Windows audio output under its lock, the playlist recovery question shown
   without blocking, the picture-in-picture player aligned to the screen's pixels, a placeholder for a bar control
   that fails to load, mpg123 1.33.7 in the contribs, and the rest of upstream's work.

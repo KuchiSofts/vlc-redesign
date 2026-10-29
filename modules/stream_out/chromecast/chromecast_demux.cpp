@@ -109,7 +109,12 @@ struct demux_cc
 
         if (demux_Control( p_demux->s, DEMUX_CAN_SEEK, &m_can_seek ) != VLC_SUCCESS)
             m_can_seek = false;
-        if (demux_Control( p_demux->s, DEMUX_GET_LENGTH, &m_length ) != VLC_SUCCESS)
+        /* (the live state too: the adaptive demux writes it whether asked
+         * or not, and it went into whatever came next, the demux filter
+         * itself; it crashed when the input ended, a channel changed or the
+         * cast of a live stream stopped) */
+        bool b_live = false;
+        if (demux_Control( p_demux->s, DEMUX_GET_LENGTH, &m_length, &b_live ) != VLC_SUCCESS)
             m_length = -1;
         p_renderer->pf_set_input_length( p_renderer->p_opaque, m_length );
 

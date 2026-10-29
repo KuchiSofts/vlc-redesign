@@ -55,6 +55,16 @@ cd /build/vlc
 
 strip_package() {
     [ "${STRIP:-}" = 1 ] || return 0
+    # SYMBOLS=<dir>: first keep the function addresses of each binary there
+    # (<path>.map: sorted, demangled), so that the offsets in a crash dump of
+    # the stripped package can still be named
+    if [ -n "${SYMBOLS:-}" ]; then
+        (cd /build/package && find . -type f \( -name '*.dll' -o -name '*.exe' \)) | while read -r f; do
+            mkdir -p "$SYMBOLS/$(dirname "$f")"
+            $triplet-nm -C -n --defined-only "/build/package/$f" 2>/dev/null \
+                | grep -E '^[0-9a-f]+ [Tt] ' > "$SYMBOLS/$f.map" || true
+        done
+    fi
     find /build/package -type f \( -name '*.dll' -o -name '*.exe' \)         -exec $triplet-strip --strip-unneeded {} +
 }
 

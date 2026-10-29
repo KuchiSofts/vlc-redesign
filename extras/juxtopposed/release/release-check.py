@@ -146,6 +146,16 @@ t_text = git('log', '-1', '--format=%ct', '-G', r'qsTr\(|qtr\(|_\("|N_\("', '--'
 t_pot = git('log', '-1', '--format=%ct', '--', 'po/vlc.pot')
 check(t_text and t_pot and int(t_pot) >= int(t_text), 'Translations: po/vlc.pot has every new text',
       'texts changed after the last po/vlc.pot: potgen, msgmerge, translate, weblate-sync.py export')
+# a file of the redesign with texts that po/POTFILES.in does not list never
+# reaches vlc.pot: its texts stay English in every language
+listed = set(l.strip() for l in read('po/POTFILES.in').splitlines() if l.strip() and not l.startswith('#'))
+ours = set((git('diff', '--name-only', '%s...HEAD' % UPSTREAM) or '').split())
+with_texts = set((git('grep', '-l', '-E', r'qsTr\(|qtr\(|\bN?_\("|NC_\(', '--',
+                      'modules/gui/qt/*.cpp', 'modules/gui/qt/*.hpp', 'modules/gui/qt/*.qml',
+                      'modules/misc/iptv/*.cpp') or '').split())
+unlisted = sorted(f for f in with_texts & ours - listed if '/test' not in f)
+check(not unlisted, 'Translations: po/POTFILES.in lists every file of the redesign with texts',
+      'add to po/POTFILES.in: ' + ', '.join(unlisted[:8]) + (' ...' if len(unlisted) > 8 else ''))
 
 # --- VideoLAN -----------------------------------------------------------------------
 if not offline:
@@ -189,7 +199,7 @@ for path in ('modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml', 'READ
 android = os.path.join(os.path.dirname(os.path.dirname(ROOT)), 'vlc-android-redesign')
 if os.path.isdir(android):
     # a text the app shows (strings.xml), not a comment in the code
-    found = subprocess.run(['git', '-C', android, 'grep', '-l', 'Juxtopposed', '--', 'application/**/strings*.xml'],
+    found = subprocess.run(['git', '-C', android, 'grep', '-l', 'Juxtopposed', '--', 'application/*strings*.xml'],
                            capture_output=True, text=True).stdout.strip()
     check(found, 'Designer credited: the Android app', 'Juxtopposed is not named in the Android app')
 if release:

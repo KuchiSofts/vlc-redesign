@@ -203,8 +203,7 @@ Widgets.PageExt {
                 width: parent.width
                 horizontalAlignment: Text.AlignHCenter
                 wrapMode: Text.WordWrap
-                text: qsTr("Add the playlist link of your TV provider (M3U) or its Xtream Codes login, "
-                           + "or a free channel list of the catalog. Its programme guide comes with it.")
+                text: qsTr("Add the playlist link of your TV provider (M3U) or its Xtream Codes login, or a free channel list of the catalog. Its programme guide comes with it.")
                 color: root.c("#6B6B6B", "#4d4d4d")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: root.px(14)

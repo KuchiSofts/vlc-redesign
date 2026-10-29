@@ -132,6 +132,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Fixed
 
+- Windows: VLC no longer crashes while it quits with the mouse resting over its window (the window's title-bar
+  handling read the interface after it was gone; it ended with `0xC000041D` or a heap corruption).
 - **Icons sharp at 125, 150 and 200 %.** Every icon of the redesign was drawn for 100 % and stretched at a higher
   Windows scaling (the 1.5 px lines of the queue icon came out 76 % strong over four to six pixels at 200 %): Qt
   draws an image at the screen's density only when the name written in the interface ends in `.svg`, and the icons
@@ -290,6 +292,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Technical
 
+- CI: the launch test keeps a full crash dump, and the build keeps the symbol maps of the stripped binaries.
 - Merged VLC master up to `12023233ef` (2026-10-29), 4 commits: mpg123 1.33.7 in the contribs (and its FPU code on
   every ARM64), the Qt build's moc include folders (`static_dirs.py`) and a missing medialibrary header in
   `Makefile.am`. Nothing of the redesign needed a change; built and tested again (tours, subtitles, Live TV).

@@ -79,7 +79,7 @@ exec "$here/bin/vlc" "$@"
 EOF
 sed -i "s/@GLIBC@/$glibc/" "$root/vlc"
 chmod +x "$root/vlc"
-"$root/lib/vlc/vlc-cache-gen" "$root/lib/vlc/plugins" 2>/dev/null || true
+"$root/libexec/vlc/vlc-cache-gen" "$root/lib/vlc/plugins"
 
 tar -C /tmp/bundle -cJf "$out/vlc-redesign-linux-$arch.tar.xz" vlc-redesign
 du -sh "$root" "$out/vlc-redesign-linux-$arch.tar.xz"

@@ -308,6 +308,8 @@ a border on every window, sharp icons at every scale, and signed updates.
 ### Technical
 
 - CI: the launch test keeps a full crash dump, and the build keeps the symbol maps of the stripped binaries.
+- `win64-docker.ps1 -Quick` after a new prebuilt contrib archive: the contribs were removed and not unpacked again, so
+  configure stopped without Lua; such a run is now a full one.
 - Merged VLC master up to `9f393e5719` (2026-10-29), 6 more commits: HDR static metadata through the Windows swap
   chain and the VideoToolbox decoder, and the end of a legacy MinGW check in `d3d11_surface` (its `CAN_PROCESSOR`
   switch is gone: the processor scaler and the release of its output view now always build).

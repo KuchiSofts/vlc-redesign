@@ -138,8 +138,10 @@ check_package() {
 }
 
 # QUICK=1: the tree is configured already, only rebuild what changed. A full
-# build.sh run bootstraps and configures again, which takes minutes.
-if [ "${QUICK:-}" = 1 ] && [ -f $builddir/Makefile ]; then
+# build.sh run bootstraps and configures again, which takes minutes. A new
+# contrib archive removed the contribs above: only a full run unpacks them
+# (a quick one went on without them and configure found no Lua).
+if [ "${QUICK:-}" = 1 ] && [ -f $builddir/Makefile ] && [ -d $prefix/include ]; then
     export PATH="/build/vlc/extras/tools/build/bin:$PATH"
     upnp_from_source || true
     make -C $builddir -j"$jobs"

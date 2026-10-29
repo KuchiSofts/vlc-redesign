@@ -70,16 +70,24 @@ T.Pane {
     readonly property real _rowPadding: (VLCStyle.redesign.controlHeight - VLCStyle.redesign.playHeight) / 2
 
 
-    // Figma "Player - customize": a line above each row while customizing
-    Repeater {
-        model: (VLCStyle.customizing && !root.inlineTimeline) ? 2 : 0
-        delegate: Rectangle {
-            required property int index
-            parent: root.background
-            y: index * root._rowHeight
-            width: parent ? parent.width : 0
-            height: VLCStyle.dp(1, VLCStyle.scale)
-            color: VLCStyle.redesign.color(index === 0 ? VLCStyle.redesign.separator : "#212121", "#9c9c9b")
+    // Figma "Player - customize": a line above each row while customizing.
+    // The Repeater sits in the background itself: a delegate moved there
+    // by its own parent binding was no longer the sibling of the next one
+    // ("QQuickItem::stackAfter: Cannot stack ... which must be a sibling",
+    // Customize Player at zoom 1.5 and 2, where the timeline has a row)
+    Item {
+        parent: root.background
+        width: parent ? parent.width : 0
+
+        Repeater {
+            model: (VLCStyle.customizing && !root.inlineTimeline) ? 2 : 0
+            delegate: Rectangle {
+                required property int index
+                y: index * root._rowHeight
+                width: parent ? parent.width : 0
+                height: VLCStyle.dp(1, VLCStyle.scale)
+                color: VLCStyle.redesign.color(index === 0 ? VLCStyle.redesign.separator : "#212121", "#9c9c9b")
+            }
         }
     }
 

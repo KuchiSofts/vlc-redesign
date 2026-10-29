@@ -60,6 +60,19 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Changed
 
+- **A button shows when what it opens is open** (suggested in [#10](https://github.com/KuchiSofts/vlc-redesign/issues/10)).
+  Settings, Languages and tracks, Chapters, Bookmarks, Programs, Cast, HDR, Effects, Zoom, the ⋯ menu, the top
+  bar's menu and library buttons and Live TV's channel list light up while their panel, popup or menu shows: the
+  accent icon on a tint of the accent, with no border, the same look as a toggle that is on (the small line under
+  toggles is gone). On Android the player's buttons and toggles do the same.
+- **Ctrl+wheel over the video changes the subtitle size** (suggested in [#10](https://github.com/KuchiSofts/vlc-redesign/issues/10)),
+  as in classic VLC, instead of zooming the whole interface. It goes by 10 % near 100 %, then by 25 %, from 25 % to
+  500 %, and a short *Subtitle size 120%* message shows it; Ctrl+0 goes back to 100 %. Elsewhere in the window
+  Ctrl+wheel still zooms the interface. Both are shortcuts in Settings, Keyboard Shortcuts (*Scale up/down subtitles
+  text*, and the new *Zoom the interface in/out* in the Interface group), which can now take a turn of the wheel
+  with Ctrl, Alt or Shift. The size stepper of the subtitles panel uses the same steps, and ASS/SSA subtitles now
+  follow the size while they play. On Android: Ctrl + mouse wheel over the video, Ctrl+0, and a *Subtitle size*
+  slider with Reset in the subtitles tab (ASS/SSA keep their size there).
 - **Every window and popup has a border like the main window.** Dialogs (Restore the play queue, confirmations,
   Go to Time, Media Statistics, Plugins, Folder information, What's new, Settings, Keyboard Shortcuts, the welcome),
   menus, the panels that open from the player's buttons (tracks and subtitles, the queue card, cast, sleep timer,

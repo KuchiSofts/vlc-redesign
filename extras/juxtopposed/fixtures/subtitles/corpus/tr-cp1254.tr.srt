@@ -1,0 +1,8 @@
+1
+00:00:01,000 --> 00:00:03,500
+Iðdýr'da þöyle bir ýlýk rüzgâr esti; çok güzel, Ýstanbul!
+
+2
+00:00:04,000 --> 00:00:06,500
+Pijamalý hasta yaðýz þoföre çabucak güvendi.
+

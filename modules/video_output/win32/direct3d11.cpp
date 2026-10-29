@@ -1748,7 +1748,13 @@ static int Direct3D11CreateGenericResources(vout_display_t *vd)
             msg_Err(vd, "Failed to create the SPU pixel shader. (hr=0x%lX)", hr);
             return VLC_EGENERIC;
         }
-        hr = D3D11_SetQuadPixelShader(VLC_OBJECT(vd), sys->d3d_dev, true,
+        /* Bilinear sampling for the subpicture regions: text regions are
+         * rendered at the display size and drawn 1:1 (pixel centers match,
+         * so it changes nothing), bitmap subtitles (DVD, Blu-ray, DVB) are
+         * scaled to the video size and stay smooth instead of blocky. The
+         * regions must not depend on the video sampler, which is a point
+         * one with the point, processor and super resolution upscalers. */
+        hr = D3D11_SetQuadPixelShader(VLC_OBJECT(vd), sys->d3d_dev, false,
                                       &sys->regionQuad, pPSBlob);
         if (FAILED(hr))
         {
@@ -1981,6 +1987,10 @@ static int Direct3D11MapSubpicture(vout_display_t *vd, int *subpicture_region_co
                     d3dquad->d3dpixelShader[j] = sys->regionQuad.d3dpixelShader[j];
                 }
             }
+            /* without samplers of its own, the region would be drawn with
+             * the ones the video quad left bound */
+            for (size_t j=0; j<ARRAY_SIZE(sys->regionQuad.SamplerStates); j++)
+                d3dquad->SamplerStates[j] = sys->regionQuad.SamplerStates[j];
         }
 
         hr = sys->d3d_dev->d3dcontext->Map(quad->picSys.resource[KNOWN_DXGI_INDEX], 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);

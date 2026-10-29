@@ -159,7 +159,7 @@ vlc_modules += {
 # Subtitle demux
 vlc_modules += {
     'name' : 'subtitle',
-    'sources' : files('subtitle.c'),
+    'sources' : files('subtitle.c', '../codec/subs_charset.c'),
     'dependencies' : [m_lib],
     'plugin_dir' : 'demux',
 }

@@ -1,0 +1,8 @@
+<SAMI>
+<BODY>
+<SYNC Start=1000><P Class=XXCC>Привет! Как дела?<br>Это третья строка: "ёлка" и 42 рубля.
+<SYNC Start=3500><P Class=XXCC>&nbsp;
+<SYNC Start=4000><P Class=XXCC>Съешь же ещё этих мягких французских булок, да выпей чаю.
+<SYNC Start=6500><P Class=XXCC>&nbsp;
+</BODY>
+</SAMI>

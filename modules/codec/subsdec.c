@@ -38,6 +38,8 @@
 #include <vlc_plugin.h>
 #include <vlc_codec.h>
 #include <vlc_charset.h>
+
+#include "subs_charset.h"
 #include <vlc_xml.h>
 
 #include "substext.h"
@@ -204,6 +206,12 @@ typedef struct
 
     vlc_iconv_t         iconv_handle;            /* handle to iconv instance */
     bool                b_autodetect_utf8;
+
+    /* text that is not UTF-8 and of no encoding chosen by the user: its
+     * encoding is detected (codec/subs_charset.h), with the language of the
+     * track and the preferred subtitle languages as hints */
+    bool                b_detect;
+    char               *psz_langs[3];
 } decoder_sys_t;
 
 
@@ -256,6 +264,9 @@ static int OpenDecoder( vlc_object_t *p_this )
         encoding = p_dec->fmt_in->subs.psz_encoding;
         msg_Dbg (p_dec, "trying demuxer-specified character encoding: %s",
                  encoding);
+        /* the UTF-8 of a container (Matroska, MP4) is sometimes a legacy
+         * code page: detected when it is not valid UTF-8 */
+        p_sys->b_detect = !strcasecmp (encoding, "UTF-8");
     }
     else
     {
@@ -287,7 +298,8 @@ static int OpenDecoder( vlc_object_t *p_this )
            This MUST be a valid iconv character set. If unsure, please refer
            the VideoLAN translators mailing list. */
             encoding = vlc_pgettext("GetACP", "CP1252");
-            msg_Dbg (p_dec, "trying default character encoding: %s", encoding);
+            msg_Dbg (p_dec, "detecting the encoding of text that is not UTF-8");
+            p_sys->b_detect = true;
         }
 
         /* Check UTF-8 autodetection */
@@ -298,7 +310,28 @@ static int OpenDecoder( vlc_object_t *p_this )
         }
     }
 
-    if (strcasecmp (encoding, "UTF-8") && strcasecmp (encoding, "utf8"))
+    if (p_sys->b_detect)
+    {
+        size_t n = 0;
+        if (p_dec->fmt_in->psz_language)
+            p_sys->psz_langs[n++] = strdup (p_dec->fmt_in->psz_language);
+        char *pref = var_InheritString (p_dec, "sub-language");
+        if (pref != NULL)
+        {
+            char *save;
+            for (char *lang = strtok_r (pref, ",", &save);
+                 lang != NULL && n < ARRAY_SIZE(p_sys->psz_langs);
+                 lang = strtok_r (NULL, ",", &save))
+            {
+                while (*lang == ' ')
+                    lang++;
+                if (*lang && strcmp (lang, "any") && strcmp (lang, "none"))
+                    p_sys->psz_langs[n++] = strdup (lang);
+            }
+            free (pref);
+        }
+    }
+    else if (strcasecmp (encoding, "UTF-8") && strcasecmp (encoding, "utf8"))
     {
         p_sys->iconv_handle = vlc_iconv_open ("UTF-8", encoding);
         if (p_sys->iconv_handle == (vlc_iconv_t)(-1))
@@ -348,8 +381,37 @@ static void CloseDecoder( vlc_object_t *p_this )
 
     if( p_sys->iconv_handle != (vlc_iconv_t)-1 )
         vlc_iconv_close( p_sys->iconv_handle );
+    for( size_t i = 0; i < ARRAY_SIZE(p_sys->psz_langs); i++ )
+        free( p_sys->psz_langs[i] );
 
     free( p_sys );
+}
+
+/*****************************************************************************
+ * DecodeText: the text of a packet in UTF-8, its encoding detected
+ *****************************************************************************/
+static char *DecodeText( decoder_t *p_dec, const uint8_t *p_buf, size_t i_buf )
+{
+    decoder_sys_t *p_sys = p_dec->p_sys;
+
+    /* (a packet may end with its nul) */
+    while( i_buf > 0 && p_buf[i_buf - 1] == '\0' )
+        i_buf--;
+    char *psz = strndup( (const char *)p_buf, i_buf );
+    if( psz == NULL || IsUTF8( psz ) != NULL )
+        return psz;
+    free( psz );
+
+    const char *langs[ARRAY_SIZE(p_sys->psz_langs)];
+    size_t i_langs = 0;
+    for( size_t i = 0; i < ARRAY_SIZE(p_sys->psz_langs); i++ )
+        if( p_sys->psz_langs[i] != NULL )
+            langs[i_langs++] = p_sys->psz_langs[i];
+    subs_charset_t cs = subs_charset_Detect( p_buf, i_buf, langs, i_langs,
+                                             vlc_pgettext( "GetACP", "CP1252" ) );
+    msg_Dbg( p_dec, "text encoding: %s (detected)", cs.charset );
+    return subs_charset_ToUTF8( &p_buf[cs.bom_size], i_buf - cs.bom_size,
+                                cs.charset, NULL );
 }
 
 /*****************************************************************************
@@ -381,6 +443,13 @@ static subpicture_t *ParseText( decoder_t *p_dec, block_t *p_block )
 
     char *psz_subtitle = NULL;
 
+    if( p_sys->b_detect )
+    {
+        psz_subtitle = DecodeText( p_dec, p_block->p_buffer, p_block->i_buffer );
+        if( psz_subtitle == NULL )
+            return NULL;
+    }
+    else
     /* Should be resiliant against bad subtitles */
     if( p_sys->iconv_handle == (vlc_iconv_t)-1 ||
         p_sys->b_autodetect_utf8 )
@@ -392,7 +461,9 @@ static subpicture_t *ParseText( decoder_t *p_dec, block_t *p_block )
         psz_subtitle[p_block->i_buffer] = '\0';
     }
 
-    if( p_sys->iconv_handle == (vlc_iconv_t)-1 )
+    if( p_sys->b_detect )
+        ;
+    else if( p_sys->iconv_handle == (vlc_iconv_t)-1 )
     {
         if (EnsureUTF8( psz_subtitle ) == NULL)
         {

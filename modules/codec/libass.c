@@ -281,6 +281,19 @@ static int Create( vlc_object_t *p_this )
     ass_process_codec_private( p_track, p_dec->fmt_in->p_extra, p_dec->fmt_in->i_extra );
     OldEngineClunkyRollInfoPatch( p_dec, p_track );
 
+    /* Right-to-left text (Hebrew, Arabic, Persian...) in the order of the
+     * Unicode bidirectional algorithm, as the text renderer shows it: by
+     * default libass imitates VSFilter, whose base direction is always left
+     * to right (a Hebrew line showed its words in reverse order). Encoding
+     * -1 takes the base direction from the first strong letter of each
+     * line; left-to-right text is laid out as before. */
+#if LIBASS_VERSION >= 0x01700000
+    ass_track_set_feature( p_track, ASS_FEATURE_WHOLE_TEXT_LAYOUT, 1 );
+    ass_track_set_feature( p_track, ASS_FEATURE_BIDI_BRACKETS, 1 );
+#endif
+    for( int i = 0; i < p_track->n_styles; i++ )
+        p_track->styles[i].Encoding = -1;
+
     p_dec->fmt_out.i_codec = VLC_CODEC_RGBA;
 
     return VLC_SUCCESS;

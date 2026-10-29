@@ -1,0 +1,14 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1280
+PlayResY: 720
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Arial,48,&H00FFFFFF,&H000000FF,&H00000000,&H80000000,0,0,0,0,100,100,0,0,1,2,1,2,40,40,40,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:01.00,0:00:03.50,Default,,0,0,0,,مَرْحَبًا بِكُمْ فِي الفِيلْمِ!\Nكَيْفَ حَالُكَ اليَوْمَ؟
+Dialogue: 0,0:00:04.00,0:00:06.50,Default,,0,0,0,,هذه الجملة الثانية: 3 كتب و12 قلماً.
+Dialogue: 0,0:00:07.00,0:00:09.50,Default,,0,0,0,,شكراً جزيلاً، إلى اللقاء.

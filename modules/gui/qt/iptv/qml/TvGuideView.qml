@@ -51,6 +51,41 @@ FocusScope {
     readonly property int firstBlock: Math.max(0, Math.floor(timeX / (blockSecs * pxPerSec)) - 1)
     readonly property int lastBlock: Math.floor((timeX + gridWidth) / (blockSecs * pxPerSec)) + 1
 
+    // the programmes the rows ask for, gathered for a moment and asked at
+    // once: each row asked on its own, twenty trips through the add-on's
+    // threads (and as many JSON answers) for a screen scrolled
+    property var _asked: ({})
+    property bool _askQueued: false
+    function askProgrammes(key, from, to, done) {
+        const list = _asked[key] || (_asked[key] = [])
+        list.push({ from: from, to: to, done: done })
+        if (!_askQueued) {
+            _askQueued = true
+            Qt.callLater(_askNow)
+        }
+    }
+    function _askNow() {
+        _askQueued = false
+        const asked = _asked
+        _asked = ({})
+        const keys = Object.keys(asked)
+        if (keys.length === 0)
+            return
+        let from = Infinity, to = -Infinity
+        for (const key of keys)
+            for (const r of asked[key]) {
+                from = Math.min(from, r.from)
+                to = Math.max(to, r.to)
+            }
+        Iptv.programmes(keys, from, to, (result) => {
+            for (const key of keys) {
+                const list = result[key] || []
+                for (const r of asked[key])
+                    r.done(list.filter(p => p.stop > r.from && p.start < r.to))
+            }
+        })
+    }
+
     function scrollTo(time, animate) {
         const x = Math.max(0, Math.min(timeline.contentWidth - timeline.width, (time - origin) * pxPerSec))
         if (animate) {
@@ -228,7 +263,10 @@ FocusScope {
             // the programmes of the blocks asked, by start
             property var programmes: []
             property var _blocks: ({})
-            property var _shown: []
+            // the ones of the blocks in sight, as cells: changed at its ends
+            // only (a new list made every cell of every row again at each
+            // block the time crossed)
+            ListModel { id: shown }
 
             function load() {
                 const wanted = []
@@ -244,10 +282,9 @@ FocusScope {
                 for (const b of wanted)
                     _blocks[b] = true
                 const key = row.key
-                Iptv.programmes([key], from, to, (result) => {
+                root.askProgrammes(key, from, to, (list) => {
                     if (row.key !== key)
                         return
-                    const list = result[key] || []
                     const known = {}
                     for (const p of row.programmes)
                         known[p.start] = true
@@ -260,12 +297,41 @@ FocusScope {
             function refreshShown() {
                 const from = root.origin + root.firstBlock * root.blockSecs
                 const to = root.origin + (root.lastBlock + 1) * root.blockSecs
-                _shown = programmes.filter(p => p.stop > from && p.start < to)
+                const wanted = programmes.filter(p => p.stop > from && p.start < to)
+                if (wanted.length === 0) {
+                    shown.clear()
+                    return
+                }
+                const first = wanted[0].start
+                const last = wanted[wanted.length - 1].start
+                while (shown.count > 0 && shown.get(0).start < first)
+                    shown.remove(0)
+                while (shown.count > 0 && shown.get(shown.count - 1).start > last)
+                    shown.remove(shown.count - 1)
+                // the cells left are kept when they are the same ones, in order
+                let kept = shown.count
+                let at = kept > 0 ? wanted.findIndex(p => p.start === shown.get(0).start) : -1
+                if (kept > 0 && (at < 0 || at + kept > wanted.length
+                                 || shown.get(kept - 1).start !== wanted[at + kept - 1].start)) {
+                    shown.clear()
+                    kept = 0
+                }
+                if (kept === 0)
+                    at = 0
+                for (let i = 0; i < at; ++i)
+                    shown.insert(i, cellOf(wanted[i]))
+                for (let i = at + kept; i < wanted.length; ++i)
+                    shown.append(cellOf(wanted[i]))
+            }
+            function cellOf(p) {
+                return { start: p.start, stop: p.stop, title: p.title || "", subtitle: p.subtitle || "",
+                         category: p.category || "", episode: p.episode || "",
+                         hasDescription: !!p.hasDescription, archived: !!p.archived }
             }
             onKeyChanged: {
                 programmes = []
                 _blocks = {}
-                _shown = []
+                shown.clear()
                 if (model.hasGuide)
                     Qt.callLater(load)
             }
@@ -280,6 +346,7 @@ FocusScope {
                 function onGuideRevisionChanged() {
                     row.programmes = []
                     row._blocks = {}
+                    shown.clear()
                     if (row.model.hasGuide)
                         row.load()
                 }
@@ -361,10 +428,18 @@ FocusScope {
                     height: parent.height
 
                     Repeater {
-                        model: row._shown
+                        model: shown
                         delegate: T.AbstractButton {
                             id: cell
-                            required property var modelData
+                            required property var model
+                            readonly property var modelData: model
+                            // a copy that outlives the cell
+                            function programme() {
+                                return { start: model.start, stop: model.stop, title: model.title,
+                                         subtitle: model.subtitle, category: model.category,
+                                         episode: model.episode, hasDescription: model.hasDescription,
+                                         archived: model.archived }
+                            }
                             readonly property bool onNow: modelData.start <= Iptv.now && Iptv.now < modelData.stop
                             readonly property bool past: modelData.stop <= Iptv.now
                             x: (modelData.start - root.origin) * root.pxPerSec + 1
@@ -372,7 +447,7 @@ FocusScope {
                             height: row.height
                             focusPolicy: Qt.NoFocus
                             Accessible.name: modelData.title + ", " + Iptv.timeText(modelData.start)
-                            onClicked: root.programmeClicked(Iptv.channelModel.get(row.index), modelData)
+                            onClicked: root.programmeClicked(Iptv.channelModel.get(row.index), cell.programme())
                             onDoubleClicked: {
                                 if (onNow)
                                     Iptv.play(row.model.key)
@@ -396,13 +471,15 @@ FocusScope {
                                 width: Math.max(0, (Iptv.now - cell.modelData.start) * root.pxPerSec - root.px(6))
                                 color: VLCStyle.redesign.accent
                             }
+                            // (no clip of its own: its texts are cut to its width,
+                            // a clip each kept the cells from being drawn together)
                             contentItem: Item {
                                 visible: cell.width > root.px(28)
-                                clip: true
                                 // the text stays in sight while its start is
                                 // left of the grid
                                 readonly property real inset: Math.max(0, root.timeX - cell.x)
                                 Column {
+                                    id: texts
                                     x: parent.inset + root.px(10)
                                     width: Math.max(0, parent.width - x - root.px(8))
                                     anchors.verticalCenter: parent.verticalCenter
@@ -422,6 +499,10 @@ FocusScope {
                                     Row {
                                         spacing: root.px(6)
                                         Text {
+                                            width: Math.min(implicitWidth, Math.max(0, texts.width
+                                                - (archivedMark.visible ? archivedMark.width + parent.spacing : 0)
+                                                - (reminderMark.visible ? reminderMark.width + parent.spacing : 0)))
+                                            elide: Text.ElideRight
                                             text: Iptv.timeText(cell.modelData.start)
                                                   + (cell.modelData.episode ? "  ·  " + cell.modelData.episode : "")
                                             color: root.c("#6B6B6B", "#5a5a59")
@@ -429,7 +510,8 @@ FocusScope {
                                             font.pixelSize: root.px(11)
                                         }
                                         Image {
-                                            visible: cell.past && cell.modelData.archived
+                                            id: archivedMark
+                                            visible: cell.past && cell.modelData.archived && texts.width >= root.px(48)
                                             anchors.verticalCenter: parent.verticalCenter
                                             width: root.px(13)
                                             height: width
@@ -440,8 +522,9 @@ FocusScope {
                                                             : ""
                                         }
                                         Image {
+                                            id: reminderMark
                                             visible: Iptv.hasReminder(row.model.key, cell.modelData.start)
-                                                     && Iptv.reminders.length >= 0
+                                                     && Iptv.reminders.length >= 0 && texts.width >= root.px(48)
                                             anchors.verticalCenter: parent.verticalCenter
                                             width: root.px(13)
                                             height: width

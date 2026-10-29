@@ -119,6 +119,10 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Fixed
 
+- **Settings, Audio: *Maximum volume* is drawn as the design draws it again.** Since the slider was made to cover
+  VLC's whole range (60 to 300 %), its scale started at 60 % under a label reading 100 %, and 200 % stood right of
+  the middle. The slider keeps the design's 100 to 300 % and widens only for a value set below 100 % elsewhere (the
+  same for the OSD duration). Found by the final 1:1 check against the Figma frames (Settings - audio, 3073:15879).
 - **Online subtitles are loaded by themselves only for the right film.** The automatic search took the title it
   guessed from the file name: a clip named `silent.mp4` got the subtitles of *Silent Hill*. A subtitle now loads by
   itself only when it was made for that very file (the services know it by its fingerprint) or the title is sure:

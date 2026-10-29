@@ -891,9 +891,12 @@ void Service::loadGuides(bool download, const QStringList& onlySources)
     QSet<QString> bases;
     for (auto it = result.cbegin(); it != result.cend(); ++it)
         bases.insert(hashOf(it.key()));
+    // (no name filter: Qt matches those with a regular expression, whose
+    // stack of this thread would outlive the module and crash at the end)
     const QDir dir(m_cacheDir + QStringLiteral("/guides"));
-    for (const QString& name : dir.entryList({ QStringLiteral("*.desc") }, QDir::Files))
-        if (bases.contains(name.section(u'-', 0, 0)) && !inUse.contains(name))
+    for (const QString& name : dir.entryList(QDir::Files))
+        if (name.endsWith(QLatin1String(".desc")) && bases.contains(name.section(u'-', 0, 0))
+            && !inUse.contains(name))
             QFile::remove(dir.filePath(name));
 }
 

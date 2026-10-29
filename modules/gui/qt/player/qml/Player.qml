@@ -80,8 +80,14 @@ FocusScope {
 
     // Library next to the video (Figma "Player" with the sidebar open)
     property bool libraryVisible: false
-    // Created on first use, then kept with its history
+    // Created on first use, then kept with its history. Made in the
+    // background (its Loader is asynchronous), not in this handler: the
+    // player could be unloaded while the panel is made (a media stopping,
+    // the interface closing), and an object destroyed in one of its own
+    // handlers is an error of QML
     property bool _libraryCreated: false
+    // the folder of the media asked before the panel was made
+    property bool _folderPending: false
     onLibraryVisibleChanged: {
         if (libraryVisible)
             _libraryCreated = true
@@ -592,7 +598,10 @@ FocusScope {
         onLibraryToggled: rootPlayer.libraryVisible = !rootPlayer.libraryVisible
         onFolderRequested: {
             rootPlayer.libraryVisible = true
-            compactLibrary.item.showFolder(compactLibrary.item.folderOf(Player.url))
+            if (compactLibrary.item)
+                compactLibrary.item.showFolder(compactLibrary.item.folderOf(Player.url))
+            else
+                rootPlayer._folderPending = true
         }
 
         onRequestLockUnlockAutoHide: (lock) => {
@@ -644,7 +653,14 @@ FocusScope {
         }
 
         active: rootPlayer._libraryCreated
+        asynchronous: true
         visible: rootPlayer.libraryVisible
+        onLoaded: {
+            if (rootPlayer._folderPending) {
+                rootPlayer._folderPending = false
+                item.showFolder(item.folderOf(Player.url))
+            }
+        }
         // (no wider than the window: a small one cut its right side)
         width: item ? Math.min(item.implicitWidth, parent.width) : 0
 
@@ -893,6 +909,12 @@ FocusScope {
         AccessibleCompat.id: "videoVisualizationButton"
     }
 
+    // its keys win over the hotkeys (interface_window_handler.cpp)
+    Binding {
+        target: MainCtx
+        property: "keysBeforeHotkeys"
+        value: tvOverlay.item
+    }
     // Live TV over the video while a channel plays: made only then, and
     // only when its add-on is there and on
     Loader {

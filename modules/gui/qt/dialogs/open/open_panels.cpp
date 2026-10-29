@@ -860,6 +860,11 @@ void CaptureOpenPanel::initialize()
     adevDshowW = new StringListConfigControl( p_config, this );
     adevDshowW->insertInto( dshowDevLayout, line );
     line++;
+    /* both lists as wide as the column, in line (aligned right, each was as
+     * wide as its longest device name) */
+    for( int row = 0; row < line; row++ )
+        if( QLayoutItem *item = dshowDevLayout->itemAtPosition( row, dshowDevLayout->columnCount() - 1 ) )
+            item->setAlignment( Qt::Alignment() );
 
     /* dshow Properties */
     QLabel *dshowVSizeLabel = new QLabel( qtr( "Video size" ) );

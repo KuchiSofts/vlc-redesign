@@ -376,6 +376,17 @@ bool InterfaceWindowHandler::eventFilter(QObject*, QEvent* event)
             return true;
         }
 
+        // Live TV over the video: its keys first, before the hotkeys and the
+        // focused item (Page Up and Down change the channel, Backspace goes
+        // back to the last one, not to the previous page)
+        if (m_mainCtx->getUseGlobalShortcuts() && m_mainCtx->preferHotkeys()
+            && !focusedItemTakesKeys()
+            && m_mainCtx->keyTakenBeforeHotkeys(keyEvent->key(), keyEvent->modifiers()))
+        {
+            event->accept();
+            return true;
+        }
+
         if (applyKeyEvent(keyEvent) == false)
             return false;
 
@@ -660,6 +671,11 @@ bool InterfaceWindowHandler::applyKeyEvent(QKeyEvent * event) const
     }
 
     if (focusedItemTakesKeys())
+        return false;
+
+    // NOTE: Live TV over the video: the keys of its list of channels go to the list
+    //       (its own keys were taken in eventFilter); the others stay hotkeys.
+    if (m_mainCtx->keyGoesBeforeHotkeys(key, event->modifiers()))
         return false;
 
     event->accept();

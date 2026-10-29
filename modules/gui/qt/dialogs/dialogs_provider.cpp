@@ -936,6 +936,15 @@ void DialogsProvider::PLAppendDialog( OpenDialog::OpenTab tab )
  ***/
 void DialogsProvider::simpleOpenDialog(bool start)
 {
+    // The file dialog runs an event loop of its own: shown once the item
+    // that asked for it (a menu item, a button) is out of its handler, which
+    // that loop could see destroyed (a QML error, at zoom 1.5 and 2 here)
+    QMetaObject::invokeMethod(this, [this, start]() { showSimpleOpenAndAppend(start); },
+                              Qt::QueuedConnection);
+}
+
+void DialogsProvider::showSimpleOpenAndAppend(bool start)
+{
     QStringList urls = DialogsProvider::showSimpleOpen();
 
     urls.sort();
@@ -1070,12 +1079,15 @@ QString DialogsProvider::getDirectoryDialog( qt_intf_t *p_intf )
 
 void DialogsProvider::PLOpenDir()
 {
-    openDirectory( p_intf, true );
+    // (out of the asking item's handler, as simpleOpenDialog)
+    QMetaObject::invokeMethod(this, [this]() { openDirectory( p_intf, true ); },
+                              Qt::QueuedConnection);
 }
 
 void DialogsProvider::PLAppendDir()
 {
-    openDirectory( p_intf, false );
+    QMetaObject::invokeMethod(this, [this]() { openDirectory( p_intf, false ); },
+                              Qt::QueuedConnection);
 }
 
 /****************

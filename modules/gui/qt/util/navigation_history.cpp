@@ -136,7 +136,9 @@ void NavigationHistory::update(QStringList path, const QVariantMap& properties)
 
 void NavigationHistory::previous(Qt::FocusReason reason)
 {
-    if (m_history.size() == 1)
+    // (empty before the first page: the player opened with a media, its
+    // cancel key, Backspace, ended VLC on the pop_back of nothing)
+    if (m_history.size() <= 1)
         return;
 
     m_history.pop_back();

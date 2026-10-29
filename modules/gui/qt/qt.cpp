@@ -339,6 +339,14 @@ static void ShowDialog   ( intf_thread_t *, int, int, intf_dialog_args_t * );
 #define ACCENT_COLOR_TEXT N_( "Accent color" )
 #define ACCENT_COLOR_LONGTEXT N_( "Adjusts the accent color, special values are 'default' and 'system' (requires Qt 6.6) ." )
 
+/* The keys of live TV over the video (Settings > Shortcuts, "Live TV"): they
+ * win over the hotkeys only while a channel plays */
+#define TV_CHANNEL_UP_TEXT N_( "Next channel" )
+#define TV_CHANNEL_DOWN_TEXT N_( "Previous channel" )
+#define TV_PREVIOUS_TEXT N_( "Last channel watched" )
+#define TV_LIST_TEXT N_( "Channel list" )
+#define TV_INFO_TEXT N_( "Channel banner" )
+
 static const int initial_prefs_view_list[] = { 0, 1, 2 };
 static const char *const initial_prefs_view_list_texts[] =
     { N_("Simple"), N_("Advanced"), N_("Expert") };
@@ -536,6 +544,14 @@ vlc_module_begin ()
 
     add_string( "qt-accent-color", "default", ACCENT_COLOR_TEXT, ACCENT_COLOR_LONGTEXT )
 
+    /* edited in the shortcuts only (no global hotkey: the interface's) */
+    set_subcategory( SUBCAT_HIDDEN )
+    add_string_inner( CONFIG_ITEM_KEY, "qt-key-tv-channel-up", TV_CHANNEL_UP_TEXT, nullptr, "Page Up" )
+    add_string_inner( CONFIG_ITEM_KEY, "qt-key-tv-channel-down", TV_CHANNEL_DOWN_TEXT, nullptr, "Page Down" )
+    add_string_inner( CONFIG_ITEM_KEY, "qt-key-tv-previous", TV_PREVIOUS_TEXT, nullptr, "Backspace" )
+    add_string_inner( CONFIG_ITEM_KEY, "qt-key-tv-list", TV_LIST_TEXT, nullptr, "Enter" )
+    add_string_inner( CONFIG_ITEM_KEY, "qt-key-tv-info", TV_INFO_TEXT, nullptr, "i" )
+
     cannot_unload_broken_library()
 
     add_submodule ()
@@ -634,7 +650,44 @@ public:
             text = vlc_gettext(sourceText);
 
         assert(text);
+        const bool untranslated = text == sourceText || (n >= 0 && text == disambiguation);
+        if (untranslated && QGuiApplication::layoutDirection() == Qt::RightToLeft)
+            return leftToRight(QString::fromUtf8(text));
         return QString::fromUtf8(text);
+    }
+
+private:
+    // A text left in English in a right-to-left interface (Hebrew, Arabic)
+    // is still read from left to right: its punctuation at an end ("Advanced
+    // options...", "Name:", "(default)") would take the direction of the
+    // paragraph and show on the other side, the dots first. A left-to-right
+    // mark at each end keeps it with the words.
+    static QString leftToRight(const QString &text)
+    {
+        bool latin = false;
+        for (const QChar c : text)
+        {
+            switch (c.direction())
+            {
+            case QChar::DirR: case QChar::DirAL:
+                return text;
+            case QChar::DirL:
+                latin = true;
+                break;
+            default:
+                break;
+            }
+        }
+        if (!latin)
+            return text;
+        const auto neutral = [](QChar c) {
+            const QChar::Direction d = c.direction();
+            return d != QChar::DirL && d != QChar::DirEN && d != QChar::DirAN;
+        };
+        if (!neutral(text.front()) && !neutral(text.back()))
+            return text;
+        static const QChar mark(0x200E);
+        return mark + text + mark;
     }
 };
 

@@ -108,6 +108,7 @@
 
 #include <QThread>
 
+#include <vlc_actions.h>
 #include <vlc_interface.h>
 #include <vlc_playlist.h>
 #include <vlc_preparser.h>
@@ -1392,6 +1393,62 @@ void MainCtx::setPreferHotkeys(bool enable)
     m_preferHotkeys = enable;
 
     emit preferHotkeysChanged();
+}
+
+void MainCtx::setKeysBeforeHotkeys(QObject* item)
+{
+    if (m_keysBeforeHotkeys == item)
+        return;
+    m_keysBeforeHotkeys = item;
+    emit keysBeforeHotkeysChanged();
+}
+
+static bool askKeyItem(QObject *item, const char *function, int key, Qt::KeyboardModifiers modifiers)
+{
+    if (!item)
+        return false;
+    QVariant answer;
+    QMetaObject::invokeMethod(item, function, Q_RETURN_ARG(QVariant, answer),
+                              Q_ARG(QVariant, key), Q_ARG(QVariant, static_cast<int>(modifiers)));
+    return answer.toBool();
+}
+
+bool MainCtx::keyTakenBeforeHotkeys(int key, Qt::KeyboardModifiers modifiers) const
+{
+    return askKeyItem(m_keysBeforeHotkeys.data(), "takeKey", key, modifiers);
+}
+
+bool MainCtx::keyGoesBeforeHotkeys(int key, Qt::KeyboardModifiers modifiers) const
+{
+    return askKeyItem(m_keysBeforeHotkeys.data(), "wantsKey", key, modifiers);
+}
+
+QString MainCtx::tvKeyAction(Qt::Key key, Qt::KeyboardModifiers modifiers) const
+{
+    // the keypad's digits and Enter are the keyboard's
+    QKeyEvent event(QEvent::KeyPress, key, modifiers & ~Qt::KeypadModifier);
+    const uint_fast32_t vlcKey = qtEventToVLCKey(&event);
+    if (vlcKey == 0)
+        return {};
+    static const char *const actions[][2] = {
+        { "qt-key-tv-channel-up", "channel-up" },
+        { "qt-key-tv-channel-down", "channel-down" },
+        { "qt-key-tv-previous", "previous" },
+        { "qt-key-tv-list", "list" },
+        { "qt-key-tv-info", "info" },
+    };
+    for (const auto &action : actions)
+    {
+        char *keys = var_InheritString(p_intf, action[0]);
+        bool found = false;
+        for (char *buf, *name = keys ? strtok_r(keys, "\t", &buf) : nullptr;
+             name && !found; name = strtok_r(nullptr, "\t", &buf))
+            found = vlc_str2keycode(name) == vlcKey;
+        free(keys);
+        if (found)
+            return QString::fromLatin1(action[1]);
+    }
+    return {};
 }
 
 QWindow *MainCtx::intfMainWindow() const

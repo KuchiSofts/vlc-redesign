@@ -12,6 +12,19 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-10-28):
 
+- 🟡 **Last desktop issues before 0.4.0** (branch `feature/leftovers`, 2026-10-29): Live TV's keys win over VLC's
+  hotkeys while a channel plays (`MainCtx.keysBeforeHotkeys`; Page Up/Down, digits, Backspace, Enter, I; in
+  Settings › Shortcuts, group *Live TV*); Backspace with an empty navigation history no longer ends VLC; the
+  library panel of the player is made asynchronously (the `Player.qml:85` QML error); the Capture Device lists line
+  up; untranslated texts keep their punctuation at their end in right-to-left (left-to-right marks, `.ui` texts
+  through the translator). Checked on Windows with posted keys and with real `SendInput` keys in a test window in
+  front (Page Up, Page Down, Backspace, digits, a number erased: 5/5 in English, Hebrew and with real keys); the
+  real wheel changes the volume over the video and over the slider with the default output (1.0 → 1.1 → 1.0),
+  Ctrl+T, Ctrl+P, Ctrl+N open their dialogs. Found in the end-to-end pass and fixed: the guide's
+  `original-air-date` shown as the episode (Pluto TV), a QML error when *Open Folder* opened its system dialog from
+  the menu (zoom 2). Left: a `QQuickItem::stackAfter` warning when Customize Player opens at zoom 1.5/2, the Live TV
+  texts and the five key names untranslated. End-to-end pass of 0.4.0: [0.4.0-ui-audit.md](qa/0.4.0-ui-audit.md).
+
 - 🟡 **Subtitle quality** (branch `feature/subs-quality`, for 0.4.0): measured first on Windows (d3d11, 480p,
   720p and 1080p sources in a 1440×1000 window and full screen 2560×1440): SRT and ASS were already rasterised at
   the display size (the same crop whatever the source size), picture subtitles were blocky with the point,

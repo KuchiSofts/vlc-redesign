@@ -26,6 +26,10 @@ the design itself (layouts, colours, typography, icons, interactions) is theirs.
 
 The same credit is shown in the app, under **⋯ → About VLC**, and in the Credits page of that window.
 
+**App icon:** the icon of every VLC Redesign program and app (Windows, macOS, Linux, Android, the installer, the
+site) is Juxtopposed's logo from the same Figma file (the orange cone of the Icon set), used as drawn and only
+rendered to each platform's sizes; on Android the launcher puts it on the design's background colour (#0E0E0E).
+
 ## Implementation
 
 - **MrDouglax**: the first implementation, [JuxtopposedVLC](https://github.com/SrDouglax/JuxtopposedVLC)

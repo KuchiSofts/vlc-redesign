@@ -24,9 +24,9 @@ platforms:
     name: Windows
     short: Windows
     status: released
-    version: 0.3.1
-    date: 2026-10-25
-    next: 0.4.0
+    version: 0.4.0
+    date: 2026-10-29
+    next: 0.5.0
     os: windows
     requires: Windows 10 (1809) or 11, 64-bit
     repository: KuchiSofts/vlc-redesign

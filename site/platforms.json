@@ -10,10 +10,10 @@
       "status": "released",
       "statusLabel": "released",
       "available": true,
-      "bar": "Windows 0.3.1",
-      "version": "0.3.1",
-      "date": "2026-10-25",
-      "next": "0.4.0",
+      "bar": "Windows 0.4.0",
+      "version": "0.4.0",
+      "date": "2026-10-29",
+      "next": "0.5.0",
       "os": "windows",
       "requires": "Windows 10 (1809) or 11, 64-bit",
       "notes": "Installer and portable zip; small updates in the app",
@@ -22,13 +22,13 @@
       "downloads": [
         {
           "label": "Installer",
-          "file": "vlc-redesign-0.3.1-win64-setup.exe",
-          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.3.1/vlc-redesign-0.3.1-win64-setup.exe"
+          "file": "vlc-redesign-0.4.0-win64-setup.exe",
+          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign-0.4.0-win64-setup.exe"
         },
         {
           "label": "Portable",
-          "file": "vlc-redesign-0.3.1-win64.zip",
-          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.3.1/vlc-redesign-0.3.1-win64.zip"
+          "file": "vlc-redesign-0.4.0-win64.zip",
+          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign-0.4.0-win64.zip"
         }
       ]
     },

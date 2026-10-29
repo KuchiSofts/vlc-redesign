@@ -2,7 +2,7 @@
 <!-- Written by extras/juxtopposed/platforms/render.py from platforms.yml: edit that file. -->
 <p align="center"><sub>
 
-**[Windows 0.3.1](https://github.com/KuchiSofts/vlc-redesign/releases/latest)** · Linux soon · macOS soon · Windows ARM64 soon · Android soon · Samsung TV soon · iPhone/iPad later
+**[Windows 0.4.0](https://github.com/KuchiSofts/vlc-redesign/releases/latest)** · Linux soon · macOS soon · Windows ARM64 soon · Android soon · Samsung TV soon · iPhone/iPad later
 
 </sub></p>
 
@@ -11,7 +11,7 @@
 
 | Platform | Status | Latest | Get it |
 |---|---|---|---|
-| Windows | 🟢 released | 0.3.1 · 2026-10-25 | [installer](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.3.1/vlc-redesign-0.3.1-win64-setup.exe) · [portable](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.3.1/vlc-redesign-0.3.1-win64.zip) |
+| Windows | 🟢 released | 0.4.0 · 2026-10-29 | [installer](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign-0.4.0-win64-setup.exe) · [portable](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign-0.4.0-win64.zip) |
 | Linux | 🟡 in progress | — | coming soon |
 | macOS | 🟡 in progress | — | coming soon |
 | Windows ARM64 | 🔴 planned | — | coming soon |

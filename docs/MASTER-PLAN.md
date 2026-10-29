@@ -12,6 +12,14 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-10-29):
 
+- 🟡 **Release 0.4.0 prepared** (2026-10-29): VideoLAN's master merged to `9f393e5719` — **6 commits behind before**
+  (HDR static metadata in the swap chain and VideoToolbox, the legacy MinGW check of `d3d11_surface` removed; its
+  `CAN_PROCESSOR` guards dropped from our scaler and leak fix too, or they would have compiled out), **0 after**; the
+  public `main` (PR #12) and the PR branches #11, #13, #20, #21, #22 merged into `redesign`, so the upload closes
+  them; `po/vlc.pot` regenerated, 110 catalogs merged (`msgfmt -c` clean), `po/redesign` 1,991 texts × 72 at 100 %;
+  `docs/wiki/Install-and-Update.md` was never in the repository (`.gitignore` `install-*`), now tracked; CHANGELOG
+  dated, wiki and `platforms.yml` at 0.4.0. Left: the Windows build and tests of the merge, then make-release.
+
 - 🟡 **Desktop polish before 0.4.0** (branch `feature/desktop-polish`, 2026-10-29):
   - 🟢 Icons at 125-200 % (`3673a7a74d`): the QML named them by their old PNG files; Qt 6 draws an image at the
     device pixel ratio only when the URL *as written* ends in `.svg` (the interceptor's `.svg` comes too late), so

@@ -38022,6 +38022,23 @@ msgstr ""
 msgid "Are you sure you wish to create the stream?"
 msgstr "Akışı oluşturmak istediğinize emin misiniz?"
 
+#: modules/gui/qt/qt.cpp:352
+msgid "Zoom the interface in"
+msgstr "Arayüzü yakınlaştır"
+
+#: modules/gui/qt/qt.cpp:353
+msgid "Zoom the interface out"
+msgstr "Arayüzü uzaklaştır"
+
+#: modules/gui/qt/player/qml/Player.qml:951
+#, no-c-format
+msgid "Subtitle size %1%"
+msgstr "Altyazı boyutu %1%"
+
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:153
+msgid "Or turn the mouse wheel while holding Ctrl, Alt or Shift"
+msgstr "Ya da Ctrl, Alt veya Shift tuşunu basılı tutarak fare tekerleğini çevirin"
+
 #, c-format
 #~ msgid "%s track: %s"
 #~ msgstr "%s kaydı: %s"

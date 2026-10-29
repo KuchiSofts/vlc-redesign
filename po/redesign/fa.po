@@ -8085,3 +8085,21 @@ msgstr "پرکاربرد"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
 msgid "Snapshot height (0: proportional, -1: original)"
 msgstr "ارتفاع عکس فوری (0: متناسب، ‎-1: اصلی)"
+
+#: modules/gui/qt/qt.cpp:352
+msgid "Zoom the interface in"
+msgstr "بزرگ‌نمایی رابط"
+
+#: modules/gui/qt/qt.cpp:353
+msgid "Zoom the interface out"
+msgstr "کوچک‌نمایی رابط"
+
+#: modules/gui/qt/player/qml/Player.qml:951
+#, no-c-format
+msgid "Subtitle size %1%"
+msgstr "اندازهٔ زیرنویس %1%"
+
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:153
+msgid "Or turn the mouse wheel while holding Ctrl, Alt or Shift"
+msgstr "یا چرخ ماوس را در حالی که Ctrl، Alt یا Shift را نگه داشته‌اید بچرخانید"
+

@@ -37974,6 +37974,23 @@ msgstr ""
 msgid "Are you sure you wish to create the stream?"
 msgstr "Vai jūs esat pārliecināts, ka vēlaties izveidot straumi?"
 
+#: modules/gui/qt/qt.cpp:352
+msgid "Zoom the interface in"
+msgstr "Tuvināt saskarni"
+
+#: modules/gui/qt/qt.cpp:353
+msgid "Zoom the interface out"
+msgstr "Tālināt saskarni"
+
+#: modules/gui/qt/player/qml/Player.qml:951
+#, no-c-format
+msgid "Subtitle size %1%"
+msgstr "Subtitru izmērs %1%"
+
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:153
+msgid "Or turn the mouse wheel while holding Ctrl, Alt or Shift"
+msgstr "Vai grieziet peles ritenīti, turot nospiestu Ctrl, Alt vai Shift"
+
 #~ msgid "Select \"Advanced Options\" to see all options."
 #~ msgstr "Atlasiet \"Paplašinātās opcijas\", lai redzētu visas opcijas."
 

@@ -8158,3 +8158,21 @@ msgstr "Usein käytetty"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
 msgid "Snapshot height (0: proportional, -1: original)"
 msgstr "Kuvakaappauksen korkeus (0: suhteessa, -1: alkuperäinen)"
+
+#: modules/gui/qt/qt.cpp:352
+msgid "Zoom the interface in"
+msgstr "Lähennä käyttöliittymää"
+
+#: modules/gui/qt/qt.cpp:353
+msgid "Zoom the interface out"
+msgstr "Loitonna käyttöliittymää"
+
+#: modules/gui/qt/player/qml/Player.qml:951
+#, no-c-format
+msgid "Subtitle size %1%"
+msgstr "Tekstityksen koko %1%"
+
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:153
+msgid "Or turn the mouse wheel while holding Ctrl, Alt or Shift"
+msgstr "Tai pyöritä hiiren rullaa pitäen Ctrl-, Alt- tai Shift-näppäintä painettuna"
+

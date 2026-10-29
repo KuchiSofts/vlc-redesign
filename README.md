@@ -358,8 +358,8 @@ Details in [CREDITS.md](CREDITS.md).
 
 ## Code signing policy
 
-The releases are not code-signed. Code signing is paused: an application to SignPath Foundation's free program for
-open-source projects waits for its answer, and nothing is signed until then. The policy it would follow:
+The releases are not code-signed. Code signing will come through SignPath Foundation's free program for open-source
+projects: the application waits for their approval, and nothing is signed until then. The policy it would follow:
 [CODE_SIGNING_POLICY.md](CODE_SIGNING_POLICY.md). Until then the SHA-256 of every file is listed in `SHA256SUMS.txt`.
 
 ## License

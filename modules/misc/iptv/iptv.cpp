@@ -230,6 +230,11 @@ public:
         msg_Warn(m_obj, "%s", message.toUtf8().constData());
     }
 
+    void debug(const QString& message) override
+    {
+        msg_Dbg(m_obj, "%s", message.toUtf8().constData());
+    }
+
     void enterWorker() override
     {
         if (m_interrupt)

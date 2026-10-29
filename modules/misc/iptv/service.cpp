@@ -10,8 +10,10 @@
 #include "xtream.hpp"
 
 #include <QCryptographicHash>
+#include <QDataStream>
 #include <QDateTime>
 #include <QDir>
+#include <QElapsedTimer>
 #include <QFile>
 #include <QFileInfo>
 #include <QJsonDocument>
@@ -113,6 +115,142 @@ QString readDescription(const QString& path, qint64 offset, int length)
     if (!file.open(QIODevice::ReadOnly) || !file.seek(offset))
         return QString();
     return QString::fromUtf8(file.read(length));
+}
+
+/* The index of a guide: what was read of its XMLTV file for these channels,
+ * kept next to it. A guide of 200 MB takes seconds of a core to read again,
+ * at every start; its index a fraction of that. It holds every programme
+ * from the first day kept on (the days ahead are cut when it is read), the
+ * texts once each, and names the file of the descriptions it goes with. */
+
+const quint32 kIndexMagic = 0x56544749;   // "VTGI"
+const qint32 kIndexVersion = 1;
+
+struct GuideIndex
+{
+    QHash<QString, EntryList> lists;
+    QHash<QString, QString> idByName;
+    QSet<QString> languages;
+    QString descName;    // in the folder of the guides
+};
+
+// What the index was made for: the channels, the languages, the days back
+QByteArray signatureOf(const GuideFilter& filter, int days)
+{
+    QStringList keys(filter.keys.cbegin(), filter.keys.cend());
+    keys.sort();
+    QStringList languages(filter.languages.cbegin(), filter.languages.cend());
+    languages.sort();
+    QCryptographicHash hash(QCryptographicHash::Sha1);
+    hash.addData(QByteArray::number(days));
+    hash.addData(QByteArrayView("\n\n"));
+    hash.addData(languages.join(u'\n').toUtf8());
+    hash.addData(QByteArrayView("\n\n"));
+    hash.addData(keys.join(u'\n').toUtf8());
+    return hash.result();
+}
+
+bool writeIndex(const QString& path, const QString& xmltvPath, const QByteArray& signature,
+                const GuideIndex& index)
+{
+    const QFileInfo xmltv(xmltvPath);
+    const QFileInfo desc(xmltv.dir().filePath(index.descName));
+    // the texts once each
+    QHash<QString, quint32> ids;
+    QStringList texts;
+    auto idOf = [&](const QString& text) -> quint32 {
+        auto it = ids.constFind(text);
+        if (it != ids.cend())
+            return *it;
+        const quint32 id = quint32(texts.size());
+        ids.insert(text, id);
+        texts << text;
+        return id;
+    };
+    QByteArray body;
+    {
+        QDataStream out(&body, QIODevice::WriteOnly);
+        out.setVersion(QDataStream::Qt_6_0);
+        out << qint32(index.lists.size());
+        for (auto it = index.lists.cbegin(); it != index.lists.cend(); ++it)
+        {
+            out << it.key() << qint32(it->size());
+            for (const Entry& e : *it)
+                out << e.start << e.stop << idOf(e.title) << idOf(e.subtitle) << idOf(e.category)
+                    << idOf(e.episode) << e.descOffset << qint32(e.descLength);
+        }
+    }
+    QByteArray data;
+    QDataStream out(&data, QIODevice::WriteOnly);
+    out.setVersion(QDataStream::Qt_6_0);
+    out << kIndexMagic << kIndexVersion << xmltv.size() << xmltv.lastModified().toMSecsSinceEpoch()
+        << signature << index.descName << (desc.exists() ? desc.size() : qint64(-1));
+    QStringList languages(index.languages.cbegin(), index.languages.cend());
+    out << languages << index.idByName << texts;
+    out.writeRawData(body.constData(), int(body.size()));
+    return out.status() == QDataStream::Ok && writeAll(path, data);
+}
+
+// The index when it is the one of this XMLTV file and these channels
+bool readIndex(const QString& path, const QString& xmltvPath, const QByteArray& signature, GuideIndex& index)
+{
+    QFile file(path);
+    if (!file.open(QIODevice::ReadOnly))
+        return false;
+    const QFileInfo xmltv(xmltvPath);
+    QDataStream in(&file);
+    in.setVersion(QDataStream::Qt_6_0);
+    quint32 magic = 0;
+    qint32 version = 0;
+    qint64 size = 0, modified = 0, descSize = 0;
+    QByteArray madeFor;
+    in >> magic >> version;
+    if (magic != kIndexMagic || version != kIndexVersion)
+        return false;
+    in >> size >> modified >> madeFor >> index.descName >> descSize;
+    if (in.status() != QDataStream::Ok || size != xmltv.size()
+        || modified != xmltv.lastModified().toMSecsSinceEpoch() || madeFor != signature)
+        return false;
+    // the descriptions it points into, as they were written
+    const QFileInfo desc(xmltv.dir().filePath(index.descName));
+    if (index.descName.isEmpty() || index.descName.contains(u'/') || (desc.exists() ? desc.size() : -1) != descSize)
+        return false;
+    QStringList languages, texts;
+    in >> languages >> index.idByName >> texts;
+    index.languages = QSet<QString>(languages.cbegin(), languages.cend());
+    qint32 keys = 0;
+    in >> keys;
+    if (in.status() != QDataStream::Ok || keys < 0)
+        return false;
+    const quint32 textCount = quint32(texts.size());
+    index.lists.reserve(keys);
+    for (qint32 k = 0; k < keys; ++k)
+    {
+        QString key;
+        qint32 count = 0;
+        in >> key >> count;
+        if (in.status() != QDataStream::Ok || count < 0 || count > (1 << 24))
+            return false;
+        EntryList list;
+        list.reserve(count);
+        for (qint32 i = 0; i < count; ++i)
+        {
+            Entry e;
+            quint32 title, subtitle, category, episode;
+            qint32 length;
+            in >> e.start >> e.stop >> title >> subtitle >> category >> episode >> e.descOffset >> length;
+            if (title >= textCount || subtitle >= textCount || category >= textCount || episode >= textCount)
+                return false;
+            e.title = texts[title];
+            e.subtitle = texts[subtitle];
+            e.category = texts[category];
+            e.episode = texts[episode];
+            e.descLength = length;
+            list.append(std::move(e));
+        }
+        index.lists.insert(key, std::move(list));
+    }
+    return in.status() == QDataStream::Ok;
 }
 
 }
@@ -295,6 +433,8 @@ void Service::startup()
         std::lock_guard<std::mutex> guard(m_lock);
         sources = m_sources;
     }
+    QElapsedTimer took;
+    took.start();
     for (const SourceConfig& cfg : sources)
     {
         SourceState state;
@@ -304,19 +444,23 @@ void Service::startup()
     }
     rebuild();
     changed("channels");
-    loadGuides(false, QString());
+    {
+        std::lock_guard<std::mutex> guard(m_lock);
+        m_host.debug(QStringLiteral("%1 channels of the cache in %2 ms").arg(m_channels.size()).arg(took.elapsed()));
+    }
+    loadGuides(false, {});
     rebuild();
     changed("guide");
-    for (const SourceConfig& cfg : sources)
+    m_host.debug(QStringLiteral("the guides of the cache in %1 ms").arg(took.elapsed()));
+    QStringList missing;
     {
-        bool missing;
-        {
-            std::lock_guard<std::mutex> guard(m_lock);
-            missing = m_state.value(cfg.id).channels.isEmpty();
-        }
-        if (missing && cfg.enabled)
-            refreshSource(cfg.id, true, true);
+        std::lock_guard<std::mutex> guard(m_lock);
+        for (const SourceConfig& cfg : sources)
+            if (cfg.enabled && m_state.value(cfg.id).channels.isEmpty())
+                missing << cfg.id;
     }
+    if (!missing.isEmpty())
+        refreshSources(missing, true);
     schedule();
 }
 
@@ -339,8 +483,8 @@ void Service::schedule()
                     due << s.id;
             }
     }
-    for (const QString& id : due)
-        refreshSource(id, false, true);
+    if (!due.isEmpty())
+        refreshSources(due, true);
     updateCatalog(false);
 }
 
@@ -378,44 +522,54 @@ void Service::changed(const char* what)
     m_host.notify(event);
 }
 
-void Service::refreshSource(const QString& id, bool force, bool guides)
+void Service::refreshSources(const QStringList& ids, bool guides)
 {
-    SourceConfig cfg;
-    SourceState state;
+    // every playlist first (each source's channels show as they come), then
+    // each guide read once for the channels of all of them: one source at a
+    // time read every guide again for each source
+    QStringList done;
+    for (const QString& id : ids)
     {
-        std::lock_guard<std::mutex> guard(m_lock);
-        const SourceConfig* found = findSource(id);
-        if (!found)
+        if (m_quit)
             return;
-        cfg = *found;
-        state = m_state.value(id);
+        SourceConfig cfg;
+        SourceState state;
+        {
+            std::lock_guard<std::mutex> guard(m_lock);
+            const SourceConfig* found = findSource(id);
+            if (!found)
+                continue;
+            cfg = *found;
+            state = m_state.value(id);
+        }
+        progress(id, QStringLiteral("playlist"), 0, 0);
+        SourceState fresh = state;
+        if (!loadPlaylist(cfg, true, fresh) && !state.channels.isEmpty())
+        {
+            // offline, or the provider is down: the last channels stay
+            const QString error = fresh.error;
+            fresh = state;
+            fresh.error = error;
+        }
+        {
+            std::lock_guard<std::mutex> guard(m_lock);
+            if (!findSource(id))
+                continue;
+            fresh.busy = guides;
+            fresh.stage = guides ? QStringLiteral("guide") : QString();
+            m_state.insert(id, fresh);
+        }
+        done << id;
+        rebuild();
+        changed("channels");
     }
-    Q_UNUSED(force);
-    progress(id, QStringLiteral("playlist"), 0, 0);
-    SourceState fresh = state;
-    if (!loadPlaylist(cfg, true, fresh) && !state.channels.isEmpty())
+    if (guides && !m_quit && !done.isEmpty())
     {
-        // offline, or the provider is down: the last channels stay
-        const QString error = fresh.error;
-        fresh = state;
-        fresh.error = error;
-    }
-    {
-        std::lock_guard<std::mutex> guard(m_lock);
-        if (!findSource(id))
-            return;
-        fresh.busy = guides;
-        fresh.stage = guides ? QStringLiteral("guide") : QString();
-        m_state.insert(id, fresh);
-    }
-    rebuild();
-    changed("channels");
-    if (guides && !m_quit)
-    {
-        loadGuides(true, id);
+        loadGuides(true, done);
         rebuild();
     }
-    progress(id, QString(), 0, 0);
+    for (const QString& id : std::as_const(done))
+        progress(id, QString(), 0, 0);
     changed("guide");
 }
 
@@ -522,7 +676,7 @@ bool Service::loadPlaylist(const SourceConfig& cfg, bool download, SourceState& 
     return true;
 }
 
-void Service::loadGuides(bool download, const QString& onlySource)
+void Service::loadGuides(bool download, const QStringList& onlySources)
 {
     // what to read: the guides of every source, and the keys of every
     // channel (a guide of one source may hold channels of another)
@@ -557,6 +711,7 @@ void Service::loadGuides(bool download, const QString& onlySource)
     filter.from = now - qint64(days) * 86400;
     filter.until = now + qint64(days) * 86400;
     filter.cancel = &m_quit;
+    const QByteArray signature = signatureOf(filter, days);
 
     QHash<QString, std::shared_ptr<GuideData>> result;
     for (const Wanted& w : std::as_const(wanted))
@@ -567,7 +722,7 @@ void Service::loadGuides(bool download, const QString& onlySource)
         const QString path = base + QStringLiteral(".xmltv");
         const qint64 age = ageOf(path);
         QString error;
-        const bool mine = onlySource.isEmpty() || w.sourceId == onlySource;
+        const bool mine = onlySources.isEmpty() || onlySources.contains(w.sourceId);
         if (download && mine && (age < 0 || refreshHours <= 0 || age > qint64(refreshHours) * 3600 - 600))
         {
             progress(w.sourceId, QStringLiteral("guide"), 0, 0);
@@ -587,61 +742,113 @@ void Service::loadGuides(bool download, const QString& onlySource)
             result.insert(w.url, data);
             continue;
         }
-        Guide guide = parseXmltvFile(path, filter);
-        if (m_quit)
-            return;
+        QElapsedTimer took;
+        took.start();
         data->updated = QFileInfo(path).lastModified().toSecsSinceEpoch();
-        if (!guide.error.isEmpty() && guide.programmes.isEmpty())
-            data->error = guide.error;
-        // the descriptions to a file of their own, the rest kept; a new file
-        // each time: the last one may be open for a reading
-        data->descPath = base + QStringLiteral("-%1.desc").arg(QDateTime::currentMSecsSinceEpoch());
-        QFile desc(data->descPath);
-        const bool canWrite = desc.open(QIODevice::WriteOnly);
-        qint64 offset = 0;
-        // the same titles and categories over and over: shared
-        QHash<QString, QString> pool;
-        auto shared = [&pool](const QString& text) -> QString {
-            if (text.isEmpty())
+        data->signature = signature;
+        if (!mine)
+        {
+            // the guide of another source, not downloaded now: as it was
+            // read, when it was for the same channels (one reading of every
+            // guide per source refreshed, before)
+            std::shared_ptr<GuideData> old;
+            {
+                std::lock_guard<std::mutex> guard(m_lock);
+                old = m_guides.value(w.url);
+            }
+            if (old && old->signature == signature && old->updated == data->updated && !old->descPath.isEmpty())
+            {
+                result.insert(w.url, old);
+                continue;
+            }
+        }
+        const QString indexPath = base + QStringLiteral(".idx");
+        GuideIndex index;
+        const bool indexed = readIndex(indexPath, path, signature, index);
+        if (!indexed)
+        {
+            index = GuideIndex();
+            // every day ahead the file has: the index serves the next starts
+            GuideFilter all = filter;
+            all.until = 0;
+            Guide guide = parseXmltvFile(path, all);
+            if (m_quit)
+                return;
+            if (!guide.error.isEmpty() && guide.programmes.isEmpty())
+                data->error = guide.error;
+            // the descriptions to a file of their own, the rest kept; a new
+            // file each time: the last one may be open for a reading
+            index.descName = QFileInfo(base).fileName()
+                             + QStringLiteral("-%1.desc").arg(QDateTime::currentMSecsSinceEpoch());
+            QFile desc(QFileInfo(path).dir().filePath(index.descName));
+            const bool canWrite = desc.open(QIODevice::WriteOnly);
+            qint64 offset = 0;
+            // the same titles and categories over and over: shared
+            QHash<QString, QString> pool;
+            auto shared = [&pool](const QString& text) -> QString {
+                if (text.isEmpty())
+                    return text;
+                auto it = pool.constFind(text);
+                if (it != pool.cend())
+                    return *it;
+                pool.insert(text, text);
                 return text;
-            auto it = pool.constFind(text);
-            if (it != pool.cend())
-                return *it;
-            pool.insert(text, text);
-            return text;
-        };
-        for (auto it = guide.programmes.begin(); it != guide.programmes.end(); ++it)
+            };
+            for (auto it = guide.programmes.begin(); it != guide.programmes.end(); ++it)
+            {
+                EntryList list;
+                list.reserve(it->size());
+                for (Programme& p : *it)
+                {
+                    Entry e;
+                    e.start = p.start;
+                    e.stop = p.stop;
+                    e.title = shared(p.title);
+                    e.subtitle = p.subtitle;
+                    e.category = shared(p.category);
+                    e.episode = p.episode;
+                    if (canWrite && !p.description.isEmpty())
+                    {
+                        const QByteArray text = p.description.toUtf8();
+                        if (desc.write(text) == text.size())
+                        {
+                            e.descOffset = offset;
+                            e.descLength = int(text.size());
+                            offset += text.size();
+                        }
+                    }
+                    list.append(std::move(e));
+                }
+                index.lists.insert(it.key(), std::move(list));
+                it->clear();
+            }
+            desc.close();
+            index.idByName = std::move(guide.idByName);
+            index.languages = std::move(guide.languages);
+            if (guide.error.isEmpty() && canWrite && !writeIndex(indexPath, path, signature, index))
+                m_host.log(QStringLiteral("the index of a guide of %1 could not be written").arg(hostOf(w.url)));
+        }
+        data->descPath = QFileInfo(path).dir().filePath(index.descName);
+        // the days kept: from the days back to as many ahead
+        for (auto it = index.lists.begin(); it != index.lists.end(); ++it)
         {
             auto list = std::make_shared<EntryList>();
             list->reserve(it->size());
-            for (Programme& p : *it)
-            {
-                Entry e;
-                e.start = p.start;
-                e.stop = p.stop;
-                e.title = shared(p.title);
-                e.subtitle = p.subtitle;
-                e.category = shared(p.category);
-                e.episode = p.episode;
-                if (canWrite && !p.description.isEmpty())
-                {
-                    const QByteArray text = p.description.toUtf8();
-                    if (desc.write(text) == text.size())
-                    {
-                        e.descOffset = offset;
-                        e.descLength = int(text.size());
-                        offset += text.size();
-                    }
-                }
-                list->append(std::move(e));
-            }
+            for (Entry& e : *it)
+                if (!(e.stop > 0 && e.stop < filter.from) && e.start <= filter.until)
+                    list->append(std::move(e));
+            if (list->isEmpty())
+                continue;
+            list->squeeze();
             data->programmes += int(list->size());
             data->byKey.insert(it.key(), std::move(list));
-            it->clear();
         }
-        desc.close();
-        data->idByName = std::move(guide.idByName);
-        data->languages = std::move(guide.languages);
+        data->idByName = std::move(index.idByName);
+        data->languages = std::move(index.languages);
+        m_host.debug(QStringLiteral("guide of %1: %2 programmes of %3 channels, %4 in %5 ms")
+                         .arg(hostOf(w.url)).arg(data->programmes).arg(data->byKey.size())
+                         .arg(indexed ? QStringLiteral("from its index") : QStringLiteral("read"))
+                         .arg(took.elapsed()));
         result.insert(w.url, data);
     }
 
@@ -667,7 +874,7 @@ void Service::loadGuides(bool download, const QString& onlySource)
     }
     for (auto it = m_guides.begin(); it != m_guides.end();)
     {
-        if (!keep.contains(it.key()) && onlySource.isEmpty())
+        if (!keep.contains(it.key()) && onlySources.isEmpty())
         {
             QFile::remove((*it)->descPath);
             it = m_guides.erase(it);
@@ -675,6 +882,22 @@ void Service::loadGuides(bool download, const QString& onlySource)
         else
             ++it;
     }
+    // the descriptions of the guides read that nothing points to anymore:
+    // the ones of an earlier start or reading (13 MB each for a guide of
+    // 200 MB, one more at every start before the index)
+    QSet<QString> inUse;
+    for (const auto& g : std::as_const(m_guides))
+        inUse.insert(QFileInfo(g->descPath).fileName());
+    QSet<QString> bases;
+    for (auto it = result.cbegin(); it != result.cend(); ++it)
+        bases.insert(hashOf(it.key()));
+    // (no name filter: Qt matches those with a regular expression, whose
+    // stack of this thread would outlive the module and crash at the end)
+    const QDir dir(m_cacheDir + QStringLiteral("/guides"));
+    for (const QString& name : dir.entryList(QDir::Files))
+        if (name.endsWith(QLatin1String(".desc")) && bases.contains(name.section(u'-', 0, 0))
+            && !inUse.contains(name))
+            QFile::remove(dir.filePath(name));
 }
 
 void Service::rebuild()
@@ -815,7 +1038,7 @@ QJsonObject Service::request(const QJsonObject& r)
             m_refreshHours = qMax(0, r.value(QLatin1String("refreshHours")).toInt(m_refreshHours));
         }
         if (reread)
-            post([this]() { loadGuides(false, QString()); rebuild(); changed("guide"); });
+            post([this]() { loadGuides(false, {}); rebuild(); changed("guide"); });
         return out;
     }
     if (op == QLatin1String("status"))
@@ -891,7 +1114,7 @@ QJsonObject Service::request(const QJsonObject& r)
             id = s.id;
             saveConfig();
         }
-        post([this, id]() { refreshSource(id, true, true); });
+        post([this, id]() { refreshSources({ id }, true); });
         changed("sources");
         out.insert(QLatin1String("id"), id);
         return out;
@@ -909,7 +1132,7 @@ QJsonObject Service::request(const QJsonObject& r)
         }
         m_host.removeSecret(id);
         QDir(sourceDir(id)).removeRecursively();
-        post([this]() { loadGuides(false, QString()); rebuild(); changed("channels"); changed("guide"); });
+        post([this]() { loadGuides(false, {}); rebuild(); changed("channels"); changed("guide"); });
         changed("sources");
         return out;
     }
@@ -932,7 +1155,7 @@ QJsonObject Service::request(const QJsonObject& r)
                 it->enabled = r.value(QLatin1String("enabled")).toBool(true);
             saveConfig();
         }
-        post([this]() { loadGuides(false, QString()); rebuild(); changed("channels"); changed("guide"); });
+        post([this]() { loadGuides(false, {}); rebuild(); changed("channels"); changed("guide"); });
         changed("sources");
         return out;
     }
@@ -946,8 +1169,8 @@ QJsonObject Service::request(const QJsonObject& r)
                 if ((id.isEmpty() && s.enabled) || s.id == id)
                     ids << s.id;
         }
-        for (const QString& each : std::as_const(ids))
-            post([this, each]() { refreshSource(each, true, true); });
+        if (!ids.isEmpty())
+            post([this, ids]() { refreshSources(ids, true); });
         return out;
     }
     return QJsonObject { { QStringLiteral("error"), QStringLiteral("unknown request") } };
@@ -1282,11 +1505,25 @@ QJsonObject Service::logo(const QJsonObject& r)
         return QJsonObject { { QStringLiteral("error"), QStringLiteral("no logo") } };
     const QString path = m_cacheDir + QStringLiteral("/logos/") + hashOf(url);
     const qint64 age = ageOf(path);
+    // a logo that could not be had is asked again an hour later, not at every
+    // row shown (a list scrolled asked the server again and again)
+    const QString missing = path + QStringLiteral(".none");
+    if (age < 0)
+    {
+        const qint64 failed = ageOf(missing);
+        if (failed >= 0 && failed < 3600)
+            return QJsonObject { { QStringLiteral("error"), QStringLiteral("no logo") } };
+    }
     if (age < 0 || age > 30 * 86400)
     {
         QString error;
         if (!m_host.download(url, path, &error) && age < 0)
+        {
+            if (!m_quit)
+                writeAll(missing, QByteArray());
             return QJsonObject { { QStringLiteral("error"), error } };
+        }
+        QFile::remove(missing);
     }
     return QJsonObject { { QStringLiteral("path"), path } };
 }

@@ -12,6 +12,14 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-10-29):
 
+- 🟡 **Issue [#10](https://github.com/KuchiSofts/vlc-redesign/issues/10)** (branch `feature/issue10`, both apps,
+  2026-10-29): open state of the buttons (accent icon on an accent tint, no border, 120 ms; `IconToolButton.active`)
+  on the player bar, the top bar and Live TV; Ctrl+wheel over the video sizes the subtitles (VLC's steps, 25-500 %,
+  toast), elsewhere zooms the interface (new shortcuts `qt-key-intf-zoom-in/out`), Ctrl+0 through the interface,
+  Shortcuts takes wheel turns, libass follows the size live. 4 texts in the 72 languages (msgfmt -c passes, the
+  xgettext pot matches). Android: done and checked on the emulator (open state, Ctrl + wheel, Ctrl+0, slider,
+  Hebrew; ASS keeps its size under libvlc 3). Desktop built in Docker and tested on Windows: Ctrl+wheel over the video 100 > 120 > 200 % with the toast, ASS follows live, over the player's library it zooms the interface (fixed: the library is drawn over the video), Ctrl+0 back to 100 %, Shortcuts shows both pairs and takes a Ctrl+wheel turn (conflict asked), open state on settings, tracks, the menu and the library button in dark, light, Hebrew at zoom 2; no new QML warning.
+
 - 🟡 **macOS and Windows ARM64 ready for 0.4.0** (branch `feature/mac-arm-final`, 2026-10-29):
   - 🟢 macOS unified title bar in code (`maininterface/macos_titlebar.cpp`): the system frame kept, its title bar
     transparent and untitled, the content under it; the top bars start after the traffic lights; no redesign

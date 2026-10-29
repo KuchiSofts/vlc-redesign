@@ -24,7 +24,7 @@ import VLC.Util
 // Figma "Customize Player": "Bookmarks", the bookmarks of the media
 RedesignIconButton {
     enabled: Player.isStarted
-    iconSource: "qrc:///redesign/icons/bookmarks/default.png"
+    iconSource: "qrc:///redesign/icons/bookmarks/default.svg"
     onClicked: DialogsProvider.bookmarksDialog()
     description: qsTr("Bookmarks")
     AccessibleCompat.id: "bookmarksButton"

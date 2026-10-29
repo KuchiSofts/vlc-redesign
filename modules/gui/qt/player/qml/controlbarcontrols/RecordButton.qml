@@ -23,7 +23,7 @@ import VLC.Util
 RedesignIconButton {
     id: control
     enabled: !paintOnly && Player.isStarted
-    iconSource: "qrc:///redesign/icons/record/default.png"
+    iconSource: "qrc:///redesign/icons/record/default.svg"
     // the accent while recording
     checked: Player.recording
     description: qsTr("Record")

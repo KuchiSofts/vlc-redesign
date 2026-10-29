@@ -67,6 +67,19 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   the cone stays sharp; `.ico` has 16, 20, 24, 32, 40, 48, 64, 96, 128 and 256 px, `.icns` 16 to 512@2x, all from
   the vector (`extras/juxtopposed/make-app-icon.py`). The start page, the player's background and the update
   notice draw the same logo in place of upstream's cone, and the seasonal cones (Christmas, April Fools) are gone.
+- **A button shows when what it opens is open** (suggested in [#10](https://github.com/KuchiSofts/vlc-redesign/issues/10)).
+  Settings, Languages and tracks, Chapters, Bookmarks, Programs, Cast, HDR, Effects, Zoom, the ⋯ menu, the top
+  bar's menu and library buttons and Live TV's channel list light up while their panel, popup or menu shows: the
+  accent icon on a tint of the accent, with no border, the same look as a toggle that is on (the small line under
+  toggles is gone). On Android the player's buttons and toggles do the same.
+- **Ctrl+wheel over the video changes the subtitle size** (suggested in [#10](https://github.com/KuchiSofts/vlc-redesign/issues/10)),
+  as in classic VLC, instead of zooming the whole interface. It goes by 10 % near 100 %, then by 25 %, from 25 % to
+  500 %, and a short *Subtitle size 120%* message shows it; Ctrl+0 goes back to 100 %. Elsewhere in the window
+  Ctrl+wheel still zooms the interface. Both are shortcuts in Settings, Keyboard Shortcuts (*Scale up/down subtitles
+  text*, and the new *Zoom the interface in/out* in the Interface group), which can now take a turn of the wheel
+  with Ctrl, Alt or Shift. The size stepper of the subtitles panel uses the same steps, and ASS/SSA subtitles now
+  follow the size while they play. On Android: Ctrl + mouse wheel over the video, Ctrl+0, and a *Subtitle size*
+  slider with Reset in the subtitles tab (ASS/SSA keep their size there).
 - **Every window and popup has a border like the main window.** Dialogs (Restore the play queue, confirmations,
   Go to Time, Media Statistics, Plugins, Folder information, What's new, Settings, Keyboard Shortcuts, the welcome),
   menus, the panels that open from the player's buttons (tracks and subtitles, the queue card, cast, sleep timer,
@@ -119,6 +132,21 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Fixed
 
+- **Icons sharp at 125, 150 and 200 %.** Every icon of the redesign was drawn for 100 % and stretched at a higher
+  Windows scaling (the 1.5 px lines of the queue icon came out 76 % strong over four to six pixels at 200 %): Qt
+  draws an image at the screen's density only when the name written in the interface ends in `.svg`, and the icons
+  were still named by the PNG files they once were. Now named by their SVG: at 200 % the lines are three pixels,
+  two of them full, as the design draws them; at 100 % they match Figma (1.5 px, `#737373` on the dark bar,
+  `#4D4D4D` on the light one).
+- **Live TV on a DLNA TV: one stream per channel, with its picture and its sound.** A channel restarting its
+  picture a few seconds in (after an advert, or the adaptive stream changing its format) made a second stream,
+  which the TV loaded again; now the new picture goes on in the same stream. A cast started on a channel already
+  playing made a stream with the picture or the sound alone, then another with both (or sent the sound only):
+  the first stream of a channel now waits up to 3 s for both.
+- **Settings, Audio: *Maximum volume* is drawn as the design draws it again.** Since the slider was made to cover
+  VLC's whole range (60 to 300 %), its scale started at 60 % under a label reading 100 %, and 200 % stood right of
+  the middle. The slider keeps the design's 100 to 300 % and widens only for a value set below 100 % elsewhere (the
+  same for the OSD duration). Found by the final 1:1 check against the Figma frames (Settings - audio, 3073:15879).
 - **Online subtitles are loaded by themselves only for the right film.** The automatic search took the title it
   guessed from the file name: a clip named `silent.mp4` got the subtitles of *Silent Hill*. A subtitle now loads by
   itself only when it was made for that very file (the services know it by its fingerprint) or the title is sure:

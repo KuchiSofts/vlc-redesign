@@ -94,9 +94,15 @@ Item {
             return null
         const lo = Number(minimum), hi = Number(maximum)
         const range = (values, labels, from, to) => ({ from: from, to: to, ticks: values, labels: labels })
-        // the whole range VLC takes, the design's ticks inside it (a value
-        // set elsewhere, out of the design's scale, is shown and kept)
-        const limits = (from, to) => Number.isFinite(lo) && Number.isFinite(hi) && lo < hi ? [lo, hi] : [from, to]
+        // the design's scale, widened within the range VLC takes only as far
+        // as a value set elsewhere needs (it is shown and kept): at the
+        // design's scale the labels at the ends are the ends' values
+        const limits = (from, to) => {
+            if (!(Number.isFinite(lo) && Number.isFinite(hi) && lo < hi))
+                return [from, to]
+            const v = Number(settingValue)
+            return Number.isFinite(v) ? [Math.max(lo, Math.min(from, v)), Math.min(hi, Math.max(to, v))] : [from, to]
+        }
         const seq = (from, to, step) => { const out = []; for (let v = from; v <= to + 1e-9; v += step) out.push(v); return out }
         switch (settingKey) {
         case "redesign/notification-duration":
@@ -344,7 +350,7 @@ Item {
                         width: root.px(24)
                         height: width
                         sourceSize: Qt.size(width, height)
-                        source: "qrc:///redesign/icons/chevron-down/default.png"
+                        source: "qrc:///redesign/icons/chevron-down/default.svg"
                     }
                 }
             }

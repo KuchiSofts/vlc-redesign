@@ -39706,6 +39706,23 @@ msgstr "Kontrol Waktu"
 msgid "Media Manager List"
 msgstr "Daftar Media Manager"
 
+#: modules/gui/qt/qt.cpp:352
+msgid "Zoom the interface in"
+msgstr "Perbesar antarmuka"
+
+#: modules/gui/qt/qt.cpp:353
+msgid "Zoom the interface out"
+msgstr "Perkecil antarmuka"
+
+#: modules/gui/qt/player/qml/Player.qml:951
+#, no-c-format
+msgid "Subtitle size %1%"
+msgstr "Ukuran subtitel %1%"
+
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:153
+msgid "Or turn the mouse wheel while holding Ctrl, Alt or Shift"
+msgstr "Atau putar roda mouse sambil menahan Ctrl, Alt, atau Shift"
+
 #~ msgid "Ok"
 #~ msgstr "OK"
 

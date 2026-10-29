@@ -52,6 +52,9 @@ Thank you to everyone who tested, reported and translated:
     ([#5](https://github.com/KuchiSofts/vlc-redesign/issues/5)).
   - [@Brackets124](https://github.com/Brackets124): the playback speed button
     ([#9](https://github.com/KuchiSofts/vlc-redesign/issues/9)).
+- **Ideas:**
+  - [@muhammadali-og](https://github.com/muhammadali-og): buttons that show what is open, and Ctrl + wheel for
+    the subtitle size ([#10](https://github.com/KuchiSofts/vlc-redesign/issues/10)).
 - **Translations:**
   - [@Kinglucas962](https://github.com/Kinglucas962): Brazilian Portuguese
     ([#6](https://github.com/KuchiSofts/vlc-redesign/pull/6)).

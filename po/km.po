@@ -39455,6 +39455,23 @@ msgstr "ការ​គ្រប់គ្រង​ពេលវេលា"
 msgid "Media Manager List"
 msgstr "បញ្ជី​គ្រប់គ្រង​មេឌៀ"
 
+#: modules/gui/qt/qt.cpp:352
+msgid "Zoom the interface in"
+msgstr "ពង្រីកផ្ទៃប្រើប្រាស់"
+
+#: modules/gui/qt/qt.cpp:353
+msgid "Zoom the interface out"
+msgstr "បង្រួមផ្ទៃប្រើប្រាស់"
+
+#: modules/gui/qt/player/qml/Player.qml:951
+#, no-c-format
+msgid "Subtitle size %1%"
+msgstr "ទំហំចំណងជើងរង %1%"
+
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:153
+msgid "Or turn the mouse wheel while holding Ctrl, Alt or Shift"
+msgstr "ឬបង្វិលកង់កណ្ដុរ ខណៈចុចជាប់ Ctrl, Alt ឬ Shift"
+
 #~ msgid "Ok"
 #~ msgstr "យល់ព្រម"
 

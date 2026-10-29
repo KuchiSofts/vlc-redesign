@@ -39,6 +39,9 @@ Widgets.IconToolButton {
 
     // NOTE: We want to pop the menu above the button.
     onClicked: menu.popup(this.mapToGlobal(0, 0), true)
+    // open while its menu shows (a menu of the system: told by its signals)
+    property bool _menuShown: false
+    active: _menuShown
 
     enabled: (paintOnly === false && Player.hasPrograms)
 
@@ -48,8 +51,8 @@ Widgets.IconToolButton {
         player: Player
         ctx: MainCtx
 
-        onAboutToShow: root.requestLockUnlockAutoHide(true)
-        onAboutToHide: root.requestLockUnlockAutoHide(false)
+        onAboutToShow: { root._menuShown = true; root.requestLockUnlockAutoHide(true) }
+        onAboutToHide: { root._menuShown = false; root.requestLockUnlockAutoHide(false) }
     }
 
     function forceUnlock() {

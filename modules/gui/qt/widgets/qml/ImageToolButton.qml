@@ -32,6 +32,9 @@ T.ToolButton {
     property string description
 
     property bool paintOnly: false
+    // open (what it opens shows) or ON (checked): on a tint of the accent,
+    // as IconToolButton (no border: the focus ring stays the keyboard's)
+    property bool active: false
 
     property size sourceSize: Qt.size(VLCStyle.icon_normal, VLCStyle.icon_normal)
 
@@ -72,7 +75,10 @@ T.ToolButton {
 
         enabled: theme.initialized
 
-        color: theme.bg.primary
+        color: (control.checked || control.active) && !(control.hovered || control.down)
+               ? Qt.alpha(theme.accent, theme.palette.isDark ? 0.18 : 0.14)
+               : theme.bg.primary
+        animationDuration: 120
         border.color: control.visualFocus ? theme.visualFocus : Qt.alpha(theme.visualFocus, 0.0)
     }
 

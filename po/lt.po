@@ -39372,6 +39372,23 @@ msgstr "Laiko valdymas"
 msgid "Media Manager List"
 msgstr "Multimedijos tvarkytuvės sąrašas"
 
+#: modules/gui/qt/qt.cpp:352
+msgid "Zoom the interface in"
+msgstr "Didinti sąsają"
+
+#: modules/gui/qt/qt.cpp:353
+msgid "Zoom the interface out"
+msgstr "Mažinti sąsają"
+
+#: modules/gui/qt/player/qml/Player.qml:951
+#, no-c-format
+msgid "Subtitle size %1%"
+msgstr "Subtitrų dydis %1%"
+
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:153
+msgid "Or turn the mouse wheel while holding Ctrl, Alt or Shift"
+msgstr "Arba sukite pelės ratuką laikydami nuspaudę Ctrl, Alt ar Shift"
+
 #~ msgid "Ok"
 #~ msgstr "Gerai"
 

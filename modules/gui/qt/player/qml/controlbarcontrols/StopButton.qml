@@ -24,7 +24,7 @@ import VLC.Util
 RedesignIconButton {
     id: stopBtn
     enabled: Player.isStarted
-    iconSource: "qrc:///redesign/icons/stop/default.png"
+    iconSource: "qrc:///redesign/icons/stop/default.svg"
     onClicked: MainPlaylistController.stop()
     description: qsTr("Stop")
     AccessibleCompat.id: "stopButton"

@@ -40498,6 +40498,23 @@ msgstr "Contrôles temporels"
 msgid "Media Manager List"
 msgstr "Liste du gestionnaire de médias"
 
+#: modules/gui/qt/qt.cpp:352
+msgid "Zoom the interface in"
+msgstr "Agrandir l'interface"
+
+#: modules/gui/qt/qt.cpp:353
+msgid "Zoom the interface out"
+msgstr "Réduire l'interface"
+
+#: modules/gui/qt/player/qml/Player.qml:951
+#, no-c-format
+msgid "Subtitle size %1%"
+msgstr "Taille des sous-titres %1%"
+
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:153
+msgid "Or turn the mouse wheel while holding Ctrl, Alt or Shift"
+msgstr "Ou tournez la molette de la souris en maintenant Ctrl, Alt ou Shift"
+
 #~ msgid "Ok"
 #~ msgstr "OK"
 

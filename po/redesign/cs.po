@@ -8567,3 +8567,20 @@ msgstr "Vždy používat výstup HDR"
 #: modules/video_output/win32/direct3d11.cpp:86
 msgid "Generate HDR from SDR"
 msgstr "Generovat HDR ze SDR"
+
+#: modules/gui/qt/qt.cpp:352
+msgid "Zoom the interface in"
+msgstr "Zvětšit rozhraní"
+
+#: modules/gui/qt/qt.cpp:353
+msgid "Zoom the interface out"
+msgstr "Zmenšit rozhraní"
+
+#: modules/gui/qt/player/qml/Player.qml:951
+#, no-c-format
+msgid "Subtitle size %1%"
+msgstr "Velikost titulků %1%"
+
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:153
+msgid "Or turn the mouse wheel while holding Ctrl, Alt or Shift"
+msgstr "Nebo otočte kolečkem myši se stisknutou klávesou Ctrl, Alt nebo Shift"

@@ -280,7 +280,7 @@ ColumnLayout {
                                     anchors.verticalCenter: parent.verticalCenter
                                     width: root.px(24)
                                     height: width
-                                    source: "qrc:///redesign/track-check-active.png"
+                                    source: "qrc:///redesign/track-check-active.svg"
                                     color: VLCStyle.redesign.accentTint
                                 }
                             }
@@ -402,7 +402,7 @@ ColumnLayout {
             width: root.px(24)
             height: width
             sourceSize: Qt.size(width, height)
-            source: "qrc:///redesign/icons/chevron-down/default.png"
+            source: "qrc:///redesign/icons/chevron-down/default.svg"
         }
     }
 

@@ -218,7 +218,7 @@ T.Control {
 
         Image {
             anchors.centerIn: parent
-            source: "qrc:///redesign/player/pause.png"
+            source: "qrc:///redesign/player/pause.svg"
             width: VLCStyle.redesign.iconSize
             height: VLCStyle.redesign.iconSize
             sourceSize: Qt.size(width, height)

@@ -42,7 +42,7 @@ Widgets.IconToolButton {
 
         Image {
             anchors.centerIn: parent
-            source: "qrc:///redesign/icons/forward-15-sec/default.png"
+            source: "qrc:///redesign/icons/forward-15-sec/default.svg"
             width: VLCStyle.redesign.iconSize
             height: VLCStyle.redesign.iconSize
             sourceSize: Qt.size(width, height)

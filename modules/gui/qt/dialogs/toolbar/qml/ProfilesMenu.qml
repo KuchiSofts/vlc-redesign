@@ -78,7 +78,7 @@ Controls.Popup {
                         width: VLCStyle.dp(24, VLCStyle.scale)
                         height: VLCStyle.dp(24, VLCStyle.scale)
                         anchors.verticalCenter: parent.verticalCenter
-                        source: "qrc:///redesign/icons/check/selected.png"
+                        source: "qrc:///redesign/icons/check/selected.svg"
                         opacity: activeProfile ? 1 : 0
                     }
                     Text {
@@ -114,7 +114,7 @@ Controls.Popup {
                                ? VLCStyle.redesign.color("#2e2e2e", "#8e8e8d") : "transparent"
                     }
                     contentItem: Image {
-                        source: "qrc:///redesign/icons/more/default.png"
+                        source: "qrc:///redesign/icons/more/default.svg"
                         sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
                         fillMode: Image.Pad
                     }

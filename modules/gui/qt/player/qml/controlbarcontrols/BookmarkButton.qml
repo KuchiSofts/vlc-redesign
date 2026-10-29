@@ -32,7 +32,7 @@ RedesignIconButton {
 
     signal requestLockUnlockAutoHide(bool lock)
 
-    iconSource: "qrc:///redesign/icons/bookmark/default.png"
+    iconSource: "qrc:///redesign/icons/bookmark/default.svg"
     text: VLCIcons.bookmark
     description: qsTr("Bookmarks")
 
@@ -40,6 +40,9 @@ RedesignIconButton {
 
     // NOTE: We want to pop the menu above the button.
     onClicked: menu.popup(this.mapToGlobal(0, 0), true)
+    // open while its menu shows (a menu of the system: told by its signals)
+    property bool _menuShown: false
+    active: _menuShown
 
     enabled: !paintOnly && (Player.hasChapters || Player.hasTitles || MainCtx.mediaLibraryAvailable)
 
@@ -50,8 +53,8 @@ RedesignIconButton {
 
         player: Player
 
-        onAboutToShow: root.requestLockUnlockAutoHide(true)
-        onAboutToHide: root.requestLockUnlockAutoHide(false)
+        onAboutToShow: { root._menuShown = true; root.requestLockUnlockAutoHide(true) }
+        onAboutToHide: { root._menuShown = false; root.requestLockUnlockAutoHide(false) }
     }
 
     function forceUnlock() {

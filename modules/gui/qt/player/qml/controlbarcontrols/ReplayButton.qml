@@ -23,7 +23,7 @@ import VLC.Util
 // Figma "Customize Player": "Replay", the media from its start
 RedesignIconButton {
     enabled: Player.isStarted && Player.seekable
-    iconSource: "qrc:///redesign/icons/replay/default.png"
+    iconSource: "qrc:///redesign/icons/replay/default.svg"
     onClicked: Player.jumpToPos(0)
     description: qsTr("Replay")
     AccessibleCompat.id: "replayButton"

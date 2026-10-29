@@ -113,6 +113,9 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   works for SRT, MicroDVD, ASS/SSA, SAMI, WebVTT, the text tracks inside videos and the subtitle lines on the seek
   bar, on every system. *Settings › Subtitles › Encoding* still forces one when you choose it. A character that
   cannot be read shows as `�`, never as a wrong letter.
+- **Hebrew and Arabic ASS/SSA subtitles in the right order.** Their full stops, question marks, brackets and
+  numbers showed on the wrong side of the line (ASS subtitles were laid out left to right, as the old VSFilter did);
+  they now read as SRT subtitles always did.
 - **Picture subtitles (DVD, Blu-ray, DVB) stay smooth** on Windows when the video is scaled with the *Point*,
   *Video processor* or *Super Resolution* upscaler: they were blocky there. Text subtitles were already drawn at the
   size of the screen and are unchanged.
@@ -185,6 +188,9 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   of `extras/juxtopposed/fixtures/subtitles` (28 encodings, 19 languages and mixed lines, BOM or not, CRLF or LF, five formats,
   files without a language in their name, one-line cues): 212/212 decoded right with glibc iconv (Linux) and with
   GNU libiconv as VLC uses it on Windows.
+- **libass: base direction from the text** (style Encoding -1, `ASS_FEATURE_WHOLE_TEXT_LAYOUT`,
+  `ASS_FEATURE_BIDI_BRACKETS`): right-to-left lines follow the Unicode bidi algorithm, as freetype does;
+  left-to-right lines are unchanged.
 - **direct3d11: subpicture regions get a bilinear sampler of their own**; they were drawn with the sampler the video
   quad left bound (a point one with the point, processor and super resolution upscalers). Measured on captures:
   text subtitles are pixel for pixel the same (they are rasterised at the display size and drawn 1:1), PGS drawn

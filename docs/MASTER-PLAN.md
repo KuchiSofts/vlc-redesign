@@ -17,7 +17,11 @@ What is being worked on, updated as it changes (2026-10-28):
   the display size (the same crop whatever the source size), picture subtitles were blocky with the point,
   processor and super resolution upscalers (fixed: a sampler of their own). Encodings: a detector for 28
   encodings (`modules/codec/subs_charset.c`) in the subtitle and WebVTT demuxes, subsdec and the seek bar's cue
-  reader, 212/212 corpus files right (glibc and GNU libiconv). Left: Linux and macOS outputs only read in the code
+  reader, 212/212 corpus files right (glibc and GNU libiconv); in VLC, legacy SRT, ASS and a Matroska track
+  in Windows-1255 read right with an English interface. ASS right-to-left lines follow the Unicode bidi algorithm
+  (libass base direction from the text). Fonts: every script of a mixed test file drew with the system fallback
+  (no empty boxes; emoji in black and white). CPU while playing 1080p with SRT or ASS: 2-5 % of one core, as
+  before. Left: Linux and macOS outputs only read in the code
   (OpenGL samples subpictures bilinearly, the macOS sample-buffer display draws them in backing pixels), HiDPI
   above 100 % not run (one 100 % screen here), Android (separate code base) listed in the report.
 

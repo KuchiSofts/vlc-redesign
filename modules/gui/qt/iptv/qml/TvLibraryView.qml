@@ -160,6 +160,7 @@ FocusScope {
                             height: width
                             source: "qrc:///redesign/icons/play/outline-active.svg"
                             sourceSize: Qt.size(width, height)
+                            smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                         }
                     }
                 }

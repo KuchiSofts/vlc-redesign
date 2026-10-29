@@ -66,6 +66,7 @@ T.ComboBox {
         width: root.px(24)
         height: width
         sourceSize: Qt.size(width, height)
+        smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
         source: "qrc:///redesign/icons/chevron-down/default.svg"
     }
 
@@ -116,6 +117,7 @@ T.ComboBox {
             Image {
                 // drawn at the size shown (an SVG: sharp at any scale and zoom)
                 sourceSize: Qt.size(width, height)
+                smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                 id: choiceIcon
                 visible: option.iconDir.length > 0
                 readonly property bool twoTone: !VLCStyle.redesign.defaultAccent
@@ -128,6 +130,7 @@ T.ComboBox {
                 Impl.ColorImage {
                     // drawn at the size shown (an SVG: sharp at any scale and zoom)
                     sourceSize: Qt.size(width, height)
+                    smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                     anchors.fill: parent
                     visible: choiceIcon.twoTone
                     source: visible ? option.iconDir + "/default-accent.svg" : ""
@@ -137,6 +140,7 @@ T.ComboBox {
             Impl.ColorImage {
                 // drawn at the size shown (an SVG: sharp at any scale and zoom)
                 sourceSize: Qt.size(width, height)
+                smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                 visible: option.chosen
                 anchors.right: parent.right
                 anchors.rightMargin: root.px(13)

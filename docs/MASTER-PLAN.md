@@ -26,9 +26,26 @@ What is being worked on, updated as it changes (2026-10-29):
     every icon was drawn for 100 % and stretched. Named by their SVG now. Queue icon strokes (coverage per row):
     200 % `19 57 76 76 57 19` → `50 100 100 50` (exact); 100 % unchanged `76 76` = Figma's 75/75 (`#737373` /
     `#4D4D4D`). The 1.9 px of the light-theme audit was the PNG build `g6da8c7cd1a` (before `f637ae1bfa`).
-  - 🟡 At 125 and 150 % the strokes have the right width but sit on fractional device pixels (logical × 1.25/1.5):
-    150 % `32 81 81 32` where whole pixels give `13 100 100 13`. Needs the icon snapped to device pixels (scene
-    position, not bound in QML): open.
+  - 🟢 At 125 and 150 % the strokes sat on fractional device pixels (logical × 1.25/1.5): 150 % `32 81 81 32`.
+    Fixed in `feature/integration2` without moving any item: an SVG icon drawn at its size whose size × ratio is
+    whole is drawn unfiltered (`smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)`,
+    69 icon items), so its texture lands 1:1: queue icon 125 % `19 100 69 | 95 95`, 150 % `63 100 63 |
+    13 100 100 13` (the SVG as Qt draws it), 100/175/200 % unchanged, dark and light. Not by `source`: an
+    IconImage's `source` read in its own binding is not followed once it changes (the bar's icons stayed
+    filtered). Image-provider icons (`image://svgcolor`) stay filtered. Settings sidebar and crop link icons at
+    100 %: same ink as Figma (sidebar 82/79/120/48/115/78 vs 81/79/121/47/116/78; link 64 vs 66), the link icon
+    sits half a pixel higher than in the frame (two 76 % rows where Figma has one full + one partial).
+  - 🟢 Classic windows' borders (Open Media, Media Information, Help; Convert = Open Media): DWM border
+    `#4C4A48` set in both themes (logged with `DwmSetWindowAttribute` under cdb; Windows does not return it),
+    dark mode flag per theme, round corners. Open Network Stream is drawn in QML: 1 px `#4C4A48`, dark and light.
+  - 🟢 Cast panel keys (fake Chromecast only): Tab, then the arrows go row by row; Down on *Show the video here
+    too* went nowhere, now goes round to the first row; opened from the keyboard the first row has the keyboard.
+    With the fake Chromecast chosen, the switch is greyed and skipped, with its note. Opened with the mouse,
+    arrows stay VLC's hotkeys until Tab (the interface's rule: keys go to an item with visual focus).
+  - 🔴 Quit: 2 of 10 tour runs hit `assert(medialib)` in `MLBaseModel::setMl` on quit (a binding gives the models
+    a null `MediaLib` while the interface goes down; debug builds show the CRT assert dialog and never exit).
+    46 plain quits (window close, rc quit, `--vout=dummy`, `QT_QUICK_BACKEND=software`, after the library pages,
+    light theme) all exited 0. A full dump is kept locally (not in the repository).
   - 🟢 DLNA live channels (`96287f0157`): a restarted picture goes on in the same stream (one stream per channel,
     was two); the first stream of a channel waits up to 3 s for its sound and picture (a cast on a playing channel
     sent both: PIDs 100 + 200, 3 of 3 runs). Fake DLNA TV, Pluto TV.

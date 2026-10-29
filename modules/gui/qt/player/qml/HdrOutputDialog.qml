@@ -73,6 +73,7 @@ Controls.Popup {
                 width: root.px(24)
                 height: width
                 sourceSize: Qt.size(width, height)
+                smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                 source: "qrc:///redesign/icons/chevron-down/default.svg"
             }
         }
@@ -133,6 +134,7 @@ Controls.Popup {
                                 Impl.ColorImage {
                                     // drawn at the size shown (an SVG: sharp at any scale and zoom)
                                     sourceSize: Qt.size(width, height)
+                                    smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                                     visible: choice.chosen
                                     anchors.right: parent.right
                                     anchors.rightMargin: root.px(13)

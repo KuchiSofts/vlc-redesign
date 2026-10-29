@@ -732,6 +732,7 @@ ColumnLayout {
                 Impl.ColorImage {
                     // drawn at the size shown (an SVG: sharp at any scale and zoom)
                     sourceSize: Qt.size(width, height)
+                    smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                     anchors.fill: parent
                     visible: row.checked
                     source: "qrc:///redesign/track-check-active.svg"

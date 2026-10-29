@@ -1464,6 +1464,7 @@ FocusScope {
                     visible: libraryRow.cover === "" || coverImage.status !== Image.Ready
                     source: libraryRow.iconSource
                     sourceSize: Qt.size(width, height)
+                    smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                     fillMode: Image.Pad
                     // Figma "Player - Light": the icons #2E2E2E
                     color: libraryRow.smallIcon && !VLCStyle.palette.isDark ? "#2e2e2e" : "transparent"

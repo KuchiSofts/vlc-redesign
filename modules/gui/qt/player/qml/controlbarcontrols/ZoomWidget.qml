@@ -53,6 +53,7 @@ Widgets.ComboBoxExt {
             width: VLCStyle.dp(20, VLCStyle.scale)
             height: width
             sourceSize: Qt.size(width, height)
+            smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.left
             opacity: root.enabled ? 1 : 0.4

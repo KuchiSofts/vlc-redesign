@@ -46,6 +46,7 @@ Widgets.IconToolButton {
             width: VLCStyle.redesign.iconSize
             height: VLCStyle.redesign.iconSize
             sourceSize: Qt.size(width, height)
+            smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
             fillMode: Image.PreserveAspectFit
             opacity: stepfwdBtn.enabled ? 1 : 0.4
         }

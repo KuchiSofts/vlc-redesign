@@ -702,10 +702,12 @@ static int Demux( demux_t *p_demux )
         /* Basic check to be sure we don't have a empty title
          * go to next title if so */
         //assert( p_buffer[41] == 0xbf && p_buffer[1027] == 0xbf );
-        DemuxBlock( p_demux, p_buffer, DVD_VIDEO_LB_LEN );
 
-        /* Parse the contained dsi packet */
+        /* Parse the contained dsi packet, before demuxing the NAV pack: it
+         * anchors the timestamps of this vobu, the NAV pack's SCR included */
         DvdReadHandleDSI( p_demux, p_buffer );
+
+        DemuxBlock( p_demux, p_buffer, DVD_VIDEO_LB_LEN );
 
         if( p_sys->i_pack_len >= 1024 )
         {
@@ -923,7 +925,7 @@ void DvdReadESNew( demux_t *p_demux, int i_id, int i_lang, int i_code_ext )
 
     if( tk->b_configured ) return;
 
-    if( ps_track_fill( tk, NULL, i_id, NULL, 0, true ) )
+    if( ps_track_fill( tk, NULL, i_id, NULL, 0, PS_MAP_OVERRIDE_MPEG2_ONLY ) )
     {
         msg_Warn( p_demux, "unknown codec for id=0x%x", i_id );
         return;

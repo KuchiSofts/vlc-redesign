@@ -39488,6 +39488,23 @@ msgstr "সময় কন্ট্রোল"
 msgid "Media Manager List"
 msgstr "মিডিয়া ব্যবস্থাপকের তালিকা"
 
+#: modules/gui/qt/qt.cpp:352
+msgid "Zoom the interface in"
+msgstr "ইন্টারফেস বড় করুন"
+
+#: modules/gui/qt/qt.cpp:353
+msgid "Zoom the interface out"
+msgstr "ইন্টারফেস ছোট করুন"
+
+#: modules/gui/qt/player/qml/Player.qml:951
+#, no-c-format
+msgid "Subtitle size %1%"
+msgstr "সাবটাইটেলের আকার %1%"
+
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:153
+msgid "Or turn the mouse wheel while holding Ctrl, Alt or Shift"
+msgstr "অথবা Ctrl, Alt বা Shift চেপে ধরে মাউসের চাকা ঘোরান"
+
 #~ msgid "Ok"
 #~ msgstr "ঠিক আছে"
 

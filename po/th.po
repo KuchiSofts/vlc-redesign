@@ -38699,6 +38699,23 @@ msgstr "ควบคุมเวลา"
 msgid "Media Manager List"
 msgstr "รายการตัวจัดการสื่อ"
 
+#: modules/gui/qt/qt.cpp:352
+msgid "Zoom the interface in"
+msgstr "ขยายส่วนติดต่อ"
+
+#: modules/gui/qt/qt.cpp:353
+msgid "Zoom the interface out"
+msgstr "ย่อส่วนติดต่อ"
+
+#: modules/gui/qt/player/qml/Player.qml:951
+#, no-c-format
+msgid "Subtitle size %1%"
+msgstr "ขนาดคำบรรยาย %1%"
+
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:153
+msgid "Or turn the mouse wheel while holding Ctrl, Alt or Shift"
+msgstr "หรือหมุนล้อเมาส์ขณะกด Ctrl, Alt หรือ Shift ค้างไว้"
+
 #~ msgid "Ok"
 #~ msgstr "ตกลง"
 

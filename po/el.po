@@ -40841,6 +40841,23 @@ msgstr "Έλεγχος χρόνου"
 msgid "Media Manager List"
 msgstr "Λίστα διαχειριστή πολυμέσων"
 
+#: modules/gui/qt/qt.cpp:352
+msgid "Zoom the interface in"
+msgstr "Μεγέθυνση διεπαφής"
+
+#: modules/gui/qt/qt.cpp:353
+msgid "Zoom the interface out"
+msgstr "Σμίκρυνση διεπαφής"
+
+#: modules/gui/qt/player/qml/Player.qml:951
+#, no-c-format
+msgid "Subtitle size %1%"
+msgstr "Μέγεθος υποτίτλων %1%"
+
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:153
+msgid "Or turn the mouse wheel while holding Ctrl, Alt or Shift"
+msgstr "Ή γυρίστε τη ροδέλα του ποντικιού κρατώντας πατημένο το Ctrl, Alt ή Shift"
+
 #~ msgid "Ok"
 #~ msgstr "Εντάξει"
 

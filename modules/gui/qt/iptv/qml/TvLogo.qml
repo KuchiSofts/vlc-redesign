@@ -36,12 +36,14 @@ Rectangle {
         asynchronous: true
         cache: true
         smooth: true
-        visible: status === Image.Ready
+        // (a channel without a logo comes as one empty pixel)
+        readonly property bool hasLogo: status === Image.Ready && implicitWidth > 1
+        visible: hasLogo
     }
 
     Text {
         anchors.centerIn: parent
-        visible: image.status !== Image.Ready
+        visible: !image.hasLogo
         // "Channel 12 HD" -> "C1", "BBC One" -> "BO"
         text: root.name.replace(/^[A-Za-z]{2,3}\s*[:|]\s+/, "").split(/\s+/).filter(w => w.length > 0)
                   .slice(0, 2).map(w => w.charAt(0).toUpperCase()).join("")

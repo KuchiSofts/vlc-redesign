@@ -347,6 +347,11 @@ static void ShowDialog   ( intf_thread_t *, int, int, intf_dialog_args_t * );
 #define TV_LIST_TEXT N_( "Channel list" )
 #define TV_INFO_TEXT N_( "Channel banner" )
 
+/* The interface's zoom (Settings > Shortcuts, "Interface"): Ctrl+wheel out of
+ * the video, where it sizes the subtitles (key-subtitle-text-scale-up/down) */
+#define INTF_ZOOM_IN_TEXT N_( "Zoom the interface in" )
+#define INTF_ZOOM_OUT_TEXT N_( "Zoom the interface out" )
+
 static const int initial_prefs_view_list[] = { 0, 1, 2 };
 static const char *const initial_prefs_view_list_texts[] =
     { N_("Simple"), N_("Advanced"), N_("Expert") };
@@ -548,6 +553,13 @@ vlc_module_begin ()
     add_string_inner( CONFIG_ITEM_KEY, "qt-key-tv-previous", TV_PREVIOUS_TEXT, nullptr, "Backspace" )
     add_string_inner( CONFIG_ITEM_KEY, "qt-key-tv-list", TV_LIST_TEXT, nullptr, "Enter" )
     add_string_inner( CONFIG_ITEM_KEY, "qt-key-tv-info", TV_INFO_TEXT, nullptr, "i" )
+#ifdef __APPLE__
+    add_string_inner( CONFIG_ITEM_KEY, "qt-key-intf-zoom-in", INTF_ZOOM_IN_TEXT, nullptr, "Command+Mouse Wheel Up" )
+    add_string_inner( CONFIG_ITEM_KEY, "qt-key-intf-zoom-out", INTF_ZOOM_OUT_TEXT, nullptr, "Command+Mouse Wheel Down" )
+#else
+    add_string_inner( CONFIG_ITEM_KEY, "qt-key-intf-zoom-in", INTF_ZOOM_IN_TEXT, nullptr, "Ctrl+Mouse Wheel Up" )
+    add_string_inner( CONFIG_ITEM_KEY, "qt-key-intf-zoom-out", INTF_ZOOM_OUT_TEXT, nullptr, "Ctrl+Mouse Wheel Down" )
+#endif
 
     cannot_unload_broken_library()
 

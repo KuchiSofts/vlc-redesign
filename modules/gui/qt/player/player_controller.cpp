@@ -1870,10 +1870,33 @@ int PlayerController::getSubtitleTextScale() const
 void PlayerController::setSubtitleTextScale(int scale)
 {
     Q_D(PlayerController);
-    scale = std::clamp(scale, 30, 300);
+    // the range of VLC's hotkeys (the option takes 10 to 500)
+    scale = std::clamp(scale, 25, 500);
     vlc_player_SetSubtitleTextScale(d->m_player, scale);
     config_PutInt("sub-text-scale", scale);
     emit subtitleTextScaleChanged(scale);
+}
+
+int PlayerController::stepSubtitleTextScale(int direction, bool announce)
+{
+    int scale = 100;
+    if (direction != 0)
+    {
+        // as modules/control/hotkeys.c: 10 by 10 up to 50 away from 100 %,
+        // then 25 by 25, on a multiple of the step
+        scale = getSubtitleTextScale();
+        int delta = (scale > 100 ? scale - 100 : 100 - scale) / 25;
+        delta = delta <= 1 ? 10 : 25;
+        if (direction < 0)
+            delta = -delta;
+        scale += delta;
+        scale -= scale % delta;
+        scale = std::clamp(scale, 25, 500);
+    }
+    setSubtitleTextScale(scale);
+    if (announce)
+        emit subtitleTextScaleStepped(scale);
+    return scale;
 }
 
 void PlayerController::refreshSubtitleLook()

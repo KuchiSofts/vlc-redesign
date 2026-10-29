@@ -85,6 +85,7 @@
 #include <QClipboard>
 
 #include <QQmlProperty>
+#include <QQuickWindow>
 
 #include <QWindow>
 #include <QScreen>
@@ -1449,6 +1450,136 @@ QString MainCtx::tvKeyAction(Qt::Key key, Qt::KeyboardModifiers modifiers) const
             return QString::fromLatin1(action[1]);
     }
     return {};
+}
+
+void MainCtx::setSubtitleWheelArea(QObject *item)
+{
+    if (m_subtitleWheelArea == item)
+        return;
+    m_subtitleWheelArea = item;
+    emit subtitleWheelAreaChanged();
+}
+
+void MainCtx::setSubtitleWheelExclusion(QObject *item)
+{
+    if (m_subtitleWheelExclusion == item)
+        return;
+    m_subtitleWheelExclusion = item;
+    emit subtitleWheelExclusionChanged();
+}
+
+// One of the keys of an option of keys (tab separated)
+static bool optionHasKey(qt_intf_t *intf, const char *option, uint_fast32_t vlcKey)
+{
+    char *keys = var_InheritString(intf, option);
+    bool found = false;
+    for (char *buf, *name = keys ? strtok_r(keys, "	", &buf) : nullptr;
+         name && !found; name = strtok_r(nullptr, "	", &buf))
+        found = vlc_str2keycode(name) == vlcKey;
+    free(keys);
+    return found;
+}
+
+// The step of the subtitles' size a key makes: 1 larger, -1 smaller, 0 back
+// to 100 %, 2 none
+static int subtitleScaleStep(qt_intf_t *intf, uint_fast32_t vlcKey)
+{
+    if (optionHasKey(intf, "key-subtitle-text-scale-up", vlcKey))
+        return 1;
+    if (optionHasKey(intf, "key-subtitle-text-scale-down", vlcKey))
+        return -1;
+    if (optionHasKey(intf, "key-subtitle-text-scale-normal", vlcKey))
+        return 0;
+    return 2;
+}
+
+// The interface's zoom a key makes: 1 in, -1 out, 0 none
+static int interfaceZoomStep(qt_intf_t *intf, uint_fast32_t vlcKey)
+{
+    if (optionHasKey(intf, "qt-key-intf-zoom-in", vlcKey))
+        return 1;
+    if (optionHasKey(intf, "qt-key-intf-zoom-out", vlcKey))
+        return -1;
+    return 0;
+}
+
+bool MainCtx::wheelKeyAction(int vlcKey, const QPointF &scenePos, bool apply)
+{
+    if (vlcKey == 0 || m_wheelCapture)
+        return false;
+    // over the video: no popup (a dialog, a panel, a menu, its dimmed
+    // background) under the pointer
+    bool overVideo = false;
+    PlayerController *player = p_intf->p_mainPlayerController;
+    auto *area = qobject_cast<QQuickItem *>(m_subtitleWheelArea.data());
+    if (player && player->hasVideoOutput() && area && area->isVisible() && area->window())
+    {
+        overVideo = area->contains(area->mapFromScene(scenePos));
+        // (not over the library beside it, drawn over the video)
+        auto *exclusion = qobject_cast<QQuickItem *>(m_subtitleWheelExclusion.data());
+        if (overVideo && exclusion && exclusion->isVisible() && exclusion->window() == area->window()
+            && exclusion->contains(exclusion->mapFromScene(scenePos)))
+            overVideo = false;
+        // (the overlay of the popups: a child of the content item or of the
+        // window's root item)
+        QQuickItem *content = area->window()->contentItem();
+        QList<QQuickItem *> layers = content ? content->childItems() : QList<QQuickItem *>();
+        if (content && content->parentItem())
+            layers += content->parentItem()->childItems();
+        for (QQuickItem *layer : layers)
+        {
+            if (!overVideo)
+                break;
+            if (!layer->inherits("QQuickOverlay"))
+                continue;
+            const QList<QQuickItem *> popups = layer->childItems();
+            for (QQuickItem *popup : popups)
+                if (popup->isVisible() && popup->opacity() > 0
+                    && popup->contains(popup->mapFromScene(scenePos)))
+                {
+                    overVideo = false;
+                    break;
+                }
+        }
+    }
+    if (overVideo)
+    {
+        const int step = subtitleScaleStep(p_intf, vlcKey);
+        if (step != 2)
+        {
+            if (apply)
+                player->stepSubtitleTextScale(step);
+            return true;
+        }
+    }
+    const int zoom = interfaceZoomStep(p_intf, vlcKey);
+    if (zoom == 0)
+        return false;
+    if (apply)
+        incrementIntfUserScaleFactor(zoom > 0);
+    return true;
+}
+
+bool MainCtx::takeSizeKey(int vlcKey, bool playerKeys)
+{
+    if (vlcKey == 0)
+        return false;
+    PlayerController *player = p_intf->p_mainPlayerController;
+    if (playerKeys && player && player->hasVideoOutput())
+    {
+        // (VLC's hotkeys would change it unseen by the interface)
+        const int step = subtitleScaleStep(p_intf, vlcKey);
+        if (step != 2)
+        {
+            player->stepSubtitleTextScale(step);
+            return true;
+        }
+    }
+    const int zoom = interfaceZoomStep(p_intf, vlcKey);
+    if (zoom == 0)
+        return false;
+    incrementIntfUserScaleFactor(zoom > 0);
+    return true;
 }
 
 QWindow *MainCtx::intfMainWindow() const

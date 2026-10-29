@@ -39085,6 +39085,23 @@ msgstr "समय नियन्त्रण"
 msgid "Media Manager List"
 msgstr "मिडिया प्रबन्धक सूची"
 
+#: modules/gui/qt/qt.cpp:352
+msgid "Zoom the interface in"
+msgstr "इन्टरफेस ठूलो पार्नुहोस्"
+
+#: modules/gui/qt/qt.cpp:353
+msgid "Zoom the interface out"
+msgstr "इन्टरफेस सानो पार्नुहोस्"
+
+#: modules/gui/qt/player/qml/Player.qml:951
+#, no-c-format
+msgid "Subtitle size %1%"
+msgstr "उपशीर्षकको आकार %1%"
+
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:153
+msgid "Or turn the mouse wheel while holding Ctrl, Alt or Shift"
+msgstr "वा Ctrl, Alt वा Shift थिचिराखेर माउसको पाङ्ग्रा घुमाउनुहोस्"
+
 #~ msgid "Ok"
 #~ msgstr "ठीक छ"
 

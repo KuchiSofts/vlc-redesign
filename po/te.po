@@ -38723,6 +38723,23 @@ msgstr "సమయ నియంత్రణ"
 msgid "Media Manager List"
 msgstr "మాధ్యమ నిర్వాహకం జాబితా"
 
+#: modules/gui/qt/qt.cpp:352
+msgid "Zoom the interface in"
+msgstr "ఇంటర్‌ఫేస్‌ను పెద్దది చేయి"
+
+#: modules/gui/qt/qt.cpp:353
+msgid "Zoom the interface out"
+msgstr "ఇంటర్‌ఫేస్‌ను చిన్నది చేయి"
+
+#: modules/gui/qt/player/qml/Player.qml:951
+#, no-c-format
+msgid "Subtitle size %1%"
+msgstr "ఉపశీర్షిక పరిమాణం %1%"
+
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:153
+msgid "Or turn the mouse wheel while holding Ctrl, Alt or Shift"
+msgstr "లేదా Ctrl, Alt లేదా Shift నొక్కి పట్టుకుని మౌస్ చక్రాన్ని తిప్పండి"
+
 #~ msgid "Ok"
 #~ msgstr "సరే"
 

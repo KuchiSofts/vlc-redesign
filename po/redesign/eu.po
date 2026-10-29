@@ -8610,3 +8610,20 @@ msgstr "Eman beti HDR irteera"
 #: modules/video_output/win32/direct3d11.cpp:86
 msgid "Generate HDR from SDR"
 msgstr "Sortu HDR SDRtik"
+
+#: modules/gui/qt/qt.cpp:352
+msgid "Zoom the interface in"
+msgstr "Handitu interfazea"
+
+#: modules/gui/qt/qt.cpp:353
+msgid "Zoom the interface out"
+msgstr "Txikitu interfazea"
+
+#: modules/gui/qt/player/qml/Player.qml:951
+#, no-c-format
+msgid "Subtitle size %1%"
+msgstr "Azpitituluen tamaina %1%"
+
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:153
+msgid "Or turn the mouse wheel while holding Ctrl, Alt or Shift"
+msgstr "Edo biratu saguaren gurpila Ctrl, Alt edo Shift sakatuta duzula"

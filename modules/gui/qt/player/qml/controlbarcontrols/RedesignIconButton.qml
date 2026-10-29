@@ -29,12 +29,28 @@ Widgets.IconToolButton {
     font.pixelSize: VLCStyle.redesign.iconSize
     implicitWidth: VLCStyle.dp(30, VLCStyle.scale)
     implicitHeight: VLCStyle.dp(32, VLCStyle.scale)
-    color: VLCStyle.redesign.color(checked ? VLCStyle.redesign.accent : VLCStyle.redesign.textMuted)
+    // Open (its panel, popup or menu shows: active) or ON (checked): the
+    // accent, on a tint of it (no border: an icon button has none; the
+    // keyboard's focus ring stays its own); dark: Accent Bright of the
+    // design, light: the accent at 14 % with the icon in its Dim (readable
+    // on the light bar)
+    color: !lit ? VLCStyle.redesign.color(VLCStyle.redesign.textMuted)
+                : VLCStyle.palette.isDark ? VLCStyle.redesign.accent : VLCStyle.redesign.accentDim
     // Figma 177:98: the hover box is white at 6 % over the bar, 30 x 32 even
     // where the bar's row is lower (the box reaches over it)
-    backgroundColor: !(hovered || down) ? "transparent"
-                     : VLCStyle.palette.isDark ? Qt.rgba(1, 1, 1, 0.06)
-                     : VLCStyle.redesign.color(VLCStyle.redesign.controlHoverBackground, "#9c9c9b")
+    backgroundColor: {
+        const hover = hovered || down
+        if (lit) {
+            const tint = VLCStyle.palette.isDark ? VLCStyle.redesign.accentBackground
+                                                 : Qt.alpha(VLCStyle.redesign.accent, 0.14)
+            return hover ? Qt.tint(tint, VLCStyle.palette.isDark ? Qt.rgba(1, 1, 1, 0.06) : Qt.rgba(0, 0, 0, 0.05))
+                         : tint
+        }
+        return !hover ? "transparent"
+               : VLCStyle.palette.isDark ? Qt.rgba(1, 1, 1, 0.06)
+               : VLCStyle.redesign.color(VLCStyle.redesign.controlHoverBackground, "#9c9c9b")
+    }
+    backgroundAnimationDuration: 120
     topInset: Math.min(0, (height - VLCStyle.dp(32, VLCStyle.scale)) / 2)
     bottomInset: topInset
     radius: VLCStyle.dp(4, VLCStyle.scale)
@@ -50,14 +66,7 @@ Widgets.IconToolButton {
             source: root.iconSource
             color: root.color
             opacity: root.enabled ? 1 : 0.4
-        }
-        Rectangle {
-            anchors.bottom: parent.bottom
-            anchors.horizontalCenter: parent.horizontalCenter
-            width: VLCStyle.dp(12, VLCStyle.scale)
-            height: VLCStyle.dp(2, VLCStyle.scale)
-            color: VLCStyle.redesign.accent
-            visible: root.checked
+            Behavior on color { ColorAnimation { duration: 120 } }
         }
     }
 }

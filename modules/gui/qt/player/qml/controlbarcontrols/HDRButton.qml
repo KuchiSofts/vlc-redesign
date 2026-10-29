@@ -15,6 +15,8 @@ RedesignIconButton {
 
     // above the button, as the languages and tracks
     onClicked: panel.toggle()
+    // open while its panel shows
+    active: panel.opened
 
     function forceUnlock() {
         panel.close()

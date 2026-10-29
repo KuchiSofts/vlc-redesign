@@ -350,6 +350,7 @@ Item {
                         width: root.px(24)
                         height: width
                         sourceSize: Qt.size(width, height)
+                        smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                         source: "qrc:///redesign/icons/chevron-down/default.svg"
                     }
                 }

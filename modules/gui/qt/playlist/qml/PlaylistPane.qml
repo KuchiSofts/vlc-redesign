@@ -494,6 +494,7 @@ T.Pane {
                     width: VLCStyle.dp(20, VLCStyle.scale)
                     height: width
                     sourceSize: Qt.size(width, height)
+                    smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                     source: "qrc:///redesign/icons/folder/default.svg"
                     color: VLCStyle.palette.isDark ? "transparent" : "#2e2e2e"
                 }

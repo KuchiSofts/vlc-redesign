@@ -82,6 +82,7 @@ T.MenuItem {
             visible: root._icon !== "" ? (!root._hasDuo || duoIcon.status === Image.Error)
                                        : (root.checkable || root.markable || root.marked)
             sourceSize: Qt.size(width, height)
+            smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
             fillMode: Image.PreserveAspectFit
             // The check mark is hidden, not unloaded: an IconImage whose
             // source becomes empty goes on showing its last image, and the
@@ -138,6 +139,7 @@ T.MenuItem {
             Layout.preferredHeight: VLCStyle.redesign.iconSize
             visible: !!root.subMenu
             sourceSize: Qt.size(width, height)
+            smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
             source: "qrc:///redesign/icons/chevron-right/default.svg"
             // to the submenu: it opens on the left in a right to left menu
             mirror: root.mirrored

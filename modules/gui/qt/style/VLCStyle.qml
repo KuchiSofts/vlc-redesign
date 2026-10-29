@@ -47,6 +47,29 @@ QtObject {
         // the baselines with these keeps the text where the design draws
         // it, whatever line metrics Qt uses.
         readonly property real ascender: 0.96875
+        // An SVG drawn at the size it is shown (sourceSize = its size) is a
+        // texture of exactly its device pixels when that size times the
+        // device pixel ratio is whole: drawn without filtering (smooth:
+        // false) it lands 1:1 on whole device pixels wherever its item
+        // lands, as sharp as Qt draws the SVG. Filtered from a fractional
+        // position (x * 1.25, x * 1.5) its 1.5 px strokes spread over 3-5
+        // soft rows. Only for an image whose URL as written is a qrc:/file:
+        // SVG: Qt draws other images (PNG, covers, image://svgcolor) at
+        // sourceSize without the ratio, and they stay filtered, as does a
+        // size that does not divide (zoom 1.3 at 125 %).
+        //   smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
+        // (The source is not an argument: an IconImage's `source` read in
+        // its own binding is not followed when it changes after the
+        // binding first ran (RedesignIconButton's required iconSource): the
+        // icons of the bar stayed filtered.)
+        function svgExact(w, h, dpr) {
+            if (!(dpr > 0))
+                return false
+            // (sourceSize is a QSize: whole logical pixels too)
+            const exact = v => v > 0 && v === Math.round(v)
+                               && Math.abs(v * dpr - Math.round(v * dpr)) < 0.01
+            return exact(w) && exact(h)
+        }
         // Baseline of a text box of the design whose top is at top
         function textBaseline(top, pixelSize) {
             const line = 1.2109375 * pixelSize

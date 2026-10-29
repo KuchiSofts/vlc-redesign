@@ -42,6 +42,7 @@ Item {
         y: 116
         source: "qrc:///redesign/welcome.svg"
         sourceSize: Qt.size(width, height)
+        smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
         fillMode: Image.PreserveAspectFit
         Accessible.name: qsTr("VLC")
     }

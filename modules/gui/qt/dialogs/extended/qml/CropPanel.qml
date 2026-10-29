@@ -70,6 +70,7 @@ ExpandPanel {
                 color: root.verticalLinked ? VLCStyle.redesign.accentTint : "transparent"
                 sourceSize.width: root.px(24)
                 sourceSize.height: root.px(24)
+                smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
             }
         }
     }
@@ -112,6 +113,7 @@ ExpandPanel {
                 color: root.horizontalLinked ? VLCStyle.redesign.accentTint : "transparent"
                 sourceSize.width: root.px(24)
                 sourceSize.height: root.px(24)
+                smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
             }
         }
     }

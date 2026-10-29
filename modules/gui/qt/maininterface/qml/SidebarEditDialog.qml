@@ -178,6 +178,8 @@ Widgets.RedesignDialog {
                     anchors.centerIn: parent
                     width: VLCStyle.redesign.iconSize
                     height: width
+                    sourceSize: Qt.size(width, height)
+                    smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                     source: "qrc:///redesign/icons/move/default.svg"
                     color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted)
                 }
@@ -207,6 +209,7 @@ Widgets.RedesignDialog {
                 anchors.verticalCenter: parent.verticalCenter
                 width: VLCStyle.redesign.iconSize
                 height: width
+                sourceSize: Qt.size(width, height)
                 // the sidebar's own icon (drawn in #8F8F8F), in the muted colour
                 source: SVGColorImage.colorize("qrc:///redesign/" + row.asset + ".svg")
                                      .any({ "#8F8F8F": VLCStyle.redesign.color(VLCStyle.redesign.textMuted) }).uri()

@@ -71,6 +71,12 @@ RedesignIconButton {
         dim: false
 
         onOpened: {
+            // opened from the keyboard: the keyboard goes on in the list (its
+            // ring on the first row, so that the arrows reach the rows and
+            // not VLC's hotkeys); opened with the mouse, Tab first, as
+            // elsewhere in the interface
+            if (root.visualFocus)
+                thisComputer.forceActiveFocus(Qt.TabFocusReason)
             root.requestLockUnlockAutoHide(true)
             root.manager.StartScan()
             popup.searchedLong = false
@@ -148,6 +154,7 @@ RedesignIconButton {
             }
 
             DeviceRow {
+                id: thisComputer
                 objectName: "castThisComputer"
                 Layout.fillWidth: true
                 name: qsTr("This computer")
@@ -233,6 +240,14 @@ RedesignIconButton {
                 Layout.topMargin: VLCStyle.dp(6, VLCStyle.scale)
                 implicitHeight: VLCStyle.dp(32, VLCStyle.scale)
                 focusPolicy: Qt.StrongFocus
+                // the arrows go on from it as from the rows (it kept them);
+                // the last one: down goes round to the first row
+                Keys.onDownPressed: (event) => thisComputer.forceActiveFocus(Qt.TabFocusReason)
+                Keys.onUpPressed: (event) => {
+                    const previous = displayHere.nextItemInFocusChain(false)
+                    if (previous)
+                        previous.forceActiveFocus(Qt.BacktabFocusReason)
+                }
                 text: qsTr("Show the video here too")
                 checked: root.manager.displayHere
                 // (casting to a Chromecast: it has no picture here, the

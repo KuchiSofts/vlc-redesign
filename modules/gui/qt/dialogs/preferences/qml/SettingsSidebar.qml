@@ -129,6 +129,7 @@ Item {
                                     width: root.px(24)
                                     height: width
                                     sourceSize: Qt.size(width, height)
+                                    smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                                     fillMode: Image.PreserveAspectFit
                                     source: !modelData.icon ? "" : "qrc:///redesign/icons/" + modelData.icon + "/"
                                             + (entry.current ? "active" : "default") + ".svg"

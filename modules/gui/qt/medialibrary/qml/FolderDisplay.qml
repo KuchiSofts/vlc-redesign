@@ -352,6 +352,7 @@ Widgets.PageExt {
                             source: card.model.isFolder ? "qrc:///redesign/folder.svg"
                                                         : "qrc:///redesign/icons/file/default.svg"
                             sourceSize: Qt.size(width, height)
+                            smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                         }
                         // the progress, at the bottom of the thumbnail (a time
                         // axis: from the left in every language, as the seek bar)

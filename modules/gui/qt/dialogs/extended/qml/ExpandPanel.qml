@@ -77,6 +77,7 @@ Item {
                 width: root.px(24)
                 height: width
                 sourceSize: Qt.size(width, height)
+                smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                 source: root.expanded ? "qrc:///redesign/icons/chevron-down/default.svg"
                                       : "qrc:///redesign/icons/chevron-right/default.svg"
                 // closed, it points to the end (right to left: the left)

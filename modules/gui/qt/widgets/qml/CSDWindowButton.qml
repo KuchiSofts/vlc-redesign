@@ -71,6 +71,7 @@ T.Button {
         Image {
             // drawn at the size shown (an SVG: sharp at any scale and zoom)
             sourceSize: Qt.size(width, height)
+            smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
             anchors.centerIn: parent
             width: VLCStyle.redesign.iconSize
             height: width

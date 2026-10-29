@@ -406,6 +406,7 @@ FocusScope{
                 width: VLCStyle.redesign.iconSize
                 height: width
                 sourceSize: Qt.size(width, height)
+                smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                 source: "qrc:///redesign/icons/divider/default.svg"
                 visible: folderButton.visible && (menuButton.visible || libraryButton.visible)
 
@@ -451,6 +452,7 @@ FocusScope{
                         width: VLCStyle.redesign.iconSize
                         height: width
                         sourceSize: Qt.size(width, height)
+                        smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                         source: "qrc:///redesign/icons/folder/default.svg"
                     }
                     Text {
@@ -645,6 +647,7 @@ FocusScope{
                 width: VLCStyle.redesign.iconSize
                 height: width
                 sourceSize: Qt.size(width, height)
+                smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                 source: "qrc:///redesign/icons/" + topBarButton.iconName + "/" + topBarButton.iconState + ".svg"
                 // the image's own colours, the accent while open (transparent: no tint)
                 color: !topBarButton.lit ? "transparent"

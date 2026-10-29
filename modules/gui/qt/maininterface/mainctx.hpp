@@ -202,6 +202,13 @@ class MainCtx : public QObject
     // does there (true: done); wantsKey(key, modifiers) lets other keys go
     // to the items (its list); the others stay hotkeys
     Q_PROPERTY(QObject* keysBeforeHotkeys READ keysBeforeHotkeys WRITE setKeysBeforeHotkeys NOTIFY keysBeforeHotkeysChanged FINAL)
+    // The video of the player (an item): the wheel with Ctrl over it sizes
+    // the subtitles (the keys of "Scale up/down subtitles text"), elsewhere
+    // it zooms the interface (the keys of qt-key-intf-zoom-in/out)
+    Q_PROPERTY(QObject* subtitleWheelArea READ subtitleWheelArea WRITE setSubtitleWheelArea NOTIFY subtitleWheelAreaChanged FINAL)
+    // a shortcut is being captured (Settings › Shortcuts): the wheel with
+    // Ctrl goes to it, not to the zoom
+    Q_PROPERTY(bool wheelCapture MEMBER m_wheelCapture NOTIFY wheelCaptureChanged FINAL)
 
     //Property for Activating bgCone in player view
     Q_PROPERTY(bool bgCone READ isbgCone WRITE setbgCone NOTIFY bgConeToggled FINAL)
@@ -356,6 +363,13 @@ public:
     // The action of live TV the key has in the shortcuts ("channel-up",
     // "channel-down", "previous", "list", "info"), "" none
     Q_INVOKABLE QString tvKeyAction(Qt::Key key, Qt::KeyboardModifiers modifiers) const;
+    // The wheel's key (a VLC key: modifiers and a wheel direction) at a point
+    // of the window: the subtitles' size over the video, the interface's
+    // zoom elsewhere; true: it is one of them (apply: done)
+    bool wheelKeyAction(int vlcKey, const QPointF &scenePos, bool apply);
+    // A key of the subtitles' size while a video plays (Ctrl+0): done here,
+    // the size shown a moment; a key of the interface's zoom anywhere
+    bool takeSizeKey(int vlcKey, bool playerKeys);
     // The item of keysBeforeHotkeys did what the key does
     bool keyTakenBeforeHotkeys(int key, Qt::KeyboardModifiers modifiers) const;
     // The item of keysBeforeHotkeys wants the key to go to the items
@@ -487,6 +501,8 @@ public:
     void setPreferHotkeys(bool enable);
 
     QObject* keysBeforeHotkeys() const { return m_keysBeforeHotkeys; }
+    QObject* subtitleWheelArea() const { return m_subtitleWheelArea; }
+    void setSubtitleWheelArea(QObject *item);
     void setKeysBeforeHotkeys(QObject* item);
 
     QWindow *intfMainWindow() const;
@@ -624,6 +640,8 @@ protected:
 
     bool m_preferHotkeys = false;
     QPointer<QObject> m_keysBeforeHotkeys;
+    QPointer<QObject> m_subtitleWheelArea;
+    bool m_wheelCapture = false;
 
     int m_maxVolume = 125;
 
@@ -786,6 +804,8 @@ signals:
 
     void preferHotkeysChanged();
     void keysBeforeHotkeysChanged();
+    void subtitleWheelAreaChanged();
+    void wheelCaptureChanged();
 
     void useGlobalShortcutsChanged( bool );
 

@@ -66,6 +66,10 @@ public:
     // Adds the key pressed to the keys of the action (an action has several)
     Q_INVOKABLE QVariantMap stageKey(const QString &option, bool global,
                                     int qtKey, int modifiers, bool replaceConflict = false);
+    // The same with a turn of the wheel (up or down) and the modifiers held
+    // ("Ctrl+Mouse Wheel Up"): not for a global hotkey
+    Q_INVOKABLE QVariantMap stageWheel(const QString &option, bool global,
+                                      bool up, int modifiers, bool replaceConflict = false);
     // Every key of the action, or one of them ("Ctrl+e" as VLC writes it)
     Q_INVOKABLE bool clearKey(const QString &option, bool global);
     Q_INVOKABLE bool removeKey(const QString &option, bool global, const QString &key);
@@ -88,6 +92,10 @@ private:
         // a key of live TV: only while a channel plays, so it may be one of
         // the player's too (no conflict with them)
         bool tv = false;
+        // a key of the interface's zoom: anywhere in the window, but over the
+        // video the subtitles' size takes its keys first (no conflict with
+        // them: Ctrl+wheel is both)
+        bool zoom = false;
     };
     struct Change { QString key, action, before, after; bool global; };
 
@@ -100,6 +108,9 @@ private:
     void notifyEntry(int entryIndex);
     void setError(const QString &error);
     int findEntry(const QString &key) const;
+    // Two actions their keys may not share (their keys work at once)
+    static bool canConflict(const Entry &a, const Entry &b);
+    QVariantMap stageVlcKey(int target, bool global, int vlcKey, bool replaceConflict);
     static QString readKey(const QString &key);
     static void putKey(const QString &key, const QString &value);
     static QString groupFor(const QString &key);

@@ -1,0 +1,59 @@
+name: Live TV source suggestion
+description: Suggest a free and legal TV source (a channel playlist or a programme guide) for Live TV
+title: "Live TV source: "
+labels: ["enhancement", "area:live-tv"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks! Only sources that are **free and legal to watch** are taken: broadcasters' own free streams, public
+        collections of free-to-air channels, open programme guides (XMLTV). Paid services shared without permission,
+        and links that contain anyone's personal account or token, are removed.
+        To report a problem with a source you already use, open a *Bug report* instead.
+  - type: input
+    id: name
+    attributes:
+      label: Name of the source
+      placeholder: "Example Public Broadcaster"
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind of source
+      options:
+        - A channel playlist (M3U / M3U8)
+        - A programme guide (XMLTV)
+        - A broadcaster's official stream page
+        - Other (say below)
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Public link
+      description: The address anyone can open, without a login. Never paste a link with your own account, token or password in it.
+      placeholder: "https://…"
+    validations:
+      required: true
+  - type: input
+    id: region
+    attributes:
+      label: Countries and languages
+      placeholder: "France, French"
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it's worth listing
+      description: How many channels, how reliable it is, whether it has a programme guide, and who publishes it.
+  - type: checkboxes
+    id: legal
+    attributes:
+      label: Checks
+      options:
+        - label: The source is free to watch and published by its owner or with their permission
+          required: true
+        - label: The link contains no personal account, token or password
+          required: true

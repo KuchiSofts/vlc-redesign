@@ -119,6 +119,17 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Fixed
 
+- **Icons sharp at 125, 150 and 200 %.** Every icon of the redesign was drawn for 100 % and stretched at a higher
+  Windows scaling (the 1.5 px lines of the queue icon came out 76 % strong over four to six pixels at 200 %): Qt
+  draws an image at the screen's density only when the name written in the interface ends in `.svg`, and the icons
+  were still named by the PNG files they once were. Now named by their SVG: at 200 % the lines are three pixels,
+  two of them full, as the design draws them; at 100 % they match Figma (1.5 px, `#737373` on the dark bar,
+  `#4D4D4D` on the light one).
+- **Live TV on a DLNA TV: one stream per channel, with its picture and its sound.** A channel restarting its
+  picture a few seconds in (after an advert, or the adaptive stream changing its format) made a second stream,
+  which the TV loaded again; now the new picture goes on in the same stream. A cast started on a channel already
+  playing made a stream with the picture or the sound alone, then another with both (or sent the sound only):
+  the first stream of a channel now waits up to 3 s for both.
 - **Online subtitles are loaded by themselves only for the right film.** The automatic search took the title it
   guessed from the file name: a clip named `silent.mp4` got the subtitles of *Silent Hill*. A subtitle now loads by
   itself only when it was made for that very file (the services know it by its fingerprint) or the title is sure:

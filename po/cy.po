@@ -37000,6 +37000,23 @@ msgstr ""
 msgid "Are you sure you wish to create the stream?"
 msgstr "Ydych yn sicr am greu'r ffrwd?"
 
+#: modules/gui/qt/qt.cpp:352
+msgid "Zoom the interface in"
+msgstr "Chwyddo'r rhyngwyneb i mewn"
+
+#: modules/gui/qt/qt.cpp:353
+msgid "Zoom the interface out"
+msgstr "Chwyddo'r rhyngwyneb allan"
+
+#: modules/gui/qt/player/qml/Player.qml:951
+#, no-c-format
+msgid "Subtitle size %1%"
+msgstr "Maint isdeitlau %1%"
+
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:153
+msgid "Or turn the mouse wheel while holding Ctrl, Alt or Shift"
+msgstr "Neu troi olwyn y llygoden wrth ddal Ctrl, Alt neu Shift"
+
 #~ msgid "Select \"Advanced Options\" to see all options."
 #~ msgstr "Dewiswch \"Gosodiadau Uwch\" i weld yr holl opsiynau."
 

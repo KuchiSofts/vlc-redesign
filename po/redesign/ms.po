@@ -8141,3 +8141,21 @@ msgstr "Kerap digunakan"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
 msgid "Snapshot height (0: proportional, -1: original)"
 msgstr "Tinggi petikan (0: berkadar, -1: asal)"
+
+#: modules/gui/qt/qt.cpp:352
+msgid "Zoom the interface in"
+msgstr "Zum masuk antara muka"
+
+#: modules/gui/qt/qt.cpp:353
+msgid "Zoom the interface out"
+msgstr "Zum keluar antara muka"
+
+#: modules/gui/qt/player/qml/Player.qml:951
+#, no-c-format
+msgid "Subtitle size %1%"
+msgstr "Saiz sari kata %1%"
+
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:153
+msgid "Or turn the mouse wheel while holding Ctrl, Alt or Shift"
+msgstr "Atau putar roda tetikus sambil menahan Ctrl, Alt atau Shift"
+

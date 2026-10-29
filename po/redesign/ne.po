@@ -8040,3 +8040,21 @@ msgstr "प्रायः प्रयोग गरिएको"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
 msgid "Snapshot height (0: proportional, -1: original)"
 msgstr "स्न्यापसटको उचाइ (0: अनुपातमा, -1: मूल)"
+
+#: modules/gui/qt/qt.cpp:352
+msgid "Zoom the interface in"
+msgstr "इन्टरफेस ठूलो पार्नुहोस्"
+
+#: modules/gui/qt/qt.cpp:353
+msgid "Zoom the interface out"
+msgstr "इन्टरफेस सानो पार्नुहोस्"
+
+#: modules/gui/qt/player/qml/Player.qml:951
+#, no-c-format
+msgid "Subtitle size %1%"
+msgstr "उपशीर्षकको आकार %1%"
+
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:153
+msgid "Or turn the mouse wheel while holding Ctrl, Alt or Shift"
+msgstr "वा Ctrl, Alt वा Shift थिचिराखेर माउसको पाङ्ग्रा घुमाउनुहोस्"
+

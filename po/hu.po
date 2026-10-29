@@ -38070,6 +38070,23 @@ msgstr ""
 msgid "Are you sure you wish to create the stream?"
 msgstr "Valóban létre kívánja hozni a közvetítést?"
 
+#: modules/gui/qt/qt.cpp:352
+msgid "Zoom the interface in"
+msgstr "Felület nagyítása"
+
+#: modules/gui/qt/qt.cpp:353
+msgid "Zoom the interface out"
+msgstr "Felület kicsinyítése"
+
+#: modules/gui/qt/player/qml/Player.qml:951
+#, no-c-format
+msgid "Subtitle size %1%"
+msgstr "Feliratméret %1%"
+
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:153
+msgid "Or turn the mouse wheel while holding Ctrl, Alt or Shift"
+msgstr "Vagy forgassa az egér görgőjét a Ctrl, Alt vagy Shift lenyomva tartása mellett"
+
 #, fuzzy
 #~ msgid "1 item"
 #~ msgstr "%i elem"

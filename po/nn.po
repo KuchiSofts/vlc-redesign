@@ -36845,6 +36845,23 @@ msgstr ""
 msgid "Are you sure you wish to create the stream?"
 msgstr "Ønskjer du å opprette straumen?"
 
+#: modules/gui/qt/qt.cpp:352
+msgid "Zoom the interface in"
+msgstr "Zoom inn grensesnittet"
+
+#: modules/gui/qt/qt.cpp:353
+msgid "Zoom the interface out"
+msgstr "Zoom ut grensesnittet"
+
+#: modules/gui/qt/player/qml/Player.qml:951
+#, no-c-format
+msgid "Subtitle size %1%"
+msgstr "Storleik på tekstinga %1%"
+
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:153
+msgid "Or turn the mouse wheel while holding Ctrl, Alt or Shift"
+msgstr "Eller drei musehjulet medan du held inne Ctrl, Alt eller Shift"
+
 #, fuzzy
 #~ msgid "1 item"
 #~ msgstr "%i element"

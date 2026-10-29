@@ -8176,3 +8176,21 @@ msgstr "Հաճախ օգտագործվող"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
 msgid "Snapshot height (0: proportional, -1: original)"
 msgstr "Լուսանկարի բարձրություն (0՝ համամասնական, -1՝ սկզբնական)"
+
+#: modules/gui/qt/qt.cpp:352
+msgid "Zoom the interface in"
+msgstr "Մեծացնել միջերեսը"
+
+#: modules/gui/qt/qt.cpp:353
+msgid "Zoom the interface out"
+msgstr "Փոքրացնել միջերեսը"
+
+#: modules/gui/qt/player/qml/Player.qml:951
+#, no-c-format
+msgid "Subtitle size %1%"
+msgstr "Ենթագրերի չափը %1%"
+
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:153
+msgid "Or turn the mouse wheel while holding Ctrl, Alt or Shift"
+msgstr "Կամ պտտեք մկնիկի անիվը՝ սեղմած պահելով Ctrl, Alt կամ Shift"
+

@@ -37581,6 +37581,23 @@ msgstr ""
 msgid "Are you sure you wish to create the stream?"
 msgstr "तुम्हाला प्रवाह तयार करायचा आहे याची खात्री आहे का?"
 
+#: modules/gui/qt/qt.cpp:352
+msgid "Zoom the interface in"
+msgstr "इंटरफेस मोठा करा"
+
+#: modules/gui/qt/qt.cpp:353
+msgid "Zoom the interface out"
+msgstr "इंटरफेस लहान करा"
+
+#: modules/gui/qt/player/qml/Player.qml:951
+#, no-c-format
+msgid "Subtitle size %1%"
+msgstr "उपशीर्षकाचा आकार %1%"
+
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:153
+msgid "Or turn the mouse wheel while holding Ctrl, Alt or Shift"
+msgstr "किंवा Ctrl, Alt किंवा Shift दाबून ठेवून माउसचे चाक फिरवा"
+
 #~ msgid "Select \"Advanced Options\" to see all options."
 #~ msgstr "सर्व पर्याय पाहण्यासाठी \"प्रगत पर्याय\" निवडा."
 

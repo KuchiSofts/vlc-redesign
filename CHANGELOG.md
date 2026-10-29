@@ -7,9 +7,22 @@ For changes to VLC itself, see [NEWS](NEWS).
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
 what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `942cdaea17` (2026-10-19).
 
-**Contents:** [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [Unreleased](#unreleased) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
+
+---
+
+## [Unreleased]
+
+### Fixed
+
+- **Customize Player: the playback speed and teletext buttons can be placed again**; they no longer leave an
+  invisible spacer ([#9](https://github.com/KuchiSofts/vlc-redesign/issues/9)). Dropped on a bar, either one left
+  an empty slot that could be neither seen, picked nor removed. A control that ever fails to load now shows a
+  placeholder that can be dragged out. Every control type was then put in the bar: the folder name after the
+  thumbnail stayed hidden (the centre zone measured its room by its own shown controls), the aspect ratio box was
+  empty, and the zoom icon was stretched; all three are fixed.
 
 ---
 

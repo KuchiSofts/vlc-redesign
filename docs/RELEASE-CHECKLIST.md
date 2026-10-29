@@ -59,17 +59,27 @@ python extras/juxtopposed/release/release-check.py --release 0.4.0  # the releas
 3. `platforms.yml`: `version: X.Y.Z`, `date:`, `next:` the following version; `render.py`.
 4. `README.md` (what is new, the screenshots), `docs/wiki/Home.md`, `docs/wiki/Install-and-Update.md`, and every
    wiki page whose feature changed.
-5. Commit "Release X.Y.Z"; `make-release.ps1` (runs the check, builds, signs `SHA256SUMS.txt`).
-6. Tag `vX.Y.Z` ("VLC Redesign X.Y.Z"), push the branch to `main`, push the tag (the hook checks both).
+5. Commit "Release X.Y.Z"; tag it `vX.Y.Z` ("VLC Redesign X.Y.Z"); `make-release.ps1` (runs the check, builds,
+   writes `vlc-redesign-X.Y.Z-source.tar.gz` from that commit, signs `SHA256SUMS.txt`). It stops when the tree has
+   uncommitted changes or the tag names another commit.
+6. Push the branch to `main`, push the tag (the hook checks both).
 7. After the push (the check lists them):
-   - the GitHub release: setup, zip, every `.vrdelta`, `SHA256SUMS.txt`, `SHA256SUMS.txt.sig`, the notes from
-     `release/release-notes.py`;
+   - the GitHub release: setup, zip, every `.vrdelta`, `vlc-redesign-X.Y.Z-source.tar.gz`, `SHA256SUMS.txt`,
+     `SHA256SUMS.txt.sig`, the notes from `release/release-notes.py` (with their *Source code* section), or
+     `docs/release/X.Y.Z/release-notes.md` when the version has one;
    - a reply on every issue the release fixes (what was wrong, what changed, the version, how to update), then close it;
    - an announcement in Discussions › Announcements;
    - Weblate: export the texts of the release;
    - check the README, the website and the in-app update on a copy of the previous version;
    - `docs/MASTER-PLAN.md` and `ROADMAP.md`: the version is published, the next one is in progress.
 8. Raise `VLC_REDESIGN_VERSION` to the next version as soon as work for it starts.
+
+## Source code (GPL)
+
+Every binary published comes with its source ([SOURCE.md](SOURCE.md)): the source archive of the release on the
+same page, the tag on the commit it was made from, and the written offer for the libraries of `contrib/`. A
+release without its `-source.tar.gz` is not published. A source request (an issue *Source request X.Y.Z*) is
+answered with the contrib tarballs of that release (`make fetch` in `contrib/` of its source).
 
 ## Issues
 

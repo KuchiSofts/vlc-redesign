@@ -23,6 +23,7 @@ import VLC.MainInterface
 import VLC.PlayerControls
 import VLC.Style
 import VLC.Widgets as Widgets
+import VLC.PlayerControls as PC
 
 Repeater {
     id: repeater
@@ -117,13 +118,12 @@ Repeater {
 
         // Settings
 
-        source: PlayerControlbarControls.control(model.id).source
+        source: targetSource
 
-        // a control that can't load shows the fallback: an empty slot of no
-        // width could be neither seen nor dragged out while customizing
-        onStatusChanged: {
-            if (status === Loader.Error)
-                source = PlayerControlbarControls.controlPath + "Fallback.qml"
+        readonly property url targetSource: PlayerControlbarControls.control(model.id).source
+
+        onTargetSourceChanged: {
+            source = targetSource
         }
 
         readonly property int controlId: model.id
@@ -335,6 +335,14 @@ Repeater {
         // its width in the row, the gap before it included (see _span)
         readonly property real _spanWidth: Math.max(0, Layout.minimumWidth)
                                            + ((index > 0) ? Layout.leftMargin + (parent?.spacing ?? 0) : 0)
+
+        onStatusChanged: {
+            if (status === Loader.Error) {
+                const fallback = "qrc:///qt/qml/VLC/PlayerControls/Fallback.qml"
+                console.assert(loader.source !== fallback)
+                loader.setSource(fallback, { type: PC.Fallback.Broken })
+            }
+        }
 
         Binding on visible {
             delayed: true // this is important

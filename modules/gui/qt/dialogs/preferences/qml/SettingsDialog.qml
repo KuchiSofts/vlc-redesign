@@ -200,6 +200,10 @@ Dialog {
     }
 
     contentItem: Item {
+        // a screen reader names the dialog
+        Accessible.role: Accessible.Dialog
+        Accessible.name: qsTr("Settings")
+
         // A popup is not under the main interface: right to left in Hebrew,
         // Arabic... (the sidebar on the right) as it is
         LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
@@ -258,6 +262,9 @@ Dialog {
                     horizontalAlignment: TextInput.AlignLeft
                     placeholderText: qsTr("Search")
                     placeholderTextColor: root.c("#404040")
+                    // (the field has no label but its placeholder)
+                    Accessible.name: placeholderText
+                    Accessible.searchEdit: true
                     // Figma's baseline: the 17 px line centred in the 34
                     // (8.5), the baseline 14 px under its top (measured)
                     verticalAlignment: TextInput.AlignTop

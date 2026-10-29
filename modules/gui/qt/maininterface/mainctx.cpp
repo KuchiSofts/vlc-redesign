@@ -108,6 +108,7 @@
 
 #include <QThread>
 
+#include <vlc_actions.h>
 #include <vlc_interface.h>
 #include <vlc_playlist.h>
 #include <vlc_preparser.h>

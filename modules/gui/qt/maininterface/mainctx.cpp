@@ -1461,7 +1461,7 @@ void MainCtx::setSubtitleWheelArea(QObject *item)
 }
 
 // One of the keys of an option of keys (tab separated)
-static bool optionHasKey(intf_thread_t *intf, const char *option, uint_fast32_t vlcKey)
+static bool optionHasKey(qt_intf_t *intf, const char *option, uint_fast32_t vlcKey)
 {
     char *keys = var_InheritString(intf, option);
     bool found = false;
@@ -1474,7 +1474,7 @@ static bool optionHasKey(intf_thread_t *intf, const char *option, uint_fast32_t 
 
 // The step of the subtitles' size a key makes: 1 larger, -1 smaller, 0 back
 // to 100 %, 2 none
-static int subtitleScaleStep(intf_thread_t *intf, uint_fast32_t vlcKey)
+static int subtitleScaleStep(qt_intf_t *intf, uint_fast32_t vlcKey)
 {
     if (optionHasKey(intf, "key-subtitle-text-scale-up", vlcKey))
         return 1;
@@ -1486,7 +1486,7 @@ static int subtitleScaleStep(intf_thread_t *intf, uint_fast32_t vlcKey)
 }
 
 // The interface's zoom a key makes: 1 in, -1 out, 0 none
-static int interfaceZoomStep(intf_thread_t *intf, uint_fast32_t vlcKey)
+static int interfaceZoomStep(qt_intf_t *intf, uint_fast32_t vlcKey)
 {
     if (optionHasKey(intf, "qt-key-intf-zoom-in", vlcKey))
         return 1;

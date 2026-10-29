@@ -143,6 +143,8 @@ qt_plugin_sources = files(
     '../../maininterface/compositor_platform.cpp',
     '../../maininterface/interface_window_handler.cpp',
     '../../maininterface/interface_window_handler.hpp',
+    '../../maininterface/macos_titlebar.cpp',
+    '../../maininterface/macos_titlebar.hpp',
     '../../maininterface/live_settings.cpp',
     '../../maininterface/live_settings.hpp',
     '../../maininterface/mainctx.cpp',

@@ -18,6 +18,7 @@
 #include "interface_window_handler.hpp"
 #include "mainctx.hpp"
 #include "compositor.hpp"
+#include "macos_titlebar.hpp"
 #include <player/player_controller.hpp>
 #include <playlist/playlist_controller.hpp>
 #include "util/keyhelper.hpp"
@@ -26,6 +27,7 @@
 #include "dialogs/dialogs/dialogmodel.hpp"
 #include <QScreen>
 #include <QQmlProperty>
+#include <QPlatformSurfaceEvent>
 #include <algorithm>
 #include <cmath>
 #include <cstdlib>
@@ -104,8 +106,16 @@ InterfaceWindowHandler::InterfaceWindowHandler(qt_intf_t *_p_intf, MainCtx* main
     assert(m_window);
     assert(m_mainCtx);
 
+#ifdef Q_OS_MACOS
+    /* macOS: the redesign's title bar is a unified one (the system's frame
+     * and traffic lights, the content under its transparent title bar),
+     * before the saved geometry is restored below; again once the native
+     * window exists if it does not yet (eventFilter) */
+    updateCSDWindowSettings();
+#else
     if (m_mainCtx->useClientSideDecoration())
         m_window->setFlag(Qt::FramelessWindowHint);
+#endif
 
     m_window->setIcon( QApplication::windowIcon() );
     /* "Window opacity" of the settings, at once */
@@ -285,11 +295,50 @@ InterfaceWindowHandler::~InterfaceWindowHandler()
 
 void InterfaceWindowHandler::updateCSDWindowSettings()
 {
+#ifdef Q_OS_MACOS
+    macos_titlebar::apply(m_window, m_mainCtx->useClientSideDecoration());
+    updateWindowButtonsInset();
+#else
     m_window->setFlag(Qt::FramelessWindowHint, m_mainCtx->useClientSideDecoration());
+#endif
+}
+
+void InterfaceWindowHandler::updateWindowButtonsInset()
+{
+    // (after AppKit placed the buttons: later)
+    QMetaObject::invokeMethod(this, [this]()
+    {
+        if (!m_window)
+            return;
+        const QMargins inset = macos_titlebar::buttonsInset(m_window);
+        // (the macOS launch test looks for it: extras/juxtopposed/ci/macos-smoke.sh)
+        if (inset != QMargins() && inset != m_mainCtx->windowButtonsInset())
+            msg_Dbg(p_intf, "unified title bar: the traffic lights take %d px on the left, %d on the right",
+                    inset.left(), inset.right());
+        m_mainCtx->setWindowButtonsInset(inset);
+    }, Qt::QueuedConnection);
 }
 
 bool InterfaceWindowHandler::eventFilter(QObject*, QEvent* event)
 {
+#ifdef Q_OS_MACOS
+    switch ( event->type() )
+    {
+    // the native window made (or made again), shown, or out of full screen:
+    // the unified title bar on it (it does nothing when it already is)
+    case QEvent::PlatformSurface:
+        if (static_cast<QPlatformSurfaceEvent *>(event)->surfaceEventType()
+            != QPlatformSurfaceEvent::SurfaceCreated)
+            break;
+        Q_FALLTHROUGH();
+    case QEvent::Show:
+    case QEvent::WindowStateChange:
+        QMetaObject::invokeMethod(this, [this]() { updateCSDWindowSettings(); }, Qt::QueuedConnection);
+        break;
+    default:
+        break;
+    }
+#endif
     switch ( event->type() )
     {
     case QEvent::WindowStateChange:

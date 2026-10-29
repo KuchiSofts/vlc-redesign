@@ -290,9 +290,14 @@ case $kind in
 esac
 snapshot > /tmp/after.txt
 comm -13 /tmp/before.txt /tmp/after.txt > "$out/left-behind.txt"
-# (the Flatpak runtime stays for other apps; the user's own settings are theirs)
+# (the Flatpak runtime stays for other apps; the user's own settings are
+# theirs; the certificates update-ca-certificates generated stay after apt
+# purges ca-certificates, a dependency, as for any package bringing it;
+# lastlog: the login record of the test's su)
 grep -v -E '^/var/lib/flatpak/(runtime|repo)|^/var/lib/flatpak/(\.changed|appstream|exports)' "$out/left-behind.txt" \
-    > "$out/left-behind-pkg.txt" || true
+    | grep -v -E '^/etc/ssl(/|$)|^/etc/ca-certificates|^/var/lib/lastlog(/|$)' > "$out/left-behind-pkg.txt" || true
+grep -q -E '^/etc/ssl/certs/' "$out/left-behind.txt" \
+    && info "left by ca-certificates (a dependency): /etc/ssl/certs, generated at its installation"
 if [ -s "$out/left-behind-pkg.txt" ]; then fail "left behind: $(head -n 8 "$out/left-behind-pkg.txt" | tr '\n' ' ')"
 else pass "removed: nothing left behind outside the user's folder"; fi
 ls -A /home/tester/.config /home/tester/.local/share 2>/dev/null | sed 's/^/INFO user files kept: /' | head -n 5 | tee -a "$summary"

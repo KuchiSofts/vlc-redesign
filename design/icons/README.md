@@ -11,7 +11,7 @@ Derived from *VLC Redesign (Community)* by Juxtopposed, CC BY 4.0 (see `design/R
 SVG export of the set by `design/tools/icon_svgs.py`; `design/tools/icon_svgs_report.md` compares
 each with its PNG. Every other raster piece (`images/`, `player/`) has its SVG too (`svg/`,
 `player/svg/`; `design/tools/raster_svgs.json` names its Figma node). The app draws the SVGs, at
-the size shown times the screen's scale and the interface zoom; the PNGs stay as a fallback. The
+the size shown times the screen's scale and the interface zoom; the PNGs are kept here only. The
 two-tone menu icons (`svg/duo/`) and the widget chevrons (`svg/widgets/`) are SVG only.
 
 **States.** `default`: idle, #8F8F8F (Dark/FG/A2); `active`: active or hovered, #D37918 (the default accent; the app tints it with the chosen one); `selected`: selected (outline variant); `dim`: dimmed, #6B6B6B or #404040; `disabled`: disabled, #343434; `default-grey`: idle, grey variant; `default-accent`: idle, drawn in the accent; `active-grey`: active, grey variant; `active-accent`: active, drawn in the accent; `outline-active`: active, outline only; `large`: large variant; `half`: half (volume, rating).
@@ -141,7 +141,7 @@ The icons of the Figma "Icon" component set (42:356), exported as PNG, one folde
 
 ## glyphs-svg (`svg/glyphs/`, 116 icons, 224 files)
 
-SVG sources of the glyphs, from the same Figma symbols (42:356), one per PNG state (design/tools/icon_svgs.py; its report icon_svgs_report.md compares them with the PNGs). 24 x 24 unless noted, Figma's colours of each state. The app draws these, at the size shown; the PNGs stay as a fallback.
+SVG sources of the glyphs, from the same Figma symbols (42:356), one per PNG state (design/tools/icon_svgs.py; its report icon_svgs_report.md compares them with the PNGs). 24 x 24 unless noted, Figma's colours of each state. The app draws these, at the size shown; it ships no PNG of them.
 
 | Icon | States | Size |
 |---|---|---|

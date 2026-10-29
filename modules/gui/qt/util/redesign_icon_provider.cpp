@@ -35,6 +35,8 @@
 #include <QStyleOption>
 #include <QGuiApplication>
 #include <QImage>
+#include <QImageIOHandler>
+#include <QMutex>
 #include <QQuickItem>
 #include <QQuickWindow>
 #include <QScreen>
@@ -78,9 +80,12 @@ bool isRedesignIcon(const QUrl &url)
         return false;
     if (path.endsWith(QLatin1String(".png")))
         return true;
-    // an SVG standing for a PNG (not an SVG of its own, such as play.svg)
+    // an SVG of the icons or of the player (not one of its own, such as
+    // play.svg): the URL of the PNG it was drawn from before (the PNG files
+    // are gone, their names stay the icons' ids)
     return path.endsWith(QLatin1String(".svg"))
-           && QFile::exists(QLatin1Char(':') + path.chopped(4) + QLatin1String(".png"));
+           && (path.startsWith(iconsPath) || path.startsWith(playerPath))
+           && QFile::exists(QLatin1Char(':') + path);
 }
 
 // The images of the item and its children showing such an icon load it
@@ -102,6 +107,28 @@ void reloadIcons(QQuickItem *item)
 
 // The size to draw a picture of this natural size at for a request (Qt asks
 // the sourceSize times the device pixel ratio; one side 0 keeps the ratio)
+QSize svgSize(const QString &svg)
+{
+    // (asked from the image reader's thread and the interface's)
+    static QMutex lock;
+    static QHash<QString, QSize> sizes;
+    const QMutexLocker locker(&lock);
+    const auto it = sizes.constFind(svg);
+    if (it != sizes.cend())
+        return *it;
+    QSize size;
+    const QScopedPointer<QImageIOHandler> handler(ImageHelper::createSvgImageIOHandler());
+    QFile file(svg);
+    if (handler && file.open(QFile::ReadOnly))
+    {
+        handler->setDevice(&file);
+        if (handler->canRead())
+            size = handler->option(QImageIOHandler::Size).toSize();
+    }
+    sizes.insert(svg, size);
+    return size;
+}
+
 QSize sizeFor(const QSize &natural, const QSize &requested)
 {
     if (!requested.isValid() || (requested.width() <= 0 && requested.height() <= 0) || natural.isEmpty())
@@ -232,9 +259,11 @@ QImage RedesignIconProvider::requestImage(const QString &id, QSize *size, const 
     const QString svg = vector ? RedesignIcons::svgOf(file) : QString();
     if (!svg.isEmpty())
     {
-        // its natural size (the PNG's) scaled to the request
-        const QImage natural(file);
-        const QSize base = natural.isNull() ? QSize(24, 24) : natural.size();
+        // its natural size (the SVG's, the size of the PNG it replaced)
+        // scaled to the request
+        QSize base = svgSize(svg);
+        if (base.isEmpty())
+            base = QSize(24, 24);
         image = ImageHelper::loadSvgToImage(svg, sizeFor(base, requestedSize));
     }
     if (image.isNull())

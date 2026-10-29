@@ -105,6 +105,18 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Fixed
 
+- **The mouse wheel changes the volume again, and the volume never reads "-100 %".** With an audio output that
+  has no volume of its own (the *File* and *Dummy* outputs of Settings, Audio), the wheel over the video and over
+  the volume slider did nothing and the slider's value read *-100 %*. Those outputs now apply the volume to the
+  sound themselves, so the wheel, the keys and the slider work from 0, and a volume not known yet shows as a dash.
+- **About: the name is never cut.** *VLC Redesign* read *VLC Redesi…* (and *VLC …* in German); the update button
+  now goes under the name when a translation needs the room. The credit lines wrap as sentences with their links,
+  and the system badge is readable in the light theme.
+- **Buttons no longer melt into their dialog.** *Cancel*, *Close*, *Licenses & authors*, *GitHub*, *Don't
+  restore*, the Settings buttons (*Browse*, *Reset*…) and the classic windows' buttons drew in the colour of the
+  panel under them; they have the window's frame colour around them now, in both themes. Icon buttons stay as
+  they are. In the light theme the classic windows' selected tabs, rows and main buttons write their text in a
+  darker accent, readable on the pale tint.
 - **Light theme: the classic windows' title bar matches the other dialogs.** The classic windows (the
   ones from VLC's older interface, in the redesign's look) had a darker grey title bar (`#9C9C9B`) than the
   redesign's own dialogs; it is the same light grey now (`#DEDEDE`). Nothing else looks different: the 228 places

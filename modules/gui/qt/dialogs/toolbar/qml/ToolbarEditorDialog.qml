@@ -295,8 +295,11 @@ Controls.Popup {
                         color: cancelButton.down || cancelButton.hovered
                                ? VLCStyle.redesign.color(VLCStyle.redesign.controlHoverBackground, "#9c9c9b")
                                : VLCStyle.redesign.color(VLCStyle.redesign.playerControlBackground, "#ababaa")
-                        border.width: cancelButton.visualFocus ? 1 : 0
-                        border.color: VLCStyle.redesign.focusColor
+                        // the frame of the window: #1B1B1B melts into the
+                        // card (docs/MASTER-PLAN.md section 6)
+                        border.width: 1
+                        border.color: cancelButton.visualFocus ? VLCStyle.redesign.focusColor
+                                                               : VLCStyle.redesign.color(VLCStyle.redesign.windowBorder)
                     }
                     contentItem: Text {
                         id: cancelLabel

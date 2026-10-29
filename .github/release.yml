@@ -1,0 +1,18 @@
+# Groups GitHub's automatically generated release notes by label
+# ("Generate release notes" on a release). No workflow uses it.
+changelog:
+  exclude:
+    labels: ["duplicate", "wontfix", "question"]
+  categories:
+    - title: New features and improvements
+      labels: ["enhancement", "design"]
+    - title: Fixes
+      labels: ["bug", "performance"]
+    - title: Translations
+      labels: ["area:translations"]
+    - title: VLC engine updates
+      labels: ["upstream-sync", "upstream"]
+    - title: Build and tooling
+      labels: ["area:ci", "dependencies"]
+    - title: Other changes
+      labels: ["*"]

@@ -1,6 +1,6 @@
-name: Suggestion
+name: Feature request
 description: An idea to make VLC Redesign better
-labels: ["suggestion"]
+labels: ["enhancement"]
 body:
   - type: markdown
     attributes:

@@ -130,27 +130,24 @@ FocusScope {
         listView.currentIndex = Math.max(0, Iptv.playerModel.currentIndex)
     }
 
-    // The keys of the TV, before the player's: true when taken
-    function handleKey(event) {
-        const plain = event.modifiers === Qt.NoModifier || event.modifiers === Qt.KeypadModifier
+    // The keys of the TV, before the player's and VLC's hotkeys: what the
+    // key does here, "" nothing (it stays a hotkey). The channels up and
+    // down, the last one, the list and the banner on the keys of the
+    // shortcuts (Settings > Shortcuts, Live TV); the digits type a number.
+    function _keyAction(key, modifiers) {
+        const plain = modifiers === Qt.NoModifier || modifiers === Qt.KeypadModifier
         if (listPanel.visible) {
-            switch (event.key) {
+            switch (key) {
             case Qt.Key_Escape:
             case Qt.Key_Back:
-                closeList()
-                return true
+                return "close-list"
             case Qt.Key_Left:
-                switchGroup(LayoutMirroring.enabled ? 1 : -1)
-                return true
+                return LayoutMirroring.enabled ? "group-next" : "group-previous"
             case Qt.Key_Right:
-                switchGroup(LayoutMirroring.enabled ? -1 : 1)
-                return true
+                return LayoutMirroring.enabled ? "group-previous" : "group-next"
             case Qt.Key_Return:
             case Qt.Key_Enter:
-                if (listView.currentIndex >= 0)
-                    Iptv.play(Iptv.playerModel.keyAt(listView.currentIndex))
-                closeList()
-                return true
+                return "play-selected"
             }
         }
         // the banner shown: Left and Right go through the guide of the
@@ -158,55 +155,104 @@ FocusScope {
         if (plain && banner.wanted && root.canBrowse) {
             const back = LayoutMirroring.enabled ? Qt.Key_Right : Qt.Key_Left
             const forward = LayoutMirroring.enabled ? Qt.Key_Left : Qt.Key_Right
-            if (event.key === back || event.key === forward) {
-                root.browseBy(event.key === forward ? 1 : -1)
-                return true
-            }
-            if (root.browse !== 0 && (event.key === Qt.Key_Return || event.key === Qt.Key_Enter)) {
-                root.browseAction()
-                return true
-            }
-            if (root.browse !== 0 && (event.key === Qt.Key_Escape || event.key === Qt.Key_Back)) {
-                root.browse = 0
-                return true
+            if (key === back)
+                return "guide-previous"
+            if (key === forward)
+                return "guide-next"
+            if (root.browse !== 0 && (key === Qt.Key_Return || key === Qt.Key_Enter))
+                return "guide-action"
+            if (root.browse !== 0 && (key === Qt.Key_Escape || key === Qt.Key_Back))
+                return "guide-now"
+        }
+        if (plain) {
+            if (key >= Qt.Key_0 && key <= Qt.Key_9)
+                return "digit"
+            if (key === Qt.Key_ChannelUp)
+                return "channel-up"
+            if (key === Qt.Key_ChannelDown)
+                return "channel-down"
+            // a number typed: Backspace takes its last digit, Enter goes
+            if (numberEntry.text.length > 0) {
+                if (key === Qt.Key_Backspace)
+                    return "erase-digit"
+                if (key === Qt.Key_Return || key === Qt.Key_Enter)
+                    return "play-number"
             }
         }
-        if (!plain)
-            return false
-        if (event.key >= Qt.Key_0 && event.key <= Qt.Key_9) {
+        return MainCtx.tvKeyAction(key, modifiers)
+    }
+
+    // MainCtx.keysBeforeHotkeys: the window gives the keys here first,
+    // before the hotkeys and the item with the focus (takeKey: true when
+    // done). Every other key without a modifier goes to the list while it
+    // is open (wantsKey): it moves through the channels.
+    function takeKey(key, modifiers) {
+        return _run(_keyAction(key, modifiers), key)
+    }
+    function wantsKey(key, modifiers) {
+        return listPanel.visible && (modifiers === Qt.NoModifier || modifiers === Qt.KeypadModifier)
+    }
+
+    // the player's Keys: true when taken
+    function handleKey(event) {
+        return _run(_keyAction(event.key, event.modifiers), event.key)
+    }
+
+    function _run(action, key) {
+        switch (action) {
+        case "close-list":
+            closeList()
+            return true
+        case "group-previous":
+            switchGroup(-1)
+            return true
+        case "group-next":
+            switchGroup(1)
+            return true
+        case "play-selected":
+            if (listView.currentIndex >= 0)
+                Iptv.play(Iptv.playerModel.keyAt(listView.currentIndex))
+            closeList()
+            return true
+        case "guide-previous":
+            root.browseBy(-1)
+            return true
+        case "guide-next":
+            root.browseBy(1)
+            return true
+        case "guide-action":
+            root.browseAction()
+            return true
+        case "guide-now":
+            root.browse = 0
+            return true
+        case "digit":
             if (numberEntry.text.length < 4)
-                numberEntry.text += String(event.key - Qt.Key_0)
+                numberEntry.text += String(key - Qt.Key_0)
             numberTimer.restart()
             return true
-        }
-        switch (event.key) {
-        case Qt.Key_PageUp:
-        case Qt.Key_ChannelUp:
+        case "erase-digit":
+            numberEntry.text = numberEntry.text.slice(0, -1)
+            numberTimer.restart()
+            return true
+        case "play-number":
+            numberTimer.stop()
+            Iptv.playNumber(parseInt(numberEntry.text))
+            numberEntry.text = ""
+            return true
+        case "channel-up":
             Iptv.channelUp()
             return true
-        case Qt.Key_PageDown:
-        case Qt.Key_ChannelDown:
+        case "channel-down":
             Iptv.channelDown()
             return true
-        case Qt.Key_Backspace:
-            if (numberEntry.text.length > 0) {
-                numberEntry.text = numberEntry.text.slice(0, -1)
-                numberTimer.restart()
-            } else {
-                Iptv.previousChannel()
-            }
+        case "previous":
+            Iptv.previousChannel()
             return true
-        case Qt.Key_Return:
-        case Qt.Key_Enter:
-            if (numberEntry.text.length > 0) {
-                numberTimer.stop()
-                Iptv.playNumber(parseInt(numberEntry.text))
-                numberEntry.text = ""
-            } else {
-                openList()
-            }
+        case "list":
+            openList()
             return true
-        case Qt.Key_I:
+        case "info":
             showBanner()
             return true
         }

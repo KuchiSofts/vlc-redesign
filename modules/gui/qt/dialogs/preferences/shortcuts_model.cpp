@@ -90,6 +90,15 @@ void ShortcutsModel::setSearchField(const QString &field)
     rebuildRows();
 }
 
+void ShortcutsModel::setLiveTv(bool liveTv)
+{
+    if (m_liveTv == liveTv)
+        return;
+    m_liveTv = liveTv;
+    emit liveTvChanged();
+    rebuildRows();
+}
+
 bool ShortcutsModel::dirty() const
 {
     for (const Entry &entry : m_entries)
@@ -117,6 +126,7 @@ QVariant ShortcutsModel::data(const QModelIndex &index, int role) const
     case DirtyRole: return entry.staged != entry.current || entry.globalStaged != entry.globalCurrent;
     case HotkeysRole: return splitKeys(entry.staged);
     case GlobalHotkeysRole: return splitKeys(entry.globalStaged);
+    case HasGlobalRole: return !entry.globalKey.isEmpty();
     default: return {};
     }
 }
@@ -126,11 +136,13 @@ QHash<int, QByteArray> ShortcutsModel::roleNames() const
     return {{KeyRole, "key"}, {ActionRole, "action"}, {GroupRole, "group"},
             {HotkeyRole, "hotkey"}, {GlobalHotkeyRole, "globalHotkey"},
             {DirtyRole, "dirty"}, {HotkeysRole, "hotkeys"},
-            {GlobalHotkeysRole, "globalHotkeys"}};
+            {GlobalHotkeysRole, "globalHotkeys"}, {HasGlobalRole, "hasGlobal"}};
 }
 
 bool ShortcutsModel::visible(const Entry &entry) const
 {
+    if (entry.tv && !m_liveTv)
+        return false;
     if (m_search.isEmpty())
         return true;
     const auto match = [this](const QString &text) {
@@ -204,6 +216,8 @@ void ShortcutsModel::putKey(const QString &key, const QString &value)
 
 QString ShortcutsModel::groupFor(const QString &key)
 {
+    if (key.startsWith(QLatin1String("qt-key-tv-")))
+        return qtr("Live TV");
     if (key == QLatin1String("key-toggle-fullscreen")
         || key == QLatin1String("key-leave-fullscreen")
         || key == QLatin1String("key-position")
@@ -229,6 +243,7 @@ int ShortcutsModel::groupOrder(const QString &group)
     if (group == qtr("Audio")) return 2;
     if (group == qtr("Video")) return 3;
     if (group == qtr("Subtitles")) return 4;
+    if (group == qtr("Live TV")) return 6;
     return 5;
 }
 
@@ -280,6 +295,23 @@ void ShortcutsModel::reload()
                 }
                 module_config_free(configs);
             }
+        }
+        // the keys of live TV: the interface's options (qt.cpp)
+        for (const char *name : { "qt-key-tv-channel-up", "qt-key-tv-channel-down",
+                                  "qt-key-tv-previous", "qt-key-tv-list", "qt-key-tv-info" }) {
+            const module_config_t *item = config_FindConfig(name);
+            if (!item || !item->psz_text)
+                continue;
+            Entry entry;
+            entry.key = QString::fromLatin1(name);
+            entry.action = qfut(item->psz_text);
+            entry.group = groupFor(entry.key);
+            entry.groupRank = groupOrder(entry.group);
+            entry.current = readKey(entry.key);
+            entry.staged = entry.current;
+            entry.defaults = QString::fromUtf8(item->orig.psz ? item->orig.psz : "");
+            entry.tv = true;
+            m_entries.append(entry);
         }
         const QStringList firstActions = {
             QStringLiteral("key-toggle-fullscreen"), QStringLiteral("key-leave-fullscreen"),
@@ -388,7 +420,7 @@ QVariantMap ShortcutsModel::stageKey(const QString &option, bool global,
     };
     QVector<int> conflicts;
     for (int i = 0; i < m_entries.size(); ++i) {
-        if (i == target)
+        if (i == target || m_entries[i].tv != m_entries[target].tv)
             continue;
         const QString &keys = global ? m_entries[i].globalStaged : m_entries[i].staged;
         const QStringList parts = splitKeys(keys);

@@ -29,13 +29,15 @@ class ShortcutsModel : public QAbstractListModel
     Q_PROPERTY(QString searchField READ searchField WRITE setSearchField NOTIFY searchFieldChanged)
     Q_PROPERTY(bool dirty READ dirty NOTIFY dirtyChanged)
     Q_PROPERTY(QString error READ error NOTIFY errorChanged)
+    // the keys of live TV listed too (its add-on on)
+    Q_PROPERTY(bool liveTv READ liveTv WRITE setLiveTv NOTIFY liveTvChanged)
 
 public:
     // Hotkey(s)Role: the keys of the action as one text ("f, Ctrl+e") and as
     // a list, for a chip per key
     enum Role { KeyRole = Qt::UserRole + 1, ActionRole, GroupRole,
                 HotkeyRole, GlobalHotkeyRole, DirtyRole,
-                HotkeysRole, GlobalHotkeysRole };
+                HotkeysRole, GlobalHotkeysRole, HasGlobalRole };
     Q_ENUM(Role)
 
     explicit ShortcutsModel(QObject *parent = nullptr);
@@ -47,6 +49,8 @@ public:
     void setSearchField(const QString &field);
     bool dirty() const;
     QString error() const { return m_error; }
+    bool liveTv() const { return m_liveTv; }
+    void setLiveTv(bool liveTv);
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     QVariant data(const QModelIndex &index, int role) const override;
@@ -72,6 +76,7 @@ signals:
     void searchFieldChanged();
     void dirtyChanged();
     void errorChanged();
+    void liveTvChanged();
 
 private:
     struct Entry {
@@ -80,6 +85,9 @@ private:
         // the place of the row: its group, then the first actions of the
         // design (worked out once, not at each comparison of the sort)
         int groupRank = 5, firstRank = 100;
+        // a key of live TV: only while a channel plays, so it may be one of
+        // the player's too (no conflict with them)
+        bool tv = false;
     };
     struct Change { QString key, action, before, after; bool global; };
 
@@ -99,6 +107,7 @@ private:
 
     QPointer<MainCtx> m_ctx;
     QString m_search, m_searchField = QStringLiteral("all"), m_error;
+    bool m_liveTv = false;
     QElapsedTimer m_loaded;
     QVector<Entry> m_entries;
     QVector<int> m_rows;

@@ -10,7 +10,7 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 ## Now
 
-What is being worked on, updated as it changes (2026-10-28):
+What is being worked on, updated as it changes (2026-10-29):
 
 - 🟡 **Last desktop issues before 0.4.0** (branch `feature/leftovers`, 2026-10-29): Live TV's keys win over VLC's
   hotkeys while a channel plays (`MainCtx.keysBeforeHotkeys`; Page Up/Down, digits, Backspace, Enter, I; in
@@ -22,8 +22,21 @@ What is being worked on, updated as it changes (2026-10-28):
   real wheel changes the volume over the video and over the slider with the default output (1.0 → 1.1 → 1.0),
   Ctrl+T, Ctrl+P, Ctrl+N open their dialogs. Found in the end-to-end pass and fixed: the guide's
   `original-air-date` shown as the episode (Pluto TV), a QML error when *Open Folder* opened its system dialog from
-  the menu (zoom 2). Left: a `QQuickItem::stackAfter` warning when Customize Player opens at zoom 1.5/2, the Live TV
-  texts and the five key names untranslated. End-to-end pass of 0.4.0: [0.4.0-ui-audit.md](qa/0.4.0-ui-audit.md).
+  the menu (zoom 2). The two items left there are done in `feature/integration` (below). End-to-end pass of 0.4.0:
+  [0.4.0-ui-audit.md](qa/0.4.0-ui-audit.md).
+- 🟡 **Integration of 0.4.0** (branch `feature/integration`, 2026-10-29, every feature branch merged):
+  - 🟢 The `QQuickItem::stackAfter` warning of Customize Player at zoom 1.5/2 came from the bar's customize lines
+    (Repeater delegates that reparented themselves), not from `DashedRect`; fixed, none in the zoom 1.5 and 2 tours.
+  - 🟢 Translations: `po/vlc.pot` had lost the 375 texts of the `.ui` forms (the classic windows read English in
+    every language: *Capture mode*, *Device Selection*, *Show more options*...), and 37 files of the redesign were
+    missing from `po/POTFILES.in` (Live TV, Settings › TV, the redesigned dialogs, Edit Sidebar). Both fixed
+    (`translations/ui-pot.py`, a release-check test); the 207 new texts translated in the 72 languages, `msgfmt -c`
+    clean in all 110 catalogs. `po/redesign` waits for the Weblate export.
+  - 🟢 Builds: Windows x64, Windows ARM64 (built, not run) and Linux x86_64 (Qt 6.8.3). Windows x64 checked end to
+    end in a portable test copy (tours in English and Hebrew, dark and light, Settings, zoom 1.5/2, About with its
+    badge and the designer credit, the TV page with Pluto TV and Plex, a Windows-1255 Hebrew subtitle): no QML
+    warning. Linux under Xvfb: start, Home, TV, Settings, About, a clip, quit, no QML warning. macOS not built.
+    Details: [0.4.0-ui-audit.md](qa/0.4.0-ui-audit.md#integration-build-branch-featureintegration-2026-10-29).
 
 - 🟡 **Subtitle quality** (branch `feature/subs-quality`, for 0.4.0): measured first on Windows (d3d11, 480p,
   720p and 1080p sources in a 1440×1000 window and full screen 2560×1440): SRT and ASS were already rasterised at

@@ -120,6 +120,15 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   programmes; the episode (*S17E52*) shows now.
 - **No QML error when *Open File(s)* or *Open Folder* is chosen from the ⋯ menu** (seen at zoom 2): the system's
   dialog opens once the menu has closed.
+- **No QML warning when Customize Player opens at zoom 1.5 or 2** (`QQuickItem::stackAfter: Cannot stack ...`):
+  the lines drawn above the rows of the player bar while it is customized are made inside the bar's background.
+- **The classic windows are translated again, and Live TV can be.** In every language, the texts of the classic
+  windows read English (Open Media's *Capture mode*, *Device Selection*, *Options*, *Show more options*, *Advanced
+  options...*, Convert, Media Information...): the list of texts to translate was made without them, so their
+  translations were dropped. The texts of Live TV (the TV page, the guide, the TV sources and their catalog, the
+  banner over the video), *Go to Time*, *Plugins and extensions*, *Media Statistics*, *Folder information* and
+  *Edit Sidebar* never reached that list. All of them are in it now, and the new texts of 0.4.0 are translated in
+  the 72 languages, the five Live TV shortcuts included.
 - **No QML error when the player closes while its library panel opens** ("Object destroyed while one of its QML
   signal handlers is in progress", seen in Hebrew): the panel is made in the background.
 - **The mouse wheel changes the volume again, and the volume never reads "-100 %".** With an audio output that
@@ -206,6 +215,14 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Technical
 
+- **`po/vlc.pot` with the `.ui` forms and every file of the redesign.** xgettext cannot read Qt Designer forms;
+  VideoLAN's `vlc.pot` takes their texts from the `ui_*.h` of a build. `extras/juxtopposed/translations/ui-pot.py`
+  writes them as a POT of their own (references to the `.ui` file and line), merged with xgettext's by
+  `msgcat --use-first`: 375 texts of 22 forms, whose translations `msgmerge` brings back from the catalogs'
+  obsolete entries. `po/POTFILES.in` lists the 37 files with translatable texts that VLC Redesign added or
+  changed and that were missing (Live TV, `SettingsTv.qml`, the redesigned dialogs, `SidebarEditDialog.qml`,
+  `navigationmodel.cpp`, `modules/misc/iptv/iptv.cpp`...). A `qsTr()` of two concatenated literals is one literal
+  (xgettext only reads the first). `po/vlc.pot`: 8,290 texts.
 - **Keys before the hotkeys** (`MainCtx.keysBeforeHotkeys`): an item of the interface may take keys before VLC's
   hotkeys and the focused item; the window's event filter asks its `takeKey(key, modifiers)` (done there) and
   `wantsKey(key, modifiers)` (sent on to the items). Live TV over the video is that item while a channel plays.

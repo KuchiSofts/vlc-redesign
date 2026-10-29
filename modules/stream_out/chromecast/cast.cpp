@@ -142,6 +142,14 @@ struct sout_stream_sys_t
     std::vector<std::pair<sout_stream_id_sys_t *, block_t *>> held;
     vlc_tick_t held_since = VLC_TICK_INVALID;
     bool held_done = false;
+    /* The same in the middle of a media: its picture or its sound restarted
+     * (an adaptive stream changing its format, a live channel after an
+     * advert): the stream left was sent alone, then the new one joined. The
+     * TV loaded the media three times in a second (with the picture, the
+     * sound only, with the picture again). The blocks wait again, as at the
+     * start, for both (the stream went to the TV already: held_done stays
+     * the media's own) */
+    bool held_again = false;
 
     bool canDecodeVideo( const es_format_t * ) const;
     bool canDecodeAudio( sout_stream_t* p_stream, vlc_fourcc_t i_codec,
@@ -767,6 +775,7 @@ static void *Add(sout_stream_t *p_stream, const es_format_t *p_fmt, const char *
         {
             p_sys->dropHeld( NULL );
             p_sys->held_done = false;
+            p_sys->held_again = false;
         }
         p_sys->streams.push_back( p_sys_id );
 
@@ -825,6 +834,11 @@ static void DelInternal(sout_stream_t *p_stream, void *_id, bool reset_config)
                             p_sys->has_video = false;
                         else if( p_sys_id->fmt.i_cat == SPU_ES )
                             p_sys->spu_streams_count--;
+                        /* the picture or the sound restarted while the
+                         * other plays on: held until the new one comes */
+                        if( reset_config && p_sys->held_done && !p_sys->out_streams.empty()
+                         && ( p_sys_id->fmt.i_cat == VIDEO_ES || p_sys_id->fmt.i_cat == AUDIO_ES ) )
+                            p_sys->held_again = true;
                         break;
                     }
                     out_it++;
@@ -843,9 +857,16 @@ static void DelInternal(sout_stream_t *p_stream, void *_id, bool reset_config)
      * a track removed then, another chosen, is not its end) */
     if ( p_sys->out_streams.empty() && p_sys->held_done )
     {
+        /* (held again for a stream that never came: the media ended) */
+        p_sys->dropHeld( NULL );
+        p_sys->held_again = false;
         /* the end of the media: the TV plays what it has (not when the user
-         * stopped, or chose another device: it stops at once) */
-        const bool play_to_end = !p_sys->p_intf->userStopped()
+         * stopped, or chose another device: it stops at once). Only when the
+         * input read it to its end: VLC quitting while it casts removes the
+         * interface (which says the user stopped) before the input, and the
+         * TV then played on alone while VLC waited up to 15 s for it to read
+         * what it had, its window gone */
+        const bool play_to_end = !p_sys->p_intf->userStopped() && p_sys->cc_eof
          && p_sys->access_out_live.waitForClient(CHROMECAST_HANDOFF_ATTACH_TIMEOUT);
         /* Closing the chain makes its muxer, and a transcoder, write the end
          * of the media they still hold: it came after the wait and was
@@ -1306,6 +1327,7 @@ bool sout_stream_sys_t::isFlushing( sout_stream_t *p_stream )
 static void SendHeld( sout_stream_t *p_stream, sout_stream_sys_t *p_sys )
 {
     p_sys->held_done = true;
+    p_sys->held_again = false;
     std::vector<std::pair<sout_stream_id_sys_t *, block_t *>> blocks;
     blocks.swap( p_sys->held );
     std::vector<sout_stream_id_sys_t *> failed;
@@ -1342,7 +1364,7 @@ static int Send(sout_stream_t *p_stream, void *_id, block_t *p_buffer)
         return VLC_SUCCESS;
     }
 
-    if( !p_sys->held_done )
+    if( !p_sys->held_done || p_sys->held_again )
     {
         if( p_sys->holdStart( id, p_buffer ) )
             return VLC_SUCCESS;

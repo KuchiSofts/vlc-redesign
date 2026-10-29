@@ -33,6 +33,7 @@
 #include <limits.h>
 #include <assert.h>
 #include <math.h>
+#include <stdatomic.h>
 
 #include <vlc_common.h>
 #include <vlc_plugin.h>
@@ -91,9 +92,19 @@ typedef struct
 
     /* */
     ASS_Track      *p_track;
+
+    /* The subtitles' text scale of the player ("sub-text-scale", in %: its
+     * hotkeys, Ctrl+wheel over the video in the Qt interface), as the text
+     * renderer applies it: the object that has the variable, the value told
+     * by its callback and the one the renderer has */
+    vlc_object_t   *p_scale_obj;
+    atomic_int     i_text_scale;
+    int            i_applied_scale;
 } decoder_sys_t;
 static void DecSysRelease( decoder_sys_t *p_sys );
 static void DecSysHold( decoder_sys_t *p_sys );
+static int TextScaleCallback( vlc_object_t *, char const *,
+                              vlc_value_t, vlc_value_t, void * );
 
 /* */
 static void SubpictureUpdate( subpicture_t *, const struct vlc_spu_updater_configuration * );
@@ -150,6 +161,10 @@ static int Create( vlc_object_t *p_this )
     p_sys->p_library  = NULL;
     p_sys->p_renderer = NULL;
     p_sys->p_track    = NULL;
+    p_sys->p_scale_obj = NULL;
+    p_sys->i_applied_scale = 0; /* applied at the first update */
+    atomic_init( &p_sys->i_text_scale,
+                 VLC_CLIP( var_InheritInteger( p_dec, "sub-text-scale" ), 10, 500 ) );
 
     /* Create libass library */
     ASS_Library *p_library = p_sys->p_library = ass_library_init();
@@ -220,7 +235,7 @@ static int Create( vlc_object_t *p_this )
     ass_set_use_margins( p_renderer, false);
     //if( false )
     //    ass_set_margins( p_renderer, int t, int b, int l, int r);
-    ass_set_font_scale( p_renderer, 1.0 );
+    ass_set_font_scale( p_renderer, atomic_load( &p_sys->i_text_scale ) / 100.0 );
     ass_set_line_spacing( p_renderer, 0.0 );
 
 #if defined( __ANDROID__ )
@@ -283,6 +298,30 @@ static int Create( vlc_object_t *p_this )
 
     p_dec->fmt_out.i_codec = VLC_CODEC_RGBA;
 
+    /* the text scale changed while it plays (the player's variable, up the
+     * decoder's parents) */
+    for( vlc_object_t *p_obj = vlc_object_parent( VLC_OBJECT(p_dec) ); p_obj;
+         p_obj = vlc_object_parent( p_obj ) )
+    {
+        if( var_Type( p_obj, "sub-text-scale" ) != 0 )
+        {
+            p_sys->p_scale_obj = p_obj;
+            atomic_store( &p_sys->i_text_scale,
+                          VLC_CLIP( var_GetInteger( p_obj, "sub-text-scale" ), 10, 500 ) );
+            var_AddCallback( p_obj, "sub-text-scale", TextScaleCallback, p_sys );
+            break;
+        }
+    }
+
+    return VLC_SUCCESS;
+}
+
+static int TextScaleCallback( vlc_object_t *p_this, char const *psz_var,
+                              vlc_value_t oldval, vlc_value_t newval, void *p_data )
+{
+    VLC_UNUSED(p_this); VLC_UNUSED(psz_var); VLC_UNUSED(oldval);
+    decoder_sys_t *p_sys = p_data;
+    atomic_store( &p_sys->i_text_scale, VLC_CLIP( newval.i_int, 10, 500 ) );
     return VLC_SUCCESS;
 }
 
@@ -292,8 +331,11 @@ static int Create( vlc_object_t *p_this )
 static void Destroy( vlc_object_t *p_this )
 {
     decoder_t *p_dec = (decoder_t *)p_this;
+    decoder_sys_t *p_sys = p_dec->p_sys;
 
-    DecSysRelease( p_dec->p_sys );
+    if( p_sys->p_scale_obj )
+        var_DelCallback( p_sys->p_scale_obj, "sub-text-scale", TextScaleCallback, p_sys );
+    DecSysRelease( p_sys );
 }
 
 static void DecSysHold( decoder_sys_t *p_sys )
@@ -435,6 +477,16 @@ static void SubpictureUpdate( subpicture_t *p_subpic,
 
     vlc_mutex_lock( &p_sys->lock );
 
+    /* the subtitles' text scale, as the text renderer's (the fonts of the
+     * script, positioned signs too) */
+    const int i_text_scale = atomic_load( &p_sys->i_text_scale );
+    const bool b_scale = i_text_scale != p_sys->i_applied_scale;
+    if( b_scale )
+    {
+        ass_set_font_scale( p_sys->p_renderer, i_text_scale / 100.0 );
+        p_sys->i_applied_scale = i_text_scale;
+    }
+
     if( b_fmt_src || b_fmt_dst )
     {
         ass_set_frame_size( p_sys->p_renderer, p_fmt_dst->i_visible_width, p_fmt_dst->i_visible_height );
@@ -456,7 +508,7 @@ static void SubpictureUpdate( subpicture_t *p_subpic,
     ASS_Image *p_img = ass_render_frame( p_sys->p_renderer, p_sys->p_track,
                                          MS_FROM_VLC_TICK( i_stream_date ), &i_changed );
 
-    if( !i_changed && !b_fmt_src && !b_fmt_dst &&
+    if( !i_changed && !b_fmt_src && !b_fmt_dst && !b_scale &&
         (p_img != NULL) == (!vlc_spu_regions_is_empty(&p_subpic->regions)) )
     {
         vlc_mutex_unlock( &p_sys->lock );

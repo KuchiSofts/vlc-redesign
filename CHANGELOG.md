@@ -5,7 +5,7 @@ Changes of **VLC Redesign**, an unofficial VLC 4 build with the interface design
 For changes to VLC itself, see [NEWS](NEWS).
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
-what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `32b160d9e9` (2026-10-28).
+what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `12023233ef` (2026-10-29).
 
 **Contents:** [Unreleased](#unreleased) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
@@ -106,6 +106,22 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Fixed
 
+- **Online subtitles are loaded by themselves only for the right film.** The automatic search took the title it
+  guessed from the file name: a clip named `silent.mp4` got the subtitles of *Silent Hill*. A subtitle now loads by
+  itself only when it was made for that very file (the services know it by its fingerprint) or the title is sure:
+  one you chose, or the same title with its year, its episode, or of two words or more. A guess from a name alone
+  stays in the subtitles panel's list, to pick if it is right.
+- **Live TV leaves nothing in the library, also for channels behind a playlist.** A channel whose address is
+  itself a playlist (some Plex channels) was saved to the library under the address it pointed to, and showed in
+  *Continue Watching* named by that address's query (its access token). What a channel opens now stays out of the
+  library and the history, as the channel itself.
+- **Screen readers and the keyboard.** Every button and field of the main window, the player bar, its panels, the ⋯
+  menu, the library, the TV page and the dialogs has a name (the Settings search field had none); the redesign's
+  dialogs are announced by their title (they were unnamed windows); and Tab no longer stays in the multi-line fields
+  of *Open Network Stream* and Live TV's sources: Tab and Shift+Tab move to the next and the previous control.
+- **Live TV: *All* counts the channels shown.** The *All* group read 5,891 while the page and its list had 5,881:
+  it also counted the adult channels, which only show when *Settings › TV* shows them. *All* and the groups now
+  count what the list shows, and follow that switch at once.
 - **Live TV: Page Up, Page Down, the numbers and Backspace change the channel.** VLC's own shortcuts got these
   keys first: Page Up restarted the stream instead of going to the next channel. While a channel plays, the keys
   of the TV now come first; every other key keeps its shortcut, and outside Live TV nothing changes. The keys of
@@ -214,6 +230,18 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   longer jumps when a track is removed, and more (the full list: the review report).
 
 ### Technical
+
+- Merged VLC master up to `12023233ef` (2026-10-29), 4 commits: mpg123 1.33.7 in the contribs (and its FPU code on
+  every ARM64), the Qt build's moc include folders (`static_dirs.py`) and a missing medialibrary header in
+  `Makefile.am`. Nothing of the redesign needed a change; built and tested again (tours, subtitles, Live TV).
+- **The icons ship as SVG only.** The 303 PNG files of `pixmaps/redesign` (every one had its SVG, of the same
+  size) are gone from the app: the icon interceptor and the image provider go by the SVG alone, the `.png` names
+  stay the icons' ids. The PNG exports of Figma are kept in `design/icons`, where `sync_assets.py` and
+  `icon_svgs.py` read them.
+- **The source of every release.** `make-release.ps1` writes `vlc-redesign-X.Y.Z-source.tar.gz` (the commit
+  packaged, `git archive`), lists it in the signed `SHA256SUMS.txt` and stops if the tree has changes or the tag
+  names another commit; the release notes link it, the portable zip says where it is, and
+  [SOURCE.md](docs/SOURCE.md) has the libraries of `contrib/` and the written offer for their source.
 
 - **`po/vlc.pot` with the `.ui` forms and every file of the redesign.** xgettext cannot read Qt Designer forms;
   VideoLAN's `vlc.pot` takes their texts from the `ui_*.h` of a build. `extras/juxtopposed/translations/ui-pot.py`

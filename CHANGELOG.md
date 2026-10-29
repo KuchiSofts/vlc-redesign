@@ -64,7 +64,8 @@ a border on every window, sharp icons at every scale, and signed updates.
   ASS/SSA, MicroDVD, SubViewer/SBV, SAMI and VobSub (`.idx`) files are read once, in the background, and kept for
   the next time. Subtitles inside the video file and streams that cannot seek have no marks. Settings, Subtitles,
   Timing: *Show subtitle lines on the seek bar* (`qt-seek-subtitle-cues`, on by default, applies at once).
-- **Linux (x86_64).** VLC Redesign as a .deb (Ubuntu 24.04 and later, Debian 13), an .rpm (Fedora), an AppImage
+- **Linux (x86_64), in testing: not released with 0.4.0.** The packages are made and tested, and come with a later
+  version: a .deb (Ubuntu 24.04 and later, Debian 13), an .rpm (Fedora), an AppImage
   (any distribution with glibc 2.38 or later, Arch among them), a Flatpak (KDE 6.8 runtime) and a folder to run
   from. The .deb and .rpm install next to the distribution's own `vlc` (`/opt/vlc-redesign`, the command
   `vlc-redesign`, the menu entry *VLC Redesign*) and replace nothing of it. Live TV is the package

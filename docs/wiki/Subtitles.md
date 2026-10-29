@@ -4,6 +4,10 @@ VLC Redesign shows subtitles in your language by itself: from the video, from a 
 It learns the languages you pick, remembers the subtitle of each file and the timing of each series, and lets you
 fix early or late subtitles, and move or resize them, while you watch.
 
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/subtitles-he-ar-ja.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/subtitles-he-ar-ja.gif" alt="English, Hebrew, Japanese and Arabic subtitles in turn with the V key" width="720"></a>
+
+<sub>English, Hebrew, Japanese and Arabic subtitles in turn with <kbd>V</kbd>: sharp, and Hebrew and Arabic in the right order, with their brackets and punctuation. Click for the MP4 · every clip: [Feature tour](Feature-Tour#subtitles).</sub>
+
 Everything here happens in the **Subtitles** tab of the **Languages and tracks** panel. The look of the subtitles
 (font, colours, outline, shadow, box) and the languages are also in [Settings: Subtitles](Settings-Subtitles).
 
@@ -25,6 +29,10 @@ Before you choose any subtitle language, a video's own track in the language of 
 English: an English film would otherwise always show its English subtitles.
 
 ## The Subtitles tab
+
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/tracks-panel.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/tracks-panel.gif" alt="The tracks panel: Video, Audio and Subtitles tabs, the subtitle languages with their own names, Hebrew picked" width="800"></a>
+
+<sub>The Video, Audio and Subtitles tabs of the panel; the subtitle languages of the video, each in its own language; Hebrew picked. Click for the MP4 · every clip: [Feature tour](Feature-Tour#subtitles).</sub>
 
 **Languages and tracks** in the control bar opens a panel above the button with three tabs, *Video*, *Audio* and
 **Subtitles**; it opens on Subtitles. A second click on the button, a click outside the panel or <kbd>Esc</kbd>
@@ -176,6 +184,10 @@ local episode to save its track and timing choices.*
 
 ## Position and size
 
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/subtitle-size.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/subtitle-size.gif" alt="Ctrl and the mouse wheel over the video change the subtitle size, up to 200 % and down to 50 %" width="720"></a>
+
+<sub><kbd>Ctrl</kbd> + mouse wheel over the video: the subtitle size up to 200 %, then down to 50 %, from the next line on. Click for the MP4 · every clip: [Feature tour](Feature-Tour#subtitles).</sub>
+
 ![The panel faded while the subtitles are adjusted: Position +12 % and Size 130 % with their − and + buttons and Reset, the subtitle line visible through the panel](images/subtitles-adjusting.jpg)
 
 **Position and size**, at the end of the Subtitles tab:
@@ -183,7 +195,7 @@ local episode to save its track and timing choices.*
 | Row | − / + | Range | Reset |
 |---|---|---|---|
 | **Position** | *Move the subtitles down* / *Move the subtitles up*, 1 % of the picture's height a click | −20 % (lower) to +60 % (higher); *Usual* at 0 | Back to *Usual* |
-| **Size** | *Smaller subtitles* / *Larger subtitles*, 10 % a click | 30 % to 300 %; 100 % as usual | Back to 100 % |
+| **Size** | *Smaller subtitles* / *Larger subtitles*, 10 % a click near 100 %, then 25 % (the steps of <kbd>Ctrl</kbd>+wheel) | 25 % to 500 %; 100 % as usual | Back to 100 % |
 
 - The buttons repeat while held.
 - The subtitles move and grow on the video as you click, and the panel fades meanwhile so you see them behind it.
@@ -192,8 +204,10 @@ local episode to save its track and timing choices.*
 ![The video after the change: the subtitle line sits higher in the picture than usual](images/subtitles-position.jpg)
 
 Keys: <kbd>Shift</kbd>+<kbd>Up</kbd> / <kbd>Shift</kbd>+<kbd>Down</kbd> move them (1 % a press, same range);
-<kbd>Ctrl</kbd>+wheel makes them larger or smaller. The same position is *Vertical position* in
-[Settings: Subtitles](Settings-Subtitles).
+<kbd>Ctrl</kbd>+wheel over the video makes them larger or smaller, as in classic VLC: 10 % a turn near 100 %, then
+25 %, from 25 % to 500 %, with a short *Subtitle size 120%* message; <kbd>Ctrl</kbd>+<kbd>0</kbd> goes back to 100 %.
+Elsewhere in the window <kbd>Ctrl</kbd>+wheel zooms the whole interface. ASS/SSA subtitles follow the size while they
+play. The same position is *Vertical position* in [Settings: Subtitles](Settings-Subtitles).
 
 While the *Continue where you left off?* card shows, the subtitles rise above it and the controls, and go back down
 when it closes.
@@ -242,7 +256,7 @@ a local file and the media library.
 | <kbd>Shift</kbd>+<kbd>V</kbd> | Subtitles on or off |
 | <kbd>H</kbd> / <kbd>G</kbd> | Subtitle delay up / down |
 | <kbd>Shift</kbd>+<kbd>Up</kbd> / <kbd>Shift</kbd>+<kbd>Down</kbd> | Subtitles higher / lower |
-| <kbd>Ctrl</kbd>+wheel | Subtitles larger / smaller |
+| <kbd>Ctrl</kbd>+wheel over the video | Subtitles larger / smaller (elsewhere in the window it zooms the interface) |
 | <kbd>Ctrl</kbd>+<kbd>0</kbd> | Normal size (taken by *play the tenth media played last* while the media library is on: see [Keyboard shortcuts](Keyboard-Shortcuts#keys-that-two-lists-share)) |
 | <kbd>Shift</kbd>+<kbd>H</kbd>, <kbd>Shift</kbd>+<kbd>J</kbd>, <kbd>Shift</kbd>+<kbd>K</kbd>, <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>K</kbd> | Sync: mark the voice, mark the text, apply, reset |
 | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd> | Toggle secondary subtitle control |

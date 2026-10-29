@@ -124,7 +124,8 @@ three times and it is chosen by itself when your default language isn't there, i
 <img src="docs/media/tour/subtitles-position.jpg" alt="Subtitles raised into the picture and enlarged">
 
 **Move and resize subtitles, live.** − and + in the panel (or Shift+↑ and Shift+↓) move them up and down and change
-their size while the film plays; the panel fades so you can see them move. Kept for the next videos.
+their size while the film plays; the panel fades so you can see them move. Ctrl + mouse wheel over the video sizes
+them too. Kept for the next videos.
 </td>
 </tr>
 <tr>
@@ -138,7 +139,8 @@ title stays readable on dark and bright covers alike.
 <img src="docs/media/tour/effects.jpg" alt="The effects panel above the control bar">
 
 **Everything one click away.** Languages and tracks, Effects, VLC Settings, HDR and Cast open right above their
-button; a click outside or on the button closes them, and the video never pauses for it.
+button, which lights up while its panel is open; a click outside or on the button closes them, and the video never
+pauses for it.
 </td>
 </tr>
 <tr>
@@ -151,8 +153,8 @@ on your computer too if you want. [Which TVs work](https://github.com/KuchiSofts
 <td valign="top">
 <img src="docs/media/tour/player-light.jpg" alt="The player in the light theme with a blue accent">
 
-**Dark, light, and nine accent colours.** Or *System*, which follows Windows. Every screen of the design in both
-themes.
+**Dark, light, and nine accent colours.** Or *System*, which follows Windows, and an accent that can follow the
+Windows accent colour. Every screen of the design in both themes.
 </td>
 </tr>
 <tr>
@@ -185,8 +187,10 @@ network shares and streams.
 </tr>
 </table>
 
-And more: a sleep timer, A-B loop, speed, picture-in-picture, a mini player with its queue, volume up to 200 %,
-bookmarks and chapters, audio and video effects that apply live, small in-app updates. **Every option is explained in
+And more: **Live TV** (the channels of your own IPTV playlist or Xtream Codes account, with a programme guide, or
+a free, legal channel list from the catalog), a sleep timer, A-B loop, speed, picture-in-picture, a mini player with
+its queue, volume up to 200 %, bookmarks and chapters, audio and video effects that apply live, small in-app updates
+signed by the project. **Every option is explained in
 the [wiki](https://github.com/KuchiSofts/vlc-redesign/wiki)**, and everything new is in the [changelog](CHANGELOG.md).
 
 ## See it in action
@@ -203,6 +207,16 @@ the [wiki](https://github.com/KuchiSofts/vlc-redesign/wiki)**, and everything ne
 <tr>
 <td width="50%" valign="top"><a href="docs/media/demo/theme-accent.mp4"><img src="docs/media/demo/theme-accent.gif" alt="The light theme and the accent colours applied at once"></a><br><b>Light or dark, nine accents,</b> applied at once.</td>
 <td width="50%" valign="top"><a href="docs/media/demo/cast.mp4"><img src="docs/media/demo/cast.gif" alt="Casting to a Chromecast from the Cast to panel"></a><br><b>Cast to a TV</b> and control it from the bar.</td>
+</tr>
+</table>
+
+**On the other platforms** (in progress or in testing; only Windows has a release, 0.4.0):
+
+<table>
+<tr>
+<td width="40%" valign="top"><a href="docs/media/demo/linux.mp4"><img src="docs/media/demo/linux.gif" alt="The Linux AppImage on Arch Linux: About, Settings in the dark theme, the Live TV channels, Home in the light theme"></a><br><b>Linux</b> (in progress). The AppImage on Arch Linux: About, Settings, Live TV, Home.</td>
+<td width="40%" valign="top"><a href="docs/media/demo/macos.png"><img src="docs/media/demo/macos.png" alt="The macOS app on an Intel Mac, Home"></a><br><b>macOS</b> (in progress). The app on an Intel Mac, from the launch test of the build.</td>
+<td width="20%" valign="top"><a href="docs/media/demo/android/home.mp4"><img src="docs/media/demo/android/home.gif" alt="The Android app in testing: Home and the library on a phone"></a><br><b>Android</b> (in testing, not part of 0.4.0). Home on a phone; <a href="docs/media/demo/android/tablet.mp4">the tablet</a>.</td>
 </tr>
 </table>
 
@@ -261,20 +275,34 @@ Every release lists the SHA-256 of its files in `SHA256SUMS.txt`.
 
 ## Platforms
 
-**Windows 10 and 11 (64-bit) ✅** · Windows on ARM64 🔜 · Linux 🔜 · macOS, Android, Android TV, iPhone/iPad 💡 ·
-a receiver for Samsung and LG TVs 💡
+**Windows 10 and 11 (64-bit) ✅ 0.4.0** · Linux 🔜 in progress · macOS 🔜 in progress · Windows on ARM64 🔜 planned ·
+Android 💡 research (the app is in testing) · Samsung TV receiver 💡 research · iPhone/iPad later
 
-What each would take and in which order is in the [platform study](docs/PLATFORMS.md); the status lives in
-[`platforms.yml`](platforms.yml). Windows 7, 8, XP and 32-bit Windows are not planned (VLC 4's interface needs Qt 6,
-which needs 64-bit Windows 10 or later): use the official VLC 3 there.
+- **Linux:** an AppImage, a .deb, an .rpm and a tarball for x86_64 and ARM64 are in testing (glibc 2.38: Ubuntu
+  24.04, Debian 13, Fedora 39 or later); a Flatpak comes next.
+- **macOS:** a disk image for Apple Silicon and one for Intel (macOS 12 or later), built by GitHub's Macs and signed
+  ad hoc, not yet by Apple.
+- **Windows on ARM64:** the build, the installer, the zip and the updates are made; a run on a real ARM64 PC comes
+  before a release. Until then the x64 build runs on Windows 11 ARM64 under emulation.
+- **Android** (phones, tablets, TV): a separate app, a fork of VLC for Android with the design, in testing; it is
+  not part of 0.4.0 and has no download yet.
+
+Each platform in detail, with what is tested and what is missing, is on the
+[Platforms](https://github.com/KuchiSofts/vlc-redesign/wiki/Platforms) page of the wiki; the study behind the order is
+the [platform study](docs/PLATFORMS.md), and the status lives in [`platforms.yml`](platforms.yml). Windows 7, 8, XP and
+32-bit Windows are not planned (VLC 4's interface needs Qt 6, which needs 64-bit Windows 10 or later): use the official
+VLC 3 there.
 
 ## Known limitations
 
 - **Based on VLC 4.0-dev**, not on the stable VLC 3. Expect the occasional rough edge.
-- **Windows only for now** (see [Platforms](#platforms)).
+- **Released for Windows only.** Linux and macOS are in progress and Windows on ARM64 is planned, with no release
+  yet; the Android app is in testing (see [Platforms](#platforms)).
 - 72 languages cover the whole interface; in VLC's other catalogs (listed as partial) only VLC's own texts are
   translated.
-- Media Info, Bookmarks, Convert/Stream, Open Disc, Capture and Messages still use the classic VLC windows.
+- Media Information, Bookmarks, Convert/Stream, Open Media (disc, capture), Messages and the other classic VLC windows
+  keep their classic layout, in the redesign's colours and, on Windows, with its title bar and icons. *Go to Time*, *Plugins and extensions*,
+  *Media Statistics* and *Folder information* are redrawn as dialogs of the redesign.
 - The waveform seek bar works on local files up to 1 GB and 8 minutes; other media get the regular seek bar.
 - HDR output offers Auto / Off / HDR10 / HLG and needs the libplacebo renderer.
 

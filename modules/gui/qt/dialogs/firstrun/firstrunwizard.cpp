@@ -143,12 +143,7 @@ void FirstRunWizard::finish()
 
     /* Layout Page settings */
     config_PutInt( "qt-menubar", ui.layoutGroup->checkedId() );
-#ifdef __APPLE__
-    /* macOS keeps the system's title bar (the default of qt-titlebar) */
-    config_PutInt( "qt-titlebar", 1 );
-#else
     config_PutInt( "qt-titlebar", ui.layoutGroup->checkedId() );
-#endif
 
     config_PutInt( "qt-pin-controls", ui.layoutGroup->checkedId() );
 
@@ -331,11 +326,7 @@ void FirstRunWizard::reject()
 
     /* Layout Page settings */
     config_PutInt( "qt-menubar", 0 );
-#ifdef __APPLE__
-    config_PutInt( "qt-titlebar", 1 );
-#else
     config_PutInt( "qt-titlebar", 0 );
-#endif
     p_intf->p_mi->setPinVideoControls( 0 );
 
     if( p_intf->p_mi->getMediaLibrary() )

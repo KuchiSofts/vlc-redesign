@@ -47,6 +47,14 @@ T.ToolBar {
         && !(MainCtx.intfMainWindow.visibility === Window.FullScreen)
         && !MainCtx.hasToolbarMenu
 
+    // macOS: the room of the traffic lights in the bar (the unified title
+    // bar), at the start and at the end of the layout (physical sides in
+    // MainCtx: the bar may be mirrored, the system's buttons are not)
+    readonly property int _insetStart: !_showCSD ? 0
+        : (LayoutMirroring.enabled ? MainCtx.windowButtonsInsetRight : MainCtx.windowButtonsInsetLeft)
+    readonly property int _insetEnd: !_showCSD ? 0
+        : (LayoutMirroring.enabled ? MainCtx.windowButtonsInsetLeft : MainCtx.windowButtonsInsetRight)
+
     //whether the navigation pannel is actually visible or not
     property alias navigationVisible: navigationVisibilty.checked
     property bool playqueueVisible: false
@@ -60,7 +68,8 @@ T.ToolBar {
                              implicitContentHeight + topPadding + bottomPadding)
 
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                             implicitContentWidth + leftPadding + rightPadding + (_showCSD ? csdButtons.implicitWidth : 0))
+                             implicitContentWidth + leftPadding + rightPadding + (_showCSD ? csdButtons.implicitWidth : 0)
+                             + _insetStart + _insetEnd)
 
     readonly property ColorContext colorContext: ColorContext {
         id: theme
@@ -87,8 +96,9 @@ T.ToolBar {
                 left: parent.left
                 top: parent.top
                 bottom: parent.bottom
-                // the 6 px padding of the topbar of the design
-                leftMargin: VLCStyle.dp(6, VLCStyle.scale)
+                // the 6 px padding of the topbar of the design (after the
+                // traffic lights on macOS)
+                leftMargin: VLCStyle.dp(6, VLCStyle.scale) + root._insetStart
             }
 
             Navigation.parentItem: root
@@ -231,7 +241,8 @@ T.ToolBar {
         Text {
             id: titleText
             anchors.horizontalCenter: parent.horizontalCenter
-            width: Math.max(0, parent.width - 2 * Math.max(navigationButtons.width, root._showCSD ? csdButtons.width : 0)
+            width: Math.max(0, parent.width - 2 * Math.max(navigationButtons.width + root._insetStart,
+                                                           (root._showCSD ? csdButtons.width : 0) + root._insetEnd)
                             - 2 * VLCStyle.margin_normal)
             height: parent.height
             // what plays (or is paused); stopped, the app's name again (the

@@ -474,13 +474,10 @@ vlc_module_begin ()
               QT_DISABLE_VOLUME_KEYS_LONGTEXT      /* longtext */)
 #endif
 
-    add_bool( "qt-titlebar",
-#ifdef __APPLE__
-              true                               /* macOS: the system's title bar (traffic lights,
-                                                    full screen in its own Space, edge resizing) */,
-#else
-              false                              /* the redesign's own title bar */,
-#endif
+    /* Off: the redesign's own title bar; on macOS a unified one, which
+     * keeps the system's traffic lights, full screen in its own Space and
+     * edge resizing (maininterface/macos_titlebar.hpp) */
+    add_bool( "qt-titlebar", false,
               QT_CLIENT_SIDE_DECORATION_TEXT, QT_CLIENT_SIDE_DECORATION_LONGTEXT )
 
     add_bool( "qt-menubar", false, QT_MENUBAR_TEXT, QT_MENUBAR_LONGTEXT )

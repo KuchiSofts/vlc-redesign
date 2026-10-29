@@ -66,6 +66,11 @@ FocusScope{
 
     readonly property int _sideMargin: VLCStyle.margin_small + sideMargin
 
+    // macOS: the room of the traffic lights (the unified title bar), at the
+    // start of the (possibly mirrored) bar
+    readonly property int _insetStart: !showCSD ? 0
+        : (_mirrored ? MainCtx.windowButtonsInsetRight : MainCtx.windowButtonsInsetLeft)
+
     // Right to left (Hebrew, Arabic...): the bar mirrored, the cone and its
     // buttons on the right, the window buttons on the left (as Windows
     // places them in such a layout); the arrow keys follow what is seen
@@ -258,7 +263,7 @@ FocusScope{
 
         anchors.top: parent.top
         anchors.left: parent.left
-        anchors.leftMargin: root.sideMargin
+        anchors.leftMargin: root.sideMargin + root._insetStart
         anchors.right: root.showCSD ? csdDecorations.left : parent.right
 
 
@@ -275,8 +280,9 @@ FocusScope{
 
         anchors.left: root.left
         anchors.top: root.top
-        // the 6 px padding of the topbar of the design
-        anchors.leftMargin: root.sideMargin + VLCStyle.dp(6, VLCStyle.scale)
+        // the 6 px padding of the topbar of the design (after the traffic
+        // lights on macOS)
+        anchors.leftMargin: root.sideMargin + VLCStyle.dp(6, VLCStyle.scale) + root._insetStart
 
         implicitWidth: logoGroup.implicitWidth
 

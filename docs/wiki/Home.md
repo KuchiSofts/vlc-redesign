@@ -26,7 +26,7 @@ Every picture is the real app, with free films and music.</sub>
 
 | | |
 |---|---|
-| **Current version** | **0.3.1**, released 2026-10-25 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.3.1), [changelog](https://github.com/KuchiSofts/vlc-redesign/blob/main/CHANGELOG.md)) |
+| **Current version** | **0.4.0**, released 2026-10-29 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.4.0), [changelog](https://github.com/KuchiSofts/vlc-redesign/blob/main/CHANGELOG.md)) |
 | **Runs on** | Windows 10 (version 1809 or later) and Windows 11, 64-bit. Other systems: [Platforms](Platforms) |
 | **Based on** | VLC 4.0 (development branch), with fixes from VideoLAN merged in regularly |
 | **Download** | An installer (59.1 MB, no administrator rights) or a portable zip (106.8 MB): [Install and update](Install-and-Update) |

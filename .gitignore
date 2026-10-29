@@ -60,6 +60,8 @@ build*/
 target*/
 contrib-*
 install-*
+# (not the wiki page of that name)
+!docs/wiki/Install-and-Update.md
 xcodeproj/
 static-lib/
 !buildsystem/

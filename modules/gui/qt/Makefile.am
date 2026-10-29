@@ -324,7 +324,7 @@ EXTRA_DIST += $(libqt_plugin_la_UI)
 ui_%.h: %.ui
 	$(AM_V_at)$(MKDIR_P) "ui"
 	$(AM_V_at)rm -f $@ $@.tmp
-	$(AM_V_at)echo "#define Q_(a,b) QString::fromUtf8(_(a))" > $@.tmp
+	$(AM_V_at)echo "#define Q_(a,b) QObject::tr(a)" > $@.tmp
 	$(uic_verbose)$(UIC) -tr "Q_" $< >> $@.tmp
 	$(AM_V_at)sed -e 's/Q_(\"_(\\\"\(.*\)\\\")"/Q_("\1"/' $@.tmp >$@
 	$(AM_V_at)rm -f $@.tmp

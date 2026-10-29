@@ -650,7 +650,44 @@ public:
             text = vlc_gettext(sourceText);
 
         assert(text);
+        const bool untranslated = text == sourceText || (n >= 0 && text == disambiguation);
+        if (untranslated && QGuiApplication::layoutDirection() == Qt::RightToLeft)
+            return leftToRight(QString::fromUtf8(text));
         return QString::fromUtf8(text);
+    }
+
+private:
+    // A text left in English in a right-to-left interface (Hebrew, Arabic)
+    // is still read from left to right: its punctuation at an end ("Advanced
+    // options...", "Name:", "(default)") would take the direction of the
+    // paragraph and show on the other side, the dots first. A left-to-right
+    // mark at each end keeps it with the words.
+    static QString leftToRight(const QString &text)
+    {
+        bool latin = false;
+        for (const QChar c : text)
+        {
+            switch (c.direction())
+            {
+            case QChar::DirR: case QChar::DirAL:
+                return text;
+            case QChar::DirL:
+                latin = true;
+                break;
+            default:
+                break;
+            }
+        }
+        if (!latin)
+            return text;
+        const auto neutral = [](QChar c) {
+            const QChar::Direction d = c.direction();
+            return d != QChar::DirL && d != QChar::DirEN && d != QChar::DirAN;
+        };
+        if (!neutral(text.front()) && !neutral(text.back()))
+            return text;
+        static const QChar mark(0x200E);
+        return mark + text + mark;
     }
 };
 

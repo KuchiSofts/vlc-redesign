@@ -32,6 +32,7 @@
 #include <assert.h>
 
 #include "../codec/webvtt/webvtt.h"
+#include "../codec/subs_charset.h"
 
 /*****************************************************************************
  * Prototypes:
@@ -390,10 +391,16 @@ static int ReadWEBVTT( demux_t *p_demux )
     ctx.regions.b_opened = !vlc_memstream_open( &ctx.regions.memstream );
     ctx.styles.b_opened = !vlc_memstream_open( &ctx.styles.memstream );
 
+    /* WebVTT is UTF-8, but files converted from SubRip keep its legacy
+     * code pages: the text in UTF-8 whatever its encoding */
+    stream_t *p_text = subs_charset_LoadUTF8( VLC_OBJECT(p_demux), p_demux->s,
+                                              NULL );
     char *psz_line;
-    while( (psz_line = vlc_stream_ReadLine( p_demux->s )) )
+    while( (psz_line = vlc_stream_ReadLine( p_text ? p_text : p_demux->s )) )
         webvtt_text_parser_Feed( p_parser, psz_line );
     webvtt_text_parser_Feed( p_parser, NULL );
+    if( p_text )
+        vlc_stream_Delete( p_text );
 
     if( !ctx.b_ordered )
         qsort( p_sys->cues.p_array, p_sys->cues.i_count, sizeof(webvtt_cue_t), cue_Compare );

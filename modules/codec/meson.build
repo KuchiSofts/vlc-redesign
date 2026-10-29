@@ -348,7 +348,7 @@ vlc_modules += {
 # subsdec
 vlc_modules += {
     'name' : 'subsdec',
-    'sources' : files('subsdec.c'),
+    'sources' : files('subsdec.c', 'subs_charset.c'),
     'plugin_dir' : 'codec',
 }
 
@@ -424,6 +424,7 @@ webvtt_sources = files(
     'webvtt/webvtt.c',
     'webvtt/subsvtt.c',
     '../demux/webvtt.c',
+    'subs_charset.c',
 )
 
 if get_option('stream_outputs')

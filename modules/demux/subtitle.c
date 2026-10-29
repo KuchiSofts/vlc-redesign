@@ -44,6 +44,8 @@
 #include <vlc_demux.h>
 #include <vlc_charset.h>
 
+#include "../codec/subs_charset.h"
+
 /*****************************************************************************
  * Module descriptor
  *****************************************************************************/
@@ -384,34 +386,32 @@ static int Open ( vlc_object_t *p_this )
     enum
     {
         UTF8BOM,
-        UTF16LE,
-        UTF16BE,
+        WIDE, /* UTF-16 or UTF-32, with or without a Byte Order Mark */
         NOBOM,
     } e_bom = NOBOM;
     const char *psz_bom = NULL;
 
     i_peek = 4096;
-    /* Detect Unicode while skipping the UTF-8 Byte Order Mark */
-    if( !memcmp( p_peek, "\xEF\xBB\xBF", 3 ) )
+    /* Detect Unicode while skipping the Byte Order Mark */
+    const subs_charset_t start = subs_charset_Detect( p_peek, 16, NULL, 0, NULL );
+    if( !strcmp( start.charset, "UTF-8" ) )
     {
-        e_bom = UTF8BOM;
-        psz_bom = "UTF-8";
+        if( start.bom_size )
+        {
+            e_bom = UTF8BOM;
+            psz_bom = "UTF-8";
+        }
     }
-    else if( !memcmp( p_peek, "\xFF\xFE", 2 ) )
+    else if( !strncmp( start.charset, "UTF-", 4 ) )
     {
-        e_bom = UTF16LE;
-        psz_bom = "UTF-16LE";
-        i_peek *= 2;
-    }
-    else if( !memcmp( p_peek, "\xFE\xFF", 2 ) )
-    {
-        e_bom = UTF16BE;
-        psz_bom = "UTF-16BE";
-        i_peek *= 2;
+        e_bom = WIDE;
+        psz_bom = start.charset;
+        i_peek *= strstr( psz_bom, "32" ) ? 4 : 2;
     }
 
     if( e_bom != NOBOM )
-        msg_Dbg( p_demux, "detected %s Byte Order Mark", psz_bom );
+        msg_Dbg( p_demux, "detected %s%s", psz_bom,
+                 start.bom_size ? " Byte Order Mark" : "" );
 
     i_peek = vlc_stream_Peek( p_demux->s, &p_peek, i_peek );
     if( unlikely(i_peek < 16) )
@@ -421,11 +421,12 @@ static int Open ( vlc_object_t *p_this )
     }
 
     stream_t *p_probestream = NULL;
-    if( e_bom != UTF8BOM && e_bom != NOBOM )
+    if( e_bom == WIDE )
     {
         if( i_peek > 16 )
         {
-            char *p_outbuf = FromCharset( psz_bom, p_peek, i_peek );
+            char *p_outbuf = FromCharset( psz_bom, &p_peek[start.bom_size],
+                                          i_peek - start.bom_size );
             if( p_outbuf != NULL )
                 p_probestream = vlc_stream_MemoryNew( p_demux, (uint8_t *)p_outbuf,
                                                       strlen( p_outbuf ),
@@ -644,16 +645,19 @@ static int Open ( vlc_object_t *p_this )
 
     msg_Dbg( p_demux, "loading all subtitles..." );
 
-    if( e_bom == UTF8BOM && /* skip BOM */
-        vlc_stream_Read( p_demux->s, NULL, 3 ) != 3 )
+    /* Load the whole file, in UTF-8 */
+    char *psz_url_lang = get_language_from_url( p_demux->psz_url );
+    stream_t *p_text = subs_charset_LoadUTF8( VLC_OBJECT(p_demux), p_demux->s,
+                                              psz_url_lang );
+    if( p_text == NULL )
     {
+        free( psz_url_lang );
         Close( p_this );
         return VLC_EGENERIC;
     }
-
-    /* Load the whole file */
     text_t txtlines;
-    TextLoad( &txtlines, p_demux->s );
+    TextLoad( &txtlines, p_text );
+    vlc_stream_Delete( p_text );
 
     /* Parse it */
     for( size_t i_max = 0; i_max < SIZE_MAX - 500 * sizeof(subtitle_t); )
@@ -665,6 +669,7 @@ static int Open ( vlc_object_t *p_this )
             if( p_realloc == NULL )
             {
                 TextUnload( &txtlines );
+                free( psz_url_lang );
                 Close( p_this );
                 return VLC_ENOMEM;
             }
@@ -698,6 +703,8 @@ static int Open ( vlc_object_t *p_this )
     }
     else
         es_format_Init( &fmt, SPU_ES, VLC_CODEC_SUBT );
+    /* subs_charset_LoadUTF8() converted the text */
+    fmt.subs.psz_encoding = strdup( "UTF-8" );
 
     p_sys->subtitles.i_current = 0;
     p_sys->i_length = 0;
@@ -710,10 +717,11 @@ static int Open ( vlc_object_t *p_this )
         p_sys->props.psz_lang = NULL;
         msg_Dbg( p_demux, "detected language '%s' of subtitle: %s", fmt.psz_language,
                  p_demux->psz_location );
+        free( psz_url_lang );
     }
     else
     {
-        fmt.psz_language = get_language_from_url( p_demux->psz_url );
+        fmt.psz_language = psz_url_lang;
         if( fmt.psz_language )
             msg_Dbg( p_demux, "selected '%s' as possible filename language substring of subtitle: %s",
                      fmt.psz_language, p_demux->psz_location );

@@ -202,7 +202,8 @@ codec_PLUGINS += libspudec_plugin.la
 libstl_plugin_la_SOURCES = codec/stl.c
 codec_PLUGINS += libstl_plugin.la
 
-libsubsdec_plugin_la_SOURCES = codec/subsdec.c codec/substext.h
+libsubsdec_plugin_la_SOURCES = codec/subsdec.c codec/substext.h \
+	codec/subs_charset.c codec/subs_charset.h
 codec_PLUGINS += libsubsdec_plugin.la
 
 libsubsusf_plugin_la_SOURCES = codec/subsusf.c
@@ -223,6 +224,7 @@ libwebvtt_plugin_la_SOURCES = codec/webvtt/subsvtt.c \
                               codec/webvtt/webvtt.c \
                               codec/webvtt/webvtt.h \
                               demux/webvtt.c \
+                              codec/subs_charset.c codec/subs_charset.h \
                               demux/mp4/minibox.h
 if ENABLE_SOUT
 libwebvtt_plugin_la_SOURCES += codec/webvtt/encvtt.c \

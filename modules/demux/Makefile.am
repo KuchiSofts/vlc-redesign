@@ -82,11 +82,13 @@ demux_PLUGINS += libaiff_plugin.la
 libmjpeg_plugin_la_SOURCES = demux/mjpeg.c demux/mxpeg_helper.h
 demux_PLUGINS += libmjpeg_plugin.la
 
-libsubtitle_plugin_la_SOURCES = demux/subtitle.c
+libsubtitle_plugin_la_SOURCES = demux/subtitle.c \
+	codec/subs_charset.c codec/subs_charset.h
 libsubtitle_plugin_la_LIBADD = $(LIBM)
 demux_PLUGINS += libsubtitle_plugin.la
 
-subtitle_plugin_test_SOURCES = demux/subtitle.c
+subtitle_plugin_test_SOURCES = demux/subtitle.c \
+	codec/subs_charset.c codec/subs_charset.h
 subtitle_plugin_test_CPPFLAGS = $(AM_CPPFLAGS) -DENABLE_TEST
 subtitle_plugin_test_LDADD = $(LIBM)
 check_PROGRAMS += subtitle_plugin_test

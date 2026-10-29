@@ -19,7 +19,7 @@ import VLC.Util
 RedesignIconButton {
     id: root
     readonly property bool _available: Iptv.enabled
-    iconSource: "qrc:///redesign/icons/tv/default.png"
+    iconSource: "qrc:///redesign/icons/tv/default.svg"
     implicitWidth: _available ? VLCStyle.dp(30, VLCStyle.scale) : 0
     enabled: _available
     opacity: _available ? 1 : 0

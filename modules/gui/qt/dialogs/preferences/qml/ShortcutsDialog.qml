@@ -245,7 +245,7 @@ Widgets.RedesignDialog {
                     width: VLCStyle.redesign.iconSize
                     height: width
                     sourceSize: Qt.size(width, height)
-                    source: "qrc:///redesign/icons/edit/dim.png"
+                    source: "qrc:///redesign/icons/edit/dim.svg"
                     smooth: false
                 }
             }
@@ -390,7 +390,7 @@ Widgets.RedesignDialog {
                     width: VLCStyle.redesign.iconSize
                     height: width
                     sourceSize: Qt.size(width, height)
-                    source: "qrc:///redesign/icons/search/default.png"
+                    source: "qrc:///redesign/icons/search/default.svg"
                     smooth: false
                 }
                 TextInput {
@@ -474,7 +474,7 @@ Widgets.RedesignDialog {
                     width: VLCStyle.redesign.iconSize
                     height: width
                     sourceSize: Qt.size(width, height)
-                    source: "qrc:///redesign/icons/chevron-down/default.png"
+                    source: "qrc:///redesign/icons/chevron-down/default.svg"
                     rotation: scopePicker.popup.visible ? 180 : 0
                 }
                 delegate: T.ItemDelegate {

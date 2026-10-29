@@ -28,7 +28,7 @@ RedesignIconButton {
 
     readonly property var manager: Player.rendererManager
 
-    iconSource: "qrc:///redesign/icons/cast/default.png"
+    iconSource: "qrc:///redesign/icons/cast/default.svg"
     description: root.manager.useRenderer ? qsTr("Casting to %1").arg(root.manager.rendererName)
                                           : qsTr("Cast to TV")
     checked: root.manager.useRenderer
@@ -370,12 +370,12 @@ RedesignIconButton {
                 // its grey part and the stroke tinted above it
                 readonly property bool twoTone: row.iconName === "ui" && !VLCStyle.redesign.defaultAccent
                 Layout.leftMargin: VLCStyle.dp(8, VLCStyle.scale)
-                source: "qrc:///redesign/icons/" + row.iconName + (twoTone ? "/default-grey.png" : "/default.png")
+                source: "qrc:///redesign/icons/" + row.iconName + (twoTone ? "/default-grey.svg" : "/default.svg")
                 sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
                 Impl.ColorImage {
                     anchors.fill: parent
                     visible: deviceIcon.twoTone
-                    source: visible ? "qrc:///redesign/icons/" + row.iconName + "/default-accent.png" : ""
+                    source: visible ? "qrc:///redesign/icons/" + row.iconName + "/default-accent.svg" : ""
                     sourceSize: parent.sourceSize
                     color: VLCStyle.redesign.accentDim
                 }
@@ -411,7 +411,7 @@ RedesignIconButton {
                 sourceSize: Qt.size(Layout.preferredWidth, Layout.preferredHeight)
                 Layout.rightMargin: VLCStyle.dp(8, VLCStyle.scale)
                 visible: row.selected
-                source: "qrc:///redesign/track-check-active.png"
+                source: "qrc:///redesign/track-check-active.svg"
                 color: VLCStyle.redesign.accentTint
                 Layout.preferredWidth: VLCStyle.dp(20, VLCStyle.scale)
                 Layout.preferredHeight: VLCStyle.dp(20, VLCStyle.scale)

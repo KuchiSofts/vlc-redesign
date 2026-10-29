@@ -344,7 +344,7 @@ Item {
                         width: root.px(24)
                         height: width
                         sourceSize: Qt.size(width, height)
-                        source: "qrc:///redesign/icons/chevron-down/default.png"
+                        source: "qrc:///redesign/icons/chevron-down/default.svg"
                     }
                 }
             }

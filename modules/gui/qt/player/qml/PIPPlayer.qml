@@ -215,7 +215,7 @@ T.Control {
                 height: VLCStyle.dp(48, VLCStyle.scale)
                 contentItem: Impl.IconImage {
                     color: "#eaeaea"
-                    source: "qrc:///redesign/icons/previous/default.png"
+                    source: "qrc:///redesign/icons/previous/default.svg"
                     fillMode: Image.PreserveAspectFit
                     sourceSize: Qt.size(VLCStyle.dp(24, VLCStyle.scale), VLCStyle.dp(24, VLCStyle.scale))
                 }
@@ -234,7 +234,7 @@ T.Control {
                     color: "#eaeaea"
                     source: "qrc:///redesign/icons/" +
                             (Player.playingState === Player.PLAYING_STATE_PLAYING ? "pause" : "play") +
-                            "/default.png"
+                            "/default.svg"
                     fillMode: Image.PreserveAspectFit
                     sourceSize: Qt.size(VLCStyle.dp(48, VLCStyle.scale), VLCStyle.dp(48, VLCStyle.scale))
                 }
@@ -261,7 +261,7 @@ T.Control {
                 height: VLCStyle.dp(48, VLCStyle.scale)
                 contentItem: Impl.IconImage {
                     color: "#eaeaea"
-                    source: "qrc:///redesign/icons/next/default.png"
+                    source: "qrc:///redesign/icons/next/default.svg"
                     fillMode: Image.PreserveAspectFit
                     sourceSize: Qt.size(VLCStyle.dp(24, VLCStyle.scale), VLCStyle.dp(24, VLCStyle.scale))
                 }

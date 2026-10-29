@@ -85,7 +85,7 @@ Widgets.PageLoader {
                         colorContext.palette: VLCStyle.palette
                         padding: 0
                         contentItem: Image {
-                            source: "qrc:///redesign/icons/more/default.png"
+                            source: "qrc:///redesign/icons/more/default.svg"
                             sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
                         }
                         // under the button, from its right edge in a right to

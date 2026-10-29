@@ -23,7 +23,7 @@ import VLC.Util
 // Figma "Customize Player": "Backward 10s"
 RedesignIconButton {
     enabled: Player.seekable
-    iconSource: "qrc:///redesign/icons/backward-10-sec/default.png"
+    iconSource: "qrc:///redesign/icons/backward-10-sec/default.svg"
     onClicked: Player.jumpBy(-10)
     description: qsTr("Backward 10 seconds")
     AccessibleCompat.id: "skipBack10Button"

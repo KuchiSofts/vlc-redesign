@@ -77,7 +77,7 @@ Widgets.RedesignDialog {
                        : VLCStyle.redesign.color("#161616", "#b8b8b7", root.darkTheme)
         Image {
             anchors.centerIn: parent
-            source: "qrc:///redesign/icons/add/" + parent.icon + ".png"
+            source: "qrc:///redesign/icons/add/" + parent.icon + ".svg"
             sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
             smooth: false
         }

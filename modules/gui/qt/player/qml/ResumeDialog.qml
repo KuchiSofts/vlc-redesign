@@ -119,7 +119,7 @@ FocusScope {
                 Layout.leftMargin: VLCStyle.dp(6, VLCStyle.scale)
                 Layout.preferredWidth: VLCStyle.redesign.iconSize
                 Layout.preferredHeight: VLCStyle.redesign.iconSize
-                source: "qrc:///redesign/icons/replay/default.png"
+                source: "qrc:///redesign/icons/replay/default.svg"
                 sourceSize: Qt.size(width, height)
             }
 

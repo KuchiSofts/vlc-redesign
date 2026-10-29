@@ -79,7 +79,7 @@ Controls.Popup {
                 width: root.px(24)
                 height: width
                 sourceSize: Qt.size(width, height)
-                source: "qrc:///redesign/icons/chevron-down/default.png"
+                source: "qrc:///redesign/icons/chevron-down/default.svg"
             }
         }
 
@@ -166,13 +166,13 @@ Controls.Popup {
                             // drawn in grey and the accent dim: with another
                             // accent, the grey part and the rest tinted above it
                             readonly property bool twoTone: visible && !VLCStyle.redesign.defaultAccent
-                            source: visible ? row.iconDir + (twoTone ? "/default-grey.png" : "/default.png") : ""
+                            source: visible ? row.iconDir + (twoTone ? "/default-grey.svg" : "/default.svg") : ""
                             Impl.ColorImage {
                                 // drawn at the size shown (an SVG: sharp at any scale and zoom)
                                 sourceSize: Qt.size(width, height)
                                 anchors.fill: parent
                                 visible: modeIcon.twoTone
-                                source: visible ? row.iconDir + "/default-accent.png" : ""
+                                source: visible ? row.iconDir + "/default-accent.svg" : ""
                                 color: VLCStyle.redesign.accentDim
                             }
                         }
@@ -185,7 +185,7 @@ Controls.Popup {
                             anchors.verticalCenter: parent.verticalCenter
                             width: root.px(24)
                             height: width
-                            source: "qrc:///redesign/track-check-active.png"
+                            source: "qrc:///redesign/track-check-active.svg"
                             color: VLCStyle.redesign.accentTint
                         }
                     }

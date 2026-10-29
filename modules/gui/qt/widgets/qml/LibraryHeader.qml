@@ -244,7 +244,7 @@ T.ToolBar {
                 implicitHeight: implicitWidth
                 contentItem: Image {
                     source: VLCStyle.palette.isDark
-                            ? "qrc:///redesign/icons/arrow-left/" + (parent.enabled ? "default" : "disabled") + ".png"
+                            ? "qrc:///redesign/icons/arrow-left/" + (parent.enabled ? "default" : "disabled") + ".svg"
                             : "qrc:///redesign/arrow-left.svg"
                     sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
                     fillMode: Image.Pad
@@ -270,7 +270,7 @@ T.ToolBar {
                 implicitHeight: implicitWidth
                 contentItem: Image {
                     source: VLCStyle.palette.isDark
-                            ? "qrc:///redesign/icons/arrow-right/" + (parent.enabled ? "default" : "disabled") + ".png"
+                            ? "qrc:///redesign/icons/arrow-right/" + (parent.enabled ? "default" : "disabled") + ".svg"
                             : "qrc:///redesign/arrow-right.svg"
                     sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
                     fillMode: Image.Pad
@@ -462,7 +462,7 @@ T.ToolBar {
                 checked: sortOptions.opened
                 contentItem: Image {
                     // (the dot of the light one in the accent)
-                    source: VLCStyle.palette.isDark ? "qrc:///redesign/icons/sort/dim.png"
+                    source: VLCStyle.palette.isDark ? "qrc:///redesign/icons/sort/dim.svg"
                             : VLCStyle.redesign.defaultAccent ? "qrc:///redesign/sort.svg"
                             : SVGColorImage.colorize("qrc:///redesign/sort.svg")
                                            .any({ "#D37918": VLCStyle.redesign.accent }).uri()
@@ -484,8 +484,8 @@ T.ToolBar {
                 implicitHeight: implicitWidth
                 contentItem: Image {
                     source: VLCStyle.palette.isDark
-                            ? "qrc:///redesign/icons/" + (MainCtx.gridView ? "grid" : "list") + "/dim.png"
-                            : (MainCtx.gridView ? "qrc:///redesign/grid.png" : "qrc:///redesign/list.png")
+                            ? "qrc:///redesign/icons/" + (MainCtx.gridView ? "grid" : "list") + "/dim.svg"
+                            : (MainCtx.gridView ? "qrc:///redesign/grid.svg" : "qrc:///redesign/list.svg")
                     sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
                     fillMode: Image.Pad
                     smooth: false
@@ -501,13 +501,13 @@ T.ToolBar {
 
                     Widgets.RedesignOptionItem {
                         text: qsTr("Grid View")
-                        iconSource: "qrc:///redesign/icons/grid/default.png"
+                        iconSource: "qrc:///redesign/icons/grid/default.svg"
                         checked: MainCtx.gridView
                         onTriggered: MainCtx.gridView = true
                     }
                     Widgets.RedesignOptionItem {
                         text: qsTr("List View")
-                        iconSource: "qrc:///redesign/icons/list/default.png"
+                        iconSource: "qrc:///redesign/icons/list/default.svg"
                         checked: !MainCtx.gridView
                         onTriggered: MainCtx.gridView = false
                     }
@@ -538,7 +538,7 @@ T.ToolBar {
                     anchors.topMargin: VLCStyle.dp(5, VLCStyle.scale)
                     width: VLCStyle.redesign.iconSize
                     height: width
-                    source: VLCStyle.palette.isDark ? "qrc:///redesign/icons/search/dim.png"
+                    source: VLCStyle.palette.isDark ? "qrc:///redesign/icons/search/dim.svg"
                                                     : "qrc:///redesign/search.svg"
                     sourceSize: Qt.size(width, height)
                     fillMode: Image.Pad

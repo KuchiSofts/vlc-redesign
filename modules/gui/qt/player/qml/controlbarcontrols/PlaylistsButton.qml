@@ -23,7 +23,7 @@ import VLC.Util
 // Figma "Customize Player": "Playlists", the playlists of the library
 RedesignIconButton {
     enabled: MainCtx.mediaLibraryAvailable
-    iconSource: "qrc:///redesign/icons/playlist/default.png"
+    iconSource: "qrc:///redesign/icons/playlist/default.svg"
     onClicked: {
         History.push(["video", "playlists"])
         MainCtx.playerView = false

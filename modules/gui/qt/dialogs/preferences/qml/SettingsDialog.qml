@@ -687,8 +687,8 @@ Dialog {
                                 width: root.px(24)
                                 height: width
                                 sourceSize: Qt.size(width, height)
-                                source: root.advancedExpanded ? "qrc:///redesign/icons/chevron-down/default.png"
-                                                              : "qrc:///redesign/icons/chevron-right/default.png"
+                                source: root.advancedExpanded ? "qrc:///redesign/icons/chevron-down/default.svg"
+                                                              : "qrc:///redesign/icons/chevron-right/default.svg"
                                 // closed, it points the way the text reads
                                 mirror: LayoutMirroring.enabled && !root.advancedExpanded
                             }

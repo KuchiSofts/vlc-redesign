@@ -9,7 +9,7 @@
 import VLC.Player
 
 MetadataText {
-    iconSource: "qrc:///redesign/icons/artist/default.png"
+    iconSource: "qrc:///redesign/icons/artist/default.svg"
     value: Player.artist || ""
     placeholder: qsTr("Artist unavailable")
 }

@@ -38,7 +38,7 @@ T.Control {
             width: VLCStyle.redesign.iconSize
             height: width
             visible: artwork.status !== Image.Ready
-            source: "qrc:///redesign/icons/thumbnail/default.png"
+            source: "qrc:///redesign/icons/thumbnail/default.svg"
             sourceSize: Qt.size(width, height)
             fillMode: Image.Pad
             smooth: false

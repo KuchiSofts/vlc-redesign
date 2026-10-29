@@ -183,7 +183,9 @@ public:
     {
         MSG* msg = static_cast<MSG*>( message );
 
-        if ( !m_useClientSideDecoration || (msg->hwnd != WinId(m_window)) )
+        // (the window outlives the interface: never read a deleted MainCtx
+        // or CSD button model, see ~InterfaceWindowHandlerWin32)
+        if ( !m_useClientSideDecoration || !m_mainCtx || !m_buttonmodel || (msg->hwnd != WinId(m_window)) )
             return false;
 
         switch ( msg->message )
@@ -562,9 +564,9 @@ private:
 
     bool m_useClientSideDecoration;
     QWindow *m_window;
-    CSDButtonModel *m_buttonmodel;
+    QPointer<CSDButtonModel> m_buttonmodel;
     bool m_trackingMouse = false;
-    MainCtx *m_mainCtx = nullptr;
+    QPointer<MainCtx> m_mainCtx;
     const bool m_platformHandlesResize;
 };
 
@@ -911,6 +913,12 @@ InterfaceWindowHandlerWin32::InterfaceWindowHandlerWin32(qt_intf_t *_p_intf, Mai
 
 InterfaceWindowHandlerWin32::~InterfaceWindowHandlerWin32()
 {
+    // The CSD event handler is a child of the window, and the window outlives
+    // the interface: when the interface is closed (unloadGUI), MainCtx and its
+    // CSD button model are deleted while the window stays (the video output
+    // may still use it). Its native event filter would then keep reading them:
+    // a WM_NCHITTEST (the mouse resting over the window) crashed VLC on quit.
+    delete m_CSDWindowEventHandler;
     QApplication::instance()->removeNativeEventFilter(this);
 }
 
@@ -1093,7 +1101,7 @@ bool InterfaceWindowHandlerWin32::eventFilter(QObject* obj, QEvent* ev)
 void InterfaceWindowHandlerWin32::updateCSDWindowSettings()
 {
     if (m_CSDWindowEventHandler)
-        static_cast<CSDWin32EventHandler *>(m_CSDWindowEventHandler)->setUseClientSideDecoration(m_mainCtx->useClientSideDecoration());
+        static_cast<CSDWin32EventHandler *>(m_CSDWindowEventHandler.data())->setUseClientSideDecoration(m_mainCtx->useClientSideDecoration());
     else
         InterfaceWindowHandler::updateCSDWindowSettings();
 }

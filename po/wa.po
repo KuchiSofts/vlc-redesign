@@ -37125,6 +37125,23 @@ msgstr ""
 msgid "Are you sure you wish to create the stream?"
 msgstr ""
 
+#: modules/gui/qt/qt.cpp:352
+msgid "Zoom the interface in"
+msgstr "Agrandi l' eterface"
+
+#: modules/gui/qt/qt.cpp:353
+msgid "Zoom the interface out"
+msgstr "Rapetiti l' eterface"
+
+#: modules/gui/qt/player/qml/Player.qml:951
+#, no-c-format
+msgid "Subtitle size %1%"
+msgstr "Grandeu des sos-tites %1%"
+
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:153
+msgid "Or turn the mouse wheel while holding Ctrl, Alt or Shift"
+msgstr "Ou bén tournez l' rolete del sori tot tenant Ctrl, Alt ou Shift"
+
 #, fuzzy
 #~ msgid "1 item"
 #~ msgstr "%i cayets"

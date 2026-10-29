@@ -8194,3 +8194,21 @@ msgstr "Pogosto uporabljen"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
 msgid "Snapshot height (0: proportional, -1: original)"
 msgstr "Višina posnetka (0: sorazmerno, -1: izvirna)"
+
+#: modules/gui/qt/qt.cpp:352
+msgid "Zoom the interface in"
+msgstr "Povečaj vmesnik"
+
+#: modules/gui/qt/qt.cpp:353
+msgid "Zoom the interface out"
+msgstr "Pomanjšaj vmesnik"
+
+#: modules/gui/qt/player/qml/Player.qml:951
+#, no-c-format
+msgid "Subtitle size %1%"
+msgstr "Velikost podnapisov %1%"
+
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:153
+msgid "Or turn the mouse wheel while holding Ctrl, Alt or Shift"
+msgstr "Ali zavrtite kolešček miške, medtem ko držite Ctrl, Alt ali Shift"
+

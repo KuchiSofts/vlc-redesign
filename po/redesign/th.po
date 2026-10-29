@@ -7992,3 +7992,21 @@ msgstr "ใช้บ่อย"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
 msgid "Snapshot height (0: proportional, -1: original)"
 msgstr "ความสูงของภาพนิ่ง (0: ตามสัดส่วน, -1: ต้นฉบับ)"
+
+#: modules/gui/qt/qt.cpp:352
+msgid "Zoom the interface in"
+msgstr "ขยายส่วนติดต่อ"
+
+#: modules/gui/qt/qt.cpp:353
+msgid "Zoom the interface out"
+msgstr "ย่อส่วนติดต่อ"
+
+#: modules/gui/qt/player/qml/Player.qml:951
+#, no-c-format
+msgid "Subtitle size %1%"
+msgstr "ขนาดคำบรรยาย %1%"
+
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:153
+msgid "Or turn the mouse wheel while holding Ctrl, Alt or Shift"
+msgstr "หรือหมุนล้อเมาส์ขณะกด Ctrl, Alt หรือ Shift ค้างไว้"
+

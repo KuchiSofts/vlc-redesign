@@ -8102,3 +8102,21 @@ msgstr "പതിവായി ഉപയോഗിക്കുന്നത്"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
 msgid "Snapshot height (0: proportional, -1: original)"
 msgstr "സ്നാപ്‌ഷോട്ടിന്റെ ഉയരം (0: ആനുപാതികം, -1: യഥാർത്ഥം)"
+
+#: modules/gui/qt/qt.cpp:352
+msgid "Zoom the interface in"
+msgstr "ഇന്റർഫേസ് വലുതാക്കുക"
+
+#: modules/gui/qt/qt.cpp:353
+msgid "Zoom the interface out"
+msgstr "ഇന്റർഫേസ് ചെറുതാക്കുക"
+
+#: modules/gui/qt/player/qml/Player.qml:951
+#, no-c-format
+msgid "Subtitle size %1%"
+msgstr "ഉപശീർഷക വലുപ്പം %1%"
+
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:153
+msgid "Or turn the mouse wheel while holding Ctrl, Alt or Shift"
+msgstr "അല്ലെങ്കിൽ Ctrl, Alt അല്ലെങ്കിൽ Shift അമർത്തിപ്പിടിച്ച് മൗസ് വീൽ തിരിക്കുക"
+

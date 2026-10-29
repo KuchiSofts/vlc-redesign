@@ -48,7 +48,7 @@ version from its first published build.
   NVIDIA and integrated AMD graphics, and no graphics card at all (Windows Sandbox, 2 GB); casting to a real Samsung
   TV ([TV compatibility](TV-Compatibility)).
 - **Still to do:** tests on Intel graphics, on Windows 10 on real PCs and on screens of different scales;
-  code-signed releases (paused until SignPath answers the application), so that SmartScreen no longer warns.
+  code-signed releases (waiting for SignPath's approval), so that SmartScreen no longer warns.
 - **On Windows 11 ARM64**, the x64 installer runs and installs (it accepts any x64-compatible Windows); Windows
   emulates it, which is slower. A native build is [below](#windows-on-arm64).
 

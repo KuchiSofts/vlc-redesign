@@ -1266,7 +1266,7 @@ and an accepted request made the TV fail after a pause in a test.
 
 ### 8.9 Quality and hardware
 
-- ⏸️ Code-signed builds — **paused by the owner (2026-10-30) until SignPath answers**; README, wiki and the policy say the
+- ⏸️ Code-signed builds — **waiting for SignPath's approval (2026-10-30): nothing signed until then**; README, wiki and the policy say the
   releases are not code-signed (decision 2: SignPath Foundation, free for open source): the CI jobs, the artifact
   configurations, `CODE_SIGNING_POLICY.md` and the steps (docs/code-signing.md) are ready, and every binary carries
   VLC Redesign's name and version, and the two features that go online are chosen at install (or at the first

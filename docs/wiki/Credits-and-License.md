@@ -74,8 +74,8 @@ The films appear in pictures only. The music covers were made for the demo.
 
 ## Code signing
 
-The releases are not code-signed. Code signing is paused: an application to SignPath Foundation's free program for
-open-source projects waits for its answer. The policy it would follow:
+The releases are not code-signed. Code signing will come through SignPath Foundation's free program for open-source
+projects: the application waits for their approval. The policy it would follow:
 [CODE_SIGNING_POLICY.md](https://github.com/KuchiSofts/vlc-redesign/blob/main/CODE_SIGNING_POLICY.md). Until then
 the SHA-256 of every file is listed in `SHA256SUMS.txt`.
 

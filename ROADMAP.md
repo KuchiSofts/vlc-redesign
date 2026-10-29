@@ -47,7 +47,7 @@ on release day ships.
 
 **To do**
 
-- 📋 Code-signed releases (no SmartScreen warning): paused until SignPath answers the application
+- 📋 Code-signed releases (no SmartScreen warning): waiting for SignPath's approval
 - 📋 A public roadmap board ([Discussions](https://github.com/KuchiSofts/vlc-redesign/discussions) are open)
 - 📋 Testing on Intel graphics, Windows 10 on real PCs and screens of different scales
 

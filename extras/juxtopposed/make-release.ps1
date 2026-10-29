@@ -3,6 +3,9 @@
 # Build a VLC Redesign release for Windows into -Dist:
 #   vlc-redesign-<version>-win64.zip        portable package
 #   vlc-redesign-<version>-win64-setup.exe  installer (Inno Setup 6.7+)
+#   vlc-redesign-<version>-source.tar.gz    the source of the commit packaged
+#                                            (GPL: the source of every binary, beside them;
+#                                            docs/RELEASE-CHECKLIST.md, Source code)
 #   SHA256SUMS.txt
 #   SHA256SUMS.txt.sig                     its signature by the release key
 #                                            (signing/release-key.ps1)
@@ -88,6 +91,19 @@ if (-not (Test-Path "$Package\vlc.exe")) { throw "No package in $Package" }
 
 New-Item -ItemType Directory -Force $Dist | Out-Null
 $name = "vlc-redesign-$Version-$platform"
+
+# The source of the binaries (GPL v2, section 3): the tree of the commit
+# packaged, published beside them, and the tag v<version> on that commit.
+# Every file committed (release-check above): what is built is what is in it.
+$sourceName = "vlc-redesign-$Version-source.tar.gz"
+$commit = (git -C $root rev-parse HEAD).Trim()
+if (git -C $root status --porcelain --untracked-files=no) { throw 'Commit everything first: the source archive is the commit packaged' }
+$tagged = git -C $root rev-parse -q --verify "refs/tags/v$Version^{commit}"
+if ($tagged -and $tagged.Trim() -ne $commit) { throw "v$Version is $($tagged.Trim()), not the commit packaged ($commit)" }
+if (-not $tagged) { Write-Warning "No tag v$Version yet: tag $commit as v$Version before publishing" }
+git -C $root archive --format=tar.gz --prefix="vlc-redesign-$Version/" -o "$Dist\$sourceName" $commit
+if ($LASTEXITCODE) { throw "git archive failed ($LASTEXITCODE)" }
+Write-Host "Source: $sourceName ($commit)"
 $python = (Get-Command python -ErrorAction SilentlyContinue).Source
 if (-not $python) { throw 'Python is needed for the small updates (with pip install bsdiff4)' }
 
@@ -162,7 +178,11 @@ try {
              "A new version unpacked into another folder starts with the settings of`r`n" +
              "the copy you used last: an update keeps them. To keep this copy apart`r`n" +
              "(its own settings, never passed on), put an empty file named standalone`r`n" +
-             "in this folder. To start over, use Reset all settings in the settings.`r`n")
+             "in this folder. To start over, use Reset all settings in the settings.`r`n" +
+             "`r`n" +
+             "VLC Redesign is free software (GPL v2 or later). Its source code is`r`n" +
+             "$sourceName on the release page, and the tag v$Version of`r`n" +
+             "https://github.com/KuchiSofts/vlc-redesign (docs/SOURCE.md).`r`n")
     $w.Dispose()
 } finally { $archive.Dispose() }
 
@@ -202,7 +222,7 @@ foreach ($d in $deltas) {
 
 # One SHA256SUMS.txt for the release: these files and those of the other
 # architecture of the same version already in -Dist
-$files = @(Get-ReleaseFiles 'win64') + @(Get-ReleaseFiles 'winarm64')
+$files = @(Get-ReleaseFiles 'win64') + @(Get-ReleaseFiles 'winarm64') + @($sourceName)
 foreach ($f in @("$name.zip", "$name-setup.exe")) {
     if ($f -notin $files) { throw "Missing $f in $Dist" }
 }

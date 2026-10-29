@@ -35,6 +35,8 @@ RedesignIconButton {
     AccessibleCompat.id: "castButton"
 
     onClicked: popup.visible ? popup.close() : popup.open()
+    // open while its list of devices shows
+    active: popup.visible
 
     function forceUnlock() {
         popup.close()

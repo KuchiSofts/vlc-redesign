@@ -359,6 +359,13 @@ FocusScope {
 
                 focus: true
 
+                // Ctrl+wheel over it sizes the subtitles (interface_window_handler.cpp)
+                Binding {
+                    target: MainCtx
+                    property: "subtitleWheelArea"
+                    value: videoSurface
+                }
+
                 VideoSurface {
                     id: videoSurface
 
@@ -648,6 +655,14 @@ FocusScope {
         }
     }
 
+    // Ctrl+wheel over the library beside the video zooms the interface
+    // (not the subtitles: the video goes on behind it)
+    Binding {
+        target: MainCtx
+        property: "subtitleWheelExclusion"
+        value: compactLibrary
+    }
+
     Loader {
         id: compactLibrary
 
@@ -930,6 +945,24 @@ FocusScope {
         onLoaded: {
             item.restoreFocus = rootPlayer
             item.bottomInset = Qt.binding(() => controlBar.state === "visible" ? rootPlayer.height - controlBar.y : 0)
+        }
+    }
+
+    // The subtitles' size Ctrl+wheel over the video (or its keys) made, a
+    // moment, under the top bar
+    PlayerToast {
+        id: subtitleSizeToast
+        objectName: "subtitleSizeToast"
+        anchors.horizontalCenter: parent.horizontalCenter
+        y: VLCStyle.dp(24, VLCStyle.scale) + (topBar.opacity > 0.5 ? Math.max(0, topBar.y + topBar.height) : 0)
+        z: 10
+
+        Connections {
+            target: Player
+            function onSubtitleTextScaleStepped(scale) {
+                // xgettext:no-c-format
+                subtitleSizeToast.say(qsTr("Subtitle size %1%").arg(scale))
+            }
         }
     }
 

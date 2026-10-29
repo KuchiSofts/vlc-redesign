@@ -18,6 +18,7 @@
 
 import QtQuick
 import QtQuick.Templates as T
+import QtQuick.Controls.impl as Impl
 import QtQuick.Layouts
 import QtQuick.Window
 
@@ -343,6 +344,8 @@ FocusScope{
                 // right to left bar)
                 onClicked: mainMenu.toggleFrom(menuButton, root._mirrored ? menuButton.width - mainMenu.width : 0,
                                                menuButton.height)
+                // open while its menu shows
+                active: mainMenu.opened
                 visible: !root._menuInBar
 
                 Widgets.DashedRect {
@@ -374,6 +377,8 @@ FocusScope{
                 iconName: "sidebar"
                 // the panel of the icon filled while the library is shown
                 iconState: root.libraryActive ? "active" : "default"
+                // and open while it shows
+                active: root.libraryActive
                 description: qsTr("Library")
                 AccessibleCompat.id: "topBarLibraryButton"
 
@@ -620,13 +625,31 @@ FocusScope{
         height: VLCStyle.dp(28, VLCStyle.scale)
 
         radius: VLCStyle.redesign.controlRadius
-        backgroundColor: VLCStyle.redesign.color(hovered || down ? VLCStyle.redesign.controlHoverBackground
-                                                                 : "transparent", "#9c9c9b")
+        // open (active) or ON: the accent on a tint of it, as the buttons of
+        // the bar (RedesignIconButton)
+        backgroundColor: {
+            const hover = hovered || down
+            if (lit) {
+                const tint = VLCStyle.palette.isDark ? VLCStyle.redesign.accentBackground
+                                                     : Qt.alpha(VLCStyle.redesign.accent, 0.14)
+                return hover ? Qt.tint(tint, VLCStyle.palette.isDark ? Qt.rgba(1, 1, 1, 0.06) : Qt.rgba(0, 0, 0, 0.05))
+                             : tint
+            }
+            return VLCStyle.redesign.color(hover ? VLCStyle.redesign.controlHoverBackground : "transparent", "#9c9c9b")
+        }
+        backgroundAnimationDuration: 120
 
-        contentItem: Image {
-            source: "qrc:///redesign/icons/" + topBarButton.iconName + "/" + topBarButton.iconState + ".png"
-            sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
-            fillMode: Image.Pad
+        contentItem: Item {
+            Impl.IconImage {
+                anchors.centerIn: parent
+                width: VLCStyle.redesign.iconSize
+                height: width
+                sourceSize: Qt.size(width, height)
+                source: "qrc:///redesign/icons/" + topBarButton.iconName + "/" + topBarButton.iconState + ".png"
+                // the image's own colours, the accent while open (transparent: no tint)
+                color: !topBarButton.lit ? "transparent"
+                       : VLCStyle.palette.isDark ? VLCStyle.redesign.accent : VLCStyle.redesign.accentDim
+            }
         }
     }
 }

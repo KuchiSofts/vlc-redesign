@@ -40,6 +40,8 @@ RedesignIconButton {
     // above the button, as the languages and tracks (the menu and the
     // shortcut still open it in the middle of the window)
     onClicked: panel.toggle()
+    // open while its panel shows
+    active: panel.opened
 
     function forceUnlock() {
         panel.close()

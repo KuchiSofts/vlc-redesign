@@ -1460,6 +1460,14 @@ void MainCtx::setSubtitleWheelArea(QObject *item)
     emit subtitleWheelAreaChanged();
 }
 
+void MainCtx::setSubtitleWheelExclusion(QObject *item)
+{
+    if (m_subtitleWheelExclusion == item)
+        return;
+    m_subtitleWheelExclusion = item;
+    emit subtitleWheelExclusionChanged();
+}
+
 // One of the keys of an option of keys (tab separated)
 static bool optionHasKey(qt_intf_t *intf, const char *option, uint_fast32_t vlcKey)
 {
@@ -1507,6 +1515,11 @@ bool MainCtx::wheelKeyAction(int vlcKey, const QPointF &scenePos, bool apply)
     if (player && player->hasVideoOutput() && area && area->isVisible() && area->window())
     {
         overVideo = area->contains(area->mapFromScene(scenePos));
+        // (not over the library beside it, drawn over the video)
+        auto *exclusion = qobject_cast<QQuickItem *>(m_subtitleWheelExclusion.data());
+        if (overVideo && exclusion && exclusion->isVisible() && exclusion->window() == area->window()
+            && exclusion->contains(exclusion->mapFromScene(scenePos)))
+            overVideo = false;
         // (the overlay of the popups: a child of the content item or of the
         // window's root item)
         QQuickItem *content = area->window()->contentItem();

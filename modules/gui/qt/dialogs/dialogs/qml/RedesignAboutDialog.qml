@@ -123,6 +123,10 @@ T.Popup {
 
     // A low window: the content scrolls (laid out as when it fits)
     contentItem: Flickable {
+        // a screen reader names the dialog
+        Accessible.role: Accessible.Dialog
+        Accessible.name: qsTr("About VLC")
+
         // a popup does not inherit the mirroring of the window (right to left)
         LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
         LayoutMirroring.childrenInherit: true

@@ -101,6 +101,10 @@ Controls.Popup {
     }
 
     contentItem: Item {
+        // a screen reader names the dialog
+        Accessible.role: Accessible.Dialog
+        Accessible.name: qsTr("Customize Player")
+
         id: scene
 
         // a popup does not inherit the mirroring of the window (right to left)

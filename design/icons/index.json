@@ -9,7 +9,7 @@
     },
     "glyphs-svg": {
       "folder": "svg/glyphs",
-      "description": "SVG sources of the glyphs, from the same Figma symbols (42:356), one per PNG state (design/tools/icon_svgs.py; its report icon_svgs_report.md compares them with the PNGs). 24 x 24 unless noted, Figma's colours of each state. The app draws these, at the size shown; the PNGs stay as a fallback."
+      "description": "SVG sources of the glyphs, from the same Figma symbols (42:356), one per PNG state (design/tools/icon_svgs.py; its report icon_svgs_report.md compares them with the PNGs). 24 x 24 unless noted, Figma's colours of each state. The app draws these, at the size shown; it ships no PNG of them."
     },
     "svg": {
       "folder": "svg",
@@ -64,7 +64,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/0/default.png",
+          "source": "design/icons/png/0/default.png",
           "sha256": "724360f70d89b0618e3e28667e1981392bcc4c6777c8e91ac3f0b4d42fed81b2"
         }
       ]
@@ -82,7 +82,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/accessibility/default.png",
+          "source": "design/icons/png/accessibility/default.png",
           "sha256": "38b4a2b5df44c7a4d854cdcdf134734e32a0f0c24b51118300e98fe1985a8819"
         }
       ]
@@ -100,7 +100,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/add/default.png",
+          "source": "design/icons/png/add/default.png",
           "sha256": "788b0a31e8e056d72aaf0ae470dcfa02f006338fa68d97f8a37e735b8dd174af"
         },
         {
@@ -112,7 +112,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/add/default@2x.png",
+          "source": "design/icons/png/add/default@2x.png",
           "sha256": "c9c89f7191ad59b9f2f24c3752c6083779fa3427d4efdd5b3a6173fd26fde076"
         },
         {
@@ -124,7 +124,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/add/half.png",
+          "source": "design/icons/png/add/half.png",
           "sha256": "bb4db57278bf1b31346e94e22ce014d0a10c6a9ed294ad5342cc4f1a294046c3"
         }
       ]
@@ -142,7 +142,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/album/default.png",
+          "source": "design/icons/png/album/default.png",
           "sha256": "1005aeab3b81820d6d26eee2a923eccbaba3804f6f4b187c471c19ea404f9ba6"
         }
       ]
@@ -160,7 +160,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/arrow-left/default.png",
+          "source": "design/icons/png/arrow-left/default.png",
           "sha256": "641d0bc0946d46a4abee32c7863f71d25c9f3d22650d1165cb44a3c7fc1b8aa6"
         },
         {
@@ -172,7 +172,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/arrow-left/default@2x.png",
+          "source": "design/icons/png/arrow-left/default@2x.png",
           "sha256": "406ca4bf4710009691a3d1e11a488d854c2af929bd09c019b60606bf2b384f98"
         },
         {
@@ -184,7 +184,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/arrow-left/disabled.png",
+          "source": "design/icons/png/arrow-left/disabled.png",
           "sha256": "14ef3f4a68f11b364361ba5dad160c1abe13c25b7af06f61b0e09047b5d526bd"
         },
         {
@@ -196,7 +196,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/arrow-left/disabled@2x.png",
+          "source": "design/icons/png/arrow-left/disabled@2x.png",
           "sha256": "1f44fa83e94ecf1a349513e013dbf58f08df16c54d64b1d6be98ee80b02a01fe"
         }
       ]
@@ -214,7 +214,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/arrow-right/default.png",
+          "source": "design/icons/png/arrow-right/default.png",
           "sha256": "80642454a8901bae9c2e0ef610cb8aa7e677f429366ba4edf1de301a1061adc4"
         },
         {
@@ -226,7 +226,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/arrow-right/default@2x.png",
+          "source": "design/icons/png/arrow-right/default@2x.png",
           "sha256": "a33a77d12ab3ec7cde6c6e9f72db1fe1878df6650074254eb4cdba00c0d249b6"
         },
         {
@@ -238,7 +238,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/arrow-right/disabled.png",
+          "source": "design/icons/png/arrow-right/disabled.png",
           "sha256": "c90b5329e38d23f489904d3573f30fced30675daa3c9ca7c8b3ad18143972bd5"
         },
         {
@@ -250,7 +250,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/arrow-right/disabled@2x.png",
+          "source": "design/icons/png/arrow-right/disabled@2x.png",
           "sha256": "f8b8c846d6c7f009824b404919bb3e44ca1578fa9a96b2c79baaa02906b8392b"
         }
       ]
@@ -268,7 +268,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/artist/active.png",
+          "source": "design/icons/png/artist/active.png",
           "sha256": "1f2d27e96c79ec767dfc15a8ed1aee150376f85b22b95f3db5deaf73385196c2"
         },
         {
@@ -280,7 +280,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/artist/default.png",
+          "source": "design/icons/png/artist/default.png",
           "sha256": "2ec0b2d37e38df7809109da791c28cd219d953a4cf9b2aa10d2a14413ec10bf2"
         },
         {
@@ -292,7 +292,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/artist/default@2x.png",
+          "source": "design/icons/png/artist/default@2x.png",
           "sha256": "b68f861edb3f59e1c4ca00893d14dfa89b87f3e5f282b141baecd1194625a242"
         }
       ]
@@ -310,7 +310,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/audio/active.png",
+          "source": "design/icons/png/audio/active.png",
           "sha256": "d356f77c43990cf869045bb18827e213fa5b922562965502e3d4422689f7a814"
         },
         {
@@ -322,7 +322,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/audio/default.png",
+          "source": "design/icons/png/audio/default.png",
           "sha256": "c66aa66eabd83ba25f91682f296d11d023f3f91448f3412cae0b5c34b0374f27"
         },
         {
@@ -334,7 +334,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/audio/default@2x.png",
+          "source": "design/icons/png/audio/default@2x.png",
           "sha256": "2497d71f2a34fb7c3ab914824505d54e93314567969fb88de6db64e340a0641e"
         }
       ]
@@ -352,7 +352,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/backward-10-sec/default.png",
+          "source": "design/icons/png/backward-10-sec/default.png",
           "sha256": "14af400404f1c1c55ecb8d9b5ffbe01d20ff4c50983735cdd9abd385a22c2ebb"
         }
       ]
@@ -370,7 +370,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/backward-15-sec/default.png",
+          "source": "design/icons/png/backward-15-sec/default.png",
           "sha256": "614d14e566e63121bf266429f30fa37d69123d5bce0fc8646ab854d7298d114e"
         }
       ]
@@ -388,7 +388,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/bookmark/default.png",
+          "source": "design/icons/png/bookmark/default.png",
           "sha256": "70c78ed53f0ee571e589aec7c441be7286c3e6b5105055f86bb8bf3c99b62f76"
         }
       ]
@@ -406,7 +406,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/bookmarks/default.png",
+          "source": "design/icons/png/bookmarks/default.png",
           "sha256": "65974fb492e5ee56cfa50067601b5400ed62a2d00e7471742b380dca5cea5f7b"
         }
       ]
@@ -424,7 +424,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/capture-device/default.png",
+          "source": "design/icons/png/capture-device/default.png",
           "sha256": "147889b5556f75df2e192b425e5cad2a210d804d34880aea2b684c75469c788e"
         }
       ]
@@ -442,7 +442,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/cast/default.png",
+          "source": "design/icons/png/cast/default.png",
           "sha256": "a92106931e6b2c4fa46825393aac03da561f29d55858ac7181dace07a975b19c"
         },
         {
@@ -454,7 +454,7 @@
             96,
             96
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/cast/large.png",
+          "source": "design/icons/png/cast/large.png",
           "sha256": "e29542d169697ed2b9b6c5fb1415b68fd1bf82017d4a172ce5c45ae04f57216c"
         }
       ]
@@ -472,7 +472,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/chapters/default.png",
+          "source": "design/icons/png/chapters/default.png",
           "sha256": "45a5b9913869882bea46120db4183bfcf43e70cbcf0d2cc620bb53a9b9138a56"
         }
       ]
@@ -490,7 +490,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/check/active.png",
+          "source": "design/icons/png/check/active.png",
           "sha256": "e92cfad2fd00beb57356e8b08bf06e82f96d6e57ad2069dbd5fb9f5c9670f65e"
         },
         {
@@ -502,7 +502,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/check/default.png",
+          "source": "design/icons/png/check/default.png",
           "sha256": "724360f70d89b0618e3e28667e1981392bcc4c6777c8e91ac3f0b4d42fed81b2"
         },
         {
@@ -514,7 +514,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/check/selected.png",
+          "source": "design/icons/png/check/selected.png",
           "sha256": "0e0b47a04b5d2ed98f406d023bc517e24b5ae9b6b67026ae4a4ea4d657e75533"
         }
       ]
@@ -532,7 +532,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/chevron-down/default.png",
+          "source": "design/icons/png/chevron-down/default.png",
           "sha256": "71431189434f51024a4bda8e1d8b6f3141242be939cc9f9205ff3b7011486b2b"
         }
       ]
@@ -550,7 +550,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/chevron-right/default.png",
+          "source": "design/icons/png/chevron-right/default.png",
           "sha256": "0b968411f8981139e4444dae78de2ce5d1de29caf5d40878b083d7278c3c9277"
         }
       ]
@@ -568,7 +568,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/close/default.png",
+          "source": "design/icons/png/close/default.png",
           "sha256": "e382450210cb831811e93fc99718c8a91add35eeaeb42049ba3a420824e82f3f"
         },
         {
@@ -580,7 +580,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/close/default@2x.png",
+          "source": "design/icons/png/close/default@2x.png",
           "sha256": "435809cc2324d3514a6b1ddcbae1028dfc9af7909d97b736eb9c6b6518eb1b5b"
         }
       ]
@@ -598,7 +598,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/collapse-sidebar/default.png",
+          "source": "design/icons/png/collapse-sidebar/default.png",
           "sha256": "befb4be1f92546fa0a5d4235fa7e89c1aaa4708462b1da25ad583f948f63a2d8"
         }
       ]
@@ -616,7 +616,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/disc/default.png",
+          "source": "design/icons/png/disc/default.png",
           "sha256": "27ecf0742a2d5f81108644210eeaeeb5075a34733bc89e97139f9f894db22d5c"
         },
         {
@@ -628,7 +628,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/disc/default@2x.png",
+          "source": "design/icons/png/disc/default@2x.png",
           "sha256": "676013d0b3602182be985d2e2ba6e81a17e024807e6bd954b1046497dd5d7694"
         }
       ]
@@ -646,7 +646,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/divider/default.png",
+          "source": "design/icons/png/divider/default.png",
           "sha256": "3ff58a8d88b7ffae6d19774a082bba1f73f392d8e4b0f2fc6e850b8d0980b350"
         }
       ]
@@ -664,7 +664,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/edit/default.png",
+          "source": "design/icons/png/edit/default.png",
           "sha256": "5c5c9075d82333e05d688340d4c8ab7c885a8ad8f18ddd5505691e7b2c750e2b"
         },
         {
@@ -676,7 +676,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/edit/dim.png",
+          "source": "design/icons/png/edit/dim.png",
           "sha256": "f15e715efe03d8ea8224e4b38221c5b093d9c5cf86c5c8858abb1f9bf32c102f"
         }
       ]
@@ -694,7 +694,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/EQ/default.png",
+          "source": "design/icons/png/EQ/default.png",
           "sha256": "341d01210ae7a9a01e2ffa76c31b25965060bffec504bbcb99a63602a324f4de"
         }
       ]
@@ -712,7 +712,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-classical/default-accent.png",
+          "source": "design/icons/png/eq-classical/default-accent.png",
           "sha256": "a5362fee8c694bd2a21bf3e6f32b26cab562ec61fb27f4aee4ae092a858be7d1"
         },
         {
@@ -724,7 +724,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-classical/default-grey.png",
+          "source": "design/icons/png/eq-classical/default-grey.png",
           "sha256": "348a965c02928db7901710f17d0fdce818855b18b1eb32897c4ce325714a826b"
         },
         {
@@ -736,7 +736,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-classical/default.png",
+          "source": "design/icons/png/eq-classical/default.png",
           "sha256": "e9ba3b791320601e15c6be791078a9ec765396234a166c78a42d5da5821e9bd9"
         }
       ]
@@ -754,7 +754,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-club/default-accent.png",
+          "source": "design/icons/png/eq-club/default-accent.png",
           "sha256": "fa7924464d920bdf3f9efabf9c73fc4b543b02dbb06dbc861b1b95e67bdfb813"
         },
         {
@@ -766,7 +766,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-club/default-grey.png",
+          "source": "design/icons/png/eq-club/default-grey.png",
           "sha256": "348a965c02928db7901710f17d0fdce818855b18b1eb32897c4ce325714a826b"
         },
         {
@@ -778,7 +778,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-club/default.png",
+          "source": "design/icons/png/eq-club/default.png",
           "sha256": "b4a28ee28bc859c800118cda87f1a08a4a7a39dcd61989bd22865b09ed788111"
         }
       ]
@@ -796,7 +796,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-dance/default-accent.png",
+          "source": "design/icons/png/eq-dance/default-accent.png",
           "sha256": "611c11506bd268ac7b93820771933741314bfcbf0a98e2300cd6f700e6b3daac"
         },
         {
@@ -808,7 +808,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-dance/default-grey.png",
+          "source": "design/icons/png/eq-dance/default-grey.png",
           "sha256": "cbe934f7bb1f8cc4c0189c77d4dad83be449b5145178b25c7c3722c8130f691e"
         },
         {
@@ -820,7 +820,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-dance/default.png",
+          "source": "design/icons/png/eq-dance/default.png",
           "sha256": "d9a2169c7e02b94a01aab6dc95eb48c162656bb19cc30939fa749e65c32515eb"
         }
       ]
@@ -838,7 +838,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-flat/default-accent.png",
+          "source": "design/icons/png/eq-flat/default-accent.png",
           "sha256": "73af7a37c0e1c0eb7a127ae402ea438e8e36a98b4ae5612f65400013ce836d17"
         },
         {
@@ -850,7 +850,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-flat/default-grey.png",
+          "source": "design/icons/png/eq-flat/default-grey.png",
           "sha256": "348a965c02928db7901710f17d0fdce818855b18b1eb32897c4ce325714a826b"
         },
         {
@@ -862,7 +862,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-flat/default.png",
+          "source": "design/icons/png/eq-flat/default.png",
           "sha256": "348a965c02928db7901710f17d0fdce818855b18b1eb32897c4ce325714a826b"
         }
       ]
@@ -880,7 +880,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-fullbass/default-accent.png",
+          "source": "design/icons/png/eq-fullbass/default-accent.png",
           "sha256": "932ada4b52c4abe150c3842d8ee6b38d1359590803d0da3e6e4a45a19c8040d7"
         },
         {
@@ -892,7 +892,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-fullbass/default-grey.png",
+          "source": "design/icons/png/eq-fullbass/default-grey.png",
           "sha256": "2ef9ec741aed3e6d1a59dfdc457f1af05a31a4541781358919ccb1f40d99f315"
         },
         {
@@ -904,7 +904,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-fullbass/default.png",
+          "source": "design/icons/png/eq-fullbass/default.png",
           "sha256": "5349fcaa2d1cb0f2970870aca1a1421c676873d469976a40f284fe7975513957"
         }
       ]
@@ -922,7 +922,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-fullbasstreble/default-accent.png",
+          "source": "design/icons/png/eq-fullbasstreble/default-accent.png",
           "sha256": "1a9c0d2ab5c45db9b0b2c10a632fb73ffd94f01c931b70d651accccd96ef5cd5"
         },
         {
@@ -934,7 +934,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-fullbasstreble/default-grey.png",
+          "source": "design/icons/png/eq-fullbasstreble/default-grey.png",
           "sha256": "348a965c02928db7901710f17d0fdce818855b18b1eb32897c4ce325714a826b"
         },
         {
@@ -946,7 +946,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-fullbasstreble/default.png",
+          "source": "design/icons/png/eq-fullbasstreble/default.png",
           "sha256": "e581417ea4f83fe4fbf54953682f5bbc615647a39e52c51df3b45e45c5e9f45c"
         }
       ]
@@ -964,7 +964,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-fulltreble/default-accent.png",
+          "source": "design/icons/png/eq-fulltreble/default-accent.png",
           "sha256": "c4f82abbcee3aa1511da721c4e448826e1f5d947552ec8a570b304c30dbac03d"
         },
         {
@@ -976,7 +976,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-fulltreble/default-grey.png",
+          "source": "design/icons/png/eq-fulltreble/default-grey.png",
           "sha256": "348a965c02928db7901710f17d0fdce818855b18b1eb32897c4ce325714a826b"
         },
         {
@@ -988,7 +988,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-fulltreble/default.png",
+          "source": "design/icons/png/eq-fulltreble/default.png",
           "sha256": "e120c38df96753db4b3cdb7777e04ed3a98efe40141711ef00c42c0162cd7b36"
         }
       ]
@@ -1006,7 +1006,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-headphones/default-accent.png",
+          "source": "design/icons/png/eq-headphones/default-accent.png",
           "sha256": "00c07c5c1e61d520c2477799bedeb7846a6a6a485d5d910fbc39a5b29406c064"
         },
         {
@@ -1018,7 +1018,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-headphones/default-grey.png",
+          "source": "design/icons/png/eq-headphones/default-grey.png",
           "sha256": "ab76c9290ea70315f8aeaf57e24d4390f99abc9cb302298672cbb0d7c89f1087"
         },
         {
@@ -1030,7 +1030,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-headphones/default.png",
+          "source": "design/icons/png/eq-headphones/default.png",
           "sha256": "cf383e3dba92eacb85a025ab5375fd8589494271cf2063760ebbb16e442a6c1b"
         }
       ]
@@ -1048,7 +1048,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-largehall/default-accent.png",
+          "source": "design/icons/png/eq-largehall/default-accent.png",
           "sha256": "2193f4ee7fb6b97dcf2fbc6e66c483356298e99fd54e8bcfe4db742aaea67e3b"
         },
         {
@@ -1060,7 +1060,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-largehall/default-grey.png",
+          "source": "design/icons/png/eq-largehall/default-grey.png",
           "sha256": "9d04fbc4a6a8c71775c0f8a42e193724ccbe7aa3d46891a09e284338a1d585e1"
         },
         {
@@ -1072,7 +1072,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-largehall/default.png",
+          "source": "design/icons/png/eq-largehall/default.png",
           "sha256": "a41b2b0591cd39f63bb034d6a2cdf931dd265e5af02380123cc3486927b4b758"
         }
       ]
@@ -1090,7 +1090,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-live/default-accent.png",
+          "source": "design/icons/png/eq-live/default-accent.png",
           "sha256": "247da39968b95eacae4c57df61238e3b5b72067a8e9b3b5abb224619c7420530"
         },
         {
@@ -1102,7 +1102,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-live/default-grey.png",
+          "source": "design/icons/png/eq-live/default-grey.png",
           "sha256": "fa1d2f007d313da1e212e21c3e0a7257c0812814461acd3e2de21a47acfd34f2"
         },
         {
@@ -1114,7 +1114,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-live/default.png",
+          "source": "design/icons/png/eq-live/default.png",
           "sha256": "f5dceb61f5e52377efcd8fb842cb5af215f0642a89d0c3538906110aa80de486"
         }
       ]
@@ -1132,7 +1132,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-party/default-accent.png",
+          "source": "design/icons/png/eq-party/default-accent.png",
           "sha256": "ae756b59237ac4b985a3be031a9c45fa92c4598f88eefeab694c745d1bb4c7b8"
         },
         {
@@ -1144,7 +1144,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-party/default-grey.png",
+          "source": "design/icons/png/eq-party/default-grey.png",
           "sha256": "348a965c02928db7901710f17d0fdce818855b18b1eb32897c4ce325714a826b"
         },
         {
@@ -1156,7 +1156,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-party/default.png",
+          "source": "design/icons/png/eq-party/default.png",
           "sha256": "e052e8665bee3f64909fd715480bee97d3210dd6b11cbbc6e93028b664b26d55"
         }
       ]
@@ -1174,7 +1174,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-pop/default-accent.png",
+          "source": "design/icons/png/eq-pop/default-accent.png",
           "sha256": "dca275acffc93d8adc1df8401ed1e9ff129970f3403e93ac3298dbfb9a08ec9d"
         },
         {
@@ -1186,7 +1186,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-pop/default-grey.png",
+          "source": "design/icons/png/eq-pop/default-grey.png",
           "sha256": "348a965c02928db7901710f17d0fdce818855b18b1eb32897c4ce325714a826b"
         },
         {
@@ -1198,7 +1198,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-pop/default.png",
+          "source": "design/icons/png/eq-pop/default.png",
           "sha256": "f97ddda876a96dcf7f2f609b9208db1e6c0adb18705d7b8ce00809ddca62a50b"
         }
       ]
@@ -1216,7 +1216,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-reggae/default-accent.png",
+          "source": "design/icons/png/eq-reggae/default-accent.png",
           "sha256": "dec5733e5b3910ece55d5614f27ccaff1ecd3f113ddbde440deafecde3fb83f0"
         },
         {
@@ -1228,7 +1228,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-reggae/default-grey.png",
+          "source": "design/icons/png/eq-reggae/default-grey.png",
           "sha256": "348a965c02928db7901710f17d0fdce818855b18b1eb32897c4ce325714a826b"
         },
         {
@@ -1240,7 +1240,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-reggae/default.png",
+          "source": "design/icons/png/eq-reggae/default.png",
           "sha256": "aa6ae678bbc0d95bf4f75f3a6b98e4fee0115353f98bdb990fa95f1bcfa27ad0"
         }
       ]
@@ -1258,7 +1258,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-rock/default-accent.png",
+          "source": "design/icons/png/eq-rock/default-accent.png",
           "sha256": "9b07a7a6f0cd2798cd6effe9f422cc71952c777bed66e566318336f697ebb4d4"
         },
         {
@@ -1270,7 +1270,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-rock/default-grey.png",
+          "source": "design/icons/png/eq-rock/default-grey.png",
           "sha256": "78f2258f741b964de45cf8859f11121e148ec371d35c815c88a7b92b0ad4b11d"
         },
         {
@@ -1282,7 +1282,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-rock/default.png",
+          "source": "design/icons/png/eq-rock/default.png",
           "sha256": "26d31508203b048a40f87c5652f0b1cb3fa1603782170e5ac18f90aa43ef92f5"
         }
       ]
@@ -1300,7 +1300,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-ska/default-accent.png",
+          "source": "design/icons/png/eq-ska/default-accent.png",
           "sha256": "79093e59187a74bbc70905cc4edd97805990a42eca25b3297d20f887c3a313e2"
         },
         {
@@ -1312,7 +1312,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-ska/default-grey.png",
+          "source": "design/icons/png/eq-ska/default-grey.png",
           "sha256": "4943037be952e29fd616cabfbbc839fdbcafe16f97033339ddf201d214e9ec63"
         },
         {
@@ -1324,7 +1324,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-ska/default.png",
+          "source": "design/icons/png/eq-ska/default.png",
           "sha256": "5407a9f3b43502f4f70fb92ade2a5cc4d2b7843407e90c4ccf1bc3efdb1fc6f2"
         }
       ]
@@ -1342,7 +1342,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-soft/default-accent.png",
+          "source": "design/icons/png/eq-soft/default-accent.png",
           "sha256": "f44e5ade87ed24c5b9c0d25f3f5cf47d2fb0c785e985206eb28382cbf9711fc5"
         },
         {
@@ -1354,7 +1354,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-soft/default-grey.png",
+          "source": "design/icons/png/eq-soft/default-grey.png",
           "sha256": "348a965c02928db7901710f17d0fdce818855b18b1eb32897c4ce325714a826b"
         },
         {
@@ -1366,7 +1366,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-soft/default.png",
+          "source": "design/icons/png/eq-soft/default.png",
           "sha256": "6aed1ac3a7b9a8d41094a02080a6994621c733638ad21b5353c830bbe5a9a9a0"
         }
       ]
@@ -1384,7 +1384,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-softrock/default-accent.png",
+          "source": "design/icons/png/eq-softrock/default-accent.png",
           "sha256": "6d01fe4a92408c87a29a6cb2e450eb7ab585395fdcf9a2544cc1cf4715c3f3fa"
         },
         {
@@ -1396,7 +1396,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-softrock/default-grey.png",
+          "source": "design/icons/png/eq-softrock/default-grey.png",
           "sha256": "348a965c02928db7901710f17d0fdce818855b18b1eb32897c4ce325714a826b"
         },
         {
@@ -1408,7 +1408,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-softrock/default.png",
+          "source": "design/icons/png/eq-softrock/default.png",
           "sha256": "1272e5ff2f9d8b4d0e62606d7878e9fb7bf27c6aa5fc1f238148f1bb03e41499"
         }
       ]
@@ -1426,7 +1426,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-techno/default-accent.png",
+          "source": "design/icons/png/eq-techno/default-accent.png",
           "sha256": "cc99bf3fc2f10ab06cc6392536ac3a42f05201a9e9ea2304cb6a2ebabd72571f"
         },
         {
@@ -1438,7 +1438,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-techno/default-grey.png",
+          "source": "design/icons/png/eq-techno/default-grey.png",
           "sha256": "348a965c02928db7901710f17d0fdce818855b18b1eb32897c4ce325714a826b"
         },
         {
@@ -1450,7 +1450,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/eq-techno/default.png",
+          "source": "design/icons/png/eq-techno/default.png",
           "sha256": "2dc5d0644e85d3be2294bad3cf07e0f4335e3188bc69efeebcaabeb008828574"
         }
       ]
@@ -1468,7 +1468,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/expand-sidebar/default.png",
+          "source": "design/icons/png/expand-sidebar/default.png",
           "sha256": "0caccfbde48607c5a1695f8f760f08c3727390f8745a9f0b72562d368f4872ba"
         }
       ]
@@ -1486,7 +1486,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/favorite/active.png",
+          "source": "design/icons/png/favorite/active.png",
           "sha256": "15a438f39921ffdee7d3073df477b915c1317a177580da5340c169f111da6010"
         },
         {
@@ -1498,7 +1498,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/favorite/default.png",
+          "source": "design/icons/png/favorite/default.png",
           "sha256": "1f0c4cdaf41cc3cec5b36c7d178424dd058ec6dd0db0cf8c70d7e75cb4ec1263"
         },
         {
@@ -1510,7 +1510,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/favorite/default@2x.png",
+          "source": "design/icons/png/favorite/default@2x.png",
           "sha256": "1d595257d2141596e5462c9fbc190a15d70ef719b5082e55a37aab1fa6dd5dc9"
         }
       ]
@@ -1528,7 +1528,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/file/default.png",
+          "source": "design/icons/png/file/default.png",
           "sha256": "5cc73d5c660fdb04acd7b502a88507f7763dce90e3f16e8fca99e4c3488be097"
         }
       ]
@@ -1546,7 +1546,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/folder/active.png",
+          "source": "design/icons/png/folder/active.png",
           "sha256": "243a12dbb054e824adddafa1e2f3eff6e37533769c0d8d5bedc3ea66c94bbc85"
         },
         {
@@ -1558,7 +1558,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/folder/default.png",
+          "source": "design/icons/png/folder/default.png",
           "sha256": "869cd2b8af2243ac849aa839b6b2052aecbe2b9dd617aa69fefe3b17244bc717"
         },
         {
@@ -1570,7 +1570,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/folder/large.png",
+          "source": "design/icons/png/folder/large.png",
           "sha256": "f95ca81fa8ea11c1d37a2758b728f2550dba79fbad537aba3068d76b4c7c2fe1"
         },
         {
@@ -1582,7 +1582,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/folder/selected.png",
+          "source": "design/icons/png/folder/selected.png",
           "sha256": "ead3054f71f47aa9ae5cc052fa4df5e9022f513ade24d2f0860864e9700f96e2"
         }
       ]
@@ -1600,7 +1600,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/forward-10-sec/default.png",
+          "source": "design/icons/png/forward-10-sec/default.png",
           "sha256": "f426e5a36fe9d243a89f2c119d87066b277408833b2dfe559e616575e0d5cbb2"
         }
       ]
@@ -1618,7 +1618,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/forward-15-sec/default.png",
+          "source": "design/icons/png/forward-15-sec/default.png",
           "sha256": "5f7c5768435f583b61f64f0a9f82cde7c746b9b82d53e4f2798bd0a193f4dd9c"
         }
       ]
@@ -1636,7 +1636,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/fullscreen/active.png",
+          "source": "design/icons/png/fullscreen/active.png",
           "sha256": "84e11927c9b2059fc444e4c8b138b91d7d14a2ac7c37c9cd180a650b8ed4c51b"
         },
         {
@@ -1648,7 +1648,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/fullscreen/default.png",
+          "source": "design/icons/png/fullscreen/default.png",
           "sha256": "84f8ea588c5127a03dc713e89a6e7b8f7f6245f8656e1d4b48a3b1799ac9c709"
         },
         {
@@ -1660,7 +1660,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/fullscreen/default@2x.png",
+          "source": "design/icons/png/fullscreen/default@2x.png",
           "sha256": "3f3b47a5883a34c49d97ed41aff33e8e688c494ab560511250b4f409808fd6dc"
         }
       ]
@@ -1678,7 +1678,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/genre/default.png",
+          "source": "design/icons/png/genre/default.png",
           "sha256": "0f63cdaecc4e49cb7797e5981335d0e3fab25a5745a86c923486e151a760e52a"
         }
       ]
@@ -1696,7 +1696,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/grid/default.png",
+          "source": "design/icons/png/grid/default.png",
           "sha256": "a7261fdd655f901763340b050fe8027a197245d4bf07d893f581e8d3e176eee9"
         },
         {
@@ -1708,7 +1708,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/grid/dim.png",
+          "source": "design/icons/png/grid/dim.png",
           "sha256": "e42f3b6e3a94e96eca9dabe3a174557f2926ec61218dcd919dc723197404b589"
         }
       ]
@@ -1726,7 +1726,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/HDR/default.png",
+          "source": "design/icons/png/HDR/default.png",
           "sha256": "88ff9bd7ed45147f976c42dff85e0d11e383ca03ceced970f9f7a713901c2baa"
         }
       ]
@@ -1744,7 +1744,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/home/active.png",
+          "source": "design/icons/png/home/active.png",
           "sha256": "46c84dc46d1e8fe055799a63f74ae81406906694cfe863df028135c3b4353697"
         },
         {
@@ -1756,7 +1756,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/home/default.png",
+          "source": "design/icons/png/home/default.png",
           "sha256": "76d2d1be465ceb5e49c456a67945b034b6dc0900007b99d7e368d24e69986646"
         },
         {
@@ -1768,7 +1768,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/home/default@2x.png",
+          "source": "design/icons/png/home/default@2x.png",
           "sha256": "1f262a39d948883b9603c6c7e8d321409dbb38f1c184e77910d985325ee0e82a"
         },
         {
@@ -1780,7 +1780,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/home/selected.png",
+          "source": "design/icons/png/home/selected.png",
           "sha256": "9fad8c136727efa6c6797876796a9bbc76fb20c57e249324e1f9731ed9982253"
         }
       ]
@@ -1798,7 +1798,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/hotkeys/active.png",
+          "source": "design/icons/png/hotkeys/active.png",
           "sha256": "40df2c97ba2613ef8788632042f771d74f8fff749d74d4368355af38c844f9e2"
         },
         {
@@ -1810,7 +1810,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/hotkeys/default.png",
+          "source": "design/icons/png/hotkeys/default.png",
           "sha256": "e2d89576bb6a59ab79021d7633aa04214baf0bd8518de0525a884da8f402f56e"
         },
         {
@@ -1822,7 +1822,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/hotkeys/default@2x.png",
+          "source": "design/icons/png/hotkeys/default@2x.png",
           "sha256": "4615e1b98590b9257222b156c6a35f129d84eb3f1b409272d34a7b5904742461"
         }
       ]
@@ -1840,7 +1840,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/info/default.png",
+          "source": "design/icons/png/info/default.png",
           "sha256": "1b00ca16e5165f45542b1ab8b6622a76adbd6ab86f314a978cb964a289c6275f"
         },
         {
@@ -1852,7 +1852,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/info/default@2x.png",
+          "source": "design/icons/png/info/default@2x.png",
           "sha256": "ff54b56a801ea8374f85c76674f4d437071136a519f94dd84ca1071f54afcf45"
         }
       ]
@@ -1870,7 +1870,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/interface/active.png",
+          "source": "design/icons/png/interface/active.png",
           "sha256": "1a49e6526d54452ec60d18a92583b6f6964d0f6e95f64af9ad300b7df02e8363"
         },
         {
@@ -1882,7 +1882,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/interface/default.png",
+          "source": "design/icons/png/interface/default.png",
           "sha256": "435a555c0e7e6191e3fc0d583eaff3af47ad6de517abeb80e38368b6215387d6"
         }
       ]
@@ -1900,7 +1900,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/link/active.png",
+          "source": "design/icons/png/link/active.png",
           "sha256": "7741764cdaa41f5057c28763a0c8b54943e7646c278ff77fdf80fdb6479bf0d3"
         },
         {
@@ -1912,7 +1912,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/link/default.png",
+          "source": "design/icons/png/link/default.png",
           "sha256": "760de5f878aab3370677891ee8234740232c73d023b459f388c5ee214ca36a83"
         }
       ]
@@ -1930,7 +1930,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/list/default.png",
+          "source": "design/icons/png/list/default.png",
           "sha256": "08326d6f2e131cb3b1eb10283df63ec54a8c1ef988f9a9062244fa2e5a292f44"
         },
         {
@@ -1942,7 +1942,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/list/dim.png",
+          "source": "design/icons/png/list/dim.png",
           "sha256": "6415417da971dc813a2970ce83774d3e812c3a809efa6ec27b44f6bdf6ff7ab3"
         }
       ]
@@ -1960,7 +1960,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/lists/active.png",
+          "source": "design/icons/png/lists/active.png",
           "sha256": "694f2cd032edfc33cb793e9169481754a370d98a94f267ddb7dafc3ba0b2eb32"
         },
         {
@@ -1972,7 +1972,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/lists/default.png",
+          "source": "design/icons/png/lists/default.png",
           "sha256": "059c64c891fd756555c638fd31d1ccf0ab86f99601bbf17d49e5c3487a35f076"
         },
         {
@@ -1984,7 +1984,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/lists/default@2x.png",
+          "source": "design/icons/png/lists/default@2x.png",
           "sha256": "4c778f3e7eda6e6a5dd8c4ebf44bf88e7dac574b33bc3b32624c771736d0527a"
         }
       ]
@@ -2002,7 +2002,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/maximize/default.png",
+          "source": "design/icons/png/maximize/default.png",
           "sha256": "5c67d98952e15783261b61c65c1c56ffa49856d97bc1589b8a03ee6cb3245d5c"
         },
         {
@@ -2014,7 +2014,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/maximize/default@2x.png",
+          "source": "design/icons/png/maximize/default@2x.png",
           "sha256": "3338ea72ea4ed22812cedac0c69bd8f6b2f694e373599680404950dbaeb79b5f"
         }
       ]
@@ -2032,7 +2032,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/minimize/default.png",
+          "source": "design/icons/png/minimize/default.png",
           "sha256": "d92c316e025ec8932a5872d7d5b2e894d8136ac990dfbc88fe55cb6dc04dfefb"
         },
         {
@@ -2044,7 +2044,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/minimize/default@2x.png",
+          "source": "design/icons/png/minimize/default@2x.png",
           "sha256": "2e24b71bc90c73e77158225fbd12f3b7b913f17746f10d2d524ecb9357d16f4e"
         }
       ]
@@ -2062,7 +2062,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/more/default.png",
+          "source": "design/icons/png/more/default.png",
           "sha256": "4cc06a0b67c2385c92e2cef2c57b7ab07ba976755e93df8199b9feffb6521de2"
         },
         {
@@ -2074,7 +2074,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/more/dim.png",
+          "source": "design/icons/png/more/dim.png",
           "sha256": "71addcfdb672f33929324b4a7e634ac1ab3acb787a62325251dd6519cd4381c6"
         }
       ]
@@ -2092,7 +2092,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/move/default.png",
+          "source": "design/icons/png/move/default.png",
           "sha256": "2b9358159946ba886797a0abe1852e4d4eed71cf8b05f0a9a317599a25300754"
         }
       ]
@@ -2110,7 +2110,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/music/default.png",
+          "source": "design/icons/png/music/default.png",
           "sha256": "533ba7028cf665d20d5ab3ef7676b6fff794cad8d2d4e61a4d8a15a0db5c3f58"
         }
       ]
@@ -2128,7 +2128,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/new-folder/default.png",
+          "source": "design/icons/png/new-folder/default.png",
           "sha256": "b63f9399640f01c23d945f51bfc37ac0eca5136d2111e8b2c513f2e022e7c095"
         }
       ]
@@ -2146,7 +2146,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/next/default.png",
+          "source": "design/icons/png/next/default.png",
           "sha256": "0c5f38b51d7cc295c090fce564ac31ad909aeefd05c31f123dbf01940fa5c988"
         },
         {
@@ -2158,7 +2158,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/next/default@2x.png",
+          "source": "design/icons/png/next/default@2x.png",
           "sha256": "2340ce1e85fa2466588e3845ef011785dad8ddd486567026d6566c0d4494c59d"
         }
       ]
@@ -2176,7 +2176,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/open/default.png",
+          "source": "design/icons/png/open/default.png",
           "sha256": "19d1fe2bd8e656c691a58f5fe306661615a1e959553c684e3b705ab1c7cddd01"
         },
         {
@@ -2188,7 +2188,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/open/dim.png",
+          "source": "design/icons/png/open/dim.png",
           "sha256": "0cc43dcb114bfed3fd6b2e83b6f746a28e1456c9bdbfccf45dca82e1ed1109c2"
         }
       ]
@@ -2206,7 +2206,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/paint/active.png",
+          "source": "design/icons/png/paint/active.png",
           "sha256": "ec2e846f703763ac1bc7fc0dd0d26af9101ba774ef3a55976dba2cff9fa98171"
         },
         {
@@ -2218,7 +2218,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/paint/default.png",
+          "source": "design/icons/png/paint/default.png",
           "sha256": "2e0b84bd33aaa3b53a9ee3fda08923a4963a63e0b1225e52e69e1446b5abc99a"
         }
       ]
@@ -2236,7 +2236,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/pause/default.png",
+          "source": "design/icons/png/pause/default.png",
           "sha256": "199c35c44cca6ac62221bc5412487a6ca4d23bf911fe1fa9c9c2f78fabda399a"
         }
       ]
@@ -2254,7 +2254,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/PiP/default.png",
+          "source": "design/icons/png/PiP/default.png",
           "sha256": "79818e264c39c06633e050012187f624b0a7da220c1fcc481bf2851aea1e567b"
         }
       ]
@@ -2272,7 +2272,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/play/default.png",
+          "source": "design/icons/png/play/default.png",
           "sha256": "34b227795b5a99d60e525f4d7ac616e1bf0b47a66c5ac86aab1b7feb83950b8c"
         },
         {
@@ -2284,7 +2284,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/play/default@2x.png",
+          "source": "design/icons/png/play/default@2x.png",
           "sha256": "9d81ab1b8b8b5811be800cbdd555fbad15e9a386ceee418ef378a48ffa2ca7b1"
         },
         {
@@ -2296,7 +2296,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/play/outline-active.png",
+          "source": "design/icons/png/play/outline-active.png",
           "sha256": "6bba1d4cfb9b89898171970100f25616f8a6eb777e4cbb77f1fa9e4dbad1cc15"
         }
       ]
@@ -2314,7 +2314,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/playback/active.png",
+          "source": "design/icons/png/playback/active.png",
           "sha256": "bff5dea7da84e250859178a14dec88d07d441f146736e96d131f8cb187b0a04d"
         },
         {
@@ -2326,7 +2326,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/playback/default.png",
+          "source": "design/icons/png/playback/default.png",
           "sha256": "6a2ff8465e5efdb92f2eaabb32ef107edab5123ce25110ef89363aa7f0fc34c3"
         }
       ]
@@ -2344,7 +2344,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/playback-settings/active.png",
+          "source": "design/icons/png/playback-settings/active.png",
           "sha256": "7fd163b4b14bed9d461e848995ca7e22988b687bded37b3abee49ae8a72c7e77"
         },
         {
@@ -2356,7 +2356,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/playback-settings/default.png",
+          "source": "design/icons/png/playback-settings/default.png",
           "sha256": "0551fef7eb0b88d3000cd631bc109bfb05a92f7f6d58558bb575e0fa3ef9099f"
         },
         {
@@ -2368,7 +2368,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/playback-settings/default@2x.png",
+          "source": "design/icons/png/playback-settings/default@2x.png",
           "sha256": "df8abc35a96ccbe5d4957315efebc8ef4fee48bbb59b407084dd5560f2ed8826"
         }
       ]
@@ -2386,7 +2386,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/playlist/active.png",
+          "source": "design/icons/png/playlist/active.png",
           "sha256": "04bbcf17a3c1617e9976f852fd62900b374653893f63b794a3d179bb6ea2f7b8"
         },
         {
@@ -2398,7 +2398,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/playlist/default.png",
+          "source": "design/icons/png/playlist/default.png",
           "sha256": "949a4026239ffe2050edc75d4de6b70a2b92aa1006ffd1ff00643beb08c00551"
         },
         {
@@ -2410,7 +2410,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/playlist/default@2x.png",
+          "source": "design/icons/png/playlist/default@2x.png",
           "sha256": "b8aeabb3d20ae772484cfd1a0d75538480e053816494e44fe060c5389d169eb3"
         }
       ]
@@ -2428,7 +2428,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/plugins/active.png",
+          "source": "design/icons/png/plugins/active.png",
           "sha256": "9c54b182ef058684c59ebe2584cb2a0e794f4f29fec66cf179e0f52257c87538"
         },
         {
@@ -2440,7 +2440,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/plugins/default.png",
+          "source": "design/icons/png/plugins/default.png",
           "sha256": "c346aa570ab78c8cef461ee91d41c43c83acfc5cfdd25ea9de55dfd82a32c28d"
         }
       ]
@@ -2458,7 +2458,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/preferences/active.png",
+          "source": "design/icons/png/preferences/active.png",
           "sha256": "ff0a55a408e3148a16133a69718c82cd65525cc35b3547174f72c35367bb275f"
         },
         {
@@ -2470,7 +2470,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/preferences/default.png",
+          "source": "design/icons/png/preferences/default.png",
           "sha256": "7db9c96459246d00805b7c3b11c508a835563094830576eb2f3cd812893d700e"
         }
       ]
@@ -2488,7 +2488,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/previous/default.png",
+          "source": "design/icons/png/previous/default.png",
           "sha256": "62cce27ad6ea7c6f2159f540877c4f47ee65796de9b0f98152d37e1700018272"
         },
         {
@@ -2500,7 +2500,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/previous/default@2x.png",
+          "source": "design/icons/png/previous/default@2x.png",
           "sha256": "e6a1350cb3c12913acda2d326aa8154b3bfe973a8fc9b995ca4b3c1ea4063cac"
         }
       ]
@@ -2518,7 +2518,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/privacy/active.png",
+          "source": "design/icons/png/privacy/active.png",
           "sha256": "acd375f9dbc47fc8e30fdd7481c93956e6234aa408a676037c185e50cb044ddf"
         },
         {
@@ -2530,7 +2530,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/privacy/default.png",
+          "source": "design/icons/png/privacy/default.png",
           "sha256": "30d91da63e6178a07fcd627dd76a56f2670f565f447483ae9e73d42f2f2a5dae"
         }
       ]
@@ -2548,7 +2548,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/profile/default.png",
+          "source": "design/icons/png/profile/default.png",
           "sha256": "7cdec0a6f589a5f4d3bc1ec20cb551c9b5dab3f450f64cdb15f3fd4a4c39c441"
         },
         {
@@ -2560,7 +2560,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/profile/default@2x.png",
+          "source": "design/icons/png/profile/default@2x.png",
           "sha256": "d47256b749021ad61c52384ed1db27c75f981b393aab3e96f3af1eb010f982a2"
         }
       ]
@@ -2578,7 +2578,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/queue/default.png",
+          "source": "design/icons/png/queue/default.png",
           "sha256": "8198925f4046b5dabdb697e30fb5225de73354b539cffe9c5efe831f640b656a"
         },
         {
@@ -2590,7 +2590,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/queue/default@2x.png",
+          "source": "design/icons/png/queue/default@2x.png",
           "sha256": "87402d532cd98219038af171b6eaf2810ad50804907dad23b4ca3b2a24406ff3"
         }
       ]
@@ -2608,7 +2608,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/quit/default.png",
+          "source": "design/icons/png/quit/default.png",
           "sha256": "135d79457aaee8442e2c2f0ce81abc5dcf387a680e595681958eb3cbc8302ead"
         },
         {
@@ -2620,7 +2620,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/quit/default@2x.png",
+          "source": "design/icons/png/quit/default@2x.png",
           "sha256": "185d1dc123266e59e95e447656c6e668b6af22d11eb4f1b68f76db7728a20d11"
         }
       ]
@@ -2638,7 +2638,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/recent/active-accent.png",
+          "source": "design/icons/png/recent/active-accent.png",
           "sha256": "ecb27c2876cd8630a2c17a4eaab488b4a27821ac2d35709a35583d7af9ec50a0"
         },
         {
@@ -2650,7 +2650,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/recent/active-accent@2x.png",
+          "source": "design/icons/png/recent/active-accent@2x.png",
           "sha256": "b8db295d363b74d33bc869032d1e50c3d3e3bbd9831c49147eb0f81ae811816a"
         },
         {
@@ -2662,7 +2662,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/recent/active-grey.png",
+          "source": "design/icons/png/recent/active-grey.png",
           "sha256": "7cc2ff991ebe8df98e032224a66454e8c4dce92851f792288ad46a6a8b1e39bc"
         },
         {
@@ -2674,7 +2674,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/recent/active-grey@2x.png",
+          "source": "design/icons/png/recent/active-grey@2x.png",
           "sha256": "744992018e4222b7a3bbc39f695e1f12c93fe048358baa9053c1415ac44f696e"
         },
         {
@@ -2686,7 +2686,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/recent/active.png",
+          "source": "design/icons/png/recent/active.png",
           "sha256": "6f64bb2ed21e13fd6f5515269284dc94543a9ca3c0ef26e19744d133d831d5d0"
         },
         {
@@ -2698,7 +2698,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/recent/active@2x.png",
+          "source": "design/icons/png/recent/active@2x.png",
           "sha256": "c0e7d769c35846dab9c5b5d2c90d87baf63b89597f590dfdfee62fbc44cbe8c9"
         },
         {
@@ -2710,7 +2710,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/recent/default.png",
+          "source": "design/icons/png/recent/default.png",
           "sha256": "ae90971d68d9fe11d6413909753f2bf441500078dce6351d451ce2457dbb73be"
         },
         {
@@ -2722,7 +2722,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/recent/default@2x.png",
+          "source": "design/icons/png/recent/default@2x.png",
           "sha256": "d69ba3a17884f6466bc728b155fd6b16fcf333b471612b442cfa97045956ac6b"
         }
       ]
@@ -2740,7 +2740,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/record/active.png",
+          "source": "design/icons/png/record/active.png",
           "sha256": "d610e7782f070b0875063030501b451e6bdc2402d4f0c9fcd542ca64d522472a"
         },
         {
@@ -2752,7 +2752,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/record/default.png",
+          "source": "design/icons/png/record/default.png",
           "sha256": "15601158f42ef03ac35e86eaa7bad485e31c3703b61c8b02a6338394b8e768fc"
         }
       ]
@@ -2770,7 +2770,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/refresh/default.png",
+          "source": "design/icons/png/refresh/default.png",
           "sha256": "9e0d20af0e734f3582876a64e9832cf6bb5f12a3ad2dcfedd2c4be0a932f0729"
         }
       ]
@@ -2788,7 +2788,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/remove/default.png",
+          "source": "design/icons/png/remove/default.png",
           "sha256": "75c892fb78d03a094320c0281bc4718a94e2e19f6ded9c34110a7c3b14c9b3bc"
         },
         {
@@ -2800,7 +2800,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/remove/default@2x.png",
+          "source": "design/icons/png/remove/default@2x.png",
           "sha256": "f15e715666854b785e56d72f9ccbaa2971462347fd07cb620cb25b3b69d672ed"
         }
       ]
@@ -2818,7 +2818,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/repeat/active.png",
+          "source": "design/icons/png/repeat/active.png",
           "sha256": "bd1cb88d5cf533ba74e548b49ed813810ca8e07ede804f95c80575fa437d3e1b"
         },
         {
@@ -2830,7 +2830,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/repeat/default.png",
+          "source": "design/icons/png/repeat/default.png",
           "sha256": "2e996a818faa78044c21a8ef55e84692f5c947a6d8c7e478a241424fb1fdcb5d"
         }
       ]
@@ -2848,7 +2848,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/replay/default.png",
+          "source": "design/icons/png/replay/default.png",
           "sha256": "964027a6bf77f0ccb672c7c04cbfb3044bed8b663d774c7a9221fd0201290459"
         }
       ]
@@ -2866,7 +2866,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/right-sidebar/default.png",
+          "source": "design/icons/png/right-sidebar/default.png",
           "sha256": "a674d8cee33e95f0b8ed66cb43c801a7693402755ee68e81282db7658e8dd5c4"
         }
       ]
@@ -2884,7 +2884,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/save/default.png",
+          "source": "design/icons/png/save/default.png",
           "sha256": "4ac99152ee2648a7e0dd94921af9607ef6d81eedea891a47ba6f64d67a8d2448"
         }
       ]
@@ -2902,7 +2902,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/scope/default-accent.png",
+          "source": "design/icons/png/scope/default-accent.png",
           "sha256": "ae5acf87c9f04f5c0c7cc66482e1fc8e3a4ed69f7662ea09a8744d02731e459c"
         },
         {
@@ -2914,7 +2914,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/scope/default-grey.png",
+          "source": "design/icons/png/scope/default-grey.png",
           "sha256": "17f9e45907be381274f3d399e7831f52faa02b9873fa33feb43379a58c865b6e"
         },
         {
@@ -2926,7 +2926,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/scope/default.png",
+          "source": "design/icons/png/scope/default.png",
           "sha256": "a52fc18bde9bf334c20977ba65b869f6756f15de974eefc0cd82482d467f61c8"
         }
       ]
@@ -2944,7 +2944,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/search/default.png",
+          "source": "design/icons/png/search/default.png",
           "sha256": "51ccc7ad9e3692ccfabcfb4ee242a93e3335af261206fcecb0a8c2072de2091f"
         },
         {
@@ -2956,7 +2956,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/search/default@2x.png",
+          "source": "design/icons/png/search/default@2x.png",
           "sha256": "fe801e3f8d99618eb7bcf45812af2cc4b77074aad280d094775337bef38001a5"
         },
         {
@@ -2968,7 +2968,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/search/dim.png",
+          "source": "design/icons/png/search/dim.png",
           "sha256": "1a7028500df6d28c3a13903e25b16a34272e3e94437ac55d47671b2c99eb302d"
         },
         {
@@ -2980,7 +2980,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/search/dim@2x.png",
+          "source": "design/icons/png/search/dim@2x.png",
           "sha256": "7710ee9bae2fd901defd2ad1abc5b49994f6c39966d9cbfe603610e5509aada0"
         }
       ]
@@ -2998,7 +2998,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/settings/active.png",
+          "source": "design/icons/png/settings/active.png",
           "sha256": "add840b7c2ffcbb4cb5b9bc146c7967a7a3c3f7ed5720457561534b1b7dab5d4"
         },
         {
@@ -3010,7 +3010,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/settings/default.png",
+          "source": "design/icons/png/settings/default.png",
           "sha256": "43b24dc9c6892150b527ea18e0876db8f4127b724120c1a0ced7866bc7bcf95f"
         },
         {
@@ -3022,7 +3022,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/settings/default@2x.png",
+          "source": "design/icons/png/settings/default@2x.png",
           "sha256": "0b68046e59b96530e52753b12e466f34569cda5032db51ff02b7e167b8b44266"
         }
       ]
@@ -3040,7 +3040,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/shuffle/active.png",
+          "source": "design/icons/png/shuffle/active.png",
           "sha256": "a6d4be402949de6c07211f476bb3df4cc582f268deda1d3b191ee9ecaa4d4bdb"
         },
         {
@@ -3052,7 +3052,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/shuffle/default.png",
+          "source": "design/icons/png/shuffle/default.png",
           "sha256": "5314e2fc54d1bcb742e290fa442e63a2267f2c7e51334aa64c1028e195009f32"
         }
       ]
@@ -3070,7 +3070,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/sidebar/active.png",
+          "source": "design/icons/png/sidebar/active.png",
           "sha256": "d656aba7c7589afca278df17c7b14a2bc7861935b6394619fae21110b0ad8bb1"
         },
         {
@@ -3082,7 +3082,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/sidebar/default.png",
+          "source": "design/icons/png/sidebar/default.png",
           "sha256": "735a4990edd52f5fa712633ac39ab9f1da2dea0c4485d0d26bbc538bd10ccecd"
         }
       ]
@@ -3100,7 +3100,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/snapshot/default.png",
+          "source": "design/icons/png/snapshot/default.png",
           "sha256": "c97235721167c9ec2f80344abad4dc6a429ddc7191d11a7ecb13c4d51768af66"
         }
       ]
@@ -3118,7 +3118,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/songs/active.png",
+          "source": "design/icons/png/songs/active.png",
           "sha256": "70dbd11503970394ea4b1abd0c2c7d75f1cb56bd3bddec53cf342b8c784c3bf5"
         },
         {
@@ -3130,7 +3130,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/songs/default.png",
+          "source": "design/icons/png/songs/default.png",
           "sha256": "b767a0faac6f12e35e5ddc22c74a7af703463f68b86ae02db4efc9775b1370b5"
         },
         {
@@ -3142,7 +3142,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/songs/selected.png",
+          "source": "design/icons/png/songs/selected.png",
           "sha256": "bc79a94307d0be19568743e79c2225d929ef8ba3dfafae43ab23cc86202fadca"
         }
       ]
@@ -3160,7 +3160,7 @@
             26,
             25
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/sort/active-accent.png",
+          "source": "design/icons/png/sort/active-accent.png",
           "sha256": "549594966be5cacd1a46ff114a47e516fb6ef4a2631d9f8d2244eb2c88c2c3aa"
         },
         {
@@ -3172,7 +3172,7 @@
             26,
             25
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/sort/active-grey.png",
+          "source": "design/icons/png/sort/active-grey.png",
           "sha256": "552c7e6c5c987cfc16c2de676dd24220f31a39031767f2c44ad211f8b6d31be7"
         },
         {
@@ -3184,7 +3184,7 @@
             26,
             25
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/sort/active.png",
+          "source": "design/icons/png/sort/active.png",
           "sha256": "ca4f18c2022a72a663830f77ef6564d4270850a198140452667c71e12ac362df"
         },
         {
@@ -3196,7 +3196,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/sort/default.png",
+          "source": "design/icons/png/sort/default.png",
           "sha256": "2d53f41d09294d9a9df6e8d1f88d2939b2ee84c142f1eeaa9d1ace9b57aaca6e"
         },
         {
@@ -3208,7 +3208,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/sort/dim.png",
+          "source": "design/icons/png/sort/dim.png",
           "sha256": "3d0aaa353d62418e72bcf35b20d456aaec210633a3eef8893d38ca7e2f3133aa"
         }
       ]
@@ -3226,7 +3226,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/spectrometer/default-accent.png",
+          "source": "design/icons/png/spectrometer/default-accent.png",
           "sha256": "e26364b68fb3b34f611860c0cb747aacc20bd0d51d183ba023f06edc804ff4fa"
         },
         {
@@ -3238,7 +3238,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/spectrometer/default-grey.png",
+          "source": "design/icons/png/spectrometer/default-grey.png",
           "sha256": "2044627e26636e65c08a35a85c4aef82971c6bb59f68fe45307a3343212e97fd"
         },
         {
@@ -3250,7 +3250,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/spectrometer/default.png",
+          "source": "design/icons/png/spectrometer/default.png",
           "sha256": "a6cdde1e392adec1312d50dea6b9c86e272221e05eb28bb075395a817aebe8fb"
         }
       ]
@@ -3268,7 +3268,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/spectrum/default-accent.png",
+          "source": "design/icons/png/spectrum/default-accent.png",
           "sha256": "9be448286523f9abaed3f341dcd1886e2113e0e1ad7a982c9c30fec15d82d8a9"
         },
         {
@@ -3280,7 +3280,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/spectrum/default-grey.png",
+          "source": "design/icons/png/spectrum/default-grey.png",
           "sha256": "7a631571b9bc1afc9399c136b5204d19d38ad7ff879e5992134b93925885fe37"
         },
         {
@@ -3292,7 +3292,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/spectrum/default.png",
+          "source": "design/icons/png/spectrum/default.png",
           "sha256": "95e281fcfbe2bd6c43754cc524695a68f23dfa80fb92a2c56fb5359ac3a19037"
         },
         {
@@ -3304,7 +3304,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/spectrum/dim.png",
+          "source": "design/icons/png/spectrum/dim.png",
           "sha256": "0cf55d8db4519e35dc75df95828e210fb385a879c39ef5fbf3316d816d0099b6"
         }
       ]
@@ -3322,7 +3322,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/speed/active.png",
+          "source": "design/icons/png/speed/active.png",
           "sha256": "b487201c9b7606f96166de332208e9771495dd3f21f9666b2d5e2b70f516c6f8"
         },
         {
@@ -3334,7 +3334,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/speed/default.png",
+          "source": "design/icons/png/speed/default.png",
           "sha256": "d7f1076282e2ccbbef01bf599fd9da2df4d114876fe6d48cca2eeec65d1f44fb"
         }
       ]
@@ -3352,7 +3352,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/stop/default.png",
+          "source": "design/icons/png/stop/default.png",
           "sha256": "6d70bb12098a2021d0bca319f13f06c3ec3f67299b4d511df5ea1df6f56a6010"
         }
       ]
@@ -3370,7 +3370,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/streaming/active.png",
+          "source": "design/icons/png/streaming/active.png",
           "sha256": "686f5be24d8487c77d6879254ae7b35bee0e84d65b2a858aa667f59c530ee366"
         },
         {
@@ -3382,7 +3382,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/streaming/default.png",
+          "source": "design/icons/png/streaming/default.png",
           "sha256": "2874f2ef15f9e21da5d30d8d8e6138151a57e34eccc469beb4def9e39ade7c83"
         },
         {
@@ -3394,7 +3394,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/streaming/selected.png",
+          "source": "design/icons/png/streaming/selected.png",
           "sha256": "ad3c74e19fba4f6b1d80d217d311fa0ac4bb5693c264a3334763dd1d2fc2ad00"
         }
       ]
@@ -3412,7 +3412,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/subtitle/default.png",
+          "source": "design/icons/png/subtitle/default.png",
           "sha256": "3ee667bd5277854d72dfdbb28224bcf769662d40d1e75e4be1fa2224d132cd5e"
         },
         {
@@ -3424,7 +3424,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/subtitle/dim.png",
+          "source": "design/icons/png/subtitle/dim.png",
           "sha256": "e26120cfc4460a05427394b353e210c13c30cc1d49a369469ebc679cb774fc86"
         }
       ]
@@ -3442,7 +3442,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/subtitles/active.png",
+          "source": "design/icons/png/subtitles/active.png",
           "sha256": "2d0125c329b5ad0d4e20946ff22222af62c7638dcb0a4b1e877a114af0ab0787"
         },
         {
@@ -3454,7 +3454,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/subtitles/default.png",
+          "source": "design/icons/png/subtitles/default.png",
           "sha256": "4aac98845d26f4e54e961ea493a6b7263ada8f131f9164c8d439e72fefb51065"
         },
         {
@@ -3466,7 +3466,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/subtitles/default@2x.png",
+          "source": "design/icons/png/subtitles/default@2x.png",
           "sha256": "9e56b02f044c8838230974055971f88e773a88b533fa066b76bed8cf6953672e"
         }
       ]
@@ -3484,7 +3484,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/swap/default.png",
+          "source": "design/icons/png/swap/default.png",
           "sha256": "46f1c9b655f248c0da2db8d3fde61044e05c064991978cd006f6c6980671cdae"
         }
       ]
@@ -3502,7 +3502,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/thumbnail/default.png",
+          "source": "design/icons/png/thumbnail/default.png",
           "sha256": "182b8a8df961d70912899278ad3023077206a506cbfe7c196807383bce437e72"
         }
       ]
@@ -3520,7 +3520,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/tv/active.png",
+          "source": "design/icons/png/tv/active.png",
           "sha256": "c1df10ee1fa9908a83cbee082782954c3320e76830bb31bfb08ce408e93da2aa"
         },
         {
@@ -3532,7 +3532,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/tv/default.png",
+          "source": "design/icons/png/tv/default.png",
           "sha256": "ad7f8ecf547f7e8b9019b9f4d4b3e8d2bc93c4a91d80d68abc325836ab1e027d"
         },
         {
@@ -3544,7 +3544,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/tv/selected.png",
+          "source": "design/icons/png/tv/selected.png",
           "sha256": "afff2a9a7c8a1f42fd36c0d6cfc45102b3ad0e06985544d28854d62d3fa71993"
         }
       ]
@@ -3562,7 +3562,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/ui/default-accent.png",
+          "source": "design/icons/png/ui/default-accent.png",
           "sha256": "5ec2037d8f26104d736fa959a666fdd9256a425b11aec90f13b4fc9d32baf57b"
         },
         {
@@ -3574,7 +3574,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/ui/default-accent@2x.png",
+          "source": "design/icons/png/ui/default-accent@2x.png",
           "sha256": "e39e4370eaeae87459160b26d7cc1ae9dc5b1d70705ac379cd910dba35c573c1"
         },
         {
@@ -3586,7 +3586,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/ui/default-grey.png",
+          "source": "design/icons/png/ui/default-grey.png",
           "sha256": "0e7e5bac122d56e303d0ca3e6a5c68ad46197228959674f67a8c2dbac97153fc"
         },
         {
@@ -3598,7 +3598,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/ui/default-grey@2x.png",
+          "source": "design/icons/png/ui/default-grey@2x.png",
           "sha256": "f62704a21f0ed1308be881ee5dede1b68a00f9efd6b1d8700d482542bc80c425"
         },
         {
@@ -3610,7 +3610,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/ui/default.png",
+          "source": "design/icons/png/ui/default.png",
           "sha256": "c4c8e0e1325b905d5586c899c4326e23e3177b2184d699aa65c09ec5dff3d729"
         },
         {
@@ -3622,7 +3622,7 @@
             48,
             48
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/ui/default@2x.png",
+          "source": "design/icons/png/ui/default@2x.png",
           "sha256": "7ba7d220f9721b0bd0f874aad6b0962d4ce296a2a0b0929e4401c8afe88f3a8c"
         }
       ]
@@ -3640,7 +3640,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/video/active.png",
+          "source": "design/icons/png/video/active.png",
           "sha256": "a64c8c8b5874bea9b4906b10aedfa916c415499d494f166bf92c537a72e9a072"
         },
         {
@@ -3652,7 +3652,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/video/default.png",
+          "source": "design/icons/png/video/default.png",
           "sha256": "ec48c037247978054f6d3d0b556cd1f6727cc3dee541a3d2808b36cd5dbac3ad"
         },
         {
@@ -3664,7 +3664,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/video/dim.png",
+          "source": "design/icons/png/video/dim.png",
           "sha256": "e53f80f0164fd0aa3f49206c621f139194fecdb0c74bc729f5dabda97b868022"
         }
       ]
@@ -3682,7 +3682,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/videos/active.png",
+          "source": "design/icons/png/videos/active.png",
           "sha256": "67b49d683712f0781db1614ec1e8a62cfa2a7c73faf9a669015b291891012d28"
         },
         {
@@ -3694,7 +3694,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/videos/default.png",
+          "source": "design/icons/png/videos/default.png",
           "sha256": "2be2a18e26f8ab362cced35b54f39e6eb668ac3c4fb1a6d0f413e28355d1495b"
         },
         {
@@ -3706,7 +3706,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/videos/selected.png",
+          "source": "design/icons/png/videos/selected.png",
           "sha256": "19f4ef97d2e20035331176bdb677faed7ac5611f303ffc3219c1a8f8ba00fed2"
         }
       ]
@@ -3724,7 +3724,7 @@
             26,
             25
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/view/active.png",
+          "source": "design/icons/png/view/active.png",
           "sha256": "89a6f9325b58feb740b0f3542770deac7e28643aa87c1d69c2bf62e8a713dba4"
         },
         {
@@ -3736,7 +3736,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/view/default.png",
+          "source": "design/icons/png/view/default.png",
           "sha256": "2bbaea5302320aa35dc397caed70529067fc3b0c857f3e041062b252e8442162"
         }
       ]
@@ -3754,7 +3754,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/vumeter/default-accent.png",
+          "source": "design/icons/png/vumeter/default-accent.png",
           "sha256": "89c8d7f2381e70e64c84479cd3be85443729ad987004ba752d0b0fe637b054b8"
         },
         {
@@ -3766,7 +3766,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/vumeter/default-grey.png",
+          "source": "design/icons/png/vumeter/default-grey.png",
           "sha256": "e86a6f5c23c488c49ab1b5eb928cf1d241a4b8c6da6493192efc58ec5f55354e"
         },
         {
@@ -3778,7 +3778,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/vumeter/default.png",
+          "source": "design/icons/png/vumeter/default.png",
           "sha256": "8583ebe0b1e421908500dae9d6ca5fc0b82b4fd35a5321c9089492ac6553a793"
         }
       ]
@@ -3796,7 +3796,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/waveform/default-accent.png",
+          "source": "design/icons/png/waveform/default-accent.png",
           "sha256": "bd6e0605b644512f11b97f9568ca00f26edff9f4fcf13595d1fca220a3e8c53b"
         },
         {
@@ -3808,7 +3808,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/waveform/default-grey.png",
+          "source": "design/icons/png/waveform/default-grey.png",
           "sha256": "73e6aca83b9095c4343c0c70be5c64119ded488e3fb0b2a8d0744a520e5c55d7"
         },
         {
@@ -3820,7 +3820,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/waveform/default.png",
+          "source": "design/icons/png/waveform/default.png",
           "sha256": "13d4365f888c3b38fa9130b02901be8cb0d6895cacb3bee3b17fe06084f735d8"
         }
       ]
@@ -3838,7 +3838,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/window/default.png",
+          "source": "design/icons/png/window/default.png",
           "sha256": "cf4f3bd0a924ad49791eee0d2bf2474792a82ae0c6e3c9b65cefdb7d6a801d09"
         }
       ]
@@ -3856,7 +3856,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/wrench/default.png",
+          "source": "design/icons/png/wrench/default.png",
           "sha256": "6d4fd0753ab1fc4041d31c64459b2c1e3defe88280e2e909b5789b55b8c327c4"
         }
       ]
@@ -3874,7 +3874,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/icons/zoom/default.png",
+          "source": "design/icons/png/zoom/default.png",
           "sha256": "3e7e36c8b8b5759a61037e4ec55bfd73e7e72f3e88d87e2ae2b110a832ab59fa"
         }
       ]
@@ -9886,7 +9886,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/player/close.png",
+          "source": "design/icons/player/close.png",
           "sha256": "e382450210cb831811e93fc99718c8a91add35eeaeb42049ba3a420824e82f3f"
         }
       ]
@@ -9904,7 +9904,7 @@
             9,
             9
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/player/corner-bl-dark.png",
+          "source": "design/icons/player/corner-bl-dark.png",
           "sha256": "abc388c3f0917fde4ddf8cedf8c48e220244943f48c96637486fd9b57f3e72e0"
         }
       ]
@@ -9922,7 +9922,7 @@
             9,
             9
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/player/corner-bl-light.png",
+          "source": "design/icons/player/corner-bl-light.png",
           "sha256": "7f91901850503bd1870459a4bd406c848c9f684ebbd008de87d4b08a7d386745"
         }
       ]
@@ -9940,7 +9940,7 @@
             9,
             9
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/player/corner-br-dark.png",
+          "source": "design/icons/player/corner-br-dark.png",
           "sha256": "0417c4651ca8c1683b4ecc1901ea1609d07589270810b5c460f43724d168725a"
         }
       ]
@@ -9958,7 +9958,7 @@
             9,
             9
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/player/corner-br-light.png",
+          "source": "design/icons/player/corner-br-light.png",
           "sha256": "83180448bc23a601c189c9f41991202b125212cf1a4d87b84580b04c0cac903b"
         }
       ]
@@ -9976,7 +9976,7 @@
             9,
             9
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/player/corner-tl-dark.png",
+          "source": "design/icons/player/corner-tl-dark.png",
           "sha256": "5fd24adf7e8ac6a708975ab4bdda668b43b65358b98b9003f0c0576f7f52c14b"
         }
       ]
@@ -9994,7 +9994,7 @@
             9,
             9
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/player/corner-tl-light.png",
+          "source": "design/icons/player/corner-tl-light.png",
           "sha256": "3fdb8fc4735d6bb86bf50bf8d7d6cd16915ca06812506c024d179e0779ecc531"
         }
       ]
@@ -10012,7 +10012,7 @@
             9,
             9
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/player/corner-tr-dark.png",
+          "source": "design/icons/player/corner-tr-dark.png",
           "sha256": "8b38b5006291145d54f1723b9b0dc05de25f4e40e1696279a1f36b905a0ae836"
         }
       ]
@@ -10030,7 +10030,7 @@
             9,
             9
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/player/corner-tr-light.png",
+          "source": "design/icons/player/corner-tr-light.png",
           "sha256": "26a5a9524531d35d538ef53b114c04262ca37bc94ce59c4b1e3439ea2b9472e5"
         }
       ]
@@ -10048,7 +10048,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/player/equalizer.png",
+          "source": "design/icons/player/equalizer.png",
           "sha256": "15d5a7b7e8ea9190061ef78c659261cc95af02211cc0706b8873b0d98a469911"
         }
       ]
@@ -10066,7 +10066,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/player/fullscreen.png",
+          "source": "design/icons/player/fullscreen.png",
           "sha256": "84f8ea588c5127a03dc713e89a6e7b8f7f6245f8656e1d4b48a3b1799ac9c709"
         }
       ]
@@ -10084,7 +10084,7 @@
             32,
             32
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/player/library-add.png",
+          "source": "design/icons/player/library-add.png",
           "sha256": "a8068221a5591596d1d7d1264aa7e8e46bd50a5111a69825dce723c966685978"
         }
       ]
@@ -10102,7 +10102,7 @@
             32,
             32
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/player/library-playlist.png",
+          "source": "design/icons/player/library-playlist.png",
           "sha256": "0b3729b7502837a22002915946734d41e4f6ce3f2aa75fabf4ba52aadadf9b9f"
         }
       ]
@@ -10120,7 +10120,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/player/maximize.png",
+          "source": "design/icons/player/maximize.png",
           "sha256": "5c67d98952e15783261b61c65c1c56ffa49856d97bc1589b8a03ee6cb3245d5c"
         }
       ]
@@ -10138,7 +10138,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/player/minimize.png",
+          "source": "design/icons/player/minimize.png",
           "sha256": "e24f88ddf46c8635a8902d31e9d3243b08afa767d2cc3ddebeaa63eabc8bfac5"
         }
       ]
@@ -10156,7 +10156,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/player/next.png",
+          "source": "design/icons/player/next.png",
           "sha256": "0c5f38b51d7cc295c090fce564ac31ad909aeefd05c31f123dbf01940fa5c988"
         }
       ]
@@ -10174,7 +10174,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/player/pause.png",
+          "source": "design/icons/player/pause.png",
           "sha256": "a143779b163901333f3ed45941fac882a3aa75f208abb74b49c8ddc6b8230b54"
         }
       ]
@@ -10192,7 +10192,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/player/previous.png",
+          "source": "design/icons/player/previous.png",
           "sha256": "62cce27ad6ea7c6f2159f540877c4f47ee65796de9b0f98152d37e1700018272"
         }
       ]
@@ -10210,7 +10210,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/player/queue.png",
+          "source": "design/icons/player/queue.png",
           "sha256": "c8f214605d0c81049931a8a56047a59cf6ed32670783bd5d8a9008e521abc910"
         }
       ]
@@ -10228,7 +10228,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/player/settings.png",
+          "source": "design/icons/player/settings.png",
           "sha256": "0551fef7eb0b88d3000cd631bc109bfb05a92f7f6d58558bb575e0fa3ef9099f"
         }
       ]
@@ -10246,7 +10246,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/player/subtitles.png",
+          "source": "design/icons/player/subtitles.png",
           "sha256": "90806ae3e029a5638398f15785ae0821c391f3ffaca070eded31acc41c75572d"
         }
       ]
@@ -10264,7 +10264,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/grid.png",
+          "source": "design/icons/images/grid.png",
           "sha256": "0c69bf5fc0777fea79ed7be3851a16200569cd4546fb6a002043e21ca6d5513d"
         }
       ]
@@ -10282,7 +10282,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/list.png",
+          "source": "design/icons/images/list.png",
           "sha256": "d471e6be22dc7106e028ef5b010e69419af0d2a36afba76aa31727a51c8ae6c0"
         }
       ]
@@ -10300,7 +10300,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/subtitle-file.png",
+          "source": "design/icons/images/subtitle-file.png",
           "sha256": "e385a0fd0d75c3ec2ecbb602e93ac9ce68bf095b68e2c1d1c10d1c3cd5741363"
         }
       ]
@@ -10318,7 +10318,7 @@
             12,
             20
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/theme-bar-knob.png",
+          "source": "design/icons/images/theme-bar-knob.png",
           "sha256": "de9d0a92813d4675fbd486e5645a61ba78be9050cb0b920da5f0ffb8e74e5f63"
         }
       ]
@@ -10336,7 +10336,7 @@
             1056,
             30
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/theme-bar-mask.png",
+          "source": "design/icons/images/theme-bar-mask.png",
           "sha256": "19fba2dbce9c5185840717a0bfa1fcb69cc3d84c021c5c5b5b9143e7a0334bc8"
         }
       ]
@@ -10354,7 +10354,7 @@
             40,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/theme-bar-pill.png",
+          "source": "design/icons/images/theme-bar-pill.png",
           "sha256": "f54170933e261d607875f432cea4615b7eb27267d097b7800fcdc53beba900f5"
         }
       ]
@@ -10372,7 +10372,7 @@
             14,
             14
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/theme-bar-play.png",
+          "source": "design/icons/images/theme-bar-play.png",
           "sha256": "d15de4b7cc2f424e52277b78b18631e0ec429b3b1dce981afee14787419be5cc"
         }
       ]
@@ -10390,7 +10390,7 @@
             1056,
             22
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/theme-strip-buttons.png",
+          "source": "design/icons/images/theme-strip-buttons.png",
           "sha256": "013003c62793658e08def02cd7be8943c74dba7000f2b35ede15c7c7f00ead57"
         }
       ]
@@ -10408,7 +10408,7 @@
             1056,
             22
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/theme-strip-cone.png",
+          "source": "design/icons/images/theme-strip-cone.png",
           "sha256": "8e4dfcbf6edce0b244bbdb94bbcb9839b1d380117648d6be662c199cb6e43ce3"
         }
       ]
@@ -10426,7 +10426,7 @@
             100,
             100
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/theme-system.png",
+          "source": "design/icons/images/theme-system.png",
           "sha256": "d34c66b5d733e4fc040480a386ec99796f90c08b3d01ddd0b1550586ccd7ed61"
         }
       ]
@@ -10444,7 +10444,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/track-audio.png",
+          "source": "design/icons/images/track-audio.png",
           "sha256": "c66aa66eabd83ba25f91682f296d11d023f3f91448f3412cae0b5c34b0374f27"
         }
       ]
@@ -10462,7 +10462,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/track-audio-active.png",
+          "source": "design/icons/images/track-audio-active.png",
           "sha256": "a223d91624850c6eef5f5d3b21d2aaccf4a1750129840271ef1ef4441c7e8c85"
         }
       ]
@@ -10480,7 +10480,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/track-check-active.png",
+          "source": "design/icons/images/track-check-active.png",
           "sha256": "0b6884570a132b52d447fc5a0292bc5010680e4e5dbed66002c3cdef97669461"
         }
       ]
@@ -10498,7 +10498,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/track-subtitles.png",
+          "source": "design/icons/images/track-subtitles.png",
           "sha256": "4aac98845d26f4e54e961ea493a6b7263ada8f131f9164c8d439e72fefb51065"
         }
       ]
@@ -10516,7 +10516,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/track-subtitles-active.png",
+          "source": "design/icons/images/track-subtitles-active.png",
           "sha256": "bb060988b17d63b89a5f9009da51502f893798cfc925cafada58dc31baabb9f4"
         }
       ]
@@ -10534,7 +10534,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/track-video.png",
+          "source": "design/icons/images/track-video.png",
           "sha256": "ec48c037247978054f6d3d0b556cd1f6727cc3dee541a3d2808b36cd5dbac3ad"
         }
       ]
@@ -10552,7 +10552,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/track-video-active.png",
+          "source": "design/icons/images/track-video-active.png",
           "sha256": "ca466e9e995e66bcb088d98fa30ba20fd068a0017a68c7c5b4f359d4f63aa0ea"
         }
       ]
@@ -10570,7 +10570,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/volume-high.png",
+          "source": "design/icons/images/volume-high.png",
           "sha256": "3bc325717765a78887d991d40236c33d8e3e909d43e1bee5292e778d40450556"
         }
       ]
@@ -10588,7 +10588,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/volume-low.png",
+          "source": "design/icons/images/volume-low.png",
           "sha256": "7669baa4e667040605488b9a9905c43acf3adfdec1af1c518a3a7cb728266e41"
         }
       ]
@@ -10606,7 +10606,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/volume-medium.png",
+          "source": "design/icons/images/volume-medium.png",
           "sha256": "54b79ae2aae2da01b796e0a1a1157338b357cdbda175628c6966c20e04353868"
         }
       ]
@@ -10624,7 +10624,7 @@
             24,
             24
           ],
-          "source": "modules/gui/qt/pixmaps/redesign/volume-muted.png",
+          "source": "design/icons/images/volume-muted.png",
           "sha256": "8052aa0b71fd461c28eeae7de93c64b32cc621bc2a88e19e63bbc0705e09405b"
         }
       ]

@@ -36,7 +36,9 @@ class MainCtx;
  */
 namespace RedesignIcons
 {
-/* the SVG next to a ":/redesign/...png" in the resources, empty when none */
+/* the SVG of a ":/redesign/...png" in the resources, empty when none (the
+ * icons were PNG files: their ".png" names stay their ids, the files are the
+ * SVGs; the PNG originals are kept in design/icons) */
 QString svgOf(const QString &pngPath);
 /* the icon drawn at that size (in pixels), tinted when the color is valid
  * (its alpha kept), a null image when the file is missing */

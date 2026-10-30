@@ -27,10 +27,10 @@ Every feature of 0.4.0 in short clips, Windows, Linux, macOS and the Android app
 
 | | |
 |---|---|
-| **Current version** | **0.4.0**, released 2026-10-30 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.4.0), [changelog](https://github.com/KuchiSofts/vlc-redesign/blob/main/CHANGELOG.md)) |
-| **Runs on** | Windows 10 (version 1809 or later) and Windows 11, 64-bit; Linux (x86_64, ARM64; glibc 2.38 or later); macOS 12 or later (Apple Silicon, Intel). Other systems: [Platforms](Platforms) |
+| **Current version** | **0.4.1**, released 2026-10-30 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.4.1), [changelog](https://github.com/KuchiSofts/vlc-redesign/blob/main/CHANGELOG.md)) |
+| **Runs on** | Windows 10 (version 1809 or later) and Windows 11, 64-bit; Windows 11 on ARM64; Linux (x86_64, ARM64; glibc 2.38 or later); macOS 12 or later (Apple Silicon, Intel). Other systems: [Platforms](Platforms) |
 | **Based on** | VLC 4.0 (development branch), with fixes from VideoLAN merged in regularly |
-| **Download** | Windows: an installer (59.4 MB, no administrator rights) or a portable zip (107.8 MB). Linux: a .deb, an .rpm, an AppImage or a folder. macOS: a disk image for Apple Silicon or Intel. All on [Install and update](Install-and-Update) |
+| **Download** | Windows x64: an installer (59.4 MB, no administrator rights) or a portable zip (107.8 MB); the same two for Windows on ARM64. Linux: a .deb, an .rpm, an AppImage or a folder. macOS: a disk image for Apple Silicon or Intel. All on [Install and update](Install-and-Update) |
 | **Updates** | On Windows, in the app, a few megabytes at a time: only the files that changed ([small updates](Install-and-Update#small-updates)). On Linux and macOS, install the new version |
 | **Languages** | English and 72 others, switched live; right-to-left languages laid out right to left ([Languages](Languages)) |
 | **Privacy** | No telemetry, no ads, no account. Two features go online by themselves, and both are asked about first |
@@ -56,7 +56,7 @@ Every feature of 0.4.0 in short clips, Windows, Linux, macOS and the Android app
 | **[Casting to a TV](Casting)** | Chromecast and DLNA TVs; [when a TV does not play](Casting-Troubleshooting); [TV compatibility](TV-Compatibility) |
 | **[Settings](Settings)** | Every option of the Settings window, page by page |
 | **[Troubleshooting and FAQ](Troubleshooting-and-FAQ)** | SmartScreen, where settings live, logs, video problems, reporting a bug |
-| **[Platforms](Platforms)** | Windows, Linux and macOS released; Windows on ARM64 in a later version, the Android app in testing; what is not planned |
+| **[Platforms](Platforms)** | Windows (x64 and ARM64), Linux and macOS released; the Android app in testing; what is not planned |
 | **[Building from source](Building-from-Source)** | The Windows build in Docker, the release script, signing |
 | **[Design check](Design-Check)** | How the app is compared with the 103 frames of the Figma design, and the results |
 | **[Credits and license](Credits-and-License)** | Who made what, and the licenses |

@@ -13,12 +13,20 @@ Status: ✅ done · 🔨 in progress · 📋 to do · 💡 idea
 The full plan, with every Figma frame, its status and the design tokens, is the
 [master plan](docs/MASTER-PLAN.md).
 
-## Next release: 0.4.1 (fixes), then 0.5.0
+## Next release: 0.5.0
 
-0.4.1, started 2026-10-30 right after 0.4.0, is a release of fixes. Found: the ARM64 crash is the longjmp table of
-Control Flow Guard, which llvm-mingw never fills (fix in test on the ARM64 runner). Also: Windows on ARM64 (the crash at start on a real ARM64 PC, the
-one installer binary that is not ARM64), the Android fixes found while recording the demos (a guide from a server
-that answers in HTTP/1.0, the day of the guide after *Now*), the Flatpak.
+0.5.0 gathers the new features made after 0.4.0. Still open from the 0.4.1 list: the Android fixes found while
+recording the demos (a guide from a server that answers in HTTP/1.0), the Flatpak, and a run of Windows on ARM64 by
+hand on a real ARM64 PC. From 0.5.0 on, Windows on ARM64 gets small updates in the app too.
+
+## 0.4.1 (published 2026-10-30)
+
+**0.4.1, a release of fixes the same day as 0.4.0, brings Windows on ARM64**: a native ARM64 installer and portable
+zip for Windows 11 on ARM64 (Snapdragon PCs). The crash at start was the `longjmp` table of Control Flow Guard,
+which llvm-mingw never fills; the ARM64 build is linked without it now. Tested on GitHub's real ARM64 Windows runner:
+every binary ARM64, a clip played to its end, a clean quit, and the installer installs, starts, plays and
+uninstalls. Windows x64, Linux and macOS have the same packages, numbered 0.4.1. See the
+[changelog](CHANGELOG.md#041--2026-10-30).
 
 ## 0.4.0 (published 2026-10-30)
 
@@ -81,8 +89,9 @@ the website and the *Also on* line of the release notes and of About are made fr
 - ✅ macOS (Apple Silicon and Intel), released with 0.4.0: a disk image for each, built and tested by GitHub's Macs,
   signed ad hoc (macOS asks once to open it)
 - 🔨 macOS: signing by Apple (it needs a developer account), an updater in the app, tests on a Mac by hand
-- 🔨 Windows on ARM64: built, not released with 0.4.0 (the crash in the Qt interface and the one binary that was
-  not ARM64, above); it comes in a later version. Until then the x64 build runs on Windows 11 ARM64 under emulation
+- ✅ Windows on ARM64, released with 0.4.1: a native installer and portable zip for Windows 11 on ARM64, tested on
+  GitHub's ARM64 Windows runner
+- 🔨 Windows on ARM64: a run by hand on a real ARM64 PC (Snapdragon); small updates in the app from 0.5.0 on
 - 🔨 The design for every platform: its colours, sizes, fonts and icons in [`design/`](design/README.md)
   (`design-1.0`), with CSS, Android and Swift files made from them and a check on every pull request that the
   Windows app still uses the same values

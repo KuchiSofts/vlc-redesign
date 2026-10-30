@@ -12,6 +12,11 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-10-30):
 
+- 🟢 **0.4.1 released with Windows on ARM64** (2026-10-30): a native ARM64 installer and zip for Windows 11 on
+  ARM64 (`vlc-redesign-0.4.1-winarm64-setup.exe`, `vlc-redesign-0.4.1-winarm64.zip`), tested on GitHub's ARM64
+  runner (every binary ARM64, the plugin cache, the window, a clip to its end, a clean quit; the installer installs,
+  starts, plays and uninstalls); not yet run by hand on an ARM64 PC, no small update to it this time. Windows x64
+  (small updates from 0.4.0, 0.3.1 and 0.3.0), Linux and macOS numbered 0.4.1. **Next: 0.5.0** (the new features).
 - 🟢 **Android Live TV guide: the day under the buttons** (2026-10-30): on a phone the grid shows half of the hours and
   the day was taken half the full window ahead (after *Now* at 22:40: *Tomorrow*); now the middle of what shows.
   Checked on the emulator at 22:40: Today, Later Today, Later Tomorrow, Now Today.
@@ -20,11 +25,11 @@ What is being worked on, updated as it changes (2026-10-30):
   The server sends it all (raw clients on the emulator get every byte, fast or slow; a lingering close changes
   nothing); HTTP/1.1 works. A retry on a fresh connection did not help and was dropped. Next: the exact exception
   (the client of Android) and a test against a real HTTP/1.0 server.
-- 🟡 **Windows on ARM64: cause found** (2026-10-30): fail-fast 0x26 = FAST_FAIL_INVALID_LONGJUMP_TARGET in Qt's
+- 🟢 **Windows on ARM64: cause found and fixed, released in 0.4.1** (2026-10-30): fail-fast 0x26 = FAST_FAIL_INVALID_LONGJUMP_TARGET in Qt's
   rasterizer (QRasterPaintEnginePrivate::rasterize → qgrayraster longjmp, named with a release build and its PDB);
   -mguard=cf makes lld write a longjmp target table llvm-mingw never fills. Linked with --no-guard-longjmp; the
-  installer test skips Inno's x86 uninstaller. Waits for the ARM64 runner.
-- 🟡 **0.4.1 started** (2026-10-30, fixes; the new features stay for 0.5.0): the version is 0.4.1; first Windows on ARM64 (crash at start on a real ARM64
+  installer test skips Inno's x86 uninstaller. Passed on the ARM64 runner.
+- 🟢 **0.4.1 started and released** (2026-10-30, fixes; the new features stay for 0.5.0): the version is 0.4.1; first Windows on ARM64 (crash at start on a real ARM64
   runner, fail-fast in the Qt plugin after the media library starts; one installer binary not ARM64), then the
   Android fixes of the demo recording and the Flatpak.
 - 🟢 **0.4.0 ships on three platforms** (2026-10-30): Windows x64 (setup 59.4 MB, zip 107.8 MB, small updates),

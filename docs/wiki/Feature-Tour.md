@@ -12,10 +12,11 @@ to the page that explains the feature in full.
 
 | Platform | In this tour | Status |
 |---|---|---|
-| **[Windows](#windows)** | 17 clips: every main feature of 0.4.0 | Released, 0.4.0 (2026-10-30) |
-| **[Linux](#linux)** | The AppImage on Arch Linux | Released, 0.4.0 (2026-10-30) |
-| **[macOS](#macos)** | A screenshot of the app | Released, 0.4.0 (2026-10-30) |
-| **[Android](#android-in-testing-not-part-of-040)** | 8 phone clips and 1 tablet clip | In testing, **not part of 0.4.0** |
+| **[Windows](#windows)** | 17 clips: every main feature of 0.4.0 | Released, 0.4.1 (2026-10-30) |
+| **[Linux](#linux)** | The AppImage on Arch Linux | Released, 0.4.1 (2026-10-30) |
+| **[macOS](#macos)** | A screenshot of the app | Released, 0.4.1 (2026-10-30) |
+| **[Windows on ARM64](Platforms#windows-on-arm64)** | No clips: the same app as Windows | Released, 0.4.1 (2026-10-30), new in 0.4.1 |
+| **[Android](#android-in-testing-not-part-of-040)** | 8 phone clips and 1 tablet clip | In testing, **not part of 0.4.1** |
 
 Where each platform stands, with its requirements and files: [Platforms](Platforms).
 
@@ -203,7 +204,7 @@ In depth: [Languages](Languages) · [Right to left](Languages#right-to-left)
 
 ## Linux
 
-**Released, 0.4.0.** A .deb, an .rpm, an AppImage and a tar.xz for x86_64 and ARM64, next to the distribution's own
+**Released, 0.4.1.** A .deb, an .rpm, an AppImage and a tar.xz for x86_64 and ARM64, next to the distribution's own
 VLC; a Flatpak comes next. How to install: [Install and update: Linux](Install-and-Update#linux). Requirements and
 what is tested: [Platforms: Linux](Platforms#linux).
 
@@ -216,7 +217,7 @@ In depth: [Platforms: Linux](Platforms#linux)
 
 ## macOS
 
-**Released, 0.4.0.** A disk image for Apple Silicon and one for Intel, built and tested by GitHub's Macs, signed ad
+**Released, 0.4.1.** A disk image for Apple Silicon and one for Intel, built and tested by GitHub's Macs, signed ad
 hoc (macOS asks once to open it). How to install: [Install and update: macOS](Install-and-Update#macos).
 Requirements and what is tested: [Platforms: macOS](Platforms#macos).
 

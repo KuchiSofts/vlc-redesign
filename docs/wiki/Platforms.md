@@ -1,8 +1,8 @@
 # Platforms
 
-VLC Redesign **0.4.0** is released for three platforms together: **Windows 10 (version 1809 or later) and Windows 11,
-64-bit** (x64), **Linux** (x86_64 and ARM64) and **macOS** (Apple Silicon and Intel). Windows on ARM64 is built but
-comes in a later version, and the Android app is in testing as a separate app. This page gives, for each platform, its status, its version, what it needs, its files, what is tested and what is
+VLC Redesign **0.4.1** is released for four platforms together: **Windows 10 (version 1809 or later) and Windows 11,
+64-bit** (x64), **Windows 11 on ARM64** (new in 0.4.1), **Linux** (x86_64 and ARM64) and **macOS** (Apple Silicon
+and Intel). The Android app is in testing as a separate app. This page gives, for each platform, its status, its version, what it needs, its files, what is tested and what is
 missing.
 
 The status of each platform is kept in one file,
@@ -16,17 +16,17 @@ The study behind the order, with the evidence from VideoLAN's build system:
 
 | Platform | Status | Latest version | Next | Needs |
 |---|---|---|---|---|
-| **[Windows](#windows)** | **Released** | **0.4.0** (2026-10-30) | 0.5.0 | Windows 10 (1809) or 11, 64-bit |
-| **[Linux](#linux)** | **Released** | **0.4.0** (2026-10-30) | 0.5.0 | glibc 2.38 (Ubuntu 24.04, Debian 13, Fedora 39 or later), x86_64 or ARM64 |
-| **[macOS](#macos)** | **Released** | **0.4.0** (2026-10-30) | 0.5.0 | macOS 12 Monterey, Apple Silicon or Intel |
-| [Windows on ARM64](#windows-on-arm64) | Planned (built, not released) | none yet | a later version | Windows 11 on ARM64 |
+| **[Windows](#windows)** | **Released** | **0.4.1** (2026-10-30) | 0.5.0 | Windows 10 (1809) or 11, 64-bit |
+| **[Linux](#linux)** | **Released** | **0.4.1** (2026-10-30) | 0.5.0 | glibc 2.38 (Ubuntu 24.04, Debian 13, Fedora 39 or later), x86_64 or ARM64 |
+| **[macOS](#macos)** | **Released** | **0.4.1** (2026-10-30) | 0.5.0 | macOS 12 Monterey, Apple Silicon or Intel |
+| **[Windows on ARM64](#windows-on-arm64)** | **Released** | **0.4.1** (2026-10-30) | 0.5.0 | Windows 11 on ARM64 |
 | [Android (phones, tablets, TV)](#android) | Research (an app in testing) | none yet | | Android 8.0 or later |
 | [Samsung Smart TV (Tizen)](#samsung-smart-tv-tizen) | Research | none yet | | Tizen 3.0 (2017 models) or later |
 | [iPhone, iPad, Apple TV](#iphone-ipad-apple-tv) | Later | none yet | | iOS, iPadOS, tvOS |
 | Windows 32-bit, Windows 7, 8, XP | Not planned | | | See [below](#what-is-not-planned) |
 
 Linux, macOS and Windows on ARM64 are the same desktop program as Windows, from the same code, with one version
-number: 0.4.0 is the first version for Linux and macOS. Android, the TV receiver and the Apple apps are separate apps, each with its own repository and its own
+number: 0.4.0 is the first version for Linux and macOS, 0.4.1 the first for Windows on ARM64. Android, the TV receiver and the Apple apps are separate apps, each with its own repository and its own
 version from its first published build.
 
 ## Windows
@@ -34,9 +34,9 @@ version from its first published build.
 | | |
 |---|---|
 | **Status** | Released |
-| **Version** | 0.4.0, 2026-10-30 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.4.0)). Next: 0.5.0 |
+| **Version** | 0.4.1, 2026-10-30 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.4.1)). Next: 0.5.0 |
 | **Needs** | Windows 10 (version 1809, build 17763, or later) or Windows 11, 64-bit. No graphics card needed |
-| **Files** | `vlc-redesign-0.4.0-win64-setup.exe` (installer) and `vlc-redesign-0.4.0-win64.zip` (portable), with small updates in the app: [Install and update](Install-and-Update) |
+| **Files** | `vlc-redesign-0.4.1-win64-setup.exe` (installer) and `vlc-redesign-0.4.1-win64.zip` (portable), with small updates in the app: [Install and update](Install-and-Update) |
 
 - **64-bit only**, Windows 10 from version 1809: the interface is built on Qt 6.8, which needs it. The installer
   refuses an older Windows, and `vlc.exe` on one says *This version of VLC media player needs Windows 10 version
@@ -50,8 +50,8 @@ version from its first published build.
 - **Still to do:** tests on Intel graphics, on Windows 10 on real PCs and on screens of different scales;
   code-signed releases (waiting for SignPath's approval), so that SmartScreen no longer warns.
 - **Small updates in the app and the signed `SHA256SUMS.txt` are for Windows only.**
-- **On Windows 11 ARM64**, the x64 installer runs and installs (it accepts any x64-compatible Windows); Windows
-  emulates it, which is slower. The native build comes in a later version: [below](#windows-on-arm64).
+- **On Windows 11 ARM64**, take the native ARM64 build: [below](#windows-on-arm64). The x64 installer runs there
+  too (it accepts any x64-compatible Windows), but Windows emulates it, which is slower.
 
 The tour of every Windows feature in clips: [Feature tour: Windows](Feature-Tour#windows).
 
@@ -60,9 +60,9 @@ The tour of every Windows feature in clips: [Feature tour: Windows](Feature-Tour
 | | |
 |---|---|
 | **Status** | Released |
-| **Version** | 0.4.0, 2026-10-30 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.4.0)), the first for Linux. Next: 0.5.0 |
+| **Version** | 0.4.1, 2026-10-30 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.4.1)); 0.4.0 was the first for Linux. Next: 0.5.0 |
 | **Needs** | glibc 2.38 or later (Ubuntu 24.04, Debian 13, Fedora 39 or later), x86_64 or ARM64 |
-| **Files** | x86_64: `vlc-redesign_0.4.0_amd64.deb` (155 MB), `vlc-redesign-0.4.0-1.x86_64.rpm` (156 MB), `vlc-redesign-0.4.0-x86_64.AppImage` (166 MB, with its `.zsync`), `vlc-redesign-0.4.0-linux-x86_64.tar.xz` (126 MB), the Live TV add-on `vlc-redesign-livetv_0.4.0_amd64.deb` and `vlc-redesign-livetv-0.4.0-1.x86_64.rpm`, `SHA256SUMS-linux-x86_64.txt`. ARM64, about the same size: `vlc-redesign_0.4.0_arm64.deb`, `vlc-redesign-0.4.0-1.aarch64.rpm`, `vlc-redesign-0.4.0-aarch64.AppImage`, `vlc-redesign-0.4.0-linux-aarch64.tar.xz`, `SHA256SUMS-linux-aarch64.txt`. Which one and how: [Install and update: Linux](Install-and-Update#linux) |
+| **Files** | x86_64: `vlc-redesign_0.4.1_amd64.deb` (155 MB), `vlc-redesign-0.4.1-1.x86_64.rpm` (156 MB), `vlc-redesign-0.4.1-x86_64.AppImage` (166 MB, with its `.zsync`), `vlc-redesign-0.4.1-linux-x86_64.tar.xz` (126 MB), the Live TV add-on `vlc-redesign-livetv_0.4.1_amd64.deb` and `vlc-redesign-livetv-0.4.1-1.x86_64.rpm`, `SHA256SUMS-linux-x86_64.txt`. ARM64, about the same size: `vlc-redesign_0.4.1_arm64.deb`, `vlc-redesign-0.4.1-1.aarch64.rpm`, `vlc-redesign-0.4.1-aarch64.AppImage`, `vlc-redesign-0.4.1-linux-aarch64.tar.xz`, `SHA256SUMS-linux-aarch64.txt`. Which one and how: [Install and update: Linux](Install-and-Update#linux) |
 
 <a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/linux.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/linux.gif" alt="The Linux AppImage on Arch Linux: About with Linux x86_64 AppImage, Settings in the dark theme, Home in the light theme" width="960"></a>
 
@@ -101,9 +101,9 @@ Home in the light theme. Click for the MP4.</sub>
 | | |
 |---|---|
 | **Status** | Released |
-| **Version** | 0.4.0, 2026-10-30 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.4.0)), the first for macOS. Next: 0.5.0 |
+| **Version** | 0.4.1, 2026-10-30 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.4.1)); 0.4.0 was the first for macOS. Next: 0.5.0 |
 | **Needs** | macOS 12 Monterey or later, Apple Silicon or Intel |
-| **Files** | `vlc-redesign-0.4.0-macos-arm64.dmg` (Apple Silicon) and `vlc-redesign-0.4.0-macos-x86_64.dmg` (Intel). How to open it the first time: [Install and update: macOS](Install-and-Update#macos) |
+| **Files** | `vlc-redesign-0.4.1-macos-arm64.dmg` (Apple Silicon) and `vlc-redesign-0.4.1-macos-x86_64.dmg` (Intel). How to open it the first time: [Install and update: macOS](Install-and-Update#macos) |
 
 <a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/macos.png"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/macos.png" alt="The macOS app on an Intel Mac, Home" width="960"></a>
 
@@ -131,24 +131,29 @@ Home in the light theme. Click for the MP4.</sub>
 
 | | |
 |---|---|
-| **Status** | Planned: built, not released with 0.4.0; it comes in a later version |
-| **Needs** | Windows 11 on ARM64 |
-| **Files, once published** | `vlc-redesign-X.Y.Z-winarm64-setup.exe`, `vlc-redesign-X.Y.Z-winarm64.zip` and its own small updates (`-winarm64-delta-from-…`) |
+| **Status** | Released |
+| **Version** | 0.4.1, 2026-10-30 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.4.1)), the first for Windows on ARM64. Next: 0.5.0 |
+| **Needs** | Windows 11 on ARM64 (Snapdragon PCs) |
+| **Files** | `vlc-redesign-0.4.1-winarm64-setup.exe` (installer) and `vlc-redesign-0.4.1-winarm64.zip` (portable): [Install and update: Windows on ARM64](Install-and-Update#windows-on-arm64) |
 
-- **Today:** the x64 build runs on Windows 11 ARM64 under emulation (see [Windows](#windows)).
-- **Built:** the redesign builds for ARM64 with VideoLAN's ARM64 toolchain and libraries, unchanged. Video goes
-  through Direct3D 11 (VideoLAN's ARM64 libraries have no OpenGL). The installer, the zip and the small updates are
-  made for ARM64 too, and an ARM64 copy takes only the updates of its own architecture.
-- **Tested for 0.4.0, not released:** on a real ARM64 Windows runner of GitHub it opened its window and stopped a
-  few seconds later (a crash in the Qt interface after the media library started), and one of the installer's 400
-  binaries was not ARM64. Both are to be fixed before a release.
-- **Missing:** those two fixes, then a run on a real ARM64 PC (Snapdragon), with its graphics driver.
+- **Native:** the redesign builds for ARM64 with VideoLAN's ARM64 toolchain and libraries, unchanged; it is not the
+  x64 build under emulation. Video goes through Direct3D 11 (VideoLAN's ARM64 libraries have no OpenGL).
+- **Updates:** 0.4.1 is the first ARM64 release, so it has no small update from an earlier version. The next
+  versions offer small updates made for ARM64, and an ARM64 copy takes only the updates of its own architecture.
+- **Fixed for 0.4.1:** the ARM64 build stopped a few seconds after it started (the table of `longjmp` targets of
+  Control Flow Guard, see the [changelog](https://github.com/KuchiSofts/vlc-redesign/blob/main/CHANGELOG.md)), and
+  the install test counted Inno Setup's uninstaller, which is always x86, as a binary of the package.
+- **Tested:** on GitHub's real ARM64 Windows runner: every binary of the package is ARM64, the plugin cache builds,
+  the window opens, a clip plays to its end and VLC quits cleanly; the installer installs, starts, plays and
+  uninstalls.
+- **Missing:** a run by hand on a real ARM64 PC (Snapdragon), with its graphics driver; code-signed releases
+  (waiting for SignPath's approval), so that SmartScreen no longer warns.
 
 ## Android
 
 | | |
 |---|---|
-| **Status** | Research. The app exists and is **in testing; it is not part of 0.4.0** and has no download yet |
+| **Status** | Research. The app exists and is **in testing; it is not part of 0.4.1** and has no download yet |
 | **Needs** | Android 8.0 or later |
 | **What it is** | A separate app: a fork of VLC for Android with its screens redrawn in the design, in its own repository |
 

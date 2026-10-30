@@ -21,6 +21,10 @@ What is being worked on, updated as it changes (2026-10-30):
   runner (every binary ARM64, the plugin cache, the window, a clip to its end, a clean quit; the installer installs,
   starts, plays and uninstalls); not yet run by hand on an ARM64 PC, no small update to it this time. Windows x64
   (small updates from 0.4.0, 0.3.1 and 0.3.0), Linux and macOS numbered 0.4.1. **Next: 0.5.0** (the new features).
+- 🟢 **Android: own package name, no VideoLAN nightlies, 61 languages complete** (2026-10-30): the app id is
+  `org.kuchisofts.vlcredesign` (was VideoLAN's `org.videolan.vlc`: no install beside VLC, no publishing); the
+  nightly updater of VideoLAN (a first-start question, two settings) is off; 1,263 texts of the last rounds
+  translated in 61 languages (built, Hebrew checked on the emulator). Left: 14 barely translated languages.
 - 🟢 **Android Live TV guide: the day under the buttons** (2026-10-30): on a phone the grid shows half of the hours and
   the day was taken half the full window ahead (after *Now* at 22:40: *Tomorrow*); now the middle of what shows.
   Checked on the emulator at 22:40: Today, Later Today, Later Tomorrow, Now Today.

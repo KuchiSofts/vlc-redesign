@@ -3,6 +3,7 @@
 **Get started**
 - [Home](Home)
 - [Feature tour](Feature-Tour)
+- [Roadmap](Roadmap)
 - [Install and update](Install-and-Update)
 - [Small updates](Install-and-Update#small-updates)
 - [Languages](Languages)

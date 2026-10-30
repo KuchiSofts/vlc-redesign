@@ -315,6 +315,8 @@ Android 💡 research (the app is in testing) · Samsung TV receiver 💡 resear
 - **Android** (phones, tablets, TV): a separate app, a fork of VLC for Android with the design, in testing; it is
   not part of 0.4.1 and has no download yet.
 
+What comes next (the Android app, then 0.5.0) and the progress of each program: the
+[Roadmap](https://github.com/KuchiSofts/vlc-redesign/wiki/Roadmap).
 Each platform in detail, with what is tested and what is missing, is on the
 [Platforms](https://github.com/KuchiSofts/vlc-redesign/wiki/Platforms) page of the wiki; the study behind the order is
 the [platform study](docs/PLATFORMS.md), and the status lives in [`platforms.yml`](platforms.yml). Windows 7, 8, XP and

@@ -12,6 +12,10 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-10-30):
 
+- 🟡 **0.5.0 and the Android app** (2026-10-30): the version is 0.5.0; first the Android app to its first release
+  (the HTTP/1.0 guide, a leak of three screens, parity of the light theme, borders and icons, 9 languages). The
+  roadmap shows the progress of each program, and the wiki has the same on its *Roadmap* page (the upload check
+  keeps them alike).
 - 🟢 **0.4.1 released with Windows on ARM64** (2026-10-30): a native ARM64 installer and zip for Windows 11 on
   ARM64 (`vlc-redesign-0.4.1-winarm64-setup.exe`, `vlc-redesign-0.4.1-winarm64.zip`), tested on GitHub's ARM64
   runner (every binary ARM64, the plugin cache, the window, a clip to its end, a clean quit; the installer installs,

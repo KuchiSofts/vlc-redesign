@@ -21,10 +21,10 @@ Updated as the work moves (last: 2026-10-30).
 |---|---|---|---|
 | **Windows x64** | ✅ released 0.4.1 | ██████████ 100 % | — (tests go on with every change) |
 | **Windows on ARM64** | ✅ released 0.4.1 | ██████████ 100 % | a run by hand on a real ARM64 PC; small updates in the app from 0.5.0 |
-| **Linux** (x86_64, ARM64) | ✅ released 0.4.1 | ██████████ 100 % | the Flatpak (built and tested in CI, next release); an updater in the app |
-| **macOS** (Apple Silicon, Intel) | ✅ released 0.4.1 | ██████████ 100 % | tests on a Mac by hand |
+| **Linux** (x86_64, ARM64) | ✅ released 0.4.1 | ██████████ 100 % | the Flatpak (built and tested in CI, in 0.5.0); choosing the sound output device; an updater in the app |
+| **macOS** (Apple Silicon, Intel) | ✅ released 0.4.1 | ██████████ 100 % | tests on a Mac by hand; choosing the sound output device |
 | **Android** (phones) | 🔨 in testing | █████████░ 98 % | the last fixes (below), then a test on real phones and a first release |
-| **Android** (tablets) | 🔨 in testing | █████████░ 90 % | the same, then a test on a real tablet |
+| **Android** (tablets) | 🔨 in testing | █████████░ 93 % | the automatic tour of the tablets (29 of 42 cases done, no crash), then a test on a real tablet |
 | **Samsung TV receiver** | 💡 researched | ░░░░░░░░░░ 0 % | after the Android release |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
@@ -48,10 +48,15 @@ light, English, Hebrew and German) found no crash. Left before its first release
 - ✅ Its own package name, `org.kuchisofts.vlcredesign`: it installs beside VLC and can be published
 - ✅ No more offers of VideoLAN's nightly builds (they are VideoLAN's app, not this one)
 - 🔨 14 languages of VLC for Android that are barely translated yet (Faroese, Lao, Swahili and others)
-- 📋 A test on real phones and a tablet, then the first release (its own version numbers)
+- 📋 A test on real phones and a tablet, then the first release: an APK on GitHub Releases (not on Google Play)
+- 📋 The designer's ideas the desktop has and the app does not yet: the subtitle sync timeline, subtitle settings
+  kept per series, the waveform seek bar for music, frame previews on the seek bar, saved Customize Player profiles,
+  folders and playlists pinned to the sidebar
 
 **0.5.0** (desktop) gathers the new features made after 0.4.x: Windows on ARM64 gets the small updates in the app,
-the Linux Flatpak, and what the issues and the Android work bring back to the desktop.
+the Linux Flatpak, and what the issues and the Android work bring back to the desktop. From Juxtopposed's video, still
+to come on the desktop: pinning a folder or a playlist to the sidebar, online subtitles for a whole folder or
+playlist, choosing the sound output device on Linux and macOS, and the on-screen message naming the shortcut used.
 
 ## 0.4.1 (published 2026-10-30)
 

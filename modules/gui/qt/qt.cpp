@@ -1047,7 +1047,10 @@ static void *Thread( void *obj )
             const QByteArray pipelines = QFile::encodeName( QDir::toNativeSeparators( dir + QStringLiteral( "/pipelines.bin" ) ) );
             qputenv( "QML_DISK_CACHE_PATH", QFile::encodeName( QDir::toNativeSeparators( dir + QStringLiteral( "/qml" ) ) ) );
             qputenv( "QSG_RHI_PIPELINE_CACHE_SAVE", pipelines );
-            qputenv( "QSG_RHI_PIPELINE_CACHE_LOAD", pipelines );
+            // loaded once saved: Qt warns of a file that is not there yet
+            // (the first start)
+            if( QFile::exists( dir + QStringLiteral( "/pipelines.bin" ) ) )
+                qputenv( "QSG_RHI_PIPELINE_CACHE_LOAD", pipelines );
         }
     }
 

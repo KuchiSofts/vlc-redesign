@@ -26,7 +26,7 @@ platforms:
     status: released
     version: 0.4.0
     date: 2026-10-30
-    next: 0.5.0
+    next: 0.4.1
     os: windows
     requires: Windows 10 (1809) or 11, 64-bit
     repository: KuchiSofts/vlc-redesign
@@ -44,7 +44,7 @@ platforms:
     status: released
     version: 0.4.0
     date: 2026-10-30
-    next: 0.5.0
+    next: 0.4.1
     os: linux
     requires: glibc 2.38 (Ubuntu 24.04, Debian 13, Fedora 39 or later), x86_64 or ARM64
     repository: KuchiSofts/vlc-redesign
@@ -72,7 +72,7 @@ platforms:
     status: released
     version: 0.4.0
     date: 2026-10-30
-    next: 0.5.0
+    next: 0.4.1
     os: macos
     requires: macOS 12 Monterey, Apple Silicon or Intel
     repository: KuchiSofts/vlc-redesign

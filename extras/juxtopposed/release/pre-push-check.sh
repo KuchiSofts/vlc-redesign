@@ -15,7 +15,11 @@ echo "$input" | while read -r local_ref local_sha remote_ref remote_sha; do
     [ -z "$local_sha" ] && continue
     [ "$local_sha" = "$zero" ] && continue
     case "$remote_ref" in
-        refs/tags/v*) python "$here/release-check.py" --release "${remote_ref#refs/tags/v}" || exit 1 ;;
+        # a release tag: its upload is everything since the release before
+        # it (main may be pushed already, alone)
+        refs/tags/v*)
+            prev=$(git describe --tags --abbrev=0 --match 'v[0-9]*' "$local_sha^{commit}^" 2>/dev/null)
+            python "$here/release-check.py" --release "${remote_ref#refs/tags/v}" ${prev:+--base "$prev"} || exit 1 ;;
         refs/heads/*) python "$here/release-check.py" || exit 1 ;;
     esac
 done || {

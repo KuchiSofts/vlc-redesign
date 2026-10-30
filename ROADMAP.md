@@ -19,10 +19,10 @@ Updated as the work moves (last: 2026-10-30).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
-| **Windows x64** | ✅ released 0.4.1 | ██████████ 100 % | code signing (waiting for SignPath's approval) |
+| **Windows x64** | ✅ released 0.4.1 | ██████████ 100 % | — (tests go on with every change) |
 | **Windows on ARM64** | ✅ released 0.4.1 | ██████████ 100 % | a run by hand on a real ARM64 PC; small updates in the app from 0.5.0 |
-| **Linux** (x86_64, ARM64) | ✅ released 0.4.1 | ██████████ 100 % | the Flatpak; an updater in the app; tests on real desktops |
-| **macOS** (Apple Silicon, Intel) | ✅ released 0.4.1 | █████████░ 92 % | signing by Apple (a developer account); tests on a Mac by hand |
+| **Linux** (x86_64, ARM64) | ✅ released 0.4.1 | ██████████ 100 % | the Flatpak (built and tested in CI, next release); an updater in the app |
+| **macOS** (Apple Silicon, Intel) | ✅ released 0.4.1 | ██████████ 100 % | tests on a Mac by hand |
 | **Android** (phones) | 🔨 in testing | █████████░ 98 % | the last fixes (below), then a test on real phones and a first release |
 | **Android** (tablets) | 🔨 in testing | █████████░ 90 % | the same, then a test on a real tablet |
 | **Samsung TV receiver** | 💡 researched | ░░░░░░░░░░ 0 % | after the Android release |

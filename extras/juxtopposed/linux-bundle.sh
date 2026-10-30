@@ -69,6 +69,20 @@ if [ -n "$have" ] && [ "$(printf '%s\n%s\n' "$need" "$have" | sort -V | head -n 
     fi
     exit 1
 fi
+# the interface draws with the system's graphics libraries (they come with
+# its display driver): without them it fell back to the terminal and said
+# "Error opening terminal" (a server without a desktop)
+gui=1
+for a in "$@"; do case $a in -I|--intf|--intf=*|-Idummy|-Irc|-Icli) gui= ;; esac; done
+if [ -n "$gui" ] && [ -n "${DISPLAY:-}${WAYLAND_DISPLAY:-}" ] && command -v ldconfig > /dev/null \
+   && ! ldconfig -p 2> /dev/null | grep -q 'libEGL\.so\.1 '; then
+    msg="VLC Redesign needs the graphics libraries of this system (libEGL): install libegl1 (Ubuntu, Debian) or mesa-libEGL (Fedora)."
+    echo "$msg" >&2
+    if command -v zenity > /dev/null; then zenity --error --title="VLC Redesign" --text="$msg" 2> /dev/null
+    elif command -v kdialog > /dev/null; then kdialog --title "VLC Redesign" --error "$msg" 2> /dev/null
+    fi
+    exit 1
+fi
 export LD_LIBRARY_PATH="$here/lib:$here/lib/vlc:$here/qt/lib:$here/syslib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 export VLC_PLUGIN_PATH="$here/lib/vlc/plugins"
 export VLC_DATA_PATH="$here/share/vlc"

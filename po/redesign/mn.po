@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-29 20:21+0000\n"
+"POT-Creation-Date: 2026-10-30 23:06+0000\n"
 "PO-Revision-Date: 2017-09-23 19:54+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Mongolian (Mongolia) (http://www.transifex.com/yaron/vlc-"
@@ -30,7 +30,7 @@ msgid "Play Queue"
 msgstr "Тоглуулах дараалал"
 
 #: include/vlc_config_cat.h:59
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1034
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1036
 msgid "Media Library Settings"
 msgstr "Медиа сангийн тохиргоо"
 
@@ -275,7 +275,7 @@ msgstr "Хулганы товшилтоор завсарлахыг хэрхэн 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1224
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:23
-#: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:144
+#: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:145
 msgid "Disabled"
 msgstr "Идэвхгүй"
 
@@ -1525,7 +1525,7 @@ msgid "It needs Windows 10 version 1809 or later."
 msgstr "Windows 10-ийн 1809 буюу түүнээс хойшхи хувилбар шаардлагатай."
 
 #: bin/winvlc.c:712 bin/winvlc.c:825
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:410
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:411
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:27
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignPluginsDialog.qml:30
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignStatisticsDialog.qml:26
@@ -1674,13 +1674,13 @@ msgid "Please enter the new playlist name:"
 msgstr "Тоглуулах жагсаалтын шинэ нэрийг оруулна уу:"
 
 #: modules/gui/macosx/library/VLCLibraryController.m:319
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:409
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:455
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:135
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:412
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:458
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:136
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:413
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:104
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:107
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:76
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:90
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:909
 msgid "Rename"
 msgstr "Нэр өөрчлөх"
@@ -1699,8 +1699,8 @@ msgstr "Медиа санд нэмэх"
 #: modules/gui/macosx/library/VLCLibraryMenuController.m:284
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:141
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:173
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:37
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:186
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:874
 msgid "Remove from Favorites"
 msgstr "Дуртайгаас хасах"
@@ -1841,70 +1841,70 @@ msgstr "Тоглуулах жагсаалтын нэр"
 msgid "About VLC"
 msgstr "VLC-ийн тухай"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:197
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:198
 #: modules/gui/qt/dialogs/firstrun/qml/WhatsNewDialog.qml:63
 msgid "VLC Redesign"
 msgstr "VLC Redesign"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:238
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:239
 msgid "Version %1 · based on VLC %2"
 msgstr "Хувилбар %1 · VLC %2 дээр суурилсан"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:262
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:263
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:90
 msgid "Checking for updates…"
 msgstr "Шинэчлэлт шалгаж байна…"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:263
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:264
 msgid "You have the latest version"
 msgstr "Танд хамгийн сүүлийн хувилбар байна"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:264
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:265
 msgid "Version %1 is available"
 msgstr "%1 хувилбар гарсан байна"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:266
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:267
 msgid "Downloading the update… %1%"
 msgstr "Шинэчлэлтийг татаж байна… %1%"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:267
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:268
 msgid "Preparing the update…"
 msgstr "Шинэчлэлтийг бэлтгэж байна…"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:268
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:269
 msgid "Version %1 is ready: restart to finish"
 msgstr "%1 хувилбар бэлэн: дуусгахын тулд дахин эхлүүлнэ үү"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:277
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:278
 msgid "What's new in %1"
 msgstr "%1 хувилбарын шинэ зүйлс"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:291
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:292
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:197
 msgid "Restart now"
 msgstr "Одоо дахин эхлүүлэх"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:293
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:294
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:228
 msgid "Update now"
 msgstr "Одоо шинэчлэх"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:293
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:294
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:226
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:188
 #: modules/gui/qt/network/standardpathmodel.cpp:153
 msgid "Download"
 msgstr "Татах"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:294
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:295
 msgid "Check for updates"
 msgstr "Шинэчлэлт шалгах"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:330
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:331
 msgid "Interface designed by <font color=\"%1\">Juxtopposed</font>"
 msgstr "Интерфейсийг <font color=\"%1\">Juxtopposed</font> зохион бүтээсэн"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:337
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:338
 msgid ""
 "Every screen comes from the \"VLC Redesign (Community)\" Figma file, "
 "licensed under CC BY 4.0. It was adapted to Qt and its icons were redrawn."
@@ -1912,50 +1912,50 @@ msgstr ""
 "Бүх дэлгэц нь CC BY 4.0 лицензтэй \"VLC Redesign (Community)\" Figma файлаас "
 "гаралтай. Үүнийг Qt-д тохируулж, дүрс тэмдгүүдийг нь дахин зурсан."
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:342
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:343
 msgid "YouTube channel"
 msgstr "YouTube суваг"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:343
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:344
 msgid "The redesign video"
 msgstr "Шинэ дизайны видео"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:344
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:345
 msgid "Figma file"
 msgstr "Figma файл"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:346
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:347
 msgid "CC BY 4.0"
 msgstr "CC BY 4.0"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:356
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:357
 msgid "First implementation by"
 msgstr "Анх хэрэгжүүлсэн нь"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:361
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:362
 msgid "Built on VLC media player by"
 msgstr "VLC медиа тоглуулагч дээр суурилсан, бүтээсэн нь"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:362
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:363
 msgid "the VideoLAN team and contributors"
 msgstr "VideoLAN баг ба хувь нэмэр оруулагчид"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:370
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:371
 msgid "Also on: %1"
 msgstr "Мөн: %1"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:377
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:378
 #: modules/gui/qt/menus/qml/MainMenu.qml:173
 msgid "Suggest an idea"
 msgstr "Санаа санал болгох"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:379
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:380
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:28
 #: modules/gui/qt/menus/qml/MainMenu.qml:178
 msgid "Report a problem"
 msgstr "Асуудал мэдээлэх"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:390
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:391
 msgid ""
 "An unofficial build, not affiliated with or endorsed by VideoLAN or "
 "Juxtopposed. VLC, VLC media player and the cone logo are trademarks of "
@@ -1966,11 +1966,11 @@ msgstr ""
 "ийн барааны тэмдэг юм. GNU GPL v2 буюу түүнээс хойшхи хувилбарын дагуух "
 "чөлөөт програм хангамж."
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:400
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:401
 msgid "Licenses & authors"
 msgstr "Лиценз ба зохиогчид"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:404
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:405
 msgid "GitHub"
 msgstr "GitHub"
 
@@ -1980,7 +1980,7 @@ msgstr "Хавтасны мэдээлэл"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:29
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:119
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:189
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:202
 msgid "Show in File Explorer"
 msgstr "Файл судлаачид харуулах"
 
@@ -2003,12 +2003,12 @@ msgstr "Өөрчилсөн"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:66
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:27
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:34
 #: modules/gui/qt/medialibrary/qml/VideoGroupDisplay.qml:40
 #: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:84
 #: modules/gui/qt/medialibrary/qml/VideoListDisplay.qml:90
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:81
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:198
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:237
 #: modules/gui/qt/network/standardpathmodel.cpp:152
 #: modules/gui/qt/player/qml/CompactLibrary.qml:79
 #: modules/gui/qt/player/qml/CompactLibrary.qml:198
@@ -2190,7 +2190,7 @@ msgstr ""
 "%2"
 
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1425
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:49
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
 msgid "Export Playlist"
 msgstr "Тоглуулах жагсаалтыг экспортлох"
@@ -2358,7 +2358,7 @@ msgstr "Таналт пикселээр: %1"
 msgid "Link top and bottom crop"
 msgstr "Дээд ба доод таналтыг холбох"
 
-#: modules/gui/qt/dialogs/extended/qml/CropPanel.qml:102
+#: modules/gui/qt/dialogs/extended/qml/CropPanel.qml:103
 msgid "Link left and right crop"
 msgstr "Зүүн ба баруун таналтыг холбох"
 
@@ -2371,62 +2371,62 @@ msgstr "Эффектүүдийг бэлэн тохиргоо болгон хад
 msgid "Effect preset: %1"
 msgstr "Эффектийн бэлэн тохиргоо: %1"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:257
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:258
 msgid "Effect presets"
 msgstr "Эффектийн бэлэн тохиргоонууд"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:272
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:454
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:273
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:457
 msgid "New Preset"
 msgstr "Шинэ бэлэн тохиргоо"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:289
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:290
 msgid "Chosen preset"
 msgstr "Сонгосон бэлэн тохиргоо"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:372
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:110
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:375
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:111
 msgid "Actions of %1"
 msgstr "Үйлдлүүд: %1"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:420
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:423
 msgid "Update with current effects"
 msgstr "Одоогийн эффектүүдээр шинэчлэх"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:454
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:457
 msgid "Rename Preset"
 msgstr "Бэлэн тохиргооны нэрийг өөрчлөх"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:497
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:500
 msgid "Preset Name"
 msgstr "Бэлэн тохиргооны нэр"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:498
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:501
 msgid "The preset keeps its effects."
 msgstr "Бэлэн тохиргоо эффектүүдээ хадгална."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:499
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:502
 msgid "The preset keeps the audio and video effects in use."
 msgstr "Бэлэн тохиргоо ашиглагдаж буй дуу болон видео эффектүүдийг хадгална."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:507
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:510
 msgid "e.g., Late Night Movies"
 msgstr "жишээ нь, Шөнийн кино"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:508
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:511
 msgid "Preset name"
 msgstr "Бэлэн тохиргооны нэр"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:526
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:529
 msgid "Delete Preset"
 msgstr "Бэлэн тохиргоог устгах"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:552
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:555
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:493
 msgid "Delete %1?"
 msgstr "%1 устгах уу?"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:553
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:556
 msgid "The effects in use stay as they are."
 msgstr "Ашиглагдаж буй эффектүүд хэвээр үлдэнэ."
 
@@ -2494,16 +2494,16 @@ msgstr "Эффектүүдийг урьдчилан харж, засахын т�
 msgid "Open synchronization"
 msgstr "Давхцуулалтыг нээх"
 
-#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:93
+#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:94
 msgid "%1 equalizer curve"
 msgstr "Эквалайзерын муруй: %1"
 
-#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:160
-#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:177
+#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:163
+#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:180
 msgid "Two-pass equalizer"
 msgstr "Хоёр дамжлагатай эквалайзер"
 
-#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:189
+#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:192
 #: modules/gui/qt/dialogs/extended/qml/FilterPanel.qml:92
 #: modules/gui/qt/dialogs/extended/qml/VideoEffectsPanel.qml:149
 msgid "Reset to defaults"
@@ -2618,11 +2618,11 @@ msgstr "Хөдөлгөөний бүдгэрүүлэлт"
 msgid "Colors of %1"
 msgstr "Өнгөнүүд: %1"
 
-#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:345
+#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:346
 msgid "Browse for %1"
 msgstr "%1 сонгох"
 
-#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:348
+#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:349
 msgid "Image Files (*.png *.jpg);;All Files (*)"
 msgstr "Зургийн файлууд (*.png *.jpg);;Бүх файл (*)"
 
@@ -2772,16 +2772,16 @@ msgstr "Цайвар"
 msgid "System"
 msgstr "Систем"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:335
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:337
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:222
 msgid "Accent color %1"
 msgstr "Онцлох өнгө %1"
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:54
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:55
 msgid "Welcome to VLC!"
 msgstr "VLC-д тавтай морил!"
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:72
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:73
 msgid ""
 "VLC is a free and open source cross-platform multimedia player and framework "
 "that plays most multimedia files as well as DVDs, Audio CDs, VCDs, and "
@@ -2791,15 +2791,15 @@ msgstr ""
 "дамжуулах протоколыг тоглуулдаг, үнэгүй, нээлттэй эхийн, олон платформын "
 "мультимедиа тоглуулагч ба хүрээ юм."
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:93
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:94
 msgid "Choose a Media Folder to get started with"
 msgstr "Эхлэхийн тулд медиа хавтас сонгоно уу"
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:126
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:127
 msgid "No folder selected"
 msgstr "Сонгогдсон хавтас алга"
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:146
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:147
 msgid "Remove the folder"
 msgstr "Хавтсыг хасах"
 
@@ -3581,17 +3581,17 @@ msgstr ""
 "Товчлолуудыг хадгалж чадсангүй (алдаа %1). Өөрчлөлтүүдийг санах ойд "
 "буцаалаа; тохиргооны файлыг шалгана уу."
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:765
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:767
 msgid "System's default (%1)"
 msgstr "Системийн анхдагч (%1)"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1439
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1444
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1441
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1446
 msgid "%1 (partial)"
 msgstr "%1 (хэсэгчлэн)"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1839
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1849
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1852
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1862
 msgid "Please choose an entry point folder"
 msgstr "Эхлэх хавтсыг сонгоно уу"
 
@@ -3649,14 +3649,15 @@ msgstr ""
 "өөр юу ч авахгүй."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:53
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:620
 msgid "Current output device"
 msgstr "Одоогийн гаралтын төхөөрөмж"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:76
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:80
 msgid "No selectable device available"
 msgstr "Сонгох боломжтой төхөөрөмж байхгүй"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:141
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:164
 msgid ""
 "Device changes affect only the current audio output. Apply keeps this "
 "selection while it remains active."
@@ -3836,55 +3837,55 @@ msgstr "Хоёр дахь хэл"
 msgid "OpenSubtitles"
 msgstr "OpenSubtitles"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:647
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:658
 msgid "No matching settings"
 msgstr "Тохирох тохиргоо алга"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:648
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:659
 msgid "No settings are available for this category on this VLC installation"
 msgstr "Энэ VLC суулгацад энэ ангилалд тохиргоо байхгүй"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:729
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:745
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:741
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:757
 msgid "Show installed add-ons only"
 msgstr "Зөвхөн суулгасан нэмэлтүүдийг харуулах"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:761
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:773
 msgid "No advanced options on this page."
 msgstr "Энэ хуудсанд өргөтгөсөн сонголт байхгүй."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:773
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:785
 msgid "Welcome setup"
 msgstr "Эхний тохируулга"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:787
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:799
 msgid "All VLC options"
 msgstr "VLC-ийн бүх сонголт"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:803
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:815
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:356
 msgid "Reset all settings"
 msgstr "Бүх тохиргоог сэргээх"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:817
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:829
 msgid "Reset all settings?"
 msgstr "Бүх тохиргоог сэргээх үү?"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:818
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:830
 msgid "Every setting of VLC media player goes back to its default."
 msgstr "VLC медиа тоглуулагчийн бүх тохиргоо анхдагч утгадаа буцна."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:872
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:884
 msgid "Discard changes"
 msgstr "Өөрчлөлтийг цуцлах"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:124
-#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:117
+#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:118
 msgid "Close Equalizer"
 msgstr "Эквалайзерыг хаах"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:124
-#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:98
+#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:99
 msgid "Open Equalizer"
 msgstr "Эквалайзерыг нээх"
 
@@ -4117,7 +4118,7 @@ msgstr "1 с"
 msgid "10 s"
 msgstr "10 с"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:616
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:617
 msgid "Choose a color"
 msgstr "Өнгө сонгох"
 
@@ -5201,7 +5202,7 @@ msgstr "Хөтөлбөрүүдийн нэвтрүүлгийн хэл: %1"
 
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:121
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:76
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:616
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:617
 msgid "Global Hotkey"
 msgstr "Глобал халуун товч"
 
@@ -5277,11 +5278,11 @@ msgstr "%1 хасах"
 msgid "Search Keyboard Shortcuts..."
 msgstr "Гарын товчлол хайх..."
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:711
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:712
 msgid "Hotkey of %1"
 msgstr "Халуун товч: %1"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:722
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:723
 msgid "Global hotkey of %1"
 msgstr "Глобал халуун товч: %1"
 
@@ -5382,7 +5383,7 @@ msgstr "Профайлын тохиргоог хэрэглэж чадсангү�
 msgid "Profile (%1)"
 msgstr "Профайл (%1)"
 
-#: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:88
+#: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:89
 msgid "Customize player"
 msgstr "Тоглуулагчийг өөрчлөх"
 
@@ -5391,11 +5392,11 @@ msgstr "Тоглуулагчийг өөрчлөх"
 msgid "Sleep timer"
 msgstr "Унтах цаг хэмжигч"
 
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:169
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:170
 msgid "Selected profile"
 msgstr "Сонгосон профайл"
 
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:236
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:237
 msgid "New profile…"
 msgstr "Шинэ профайл…"
 
@@ -5578,8 +5579,8 @@ msgstr "Эхнээс нь үзэх"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:142
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:174
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:37
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:187
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:874
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:81
 msgid "Favorite"
@@ -5637,24 +5638,24 @@ msgstr "%1-ийн сувгуудыг шинэчилж байна…"
 msgid "%1 could not be loaded: %2"
 msgstr "%1-г ачаалж чадсангүй: %2"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:502
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:503
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:580
 msgid "No channel matches the search"
 msgstr "Хайлтад тохирох суваг алга"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:503
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:504
 msgid "No favorite channel yet: right-click a channel to add it"
 msgstr "Дуртай суваг алга: нэмэхийн тулд суваг дээр баруун товшино уу"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:504
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:505
 msgid "No channel watched yet"
 msgstr "Үзсэн суваг алга"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:505
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:506
 msgid "Loading the channels…"
 msgstr "Сувгуудыг ачаалж байна…"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:506
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:507
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:810
 msgid "No channels"
 msgstr "Суваг алга"
@@ -5677,19 +5678,19 @@ msgstr "Дараа"
 msgid "No guide for this channel"
 msgstr "Энэ сувагт хөтөлбөр алга"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:182
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:183
 msgid "No account with films or series"
 msgstr "Кино эсвэл цувралтай бүртгэл алга"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:183
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:184
 msgid "Loading…"
 msgstr "Ачаалж байна…"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:183
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:184
 msgid "Nothing here"
 msgstr "Энд юу ч алга"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:235
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:236
 msgid "S%1 E%2"
 msgstr "S%1 E%2"
 
@@ -5875,7 +5876,7 @@ msgid "Updated %1 at %2"
 msgstr "%1 %2-д шинэчилсэн"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:308
-#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:239
+#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:242
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:91
 msgid "Move up"
 msgstr "Дээш зөөх"
@@ -6085,7 +6086,7 @@ msgstr "MC"
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:96
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:32
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:39
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:54
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:61
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:53
@@ -6139,12 +6140,12 @@ msgstr "Нээн илрүүлэх"
 msgid "Local top bar"
 msgstr "Дотоод дээд самбар"
 
-#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:187
+#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:188
 msgid "Show navigation menu"
 msgstr "Навигацийн цэсийг харуулах"
 
-#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:250
-#: modules/gui/qt/player/qml/TopBar.qml:503
+#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:251
+#: modules/gui/qt/player/qml/TopBar.qml:505
 msgid "VLC Media Player"
 msgstr "VLC медиа тоглуулагч"
 
@@ -6255,7 +6256,7 @@ msgid "Re-check"
 msgstr "Дахин шалгах"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:34
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:41
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:224
 #: modules/gui/qt/player/qml/CompactLibrary.qml:83
 #: modules/gui/qt/player/qml/CompactLibrary.qml:297
@@ -6263,13 +6264,20 @@ msgid "Recent"
 msgstr "Сүүлийн үеийн"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:238
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:303
 msgid "Add item"
 msgstr "Зүйл нэмэх"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:121
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:132
 msgid "Edit Sidebar…"
 msgstr "Хажуугийн самбарыг засах…"
+
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:131
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:137
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
+msgid "Unpin from Sidebar"
+msgstr "Хажуугийн самбараас салгах"
 
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:34
 msgid "Reset to Default"
@@ -6291,12 +6299,12 @@ msgstr ""
 msgid "hidden"
 msgstr "нуусан"
 
-#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:251
+#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:254
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:98
 msgid "Move down"
 msgstr "Доош зөөх"
 
-#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:262
+#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:265
 msgid "Show %1"
 msgstr "%1-г харуулах"
 
@@ -6355,6 +6363,15 @@ msgstr "OpenSubtitles-аас татаж чадсангүй. Квотоо шал�
 #: modules/gui/qt/medialibrary/mlopensubtitles.cpp:223
 msgid "OpenSubtitles did not return a valid subtitle download link."
 msgstr "OpenSubtitles дэд бичвэр татах зөв холбоос буцаасангүй."
+
+#: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:188
+#: modules/gui/qt/player/subtitle_search.cpp:481
+msgid "This build can't search the internet."
+msgstr "Энэ хувилбар интернетээс хайх боломжгүй."
+
+#: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:207
+msgid "The subtitle services took too long to answer."
+msgstr "Дэд бичвэрийн үйлчилгээнүүд хэт удаан хариулсан."
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:121
 msgid "This media"
@@ -6433,12 +6450,12 @@ msgstr ""
 "(*)"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:369
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:553
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:597
 msgid "Choose the folder of the audio tracks"
 msgstr "Дууны мөрүүдийн хавтсыг сонгох"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:370
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:554
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:598
 msgid "Choose the folder of the subtitles"
 msgstr "Дэд бичвэрийн хавтсыг сонгох"
 
@@ -6474,33 +6491,33 @@ msgstr "Дор хаяж нэг дууны файл сонгоно уу."
 msgid "Choose at least one subtitle file."
 msgstr "Дор хаяж нэг дэд бичвэрийн файл сонгоно уу."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:477
-msgid "An audio file is missing or unreadable: %1"
-msgstr "Дууны файл байхгүй эсвэл уншигдахгүй байна: %1"
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:478
-msgid "A subtitle file is missing or unreadable: %1"
-msgstr "Дэд бичвэрийн файл байхгүй эсвэл уншигдахгүй байна: %1"
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:492
-msgid "The destination media could not be found in the library."
-msgstr "Зорилтот медиа санд олдсонгүй."
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:509
-msgid "Could not save audio track association for %1."
-msgstr "Дууны мөрийн холбоосыг хадгалж чадсангүй: %1."
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:510
-msgid "Could not save subtitle association for %1."
-msgstr "Дэд бичвэрийн холбоосыг хадгалж чадсангүй: %1."
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:524
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:472
 #, c-format
 msgid ""
 " %n association(s) were saved before this error; those changes remain saved."
 msgstr ""
 " %n холбоосыг энэ алдаанаас өмнө хадгалсан; эдгээр өөрчлөлт хадгалагдсан "
 "хэвээр байна."
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:498
+msgid "An audio file is missing or unreadable: %1"
+msgstr "Дууны файл байхгүй эсвэл уншигдахгүй байна: %1"
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:499
+msgid "A subtitle file is missing or unreadable: %1"
+msgstr "Дэд бичвэрийн файл байхгүй эсвэл уншигдахгүй байна: %1"
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:513
+msgid "The destination media could not be found in the library."
+msgstr "Зорилтот медиа санд олдсонгүй."
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:529
+msgid "Could not save audio track association for %1."
+msgstr "Дууны мөрийн холбоосыг хадгалж чадсангүй: %1."
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:530
+msgid "Could not save subtitle association for %1."
+msgstr "Дэд бичвэрийн холбоосыг хадгалж чадсангүй: %1."
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:47
 msgid "The subtitle filename is invalid."
@@ -6581,7 +6598,7 @@ msgstr "Үл мэдэгдэх уран бүтээлч"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:96
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:228
-#: modules/gui/qt/player/qml/ResumeDialog.qml:147
+#: modules/gui/qt/player/qml/ResumeDialog.qml:148
 #: modules/gui/qt/player/qml/CompactLibrary.qml:401
 msgid "Continue Watching"
 msgstr "Үргэлжлүүлэн үзэх"
@@ -6727,7 +6744,7 @@ msgid "Remove from playlist"
 msgstr "Тоглуулах жагсаалтаас хасах"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:222
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:252
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:260
 msgid "Processing..."
 msgstr "Боловсруулж байна..."
 
@@ -6751,15 +6768,15 @@ msgid_plural "Delete playlists"
 msgstr[0] "Тоглуулах жагсаалтыг устгах"
 msgstr[1] "Тоглуулах жагсаалтуудыг устгах"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:368
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:376
 msgid "Items"
 msgstr "Зүйлс"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:455
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:463
 msgid "No playlists found"
 msgstr "Тоглуулах жагсаалт олдсонгүй"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:456
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:464
 msgid "Create a playlist with files or add media from the library"
 msgstr "Файлуудаар тоглуулах жагсаалт үүсгэх эсвэл сангаас медиа нэмнэ үү"
 
@@ -6820,45 +6837,45 @@ msgid "Channel:"
 msgstr "Суваг:"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:82
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:168
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:181
 msgid "Mark as Unwatched"
 msgstr "Үзээгүй гэж тэмдэглэх"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:82
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:169
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:182
 msgid "Mark as Watched"
 msgstr "Үзсэн гэж тэмдэглэх"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:110
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:183
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:53
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:196
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:54
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:891
 msgid "Add to Queue"
 msgstr "Дараалалд нэмэх"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:126
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:193
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:206
 msgid "Go to Source"
 msgstr "Эх үүсвэр рүү очих"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:134
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:207
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:57
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:220
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:58
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:899
 msgid "Add Subtitle Tracks"
 msgstr "Дэд бичвэрийн мөр нэмэх"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:140
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:209
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:62
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:75
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:222
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:63
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:93
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:903
 msgid "Add Audio Tracks"
 msgstr "Дууны мөр нэмэх"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:146
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:211
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:69
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:224
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:70
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:31
 msgid "Properties & Metadata"
 msgstr "Шинж чанар ба мета өгөгдөл"
@@ -6924,27 +6941,32 @@ msgstr "Дууны мөрийг засах"
 msgid "Resync"
 msgstr "Дахин тааруулах"
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:546
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:138
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
+msgid "Pin to Sidebar"
+msgstr "Хажуугийн самбарт бэхлэх"
+
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:560
 msgid "No media matches the search"
 msgstr "Хайлтад тохирох медиа алга"
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:547
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:561
 msgid "No media in this folder"
 msgstr "Энэ хавтаст медиа алга"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:42
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:43
 msgid "Add folder"
 msgstr "Хавтас нэмэх"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:45
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:46
 msgid "Add folder to media library"
 msgstr "Медиа санд хавтас нэмэх"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:53
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:54
 msgid "Could not add this folder to the library: %1"
 msgstr "Энэ хавтсыг санд нэмж чадсангүй: %1"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:54
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:55
 msgid "Media library"
 msgstr "Медиа сан"
 
@@ -7059,74 +7081,160 @@ msgstr[1] "%1 зүйл"
 msgid "Length"
 msgstr "Урт"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:36
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:38
 msgid "To This Folder"
 msgstr "Энэ хавтсанд"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:37
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:39
 msgid "To This Playlist"
 msgstr "Энэ тоглуулах жагсаалтад"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:38
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:40
 msgid "To This File"
 msgstr "Энэ файлд"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:75
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:93
 msgid "Add Subtitles"
 msgstr "Дэд бичвэр нэмэх"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:530
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:532
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:533
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:100
+msgid "Download %1"
+msgstr "Татах (%1)"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:186
+msgid "%1 linked, %2 failed."
+msgstr "Холбосон: %1, амжилтгүй: %2."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:187
+msgid "Nothing was linked: %1 failed."
+msgstr "Юу ч холбогдсонгүй: амжилтгүй %1."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:574
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:576
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:577
 msgid "From Computer"
 msgstr "Компьютерээс"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:532
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:533
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:576
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:577
 msgid "From Link"
 msgstr "Холбоосоос"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:532
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:576
 msgid "From OpenSubtitles"
 msgstr "OpenSubtitles-аас"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:602
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:577
+msgid "From the Internet"
+msgstr "Интернетээс"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:646
 msgid "Direct HTTPS link to a subtitle file"
 msgstr "Дэд бичвэрийн файлын шууд HTTPS холбоос"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:617
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:661
 msgid "Title or episode"
 msgstr "Гарчиг эсвэл анги"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:784
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:692
+msgid "%1, else %2"
+msgstr "%1, эс бөгөөс %2"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:698
+msgid "Every subtitle service is off (Subtitles panel of the player)"
+msgstr ""
+"Дэд бичвэрийн бүх үйлчилгээ унтраалттай байна (тоглуулагчийн Дэд бичвэр "
+"самбар)"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:862
 msgid "OpenSubtitles API key"
 msgstr "OpenSubtitles API түлхүүр"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:899
-msgid "Searching OpenSubtitles…"
-msgstr "OpenSubtitles-д хайж байна…"
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1001
+msgid "Waiting…"
+msgstr "Хүлээж байна…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:901
-msgid "Search OpenSubtitles to see the subtitle files."
-msgstr "Дэд бичвэрийн файлуудыг харахын тулд OpenSubtitles-д хайна уу."
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1002
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:365
+msgid "Searching…"
+msgstr "Хайж байна…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:904
-msgid "Working on audio tracks…"
-msgstr "Дууны мөрүүдийг боловсруулж байна…"
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1004
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:444
+msgid "For this file"
+msgstr "Энэ файлд"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:904
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1005
+msgid "Best guess"
+msgstr "Хамгийн сайн таамаг"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1006
+msgid "Not found"
+msgstr "Олдсонгүй"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1007
+msgid "No answer"
+msgstr "Хариу алга"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1008
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:264
+msgid "Downloading…"
+msgstr "Татаж байна…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1009
+msgid "Linked"
+msgstr "Холбосон"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1108
+msgid "Don't download"
+msgstr "Бүү тат"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1112
+msgid "Subtitle for %1"
+msgstr "%1-д зориулсан дэд бичвэр"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1131
+msgid "Downloading and linking the subtitles chosen…"
+msgstr "Сонгосон дэд бичвэрүүдийг татаж, холбож байна…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1133
+msgid "Searching the internet: %1 of %2 videos done…"
+msgstr "Интернетээс хайж байна: %2 видеоноос %1 дууссан…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1134
+msgid "For the file: %1 · By title: %2 · Not found: %3"
+msgstr "Файлд: %1 · Гарчгаар: %2 · Олдсонгүй: %3"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1137
+msgid "No answer: %1"
+msgstr "Хариу алга: %1"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1160
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on subtitles…"
 msgstr "Дэд бичвэрийг боловсруулж байна…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:907
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1165
+msgid "Searching OpenSubtitles…"
+msgstr "OpenSubtitles-д хайж байна…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1167
+msgid "Search OpenSubtitles to see the subtitle files."
+msgstr "Дэд бичвэрийн файлуудыг харахын тулд OpenSubtitles-д хайна уу."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
+msgid "Working on audio tracks…"
+msgstr "Дууны мөрүүдийг боловсруулж байна…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1173
 msgid "Enter a direct link to a subtitle file above."
 msgstr "Дээр дэд бичвэрийн файлын шууд холбоосыг оруулна уу."
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:908
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1174
 msgid "No audio file in this folder: choose another one above."
 msgstr "Энэ хавтаст дууны файл алга: дээрээс өөр хавтас сонгоно уу."
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:909
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1175
 msgid "No subtitle file in this folder: choose another one above."
 msgstr "Энэ хавтаст дэд бичвэрийн файл алга: дээрээс өөр хавтас сонгоно уу."
 
@@ -7466,41 +7574,6 @@ msgstr "Унтах цаг хэмжигч тохируулахаас өмнө т�
 msgid "Choose a duration between one second and 24 hours."
 msgstr "Нэг секундээс 24 цагийн хооронд хугацаа сонгоно уу."
 
-#: modules/gui/qt/player/subtitle_finder.cpp:742
-msgid "This build can't search the internet."
-msgstr "Энэ хувилбар интернетээс хайх боломжгүй."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1254
-#: modules/gui/qt/player/subtitle_finder.cpp:1512
-msgid "No connection to the internet."
-msgstr "Интернет холболт алга."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1257
-msgid "The video couldn't be identified from its name."
-msgstr "Видеог нэрээр нь тодорхойлж чадсангүй."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1258
-msgid "\"%1\" wasn't found. Search for its title."
-msgstr "\"%1\" олдсонгүй. Гарчгаар нь хайна уу."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1260
-msgid "No subtitles were found for %1."
-msgstr "Дэд бичвэр олдсонгүй: %1."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1513
-msgid "The subtitle couldn't be downloaded (%1)."
-msgstr "Дэд бичвэрийг татаж чадсангүй (%1)."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1543
-msgid "The subtitle couldn't be saved."
-msgstr "Дэд бичвэрийг хадгалж чадсангүй."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1553
-#: modules/gui/qt/player/subtitle_providers.cpp:922
-#: modules/gui/qt/player/subtitle_providers.cpp:955
-msgid "The subtitle couldn't be unpacked."
-msgstr "Дэд бичвэрийг задалж чадсангүй."
-
 #: modules/gui/qt/player/subtitle_providers.cpp:87
 msgid "%1 didn't answer."
 msgstr "%1 хариу өгсөнгүй."
@@ -7533,6 +7606,12 @@ msgstr "Кино · олон хэл"
 msgid "This subtitle comes as a RAR archive, which can't be opened here."
 msgstr "Энэ дэд бичвэр RAR архив хэлбэрээр ирсэн бөгөөд энд нээх боломжгүй."
 
+#: modules/gui/qt/player/subtitle_providers.cpp:922
+#: modules/gui/qt/player/subtitle_providers.cpp:955
+#: modules/gui/qt/player/subtitle_search.cpp:1140
+msgid "The subtitle couldn't be unpacked."
+msgstr "Дэд бичвэрийг задалж чадсангүй."
+
 #: modules/gui/qt/player/subtitle_providers.cpp:956
 msgid "The archive has no subtitle in it."
 msgstr "Архивт дэд бичвэр алга."
@@ -7547,6 +7626,32 @@ msgstr ""
 #: modules/gui/qt/player/subtitle_providers.cpp:974
 msgid "The subtitle is empty."
 msgstr "Дэд бичвэр хоосон байна."
+
+#: modules/gui/qt/player/subtitle_search.cpp:1017
+#: modules/gui/qt/player/subtitle_search.cpp:1100
+msgid "No connection to the internet."
+msgstr "Интернет холболт алга."
+
+#: modules/gui/qt/player/subtitle_search.cpp:1020
+msgid "The video couldn't be identified from its name."
+msgstr "Видеог нэрээр нь тодорхойлж чадсангүй."
+
+#: modules/gui/qt/player/subtitle_search.cpp:1021
+msgid "\"%1\" wasn't found. Search for its title."
+msgstr "\"%1\" олдсонгүй. Гарчгаар нь хайна уу."
+
+#: modules/gui/qt/player/subtitle_search.cpp:1023
+msgid "No subtitles were found for %1."
+msgstr "Дэд бичвэр олдсонгүй: %1."
+
+#: modules/gui/qt/player/subtitle_search.cpp:1065
+#: modules/gui/qt/player/subtitle_search.cpp:1101
+msgid "The subtitle couldn't be downloaded (%1)."
+msgstr "Дэд бичвэрийг татаж чадсангүй (%1)."
+
+#: modules/gui/qt/player/subtitle_search.cpp:1131
+msgid "The subtitle couldn't be saved."
+msgstr "Дэд бичвэрийг хадгалж чадсангүй."
 
 #: modules/gui/qt/player/waveform.cpp:230
 msgid "Waveform analyzer is unavailable."
@@ -7630,7 +7735,7 @@ msgid "Artist Name"
 msgstr "Уран бүтээлчийн нэр"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:82
-#: modules/gui/qt/player/qml/controlbarcontrols/DividerWidget.qml:21
+#: modules/gui/qt/player/qml/controlbarcontrols/DividerWidget.qml:22
 msgid "Divider"
 msgstr "Тусгаарлагч"
 
@@ -7740,61 +7845,61 @@ msgstr "Зурагтан дээрх дэд бичвэр: %1"
 msgid "Subtitles off on the TV"
 msgstr "Зурагтан дээрх дэд бичвэр унтраалттай"
 
-#: modules/gui/qt/player/qml/Player.qml:1229
+#: modules/gui/qt/player/qml/Player.qml:1230
 msgid "Not playing on %1"
 msgstr "%1 дээр тоглохгүй байна"
 
-#: modules/gui/qt/player/qml/Player.qml:1231
-#: modules/gui/qt/player/qml/Player.qml:1358
+#: modules/gui/qt/player/qml/Player.qml:1232
+#: modules/gui/qt/player/qml/Player.qml:1359
 msgid "Connecting to %1…"
 msgstr "Холбогдож байна: %1…"
 
-#: modules/gui/qt/player/qml/Player.qml:1233
+#: modules/gui/qt/player/qml/Player.qml:1234
 msgid "Playing on %1"
 msgstr "%1 дээр тоглож байна"
 
-#: modules/gui/qt/player/qml/Player.qml:1234
+#: modules/gui/qt/player/qml/Player.qml:1235
 msgid "The sound plays on %1"
 msgstr "Дуу %1 дээр тоглож байна"
 
-#: modules/gui/qt/player/qml/Player.qml:1259
+#: modules/gui/qt/player/qml/Player.qml:1260
 msgid "Pause, seek and change the subtitles here: the TV follows."
 msgstr "Завсарлах, гүйлгэх, дэд бичвэр солихыг эндээс хийнэ үү: ТВ дагана."
 
-#: modules/gui/qt/player/qml/Player.qml:1276
+#: modules/gui/qt/player/qml/Player.qml:1277
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the media."
 msgstr ""
 "Windows галт хана %1 төхөөрөмжийг медиаг уншихаар энэ компьютерт холбогдохыг "
 "зөвшөөрөхгүй байна."
 
-#: modules/gui/qt/player/qml/Player.qml:1288
+#: modules/gui/qt/player/qml/Player.qml:1289
 msgid "Waiting for Windows…"
 msgstr "Windows-ийг хүлээж байна…"
 
-#: modules/gui/qt/player/qml/Player.qml:1289
+#: modules/gui/qt/player/qml/Player.qml:1290
 msgid "Allow on public networks too"
 msgstr "Нийтийн сүлжээнд ч зөвшөөрөх"
 
-#: modules/gui/qt/player/qml/Player.qml:1290
+#: modules/gui/qt/player/qml/Player.qml:1291
 msgid "Allow on private networks"
 msgstr "Хувийн сүлжээнд зөвшөөрөх"
 
-#: modules/gui/qt/player/qml/Player.qml:1302
+#: modules/gui/qt/player/qml/Player.qml:1303
 msgid "Try again"
 msgstr "Дахин оролдох"
 
-#: modules/gui/qt/player/qml/Player.qml:1307
-#: modules/gui/qt/player/qml/Player.qml:1317
+#: modules/gui/qt/player/qml/Player.qml:1308
+#: modules/gui/qt/player/qml/Player.qml:1318
 msgid "Play here"
 msgstr "Энд тоглуулах"
 
-#: modules/gui/qt/player/qml/Player.qml:1317
-#: modules/gui/qt/player/qml/Player.qml:1368
+#: modules/gui/qt/player/qml/Player.qml:1318
+#: modules/gui/qt/player/qml/Player.qml:1369
 msgid "Stop casting"
 msgstr "Дамжуулалтыг зогсоох"
 
-#: modules/gui/qt/player/qml/Player.qml:1359
+#: modules/gui/qt/player/qml/Player.qml:1360
 msgid "Also on %1"
 msgstr "Мөн %1 дээр"
 
@@ -7802,11 +7907,11 @@ msgstr "Мөн %1 дээр"
 msgid "Resume dialog"
 msgstr "Үргэлжлүүлэх цонх"
 
-#: modules/gui/qt/player/qml/ResumeDialog.qml:136
+#: modules/gui/qt/player/qml/ResumeDialog.qml:137
 msgid "You’ve watched till %1 already."
 msgstr "Та аль хэдийн %1 хүртэл үзсэн байна."
 
-#: modules/gui/qt/player/qml/ResumeDialog.qml:138
+#: modules/gui/qt/player/qml/ResumeDialog.qml:139
 msgid "Continue where you left off?"
 msgstr "Зогссон газраас үргэлжлүүлэх үү?"
 
@@ -7814,7 +7919,7 @@ msgstr "Зогссон газраас үргэлжлүүлэх үү?"
 msgid "Player topbar"
 msgstr "Тоглуулагчийн дээд самбар"
 
-#: modules/gui/qt/player/qml/TopBar.qml:439
+#: modules/gui/qt/player/qml/TopBar.qml:440
 msgid "Show %1 in the library"
 msgstr "Санд харуулах: %1"
 
@@ -7868,7 +7973,7 @@ msgstr "Хавчуургад медиа сан шаардлагатай"
 msgid "Show Preferences"
 msgstr "Тохиргоог харуулах"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:556
+#: modules/gui/qt/player/qml/TracksMenu.qml:557
 #: modules/gui/qt/player/qml/TracksPageAudio.qml:37
 #: modules/gui/qt/player/qml/TracksPageSubtitle.qml:37
 #: modules/gui/qt/player/qml/SubtitleSyncTimeline.qml:42
@@ -7920,7 +8025,7 @@ msgstr "Дууны үгийг тоглуулах байрлалтай таару
 msgid "Volume %1%"
 msgstr "Дууны хэмжээ %1%"
 
-#: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:207
+#: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:211
 msgid "Play audio to select a visualization."
 msgstr "Дүрслэл сонгохын тулд дуу тоглуулна уу."
 
@@ -8272,10 +8377,6 @@ msgstr "Хайж байна: %1…"
 msgid "Searching subtitles online…"
 msgstr "Дэд бичвэрийг онлайнаар хайж байна…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:264
-msgid "Downloading…"
-msgstr "Татаж байна…"
-
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:266
 msgid "%1 · %2 found"
 msgstr "%1 · %2 олдсон"
@@ -8316,10 +8417,6 @@ msgstr "Тоглуулахад дэд бичвэрийн файл ачаалах
 msgid "Title of the movie or series"
 msgstr "Кино эсвэл цувралын нэр"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:365
-msgid "Searching…"
-msgstr "Хайж байна…"
-
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:408
 msgid "Second"
 msgstr "Хоёр дахь"
@@ -8328,10 +8425,6 @@ msgstr "Хоёр дахь"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Байнга хэрэглэдэг"
-
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:444
-msgid "For this file"
-msgstr "Энэ файлд"
 
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:465
 msgid "Looking for subtitles…"
@@ -8376,11 +8469,11 @@ msgstr "Дэд бичвэрийг жижигрүүлэх"
 msgid "Larger subtitles"
 msgstr "Дэд бичвэрийг томруулах"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:773
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:774
 msgid "HI"
 msgstr "СБ"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:778
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:779
 msgid "For the hearing impaired"
 msgstr "Сонсголын бэрхшээлтэй хүмүүст"
 
@@ -8458,37 +8551,37 @@ msgstr "Тоглуулах дараалал (%1/%2)"
 msgid "Casting to %1"
 msgstr "Дамжуулж байна: %1"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:128
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:134
 msgid "Cast to"
 msgstr "Дамжуулах төхөөрөмж"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:153
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:160
 msgid "This computer"
 msgstr "Энэ компьютер"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:182
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:189
 msgid "Not playing: choose it to try again"
 msgstr "Тоглохгүй байна: дахин оролдохын тулд сонгоно уу"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:184
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:191
 msgid "Connecting…"
 msgstr "Холбогдож байна…"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:185
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:192
 msgid "Sound only"
 msgstr "Зөвхөн дуу"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:208
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:215
 msgid "Show %1 hidden device"
 msgid_plural "Show %1 hidden devices"
 msgstr[0] "Нуусан %1 төхөөрөмжийг харуулах"
 msgstr[1] "Нуусан %1 төхөөрөмжийг харуулах"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:221
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:228
 msgid "Looking for TVs and Chromecasts on your network…"
 msgstr "Таны сүлжээнээс ТВ болон Chromecast хайж байна…"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:222
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:229
 msgid ""
 "No device found. Turn your TV or Chromecast on, on the same network as this "
 "computer."
@@ -8496,23 +8589,23 @@ msgstr ""
 "Төхөөрөмж олдсонгүй. ТВ эсвэл Chromecast-аа энэ компьютертэй ижил сүлжээнд "
 "асаана уу."
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:236
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:251
 msgid "Show the video here too"
 msgstr "Видеог энд ч харуулах"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:286
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:301
 msgid "With a Chromecast, the video plays only there."
 msgstr "Chromecast-тай бол видео зөвхөн тэнд тоглогдоно."
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:297
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:312
 msgid "The subtitles shown go to the TV with the picture."
 msgstr "Харагдаж буй дэд бичвэр зурагтай хамт ТВ рүү очно."
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:314
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:329
 msgid "Hide this device"
 msgstr "Энэ төхөөрөмжийг нуух"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:358
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:373
 msgid "playing here"
 msgstr "энд тоглож байна"
 
@@ -8540,11 +8633,11 @@ msgstr "15 секунд урагшлуулах"
 msgid "%1 %"
 msgstr "%1 %"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:65
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:66
 msgid "Choose a video zoom level"
 msgstr "Видеоны томруулах түвшин сонгох"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:66
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:67
 msgid "Zoom is unavailable without video"
 msgstr "Видеогүй үед томруулах боломжгүй"
 
@@ -8568,19 +8661,19 @@ msgstr "Сонгосон зүйлсийг хасах"
 msgid "Add files to the queue"
 msgstr "Дараалалд файл нэмэх"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:629
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:630
 msgid "No results"
 msgstr "Үр дүн алга"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:630
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:631
 msgid "No content yet"
 msgstr "Агуулга одоогоор алга"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:646
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:647
 msgid "Drag & Drop some content here!"
 msgstr "Агуулгыг энд чирж оруулна уу!"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:711
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:712
 msgid "Play queue"
 msgstr "Тоглуулах дараалал"
 

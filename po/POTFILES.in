@@ -857,6 +857,7 @@ modules/gui/qt/medialibrary/mlplaylistmedia.cpp
 modules/gui/qt/medialibrary/mlplaylistmedia.hpp
 modules/gui/qt/medialibrary/mlplaylistmodel.cpp
 modules/gui/qt/medialibrary/mlplaylistmodel.hpp
+modules/gui/qt/medialibrary/mlsubtitlebatch.cpp
 modules/gui/qt/medialibrary/mlsubtitleassociations.cpp
 modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp
 modules/gui/qt/medialibrary/mlsubtitleassociations_targets.cpp
@@ -941,6 +942,7 @@ modules/gui/qt/player/sleep_timer.cpp
 modules/gui/qt/player/subtitle_cues.cpp
 modules/gui/qt/player/subtitle_finder.cpp
 modules/gui/qt/player/subtitle_providers.cpp
+modules/gui/qt/player/subtitle_search.cpp
 modules/gui/qt/player/waveform.cpp
 modules/gui/qt/player/qml/PlayerControlbarControls.qml
 modules/gui/qt/player/qml/NavigationBox.qml

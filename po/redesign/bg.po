@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-29 20:21+0000\n"
+"POT-Creation-Date: 2026-10-30 23:06+0000\n"
 "PO-Revision-Date: 2017-02-06 13:43+0000\n"
 "Last-Translator: Марин Минчев <marin.minchev@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -41,7 +41,7 @@ msgid "Play Queue"
 msgstr "Опашка за възпроизвеждане"
 
 #: include/vlc_config_cat.h:59
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1034
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1036
 msgid "Media Library Settings"
 msgstr "Настройки на медийната библиотека"
 
@@ -285,7 +285,7 @@ msgstr "Определя как се обработва паузата при щ
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1224
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:23
-#: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:144
+#: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:145
 msgid "Disabled"
 msgstr "Изключено"
 
@@ -1569,7 +1569,7 @@ msgid "It needs Windows 10 version 1809 or later."
 msgstr "Необходим е Windows 10 версия 1809 или по-нова."
 
 #: bin/winvlc.c:712 bin/winvlc.c:825
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:410
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:411
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:27
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignPluginsDialog.qml:30
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignStatisticsDialog.qml:26
@@ -1720,13 +1720,13 @@ msgid "Please enter the new playlist name:"
 msgstr "Въведете новото име на плейлиста:"
 
 #: modules/gui/macosx/library/VLCLibraryController.m:319
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:409
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:455
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:135
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:412
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:458
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:136
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:413
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:104
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:107
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:76
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:90
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:909
 msgid "Rename"
 msgstr "Преименуване"
@@ -1745,8 +1745,8 @@ msgstr "Добавяне в медийната библиотека"
 #: modules/gui/macosx/library/VLCLibraryMenuController.m:284
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:141
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:173
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:37
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:186
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:874
 msgid "Remove from Favorites"
 msgstr "Премахване от любими"
@@ -1886,70 +1886,70 @@ msgstr "Име на плейлиста"
 msgid "About VLC"
 msgstr "Относно VLC"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:197
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:198
 #: modules/gui/qt/dialogs/firstrun/qml/WhatsNewDialog.qml:63
 msgid "VLC Redesign"
 msgstr "VLC Redesign"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:238
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:239
 msgid "Version %1 · based on VLC %2"
 msgstr "Версия %1 · базирана на VLC %2"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:262
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:263
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:90
 msgid "Checking for updates…"
 msgstr "Проверка за актуализации…"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:263
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:264
 msgid "You have the latest version"
 msgstr "Имате най-новата версия"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:264
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:265
 msgid "Version %1 is available"
 msgstr "Налична е версия %1"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:266
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:267
 msgid "Downloading the update… %1%"
 msgstr "Изтегляне на актуализацията… %1%"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:267
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:268
 msgid "Preparing the update…"
 msgstr "Подготовка на актуализацията…"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:268
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:269
 msgid "Version %1 is ready: restart to finish"
 msgstr "Версия %1 е готова: рестартирайте, за да завършите"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:277
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:278
 msgid "What's new in %1"
 msgstr "Какво ново в %1"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:291
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:292
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:197
 msgid "Restart now"
 msgstr "Рестартиране сега"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:293
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:294
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:228
 msgid "Update now"
 msgstr "Актуализиране сега"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:293
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:294
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:226
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:188
 #: modules/gui/qt/network/standardpathmodel.cpp:153
 msgid "Download"
 msgstr "Изтегляне"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:294
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:295
 msgid "Check for updates"
 msgstr "Проверка за актуализации"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:330
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:331
 msgid "Interface designed by <font color=\"%1\">Juxtopposed</font>"
 msgstr "Интерфейс, създаден от <font color=\"%1\">Juxtopposed</font>"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:337
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:338
 msgid ""
 "Every screen comes from the \"VLC Redesign (Community)\" Figma file, "
 "licensed under CC BY 4.0. It was adapted to Qt and its icons were redrawn."
@@ -1957,50 +1957,50 @@ msgstr ""
 "Всеки екран идва от файла „VLC Redesign (Community)“ във Figma, лицензиран "
 "под CC BY 4.0. Той е адаптиран за Qt, а иконите му са преначертани."
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:342
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:343
 msgid "YouTube channel"
 msgstr "Канал в YouTube"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:343
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:344
 msgid "The redesign video"
 msgstr "Видеото за редизайна"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:344
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:345
 msgid "Figma file"
 msgstr "Файл във Figma"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:346
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:347
 msgid "CC BY 4.0"
 msgstr "CC BY 4.0"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:356
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:357
 msgid "First implementation by"
 msgstr "Първа реализация от"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:361
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:362
 msgid "Built on VLC media player by"
 msgstr "Изграден върху VLC media player от"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:362
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:363
 msgid "the VideoLAN team and contributors"
 msgstr "екипа на VideoLAN и сътрудниците"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:370
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:371
 msgid "Also on: %1"
 msgstr "Също за: %1"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:377
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:378
 #: modules/gui/qt/menus/qml/MainMenu.qml:173
 msgid "Suggest an idea"
 msgstr "Предлагане на идея"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:379
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:380
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:28
 #: modules/gui/qt/menus/qml/MainMenu.qml:178
 msgid "Report a problem"
 msgstr "Докладване на проблем"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:390
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:391
 msgid ""
 "An unofficial build, not affiliated with or endorsed by VideoLAN or "
 "Juxtopposed. VLC, VLC media player and the cone logo are trademarks of "
@@ -2010,11 +2010,11 @@ msgstr ""
 "е одобрена от тях. VLC, VLC media player и логото с конуса са търговски "
 "марки на VideoLAN. Свободен софтуер под GNU GPL v2 или по-нова версия."
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:400
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:401
 msgid "Licenses & authors"
 msgstr "Лицензи и автори"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:404
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:405
 msgid "GitHub"
 msgstr "GitHub"
 
@@ -2024,7 +2024,7 @@ msgstr "Информация за папката"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:29
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:119
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:189
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:202
 msgid "Show in File Explorer"
 msgstr "Показване във Файлов мениджър"
 
@@ -2047,12 +2047,12 @@ msgstr "Променена"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:66
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:27
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:34
 #: modules/gui/qt/medialibrary/qml/VideoGroupDisplay.qml:40
 #: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:84
 #: modules/gui/qt/medialibrary/qml/VideoListDisplay.qml:90
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:81
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:198
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:237
 #: modules/gui/qt/network/standardpathmodel.cpp:152
 #: modules/gui/qt/player/qml/CompactLibrary.qml:79
 #: modules/gui/qt/player/qml/CompactLibrary.qml:198
@@ -2235,7 +2235,7 @@ msgstr ""
 "%2"
 
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1425
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:49
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
 msgid "Export Playlist"
 msgstr "Експортиране на плейлиста"
@@ -2403,7 +2403,7 @@ msgstr "%1: изрязване в пиксели"
 msgid "Link top and bottom crop"
 msgstr "Свързване на изрязването отгоре и отдолу"
 
-#: modules/gui/qt/dialogs/extended/qml/CropPanel.qml:102
+#: modules/gui/qt/dialogs/extended/qml/CropPanel.qml:103
 msgid "Link left and right crop"
 msgstr "Свързване на изрязването отляво и отдясно"
 
@@ -2416,62 +2416,62 @@ msgstr "Пуснете медия, за да запазите ефектите �
 msgid "Effect preset: %1"
 msgstr "Шаблон на ефектите: %1"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:257
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:258
 msgid "Effect presets"
 msgstr "Шаблони на ефектите"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:272
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:454
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:273
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:457
 msgid "New Preset"
 msgstr "Нов шаблон"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:289
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:290
 msgid "Chosen preset"
 msgstr "Избран шаблон"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:372
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:110
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:375
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:111
 msgid "Actions of %1"
 msgstr "Действия за %1"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:420
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:423
 msgid "Update with current effects"
 msgstr "Обновяване с текущите ефекти"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:454
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:457
 msgid "Rename Preset"
 msgstr "Преименуване на шаблона"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:497
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:500
 msgid "Preset Name"
 msgstr "Име на шаблона"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:498
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:501
 msgid "The preset keeps its effects."
 msgstr "Шаблонът запазва ефектите си."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:499
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:502
 msgid "The preset keeps the audio and video effects in use."
 msgstr "Шаблонът запазва използваните аудио и видео ефекти."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:507
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:510
 msgid "e.g., Late Night Movies"
 msgstr "напр. Нощни филми"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:508
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:511
 msgid "Preset name"
 msgstr "Име на шаблона"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:526
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:529
 msgid "Delete Preset"
 msgstr "Изтриване на шаблона"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:552
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:555
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:493
 msgid "Delete %1?"
 msgstr "Изтриване на %1?"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:553
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:556
 msgid "The effects in use stay as they are."
 msgstr "Използваните ефекти остават непроменени."
 
@@ -2538,16 +2538,16 @@ msgstr "Пуснете видео, за да прегледате и редак�
 msgid "Open synchronization"
 msgstr "Отваряне на синхронизацията"
 
-#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:93
+#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:94
 msgid "%1 equalizer curve"
 msgstr "Крива на еквалайзера: %1"
 
-#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:160
-#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:177
+#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:163
+#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:180
 msgid "Two-pass equalizer"
 msgstr "Еквалайзер с двойно филтриране"
 
-#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:189
+#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:192
 #: modules/gui/qt/dialogs/extended/qml/FilterPanel.qml:92
 #: modules/gui/qt/dialogs/extended/qml/VideoEffectsPanel.qml:149
 msgid "Reset to defaults"
@@ -2662,11 +2662,11 @@ msgstr "Размиване при движение"
 msgid "Colors of %1"
 msgstr "Цветове на %1"
 
-#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:345
+#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:346
 msgid "Browse for %1"
 msgstr "Преглед за %1"
 
-#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:348
+#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:349
 msgid "Image Files (*.png *.jpg);;All Files (*)"
 msgstr "Файлове с изображения (*.png *.jpg);;Всички файлове (*)"
 
@@ -2815,16 +2815,16 @@ msgstr "Светла"
 msgid "System"
 msgstr "Система"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:335
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:337
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:222
 msgid "Accent color %1"
 msgstr "Акцентен цвят %1"
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:54
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:55
 msgid "Welcome to VLC!"
 msgstr "Добре дошли във VLC!"
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:72
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:73
 msgid ""
 "VLC is a free and open source cross-platform multimedia player and framework "
 "that plays most multimedia files as well as DVDs, Audio CDs, VCDs, and "
@@ -2834,15 +2834,15 @@ msgstr ""
 "код, който възпроизвежда повечето мултимедийни файлове, както и DVD, аудио "
 "CD, VCD и различни протоколи за поточно предаване."
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:93
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:94
 msgid "Choose a Media Folder to get started with"
 msgstr "Изберете медийна папка, за да започнете"
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:126
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:127
 msgid "No folder selected"
 msgstr "Не е избрана папка"
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:146
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:147
 msgid "Remove the folder"
 msgstr "Премахване на папката"
 
@@ -3633,17 +3633,17 @@ msgstr ""
 "Клавишните комбинации не можаха да бъдат запазени (грешка %1). Промените са "
 "отменени в паметта; проверете конфигурационния файл."
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:765
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:767
 msgid "System's default (%1)"
 msgstr "Системна стойност по подразбиране (%1)"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1439
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1444
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1441
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1446
 msgid "%1 (partial)"
 msgstr "%1 (частично)"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1839
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1849
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1852
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1862
 msgid "Please choose an entry point folder"
 msgstr "Изберете начална папка"
 
@@ -3701,14 +3701,15 @@ msgstr ""
 "и нищо друго."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:53
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:620
 msgid "Current output device"
 msgstr "Текущо изходно устройство"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:76
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:80
 msgid "No selectable device available"
 msgstr "Няма устройство за избор"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:141
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:164
 msgid ""
 "Device changes affect only the current audio output. Apply keeps this "
 "selection while it remains active."
@@ -3888,57 +3889,57 @@ msgstr "Втори език"
 msgid "OpenSubtitles"
 msgstr "OpenSubtitles"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:647
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:658
 msgid "No matching settings"
 msgstr "Няма съвпадащи настройки"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:648
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:659
 msgid "No settings are available for this category on this VLC installation"
 msgstr "Няма налични настройки за тази категория в тази инсталация на VLC"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:729
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:745
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:741
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:757
 msgid "Show installed add-ons only"
 msgstr "Само инсталираните добавки"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:761
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:773
 msgid "No advanced options on this page."
 msgstr "Няма допълнителни настройки на тази страница."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:773
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:785
 msgid "Welcome setup"
 msgstr "Първоначална настройка"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:787
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:799
 msgid "All VLC options"
 msgstr "Всички опции на VLC"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:803
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:815
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:356
 msgid "Reset all settings"
 msgstr "Нулиране на всички настройки"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:817
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:829
 msgid "Reset all settings?"
 msgstr "Нулиране на всички настройки?"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:818
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:830
 msgid "Every setting of VLC media player goes back to its default."
 msgstr ""
 "Всяка настройка на VLC media player се връща към стойността си по "
 "подразбиране."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:872
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:884
 msgid "Discard changes"
 msgstr "Отхвърляне на промените"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:124
-#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:117
+#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:118
 msgid "Close Equalizer"
 msgstr "Затваряне на еквалайзера"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:124
-#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:98
+#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:99
 msgid "Open Equalizer"
 msgstr "Отваряне на еквалайзера"
 
@@ -4170,7 +4171,7 @@ msgstr "1 сек."
 msgid "10 s"
 msgstr "10 сек."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:616
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:617
 msgid "Choose a color"
 msgstr "Изберете цвят"
 
@@ -5256,7 +5257,7 @@ msgstr "Указателите дават предаванията си на: %1
 
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:121
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:76
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:616
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:617
 msgid "Global Hotkey"
 msgstr "Глобална клавишна комбинация"
 
@@ -5332,11 +5333,11 @@ msgstr "Премахване на %1"
 msgid "Search Keyboard Shortcuts..."
 msgstr "Търсене на клавишни комбинации..."
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:711
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:712
 msgid "Hotkey of %1"
 msgstr "Клавишна комбинация за %1"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:722
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:723
 msgid "Global hotkey of %1"
 msgstr "Глобална клавишна комбинация за %1"
 
@@ -5439,7 +5440,7 @@ msgstr ""
 msgid "Profile (%1)"
 msgstr "Профил (%1)"
 
-#: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:88
+#: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:89
 msgid "Customize player"
 msgstr "Персонализиране на плейъра"
 
@@ -5448,11 +5449,11 @@ msgstr "Персонализиране на плейъра"
 msgid "Sleep timer"
 msgstr "Таймер за заспиване"
 
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:169
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:170
 msgid "Selected profile"
 msgstr "Избран профил"
 
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:236
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:237
 msgid "New profile…"
 msgstr "Нов профил…"
 
@@ -5635,8 +5636,8 @@ msgstr "Гледане от началото"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:142
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:174
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:37
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:187
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:874
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:81
 msgid "Favorite"
@@ -5694,26 +5695,26 @@ msgstr "Обновяване на каналите на %1…"
 msgid "%1 could not be loaded: %2"
 msgstr "%1 не може да бъде зареден: %2"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:502
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:503
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:580
 msgid "No channel matches the search"
 msgstr "Няма канал, отговарящ на търсенето"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:503
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:504
 msgid "No favorite channel yet: right-click a channel to add it"
 msgstr ""
 "Все още няма любим канал: щракнете с десния бутон върху канал, за да го "
 "добавите"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:504
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:505
 msgid "No channel watched yet"
 msgstr "Все още няма гледан канал"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:505
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:506
 msgid "Loading the channels…"
 msgstr "Зареждане на каналите…"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:506
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:507
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:810
 msgid "No channels"
 msgstr "Няма канали"
@@ -5736,19 +5737,19 @@ msgstr "По-късно"
 msgid "No guide for this channel"
 msgstr "Няма указател за този канал"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:182
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:183
 msgid "No account with films or series"
 msgstr "Няма акаунт с филми или сериали"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:183
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:184
 msgid "Loading…"
 msgstr "Зареждане…"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:183
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:184
 msgid "Nothing here"
 msgstr "Тук няма нищо"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:235
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:236
 msgid "S%1 E%2"
 msgstr "С%1 Е%2"
 
@@ -5934,7 +5935,7 @@ msgid "Updated %1 at %2"
 msgstr "Обновено %1 в %2"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:308
-#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:239
+#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:242
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:91
 msgid "Move up"
 msgstr "Преместване нагоре"
@@ -6147,7 +6148,7 @@ msgstr "MC"
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:96
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:32
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:39
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:54
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:61
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:53
@@ -6201,12 +6202,12 @@ msgstr "Откриване"
 msgid "Local top bar"
 msgstr "Локална горна лента"
 
-#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:187
+#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:188
 msgid "Show navigation menu"
 msgstr "Показване на навигационното меню"
 
-#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:250
-#: modules/gui/qt/player/qml/TopBar.qml:503
+#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:251
+#: modules/gui/qt/player/qml/TopBar.qml:505
 msgid "VLC Media Player"
 msgstr "VLC Media Player"
 
@@ -6319,7 +6320,7 @@ msgid "Re-check"
 msgstr "Нова проверка"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:34
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:41
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:224
 #: modules/gui/qt/player/qml/CompactLibrary.qml:83
 #: modules/gui/qt/player/qml/CompactLibrary.qml:297
@@ -6327,13 +6328,20 @@ msgid "Recent"
 msgstr "Скорошни"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:238
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:303
 msgid "Add item"
 msgstr "Добавяне на елемент"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:121
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:132
 msgid "Edit Sidebar…"
 msgstr "Редактиране на страничната лента…"
+
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:131
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:137
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
+msgid "Unpin from Sidebar"
+msgstr "Откачване от страничната лента"
 
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:34
 msgid "Reset to Default"
@@ -6355,12 +6363,12 @@ msgstr ""
 msgid "hidden"
 msgstr "скрита"
 
-#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:251
+#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:254
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:98
 msgid "Move down"
 msgstr "Преместване надолу"
 
-#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:262
+#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:265
 msgid "Show %1"
 msgstr "Показване на %1"
 
@@ -6419,6 +6427,15 @@ msgstr "Изтеглянето от OpenSubtitles е неуспешно. Про�
 #: modules/gui/qt/medialibrary/mlopensubtitles.cpp:223
 msgid "OpenSubtitles did not return a valid subtitle download link."
 msgstr "OpenSubtitles не върна валидна връзка за изтегляне на субтитри."
+
+#: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:188
+#: modules/gui/qt/player/subtitle_search.cpp:481
+msgid "This build can't search the internet."
+msgstr "Тази компилация не може да търси в интернет."
+
+#: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:207
+msgid "The subtitle services took too long to answer."
+msgstr "Услугите за субтитри не отговориха навреме."
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:121
 msgid "This media"
@@ -6497,12 +6514,12 @@ msgstr ""
 "файлове (*)"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:369
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:553
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:597
 msgid "Choose the folder of the audio tracks"
 msgstr "Изберете папката с аудио пътечките"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:370
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:554
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:598
 msgid "Choose the folder of the subtitles"
 msgstr "Изберете папката със субтитрите"
 
@@ -6538,32 +6555,32 @@ msgstr "Изберете поне един аудио файл."
 msgid "Choose at least one subtitle file."
 msgstr "Изберете поне един файл със субтитри."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:477
-msgid "An audio file is missing or unreadable: %1"
-msgstr "Аудио файл липсва или не може да бъде прочетен: %1"
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:478
-msgid "A subtitle file is missing or unreadable: %1"
-msgstr "Файл със субтитри липсва или не може да бъде прочетен: %1"
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:492
-msgid "The destination media could not be found in the library."
-msgstr "Медията на местоназначението не беше намерена в библиотеката."
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:509
-msgid "Could not save audio track association for %1."
-msgstr "Асоциацията на аудио пътечката за %1 не можа да бъде запазена."
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:510
-msgid "Could not save subtitle association for %1."
-msgstr "Асоциацията на субтитрите за %1 не можа да бъде запазена."
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:524
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:472
 #, c-format
 msgid ""
 " %n association(s) were saved before this error; those changes remain saved."
 msgstr ""
 " Асоциации, запазени преди тази грешка: %n; тези промени остават запазени."
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:498
+msgid "An audio file is missing or unreadable: %1"
+msgstr "Аудио файл липсва или не може да бъде прочетен: %1"
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:499
+msgid "A subtitle file is missing or unreadable: %1"
+msgstr "Файл със субтитри липсва или не може да бъде прочетен: %1"
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:513
+msgid "The destination media could not be found in the library."
+msgstr "Медията на местоназначението не беше намерена в библиотеката."
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:529
+msgid "Could not save audio track association for %1."
+msgstr "Асоциацията на аудио пътечката за %1 не можа да бъде запазена."
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:530
+msgid "Could not save subtitle association for %1."
+msgstr "Асоциацията на субтитрите за %1 не можа да бъде запазена."
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:47
 msgid "The subtitle filename is invalid."
@@ -6644,7 +6661,7 @@ msgstr "Неизвестен изпълнител"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:96
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:228
-#: modules/gui/qt/player/qml/ResumeDialog.qml:147
+#: modules/gui/qt/player/qml/ResumeDialog.qml:148
 #: modules/gui/qt/player/qml/CompactLibrary.qml:401
 msgid "Continue Watching"
 msgstr "Продължете гледането"
@@ -6790,7 +6807,7 @@ msgid "Remove from playlist"
 msgstr "Премахване от плейлиста"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:222
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:252
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:260
 msgid "Processing..."
 msgstr "Обработка..."
 
@@ -6814,15 +6831,15 @@ msgid_plural "Delete playlists"
 msgstr[0] "Изтриване на плейлиста"
 msgstr[1] "Изтриване на плейлистите"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:368
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:376
 msgid "Items"
 msgstr "Елементи"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:455
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:463
 msgid "No playlists found"
 msgstr "Не са намерени плейлисти"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:456
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:464
 msgid "Create a playlist with files or add media from the library"
 msgstr "Създайте плейлист с файлове или добавете медия от библиотеката"
 
@@ -6883,45 +6900,45 @@ msgid "Channel:"
 msgstr "Канал:"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:82
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:168
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:181
 msgid "Mark as Unwatched"
 msgstr "Маркиране като негледано"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:82
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:169
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:182
 msgid "Mark as Watched"
 msgstr "Маркиране като гледано"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:110
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:183
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:53
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:196
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:54
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:891
 msgid "Add to Queue"
 msgstr "Добавяне в опашката"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:126
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:193
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:206
 msgid "Go to Source"
 msgstr "Към източника"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:134
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:207
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:57
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:220
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:58
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:899
 msgid "Add Subtitle Tracks"
 msgstr "Добавяне на пътечки със субтитри"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:140
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:209
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:62
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:75
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:222
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:63
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:93
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:903
 msgid "Add Audio Tracks"
 msgstr "Добавяне на аудио пътечки"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:146
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:211
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:69
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:224
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:70
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:31
 msgid "Properties & Metadata"
 msgstr "Свойства и метаданни"
@@ -6987,27 +7004,32 @@ msgstr "Редактиране на аудио пътечките"
 msgid "Resync"
 msgstr "Повторна синхронизация"
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:546
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:138
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
+msgid "Pin to Sidebar"
+msgstr "Закачване в страничната лента"
+
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:560
 msgid "No media matches the search"
 msgstr "Няма медии, отговарящи на търсенето"
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:547
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:561
 msgid "No media in this folder"
 msgstr "Няма медии в тази папка"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:42
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:43
 msgid "Add folder"
 msgstr "Добавяне на папка"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:45
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:46
 msgid "Add folder to media library"
 msgstr "Добавяне на папка в медийната библиотека"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:53
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:54
 msgid "Could not add this folder to the library: %1"
 msgstr "Тази папка не можа да бъде добавена в библиотеката: %1"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:54
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:55
 msgid "Media library"
 msgstr "Медийна библиотека"
 
@@ -7121,74 +7143,158 @@ msgstr[1] "%1 елемента"
 msgid "Length"
 msgstr "Продължителност"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:36
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:38
 msgid "To This Folder"
 msgstr "Към тази папка"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:37
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:39
 msgid "To This Playlist"
 msgstr "Към този плейлист"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:38
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:40
 msgid "To This File"
 msgstr "Към този файл"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:75
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:93
 msgid "Add Subtitles"
 msgstr "Добавяне на субтитри"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:530
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:532
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:533
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:100
+msgid "Download %1"
+msgstr "Изтегляне (%1)"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:186
+msgid "%1 linked, %2 failed."
+msgstr "Свързани: %1, неуспешни: %2."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:187
+msgid "Nothing was linked: %1 failed."
+msgstr "Нищо не е свързано: неуспешни %1."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:574
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:576
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:577
 msgid "From Computer"
 msgstr "От компютъра"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:532
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:533
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:576
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:577
 msgid "From Link"
 msgstr "От връзка"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:532
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:576
 msgid "From OpenSubtitles"
 msgstr "От OpenSubtitles"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:602
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:577
+msgid "From the Internet"
+msgstr "От интернет"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:646
 msgid "Direct HTTPS link to a subtitle file"
 msgstr "Пряка HTTPS връзка към файл със субтитри"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:617
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:661
 msgid "Title or episode"
 msgstr "Заглавие или епизод"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:784
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:692
+msgid "%1, else %2"
+msgstr "%1, иначе %2"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:698
+msgid "Every subtitle service is off (Subtitles panel of the player)"
+msgstr "Всички услуги за субтитри са изключени (панелът „Субтитри“ на плейъра)"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:862
 msgid "OpenSubtitles API key"
 msgstr "API ключ за OpenSubtitles"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:899
-msgid "Searching OpenSubtitles…"
-msgstr "Търсене в OpenSubtitles…"
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1001
+msgid "Waiting…"
+msgstr "Изчакване…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:901
-msgid "Search OpenSubtitles to see the subtitle files."
-msgstr "Потърсете в OpenSubtitles, за да видите файловете със субтитри."
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1002
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:365
+msgid "Searching…"
+msgstr "Търсене…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:904
-msgid "Working on audio tracks…"
-msgstr "Обработка на аудио пътечките…"
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1004
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:444
+msgid "For this file"
+msgstr "За този файл"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:904
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1005
+msgid "Best guess"
+msgstr "Най-добро предположение"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1006
+msgid "Not found"
+msgstr "Не е намерено"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1007
+msgid "No answer"
+msgstr "Няма отговор"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1008
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:264
+msgid "Downloading…"
+msgstr "Изтегляне…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1009
+msgid "Linked"
+msgstr "Свързано"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1108
+msgid "Don't download"
+msgstr "Без изтегляне"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1112
+msgid "Subtitle for %1"
+msgstr "Субтитри за %1"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1131
+msgid "Downloading and linking the subtitles chosen…"
+msgstr "Изтегляне и свързване на избраните субтитри…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1133
+msgid "Searching the internet: %1 of %2 videos done…"
+msgstr "Търсене в интернет: готови %1 от %2 видеоклипа…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1134
+msgid "For the file: %1 · By title: %2 · Not found: %3"
+msgstr "За файла: %1 · По заглавие: %2 · Не са намерени: %3"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1137
+msgid "No answer: %1"
+msgstr "Няма отговор: %1"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1160
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on subtitles…"
 msgstr "Обработка на субтитрите…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:907
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1165
+msgid "Searching OpenSubtitles…"
+msgstr "Търсене в OpenSubtitles…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1167
+msgid "Search OpenSubtitles to see the subtitle files."
+msgstr "Потърсете в OpenSubtitles, за да видите файловете със субтитри."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
+msgid "Working on audio tracks…"
+msgstr "Обработка на аудио пътечките…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1173
 msgid "Enter a direct link to a subtitle file above."
 msgstr "Въведете пряка връзка към файл със субтитри по-горе."
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:908
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1174
 msgid "No audio file in this folder: choose another one above."
 msgstr "В тази папка няма аудио файл: изберете друга по-горе."
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:909
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1175
 msgid "No subtitle file in this folder: choose another one above."
 msgstr "В тази папка няма файл със субтитри: изберете друга по-горе."
 
@@ -7531,41 +7637,6 @@ msgstr "Стартирайте възпроизвеждане, преди да �
 msgid "Choose a duration between one second and 24 hours."
 msgstr "Изберете продължителност между една секунда и 24 часа."
 
-#: modules/gui/qt/player/subtitle_finder.cpp:742
-msgid "This build can't search the internet."
-msgstr "Тази компилация не може да търси в интернет."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1254
-#: modules/gui/qt/player/subtitle_finder.cpp:1512
-msgid "No connection to the internet."
-msgstr "Няма връзка с интернет."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1257
-msgid "The video couldn't be identified from its name."
-msgstr "Видеото не можа да бъде разпознато по името си."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1258
-msgid "\"%1\" wasn't found. Search for its title."
-msgstr "„%1“ не е намерено. Потърсете по заглавието му."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1260
-msgid "No subtitles were found for %1."
-msgstr "Не са намерени субтитри за %1."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1513
-msgid "The subtitle couldn't be downloaded (%1)."
-msgstr "Субтитрите не можаха да бъдат изтеглени (%1)."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1543
-msgid "The subtitle couldn't be saved."
-msgstr "Субтитрите не можаха да бъдат запазени."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1553
-#: modules/gui/qt/player/subtitle_providers.cpp:922
-#: modules/gui/qt/player/subtitle_providers.cpp:955
-msgid "The subtitle couldn't be unpacked."
-msgstr "Субтитрите не можаха да бъдат разархивирани."
-
 #: modules/gui/qt/player/subtitle_providers.cpp:87
 msgid "%1 didn't answer."
 msgstr "%1 не отговори."
@@ -7599,6 +7670,12 @@ msgstr "Филми · много езици"
 msgid "This subtitle comes as a RAR archive, which can't be opened here."
 msgstr "Тези субтитри са в RAR архив, който не може да бъде отворен тук."
 
+#: modules/gui/qt/player/subtitle_providers.cpp:922
+#: modules/gui/qt/player/subtitle_providers.cpp:955
+#: modules/gui/qt/player/subtitle_search.cpp:1140
+msgid "The subtitle couldn't be unpacked."
+msgstr "Субтитрите не можаха да бъдат разархивирани."
+
 #: modules/gui/qt/player/subtitle_providers.cpp:956
 msgid "The archive has no subtitle in it."
 msgstr "В архива няма субтитри."
@@ -7612,6 +7689,32 @@ msgstr ""
 #: modules/gui/qt/player/subtitle_providers.cpp:974
 msgid "The subtitle is empty."
 msgstr "Субтитрите са празни."
+
+#: modules/gui/qt/player/subtitle_search.cpp:1017
+#: modules/gui/qt/player/subtitle_search.cpp:1100
+msgid "No connection to the internet."
+msgstr "Няма връзка с интернет."
+
+#: modules/gui/qt/player/subtitle_search.cpp:1020
+msgid "The video couldn't be identified from its name."
+msgstr "Видеото не можа да бъде разпознато по името си."
+
+#: modules/gui/qt/player/subtitle_search.cpp:1021
+msgid "\"%1\" wasn't found. Search for its title."
+msgstr "„%1“ не е намерено. Потърсете по заглавието му."
+
+#: modules/gui/qt/player/subtitle_search.cpp:1023
+msgid "No subtitles were found for %1."
+msgstr "Не са намерени субтитри за %1."
+
+#: modules/gui/qt/player/subtitle_search.cpp:1065
+#: modules/gui/qt/player/subtitle_search.cpp:1101
+msgid "The subtitle couldn't be downloaded (%1)."
+msgstr "Субтитрите не можаха да бъдат изтеглени (%1)."
+
+#: modules/gui/qt/player/subtitle_search.cpp:1131
+msgid "The subtitle couldn't be saved."
+msgstr "Субтитрите не можаха да бъдат запазени."
 
 #: modules/gui/qt/player/waveform.cpp:230
 msgid "Waveform analyzer is unavailable."
@@ -7695,7 +7798,7 @@ msgid "Artist Name"
 msgstr "Име на изпълнителя"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:82
-#: modules/gui/qt/player/qml/controlbarcontrols/DividerWidget.qml:21
+#: modules/gui/qt/player/qml/controlbarcontrols/DividerWidget.qml:22
 msgid "Divider"
 msgstr "Разделител"
 
@@ -7805,63 +7908,63 @@ msgstr "Субтитри на телевизора: %1"
 msgid "Subtitles off on the TV"
 msgstr "Субтитрите на телевизора са изключени"
 
-#: modules/gui/qt/player/qml/Player.qml:1229
+#: modules/gui/qt/player/qml/Player.qml:1230
 msgid "Not playing on %1"
 msgstr "Не се възпроизвежда на %1"
 
-#: modules/gui/qt/player/qml/Player.qml:1231
-#: modules/gui/qt/player/qml/Player.qml:1358
+#: modules/gui/qt/player/qml/Player.qml:1232
+#: modules/gui/qt/player/qml/Player.qml:1359
 msgid "Connecting to %1…"
 msgstr "Свързване с %1…"
 
-#: modules/gui/qt/player/qml/Player.qml:1233
+#: modules/gui/qt/player/qml/Player.qml:1234
 msgid "Playing on %1"
 msgstr "Възпроизвежда се на %1"
 
-#: modules/gui/qt/player/qml/Player.qml:1234
+#: modules/gui/qt/player/qml/Player.qml:1235
 msgid "The sound plays on %1"
 msgstr "Звукът се възпроизвежда на %1"
 
-#: modules/gui/qt/player/qml/Player.qml:1259
+#: modules/gui/qt/player/qml/Player.qml:1260
 msgid "Pause, seek and change the subtitles here: the TV follows."
 msgstr ""
 "Поставяйте на пауза, превъртайте и сменяйте субтитрите оттук: телевизорът "
 "следва."
 
-#: modules/gui/qt/player/qml/Player.qml:1276
+#: modules/gui/qt/player/qml/Player.qml:1277
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the media."
 msgstr ""
 "Защитната стена на Windows не позволява на %1 да се свърже с този компютър, "
 "за да прочете медията."
 
-#: modules/gui/qt/player/qml/Player.qml:1288
+#: modules/gui/qt/player/qml/Player.qml:1289
 msgid "Waiting for Windows…"
 msgstr "Изчакване на Windows…"
 
-#: modules/gui/qt/player/qml/Player.qml:1289
+#: modules/gui/qt/player/qml/Player.qml:1290
 msgid "Allow on public networks too"
 msgstr "Разрешаване и в публични мрежи"
 
-#: modules/gui/qt/player/qml/Player.qml:1290
+#: modules/gui/qt/player/qml/Player.qml:1291
 msgid "Allow on private networks"
 msgstr "Разрешаване в частни мрежи"
 
-#: modules/gui/qt/player/qml/Player.qml:1302
+#: modules/gui/qt/player/qml/Player.qml:1303
 msgid "Try again"
 msgstr "Нов опит"
 
-#: modules/gui/qt/player/qml/Player.qml:1307
-#: modules/gui/qt/player/qml/Player.qml:1317
+#: modules/gui/qt/player/qml/Player.qml:1308
+#: modules/gui/qt/player/qml/Player.qml:1318
 msgid "Play here"
 msgstr "Възпроизвеждане тук"
 
-#: modules/gui/qt/player/qml/Player.qml:1317
-#: modules/gui/qt/player/qml/Player.qml:1368
+#: modules/gui/qt/player/qml/Player.qml:1318
+#: modules/gui/qt/player/qml/Player.qml:1369
 msgid "Stop casting"
 msgstr "Спиране на предаването"
 
-#: modules/gui/qt/player/qml/Player.qml:1359
+#: modules/gui/qt/player/qml/Player.qml:1360
 msgid "Also on %1"
 msgstr "Също и на %1"
 
@@ -7869,11 +7972,11 @@ msgstr "Също и на %1"
 msgid "Resume dialog"
 msgstr "Прозорец за продължаване"
 
-#: modules/gui/qt/player/qml/ResumeDialog.qml:136
+#: modules/gui/qt/player/qml/ResumeDialog.qml:137
 msgid "You’ve watched till %1 already."
 msgstr "Вече сте гледали до %1."
 
-#: modules/gui/qt/player/qml/ResumeDialog.qml:138
+#: modules/gui/qt/player/qml/ResumeDialog.qml:139
 msgid "Continue where you left off?"
 msgstr "Да продължите ли оттам, докъдето сте стигнали?"
 
@@ -7881,7 +7984,7 @@ msgstr "Да продължите ли оттам, докъдето сте ст�
 msgid "Player topbar"
 msgstr "Горна лента на плейъра"
 
-#: modules/gui/qt/player/qml/TopBar.qml:439
+#: modules/gui/qt/player/qml/TopBar.qml:440
 msgid "Show %1 in the library"
 msgstr "Показване на %1 в библиотеката"
 
@@ -7935,7 +8038,7 @@ msgstr "Отметките изискват медийната библиоте�
 msgid "Show Preferences"
 msgstr "Показване на настройките"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:556
+#: modules/gui/qt/player/qml/TracksMenu.qml:557
 #: modules/gui/qt/player/qml/TracksPageAudio.qml:37
 #: modules/gui/qt/player/qml/TracksPageSubtitle.qml:37
 #: modules/gui/qt/player/qml/SubtitleSyncTimeline.qml:42
@@ -7987,7 +8090,7 @@ msgstr "Синхронизиране на текста с позицията н�
 msgid "Volume %1%"
 msgstr "Сила на звука %1%"
 
-#: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:207
+#: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:211
 msgid "Play audio to select a visualization."
 msgstr "Пуснете аудио, за да изберете визуализация."
 
@@ -8340,10 +8443,6 @@ msgstr "Търсене в %1…"
 msgid "Searching subtitles online…"
 msgstr "Търсене на субтитри онлайн…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:264
-msgid "Downloading…"
-msgstr "Изтегляне…"
-
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:266
 msgid "%1 · %2 found"
 msgstr "%1 · намерени: %2"
@@ -8385,10 +8484,6 @@ msgstr "Зареждане на файл със субтитри за възпр
 msgid "Title of the movie or series"
 msgstr "Заглавие на филма или сериала"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:365
-msgid "Searching…"
-msgstr "Търсене…"
-
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:408
 msgid "Second"
 msgstr "Втори"
@@ -8397,10 +8492,6 @@ msgstr "Втори"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Често използван"
-
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:444
-msgid "For this file"
-msgstr "За този файл"
 
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:465
 msgid "Looking for subtitles…"
@@ -8445,11 +8536,11 @@ msgstr "По-малки субтитри"
 msgid "Larger subtitles"
 msgstr "По-големи субтитри"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:773
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:774
 msgid "HI"
 msgstr "HI"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:778
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:779
 msgid "For the hearing impaired"
 msgstr "За хора с увреден слух"
 
@@ -8527,37 +8618,37 @@ msgstr "Опашка за възпроизвеждане (%1/%2)"
 msgid "Casting to %1"
 msgstr "Предаване към %1"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:128
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:134
 msgid "Cast to"
 msgstr "Предаване към"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:153
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:160
 msgid "This computer"
 msgstr "Този компютър"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:182
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:189
 msgid "Not playing: choose it to try again"
 msgstr "Не се възпроизвежда: изберете го за нов опит"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:184
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:191
 msgid "Connecting…"
 msgstr "Свързване…"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:185
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:192
 msgid "Sound only"
 msgstr "Само звук"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:208
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:215
 msgid "Show %1 hidden device"
 msgid_plural "Show %1 hidden devices"
 msgstr[0] "Показване на %1 скрито устройство"
 msgstr[1] "Показване на %1 скрити устройства"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:221
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:228
 msgid "Looking for TVs and Chromecasts on your network…"
 msgstr "Търсене на телевизори и Chromecast устройства в мрежата ви…"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:222
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:229
 msgid ""
 "No device found. Turn your TV or Chromecast on, on the same network as this "
 "computer."
@@ -8565,23 +8656,23 @@ msgstr ""
 "Няма намерено устройство. Включете телевизора или Chromecast в същата мрежа "
 "като този компютър."
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:236
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:251
 msgid "Show the video here too"
 msgstr "Показване на видеото и тук"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:286
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:301
 msgid "With a Chromecast, the video plays only there."
 msgstr "С Chromecast видеото се възпроизвежда само там."
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:297
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:312
 msgid "The subtitles shown go to the TV with the picture."
 msgstr "Показаните субтитри се изпращат към телевизора заедно с картината."
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:314
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:329
 msgid "Hide this device"
 msgstr "Скриване на това устройство"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:358
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:373
 msgid "playing here"
 msgstr "възпроизвежда се тук"
 
@@ -8609,11 +8700,11 @@ msgstr "Напред 15 секунди"
 msgid "%1 %"
 msgstr "%1 %"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:65
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:66
 msgid "Choose a video zoom level"
 msgstr "Изберете ниво на мащабиране на видеото"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:66
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:67
 msgid "Zoom is unavailable without video"
 msgstr "Мащабирането не е налично без видео"
 
@@ -8637,19 +8728,19 @@ msgstr "Премахване на избраните елементи"
 msgid "Add files to the queue"
 msgstr "Добавяне на файлове в опашката"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:629
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:630
 msgid "No results"
 msgstr "Няма резултати"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:630
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:631
 msgid "No content yet"
 msgstr "Още няма съдържание"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:646
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:647
 msgid "Drag & Drop some content here!"
 msgstr "Плъзнете и пуснете съдържание тук!"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:711
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:712
 msgid "Play queue"
 msgstr "Опашка за възпроизвеждане"
 

@@ -31,7 +31,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-29 20:21+0000\n"
+"POT-Creation-Date: 2026-10-30 23:06+0000\n"
 "PO-Revision-Date: 2017-09-20 03:42+0000\n"
 "Last-Translator: Fan\n"
 "Language-Team: French (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -53,7 +53,7 @@ msgid "Play Queue"
 msgstr "File de lecture"
 
 #: include/vlc_config_cat.h:59
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1034
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1036
 msgid "Media Library Settings"
 msgstr "Paramètres de la médiathèque"
 
@@ -299,7 +299,7 @@ msgstr "Détermine comment la pause par clic de souris est gérée"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1224
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:23
-#: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:144
+#: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:145
 msgid "Disabled"
 msgstr "Désactivé"
 
@@ -1591,7 +1591,7 @@ msgid "It needs Windows 10 version 1809 or later."
 msgstr "Windows 10 version 1809 ou ultérieure est nécessaire."
 
 #: bin/winvlc.c:712 bin/winvlc.c:825
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:410
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:411
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:27
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignPluginsDialog.qml:30
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignStatisticsDialog.qml:26
@@ -1747,13 +1747,13 @@ msgid "Please enter the new playlist name:"
 msgstr "Saisissez le nouveau nom de la liste de lecture :"
 
 #: modules/gui/macosx/library/VLCLibraryController.m:319
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:409
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:455
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:135
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:412
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:458
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:136
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:413
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:104
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:107
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:76
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:90
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:909
 msgid "Rename"
 msgstr "Renommer"
@@ -1772,8 +1772,8 @@ msgstr "Ajouter à la médiathèque"
 #: modules/gui/macosx/library/VLCLibraryMenuController.m:284
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:141
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:173
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:37
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:186
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:874
 msgid "Remove from Favorites"
 msgstr "Retirer des favoris"
@@ -1914,70 +1914,70 @@ msgstr "Nom de la liste de lecture"
 msgid "About VLC"
 msgstr "À propos de VLC"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:197
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:198
 #: modules/gui/qt/dialogs/firstrun/qml/WhatsNewDialog.qml:63
 msgid "VLC Redesign"
 msgstr "VLC Redesign"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:238
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:239
 msgid "Version %1 · based on VLC %2"
 msgstr "Version %1 · basée sur VLC %2"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:262
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:263
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:90
 msgid "Checking for updates…"
 msgstr "Recherche de mises à jour…"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:263
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:264
 msgid "You have the latest version"
 msgstr "Vous avez la dernière version"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:264
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:265
 msgid "Version %1 is available"
 msgstr "La version %1 est disponible"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:266
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:267
 msgid "Downloading the update… %1%"
 msgstr "Téléchargement de la mise à jour… %1 %"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:267
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:268
 msgid "Preparing the update…"
 msgstr "Préparation de la mise à jour…"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:268
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:269
 msgid "Version %1 is ready: restart to finish"
 msgstr "La version %1 est prête : redémarrez pour terminer"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:277
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:278
 msgid "What's new in %1"
 msgstr "Nouveautés de la version %1"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:291
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:292
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:197
 msgid "Restart now"
 msgstr "Redémarrer"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:293
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:294
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:228
 msgid "Update now"
 msgstr "Mettre à jour"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:293
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:294
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:226
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:188
 #: modules/gui/qt/network/standardpathmodel.cpp:153
 msgid "Download"
 msgstr "Télécharger"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:294
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:295
 msgid "Check for updates"
 msgstr "Rechercher des mises à jour"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:330
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:331
 msgid "Interface designed by <font color=\"%1\">Juxtopposed</font>"
 msgstr "Interface conçue par <font color=\"%1\">Juxtopposed</font>"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:337
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:338
 msgid ""
 "Every screen comes from the \"VLC Redesign (Community)\" Figma file, "
 "licensed under CC BY 4.0. It was adapted to Qt and its icons were redrawn."
@@ -1985,50 +1985,50 @@ msgstr ""
 "Chaque écran provient du fichier Figma « VLC Redesign (Community) », sous "
 "licence CC BY 4.0. Il a été adapté à Qt et ses icônes ont été redessinées."
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:342
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:343
 msgid "YouTube channel"
 msgstr "Chaîne YouTube"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:343
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:344
 msgid "The redesign video"
 msgstr "La vidéo de la refonte"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:344
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:345
 msgid "Figma file"
 msgstr "Fichier Figma"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:346
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:347
 msgid "CC BY 4.0"
 msgstr "CC BY 4.0"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:356
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:357
 msgid "First implementation by"
 msgstr "Première implémentation par"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:361
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:362
 msgid "Built on VLC media player by"
 msgstr "Basé sur VLC media player, par"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:362
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:363
 msgid "the VideoLAN team and contributors"
 msgstr "l'équipe VideoLAN et ses contributeurs"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:370
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:371
 msgid "Also on: %1"
 msgstr "Aussi sur : %1"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:377
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:378
 #: modules/gui/qt/menus/qml/MainMenu.qml:173
 msgid "Suggest an idea"
 msgstr "Suggérer une idée"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:379
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:380
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:28
 #: modules/gui/qt/menus/qml/MainMenu.qml:178
 msgid "Report a problem"
 msgstr "Signaler un problème"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:390
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:391
 msgid ""
 "An unofficial build, not affiliated with or endorsed by VideoLAN or "
 "Juxtopposed. VLC, VLC media player and the cone logo are trademarks of "
@@ -2038,11 +2038,11 @@ msgstr ""
 "approuvée par eux. VLC, VLC media player et le logo du cône sont des marques "
 "de VideoLAN. Logiciel libre sous licence GNU GPL v2 ou ultérieure."
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:400
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:401
 msgid "Licenses & authors"
 msgstr "Licences et auteurs"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:404
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:405
 msgid "GitHub"
 msgstr "GitHub"
 
@@ -2052,7 +2052,7 @@ msgstr "Informations sur le dossier"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:29
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:119
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:189
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:202
 msgid "Show in File Explorer"
 msgstr "Afficher dans l'Explorateur de fichiers"
 
@@ -2075,12 +2075,12 @@ msgstr "Modifié le"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:66
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:27
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:34
 #: modules/gui/qt/medialibrary/qml/VideoGroupDisplay.qml:40
 #: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:84
 #: modules/gui/qt/medialibrary/qml/VideoListDisplay.qml:90
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:81
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:198
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:237
 #: modules/gui/qt/network/standardpathmodel.cpp:152
 #: modules/gui/qt/player/qml/CompactLibrary.qml:79
 #: modules/gui/qt/player/qml/CompactLibrary.qml:198
@@ -2263,7 +2263,7 @@ msgstr ""
 "%2"
 
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1425
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:49
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
 msgid "Export Playlist"
 msgstr "Exporter la liste de lecture"
@@ -2433,7 +2433,7 @@ msgstr "Rognage %1 en pixels"
 msgid "Link top and bottom crop"
 msgstr "Lier les rognages haut et bas"
 
-#: modules/gui/qt/dialogs/extended/qml/CropPanel.qml:102
+#: modules/gui/qt/dialogs/extended/qml/CropPanel.qml:103
 msgid "Link left and right crop"
 msgstr "Lier les rognages gauche et droite"
 
@@ -2446,62 +2446,62 @@ msgstr "Lisez un média pour enregistrer ses effets comme préréglage."
 msgid "Effect preset: %1"
 msgstr "Préréglage d'effets : %1"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:257
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:258
 msgid "Effect presets"
 msgstr "Préréglages d'effets"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:272
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:454
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:273
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:457
 msgid "New Preset"
 msgstr "Nouveau préréglage"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:289
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:290
 msgid "Chosen preset"
 msgstr "Préréglage choisi"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:372
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:110
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:375
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:111
 msgid "Actions of %1"
 msgstr "Actions pour %1"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:420
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:423
 msgid "Update with current effects"
 msgstr "Mettre à jour avec les effets actuels"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:454
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:457
 msgid "Rename Preset"
 msgstr "Renommer le préréglage"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:497
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:500
 msgid "Preset Name"
 msgstr "Nom du préréglage"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:498
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:501
 msgid "The preset keeps its effects."
 msgstr "Le préréglage conserve ses effets."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:499
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:502
 msgid "The preset keeps the audio and video effects in use."
 msgstr "Le préréglage conserve les effets audio et vidéo en cours."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:507
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:510
 msgid "e.g., Late Night Movies"
 msgstr "ex. : Films du soir"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:508
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:511
 msgid "Preset name"
 msgstr "Nom du préréglage"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:526
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:529
 msgid "Delete Preset"
 msgstr "Supprimer le préréglage"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:552
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:555
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:493
 msgid "Delete %1?"
 msgstr "Supprimer %1 ?"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:553
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:556
 msgid "The effects in use stay as they are."
 msgstr "Les effets en cours restent inchangés."
 
@@ -2569,16 +2569,16 @@ msgstr "Lisez une vidéo pour prévisualiser et modifier les effets."
 msgid "Open synchronization"
 msgstr "Ouvrir la synchronisation"
 
-#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:93
+#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:94
 msgid "%1 equalizer curve"
 msgstr "Courbe d'égaliseur %1"
 
-#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:160
-#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:177
+#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:163
+#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:180
 msgid "Two-pass equalizer"
 msgstr "Égaliseur à deux passes"
 
-#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:189
+#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:192
 #: modules/gui/qt/dialogs/extended/qml/FilterPanel.qml:92
 #: modules/gui/qt/dialogs/extended/qml/VideoEffectsPanel.qml:149
 msgid "Reset to defaults"
@@ -2693,11 +2693,11 @@ msgstr "Flou de mouvement"
 msgid "Colors of %1"
 msgstr "Couleurs de %1"
 
-#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:345
+#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:346
 msgid "Browse for %1"
 msgstr "Parcourir pour %1"
 
-#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:348
+#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:349
 msgid "Image Files (*.png *.jpg);;All Files (*)"
 msgstr "Fichiers image (*.png *.jpg);;Tous les fichiers (*)"
 
@@ -2849,16 +2849,16 @@ msgstr "Clair"
 msgid "System"
 msgstr "Système"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:335
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:337
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:222
 msgid "Accent color %1"
 msgstr "Couleur d'accentuation %1"
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:54
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:55
 msgid "Welcome to VLC!"
 msgstr "Bienvenue dans VLC !"
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:72
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:73
 msgid ""
 "VLC is a free and open source cross-platform multimedia player and framework "
 "that plays most multimedia files as well as DVDs, Audio CDs, VCDs, and "
@@ -2868,15 +2868,15 @@ msgstr ""
 "multiplateforme, qui lit la plupart des fichiers multimédias ainsi que les "
 "DVD, CD audio, VCD et divers protocoles de diffusion."
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:93
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:94
 msgid "Choose a Media Folder to get started with"
 msgstr "Choisissez un dossier multimédia pour commencer"
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:126
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:127
 msgid "No folder selected"
 msgstr "Aucun dossier sélectionné"
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:146
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:147
 msgid "Remove the folder"
 msgstr "Retirer le dossier"
 
@@ -3678,17 +3678,17 @@ msgstr ""
 "Impossible d'enregistrer les raccourcis (erreur %1). Les modifications ont "
 "été annulées en mémoire ; vérifiez le fichier de configuration."
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:765
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:767
 msgid "System's default (%1)"
 msgstr "Par défaut du système (%1)"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1439
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1444
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1441
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1446
 msgid "%1 (partial)"
 msgstr "%1 (partiel)"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1839
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1849
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1852
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1862
 msgid "Please choose an entry point folder"
 msgstr "Choisissez un dossier de point d'entrée"
 
@@ -3746,14 +3746,15 @@ msgstr ""
 "sur une partie du fichier), et rien d'autre."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:53
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:620
 msgid "Current output device"
 msgstr "Périphérique de sortie actuel"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:76
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:80
 msgid "No selectable device available"
 msgstr "Aucun périphérique sélectionnable disponible"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:141
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:164
 msgid ""
 "Device changes affect only the current audio output. Apply keeps this "
 "selection while it remains active."
@@ -3933,57 +3934,57 @@ msgstr "Seconde langue"
 msgid "OpenSubtitles"
 msgstr "OpenSubtitles"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:647
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:658
 msgid "No matching settings"
 msgstr "Aucun paramètre correspondant"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:648
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:659
 msgid "No settings are available for this category on this VLC installation"
 msgstr ""
 "Aucun paramètre n'est disponible pour cette catégorie dans cette "
 "installation de VLC"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:729
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:745
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:741
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:757
 msgid "Show installed add-ons only"
 msgstr "Afficher uniquement les extensions installées"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:761
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:773
 msgid "No advanced options on this page."
 msgstr "Aucune option avancée sur cette page."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:773
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:785
 msgid "Welcome setup"
 msgstr "Configuration initiale"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:787
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:799
 msgid "All VLC options"
 msgstr "Toutes les options de VLC"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:803
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:815
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:356
 msgid "Reset all settings"
 msgstr "Réinitialiser tous les paramètres"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:817
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:829
 msgid "Reset all settings?"
 msgstr "Réinitialiser tous les paramètres ?"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:818
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:830
 msgid "Every setting of VLC media player goes back to its default."
 msgstr "Chaque paramètre de VLC media player revient à sa valeur par défaut."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:872
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:884
 msgid "Discard changes"
 msgstr "Annuler les modifications"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:124
-#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:117
+#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:118
 msgid "Close Equalizer"
 msgstr "Fermer l'égaliseur"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:124
-#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:98
+#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:99
 msgid "Open Equalizer"
 msgstr "Ouvrir l'égaliseur"
 
@@ -4216,7 +4217,7 @@ msgstr "1 s"
 msgid "10 s"
 msgstr "10 s"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:616
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:617
 msgid "Choose a color"
 msgstr "Choisir une couleur"
 
@@ -5300,7 +5301,7 @@ msgstr "Les guides donnent leurs programmes en : %1"
 
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:121
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:76
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:616
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:617
 msgid "Global Hotkey"
 msgstr "Raccourci global"
 
@@ -5377,11 +5378,11 @@ msgstr "Retirer %1"
 msgid "Search Keyboard Shortcuts..."
 msgstr "Rechercher des raccourcis clavier..."
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:711
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:712
 msgid "Hotkey of %1"
 msgstr "Raccourci de %1"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:722
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:723
 msgid "Global hotkey of %1"
 msgstr "Raccourci global de %1"
 
@@ -5484,7 +5485,7 @@ msgstr ""
 msgid "Profile (%1)"
 msgstr "Profil (%1)"
 
-#: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:88
+#: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:89
 msgid "Customize player"
 msgstr "Personnaliser le lecteur"
 
@@ -5493,11 +5494,11 @@ msgstr "Personnaliser le lecteur"
 msgid "Sleep timer"
 msgstr "Arrêt programmé"
 
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:169
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:170
 msgid "Selected profile"
 msgstr "Profil sélectionné"
 
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:236
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:237
 msgid "New profile…"
 msgstr "Nouveau profil…"
 
@@ -5682,8 +5683,8 @@ msgstr "Regarder depuis le début"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:142
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:174
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:37
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:187
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:874
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:81
 msgid "Favorite"
@@ -5741,26 +5742,26 @@ msgstr "Mise à jour des chaînes de %1…"
 msgid "%1 could not be loaded: %2"
 msgstr "Impossible de charger %1 : %2"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:502
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:503
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:580
 msgid "No channel matches the search"
 msgstr "Aucune chaîne ne correspond à la recherche"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:503
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:504
 msgid "No favorite channel yet: right-click a channel to add it"
 msgstr ""
 "Aucune chaîne favorite pour l'instant : faites un clic droit sur une chaîne "
 "pour l'ajouter"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:504
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:505
 msgid "No channel watched yet"
 msgstr "Aucune chaîne regardée pour l'instant"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:505
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:506
 msgid "Loading the channels…"
 msgstr "Chargement des chaînes…"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:506
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:507
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:810
 msgid "No channels"
 msgstr "Aucune chaîne"
@@ -5783,19 +5784,19 @@ msgstr "Plus tard"
 msgid "No guide for this channel"
 msgstr "Pas de guide pour cette chaîne"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:182
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:183
 msgid "No account with films or series"
 msgstr "Aucun compte avec des films ou des séries"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:183
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:184
 msgid "Loading…"
 msgstr "Chargement…"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:183
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:184
 msgid "Nothing here"
 msgstr "Rien ici"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:235
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:236
 msgid "S%1 E%2"
 msgstr "S%1 E%2"
 
@@ -5981,7 +5982,7 @@ msgid "Updated %1 at %2"
 msgstr "Mis à jour %1 à %2"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:308
-#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:239
+#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:242
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:91
 msgid "Move up"
 msgstr "Monter"
@@ -6193,7 +6194,7 @@ msgstr "MC"
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:96
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:32
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:39
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:54
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:61
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:53
@@ -6247,12 +6248,12 @@ msgstr "Découvrir"
 msgid "Local top bar"
 msgstr "Barre supérieure locale"
 
-#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:187
+#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:188
 msgid "Show navigation menu"
 msgstr "Afficher le menu de navigation"
 
-#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:250
-#: modules/gui/qt/player/qml/TopBar.qml:503
+#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:251
+#: modules/gui/qt/player/qml/TopBar.qml:505
 msgid "VLC Media Player"
 msgstr "VLC Media Player"
 
@@ -6371,7 +6372,7 @@ msgid "Re-check"
 msgstr "Revérifier"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:34
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:41
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:224
 #: modules/gui/qt/player/qml/CompactLibrary.qml:83
 #: modules/gui/qt/player/qml/CompactLibrary.qml:297
@@ -6379,13 +6380,20 @@ msgid "Recent"
 msgstr "Récents"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:238
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:303
 msgid "Add item"
 msgstr "Ajouter un élément"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:121
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:132
 msgid "Edit Sidebar…"
 msgstr "Modifier la barre latérale…"
+
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:131
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:137
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
+msgid "Unpin from Sidebar"
+msgstr "Retirer de la barre latérale"
 
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:34
 msgid "Reset to Default"
@@ -6407,12 +6415,12 @@ msgstr ""
 msgid "hidden"
 msgstr "masquée"
 
-#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:251
+#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:254
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:98
 msgid "Move down"
 msgstr "Descendre"
 
-#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:262
+#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:265
 msgid "Show %1"
 msgstr "Afficher %1"
 
@@ -6476,6 +6484,15 @@ msgid "OpenSubtitles did not return a valid subtitle download link."
 msgstr ""
 "OpenSubtitles n'a pas renvoyé de lien de téléchargement de sous-titres "
 "valide."
+
+#: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:188
+#: modules/gui/qt/player/subtitle_search.cpp:481
+msgid "This build can't search the internet."
+msgstr "Cette version ne peut pas faire de recherche sur Internet."
+
+#: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:207
+msgid "The subtitle services took too long to answer."
+msgstr "Les services de sous-titres ont mis trop de temps à répondre."
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:121
 msgid "This media"
@@ -6557,12 +6574,12 @@ msgstr ""
 "les fichiers (*)"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:369
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:553
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:597
 msgid "Choose the folder of the audio tracks"
 msgstr "Choisir le dossier des pistes audio"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:370
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:554
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:598
 msgid "Choose the folder of the subtitles"
 msgstr "Choisir le dossier des sous-titres"
 
@@ -6599,33 +6616,33 @@ msgstr "Choisissez au moins un fichier audio."
 msgid "Choose at least one subtitle file."
 msgstr "Choisissez au moins un fichier de sous-titres."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:477
-msgid "An audio file is missing or unreadable: %1"
-msgstr "Un fichier audio est introuvable ou illisible : %1"
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:478
-msgid "A subtitle file is missing or unreadable: %1"
-msgstr "Un fichier de sous-titres est introuvable ou illisible : %1"
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:492
-msgid "The destination media could not be found in the library."
-msgstr "Le média de destination est introuvable dans la bibliothèque."
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:509
-msgid "Could not save audio track association for %1."
-msgstr "Impossible d'enregistrer l'association de piste audio pour %1."
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:510
-msgid "Could not save subtitle association for %1."
-msgstr "Impossible d'enregistrer l'association de sous-titres pour %1."
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:524
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:472
 #, c-format
 msgid ""
 " %n association(s) were saved before this error; those changes remain saved."
 msgstr ""
 " %n association(s) ont été enregistrées avant cette erreur ; ces "
 "modifications restent enregistrées."
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:498
+msgid "An audio file is missing or unreadable: %1"
+msgstr "Un fichier audio est introuvable ou illisible : %1"
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:499
+msgid "A subtitle file is missing or unreadable: %1"
+msgstr "Un fichier de sous-titres est introuvable ou illisible : %1"
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:513
+msgid "The destination media could not be found in the library."
+msgstr "Le média de destination est introuvable dans la bibliothèque."
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:529
+msgid "Could not save audio track association for %1."
+msgstr "Impossible d'enregistrer l'association de piste audio pour %1."
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:530
+msgid "Could not save subtitle association for %1."
+msgstr "Impossible d'enregistrer l'association de sous-titres pour %1."
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:47
 msgid "The subtitle filename is invalid."
@@ -6707,7 +6724,7 @@ msgstr "Artiste inconnu"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:96
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:228
-#: modules/gui/qt/player/qml/ResumeDialog.qml:147
+#: modules/gui/qt/player/qml/ResumeDialog.qml:148
 #: modules/gui/qt/player/qml/CompactLibrary.qml:401
 msgid "Continue Watching"
 msgstr "Reprendre la lecture"
@@ -6853,7 +6870,7 @@ msgid "Remove from playlist"
 msgstr "Retirer de la liste de lecture"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:222
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:252
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:260
 msgid "Processing..."
 msgstr "Traitement..."
 
@@ -6878,15 +6895,15 @@ msgid_plural "Delete playlists"
 msgstr[0] "Supprimer la liste de lecture"
 msgstr[1] "Supprimer les listes de lecture"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:368
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:376
 msgid "Items"
 msgstr "Éléments"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:455
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:463
 msgid "No playlists found"
 msgstr "Aucune liste de lecture trouvée"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:456
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:464
 msgid "Create a playlist with files or add media from the library"
 msgstr ""
 "Créez une liste de lecture avec des fichiers ou ajoutez des médias de la "
@@ -6949,45 +6966,45 @@ msgid "Channel:"
 msgstr "Canaux :"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:82
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:168
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:181
 msgid "Mark as Unwatched"
 msgstr "Marquer comme non vu"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:82
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:169
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:182
 msgid "Mark as Watched"
 msgstr "Marquer comme vu"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:110
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:183
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:53
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:196
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:54
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:891
 msgid "Add to Queue"
 msgstr "Ajouter à la file"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:126
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:193
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:206
 msgid "Go to Source"
 msgstr "Aller à la source"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:134
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:207
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:57
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:220
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:58
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:899
 msgid "Add Subtitle Tracks"
 msgstr "Ajouter des pistes de sous-titres"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:140
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:209
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:62
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:75
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:222
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:63
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:93
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:903
 msgid "Add Audio Tracks"
 msgstr "Ajouter des pistes audio"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:146
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:211
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:69
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:224
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:70
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:31
 msgid "Properties & Metadata"
 msgstr "Propriétés et métadonnées"
@@ -7053,27 +7070,32 @@ msgstr "Modifier les pistes audio"
 msgid "Resync"
 msgstr "Resynchroniser"
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:546
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:138
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
+msgid "Pin to Sidebar"
+msgstr "Épingler à la barre latérale"
+
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:560
 msgid "No media matches the search"
 msgstr "Aucun média ne correspond à la recherche"
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:547
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:561
 msgid "No media in this folder"
 msgstr "Aucun média dans ce dossier"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:42
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:43
 msgid "Add folder"
 msgstr "Ajouter un dossier"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:45
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:46
 msgid "Add folder to media library"
 msgstr "Ajouter un dossier à la médiathèque"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:53
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:54
 msgid "Could not add this folder to the library: %1"
 msgstr "Impossible d'ajouter ce dossier à la bibliothèque : %1"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:54
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:55
 msgid "Media library"
 msgstr "Médiathèque"
 
@@ -7191,76 +7213,162 @@ msgstr[1] "%1 éléments"
 msgid "Length"
 msgstr "Durée"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:36
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:38
 msgid "To This Folder"
 msgstr "À ce dossier"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:37
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:39
 msgid "To This Playlist"
 msgstr "À cette liste de lecture"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:38
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:40
 msgid "To This File"
 msgstr "À ce fichier"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:75
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:93
 msgid "Add Subtitles"
 msgstr "Ajouter des sous-titres"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:530
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:532
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:533
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:100
+msgid "Download %1"
+msgstr "Télécharger %1"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:186
+msgid "%1 linked, %2 failed."
+msgstr "%1 liés, %2 en échec."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:187
+msgid "Nothing was linked: %1 failed."
+msgstr "Rien n'a été lié : %1 en échec."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:574
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:576
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:577
 msgid "From Computer"
 msgstr "Depuis l'ordinateur"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:532
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:533
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:576
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:577
 msgid "From Link"
 msgstr "Depuis un lien"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:532
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:576
 msgid "From OpenSubtitles"
 msgstr "Depuis OpenSubtitles"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:602
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:577
+msgid "From the Internet"
+msgstr "Depuis Internet"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:646
 msgid "Direct HTTPS link to a subtitle file"
 msgstr "Lien HTTPS direct vers un fichier de sous-titres"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:617
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:661
 msgid "Title or episode"
 msgstr "Titre ou épisode"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:784
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:692
+msgid "%1, else %2"
+msgstr "%1, sinon %2"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:698
+msgid "Every subtitle service is off (Subtitles panel of the player)"
+msgstr ""
+"Tous les services de sous-titres sont désactivés (panneau Sous-titres du "
+"lecteur)"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:862
 msgid "OpenSubtitles API key"
 msgstr "Clé API OpenSubtitles"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:899
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1001
+msgid "Waiting…"
+msgstr "En attente…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1002
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:365
+msgid "Searching…"
+msgstr "Recherche…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1004
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:444
+msgid "For this file"
+msgstr "Pour ce fichier"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1005
+msgid "Best guess"
+msgstr "Meilleure estimation"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1006
+msgid "Not found"
+msgstr "Introuvable"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1007
+msgid "No answer"
+msgstr "Pas de réponse"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1008
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:264
+msgid "Downloading…"
+msgstr "Téléchargement…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1009
+msgid "Linked"
+msgstr "Lié"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1108
+msgid "Don't download"
+msgstr "Ne pas télécharger"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1112
+msgid "Subtitle for %1"
+msgstr "Sous-titre pour %1"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1131
+msgid "Downloading and linking the subtitles chosen…"
+msgstr "Téléchargement et liaison des sous-titres choisis…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1133
+msgid "Searching the internet: %1 of %2 videos done…"
+msgstr "Recherche sur Internet : %1 vidéos sur %2 terminées…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1134
+msgid "For the file: %1 · By title: %2 · Not found: %3"
+msgstr "Pour le fichier : %1 · Par titre : %2 · Introuvables : %3"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1137
+msgid "No answer: %1"
+msgstr "Pas de réponse : %1"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1160
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
+msgid "Working on subtitles…"
+msgstr "Traitement des sous-titres…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1165
 msgid "Searching OpenSubtitles…"
 msgstr "Recherche sur OpenSubtitles…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:901
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1167
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr ""
 "Lancez une recherche sur OpenSubtitles pour voir les fichiers de sous-titres."
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:904
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on audio tracks…"
 msgstr "Traitement des pistes audio…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:904
-msgid "Working on subtitles…"
-msgstr "Traitement des sous-titres…"
-
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:907
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1173
 msgid "Enter a direct link to a subtitle file above."
 msgstr "Saisissez ci-dessus un lien direct vers un fichier de sous-titres."
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:908
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1174
 msgid "No audio file in this folder: choose another one above."
 msgstr ""
 "Aucun fichier audio dans ce dossier : choisissez-en un autre ci-dessus."
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:909
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1175
 msgid "No subtitle file in this folder: choose another one above."
 msgstr ""
 "Aucun fichier de sous-titres dans ce dossier : choisissez-en un autre ci-"
@@ -7607,41 +7715,6 @@ msgstr "Lancez la lecture avant de programmer un arrêt."
 msgid "Choose a duration between one second and 24 hours."
 msgstr "Choisissez une durée entre une seconde et 24 heures."
 
-#: modules/gui/qt/player/subtitle_finder.cpp:742
-msgid "This build can't search the internet."
-msgstr "Cette version ne peut pas faire de recherche sur Internet."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1254
-#: modules/gui/qt/player/subtitle_finder.cpp:1512
-msgid "No connection to the internet."
-msgstr "Aucune connexion à Internet."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1257
-msgid "The video couldn't be identified from its name."
-msgstr "La vidéo n'a pas pu être identifiée à partir de son nom."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1258
-msgid "\"%1\" wasn't found. Search for its title."
-msgstr "« %1 » est introuvable. Recherchez son titre."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1260
-msgid "No subtitles were found for %1."
-msgstr "Aucun sous-titre trouvé pour %1."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1513
-msgid "The subtitle couldn't be downloaded (%1)."
-msgstr "Les sous-titres n'ont pas pu être téléchargés (%1)."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1543
-msgid "The subtitle couldn't be saved."
-msgstr "Les sous-titres n'ont pas pu être enregistrés."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1553
-#: modules/gui/qt/player/subtitle_providers.cpp:922
-#: modules/gui/qt/player/subtitle_providers.cpp:955
-msgid "The subtitle couldn't be unpacked."
-msgstr "Les sous-titres n'ont pas pu être décompressés."
-
 #: modules/gui/qt/player/subtitle_providers.cpp:87
 msgid "%1 didn't answer."
 msgstr "%1 n'a pas répondu."
@@ -7677,6 +7750,12 @@ msgstr ""
 "Ces sous-titres sont fournis dans une archive RAR, qui ne peut pas être "
 "ouverte ici."
 
+#: modules/gui/qt/player/subtitle_providers.cpp:922
+#: modules/gui/qt/player/subtitle_providers.cpp:955
+#: modules/gui/qt/player/subtitle_search.cpp:1140
+msgid "The subtitle couldn't be unpacked."
+msgstr "Les sous-titres n'ont pas pu être décompressés."
+
 #: modules/gui/qt/player/subtitle_providers.cpp:956
 msgid "The archive has no subtitle in it."
 msgstr "L'archive ne contient aucun sous-titre."
@@ -7691,6 +7770,32 @@ msgstr ""
 #: modules/gui/qt/player/subtitle_providers.cpp:974
 msgid "The subtitle is empty."
 msgstr "Les sous-titres sont vides."
+
+#: modules/gui/qt/player/subtitle_search.cpp:1017
+#: modules/gui/qt/player/subtitle_search.cpp:1100
+msgid "No connection to the internet."
+msgstr "Aucune connexion à Internet."
+
+#: modules/gui/qt/player/subtitle_search.cpp:1020
+msgid "The video couldn't be identified from its name."
+msgstr "La vidéo n'a pas pu être identifiée à partir de son nom."
+
+#: modules/gui/qt/player/subtitle_search.cpp:1021
+msgid "\"%1\" wasn't found. Search for its title."
+msgstr "« %1 » est introuvable. Recherchez son titre."
+
+#: modules/gui/qt/player/subtitle_search.cpp:1023
+msgid "No subtitles were found for %1."
+msgstr "Aucun sous-titre trouvé pour %1."
+
+#: modules/gui/qt/player/subtitle_search.cpp:1065
+#: modules/gui/qt/player/subtitle_search.cpp:1101
+msgid "The subtitle couldn't be downloaded (%1)."
+msgstr "Les sous-titres n'ont pas pu être téléchargés (%1)."
+
+#: modules/gui/qt/player/subtitle_search.cpp:1131
+msgid "The subtitle couldn't be saved."
+msgstr "Les sous-titres n'ont pas pu être enregistrés."
 
 #: modules/gui/qt/player/waveform.cpp:230
 msgid "Waveform analyzer is unavailable."
@@ -7774,7 +7879,7 @@ msgid "Artist Name"
 msgstr "Nom de l'artiste"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:82
-#: modules/gui/qt/player/qml/controlbarcontrols/DividerWidget.qml:21
+#: modules/gui/qt/player/qml/controlbarcontrols/DividerWidget.qml:22
 msgid "Divider"
 msgstr "Séparateur"
 
@@ -7884,62 +7989,62 @@ msgstr "Sous-titres sur la TV : %1"
 msgid "Subtitles off on the TV"
 msgstr "Sous-titres désactivés sur la TV"
 
-#: modules/gui/qt/player/qml/Player.qml:1229
+#: modules/gui/qt/player/qml/Player.qml:1230
 msgid "Not playing on %1"
 msgstr "Pas de lecture sur %1"
 
-#: modules/gui/qt/player/qml/Player.qml:1231
-#: modules/gui/qt/player/qml/Player.qml:1358
+#: modules/gui/qt/player/qml/Player.qml:1232
+#: modules/gui/qt/player/qml/Player.qml:1359
 msgid "Connecting to %1…"
 msgstr "Connexion à %1…"
 
-#: modules/gui/qt/player/qml/Player.qml:1233
+#: modules/gui/qt/player/qml/Player.qml:1234
 msgid "Playing on %1"
 msgstr "Lecture sur %1"
 
-#: modules/gui/qt/player/qml/Player.qml:1234
+#: modules/gui/qt/player/qml/Player.qml:1235
 msgid "The sound plays on %1"
 msgstr "Le son est diffusé sur %1"
 
-#: modules/gui/qt/player/qml/Player.qml:1259
+#: modules/gui/qt/player/qml/Player.qml:1260
 msgid "Pause, seek and change the subtitles here: the TV follows."
 msgstr ""
 "Mettez en pause, déplacez-vous et changez les sous-titres ici : la TV suit."
 
-#: modules/gui/qt/player/qml/Player.qml:1276
+#: modules/gui/qt/player/qml/Player.qml:1277
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the media."
 msgstr ""
 "Le Pare-feu Windows ne laisse pas %1 se connecter à cet ordinateur pour lire "
 "le média."
 
-#: modules/gui/qt/player/qml/Player.qml:1288
+#: modules/gui/qt/player/qml/Player.qml:1289
 msgid "Waiting for Windows…"
 msgstr "En attente de Windows…"
 
-#: modules/gui/qt/player/qml/Player.qml:1289
+#: modules/gui/qt/player/qml/Player.qml:1290
 msgid "Allow on public networks too"
 msgstr "Autoriser aussi sur les réseaux publics"
 
-#: modules/gui/qt/player/qml/Player.qml:1290
+#: modules/gui/qt/player/qml/Player.qml:1291
 msgid "Allow on private networks"
 msgstr "Autoriser sur les réseaux privés"
 
-#: modules/gui/qt/player/qml/Player.qml:1302
+#: modules/gui/qt/player/qml/Player.qml:1303
 msgid "Try again"
 msgstr "Réessayer"
 
-#: modules/gui/qt/player/qml/Player.qml:1307
-#: modules/gui/qt/player/qml/Player.qml:1317
+#: modules/gui/qt/player/qml/Player.qml:1308
+#: modules/gui/qt/player/qml/Player.qml:1318
 msgid "Play here"
 msgstr "Lire ici"
 
-#: modules/gui/qt/player/qml/Player.qml:1317
-#: modules/gui/qt/player/qml/Player.qml:1368
+#: modules/gui/qt/player/qml/Player.qml:1318
+#: modules/gui/qt/player/qml/Player.qml:1369
 msgid "Stop casting"
 msgstr "Arrêter la diffusion"
 
-#: modules/gui/qt/player/qml/Player.qml:1359
+#: modules/gui/qt/player/qml/Player.qml:1360
 msgid "Also on %1"
 msgstr "Aussi sur %1"
 
@@ -7947,11 +8052,11 @@ msgstr "Aussi sur %1"
 msgid "Resume dialog"
 msgstr "Fenêtre de reprise"
 
-#: modules/gui/qt/player/qml/ResumeDialog.qml:136
+#: modules/gui/qt/player/qml/ResumeDialog.qml:137
 msgid "You’ve watched till %1 already."
 msgstr "Vous avez déjà regardé jusqu'à %1."
 
-#: modules/gui/qt/player/qml/ResumeDialog.qml:138
+#: modules/gui/qt/player/qml/ResumeDialog.qml:139
 msgid "Continue where you left off?"
 msgstr "Reprendre là où vous vous étiez arrêté ?"
 
@@ -7959,7 +8064,7 @@ msgstr "Reprendre là où vous vous étiez arrêté ?"
 msgid "Player topbar"
 msgstr "Barre supérieure du lecteur"
 
-#: modules/gui/qt/player/qml/TopBar.qml:439
+#: modules/gui/qt/player/qml/TopBar.qml:440
 msgid "Show %1 in the library"
 msgstr "Afficher %1 dans la bibliothèque"
 
@@ -8013,7 +8118,7 @@ msgstr "Les signets nécessitent la médiathèque"
 msgid "Show Preferences"
 msgstr "Afficher les préférences"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:556
+#: modules/gui/qt/player/qml/TracksMenu.qml:557
 #: modules/gui/qt/player/qml/TracksPageAudio.qml:37
 #: modules/gui/qt/player/qml/TracksPageSubtitle.qml:37
 #: modules/gui/qt/player/qml/SubtitleSyncTimeline.qml:42
@@ -8065,7 +8170,7 @@ msgstr "Synchroniser les paroles avec la position de lecture"
 msgid "Volume %1%"
 msgstr "Volume %1 %"
 
-#: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:207
+#: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:211
 msgid "Play audio to select a visualization."
 msgstr "Lisez de l'audio pour sélectionner une visualisation."
 
@@ -8420,10 +8525,6 @@ msgstr "Recherche sur %1…"
 msgid "Searching subtitles online…"
 msgstr "Recherche de sous-titres en ligne…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:264
-msgid "Downloading…"
-msgstr "Téléchargement…"
-
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:266
 msgid "%1 · %2 found"
 msgstr "%1 · trouvés : %2"
@@ -8466,10 +8567,6 @@ msgstr "Charger un fichier de sous-titres pour la lecture"
 msgid "Title of the movie or series"
 msgstr "Titre du film ou de la série"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:365
-msgid "Searching…"
-msgstr "Recherche…"
-
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:408
 msgid "Second"
 msgstr "Seconde"
@@ -8478,10 +8575,6 @@ msgstr "Seconde"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Souvent utilisée"
-
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:444
-msgid "For this file"
-msgstr "Pour ce fichier"
 
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:465
 msgid "Looking for subtitles…"
@@ -8526,11 +8619,11 @@ msgstr "Sous-titres plus petits"
 msgid "Larger subtitles"
 msgstr "Sous-titres plus grands"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:773
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:774
 msgid "HI"
 msgstr "SME"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:778
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:779
 msgid "For the hearing impaired"
 msgstr "Pour les sourds et malentendants"
 
@@ -8608,37 +8701,37 @@ msgstr "File de lecture (%1/%2)"
 msgid "Casting to %1"
 msgstr "Diffusion sur %1"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:128
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:134
 msgid "Cast to"
 msgstr "Diffuser sur"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:153
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:160
 msgid "This computer"
 msgstr "Cet ordinateur"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:182
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:189
 msgid "Not playing: choose it to try again"
 msgstr "Pas de lecture : choisissez-le pour réessayer"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:184
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:191
 msgid "Connecting…"
 msgstr "Connexion…"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:185
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:192
 msgid "Sound only"
 msgstr "Son uniquement"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:208
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:215
 msgid "Show %1 hidden device"
 msgid_plural "Show %1 hidden devices"
 msgstr[0] "Afficher %1 périphérique masqué"
 msgstr[1] "Afficher %1 périphériques masqués"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:221
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:228
 msgid "Looking for TVs and Chromecasts on your network…"
 msgstr "Recherche des TV et Chromecast sur votre réseau…"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:222
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:229
 msgid ""
 "No device found. Turn your TV or Chromecast on, on the same network as this "
 "computer."
@@ -8646,23 +8739,23 @@ msgstr ""
 "Aucun appareil trouvé. Allumez votre TV ou votre Chromecast, sur le même "
 "réseau que cet ordinateur."
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:236
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:251
 msgid "Show the video here too"
 msgstr "Afficher aussi la vidéo ici"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:286
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:301
 msgid "With a Chromecast, the video plays only there."
 msgstr "Avec un Chromecast, la vidéo n'est lue que là-bas."
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:297
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:312
 msgid "The subtitles shown go to the TV with the picture."
 msgstr "Les sous-titres affichés sont envoyés à la TV avec l'image."
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:314
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:329
 msgid "Hide this device"
 msgstr "Masquer ce périphérique"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:358
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:373
 msgid "playing here"
 msgstr "lecture ici"
 
@@ -8690,11 +8783,11 @@ msgstr "Avancer de 15 secondes"
 msgid "%1 %"
 msgstr "%1 %"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:65
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:66
 msgid "Choose a video zoom level"
 msgstr "Choisir un niveau de zoom vidéo"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:66
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:67
 msgid "Zoom is unavailable without video"
 msgstr "Le zoom n'est pas disponible sans vidéo"
 
@@ -8718,19 +8811,19 @@ msgstr "Retirer les éléments sélectionnés"
 msgid "Add files to the queue"
 msgstr "Ajouter des fichiers à la file"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:629
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:630
 msgid "No results"
 msgstr "Aucun résultat"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:630
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:631
 msgid "No content yet"
 msgstr "Aucun contenu pour l'instant"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:646
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:647
 msgid "Drag & Drop some content here!"
 msgstr "Glissez-déposez du contenu ici !"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:711
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:712
 msgid "Play queue"
 msgstr "File de lecture"
 

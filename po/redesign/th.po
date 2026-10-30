@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-29 20:21+0000\n"
+"POT-Creation-Date: 2026-10-30 23:06+0000\n"
 "PO-Revision-Date: 2017-09-20 03:42+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Thai (http://www.transifex.com/yaron/vlc-trans/language/th/)\n"
@@ -34,7 +34,7 @@ msgid "Play Queue"
 msgstr "คิวเล่น"
 
 #: include/vlc_config_cat.h:59
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1034
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1036
 msgid "Media Library Settings"
 msgstr "ค่าตั้งคลังสื่อ"
 
@@ -276,7 +276,7 @@ msgstr "ควบคุมวิธีจัดการการพักกา
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1224
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:23
-#: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:144
+#: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:145
 msgid "Disabled"
 msgstr "ปิดใช้"
 
@@ -1499,7 +1499,7 @@ msgid "It needs Windows 10 version 1809 or later."
 msgstr "ต้องใช้ Windows 10 รุ่น 1809 หรือใหม่กว่า"
 
 #: bin/winvlc.c:712 bin/winvlc.c:825
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:410
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:411
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:27
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignPluginsDialog.qml:30
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignStatisticsDialog.qml:26
@@ -1643,13 +1643,13 @@ msgid "Please enter the new playlist name:"
 msgstr "กรุณาป้อนชื่อผังเล่นใหม่:"
 
 #: modules/gui/macosx/library/VLCLibraryController.m:319
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:409
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:455
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:135
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:412
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:458
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:136
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:413
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:104
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:107
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:76
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:90
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:909
 msgid "Rename"
 msgstr "เปลี่ยนชื่อ"
@@ -1668,8 +1668,8 @@ msgstr "เพิ่มเข้าคลังสื่อ"
 #: modules/gui/macosx/library/VLCLibraryMenuController.m:284
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:141
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:173
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:37
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:186
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:874
 msgid "Remove from Favorites"
 msgstr "เอาออกจากรายการโปรด"
@@ -1806,70 +1806,70 @@ msgstr "ชื่อผังเล่น"
 msgid "About VLC"
 msgstr "เกี่ยวกับ VLC"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:197
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:198
 #: modules/gui/qt/dialogs/firstrun/qml/WhatsNewDialog.qml:63
 msgid "VLC Redesign"
 msgstr "VLC Redesign"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:238
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:239
 msgid "Version %1 · based on VLC %2"
 msgstr "รุ่น %1 · พัฒนาจาก VLC %2"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:262
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:263
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:90
 msgid "Checking for updates…"
 msgstr "กำลังตรวจหาการปรับปรุง…"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:263
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:264
 msgid "You have the latest version"
 msgstr "คุณมีรุ่นล่าสุดแล้ว"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:264
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:265
 msgid "Version %1 is available"
 msgstr "มีรุ่น %1 ให้ใช้แล้ว"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:266
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:267
 msgid "Downloading the update… %1%"
 msgstr "กำลังดาวน์โหลดการปรับปรุง… %1%"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:267
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:268
 msgid "Preparing the update…"
 msgstr "กำลังเตรียมการปรับปรุง…"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:268
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:269
 msgid "Version %1 is ready: restart to finish"
 msgstr "รุ่น %1 พร้อมแล้ว: เริ่มใหม่เพื่อให้เสร็จสิ้น"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:277
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:278
 msgid "What's new in %1"
 msgstr "มีอะไรใหม่ใน %1"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:291
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:292
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:197
 msgid "Restart now"
 msgstr "เริ่มใหม่ตอนนี้"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:293
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:294
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:228
 msgid "Update now"
 msgstr "ปรับปรุงตอนนี้"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:293
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:294
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:226
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:188
 #: modules/gui/qt/network/standardpathmodel.cpp:153
 msgid "Download"
 msgstr "ดาวน์โหลด"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:294
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:295
 msgid "Check for updates"
 msgstr "ตรวจหาการปรับปรุง"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:330
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:331
 msgid "Interface designed by <font color=\"%1\">Juxtopposed</font>"
 msgstr "ออกแบบส่วนติดต่อโดย <font color=\"%1\">Juxtopposed</font>"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:337
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:338
 msgid ""
 "Every screen comes from the \"VLC Redesign (Community)\" Figma file, "
 "licensed under CC BY 4.0. It was adapted to Qt and its icons were redrawn."
@@ -1877,50 +1877,50 @@ msgstr ""
 "ทุกหน้าจอมาจากแฟ้ม Figma \"VLC Redesign (Community)\" ซึ่งใช้สัญญาอนุญาต CC BY 4.0 "
 "โดยได้ดัดแปลงให้ใช้กับ Qt และวาดไอคอนขึ้นใหม่"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:342
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:343
 msgid "YouTube channel"
 msgstr "ช่อง YouTube"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:343
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:344
 msgid "The redesign video"
 msgstr "วีดิทัศน์การออกแบบใหม่"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:344
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:345
 msgid "Figma file"
 msgstr "แฟ้ม Figma"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:346
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:347
 msgid "CC BY 4.0"
 msgstr "CC BY 4.0"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:356
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:357
 msgid "First implementation by"
 msgstr "พัฒนาครั้งแรกโดย"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:361
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:362
 msgid "Built on VLC media player by"
 msgstr "สร้างบนโปรแกรมเล่นสื่อ VLC โดย"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:362
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:363
 msgid "the VideoLAN team and contributors"
 msgstr "ทีม VideoLAN และผู้ร่วมพัฒนา"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:370
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:371
 msgid "Also on: %1"
 msgstr "มีบน: %1"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:377
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:378
 #: modules/gui/qt/menus/qml/MainMenu.qml:173
 msgid "Suggest an idea"
 msgstr "เสนอความคิด"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:379
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:380
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:28
 #: modules/gui/qt/menus/qml/MainMenu.qml:178
 msgid "Report a problem"
 msgstr "รายงานปัญหา"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:390
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:391
 msgid ""
 "An unofficial build, not affiliated with or endorsed by VideoLAN or "
 "Juxtopposed. VLC, VLC media player and the cone logo are trademarks of "
@@ -1930,11 +1930,11 @@ msgstr ""
 "VLC media player และโลโก้กรวยเป็นเครื่องหมายการค้าของ VideoLAN "
 "ซอฟต์แวร์เสรีภายใต้สัญญาอนุญาต GNU GPL v2 หรือใหม่กว่า"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:400
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:401
 msgid "Licenses & authors"
 msgstr "สัญญาอนุญาตและผู้สร้าง"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:404
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:405
 msgid "GitHub"
 msgstr "GitHub"
 
@@ -1944,7 +1944,7 @@ msgstr "ข้อมูลโฟลเดอร์"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:29
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:119
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:189
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:202
 msgid "Show in File Explorer"
 msgstr "แสดงใน File Explorer"
 
@@ -1967,12 +1967,12 @@ msgstr "แก้ไขเมื่อ"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:66
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:27
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:34
 #: modules/gui/qt/medialibrary/qml/VideoGroupDisplay.qml:40
 #: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:84
 #: modules/gui/qt/medialibrary/qml/VideoListDisplay.qml:90
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:81
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:198
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:237
 #: modules/gui/qt/network/standardpathmodel.cpp:152
 #: modules/gui/qt/player/qml/CompactLibrary.qml:79
 #: modules/gui/qt/player/qml/CompactLibrary.qml:198
@@ -2148,7 +2148,7 @@ msgstr ""
 "%2"
 
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1425
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:49
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
 msgid "Export Playlist"
 msgstr "ส่งออกผังเล่น"
@@ -2314,7 +2314,7 @@ msgstr "ตัดขอบ%1 (พิกเซล)"
 msgid "Link top and bottom crop"
 msgstr "ผูกการตัดขอบบนและล่าง"
 
-#: modules/gui/qt/dialogs/extended/qml/CropPanel.qml:102
+#: modules/gui/qt/dialogs/extended/qml/CropPanel.qml:103
 msgid "Link left and right crop"
 msgstr "ผูกการตัดขอบซ้ายและขวา"
 
@@ -2327,62 +2327,62 @@ msgstr "เล่นสื่อก่อนเพื่อบันทึกล
 msgid "Effect preset: %1"
 msgstr "ชุดค่าตั้งลูกเล่น: %1"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:257
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:258
 msgid "Effect presets"
 msgstr "ชุดค่าตั้งลูกเล่น"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:272
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:454
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:273
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:457
 msgid "New Preset"
 msgstr "ชุดค่าตั้งใหม่"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:289
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:290
 msgid "Chosen preset"
 msgstr "ชุดค่าตั้งที่เลือก"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:372
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:110
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:375
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:111
 msgid "Actions of %1"
 msgstr "การกระทำของ %1"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:420
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:423
 msgid "Update with current effects"
 msgstr "ปรับปรุงด้วยลูกเล่นปัจจุบัน"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:454
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:457
 msgid "Rename Preset"
 msgstr "เปลี่ยนชื่อชุดค่าตั้ง"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:497
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:500
 msgid "Preset Name"
 msgstr "ชื่อชุดค่าตั้ง"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:498
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:501
 msgid "The preset keeps its effects."
 msgstr "ชุดค่าตั้งจะคงลูกเล่นของตัวเองไว้"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:499
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:502
 msgid "The preset keeps the audio and video effects in use."
 msgstr "ชุดค่าตั้งจะเก็บลูกเล่นเสียงและวีดิทัศน์ที่ใช้อยู่"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:507
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:510
 msgid "e.g., Late Night Movies"
 msgstr "เช่น หนังดึก"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:508
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:511
 msgid "Preset name"
 msgstr "ชื่อชุดค่าตั้ง"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:526
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:529
 msgid "Delete Preset"
 msgstr "ลบชุดค่าตั้ง"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:552
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:555
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:493
 msgid "Delete %1?"
 msgstr "ลบ %1 หรือไม่?"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:553
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:556
 msgid "The effects in use stay as they are."
 msgstr "ลูกเล่นที่ใช้อยู่จะยังคงเหมือนเดิม"
 
@@ -2446,16 +2446,16 @@ msgstr "เล่นวีดิทัศน์เพื่อดูตัวอ
 msgid "Open synchronization"
 msgstr "เปิดการปรับเวลา"
 
-#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:93
+#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:94
 msgid "%1 equalizer curve"
 msgstr "เส้นโค้งตัวปรับสมดุล %1"
 
-#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:160
-#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:177
+#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:163
+#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:180
 msgid "Two-pass equalizer"
 msgstr "ตัวปรับสมดุลสองรอบ"
 
-#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:189
+#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:192
 #: modules/gui/qt/dialogs/extended/qml/FilterPanel.qml:92
 #: modules/gui/qt/dialogs/extended/qml/VideoEffectsPanel.qml:149
 msgid "Reset to defaults"
@@ -2570,11 +2570,11 @@ msgstr "เบลอการเคลื่อนไหว"
 msgid "Colors of %1"
 msgstr "สีของ %1"
 
-#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:345
+#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:346
 msgid "Browse for %1"
 msgstr "เรียกดูหา %1"
 
-#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:348
+#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:349
 msgid "Image Files (*.png *.jpg);;All Files (*)"
 msgstr "แฟ้มภาพ (*.png *.jpg);;แฟ้มทั้งหมด (*)"
 
@@ -2718,16 +2718,16 @@ msgstr "สว่าง"
 msgid "System"
 msgstr "ระบบ"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:335
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:337
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:222
 msgid "Accent color %1"
 msgstr "สีเน้น %1"
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:54
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:55
 msgid "Welcome to VLC!"
 msgstr "ยินดีต้อนรับสู่ VLC!"
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:72
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:73
 msgid ""
 "VLC is a free and open source cross-platform multimedia player and framework "
 "that plays most multimedia files as well as DVDs, Audio CDs, VCDs, and "
@@ -2736,15 +2736,15 @@ msgstr ""
 "VLC เป็นโปรแกรมเล่นสื่อและเฟรมเวิร์กมัลติมีเดียข้ามแพลตฟอร์มที่ฟรีและเป็นโอเพนซอร์ส "
 "ซึ่งเล่นแฟ้มมัลติมีเดียได้เกือบทุกชนิด รวมถึง DVD, Audio CD, VCD และโพรโทคอลการส่งกระแสต่างๆ"
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:93
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:94
 msgid "Choose a Media Folder to get started with"
 msgstr "เลือกโฟลเดอร์สื่อเพื่อเริ่มต้น"
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:126
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:127
 msgid "No folder selected"
 msgstr "ยังไม่ได้เลือกโฟลเดอร์"
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:146
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:147
 msgid "Remove the folder"
 msgstr "เอาโฟลเดอร์ออก"
 
@@ -3488,17 +3488,17 @@ msgstr ""
 "ไม่สามารถบันทึกปุ่มลัดได้ (ข้อผิดพลาด %1) การเปลี่ยนแปลงถูกย้อนกลับในหน่วยความจำแล้ว "
 "กรุณาตรวจสอบแฟ้มการตั้งค่า"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:765
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:767
 msgid "System's default (%1)"
 msgstr "ค่าปริยายของระบบ (%1)"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1439
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1444
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1441
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1446
 msgid "%1 (partial)"
 msgstr "%1 (บางส่วน)"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1839
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1849
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1852
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1862
 msgid "Please choose an entry point folder"
 msgstr "กรุณาเลือกโฟลเดอร์จุดเริ่มต้น"
 
@@ -3555,14 +3555,15 @@ msgstr ""
 "(ที่สร้างจากส่วนหนึ่งของแฟ้ม) เท่านั้น"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:53
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:620
 msgid "Current output device"
 msgstr "อุปกรณ์ส่งเสียงปัจจุบัน"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:76
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:80
 msgid "No selectable device available"
 msgstr "ไม่มีอุปกรณ์ที่เลือกได้"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:141
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:164
 msgid ""
 "Device changes affect only the current audio output. Apply keeps this "
 "selection while it remains active."
@@ -3738,55 +3739,55 @@ msgstr "ภาษาที่สอง"
 msgid "OpenSubtitles"
 msgstr "OpenSubtitles"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:647
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:658
 msgid "No matching settings"
 msgstr "ไม่มีค่าตั้งที่ตรงกัน"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:648
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:659
 msgid "No settings are available for this category on this VLC installation"
 msgstr "ไม่มีค่าตั้งสำหรับหมวดหมู่นี้ใน VLC ที่ติดตั้งนี้"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:729
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:745
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:741
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:757
 msgid "Show installed add-ons only"
 msgstr "แสดงเฉพาะส่วนเสริมที่ติดตั้งแล้ว"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:761
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:773
 msgid "No advanced options on this page."
 msgstr "ไม่มีตัวเลือกขั้นสูงในหน้านี้"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:773
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:785
 msgid "Welcome setup"
 msgstr "การตั้งค่าต้อนรับ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:787
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:799
 msgid "All VLC options"
 msgstr "ตัวเลือกทั้งหมดของ VLC"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:803
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:815
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:356
 msgid "Reset all settings"
 msgstr "คืนค่าตั้งทั้งหมด"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:817
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:829
 msgid "Reset all settings?"
 msgstr "คืนค่าตั้งทั้งหมดหรือไม่?"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:818
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:830
 msgid "Every setting of VLC media player goes back to its default."
 msgstr "ทุกค่าตั้งของโปรแกรมเล่นสื่อ VLC จะกลับเป็นค่าปริยาย"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:872
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:884
 msgid "Discard changes"
 msgstr "ละทิ้งการเปลี่ยนแปลง"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:124
-#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:117
+#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:118
 msgid "Close Equalizer"
 msgstr "ปิดตัวปรับสมดุล"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:124
-#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:98
+#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:99
 msgid "Open Equalizer"
 msgstr "เปิดตัวปรับสมดุล"
 
@@ -4017,7 +4018,7 @@ msgstr "1 s"
 msgid "10 s"
 msgstr "10 s"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:616
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:617
 msgid "Choose a color"
 msgstr "เลือกสี"
 
@@ -5098,7 +5099,7 @@ msgstr "แนะนำรายการให้ข้อมูลรายก
 
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:121
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:76
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:616
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:617
 msgid "Global Hotkey"
 msgstr "ปุ่มลัดโดยรวม"
 
@@ -5174,11 +5175,11 @@ msgstr "เอา %1 ออก"
 msgid "Search Keyboard Shortcuts..."
 msgstr "ค้นหาปุ่มลัดแป้นพิมพ์..."
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:711
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:712
 msgid "Hotkey of %1"
 msgstr "ปุ่มลัดของ %1"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:722
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:723
 msgid "Global hotkey of %1"
 msgstr "ปุ่มลัดโดยรวมของ %1"
 
@@ -5278,7 +5279,7 @@ msgstr "ไม่สามารถใช้ค่าตั้งโพรไฟ
 msgid "Profile (%1)"
 msgstr "โพรไฟล์ (%1)"
 
-#: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:88
+#: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:89
 msgid "Customize player"
 msgstr "ปรับแต่งตัวเล่น"
 
@@ -5287,11 +5288,11 @@ msgstr "ปรับแต่งตัวเล่น"
 msgid "Sleep timer"
 msgstr "ตั้งเวลาปิด"
 
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:169
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:170
 msgid "Selected profile"
 msgstr "โพรไฟล์ที่เลือก"
 
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:236
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:237
 msgid "New profile…"
 msgstr "โพรไฟล์ใหม่…"
 
@@ -5468,8 +5469,8 @@ msgstr "รับชมตั้งแต่ต้น"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:142
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:174
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:37
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:187
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:874
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:81
 msgid "Favorite"
@@ -5526,24 +5527,24 @@ msgstr "กำลังปรับปรุงช่องของ %1…"
 msgid "%1 could not be loaded: %2"
 msgstr "ไม่สามารถโหลด %1: %2"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:502
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:503
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:580
 msgid "No channel matches the search"
 msgstr "ไม่มีช่องที่ตรงกับการค้นหา"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:503
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:504
 msgid "No favorite channel yet: right-click a channel to add it"
 msgstr "ยังไม่มีช่องโปรด: คลิกขวาที่ช่องเพื่อเพิ่ม"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:504
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:505
 msgid "No channel watched yet"
 msgstr "ยังไม่ได้รับชมช่องใด"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:505
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:506
 msgid "Loading the channels…"
 msgstr "กำลังโหลดช่อง…"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:506
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:507
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:810
 msgid "No channels"
 msgstr "ไม่มีช่อง"
@@ -5566,19 +5567,19 @@ msgstr "ภายหลัง"
 msgid "No guide for this channel"
 msgstr "ไม่มีแนะนำรายการสำหรับช่องนี้"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:182
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:183
 msgid "No account with films or series"
 msgstr "ไม่มีบัญชีที่มีภาพยนตร์หรือซีรีส์"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:183
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:184
 msgid "Loading…"
 msgstr "กำลังโหลด…"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:183
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:184
 msgid "Nothing here"
 msgstr "ไม่มีอะไรที่นี่"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:235
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:236
 msgid "S%1 E%2"
 msgstr "S%1 EP%2"
 
@@ -5754,7 +5755,7 @@ msgid "Updated %1 at %2"
 msgstr "ปรับปรุงเมื่อ %1 เวลา %2"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:308
-#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:239
+#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:242
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:91
 msgid "Move up"
 msgstr "เลื่อนขึ้น"
@@ -5960,7 +5961,7 @@ msgstr "MC"
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:96
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:32
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:39
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:54
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:61
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:53
@@ -6014,12 +6015,12 @@ msgstr "ค้นพบ"
 msgid "Local top bar"
 msgstr "แถบด้านบนเฉพาะที่"
 
-#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:187
+#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:188
 msgid "Show navigation menu"
 msgstr "แสดงเมนูนำทาง"
 
-#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:250
-#: modules/gui/qt/player/qml/TopBar.qml:503
+#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:251
+#: modules/gui/qt/player/qml/TopBar.qml:505
 msgid "VLC Media Player"
 msgstr "โปรแกรมเล่นสื่อ VLC"
 
@@ -6126,7 +6127,7 @@ msgid "Re-check"
 msgstr "ตรวจอีกครั้ง"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:34
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:41
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:224
 #: modules/gui/qt/player/qml/CompactLibrary.qml:83
 #: modules/gui/qt/player/qml/CompactLibrary.qml:297
@@ -6134,13 +6135,20 @@ msgid "Recent"
 msgstr "ล่าสุด"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:238
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:303
 msgid "Add item"
 msgstr "เพิ่มรายการ"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:121
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:132
 msgid "Edit Sidebar…"
 msgstr "แก้ไขแถบด้านข้าง…"
+
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:131
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:137
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
+msgid "Unpin from Sidebar"
+msgstr "เลิกปักหมุดจากแถบด้านข้าง"
 
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:34
 msgid "Reset to Default"
@@ -6160,12 +6168,12 @@ msgstr "ลากหน้าที่ที่จับ หรือย้า�
 msgid "hidden"
 msgstr "ซ่อนอยู่"
 
-#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:251
+#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:254
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:98
 msgid "Move down"
 msgstr "เลื่อนลง"
 
-#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:262
+#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:265
 msgid "Show %1"
 msgstr "แสดง %1"
 
@@ -6222,6 +6230,15 @@ msgstr "ดาวน์โหลดจาก OpenSubtitles ล้มเหลว
 #: modules/gui/qt/medialibrary/mlopensubtitles.cpp:223
 msgid "OpenSubtitles did not return a valid subtitle download link."
 msgstr "OpenSubtitles ไม่ได้ส่งลิงก์ดาวน์โหลดบทบรรยายที่ถูกต้องกลับมา"
+
+#: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:188
+#: modules/gui/qt/player/subtitle_search.cpp:481
+msgid "This build can't search the internet."
+msgstr "รุ่นนี้ไม่สามารถค้นหาทางอินเทอร์เน็ตได้"
+
+#: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:207
+msgid "The subtitle services took too long to answer."
+msgstr "บริการบทบรรยายใช้เวลาตอบนานเกินไป"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:121
 msgid "This media"
@@ -6298,12 +6315,12 @@ msgid ""
 msgstr "แฟ้มบทบรรยาย (*.srt *.ass *.ssa *.sub *.vtt *.ttml *.smi);;แฟ้มทั้งหมด (*)"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:369
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:553
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:597
 msgid "Choose the folder of the audio tracks"
 msgstr "เลือกโฟลเดอร์ของร่องเสียง"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:370
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:554
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:598
 msgid "Choose the folder of the subtitles"
 msgstr "เลือกโฟลเดอร์ของบทบรรยาย"
 
@@ -6339,33 +6356,33 @@ msgstr "เลือกแฟ้มเสียงอย่างน้อยห
 msgid "Choose at least one subtitle file."
 msgstr "เลือกแฟ้มบทบรรยายอย่างน้อยหนึ่งแฟ้ม"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:477
-msgid "An audio file is missing or unreadable: %1"
-msgstr "แฟ้มเสียงหายไปหรืออ่านไม่ได้: %1"
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:478
-msgid "A subtitle file is missing or unreadable: %1"
-msgstr "แฟ้มบทบรรยายหายไปหรืออ่านไม่ได้: %1"
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:492
-msgid "The destination media could not be found in the library."
-msgstr "ไม่พบสื่อปลายทางในคลัง"
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:509
-msgid "Could not save audio track association for %1."
-msgstr "ไม่สามารถบันทึกการเชื่อมโยงร่องเสียงสำหรับ %1 ได้"
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:510
-msgid "Could not save subtitle association for %1."
-msgstr "ไม่สามารถบันทึกการเชื่อมโยงบทบรรยายสำหรับ %1 ได้"
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:524
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:472
 #, c-format
 msgid ""
 " %n association(s) were saved before this error; those changes remain saved."
 msgstr ""
 " มีการบันทึกการเชื่อมโยง %n รายการก่อนเกิดข้อผิดพลาดนี้ "
 "และการเปลี่ยนแปลงเหล่านั้นยังคงถูกบันทึกอยู่"
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:498
+msgid "An audio file is missing or unreadable: %1"
+msgstr "แฟ้มเสียงหายไปหรืออ่านไม่ได้: %1"
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:499
+msgid "A subtitle file is missing or unreadable: %1"
+msgstr "แฟ้มบทบรรยายหายไปหรืออ่านไม่ได้: %1"
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:513
+msgid "The destination media could not be found in the library."
+msgstr "ไม่พบสื่อปลายทางในคลัง"
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:529
+msgid "Could not save audio track association for %1."
+msgstr "ไม่สามารถบันทึกการเชื่อมโยงร่องเสียงสำหรับ %1 ได้"
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:530
+msgid "Could not save subtitle association for %1."
+msgstr "ไม่สามารถบันทึกการเชื่อมโยงบทบรรยายสำหรับ %1 ได้"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:47
 msgid "The subtitle filename is invalid."
@@ -6445,7 +6462,7 @@ msgstr "ไม่ทราบศิลปิน"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:96
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:228
-#: modules/gui/qt/player/qml/ResumeDialog.qml:147
+#: modules/gui/qt/player/qml/ResumeDialog.qml:148
 #: modules/gui/qt/player/qml/CompactLibrary.qml:401
 msgid "Continue Watching"
 msgstr "ดูต่อ"
@@ -6588,7 +6605,7 @@ msgid "Remove from playlist"
 msgstr "เอาออกจากผังเล่น"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:222
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:252
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:260
 msgid "Processing..."
 msgstr "กำลังประมวลผล..."
 
@@ -6610,15 +6627,15 @@ msgid "Delete playlist"
 msgid_plural "Delete playlists"
 msgstr[0] "ลบผังเล่น"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:368
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:376
 msgid "Items"
 msgstr "รายการ"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:455
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:463
 msgid "No playlists found"
 msgstr "ไม่พบผังเล่น"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:456
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:464
 msgid "Create a playlist with files or add media from the library"
 msgstr "สร้างผังเล่นด้วยแฟ้ม หรือเพิ่มสื่อจากคลัง"
 
@@ -6678,45 +6695,45 @@ msgid "Channel:"
 msgstr "ช่อง:"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:82
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:168
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:181
 msgid "Mark as Unwatched"
 msgstr "ทำเครื่องหมายว่ายังไม่ได้ดู"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:82
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:169
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:182
 msgid "Mark as Watched"
 msgstr "ทำเครื่องหมายว่าดูแล้ว"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:110
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:183
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:53
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:196
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:54
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:891
 msgid "Add to Queue"
 msgstr "เพิ่มเข้าคิว"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:126
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:193
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:206
 msgid "Go to Source"
 msgstr "ไปยังต้นทาง"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:134
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:207
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:57
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:220
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:58
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:899
 msgid "Add Subtitle Tracks"
 msgstr "เพิ่มร่องบทบรรยาย"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:140
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:209
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:62
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:75
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:222
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:63
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:93
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:903
 msgid "Add Audio Tracks"
 msgstr "เพิ่มร่องเสียง"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:146
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:211
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:69
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:224
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:70
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:31
 msgid "Properties & Metadata"
 msgstr "คุณสมบัติและข้อมูลกำกับ"
@@ -6782,27 +6799,32 @@ msgstr "แก้ไขร่องเสียง"
 msgid "Resync"
 msgstr "สแกนใหม่"
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:546
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:138
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
+msgid "Pin to Sidebar"
+msgstr "ปักหมุดที่แถบด้านข้าง"
+
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:560
 msgid "No media matches the search"
 msgstr "ไม่มีสื่อที่ตรงกับการค้นหา"
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:547
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:561
 msgid "No media in this folder"
 msgstr "ไม่มีสื่อในโฟลเดอร์นี้"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:42
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:43
 msgid "Add folder"
 msgstr "เพิ่มโฟลเดอร์"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:45
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:46
 msgid "Add folder to media library"
 msgstr "เพิ่มโฟลเดอร์เข้าคลังสื่อ"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:53
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:54
 msgid "Could not add this folder to the library: %1"
 msgstr "ไม่สามารถเพิ่มโฟลเดอร์นี้เข้าคลังได้: %1"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:54
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:55
 msgid "Media library"
 msgstr "คลังสื่อ"
 
@@ -6912,74 +6934,158 @@ msgstr[0] "%1 รายการ"
 msgid "Length"
 msgstr "ความยาว"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:36
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:38
 msgid "To This Folder"
 msgstr "ไปยังโฟลเดอร์นี้"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:37
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:39
 msgid "To This Playlist"
 msgstr "ไปยังผังเล่นนี้"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:38
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:40
 msgid "To This File"
 msgstr "ไปยังแฟ้มนี้"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:75
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:93
 msgid "Add Subtitles"
 msgstr "เพิ่มบทบรรยาย"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:530
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:532
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:533
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:100
+msgid "Download %1"
+msgstr "ดาวน์โหลด %1 รายการ"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:186
+msgid "%1 linked, %2 failed."
+msgstr "เชื่อมโยงแล้ว %1 รายการ ล้มเหลว %2 รายการ"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:187
+msgid "Nothing was linked: %1 failed."
+msgstr "ไม่ได้เชื่อมโยงสิ่งใด: ล้มเหลว %1 รายการ"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:574
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:576
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:577
 msgid "From Computer"
 msgstr "จากคอมพิวเตอร์"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:532
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:533
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:576
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:577
 msgid "From Link"
 msgstr "จากลิงก์"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:532
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:576
 msgid "From OpenSubtitles"
 msgstr "จาก OpenSubtitles"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:602
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:577
+msgid "From the Internet"
+msgstr "จากอินเทอร์เน็ต"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:646
 msgid "Direct HTTPS link to a subtitle file"
 msgstr "ลิงก์ HTTPS โดยตรงไปยังแฟ้มบทบรรยาย"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:617
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:661
 msgid "Title or episode"
 msgstr "ชื่อเรื่องหรือตอน"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:784
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:692
+msgid "%1, else %2"
+msgstr "%1 หรือไม่เช่นนั้น %2"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:698
+msgid "Every subtitle service is off (Subtitles panel of the player)"
+msgstr "บริการบทบรรยายทั้งหมดปิดอยู่ (แผงบทบรรยายของเครื่องเล่น)"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:862
 msgid "OpenSubtitles API key"
 msgstr "คีย์ API ของ OpenSubtitles"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:899
-msgid "Searching OpenSubtitles…"
-msgstr "กำลังค้นหาใน OpenSubtitles…"
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1001
+msgid "Waiting…"
+msgstr "กำลังรอ…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:901
-msgid "Search OpenSubtitles to see the subtitle files."
-msgstr "ค้นหาใน OpenSubtitles เพื่อดูแฟ้มบทบรรยาย"
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1002
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:365
+msgid "Searching…"
+msgstr "กำลังค้นหา…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:904
-msgid "Working on audio tracks…"
-msgstr "กำลังดำเนินการกับร่องเสียง…"
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1004
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:444
+msgid "For this file"
+msgstr "สำหรับแฟ้มนี้"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:904
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1005
+msgid "Best guess"
+msgstr "การคาดเดาที่ดีที่สุด"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1006
+msgid "Not found"
+msgstr "ไม่พบ"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1007
+msgid "No answer"
+msgstr "ไม่มีการตอบกลับ"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1008
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:264
+msgid "Downloading…"
+msgstr "กำลังดาวน์โหลด…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1009
+msgid "Linked"
+msgstr "เชื่อมโยงแล้ว"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1108
+msgid "Don't download"
+msgstr "ไม่ต้องดาวน์โหลด"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1112
+msgid "Subtitle for %1"
+msgstr "บทบรรยายสำหรับ %1"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1131
+msgid "Downloading and linking the subtitles chosen…"
+msgstr "กำลังดาวน์โหลดและเชื่อมโยงบทบรรยายที่เลือก…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1133
+msgid "Searching the internet: %1 of %2 videos done…"
+msgstr "กำลังค้นหาทางอินเทอร์เน็ต: เสร็จแล้ว %1 จาก %2 วิดีโอ…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1134
+msgid "For the file: %1 · By title: %2 · Not found: %3"
+msgstr "สำหรับแฟ้ม: %1 · ตามชื่อเรื่อง: %2 · ไม่พบ: %3"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1137
+msgid "No answer: %1"
+msgstr "ไม่มีการตอบกลับ: %1"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1160
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on subtitles…"
 msgstr "กำลังดำเนินการกับบทบรรยาย…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:907
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1165
+msgid "Searching OpenSubtitles…"
+msgstr "กำลังค้นหาใน OpenSubtitles…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1167
+msgid "Search OpenSubtitles to see the subtitle files."
+msgstr "ค้นหาใน OpenSubtitles เพื่อดูแฟ้มบทบรรยาย"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
+msgid "Working on audio tracks…"
+msgstr "กำลังดำเนินการกับร่องเสียง…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1173
 msgid "Enter a direct link to a subtitle file above."
 msgstr "ป้อนลิงก์โดยตรงไปยังแฟ้มบทบรรยายด้านบน"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:908
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1174
 msgid "No audio file in this folder: choose another one above."
 msgstr "ไม่มีแฟ้มเสียงในโฟลเดอร์นี้: เลือกโฟลเดอร์อื่นด้านบน"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:909
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1175
 msgid "No subtitle file in this folder: choose another one above."
 msgstr "ไม่มีแฟ้มบทบรรยายในโฟลเดอร์นี้: เลือกโฟลเดอร์อื่นด้านบน"
 
@@ -7316,41 +7422,6 @@ msgstr "เริ่มเล่นก่อนตั้งเวลาปิด
 msgid "Choose a duration between one second and 24 hours."
 msgstr "เลือกระยะเวลาระหว่างหนึ่งวินาทีถึง 24 ชั่วโมง"
 
-#: modules/gui/qt/player/subtitle_finder.cpp:742
-msgid "This build can't search the internet."
-msgstr "รุ่นนี้ไม่สามารถค้นหาทางอินเทอร์เน็ตได้"
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1254
-#: modules/gui/qt/player/subtitle_finder.cpp:1512
-msgid "No connection to the internet."
-msgstr "ไม่มีการเชื่อมต่ออินเทอร์เน็ต"
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1257
-msgid "The video couldn't be identified from its name."
-msgstr "ไม่สามารถระบุวีดิทัศน์จากชื่อได้"
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1258
-msgid "\"%1\" wasn't found. Search for its title."
-msgstr "ไม่พบ \"%1\" ลองค้นหาด้วยชื่อเรื่อง"
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1260
-msgid "No subtitles were found for %1."
-msgstr "ไม่พบบทบรรยายสำหรับ %1"
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1513
-msgid "The subtitle couldn't be downloaded (%1)."
-msgstr "ไม่สามารถดาวน์โหลดบทบรรยายได้ (%1)"
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1543
-msgid "The subtitle couldn't be saved."
-msgstr "ไม่สามารถบันทึกบทบรรยายได้"
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1553
-#: modules/gui/qt/player/subtitle_providers.cpp:922
-#: modules/gui/qt/player/subtitle_providers.cpp:955
-msgid "The subtitle couldn't be unpacked."
-msgstr "ไม่สามารถแตกแฟ้มบทบรรยายได้"
-
 #: modules/gui/qt/player/subtitle_providers.cpp:87
 msgid "%1 didn't answer."
 msgstr "%1 ไม่ตอบสนอง"
@@ -7383,6 +7454,12 @@ msgstr "ภาพยนตร์ · หลายภาษา"
 msgid "This subtitle comes as a RAR archive, which can't be opened here."
 msgstr "บทบรรยายนี้มาเป็นแฟ้ม RAR ซึ่งไม่สามารถเปิดได้ที่นี่"
 
+#: modules/gui/qt/player/subtitle_providers.cpp:922
+#: modules/gui/qt/player/subtitle_providers.cpp:955
+#: modules/gui/qt/player/subtitle_search.cpp:1140
+msgid "The subtitle couldn't be unpacked."
+msgstr "ไม่สามารถแตกแฟ้มบทบรรยายได้"
+
 #: modules/gui/qt/player/subtitle_providers.cpp:956
 msgid "The archive has no subtitle in it."
 msgstr "ไม่มีบทบรรยายในแฟ้มบีบอัดนี้"
@@ -7395,6 +7472,32 @@ msgstr "OpenSubtitles สงวนบทบรรยายนี้ไว้ส�
 #: modules/gui/qt/player/subtitle_providers.cpp:974
 msgid "The subtitle is empty."
 msgstr "บทบรรยายว่างเปล่า"
+
+#: modules/gui/qt/player/subtitle_search.cpp:1017
+#: modules/gui/qt/player/subtitle_search.cpp:1100
+msgid "No connection to the internet."
+msgstr "ไม่มีการเชื่อมต่ออินเทอร์เน็ต"
+
+#: modules/gui/qt/player/subtitle_search.cpp:1020
+msgid "The video couldn't be identified from its name."
+msgstr "ไม่สามารถระบุวีดิทัศน์จากชื่อได้"
+
+#: modules/gui/qt/player/subtitle_search.cpp:1021
+msgid "\"%1\" wasn't found. Search for its title."
+msgstr "ไม่พบ \"%1\" ลองค้นหาด้วยชื่อเรื่อง"
+
+#: modules/gui/qt/player/subtitle_search.cpp:1023
+msgid "No subtitles were found for %1."
+msgstr "ไม่พบบทบรรยายสำหรับ %1"
+
+#: modules/gui/qt/player/subtitle_search.cpp:1065
+#: modules/gui/qt/player/subtitle_search.cpp:1101
+msgid "The subtitle couldn't be downloaded (%1)."
+msgstr "ไม่สามารถดาวน์โหลดบทบรรยายได้ (%1)"
+
+#: modules/gui/qt/player/subtitle_search.cpp:1131
+msgid "The subtitle couldn't be saved."
+msgstr "ไม่สามารถบันทึกบทบรรยายได้"
 
 #: modules/gui/qt/player/waveform.cpp:230
 msgid "Waveform analyzer is unavailable."
@@ -7478,7 +7581,7 @@ msgid "Artist Name"
 msgstr "ชื่อศิลปิน"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:82
-#: modules/gui/qt/player/qml/controlbarcontrols/DividerWidget.qml:21
+#: modules/gui/qt/player/qml/controlbarcontrols/DividerWidget.qml:22
 msgid "Divider"
 msgstr "เส้นแบ่ง"
 
@@ -7588,59 +7691,59 @@ msgstr "บทบรรยายบนทีวี: %1"
 msgid "Subtitles off on the TV"
 msgstr "ปิดบทบรรยายบนทีวีแล้ว"
 
-#: modules/gui/qt/player/qml/Player.qml:1229
+#: modules/gui/qt/player/qml/Player.qml:1230
 msgid "Not playing on %1"
 msgstr "ไม่ได้เล่นบน %1"
 
-#: modules/gui/qt/player/qml/Player.qml:1231
-#: modules/gui/qt/player/qml/Player.qml:1358
+#: modules/gui/qt/player/qml/Player.qml:1232
+#: modules/gui/qt/player/qml/Player.qml:1359
 msgid "Connecting to %1…"
 msgstr "กำลังเชื่อมต่อกับ %1…"
 
-#: modules/gui/qt/player/qml/Player.qml:1233
+#: modules/gui/qt/player/qml/Player.qml:1234
 msgid "Playing on %1"
 msgstr "กำลังเล่นบน %1"
 
-#: modules/gui/qt/player/qml/Player.qml:1234
+#: modules/gui/qt/player/qml/Player.qml:1235
 msgid "The sound plays on %1"
 msgstr "เสียงเล่นบน %1"
 
-#: modules/gui/qt/player/qml/Player.qml:1259
+#: modules/gui/qt/player/qml/Player.qml:1260
 msgid "Pause, seek and change the subtitles here: the TV follows."
 msgstr "พัก เลื่อนตำแหน่ง และเปลี่ยนบทบรรยายได้ที่นี่: ทีวีจะทำตาม"
 
-#: modules/gui/qt/player/qml/Player.qml:1276
+#: modules/gui/qt/player/qml/Player.qml:1277
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the media."
 msgstr "ไฟร์วอลล์ Windows ไม่อนุญาตให้ %1 เชื่อมต่อกับคอมพิวเตอร์เครื่องนี้เพื่ออ่านสื่อ"
 
-#: modules/gui/qt/player/qml/Player.qml:1288
+#: modules/gui/qt/player/qml/Player.qml:1289
 msgid "Waiting for Windows…"
 msgstr "กำลังรอ Windows…"
 
-#: modules/gui/qt/player/qml/Player.qml:1289
+#: modules/gui/qt/player/qml/Player.qml:1290
 msgid "Allow on public networks too"
 msgstr "อนุญาตบนเครือข่ายสาธารณะด้วย"
 
-#: modules/gui/qt/player/qml/Player.qml:1290
+#: modules/gui/qt/player/qml/Player.qml:1291
 msgid "Allow on private networks"
 msgstr "อนุญาตบนเครือข่ายส่วนตัว"
 
-#: modules/gui/qt/player/qml/Player.qml:1302
+#: modules/gui/qt/player/qml/Player.qml:1303
 msgid "Try again"
 msgstr "ลองอีกครั้ง"
 
-#: modules/gui/qt/player/qml/Player.qml:1307
-#: modules/gui/qt/player/qml/Player.qml:1317
+#: modules/gui/qt/player/qml/Player.qml:1308
+#: modules/gui/qt/player/qml/Player.qml:1318
 msgid "Play here"
 msgstr "เล่นที่นี่"
 
-#: modules/gui/qt/player/qml/Player.qml:1317
-#: modules/gui/qt/player/qml/Player.qml:1368
+#: modules/gui/qt/player/qml/Player.qml:1318
+#: modules/gui/qt/player/qml/Player.qml:1369
 msgid "Stop casting"
 msgstr "หยุดการแคสต์"
 
-#: modules/gui/qt/player/qml/Player.qml:1359
+#: modules/gui/qt/player/qml/Player.qml:1360
 msgid "Also on %1"
 msgstr "เล่นบน %1 ด้วย"
 
@@ -7648,11 +7751,11 @@ msgstr "เล่นบน %1 ด้วย"
 msgid "Resume dialog"
 msgstr "กล่องโต้ตอบเล่นต่อ"
 
-#: modules/gui/qt/player/qml/ResumeDialog.qml:136
+#: modules/gui/qt/player/qml/ResumeDialog.qml:137
 msgid "You’ve watched till %1 already."
 msgstr "คุณดูถึง %1 แล้ว"
 
-#: modules/gui/qt/player/qml/ResumeDialog.qml:138
+#: modules/gui/qt/player/qml/ResumeDialog.qml:139
 msgid "Continue where you left off?"
 msgstr "เล่นต่อจากจุดที่ค้างไว้หรือไม่?"
 
@@ -7660,7 +7763,7 @@ msgstr "เล่นต่อจากจุดที่ค้างไว้ห
 msgid "Player topbar"
 msgstr "แถบด้านบนของตัวเล่น"
 
-#: modules/gui/qt/player/qml/TopBar.qml:439
+#: modules/gui/qt/player/qml/TopBar.qml:440
 msgid "Show %1 in the library"
 msgstr "แสดง %1 ในคลัง"
 
@@ -7714,7 +7817,7 @@ msgstr "ที่คั่นต้องใช้คลังสื่อ"
 msgid "Show Preferences"
 msgstr "แสดงค่าปรับแต่ง"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:556
+#: modules/gui/qt/player/qml/TracksMenu.qml:557
 #: modules/gui/qt/player/qml/TracksPageAudio.qml:37
 #: modules/gui/qt/player/qml/TracksPageSubtitle.qml:37
 #: modules/gui/qt/player/qml/SubtitleSyncTimeline.qml:42
@@ -7766,7 +7869,7 @@ msgstr "ปรับเนื้อเพลงให้ตรงกับตำ
 msgid "Volume %1%"
 msgstr "ระดับเสียง %1%"
 
-#: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:207
+#: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:211
 msgid "Play audio to select a visualization."
 msgstr "เล่นเสียงเพื่อเลือกมโนภาพ"
 
@@ -8116,10 +8219,6 @@ msgstr "กำลังค้นหาใน %1…"
 msgid "Searching subtitles online…"
 msgstr "กำลังค้นหาบทบรรยายทางออนไลน์…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:264
-msgid "Downloading…"
-msgstr "กำลังดาวน์โหลด…"
-
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:266
 msgid "%1 · %2 found"
 msgstr "%1 · พบ %2 รายการ"
@@ -8160,10 +8259,6 @@ msgstr "โหลดแฟ้มบทบรรยายเพื่อเล่
 msgid "Title of the movie or series"
 msgstr "ชื่อภาพยนตร์หรือซีรีส์"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:365
-msgid "Searching…"
-msgstr "กำลังค้นหา…"
-
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:408
 msgid "Second"
 msgstr "รอง"
@@ -8172,10 +8267,6 @@ msgstr "รอง"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "ใช้บ่อย"
-
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:444
-msgid "For this file"
-msgstr "สำหรับแฟ้มนี้"
 
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:465
 msgid "Looking for subtitles…"
@@ -8220,11 +8311,11 @@ msgstr "บทบรรยายเล็กลง"
 msgid "Larger subtitles"
 msgstr "บทบรรยายใหญ่ขึ้น"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:773
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:774
 msgid "HI"
 msgstr "HI"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:778
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:779
 msgid "For the hearing impaired"
 msgstr "สำหรับผู้บกพร่องทางการได้ยิน"
 
@@ -8302,59 +8393,59 @@ msgstr "คิวเล่น (%1/%2)"
 msgid "Casting to %1"
 msgstr "กำลังแคสต์ไปยัง %1"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:128
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:134
 msgid "Cast to"
 msgstr "แคสต์ไปยัง"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:153
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:160
 msgid "This computer"
 msgstr "คอมพิวเตอร์เครื่องนี้"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:182
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:189
 msgid "Not playing: choose it to try again"
 msgstr "ไม่ได้เล่น: เลือกเพื่อลองอีกครั้ง"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:184
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:191
 msgid "Connecting…"
 msgstr "กำลังเชื่อมต่อ…"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:185
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:192
 msgid "Sound only"
 msgstr "เสียงเท่านั้น"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:208
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:215
 msgid "Show %1 hidden device"
 msgid_plural "Show %1 hidden devices"
 msgstr[0] "แสดงอุปกรณ์ที่ซ่อนไว้ %1 รายการ"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:221
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:228
 msgid "Looking for TVs and Chromecasts on your network…"
 msgstr "กำลังค้นหาทีวีและ Chromecast ในเครือข่ายของคุณ…"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:222
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:229
 msgid ""
 "No device found. Turn your TV or Chromecast on, on the same network as this "
 "computer."
 msgstr ""
 "ไม่พบอุปกรณ์ เปิดทีวีหรือ Chromecast ของคุณ โดยให้อยู่ในเครือข่ายเดียวกับคอมพิวเตอร์เครื่องนี้"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:236
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:251
 msgid "Show the video here too"
 msgstr "แสดงวีดิทัศน์ที่นี่ด้วย"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:286
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:301
 msgid "With a Chromecast, the video plays only there."
 msgstr "เมื่อใช้ Chromecast วีดิทัศน์จะเล่นที่นั่นเท่านั้น"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:297
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:312
 msgid "The subtitles shown go to the TV with the picture."
 msgstr "บทบรรยายที่แสดงอยู่จะไปยังทีวีพร้อมกับภาพ"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:314
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:329
 msgid "Hide this device"
 msgstr "ซ่อนอุปกรณ์นี้"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:358
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:373
 msgid "playing here"
 msgstr "กำลังเล่นที่นี่"
 
@@ -8382,11 +8473,11 @@ msgstr "ไปข้างหน้า 15 วินาที"
 msgid "%1 %"
 msgstr "%1 %"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:65
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:66
 msgid "Choose a video zoom level"
 msgstr "เลือกระดับการย่อ-ขยายวีดิทัศน์"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:66
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:67
 msgid "Zoom is unavailable without video"
 msgstr "ย่อ-ขยายไม่ได้เมื่อไม่มีวีดิทัศน์"
 
@@ -8410,19 +8501,19 @@ msgstr "เอารายการที่เลือกออก"
 msgid "Add files to the queue"
 msgstr "เพิ่มแฟ้มเข้าคิว"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:629
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:630
 msgid "No results"
 msgstr "ไม่มีผลลัพธ์"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:630
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:631
 msgid "No content yet"
 msgstr "ยังไม่มีเนื้อหา"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:646
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:647
 msgid "Drag & Drop some content here!"
 msgstr "ลากและวางเนื้อหาที่นี่!"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:711
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:712
 msgid "Play queue"
 msgstr "คิวเล่น"
 

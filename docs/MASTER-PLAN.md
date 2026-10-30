@@ -10,7 +10,15 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 ## Now
 
-What is being worked on, updated as it changes (2026-10-29):
+What is being worked on, updated as it changes (2026-10-30):
+
+- 🟢 **0.4.0 ships on three platforms** (2026-10-30): Windows x64 (setup 59.4 MB, zip 107.8 MB, small updates),
+  Linux x86_64 and ARM64 (.deb, .rpm, AppImage, tar.xz, the Live TV packages, `SHA256SUMS-linux-*.txt`; no Flatpak
+  yet) and macOS Apple Silicon and Intel (two `.dmg`, signed ad hoc). `platforms.yml` has Windows, Linux and macOS
+  released. 🔴 **Windows on ARM64 moved to the next version**: in the 0.4.0 tests on a real ARM64 Windows runner it
+  opened its window and stopped a few seconds later (a crash in the Qt interface after the media library started),
+  and one of the installer's 400 binaries was not ARM64. Until then the x64 build runs on Windows 11 ARM64 under
+  emulation.
 
 - 🟢 **Release 0.4.0 prepared** (2026-10-29): VideoLAN's master merged to `9f393e5719` — **6 commits behind before**
   (HDR static metadata in the swap chain and VideoToolbox, the legacy MinGW check of `d3d11_surface` removed; its
@@ -387,10 +395,10 @@ the bar counts the lines of section 8, the ones left need the owner (SignPath, D
 
 | Program            | Platforms                                  | Code base                               | Status                      |
 |--------------------|--------------------------------------------|-----------------------------------------|-----------------------------|
-| Desktop            | Windows 10/11 x64                          | VLC 4 + Qt 6.8/QML (`vlc-redesign`)     | 🟢 0.2.6 · 🟡 0.3.0          |
-| Desktop            | Windows 11 ARM64                           | same                                    | 🔴 track                     |
-| Desktop            | Linux x86_64                               | same                                    | 🔴 track (built once before) |
-| Desktop            | macOS 12+ (Apple Silicon, Intel)           | same                                    | 🔴 track                     |
+| Desktop            | Windows 10/11 x64                          | VLC 4 + Qt 6.8/QML (`vlc-redesign`)     | 🟢 0.4.0                     |
+| Desktop            | Windows 11 ARM64                           | same                                    | 🔴 built, not in 0.4.0       |
+| Desktop            | Linux x86_64, ARM64                        | same                                    | 🟢 0.4.0                     |
+| Desktop            | macOS 12+ (Apple Silicon, Intel)           | same                                    | 🟢 0.4.0                     |
 | Android            | Android 8+ phones, tablets, Android TV     | fork of VLC for Android (Kotlin)        | ⚪ track                     |
 | Casting            | DLNA TVs (Samsung, LG, Sony…), Chromecast  | part of the desktop program             | 🟢 works on a real TV        |
 | TV receiver        | Samsung Tizen TVs (2017+)                  | Tizen web app                           | ⚪ track                     |
@@ -1308,6 +1316,11 @@ Tracks with checklists; a version number comes with the first published build.
 
 ### Linux
 
+- 🟢 **Released with 0.4.0** (2026-10-30), x86_64 and ARM64: the .deb (155 MB), .rpm (156 MB), AppImage (166 MB,
+  `.zsync`), tar.xz (126 MB) and the Live TV packages, `SHA256SUMS-linux-x86_64.txt` and `-aarch64.txt`; ARM64 about
+  the same sizes. Tested in containers on 7 distributions and by GitHub's x86_64 and ARM64 runners (apt next to the
+  system VLC, the AppImage, the .rpm in Fedora, a clip played). Not in it: the Flatpak, an updater in the app, tests
+  on real desktops by hand
 - 🟢 Built and smoke-tested once before the Windows work (Docker, X11 and Wayland; `.specs/features/redesign/evidence/`)
 - 🟢 The current code builds in Docker (Ubuntu 24.04, Qt 6.8.3, `linux-qt68.sh`) with no warning from the
   redesign's code (2026-10-28); `linux-bundle.sh` makes a self-contained tarball, `linux-wslg.sh` runs it through WSLg
@@ -1376,8 +1389,12 @@ Tracks with checklists; a version number comes with the first published build.
 
 Started 2026-10-28 (branch `feature/macos`); the analysis, decisions and what is left:
 [`extras/juxtopposed/macos/README.md`](../extras/juxtopposed/macos/README.md). Built and launched on GitHub's Macs
-(2026-10-28); the 0.4.0 checks run first at the upload.
+(2026-10-28).
 
+- 🟢 **Released with 0.4.0** (2026-10-30): `vlc-redesign-0.4.0-macos-arm64.dmg` and `-macos-x86_64.dmg`, signed ad
+  hoc. The launch test passed on GitHub's Macs, both architectures: every binary signed, icon, 100 translations, the
+  About badge, the designer's credit, Live TV loaded, headless playback to the end, the Qt interface 10 s playing a
+  clip, the unified title bar, clean quit, no QML warning, no crash report. 🔴 Never run by hand on a Mac yet
 - 🟢 Native build on Apple Silicon and Intel: `extras/juxtopposed/macos-build.sh` (VideoLAN's prebuilt macOS
   contribs of the newest upstream contrib commit, the official Qt 6.8.3 by aqtinstall — the contribs of macOS have
   no Qt —, `--disable-macosx --enable-qt` so the Qt interface is the only one, `VLC Redesign.app` with
@@ -1402,6 +1419,10 @@ Started 2026-10-28 (branch `feature/macos`); the analysis, decisions and what is
 
 ### Windows on ARM64
 
+- 🔴 **Not in 0.4.0, moved to the next version**: in the 0.4.0 tests on a real ARM64 Windows runner it opened its
+  window and stopped a few seconds later (a crash in the Qt interface after the media library started), and one of
+  the installer's 400 binaries was not ARM64. Both to fix before a release; until then the x64 build runs on
+  Windows 11 ARM64 under emulation
 - 🟢 Build with VLC's ARM64 toolchain and contribs (2026-10-28, branch `feature/winarm64`):
   `win64-docker.ps1 -Arch aarch64`, llvm-mingw `vlc-debian-llvm-ucrt:20260611225331` (`winarm64.Dockerfile`) with
   the prebuilt contribs of upstream's `win64-arm-llvm` job, UCRT, `-S 0x0A000006`; volume `vlc-winarm64-build`,

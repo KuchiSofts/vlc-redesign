@@ -1,7 +1,7 @@
 # VLC Redesign 0.4.0
 
 <!-- DRAFT: not dated, not published. Before the upload: the date, the file table (release-notes.py writes it
-     with the checksums), the Android, Linux and macOS rows confirmed by the owner. The five screenshots are of the
+     with the checksums), the Android row confirmed by the owner. The five screenshots are of the
      0.4.0 build with the demo library of the Figma frames and a made-up TV provider (nothing personal,
      no broadcaster's content). -->
 
@@ -12,7 +12,7 @@ Every screen of this interface was designed by **Juxtopposed**. ▶ **[Watch the
 ---
 
 Live TV, your own order of the sidebar, subtitles that read right in every language, sharp icons at every size,
-a frame around every window, and the first builds for Windows on ARM64, Linux and macOS. Every change, with its
+a frame around every window, and the first release for Linux and macOS, next to Windows. Every change, with its
 technical details, is in the [changelog](https://github.com/KuchiSofts/vlc-redesign/blob/main/CHANGELOG.md).
 
 ## Highlights
@@ -97,14 +97,39 @@ buttons are framed so they never melt into their dialog.
 | Platform | In 0.4.0 |
 |---|---|
 | **Windows 10 and 11, x64** | Installer and portable zip, small updates from the last three versions |
-| **Windows on ARM64** | Installer and portable zip, built natively for ARM64 (first release; not yet run on ARM64 hardware by the project) |
-| **Linux** (x86_64) | <!-- owner: published or not --> `.deb`, `.rpm` and AppImage, built and tested by the Linux workflow |
-| **macOS** (Apple Silicon, Intel) | <!-- owner: published or not --> `.dmg`, ad-hoc signed (Gatekeeper asks once) |
+| **Linux** (x86_64, ARM64) | `.deb`, `.rpm`, AppImage and `.tar.xz`, with the optional Live TV packages; glibc 2.38 or later (Ubuntu 24.04, Debian 13, Fedora 39 or later). First release |
+| **macOS** (Apple Silicon, Intel) | A `.dmg` for each, macOS 12 or later; signed ad hoc, not by Apple (macOS asks once to open it). First release |
+| **Windows on ARM64** | Not in 0.4.0: in its tests on a real ARM64 Windows runner it stopped a few seconds after opening its window (a crash in the Qt interface after the media library started), and one of the installer's 400 binaries was not ARM64. It comes in a later version; the x64 build runs on Windows 11 ARM64 under emulation |
 | **Android** | <!-- owner: confirm --> The phone app with the redesign is in progress (about 95 % of the phone screens); not part of this release's downloads |
+
+### Linux
+
+Needs glibc 2.38 or later (Ubuntu 24.04 and later, Debian 13, Fedora 39 and later). The .deb and .rpm install next to
+the distribution's own `vlc`, in `/opt/vlc-redesign`, with the command `vlc-redesign`:
+
+- **Ubuntu, Debian:** `sudo apt install ./vlc-redesign_0.4.0_amd64.deb ./vlc-redesign-livetv_0.4.0_amd64.deb`
+- **Fedora:** `sudo dnf install ./vlc-redesign-0.4.0-1.x86_64.rpm ./vlc-redesign-livetv-0.4.0-1.x86_64.rpm`
+- **Any other distribution:** `chmod +x vlc-redesign-0.4.0-x86_64.AppImage` and run it; or unpack
+  `vlc-redesign-0.4.0-linux-x86_64.tar.xz` and run `vlc-redesign/vlc`.
+
+ARM64: the same with `_arm64.deb`, `-1.aarch64.rpm`, `-aarch64.AppImage` and `-linux-aarch64.tar.xz`. The
+`vlc-redesign-livetv` package is the Live TV add-on and can be left out. Check a download with
+`sha256sum --check --ignore-missing SHA256SUMS-linux-x86_64.txt` (or `-aarch64.txt`). No Flatpak in this release (it
+comes next), and no update in the app: install the new package to update. Every step:
+[Install and update: Linux](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#linux).
+
+### macOS
+
+`vlc-redesign-0.4.0-macos-arm64.dmg` for Apple Silicon, `vlc-redesign-0.4.0-macos-x86_64.dmg` for Intel, macOS 12
+Monterey or later: open it and drag VLC Redesign to Applications. The app is signed ad hoc, not by Apple (no developer
+account yet), so **macOS refuses to open it the first time**: open it once, then *System Settings › Privacy &
+Security › Open Anyway* and confirm with your password (on macOS 12 to 14, right-click the app › *Open* works too).
+No update in the app: download the new disk image to update. Every step:
+[Install and update: macOS](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#macos).
 
 ## Updating
 
-- From **0.2.4** or later: ⋯ → About → *Check for updates* downloads only what changed. From 0.2.3 or earlier, use
+- On **Windows**, from **0.2.4** or later: ⋯ → About → *Check for updates* downloads only what changed. From 0.2.3 or earlier, use
   the installer.
 - **Signed checksums**: from 0.4.0 on, `SHA256SUMS.txt` is signed with the project's key
   (`SHA256SUMS.txt.sig`), and the app checks it before it installs an update.

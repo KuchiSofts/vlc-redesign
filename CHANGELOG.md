@@ -15,6 +15,17 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Added
+
+- **Pin a folder or a playlist to the sidebar** (proposed by Juxtopposed): *Pin to Sidebar* in the menu of a
+  folder (and of the folder page) and of a playlist. A pinned one is a row of its own, opened in one click, moved
+  or hidden in *Edit Sidebar* like the other pages; *Unpin from Sidebar* in its right-click menu.
+- **The on-screen messages name the shortcut that made them** (proposed by Juxtopposed): "Volume: 115%" with
+  "Up" under it, "Aspect ratio: 16:9" with "A", "Subtitle size 110%" with "Ctrl+Mouse Wheel Up". A change made
+  from a menu or a button shows no shortcut.
+- **Choose the audio output device on Linux and macOS too**: *Settings › Audio › Output device* lists the devices
+  of the output in use (PulseAudio, PipeWire, ALSA, Core Audio), as Windows had them.
+
 ### Fixed
 
 - **Linux: no stop on H.264 with some Intel graphics** (seen with an Intel UHD 600 and the iHD driver). When the
@@ -22,6 +33,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   again in that mode, which the system's FFmpeg refuses by stopping the program. Once the hardware failed for a
   video, it is now decoded in software.
 - No warning about a missing graphics cache at the first start of a profile (`pipelines.bin`).
+- A rare stop at quit in debug builds (2 runs in 10, after the library pages): a binding gave the library's models
+  an empty library while the interface went down; it is ignored now.
 - **Linux, the AppImage and the folder: a clear message when the graphics libraries are missing.** On a system
   without them (libEGL: a server, a minimal install) VLC fell back to the terminal and said only "Error opening
   terminal"; it now says what to install (libegl1, mesa-libEGL), also in a dialog on a desktop.

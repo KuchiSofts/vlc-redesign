@@ -280,7 +280,9 @@ What is being worked on, updated as it changes (2026-10-30):
   toggle showed), cancelled before installing.
 - 🟢 **"Subtitl…" fixed**: the tab names of the tracks panel are no longer cut short (build 205).
 - 🟢 **README**: a 56 s tour of the smart features (HyperFrames, from real captures; animated WebP + MP4), twelve
-  feature pictures, the platforms; the wiki documents every option (33 pages).
+  feature pictures, the platforms; the wiki documents every option (33 pages). **Redone 2026-10-30**: download
+  buttons for every 0.4.1 file, ten animated highlights, the films of each platform, download table, roadmap, docs
+  index, build, credits; checked rendered in light and dark.
 - 🟢 **The crash at shutdown on GitHub's runner, found and fixed (2026-10-29, PR #21)**: the launch test ended with
   `0xC000041D` in 4 of the last 5 runs. The dumps showed a `WM_NCHITTEST` reaching `CSDWin32EventHandler` (the title
   bar's native event filter, upstream code) after `MainCtx` and its CSD button model were deleted: the handler is a

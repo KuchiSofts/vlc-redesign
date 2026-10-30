@@ -250,6 +250,20 @@ T.Pane {
                 checked: index === root.matchedIndex
                 // Figma 970:4028: a folder page shows the Videos icon filled
                 contextual: modelData.asset === "video" && History.viewPath[0] === "folder"
+                // a row takes its own right click (the pane's handler below
+                // only gets the empty part): Unpin for a pin
+                TapHandler {
+                    acceptedButtons: Qt.RightButton
+                    onTapped: (eventPoint) => {
+                        const global = parent.mapToGlobal(eventPoint.position)
+                        if (modelData.pin) {
+                            root._menuPinKey = modelData.key
+                            pinMenu.popup([0], global)
+                        } else {
+                            sidebarMenu.popup([0], global)
+                        }
+                    }
+                }
                 onClicked: {
                     // The navigation may rebuild the delegates: the view is
                     // updated first

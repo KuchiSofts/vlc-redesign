@@ -35,6 +35,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   as the other packages, and its test installs it with its runtime from Flathub, prints the version and plays a clip.
 - The roadmap has the progress of each program and the Android app's next steps, and the wiki has a *Roadmap*
   page with the same; the upload check keeps the two word for word alike.
+- A new README: download buttons for every file of the release, the tour, a grid of ten highlights, the films of
+  each platform, the download table, the platforms and the roadmap, then documentation, building and credits.
 
 ---
 

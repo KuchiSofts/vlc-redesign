@@ -12,9 +12,9 @@ to the page that explains the feature in full.
 
 | Platform | In this tour | Status |
 |---|---|---|
-| **[Windows](#windows)** | 17 clips: every main feature of 0.4.0 | Released, 0.4.0 (2026-10-29) |
-| **[Linux](#linux)** | The AppImage on Arch Linux | In progress, no release yet |
-| **[macOS](#macos)** | A screenshot of the app | In progress, no release yet |
+| **[Windows](#windows)** | 17 clips: every main feature of 0.4.0 | Released, 0.4.0 (2026-10-30) |
+| **[Linux](#linux)** | The AppImage on Arch Linux | Released, 0.4.0 (2026-10-30) |
+| **[macOS](#macos)** | A screenshot of the app | Released, 0.4.0 (2026-10-30) |
 | **[Android](#android-in-testing-not-part-of-040)** | 8 phone clips and 1 tablet clip | In testing, **not part of 0.4.0** |
 
 Where each platform stands, with its requirements and files: [Platforms](Platforms).
@@ -23,7 +23,7 @@ Where each platform stands, with its requirements and files: [Platforms](Platfor
 
 | [![The Windows film](https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/films/windows.jpg)](https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/films/vlc-redesign-0.4.0-windows.mp4) | [![The Linux and macOS film](https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/films/linux-macos.jpg)](https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/films/vlc-redesign-0.4.0-linux-macos.mp4) | [![The Android film](https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/films/android.jpg)](https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/films/vlc-redesign-0.4.0-android.mp4) |
 |---|---|---|
-| **Windows**, 0.4.0: the 17 clips, 2 min 55 s (14.0 MB) | **Linux and macOS**, in progress: 21 s (0.9 MB) | **Android**, in testing: 9 clips, 2 min 2 s (3.9 MB) |
+| **Windows**, 0.4.0: the 17 clips, 2 min 55 s (14.0 MB) | **Linux and macOS**, 0.4.0: 21 s (0.9 MB) | **Android**, in testing: 9 clips, 2 min 2 s (3.9 MB) |
 
 **Media in the clips:** the Blender open movies *Sintel*, *Big Buck Bunny*, *Elephants Dream*, *Tears of Steel* and
 *Caminandes* (CC BY), music by Kevin MacLeod (incompetech.com, CC BY 4.0), a made-up TV provider for the Live TV clips
@@ -203,8 +203,9 @@ In depth: [Languages](Languages) · [Right to left](Languages#right-to-left)
 
 ## Linux
 
-**In progress, no release yet.** The AppImage, .deb, .rpm and tar.xz for x86_64 and ARM64 are in testing; a Flatpak
-comes next. Requirements and what is tested: [Platforms: Linux](Platforms#linux).
+**Released, 0.4.0.** A .deb, an .rpm, an AppImage and a tar.xz for x86_64 and ARM64, next to the distribution's own
+VLC; a Flatpak comes next. How to install: [Install and update: Linux](Install-and-Update#linux). Requirements and
+what is tested: [Platforms: Linux](Platforms#linux).
 
 <a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/linux.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/linux.gif" alt="The Linux AppImage on Arch Linux: About with Linux x86_64 AppImage, Settings in the dark theme, Home in the light theme" width="960"></a>
 
@@ -215,8 +216,9 @@ In depth: [Platforms: Linux](Platforms#linux)
 
 ## macOS
 
-**In progress, no release yet.** A disk image for Apple Silicon and one for Intel are built by GitHub's Macs, signed
-ad hoc. Requirements and what is tested: [Platforms: macOS](Platforms#macos).
+**Released, 0.4.0.** A disk image for Apple Silicon and one for Intel, built and tested by GitHub's Macs, signed ad
+hoc (macOS asks once to open it). How to install: [Install and update: macOS](Install-and-Update#macos).
+Requirements and what is tested: [Platforms: macOS](Platforms#macos).
 
 <a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/macos.png"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/macos.png" alt="The macOS app on an Intel Mac, Home" width="960"></a>
 

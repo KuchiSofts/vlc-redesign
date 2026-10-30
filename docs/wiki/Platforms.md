@@ -1,8 +1,8 @@
 # Platforms
 
-VLC Redesign **0.4.0** is released for **Windows 10 (version 1809 or later) and Windows 11, 64-bit** (x64). Linux and
-macOS builds are in progress, Windows on ARM64 is planned, and the Android app is in testing as a separate app. This
-page gives, for each platform, its status, its version, what it needs, its files, what is tested and what is
+VLC Redesign **0.4.0** is released for three platforms together: **Windows 10 (version 1809 or later) and Windows 11,
+64-bit** (x64), **Linux** (x86_64 and ARM64) and **macOS** (Apple Silicon and Intel). Windows on ARM64 is built but
+comes in a later version, and the Android app is in testing as a separate app. This page gives, for each platform, its status, its version, what it needs, its files, what is tested and what is
 missing.
 
 The status of each platform is kept in one file,
@@ -16,17 +16,17 @@ The study behind the order, with the evidence from VideoLAN's build system:
 
 | Platform | Status | Latest version | Next | Needs |
 |---|---|---|---|---|
-| **[Windows](#windows)** | **Released** | **0.4.0** (2026-10-29) | 0.5.0 | Windows 10 (1809) or 11, 64-bit |
-| [Linux](#linux) | In progress | none yet | | glibc 2.38 (Ubuntu 24.04, Debian 13, Fedora 39 or later), x86_64 or ARM64 |
-| [macOS](#macos) | In progress | none yet | | macOS 12 Monterey, Apple Silicon or Intel |
-| [Windows on ARM64](#windows-on-arm64) | Planned | none yet | | Windows 11 on ARM64 |
+| **[Windows](#windows)** | **Released** | **0.4.0** (2026-10-30) | 0.5.0 | Windows 10 (1809) or 11, 64-bit |
+| **[Linux](#linux)** | **Released** | **0.4.0** (2026-10-30) | 0.5.0 | glibc 2.38 (Ubuntu 24.04, Debian 13, Fedora 39 or later), x86_64 or ARM64 |
+| **[macOS](#macos)** | **Released** | **0.4.0** (2026-10-30) | 0.5.0 | macOS 12 Monterey, Apple Silicon or Intel |
+| [Windows on ARM64](#windows-on-arm64) | Planned (built, not released) | none yet | a later version | Windows 11 on ARM64 |
 | [Android (phones, tablets, TV)](#android) | Research (an app in testing) | none yet | | Android 8.0 or later |
 | [Samsung Smart TV (Tizen)](#samsung-smart-tv-tizen) | Research | none yet | | Tizen 3.0 (2017 models) or later |
 | [iPhone, iPad, Apple TV](#iphone-ipad-apple-tv) | Later | none yet | | iOS, iPadOS, tvOS |
 | Windows 32-bit, Windows 7, 8, XP | Not planned | | | See [below](#what-is-not-planned) |
 
 Linux, macOS and Windows on ARM64 are the same desktop program as Windows, from the same code, with one version
-number. Android, the TV receiver and the Apple apps are separate apps, each with its own repository and its own
+number: 0.4.0 is the first version for Linux and macOS. Android, the TV receiver and the Apple apps are separate apps, each with its own repository and its own
 version from its first published build.
 
 ## Windows
@@ -34,7 +34,7 @@ version from its first published build.
 | | |
 |---|---|
 | **Status** | Released |
-| **Version** | 0.4.0, 2026-10-29 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.4.0)). Next: 0.5.0 |
+| **Version** | 0.4.0, 2026-10-30 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.4.0)). Next: 0.5.0 |
 | **Needs** | Windows 10 (version 1809, build 17763, or later) or Windows 11, 64-bit. No graphics card needed |
 | **Files** | `vlc-redesign-0.4.0-win64-setup.exe` (installer) and `vlc-redesign-0.4.0-win64.zip` (portable), with small updates in the app: [Install and update](Install-and-Update) |
 
@@ -49,8 +49,9 @@ version from its first published build.
   TV ([TV compatibility](TV-Compatibility)).
 - **Still to do:** tests on Intel graphics, on Windows 10 on real PCs and on screens of different scales;
   code-signed releases (waiting for SignPath's approval), so that SmartScreen no longer warns.
+- **Small updates in the app and the signed `SHA256SUMS.txt` are for Windows only.**
 - **On Windows 11 ARM64**, the x64 installer runs and installs (it accepts any x64-compatible Windows); Windows
-  emulates it, which is slower. A native build is [below](#windows-on-arm64).
+  emulates it, which is slower. The native build comes in a later version: [below](#windows-on-arm64).
 
 The tour of every Windows feature in clips: [Feature tour: Windows](Feature-Tour#windows).
 
@@ -58,71 +59,51 @@ The tour of every Windows feature in clips: [Feature tour: Windows](Feature-Tour
 
 | | |
 |---|---|
-| **Status** | In progress: no version published yet |
+| **Status** | Released |
+| **Version** | 0.4.0, 2026-10-30 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.4.0)), the first for Linux. Next: 0.5.0 |
 | **Needs** | glibc 2.38 or later (Ubuntu 24.04, Debian 13, Fedora 39 or later), x86_64 or ARM64 |
-| **Files, once published** | `vlc-redesign-X.Y.Z-x86_64.AppImage`, `vlc-redesign_X.Y.Z_amd64.deb`, `vlc-redesign-X.Y.Z-1.x86_64.rpm`, `vlc-redesign-X.Y.Z-linux-x86_64.tar.xz`; for ARM64 `vlc-redesign-X.Y.Z-aarch64.AppImage`, `vlc-redesign_X.Y.Z_arm64.deb`, `vlc-redesign-X.Y.Z-1.aarch64.rpm` |
+| **Files** | x86_64: `vlc-redesign_0.4.0_amd64.deb` (155 MB), `vlc-redesign-0.4.0-1.x86_64.rpm` (156 MB), `vlc-redesign-0.4.0-x86_64.AppImage` (166 MB, with its `.zsync`), `vlc-redesign-0.4.0-linux-x86_64.tar.xz` (126 MB), the Live TV add-on `vlc-redesign-livetv_0.4.0_amd64.deb` and `vlc-redesign-livetv-0.4.0-1.x86_64.rpm`, `SHA256SUMS-linux-x86_64.txt`. ARM64, about the same size: `vlc-redesign_0.4.0_arm64.deb`, `vlc-redesign-0.4.0-1.aarch64.rpm`, `vlc-redesign-0.4.0-aarch64.AppImage`, `vlc-redesign-0.4.0-linux-aarch64.tar.xz`, `SHA256SUMS-linux-aarch64.txt`. Which one and how: [Install and update: Linux](Install-and-Update#linux) |
 
 <a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/linux.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/linux.gif" alt="The Linux AppImage on Arch Linux: About with Linux x86_64 AppImage, Settings in the dark theme, Home in the light theme" width="960"></a>
 
 <sub>The Linux AppImage on Arch Linux: About with *Linux x86_64 · AppImage*, Settings in the dark theme,
 Home in the light theme. Click for the MP4.</sub>
 
-- **The packages.** An AppImage (with update information for the GitHub releases), a .deb, an .rpm and a tarball,
-  for x86_64 and ARM64, are in testing; a Flatpak manifest is written (KDE 6.8 runtime), and the Flatpak comes
-  next. The .deb and .rpm install VLC in `/opt/vlc-redesign` with the command `vlc-redesign`, a desktop entry with
-  VLC's media types and the logo in every size, so they install next to the distribution's `vlc`.
-- **Tested:** the current code builds with Qt 6.8.3 with no warning from the redesign's code; every control of the
-  player bar (59) was put in the bar, shown and clicked during playback, with no QML warning; VA-API hardware
-  decoding on Intel Iris Xe (H.264, HEVC, VP9); memory stays near 480 MB while going from file to file; playback on
-  Wayland (Weston) and the title bar on X11. The x86_64 packages were made and checked (the .deb, the .rpm in
-  Fedora, the AppImage). A GitHub workflow builds on x86_64 and ARM64 and tests the packages on a clean runner (the
-  .deb installed with apt next to the distribution's VLC, the AppImage, and the .rpm in Fedora 44, each playing a
-  clip to its end); it runs once the code is on GitHub.
+- **The packages.** A .deb (Ubuntu 24.04 and later, Debian 13), an .rpm (Fedora), an AppImage (any distribution
+  with glibc 2.38 or later, Arch among them) and a folder to run from, for x86_64 and ARM64. The .deb and .rpm
+  install VLC in `/opt/vlc-redesign` with the command `vlc-redesign`, a desktop entry *VLC Redesign* with VLC's media
+  types and the logo in every size, so they install next to the distribution's `vlc` and replace nothing of it.
+  Older systems (Ubuntu 22.04, Debian 12: glibc 2.35 and 2.36) are refused by apt, and the AppImage and the folder
+  say which glibc they need instead of starting. No Flatpak in this release: it comes next.
+- **Live TV is an add-on you can leave out**, as in the Windows installer: with the .deb and .rpm it is the package
+  `vlc-redesign-livetv` (leave its file out, or remove it later: `sudo apt remove vlc-redesign-livetv`,
+  `sudo dnf remove vlc-redesign-livetv`); the AppImage and the folder carry it, and *Settings › General › Live TV
+  (IPTV) add-on* turns it off. Building from the source: `./configure --disable-iptv` leaves it out.
+- **Updates:** no update in the app on Linux; install the new version's package (apt and dnf replace the older
+  one), or take the new AppImage or folder.
+- **Tested:** in clean containers on 7 distributions (`linux-pkg-test.sh`: install, files and libraries, a UI tour
+  under Xvfb, removal): Ubuntu 24.04 and 26.04, Debian 13, Fedora 41 and 43, Arch with the AppImage; apt refuses the
+  .deb on Ubuntu 22.04 and Debian 12, as it should. GitHub's x86_64 and ARM64 runners build the packages and test
+  them on a clean runner: the .deb installed with apt next to the system's VLC, the AppImage, the .rpm in Fedora,
+  each playing a clip. Before that: every control of the player bar (59) put in the bar, shown and clicked during
+  playback with no QML warning; VA-API hardware decoding on Intel Iris Xe (H.264, HEVC, VP9); memory near 480 MB
+  while going from file to file; playback on Wayland (Weston) and the title bar on X11.
 - **Fixed in 0.4.0 for Linux:** the zoom list, the dialogs with the System theme, the window shadow on X11 that
   caught clicks, the memory growth while going from file to file, AV1 on Ubuntu 24.04 with a recent Intel GPU (dav1d
-  decodes it), and the video on Wayland with Intel or AMD graphics (now centred over black).
-- **Missing:** the in-app updater on Linux; wider tests on real desktops (Ubuntu, Fedora, Debian, Arch), with X11 and
-  Wayland, PipeWire and PulseAudio, Intel, AMD and NVIDIA; Ubuntu 22.04 and Debian 12 (they need a build on an older base); the Flatpak
-  built and on Flathub; the pixel check of every frame.
-
-### The packages (in testing)
-
-The packages being tested (not published with 0.4.0: no Linux file is on the release yet). One build, five
-downloads; each installs next to the distribution's own `vlc` and replaces nothing of it:
-
-| Download | For | Install |
-|---|---|---|
-| `vlc-redesign_X.Y.Z_amd64.deb` (+ `vlc-redesign-livetv_X.Y.Z_amd64.deb`) | Ubuntu 24.04 and later, Debian 13 | `sudo apt install ./vlc-redesign_*.deb ./vlc-redesign-livetv_*.deb` |
-| `vlc-redesign-X.Y.Z-1.x86_64.rpm` (+ `vlc-redesign-livetv-X.Y.Z-1.x86_64.rpm`) | Fedora 40 and later | `sudo dnf install ./vlc-redesign-*.rpm` |
-| `vlc-redesign-X.Y.Z-x86_64.AppImage` | any distribution with glibc 2.38 or later (Arch, openSUSE Tumbleweed…) | `chmod +x` it and run it |
-| `vlc-redesign-X.Y.Z-x86_64.flatpak` | any distribution with Flatpak | `flatpak install --user vlc-redesign-X.Y.Z-x86_64.flatpak` (the KDE 6.8 runtime comes from Flathub) |
-| `vlc-redesign-X.Y.Z-linux-x86_64.tar.xz` | a folder to run from | unpack, run `vlc-redesign/vlc` |
-
-The .deb and .rpm put VLC in `/opt/vlc-redesign` and the command `vlc-redesign`; the menu entry is *VLC Redesign*.
-Older systems (Ubuntu 22.04, Debian 12: glibc 2.35 and 2.36) are refused by apt, and the AppImage and the folder
-say which glibc they need instead of starting.
-
-**Live TV is an add-on you can leave out**, as in the Windows installer:
-
-- .deb and .rpm: it is the package `vlc-redesign-livetv`. Leave its file out at installation, or remove it later
-  (`sudo apt remove vlc-redesign-livetv`, `sudo dnf remove vlc-redesign-livetv`): VLC then has no TV page, button or
-  setting, and nothing of Live TV is loaded.
-- AppImage, Flatpak and the folder are one file each: turn it off in *Settings › General › Live TV (IPTV) add-on*
-  (or start with `--no-iptv-enabled`); off, nothing of it is loaded and the TV page and button are gone.
-- Building from the source: `./configure --disable-iptv` leaves the add-on out of the build.
-
-In the package test (`linux-pkg-test.sh`: a clean container, its files and libraries, a UI tour under Xvfb) every
-package passed on Ubuntu 24.04 and 26.04, Debian 13, Fedora 41 and 43, Arch (the AppImage) and as the Flatpak; apt
-refuses the .deb on Ubuntu 22.04 and Debian 12, as it should. Still before a release: the tests on real desktops
-listed above.
+  decodes it), the video on Wayland with Intel or AMD graphics (now centred over black), and Weston 14 and 15 hanging
+  VLC at the end of every video.
+- **Missing:** the Flatpak (built and on Flathub); an updater in the app; tests by hand on real desktops (Ubuntu,
+  Fedora, Debian, Arch), with X11 and Wayland, PipeWire and PulseAudio, Intel, AMD and NVIDIA; Ubuntu 22.04 and
+  Debian 12 (they need a build on an older base); the pixel check of every frame.
 
 ## macOS
 
 | | |
 |---|---|
-| **Status** | In progress: no version published yet |
+| **Status** | Released |
+| **Version** | 0.4.0, 2026-10-30 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.4.0)), the first for macOS. Next: 0.5.0 |
 | **Needs** | macOS 12 Monterey or later, Apple Silicon or Intel |
-| **Files, once published** | `vlc-redesign-X.Y.Z-macos-<arch>.dmg`: one disk image for Apple Silicon and one for Intel |
+| **Files** | `vlc-redesign-0.4.0-macos-arm64.dmg` (Apple Silicon) and `vlc-redesign-0.4.0-macos-x86_64.dmg` (Intel). How to open it the first time: [Install and update: macOS](Install-and-Update#macos) |
 
 <a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/macos.png"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/macos.png" alt="The macOS app on an Intel Mac, Home" width="960"></a>
 
@@ -130,37 +111,38 @@ listed above.
 
 - **The app.** `VLC Redesign.app` is built from the same code, with VLC's Qt interface as its only interface, the
   icon drawn from the designer's logo, the Live TV add-on and the translations. Its settings, library and caches are
-  apart from an official VLC's.
+  apart from an official VLC's. About shows *macOS Apple Silicon* or *macOS Intel*.
 - **One title bar.** The red, yellow and green buttons sit at the start of VLC Redesign's own top bar, as in other
   Mac apps; full screen in its own Space, tiling and resizing from every edge work. *Show window decorations* in
   Settings brings the separate title bar back. A minimal menu bar sits at the top of the screen, and ⌘ reaches VLC's
   shortcuts.
-- **Tested:** GitHub's Macs build both architectures on every pull request and run a launch test: the signatures of
-  the bundle, the icon, the translations, the Live TV plugin, the About badge (*macOS Apple Silicon* / *macOS
-  Intel*), the credits, playback, the Qt interface with no QML warning, a clean quit, and screenshots light, dark and
-  of About. Both architectures built and passed it on 28 October.
-- **Signing.** The app is signed ad hoc, not by Apple, until there is an Apple developer account: macOS asks to allow
-  it once (*Open Anyway* in System Settings, Privacy & Security).
-- **Missing:** signing and notarization by Apple; media keys and Now Playing; the video in the window and
-  VideoToolbox checked on a Mac; in-app updates; the pixel check of every frame.
+- **Signing.** The app is signed ad hoc, not by Apple, until there is an Apple developer account: the first time,
+  macOS refuses to open it, and you allow it once (*System Settings › Privacy & Security › Open Anyway*, or
+  right-click › *Open* on macOS 12 to 14).
+- **Updates:** no update in the app on macOS; download the new disk image and replace the app.
+- **Tested:** GitHub's Macs build both architectures and run a launch test on each: every binary signed, the icon,
+  100 translations, the About badge (*macOS Apple Silicon* / *macOS Intel*), the designer's credit, the Live TV
+  add-on loaded, headless playback to the end, the Qt interface for 10 seconds playing a clip, one unified title bar
+  (the traffic lights), a clean quit, no QML warning and no crash report. It has not been run by hand on a Mac yet.
+- **Missing:** signing and notarization by Apple; tests by hand on a Mac; media keys and Now Playing; the video in
+  the window and VideoToolbox checked on a Mac; an updater in the app; the pixel check of every frame.
 
 ## Windows on ARM64
 
 | | |
 |---|---|
-| **Status** | Planned: no version published yet |
+| **Status** | Planned: built, not released with 0.4.0; it comes in a later version |
 | **Needs** | Windows 11 on ARM64 |
 | **Files, once published** | `vlc-redesign-X.Y.Z-winarm64-setup.exe`, `vlc-redesign-X.Y.Z-winarm64.zip` and its own small updates (`-winarm64-delta-from-…`) |
 
-- **Today:** the x64 build already runs on Windows 11 ARM64 under emulation (see [Windows](#windows)).
-- **Built:** the redesign builds for ARM64 with VideoLAN's ARM64 toolchain and libraries, unchanged; every `.exe` and
-  `.dll` of the package is ARM64. Video goes through Direct3D 11 (VideoLAN's ARM64 libraries have no OpenGL). The
-  installer, the zip and the small updates are made for ARM64 too, and an ARM64 copy takes only the updates of its
-  own architecture.
-- **Tested:** the package is checked without running it: every binary ARM64, every imported DLL in the package or in
-  Windows, the About badge, the Live TV add-on, the translations and the credits. A launch test and an install test
-  run on GitHub's Windows 11 ARM64 runners at the upload.
-- **Missing:** a run on a real ARM64 PC (Snapdragon), with its graphics driver.
+- **Today:** the x64 build runs on Windows 11 ARM64 under emulation (see [Windows](#windows)).
+- **Built:** the redesign builds for ARM64 with VideoLAN's ARM64 toolchain and libraries, unchanged. Video goes
+  through Direct3D 11 (VideoLAN's ARM64 libraries have no OpenGL). The installer, the zip and the small updates are
+  made for ARM64 too, and an ARM64 copy takes only the updates of its own architecture.
+- **Tested for 0.4.0, not released:** on a real ARM64 Windows runner of GitHub it opened its window and stopped a
+  few seconds later (a crash in the Qt interface after the media library started), and one of the installer's 400
+  binaries was not ARM64. Both are to be fixed before a release.
+- **Missing:** those two fixes, then a run on a real ARM64 PC (Snapdragon), with its graphics driver.
 
 ## Android
 

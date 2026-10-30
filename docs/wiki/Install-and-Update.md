@@ -1,14 +1,23 @@
 # Install and update
 
-VLC Redesign comes as an **installer** and as a **portable zip**, both on the
-[latest release](https://github.com/KuchiSofts/vlc-redesign/releases/latest). It needs **Windows 10 (version 1809 or
-later) or Windows 11, 64-bit**. It installs next to an official VLC without touching it: its settings, library and
-history stay in its own `portable` folder. This page goes through the installer page by page, the switches of a
-silent install, the portable copy, the updates and uninstalling.
+VLC Redesign 0.4.0 is released for **Windows**, **Linux** and **macOS**, every file on the
+[latest release](https://github.com/KuchiSofts/vlc-redesign/releases/latest).
+
+- **Windows 10 (version 1809 or later) or Windows 11, 64-bit**: an **installer** and a **portable zip**. It installs
+  next to an official VLC without touching it: its settings, library and history stay in its own `portable` folder.
+- **Linux, x86_64 or ARM64, with glibc 2.38 or later** (Ubuntu 24.04 and later, Debian 13, Fedora 39 and later): a
+  .deb, an .rpm, an AppImage and a folder to run from. They install next to the distribution's own `vlc`: see
+  [Linux](#linux).
+- **macOS 12 Monterey or later, Apple Silicon or Intel**: a disk image for each. See [macOS](#macos).
+
+This page goes through the Windows installer page by page, the switches of a silent install, the portable copy, the
+updates and uninstalling, then Linux and macOS.
 
 ## The release files
 
-The files of version 0.4.0 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.4.0)):
+The files of version 0.4.0 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.4.0)).
+
+**Windows** (x64):
 
 | File | Size | What it is |
 |---|---|---|
@@ -20,6 +29,28 @@ The files of version 0.4.0 ([release page](https://github.com/KuchiSofts/vlc-red
 | `SHA256SUMS.txt.sig` | | The signature of `SHA256SUMS.txt`: from 0.4.0 on, the app installs only an update whose list is signed. |
 
 You never need to download a `.vrdelta` file yourself: the app picks the one for your version.
+
+**Linux** (x86_64; the ARM64 files are in [Which file](#which-file)):
+
+| File | Size | What it is |
+|---|---|---|
+| `vlc-redesign_0.4.0_amd64.deb` | 155 MB | **For Ubuntu 24.04 and later and Debian 13.** Installs in `/opt/vlc-redesign`, the command `vlc-redesign`. |
+| `vlc-redesign-livetv_0.4.0_amd64.deb` | | The Live TV add-on for the .deb (optional). |
+| `vlc-redesign-0.4.0-1.x86_64.rpm` | 156 MB | **For Fedora 39 and later.** Installs in `/opt/vlc-redesign`, the command `vlc-redesign`. |
+| `vlc-redesign-livetv-0.4.0-1.x86_64.rpm` | | The Live TV add-on for the .rpm (optional). |
+| `vlc-redesign-0.4.0-x86_64.AppImage` | 166 MB | **One file for any distribution with glibc 2.38 or later** (Arch among them), with its `.zsync`. |
+| `vlc-redesign-0.4.0-linux-x86_64.tar.xz` | 126 MB | A folder to run from, nothing installed. |
+| `SHA256SUMS-linux-x86_64.txt` | | The SHA-256 of the Linux files, to check a download. |
+
+**macOS** (12 Monterey or later):
+
+| File | What it is |
+|---|---|
+| `vlc-redesign-0.4.0-macos-arm64.dmg` | **For a Mac with Apple Silicon.** |
+| `vlc-redesign-0.4.0-macos-x86_64.dmg` | **For a Mac with an Intel processor.** |
+
+`SHA256SUMS.txt`, signed by the project, lists every file of the release (Windows, Linux and macOS). The small
+updates in the app are for Windows only: on Linux and macOS, install the new version's file to update.
 
 > **Good to know.** Windows SmartScreen may warn about an unknown publisher the first time, because the releases are
 > not code-signed yet: see
@@ -255,6 +286,100 @@ folder.
 An update never removes your settings, and a new version in another folder starts with them (see
 [Settings carried over](#settings-carried-over)).
 
+## Linux
+
+VLC Redesign for Linux needs **glibc 2.38 or later** (Ubuntu 24.04 and later, Debian 13, Fedora 39 and later), on
+x86_64 or ARM64. Older systems (Ubuntu 22.04, Debian 12) are refused: apt does not install the .deb, and the AppImage
+and the folder say which glibc they need instead of starting. There is no Flatpak in this release; it comes next.
+
+The .deb and the .rpm install VLC Redesign **next to the distribution's own `vlc`** and replace nothing of it: the
+program goes in `/opt/vlc-redesign`, the command is `vlc-redesign`, and the menu entry is *VLC Redesign*.
+
+### Which file
+
+| Your system | x86_64 (most PCs) | ARM64 |
+|---|---|---|
+| Ubuntu 24.04 or later, Debian 13 | `vlc-redesign_0.4.0_amd64.deb` (+ `vlc-redesign-livetv_0.4.0_amd64.deb`) | `vlc-redesign_0.4.0_arm64.deb` (+ `vlc-redesign-livetv_0.4.0_arm64.deb`) |
+| Fedora 39 or later | `vlc-redesign-0.4.0-1.x86_64.rpm` (+ `vlc-redesign-livetv-0.4.0-1.x86_64.rpm`) | `vlc-redesign-0.4.0-1.aarch64.rpm` (+ `vlc-redesign-livetv-0.4.0-1.aarch64.rpm`) |
+| Any other distribution with glibc 2.38 or later (Arch…) | `vlc-redesign-0.4.0-x86_64.AppImage` | `vlc-redesign-0.4.0-aarch64.AppImage` |
+| A folder to run from, nothing installed | `vlc-redesign-0.4.0-linux-x86_64.tar.xz` | `vlc-redesign-0.4.0-linux-aarch64.tar.xz` |
+| Checksums | `SHA256SUMS-linux-x86_64.txt` | `SHA256SUMS-linux-aarch64.txt` |
+
+The ARM64 files are about the same size as the x86_64 ones. To check a download, in the folder of the files:
+`sha256sum --check --ignore-missing SHA256SUMS-linux-x86_64.txt` (ARM64: `SHA256SUMS-linux-aarch64.txt`).
+
+### Installing
+
+In a terminal, in the folder of the downloads (ARM64: the same with the ARM64 file names):
+
+- **Ubuntu, Debian:**
+  `sudo apt install ./vlc-redesign_0.4.0_amd64.deb ./vlc-redesign-livetv_0.4.0_amd64.deb`
+- **Fedora:**
+  `sudo dnf install ./vlc-redesign-0.4.0-1.x86_64.rpm ./vlc-redesign-livetv-0.4.0-1.x86_64.rpm`
+- **The AppImage:** `chmod +x vlc-redesign-0.4.0-x86_64.AppImage`, then run it
+  (`./vlc-redesign-0.4.0-x86_64.AppImage`).
+- **The folder:** `tar -xf vlc-redesign-0.4.0-linux-x86_64.tar.xz`, then run `vlc-redesign/vlc`.
+
+After a .deb or .rpm, start **VLC Redesign** from the menu, or `vlc-redesign` in a terminal.
+
+**Live TV is an add-on you can leave out**, as in the Windows installer. With the .deb and .rpm it is the package
+`vlc-redesign-livetv`: leave its file out of the command above, or remove it later
+(`sudo apt remove vlc-redesign-livetv`, `sudo dnf remove vlc-redesign-livetv`); VLC then has no TV page, button or
+setting. The AppImage and the folder carry it: turn it off in *Settings › General › Live TV (IPTV) add-on*.
+
+### Updating
+
+There is no update in the app on Linux. To update, download the new version's files and install them as above: apt
+and dnf replace the older version, and a new AppImage or folder replaces the old one.
+
+### Uninstalling
+
+- **Ubuntu, Debian:** `sudo apt remove vlc-redesign vlc-redesign-livetv`
+- **Fedora:** `sudo dnf remove vlc-redesign vlc-redesign-livetv`
+- **The AppImage or the folder:** delete it.
+
+The distribution's own `vlc` is not touched.
+
+## macOS
+
+VLC Redesign for macOS needs **macOS 12 Monterey or later**. Take the disk image of your Mac (*Apple menu › About
+This Mac* shows its chip or processor):
+
+| Your Mac | File |
+|---|---|
+| Apple Silicon | `vlc-redesign-0.4.0-macos-arm64.dmg` |
+| Intel | `vlc-redesign-0.4.0-macos-x86_64.dmg` |
+
+### Installing
+
+1. Open the disk image and drag **VLC Redesign** to **Applications**.
+2. Open VLC Redesign from Applications.
+
+**The first time, macOS refuses to open it.** The app is signed ad hoc, not by Apple (the project has no Apple
+developer account yet), so macOS says Apple cannot check it for malicious software. Open it once this way:
+
+- **macOS 15 Sequoia and later:** after the refusal, open **System Settings › Privacy & Security**, click **Open
+  Anyway**, and confirm with your password.
+- **macOS 12 to 14:** Control-click (or right-click) the app in Applications, choose **Open**, then **Open** again.
+
+After that it opens like any other app. Because the signature is ad hoc, the Mac may ask again for access to folders
+and the microphone after an update.
+
+VLC Redesign has its own bundle id (`org.kuchisofts.vlcredesign`): its settings, library and caches stay apart from
+an official VLC's, and both can be installed side by side. The Live TV add-on comes in the app; *Settings › General ›
+Live TV (IPTV) add-on* turns it off.
+
+### Updating
+
+There is no update in the app on macOS. To update, download the new version's disk image and drag VLC Redesign to
+Applications again, replacing the old one; the settings stay.
+
+### Uninstalling
+
+Drag **VLC Redesign** from Applications to the Trash. Its settings, library and caches stay under the name
+`org.kuchisofts.vlcredesign` in `~/Library/Preferences`, `~/Library/Application Support` and `~/Library/Caches`;
+delete those too to remove everything.
+
 ---
 
-[Languages](Languages) · [Troubleshooting and FAQ](Troubleshooting-and-FAQ) · [Settings: General](Settings-General) · [Home](Home)
+[Languages](Languages) · [Platforms](Platforms) · [Troubleshooting and FAQ](Troubleshooting-and-FAQ) · [Settings: General](Settings-General) · [Home](Home)

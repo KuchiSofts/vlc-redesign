@@ -7,7 +7,7 @@ For changes to VLC itself, see [NEWS](NEWS).
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
 what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `9f393e5719` (2026-10-29).
 
-**Contents:** [Unreleased](#unreleased) · [0.4.0](#040--2026-10-29) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [Unreleased](#unreleased) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
 
@@ -17,10 +17,11 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ---
 
-## [0.4.0] · 2026-10-29
+## [0.4.0] · 2026-10-30
 
-Live TV, the designer's icon everywhere, buttons that show what they opened, Ctrl+wheel for the subtitle size,
-a border on every window, sharp icons at every scale, and signed updates.
+The first release for Linux and macOS too, next to Windows: Live TV, the designer's icon everywhere, buttons that
+show what they opened, Ctrl+wheel for the subtitle size, a border on every window, sharp icons at every scale, and
+signed updates.
 
 ### Added
 
@@ -64,14 +65,33 @@ a border on every window, sharp icons at every scale, and signed updates.
   ASS/SSA, MicroDVD, SubViewer/SBV, SAMI and VobSub (`.idx`) files are read once, in the background, and kept for
   the next time. Subtitles inside the video file and streams that cannot seek have no marks. Settings, Subtitles,
   Timing: *Show subtitle lines on the seek bar* (`qt-seek-subtitle-cues`, on by default, applies at once).
-- **Linux (x86_64), in testing: not released with 0.4.0.** The packages are made and tested, and come with a later
-  version: a .deb (Ubuntu 24.04 and later, Debian 13), an .rpm (Fedora), an AppImage
-  (any distribution with glibc 2.38 or later, Arch among them), a Flatpak (KDE 6.8 runtime) and a folder to run
-  from. The .deb and .rpm install next to the distribution's own `vlc` (`/opt/vlc-redesign`, the command
-  `vlc-redesign`, the menu entry *VLC Redesign*) and replace nothing of it. Live TV is the package
-  `vlc-redesign-livetv`, installed by default and removable alone, as the installer's component on Windows; in
-  the AppImage, the Flatpak and the folder it is turned off in Settings. Older systems are refused with a clear
-  message. See [Platforms](https://github.com/KuchiSofts/vlc-redesign/wiki/Platforms).
+- **Linux (x86_64 and ARM64).** VLC Redesign for Linux, from the same code as on Windows, for any distribution
+  with glibc 2.38 or later (Ubuntu 24.04 and later, Debian 13, Fedora 39 and later): a .deb
+  (`vlc-redesign_0.4.0_amd64.deb`, 155 MB), an .rpm (`vlc-redesign-0.4.0-1.x86_64.rpm`, 156 MB), an AppImage
+  (`vlc-redesign-0.4.0-x86_64.AppImage`, 166 MB, with its `.zsync`) and a folder to run from
+  (`vlc-redesign-0.4.0-linux-x86_64.tar.xz`, 126 MB), the same for ARM64 (`_arm64.deb`, `-1.aarch64.rpm`,
+  `-aarch64.AppImage`, `-linux-aarch64.tar.xz`), and the checksums in `SHA256SUMS-linux-x86_64.txt` and
+  `SHA256SUMS-linux-aarch64.txt`. The .deb and .rpm install next to the distribution's own `vlc`
+  (`/opt/vlc-redesign`, the command `vlc-redesign`, the menu entry *VLC Redesign*) and replace nothing of it.
+  Live TV is the package `vlc-redesign-livetv` (`vlc-redesign-livetv_0.4.0_amd64.deb`,
+  `vlc-redesign-livetv-0.4.0-1.x86_64.rpm`), optional and removable alone, as the installer's component on Windows;
+  in the AppImage and the folder it is turned off in Settings. Older systems are refused with a clear message. No
+  in-app updater on Linux: install the new package to update. No Flatpak in this release; it comes next. Tested in
+  containers on 7 distributions (Ubuntu 24.04 and 26.04, Debian 13, Fedora 41 and 43, Arch with the AppImage) and on
+  GitHub's x86_64 and ARM64 runners. See [Install and update](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#linux).
+- **macOS (Apple Silicon and Intel).** A disk image for each: `vlc-redesign-0.4.0-macos-arm64.dmg` and
+  `vlc-redesign-0.4.0-macos-x86_64.dmg`, for macOS 12 Monterey or later; drag *VLC Redesign* to Applications. Its
+  settings, library and caches stay apart from an official VLC's. The app is signed ad hoc, not by Apple (no
+  developer account yet), so macOS refuses to open it the first time: open it once, then *System Settings ›
+  Privacy & Security › Open Anyway* (on macOS 12 to 14, right-click the app › *Open* works too). One unified title
+  bar: the red, yellow and green buttons sit at the start of VLC Redesign's own top bar. The Live TV add-on comes
+  in the app (Settings turns it off), and About shows *macOS Apple Silicon* or *macOS Intel*. No in-app updater on
+  macOS: download the new disk image to update. Tested on GitHub's Macs, both architectures. See
+  [Install and update](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#macos).
+- **Windows on ARM64: built, not released.** In the 0.4.0 tests on a real ARM64 Windows runner it opened its
+  window and stopped a few seconds later (a crash in the Qt interface after the media library started), and one of
+  the installer's 400 binaries was not ARM64. It comes in a later version; until then the x64 build runs on
+  Windows 11 ARM64 under emulation.
 
 ### Changed
 

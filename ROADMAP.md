@@ -18,6 +18,11 @@ The full plan, with every Figma frame, its status and the design tokens, is the
 Everything below belongs to the next release until it is published. What is ready and passes the quality checks
 on release day ships.
 
+**0.4.0 ships on three platforms together** (2026-10-30): Windows x64, Linux (x86_64 and ARM64) and macOS (Apple
+Silicon and Intel). Windows on ARM64 moves to the next version: in the 0.4.0 tests on a real ARM64 Windows runner it
+opened its window and stopped a few seconds later (a crash in the Qt interface after the media library started), and
+one of the installer's 400 binaries was not ARM64.
+
 **Done since 0.3.1**
 
 - ✅ The playback speed button can be added to the bar again ([#9](https://github.com/KuchiSofts/vlc-redesign/issues/9));
@@ -66,13 +71,14 @@ Where each platform stands is kept in one file, [`platforms.yml`](platforms.yml)
 the website and the *Also on* line of the release notes and of About are made from it.
 
 - 🔨 A website for every platform (GitHub Pages): it offers the download for your system and lists the others
-- 🔨 Linux (AppImage, Flatpak, .deb, .rpm): the AppImage, .deb, .rpm and tarball are made for x86_64 and ARM64, and
-  a GitHub workflow builds and tests them on both before the first release; the Flatpak manifest is written
-- 🔨 macOS (Apple Silicon and Intel): the build, the app and its disk image are written and built by GitHub's Macs
-  on every pull request; the first builds and a test on a Mac come before the first release, which is not signed
-  by Apple until there is a developer account (macOS then asks to allow it once)
-- 🔨 Windows on ARM64: the build, the installer, the zip and the updates are ready; a test on an ARM64 PC
-  comes before the first release
+- ✅ Linux (x86_64 and ARM64), released with 0.4.0: a .deb, an .rpm, an AppImage and a tarball, next to the
+  distribution's own VLC, tested in containers on 7 distributions and on GitHub's x86_64 and ARM64 runners
+- 🔨 Linux: the Flatpak (the manifest is written), an updater in the app, tests on real desktops
+- ✅ macOS (Apple Silicon and Intel), released with 0.4.0: a disk image for each, built and tested by GitHub's Macs,
+  signed ad hoc (macOS asks once to open it)
+- 🔨 macOS: signing by Apple (it needs a developer account), an updater in the app, tests on a Mac by hand
+- 🔨 Windows on ARM64: built, not released with 0.4.0 (the crash in the Qt interface and the one binary that was
+  not ARM64, above); it comes in a later version. Until then the x64 build runs on Windows 11 ARM64 under emulation
 - 🔨 The design for every platform: its colours, sizes, fonts and icons in [`design/`](design/README.md)
   (`design-1.0`), with CSS, Android and Swift files made from them and a check on every pull request that the
   Windows app still uses the same values

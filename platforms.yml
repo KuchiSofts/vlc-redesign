@@ -25,7 +25,7 @@ platforms:
     short: Windows
     status: released
     version: 0.4.0
-    date: 2026-10-29
+    date: 2026-10-30
     next: 0.5.0
     os: windows
     requires: Windows 10 (1809) or 11, 64-bit
@@ -41,13 +41,15 @@ platforms:
   - id: linux
     name: Linux
     short: Linux
-    status: in-progress
+    status: released
+    version: 0.4.0
+    date: 2026-10-30
+    next: 0.5.0
     os: linux
     requires: glibc 2.38 (Ubuntu 24.04, Debian 13, Fedora 39 or later), x86_64 or ARM64
     repository: KuchiSofts/vlc-redesign
-    page: https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/PLATFORMS.md
-    notes: AppImage, deb, rpm and tar.xz for x86_64 and ARM64 in testing; Flatpak next
-    # shown once a version is published
+    page: https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update
+    notes: AppImage, deb, rpm and tar.xz for x86_64 and ARM64, next to the distribution's own VLC; Flatpak next
     downloads:
       - label: AppImage
         file: vlc-redesign-{version}-x86_64.AppImage
@@ -67,12 +69,20 @@ platforms:
   - id: macos
     name: macOS
     short: macOS
-    status: in-progress
+    status: released
+    version: 0.4.0
+    date: 2026-10-30
+    next: 0.5.0
     os: macos
     requires: macOS 12 Monterey, Apple Silicon or Intel
     repository: KuchiSofts/vlc-redesign
-    page: https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/PLATFORMS.md
-    notes: Builds from the same code; a dmg for Apple Silicon and one for Intel, built in CI
+    page: https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update
+    notes: A disk image for Apple Silicon and one for Intel, signed ad hoc (macOS asks once to open it)
+    downloads:
+      - label: Apple Silicon
+        file: vlc-redesign-{version}-macos-arm64.dmg
+      - label: Intel
+        file: vlc-redesign-{version}-macos-x86_64.dmg
 
   - id: windows-arm64
     name: Windows on ARM64
@@ -82,7 +92,7 @@ platforms:
     requires: Windows 11 on ARM64
     repository: KuchiSofts/vlc-redesign
     page: https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/PLATFORMS.md
-    notes: The x64 build already runs on Windows 11 ARM64 under emulation
+    notes: Built; it stopped at start on a real ARM64 PC in the 0.4.0 tests, so not released yet. The x64 build runs on Windows 11 ARM64 under emulation
 
   - id: android
     name: Android (phones, tablets, TV)

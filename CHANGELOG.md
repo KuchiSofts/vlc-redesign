@@ -15,6 +15,12 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Technical
+
+- The version being prepared is 0.5.0.
+- The release check of a `vX.Y.Z` tag compares with the release before it: pushed after `main`, a tag found nothing
+  "in this upload" and was refused.
+
 ---
 
 ## [0.4.0] · 2026-10-30

@@ -15,6 +15,14 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Fixed
+
+- **Linux: no stop on H.264 with some Intel graphics** (seen with an Intel UHD 600 and the iHD driver). When the
+  hardware could not decode the video, VLC went on in software with several threads, but tried the hardware
+  again in that mode, which the system's FFmpeg refuses by stopping the program. Once the hardware failed for a
+  video, it is now decoded in software.
+- No warning about a missing graphics cache at the first start of a profile (`pipelines.bin`).
+
 ### Technical
 
 - The version being prepared is 0.5.0.

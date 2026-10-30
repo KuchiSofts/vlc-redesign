@@ -144,6 +144,7 @@ typedef struct
     bool hw_first_failed;  /* no hardware: reload now, the block is intact */
     bool hw_first_reload;  /* no hardware any more: reload at a key frame */
     unsigned hw_first_wait; /* blocks decoded in software since then */
+    bool hw_first_gave_up;  /* reloaded because the hardware failed: software */
 
     // decoder output seen by lavc, regardless of texture padding
     unsigned decoder_width;
@@ -654,6 +655,9 @@ static int InitVideoDecCommon( decoder_t *p_dec )
     int max_thread_count;
     int i_thread_count = p_sys->b_hardware_only ? 1 : var_InheritInteger( p_dec, "avcodec-threads" );
     p_sys->hw_first = false;
+    p_sys->hw_first_gave_up = !p_sys->b_hardware_only &&
+        var_Type( p_dec, "avcodec-hw-first-failed" ) &&
+        var_GetBool( p_dec, "avcodec-hw-first-failed" );
     if( !p_sys->b_hardware_only && i_thread_count <= 0 &&
         ( p_codec->id == AV_CODEC_ID_H264 || p_codec->id == AV_CODEC_ID_HEVC ||
           p_codec->id == AV_CODEC_ID_VP9 ) &&
@@ -2270,6 +2274,15 @@ no_reuse:
 
     p_sys->profile = p_context->profile;
     p_sys->level = p_context->level;
+
+    /* reloaded with its threads because the hardware failed: the software
+     * decodes (the hardware again, with frame threads, made libavcodec 60
+     * abort on hwaccel_threadsafe, an Intel UHD 600 with H.264) */
+    if (p_sys->hw_first_gave_up && swfmt != AV_PIX_FMT_NONE)
+    {
+        msg_Dbg(p_dec, "the hardware failed for this stream: software decoding");
+        return swfmt;
+    }
 
     if (!can_hwaccel)
         return ffmpeg_HwFirstFallback(p_dec, swfmt);

@@ -15,6 +15,12 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Technical
+
+- The version being prepared is 0.5.0.
+- The roadmap has the progress of each program and the Android app's next steps, and the wiki has a *Roadmap*
+  page with the same; the upload check keeps the two word for word alike.
+
 ---
 
 ## [0.4.1] · 2026-10-30

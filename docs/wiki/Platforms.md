@@ -153,7 +153,7 @@ Home in the light theme. Click for the MP4.</sub>
 
 | | |
 |---|---|
-| **Status** | Research. The app exists and is **in testing; it is not part of 0.4.1** and has no download yet |
+| **Status** | **In testing** (phones about 97 %, tablets about 90 %): not part of 0.4.1 and no download yet; what is left is on the [Roadmap](Roadmap#next-the-android-app-and-050) |
 | **Needs** | Android 8.0 or later |
 | **What it is** | A separate app: a fork of VLC for Android with its screens redrawn in the design, in its own repository |
 

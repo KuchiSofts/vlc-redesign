@@ -141,6 +141,20 @@ check(r.returncode == 0, 'README platform bar and website in step with platforms
 r = subprocess.run([sys.executable, os.path.join(ROOT, 'design/tools/check_qml.py')], capture_output=True, text=True)
 check(r.returncode == 0, 'Design tokens match the app', (r.stdout + r.stderr).strip().splitlines()[-1:] or '')
 
+# the wiki's Roadmap page carries the status table and the next steps of
+# ROADMAP.md, word for word: the wiki is where most people look
+def roadmap_part(text):
+    i = text.find('## Where each program stands')
+    j = text.find('\n## ', text.find('## Next', i)) if i >= 0 else -1
+    return text[i:j].strip() if i >= 0 and j > i else None
+try:
+    part = roadmap_part(open(os.path.join(ROOT, 'ROADMAP.md'), encoding='utf-8').read())
+    wiki = open(os.path.join(ROOT, 'docs/wiki/Roadmap.md'), encoding='utf-8').read()
+except OSError:
+    part, wiki = None, ''
+check(part is not None and part in wiki, 'docs/wiki/Roadmap.md in step with ROADMAP.md',
+      'copy the "Where each program stands" and "Next" sections of ROADMAP.md into docs/wiki/Roadmap.md')
+
 # --- translations ---------------------------------------------------------------
 t_text = git('log', '-1', '--format=%ct', '-G', r'qsTr\(|qtr\(|_\("|N_\("', '--', 'modules/gui/qt')
 t_pot = git('log', '-1', '--format=%ct', '--', 'po/vlc.pot')

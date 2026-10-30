@@ -13,11 +13,39 @@ Status: ✅ done · 🔨 in progress · 📋 to do · 💡 idea
 The full plan, with every Figma frame, its status and the design tokens, is the
 [master plan](docs/MASTER-PLAN.md).
 
-## Next release: 0.5.0
+## Where each program stands
 
-0.5.0 gathers the new features made after 0.4.0. Still open from the 0.4.1 list: the Android fixes found while
-recording the demos (a guide from a server that answers in HTTP/1.0), the Flatpak, and a run of Windows on ARM64 by
-hand on a real ARM64 PC. From 0.5.0 on, Windows on ARM64 gets small updates in the app too.
+Updated as the work moves (last: 2026-10-30).
+
+| Program | Status | Progress | What is left |
+|---|---|---|---|
+| **Windows x64** | ✅ released 0.4.1 | ██████████ 100 % | code signing (waiting for SignPath's approval) |
+| **Windows on ARM64** | ✅ released 0.4.1 | ██████████ 100 % | a run by hand on a real ARM64 PC; small updates in the app from 0.5.0 |
+| **Linux** (x86_64, ARM64) | ✅ released 0.4.1 | ██████████ 100 % | the Flatpak; an updater in the app; tests on real desktops |
+| **macOS** (Apple Silicon, Intel) | ✅ released 0.4.1 | █████████░ 92 % | signing by Apple (a developer account); tests on a Mac by hand |
+| **Android** (phones) | 🔨 in testing | █████████░ 97 % | the last fixes (below), then a test on real phones and a first release |
+| **Android** (tablets) | 🔨 in testing | █████████░ 90 % | the same, then a test on a real tablet |
+| **Samsung TV receiver** | 💡 researched | ░░░░░░░░░░ 0 % | after the Android release |
+| **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
+
+## Next: the Android app, and 0.5.0
+
+**The Android app** is a separate app (a fork of VLC for Android with the design), in testing on the emulator and on
+a real phone. Done: the design's Home, library, player bar and Customize Player (zones, profiles), the compact menus,
+casting like the desktop (Chromecast and DLNA TVs), effects, recording, subtitles in every script and right to left,
+Live TV (playlists, Xtream Codes, the guide, catch-up, films and series), the tablet layout (sidebar, list and
+detail), the designer's credit and *What's new*. An automatic tour of every screen (phone and tablets, dark and
+light, English, Hebrew and German) found no crash. Left before its first release:
+
+- 🔨 Live TV: a guide from a server that answers in HTTP/1.0 does not load (under investigation)
+- ✅ Live TV: the day shown above the guide on a phone (it said *Tomorrow* after *Now* late in the evening)
+- 🔨 Three screens kept in memory after they close (a leak to remove)
+- 🔨 The light theme, the borders of the dialogs and the icons as sharp as on the desktop (parity with Windows)
+- 🔨 The texts in the 9 languages that the desktop has and Android not yet
+- 📋 A test on real phones and a tablet, then the first release (its own version numbers)
+
+**0.5.0** (desktop) gathers the new features made after 0.4.x: Windows on ARM64 gets the small updates in the app,
+the Linux Flatpak, and what the issues and the Android work bring back to the desktop.
 
 ## 0.4.1 (published 2026-10-30)
 
@@ -95,7 +123,8 @@ the website and the *Also on* line of the release notes and of About are made fr
 - 🔨 The design for every platform: its colours, sizes, fonts and icons in [`design/`](design/README.md)
   (`design-1.0`), with CSS, Android and Swift files made from them and a check on every pull request that the
   Windows app still uses the same values
-- 💡 Android (phones, tablets, Android TV), Samsung TV receiver, iPhone and iPad
+- 🔨 Android (phones and tablets): the app is in testing, see [Next](#next-the-android-app-and-050); Android TV after it
+- 💡 Samsung TV receiver, iPhone and iPad
 
 ## Staying close to VLC
 

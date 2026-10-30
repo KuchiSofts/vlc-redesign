@@ -57,6 +57,7 @@ Every feature of 0.4.0 in short clips, Windows, Linux, macOS and the Android app
 | **[Settings](Settings)** | Every option of the Settings window, page by page |
 | **[Troubleshooting and FAQ](Troubleshooting-and-FAQ)** | SmartScreen, where settings live, logs, video problems, reporting a bug |
 | **[Platforms](Platforms)** | Windows (x64 and ARM64), Linux and macOS released; the Android app in testing; what is not planned |
+| **[Roadmap](Roadmap)** | Where each program stands, with its progress, and what comes next (the Android app first) |
 | **[Building from source](Building-from-Source)** | The Windows build in Docker, the release script, signing |
 | **[Design check](Design-Check)** | How the app is compared with the 103 frames of the Figma design, and the results |
 | **[Credits and license](Credits-and-License)** | Who made what, and the licenses |

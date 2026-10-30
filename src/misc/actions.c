@@ -455,7 +455,13 @@ static int vlc_key_to_action_in (vlc_object_t *obj, vlc_actions_t *as,
     /* (the action is done unlocked: it may take as long as it takes) */
     if (action == ACTIONID_NONE)
         return VLC_SUCCESS;
-    return var_SetInteger (obj, "key-action", action);
+    /* VLC Redesign: the key of the action while it runs (its OSD message
+     * names the shortcut, see vout_OSDMessageVa); 0 for an action set by
+     * other means (a menu, a button) */
+    var_SetInteger (obj, "key-action-keycode", keycode);
+    int ret = var_SetInteger (obj, "key-action", action);
+    var_SetInteger (obj, "key-action-keycode", 0);
+    return ret;
 }
 
 static int vlc_key_to_action (vlc_object_t *obj, const char *varname,
@@ -606,6 +612,7 @@ int libvlc_InternalActionsInit (libvlc_int_t *libvlc)
     var_Create (obj, "key-pressed", VLC_VAR_INTEGER);
     var_Create (obj, "global-key-pressed", VLC_VAR_INTEGER);
     var_Create (obj, "key-action", VLC_VAR_INTEGER);
+    var_Create (obj, "key-action-keycode", VLC_VAR_INTEGER);
 
     for (size_t i = 0; i < ARRAY_SIZE(s_names2actions); i++)
     {

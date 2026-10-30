@@ -452,7 +452,10 @@ MediaLib* MLBaseModel::ml() const
 void MLBaseModel::setMl(MediaLib* medialib)
 {
     Q_D(MLBaseModel);
-    assert(medialib);
+    // while the interface goes down a binding can give a null library (seen
+    // at quit after the library pages): the model keeps the one it has
+    if (!medialib)
+        return;
 
     if (m_mediaLib == medialib)
         return;

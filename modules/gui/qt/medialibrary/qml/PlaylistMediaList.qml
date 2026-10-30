@@ -210,8 +210,13 @@ MainViewLoader {
                                                     "Do you really want to delete the selected playlists?",
                                                     items.length),
                                                qsTr("Delete playlist", "Delete playlists", items.length), true,
-                                               qsTr("Delete"), qsTr("Cancel")))
+                                               qsTr("Delete"), qsTr("Cancel"))) {
                 root.model.deletePlaylists(items)
+                // a deleted playlist goes from the sidebar too
+                for (const id of items)
+                    if (sidebarPins.isPinnedPlaylist(String(id)))
+                        sidebarPins.unpin(sidebarPins._pinKey({ kind: "playlist", id: String(id) }))
+            }
         } else {
             console.warn(root, ": Nothing to delete")
         }
@@ -220,6 +225,9 @@ MainViewLoader {
     //---------------------------------------------------------------------------------------------
     // Childs
     //---------------------------------------------------------------------------------------------
+
+    // the pinned playlists of the sidebar (a deleted one is unpinned)
+    SidebarItems { id: sidebarPins }
 
     // centred on the window (its default parent: the overlay)
     PlaylistCreateDialog {

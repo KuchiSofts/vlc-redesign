@@ -83,6 +83,16 @@ jobs:
             sh extras/juxtopposed/linux-packages.sh --arch ${{ matrix.arch }}
           ls -l build-qt68/packages
 
+      # the Flatpak, one file from the same tarball (flatpak-builder needs
+      # its sandbox: a privileged container); the KDE runtime is cached
+      - name: Flatpak
+        run: |
+          sudo chown -R "$(id -u):$(id -g)" build-qt68/packages
+          docker run --rm --privileged -v "$PWD:/work" -v vlc-redesign-flatpak:/root/.local/share/flatpak \
+            ubuntu:24.04 sh /work/extras/juxtopposed/linux-flatpak.sh --arch ${{ matrix.arch }}
+          sudo chown -R "$(id -u):$(id -g)" build-qt68/packages
+          ls -l build-qt68/packages/*.flatpak
+
       # a 5-second H.264/AAC clip for the tests, made by the image's FFmpeg
       - name: Test clip
         run: |
@@ -193,6 +203,16 @@ jobs:
           docker run --rm --user 1000:1000 -e HOME=/tmp -v "$PWD/clip:/clip:ro" vlc-redesign-fedora-test \
             sh -c "vlc-redesign --version && timeout 120 vlc-redesign $PLAY -vv /clip/clip.mp4 2> /tmp/play.log; \
                    s=\$?; ! grep -E 'no suitable decoder module|cannot open shared object' /tmp/play.log && exit \$s"
+
+      # the Flatpak as a user would install it: its runtime from Flathub
+      - name: Install and run the Flatpak
+        run: |
+          sudo apt-get install -y --no-install-recommends flatpak
+          flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+          flatpak install --user -y --noninteractive packages/vlc-redesign-*-${{ matrix.arch }}.flatpak
+          flatpak run --command=vlc org.kuchisofts.VLCRedesign --version
+          timeout 120 flatpak run --filesystem="$PWD/clip" --command=vlc org.kuchisofts.VLCRedesign $PLAY -vv "$PWD/clip/clip.mp4" 2> play-flatpak.log
+          ! grep -E 'no suitable decoder module|cannot open shared object' play-flatpak.log
 
       - name: Logs
         if: always()

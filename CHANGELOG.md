@@ -5,15 +5,31 @@ Changes of **VLC Redesign**, an unofficial VLC 4 build with the interface design
 For changes to VLC itself, see [NEWS](NEWS).
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
-what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `9f393e5719` (2026-10-29).
+what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `9a02ea9b6c` (2026-10-30).
 
-**Contents:** [Unreleased](#unreleased) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [Unreleased](#unreleased) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
 
 ---
 
 ## [Unreleased]
+
+---
+
+## [0.4.1] · 2026-10-30
+
+Windows on ARM64 joins Windows, Linux and macOS: a native ARM64 build for Snapdragon PCs, and the fix that made
+it start.
+
+### Added
+
+- **Windows on ARM64.** A native ARM64 build for Windows 11 on ARM64 (Snapdragon PCs), as an installer
+  (`vlc-redesign-0.4.1-winarm64-setup.exe`) and a portable zip (`vlc-redesign-0.4.1-winarm64.zip`). Tested on
+  GitHub's ARM64 Windows runner: every binary of the package is ARM64, the plugin cache builds, the window opens, a
+  clip plays to its end and VLC quits cleanly; the installer installs, starts, plays and uninstalls. It has not
+  been run by hand on an ARM64 PC yet. This first ARM64 release has no small update from earlier versions; the
+  next versions will offer one.
 
 ### Fixed
 
@@ -25,7 +41,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Technical
 
-- The version being prepared is 0.4.1 (fixes; the new features of after 0.4.0 go to 0.5.0).
+- Merged VLC master up to `9a02ea9b6c` (2026-10-30), 1 commit: the last overflow check of the audio conversion
+  filters fixed (`src/audio_output/filters.c`).
 - The release check of a `vX.Y.Z` tag compares with the release before it: pushed after `main`, a tag found nothing
   "in this upload" and was refused.
 

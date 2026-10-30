@@ -60,7 +60,7 @@ jobs:
       # (the runner context is not available here: the workspace)
       OUT_DIR: ${{ github.workspace }}/out-macos-${{ matrix.arch }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
         with:
           # the prebuilt contrib archive is named after the commit that last
           # touched contrib/ and the packaging
@@ -68,7 +68,7 @@ jobs:
 
       # Qt 6.8.3 for macOS (universal), downloaded once and kept
       - name: Cache Qt
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: build-macos-${{ matrix.arch }}/qt
           key: qt-6.8.3-macos-shadertools-${{ matrix.arch }}
@@ -81,7 +81,7 @@ jobs:
         run: bash extras/juxtopposed/macos-build.sh -a ${{ matrix.arch }} -b "$BUILD_DIR" -o "$OUT_DIR"
 
       - name: Upload the disk image
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: vlc-redesign-macos-${{ matrix.arch }}-${{ github.sha }}
           path: |
@@ -94,7 +94,7 @@ jobs:
 
       - name: Upload the logs
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: macos-logs-${{ matrix.arch }}-${{ github.sha }}
           path: |

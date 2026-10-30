@@ -427,6 +427,12 @@ if [ "$COMPILING_WITH_CLANG" -gt 0 ]; then
         VLC_CFLAGS="$VLC_CFLAGS -mguard=cf"
         VLC_CXXFLAGS="$VLC_CXXFLAGS -mguard=cf"
         VLC_LDFLAGS="$VLC_LDFLAGS -mguard=cf"
+        # no longjmp table: llvm-mingw registers no setjmp target in it (a
+        # plain setjmp/longjmp program has 0), so Windows on ARM64 killed
+        # VLC at the first longjmp (FAST_FAIL_INVALID_LONGJUMP_TARGET), the
+        # one of Qt's rasterizer (qgrayraster) a few seconds after start.
+        # The checks of indirect calls stay.
+        VLC_LDFLAGS="$VLC_LDFLAGS -Wl,--no-guard-longjmp"
     fi
 fi
 

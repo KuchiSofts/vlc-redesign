@@ -40,7 +40,9 @@ function Get-PeMachine([string]$path) {
     }
 }
 $binaries = @(Get-ChildItem $VlcDir -Recurse -File -Include *.exe, *.dll |
-    Where-Object { $_.FullName -notlike (Join-Path $VlcDir 'portable*') -and $_.Name -notlike '*.old-*' })
+    Where-Object { $_.FullName -notlike (Join-Path $VlcDir 'portable*') -and $_.Name -notlike '*.old-*' -and
+                   # Inno Setup's uninstaller (installed copies) is always x86
+                   $_.Name -notlike 'unins*.exe' })
 if ($binaries.Count -lt 300) { Fail "only $($binaries.Count) binaries in $VlcDir" }
 $wrong = @()
 foreach ($b in $binaries) {

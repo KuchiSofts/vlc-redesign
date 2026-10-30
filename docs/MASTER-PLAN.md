@@ -12,6 +12,10 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-10-30):
 
+- 🟡 **Windows on ARM64: cause found** (2026-10-30): fail-fast 0x26 = FAST_FAIL_INVALID_LONGJUMP_TARGET in Qt's
+  rasterizer (QRasterPaintEnginePrivate::rasterize → qgrayraster longjmp, named with a release build and its PDB);
+  -mguard=cf makes lld write a longjmp target table llvm-mingw never fills. Linked with --no-guard-longjmp; the
+  installer test skips Inno's x86 uninstaller. Waits for the ARM64 runner.
 - 🟡 **0.4.1 started** (2026-10-30, fixes; the new features stay for 0.5.0): the version is 0.4.1; first Windows on ARM64 (crash at start on a real ARM64
   runner, fail-fast in the Qt plugin after the media library starts; one installer binary not ARM64), then the
   Android fixes of the demo recording and the Flatpak.

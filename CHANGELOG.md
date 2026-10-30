@@ -15,6 +15,14 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Fixed
+
+- **Windows on ARM64: VLC no longer stops a few seconds after it starts.** The ARM64 build (llvm-mingw, with
+  Control Flow Guard) had a table of the allowed `longjmp` targets that the compiler never fills, so Windows ended
+  VLC at the first `longjmp`, the one of Qt's rasterizer (`FAST_FAIL_INVALID_LONGJUMP_TARGET`). It is linked without
+  that table now (`-Wl,--no-guard-longjmp`); the other checks of Control Flow Guard stay. The ARM64 install test no
+  longer counts Inno Setup's uninstaller, which is always x86, as a binary of the package.
+
 ### Technical
 
 - The version being prepared is 0.4.1 (fixes; the new features of after 0.4.0 go to 0.5.0).

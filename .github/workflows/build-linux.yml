@@ -159,7 +159,8 @@ jobs:
           test "$(dpkg -S /usr/bin/vlc | cut -d: -f1)" = vlc-bin
 
       - name: .deb version
-        run: vlc-redesign --version | tee version.txt && grep -q 'VLC media player' version.txt
+        # (VLC 4 prints "VLC version ...", VLC 3 printed "VLC media player ...")
+        run: vlc-redesign --version | tee version.txt && grep -qE '^VLC (version|media player) ' version.txt
 
       - name: .deb playback
         run: |

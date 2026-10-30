@@ -18,6 +18,8 @@ libqt_plugin_la_SOURCES = \
 	medialibrary/mlsubtitleassociations_link.cpp \
 	medialibrary/mlopensubtitles.cpp \
 	medialibrary/mlopensubtitles.hpp \
+	medialibrary/mlsubtitlebatch.cpp \
+	medialibrary/mlsubtitlebatch.hpp \
 	medialibrary/opensubtitles_url.hpp \
 	qt.cpp qt.hpp plugins.hpp \
 	dialogs/bookmarks/bookmarks.cpp dialogs/bookmarks/bookmarks.hpp \
@@ -237,6 +239,7 @@ libqt_plugin_la_SOURCES = \
 	player/input_models.cpp player/input_models.hpp \
 	player/subtitle_finder.cpp player/subtitle_finder.hpp \
 	player/subtitle_providers.cpp player/subtitle_providers.hpp \
+	player/subtitle_search.cpp player/subtitle_search.hpp \
 	player/delay_estimator.cpp \
 	player/delay_estimator.hpp \
 	player/waveform.cpp player/waveform.hpp \

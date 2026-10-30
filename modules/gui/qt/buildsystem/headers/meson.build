@@ -5,6 +5,7 @@ moc_headers = files(
     '../../player/media_details.hpp',
     '../../player/favorite_state.hpp',
     '../../medialibrary/mlopensubtitles.hpp',
+    '../../medialibrary/mlsubtitlebatch.hpp',
 
     '../../dialogs/extended/video_effects.hpp',
     '../../dialogs/extended/audio_effects.hpp',
@@ -119,6 +120,7 @@ moc_headers = files(
     '../../util/redesign_accent.hpp',
     '../../util/subtitle_preferences.hpp',
     '../../player/subtitle_finder.hpp',
+    '../../player/subtitle_search.hpp',
     '../../player/player_controller.hpp',
     '../../player/player_controlbar_model.hpp',
     '../../player/control_list_model.hpp',

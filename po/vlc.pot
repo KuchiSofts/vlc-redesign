@@ -38086,3 +38086,75 @@ msgstr ""
 #: modules/gui/qt/dialogs/vlm/vlm.ui:193
 msgid "Media Manager List"
 msgstr ""
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:577
+msgid "From the Internet"
+msgstr ""
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:100
+msgid "Download %1"
+msgstr ""
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:186
+msgid "%1 linked, %2 failed."
+msgstr ""
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:187
+msgid "Nothing was linked: %1 failed."
+msgstr ""
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:692
+msgid "%1, else %2"
+msgstr ""
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:698
+msgid "Every subtitle service is off (Subtitles panel of the player)"
+msgstr ""
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1001
+msgid "Waiting…"
+msgstr ""
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1005
+msgid "Best guess"
+msgstr ""
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1006
+msgid "Not found"
+msgstr ""
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1007
+msgid "No answer"
+msgstr ""
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1009
+msgid "Linked"
+msgstr ""
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1108
+msgid "Don't download"
+msgstr ""
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1112
+msgid "Subtitle for %1"
+msgstr ""
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1131
+msgid "Downloading and linking the subtitles chosen…"
+msgstr ""
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1133
+msgid "Searching the internet: %1 of %2 videos done…"
+msgstr ""
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1134
+msgid "For the file: %1 · By title: %2 · Not found: %3"
+msgstr ""
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1137
+msgid "No answer: %1"
+msgstr ""
+
+#: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:207
+msgid "The subtitle services took too long to answer."
+msgstr ""

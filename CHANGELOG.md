@@ -15,6 +15,14 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Added
+
+- **Subtitles from the internet for a whole folder, season or playlist** (the designer's idea). *Add Subtitles →
+  From the Internet* searches every video the way the player searches the one playing, two at a time, in your
+  subtitle language (else the second one): each shows the subtitle made for that very file, or the best one for
+  its title and episode with the others in a dropdown, or that none was found. *Download* links the chosen ones to
+  their videos: they load when each one plays, shown as found online with their service.
+
 ### Fixed
 
 - **Linux: no stop on H.264 with some Intel graphics** (seen with an Intel UHD 600 and the iHD driver). When the

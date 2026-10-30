@@ -5,7 +5,7 @@ Changes of **VLC Redesign**, an unofficial VLC 4 build with the interface design
 For changes to VLC itself, see [NEWS](NEWS).
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
-what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `971d6b6f89` (2026-10-30).
+what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `5ccc5fa83f` (2026-10-30).
 
 **Contents:** [Unreleased](#unreleased) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
@@ -29,8 +29,9 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 ### Technical
 
 - The version being prepared is 0.5.0.
-- Merged VLC master up to `971d6b6f89` (2026-10-30), 1 commit: the native macOS interface shows a no-results view
-  for an empty group search (not used by VLC Redesign, whose macOS app draws the Qt interface).
+- Merged VLC master up to `5ccc5fa83f` (2026-10-30), 2 commits: the native macOS interface shows a no-results view
+  for an empty group search (not used by VLC Redesign, whose macOS app draws the Qt interface), and DVD-Video
+  folders and images opened with dvdread show and seek the time from the disc's timeline and time map.
 - The Linux workflow builds the Flatpak (`vlc-redesign-X.Y.Z-ARCH.flatpak`, x86_64 and ARM64) from the same tarball
   as the other packages, and its test installs it with its runtime from Flathub, prints the version and plays a clip.
 - The roadmap has the progress of each program and the Android app's next steps, and the wiki has a *Roadmap*

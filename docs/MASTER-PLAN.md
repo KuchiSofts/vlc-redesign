@@ -12,7 +12,7 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-10-30):
 
-- 🟡 **0.5.0 started** (2026-10-30): the version is 0.5.0; first Windows on ARM64 (crash at start on a real ARM64
+- 🟡 **0.4.1 started** (2026-10-30, fixes; the new features stay for 0.5.0): the version is 0.4.1; first Windows on ARM64 (crash at start on a real ARM64
   runner, fail-fast in the Qt plugin after the media library starts; one installer binary not ARM64), then the
   Android fixes of the demo recording and the Flatpak.
 - 🟢 **0.4.0 ships on three platforms** (2026-10-30): Windows x64 (setup 59.4 MB, zip 107.8 MB, small updates),

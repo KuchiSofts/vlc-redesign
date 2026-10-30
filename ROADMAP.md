@@ -13,9 +13,9 @@ Status: ✅ done · 🔨 in progress · 📋 to do · 💡 idea
 The full plan, with every Figma frame, its status and the design tokens, is the
 [master plan](docs/MASTER-PLAN.md).
 
-## Next release: 0.5.0
+## Next release: 0.4.1 (fixes), then 0.5.0
 
-Work started 2026-10-30, right after 0.4.0. First: Windows on ARM64 (the crash at start on a real ARM64 PC, the
+0.4.1, started 2026-10-30 right after 0.4.0, is a release of fixes: Windows on ARM64 (the crash at start on a real ARM64 PC, the
 one installer binary that is not ARM64), the Android fixes found while recording the demos (a guide from a server
 that answers in HTTP/1.0, the day of the guide after *Now*), the Flatpak.
 

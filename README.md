@@ -296,7 +296,7 @@ Every release lists the SHA-256 of its files in `SHA256SUMS.txt`.
 
 ## Platforms
 
-**Windows 10 and 11 (64-bit) ✅ 0.4.0** · **Linux (x86_64, ARM64) ✅ 0.4.0** · **macOS (Apple Silicon, Intel) ✅ 0.4.0** · Windows on ARM64 🔜 0.5.0 ·
+**Windows 10 and 11 (64-bit) ✅ 0.4.0** · **Linux (x86_64, ARM64) ✅ 0.4.0** · **macOS (Apple Silicon, Intel) ✅ 0.4.0** · Windows on ARM64 🔜 0.4.1 ·
 Android 💡 research (the app is in testing) · Samsung TV receiver 💡 research · iPhone/iPad later
 
 - **Linux:** released with 0.4.0: a .deb, an .rpm, an AppImage and a tarball for x86_64 and ARM64 (glibc 2.38:

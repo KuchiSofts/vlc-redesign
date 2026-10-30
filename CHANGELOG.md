@@ -18,6 +18,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 ### Technical
 
 - The version being prepared is 0.5.0.
+- The Linux workflow builds the Flatpak (`vlc-redesign-X.Y.Z-ARCH.flatpak`, x86_64 and ARM64) from the same tarball
+  as the other packages, and its test installs it with its runtime from Flathub, prints the version and plays a clip.
 - The roadmap has the progress of each program and the Android app's next steps, and the wiki has a *Roadmap*
   page with the same; the upload check keeps the two word for word alike.
 

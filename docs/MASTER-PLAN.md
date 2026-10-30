@@ -10,7 +10,15 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 ## Now
 
-What is being worked on, updated as it changes (2026-10-30):
+What is being worked on, updated as it changes (2026-10-31):
+
+- 🟢 **The designer's last ideas on the desktop** (2026-10-31, branch `feature/designer-gaps`): every idea of
+  Juxtopposed's video now exists: pinned folders and playlists in the sidebar, online subtitles for a whole
+  folder/season/playlist (the player's finder made a per-video engine, `subtitle_search`, shared by both), the
+  shortcut under each OSD message, the output device chooser outside Windows; a rare ML assert at quit fixed.
+  Tested on screen (hidden desktop): pin/open/unpin/delete, A/Up/F7 messages, the device section with waveout,
+  9 videos searched (6 linked and loaded on play); launch test 0 failures; 20 new texts in 72 languages.
+  🟡 The same ideas on Android (7: sync timeline, series preset, waveform, seek previews, pins, profiles, icons).
 
 - 🟡 **Tests on real Linux PCs** (2026-10-30): the released 0.4.1 AppImage on two Intel servers (Iris Xe; UHD 600),
   as a user: version, H.264/HEVC/VP9/AV1 to the end, VA-API (iHD) for H.264/HEVC, Live TV, the Qt interface under

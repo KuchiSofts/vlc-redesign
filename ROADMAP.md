@@ -54,9 +54,13 @@ light, English, Hebrew and German) found no crash. Left before its first release
   folders and playlists pinned to the sidebar
 
 **0.5.0** (desktop) gathers the new features made after 0.4.x: Windows on ARM64 gets the small updates in the app,
-the Linux Flatpak, and what the issues and the Android work bring back to the desktop. From Juxtopposed's video, still
-to come on the desktop: pinning a folder or a playlist to the sidebar, online subtitles for a whole folder or
-playlist, choosing the sound output device on Linux and macOS, and the on-screen message naming the shortcut used.
+the Linux Flatpak, and what the issues and the Android work bring back to the desktop. Done for 0.5.0, the last ideas
+of Juxtopposed's video the desktop did not have yet:
+
+- ✅ Pin a folder or a playlist to the sidebar (*Pin to Sidebar* in their menus, *Unpin* on the row)
+- ✅ Subtitles from the internet for a whole folder, season or playlist, each episode matched on its own
+- ✅ The on-screen messages name the shortcut that made them ("Volume: 115%" · "Up")
+- ✅ Choose the sound output device on Linux and macOS too (*Settings › Audio › Output device*)
 
 ## 0.4.1 (published 2026-10-30)
 

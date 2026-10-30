@@ -18,7 +18,7 @@ Updated as the work moves (last: 2026-10-30).
 | **Windows on ARM64** | ✅ released 0.4.1 | ██████████ 100 % | a run by hand on a real ARM64 PC; small updates in the app from 0.5.0 |
 | **Linux** (x86_64, ARM64) | ✅ released 0.4.1 | ██████████ 100 % | the Flatpak; an updater in the app; tests on real desktops |
 | **macOS** (Apple Silicon, Intel) | ✅ released 0.4.1 | █████████░ 92 % | signing by Apple (a developer account); tests on a Mac by hand |
-| **Android** (phones) | 🔨 in testing | █████████░ 97 % | the last fixes (below), then a test on real phones and a first release |
+| **Android** (phones) | 🔨 in testing | █████████░ 98 % | the last fixes (below), then a test on real phones and a first release |
 | **Android** (tablets) | 🔨 in testing | █████████░ 90 % | the same, then a test on a real tablet |
 | **Samsung TV receiver** | 💡 researched | ░░░░░░░░░░ 0 % | after the Android release |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
@@ -35,9 +35,14 @@ light, English, Hebrew and German) found no crash. Left before its first release
 - ✅ Live TV: a guide from a server that answers in HTTP/1.0 — the failure seen once did not come back (10 loads in a
   row); a failed download now logs where it broke
 - ✅ Live TV: the day shown above the guide on a phone (it said *Tomorrow* after *Now* late in the evening)
-- 🔨 Three screens kept in memory after they close (a leak to remove)
+- ✅ Screens kept in memory after they close: the cause (a listener added at each return to the app, never
+  removed) fixed; 50 rounds of relaunches, playback, rotations and settings keep none
 - 🔨 The light theme, the borders of the dialogs and the icons as sharp as on the desktop (parity with Windows)
-- 🔨 The texts in the 9 languages that the desktop has and Android not yet
+- ✅ The texts of the last rounds (About, fonts, effects, casting, recording, help, Live TV) translated in the 61
+  languages the app speaks (1,263 texts)
+- ✅ Its own package name, `org.kuchisofts.vlcredesign`: it installs beside VLC and can be published
+- ✅ No more offers of VideoLAN's nightly builds (they are VideoLAN's app, not this one)
+- 🔨 14 languages of VLC for Android that are barely translated yet (Faroese, Lao, Swahili and others)
 - 📋 A test on real phones and a tablet, then the first release (its own version numbers)
 
 **0.5.0** (desktop) gathers the new features made after 0.4.x: Windows on ARM64 gets the small updates in the app,

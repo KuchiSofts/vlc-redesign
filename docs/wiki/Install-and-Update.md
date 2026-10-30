@@ -23,12 +23,12 @@ The files of version 0.4.1 ([release page](https://github.com/KuchiSofts/vlc-red
 
 | File | Size | What it is |
 |---|---|---|
-| `vlc-redesign-0.4.1-win64-setup.exe` | @SETUP@ | **The installer.** Recommended: no administrator rights, a Start menu entry, file types, small updates. |
-| `vlc-redesign-0.4.1-win64.zip` | @ZIP@ | **The portable copy**: unzip anywhere and run `vlc.exe`. |
-| `vlc-redesign-0.4.1-winarm64-setup.exe` | @ARMSETUP@ | **The installer for Windows 11 on ARM64** (see [Windows on ARM64](#windows-on-arm64)). |
-| `vlc-redesign-0.4.1-winarm64.zip` | @ARMZIP@ | **The portable copy for Windows 11 on ARM64.** |
-| `vlc-redesign-0.4.1-delta-from-0.4.0.vrdelta` | @D040@ | A small update from 0.4.0, used by the app itself (see [Small updates](#small-updates)). |
-| `vlc-redesign-0.4.1-delta-from-0.3.1.vrdelta`, `...-from-0.3.0.vrdelta` | @D031@ and @D030@ | The small updates from 0.3.1 and from 0.3.0. |
+| `vlc-redesign-0.4.1-win64-setup.exe` | 59.4 MB | **The installer.** Recommended: no administrator rights, a Start menu entry, file types, small updates. |
+| `vlc-redesign-0.4.1-win64.zip` | 107.8 MB | **The portable copy**: unzip anywhere and run `vlc.exe`. |
+| `vlc-redesign-0.4.1-winarm64-setup.exe` | 45.7 MB | **The installer for Windows 11 on ARM64** (see [Windows on ARM64](#windows-on-arm64)). |
+| `vlc-redesign-0.4.1-winarm64.zip` | 82.1 MB | **The portable copy for Windows 11 on ARM64.** |
+| `vlc-redesign-0.4.1-delta-from-0.4.0.vrdelta` | 3.6 MB | A small update from 0.4.0, used by the app itself (see [Small updates](#small-updates)). |
+| `vlc-redesign-0.4.1-delta-from-0.3.1.vrdelta`, `...-from-0.3.0.vrdelta` | 26.1 MB and 26.1 MB | The small updates from 0.3.1 and from 0.3.0. |
 | `vlc-redesign-0.4.1-source.tar.gz` | | The source code of this release. |
 | `SHA256SUMS.txt` | | The SHA-256 of every file of the release, to check a download. |
 | `SHA256SUMS.txt.sig` | | The signature of `SHA256SUMS.txt`: from 0.4.0 on, the app installs only an update whose list is signed. |
@@ -249,7 +249,7 @@ updates** in **⋯ → About VLC**. When one is out, a card offers it:
 
 | Card | Buttons |
 |---|---|
-| *VLC Redesign 0.4.1 is available* · *You have 0.4.0.* | **What's new**, **Skip**, **Update now · @D040@** (or **Download**) |
+| *VLC Redesign 0.4.1 is available* · *You have 0.4.0.* | **What's new**, **Skip**, **Update now · 3.6 MB** (or **Download**) |
 | *Downloading VLC Redesign 0.4.1… 40%* · *Only what changed: keep watching, it's checked in the background.* | **×** (cancels) |
 | *Preparing VLC Redesign 0.4.1…* | |
 | *VLC Redesign 0.4.1 is ready* · *It takes a few seconds: restart now, or it's done when you close VLC Redesign.* | **Restart now**, **Later** |

@@ -2,7 +2,7 @@
 <!-- Written by extras/juxtopposed/platforms/render.py from platforms.yml: edit that file. -->
 <p align="center"><sub>
 
-**[Windows 0.4.0](https://github.com/KuchiSofts/vlc-redesign/releases/latest)** · **[Linux 0.4.0](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[macOS 0.4.0](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · Windows ARM64 soon · Android soon · Samsung TV soon · iPhone/iPad later
+**[Windows 0.4.1](https://github.com/KuchiSofts/vlc-redesign/releases/latest)** · **[Linux 0.4.1](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[macOS 0.4.1](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[Windows ARM64 0.4.1](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · Android soon · Samsung TV soon · iPhone/iPad later
 
 </sub></p>
 
@@ -11,10 +11,10 @@
 
 | Platform | Status | Latest | Get it |
 |---|---|---|---|
-| Windows | 🟢 released | 0.4.0 · 2026-10-30 | [installer](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign-0.4.0-win64-setup.exe) · [portable](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign-0.4.0-win64.zip) |
-| Linux | 🟢 released | 0.4.0 · 2026-10-30 | [appimage](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign-0.4.0-x86_64.AppImage) · [deb](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign_0.4.0_amd64.deb) · [rpm](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign-0.4.0-1.x86_64.rpm) · [tar.xz](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign-0.4.0-linux-x86_64.tar.xz) · [appimage arm64](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign-0.4.0-aarch64.AppImage) · [deb arm64](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign_0.4.0_arm64.deb) · [rpm arm64](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign-0.4.0-1.aarch64.rpm) |
-| macOS | 🟢 released | 0.4.0 · 2026-10-30 | [apple silicon](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign-0.4.0-macos-arm64.dmg) · [intel](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign-0.4.0-macos-x86_64.dmg) |
-| Windows ARM64 | 🔴 planned | — | coming soon |
+| Windows | 🟢 released | 0.4.1 · 2026-10-30 | [installer](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.1/vlc-redesign-0.4.1-win64-setup.exe) · [portable](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.1/vlc-redesign-0.4.1-win64.zip) |
+| Linux | 🟢 released | 0.4.1 · 2026-10-30 | [appimage](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.1/vlc-redesign-0.4.1-x86_64.AppImage) · [deb](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.1/vlc-redesign_0.4.1_amd64.deb) · [rpm](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.1/vlc-redesign-0.4.1-1.x86_64.rpm) · [tar.xz](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.1/vlc-redesign-0.4.1-linux-x86_64.tar.xz) · [appimage arm64](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.1/vlc-redesign-0.4.1-aarch64.AppImage) · [deb arm64](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.1/vlc-redesign_0.4.1_arm64.deb) · [rpm arm64](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.1/vlc-redesign-0.4.1-1.aarch64.rpm) |
+| macOS | 🟢 released | 0.4.1 · 2026-10-30 | [apple silicon](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.1/vlc-redesign-0.4.1-macos-arm64.dmg) · [intel](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.1/vlc-redesign-0.4.1-macos-x86_64.dmg) |
+| Windows ARM64 | 🟢 released | 0.4.1 · 2026-10-30 | [installer](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.1/vlc-redesign-0.4.1-winarm64-setup.exe) · [portable](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.1/vlc-redesign-0.4.1-winarm64.zip) |
 | Android | ⚪ research | — | coming soon |
 | Samsung TV | ⚪ research | — | coming soon |
 | iPhone/iPad | ⚪ later | — | coming soon |
@@ -231,8 +231,8 @@ the [wiki](https://github.com/KuchiSofts/vlc-redesign/wiki)**, and everything ne
 
 ## Download
 
-Every file is on **[Releases](https://github.com/KuchiSofts/vlc-redesign/releases/latest)**: 0.4.0 is out for
-Windows, Linux and macOS.
+Every file is on **[Releases](https://github.com/KuchiSofts/vlc-redesign/releases/latest)**: 0.4.1 is out for
+Windows (x64 and ARM64), Linux and macOS.
 
 **Windows 10 or 11, 64-bit.** Pick one of the two below. The files are not code-signed yet (waiting for SignPath's
 approval), so Windows SmartScreen may warn the first time; every file's SHA-256 is in `SHA256SUMS.txt`, and the app
@@ -246,14 +246,19 @@ installs only updates whose list is signed by the project.
 Both keep their settings, library and history in their own `portable` folder, so they never touch an installed
 official VLC.
 
+**Windows 11 on ARM64** (Snapdragon PCs). The same two, built natively for ARM64:
+`vlc-redesign-0.4.1-winarm64-setup.exe` and `vlc-redesign-0.4.1-winarm64.zip`. 0.4.1 is the first ARM64 release, so
+there is no small update to it from an earlier version; the next versions will offer them. Details:
+[Install and update: Windows on ARM64](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#windows-on-arm64).
+
 **Linux, x86_64 or ARM64** (glibc 2.38: Ubuntu 24.04 and later, Debian 13, Fedora 39 and later). A .deb, an .rpm, an
 AppImage and a folder to run from, for example
-`sudo apt install ./vlc-redesign_0.4.0_amd64.deb ./vlc-redesign-livetv_0.4.0_amd64.deb` (the second file is the
+`sudo apt install ./vlc-redesign_0.4.1_amd64.deb ./vlc-redesign-livetv_0.4.1_amd64.deb` (the second file is the
 optional Live TV add-on). The .deb and .rpm install in `/opt/vlc-redesign`, next to the distribution's own `vlc`,
 with the command `vlc-redesign`. No Flatpak yet, and no update in the app: install the new package to update. Which
 file for which distribution: [Install and update: Linux](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#linux).
 
-**macOS 12 or later.** `vlc-redesign-0.4.0-macos-arm64.dmg` for Apple Silicon, `vlc-redesign-0.4.0-macos-x86_64.dmg`
+**macOS 12 or later.** `vlc-redesign-0.4.1-macos-arm64.dmg` for Apple Silicon, `vlc-redesign-0.4.1-macos-x86_64.dmg`
 for Intel: drag VLC Redesign to Applications. It is signed ad hoc, not by Apple, so macOS refuses to open it the
 first time: open it once via *System Settings › Privacy & Security › Open Anyway* (or right-click › *Open* on macOS
 12 to 14). No update in the app: download the new disk image to update. Details:
@@ -280,7 +285,7 @@ Silent installs take switches (`/VERYSILENT /UILANG=en /SUBLANG=en /NOUPDATECHEC
 
 ### Updates
 
-On Windows, VLC Redesign checks this repository for a new release once a day (Settings → General → *Check for updates
+On Windows (x64; ARM64 from the next version), VLC Redesign checks this repository for a new release once a day (Settings → General → *Check for updates
 automatically*, or ⋯ → About → *Check for updates*). When one is out, a card offers **Update now**:
 
 - **A small update** (installed or portable copy): only the files that changed, usually a few megabytes, downloaded in
@@ -296,20 +301,19 @@ Every release lists the SHA-256 of its files in `SHA256SUMS.txt`.
 
 ## Platforms
 
-**Windows 10 and 11 (64-bit) ✅ 0.4.0** · **Linux (x86_64, ARM64) ✅ 0.4.0** · **macOS (Apple Silicon, Intel) ✅ 0.4.0** · Windows on ARM64 🔜 0.4.1 ·
+**Windows 10 and 11 (64-bit) ✅ 0.4.1** · **Linux (x86_64, ARM64) ✅ 0.4.1** · **macOS (Apple Silicon, Intel) ✅ 0.4.1** · **Windows on ARM64 ✅ 0.4.1** ·
 Android 💡 research (the app is in testing) · Samsung TV receiver 💡 research · iPhone/iPad later
 
-- **Linux:** released with 0.4.0: a .deb, an .rpm, an AppImage and a tarball for x86_64 and ARM64 (glibc 2.38:
-  Ubuntu 24.04, Debian 13, Fedora 39 or later), next to the distribution's own VLC; tested in containers on 7
-  distributions and on GitHub's x86_64 and ARM64 runners. A Flatpak comes next.
-- **macOS:** released with 0.4.0: a disk image for Apple Silicon and one for Intel (macOS 12 or later), built and
-  tested by GitHub's Macs and signed ad hoc, not yet by Apple (macOS asks once to open it).
-- **Windows on ARM64:** built, not released. In the 0.4.0 tests on a real ARM64 Windows runner it opened its window
-  and stopped a few seconds later (a crash in the Qt interface after the media library started), and one of the
-  installer's 400 binaries was not ARM64; it comes in a later version. Until then the x64 build runs on Windows 11
-  ARM64 under emulation.
+- **Linux:** released since 0.4.0 (now 0.4.1): a .deb, an .rpm, an AppImage and a tarball for x86_64 and ARM64
+  (glibc 2.38: Ubuntu 24.04, Debian 13, Fedora 39 or later), next to the distribution's own VLC; tested in containers
+  on 7 distributions and on GitHub's x86_64 and ARM64 runners. A Flatpak comes next.
+- **macOS:** released since 0.4.0 (now 0.4.1): a disk image for Apple Silicon and one for Intel (macOS 12 or later),
+  built and tested by GitHub's Macs and signed ad hoc, not yet by Apple (macOS asks once to open it).
+- **Windows on ARM64:** released with 0.4.1: a native ARM64 installer and portable zip for Windows 11 on ARM64
+  (Snapdragon PCs). Tested on GitHub's ARM64 Windows runner (every binary ARM64, a clip played to its end, the
+  installer installs, plays and uninstalls); not yet run by hand on an ARM64 PC.
 - **Android** (phones, tablets, TV): a separate app, a fork of VLC for Android with the design, in testing; it is
-  not part of 0.4.0 and has no download yet.
+  not part of 0.4.1 and has no download yet.
 
 Each platform in detail, with what is tested and what is missing, is on the
 [Platforms](https://github.com/KuchiSofts/vlc-redesign/wiki/Platforms) page of the wiki; the study behind the order is
@@ -320,9 +324,10 @@ VLC 3 there.
 ## Known limitations
 
 - **Based on VLC 4.0-dev**, not on the stable VLC 3. Expect the occasional rough edge.
-- **Released for Windows, Linux and macOS.** Windows on ARM64 comes in a later version (the x64 build runs there
-  under emulation), and the Android app is in testing (see [Platforms](#platforms)). Small updates in the app are for
-  Windows only, and the macOS app is not signed by Apple yet.
+- **Released for Windows (x64 and ARM64), Linux and macOS.** The Android app is in testing (see
+  [Platforms](#platforms)). Small updates in the app are for Windows only (on ARM64 from the next version, 0.4.1
+  being its first release), Windows on ARM64 has not been run by hand on an ARM64 PC yet, and the macOS app is not
+  signed by Apple yet.
 - 72 languages cover the whole interface; in VLC's other catalogs (listed as partial) only VLC's own texts are
   translated.
 - Media Information, Bookmarks, Convert/Stream, Open Media (disc, capture), Messages and the other classic VLC windows

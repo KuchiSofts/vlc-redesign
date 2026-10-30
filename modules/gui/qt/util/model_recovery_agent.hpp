@@ -24,16 +24,19 @@
 #include <QSettings>
 #include <QPointer>
 #include <QFileInfo>
-#include <QMessageBox>
+#include <QDateTime>
+#include <QLocale>
 #include <QTemporaryFile>
 #include <QAbstractItemModel>
 #include <QLockFile>
 
 #include <cstdio>
+#include <functional>
+#include <memory>
 
 #include "qt.hpp"
 
-#include "widgets/native/qvlcframe.hpp"
+#include "dialogs/dialogs_provider.hpp"
 
 class ModelRecoveryAgent
 {
@@ -43,7 +46,12 @@ class ModelRecoveryAgent
     QTimer m_timer;
     bool m_conditionDismissInitialDirtiness = false;
     std::unique_ptr<QLockFile> m_lockFile;
-    std::unique_ptr<QMessageBox> m_question;
+    // The question asked (a dialog of the redesign, not blocking): what it
+    // says, what the answer does; the context its answer needs (gone with
+    // the agent: an answer then is dropped)
+    std::unique_ptr<QObject> m_question;
+    RedesignMessage m_questionMessage;
+    std::function<void(bool restore)> m_onAnswer;
 
 public:
     // NOTE: settings and model must outlive the instance of this class.
@@ -70,23 +78,29 @@ public:
                 const QFileInfo fileInfo(m_recoveryFileName);
                 if (fileInfo.size() > 0)
                 {
-                    m_question = std::make_unique<QMessageBox>();
-                    m_question->setText(qtr("Do you want to restore the %1 model from %2?").arg(modelIdentifier.toLower(), fileInfo.lastModified().toString()));
-                    m_question->setWindowTitle(qtr("The application closed abruptly."));
-                    m_question->setIcon(QMessageBox::Question);
-                    m_question->setStandardButtons(QMessageBox::Yes | QMessageBox::No);
-                    m_question->setDefaultButton(QMessageBox::Yes);
-                    m_question->setWindowModality(Qt::ApplicationModal);
+                    m_question = std::make_unique<QObject>();
+                    // the time it was last saved, about when VLC stopped
+                    const QDateTime saved = fileInfo.lastModified();
+                    const QLocale locale;
+                    const QString when = qtr("%1 at %2").arg(locale.toString(saved.date(), QLocale::LongFormat),
+                                                             locale.toString(saved.time(), QLocale::ShortFormat));
+                    m_questionMessage.title = qtr("Restore the play queue?");
+                    m_questionMessage.heading = qtr("VLC Redesign closed unexpectedly on %1. Restore the play queue it had?").arg(when);
+                    // (a context: "Restore" alone is the window's, its previous size)
+                    m_questionMessage.acceptText = qfu(vlc_pgettext("play queue", "Restore"));
+                    m_questionMessage.cancelText = qtr("Don't restore");
+                    // (Yes was the default button)
+                    m_questionMessage.defaultAccept = true;
 
-                    QObject::connect(m_question.get(), &QDialog::finished, m_question.get(), [this, model]() {
-                        if (m_question->standardButton(m_question->clickedButton()) == QMessageBox::Yes)
+                    m_onAnswer = [this, model](bool restore) {
+                        if (restore)
                         {
                             model->append(m_recoveryFileName);
                             m_conditionDismissInitialDirtiness = true;
                         }
-                        m_question.release()->deleteLater();
+                        m_question.reset();
                         startMonitoring(model);
-                    });
+                    };
                 }
             }
         }
@@ -118,8 +132,18 @@ public:
     {
         if (!m_question)
             return;
-        QVLCDialog::setWindowTransientParent(m_question.get(), nullptr, p_intf);
-        m_question->show();
+        DialogsProvider *provider = DialogsProvider::getInstance(p_intf);
+        // asked in the window of the interface, as its other dialogs (shown
+        // once it is loaded); the answer comes later, VLC goes on meanwhile
+        provider->showRedesignMessage(m_questionMessage, m_question.get(),
+                                      [this](int answer, const QString &) {
+            if (m_onAnswer)
+            {
+                const auto onAnswer = std::move(m_onAnswer);
+                m_onAnswer = nullptr;
+                onAnswer(answer == RedesignMessage::Accepted);
+            }
+        });
     }
 
     ~ModelRecoveryAgent()

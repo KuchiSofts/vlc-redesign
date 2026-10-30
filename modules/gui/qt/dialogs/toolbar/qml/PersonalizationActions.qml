@@ -18,25 +18,24 @@ Column {
     objectName: "personalizationActions"
     property var profileModel: MainCtx.controlbarProfileModel
     signal customizeRequested()
-    width: 320
+    width: VLCStyle.dp(320, VLCStyle.scale)
     // as the rows of the player's menu around them (PlayerMenu.qml)
-    spacing: 4
-
+    spacing: VLCStyle.dp(4, VLCStyle.scale)
     Controls.ItemDelegate {
         id: profileButton
         objectName: "openProfilesAction"
         width: parent.width
-        height: 48
+        height: VLCStyle.dp(48, VLCStyle.scale)
         background: Rectangle {
-            radius: 6
+            radius: VLCStyle.dp(6, VLCStyle.scale)
             color: profileButton.hovered || profilesMenu.opened ? VLCStyle.redesign.color("#252525", "#9c9c9b") : "transparent"
         }
         // (right to left: the row mirrored, the chevron pointing left)
         contentItem: Row {
-            spacing: 12
+            spacing: VLCStyle.dp(12, VLCStyle.scale)
             Text {
                 id: profileLabel
-                width: profileButton.width - 54
+                width: profileButton.width - VLCStyle.dp(54, VLCStyle.scale)
                 height: parent.height
                 text: qsTr("Profile (%1)").arg(root.profileModel.currentModel
                                             ? root.profileModel.currentModel.name : qsTr("None"))
@@ -44,21 +43,24 @@ Column {
                 horizontalAlignment: Text.AlignLeft
                 color: VLCStyle.redesign.color("#969696", "#4d4d4d")
                 font.family: VLCStyle.redesign.fontFamily
-                font.pixelSize: 16
+                font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
                 verticalAlignment: Text.AlignVCenter
                 // 12 in, as the other rows of the menu
-                leftPadding: LayoutMirroring.enabled ? 0 : 12
-                rightPadding: LayoutMirroring.enabled ? 12 : 0
+                leftPadding: LayoutMirroring.enabled ? 0 : VLCStyle.dp(12, VLCStyle.scale)
+                rightPadding: LayoutMirroring.enabled ? VLCStyle.dp(12, VLCStyle.scale) : 0
                 HoverHandler { id: profileLabelHover }
                 Controls.ToolTip.visible: profileLabelHover.hovered && profileLabel.truncated
                 Controls.ToolTip.text: profileLabel.text
                 Controls.ToolTip.delay: 650
             }
             Image {
-                width: 24
-                height: 24
+                // drawn at the size shown (an SVG: sharp at any scale and zoom)
+                sourceSize: Qt.size(width, height)
+                smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
+                width: VLCStyle.dp(24, VLCStyle.scale)
+                height: VLCStyle.dp(24, VLCStyle.scale)
                 anchors.verticalCenter: parent.verticalCenter
-                source: "qrc:///redesign/icons/chevron-right/default.png"
+                source: "qrc:///redesign/icons/chevron-right/default.svg"
                 mirror: LayoutMirroring.enabled
             }
         }
@@ -78,21 +80,21 @@ Column {
         id: customizeButton
         objectName: "customizePlayerAction"
         width: parent.width
-        height: 48
+        height: VLCStyle.dp(48, VLCStyle.scale)
         background: Rectangle {
-            radius: 6
+            radius: VLCStyle.dp(6, VLCStyle.scale)
             color: customizeButton.hovered ? VLCStyle.redesign.color("#252525", "#9c9c9b") : "transparent"
         }
         contentItem: Text {
             text: qsTr("Customize player")
             color: VLCStyle.redesign.color("#969696", "#4d4d4d")
             font.family: VLCStyle.redesign.fontFamily
-            font.pixelSize: 16
+            font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignLeft
             elide: Text.ElideRight
-            leftPadding: LayoutMirroring.enabled ? 0 : 12
-            rightPadding: LayoutMirroring.enabled ? 12 : 0
+            leftPadding: LayoutMirroring.enabled ? 0 : VLCStyle.dp(12, VLCStyle.scale)
+            rightPadding: LayoutMirroring.enabled ? VLCStyle.dp(12, VLCStyle.scale) : 0
         }
         onClicked: root.customizeRequested()
     }

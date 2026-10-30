@@ -80,7 +80,8 @@ static void *vlc_demux_chained_Thread(void *data)
 
             if (demux_Control(demux, DEMUX_GET_POSITION, &newpos))
                 newpos = 0.;
-            if (demux_Control(demux, DEMUX_GET_LENGTH, &newlen))
+            bool live; /* (the second argument of DEMUX_GET_LENGTH) */
+            if (demux_Control(demux, DEMUX_GET_LENGTH, &newlen, &live))
                 newlen = 0;
             if (demux_Control(demux, DEMUX_GET_TIME, &newtime))
                 newtime = 0;

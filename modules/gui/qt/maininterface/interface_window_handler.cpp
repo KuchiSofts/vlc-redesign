@@ -18,6 +18,7 @@
 #include "interface_window_handler.hpp"
 #include "mainctx.hpp"
 #include "compositor.hpp"
+#include "macos_titlebar.hpp"
 #include <player/player_controller.hpp>
 #include <playlist/playlist_controller.hpp>
 #include "util/keyhelper.hpp"
@@ -26,6 +27,7 @@
 #include "dialogs/dialogs/dialogmodel.hpp"
 #include <QScreen>
 #include <QQmlProperty>
+#include <QPlatformSurfaceEvent>
 #include <algorithm>
 #include <cmath>
 #include <cstdlib>
@@ -104,8 +106,16 @@ InterfaceWindowHandler::InterfaceWindowHandler(qt_intf_t *_p_intf, MainCtx* main
     assert(m_window);
     assert(m_mainCtx);
 
+#ifdef Q_OS_MACOS
+    /* macOS: the redesign's title bar is a unified one (the system's frame
+     * and traffic lights, the content under its transparent title bar),
+     * before the saved geometry is restored below; again once the native
+     * window exists if it does not yet (eventFilter) */
+    updateCSDWindowSettings();
+#else
     if (m_mainCtx->useClientSideDecoration())
         m_window->setFlag(Qt::FramelessWindowHint);
+#endif
 
     m_window->setIcon( QApplication::windowIcon() );
     /* "Window opacity" of the settings, at once */
@@ -249,12 +259,13 @@ InterfaceWindowHandler::InterfaceWindowHandler(qt_intf_t *_p_intf, MainCtx* main
             w->alert(0);
     });
 
+    // a whole step of the wheel taken (see eventFilter): the subtitles'
+    // size over the video, the interface's zoom elsewhere (Settings ›
+    // Shortcuts: Ctrl+wheel for both by default)
     connect(
-        &m_wheelAccumulator, &WheelToVLCConverter::wheelUpDown,
-        this, [this] (int steps, Qt::KeyboardModifiers modifiers) {
-            if (modifiers != Qt::ControlModifier)
-                return;
-            emit incrementIntfUserScaleFactor(steps > 0);
+        &m_wheelAccumulator, &WheelToVLCConverter::vlcWheelKey,
+        this, [this] (int vlcKey) {
+            m_mainCtx->wheelKeyAction(vlcKey, m_wheelPosition, true);
     });
 
     m_window->installEventFilter(this);
@@ -285,11 +296,50 @@ InterfaceWindowHandler::~InterfaceWindowHandler()
 
 void InterfaceWindowHandler::updateCSDWindowSettings()
 {
+#ifdef Q_OS_MACOS
+    macos_titlebar::apply(m_window, m_mainCtx->useClientSideDecoration());
+    updateWindowButtonsInset();
+#else
     m_window->setFlag(Qt::FramelessWindowHint, m_mainCtx->useClientSideDecoration());
+#endif
+}
+
+void InterfaceWindowHandler::updateWindowButtonsInset()
+{
+    // (after AppKit placed the buttons: later)
+    QMetaObject::invokeMethod(this, [this]()
+    {
+        if (!m_window)
+            return;
+        const QMargins inset = macos_titlebar::buttonsInset(m_window);
+        // (the macOS launch test looks for it: extras/juxtopposed/ci/macos-smoke.sh)
+        if (inset != QMargins() && inset != m_mainCtx->windowButtonsInset())
+            msg_Dbg(p_intf, "unified title bar: the traffic lights take %d px on the left, %d on the right",
+                    inset.left(), inset.right());
+        m_mainCtx->setWindowButtonsInset(inset);
+    }, Qt::QueuedConnection);
 }
 
 bool InterfaceWindowHandler::eventFilter(QObject*, QEvent* event)
 {
+#ifdef Q_OS_MACOS
+    switch ( event->type() )
+    {
+    // the native window made (or made again), shown, or out of full screen:
+    // the unified title bar on it (it does nothing when it already is)
+    case QEvent::PlatformSurface:
+        if (static_cast<QPlatformSurfaceEvent *>(event)->surfaceEventType()
+            != QPlatformSurfaceEvent::SurfaceCreated)
+            break;
+        Q_FALLTHROUGH();
+    case QEvent::Show:
+    case QEvent::WindowStateChange:
+        QMetaObject::invokeMethod(this, [this]() { updateCSDWindowSettings(); }, Qt::QueuedConnection);
+        break;
+    default:
+        break;
+    }
+#endif
     switch ( event->type() )
     {
     case QEvent::WindowStateChange:
@@ -376,6 +426,29 @@ bool InterfaceWindowHandler::eventFilter(QObject*, QEvent* event)
             return true;
         }
 
+        // Live TV over the video: its keys first, before the hotkeys and the
+        // focused item (Page Up and Down change the channel, Backspace goes
+        // back to the last one, not to the previous page)
+        if (m_mainCtx->getUseGlobalShortcuts() && m_mainCtx->preferHotkeys()
+            && !focusedItemTakesKeys()
+            && m_mainCtx->keyTakenBeforeHotkeys(keyEvent->key(), keyEvent->modifiers()))
+        {
+            event->accept();
+            return true;
+        }
+
+        // The keys of the subtitles' size (Ctrl+0...) while the hotkeys
+        // play the video: done by the interface, which shows the size (VLC's
+        // hotkeys would change it unseen); the keys given to the interface's
+        // zoom in Settings › Shortcuts: from anywhere, as Ctrl+wheel (not
+        // while a text field or a focused item takes the keys)
+        if (m_mainCtx->getUseGlobalShortcuts() && !focusedItemTakesKeys()
+            && m_mainCtx->takeSizeKey(qtEventToVLCKey(keyEvent), m_mainCtx->preferHotkeys()))
+        {
+            event->accept();
+            return true;
+        }
+
         if (applyKeyEvent(keyEvent) == false)
             return false;
 
@@ -390,11 +463,26 @@ bool InterfaceWindowHandler::eventFilter(QObject*, QEvent* event)
     case QEvent::Wheel:
     {
         QWheelEvent* wheelEvent = static_cast<QWheelEvent*>(event);
-        if (wheelEvent->modifiers() == Qt::ControlModifier)
+        // With a modifier, the wheel's key (its direction, up or down) may
+        // size the subtitles or zoom the interface: taken here, before the
+        // items and the video (a list scrolls with Shift, the hotkeys of
+        // VLC have the other keys of the wheel)
+        if ((wheelEvent->modifiers() & ~Qt::KeyboardModifiers(Qt::KeypadModifier)) != Qt::NoModifier)
         {
-            m_wheelAccumulator.wheelEvent(wheelEvent);
-            wheelEvent->accept();
-            return true;
+            QPoint delta = wheelEvent->angleDelta();
+            if (wheelEvent->inverted())
+                delta = -delta;
+            const int vertical = qAbs(delta.y()) >= qAbs(delta.x()) ? delta.y() : 0;
+            const int vlcKey = vertical == 0 ? 0
+                             : qtKeyModifiersToVLC(*wheelEvent)
+                               | (vertical > 0 ? KEY_MOUSEWHEELUP : KEY_MOUSEWHEELDOWN);
+            if (m_mainCtx->wheelKeyAction(vlcKey, wheelEvent->position(), false))
+            {
+                m_wheelPosition = wheelEvent->position();
+                m_wheelAccumulator.wheelEvent(wheelEvent);
+                wheelEvent->accept();
+                return true;
+            }
         }
         break;
     }
@@ -660,6 +748,11 @@ bool InterfaceWindowHandler::applyKeyEvent(QKeyEvent * event) const
     }
 
     if (focusedItemTakesKeys())
+        return false;
+
+    // NOTE: Live TV over the video: the keys of its list of channels go to the list
+    //       (its own keys were taken in eventFilter); the others stay hotkeys.
+    if (m_mainCtx->keyGoesBeforeHotkeys(key, event->modifiers()))
         return false;
 
     event->accept();

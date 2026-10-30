@@ -16,7 +16,7 @@ Column {
     property bool selected: false
 
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
-    function c(value) { return VLCStyle.redesign.color(value, value) }
+    function c(value) { return VLCStyle.redesign.color(value) }
 
     function begin() {
         available = settingsModel && settingsModel.audioscrobblerAvailable()

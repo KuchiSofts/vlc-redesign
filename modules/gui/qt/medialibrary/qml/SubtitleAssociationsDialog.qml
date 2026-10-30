@@ -42,6 +42,9 @@ Widgets.RedesignDialog {
     property int originIndex: 0
     readonly property bool online: originIndex === 2
     readonly property bool singleMedia: associations.destinations.length === 1
+    // a download is linked to the one media only (match() links files of
+    // other names to no media of several): no OpenSubtitles for a folder
+    onSingleMediaChanged: if (!singleMedia && originIndex === 2) originIndex = 0
     // "The_Wand_S01E01.mp4" searched as "The Wand S01E01"
     readonly property string mediaQuery: associations.destinations.length === 1
         ? String(associations.destinations[0].label).replace(/\.[^.]*$/, "").replace(/[_.]+/g, " ").trim()
@@ -54,7 +57,7 @@ Widgets.RedesignDialog {
         if (associations.busy || service.busy)
             return false
         if (root.online)
-            return onlineSelection >= 0 && associations.destinations.length > 0
+            return onlineSelection >= 0 && root.singleMedia
         const rows = associations.sources
         for (let i = 0; i < rows.length; ++i) {
             if (rows[i].destination >= 0)
@@ -70,7 +73,7 @@ Widgets.RedesignDialog {
     }
 
     title: root.audio ? qsTr("Add Audio Tracks") : qsTr("Add Subtitles")
-    cardColor: VLCStyle.redesign.color("#0F0F0F", "#ABABAA")
+    cardColor: VLCStyle.redesign.color("#0F0F0F", "#c2c2c1")
     preferredWidth: VLCStyle.dp(1048, VLCStyle.scale)
     bodyHeight: VLCStyle.dp(632, VLCStyle.scale)
     bodyHorizontalPadding: 0
@@ -187,7 +190,13 @@ Widgets.RedesignDialog {
             if (entryParts.every((part, j) => part.toLowerCase() === parts[j].toLowerCase()))
                 depth = entryParts.length
         }
-        const shown = depth > 0 ? [qsTr("Videos")].concat(parts.slice(depth)) : parts.slice(-3)
+        // the section as the folder pages name it (FolderDisplay): Music for
+        // a folder of music, else Videos
+        const destinations = associations.destinations
+        const music = destinations.length > 0 && destinations.every(destination =>
+            /\.(aac|aiff?|alac|ape|flac|m4a|mka|mp3|oga|ogg|opus|wav|wma)$/i.test(String(destination.label)))
+        const shown = depth > 0 ? [music ? qsTr("Music") : qsTr("Videos")].concat(parts.slice(depth))
+                                : parts.slice(-3)
         // right to left: from the right, the names in Latin letters too (a
         // right-to-left mark at each separator keeps them from reading as
         // one left-to-right run)
@@ -221,7 +230,7 @@ Widgets.RedesignDialog {
         elide: Text.ElideRight
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
-        color: VLCStyle.redesign.color("#969696", "#2e2e2e")
+        color: VLCStyle.redesign.color("#969696", "#4d4d4d")
         topPadding: VLCStyle.redesign.textBaseline(Math.round((boxHeight - Math.round(1.2109375 * font.pixelSize)) / 2),
                                                    font.pixelSize) - centeredMetrics.ascent
         FontMetrics {
@@ -240,7 +249,8 @@ Widgets.RedesignDialog {
         Layout.preferredWidth: VLCStyle.dp(200, VLCStyle.scale)
         Layout.preferredHeight: VLCStyle.dp(34, VLCStyle.scale)
         textRole: "label"
-        enabled: !associations.busy
+        // (a target chosen while downloading would save, then cancel it)
+        enabled: !associations.busy && !service.busy
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
         // the chevron at the end: on the left in a right to left layout
@@ -254,8 +264,8 @@ Widgets.RedesignDialog {
 
         background: Rectangle {
             radius: VLCStyle.dp(6, VLCStyle.scale)
-            color: dropdown.hovered || dropdown.popup.visible ? VLCStyle.redesign.color("#1B1B1B", "#9c9c9b")
-                                                              : VLCStyle.redesign.color("#151515", "#b8b8b7")
+            color: dropdown.hovered || dropdown.popup.visible ? VLCStyle.redesign.color("#1B1B1B", "#ababaa")
+                                                              : VLCStyle.redesign.color("#151515", "#b5b5b4")
             border.width: dropdown.visualFocus ? 1 : 0
             border.color: VLCStyle.redesign.focusColor
         }
@@ -269,7 +279,8 @@ Widgets.RedesignDialog {
             width: VLCStyle.redesign.iconSize
             height: width
             sourceSize: Qt.size(width, height)
-            source: "qrc:///redesign/icons/chevron-down/default.png"
+            source: "qrc:///redesign/icons/chevron-down/default.svg"
+            smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
             rotation: dropdown.popup.visible ? 180 : 0
         }
         delegate: T.ItemDelegate {
@@ -327,9 +338,10 @@ Widgets.RedesignDialog {
             }
             background: Rectangle {
                 radius: VLCStyle.dp(6, VLCStyle.scale)
-                color: VLCStyle.redesign.color("#191919", "#b8b8b7")
+                color: VLCStyle.redesign.color("#191919", "#ababaa")
+                // the frame of the main window
                 border.width: 1
-                border.color: VLCStyle.redesign.color("#222222", "#9c9c9b")
+                border.color: VLCStyle.redesign.color(VLCStyle.redesign.windowBorder)
             }
         }
     }
@@ -342,7 +354,7 @@ Widgets.RedesignDialog {
 
         Layout.preferredHeight: VLCStyle.dp(34, VLCStyle.scale)
         radius: VLCStyle.dp(6, VLCStyle.scale)
-        color: VLCStyle.redesign.color("#151515", "#b8b8b7")
+        color: VLCStyle.redesign.color("#151515", "#b5b5b4")
 
         // (anchored: from the right in a right to left layout)
         Image {
@@ -380,7 +392,7 @@ Widgets.RedesignDialog {
         clip: true
         selectByMouse: true
         enabled: !associations.busy
-        color: VLCStyle.redesign.color("#969696", "#2e2e2e")
+        color: VLCStyle.redesign.color("#969696", "#4d4d4d")
         selectionColor: VLCStyle.redesign.accentBackground
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
@@ -393,7 +405,7 @@ Widgets.RedesignDialog {
             width: parent.width
             visible: headerInput.length === 0 && !headerInput.activeFocus
             text: headerInput.placeholderText
-            color: VLCStyle.redesign.color(VLCStyle.redesign.textDisabled, "#7c7c7b")
+            color: VLCStyle.redesign.color(VLCStyle.redesign.textDisabled, "#929291")
             font: headerInput.font
             horizontalAlignment: Text.AlignLeft
             elide: Text.ElideRight
@@ -449,7 +461,7 @@ Widgets.RedesignDialog {
 
         background: Rectangle {
             radius: VLCStyle.dp(6, VLCStyle.scale)
-            color: fileRow.selected ? VLCStyle.redesign.color("#090909", "#c4c4c3")
+            color: fileRow.selected ? VLCStyle.redesign.color("#090909", "#dedede")
                  : fileRow.hovered ? VLCStyle.redesign.color("#141414", "#b8b8b7")
                  : "transparent"
             border.width: fileRow.visualFocus ? 1 : 0
@@ -462,8 +474,8 @@ Widgets.RedesignDialog {
                 anchors.left: parent.left
                 anchors.leftMargin: VLCStyle.dp(8, VLCStyle.scale)
                 y: VLCStyle.dp(6, VLCStyle.scale)
-                source: root.audio ? "qrc:///redesign/icons/spectrum/dim.png"
-                                   : "qrc:///redesign/icons/subtitle/dim.png"
+                source: root.audio ? "qrc:///redesign/icons/spectrum/dim.svg"
+                                   : "qrc:///redesign/icons/subtitle/dim.svg"
             }
             CenteredText {
                 x: VLCStyle.dp(8 + 24 + 14, VLCStyle.scale)
@@ -480,7 +492,7 @@ Widgets.RedesignDialog {
                 width: VLCStyle.redesign.iconSize
                 height: width
                 sourceSize: Qt.size(width, height)
-                source: "qrc:///redesign/icons/check/active.png"
+                source: "qrc:///redesign/icons/check/active.svg"
                 color: VLCStyle.redesign.accentTint
                 smooth: false
             }
@@ -517,7 +529,9 @@ Widgets.RedesignDialog {
                 objectName: "subtitleOriginPicker"
                 textRole: ""
                 model: root.audio ? [qsTr("From Computer")]
-                                  : [qsTr("From Computer"), qsTr("From Link"), qsTr("From OpenSubtitles")]
+                                  : root.singleMedia
+                                    ? [qsTr("From Computer"), qsTr("From Link"), qsTr("From OpenSubtitles")]
+                                    : [qsTr("From Computer"), qsTr("From Link")]
                 currentIndex: root.originIndex
                 onActivated: (index) => {
                     root.originIndex = index
@@ -535,15 +549,15 @@ Widgets.RedesignDialog {
                 Layout.fillWidth: true
                 Layout.preferredHeight: VLCStyle.dp(34, VLCStyle.scale)
                 visible: root.originIndex === 0
-                enabled: !associations.busy
+                enabled: !associations.busy && !service.busy
                 padding: 0
                 Accessible.name: root.audio ? qsTr("Choose the folder of the audio tracks")
                                             : qsTr("Choose the folder of the subtitles")
 
                 background: Rectangle {
                     radius: VLCStyle.dp(6, VLCStyle.scale)
-                    color: folderButton.hovered ? VLCStyle.redesign.color("#1B1B1B", "#9c9c9b")
-                                                : VLCStyle.redesign.color("#151515", "#b8b8b7")
+                    color: folderButton.hovered ? VLCStyle.redesign.color("#1B1B1B", "#ababaa")
+                                                : VLCStyle.redesign.color("#151515", "#b5b5b4")
                     border.width: folderButton.visualFocus ? 1 : 0
                     border.color: VLCStyle.redesign.focusColor
                 }
@@ -557,7 +571,7 @@ Widgets.RedesignDialog {
                         width: VLCStyle.redesign.iconSize
                         height: width
                         sourceSize: Qt.size(width, height)
-                        source: "qrc:///redesign/icons/folder/default.png"
+                        source: "qrc:///redesign/icons/folder/default.svg"
                         smooth: false
                     }
                     CenteredText {
@@ -581,7 +595,7 @@ Widgets.RedesignDialog {
             HeaderField {
                 Layout.fillWidth: true
                 visible: root.originIndex === 1
-                iconSource: "qrc:///redesign/icons/link/default.png"
+                iconSource: "qrc:///redesign/icons/link/default.svg"
 
                 HeaderInput {
                     id: linkField
@@ -596,7 +610,7 @@ Widgets.RedesignDialog {
                 Layout.preferredWidth: VLCStyle.dp(400, VLCStyle.scale)
                 Layout.fillWidth: true
                 visible: root.online
-                iconSource: "qrc:///redesign/icons/search/default.png"
+                iconSource: "qrc:///redesign/icons/search/default.svg"
 
                 HeaderInput {
                     id: queryField
@@ -680,7 +694,7 @@ Widgets.RedesignDialog {
                     anchors.left: parent.left
                     anchors.leftMargin: VLCStyle.dp(30, VLCStyle.scale)
                     y: VLCStyle.dp(8, VLCStyle.scale)
-                    source: "qrc:///redesign/icons/video/dim.png"
+                    source: "qrc:///redesign/icons/video/dim.svg"
                 }
                 CenteredText {
                     id: mediaName
@@ -803,9 +817,9 @@ Widgets.RedesignDialog {
                     Accessible.name: placeholderText
 
                     color: VLCStyle.redesign.color("#C6C6C6", "#2e2e2e")
-                    placeholderTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textDisabled, "#7c7c7b")
+                    placeholderTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textDisabled, "#929291")
                     selectionColor: VLCStyle.redesign.color(VLCStyle.redesign.accentBackground, "#dedede")
-                    selectedTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#191919")
+                    selectedTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                     selectByMouse: true
@@ -819,7 +833,7 @@ Widgets.RedesignDialog {
                         radius: VLCStyle.dp(6, VLCStyle.scale)
                         color: VLCStyle.redesign.color("#090909", "#dedede")
                         border.width: passwordField.border
-                        border.color: VLCStyle.redesign.color("#191919", "#c4c4c3")
+                        border.color: VLCStyle.redesign.color("#191919", "#ababaa")
                     }
 
                     // the placeholder, drawn by the style otherwise
@@ -875,7 +889,7 @@ Widgets.RedesignDialog {
             elide: Text.ElideNone
             visible: text.length > 0
             color: (associations.error.length > 0 || service.error.length > 0)
-                   ? VLCStyle.redesign.accent : VLCStyle.redesign.color("#6B6B6B", "#4d4d4d")
+                   ? VLCStyle.redesign.accent : VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
             text: {
                 if (associations.error.length > 0)
                     return associations.error

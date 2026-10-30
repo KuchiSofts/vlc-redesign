@@ -33,6 +33,7 @@
 #include "util/qt_dirs.hpp"
 #include "util/colorizedsvgicon.hpp"
 
+#include "menus/redesign_menu_style.hpp"
 #include <QString>
 #include <QVBoxLayout>
 #include <QLabel>
@@ -467,7 +468,7 @@ VLMAWidget::VLMAWidget( VLMWrapper *_vlm, const QString& _name,
     objLayout->addWidget( modifyButton, 0, 5 );
 
     QToolButton *deleteButton = new QToolButton;
-    deleteButton->setIcon( QIcon( ":/menu/clear.svg" ) );
+    deleteButton->setIcon( RedesignMenuStyle::menuIcon( ":/menu/clear.svg" ) );
     deleteButton->setToolTip( qtr("Delete") );
     objLayout->addWidget( deleteButton, 0, 6 );
 

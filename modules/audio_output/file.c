@@ -52,7 +52,12 @@ typedef struct
     bool b_add_wav_header;
 
     WAVEHEADER waveh;                      /* Wave header of the output file */
+
+    float soft_gain;
+    bool soft_mute;
 } aout_sys_t;
+
+#include "volume.h"
 
 #define CHANNELS_MAX 6
 static const int pi_channels_maps[CHANNELS_MAX+1] =
@@ -121,6 +126,7 @@ vlc_module_begin ()
                  CHANNELS_TEXT, CHANNELS_LONGTEXT )
         change_integer_range( 0, 6 )
     add_bool( "audiofile-wav", true, WAV_TEXT, WAV_LONGTEXT )
+    add_sw_gain()
 
     set_capability( "audio output", 0 )
     add_shortcut( "file", "audiofile" )
@@ -142,14 +148,7 @@ static int Start( audio_output_t *p_aout, audio_sample_format_t *restrict fmt )
         return VLC_EGENERIC;
     }
 
-    /* Allocate structure */
-    aout_sys_t *p_sys = malloc( sizeof( aout_sys_t ) );
-    if( p_sys == NULL )
-    {
-        free( psz_name );
-        return VLC_ENOMEM;
-    }
-    p_aout->sys = p_sys;
+    aout_sys_t *p_sys = p_aout->sys;
 
     if( !strcmp( psz_name, "-" ) )
         p_sys->p_file = stdout;
@@ -159,13 +158,13 @@ static int Start( audio_output_t *p_aout, audio_sample_format_t *restrict fmt )
     free( psz_name );
     if ( p_sys->p_file == NULL )
     {
-        free( p_sys );
         return VLC_EGENERIC;
     }
 
     p_aout->play = Play;
     p_aout->pause = Pause;
     p_aout->flush = Flush;
+    aout_SoftVolumeStart( p_aout );
 
     /* Audio format */
     psz_format = var_InheritString( p_aout, "audiofile-format" );
@@ -173,7 +172,6 @@ static int Start( audio_output_t *p_aout, audio_sample_format_t *restrict fmt )
     {
         if( p_sys->p_file != stdout )
             fclose( p_sys->p_file );
-        free( p_sys );
         return VLC_EGENERIC;
     }
 
@@ -194,7 +192,6 @@ static int Start( audio_output_t *p_aout, audio_sample_format_t *restrict fmt )
                  psz_format );
         if( p_sys->p_file != stdout )
             fclose( p_sys->p_file );
-        free( p_sys );
         free( psz_format );
         return VLC_EGENERIC;
     }
@@ -309,7 +306,6 @@ static void Stop( audio_output_t *p_aout )
 
     if( p_sys->p_file != stdout )
         fclose( p_sys->p_file );
-    free( p_sys );
 }
 
 /*****************************************************************************
@@ -350,9 +346,14 @@ static int Open(vlc_object_t *obj)
 {
     audio_output_t *aout = (audio_output_t *)obj;
 
+    /* The volume applies to the samples written (a software gain): the
+     * player has a volume to show and change, as with a sound card */
+    aout_sys_t *sys = vlc_obj_calloc( obj, 1, sizeof( *sys ) );
+    if( unlikely(sys == NULL) )
+        return VLC_ENOMEM;
+    aout->sys = sys;
     aout->start = Start;
     aout->stop = Stop;
-    aout->volume_set = NULL;
-    aout->mute_set = NULL;
+    aout_SoftVolumeInit( aout );
     return VLC_SUCCESS;
 }

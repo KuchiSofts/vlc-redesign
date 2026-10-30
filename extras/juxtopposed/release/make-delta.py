@@ -7,12 +7,15 @@
       checksum again): a binary whose code didn't change then stays the same,
       byte for byte, from one release to the next.
 
-  python make-delta.py deltas <package> <version> <dist> [--keep N]
+  python make-delta.py deltas <package> <version> <dist> [--keep N] [--platform win64|winarm64]
       For each of the N latest earlier releases whose zip is in <dist>
       (default 3, from 0.2.4 on: the first that applies them), writes <dist>/vlc-redesign-<version>-delta-from-<old>.vrdelta:
       the files that changed (a binary patch when it's much smaller), the
       files that went away, and the SHA-256 of every new file. The app checks
       and applies it (modules/gui/qt/util/redesign_updater.cpp).
+      --platform winarm64: from the vlc-redesign-<old>-winarm64.zip files, to
+      vlc-redesign-<version>-winarm64-delta-from-<old>.vrdelta (win64, the
+      default, keeps the name without the platform).
 
 The .vrdelta format (all integers little-endian):
   "VRDELTA1", u32 header length, the header (UTF-8 JSON), then the data.
@@ -119,7 +122,17 @@ def zip_files(path):
 
 
 def version_key(v):
-    return [int(x) if x.isdigit() else x for x in re.split(r'[.\-]', v)]
+    """The order of the app (RedesignUpdater::versionLess): the numbers, then
+    a pre-release before its release, its parts as SemVer compares them
+    (numbers as numbers, before words; fewer parts first)."""
+    v = v.strip().lstrip('vV')
+    core, _, pre = v.partition('-')
+    numbers = [int(x) if x.isdigit() else 0 for x in core.split('.')]
+    numbers += [0] * (3 - len(numbers))
+    while len(numbers) > 3 and numbers[-1] == 0:
+        numbers.pop()
+    parts = tuple((0, int(x), '') if x.isdigit() else (1, 0, x.lower()) for x in pre.split('.')) if pre else ()
+    return (tuple(numbers), not pre, parts)
 
 
 def normalize(package):
@@ -137,8 +150,11 @@ def normalize(package):
 
 def make_delta(package, new_files, old_version, old_files, version, out_path):
     import bsdiff4.core as bsdiff
+    # (whatever its case: Windows has one file for Foo.dll and foo.dll, and a
+    # file renamed in its case only must not be removed after it is written)
+    kept = {p.lower() for p in new_files}
     header = {'format': 1, 'from': old_version, 'to': version,
-              'removed': sorted(p for p in old_files if p not in new_files), 'files': []}
+              'removed': sorted(p for p in old_files if p.lower() not in kept), 'files': []}
     blobs = io.BytesIO()
     patched = whole = 0
     for rel in sorted(new_files):
@@ -169,18 +185,21 @@ def make_delta(package, new_files, old_version, old_files, version, out_path):
           f'{os.path.getsize(out_path) / 2**20:.2f} MB')
 
 
-def deltas(package, version, dist, keep):
+def deltas(package, version, dist, keep, platform="win64"):
     new_files = package_files(package)
     olds = []
     for n in os.listdir(dist):
-        m = re.match(r'vlc-redesign-(.+)-win64\.zip$', n)
+        m = re.match(r'vlc-redesign-(.+)-' + re.escape(platform) + r'\.zip$', n)
         if (m and m.group(1) != version and version_key(m.group(1)) < version_key(version)
                 and version_key(m.group(1)) >= version_key(FIRST_APPLIER)):
             olds.append(m.group(1))
     olds.sort(key=version_key)
+    # the x64 deltas keep the name they had before ARM64: the copies already
+    # installed look for it (redesign_updater.cpp)
+    infix = '' if platform == 'win64' else '-' + platform
     for old in olds[-keep:]:
-        make_delta(package, new_files, old, zip_files(os.path.join(dist, f'vlc-redesign-{old}-win64.zip')),
-                   version, os.path.join(dist, f'vlc-redesign-{version}-delta-from-{old}.vrdelta'))
+        make_delta(package, new_files, old, zip_files(os.path.join(dist, f'vlc-redesign-{old}-{platform}.zip')),
+                   version, os.path.join(dist, f'vlc-redesign-{version}{infix}-delta-from-{old}.vrdelta'))
 
 
 if __name__ == '__main__':
@@ -188,6 +207,9 @@ if __name__ == '__main__':
         normalize(sys.argv[2])
     elif len(sys.argv) >= 5 and sys.argv[1] == 'deltas':
         keep = int(sys.argv[sys.argv.index('--keep') + 1]) if '--keep' in sys.argv else 3
-        deltas(sys.argv[2], sys.argv[3], sys.argv[4], keep)
+        platform = sys.argv[sys.argv.index('--platform') + 1] if '--platform' in sys.argv else 'win64'
+        if platform not in ('win64', 'winarm64'):
+            sys.exit(f'Unknown platform {platform} (win64 or winarm64)')
+        deltas(sys.argv[2], sys.argv[3], sys.argv[4], keep, platform)
     else:
         sys.exit(__doc__)

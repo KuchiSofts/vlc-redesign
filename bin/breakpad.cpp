@@ -25,6 +25,7 @@
 #endif
 
 #include <windows.h>
+#include "winvlc_message.h"
 #include "client/windows/handler/exception_handler.h"
 #include "common/windows/http_upload.h"
 #include <memory>
@@ -54,9 +55,11 @@ void CheckCrashDump( const wchar_t* path )
     HANDLE h = FindFirstFileW( pattern.str().c_str(), &data );
     if (h == INVALID_HANDLE_VALUE)
         return;
-    int answer = MessageBoxW( NULL, L"Ooops: VLC media player just crashed.\n" \
-        "Would you like to send a bug report to the developers team?",
-        L"VLC crash reporting", MB_YESNO);
+    /* drawn as the dialogs of the interface (before it starts) */
+    const bool send = RedesignMessageBox( L"VLC Redesign",
+        L"VLC Redesign closed unexpectedly the last time",
+        L"Would you like to send a report of the crash to the developers?",
+        L"Send report", L"Don't send" ) == 1;
     std::map<std::wstring, std::wstring> params;
     params[L"prod"] = L"VLC";
     params[L"ver"] = WIDEN(PACKAGE_VERSION);
@@ -64,7 +67,7 @@ void CheckCrashDump( const wchar_t* path )
     {
         std::wstringstream fullPath;
         fullPath << path << L'/' << data.cFileName;
-        if( answer == IDYES )
+        if( send )
         {
             std::map<std::wstring, std::wstring> files;
             files[L"upload_file_minidump"] = fullPath.str();

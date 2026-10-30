@@ -30,7 +30,7 @@ Item {
                                   qsTr("12 kHz"), qsTr("14 kHz"), qsTr("16 kHz")]
 
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
-    function c(value) { return VLCStyle.redesign.color(value, value) }
+    function c(value) { return VLCStyle.redesign.color(value) }
     function valueAt(column) { return column === 0 ? preamp : Number(bands[column - 1] || 0) }
 
     implicitHeight: expanded ? px(489) : px(36)
@@ -78,7 +78,8 @@ Item {
                 width: root.px(24)
                 height: width
                 sourceSize: Qt.size(width, height)
-                source: "qrc:///redesign/icons/chevron-down/default.png"
+                smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
+                source: "qrc:///redesign/icons/chevron-down/default.svg"
             }
         }
         TapHandler { onTapped: root.toggle() }

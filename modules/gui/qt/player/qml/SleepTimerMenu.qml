@@ -48,7 +48,8 @@ Controls.Popup {
     background: Rectangle {
         color: VLCStyle.redesign.color("#1b1b1b", "#ababaa")
         radius: VLCStyle.dp(11, VLCStyle.scale)
-        border.color: VLCStyle.redesign.color("#303030", "#929291")
+        // the frame of the main window
+        border.color: VLCStyle.redesign.color(VLCStyle.redesign.windowBorder)
     }
 
     contentItem: Column {

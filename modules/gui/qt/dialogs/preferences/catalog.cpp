@@ -17,6 +17,8 @@ static const Option entries[] = {
     // Startup of the design: the error popup and the confirmations of the
     // interface read qt-error-dialogs (Dialogs.qml, questionDialog)
     {"general", "qt-error-dialogs"}, {"general", "redesign-update-check"},
+    // the card of the new version after an update (whats_new.cpp)
+    {"general", "qt:redesign/show-whats-new"},
     {"general", "file-logging"}, {"general", "logfile"},
     {"general", "log-verbose"},
     // extra-options: read by the core at the start (libvlc.c)
@@ -89,6 +91,9 @@ static const Option entries[] = {
     // Visualization, then Advanced Options
     {"audio", "audio"}, {"audio", "mmdevice-audio-device"}, {"audio", "stereo-mode"},
     {"audio", "qt-max-volume"}, {"audio", "volume-save"}, {"audio", "mmdevice-volume"},
+    // the startup volume of the other outputs (ConfigModel::startupVolumeOption)
+    {"audio", "waveout-volume"}, {"audio", "alsa-gain"}, {"audio", "auhal-volume"},
+    {"audio", "jack-gain"},
     {"audio", "volume-step"},
     {"audio", "x:x-filter:normvol"}, {"audio", "norm-max-level"}, {"audio", "x:x-night-mode"},
     {"audio", "audio-replay-gain-mode"}, {"audio", "audio-replay-gain-preamp"},
@@ -122,7 +127,7 @@ static const Option entries[] = {
     {"subtitles", "x:x-sub-background"}, {"subtitles", "freetype-background-color"},
     {"subtitles", "freetype-background-opacity"}, {"subtitles", "qt:redesign/subtitle-background-opacity"},
     {"subtitles", "sub-position"},
-    {"subtitles", "sub-delay"},
+    {"subtitles", "sub-delay"}, {"subtitles", "qt-seek-subtitle-cues"},
     {"subtitles", "osd"}, {"subtitles", "osd-duration"},
     {"subtitles", "video-title-show"}, {"subtitles", "video-title-timeout"},
     {"subtitles", "sub-autodetect-path"},
@@ -166,7 +171,11 @@ static const Option entries[] = {
     {"performance", "avcodec-skiploopfilter"},
     {"performance", "avcodec-threads"},
     {"performance", "drop-late-frames"},
-    {"performance", "high-priority"}, {"performance", "qt:redesign/process-priority"},
+    {"performance", "high-priority"},
+#ifdef _WIN32
+    // (applied with SetPriorityClass: MainCtx::loadPrefs)
+    {"performance", "qt:redesign/process-priority"},
+#endif
     {"performance", "sout-transcode-venc"}, {"performance", "codec"},
     {"performance", "clock-synchro"}, {"performance", "clock-jitter"},
     {"performance", "cr-average"},
@@ -181,6 +190,14 @@ static const Option entries[] = {
     {"recording", "sout-chromecast-audio-passthrough"},
     {"recording", "sout-chromecast-http-port"},
     {"recording", "sout-keep"},
+    // Live TV: the switch of its add-on (General, Startup), then its
+    // page: its sources (SettingsTv.qml), Guide, Watching and Lists
+    {"general", "iptv-enabled"},
+    {"tv", "qt:redesign/iptv-refresh"}, {"tv", "qt:redesign/iptv-guide-days"},
+    {"tv", "qt:redesign/iptv-guide-hours"}, {"tv", "qt:redesign/iptv-languages"},
+    {"tv", "qt:redesign/iptv-banner"}, {"tv", "qt:redesign/iptv-start-last"},
+    {"tv", "qt:redesign/iptv-progress"}, {"tv", "qt:redesign/iptv-next"},
+    {"tv", "qt:redesign/iptv-descriptions"}, {"tv", "qt:redesign/iptv-adult"},
     {"extensions", "qt-autoload-extensions"},
 };
 

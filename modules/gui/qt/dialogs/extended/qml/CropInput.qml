@@ -15,7 +15,7 @@ Rectangle {
     required property string side
     property string label
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
-    function c(value) { return VLCStyle.redesign.color(value, value) }
+    function c(value) { return VLCStyle.redesign.color(value) }
     signal edited(int pixels)
     implicitHeight: px(33)
     radius: px(6)

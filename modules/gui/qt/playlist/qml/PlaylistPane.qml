@@ -125,7 +125,7 @@ T.Pane {
     }
 
     background: Rectangle {
-        color: root.drawBackground ? VLCStyle.redesign.color(VLCStyle.redesign.sidebarBackground, "#c2c2c1", VLCStyle.palette.isDark)
+        color: root.drawBackground ? VLCStyle.redesign.color(VLCStyle.redesign.sidebarBackground, "#ababaa", VLCStyle.palette.isDark)
                                    : "transparent"
     }
 
@@ -168,7 +168,7 @@ T.Pane {
             elide: Text.ElideRight
             // (the right in a right to left layout)
             horizontalAlignment: Text.AlignLeft
-            color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, theme.fg.primary)
+            color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(18, VLCStyle.scale)
         }
@@ -179,6 +179,8 @@ T.Pane {
 
             visible: root.card
             Layout.fillWidth: true
+            // the buttons in a row for the arrow keys, in reading order
+            readonly property bool mirrored: LayoutMirroring.enabled
             Layout.leftMargin: VLCStyle.dp(18, VLCStyle.scale)
             Layout.rightMargin: VLCStyle.dp(12, VLCStyle.scale)
             Layout.bottomMargin: VLCStyle.dp(6, VLCStyle.scale)
@@ -194,7 +196,7 @@ T.Pane {
                 }
                 elide: Text.ElideRight
                 horizontalAlignment: Text.AlignLeft
-                color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, theme.fg.secondary)
+                color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
             }
@@ -206,6 +208,10 @@ T.Pane {
                 enabled: MainPlaylistController.count > 1
                 checked: MainPlaylistController.sortKey !== PlaylistController.SORT_KEY_NONE
                 popupAbove: false
+                Navigation.parentItem: root
+                Navigation.downItem: listView
+                Navigation.rightItem: cardHeader.mirrored ? null : cardRepeat
+                Navigation.leftItem: cardHeader.mirrored ? cardRepeat : null
                 model: MainPlaylistController.sortKeyTitleList
                 sortKey: MainPlaylistController.sortKey
                 sortOrder: MainPlaylistController.sortOrder === PlaylistController.SORT_ORDER_DESC
@@ -217,14 +223,14 @@ T.Pane {
                     // above the grey arrows
                     readonly property bool twoTone: cardSort.checked && !VLCStyle.redesign.defaultAccent
                     source: "qrc:///redesign/icons/sort/" + (twoTone ? "active-grey"
-                                                             : cardSort.checked ? "active" : "default") + ".png"
+                                                             : cardSort.checked ? "active" : "default") + ".svg"
                     sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
                     fillMode: Image.Pad
                     opacity: cardSort.enabled ? 1 : 0.4
                     Impl.ColorImage {
                         anchors.fill: parent
                         visible: sortIcon.twoTone
-                        source: visible ? "qrc:///redesign/icons/sort/active-accent.png" : ""
+                        source: visible ? "qrc:///redesign/icons/sort/active-accent.svg" : ""
                         sourceSize: parent.sourceSize
                         fillMode: parent.fillMode
                         color: VLCStyle.redesign.accent
@@ -244,6 +250,11 @@ T.Pane {
             }
 
             CardGlyphButton {
+                id: cardRepeat
+                Navigation.parentItem: root
+                Navigation.downItem: listView
+                Navigation.leftItem: cardHeader.mirrored ? cardShuffle : cardSort
+                Navigation.rightItem: cardHeader.mirrored ? cardSort : cardShuffle
                 text: MainPlaylistController.repeatMode === PlaylistController.PLAYBACK_REPEAT_CURRENT
                       ? VLCIcons.repeat_one : VLCIcons.repeat_all
                 description: qsTr("Repeat")
@@ -252,6 +263,11 @@ T.Pane {
             }
 
             CardGlyphButton {
+                id: cardShuffle
+                Navigation.parentItem: root
+                Navigation.downItem: listView
+                Navigation.leftItem: cardHeader.mirrored ? cardRemove : cardRepeat
+                Navigation.rightItem: cardHeader.mirrored ? cardRepeat : cardRemove
                 text: VLCIcons.shuffle
                 description: qsTr("Shuffle")
                 checked: MainPlaylistController.random
@@ -259,6 +275,11 @@ T.Pane {
             }
 
             CardImageButton {
+                id: cardRemove
+                Navigation.parentItem: root
+                Navigation.downItem: listView
+                Navigation.leftItem: cardHeader.mirrored ? cardAdd : cardShuffle
+                Navigation.rightItem: cardHeader.mirrored ? cardShuffle : cardAdd
                 iconName: "remove"
                 description: qsTr("Remove selected items")
                 enabled: !!root.selectionModel && root.selectionModel.hasSelection
@@ -270,6 +291,11 @@ T.Pane {
             }
 
             CardImageButton {
+                id: cardAdd
+                Navigation.parentItem: root
+                Navigation.downItem: listView
+                Navigation.leftItem: cardHeader.mirrored ? null : cardRemove
+                Navigation.rightItem: cardHeader.mirrored ? cardRemove : null
                 iconName: "add"
                 description: qsTr("Add files to the queue")
                 onClicked: root.addRequested()
@@ -468,7 +494,8 @@ T.Pane {
                     width: VLCStyle.dp(20, VLCStyle.scale)
                     height: width
                     sourceSize: Qt.size(width, height)
-                    source: "qrc:///redesign/icons/folder/default.png"
+                    smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
+                    source: "qrc:///redesign/icons/folder/default.svg"
                     color: VLCStyle.palette.isDark ? "transparent" : "#2e2e2e"
                 }
                 Text {
@@ -482,7 +509,7 @@ T.Pane {
                         const parts = folderHeading.section.split(/[\\/]/).filter(part => part.length > 0)
                         return parts.length > 0 ? parts[parts.length - 1] : folderHeading.section
                     }
-                    color: VLCStyle.redesign.color("#6B6B6B", "#4d4d4d")
+                    color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
                     elide: Text.ElideMiddle
@@ -542,7 +569,9 @@ T.Pane {
             }
 
             Navigation.parentItem: root
-            Navigation.upItem: headerColumn.sortButton
+            // the card hides the header: its own buttons are above the rows
+            Navigation.upItem: !root.card ? headerColumn.sortButton
+                               : cardSort.enabled ? cardSort : cardRepeat
 
             onActionAtIndex: (index) => {
                 if (index < 0)
@@ -653,7 +682,7 @@ T.Pane {
         implicitHeight: VLCStyle.dp(32, VLCStyle.scale)
 
         contentItem: Image {
-            source: "qrc:///redesign/icons/" + imageButton.iconName + "/default.png"
+            source: "qrc:///redesign/icons/" + imageButton.iconName + "/default.svg"
             sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
             fillMode: Image.Pad
             opacity: imageButton.enabled ? 1 : 0.4
@@ -669,7 +698,7 @@ T.Pane {
         implicitHeight: VLCStyle.dp(32, VLCStyle.scale)
         font.pixelSize: VLCStyle.dp(20, VLCStyle.scale)
         color: checked ? VLCStyle.redesign.accent
-                       : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#5a5a59")
+                       : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
         background: CardButtonBackground { button: glyphButton }
     }
 

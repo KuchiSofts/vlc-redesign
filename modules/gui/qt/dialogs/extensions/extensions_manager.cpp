@@ -24,6 +24,7 @@
 #include "player/player_controller.hpp"
 #include "extensions.hpp"
 
+#include "menus/redesign_menu_style.hpp"
 #include <vlc_modules.h>
 #include <vlc_interface.h>
 #include <vlc_playlist.h>
@@ -177,7 +178,7 @@ void ExtensionsManager::menu( QMenu *current )
             }
 
             submenu->addSeparator();
-            action = submenu->addAction( QIcon( ":/menu/clear.svg" ),
+            action = submenu->addAction( RedesignMenuStyle::menuIcon( ":/menu/clear.svg" ),
                                          qtr( "Deactivate" ) );
             menuMapper->setMapping( action, MENU_MAP( 0, i_ext ) );
             connect( action, &QAction::triggered, menuMapper, QOverload<>::of(&QSignalMapper::map) );

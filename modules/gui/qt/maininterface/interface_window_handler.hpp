@@ -69,6 +69,8 @@ private:
 
 protected:
     virtual void updateCSDWindowSettings();
+    // the room of the traffic lights in the top bar (macOS), MainCtx's
+    void updateWindowButtonsInset();
 
 protected:
     qt_intf_t* p_intf = nullptr;
@@ -97,6 +99,8 @@ protected:
     QMargins m_extraBorders;
 
     WheelToVLCConverter m_wheelAccumulator;
+    // where the wheel turned (the step it makes: over the video or not)
+    QPointF m_wheelPosition;
 
     static const Qt::Key kc[10]; /* easter eggs */
     int i_kc_offset = 0;

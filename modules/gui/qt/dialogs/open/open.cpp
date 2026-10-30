@@ -28,6 +28,7 @@
 #include "dialogs/dialogs_provider.hpp"
 #include "util/qt_dirs.hpp"
 #include "playlist/playlist_controller.hpp"
+#include "menus/redesign_menu_style.hpp"
 
 #include <QRegularExpression>
 #include <QMenu>
@@ -55,15 +56,15 @@ OpenDialog::OpenDialog(qt_intf_t *_p_intf, QWindow* parent )
     netOpenPanel     = new NetOpenPanel( this, p_intf );
     captureOpenPanel = new CaptureOpenPanel( this, p_intf );
 
-    /* Insert the tabs */
-    ui.Tab->insertTab( OPEN_FILE_TAB, fileOpenPanel, QIcon( ":/menu/file.svg" ),
+    /* Insert the tabs (the two-tone icons of the redesign, as its menus) */
+    ui.Tab->insertTab( OPEN_FILE_TAB, fileOpenPanel, RedesignMenuStyle::menuIcon( ":/menu/file.svg", this ),
                        qtr( "&File" ) );
-    ui.Tab->insertTab( OPEN_DISC_TAB, discOpenPanel, QIcon( ":/menu/disc.svg" ),
+    ui.Tab->insertTab( OPEN_DISC_TAB, discOpenPanel, RedesignMenuStyle::menuIcon( ":/menu/disc.svg", this ),
                        qtr( "&Disc" ) );
-    ui.Tab->insertTab( OPEN_NETWORK_TAB, netOpenPanel, QIcon( ":/menu/network.svg" ),
+    ui.Tab->insertTab( OPEN_NETWORK_TAB, netOpenPanel, RedesignMenuStyle::menuIcon( ":/menu/network.svg", this ),
                        qtr( "&Network" ) );
     ui.Tab->insertTab( OPEN_CAPTURE_TAB, captureOpenPanel,
-                       QIcon( ":/menu/capture-card.svg" ), qtr( "Capture &Device" ) );
+                       RedesignMenuStyle::menuIcon( ":/menu/capture-card.svg", this ), qtr( "Capture &Device" ) );
 
     /* Hide the Slave input widgets */
     ui.slaveLabel->hide();

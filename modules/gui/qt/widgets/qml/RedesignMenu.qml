@@ -141,5 +141,8 @@ T.Menu {
             blurRadius: 7.5 * VLCStyle.scale // (dp() rounds to whole pixels)
             color: Qt.rgba(0, 0, 0, 0.46)
         }
+
+        // the frame of the main window
+        RedesignWindowBorder { }
     }
 }

@@ -54,6 +54,15 @@ class RedesignUpdater : public QObject
     // About shows the state itself: no banner while it is open
     Q_PROPERTY(bool aboutOpen READ aboutOpen WRITE setAboutOpen NOTIFY stateChanged FINAL)
     Q_PROPERTY(QString repositoryUrl READ repositoryUrl CONSTANT FINAL)
+    // "Also on: Linux (soon), macOS (soon)…": the other platforms, from the
+    // copy of platforms.yml built in (:/redesign/platforms.json); empty without it
+    Q_PROPERTY(QString alsoOn READ alsoOn CONSTANT FINAL)
+    // the system and processor this copy is built for (About): "Windows x64",
+    // "macOS Apple Silicon", "Linux x86_64 · AppImage"...
+    Q_PROPERTY(QString platformName READ platformName CONSTANT FINAL)
+    // the system it runs on, for the tooltip of that name (About): "Windows 11
+    // (10.0.26100) · x86_64 · Qt 6.8.3"
+    Q_PROPERTY(QString platformDetails READ platformDetails CONSTANT FINAL)
 
 public:
     enum State {
@@ -88,6 +97,9 @@ public:
     bool aboutOpen() const { return m_aboutOpen; }
     void setAboutOpen(bool open);
     QString repositoryUrl() const;
+    QString alsoOn() const;
+    QString platformName() const;
+    QString platformDetails() const;
 
     // The daily check (option redesign-update-check), for the first-run
     // setup: turned on, it starts as at a start of VLC
@@ -125,6 +137,8 @@ private:
     void setProgress(double progress);
     void onRelease(int status, const QByteArray &body);
     void withChecksum(const QString &assetName, std::function<void(const QString &)> next);
+    void useChecksums(const QByteArray &sums, const QString &assetName,
+                      const std::function<void(const QString &)> &next);
     void downloadDelta(const QString &expectedSha256);
     void downloadInstaller(const QString &expectedSha256);
     void launchInstaller(const QString &path);
@@ -163,5 +177,7 @@ private:
     QString m_deltaName;
     qint64 m_deltaSize = 0;
     QString m_sumsUrl;
+    // its signature (SHA256SUMS.txt.sig), from the first signed release on
+    QString m_sigUrl;
     QString m_error;
 };

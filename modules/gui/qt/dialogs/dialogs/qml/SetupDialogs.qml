@@ -25,6 +25,33 @@ Item {
         if (!setupState.playlistHasMedia())
             root.show(setup)
     }
+    // What's new after an update: once a version, on the library once the
+    // window is up (not over the welcome of a new install, which records the
+    // version instead). VLC opened to play something: once it has stopped
+    WhatsNewController { id: whatsNewState; ctx: MainCtx }
+    function showWhatsNew() {
+        if (!whatsNewState.pending || setupState.needsSetup
+                || Player.playingState !== Player.PLAYING_STATE_STOPPED)
+            return
+        if (whatsNew.item && whatsNew.item.visible)
+            return
+        if (whatsNewState.showWanted())
+            root.show(whatsNew)
+    }
+    // the library drawn first; a file opened with VLC waits for its end
+    Timer {
+        id: whatsNewTimer
+        interval: 1500
+        onTriggered: if (!setupState.playlistHasMedia()) root.showWhatsNew()
+    }
+    Connections {
+        target: Player
+        enabled: whatsNewState.pending
+        function onPlayingStateChanged() {
+            if (Player.playingState === Player.PLAYING_STATE_STOPPED)
+                Qt.callLater(root.showWhatsNew)
+        }
+    }
     // centred on whole pixels: the text stays crisp
     function centeredX(width) { return Math.round((root.width - width) / 2) }
     function centeredY(height) { return Math.round((root.height - height) / 2) }
@@ -34,15 +61,42 @@ Item {
             if (!loader.item.visible) loader.item.open()
         }
     }
+    // shown, or closed when it shows
+    function toggle(loader) {
+        if (loader.item && loader.item.visible)
+            loader.item.close()
+        else
+            root.show(loader)
+    }
     // A dialog closed is let go with its pages and models, made again when
     // asked for (unless it was opened again meanwhile)
     function release(loader) {
         Qt.callLater(() => {
-            if (loader.item && !loader.item.visible)
+            if (loader.item && !loader.item.visible && loader.item.busy !== true)
                 loader.active = false
         })
     }
-    Component.onCompleted: if (setupState.needsSetup) Qt.callLater(root.showSetupOnStart)
+    Component.onCompleted: {
+        if (setupState.needsSetup)
+            Qt.callLater(root.showSetupOnStart)
+        else if (whatsNewState.pending)
+            whatsNewTimer.start()
+    }
+    // The messages and questions of the C++ side (the play queue to restore
+    // after a crash, the confirmations, a text to type), in the window (it
+    // tells DialogsProvider it shows them)
+    RedesignMessageDialog { id: messages; parent: root }
+    Connections {
+        target: DialogsProvider
+        function onRedesignMessageRequested(host, id, message) {
+            if (host === messages)
+                messages.enqueue(id, message)
+        }
+        function onRedesignMessageCancelled(host, id) {
+            if (host === messages)
+                messages.drop(id)
+        }
+    }
     Connections {
         target: DialogsProvider
         function onPreferencesRequested() { root.show(preferences) }
@@ -56,6 +110,7 @@ Item {
         function onShortcutsRequested() { root.show(shortcuts) }
         function onNetworkStreamRequested() { root.show(networkStream) }
         function onAboutRequested() { root.show(about) }
+        function onWhatsNewRequested() { root.show(whatsNew) }
         function onSetupRequested() { if (!setup.item || !setup.item.visible) root.show(setup) }
         function onEffectsRequested(page) {
             effects.requestedTab = page
@@ -66,6 +121,18 @@ Item {
         function onSleepTimerRequested() { timerMenu.open() }
         function onAudioVisualizationRequested() { visualization.open() }
         function onHdrOutputRequested() { hdr.open() }
+        // (Ctrl+T and the menus show and hide it, as the classic window)
+        function onGotoTimeRequested() { root.toggle(goToTime) }
+        function onPluginsRequested() { root.toggle(plugins) }
+        function onStatisticsRequested() { root.show(statistics) }
+        function onFolderInfoRequested(folder) {
+            folderInfo.requestedUrl = folder
+            if (folderInfo.item) {
+                folderInfo.item.folderUrl = folder
+                if (!folderInfo.item.visible) folderInfo.item.open()
+            } else
+                folderInfo.active = true
+        }
     }
     Loader {
         id: setup
@@ -73,6 +140,18 @@ Item {
         active: false
         source: "qrc:/qt/qml/VLC/Dialogs/OnboardingDialog.qml"
         onLoaded: { item.parent = root; item.open() }
+    }
+    Loader {
+        id: whatsNew
+        anchors.fill: parent
+        active: false
+        source: "qrc:/qt/qml/VLC/Dialogs/WhatsNewDialog.qml"
+        onLoaded: {
+            item.parent = root
+            item.controller = whatsNewState
+            item.closed.connect(() => root.release(whatsNew))
+            item.open()
+        }
     }
     Loader {
         id: preferences
@@ -105,12 +184,29 @@ Item {
         source: "qrc:/qt/qml/VLC/Dialogs/NetworkStreamDialog.qml"
         onLoaded: { item.parent = root; item.closed.connect(() => root.release(networkStream)); item.open() }
     }
+    // Closed while its playlist was still being saved: let go once it is
+    Connections {
+        target: networkStream.item
+        function onBusyChanged() { if (!networkStream.item.busy) root.release(networkStream) }
+    }
     Loader {
         id: about
         anchors.fill: parent
         active: false
         source: "qrc:/qt/qml/VLC/Dialogs/RedesignAboutDialog.qml"
         onLoaded: { item.parent = root; item.closed.connect(() => root.release(about)); item.open() }
+    }
+    // Report a problem (the ⋯ menu, About)
+    Loader {
+        id: report
+        anchors.fill: parent
+        active: false
+        source: "qrc:/qt/qml/VLC/Dialogs/RedesignReportDialog.qml"
+        onLoaded: { item.parent = root; item.closed.connect(() => root.release(report)); item.open() }
+    }
+    Connections {
+        target: RedesignFeedback
+        function onReportRequested() { root.show(report) }
     }
     Loader {
         id: effects
@@ -122,6 +218,42 @@ Item {
             item.parent = root
             item.currentTab = requestedTab
             item.closed.connect(() => root.release(effects))
+            item.open()
+        }
+    }
+    // The small tool windows (Go to Time, the plugins list, the statistics,
+    // the information of a folder), as the other dialogs
+    Loader {
+        id: goToTime
+        anchors.fill: parent
+        active: false
+        source: "qrc:/qt/qml/VLC/Dialogs/RedesignGoToTimeDialog.qml"
+        onLoaded: { item.parent = root; item.closed.connect(() => root.release(goToTime)); item.open() }
+    }
+    Loader {
+        id: plugins
+        anchors.fill: parent
+        active: false
+        source: "qrc:/qt/qml/VLC/Dialogs/RedesignPluginsDialog.qml"
+        onLoaded: { item.parent = root; item.closed.connect(() => root.release(plugins)); item.open() }
+    }
+    Loader {
+        id: statistics
+        anchors.fill: parent
+        active: false
+        source: "qrc:/qt/qml/VLC/Dialogs/RedesignStatisticsDialog.qml"
+        onLoaded: { item.parent = root; item.closed.connect(() => root.release(statistics)); item.open() }
+    }
+    Loader {
+        id: folderInfo
+        property url requestedUrl
+        anchors.fill: parent
+        active: false
+        source: "qrc:/qt/qml/VLC/Dialogs/RedesignFolderInfoDialog.qml"
+        onLoaded: {
+            item.parent = root
+            item.folderUrl = requestedUrl
+            item.closed.connect(() => root.release(folderInfo))
             item.open()
         }
     }

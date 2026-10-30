@@ -134,6 +134,9 @@ public:
 public slots:
     bool save(bool clearDirty = true);
     bool reload();
+    // All the settings were reset: the profiles forget the settings they
+    // kept, and take the defaults in use
+    void forgetSettingsSnapshots();
 
     bool setSelectedProfile(int selectedProfile);
 

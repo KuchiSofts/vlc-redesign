@@ -97,7 +97,7 @@ T.ProgressBar {
     property bool _currentChapterHovered: false
     property real _tooltipPosition: (Widgets.PointingToolTipAttached.instance?.pos.x ?? 0.0) / width
 
-    property color backgroundColor: redesign ? VLCStyle.redesign.color(VLCStyle.redesign.seekBackground, theme.bg.primary, theme.palette?.isDark ?? VLCStyle.darkPalette.isDark) : theme.bg.primary
+    property color backgroundColor: redesign ? VLCStyle.redesign.color(VLCStyle.redesign.seekBackground, "#dedede", theme.palette?.isDark ?? VLCStyle.darkPalette.isDark) : theme.bg.primary
     readonly property color progressColor: redesign ? VLCStyle.redesign.color(VLCStyle.redesign.seekFill, theme.fg.primary, theme.palette?.isDark ?? VLCStyle.darkPalette.isDark) : theme.fg.primary
     property real touchHandlerMargin: VLCStyle.touchHandlerMargin
 
@@ -149,6 +149,13 @@ T.ProgressBar {
         if (Player.hasChapters)
             _text += " - " + Player.chapters.getNameAtPosition(control._tooltipPosition)
 
+        // the subtitle line at the hovered time, under it
+        if (hoverHandler.hovered && subtitleCues.ready) {
+            const line = subtitleCues.textAt(control._tooltipPosition)
+            if (line.length > 0)
+                _text += "\n" + line
+        }
+
         return _text
     }
 
@@ -171,6 +178,7 @@ T.ProgressBar {
                       .formatHMS(VLCTick.ForceHours
                                  | (Player.length.isSubSecond() ? VLCTick.SubSecondFormattedAsMS : 0))
         darkTheme: theme.palette?.isDark ?? VLCStyle.darkPalette.isDark
+        cueText: visible && subtitleCues.ready ? subtitleCues.textAt(_hoverPosition) : ""
 
         width: implicitWidth
         height: implicitHeight
@@ -528,6 +536,41 @@ T.ProgressBar {
                 state: (seekpointsRect._hovered || (seekpointsRect._currentChapter === 0 && fsm._state === fsm.fsmHeld))
                        ? "visibleLarge"
                        : "visible"
+            }
+        }
+
+        // Where the lines of the subtitle shown are (from its file: a file
+        // added, found next to the video or online), still to come: under
+        // the played part, clipped at its end. Painted once per width (the
+        // clip moves, the marks stay); none for a stream that can't seek
+        Item {
+            id: subtitleCuesClip
+
+            readonly property real inset: control.redesign ? VLCStyle.redesign.seekInset : 0
+
+            x: Math.max(inset, progressRect.x + progressRect.width)
+            width: Math.max(0, parent.width - inset - x)
+            height: parent.height
+            clip: true
+            visible: subtitleCues.ready
+
+            SubtitleCues {
+                id: subtitleCues
+
+                // the bar's time runs over the same width as its fill
+                x: subtitleCuesClip.inset - subtitleCuesClip.x
+                width: Math.max(0, subtitleCuesClip.parent.width - subtitleCuesClip.inset * 2)
+                height: VLCStyle.dp(4, VLCStyle.scale)
+                y: Math.round((subtitleCuesClip.height - height) / 2)
+
+                player: Player
+                active: control.redesign && MainCtx.seekSubtitleCues && control.visible
+                        && Player.seekable && Player.length.valid()
+                // Dark/FG/A3 of the design (#5A5A59 in the light theme)
+                color: (theme.palette?.isDark ?? VLCStyle.darkPalette.isDark) ? "#6B6B6B" : "#5A5A59"
+                minimumWidth: VLCStyle.dp(1, VLCStyle.scale)
+                // closer lines are one mark
+                mergeDistance: VLCStyle.dp(2, VLCStyle.scale)
             }
         }
 

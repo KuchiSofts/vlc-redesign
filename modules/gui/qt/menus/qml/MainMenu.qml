@@ -168,6 +168,17 @@ Widgets.RedesignMenu {
         shortcutText: qsTr("Ctrl + P")
         onTriggered: DialogsProvider.prefsDialog()
     }
+    // The forms of the GitHub repository, in the browser
+    Widgets.RedesignMenuItem {
+        text: qsTr("Suggest an idea")
+        iconName: "edit"
+        onTriggered: Qt.openUrlExternally(RedesignFeedback.ideaUrl())
+    }
+    Widgets.RedesignMenuItem {
+        text: qsTr("Report a problem")
+        iconName: "help"
+        onTriggered: RedesignFeedback.openReport()
+    }
     Widgets.RedesignMenuItem {
         text: qsTr("About VLC")
         iconName: "info"

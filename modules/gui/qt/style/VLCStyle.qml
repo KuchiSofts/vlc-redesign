@@ -47,6 +47,29 @@ QtObject {
         // the baselines with these keeps the text where the design draws
         // it, whatever line metrics Qt uses.
         readonly property real ascender: 0.96875
+        // An SVG drawn at the size it is shown (sourceSize = its size) is a
+        // texture of exactly its device pixels when that size times the
+        // device pixel ratio is whole: drawn without filtering (smooth:
+        // false) it lands 1:1 on whole device pixels wherever its item
+        // lands, as sharp as Qt draws the SVG. Filtered from a fractional
+        // position (x * 1.25, x * 1.5) its 1.5 px strokes spread over 3-5
+        // soft rows. Only for an image whose URL as written is a qrc:/file:
+        // SVG: Qt draws other images (PNG, covers, image://svgcolor) at
+        // sourceSize without the ratio, and they stay filtered, as does a
+        // size that does not divide (zoom 1.3 at 125 %).
+        //   smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
+        // (The source is not an argument: an IconImage's `source` read in
+        // its own binding is not followed when it changes after the
+        // binding first ran (RedesignIconButton's required iconSource): the
+        // icons of the bar stayed filtered.)
+        function svgExact(w, h, dpr) {
+            if (!(dpr > 0))
+                return false
+            // (sourceSize is a QSize: whole logical pixels too)
+            const exact = v => v > 0 && v === Math.round(v)
+                               && Math.abs(v * dpr - Math.round(v * dpr)) < 0.01
+            return exact(w) && exact(h)
+        }
         // Baseline of a text box of the design whose top is at top
         function textBaseline(top, pixelSize) {
             const line = 1.2109375 * pixelSize
@@ -63,11 +86,24 @@ QtObject {
         // show at half opacity)
         readonly property var accentChoices: ["#d37918", "#e15033", "#c49d24", "#18a235", "#18aad3", "#185dd4", "#8e41ff", "#f051b5", "#afafaf"]
         readonly property color logoColor: "#D37918"
-        property color accent: MainCtx.settingValue("redesign/accent", "#D37918")
+        // The accent chosen (redesign/accent): one of accentChoices, or
+        // "system" (Follow the Windows accent color, Settings): the color of the
+        // system as MainCtx.systemAccent gives it, made as readable as the
+        // others (RedesignAccent) and followed while VLC runs. Settings and
+        // the onboarding set accentChoice to show a choice at once.
+        readonly property string systemAccentChoice: "system"
+        property string accentChoice: MainCtx.settingValue("redesign/accent", "#D37918")
+        readonly property bool followsSystemAccent: accentChoice === systemAccentChoice
+        readonly property color systemAccent: MainCtx.systemAccent
+        readonly property color accent: followsSystemAccent ? systemAccent : accentChoice
+        // The color a choice stands for
+        function accentOf(choice) {
+            return choice === systemAccentChoice ? systemAccent : choice
+        }
         readonly property Connections profileAppearanceSync: Connections {
             target: MainCtx.controlbarProfileModel
             function onSelectedProfileChanged() {
-                vlc_style.redesign.accent = MainCtx.controlbarProfileModel.profileAccent
+                vlc_style.redesign.accentChoice = MainCtx.controlbarProfileModel.profileAccent
             }
         }
         // Accent Dim and Accent Bright of the design (#AB6314 and #371F06 for
@@ -93,6 +129,10 @@ QtObject {
         readonly property color textDisabled: "#404040"
         readonly property color separator: "#222222"
         readonly property color border: "#373737"
+        // The 1 px frame of a window (the main window's, which the system
+        // draws: RedesignMenuStyle::windowBorder), around every dialog, menu
+        // and card opened over the interface (Widgets.RedesignWindowBorder)
+        readonly property color windowBorder: "#4C4A48"
         readonly property color focusColor: accent
         readonly property int topbarHeight: MainCtx.dp(40, vlc_style.scale)
         readonly property int sidebarWidth: MainCtx.dp(217, vlc_style.scale)
@@ -126,7 +166,7 @@ QtObject {
             "#222222": "#9c9c9b", "#eaeaea": "#2e2e2e", "#969696": "#4d4d4d",
             "#8f8f8f": "#2e2e2e", "#404040": "#929291", "#373737": "#8e8e8d",
             "#090909": "#dedede", "#151515": "#b5b5b4", "#6b6b6b": "#6b6b6b",
-            "#c6c6c6": "#2e2e2e"
+            "#c6c6c6": "#2e2e2e", "#4c4a48": "#4c4a48"
         })
 
         // "Increase text contrast" (Interface > Accessibility): the dim texts
@@ -143,13 +183,17 @@ QtObject {
             "#5a5a5a": "#333333", "#4d4d4d": "#333333", "#929291": "#575756"
         })
 
-        function color(darkValue, fallback, isDark = vlc_style.palette.isDark) {
-            const value = _themed(darkValue, fallback, isDark)
+        // color(dark[, light[, isDark]]): the light value a component gives
+        // is the one drawn in the light theme; without one, the map above
+        // turns the dark value into its light one (a dark value the map does
+        // not know stays as it is). design/light-theme.md lists the decisions.
+        function color(darkValue, lightValue, isDark = vlc_style.palette.isDark) {
+            const value = _themed(darkValue, lightValue, isDark)
             if (!increaseContrast)
                 return value
             return (isDark ? _contrastDark : _contrastLight)[value.toString().toLowerCase()] ?? value
         }
-        function _themed(darkValue, fallback, isDark) {
+        function _themed(darkValue, lightValue, isDark) {
             if (isDark) return darkValue
             // Nothing drawn stays so in both themes (idle button backgrounds)
             if (Qt.colorEqual(darkValue, "transparent")) return darkValue
@@ -157,7 +201,8 @@ QtObject {
             if (Qt.colorEqual(darkValue, accentDim)) return accentDim
             if (Qt.colorEqual(darkValue, accentBackground))
                 return Qt.tint("#dedede", Qt.rgba(accent.r, accent.g, accent.b, 0.35))
-            return _lightColors[darkValue.toString().toLowerCase()] || fallback
+            if (lightValue !== undefined) return lightValue
+            return _lightColors[darkValue.toString().toLowerCase()] || darkValue
         }
     }
 

@@ -52,6 +52,7 @@ player's languages and tracks panel: see [Subtitles](Subtitles). See
 | Option | Choices / default | What it does | VLC option |
 |---|---|---|---|
 | **Subtitle delay** | Slider, −5 s to +5 s in 0.1 s steps, labels −5 s, 0 s, +5 s. Default: 0 s. | Shows every subtitle later (positive) or earlier (negative) in every video. For one video, use the player's subtitle timing ([Subtitles](Subtitles#subtitle-timing-sync-timeline)). | `sub-delay` (tenths of a second) |
+| **Show subtitle lines on the seek bar** | Toggle. Default: on. | Marks on the seek bar where the lines of the subtitle shown are, when it comes from a subtitle file (added, found next to the video, or downloaded). Hovering the bar shows the line at that time. Applies at once. | `qt-seek-subtitle-cues` |
 
 ## On-Screen Messages
 

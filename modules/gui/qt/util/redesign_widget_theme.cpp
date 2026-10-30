@@ -25,11 +25,13 @@
 #include "menus/redesign_menu_style.hpp"
 #include "dialogs/toolbar/controlbar_profile_model.hpp"
 #include "util/color_scheme_model.hpp"
+#include "util/redesign_window_frame.hpp"
 
 #include <QColor>
 #include <QEvent>
 #include <QFont>
 #include <QGuiApplication>
+#include <QPushButton>
 #include <QHash>
 #include <QList>
 #include <QMenu>
@@ -116,7 +118,7 @@ QTabBar::tab:hover {
 }
 QTabBar::tab:selected {
     background: $(accentBackground);
-    color: $(accent);
+    color: $(onAccent);
 }
 QTabBar::tab:disabled {
     color: $(disabled);
@@ -130,7 +132,7 @@ QTabBar QToolButton {
 QPushButton {
     background: $(raised);
     color: $(text);
-    border: 1px solid transparent;
+    border: 1px solid $(windowBorder);
     border-radius: $(dp:6)px;
     padding: $(dp:5)px $(dp:12)px;
     font-size: $(dp:14)px;
@@ -144,7 +146,8 @@ QPushButton:pressed {
 }
 QPushButton:checked, QPushButton:default {
     background: $(accentBackground);
-    color: $(accent);
+    border-color: $(accentBackground);
+    color: $(onAccent);
 }
 QPushButton:default:hover {
     background: $(accentHover);
@@ -152,8 +155,14 @@ QPushButton:default:hover {
 QPushButton:focus {
     border-color: $(accent);
 }
+QPushButton:flat, QPushButton[vlcIconOnly="true"] {
+    border-color: transparent;
+}
 QPushButton:flat {
     background: transparent;
+}
+QPushButton:flat:focus, QPushButton[vlcIconOnly="true"]:focus {
+    border-color: $(accent);
 }
 QPushButton:disabled {
     background: $(raised);
@@ -186,7 +195,7 @@ QToolButton:pressed {
 }
 QToolButton:checked {
     background: $(accentBackground);
-    color: $(accent);
+    color: $(onAccent);
 }
 QToolButton:focus {
     border-color: $(accent);
@@ -196,7 +205,7 @@ QToolButton:disabled {
 }
 QToolButton#playButton {
     background: $(accentBackground);
-    color: $(accent);
+    color: $(onAccent);
     border-radius: $(dp:6)px;
     padding: $(dp:5)px $(dp:30)px $(dp:5)px $(dp:14)px;
     font-size: $(dp:14)px;
@@ -229,7 +238,7 @@ QLineEdit, QAbstractSpinBox, QTextEdit, QPlainTextEdit {
     border: $(dp:2)px solid $(raised);
     border-radius: $(dp:6)px;
     selection-background-color: $(accentBackground);
-    selection-color: $(accent);
+    selection-color: $(onAccent);
     font-size: $(dp:14)px;
 }
 QLineEdit, QAbstractSpinBox {
@@ -290,7 +299,7 @@ QComboBox {
     border-radius: $(dp:6)px;
     padding: $(dp:3)px $(dp:4)px $(dp:3)px $(dp:12)px;
     selection-background-color: $(accentBackground);
-    selection-color: $(accent);
+    selection-color: $(onAccent);
     font-size: $(dp:14)px;
 }
 QComboBox:hover, QComboBox:on {
@@ -327,7 +336,7 @@ QComboBox QAbstractItemView {
     border-radius: 0px;
     padding: $(dp:2)px;
     selection-background-color: $(hover);
-    selection-color: $(accent);
+    selection-color: $(onAccent);
 }
 
 QAbstractItemView {
@@ -338,7 +347,7 @@ QAbstractItemView {
     border-radius: $(dp:6)px;
     padding: $(dp:2)px;
     selection-background-color: $(accentBackground);
-    selection-color: $(accent);
+    selection-color: $(onAccent);
     outline: 0px;
     font-size: $(dp:14)px;
 }
@@ -350,7 +359,7 @@ QAbstractItemView::item:hover {
 }
 QAbstractItemView::item:selected {
     background: $(accentBackground);
-    color: $(accent);
+    color: $(onAccent);
 }
 QTreeView {
     show-decoration-selected: 1;
@@ -552,6 +561,25 @@ QFrame[frameShape="5"], QFrame[frameShape="VLine"] {
     background: $(separator);
     max-width: 1px;
 }
+
+/* The title bar of the redesign's dialogs (RedesignWindowFrame) */
+QWidget#redesignTitleBar {
+    background: $(titleBar);
+}
+QLabel#redesignTitle {
+    background: transparent;
+    color: $(text);
+    font-size: $(dp:14)px;
+}
+QToolButton#redesignTitleButton {
+    background: transparent;
+    border: none;
+    border-radius: $(dp:4)px;
+    padding: $(dp:4)px;
+}
+QToolButton#redesignTitleButton:hover, QToolButton#redesignTitleButton:pressed {
+    background: $(hover);
+}
 )qss";
 
 // Set on the windows given the look; the second holds what they got
@@ -563,6 +591,9 @@ struct Colors
     QColor window, raised, hover, field, separator;
     QColor text, bright, muted, disabled, outline, handle, handleHover;
     QColor accent, accentDim, accentBackground, accentHover;
+    // the text on accentBackground; the frame of the window (buttons)
+    QColor onAccent, windowBorder;
+    QColor titleBar;
 };
 
 int dp(int px, double scale)
@@ -608,6 +639,9 @@ Colors colors(bool dark, const QColor &accent)
         c.handle = QColor(0x8E, 0x8E, 0x8D);
     }
     c.muted = QColor(0x6B, 0x6B, 0x6B);
+    // "Dark/BG/B2" of the dialogs' title bar, as RedesignDialog.qml draws it
+    // (#DEDEDE in the light theme, Figma "Player - Light" B2)
+    c.titleBar = dark ? QColor(0x09, 0x09, 0x09) : QColor(0xDE, 0xDE, 0xDE);
     c.outline = QColor(0x40, 0x40, 0x40);
     c.handleHover = QColor(0x6B, 0x6B, 0x6B);
 
@@ -622,6 +656,13 @@ Colors colors(bool dark, const QColor &accent)
     else
         c.accentBackground = mix(QColor(0xDE, 0xDE, 0xDE), accent, 0.35f);
     c.accentHover = dark ? c.accentBackground.lighter(140) : c.accentBackground.darker(110);
+    // the accent reads 1.8:1 on the light theme's pale tint of it: darkened
+    // there to the 4.5:1 of WCAG AA (5.1 to 6.4:1 for the 9 accents)
+    c.onAccent = dark ? accent : accent.darker(220);
+    // a neutral button (#191919 on the dialogs' #191919 panels, the same grey
+    // in the light theme) has the frame of the window around it, so it never
+    // melts into its panel (docs/MASTER-PLAN.md §6)
+    c.windowBorder = QColor(0x4C, 0x4A, 0x48);
     return c;
 }
 
@@ -677,6 +718,9 @@ QString styleSheet(const Colors &c, bool dark, const QString &family, double sca
         { QStringLiteral("accentDim"), c.accentDim.name() },
         { QStringLiteral("accentBackground"), c.accentBackground.name() },
         { QStringLiteral("accentHover"), c.accentHover.name() },
+        { QStringLiteral("onAccent"), c.onAccent.name() },
+        { QStringLiteral("windowBorder"), c.windowBorder.name() },
+        { QStringLiteral("titleBar"), c.titleBar.name() },
         { QStringLiteral("theme"), dark ? QStringLiteral("dark") : QStringLiteral("light") },
         { QStringLiteral("family"), family },
     };
@@ -731,6 +775,10 @@ private:
     QString m_styleSheet;
     QPalette m_palette;
     QFont m_font;
+    // for the title bar and the frame of the system
+    bool m_dark = true;
+    double m_scale = 1.0;
+    QColor m_border;
 };
 
 QPointer<ThemeController> s_controller;
@@ -743,6 +791,9 @@ ThemeController::ThemeController(MainCtx *ctx)
     connect(ctx->getColorScheme(), &ColorSchemeModel::currentChanged, this, changed);
     connect(QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, this, changed);
     connect(ctx, &MainCtx::intfScaleFactorChanged, this, changed);
+    // "Follow the Windows accent color" follows the system (refresh() sees whether
+    // the accent the windows have changed)
+    connect(ctx, &MainCtx::systemAccentChanged, this, changed);
     connect(ctx, &MainCtx::settingValueChanged, this, [this](const QString &key) {
         if (key == QLatin1String("redesign/accent"))
             updateAll();
@@ -761,6 +812,8 @@ void ThemeController::add(QWidget *window)
     // only so
     window->setAttribute(Qt::WA_StyledBackground);
     window->installEventFilter(this);
+    // the redesign's title bar instead of the system's
+    RedesignWindowFrame::install(window);
     m_windows.removeIf([](const QPointer<QWidget> &other) { return other.isNull(); });
     m_windows.append(window);
     update(window);
@@ -791,6 +844,10 @@ void ThemeController::refresh()
 
     const Colors c = colors(dark, accent);
     m_palette = windowPalette(c, dark);
+    m_dark = dark;
+    m_scale = scale;
+    // the frame of the main window
+    m_border = RedesignMenuStyle::windowBorder(dark);
 
     // Inter 14 px, drawn as the menus and the QML text (grey antialiasing,
     // no hinting); the style sheet sets the size of the controls only, the
@@ -821,11 +878,18 @@ void ThemeController::update(QWidget *window)
         if (qobject_cast<RedesignMenuStyle *>(menu->style()))
             menu->setStyle(nullptr);
     }
+    // a button of an icon only keeps no frame (the frame is for the text
+    // buttons that melt into their panel): marked before the sheet polishes
+    // it
+    const QList<QPushButton *> buttons = window->findChildren<QPushButton *>();
+    for (QPushButton *button : buttons)
+        button->setProperty("vlcIconOnly", button->text().isEmpty() && !button->icon().isNull());
     // the palette and the font before the style sheet: polishing the
     // children for it takes them up
     window->setPalette(m_palette);
     window->setFont(m_font);
     window->setStyleSheet(m_styleSheet);
+    RedesignWindowFrame::update(window, m_scale, m_dark, m_border);
 }
 
 void ThemeController::updateAll()

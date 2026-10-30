@@ -54,6 +54,9 @@ static int done_had_old[2 * MAX_FILES];
 static int done_count;
 /* more files than MAX_FILES: not a part of the update only */
 static BOOL too_many;
+/* a path longer than MAX_PATH: never cut short (another file), the update
+ * is not applied */
+static BOOL too_long;
 
 static void logf_(const wchar_t *fmt, ...)
 {
@@ -71,10 +74,17 @@ static void logf_(const wchar_t *fmt, ...)
     fflush(logfile);
 }
 
-static void join(wchar_t *out, const wchar_t *a, const wchar_t *b)
+static BOOL join(wchar_t *out, const wchar_t *a, const wchar_t *b)
 {
-    _snwprintf(out, MAX_PATH, L"%ls\\%ls", a, b);
+    const int n = _snwprintf(out, MAX_PATH, L"%ls\\%ls", a, b);
     out[MAX_PATH - 1] = 0;
+    if (n < 0 || n >= MAX_PATH) {
+        if (!too_long)
+            logf_(L"a path is too long: %ls\\%ls", a, b);
+        too_long = TRUE;
+        return FALSE;
+    }
+    return TRUE;
 }
 
 /* creates the folders of a file's path */
@@ -112,14 +122,16 @@ static BOOL exists(const wchar_t *path)
 static void remove_tree(const wchar_t *dir)
 {
     wchar_t pattern[MAX_PATH], path[MAX_PATH];
-    join(pattern, dir, L"*");
+    if (!join(pattern, dir, L"*"))
+        return;
     WIN32_FIND_DATAW fd;
     HANDLE h = FindFirstFileW(pattern, &fd);
     if (h != INVALID_HANDLE_VALUE) {
         do {
             if (!wcscmp(fd.cFileName, L".") || !wcscmp(fd.cFileName, L".."))
                 continue;
-            join(path, dir, fd.cFileName);
+            if (!join(path, dir, fd.cFileName))
+                continue;
             if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
                 remove_tree(path);
             else {
@@ -136,11 +148,13 @@ static void remove_tree(const wchar_t *dir)
 static int list_files(const wchar_t *base, const wchar_t *rel, wchar_t **out, int count)
 {
     wchar_t dir[MAX_PATH], pattern[MAX_PATH];
-    if (*rel)
-        join(dir, base, rel);
-    else
+    if (*rel) {
+        if (!join(dir, base, rel))
+            return count;
+    } else
         wcsncpy(dir, base, MAX_PATH);
-    join(pattern, dir, L"*");
+    if (!join(pattern, dir, L"*"))
+        return count;
     WIN32_FIND_DATAW fd;
     HANDLE h = FindFirstFileW(pattern, &fd);
     if (h == INVALID_HANDLE_VALUE)
@@ -149,9 +163,10 @@ static int list_files(const wchar_t *base, const wchar_t *rel, wchar_t **out, in
         if (!wcscmp(fd.cFileName, L".") || !wcscmp(fd.cFileName, L".."))
             continue;
         wchar_t sub[MAX_PATH];
-        if (*rel)
-            join(sub, rel, fd.cFileName);
-        else
+        if (*rel) {
+            if (!join(sub, rel, fd.cFileName))
+                continue;
+        } else
             wcsncpy(sub, fd.cFileName, MAX_PATH);
         if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
             count = list_files(base, sub, out, count);
@@ -168,8 +183,8 @@ static int list_files(const wchar_t *base, const wchar_t *rel, wchar_t **out, in
 static BOOL set_aside(const wchar_t *rel)
 {
     wchar_t target[MAX_PATH], kept[MAX_PATH];
-    join(target, app, rel);
-    join(kept, backup, rel);
+    if (!join(target, app, rel) || !join(kept, backup, rel))
+        return FALSE;
     if (done_count >= 2 * MAX_FILES)
         return FALSE;
     done_rel[done_count] = _wcsdup(rel);
@@ -183,21 +198,63 @@ static BOOL set_aside(const wchar_t *rel)
     return TRUE;
 }
 
-/* everything back as it was: the new files back to the staged update (so
- * the next try has all of them), the old ones in place */
-static void roll_back(void)
+/* Written when an old file couldn't be put back: it is still in the backup,
+ * which the next run puts back first and never deletes before */
+static void restore_mark(wchar_t *path)
 {
+    join(path, work, L"restore.txt");
+}
+
+/* everything back as it was: the new files back to the staged update (so
+ * the next try has all of them), the old ones in place. False if an old
+ * one stays in the backup. */
+static BOOL roll_back(void)
+{
+    int failed = 0;
     for (int i = done_count - 1; i >= 0; --i) {
         wchar_t target[MAX_PATH], kept[MAX_PATH], again[MAX_PATH];
-        join(target, app, done_rel[i]);
-        join(kept, backup, done_rel[i]);
-        join(again, staged, done_rel[i]);
+        if (!join(target, app, done_rel[i]) || !join(kept, backup, done_rel[i])
+            || !join(again, staged, done_rel[i])) {
+            ++failed;
+            continue;
+        }
         if (exists(target) && !exists(again))
             move_retry(target, again);
-        if (done_had_old[i])
-            move_retry(kept, target);
+        if (done_had_old[i] && !move_retry(kept, target)) {
+            logf_(L"cannot put %ls back (error %lu)", target, GetLastError());
+            ++failed;
+        }
+    }
+    if (failed) {
+        wchar_t mark[MAX_PATH];
+        restore_mark(mark);
+        FILE *f = _wfopen(mark, L"w");
+        if (f)
+            fclose(f);
+        logf_(L"rolled back %d files, %d of them are still in %ls", done_count, failed, backup);
+        return FALSE;
     }
     logf_(L"rolled back %d files", done_count);
+    return TRUE;
+}
+
+/* After a roll back that couldn't put everything back: every file of the
+ * backup in place again. False if one still can't be. */
+static BOOL restore_backup(void)
+{
+    static wchar_t *kept[MAX_FILES];
+    const int count = list_files(backup, L"", kept, 0);
+    BOOL ok = !too_many && !too_long;
+    for (int i = 0; i < count; ++i) {
+        wchar_t from[MAX_PATH], to[MAX_PATH];
+        if (!join(from, backup, kept[i]) || !join(to, app, kept[i]) || !move_retry(from, to)) {
+            logf_(L"cannot put %ls back (error %lu)", kept[i], GetLastError());
+            ok = FALSE;
+        }
+        free(kept[i]);
+    }
+    logf_(ok ? L"%d files of the last update's backup put back" : L"the backup is kept: %d files", count);
+    return ok;
 }
 
 static BOOL wait_process(DWORD pid)
@@ -299,6 +356,12 @@ static int read_removed(wchar_t **out)
             too_many = TRUE;
             break;
         }
+        /* a line cut by the buffer: its end would be read as a path */
+        if (!wcschr(line, L'\n') && !feof(f)) {
+            logf_(L"a path of removed.txt is too long");
+            too_long = TRUE;
+            break;
+        }
         line[wcscspn(line, L"\r\n")] = 0;
         for (wchar_t *p = line; *p; ++p)
             if (*p == L'/')
@@ -336,13 +399,13 @@ int wmain(int argc, wchar_t **argv)
         app[n - 1] = 0;
     if (!*app)
         return 2;
-    join(work, app, L".update");
-    join(staged, work, L"staged");
-    join(backup, work, L"backup");
+    /* (no name in the working folder is longer than update.lock's) */
+    wchar_t lockpath[MAX_PATH];
+    if (!join(work, app, L".update") || !join(staged, work, L"staged") || !join(backup, work, L"backup")
+        || !join(lockpath, work, L"update.lock"))
+        return 2;
 
     /* one at a time: VLC may start it twice as it quits */
-    wchar_t lockpath[MAX_PATH];
-    join(lockpath, work, L"update.lock");
     HANDLE lock = CreateFileW(lockpath, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_FLAG_DELETE_ON_CLOSE, NULL);
     if (lock == INVALID_HANDLE_VALUE)
         return 4;
@@ -362,18 +425,53 @@ int wmain(int argc, wchar_t **argv)
         return 3;
     }
 
+    wchar_t list[MAX_PATH];
+    /* the last roll back left old files in the backup: they go back first.
+     * The staged update may then lack a new file it couldn't take back, so
+     * it goes too (VLC downloads it again). */
+    wchar_t mark[MAX_PATH];
+    restore_mark(mark);
+    if (exists(mark)) {
+        if (restore_backup()) {
+            remove_tree(backup);
+            remove_tree(staged);
+            join(list, work, L"removed.txt");
+            DeleteFileW(list);
+            join(list, work, L"ready.txt");
+            DeleteFileW(list);
+            DeleteFileW(mark);
+            logf_(L"VLC Redesign is as it was before the last update, which is downloaded again");
+        }
+        HANDLE vlc = again ? relaunch(resume, time) : NULL;
+        if (vlc)
+            CloseHandle(vlc);
+        return 1;
+    }
+
     static wchar_t *files[MAX_FILES], *removed[MAX_FILES];
     int count = list_files(staged, L"", files, 0);
     int gone = read_removed(removed);
-    if (too_many) {
-        logf_(L"the update has more than %d files: not applied", MAX_FILES);
+    if (too_many || too_long) {
+        if (too_many)
+            logf_(L"the update has more than %d files: not applied", MAX_FILES);
+        else
+            logf_(L"the update has a path that is too long: not applied");
         HANDLE vlc = again ? relaunch(resume, time) : NULL;
         if (vlc)
             CloseHandle(vlc);
         return 1;
     }
     if (!count && !gone) {
+        /* (applied already, by another VLC's updater): VLC opens again all
+         * the same, and the next exit doesn't run this again */
         logf_(L"nothing to update");
+        join(list, work, L"removed.txt");
+        DeleteFileW(list);
+        join(list, work, L"ready.txt");
+        DeleteFileW(list);
+        HANDLE vlc = again ? relaunch(resume, time) : NULL;
+        if (vlc)
+            CloseHandle(vlc);
         return 0;
     }
     remove_tree(backup);
@@ -382,22 +480,29 @@ int wmain(int argc, wchar_t **argv)
     BOOL ok = TRUE;
     for (int i = 0; ok && i < count; ++i) {
         wchar_t from[MAX_PATH], to[MAX_PATH];
-        join(from, staged, files[i]);
-        join(to, app, files[i]);
-        if (!set_aside(files[i]) || !move_retry(from, to)) {
+        if (!join(from, staged, files[i]) || !join(to, app, files[i]) || !set_aside(files[i])
+            || !move_retry(from, to)) {
             logf_(L"cannot put %ls in place (error %lu)", files[i], GetLastError());
             ok = FALSE;
         }
     }
     for (int i = 0; ok && i < gone; ++i) {
+        /* a file renamed in its case only (Foo.dll to foo.dll) is the new
+         * one on Windows: never removed */
+        BOOL renamed = FALSE;
+        for (int j = 0; !renamed && j < count; ++j)
+            renamed = !_wcsicmp(removed[i], files[j]);
+        if (renamed)
+            continue;
         wchar_t target[MAX_PATH];
-        join(target, app, removed[i]);
-        if (exists(target) && !set_aside(removed[i]))
+        if (!join(target, app, removed[i]) || (exists(target) && !set_aside(removed[i])))
             ok = FALSE;
     }
     if (!ok) {
-        roll_back();
-        logf_(L"the update failed: VLC Redesign is as it was");
+        if (roll_back())
+            logf_(L"the update failed: VLC Redesign is as it was");
+        else
+            logf_(L"the update failed, and VLC Redesign could not be put back as it was: the next run tries again");
         HANDLE vlc = again ? relaunch(resume, time) : NULL;
         if (vlc)
             CloseHandle(vlc);
@@ -408,7 +513,6 @@ int wmain(int argc, wchar_t **argv)
     record_version(version);
     remove_tree(backup);
     remove_tree(staged);
-    wchar_t list[MAX_PATH];
     join(list, work, L"removed.txt");
     DeleteFileW(list);
     join(list, work, L"ready.txt");

@@ -25,9 +25,19 @@ T.Popup {
 
     property string title
     property string acceptText: qsTr("Save")
+    // the button on the left (a question: No, Don't restore...)
+    property string cancelText: qsTr("Cancel")
     // a dialog with one action (Close) shows no Cancel
     property bool cancelVisible: true
+    // a dialog with Cancel only (a progress), or no button at all
+    property bool acceptVisible: true
+    // the close button of the title bar (a progress that cannot be
+    // cancelled has none)
+    property bool closeButtonVisible: true
     property bool acceptEnabled: true
+    // a second action before the main one (Report a problem: Copy), none
+    // when empty
+    property string extraText: ""
     property bool darkTheme: VLCStyle.palette.isDark
     // 1048 for Open network stream, 713 for New Playlist
     property real preferredWidth: VLCStyle.dp(1048, VLCStyle.scale)
@@ -49,6 +59,7 @@ T.Popup {
     property bool _previousGlobalShortcuts: true
 
     signal accepted()
+    signal extraClicked()
 
     // false: the dialog closes itself once its action is done (Add Subtitles)
     property bool closeOnAccept: true
@@ -103,7 +114,20 @@ T.Popup {
         }
     }
 
+    // the frame of the main window, over the content (which reaches the
+    // card's edges): the card reads as a window over the interface
+    readonly property Item _windowBorder: Widgets.RedesignWindowBorder {
+        parent: root.background ? root.background.parent : null
+        radius: VLCStyle.dp(14, VLCStyle.scale)
+        darkTheme: root.darkTheme
+    }
+
     contentItem: ColumnLayout {
+        // a screen reader names the dialog by its title (the popup's own
+        // item has no name of its own)
+        Accessible.role: Accessible.Dialog
+        Accessible.name: root.title
+
         // right to left (Hebrew, Arabic...): a popup is not under the
         // mirrored interface, its content mirrors itself (the action on the
         // left, Cancel on the right)
@@ -146,7 +170,7 @@ T.Popup {
             implicitHeight: headerColumn.implicitHeight + 2 * VLCStyle.dp(9, VLCStyle.scale)
             topLeftRadius: VLCStyle.dp(14, VLCStyle.scale)
             topRightRadius: topLeftRadius
-            color: VLCStyle.redesign.color("#090909", "#9c9c9b", root.darkTheme)
+            color: VLCStyle.redesign.color("#090909", "#dedede", root.darkTheme)
 
             ColumnLayout {
                 id: headerColumn
@@ -169,7 +193,7 @@ T.Popup {
                         // to left layout)
                         anchors.left: parent.left
                         anchors.leftMargin: VLCStyle.dp(10, VLCStyle.scale)
-                        anchors.right: closeButton.left
+                        anchors.right: closeButton.visible ? closeButton.left : parent.right
                         height: parent.height
                         text: root.title
                         color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e", root.darkTheme)
@@ -191,6 +215,7 @@ T.Popup {
                         id: closeButton
 
                         anchors.right: parent.right
+                        visible: root.closeButtonVisible
                         width: VLCStyle.dp(32, VLCStyle.scale)
                         height: VLCStyle.dp(32, VLCStyle.scale)
                         padding: VLCStyle.dp(4, VLCStyle.scale)
@@ -207,7 +232,7 @@ T.Popup {
                             border.color: VLCStyle.redesign.focusColor
                         }
                         contentItem: Image {
-                            source: "qrc:///redesign/icons/close/default.png"
+                            source: "qrc:///redesign/icons/close/default.svg"
                             sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
                             fillMode: Image.Pad
                             smooth: false
@@ -248,6 +273,7 @@ T.Popup {
         // "Frame 225": padding 20, space between
         Item {
             Layout.fillWidth: true
+            visible: root.cancelVisible || root.acceptVisible || root.extraText !== ""
             implicitHeight: VLCStyle.dp(72, VLCStyle.scale)
 
             DialogButton {
@@ -256,12 +282,24 @@ T.Popup {
                 anchors.left: parent.left
                 anchors.leftMargin: VLCStyle.dp(20, VLCStyle.scale)
                 y: VLCStyle.dp(20, VLCStyle.scale)
-                text: qsTr("Cancel")
+                text: root.cancelText
                 onClicked: root.close()
             }
 
             DialogButton {
+                objectName: "dialogExtraButton"
+                visible: root.extraText !== ""
+                anchors.right: acceptButton.visible ? acceptButton.left : parent.right
+                anchors.rightMargin: VLCStyle.dp(acceptButton.visible ? 8 : 20, VLCStyle.scale)
+                y: VLCStyle.dp(20, VLCStyle.scale)
+                text: root.extraText
+                onClicked: root.extraClicked()
+            }
+
+            DialogButton {
+                id: acceptButton
                 objectName: "dialogAcceptButton"
+                visible: root.acceptVisible
                 anchors.right: parent.right
                 anchors.rightMargin: VLCStyle.dp(20, VLCStyle.scale)
                 y: VLCStyle.dp(20, VLCStyle.scale)
@@ -299,7 +337,7 @@ T.Popup {
                 text: button.text
                 verticalAlignment: Text.AlignTop
                 color: (button.accent && button.enabled) ? VLCStyle.redesign.accent
-                                                         : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#4d4d4d", root.darkTheme)
+                                                         : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e", root.darkTheme)
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                 font.weight: Font.DemiBold
@@ -325,11 +363,15 @@ T.Popup {
             color: (button.accent && button.enabled)
                    ? (button.down || button.hovered ? Qt.lighter(VLCStyle.redesign.accentBackground, 1.15)
                                                     : VLCStyle.redesign.accentBackground)
-                   : !button.enabled ? VLCStyle.redesign.color(VLCStyle.redesign.controlHoverBackground, "#b8b8b7", root.darkTheme)
+                   : !button.enabled ? VLCStyle.redesign.color(VLCStyle.redesign.controlHoverBackground, "#9c9c9b", root.darkTheme)
                    : (button.down || button.hovered) ? VLCStyle.redesign.color(VLCStyle.redesign.controlHoverBackground, "#9c9c9b", root.darkTheme)
-                   : VLCStyle.redesign.color(VLCStyle.redesign.playerControlBackground, "#b8b8b7", root.darkTheme)
-            border.width: button.visualFocus ? 1 : 0
-            border.color: VLCStyle.redesign.focusColor
+                   : VLCStyle.redesign.color(VLCStyle.redesign.playerControlBackground, "#ababaa", root.darkTheme)
+            // The neutral fill is the card's (#1B1B1B on #191919, the same grey
+            // in the light theme): the frame of the window around it, so the
+            // button never melts into the dialog (docs/MASTER-PLAN.md §6)
+            border.width: button.visualFocus || !button.accent ? 1 : 0
+            border.color: button.visualFocus ? VLCStyle.redesign.focusColor
+                                             : VLCStyle.redesign.color(VLCStyle.redesign.windowBorder, undefined, root.darkTheme)
         }
     }
 

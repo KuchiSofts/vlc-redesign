@@ -192,10 +192,10 @@ MainViewLoader {
                 titleFontWeight: Font.Normal
                 titleFontFamily: VLCStyle.redesign.fontFamily
                 titleFontPixelSize: VLCStyle.dp(16, VLCStyle.scale)
-                titleColor: VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, "#2e2e2e")
+                titleColor: VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, "#4d4d4d")
                 subtitleFontFamily: VLCStyle.redesign.fontFamily
                 subtitleFontPixelSize: VLCStyle.dp(16, VLCStyle.scale)
-                subtitleColor: VLCStyle.redesign.color("#6B6B6B", "#5a5a59")
+                subtitleColor: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                 titleBoxHeight: root.compactMargins ? VLCStyle.dp(19, VLCStyle.scale) : 0
                 subtitleBoxHeight: root.compactMargins ? VLCStyle.dp(19, VLCStyle.scale) : 0
 

@@ -22,6 +22,8 @@
 # include "config.h"
 #endif
 
+#include <string.h>
+
 #include "preparse.h"
 
 #include "content.h"
@@ -31,18 +33,41 @@
 
 typedef struct VLC_VECTOR(input_item_t *) media_vector_t;
 
+/* A media kept out of the history and the library (no-save-recentplay: a
+ * channel of Live TV, an item of the "never remember" filter) keeps the
+ * media it expands to out too: a stream address that is a playlist would
+ * otherwise be saved under its own address (a channel's token in its name). */
+static bool
+vlc_playlist_KeptOutOfHistory(input_item_t *media)
+{
+    bool kept = false;
+    vlc_mutex_lock(&media->lock);
+    for (int i = 0; i < media->i_options && !kept; ++i)
+    {
+        const char *option = media->ppsz_options[i];
+        while (*option == ':')
+            ++option;
+        kept = !strcmp(option, "no-save-recentplay")
+            || !strcmp(option, "save-recentplay=0");
+    }
+    vlc_mutex_unlock(&media->lock);
+    return kept;
+}
+
 static void
 vlc_playlist_CollectChildren(vlc_playlist_t *playlist,
                              media_vector_t *dest,
-                             const input_item_node_t *node)
+                             const input_item_node_t *node, bool keptOut)
 {
     vlc_playlist_AssertLocked(playlist);
     for (int i = 0; i < node->i_children; ++i)
     {
         input_item_node_t *child = node->pp_children[i];
         input_item_t *media = child->p_item;
+        if (keptOut && !vlc_playlist_KeptOutOfHistory(media))
+            input_item_AddOption(media, ":no-save-recentplay", VLC_INPUT_OPTION_TRUSTED);
         vlc_vector_push(dest, media);
-        vlc_playlist_CollectChildren(playlist, dest, child);
+        vlc_playlist_CollectChildren(playlist, dest, child, keptOut);
     }
 }
 
@@ -53,7 +78,8 @@ vlc_playlist_ExpandItem(vlc_playlist_t *playlist, size_t index,
     vlc_playlist_AssertLocked(playlist);
 
     media_vector_t flatten = VLC_VECTOR_INITIALIZER;
-    vlc_playlist_CollectChildren(playlist, &flatten, node);
+    vlc_playlist_CollectChildren(playlist, &flatten, node,
+                                 vlc_playlist_KeptOutOfHistory(node->p_item));
 
     int ret = vlc_playlist_Expand(playlist, index, flatten.data, flatten.size);
     vlc_vector_destroy(&flatten);

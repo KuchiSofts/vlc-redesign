@@ -176,7 +176,8 @@ T.ToolBar {
             text: grouping === MainCtx.GROUPING_NAME ? qsTr("Group by name")
                   : grouping === MainCtx.GROUPING_FOLDER ? qsTr("Group by folder")
                   : qsTr("Do not group videos")
-            checked: MainCtx.grouping === grouping
+            // (the page may show another grouping than the saved one)
+            checked: (root.sortMenu?.shownGrouping ?? MainCtx.grouping) === grouping
             // the page applies it (SortMenuVideo.onGrouping)
             onTriggered: root.sortMenu.grouping(grouping)
         }
@@ -192,7 +193,7 @@ T.ToolBar {
 
     background: Rectangle {
         color: VLCStyle.redesign.color(VLCStyle.redesign.windowBackground,
-                                       theme.bg.primary, root.darkTheme)
+                                       "#c2c2c1", root.darkTheme)
         // Figma "Vector": #222222, 1 px centred on the top of the content:
         // half of it on each of the last two rows
         Rectangle {
@@ -200,7 +201,7 @@ T.ToolBar {
             y: parent.height - 1
             width: parent.width - root.leftPadding - root.rightPadding
             height: 1
-            color: root.darkTheme ? "#181818" : VLCStyle.redesign.color(VLCStyle.redesign.separator, theme.border, false)
+            color: root.darkTheme ? "#181818" : VLCStyle.redesign.color(VLCStyle.redesign.separator, "#9c9c9b", false)
         }
         // over the first row of the content
         Rectangle {
@@ -243,7 +244,7 @@ T.ToolBar {
                 implicitHeight: implicitWidth
                 contentItem: Image {
                     source: VLCStyle.palette.isDark
-                            ? "qrc:///redesign/icons/arrow-left/" + (parent.enabled ? "default" : "disabled") + ".png"
+                            ? "qrc:///redesign/icons/arrow-left/" + (parent.enabled ? "default" : "disabled") + ".svg"
                             : "qrc:///redesign/arrow-left.svg"
                     sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
                     fillMode: Image.Pad
@@ -269,7 +270,7 @@ T.ToolBar {
                 implicitHeight: implicitWidth
                 contentItem: Image {
                     source: VLCStyle.palette.isDark
-                            ? "qrc:///redesign/icons/arrow-right/" + (parent.enabled ? "default" : "disabled") + ".png"
+                            ? "qrc:///redesign/icons/arrow-right/" + (parent.enabled ? "default" : "disabled") + ".svg"
                             : "qrc:///redesign/arrow-right.svg"
                     sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
                     fillMode: Image.Pad
@@ -318,7 +319,7 @@ T.ToolBar {
                             font.family: VLCStyle.redesign.fontFamily
                             font.pixelSize: VLCStyle.dp(8, VLCStyle.scale)
                             color: VLCStyle.redesign.color(VLCStyle.redesign.textDisabled,
-                                                           theme.fg.secondary, root.darkTheme)
+                                                           "#929291", root.darkTheme)
                         }
 
                         T.AbstractButton {
@@ -355,8 +356,7 @@ T.ToolBar {
                                 topPadding: root._topPadding(crumb.height, font.pixelSize, crumbMetrics.ascent, false)
                                 color: VLCStyle.redesign.color(crumb.current ? VLCStyle.redesign.textSecondary
                                                                : crumb.hovered ? VLCStyle.redesign.textPrimary
-                                                                               : VLCStyle.redesign.textMuted,
-                                                               theme.fg.primary, root.darkTheme)
+                                                                               : VLCStyle.redesign.textMuted, undefined, root.darkTheme)
                                 FontMetrics {
                                     id: crumbMetrics
                                     font: crumbText.font
@@ -393,7 +393,7 @@ T.ToolBar {
                 topPadding: root._topPadding(height, font.pixelSize, titleMetrics.ascent, false)
                 bottomPadding: 0
                 color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted,
-                                               theme.fg.primary, root.darkTheme)
+                                               "#2e2e2e", root.darkTheme)
                 FontMetrics {
                     id: titleMetrics
                     font: titleLabel.font
@@ -416,7 +416,7 @@ T.ToolBar {
             Layout.preferredHeight: root._rowHeight
             visible: root.itemCount >= 0
             text: qsTr("%1 item", "%1 items", root.itemCount).arg(root.itemCount)
-            color: VLCStyle.redesign.color("#6B6B6B", theme.fg.secondary,
+            color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b",
                                            root.darkTheme)
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
@@ -462,7 +462,7 @@ T.ToolBar {
                 checked: sortOptions.opened
                 contentItem: Image {
                     // (the dot of the light one in the accent)
-                    source: VLCStyle.palette.isDark ? "qrc:///redesign/icons/sort/dim.png"
+                    source: VLCStyle.palette.isDark ? "qrc:///redesign/icons/sort/dim.svg"
                             : VLCStyle.redesign.defaultAccent ? "qrc:///redesign/sort.svg"
                             : SVGColorImage.colorize("qrc:///redesign/sort.svg")
                                            .any({ "#D37918": VLCStyle.redesign.accent }).uri()
@@ -484,8 +484,8 @@ T.ToolBar {
                 implicitHeight: implicitWidth
                 contentItem: Image {
                     source: VLCStyle.palette.isDark
-                            ? "qrc:///redesign/icons/" + (MainCtx.gridView ? "grid" : "list") + "/dim.png"
-                            : (MainCtx.gridView ? "qrc:///redesign/grid.png" : "qrc:///redesign/list.png")
+                            ? "qrc:///redesign/icons/" + (MainCtx.gridView ? "grid" : "list") + "/dim.svg"
+                            : (MainCtx.gridView ? "qrc:///redesign/grid.svg" : "qrc:///redesign/list.svg")
                     sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
                     fillMode: Image.Pad
                     smooth: false
@@ -501,13 +501,13 @@ T.ToolBar {
 
                     Widgets.RedesignOptionItem {
                         text: qsTr("Grid View")
-                        iconSource: "qrc:///redesign/icons/grid/default.png"
+                        iconSource: "qrc:///redesign/icons/grid/default.svg"
                         checked: MainCtx.gridView
                         onTriggered: MainCtx.gridView = true
                     }
                     Widgets.RedesignOptionItem {
                         text: qsTr("List View")
-                        iconSource: "qrc:///redesign/icons/list/default.png"
+                        iconSource: "qrc:///redesign/icons/list/default.svg"
                         checked: !MainCtx.gridView
                         onTriggered: MainCtx.gridView = false
                     }
@@ -524,7 +524,7 @@ T.ToolBar {
                 Layout.preferredWidth: VLCStyle.dp(325, VLCStyle.scale)
                 Layout.preferredHeight: VLCStyle.dp(34, VLCStyle.scale)
                 radius: VLCStyle.dp(6, VLCStyle.scale)
-                color: VLCStyle.redesign.color("#151515", theme.bg.secondary,
+                color: VLCStyle.redesign.color("#151515", "#b5b5b4",
                                                root.darkTheme)
                 border.width: searchField.activeFocus ? 1 : 0
                 border.color: VLCStyle.redesign.focusColor
@@ -538,7 +538,7 @@ T.ToolBar {
                     anchors.topMargin: VLCStyle.dp(5, VLCStyle.scale)
                     width: VLCStyle.redesign.iconSize
                     height: width
-                    source: VLCStyle.palette.isDark ? "qrc:///redesign/icons/search/dim.png"
+                    source: VLCStyle.palette.isDark ? "qrc:///redesign/icons/search/dim.svg"
                                                     : "qrc:///redesign/search.svg"
                     sourceSize: Qt.size(width, height)
                     fillMode: Image.Pad
@@ -566,9 +566,9 @@ T.ToolBar {
                     topPadding: root._topPadding(height, font.pixelSize, searchMetrics.ascent)
                     placeholderText: qsTr("Search")
                     placeholderTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textDisabled,
-                                                                  theme.fg.secondary, root.darkTheme)
+                                                                  "#929291", root.darkTheme)
                     color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted,
-                                                   theme.fg.primary, root.darkTheme)
+                                                   "#2e2e2e", root.darkTheme)
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                     FontMetrics {

@@ -6,6 +6,7 @@ subdir('android')
 vlc_modules += {
     'name' : 'adummy',
     'sources' : files('adummy.c'),
+    'dependencies' : [m_lib],
     'plugin_dir' : 'audio_output',
 }
 
@@ -13,6 +14,7 @@ vlc_modules += {
 vlc_modules += {
     'name' : 'afile',
     'sources' : files('file.c'),
+    'dependencies' : [m_lib],
     'plugin_dir' : 'audio_output',
 }
 

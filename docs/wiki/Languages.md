@@ -4,6 +4,10 @@ VLC Redesign speaks **72 languages** besides English, each covering every text o
 one to another at once, without a restart. Right-to-left languages are laid out right to left. This page explains
 where to choose the language, what each language brings, how right to left works, and how to translate.
 
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/rtl-hebrew.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/rtl-hebrew.gif" alt="The interface in Hebrew, laid out right to left: the sidebar, Videos, Music, Albums and the mirrored more menu" width="960"></a>
+
+<sub>The interface in Hebrew, laid out right to left: the sidebar, Videos, Music, Albums and the mirrored ⋯ menu. Click for the MP4 · every clip: [Feature tour](Feature-Tour#right-to-left).</sub>
+
 | | |
 |---|---|
 | **Complete languages** | 72, plus English and British English |

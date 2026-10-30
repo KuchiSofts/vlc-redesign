@@ -347,7 +347,7 @@ FocusScope {
             implicitWidth: stackView.implicitWidth
             implicitHeight: stackView.implicitHeight
 
-            color: VLCStyle.redesign.color(VLCStyle.redesign.windowBackground, theme.bg.primary)
+            color: VLCStyle.redesign.color(VLCStyle.redesign.windowBackground, "#c2c2c1")
 
             layer.enabled: MainCtx.backdropBlurRequested() &&
                            (GraphicsInfo.shaderType === GraphicsInfo.RhiShader) &&
@@ -919,17 +919,15 @@ FocusScope {
             dragYMin: localTopbar.y + localTopbar.height
             dragYMax: loaderUpdatePane.y - playerPip.height
 
-            //keep the player visible on resize
-            Connections {
-                target: g_mainDisplay
-                function onWidthChanged() {
-                    if (playerPip.x > playerPip.dragXMax)
-                        playerPip.x = playerPip.dragXMax
-                }
-                function onHeightChanged() {
-                    if (playerPip.y > playerPip.dragYMax)
-                        playerPip.y = playerPip.dragYMax
-                }
+            //keep the player visible on resize, and when it grows (its
+            //queue opened) after it was dragged
+            onDragXMaxChanged: {
+                if (playerPip.x > playerPip.dragXMax)
+                    playerPip.x = playerPip.dragXMax
+            }
+            onDragYMaxChanged: {
+                if (playerPip.y > playerPip.dragYMax)
+                    playerPip.y = playerPip.dragYMax
             }
         }
     }

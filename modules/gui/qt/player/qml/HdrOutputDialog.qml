@@ -60,7 +60,7 @@ Controls.Popup {
                 height: parent.height
                 horizontalAlignment: Text.AlignLeft
                 text: output.selectedIndex >= 0 ? output.choices[output.selectedIndex].label : qsTr("HDR unavailable")
-                color: root.c("#8F8F8F", "#4d4d4d")
+                color: root.c("#8F8F8F", "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: root.px(14)
                 verticalAlignment: Text.AlignVCenter
@@ -73,7 +73,8 @@ Controls.Popup {
                 width: root.px(24)
                 height: width
                 sourceSize: Qt.size(width, height)
-                source: "qrc:///redesign/icons/chevron-down/default.png"
+                smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
+                source: "qrc:///redesign/icons/chevron-down/default.svg"
             }
         }
 
@@ -90,6 +91,9 @@ Controls.Popup {
                 blurRadius: 7.5 * VLCStyle.scale
                 color: Qt.rgba(0, 0, 0, 0.46)
             }
+
+            // the frame of the main window
+            Widgets.RedesignWindowBorder { }
 
             Column {
                 id: choices
@@ -128,20 +132,23 @@ Controls.Popup {
                                 color: choice.chosen || row.hovered || row.visualFocus
                                        ? root.c("#1F1F1F", "#9c9c9b") : "transparent"
                                 Impl.ColorImage {
+                                    // drawn at the size shown (an SVG: sharp at any scale and zoom)
+                                    sourceSize: Qt.size(width, height)
+                                    smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                                     visible: choice.chosen
                                     anchors.right: parent.right
                                     anchors.rightMargin: root.px(13)
                                     anchors.verticalCenter: parent.verticalCenter
                                     width: root.px(24)
                                     height: width
-                                    source: "qrc:///redesign/track-check-active.png"
+                                    source: "qrc:///redesign/track-check-active.svg"
                                     color: VLCStyle.redesign.accentTint
                                 }
                             }
                             contentItem: Text {
                                 text: choice.modelData.label
                                 opacity: row.enabled ? 1 : 0.45
-                                color: root.c("#8F8F8F", "#4d4d4d")
+                                color: root.c("#8F8F8F", "#2e2e2e")
                                 font.family: VLCStyle.redesign.fontFamily
                                 font.pixelSize: root.px(14)
                                 horizontalAlignment: Text.AlignLeft
@@ -161,7 +168,7 @@ Controls.Popup {
             text: output.message
             wrapMode: Text.WordWrap
             horizontalAlignment: Text.AlignLeft
-            color: root.c("#6B6B6B", "#4d4d4d")
+            color: root.c("#6B6B6B", "#6b6b6b")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: root.px(12)
         }

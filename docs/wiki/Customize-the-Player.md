@@ -4,6 +4,10 @@ The control bar is edited right on the player: drag buttons onto it, along it an
 **profile**, together with your settings, so you can switch from a bar made for films to one made for music in two
 clicks.
 
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/customize-player.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/customize-player.gif" alt="Customize Player: Playback Speed and Cast to TV dragged onto the bar, saved, then 1.5x chosen from the speed button" width="800"></a>
+
+<sub>Playback Speed and Cast to TV dragged onto the bar, saved, then 1.5× chosen from the new speed button. Click for the MP4 · every clip: [Feature tour](Feature-Tour#customize).</sub>
+
 ![Customize Player open over the player: the title, the line "Drag items around and out of the box below to re-order them. Drag items into the box to remove them from the player.", the palette of items from Spacer to Volume, Cancel and Save, and below it the bar of the player and the top bar outlined with dashed boxes](images/customize.jpg)
 
 ## Open Customize Player
@@ -178,6 +182,9 @@ an empty one too (*Enter a name for the profile.*).
 
 - **A button disappeared and is not in the palette.** It is one of VLC's own controls: switch to a built-in
   profile, or **Clone** one that has it.
+- **A control that fails to load** shows a placeholder in the bar, which can be dragged out like any button. Before
+  0.4.0, **Playback Speed** and **Teletext** dropped on the bar left an empty slot that could be neither seen nor
+  removed ([#9](https://github.com/KuchiSofts/vlc-redesign/issues/9)); both can be added again.
 - **The bar looks crowded.** Buttons hide from the inside of the bar when the window is narrow; put the seek bar on
   its own row to give the buttons more room.
 - **Different bars for films and music.** Make a profile per use (*Movies*, *Music*) and switch with **⋯ →

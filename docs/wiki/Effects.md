@@ -5,6 +5,10 @@ effects (picture adjustment, crop, colours, geometry, overlays and more), with p
 under a name. Every change is heard or seen at once, as a preview; **Save** keeps it, and closing the panel any
 other way puts everything back.
 
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/effects.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/effects.gif" alt="Effects over the playing video: the equalizer turned on, two bands raised, the video effects, back to audio" width="800"></a>
+
+<sub>Over the playing video: the equalizer turned on and two of its bands raised, the video effects, then back to audio. Click for the MP4 · every clip: [Feature tour](Feature-Tour#effects).</sub>
+
 ![The Effects panel above its button over a playing video: the title Effects with Close, the preset field reading Default Preset, the tabs Audio and Video, the Equalizer, Compressor, Spatializer and Stereo Widener each with an OFF toggle and Expand Settings, and Cancel and Save](images/effects.jpg)
 
 ## Open it

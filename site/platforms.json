@@ -1,0 +1,179 @@
+{
+  "_comment": "Written by extras/juxtopposed/platforms/render.py from platforms.yml: edit that file.",
+  "repository": "KuchiSofts/vlc-redesign",
+  "site": "https://kuchisofts.github.io/vlc-redesign/",
+  "platforms": [
+    {
+      "id": "windows",
+      "name": "Windows",
+      "short": "Windows",
+      "status": "released",
+      "statusLabel": "released",
+      "available": true,
+      "bar": "Windows 0.4.0",
+      "version": "0.4.0",
+      "date": "2026-10-30",
+      "next": "0.5.0",
+      "os": "windows",
+      "requires": "Windows 10 (1809) or 11, 64-bit",
+      "notes": "Installer and portable zip; small updates in the app",
+      "page": "https://github.com/KuchiSofts/vlc-redesign/releases/latest",
+      "repository": "KuchiSofts/vlc-redesign",
+      "downloads": [
+        {
+          "label": "Installer",
+          "file": "vlc-redesign-0.4.0-win64-setup.exe",
+          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign-0.4.0-win64-setup.exe"
+        },
+        {
+          "label": "Portable",
+          "file": "vlc-redesign-0.4.0-win64.zip",
+          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign-0.4.0-win64.zip"
+        }
+      ]
+    },
+    {
+      "id": "linux",
+      "name": "Linux",
+      "short": "Linux",
+      "status": "released",
+      "statusLabel": "released",
+      "available": true,
+      "bar": "Linux 0.4.0",
+      "version": "0.4.0",
+      "date": "2026-10-30",
+      "next": "0.5.0",
+      "os": "linux",
+      "requires": "glibc 2.38 (Ubuntu 24.04, Debian 13, Fedora 39 or later), x86_64 or ARM64",
+      "notes": "AppImage, deb, rpm and tar.xz for x86_64 and ARM64, next to the distribution's own VLC; Flatpak next",
+      "page": "https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update",
+      "repository": "KuchiSofts/vlc-redesign",
+      "downloads": [
+        {
+          "label": "AppImage",
+          "file": "vlc-redesign-0.4.0-x86_64.AppImage",
+          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign-0.4.0-x86_64.AppImage"
+        },
+        {
+          "label": "deb",
+          "file": "vlc-redesign_0.4.0_amd64.deb",
+          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign_0.4.0_amd64.deb"
+        },
+        {
+          "label": "rpm",
+          "file": "vlc-redesign-0.4.0-1.x86_64.rpm",
+          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign-0.4.0-1.x86_64.rpm"
+        },
+        {
+          "label": "tar.xz",
+          "file": "vlc-redesign-0.4.0-linux-x86_64.tar.xz",
+          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign-0.4.0-linux-x86_64.tar.xz"
+        },
+        {
+          "label": "AppImage ARM64",
+          "file": "vlc-redesign-0.4.0-aarch64.AppImage",
+          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign-0.4.0-aarch64.AppImage"
+        },
+        {
+          "label": "deb ARM64",
+          "file": "vlc-redesign_0.4.0_arm64.deb",
+          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign_0.4.0_arm64.deb"
+        },
+        {
+          "label": "rpm ARM64",
+          "file": "vlc-redesign-0.4.0-1.aarch64.rpm",
+          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign-0.4.0-1.aarch64.rpm"
+        }
+      ]
+    },
+    {
+      "id": "macos",
+      "name": "macOS",
+      "short": "macOS",
+      "status": "released",
+      "statusLabel": "released",
+      "available": true,
+      "bar": "macOS 0.4.0",
+      "version": "0.4.0",
+      "date": "2026-10-30",
+      "next": "0.5.0",
+      "os": "macos",
+      "requires": "macOS 12 Monterey, Apple Silicon or Intel",
+      "notes": "A disk image for Apple Silicon and one for Intel, signed ad hoc (macOS asks once to open it)",
+      "page": "https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update",
+      "repository": "KuchiSofts/vlc-redesign",
+      "downloads": [
+        {
+          "label": "Apple Silicon",
+          "file": "vlc-redesign-0.4.0-macos-arm64.dmg",
+          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign-0.4.0-macos-arm64.dmg"
+        },
+        {
+          "label": "Intel",
+          "file": "vlc-redesign-0.4.0-macos-x86_64.dmg",
+          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign-0.4.0-macos-x86_64.dmg"
+        }
+      ]
+    },
+    {
+      "id": "windows-arm64",
+      "name": "Windows on ARM64",
+      "short": "Windows ARM64",
+      "status": "planned",
+      "statusLabel": "planned",
+      "available": false,
+      "bar": "Windows ARM64 soon",
+      "os": "windows-arm64",
+      "requires": "Windows 11 on ARM64",
+      "notes": "Built; it stopped at start on a real ARM64 PC in the 0.4.0 tests, so not released yet. The x64 build runs on Windows 11 ARM64 under emulation",
+      "page": "https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/PLATFORMS.md",
+      "repository": "KuchiSofts/vlc-redesign",
+      "downloads": []
+    },
+    {
+      "id": "android",
+      "name": "Android (phones, tablets, TV)",
+      "short": "Android",
+      "status": "research",
+      "statusLabel": "research",
+      "available": false,
+      "bar": "Android soon",
+      "os": "android",
+      "requires": "Android 8.0 or later",
+      "notes": "A fork of VLC for Android with the design",
+      "page": "https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/PLATFORMS.md",
+      "repository": "KuchiSofts/vlc-redesign-android",
+      "downloads": []
+    },
+    {
+      "id": "samsung-tv",
+      "name": "Samsung Smart TV (Tizen)",
+      "short": "Samsung TV",
+      "status": "research",
+      "statusLabel": "research",
+      "available": false,
+      "bar": "Samsung TV soon",
+      "os": "tizen",
+      "requires": "Tizen 3.0 (2017 models) or later",
+      "notes": "The TV side of casting, drawn in the design",
+      "page": "https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/PLATFORMS.md",
+      "repository": "KuchiSofts/vlc-redesign-tv",
+      "downloads": []
+    },
+    {
+      "id": "ios",
+      "name": "iPhone, iPad, Apple TV",
+      "short": "iPhone/iPad",
+      "status": "later",
+      "statusLabel": "later",
+      "available": false,
+      "bar": "iPhone/iPad later",
+      "os": "ios",
+      "requires": "iOS, iPadOS, tvOS",
+      "notes": "A fork of VLC for iOS, after Android",
+      "page": "https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/PLATFORMS.md",
+      "repository": "KuchiSofts/vlc-redesign-ios",
+      "downloads": []
+    }
+  ]
+}

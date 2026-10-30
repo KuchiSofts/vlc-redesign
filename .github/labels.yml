@@ -1,38 +1,94 @@
 # The labels of the repository, applied by .github/workflows/labels.yml
-# (a label removed here is removed there).
+# (a label removed here is removed there). Groups: type, platform:*, area:*,
+# status:*, priority:*. `from_name` renames a label and keeps it on its issues.
+
+# Type
 - name: bug
   color: d73a4a
-  description: Something broken or wrong
+  description: Something is broken or behaves wrongly
 - name: enhancement
   color: a2eeef
-  description: A feature or an improvement
+  description: A new feature or an improvement
 - name: design
   color: c5def5
   description: A difference from the Figma design, or a design question
-- name: translation
-  color: 0e8a16
-  description: Texts in a language
-- name: casting
-  color: 1d76db
-  description: Casting to a TV or Chromecast
-- name: tv-report
-  color: 5319e7
-  description: A report about one TV, for the TV compatibility page
 - name: performance
   color: fbca04
   description: Speed, memory, smoothness
-- name: installer
-  color: bfd4f2
-  description: The installer, the portable zip, updates
+- name: question
+  color: d876e3
+  description: A question rather than a report
+- name: tv-report
+  color: 5319e7
+  description: A report about one TV, for the TV compatibility page
 - name: upstream
   color: e4e669
   description: A problem of VLC itself
 - name: upstream-sync
   color: e4e669
   description: The weekly merge of VLC's changes
-- name: windows
-  color: 0052cc
-  description: Windows only
+- name: dependencies
+  color: 0366d6
+  description: An update of a dependency (Dependabot)
+
+# Platform
+- name: platform:windows
+  from_name: windows
+  color: 1d76db
+  description: Happens on Windows (x64 or ARM64)
+- name: platform:linux
+  color: 1d76db
+  description: Happens on Linux
+- name: platform:macos
+  color: 1d76db
+  description: Happens on macOS
+- name: platform:android
+  color: 1d76db
+  description: Happens on Android
+
+# Area
+- name: area:ui
+  color: bfdadc
+  description: Screens, controls, menus, themes
+- name: area:live-tv
+  color: bfdadc
+  description: "Live TV: IPTV playlists, channels, the programme guide"
+- name: area:subtitles
+  color: bfdadc
+  description: "Subtitles: display, styles, finding and syncing"
+- name: area:casting
+  from_name: casting
+  color: bfdadc
+  description: Casting to a TV (DLNA) or a Chromecast
+- name: area:translations
+  from_name: translation
+  color: bfdadc
+  description: Texts and languages (Weblate, .po files)
+- name: area:installer
+  from_name: installer
+  color: bfdadc
+  description: The installer, the portable zip, updates
+- name: area:ci
+  color: bfdadc
+  description: Builds, workflows, release tooling
+
+# Status
+- name: status:needs-info
+  color: fef2c0
+  description: Waiting for more details from the reporter
+- name: status:confirmed
+  color: f9d0c4
+  description: Reproduced or accepted; ready to work on
+- name: status:fixed-pending-release
+  color: 0e8a16
+  description: Fixed in the code; ships with the next release
+
+# Priority
+- name: priority:high
+  color: b60205
+  description: Should be handled before other work
+
+# Community
 - name: good first issue
   color: 7057ff
   description: A small, well-described task for a first contribution
@@ -45,6 +101,3 @@
 - name: wontfix
   color: ffffff
   description: Not planned
-- name: question
-  color: d876e3
-  description: A question rather than a report

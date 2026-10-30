@@ -4,6 +4,10 @@ The library is the window VLC Redesign opens on: your videos and music, the medi
 and the network. It is VLC's media library: it reads the folders you add to it and keeps track of what you played,
 how far, and how often.
 
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/library.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/library.gif" alt="Home with Continue Watching and the folders, then Videos, Music, Albums and Tracks" width="960"></a>
+
+<sub>Home with Continue Watching and the folders, then Videos, Music, Albums and Tracks. Click for the MP4 · every clip: [Feature tour](Feature-Tour#library).</sub>
+
 ![The library on Home: the sidebar with Home, Videos, Music, Network, Playlists, Recent and Add item; the header with the arrows, Home, 12 items, Sort, the view button, Search and the more button; Continue Watching with three videos and their progress lines, and Listen Again with four album covers](images/home.jpg)
 
 ## The sidebar
@@ -16,10 +20,13 @@ how far, and how often.
 | **Network** | Folders, this computer, devices and the shares of the local network. |
 | **Playlists** | Every playlist, of videos and of songs. |
 | **Recent** | The media played last, videos and songs together. |
+| **TV** | The channels of your IPTV sources and their guide, while the Live TV add-on is on (new in 0.4.0): see [Live TV](Live-TV). |
 | **Add item** (**+**) | Opens files to play (as <kbd>Ctrl</kbd>+<kbd>O</kbd>). |
 
 - While the library reads its folders, a progress bar shows under the entries (*Scanning …*, *Indexing Medias
   (40%)*).
+- **Edit Sidebar** (new in 0.4.0): right-click the sidebar, or *Settings > Interface > Sidebar*, to put its pages in
+  your order (drag them, or use the arrows), hide the ones you do not use, or reset them.
 - Drag the edge of the sidebar to make it wider or narrower. In a small window it shows its icons only; a click on
   **Music** then opens its pages as a menu.
 - Without the media library ([Settings: Library](Settings-Library)), Home offers only **Open File** and **Open

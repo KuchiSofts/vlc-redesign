@@ -36,6 +36,7 @@
 
 #include "player/player_controller.hpp"
 #include "player/waveform.hpp"
+#include "player/subtitle_cues.hpp"
 #include "player/local_folder_model.hpp"
 #include "player/delay_estimator.hpp"
 
@@ -58,6 +59,8 @@
 #include "util/thumbnail_image_provider.hpp"
 #include "util/redesign_icon_provider.hpp"
 #include "util/redesign_updater.hpp"
+#include "iptv/iptv_addon.hpp"
+#include "util/redesign_feedback.hpp"
 #include "util/subtitle_preferences.hpp"
 #include "player/subtitle_finder.hpp"
 #include "util/renderer_manager.hpp"
@@ -261,6 +264,9 @@ bool MainUI::setup(QQmlEngine* engine)
         new EffectsImageProvider(engine);
     engine->addImageProvider(QStringLiteral("svgcolor"), new SVGColorImageImageProvider());
     engine->addImageProvider(QStringLiteral("vlcaccess"), new VLCAccessImageProvider());
+    // the logos of the channels (Live TV), from the cache of its add-on
+    if (m_iptv && m_iptv->available())
+        engine->addImageProvider(QStringLiteral("iptvlogo"), new IptvLogoProvider(m_iptv->bridge()));
     engine->addImageProvider(QLatin1String(ThumbnailImageProvider::providerId),
                              new ThumbnailImageProvider(m_intf));
     // Icons of the redesign in the light theme
@@ -354,9 +360,16 @@ void MainUI::registerQMLTypes()
         qmlRegisterTypesAndRevisions<AboutModel>( uri, versionMajor );
         qmlRegisterSingletonInstance<RedesignUpdater>(uri, versionMajor, versionMinor, "RedesignUpdater",
                                                       new RedesignUpdater(m_intf, this));
+        qmlRegisterSingletonInstance<RedesignFeedback>(uri, versionMajor, versionMinor, "RedesignFeedback",
+                                                       new RedesignFeedback(m_intf, this));
 #ifdef UPDATE_CHECK
         qmlRegisterSingletonInstance<UpdateModel>( uri, versionMajor, versionMinor, "UpdateModel", m_mainCtx->getUpdateModel() );
 #endif
+        // Live TV: inert (nothing loaded) when its add-on is missing or off
+        m_iptv = new IptvAddon(m_intf, this);
+        qmlRegisterSingletonInstance<IptvAddon>(uri, versionMajor, versionMinor, "Iptv", m_iptv);
+        qmlRegisterUncreatableType<IptvChannelModel>(uri, versionMajor, versionMinor, "IptvChannelModel",
+                                                     "the channels of Live TV (Iptv.channelModel)");
 
         qmlRegisterTypesAndRevisions<NavigationModel>( uri, versionMajor);
         qmlRegisterTypesAndRevisions<NavigationBarContextMenu>( uri, versionMajor );
@@ -401,6 +414,7 @@ void MainUI::registerQMLTypes()
 
         // @uri VLC.Player
         qmlRegisterType<Waveform>(uri, versionMajor, versionMinor, "Waveform");
+        qmlRegisterType<SubtitleCues>(uri, versionMajor, versionMinor, "SubtitleCues");
         qmlRegisterType<LocalFolderModel>(uri, versionMajor, versionMinor, "LocalFolderModel");
         qmlRegisterUncreatableType<TrackListModel>(uri, versionMajor, versionMinor, "TrackListModel", "available tracks of a media (audio/video/sub)" );
         qmlRegisterUncreatableType<RendererManager>(uri, versionMajor, versionMinor, "RendererManager", "the devices to cast to (Player.rendererManager)" );

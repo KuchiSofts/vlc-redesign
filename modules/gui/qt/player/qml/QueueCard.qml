@@ -43,8 +43,9 @@ T.Pane {
     background: Rectangle {
         radius: VLCStyle.dp(6, VLCStyle.scale)
         color: root.darkTheme ? "#F2191919" : "#F2ABABAA"
+        // the frame of the main window
         border.width: 1
-        border.color: VLCStyle.redesign.color("#222222", "#9c9c9b")
+        border.color: VLCStyle.redesign.color(VLCStyle.redesign.windowBorder, undefined, root.darkTheme)
     }
 
     contentItem: ColumnLayout {
@@ -114,7 +115,7 @@ T.Pane {
                         elide: Text.ElideRight
                         // (from the right in a right to left layout)
                         horizontalAlignment: Text.AlignLeft
-                        color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#5a5a59")
+                        color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                     }
@@ -180,7 +181,7 @@ T.Pane {
                         wrapMode: Text.WordWrap
                         text: MainCtx.mediaLibraryAvailable ? qsTr("No bookmarks: add one at the current time with +")
                                                             : qsTr("Bookmarks need the media library")
-                        color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#5a5a59")
+                        color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                     }
@@ -218,7 +219,7 @@ T.Pane {
                     horizontalAlignment: Text.AlignHCenter
                     wrapMode: Text.WordWrap
                     text: qsTr("No chapters in this media")
-                    color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#5a5a59")
+                    color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                 }
@@ -252,9 +253,10 @@ T.Pane {
                     width: VLCStyle.dp(18, VLCStyle.scale)
                     height: width
                     sourceSize: Qt.size(width, height)
-                    source: "qrc:///redesign/icons/" + tab.iconName + "/default.png"
+                    smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
+                    source: "qrc:///redesign/icons/" + tab.iconName + "/default.svg"
                     color: tab.current ? VLCStyle.redesign.accent
-                                       : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#5a5a59")
+                                       : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                 }
                 Text {
                     anchors.verticalCenter: parent.verticalCenter
@@ -263,7 +265,7 @@ T.Pane {
                     elide: Text.ElideRight
                     text: tab.text
                     color: tab.current || tab.hovered ? VLCStyle.redesign.color("#C6C6C6", "#2e2e2e")
-                                                      : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#5a5a59")
+                                                      : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                 }
@@ -319,13 +321,13 @@ T.Pane {
                 horizontalAlignment: Text.AlignLeft
                 // The current chapter stands out, as in the design
                 color: row.current || row.number === 0 ? VLCStyle.redesign.color("#C6C6C6", "#2e2e2e")
-                                                       : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#5a5a59")
+                                                       : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(15, VLCStyle.scale)
             }
             Text {
                 text: row.detail
-                color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#5a5a59")
+                color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
             }
@@ -342,7 +344,7 @@ T.Pane {
         implicitHeight: VLCStyle.dp(32, VLCStyle.scale)
 
         contentItem: Image {
-            source: "qrc:///redesign/icons/" + cardButton.iconName + "/default.png"
+            source: "qrc:///redesign/icons/" + cardButton.iconName + "/default.svg"
             sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
             fillMode: Image.Pad
             opacity: cardButton.enabled ? 1 : 0.4

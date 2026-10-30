@@ -44,7 +44,7 @@ T.MenuItem {
     readonly property bool _hasDuo: _icon !== "" && _duoIcons.indexOf(_icon) >= 0
     // Figma menus: labels 14 #8F8F8F (hovered too), shortcuts 14 #6B6B6B
     readonly property color _textColor: VLCStyle.redesign.color(
-        enabled ? VLCStyle.redesign.textMuted : VLCStyle.redesign.textDisabled, "#2e2e2e")
+        enabled ? VLCStyle.redesign.textMuted : VLCStyle.redesign.textDisabled)
 
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
                             implicitContentWidth + leftPadding + rightPadding)
@@ -69,7 +69,7 @@ T.MenuItem {
             opacity: root.enabled ? 1 : 0.4
             source: !root._hasDuo ? ""
                     : SVGColorImage.colorize("qrc:///redesign/duo/" + root._icon + ".svg")
-                                   .color1(VLCStyle.redesign.color("#8F8F8F", "#5A5A59"))
+                                   .color1(VLCStyle.redesign.color("#8F8F8F", "#2e2e2e"))
                                    // Figma: Accent Dim, the full accent where
                                    // the icon has it (#00FFFF: video)
                                    .color2(VLCStyle.redesign.accent)
@@ -82,6 +82,7 @@ T.MenuItem {
             visible: root._icon !== "" ? (!root._hasDuo || duoIcon.status === Image.Error)
                                        : (root.checkable || root.markable || root.marked)
             sourceSize: Qt.size(width, height)
+            smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
             fillMode: Image.PreserveAspectFit
             // The check mark is hidden, not unloaded: an IconImage whose
             // source becomes empty goes on showing its last image, and the
@@ -93,8 +94,8 @@ T.MenuItem {
             // (not loaded behind a two-tone icon: some have no PNG)
             source: root._icon !== ""
                     ? (root._hasDuo && duoIcon.status !== Image.Error
-                       ? "" : "qrc:///redesign/icons/" + root._icon + "/default.png")
-                    : "qrc:///redesign/track-check-active.png"
+                       ? "" : "qrc:///redesign/icons/" + root._icon + "/default.svg")
+                    : "qrc:///redesign/track-check-active.svg"
         }
 
         Text {
@@ -124,7 +125,7 @@ T.MenuItem {
             Layout.fillHeight: true
             visible: root.shortcutText !== "" && !root.subMenu
             text: root.shortcutText
-            color: VLCStyle.redesign.color(enabled ? "#6B6B6B" : VLCStyle.redesign.textDisabled, "#4d4d4d")
+            color: VLCStyle.redesign.color(enabled ? "#6B6B6B" : VLCStyle.redesign.textDisabled)
             font: label.font
             // the item is the text width rounded up: the text ends at the
             // row's padding as in the design (not up to 1 px before it)
@@ -138,7 +139,8 @@ T.MenuItem {
             Layout.preferredHeight: VLCStyle.redesign.iconSize
             visible: !!root.subMenu
             sourceSize: Qt.size(width, height)
-            source: "qrc:///redesign/icons/chevron-right/default.png"
+            smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
+            source: "qrc:///redesign/icons/chevron-right/default.svg"
             // to the submenu: it opens on the left in a right to left menu
             mirror: root.mirrored
         }

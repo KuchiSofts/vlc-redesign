@@ -34,6 +34,9 @@ ColumnLayout {
     readonly property bool localMedia: Player.url.toString().startsWith("file://")
     // a video, here or on a TV (no video output here while casting)
     readonly property bool _video: Player.hasVideoOutput
+    // a film or a video: files, online search and sync; a live TV channel
+    // (or music) shows the choice of its own tracks only
+    readonly property bool _fileFeatures: _video && !Iptv.playing
         || (Player.rendererManager.useRenderer && Player.rendererManager.rendererVideo
             && Player.videoTracks.count > 0)
     readonly property real _rowHeight: VLCStyle.dp(36, VLCStyle.scale)
@@ -217,7 +220,7 @@ ColumnLayout {
     // when subtitles are found online by themselves (else: the refresh
     // button, as the user turned it off or wasn't asked yet)
     onVisibleChanged: {
-        if (visible && root._video && SubtitleFinder.state === SubtitleFinder.Idle
+        if (visible && root._fileFeatures && SubtitleFinder.state === SubtitleFinder.Idle
             && SubtitleFinder.searchesByItself())
             SubtitleFinder.search()
     }
@@ -272,7 +275,7 @@ ColumnLayout {
             color: root._downloadError !== "" ? VLCStyle.redesign.accent
                    : SubtitleFinder.state === SubtitleFinder.Failed || SubtitleFinder.state === SubtitleFinder.NotFound
                    ? VLCStyle.redesign.color("#B8B8B8", "#2e2e2e")
-                   : VLCStyle.redesign.color("#6B6B6B", "#5a5a59")
+                   : VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
             elide: Text.ElideRight
@@ -285,7 +288,7 @@ ColumnLayout {
             objectName: "subtitleTitleSearchButton"
             iconName: "search"
             description: qsTr("The video is another one: search by its title")
-            visible: SubtitleFinder.supported && root._video
+            visible: SubtitleFinder.supported && root._fileFeatures
             onClicked: {
                 titleSearch.visible = !titleSearch.visible
                 if (titleSearch.visible)
@@ -297,13 +300,14 @@ ColumnLayout {
             iconName: "refresh"
             description: SubtitleFinder.state === SubtitleFinder.Idle ? qsTr("Search subtitles online")
                                                                      : qsTr("Search subtitles online again")
-            visible: SubtitleFinder.supported && root._video
+            visible: SubtitleFinder.supported && root._fileFeatures
             enabled: SubtitleFinder.state !== SubtitleFinder.Identifying
                      && SubtitleFinder.state !== SubtitleFinder.Searching
             onClicked: SubtitleFinder.search()
         }
         HeaderButton {
             objectName: "associateSubtitleButton"
+            visible: root._fileFeatures
             iconName: "edit"
             description: root.localMedia && MainCtx.mediaLibraryAvailable
                          ? qsTr("Add subtitles to the library")
@@ -316,6 +320,7 @@ ColumnLayout {
         }
         HeaderButton {
             objectName: "addSubtitleButton"
+            visible: root._fileFeatures
             iconName: "add"
             description: qsTr("Load a subtitle file for playback")
             onClicked: DialogsProvider.loadSubtitlesFile()
@@ -338,7 +343,7 @@ ColumnLayout {
             rightPadding: VLCStyle.dp(12, VLCStyle.scale)
             placeholderText: qsTr("Title of the movie or series")
             placeholderTextColor: VLCStyle.redesign.color("#5a5a5a", "#6b6b6b")
-            color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#1e1e1e")
+            color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
             horizontalAlignment: TextInput.AlignLeft
@@ -346,10 +351,10 @@ ColumnLayout {
             selectByMouse: true
             background: Rectangle {
                 radius: VLCStyle.dp(6, VLCStyle.scale)
-                color: VLCStyle.redesign.color("#090909", "#c4c4c3")
+                color: VLCStyle.redesign.color("#090909", "#dedede")
                 border.width: titleField.activeFocus ? 2 : 1
                 border.color: titleField.activeFocus ? VLCStyle.redesign.accent
-                                                     : VLCStyle.redesign.color("#191919", "#9c9c9b")
+                                                     : VLCStyle.redesign.color("#191919", "#ababaa")
             }
             onAccepted: SubtitleFinder.findTitle(text)
             Keys.onEscapePressed: (event) => { titleSearch.visible = false; event.accepted = true }
@@ -359,7 +364,7 @@ ColumnLayout {
             visible: SubtitleFinder.titleBusy
             text: qsTr("Searching…")
             horizontalAlignment: Text.AlignLeft
-            color: VLCStyle.redesign.color("#6B6B6B", "#5a5a59")
+            color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
         }
@@ -459,7 +464,7 @@ ColumnLayout {
                 text: SubtitleFinder.state === SubtitleFinder.Identifying || SubtitleFinder.state === SubtitleFinder.Searching
                       ? qsTr("Looking for subtitles…")
                       : root._anyChecked || root._languages.length ? "" : qsTr("No subtitles yet")
-                color: VLCStyle.redesign.color("#6B6B6B", "#5a5a59")
+                color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
             }
@@ -467,6 +472,7 @@ ColumnLayout {
     }
 
     Rectangle {
+        visible: root._fileFeatures
         Layout.fillWidth: true
         Layout.topMargin: VLCStyle.dp(4, VLCStyle.scale)
         implicitHeight: 1
@@ -474,6 +480,7 @@ ColumnLayout {
     }
 
     SubtitleSyncTimeline {
+        visible: root._fileFeatures
         Layout.fillWidth: true
         presets: SubtitleSeriesPreset
         reveal: root.reveal
@@ -528,12 +535,14 @@ ColumnLayout {
             value: qsTr("%1%").arg(Player.subtitleTextScale)
             lowerName: qsTr("Smaller subtitles")
             higherName: qsTr("Larger subtitles")
-            lowerEnabled: Player.subtitleTextScale > 30
-            higherEnabled: Player.subtitleTextScale < 300
+            // the steps and the range of Ctrl+wheel over the video (10 near
+            // 100 %, 25 further, 25 to 500 %)
+            lowerEnabled: Player.subtitleTextScale > 25
+            higherEnabled: Player.subtitleTextScale < 500
             resetEnabled: Player.subtitleTextScale !== 100
-            onLower: Player.subtitleTextScale = Player.subtitleTextScale - 10
-            onHigher: Player.subtitleTextScale = Player.subtitleTextScale + 10
-            onReset: Player.subtitleTextScale = 100
+            onLower: Player.stepSubtitleTextScale(-1, false)
+            onHigher: Player.stepSubtitleTextScale(1, false)
+            onReset: Player.stepSubtitleTextScale(0, false)
         }
     }
 
@@ -613,7 +622,7 @@ ColumnLayout {
         }
         contentItem: Controls.Label {
             text: parent.text
-            color: parent.enabled ? VLCStyle.redesign.color("#EAEAEA", "#2e2e2e") : VLCStyle.redesign.color("#8F8F8F", "#7c7c7b")
+            color: parent.enabled ? VLCStyle.redesign.color("#EAEAEA", "#2e2e2e") : VLCStyle.redesign.color("#8F8F8F", "#2e2e2e")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(text.length > 1 ? 12 : 16, VLCStyle.scale)
             horizontalAlignment: Text.AlignHCenter
@@ -671,7 +680,7 @@ ColumnLayout {
             border.color: VLCStyle.redesign.focusColor
         }
         contentItem: Image {
-            source: "qrc:///redesign/icons/" + headerButton.iconName + "/default.png"
+            source: "qrc:///redesign/icons/" + headerButton.iconName + "/default.svg"
             sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
             fillMode: Image.Pad
             opacity: headerButton.enabled ? 1 : 0.4
@@ -699,8 +708,8 @@ ColumnLayout {
 
         background: Rectangle {
             radius: VLCStyle.dp(4, VLCStyle.scale)
-            color: row.highlighted ? VLCStyle.redesign.color("#1b1b1b", "#b4b4b3")
-                 : row.hovered || row.activeFocus ? VLCStyle.redesign.color("#151515", "#9c9c9b") : "transparent"
+            color: row.highlighted ? VLCStyle.redesign.color("#1b1b1b", "#ababaa")
+                 : row.hovered || row.activeFocus ? VLCStyle.redesign.color("#151515", "#b5b5b4") : "transparent"
             border.width: row.visualFocus ? VLCStyle.dp(1, VLCStyle.scale) : 0
             border.color: VLCStyle.redesign.focusColor
             // (at the start of the row: the right in a right to left one)
@@ -721,9 +730,12 @@ ColumnLayout {
                 Layout.preferredHeight: VLCStyle.dp(20, VLCStyle.scale)
                 Layout.leftMargin: VLCStyle.dp(6, VLCStyle.scale)
                 Impl.ColorImage {
+                    // drawn at the size shown (an SVG: sharp at any scale and zoom)
+                    sourceSize: Qt.size(width, height)
+                    smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                     anchors.fill: parent
                     visible: row.checked
-                    source: "qrc:///redesign/track-check-active.png"
+                    source: "qrc:///redesign/track-check-active.svg"
                     color: root._accentTint
                 }
                 BusyDot {
@@ -738,8 +750,8 @@ ColumnLayout {
                     Layout.fillWidth: true
                     text: row.text
                     color: row.highlighted || row.checked
-                           ? VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#1e1e1e")
-                           : VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, "#2e2e2e")
+                           ? VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")
+                           : VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, "#4d4d4d")
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                     elide: Text.ElideRight
@@ -750,7 +762,7 @@ ColumnLayout {
                     visible: row.detail !== "" || row.marker !== ""
                     text: row.marker !== "" ? (row.detail !== "" ? row.detail + " · " + row.marker : row.marker)
                                             : row.detail
-                    color: VLCStyle.redesign.color("#6B6B6B", "#5a5a59")
+                    color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(11, VLCStyle.scale)
                     elide: Text.ElideRight
@@ -760,7 +772,7 @@ ColumnLayout {
             Text {
                 visible: row.hearingImpaired
                 text: qsTr("HI")
-                color: VLCStyle.redesign.color("#8F8F8F", "#4d4d4d")
+                color: VLCStyle.redesign.color("#8F8F8F", "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(11, VLCStyle.scale)
                 font.weight: Font.DemiBold
@@ -779,7 +791,7 @@ ColumnLayout {
                     id: badgeText
                     anchors.centerIn: parent
                     text: row.badge
-                    color: row.accentBadge ? VLCStyle.redesign.accent : VLCStyle.redesign.color("#8F8F8F", "#4d4d4d")
+                    color: row.accentBadge ? VLCStyle.redesign.accent : VLCStyle.redesign.color("#8F8F8F", "#2e2e2e")
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(11, VLCStyle.scale)
                 }
@@ -788,7 +800,7 @@ ColumnLayout {
                 visible: row.count > 0
                 Layout.rightMargin: VLCStyle.dp(8, VLCStyle.scale)
                 text: row.count
-                color: VLCStyle.redesign.color("#6B6B6B", "#5a5a59")
+                color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(12, VLCStyle.scale)
             }

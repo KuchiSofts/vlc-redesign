@@ -25,8 +25,12 @@ T.Control {
     property real dragYMax: 0
     property bool queueExpanded: false
     readonly property bool lightTheme: !VLCStyle.palette.isDark
+    // Parent folder of a local media (a stream has none: not its host)
     readonly property string folderName: {
-        const parts = decodeURIComponent(Player.url.toString()).split("/")
+        const url = Player.url.toString()
+        if (!url.startsWith("file://"))
+            return ""
+        const parts = decodeURIComponent(url).split("/")
         return parts.length > 1 ? parts[parts.length - 2] : ""
     }
 
@@ -241,7 +245,7 @@ T.Control {
                         anchors.verticalCenter: parent.verticalCenter
                         width: VLCStyle.redesign.iconSize
                         height: width
-                        source: "qrc:///redesign/icons/" + detail.modelData.iconName + "/default.png"
+                        source: "qrc:///redesign/icons/" + detail.modelData.iconName + "/default.svg"
                         sourceSize: Qt.size(width, height)
                         fillMode: Image.Pad
                         smooth: false
@@ -291,8 +295,8 @@ T.Control {
                 Impl.ColorImage {
                     width: VLCStyle.redesign.iconSize
                     height: width
-                    source: root.queueExpanded ? "qrc:///redesign/icons/lists/active.png"
-                                               : "qrc:///redesign/icons/lists/default.png"
+                    source: root.queueExpanded ? "qrc:///redesign/icons/lists/active.svg"
+                                               : "qrc:///redesign/icons/lists/default.svg"
                     sourceSize: Qt.size(width, height)
                     fillMode: Image.Pad
                     smooth: false

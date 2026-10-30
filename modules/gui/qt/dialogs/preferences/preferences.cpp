@@ -35,12 +35,13 @@
 #include "widgets/native/searchlineedit.hpp"
 #include "widgets/native/qvlcframe.hpp"
 #include "maininterface/mainctx.hpp"
+#include "dialogs/toolbar/controlbar_profile_model.hpp"
 
 #include <QHBoxLayout>
 #include <QGroupBox>
 #include <QRadioButton>
 #include <QPushButton>
-#include <QMessageBox>
+#include "widgets/native/redesign_message_box.hpp"
 #include <QDialogButtonBox>
 #include <QStackedWidget>
 #include <QSplitter>
@@ -387,14 +388,12 @@ void PrefsDialog::cancel()
 /* Reset all the preferences, when you click the button */
 void PrefsDialog::reset()
 {
-    int ret = QMessageBox::question(
-                 this,
+    /* (OK was the default button: Return resets) */
+    if( RedesignMessageBox::question(
+                 p_intf, this,
                  qtr( "Reset Preferences" ),
                  qtr( "Are you sure you want to reset your VLC media player preferences?" ),
-                 QMessageBox::Ok | QMessageBox::Cancel,
-                 QMessageBox::Ok);
-
-    if( ret == QMessageBox::Ok )
+                 qtr( "Reset" ), true ) )
     {
         /* VLC goes on with the defaults at once, as with Reset all
          * settings of the settings of the interface (ConfigModel::resetAll) */
@@ -405,6 +404,10 @@ void PrefsDialog::reset()
         {
             p_intf->p_mi->reloadPrefs();
             p_intf->p_mi->reloadFromSettings();
+            /* the profiles would put their own settings back: they take
+             * the defaults now in use */
+            if( auto *profiles = p_intf->p_mi->controlbarProfileModel() )
+                profiles->forgetSettingsSnapshots();
         }
 
 #ifdef _WIN32

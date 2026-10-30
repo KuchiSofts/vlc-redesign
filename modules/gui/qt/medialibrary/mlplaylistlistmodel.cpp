@@ -111,6 +111,17 @@ bool saveThumbnail(const QString & source, const QString & target)
     return image.save(target, "PNG");
 }
 
+// The playlist, with the thumbnail chosen for it (on the media library's
+// thread: the disk is not read on the UI thread)
+std::unique_ptr<MLPlaylist> loadedPlaylist(const vlc_ml_playlist_t * playlist)
+{
+    auto item = std::make_unique<MLPlaylist>(playlist);
+    const QString chosen = thumbnailPath(playlist->i_id, playlist->i_creation_date);
+    if (!chosen.isEmpty() && QFileInfo::exists(chosen))
+        item->setChosenCover(QUrl::fromLocalFile(chosen).toString());
+    return item;
+}
+
 void removeThumbnails(int64_t id)
 {
     const QString folder = thumbnailFolder();
@@ -483,9 +494,8 @@ bool MLPlaylistListModel::setTransactionPending(const bool value)
 QString MLPlaylistListModel::getCover(const MLPlaylist * playlist) const
 {
     // the thumbnail chosen for the playlist, else its media
-    const QString chosen = thumbnailPath(playlist->getId().id, playlist->getCreationDate());
-    if (!chosen.isEmpty() && QFileInfo::exists(chosen))
-        return QUrl::fromLocalFile(chosen).toString();
+    if (!playlist->chosenCover().isEmpty())
+        return playlist->chosenCover();
 
     return MLCustomCover::url(playlist->getId()
                             , m_coverSize
@@ -646,7 +656,7 @@ MLPlaylistListModel::Loader::load(vlc_medialibrary_t* ml, const vlc_ml_query_par
 
     for (const vlc_ml_playlist_t & playlist : ml_range_iterate<vlc_ml_playlist_t>(list))
     {
-        result.emplace_back(std::make_unique<MLPlaylist>(&playlist));
+        result.emplace_back(loadedPlaylist(&playlist));
     }
 
     return result;
@@ -659,5 +669,5 @@ MLPlaylistListModel::Loader::loadItemById(vlc_medialibrary_t* ml, MLItemId itemI
     ml_unique_ptr<vlc_ml_playlist_t> playlist(vlc_ml_get_playlist(ml, itemId.id));
     if (!playlist)
         return nullptr;
-    return std::make_unique<MLPlaylist>(playlist.get());
+    return loadedPlaylist(playlist.get());
 }

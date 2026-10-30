@@ -22,7 +22,7 @@ import VLC.Util
 
 RedesignIconButton {
     id: root
-    iconSource: "qrc:///redesign/player/settings.png"
+    iconSource: "qrc:///redesign/player/settings.svg"
     text: VLCIcons.settings
     description: qsTr("VLC Settings")
     AccessibleCompat.id: "playerSettingsButton"
@@ -32,6 +32,8 @@ RedesignIconButton {
 
     // above the button, as the languages and tracks
     onClicked: panel.toggle()
+    // open while its panel shows
+    active: panel.opened
 
     function forceUnlock() {
         panel.close()

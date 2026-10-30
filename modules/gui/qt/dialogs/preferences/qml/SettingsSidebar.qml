@@ -26,6 +26,7 @@ Item {
         { key: "audio", label: qsTr("Audio"), icon: "audio" },
         { key: "subtitles", label: qsTr("Subtitles"), icon: "subtitles" },
         { key: "library", label: qsTr("Library"), icon: "folder" },
+        { key: "tv", label: qsTr("TV"), icon: "tv" },
         { kind: "heading", label: qsTr("System") },
         { key: "network", label: qsTr("Network"), icon: "streaming" },
         { key: "performance", label: qsTr("Performance"), icon: "preferences" },
@@ -34,7 +35,7 @@ Item {
     ]
 
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
-    function c(value) { return VLCStyle.redesign.color(value, value) }
+    function c(value) { return VLCStyle.redesign.color(value) }
 
     // Sidebar of the design: 200 px, #191919 at 95 %, radius 6, 6 px padding,
     // 8 px between the 33 px group titles and the 40 px items
@@ -128,9 +129,10 @@ Item {
                                     width: root.px(24)
                                     height: width
                                     sourceSize: Qt.size(width, height)
+                                    smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                                     fillMode: Image.PreserveAspectFit
                                     source: !modelData.icon ? "" : "qrc:///redesign/icons/" + modelData.icon + "/"
-                                            + (entry.current ? "active" : "default") + ".png"
+                                            + (entry.current ? "active" : "default") + ".svg"
                                     color: entry.current ? VLCStyle.redesign.accentTint : "transparent"
                                 }
                             }

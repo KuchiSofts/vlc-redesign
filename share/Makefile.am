@@ -81,23 +81,33 @@ org.videolan.vlc.appdata.xml: org.videolan.vlc.appdata.xml.in
 
 iconsdatadir = $(datadir)/icons/hicolor
 icons16dir = $(iconsdatadir)/16x16/apps
+icons22dir = $(iconsdatadir)/22x22/apps
+icons24dir = $(iconsdatadir)/24x24/apps
 icons32dir = $(iconsdatadir)/32x32/apps
 icons48dir = $(iconsdatadir)/48x48/apps
+icons64dir = $(iconsdatadir)/64x64/apps
 icons128dir = $(iconsdatadir)/128x128/apps
 icons256dir = $(iconsdatadir)/256x256/apps
+icons512dir = $(iconsdatadir)/512x512/apps
+iconsscalabledir = $(iconsdatadir)/scalable/apps
 
 if !HAVE_WIN32
 dist_pkgdata_DATA = icons/vlc.ico
 dist_icons16_DATA = icons/16x16/vlc.png icons/16x16/vlc.xpm
+dist_icons22_DATA = icons/22x22/vlc.png
+dist_icons24_DATA = icons/24x24/vlc.png
 dist_icons32_DATA = icons/32x32/vlc.png icons/32x32/vlc.xpm \
 			icons/32x32/vlc-xmas.xpm \
 			icons/32x32/vlc-aprilfools.xpm
 dist_icons48_DATA = icons/48x48/vlc.png icons/48x48/vlc-xmas.png \
 			icons/48x48/vlc-aprilfools.png
+dist_icons64_DATA = icons/64x64/vlc.png
 dist_icons128_DATA = icons/128x128/vlc.png icons/128x128/vlc-xmas.png \
                      icons/128x128/vlc-kb.png \
                      icons/128x128/vlc-aprilfools.png
 dist_icons256_DATA = icons/256x256/vlc.png
+dist_icons512_DATA = icons/512x512/vlc.png
+dist_iconsscalable_DATA = icons/scalable/vlc.svg
 
 nobase_dist_pkgdata_SCRIPTS = \
 	utils/audio-vlc-default.sh \
@@ -123,7 +133,8 @@ soliddata_DATA = $(DIST_solid)
 endif
 
 DIST_icons = \
-	vlc512x512.png
+	vlc512x512.png \
+	icons/scalable/vlc.svg
 
 DIST_skins2 = \
 	skins2/fonts/FreeSans.ttf \

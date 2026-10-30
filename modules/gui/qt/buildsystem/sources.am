@@ -23,6 +23,8 @@ libqt_plugin_la_SOURCES = \
 	dialogs/bookmarks/bookmarks.cpp dialogs/bookmarks/bookmarks.hpp \
 	dialogs/dialogs/dialogmodel.cpp \
 	dialogs/dialogs/dialogmodel.hpp \
+	dialogs/dialogs/redesign_tools.cpp \
+	dialogs/dialogs/redesign_tools.hpp \
 	dialogs/dialogs_provider.cpp dialogs/dialogs_provider.hpp \
 	dialogs/epg/EPGChannels.cpp \
 	dialogs/epg/EPGChannels.hpp \
@@ -48,11 +50,13 @@ libqt_plugin_la_SOURCES = \
 	dialogs/preferences/shortcuts_model.cpp dialogs/preferences/shortcuts_model.hpp \
 	dialogs/preferences/config_model.cpp \
 	dialogs/firstrun/onboarding.cpp \
+	dialogs/firstrun/whats_new.cpp \
 	maininterface/dialog_types.cpp \
 	dialogs/native_dialogs.cpp \
 	dialogs/preferences/config_model.hpp \
 	dialogs/preferences/catalog.hpp \
 	dialogs/firstrun/onboarding.hpp \
+	dialogs/firstrun/whats_new.hpp \
 	dialogs/extended/video_effects.cpp dialogs/extended/video_effects.hpp \
 	dialogs/extended/audio_effects.cpp \
 	dialogs/extended/audio_effects.hpp \
@@ -111,6 +115,8 @@ libqt_plugin_la_SOURCES = \
 	maininterface/compositor_platform.cpp \
 	maininterface/interface_window_handler.cpp \
 	maininterface/interface_window_handler.hpp \
+	maininterface/macos_titlebar.cpp \
+	maininterface/macos_titlebar.hpp \
 	maininterface/live_settings.cpp \
 	maininterface/live_settings.hpp \
 	maininterface/mainctx.cpp \
@@ -234,6 +240,9 @@ libqt_plugin_la_SOURCES = \
 	player/delay_estimator.cpp \
 	player/delay_estimator.hpp \
 	player/waveform.cpp player/waveform.hpp \
+	player/subtitle_cues.cpp player/subtitle_cues.hpp \
+	player/subtitle_cues_parser.cpp player/subtitle_cues_parser.hpp \
+	player/subtitle_charset.c \
 	player/local_folder_model.cpp player/local_folder_model.hpp \
 	player/sleep_timer.cpp player/sleep_timer.hpp \
 	player/player_controller.cpp player/player_controller.hpp player/player_controller_p.hpp \
@@ -257,7 +266,10 @@ libqt_plugin_la_SOURCES = \
 	util/audio_device_model.hpp \
 	util/workerthreadset.hpp util/workerthreadset.cpp \
 	util/http_request.cpp util/http_request.hpp \
+	iptv/iptv_addon.cpp iptv/iptv_addon.hpp \
 	util/redesign_updater.cpp util/redesign_updater.hpp \
+	util/redesign_update_key.h util/redesign_update_verify.h \
+	util/redesign_feedback.cpp util/redesign_feedback.hpp \
 	util/subtitle_preferences.cpp util/subtitle_preferences.hpp \
 	util/redesign_version.hpp \
 	util/base_model.hpp util/base_model_p.hpp util/base_model.cpp \
@@ -268,6 +280,8 @@ libqt_plugin_la_SOURCES = \
 	util/thumbnail_image_provider.cpp util/thumbnail_image_provider.hpp \
 	util/redesign_icon_provider.cpp util/redesign_icon_provider.hpp \
 	util/redesign_widget_theme.cpp util/redesign_widget_theme.hpp \
+	util/redesign_window_frame.cpp util/redesign_window_frame.hpp \
+	util/redesign_accent.cpp util/redesign_accent.hpp \
 	util/covergenerator.cpp \
 	util/covergenerator.hpp \
 	util/imageluminanceextractor.cpp util/imageluminanceextractor.hpp \
@@ -337,6 +351,8 @@ libqt_plugin_la_SOURCES = \
 	widgets/native/mlfolderseditor.hpp \
 	widgets/native/qvlcframe.cpp \
 	widgets/native/qvlcframe.hpp \
+	widgets/native/redesign_message_box.cpp \
+	widgets/native/redesign_message_box.hpp \
 	widgets/native/searchlineedit.cpp widgets/native/searchlineedit.hpp \
 	widgets/native/viewblockingrectangle.cpp widgets/native/viewblockingrectangle.hpp \
 	widgets/native/doubleclickignoringitem.hpp

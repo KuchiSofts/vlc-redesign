@@ -174,7 +174,7 @@ ColumnLayout {
         }
         contentItem: Controls.Label {
             text: parent.text
-            color: parent.enabled ? VLCStyle.redesign.color("#EAEAEA", "#2e2e2e") : VLCStyle.redesign.color("#8F8F8F", "#7c7c7b")
+            color: parent.enabled ? VLCStyle.redesign.color("#EAEAEA", "#2e2e2e") : VLCStyle.redesign.color("#8F8F8F", "#2e2e2e")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(12, VLCStyle.scale)
             horizontalAlignment: Text.AlignHCenter

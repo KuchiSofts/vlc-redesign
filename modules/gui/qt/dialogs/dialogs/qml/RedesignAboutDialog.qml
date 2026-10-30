@@ -22,9 +22,9 @@ T.Popup {
     id: root
 
     readonly property bool darkTheme: VLCStyle.palette.isDark
-    readonly property color textPrimary: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#1d1d1d", darkTheme)
-    readonly property color textSecondary: VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, "#3d3d3d", darkTheme)
-    readonly property color textMuted: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#4d4d4d", darkTheme)
+    readonly property color textPrimary: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e", darkTheme)
+    readonly property color textSecondary: VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, "#4d4d4d", darkTheme)
+    readonly property color textMuted: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e", darkTheme)
 
     parent: T.Overlay.overlay
     x: parent ? Math.round((parent.width - width) / 2) : 0
@@ -58,14 +58,17 @@ T.Popup {
     background: Rectangle {
         radius: VLCStyle.dp(14, VLCStyle.scale)
         color: VLCStyle.redesign.color("#191919", "#ABABAA", root.darkTheme)
+        // the frame of the main window
         border.width: 1
-        border.color: VLCStyle.redesign.color(VLCStyle.redesign.border, "#8f8f8e", root.darkTheme)
+        border.color: VLCStyle.redesign.color(VLCStyle.redesign.windowBorder, undefined, root.darkTheme)
     }
 
-    // A link of the about box: the accent colour, underlined on hover
+    // A link of the about box: the accent colour, underlined on hover; with
+    // no url, it only says it was clicked
     component Link: Text {
         id: link
         property string url
+        signal activated()
         color: VLCStyle.redesign.accent
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
@@ -78,7 +81,33 @@ T.Popup {
             anchors.fill: parent
             hoverEnabled: true
             cursorShape: Qt.PointingHandCursor
-            onClicked: Qt.openUrlExternally(link.url)
+            onClicked: {
+                if (link.url !== "")
+                    Qt.openUrlExternally(link.url)
+                else
+                    link.activated()
+            }
+        }
+    }
+
+    // A credit and its link in one text: a longer translation wraps as a
+    // sentence does (the link follows its words, on their baseline, in
+    // either direction); two items in a row split its width between them
+    component CreditText: Body {
+        id: credit
+        property string prefix
+        property string linkText
+        property string url
+        function escaped(text) {
+            return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+        }
+        textFormat: Text.StyledText
+        text: escaped(prefix) + " <a href=\"" + url + "\">" + escaped(linkText) + "</a>"
+        linkColor: VLCStyle.redesign.accent
+        Accessible.name: prefix + " " + linkText
+        onLinkActivated: (link) => Qt.openUrlExternally(link)
+        HoverHandler {
+            cursorShape: credit.hoveredLink.length > 0 ? Qt.PointingHandCursor : Qt.ArrowCursor
         }
     }
 
@@ -94,6 +123,10 @@ T.Popup {
 
     // A low window: the content scrolls (laid out as when it fits)
     contentItem: Flickable {
+        // a screen reader names the dialog
+        Accessible.role: Accessible.Dialog
+        Accessible.name: qsTr("About VLC")
+
         // a popup does not inherit the mirroring of the window (right to left)
         LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
         LayoutMirroring.childrenInherit: true
@@ -111,34 +144,92 @@ T.Popup {
             width: parent.width
             spacing: VLCStyle.dp(18, VLCStyle.scale)
 
-            // The app, its version and its updates
-            RowLayout {
+            // The app, its version and its updates. The button beside the
+            // name while the name, its badge and the version line fit beside
+            // it, else under them (a long translation of the button: German
+            // cut the name to "VLC ...")
+            GridLayout {
+                id: header
                 Layout.fillWidth: true
-                spacing: VLCStyle.dp(18, VLCStyle.scale)
+                columnSpacing: VLCStyle.dp(18, VLCStyle.scale)
+                rowSpacing: VLCStyle.dp(12, VLCStyle.scale)
+                readonly property real _textWidth: Math.max(titleText.implicitWidth + VLCStyle.dp(10, VLCStyle.scale)
+                                                            + platformBadge.implicitWidth,
+                                                            versionText.implicitWidth)
+                readonly property bool _wide: width - VLCStyle.dp(64, VLCStyle.scale) - 2 * columnSpacing
+                                             - updateButton.implicitWidth >= _textWidth
+                columns: _wide ? 3 : 2
 
                 Image {
+                    Layout.row: 0
+                    Layout.column: 0
+                    Layout.rowSpan: header._wide ? 1 : 2
+                    Layout.alignment: Qt.AlignTop
                     Layout.preferredWidth: VLCStyle.dp(64, VLCStyle.scale)
                     Layout.preferredHeight: VLCStyle.dp(64, VLCStyle.scale)
                     source: "qrc:///redesign/welcome.svg"
                     sourceSize: Qt.size(width, height)
+                    smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                     fillMode: Image.PreserveAspectFit
                     Accessible.ignored: true
                 }
 
                 ColumnLayout {
+                    Layout.row: 0
+                    Layout.column: 1
                     Layout.fillWidth: true
                     spacing: VLCStyle.dp(2, VLCStyle.scale)
 
-                    Text {
-                        // (the column is the room left by the button)
+                    RowLayout {
                         Layout.fillWidth: true
-                        elide: Text.ElideRight
-                        horizontalAlignment: Text.AlignLeft
-                        text: qsTr("VLC Redesign")
-                        color: root.textPrimary
-                        font.family: VLCStyle.redesign.fontFamily
-                        font.pixelSize: VLCStyle.dp(28, VLCStyle.scale)
-                        font.weight: Font.Light
+                        spacing: VLCStyle.dp(10, VLCStyle.scale)
+
+                        // The name as wide as it is, cut only when the column
+                        // (the room left by the button) has none left beside
+                        // the badge, which keeps its width; the room left
+                        // stays at the end (a second item filling the row
+                        // shared the room with the name and cut it)
+                        Text {
+                            id: titleText
+                            Layout.fillWidth: true
+                            Layout.maximumWidth: implicitWidth
+                            elide: Text.ElideRight
+                            horizontalAlignment: Text.AlignLeft
+                            text: qsTr("VLC Redesign")
+                            color: root.textPrimary
+                            font.family: VLCStyle.redesign.fontFamily
+                            font.pixelSize: VLCStyle.dp(28, VLCStyle.scale)
+                            font.weight: Font.Light
+                        }
+                        // The system this copy is made for (the same version
+                        // exists for several), the one it runs on in its tooltip
+                        Rectangle {
+                            id: platformBadge
+                            Layout.minimumWidth: implicitWidth
+                            implicitWidth: platformText.implicitWidth + VLCStyle.dp(16, VLCStyle.scale)
+                            implicitHeight: VLCStyle.dp(20, VLCStyle.scale)
+                            radius: height / 2
+                            // (the light theme: a light pill, the dark one
+                            // kept its dark text unreadable on it)
+                            color: VLCStyle.redesign.color("#262626", "#dedede", root.darkTheme)
+                            border.width: 1
+                            border.color: VLCStyle.redesign.windowBorder
+                            Accessible.role: Accessible.StaticText
+                            Accessible.name: RedesignUpdater.platformName
+                            Text {
+                                id: platformText
+                                anchors.centerIn: parent
+                                text: RedesignUpdater.platformName
+                                color: root.textPrimary
+                                font.family: VLCStyle.redesign.fontFamily
+                                font.pixelSize: VLCStyle.dp(12, VLCStyle.scale)
+                                font.weight: Font.Medium
+                            }
+                            HoverHandler { id: platformHover }
+                            T.ToolTip.visible: platformHover.hovered
+                            T.ToolTip.text: RedesignUpdater.platformDetails
+                            T.ToolTip.delay: 650
+                        }
                     }
                     Text {
                         id: versionText
@@ -181,10 +272,22 @@ T.Popup {
                             }
                         }
                     }
+                    // the card shown after an update, open again at any time
+                    Link {
+                        Layout.topMargin: VLCStyle.dp(2, VLCStyle.scale)
+                        text: qsTr("What's new in %1").arg(RedesignUpdater.currentVersion)
+                        onActivated: {
+                            root.close()
+                            DialogsProvider.whatsNewDialog()
+                        }
+                    }
                 }
 
                 Widgets.RedesignButton {
-                    Layout.alignment: Qt.AlignTop
+                    id: updateButton
+                    Layout.row: header._wide ? 0 : 1
+                    Layout.column: header._wide ? 2 : 1
+                    Layout.alignment: Qt.AlignTop | Qt.AlignLeft
                     accent: RedesignUpdater.state === RedesignUpdater.Available || RedesignUpdater.state === RedesignUpdater.Ready
                     text: RedesignUpdater.state === RedesignUpdater.Ready ? qsTr("Restart now")
                           : RedesignUpdater.state === RedesignUpdater.Available
@@ -211,7 +314,7 @@ T.Popup {
                 Layout.fillWidth: true
                 implicitHeight: designColumn.implicitHeight + 2 * VLCStyle.dp(18, VLCStyle.scale)
                 radius: VLCStyle.dp(10, VLCStyle.scale)
-                color: VLCStyle.redesign.color("#0E0E0E", "#9c9c9b", root.darkTheme)
+                color: VLCStyle.redesign.color("#0E0E0E", "#c2c2c1", root.darkTheme)
 
                 ColumnLayout {
                     id: designColumn
@@ -250,19 +353,36 @@ T.Popup {
                 Layout.fillWidth: true
                 spacing: VLCStyle.dp(6, VLCStyle.scale)
 
-                // A longer translation wraps the text before its link, inside
-                // the dialog (the text as wide as it is, at most)
-                RowLayout {
-                    Layout.maximumWidth: parent.width
-                    spacing: VLCStyle.dp(6, VLCStyle.scale)
-                    Body { Layout.maximumWidth: implicitWidth; text: qsTr("First implementation by") }
-                    Link { text: "MrDouglax"; url: "https://github.com/SrDouglax/JuxtopposedVLC" }
+                CreditText {
+                    prefix: qsTr("First implementation by")
+                    linkText: "MrDouglax"
+                    url: "https://github.com/SrDouglax/JuxtopposedVLC"
                 }
-                RowLayout {
-                    Layout.maximumWidth: parent.width
-                    spacing: VLCStyle.dp(6, VLCStyle.scale)
-                    Body { Layout.maximumWidth: implicitWidth; text: qsTr("Built on VLC media player by") }
-                    Link { text: qsTr("the VideoLAN team and contributors"); url: "https://www.videolan.org/" }
+                CreditText {
+                    prefix: qsTr("Built on VLC media player by")
+                    linkText: qsTr("the VideoLAN team and contributors")
+                    url: "https://www.videolan.org/"
+                }
+                // The other platforms, from the copy of platforms.yml built
+                // into this release (nothing is fetched)
+                Body {
+                    visible: RedesignUpdater.alsoOn.length > 0
+                    color: root.textMuted
+                    text: qsTr("Also on: %1").arg(RedesignUpdater.alsoOn)
+                }
+                // The forms of the GitHub repository (as in the ⋯ menu)
+                Flow {
+                    Layout.fillWidth: true
+                    Layout.topMargin: VLCStyle.dp(6, VLCStyle.scale)
+                    spacing: VLCStyle.dp(18, VLCStyle.scale)
+                    Link { text: qsTr("Suggest an idea"); url: RedesignFeedback.ideaUrl() }
+                    Link {
+                        text: qsTr("Report a problem")
+                        onActivated: {
+                            root.close()
+                            RedesignFeedback.openReport()
+                        }
+                    }
                 }
                 Body {
                     Layout.topMargin: VLCStyle.dp(6, VLCStyle.scale)

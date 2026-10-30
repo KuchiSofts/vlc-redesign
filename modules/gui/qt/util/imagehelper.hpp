@@ -32,6 +32,10 @@ public:
     /* render a Svg to a pixmap with current device pixel ratio */
     static QPixmap loadSvgToPixmap(const QString& path, qint32 i_width, qint32 i_height);
 
+    /* render a Svg to an image of this size in pixels (any thread), a null
+     * image when it cannot */
+    static QImage loadSvgToImage(const QString& path, const QSize& size);
+
     static class QImageIOHandler* createSvgImageIOHandler();
 };
 

@@ -53,6 +53,15 @@ T.Pane {
                                         [70, 46], [80, 51], [90, 56], [100, 61], [150, 73], [200, 85]]
     readonly property real _designWidth: 86
 
+    // the value shown for a volume (1 = 100 %); below 0 the audio output
+    // has no volume to report (not started yet, or none of its own):
+    // never a negative number
+    function volumeText(volume) {
+        if (!(volume >= 0))
+            return "–"
+        return qsTr("%1 %").arg(Math.round(volume * 100))
+    }
+
     // the drawn position (0 to 1) of a volume (1 = 100 %)
     function designPosition(volume) {
         const d = volume * 100 * 200 / _maxvol
@@ -107,37 +116,35 @@ T.Pane {
 
             focus: true
             paintOnly: root.paintOnly
-            text: {
-                if (_player.muted)
-                    return VLCIcons.volume_muted
-                else if (_player.volume === 0)
-                    return VLCIcons.volume_muted
-                else if (_player.volume < .33)
-                    return VLCIcons.volume_low
-                else if (_player.volume <= .66)
-                    return VLCIcons.volume_medium
-                else
-                    return VLCIcons.volume_high
+            // Figma "Player": 50 % shows the icon value=high; the glyph (the
+            // editor's preview) and the image of the bar show the same level
+            readonly property string level: {
+                // (a volume below 0: the output has none to report yet)
+                if (root._player.muted || root._player.volume <= 0)
+                    return "muted"
+                if (root._player.volume < .25)
+                    return "low"
+                if (root._player.volume < .5)
+                    return "medium"
+                return "high"
             }
+            text: level === "muted" ? VLCIcons.volume_muted
+                  : level === "low" ? VLCIcons.volume_low
+                  : level === "medium" ? VLCIcons.volume_medium
+                  : VLCIcons.volume_high
             font.pixelSize: VLCStyle.redesign.iconSize
             contentItem: Item {
                 implicitWidth: VLCStyle.redesign.iconSize
                 implicitHeight: VLCStyle.redesign.iconSize
                 Impl.IconImage {
+                    // drawn at the size shown (an SVG: sharp at any scale and zoom)
+                    sourceSize: Qt.size(width, height)
+                    smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                     anchors.centerIn: parent
                     width: VLCStyle.redesign.iconSize
                     height: width
-                    color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, colorContext.fg.primary)
-                    // Figma "Player": 50 % shows the icon value=high
-                    source: {
-                        if (root._player.muted || root._player.volume === 0)
-                            return "qrc:///redesign/volume-muted.png"
-                        if (root._player.volume < .25)
-                            return "qrc:///redesign/volume-low.png"
-                        if (root._player.volume < .5)
-                            return "qrc:///redesign/volume-medium.png"
-                        return "qrc:///redesign/volume-high.png"
-                    }
+                    color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
+                    source: "qrc:///redesign/volume-" + volumeBtn.level + ".svg"
                 }
             }
             description: qsTr("Mute")
@@ -201,6 +208,8 @@ T.Pane {
                 height: volControl.availableHeight
 
                 Image {
+                    // drawn at the size shown (an SVG: sharp at any scale and zoom)
+                    sourceSize: Qt.size(width, height)
                     anchors.centerIn: parent
                     // Drawn for the dark theme (#090909); Figma "Player -
                     // Light": #888888
@@ -220,6 +229,8 @@ T.Pane {
                     clip: true
 
                     Image {
+                        // drawn at the size shown (an SVG: sharp at any scale and zoom)
+                        sourceSize: Qt.size(width, height)
                         // the gradient under black at 20 %; Figma "Player -
                         // Light": under white at 20 %
                         source: VLCStyle.palette.isDark
@@ -252,7 +263,7 @@ T.Pane {
                 // from bounds of this widget and we want to show the current
                 // volume here, so directly use Player.volume instead of "value"
 
-                return Math.round(Player.volume * 100) + "%"
+                return root.volumeText(Player.volume)
             }
 
             Accessible.name: qsTr("Volume")
@@ -344,11 +355,13 @@ T.Pane {
                 visible: !root.paintOnly && root.visible
                          && (volControl.hovered || volControl.pressed || volControl.visualFocus || valueTimer.running)
                 background: Rectangle {
-                    color: VLCStyle.redesign.color("#0F0F0F", "#dedede")
+                    color: VLCStyle.redesign.color("#0F0F0F", "#c2c2c1")
                     radius: VLCStyle.dp(6, VLCStyle.scale)
+                    // the frame of the main window
+                    Widgets.RedesignWindowBorder { }
                 }
                 contentItem: Text {
-                    text: qsTr("%1 %").arg(Math.round(Player.volume * 100))
+                    text: root.volumeText(Player.volume)
                     color: VLCStyle.redesign.color("#969696", "#4d4d4d")
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)

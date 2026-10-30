@@ -15,7 +15,7 @@ T.ComboBox {
     id: root
 
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
-    function c(value) { return VLCStyle.redesign.color(value, value) }
+    function c(value) { return VLCStyle.redesign.color(value) }
 
     implicitWidth: px(320)
     implicitHeight: px(36)
@@ -66,7 +66,8 @@ T.ComboBox {
         width: root.px(24)
         height: width
         sourceSize: Qt.size(width, height)
-        source: "qrc:///redesign/icons/chevron-down/default.png"
+        smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
+        source: "qrc:///redesign/icons/chevron-down/default.svg"
     }
 
     // Figma 6456:13892 / 2372:8300: rows of 44, 2 apart, the text 14 in,
@@ -114,6 +115,9 @@ T.ComboBox {
             // drawn in grey and the accent: with another accent, the grey
             // part and the rest tinted above it
             Image {
+                // drawn at the size shown (an SVG: sharp at any scale and zoom)
+                sourceSize: Qt.size(width, height)
+                smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                 id: choiceIcon
                 visible: option.iconDir.length > 0
                 readonly property bool twoTone: !VLCStyle.redesign.defaultAccent
@@ -122,22 +126,28 @@ T.ComboBox {
                 anchors.verticalCenter: parent.verticalCenter
                 width: root.px(24)
                 height: width
-                source: visible ? option.iconDir + (twoTone ? "/default-grey.png" : "/default.png") : ""
+                source: visible ? option.iconDir + (twoTone ? "/default-grey.svg" : "/default.svg") : ""
                 Impl.ColorImage {
+                    // drawn at the size shown (an SVG: sharp at any scale and zoom)
+                    sourceSize: Qt.size(width, height)
+                    smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                     anchors.fill: parent
                     visible: choiceIcon.twoTone
-                    source: visible ? option.iconDir + "/default-accent.png" : ""
+                    source: visible ? option.iconDir + "/default-accent.svg" : ""
                     color: VLCStyle.redesign.accent
                 }
             }
             Impl.ColorImage {
+                // drawn at the size shown (an SVG: sharp at any scale and zoom)
+                sourceSize: Qt.size(width, height)
+                smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                 visible: option.chosen
                 anchors.right: parent.right
                 anchors.rightMargin: root.px(13)
                 anchors.verticalCenter: parent.verticalCenter
                 width: root.px(24)
                 height: width
-                source: "qrc:///redesign/track-check-active.png"
+                source: "qrc:///redesign/track-check-active.svg"
                 color: VLCStyle.redesign.accentTint
             }
         }
@@ -209,6 +219,9 @@ T.ComboBox {
                 blurRadius: 7.5 * VLCStyle.scale
                 color: Qt.rgba(0, 0, 0, 0.46)
             }
+
+            // the frame of the main window
+            Widgets.RedesignWindowBorder { }
         }
     }
 }

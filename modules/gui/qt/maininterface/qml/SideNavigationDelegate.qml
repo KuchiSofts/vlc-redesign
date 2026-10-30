@@ -45,7 +45,7 @@ T.ItemDelegate {
     // current page has the filled one in the accent
     readonly property string iconSetName: ({
         "home": "home", "video": "videos", "music": "songs", "network": "streaming",
-        "playlists": "playlist", "recent": "recent", "add": "add"
+        "playlists": "playlist", "recent": "recent", "add": "add", "tv": "tv"
     })[referenceIconName] ?? ""
     readonly property bool _useIconSet: iconSetName.length > 0 && VLCStyle.palette.isDark
 
@@ -131,7 +131,7 @@ T.ItemDelegate {
         // Figma "sidebar": the current page has its icon in the accent
         // color, no background; hovered and pressed items do
         color: VLCStyle.redesign.color(control.down || control.hovered ? VLCStyle.redesign.controlHoverBackground
-                                                                       : "transparent", theme.bg.primary)
+                                                                       : "transparent")
         border.color: visualFocus ? VLCStyle.redesign.color(VLCStyle.redesign.focusColor, theme.visualFocus) : "transparent"
 
         radius: control.radius
@@ -177,7 +177,7 @@ T.ItemDelegate {
                                + (referenceIcon._twoTone ? "active-grey"
                                   : control.checked ? "active"
                                   : control.contextual && control.iconSetName === "videos" ? "selected"
-                                  : "default") + ".png"
+                                  : "default") + ".svg"
                     if (control.imageSource.toString().length === 0)
                         return ""
                     if (control.checked)
@@ -185,7 +185,7 @@ T.ItemDelegate {
                     if (VLCStyle.palette.isDark)
                         return control.imageSource
                     return SVGColorImage.colorize(control.imageSource)
-                                        .any({ "#8F8F8F": VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#5a5a59") }).uri()
+                                        .any({ "#8F8F8F": VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e") }).uri()
                 }
                 visible: source.toString().length > 0 && status === Image.Ready
                 opacity: control.enabled ? 1.0 : 0.4
@@ -195,7 +195,7 @@ T.ItemDelegate {
                 Impl.ColorImage {
                     anchors.fill: parent
                     visible: referenceIcon._twoTone
-                    source: visible ? "qrc:///redesign/icons/recent/active-accent.png" : ""
+                    source: visible ? "qrc:///redesign/icons/recent/active-accent.svg" : ""
                     sourceSize: parent.sourceSize
                     fillMode: parent.fillMode
                     smooth: parent.smooth
@@ -217,8 +217,7 @@ T.ItemDelegate {
 
                 color: VLCStyle.redesign.color(!control.enabled ? VLCStyle.redesign.textDisabled
                                                                : control.checked ? VLCStyle.redesign.accent
-                                                                                 : VLCStyle.redesign.textMuted,
-                                             (control.highlighted || control.checked) ? theme.accent : theme.fg.primary)
+                                                                                 : VLCStyle.redesign.textMuted)
 
                 font.pixelSize: VLCStyle.redesign.iconSize
             }
@@ -251,8 +250,7 @@ T.ItemDelegate {
             // Figma: #C6C6C6 for the current page
             color: VLCStyle.redesign.color(!control.enabled ? VLCStyle.redesign.textDisabled
                                                            : control.checked ? "#C6C6C6"
-                                                                             : VLCStyle.redesign.textMuted,
-                                           control.checked ? theme.fg.secondary : theme.fg.primary)
+                                                                             : VLCStyle.redesign.textMuted)
 
             elide: Text.ElideRight
 

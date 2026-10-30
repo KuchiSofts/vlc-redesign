@@ -50,6 +50,7 @@ public:
 
 protected:
     void mouseDoubleClickEvent( QMouseEvent *event ) override;
+    void changeEvent( QEvent *event ) override;
 
 private:
     qt_intf_t *p_intf;

@@ -71,6 +71,7 @@ MouseArea {
             width: VLCStyle.redesign.iconSize
             height: width
             sourceSize: Qt.size(width, height)
+            smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
             source: root.iconSource
         }
     }

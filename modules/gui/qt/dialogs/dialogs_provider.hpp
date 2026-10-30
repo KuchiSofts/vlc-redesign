@@ -47,6 +47,13 @@
 #include <QStringList>
 #include <QSet>
 #include <QMessageBox>
+#include <QPointer>
+#include <QVariantMap>
+
+#include <functional>
+#include <map>
+
+#include "widgets/native/redesign_message_box.hpp"
 
 #include <vlc_es.h>
 
@@ -154,12 +161,25 @@ public:
                                               const QString& placeholder,
                                               bool* ok = nullptr);
 
+    // A message, a question or a prompt drawn as the dialogs of the redesign:
+    // in the window of the interface (RedesignMessageDialog.qml, from
+    // SetupDialogs.qml) when it is there, else as a RedesignMessageBox. The
+    // answer (RedesignMessage::Answer) and the text typed go to callback,
+    // unless context (when given) is gone by then. Returns the id of the
+    // message.
+    using RedesignMessageCallback = std::function<void(int answer, const QString& input)>;
+    int showRedesignMessage(const RedesignMessage& message, QObject* context,
+                            RedesignMessageCallback callback);
+    // The same, waiting for the answer (as QMessageBox::exec() did)
+    int execRedesignMessage(const RedesignMessage& message, QString* input = nullptr);
+
 protected:
     void customEvent( QEvent *) override;
 
     bool eventFilter(QObject *watched, QEvent *event) override;
 
 private:
+    void showSimpleOpenAndAppend( bool start );
     DialogsProvider( qt_intf_t * );
     virtual ~DialogsProvider() override;
 
@@ -200,6 +220,24 @@ private:
     bool b_isDying;
     QSet<QString> m_redesignDialogs;
 
+    struct PendingMessage
+    {
+        RedesignMessage message;
+        QPointer<QObject> context;
+        bool hasContext = false;
+        RedesignMessageCallback callback;
+        // given to the host, or shown as a RedesignMessageBox
+        bool delivered = false;
+        bool boxed = false;
+    };
+    std::map<int, PendingMessage> m_messages;
+    int m_lastMessageId = 0;
+    QPointer<QObject> m_messageHost;
+    void deliverRedesignMessages();
+    // the messages no host showed for a while: as RedesignMessageBox
+    void boxUndeliveredMessages(int delay);
+    void showRedesignMessageBox(int id);
+
     void openDialog( OpenDialog::OpenTab );
 
     template<typename T>
@@ -236,7 +274,10 @@ public slots:
     void mediaCodecDialog();
     // "Show confirmation and error dialogs" off (qt-error-dialogs): true
     // without asking, unless the action cannot be undone (always)
-    bool questionDialog(const QString& text, const QString& title = {}, bool always = false) const;
+    // acceptText: the action (else Yes, and No for cancelText); Return
+    // gives No, as the default button of the question was
+    bool questionDialog(const QString& text, const QString& title = {}, bool always = false,
+                        const QString& acceptText = {}, const QString& cancelText = {});
     QMessageBox::StandardButton messageDialog(const QString& text,
                                               const QString& title = {},
                                               const QMessageBox::StandardButtons buttons = QMessageBox::NoButton,
@@ -254,6 +295,11 @@ public slots:
     void shortcutsDialog();
     void networkStreamDialog();
     void setRedesignDialogVisible(const QString& name, bool visible);
+    // RedesignMessageDialog.qml: the item showing the messages (the last
+    // one set), and the answer to one
+    void setRedesignMessageHost(QObject* host);
+    void releaseRedesignMessageHost(QObject* host);
+    void answerRedesignMessage(int id, int answer, const QString& input);
     void firstRunDialog();
     void extendedDialog(int page = 0);
     void synchroDialog();
@@ -269,9 +315,18 @@ public slots:
     void aboutDialog();
     // the classic About (licence, authors, thanks), behind the redesign's
     void nativeAboutDialog();
+    // Go to time, the plugins list, the statistics and the information of a
+    // folder: drawn in the window of the interface (SetupDialogs.qml), the
+    // classic windows without it (a skin)
     void gotoTimeDialog();
     void podcastConfigureDialog();
     void pluginDialog();
+    void statisticsDialog();
+    void folderInfoDialog(const QUrl &folder);
+    // What's new of this version, again (About)
+    void whatsNewDialog();
+    // Go to time: the time chosen (seconds)
+    void goToTime(double seconds);
     void epgDialog();
     void setPopupMenu();
     void destroyPopupMenu();
@@ -339,8 +394,17 @@ signals:
     void aboutRequested();
     void setupRequested();
     void effectsRequested(int page);
+    void gotoTimeRequested();
+    void pluginsRequested();
+    void statisticsRequested();
+    void folderInfoRequested(const QUrl &folder);
+    void whatsNewRequested();
     void releaseMouseEvents();
     void showToolbarEditorDialog();
+    // for the host given (RedesignMessageDialog.qml): show the message, or
+    // drop it without an answer
+    void redesignMessageRequested(QObject* host, int id, const QVariantMap& message);
+    void redesignMessageCancelled(QObject* host, int id);
 
     //visiblity signal
     void openDialogVisibleChanged();

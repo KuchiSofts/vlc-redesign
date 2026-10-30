@@ -64,8 +64,7 @@ T.MenuItem {
             elide: Text.ElideRight
             // from the start of the row (the right in a right to left menu)
             horizontalAlignment: Text.AlignLeft
-            color: VLCStyle.redesign.color(root.enabled ? VLCStyle.redesign.textMuted : VLCStyle.redesign.textDisabled,
-                                           "#4d4d4d")
+            color: VLCStyle.redesign.color(root.enabled ? VLCStyle.redesign.textMuted : VLCStyle.redesign.textDisabled)
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
             // the text box of the design (17 px) centred, on a whole pixel
@@ -83,7 +82,7 @@ T.MenuItem {
             Layout.preferredWidth: VLCStyle.redesign.iconSize
             Layout.preferredHeight: VLCStyle.redesign.iconSize
             visible: root.checked
-            source: "qrc:///redesign/icons/check/active.png"
+            source: "qrc:///redesign/icons/check/active.svg"
             color: VLCStyle.redesign.accentTint
             sourceSize: Qt.size(width, height)
             fillMode: Image.Pad

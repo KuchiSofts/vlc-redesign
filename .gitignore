@@ -55,11 +55,37 @@ Frameworks
 
 # Ignore build dirs
 build*/
+# the generated design files are kept (design/tools/export.py)
+!design/build/
 target*/
 contrib-*
 install-*
+# (not the wiki page of that name)
+!docs/wiki/Install-and-Update.md
 xcodeproj/
 static-lib/
 !buildsystem/
 !build.rs
 !extras/package/apple/build.sh
+
+# Python's byte code (the scripts under extras/juxtopposed)
+__pycache__/
+*.pyc
+# The folders of the CI workflows (.github/workflows) in the checkout: the
+# contrib archive, the package and the release files. Never synced into a
+# build (win64-docker.sh copies the files git doesn't ignore).
+/cache/
+/out/
+/dist/
+/package/
+/signed/
+/signed-setup/
+/release/
+# Private keys, never committed: the release signing key and its backups
+# (extras/juxtopposed/signing/release-key.ps1 keeps the key outside every
+# repository; the pre-push hook refuses them too)
+*.key
+*.p8
+*.pfx
+*.p12
+update-signing*

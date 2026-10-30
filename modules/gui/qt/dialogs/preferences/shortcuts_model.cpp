@@ -18,11 +18,13 @@
 #include "qt.hpp"
 #include "util/vlchotkeyconverter.hpp"
 
+#include <vlc_actions.h>
 #include <vlc_configuration.h>
 #include <vlc_modules.h>
 #include <vlc_plugin.h>
 
 #include <QKeyEvent>
+#include <QWheelEvent>
 #include <QStringList>
 #include <algorithm>
 #include <cstdlib>
@@ -89,6 +91,15 @@ void ShortcutsModel::setSearchField(const QString &field)
     rebuildRows();
 }
 
+void ShortcutsModel::setLiveTv(bool liveTv)
+{
+    if (m_liveTv == liveTv)
+        return;
+    m_liveTv = liveTv;
+    emit liveTvChanged();
+    rebuildRows();
+}
+
 bool ShortcutsModel::dirty() const
 {
     for (const Entry &entry : m_entries)
@@ -116,6 +127,7 @@ QVariant ShortcutsModel::data(const QModelIndex &index, int role) const
     case DirtyRole: return entry.staged != entry.current || entry.globalStaged != entry.globalCurrent;
     case HotkeysRole: return splitKeys(entry.staged);
     case GlobalHotkeysRole: return splitKeys(entry.globalStaged);
+    case HasGlobalRole: return !entry.globalKey.isEmpty();
     default: return {};
     }
 }
@@ -125,11 +137,13 @@ QHash<int, QByteArray> ShortcutsModel::roleNames() const
     return {{KeyRole, "key"}, {ActionRole, "action"}, {GroupRole, "group"},
             {HotkeyRole, "hotkey"}, {GlobalHotkeyRole, "globalHotkey"},
             {DirtyRole, "dirty"}, {HotkeysRole, "hotkeys"},
-            {GlobalHotkeysRole, "globalHotkeys"}};
+            {GlobalHotkeysRole, "globalHotkeys"}, {HasGlobalRole, "hasGlobal"}};
 }
 
 bool ShortcutsModel::visible(const Entry &entry) const
 {
+    if (entry.tv && !m_liveTv)
+        return false;
     if (m_search.isEmpty())
         return true;
     const auto match = [this](const QString &text) {
@@ -203,6 +217,10 @@ void ShortcutsModel::putKey(const QString &key, const QString &value)
 
 QString ShortcutsModel::groupFor(const QString &key)
 {
+    if (key.startsWith(QLatin1String("qt-key-tv-")))
+        return qtr("Live TV");
+    if (key.startsWith(QLatin1String("qt-key-intf-")))
+        return qtr("Interface");
     if (key == QLatin1String("key-toggle-fullscreen")
         || key == QLatin1String("key-leave-fullscreen")
         || key == QLatin1String("key-position")
@@ -228,6 +246,8 @@ int ShortcutsModel::groupOrder(const QString &group)
     if (group == qtr("Audio")) return 2;
     if (group == qtr("Video")) return 3;
     if (group == qtr("Subtitles")) return 4;
+    if (group == qtr("Interface")) return 6;
+    if (group == qtr("Live TV")) return 7;
     return 5;
 }
 
@@ -279,6 +299,39 @@ void ShortcutsModel::reload()
                 }
                 module_config_free(configs);
             }
+        }
+        // the keys of live TV: the interface's options (qt.cpp)
+        for (const char *name : { "qt-key-tv-channel-up", "qt-key-tv-channel-down",
+                                  "qt-key-tv-previous", "qt-key-tv-list", "qt-key-tv-info" }) {
+            const module_config_t *item = config_FindConfig(name);
+            if (!item || !item->psz_text)
+                continue;
+            Entry entry;
+            entry.key = QString::fromLatin1(name);
+            entry.action = qfut(item->psz_text);
+            entry.group = groupFor(entry.key);
+            entry.groupRank = groupOrder(entry.group);
+            entry.current = readKey(entry.key);
+            entry.staged = entry.current;
+            entry.defaults = QString::fromUtf8(item->orig.psz ? item->orig.psz : "");
+            entry.tv = true;
+            m_entries.append(entry);
+        }
+        // the interface's zoom (qt.cpp): Ctrl+wheel out of the video
+        for (const char *name : { "qt-key-intf-zoom-in", "qt-key-intf-zoom-out" }) {
+            const module_config_t *item = config_FindConfig(name);
+            if (!item || !item->psz_text)
+                continue;
+            Entry entry;
+            entry.key = QString::fromLatin1(name);
+            entry.action = qfut(item->psz_text);
+            entry.group = groupFor(entry.key);
+            entry.groupRank = groupOrder(entry.group);
+            entry.current = readKey(entry.key);
+            entry.staged = entry.current;
+            entry.defaults = QString::fromUtf8(item->orig.psz ? item->orig.psz : "");
+            entry.zoom = true;
+            m_entries.append(entry);
         }
         const QStringList firstActions = {
             QStringLiteral("key-toggle-fullscreen"), QStringLiteral("key-leave-fullscreen"),
@@ -372,19 +425,60 @@ QVariantMap ShortcutsModel::stageKey(const QString &option, bool global,
         return {{QStringLiteral("ok"), false}, {QStringLiteral("modifierOnly"), true}};
 
     QKeyEvent event(QEvent::KeyPress, qtKey, Qt::KeyboardModifiers::fromInt(modifiers));
-    const int vlcKey = qtEventToVLCKey(&event);
+    return stageVlcKey(target, global, qtEventToVLCKey(&event), replaceConflict);
+}
+
+QVariantMap ShortcutsModel::stageWheel(const QString &option, bool global,
+                                       bool up, int modifiers, bool replaceConflict)
+{
+    const int target = findEntry(option);
+    // (a global hotkey is the system's: no wheel there)
+    if (target < 0 || global) {
+        setError(global ? qtr("This key combination cannot be used by VLC.")
+                        : qtr("This shortcut is unavailable."));
+        return {{QStringLiteral("ok"), false}};
+    }
+    QWheelEvent event(QPointF(), QPointF(), QPoint(), QPoint(0, up ? 120 : -120),
+                      Qt::NoButton, Qt::KeyboardModifiers::fromInt(modifiers),
+                      Qt::NoScrollPhase, false);
+    const int vlcKey = qtKeyModifiersToVLC(event) | (up ? KEY_MOUSEWHEELUP : KEY_MOUSEWHEELDOWN);
+    return stageVlcKey(target, false, vlcKey, replaceConflict);
+}
+
+bool ShortcutsModel::canConflict(const Entry &a, const Entry &b)
+{
+    if (a.tv != b.tv)
+        return false;
+    // the subtitles' size over the video, the interface's zoom elsewhere
+    const auto subtitleSize = [](const Entry &entry) {
+        return entry.key.startsWith(QLatin1String("key-subtitle-text-scale-"));
+    };
+    if ((a.zoom && subtitleSize(b)) || (b.zoom && subtitleSize(a)))
+        return false;
+    return true;
+}
+
+QVariantMap ShortcutsModel::stageVlcKey(int target, bool global, int vlcKey, bool replaceConflict)
+{
     const QString canonical = VLCKeyToString(vlcKey, false);
     if (vlcKey == 0 || canonical.isEmpty()) {
         setError(qtr("This key combination cannot be used by VLC."));
         return {{QStringLiteral("ok"), false}};
     }
     setError({});
+    // by the key code, not the text: the modifiers of a default key or of a
+    // vlcrc edited by hand come in any order ("Command+Shift+Alt+Left"),
+    // and in any case ("shift+e")
+    const auto sameKey = [vlcKey](const QString &key) {
+        return vlc_str2keycode(qtu(key)) == static_cast<uint_fast32_t>(vlcKey);
+    };
     QVector<int> conflicts;
     for (int i = 0; i < m_entries.size(); ++i) {
-        if (i == target)
+        if (i == target || !canConflict(m_entries[i], m_entries[target]))
             continue;
         const QString &keys = global ? m_entries[i].globalStaged : m_entries[i].staged;
-        if (splitKeys(keys).contains(canonical))
+        const QStringList parts = splitKeys(keys);
+        if (std::any_of(parts.cbegin(), parts.cend(), sameKey))
             conflicts.append(i);
     }
     if (!conflicts.isEmpty() && !replaceConflict)
@@ -397,14 +491,14 @@ QVariantMap ShortcutsModel::stageKey(const QString &option, bool global,
     for (int i : conflicts) {
         QString &keys = global ? m_entries[i].globalStaged : m_entries[i].staged;
         QStringList parts = splitKeys(keys);
-        parts.removeAll(canonical);
+        parts.erase(std::remove_if(parts.begin(), parts.end(), sameKey), parts.end());
         keys = parts.join(QLatin1Char('\t'));
         notifyEntry(i);
     }
     // added after the keys the action has (pressed again: nothing changes)
     QString &targetKeys = global ? m_entries[target].globalStaged : m_entries[target].staged;
     QStringList targetParts = splitKeys(targetKeys);
-    if (!targetParts.contains(canonical))
+    if (std::none_of(targetParts.cbegin(), targetParts.cend(), sameKey))
         targetParts.append(canonical);
     targetKeys = targetParts.join(QLatin1Char('\t'));
     notifyEntry(target);

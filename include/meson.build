@@ -64,6 +64,7 @@ install_headers(
     'vlc_input_item.h',
     'vlc_interface.h',
     'vlc_interrupt.h',
+    'vlc_iptv.h',
     'vlc_keystore.h',
     'vlc_list.h',
     'vlc_list.hpp',

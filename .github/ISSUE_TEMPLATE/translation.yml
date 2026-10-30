@@ -1,13 +1,15 @@
 name: Translation
 description: A wrong, awkward or missing text in your language, or a new language
 title: "Translation: "
-labels: ["translation"]
+labels: ["area:translations"]
 body:
   - type: markdown
     attributes:
       value: |
-        To translate a whole language or more than a few texts, see [Translating](https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/TRANSLATING.md)
-        and open a pull request with your `.po` file. For a few texts, this form is enough.
+        The quickest way to fix a text is to change it yourself on [Weblate](https://hosted.weblate.org/engage/vlc-redesign/),
+        in the browser: it reaches the next release by itself. To start a new language, use Weblate's *Start new translation*.
+        Use this form when you can't use Weblate, or for a text that can't be translated (stuck in English, cut off, wrong
+        layout). See [Translating](https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/TRANSLATING.md) for the details.
   - type: input
     id: language
     attributes:
@@ -15,11 +17,23 @@ body:
       placeholder: "Hebrew"
     validations:
       required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of problem
+      options:
+        - A wrong or awkward translation
+        - A text that stays in English
+        - A text cut off or badly placed
+        - A new language
+        - Other
+    validations:
+      required: true
   - type: textarea
     id: texts
     attributes:
       label: The texts
-      description: Where they are, what they say now, and what they should say. One per line.
+      description: Where they are, what they say now, and what they should say. One per line. A screenshot helps.
       placeholder: |
         Settings → Playback, "…": now "…", should be "…"
     validations:
@@ -28,4 +42,5 @@ body:
     id: version
     attributes:
       label: VLC Redesign version
-      placeholder: "0.3.0"
+      description: "⋯ menu → About VLC shows it"
+      placeholder: "0.3.1"

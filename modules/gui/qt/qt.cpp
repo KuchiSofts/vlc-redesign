@@ -129,6 +129,10 @@ extern "C" char **environ;
 
 #include <QQuickWindow>
 #include <QOpenGLContext> // Available in Qt GUI, no need for Qt OpenGL module
+#ifdef Q_OS_MACOS
+# include <QMenuBar>
+# include <vlc_intf_strings.h>
+#endif
 
 #ifndef X_DISPLAY_MISSING
 # include <vlc_xlib.h>
@@ -298,6 +302,9 @@ static void ShowDialog   ( intf_thread_t *, int, int, intf_dialog_args_t * );
 
 #define QT_SEEK_THUMBNAIL_TEXT N_("Show thumbnail while scrubbing")
 #define QT_SEEK_THUMBNAIL_LONGTEXT N_("Show the frame at the hovered position above the seek bar")
+#define QT_SEEK_SUBTITLE_CUES_TEXT N_("Show subtitle lines on the seek bar")
+#define QT_SEEK_SUBTITLE_CUES_LONGTEXT N_("Mark on the seek bar where the lines of the subtitle shown are, " \
+                                         "when it comes from a subtitle file")
 
 #define FULLSCREEN_CONTROL_PIXELS N_( "Fullscreen controller mouse sensitivity" )
 
@@ -331,6 +338,19 @@ static void ShowDialog   ( intf_thread_t *, int, int, intf_dialog_args_t * );
 
 #define ACCENT_COLOR_TEXT N_( "Accent color" )
 #define ACCENT_COLOR_LONGTEXT N_( "Adjusts the accent color, special values are 'default' and 'system' (requires Qt 6.6) ." )
+
+/* The keys of live TV over the video (Settings > Shortcuts, "Live TV"): they
+ * win over the hotkeys only while a channel plays */
+#define TV_CHANNEL_UP_TEXT N_( "Next channel" )
+#define TV_CHANNEL_DOWN_TEXT N_( "Previous channel" )
+#define TV_PREVIOUS_TEXT N_( "Last channel watched" )
+#define TV_LIST_TEXT N_( "Channel list" )
+#define TV_INFO_TEXT N_( "Channel banner" )
+
+/* The interface's zoom (Settings > Shortcuts, "Interface"): Ctrl+wheel out of
+ * the video, where it sizes the subtitles (key-subtitle-text-scale-up/down) */
+#define INTF_ZOOM_IN_TEXT N_( "Zoom the interface in" )
+#define INTF_ZOOM_OUT_TEXT N_( "Zoom the interface out" )
 
 static const int initial_prefs_view_list[] = { 0, 1, 2 };
 static const char *const initial_prefs_view_list_texts[] =
@@ -459,12 +479,10 @@ vlc_module_begin ()
               QT_DISABLE_VOLUME_KEYS_LONGTEXT      /* longtext */)
 #endif
 
-    add_bool( "qt-titlebar",
-#ifdef _WIN32
-              false                              /* use CSD by default on windows */,
-#else
-              true                               /* but not on linux */,
-#endif
+    /* Off: the redesign's own title bar; on macOS a unified one, which
+     * keeps the system's traffic lights, full screen in its own Space and
+     * edge resizing (maininterface/macos_titlebar.hpp) */
+    add_bool( "qt-titlebar", false,
               QT_CLIENT_SIDE_DECORATION_TEXT, QT_CLIENT_SIDE_DECORATION_LONGTEXT )
 
     add_bool( "qt-menubar", false, QT_MENUBAR_TEXT, QT_MENUBAR_LONGTEXT )
@@ -475,6 +493,7 @@ vlc_module_begin ()
     /* On: the video sits between the bars, which only hide in fullscreen */
     add_bool( "qt-pin-controls", true, QT_PIN_CONTROLS_TEXT, QT_PIN_CONTROLS_LONGTEXT )
     add_bool( "qt-seek-thumbnail", true, QT_SEEK_THUMBNAIL_TEXT, QT_SEEK_THUMBNAIL_LONGTEXT )
+    add_bool( "qt-seek-subtitle-cues", true, QT_SEEK_SUBTITLE_CUES_TEXT, QT_SEEK_SUBTITLE_CUES_LONGTEXT )
 
 
     add_obsolete_bool( "qt-advanced-pref" ) /* since 4.0.0 */
@@ -526,6 +545,21 @@ vlc_module_begin ()
     add_float_with_range( "qt-safe-area", 0, 0, 100.0, SAFE_AREA_TEXT, SAFE_AREA_LONGTEXT )
 
     add_string( "qt-accent-color", "default", ACCENT_COLOR_TEXT, ACCENT_COLOR_LONGTEXT )
+
+    /* edited in the shortcuts only (no global hotkey: the interface's) */
+    set_subcategory( SUBCAT_HIDDEN )
+    add_string_inner( CONFIG_ITEM_KEY, "qt-key-tv-channel-up", TV_CHANNEL_UP_TEXT, nullptr, "Page Up" )
+    add_string_inner( CONFIG_ITEM_KEY, "qt-key-tv-channel-down", TV_CHANNEL_DOWN_TEXT, nullptr, "Page Down" )
+    add_string_inner( CONFIG_ITEM_KEY, "qt-key-tv-previous", TV_PREVIOUS_TEXT, nullptr, "Backspace" )
+    add_string_inner( CONFIG_ITEM_KEY, "qt-key-tv-list", TV_LIST_TEXT, nullptr, "Enter" )
+    add_string_inner( CONFIG_ITEM_KEY, "qt-key-tv-info", TV_INFO_TEXT, nullptr, "i" )
+#ifdef __APPLE__
+    add_string_inner( CONFIG_ITEM_KEY, "qt-key-intf-zoom-in", INTF_ZOOM_IN_TEXT, nullptr, "Command+Mouse Wheel Up" )
+    add_string_inner( CONFIG_ITEM_KEY, "qt-key-intf-zoom-out", INTF_ZOOM_OUT_TEXT, nullptr, "Command+Mouse Wheel Down" )
+#else
+    add_string_inner( CONFIG_ITEM_KEY, "qt-key-intf-zoom-in", INTF_ZOOM_IN_TEXT, nullptr, "Ctrl+Mouse Wheel Up" )
+    add_string_inner( CONFIG_ITEM_KEY, "qt-key-intf-zoom-out", INTF_ZOOM_OUT_TEXT, nullptr, "Ctrl+Mouse Wheel Down" )
+#endif
 
     cannot_unload_broken_library()
 
@@ -625,7 +659,44 @@ public:
             text = vlc_gettext(sourceText);
 
         assert(text);
+        const bool untranslated = text == sourceText || (n >= 0 && text == disambiguation);
+        if (untranslated && QGuiApplication::layoutDirection() == Qt::RightToLeft)
+            return leftToRight(QString::fromUtf8(text));
         return QString::fromUtf8(text);
+    }
+
+private:
+    // A text left in English in a right-to-left interface (Hebrew, Arabic)
+    // is still read from left to right: its punctuation at an end ("Advanced
+    // options...", "Name:", "(default)") would take the direction of the
+    // paragraph and show on the other side, the dots first. A left-to-right
+    // mark at each end keeps it with the words.
+    static QString leftToRight(const QString &text)
+    {
+        bool latin = false;
+        for (const QChar c : text)
+        {
+            switch (c.direction())
+            {
+            case QChar::DirR: case QChar::DirAL:
+                return text;
+            case QChar::DirL:
+                latin = true;
+                break;
+            default:
+                break;
+            }
+        }
+        if (!latin)
+            return text;
+        const auto neutral = [](QChar c) {
+            const QChar::Direction d = c.direction();
+            return d != QChar::DirL && d != QChar::DirEN && d != QChar::DirAN;
+        };
+        if (!neutral(text.front()) && !neutral(text.back()))
+            return text;
+        static const QChar mark(0x200E);
+        return mark + text + mark;
     }
 };
 
@@ -999,6 +1070,11 @@ static void *Thread( void *obj )
         // its numbers and dates
         const QString iso = interfaceLanguage();
         QLocale::setDefault( QLocale( iso == QLatin1String( "auto" ) ? QLocale::system().name() : iso ) );
+#ifndef _WIN32
+        // its texts: elsewhere than on Windows, VLC started in the system's
+        if( iso != QLatin1String( "auto" ) )
+            vlc_settextlanguage( qtu( iso ) );
+#endif
         // its fonts for the characters Inter does not have
         applyLanguageFonts( QLocale() );
     }
@@ -1424,10 +1500,10 @@ static void *Thread( void *obj )
     app.setApplicationDisplayName( qtr("VLC media player") );
     app.setApplicationVersion( QString::fromUtf8(VERSION_MESSAGE) );
 
-    if( QDate::currentDate().dayOfYear() >= QT_XMAS_JOKE_DAY && var_InheritBool( p_intf, "qt-icon-change" ) )
-        app.setWindowIcon( QIcon::fromTheme( "vlc-xmas", QIcon( ":/logo/vlc128-xmas.png" ) ) );
-    else
-        app.setWindowIcon( QIcon::fromTheme( "vlc", QIcon( ":/logo/vlc256.png" ) ) );
+    // the app icon (the designer's logo, as vlc.exe's icon) all year: the
+    // title bar and the taskbar draw the vector at their size and the
+    // screen's scale (no seasonal cone: one icon on every platform)
+    app.setWindowIcon( QIcon::fromTheme( "vlc", QIcon( ":/logo/vlc.svg" ) ) );
 
     app.setDesktopFileName( PACKAGE );
 
@@ -1597,6 +1673,31 @@ static void *Thread( void *obj )
         }
     }
 #undef QTSTYLE_KEY
+
+#ifdef Q_OS_MACOS
+    /* The menu bar at the top of the screen: the window keeps the
+     * redesign's own menus. Its actions have no shortcut (the QML ones
+     * would become ambiguous): About, Settings and Quit go to the
+     * application menu by their roles, where Cmd+, and Cmd+Q are the
+     * system's. Destroyed after ThreadCleanup, before the QApplication. */
+    std::unique_ptr<QMenuBar> macMenuBar;
+    if( !p_intf->b_isDialogProvider )
+    {
+        macMenuBar = std::make_unique<QMenuBar>( nullptr ); // parentless: the global one
+        QMenu *media = macMenuBar->addMenu( qtr( "&Media" ) );
+        media->addAction( qtr( "Open &File..." ), []() { THEDP->simpleOpenDialog(); } );
+        media->addAction( qtr( "Open &Network Stream..." ), []() { THEDP->openNetDialog(); } );
+        QAction *about = media->addAction( qfut( I_MENU_ABOUT ), []() { THEDP->aboutDialog(); } );
+        about->setMenuRole( QAction::AboutRole );
+        QAction *prefs = media->addAction( qtr( "&Preferences" ), []() { THEDP->prefsDialog(); } );
+        prefs->setMenuRole( QAction::PreferencesRole );
+        prefs->setShortcut( QKeySequence::Preferences );
+        QAction *quit = media->addAction( qtr( "Quit" ), []() { THEDP->quit(); } );
+        quit->setMenuRole( QAction::QuitRole );
+        QMenu *help = macMenuBar->addMenu( qtr( "&Help" ) );
+        help->addAction( qtr( "&Help" ), []() { THEDP->helpDialog(); } );
+    }
+#endif
 
     /* Launch */
     app.exec();

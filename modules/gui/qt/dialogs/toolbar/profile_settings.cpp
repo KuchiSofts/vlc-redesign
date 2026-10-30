@@ -18,16 +18,22 @@
 #include "dialogs/preferences/config_values.hpp"
 #include "maininterface/mainctx.hpp"
 #include "util/color_scheme_model.hpp"
+#include "util/redesign_accent.hpp"
 #include "qt.hpp"
 
 #include <QSettings>
 #include <QSet>
+#include <QDateTime>
+#include <QFile>
+#include <QFileInfo>
 #include <QColor>
 #include <vlc_aout.h>
 #include <vlc_modules.h>
 #include <vlc_player.h>
 #include <vlc_variables.h>
 #include <vlc_vout.h>
+#include <algorithm>
+#include <iterator>
 #include <cstdlib>
 #include <cstring>
 
@@ -56,7 +62,7 @@ const QStringList audioOptions {
     "stereowiden-feedback", "stereowiden-crossfeed", "stereowiden-dry-mix"
 };
 const QStringList videoOptions {
-    "video-filter", "crop", "crop-top", "crop-bottom", "crop-left", "crop-right",
+    "video-filter", "crop",
     "hue", "brightness", "contrast", "saturation", "gamma", "sharpen-sigma",
     "gradfun-radius", "grain-variance", "extract-component", "colorthres-color",
     "colorthres-saturationthres", "colorthres-similaritythres", "posterize-level",
@@ -166,12 +172,45 @@ bool applyLive(MainCtx *ctx, const QVariantMap &values)
 }
 }
 
+bool syncSettings(QSettings *settings)
+{
+    if (settings->status() == QSettings::NoError) {
+        settings->sync();
+        return settings->status() == QSettings::NoError;
+    }
+    // Already in error: the file written again tells instead. A QSettings
+    // made to read it back would not do: it shares the values of this one,
+    // the unwritten ones included. QSettings writes the file whole, as a new
+    // one, and keeps what it could not write for the next sync
+    const QString path = settings->fileName();
+    const auto contents = [&path]() {
+        QFile file(path);
+        return file.open(QIODevice::ReadOnly) ? file.readAll() : QByteArray();
+    };
+    const QDateTime before = QFileInfo(path).lastModified();
+    const QByteArray old = contents();
+    settings->sync();
+    const QFileInfo after(path);
+    return after.exists() && (after.lastModified() != before || contents() != old);
+}
+
 QVariantMap ProfileSettings::capture(MainCtx *ctx, QSettings *settings)
 {
     QVariantMap values;
     for (const QString &key : profileKeys())
         if (safeOption(key)) values.insert(key, ConfigValues::read(key));
-    return {{"version", 1}, {"config", values},
+    // the settings of the interface (qt:), kept by QSettings, not by VLC:
+    // those never set are left out, and go back to their defaults when the
+    // profile is applied
+    QVariantMap qtValues;
+    for (const QString &key : profileKeys()) {
+        if (!key.startsWith(QLatin1String("qt:")))
+            continue;
+        const QString name = key.mid(3);
+        if (settings->contains(name))
+            qtValues.insert(name, settings->value(name));
+    }
+    return {{"version", 1}, {"config", values}, {"qt", qtValues},
             {"accent", settings->value("redesign/accent", "#D37918")},
             // the ini gives "true" / "false" back as text
             {"developerMode", settings->value("redesign/developer-mode", false).toBool()},
@@ -206,7 +245,8 @@ bool ProfileSettings::apply(MainCtx *ctx, QSettings *settings,
     const int oldTheme = ctx->getColorScheme()->currentIndex();
     const QString accent = target.value("accent").toString();
     const int theme = target.value("theme").toInt();
-    if (!QColor(accent).isValid() || theme < 0
+    // (a color, or "system": the Windows accent)
+    if (!RedesignAccent::isValidChoice(accent) || theme < 0
         || theme >= ctx->getColorScheme()->rowCount(QModelIndex())) {
         if (error) *error = qtr("Profile appearance is invalid.");
         return false;
@@ -219,14 +259,14 @@ bool ProfileSettings::apply(MainCtx *ctx, QSettings *settings,
         settings->setValue("redesign/accent", accent);
         settings->setValue("redesign/developer-mode", target.value("developerMode", false).toBool());
         settings->setValue("MainWindow/color-scheme-index", theme);
-        settings->sync();
-    }
-    if (settings->status() != QSettings::NoError) {
-        settings->setValue("redesign/accent", oldAccent);
-        settings->setValue("redesign/developer-mode", oldDeveloperMode);
-        settings->setValue("MainWindow/color-scheme-index", oldTheme);
-        if (error) *error = qtr("Could not save profile appearance.");
-        return false;
+        // (judged by this write alone: nothing written, nothing failed)
+        if (!syncSettings(settings)) {
+            settings->setValue("redesign/accent", oldAccent);
+            settings->setValue("redesign/developer-mode", oldDeveloperMode);
+            settings->setValue("MainWindow/color-scheme-index", oldTheme);
+            if (error) *error = qtr("Could not save profile appearance.");
+            return false;
+        }
     }
     bool ok = true;
     for (auto it = changes.cbegin(); it != changes.cend(); ++it)
@@ -245,6 +285,40 @@ bool ProfileSettings::apply(MainCtx *ctx, QSettings *settings,
         if (error) *error = qtr("Could not apply profile settings; previous values restored.");
         return false;
     }
+    // the settings of the interface: a profile saved before they were kept
+    // has none, and leaves them as they are (as the setters of the Settings
+    // page, settingValueChanged tells the interface)
+    bool qtChanged = false;
+    if (target.contains("qt")) {
+        const QVariantMap qtValues = target.value("qt").toMap();
+        for (const QString &key : allowed) {
+            if (!key.startsWith(QLatin1String("qt:")))
+                continue;
+            const QString name = key.mid(3);
+            if (qtValues.contains(name)) {
+                // (the ini gives the values back as text)
+                const QVariant value = qtValues.value(name);
+                if (settings->contains(name) && settings->value(name).toString() == value.toString())
+                    continue;
+                ctx->setSettingValue(name, value);
+            } else if (settings->contains(name)) {
+                ctx->removeSettingValue(name);
+            } else {
+                continue;
+            }
+            qtChanged = true;
+        }
+    }
     ctx->getColorScheme()->setCurrentIndex(theme);
+    // VLC reads some settings once (the hotkeys, the interface options, the
+    // play order): applied now, as the Settings dialog does
+    if (!changes.isEmpty() || qtChanged) {
+        ctx->reloadPrefs();
+        static const char *const orderKeys[] = {
+            "random", "repeat", "loop", "play-and-stop", "play-and-exit" };
+        if (std::any_of(std::begin(orderKeys), std::end(orderKeys),
+                        [&changes](const char *key) { return changes.contains(QLatin1String(key)); }))
+            ctx->applyPlayOrder();
+    }
     return true;
 }

@@ -70,16 +70,24 @@ T.Pane {
     readonly property real _rowPadding: (VLCStyle.redesign.controlHeight - VLCStyle.redesign.playHeight) / 2
 
 
-    // Figma "Player - customize": a line above each row while customizing
-    Repeater {
-        model: (VLCStyle.customizing && !root.inlineTimeline) ? 2 : 0
-        delegate: Rectangle {
-            required property int index
-            parent: root.background
-            y: index * root._rowHeight
-            width: parent ? parent.width : 0
-            height: VLCStyle.dp(1, VLCStyle.scale)
-            color: VLCStyle.redesign.color(index === 0 ? VLCStyle.redesign.separator : "#212121", "#9c9c9b")
+    // Figma "Player - customize": a line above each row while customizing.
+    // The Repeater sits in the background itself: a delegate moved there
+    // by its own parent binding was no longer the sibling of the next one
+    // ("QQuickItem::stackAfter: Cannot stack ... which must be a sibling",
+    // Customize Player at zoom 1.5 and 2, where the timeline has a row)
+    Item {
+        parent: root.background
+        width: parent ? parent.width : 0
+
+        Repeater {
+            model: (VLCStyle.customizing && !root.inlineTimeline) ? 2 : 0
+            delegate: Rectangle {
+                required property int index
+                y: index * root._rowHeight
+                width: parent ? parent.width : 0
+                height: VLCStyle.dp(1, VLCStyle.scale)
+                color: VLCStyle.redesign.color(index === 0 ? VLCStyle.redesign.separator : "#212121", "#9c9c9b")
+            }
         }
     }
 
@@ -242,7 +250,7 @@ T.Pane {
                                                  | (length.isSubSecond() ? VLCTick.SubSecondFormattedAsMS : 0))
                 }
                 color: editing ? "transparent"
-                               : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, theme.fg.primary, theme.palette?.isDark ?? VLCStyle.darkPalette.isDark)
+                               : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e", theme.palette?.isDark ?? VLCStyle.darkPalette.isDark)
                 font: timeTextMetrics.font
 
                 // Figma "Current Time" (1904:7238): under the pointer, the box
@@ -559,7 +567,7 @@ T.Pane {
             height: VLCStyle.dp(36, VLCStyle.scale)
             stretch: true
             corners: false
-            color: VLCStyle.redesign.color("#6B6B6B", "#5a5a59")
+            color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
 
             // the timeline dragged: on its row only from the one row bar,
             // back only from its row above an empty center

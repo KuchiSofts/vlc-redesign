@@ -147,6 +147,10 @@ it); it is the first of the four subtitle sync keys, see [Subtitles](#subtitles)
 | Reset subtitles text scale | <kbd>Ctrl</kbd>+<kbd>0</kbd> (see the note below) |
 | Scale up / down subtitles text | <kbd>Ctrl</kbd>+<kbd>Mouse Wheel Up</kbd> / <kbd>Ctrl</kbd>+<kbd>Mouse Wheel Down</kbd> |
 
+*Scale up / down subtitles text* works with the pointer over the video (since 0.4.0): 25 % to 500 %, with a short
+*Subtitle size* message. Elsewhere in the window the same turn of the wheel is *Zoom the interface in / out* (below).
+A shortcut can take a turn of the wheel with <kbd>Ctrl</kbd>, <kbd>Alt</kbd> or <kbd>Shift</kbd>.
+
 How the sync keys work: press <kbd>Shift</kbd>+<kbd>H</kbd> when you hear a line, <kbd>Shift</kbd>+<kbd>J</kbd> when
 its text shows, then <kbd>Shift</kbd>+<kbd>K</kbd> to move the subtitles by the gap between the two. The
 *Subtitle timing* buttons of the languages and tracks panel do the same with the mouse: see
@@ -159,6 +163,27 @@ its text shows, then <kbd>Shift</kbd>+<kbd>K</kbd> to move the subtitles by the 
 | Activate | <kbd>Enter</kbd> |
 | Navigate up / down / left / right | <kbd>Up</kbd> / <kbd>Down</kbd> / <kbd>Left</kbd> / <kbd>Right</kbd> |
 | Go to the DVD menu | <kbd>Shift</kbd>+<kbd>M</kbd> |
+
+### Interface
+
+New in 0.4.0.
+
+| Action | Key |
+|---|---|
+| Zoom the interface in / out | <kbd>Ctrl</kbd>+<kbd>Mouse Wheel Up</kbd> / <kbd>Ctrl</kbd>+<kbd>Mouse Wheel Down</kbd>, with the pointer anywhere but over the video |
+
+### Live TV
+
+New in 0.4.0, with the [Live TV](Live-TV) add-on. These keys work while a channel plays and then come before VLC's
+other shortcuts; outside Live TV the same keys keep their usual action. They have no global key.
+
+| Action | Key |
+|---|---|
+| Next channel | <kbd>Page Up</kbd> |
+| Previous channel | <kbd>Page Down</kbd> |
+| Last channel watched | <kbd>Backspace</kbd> |
+| Channel list | <kbd>Enter</kbd> |
+| Channel banner | <kbd>I</kbd> |
 
 ## The keys of the interface
 

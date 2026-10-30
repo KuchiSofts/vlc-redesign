@@ -34,16 +34,20 @@ Item {
         // the cone and the window buttons as the design draws them (masks
         // of its raster, coloured)
         Impl.ColorImage {
+            // drawn at the size shown (an SVG: sharp at any scale and zoom)
+            sourceSize: Qt.size(width, height)
             width: 1056
             height: 22
-            source: "qrc:///redesign/theme-strip-cone.png"
+            source: "qrc:///redesign/theme-strip-cone.svg"
             smooth: false
             color: root.accent
         }
         Impl.ColorImage {
+            // drawn at the size shown (an SVG: sharp at any scale and zoom)
+            sourceSize: Qt.size(width, height)
             width: 1056
             height: 22
-            source: "qrc:///redesign/theme-strip-buttons.png"
+            source: "qrc:///redesign/theme-strip-buttons.svg"
             smooth: false
             color: root._light ? "#4d4d4d" : "#8f8f8f"
         }
@@ -117,12 +121,14 @@ Item {
                     // System: dark left of the line (16,0)-(77,100) with a
                     // hard edge, the corners rounded (the tile of the design)
                     Image {
+                        // drawn at the size shown (an SVG: sharp at any scale and zoom)
+                        sourceSize: Qt.size(width, height)
                         visible: modelData.index === 0
                         x: 12
                         y: 12
                         width: 100
                         height: 100
-                        source: "qrc:///redesign/theme-system.png"
+                        source: "qrc:///redesign/theme-system.svg"
                         smooth: false
                     }
                 }
@@ -194,28 +200,34 @@ Item {
         // the icons and the times of the bar as the design draws them (a
         // mask of its raster, coloured)
         Impl.ColorImage {
+            // drawn at the size shown (an SVG: sharp at any scale and zoom)
+            sourceSize: Qt.size(width, height)
             width: 1056
             height: 30
-            source: "qrc:///redesign/theme-bar-mask.png"
+            source: "qrc:///redesign/theme-bar-mask.svg"
             smooth: false
             color: sample.iconColor
         }
         // the play pill and its triangle (masks of the design's raster)
         Impl.ColorImage {
+            // drawn at the size shown (an SVG: sharp at any scale and zoom)
+            sourceSize: Qt.size(width, height)
             x: 27
             y: 3
             width: 40
             height: 24
-            source: "qrc:///redesign/theme-bar-pill.png"
+            source: "qrc:///redesign/theme-bar-pill.svg"
             smooth: false
             color: root.accent
         }
         Impl.ColorImage {
+            // drawn at the size shown (an SVG: sharp at any scale and zoom)
+            sourceSize: Qt.size(width, height)
             x: 41
             y: 9
             width: 14
             height: 14
-            source: "qrc:///redesign/theme-bar-play.png"
+            source: "qrc:///redesign/theme-bar-play.svg"
             smooth: false
             color: "#161616"
         }
@@ -238,11 +250,13 @@ Item {
         }
         // the knob (a mask of the design's raster)
         Impl.ColorImage {
+            // drawn at the size shown (an SVG: sharp at any scale and zoom)
+            sourceSize: Qt.size(width, height)
             x: 186
             y: 5
             width: 12
             height: 20
-            source: "qrc:///redesign/theme-bar-knob.png"
+            source: "qrc:///redesign/theme-bar-knob.svg"
             smooth: false
             color: root.accent
         }
@@ -253,7 +267,8 @@ Item {
             width: 49
             height: 15
             source: "qrc:///redesign/volume-background.svg"
-            sourceSize: Qt.size(98, 30)
+            sourceSize: Qt.size(width, height)
+            smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
             // the level: the gradient of the whole track shown over its
             // first 17 px (Figma)
             Item {
@@ -266,7 +281,8 @@ Item {
                     width: parent.parent.width - 2
                     height: parent.height
                     source: "qrc:///redesign/volume-fill.svg"
-                    sourceSize: Qt.size(width * 2, height * 2)
+                    sourceSize: Qt.size(width, height)
+                    smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                 }
             }
         }

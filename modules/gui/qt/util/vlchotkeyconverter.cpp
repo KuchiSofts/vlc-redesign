@@ -22,8 +22,15 @@ int qtKeyModifiersToVLC( const QInputEvent& e )
     int i_keyModifiers = 0;
     if( e.modifiers() & Qt::ShiftModifier ) i_keyModifiers |= KEY_MODIFIER_SHIFT;
     if( e.modifiers() & Qt::AltModifier ) i_keyModifiers |= KEY_MODIFIER_ALT;
+#ifdef Q_OS_MACOS
+    /* Qt names the Command key Control and the Control key Meta on macOS;
+     * VLC's hotkeys of macOS are written "Command+..." (src/libvlc-module.c) */
+    if( e.modifiers() & Qt::ControlModifier ) i_keyModifiers |= KEY_MODIFIER_COMMAND;
+    if( e.modifiers() & Qt::MetaModifier ) i_keyModifiers |= KEY_MODIFIER_CTRL;
+#else
     if( e.modifiers() & Qt::ControlModifier ) i_keyModifiers |= KEY_MODIFIER_CTRL;
     if( e.modifiers() & Qt::MetaModifier ) i_keyModifiers |= KEY_MODIFIER_META;
+#endif
     return i_keyModifiers;
 }
 

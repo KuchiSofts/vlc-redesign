@@ -22,7 +22,7 @@ import VLC.Util
 
 // Figma "Customize Player": "Go Home", the home of the library
 RedesignIconButton {
-    iconSource: "qrc:///redesign/icons/home/default.png"
+    iconSource: "qrc:///redesign/icons/home/default.svg"
     onClicked: {
         History.push(["home"])
         MainCtx.playerView = false

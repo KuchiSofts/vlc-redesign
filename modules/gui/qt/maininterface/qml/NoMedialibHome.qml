@@ -40,7 +40,7 @@ FocusScope {
 
     Rectangle {
         anchors.fill: parent
-        color: VLCStyle.redesign.color(VLCStyle.redesign.windowBackground, theme.bg.primary)
+        color: VLCStyle.redesign.color(VLCStyle.redesign.windowBackground, "#c2c2c1")
     }
 
     component OpenButton: Widgets.ActionButtonPrimary {
@@ -48,14 +48,13 @@ FocusScope {
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.redesign.fontNormal
         radius: VLCStyle.redesign.controlRadius
-        color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, colorContext.fg.primary)
+        color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")
         background: Rectangle {
             radius: control.radius
             color: VLCStyle.redesign.color(!control.enabled ? VLCStyle.redesign.controlBackground
-                                                           : control.down ? VLCStyle.redesign.accentDim : VLCStyle.redesign.accent,
-                                           control.colorContext.bg.primary)
+                                                           : control.down ? VLCStyle.redesign.accentDim : VLCStyle.redesign.accent)
             border.width: VLCStyle.focus_border
-            border.color: control.visualFocus ? VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, control.colorFocus) : "transparent"
+            border.color: control.visualFocus ? VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e") : "transparent"
         }
     }
 
@@ -130,7 +129,7 @@ FocusScope {
                                                                : buttons.implicitHeight * 1.618 * _eDPR) // 1.618 = golden ratio approximation
 
             source: MainCtx.useXmasCone() ? "qrc:///logo/vlc48-xmas.png" // TODO: new xmas cone designs
-                                          : "qrc:///misc/cone.svg"
+                                          : "qrc:///redesign/logo.svg"
 
             Connections {
                 target: MainCtx

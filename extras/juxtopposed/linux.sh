@@ -1,7 +1,9 @@
 #!/bin/sh
 # Copyright (C) 2026 VLC authors and VideoLAN
 # SPDX-License-Identifier: GPL-2.0-or-later
-# Isolated baseline build; run inside the image from linux.Dockerfile.
+# Isolated baseline build; run inside the image from linux.Dockerfile. Its
+# Qt 6.4 can't load the redesign's QML: it builds the dependencies
+# (build-m0/deps) for linux-qt68.sh, the build to run (Qt 6.8).
 set -eu
 cd /work
 jobs=${M0_JOBS:-1}
@@ -29,16 +31,18 @@ if ! pkg-config --atleast-version=1.23.0 wayland-scanner; then
     cd /work
 fi
 
-if ! pkg-config --atleast-version=0.13.0 medialibrary; then
+if ! pkg-config --atleast-version=0.14.0 medialibrary; then
     cd /work/build-m0/contrib
     ../../contrib/bootstrap --prefix=/work/build-m0/deps --disable-all --enable-medialibrary
     make -j"$jobs" .medialibrary > ../logs/medialibrary.log 2>&1
     cd /work
 fi
+# DEPS_ONLY=1: the dependencies only, for linux-qt68.sh (the CI build)
+[ "${DEPS_ONLY:-0}" = 1 ] && exit 0
 
 ./bootstrap > build-m0/logs/bootstrap.log 2>&1
 cd build-m0/linux
-/work/configure --disable-nls --disable-skins2 --disable-rust --enable-wayland \
+/work/configure --enable-nls --disable-skins2 --disable-rust --enable-wayland \
     --enable-qt --enable-medialibrary CFLAGS='-O0 -g0' CXXFLAGS='-O0 -g0' \
     > ../logs/configure.log 2>&1
 if ! grep -q '^[^#].*-DQT_HAS_X11_COMPOSITOR' modules/gui/qt/Makefile; then

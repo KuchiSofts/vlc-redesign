@@ -133,9 +133,9 @@ Widgets.PageExt {
         { text: qsTr("Resync"), icon: "sync",
           action: () => { if (MainCtx.mediaLibraryAvailable) MainCtx.mediaLibrary.reload() },
           enabled: () => MainCtx.mediaLibraryAvailable },
-        // the folder opens in the file manager
+        // what the folder holds (Folder information)
         { text: qsTr("Info"), icon: "info",
-          action: (dataList) => Qt.openUrlExternally(root._folderOf(dataList)) }
+          action: (dataList) => DialogsProvider.folderInfoDialog(root._folderOf(dataList)) }
     ]
 
     Widgets.RedesignContextMenu {
@@ -194,7 +194,10 @@ Widgets.PageExt {
               action: (dataList, options, indexes) => {
                   const url = String(fileMenu.file(dataList).url)
                   const parent = url.substring(0, url.lastIndexOf("/"))
-                  if (parent !== String(root.folderUrl).replace(/\/$/, "")) {
+                  // the paths compared: the URLs of the folder and of the
+                  // file are encoded differently ("Rock & Roll")
+                  const path = (link) => Helpers.localPathFromUrl(link).replace(/[\/\\]$/, "")
+                  if (path(parent) !== path(root.folderUrl)) {
                       History.push(["folder"], { folderUrl: parent }, Qt.MouseFocusReason)
                   } else {
                       grid.currentIndex = fileMenu.row(indexes)
@@ -347,8 +350,9 @@ Widgets.PageExt {
                             width: card.model.isFolder ? VLCStyle.dp(32, VLCStyle.scale) : VLCStyle.redesign.iconSize
                             height: width
                             source: card.model.isFolder ? "qrc:///redesign/folder.svg"
-                                                        : "qrc:///redesign/icons/file/default.png"
+                                                        : "qrc:///redesign/icons/file/default.svg"
                             sourceSize: Qt.size(width, height)
+                            smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                         }
                         // the progress, at the bottom of the thumbnail (a time
                         // axis: from the left in every language, as the seek bar)
@@ -382,7 +386,7 @@ Widgets.PageExt {
                                 anchors.centerIn: parent
                                 width: VLCStyle.redesign.iconSize
                                 height: width
-                                source: "qrc:///redesign/icons/play/outline-active.png"
+                                source: "qrc:///redesign/icons/play/outline-active.svg"
                                 color: VLCStyle.redesign.accentTint
                                 sourceSize: Qt.size(width, height)
                                 fillMode: Image.Pad
@@ -401,8 +405,7 @@ Widgets.PageExt {
                         horizontalAlignment: Text.AlignLeft
                         elide: Text.ElideMiddle
                         color: card.hovered ? VLCStyle.redesign.accent
-                                            : VLCStyle.redesign.color(card.played ? "#6B6B6B" : VLCStyle.redesign.textSecondary,
-                                                                      card.played ? "#5a5a59" : "#4d4d4d")
+                                            : VLCStyle.redesign.color(card.played ? "#6B6B6B" : VLCStyle.redesign.textSecondary)
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                         // the text box of the design (17 px) centred, on a whole pixel;
@@ -479,8 +482,8 @@ Widgets.PageExt {
                             visible: preview.status !== Image.Ready
                             width: card.model.isFolder ? VLCStyle.dp(48, VLCStyle.scale) : VLCStyle.redesign.iconSize
                             height: width
-                            source: card.model.isFolder ? "qrc:///redesign/icons/folder/large.png"
-                                                        : "qrc:///redesign/icons/file/default.png"
+                            source: card.model.isFolder ? "qrc:///redesign/icons/folder/large.svg"
+                                                        : "qrc:///redesign/icons/file/default.svg"
                             sourceSize: Qt.size(width, height)
                             fillMode: Image.Pad
                             smooth: false
@@ -498,8 +501,7 @@ Widgets.PageExt {
                         elide: Text.ElideRight
                         // #6B6B6B once played
                         color: card.hovered ? VLCStyle.redesign.accent
-                                            : VLCStyle.redesign.color(card.played ? "#6B6B6B" : VLCStyle.redesign.textSecondary,
-                                                                      card.played ? "#5a5a59" : "#4d4d4d")
+                                            : VLCStyle.redesign.color(card.played ? "#6B6B6B" : VLCStyle.redesign.textSecondary)
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
                         verticalAlignment: Text.AlignTop
@@ -544,7 +546,7 @@ Widgets.PageExt {
             visible: grid.count === 0
             text: folderModel.searchPattern !== "" ? qsTr("No media matches the search")
                                                    : qsTr("No media in this folder")
-            color: VLCStyle.redesign.color("#6B6B6B", "#4d4d4d")
+            color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.redesign.fontMedium
         }

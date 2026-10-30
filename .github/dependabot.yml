@@ -1,0 +1,16 @@
+# Keeps the actions used by the workflows up to date: one grouped pull request a week.
+# Only GitHub Actions: VLC's own dependencies come from VideoLAN's contribs.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 2
+    groups:
+      github-actions:
+        patterns: ["*"]
+    labels: ["dependencies", "area:ci"]
+    commit-message:
+      prefix: "ci"

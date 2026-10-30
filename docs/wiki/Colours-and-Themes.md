@@ -4,6 +4,10 @@ VLC Redesign has the two themes of the design, **Dark** and **Light**, and a thi
 Windows. On top of the theme, one of **nine accent colours** marks what is selected and active. Both change at once, without
 a restart, and both can follow a [player profile](Customize-the-Player#profiles).
 
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/theme-accent.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/theme-accent.gif" alt="Settings, General: the light theme and the blue, green and pink accents applied at once, then the library in light pink" width="960"></a>
+
+<sub>Settings, General: the light theme, then the blue, green and pink accents, each applied at once; the library in light pink. Click for the MP4 · every clip: [Feature tour](Feature-Tour#themes).</sub>
+
 | | Default | Choices |
 |---|---|---|
 | **Theme** | System | Dark, Light, System |
@@ -61,6 +65,14 @@ sidebar and of the Settings window, the ring of the keyboard focus, and the Reco
 shades come from it, as the design draws them for orange: a dimmer one (81 % of the colour, `#AB6314` for orange)
 and a dark one for the background of selections (26 %, `#371F06` for orange). The images the design draws in
 orange are shown as they are with the default accent, and tinted with any other.
+
+### Follow the Windows accent color
+
+New in 0.4.0: a switch under the accent colours, off by default. On, the interface, the classic windows, the
+right-click menus and the two-tone icons take the accent colour of Windows, and follow it at once when it changes in
+Windows' *Personalization > Colors*. Picking one of the nine colours turns the switch off. A Windows colour too dark
+or too light is brought to the range of the built-in accents, so it stays as readable. Outside Windows it follows the
+system accent (the desktop's, or orange). Profiles keep the choice.
 
 > **Good to know.** With *System*, VLC Redesign follows Windows' *Choose your default app mode*, not the Windows
 > mode: a Windows with a dark taskbar and light apps gives the light theme.

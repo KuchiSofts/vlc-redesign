@@ -16,6 +16,8 @@ permissions:
   contents: write
   pull-requests: write
   issues: write
+  # (to start the Windows build of the merge: see below)
+  actions: write
 
 jobs:
   merge-upstream:
@@ -65,6 +67,11 @@ jobs:
           gh pr create --base main --head "$branch" \
             --title "Merge VLC upstream ($(date -u +%Y-%m-%d), ${behind} commits)" \
             --body "$body" || echo "A pull request for $branch already exists"
+          # A push and a pull request made with GITHUB_TOKEN start no
+          # workflow, so the merge would show no build check: the Windows
+          # build is started on the branch instead (GITHUB_TOKEN may start
+          # a workflow_dispatch), and shows on its commit
+          gh workflow run build-windows.yml --ref "$branch"
 
       - name: Report conflicts
         if: env.behind != '0' && env.clean == '0'

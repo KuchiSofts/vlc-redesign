@@ -192,7 +192,7 @@ T.Control {
             return ""
         }
 
-        color: VLCStyle.redesign.color(VLCStyle.redesign.windowBackground, theme.fg.primary, theme.palette?.isDark ?? VLCStyle.darkPalette.isDark)
+        color: VLCStyle.redesign.color(VLCStyle.redesign.windowBackground, "#c2c2c1", theme.palette?.isDark ?? VLCStyle.darkPalette.isDark)
 
         font.pixelSize: VLCStyle.redesign.iconSize
 
@@ -206,6 +206,10 @@ T.Control {
         // Figma "play": the triangle in the 22 px between the paddings of
         // 17 and 15 px, the pause bars in the middle
         Image {
+            // drawn at the size shown (an SVG: sharp at any scale and zoom)
+            sourceSize: Qt.size(width, height)
+            // (filtered while the press scales the button)
+            smooth: root.scale !== 1 || !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
             anchors.centerIn: parent
             anchors.horizontalCenterOffset: visible ? VLCStyle.dp(1, VLCStyle.scale) : 0
             source: "qrc:/redesign/play.svg"
@@ -216,10 +220,12 @@ T.Control {
 
         Image {
             anchors.centerIn: parent
-            source: "qrc:///redesign/player/pause.png"
+            source: "qrc:///redesign/player/pause.svg"
             width: VLCStyle.redesign.iconSize
             height: VLCStyle.redesign.iconSize
             sourceSize: Qt.size(width, height)
+            // (filtered while the press scales the button)
+            smooth: root.scale !== 1 || !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
             visible: root._redesignPlaying
         }
 
@@ -254,7 +260,7 @@ T.Control {
             radius: VLCStyle.redesign.controlRadius
             // Figma "play" type=pause: a grey pill while playing
             color: root._redesignPlaying
-                   ? VLCStyle.redesign.color("#6B6B6B", "#9c9c9b", theme.palette?.isDark ?? VLCStyle.darkPalette.isDark)
+                   ? VLCStyle.redesign.color("#6B6B6B", "#6b6b6b", theme.palette?.isDark ?? VLCStyle.darkPalette.isDark)
                    : VLCStyle.redesign.color(VLCStyle.redesign.accent, theme.accent, theme.palette?.isDark ?? VLCStyle.darkPalette.isDark)
             opacity: state === "diminished" ? 0.75 : 1
         }

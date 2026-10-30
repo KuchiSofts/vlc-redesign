@@ -5,7 +5,7 @@ import VLC.Player
 import VLC.Style
 RedesignIconButton {
     id: root
-    iconSource: "qrc:///redesign/icons/HDR/default.png"
+    iconSource: "qrc:///redesign/icons/HDR/default.svg"
     text: "HDR"
     description: qsTr("HDR output")
     enabled: !paintOnly && Player.videoTracks.count > 0
@@ -15,6 +15,8 @@ RedesignIconButton {
 
     // above the button, as the languages and tracks
     onClicked: panel.toggle()
+    // open while its panel shows
+    active: panel.opened
 
     function forceUnlock() {
         panel.close()

@@ -77,7 +77,8 @@ libqt_plugin_la_LIBADD += -latomic
 endif
 libqt_plugin_la_LDFLAGS = $(AM_LDFLAGS) $(QT_LDFLAGS) $(GC_SECTIONS_LDFLAGS)
 if HAVE_OSX
-libqt_plugin_la_LDFLAGS += -Wl,-framework,Cocoa
+# (-lobjc: maininterface/macos_titlebar.cpp messages AppKit from C++)
+libqt_plugin_la_LDFLAGS += -Wl,-framework,Cocoa -lobjc
 endif
 
 if HAVE_X
@@ -91,6 +92,11 @@ endif
 if HAVE_WIN32
 libqt_plugin_la_CXXFLAGS += $(LIBCOMCXXFLAGS)
 libqt_plugin_la_LIBADD += $(LIBCOM) -lcomctl32 -luuid -ldwmapi -lwinhttp -lshell32 -liphlpapi
+endif
+if HAVE_QT_LIBCURL
+# util/http_request.cpp: libcurl outside Windows
+libqt_plugin_la_CXXFLAGS += $(QT_LIBCURL_CFLAGS) -DQT_HAS_LIBCURL
+libqt_plugin_la_LIBADD += $(QT_LIBCURL_LIBS)
 endif
 if UPDATE_CHECK
 libqt_plugin_la_CPPFLAGS += -DUPDATE_CHECK
@@ -319,7 +325,7 @@ EXTRA_DIST += $(libqt_plugin_la_UI)
 ui_%.h: %.ui
 	$(AM_V_at)$(MKDIR_P) "ui"
 	$(AM_V_at)rm -f $@ $@.tmp
-	$(AM_V_at)echo "#define Q_(a,b) QString::fromUtf8(_(a))" > $@.tmp
+	$(AM_V_at)echo "#define Q_(a,b) QObject::tr(a)" > $@.tmp
 	$(uic_verbose)$(UIC) -tr "Q_" $< >> $@.tmp
 	$(AM_V_at)sed -e 's/Q_(\"_(\\\"\(.*\)\\\")"/Q_("\1"/' $@.tmp >$@
 	$(AM_V_at)rm -f $@.tmp

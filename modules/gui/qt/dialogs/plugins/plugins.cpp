@@ -34,6 +34,7 @@
 #include "util/imagehelper.hpp"
 #include "util/colorizedsvgicon.hpp"
 
+#include "menus/redesign_menu_style.hpp"
 #include <cassert>
 
 #include <vlc_modules.h>
@@ -247,7 +248,7 @@ ExtensionTab::ExtensionTab( qt_intf_t *p_intf_ )
     QDialogButtonBox *buttonsBox = new QDialogButtonBox;
 
     // More information button
-    butMoreInfo = new QPushButton( QIcon( ":/menu/info.svg" ),
+    butMoreInfo = new QPushButton( RedesignMenuStyle::menuIcon( ":/menu/info.svg" ),
                                    qtr( "More information..." ),
                                    this );
     connect( butMoreInfo, &QPushButton::clicked, this, &ExtensionTab::moreInformation );
@@ -255,7 +256,7 @@ ExtensionTab::ExtensionTab( qt_intf_t *p_intf_ )
 
     // Reload button
     ExtensionsManager *EM = ExtensionsManager::getInstance( p_intf );
-    QPushButton *reload = new QPushButton( QIcon( ":/menu/update.svg" ),
+    QPushButton *reload = new QPushButton( RedesignMenuStyle::menuIcon( ":/menu/update.svg" ),
                                            qtr( "Reload extensions" ),
                                            this );
     connect( reload, &QPushButton::clicked, [this, EM](){
@@ -419,7 +420,7 @@ AddonsTab::AddonsTab( qt_intf_t *p_intf_ ) : QVLCFrame( p_intf_ )
 
 
     // Update button
-    QPushButton *reposyncButton = new QPushButton( QIcon( ":/menu/update.svg" ),
+    QPushButton *reposyncButton = new QPushButton( RedesignMenuStyle::menuIcon( ":/menu/update.svg" ),
                                               qtr("Find more addons online") );
     reposyncButton->setSizePolicy( QSizePolicy::Ignored, QSizePolicy::Preferred );
     switchStack->insertWidget( ONLYLOCALADDONS, reposyncButton );
@@ -1037,7 +1038,7 @@ QWidget *AddonItemDelegate::createEditor( QWidget *parent,
     editorWidget->setLayout( new QHBoxLayout() );
     editorWidget->layout()->setContentsMargins(0, 0, 0, 0);
 
-    infoButton = new QPushButton( QIcon( ":/menu/info.svg" ),
+    infoButton = new QPushButton( RedesignMenuStyle::menuIcon( ":/menu/info.svg" ),
                                   qtr( "More information..." ) );
     connect( infoButton, &QPushButton::clicked, this, &AddonItemDelegate::showInfo );
     editorWidget->layout()->addWidget( infoButton );
@@ -1046,7 +1047,7 @@ QWidget *AddonItemDelegate::createEditor( QWidget *parent,
     {
         if ( index.data( AddonsModel::Role::STATE ).value<AddonsModel::State>()
             == AddonsModel::State::STATE_INSTALLED )
-            installButton = new QPushButton( QIcon( ":/menu/remove.svg" ),
+            installButton = new QPushButton( RedesignMenuStyle::menuIcon( ":/menu/remove.svg" ),
                                              qtr("&Uninstall"), parent );
         else
         {

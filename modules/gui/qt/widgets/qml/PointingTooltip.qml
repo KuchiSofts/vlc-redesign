@@ -49,7 +49,8 @@ ToolTipExt {
     }
 
     background: Rectangle {
-        border.color: pointingTooltip.colorContext.border
+        // the frame of the main window (the arrow's too)
+        border.color: VLCStyle.redesign.color(VLCStyle.redesign.windowBorder)
         color: pointingTooltip.colorContext.bg.primary
         radius: pointingTooltip.radius
         border.pixelAligned: (radius < Number.EPSILON)
@@ -84,7 +85,7 @@ ToolTipExt {
                 rotation: 45
 
                 color: pointingTooltip.colorContext.bg.primary
-                border.color: pointingTooltip.colorContext.border
+                border.color: VLCStyle.redesign.color(VLCStyle.redesign.windowBorder)
                 border.pixelAligned: (radius < Number.EPSILON)
             }
         }

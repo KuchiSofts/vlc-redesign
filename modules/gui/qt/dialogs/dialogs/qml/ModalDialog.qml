@@ -66,8 +66,8 @@ Dialog {
         Widgets.DualKawaseBlur {
             id: blur
 
+            // (the overlay is the visible window: MainInterface.qml)
             anchors.fill: parent
-            anchors.margins: MainCtx.windowExtendedMargin
 
             visible: MainCtx.backdropBlurRequested() && blur.available
 
@@ -96,6 +96,9 @@ Dialog {
 
             color: "black"
         }
+
+        // the frame of the main window
+        Widgets.RedesignWindowBorder { }
     }
 
     //FIXME use the right xxxLabel class

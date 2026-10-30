@@ -42,10 +42,11 @@ Widgets.IconToolButton {
 
         Image {
             anchors.centerIn: parent
-            source: "qrc:///redesign/icons/backward-15-sec/default.png"
+            source: "qrc:///redesign/icons/backward-15-sec/default.svg"
             width: VLCStyle.redesign.iconSize
             height: VLCStyle.redesign.iconSize
             sourceSize: Qt.size(width, height)
+            smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
             fillMode: Image.PreserveAspectFit
             opacity: stepBackBtn.enabled ? 1 : 0.4
         }

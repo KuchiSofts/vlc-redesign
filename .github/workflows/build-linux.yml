@@ -1,0 +1,204 @@
+# Copyright (C) 2026 VLC authors and VideoLAN
+# SPDX-License-Identifier: GPL-2.0-or-later
+#
+# Builds VLC Redesign for Linux on x86_64 and ARM64 (aarch64) in the Docker
+# images of extras/juxtopposed (Ubuntu 24.04, Qt 6.8.3), makes the bundle
+# (linux-bundle.sh) and the packages (linux-packages.sh: AppImage, .deb,
+# .rpm, tarball, Flatpak manifest), then tests them on a clean runner of the
+# same architecture: the .deb installed with apt next to the distribution's
+# vlc, the .rpm installed with dnf in Fedora, the AppImage run without FUSE;
+# each one prints its version and plays a clip to its end with no window and
+# no sound.
+name: Linux build
+
+on:
+  pull_request:
+    paths-ignore:
+      - 'docs/**'
+      - 'site/**'
+      - '**.md'
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'docs/**'
+      - 'site/**'
+      - '**.md'
+  workflow_dispatch:
+
+concurrency:
+  group: linux-build-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # pinned: ubuntu-latest moves to a new release under the build
+          - runner: ubuntu-24.04
+            arch: x86_64
+          - runner: ubuntu-24.04-arm
+            arch: aarch64
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          # the version of VLC (git describe) comes from the tags
+          fetch-depth: 0
+
+      - name: Build images
+        run: |
+          docker build -t vlc-redesign-linux:dev -f extras/juxtopposed/linux.Dockerfile extras/juxtopposed
+          docker build -t vlc-redesign-linux:qt68 -f extras/juxtopposed/linux-qt68.Dockerfile extras/juxtopposed
+
+      - name: Revision
+        run: git describe --tags --long --match "?.*.*" --always > src/revision.txt
+
+      # the images' user is not the runner's: run as the runner, which owns
+      # the checkout
+      - name: Dependencies (medialibrary, wayland-scanner)
+        run: |
+          docker run --rm --user "$(id -u):$(id -g)" -e HOME=/tmp -e DEPS_ONLY=1 -e M0_JOBS="$(nproc)" \
+            -v "$PWD:/work" vlc-redesign-linux:qt68 sh extras/juxtopposed/linux.sh
+
+      - name: Build
+        run: |
+          docker run --rm --user "$(id -u):$(id -g)" -e HOME=/tmp \
+            -v "$PWD:/work" vlc-redesign-linux:qt68 sh extras/juxtopposed/linux-qt68.sh
+
+      - name: Bundle
+        run: |
+          docker run --rm --user "$(id -u):$(id -g)" -e HOME=/tmp \
+            -v "$PWD:/work" vlc-redesign-linux:qt68 sh extras/juxtopposed/linux-bundle.sh
+
+      - name: Packages
+        run: |
+          docker run --rm --user "$(id -u):$(id -g)" -e HOME=/tmp \
+            -v "$PWD:/work" vlc-redesign-linux:qt68 \
+            sh extras/juxtopposed/linux-packages.sh --arch ${{ matrix.arch }}
+          ls -l build-qt68/packages
+
+      # a 5-second H.264/AAC clip for the tests, made by the image's FFmpeg
+      - name: Test clip
+        run: |
+          mkdir -p test-clip
+          docker run --rm --user "$(id -u):$(id -g)" -v "$PWD/test-clip:/out" vlc-redesign-linux:qt68 \
+            ffmpeg -hide_banner -loglevel error -f lavfi -i testsrc2=duration=5:size=640x360:rate=25 \
+              -f lavfi -i sine=frequency=440:duration=5 -c:v libx264 -pix_fmt yuv420p -c:a aac \
+              -shortest /out/clip.mp4
+
+      - name: Logs
+        if: failure()
+        uses: actions/upload-artifact@v5
+        with:
+          name: linux-build-logs-${{ matrix.arch }}-${{ github.sha }}
+          path: |
+            build-m0/logs
+            build-qt68/logs
+            build-qt68/linux/config.log
+          retention-days: 7
+
+      - name: Upload the packages
+        uses: actions/upload-artifact@v5
+        with:
+          name: vlc-redesign-linux-${{ matrix.arch }}-${{ github.sha }}
+          path: build-qt68/packages
+          retention-days: ${{ github.event_name == 'pull_request' && 2 || 7 }}
+
+      - name: Upload the test clip
+        uses: actions/upload-artifact@v5
+        with:
+          name: linux-test-clip-${{ matrix.arch }}-${{ github.sha }}
+          path: test-clip/clip.mp4
+          retention-days: 1
+
+  test:
+    needs: build
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-24.04
+            arch: x86_64
+            deb: amd64
+          - runner: ubuntu-24.04-arm
+            arch: aarch64
+            deb: arm64
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 30
+    env:
+      # VLC with no window and no sound; the clip played to its end
+      PLAY: --intf dummy --vout dummy --aout dummy --no-video-title-show --play-and-exit
+    steps:
+      - uses: actions/download-artifact@v5
+        with:
+          name: vlc-redesign-linux-${{ matrix.arch }}-${{ github.sha }}
+          path: packages
+
+      - uses: actions/download-artifact@v5
+        with:
+          name: linux-test-clip-${{ matrix.arch }}-${{ github.sha }}
+          path: clip
+
+      - name: Checksums
+        working-directory: packages
+        run: sha256sum --check SHA256SUMS-linux-${{ matrix.arch }}.txt
+
+      # the distribution's VLC first: the package must install next to it
+      - name: Install the .deb with apt (next to the distribution's VLC)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends vlc-bin vlc-plugin-base
+          sudo apt-get install -y ./packages/vlc-redesign_*_${{ matrix.deb }}.deb ./packages/vlc-redesign-livetv_*_${{ matrix.deb }}.deb
+          dpkg -L vlc-redesign | grep -v '^/opt/'
+          test "$(dpkg -S /usr/bin/vlc | cut -d: -f1)" = vlc-bin
+
+      - name: .deb version
+        # (VLC 4 prints "VLC version ...", VLC 3 printed "VLC media player ...")
+        run: vlc-redesign --version | tee version.txt && grep -qE '^VLC (version|media player) ' version.txt
+
+      - name: .deb playback
+        run: |
+          timeout 120 vlc-redesign $PLAY -vv clip/clip.mp4 2> play-deb.log
+          grep -E 'avcodec|decoder' play-deb.log | head -n 20
+          ! grep -E 'no suitable decoder module|cannot open shared object' play-deb.log
+
+      - name: AppImage version and playback
+        run: |
+          chmod +x packages/vlc-redesign-*-${{ matrix.arch }}.AppImage
+          app=$(ls packages/vlc-redesign-*-${{ matrix.arch }}.AppImage)
+          "$app" --appimage-extract-and-run --version
+          timeout 120 "$app" --appimage-extract-and-run $PLAY -vv clip/clip.mp4 2> play-appimage.log
+          ! grep -E 'no suitable decoder module|cannot open shared object' play-appimage.log
+
+      - name: Remove the .deb
+        run: |
+          sudo apt-get remove -y vlc-redesign vlc-redesign-livetv
+          test ! -e /usr/bin/vlc-redesign
+          test ! -e /opt/vlc-redesign/bin/vlc
+          vlc --version > /dev/null
+
+      # installed as root by dnf, run as a user: VLC does not run as root
+      - name: Install and run the .rpm in Fedora
+        run: |
+          docker run --name fedora-rpm -v "$PWD/packages:/packages:ro" \
+            fedora:44@sha256:43b29f65a41eb9c35e1cd5323e3bdf3b655c2357a9f4f1ff2f9c2798e5045d80 \
+            sh -c 'dnf install -y /packages/vlc-redesign-*-1.${{ matrix.arch }}.rpm && rpm -V vlc-redesign vlc-redesign-livetv'
+          docker commit fedora-rpm vlc-redesign-fedora-test
+          docker run --rm --user 1000:1000 -e HOME=/tmp -v "$PWD/clip:/clip:ro" vlc-redesign-fedora-test \
+            sh -c "vlc-redesign --version && timeout 120 vlc-redesign $PLAY -vv /clip/clip.mp4 2> /tmp/play.log; \
+                   s=\$?; ! grep -E 'no suitable decoder module|cannot open shared object' /tmp/play.log && exit \$s"
+
+      - name: Logs
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: linux-test-logs-${{ matrix.arch }}-${{ github.sha }}
+          path: '*.log'
+          retention-days: 7
+          if-no-files-found: ignore

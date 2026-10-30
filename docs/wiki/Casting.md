@@ -4,6 +4,10 @@ VLC Redesign plays what is playing on a **Chromecast** or on a **DLNA / UPnP TV*
 there from where it was, and the bar of the player goes on controlling it: pause, seek and change the subtitles here,
 the TV follows.
 
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/cast.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/cast.gif" alt="Cast to: the devices found, a Chromecast picked, Playing on Living Room TV, pause and play from the bar" width="800"></a>
+
+<sub>A Chromecast picked in *Cast to* (a test device of the recording PC; the real devices are hidden), *Playing on Living Room TV*, then pause and play from the bar. Click for the MP4 · every clip: [Feature tour](Feature-Tour#casting).</sub>
+
 | | Chromecast | DLNA / UPnP TV |
 |---|---|---|
 | **Found by** | mDNS (the Chromecast protocol) | UPnP discovery (a DLNA media renderer) |
@@ -46,7 +50,8 @@ in a classic menu: *&lt;Local&gt;* is this computer.
 
 1. Play a video (or a song).
 2. Click the **Cast** button. The panel **Cast to** opens; a dot in the accent colour pulses while VLC looks for
-   devices (about 20 seconds).
+   devices. It keeps looking as long as the panel is open: a TV turned on shows up, one turned off goes. After a few
+   seconds with no device, the panel says so.
 3. Click the TV or the Chromecast. The panel closes and the player shows **Connecting to *TV*…**, then
    **Playing on *TV***.
 

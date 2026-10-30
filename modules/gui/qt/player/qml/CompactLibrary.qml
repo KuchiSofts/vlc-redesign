@@ -64,14 +64,15 @@ FocusScope {
 
     readonly property bool _mlAvailable: MainCtx.mediaLibraryAvailable
     // The folder shown holds the song playing (the paths compared: the same
-    // file has URLs encoded differently)
+    // file has URLs encoded differently), with "/" for the separators: the
+    // native paths have backslashes on Windows only
     readonly property bool _songFolder: {
         if (location.section !== "folder" || !Player.isStarted
             || Player.videoTracks.count > 0 || Player.audioTracks.count === 0)
             return false
-        const folder = Helpers.localPathFromUrl(location.folder ?? "").toLowerCase()
-        const song = Helpers.localPathFromUrl(Player.url).toLowerCase()
-        return folder !== "" && song.startsWith(folder.endsWith("\\") ? folder : folder + "\\")
+        const folder = Helpers.localPathFromUrl(location.folder ?? "").replace(/\\/g, "/").toLowerCase()
+        const song = Helpers.localPathFromUrl(Player.url).replace(/\\/g, "/").toLowerCase()
+        return folder !== "" && song.startsWith(folder.endsWith("/") ? folder : folder + "/")
     }
     readonly property var _sections: [
         { section: "home", icon: "home", title: qsTr("Home") },
@@ -157,7 +158,7 @@ FocusScope {
         return parts.length > 0 ? parts[parts.length - 1] : String(url ?? "")
     }
     function _icon(name) {
-        return "qrc:///redesign/icons/" + name + "/default.png"
+        return "qrc:///redesign/icons/" + name + "/default.svg"
     }
 
     // Folders of the path of the current folder
@@ -666,7 +667,7 @@ FocusScope {
                 elide: Text.ElideRight
                 // (from the right in a right to left layout)
                 horizontalAlignment: Text.AlignLeft
-                color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#4d4d4d")
+                color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
                 // a line of 100 % centred in the 24 px of the row
@@ -722,7 +723,7 @@ FocusScope {
             }
             PanelButton {
                 Layout.leftMargin: VLCStyle.dp(10, VLCStyle.scale)
-                iconSource: "qrc:///redesign/icons/more/dim.png"
+                iconSource: "qrc:///redesign/icons/more/dim.svg"
                 description: qsTr("More")
                 // playlists are created in the media library only; the
                 // songs of an album, an artist, a genre or a playlist are
@@ -824,7 +825,7 @@ FocusScope {
             }
             PanelButton {
                 Layout.leftMargin: VLCStyle.dp(12, VLCStyle.scale)
-                iconSource: "qrc:///redesign/icons/open/dim.png"
+                iconSource: "qrc:///redesign/icons/open/dim.svg"
                 description: qsTr("Open in the library")
                 onClicked: root.openLibraryRequested(root.location.section)
             }
@@ -848,7 +849,7 @@ FocusScope {
                 text: root._counted ? qsTr("%1 item", "%1 items", root._count).arg(root._count) : ""
                 elide: Text.ElideRight
                 horizontalAlignment: Text.AlignLeft
-                color: VLCStyle.redesign.color("#6B6B6B", "#7c7c7b")
+                color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.redesign.fontNormal
                 // the text box (17 px) centred in the 24 px of the row
@@ -871,7 +872,7 @@ FocusScope {
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.redesign.fontNormal
                 placeholderText: qsTr("Search")
-                placeholderTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#7c7c7b")
+                placeholderTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                 horizontalAlignment: TextInput.AlignLeft
                 onTextChanged: {
                     const models = root._toolModels.filter(model => model && model.searchPattern !== undefined)
@@ -883,7 +884,7 @@ FocusScope {
             }
             PanelButton {
                 Layout.leftMargin: VLCStyle.dp(12, VLCStyle.scale)
-                iconSource: "qrc:///redesign/icons/sort/dim.png"
+                iconSource: "qrc:///redesign/icons/sort/dim.svg"
                 description: qsTr("Sort")
                 enabled: root._toolModels.some(model => model && model.sortCriteria !== undefined)
                 onClicked: sortMenu.toggleFrom(this)
@@ -941,7 +942,7 @@ FocusScope {
             // Figma "View Options": the list here, the grid in the library
             PanelButton {
                 Layout.leftMargin: VLCStyle.dp(12, VLCStyle.scale)
-                iconSource: "qrc:///redesign/icons/list/dim.png"
+                iconSource: "qrc:///redesign/icons/list/dim.svg"
                 description: qsTr("View")
                 enabled: root._counted
                 onClicked: viewMenu.toggleFrom(this)
@@ -952,19 +953,19 @@ FocusScope {
                     id: viewMenu
                     Widgets.RedesignOptionItem {
                         text: qsTr("Grid View")
-                        iconSource: "qrc:///redesign/icons/grid/default.png"
+                        iconSource: "qrc:///redesign/icons/grid/default.svg"
                         onTriggered: root.openLibraryRequested(root.location.section)
                     }
                     Widgets.RedesignOptionItem {
                         text: qsTr("List View")
-                        iconSource: "qrc:///redesign/icons/list/default.png"
+                        iconSource: "qrc:///redesign/icons/list/default.svg"
                         checked: true
                     }
                 }
             }
             PanelButton {
                 Layout.leftMargin: VLCStyle.dp(12, VLCStyle.scale)
-                iconSource: "qrc:///redesign/icons/search/dim.png"
+                iconSource: "qrc:///redesign/icons/search/dim.svg"
                 description: qsTr("Search")
                 enabled: root._toolModels.some(model => model && model.searchPattern !== undefined)
                 onClicked: {
@@ -1063,7 +1064,7 @@ FocusScope {
                         anchors.verticalCenter: parent.verticalCenter
                         width: VLCStyle.dp(24, VLCStyle.scale)
                         height: VLCStyle.dp(24, VLCStyle.scale)
-                        iconSource: "qrc:///redesign/icons/chevron-right/default.png"
+                        iconSource: "qrc:///redesign/icons/chevron-right/default.svg"
                         mirrorIcon: true
                         description: qsTr("See all")
                         onClicked: root.go({ section: "homeall", kind: homeSection.modelData.kind,
@@ -1150,7 +1151,7 @@ FocusScope {
                     LibraryRow {
                         width: parent.width
                         // the icon of the design at 32 px (Figma "Player" 187:328)
-                        iconSource: "qrc:///redesign/player/library-add.png"
+                        iconSource: "qrc:///redesign/player/library-add.svg"
                         label: root.location.section === "playlists" ? qsTr("Create playlist") : qsTr("Add")
                         dimmed: true
                         onClicked: {
@@ -1266,7 +1267,7 @@ FocusScope {
                 // design (24, Figma 848:1996), the placeholders drawn at 32
                 iconSource: {
                     if (addRow)
-                        return "qrc:///redesign/player/library-add.png"
+                        return "qrc:///redesign/player/library-add.svg"
                     switch (place) {
                     case "videos":
                     case "songs":
@@ -1285,7 +1286,7 @@ FocusScope {
                     case "netfolder":
                         return root._icon(container ? "folder" : "streaming")
                     case "playlists":
-                        return "qrc:///redesign/player/library-playlist.png"
+                        return "qrc:///redesign/player/library-playlist.svg"
                     default:
                         if (container)
                             return root._icon("folder")
@@ -1322,7 +1323,7 @@ FocusScope {
                 wrapMode: Text.WordWrap
                 text: !root._model ? qsTr("The media library is not available.")
                                    : qsTr("Nothing here yet.")
-                color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#7c7c7b")
+                color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.redesign.fontNormal
             }
@@ -1338,7 +1339,7 @@ FocusScope {
             wrapMode: Text.WordWrap
             text: !root._mlAvailable ? qsTr("The media library is not available.")
                                      : qsTr("Nothing here yet.")
-            color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#7c7c7b")
+            color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.redesign.fontNormal
         }
@@ -1463,6 +1464,7 @@ FocusScope {
                     visible: libraryRow.cover === "" || coverImage.status !== Image.Ready
                     source: libraryRow.iconSource
                     sourceSize: Qt.size(width, height)
+                    smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                     fillMode: Image.Pad
                     // Figma "Player - Light": the icons #2E2E2E
                     color: libraryRow.smallIcon && !VLCStyle.palette.isDark ? "#2e2e2e" : "transparent"
@@ -1510,9 +1512,10 @@ FocusScope {
                 text: libraryRow.label
                 elide: Text.ElideMiddle
                 horizontalAlignment: Text.AlignLeft
-                // Figma "Player - Light": as dark, #969696 and dimmed #6B6B6B
+                // Figma "Player - Light" (2425:13624): #8F8F8F, the watched
+                // ones #6B6B6B; dark: #969696
                 color: libraryRow.dimmed ? VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
-                                         : (VLCStyle.palette.isDark ? VLCStyle.redesign.textSecondary : "#969696")
+                                         : (VLCStyle.palette.isDark ? VLCStyle.redesign.textSecondary : "#8f8f8f")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.redesign.fontNormal
             }
@@ -1536,7 +1539,7 @@ FocusScope {
         backgroundColor: VLCStyle.redesign.color(hovered || down ? VLCStyle.redesign.controlHoverBackground
                                                                  : "transparent", "#9c9c9b")
         contentItem: Impl.ColorImage {
-            source: "qrc:///redesign/icons/" + sectionButton.iconName + "/" + sectionButton.iconState + ".png"
+            source: "qrc:///redesign/icons/" + sectionButton.iconName + "/" + sectionButton.iconState + ".svg"
             sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
             fillMode: Image.Pad
             // the filled icon of the section shown, drawn in the accent

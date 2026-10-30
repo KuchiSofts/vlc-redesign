@@ -32,7 +32,7 @@ T.Popup {
         DialogsProvider.nativeEffectsDialog(page)
     }
 
-    function c(value) { return VLCStyle.redesign.color(value, value) }
+    function c(value) { return VLCStyle.redesign.color(value) }
 
     // The preview of each tab stays until Save or Cancel of the dialog
     function switchTab(index) {
@@ -96,6 +96,7 @@ T.Popup {
         previousGlobalShortcuts = MainCtx.useGlobalShortcuts
         MainCtx.useGlobalShortcuts = false
         beginCurrentTab()
+        presetField.reset()
         presetField.refresh()
         tabs.itemAt(currentTab).forceActiveFocus()
     }
@@ -108,10 +109,20 @@ T.Popup {
     background: Rectangle {
         color: root.c(VLCStyle.redesign.windowBackground)
         radius: VLCStyle.dp(6, VLCStyle.scale)
-        border.color: root.c(VLCStyle.redesign.separator)
+    }
+
+    // the frame of the main window, over the content (which reaches the
+    // card's edges): the card reads as a window over the interface
+    readonly property Item _windowBorder: Widgets.RedesignWindowBorder {
+        parent: root.background ? root.background.parent : null
+        radius: VLCStyle.dp(6, VLCStyle.scale)
     }
 
     contentItem: ColumnLayout {
+        // a screen reader names the dialog
+        Accessible.role: Accessible.Dialog
+        Accessible.name: qsTr("Effects")
+
         spacing: 0
 
         // a popup does not inherit the mirroring of the window (right to left)
@@ -317,7 +328,14 @@ T.Popup {
                 onClicked: {
                     if (root.cancelEffects()) root.close()
                 }
-                background: Rectangle { color: root.c(VLCStyle.redesign.controlBackground); radius: VLCStyle.dp(5, VLCStyle.scale) }
+                // #191919 on #0E0E0E: the frame of the window around it
+                // (docs/MASTER-PLAN.md section 6)
+                background: Rectangle {
+                    color: root.c(VLCStyle.redesign.controlBackground)
+                    radius: VLCStyle.dp(5, VLCStyle.scale)
+                    border.width: 1
+                    border.color: parent.visualFocus ? VLCStyle.redesign.focusColor : root.c(VLCStyle.redesign.windowBorder)
+                }
                 contentItem: Text {
                     text: parent.text
                     color: root.c(VLCStyle.redesign.textSecondary)

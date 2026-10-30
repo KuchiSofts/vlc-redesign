@@ -94,6 +94,15 @@ Item {
             return null
         const lo = Number(minimum), hi = Number(maximum)
         const range = (values, labels, from, to) => ({ from: from, to: to, ticks: values, labels: labels })
+        // the design's scale, widened within the range VLC takes only as far
+        // as a value set elsewhere needs (it is shown and kept): at the
+        // design's scale the labels at the ends are the ends' values
+        const limits = (from, to) => {
+            if (!(Number.isFinite(lo) && Number.isFinite(hi) && lo < hi))
+                return [from, to]
+            const v = Number(settingValue)
+            return Number.isFinite(v) ? [Math.max(lo, Math.min(from, v)), Math.min(hi, Math.max(to, v))] : [from, to]
+        }
         const seq = (from, to, step) => { const out = []; for (let v = from; v <= to + 1e-9; v += step) out.push(v); return out }
         switch (settingKey) {
         case "redesign/notification-duration":
@@ -111,14 +120,14 @@ Item {
                                             { value: 50, text: qsTr("+5 s") }], -50, 50)
         case "osd-duration":
             return range(seq(500, 5000, 500), [{ value: 500, text: qsTr("0.5 s") }, { value: 5000, text: qsTr("5 s") }],
-                         500, 5000)
+                         ...limits(500, 5000))
         case "video-title-timeout":
             return range(seq(1000, 10000, 1000), [{ value: 1000, text: qsTr("1 s") }, { value: 10000, text: qsTr("10 s") }],
                          1000, 10000)
         case "rate":
             return range(seq(0.25, 2, 0.25), seq(0.25, 2, 0.25).map(v => ({ value: v, text: String(v) })), 0.25, 2)
         case "qt-max-volume":
-            return range(seq(100, 300, 25), [100, 200, 300].map(v => ({ value: v, text: v + "%" })), 100, 300)
+            return range(seq(100, 300, 25), [100, 200, 300].map(v => ({ value: v, text: v + "%" })), ...limits(100, 300))
         }
         // Low, Medium, High: the pixels the mouse moves before the controls show
         if (editorKind === "sensitivity")
@@ -141,7 +150,7 @@ Item {
     signal colorRequested()
 
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
-    function c(value) { return VLCStyle.redesign.color(value, value) }
+    function c(value) { return VLCStyle.redesign.color(value) }
 
     // A height of the design for the row (48 for the skips, the buffers),
     // the top of its control (centred if undefined) and the baseline of the
@@ -242,7 +251,13 @@ Item {
     // The help; over a label cut short (a long translation), the whole
     // label first
     ToolTip {
+        id: helpTip
         parent: helpIcon.visible ? helpIcon : settingLabel
+        // the Basic style's card, in the frame of the main window
+        background: Rectangle {
+            color: helpTip.palette.toolTipBase
+            border.color: VLCStyle.redesign.color(VLCStyle.redesign.windowBorder)
+        }
         visible: (labelHover.hovered && (root.help.length > 0 || settingLabel.truncated))
                  || (helpHover.hovered && root.help.length > 0)
         text: !settingLabel.truncated ? root.help
@@ -335,7 +350,8 @@ Item {
                         width: root.px(24)
                         height: width
                         sourceSize: Qt.size(width, height)
-                        source: "qrc:///redesign/icons/chevron-down/default.png"
+                        smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
+                        source: "qrc:///redesign/icons/chevron-down/default.svg"
                     }
                 }
             }
@@ -395,8 +411,9 @@ Item {
                     stepSize: root.settingKey === "rate" ? 0.25
                               : root.editorKind === "sensitivity" ? 1
                               : root.settingKey === "mouse-hide-timeout"
-                                || root.settingKey === "redesign/notification-duration"
-                                || root.settingKey === "osd-duration" ? 500
+                                || root.settingKey === "redesign/notification-duration" ? 500
+                              // (from 100 ms: steps of 500 would miss the ticks)
+                              : root.settingKey === "osd-duration" ? 100
                               : root.settingKey === "video-title-timeout" ? 100
                               : root.settingType === "integer" ? 1 : 0.01
                     onMoved: root.commit(root.editorKind === "sensitivity" ? sensitivityPixels[Math.round(value)]
@@ -443,23 +460,32 @@ Item {
                     placeholderTextColor: root.c("#8F8F8F")
                     // Figma 6543:15649: the fields of a setting that does
                     // not apply (the buffering of a preset) are empty
-                    text: !root.available || (!root.valueShown && !activeFocus) ? ""
-                          : root.displayValue.length > 0 && !activeFocus ? root.displayValue
-                          : root.defaultDisplay.length > 0 && !activeFocus
-                            && String(root.settingValue) === String(root.onValue) ? root.defaultDisplay
-                          : root.editorKind === "volumepercent" ? String(Math.round(Number(root.settingValue) * 100 / 256))
-                          // a track counted from 1 (VLC's from 0, -1 its choice)
-                          : root.editorKind === "track" ? (Number(root.settingValue) >= 0 ? String(Number(root.settingValue) + 1) : "")
-                          : root.settingType === "float" && root.decimals !== undefined
-                            ? Number(root.settingValue).toFixed(root.decimals)
-                          : root.settingValue === undefined || root.settingValue === null
-                          || (root.defaultText.length > 0 && String(root.settingValue).length === 0)
-                          ? root.defaultText : root.settingType === "float"
-                          ? String(Number(Number(root.settingValue).toFixed(6))) : String(root.settingValue)
+                    text: displayed()
+                    function displayed() {
+                        return !root.available || (!root.valueShown && !activeFocus) ? ""
+                            : root.displayValue.length > 0 && !activeFocus ? root.displayValue
+                            : root.defaultDisplay.length > 0 && !activeFocus
+                              && String(root.settingValue) === String(root.onValue) ? root.defaultDisplay
+                            : root.editorKind === "volumepercent" ? String(Math.round(Number(root.settingValue) * 100 / 256))
+                            // a track counted from 1 (VLC's from 0, -1 its choice)
+                            : root.editorKind === "track" ? (Number(root.settingValue) >= 0 ? String(Number(root.settingValue) + 1) : "")
+                            : root.settingType === "float" && root.decimals !== undefined
+                              ? Number(root.settingValue).toFixed(root.decimals)
+                            : root.settingValue === undefined || root.settingValue === null
+                            || (root.defaultText.length > 0 && String(root.settingValue).length === 0)
+                            ? root.defaultText : root.settingType === "float"
+                            ? String(Number(Number(root.settingValue).toFixed(6))) : String(root.settingValue)
+                    }
                     inputMethodHints: root.settingType === "integer" || root.settingType === "float"
                                       ? Qt.ImhFormattedNumbersOnly : Qt.ImhNone
                     echoMode: root.editorKind === "password" ? TextInput.Password : TextInput.Normal
                     onEditingFinished: {
+                        // whatever happens below (a value ignored, or refused
+                        // by the model), the field shows the value it holds
+                        Qt.callLater(() => {
+                            if (textControl)
+                                textControl.text = Qt.binding(() => textControl.displayed())
+                        })
                         // the empty field of a setting that does not apply
                         if (!root.available || (!root.valueShown && !activeFocus && !text.length))
                             return

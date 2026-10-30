@@ -104,11 +104,13 @@ FocusScope {
         focus: visible
 
         Image {
+            // drawn at the size shown (an SVG: sharp at any scale and zoom)
+            sourceSize: Qt.size(width, height)
             id: logo
 
             source: MainCtx.useXmasCone()
                     ? "qrc:///logo/vlc48-xmas.png"
-                    : "qrc:///misc/cone.svg"
+                    : "qrc:///redesign/logo.svg"
 
             anchors.centerIn: parent
             width: Math.min(parent.width / 2, sourceSize.width)

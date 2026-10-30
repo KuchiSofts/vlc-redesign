@@ -5,10 +5,12 @@
 #include "mainui.hpp"
 #include "dialogs/dialogs_provider.hpp"
 #include "dialogs/dialogs/dialogmodel.hpp"
+#include "dialogs/dialogs/redesign_tools.hpp"
 #include "dialogs/preferences/config_model.hpp"
 #include "dialogs/preferences/audio_output_preview.hpp"
 #include "dialogs/preferences/shortcuts_model.hpp"
 #include "dialogs/firstrun/onboarding.hpp"
+#include "dialogs/firstrun/whats_new.hpp"
 #include "dialogs/extended/audio_effects.hpp"
 #include "dialogs/extended/video_effects.hpp"
 #include "player/sleep_timer.hpp"
@@ -34,11 +36,17 @@ void MainUI::registerDialogTypes()
         qmlRegisterType<AudioOutputPreview>(uri, versionMajor, versionMinor, "AudioOutputPreview");
         qmlRegisterType<ConfigModel>(uri, versionMajor, versionMinor, "ConfigModel");
         qmlRegisterType<OnboardingController>(uri, versionMajor, versionMinor, "OnboardingController");
+        qmlRegisterType<WhatsNewController>(uri, versionMajor, versionMinor, "WhatsNewController");
         qmlRegisterType<AudioEffects>(uri, versionMajor, versionMinor, "AudioEffects");
         qmlRegisterType<SleepTimerController>(uri, versionMajor, versionMinor, "SleepTimerController");
         qmlRegisterType<ShortcutsModel>(uri, versionMajor, versionMinor, "ShortcutsModel");
         qmlRegisterType<VideoEffects>(uri, versionMajor, versionMinor, "VideoEffects");
         qmlRegisterType<HdrOutput>(uri, versionMajor, versionMinor, "HdrOutput");
+        // the small tool windows redrawn in QML
+        qmlRegisterType<MediaStatistics>(uri, versionMajor, versionMinor, "MediaStatistics");
+        qmlRegisterType<PluginListModel>(uri, versionMajor, versionMinor, "PluginListModel");
+        qmlRegisterType<ExtensionInfoModel>(uri, versionMajor, versionMinor, "ExtensionInfoModel");
+        qmlRegisterType<FolderInformation>(uri, versionMajor, versionMinor, "FolderInformation");
         qmlRegisterModule(uri, versionMajor, versionMinor);
         qmlProtectModule(uri, versionMajor);
     }

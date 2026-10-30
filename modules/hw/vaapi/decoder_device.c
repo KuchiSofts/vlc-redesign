@@ -206,10 +206,33 @@ drm_init_vaapi_instance(vlc_decoder_device *device, VADisplay *vadpyp)
 #endif
 
 #ifdef HAVE_VA_WL
+/* Whether the system has a GPU render node: without one (a virtual machine
+ * or a container without a GPU), libva-wayland can crash in vaInitialize()
+ * (seen with libva 2.20 on a compositor offering no DRM device) instead of
+ * failing: the decoding is then left to software. */
+static bool
+wl_has_render_node(void)
+{
+    vlc_DIR *dir = vlc_opendir("/dev/dri");
+    if (dir == NULL)
+        return false;
+    bool found = false;
+    const char *name;
+    while (!found && (name = vlc_readdir(dir)) != NULL)
+        found = strncmp(name, "renderD", 7) == 0;
+    vlc_closedir(dir);
+    return found;
+}
+
 static struct vaapi_instance *
 wl_init_vaapi_instance(vlc_decoder_device *device, vlc_window_t *window,
                        VADisplay *vadpyp)
 {
+    if (!wl_has_render_node())
+    {
+        msg_Dbg(device, "no GPU render node: no VA-API on Wayland");
+        return NULL;
+    }
     VADisplay vadpy = *vadpyp = vaGetDisplayWl(window->display.wl);
     if (vadpy == NULL)
         return NULL;

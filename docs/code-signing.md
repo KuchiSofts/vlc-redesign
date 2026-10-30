@@ -25,6 +25,7 @@ been applied for, submitted or published yet. The policy that users read is
 | `vlc-redesign-<version>-win64-setup.exe`          | Yes    | Signing request 2, artifact configuration `installer` |
 | `vlc-redesign-<version>-win64.zip`                | No (a zip has no signature) | Holds the signed binaries        |
 | `*.vrdelta` small updates, `SHA256SUMS.txt`       | No     | Data, made from the signed files and checked by SHA-256 |
+| `SHA256SUMS.txt.sig`                              | It is a signature | By the project's release key, on the release PC (step 6 of [A signed release](#5-a-signed-release)) |
 | `unins000.exe`, written by the installer          | Not yet | See [Later](#later)                                  |
 
 Signing changes the bytes of every binary (the signature is added to the file, and the PE checksum changes), so
@@ -228,6 +229,12 @@ The policy is chosen each time the workflow is started. Until `SIGNPATH_ORGANIZA
    Get-Content "$d\SHA256SUMS.txt"; Get-FileHash "$d\*" -Algorithm SHA256 | Format-Table Hash, Path
    ```
    `Status` is `Valid` and the signer is SignPath Foundation. The clean-PC test in Windows Sandbox works as before.
+   Then sign the checksums with the release key (the workflow never has it; the app installs no release from 0.4.0
+   on without this file, [The release key](#the-release-key-signed-checksums)):
+   ```powershell
+   .\extras\juxtopposed\signing\release-key.ps1 sign "$d\SHA256SUMS.txt"     # writes SHA256SUMS.txt.sig
+   .\extras\juxtopposed\signing\release-key.ps1 verify "$d\SHA256SUMS.txt"   # Good signature
+   ```
 7. Copy the files into the release folder (so the next local build finds this release's zip) and publish them as
    usual, with the *Code signing policy* line in the notes.
 
@@ -235,6 +242,29 @@ If the `release` job fails for a reason that has nothing to do with signing, the
 (`vlc-redesign-win64-release-signing-<commit>`) can be packaged here: unzip it and run
 `.\extras\juxtopposed\make-release.ps1 -Signed -Package <folder>`. The installer made so is not signed (SignPath
 signs only what the workflow built), so prefer fixing the job and starting a new run.
+
+## The release key (signed checksums)
+
+Authenticode tells who built a program, but the checksums come from the same GitHub release as the files: whoever
+can publish there (a stolen account or token) could publish both. So from 0.4.0 on, `SHA256SUMS.txt` is signed by
+the project's own key, which never leaves the release PC, and the app checks that signature before it uses any
+checksum (`modules/gui/qt/util/redesign_updater.cpp`, `FIRST_SIGNED_VERSION`). A release at or after that version
+without a good `SHA256SUMS.txt.sig` is refused; the publisher check stays as well.
+
+- **Key:** ECDSA P-256; the signature is over SHA-256 of the file, raw r‖s (64 bytes). The public key is in
+  `modules/gui/qt/util/redesign_update_key.h` (its only copy in the code); fingerprint (SHA-256 of the
+  SubjectPublicKeyInfo) `bb7f44e0c0d5c92986c4bd7976687bd074feffbbb414f6c17605b6f9619e2f04`.
+- **Private key:** `%USERPROFILE%\source\vlc-redesign-keys\update-signing.key`, encrypted with DPAPI for the Windows
+  user who made it: another user or PC can't use the file. It is never printed. `.gitignore` and the pre-push hook
+  refuse key files.
+- **Commands** (`extras\juxtopposed\signing\release-key.ps1`): `new` (once; never overwrites a key), `public`,
+  `header` (writes the public key into the header), `sign <file>`, `verify <file>` (with the key the app carries;
+  needs no private key), `export-backup <path>`.
+- **Backup:** `export-backup <path>` writes a plain PKCS#8 PEM. Put it in a password manager and delete the file.
+  Without the key file or the backup, no later release can be signed with this key, and only a new app version
+  (installed by hand) can carry a new one.
+- **Test:** `signing\verify-test.c` is the app's verifier (`redesign_update_verify.h`) as a program:
+  `verify-test <file>` says `good` or `bad`.
 
 ## Later
 

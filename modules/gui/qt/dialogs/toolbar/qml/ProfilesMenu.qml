@@ -20,21 +20,28 @@ Controls.Popup {
     property var profileModel: MainCtx.controlbarProfileModel
     property string switchError: ""
 
-    width: 264
-    height: Math.min(profileModel.count, 6) * 48 + 61
-            + ((switchError || profileModel.lastError) ? 56 : 0)
+    width: VLCStyle.dp(264, VLCStyle.scale)
+    // (the rows, the line, "New profile…" and the message, scaled as they are)
+    height: Math.min(profileModel.count, 6) * VLCStyle.dp(48, VLCStyle.scale)
+            + VLCStyle.dp(1, VLCStyle.scale) + VLCStyle.dp(60, VLCStyle.scale)
+            + ((switchError || profileModel.lastError) ? VLCStyle.dp(56, VLCStyle.scale) : 0)
     padding: 0
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutside
 
     background: Rectangle {
         color: VLCStyle.redesign.color("#1b1b1b", "#ababaa")
-        radius: 11
-        border.color: VLCStyle.redesign.color("#252525", "#9c9c9b")
+        radius: VLCStyle.dp(11, VLCStyle.scale)
+    }
+
+    // the frame of the main window, over the content (which reaches the
+    // card's edges): the card reads as a window over the interface
+    readonly property Item _windowBorder: Widgets.RedesignWindowBorder {
+        parent: root.background ? root.background.parent : null
+        radius: VLCStyle.dp(11, VLCStyle.scale)
     }
 
     contentItem: Column {
         spacing: 0
-
         // a popup does not inherit the mirroring of the window (right to left)
         LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
         LayoutMirroring.childrenInherit: true
@@ -42,7 +49,7 @@ Controls.Popup {
         ListView {
             id: profileList
             width: parent.width
-            height: Math.min(root.profileModel.count, 6) * 48
+            height: Math.min(root.profileModel.count, 6) * VLCStyle.dp(48, VLCStyle.scale)
             clip: true
             model: root.profileModel
             currentIndex: root.profileModel.selectedProfile
@@ -55,32 +62,35 @@ Controls.Popup {
                 readonly property bool activeProfile: root.profileModel.selectedProfile === index
                 objectName: "profileOption_" + index
                 width: profileList.width
-                height: 48
+                height: VLCStyle.dp(48, VLCStyle.scale)
                 // (swapped right to left)
-                leftPadding: LayoutMirroring.enabled ? 16 : 18
-                rightPadding: LayoutMirroring.enabled ? 18 : 16
+                leftPadding: LayoutMirroring.enabled ? VLCStyle.dp(16, VLCStyle.scale) : VLCStyle.dp(18, VLCStyle.scale)
+                rightPadding: LayoutMirroring.enabled ? VLCStyle.dp(18, VLCStyle.scale) : VLCStyle.dp(16, VLCStyle.scale)
                 background: Rectangle {
-                    radius: 6
+                    radius: VLCStyle.dp(6, VLCStyle.scale)
                     color: parent.hovered || parent.activeProfile ? VLCStyle.redesign.color("#252525", "#9c9c9b") : "transparent"
                 }
                 contentItem: Row {
-                    spacing: 12
+                    spacing: VLCStyle.dp(12, VLCStyle.scale)
                     Image {
-                        width: 24
-                        height: 24
+                        // drawn at the size shown (an SVG: sharp at any scale and zoom)
+                        sourceSize: Qt.size(width, height)
+                        smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
+                        width: VLCStyle.dp(24, VLCStyle.scale)
+                        height: VLCStyle.dp(24, VLCStyle.scale)
                         anchors.verticalCenter: parent.verticalCenter
-                        source: "qrc:///redesign/icons/check/selected.png"
+                        source: "qrc:///redesign/icons/check/selected.svg"
                         opacity: activeProfile ? 1 : 0
                     }
                     Text {
-                        width: parent.width - 36 - 36
+                        width: parent.width - 2 * VLCStyle.dp(36, VLCStyle.scale)
                         height: parent.height
                         text: name
                         color: VLCStyle.redesign.color("#969696", "#4d4d4d")
                         elide: Text.ElideRight
                         horizontalAlignment: Text.AlignLeft
                         font.family: VLCStyle.redesign.fontFamily
-                        font.pixelSize: 16
+                        font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
                         verticalAlignment: Text.AlignVCenter
                     }
                 }
@@ -92,21 +102,21 @@ Controls.Popup {
                     id: profileActions
                     objectName: "profileActions_" + profileRow.index
                     anchors.right: parent.right
-                    anchors.rightMargin: 12
+                    anchors.rightMargin: VLCStyle.dp(12, VLCStyle.scale)
                     anchors.verticalCenter: parent.verticalCenter
-                    width: 32
-                    height: 32
-                    padding: 4
+                    width: VLCStyle.dp(32, VLCStyle.scale)
+                    height: VLCStyle.dp(32, VLCStyle.scale)
+                    padding: VLCStyle.dp(4, VLCStyle.scale)
                     opacity: rowHover.hovered || actionsMenu.opened || visualFocus ? 1 : 0
                     Accessible.name: qsTr("Actions of %1").arg(profileRow.name)
                     background: Rectangle {
-                        radius: 6
+                        radius: VLCStyle.dp(6, VLCStyle.scale)
                         color: profileActions.hovered || actionsMenu.opened
                                ? VLCStyle.redesign.color("#2e2e2e", "#8e8e8d") : "transparent"
                     }
                     contentItem: Image {
-                        source: "qrc:///redesign/icons/more/default.png"
-                        sourceSize: Qt.size(24, 24)
+                        source: "qrc:///redesign/icons/more/default.svg"
+                        sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
                         fillMode: Image.Pad
                     }
                     // under the button, from its start (right to left: its
@@ -117,8 +127,7 @@ Controls.Popup {
 
                     Widgets.RedesignMenu {
                         id: actionsMenu
-                        menuWidth: 200
-
+                        menuWidth: VLCStyle.dp(200, VLCStyle.scale)
                         // (a menu does not inherit the mirroring of the
                         // window: its rows mirror right to left by themselves)
                         Widgets.RedesignMenuItem {
@@ -178,15 +187,15 @@ Controls.Popup {
 
         Rectangle {
             width: parent.width
-            height: 1
+            height: VLCStyle.dp(1, VLCStyle.scale)
             color: VLCStyle.redesign.color("#292929", "#9c9c9b")
         }
 
         Text {
             visible: !!(root.switchError || root.profileModel.lastError)
-            width: parent.width - 32
-            height: visible ? 56 : 0
-            x: 16
+            width: parent.width - VLCStyle.dp(32, VLCStyle.scale)
+            height: visible ? VLCStyle.dp(56, VLCStyle.scale) : 0
+            x: VLCStyle.dp(16, VLCStyle.scale)
             text: root.switchError || root.profileModel.lastError
             color: VLCStyle.redesign.color("#e4a580", "#c62828")
             wrapMode: Text.WordWrap
@@ -195,7 +204,7 @@ Controls.Popup {
             elide: Text.ElideRight
             horizontalAlignment: Text.AlignLeft
             font.family: VLCStyle.redesign.fontFamily
-            font.pixelSize: 12
+            font.pixelSize: VLCStyle.dp(12, VLCStyle.scale)
             verticalAlignment: Text.AlignVCenter
             Accessible.role: Accessible.AlertMessage
         }
@@ -203,32 +212,32 @@ Controls.Popup {
         Controls.ItemDelegate {
             objectName: "newProfileAction"
             width: parent.width
-            height: 60
+            height: VLCStyle.dp(60, VLCStyle.scale)
             // (the end as the style pads it; swapped right to left)
-            leftPadding: LayoutMirroring.enabled ? horizontalPadding : 18
-            rightPadding: LayoutMirroring.enabled ? 18 : horizontalPadding
+            leftPadding: LayoutMirroring.enabled ? horizontalPadding : VLCStyle.dp(18, VLCStyle.scale)
+            rightPadding: LayoutMirroring.enabled ? VLCStyle.dp(18, VLCStyle.scale) : horizontalPadding
             background: Rectangle {
-                radius: 6
+                radius: VLCStyle.dp(6, VLCStyle.scale)
                 color: parent.hovered ? VLCStyle.redesign.color("#252525", "#9c9c9b") : "transparent"
             }
             contentItem: Row {
-                spacing: 12
+                spacing: VLCStyle.dp(12, VLCStyle.scale)
                 Text {
-                    width: 20
+                    width: VLCStyle.dp(20, VLCStyle.scale)
                     height: parent.height
                     text: "+"
                     color: VLCStyle.redesign.color("#969696", "#4d4d4d")
-                    font.pixelSize: 25
+                    font.pixelSize: VLCStyle.dp(25, VLCStyle.scale)
                     verticalAlignment: Text.AlignVCenter
                 }
                 Text {
-                    width: Math.min(implicitWidth, parent.width - 32)
+                    width: Math.min(implicitWidth, parent.width - VLCStyle.dp(32, VLCStyle.scale))
                     height: parent.height
                     elide: Text.ElideRight
                     text: qsTr("New profile…")
                     color: VLCStyle.redesign.color("#969696", "#4d4d4d")
                     font.family: VLCStyle.redesign.fontFamily
-                    font.pixelSize: 16
+                    font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
                     verticalAlignment: Text.AlignVCenter
                 }
             }

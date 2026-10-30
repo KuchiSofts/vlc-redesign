@@ -15,7 +15,7 @@ T.AbstractButton {
     signal switched(bool on)
 
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
-    function c(value) { return VLCStyle.redesign.color(value, value) }
+    function c(value) { return VLCStyle.redesign.color(value) }
 
     checkable: false
     onClicked: switched(!checked)

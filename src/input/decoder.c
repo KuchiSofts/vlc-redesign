@@ -2796,8 +2796,17 @@ void vlc_input_decoder_DecodeWithStatus(vlc_input_decoder_t *p_owner, vlc_frame_
 
     vlc_fifo_Unlock( p_owner->p_fifo );
 
-    if( b_pace )
-        vlc_interrupt_unregister();
+    /* Unregistering takes the interruption (input_Stop) that woke the pace
+     * up: it is raised again for the input's next wait (a network read),
+     * which would otherwise not see it and wait until the network times
+     * out. */
+    if( b_pace && vlc_interrupt_unregister() == EINTR )
+    {
+        vlc_interrupt_t *ctx = vlc_interrupt_set( NULL );
+        vlc_interrupt_set( ctx );
+        if( ctx != NULL )
+            vlc_interrupt_raise( ctx );
+    }
 }
 
 void vlc_input_decoder_Decode(vlc_input_decoder_t *p_owner, vlc_frame_t *frame,

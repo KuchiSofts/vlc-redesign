@@ -22,6 +22,7 @@
 
 #include "extensions.hpp"
 #include "extensions_manager.hpp" // for isUnloading()
+#include "util/redesign_widget_theme.hpp"
 
 #include <vlc_dialog.h>
 #include <vlc_extensions.h>
@@ -157,6 +158,8 @@ ExtensionDialog::ExtensionDialog( qt_intf_t *_p_intf,
     this->setWindowFlags( Qt::WindowMinMaxButtonsHint
                         | Qt::WindowCloseButtonHint );
     this->setWindowTitle( qfu( p_dialog->psz_title ) );
+    // the look of the redesign, as the other classic windows
+    RedesignWidgetTheme::apply( this, p_intf );
 
     layout = new QGridLayout( this );
     p_dialog->p_sys_intf = this;

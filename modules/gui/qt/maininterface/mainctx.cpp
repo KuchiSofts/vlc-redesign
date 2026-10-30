@@ -51,6 +51,7 @@
 #include "util/qt_dirs.hpp"                     // toNativeSeparators
 
 #include "util/color_scheme_model.hpp"
+#include "util/redesign_accent.hpp"
 #include "util/model_recovery_agent.hpp"
 
 #include "widgets/native/interface_widgets.hpp"     // bgWidget, videoWidget
@@ -67,6 +68,7 @@
 #include "menus/redesign_menu_style.hpp"
 
 #include "dialogs/toolbar/controlbar_profile_model.hpp"
+#include "dialogs/toolbar/profile_settings.hpp"
 #include "dialogs/help/help.hpp"
 #include "dialogs/preferences/interface_language.hpp"
 #include "util/language_change.hpp"
@@ -81,9 +83,9 @@
 #include <QGuiApplication>
 #include <QMimeData>
 #include <QClipboard>
-#include <QInputDialog>
 
 #include <QQmlProperty>
+#include <QQuickWindow>
 
 #include <QWindow>
 #include <QScreen>
@@ -107,6 +109,7 @@
 
 #include <QThread>
 
+#include <vlc_actions.h>
 #include <vlc_interface.h>
 #include <vlc_playlist.h>
 #include <vlc_preparser.h>
@@ -186,6 +189,9 @@ MainCtx::MainCtx(qt_intf_t *_p_intf)
 
     settings = getSettings();
     m_colorScheme = new ColorSchemeModel(this);
+    // the accent of the system, for "Follow the Windows accent color"
+    m_redesignAccent = new RedesignAccent(this);
+    connect(m_redesignAccent, &RedesignAccent::systemAccentChanged, this, &MainCtx::systemAccentChanged);
     // Widget menus (right-click, tracks...) get the redesign look; the style
     // lives with the application, as the menus using it may outlive MainCtx
     auto *menuStyle = new RedesignMenuStyle(this);
@@ -527,8 +533,10 @@ void MainCtx::applySetupChoices()
                 updateCheck.isValid() ? (updateCheck.toBool() ? "on" : "off") : "as it was",
                 subtitleSearch.isValid() ? (subtitleSearch.toBool() ? "on" : "off") : "as it was");
     }
-    setOnlineChoicesMade();
-    if (getSettings()->status() == QSettings::NoError && !QFile::remove(path))
+    getSettings()->setValue(keyPrivacyAsked, true);
+    // (setOnlineChoicesMade, judged by this write): the file stays until
+    // the settings it gave are written
+    if (syncSettings(getSettings()) && !QFile::remove(path))
         msg_Warn(p_intf, "setup choices: %s could not be removed", qtu(QDir::toNativeSeparators(path)));
 }
 
@@ -601,6 +609,7 @@ void MainCtx::loadPrefs(const bool callSignals)
     loadFromVLCOption(m_pinVideoControls, "qt-pin-controls", &MainCtx::pinVideoControlsChanged);
 
     loadFromVLCOption(m_seekThumbnail, "qt-seek-thumbnail", &MainCtx::seekThumbnailChanged);
+    loadFromVLCOption(m_seekSubtitleCues, "qt-seek-subtitle-cues", &MainCtx::seekSubtitleCuesChanged);
 
     loadFromVLCOption(m_pinOpacity, "qt-fs-opacity", &MainCtx::pinOpacityChanged);
 
@@ -740,6 +749,22 @@ void MainCtx::reloadPrefs()
     /* the log, the interfaces started with VLC, the hotkeys, the speed */
     if (m_liveSettings)
         m_liveSettings->reload();
+}
+
+void MainCtx::applyPlayOrder()
+{
+    using vlc::playlist::PlaylistController;
+    if (!p_intf || !p_intf->p_mainPlaylistController)
+        return;
+    PlaylistController *playlist = p_intf->p_mainPlaylistController;
+    // as the core reads the options at the start (libvlc.c)
+    playlist->setRandom(config_GetInt("random") != 0);
+    playlist->setRepeatMode(config_GetInt("repeat") ? PlaylistController::PLAYBACK_REPEAT_CURRENT
+                            : config_GetInt("loop") ? PlaylistController::PLAYBACK_REPEAT_ALL
+                                                    : PlaylistController::PLAYBACK_REPEAT_NONE);
+    playlist->setMediaStopAction(config_GetInt("play-and-exit") ? PlaylistController::MEDIA_STOPPED_EXIT
+                                 : config_GetInt("play-and-stop") ? PlaylistController::MEDIA_STOPPED_STOP
+                                                                  : PlaylistController::MEDIA_STOPPED_CONTINUE);
 }
 
 void MainCtx::onInputChanged( bool hasInput )
@@ -1259,13 +1284,15 @@ bool MainCtx::pasteFromClipboard()
             placeholder.chop(1);
         }
 
-        bool ok = false;
-        const QString ret = QInputDialog::getMultiLineText(nullptr,
-                                                           qtr("Paste from clipboard"),
-                                                           qtr("Do you want to enqueue the following URLs into the play queue?"),
-                                                           placeholder,
-                                                           &ok);
-        if (!ok)
+        // the URLs in the field of the redesign's dialogs, to edit
+        RedesignMessage message;
+        message.title = qtr("Paste from clipboard");
+        message.heading = qtr("Do you want to enqueue the following URLs into the play queue?");
+        message.acceptText = qtr("Enqueue");
+        message.input = RedesignMessage::TextInput;
+        message.inputText = placeholder;
+        QString ret;
+        if (THEDP->execRedesignMessage(message, &ret) != RedesignMessage::Accepted)
             return false;
 
         for (const auto& i : QStringView(ret).split('\n'))
@@ -1369,6 +1396,192 @@ void MainCtx::setPreferHotkeys(bool enable)
     emit preferHotkeysChanged();
 }
 
+void MainCtx::setKeysBeforeHotkeys(QObject* item)
+{
+    if (m_keysBeforeHotkeys == item)
+        return;
+    m_keysBeforeHotkeys = item;
+    emit keysBeforeHotkeysChanged();
+}
+
+static bool askKeyItem(QObject *item, const char *function, int key, Qt::KeyboardModifiers modifiers)
+{
+    if (!item)
+        return false;
+    QVariant answer;
+    QMetaObject::invokeMethod(item, function, Q_RETURN_ARG(QVariant, answer),
+                              Q_ARG(QVariant, key), Q_ARG(QVariant, static_cast<int>(modifiers)));
+    return answer.toBool();
+}
+
+bool MainCtx::keyTakenBeforeHotkeys(int key, Qt::KeyboardModifiers modifiers) const
+{
+    return askKeyItem(m_keysBeforeHotkeys.data(), "takeKey", key, modifiers);
+}
+
+bool MainCtx::keyGoesBeforeHotkeys(int key, Qt::KeyboardModifiers modifiers) const
+{
+    return askKeyItem(m_keysBeforeHotkeys.data(), "wantsKey", key, modifiers);
+}
+
+QString MainCtx::tvKeyAction(Qt::Key key, Qt::KeyboardModifiers modifiers) const
+{
+    // the keypad's digits and Enter are the keyboard's
+    QKeyEvent event(QEvent::KeyPress, key, modifiers & ~Qt::KeypadModifier);
+    const uint_fast32_t vlcKey = qtEventToVLCKey(&event);
+    if (vlcKey == 0)
+        return {};
+    static const char *const actions[][2] = {
+        { "qt-key-tv-channel-up", "channel-up" },
+        { "qt-key-tv-channel-down", "channel-down" },
+        { "qt-key-tv-previous", "previous" },
+        { "qt-key-tv-list", "list" },
+        { "qt-key-tv-info", "info" },
+    };
+    for (const auto &action : actions)
+    {
+        char *keys = var_InheritString(p_intf, action[0]);
+        bool found = false;
+        for (char *buf, *name = keys ? strtok_r(keys, "\t", &buf) : nullptr;
+             name && !found; name = strtok_r(nullptr, "\t", &buf))
+            found = vlc_str2keycode(name) == vlcKey;
+        free(keys);
+        if (found)
+            return QString::fromLatin1(action[1]);
+    }
+    return {};
+}
+
+void MainCtx::setSubtitleWheelArea(QObject *item)
+{
+    if (m_subtitleWheelArea == item)
+        return;
+    m_subtitleWheelArea = item;
+    emit subtitleWheelAreaChanged();
+}
+
+void MainCtx::setSubtitleWheelExclusion(QObject *item)
+{
+    if (m_subtitleWheelExclusion == item)
+        return;
+    m_subtitleWheelExclusion = item;
+    emit subtitleWheelExclusionChanged();
+}
+
+// One of the keys of an option of keys (tab separated)
+static bool optionHasKey(qt_intf_t *intf, const char *option, uint_fast32_t vlcKey)
+{
+    char *keys = var_InheritString(intf, option);
+    bool found = false;
+    for (char *buf, *name = keys ? strtok_r(keys, "	", &buf) : nullptr;
+         name && !found; name = strtok_r(nullptr, "	", &buf))
+        found = vlc_str2keycode(name) == vlcKey;
+    free(keys);
+    return found;
+}
+
+// The step of the subtitles' size a key makes: 1 larger, -1 smaller, 0 back
+// to 100 %, 2 none
+static int subtitleScaleStep(qt_intf_t *intf, uint_fast32_t vlcKey)
+{
+    if (optionHasKey(intf, "key-subtitle-text-scale-up", vlcKey))
+        return 1;
+    if (optionHasKey(intf, "key-subtitle-text-scale-down", vlcKey))
+        return -1;
+    if (optionHasKey(intf, "key-subtitle-text-scale-normal", vlcKey))
+        return 0;
+    return 2;
+}
+
+// The interface's zoom a key makes: 1 in, -1 out, 0 none
+static int interfaceZoomStep(qt_intf_t *intf, uint_fast32_t vlcKey)
+{
+    if (optionHasKey(intf, "qt-key-intf-zoom-in", vlcKey))
+        return 1;
+    if (optionHasKey(intf, "qt-key-intf-zoom-out", vlcKey))
+        return -1;
+    return 0;
+}
+
+bool MainCtx::wheelKeyAction(int vlcKey, const QPointF &scenePos, bool apply)
+{
+    if (vlcKey == 0 || m_wheelCapture)
+        return false;
+    // over the video: no popup (a dialog, a panel, a menu, its dimmed
+    // background) under the pointer
+    bool overVideo = false;
+    PlayerController *player = p_intf->p_mainPlayerController;
+    auto *area = qobject_cast<QQuickItem *>(m_subtitleWheelArea.data());
+    if (player && player->hasVideoOutput() && area && area->isVisible() && area->window())
+    {
+        overVideo = area->contains(area->mapFromScene(scenePos));
+        // (not over the library beside it, drawn over the video)
+        auto *exclusion = qobject_cast<QQuickItem *>(m_subtitleWheelExclusion.data());
+        if (overVideo && exclusion && exclusion->isVisible() && exclusion->window() == area->window()
+            && exclusion->contains(exclusion->mapFromScene(scenePos)))
+            overVideo = false;
+        // (the overlay of the popups: a child of the content item or of the
+        // window's root item)
+        QQuickItem *content = area->window()->contentItem();
+        QList<QQuickItem *> layers = content ? content->childItems() : QList<QQuickItem *>();
+        if (content && content->parentItem())
+            layers += content->parentItem()->childItems();
+        for (QQuickItem *layer : layers)
+        {
+            if (!overVideo)
+                break;
+            if (!layer->inherits("QQuickOverlay"))
+                continue;
+            const QList<QQuickItem *> popups = layer->childItems();
+            for (QQuickItem *popup : popups)
+                if (popup->isVisible() && popup->opacity() > 0
+                    && popup->contains(popup->mapFromScene(scenePos)))
+                {
+                    overVideo = false;
+                    break;
+                }
+        }
+    }
+    if (overVideo)
+    {
+        const int step = subtitleScaleStep(p_intf, vlcKey);
+        if (step != 2)
+        {
+            if (apply)
+                player->stepSubtitleTextScale(step);
+            return true;
+        }
+    }
+    const int zoom = interfaceZoomStep(p_intf, vlcKey);
+    if (zoom == 0)
+        return false;
+    if (apply)
+        incrementIntfUserScaleFactor(zoom > 0);
+    return true;
+}
+
+bool MainCtx::takeSizeKey(int vlcKey, bool playerKeys)
+{
+    if (vlcKey == 0)
+        return false;
+    PlayerController *player = p_intf->p_mainPlayerController;
+    if (playerKeys && player && player->hasVideoOutput())
+    {
+        // (VLC's hotkeys would change it unseen by the interface)
+        const int step = subtitleScaleStep(p_intf, vlcKey);
+        if (step != 2)
+        {
+            player->stepSubtitleTextScale(step);
+            return true;
+        }
+    }
+    const int zoom = interfaceZoomStep(p_intf, vlcKey);
+    if (zoom == 0)
+        return false;
+    incrementIntfUserScaleFactor(zoom > 0);
+    return true;
+}
+
 QWindow *MainCtx::intfMainWindow() const
 {
     if (p_intf->p_compositor)
@@ -1400,6 +1613,10 @@ void MainCtx::applyInterfaceLanguage(const QString &iso)
         return;
     m_interfaceLanguage = code;
     vlc_settextlanguage(qtu(code));
+    // (Qt asks for setDefault() before other threads use the default locale:
+    // here only the UI thread does, the numbers and dates of QML; the
+    // interface's workers - folder listing, playlist export, subtitle
+    // hashing - must keep from QLocale() and QCollator)
     QLocale::setDefault(QLocale(code));
     applyLanguageFonts(QLocale(code));
     // (the direction is a setting of its own: rightToLeft, chosen with the
@@ -1431,9 +1648,20 @@ bool MainCtx::languageRightToLeft() const
     return QLocale(code).textDirection() == Qt::RightToLeft;
 }
 
+QColor MainCtx::systemAccent() const
+{
+    return m_redesignAccent ? m_redesignAccent->systemAccent() : RedesignAccent::defaultAccent();
+}
+
 void MainCtx::setSettingValue(const QString &key, const QVariant &value)
 {
     settings->setValue(key, value);
+    emit settingValueChanged(key);
+}
+
+void MainCtx::removeSettingValue(const QString &key)
+{
+    settings->remove(key);
     emit settingValueChanged(key);
 }
 
@@ -1510,8 +1738,9 @@ double MainCtx::dp(const double px) const
 
 bool MainCtx::useXmasCone() const
 {
-    return (QDate::currentDate().dayOfYear() >= QT_XMAS_JOKE_DAY)
-            && var_InheritBool( p_intf, "qt-icon-change" );
+    // VLC Redesign: the app icon is the designer's logo all year (upstream's
+    // seasonal cones are not drawn)
+    return false;
 }
 
 bool WindowStateHolder::holdFullscreen(QWindow *window, Source source, bool hold)

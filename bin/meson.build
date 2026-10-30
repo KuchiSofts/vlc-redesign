@@ -13,8 +13,11 @@ if build_vlc and (host_system != 'darwin' or have_osx) and not have_win_store an
             vlc_deps += dependency('Cocoa', required: true)
         endif
     elif host_system == 'windows'
-        vlc_sources += ['winvlc.c']
+        vlc_sources += ['winvlc.c', 'winvlc_message.c']
         vlc_deps += cc.find_library('ole32', required: true)
+        # the messages before the interface (winvlc_message.c)
+        vlc_deps += cc.find_library('dwmapi', required: true)
+        vlc_deps += cc.find_library('gdi32', required: true)
     else
         vlc_sources += ['vlc.c', 'override.c']
         if x11_dep.found()

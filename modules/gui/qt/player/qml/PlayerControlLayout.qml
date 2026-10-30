@@ -308,7 +308,7 @@ FocusScope {
                 corners: false
                 // Figma 2160:6137: across the empty center, darker (#373737)
                 color: emptyZone.spanning ? VLCStyle.redesign.color("#373737", "#8e8e8d")
-                                          : VLCStyle.redesign.color("#6B6B6B", "#5a5a59")
+                                          : VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
             }
 
             DropArea {
@@ -396,6 +396,12 @@ FocusScope {
             focus: true
 
             spacing: playerControlLayout.spacing
+
+            // centred: what the wider side needs, on both sides
+            availableWidth: {
+                const side = Math.max(loaderLeft.item?.neededWidth ?? 0, loaderRight.item?.neededWidth ?? 0)
+                return Math.max(0, loaderCenter.parent.width - 2 * (side + playerControlLayout.layoutSpacing))
+            }
 
             altFocusAction: () => Navigation.defaultNavigationUp()
 

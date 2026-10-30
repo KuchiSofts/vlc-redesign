@@ -27,7 +27,7 @@ Item {
     default property alias content: body.data
 
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
-    function c(value) { return VLCStyle.redesign.color(value, value) }
+    function c(value) { return VLCStyle.redesign.color(value) }
 
     implicitHeight: expanded ? header.height + topSpacing + body.implicitHeight + bottomSpacing
                              : header.height
@@ -77,8 +77,9 @@ Item {
                 width: root.px(24)
                 height: width
                 sourceSize: Qt.size(width, height)
-                source: root.expanded ? "qrc:///redesign/icons/chevron-down/default.png"
-                                      : "qrc:///redesign/icons/chevron-right/default.png"
+                smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
+                source: root.expanded ? "qrc:///redesign/icons/chevron-down/default.svg"
+                                      : "qrc:///redesign/icons/chevron-right/default.svg"
                 // closed, it points to the end (right to left: the left)
                 mirror: LayoutMirroring.enabled
                 color: root.c("#6B6B6B")

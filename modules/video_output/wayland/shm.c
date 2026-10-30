@@ -50,10 +50,28 @@ typedef struct vout_display_sys_t
     struct wl_event_queue *eventq;
     struct wl_shm *shm;
     struct wp_viewporter *viewporter;
-    struct wp_viewport *viewport;
+    struct wp_viewport *viewport; /* of the surface showing the picture */
+
+    /* The picture in a surface of its own, placed where the video goes in
+     * the window (centred), over the window's surface filled with black:
+     * drawn in the window's surface itself, it started at its left and the
+     * rest of the window showed what was below it */
+    struct wl_subcompositor *subcompositor;
+    struct wl_surface *video;
+    struct wl_subsurface *subsurface;
+    struct wp_viewport *background_viewport;
+    struct wl_buffer *black;
+    bool placement_changed;
 
     size_t active_buffers;
 } vout_display_sys_t;
+
+/* The surface the picture is attached to */
+static struct wl_surface *PictureSurface(vout_display_t *vd)
+{
+    vout_display_sys_t *sys = vd->sys;
+    return sys->video != NULL ? sys->video : sys->embed->handle.wl;
+}
 
 struct buffer_data
 {
@@ -86,7 +104,7 @@ static void Prepare(vout_display_t *vd, picture_t *pic,
     VLC_UNUSED(date);
     vout_display_sys_t *sys = vd->sys;
     struct wl_display *display = sys->embed->display.wl;
-    struct wl_surface *surface = sys->embed->handle.wl;
+    struct wl_surface *surface = PictureSurface(vd);
     struct picture_buffer_t *picbuf = pic->p_sys;
 
     if (picbuf->fd == -1)
@@ -130,7 +148,7 @@ static void Prepare(vout_display_t *vd, picture_t *pic,
 
     wl_buffer_add_listener(buf, &buffer_cbs, d);
     wl_surface_attach(surface, buf, 0, 0);
-    wl_surface_damage(surface, 0, 0, vd->cfg->display.width, vd->cfg->display.height);
+    wl_surface_damage(surface, 0, 0, INT32_MAX, INT32_MAX);
     wl_display_flush(display);
 
     sys->active_buffers++;
@@ -142,9 +160,25 @@ static void Display(vout_display_t *vd, picture_t *pic)
 {
     vout_display_sys_t *sys = vd->sys;
     struct wl_display *display = sys->embed->display.wl;
-    struct wl_surface *surface = sys->embed->handle.wl;
 
-    wl_surface_commit(surface);
+    wl_surface_commit(PictureSurface(vd));
+    if (sys->video != NULL && sys->placement_changed)
+    {
+        /* the position of a subsurface and the size of the black
+         * background apply with the window's surface */
+        struct wl_surface *window = sys->embed->handle.wl;
+        unsigned width = vd->cfg->display.width;
+        unsigned height = vd->cfg->display.height;
+
+        wl_subsurface_set_position(sys->subsurface,
+                                   vd->place->x, vd->place->y);
+        if (width > 0 && height > 0)
+            wp_viewport_set_destination(sys->background_viewport,
+                                        width, height);
+        wl_surface_damage(window, 0, 0, INT32_MAX, INT32_MAX);
+        wl_surface_commit(window);
+        sys->placement_changed = false;
+    }
     wl_display_roundtrip_queue(display, sys->eventq);
 
     (void) pic;
@@ -177,6 +211,8 @@ static int UpdateViewport(vout_display_t *vd)
 
     if (sys->viewport == NULL)
         return VLC_EGENERIC;
+
+    sys->placement_changed = true;
 
     video_format_t fmt;
 
@@ -235,6 +271,20 @@ static void Close(vout_display_t *vd)
     struct wl_display *display = sys->embed->display.wl;
     struct wl_surface *surface = sys->embed->handle.wl;
 
+    if (sys->video != NULL)
+    {
+        /* The picture's surface goes away before the wait: Weston 14 and
+         * later keep the buffer last shown by a surface emptied (unmapped)
+         * until something else is attached or the surface is destroyed, so
+         * Close waited for it forever */
+        wl_surface_attach(sys->video, NULL, 0, 0);
+        wl_surface_commit(sys->video);
+        if (sys->viewport != NULL)
+            wp_viewport_destroy(sys->viewport);
+        sys->viewport = NULL;
+        wl_subsurface_destroy(sys->subsurface);
+        wl_surface_destroy(sys->video);
+    }
     wl_surface_attach(surface, NULL, 0, 0);
     wl_surface_commit(surface);
 
@@ -247,6 +297,13 @@ static void Close(vout_display_t *vd)
 
     if (sys->viewport != NULL)
         wp_viewport_destroy(sys->viewport);
+    if (sys->video != NULL)
+    {
+        wp_viewport_destroy(sys->background_viewport);
+        wl_buffer_destroy(sys->black);
+    }
+    if (sys->subcompositor != NULL)
+        wl_subcompositor_destroy(sys->subcompositor);
     if (sys->viewporter != NULL)
         wp_viewporter_destroy(sys->viewporter);
     wl_shm_destroy(sys->shm);
@@ -266,6 +323,93 @@ static const struct vlc_display_operations ops = {
     .set_source_crop = AspectChanged,
 };
 
+/* A buffer of one black pixel, stretched over the window by a viewport */
+static struct wl_buffer *CreateBlackBuffer(struct wl_shm *shm)
+{
+    int fd = vlc_memfd();
+    if (fd == -1)
+        return NULL;
+
+    struct wl_buffer *buf = NULL;
+    if (ftruncate(fd, 4) == 0) /* zero filled: XRGB black */
+    {
+        struct wl_shm_pool *pool = wl_shm_create_pool(shm, fd, 4);
+        if (pool != NULL)
+        {
+            buf = wl_shm_pool_create_buffer(pool, 0, 1, 1, 4,
+                                            WL_SHM_FORMAT_XRGB8888);
+            wl_shm_pool_destroy(pool);
+        }
+    }
+    vlc_close(fd);
+    return buf;
+}
+
+/* The picture in a subsurface over a black window surface; false: the
+ * picture goes in the window's surface (no subcompositor or viewporter) */
+static bool SetupSubsurface(vout_display_t *vd, struct vlc_wl_registry *registry)
+{
+    vout_display_sys_t *sys = vd->sys;
+    struct wl_surface *window = sys->embed->handle.wl;
+
+    if (sys->viewporter == NULL)
+        return false;
+    /* version 2 at least: the picture surface takes the buffer transform */
+    uint32_t version = 4;
+    struct wl_compositor *compositor = (struct wl_compositor *)
+        vlc_wl_interface_bind(registry, "wl_compositor",
+                              &wl_compositor_interface, &version);
+    if (compositor == NULL)
+        return false;
+    sys->subcompositor = (struct wl_subcompositor *)
+        vlc_wl_interface_bind(registry, "wl_subcompositor",
+                              &wl_subcompositor_interface, NULL);
+    if (sys->subcompositor == NULL)
+        goto error;
+    sys->black = CreateBlackBuffer(sys->shm);
+    if (sys->black == NULL)
+        goto error;
+    sys->video = wl_compositor_create_surface(compositor);
+    if (sys->video == NULL)
+        goto error;
+
+    /* the window (the interface) takes the pointer, not the picture */
+    struct wl_region *empty = wl_compositor_create_region(compositor);
+    if (empty != NULL)
+    {
+        wl_surface_set_input_region(sys->video, empty);
+        wl_region_destroy(empty);
+    }
+    sys->subsurface = wl_subcompositor_get_subsurface(sys->subcompositor,
+                                                      sys->video, window);
+    wl_subsurface_set_desync(sys->subsurface);
+    wl_subsurface_set_position(sys->subsurface, 0, 0);
+
+    sys->background_viewport = wp_viewporter_get_viewport(sys->viewporter,
+                                                          window);
+    wl_surface_attach(window, sys->black, 0, 0);
+    if (vd->cfg->display.width > 0 && vd->cfg->display.height > 0)
+        wp_viewport_set_destination(sys->background_viewport,
+                                    vd->cfg->display.width,
+                                    vd->cfg->display.height);
+    sys->placement_changed = true;
+    wl_compositor_destroy(compositor);
+    return true;
+
+error:
+    if (sys->video != NULL)
+        wl_surface_destroy(sys->video);
+    sys->video = NULL;
+    if (sys->black != NULL)
+        wl_buffer_destroy(sys->black);
+    sys->black = NULL;
+    if (sys->subcompositor != NULL)
+        wl_subcompositor_destroy(sys->subcompositor);
+    sys->subcompositor = NULL;
+    wl_compositor_destroy(compositor);
+    return false;
+}
+
 static int Open(vout_display_t *vd,
                 video_format_t *fmtp, vlc_video_context *context)
 {
@@ -280,6 +424,12 @@ static int Open(vout_display_t *vd,
     sys->embed = NULL;
     sys->eventq = NULL;
     sys->shm = NULL;
+    sys->subcompositor = NULL;
+    sys->video = NULL;
+    sys->subsurface = NULL;
+    sys->background_viewport = NULL;
+    sys->black = NULL;
+    sys->placement_changed = false;
     sys->active_buffers = 0;
 
     /* Get window */
@@ -308,7 +458,10 @@ static int Open(vout_display_t *vd,
     wl_shm_add_listener(sys->shm, &shm_cbs, vd);
     wl_display_roundtrip_queue(display, sys->eventq);
 
-    struct wl_surface *surface = sys->embed->handle.wl;
+    if (!SetupSubsurface(vd, registry))
+        msg_Dbg(vd, "picture in the window's surface (no subsurface)");
+
+    struct wl_surface *surface = PictureSurface(vd);
     if (sys->viewporter != NULL)
         sys->viewport = wp_viewporter_get_viewport(sys->viewporter, surface);
     else

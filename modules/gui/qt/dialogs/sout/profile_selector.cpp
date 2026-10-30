@@ -29,7 +29,8 @@
 #include <QToolButton>
 #include <QComboBox>
 #include <QLabel>
-#include <QMessageBox>
+#include "widgets/native/redesign_message_box.hpp"
+#include "menus/redesign_menu_style.hpp"
 #include <QRadioButton>
 #include <QRegularExpression>
 #include <QButtonGroup>
@@ -56,17 +57,17 @@ VLCProfileSelector::VLCProfileSelector( QWidget *_parent ): QWidget( _parent )
     layout->addWidget( profileBox );
 
     QToolButton *editButton = new QToolButton( this );
-    editButton->setIcon( QIcon( ":/menu/preferences.svg" ) );
+    editButton->setIcon( RedesignMenuStyle::menuIcon( ":/menu/preferences.svg" ) );
     editButton->setToolTip( qtr( "Edit selected profile" ) );
     layout->addWidget( editButton );
 
     QToolButton *deleteButton = new QToolButton( this );
-    deleteButton->setIcon( QIcon( ":/menu/clear.svg" ) );
+    deleteButton->setIcon( RedesignMenuStyle::menuIcon( ":/menu/clear.svg" ) );
     deleteButton->setToolTip( qtr( "Delete selected profile" ) );
     layout->addWidget( deleteButton );
 
     QToolButton *newButton = new QToolButton( this );
-    newButton->setIcon( QIcon( ":/menu/profile_new.svg" ) );
+    newButton->setIcon( RedesignMenuStyle::menuIcon( ":/menu/profile_new.svg" ) );
     newButton->setToolTip( qtr( "Create a new profile" ) );
     layout->addWidget(newButton);
 
@@ -799,7 +800,7 @@ void VLCProfileEditor::accept()
 {
     if( ui.profileLine->text().isEmpty() )
     {
-        QMessageBox::warning( this, qtr(" Profile Name Missing" ),
+        RedesignMessageBox::warning( p_intf, this, qtr(" Profile Name Missing" ),
                 qtr( "You must set a name for the profile." ) );
         ui.profileLine->setFocus();
         return;

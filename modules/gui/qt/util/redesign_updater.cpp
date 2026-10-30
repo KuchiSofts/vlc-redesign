@@ -18,6 +18,7 @@
 #include <QDesktopServices>
 #include <QDir>
 #include <QFile>
+#include <QSysInfo>
 #include <QFileInfo>
 #include <QJsonArray>
 #include <QJsonDocument>
@@ -27,6 +28,7 @@
 #include <QRegularExpression>
 #include <QSettings>
 #include <QStandardPaths>
+#include <QStringList>
 #include <QThread>
 #include <QtEndian>
 #include <QUrl>
@@ -34,6 +36,16 @@
 #include <algorithm>
 #include <cstring>
 #include <memory>
+
+#ifdef _WIN32
+# include <QDirIterator>
+# include <windows.h>
+# include <wincrypt.h>
+# include <wintrust.h>
+# include <softpub.h>
+# include "util/redesign_update_key.h"
+# include "util/redesign_update_verify.h"
+#endif
 
 #include "dialogs/dialogs_provider.hpp"
 #include "maininterface/mainctx.hpp"
@@ -50,6 +62,33 @@ const char keySkipped[] = "redesign/update-skip";
 // each step of a download (a stalled read ends it), and the whole of it
 constexpr int downloadStepMs = 30 * 1000;
 constexpr int downloadDeadlineMs = 30 * 60 * 1000;
+// The first release whose SHA256SUMS.txt is signed with the project's key
+// (SHA256SUMS.txt.sig, redesign_update_key.h): from it on, a release whose
+// checksums don't carry a good signature is never installed. The releases
+// before it have no signature.
+const char FIRST_SIGNED_VERSION[] = "0.4.0";
+const char sumsName[] = "SHA256SUMS.txt";
+const char sumsSignatureName[] = "SHA256SUMS.txt.sig";
+// The files of this build's architecture (docs/MASTER-PLAN.md, 13.5): an
+// x64 copy never takes an ARM64 file or the other way round, even when it
+// runs emulated. The x64 small updates keep the name they had before ARM64
+// (the copies already installed look for it).
+#if defined(_WIN32) && (defined(_M_ARM64) || defined(__aarch64__))
+const char installerSuffix[] = "-winarm64-setup.exe";
+const char deltaInfix[] = "-winarm64";
+#elif defined(_WIN32)
+const char installerSuffix[] = "-win64-setup.exe";
+const char deltaInfix[] = "";
+#elif defined(__APPLE__)
+// macOS installs nothing from here (no installer, no small update): the
+// release page, and only for a release that has the disk image of this
+// Mac's architecture
+# if defined(__aarch64__) || defined(__arm64__)
+const char ownPackageSuffix[] = "-macos-arm64.dmg";
+# else
+const char ownPackageSuffix[] = "-macos-x86_64.dmg";
+# endif
+#endif
 
 #ifndef NDEBUG
 // for testing updates against a local server, not GitHub (debug builds only)
@@ -59,16 +98,17 @@ QString testApi()
 }
 #endif
 
-// What is downloaded comes from GitHub, over HTTPS (WinHTTP then follows
-// its redirects to its storage, never to plain HTTP)
+// What is downloaded comes from the project's own releases on GitHub, over
+// HTTPS (WinHTTP then follows its redirects to its storage, never to plain
+// HTTP): never a file of another repository the release data could name
 bool trustedUrl(const QString &address)
 {
     const QUrl url(address);
     const QString host = url.host().toLower();
     if (url.isValid() && url.scheme() == QLatin1String("https") && url.userInfo().isEmpty()
-        && url.port(443) == 443
-        && (host == QLatin1String("github.com") || host == QLatin1String("api.github.com")
-            || host == QLatin1String("objects.githubusercontent.com")))
+        && url.port(443) == 443 && host == QLatin1String("github.com")
+        && url.path().startsWith(QLatin1String("/" VLC_REDESIGN_REPO "/releases/download/"), Qt::CaseInsensitive)
+        && !url.path().contains(QLatin1String("/../")))
         return true;
 #ifndef NDEBUG
     // the test server's own files
@@ -78,6 +118,123 @@ bool trustedUrl(const QString &address)
 #else
     return false;
 #endif
+}
+
+#ifdef _WIN32
+// The publisher an Authenticode signature names, if the file carries one
+// Windows trusts; empty otherwise. wintrust.dll and crypt32.dll are loaded
+// here: nothing else of the interface needs them.
+QString trustedSigner(const QString &path)
+{
+    using VerifyFn = LONG(WINAPI *)(HWND, GUID *, LPVOID);
+    using ProvDataFn = CRYPT_PROVIDER_DATA *(WINAPI *)(HANDLE);
+    using ProvSignerFn = CRYPT_PROVIDER_SGNR *(WINAPI *)(CRYPT_PROVIDER_DATA *, DWORD, BOOL, DWORD);
+    using NameFn = DWORD(WINAPI *)(PCCERT_CONTEXT, DWORD, DWORD, void *, LPWSTR, DWORD);
+    static HMODULE wintrust = LoadLibraryExW(L"wintrust.dll", nullptr, LOAD_LIBRARY_SEARCH_SYSTEM32);
+    static HMODULE crypt32 = LoadLibraryExW(L"crypt32.dll", nullptr, LOAD_LIBRARY_SEARCH_SYSTEM32);
+    if (!wintrust || !crypt32)
+        return {};
+    const auto verify = reinterpret_cast<VerifyFn>(
+        reinterpret_cast<void *>(GetProcAddress(wintrust, "WinVerifyTrust")));
+    const auto provData = reinterpret_cast<ProvDataFn>(
+        reinterpret_cast<void *>(GetProcAddress(wintrust, "WTHelperProvDataFromStateData")));
+    const auto provSigner = reinterpret_cast<ProvSignerFn>(
+        reinterpret_cast<void *>(GetProcAddress(wintrust, "WTHelperGetProvSignerFromChain")));
+    const auto nameOf = reinterpret_cast<NameFn>(
+        reinterpret_cast<void *>(GetProcAddress(crypt32, "CertGetNameStringW")));
+    if (!verify || !provData || !provSigner || !nameOf)
+        return {};
+
+    const QString native = QDir::toNativeSeparators(path);
+    WINTRUST_FILE_INFO file = {};
+    file.cbStruct = sizeof(file);
+    file.pcwszFilePath = reinterpret_cast<LPCWSTR>(native.utf16());
+    WINTRUST_DATA data = {};
+    data.cbStruct = sizeof(data);
+    data.dwUIChoice = WTD_UI_NONE;
+    // (no revocation lists: offline, no update would ever be accepted)
+    data.fdwRevocationChecks = WTD_REVOKE_NONE;
+    data.dwUnionChoice = WTD_CHOICE_FILE;
+    data.pFile = &file;
+    data.dwStateAction = WTD_STATEACTION_VERIFY;
+    GUID action = WINTRUST_ACTION_GENERIC_VERIFY_V2;
+    QString name;
+    if (verify(static_cast<HWND>(INVALID_HANDLE_VALUE), &action, &data) == ERROR_SUCCESS) {
+        CRYPT_PROVIDER_DATA *provider = provData(data.hWVTStateData);
+        CRYPT_PROVIDER_SGNR *signer = provider ? provSigner(provider, 0, FALSE, 0) : nullptr;
+        if (signer && signer->csCertChain > 0 && signer->pasCertChain[0].pCert) {
+            wchar_t buffer[256] = {};
+            if (nameOf(signer->pasCertChain[0].pCert, CERT_NAME_SIMPLE_DISPLAY_TYPE, 0, nullptr, buffer, 256) > 1)
+                name = QString::fromWCharArray(buffer);
+        }
+    }
+    data.dwStateAction = WTD_STATEACTION_CLOSE;
+    verify(static_cast<HWND>(INVALID_HANDLE_VALUE), &action, &data);
+    return name;
+}
+#endif
+
+// Whether a release must come with signed checksums: from the first signed
+// one on. (Every build of this version or later only updates to such a
+// release; the older targets keep the checks they had.)
+bool signatureRequired(const QString &version)
+{
+    return !RedesignUpdater::versionLess(version, QLatin1String(FIRST_SIGNED_VERSION));
+}
+
+// SHA256SUMS.txt checked against its signature by the key the app carries:
+// whoever can publish on GitHub (an account, a token) still can't make the
+// checksums of an update without the private key, which never leaves the
+// release PC (extras/juxtopposed/signing/release-key.ps1)
+bool goodSignature(const QByteArray &sums, const QByteArray &signature)
+{
+#ifdef _WIN32
+    return vlc_redesign_verify_signature(vlc_redesign_update_key, sums.constData(),
+                                         static_cast<size_t>(sums.size()),
+                                         reinterpret_cast<const unsigned char *>(signature.constData()),
+                                         static_cast<size_t>(signature.size())) == 1;
+#else
+    // (no updater: nothing is installed from here)
+    Q_UNUSED(sums);
+    Q_UNUSED(signature);
+    return false;
+#endif
+}
+
+// The checksums don't tell who built the files they list unless they are
+// signed (above). A copy whose vlc.exe is signed (the releases signed
+// through SignPath, CODE_SIGNING_POLICY.md) also takes only programs signed
+// by the same publisher: an error for a file that isn't. A copy that isn't
+// signed has no publisher to compare with (its builds by hand, the releases
+// before signing): the checksums are then the check.
+QString publisherMismatch(const QString &path)
+{
+#ifdef _WIN32
+    static const QString own = trustedSigner(QCoreApplication::applicationFilePath());
+    if (own.isEmpty() || trustedSigner(path) == own)
+        return {};
+    return qtr("The update isn't signed by the publisher of this copy (%1), so it wasn't used.").arg(own);
+#else
+    Q_UNUSED(path);
+    return {};
+#endif
+}
+
+// The same for every program of a staged small update
+QString stagedPublisherMismatch(const QString &staged)
+{
+#ifdef _WIN32
+    QDirIterator it(staged, { QStringLiteral("*.exe"), QStringLiteral("*.dll") }, QDir::Files,
+                    QDirIterator::Subdirectories);
+    while (it.hasNext()) {
+        const QString error = publisherMismatch(it.next());
+        if (!error.isEmpty())
+            return error;
+    }
+#else
+    Q_UNUSED(staged);
+#endif
+    return {};
 }
 
 HttpRequest githubRequest(const QString &url, qsizetype maxBytes, int timeoutMs)
@@ -269,6 +426,77 @@ QString RedesignUpdater::repositoryUrl() const
     return QStringLiteral(VLC_REDESIGN_REPO_URL);
 }
 
+QString RedesignUpdater::alsoOn() const
+{
+    // platforms.yml as extras/juxtopposed/platforms/render.py writes it for the
+    // website (site/platforms.json), built in by assets.qrc: nothing is fetched
+#if defined(_WIN32) && (defined(_M_ARM64) || defined(__aarch64__))
+    const QString self = QStringLiteral("windows-arm64");
+#elif defined(_WIN32)
+    const QString self = QStringLiteral("windows");
+#elif defined(__APPLE__)
+    const QString self = QStringLiteral("macos");
+#elif defined(__ANDROID__)
+    const QString self = QStringLiteral("android");
+#else
+    const QString self = QStringLiteral("linux");
+#endif
+    QFile file(QStringLiteral(":/redesign/platforms.json"));
+    if (!file.open(QIODevice::ReadOnly))
+        return {};
+    const QJsonArray platforms = QJsonDocument::fromJson(file.readAll()).object()
+                                     .value(QLatin1String("platforms")).toArray();
+    QStringList items;
+    for (const QJsonValue &value : platforms)
+    {
+        const QJsonObject p = value.toObject();
+        if (p.value(QLatin1String("id")).toString() == self)
+            continue;
+        const QString name = p.value(QLatin1String("short")).toString();
+        if (name.isEmpty())
+            continue;
+        if (p.value(QLatin1String("available")).toBool())
+            items << QStringLiteral("%1 %2").arg(name, p.value(QLatin1String("version")).toString());
+        else if (p.value(QLatin1String("status")).toString() == QLatin1String("later"))
+            items << qtr("%1 (later)").arg(name);
+        else
+            items << qtr("%1 (soon)").arg(name);
+    }
+    return items.join(QLatin1String(", "));
+}
+
+QString RedesignUpdater::platformName() const
+{
+#if defined(_WIN32) && (defined(_M_ARM64) || defined(__aarch64__))
+    return QStringLiteral("Windows ARM64");
+#elif defined(_WIN32)
+    return QStringLiteral("Windows x64");
+#elif defined(__APPLE__) && (defined(__aarch64__) || defined(__arm64__))
+    return QStringLiteral("macOS Apple Silicon");
+#elif defined(__APPLE__)
+    return QStringLiteral("macOS Intel");
+#else
+# if defined(__aarch64__)
+    QString name = QStringLiteral("Linux ARM64");
+# else
+    QString name = QStringLiteral("Linux x86_64");
+# endif
+    // the package it runs from, when it says so
+    if (qEnvironmentVariableIsSet("APPIMAGE"))
+        name += QStringLiteral(" · AppImage");
+    else if (qEnvironmentVariableIsSet("FLATPAK_ID"))
+        name += QStringLiteral(" · Flatpak");
+    return name;
+#endif
+}
+
+QString RedesignUpdater::platformDetails() const
+{
+    return QStringLiteral("%1 (%2) · %3 · Qt %4")
+        .arg(QSysInfo::prettyProductName(), QSysInfo::kernelVersion(),
+             QSysInfo::currentCpuArchitecture(), QString::fromLatin1(qVersion()));
+}
+
 QString RedesignUpdater::appDir() const
 {
     return QCoreApplication::applicationDirPath();
@@ -289,7 +517,22 @@ bool RedesignUpdater::versionLess(const QString &a, const QString &b)
     // a pre-release comes before its release
     if (pa.isEmpty() != pb.isEmpty())
         return !pa.isEmpty();
-    return QString::compare(pa, pb, Qt::CaseInsensitive) < 0;
+    // part by part, as SemVer does: numbers as numbers (beta.9 before
+    // beta.10), before words; fewer parts first when the rest is the same
+    const QStringList xa = pa.split('.'), xb = pb.split('.');
+    for (qsizetype i = 0; i < std::min(xa.size(), xb.size()); ++i) {
+        bool numa, numb;
+        const qulonglong ia = xa[i].toULongLong(&numa), ib = xb[i].toULongLong(&numb);
+        if (numa && numb) {
+            if (ia != ib)
+                return ia < ib;
+        } else if (numa != numb) {
+            return numa;
+        } else if (const int c = QString::compare(xa[i], xb[i], Qt::CaseInsensitive)) {
+            return c < 0;
+        }
+    }
+    return xa.size() < xb.size();
 }
 
 bool RedesignUpdater::isInstalledCopy() const
@@ -444,9 +687,15 @@ void RedesignUpdater::onRelease(int status, const QByteArray &body)
     m_deltaName.clear();
     m_deltaSize = 0;
     m_sumsUrl.clear();
+    m_sigUrl.clear();
+#ifdef _WIN32
     // the small update from this very version, if the release has one
-    const QString deltaName = QStringLiteral("vlc-redesign-%1-delta-from-%2.vrdelta")
-                                  .arg(m_latestVersion, currentVersion());
+    const QString deltaName = QStringLiteral("vlc-redesign-%1%2-delta-from-%3.vrdelta")
+                                  .arg(m_latestVersion, QLatin1String(deltaInfix), currentVersion());
+#endif
+#ifdef __APPLE__
+    bool ownPackage = false;
+#endif
     for (const QJsonValue asset : release.value(QLatin1String("assets")).toArray()) {
         const QJsonObject a = asset.toObject();
         const QString name = a.value(QLatin1String("name")).toString();
@@ -454,7 +703,13 @@ void RedesignUpdater::onRelease(int status, const QByteArray &body)
         const qint64 size = a.value(QLatin1String("size")).toInteger();
         if (!trustedUrl(url))
             continue;
-        if (name.endsWith(QLatin1String("-win64-setup.exe"), Qt::CaseInsensitive)) {
+        if (name.compare(QLatin1String(sumsName), Qt::CaseInsensitive) == 0) {
+            m_sumsUrl = url;
+        } else if (name.compare(QLatin1String(sumsSignatureName), Qt::CaseInsensitive) == 0) {
+            m_sigUrl = url;
+        }
+#ifdef _WIN32
+        else if (name.endsWith(QLatin1String(installerSuffix), Qt::CaseInsensitive)) {
             m_installerUrl = url;
             m_installerName = name;
             m_installerSize = size;
@@ -462,11 +717,24 @@ void RedesignUpdater::onRelease(int status, const QByteArray &body)
             m_deltaUrl = url;
             m_deltaName = name;
             m_deltaSize = size;
-        } else if (name.compare(QLatin1String("SHA256SUMS.txt"), Qt::CaseInsensitive) == 0) {
-            m_sumsUrl = url;
         }
+#elif defined(__APPLE__)
+        else if (name.endsWith(QLatin1String(ownPackageSuffix), Qt::CaseInsensitive))
+            ownPackage = true;
+#endif
+#ifndef _WIN32
+        // (the files of Windows are never offered elsewhere)
+        Q_UNUSED(size);
+#endif
     }
 
+#ifdef __APPLE__
+    // a release made for the other systems only is not an update of this one
+    if (!ownPackage) {
+        setState(UpToDate);
+        return;
+    }
+#endif
     setState(versionLess(currentVersion(), m_latestVersion) ? Available : UpToDate);
 }
 
@@ -520,25 +788,74 @@ void RedesignUpdater::install()
 void RedesignUpdater::withChecksum(const QString &assetName, std::function<void(const QString &)> next)
 {
     const quint64 attempt = m_attempt;
+    const bool signedRelease = signatureRequired(m_latestVersion);
+    const QString unsignedError = qtr("This update isn't signed by VLC Redesign, so it wasn't used. "
+                                      "Download it from the release page instead.");
+    if (signedRelease) {
+        if (m_sigUrl.isEmpty()) {
+            msg_Warn(m_intf, "update to %s: the release has no %s", qtu(m_latestVersion), sumsSignatureName);
+            setState(Failed, unsignedError);
+            return;
+        }
+        // The signed checksums name the files of one version: never those
+        // of another (signed) release published under this one's tag
+        if (!assetName.startsWith(QStringLiteral("vlc-redesign-%1-").arg(m_latestVersion), Qt::CaseInsensitive)) {
+            msg_Warn(m_intf, "update to %s: %s is not a file of that version", qtu(m_latestVersion), qtu(assetName));
+            setState(Failed, unsignedError);
+            return;
+        }
+    }
     m_cancel = httpRequestAsync(this, githubRequest(m_sumsUrl, 64 * 1024, 30000),
-                                [this, attempt, assetName, next](const HttpResponse &response) {
+                                [this, attempt, assetName, next, signedRelease,
+                                 unsignedError](const HttpResponse &response) {
         if (attempt != m_attempt)
             return; // cancelled
-        QString expected;
-        if (response.error.isEmpty() && response.status == 200) {
-            for (const QString &line : QString::fromUtf8(response.body).split('\n')) {
-                QStringList parts = line.trimmed().split(QRegularExpression(QStringLiteral("\\s+")));
-                // "<hash>  <name>", or "<hash> *<name>" in binary mode
-                if (parts.size() == 2 && parts[1].remove('*') == assetName)
-                    expected = parts[0].toLower();
-            }
-        }
-        if (expected.size() != 64) {
+        if (!response.error.isEmpty() || response.status != 200) {
             setState(Failed, qtr("The update's checksum is missing; download it from the release page instead."));
             return;
         }
-        next(expected);
+        if (!signedRelease) {
+            useChecksums(response.body, assetName, next);
+            return;
+        }
+        // Nothing of the checksums is used before their signature is checked
+        const QByteArray sums = response.body;
+        m_cancel = httpRequestAsync(this, githubRequest(m_sigUrl, 4096, 30000),
+                                    [this, attempt, assetName, next, sums,
+                                     unsignedError](const HttpResponse &signature) {
+            if (attempt != m_attempt)
+                return; // cancelled
+            if (!signature.error.isEmpty() || signature.status == 0) {
+                setState(Failed, qtr("The download failed. Check your connection and try again."));
+                return;
+            }
+            if (signature.status != 200 || !goodSignature(sums, signature.body)) {
+                msg_Warn(m_intf, "update to %s: %s doesn't carry a good signature (HTTP %d, %d bytes)",
+                         qtu(m_latestVersion), sumsName, signature.status, int(signature.body.size()));
+                setState(Failed, unsignedError);
+                return;
+            }
+            msg_Dbg(m_intf, "update to %s: %s signed by the release key", qtu(m_latestVersion), sumsName);
+            useChecksums(sums, assetName, next);
+        });
     });
+}
+
+void RedesignUpdater::useChecksums(const QByteArray &sums, const QString &assetName,
+                                   const std::function<void(const QString &)> &next)
+{
+    QString expected;
+    for (const QString &line : QString::fromUtf8(sums).split('\n')) {
+        QStringList parts = line.trimmed().split(QRegularExpression(QStringLiteral("\\s+")));
+        // "<hash>  <name>", or "<hash> *<name>" in binary mode
+        if (parts.size() == 2 && parts[1].remove('*') == assetName)
+            expected = parts[0].toLower();
+    }
+    if (expected.size() != 64) {
+        setState(Failed, qtr("The update's checksum is missing; download it from the release page instead."));
+        return;
+    }
+    next(expected);
 }
 
 // The progress of a download, from its worker thread, at most once a percent.
@@ -593,10 +910,19 @@ void RedesignUpdater::downloadDelta(const QString &expectedSha256)
         const QString dir = appDir();
         const QString version = m_latestVersion;
         QThread *worker = QThread::create([error, delta, expectedSha256, dir, version]() {
-            if (sha256Hex(delta) != expectedSha256)
+            if (sha256Hex(delta) != expectedSha256) {
                 *error = qtr("The update doesn't match its checksum, so it wasn't used.");
-            else
+            } else {
                 *error = stageDelta(delta, dir, version);
+                if (error->isEmpty()) {
+                    *error = stagedPublisherMismatch(dir + QStringLiteral("/.update/staged"));
+                    // (never put in place)
+                    if (!error->isEmpty()) {
+                        QFile::remove(dir + QStringLiteral("/.update/ready.txt"));
+                        QDir(dir + QStringLiteral("/.update/staged")).removeRecursively();
+                    }
+                }
+            }
         });
         connect(worker, &QThread::finished, this, [this, error]() {
             if (error->isEmpty()) {
@@ -838,8 +1164,14 @@ void RedesignUpdater::downloadInstaller(const QString &expectedSha256)
                 // (the name of the release's file, never a path)
                 saved->path = dir + QLatin1Char('/') + QFileInfo(name).fileName();
                 QFile file(saved->path);
-                if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate) || file.write(body) != body.size())
+                if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate) || file.write(body) != body.size()) {
                     saved->error = qtr("The installer couldn't be saved to %1.").arg(QDir::toNativeSeparators(dir));
+                } else {
+                    file.close();
+                    saved->error = publisherMismatch(saved->path);
+                    if (!saved->error.isEmpty())
+                        QFile::remove(saved->path);
+                }
             }
         });
         connect(worker, &QThread::finished, this, [this, saved]() {

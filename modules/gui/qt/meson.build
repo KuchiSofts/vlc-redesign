@@ -16,8 +16,9 @@ qt_cppargs = []
 qt_link_args = [gc_sections_linkargs]
 
 qt6_dep = dependency('qt6',
-    # Note that Qt < 6.2.5 does not provide pc files!
-    version: '>=6.2',
+    # The redesign uses Qt 6.8 APIs in C++ and QML (the Windows build ships
+    # 6.8.3): an older Qt builds a main window that cannot load
+    version: '>=6.8',
     modules: [
         'Core', 'Gui', 'Widgets', 'Qml',
         'Quick', 'QuickControls2'
@@ -27,6 +28,10 @@ qt6_dep = dependency('qt6',
 
 # Qt module doesn't provide the framework path to moc executable, so we
 # need to help moc find them. It's needed for QtQml/ module registration.
+if host_machine.system() == 'darwin'
+    # maininterface/macos_titlebar.cpp messages AppKit from C++
+    qt_link_args += ['-framework', 'AppKit', '-lobjc']
+endif
 if host_machine.system() == 'darwin' and qt6_dep.found()
     qt_libdir = qt6_dep.get_variable(pkgconfig: 'libdir', configtool: '-query QT_INSTALL_LIBS')
     qt_extra_flags += '-F' + qt_libdir
@@ -202,6 +207,13 @@ if qt6_dep.found()
             cc.find_library('shell32'),
             cc.find_library('iphlpapi'),
         ]
+    else
+        # util/http_request.cpp: libcurl outside Windows
+        libcurl_dep = dependency('libcurl', required: false)
+        if libcurl_dep.found()
+            qt_extra_deps += libcurl_dep
+            qt_cppargs += '-DQT_HAS_LIBCURL'
+        endif
     endif
 
     qt_xcb_check = '''

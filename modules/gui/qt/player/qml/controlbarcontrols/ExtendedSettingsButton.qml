@@ -24,7 +24,7 @@ import VLC.Dialogs
 import VLC.Util
 
 RedesignIconButton {
-    iconSource: "qrc:///redesign/player/equalizer.png"
+    iconSource: "qrc:///redesign/player/equalizer.svg"
     id: extdSettingsBtn
 
     text: VLCIcons.effect_filter
@@ -40,6 +40,8 @@ RedesignIconButton {
     // above the button, as the languages and tracks (the menu and the
     // shortcut still open it in the middle of the window)
     onClicked: panel.toggle()
+    // open while its panel shows
+    active: panel.opened
 
     function forceUnlock() {
         panel.close()

@@ -101,6 +101,10 @@ Controls.Popup {
     }
 
     contentItem: Item {
+        // a screen reader names the dialog
+        Accessible.role: Accessible.Dialog
+        Accessible.name: qsTr("Customize Player")
+
         id: scene
 
         // a popup does not inherit the mirroring of the window (right to left)
@@ -123,7 +127,7 @@ Controls.Popup {
             // the bar of the player is edited in place: no strip
             visible: false
             height: 0
-            color: VLCStyle.redesign.color("#1b1b1b", root.colorContext.bg.primary)
+            color: VLCStyle.redesign.color("#1b1b1b", "#ababaa")
             border.color: VLCStyle.redesign.color("#343434", root.colorContext.border)
             border.width: 1
         }
@@ -158,7 +162,7 @@ Controls.Popup {
                 width: parent.width
                 height: VLCStyle.dp(94, VLCStyle.scale) + Math.max(0, descriptionText.height - VLCStyle.dp(32, VLCStyle.scale))
                 radius: panel.radius
-                color: VLCStyle.redesign.color("#090909", root.colorContext.bg.secondary)
+                color: VLCStyle.redesign.color("#090909", "#dedede")
                 Rectangle {
                     anchors.bottom: parent.bottom
                     width: parent.width
@@ -189,7 +193,7 @@ Controls.Popup {
                         Controls.ToolTip.delay: 650
                         HoverHandler { id: titleHover }
                         text: qsTr("Customize Player")
-                        color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, root.colorContext.fg.primary)
+                        color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                         verticalAlignment: Text.AlignTop
@@ -219,7 +223,7 @@ Controls.Popup {
                             border.color: VLCStyle.redesign.focusColor
                         }
                         contentItem: Image {
-                            source: "qrc:///redesign/icons/close/default.png"
+                            source: "qrc:///redesign/icons/close/default.svg"
                             sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
                             fillMode: Image.Pad
                             smooth: true
@@ -241,7 +245,7 @@ Controls.Popup {
                     maximumLineCount: 2
                     elide: Text.ElideRight
                     horizontalAlignment: Text.AlignLeft
-                    color: VLCStyle.redesign.color("#6B6B6B", root.colorContext.fg.secondary)
+                    color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                     verticalAlignment: Text.AlignTop
@@ -295,13 +299,16 @@ Controls.Popup {
                         color: cancelButton.down || cancelButton.hovered
                                ? VLCStyle.redesign.color(VLCStyle.redesign.controlHoverBackground, "#9c9c9b")
                                : VLCStyle.redesign.color(VLCStyle.redesign.playerControlBackground, "#ababaa")
-                        border.width: cancelButton.visualFocus ? 1 : 0
-                        border.color: VLCStyle.redesign.focusColor
+                        // the frame of the window: #1B1B1B melts into the
+                        // card (docs/MASTER-PLAN.md section 6)
+                        border.width: 1
+                        border.color: cancelButton.visualFocus ? VLCStyle.redesign.focusColor
+                                                               : VLCStyle.redesign.color(VLCStyle.redesign.windowBorder)
                     }
                     contentItem: Text {
                         id: cancelLabel
                         text: cancelButton.text
-                        color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#4d4d4d")
+                        color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                         font.weight: Font.DemiBold
@@ -350,7 +357,7 @@ Controls.Popup {
                     onClicked: root.saveEditor()
                     background: Rectangle {
                         radius: VLCStyle.dp(6, VLCStyle.scale)
-                        color: !saveButton.enabled ? VLCStyle.redesign.color("#191919", "#b5b5b4")
+                        color: !saveButton.enabled ? VLCStyle.redesign.color("#191919", "#ababaa")
                                : saveButton.down ? Qt.lighter(VLCStyle.redesign.accentBackground, 1.15)
                                                  : VLCStyle.redesign.accentBackground
                         border.width: saveButton.visualFocus ? 1 : 0
@@ -368,6 +375,11 @@ Controls.Popup {
                         verticalAlignment: Text.AlignVCenter
                     }
                 }
+            }
+
+            // the frame of the main window, over the title bar
+            Widgets.RedesignWindowBorder {
+                radius: panel.radius
             }
         }
 

@@ -25,6 +25,7 @@ import VLC.Dialogs
 import VLC.MainInterface
 import VLC.Player
 import VLC.Style
+import VLC.Widgets as Widgets
 
 T.Popup {
     id: root
@@ -33,10 +34,18 @@ T.Popup {
     property int currentTab: 0
     property bool previousGlobalShortcuts: true
     readonly property var trackTabs: [
-        { title: qsTr("Video"), icon: "qrc:///redesign/track-video.png", activeIcon: "qrc:///redesign/track-video-active.png", tab: 2 },
-        { title: qsTr("Audio"), icon: "qrc:///redesign/track-audio.png", activeIcon: "qrc:///redesign/track-audio-active.png", tab: 1 },
-        { title: qsTr("Subtitles"), icon: "qrc:///redesign/track-subtitles.png", activeIcon: "qrc:///redesign/track-subtitles-active.png", tab: 0 }
-    ]
+        { title: qsTr("Video"), icon: "qrc:///redesign/track-video.svg", activeIcon: "qrc:///redesign/track-video-active.svg", tab: 2 },
+        { title: qsTr("Audio"), icon: "qrc:///redesign/track-audio.svg", activeIcon: "qrc:///redesign/track-audio-active.svg", tab: 1 },
+    ].concat(subtitlesOffered
+             ? [{ title: qsTr("Subtitles"), icon: "qrc:///redesign/track-subtitles.svg", activeIcon: "qrc:///redesign/track-subtitles-active.svg", tab: 0 }]
+             : [])
+    // Subtitles are for films and videos: a live TV channel or music has
+    // no Subtitles tab, unless it carries subtitle tracks of its own
+    // (teletext, DVB, closed captions: then their choice only)
+    readonly property bool subtitlesOffered: (Player.hasVideoOutput && !Iptv.playing)
+                                             || Player.subtitleTracks.count > 0
+    onSubtitlesOfferedChanged: if (!subtitlesOffered && currentTab === 0) currentTab = 1
+    Component.onCompleted: if (!subtitlesOffered && currentTab === 0) currentTab = 1
     // The pictures of the tabs and the checks are drawn in #8F8F8F and the
     // default accent: tinted in the light theme and for the other accents
     readonly property color iconTint: VLCStyle.palette.isDark ? "transparent"
@@ -77,6 +86,13 @@ T.Popup {
 
     background: Rectangle {
         color: VLCStyle.redesign.color(VLCStyle.redesign.windowBackground, "#c2c2c1")
+        radius: VLCStyle.dp(6, VLCStyle.scale)
+    }
+
+    // the frame of the main window, over the content (which reaches the
+    // card's edges): the card reads as a window over the interface
+    readonly property Item _windowBorder: Widgets.RedesignWindowBorder {
+        parent: root.background ? root.background.parent : null
         radius: VLCStyle.dp(6, VLCStyle.scale)
     }
 
@@ -241,7 +257,7 @@ T.Popup {
                                 border.color: VLCStyle.redesign.focusColor
                             }
                             contentItem: Image {
-                                source: "qrc:///redesign/icons/refresh/default.png"
+                                source: "qrc:///redesign/icons/refresh/default.svg"
                                 sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
                                 fillMode: Image.Pad
                             }
@@ -480,10 +496,13 @@ T.Popup {
         }
         contentItem: Item {
             Impl.ColorImage {
+                // drawn at the size shown (an SVG: sharp at any scale and zoom)
+                sourceSize: Qt.size(width, height)
+                smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                 anchors.left: parent.left
                 anchors.leftMargin: VLCStyle.dp(12, VLCStyle.scale)
                 anchors.verticalCenter: parent.verticalCenter
-                source: "qrc:///redesign/track-check-active.png"
+                source: "qrc:///redesign/track-check-active.svg"
                 color: root.accentTint
                 visible: parent.parent.checked
                 width: VLCStyle.dp(24, VLCStyle.scale)

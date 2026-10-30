@@ -1,11 +1,37 @@
+<!-- platforms:start -->
+<!-- Written by extras/juxtopposed/platforms/render.py from platforms.yml: edit that file. -->
+<p align="center"><sub>
+
+**[Windows 0.4.0](https://github.com/KuchiSofts/vlc-redesign/releases/latest)** · **[Linux 0.4.0](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[macOS 0.4.0](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · Windows ARM64 soon · Android soon · Samsung TV soon · iPhone/iPad later
+
+</sub></p>
+
+<details>
+<summary>Every platform and its status</summary>
+
+| Platform | Status | Latest | Get it |
+|---|---|---|---|
+| Windows | 🟢 released | 0.4.0 · 2026-10-30 | [installer](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign-0.4.0-win64-setup.exe) · [portable](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign-0.4.0-win64.zip) |
+| Linux | 🟢 released | 0.4.0 · 2026-10-30 | [appimage](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign-0.4.0-x86_64.AppImage) · [deb](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign_0.4.0_amd64.deb) · [rpm](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign-0.4.0-1.x86_64.rpm) · [tar.xz](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign-0.4.0-linux-x86_64.tar.xz) · [appimage arm64](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign-0.4.0-aarch64.AppImage) · [deb arm64](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign_0.4.0_arm64.deb) · [rpm arm64](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign-0.4.0-1.aarch64.rpm) |
+| macOS | 🟢 released | 0.4.0 · 2026-10-30 | [apple silicon](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign-0.4.0-macos-arm64.dmg) · [intel](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.4.0/vlc-redesign-0.4.0-macos-x86_64.dmg) |
+| Windows ARM64 | 🔴 planned | — | coming soon |
+| Android | ⚪ research | — | coming soon |
+| Samsung TV | ⚪ research | — | coming soon |
+| iPhone/iPad | ⚪ later | — | coming soon |
+
+<sub>From [`platforms.yml`](platforms.yml) · [every platform on the website](https://kuchisofts.github.io/vlc-redesign/).</sub>
+
+</details>
+<!-- platforms:end -->
+
 <div align="center">
 
-<img src="modules/gui/qt/pixmaps/misc/cone.svg" alt="" width="84">
+<img src="share/icons/scalable/vlc.svg" alt="" width="84">
 
 # VLC Redesign <sub><sup>(unofficial)</sup></sub>
 
 **The VLC you know, with the interface designed by [Juxtopposed](https://www.youtube.com/@juxtopposed).**<br>
-The real VLC 4 engine and codecs, a new interface built screen by screen from the design, for Windows 10 and 11.
+The real VLC 4 engine and codecs, a new interface built screen by screen from the design, for Windows, Linux and macOS.
 
 [![Latest release](https://img.shields.io/github/v/release/KuchiSofts/vlc-redesign?label=release&color=ff8800)](https://github.com/KuchiSofts/vlc-redesign/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/KuchiSofts/vlc-redesign/total?color=ff8800)](https://github.com/KuchiSofts/vlc-redesign/releases)
@@ -14,7 +40,7 @@ The real VLC 4 engine and codecs, a new interface built screen by screen from th
 [![Translation status](https://hosted.weblate.org/widget/vlc-redesign/interface/svg-badge.svg)](https://hosted.weblate.org/engage/vlc-redesign/)
 [![License: GPL-2.0-or-later](https://img.shields.io/badge/license-GPL--2.0--or--later-0b0a09)](COPYING)
 
-**[⬇ Download for Windows](https://github.com/KuchiSofts/vlc-redesign/releases/latest)** ·
+**[⬇ Download for Windows, Linux and macOS](https://github.com/KuchiSofts/vlc-redesign/releases/latest)** ·
 [What's new](CHANGELOG.md) ·
 [Wiki](https://github.com/KuchiSofts/vlc-redesign/wiki) ·
 [Roadmap](ROADMAP.md) ·
@@ -98,7 +124,8 @@ three times and it is chosen by itself when your default language isn't there, i
 <img src="docs/media/tour/subtitles-position.jpg" alt="Subtitles raised into the picture and enlarged">
 
 **Move and resize subtitles, live.** − and + in the panel (or Shift+↑ and Shift+↓) move them up and down and change
-their size while the film plays; the panel fades so you can see them move. Kept for the next videos.
+their size while the film plays; the panel fades so you can see them move. Ctrl + mouse wheel over the video sizes
+them too. Kept for the next videos.
 </td>
 </tr>
 <tr>
@@ -112,7 +139,8 @@ title stays readable on dark and bright covers alike.
 <img src="docs/media/tour/effects.jpg" alt="The effects panel above the control bar">
 
 **Everything one click away.** Languages and tracks, Effects, VLC Settings, HDR and Cast open right above their
-button; a click outside or on the button closes them, and the video never pauses for it.
+button, which lights up while its panel is open; a click outside or on the button closes them, and the video never
+pauses for it.
 </td>
 </tr>
 <tr>
@@ -125,8 +153,8 @@ on your computer too if you want. [Which TVs work](https://github.com/KuchiSofts
 <td valign="top">
 <img src="docs/media/tour/player-light.jpg" alt="The player in the light theme with a blue accent">
 
-**Dark, light, and nine accent colours.** Or *System*, which follows Windows. Every screen of the design in both
-themes.
+**Dark, light, and nine accent colours.** Or *System*, which follows Windows, and an accent that can follow the
+Windows accent colour. Every screen of the design in both themes.
 </td>
 </tr>
 <tr>
@@ -159,15 +187,56 @@ network shares and streams.
 </tr>
 </table>
 
-And more: a sleep timer, A-B loop, speed, picture-in-picture, a mini player with its queue, volume up to 200 %,
-bookmarks and chapters, audio and video effects that apply live, small in-app updates. **Every option is explained in
+And more: **Live TV** (the channels of your own IPTV playlist or Xtream Codes account, with a programme guide, or
+a free, legal channel list from the catalog), a sleep timer, A-B loop, speed, picture-in-picture, a mini player with
+its queue, volume up to 200 %, bookmarks and chapters, audio and video effects that apply live, small in-app updates
+signed by the project. **Every option is explained in
 the [wiki](https://github.com/KuchiSofts/vlc-redesign/wiki)**, and everything new is in the [changelog](CHANGELOG.md).
+
+## See it in action
+
+**One film per platform**, silent, every clip of the tour with a caption:
+[Windows 0.4.0](docs/media/films/vlc-redesign-0.4.0-windows.mp4) (2 min 55 s) ·
+[Linux and macOS 0.4.0](docs/media/films/vlc-redesign-0.4.0-linux-macos.mp4) (21 s) ·
+[Android](docs/media/films/vlc-redesign-0.4.0-android.mp4) (2 min 2 s, in testing).
+
+<table>
+<tr>
+<td width="50%" valign="top"><a href="docs/media/demo/tv-zapping.mp4"><img src="docs/media/demo/tv-zapping.gif" alt="Live TV: Page Up and Page Down change channel, and a banner shows what is on"></a><br><b>Live TV.</b> Change channel with Page Up and Page Down; the banner tells what is on.</td>
+<td width="50%" valign="top"><a href="docs/media/demo/tv-guide.mp4"><img src="docs/media/demo/tv-guide.gif" alt="The Live TV guide with the line of now, Later and Now, and the Kids group"></a><br><b>The guide.</b> Every channel across the hours, with the line of now.</td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="docs/media/demo/subtitles-he-ar-ja.mp4"><img src="docs/media/demo/subtitles-he-ar-ja.gif" alt="English, Hebrew, Japanese and Arabic subtitles in turn"></a><br><b>Subtitles in every language,</b> sharp and in the right order.</td>
+<td width="50%" valign="top"><a href="docs/media/demo/customize-player.mp4"><img src="docs/media/demo/customize-player.gif" alt="Customize Player: Playback Speed and Cast to TV dragged onto the bar"></a><br><b>Your own control bar.</b> Drag buttons in, such as the playback speed.</td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="docs/media/demo/theme-accent.mp4"><img src="docs/media/demo/theme-accent.gif" alt="The light theme and the accent colours applied at once"></a><br><b>Light or dark, nine accents,</b> applied at once.</td>
+<td width="50%" valign="top"><a href="docs/media/demo/cast.mp4"><img src="docs/media/demo/cast.gif" alt="Casting to a Chromecast from the Cast to panel"></a><br><b>Cast to a TV</b> and control it from the bar.</td>
+</tr>
+</table>
+
+**On the other platforms** (Linux and macOS released with 0.4.0; the Android app in testing):
+
+<table>
+<tr>
+<td width="40%" valign="top"><a href="docs/media/demo/linux.mp4"><img src="docs/media/demo/linux.gif" alt="The Linux AppImage on Arch Linux: About, Settings in the dark theme, Home in the light theme"></a><br><b>Linux</b> (0.4.0). The AppImage on Arch Linux: About, Settings, Home.</td>
+<td width="40%" valign="top"><a href="docs/media/demo/macos.png"><img src="docs/media/demo/macos.png" alt="The macOS app on an Intel Mac, Home"></a><br><b>macOS</b> (0.4.0). The app on an Intel Mac, from the launch test of the build.</td>
+<td width="20%" valign="top"><a href="docs/media/demo/android/home.mp4"><img src="docs/media/demo/android/home.gif" alt="The Android app in testing: Home and the library on a phone"></a><br><b>Android</b> (in testing, not part of 0.4.0). Home on a phone; <a href="docs/media/demo/android/tablet.mp4">the tablet</a>.</td>
+</tr>
+</table>
+
+<sub>Click a clip for its MP4. All of them, Android included: [the demo clips](docs/media/demo/README.md) and the
+[Feature tour](https://github.com/KuchiSofts/vlc-redesign/wiki/Feature-Tour) of the wiki. Interface design by
+[Juxtopposed](https://www.youtube.com/@juxtopposed).</sub>
 
 ## Download
 
-**Windows 10 or 11, 64-bit.** Go to **[Releases](https://github.com/KuchiSofts/vlc-redesign/releases/latest)** and
-pick one. Code signing: free code signing provided by [SignPath.io](https://about.signpath.io/), certificate by
-[SignPath Foundation](https://signpath.org/) ([Code signing policy](https://github.com/KuchiSofts/vlc-redesign/blob/main/CODE_SIGNING_POLICY.md)).
+Every file is on **[Releases](https://github.com/KuchiSofts/vlc-redesign/releases/latest)**: 0.4.0 is out for
+Windows, Linux and macOS.
+
+**Windows 10 or 11, 64-bit.** Pick one of the two below. The files are not code-signed yet (waiting for SignPath's
+approval), so Windows SmartScreen may warn the first time; every file's SHA-256 is in `SHA256SUMS.txt`, and the app
+installs only updates whose list is signed by the project.
 
 | | |
 |---|---|
@@ -176,6 +245,19 @@ pick one. Code signing: free code signing provided by [SignPath.io](https://abou
 
 Both keep their settings, library and history in their own `portable` folder, so they never touch an installed
 official VLC.
+
+**Linux, x86_64 or ARM64** (glibc 2.38: Ubuntu 24.04 and later, Debian 13, Fedora 39 and later). A .deb, an .rpm, an
+AppImage and a folder to run from, for example
+`sudo apt install ./vlc-redesign_0.4.0_amd64.deb ./vlc-redesign-livetv_0.4.0_amd64.deb` (the second file is the
+optional Live TV add-on). The .deb and .rpm install in `/opt/vlc-redesign`, next to the distribution's own `vlc`,
+with the command `vlc-redesign`. No Flatpak yet, and no update in the app: install the new package to update. Which
+file for which distribution: [Install and update: Linux](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#linux).
+
+**macOS 12 or later.** `vlc-redesign-0.4.0-macos-arm64.dmg` for Apple Silicon, `vlc-redesign-0.4.0-macos-x86_64.dmg`
+for Intel: drag VLC Redesign to Applications. It is signed ad hoc, not by Apple, so macOS refuses to open it the
+first time: open it once via *System Settings › Privacy & Security › Open Anyway* (or right-click › *Open* on macOS
+12 to 14). No update in the app: download the new disk image to update. Details:
+[Install and update: macOS](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#macos).
 
 ### The installer
 
@@ -198,11 +280,12 @@ Silent installs take switches (`/VERYSILENT /UILANG=en /SUBLANG=en /NOUPDATECHEC
 
 ### Updates
 
-VLC Redesign checks this repository for a new release once a day (Settings → General → *Check for updates
+On Windows, VLC Redesign checks this repository for a new release once a day (Settings → General → *Check for updates
 automatically*, or ⋯ → About → *Check for updates*). When one is out, a card offers **Update now**:
 
 - **A small update** (installed or portable copy): only the files that changed, usually a few megabytes, downloaded in
-  the background and checked against the release's `SHA256SUMS.txt` file by file. **Restart now** puts it in place in
+  the background and checked against the release's `SHA256SUMS.txt` file by file (from 0.4.0 on, only once that
+  file's signature by the project's release key is checked). **Restart now** puts it in place in
   about two seconds and reopens VLC Redesign on what was playing, where it was; **Later** puts it in place when you
   close it. If anything goes wrong, every file goes back as it was.
 - **The installer**, when no small update fits (more than three releases behind, or installed for everyone):
@@ -213,20 +296,38 @@ Every release lists the SHA-256 of its files in `SHA256SUMS.txt`.
 
 ## Platforms
 
-**Windows 10 and 11 (64-bit) ✅** · Windows on ARM64 🔜 · Linux 🔜 · macOS, Android, Android TV, iPhone/iPad 💡 ·
-a receiver for Samsung and LG TVs 💡
+**Windows 10 and 11 (64-bit) ✅ 0.4.0** · **Linux (x86_64, ARM64) ✅ 0.4.0** · **macOS (Apple Silicon, Intel) ✅ 0.4.0** · Windows on ARM64 🔜 later ·
+Android 💡 research (the app is in testing) · Samsung TV receiver 💡 research · iPhone/iPad later
 
-What each would take and in which order is in the [platform study](docs/PLATFORMS.md); the status lives in
-[`platforms.yml`](platforms.yml). Windows 7, 8, XP and 32-bit Windows are not planned (VLC 4's interface needs Qt 6,
-which needs 64-bit Windows 10 or later): use the official VLC 3 there.
+- **Linux:** released with 0.4.0: a .deb, an .rpm, an AppImage and a tarball for x86_64 and ARM64 (glibc 2.38:
+  Ubuntu 24.04, Debian 13, Fedora 39 or later), next to the distribution's own VLC; tested in containers on 7
+  distributions and on GitHub's x86_64 and ARM64 runners. A Flatpak comes next.
+- **macOS:** released with 0.4.0: a disk image for Apple Silicon and one for Intel (macOS 12 or later), built and
+  tested by GitHub's Macs and signed ad hoc, not yet by Apple (macOS asks once to open it).
+- **Windows on ARM64:** built, not released. In the 0.4.0 tests on a real ARM64 Windows runner it opened its window
+  and stopped a few seconds later (a crash in the Qt interface after the media library started), and one of the
+  installer's 400 binaries was not ARM64; it comes in a later version. Until then the x64 build runs on Windows 11
+  ARM64 under emulation.
+- **Android** (phones, tablets, TV): a separate app, a fork of VLC for Android with the design, in testing; it is
+  not part of 0.4.0 and has no download yet.
+
+Each platform in detail, with what is tested and what is missing, is on the
+[Platforms](https://github.com/KuchiSofts/vlc-redesign/wiki/Platforms) page of the wiki; the study behind the order is
+the [platform study](docs/PLATFORMS.md), and the status lives in [`platforms.yml`](platforms.yml). Windows 7, 8, XP and
+32-bit Windows are not planned (VLC 4's interface needs Qt 6, which needs 64-bit Windows 10 or later): use the official
+VLC 3 there.
 
 ## Known limitations
 
 - **Based on VLC 4.0-dev**, not on the stable VLC 3. Expect the occasional rough edge.
-- **Windows only for now** (see [Platforms](#platforms)).
+- **Released for Windows, Linux and macOS.** Windows on ARM64 comes in a later version (the x64 build runs there
+  under emulation), and the Android app is in testing (see [Platforms](#platforms)). Small updates in the app are for
+  Windows only, and the macOS app is not signed by Apple yet.
 - 72 languages cover the whole interface; in VLC's other catalogs (listed as partial) only VLC's own texts are
   translated.
-- Media Info, Bookmarks, Convert/Stream, Open Disc, Capture and Messages still use the classic VLC windows.
+- Media Information, Bookmarks, Convert/Stream, Open Media (disc, capture), Messages and the other classic VLC windows
+  keep their classic layout, in the redesign's colours and, on Windows, with its title bar and icons. *Go to Time*, *Plugins and extensions*,
+  *Media Statistics* and *Folder information* are redrawn as dialogs of the redesign.
 - The waveform seek bar works on local files up to 1 GB and 8 minutes; other media get the regular seek bar.
 - HDR output offers Auto / Off / HDR10 / HLG and needs the libplacebo renderer.
 
@@ -277,10 +378,9 @@ Details in [CREDITS.md](CREDITS.md).
 
 ## Code signing policy
 
-Free code signing provided by [SignPath.io](https://about.signpath.io/), certificate by
-[SignPath Foundation](https://signpath.org/). What is signed, the team roles and the privacy policy:
-[CODE_SIGNING_POLICY.md](CODE_SIGNING_POLICY.md). Until the first signed release, the files are unsigned and their
-SHA-256 is listed in `SHA256SUMS.txt`.
+The releases are not code-signed. Code signing will come through SignPath Foundation's free program for open-source
+projects: the application waits for their approval, and nothing is signed until then. The policy it would follow:
+[CODE_SIGNING_POLICY.md](CODE_SIGNING_POLICY.md). Until then the SHA-256 of every file is listed in `SHA256SUMS.txt`.
 
 ## License
 

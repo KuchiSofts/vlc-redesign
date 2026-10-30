@@ -23,7 +23,7 @@ import VLC.Util
 RedesignIconButton {
     id: snapshotBtn
     enabled: Player.isStarted
-    iconSource: "qrc:///redesign/icons/snapshot/default.png"
+    iconSource: "qrc:///redesign/icons/snapshot/default.svg"
     onClicked: Player.snapshot()
     description: qsTr("Snapshot")
     AccessibleCompat.id: "snapshotButton"

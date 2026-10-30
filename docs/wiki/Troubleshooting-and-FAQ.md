@@ -27,9 +27,8 @@ of each is in [`platforms.yml`](https://github.com/KuchiSofts/vlc-redesign/blob/
 The releases are not code-signed yet, so Windows SmartScreen may warn about an unknown publisher the first time you
 run the installer or `vlc.exe`. Click **More info → Run anyway**.
 
-- Code signing is in progress: free code signing provided by [SignPath.io](https://about.signpath.io/), certificate
-  by [SignPath Foundation](https://signpath.org/). Once releases are signed, Windows will show *SignPath Foundation*
-  as the publisher. See the
+- The releases are not code-signed: code signing will come through SignPath Foundation's program for open-source
+  projects, once they approve the application. See the
   [code signing policy](https://github.com/KuchiSofts/vlc-redesign/blob/main/CODE_SIGNING_POLICY.md).
 - Until then, every release lists the SHA-256 of its files in `SHA256SUMS.txt`. To check a download, in PowerShell:
   `Get-FileHash .\vlc-redesign-0.3.1-win64-setup.exe` and compare the hash with the one in the file.

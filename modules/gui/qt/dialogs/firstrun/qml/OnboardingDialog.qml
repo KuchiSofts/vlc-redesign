@@ -33,8 +33,9 @@ Controls.Popup {
     property int step: 0
     property var folderUrl
     property bool metadataNetworkAccess: false
-    property color initialAccent: "#d37918"
-    property color selectedAccent: "#d37918"
+    // (a color, or "system": the Windows accent)
+    property string initialAccent: "#d37918"
+    property string selectedAccent: "#d37918"
     property bool previousGlobalShortcuts: true
     property bool committed: false
     property bool skipping: false
@@ -58,7 +59,7 @@ Controls.Popup {
         ctx: MainCtx
         onCompleted: {
             if (!root.skipping) {
-                MainCtx.setSettingValue("redesign/accent", root.selectedAccent.toString())
+                MainCtx.setSettingValue("redesign/accent", root.selectedAccent)
                 SubtitlePreferences.set(root.subtitlePrimary, root.subtitleSecondary,
                                         root.subtitleAutoSearch, root.subtitleShowBoth)
                 if (root.askOnline) {
@@ -77,7 +78,7 @@ Controls.Popup {
         committed = false
         skipping = false
         step = 0
-        initialAccent = VLCStyle.redesign.accent
+        initialAccent = VLCStyle.redesign.accentChoice
         selectedAccent = initialAccent
         // no folder without the media library (none can be added)
         folderUrl = MainCtx.mediaLibraryAvailable ? controller.suggestedFolder : ""
@@ -98,7 +99,7 @@ Controls.Popup {
     onClosed: {
         if (!committed) {
             controller.cancel()
-            VLCStyle.redesign.accent = initialAccent
+            VLCStyle.redesign.accentChoice = initialAccent
         }
         MainCtx.useGlobalShortcuts = previousGlobalShortcuts
     }
@@ -106,7 +107,12 @@ Controls.Popup {
         radius: 14
         // Figma's onboarding is dark: the light theme as the other dialogs
         color: VLCStyle.redesign.color("#0e0e0e", "#c2c2c1")
-        border.color: VLCStyle.redesign.color("#222222", "#9c9c9b")
+    }
+    // the frame of the main window, over the content (which reaches the
+    // card's edges): the card reads as a window over the interface
+    readonly property Item _windowBorder: Widgets.RedesignWindowBorder {
+        parent: root.background ? root.background.parent : null
+        radius: 14
     }
 
     contentItem: Item {
@@ -140,11 +146,14 @@ Controls.Popup {
                 anchors.fill: parent
                 visible: root.step === 1
                 themeIndex: controller.themeIndex
-                accent: root.selectedAccent
+                // (the Windows accent if Settings follows it; the discs are
+                // the design's, unchanged)
+                accent: VLCStyle.redesign.accentOf(root.selectedAccent)
                 onThemeRequested: index => controller.previewTheme(index)
                 onAccentRequested: colorValue => {
-                    root.selectedAccent = colorValue
-                    VLCStyle.redesign.accent = colorValue
+                    const choice = colorValue.toString()
+                    root.selectedAccent = choice
+                    VLCStyle.redesign.accentChoice = choice
                 }
             }
             SubtitleLanguagesStep {
@@ -301,7 +310,7 @@ Controls.Popup {
                     }
                     root.skipping = true
                     root.selectedAccent = root.initialAccent
-                    VLCStyle.redesign.accent = root.initialAccent
+                    VLCStyle.redesign.accentChoice = root.initialAccent
                     controller.skip()
                 }
             }

@@ -97,7 +97,7 @@ T.Control {
 
             focus: false
 
-            color: VLCStyle.redesign.color("#C6C6C6", theme.fg.primary)
+            color: VLCStyle.redesign.color("#C6C6C6", "#2e2e2e")
 
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(20, VLCStyle.scale)

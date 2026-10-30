@@ -73,9 +73,9 @@ Row {
                                                 && MainCtx.intfMainWindow.visibility === Window.Maximized
                 iconSource: {
                     switch (modelData.type) {
-                    case CSDButton.Minimize: return "qrc:///redesign/player/minimize.png"
-                    case CSDButton.MaximizeRestore: return restore ? "" : "qrc:///redesign/player/maximize.png"
-                    case CSDButton.Close: return "qrc:///redesign/player/close.png"
+                    case CSDButton.Minimize: return "qrc:///redesign/player/minimize.svg"
+                    case CSDButton.MaximizeRestore: return restore ? "" : "qrc:///redesign/player/maximize.svg"
+                    case CSDButton.Close: return "qrc:///redesign/player/close.svg"
                     }
                     return ""
                 }
@@ -129,7 +129,7 @@ Row {
                     width: parent.width
                     height: VLCStyle.dp(24, VLCStyle.scale)
                     visible: VLCStyle.customizing
-                    color: VLCStyle.redesign.color("#6B6B6B", "#5a5a59")
+                    color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                 }
 
                 // Preserve the native Windows hit-test/snap rectangles.
@@ -163,7 +163,7 @@ Row {
                 color: root.color
                 hoverColor: root.hoverColor
                 isThemeDark: theme.palette.isDark
-                iconSource: "qrc:///redesign/player/fullscreen.png"
+                iconSource: "qrc:///redesign/player/fullscreen.svg"
                 description: qsTr("Fullscreen")
                 onClicked: {
                     if (Player.hasVideoOutput)
@@ -177,11 +177,11 @@ Row {
                     width: parent.width
                     height: VLCStyle.dp(24, VLCStyle.scale)
                     visible: VLCStyle.customizing
-                    color: VLCStyle.redesign.color("#6B6B6B", "#5a5a59")
+                    color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                 }
                 CustomizeDragArea {
                     controlId: root.fullscreenControlId
-                    iconSource: "qrc:///redesign/player/fullscreen.png"
+                    iconSource: "qrc:///redesign/player/fullscreen.svg"
                 }
             }
         }

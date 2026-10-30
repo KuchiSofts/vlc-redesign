@@ -10,11 +10,14 @@ import QtQuick
 import VLC.Style
 
 Image {
+    // drawn at the size shown (an SVG: sharp at any scale and zoom)
+    sourceSize: Qt.size(width, height)
+    smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
     property bool paintOnly: false
     width: VLCStyle.dp(24, VLCStyle.scale)
     height: VLCStyle.dp(32, VLCStyle.scale)
     fillMode: Image.PreserveAspectFit
-    source: "qrc:///redesign/icons/divider/default.png"
+    source: "qrc:///redesign/icons/divider/default.svg"
     Accessible.role: Accessible.Indicator
     Accessible.name: qsTr("Divider")
 }

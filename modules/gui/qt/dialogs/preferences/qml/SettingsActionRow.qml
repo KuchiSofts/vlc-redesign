@@ -23,7 +23,7 @@ Item {
     signal clicked()
 
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
-    function c(value) { return VLCStyle.redesign.color(value, value) }
+    function c(value) { return VLCStyle.redesign.color(value) }
 
     width: parent ? parent.width : implicitWidth
     implicitHeight: px(42)

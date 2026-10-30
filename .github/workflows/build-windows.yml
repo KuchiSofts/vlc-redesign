@@ -27,6 +27,22 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # design/tokens.json against the values the code uses (VLCStyle.qml, the
+  # menu and widget styles, the QML components), design/icons and fonts
+  # against the app's files, design/build against export.py
+  design-tokens:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check the design tokens
+        run: python design/tools/check_qml.py
+
   win64:
     # pinned: ubuntu-latest moves to a new release under the build
     runs-on: ubuntu-24.04
@@ -58,10 +74,12 @@ jobs:
           mkdir -p out
           docker run --rm -u root -v vlc-build:/build vlc-win64-redesign chown videolan:videolan /build
           # the image's user is not the runner's: let it write the package
-          chmod 777 out
+          # (and the symbol maps)
+          mkdir -p symbols
+          chmod 777 out symbols
           docker run --rm \
-            -e CONTRIB_ARCHIVE="/cache/$CONTRIB" -e STRIP=1 \
-            -v "$PWD:/src:ro" -v "$PWD/cache:/cache:ro" -v "$PWD/out:/out" -v vlc-build:/build \
+            -e CONTRIB_ARCHIVE="/cache/$CONTRIB" -e STRIP=1 -e SYMBOLS=/symbols \
+            -v "$PWD:/src:ro" -v "$PWD/cache:/cache:ro" -v "$PWD/out:/out" -v "$PWD/symbols:/symbols" -v vlc-build:/build \
             vlc-win64-redesign sh -c 'cp /src/extras/juxtopposed/win64-docker.sh /tmp/build.sh && exec sh /tmp/build.sh -r'
           test -s out/vlc.exe
           test -s out/plugins/gui/libqt_plugin.dll
@@ -72,6 +90,16 @@ jobs:
         with:
           name: vlc-redesign-win64-${{ github.sha }}
           path: out
+          retention-days: ${{ github.event_name == 'pull_request' && 2 || 7 }}
+
+      # the function addresses of the binaries before they were stripped (see
+      # SYMBOLS in win64-docker.sh): with them, the offsets in a crash dump of
+      # the launch test name functions
+      - name: Upload the symbol maps
+        uses: actions/upload-artifact@v5
+        with:
+          name: vlc-redesign-win64-symbols-${{ github.sha }}
+          path: symbols
           retention-days: ${{ github.event_name == 'pull_request' && 2 || 7 }}
 
   # The package started and a clip played on Windows (a runner without a GPU
@@ -91,16 +119,18 @@ jobs:
           name: vlc-redesign-win64-${{ github.sha }}
           path: package
 
-      # a crash of vlc.exe leaves a minidump (Windows Error Reporting), uploaded
+      # a crash of vlc.exe leaves a full dump (Windows Error Reporting), uploaded
       # with the logs: a crash that happens on the runner and not elsewhere can
-      # still be read (the call stack, with the modules and their offsets)
+      # still be read (the call stacks with the modules and their offsets, and
+      # the heap: a minidump could not tell a freed object from a missing page;
+      # the vlc-redesign-win64-symbols artifact names the functions)
       - name: Keep crash dumps
         shell: pwsh
         run: |
           $key = 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps\vlc.exe'
           New-Item -Force $key | Out-Null
           New-ItemProperty -Force $key -Name DumpFolder -PropertyType ExpandString -Value "${{ runner.temp }}\vlc-launch-test\dumps" | Out-Null
-          New-ItemProperty -Force $key -Name DumpType -PropertyType DWord -Value 1 | Out-Null
+          New-ItemProperty -Force $key -Name DumpType -PropertyType DWord -Value 2 | Out-Null
           New-ItemProperty -Force $key -Name DumpCount -PropertyType DWord -Value 5 | Out-Null
 
       - name: Launch and play
@@ -115,6 +145,181 @@ jobs:
           path: |
             ${{ runner.temp }}/vlc-launch-test/*.txt
             ${{ runner.temp }}/vlc-launch-test/*.log
+            ${{ runner.temp }}/vlc-launch-test/dumps/*.dmp
+          retention-days: 7
+
+  # The Windows on ARM64 package: the same build in VideoLAN's llvm-mingw
+  # image (the one of its win64-arm-llvm job), with that job's prebuilt
+  # contribs (win64-docker.ps1 -Arch aarch64 does the same on a PC)
+  winarm64:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Build image
+        run: docker build -t vlc-winarm64-redesign -f extras/juxtopposed/winarm64.Dockerfile extras/juxtopposed
+
+      - name: Prebuilt contribs
+        run: |
+          mkdir -p cache
+          for sha in $(git rev-list -n 20 HEAD -- extras/tools contrib extras/ci extras/package/win32); do
+            name="vlc-contrib-aarch64-w64-mingw32-$sha.tar.zst"
+            if curl -fsSL --retry 3 -o "cache/$name" "https://artifacts.videolan.org/vlc/win64-arm-llvm/$name"; then
+              echo "CONTRIB=$name" >> "$GITHUB_ENV"; break
+            fi
+            rm -f "cache/$name"
+          done
+          test -n "$(ls cache)"
+
+      - name: Build
+        run: |
+          mkdir -p out
+          # (the image has a /build of its own, which fills an empty volume:
+          # a file keeps the volume's owner)
+          docker run --rm -u root -v vlc-build:/build vlc-winarm64-redesign sh -c 'chown videolan:videolan /build && touch /build/.volume'
+          chmod 777 out
+          docker run --rm \
+            -e ARCH=aarch64 -e CONTRIB_ARCHIVE="/cache/$CONTRIB" -e STRIP=1 \
+            -v "$PWD:/src:ro" -v "$PWD/cache:/cache:ro" -v "$PWD/out:/out" -v vlc-build:/build \
+            vlc-winarm64-redesign sh -c 'cp /src/extras/juxtopposed/win64-docker.sh /tmp/build.sh && exec sh /tmp/build.sh -r'
+          test -s out/vlc.exe
+          test -s out/plugins/gui/libqt_plugin.dll
+
+      - name: ARM64 binaries
+        shell: pwsh
+        run: ./extras/juxtopposed/ci/arm64-smoke.ps1 -VlcDir out -CheckOnly
+
+      # every binary ARM64, every imported DLL in the package or in Windows,
+      # Qt and its QML built in, the Live TV add-on, the translations, the
+      # credits (the release-mode package: stripped)
+      - name: ARM64 package check
+        run: |
+          python3 -m venv "$RUNNER_TEMP/pe"
+          "$RUNNER_TEMP/pe/bin/pip" install --quiet pefile
+          "$RUNNER_TEMP/pe/bin/python" extras/juxtopposed/ci/pe-check.py out --arch arm64
+
+      - name: Upload the package
+        uses: actions/upload-artifact@v5
+        with:
+          name: vlc-redesign-winarm64-${{ github.sha }}
+          path: out
+          retention-days: ${{ github.event_name == 'pull_request' && 2 || 7 }}
+
+  # The ARM64 package on ARM64 Windows: its binaries, the plugin cache made
+  # (every plugin loaded), then the launch test above. GitHub's Windows on
+  # ARM runners are free on public repositories only: never on a private one
+  launch-test-arm64:
+    needs: winarm64
+    if: ${{ !github.event.repository.private }}
+    runs-on: windows-11-arm
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          sparse-checkout: extras/juxtopposed/ci
+
+      - uses: actions/download-artifact@v5
+        with:
+          name: vlc-redesign-winarm64-${{ github.sha }}
+          path: package
+
+      - name: Keep crash dumps
+        shell: pwsh
+        run: |
+          $key = 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps\vlc.exe'
+          New-Item -Force $key | Out-Null
+          New-ItemProperty -Force $key -Name DumpFolder -PropertyType ExpandString -Value "${{ runner.temp }}\vlc-launch-test\dumps" | Out-Null
+          New-ItemProperty -Force $key -Name DumpType -PropertyType DWord -Value 1 | Out-Null
+          New-ItemProperty -Force $key -Name DumpCount -PropertyType DWord -Value 5 | Out-Null
+
+      - name: Smoke test
+        shell: pwsh
+        run: ./extras/juxtopposed/ci/arm64-smoke.ps1 -VlcDir package -WorkDir "${{ runner.temp }}"
+
+      - name: Upload the logs
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: launch-test-arm64-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/vlc-launch-test/*.txt
+            ${{ runner.temp }}/vlc-launch-test/*.log
+            ${{ runner.temp }}/vlc-launch-test/dumps/*.dmp
+          retention-days: 7
+
+  # The ARM64 installer made from that package (make-release.ps1's Inno
+  # Setup call, unsigned), installed on ARM64 Windows: every file of the
+  # package installed, the smoke test above on the installed copy, the main
+  # window and About captured, then uninstalled (arm64-install-test.ps1).
+  # Public repositories only (the runner), as above
+  install-test-arm64:
+    needs: winarm64
+    if: ${{ !github.event.repository.private }}
+    runs-on: windows-11-arm
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          sparse-checkout: |
+            extras/juxtopposed/ci
+            extras/juxtopposed/installer
+            modules/gui/qt/util
+
+      - uses: actions/download-artifact@v5
+        with:
+          name: vlc-redesign-winarm64-${{ github.sha }}
+          path: package
+
+      # (the Inno Setup the releases are made with; x86, emulated here)
+      - name: Inno Setup
+        shell: pwsh
+        run: |
+          $iscc = "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe"
+          if (-not (Test-Path $iscc) -and (Get-Command choco -ErrorAction SilentlyContinue)) {
+            choco upgrade innosetup --version 6.7.1 --allow-downgrade -y --no-progress
+          }
+          if (-not (Test-Path $iscc)) {
+            $setup = Join-Path $env:RUNNER_TEMP 'innosetup.exe'
+            Invoke-WebRequest https://files.jrsoftware.org/is/6/innosetup-6.7.1.exe -OutFile $setup
+            Start-Process $setup -Wait -ArgumentList '/VERYSILENT', '/SUPPRESSMSGBOXES', '/NORESTART', '/SP-'
+          }
+          if (-not (Test-Path $iscc)) { throw 'No Inno Setup' }
+          "ISCC=$iscc" >> $env:GITHUB_ENV
+
+      - name: Installer
+        shell: pwsh
+        run: |
+          $m = Select-String -Path modules/gui/qt/util/redesign_version.hpp -Pattern 'VLC_REDESIGN_VERSION\s+"([^"]+)"'
+          $version = $m.Matches[0].Groups[1].Value
+          & $env:ISCC /Q "/DAppVersion=$version" "/DSourceDir=$((Resolve-Path package).Path)" "/DOutputDir=$PWD\dist" /DArm64 extras/juxtopposed/installer/vlc-redesign.iss
+          if ($LASTEXITCODE) { throw "Installer build failed ($LASTEXITCODE)" }
+          "SETUP=$PWD\dist\vlc-redesign-$version-winarm64-setup.exe" >> $env:GITHUB_ENV
+
+      - name: Keep crash dumps
+        shell: pwsh
+        run: |
+          $key = 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps\vlc.exe'
+          New-Item -Force $key | Out-Null
+          New-ItemProperty -Force $key -Name DumpFolder -PropertyType ExpandString -Value "${{ runner.temp }}\vlc-launch-test\dumps" | Out-Null
+          New-ItemProperty -Force $key -Name DumpType -PropertyType DWord -Value 1 | Out-Null
+          New-ItemProperty -Force $key -Name DumpCount -PropertyType DWord -Value 5 | Out-Null
+
+      - name: Install, start, play, About, uninstall
+        shell: pwsh
+        run: ./extras/juxtopposed/ci/arm64-install-test.ps1 -Setup $env:SETUP -Package package -WorkDir "${{ runner.temp }}"
+
+      - name: Upload the logs and screenshots
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: install-test-arm64-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/vlc-launch-test/*.txt
+            ${{ runner.temp }}/vlc-launch-test/*.log
+            ${{ runner.temp }}/vlc-launch-test/*.png
             ${{ runner.temp }}/vlc-launch-test/dumps/*.dmp
           retention-days: 7
 
@@ -263,10 +468,11 @@ jobs:
           $global:LASTEXITCODE = 0
           Get-ChildItem dist | Format-Table Name, Length
 
-      # (full paths: .NET resolves the relative ones elsewhere)
+      # (full paths: .NET resolves the relative ones elsewhere; the release key
+      # is never here: SHA256SUMS.txt is signed on the release PC)
       - name: Package
         shell: pwsh
-        run: ./extras/juxtopposed/make-release.ps1 -Signed -Package "$PWD\package" -Dist "$PWD\dist"
+        run: ./extras/juxtopposed/make-release.ps1 -Signed -Package "$PWD\package" -Dist "$PWD\dist" -NoSumsSignature
 
       - name: Upload the installer to sign
         id: unsigned
@@ -293,7 +499,8 @@ jobs:
           output-artifact-directory: signed-setup
 
       # the files to publish; SHA256SUMS.txt as make-release.ps1 writes it,
-      # with the signed installer
+      # with the signed installer; its signature (SHA256SUMS.txt.sig, which the
+      # app requires) is made on the release PC: release-key.ps1 sign
       - name: Release files
         shell: pwsh
         run: |

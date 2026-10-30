@@ -29,6 +29,8 @@
 # ifndef WINHTTP_ACCESS_TYPE_AUTOMATIC_PROXY
 #  define WINHTTP_ACCESS_TYPE_AUTOMATIC_PROXY 4
 # endif
+#elif defined(QT_HAS_LIBCURL)
+# include <curl/curl.h>
 #endif
 
 namespace {
@@ -210,6 +212,155 @@ HttpResponse perform(const HttpRequest& request, RequestState& state)
     }
     if (response.body.size() > request.maxBytes)
         response.body.truncate(request.maxBytes + 1);
+    return response;
+}
+}
+
+bool httpRequestSupported()
+{
+    return true;
+}
+#elif defined(QT_HAS_LIBCURL)
+namespace {
+struct CurlTransfer
+{
+    const HttpRequest& request;
+    RequestState& state;
+    HttpResponse& response;
+    QDeadlineTimer deadline;
+    curl_off_t total = 0;
+    bool overflow = false;
+    bool expired = false;
+};
+
+size_t curlWrite(char* data, size_t size, size_t count, void* opaque)
+{
+    auto* t = static_cast<CurlTransfer*>(opaque);
+    const size_t bytes = size * count;
+    if (t->state.cancelled)
+        return 0;
+    if (t->deadline.hasExpired())
+    {
+        t->expired = true;
+        return 0;
+    }
+    // as the WinHTTP loop: stop past maxBytes, keeping maxBytes + 1
+    const qsizetype room = t->request.maxBytes + 1 - t->response.body.size();
+    if (static_cast<qsizetype>(bytes) >= room)
+    {
+        t->response.body.append(data, room);
+        t->overflow = true;
+        return 0;
+    }
+    t->response.body.append(data, static_cast<qsizetype>(bytes));
+    if (t->request.progress)
+        t->request.progress(t->response.body.size(), t->total > 0 ? t->total : 0);
+    return bytes;
+}
+
+int curlProgress(void* opaque, curl_off_t dltotal, curl_off_t, curl_off_t, curl_off_t)
+{
+    auto* t = static_cast<CurlTransfer*>(opaque);
+    t->total = dltotal;
+    if (t->deadline.hasExpired())
+        t->expired = true;
+    return (t->state.cancelled || t->expired) ? 1 : 0;
+}
+
+HttpResponse perform(const HttpRequest& request, RequestState& state)
+{
+    static std::once_flag initialized;
+    std::call_once(initialized, []() { curl_global_init(CURL_GLOBAL_DEFAULT); });
+
+    HttpResponse response;
+    const QUrl& url = request.url;
+    const bool https = url.scheme() == QLatin1String("https");
+    if (!https && url.scheme() != QLatin1String("http"))
+    {
+        response.error = QStringLiteral("Unsupported URL scheme");
+        return response;
+    }
+    const QString cancelled = QStringLiteral("Cancelled");
+    if (state.cancelled)
+    {
+        response.error = cancelled;
+        return response;
+    }
+
+    CURL* curl = curl_easy_init();
+    if (!curl)
+    {
+        response.error = QStringLiteral("curl_easy_init failed");
+        return response;
+    }
+    CurlTransfer transfer { request, state, response,
+                            request.deadlineMs > 0 ? QDeadlineTimer(request.deadlineMs)
+                                                   : QDeadlineTimer(QDeadlineTimer::Forever) };
+
+    const QByteArray encodedUrl = url.toEncoded(QUrl::RemoveFragment);
+    curl_easy_setopt(curl, CURLOPT_URL, encodedUrl.constData());
+    curl_easy_setopt(curl, CURLOPT_USERAGENT, "VLC");
+    curl_easy_setopt(curl, CURLOPT_NOSIGNAL, 1L);
+    // Redirects are followed, except from HTTPS to HTTP (as WinHTTP)
+    curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
+    curl_easy_setopt(curl, CURLOPT_MAXREDIRS, 10L);
+#if LIBCURL_VERSION_NUM >= 0x075500 /* 7.85 */
+    curl_easy_setopt(curl, CURLOPT_PROTOCOLS_STR, "http,https");
+    curl_easy_setopt(curl, CURLOPT_REDIR_PROTOCOLS_STR, https ? "https" : "http,https");
+#else
+    curl_easy_setopt(curl, CURLOPT_PROTOCOLS, static_cast<long>(CURLPROTO_HTTP | CURLPROTO_HTTPS));
+    curl_easy_setopt(curl, CURLOPT_REDIR_PROTOCOLS,
+                     static_cast<long>(https ? CURLPROTO_HTTPS : (CURLPROTO_HTTP | CURLPROTO_HTTPS)));
+#endif
+    // each step at most timeoutMs: connecting, then no data for that long
+    curl_easy_setopt(curl, CURLOPT_CONNECTTIMEOUT_MS, static_cast<long>(request.timeoutMs));
+    curl_easy_setopt(curl, CURLOPT_LOW_SPEED_LIMIT, 1L);
+    curl_easy_setopt(curl, CURLOPT_LOW_SPEED_TIME,
+                     std::max(1L, static_cast<long>(request.timeoutMs / 1000)));
+
+    if (request.method == "GET")
+        curl_easy_setopt(curl, CURLOPT_HTTPGET, 1L);
+    else if (request.method == "HEAD")
+        curl_easy_setopt(curl, CURLOPT_NOBODY, 1L);
+    else
+        curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, request.method.constData());
+    if (!request.body.isEmpty() || request.method == "POST" || request.method == "PUT")
+    {
+        curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE_LARGE,
+                         static_cast<curl_off_t>(request.body.size()));
+        curl_easy_setopt(curl, CURLOPT_POSTFIELDS, request.body.constData());
+    }
+
+    curl_slist* headers = nullptr;
+    for (const auto& header : request.headers)
+        headers = curl_slist_append(headers, QByteArray(header.first + ": " + header.second).constData());
+    // no "Expect: 100-continue" round trip for bodies
+    headers = curl_slist_append(headers, "Expect:");
+    curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
+
+    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, curlWrite);
+    curl_easy_setopt(curl, CURLOPT_WRITEDATA, &transfer);
+    curl_easy_setopt(curl, CURLOPT_XFERINFOFUNCTION, curlProgress);
+    curl_easy_setopt(curl, CURLOPT_XFERINFODATA, &transfer);
+    curl_easy_setopt(curl, CURLOPT_NOPROGRESS, 0L);
+
+    const CURLcode code = curl_easy_perform(curl);
+    long status = 0;
+    curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &status);
+    response.status = static_cast<int>(status);
+    curl_slist_free_all(headers);
+    curl_easy_cleanup(curl);
+
+    if (code != CURLE_OK && !transfer.overflow)
+    {
+        if (state.cancelled)
+            response.error = cancelled;
+        else if (transfer.expired)
+            response.error = QStringLiteral("Timed out");
+        else
+            response.error = QStringLiteral("HTTP request failed (%1)")
+                                 .arg(QString::fromUtf8(curl_easy_strerror(code)));
+    }
     return response;
 }
 }

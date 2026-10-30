@@ -23,7 +23,7 @@ import VLC.Util
 // Figma "Customize Player": "Right Sidebar", the panel on the right of the
 // player (the queue)
 RedesignIconButton {
-    iconSource: "qrc:///redesign/icons/right-sidebar/default.png"
+    iconSource: "qrc:///redesign/icons/right-sidebar/default.svg"
     checked: MainCtx.playqueuePanel.visible
     onClicked: MainCtx.playqueuePanel.visible = !MainCtx.playqueuePanel.visible
     description: qsTr("Right Sidebar")

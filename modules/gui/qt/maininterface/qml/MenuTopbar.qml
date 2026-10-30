@@ -80,7 +80,10 @@ T.ToolBar {
 
             anchors {
                 left: parent.left
+                // after the traffic lights on macOS (the unified title bar)
                 leftMargin: VLCStyle.applicationHorizontalMargin
+                            + (root._showCSD ? (LayoutMirroring.enabled ? MainCtx.windowButtonsInsetRight
+                                                                        : MainCtx.windowButtonsInsetLeft) : 0)
 
                 right: parent.right
                 rightMargin: root._showCSD && !(csdButtons.height < VLCStyle.applicationVerticalMargin) ? csdButtons.width

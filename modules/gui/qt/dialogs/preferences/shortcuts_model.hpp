@@ -29,13 +29,15 @@ class ShortcutsModel : public QAbstractListModel
     Q_PROPERTY(QString searchField READ searchField WRITE setSearchField NOTIFY searchFieldChanged)
     Q_PROPERTY(bool dirty READ dirty NOTIFY dirtyChanged)
     Q_PROPERTY(QString error READ error NOTIFY errorChanged)
+    // the keys of live TV listed too (its add-on on)
+    Q_PROPERTY(bool liveTv READ liveTv WRITE setLiveTv NOTIFY liveTvChanged)
 
 public:
     // Hotkey(s)Role: the keys of the action as one text ("f, Ctrl+e") and as
     // a list, for a chip per key
     enum Role { KeyRole = Qt::UserRole + 1, ActionRole, GroupRole,
                 HotkeyRole, GlobalHotkeyRole, DirtyRole,
-                HotkeysRole, GlobalHotkeysRole };
+                HotkeysRole, GlobalHotkeysRole, HasGlobalRole };
     Q_ENUM(Role)
 
     explicit ShortcutsModel(QObject *parent = nullptr);
@@ -47,6 +49,8 @@ public:
     void setSearchField(const QString &field);
     bool dirty() const;
     QString error() const { return m_error; }
+    bool liveTv() const { return m_liveTv; }
+    void setLiveTv(bool liveTv);
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     QVariant data(const QModelIndex &index, int role) const override;
@@ -62,6 +66,10 @@ public:
     // Adds the key pressed to the keys of the action (an action has several)
     Q_INVOKABLE QVariantMap stageKey(const QString &option, bool global,
                                     int qtKey, int modifiers, bool replaceConflict = false);
+    // The same with a turn of the wheel (up or down) and the modifiers held
+    // ("Ctrl+Mouse Wheel Up"): not for a global hotkey
+    Q_INVOKABLE QVariantMap stageWheel(const QString &option, bool global,
+                                      bool up, int modifiers, bool replaceConflict = false);
     // Every key of the action, or one of them ("Ctrl+e" as VLC writes it)
     Q_INVOKABLE bool clearKey(const QString &option, bool global);
     Q_INVOKABLE bool removeKey(const QString &option, bool global, const QString &key);
@@ -72,6 +80,7 @@ signals:
     void searchFieldChanged();
     void dirtyChanged();
     void errorChanged();
+    void liveTvChanged();
 
 private:
     struct Entry {
@@ -80,6 +89,13 @@ private:
         // the place of the row: its group, then the first actions of the
         // design (worked out once, not at each comparison of the sort)
         int groupRank = 5, firstRank = 100;
+        // a key of live TV: only while a channel plays, so it may be one of
+        // the player's too (no conflict with them)
+        bool tv = false;
+        // a key of the interface's zoom: anywhere in the window, but over the
+        // video the subtitles' size takes its keys first (no conflict with
+        // them: Ctrl+wheel is both)
+        bool zoom = false;
     };
     struct Change { QString key, action, before, after; bool global; };
 
@@ -92,6 +108,9 @@ private:
     void notifyEntry(int entryIndex);
     void setError(const QString &error);
     int findEntry(const QString &key) const;
+    // Two actions their keys may not share (their keys work at once)
+    static bool canConflict(const Entry &a, const Entry &b);
+    QVariantMap stageVlcKey(int target, bool global, int vlcKey, bool replaceConflict);
     static QString readKey(const QString &key);
     static void putKey(const QString &key, const QString &value);
     static QString groupFor(const QString &key);
@@ -99,6 +118,7 @@ private:
 
     QPointer<MainCtx> m_ctx;
     QString m_search, m_searchField = QStringLiteral("all"), m_error;
+    bool m_liveTv = false;
     QElapsedTimer m_loaded;
     QVector<Entry> m_entries;
     QVector<int> m_rows;

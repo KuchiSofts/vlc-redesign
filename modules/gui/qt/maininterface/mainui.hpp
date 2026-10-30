@@ -48,6 +48,8 @@ private:
 
     qt_intf_t* m_intf = nullptr;
     MainCtx* m_mainCtx = nullptr;
+    // Live TV, when its add-on is there (made with the types of QML)
+    class IptvAddon* m_iptv = nullptr;
     QWindow*       m_interfaceWindow = nullptr;
 
     QPointer<QQmlComponent> m_component;

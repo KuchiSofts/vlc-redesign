@@ -31,6 +31,7 @@
 #include <QtGui/qpa/qplatformnativeinterface.h>
 
 #include <xcb/composite.h>
+#include <xcb/xfixes.h>
 
 #include "compositor_x11_renderwindow.hpp"
 #include "compositor_x11_renderclient.hpp"
@@ -502,6 +503,7 @@ void CompositorX11RenderWindow::resizeEvent(QResizeEvent* event)
 {
     DummyRenderWindow::resizeEvent(event);
     resetClientPixmaps();
+    updateInputShape();
     emit windowSizeChanged(event->size() * devicePixelRatio());
     emit requestUIRefresh();
 }
@@ -639,6 +641,33 @@ void CompositorX11RenderWindow::onWindowExtendedMarginChanged(unsigned margin)
     uint32_t val[4] = {margin, margin, margin, margin};
     xcb_change_property(m_conn, XCB_PROP_MODE_REPLACE, m_wid,
                         gtkExtendFrame, XCB_ATOM_CARDINAL, 32, 4, &val);
+    m_extendedMargin = margin;
+    updateInputShape();
     setHasExtendedFrame(margin != 0);
 }
 
+void CompositorX11RenderWindow::updateInputShape()
+{
+    if (!m_supportExtendedFrame)
+        return;
+    // The window and the border where it is resized take the clicks; the
+    // rest of the margin (the shadow) goes to the windows below
+    const qreal dpr = devicePixelRatio();
+    const int border = qRound(m_intf->p_mi->CSDBorderSize() * dpr);
+    const int inset = std::max(0, static_cast<int>(m_extendedMargin) - border);
+    const QSize size = this->size() * dpr;
+    if (inset == 0 || size.width() <= 2 * inset || size.height() <= 2 * inset)
+    {
+        // the whole window (the default input shape)
+        xcb_xfixes_set_window_shape_region(m_conn, m_wid, 2 /* ShapeInput */, 0, 0, XCB_NONE);
+        return;
+    }
+    const xcb_rectangle_t rect = { static_cast<int16_t>(inset), static_cast<int16_t>(inset),
+                                   static_cast<uint16_t>(size.width() - 2 * inset),
+                                   static_cast<uint16_t>(size.height() - 2 * inset) };
+    const xcb_xfixes_region_t region = xcb_generate_id(m_conn);
+    xcb_xfixes_create_region(m_conn, region, 1, &rect);
+    xcb_xfixes_set_window_shape_region(m_conn, m_wid, 2 /* ShapeInput */, 0, 0, region);
+    xcb_xfixes_destroy_region(m_conn, region);
+    xcb_flush(m_conn);
+}

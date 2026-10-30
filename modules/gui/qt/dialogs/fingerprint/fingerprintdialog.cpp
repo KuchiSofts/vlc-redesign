@@ -24,6 +24,7 @@
 #include "ui_fingerprintdialog.h"
 
 #include "dialogs/fingerprint/chromaprint.hpp"
+#include "util/redesign_widget_theme.hpp"
 
 #include <vlc_fingerprinter.h>
 
@@ -36,6 +37,8 @@ FingerprintDialog::FingerprintDialog(QWidget *parent, qt_intf_t *p_intf,
     ui(new Ui::FingerprintDialog), p_r( nullptr )
 {
     ui->setupUi(this);
+    // the look of the redesign, as the other classic windows
+    RedesignWidgetTheme::apply(this, p_intf);
 
     ui->stackedWidget->setCurrentWidget( ui->wait );
 

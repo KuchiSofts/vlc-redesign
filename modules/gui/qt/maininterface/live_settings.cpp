@@ -154,13 +154,15 @@ LiveSettings::~LiveSettings()
     if (!m_thread)
         return;
     m_thread->quit();
+    // Waited for to the end: the work in progress stops after its current
+    // step (closed), one intf_Create() or intf_DestroyByName(). Left running,
+    // it could start an interface after VLC destroyed them all, with no
+    // event loop left to delete the thread (VLC waits for an interface that
+    // doesn't end anyway, in intf_DestroyAll)
     if (!m_thread->wait(QDeadlineTimer(3000)))
     {
-        // an interface that doesn't end: not destroyed running, but when it
-        // ends (VLC destroys the interfaces after this one anyway)
         msg_Warn(p_intf, "an interface is still starting or stopping at exit");
-        QObject::connect(m_thread, &QThread::finished, m_thread, &QObject::deleteLater);
-        return;
+        m_thread->wait();
     }
     delete m_thread;
 }
@@ -226,6 +228,9 @@ void LiveSettings::reloadInterfaces()
             intf_DestroyByName(libvlc, qtu(moduleOf(chain)));
             if (intf_Create(libvlc, qtu(chain)) != VLC_SUCCESS)
                 msg_Warn(libvlc, "interface \"%s\" could not start", qtu(chain));
+            // (VLC began to close meanwhile: not left running past it)
+            else if (closed.load())
+                intf_DestroyByName(libvlc, qtu(moduleOf(chain)));
         }
     });
 }

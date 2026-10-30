@@ -203,6 +203,15 @@ struct sout_stream_sys_t
     /* when it did: the first chain waits for the tracks to stay the same a
      * moment (the input adds them one at a time); what comes is held */
     vlc_tick_t                          es_changed_at = VLC_TICK_INVALID;
+    /* The first chain of a media waits for its sound and its picture: a
+     * live channel's picture comes with its next key frame, seconds after
+     * its sound (or the other way round); a chain made with one of them was
+     * a stream the renderer loaded, then another 1.5 s later with both, and
+     * the TV showed nothing for 8 s. Up to 3 s from the first track, or 10 s
+     * of the media held (an audio file, read ahead at once). (Chromecast:
+     * holdStart in cast.cpp) */
+    vlc_tick_t                          es_first_at = VLC_TICK_INVALID;
+    bool StartReady() const;
     bool                                b_supports_video;
     bool                                perf_warning_shown;
     int                                 venc_opt_idx;
@@ -218,6 +227,26 @@ struct sout_stream_sys_t
     /* the running chain converts the video, blending the subtitles it gets:
      * another subtitle goes in there, the renderer goes on (Add) */
     bool                                chain_soverlay = false;
+    /* the muxer of the running chain ("ts": the codecs' settings go in the
+     * stream itself, a track may change them) */
+    std::string                         chain_mux;
+    /* A track of the running chain that ended while the other goes on: a
+     * live channel restarting its picture (or its sound) after an advert,
+     * an adaptive stream changing its format. Its place in the chain is
+     * kept a moment, and the track that replaces it goes on in it: the
+     * renderer keeps its stream. A new chain was a new stream 3 to 5 s
+     * into the channel, which the TV loaded again (some show an error).
+     * (Chromecast: held_again in cast.cpp) */
+    struct parked_track
+    {
+        sout_stream_id_sys_t *p_sub_id;
+        es_format_t           fmt;
+        vlc_tick_t            since;
+    };
+    std::vector<parked_track>           parked;
+    void Park( sout_stream_t *p_stream, sout_stream_id_sys_t *id );
+    bool Unpark( sout_stream_t *p_stream, sout_stream_id_sys_t *id );
+    void DropParked( bool all );
     /* it starts with a picture the renderer can show (a keyframe): its
      * position in the stream counts from the first one it shows (Origin) */
     bool                                chain_started = false;
@@ -469,6 +498,7 @@ bool sout_stream_sys_t::startSoutChain(sout_stream_t *p_stream,
     for ( const sout_stream_id_sys_t *out : out_streams )
         if ( out->fmt.i_cat == VIDEO_ES )
             video = true;
+    es_first_at = VLC_TICK_INVALID;
     vlc::threads::mutex_locker locker( ctl_lock );
     origin_wait = true;
     origin_video = video;
@@ -491,6 +521,8 @@ void sout_stream_sys_t::stopSoutChain(sout_stream_t *p_stream, bool keep)
     chain_soverlay = false;
     chain_started = false;
     chain_wait = VLC_TICK_INVALID;
+    DropParked( true );
+    chain_mux.clear();
 
     for ( size_t i = 0; i < out_streams.size(); i++ )
     {
@@ -694,7 +726,7 @@ int sout_stream_sys_t::UpdateOutput( sout_stream_t *p_stream )
                            "could quickly drain your battery." ) );
             perf_warning_shown = true;
             if ( res <= 0 )
-                 return false;
+                 return VLC_EGENERIC;
             if ( res == 2 )
                 config_PutInt(RENDERER_CFG_PREFIX "show-perf-warning", 0 );
         }
@@ -773,9 +805,18 @@ int sout_stream_sys_t::UpdateOutput( sout_stream_t *p_stream )
         return VLC_EGENERIC;
     }
     chain_soverlay = soverlay;
+    chain_mux = stream_protocol->profile.mux;
 
     {
         vlc::threads::mutex_locker locker( ctl_lock );
+        /* A new stream: the device is tried again, even when it did not
+         * answer before (it may be on now). The stream output is kept for
+         * the next media and for Retry: without this, nothing would ever be
+         * sent to it again. */
+        unreachable = false;
+        failed_checks = 0;
+        if ( status == RENDERER_FAILED )
+            Report( RENDERER_CONNECTING, "" );
         announce_uri = uri;
         announce_protocol = std::move(stream_protocol);
         announce_at = vlc_tick_now() + VLC_TICK_FROM_MS(500);
@@ -1174,6 +1215,109 @@ void sout_stream_sys_t::ControlLoop( sout_stream_t *p_stream )
             ctl_wait.wait( ctl_lock );
         else
             ctl_wait.timedwait( ctl_lock, deadline );
+    }
+}
+
+/* The chain for the tracks there are can be made (feed_lock held) */
+bool sout_stream_sys_t::StartReady() const
+{
+    if ( p_out != nullptr || es_changed_at == VLC_TICK_INVALID )
+        return true;
+    const vlc_tick_t now = vlc_tick_now();
+    /* the input adds them one at a time: the same a moment */
+    if ( now - es_changed_at < VLC_TICK_FROM_MS(300) )
+        return false;
+    bool audio = false, video = false;
+    for ( const sout_stream_id_sys_t *s : streams )
+    {
+        audio = audio || s->fmt.i_cat == AUDIO_ES;
+        video = video || s->fmt.i_cat == VIDEO_ES;
+    }
+    if ( ( audio && video ) || !b_supports_video || es_first_at == VLC_TICK_INVALID
+      || now - es_first_at >= VLC_TICK_FROM_SEC(3) )
+        return true;
+    vlc_tick_t first = VLC_TICK_INVALID, last = VLC_TICK_INVALID;
+    for ( const held_block &h : held )
+    {
+        const vlc_tick_t ts = BlockTs( h.block );
+        if ( ts == VLC_TICK_INVALID || h.id->fmt.i_cat == SPU_ES )
+            continue;
+        if ( first == VLC_TICK_INVALID || ts < first )
+            first = ts;
+        if ( last == VLC_TICK_INVALID || ts > last )
+            last = ts;
+    }
+    return first != VLC_TICK_INVALID && last - first >= VLC_TICK_FROM_SEC(10);
+}
+
+/* The track that replaces one kept (Park) goes on in its place: the same
+ * codec, and, unless the codec's settings go in the stream (TS), the same
+ * settings */
+static bool SameTrack( const es_format_t *kept, const es_format_t *fmt, bool in_band )
+{
+    if ( kept->i_cat != fmt->i_cat || kept->i_codec != fmt->i_codec )
+        return false;
+    if ( fmt->i_cat == AUDIO_ES
+      && ( kept->audio.i_rate != fmt->audio.i_rate
+        || kept->audio.i_channels != fmt->audio.i_channels ) )
+        return false;
+    if ( in_band )
+        return true;
+    if ( fmt->i_cat == VIDEO_ES
+      && ( kept->video.i_width != fmt->video.i_width
+        || kept->video.i_height != fmt->video.i_height ) )
+        return false;
+    return kept->i_extra == fmt->i_extra
+        && ( fmt->i_extra == 0 || memcmp( kept->p_extra, fmt->p_extra, fmt->i_extra ) == 0 );
+}
+
+/* Its place in the running chain kept (feed_lock held) */
+void sout_stream_sys_t::Park( sout_stream_t *p_stream, sout_stream_id_sys_t *id )
+{
+    parked_track p;
+    p.p_sub_id = id->p_sub_id;
+    es_format_Copy( &p.fmt, &id->fmt );
+    p.since = vlc_tick_now();
+    parked.push_back( p );
+    id->p_sub_id = nullptr;
+    msg_Dbg( p_stream, "the %s track ended: its place in the stream is kept a moment",
+             id->fmt.i_cat == VIDEO_ES ? "video" : "audio" );
+}
+
+/* A new track goes on in the place of one that ended (feed_lock held) */
+bool sout_stream_sys_t::Unpark( sout_stream_t *p_stream, sout_stream_id_sys_t *id )
+{
+    for ( auto it = parked.begin(); it != parked.end(); ++it )
+    {
+        if ( !SameTrack( &it->fmt, &id->fmt, chain_mux == "ts" ) )
+            continue;
+        id->p_sub_id = it->p_sub_id;
+        es_format_Clean( &it->fmt );
+        parked.erase( it );
+        out_streams.push_back( id );
+        msg_Dbg( p_stream, "the new %s track goes on in the same stream",
+                 id->fmt.i_cat == VIDEO_ES ? "video" : "audio" );
+        return true;
+    }
+    return false;
+}
+
+/* The places kept, all of them or those no track came back to (feed_lock
+ * held; the chain is still there) */
+void sout_stream_sys_t::DropParked( bool all )
+{
+    const vlc_tick_t now = vlc_tick_now();
+    for ( auto it = parked.begin(); it != parked.end(); )
+    {
+        if ( all || now - it->since >= VLC_TICK_FROM_SEC(2) )
+        {
+            if ( p_out != nullptr )
+                sout_StreamIdDel( p_out, it->p_sub_id );
+            es_format_Clean( &it->fmt );
+            it = parked.erase( it );
+        }
+        else
+            ++it;
     }
 }
 
@@ -1657,11 +1801,16 @@ void sout_stream_sys_t::ResetTimeline()
         block_Release( h.block );
     held.clear();
     ts_offset = 0;
+    es_first_at = VLC_TICK_INVALID;
     retime = false;
     sent_end = VLC_TICK_INVALID;
     late_since = VLC_TICK_INVALID;
     video_sent = false;
     input_end = false;
+    /* the next media is tried as it is: the conversion was for this one
+     * (the stream output stays for the whole playlist) */
+    force_transcode = false;
+    fallback_request = false;
     vlc::threads::mutex_locker locker( ctl_lock );
     anchor_date = anchor_ts = VLC_TICK_INVALID;
     segments.clear();
@@ -2244,6 +2393,12 @@ Add(sout_stream_t *p_stream, const es_format_t *p_fmt, const char *es_id)
             p_sys_id->p_display_id = sout_StreamIdAdd(p_sys->p_display, &p_sys_id->fmt,
                                                       p_sys_id->es_id);
 
+        /* the picture or the sound of a live channel starting again: in
+         * the place of the one that ended, the renderer keeps its stream */
+        if (p_sys->p_out != nullptr && p_fmt->i_cat != SPU_ES
+         && p_sys->Unpark(p_stream, p_sys_id))
+            return p_sys_id;
+
         /* Another subtitle while a converted video plays (the user chose
          * one): into the running conversion, which blends it. A new chain
          * would be a new stream, and the TV would have to start again
@@ -2269,6 +2424,8 @@ Add(sout_stream_t *p_stream, const es_format_t *p_fmt, const char *es_id)
         {
             p_sys->es_changed = true;
             p_sys->es_changed_at = vlc_tick_now();
+            if (p_sys->p_out == nullptr && p_sys->es_first_at == VLC_TICK_INVALID)
+                p_sys->es_first_at = p_sys->es_changed_at;
         }
     }
     return p_sys_id;
@@ -2295,6 +2452,10 @@ static int Send(sout_stream_t *p_stream, void *id,
         }
     }
 
+    /* a track that ended and no other came back in its place */
+    if ( !p_sys->parked.empty() )
+        p_sys->DropParked( false );
+
     /* converted, the device not reading it as it was (Fail) */
     if ( p_sys->fallback_request.exchange( false ) )
     {
@@ -2304,10 +2465,14 @@ static int Send(sout_stream_t *p_stream, void *id,
 
     /* the chain for the tracks there are now (the first one once they stay
      * the same a moment), the picture here as asked */
-    if ( ( p_sys->p_out != nullptr || p_sys->es_changed_at == VLC_TICK_INVALID
-        || vlc_tick_now() - p_sys->es_changed_at >= VLC_TICK_FROM_MS(300) )
+    if ( p_sys->StartReady()
       && p_sys->UpdateOutput( p_stream ) != VLC_SUCCESS )
     {
+        /* The stream could not be made here (no encoder, no address, the
+         * conversion declined): the interface says so, and offers to play
+         * here, instead of "connecting" forever */
+        vlc::threads::mutex_locker locker( p_sys->ctl_lock );
+        p_sys->Fail( p_stream, "local", -1 );
         block_Release( p_buffer );
         return VLC_EGENERIC;
     }
@@ -2336,11 +2501,10 @@ static void Flush( sout_stream_t *p_stream, void *id )
         else
             ++it;
     id_sys->fresh = true;
-    if ( !p_sys->retime )
-    {
-        p_sys->retime = true;
-        p_sys->retime_since = vlc_tick_now();
-    }
+    /* each seek waits for its own pictures (Retime): a second one soon after
+     * the first starts the wait again */
+    p_sys->retime = true;
+    p_sys->retime_since = vlc_tick_now();
 
     /* a seek once the input read all, while the renderer shows the end: its
      * stream ended, another starts (the renderer is not stopped first) */
@@ -2365,9 +2529,20 @@ static void Del(sout_stream_t *p_stream, void *_id)
     sout_stream_id_sys_t *id = static_cast<sout_stream_id_sys_t *>( _id );
     vlc::threads::mutex_locker feed( p_sys->feed_lock );
 
+    /* The sound or the picture of the running stream ends while the other
+     * goes on (a live channel restarting its picture): its place is kept
+     * for the one that comes next (Park). At the end of the media the
+     * other one ends too, and the chain with them. */
+    bool park = false;
+    if ( p_sys->p_out != nullptr && id->p_sub_id != nullptr && !p_sys->input_end
+      && ( id->fmt.i_cat == VIDEO_ES || id->fmt.i_cat == AUDIO_ES ) )
+        for ( const sout_stream_id_sys_t *out : p_sys->out_streams )
+            if ( out != id && ( out->fmt.i_cat == VIDEO_ES || out->fmt.i_cat == AUDIO_ES ) )
+                park = true;
+
     /* the end of the sound or the picture (the media ends, or another
      * track): what is held goes */
-    if ( id->fmt.i_cat != SPU_ES )
+    if ( id->fmt.i_cat != SPU_ES && !park )
     {
         if ( p_sys->retime )
             p_sys->Retime( p_stream, true );
@@ -2392,7 +2567,10 @@ static void Del(sout_stream_t *p_stream, void *_id)
                 sout_StreamIdDel( p_sys->p_display, p_sys_id->p_display_id );
             if ( p_sys_id->p_sub_id != nullptr )
             {
-                sout_StreamIdDel( p_sys->p_out, p_sys_id->p_sub_id );
+                if ( park )
+                    p_sys->Park( p_stream, p_sys_id );
+                else
+                    sout_StreamIdDel( p_sys->p_out, p_sys_id->p_sub_id );
                 for (auto out_it = p_sys->out_streams.begin();
                      out_it != p_sys->out_streams.end(); ++out_it)
                 {
@@ -2454,8 +2632,12 @@ static void CloseSout( sout_stream_t *p_stream )
         vlc_join( p_sys->ctl_thread, nullptr );
     }
     /* casting stops (another device, or here): now (not when it does not
-     * answer: each round trip would wait for it) */
-    if ( !p_sys->unreachable && ( p_sys->playing || p_sys->stop_at != VLC_TICK_INVALID ) )
+     * answer: each round trip would wait for it). It may not be known as
+     * unreachable yet (that takes two failed checks): the last action that
+     * failed on the network says it too. */
+    const bool gone = p_sys->unreachable
+                   || NetworkError( p_sys->renderer->last_error );
+    if ( !gone && ( p_sys->playing || p_sys->stop_at != VLC_TICK_INVALID ) )
         p_sys->renderer->Stop();
     if ( p_sys->p_ended != nullptr )
         sout_StreamChainDelete( p_sys->p_ended, nullptr );
@@ -2469,7 +2651,7 @@ static void CloseSout( sout_stream_t *p_stream )
     p_sys->held.clear();
     p_sys->StopDisplay();
 
-    if ( !p_sys->unreachable )
+    if ( !gone && !NetworkError( p_sys->renderer->last_error ) )
         p_sys->renderer->ConnectionComplete();
     p_sys->p_upnp->release();
     delete p_sys;

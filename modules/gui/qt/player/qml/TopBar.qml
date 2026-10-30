@@ -18,6 +18,7 @@
 
 import QtQuick
 import QtQuick.Templates as T
+import QtQuick.Controls.impl as Impl
 import QtQuick.Layouts
 import QtQuick.Window
 
@@ -65,6 +66,11 @@ FocusScope{
     property bool _showCenterText: showToolbar === false
 
     readonly property int _sideMargin: VLCStyle.margin_small + sideMargin
+
+    // macOS: the room of the traffic lights (the unified title bar), at the
+    // start of the (possibly mirrored) bar
+    readonly property int _insetStart: !showCSD ? 0
+        : (_mirrored ? MainCtx.windowButtonsInsetRight : MainCtx.windowButtonsInsetLeft)
 
     // Right to left (Hebrew, Arabic...): the bar mirrored, the cone and its
     // buttons on the right, the window buttons on the left (as Windows
@@ -258,7 +264,7 @@ FocusScope{
 
         anchors.top: parent.top
         anchors.left: parent.left
-        anchors.leftMargin: root.sideMargin
+        anchors.leftMargin: root.sideMargin + root._insetStart
         anchors.right: root.showCSD ? csdDecorations.left : parent.right
 
 
@@ -275,8 +281,9 @@ FocusScope{
 
         anchors.left: root.left
         anchors.top: root.top
-        // the 6 px padding of the topbar of the design
-        anchors.leftMargin: root.sideMargin + VLCStyle.dp(6, VLCStyle.scale)
+        // the 6 px padding of the topbar of the design (after the traffic
+        // lights on macOS)
+        anchors.leftMargin: root.sideMargin + VLCStyle.dp(6, VLCStyle.scale) + root._insetStart
 
         implicitWidth: logoGroup.implicitWidth
 
@@ -337,16 +344,18 @@ FocusScope{
                 // right to left bar)
                 onClicked: mainMenu.toggleFrom(menuButton, root._mirrored ? menuButton.width - mainMenu.width : 0,
                                                menuButton.height)
+                // open while its menu shows
+                active: mainMenu.opened
                 visible: !root._menuInBar
 
                 Widgets.DashedRect {
                     anchors.fill: parent
                     visible: VLCStyle.customizing
-                    color: VLCStyle.redesign.color("#6B6B6B", "#5a5a59")
+                    color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                 }
                 Widgets.CustomizeDragArea {
                     controlId: ControlListModel.MENU_BUTTON
-                    iconSource: "qrc:///redesign/icons/more/default.png"
+                    iconSource: "qrc:///redesign/icons/more/default.svg"
                 }
 
                 Menus.MainMenu {
@@ -368,6 +377,8 @@ FocusScope{
                 iconName: "sidebar"
                 // the panel of the icon filled while the library is shown
                 iconState: root.libraryActive ? "active" : "default"
+                // and open while it shows
+                active: root.libraryActive
                 description: qsTr("Library")
                 AccessibleCompat.id: "topBarLibraryButton"
 
@@ -382,11 +393,11 @@ FocusScope{
                 Widgets.DashedRect {
                     anchors.fill: parent
                     visible: VLCStyle.customizing
-                    color: VLCStyle.redesign.color("#6B6B6B", "#5a5a59")
+                    color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                 }
                 Widgets.CustomizeDragArea {
                     controlId: ControlListModel.BACK_BUTTON
-                    iconSource: "qrc:///redesign/icons/sidebar/default.png"
+                    iconSource: "qrc:///redesign/icons/sidebar/default.svg"
                 }
             }
 
@@ -395,7 +406,8 @@ FocusScope{
                 width: VLCStyle.redesign.iconSize
                 height: width
                 sourceSize: Qt.size(width, height)
-                source: "qrc:///redesign/icons/divider/default.png"
+                smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
+                source: "qrc:///redesign/icons/divider/default.svg"
                 visible: folderButton.visible && (menuButton.visible || libraryButton.visible)
 
                 Widgets.DashedRect {
@@ -403,7 +415,7 @@ FocusScope{
                     width: parent.width
                     height: VLCStyle.dp(28, VLCStyle.scale)
                     visible: VLCStyle.customizing
-                    color: VLCStyle.redesign.color("#6B6B6B", "#5a5a59")
+                    color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                 }
             }
 
@@ -428,8 +440,7 @@ FocusScope{
                 description: qsTr("Show %1 in the library").arg(folderName)
                 AccessibleCompat.id: "topBarFolderButton"
 
-                backgroundColor: VLCStyle.redesign.color(hovered || down ? VLCStyle.redesign.controlHoverBackground : "transparent",
-                                                         colorContext.bg.primary)
+                backgroundColor: VLCStyle.redesign.color(hovered || down ? VLCStyle.redesign.controlHoverBackground : "transparent")
                 radius: VLCStyle.redesign.controlRadius
 
                 // (the icon first: on the right in a right to left bar)
@@ -441,7 +452,8 @@ FocusScope{
                         width: VLCStyle.redesign.iconSize
                         height: width
                         sourceSize: Qt.size(width, height)
-                        source: "qrc:///redesign/icons/folder/default.png"
+                        smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
+                        source: "qrc:///redesign/icons/folder/default.svg"
                     }
                     Text {
                         id: folderText
@@ -453,7 +465,7 @@ FocusScope{
                         anchors.baselineOffset: VLCStyle.redesign.textBaseline(
                             Math.round((parent.height - Math.round(1.2109375 * font.pixelSize)) / 2), font.pixelSize)
                         text: folderButton.folderName
-                        color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, theme.fg.primary)
+                        color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: VLCStyle.redesign.fontNormal
                     }
@@ -469,11 +481,11 @@ FocusScope{
                 Widgets.DashedRect {
                     anchors.fill: parent
                     visible: VLCStyle.customizing
-                    color: VLCStyle.redesign.color("#6B6B6B", "#5a5a59")
+                    color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                 }
                 Widgets.CustomizeDragArea {
                     controlId: ControlListModel.FOLDER_NAME_WIDGET
-                    iconSource: "qrc:///redesign/icons/folder/default.png"
+                    iconSource: "qrc:///redesign/icons/folder/default.svg"
                 }
             }
         }
@@ -513,11 +525,11 @@ FocusScope{
             width: Math.round(centerTitleText.contentWidth + VLCStyle.dp(16, VLCStyle.scale))
             height: VLCStyle.dp(28, VLCStyle.scale)
             visible: VLCStyle.customizing
-            color: VLCStyle.redesign.color("#6B6B6B", "#5a5a59")
+            color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
 
             Widgets.CustomizeDragArea {
                 controlId: ControlListModel.FILE_NAME_WIDGET
-                iconSource: "qrc:///redesign/icons/file/default.png"
+                iconSource: "qrc:///redesign/icons/file/default.svg"
             }
         }
     }
@@ -615,13 +627,32 @@ FocusScope{
         height: VLCStyle.dp(28, VLCStyle.scale)
 
         radius: VLCStyle.redesign.controlRadius
-        backgroundColor: VLCStyle.redesign.color(hovered || down ? VLCStyle.redesign.controlHoverBackground
-                                                                 : "transparent", "#9c9c9b")
+        // open (active) or ON: the accent on a tint of it, as the buttons of
+        // the bar (RedesignIconButton)
+        backgroundColor: {
+            const hover = hovered || down
+            if (lit) {
+                const tint = VLCStyle.palette.isDark ? VLCStyle.redesign.accentBackground
+                                                     : Qt.alpha(VLCStyle.redesign.accent, 0.14)
+                return hover ? Qt.tint(tint, VLCStyle.palette.isDark ? Qt.rgba(1, 1, 1, 0.06) : Qt.rgba(0, 0, 0, 0.05))
+                             : tint
+            }
+            return VLCStyle.redesign.color(hover ? VLCStyle.redesign.controlHoverBackground : "transparent", "#9c9c9b")
+        }
+        backgroundAnimationDuration: 120
 
-        contentItem: Image {
-            source: "qrc:///redesign/icons/" + topBarButton.iconName + "/" + topBarButton.iconState + ".png"
-            sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
-            fillMode: Image.Pad
+        contentItem: Item {
+            Impl.IconImage {
+                anchors.centerIn: parent
+                width: VLCStyle.redesign.iconSize
+                height: width
+                sourceSize: Qt.size(width, height)
+                smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
+                source: "qrc:///redesign/icons/" + topBarButton.iconName + "/" + topBarButton.iconState + ".svg"
+                // the image's own colours, the accent while open (transparent: no tint)
+                color: !topBarButton.lit ? "transparent"
+                       : VLCStyle.palette.isDark ? VLCStyle.redesign.accent : VLCStyle.redesign.accentDim
+            }
         }
     }
 }

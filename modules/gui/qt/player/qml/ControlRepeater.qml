@@ -137,7 +137,8 @@ Repeater {
             width: VLCStyle.redesign.iconSize
             height: width
             sourceSize: Qt.size(width, height)
-            source: "qrc:///redesign/icons/divider/default.png"
+            smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
+            source: "qrc:///redesign/icons/divider/default.svg"
         }
 
         // Figma "Player - customize": the control outlined, dragged around
@@ -185,7 +186,7 @@ Repeater {
                            : editOverlay.isVolume ? parent.width + 2 * editOverlay.volumeInflate : parent.width
                     height: editOverlay.isPlay ? VLCStyle.dp(34, VLCStyle.scale)
                             : editOverlay.isVolume ? VLCStyle.dp(36, VLCStyle.scale) : parent.height
-                    color: VLCStyle.redesign.color("#6B6B6B", "#5a5a59")
+                    color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                     opacity: dragArea.drag.active ? 0.4 : 1
                 }
 
@@ -252,6 +253,7 @@ Repeater {
                         height: width
                         source: PlayerControlbarControls.control(loader.controlId).icon ?? ""
                         sourceSize: Qt.size(width, height)
+                        smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                     }
                 }
 
@@ -327,7 +329,7 @@ Repeater {
         Layout.maximumWidth: Layout.fillWidth ? (item ? item.implicitWidth : -1) : -1
 
         Layout.minimumHeight: 0
-        Layout.maximumHeight: Math.min((item && item.implicitHeight <= 0) ? Number.MAX_VALUE : item.implicitHeight, repeater.availableHeight)
+        Layout.maximumHeight: Math.min((!item || item.implicitHeight <= 0) ? Number.MAX_VALUE : item.implicitHeight, repeater.availableHeight)
         Layout.fillHeight: true
 
         Layout.alignment: repeater.alignment

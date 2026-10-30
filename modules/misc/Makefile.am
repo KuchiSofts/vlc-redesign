@@ -154,3 +154,28 @@ EXTRA_LTLIBRARIES += libmedialibrary_plugin.la
 misc_PLUGINS += $(LTLIBmedialibrary)
 
 include misc/preparser_serializer/Makefile.am
+
+# The Live TV (IPTV) add-on: its own plugin, with QtCore, that the Qt
+# interface finds at run time (include/vlc_iptv.h); a package can leave it out
+libiptv_plugin_la_SOURCES = \
+	misc/iptv/iptv.cpp \
+	misc/iptv/service.cpp misc/iptv/service.hpp \
+	misc/iptv/playlist.cpp misc/iptv/playlist.hpp \
+	misc/iptv/guide.cpp misc/iptv/guide.hpp \
+	misc/iptv/xtream.cpp misc/iptv/xtream.hpp
+nodist_libiptv_plugin_la_SOURCES = misc/iptv/catalog.h
+libiptv_plugin_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/misc/iptv
+libiptv_plugin_la_CXXFLAGS = $(AM_CXXFLAGS) $(IPTV_QT_CFLAGS) -fPIC
+libiptv_plugin_la_LIBADD = $(IPTV_QT_LIBS) $(LIBZ)
+libiptv_plugin_la_LDFLAGS = $(AM_LDFLAGS) $(misc_RPATH)
+EXTRA_DIST += misc/iptv/catalog/catalog.json misc/iptv/iptv.pro misc/iptv/embed_catalog.py
+# the catalog of the build, in the plugin (a newer one is fetched daily)
+misc/iptv/catalog.h: misc/iptv/catalog/catalog.json
+	$(AM_V_GEN)mkdir -p misc/iptv && { \
+	  echo 'static const char iptv_catalog[] = R"vlcjson('; \
+	  cat $(srcdir)/misc/iptv/catalog/catalog.json; \
+	  echo ')vlcjson";'; } > $@.tmp && mv -f $@.tmp $@
+if HAVE_IPTV
+misc_PLUGINS += libiptv_plugin.la
+BUILT_SOURCES += misc/iptv/catalog.h
+endif

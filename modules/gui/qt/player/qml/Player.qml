@@ -80,8 +80,14 @@ FocusScope {
 
     // Library next to the video (Figma "Player" with the sidebar open)
     property bool libraryVisible: false
-    // Created on first use, then kept with its history
+    // Created on first use, then kept with its history. Made in the
+    // background (its Loader is asynchronous), not in this handler: the
+    // player could be unloaded while the panel is made (a media stopping,
+    // the interface closing), and an object destroyed in one of its own
+    // handlers is an error of QML
     property bool _libraryCreated: false
+    // the folder of the media asked before the panel was made
+    property bool _folderPending: false
     onLibraryVisibleChanged: {
         if (libraryVisible)
             _libraryCreated = true
@@ -134,6 +140,12 @@ FocusScope {
             return
 
         _keyPressed = true
+
+        // Live TV: the channels up and down, their numbers, the list
+        if (tvOverlay.item && tvOverlay.item.handleKey(event)) {
+            event.accepted = true
+            return
+        }
 
         // the keys of the design (onboarding): Q the queue, L the library
         if (event.modifiers === Qt.NoModifier
@@ -287,6 +299,8 @@ FocusScope {
 
         // drawn 1:1 (a coloured icon is filtered half a pixel off)
         Image {
+            // drawn at the size shown (an SVG: sharp at any scale and zoom)
+            sourceSize: Qt.size(width, height)
             required property int index
 
             readonly property bool atRight: index === 1 || index === 3
@@ -300,7 +314,7 @@ FocusScope {
             height: width
             smooth: false
             source: "qrc:///redesign/player/corner-" + (atBottom ? "b" : "t") + (atRight ? "r" : "l")
-                    + (VLCStyle.palette.isDark ? "-dark" : "-light") + ".png"
+                    + (VLCStyle.palette.isDark ? "-dark" : "-light") + ".svg"
         }
     }
 
@@ -344,6 +358,13 @@ FocusScope {
                 // Video
 
                 focus: true
+
+                // Ctrl+wheel over it sizes the subtitles (interface_window_handler.cpp)
+                Binding {
+                    target: MainCtx
+                    property: "subtitleWheelArea"
+                    value: videoSurface
+                }
 
                 VideoSurface {
                     id: videoSurface
@@ -473,9 +494,14 @@ FocusScope {
             id: castingComponent
             // The picture is on the TV: here a click plays or pauses it, a
             // double click and the wheel do what they do over a video (the
-            // single click waits to be no double click)
+            // single click waits to be no double click). On the window's own
+            // background (the card over it), not the grey of no picture
             MouseArea {
                 acceptedButtons: Qt.LeftButton | Qt.RightButton
+                Rectangle {
+                    anchors.fill: parent
+                    color: VLCStyle.redesign.color(VLCStyle.redesign.windowBackground)
+                }
                 onClicked: (mouse) => {
                     if (mouse.button === Qt.RightButton)
                         rootPlayer.showAudioContextMenu(mapToGlobal(mouse.x, mouse.y))
@@ -584,7 +610,10 @@ FocusScope {
         onLibraryToggled: rootPlayer.libraryVisible = !rootPlayer.libraryVisible
         onFolderRequested: {
             rootPlayer.libraryVisible = true
-            compactLibrary.item.showFolder(compactLibrary.item.folderOf(Player.url))
+            if (compactLibrary.item)
+                compactLibrary.item.showFolder(compactLibrary.item.folderOf(Player.url))
+            else
+                rootPlayer._folderPending = true
         }
 
         onRequestLockUnlockAutoHide: (lock) => {
@@ -626,6 +655,14 @@ FocusScope {
         }
     }
 
+    // Ctrl+wheel over the library beside the video zooms the interface
+    // (not the subtitles: the video goes on behind it)
+    Binding {
+        target: MainCtx
+        property: "subtitleWheelExclusion"
+        value: compactLibrary
+    }
+
     Loader {
         id: compactLibrary
 
@@ -636,7 +673,14 @@ FocusScope {
         }
 
         active: rootPlayer._libraryCreated
+        asynchronous: true
         visible: rootPlayer.libraryVisible
+        onLoaded: {
+            if (rootPlayer._folderPending) {
+                rootPlayer._folderPending = false
+                item.showFolder(item.folderOf(Player.url))
+            }
+        }
         // (no wider than the window: a small one cut its right side)
         width: item ? Math.min(item.implicitWidth, parent.width) : 0
 
@@ -817,9 +861,11 @@ FocusScope {
         dragYMin: 0
         dragYMax: rootPlayer.height - navBox.height
 
-        Drag.onDragStarted: (controlId) => {
-            navBox.x = drag.x
-            navBox.y = drag.y
+        // (there is no "drag" here: the box keeps where it is dragged to,
+        // its bindings to the bar given up)
+        Drag.onDragStarted: {
+            navBox.x = navBox.x
+            navBox.y = navBox.y
         }
     }
 
@@ -881,6 +927,43 @@ FocusScope {
         onClicked: DialogsProvider.audioVisualizationDialog()
 
         AccessibleCompat.id: "videoVisualizationButton"
+    }
+
+    // its keys win over the hotkeys (interface_window_handler.cpp)
+    Binding {
+        target: MainCtx
+        property: "keysBeforeHotkeys"
+        value: tvOverlay.item
+    }
+    // Live TV over the video while a channel plays: made only then, and
+    // only when its add-on is there and on
+    Loader {
+        id: tvOverlay
+        anchors.fill: parent
+        active: Iptv.enabled && Iptv.playing
+        source: "qrc:///qt/qml/VLC/Network/TvPlayerOverlay.qml"
+        onLoaded: {
+            item.restoreFocus = rootPlayer
+            item.bottomInset = Qt.binding(() => controlBar.state === "visible" ? rootPlayer.height - controlBar.y : 0)
+        }
+    }
+
+    // The subtitles' size Ctrl+wheel over the video (or its keys) made, a
+    // moment, under the top bar
+    PlayerToast {
+        id: subtitleSizeToast
+        objectName: "subtitleSizeToast"
+        anchors.horizontalCenter: parent.horizontalCenter
+        y: VLCStyle.dp(24, VLCStyle.scale) + (topBar.opacity > 0.5 ? Math.max(0, topBar.y + topBar.height) : 0)
+        z: 10
+
+        Connections {
+            target: Player
+            function onSubtitleTextScaleStepped(scale) {
+                // xgettext:no-c-format
+                subtitleSizeToast.say(qsTr("Subtitle size %1%").arg(scale))
+            }
+        }
     }
 
     Widgets.FloatingNotification {
@@ -1077,10 +1160,11 @@ FocusScope {
             spacing: VLCStyle.dp(8, VLCStyle.scale)
             Image {
                 anchors.verticalCenter: parent.verticalCenter
-                source: "qrc:///redesign/track-subtitles-active.png"
+                source: "qrc:///redesign/track-subtitles-active.svg"
                 width: VLCStyle.dp(20, VLCStyle.scale)
                 height: width
                 sourceSize: Qt.size(width, height)
+                smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
             }
             Text {
                 anchors.verticalCenter: parent.verticalCenter
@@ -1123,9 +1207,9 @@ FocusScope {
                 Layout.alignment: Qt.AlignHCenter
                 Layout.preferredWidth: VLCStyle.dp(48, VLCStyle.scale)
                 Layout.preferredHeight: VLCStyle.dp(48, VLCStyle.scale)
-                source: "qrc:///redesign/icons/cast/large.png"
+                source: "qrc:///redesign/icons/cast/large.svg"
                 sourceSize: Qt.size(VLCStyle.dp(48, VLCStyle.scale), VLCStyle.dp(48, VLCStyle.scale))
-                color: rootPlayer._castTrouble ? VLCStyle.redesign.color("#8F8F8F", "#4d4d4d")
+                color: rootPlayer._castTrouble ? VLCStyle.redesign.color("#8F8F8F", "#2e2e2e")
                                                : VLCStyle.redesign.accent
                 // connecting: it breathes until the device plays
                 readonly property bool connecting: castingCard.visible
@@ -1149,7 +1233,7 @@ FocusScope {
                         : Player.rendererManager.rendererVideo
                           ? qsTr("Playing on %1").arg(Player.rendererManager.rendererName)
                           : qsTr("The sound plays on %1").arg(Player.rendererManager.rendererName)
-                color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#1e1e1e")
+                color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(18, VLCStyle.scale)
                 font.weight: Font.Medium
@@ -1160,7 +1244,8 @@ FocusScope {
                 Layout.alignment: Qt.AlignHCenter
                 Layout.maximumWidth: rootPlayer.width - VLCStyle.dp(96, VLCStyle.scale)
                 visible: text !== ""
-                text: Player.title
+                // (a file without a title: its name, as the window says it)
+                text: Player.title !== "" ? Player.title : Player.name
                 color: VLCStyle.redesign.color("#B8B8B8", "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
@@ -1173,7 +1258,7 @@ FocusScope {
                 wrapMode: Text.WordWrap
                 visible: !rootPlayer._castTrouble
                 text: qsTr("Pause, seek and change the subtitles here: the TV follows.")
-                color: VLCStyle.redesign.color("#8F8F8F", "#4d4d4d")
+                color: VLCStyle.redesign.color("#8F8F8F", "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
             }
@@ -1264,7 +1349,7 @@ FocusScope {
             Impl.IconImage {
                 Layout.preferredWidth: VLCStyle.dp(20, VLCStyle.scale)
                 Layout.preferredHeight: VLCStyle.dp(20, VLCStyle.scale)
-                source: "qrc:///redesign/icons/cast/large.png"
+                source: "qrc:///redesign/icons/cast/large.svg"
                 sourceSize: Qt.size(VLCStyle.dp(20, VLCStyle.scale), VLCStyle.dp(20, VLCStyle.scale))
                 color: VLCStyle.redesign.accent
             }
@@ -1273,7 +1358,7 @@ FocusScope {
                 text: Player.rendererManager.castStatus === RendererManager.CastConnecting
                       ? qsTr("Connecting to %1…").arg(Player.rendererManager.rendererName)
                       : qsTr("Also on %1").arg(Player.rendererManager.rendererName)
-                color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#1e1e1e")
+                color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                 elide: Text.ElideRight

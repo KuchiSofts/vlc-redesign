@@ -40,8 +40,11 @@ Widgets.IconToolButton {
         implicitHeight: VLCStyle.redesign.iconSize
 
         Image {
+            // drawn at the size shown (an SVG: sharp at any scale and zoom)
+            sourceSize: Qt.size(width, height)
+            smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
             anchors.centerIn: parent
-            source: "qrc:///redesign/player/next.png"
+            source: "qrc:///redesign/player/next.svg"
             width: VLCStyle.redesign.iconSize
             height: VLCStyle.redesign.iconSize
             fillMode: Image.PreserveAspectFit

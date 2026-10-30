@@ -51,9 +51,11 @@ aout_PLUGINS += libandroid_audiodevice_plugin.la libopensles_android_plugin.la \
 	libandroid_audiotrack_plugin.la libandroid_aaudio_plugin.la
 endif
 
-libadummy_plugin_la_SOURCES = audio_output/adummy.c
+libadummy_plugin_la_SOURCES = audio_output/adummy.c audio_output/volume.h
+libadummy_plugin_la_LIBADD = $(LIBM)
 
-libafile_plugin_la_SOURCES = audio_output/file.c
+libafile_plugin_la_SOURCES = audio_output/file.c audio_output/volume.h
+libafile_plugin_la_LIBADD = $(LIBM)
 libafile_plugin_la_CPPFLAGS = $(AM_CPPFLAGS)
 
 libamem_plugin_la_SOURCES = audio_output/amem.c

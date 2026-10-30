@@ -6,12 +6,230 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 **Status:** 🟢 done · 🟡 in progress or partly done · 🔴 to do or missing · ⚪ idea or research
 **Pixel check:** 🟢 measured identical to the Figma frame · ⏳ not measured yet
-**In the app ⏳:** merged and built, not yet checked in the running program (5 lines today)
+**In the app ⏳:** merged and built, not yet checked in the running program (6 lines today)
 
 ## Now
 
-What is being worked on, updated as it changes (2026-10-25):
+What is being worked on, updated as it changes (2026-10-30):
 
+- 🟢 **0.4.0 ships on three platforms** (2026-10-30): Windows x64 (setup 59.4 MB, zip 107.8 MB, small updates),
+  Linux x86_64 and ARM64 (.deb, .rpm, AppImage, tar.xz, the Live TV packages, `SHA256SUMS-linux-*.txt`; no Flatpak
+  yet) and macOS Apple Silicon and Intel (two `.dmg`, signed ad hoc). `platforms.yml` has Windows, Linux and macOS
+  released. 🔴 **Windows on ARM64 moved to the next version**: in the 0.4.0 tests on a real ARM64 Windows runner it
+  opened its window and stopped a few seconds later (a crash in the Qt interface after the media library started),
+  and one of the installer's 400 binaries was not ARM64. Until then the x64 build runs on Windows 11 ARM64 under
+  emulation.
+
+- 🟢 **Release 0.4.0 prepared** (2026-10-29): VideoLAN's master merged to `9f393e5719` — **6 commits behind before**
+  (HDR static metadata in the swap chain and VideoToolbox, the legacy MinGW check of `d3d11_surface` removed; its
+  `CAN_PROCESSOR` guards dropped from our scaler and leak fix too, or they would have compiled out), **0 after**; the
+  public `main` (PR #12) and the PR branches #11, #13, #20, #21, #22 merged into `redesign`, so the upload closes
+  them; `po/vlc.pot` regenerated, 110 catalogs merged (`msgfmt -c` clean), `po/redesign` 1,991 texts × 72 at 100 %;
+  `docs/wiki/Install-and-Update.md` was never in the repository (`.gitignore` `install-*`), now tracked; CHANGELOG
+  dated, wiki and `platforms.yml` at 0.4.0. Built and tested on the merge and on the release package: the launch test
+  (0 failures, no QML warning), pause, seek while paused and quit on full, video-only and audio-only files (clean
+  exit), the d3d11 scaler converting 1080p to 360p; make-release: setup 59.4 MB, zip 107.8 MB, small updates from
+  0.3.1 and 0.3.0 (26.1 MB) and 0.2.6 (35.3 MB) applied and checked, SHA256SUMS signed. Left: the upload.
+
+- 🟡 **Desktop polish before 0.4.0** (branch `feature/desktop-polish`, 2026-10-29):
+  - 🟢 Icons at 125-200 % (`3673a7a74d`): the QML named them by their old PNG files; Qt 6 draws an image at the
+    device pixel ratio only when the URL *as written* ends in `.svg` (the interceptor's `.svg` comes too late), so
+    every icon was drawn for 100 % and stretched. Named by their SVG now. Queue icon strokes (coverage per row):
+    200 % `19 57 76 76 57 19` → `50 100 100 50` (exact); 100 % unchanged `76 76` = Figma's 75/75 (`#737373` /
+    `#4D4D4D`). The 1.9 px of the light-theme audit was the PNG build `g6da8c7cd1a` (before `f637ae1bfa`).
+  - 🟢 At 125 and 150 % the strokes sat on fractional device pixels (logical × 1.25/1.5): 150 % `32 81 81 32`.
+    Fixed in `feature/integration2` without moving any item: an SVG icon drawn at its size whose size × ratio is
+    whole is drawn unfiltered (`smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)`,
+    69 icon items), so its texture lands 1:1: queue icon 125 % `19 100 69 | 95 95`, 150 % `63 100 63 |
+    13 100 100 13` (the SVG as Qt draws it), 100/175/200 % unchanged, dark and light. Not by `source`: an
+    IconImage's `source` read in its own binding is not followed once it changes (the bar's icons stayed
+    filtered). Image-provider icons (`image://svgcolor`) stay filtered. Settings sidebar and crop link icons at
+    100 %: same ink as Figma (sidebar 82/79/120/48/115/78 vs 81/79/121/47/116/78; link 64 vs 66), the link icon
+    sits half a pixel higher than in the frame (two 76 % rows where Figma has one full + one partial).
+  - 🟢 Classic windows' borders (Open Media, Media Information, Help; Convert = Open Media): DWM border
+    `#4C4A48` set in both themes (logged with `DwmSetWindowAttribute` under cdb; Windows does not return it),
+    dark mode flag per theme, round corners. Open Network Stream is drawn in QML: 1 px `#4C4A48`, dark and light.
+  - 🟢 Cast panel keys (fake Chromecast only): Tab, then the arrows go row by row; Down on *Show the video here
+    too* went nowhere, now goes round to the first row; opened from the keyboard the first row has the keyboard.
+    With the fake Chromecast chosen, the switch is greyed and skipped, with its note. Opened with the mouse,
+    arrows stay VLC's hotkeys until Tab (the interface's rule: keys go to an item with visual focus).
+  - 🔴 Quit: 2 of 10 tour runs hit `assert(medialib)` in `MLBaseModel::setMl` on quit (a binding gives the models
+    a null `MediaLib` while the interface goes down; debug builds show the CRT assert dialog and never exit).
+    46 plain quits (window close, rc quit, `--vout=dummy`, `QT_QUICK_BACKEND=software`, after the library pages,
+    light theme) all exited 0. A full dump is kept locally (not in the repository).
+  - 🟢 DLNA live channels (`96287f0157`): a restarted picture goes on in the same stream (one stream per channel,
+    was two); the first stream of a channel waits up to 3 s for its sound and picture (a cast on a playing channel
+    sent both: PIDs 100 + 200, 3 of 3 runs). Fake DLNA TV, Pluto TV.
+  - 🟡 A cast started on a playing live channel can stall the adaptive demuxer (seen once on the old build:
+    `fakeesout restarting`, nothing sent for 60 s); not seen in 4 runs since. Pluto reports itself seekable, so
+    restarting live inputs on a renderer change was dropped (untested path).
+
+- 🟢 **One app icon everywhere: the designer's** (branch `feature/app-icon`, 2026-10-29; Android: its own
+  `feature/app-icon`). The owner's rule: every program and app uses Juxtopposed's app icon. The design has no
+  separate app-icon frame; its icon is the logo (the orange cone of the Icon set 42:356, Frame 4, also the
+  onboarding's), `design/icons/svg/logo.svg` (the Figma export, its SHA-256 checked). Our old icon put that logo
+  on a `#191919` card with a `#373737` line, which the design doesn't have: replaced by the logo as drawn.
+  - 🟢 `extras/juxtopposed/make-app-icon.py` draws every size from the vector, hinting 16-40 px:
+    `vlc.ico` (16, 20, 24, 32, 40, 48, 64, 96, 128, 256 PNG), `macos/AppIcon.icns` (16 ... 512@2x, copied by
+    `macos-build.sh`; no more rsvg/sips), hicolor 16, 22, 24, 32, 48, 64, 128, 256, 512 + SVG (installed by
+    `share/Makefile.am` and `linux-packages.sh`), the XPMs, the UPnP server's and the web interface's icons, the
+    site's `favicon.ico` and touch icon. The installer's `setup.ico` and side mark (was a play glyph) are the
+    same icon (`make-art.py` uses the script). The start page, player background and update notice draw the
+    logo in place of upstream's cone; the seasonal cones are off (`qt-icon-change` kept, no effect).
+  - 🟢 Checks: the vector is pixel-identical to the Figma export at 1024 and 2048; renders match Figma's own
+    frames (onboarding 141 px, title bar 24 px) within 0.5/255; vlc.exe's compiled icon resource is
+    byte-identical to `vlc.ico` (windres + MinGW of the build image). Contact sheets (dark/light, 100/150/200 %)
+    in the QA folder `app-icon/`. A full Docker rebuild waits for disk space on the build drive.
+- 🟡 **Issue [#10](https://github.com/KuchiSofts/vlc-redesign/issues/10)** (branch `feature/issue10`, both apps,
+  2026-10-29): open state of the buttons (accent icon on an accent tint, no border, 120 ms; `IconToolButton.active`)
+  on the player bar, the top bar and Live TV; Ctrl+wheel over the video sizes the subtitles (VLC's steps, 25-500 %,
+  toast), elsewhere zooms the interface (new shortcuts `qt-key-intf-zoom-in/out`), Ctrl+0 through the interface,
+  Shortcuts takes wheel turns, libass follows the size live. 4 texts in the 72 languages (msgfmt -c passes, the
+  xgettext pot matches). Android: done and checked on the emulator (open state, Ctrl + wheel, Ctrl+0, slider,
+  Hebrew; ASS keeps its size under libvlc 3). Desktop built in Docker and tested on Windows: Ctrl+wheel over the video 100 > 120 > 200 % with the toast, ASS follows live, over the player's library it zooms the interface (fixed: the library is drawn over the video), Ctrl+0 back to 100 %, Shortcuts shows both pairs and takes a Ctrl+wheel turn (conflict asked), open state on settings, tracks, the menu and the library button in dark, light, Hebrew at zoom 2; no new QML warning.
+
+- 🟡 **macOS and Windows ARM64 ready for 0.4.0** (branch `feature/mac-arm-final`, 2026-10-29):
+  - 🟢 macOS unified title bar in code (`maininterface/macos_titlebar.cpp`): the system frame kept, its title bar
+    transparent and untitled, the content under it; the top bars start after the traffic lights; no redesign
+    window buttons on macOS; `qt-titlebar` off by default there too. Compiled for macOS for syntax only (Qt 6.8.3
+    headers, both `objc_msgSend` branches); 🔴 its first run on a Mac is the public CI at the upload.
+  - 🟢 macOS app: Live TV add-on required (`-t` without), 20+ translations, README, licences, credits and the fonts'
+    OFL in `Resources`, every Mach-O verified signed. `macos-smoke.sh` checks them plus the icon, the About badge,
+    the Live TV plugin loaded and the unified title bar, and captures the main window light and dark and About.
+  - 🟢 macOS CI: free on the public repository (every pull request and push to main); private only by hand, Apple
+    Silicon only, 40 minutes at most (about 150-250 of the 2,000 monthly minutes); none before 1 November.
+  - 🟢 Windows ARM64 checked statically (`ci/pe-check.py` on the integration build): 399 binaries all ARM64, every
+    import in the package or in Windows (Vulkan's loader from the graphics driver, as on x64), Qt and its QML built
+    in, About badge *Windows ARM64*, Live TV add-on, 100 translations, credits; 21 x64-only plugins are upstream's
+    (OpenGL, NVDEC/QSV/AMF, x86 SIMD, projectM), 2 ARM64-only (NEON/SVE deinterlace). No 0.4.0 ARM64 installer
+    built yet: the `.iss` installs the package's files plus the Live TV component.
+  - 🟢 `install-test-arm64` job (public repository, `windows-11-arm`): the installer made and installed silently,
+    every file checked, the ARM64 smoke test on the installed copy, screenshots of the main window and About,
+    uninstall. 🔴 Runs first at the upload.
+- 🟡 **Last desktop issues before 0.4.0** (branch `feature/leftovers`, 2026-10-29): Live TV's keys win over VLC's
+  hotkeys while a channel plays (`MainCtx.keysBeforeHotkeys`; Page Up/Down, digits, Backspace, Enter, I; in
+  Settings › Shortcuts, group *Live TV*); Backspace with an empty navigation history no longer ends VLC; the
+  library panel of the player is made asynchronously (the `Player.qml:85` QML error); the Capture Device lists line
+  up; untranslated texts keep their punctuation at their end in right-to-left (left-to-right marks, `.ui` texts
+  through the translator). Checked on Windows with posted keys and with real `SendInput` keys in a test window in
+  front (Page Up, Page Down, Backspace, digits, a number erased: 5/5 in English, Hebrew and with real keys); the
+  real wheel changes the volume over the video and over the slider with the default output (1.0 → 1.1 → 1.0),
+  Ctrl+T, Ctrl+P, Ctrl+N open their dialogs. Found in the end-to-end pass and fixed: the guide's
+  `original-air-date` shown as the episode (Pluto TV), a QML error when *Open Folder* opened its system dialog from
+  the menu (zoom 2). The two items left there are done in `feature/integration` (below). End-to-end pass of 0.4.0:
+  [0.4.0-ui-audit.md](qa/0.4.0-ui-audit.md).
+- 🟡 **Integration of 0.4.0** (branch `feature/integration`, 2026-10-29, every feature branch merged):
+  - 🟢 The `QQuickItem::stackAfter` warning of Customize Player at zoom 1.5/2 came from the bar's customize lines
+    (Repeater delegates that reparented themselves), not from `DashedRect`; fixed, none in the zoom 1.5 and 2 tours.
+  - 🟢 Translations: `po/vlc.pot` had lost the 375 texts of the `.ui` forms (the classic windows read English in
+    every language: *Capture mode*, *Device Selection*, *Show more options*...), and 37 files of the redesign were
+    missing from `po/POTFILES.in` (Live TV, Settings › TV, the redesigned dialogs, Edit Sidebar). Both fixed
+    (`translations/ui-pot.py`, a release-check test); the 207 new texts translated in the 72 languages, `msgfmt -c`
+    clean in all 110 catalogs. `po/redesign` waits for the Weblate export.
+  - 🟢 Builds: Windows x64, Windows ARM64 (built, not run) and Linux x86_64 (Qt 6.8.3). Windows x64 checked end to
+    end in a portable test copy (tours in English and Hebrew, dark and light, Settings, zoom 1.5/2, About with its
+    badge and the designer credit, the TV page with Pluto TV and Plex, a Windows-1255 Hebrew subtitle): no QML
+    warning. Linux under Xvfb: start, Home, TV, Settings, About, a clip, quit, no QML warning. macOS not built.
+    Details: [0.4.0-ui-audit.md](qa/0.4.0-ui-audit.md#integration-build-branch-featureintegration-2026-10-29).
+
+- 🟡 **Upstream and the audit's leftovers** (branch `feature/upstream-final`, 2026-10-29): VideoLAN's master
+  merged to `12023233ef` — **4 commits behind before** (`32b160d9e9` → `e0baa29690` mpg123 1.33.7 and its ARM64
+  FPU patch, then `12023233ef` Qt moc include dirs and a medialibrary header), **0 after**, no conflict, nothing of
+  ours changed. Fixed: Live TV's *All* counted the hidden adult channels (5,891 vs 5,881); the automatic online
+  subtitles load by themselves only for a hash match or a sure title (`silent.mp4` → *Silent Hill* is now only
+  listed); a channel address that is a playlist (Plex catch-up parts) left a library entry named by its token
+  (`src/playlist/preparse.c`); accessibility (UI Automation sweep: every control named but the Settings search,
+  dialogs named by their title, Tab out of multi-line fields); the 303 PNG icons removed (every one had its SVG of
+  the same size; the originals stay in `design/icons`); the GPL source archive in `make-release.ps1`
+  ([SOURCE.md](SOURCE.md)); the 0.4.0 release notes drafted (`docs/release/0.4.0`). Proven on the Windows x64
+  build: the 7 UI tours, the IPTV parser test (Qt 6.8.3, Docker: PASS), the subtitle corpus (212/212), the
+  pause/seek regressions (0 late, 0 dropped, clean quits), the border sweep, right-to-left captures.
+  Details: [0.4.0-ui-audit.md](qa/0.4.0-ui-audit.md#upstream-merge-and-leftovers-branch-featureupstream-final-2026-10-29).
+
+- 🟡 **Subtitle quality** (branch `feature/subs-quality`, for 0.4.0): measured first on Windows (d3d11, 480p,
+  720p and 1080p sources in a 1440×1000 window and full screen 2560×1440): SRT and ASS were already rasterised at
+  the display size (the same crop whatever the source size), picture subtitles were blocky with the point,
+  processor and super resolution upscalers (fixed: a sampler of their own). Encodings: a detector for 28
+  encodings (`modules/codec/subs_charset.c`) in the subtitle and WebVTT demuxes, subsdec and the seek bar's cue
+  reader, 212/212 corpus files right (glibc and GNU libiconv); in VLC, legacy SRT, ASS and a Matroska track
+  in Windows-1255 read right with an English interface. ASS right-to-left lines follow the Unicode bidi algorithm
+  (libass base direction from the text). Fonts: every script of a mixed test file drew with the system fallback
+  (no empty boxes; emoji in black and white). CPU while playing 1080p with SRT or ASS: 2-5 % of one core, as
+  before. Left: Linux and macOS outputs only read in the code
+  (OpenGL samples subpictures bilinearly, the macOS sample-buffer display draws them in backing pixels), HiDPI
+  above 100 % not run (one 100 % screen here), Android (separate code base) listed in the report.
+
+- 🟢 **macOS builds and runs** (2026-10-29): Apple Silicon (macos-14) and Intel (macos-15-intel) both build, make
+  their `.dmg` and pass the 9 launch checks (signature, headless playback, the Qt interface loaded and playing,
+  no QML warning, clean quit, no crash report); a screenshot shows the library on macOS. Seven fixes on the way
+  (workflow env, configure checks, ncurses, prebuilt SDK paths, Qt SQL drivers, signing of the plugin cache and
+  other non-code files, an updater `#else`). Left: the unified title bar (done in code in `feature/mac-arm-final`,
+  above) run on a Mac; the Intel job needs more than 75 minutes.
+- 🟡 **Window borders** (branch `feature/borders`): every QML dialog, menu, panel, dropdown list, tooltip and card
+  over the interface draws the main window's 1 px frame (`Widgets.RedesignWindowBorder`, token
+  `color.dark.windowBorder` / `color.light.windowBorder`, `#4C4A48`: what Windows 11 drew around the main window in
+  both themes), inside its outline and over a title bar that reaches the edges; the main window, the classic
+  windows, the QMenus and the "could not start" window get the same colour as DWMWA_BORDER_COLOR
+  (`RedesignMenuStyle::windowBorder`). Where the system draws no frame (Linux X11 and Wayland, macOS with the
+  interface's own title bar) the main window draws it itself (`MainInterface.qml`) and the widget menus paint it
+  (`PE_FrameMenu`, also on Windows 10). Checked 2026-10-29: Windows build (main window, main menu, sort menu, About,
+  Keyboard Shortcuts, Settings: `#4C4A48` in dark and light); Linux Qt 6.8 build under Xvfb/X11 (main window on
+  all four sides, main menu, sort menu, tooltips, the welcome card, dark and light). Not run: Wayland (same QML
+  path), macOS (CI only). Merged; build 13: the ⋯ menu, Network stream, Keyboard Shortcuts, Customize Player,
+  Settings and About framed on all four sides.
+- 🟡 **Live TV** (branch `feature/iptv`): an add-on of its own, `modules/misc/iptv` (`libiptv_plugin`, QtCore,
+  capability `iptv`, the JSON API of `include/vlc_iptv.h`): M3U, Xtream Codes and XMLTV readers, downloads through
+  VLC's access modules, the cache on disk, the guide's descriptions kept on disk, catch-up addresses, the catalog
+  (built in, a newer one daily). The interface (`modules/gui/qt/iptv`) only looks the plugin up
+  (`module_exists`): the TV page (channels, guide, films and series), the sources dialog with the catalog, the
+  player's banner, number entry and channel list, Settings > TV. `iptv-enabled` on by default; the installer's
+  *Live TV (IPTV) add-on* component leaves the plugin out. A channel zapped makes no library entry
+  (`src/player/medialib.c`: no external media for a `no-save-recentplay` item). Test:
+  `extras/juxtopposed/iptv-parsers.cpp`; the catalog (118 playlists, 157 guides, verified 2026-10-28). Merged into
+  `redesign` 2026-10-29. Left: the owner's "no sound" report (not reproduced), translations, light/RTL captures.
+
+- 🟡 **Final check before 0.4.0** (2026-10-28): VideoLAN's master merged to its latest then (`32b160d9e9`; now
+  `12023233ef`, above), `feature/linux-pkg` and
+  `feature/macos` merged; the redrawn tool windows looked at in build 10 (Media Statistics did not load: Canvas,
+  fixed; Folder information: native path, no time-zone name); the Visualizer opens from Audio › Visualizations and its
+  button over a visualization. Build 11 found Media Statistics still not loading (its graph's `top` clashed with
+  Qt Quick's own); build 12 checked: Statistics with its live graph, Folder information, no QML warning.
+  Every upload now passes `release-check.py` ([RELEASE-CHECKLIST.md](RELEASE-CHECKLIST.md)). The new texts are
+  in the 72 languages (1,790 Weblate texts, all at 100 %); the check passes 22 of 22. Left: the upload.
+- 🟡 **macOS** (roadmap step 7, branch `feature/macos`): `macos-build.sh` (prebuilt contribs, Qt 6.8.3, the Qt
+  interface only, `VLC Redesign.app`, `vlc-redesign-X.Y.Z-macos-<arch>.dmg`), `build-macos.yml` on Apple Silicon and
+  Intel runners with a launch test, macOS fixes in the code (title bar, menu bar, ⌘ hotkeys, fonts, updater)
+  ([§9](#macos), `extras/juxtopposed/macos/README.md`). Merged. Left: push, the first CI run and its fixes, decision 3.
+- 🟡 **Windows on ARM64** (branch `feature/winarm64`): the package builds (`win64-docker.ps1 -Arch aarch64`, every
+  binary ARM64), `make-release.ps1 -Arch aarch64` makes the installer, zip and small updates, the updater keeps
+  each architecture to its own files ([§9](#windows-on-arm64)). Left: merge, the ARM64 smoke test of the Windows
+  build workflow (`windows-11-arm`), a run on a real ARM64 PC.
+- 🟡 **Platforms and website** (roadmap step 5, branch `feature/platforms`): `platforms.yml` rewritten as the single
+  source (status, version, date, next, download files, page), `extras/juxtopposed/platforms/render.py` renders it
+  into the README's platform bar and table, `site/` (the website: OS detection, every platform, screenshots, the
+  design credit), the *Also on* line of the release notes and of About; the Platforms workflow deploys the site.
+  Left: merge, enable GitHub Pages (Source: GitHub Actions), check About in a build.
+- 🟡 **Roadmap step 6, design tokens** (branch `feature/tokens`): `design/` exported (`design-1.0`: tokens.json,
+  icons, fonts, CSS/Android/Swift files) with `design/tools/check_qml.py` in CI, passing. The export found
+  differences between §6 and the code (listed in §6); they wait for a decision. Settled 2026-10-28 (branch
+  `feature/light`): the light values the colour map overrode (228 calls, [design/light-theme.md](../design/light-theme.md))
+  and the classic dialogs' light title bar (`#DEDEDE`, as the QML dialogs).
+
+- 🟡 **0.4.0** (was 0.3.2; renumbered 2026-10-29 for the size of the release): the open issues. [#9](https://github.com/KuchiSofts/vlc-redesign/issues/9): the playback speed and
+  teletext buttons never loaded on Windows (`Popup` without its import), so dropped on a bar they left an
+  invisible slot; fixed, and a control that fails to load shows a placeholder that can be dragged out.
+  [#8](https://github.com/KuchiSofts/vlc-redesign/issues/8): VLC master merged (110 commits; conflicts in mmdevice,
+  MainCtx, PIPPlayer resolved). Both checked in the build: the speed button shows "1x" in the bar and dropped from
+  Customize Player it lands framed and removable; no QML warning in a full UI tour.
+- 🟢 **The review report (105 bugs)**: checked one by one and fixed in four groups (installer and tooling, core,
+  Qt C++, QML); see the changelog. Checked in the build: SD colours (red 254,0,0 instead of 239,4,0; HD and HDR
+  unchanged), the package check, a UI tour without warnings. Still to test by hand: casting on the real test TV, the
+  all-users installer, an update from 0.3.1, the proxy exceptions, Linux builds.
+- 🟡 **Weblate**: every language has all 1,723 texts again (7,093 translated, `msgfmt -c` clean in all 110
+  catalogs), about 80 wrong catalog translations fixed, the volunteers' Estonian and Swedish merged, 12 texts that
+  stay the same in every language flagged `ignore-same`. The lock of 2026-10-27 (Weblate couldn't push: no
+  credentials) is gone: the component now goes through the Hosted Weblate GitHub App (vlc-redesign only) and is
+  open again. Left: the push of `main`, from which Weblate reads the new files.
 - 🟢 **0.3.1, a small update** (build 215, released 2026-10-25): what follows, for the copies of 0.2.4 and later through
   the in-app update (only the changed files).
 - 🟢 **Bar panels open above their button**: Effects, VLC Settings and HDR now open above the bar, aligned to
@@ -28,11 +246,15 @@ What is being worked on, updated as it changes (2026-10-25):
 - 🟢 **"Subtitl…" fixed**: the tab names of the tracks panel are no longer cut short (build 205).
 - 🟢 **README**: a 56 s tour of the smart features (HyperFrames, from real captures; animated WebP + MP4), twelve
   feature pictures, the platforms; the wiki documents every option (33 pages).
-- 🟡 **A rare crash at shutdown on GitHub's runner**: the launch test ended once with `0xC000041D` (a crash inside a
-  window's message handling) on Windows Server 2022 without a GPU, and passed when run again with the same files.
-  Not reproduced in 110 runs on this PC and in Windows Sandbox. Done so the next one can be read: the log file keeps
-  its last lines on a crash (build 204, checked by killing VLC: every line kept, against a cut at 4 KB before), and
-  the CI job keeps a crash dump. Next: read the dump when it crashes again.
+- 🟢 **The crash at shutdown on GitHub's runner, found and fixed (2026-10-29, PR #21)**: the launch test ended with
+  `0xC000041D` in 4 of the last 5 runs. The dumps showed a `WM_NCHITTEST` reaching `CSDWin32EventHandler` (the title
+  bar's native event filter, upstream code) after `MainCtx` and its CSD button model were deleted: the handler is a
+  child of the window, which outlives the interface. The runner's mouse rests over the window; here it never did,
+  so 110 local runs passed. Named by matching the stripped CI binary against a local unstripped build (the static Qt
+  code is identical once call targets are masked). Reproduced on a hidden desktop by sending hit tests while VLC
+  quits: 7 of 8 crashed before, 0 of 6 after (`0xC000041D` or heap corruption `0xC0000374`). Fix: the handler is
+  deleted with `InterfaceWindowHandlerWin32` and keeps `QPointer`s (here and on main). CI: full dumps instead of
+  minidumps, and the symbol maps of the stripped binaries as an artifact (main only: this branch's workflow differs).
 - 🟢 **Languages**: 72 languages and British English cover the whole interface: every language the list offers
   (the last 13 done on 2026-10-25; in build 197 and later). VLC's other catalogs follow as "(partial)".
 - 🟡 **The direction comes with the language**: choosing a right-to-left language (in Settings, the classic
@@ -62,6 +284,19 @@ What is being worked on, updated as it changes (2026-10-25):
     on a page ~9 ms each.
   - 🟢 One table of labels for the four lists, and no rows for the hidden lists (an explicit condition): Settings
     112 → 92 ms freeze, 147 → 122 ms settled, 3 MB less (b199 → b200). Full report: [PERFORMANCE.md](PERFORMANCE.md).
+- 🟢 **Performance and memory pass 2 (2026-10-29, Live TV, soaks, CPU)**, details in [PERFORMANCE.md](PERFORMANCE.md):
+  - 🟢 Live TV guides read once into an index: guide ready 0.5–0.6 s after a start instead of 3.9 (216 MB guide;
+    5,891 public channels: 3.8 → 0.6 s), the start's CPU 4.9 → 1.1 s; the description file left at every start
+    (13 MB a guide) deleted; sources refreshed together (each guide read once, 6 → 4 readings on a cold start of
+    two sources); unreachable logos asked again after an hour.
+  - 🟢 The guide crashed VLC moving through the hours (3 of 3 runs): the answers' JavaScript callbacks were copied
+    and freed on the worker thread. Fixed; the guide asks for its rows at once, keeps its cells and draws them
+    without a clip each (16 moves: 5–6 → 3.4 s of CPU, freeze 220 → 70 ms; scrolling: render thread −25 %).
+  - 🟢 Soaks flat: 1 h of playback, 300 channel switches, 800 dialog openings (levels off at +5 MB), 203 page
+    switches, 40 theme switches (memory, handles, GDI/USER, threads). Idle CPU ~0 % (0.08–0.23 %); paused 0.9 %
+    is upstream's 80 ms redisplay (left). Zapping ~0.95 s is the provider's network (network caching changes nothing).
+  - ⚪ Open: Page Up/Down (and the digits) of the TV banner may be taken by VLC's hotkeys while a channel plays
+    (seen with posted keys only); the guide's fast scroll still keeps the render thread busy.
 - 🟢 **Casting (2026-10-25, build 202, fake Chromecast)**: a click on the casting screen plays or pauses (it did
   nothing), a double click toggles fullscreen, the wheel changes the volume (it did nothing); a subtitle changed
   while casting is noted in the top corner where reading starts ("Subtitles on the TV: …", 72 languages). Taking the
@@ -90,9 +325,9 @@ counted from this document's own tables and checklists (column *From*); ⚪ idea
 | Program         | Progress             | Done    | %     | From                                   |
 |-----------------|----------------------|---------|-------|----------------------------------------|
 | Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 91/97   | 93 %  | [§8](#8-next-release-030) checklists   |
-| Linux           | 🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 1/7     | 14 %  | [§9](#linux)                           |
-| macOS           | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/4     | 0 %   | [§9](#macos)                           |
-| Windows ARM64   | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/3     | 0 %   | [§9](#windows-on-arm64)                |
+| Linux           | 🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ | 2/7     | 28 %  | [§9](#linux)                           |
+| macOS           | 🟩🟩🟩🟩⬜⬜⬜⬜⬜⬜ | 2/5     | 40 %  | [§9](#macos)                           |
+| Windows ARM64   | 🟩🟩🟩🟩🟩⬜⬜⬜⬜⬜ | 2/4     | 50 %  | [§9](#windows-on-arm64)                |
 | Android         | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/7     | 0 %   | [§9](#android-phones-tablets-tv)       |
 | Samsung TV      | 🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ | 2/7     | 28 %  | [§9](#samsung-smart-tv-tizen)          |
 | iPhone / iPad   | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/3     | 0 %   | [§9](#iphone-ipad-apple-tv)            |
@@ -148,6 +383,10 @@ the bar counts the lines of section 8, the ones left need the owner (SignPath, D
    every supported OS version: every release passes the quality gates (section 14).
 5. **Users shape it.** Ideas, votes and reports on GitHub set the order of the work; every report gets an answer.
    The program never sends anything by itself.
+6. **Every upload brings the whole project up to date.** The changelog, the roadmap, this plan, the README, the
+   platforms and the website, the wiki, the translations, VideoLAN's master, the credits and an answer for every
+   issue: the pre-push hook and `make-release.ps1` refuse an upload that leaves one behind
+   ([RELEASE-CHECKLIST.md](RELEASE-CHECKLIST.md)).
 6. **Credit and honesty.** The design credit (CC BY 4.0) is in every program, README, store page and release. Every
    program says it is unofficial; the VLC name and cone are VideoLAN trademarks.
 7. **Open source.** Every binary has its source, build scripts and licenses next to it.
@@ -156,10 +395,10 @@ the bar counts the lines of section 8, the ones left need the owner (SignPath, D
 
 | Program            | Platforms                                  | Code base                               | Status                      |
 |--------------------|--------------------------------------------|-----------------------------------------|-----------------------------|
-| Desktop            | Windows 10/11 x64                          | VLC 4 + Qt 6.8/QML (`vlc-redesign`)     | 🟢 0.2.6 · 🟡 0.3.0          |
-| Desktop            | Windows 11 ARM64                           | same                                    | 🔴 track                     |
-| Desktop            | Linux x86_64                               | same                                    | 🔴 track (built once before) |
-| Desktop            | macOS 12+ (Apple Silicon, Intel)           | same                                    | 🔴 track                     |
+| Desktop            | Windows 10/11 x64                          | VLC 4 + Qt 6.8/QML (`vlc-redesign`)     | 🟢 0.4.0                     |
+| Desktop            | Windows 11 ARM64                           | same                                    | 🔴 built, not in 0.4.0       |
+| Desktop            | Linux x86_64, ARM64                        | same                                    | 🟢 0.4.0                     |
+| Desktop            | macOS 12+ (Apple Silicon, Intel)           | same                                    | 🟢 0.4.0                     |
 | Android            | Android 8+ phones, tablets, Android TV     | fork of VLC for Android (Kotlin)        | ⚪ track                     |
 | Casting            | DLNA TVs (Samsung, LG, Sony…), Chromecast  | part of the desktop program             | 🟢 works on a real TV        |
 | TV receiver        | Samsung Tizen TVs (2017+)                  | Tizen web app                           | ⚪ track                     |
@@ -171,7 +410,7 @@ The desktop program has version numbers; each other platform gets its own when i
 | Platform   | Minimum                                                    | Reason                                         |
 |------------|------------------------------------------------------------|------------------------------------------------|
 | Windows    | Windows 10 1809, x64                                       | Qt 6.8 and VLC 4 (an older Windows gets a message) |
-| Linux      | glibc 2.35 (Ubuntu 22.04, Debian 12, Fedora 36+); Flatpak   | Qt 6.8 and the VLC 4 build image               |
+| Linux      | glibc 2.38 (Ubuntu 24.04, Debian 13, Fedora 39+); Flatpak   | Qt 6.8 and the VLC 4 build image (Ubuntu 24.04) |
 | macOS      | 12 Monterey                                                | Qt 6.8                                         |
 | Android    | 8.0 (API 26)                                               | keeps blur and rounded clipping cheap          |
 | Samsung TV | Tizen 3.0 (2017 models, such as the UE55MU8000)             | web apps with the AVPlay player                |
@@ -203,13 +442,13 @@ What comes first, and why. Each step starts when what it needs is done.
 
 | #  | Step                                                                  | Needs first                     | Why in this order                                                   | Status |
 |----|-----------------------------------------------------------------------|---------------------------------|---------------------------------------------------------------------|--------|
-| 1  | Check build 115 in the app (11 lines), finish the 0.3.0 items (§8)     | —                               | Mostly done: finishing costs less than switching                    | 🟡     |
-| 2  | Figma references exported, capture script, pixel check of 103 frames  | step 1 (screens stable)         | "Pixel for pixel" needs proof; capturing moving screens is wasted    | 🔴     |
-| 3  | Community setup: hub, Discussions, forms, labels, board, files        | decisions 1 and 9               | Feedback must land in the right place before the announcement       | 🔴     |
-| 4  | Release 0.3.0 and announce it                                         | quality gates, steps 1 and 3    | Users get the fixes; the community side is ready for them            | 🔴     |
-| 5  | `platforms.yml`, platform bar, website                                | step 3                          | In place before a second platform exists, so it shows everywhere     | 🔴     |
-| 6  | Design tokens exported (`design/`: tokens, icons, fonts)              | step 2 (values checked)         | Every other platform reads them; no copying errors                   | 🔴     |
-| 7  | Linux, then macOS, then Windows ARM64                                 | CI; decision 3 for macOS        | Same code base: the cheapest new platforms first                     | 🔴     |
+| 1  | Finish the 0.3.x items (§8): the 6 lines in the app ⏳                 | —                               | Mostly done: finishing costs less than switching                    | 🟡     |
+| 2  | Figma references exported, capture script, pixel check of 103 frames  | step 1 (screens stable)         | "Pixel for pixel" needs proof; capturing moving screens is wasted    | 🟢     |
+| 3  | Community setup: in-app *Suggest an idea* / *Report a problem* (13.12), hub, Discussions, board | decisions 1 and 9 | Feedback must land in the right place before the announcement | 🟡 |
+| 4  | Release 0.3.0 and announce it (0.3.0 and 0.3.1 out 2026-10-25; 0.4.0 next) | quality gates, steps 1 and 3 | Users get the fixes; the community side is ready for them        | 🟡     |
+| 5  | `platforms.yml`, platform bar, website (built 2026-10-28; Pages to enable) | step 3                     | In place before a second platform exists, so it shows everywhere     | 🟡     |
+| 6  | Design tokens exported (`design/`: tokens, icons, fonts) — `design-1.0` and its CI check in (2026-10-28); every icon an SVG from Figma, drawn sharp at every scale and zoom (2026-10-29); left: the sync workflow to the sister repositories, the §6 differences | step 2 (values checked) | Every other platform reads them; no copying errors | 🟡 |
+| 7  | Linux, then macOS, then Windows ARM64 (macOS started 2026-10-28: build script and CI, first run after the push) | CI; decision 3 for macOS        | Same code base: the cheapest new platforms first                     | 🟡     |
 | 8  | Android                                                               | step 6, decision 6              | The largest new audience (phones and Android TV)                     | 🔴     |
 | 9  | Samsung TV receiver                                                   | step 6, decision 5              | Builds on the casting work and the real-TV testing                   | 🔴     |
 | 10 | iPhone, iPad, Apple TV                                                | step 8, decision 3              | Same approach as Android, reusing its screens                        | 🔴     |
@@ -333,7 +572,9 @@ put it in the top bar. Editing the music bar is verified (§8.8).
 | 2425:13624 | Player - Light | 1920 × 1080 | 🟢     | 🟢    | The light theme, greys measured from this frame      | VLCStyle.qml (`redesign.color()`), redesign_icon_provider.cpp |
 
 Notes: the whole app was checked in light in build 115 (player, tracks and subtitles window, cast window, ⋯ menu,
-classic dialogs). The last fixes, Settings scroll bar handles and the warning colour, are in the app ⏳ (§8.3).
+classic dialogs). 2026-10-28: the light values the colour map overrode settled
+([design/light-theme.md](../design/light-theme.md)); the frame against the app per region within 2.4 per channel;
+dark unchanged (33 captures, no pixel over 1 of 255). The last fixes, Settings scroll bar handles and the warning colour, are in the app ⏳ (§8.3).
 
 ### 5.9 Add Subtitles (4)
 
@@ -524,8 +765,49 @@ the new playlist's thumbnail and empty playlists, the resume card, the classic d
 
 ## 6. Design tokens
 
-The values the app uses at 100 % (1 px = 1 Figma px; `MainCtx.dp()` scales them). Source:
-`modules/gui/qt/style/VLCStyle.qml` (object `redesign`) and the components named.
+The values the app uses at 100 % (1 px = 1 Figma px; `MainCtx.dp()` scales them). **The source of these values
+is [`design/tokens.json`](../design/tokens.json)** (`design-1.0`, W3C Design Tokens format, each token with its
+Figma node and the places in the code that hold it); the tables below are its summary. In the code they live in
+`modules/gui/qt/style/VLCStyle.qml` (object `redesign`), `menus/redesign_menu_style.cpp`,
+`util/redesign_widget_theme.cpp` and the components named; `design/tools/check_qml.py` (CI, every pull request)
+fails when the code and `tokens.json` differ. Icons and fonts: `design/icons/`, `design/fonts/`; CSS, Android and
+Swift files: `design/build/` (`design/README.md`).
+
+**Differences between these tables and the code** (found by the export, 2026-10-28; `tokens.json` follows the
+code, the tables are left as they were until each is decided):
+
+- *Dark/BG/A2* `#1F1F1F` is not "Figma only": it is the hovered row of the widget (right-click) menus
+  (`RedesignMenuStyle`), `#9C9C9B` in the light theme.
+- *Dark/FG/B1* `#161616` is not "Figma only": onboarding primary button text, ThemeStep, sleep timer, the New
+  playlist icon wrapper (light `#B8B8B7` there).
+- Scroll bar handle: Settings keeps the Basic style's own colours in the dark theme (not `#6B6B6B`); in the light
+  theme the handle is `#6B6B6B` and `#2E2E2E` only when pressed. The classic dialogs: `#404040` dark, `#8E8E8D`
+  light, `#6B6B6B` hovered.
+- ✅ Dialog title bars, light theme, and the light values the colour map overrode: **settled 2026-10-28**
+  ([design/light-theme.md](../design/light-theme.md)). The QML dialogs drew `#DEDEDE` (B2), the classic dialogs
+  `#9C9C9B`; both draw `#DEDEDE` now. `color(dark, light)` ignored the light value whenever the map knew the dark
+  one: 113 calls with two literal colours, 228 in all (through VLCStyle properties, helpers, dynamic values). A
+  light value given now wins over the map, and each of the 228 was checked against *Player - Light* (2425:13624,
+  pixel-compared with its dark twin 187:328): wherever the frame draws the colour it is the map's (e.g. *15 items*
+  `#6B6B6B`, not the `#7C7C7B` given; the crumb and the times `#2E2E2E`, not `#4D4D4D`), so all 228 now write the
+  map's value or leave the light value out: the light theme looks as before, the dark theme is unchanged.
+  `check_qml.py` fails on a light value that differs from the map's unless listed. Eight dark values the frame does
+  not draw (`#EAEAEA`, `#C6C6C6`, `#969696`, `#0E0E0E`, `#222222`, `#404040`, `#151515`, `#373737`) keep the map's
+  value.
+- ✅ **The opaque Light styles: decided 2026-10-29, keep the frame's colours.** The file has 24 *Light/* colour
+  styles (no variables). The light frame draws its panels as *Light/BG/A3 Transparent* (`#D5D5D5` 75 %) and *B1
+  Transparent* (`#E7E7E7` 80 %) over the dark video, which gives the `#ABABAA` and `#C2C2C1` the app draws as solid
+  colours; the app stays 1:1 with that frame. The opaque styles are not used: several do not work as a theme (FG/1
+  and FG/2 keep their dark values, FG/A4 is darker than FG/A3). [design/light-theme.md](../design/light-theme.md).
+- Typography: dialog titles are 14 px (`#8F8F8F`, box 17 in a 32 row), not 16 px at 175 %; 16 px is the Settings
+  header title. Widget (right-click) menus are 14 px, not 16. Onboarding: "Welcome to VLC!" is 32 px; some
+  onboarding texts are 15 px with a line of 1.3.
+- The Inter descender is 0.2421875 em (1.2109375 − 0.96875), not 0.2412.
+- Seek preview: the frame is 252 wide in a 272 × 189 card (Figma 2151:9673), radius 12, not 224 and 10.
+- Accent red, Bright: `#3B150D` is 0.26 × rounded half up; Qt's float rounding can give `#3A150D` (within the
+  1-per-channel rounding the table allows).
+- Not in the tables: Home folder cards `#1E1E1E` (light `#ABABAA`), the 95 % B1 over the canvas `#0F0F0F`, the
+  modal scrim (black 45 %).
 
 ### Colours
 
@@ -574,6 +856,42 @@ the default's (the design's values); rounding may change a channel by 1.
 | 7  | `#8E41FF` purple   | `#7335CF` | `#251142` | `#C2A7EA`      |
 | 8  | `#F051B5` pink     | `#C24293` | `#3E152F` | `#E4ADD0`      |
 | 9  | `#AFAFAF` grey     | `#8E8E8E` | `#2E2E2E` | `#CECECE`      |
+
+**Follow the Windows accent color** (not in the design; `redesign/accent` = `system`, `RedesignAccent` in
+`util/redesign_accent.cpp`): a toggle row under the swatches in Settings > Appearance, as Developer mode (42 high,
+label 14 px `#8F8F8F`, the Toggle at the end), off by default and shown at once; on, no swatch shows as chosen, and
+picking one turns it off (off goes back to the colour chosen before, else the orange). The 9 swatches and the
+onboarding's 9 discs stay as Figma draws them. The colour is Qt's
+`QPalette::Accent` (Qt 6.6+ reads it from the system), on Windows else
+`HKCU\Software\Microsoft\Windows\DWM\AccentColor`; it is read again on `ApplicationPaletteChange`,
+`colorSchemeChanged`, `WM_SETTINGCHANGE` "ImmersiveColorSet", `WM_DWMCOLORIZATIONCOLORCHANGED` and
+`WM_SYSCOLORCHANGE` (after 250 ms), and if Windows changes the registry without Qt's palette following, the
+registry wins. Without a system accent (Linux without one, Qt's default highlight `#308CC6`): the redesign orange.
+**Readability rule:** the 9 accents are drawn unchanged on both themes and range in WCAG relative luminance from
+0.128 (the blue, 3.3:1 on `#0E0E0E`) to 0.429 (the grey). A system colour outside that range keeps its hue and
+saturation and gets the HSL lightness that brings its luminance to the nearest end, so it is never darker than the
+blue on the dark theme nor lighter than the grey on the light theme; Dim, Bright and the light tint then come from
+it as for the others.
+
+### Buttons on their panels (decided 2026-10-29, the owner's report)
+
+Figma draws the neutral buttons in the fill of the panel they sit on, or one step from it: *Cancel*, *Licenses &
+authors*, *GitHub*, *Don't restore* `#1B1B1B` on the dialogs' `#191919` (1.0:1), Settings' *Browse* / *Reset* /
+*Edit Keyboard Shortcuts* `#191919` on `#0E0E0E` (1.1:1), the classic dialogs' buttons `#191919`; in the light theme
+`#ABABAA` on `#ABABAA`. They melted into the panel. Measured (WCAG relative luminance), dark and light:
+
+| Button | Fill on panel | Text on fill | Decision |
+|---|---|---|---|
+| Neutral (RedesignButton, RedesignDialog's Cancel, About) | 1.0:1 (both themes) | `#8F8F8F` 5.3:1, light `#2E2E2E` 5.9:1 | 🟢 + 1 px frame `#4C4A48` (the window border token): 2.0:1 on `#191919`, 3.8:1 on `#ABABAA` |
+| Settings buttons (SettingsButton) | 1.1:1 | 5.3:1 / 5.9:1 | 🟢 + the same frame |
+| Classic dialogs (QPushButton) | 1.0–1.1:1 | 5.3:1 / 5.9:1 | 🟢 + the same frame (`redesign_widget_theme.cpp`); default and checked buttons keep their accent fill, flat ones none |
+| Accent buttons of the QML dialogs (Save, Close) | `#371F06` on `#191919`, the same in the light theme | accent 4.8:1 | unchanged |
+| Accent fill of the classic dialogs, light theme (default button, selected tab, row, selection) | tint `#DABB99` | accent **1.4–2.7:1** ✗ (orange 1.8) | 🟢 text `accent.darker(220)` (`$(onAccent)`): 5.1–6.4:1 on each of the 9 tints (orange 5.6) |
+| Settings ActionButton | `#202020` + `#353535` frame | `#D0D0D0` | already framed: unchanged |
+| Icon-only buttons (bar, top bar, sidebar toggles, ×, ⋯, sort/view, chips; icon-only QPushButtons of the classic dialogs) | transparent by design (the glyph is the button) | icons `#8F8F8F` 5.3:1 on `#1B1B1B` | **never a frame** (owner rule): readable by the glyph colour and the design's hover, pressed, active and focus states only |
+
+The frame is the one colour both themes share (the light map keeps `#4C4A48`), so a button reads as one in either
+theme and over the video.
 
 ### Typography
 
@@ -725,6 +1043,11 @@ Shipped in 0.1.0 to 0.2.6 ([changelog](../CHANGELOG.md)). Work since 0.2.6 is in
 - 🟢 File associations (about 130 formats) without taking over the user's choices; Explorer entries
 - 🟢 Uninstall gives every file type back to the app it had before
 - 🟢 Daily update check; small updates (binary deltas), SHA-256 checked, rolled back on failure
+- 🟢 Signed checksums (BUG-006, 2026-10-28): `SHA256SUMS.txt.sig` by the project's release key (ECDSA P-256),
+  checked with CNG before any checksum is used; required from 0.4.0 on (`FIRST_SIGNED_VERSION`). Key and
+  commands: `extras/juxtopposed/signing/release-key.ps1`; `make-release.ps1` signs. Tested: sign/verify round
+  trip, openssl cross-check, the C verifier on good, tampered, flipped and wrong-key signatures. Still to test: an
+  update from a 0.4.0 build to a signed release.
 - 🟢 *Restart now* reopens the media where it was in about two seconds; portable copies update too
 
 **Windows and robustness**
@@ -788,7 +1111,8 @@ becomes 1.0 when every frame is pixel-checked, the light theme is complete and V
 - 🟢 The whole app checked in light: player, tracks and subtitles window, cast window, ⋯ menu, classic dialogs
 - 🟢 Text contrast measured (WCAG 2.1, 2026-10-23): the texts of the design pass AA (4.5:1) on every panel but its
   dim greys: dark `#6B6B6B` 3.3 to 3.7 and `#5F5F5F` 2.8 to 3.1 (hints, descriptions, watched videos), light
-  `#5A5A59` 3.3 to 5.1 and `#4D4D4D` 4.1 on lists. Kept as the design draws them; *Increase text contrast*
+  `#6B6B6B` 2.3 to 3.0 on the panels and `#4D4D4D` 4.1 on lists (the `#5A5A59` measured first was never drawn:
+  the colour map won, [design/light-theme.md](../design/light-theme.md)). Kept as the design draws them; *Increase text contrast*
   (Interface › Accessibility, off) draws them `#8A8A8A` (dark) and `#333333` (light), at least 4.6:1 on every panel
   and hover background, and the (i) icons `#707070` / `#575756`, at least 3.1:1 (the 3:1 of icons), in
   `VLCStyle.redesign.color()`
@@ -849,7 +1173,25 @@ All classic windows go through one hook, `redesign_widget_theme.cpp`, applied fr
   6 runs clean
 - 🟢 Go to time, statistics, plugins list (the same hook) · in the app ⏳
 - 🟢 A stray separator line in the Disc tab (removed, build 121)
-- ⚪ Go to time, statistics, plugins list and folder information redrawn in QML, as another implementation did
+- 🟢 Go to time, statistics, plugins list and folder information redrawn in QML (2026-10-28, build ⏳):
+  `RedesignGoToTimeDialog`, `RedesignStatisticsDialog` (new Tools entry *Media Statistics*, bitrate graph),
+  `RedesignPluginsDialog` (plugins and Lua extensions; add-ons stay in Settings ▸ Extensions),
+  `RedesignFolderInfoDialog` (the folder menu's Info); data from `redesign_tools.cpp`. The classic windows remain
+  for skins; the Statistics tab of Media Information stays · in the app ⏳
+- 🟢 No plain Windows or Qt box left (2026-10-28, build ⏳): every message, question and prompt is a redesign
+  dialog. In the window: `RedesignMessageDialog.qml` (from `DialogsProvider::showRedesignMessage()`): the play
+  queue to restore after a crash (*Restore the play queue?*, *Restore* / *Don't restore*, not blocking), the
+  library's confirmations (named actions), rename playlist, paste links, `messageDialog()`. The core's login,
+  question and progress dialogs (`Dialogs.qml`) and the error banner. Elsewhere (a classic window asking, no
+  interface, the window hidden): `RedesignMessageBox`, frameless, the same sizes and colours. Before Qt
+  (`bin/winvlc_message.c`, GDI + DWM): could not start, the Windows version check, the crash report question
+- 🟢 The extension and fingerprint windows through the hook too
+- ⏳ In the app: the recovery question after a forced kill, a share's login, the start failure (`--foo`
+  does not fail libvlc: rename `plugins` in a test copy), light theme, 150 % scale, right to left
+- 🟢 The classic windows get the redesign's title bar (`redesign_window_frame.cpp`, from the hook): #090909, Inter
+  14 title, the redesign's icons; Windows: native frame kept (snap, resize, shadow, Windows 11 corners), caption
+  removed by `WM_NCCALCSIZE`, the bar hit-tested as `HTCAPTION` · in the app ⏳ (Windows 10 has no top border line;
+  the snap layouts flyout on the maximize button is not offered; Linux and macOS keep the system bar)
 
 ### 8.7 Casting
 
@@ -862,10 +1204,10 @@ All classic windows go through one hook, `redesign_widget_theme.cpp`, applied fr
 - 🟢 TVs listed before the panel opens, the last one used at the top
 - 🟢 Samsung (UE55MU8000): a paused cast is kept (a trickle of null packets while paused)
 - 🟢 Samsung: a film sent as it is goes as MPEG-TS; a TV that stops it gets it converted
-- 🟢 The real-TV gate on the 0.3.0 candidate (build 193, 2026-10-25, [TV]ChenTV): converted with subtitles: started in
+- 🟢 The real-TV gate on the 0.3.0 candidate (build 193, 2026-10-25, the real test TV): converted with subtitles: started in
   3.5 s, paused 1 min and 5 min (paused the whole time), resumed, seeked, next file, the last film to its end; sent as
   it is (AVC_TS_NA_ISO): started mid-film in 2.5 s, seeked to 25 s before the end, the TV played to the end and the
-  player stayed playing until it had; quit in 0.5 s. Earlier: 2026-10-24 on build 174 ([TV]ChenTV, Samsung): start, pause 1 min and
+  player stayed playing until it had; quit in 0.5 s. Earlier: 2026-10-24 on build 174 (the real test TV, a Samsung): start, pause 1 min and
   5 min (paused the whole time), seek, resume, next file, the end (stopped at 29.3 of 30 s), converted with
   subtitles; and on build 178 a cast sent as-is, started mid-film, seeked to 25 s before the end: the TV played to
   the end and the player stayed playing until it had (the end of a cast mid-film, ff54815d10, d0e1f85b1e, and the
@@ -874,6 +1216,27 @@ All classic windows go through one hook, `redesign_widget_theme.cpp`, applied fr
   subtitles, pause, play, seek, another subtitle, subtitles off: the device stayed PLAYING through the subtitle
   change, no reload, no error); the living-room Android TV (Mi TV) was off; no LG or Sony on this network: through
   device reports
+- 🟢 **Casting final pass (2026-10-29, `feature/cast-final`, fakes)**: a live TV channel (Pluto TV, HLS) cast to a
+  Chromecast crashed VLC at its end (zapping, stop, quit): `DEMUX_GET_LENGTH` without its live argument
+  (`52ce2e82fc`); zapping while casting now works, and a stream restarting its picture reloads the TV once
+  (`1880587aa0`); quitting while casting took 16.5 s and left the TV playing: 2 s, the TV stopped (same commit);
+  the cast list searches as long as it is open, hidden devices stay hidden under both names, no search by itself
+  with *Discover cast devices* off, the casting screen on the window background with the file name, the subtitles
+  button kept while casting (`59935ee51d`). Checked with the fakes: start, pause, resume, seek, volume, back here,
+  a playlist to its end (both films to their last picture), quit; DLNA errors 716 (*couldn't read*), the TV
+  stopping by itself (*stopped playing*), with *Try again* / *Play here*.
+- 🟢 Memory over 20 cast / back rounds (fake Chromecast, 70-min film, hidden desktop): private 286 → 290 MB,
+  threads 242–246, handles 1,510–1,530, the time going on each way; a Hebrew subtitle file burnt into the cast in
+  the right order (fake Chromecast's stream checked), VLC 1.2 cores while converting 1080p with subtitles; the
+  panel and the casting card in light, Hebrew (dark) and zoom 1.5 and 2.
+- 🟡 DLNA and live channels (fake TV, Pluto TV): no crash, zapping works, but a channel's picture restarting just
+  after it starts makes the TV get a new stream 3–5 s after the first (two `SetAVTransportURI` per channel), and a
+  cast started on a channel already playing went out with the sound only. The DLNA output needs the Chromecast's
+  hold-again (`1880587aa0`): not done, no build was possible (Docker stopped for the disk clean-up).
+- ⬜ the owner's test TV not re-checked on this branch: the test copy (`qapp`) has no firewall rule, and casting would
+  have shown the owner Windows' administrator prompt. Last real-TV check: build 193.
+- 🟡 A TV that keeps its connection but stops answering (the fake's *off* mode) is noticed only after libupnp's
+  30 s timeouts (twice), and a quit then waits for the call in flight: a limit of libupnp's blocking SOAP calls.
 - 🟢 A *TV compatibility* wiki page fed by the reports (docs/wiki/TV-Compatibility.md, and the issue form
   `.github/ISSUE_TEMPLATE/tv_report.yml` it links to)
 
@@ -896,13 +1259,23 @@ and an accepted request made the TV fail after a pause in a test.
   to edit its bars in place
 - 🟢 Pixel check of all 103 frames (§11): the two hover states (177:98, 2151:9673) in Windows Sandbox, where real
   mouse input stays inside it: the button's hover box 30 x 32 at white 6 %, the preview's time 15 px
-- ⚪ Subtitle cues drawn on the seek bar
-- ⚪ A *What's new* card after an update
-- ⚪ The accent following the Windows accent colour (an option)
+- 🟢 Subtitle cues drawn on the seek bar: the lines of the subtitle file shown (added, found next to the video,
+  downloaded), `#6B6B6B` dark / `#5A5A59` light, 4 px high in the middle of the bar, under the played fill, joined
+  under 2 px, painted once per width; the line at the hovered time in the frame preview; Settings, Subtitles,
+  Timing *Show subtitle lines on the seek bar* (`qt-seek-subtitle-cues`, live). Embedded text tracks: not drawn
+  (VLC 4 reads their lines only as they play) · in the app ⏳
+- 🟢 A *What's new* card after an update: the first start of a new version (installer, small update, a portable
+  copy that took an older one's settings) shows the bold headlines of its *Added*, *Changed* and *Fixed* in
+  CHANGELOG.md (carried in the resources), with *Full changelog*; once a version (`redesign/whats-new-seen`), not
+  on a new install (the welcome), after the film when VLC opened with one; Settings, General, *Show what's new
+  after an update* (on). The notes stay in English · in the app ⏳
+- 🟢 The accent following the Windows accent colour (an option): *Follow the Windows accent color* under the
+  swatches in Settings > Appearance (`redesign/accent` = `system`), followed live, made readable (§6 Accents) · in the app ⏳
 
 ### 8.9 Quality and hardware
 
-- 🟡 Code-signed builds (decision 2: SignPath Foundation, free for open source): the CI jobs, the artifact
+- ⏸️ Code-signed builds — **waiting for SignPath's approval (2026-10-30): nothing signed until then**; README, wiki and the policy say the
+  releases are not code-signed (decision 2: SignPath Foundation, free for open source): the CI jobs, the artifact
   configurations, `CODE_SIGNING_POLICY.md` and the steps (docs/code-signing.md) are ready, and every binary carries
   VLC Redesign's name and version, and the two features that go online are chosen at install (or at the first
   start of a portable copy) with the policy linked; waiting for the user's application to SignPath
@@ -911,7 +1284,11 @@ and an accepted request made the TV fail after a pause in a test.
 - 🔴 Intel graphics, older PCs, Windows 10 on real hardware, high-DPI multi-monitor (2026-10-24: the app drawn at
   125, 150, 175 and 200 % has the layout of 100 % on every page checked, with sharp text, and its caption buttons
   and top edge answer Windows where they are drawn; still to do: monitors of different scales, a real one above 100 %)
-- ⚪ Our VLC core fixes (pipes, freezes, filters, conversion, casting) offered to VideoLAN
+- 🟡 Our VLC core fixes (pipes, freezes, filters, conversion, casting) offered to VideoLAN: prepared, waiting for
+  the owner (2026-10-28): 66 patches on VideoLAN's `master` (0c23b0d4b1) in `~\source\vlc-redesign-upstream\patches`,
+  one fix each in VLC's commit style, applying as a series (all but four alone too) and building for win64; the
+  README there lists each bug, how to reproduce it and the risk, the redesign-only and mixed commits left out, and
+  the merge request steps on code.videolan.org. Nothing sent
 
 ### 8.10 Release checklist
 
@@ -924,10 +1301,12 @@ and an accepted request made the TV fail after a pause in a test.
 - 🟢 Small updates from 0.2.4, 0.2.5 and 0.2.6 built from the release package (2026-10-25, build 203): 21.8 MB each
   (the 72 new translation files go whole), each applied to its old release and every one of the 524 files checked
   against the package; the check itself had to learn to make the new `locale\` folder
-- 🟡 Every fixed issue answered with the release link (#5 and #6, 2026-10-25); the announcement waits for
-  Discussions to be turned on (a setting of the owner)
+- 🟡 Every fixed issue answered with the release link (#5 and #6, 2026-10-25). Discussions were turned on
+  2026-10-28 (with the Ideas category, where *Suggest an idea* now opens a new discussion). The announcement is
+  posted with the next release. Also on 2026-10-28: the SignPath application was sent by the owner, and Weblate's
+  Libre plan is pending approval.
 
-Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 91 🟢, 5 🟡, 1 🔴 (97), of which 5 🟢 are
+Counted for the dashboard: 8.2 to 8.10, one line each, ⚪ excluded: 92 🟢, 5 🟡, 1 🔴 (98), of which 6 🟢 are
 in the app ⏳. The 🟡 and 🔴 left need the upload (CI, the announcement, the replies), SignPath, or hardware not here.
 Languages (§12) and the community (§13) have bars of their own.
 
@@ -937,26 +1316,129 @@ Tracks with checklists; a version number comes with the first published build.
 
 ### Linux
 
+- 🟢 **Released with 0.4.0** (2026-10-30), x86_64 and ARM64: the .deb (155 MB), .rpm (156 MB), AppImage (166 MB,
+  `.zsync`), tar.xz (126 MB) and the Live TV packages, `SHA256SUMS-linux-x86_64.txt` and `-aarch64.txt`; ARM64 about
+  the same sizes. Tested in containers on 7 distributions and by GitHub's x86_64 and ARM64 runners (apt next to the
+  system VLC, the AppImage, the .rpm in Fedora, a clip played). Not in it: the Flatpak, an updater in the app, tests
+  on real desktops by hand
 - 🟢 Built and smoke-tested once before the Windows work (Docker, X11 and Wayland; `.specs/features/redesign/evidence/`)
-- 🔴 Docker build on Ubuntu 22.04 with Qt 6.8, in CI
-- 🔴 Packages: AppImage, Flatpak (Flathub), .deb, .rpm, .tar.gz
+- 🟢 The current code builds in Docker (Ubuntu 24.04, Qt 6.8.3, `linux-qt68.sh`) with no warning from the
+  redesign's code (2026-10-28); `linux-bundle.sh` makes a self-contained tarball, `linux-wslg.sh` runs it through WSLg
+- 🟢 Every player-bar control (59) put in the bar, shown and clicked during playback, on X11 through WSLg with the
+  GPU (D3D12): no QML warning; zoom list and theme of the widget dialogs fixed
+- 🟡 Video on X11 needs `--gl=glx` in the Docker container through WSLg: EGL finds no DRM device there and draws
+  black (upstream code; a PC with /dev/dri uses EGL)
+- 🟢 Onboarding, library (a folder indexed, thumbnails), dialogs, Settings, effects, queue, fullscreen, dark/light,
+  right to left and 1.5× scale shown through WSLg with no QML warning; idle CPU 0.0 %, paused 3.5 %
+- 🟢 VA-API on Intel Iris Xe (Ubuntu 24.04 server, tarball): H.264, HEVC 8/10-bit, VP9 0/2 decode in hardware,
+  0.3–0.7 s of CPU for 20 s of 4K instead of 5–19 s; AV1 by VA-API crashed inside FFmpeg 6.1.1 of Ubuntu (its own
+  `ffmpeg -hwaccel vaapi` too): below libavcodec 61 dav1d decodes AV1 now, every AV1 file plays
+- 🟢 Memory: pages and panels opened 77 times, flat (303→308 MB); switching files grew 90 MB a minute (glibc arenas
+  per thread), fixed in `bin/vlc.c` (two arenas): 30 min of files, panels and pages stay near 480–510 MB
+- 🟢 Wayland (headless Weston, native client, Qt's Wayland compositor for the video): play, pause, seek, quit, no
+  QML warning. The video on Wayland goes through the software `wl_shm` output with Mesa (Intel, AMD) even with a
+  GPU: VLC's EGL output needs `EGL_KHR_display_reference`, which Mesa 25.2 lacks (seen on WSLg with the GPU).
+  `wl_shm` drew the picture from the left with no bars, the desktop showing through on the right: fixed, the
+  picture is centred in a subsurface over black (Weston and WSLg, fullscreen, windowed, next file)
+- 🟢 Fullscreen on headless Weston keeps the window where it was and runs off the screen; not VLC: it asks for
+  the right geometry and buffer (traced), and a plain Qt 6.8 window does the same there. To see on a real desktop
+- 🟢 X11 CSD (openbox): drag the title bar to move, resize from each edge and corner, double-click to maximize
+  and restore (an earlier "moved instead of resized" was the test clicking a hidden helper window)
+- 🟡 Xvfb (no DRI3) can't show VA-API pictures directly: copied to software (1080p 84 % CPU with llvmpipe)
+- 🟡 Docker build in CI: `.github/workflows/build-linux.yml` builds on `ubuntu-24.04` (x86_64) and
+  `ubuntu-24.04-arm` (aarch64), makes the bundle and the packages, then on a clean runner installs the .deb with apt
+  next to the distribution's `vlc`, runs `vlc-redesign --version` and plays a clip to its end headless (dummy
+  interface, video and audio), does the same with the AppImage (`--appimage-extract-and-run`) and with the .rpm in
+  Fedora 44 (dnf), and removes the .deb. Runs once the branch is pushed; `linux-qt68.Dockerfile` takes Qt's ARM64
+  build (`linux_gcc_arm64`) on aarch64, `linux.sh` has `DEPS_ONLY=1`
+- 🟡 Packages (2026-10-28, branch `feature/linux-pkg`): `linux-packages.sh [--arch x86_64|aarch64]` makes from the
+  bundle `vlc-redesign-X.Y.Z-ARCH.AppImage` (+ `.zsync`), `vlc-redesign_X.Y.Z_amd64.deb`,
+  `vlc-redesign-X.Y.Z-1.x86_64.rpm`, `vlc-redesign-X.Y.Z-linux-ARCH.tar.xz` and `SHA256SUMS-linux-ARCH.txt`, with
+  appimagetool 1.9.1 (type2 runtime 20251108) and nfpm 2.47.0, downloaded and checked by SHA-256. The .deb and .rpm
+  put VLC in `/opt/vlc-redesign` and the command `/usr/bin/vlc-redesign`, the desktop entry, metainfo and icons as
+  `org.kuchisofts.VLCRedesign`: no file of the distribution's `vlc`. Dependencies from the libraries the bundle
+  takes from the system (glibc 2.38, libstdc++ of GCC 13, GL/EGL/GBM/DRM, VA-API, VDPAU, udev, systemd); the rpm
+  asks for sonames and provides nothing (its bundled Qt doesn't satisfy other packages). x86_64 made and checked
+  here (dpkg-deb, rpm in Fedora, the AppImage unpacked): AppImage 165 MB, .deb 155 MB, .rpm 155 MB, tarball 126 MB.
+  2026-10-29 (`feature/linux-final`): Live TV is the package `vlc-redesign-livetv` (recommended, removable alone),
+  ca-certificates and (rpm) hicolor-icon-theme are dependencies, libwayland comes from the system. Installed, run
+  and removed in clean containers (below). 🔴 ARM64 built on GitHub (the workflow runs after the push)
+- 🟡 Flatpak: `flatpak/org.kuchisofts.VLCRedesign.yml` written by the script (KDE 6.8 runtime; libebml, libmatroska,
+  libdvbpsi, taglib, medialibrary of the contribs; network, Wayland/X11, PulseAudio, DRI, the video and music
+  folders, `/media`, screen saver and MPRIS only). 🟢 `linux-flatpak.sh` builds the one-file bundle from the
+  tarball (2026-10-29), installed and toured in a container; its plugin cache made with OSTree's file times (it
+  was stale at every start). Its runtime pulls `org.freedesktop.Platform.GL.default` 24.08, now marked
+  end-of-life: KDE 6.9 or later before Flathub. 🔴 Flathub
+- 🟢 glibc 2.38 or later (Ubuntu 24.04, Debian 13, Fedora 39): built on Ubuntu 24.04. On Ubuntu 22.04 and Debian 12
+  apt refuses the .deb (libc6 >= 2.38, libstdc++6 >= 13) and the folder and AppImage launcher says "VLC Redesign
+  needs glibc 2.38 or later … This system has glibc 2.35" (checked 2026-10-29); no build on an older base planned
 - 🔴 X11, Wayland; PipeWire, PulseAudio; VA-API, VDPAU; Intel, AMD, NVIDIA
-- 🔴 Updates (AppImage update information, Flatpak), file associations (.desktop), casting firewall notes
-- 🔴 Tested on Ubuntu, Fedora, Debian, Arch (VMs and a real PC)
+- 🟡 Updates: the AppImage carries `gh-releases-zsync|KuchiSofts|vlc-redesign|latest|vlc-redesign-*-ARCH.AppImage.zsync`
+  (AppImageUpdate); file associations: the desktop entry has VLC's MIME types. 🔴 The in-app updater on Linux,
+  casting firewall notes
+- 🟡 Tested on Ubuntu, Fedora, Debian, Arch: 🟢 clean containers (2026-10-29, `linux-pkg-test.sh`): .deb on
+  Ubuntu 24.04 and 26.04 and Debian 13, .rpm on Fedora 41 and 43, the AppImage on Arch, the Flatpak; install,
+  libraries, UI tour on Xvfb (borders, Pluto TV, Hebrew right to left, the *· AppImage* badge), headless Weston
+  13/14/15, Live TV removed alone, nothing left after removal: every check passed
+  ([table](qa/0.4.0-ui-audit.md#linux-x86_64-packages-branch-featurelinux-final-2026-10-29)). Weston 14 and 15
+  hung VLC at the end of every video (`wl_shm` waited for a buffer Weston keeps until the surface goes): fixed
+  (`befa6802a3`). 🔴 VMs and a real PC (GPU, PipeWire, a desktop)
 - 🔴 Pixel check of every frame
 
 ### macOS
 
-- 🔴 Native build on Apple Silicon and Intel (GitHub-hosted runners), two .dmg or one universal
-- 🔴 Signed and notarized (decision 3)
-- 🔴 Menu bar, media keys, Now Playing, VideoToolbox, updates
+Started 2026-10-28 (branch `feature/macos`); the analysis, decisions and what is left:
+[`extras/juxtopposed/macos/README.md`](../extras/juxtopposed/macos/README.md). Built and launched on GitHub's Macs
+(2026-10-28).
+
+- 🟢 **Released with 0.4.0** (2026-10-30): `vlc-redesign-0.4.0-macos-arm64.dmg` and `-macos-x86_64.dmg`, signed ad
+  hoc. The launch test passed on GitHub's Macs, both architectures: every binary signed, icon, 100 translations, the
+  About badge, the designer's credit, Live TV loaded, headless playback to the end, the Qt interface 10 s playing a
+  clip, the unified title bar, clean quit, no QML warning, no crash report. 🔴 Never run by hand on a Mac yet
+- 🟢 Native build on Apple Silicon and Intel: `extras/juxtopposed/macos-build.sh` (VideoLAN's prebuilt macOS
+  contribs of the newest upstream contrib commit, the official Qt 6.8.3 by aqtinstall — the contribs of macOS have
+  no Qt —, `--disable-macosx --enable-qt` so the Qt interface is the only one, `VLC Redesign.app` with
+  `macdeployqt`, every library found inside the bundle); two disk images, not one universal app (contribs per
+  architecture; `lipo` later if wanted). The workflow `build-macos.yml` (`macos-14` arm64, `macos-15-intel`
+  x86_64: GitHub retired `macos-13`) builds both on every pull request, uploads the `.dmg` and runs
+  `ci/macos-smoke.sh` (the bundle's signatures, icon, translations, Live TV plugin, About badge and credits;
+  headless playback, the Qt interface and its unified title bar, no crash report, no QML warning; screenshots light,
+  dark and About); free on the public repository, by hand only (Apple Silicon, 40 minutes) on a private one;
+  `continue-on-error` until the 0.4.0 checks pass once
+- 🟢 Bundle `org.kuchisofts.vlcredesign` (its settings, library and caches apart from VLC's), macOS 12+, upstream's
+  file types imported with the rank *Alternate*, the icon from the designer's logo (`macos/AppIcon.icns`), the Live TV
+  add-on (Settings turns it off: a disk image has no components), the translations, the texts and licences
+- 🔴 Signed and notarized (decision 3): ad hoc until then (Gatekeeper: *Open Anyway* in Privacy & Security); the
+  script already signs with the hardened runtime and notarizes when given a Developer ID
+- 🟡 Menu bar (a minimal native one: About, Preferences, Quit, open, help), a unified title bar (the traffic lights
+  in the redesign's top bar, `macos_titlebar.cpp`), ⌘
+  hotkeys reach VLC as `Command+`, the CJK fonts of the interface language, the updater shows the release page and
+  only for a release with this Mac's disk image (all in code, not run on a Mac); 🔴 media keys, Now Playing,
+  VideoToolbox and the video in the window checked, the dock menu, in-app updates
 - 🔴 Pixel check of every frame
 
 ### Windows on ARM64
 
-- 🔴 Build with VLC's ARM64 toolchain and contribs
-- 🔴 Installer, zip and updates for ARM64
-- 🔴 Tested on a Snapdragon PC or an ARM64 VM
+- 🔴 **Not in 0.4.0, moved to the next version**: in the 0.4.0 tests on a real ARM64 Windows runner it opened its
+  window and stopped a few seconds later (a crash in the Qt interface after the media library started), and one of
+  the installer's 400 binaries was not ARM64. Both to fix before a release; until then the x64 build runs on
+  Windows 11 ARM64 under emulation
+- 🟢 Build with VLC's ARM64 toolchain and contribs (2026-10-28, branch `feature/winarm64`):
+  `win64-docker.ps1 -Arch aarch64`, llvm-mingw `vlc-debian-llvm-ucrt:20260611225331` (`winarm64.Dockerfile`) with
+  the prebuilt contribs of upstream's `win64-arm-llvm` job, UCRT, `-S 0x0A000006`; volume `vlc-winarm64-build`,
+  package in `~\source\vlc-redesign-build-arm64`; about 9 minutes. The redesign's code needed no change; every
+  binary is ARM64 (`0xAA64`). No OpenGL plugins (none in the ARM64 contribs; Direct3D 11 draws the video)
+- 🟡 Installer, zip and updates for ARM64: `make-release.ps1 -Arch aarch64` makes the files of 13.5 and
+  `-winarm64-delta-from-` small updates, one `SHA256SUMS.txt` for both architectures; the `.iss` with `/DArm64`
+  (`ArchitecturesAllowed=arm64`, the same AppId); the updater takes the files of its own architecture only. Not run
+  on ARM64 Windows yet; the package has no plugin cache when made here (made at the first start, or by Setup for an
+  install for everyone)
+- 🟢 Checked statically (`ci/pe-check.py`, 2026-10-29): every binary ARM64, every import in the package or in
+  Windows, Qt and its QML built in, the About badge, the Live TV add-on, the translations, the credits; the
+  Windows build runs it on the ARM64 package
+- 🔴 Tested on ARM64 Windows: `ci/arm64-smoke.ps1` (binaries, plugin cache, launch test) and
+  `ci/arm64-install-test.ps1` (the installer installed, the smoke test on it, screenshots, uninstall) run in the
+  Windows build workflow on `windows-11-arm`, public repository only: at the upload
 
 ### Android (phones, tablets, TV)
 
@@ -969,6 +1451,36 @@ phone and TV layouts need frames of their own (decision 6).
 - 🔴 Design tokens from the hub; the player: control bar, seek previews, volume, gestures
 - 🔴 Library, queue, playlists, settings; themes; 9 accents
 - 🔴 Casting with the desktop's fixes; subtitles
+  - Reviewed 2026-10-29 (code only, no phone): the app builds against libvlc 3.7.7, so the desktop's
+    `renderer-*` variables do not exist there. To fix in the phone session, by priority:
+    1. **High**: stopping a cast never brings the video back to the phone (`PlaybackService.setRenderer()` tests
+       `wasOnRenderer && !hasRenderer()` before `setRenderer(item)`: always false).
+    2. **High**: no message when a cast fails (device off, unreachable, format refused): only the generic
+       *Invalid location* path. A cast state (connecting / playing / failed + why) with *Try again* / *Play here*.
+    3. **High**: the same TV found by two discoveries is listed twice (`RendererItem.equals` compares the native
+       object): de-duplicate by name and type in `RendererDelegate`.
+    4. **High**: discovery runs for the whole process while the network is up, in the background too, and `stop()`
+       never `release()`s the discoverers (a leak per network change): scan only while a picker or the player
+       shows, release on stop.
+    5. **Medium**: the device playing can vanish unnoticed (`ItemDeleted`, network loss) with no message.
+    6. **Medium**: the cast button is hidden until a device is found; no scanning state, no empty state.
+    7. **Medium**: no *Sound only*: `RendererItem.flags` has no getter (add `canVideo()`), DLNA TVs get the
+       "unknown" icon.
+    8. **Medium**: picker rows: highlight not reset on recycled rows, `renderers[position]` vs `dataset` size, only
+       the name clickable, *Connected* shown before any connection, one device casts at once with no picker.
+    9. **Medium** (to check on the phone): `:no-sout-chromecast-video` is added to every media in
+       `PlaylistManager`, whatever the *Audio only* setting.
+    10. **Medium**: passthrough default `false` for the instance, `true` for the media; VLC 4 builds skip the
+        casting options.
+    11. **Medium**: the casting screen (`player_remote_control.xml`) shows a cone only: no device name, no *Stop
+        casting*; volume keys change the phone's volume, not the TV's.
+    12. **Low**: subtitles blocked while casting (the Chromecast output can burn them in); hard-coded
+        *Disabled* / *Enabled* and a debug toast; left/right instead of start/end in the cast layouts;
+        `colorPrimary` instead of the accent; a fixed `minWidth="384dp"` dialog.
+  - UI parity: none yet. The phone has the old *Displays* dialog (names, a Chromecast or unknown icon, a
+    *Disconnect* button); the desktop panel (*Cast to*, scanning dot, *This computer* row, TV / music icons,
+    *Sound only*, check mark, *Connecting…*, hide device, empty states, the casting card with *Stop casting*,
+    *Try again*, *Play here*) is to be built as a redesign bottom sheet with the desktop's English texts.
 - 🔴 Android TV / Google TV layout (remote control)
 - 🔴 APK and AAB on GitHub, then F-Droid; Google Play only after decision 4
 
@@ -1004,7 +1516,7 @@ author, since 2026-10-13), is ahead on:
 | Classic dialogs restyled with one Qt style hook                     | Yes          | §8.6 (done)              |
 | Redesigned Go to time, statistics, folder info, plugins list        | Yes          | §8.6 (idea)              |
 | Geometry, overlay, advanced video filters in the panel              | Yes          | §8.8                     |
-| Subtitle cues on the seek bar                                       | Nice to have | §8.8 (idea)              |
+| Subtitle cues on the seek bar                                       | Nice to have | §8.8 (built)             |
 | About 85 automated QML and C++ tests                                | Yes          | §8.9                     |
 
 We are ahead on: the installer, delta updates with rollback, casting (a real TV), Windows integration, surround
@@ -1028,7 +1540,7 @@ Text matching needs Inter with the same metrics (distance-field text, no hinting
 - 🟢 Text positions and sizes measured in many other frames (cited in the code)
 - 🟢 Captured at 1:1 and compared (tiles of 32 px, best shift of up to 4 px, a pixel differs above 24 levels), 2026-10-23:
   the 18 Settings frames, the onboarding (7 frames), Keyboard Shortcuts, Open network stream and New playlist;
-  from the demo library (`C:\Users\ChenB\source\vlc-redesign-qa\media\figma`: the media, covers, lengths and playback states of the frames), Home,
+  from the demo library (`<the QA folder>\media\figma`: the media, covers, lengths and playback states of the frames), Home,
   the S01 folder (grid, list, with the mini player), the player (alone, with the library next to it, light, without
   its bars) and the music player (alone, with its folder); Add Subtitles (to a folder, to a file), Customize
   Player, and the file, folder and playlist context menus; 26 components (menus, sort and view options, settings
@@ -1055,7 +1567,7 @@ Text matching needs Inter with the same metrics (distance-field text, no hinting
     are listed in the rows of 1919:8707 (FileRow). Before the first search VLC asks for the account the service
     requires (API key, username, password), a row the design does not draw.
   - Customize Player: the other eight frames are steps of a drag in the editor (the bars as the user moves items).
-- 🟢 Figma references exported: all 103 frames at 1:1 (`C:\Users\ChenB\source\vlc-redesign-qa\qa\figma`; the oversized component sheets in tiles
+- 🟢 Figma references exported: all 103 frames at 1:1 (`<the QA folder>\qa\figma`; the oversized component sheets in tiles
   joined pixel for pixel)
 - 🟢 Capture scripts that drive the app into each frame's state: settings, dialogs, onboarding, library and player
   (from the demo library and its playback states), the components, and the hover states in Windows Sandbox
@@ -1176,12 +1688,32 @@ vlc-redesign-tv/               Tizen web app, our own code
 accents, fonts, sizes, radii), icons as SVG, the fonts (OFL). Exported once and checked by the pixel check; desktop CI
 compares `VLCStyle.qml` with them; Android, iOS and the TV generate their own files from them; a workflow opens a pull
 request in each repository when they change. They have their own version (`design-1.0`), named in every release.
+🟡 In place since 2026-10-28 ([`design/README.md`](../design/README.md)): `tokens.json` (203 tokens, 138 of them
+checked against 205 places in the code by `design/tools/check_qml.py`, the *Design tokens* job of
+`build-windows.yml`), `icons/` (677 files: the 116 glyphs of the Icon set as PNG per state with `@2x` and their
+SVG sources, the other raster pieces and their SVGs, the SVG icons, the two-tone menu icons, `index.json` and a
+preview), `fonts/` (Inter modified, DM Mono, licenses), `build/` (`tokens.css`, `colors.xml`, `Tokens.swift` from
+`design/tools/export.py`). 🟢 Every raster has its SVG from Figma (2026-10-29): the 224 glyph states, cut from
+Figma's SVG export of the Icon set by `design/tools/icon_svgs.py` and compared with their PNG in
+[`design/tools/icon_svgs_report.md`](../design/tools/icon_svgs_report.md) (51 exact, 131 the same drawing, 42
+close), and the 41 other pieces (`design/tools/raster_svgs.json`). The app draws the SVGs at the size shown times the
+scale and the zoom (QML, menus, window buttons, message boxes; checked at 100/150/200 % and zoom 3), the PNGs stay
+as a fallback; the app icon is a 10-size `.ico` from the vector. The sync workflow comes with the first sister
+repository.
 
 ### 13.3 Every repository shows every version
 
 - `platforms.yml` in the hub is the single source: name, status, latest version, date, download link, page.
-- A workflow renders it into the hub's README, the website, and a pull request in each repository that replaces the
-  block between `<!-- platforms:start -->` and `<!-- platforms:end -->` at the top of its README.
+- `extras/juxtopposed/platforms/render.py` (Python, standard library) renders it: the block between
+  `<!-- platforms:start -->` and `<!-- platforms:end -->` at the top of the README (the bar, and the table in a
+  *details*), `site/platforms.json` and the platform list and download box of `site/index.html` (so the page works
+  without JavaScript), `--also-on <id>` for the release notes, `--check` for pull requests, `--build DIR` for Pages.
+- The workflow `.github/workflows/platforms.yml` does it on `main` (commits the rendered files back when they
+  changed), checks pull requests, and deploys `site/` to GitHub Pages; a pull request in each sister repository
+  that replaces the same block comes when the first one exists.
+- 🟢 Built 2026-10-28 (Windows 0.3.1 released, 0.4.0 next; Linux in progress; macOS and Windows ARM64 planned;
+  Android and Samsung TV research; iPhone/iPad later). After each release: set `version`, `date` and `next` of
+  Windows and run the renderer (`release-notes.py` reminds it).
 - The platform bar at the top of every README:
 
 ```
@@ -1197,9 +1729,11 @@ Windows 0.2.6 · Linux soon · macOS soon · Android soon · Samsung TV soon · 
 | Samsung TV   | ⚪ research   | —      | coming soon            |
 | iPhone/iPad  | ⚪ later      | —      | coming soon            |
 
-- Release notes end with *Also on: …* from the same file.
+- Release notes end with *Also on: …* from the same file (🟢 `release-notes.py` imports the renderer).
 - In the app, About and the update card show *Also on: …* from a copy of `platforms.yml` built into each release:
-  nothing is fetched for it.
+  nothing is fetched for it. 🟡 About: one muted line under *Built on VLC media player by…*
+  (`RedesignUpdater.alsoOn`, from `site/platforms.json` in `assets.qrc` as `:/redesign/platforms.json`; About is
+  outside the Figma file, §5.15). The update card keeps its three lines for now.
 
 ### 13.4 Versions
 
@@ -1213,9 +1747,9 @@ Windows 0.2.6 · Linux soon · macOS soon · Android soon · Samsung TV soon · 
 
 | Platform      | Files                                                                                         |
 |---------------|-----------------------------------------------------------------------------------------------|
-| Windows       | `vlc-redesign-X.Y.Z-win64-setup.exe`, `vlc-redesign-X.Y.Z-win64.zip`, `.vrdelta` small updates, `SHA256SUMS.txt` |
+| Windows       | `vlc-redesign-X.Y.Z-win64-setup.exe`, `vlc-redesign-X.Y.Z-win64.zip`, `.vrdelta` small updates, `SHA256SUMS.txt`, `SHA256SUMS.txt.sig` |
 | Windows ARM64 | `vlc-redesign-X.Y.Z-winarm64-setup.exe`, `vlc-redesign-X.Y.Z-winarm64.zip`                    |
-| Linux         | `.AppImage`, `.flatpak` (and Flathub), `.deb`, `.rpm`, `.tar.gz`                              |
+| Linux         | `vlc-redesign-X.Y.Z-x86_64.AppImage` (+ `.zsync`), `vlc-redesign_X.Y.Z_amd64.deb`, `vlc-redesign-X.Y.Z-1.x86_64.rpm`, `vlc-redesign-X.Y.Z-linux-x86_64.tar.xz`, `SHA256SUMS-linux-x86_64.txt`; the same for `aarch64` (`arm64` .deb); Flathub |
 | macOS         | `vlc-redesign-X.Y.Z-macos-arm64.dmg`, `vlc-redesign-X.Y.Z-macos-x86_64.dmg`                   |
 | Android       | `vlc-redesign-X.Y.Z-android-arm64.apk` (and armv7, x86_64), `.aab`                            |
 | Samsung TV    | `vlc-redesign-tv-X.Y.Z.wgt`                                                                   |
@@ -1314,6 +1848,12 @@ Saved replies keep answers consistent; duplicates are linked to the first report
   attached by the user, from *Settings → Global → Diagnostics → Save a log*).
 - A card shows exactly what goes into the link, with *Copy* and *Open GitHub*; the user submits on GitHub; the app
   sends nothing itself. The link stays under 8,000 characters.
+- 🟡 Done 2026-10-28 (branch `feature/feedback`, not built yet): `util/redesign_feedback.cpp` (singleton
+  `RedesignFeedback`), the card `RedesignReportDialog.qml` (opened from `SetupDialogs.qml`), the two links in About.
+  Until Discussions are on, *Suggest an idea* opens `issues/new?template=feature_request.yml` (one constant,
+  `ideaForm`); the form got an optional `version` field and the bug form an `environment` field (System
+  information) that carries the whole text. The log is under *Settings → General → Diagnostics* (the sidebar has
+  no *Global*).
 
 ### 13.13 Wiki
 
@@ -1357,15 +1897,17 @@ In an organization, a `.github` repository gives every repository these files by
 - 🟢 `ROADMAP.md` with 👍 voting
 - 🔴 Hub: the existing repository or an organization (decision 1)
 - 🟢 `platforms.yml` and the platform bar in the README (2026-10-25; the sister repositories read the same file)
-- 🔴 Website on GitHub Pages with OS detection
-- 🔴 Shared design assets in `design/`
+- 🟡 Website on GitHub Pages with OS detection (`site/`, 2026-10-28; the owner enables Pages: Settings → Pages →
+  Source: GitHub Actions)
+- 🟡 Shared design assets in `design/` (2026-10-28: tokens, icons and their SVG sources, fonts, generated
+  CSS/Android/Swift, CI check; left: the sync workflow to the sister repositories)
 - 🔴 Discussions on, five categories and their forms
 - 🟢 Issue forms: design mismatch, TV report, translation (2026-10-25)
 - 🟢 `labels.yml` and its sync workflow (ran on the 0.3.0 push)
 - 🔴 Roadmap board across repositories, with the votes workflow
 - 🟢 `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, pull request template (2026-10-25; saved replies are a
   GitHub setting of the owner's account)
-- 🔴 In-app *Suggest an idea* / *Report a problem*
+- 🟡 In-app *Suggest an idea* / *Report a problem* (2026-10-28, branch `feature/feedback`, to build and test)
 - 🟢 `docs/wiki/` with its *Design check* and *TV compatibility* pages, and `wiki-sync.yml` (ran on the 0.3.0 push)
 - 🟡 Release notes script (`extras/juxtopposed/release/release-notes.py`, 2026-10-25); the pixel-check job with
   automatic screenshots needs a Windows runner with a display: later
@@ -1412,7 +1954,8 @@ secrets kept in GitHub, not on one PC; a second maintainer with release rights.
 Mitigation: the dated inventory, reference exports in the repository, the exported design assets.
 
 **Update security.** A download is tampered with.
-Mitigation: HTTPS from GitHub only and SHA-256 checks (done); code signing (decision 2); `SECURITY.md`.
+Mitigation: HTTPS from GitHub only and SHA-256 checks (done); the checksums signed by the project's release key
+and checked by the app (done, from 0.4.0); code signing (decision 2); `SECURITY.md`.
 
 ## 16. Definition of done
 

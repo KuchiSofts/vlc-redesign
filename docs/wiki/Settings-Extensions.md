@@ -25,7 +25,7 @@ The section is the list of the design, with a search field and three buttons und
 | Control | Default | What it does |
 |---|---|---|
 | **Show installed add-ons only** | Toggle. Default: off. | Shows only the installed add-ons in the list above. It only filters the list of the page and is not saved as a setting. |
-| **Plugins and extensions** | Button **Open**. | Opens VLC's classic *Plugins and extensions* window, which lists the plugins (modules) of this VLC and the extensions, and can reload the extensions. |
+| **Plugins and extensions** | Button **Open**. | Opens the *Plugins and extensions* dialog, drawn in the redesign's look since 0.4.0. **Plugins** lists the modules of this VLC, searchable by name or capability and sorted by name, capability or score (a module's description shows on hover); **Extensions** lists the Lua extensions with their version, author and link, with **Reload extensions**. |
 
 ## Good to know
 

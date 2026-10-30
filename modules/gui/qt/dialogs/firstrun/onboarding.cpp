@@ -9,6 +9,7 @@
 
 #include "onboarding.hpp"
 #include "dialogs/preferences/interface_language.hpp"
+#include "dialogs/toolbar/profile_settings.hpp"
 
 #include "maininterface/mainctx.hpp"
 #include "util/language_change.hpp"
@@ -300,8 +301,7 @@ bool OnboardingController::commit()
     const bool hadTheme = settings->contains("MainWindow/color-scheme-index");
 
     settings->setValue("MainWindow/color-scheme-index", themeIndex());
-    settings->sync();
-    if (settings->status() != QSettings::NoError) {
+    if (!syncSettings(settings)) {
         if (hadTheme)
             settings->setValue("MainWindow/color-scheme-index", oldTheme);
         else
@@ -364,7 +364,12 @@ QVariantList OnboardingController::activeShortcuts() const
         {QT_TR_NOOP("Cycle Audio Track"), "key-audio-track", "b", nullptr, nullptr, nullptr, nullptr},
         {QT_TR_NOOP("Toggle Fullscreen"), "key-toggle-fullscreen", "f", nullptr, nullptr, nullptr, nullptr},
         {QT_TR_NOOP("Increase / Decrease Volume"), "key-nav-up", "Up", "key-nav-down", "Down", nullptr, nullptr},
+#ifdef __APPLE__
+        // (the interface's Ctrl+L is the Command key there)
+        {QT_TR_NOOP("Show / Hide Queue"), nullptr, nullptr, nullptr, nullptr, "q", "Command+l"},
+#else
         {QT_TR_NOOP("Show / Hide Queue"), nullptr, nullptr, nullptr, nullptr, "q", "Ctrl+L"},
+#endif
         {QT_TR_NOOP("Show / Hide File Browser"), nullptr, nullptr, nullptr, nullptr, "l", nullptr},
         {QT_TR_NOOP("Take a Snapshot"), "key-snapshot", "Shift+s", nullptr, nullptr, nullptr, nullptr},
         {QT_TR_NOOP("Record"), "key-record", "Shift+r", nullptr, nullptr, nullptr, nullptr},

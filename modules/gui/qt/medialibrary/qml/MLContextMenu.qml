@@ -265,7 +265,8 @@ Widgets.RedesignContextMenu {
 
     function deleteFileFromSource(dataList, options, indexes) {
         // asked even without the confirmations: the file is gone for good
-        let confirm = DialogsProvider.questionDialog(qsTr("Are you sure you want to delete this file?"), "", true);
+        let confirm = DialogsProvider.questionDialog(qsTr("Are you sure you want to delete this file?"),
+                                                     qsTr("Delete file"), true, qsTr("Delete"), qsTr("Cancel"));
 
         if (confirm) {
             model.deleteFileFromSource(indexes[0]);

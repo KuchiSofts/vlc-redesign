@@ -54,6 +54,7 @@
 #include "player/player_controller.hpp"
 #include "player/subtitle_providers.hpp"
 #include "util/http_request.hpp"
+#include "iptv/iptv_addon.hpp"
 #include "util/redesign_version.hpp"
 #include "util/subtitle_preferences.hpp"
 
@@ -245,6 +246,7 @@ struct Source
     QString name;     // the release, or the name of the file
     QString provider; // the service it was found on
     QString folder;
+    QString path;     // the local file, for whoever reads it again
 };
 
 QHash<QString, Source> &sources()
@@ -441,6 +443,15 @@ QVariantMap SubtitleFinder::externalSource(const char *trackId)
              { QStringLiteral("provider"), it->provider }, { QStringLiteral("folder"), it->folder } };
 }
 
+QString SubtitleFinder::externalPath(const char *trackId)
+{
+    const char *slash = trackId ? strchr(trackId, '/') : nullptr;
+    if (!slash)
+        return {};
+    const auto it = sources().constFind(QString::fromLatin1(trackId, slash - trackId));
+    return it != sources().constEnd() ? it->path : QString();
+}
+
 void SubtitleFinder::noteFile(const QString &mrl, const QString &kind, const QString &name,
                               const QString &provider)
 {
@@ -450,8 +461,9 @@ void SubtitleFinder::noteFile(const QString &mrl, const QString &kind, const QSt
     if (it != sources().constEnd() && it->kind == QLatin1String("online") && kind != QLatin1String("online"))
         return;
     const QUrl url(mrl);
-    const QString folder = url.isLocalFile() ? QFileInfo(url.toLocalFile()).absolutePath() : QString();
-    sources().insert(key, { kind, name, provider, folder });
+    const QString local = url.isLocalFile() ? url.toLocalFile() : QString();
+    const QString folder = local.isEmpty() ? QString() : QFileInfo(local).absolutePath();
+    sources().insert(key, { kind, name, provider, folder, local });
     if (finderInstance())
         emit finderInstance()->sourcesChanged();
 }
@@ -612,6 +624,13 @@ void SubtitleFinder::onStarted()
 {
     if (!m_player->hasVideoOutput())
         return; // music: no subtitles to look for
+    // a TV channel, or a programme of its archive (the subtitles stay as
+    // the channel has them), or another live stream: no film
+    if (IptvAddon::isTvUrl(m_player->getUrl().toString()))
+        return;
+    if (!m_player->getUrl().isLocalFile()
+        && (!m_player->getLength().valid() || m_player->getLength().toSecf() <= 0))
+        return;
     prepareMedia([this]() {
         const QStringList local = localLanguages();
         const QString primary = m_preferences->primary();
@@ -738,7 +757,7 @@ void SubtitleFinder::identify()
     const QStringList remembered = m_intf->mainSettings->value(matchKey(m_media.key)).toStringList();
     if (remembered.size() == 4 && remembered[0].startsWith(QLatin1String("tt")))
     {
-        m_match = { remembered[0], remembered[1], remembered[2].toInt(), remembered[3] == QLatin1String("series") };
+        m_match = { remembered[0], remembered[1], remembered[2].toInt(), remembered[3] == QLatin1String("series"), true };
         querySubtitles();
         return;
     }
@@ -964,6 +983,7 @@ void SubtitleFinder::onTitles(const QVariantList &candidates, bool forMedia,
     const bool wantSeries = m_media.season >= 0;
     double bestScore = -1e9;
     QVariantMap best;
+    bool bestStrong = false;
     for (const QVariant &c : candidates)
     {
         const QVariantMap entry = c.toMap();
@@ -982,6 +1002,7 @@ void SubtitleFinder::onTitles(const QVariantList &candidates, bool forMedia,
         {
             bestScore = score;
             best = entry;
+            bestStrong = strongTitle(similarity, year, series);
         }
     }
     if (best.isEmpty())
@@ -993,8 +1014,21 @@ void SubtitleFinder::onTitles(const QVariantList &candidates, bool forMedia,
         return;
     }
     m_match = { best.value(QStringLiteral("imdb")).toString(), best.value(QStringLiteral("label")).toString(),
-                best.value(QStringLiteral("year")).toInt(), best.value(QStringLiteral("series")).toBool() };
+                best.value(QStringLiteral("year")).toInt(), best.value(QStringLiteral("series")).toBool(), bestStrong };
     querySubtitles();
+}
+
+bool SubtitleFinder::strongTitle(double similarity, int year, bool series) const
+{
+    if (similarity < 0.999)
+        return false;
+    const bool yearsKnown = m_media.year > 0 && year > 0;
+    if (yearsKnown)
+        return std::abs(year - m_media.year) <= 1;
+    if (series && m_media.season >= 0 && m_media.episode >= 0)
+        return true;
+    // one word without a year ("silent", "home"): too many titles share it
+    return simplified(m_media.title).count(QLatin1Char(' ')) >= 1;
 }
 
 // Stremio's catalogue, when Wikidata doesn't know the title
@@ -1033,7 +1067,7 @@ void SubtitleFinder::searchCinemeta()
             if (score > bestScore)
             {
                 bestScore = score;
-                best = { id, name, year, series };
+                best = { id, name, year, series, strongTitle(similarity, year, series) };
             }
         }
         // (not identified: a file of a known release is found by its hash)
@@ -1049,9 +1083,10 @@ void SubtitleFinder::querySubtitles()
 {
     ++m_searchRevision;
     const quint64 revision = m_searchRevision;
-    msg_Dbg(m_intf, "online subtitles: \"%s\" is %s (%s), the hash %s",
+    msg_Dbg(m_intf, "online subtitles: \"%s\" is %s (%s%s), the hash %s",
             qtu(m_media.title), m_match.imdb.isEmpty() ? "unknown" : qtu(m_match.title),
             m_match.imdb.isEmpty() ? "-" : qtu(m_match.imdb),
+            m_match.imdb.isEmpty() ? "" : m_match.strong ? ", sure" : ", a guess: not loaded by itself",
             m_media.hash.isEmpty() ? "unknown" : qtu(m_media.hash));
     setState(Searching);
     m_found.clear();
@@ -1287,8 +1322,13 @@ QVariantMap SubtitleFinder::bestOfLearned(const QStringList &local) const
 QVariantMap SubtitleFinder::bestOf(const QString &language) const
 {
     for (const QVariant &r : m_results)
-        if (r.toMap().value(QStringLiteral("language")).toString() == language)
-            return r.toMap();
+    {
+        const QVariantMap map = r.toMap();
+        if (map.value(QStringLiteral("language")).toString() != language)
+            continue;
+        if (map.value(QStringLiteral("exact")).toBool() || m_match.strong)
+            return map;
+    }
     return {};
 }
 
@@ -1376,7 +1416,7 @@ void SubtitleFinder::useTitle(int index)
         return;
     const QVariantMap entry = m_titleResults[index].toMap();
     m_match = { entry.value(QStringLiteral("imdb")).toString(), entry.value(QStringLiteral("label")).toString(),
-                entry.value(QStringLiteral("year")).toInt(), entry.value(QStringLiteral("series")).toBool() };
+                entry.value(QStringLiteral("year")).toInt(), entry.value(QStringLiteral("series")).toBool(), true };
     // this file is that title from now on
     m_intf->mainSettings->setValue(matchKey(m_media.key),
                                    QStringList{ m_match.imdb, m_match.title, QString::number(m_match.year),
@@ -1580,10 +1620,11 @@ void SubtitleFinder::attach(const QString &file, const QString &id, const QStrin
     downloadNext();
 }
 
-// The subtitle chosen for this file last time, still in the cache
+// The subtitle chosen for this file last time, still in the cache (by its
+// hash, else by its URL: streams and files too small to hash, as it is saved)
 QStringList SubtitleFinder::rememberedChoice() const
 {
-    if (m_media.hash.isEmpty())
+    if (m_media.key.isEmpty())
         return {};
     const QStringList choice = m_intf->mainSettings->value(choiceKey(m_media.key)).toStringList();
     if (choice.size() != 3 || !QFileInfo::exists(choice[0]))

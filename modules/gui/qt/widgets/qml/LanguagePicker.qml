@@ -28,10 +28,10 @@ T.Button {
     signal picked(string code)
 
     // the colours of the place it is in
-    property color fieldColor: VLCStyle.redesign.color("#090909", "#c4c4c3")
-    property color borderColor: VLCStyle.redesign.color("#191919", "#9c9c9b")
-    property color textColor: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#1e1e1e")
-    property color mutedColor: VLCStyle.redesign.color("#6B6B6B", "#5a5a59")
+    property color fieldColor: VLCStyle.redesign.color("#090909", "#dedede")
+    property color borderColor: VLCStyle.redesign.color("#191919", "#ababaa")
+    property color textColor: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")
+    property color mutedColor: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
     property color listColor: VLCStyle.redesign.color("#141414", "#b4b4b3")
     property real fontSize: VLCStyle.dp(14, VLCStyle.scale)
     property real listHeight: VLCStyle.dp(320, VLCStyle.scale)
@@ -89,7 +89,7 @@ T.Button {
         Item { Layout.fillWidth: !(root._native !== "" && root._native !== root._name) }
         Image {
             Layout.rightMargin: VLCStyle.dp(12, VLCStyle.scale)
-            source: "qrc:///redesign/icons/chevron-down/default.png"
+            source: "qrc:///redesign/icons/chevron-down/default.svg"
             sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
             opacity: 0.8
         }
@@ -118,8 +118,9 @@ T.Button {
         background: Rectangle {
             radius: VLCStyle.dp(8, VLCStyle.scale)
             color: root.listColor
+            // the frame of the main window
             border.width: 1
-            border.color: root.borderColor
+            border.color: VLCStyle.redesign.color(VLCStyle.redesign.windowBorder)
         }
 
         contentItem: ColumnLayout {

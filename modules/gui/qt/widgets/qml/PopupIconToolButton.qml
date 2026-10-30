@@ -40,6 +40,8 @@ Widgets.IconToolButton {
 
     // Settings
 
+    // open while its popup shows
+    active: popup.visible
     color: (popup.visible) ? control.colorContext.accent : control.colorContext.fg.primary
 
     // FIXME: We can't use upItem because a Popup is not an Item.
@@ -108,6 +110,9 @@ Widgets.IconToolButton {
 
             // NOTE: The opacity should be stronger on a light background for readability.
             color: popupTheme.bg.primary.alpha(popupTheme.palette.isDark ? 0.8 : 0.96)
+
+            // the frame of the main window
+            RedesignWindowBorder { darkTheme: popupTheme.palette.isDark }
         }
     }
 

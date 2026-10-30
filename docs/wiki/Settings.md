@@ -3,6 +3,10 @@
 The Settings window holds every option of VLC Redesign that the design shows, plus a few of VLC's own options under
 **Advanced Options**. Open it with **⋯ → Settings** or <kbd>Ctrl</kbd>+<kbd>P</kbd>.
 
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/settings-search.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/settings-search.gif" alt="Settings: the Interface, Playback and Subtitles pages, then a search for speed across every page" width="960"></a>
+
+<sub>The Interface, Playback and Subtitles pages, then a search for "speed" across every page. Click for the MP4 · every clip: [Feature tour](Feature-Tour#settings).</sub>
+
 ![The Settings window, General page](images/settings.jpg)
 
 ## The pages

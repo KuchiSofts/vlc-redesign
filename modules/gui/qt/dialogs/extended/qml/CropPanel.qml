@@ -65,11 +65,12 @@ ExpandPanel {
                 border.color: VLCStyle.redesign.accent
             }
             contentItem: Impl.ColorImage {
-                source: root.verticalLinked ? "qrc:///redesign/icons/link/active.png"
-                                            : "qrc:///redesign/icons/link/default.png"
+                source: root.verticalLinked ? "qrc:///redesign/icons/link/active.svg"
+                                            : "qrc:///redesign/icons/link/default.svg"
                 color: root.verticalLinked ? VLCStyle.redesign.accentTint : "transparent"
                 sourceSize.width: root.px(24)
                 sourceSize.height: root.px(24)
+                smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
             }
         }
     }
@@ -107,11 +108,12 @@ ExpandPanel {
                 border.color: VLCStyle.redesign.accent
             }
             contentItem: Impl.ColorImage {
-                source: root.horizontalLinked ? "qrc:///redesign/icons/link/active.png"
-                                              : "qrc:///redesign/icons/link/default.png"
+                source: root.horizontalLinked ? "qrc:///redesign/icons/link/active.svg"
+                                              : "qrc:///redesign/icons/link/default.svg"
                 color: root.horizontalLinked ? VLCStyle.redesign.accentTint : "transparent"
                 sourceSize.width: root.px(24)
                 sourceSize.height: root.px(24)
+                smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
             }
         }
     }

@@ -19,7 +19,7 @@ import VLC.Player
 
 // Figma "Customize Player": "Folder Name", the folder of the media
 MetadataText {
-    iconSource: "qrc:///redesign/icons/folder/default.png"
+    iconSource: "qrc:///redesign/icons/folder/default.svg"
     value: {
         const mrl = Player.url.toString().split(/[?#]/)[0]
         const parts = mrl.split("/").filter(part => part.length > 0)

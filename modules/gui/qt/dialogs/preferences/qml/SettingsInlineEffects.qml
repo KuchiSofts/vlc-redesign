@@ -79,7 +79,7 @@ ColumnLayout {
               : qsTr("Play video to adjust and preview the picture.")
         wrapMode: Text.WordWrap
         horizontalAlignment: Text.AlignLeft
-        color: VLCStyle.redesign.color("#8F8F8F", "#7c7c7b")
+        color: VLCStyle.redesign.color("#8F8F8F", "#2e2e2e")
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
     }

@@ -29,6 +29,8 @@ Widgets.RedesignDialog {
     property bool captureGlobal: false
     property int capturedKey: 0
     property int capturedModifiers: 0
+    // the wheel captured, not a key: 1 up, -1 down
+    property int capturedWheel: 0
     property string conflictAction: ""
     readonly property bool dark: VLCStyle.palette.isDark
     // the scroll bar and the fields look their colours up here
@@ -95,6 +97,23 @@ Widgets.RedesignDialog {
         }
         if (result.needsConfirmation) {
             capturedKey = key
+            capturedWheel = 0
+            capturedModifiers = modifiers
+            conflictAction = result.conflictAction
+        }
+    }
+
+    // Ctrl+wheel (the subtitles' size over the video, the zoom elsewhere)
+    function assignWheel(up, modifiers, replaceConflict) {
+        const result = shortcuts.stageWheel(captureOption, captureGlobal,
+                                            up, modifiers, replaceConflict)
+        if (result.ok) {
+            capturePopup.close()
+            return
+        }
+        if (result.needsConfirmation) {
+            capturedKey = 0
+            capturedWheel = up ? 1 : -1
             capturedModifiers = modifiers
             conflictAction = result.conflictAction
         }
@@ -113,7 +132,8 @@ Widgets.RedesignDialog {
     }
 
     onAccepted: {
-        if (!root.profileError && !shortcuts.apply())
+        // the keys changed since a failed profile save are applied too
+        if (shortcuts.dirty && !shortcuts.apply())
             return
         root.saved = true
         if (!MainCtx.controlbarProfileModel.save()) {
@@ -147,6 +167,7 @@ Widgets.RedesignDialog {
     ShortcutsModel {
         id: shortcuts
         ctx: MainCtx
+        liveTv: Iptv.enabled
         search: searchField.text
         searchField: root.scopes[Math.max(0, scopePicker.currentIndex)].value
     }
@@ -230,7 +251,7 @@ Widgets.RedesignDialog {
             background: Rectangle {
                 radius: VLCStyle.dp(6, VLCStyle.scale)
                 color: addButton.hovered ? VLCStyle.redesign.color("#141414", "#e5e5e5")
-                                         : VLCStyle.redesign.color("#090909", "#fafafa")
+                                         : VLCStyle.redesign.color("#090909", "#dedede")
                 border.width: addButton.visualFocus ? 1 : 0
                 border.color: VLCStyle.redesign.focusColor
             }
@@ -243,7 +264,7 @@ Widgets.RedesignDialog {
                     width: VLCStyle.redesign.iconSize
                     height: width
                     sourceSize: Qt.size(width, height)
-                    source: "qrc:///redesign/icons/edit/dim.png"
+                    source: "qrc:///redesign/icons/edit/dim.svg"
                     smooth: false
                 }
             }
@@ -309,7 +330,7 @@ Widgets.RedesignDialog {
                     // the keys apart from each other when there are several
                     // (brighter while they can be removed)
                     color: keyField.keyCount <= 1 ? "transparent"
-                           : keyField.editing ? VLCStyle.redesign.color("#191919", "#ececec")
+                           : keyField.editing ? VLCStyle.redesign.color("#191919", "#ababaa")
                            : VLCStyle.redesign.color("#141414", "#f2f2f2")
 
                     FigmaText {
@@ -318,7 +339,7 @@ Widgets.RedesignDialog {
                         x: LayoutMirroring.enabled ? chip.crossRoom : chip.leftRoom
                         width: Math.max(0, chip.width - chip.leftRoom - chip.crossRoom)
                         text: root.displayKeys(chip.modelData)
-                        color: VLCStyle.redesign.color("#C6C6C6", "#333333")
+                        color: VLCStyle.redesign.color("#C6C6C6", "#2e2e2e")
                         // DM Mono (bundled): a line of 1.302 em, ascender 0.992
                         font.family: VLCStyle.redesign.monoFontFamily
                         lineRatio: 1.302
@@ -343,15 +364,15 @@ Widgets.RedesignDialog {
 
                         background: Rectangle {
                             radius: VLCStyle.dp(3, VLCStyle.scale)
-                            color: removeButton.hovered ? VLCStyle.redesign.color("#222222", "#dcdcdc") : "transparent"
+                            color: removeButton.hovered ? VLCStyle.redesign.color("#222222", "#9c9c9b") : "transparent"
                             border.width: removeButton.visualFocus ? 1 : 0
                             border.color: VLCStyle.redesign.focusColor
                         }
                         contentItem: Image {
                             sourceSize: Qt.size(width, height)
                             source: SVGColorImage.colorize("qrc:///redesign/duo/close.svg")
-                                        .color1(removeButton.hovered ? VLCStyle.redesign.color("#C6C6C6", "#333333")
-                                                                     : VLCStyle.redesign.color("#6B6B6B", "#7c7c7b")).uri()
+                                        .color1(removeButton.hovered ? VLCStyle.redesign.color("#C6C6C6", "#2e2e2e")
+                                                                     : VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")).uri()
                         }
                     }
                 }
@@ -376,7 +397,7 @@ Widgets.RedesignDialog {
                 Layout.fillWidth: true
                 Layout.preferredHeight: VLCStyle.dp(34, VLCStyle.scale)
                 radius: VLCStyle.dp(6, VLCStyle.scale)
-                color: VLCStyle.redesign.color("#151515", "#eeeeee")
+                color: VLCStyle.redesign.color("#151515", "#b5b5b4")
                 border.width: searchField.activeFocus ? 1 : 0
                 border.color: VLCStyle.redesign.focusColor
 
@@ -388,7 +409,7 @@ Widgets.RedesignDialog {
                     width: VLCStyle.redesign.iconSize
                     height: width
                     sourceSize: Qt.size(width, height)
-                    source: "qrc:///redesign/icons/search/default.png"
+                    source: "qrc:///redesign/icons/search/default.svg"
                     smooth: false
                 }
                 TextInput {
@@ -407,7 +428,7 @@ Widgets.RedesignDialog {
                     verticalAlignment: TextInput.AlignTop
                     topPadding: VLCStyle.redesign.textBaseline(Math.round((height - Math.round(1.2109375 * font.pixelSize)) / 2),
                                                                font.pixelSize) - searchMetrics.ascent
-                    color: VLCStyle.redesign.color("#969696", "#222222")
+                    color: VLCStyle.redesign.color("#969696", "#4d4d4d")
                     selectionColor: VLCStyle.redesign.accentBackground
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
@@ -420,7 +441,7 @@ Widgets.RedesignDialog {
                         width: parent.width
                         visible: searchField.length === 0
                         text: qsTr("Search Keyboard Shortcuts...")
-                        color: VLCStyle.redesign.color(VLCStyle.redesign.textDisabled, "#7c7c7b")
+                        color: VLCStyle.redesign.color(VLCStyle.redesign.textDisabled, "#929291")
                         font: searchField.font
                         elide: Text.ElideRight
                         horizontalAlignment: Text.AlignLeft
@@ -445,15 +466,15 @@ Widgets.RedesignDialog {
 
                 background: Rectangle {
                     radius: VLCStyle.dp(6, VLCStyle.scale)
-                    color: scopePicker.hovered || scopePicker.popup.visible ? VLCStyle.redesign.color("#1B1B1B", "#e5e5e5")
-                                                                            : VLCStyle.redesign.color("#151515", "#eeeeee")
+                    color: scopePicker.hovered || scopePicker.popup.visible ? VLCStyle.redesign.color("#1B1B1B", "#ababaa")
+                                                                            : VLCStyle.redesign.color("#151515", "#b5b5b4")
                     border.width: scopePicker.visualFocus ? 1 : 0
                     border.color: VLCStyle.redesign.focusColor
                 }
                 contentItem: Text {
                     id: scopeText
                     text: scopePicker.displayText
-                    color: VLCStyle.redesign.color("#969696", "#292929")
+                    color: VLCStyle.redesign.color("#969696", "#4d4d4d")
                     font: scopePicker.font
                     elide: Text.ElideRight
                     horizontalAlignment: Text.AlignLeft
@@ -472,7 +493,8 @@ Widgets.RedesignDialog {
                     width: VLCStyle.redesign.iconSize
                     height: width
                     sourceSize: Qt.size(width, height)
-                    source: "qrc:///redesign/icons/chevron-down/default.png"
+                    source: "qrc:///redesign/icons/chevron-down/default.svg"
+                    smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                     rotation: scopePicker.popup.visible ? 180 : 0
                 }
                 delegate: T.ItemDelegate {
@@ -487,7 +509,7 @@ Widgets.RedesignDialog {
                     contentItem: Text {
                         text: modelData.label
                         color: index === scopePicker.currentIndex ? VLCStyle.redesign.accent
-                                                                  : VLCStyle.redesign.color("#8F8F8F", "#292929")
+                                                                  : VLCStyle.redesign.color("#8F8F8F", "#2e2e2e")
                         font: scopePicker.font
                         verticalAlignment: Text.AlignVCenter
                         elide: Text.ElideRight
@@ -495,7 +517,7 @@ Widgets.RedesignDialog {
                     }
                     background: Rectangle {
                         radius: VLCStyle.dp(4, VLCStyle.scale)
-                        color: parent.highlighted || parent.hovered ? VLCStyle.redesign.color("#222222", "#e5e5e5") : "transparent"
+                        color: parent.highlighted || parent.hovered ? VLCStyle.redesign.color("#222222", "#9c9c9b") : "transparent"
                     }
                 }
                 popup: T.Popup {
@@ -532,9 +554,10 @@ Widgets.RedesignDialog {
                     }
                     background: Rectangle {
                         radius: VLCStyle.dp(6, VLCStyle.scale)
-                        color: VLCStyle.redesign.color("#191919", "#f7f7f7")
+                        color: VLCStyle.redesign.color("#191919", "#ababaa")
+                        // the frame of the main window
                         border.width: 1
-                        border.color: VLCStyle.redesign.color("#222222", "#cccccc")
+                        border.color: VLCStyle.redesign.color(VLCStyle.redesign.windowBorder)
                     }
                 }
             }
@@ -574,7 +597,7 @@ Widgets.RedesignDialog {
                 x: LayoutMirroring.enabled ? parent.width - width : 0
                 width: content.labelWidth
                 text: qsTr("Action")
-                color: VLCStyle.redesign.color("#6B6B6B", "#555555")
+                color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
             }
             // "Frame 503": Action 488 wide, Hotkey 332, then Global Hotkey;
             // in a narrower window, moved with the fields under them (the
@@ -584,7 +607,7 @@ Widgets.RedesignDialog {
                 x: LayoutMirroring.enabled ? parent.width - width - designX : designX
                 width: VLCStyle.dp(332, VLCStyle.scale)
                 text: qsTr("Hotkey")
-                color: VLCStyle.redesign.color("#6B6B6B", "#555555")
+                color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
             }
             FigmaText {
                 readonly property real designX: VLCStyle.dp(488 + 332, VLCStyle.scale) - Math.round(root.preferredWidth - root.width)
@@ -592,7 +615,7 @@ Widgets.RedesignDialog {
                 // to the end of the row (a longer translation is cut short)
                 width: Math.max(0, Math.min(implicitWidth, parent.width - designX))
                 text: qsTr("Global Hotkey")
-                color: VLCStyle.redesign.color("#6B6B6B", "#555555")
+                color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
             }
         }
 
@@ -628,6 +651,7 @@ Widgets.RedesignDialog {
                 required property string action
                 required property var hotkeys
                 required property var globalHotkeys
+                required property bool hasGlobal
                 required property bool dirty
                 // Names of the design for the actions it shows
                 readonly property string label: root.actionLabels[key] ?? action
@@ -654,7 +678,7 @@ Widgets.RedesignDialog {
                     width: parent.width
                     lineHeightPx: VLCStyle.dp(28, VLCStyle.scale)
                     text: shortcutRow.ListView.section
-                    color: VLCStyle.redesign.color("#969696", "#333333")
+                    color: VLCStyle.redesign.color("#969696", "#4d4d4d")
                     font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
                 }
 
@@ -676,7 +700,7 @@ Widgets.RedesignDialog {
                         T.ToolTip.text: actionText.text
                         T.ToolTip.delay: 650
                         color: shortcutRow.dirty ? VLCStyle.redesign.accent
-                                                 : VLCStyle.redesign.color("#C6C6C6", "#333333")
+                                                 : VLCStyle.redesign.color("#C6C6C6", "#2e2e2e")
                     }
                     KeyField {
                         objectName: "hotkey_" + shortcutRow.key
@@ -691,6 +715,8 @@ Widgets.RedesignDialog {
                     }
                     KeyField {
                         objectName: "globalHotkey_" + shortcutRow.key
+                        // (the keys of live TV are the window's only)
+                        visible: shortcutRow.hasGlobal
                         x: LayoutMirroring.enabled ? parent.width - width - content.globalX : content.globalX
                         onActiveFocusChanged: if (activeFocus) shortcutList.positionViewAtIndex(shortcutRow.index, ListView.Contain)
                         keyList: shortcutRow.globalHotkeys
@@ -726,12 +752,14 @@ Widgets.RedesignDialog {
         conflictAction: root.conflictAction
         errorText: shortcuts.error
         onKeyCaptured: (key, modifiers) => root.assignCaptured(key, modifiers, false)
+        onWheelCaptured: (up, modifiers) => root.assignWheel(up, modifiers, false)
         onClearRequested: {
             shortcuts.clearKey(root.captureOption, root.captureGlobal)
             capturePopup.close()
         }
-        onReplaceRequested: root.assignCaptured(root.capturedKey,
-                                                 root.capturedModifiers, true)
+        onReplaceRequested: root.capturedWheel !== 0
+                            ? root.assignWheel(root.capturedWheel > 0, root.capturedModifiers, true)
+                            : root.assignCaptured(root.capturedKey, root.capturedModifiers, true)
         // back to waiting for another key
         onConflictCancelled: root.conflictAction = ""
     }

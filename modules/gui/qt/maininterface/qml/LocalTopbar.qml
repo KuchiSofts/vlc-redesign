@@ -47,6 +47,14 @@ T.ToolBar {
         && !(MainCtx.intfMainWindow.visibility === Window.FullScreen)
         && !MainCtx.hasToolbarMenu
 
+    // macOS: the room of the traffic lights in the bar (the unified title
+    // bar), at the start and at the end of the layout (physical sides in
+    // MainCtx: the bar may be mirrored, the system's buttons are not)
+    readonly property int _insetStart: !_showCSD ? 0
+        : (LayoutMirroring.enabled ? MainCtx.windowButtonsInsetRight : MainCtx.windowButtonsInsetLeft)
+    readonly property int _insetEnd: !_showCSD ? 0
+        : (LayoutMirroring.enabled ? MainCtx.windowButtonsInsetLeft : MainCtx.windowButtonsInsetRight)
+
     //whether the navigation pannel is actually visible or not
     property alias navigationVisible: navigationVisibilty.checked
     property bool playqueueVisible: false
@@ -60,7 +68,8 @@ T.ToolBar {
                              implicitContentHeight + topPadding + bottomPadding)
 
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                             implicitContentWidth + leftPadding + rightPadding + (_showCSD ? csdButtons.implicitWidth : 0))
+                             implicitContentWidth + leftPadding + rightPadding + (_showCSD ? csdButtons.implicitWidth : 0)
+                             + _insetStart + _insetEnd)
 
     readonly property ColorContext colorContext: ColorContext {
         id: theme
@@ -87,8 +96,9 @@ T.ToolBar {
                 left: parent.left
                 top: parent.top
                 bottom: parent.bottom
-                // the 6 px padding of the topbar of the design
-                leftMargin: VLCStyle.dp(6, VLCStyle.scale)
+                // the 6 px padding of the topbar of the design (after the
+                // traffic lights on macOS)
+                leftMargin: VLCStyle.dp(6, VLCStyle.scale) + root._insetStart
             }
 
             Navigation.parentItem: root
@@ -116,6 +126,7 @@ T.ToolBar {
                         width: VLCStyle.redesign.iconSize
                         height: VLCStyle.redesign.iconSize
                         sourceSize: Qt.size(width, height)
+                        smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                         color: VLCStyle.redesign.logoColor
                     }
                 }
@@ -123,13 +134,12 @@ T.ToolBar {
                 Widgets.IconToolButton {
                     id: menuButton
                     contentItem: Image {
-                        source: "qrc:///redesign/icons/more/default.png"
+                        source: "qrc:///redesign/icons/more/default.svg"
                         sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
                         fillMode: Image.Pad
                     }
                     backgroundColor: VLCStyle.redesign.color(hovered || down || mainMenu.opened
-                                                             ? VLCStyle.redesign.controlHoverBackground : "transparent",
-                                                             colorContext.bg.primary)
+                                                             ? VLCStyle.redesign.controlHoverBackground : "transparent")
                     radius: VLCStyle.redesign.controlRadius
 
                     focus: true
@@ -165,14 +175,13 @@ T.ToolBar {
                     id: navigationVisibilty
                     visible: VLCStyle.isScreenSmall
                     contentItem: Image {
-                        source: "qrc:///redesign/icons/sidebar/active.png"
+                        source: "qrc:///redesign/icons/sidebar/active.svg"
                         sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
                         fillMode: Image.Pad
                         opacity: navigationVisibilty.checked ? 1.0 : 0.6
                     }
                     backgroundColor: VLCStyle.redesign.color(hovered || down || checked
-                                                             ? VLCStyle.redesign.controlHoverBackground : "transparent",
-                                                             colorContext.bg.primary)
+                                                             ? VLCStyle.redesign.controlHoverBackground : "transparent")
                     radius: VLCStyle.redesign.controlRadius
 
                     text: description
@@ -193,10 +202,8 @@ T.ToolBar {
                 Widgets.IconToolButton {
                     id: historyBack
                     visible: false
-                    color: VLCStyle.redesign.color(enabled ? VLCStyle.redesign.textMuted : VLCStyle.redesign.textDisabled,
-                                                   colorContext.fg.primary)
-                    backgroundColor: VLCStyle.redesign.color(hovered || down ? VLCStyle.redesign.controlHoverBackground : "transparent",
-                                                             colorContext.bg.primary)
+                    color: VLCStyle.redesign.color(enabled ? VLCStyle.redesign.textMuted : VLCStyle.redesign.textDisabled)
+                    backgroundColor: VLCStyle.redesign.color(hovered || down ? VLCStyle.redesign.controlHoverBackground : "transparent")
                     radius: VLCStyle.redesign.controlRadius
 
                     font.pixelSize: VLCStyle.redesign.iconSize
@@ -235,13 +242,14 @@ T.ToolBar {
         Text {
             id: titleText
             anchors.horizontalCenter: parent.horizontalCenter
-            width: Math.max(0, parent.width - 2 * Math.max(navigationButtons.width, root._showCSD ? csdButtons.width : 0)
+            width: Math.max(0, parent.width - 2 * Math.max(navigationButtons.width + root._insetStart,
+                                                           (root._showCSD ? csdButtons.width : 0) + root._insetEnd)
                             - 2 * VLCStyle.margin_normal)
             height: parent.height
             // what plays (or is paused); stopped, the app's name again (the
             // player keeps the last media's title after a stop)
             text: (Player.isStarted && Player.title) || qsTr("VLC Media Player")
-            color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, theme.fg.primary)
+            color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.redesign.fontNormal
             horizontalAlignment: Text.AlignHCenter

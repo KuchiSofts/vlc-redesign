@@ -1,0 +1,13 @@
+#EXTM3U url-tvg="https://epg.example/guide.xml.gz,https://epg.example/second.xml" tvg-shift="1"
+#EXTINF:-1 tvg-id="news.example" tvg-name="Example News" tvg-logo="logos/news.png" tvg-chno="5" group-title="1. News" catchup="default" catchup-days="3",Example News HD
+https://live.example/news/index.m3u8
+#EXTINF:-1 tvg-name="Test Channel" tvg-rec="7",IL: Test Channel
+#EXTGRP:Israel
+#EXTVLCOPT:http-user-agent=TestAgent/1.0
+https://flu.example/ch42/mono.m3u8?token=abc
+#EXTINF:-1 tvg-id="shop" catchup="flussonic" catchup-days="2" tvg-shift="-2",Shop, the "best"
+https://flu.example/shop/mpegts
+#EXTINF:-1 catchup="append" catchup-source="?start={utc}&end={utcend}&d={duration:60}" group-title="XXX Adults",After Dark
+https://live.example/late.ts
+#EXTINF:-1 catchup-source="https://archive.example/{Y}/{m}/{d}/{H}{M}.ts?len={duration}" catchup-days="1",Template TV
+https://live.example/template.ts

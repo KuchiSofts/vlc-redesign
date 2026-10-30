@@ -25,11 +25,13 @@
 
 #include "podcast_configuration.hpp"
 
+#include "menus/redesign_menu_style.hpp"
 PodcastConfigDialog::PodcastConfigDialog( qt_intf_t *_p_intf)
                     : QVLCDialog( nullptr, _p_intf )
 
 {
     ui.setupUi( this );
+    ui.podcastDelete->setIcon( RedesignMenuStyle::menuIcon( ":/menu/clear.svg" ) );
 
     ui.podcastDelete->setToolTip( qtr( "Deletes the selected item" ) );
     QPushButton *okButton = new QPushButton( qtr( "&Close" ), this );

@@ -28,6 +28,7 @@
 #include "dialogs/dialogs_provider.hpp"
 #include "widgets/native/qvlcframe.hpp"
 
+#include "menus/redesign_menu_style.hpp"
 using namespace vlc::playlist;
 
 VLCSystray::VLCSystray(MainCtx* ctx, QObject* parent)
@@ -42,7 +43,7 @@ VLCSystray::VLCSystray(MainCtx* ctx, QObject* parent)
     if( m_ctx->useXmasCone() )
         iconVLC = QIcon::fromTheme( "vlc-xmas", QIcon( ":/logo/vlc128-xmas.png" ) );
     else
-        iconVLC = QIcon::fromTheme( "vlc", QIcon( ":/logo/vlc256.png" ) );
+        iconVLC = QIcon::fromTheme( "vlc", QIcon( ":/logo/vlc.svg" ) );
 
     setIcon(iconVLC);
     /* the name of what plays: the icon may come while a media plays ("Show
@@ -195,13 +196,13 @@ void VLCSystray::update()
     if( m_ctx->interfaceVisibility() != QWindow::Hidden )
     {
         m_menu->addAction(
-            QIcon( ":/logo/vlc16.png" ), qtr( "&Hide VLC media player in taskbar" ),
+            QIcon( ":/logo/vlc.svg" ), qtr( "&Hide VLC media player in taskbar" ),
             this, &VLCSystray::hideUpdateMenu);
     }
     else
     {
         m_menu->addAction(
-            QIcon( ":/logo/vlc16.png" ), qtr( "Sho&w VLC media player" ),
+            QIcon( ":/logo/vlc.svg" ), qtr( "Sho&w VLC media player" ),
             this, &VLCSystray::showUpdateMenu);
     }
     m_menu->addSeparator();
@@ -213,11 +214,11 @@ void VLCSystray::update()
     VLCMenuBar::VolumeEntries( m_intf, m_menu.get() );
     m_menu->addSeparator();
     m_menu->addAction(
-        QIcon(":/menu/file.svg"), qtr( "&Open Media" ),
+        RedesignMenuStyle::menuIcon( ":/menu/file.svg" ), qtr( "&Open Media" ),
         THEDP, &DialogsProvider::openFileDialog);
 
     m_menu->addAction(
-        QIcon(":/menu/exit.svg"), qtr( "&Quit" ),
+        RedesignMenuStyle::menuIcon( ":/menu/exit.svg" ), qtr( "&Quit" ),
         THEDP, &DialogsProvider::quit);
 
     /* Set the menu */

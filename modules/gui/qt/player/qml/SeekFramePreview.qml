@@ -25,6 +25,9 @@ Rectangle {
     // Position of the frame, from 0 to 1
     property real position: 0
     property string timeText
+    // the subtitle line at that time (a subtitle file shown), over the
+    // bottom of the frame as the player shows it
+    property string cueText
     property bool darkTheme: true
 
     readonly property real padding: VLCStyle.dp(10, VLCStyle.scale)
@@ -34,6 +37,9 @@ Rectangle {
         ? Math.round(frameWidth * frameSource.implicitHeight / frameSource.implicitWidth)
         : Math.round(frameWidth * 9 / 16)
     readonly property real _eDPR: MainCtx.effectiveDevicePixelRatio(Window.window)
+    // The rounded frame is drawn by a shader; Qt's software renderer has
+    // none (no OpenGL), the decoded frame is then shown as it is
+    readonly property bool _shaders: GraphicsInfo.shaderType === GraphicsInfo.RhiShader
 
     implicitWidth: frameWidth + 2 * padding
     // (the line of the time: 17 px, as in Figma 2151:9673, 189 high in all)
@@ -43,11 +49,20 @@ Rectangle {
     // Menu surface of the design: #191919 at 95%
     color: root.darkTheme ? "#F2191919" : "#F2ABABAA"
 
+    // the frame of the main window
+    Widgets.RedesignWindowBorder { darkTheme: root.darkTheme }
+
     // Positions are rounded to a thousandth: close hovers share a request
     Image {
         id: frameSource
 
-        visible: false
+        visible: !root._shaders
+        x: root.padding
+        y: root.padding
+        width: root.frameWidth
+        height: root.frameHeight
+        fillMode: Image.PreserveAspectCrop
+        clip: true
         asynchronous: true
         // The previous frame stays while the next one decodes
         retainWhileLoading: true
@@ -57,6 +72,7 @@ Rectangle {
     }
 
     Widgets.ImageExt {
+        visible: root._shaders
         x: root.padding
         y: root.padding
         width: root.frameWidth
@@ -65,6 +81,27 @@ Rectangle {
         backgroundColor: "#0E0E0E"
         fillMode: Image.PreserveAspectCrop
         textureProviderItem: frameSource
+    }
+
+    Text {
+        id: cueLabel
+
+        visible: text.length > 0
+        x: root.padding + VLCStyle.dp(8, VLCStyle.scale)
+        width: root.frameWidth - VLCStyle.dp(16, VLCStyle.scale)
+        y: root.padding + root.frameHeight - height - VLCStyle.dp(6, VLCStyle.scale)
+        text: root.cueText
+        // (plain: the tags of the file are gone, a "<" of the words stays)
+        textFormat: Text.PlainText
+        horizontalAlignment: Text.AlignHCenter
+        wrapMode: Text.Wrap
+        maximumLineCount: 2
+        elide: Text.ElideRight
+        color: "#FFFFFF"
+        style: Text.Outline
+        styleColor: "#000000"
+        font.family: VLCStyle.redesign.fontFamily
+        font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
     }
 
     Text {

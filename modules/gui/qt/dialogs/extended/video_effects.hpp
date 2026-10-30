@@ -79,6 +79,8 @@ private:
     static bool validSide(const QString& side);
 
     QPointer<MainCtx> m_ctx;
+    // activeVideo follows the player's (stateChanged)
+    QMetaObject::Connection m_videoOutputConnection;
     bool m_transactionActive = false;
     int m_revision = 0;
     QString m_lastError;

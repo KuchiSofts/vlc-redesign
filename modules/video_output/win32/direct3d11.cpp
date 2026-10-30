@@ -1123,10 +1123,13 @@ static void Prepare(vout_display_t *vd, picture_t *picture,
     /* While video filters are switched, a picture of the former format can
      * still come: its planes do not fit the textures (copying them overruns
      * the mapped memory and the device is removed), and a GPU chroma picture
-     * may have no textures. Keep the last frame shown instead (nothing is
+     * may have no textures, or come once the textures are set up for
+     * another chroma (a CPU one: it would be copied into staging textures
+     * of another layout). Keep the last frame shown instead (nothing is
      * drawn: starting to render clears the target). */
     const bool gpuPicture = is_d3d11_opaque(picture->format.i_chroma);
-    sys->skipDisplay = gpuPicture ? picture->context == nullptr
+    sys->skipDisplay = gpuPicture ? (picture->context == nullptr ||
+                                     picture->format.i_chroma != sys->pictureChroma)
                                   : (is_d3d11_opaque(sys->pictureChroma) ||
                                      picture->format.i_chroma != sys->pictureChroma);
     if (sys->skipDisplay)
@@ -1745,7 +1748,13 @@ static int Direct3D11CreateGenericResources(vout_display_t *vd)
             msg_Err(vd, "Failed to create the SPU pixel shader. (hr=0x%lX)", hr);
             return VLC_EGENERIC;
         }
-        hr = D3D11_SetQuadPixelShader(VLC_OBJECT(vd), sys->d3d_dev, true,
+        /* Bilinear sampling for the subpicture regions: text regions are
+         * rendered at the display size and drawn 1:1 (pixel centers match,
+         * so it changes nothing), bitmap subtitles (DVD, Blu-ray, DVB) are
+         * scaled to the video size and stay smooth instead of blocky. The
+         * regions must not depend on the video sampler, which is a point
+         * one with the point, processor and super resolution upscalers. */
+        hr = D3D11_SetQuadPixelShader(VLC_OBJECT(vd), sys->d3d_dev, false,
                                       &sys->regionQuad, pPSBlob);
         if (FAILED(hr))
         {
@@ -1978,6 +1987,10 @@ static int Direct3D11MapSubpicture(vout_display_t *vd, int *subpicture_region_co
                     d3dquad->d3dpixelShader[j] = sys->regionQuad.d3dpixelShader[j];
                 }
             }
+            /* without samplers of its own, the region would be drawn with
+             * the ones the video quad left bound */
+            for (size_t j=0; j<ARRAY_SIZE(sys->regionQuad.SamplerStates); j++)
+                d3dquad->SamplerStates[j] = sys->regionQuad.SamplerStates[j];
         }
 
         hr = sys->d3d_dev->d3dcontext->Map(quad->picSys.resource[KNOWN_DXGI_INDEX], 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);

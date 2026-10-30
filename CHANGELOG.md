@@ -5,9 +5,9 @@ Changes of **VLC Redesign**, an unofficial VLC 4 build with the interface design
 For changes to VLC itself, see [NEWS](NEWS).
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
-what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `12023233ef` (2026-10-29).
+what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `9f393e5719` (2026-10-29).
 
-**Contents:** [Unreleased](#unreleased) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [Unreleased](#unreleased) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
 
@@ -15,9 +15,570 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+---
+
+## [0.4.0] · 2026-10-30
+
+The first release for Linux and macOS too, next to Windows: Live TV, the designer's icon everywhere, buttons that
+show what they opened, Ctrl+wheel for the subtitle size, a border on every window, sharp icons at every scale, and
+signed updates.
+
+### Added
+
+- **Live TV.** Watch the channels of your own IPTV provider like on a TV box: **TV** in the sidebar lists them
+  with their logos, numbers and groups, what is on now (with its progress) and what is next, your favourites and
+  the ones watched last; **Guide** shows the programmes of every channel across the hours, with the line of now.
+  Add a playlist link or file (M3U, its guide found in it), an Xtream Codes login (with its films and series), or
+  a guide link of your own (XMLTV, several merged), or one of the free, legal channel lists of the **catalog** in a
+  click; *Suggest a Service* proposes a new one on GitHub. While watching: Page Up and Page Down change channel,
+  type a number, Backspace goes back to the last channel, Enter shows the channel list over the video, and a
+  banner shows what is on at every switch. Past programmes play from the archive when the channel keeps one
+  (catch-up), *Watch from the Start* restarts the one on now, and a reminder tells when a programme starts. The
+  channels and the guide update in the background and work offline; links and passwords stay in VLC's keystore.
+  Live TV is an add-on of its own, on by default: *Live TV (IPTV) add-on* in Settings, General turns it off, the
+  installer can leave it out, and without it nothing of it shows. Settings, TV has its sources and options. A guide
+  is read once into an index kept beside it: VLC starts with the guide ready in about half a second, even for a
+  guide of 200 MB. See [Live TV](https://github.com/KuchiSofts/vlc-redesign/wiki/Live-TV).
+- **Edit Sidebar.** Put the pages of the sidebar in your order (drag them, or the arrows), hide the ones you do
+  not use, or reset them: right-click the sidebar, or Settings, Interface, Sidebar.
+- **Subtitles for films only.** A live TV channel or music shows no subtitle files, online search or sync; the
+  tracks button only shows when there is a track to choose.
+- **Suggest an idea and Report a problem**, at the end of the ⋯ menu and in About. *Suggest an idea* opens a new
+  discussion in the Ideas category of GitHub Discussions, with the version. *Report a problem* first shows what the report contains (versions,
+  install type, Windows, CPU, graphics adapter and driver, video output and decoding, screens, theme, accent,
+  language), with *Copy* and *Open GitHub*, which opens the bug form filled in. Nothing is sent by VLC, and no
+  personal data goes in: no file names or paths, no user or computer name, no library, no log.
+- **What's new after an update.** The first time VLC opens after an update (the installer, a small update, or a
+  new portable copy that took the settings of an older one), a card lists the highlights of the version, from
+  this changelog, with *Full changelog* for the release notes on GitHub. It shows once per version, on the
+  library: a file opened with VLC plays first, and a new install shows the welcome instead. *Show what's new
+  after an update* in Settings, General turns it off. The notes are in English.
+- **Follow the Windows accent color**: a switch in Settings > Appearance, under the accent colours (off by
+  default). On, the interface, the classic windows, the right-click menus and the two-tone icons take the accent
+  colour of Windows and follow it at once when it changes in Personalization > Colors; picking a colour turns it
+  off. A colour too dark or too light is brought to the range of the built-in accents so it stays as readable.
+  Outside Windows it follows the system accent (the desktop's, or the orange). Profiles keep the choice.
+- **Subtitle lines on the seek bar.** While a subtitle file is shown (one you added, one found next to the video, or
+  one downloaded by the subtitle search), thin marks on the seek bar show where its lines are, so you can see where
+  people talk. The marks follow the subtitle delay, close lines join into one mark, and the part already played
+  covers them. Hovering the bar shows the line at that time in the frame preview (or under the time). SRT, WebVTT,
+  ASS/SSA, MicroDVD, SubViewer/SBV, SAMI and VobSub (`.idx`) files are read once, in the background, and kept for
+  the next time. Subtitles inside the video file and streams that cannot seek have no marks. Settings, Subtitles,
+  Timing: *Show subtitle lines on the seek bar* (`qt-seek-subtitle-cues`, on by default, applies at once).
+- **Linux (x86_64 and ARM64).** VLC Redesign for Linux, from the same code as on Windows, for any distribution
+  with glibc 2.38 or later (Ubuntu 24.04 and later, Debian 13, Fedora 39 and later): a .deb
+  (`vlc-redesign_0.4.0_amd64.deb`, 155 MB), an .rpm (`vlc-redesign-0.4.0-1.x86_64.rpm`, 156 MB), an AppImage
+  (`vlc-redesign-0.4.0-x86_64.AppImage`, 166 MB, with its `.zsync`) and a folder to run from
+  (`vlc-redesign-0.4.0-linux-x86_64.tar.xz`, 126 MB), the same for ARM64 (`_arm64.deb`, `-1.aarch64.rpm`,
+  `-aarch64.AppImage`, `-linux-aarch64.tar.xz`), and the checksums in `SHA256SUMS-linux-x86_64.txt` and
+  `SHA256SUMS-linux-aarch64.txt`. The .deb and .rpm install next to the distribution's own `vlc`
+  (`/opt/vlc-redesign`, the command `vlc-redesign`, the menu entry *VLC Redesign*) and replace nothing of it.
+  Live TV is the package `vlc-redesign-livetv` (`vlc-redesign-livetv_0.4.0_amd64.deb`,
+  `vlc-redesign-livetv-0.4.0-1.x86_64.rpm`), optional and removable alone, as the installer's component on Windows;
+  in the AppImage and the folder it is turned off in Settings. Older systems are refused with a clear message. No
+  in-app updater on Linux: install the new package to update. No Flatpak in this release; it comes next. Tested in
+  containers on 7 distributions (Ubuntu 24.04 and 26.04, Debian 13, Fedora 41 and 43, Arch with the AppImage) and on
+  GitHub's x86_64 and ARM64 runners. See [Install and update](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#linux).
+- **macOS (Apple Silicon and Intel).** A disk image for each: `vlc-redesign-0.4.0-macos-arm64.dmg` and
+  `vlc-redesign-0.4.0-macos-x86_64.dmg`, for macOS 12 Monterey or later; drag *VLC Redesign* to Applications. Its
+  settings, library and caches stay apart from an official VLC's. The app is signed ad hoc, not by Apple (no
+  developer account yet), so macOS refuses to open it the first time: open it once, then *System Settings ›
+  Privacy & Security › Open Anyway* (on macOS 12 to 14, right-click the app › *Open* works too). One unified title
+  bar: the red, yellow and green buttons sit at the start of VLC Redesign's own top bar. The Live TV add-on comes
+  in the app (Settings turns it off), and About shows *macOS Apple Silicon* or *macOS Intel*. No in-app updater on
+  macOS: download the new disk image to update. Tested on GitHub's Macs, both architectures. See
+  [Install and update](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#macos).
+- **Windows on ARM64: built, not released.** In the 0.4.0 tests on a real ARM64 Windows runner it opened its
+  window and stopped a few seconds later (a crash in the Qt interface after the media library started), and one of
+  the installer's 400 binaries was not ARM64. It comes in a later version; until then the x64 build runs on
+  Windows 11 ARM64 under emulation.
+
+### Changed
+
+- **One app icon everywhere: the designer's.** The icon of VLC Redesign is now Juxtopposed's own logo from the
+  Figma file (the orange cone), as drawn, on no card: `vlc.exe` and its taskbar button, shortcuts and files, the
+  installer and uninstaller, the macOS app, the Linux menus (hicolor 16 to 512 px and the SVG), the UPnP server
+  as TVs see it, the web interface, the site's favicon and the README. The small sizes (16 to 40 px) are hinted so
+  the cone stays sharp; `.ico` has 16, 20, 24, 32, 40, 48, 64, 96, 128 and 256 px, `.icns` 16 to 512@2x, all from
+  the vector (`extras/juxtopposed/make-app-icon.py`). The start page, the player's background and the update
+  notice draw the same logo in place of upstream's cone, and the seasonal cones (Christmas, April Fools) are gone.
+- **A button shows when what it opens is open** (suggested in [#10](https://github.com/KuchiSofts/vlc-redesign/issues/10)).
+  Settings, Languages and tracks, Chapters, Bookmarks, Programs, Cast, HDR, Effects, Zoom, the ⋯ menu, the top
+  bar's menu and library buttons and Live TV's channel list light up while their panel, popup or menu shows: the
+  accent icon on a tint of the accent, with no border, the same look as a toggle that is on (the small line under
+  toggles is gone). On Android the player's buttons and toggles do the same.
+- **Ctrl+wheel over the video changes the subtitle size** (suggested in [#10](https://github.com/KuchiSofts/vlc-redesign/issues/10)),
+  as in classic VLC, instead of zooming the whole interface. It goes by 10 % near 100 %, then by 25 %, from 25 % to
+  500 %, and a short *Subtitle size 120%* message shows it; Ctrl+0 goes back to 100 %. Elsewhere in the window
+  Ctrl+wheel still zooms the interface. Both are shortcuts in Settings, Keyboard Shortcuts (*Scale up/down subtitles
+  text*, and the new *Zoom the interface in/out* in the Interface group), which can now take a turn of the wheel
+  with Ctrl, Alt or Shift. The size stepper of the subtitles panel uses the same steps, and ASS/SSA subtitles now
+  follow the size while they play. On Android: Ctrl + mouse wheel over the video, Ctrl+0, and a *Subtitle size*
+  slider with Reset in the subtitles tab (ASS/SSA keep their size there).
+- **Every window and popup has a border like the main window.** Dialogs (Restore the play queue, confirmations,
+  Go to Time, Media Statistics, Plugins, Folder information, What's new, Settings, Keyboard Shortcuts, the welcome),
+  menus, the panels that open from the player's buttons (tracks and subtitles, the queue card, cast, sleep timer,
+  speed, effects), dropdown lists, tooltips and the seek preview now have the same thin 1 px frame as the main
+  window, so they stand out from the dimmed interface instead of melting into it. The classic windows, the
+  right-click menus and the "VLC could not start" message take the same colour. It is the grey Windows 11 draws
+  around the main window (`#4C4A48`, in the dark and the light theme), now set on every window so that the frame
+  looks the same whatever the Windows colour settings. On Linux (X11 and Wayland), where the system draws no frame
+  around VLC's own title bar, the main window and the menus draw the same border themselves.
+- **Sharp icons at every size.** Every icon of the interface is drawn from an SVG of the design, at the size it
+  is shown: sharp at 100, 125, 150 and 200 % Windows scaling and when the interface is zoomed (Ctrl + mouse wheel),
+  where they were blurry or stayed small. The player bar's buttons now grow with the zoom like the rest. Some icons
+  are a little lighter or heavier than before: they now match the Figma design. The app icon (`vlc.exe`, the
+  taskbar, the title bar, the tray) has every size Windows asks for.
+- **Every message and question looks like the rest of VLC Redesign.** The ones that were plain Windows boxes are
+  drawn as the redesign's dialogs (title bar with its close button, heading, the Cancel button on the left and the
+  action in the accent on the right), in the window when it shows:
+  - after VLC closed unexpectedly: *Restore the play queue?* ("VLC Redesign closed unexpectedly on 28 October 2026
+    at 10:16. Restore the play queue it had?") with *Restore* and *Don't restore*, instead of "The application
+    closed abruptly" and Yes / No;
+  - the confirmations of the library (delete a file, a playlist, remove from a playlist, discard the filtered out
+    items) name their action (*Delete*, *Remove*, *Discard*); renaming a playlist and pasting several links use
+    the redesign's field;
+  - the login, question and progress dialogs VLC asks for while playing (a password for a share or a stream, a
+    certificate), and the error banner at the bottom;
+  - the warnings of the classic windows (Media Information, Messages, Convert profiles, media library folders,
+    Reset Preferences), as a frameless dialog of the same look;
+  - before the interface exists: "VLC Redesign could not start" (invalid options, no plugins) and the Windows
+    version check, in a small window of the same design, dark or light as Windows is.
+- **The classic windows have the redesign's title bar** (Open, Convert, Media Information, Messages, Bookmarks,
+  Advanced preferences, VLM, Program Guide, extensions…): the dark bar of the dialogs with the title in Inter and
+  the redesign's icons, minimize and maximize only where the window has them. Moving, snapping, double-click to
+  maximize, resizing from every edge, the shadow and the rounded corners of Windows 11 work as before.
+- **Go to Time, Plugins and extensions, Media Statistics and Folder information are redrawn** as dialogs of the
+  redesign, opened from the same places:
+  - *Go to Time* (Ctrl+T) takes a time as the control bar does (1:02:10, 62:10 or 130), with *Start* to go back to
+    the beginning;
+  - *Plugins and extensions* lists the modules, searchable and sorted by name, capability or score (their
+    description on hover), and the Lua extensions with their version, author and link;
+  - *Media Statistics*, new in the Tools menu: input, video and audio live, with a graph of the input bitrate over
+    the last two minutes, and a button to turn statistics on when they're off;
+  - *Folder information* (Info in a folder's menu, which only opened File Explorer): where the folder is, its date
+    and size, and how many files, videos, music, subtitles and folders it holds.
+
+- **macOS: one title bar.** On a Mac the window had two bars, the system's title bar and VLC Redesign's own
+  below it. Now there is one: the red, yellow and green buttons sit at the start of VLC Redesign's top bar, as in
+  other Mac apps, and the window keeps everything macOS gives it (full screen in its own Space, tiling, resizing
+  from every edge, its shadow). Drag the top bar to move the window, double-click it to zoom. *Show window
+  decorations* in Settings, Presentation brings the separate title bar back.
+
+### Fixed
+
+- Windows: VLC no longer crashes while it quits with the mouse resting over its window (the window's title-bar
+  handling read the interface after it was gone; it ended with `0xC000041D` or a heap corruption).
+- **Icons sharp at 125, 150 and 200 %.** Every icon of the redesign was drawn for 100 % and stretched at a higher
+  Windows scaling (the 1.5 px lines of the queue icon came out 76 % strong over four to six pixels at 200 %): Qt
+  draws an image at the screen's density only when the name written in the interface ends in `.svg`, and the icons
+  were still named by the PNG files they once were. Now named by their SVG: at 200 % the lines are three pixels,
+  two of them full, as the design draws them; at 100 % they match Figma (1.5 px, `#737373` on the dark bar,
+  `#4D4D4D` on the light one).
+- **Icons as crisp at 125 and 150 % as Qt draws them.** At these scalings an icon whose place falls between two
+  screen pixels (a logical pixel is 1.25 or 1.5 of them) was blurred by half a pixel: the queue icon's lines at
+  150 % read `32 81 81 32` instead of the `63 100 63` of the drawing. The icons drawn at their size are now copied
+  pixel for pixel wherever they sit (no filtering when the size divides into whole screen pixels), without moving
+  them; 100, 175 and 200 % unchanged. The Settings sidebar icons and the crop panel's link icon were measured
+  against Figma at 100 %: the same amount of ink (not heavier).
+- **Cast panel: the arrows no longer stop at *Show the video here too*.** Down from it goes round to the first
+  row, Up goes back up the list; opened from the keyboard, the panel puts the keyboard on its first row.
+- **Live TV on a DLNA TV: one stream per channel, with its picture and its sound.** A channel restarting its
+  picture a few seconds in (after an advert, or the adaptive stream changing its format) made a second stream,
+  which the TV loaded again; now the new picture goes on in the same stream. A cast started on a channel already
+  playing made a stream with the picture or the sound alone, then another with both (or sent the sound only):
+  the first stream of a channel now waits up to 3 s for both.
+- **Settings, Audio: *Maximum volume* is drawn as the design draws it again.** Since the slider was made to cover
+  VLC's whole range (60 to 300 %), its scale started at 60 % under a label reading 100 %, and 200 % stood right of
+  the middle. The slider keeps the design's 100 to 300 % and widens only for a value set below 100 % elsewhere (the
+  same for the OSD duration). Found by the final 1:1 check against the Figma frames (Settings - audio, 3073:15879).
+- **Online subtitles are loaded by themselves only for the right film.** The automatic search took the title it
+  guessed from the file name: a clip named `silent.mp4` got the subtitles of *Silent Hill*. A subtitle now loads by
+  itself only when it was made for that very file (the services know it by its fingerprint) or the title is sure:
+  one you chose, or the same title with its year, its episode, or of two words or more. A guess from a name alone
+  stays in the subtitles panel's list, to pick if it is right.
+- **Live TV leaves nothing in the library, also for channels behind a playlist.** A channel whose address is
+  itself a playlist (some Plex channels) was saved to the library under the address it pointed to, and showed in
+  *Continue Watching* named by that address's query (its access token). What a channel opens now stays out of the
+  library and the history, as the channel itself.
+- **Screen readers and the keyboard.** Every button and field of the main window, the player bar, its panels, the ⋯
+  menu, the library, the TV page and the dialogs has a name (the Settings search field had none); the redesign's
+  dialogs are announced by their title (they were unnamed windows); and Tab no longer stays in the multi-line fields
+  of *Open Network Stream* and Live TV's sources: Tab and Shift+Tab move to the next and the previous control.
+- **Live TV: *All* counts the channels shown.** The *All* group read 5,891 while the page and its list had 5,881:
+  it also counted the adult channels, which only show when *Settings › TV* shows them. *All* and the groups now
+  count what the list shows, and follow that switch at once.
+- **Casting a live TV channel crashed VLC.** A live channel (or any HLS or DASH stream) cast to a Chromecast crashed
+  VLC when it ended: changing channel while casting, stopping the cast, quitting. Zapping while casting now works,
+  and a channel that restarts its picture after an advert makes the TV reload it once, not twice in a second
+  (once with the sound only).
+- **Quitting while casting took 16 seconds** and left the Chromecast playing on its own. VLC now quits in about
+  2 s and the TV goes back to its idle screen; a playlist cast to its end still shows each film to its last picture.
+- **The cast list keeps looking while it is open**: a TV turned on shows up, one turned off goes (it searched for
+  20 s only, then showed what it found until it was opened again). After a few seconds with no device it says so.
+  A device hidden from the list stays hidden when the network finds it under its short name (a Chromecast is named
+  with and without its model). With *Discover cast devices* off, VLC no longer searches by itself while a video
+  plays.
+- **The casting screen**: on the window's dark (or light) background instead of a flat grey, with the file name
+  when the media has no title; the subtitles button stays in the bar while a video plays on the TV (the subtitles
+  are chosen here and the TV follows).
+- **The cast list in Hebrew and by keyboard**: a device name in Latin letters sits on the reading side with the
+  Hebrew rows (it sat at the far end); the arrow keys move from row to row; *Show the video here too* is greyed
+  while a Chromecast plays (it has no picture here).
+
+- **Live TV: Page Up, Page Down, the numbers and Backspace change the channel.** VLC's own shortcuts got these
+  keys first: Page Up restarted the stream instead of going to the next channel. While a channel plays, the keys
+  of the TV now come first; every other key keeps its shortcut, and outside Live TV nothing changes. The keys of
+  the channels (next, previous, last channel, channel list, banner) are in **Settings › Shortcuts**, group *Live
+  TV*, and can be changed there.
+- **Backspace no longer closes VLC** when the player was opened with a file and a message (such as *Restore the
+  play queue?*) was over it: the player's "back" went back from a history that was still empty.
+- **Hebrew and Arabic: a text not yet translated keeps its punctuation at its end.** *Advanced options...* showed
+  its dots first, a label its colon first; such texts now read left to right inside the right-to-left layout.
+- **Open Media › Capture Device: the video and audio device lists line up.**
+- **Live TV guide: no air date where the episode goes.** Pluto TV's guide showed *19990101080000 +0000* under its
+  programmes; the episode (*S17E52*) shows now.
+- **No QML error when *Open File(s)* or *Open Folder* is chosen from the ⋯ menu** (seen at zoom 2): the system's
+  dialog opens once the menu has closed.
+- **No QML warning when Customize Player opens at zoom 1.5 or 2** (`QQuickItem::stackAfter: Cannot stack ...`):
+  the lines drawn above the rows of the player bar while it is customized are made inside the bar's background.
+- **The classic windows are translated again, and Live TV can be.** In every language, the texts of the classic
+  windows read English (Open Media's *Capture mode*, *Device Selection*, *Options*, *Show more options*, *Advanced
+  options...*, Convert, Media Information...): the list of texts to translate was made without them, so their
+  translations were dropped. The texts of Live TV (the TV page, the guide, the TV sources and their catalog, the
+  banner over the video), *Go to Time*, *Plugins and extensions*, *Media Statistics*, *Folder information* and
+  *Edit Sidebar* never reached that list. All of them are in it now, and the new texts of 0.4.0 are translated in
+  the 72 languages, the five Live TV shortcuts included.
+- **No QML error when the player closes while its library panel opens** ("Object destroyed while one of its QML
+  signal handlers is in progress", seen in Hebrew): the panel is made in the background.
+- **The mouse wheel changes the volume again, and the volume never reads "-100 %".** With an audio output that
+  has no volume of its own (the *File* and *Dummy* outputs of Settings, Audio), the wheel over the video and over
+  the volume slider did nothing and the slider's value read *-100 %*. Those outputs now apply the volume to the
+  sound themselves, so the wheel, the keys and the slider work from 0, and a volume not known yet shows as a dash.
+- **About: the name is never cut.** *VLC Redesign* read *VLC Redesi…* (and *VLC …* in German); the update button
+  now goes under the name when a translation needs the room. The credit lines wrap as sentences with their links,
+  and the system badge is readable in the light theme.
+- **Buttons no longer melt into their dialog.** *Cancel*, *Close*, *Licenses & authors*, *GitHub*, *Don't
+  restore*, the Settings buttons (*Browse*, *Reset*…) and the classic windows' buttons drew in the colour of the
+  panel under them; they have the window's frame colour around them now, in both themes. Icon buttons stay as
+  they are. In the light theme the classic windows' selected tabs, rows and main buttons write their text in a
+  darker accent, readable on the pale tint.
+- **Subtitles in every language read right, whatever their encoding.** A subtitle file saved in an old encoding
+  (Hebrew Windows-1255, Arabic 1256, Russian 1251 or KOI8, Greek, Turkish, Polish and Czech, Baltic, Vietnamese,
+  Thai, Japanese Shift-JIS, Chinese GBK or Big5, Korean…) showed as gibberish unless the interface was in that same
+  language. VLC now recognises the encoding by itself, from the text, the language in the file name
+  (`movie.he.srt`) and your preferred subtitle language; UTF-8, UTF-16 and UTF-32 files are read as before. It
+  works for SRT, MicroDVD, ASS/SSA, SAMI, WebVTT, the text tracks inside videos and the subtitle lines on the seek
+  bar, on every system. *Settings › Subtitles › Encoding* still forces one when you choose it. A character that
+  cannot be read shows as `�`, never as a wrong letter.
+- **Hebrew and Arabic ASS/SSA subtitles in the right order.** Their full stops, question marks, brackets and
+  numbers showed on the wrong side of the line (ASS subtitles were laid out left to right, as the old VSFilter did);
+  they now read as SRT subtitles always did.
+- **Picture subtitles (DVD, Blu-ray, DVB) stay smooth** on Windows when the video is scaled with the *Point*,
+  *Video processor* or *Super Resolution* upscaler: they were blocky there. Text subtitles were already drawn at the
+  size of the screen and are unchanged.
+- **Light theme: the classic windows' title bar matches the other dialogs.** The classic windows (the
+  ones from VLC's older interface, in the redesign's look) had a darker grey title bar (`#9C9C9B`) than the
+  redesign's own dialogs; it is the same light grey now (`#DEDEDE`). Nothing else looks different: the 228 places
+  where a part of the interface asked for its own light colour and the general light colours won were each checked
+  against the Figma *Player - Light* frame, which draws the general colour wherever it shows one (for example
+  *15 items* `#6B6B6B`, the times and the folder name `#2E2E2E`), so they now ask for that colour. A light colour a
+  part asks for now wins over the general ones, and `design/tools/check_qml.py` fails when one differs from them
+  without being listed. The decisions, with the Figma evidence: [design/light-theme.md](design/light-theme.md).
+- **The playback speed button can be added to the bar again** ([#9](https://github.com/KuchiSofts/vlc-redesign/issues/9)).
+  Dropped on a bar in Customize Player, it left an empty slot that could be neither seen nor removed. The teletext
+  button had the same fault. A control that ever fails to load now shows a placeholder that can be dragged out.
+  Thanks to @Brackets124 for the report. Every control type was then put in the bar: the folder name after the
+  thumbnail stayed hidden (the centre zone measured its room by its own shown controls), the aspect ratio box was
+  empty, and the zoom icon was stretched; all three are fixed.
+- **Colours of SD video on Windows.** Untagged or BT.601 SD video showed shifted colours with Direct3D 11 (pure red
+  came out as (239,4,0)); it now shows as the source, as with OpenGL. HD and HDR are unchanged.
+- **Subtitles in older encodings** (Windows-1255 Hebrew, 1251 Russian, 1256 Arabic, Shift-JIS…) downloaded online
+  show correctly again instead of as garbage.
+- **Installer:** after an all-users install or update, VLC no longer restarts as administrator, and such an install
+  no longer creates one shared profile every user can write to (each user gets their own). "Install for everyone"
+  keeps the command-line switches; an upgrade keeps your default-app choice working; uninstall removes every file.
+- **Updates:** a failed roll back is no longer reported as success; long paths, case-only renames and "nothing to
+  apply" are handled; downloads must come from this project's releases, and a signed copy only accepts updates
+  signed by the same publisher.
+- **Updates are signed by the project.** From 0.4.0 on, every release's checksums carry a signature by the
+  project's own release key, and the app installs an update only when that signature is good: a release put on
+  GitHub by anyone else (a stolen account or token) is refused with a message, never installed.
+- **Casting:** a TV marked unreachable can be retried; a failure to build the stream shows a message instead of
+  "connecting" for ever; one file the TV couldn't read no longer makes every later one be converted; quitting
+  right after a TV disappears is much quicker; a Chromecast seen two ways no longer vanishes when one goes;
+  devices can be hidden from the Cast list (right-click) and shown again.
+- **Profiles and settings:** switching profile applies its hotkeys, repeat and shuffle at once; one failed write no
+  longer breaks saving for the rest of the session; "Reset all settings" also resets the profiles; sliders cover
+  the whole valid range (maximum volume, OSD duration); a refused value in a text field is put back.
+- **Library and dialogs:** Open Network Stream saves its links into the named playlist; the folders row of Home
+  works with the keyboard; "See all" on folders no longer changes the Videos grouping for good; the waveform
+  follows the pointer while dragging; delete and remove always ask first; menus are mirrored in right-to-left
+  languages; menus follow the interface scale.
+- **Windows proxy:** LAN and localhost addresses go direct again, and exceptions with `*` work as in Windows.
+- **Translations:** the 72 languages on Weblate have every text of VLC Redesign again, the settings' help of
+  VLC's newer options included; about 80 wrong translations fixed where they show (Hebrew "decoding" that said
+  encoding, Persian and Malay key names in English, a reversed Arabic help text…); the Cast list's "Show N hidden
+  devices" has its plural forms. The Estonian and Swedish translations made on Weblate are in: thank you, Priit
+  Jõerüüt and bittin. Everyone who reported or translated is credited in [CREDITS.md](CREDITS.md#community).
+- **Linux:** the zoom control's list showed its levels cut ("1:..."), now their names; with the System theme on a
+  desktop that tells no light or dark (no portal setting, X11 window managers) the menus and dialogs were dark over
+  a light interface, now they follow it; on X11 the shadow around the window no longer catches the clicks meant
+  for the windows below. Going from file to file no longer makes VLC's memory grow by about 90 MB a minute
+  (360 MB to 1 GB in 8 minutes): glibc kept the freed pictures of every thread; it now stays near 480 MB.
+  An AV1 file no longer makes VLC quit on Ubuntu 24.04 with a recent Intel GPU: VA-API decoding of AV1 crashed
+  inside FFmpeg 6, so dav1d decodes AV1 there. On Wayland with Intel or AMD graphics the video was drawn from
+  the left with no black bars, the desktop showing through beside it; it is now centred over black.
+  The packages: on Debian 13 (and any distribution with a newer Wayland) VLC quit at start on Wayland, as it
+  brought Ubuntu 24.04's Wayland libraries, older than the ones the system's graphics driver needs; it now uses
+  the system's. On a minimal install without the VDPAU library nothing played; it comes with VLC now. Removing the
+  .rpm on Fedora no longer leaves empty icon folders behind. A TV channel without a logo no longer puts a warning
+  in the log. On Wayland with Weston 14 or later (Debian 13, Ubuntu 26.04, Fedora 41 and 43, Arch) VLC hung at
+  the end of every video, waiting for a picture the compositor never gave back; it now closes at once. The
+  Flatpak checked all its plugins again at every start (its plugin list was out of date); no longer. The
+  packages bring the system's certificates (on a minimal install every HTTPS access, the TV catalog among them,
+  asked about an insecure site), and on Ubuntu 22.04 or Debian 12 the AppImage and the folder say that they need
+  glibc 2.38 instead of failing with the loader's error.
+- **Smaller fixes:** idle HTTP stream clients time out (DLNA streams excepted), stopping a stalled network stream no
+  longer hangs, the VU meter reads the whole signal, Lua scripts saved with a BOM load, a TS stream's clock no
+  longer jumps when a track is removed, and more (the full list: the review report).
+
 ### Technical
 
+- CI: the launch test keeps a full crash dump, and the build keeps the symbol maps of the stripped binaries.
+- `win64-docker.ps1 -Quick` after a new prebuilt contrib archive: the contribs were removed and not unpacked again, so
+  configure stopped without Lua; such a run is now a full one.
+- Merged VLC master up to `9f393e5719` (2026-10-29), 6 more commits: HDR static metadata through the Windows swap
+  chain and the VideoToolbox decoder, and the end of a legacy MinGW check in `d3d11_surface` (its `CAN_PROCESSOR`
+  switch is gone: the processor scaler and the release of its output view now always build).
+- Merged VLC master up to `12023233ef` (2026-10-29), 4 commits: mpg123 1.33.7 in the contribs (and its FPU code on
+  every ARM64), the Qt build's moc include folders (`static_dirs.py`) and a missing medialibrary header in
+  `Makefile.am`. Nothing of the redesign needed a change; built and tested again (tours, subtitles, Live TV).
+- **The icons ship as SVG only.** The 303 PNG files of `pixmaps/redesign` (every one had its SVG, of the same
+  size) are gone from the app: the icon interceptor and the image provider go by the SVG alone, the `.png` names
+  stay the icons' ids. The PNG exports of Figma are kept in `design/icons`, where `sync_assets.py` and
+  `icon_svgs.py` read them.
+- **The source of every release.** `make-release.ps1` writes `vlc-redesign-X.Y.Z-source.tar.gz` (the commit
+  packaged, `git archive`), lists it in the signed `SHA256SUMS.txt` and stops if the tree has changes or the tag
+  names another commit; the release notes link it, the portable zip says where it is, and
+  [SOURCE.md](docs/SOURCE.md) has the libraries of `contrib/` and the written offer for their source.
+- **`DEMUX_GET_LENGTH` with its second argument.** Since upstream's d3a2408afa the adaptive demux writes the live
+  state through a second `bool *` whether the caller passed one or not. The Chromecast demux filter (and the chained
+  demux) asked with one argument: the bool went to whatever followed, the filter's own logger pointer, and the
+  input crashed in `module_unneed()`'s log at its end (found with cdb: the filter's logger read as `0xabababab`;
+  a hardware write breakpoint showed `PlaylistManager::doControl` writing it). Both now pass it.
+- **Chromecast output: held again after a stream restart.** When the picture or the sound is removed while the
+  other stays (an ES restart), the blocks wait as at the start of a media until both are back (`held_again`): one
+  new chain, one `LOAD`. The end of the media plays to the end only after the input's EOF (`cc_eof`): at quit
+  the interface goes before the input and could not say that the user stopped.
+- **Renderer list**: `StartScan()` clears what the previous discoveries found (`ItemEntry::copies`: they do not
+  remove their items when they close), so a device a new discovery loses goes during the scan; `isDevice()`
+  matches a hidden name either way round (with or without the model in parentheses); `prepare()` honours
+  `redesign/discover-cast-devices`.
+
+- **`po/vlc.pot` with the `.ui` forms and every file of the redesign.** xgettext cannot read Qt Designer forms;
+  VideoLAN's `vlc.pot` takes their texts from the `ui_*.h` of a build. `extras/juxtopposed/translations/ui-pot.py`
+  writes them as a POT of their own (references to the `.ui` file and line), merged with xgettext's by
+  `msgcat --use-first`: 375 texts of 22 forms, whose translations `msgmerge` brings back from the catalogs'
+  obsolete entries. `po/POTFILES.in` lists the 37 files with translatable texts that VLC Redesign added or
+  changed and that were missing (Live TV, `SettingsTv.qml`, the redesigned dialogs, `SidebarEditDialog.qml`,
+  `navigationmodel.cpp`, `modules/misc/iptv/iptv.cpp`...). A `qsTr()` of two concatenated literals is one literal
+  (xgettext only reads the first). `po/vlc.pot`: 8,290 texts.
+- **Keys before the hotkeys** (`MainCtx.keysBeforeHotkeys`): an item of the interface may take keys before VLC's
+  hotkeys and the focused item; the window's event filter asks its `takeKey(key, modifiers)` (done there) and
+  `wantsKey(key, modifiers)` (sent on to the items). Live TV over the video is that item while a channel plays.
+  Its keys are options of the Qt interface (`qt-key-tv-channel-up`, `-channel-down`, `-previous`, `-list`,
+  `-info`, hidden in the classic preferences), listed by the shortcuts model in their own group, without a global
+  key, in conflict only with one another. `NavigationHistory::previous()` returns on an empty history.
+- **Untranslated texts in a right-to-left interface**: the Qt translator puts a left-to-right mark at both ends of
+  a text gettext returned untranslated when it starts or ends with punctuation; the `.ui` texts go through it
+  (`Q_` is `QObject::tr` in `Makefile.am`, as uic does for meson).
+- **Encoding detection of text subtitles** (`modules/codec/subs_charset.c`): a byte order mark, UTF-16 without
+  one, valid UTF-8, else the legacy encoding whose decoding reads most like text (letters of the encoding's script,
+  one script per word, letter case, marks after letters, Hebrew final letters, Russian and Greek letter
+  frequencies, Thai vowel order, the frequent rows of the CJK encodings, no control characters or undefined bytes),
+  the languages of the file name, the track and `sub-language` and the interface code page breaking ties. The
+  subtitle demux and the WebVTT demux convert whole files to UTF-8 (`subs_charset_LoadUTF8`, so libass gets UTF-8
+  too), subsdec detects the packets of a track that are not UTF-8 (a Matroska "UTF-8" track in Windows-1255), the
+  seek bar's cue reader uses the same detection. Test: `extras/juxtopposed/subtitle-charset-test.py` over the corpus
+  of `extras/juxtopposed/fixtures/subtitles` (28 encodings, 19 languages and mixed lines, BOM or not, CRLF or LF, five formats,
+  files without a language in their name, one-line cues): 212/212 decoded right with glibc iconv (Linux) and with
+  GNU libiconv as VLC uses it on Windows.
+- **libass: base direction from the text** (style Encoding -1, `ASS_FEATURE_WHOLE_TEXT_LAYOUT`,
+  `ASS_FEATURE_BIDI_BRACKETS`): right-to-left lines follow the Unicode bidi algorithm, as freetype does;
+  left-to-right lines are unchanged.
+- **direct3d11: subpicture regions get a bilinear sampler of their own**; they were drawn with the sampler the video
+  quad left bound (a point one with the point, processor and super resolution upscalers). Measured on captures:
+  text subtitles are pixel for pixel the same (they are rasterised at the display size and drawn 1:1), PGS drawn
+  with `--d3d11-upscale-mode=point` now matches the linear mode.
+- **Every upload checked for the whole project.** `extras/juxtopposed/release/release-check.py` checks the version,
+  the changelog, the roadmap and the plan, the README, the platforms and the website, the wiki, the design tokens,
+  the translations, VideoLAN's master, the credits and every open issue; the pre-push hook runs it for every push
+  to this repository (a `vX.Y.Z` tag as the release of X.Y.Z) and `make-release.ps1` before packaging.
+  [docs/RELEASE-CHECKLIST.md](docs/RELEASE-CHECKLIST.md) lists the steps around it.
+- **macOS port started.** `extras/juxtopposed/macos-build.sh` builds VLC Redesign on a Mac: VideoLAN's prebuilt
+  macOS contribs of the newest upstream contrib commit (from source when none), the official Qt 6.8.3 by
+  aqtinstall (upstream's macOS contribs have no Qt), VLC configured by upstream's `configure.sh` with
+  `--disable-macosx --enable-qt` (the native interface has the higher priority) and libcurl of macOS, then
+  `VLC Redesign.app` (`org.kuchisofts.vlcredesign`, macOS 12+, Qt deployed by `macdeployqt`, every library found
+  inside the bundle, the icon drawn from the redesign's logo) and `vlc-redesign-X.Y.Z-macos-<arch>.dmg`. It signs
+  ad hoc, or with a Developer ID, the hardened runtime and notarization when given one (decision 3).
+  `make-info-plist.py` takes upstream's file types, imported rather than exported, with the rank *Alternate*.
+  The workflow `build-macos.yml` builds both architectures on every pull request (`macos-14`, `macos-15-intel`:
+  GitHub retired `macos-13`) and runs `ci/macos-smoke.sh` (headless playback, the Qt interface for 10 s, no crash,
+  no QML warning); it doesn't block a pull request yet. On macOS the window has one unified title bar (below), a
+  minimal menu bar sits at the top of the screen, ⌘ reaches VLC's hotkeys as `Command+` (they never
+  matched with the Qt interface), CJK text takes the fonts of the interface language, and the updater never
+  offers a Windows file outside Windows. The analysis and what is left: `extras/juxtopposed/macos/README.md`.
+  Both architectures built and passed the launch test on GitHub's Macs (28 October).
+- **Windows on ARM64 build.** `win64-docker.ps1 -Arch aarch64` builds the redesign for ARM64 Windows in VideoLAN's
+  llvm-mingw image (`winarm64.Dockerfile`, `vlc-debian-llvm-ucrt:20260611225331`, the image of upstream's
+  `win64-arm-llvm` job) with that job's prebuilt contribs (Qt included), UCRT and the Windows 10 API
+  (`build.sh -a aarch64 -u -S 0x0A000006`), in the volume `vlc-winarm64-build`, to
+  `~\source\vlc-redesign-build-arm64`; a full build takes about 9 minutes here. The redesign's code built for
+  ARM64 with clang unchanged; the build scripts no longer assume x86_64 (`win64-docker.sh` reads `ARCH`: build
+  and contrib folders, the GCC-only `-lgcc_s` fix, the updater helper built with the toolchain's compiler), a
+  git worktree builds too (its main `.git` is mounted), `-Jobs` limits the compile jobs, and a release-mode build
+  (`-r`, x64 too) no longer fails at its end on upstream's zip of a folder `-o` never writes. Every `.exe` and
+  `.dll` of the package is ARM64 (PE machine `0xAA64`); it has no OpenGL plugins (upstream's ARM64 contribs have
+  no OpenGL: video goes through Direct3D 11) and no plugin cache when made on an x64 PC (the copy makes it at its
+  first start; an install for everyone makes it during Setup). `make-release.ps1 -Arch aarch64` makes
+  `vlc-redesign-X.Y.Z-winarm64.zip` (80 MB for 0.4.0; x64 0.3.1: 107 MB), `vlc-redesign-X.Y.Z-winarm64-setup.exe`
+  (45 MB; x64: 59 MB) (the same `.iss` with `/DArm64`:
+  `ArchitecturesAllowed=arm64`, the same AppId) and `vlc-redesign-X.Y.Z-winarm64-delta-from-<old>.vrdelta`
+  (`make-delta.py --platform winarm64`); `SHA256SUMS.txt` lists the files of both architectures of the version,
+  signed as before. The app's updater takes the installer and the small update of its own architecture only (an
+  x64 copy keeps the names it always used). The Windows build workflow builds the ARM64 package and runs
+  `ci/arm64-smoke.ps1` on a `windows-11-arm` runner (the binaries, the plugin cache, then the launch test); it has
+  not run yet, and no ARM64 PC has run the package.
+- **macOS unified title bar.** `maininterface/macos_titlebar.cpp` keeps the main window's system frame and makes
+  its title bar transparent and untitled, the content under it (`NSWindowStyleMaskFullSizeContentView`), through
+  the Objective-C runtime (Qt 6.8 has no flag for it; the Qt plugin links `libobjc` on macOS). The content keeps its
+  place on the screen when the style changes, so a saved geometry never grows by a title bar. The top bars (library,
+  player, menu bar) start after the traffic lights (`MainCtx.windowButtonsInsetLeft/Right`, read from AppKit, on
+  the right in a right to left system language); the redesign's own window buttons are not made on macOS and the
+  system draws the resize edges, shadow and border. `qt-titlebar` is now off by default on macOS too. Compiled
+  for macOS only for syntax here (Qt 6.8.3 headers, both branches of `objc_msgSend`); the first run on a Mac is the
+  public CI at the upload.
+- **macOS app and launch test complete for 0.4.0.** `macos-build.sh` requires the Live TV add-on in the app (`-t`
+  builds without it; a disk image has no components, Settings turns Live TV off), at least 20 translations, and
+  puts the README, licences, credits (Juxtopposed) and the fonts' OFL in `Resources` as the Windows package does;
+  it verifies every Mach-O of the bundle is signed. `ci/macos-smoke.sh` also checks the signatures one by one, the
+  icon, the translations, the Live TV plugin (loaded: `--list`), the About badge of the processor (*macOS Apple
+  Silicon* / *macOS Intel*), the credits and the unified title bar, and captures the main window light and dark
+  and About. `build-macos.yml` runs on every pull request and push to main of the public repository (free), and on
+  a private one only by hand, Apple Silicon only, within 40 minutes (macOS minutes count ten times there: about
+  150-250 of the free 2,000 a month).
+- **Windows ARM64 package checks.** `ci/pe-check.py` checks a package without running it: every `.exe` and
+  `.dll` has the package's PE machine, every imported DLL (delay-loaded too) is in the package or in Windows, Qt
+  and its QML are built into the interface, the About badge, the Live TV add-on, the translations, the credits and
+  licences. On the 0.4.0 integration build: the 399 binaries ARM64, every import found (Vulkan's loader comes with
+  a graphics driver, as for x64); the x64 build passes too. The Windows build runs it on the ARM64 package. A new
+  job `install-test-arm64` makes the ARM64 installer and runs `ci/arm64-install-test.ps1` on `windows-11-arm`:
+  silent install, every file of the package installed, the ARM64 smoke test on the installed copy (plugin cache,
+  window, a clip played silently), screenshots of the main window and About, uninstall. The `windows-11-arm` jobs
+  run on public repositories only, where they are free.
+- **Platforms in one file, and a website.** `platforms.yml` is the single source of every platform (status, latest
+  version and date, the next version, the files of a release, its page). `extras/juxtopposed/platforms/render.py`
+  (standard library only, with a reader for the file's YAML) writes the platform bar and table at the top of the
+  README (between `<!-- platforms:start -->` and `<!-- platforms:end -->`), `site/platforms.json` and the platform
+  list and download box of `site/index.html`; `--check` fails when they are out of date, `--also-on <id>` prints
+  the line `release-notes.py` now ends the notes with, `--build DIR` adds the screenshots of `docs/media` for
+  publishing. `site/` is the website: plain HTML, CSS and JavaScript in the app's colours and Inter (a 40 KB
+  Latin subset of the app's font), light and dark from the system, the download for the visitor's system (Windows
+  on ARM through the client hints; `?os=` to preview another), the design credit, every platform and the project's
+  links; no cookies, trackers or requests to other sites. `.github/workflows/platforms.yml` checks pull requests,
+  renders on `main` and deploys `site/` to GitHub Pages. About shows *Also on: …* (the other platforms) from
+  `site/platforms.json`, built in as `:/redesign/platforms.json` (`RedesignUpdater.alsoOn`): nothing is fetched.
+- **Design tokens, icons and fonts in `design/` (`design-1.0`)**, for the other platforms. `design/tokens.json`
+  (W3C Design Tokens format, 203 tokens) holds the colours of both themes, the 9 accents and their Dim/Bright
+  rule, fonts and line metrics, sizes, radii, icon boxes, shadows, opacities and window sizes, each with its Figma
+  node and the places in the code that hold it. `design/icons/` has every icon the app ships (614 files: the Icon
+  set's PNG per state with `@2x` and their SVG sources, the SVG and two-tone icons) with `index.json` and a preview; `design/fonts/` the
+  modified Inter, DM Mono and their OFL licenses. `design/tools/export.py` writes `design/build/tokens.css`,
+  `colors.xml` (Android) and `Tokens.swift`; `sync_assets.py` copies the icons and fonts from the app.
+  `design/tools/check_qml.py` (a *Design tokens* job in the Windows build workflow, on every pull request) fails
+  when a value in `VLCStyle.qml`, the menu and widget styles or the QML components differs from `tokens.json`
+  (205 places), when the light colour map or the accents do not match, or when `design/` is stale.
+- **Every icon from an SVG of the design.** Each raster of `pixmaps/redesign` now has its SVG next to it (368):
+  the 224 states of the 116 glyphs of the Figma Icon set (42:356), cut from Figma's SVG export of the set by
+  `design/tools/icon_svgs.py` (the symbol of the icon's name, the part a two-tone icon shows, Figma's colours of
+  the state), and the 41 other pieces (player and window buttons, track, volume and list/grid icons, onboarding
+  masks, window corners), each from its Figma node (`design/tools/raster_svgs.json`). Boolean shapes Figma's export
+  draws as their outline (save, subtitle, video, window) take the outline Figma fills; cast, absent from the file,
+  is drawn after the app's picture. [`design/tools/icon_svgs_report.md`](design/tools/icon_svgs_report.md) compares
+  each glyph with its PNG and with Figma's render (51 states are Figma's render, 131 the same drawing, 42 close: the
+  PNG was drawn heavier or lighter than Figma, the SVG follows Figma). `icon_svgs.py register` lists them in
+  `assets.qrc` and `resources.am`; `design/icons/` carries them. The URL interceptor sends every icon to its SVG
+  (the light theme through its provider, with an `.svg` id so Qt asks the size times the device pixel ratio), the
+  images showing one draw it at their `sourceSize` (now set from the size shown on the 38 that had none or a fixed
+  small one, `Impl.IconImage` and `Impl.ColorImage` included), and the menus, window buttons and message boxes
+  draw them through an icon engine (`RedesignIcons`) at each size and scale, cached per size. The PNGs stay as a
+  fallback. The unused `grid.svg` (a line) is `line-vertical.svg`.
+- **App icon at every size.** `share/icons/vlc.ico` has 16, 20, 24, 32, 40, 48, 64, 96, 128 and 256 px, each
+  rendered from the vector (`share/icons/scalable/vlc.svg`, `extras/juxtopposed/make-app-icon.py`); the window,
+  taskbar and tray icons take the SVG; the installer's `setup.ico` draws each size at its own size (96 added).
+- **Signed checksums (security).** Releases have `SHA256SUMS.txt.sig`: an ECDSA P-256 signature (SHA-256, raw
+  r‖s, 64 bytes) of `SHA256SUMS.txt`. The updater downloads it with the checksums and checks it with Windows' CNG
+  (`BCryptImportKeyPair` / `BCryptVerifySignature`, `bcrypt.dll` loaded from System32) against the public key in
+  `modules/gui/qt/util/redesign_update_key.h` before it reads any checksum. For a release at or after
+  `FIRST_SIGNED_VERSION` (0.4.0) a missing or bad signature refuses the update, and the signed checksums must
+  name files of that very version; older targets keep the earlier checks. The same-publisher Authenticode check
+  stays. `extras/juxtopposed/signing/release-key.ps1` makes the key (`new`; kept DPAPI-encrypted for the
+  release PC's user in `%USERPROFILE%\source\vlc-redesign-keys`, outside every repository), signs, verifies and
+  exports a backup; `make-release.ps1` signs `SHA256SUMS.txt` (`-NoSumsSignature` in the GitHub workflow, which
+  never has the key). `.gitignore` and the pre-push hook refuse key files. `signing/verify-test.c` tests the
+  verifier as the app compiles it.
+- The button, the placeholder and the high resolution time used the `Popup` and `Control` types without importing
+  them (upstream dropped `QtQuick.Controls`); the static Qt of Windows doesn't know them. They come from
+  `QtQuick.Controls.Basic` now.
+- A two-round code review (105 findings) was checked finding by finding against the code: about 90 were fixed,
+  the rest were already fixed, not bugs, or only partly fixable (for instance updates still have no signature of
+  their own while the releases aren't code-signed). The build now fails on any `build.sh` error and checks the
+  package; the weekly upstream merge gets the Windows build; `.gitattributes` keeps scripts in LF; the minimum Qt
+  is 6.8, as the code needs; the Linux and macOS ports get the HTTP backend (libcurl), code-page decoding and the
+  language picker.
+- Messages: `DialogsProvider::showRedesignMessage()` / `execRedesignMessage()` show a message in the window
+  (`RedesignMessageDialog.qml`, hosted by `SetupDialogs.qml`) or, without the interface or while it is hidden, as
+  `RedesignMessageBox` (frameless widgets in `RedesignDialog`'s sizes and colours). `questionDialog()`,
+  `messageDialog()` and `getTextDialog()` go through it and keep their answers. Before Qt, `bin/winvlc_message.c`
+  draws the same design with GDI and DWM (linked with `dwmapi` and `gdi32`). The extension and fingerprint windows
+  get `RedesignWidgetTheme`.
+- Title bars: `util/redesign_window_frame.cpp`, installed by `RedesignWidgetTheme` on every classic window: a
+  widget bar over the window's top contents margin; on Windows a native event filter takes the caption out of the
+  frame (`WM_NCCALCSIZE`) and hit-tests the bar as the caption (`WM_NCHITTEST`), as `CSDWin32EventHandler` does for
+  the main window. Other systems keep their title bar.
+- Tool windows: `dialogs/dialogs/redesign_tools.cpp` (`MediaStatistics`, `PluginListModel`, `ExtensionInfoModel`,
+  `FolderInformation`), the dialogs in `SetupDialogs.qml`; `DialogsProvider::gotoTimeDialog()`, `pluginDialog()`,
+  `statisticsDialog()` and `folderInfoDialog()` open the classic windows only without the interface (skins).
+- **Linux build of the current code** (x86_64, Qt 6.8.3, Docker, `extras/juxtopposed/linux-qt68.sh`): builds with
+  no warning from the redesign's code; `linux-bundle.sh` makes a self-contained tarball (VLC, Qt 6.8.3 and the
+  libraries of Ubuntu 24.04 it needs) for test PCs, `linux-wslg.sh` runs it on the Windows desktop through WSLg.
+  Every control of the player bar (59) was put in the bar, shown and clicked during playback: no QML warning.
+- **Linux packages.** `extras/juxtopposed/linux-packages.sh [--arch x86_64|aarch64]` makes from the bundle an
+  AppImage (`vlc-redesign-X.Y.Z-ARCH.AppImage`, with update information for the GitHub releases and its `.zsync`),
+  a .deb (`vlc-redesign_X.Y.Z_amd64.deb`), an .rpm (`vlc-redesign-X.Y.Z-1.x86_64.rpm`), the versioned tarball,
+  `SHA256SUMS-linux-ARCH.txt` and a Flatpak manifest (`org.kuchisofts.VLCRedesign`, KDE 6.8 runtime, written only),
+  with appimagetool 1.9.1 and nfpm 2.47.0 checked by SHA-256. The .deb and .rpm install VLC in `/opt/vlc-redesign`
+  with the command `vlc-redesign`, a desktop entry with VLC's media types, AppStream metainfo and the logo of
+  `design/icons` in the hicolor sizes, so they install next to the distribution's `vlc`; their dependencies come
+  from the libraries the bundle takes from the system (glibc 2.38, GL/EGL/GBM/DRM, VA-API, VDPAU). For 0.4.0 on
+  x86_64: AppImage 165 MB, .deb and .rpm 155 MB. The bundle no longer has Qt's SQL drivers for database servers
+  (their client libraries were missing), is named after its architecture, and `linux-qt68.Dockerfile` takes Qt's
+  ARM64 build on aarch64. A new workflow (`build-linux.yml`) builds on x86_64 and ARM64 runners and tests the
+  packages on a clean runner: the .deb installed with apt next to the distribution's VLC, the AppImage, and the
+  .rpm in Fedora 44, each printing its version and playing a clip to its end without a window or sound.
 - Merged VLC master up to `12023233ef` (2026-10-29), 123 commits ([#8](https://github.com/KuchiSofts/vlc-redesign/issues/8)):
+- **Linux packages, 0.4.0.** Live TV is its own package (`vlc-redesign-livetv`, .deb and .rpm, recommended by the
+  main one); the packages depend on ca-certificates (and hicolor-icon-theme on Fedora) and take libwayland from
+  the system; the launcher of the folder and the AppImage checks glibc (2.38) first. `linux-flatpak.sh` makes the
+  Flatpak as one file from the same tarball (KDE 6.8 runtime, its plugin cache made with OSTree's file times).
+  `linux-pkg-test.sh` installs a package in a clean container, checks its files and libraries, runs a UI tour
+  under Xvfb (`linux-pkg-tour.txt`: onboarding, themes, About, Live TV with Pluto TV, a Hebrew subtitle, Hebrew
+  right to left), plays a clip on headless Weston, removes Live TV alone, uninstalls and lists what was left;
+  every package passed it on Ubuntu 24.04 and 26.04, Debian 13, Fedora 41 and 43, Arch (AppImage) and the
+  Flatpak, and apt refuses the .deb on Ubuntu 22.04 and Debian 12 ([the table](docs/qa/0.4.0-ui-audit.md)).
+- Merged VLC master up to `6836ae77ae` (2026-10-27), 110 commits ([#8](https://github.com/KuchiSofts/vlc-redesign/issues/8)):
   upstream's own fix for stopping the Windows audio output under its lock, the playlist recovery question shown
   without blocking, the picture-in-picture player aligned to the screen's pixels, a placeholder for a bar control
   that fails to load, mpg123 1.33.7 in the contribs, and the rest of upstream's work.
@@ -31,6 +592,9 @@ fixes found by documenting every option.
 
 ### Added
 
+- Merged VLC master up to `32b160d9e9` (2026-10-28), 9 more commits: VideoLAN fixed the same missing imports of
+  #9 with `QtQuick.Templates` and added a *broken control* indicator to `Fallback.qml`; their fix replaces ours
+  (our own fallback switch in `ControlRepeater` removed, our hidden-control fix kept).
 - **Subtitle languages that learn.** Each subtitle you pick counts for its language. The languages panel lists your
   default and second language, then the ones you pick, the most picked first (marked *Often used*), then the
   video's own. A language you pick about three times is then chosen by itself after your default and second ones:

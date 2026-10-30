@@ -29,8 +29,11 @@
 #include <QtQuick/QQuickView>
 #include <QApplication>
 #include <QQuickItem>
+#include <QColor>
 #include <QRectF>
+#include <QMargins>
 #include <QTimer>
+#include <QPointer>
 
 #include <atomic>
 #include <memory>
@@ -72,6 +75,7 @@ class VLCSystray;
 class LiveSettings;
 class MediaLib;
 class ColorSchemeModel;
+class RedesignAccent;
 class VLCVarChoiceModel;
 class SidePanelCtx;
 #ifdef UPDATE_CHECK
@@ -120,10 +124,18 @@ class MainCtx : public QObject
     Q_PROPERTY(bool hasGridListMode MEMBER m_hasGridListMode NOTIFY hasGridListModeChanged FINAL)
     Q_PROPERTY(Grouping grouping READ grouping WRITE setGrouping NOTIFY groupingChanged FINAL)
     Q_PROPERTY(ColorSchemeModel* colorScheme READ getColorScheme CONSTANT FINAL)
+    // The accent of the system, made readable (RedesignAccent): the one of
+    // "Follow the Windows accent color" of Settings > Appearance, followed live
+    Q_PROPERTY(QColor systemAccent READ systemAccent NOTIFY systemAccentChanged FINAL)
     Q_PROPERTY(bool hasVLM READ hasVLM CONSTANT FINAL)
     Q_PROPERTY(bool clientSideDecoration READ useClientSideDecoration NOTIFY useClientSideDecorationChanged FINAL)
     Q_PROPERTY(bool hasFirstrun READ hasFirstrun CONSTANT FINAL)
     Q_PROPERTY(int  csdBorderSize READ CSDBorderSize NOTIFY useClientSideDecorationChanged FINAL)
+    // The room the system's window buttons take in the interface's top bar
+    // (macOS: the traffic lights of the unified title bar), on the left and
+    // the right of the window whatever the layout direction; 0 elsewhere
+    Q_PROPERTY(int windowButtonsInsetLeft READ windowButtonsInsetLeft NOTIFY windowButtonsInsetChanged FINAL)
+    Q_PROPERTY(int windowButtonsInsetRight READ windowButtonsInsetRight NOTIFY windowButtonsInsetChanged FINAL)
     Q_PROPERTY(bool hasToolbarMenu READ hasToolbarMenu WRITE setHasToolbarMenu NOTIFY hasToolbarMenuChanged FINAL)
     Q_PROPERTY(bool canShowVideoPIP READ canShowVideoPIP CONSTANT FINAL)
     Q_PROPERTY(bool pinVideoControls READ pinVideoControls WRITE setPinVideoControls NOTIFY pinVideoControlsChanged FINAL)
@@ -132,6 +144,7 @@ class MainCtx : public QObject
     // (redesign/right-to-left) is saved by Settings
     Q_PROPERTY(bool rightToLeft READ rightToLeft WRITE setRightToLeft NOTIFY rightToLeftChanged FINAL)
     Q_PROPERTY(bool seekThumbnail READ seekThumbnail NOTIFY seekThumbnailChanged FINAL)
+    Q_PROPERTY(bool seekSubtitleCues READ seekSubtitleCues NOTIFY seekSubtitleCuesChanged FINAL)
     Q_PROPERTY(float pinOpacity READ pinOpacity WRITE setPinOpacity NOTIFY pinOpacityChanged FINAL)
     Q_PROPERTY(ControlbarProfileModel* controlbarProfileModel READ controlbarProfileModel CONSTANT FINAL)
     Q_PROPERTY(bool hasAcrylicSurface READ hasAcrylicSurface NOTIFY hasAcrylicSurfaceChanged FINAL)
@@ -183,6 +196,22 @@ class MainCtx : public QObject
 
     // NOTE: This is useful when we want to prioritize player hotkeys over QML keyboard navigation.
     Q_PROPERTY(bool preferHotkeys READ preferHotkeys WRITE setPreferHotkeys NOTIFY preferHotkeysChanged FINAL)
+    // An item that may take keys before the hotkeys and the focused item
+    // (live TV over the video: its channels on Page Up, Page Down, the
+    // digits...): its function takeKey(key, modifiers) does what the key
+    // does there (true: done); wantsKey(key, modifiers) lets other keys go
+    // to the items (its list); the others stay hotkeys
+    Q_PROPERTY(QObject* keysBeforeHotkeys READ keysBeforeHotkeys WRITE setKeysBeforeHotkeys NOTIFY keysBeforeHotkeysChanged FINAL)
+    // The video of the player (an item): the wheel with Ctrl over it sizes
+    // the subtitles (the keys of "Scale up/down subtitles text"), elsewhere
+    // it zooms the interface (the keys of qt-key-intf-zoom-in/out)
+    Q_PROPERTY(QObject* subtitleWheelArea READ subtitleWheelArea WRITE setSubtitleWheelArea NOTIFY subtitleWheelAreaChanged FINAL)
+    // An item over the video that is not the video (the player's library
+    // beside it): the wheel with Ctrl over it zooms the interface
+    Q_PROPERTY(QObject* subtitleWheelExclusion READ subtitleWheelExclusion WRITE setSubtitleWheelExclusion NOTIFY subtitleWheelExclusionChanged FINAL)
+    // a shortcut is being captured (Settings › Shortcuts): the wheel with
+    // Ctrl goes to it, not to the zoom
+    Q_PROPERTY(bool wheelCapture MEMBER m_wheelCapture NOTIFY wheelCaptureChanged FINAL)
 
     //Property for Activating bgCone in player view
     Q_PROPERTY(bool bgCone READ isbgCone WRITE setbgCone NOTIFY bgConeToggled FINAL)
@@ -272,6 +301,8 @@ public:
     inline bool albumSections() const { return m_albumSections; }
     inline bool lyricsMode() const { return m_lyricsMode; }
     inline ColorSchemeModel* getColorScheme() const { return m_colorScheme; }
+    QColor systemAccent() const;
+    RedesignAccent* redesignAccent() const { return m_redesignAccent; }
     bool hasVLM() const;
     bool useClientSideDecoration() const;
     bool hasFirstrun() const;
@@ -282,6 +313,7 @@ public:
     inline bool pinVideoControls() const { return m_pinVideoControls; }
     inline bool rightToLeft() const { return m_rightToLeft; }
     inline bool seekThumbnail() const { return m_seekThumbnail; }
+    inline bool seekSubtitleCues() const { return m_seekSubtitleCues; }
     inline float pinOpacity() const { return m_pinOpacity; }
 
     inline ControlbarProfileModel* controlbarProfileModel() const { return m_controlbarProfileModel; }
@@ -331,6 +363,20 @@ public:
 
     // no hotkey of VLC takes the key: the interface may (Q, L of the onboarding)
     Q_INVOKABLE bool isHotkeyFree(Qt::Key key, Qt::KeyboardModifiers modifiers) const;
+    // The action of live TV the key has in the shortcuts ("channel-up",
+    // "channel-down", "previous", "list", "info"), "" none
+    Q_INVOKABLE QString tvKeyAction(Qt::Key key, Qt::KeyboardModifiers modifiers) const;
+    // The wheel's key (a VLC key: modifiers and a wheel direction) at a point
+    // of the window: the subtitles' size over the video, the interface's
+    // zoom elsewhere; true: it is one of them (apply: done)
+    bool wheelKeyAction(int vlcKey, const QPointF &scenePos, bool apply);
+    // A key of the subtitles' size while a video plays (Ctrl+0): done here,
+    // the size shown a moment; a key of the interface's zoom anywhere
+    bool takeSizeKey(int vlcKey, bool playerKeys);
+    // The item of keysBeforeHotkeys did what the key does
+    bool keyTakenBeforeHotkeys(int key, Qt::KeyboardModifiers modifiers) const;
+    // The item of keysBeforeHotkeys wants the key to go to the items
+    bool keyGoesBeforeHotkeys(int key, Qt::KeyboardModifiers modifiers) const;
     // The relative luminance (WCAG, 0 black to 1 white) of an area of the
     // window as shown (in its coordinates): what a text drawn there is over,
     // to choose a readable colour; -1 when it can't be read
@@ -415,9 +461,28 @@ public:
         });
     }
 
+#ifdef Q_OS_MACOS
+    // the unified title bar keeps the system's frame: its edges, buttons
+    // (the traffic lights), shadow and border (macos_titlebar.hpp)
+    Q_INVOKABLE virtual bool platformHandlesResizeWithCSD() const { return true; };
+    Q_INVOKABLE virtual bool platformHandlesTitleBarButtonsWithCSD() const { return true; };
+    Q_INVOKABLE virtual bool platformHandlesShadowsWithCSD() const { return true; };
+#else
     Q_INVOKABLE virtual bool platformHandlesResizeWithCSD() const { return false; };
     Q_INVOKABLE virtual bool platformHandlesTitleBarButtonsWithCSD() const { return false; };
     Q_INVOKABLE virtual bool platformHandlesShadowsWithCSD() const { return false; };
+#endif
+
+    QMargins windowButtonsInset() const { return m_windowButtonsInset; }
+    int windowButtonsInsetLeft() const { return m_windowButtonsInset.left(); }
+    int windowButtonsInsetRight() const { return m_windowButtonsInset.right(); }
+    void setWindowButtonsInset(const QMargins &inset)
+    {
+        if (inset == m_windowButtonsInset)
+            return;
+        m_windowButtonsInset = inset;
+        emit windowButtonsInsetChanged();
+    }
 
     void setUsingTouch(bool touch)
     {
@@ -438,12 +503,21 @@ public:
     bool preferHotkeys() const;
     void setPreferHotkeys(bool enable);
 
+    QObject* keysBeforeHotkeys() const { return m_keysBeforeHotkeys; }
+    QObject* subtitleWheelArea() const { return m_subtitleWheelArea; }
+    QObject* subtitleWheelExclusion() const { return m_subtitleWheelExclusion; }
+    void setSubtitleWheelExclusion(QObject *item);
+    void setSubtitleWheelArea(QObject *item);
+    void setKeysBeforeHotkeys(QObject* item);
+
     QWindow *intfMainWindow() const;
 
     bool videoSurfaceCanHaveFractionalPosition() const;
 
     Q_INVOKABLE QVariant settingValue(const QString &key, const QVariant &defaultValue) const;
     Q_INVOKABLE void setSettingValue(const QString &key, const QVariant &value);
+    // the setting back to its default: gone from the settings file
+    Q_INVOKABLE void removeSettingValue(const QString &key);
 
     Q_INVOKABLE static void setAttachedToolTip(QObject* toolTip);
 
@@ -537,7 +611,9 @@ protected:
     bool                 m_hasGridListMode = false;
     Grouping             m_grouping = GROUPING_NONE;
     ColorSchemeModel*    m_colorScheme = nullptr;
+    RedesignAccent*      m_redesignAccent = nullptr;
     bool                 m_windowTitlebar = true;
+    QMargins             m_windowButtonsInset;
     // NOTE: Ideally this should be a QVLCBool.
     bool                 m_hasToolbarMenu = false;
     bool                 m_canShowVideoPIP = false;
@@ -545,6 +621,7 @@ protected:
     /* Pinned */
     bool                 m_pinVideoControls = false;
     bool                 m_seekThumbnail = true;
+    bool                 m_seekSubtitleCues = true;
     float                m_pinOpacity       = 1.0f;
 
     bool                 m_useGlobalShortcuts = true;
@@ -567,6 +644,10 @@ protected:
     bool m_smoothScroll = true;
 
     bool m_preferHotkeys = false;
+    QPointer<QObject> m_keysBeforeHotkeys;
+    QPointer<QObject> m_subtitleWheelArea;
+    QPointer<QObject> m_subtitleWheelExclusion;
+    bool m_wheelCapture = false;
 
     int m_maxVolume = 125;
 
@@ -663,6 +744,9 @@ public slots:
     void emitShow();
 
     virtual void reloadPrefs();
+    // Repeat, Shuffle, Stop after each item, When playback finishes, from
+    // the saved options: on the play queue now (the core reads them once)
+    void applyPlayOrder();
     VLCVarChoiceModel* getExtraInterfaces();
 
     bool pasteFromClipboard();
@@ -696,6 +780,7 @@ signals:
     void lyricsModeChanged( bool );
     void colorSchemeChanged( QString );
     void useClientSideDecorationChanged();
+    void windowButtonsInsetChanged();
     void hasToolbarMenuChanged();
 
     /// forward window maximise query to the actual window or widget
@@ -714,6 +799,7 @@ signals:
     void pinVideoControlsChanged();
     void rightToLeftChanged();
     void seekThumbnailChanged();
+    void seekSubtitleCuesChanged();
     void pinOpacityChanged();
 
     void hasAcrylicSurfaceChanged(bool);
@@ -723,6 +809,10 @@ signals:
     void smoothScrollChanged();
 
     void preferHotkeysChanged();
+    void keysBeforeHotkeysChanged();
+    void subtitleWheelAreaChanged();
+    void subtitleWheelExclusionChanged();
+    void wheelCaptureChanged();
 
     void useGlobalShortcutsChanged( bool );
 
@@ -754,8 +844,11 @@ signals:
 
     void usingTouchChanged();
 
-    /// a value was set with setSettingValue()
+    /// a value was set with setSettingValue(), or removed (removeSettingValue)
     void settingValueChanged(const QString &key);
+
+    /// the accent of the system changed (Follow the Windows accent color)
+    void systemAccentChanged();
 
 private:
     void loadPrefs(bool callSignals);

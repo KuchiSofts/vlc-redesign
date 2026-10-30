@@ -41,7 +41,8 @@ Item {
         x: Math.round((parent.width - width) / 2)
         y: 116
         source: "qrc:///redesign/welcome.svg"
-        sourceSize: Qt.size(141, 141)
+        sourceSize: Qt.size(width, height)
+        smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
         fillMode: Image.PreserveAspectFit
         Accessible.name: qsTr("VLC")
     }
@@ -109,7 +110,7 @@ Item {
         visible: root.folderAvailable
         color: VLCStyle.redesign.color("#090909", "#dedede")
         border.width: 2
-        border.color: VLCStyle.redesign.color("#191919", "#c4c4c3")
+        border.color: VLCStyle.redesign.color("#191919", "#ababaa")
         radius: 6
         Text {
             id: folderText
@@ -146,8 +147,8 @@ Item {
             text: qsTr("Remove the folder")
             Accessible.name: text
             contentItem: Image {
-                source: "qrc:///redesign/icons/close/default.png"
-                sourceSize: Qt.size(24, 24)
+                source: "qrc:///redesign/icons/close/default.svg"
+                sourceSize: Qt.size(VLCStyle.redesign.iconSize, VLCStyle.redesign.iconSize)
                 fillMode: Image.Pad
                 opacity: clearFolder.hovered || clearFolder.down ? 1 : 0.6
             }

@@ -282,12 +282,16 @@ struct ItemEntry
 {
     ItemEntry(const RendererItemPtr& renderItem, bool current = true)
         : renderItem(renderItem)
+        , copies{ renderItem }
         , currentScan(current)
     {}
 
     ItemEntry(){}
 
     RendererItemPtr renderItem;
+    /* the device as each discovery found it (a Chromecast by mDNS and by
+     * DIAL): the row goes when none has it any more */
+    QVector<RendererItemPtr> copies;
     /**
      * we scan for 20 seconds, when the scan ends render discoverer are destroyed but
      * items are kept in the model, at this moment the items are marked as "old", if
@@ -499,12 +503,17 @@ public:
 
 
     // a device by its name, with or without its model after it ("Living
-    // Room TV (Chromecast Ultra)", as mDNS names it)
+    // Room TV (Chromecast Ultra)", as mDNS names it; "Living Room TV" by
+    // DIAL): either way round, a device hidden from its row with the model
+    // stays hidden when the other discovery finds it without
     static bool isDevice(const QString &name, const QString &device)
     {
         const QString d = device.trimmed();
-        return !d.isEmpty() && (name.compare(d, Qt::CaseInsensitive) == 0
-                                || name.startsWith(d + QStringLiteral(" ("), Qt::CaseInsensitive));
+        const QString n = name.trimmed();
+        return !d.isEmpty() && !n.isEmpty()
+            && (n.compare(d, Qt::CaseInsensitive) == 0
+                || n.startsWith(d + QStringLiteral(" ("), Qt::CaseInsensitive)
+                || d.startsWith(n + QStringLiteral(" ("), Qt::CaseInsensitive));
     }
 
     // a device not to show
@@ -536,6 +545,8 @@ public:
             /* mark the item as seen during this scan */
             ItemEntry& entry = m_items[key];
             entry.currentScan = true;
+            if (!entry.copies.contains(renderItem))
+                entry.copies.push_back(renderItem);
             /* the same device found the other way: the longer name (with
              * its model) shows; the one playing stays */
             const QString known = qfu(vlc_renderer_item_name(entry.renderItem.get()));
@@ -554,18 +565,31 @@ public:
         Q_Q(RendererManager);
 
         QString key = getItemKey(renderItem);
-        if( m_items.contains( key ) )
+        if( !m_items.contains( key ) )
+            return;
+
+        /* only this discovery lost it: another may still see the device */
+        ItemEntry& entry = m_items[key];
+        entry.copies.removeAll(renderItem);
+        const bool selected = m_selectedItem && getItemKey(m_selectedItem) == key;
+        if (entry.renderItem == renderItem && !entry.copies.isEmpty()
+            && entry.renderItem != m_selectedItem)
         {
-            //only remove the item if we are using it
-            //and if we are actively scanning
-            if( m_selectedItem != renderItem && m_status == RendererManager::RUNNING )
-            {
-                qsizetype index = m_itemsIndex.indexOf(key);
-                emit q->beginRemoveRows({}, index, index);
-                m_items.remove(key);
-                m_itemsIndex.remove(index);
-                emit q->endRemoveRows();
-            }
+            entry.renderItem = entry.copies.first();
+            const auto row = q->index(m_itemsIndex.indexOf(key));
+            emit q->dataChanged(row, row);
+        }
+
+        //only remove the item if no discovery has it, if we are not
+        //using it, and if we are actively scanning
+        if( entry.copies.isEmpty() && !selected
+            && m_status == RendererManager::RUNNING )
+        {
+            qsizetype index = m_itemsIndex.indexOf(key);
+            emit q->beginRemoveRows({}, index, index);
+            m_items.remove(key);
+            m_itemsIndex.remove(index);
+            emit q->endRemoveRows();
         }
     }
 
@@ -1181,8 +1205,55 @@ void RendererManager::prepare()
     Q_D(RendererManager);
     if( std::exchange( d->m_prepared, true ) )
         return;
+    /* "Discover cast devices" off (Settings): it looks only when asked (the
+     * list opened, the Renderer menu), never by itself */
+    if( !d->p_intf->mainSettings->value( "redesign/discover-cast-devices", true ).toBool() )
+        return;
     if( d->p_intf->mainSettings->value( "redesign/cast-scanned", false ).toBool() )
         StartScan();
+}
+
+int RendererManager::hiddenCount() const
+{
+    Q_D(const RendererManager);
+    return d->m_hidden.size();
+}
+
+void RendererManager::hideDevice(int row)
+{
+    Q_D(RendererManager);
+    if (row < 0 || row >= d->m_itemsIndex.size())
+        return;
+    const QString key = d->m_itemsIndex[row];
+    const RendererItemPtr item = d->m_items.value(key).renderItem;
+    // the device playing stays (back to this computer first)
+    if (!item || item == d->m_selectedItem)
+        return;
+    const QString name = qfu(vlc_renderer_item_name(item.get()));
+    if (!d->m_hidden.contains(name, Qt::CaseInsensitive))
+        d->m_hidden.append(name);
+    d->p_intf->mainSettings->setValue( "redesign/cast-hidden-devices", d->m_hidden );
+    beginRemoveRows({}, row, row);
+    d->m_items.remove(key);
+    d->m_itemsIndex.remove(row);
+    endRemoveRows();
+    emit hiddenChanged();
+}
+
+void RendererManager::showHiddenDevices()
+{
+    Q_D(RendererManager);
+    if (d->m_hidden.isEmpty())
+        return;
+    d->m_hidden.clear();
+    d->p_intf->mainSettings->remove( "redesign/cast-hidden-devices" );
+    emit hiddenChanged();
+    // they were left out as they were found: looked for again
+    if (d->m_stop_scan_timer.isActive())
+    {
+        StopScan();
+        StartScan();
+    }
 }
 
 void RendererManager::StartScan()
@@ -1197,6 +1268,13 @@ void RendererManager::StartScan()
         return;
     }
     d->p_intf->mainSettings->setValue( "redesign/cast-scanned", true );
+
+    /* The discoveries of the last scan are gone (their items are not
+     * removed when they close): what each found is forgotten, so that a
+     * device the new ones lose leaves the list during this scan, not at its
+     * end (the row itself stays until then, see ItemEntry::currentScan) */
+    for (ItemEntry &entry : d->m_items)
+        entry.copies.clear();
 
     /* SD subnodes */
     char **ppsz_longnames;

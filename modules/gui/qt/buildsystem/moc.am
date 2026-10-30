@@ -9,8 +9,10 @@ nodist_libqt_plugin_la_SOURCES = \
 	dialogs/preferences/shortcuts_model.moc.cpp \
 	dialogs/preferences/config_model.moc.cpp \
 	dialogs/firstrun/onboarding.moc.cpp \
+	dialogs/firstrun/whats_new.moc.cpp \
 	dialogs/bookmarks/bookmarks.moc.cpp \
 	dialogs/dialogs/dialogmodel.moc.cpp \
+	dialogs/dialogs/redesign_tools.moc.cpp \
 	dialogs/dialogs_provider.moc.cpp \
 	dialogs/epg/EPGChannels.moc.cpp \
 	dialogs/epg/EPGProgram.moc.cpp \
@@ -104,6 +106,7 @@ nodist_libqt_plugin_la_SOURCES = \
 	player/delay_estimator.moc.cpp \
 	player/input_models.moc.cpp \
 	player/waveform.moc.cpp \
+	player/subtitle_cues.moc.cpp \
 	player/local_folder_model.moc.cpp \
 	player/sleep_timer.moc.cpp \
 	player/player_controller.moc.cpp \
@@ -115,6 +118,9 @@ nodist_libqt_plugin_la_SOURCES = \
 	playlist/playlist_model.moc.cpp \
 	util/asynctask.moc.cpp \
 	util/redesign_updater.moc.cpp \
+	iptv/iptv_addon.moc.cpp \
+	util/redesign_feedback.moc.cpp \
+	util/redesign_accent.moc.cpp \
 	util/subtitle_preferences.moc.cpp \
 	player/subtitle_finder.moc.cpp \
 	util/accessible_compat_attached.moc.cpp \

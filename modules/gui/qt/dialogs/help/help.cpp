@@ -101,11 +101,6 @@ AboutDialog::AboutDialog( qt_intf_t *_p_intf)
     qtr( "<p><b>Unofficial redesign build.</b> Interface designed by <a href=\"https://www.youtube.com/@juxtopposed\"><span style=\" text-decoration: underline; color:#0057ae;\">Juxtopposed</span></a> (<a href=\"https://www.youtube.com/watch?v=ERFeOgqk324\"><span style=\" text-decoration: underline; color:#0057ae;\">watch the redesign video</span></a>), from the <a href=\"https://www.figma.com/community/file/1691465999134370980\"><span style=\" text-decoration: underline; color:#0057ae;\">VLC Redesign</span></a> Figma file under <a href=\"https://creativecommons.org/licenses/by/4.0/\"><span style=\" text-decoration: underline; color:#0057ae;\">CC BY 4.0</span></a>, adapted to Qt. Not affiliated with or endorsed by VideoLAN or Juxtopposed.</p>" ) +
     "</body> </html>");
 
-    const QDate today = QDate::currentDate();
-    if( today.month() == 4 && today.day() == 1
-            && var_InheritBool( p_intf, "qt-icon-change" ) )
-        ui.VLCcone->setPixmap( QPixmap( ":/logo/vlc128-aprilfools.png" ) );
-
     ui.update->hide();
 
     /* GPL License */

@@ -44,6 +44,8 @@ class VLCVarChoiceModel : public QAbstractListModel
     Q_OBJECT
 public:
     Q_PROPERTY(bool hasCurrent READ hasCurrent NOTIFY hasCurrentChanged FINAL)
+    // the title of the current choice, empty without one (a combo box shows it)
+    Q_PROPERTY(QString currentText READ currentText NOTIFY currentTextChanged FINAL)
 
     template<typename T>
     VLCVarChoiceModel(T *p_object, const char* varName, QObject *parent = nullptr);
@@ -67,6 +69,7 @@ public:
 
     bool hasCurrent() const;
     int currentRow() const;
+    QString currentText() const;
 
     static int on_variable_callback( vlc_object_t * object, char const * , vlc_value_t oldvalue, vlc_value_t newvalue, void * data);
     static int on_variable_list_callback( vlc_object_t * object, char const * , int action, vlc_value_t* value, void * data);
@@ -82,6 +85,7 @@ signals:
     void dataUpdated(const vlc_object_t* object, QVariant oldvalue, QVariant newvalue, QPrivateSignal);
     void listUpdated(const vlc_object_t* object, int action, QVariant newvalue, QPrivateSignal);
     void hasCurrentChanged( bool );
+    void currentTextChanged();
 
 private:
     int updateData(const vlc_object_t* object, const vlc_value_t& oldvalue, const vlc_value_t& newvalue);
@@ -205,6 +209,7 @@ bool VLCVarChoiceModel::resetObject(T* p_object)
         m_current = newCurrent;
         emit hasCurrentChanged(newCurrent != -1);
     }
+    emit currentTextChanged();
 
     free(val_list);
     free(val_title);

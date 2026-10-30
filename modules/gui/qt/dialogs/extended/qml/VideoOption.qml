@@ -44,7 +44,7 @@ ColumnLayout {
     spacing: 0
 
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
-    function c(value) { return VLCStyle.redesign.color(value, value) }
+    function c(value) { return VLCStyle.redesign.color(value) }
     function hex(value) {
         const number = Number(value)
         return "#" + (Number.isFinite(number) ? number : 0).toString(16).padStart(6, "0").toUpperCase()
@@ -272,13 +272,16 @@ ColumnLayout {
                                     border.color: Qt.rgba(1, 1, 1, 0.2)
                                 }
                                 Impl.ColorImage {
+                                    // drawn at the size shown (an SVG: sharp at any scale and zoom)
+                                    sourceSize: Qt.size(width, height)
+                                    smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                                     visible: colorChoice.chosen
                                     anchors.right: parent.right
                                     anchors.rightMargin: root.px(13)
                                     anchors.verticalCenter: parent.verticalCenter
                                     width: root.px(24)
                                     height: width
-                                    source: "qrc:///redesign/track-check-active.png"
+                                    source: "qrc:///redesign/track-check-active.svg"
                                     color: VLCStyle.redesign.accentTint
                                 }
                             }
@@ -295,6 +298,9 @@ ColumnLayout {
                         blurRadius: 7.5 * VLCStyle.scale
                         color: Qt.rgba(0, 0, 0, 0.46)
                     }
+
+                    // the frame of the main window
+                    Widgets.RedesignWindowBorder { }
                 }
             }
         }
@@ -397,7 +403,8 @@ ColumnLayout {
             width: root.px(24)
             height: width
             sourceSize: Qt.size(width, height)
-            source: "qrc:///redesign/icons/chevron-down/default.png"
+            smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
+            source: "qrc:///redesign/icons/chevron-down/default.svg"
         }
     }
 

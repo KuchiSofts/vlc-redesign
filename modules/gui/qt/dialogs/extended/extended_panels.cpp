@@ -55,6 +55,7 @@
 #include "util/vlctick.hpp"
 
 #include "../../../../audio_filter/equalizer_presets.h"
+#include "menus/redesign_menu_style.hpp"
 #include <vlc_configuration.h>
 #include <vlc_modules.h>
 #include <vlc_plugin.h>
@@ -1545,7 +1546,7 @@ SyncControls::SyncControls( qt_intf_t *_p_intf, QWidget *_parent )
     updateButton->setAutoRaise( true );
     updateButton->setText("");
     updateButton->setToolTip(qtr( "Eject the disc" ));
-    updateButton->setIcon( QIcon( ":/menu/update.svg") );
+    updateButton->setIcon( RedesignMenuStyle::menuIcon( ":/menu/update.svg" ) );
     BUTTONACT( updateButton, &SyncControls::update );
 
     mainLayout->addWidget( updateButton, 0, 4, 1, 1 );

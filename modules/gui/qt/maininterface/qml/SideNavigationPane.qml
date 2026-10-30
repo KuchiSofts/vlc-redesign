@@ -122,19 +122,60 @@ T.Pane {
         onRequestData: (requestID, indexes) => setData(requestID, [{}])
     }
 
+    // a pinned folder or playlist: Unpin, then the menu of the sidebar
+    property string _menuPinKey: ""
+    Widgets.RedesignContextMenu {
+        id: pinMenu
+        parentItem: root
+        actions: [
+            { text: qsTr("Unpin from Sidebar"), icon: "close", action: () => sidebarItems.unpin(root._menuPinKey) },
+            { text: qsTr("Edit Sidebar…"), icon: "edit", action: () => root.editSidebar() }
+        ]
+        onRequestData: (requestID, indexes) => setData(requestID, [{}])
+    }
+
     TapHandler {
         acceptedButtons: Qt.RightButton
-        onTapped: (eventPoint) => sidebarMenu.popup([0], root.mapToGlobal(eventPoint.position))
+        onTapped: (eventPoint) => {
+            const p = root.mapToItem(listView.contentItem, eventPoint.position)
+            const index = listView.indexAt(p.x, p.y)
+            const row = index >= 0 ? root.entries[index] : null
+            if (row && row.pin) {
+                root._menuPinKey = row.key
+                pinMenu.popup([0], root.mapToGlobal(eventPoint.position))
+            } else {
+                sidebarMenu.popup([0], root.mapToGlobal(eventPoint.position))
+            }
+        }
+    }
+
+    // a pin's page: its path and its folder or playlist
+    function _pinMatches(row) {
+        if (!History.match(History.viewPath, row.uri) || !History.viewProp)
+            return false
+        if (row.pin.kind === "folder") {
+            const path = (link) => Helpers.localPathFromUrl(String(link)).replace(/[\/\\]+$/, "")
+            return !!History.viewProp.folderUrl && path(History.viewProp.folderUrl) === path(row.pin.url)
+        }
+        return History.viewProp.parentId !== undefined && String(History.viewProp.parentId) === String(row.pin.id)
     }
 
     // The entry of the page shown (-1: none, e.g. a folder page)
     property int matchedIndex: -1
     function updateCurrentIndex() {
         let matched = -1
+        let pinned = -1
         for (let i = 0; i < entries.length; ++i) {
-            if (History.match(History.viewPath, entries[i].uri))
+            if (entries[i].pin) {
+                if (pinned < 0 && _pinMatches(entries[i]))
+                    pinned = i
+            } else if (History.match(History.viewPath, entries[i].uri)) {
                 matched = i
+            }
         }
+        // a pinned folder or playlist before the page that holds it
+        if (pinned >= 0)
+            matched = pinned
         matchedIndex = matched
         listView.currentIndex = matched
     }
@@ -142,6 +183,8 @@ T.Pane {
     Connections {
         target: History
         function onViewPathChanged() { root.updateCurrentIndex() }
+        // one folder or playlist to another: the same path
+        function onViewPropChanged() { Qt.callLater(root.updateCurrentIndex) }
     }
 
     background: Rectangle {
@@ -213,6 +256,14 @@ T.Pane {
                     listView.currentIndex = index
                     root.matchedIndex = index
                     listView.forceActiveFocus(Qt.MouseFocusReason)
+                    // a pin: its folder or playlist (unless already shown)
+                    if (modelData.pin) {
+                        if (!root._pinMatches(modelData))
+                            History.push([...uri], modelData.pin.kind === "playlist" ? sidebarItems.playlistProps(modelData.pin)
+                                                                                     : modelData.props,
+                                         Qt.MouseFocusReason)
+                        return
+                    }
                     root.itemClicked(uri, this)
                 }
             }

@@ -388,8 +388,9 @@ public slots:
     // One step of the subtitle text scale as VLC's hotkeys make it (10 near
     // 100 %, 25 further, 25 to 500 %): direction > 0 larger, < 0 smaller,
     // 0 back to 100 %; the scale reached (announce: subtitleTextScaleStepped
-    // tells it, for a short message over the video)
-    Q_INVOKABLE int stepSubtitleTextScale( int direction, bool announce = true );
+    // tells it, for a short message over the video, with the shortcut of
+    // vlcKey when a key or the wheel did it)
+    Q_INVOKABLE int stepSubtitleTextScale( int direction, bool announce = true, int vlcKey = 0 );
 
     //title/chapters/menu
     TitleListModel* getTitles();
@@ -502,7 +503,7 @@ signals:
     void subtitlePositionChanged(int);
     void subtitleTextScaleChanged(int);
     // a key or the wheel changed it (Ctrl+wheel over the video): shown a moment
-    void subtitleTextScaleStepped(int scale);
+    void subtitleTextScaleStepped(int scale, const QString &shortcut);
 
     //title/chapters/menu
     void hasTitlesChanged( bool );

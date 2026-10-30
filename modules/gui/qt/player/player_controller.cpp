@@ -1877,7 +1877,7 @@ void PlayerController::setSubtitleTextScale(int scale)
     emit subtitleTextScaleChanged(scale);
 }
 
-int PlayerController::stepSubtitleTextScale(int direction, bool announce)
+int PlayerController::stepSubtitleTextScale(int direction, bool announce, int vlcKey)
 {
     int scale = 100;
     if (direction != 0)
@@ -1895,7 +1895,20 @@ int PlayerController::stepSubtitleTextScale(int direction, bool announce)
     }
     setSubtitleTextScale(scale);
     if (announce)
-        emit subtitleTextScaleStepped(scale);
+    {
+        // the shortcut, named as in Keyboard Shortcuts (the designer's OSD)
+        QString shortcut;
+        if (vlcKey != 0)
+        {
+            char *name = vlc_keycode2str(vlcKey, true);
+            if (name)
+            {
+                shortcut = qfu(name);
+                free(name);
+            }
+        }
+        emit subtitleTextScaleStepped(scale, shortcut);
+    }
     return scale;
 }
 

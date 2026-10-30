@@ -32,7 +32,8 @@ Live TV (playlists, Xtream Codes, the guide, catch-up, films and series), the ta
 detail), the designer's credit and *What's new*. An automatic tour of every screen (phone and tablets, dark and
 light, English, Hebrew and German) found no crash. Left before its first release:
 
-- 🔨 Live TV: a guide from a server that answers in HTTP/1.0 does not load (under investigation)
+- ✅ Live TV: a guide from a server that answers in HTTP/1.0 — the failure seen once did not come back (10 loads in a
+  row); a failed download now logs where it broke
 - ✅ Live TV: the day shown above the guide on a phone (it said *Tomorrow* after *Now* late in the evening)
 - 🔨 Three screens kept in memory after they close (a leak to remove)
 - 🔨 The light theme, the borders of the dialogs and the icons as sharp as on the desktop (parity with Windows)

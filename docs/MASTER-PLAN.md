@@ -12,6 +12,11 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-10-30):
 
+- 🟡 **Tests on real Linux PCs** (2026-10-30): the released 0.4.1 AppImage on two Intel servers (Iris Xe; UHD 600),
+  as a user: version, H.264/HEVC/VP9/AV1 to the end, VA-API (iHD) for H.264/HEVC, Live TV, the Qt interface under
+  Xvfb with no QML warning. Found and fixed: on the UHD 600, H.264 stopped VLC (hw_first reloaded with threads and
+  tried the hardware again: libavcodec 60's hwaccel_threadsafe assertion) — software once the hardware failed;
+  the pipeline cache warning at a first start. The Flatpak is built and tested in the Linux workflow.
 - 🟡 **0.5.0 and the Android app** (2026-10-30): the version is 0.5.0; first the Android app to its first release
   (the HTTP/1.0 guide, a leak of three screens, parity of the light theme, borders and icons, 9 languages). The
   roadmap shows the progress of each program, and the wiki has the same on its *Roadmap* page (the upload check

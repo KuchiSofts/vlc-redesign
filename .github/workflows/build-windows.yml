@@ -34,9 +34,9 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
 
@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 300
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
         with:
           # the prebuilt contrib archive is named after the commit that last
           # touched contrib/ and the packaging
@@ -86,7 +86,7 @@ jobs:
 
       # (pull requests too: the launch test runs on it)
       - name: Upload the package
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: vlc-redesign-win64-${{ github.sha }}
           path: out
@@ -96,7 +96,7 @@ jobs:
       # SYMBOLS in win64-docker.sh): with them, the offsets in a crash dump of
       # the launch test name functions
       - name: Upload the symbol maps
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: vlc-redesign-win64-symbols-${{ github.sha }}
           path: symbols
@@ -110,11 +110,11 @@ jobs:
     runs-on: windows-2022
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
         with:
           sparse-checkout: extras/juxtopposed/ci
 
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v8
         with:
           name: vlc-redesign-win64-${{ github.sha }}
           path: package
@@ -139,7 +139,7 @@ jobs:
 
       - name: Upload the logs
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: launch-test-${{ github.sha }}
           path: |
@@ -155,7 +155,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 300
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
@@ -202,7 +202,7 @@ jobs:
           "$RUNNER_TEMP/pe/bin/python" extras/juxtopposed/ci/pe-check.py out --arch arm64
 
       - name: Upload the package
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: vlc-redesign-winarm64-${{ github.sha }}
           path: out
@@ -217,11 +217,11 @@ jobs:
     runs-on: windows-11-arm
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
         with:
           sparse-checkout: extras/juxtopposed/ci
 
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v8
         with:
           name: vlc-redesign-winarm64-${{ github.sha }}
           path: package
@@ -241,7 +241,7 @@ jobs:
 
       - name: Upload the logs
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: launch-test-arm64-${{ github.sha }}
           path: |
@@ -261,14 +261,14 @@ jobs:
     runs-on: windows-11-arm
     timeout-minutes: 40
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
         with:
           sparse-checkout: |
             extras/juxtopposed/ci
             extras/juxtopposed/installer
             modules/gui/qt/util
 
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v8
         with:
           name: vlc-redesign-winarm64-${{ github.sha }}
           path: package
@@ -313,7 +313,7 @@ jobs:
 
       - name: Upload the logs and screenshots
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: install-test-arm64-${{ github.sha }}
           path: |
@@ -340,7 +340,7 @@ jobs:
     outputs:
       version: ${{ steps.version.outputs.version }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
         with:
           sparse-checkout: |
             extras/juxtopposed/release
@@ -362,7 +362,7 @@ jobs:
           test -n "$version"
           echo "version=$version" >> "$GITHUB_OUTPUT"
 
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v8
         with:
           name: vlc-redesign-win64-${{ github.sha }}
           path: package
@@ -372,7 +372,7 @@ jobs:
 
       - name: Upload the package to sign
         id: unsigned
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: vlc-redesign-win64-unsigned-${{ github.sha }}
           path: package
@@ -408,7 +408,7 @@ jobs:
           done < ../files.txt
 
       - name: Upload the signed package
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: vlc-redesign-win64-${{ inputs.sign }}-${{ github.sha }}
           path: signed
@@ -429,18 +429,18 @@ jobs:
     env:
       VERSION: ${{ needs.sign.outputs.version }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
         with:
           sparse-checkout: |
             extras/juxtopposed
             modules/gui/qt/util
 
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v8
         with:
           name: vlc-redesign-win64-${{ inputs.sign }}-${{ github.sha }}
           path: package
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
 
@@ -476,7 +476,7 @@ jobs:
 
       - name: Upload the installer to sign
         id: unsigned
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: vlc-redesign-setup-unsigned-${{ github.sha }}
           path: dist/vlc-redesign-${{ env.VERSION }}-win64-setup.exe
@@ -519,7 +519,7 @@ jobs:
           Get-ChildItem release | Format-Table Name, Length
 
       - name: Upload the release files
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: vlc-redesign-${{ env.VERSION }}-${{ inputs.sign }}-${{ github.sha }}
           path: release

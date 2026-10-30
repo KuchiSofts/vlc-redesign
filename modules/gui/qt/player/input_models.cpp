@@ -47,7 +47,17 @@ QVariant TrackListModel::data(const QModelIndex &index, int role) const
     if (row >= m_data.size())
         return QVariant{};
     if (role == Qt::DisplayRole)
+    {
+        // a file linked to the media (Add Subtitles, From the Internet) is
+        // known as found online a moment after its track: its release then
+        if (m_data[row].m_external)
+        {
+            const QString loaded = SubtitleFinder::externalTitle(vlc_es_id_GetStrId(m_data[row].m_id.get()));
+            if (!loaded.isEmpty())
+                return loaded;
+        }
         return m_data[row].m_title;
+    }
     else if (role == Qt::CheckStateRole)
         return QVariant::fromValue<bool>(m_data[row].m_selected);
     else if (role == ExternalRole)

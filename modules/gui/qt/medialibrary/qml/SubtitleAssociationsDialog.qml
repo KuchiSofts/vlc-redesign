@@ -13,7 +13,9 @@ import QtQuick.Controls.impl as Impl
 
 import VLC.MainInterface
 import VLC.MediaLibrary
+import VLC.Player
 import VLC.Style
+import VLC.Util
 import VLC.Widgets as Widgets
 import VLC.Network as Network
 
@@ -38,13 +40,27 @@ Widgets.RedesignDialog {
                                        : qsTr("To This File")
     // audio files (the folder menu's "Edit Audio Tracks"): from the computer
     property bool audio: false
-    // 0 the computer, 1 a link, 2 OpenSubtitles
+    // 0 the computer, 1 a link, 2 the internet: OpenSubtitles (its account)
+    // for one media, the services of the player for several (batch)
     property int originIndex: 0
-    readonly property bool online: originIndex === 2
+    readonly property bool online: originIndex === 2 && singleMedia
     readonly property bool singleMedia: associations.destinations.length === 1
-    // a download is linked to the one media only (match() links files of
-    // other names to no media of several): no OpenSubtitles for a folder
-    onSingleMediaChanged: if (!singleMedia && originIndex === 2) originIndex = 0
+    // a folder, a season or a playlist: each of its videos searched as the
+    // player searches the one playing, the subtitles chosen linked to it
+    readonly property bool batchMode: originIndex === 2 && !singleMedia && !audio
+    // (OpenSubtitles' search is of one media, the batch of several)
+    onSingleMediaChanged: if (originIndex === 2) originIndex = 0
+    // the videos of the target: searched again when it changes
+    readonly property string _destinationKey: associations.destinations.map(destination => String(destination.url)).join("\n")
+    on_DestinationKeyChanged: if (batchMode) batch.start(associations.destinations)
+    onBatchModeChanged: {
+        if (batchMode)
+            batch.start(associations.destinations)
+        else
+            batch.cancel()
+    }
+    // what the downloads ended with, when some failed (else it closes)
+    property string _batchResult: ""
     // "The_Wand_S01E01.mp4" searched as "The Wand S01E01"
     readonly property string mediaQuery: associations.destinations.length === 1
         ? String(associations.destinations[0].label).replace(/\.[^.]*$/, "").replace(/[_.]+/g, " ").trim()
@@ -56,6 +72,8 @@ Widgets.RedesignDialog {
     readonly property bool readyToSave: {
         if (associations.busy || service.busy)
             return false
+        if (root.batchMode)
+            return batch.chosenCount > 0 && !batch.downloading
         if (root.online)
             return onlineSelection >= 0 && root.singleMedia
         const rows = associations.sources
@@ -78,11 +96,12 @@ Widgets.RedesignDialog {
     bodyHeight: VLCStyle.dp(632, VLCStyle.scale)
     bodyHorizontalPadding: 0
     bodyVerticalPadding: 0
-    acceptText: qsTr("Save")
+    // "Download 12": the subtitles chosen for the videos
+    acceptText: root.batchMode ? qsTr("Download %1").arg(batch.chosenCount) : qsTr("Save")
     acceptEnabled: readyToSave
     // the dialog closes once saved
     closeOnAccept: false
-    closePolicy: associations.busy ? T.Popup.NoAutoClose : T.Popup.CloseOnEscape
+    closePolicy: associations.busy || batch.downloading ? T.Popup.NoAutoClose : T.Popup.CloseOnEscape
 
     function openFor(itemId) {
         const serialized = itemId.toString()
@@ -109,7 +128,10 @@ Widgets.RedesignDialog {
     }
 
     onAccepted: {
-        if (root.online) {
+        if (root.batchMode) {
+            root._batchResult = ""
+            batch.download()
+        } else if (root.online) {
             root._saveAfterDownload = true
             service.download(root.onlineSelection, apiKeyField.text, usernameField.text, passwordField.text)
         } else {
@@ -129,6 +151,9 @@ Widgets.RedesignDialog {
     onClosed: {
         associations.cancel()
         service.cancel()
+        // (the searches and downloads going on stopped)
+        batch.cancel()
+        root._batchResult = ""
         service.rememberAccount(apiKeyField.text, usernameField.text, passwordField.text)
         onlineSelection = -1
         _saveAfterDownload = false
@@ -146,6 +171,20 @@ Widgets.RedesignDialog {
                 if (error.length === 0)
                     save()
             }
+        }
+    }
+
+    MLSubtitleBatch {
+        id: batch
+        ml: MediaLib
+        finder: SubtitleFinder
+        // all linked: done; else what failed stays in the list
+        onFinished: (linked, failed) => {
+            if (failed === 0 && linked > 0)
+                root.close()
+            else
+                root._batchResult = linked > 0 ? qsTr("%1 linked, %2 failed.").arg(linked).arg(failed)
+                                                : qsTr("Nothing was linked: %1 failed.").arg(failed)
         }
     }
 
@@ -245,12 +284,16 @@ Widgets.RedesignDialog {
         id: dropdown
 
         property string shownText: displayText
+        // the list under it: as wide (at least), from its start; wider and
+        // from its end for the long names of the batch's subtitles
+        property real popupWidth: VLCStyle.dp(200, VLCStyle.scale)
+        property bool popupFromEnd: false
 
         Layout.preferredWidth: VLCStyle.dp(200, VLCStyle.scale)
         Layout.preferredHeight: VLCStyle.dp(34, VLCStyle.scale)
         textRole: "label"
         // (a target chosen while downloading would save, then cancel it)
-        enabled: !associations.busy && !service.busy
+        enabled: !associations.busy && !service.busy && !batch.downloading
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
         // the chevron at the end: on the left in a right to left layout
@@ -305,9 +348,9 @@ Widgets.RedesignDialog {
         }
         popup: T.Popup {
             // under the box, from its end in a right to left layout
-            x: dropdown.mirrored ? dropdown.width - width : 0
+            x: dropdown.mirrored !== dropdown.popupFromEnd ? dropdown.width - width : 0
             y: dropdown.height + VLCStyle.dp(4, VLCStyle.scale)
-            width: Math.max(dropdown.width, VLCStyle.dp(200, VLCStyle.scale))
+            width: Math.max(dropdown.width, dropdown.popupWidth)
             implicitHeight: Math.min(contentItem.implicitHeight + topPadding + bottomPadding,
                                      VLCStyle.dp(32 * 10 + 4, VLCStyle.scale))
             padding: VLCStyle.dp(2, VLCStyle.scale)
@@ -531,7 +574,7 @@ Widgets.RedesignDialog {
                 model: root.audio ? [qsTr("From Computer")]
                                   : root.singleMedia
                                     ? [qsTr("From Computer"), qsTr("From Link"), qsTr("From OpenSubtitles")]
-                                    : [qsTr("From Computer"), qsTr("From Link")]
+                                    : [qsTr("From Computer"), qsTr("From Link"), qsTr("From the Internet")]
                 currentIndex: root.originIndex
                 onActivated: (index) => {
                     root.originIndex = index
@@ -632,6 +675,40 @@ Widgets.RedesignDialog {
                 model: root.languages
                 currentIndex: 0
             }
+
+            // the internet, for several videos: the language looked for
+            // (else the second one, SubtitlePreferences) and the services
+            // asked (as the player's subtitle panel has them)
+            HeaderField {
+                id: batchField
+                objectName: "subtitleBatchField"
+                Layout.fillWidth: true
+                visible: root.batchMode
+                iconSource: "qrc:///redesign/icons/search/default.svg"
+
+                readonly property string languages: {
+                    const first = batch.language !== "" ? SubtitlePreferences.name(batch.language) : ""
+                    const second = batch.secondLanguage !== "" ? SubtitlePreferences.name(batch.secondLanguage) : ""
+                    return second !== "" ? qsTr("%1, else %2").arg(first).arg(second) : first
+                }
+                readonly property string text: {
+                    const services = SubtitleFinder.services.filter(service => service.enabled)
+                                                            .map(service => service.name)
+                    return services.length > 0 ? languages + " · " + services.join(", ")
+                                               : qsTr("Every subtitle service is off (Subtitles panel of the player)")
+                }
+
+                CenteredText {
+                    id: batchFieldText
+                    anchors.fill: parent
+                    text: batchField.text
+                }
+                // elided: in full under the pointer
+                HoverHandler { id: batchFieldHover }
+                T.ToolTip.visible: batchFieldHover.hovered && batchFieldText.truncated
+                T.ToolTip.text: batchField.text
+                T.ToolTip.delay: 650
+            }
         }
     ]
 
@@ -653,7 +730,7 @@ Widgets.RedesignDialog {
 
             objectName: "subtitlePairs"
             anchors.fill: parent
-            visible: !root.online && !root.singleMedia
+            visible: !root.online && !root.singleMedia && !root.batchMode
             clip: true
             topMargin: VLCStyle.dp(22, VLCStyle.scale)
             boundsBehavior: Flickable.StopAtBounds
@@ -877,6 +954,192 @@ Widgets.RedesignDialog {
             }
         }
 
+        // the internet, for several videos: each with what was found for
+        // it, the subtitle to download chosen in its dropdown; under them,
+        // how far the searches (or the downloads) are
+        ColumnLayout {
+            anchors.fill: parent
+            anchors.topMargin: VLCStyle.dp(22, VLCStyle.scale)
+            anchors.bottomMargin: VLCStyle.dp(12, VLCStyle.scale)
+            visible: root.batchMode
+            spacing: VLCStyle.dp(8, VLCStyle.scale)
+
+            ListView {
+                id: batchList
+
+                objectName: "subtitleBatchList"
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                clip: true
+                boundsBehavior: Flickable.StopAtBounds
+                model: batch
+
+                T.ScrollBar.vertical: Widgets.ScrollBarExt { }
+
+                delegate: Item {
+                    id: batchRow
+
+                    required property int index
+                    required property string label
+                    required property int rowState
+                    required property string title
+                    required property var candidates
+                    required property int choice
+                    required property string error
+
+                    readonly property bool choosing: rowState === MLSubtitleBatch.Exact
+                                                     || rowState === MLSubtitleBatch.Guess
+                    readonly property bool hasChoice: choosing || ((rowState === MLSubtitleBatch.Downloading
+                                                                    || rowState === MLSubtitleBatch.Linked)
+                                                                   && choice >= 0)
+                    readonly property bool busy: rowState === MLSubtitleBatch.Searching
+                                                 || rowState === MLSubtitleBatch.Downloading
+                    readonly property bool done: rowState === MLSubtitleBatch.Linked
+                                                 || (rowState === MLSubtitleBatch.Exact && choice === 0)
+                    readonly property string status: {
+                        switch (rowState) {
+                        case MLSubtitleBatch.Waiting: return qsTr("Waiting…")
+                        case MLSubtitleBatch.Searching: return qsTr("Searching…")
+                        // (the accent badge of the player's list)
+                        case MLSubtitleBatch.Exact: return qsTr("For this file")
+                        case MLSubtitleBatch.Guess: return title !== "" ? title : qsTr("Best guess")
+                        case MLSubtitleBatch.NotFound: return qsTr("Not found")
+                        case MLSubtitleBatch.Failed: return error !== "" ? error : qsTr("No answer")
+                        case MLSubtitleBatch.Downloading: return qsTr("Downloading…")
+                        case MLSubtitleBatch.Linked: return qsTr("Linked")
+                        }
+                        return ""
+                    }
+
+                    width: batchList.width
+                    height: VLCStyle.dp(40, VLCStyle.scale)
+
+                    // the video, as the folder's list shows its media
+                    DimIcon {
+                        anchors.left: parent.left
+                        anchors.leftMargin: VLCStyle.dp(30, VLCStyle.scale)
+                        y: VLCStyle.dp(8, VLCStyle.scale)
+                        source: "qrc:///redesign/icons/video/dim.svg"
+                    }
+                    CenteredText {
+                        id: batchName
+                        anchors.left: parent.left
+                        anchors.leftMargin: VLCStyle.dp(30 + 24 + 14, VLCStyle.scale)
+                        y: VLCStyle.dp(8, VLCStyle.scale)
+                        width: VLCStyle.dp(519 - 68 - 14, VLCStyle.scale)
+                        height: VLCStyle.dp(24, VLCStyle.scale)
+                        text: batchRow.label
+                    }
+
+                    // what was found: from the middle, as the files of the
+                    // folder's list (20 from it, 20 from the end)
+                    RowLayout {
+                        anchors.left: parent.left
+                        anchors.leftMargin: VLCStyle.dp(519 + 20, VLCStyle.scale)
+                        anchors.right: parent.right
+                        anchors.rightMargin: VLCStyle.dp(20, VLCStyle.scale)
+                        y: VLCStyle.dp(4, VLCStyle.scale)
+                        height: VLCStyle.dp(32, VLCStyle.scale)
+                        spacing: VLCStyle.dp(8, VLCStyle.scale)
+
+                        Item {
+                            Layout.preferredWidth: VLCStyle.redesign.iconSize
+                            Layout.preferredHeight: VLCStyle.redesign.iconSize
+
+                            // made for this file, or linked: the accent check
+                            Impl.ColorImage {
+                                anchors.fill: parent
+                                visible: batchRow.done
+                                sourceSize: Qt.size(width, height)
+                                source: "qrc:///redesign/icons/check/active.svg"
+                                color: VLCStyle.redesign.accentTint
+                                smooth: false
+                            }
+                            // a search or a download going on
+                            Rectangle {
+                                anchors.centerIn: parent
+                                visible: batchRow.busy
+                                width: VLCStyle.dp(8, VLCStyle.scale)
+                                height: width
+                                radius: width / 2
+                                color: VLCStyle.redesign.accent
+                                SequentialAnimation on opacity {
+                                    running: batchRow.busy
+                                    loops: Animation.Infinite
+                                    NumberAnimation { from: 1; to: 0.25; duration: 600; easing.type: Easing.InOutQuad }
+                                    NumberAnimation { from: 0.25; to: 1; duration: 600; easing.type: Easing.InOutQuad }
+                                }
+                            }
+                        }
+
+                        CenteredText {
+                            id: batchStatus
+                            // the rest of the row when there is nothing to choose
+                            Layout.fillWidth: !batchRow.hasChoice
+                            Layout.preferredWidth: batchRow.hasChoice ? VLCStyle.dp(160, VLCStyle.scale) : -1
+                            Layout.fillHeight: true
+                            text: batchRow.status
+                            color: batchRow.rowState === MLSubtitleBatch.Failed
+                                   ? VLCStyle.redesign.accent
+                                   : batchRow.rowState === MLSubtitleBatch.Exact || batchRow.rowState === MLSubtitleBatch.Linked
+                                     ? VLCStyle.redesign.color("#C6C6C6", "#2e2e2e")
+                                     : VLCStyle.redesign.color("#969696", "#4d4d4d")
+
+                            // elided (a long title, an error): in full under the pointer
+                            HoverHandler { id: statusHover }
+                            T.ToolTip.visible: statusHover.hovered && (truncated || batchRow.error !== "")
+                            T.ToolTip.text: batchRow.error !== "" && batchRow.error !== text
+                                            ? text + "\n" + batchRow.error : text
+                            T.ToolTip.delay: 650
+                        }
+
+                        // the subtitle to download: the best first, or none
+                        HeaderDropdown {
+                            id: batchChoice
+                            objectName: "subtitleBatchChoice"
+                            Layout.fillWidth: true
+                            Layout.preferredWidth: -1
+                            Layout.preferredHeight: VLCStyle.dp(32, VLCStyle.scale)
+                            visible: batchRow.hasChoice
+                            popupWidth: VLCStyle.dp(520, VLCStyle.scale)
+                            popupFromEnd: true
+                            enabled: batchRow.choosing && !batch.downloading
+                            model: batchRow.candidates.map(candidate => ({
+                                label: candidate.label + " · " + candidate.detail })).concat([{ label: qsTr("Don't download") }])
+                            currentIndex: batchRow.choice >= 0 ? batchRow.choice : batchRow.candidates.length
+                            onActivated: (index) => batch.choose(batchRow.index,
+                                                                 index >= batchRow.candidates.length ? -1 : index)
+                            Accessible.name: qsTr("Subtitle for %1").arg(batchRow.label)
+                        }
+                    }
+                }
+            }
+
+            // how far it is
+            CenteredText {
+                objectName: "subtitleBatchStatus"
+                Layout.fillWidth: true
+                Layout.leftMargin: VLCStyle.dp(30, VLCStyle.scale)
+                Layout.rightMargin: VLCStyle.dp(20, VLCStyle.scale)
+                Layout.preferredHeight: VLCStyle.dp(24, VLCStyle.scale)
+                visible: batch.total > 0
+                color: root._batchResult !== "" ? VLCStyle.redesign.accent : VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
+                text: {
+                    if (root._batchResult !== "")
+                        return root._batchResult
+                    if (batch.downloading)
+                        return qsTr("Downloading and linking the subtitles chosen…")
+                    if (batch.searching)
+                        return qsTr("Searching the internet: %1 of %2 videos done…").arg(batch.searched).arg(batch.total)
+                    let text = qsTr("For the file: %1 · By title: %2 · Not found: %3")
+                                   .arg(batch.exactCount).arg(batch.guessCount).arg(batch.notFoundCount)
+                    if (batch.failedCount > 0)
+                        text += " · " + qsTr("No answer: %1").arg(batch.failedCount)
+                    return text
+                }
+            }
+        }
+
         // nothing to show: why (a longer text, a translation or an error,
         // on more lines, the block centred)
         CenteredText {
@@ -893,6 +1156,8 @@ Widgets.RedesignDialog {
             text: {
                 if (associations.error.length > 0)
                     return associations.error
+                if (root.batchMode)
+                    return associations.busy ? qsTr("Working on subtitles…") : ""
                 if (root.online) {
                     if (service.error.length > 0)
                         return service.error

@@ -17,22 +17,23 @@
 #include <functional>
 
 #include "qt.hpp"
-#include "player/subtitle_providers.hpp"
+#include "player/subtitle_search.hpp"
 
 class PlayerController;
+class QSettings;
 class SubtitlePreferences;
 
-// Subtitles from the internet: the video is identified (its file name read
-// for the title, the year, the season and episode; IMDb's suggestions, else
-// Wikidata, then Stremio's Cinemeta, give its IMDb id), then the free
-// services (SubtitleProviders: OpenSubtitles, Wizdom for Hebrew, Addic7ed
-// for series, YIFY for movies) are asked together; their subtitles of every
-// language are listed, those made for this very file first (OpenSubtitles
-// hash), each with the service it comes from. One loads in a click,
-// unpacked and converted to UTF-8, kept in VLC's cache and remembered for
-// the file. When a video starts without subtitles in the user's language
-// (SubtitlePreferences), the best one loads by itself: of the default
-// language, else of the second one.
+// Subtitles from the internet for the media playing: SubtitleSearch
+// identifies the video (its file name read for the title, the year, the
+// season and episode; IMDb's suggestions, else Wikidata, then Stremio's
+// Cinemeta, give its IMDb id), asks the free services together
+// (SubtitleProviders: OpenSubtitles, Wizdom for Hebrew, Addic7ed for series,
+// YIFY for movies) and ranks their subtitles of every language, those made
+// for this very file first (OpenSubtitles hash), each with the service it
+// comes from. One loads in a click, unpacked and converted to UTF-8, kept
+// in VLC's cache and remembered for the file. When a video starts without
+// subtitles in the user's language (SubtitlePreferences), the best one
+// loads by itself: of the default language, else of the second one.
 class SubtitleFinder : public QObject
 {
     Q_OBJECT
@@ -69,10 +70,10 @@ public:
                    QObject *parent = nullptr);
     ~SubtitleFinder() override;
 
-    State state() const { return m_state; }
-    QString matchTitle() const;
-    QString errorText() const { return m_error; }
-    QVariantList results() const { return m_results; }
+    State state() const { return State(m_search->state()); }
+    QString matchTitle() const { return m_search->matchTitle(); }
+    QString errorText() const { return m_search->errorText(); }
+    QVariantList results() const { return m_search->results(); }
     QString loadingId() const { return m_loadingId; }
     QStringList loadedIds() const { return m_loadedIds; }
     QVariantList titleResults() const { return m_titleResults; }
@@ -80,6 +81,12 @@ public:
     bool supported() const;
     QVariantList services() const;
     bool serviceEnabled(const QString &id) const;
+    // A search of the subtitles of another video, played or not (the Add
+    // Subtitles dialog's, for each video of a folder): the user's languages
+    // and services
+    SubtitleSearch *newSearch(QObject *parent) const;
+    SubtitlePreferences *preferences() const { return m_preferences; }
+    QSettings *settings() const;
     // Searches without being asked (a video starts, the subtitles menu
     // opens): the user's setting, once the user was asked about it (the
     // first-run setup, the installer)
@@ -126,51 +133,14 @@ signals:
     void downloadFailed(const QString &error);
 
 private:
-    struct Match
-    {
-        QString imdb;     // tt…
-        QString title;
-        int year = 0;
-        bool series = false;
-        // the user's choice, or the same title with its year (or episode,
-        // or two words or more): subtitles of it are loaded by themselves.
-        // A guess from a name alone (silent.mp4 → "Silent Hill") is only
-        // offered in the list
-        bool strong = false;
-    };
-    struct Media
-    {
-        QString url;      // as the player has it
-        QString path;     // local file, empty otherwise
-        QString name;     // file name, or the media's name
-        QString key;      // the file (hash and size), or its URL
-        QString hash;     // OpenSubtitles hash, empty if not a local file
-        qint64 size = 0;
-        QString title;    // from the name
-        int year = 0;
-        int season = -1;
-        int episode = -1;
-        QStringList tokens; // of the release (2160p, web, yts…)
-        double fps = 0;
-    };
-
-    void setState(State state, const QString &error = {});
     void onInputChanged(bool hasInput);
     // the subtitle files next to the video (and in its subtitle folders)
     void scanFolder();
     void onStarted();
+    // the media playing given to m_search (its name read, its file hashed),
+    // then next()
     void prepareMedia(std::function<void()> next);
-    void identify();
-    void searchImdb(const QString &query, bool forMedia);
-    void searchTitles(const QString &query, bool forMedia);
-    // the best of them for the media; otherwise() when none fits it
-    void onTitles(const QVariantList &candidates, bool forMedia, std::function<void()> otherwise = {});
-    void searchCinemeta();
-    void querySubtitles();
-    void onProviderDone(const QString &id, const QList<SubtitleProviders::Result> &results,
-                        const QString &error);
-    void rebuildResults();
-    void finishSearch();
+    void onSearchFinished();
     void autoPick();
     void attach(const QString &file, const QString &id, const QString &language, bool select,
                 bool alongside = false);
@@ -179,15 +149,11 @@ private:
     void downloadNext();
     // the secondary language shown too (SubtitlePreferences::showBoth)
     void ensureSecondary();
-    // the best subtitle of a language that can be loaded by itself: made
-    // for this file (its hash), or of a title identified for sure
-    QVariantMap bestOf(const QString &language) const;
-    bool strongTitle(double similarity, int year, bool series) const;
     // the best one of the language the user picks most (learned), unless
     // the video has it (local) or one is loaded
     QVariantMap bestOfLearned(const QStringList &local) const;
-    // the subtitle chosen for this file last time ({ file, id, language }), if
-    // its file is still there
+    // the subtitle chosen for this file last time ({ file, id, language,
+    // release, service }), if its file is still there
     QStringList rememberedChoice() const;
     bool hasTrackOf(const QString &file) const;
     // the track of the file just added, once VLC lists it: shown
@@ -198,14 +164,12 @@ private:
     qt_intf_t *m_intf;
     PlayerController *m_player;
     SubtitlePreferences *m_preferences;
+    // the media playing's: identified, its subtitles found and downloaded
+    SubtitleSearch *m_search;
     QTimer m_startTimer;
+    // the media playing (an answer for the one before is dropped)
     quint64 m_revision = 0;
-    State m_state = Idle;
-    QString m_error;
-    Media m_media;
-    Match m_match;
     bool m_autoPending = false;
-    QVariantList m_results;
     QString m_loadingId;
     QStringList m_loadedIds;
     QVariantList m_titleResults;
@@ -214,17 +178,4 @@ private:
     bool m_selectAlongside = false;
     // downloads waiting for the one going on: { id, alongside }
     QList<QPair<QString, bool>> m_queue;
-    // the download going on (its answer is dropped once the media changed)
-    quint64 m_downloadRevision = 0;
-    // the search going on (its answers after another starts are dropped)
-    quint64 m_searchRevision = 0;
-    QList<SubtitleProviders::Result> m_found;
-    struct Run
-    {
-        bool busy = false;
-        int count = 0;
-        QString error;
-    };
-    QHash<QString, Run> m_runs;
-    int m_pending = 0;
 };

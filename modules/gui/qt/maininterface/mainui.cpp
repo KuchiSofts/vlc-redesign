@@ -33,6 +33,7 @@
 #include "medialibrary/mlbookmarkmodel.hpp"
 #include "medialibrary/mlsubtitleassociations.hpp"
 #include "medialibrary/mlopensubtitles.hpp"
+#include "medialibrary/mlsubtitlebatch.hpp"
 
 #include "player/player_controller.hpp"
 #include "player/waveform.hpp"
@@ -587,6 +588,7 @@ void MainUI::registerQMLTypes()
         qmlRegisterType<MLBookmarkModel>( uri, versionMajor, versionMinor, "MLBookmarkModel" );
         qmlRegisterType<MLSubtitleAssociations>(uri, versionMajor, versionMinor, "MLSubtitleAssociations");
         qmlRegisterType<MLOpenSubtitles>(uri, versionMajor, versionMinor, "MLOpenSubtitles");
+        qmlRegisterType<MLSubtitleBatch>(uri, versionMajor, versionMinor, "MLSubtitleBatch");
 
         qmlRegisterType<NetworkMediaModel>( uri, versionMajor, versionMinor, "NetworkMediaModel");
         qmlRegisterType<NetworkDeviceModel>( uri, versionMajor, versionMinor, "NetworkDeviceModel");

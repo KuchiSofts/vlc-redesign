@@ -138,11 +138,17 @@ void vout_OSDMessageVa(vout_thread_t *vout, int channel,
     char *string;
     if (vasprintf(&string, format, args) != -1) {
         /* VLC Redesign: the shortcut that did it, on a line of its own (the
-         * designer's OSD): the actions set the key while its action runs */
-        uint_fast32_t key = var_GetInteger(vlc_object_instance(vout),
-                                           "key-action-keycode");
-        if (key != 0 && channel == VOUT_SPU_CHANNEL_OSD) {
+         * designer's OSD): the key of an action pressed just before (the
+         * volume's message comes a moment after its key, from the output) */
+        libvlc_int_t *libvlc = vlc_object_instance(vout);
+        uint_fast32_t key = var_GetInteger(libvlc, "key-action-keycode");
+        vlc_tick_t date = var_GetInteger(libvlc, "key-action-date");
+        if (key != 0 && channel == VOUT_SPU_CHANNEL_OSD
+         && vlc_tick_now() - date < VLC_TICK_FROM_MS(500)) {
             char *name = vlc_keycode2str(key, true);
+            /* a letter as on the key: "A", not "a" */
+            if (name != NULL && name[0] >= 'a' && name[0] <= 'z' && name[1] == '\0')
+                name[0] -= 'a' - 'A';
             char *both;
             if (name != NULL && asprintf(&both, "%s\n%s", string, name) != -1) {
                 free(string);

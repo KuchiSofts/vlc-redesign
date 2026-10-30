@@ -36,7 +36,7 @@ T.MenuItem {
     readonly property var _duoIcons: [
         "add", "album", "audio", "backward-10", "capture-device", "close", "disc", "edit", "export", "faster",
         "favorite", "file", "folder", "folder-add", "folder-open", "forward-10", "go-to", "help", "hotkeys", "info-small", "info",
-        "lists", "mark-watched", "next", "open", "paint", "pause", "play", "playback-settings", "playback",
+        "lists", "mark-watched", "next", "open", "paint", "pause", "pin", "play", "playback-settings", "playback",
         "playlist", "plugins", "previous", "profile", "queue", "quit", "recent", "record", "remove",
         "settings", "shuffle", "slower", "spectrum", "stop", "streaming", "subtitle", "subtitles", "swap",
         "sync", "tv", "ui", "video", "view", "volume-high", "volume-low", "volume-muted"

@@ -12,6 +12,14 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-10-30):
 
+- 🟢 **Android Live TV guide: the day under the buttons** (2026-10-30): on a phone the grid shows half of the hours and
+  the day was taken half the full window ahead (after *Now* at 22:40: *Tomorrow*); now the middle of what shows.
+  Checked on the emulator at 22:40: Today, Later Today, Later Tomorrow, Now Today.
+- 🔴 **Android Live TV: a guide from a server that answers in HTTP/1.0** (2026-10-30, under investigation): the
+  download ends with "unexpected end of stream" (38 KB guide; the playlist and the logos of the same server load).
+  The server sends it all (raw clients on the emulator get every byte, fast or slow; a lingering close changes
+  nothing); HTTP/1.1 works. A retry on a fresh connection did not help and was dropped. Next: the exact exception
+  (the client of Android) and a test against a real HTTP/1.0 server.
 - 🟡 **Windows on ARM64: cause found** (2026-10-30): fail-fast 0x26 = FAST_FAIL_INVALID_LONGJUMP_TARGET in Qt's
   rasterizer (QRasterPaintEnginePrivate::rasterize → qgrayraster longjmp, named with a release build and its PDB);
   -mguard=cf makes lld write a longjmp target table llvm-mingw never fills. Linked with --no-guard-longjmp; the

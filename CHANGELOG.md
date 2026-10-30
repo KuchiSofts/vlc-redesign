@@ -22,6 +22,9 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   again in that mode, which the system's FFmpeg refuses by stopping the program. Once the hardware failed for a
   video, it is now decoded in software.
 - No warning about a missing graphics cache at the first start of a profile (`pipelines.bin`).
+- **Linux, the AppImage and the folder: a clear message when the graphics libraries are missing.** On a system
+  without them (libEGL: a server, a minimal install) VLC fell back to the terminal and said only "Error opening
+  terminal"; it now says what to install (libegl1, mesa-libEGL), also in a dialog on a desktop.
 
 ### Technical
 

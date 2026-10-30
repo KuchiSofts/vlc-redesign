@@ -14,6 +14,8 @@
 #include <QVariantList>
 #include <QVector>
 
+#include <functional>
+
 #include "mlqmltypes.hpp"
 
 Q_MOC_INCLUDE("medialibrary/medialib.hpp")
@@ -63,6 +65,17 @@ public:
     Q_INVOKABLE void assign(int sourceIndex, int destinationIndex);
     Q_INVOKABLE void cancel();
     Q_INVOKABLE void save();
+
+    // a subtitle (or audio) file to link to a media: by its id, else by its
+    // MRL (a media of a folder not in the library is added to it)
+    struct Link { int64_t mediaId; QByteArray mediaMrl; QByteArray fileMrl; };
+    // Links them on the thread of the media library, then done(the links
+    // added, the error that stopped them) on context's; a link there
+    // already is not added again (nor counted)
+    static void link(MediaLib* ml, const QObject* context, const QVector<Link>& links, bool audio,
+                     std::function<void(int saved, const QString& error)> done);
+    // the MRL of a local file as the media library keeps it
+    static QByteArray mrlOf(const QUrl& url);
 
 signals:
     void changed();

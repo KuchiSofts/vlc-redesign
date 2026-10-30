@@ -25,6 +25,11 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   from a menu or a button shows no shortcut.
 - **Choose the audio output device on Linux and macOS too**: *Settings › Audio › Output device* lists the devices
   of the output in use (PulseAudio, PipeWire, ALSA, Core Audio), as Windows had them.
+- **Subtitles from the internet for a whole folder, season or playlist** (proposed by Juxtopposed). *Add Subtitles →
+  From the Internet* searches every video the way the player searches the one playing, two at a time, in your
+  subtitle language (else the second one): each shows the subtitle made for that very file, or the best one for
+  its title and episode with the others in a dropdown, or that none was found. *Download* links the chosen ones to
+  their videos: they load when each one plays, shown as found online with their service.
 
 ### Fixed
 

@@ -38885,6 +38885,78 @@ msgstr "בקרת זמנים"
 msgid "Media Manager List"
 msgstr "רשימת מנהל המדיה"
 
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:577
+msgid "From the Internet"
+msgstr "מהאינטרנט"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:100
+msgid "Download %1"
+msgstr "הורדת %1"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:186
+msgid "%1 linked, %2 failed."
+msgstr "%1 קושרו, %2 נכשלו."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:187
+msgid "Nothing was linked: %1 failed."
+msgstr "דבר לא קושר: %1 נכשלו."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:692
+msgid "%1, else %2"
+msgstr "%1, אחרת %2"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:698
+msgid "Every subtitle service is off (Subtitles panel of the player)"
+msgstr "כל שירותי הכתוביות כבויים (בחלונית הכתוביות של הנגן)"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1001
+msgid "Waiting…"
+msgstr "ממתין…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1005
+msgid "Best guess"
+msgstr "ניחוש מיטבי"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1006
+msgid "Not found"
+msgstr "לא נמצא"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1007
+msgid "No answer"
+msgstr "אין תשובה"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1009
+msgid "Linked"
+msgstr "קושר"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1108
+msgid "Don't download"
+msgstr "לא להוריד"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1112
+msgid "Subtitle for %1"
+msgstr "כתוביות עבור %1"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1131
+msgid "Downloading and linking the subtitles chosen…"
+msgstr "מוריד ומקשר את הכתוביות שנבחרו…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1133
+msgid "Searching the internet: %1 of %2 videos done…"
+msgstr "מחפש באינטרנט: הסתיימו %1 מתוך %2 סרטונים…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1134
+msgid "For the file: %1 · By title: %2 · Not found: %3"
+msgstr "לקובץ: %1 · לפי שם: %2 · לא נמצאו: %3"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1137
+msgid "No answer: %1"
+msgstr "ללא תשובה: %1"
+
+#: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:207
+msgid "The subtitle services took too long to answer."
+msgstr "שירותי הכתוביות לא ענו בזמן."
+
 #~ msgid "Ok"
 #~ msgstr "אישור"
 

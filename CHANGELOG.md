@@ -33,7 +33,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Fixed
 
-- **Linux: no stop on H.264 with some Intel graphics** (seen with an Intel UHD 600 and the iHD driver). When the
+- **Linux: H.264 no longer closes VLC on some Intel graphics** (seen with an Intel UHD 600 and the iHD driver). When the
   hardware could not decode the video, VLC went on in software with several threads, but tried the hardware
   again in that mode, which the system's FFmpeg refuses by stopping the program. Once the hardware failed for a
   video, it is now decoded in software.
@@ -43,10 +43,33 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - **Linux, the AppImage and the folder: a clear message when the graphics libraries are missing.** On a system
   without them (libEGL: a server, a minimal install) VLC fell back to the terminal and said only "Error opening
   terminal"; it now says what to install (libegl1, mesa-libEGL), also in a dialog on a desktop.
+- **Windows: the firewall rule for casting runs Windows' own netsh by its full path.** It was named alone, and
+  Windows also looks for a program of that name in the current folder (the folder of a video opened from
+  Explorer), where another file of that name would have run with the administrator's approval. A folder name with
+  `%` no longer makes the rule for a wrong path.
+- **Windows: quitting no longer waits for Windows' question about the firewall** when it was left behind other
+  windows: VLC stayed open, unseen, and the next file opened went to it.
+- **Updates:** after an update, a very long address of the media to resume (a deep folder in Hebrew, for instance)
+  is no longer cut into another file's: VLC opens without it. The list of files an update removes can't name the
+  update's own folder (as the interface already checked). A signed update must come from the same publisher and
+  the same certificate authority, not only a publisher of the same name.
+
+### Security
+
+- Private vulnerability reporting is turned on for the repository, as `SECURITY.md` says.
+- The workflows' actions are pinned to commits (Dependabot keeps them current), the release job's Python packages
+  and Inno Setup are checked against their hashes, and the jobs get a read-only token unless they need more.
+- Code signing, once it starts: both Windows architectures (x64 and ARM64), and a release-signing run accepts
+  only a valid signature by the expected certificate (`SIGNPATH_CERT_THUMBPRINT`).
 
 ### Technical
 
 - The version being prepared is 0.5.0.
+- New workflow *Tests*: the parsers of Live TV's playlists, guides and Xtream answers, of the subtitle cues and of
+  the subtitles' encodings run under the address and undefined-behaviour sanitizers, and the updates' signature
+  check is tried against the latest release and a changed copy of it. A failed test of the Windows launch tests
+  shows its reason on the run's page.
+- The weekly VLC merge builds every platform (it built Windows only).
 - Merged VLC master up to `5ccc5fa83f` (2026-10-30), 2 commits: the native macOS interface shows a no-results view
   for an empty group search (not used by VLC Redesign, whose macOS app draws the Qt interface), and DVD-Video
   folders and images opened with dvdread show and seek the time from the disc's timeline and time map.
@@ -1787,6 +1810,16 @@ the ones to watch when merging upstream, and the candidates to propose to VideoL
 | `bin/Makefile.am`, `bin/meson.build` | Build the `vlc-waveform` helper |
 | `extras/package/win32/package.mak` | Credits, changelog and font licenses in the package |
 
+[Unreleased]: https://github.com/KuchiSofts/vlc-redesign/compare/v0.4.1...main
+[0.4.1]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.4.1
+[0.4.0]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.4.0
+[0.3.1]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.3.1
+[0.3.0]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.3.0
+[0.2.6]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.2.6
+[0.2.5]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.2.5
+[0.2.4]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.2.4
+[0.2.3]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.2.3
+[0.2.2]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.2.2
 [0.2.1]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.2.1
 [0.2.0]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.2.0
 [0.1.0]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.1.0

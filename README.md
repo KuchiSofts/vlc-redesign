@@ -162,7 +162,7 @@ volume up to 200 % · bookmarks and chapters. Every option is explained in the
 **One film per platform** (silent, every clip with a caption):
 [Windows 0.4.0](docs/media/films/vlc-redesign-0.4.0-windows.mp4) (2 min 55 s) ·
 [Linux and macOS 0.4.0](docs/media/films/vlc-redesign-0.4.0-linux-macos.mp4) (21 s) ·
-[Android](docs/media/films/vlc-redesign-0.4.0-android.mp4) (2 min 2 s, before its first release).
+[Android](docs/media/films/vlc-redesign-0.4.0-android.mp4) (2 min 2 s, recorded before 0.5.0).
 
 <table>
 <tr>

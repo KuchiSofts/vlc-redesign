@@ -59,6 +59,12 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   *VLC media player* or *VLC* alone. VideoLAN's trademark policy allows a free (GPL) build to use VLC's marks, and
   allows no one to use the name VideoLAN: the README says how VLC Redesign keeps to it. The texts with the name
   keep their translations in every language; the installation's folders, keys and shortcuts keep their names.
+- **Linux: the programs VLC opens work again** (the browser, the file manager, D-Bus for the media keys and the
+  screen saver). They inherited the libraries of VLC's own folder, and on a newer system than Ubuntu 24.04 some
+  failed to start (`dbus-launch`: "version LIBDBUS_PRIVATE… not found"). VLC now finds its libraries without
+  changing the environment, and brings fewer of them: D-Bus, ALSA, fontconfig, X11 and the other libraries every
+  desktop has come from the system. The AppImage and the folder also play videos on a system without VA-API (they
+  did not decode H.264 there: no video), on the CPU.
 
 ### Security
 

@@ -24,12 +24,13 @@ The files of version 0.5.0 ([release page](https://github.com/KuchiSofts/vlc-red
 
 | File | Size | What it is |
 |---|---|---|
-| `vlc-redesign-0.5.0-win64-setup.exe` | 59.4 MB | **The installer.** Recommended: no administrator rights, a Start menu entry, file types, small updates. |
+| `vlc-redesign-0.5.0-win64-setup.exe` | 59.5 MB | **The installer.** Recommended: no administrator rights, a Start menu entry, file types, small updates. |
 | `vlc-redesign-0.5.0-win64.zip` | 107.8 MB | **The portable copy**: unzip anywhere and run `vlc.exe`. |
-| `vlc-redesign-0.5.0-winarm64-setup.exe` | 45.7 MB | **The installer for Windows 11 on ARM64** (see [Windows on ARM64](#windows-on-arm64)). |
-| `vlc-redesign-0.5.0-winarm64.zip` | 82.1 MB | **The portable copy for Windows 11 on ARM64.** |
-| `vlc-redesign-0.5.0-delta-from-0.4.0.vrdelta` | 3.6 MB | A small update from 0.4.0, used by the app itself (see [Small updates](#small-updates)). |
-| `vlc-redesign-0.5.0-delta-from-0.3.1.vrdelta`, `...-from-0.3.0.vrdelta` | 26.1 MB and 26.1 MB | The small updates from 0.3.1 and from 0.3.0. |
+| `vlc-redesign-0.5.0-winarm64-setup.exe` | 45.8 MB | **The installer for Windows 11 on ARM64** (see [Windows on ARM64](#windows-on-arm64)). |
+| `vlc-redesign-0.5.0-winarm64.zip` | 82.2 MB | **The portable copy for Windows 11 on ARM64.** |
+| `vlc-redesign-0.5.0-delta-from-0.4.1.vrdelta` | 10.2 MB | A small update from 0.4.1, used by the app itself (see [Small updates](#small-updates)). |
+| `vlc-redesign-0.5.0-delta-from-0.4.0.vrdelta`, `...-from-0.3.1.vrdelta` | 10.2 MB and 26.2 MB | The small updates from 0.4.0 and from 0.3.1. |
+| `vlc-redesign-0.5.0-winarm64-delta-from-0.4.1.vrdelta` | 9.2 MB | The small update of Windows on ARM64 from 0.4.1. |
 | `vlc-redesign-0.5.0-source.tar.gz` | | The source code of this release. |
 | `SHA256SUMS.txt` | | The SHA-256 of every file of the release, to check a download. |
 | `SHA256SUMS.txt.sig` | | The signature of `SHA256SUMS.txt`: from 0.4.0 on, the app installs only an update whose list is signed. |
@@ -48,12 +49,13 @@ PC.
 
 | File | Size | What it is |
 |---|---|---|
-| `vlc-redesign_0.5.0_amd64.deb` | 155 MB | **For Ubuntu 24.04 and later and Debian 13.** Installs in `/opt/vlc-redesign`, the command `vlc-redesign`. |
+| `vlc-redesign_0.5.0_amd64.deb` | 161 MB | **For Ubuntu 24.04 and later and Debian 13.** Installs in `/opt/vlc-redesign`, the command `vlc-redesign`. |
 | `vlc-redesign-livetv_0.5.0_amd64.deb` | | The Live TV add-on for the .deb (optional). |
-| `vlc-redesign-0.5.0-1.x86_64.rpm` | 156 MB | **For Fedora 39 and later.** Installs in `/opt/vlc-redesign`, the command `vlc-redesign`. |
+| `vlc-redesign-0.5.0-1.x86_64.rpm` | 161 MB | **For Fedora 39 and later.** Installs in `/opt/vlc-redesign`, the command `vlc-redesign`. |
 | `vlc-redesign-livetv-0.5.0-1.x86_64.rpm` | | The Live TV add-on for the .rpm (optional). |
-| `vlc-redesign-0.5.0-x86_64.AppImage` | 166 MB | **One file for any distribution with glibc 2.38 or later** (Arch among them), with its `.zsync`. |
-| `vlc-redesign-0.5.0-linux-x86_64.tar.xz` | 126 MB | A folder to run from, nothing installed. |
+| `vlc-redesign-0.5.0-x86_64.AppImage` | 172 MB | **One file for any distribution with glibc 2.38 or later** (Arch among them), with its `.zsync`. |
+| `vlc-redesign-0.5.0-linux-x86_64.tar.xz` | 130 MB | A folder to run from, nothing installed. |
+| `vlc-redesign-0.5.0-x86_64.flatpak` | 133 MB | **A Flatpak** (its runtime comes from Flathub): `flatpak install --user vlc-redesign-0.5.0-x86_64.flatpak`. |
 | `SHA256SUMS-linux-x86_64.txt` | | The SHA-256 of the Linux files, to check a download. |
 
 **macOS** (12 Monterey or later):
@@ -67,7 +69,7 @@ PC.
 
 | File | What it is |
 |---|---|
-| `vlc-redesign-0.5.0-android.apk` | **For phones and tablets** (ARM64, ARMv7, x86 and x86_64 in one file). |
+| `vlc-redesign-0.5.0-android.apk` (125 MB) | **For phones and tablets** (ARM64, ARMv7, x86 and x86_64 in one file). |
 
 `SHA256SUMS.txt`, signed by the project, lists every file of the release (Windows, Linux, macOS and Android). The small
 updates in the app are for Windows only: on Linux and macOS, install the new version's file to update.

@@ -30,7 +30,7 @@ Every feature of 0.4.0 in short clips, Windows, Linux, macOS and the Android app
 | **Current version** | **0.5.0**, released 2026-10-31 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.0), [changelog](https://github.com/KuchiSofts/vlc-redesign/blob/main/CHANGELOG.md)) |
 | **Runs on** | Windows 10 (version 1809 or later) and Windows 11, 64-bit; Windows 11 on ARM64; Linux (x86_64, ARM64; glibc 2.38 or later); macOS 12 or later (Apple Silicon, Intel); Android 8.0 or later. Other systems: [Platforms](Platforms) |
 | **Based on** | VLC 4.0 (development branch), with fixes from VideoLAN merged in regularly |
-| **Download** | Windows x64: an installer (59.4 MB, no administrator rights) or a portable zip (107.8 MB); the same two for Windows on ARM64. Linux: a .deb, an .rpm, an AppImage or a folder. macOS: a disk image for Apple Silicon or Intel. Android: an APK. All on [Install and update](Install-and-Update) |
+| **Download** | Windows x64: an installer (59.5 MB, no administrator rights) or a portable zip (107.8 MB); the same two for Windows on ARM64. Linux: a .deb, an .rpm, an AppImage or a folder. macOS: a disk image for Apple Silicon or Intel. Android: an APK. All on [Install and update](Install-and-Update) |
 | **Updates** | On Windows, in the app, a few megabytes at a time: only the files that changed ([small updates](Install-and-Update#small-updates)). On Linux and macOS, install the new version |
 | **Languages** | English and 72 others, switched live; right-to-left languages laid out right to left ([Languages](Languages)) |
 | **Privacy** | No telemetry, no ads, no account. Two features go online by themselves, and both are asked about first |

@@ -354,7 +354,7 @@ SVG of each player and window-frame piece of player/ (same name, from Figma; ras
 | `settings` | <img src="player/svg/settings.svg" height="24" alt="settings default"> `default` | 24 x 24 |
 | `subtitles` | <img src="player/svg/subtitles.svg" height="24" alt="subtitles default"> `default` | 24 x 24 |
 
-## duo (`svg/duo/`, 56 icons, 56 files)
+## duo (`svg/duo/`, 57 icons, 57 files)
 
 Two-tone menu icons. Placeholder colours (ColorizedSvgIcon): #FF00FF = outline (Dark/FG/A2 #8F8F8F, light #2E2E2E), #FF8800 = details (Accent Dim), #00FFFF = the full accent.
 
@@ -387,6 +387,7 @@ Two-tone menu icons. Placeholder colours (ColorizedSvgIcon): #FF00FF = outline (
 | `open` | <img src="svg/duo/open.svg" height="24" alt="open default"> `default` | 24 x 24 |
 | `paint` | <img src="svg/duo/paint.svg" height="24" alt="paint default"> `default` | 24 x 24 |
 | `pause` | <img src="svg/duo/pause.svg" height="24" alt="pause default"> `default` | 24 x 24 |
+| `pin` | <img src="svg/duo/pin.svg" height="24" alt="pin default"> `default` | 24 x 24 |
 | `play` | <img src="svg/duo/play.svg" height="24" alt="play default"> `default` | 24 x 24 |
 | `playback` | <img src="svg/duo/playback.svg" height="24" alt="playback default"> `default` | 24 x 24 |
 | `playback-settings` | <img src="svg/duo/playback-settings.svg" height="24" alt="playback-settings default"> `default` | 24 x 24 |

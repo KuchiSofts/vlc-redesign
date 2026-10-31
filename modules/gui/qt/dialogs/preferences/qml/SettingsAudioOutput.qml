@@ -60,7 +60,11 @@ ColumnLayout {
         ComboBox {
             id: deviceBox
             objectName: "settingsOutputDevice"
-            Layout.preferredWidth: VLCStyle.dp(319, VLCStyle.scale)
+            // as the other dropdowns of Settings (SettingsDropdown)
+            Layout.preferredWidth: VLCStyle.dp(320, VLCStyle.scale)
+            Layout.preferredHeight: VLCStyle.dp(36, VLCStyle.scale)
+            leftPadding: mirrored ? VLCStyle.dp(16 + 24 + 10, VLCStyle.scale) : VLCStyle.dp(4, VLCStyle.scale)
+            rightPadding: mirrored ? VLCStyle.dp(4, VLCStyle.scale) : VLCStyle.dp(16 + 24 + 10, VLCStyle.scale)
             enabled: preview.active && deviceRows.count > 0
             model: Player.audioDevices
             textRole: "display"
@@ -82,9 +86,28 @@ ColumnLayout {
                 font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
             }
             background: Rectangle {
-                color: VLCStyle.redesign.color("#191919", "#ababaa")
-                border.color: VLCStyle.redesign.color("#373737", "#8e8e8d")
-                radius: 4
+                radius: VLCStyle.dp(6, VLCStyle.scale)
+                color: VLCStyle.redesign.color("#090909")
+                border.width: deviceBox.visualFocus ? 1 : 0
+                border.color: VLCStyle.redesign.accent
+
+                Rectangle {
+                    anchors.fill: parent
+                    anchors.margins: VLCStyle.dp(2, VLCStyle.scale)
+                    radius: VLCStyle.dp(4, VLCStyle.scale)
+                    color: deviceBox.hovered && !deviceBox.popup.visible ? VLCStyle.redesign.color("#222222")
+                                                                         : VLCStyle.redesign.color("#191919")
+                }
+            }
+            indicator: Image {
+                x: deviceBox.mirrored ? VLCStyle.dp(2 + 14, VLCStyle.scale)
+                                      : deviceBox.width - VLCStyle.dp(2 + 14, VLCStyle.scale) - width
+                y: (deviceBox.height - height) / 2
+                width: VLCStyle.dp(24, VLCStyle.scale)
+                height: width
+                sourceSize: Qt.size(width, height)
+                source: "qrc:///redesign/icons/chevron-down/default.svg"
+                opacity: deviceBox.enabled ? 1 : 0.4
             }
             delegate: ItemDelegate {
                 required property var model

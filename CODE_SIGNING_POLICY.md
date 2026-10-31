@@ -12,12 +12,12 @@ Free code signing provided by [SignPath.io](https://about.signpath.io/), certifi
 
 ## What is signed
 
-The Windows release files of VLC Redesign:
+The Windows release files of VLC Redesign, for x64 and ARM64 alike:
 
 - every program and library of the package: `vlc.exe`, the helper programs (`vlc-cache-gen.exe`,
   `vlc-preparser.exe`, `vlc-waveform.exe`, `vlc-redesign-update.exe`), `libvlc.dll`, `libvlccore.dll` and the
   plugins, in the installer and in the portable zip;
-- the installer, `vlc-redesign-<version>-win64-setup.exe`.
+- the installers, `vlc-redesign-<version>-win64-setup.exe` and `vlc-redesign-<version>-winarm64-setup.exe`.
 
 Only files built from this repository are signed. GitHub Actions builds them from the public source, on
 GitHub-hosted runners ([`build-windows.yml`](.github/workflows/build-windows.yml)); SignPath checks that each
@@ -25,15 +25,17 @@ signing request comes from that workflow on this repository, and an approver app
 Nothing built elsewhere, on a developer's PC for instance, is signed.
 
 The binaries are built from this repository: a visible fork of [VLC](https://code.videolan.org/videolan/vlc), based
-on its 4.0 development branch, whose changes come in through reviewed pull requests
-([`upstream-sync.yml`](.github/workflows/upstream-sync.yml)). The open-source libraries VLC uses (its contribs:
+on its 4.0 development branch. VLC's new commits are merged in often: by the maintainer, after a build and the tests
+of the merge, or as a pull request that [`upstream-sync.yml`](.github/workflows/upstream-sync.yml) opens every week
+with the builds of every platform. The open-source libraries VLC uses (its contribs:
 FFmpeg, Qt and others) are linked into them from VideoLAN's prebuilt builds of the recipes in
 [`contrib/`](contrib), inside VideoLAN's official build image. No third-party program is signed on its own. The
 installer is made with [Inno Setup](https://jrsoftware.org/isinfo.php).
 
 Not signed: the uninstaller that the installer writes (`unins000.exe`); the portable zip itself (a zip has no
 signature; the programs in it have one); the small updates (`.vrdelta`) and `SHA256SUMS.txt`, which are data that
-the updater checks by SHA-256.
+the updater checks by SHA-256 (`SHA256SUMS.txt` itself is signed with the project's own key, which the app requires
+for every update).
 
 ## Team roles
 
@@ -43,9 +45,13 @@ the updater checks by SHA-256.
 | Reviewers: review every change made by anyone else, the merges from VLC too | [KuchiSofts](https://github.com/KuchiSofts) |
 | Approvers: approve each signing request                                      | [KuchiSofts](https://github.com/KuchiSofts), owner of [KuchiSofts/vlc-redesign](https://github.com/KuchiSofts/vlc-redesign) |
 
-Every team member must use multi-factor authentication on GitHub and on SignPath. Changes from people outside the
-team come as pull requests and are reviewed before they are merged. The build scripts and the CI configuration
-(`.github/workflows/`, `extras/`, `contrib/`) decide what gets signed, so they are reviewed like any other code.
+Every team member must use multi-factor authentication on GitHub and on SignPath. The maintainer, the only author,
+commits to `main` directly or through pull requests; changes from people outside the team come as pull requests and
+are reviewed before they are merged. Every push to `main` and every pull request is built and tested on every platform
+by GitHub Actions, and a signing request is only made from a build of a commit of `main` whose checks passed, then
+approved by hand. The build scripts and the CI configuration (`.github/workflows/`, `extras/`, `contrib/`) decide what
+gets signed, so they are reviewed like any other code; the actions they use are pinned to commits and the tools
+they download are checked against their hashes.
 
 ## Privacy policy
 

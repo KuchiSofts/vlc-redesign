@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-29 20:21+0000\n"
+"POT-Creation-Date: 2026-10-31 01:37+0000\n"
 "PO-Revision-Date: 2017-09-23 19:54+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Lithuanian (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -64,7 +64,7 @@ msgstr "Sąsaja"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:26
 #: modules/gui/qt/menus/menus.cpp:863
 #: modules/gui/qt/player/qml/TracksMenu.qml:38
-#: modules/gui/qt/player/qml/TracksListPage.qml:90 modules/gui/qt/qt.cpp:370
+#: modules/gui/qt/player/qml/TracksListPage.qml:90 modules/gui/qt/qt.cpp:371
 #: modules/stream_out/es.c:388 modules/stream_out/transcode/transcode.c:190
 #: share/lua/http/dialogs/create_stream.html:150
 msgid "Audio"
@@ -88,7 +88,7 @@ msgstr "Garsas"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:25
 #: modules/gui/qt/maininterface/navigationmodel.cpp:274
 #: modules/gui/qt/menus/menus.cpp:859
-#: modules/gui/qt/player/qml/TracksMenu.qml:37 modules/gui/qt/qt.cpp:370
+#: modules/gui/qt/player/qml/TracksMenu.qml:37 modules/gui/qt/qt.cpp:371
 #: modules/services_discovery/upnp.cpp:70 modules/stream_out/es.c:395
 #: modules/stream_out/transcode/transcode.c:163
 #: share/lua/http/dialogs/create_stream.html:147
@@ -120,7 +120,7 @@ msgstr "Grojimo eilė"
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:305
 #: modules/gui/qt/dialogs/extended/extended.cpp:110
 #: modules/gui/qt/dialogs/extended/qml/VideoEffectsPanel.qml:82
-#: modules/gui/qt/qt.cpp:357
+#: modules/gui/qt/qt.cpp:358
 msgid "Advanced"
 msgstr "Sudėtingiau"
 
@@ -138,23 +138,23 @@ msgid "Media Library"
 msgstr "Fonoteka"
 
 #: include/vlc_config_cat.h:53 modules/gui/qt/dialogs/plugins/plugins.cpp:361
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:720
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:722
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:55
 msgid "Interface Settings"
 msgstr "Sąsajos nuostatos"
 
 #: include/vlc_config_cat.h:54
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:468
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:470
 msgid "Audio Settings"
 msgstr "Garso nuostatos"
 
 #: include/vlc_config_cat.h:55
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:406
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:408
 msgid "Video Settings"
 msgstr "Vaizdo nuostatos"
 
 #: include/vlc_config_cat.h:56
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:943
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:945
 msgid "Subtitle & On Screen Display Settings"
 msgstr "Subtitrų ir ekrano pranešimų nuostatos"
 
@@ -167,7 +167,7 @@ msgid "Hotkeys Settings"
 msgstr ""
 
 #: include/vlc_config_cat.h:59
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1034
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1036
 msgid "Media Library Settings"
 msgstr "Fonotekos nuostatos"
 
@@ -572,7 +572,7 @@ msgstr "Stereofoninis"
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:292
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:365
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:387
-#: modules/gui/qt/dialogs/extended/qml/CropPanel.qml:83
+#: modules/gui/qt/dialogs/extended/qml/CropPanel.qml:84
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:100 modules/spu/common.h:53
 #: modules/spu/mosaic.c:181
 msgid "Left"
@@ -587,7 +587,7 @@ msgstr "Kairėje"
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:293
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:367
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:389
-#: modules/gui/qt/dialogs/extended/qml/CropPanel.qml:90 modules/spu/common.h:53
+#: modules/gui/qt/dialogs/extended/qml/CropPanel.qml:91 modules/spu/common.h:53
 #: modules/spu/mosaic.c:181
 msgid "Right"
 msgstr "Dešinėje"
@@ -657,7 +657,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:149
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1244
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1563
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:417
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:419
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:161
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:162
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:188
@@ -669,7 +669,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:254
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:283
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
-#: modules/gui/qt/qt.cpp:388
+#: modules/gui/qt/qt.cpp:389
 msgid "Automatic"
 msgstr "Automatinis"
 
@@ -908,8 +908,8 @@ msgstr "Srautas „%s“"
 msgid "Scrambled"
 msgstr "Užšifruotas"
 
-#: src/input/es_out.c:2235 modules/gui/qt/dialogs/dialogs_provider.cpp:522
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:549
+#: src/input/es_out.c:2235 modules/gui/qt/dialogs/dialogs_provider.cpp:523
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:550
 #: modules/keystore/keychain.m:46 modules/lua/extension.c:1098
 msgid "Yes"
 msgstr "Taip"
@@ -1611,9 +1611,9 @@ msgstr ""
 #: modules/gui/qt/dialogs/toolbar/defaults.cpp:595
 #: modules/gui/qt/maininterface/navigationmodel.cpp:279
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:28
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:35
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:81
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:198
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:237
 #: modules/gui/qt/network/standardpathmodel.cpp:151
 #: modules/gui/qt/player/qml/CompactLibrary.qml:80
 #: modules/gui/qt/player/qml/CompactLibrary.qml:197
@@ -1734,7 +1734,7 @@ msgstr ""
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:63
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:87
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:180
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:91
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:93
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:605
 #: modules/gui/qt/player/hdr_output.cpp:33
 #: modules/text_renderer/freetype/freetype.c:126 modules/video_output/kva.c:63
@@ -2145,7 +2145,7 @@ msgstr "Perėjimo šalinimo modulis"
 msgid "Deinterlace method to use for video processing."
 msgstr "Vaizdo apdorojimui naudotinas perėjimo šalinimo būdas."
 
-#: src/libvlc-module.c:386 modules/gui/qt/dialogs/dialogs_provider.cpp:557
+#: src/libvlc-module.c:386 modules/gui/qt/dialogs/dialogs_provider.cpp:558
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1273
 #: modules/video_filter/deinterlace/deinterlace.h:57
 msgid "Discard"
@@ -2215,7 +2215,7 @@ msgstr "Nepaleisti ekrano užsklandos rodant vaizdą"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:119
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:140
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:346
-#: modules/gui/qt/qt.cpp:363 modules/gui/qt/qt.cpp:370
+#: modules/gui/qt/qt.cpp:364 modules/gui/qt/qt.cpp:371
 msgid "Never"
 msgstr "Niekada"
 
@@ -2229,7 +2229,7 @@ msgstr "Kai rodoma visame ekrane"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:119
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:140
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
-#: modules/gui/qt/qt.cpp:363 modules/keystore/keychain.m:55
+#: modules/gui/qt/qt.cpp:364 modules/keystore/keychain.m:55
 msgid "Always"
 msgstr "Visada"
 
@@ -2497,7 +2497,7 @@ msgstr "Nustato, kaip apdorojamas pristabdymas pelės paspaudimu"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1224
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:23
-#: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:144
+#: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:145
 msgid "Disabled"
 msgstr "Išjungta"
 
@@ -4125,7 +4125,7 @@ msgstr ""
 "„sparčiaisiais klavišais“."
 
 #: src/libvlc-module.c:1350 modules/gui/macosx/main/VLCMain+OldPrefs.m:117
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:552
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:553
 #: modules/misc/medialibrary/medialibrary.cpp:471
 msgid "Ignore"
 msgstr "Nepaisyti"
@@ -4280,7 +4280,7 @@ msgstr ""
 #: modules/gui/macosx/windows/VLCHelpWindowController.m:61
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:173
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:256
-#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:210
+#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:211
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:36
 #: modules/gui/qt/player/qml/CompactLibrary.qml:649
 #: modules/gui/qt/player/qml/controlbarcontrols/PreviousButton.qml:32
@@ -4441,7 +4441,7 @@ msgstr "Didelio peršokimo dydis, sekundėmis."
 #: src/libvlc-module.c:1432 modules/gui/macosx/main/VLCApplication.m:123
 #: modules/gui/macosx/menus/VLCStatusBarIcon.m:121
 #: modules/gui/qt/menus/menus.cpp:702 modules/gui/qt/menus/menus.cpp:1114
-#: modules/gui/qt/qt.cpp:1695 modules/gui/skins2/commands/cmd_quit.cpp:40
+#: modules/gui/qt/qt.cpp:1700 modules/gui/skins2/commands/cmd_quit.cpp:40
 msgid "Quit"
 msgstr "Baigti"
 
@@ -4568,7 +4568,7 @@ msgstr "Pasirinkite klavišą garsumo lygio sumažinimui."
 #: modules/gui/macosx/menus/VLCMainMenu.m:521
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:236
 #: modules/gui/macosx/windows/controlsbar/VLCMainWindowControlsBar.m:112
-#: modules/gui/qt/player/qml/controlbarcontrols/VolumeWidget.qml:149
+#: modules/gui/qt/player/qml/controlbarcontrols/VolumeWidget.qml:150
 msgid "Mute"
 msgstr "Nutildyti"
 
@@ -4971,7 +4971,7 @@ msgstr "Įjungti / išjungti atsitiktinį grojimo eilės grojimą"
 #: src/video_output/vout_intf.c:233 modules/gui/macosx/menus/VLCMainMenu.m:484
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:166
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:80
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:64
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:65
 msgid "Zoom"
 msgstr "Mastelis"
 
@@ -5094,7 +5094,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:232
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:248
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:27
-#: modules/gui/qt/player/subtitle_finder.cpp:1214
+#: modules/gui/qt/player/subtitle_search.cpp:977
 #: modules/gui/qt/player/qml/TracksMenu.qml:40
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:272
 #: share/lua/http/dialogs/create_stream.html:153
@@ -5782,7 +5782,7 @@ msgstr "Mėginant įrašyti į „%s“ failą įvyko klaida"
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:355
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:502
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignMessageDialog.qml:77
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:556
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:557
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:325
 #: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:303
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1438
@@ -5798,7 +5798,7 @@ msgstr "Mėginant įrašyti į „%s“ failą įvyko klaida"
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:213
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:269
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1273
-#: modules/gui/qt/widgets/native/redesign_message_box.cpp:296
+#: modules/gui/qt/widgets/native/redesign_message_box.cpp:297
 #: modules/gui/qt/widgets/qml/RedesignDialog.qml:29
 #: modules/stream_out/chromecast/cast.cpp:1212
 #: modules/stream_out/dlna/dlna.cpp:722
@@ -6158,7 +6158,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:65
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:53
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:216
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:255
 msgid "Arabic"
 msgstr "Arabų"
 
@@ -6448,7 +6448,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:138
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:54
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:215
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:254
 msgid "Chinese"
 msgstr "Kinų"
 
@@ -6600,7 +6600,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:180
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:58
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:211
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:250
 msgid "English"
 msgstr "Anglų"
 
@@ -6663,7 +6663,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:197
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:60
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:211
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:250
 msgid "French"
 msgstr "Prancūzų"
 
@@ -6729,7 +6729,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:215
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:61
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:212
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:251
 msgid "German"
 msgstr "Vokiečių"
 
@@ -6795,7 +6795,7 @@ msgstr "Havajiečių"
 
 #: src/text/iso-639_def.h:232 src/text/iso-639_def.h:575
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:63
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:217
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:256
 msgid "Hebrew"
 msgstr "Hebrajų"
 
@@ -6916,13 +6916,13 @@ msgstr ""
 
 #: src/text/iso-639_def.h:263
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:67
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:213
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:252
 msgid "Italian"
 msgstr "Italų"
 
 #: src/text/iso-639_def.h:264
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:68
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:215
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:254
 msgid "Japanese"
 msgstr "Japonų"
 
@@ -7060,7 +7060,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:298
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:69
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:216
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:255
 msgid "Korean"
 msgstr "Korėjiečių"
 
@@ -7566,7 +7566,7 @@ msgstr "Lenkų"
 
 #: src/text/iso-639_def.h:425
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:74
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:213
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:252
 msgid "Portuguese"
 msgstr "Portugalų"
 
@@ -7625,7 +7625,7 @@ msgstr "Rundi"
 
 #: src/text/iso-639_def.h:440
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:76
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:214
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:253
 msgid "Russian"
 msgstr "Rusų"
 
@@ -8208,12 +8208,12 @@ msgid "It needs Windows 10 version 1809 or later."
 msgstr "Reikia Windows 10 1809 ar naujesnės versijos."
 
 #: bin/winvlc.c:712 bin/winvlc.c:825
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:410
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:418
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:27
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignPluginsDialog.qml:30
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignStatisticsDialog.qml:26
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:553
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:558
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:554
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:559
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:152
 #: modules/gui/qt/dialogs/firstrun/qml/WhatsNewDialog.qml:39
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:312
@@ -8225,7 +8225,7 @@ msgstr "Reikia Windows 10 1809 ar naujesnės versijos."
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:32
 #: modules/gui/qt/util/csdmenu.cpp:131
 #: modules/gui/qt/util/redesign_window_frame.cpp:96
-#: modules/gui/qt/widgets/native/redesign_message_box.cpp:213
+#: modules/gui/qt/widgets/native/redesign_message_box.cpp:214
 #: modules/gui/qt/widgets/qml/RedesignDialog.qml:223
 msgid "Close"
 msgstr "Užverti"
@@ -8846,7 +8846,7 @@ msgstr "Antena"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:29
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:42
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:30
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:37
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:100
 #: modules/gui/qt/player/qml/controlbarcontrols/TvButton.qml:35
 msgid "TV"
@@ -9653,8 +9653,8 @@ msgid "DVDnav demuxer"
 msgstr "Nuv išpynimo metodas"
 
 #: modules/access/dvdnav.c:397 modules/access/dvdread.c:204
-#: modules/access/dvdread.c:220 modules/access/dvdread.c:696
-#: modules/access/dvdread.c:750
+#: modules/access/dvdread.c:220 modules/access/dvdread.c:713
+#: modules/access/dvdread.c:767
 msgid "Playback failure"
 msgstr "Grojimo klaida"
 
@@ -9685,12 +9685,12 @@ msgstr "DVDRead negali atverti „%s“ disko."
 msgid "Cannot play a non-UDF mastered DVD."
 msgstr ""
 
-#: modules/access/dvdread.c:697
+#: modules/access/dvdread.c:714
 #, c-format
 msgid "DVDRead could not read block %d."
 msgstr "DVDRead nagali nuskaityti %d bloko."
 
-#: modules/access/dvdread.c:751
+#: modules/access/dvdread.c:768
 #, c-format
 msgid "DVDRead could not read %d/%d blocks at 0x%02x."
 msgstr "DVDRead negali nuskaityti %d/%d blokų iš 0x%02x."
@@ -9735,7 +9735,7 @@ msgstr ""
 #: modules/access_output/http-put.c:131 modules/access_output/http.c:53
 #: modules/gui/macosx/panels/dialogs/VLCCoreDialogProvider.m:217
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:373
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:791
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:869
 #: modules/misc/audioscrobbler.c:117 modules/stream_out/rtp.c:165
 msgid "Username"
 msgstr "Vartotojo vardas"
@@ -9760,7 +9760,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/dialogs/qml/Dialogs.qml:447
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:425
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:435
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:815
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:893
 #: modules/lua/vlc.c:57 modules/lua/vlc.c:86 modules/misc/audioscrobbler.c:119
 #: modules/stream_out/rtp.c:168
 msgid "Password"
@@ -9894,7 +9894,7 @@ msgstr ""
 #: modules/access/idummy.c:40 modules/access_output/dummy.c:43
 #: modules/audio_output/adummy.c:49 modules/codec/ddummy.c:45
 #: modules/codec/edummy.c:38 modules/control/dummy.c:39
-#: modules/gui/qt/qt.cpp:400 modules/text_renderer/tdummy.c:34
+#: modules/gui/qt/qt.cpp:401 modules/text_renderer/tdummy.c:34
 #: modules/video_output/vdummy.c:48
 msgid "Dummy"
 msgstr "Tuščias"
@@ -10566,7 +10566,7 @@ msgid "Warnings"
 msgstr ""
 
 #: modules/access/rist.h:98
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:137
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:148
 #: modules/logger/file.c:225
 msgid "Info"
 msgstr "Informacija"
@@ -13065,6 +13065,8 @@ msgid "Enabled"
 msgstr "Įjungta"
 
 #: modules/audio_output/mmdevice.c:1626
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:620
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:621
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:187
 msgid "Output device"
 msgstr "Išvesties įrenginys"
@@ -16055,7 +16057,7 @@ msgstr ""
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:776
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1384
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1481
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:691
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:693
 #: modules/misc/gnutls.c:756 modules/text_renderer/freetype/freetype.c:118
 msgid "Normal"
 msgstr "Vidutinis"
@@ -16565,15 +16567,7 @@ msgstr "D-Bus valdymo sąsaja"
 #: modules/gui/macosx/menus/VLCStatusBarIcon.m:158
 #: modules/gui/macosx/menus/VLCStatusBarIcon.m:355
 #: modules/gui/macosx/windows/video/VLCVideoWindowCommon.m:153
-#: modules/gui/ncurses.c:1197 modules/gui/qt/dialogs/dialogs_provider.cpp:593
-#: modules/gui/qt/dialogs/help/help.cpp:95
-#: modules/gui/qt/dialogs/systray/systray.cpp:52
-#: modules/gui/qt/dialogs/systray/systray.cpp:54
-#: modules/gui/qt/dialogs/systray/systray.cpp:79
-#: modules/gui/qt/dialogs/systray/systray.cpp:82
-#: modules/gui/qt/dialogs/systray/systray.cpp:137
-#: modules/gui/qt/dialogs/systray/systray.cpp:152 modules/gui/qt/qt.cpp:1500
-#: modules/gui/qt/widgets/native/redesign_message_box.cpp:154
+#: modules/gui/ncurses.c:1197 modules/gui/qt/dialogs/help/help.cpp:95
 #: modules/lua/libs/httpd.c:80 modules/video_output/wayland/xdg-shell.c:732
 #: modules/video_output/xcb/window.c:959
 msgid "VLC media player"
@@ -16796,7 +16790,7 @@ msgid "Connect using HTTP access instead of custom HTTP code"
 msgstr ""
 
 #: modules/demux/adaptive/adaptive.cpp:84
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:690
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:692
 msgid "Low latency"
 msgstr "Trumpas užlaikymas"
 
@@ -18074,12 +18068,12 @@ msgstr ""
 #: modules/gui/macosx/windows/convertandsave/VLCOutput.m:62
 #: modules/gui/qt/dialogs/dialogs/qml/CustomDialog.qml:39
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignMessageDialog.qml:76
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:549
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:586
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:550
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:587
 #: modules/gui/qt/dialogs/native_dialogs.cpp:35
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1437
-#: modules/gui/qt/widgets/native/redesign_message_box.cpp:301
-#: modules/gui/qt/widgets/native/redesign_message_box.cpp:471
+#: modules/gui/qt/widgets/native/redesign_message_box.cpp:302
+#: modules/gui/qt/widgets/native/redesign_message_box.cpp:472
 #: modules/stream_out/chromecast/cast.cpp:1212
 #: modules/stream_out/dlna/dlna.cpp:722
 msgid "OK"
@@ -18099,7 +18093,7 @@ msgstr ""
 
 #: modules/gui/macosx/library/VLCLibraryController.m:310
 #: modules/gui/qt/dialogs/bookmarks/bookmarks.cpp:52
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:455
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:458
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:464
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:413
 msgid "Create"
@@ -18117,13 +18111,13 @@ msgid "Please enter the new playlist name:"
 msgstr "Įveskite naują grojaraščio pavadinimą:"
 
 #: modules/gui/macosx/library/VLCLibraryController.m:319
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:409
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:455
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:135
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:412
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:458
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:136
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:413
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:104
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:107
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:76
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:90
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:909
 msgid "Rename"
 msgstr "Pervadinti"
@@ -18246,8 +18240,8 @@ msgstr ""
 #: modules/gui/qt/medialibrary/qml/VideoInfoExpandPanel.qml:146
 #: modules/gui/qt/medialibrary/qml/MusicAlbumSectionDelegate.qml:210
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:75
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:166
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:33
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:179
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:34
 #: modules/gui/qt/menus/menus.cpp:816
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:870
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1126
@@ -18308,8 +18302,8 @@ msgstr ""
 #: modules/gui/macosx/library/VLCLibraryMenuController.m:284
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:141
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:173
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:37
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:186
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:874
 msgid "Remove from Favorites"
 msgstr "Pašalinti iš mėgstamiausių"
@@ -18452,7 +18446,7 @@ msgstr "Kompiuteris"
 #: modules/gui/macosx/windows/convertandsave/VLCOutput.m:315
 #: modules/gui/qt/dialogs/sout/sout.cpp:98
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:99
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:179
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:192
 #: modules/gui/qt/menus/menus.cpp:975
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1141
 msgid "Stream"
@@ -18612,11 +18606,11 @@ msgstr ""
 
 #: modules/gui/macosx/main/macosx.m:89
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:453
-#: modules/gui/qt/qt.cpp:188
+#: modules/gui/qt/qt.cpp:189
 msgid "Resize interface to the native video size"
 msgstr "Sąsajos lango dydį keisti priklausomai nuo vaizdo dydžio"
 
-#: modules/gui/macosx/main/macosx.m:90 modules/gui/qt/qt.cpp:189
+#: modules/gui/macosx/main/macosx.m:90 modules/gui/qt/qt.cpp:190
 msgid ""
 "You have two choices:\n"
 " - The interface will resize to the native video size\n"
@@ -18630,22 +18624,22 @@ msgstr ""
 
 #: modules/gui/macosx/main/macosx.m:95
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:452
-#: modules/gui/qt/qt.cpp:278
+#: modules/gui/qt/qt.cpp:279
 msgid "Pause the video playback when minimized"
 msgstr "Pristabdyti vaizdo įrašų grojimą, jei programa suskleista"
 
-#: modules/gui/macosx/main/macosx.m:96 modules/gui/qt/qt.cpp:280
+#: modules/gui/macosx/main/macosx.m:96 modules/gui/qt/qt.cpp:281
 msgid ""
 "With this option enabled, the playback will be automatically paused when "
 "minimizing the window."
 msgstr ""
 "Įjungus šią parinktį, sumažinus langą grojimas bus automatiškai pristabdytas."
 
-#: modules/gui/macosx/main/macosx.m:99 modules/gui/qt/qt.cpp:282
+#: modules/gui/macosx/main/macosx.m:99 modules/gui/qt/qt.cpp:283
 msgid "Allow automatic icon changes"
 msgstr "Leisti automatiškai keisti ženkliuką"
 
-#: modules/gui/macosx/main/macosx.m:100 modules/gui/qt/qt.cpp:284
+#: modules/gui/macosx/main/macosx.m:100 modules/gui/qt/qt.cpp:285
 msgid ""
 "This option allows the interface to change its icon on various occasions."
 msgstr ""
@@ -18714,7 +18708,7 @@ msgstr ""
 msgid "Ask"
 msgstr "Klausti"
 
-#: modules/gui/macosx/main/macosx.m:128 modules/gui/qt/qt.cpp:286
+#: modules/gui/macosx/main/macosx.m:128 modules/gui/qt/qt.cpp:287
 msgid "Maximum Volume displayed"
 msgstr "Didžiausias rodytinas garsumas"
 
@@ -18899,9 +18893,9 @@ msgstr "Padėti"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:381
 #: modules/gui/qt/dialogs/bookmarks/bookmarks.cpp:55
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:429
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:527
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:157
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:432
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:530
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:158
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:478
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:472
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:112
@@ -18909,7 +18903,7 @@ msgstr "Padėti"
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:115
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:185
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:269
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:81
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:95
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:915
 msgid "Delete"
 msgstr "Ištrinti"
@@ -19241,14 +19235,14 @@ msgstr "Įrašyti grojaraštį"
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:503
 #: modules/gui/macosx/windows/convertandsave/VLCOutput.m:415
 #: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:67
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:550
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:551
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:350
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:59
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:464
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:352
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:82
 #: modules/gui/qt/medialibrary/qml/PlaylistCreateDialog.qml:35
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:81
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:100
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1146
 #: modules/gui/qt/player/qml/SubtitleSyncTimeline.qml:144
 #: modules/gui/qt/widgets/qml/RedesignDialog.qml:27
@@ -19297,7 +19291,7 @@ msgstr "Kartoti viską"
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:1055
 #: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:37
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1385
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:688
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:690
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:66
 msgid "Custom"
 msgstr "Pasirinktinis"
@@ -19315,7 +19309,7 @@ msgstr "Kūrinio meniu"
 
 #: modules/gui/macosx/menus/VLCStatusBarIcon.m:107
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:133
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:45
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:46
 #: modules/gui/qt/menus/menus.cpp:915
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:883
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:53
@@ -19378,7 +19372,7 @@ msgstr "2 žingsniai"
 
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:243
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1155
-#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:122
+#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:125
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:187
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:28
 msgid "Preamp"
@@ -19393,16 +19387,16 @@ msgstr ""
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:295
 #: modules/gui/macosx/panels/VLCTrackSynchronizationWindowController.m:84
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:284
-#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:188
+#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:191
 #: modules/gui/qt/dialogs/extended/qml/FilterPanel.qml:91
 #: modules/gui/qt/dialogs/extended/qml/VideoEffectsPanel.qml:148
 #: modules/gui/qt/dialogs/gototime/gototime.cpp:66
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:396
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:456
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:804
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:816
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:358
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPicture.qml:85
-#: modules/gui/qt/player/qml/TracksMenu.qml:569
+#: modules/gui/qt/player/qml/TracksMenu.qml:570
 #: modules/gui/qt/player/qml/TracksPageAudio.qml:129
 #: modules/gui/qt/player/qml/TracksPageSubtitle.qml:146
 #: modules/gui/qt/player/qml/TracksPageSubtitle.qml:274
@@ -19602,8 +19596,8 @@ msgstr "Išvalyti"
 #: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:194
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:234
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:247
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:344
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:357
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:352
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:365
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:117
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:110
 #: modules/gui/qt/network/qml/BrowseDeviceView.qml:239
@@ -19749,7 +19743,7 @@ msgstr ""
 
 #: modules/gui/macosx/panels/VLCTrackSynchronizationWindowController.m:85
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1485
-#: modules/gui/qt/qt.cpp:370
+#: modules/gui/qt/qt.cpp:371
 msgid "Audio/Video"
 msgstr "Garsas/Vaizdas"
 
@@ -19939,7 +19933,7 @@ msgid "Rows"
 msgstr "Eilutės"
 
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:319
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:145
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:146
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:413
 #: modules/video_splitter/clone.c:57
 msgid "Clone"
@@ -20077,7 +20071,7 @@ msgstr ""
 #: modules/gui/macosx/panels/dialogs/VLCCustomCropArWindowController.m:42
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:191
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:220
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:551
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:552
 msgid "Apply"
 msgstr "Pritaikyti"
 
@@ -20096,22 +20090,22 @@ msgid "Playback of \"%@\" will continue at %@"
 msgstr ""
 
 #: modules/gui/macosx/playqueue/VLCPlayQueueController.m:744
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1104
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1105
 msgid "XSPF playlist"
 msgstr "XSPF grojaraštis"
 
 #: modules/gui/macosx/playqueue/VLCPlayQueueController.m:749
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1105
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1106
 msgid "M3U playlist"
 msgstr "M3U grojaraštis"
 
 #: modules/gui/macosx/playqueue/VLCPlayQueueController.m:754
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1106
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1107
 msgid "M3U8 playlist"
 msgstr "M3U8 grojaraštis"
 
 #: modules/gui/macosx/playqueue/VLCPlayQueueController.m:759
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1107
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1108
 msgid "HTML playlist"
 msgstr "HTML grojaraštis"
 
@@ -20175,7 +20169,7 @@ msgstr ""
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:384
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:1306
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:74
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:598
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:599
 msgid "Action"
 msgstr "Veikmas"
 
@@ -20196,7 +20190,7 @@ msgstr "Aplankas ar failas įrašams saugoti"
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:236
 #: modules/gui/macosx/windows/convertandsave/VLCOutput.m:69
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:308
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:503
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:505
 #: modules/gui/qt/dialogs/sout/sout_widgets.cpp:134
 msgid "Browse..."
 msgstr "Naršyti..."
@@ -20237,7 +20231,7 @@ msgstr "Kodekai / Tankintuvai"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:116
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:31
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:29
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:36
 #: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:297
 #: modules/gui/qt/player/qml/CompactLibrary.qml:81
 #: modules/gui/qt/player/qml/CompactLibrary.qml:295
@@ -20641,10 +20635,10 @@ msgstr ""
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:637
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:895
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:1275
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:551
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:751
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:774
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:788
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:552
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:763
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:786
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:800
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:350
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:35
 msgid "Open"
@@ -21301,7 +21295,7 @@ msgstr "Garsumas : %3ld%%"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:198
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:232
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:60
-#: modules/gui/qt/player/qml/controlbarcontrols/VolumeWidget.qml:268
+#: modules/gui/qt/player/qml/controlbarcontrols/VolumeWidget.qml:269
 msgid "Volume"
 msgstr "Garsumas"
 
@@ -21783,70 +21777,65 @@ msgstr "Grojaraščio pavadinimas"
 msgid "About VLC"
 msgstr "Apie VLC"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:197
-#: modules/gui/qt/dialogs/firstrun/qml/WhatsNewDialog.qml:63
-msgid "VLC Redesign"
-msgstr "VLC Redesign"
-
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:238
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:246
 msgid "Version %1 · based on VLC %2"
 msgstr "Versija %1 · paremta VLC %2"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:262
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:270
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:90
 msgid "Checking for updates…"
 msgstr "Ieškoma atnaujinimų…"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:263
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:271
 msgid "You have the latest version"
 msgstr "Turite naujausią versiją"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:264
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:272
 msgid "Version %1 is available"
 msgstr "Galima versija %1"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:266
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:274
 msgid "Downloading the update… %1%"
 msgstr "Atsisiunčiamas atnaujinimas… %1%"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:267
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:275
 msgid "Preparing the update…"
 msgstr "Ruošiamas atnaujinimas…"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:268
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:276
 msgid "Version %1 is ready: restart to finish"
 msgstr "Versija %1 paruošta: paleiskite iš naujo, kad užbaigtumėte"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:277
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:285
 msgid "What's new in %1"
 msgstr "Kas naujo %1 versijoje"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:291
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:299
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:197
 msgid "Restart now"
 msgstr "Paleisti iš naujo dabar"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:293
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:301
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:228
 msgid "Update now"
 msgstr "Atnaujinti dabar"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:293
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:301
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:226
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:188
 #: modules/gui/qt/network/standardpathmodel.cpp:153
 msgid "Download"
 msgstr "Atsisiųsti"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:294
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:302
 msgid "Check for updates"
 msgstr "Ieškoti atnaujinimų"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:330
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:338
 msgid "Interface designed by <font color=\"%1\">Juxtopposed</font>"
 msgstr "Sąsajos dizainą sukūrė <font color=\"%1\">Juxtopposed</font>"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:337
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:345
 msgid ""
 "Every screen comes from the \"VLC Redesign (Community)\" Figma file, "
 "licensed under CC BY 4.0. It was adapted to Qt and its icons were redrawn."
@@ -21854,56 +21843,56 @@ msgstr ""
 "Visi ekranai paimti iš „VLC Redesign (Community)“ Figma failo, licencijuoto "
 "pagal CC BY 4.0. Jie pritaikyti Qt, o piktogramos nupieštos iš naujo."
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:342
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:350
 msgid "YouTube channel"
 msgstr "YouTube kanalas"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:343
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:351
 msgid "The redesign video"
 msgstr "Pertvarkymo vaizdo įrašas"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:344
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:352
 msgid "Figma file"
 msgstr "Figma failas"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:345
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:353
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:1171
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:1281
 msgid "Website"
 msgstr "Svetainė"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:346
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:354
 msgid "CC BY 4.0"
 msgstr "CC BY 4.0"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:356
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:364
 msgid "First implementation by"
 msgstr "Pirmąją versiją sukūrė"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:361
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:369
 msgid "Built on VLC media player by"
 msgstr "Sukurta remiantis VLC media player, kurį kuria"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:362
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:370
 msgid "the VideoLAN team and contributors"
 msgstr "VideoLAN komanda ir talkininkai"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:370
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:378
 msgid "Also on: %1"
 msgstr "Taip pat: %1"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:377
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:385
 #: modules/gui/qt/menus/qml/MainMenu.qml:173
 msgid "Suggest an idea"
 msgstr "Pasiūlyti idėją"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:379
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:387
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:28
 #: modules/gui/qt/menus/qml/MainMenu.qml:178
 msgid "Report a problem"
 msgstr "Pranešti apie problemą"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:390
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:398
 msgid ""
 "An unofficial build, not affiliated with or endorsed by VideoLAN or "
 "Juxtopposed. VLC, VLC media player and the cone logo are trademarks of "
@@ -21913,11 +21902,11 @@ msgstr ""
 "nepatvirtinta. VLC, VLC media player ir kūgio logotipas yra VideoLAN prekių "
 "ženklai. Laisvoji programinė įranga pagal GNU GPL v2 ar vėlesnę licenciją."
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:400
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:408
 msgid "Licenses & authors"
 msgstr "Licencijos ir autoriai"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:404
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:412
 msgid "GitHub"
 msgstr "GitHub"
 
@@ -21927,7 +21916,7 @@ msgstr "Aplanko informacija"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:29
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:119
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:189
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:202
 msgid "Show in File Explorer"
 msgstr "Rodyti failų naršyklėje"
 
@@ -21955,12 +21944,12 @@ msgstr "Failai"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:66
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:27
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:34
 #: modules/gui/qt/medialibrary/qml/VideoGroupDisplay.qml:40
 #: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:84
 #: modules/gui/qt/medialibrary/qml/VideoListDisplay.qml:90
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:81
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:198
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:237
 #: modules/gui/qt/network/standardpathmodel.cpp:152
 #: modules/gui/qt/player/qml/CompactLibrary.qml:79
 #: modules/gui/qt/player/qml/CompactLibrary.qml:198
@@ -22011,7 +22000,7 @@ msgstr "pvz., 1:02:10"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignPluginsDialog.qml:29
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:82
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:750
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:762
 msgid "Plugins and extensions"
 msgstr "Papildiniai ir plėtiniai"
 
@@ -22162,61 +22151,61 @@ msgstr "Prarasta"
 msgid "Played"
 msgstr "Grota"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:86
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:87
 #: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:35
 msgid "Open Directory"
 msgstr "Atverti aplanką"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:87
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:88
 #: modules/gui/qt/menus/menus.cpp:956 modules/gui/qt/menus/qml/MainMenu.qml:59
 msgid "Open Folder"
 msgstr "Atverti aplanką"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:520
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:521
 msgid "Confirm"
 msgstr "Patvirtinimas"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:523
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:556
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:524
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:557
 #: modules/keystore/keychain.m:46
 msgid "No"
 msgstr "Ne"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:550
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:551
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:218
 msgid "Retry"
 msgstr "Bandyti dar kartą"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:552
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:553
 msgid "Yes to All"
 msgstr "Taip visiems"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:557 modules/misc/gnutls.c:489
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:558 modules/misc/gnutls.c:489
 #: modules/misc/gnutls.c:510 modules/misc/securetransport.c:359
 msgid "Abort"
 msgstr "Nutraukti"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:558
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:559
 msgid "No to All"
 msgstr "Ne visiems"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:593 modules/logger/file.c:225
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:594 modules/logger/file.c:225
 msgid "Error"
 msgstr "Klaida"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1169
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1170
 msgid "Save play queue as..."
 msgstr "Įrašyti grojimo eilę kaip..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1389
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1390
 msgid "Write error"
 msgstr "Rašymo klaida"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1406
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1407
 msgid "Export playlist as..."
 msgstr "Eksportuoti grojaraštį kaip..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1423
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1424
 msgid ""
 "The playlist could not be exported to %1:\n"
 "%2"
@@ -22224,21 +22213,21 @@ msgstr ""
 "Nepavyko eksportuoti grojaraščio į %1:\n"
 "%2"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1425
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:49
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
 msgid "Export Playlist"
 msgstr "Eksportuoti grojaraštį"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1546
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1547
 msgid "Open subtitles..."
 msgstr "Atverti subtitrus..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1551
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1552
 msgid "Open audio..."
 msgstr "Atverti garsą..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1556
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1557
 msgid "Open video..."
 msgstr "Atverti vaizdo įrašą..."
 
@@ -22247,12 +22236,12 @@ msgid "Media Files"
 msgstr "Garso ir vaizdo failai"
 
 #: modules/gui/qt/dialogs/dialogs_provider.hpp:61
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1638
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1651
 msgid "Video Files"
 msgstr "Vaizdo failai"
 
 #: modules/gui/qt/dialogs/dialogs_provider.hpp:62
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1637
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1650
 msgid "Audio Files"
 msgstr "Garso failai"
 
@@ -22261,7 +22250,7 @@ msgid "Image Files"
 msgstr "Paveikslų failai"
 
 #: modules/gui/qt/dialogs/dialogs_provider.hpp:64
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1639
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1652
 msgid "Playlist Files"
 msgstr "Grojaraščių failai"
 
@@ -22438,8 +22427,8 @@ msgstr ""
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1359
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1361
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1362
-#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:123
-#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:139
+#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:126
+#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:142
 #: modules/gui/qt/dialogs/extended/qml/FilterPanel.qml:29
 #: modules/gui/qt/dialogs/extended/qml/FilterPanel.qml:31
 #: modules/gui/qt/dialogs/extended/qml/FilterPanel.qml:32
@@ -22655,7 +22644,7 @@ msgstr "px"
 msgid "Link top and bottom crop"
 msgstr "Susieti viršaus ir apačios apkirpimą"
 
-#: modules/gui/qt/dialogs/extended/qml/CropPanel.qml:102
+#: modules/gui/qt/dialogs/extended/qml/CropPanel.qml:103
 msgid "Link left and right crop"
 msgstr "Susieti kairės ir dešinės apkirpimą"
 
@@ -22668,62 +22657,62 @@ msgstr "Paleiskite kūrinį, kad įrašytumėte jo efektus kaip derinį."
 msgid "Effect preset: %1"
 msgstr "Efektų derinys: %1"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:257
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:258
 msgid "Effect presets"
 msgstr "Efektų deriniai"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:272
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:454
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:273
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:457
 msgid "New Preset"
 msgstr "Naujas derinys"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:289
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:290
 msgid "Chosen preset"
 msgstr "Pasirinktas derinys"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:372
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:110
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:375
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:111
 msgid "Actions of %1"
 msgstr "„%1“ veiksmai"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:420
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:423
 msgid "Update with current effects"
 msgstr "Atnaujinti dabartiniais efektais"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:454
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:457
 msgid "Rename Preset"
 msgstr "Pervadinti derinį"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:497
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:500
 msgid "Preset Name"
 msgstr "Derinio pavadinimas"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:498
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:501
 msgid "The preset keeps its effects."
 msgstr "Derinys išlaiko savo efektus."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:499
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:502
 msgid "The preset keeps the audio and video effects in use."
 msgstr "Derinys išsaugo naudojamus garso ir vaizdo efektus."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:507
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:510
 msgid "e.g., Late Night Movies"
 msgstr "pvz., Vėlyvo vakaro filmai"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:508
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:511
 msgid "Preset name"
 msgstr "Derinio pavadinimas"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:526
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:529
 msgid "Delete Preset"
 msgstr "Ištrinti derinį"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:552
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:555
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:493
 msgid "Delete %1?"
 msgstr "Ištrinti „%1“?"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:553
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:556
 msgid "The effects in use stay as they are."
 msgstr "Naudojami efektai lieka nepakeisti."
 
@@ -22816,16 +22805,16 @@ msgstr "Paleiskite vaizdo įrašą, kad galėtumėte peržiūrėti ir keisti efe
 msgid "Open synchronization"
 msgstr "Atverti sinchronizavimą"
 
-#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:93
+#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:94
 msgid "%1 equalizer curve"
 msgstr "„%1“ glodintuvo kreivė"
 
-#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:160
-#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:177
+#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:163
+#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:180
 msgid "Two-pass equalizer"
 msgstr "Dviejų praėjimų glodintuvas"
 
-#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:189
+#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:192
 #: modules/gui/qt/dialogs/extended/qml/FilterPanel.qml:92
 #: modules/gui/qt/dialogs/extended/qml/VideoEffectsPanel.qml:149
 msgid "Reset to defaults"
@@ -22980,9 +22969,9 @@ msgstr "Perdanga"
 msgid "Colors of %1"
 msgstr "„%1“ spalvos"
 
-#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:344
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:167
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:521
+#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:345
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:168
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:522
 #: modules/gui/qt/dialogs/sout/convert.cpp:82
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:394
 #: modules/gui/qt/maininterface/navigationmodel.cpp:288
@@ -22991,11 +22980,11 @@ msgstr "„%1“ spalvos"
 msgid "Browse"
 msgstr "Naršyti"
 
-#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:345
+#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:346
 msgid "Browse for %1"
 msgstr "Naršyti: %1"
 
-#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:348
+#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:349
 msgid "Image Files (*.png *.jpg);;All Files (*)"
 msgstr "Paveikslų failai (*.png *.jpg);;Visi failai (*)"
 
@@ -23161,7 +23150,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:324
 #: modules/gui/qt/dialogs/sout/sout.cpp:95
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:199
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:200
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:87
 #: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:347
 #: modules/gui/qt/player/qml/controlbarcontrols/BackButton.qml:30
@@ -23244,21 +23233,16 @@ msgstr "Tamsus"
 msgid "System"
 msgstr "Sistema"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:335
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:337
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:222
 msgid "Accent color %1"
 msgstr "Akcento spalva %1"
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:46
-#: modules/video_output/xcb/window.c:962
-msgid "VLC"
-msgstr "VLC"
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:55
+msgid "Welcome to %1!"
+msgstr "Sveiki atvykę į %1!"
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:54
-msgid "Welcome to VLC!"
-msgstr "Sveiki atvykę į VLC!"
-
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:72
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:73
 msgid ""
 "VLC is a free and open source cross-platform multimedia player and framework "
 "that plays most multimedia files as well as DVDs, Audio CDs, VCDs, and "
@@ -23268,15 +23252,15 @@ msgstr ""
 "sistema, grojanti daugumą medijos failų, taip pat DVD, garso CD, VCD ir "
 "įvairius srautinio perdavimo protokolus."
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:93
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:94
 msgid "Choose a Media Folder to get started with"
 msgstr "Pasirinkite medijos aplanką, nuo kurio pradėsite"
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:126
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:127
 msgid "No folder selected"
 msgstr "Aplankas nepasirinktas"
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:146
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:147
 msgid "Remove the folder"
 msgstr "Pašalinti aplanką"
 
@@ -23331,7 +23315,7 @@ msgstr "&Šokti"
 #: modules/gui/qt/dialogs/podcast/podcast_configuration.cpp:38
 #: modules/gui/qt/dialogs/preferences/expert_view.cpp:237
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:91
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1706
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1719
 #: modules/gui/qt/dialogs/sout/convert.cpp:137
 msgid "&Cancel"
 msgstr "&Atšaukti"
@@ -23719,8 +23703,8 @@ msgid " f/s"
 msgstr " k/s"
 
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1404
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:666
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:680
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:677
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:691
 msgid "Advanced Options"
 msgstr "Sudėtingesni nustatymai"
 
@@ -23748,7 +23732,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/playlists/playlists.cpp:57
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:114
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:185
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:198
 msgid "Add to Playlist"
 msgstr "Papildyti grojaraštį"
 
@@ -23874,7 +23858,7 @@ msgid "The previous audio device could not be restored."
 msgstr "Ankstesnio garso įrenginio atkurti nepavyko."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:57
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:214
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:253
 msgid "Dutch"
 msgstr "Olandų"
 
@@ -23883,7 +23867,7 @@ msgid "Greek"
 msgstr "Graikų"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:77
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:212
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:251
 msgid "Spanish"
 msgstr "Ispanų"
 
@@ -24151,7 +24135,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:293
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:105
-#: modules/gui/qt/qt.cpp:348
+#: modules/gui/qt/qt.cpp:349
 msgid "Channel banner"
 msgstr "Kanalo juosta"
 
@@ -24384,7 +24368,7 @@ msgstr ""
 "raktinio kadro."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1384
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:689
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:691
 msgid "Lowest latency"
 msgstr "Trumpiausias užlaikymas"
 
@@ -24594,7 +24578,7 @@ msgid "Show settings"
 msgstr "Rodomos nuostatos"
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:75
-#: modules/gui/qt/qt.cpp:357
+#: modules/gui/qt/qt.cpp:358
 msgid "Simple"
 msgstr "Paprastos"
 
@@ -24607,7 +24591,7 @@ msgid "Switch to full preferences view"
 msgstr "Rodyti visas galimas nuostatas"
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:79
-#: modules/gui/qt/qt.cpp:357
+#: modules/gui/qt/qt.cpp:358
 msgid "Expert"
 msgstr "Ekspertui"
 
@@ -24682,7 +24666,7 @@ msgstr "Veiksmai"
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:1307
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:121
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:75
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:608
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:609
 msgid "Hotkey"
 msgstr "Spartieji klavišai"
 
@@ -24818,16 +24802,16 @@ msgstr ""
 "Nepavyko įrašyti sparčiųjų klavišų (klaida %1). Pakeitimai atmesti "
 "atmintyje; patikrinkite konfigūracijos failą."
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:479
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:495
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:481
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:497
 msgid "Device:"
 msgstr "Įrenginys:"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:626
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:628
 msgid "Input & Codecs Settings"
 msgstr "Įvesties ir kodavimo nuostatos"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:631
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:633
 msgid ""
 "If this property is blank, different values\n"
 "for DVD, VCD, and CDDA are set.\n"
@@ -24839,45 +24823,45 @@ msgstr ""
 "Galite nustatyti vieną bendrą arba konfigūruoti jas \n"
 "atskirai išplėstinėse parinktyse."
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:692
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:694
 msgid "High latency"
 msgstr "Ilgas užlaikymas"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:693
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:695
 msgid "Higher latency"
 msgstr "Ilgiausias užlaikymas"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:735
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:737
 msgid "This is VLC's skinnable interface. You can download other skins at"
 msgstr "Tai VLC sąsaja su keičiamais apipavidalinimais, kurių galite rasti"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:737
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:739
 msgid "VLC skins website"
 msgstr "VLC apipavidalinimų svetainėje"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:765
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:767
 msgid "System's default (%1)"
 msgstr "Sistemos numatytoji (%1)"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:997
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:999
 msgid "Configure Hotkeys"
 msgstr "Nustatyti sparčiuosius klavišus"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1439
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1444
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1441
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1446
 msgid "%1 (partial)"
 msgstr "%1 (dalinis)"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1628
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1641
 msgid "File associations"
 msgstr "Failų susiejimai"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1705
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1718
 msgid "&Apply"
 msgstr "Pri&taikyti"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1839
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1849
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1852
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1862
 msgid "Please choose an entry point folder"
 msgstr "Pasirinkite įėjimo taško aplanką"
 
@@ -24904,7 +24888,7 @@ msgstr "Tema"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:192
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:428
-#: modules/gui/qt/qt.cpp:339
+#: modules/gui/qt/qt.cpp:340
 msgid "Accent color"
 msgstr "Akcento spalva"
 
@@ -24947,20 +24931,21 @@ msgstr ""
 "nieko daugiau."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:53
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:620
 msgid "Current output device"
 msgstr "Dabartinis išvesties įrenginys"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:76
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:80
 msgid "No selectable device available"
 msgstr "Nėra pasirenkamų įrenginių"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:77
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:81
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:187
 #: modules/keystore/keychain.m:52
 msgid "System default"
 msgstr "Sistemos numatytasis"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:141
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:164
 msgid ""
 "Device changes affect only the current audio output. Apply keeps this "
 "selection while it remains active."
@@ -25096,7 +25081,7 @@ msgid "Show all"
 msgstr "Rodyti viską"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:531
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:637
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:648
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:154
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:155
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:158
@@ -25167,56 +25152,55 @@ msgstr "Antroji kalba"
 msgid "OpenSubtitles"
 msgstr "OpenSubtitles"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:647
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:658
 msgid "No matching settings"
 msgstr "Atitinkančių nuostatų nėra"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:648
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:659
 msgid "No settings are available for this category on this VLC installation"
 msgstr "Šioje VLC įdiegtyje šiai kategorijai nuostatų nėra"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:729
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:745
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:741
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:757
 msgid "Show installed add-ons only"
 msgstr "Rodyti tik įdiegtus priedus"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:761
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:773
 msgid "No advanced options on this page."
 msgstr "Šiame puslapyje sudėtingesnių nustatymų nėra."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:773
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:785
 msgid "Welcome setup"
 msgstr "Pasisveikinimo sąranka"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:787
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:799
 msgid "All VLC options"
 msgstr "Visos VLC parinktys"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:803
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:815
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:356
 msgid "Reset all settings"
 msgstr "Atstatyti visas nuostatas"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:817
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:829
 msgid "Reset all settings?"
 msgstr "Atstatyti visas nuostatas?"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:818
-msgid "Every setting of VLC media player goes back to its default."
-msgstr ""
-"Visoms VLC media player nuostatoms bus grąžintos numatytosios reikšmės."
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:830
+msgid "Every setting of %1 goes back to its default."
+msgstr "Visoms %1 nuostatoms bus grąžintos numatytosios reikšmės."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:872
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:884
 msgid "Discard changes"
 msgstr "Atmesti pakeitimus"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:124
-#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:117
+#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:118
 msgid "Close Equalizer"
 msgstr "Užverti glodintuvą"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:124
-#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:98
+#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:99
 msgid "Open Equalizer"
 msgstr "Atverti glodintuvą"
 
@@ -25450,7 +25434,7 @@ msgstr "1 s"
 msgid "10 s"
 msgstr "10 s"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:616
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:617
 msgid "Choose a color"
 msgstr "Pasirinkite spalvą"
 
@@ -25791,7 +25775,7 @@ msgid "Seeking"
 msgstr "Perėjimas"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:137
-#: modules/gui/qt/qt.cpp:303
+#: modules/gui/qt/qt.cpp:304
 msgid "Show thumbnail while scrubbing"
 msgstr "Rodyti miniatiūrą slenkant laiko juosta"
 
@@ -26113,7 +26097,7 @@ msgid "Timing"
 msgstr "Sinchronizavimas"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:273
-#: modules/gui/qt/qt.cpp:305
+#: modules/gui/qt/qt.cpp:306
 msgid "Show subtitle lines on the seek bar"
 msgstr "Rodyti subtitrų eilutes laiko juostoje"
 
@@ -26646,7 +26630,7 @@ msgstr "TV programos pateikia laidas šiomis kalbomis: %1"
 
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:121
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:76
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:616
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:617
 msgid "Global Hotkey"
 msgstr "Visuotinis spartusis klavišas"
 
@@ -26729,11 +26713,11 @@ msgstr "Pašalinti %1"
 msgid "Search Keyboard Shortcuts..."
 msgstr "Ieškoti sparčiųjų klavišų..."
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:711
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:712
 msgid "Hotkey of %1"
 msgstr "„%1“ spartusis klavišas"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:722
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:723
 msgid "Global hotkey of %1"
 msgstr "„%1“ visuotinis spartusis klavišas"
 
@@ -26756,7 +26740,7 @@ msgstr "Atstatyti viską"
 #: modules/gui/qt/dialogs/sout/convert.cpp:48
 #: modules/gui/qt/dialogs/sout/convert.cpp:106
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:105
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:181
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:194
 #: modules/gui/qt/menus/menus.cpp:973 modules/gui/qt/menus/qml/MainMenu.qml:83
 msgid "Convert"
 msgstr "Konvertuoti"
@@ -26959,19 +26943,19 @@ msgstr "Prijungimo vieta"
 msgid "Login:pass"
 msgstr "Vartotojo_vardas:slaptažodis"
 
-#: modules/gui/qt/dialogs/systray/systray.cpp:199
-msgid "&Hide VLC media player in taskbar"
-msgstr "Slėpti VLC leistuvę &užduočių juostoje"
+#: modules/gui/qt/dialogs/systray/systray.cpp:200
+msgid "&Hide %1 in taskbar"
+msgstr "Slėpti %1 leistuvę &užduočių juostoje"
 
-#: modules/gui/qt/dialogs/systray/systray.cpp:205
-msgid "Sho&w VLC media player"
-msgstr "&Rodyti VLC leistuvę"
+#: modules/gui/qt/dialogs/systray/systray.cpp:206
+msgid "Sho&w %1"
+msgstr "&Rodyti %1 leistuvę"
 
-#: modules/gui/qt/dialogs/systray/systray.cpp:217
+#: modules/gui/qt/dialogs/systray/systray.cpp:218
 msgid "&Open Media"
 msgstr "&Atverti kūrinį"
 
-#: modules/gui/qt/dialogs/systray/systray.cpp:221
+#: modules/gui/qt/dialogs/systray/systray.cpp:222
 #: modules/gui/qt/menus/menus.cpp:237
 msgid "&Quit"
 msgstr "&Baigti"
@@ -27057,7 +27041,7 @@ msgstr "Nepavyko pritaikyti profilio nuostatų; atkurtos ankstesnės reikšmės.
 msgid "Profile (%1)"
 msgstr "Profilis (%1)"
 
-#: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:88
+#: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:89
 msgid "Customize player"
 msgstr "Tinkinti grotuvą"
 
@@ -27066,11 +27050,11 @@ msgstr "Tinkinti grotuvą"
 msgid "Sleep timer"
 msgstr "Išjungimo laikmatis"
 
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:169
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:170
 msgid "Selected profile"
 msgstr "Pasirinktas profilis"
 
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:236
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:237
 msgid "New profile…"
 msgstr "Naujas profilis…"
 
@@ -27323,8 +27307,8 @@ msgstr "Žiūrėti nuo pradžios"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:142
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:174
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:37
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:187
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:874
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:81
 msgid "Favorite"
@@ -27382,26 +27366,26 @@ msgstr "Atnaujinami kanalai (%1)…"
 msgid "%1 could not be loaded: %2"
 msgstr "Nepavyko įkelti %1: %2"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:502
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:503
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:580
 msgid "No channel matches the search"
 msgstr "Paieškos neatitinka nė vienas kanalas"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:503
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:504
 msgid "No favorite channel yet: right-click a channel to add it"
 msgstr ""
 "Mėgstamų kanalų dar nėra: spustelėkite kanalą dešiniuoju pelės mygtuku, kad "
 "jį pridėtumėte"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:504
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:505
 msgid "No channel watched yet"
 msgstr "Dar nežiūrėtas nė vienas kanalas"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:505
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:506
 msgid "Loading the channels…"
 msgstr "Įkeliami kanalai…"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:506
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:507
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:810
 msgid "No channels"
 msgstr "Kanalų nėra"
@@ -27424,19 +27408,19 @@ msgstr "Vėliau"
 msgid "No guide for this channel"
 msgstr "Šis kanalas neturi TV programos"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:182
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:183
 msgid "No account with films or series"
 msgstr "Nėra paskyros su filmais ar serialais"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:183
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:184
 msgid "Loading…"
 msgstr "Įkeliama…"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:183
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:184
 msgid "Nothing here"
 msgstr "Čia nieko nėra"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:235
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:236
 msgid "S%1 E%2"
 msgstr "S%1 E%2"
 
@@ -27503,11 +27487,11 @@ msgstr "Priminti"
 msgid "Back to Live"
 msgstr "Grįžti į tiesioginę transliaciją"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:618 modules/gui/qt/qt.cpp:344
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:618 modules/gui/qt/qt.cpp:345
 msgid "Next channel"
 msgstr "Kitas kanalas"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:623 modules/gui/qt/qt.cpp:345
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:623 modules/gui/qt/qt.cpp:346
 msgid "Previous channel"
 msgstr "Ankstesnis kanalas"
 
@@ -27623,7 +27607,7 @@ msgid "Updated %1 at %2"
 msgstr "Atnaujinta %1, %2"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:308
-#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:239
+#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:242
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:91
 msgid "Move up"
 msgstr "Perkelti aukštyn"
@@ -27836,7 +27820,7 @@ msgstr "MC"
 
 #: modules/gui/qt/maininterface/navigationmodel.cpp:270
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:26
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:33
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:50
 #: modules/gui/qt/network/standardpathmodel.cpp:136
 #: modules/gui/qt/network/standardpathmodel.cpp:146
@@ -27850,7 +27834,7 @@ msgstr "Pradžia"
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:96
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:32
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:39
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:54
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:61
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:53
@@ -27912,7 +27896,7 @@ msgid "Discover"
 msgstr "Atrasti"
 
 #: modules/gui/qt/maininterface/qml/MenuTopbar.qml:36
-#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:147
+#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:148
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:88
 #: modules/gui/qt/player/qml/TopBar.qml:334
 #: modules/gui/qt/player/qml/TracksListPage.qml:83
@@ -27928,14 +27912,9 @@ msgstr "Meniu"
 msgid "Local top bar"
 msgstr "Vietinė viršutinė juosta"
 
-#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:187
+#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:188
 msgid "Show navigation menu"
 msgstr "Rodyti naršymo meniu"
-
-#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:250
-#: modules/gui/qt/player/qml/TopBar.qml:503
-msgid "VLC Media Player"
-msgstr "VLC Media Player"
 
 #: modules/gui/qt/maininterface/qml/MainDisplay.qml:34
 msgid "Main display"
@@ -28057,7 +28036,7 @@ msgid "Re-check"
 msgstr "Tikrinti iš naujo"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:34
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:41
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:224
 #: modules/gui/qt/player/qml/CompactLibrary.qml:83
 #: modules/gui/qt/player/qml/CompactLibrary.qml:297
@@ -28065,13 +28044,20 @@ msgid "Recent"
 msgstr "Neseniai"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:238
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:303
 msgid "Add item"
 msgstr "Pridėti elementą"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:121
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:132
 msgid "Edit Sidebar…"
 msgstr "Keisti šoninę juostą…"
+
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:131
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:137
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
+msgid "Unpin from Sidebar"
+msgstr "Atsegti nuo šoninės juostos"
 
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:34
 msgid "Reset to Default"
@@ -28093,12 +28079,12 @@ msgstr ""
 msgid "hidden"
 msgstr "paslėpta"
 
-#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:251
+#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:254
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:98
 msgid "Move down"
 msgstr "Perkelti žemyn"
 
-#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:262
+#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:265
 msgid "Show %1"
 msgstr "Rodyti %1"
 
@@ -28159,6 +28145,15 @@ msgstr "OpenSubtitles atsisiuntimas nepavyko. Patikrinkite savo kvotą."
 #: modules/gui/qt/medialibrary/mlopensubtitles.cpp:223
 msgid "OpenSubtitles did not return a valid subtitle download link."
 msgstr "OpenSubtitles negrąžino tinkamos subtitrų atsisiuntimo nuorodos."
+
+#: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:188
+#: modules/gui/qt/player/subtitle_search.cpp:481
+msgid "This build can't search the internet."
+msgstr "Ši versija negali ieškoti internete."
+
+#: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:207
+msgid "The subtitle services took too long to answer."
+msgstr "Subtitrų paslaugos per ilgai neatsakė."
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:121
 msgid "This media"
@@ -28236,12 +28231,12 @@ msgstr ""
 "Subtitrų failai (*.srt *.ass *.ssa *.sub *.vtt *.ttml *.smi);;Visi failai (*)"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:369
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:553
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:597
 msgid "Choose the folder of the audio tracks"
 msgstr "Pasirinkite garso takelių aplanką"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:370
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:554
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:598
 msgid "Choose the folder of the subtitles"
 msgstr "Pasirinkite subtitrų aplanką"
 
@@ -28278,31 +28273,31 @@ msgstr "Pasirinkite bent vieną garso failą."
 msgid "Choose at least one subtitle file."
 msgstr "Pasirinkite bent vieną subtitrų failą."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:477
-msgid "An audio file is missing or unreadable: %1"
-msgstr "Garso failo nėra arba jo neįmanoma perskaityti: %1"
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:478
-msgid "A subtitle file is missing or unreadable: %1"
-msgstr "Subtitrų failo nėra arba jo neįmanoma perskaityti: %1"
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:492
-msgid "The destination media could not be found in the library."
-msgstr "Paskirties kūrinio fonotekoje rasti nepavyko."
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:509
-msgid "Could not save audio track association for %1."
-msgstr "Nepavyko įrašyti garso takelio susiejimo su %1."
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:510
-msgid "Could not save subtitle association for %1."
-msgstr "Nepavyko įrašyti subtitrų susiejimo su %1."
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:524
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:472
 #, c-format
 msgid ""
 " %n association(s) were saved before this error; those changes remain saved."
 msgstr " Iki šios klaidos įrašyta susiejimų: %n; šie pakeitimai lieka įrašyti."
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:498
+msgid "An audio file is missing or unreadable: %1"
+msgstr "Garso failo nėra arba jo neįmanoma perskaityti: %1"
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:499
+msgid "A subtitle file is missing or unreadable: %1"
+msgstr "Subtitrų failo nėra arba jo neįmanoma perskaityti: %1"
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:513
+msgid "The destination media could not be found in the library."
+msgstr "Paskirties kūrinio fonotekoje rasti nepavyko."
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:529
+msgid "Could not save audio track association for %1."
+msgstr "Nepavyko įrašyti garso takelio susiejimo su %1."
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:530
+msgid "Could not save subtitle association for %1."
+msgstr "Nepavyko įrašyti subtitrų susiejimo su %1."
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:47
 msgid "The subtitle filename is invalid."
@@ -28384,7 +28379,7 @@ msgstr "Nežinomas atlikėjas"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:96
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:228
-#: modules/gui/qt/player/qml/ResumeDialog.qml:147
+#: modules/gui/qt/player/qml/ResumeDialog.qml:148
 #: modules/gui/qt/player/qml/CompactLibrary.qml:401
 msgid "Continue Watching"
 msgstr "Žiūrėti toliau"
@@ -28577,7 +28572,7 @@ msgid "Remove from playlist"
 msgstr "Pašalinti iš grojaraščio"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:222
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:252
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:260
 msgid "Processing..."
 msgstr "Apdorojama..."
 
@@ -28609,15 +28604,15 @@ msgstr[0] "Ištrinti grojaraštį"
 msgstr[1] "Ištrinti grojaraščius"
 msgstr[2] "Ištrinti grojaraščius"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:368
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:376
 msgid "Items"
 msgstr "Įrašai"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:455
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:463
 msgid "No playlists found"
 msgstr "Grojaraščių nerasta"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:456
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:464
 msgid "Create a playlist with files or add media from the library"
 msgstr "Sukurkite grojaraštį su failais arba pridėkite mediją iš fonotekos"
 
@@ -28699,45 +28694,45 @@ msgid "Prev"
 msgstr "Ankstesnis"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:82
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:168
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:181
 msgid "Mark as Unwatched"
 msgstr "Žymėti kaip nežiūrėtą"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:82
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:169
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:182
 msgid "Mark as Watched"
 msgstr "Žymėti kaip žiūrėtą"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:110
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:183
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:53
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:196
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:54
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:891
 msgid "Add to Queue"
 msgstr "Įtraukti į eilę"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:126
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:193
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:206
 msgid "Go to Source"
 msgstr "Eiti į šaltinį"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:134
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:207
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:57
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:220
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:58
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:899
 msgid "Add Subtitle Tracks"
 msgstr "Pridėti subtitrų takelius"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:140
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:209
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:62
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:75
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:222
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:63
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:93
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:903
 msgid "Add Audio Tracks"
 msgstr "Pridėti garso takelius"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:146
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:211
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:69
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:224
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:70
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:31
 msgid "Properties & Metadata"
 msgstr "Savybės ir metaduomenys"
@@ -28803,27 +28798,32 @@ msgstr "Keisti garso takelius"
 msgid "Resync"
 msgstr "Sinchronizuoti iš naujo"
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:546
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:138
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
+msgid "Pin to Sidebar"
+msgstr "Prisegti prie šoninės juostos"
+
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:560
 msgid "No media matches the search"
 msgstr "Paiešką atitinkančios medijos nėra"
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:547
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:561
 msgid "No media in this folder"
 msgstr "Šiame aplanke medijos nėra"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:42
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:43
 msgid "Add folder"
 msgstr "Pridėti aplanką"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:45
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:46
 msgid "Add folder to media library"
 msgstr "Pridėti aplanką į fonoteką"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:53
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:54
 msgid "Could not add this folder to the library: %1"
 msgstr "Nepavyko pridėti šio aplanko į fonoteką: %1"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:54
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:55
 msgid "Media library"
 msgstr "Fonoteka"
 
@@ -28942,74 +28942,158 @@ msgstr[2] "%1 įrašų"
 msgid "Length"
 msgstr "Trukmė"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:36
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:38
 msgid "To This Folder"
 msgstr "Šiam aplankui"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:37
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:39
 msgid "To This Playlist"
 msgstr "Šiam grojaraščiui"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:38
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:40
 msgid "To This File"
 msgstr "Šiam failui"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:75
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:93
 msgid "Add Subtitles"
 msgstr "Pridėti subtitrus"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:530
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:532
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:533
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:100
+msgid "Download %1"
+msgstr "Atsisiųsti (%1)"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:186
+msgid "%1 linked, %2 failed."
+msgstr "Susieta: %1, nepavyko: %2."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:187
+msgid "Nothing was linked: %1 failed."
+msgstr "Nieko nesusieta: nepavyko %1."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:574
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:576
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:577
 msgid "From Computer"
 msgstr "Iš kompiuterio"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:532
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:533
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:576
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:577
 msgid "From Link"
 msgstr "Iš nuorodos"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:532
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:576
 msgid "From OpenSubtitles"
 msgstr "Iš OpenSubtitles"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:602
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:577
+msgid "From the Internet"
+msgstr "Iš interneto"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:646
 msgid "Direct HTTPS link to a subtitle file"
 msgstr "Tiesioginė HTTPS nuoroda į subtitrų failą"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:617
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:661
 msgid "Title or episode"
 msgstr "Pavadinimas arba serija"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:784
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:692
+msgid "%1, else %2"
+msgstr "%1, kitaip %2"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:698
+msgid "Every subtitle service is off (Subtitles panel of the player)"
+msgstr "Visos subtitrų paslaugos išjungtos (grotuvo skydelis „Subtitrai“)"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:862
 msgid "OpenSubtitles API key"
 msgstr "OpenSubtitles API raktas"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:899
-msgid "Searching OpenSubtitles…"
-msgstr "Ieškoma OpenSubtitles…"
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1001
+msgid "Waiting…"
+msgstr "Laukiama…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:901
-msgid "Search OpenSubtitles to see the subtitle files."
-msgstr "Ieškokite OpenSubtitles, kad pamatytumėte subtitrų failus."
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1002
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:365
+msgid "Searching…"
+msgstr "Ieškoma…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:904
-msgid "Working on audio tracks…"
-msgstr "Apdorojami garso takeliai…"
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1004
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:444
+msgid "For this file"
+msgstr "Šiam failui"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:904
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1005
+msgid "Best guess"
+msgstr "Geriausias spėjimas"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1006
+msgid "Not found"
+msgstr "Nerasta"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1007
+msgid "No answer"
+msgstr "Nėra atsakymo"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1008
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:264
+msgid "Downloading…"
+msgstr "Atsisiunčiama…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1009
+msgid "Linked"
+msgstr "Susieta"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1108
+msgid "Don't download"
+msgstr "Nesiųsti"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1112
+msgid "Subtitle for %1"
+msgstr "Subtitrai: %1"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1131
+msgid "Downloading and linking the subtitles chosen…"
+msgstr "Atsisiunčiami ir susiejami pasirinkti subtitrai…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1133
+msgid "Searching the internet: %1 of %2 videos done…"
+msgstr "Ieškoma internete: baigta %1 iš %2 vaizdo įrašų…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1134
+msgid "For the file: %1 · By title: %2 · Not found: %3"
+msgstr "Šiam failui: %1 · Pagal pavadinimą: %2 · Nerasta: %3"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1137
+msgid "No answer: %1"
+msgstr "Nėra atsakymo: %1"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1160
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on subtitles…"
 msgstr "Apdorojami subtitrai…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:907
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1165
+msgid "Searching OpenSubtitles…"
+msgstr "Ieškoma OpenSubtitles…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1167
+msgid "Search OpenSubtitles to see the subtitle files."
+msgstr "Ieškokite OpenSubtitles, kad pamatytumėte subtitrų failus."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
+msgid "Working on audio tracks…"
+msgstr "Apdorojami garso takeliai…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1173
 msgid "Enter a direct link to a subtitle file above."
 msgstr "Aukščiau įveskite tiesioginę nuorodą į subtitrų failą."
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:908
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1174
 msgid "No audio file in this folder: choose another one above."
 msgstr "Šiame aplanke nėra garso failų: aukščiau pasirinkite kitą."
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:909
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1175
 msgid "No subtitle file in this folder: choose another one above."
 msgstr "Šiame aplanke nėra subtitrų failų: aukščiau pasirinkite kitą."
 
@@ -29038,7 +29122,7 @@ msgstr "Iš&valyti"
 msgid "&Manage"
 msgstr "&Tvarkyti"
 
-#: modules/gui/qt/menus/menus.cpp:183 modules/gui/qt/qt.cpp:1688
+#: modules/gui/qt/menus/menus.cpp:183 modules/gui/qt/qt.cpp:1693
 msgid "Open &File..."
 msgstr "&Atverti failą..."
 
@@ -29050,7 +29134,7 @@ msgstr "Atverti keletą &failų..."
 msgid "Open &Disc..."
 msgstr "Atverti &diską..."
 
-#: modules/gui/qt/menus/menus.cpp:191 modules/gui/qt/qt.cpp:1689
+#: modules/gui/qt/menus/menus.cpp:191 modules/gui/qt/qt.cpp:1694
 msgid "Open &Network Stream..."
 msgstr "Atverti &tinklo srautą..."
 
@@ -29103,7 +29187,7 @@ msgid "Customi&ze Interface..."
 msgstr "Išvaizdos &derinimas"
 
 #: modules/gui/qt/menus/menus.cpp:280 modules/gui/qt/menus/menus.cpp:896
-#: modules/gui/qt/qt.cpp:1692
+#: modules/gui/qt/qt.cpp:1697
 msgid "&Preferences"
 msgstr "&Parinktys"
 
@@ -29257,8 +29341,8 @@ msgstr "Kitas skyrius"
 
 #: modules/gui/qt/menus/menus.cpp:562
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:304
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:379 modules/gui/qt/qt.cpp:1697
-#: modules/gui/qt/qt.cpp:1698
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:379 modules/gui/qt/qt.cpp:1702
+#: modules/gui/qt/qt.cpp:1703
 msgid "&Help"
 msgstr "&Pagalba"
 
@@ -29420,7 +29504,7 @@ msgid "Album sections"
 msgstr "Albumų skyriai"
 
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:281
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:365 modules/gui/qt/qt.cpp:1687
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:365 modules/gui/qt/qt.cpp:1692
 msgid "&Media"
 msgstr "&Kūrinys"
 
@@ -29661,41 +29745,6 @@ msgstr "Prieš nustatydami išjungimo laikmatį, pradėkite groti."
 msgid "Choose a duration between one second and 24 hours."
 msgstr "Pasirinkite trukmę nuo vienos sekundės iki 24 valandų."
 
-#: modules/gui/qt/player/subtitle_finder.cpp:742
-msgid "This build can't search the internet."
-msgstr "Ši versija negali ieškoti internete."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1254
-#: modules/gui/qt/player/subtitle_finder.cpp:1512
-msgid "No connection to the internet."
-msgstr "Nėra interneto ryšio."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1257
-msgid "The video couldn't be identified from its name."
-msgstr "Pagal pavadinimą vaizdo įrašo atpažinti nepavyko."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1258
-msgid "\"%1\" wasn't found. Search for its title."
-msgstr "„%1“ nerasta. Ieškokite pagal pavadinimą."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1260
-msgid "No subtitles were found for %1."
-msgstr "Nerasta subtitrų: %1."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1513
-msgid "The subtitle couldn't be downloaded (%1)."
-msgstr "Nepavyko atsisiųsti subtitrų (%1)."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1543
-msgid "The subtitle couldn't be saved."
-msgstr "Nepavyko įrašyti subtitrų."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1553
-#: modules/gui/qt/player/subtitle_providers.cpp:922
-#: modules/gui/qt/player/subtitle_providers.cpp:955
-msgid "The subtitle couldn't be unpacked."
-msgstr "Nepavyko išpakuoti subtitrų."
-
 #: modules/gui/qt/player/subtitle_providers.cpp:87
 msgid "%1 didn't answer."
 msgstr "%1 neatsakė."
@@ -29728,6 +29777,12 @@ msgstr "Filmai · daug kalbų"
 msgid "This subtitle comes as a RAR archive, which can't be opened here."
 msgstr "Šie subtitrai pateikiami RAR archyve, kurio čia atverti negalima."
 
+#: modules/gui/qt/player/subtitle_providers.cpp:922
+#: modules/gui/qt/player/subtitle_providers.cpp:955
+#: modules/gui/qt/player/subtitle_search.cpp:1140
+msgid "The subtitle couldn't be unpacked."
+msgstr "Nepavyko išpakuoti subtitrų."
+
 #: modules/gui/qt/player/subtitle_providers.cpp:956
 msgid "The archive has no subtitle in it."
 msgstr "Archyve nėra subtitrų."
@@ -29741,6 +29796,32 @@ msgstr ""
 #: modules/gui/qt/player/subtitle_providers.cpp:974
 msgid "The subtitle is empty."
 msgstr "Subtitrai tušti."
+
+#: modules/gui/qt/player/subtitle_search.cpp:1017
+#: modules/gui/qt/player/subtitle_search.cpp:1100
+msgid "No connection to the internet."
+msgstr "Nėra interneto ryšio."
+
+#: modules/gui/qt/player/subtitle_search.cpp:1020
+msgid "The video couldn't be identified from its name."
+msgstr "Pagal pavadinimą vaizdo įrašo atpažinti nepavyko."
+
+#: modules/gui/qt/player/subtitle_search.cpp:1021
+msgid "\"%1\" wasn't found. Search for its title."
+msgstr "„%1“ nerasta. Ieškokite pagal pavadinimą."
+
+#: modules/gui/qt/player/subtitle_search.cpp:1023
+msgid "No subtitles were found for %1."
+msgstr "Nerasta subtitrų: %1."
+
+#: modules/gui/qt/player/subtitle_search.cpp:1065
+#: modules/gui/qt/player/subtitle_search.cpp:1101
+msgid "The subtitle couldn't be downloaded (%1)."
+msgstr "Nepavyko atsisiųsti subtitrų (%1)."
+
+#: modules/gui/qt/player/subtitle_search.cpp:1131
+msgid "The subtitle couldn't be saved."
+msgstr "Nepavyko įrašyti subtitrų."
 
 #: modules/gui/qt/player/waveform.cpp:230
 msgid "Waveform analyzer is unavailable."
@@ -29844,7 +29925,7 @@ msgid "Artist Name"
 msgstr "Atlikėjo vardas"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:82
-#: modules/gui/qt/player/qml/controlbarcontrols/DividerWidget.qml:21
+#: modules/gui/qt/player/qml/controlbarcontrols/DividerWidget.qml:22
 msgid "Divider"
 msgstr "Skirtukas"
 
@@ -29954,62 +30035,62 @@ msgstr "Subtitrai televizoriuje: %1"
 msgid "Subtitles off on the TV"
 msgstr "Subtitrai televizoriuje išjungti"
 
-#: modules/gui/qt/player/qml/Player.qml:1229
+#: modules/gui/qt/player/qml/Player.qml:1230
 msgid "Not playing on %1"
 msgstr "Negrojama įrenginyje %1"
 
-#: modules/gui/qt/player/qml/Player.qml:1231
-#: modules/gui/qt/player/qml/Player.qml:1358
+#: modules/gui/qt/player/qml/Player.qml:1232
+#: modules/gui/qt/player/qml/Player.qml:1359
 msgid "Connecting to %1…"
 msgstr "Jungiamasi prie %1…"
 
-#: modules/gui/qt/player/qml/Player.qml:1233
+#: modules/gui/qt/player/qml/Player.qml:1234
 msgid "Playing on %1"
 msgstr "Grojama įrenginyje %1"
 
-#: modules/gui/qt/player/qml/Player.qml:1234
+#: modules/gui/qt/player/qml/Player.qml:1235
 msgid "The sound plays on %1"
 msgstr "Garsas grojamas įrenginyje %1"
 
-#: modules/gui/qt/player/qml/Player.qml:1259
+#: modules/gui/qt/player/qml/Player.qml:1260
 msgid "Pause, seek and change the subtitles here: the TV follows."
 msgstr ""
 "Pristabdykite, pereikite ir keiskite subtitrus čia: televizorius seka paskui."
 
-#: modules/gui/qt/player/qml/Player.qml:1276
+#: modules/gui/qt/player/qml/Player.qml:1277
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the media."
 msgstr ""
 "Windows užkarda neleidžia %1 prisijungti prie šio kompiuterio ir skaityti "
 "medijos."
 
-#: modules/gui/qt/player/qml/Player.qml:1288
+#: modules/gui/qt/player/qml/Player.qml:1289
 msgid "Waiting for Windows…"
 msgstr "Laukiama Windows…"
 
-#: modules/gui/qt/player/qml/Player.qml:1289
+#: modules/gui/qt/player/qml/Player.qml:1290
 msgid "Allow on public networks too"
 msgstr "Leisti ir viešuosiuose tinkluose"
 
-#: modules/gui/qt/player/qml/Player.qml:1290
+#: modules/gui/qt/player/qml/Player.qml:1291
 msgid "Allow on private networks"
 msgstr "Leisti privačiuosiuose tinkluose"
 
-#: modules/gui/qt/player/qml/Player.qml:1302
+#: modules/gui/qt/player/qml/Player.qml:1303
 msgid "Try again"
 msgstr "Bandyti dar kartą"
 
-#: modules/gui/qt/player/qml/Player.qml:1307
-#: modules/gui/qt/player/qml/Player.qml:1317
+#: modules/gui/qt/player/qml/Player.qml:1308
+#: modules/gui/qt/player/qml/Player.qml:1318
 msgid "Play here"
 msgstr "Groti čia"
 
-#: modules/gui/qt/player/qml/Player.qml:1317
-#: modules/gui/qt/player/qml/Player.qml:1368
+#: modules/gui/qt/player/qml/Player.qml:1318
+#: modules/gui/qt/player/qml/Player.qml:1369
 msgid "Stop casting"
 msgstr "Stabdyti perdavimą"
 
-#: modules/gui/qt/player/qml/Player.qml:1359
+#: modules/gui/qt/player/qml/Player.qml:1360
 msgid "Also on %1"
 msgstr "Taip pat įrenginyje %1"
 
@@ -30017,11 +30098,11 @@ msgstr "Taip pat įrenginyje %1"
 msgid "Resume dialog"
 msgstr "Tęsimo dialogas"
 
-#: modules/gui/qt/player/qml/ResumeDialog.qml:136
+#: modules/gui/qt/player/qml/ResumeDialog.qml:137
 msgid "You’ve watched till %1 already."
 msgstr "Jau žiūrėjote iki %1."
 
-#: modules/gui/qt/player/qml/ResumeDialog.qml:138
+#: modules/gui/qt/player/qml/ResumeDialog.qml:139
 msgid "Continue where you left off?"
 msgstr "Tęsti nuo ten, kur baigėte?"
 
@@ -30029,7 +30110,7 @@ msgstr "Tęsti nuo ten, kur baigėte?"
 msgid "Player topbar"
 msgstr "Grotuvo viršutinė juosta"
 
-#: modules/gui/qt/player/qml/TopBar.qml:439
+#: modules/gui/qt/player/qml/TopBar.qml:440
 msgid "Show %1 in the library"
 msgstr "Rodyti %1 fonotekoje"
 
@@ -30083,7 +30164,7 @@ msgstr "Žymelėms reikia fonotekos"
 msgid "Show Preferences"
 msgstr "Rodyti parinktis"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:556
+#: modules/gui/qt/player/qml/TracksMenu.qml:557
 #: modules/gui/qt/player/qml/TracksPageAudio.qml:37
 #: modules/gui/qt/player/qml/TracksPageSubtitle.qml:37
 #: modules/gui/qt/player/qml/SubtitleSyncTimeline.qml:42
@@ -30184,7 +30265,7 @@ msgstr "Sinchronizuoti žodžius su grojimo padėtimi"
 msgid "Volume %1%"
 msgstr "Garsumas %1%"
 
-#: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:207
+#: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:211
 msgid "Play audio to select a visualization."
 msgstr "Paleiskite garsą, kad pasirinktumėte vaizdinį."
 
@@ -30537,10 +30618,6 @@ msgstr "Ieškoma per %1…"
 msgid "Searching subtitles online…"
 msgstr "Ieškoma subtitrų internete…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:264
-msgid "Downloading…"
-msgstr "Atsisiunčiama…"
-
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:266
 msgid "%1 · %2 found"
 msgstr "%1 · rasta: %2"
@@ -30581,10 +30658,6 @@ msgstr "Įkelti subtitrų failą grojimui"
 msgid "Title of the movie or series"
 msgstr "Filmo arba serialo pavadinimas"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:365
-msgid "Searching…"
-msgstr "Ieškoma…"
-
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:408
 msgid "Second"
 msgstr "Antroji"
@@ -30593,10 +30666,6 @@ msgstr "Antroji"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Dažnai naudojama"
-
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:444
-msgid "For this file"
-msgstr "Šiam failui"
 
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:465
 msgid "Looking for subtitles…"
@@ -30641,11 +30710,11 @@ msgstr "Mažesni subtitrai"
 msgid "Larger subtitles"
 msgstr "Didesni subtitrai"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:773
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:774
 msgid "HI"
 msgstr "KN"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:778
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:779
 msgid "For the hearing impaired"
 msgstr "Klausos negalią turintiems"
 
@@ -30749,38 +30818,38 @@ msgstr "Grojimo eilė (%1/%2)"
 msgid "Casting to %1"
 msgstr "Perduodama į %1"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:128
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:134
 msgid "Cast to"
 msgstr "Perduoti į"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:153
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:160
 msgid "This computer"
 msgstr "Šis kompiuteris"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:182
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:189
 msgid "Not playing: choose it to try again"
 msgstr "Negroja: pasirinkite, kad bandytumėte dar kartą"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:184
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:191
 msgid "Connecting…"
 msgstr "Jungiamasi…"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:185
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:192
 msgid "Sound only"
 msgstr "Tik garsas"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:208
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:215
 msgid "Show %1 hidden device"
 msgid_plural "Show %1 hidden devices"
 msgstr[0] "Rodyti %1 paslėptą įrenginį"
 msgstr[1] "Rodyti %1 paslėptus įrenginius"
 msgstr[2] "Rodyti %1 paslėptų įrenginių"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:221
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:228
 msgid "Looking for TVs and Chromecasts on your network…"
 msgstr "Ieškoma televizorių ir Chromecast įrenginių jūsų tinkle…"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:222
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:229
 msgid ""
 "No device found. Turn your TV or Chromecast on, on the same network as this "
 "computer."
@@ -30788,23 +30857,23 @@ msgstr ""
 "Įrenginių nerasta. Įjunkite televizorių arba Chromecast tame pačiame tinkle "
 "kaip ir šis kompiuteris."
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:236
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:251
 msgid "Show the video here too"
 msgstr "Rodyti vaizdą ir čia"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:286
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:301
 msgid "With a Chromecast, the video plays only there."
 msgstr "Naudojant Chromecast vaizdas rodomas tik ten."
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:297
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:312
 msgid "The subtitles shown go to the TV with the picture."
 msgstr "Rodomi subtitrai siunčiami į televizorių kartu su vaizdu."
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:314
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:329
 msgid "Hide this device"
 msgstr "Slėpti šį įrenginį"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:358
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:373
 msgid "playing here"
 msgstr "grojama čia"
 
@@ -30860,11 +30929,11 @@ msgstr "Mėlynas klavišas"
 msgid "%1 %"
 msgstr "%1 %"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:65
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:66
 msgid "Choose a video zoom level"
 msgstr "Pasirinkite vaizdo mastelį"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:66
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:67
 msgid "Zoom is unavailable without video"
 msgstr "Be vaizdo mastelio keisti negalima"
 
@@ -30892,19 +30961,19 @@ msgstr "Pašalinti pasirinktus įrašus"
 msgid "Add files to the queue"
 msgstr "Pridėti failų į eilę"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:629
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:630
 msgid "No results"
 msgstr "Rezultatų nėra"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:630
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:631
 msgid "No content yet"
 msgstr "Turinio dar nėra"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:646
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:647
 msgid "Drag & Drop some content here!"
 msgstr "Nutempkite turinį čia!"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:711
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:712
 msgid "Play queue"
 msgstr "Grojimo eilė"
 
@@ -30912,21 +30981,21 @@ msgstr "Grojimo eilė"
 msgid "%1 elements, %2"
 msgstr "Elementų: %1, %2"
 
-#: modules/gui/qt/qt.cpp:175
+#: modules/gui/qt/qt.cpp:176
 msgid "Select the initial preferences view"
 msgstr "Pasirinkite pradinį parinkčių rodinį"
 
-#: modules/gui/qt/qt.cpp:176
+#: modules/gui/qt/qt.cpp:177
 msgid ""
 "Select which preferences view to show upon opening the preferences dialog."
 msgstr ""
 "Pasirinkite, kuris parinkčių rodinys rodomas atvėrus parinkčių dialogą."
 
-#: modules/gui/qt/qt.cpp:179 modules/gui/skins2/src/skin_main.cpp:482
+#: modules/gui/qt/qt.cpp:180 modules/gui/skins2/src/skin_main.cpp:482
 msgid "Systray icon"
 msgstr "Ženkliukas sistemos dėkle"
 
-#: modules/gui/qt/qt.cpp:180
+#: modules/gui/qt/qt.cpp:181
 msgid ""
 "Show an icon in the systray allowing you to control VLC media player for "
 "basic actions."
@@ -30934,27 +31003,27 @@ msgstr ""
 "Kai VLC ženkliukas rodomas sistemos dėkle, galite atlikti pagrindinius "
 "leistuvės veiksmus."
 
-#: modules/gui/qt/qt.cpp:184
+#: modules/gui/qt/qt.cpp:185
 msgid "Start VLC with only a systray icon"
 msgstr "VLC paleisti sistemos dėkle"
 
-#: modules/gui/qt/qt.cpp:185
+#: modules/gui/qt/qt.cpp:186
 msgid "VLC will start with just an icon in your taskbar."
 msgstr "VLC bus paleista tik su piktograma užduočių juostoje."
 
-#: modules/gui/qt/qt.cpp:194
+#: modules/gui/qt/qt.cpp:195
 msgid "Show playing item name in window title"
 msgstr "Atliekamo kūrinio pavadinimą rodyti lango antraštėje"
 
-#: modules/gui/qt/qt.cpp:195
+#: modules/gui/qt/qt.cpp:196
 msgid "Show the name of the song or video in the controller window title."
 msgstr "Rodyti dainos ar vaizdo pavadinimą valdiklio lango antraštėje."
 
-#: modules/gui/qt/qt.cpp:198
+#: modules/gui/qt/qt.cpp:199
 msgid "Show notification popup on track change"
 msgstr "Rodyti pranešimą pasikeitus takeliui"
 
-#: modules/gui/qt/qt.cpp:200
+#: modules/gui/qt/qt.cpp:201
 msgid ""
 "Show a notification popup with the artist and track name when the current "
 "play queue item changes, when VLC is minimized or hidden."
@@ -30962,11 +31031,11 @@ msgstr ""
 "Rodyti iššokantį pranešimą su atlikėju ir takelio pavadinimu, kai pasikeičia "
 "dabartinis grojimo eilės įrašas, kai VLC sumažinta arba paslėpta."
 
-#: modules/gui/qt/qt.cpp:203
+#: modules/gui/qt/qt.cpp:204
 msgid "Windows opacity between 0.1 and 1"
 msgstr "Lango nepermatomumas tarp 0,1 ir 1"
 
-#: modules/gui/qt/qt.cpp:204
+#: modules/gui/qt/qt.cpp:205
 msgid ""
 "Sets the windows opacity between 0.1 and 1 for main interface, play queue "
 "and extended panel. This option only works with Windows and X11 with "
@@ -30976,11 +31045,11 @@ msgstr ""
 "nepermatomumą nuo 0.1 iki 1. Ši parinktis veikia tik Windows ir X11 su "
 "kompozicijos plėtiniais."
 
-#: modules/gui/qt/qt.cpp:209
+#: modules/gui/qt/qt.cpp:210
 msgid "Fullscreen controller opacity between 0.1 and 1"
 msgstr "Viso ekrano veiksenos valdiklių nepermatomumas tarp 0.1 ir 1"
 
-#: modules/gui/qt/qt.cpp:210
+#: modules/gui/qt/qt.cpp:211
 msgid ""
 "Sets the fullscreen controller opacity between 0.1 and 1 for main interface, "
 "play queue and extended panel. This option only works with Windows and X11 "
@@ -30990,15 +31059,15 @@ msgstr ""
 "sąsajai, grojimo eilei ir išplėstiniam skydeliui. Ši parinktis veikia tik "
 "Windows ir X11 su kompozicijos plėtiniais."
 
-#: modules/gui/qt/qt.cpp:215
+#: modules/gui/qt/qt.cpp:216
 msgid "Initial user scale factor for the interface, between 0.3 and 3.0"
 msgstr "Pradinis naudotojo sąsajos mastelio koeficientas, nuo 0.3 iki 3.0"
 
-#: modules/gui/qt/qt.cpp:217
+#: modules/gui/qt/qt.cpp:218
 msgid "Show unimportant error and warnings dialogs"
 msgstr "Rodyti nereikšmingas klaidas ir įspėjančiuosius pranešimus"
 
-#: modules/gui/qt/qt.cpp:218
+#: modules/gui/qt/qt.cpp:219
 msgid ""
 "Show the errors of VLC at the bottom of the window, and ask before removing "
 "media from a playlist or from the play queue, or deleting playlists. Off, "
@@ -31010,11 +31079,11 @@ msgstr ""
 "saugomos tik VLC pranešimuose, o šie šalinimai atliekami iškart; failo "
 "ištrynimas iš disko visada patvirtinamas."
 
-#: modules/gui/qt/qt.cpp:223
+#: modules/gui/qt/qt.cpp:224
 msgid "Activate the updates availability notification"
 msgstr "Aktyvuoti priminimą apie galimą atnaujimą"
 
-#: modules/gui/qt/qt.cpp:224
+#: modules/gui/qt/qt.cpp:225
 msgid ""
 "Activate the automatic notification of new versions of the software. It runs "
 "once every two weeks."
@@ -31022,11 +31091,11 @@ msgstr ""
 "Aktyvuoti automatinį priminimą apie naują programinės įrangos versiją. "
 "Paprastai paleidžiama kartą per dvi savaites."
 
-#: modules/gui/qt/qt.cpp:228
+#: modules/gui/qt/qt.cpp:229
 msgid "set the options for qml debugger"
 msgstr "nustatyti QML derintuvės parinktis"
 
-#: modules/gui/qt/qt.cpp:229
+#: modules/gui/qt/qt.cpp:230
 msgid ""
 "set the options for qml debugger (see http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
@@ -31034,34 +31103,34 @@ msgstr ""
 "nustatyti QML derintuvės parinktis (žr. http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
 
-#: modules/gui/qt/qt.cpp:231
+#: modules/gui/qt/qt.cpp:232
 msgid "Number of days between two update checks"
 msgstr "Dienų skaičius tarp dviejų atnaujinimo patikrinimų"
 
-#: modules/gui/qt/qt.cpp:233
+#: modules/gui/qt/qt.cpp:234
 msgid "Ask for network policy at start"
 msgstr "Klausti apie tinklo teises paleidimo metu"
 
-#: modules/gui/qt/qt.cpp:235
+#: modules/gui/qt/qt.cpp:236
 msgid "Save the recently played items in the menu"
 msgstr "Įrašyti paskiausiai grotus kūrinius į meniu"
 
-#: modules/gui/qt/qt.cpp:237
+#: modules/gui/qt/qt.cpp:238
 msgid "List of words separated by | to filter"
 msgstr "Sąrašas žodžių, atskirtų | filtravimui"
 
-#: modules/gui/qt/qt.cpp:238
+#: modules/gui/qt/qt.cpp:239
 msgid ""
 "Regular expression used to filter the recent items played in the player."
 msgstr ""
 "Reguliarioji išraiška, naudojama grotuve grotiems paskutiniams įrašams "
 "filtruoti."
 
-#: modules/gui/qt/qt.cpp:241
+#: modules/gui/qt/qt.cpp:242
 msgid "Selection of the starting mode and look"
 msgstr "Paleidimo veiksenos ir išvaizdos pasirinkimas"
 
-#: modules/gui/qt/qt.cpp:242
+#: modules/gui/qt/qt.cpp:243
 msgid ""
 "Start VLC with:\n"
 " - normal mode\n"
@@ -31074,11 +31143,11 @@ msgstr ""
 "viršeliai...;\n"
 " - minimalia veiksena su ribotu valdiklių skaičiumi"
 
-#: modules/gui/qt/qt.cpp:248
+#: modules/gui/qt/qt.cpp:249
 msgid "Show a controller in fullscreen mode"
 msgstr "Rodyti valdiklius viso ekrano veiksenoje"
 
-#: modules/gui/qt/qt.cpp:249
+#: modules/gui/qt/qt.cpp:250
 msgid ""
 "Show the playback controls in fullscreen when the mouse moves. Off, only the "
 "keyboard shows them (the I key). The skins read it for their fullscreen "
@@ -31088,37 +31157,37 @@ msgstr ""
 "juos rodo tik klaviatūra (klavišas I). Apvalkalai tai taip pat naudoja savo "
 "viso ekrano valdikliui."
 
-#: modules/gui/qt/qt.cpp:252
+#: modules/gui/qt/qt.cpp:253
 msgid "Embed the file browser in open dialog"
 msgstr "Failų naršyklę įtalpinti atvėrimo dialoge"
 
-#: modules/gui/qt/qt.cpp:254
+#: modules/gui/qt/qt.cpp:255
 msgid "Define which screen fullscreen goes"
 msgstr "Nurodo, kurį ekraną naudoti viso ekrano veiksenai"
 
-#: modules/gui/qt/qt.cpp:255
+#: modules/gui/qt/qt.cpp:256
 msgid "Screennumber of fullscreen, instead of same screen where interface is."
 msgstr ""
 "Viso ekrano veiksenos ekrano numeris, užuot naudojus tą patį ekraną, kuriame "
 "yra sąsaja."
 
-#: modules/gui/qt/qt.cpp:258
+#: modules/gui/qt/qt.cpp:259
 msgid "Load extensions on startup"
 msgstr "Papildinius įkelti paleidimo metu"
 
-#: modules/gui/qt/qt.cpp:259
+#: modules/gui/qt/qt.cpp:260
 msgid "Automatically load the extensions module on startup."
 msgstr "Paleidžiant automatiškai įkelti plėtinių modulį."
 
-#: modules/gui/qt/qt.cpp:262
+#: modules/gui/qt/qt.cpp:263
 msgid "Start in minimal view (without menus)"
 msgstr "Paleisti su minimaliu rodiniu (be meniu)"
 
-#: modules/gui/qt/qt.cpp:264
+#: modules/gui/qt/qt.cpp:265
 msgid "Display background cone or art"
 msgstr "Rodyti fono kūgį arba viršelį"
 
-#: modules/gui/qt/qt.cpp:265
+#: modules/gui/qt/qt.cpp:266
 msgid ""
 "Display the cover art of the audio playing in the player (the cone in the "
 "compact view). Off, a plain picture takes its place, which also prevents "
@@ -31128,19 +31197,19 @@ msgstr ""
 "Išjungus jo vietoje rodomas paprastas paveikslėlis, kuris taip pat apsaugo "
 "ekraną nuo išdegimo."
 
-#: modules/gui/qt/qt.cpp:268
+#: modules/gui/qt/qt.cpp:269
 msgid "Expanding background cone or art"
 msgstr "Išplečiamas fono kūgis arba viršelis"
 
-#: modules/gui/qt/qt.cpp:269
+#: modules/gui/qt/qt.cpp:270
 msgid "Background art fits window's size."
 msgstr "Fono paveikslėlis pritaikomas prie lango dydžio."
 
-#: modules/gui/qt/qt.cpp:271
+#: modules/gui/qt/qt.cpp:272
 msgid "Ignore keyboard volume buttons."
 msgstr "Nepaisyti klaviatūros garsumo mygtukų."
 
-#: modules/gui/qt/qt.cpp:273
+#: modules/gui/qt/qt.cpp:274
 msgid ""
 "With this option checked, the volume up, volume down and mute buttons on "
 "your keyboard will always change your system volume. With this option "
@@ -31151,11 +31220,11 @@ msgstr ""
 "mygtukai visada keis sistemos garsumą. Nepažymėjus, garsumo mygtukai keis "
 "VLC garsumą, kai VLC pasirinkta, ir sistemos garsumą, kai VLC nepasirinkta."
 
-#: modules/gui/qt/qt.cpp:288
+#: modules/gui/qt/qt.cpp:289
 msgid "When to raise the interface"
 msgstr "Kada iškelti sąsają"
 
-#: modules/gui/qt/qt.cpp:289
+#: modules/gui/qt/qt.cpp:290
 msgid ""
 "This option allows the interface to be shown and raised automatically when a "
 "video/audio playback starts, or never."
@@ -31163,11 +31232,11 @@ msgstr ""
 "Ši parinktis leidžia sąsajai automatiškai pasirodyti ir iškilti, kai "
 "pradedamas vaizdo ar garso grojimas, arba niekada."
 
-#: modules/gui/qt/qt.cpp:292
+#: modules/gui/qt/qt.cpp:293
 msgid "Enable window titlebar"
 msgstr "Įjungti lango antraštės juostą"
 
-#: modules/gui/qt/qt.cpp:293
+#: modules/gui/qt/qt.cpp:294
 msgid ""
 "This option enables the title bar. Disabling it will remove the titlebar and "
 "move window buttons within the interface (Client Side Decoration)"
@@ -31175,27 +31244,27 @@ msgstr ""
 "Ši parinktis įjungia antraštės juostą. Išjungus antraštės juosta pašalinama, "
 "o lango mygtukai perkeliami į sąsają (programos piešiama lango antraštė)"
 
-#: modules/gui/qt/qt.cpp:297
+#: modules/gui/qt/qt.cpp:298
 msgid "Show the menu bar"
 msgstr "Rodyti meniu juostą"
 
-#: modules/gui/qt/qt.cpp:298
+#: modules/gui/qt/qt.cpp:299
 msgid "This option displays the classic menu bar"
 msgstr "Ši parinktis rodo klasikinę meniu juostą"
 
-#: modules/gui/qt/qt.cpp:300
+#: modules/gui/qt/qt.cpp:301
 msgid "Pin video controls"
 msgstr "Prisegti vaizdo valdiklius"
 
-#: modules/gui/qt/qt.cpp:301
+#: modules/gui/qt/qt.cpp:302
 msgid "Place video controls above and below the video instead of above"
 msgstr "Vaizdo valdiklius išdėstyti virš ir po vaizdu, o ne ant jo"
 
-#: modules/gui/qt/qt.cpp:304
+#: modules/gui/qt/qt.cpp:305
 msgid "Show the frame at the hovered position above the seek bar"
 msgstr "Rodyti kadrą ties pele virš laiko juostos"
 
-#: modules/gui/qt/qt.cpp:306
+#: modules/gui/qt/qt.cpp:307
 msgid ""
 "Mark on the seek bar where the lines of the subtitle shown are, when it "
 "comes from a subtitle file"
@@ -31203,15 +31272,15 @@ msgstr ""
 "Laiko juostoje pažymėti, kur yra rodomų subtitrų eilutės, kai jie paimti iš "
 "subtitrų failo"
 
-#: modules/gui/qt/qt.cpp:309
+#: modules/gui/qt/qt.cpp:310
 msgid "Fullscreen controller mouse sensitivity"
 msgstr "Viso ekrano valdiklio jautrumas pelei"
 
-#: modules/gui/qt/qt.cpp:311
+#: modules/gui/qt/qt.cpp:312
 msgid "Select Qt video integration backend"
 msgstr "Pasirinkite Qt vaizdo integravimo posistemę"
 
-#: modules/gui/qt/qt.cpp:312
+#: modules/gui/qt/qt.cpp:313
 msgid ""
 "Select Qt video integration backend. Use with care, the interface may not "
 "start if an incompatible compositor is selected"
@@ -31219,11 +31288,11 @@ msgstr ""
 "Pasirinkite Qt vaizdo integravimo posistemę. Būkite atsargūs: pasirinkus "
 "nesuderinamą kompozitorių, sąsaja gali nepasileisti"
 
-#: modules/gui/qt/qt.cpp:314
+#: modules/gui/qt/qt.cpp:315
 msgid "Use smooth scrolling in Flickable based views"
 msgstr "Naudoti sklandų slinkimą Flickable pagrįstuose rodiniuose"
 
-#: modules/gui/qt/qt.cpp:315
+#: modules/gui/qt/qt.cpp:316
 msgid ""
 "Deactivating this option will disable smooth scrolling in Flickable based "
 "views (such as the Play Queue). This option is only respected with a scroll "
@@ -31233,19 +31302,19 @@ msgstr ""
 "eilėje) sklandus slinkimas bus išjungtas. Ši parinktis paisoma tik naudojant "
 "slinkimo doroklę, žr. parinktį `qt-use-scroll-handler`."
 
-#: modules/gui/qt/qt.cpp:318
+#: modules/gui/qt/qt.cpp:319
 msgid "Use Kirigami scroll handler for Flickable based views"
 msgstr "Naudoti Kirigami slinkimo doroklę Flickable pagrįstuose rodiniuose"
 
-#: modules/gui/qt/qt.cpp:319
+#: modules/gui/qt/qt.cpp:320
 msgid "Using Kirigami scroll handler may improve scrolling behavior."
 msgstr "Kirigami slinkimo doroklė gali pagerinti slinkimą."
 
-#: modules/gui/qt/qt.cpp:321
+#: modules/gui/qt/qt.cpp:322
 msgid "Safe area for the user interface"
 msgstr "Saugi naudotojo sąsajos sritis"
 
-#: modules/gui/qt/qt.cpp:322
+#: modules/gui/qt/qt.cpp:323
 msgid ""
 "Sets the safe area percentage between 0.0 and 100 when you want to ensure "
 "the visibility of the user interface on a constrained viewport"
@@ -31253,19 +31322,19 @@ msgstr ""
 "Nustato saugios srities procentą nuo 0.0 iki 100, kai norite užtikrinti, kad "
 "naudotojo sąsaja būtų matoma ribotoje rodymo srityje"
 
-#: modules/gui/qt/qt.cpp:326
+#: modules/gui/qt/qt.cpp:327
 msgid "Print Qt's important internal messages"
 msgstr "Spausdinti svarbius Qt vidinius pranešimus"
 
-#: modules/gui/qt/qt.cpp:327
+#: modules/gui/qt/qt.cpp:328
 msgid "Enable Qt's all own messaging categories except the debug category."
 msgstr "Įjungti visas Qt pranešimų kategorijas, išskyrus derinimo kategoriją."
 
-#: modules/gui/qt/qt.cpp:329
+#: modules/gui/qt/qt.cpp:330
 msgid "Hide the window on close"
 msgstr "Užveriant slėpti langą"
 
-#: modules/gui/qt/qt.cpp:330
+#: modules/gui/qt/qt.cpp:331
 msgid ""
 "Instead of closing the application, hide the window. This setting is only "
 "applicable when system tray icon is enabled."
@@ -31273,11 +31342,11 @@ msgstr ""
 "Užuot užvėrus programą, paslėpti langą. Ši nuostata taikoma tik tada, kai "
 "įjungta sistemos dėklo piktograma."
 
-#: modules/gui/qt/qt.cpp:332
+#: modules/gui/qt/qt.cpp:333
 msgid "Enable backdrop blur filter for the main window if possible"
 msgstr "Kai įmanoma, įjungti pagrindinio lango fono suliejimo filtrą"
 
-#: modules/gui/qt/qt.cpp:333
+#: modules/gui/qt/qt.cpp:334
 msgid ""
 "If backdrop blur filter is available, use translucency in the backgrounds of "
 "certain parts of the user interface instead of a solid color. This setting "
@@ -31287,11 +31356,11 @@ msgstr ""
 "fone naudoti permatomumą vietoj vientisos spalvos. Ši nuostata pablogina "
 "teksto skaitomumą."
 
-#: modules/gui/qt/qt.cpp:336
+#: modules/gui/qt/qt.cpp:337
 msgid "Enable picture-in-picture (PiP) mode"
 msgstr "Įjungti „vaizdas vaizde“ (PiP) veikseną"
 
-#: modules/gui/qt/qt.cpp:337
+#: modules/gui/qt/qt.cpp:338
 msgid ""
 "Picture-in-picture mode allows playing video contained in a smaller area so "
 "that the interface remains usable."
@@ -31299,7 +31368,7 @@ msgstr ""
 "„Vaizdas vaizde“ veiksena leidžia groti vaizdą mažesnėje srityje, kad sąsaja "
 "liktų naudojama."
 
-#: modules/gui/qt/qt.cpp:340
+#: modules/gui/qt/qt.cpp:341
 msgid ""
 "Adjusts the accent color, special values are 'default' and 'system' "
 "(requires Qt 6.6) ."
@@ -31307,39 +31376,39 @@ msgstr ""
 "Nustato akcento spalvą; specialios reikšmės yra „default“ ir „system“ "
 "(reikia Qt 6.6) ."
 
-#: modules/gui/qt/qt.cpp:346
+#: modules/gui/qt/qt.cpp:347
 msgid "Last channel watched"
 msgstr "Paskutinis žiūrėtas kanalas"
 
-#: modules/gui/qt/qt.cpp:347
+#: modules/gui/qt/qt.cpp:348
 msgid "Channel list"
 msgstr "Kanalų sąrašas"
 
-#: modules/gui/qt/qt.cpp:352
+#: modules/gui/qt/qt.cpp:353
 msgid "Zoom the interface in"
 msgstr "Didinti sąsają"
 
-#: modules/gui/qt/qt.cpp:353
+#: modules/gui/qt/qt.cpp:354
 msgid "Zoom the interface out"
 msgstr "Mažinti sąsają"
 
-#: modules/gui/qt/qt.cpp:363
+#: modules/gui/qt/qt.cpp:364
 msgid "When minimized"
 msgstr "Kai langas nuleistas"
 
-#: modules/gui/qt/qt.cpp:398 modules/video_output/xcb/x11.c:413
+#: modules/gui/qt/qt.cpp:399 modules/video_output/xcb/x11.c:413
 msgid "X11"
 msgstr "X11"
 
-#: modules/gui/qt/qt.cpp:406
+#: modules/gui/qt/qt.cpp:407
 msgid "Qt interface"
 msgstr "Qt sąsaja"
 
-#: modules/gui/qt/qt.cpp:454
+#: modules/gui/qt/qt.cpp:455
 msgid "Check for VLC Redesign updates"
 msgstr "Ieškoti VLC Redesign atnaujinimų"
 
-#: modules/gui/qt/qt.cpp:455
+#: modules/gui/qt/qt.cpp:456
 msgid ""
 "Look for a new release of VLC Redesign on GitHub at startup, at most once a "
 "day."
@@ -31347,11 +31416,11 @@ msgstr ""
 "Paleidžiant ieškoti naujos VLC Redesign laidos GitHub svetainėje, ne dažniau "
 "kaip kartą per dieną."
 
-#: modules/gui/qt/qt.cpp:459
+#: modules/gui/qt/qt.cpp:460
 msgid "Resume at"
 msgstr "Tęsti nuo"
 
-#: modules/gui/qt/qt.cpp:460
+#: modules/gui/qt/qt.cpp:461
 msgid ""
 "Seconds into the media of the command line where playback continues, after "
 "an update."
@@ -31418,7 +31487,7 @@ msgstr "Atkurti"
 msgid "Don't restore"
 msgstr "Neatkurti"
 
-#: modules/gui/qt/util/redesign_updater.cpp:216
+#: modules/gui/qt/util/redesign_updater.cpp:221
 msgid ""
 "The update isn't signed by the publisher of this copy (%1), so it wasn't "
 "used."
@@ -31426,27 +31495,27 @@ msgstr ""
 "Atnaujinimas nepasirašytas šios kopijos leidėjo (%1), todėl nebuvo "
 "panaudotas."
 
-#: modules/gui/qt/util/redesign_updater.cpp:461
+#: modules/gui/qt/util/redesign_updater.cpp:467
 msgid "%1 (later)"
 msgstr "%1 (vėliau)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:463
+#: modules/gui/qt/util/redesign_updater.cpp:469
 msgid "%1 (soon)"
 msgstr "%1 (netrukus)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:643
+#: modules/gui/qt/util/redesign_updater.cpp:649
 msgid "This build cannot check for updates."
 msgstr "Ši versija negali ieškoti atnaujinimų."
 
-#: modules/gui/qt/util/redesign_updater.cpp:657
+#: modules/gui/qt/util/redesign_updater.cpp:663
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "Nepavyko pasiekti GitHub. Patikrinkite ryšį ir bandykite dar kartą."
 
-#: modules/gui/qt/util/redesign_updater.cpp:674
+#: modules/gui/qt/util/redesign_updater.cpp:680
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "GitHub atsiuntė netikėtą atsakymą (%1)."
 
-#: modules/gui/qt/util/redesign_updater.cpp:792
+#: modules/gui/qt/util/redesign_updater.cpp:798
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
@@ -31454,47 +31523,47 @@ msgstr ""
 "Šis atnaujinimas nepasirašytas VLC Redesign, todėl nebuvo panaudotas. "
 "Atsisiųskite jį iš laidos puslapio."
 
-#: modules/gui/qt/util/redesign_updater.cpp:814
-#: modules/gui/qt/util/redesign_updater.cpp:855
+#: modules/gui/qt/util/redesign_updater.cpp:820
+#: modules/gui/qt/util/redesign_updater.cpp:861
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr ""
 "Nėra atnaujinimo kontrolinės sumos; atsisiųskite jį iš laidos puslapio."
 
-#: modules/gui/qt/util/redesign_updater.cpp:829
-#: modules/gui/qt/util/redesign_updater.cpp:901
+#: modules/gui/qt/util/redesign_updater.cpp:835
+#: modules/gui/qt/util/redesign_updater.cpp:907
 msgid "The download failed. Check your connection and try again."
 msgstr "Atsisiuntimas nepavyko. Patikrinkite ryšį ir bandykite dar kartą."
 
-#: modules/gui/qt/util/redesign_updater.cpp:914
+#: modules/gui/qt/util/redesign_updater.cpp:920
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr ""
 "Atnaujinimas neatitinka savo kontrolinės sumos, todėl nebuvo panaudotas."
 
-#: modules/gui/qt/util/redesign_updater.cpp:945
+#: modules/gui/qt/util/redesign_updater.cpp:951
 msgid "The update isn't in a format this version knows."
 msgstr "Atnaujinimas yra šiai versijai nežinomu formatu."
 
-#: modules/gui/qt/util/redesign_updater.cpp:948
-#: modules/gui/qt/util/redesign_updater.cpp:972
-#: modules/gui/qt/util/redesign_updater.cpp:983
+#: modules/gui/qt/util/redesign_updater.cpp:954
+#: modules/gui/qt/util/redesign_updater.cpp:978
 #: modules/gui/qt/util/redesign_updater.cpp:989
+#: modules/gui/qt/util/redesign_updater.cpp:995
 msgid "The update is damaged."
 msgstr "Atnaujinimas sugadintas."
 
-#: modules/gui/qt/util/redesign_updater.cpp:953
+#: modules/gui/qt/util/redesign_updater.cpp:959
 msgid "The update isn't for this version."
 msgstr "Atnaujinimas skirtas ne šiai versijai."
 
-#: modules/gui/qt/util/redesign_updater.cpp:962
-#: modules/gui/qt/util/redesign_updater.cpp:999
-#: modules/gui/qt/util/redesign_updater.cpp:1008
-#: modules/gui/qt/util/redesign_updater.cpp:1012
-#: modules/gui/qt/util/redesign_updater.cpp:1016
+#: modules/gui/qt/util/redesign_updater.cpp:968
+#: modules/gui/qt/util/redesign_updater.cpp:1005
+#: modules/gui/qt/util/redesign_updater.cpp:1014
+#: modules/gui/qt/util/redesign_updater.cpp:1018
+#: modules/gui/qt/util/redesign_updater.cpp:1022
 msgid "The update can't be written in %1."
 msgstr "Atnaujinimo negalima įrašyti į %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:964
+#: modules/gui/qt/util/redesign_updater.cpp:970
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -31502,35 +31571,35 @@ msgstr ""
 "Po įdiegimo buvo pakeistas vienas VLC Redesign failas, todėl mažojo "
 "atnaujinimo naudoti negalima: atnaujinkite naudodami diegimo programą."
 
-#: modules/gui/qt/util/redesign_updater.cpp:994
+#: modules/gui/qt/util/redesign_updater.cpp:1000
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr "Atnaujinimas sugadintas: failas neatitinka savo kontrolinės sumos."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1119
+#: modules/gui/qt/util/redesign_updater.cpp:1125
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr "Nepavyko paleisti atnaujinimo. Bus bandoma dar kartą kitą kartą."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1146
+#: modules/gui/qt/util/redesign_updater.cpp:1152
 msgid "The download failed. Try again, or download it from the release page."
 msgstr ""
 "Atsisiuntimas nepavyko. Bandykite dar kartą arba atsisiųskite jį iš laidos "
 "puslapio."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1159
+#: modules/gui/qt/util/redesign_updater.cpp:1165
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr ""
 "Atsisiųsta diegimo programa neatitinka savo kontrolinės sumos, todėl nebuvo "
 "paleista."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1168
+#: modules/gui/qt/util/redesign_updater.cpp:1174
 msgid "The installer couldn't be saved to %1."
 msgstr "Nepavyko įrašyti diegimo programos į %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1202
+#: modules/gui/qt/util/redesign_updater.cpp:1208
 msgid "The installer couldn't be started."
 msgstr "Nepavyko paleisti diegimo programos."
 
-#: modules/gui/qt/util/renderer_manager.cpp:891
+#: modules/gui/qt/util/renderer_manager.cpp:896
 msgid ""
 "%1 doesn't answer. Check that it's on, and on the same network as this "
 "computer."
@@ -31538,30 +31607,30 @@ msgstr ""
 "%1 neatsako. Patikrinkite, ar įrenginys įjungtas ir prijungtas prie to "
 "paties tinklo kaip šis kompiuteris."
 
-#: modules/gui/qt/util/renderer_manager.cpp:894
+#: modules/gui/qt/util/renderer_manager.cpp:899
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the video."
 msgstr ""
 "Windows užkarda neleidžia %1 prisijungti prie šio kompiuterio ir skaityti "
 "vaizdo įrašo."
 
-#: modules/gui/qt/util/renderer_manager.cpp:895
+#: modules/gui/qt/util/renderer_manager.cpp:900
 msgid "%1 couldn't read the video from this computer."
 msgstr "%1 nepavyko perskaityti vaizdo įrašo iš šio kompiuterio."
 
-#: modules/gui/qt/util/renderer_manager.cpp:897
+#: modules/gui/qt/util/renderer_manager.cpp:902
 msgid "%1 refused to play this video."
 msgstr "%1 atsisakė groti šį vaizdo įrašą."
 
-#: modules/gui/qt/util/renderer_manager.cpp:899
+#: modules/gui/qt/util/renderer_manager.cpp:904
 msgid "%1 stopped playing."
 msgstr "%1 nustojo groti."
 
-#: modules/gui/qt/util/renderer_manager.cpp:901
+#: modules/gui/qt/util/renderer_manager.cpp:906
 msgid "%1 is playing something else now."
 msgstr "%1 dabar groja kažką kita."
 
-#: modules/gui/qt/util/renderer_manager.cpp:902
+#: modules/gui/qt/util/renderer_manager.cpp:907
 msgid "%1 couldn't play the video."
 msgstr "%1 nepavyko groti vaizdo įrašo."
 
@@ -37521,11 +37590,11 @@ msgstr "Vaizdo atminties išvestis"
 msgid "Video memory"
 msgstr "Vaizdo atmintis"
 
-#: modules/video_output/wayland/shm.c:508
+#: modules/video_output/wayland/shm.c:515
 msgid "WL SHM"
 msgstr ""
 
-#: modules/video_output/wayland/shm.c:509
+#: modules/video_output/wayland/shm.c:516
 #, fuzzy
 msgid "Wayland shared memory video output"
 msgstr "Nespalvoto vaizdo išvestis"
@@ -37737,6 +37806,10 @@ msgstr "VLC leistuve"
 #. for the ICCCM window name. This must be pure ASCII.
 #: modules/video_output/xcb/window.c:922
 msgctxt "ASCII"
+msgid "VLC"
+msgstr "VLC"
+
+#: modules/video_output/xcb/window.c:962
 msgid "VLC"
 msgstr "VLC"
 
@@ -39437,6 +39510,25 @@ msgstr "Laiko valdymas"
 #: modules/gui/qt/dialogs/vlm/vlm.ui:193
 msgid "Media Manager List"
 msgstr "Multimedijos tvarkytuvės sąrašas"
+
+#~ msgid "VLC Redesign"
+#~ msgstr "VLC Redesign"
+
+#~ msgid "Welcome to VLC!"
+#~ msgstr "Sveiki atvykę į VLC!"
+
+#~ msgid "Every setting of VLC media player goes back to its default."
+#~ msgstr ""
+#~ "Visoms VLC media player nuostatoms bus grąžintos numatytosios reikšmės."
+
+#~ msgid "&Hide VLC media player in taskbar"
+#~ msgstr "Slėpti VLC leistuvę &užduočių juostoje"
+
+#~ msgid "Sho&w VLC media player"
+#~ msgstr "&Rodyti VLC leistuvę"
+
+#~ msgid "VLC Media Player"
+#~ msgstr "VLC Media Player"
 
 #~ msgid "Ok"
 #~ msgstr "Gerai"

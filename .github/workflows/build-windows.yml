@@ -20,6 +20,11 @@ on:
         options: [none, test-signing, release-signing]
         default: none
 
+# what the jobs may do with the run's token: read the code (sign and release
+# say what more they need)
+permissions:
+  contents: read
+
 concurrency:
   # a signed run waits for its approvals in SignPath: a push to main must not
   # cancel it (the other runs keep their group)
@@ -34,9 +39,8 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v7
-
-      - uses: actions/setup-python@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
         with:
           python-version: '3.12'
 
@@ -48,7 +52,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 300
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           # the prebuilt contrib archive is named after the commit that last
           # touched contrib/ and the packaging
@@ -86,7 +90,7 @@ jobs:
 
       # (pull requests too: the launch test runs on it)
       - name: Upload the package
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: vlc-redesign-win64-${{ github.sha }}
           path: out
@@ -96,7 +100,7 @@ jobs:
       # SYMBOLS in win64-docker.sh): with them, the offsets in a crash dump of
       # the launch test name functions
       - name: Upload the symbol maps
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: vlc-redesign-win64-symbols-${{ github.sha }}
           path: symbols
@@ -110,11 +114,11 @@ jobs:
     runs-on: windows-2022
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           sparse-checkout: extras/juxtopposed/ci
 
-      - uses: actions/download-artifact@v8
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
         with:
           name: vlc-redesign-win64-${{ github.sha }}
           path: package
@@ -139,7 +143,7 @@ jobs:
 
       - name: Upload the logs
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: launch-test-${{ github.sha }}
           path: |
@@ -155,7 +159,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 300
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0
 
@@ -198,11 +202,11 @@ jobs:
       - name: ARM64 package check
         run: |
           python3 -m venv "$RUNNER_TEMP/pe"
-          "$RUNNER_TEMP/pe/bin/pip" install --quiet pefile
+          "$RUNNER_TEMP/pe/bin/pip" install --quiet --require-hashes -r extras/juxtopposed/ci/requirements-check.txt
           "$RUNNER_TEMP/pe/bin/python" extras/juxtopposed/ci/pe-check.py out --arch arm64
 
       - name: Upload the package
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: vlc-redesign-winarm64-${{ github.sha }}
           path: out
@@ -217,11 +221,11 @@ jobs:
     runs-on: windows-11-arm
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           sparse-checkout: extras/juxtopposed/ci
 
-      - uses: actions/download-artifact@v8
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
         with:
           name: vlc-redesign-winarm64-${{ github.sha }}
           path: package
@@ -241,7 +245,7 @@ jobs:
 
       - name: Upload the logs
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: launch-test-arm64-${{ github.sha }}
           path: |
@@ -261,14 +265,14 @@ jobs:
     runs-on: windows-11-arm
     timeout-minutes: 40
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           sparse-checkout: |
             extras/juxtopposed/ci
             extras/juxtopposed/installer
             modules/gui/qt/util
 
-      - uses: actions/download-artifact@v8
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
         with:
           name: vlc-redesign-winarm64-${{ github.sha }}
           path: package
@@ -282,8 +286,13 @@ jobs:
             choco upgrade innosetup --version 6.7.1 --allow-downgrade -y --no-progress
           }
           if (-not (Test-Path $iscc)) {
+            # (Inno Setup's own release; the file checked against its hash
+            # before it runs: it makes the installer that gets signed)
             $setup = Join-Path $env:RUNNER_TEMP 'innosetup.exe'
-            Invoke-WebRequest https://files.jrsoftware.org/is/6/innosetup-6.7.1.exe -OutFile $setup
+            Invoke-WebRequest https://github.com/jrsoftware/issrc/releases/download/is-6_7_1/innosetup-6.7.1.exe -OutFile $setup
+            if ((Get-FileHash $setup -Algorithm SHA256).Hash -ne '4D11E8050B6185E0D49BD9E8CC661A7A59F44959A621D31D11033124C4E8A7B0') {
+              throw 'innosetup-6.7.1.exe is not the expected file'
+            }
             Start-Process $setup -Wait -ArgumentList '/VERYSILENT', '/SUPPRESSMSGBOXES', '/NORESTART', '/SP-'
           }
           if (-not (Test-Path $iscc)) { throw 'No Inno Setup' }
@@ -313,7 +322,7 @@ jobs:
 
       - name: Upload the logs and screenshots
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: install-test-arm64-${{ github.sha }}
           path: |
@@ -329,9 +338,14 @@ jobs:
   # Signing changes the bytes of every binary, so what make-release.ps1 does
   # to them comes first: the PE time stamps set to 0.
   sign:
-    needs: [win64, launch-test]
+    needs: [win64, launch-test, winarm64, launch-test-arm64]
     if: github.event_name == 'workflow_dispatch' && inputs.sign != 'none' && vars.SIGNPATH_ORGANIZATION_ID != ''
     runs-on: ubuntu-24.04
+    # x64 and ARM64 alike (CODE_SIGNING_POLICY.md): one signing request each
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [win64, winarm64]
     # most of it is the wait for the approval in SignPath (3 hours at most)
     timeout-minutes: 210
     permissions:
@@ -340,7 +354,7 @@ jobs:
     outputs:
       version: ${{ steps.version.outputs.version }}
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           sparse-checkout: |
             extras/juxtopposed/release
@@ -362,9 +376,9 @@ jobs:
           test -n "$version"
           echo "version=$version" >> "$GITHUB_OUTPUT"
 
-      - uses: actions/download-artifact@v8
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
         with:
-          name: vlc-redesign-win64-${{ github.sha }}
+          name: vlc-redesign-${{ matrix.platform }}-${{ github.sha }}
           path: package
 
       - name: PE time stamps at 0
@@ -372,15 +386,15 @@ jobs:
 
       - name: Upload the package to sign
         id: unsigned
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
-          name: vlc-redesign-win64-unsigned-${{ github.sha }}
+          name: vlc-redesign-${{ matrix.platform }}-unsigned-${{ github.sha }}
           path: package
           retention-days: 2
 
       # artifact configuration "package": extras/juxtopposed/signing/artifact-configuration.xml
       - name: Sign
-        uses: signpath/github-action-submit-signing-request@v3
+        uses: signpath/github-action-submit-signing-request@f6d04783b4569d051e0c80105fe66e82819d0092 # v3
         with:
           api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
           organization-id: ${{ vars.SIGNPATH_ORGANIZATION_ID }}
@@ -408,9 +422,9 @@ jobs:
           done < ../files.txt
 
       - name: Upload the signed package
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
-          name: vlc-redesign-win64-${{ inputs.sign }}-${{ github.sha }}
+          name: vlc-redesign-${{ matrix.platform }}-${{ inputs.sign }}-${{ github.sha }}
           path: signed
           retention-days: 14
 
@@ -421,6 +435,14 @@ jobs:
   release:
     needs: sign
     runs-on: windows-2022
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: win64
+            arch: x86_64
+          - platform: winarm64
+            arch: aarch64
     # the packaging, then the wait for the approval in SignPath (3 hours at most)
     timeout-minutes: 300
     permissions:
@@ -429,25 +451,25 @@ jobs:
     env:
       VERSION: ${{ needs.sign.outputs.version }}
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           sparse-checkout: |
             extras/juxtopposed
             modules/gui/qt/util
 
-      - uses: actions/download-artifact@v8
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
         with:
-          name: vlc-redesign-win64-${{ inputs.sign }}-${{ github.sha }}
+          name: vlc-redesign-${{ matrix.platform }}-${{ inputs.sign }}-${{ github.sha }}
           path: package
 
-      - uses: actions/setup-python@v7
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
         with:
           python-version: '3.12'
 
       - name: Tools
         shell: pwsh
         run: |
-          python -m pip install bsdiff4
+          python -m pip install --require-hashes -r extras/juxtopposed/ci/requirements-release.txt
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
           # the Inno Setup the releases are made with
           choco upgrade innosetup --version 6.7.1 --allow-downgrade -y --no-progress
@@ -457,12 +479,13 @@ jobs:
         shell: pwsh
         env:
           GH_TOKEN: ${{ github.token }}
+          PLATFORM: ${{ matrix.platform }}
         run: |
           New-Item -ItemType Directory -Force dist | Out-Null
           $tags = @(gh release list --repo $env:GITHUB_REPOSITORY --exclude-drafts --limit 4 --json tagName --jq '.[].tagName')
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
           foreach ($tag in $tags) {
-            gh release download $tag --repo $env:GITHUB_REPOSITORY --pattern 'vlc-redesign-*-win64.zip' --dir dist
+            gh release download $tag --repo $env:GITHUB_REPOSITORY --pattern "vlc-redesign-*-$env:PLATFORM.zip" --dir dist
             if ($LASTEXITCODE) { Write-Warning "No portable zip in $tag" }
           }
           $global:LASTEXITCODE = 0
@@ -472,19 +495,19 @@ jobs:
       # is never here: SHA256SUMS.txt is signed on the release PC)
       - name: Package
         shell: pwsh
-        run: ./extras/juxtopposed/make-release.ps1 -Signed -Package "$PWD\package" -Dist "$PWD\dist" -NoSumsSignature
+        run: ./extras/juxtopposed/make-release.ps1 -Signed -Arch ${{ matrix.arch }} -Package "$PWD\package" -Dist "$PWD\dist" -NoSumsSignature
 
       - name: Upload the installer to sign
         id: unsigned
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
-          name: vlc-redesign-setup-unsigned-${{ github.sha }}
-          path: dist/vlc-redesign-${{ env.VERSION }}-win64-setup.exe
+          name: vlc-redesign-${{ matrix.platform }}-setup-unsigned-${{ github.sha }}
+          path: dist/vlc-redesign-${{ env.VERSION }}-${{ matrix.platform }}-setup.exe
           retention-days: 2
 
       # artifact configuration "installer": extras/juxtopposed/signing/installer-configuration.xml
       - name: Sign the installer
-        uses: signpath/github-action-submit-signing-request@v3
+        uses: signpath/github-action-submit-signing-request@f6d04783b4569d051e0c80105fe66e82819d0092 # v3
         with:
           api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
           organization-id: ${{ vars.SIGNPATH_ORGANIZATION_ID }}
@@ -503,13 +526,30 @@ jobs:
       # app requires) is made on the release PC: release-key.ps1 sign
       - name: Release files
         shell: pwsh
+        env:
+          PLATFORM: ${{ matrix.platform }}
+          SIGN_MODE: ${{ inputs.sign }}
+          # the certificate the releases are signed with (its SHA-1 thumbprint,
+          # a repository variable): another one is refused
+          EXPECTED_SIGNER: ${{ vars.SIGNPATH_CERT_THUMBPRINT }}
         run: |
-          $name = "vlc-redesign-$env:VERSION-win64"
-          $status = (Get-AuthenticodeSignature -LiteralPath "signed-setup\$name-setup.exe").Status
-          if ($status -in 'NotSigned', 'HashMismatch') { throw "The installer is not signed ($status)" }
+          $name = "vlc-redesign-$env:VERSION-$env:PLATFORM"
+          $signature = Get-AuthenticodeSignature -LiteralPath "signed-setup\$name-setup.exe"
+          # a release takes only a valid signature; the test signing's
+          # certificate is not trusted by Windows (NotTrusted), nothing else
+          $allowed = if ($env:SIGN_MODE -eq 'release-signing') { @('Valid') } else { @('Valid', 'NotTrusted') }
+          if ($signature.Status -notin $allowed) { throw "The installer's signature is $($signature.Status)" }
+          if ($env:SIGN_MODE -eq 'release-signing') {
+            if (-not $env:EXPECTED_SIGNER) { throw 'No SIGNPATH_CERT_THUMBPRINT variable (docs/code-signing.md)' }
+            if ($signature.SignerCertificate.Thumbprint -ne $env:EXPECTED_SIGNER) {
+              throw "Signed by $($signature.SignerCertificate.Subject), not the expected certificate"
+            }
+          }
           New-Item -ItemType Directory -Force release | Out-Null
           Copy-Item "dist\$name.zip", "signed-setup\$name-setup.exe" release
-          $deltas = @(Get-ChildItem dist -Filter "vlc-redesign-$env:VERSION-delta-from-*.vrdelta")
+          # (the x64 small updates keep the name they had before ARM64)
+          $infix = if ($env:PLATFORM -eq 'winarm64') { '-winarm64' } else { '' }
+          $deltas = @(Get-ChildItem dist -Filter "vlc-redesign-$env:VERSION$infix-delta-from-*.vrdelta")
           $deltas | Copy-Item -Destination release
           $files = @("$name.zip", "$name-setup.exe") + @($deltas | ForEach-Object { $_.Name })
           $sums = foreach ($f in $files) {
@@ -519,8 +559,8 @@ jobs:
           Get-ChildItem release | Format-Table Name, Length
 
       - name: Upload the release files
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
-          name: vlc-redesign-${{ env.VERSION }}-${{ inputs.sign }}-${{ github.sha }}
+          name: vlc-redesign-${{ env.VERSION }}-${{ matrix.platform }}-${{ inputs.sign }}-${{ github.sha }}
           path: release
           retention-days: 14

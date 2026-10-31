@@ -410,6 +410,7 @@
         <file alias="duo/edit.svg">pixmaps/redesign/duo/edit.svg</file>
         <file alias="duo/faster.svg">pixmaps/redesign/duo/faster.svg</file>
         <file alias="duo/favorite.svg">pixmaps/redesign/duo/favorite.svg</file>
+        <file alias="duo/pin.svg">pixmaps/redesign/duo/pin.svg</file>
         <file alias="duo/file.svg">pixmaps/redesign/duo/file.svg</file>
         <file alias="duo/folder.svg">pixmaps/redesign/duo/folder.svg</file>
         <file alias="duo/folder-open.svg">pixmaps/redesign/duo/folder-open.svg</file>

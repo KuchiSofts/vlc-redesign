@@ -16,7 +16,7 @@ permissions:
   contents: write
   pull-requests: write
   issues: write
-  # (to start the Windows build of the merge: see below)
+  # (to start the builds of the merge: see below)
   actions: write
 
 jobs:
@@ -26,7 +26,7 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       UPSTREAM: https://code.videolan.org/videolan/vlc.git
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           ref: main
           fetch-depth: 0
@@ -68,10 +68,13 @@ jobs:
             --title "Merge VLC upstream ($(date -u +%Y-%m-%d), ${behind} commits)" \
             --body "$body" || echo "A pull request for $branch already exists"
           # A push and a pull request made with GITHUB_TOKEN start no
-          # workflow, so the merge would show no build check: the Windows
-          # build is started on the branch instead (GITHUB_TOKEN may start
-          # a workflow_dispatch), and shows on its commit
+          # workflow, so the merge would show no build check: the builds of
+          # every platform are started on the branch instead (GITHUB_TOKEN
+          # may start a workflow_dispatch), and show on its commit; the Macs
+          # build both architectures (their default is arm64 only)
           gh workflow run build-windows.yml --ref "$branch"
+          gh workflow run build-linux.yml --ref "$branch"
+          gh workflow run build-macos.yml --ref "$branch" -f arch=both
 
       - name: Report conflicts
         if: env.behind != '0' && env.clean == '0'

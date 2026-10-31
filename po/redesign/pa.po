@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-29 20:21+0000\n"
+"POT-Creation-Date: 2026-10-31 01:37+0000\n"
 "PO-Revision-Date: 2017-02-06 13:43+0000\n"
 "Last-Translator: Christoph Miebach <christoph.miebach@web.de>\n"
 "Language-Team: Panjabi (Punjabi) (http://www.transifex.com/yaron/vlc-trans/"
@@ -32,7 +32,7 @@ msgid "Play Queue"
 msgstr "ਪਲੇਅ ਕਤਾਰ"
 
 #: include/vlc_config_cat.h:59
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1034
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1036
 msgid "Media Library Settings"
 msgstr "ਮੀਡਿਆ ਲਾਇਬਰੇਰੀ ਸੈਟਿੰਗ"
 
@@ -276,7 +276,7 @@ msgstr "ਇਹ ਕੰਟਰੋਲ ਕਰਦਾ ਹੈ ਕਿ ਮਾਊਸ ਕਲ
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1224
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:23
-#: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:144
+#: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:145
 msgid "Disabled"
 msgstr "ਬੰਦ"
 
@@ -1506,12 +1506,12 @@ msgid "It needs Windows 10 version 1809 or later."
 msgstr "ਇਸ ਲਈ Windows 10 ਵਰਜਨ 1809 ਜਾਂ ਨਵਾਂ ਲੋੜੀਂਦਾ ਹੈ।"
 
 #: bin/winvlc.c:712 bin/winvlc.c:825
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:410
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:418
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:27
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignPluginsDialog.qml:30
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignStatisticsDialog.qml:26
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:553
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:558
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:554
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:559
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:152
 #: modules/gui/qt/dialogs/firstrun/qml/WhatsNewDialog.qml:39
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:312
@@ -1523,7 +1523,7 @@ msgstr "ਇਸ ਲਈ Windows 10 ਵਰਜਨ 1809 ਜਾਂ ਨਵਾਂ ਲੋ
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:32
 #: modules/gui/qt/util/csdmenu.cpp:131
 #: modules/gui/qt/util/redesign_window_frame.cpp:96
-#: modules/gui/qt/widgets/native/redesign_message_box.cpp:213
+#: modules/gui/qt/widgets/native/redesign_message_box.cpp:214
 #: modules/gui/qt/widgets/qml/RedesignDialog.qml:223
 msgid "Close"
 msgstr "ਬੰਦ ਕਰੋ"
@@ -1652,13 +1652,13 @@ msgid "Please enter the new playlist name:"
 msgstr "ਪਲੇਅਲਿਸਟ ਦਾ ਨਵਾਂ ਨਾਂ ਦਿਓ:"
 
 #: modules/gui/macosx/library/VLCLibraryController.m:319
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:409
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:455
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:135
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:412
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:458
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:136
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:413
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:104
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:107
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:76
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:90
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:909
 msgid "Rename"
 msgstr "ਨਾਂ ਬਦਲੋ"
@@ -1677,8 +1677,8 @@ msgstr "ਮੀਡਿਆ ਲਾਇਬਰੇਰੀ ਵਿੱਚ ਸ਼ਾਮਲ �
 #: modules/gui/macosx/library/VLCLibraryMenuController.m:284
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:141
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:173
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:37
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:186
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:874
 msgid "Remove from Favorites"
 msgstr "ਮਨਪਸੰਦ ਵਿੱਚੋਂ ਹਟਾਓ"
@@ -1815,70 +1815,65 @@ msgstr "ਪਲੇਅਲਿਸਟ ਦਾ ਨਾਂ"
 msgid "About VLC"
 msgstr "VLC ਬਾਰੇ"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:197
-#: modules/gui/qt/dialogs/firstrun/qml/WhatsNewDialog.qml:63
-msgid "VLC Redesign"
-msgstr "VLC Redesign"
-
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:238
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:246
 msgid "Version %1 · based on VLC %2"
 msgstr "ਵਰਜਨ %1 · VLC %2 ਉੱਤੇ ਆਧਾਰਿਤ"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:262
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:270
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:90
 msgid "Checking for updates…"
 msgstr "ਅੱਪਡੇਟ ਲਈ ਜਾਂਚ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ…"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:263
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:271
 msgid "You have the latest version"
 msgstr "ਤੁਹਾਡੇ ਕੋਲ ਨਵੀਨਤਮ ਵਰਜਨ ਹੈ"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:264
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:272
 msgid "Version %1 is available"
 msgstr "ਵਰਜਨ %1 ਉਪਲੱਬਧ ਹੈ"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:266
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:274
 msgid "Downloading the update… %1%"
 msgstr "ਅੱਪਡੇਟ ਡਾਊਨਲੋਡ ਹੋ ਰਿਹਾ ਹੈ… %1%"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:267
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:275
 msgid "Preparing the update…"
 msgstr "ਅੱਪਡੇਟ ਤਿਆਰ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ…"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:268
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:276
 msgid "Version %1 is ready: restart to finish"
 msgstr "ਵਰਜਨ %1 ਤਿਆਰ ਹੈ: ਪੂਰਾ ਕਰਨ ਲਈ ਮੁੜ-ਚਾਲੂ ਕਰੋ"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:277
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:285
 msgid "What's new in %1"
 msgstr "%1 ਵਿੱਚ ਨਵਾਂ ਕੀ ਹੈ"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:291
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:299
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:197
 msgid "Restart now"
 msgstr "ਹੁਣੇ ਮੁੜ-ਚਾਲੂ ਕਰੋ"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:293
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:301
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:228
 msgid "Update now"
 msgstr "ਹੁਣੇ ਅੱਪਡੇਟ ਕਰੋ"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:293
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:301
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:226
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:188
 #: modules/gui/qt/network/standardpathmodel.cpp:153
 msgid "Download"
 msgstr "ਡਾਊਨਲੋਡ ਕਰੋ"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:294
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:302
 msgid "Check for updates"
 msgstr "ਅੱਪਡੇਟ ਲਈ ਜਾਂਚ ਕਰੋ"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:330
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:338
 msgid "Interface designed by <font color=\"%1\">Juxtopposed</font>"
 msgstr "ਇੰਟਰਫੇਸ <font color=\"%1\">Juxtopposed</font> ਵੱਲੋਂ ਡਿਜ਼ਾਈਨ ਕੀਤਾ ਗਿਆ"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:337
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:345
 msgid ""
 "Every screen comes from the \"VLC Redesign (Community)\" Figma file, "
 "licensed under CC BY 4.0. It was adapted to Qt and its icons were redrawn."
@@ -1886,50 +1881,50 @@ msgstr ""
 "ਹਰ ਸਕਰੀਨ \"VLC Redesign (Community)\" Figma ਫਾਇਲ ਤੋਂ ਆਈ ਹੈ, ਜੋ CC BY 4.0 ਲਾਇਸੰਸ "
 "ਅਧੀਨ ਹੈ। ਇਸ ਨੂੰ Qt ਲਈ ਢਾਲਿਆ ਗਿਆ ਅਤੇ ਇਸ ਦੇ ਆਈਕਾਨ ਮੁੜ ਬਣਾਏ ਗਏ।"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:342
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:350
 msgid "YouTube channel"
 msgstr "YouTube ਚੈਨਲ"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:343
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:351
 msgid "The redesign video"
 msgstr "ਰੀਡਿਜ਼ਾਈਨ ਵਿਡੀਓ"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:344
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:352
 msgid "Figma file"
 msgstr "Figma ਫਾਇਲ"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:346
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:354
 msgid "CC BY 4.0"
 msgstr "CC BY 4.0"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:356
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:364
 msgid "First implementation by"
 msgstr "ਪਹਿਲਾ ਰੂਪ ਤਿਆਰ ਕਰਨ ਵਾਲੇ"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:361
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:369
 msgid "Built on VLC media player by"
 msgstr "VLC ਮੀਡਿਆ ਪਲੇਅਰ ਉੱਤੇ ਆਧਾਰਿਤ, ਜਿਸ ਦੇ ਨਿਰਮਾਤਾ ਹਨ"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:362
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:370
 msgid "the VideoLAN team and contributors"
 msgstr "VideoLAN ਟੀਮ ਅਤੇ ਯੋਗਦਾਨੀ"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:370
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:378
 msgid "Also on: %1"
 msgstr "ਇਹਨਾਂ ’ਤੇ ਵੀ: %1"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:377
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:385
 #: modules/gui/qt/menus/qml/MainMenu.qml:173
 msgid "Suggest an idea"
 msgstr "ਕੋਈ ਵਿਚਾਰ ਸੁਝਾਓ"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:379
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:387
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:28
 #: modules/gui/qt/menus/qml/MainMenu.qml:178
 msgid "Report a problem"
 msgstr "ਸਮੱਸਿਆ ਦੀ ਰਿਪੋਰਟ ਕਰੋ"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:390
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:398
 msgid ""
 "An unofficial build, not affiliated with or endorsed by VideoLAN or "
 "Juxtopposed. VLC, VLC media player and the cone logo are trademarks of "
@@ -1939,11 +1934,11 @@ msgstr ""
 "ਸਮਰਥਿਤ ਹੈ। VLC, VLC ਮੀਡਿਆ ਪਲੇਅਰ ਅਤੇ ਕੋਨ ਲੋਗੋ VideoLAN ਦੇ ਟਰੇਡਮਾਰਕ ਹਨ। GNU GPL v2 ਜਾਂ "
 "ਨਵੇਂ ਵਰਜਨ ਅਧੀਨ ਮੁਫ਼ਤ ਸਾਫ਼ਟਵੇਅਰ।"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:400
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:408
 msgid "Licenses & authors"
 msgstr "ਲਾਇਸੰਸ ਅਤੇ ਲੇਖਕ"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:404
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:412
 msgid "GitHub"
 msgstr "GitHub"
 
@@ -1953,7 +1948,7 @@ msgstr "ਫੋਲਡਰ ਜਾਣਕਾਰੀ"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:29
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:119
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:189
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:202
 msgid "Show in File Explorer"
 msgstr "ਫਾਇਲ ਐਕਸਪਲੋਰਰ ਵਿੱਚ ਵੇਖਾਓ"
 
@@ -1976,12 +1971,12 @@ msgstr "ਸੋਧਿਆ"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:66
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:27
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:34
 #: modules/gui/qt/medialibrary/qml/VideoGroupDisplay.qml:40
 #: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:84
 #: modules/gui/qt/medialibrary/qml/VideoListDisplay.qml:90
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:81
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:198
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:237
 #: modules/gui/qt/network/standardpathmodel.cpp:152
 #: modules/gui/qt/player/qml/CompactLibrary.qml:79
 #: modules/gui/qt/player/qml/CompactLibrary.qml:198
@@ -2122,36 +2117,36 @@ msgstr "ਪੜ੍ਹਿਆ"
 msgid "Late"
 msgstr "ਦੇਰ ਨਾਲ"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:520
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:521
 msgid "Confirm"
 msgstr "ਪੁਸ਼ਟੀ ਕਰੋ"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:550
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:551
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:218
 msgid "Retry"
 msgstr "ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:552
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:553
 msgid "Yes to All"
 msgstr "ਸਭ ਲਈ ਹਾਂ"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:558
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:559
 msgid "No to All"
 msgstr "ਸਭ ਲਈ ਨਹੀਂ"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1169
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1170
 msgid "Save play queue as..."
 msgstr "ਪਲੇਅ ਕਤਾਰ ਇੰਝ ਸੰਭਾਲੋ..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1389
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1390
 msgid "Write error"
 msgstr "ਲਿਖਣ ਦੌਰਾਨ ਗਲਤੀ"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1406
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1407
 msgid "Export playlist as..."
 msgstr "ਪਲੇਅਲਿਸਟ ਇੰਝ ਐਕਸਪੋਰਟ ਕਰੋ..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1423
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1424
 msgid ""
 "The playlist could not be exported to %1:\n"
 "%2"
@@ -2159,17 +2154,17 @@ msgstr ""
 "ਪਲੇਲਿਸਟ ਨੂੰ %1 ਵਿੱਚ ਐਕਸਪੋਰਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ:\n"
 "%2"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1425
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:49
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
 msgid "Export Playlist"
 msgstr "ਪਲੇਅਲਿਸਟ ਐਕਸਪੋਰਟ ਕਰੋ"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1551
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1552
 msgid "Open audio..."
 msgstr "ਆਡੀਓ ਖੋਲ੍ਹੋ..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1556
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1557
 msgid "Open video..."
 msgstr "ਵਿਡੀਓ ਖੋਲ੍ਹੋ..."
 
@@ -2326,7 +2321,7 @@ msgstr "%1 ਕਰੋਪ, ਪਿਕਸਲਾਂ ਵਿੱਚ"
 msgid "Link top and bottom crop"
 msgstr "ਉੱਤੇ ਅਤੇ ਥੱਲੇ ਦਾ ਕਰੋਪ ਜੋੜੋ"
 
-#: modules/gui/qt/dialogs/extended/qml/CropPanel.qml:102
+#: modules/gui/qt/dialogs/extended/qml/CropPanel.qml:103
 msgid "Link left and right crop"
 msgstr "ਖੱਬੇ ਅਤੇ ਸੱਜੇ ਦਾ ਕਰੋਪ ਜੋੜੋ"
 
@@ -2339,62 +2334,62 @@ msgstr "ਕਿਸੇ ਮੀਡਿਆ ਦੇ ਪਰਭਾਵਾਂ ਨੂੰ ਪ�
 msgid "Effect preset: %1"
 msgstr "ਪਰਭਾਵ ਪ੍ਰੀ-ਸੈੱਟ: %1"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:257
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:258
 msgid "Effect presets"
 msgstr "ਪਰਭਾਵ ਪ੍ਰੀ-ਸੈੱਟ"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:272
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:454
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:273
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:457
 msgid "New Preset"
 msgstr "ਨਵਾਂ ਪ੍ਰੀ-ਸੈੱਟ"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:289
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:290
 msgid "Chosen preset"
 msgstr "ਚੁਣਿਆ ਪ੍ਰੀ-ਸੈੱਟ"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:372
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:110
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:375
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:111
 msgid "Actions of %1"
 msgstr "%1 ਦੀਆਂ ਕਾਰਵਾਈਆਂ"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:420
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:423
 msgid "Update with current effects"
 msgstr "ਮੌਜੂਦਾ ਪਰਭਾਵਾਂ ਨਾਲ ਅੱਪਡੇਟ ਕਰੋ"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:454
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:457
 msgid "Rename Preset"
 msgstr "ਪ੍ਰੀ-ਸੈੱਟ ਦਾ ਨਾਂ ਬਦਲੋ"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:497
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:500
 msgid "Preset Name"
 msgstr "ਪ੍ਰੀ-ਸੈੱਟ ਨਾਂ"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:498
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:501
 msgid "The preset keeps its effects."
 msgstr "ਪ੍ਰੀ-ਸੈੱਟ ਆਪਣੇ ਪਰਭਾਵ ਰੱਖਦਾ ਹੈ।"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:499
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:502
 msgid "The preset keeps the audio and video effects in use."
 msgstr "ਪ੍ਰੀ-ਸੈੱਟ ਵਰਤੋਂ ਵਿੱਚ ਚੱਲ ਰਹੇ ਆਡੀਓ ਅਤੇ ਵਿਡੀਓ ਪਰਭਾਵ ਸੰਭਾਲਦਾ ਹੈ।"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:507
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:510
 msgid "e.g., Late Night Movies"
 msgstr "ਜਿਵੇਂ, ਦੇਰ ਰਾਤ ਦੀਆਂ ਫ਼ਿਲਮਾਂ"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:508
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:511
 msgid "Preset name"
 msgstr "ਪ੍ਰੀ-ਸੈੱਟ ਦਾ ਨਾਂ"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:526
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:529
 msgid "Delete Preset"
 msgstr "ਪ੍ਰੀ-ਸੈੱਟ ਹਟਾਓ"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:552
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:555
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:493
 msgid "Delete %1?"
 msgstr "ਕੀ %1 ਹਟਾਉਣਾ ਹੈ?"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:553
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:556
 msgid "The effects in use stay as they are."
 msgstr "ਵਰਤੋਂ ਵਿੱਚ ਚੱਲ ਰਹੇ ਪਰਭਾਵ ਜਿਵੇਂ ਹਨ ਉਵੇਂ ਹੀ ਰਹਿਣਗੇ।"
 
@@ -2459,16 +2454,16 @@ msgstr "ਪਰਭਾਵਾਂ ਦੀ ਝਲਕ ਵੇਖਣ ਅਤੇ ਸੋਧ�
 msgid "Open synchronization"
 msgstr "ਸਿੰਕਰੋਨਾਈਜ਼ੇਸ਼ਨ ਖੋਲ੍ਹੋ"
 
-#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:93
+#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:94
 msgid "%1 equalizer curve"
 msgstr "%1 ਇਕੂਲਾਈਜ਼ਰ ਕਰਵ"
 
-#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:160
-#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:177
+#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:163
+#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:180
 msgid "Two-pass equalizer"
 msgstr "ਦੋ-ਪਾਸ ਇਕੂਲਾਈਜ਼ਰ"
 
-#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:189
+#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:192
 #: modules/gui/qt/dialogs/extended/qml/FilterPanel.qml:92
 #: modules/gui/qt/dialogs/extended/qml/VideoEffectsPanel.qml:149
 msgid "Reset to defaults"
@@ -2583,11 +2578,11 @@ msgstr "ਮੋਸ਼ਨ ਬਲੱਰ"
 msgid "Colors of %1"
 msgstr "%1 ਦੇ ਰੰਗ"
 
-#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:345
+#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:346
 msgid "Browse for %1"
 msgstr "%1 ਲਈ ਬਰਾਊਜ਼ ਕਰੋ"
 
-#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:348
+#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:349
 msgid "Image Files (*.png *.jpg);;All Files (*)"
 msgstr "ਚਿੱਤਰ ਫਾਇਲਾਂ (*.png *.jpg);;ਸਭ ਫਾਇਲਾਂ (*)"
 
@@ -2731,16 +2726,16 @@ msgstr "ਹਲਕਾ"
 msgid "System"
 msgstr "ਸਿਸਟਮ"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:335
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:337
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:222
 msgid "Accent color %1"
 msgstr "ਐਕਸੈਂਟ ਰੰਗ %1"
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:54
-msgid "Welcome to VLC!"
-msgstr "VLC ਵਿੱਚ ਜੀ ਆਇਆਂ ਨੂੰ!"
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:55
+msgid "Welcome to %1!"
+msgstr "%1 ਵਿੱਚ ਜੀ ਆਇਆਂ ਨੂੰ!"
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:72
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:73
 msgid ""
 "VLC is a free and open source cross-platform multimedia player and framework "
 "that plays most multimedia files as well as DVDs, Audio CDs, VCDs, and "
@@ -2749,15 +2744,15 @@ msgstr ""
 "VLC ਇੱਕ ਮੁਫ਼ਤ ਅਤੇ ਓਪਨ ਸੋਰਸ ਕਰਾਸ-ਪਲੇਟਫਾਰਮ ਮਲਟੀਮੀਡੀਆ ਪਲੇਅਰ ਅਤੇ ਫਰੇਮਵਰਕ ਹੈ, ਜੋ ਬਹੁਤੀਆਂ "
 "ਮਲਟੀਮੀਡੀਆ ਫਾਇਲਾਂ ਦੇ ਨਾਲ-ਨਾਲ DVD, ਆਡੀਓ CD, VCD ਅਤੇ ਕਈ ਸਟਰੀਮਿੰਗ ਪਰੋਟੋਕਾਲ ਚਲਾਉਂਦਾ ਹੈ।"
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:93
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:94
 msgid "Choose a Media Folder to get started with"
 msgstr "ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਕੋਈ ਮੀਡਿਆ ਫੋਲਡਰ ਚੁਣੋ"
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:126
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:127
 msgid "No folder selected"
 msgstr "ਕੋਈ ਫੋਲਡਰ ਨਹੀਂ ਚੁਣਿਆ"
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:146
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:147
 msgid "Remove the folder"
 msgstr "ਫੋਲਡਰ ਹਟਾਓ"
 
@@ -3122,7 +3117,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:293
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:105
-#: modules/gui/qt/qt.cpp:348
+#: modules/gui/qt/qt.cpp:349
 msgid "Channel banner"
 msgstr "ਚੈਨਲ ਬੈਨਰ"
 
@@ -3445,7 +3440,7 @@ msgid ""
 msgstr "%1 ਸੈਟਿੰਗ ਤੋਂ ਬਾਹਰ ਬਦਲ ਗਿਆ ਜਾਂ ਉਪਲੱਬਧ ਨਹੀਂ ਹੈ। ਤੁਹਾਡੀਆਂ ਤਬਦੀਲੀਆਂ ਸੰਭਾਲੀਆਂ ਨਹੀਂ ਗਈਆਂ।"
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:79
-#: modules/gui/qt/qt.cpp:357
+#: modules/gui/qt/qt.cpp:358
 msgid "Expert"
 msgstr "ਮਾਹਰ"
 
@@ -3510,17 +3505,17 @@ msgstr ""
 "ਸ਼ਾਰਟਕੱਟ ਸੰਭਾਲੇ ਨਹੀਂ ਜਾ ਸਕੇ (ਗਲਤੀ %1)। ਤਬਦੀਲੀਆਂ ਮੈਮੋਰੀ ਵਿੱਚ ਵਾਪਸ ਲਈਆਂ ਗਈਆਂ; ਸੰਰਚਨਾ ਫਾਇਲ "
 "ਦੀ ਜਾਂਚ ਕਰੋ।"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:765
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:767
 msgid "System's default (%1)"
 msgstr "ਸਿਸਟਮ ਡਿਫਾਲਟ (%1)"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1439
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1444
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1441
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1446
 msgid "%1 (partial)"
 msgstr "%1 (ਅਧੂਰਾ)"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1839
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1849
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1852
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1862
 msgid "Please choose an entry point folder"
 msgstr "ਸ਼ੁਰੂਆਤੀ ਫੋਲਡਰ ਚੁਣੋ"
 
@@ -3535,7 +3530,7 @@ msgstr "ਥੀਮ"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:192
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:428
-#: modules/gui/qt/qt.cpp:339
+#: modules/gui/qt/qt.cpp:340
 msgid "Accent color"
 msgstr "ਐਕਸੈਂਟ ਰੰਗ"
 
@@ -3577,14 +3572,15 @@ msgstr ""
 "ਨਾਂ ਅਤੇ ਹੈਸ਼ (ਫਾਇਲ ਦੇ ਇੱਕ ਹਿੱਸੇ ਤੋਂ ਬਣਾਇਆ) ਮਿਲਦਾ ਹੈ, ਹੋਰ ਕੁਝ ਨਹੀਂ।"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:53
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:620
 msgid "Current output device"
 msgstr "ਮੌਜੂਦਾ ਆਉਟਪੁੱਟ ਜੰਤਰ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:76
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:80
 msgid "No selectable device available"
 msgstr "ਚੁਣਨਯੋਗ ਕੋਈ ਜੰਤਰ ਉਪਲੱਬਧ ਨਹੀਂ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:141
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:164
 msgid ""
 "Device changes affect only the current audio output. Apply keeps this "
 "selection while it remains active."
@@ -3762,55 +3758,55 @@ msgstr "ਦੂਜੀ ਭਾਸ਼ਾ"
 msgid "OpenSubtitles"
 msgstr "OpenSubtitles"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:647
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:658
 msgid "No matching settings"
 msgstr "ਕੋਈ ਮਿਲਦੀ ਸੈਟਿੰਗ ਨਹੀਂ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:648
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:659
 msgid "No settings are available for this category on this VLC installation"
 msgstr "ਇਸ VLC ਇੰਸਟਾਲੇਸ਼ਨ ਉੱਤੇ ਇਸ ਵਰਗ ਲਈ ਕੋਈ ਸੈਟਿੰਗ ਉਪਲੱਬਧ ਨਹੀਂ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:729
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:745
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:741
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:757
 msgid "Show installed add-ons only"
 msgstr "ਸਿਰਫ਼ ਇੰਸਟਾਲ ਕੀਤੇ ਐਡ-ਆਨ ਵੇਖੋ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:761
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:773
 msgid "No advanced options on this page."
 msgstr "ਇਸ ਪੰਨੇ ਉੱਤੇ ਕੋਈ ਮਾਹਰ ਚੋਣ ਨਹੀਂ।"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:773
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:785
 msgid "Welcome setup"
 msgstr "ਸ਼ੁਰੂਆਤੀ ਸੈੱਟਅੱਪ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:787
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:799
 msgid "All VLC options"
 msgstr "VLC ਦੀਆਂ ਸਾਰੀਆਂ ਚੋਣਾਂ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:803
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:815
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:356
 msgid "Reset all settings"
 msgstr "ਸਾਰੀਆਂ ਸੈਟਿੰਗਾਂ ਮੁੜ-ਸੈੱਟ ਕਰੋ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:817
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:829
 msgid "Reset all settings?"
 msgstr "ਕੀ ਸਾਰੀਆਂ ਸੈਟਿੰਗਾਂ ਮੁੜ-ਸੈੱਟ ਕਰਨੀਆਂ ਹਨ?"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:818
-msgid "Every setting of VLC media player goes back to its default."
-msgstr "VLC ਮੀਡਿਆ ਪਲੇਅਰ ਦੀ ਹਰ ਸੈਟਿੰਗ ਆਪਣੇ ਡਿਫਾਲਟ ਉੱਤੇ ਵਾਪਸ ਚਲੀ ਜਾਂਦੀ ਹੈ।"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:830
+msgid "Every setting of %1 goes back to its default."
+msgstr "%1 ਮੀਡਿਆ ਪਲੇਅਰ ਦੀ ਹਰ ਸੈਟਿੰਗ ਆਪਣੇ ਡਿਫਾਲਟ ਉੱਤੇ ਵਾਪਸ ਚਲੀ ਜਾਂਦੀ ਹੈ।"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:872
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:884
 msgid "Discard changes"
 msgstr "ਤਬਦੀਲੀਆਂ ਰੱਦ ਕਰੋ"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:124
-#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:117
+#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:118
 msgid "Close Equalizer"
 msgstr "ਇਕੂਲਾਈਜ਼ਰ ਬੰਦ ਕਰੋ"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:124
-#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:98
+#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:99
 msgid "Open Equalizer"
 msgstr "ਇਕੂਲਾਈਜ਼ਰ ਖੋਲ੍ਹੋ"
 
@@ -4040,7 +4036,7 @@ msgstr "1 s"
 msgid "10 s"
 msgstr "10 s"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:616
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:617
 msgid "Choose a color"
 msgstr "ਰੰਗ ਚੁਣੋ"
 
@@ -4367,7 +4363,7 @@ msgid "Seeking"
 msgstr "ਸੀਕ ਕਰਨਾ"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:137
-#: modules/gui/qt/qt.cpp:303
+#: modules/gui/qt/qt.cpp:304
 msgid "Show thumbnail while scrubbing"
 msgstr "ਸੀਕ ਪੱਟੀ ਘਸੀਟਣ ਸਮੇਂ ਥੰਮਨੇਲ ਵੇਖਾਓ"
 
@@ -4647,7 +4643,7 @@ msgid "Timing"
 msgstr "ਟਾਈਮਿੰਗ"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:273
-#: modules/gui/qt/qt.cpp:305
+#: modules/gui/qt/qt.cpp:306
 msgid "Show subtitle lines on the seek bar"
 msgstr "ਸੀਕ ਪੱਟੀ ਉੱਤੇ ਸਬ-ਟਾਈਟਲ ਲਾਈਨਾਂ ਵੇਖਾਓ"
 
@@ -5124,7 +5120,7 @@ msgstr "ਗਾਈਡਾਂ ਪਰੋਗਰਾਮ ਇਹਨਾਂ ਵਿੱਚ �
 
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:121
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:76
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:616
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:617
 msgid "Global Hotkey"
 msgstr "ਗਲੋਬਲ ਹਾਟ-ਕੀ"
 
@@ -5200,11 +5196,11 @@ msgstr "%1 ਹਟਾਓ"
 msgid "Search Keyboard Shortcuts..."
 msgstr "ਕੀਬੋਰਡ ਸ਼ਾਰਟਕੱਟ ਖੋਜੋ..."
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:711
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:712
 msgid "Hotkey of %1"
 msgstr "%1 ਦੀ ਹਾਟ-ਕੀ"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:722
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:723
 msgid "Global hotkey of %1"
 msgstr "%1 ਦੀ ਗਲੋਬਲ ਹਾਟ-ਕੀ"
 
@@ -5223,6 +5219,14 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsResetPopup.qml:74
 msgid "Reset all"
 msgstr "ਸਭ ਮੁੜ-ਸੈੱਟ ਕਰੋ"
+
+#: modules/gui/qt/dialogs/systray/systray.cpp:200
+msgid "&Hide %1 in taskbar"
+msgstr "%1 ਪਲੇਅਰ ਨੂੰ ਟਾਸਕਬਾਰ ਵਿੱਚ ਓਹਲੇ ਕਰੋ(&H)"
+
+#: modules/gui/qt/dialogs/systray/systray.cpp:206
+msgid "Sho&w %1"
+msgstr "%1 ਮੀਡਿਆ ਪਲੇਅਰ ਵੇਖਾਓ(&w)"
 
 #: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:205
 #: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:438
@@ -5305,7 +5309,7 @@ msgstr "ਪਰੋਫਾਇਲ ਸੈਟਿੰਗ ਲਾਗੂ ਨਹੀਂ ਕ�
 msgid "Profile (%1)"
 msgstr "ਪਰੋਫਾਇਲ (%1)"
 
-#: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:88
+#: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:89
 msgid "Customize player"
 msgstr "ਪਲੇਅਰ ਕਸਟਮਾਈਜ਼ ਕਰੋ"
 
@@ -5314,11 +5318,11 @@ msgstr "ਪਲੇਅਰ ਕਸਟਮਾਈਜ਼ ਕਰੋ"
 msgid "Sleep timer"
 msgstr "ਸਲੀਪ ਟਾਈਮਰ"
 
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:169
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:170
 msgid "Selected profile"
 msgstr "ਚੁਣਿਆ ਪਰੋਫਾਇਲ"
 
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:236
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:237
 msgid "New profile…"
 msgstr "ਨਵਾਂ ਪਰੋਫਾਇਲ…"
 
@@ -5499,8 +5503,8 @@ msgstr "ਸ਼ੁਰੂ ਤੋਂ ਵੇਖੋ"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:142
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:174
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:37
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:187
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:874
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:81
 msgid "Favorite"
@@ -5557,24 +5561,24 @@ msgstr "%1 ਦੇ ਚੈਨਲ ਅੱਪਡੇਟ ਹੋ ਰਹੇ ਹਨ…"
 msgid "%1 could not be loaded: %2"
 msgstr "%1 ਲੋਡ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ: %2"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:502
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:503
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:580
 msgid "No channel matches the search"
 msgstr "ਕੋਈ ਚੈਨਲ ਖੋਜ ਨਾਲ ਮੇਲ ਨਹੀਂ ਖਾਂਦਾ"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:503
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:504
 msgid "No favorite channel yet: right-click a channel to add it"
 msgstr "ਹਾਲੇ ਕੋਈ ਮਨਪਸੰਦ ਚੈਨਲ ਨਹੀਂ: ਜੋੜਨ ਲਈ ਕਿਸੇ ਚੈਨਲ ਉੱਤੇ ਸੱਜਾ-ਕਲਿੱਕ ਕਰੋ"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:504
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:505
 msgid "No channel watched yet"
 msgstr "ਹਾਲੇ ਕੋਈ ਚੈਨਲ ਨਹੀਂ ਵੇਖਿਆ"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:505
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:506
 msgid "Loading the channels…"
 msgstr "ਚੈਨਲ ਲੋਡ ਹੋ ਰਹੇ ਹਨ…"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:506
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:507
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:810
 msgid "No channels"
 msgstr "ਕੋਈ ਚੈਨਲ ਨਹੀਂ"
@@ -5597,19 +5601,19 @@ msgstr "ਬਾਅਦ ਵਿੱਚ"
 msgid "No guide for this channel"
 msgstr "ਇਸ ਚੈਨਲ ਲਈ ਕੋਈ ਗਾਈਡ ਨਹੀਂ"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:182
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:183
 msgid "No account with films or series"
 msgstr "ਫ਼ਿਲਮਾਂ ਜਾਂ ਲੜੀਵਾਰਾਂ ਵਾਲਾ ਕੋਈ ਖਾਤਾ ਨਹੀਂ"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:183
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:184
 msgid "Loading…"
 msgstr "ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ…"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:183
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:184
 msgid "Nothing here"
 msgstr "ਇੱਥੇ ਕੁਝ ਨਹੀਂ"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:235
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:236
 msgid "S%1 E%2"
 msgstr "S%1 E%2"
 
@@ -5676,11 +5680,11 @@ msgstr "ਮੈਨੂੰ ਯਾਦ ਕਰਾਓ"
 msgid "Back to Live"
 msgstr "ਲਾਈਵ ਉੱਤੇ ਵਾਪਸ"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:618 modules/gui/qt/qt.cpp:344
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:618 modules/gui/qt/qt.cpp:345
 msgid "Next channel"
 msgstr "ਅਗਲਾ ਚੈਨਲ"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:623 modules/gui/qt/qt.cpp:345
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:623 modules/gui/qt/qt.cpp:346
 msgid "Previous channel"
 msgstr "ਪਿਛਲਾ ਚੈਨਲ"
 
@@ -5789,7 +5793,7 @@ msgid "Updated %1 at %2"
 msgstr "%1 ਨੂੰ %2 ਵਜੇ ਅੱਪਡੇਟ ਕੀਤਾ"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:308
-#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:239
+#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:242
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:91
 msgid "Move up"
 msgstr "ਉੱਪਰ ਭੇਜੋ"
@@ -5997,7 +6001,7 @@ msgstr "MC"
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:96
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:32
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:39
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:54
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:61
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:53
@@ -6051,14 +6055,9 @@ msgstr "ਪੜਚੋਲ"
 msgid "Local top bar"
 msgstr "ਲੋਕਲ ਉੱਪਰਲੀ ਪੱਟੀ"
 
-#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:187
+#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:188
 msgid "Show navigation menu"
 msgstr "ਨੈਵੀਗੇਸ਼ਨ ਮੇਨੂ ਵੇਖਾਓ"
-
-#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:250
-#: modules/gui/qt/player/qml/TopBar.qml:503
-msgid "VLC Media Player"
-msgstr "VLC ਮੀਡਿਆ ਪਲੇਅਰ"
 
 #: modules/gui/qt/maininterface/qml/MainDisplay.qml:34
 msgid "Main display"
@@ -6164,7 +6163,7 @@ msgid "Re-check"
 msgstr "ਮੁੜ ਜਾਂਚ ਕਰੋ"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:34
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:41
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:224
 #: modules/gui/qt/player/qml/CompactLibrary.qml:83
 #: modules/gui/qt/player/qml/CompactLibrary.qml:297
@@ -6172,13 +6171,20 @@ msgid "Recent"
 msgstr "ਤਾਜ਼ਾ"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:238
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:303
 msgid "Add item"
 msgstr "ਆਈਟਮ ਸ਼ਾਮਲ ਕਰੋ"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:121
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:132
 msgid "Edit Sidebar…"
 msgstr "ਸਾਈਡਬਾਰ ਸੋਧੋ…"
+
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:131
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:137
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
+msgid "Unpin from Sidebar"
+msgstr "ਸਾਈਡਬਾਰ ਤੋਂ ਅਨਪਿੰਨ ਕਰੋ"
 
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:34
 msgid "Reset to Default"
@@ -6199,12 +6205,12 @@ msgstr ""
 msgid "hidden"
 msgstr "ਲੁਕਵਾਂ"
 
-#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:251
+#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:254
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:98
 msgid "Move down"
 msgstr "ਹੇਠਾਂ ਭੇਜੋ"
 
-#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:262
+#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:265
 msgid "Show %1"
 msgstr "%1 ਵੇਖਾਓ"
 
@@ -6261,6 +6267,15 @@ msgstr "OpenSubtitles ਡਾਊਨਲੋਡ ਅਸਫ਼ਲ ਰਿਹਾ। ਆ�
 #: modules/gui/qt/medialibrary/mlopensubtitles.cpp:223
 msgid "OpenSubtitles did not return a valid subtitle download link."
 msgstr "OpenSubtitles ਨੇ ਸਬ-ਟਾਈਟਲ ਡਾਊਨਲੋਡ ਦਾ ਠੀਕ ਲਿੰਕ ਨਹੀਂ ਦਿੱਤਾ।"
+
+#: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:188
+#: modules/gui/qt/player/subtitle_search.cpp:481
+msgid "This build can't search the internet."
+msgstr "ਇਹ ਬਿਲਡ ਇੰਟਰਨੈੱਟ ਉੱਤੇ ਖੋਜ ਨਹੀਂ ਕਰ ਸਕਦਾ।"
+
+#: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:207
+msgid "The subtitle services took too long to answer."
+msgstr "ਸਬ-ਟਾਈਟਲ ਸੇਵਾਵਾਂ ਨੇ ਜਵਾਬ ਦੇਣ ਵਿੱਚ ਬਹੁਤ ਸਮਾਂ ਲਿਆ।"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:121
 msgid "This media"
@@ -6338,12 +6353,12 @@ msgstr ""
 "ਸਬ-ਟਾਈਟਲ ਫਾਇਲਾਂ (*.srt *.ass *.ssa *.sub *.vtt *.ttml *.smi);;ਸਭ ਫਾਇਲਾਂ (*)"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:369
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:553
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:597
 msgid "Choose the folder of the audio tracks"
 msgstr "ਆਡੀਓ ਟਰੈਕਾਂ ਦਾ ਫੋਲਡਰ ਚੁਣੋ"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:370
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:554
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:598
 msgid "Choose the folder of the subtitles"
 msgstr "ਸਬ-ਟਾਈਟਲਾਂ ਦਾ ਫੋਲਡਰ ਚੁਣੋ"
 
@@ -6379,31 +6394,31 @@ msgstr "ਘੱਟੋ-ਘੱਟ ਇੱਕ ਆਡੀਓ ਫਾਇਲ ਚੁਣੋ�
 msgid "Choose at least one subtitle file."
 msgstr "ਘੱਟੋ-ਘੱਟ ਇੱਕ ਸਬ-ਟਾਈਟਲ ਫਾਇਲ ਚੁਣੋ।"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:477
-msgid "An audio file is missing or unreadable: %1"
-msgstr "ਇੱਕ ਆਡੀਓ ਫਾਇਲ ਗੁੰਮ ਹੈ ਜਾਂ ਪੜ੍ਹੀ ਨਹੀਂ ਜਾ ਸਕਦੀ: %1"
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:478
-msgid "A subtitle file is missing or unreadable: %1"
-msgstr "ਇੱਕ ਸਬ-ਟਾਈਟਲ ਫਾਇਲ ਗੁੰਮ ਹੈ ਜਾਂ ਪੜ੍ਹੀ ਨਹੀਂ ਜਾ ਸਕਦੀ: %1"
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:492
-msgid "The destination media could not be found in the library."
-msgstr "ਟਿਕਾਣੇ ਵਾਲਾ ਮੀਡਿਆ ਲਾਇਬਰੇਰੀ ਵਿੱਚ ਨਹੀਂ ਲੱਭਿਆ।"
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:509
-msgid "Could not save audio track association for %1."
-msgstr "%1 ਲਈ ਆਡੀਓ ਟਰੈਕ ਦਾ ਜੋੜ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ।"
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:510
-msgid "Could not save subtitle association for %1."
-msgstr "%1 ਲਈ ਸਬ-ਟਾਈਟਲ ਦਾ ਜੋੜ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ।"
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:524
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:472
 #, c-format
 msgid ""
 " %n association(s) were saved before this error; those changes remain saved."
 msgstr " %n ਜੋੜ ਇਸ ਗਲਤੀ ਤੋਂ ਪਹਿਲਾਂ ਸੰਭਾਲੇ ਗਏ ਸਨ; ਉਹ ਤਬਦੀਲੀਆਂ ਸੰਭਾਲੀਆਂ ਰਹਿਣਗੀਆਂ।"
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:498
+msgid "An audio file is missing or unreadable: %1"
+msgstr "ਇੱਕ ਆਡੀਓ ਫਾਇਲ ਗੁੰਮ ਹੈ ਜਾਂ ਪੜ੍ਹੀ ਨਹੀਂ ਜਾ ਸਕਦੀ: %1"
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:499
+msgid "A subtitle file is missing or unreadable: %1"
+msgstr "ਇੱਕ ਸਬ-ਟਾਈਟਲ ਫਾਇਲ ਗੁੰਮ ਹੈ ਜਾਂ ਪੜ੍ਹੀ ਨਹੀਂ ਜਾ ਸਕਦੀ: %1"
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:513
+msgid "The destination media could not be found in the library."
+msgstr "ਟਿਕਾਣੇ ਵਾਲਾ ਮੀਡਿਆ ਲਾਇਬਰੇਰੀ ਵਿੱਚ ਨਹੀਂ ਲੱਭਿਆ।"
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:529
+msgid "Could not save audio track association for %1."
+msgstr "%1 ਲਈ ਆਡੀਓ ਟਰੈਕ ਦਾ ਜੋੜ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ।"
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:530
+msgid "Could not save subtitle association for %1."
+msgstr "%1 ਲਈ ਸਬ-ਟਾਈਟਲ ਦਾ ਜੋੜ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ।"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:47
 msgid "The subtitle filename is invalid."
@@ -6484,7 +6499,7 @@ msgstr "ਅਣਜਾਣ ਕਲਾਕਾਰ"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:96
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:228
-#: modules/gui/qt/player/qml/ResumeDialog.qml:147
+#: modules/gui/qt/player/qml/ResumeDialog.qml:148
 #: modules/gui/qt/player/qml/CompactLibrary.qml:401
 msgid "Continue Watching"
 msgstr "ਵੇਖਣਾ ਜਾਰੀ ਰੱਖੋ"
@@ -6630,7 +6645,7 @@ msgid "Remove from playlist"
 msgstr "ਪਲੇਅਲਿਸਟ ਵਿੱਚੋਂ ਹਟਾਓ"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:222
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:252
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:260
 msgid "Processing..."
 msgstr "ਪਰੋਸੈਸ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ..."
 
@@ -6654,15 +6669,15 @@ msgid_plural "Delete playlists"
 msgstr[0] "ਪਲੇਅਲਿਸਟ ਹਟਾਓ"
 msgstr[1] "ਪਲੇਅਲਿਸਟਾਂ ਹਟਾਓ"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:368
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:376
 msgid "Items"
 msgstr "ਆਈਟਮਾਂ"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:455
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:463
 msgid "No playlists found"
 msgstr "ਕੋਈ ਪਲੇਅਲਿਸਟ ਨਹੀਂ ਲੱਭੀ"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:456
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:464
 msgid "Create a playlist with files or add media from the library"
 msgstr "ਫਾਇਲਾਂ ਨਾਲ ਪਲੇਅਲਿਸਟ ਬਣਾਓ ਜਾਂ ਲਾਇਬਰੇਰੀ ਤੋਂ ਮੀਡਿਆ ਸ਼ਾਮਲ ਕਰੋ"
 
@@ -6723,45 +6738,45 @@ msgid "Channel:"
 msgstr "ਚੈਨਲ:"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:82
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:168
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:181
 msgid "Mark as Unwatched"
 msgstr "ਨਾ ਵੇਖਿਆ ਵਜੋਂ ਨਿਸ਼ਾਨ ਲਾਓ"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:82
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:169
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:182
 msgid "Mark as Watched"
 msgstr "ਵੇਖਿਆ ਵਜੋਂ ਨਿਸ਼ਾਨ ਲਾਓ"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:110
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:183
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:53
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:196
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:54
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:891
 msgid "Add to Queue"
 msgstr "ਕਤਾਰ ਵਿੱਚ ਸ਼ਾਮਲ ਕਰੋ"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:126
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:193
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:206
 msgid "Go to Source"
 msgstr "ਸਰੋਤ ਉੱਤੇ ਜਾਓ"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:134
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:207
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:57
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:220
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:58
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:899
 msgid "Add Subtitle Tracks"
 msgstr "ਸਬ-ਟਾਈਟਲ ਟਰੈਕ ਸ਼ਾਮਲ ਕਰੋ"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:140
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:209
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:62
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:75
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:222
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:63
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:93
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:903
 msgid "Add Audio Tracks"
 msgstr "ਆਡੀਓ ਟਰੈਕ ਸ਼ਾਮਲ ਕਰੋ"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:146
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:211
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:69
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:224
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:70
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:31
 msgid "Properties & Metadata"
 msgstr "ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ ਅਤੇ ਮੇਟਾਡਾਟਾ"
@@ -6827,27 +6842,32 @@ msgstr "ਆਡੀਓ ਟਰੈਕ ਸੋਧੋ"
 msgid "Resync"
 msgstr "ਮੁੜ-ਸਿੰਕ ਕਰੋ"
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:546
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:138
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
+msgid "Pin to Sidebar"
+msgstr "ਸਾਈਡਬਾਰ ਵਿੱਚ ਪਿੰਨ ਕਰੋ"
+
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:560
 msgid "No media matches the search"
 msgstr "ਕੋਈ ਮੀਡਿਆ ਖੋਜ ਨਾਲ ਨਹੀਂ ਮਿਲਦਾ"
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:547
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:561
 msgid "No media in this folder"
 msgstr "ਇਸ ਫੋਲਡਰ ਵਿੱਚ ਕੋਈ ਮੀਡਿਆ ਨਹੀਂ"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:42
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:43
 msgid "Add folder"
 msgstr "ਫੋਲਡਰ ਸ਼ਾਮਲ ਕਰੋ"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:45
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:46
 msgid "Add folder to media library"
 msgstr "ਮੀਡਿਆ ਲਾਇਬਰੇਰੀ ਵਿੱਚ ਫੋਲਡਰ ਸ਼ਾਮਲ ਕਰੋ"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:53
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:54
 msgid "Could not add this folder to the library: %1"
 msgstr "ਇਹ ਫੋਲਡਰ ਲਾਇਬਰੇਰੀ ਵਿੱਚ ਸ਼ਾਮਲ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ: %1"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:54
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:55
 msgid "Media library"
 msgstr "ਮੀਡਿਆ ਲਾਇਬਰੇਰੀ"
 
@@ -6961,74 +6981,158 @@ msgstr[1] "%1 ਆਈਟਮਾਂ"
 msgid "Length"
 msgstr "ਲੰਬਾਈ"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:36
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:38
 msgid "To This Folder"
 msgstr "ਇਸ ਫੋਲਡਰ ਲਈ"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:37
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:39
 msgid "To This Playlist"
 msgstr "ਇਸ ਪਲੇਅਲਿਸਟ ਲਈ"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:38
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:40
 msgid "To This File"
 msgstr "ਇਸ ਫਾਇਲ ਲਈ"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:75
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:93
 msgid "Add Subtitles"
 msgstr "ਸਬ-ਟਾਈਟਲ ਸ਼ਾਮਲ ਕਰੋ"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:530
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:532
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:533
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:100
+msgid "Download %1"
+msgstr "%1 ਡਾਊਨਲੋਡ ਕਰੋ"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:186
+msgid "%1 linked, %2 failed."
+msgstr "%1 ਜੋੜੇ ਗਏ, %2 ਅਸਫਲ ਰਹੇ।"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:187
+msgid "Nothing was linked: %1 failed."
+msgstr "ਕੁਝ ਵੀ ਨਹੀਂ ਜੋੜਿਆ ਗਿਆ: %1 ਅਸਫਲ ਰਹੇ।"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:574
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:576
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:577
 msgid "From Computer"
 msgstr "ਕੰਪਿਊਟਰ ਤੋਂ"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:532
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:533
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:576
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:577
 msgid "From Link"
 msgstr "ਲਿੰਕ ਤੋਂ"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:532
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:576
 msgid "From OpenSubtitles"
 msgstr "OpenSubtitles ਤੋਂ"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:602
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:577
+msgid "From the Internet"
+msgstr "ਇੰਟਰਨੈੱਟ ਤੋਂ"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:646
 msgid "Direct HTTPS link to a subtitle file"
 msgstr "ਸਬ-ਟਾਈਟਲ ਫਾਇਲ ਦਾ ਸਿੱਧਾ HTTPS ਲਿੰਕ"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:617
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:661
 msgid "Title or episode"
 msgstr "ਸਿਰਲੇਖ ਜਾਂ ਐਪੀਸੋਡ"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:784
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:692
+msgid "%1, else %2"
+msgstr "%1, ਨਹੀਂ ਤਾਂ %2"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:698
+msgid "Every subtitle service is off (Subtitles panel of the player)"
+msgstr "ਸਾਰੀਆਂ ਸਬ-ਟਾਈਟਲ ਸੇਵਾਵਾਂ ਬੰਦ ਹਨ (ਪਲੇਅਰ ਦਾ ਸਬ-ਟਾਈਟਲ ਪੈਨਲ)"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:862
 msgid "OpenSubtitles API key"
 msgstr "OpenSubtitles API ਕੁੰਜੀ"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:899
-msgid "Searching OpenSubtitles…"
-msgstr "OpenSubtitles ਵਿੱਚ ਖੋਜਿਆ ਜਾ ਰਿਹਾ ਹੈ…"
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1001
+msgid "Waiting…"
+msgstr "ਉਡੀਕ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:901
-msgid "Search OpenSubtitles to see the subtitle files."
-msgstr "ਸਬ-ਟਾਈਟਲ ਫਾਇਲਾਂ ਵੇਖਣ ਲਈ OpenSubtitles ਵਿੱਚ ਖੋਜੋ।"
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1002
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:365
+msgid "Searching…"
+msgstr "ਖੋਜਿਆ ਜਾ ਰਿਹਾ ਹੈ…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:904
-msgid "Working on audio tracks…"
-msgstr "ਆਡੀਓ ਟਰੈਕਾਂ ਉੱਤੇ ਕੰਮ ਜਾਰੀ ਹੈ…"
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1004
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:444
+msgid "For this file"
+msgstr "ਇਸ ਫਾਇਲ ਲਈ"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:904
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1005
+msgid "Best guess"
+msgstr "ਸਭ ਤੋਂ ਵਧੀਆ ਅਨੁਮਾਨ"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1006
+msgid "Not found"
+msgstr "ਨਹੀਂ ਲੱਭਿਆ"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1007
+msgid "No answer"
+msgstr "ਕੋਈ ਜਵਾਬ ਨਹੀਂ"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1008
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:264
+msgid "Downloading…"
+msgstr "ਡਾਊਨਲੋਡ ਹੋ ਰਿਹਾ ਹੈ…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1009
+msgid "Linked"
+msgstr "ਜੋੜਿਆ ਗਿਆ"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1108
+msgid "Don't download"
+msgstr "ਡਾਊਨਲੋਡ ਨਾ ਕਰੋ"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1112
+msgid "Subtitle for %1"
+msgstr "%1 ਲਈ ਸਬ-ਟਾਈਟਲ"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1131
+msgid "Downloading and linking the subtitles chosen…"
+msgstr "ਚੁਣੇ ਗਏ ਸਬ-ਟਾਈਟਲ ਡਾਊਨਲੋਡ ਕਰਕੇ ਜੋੜੇ ਜਾ ਰਹੇ ਹਨ…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1133
+msgid "Searching the internet: %1 of %2 videos done…"
+msgstr "ਇੰਟਰਨੈੱਟ ਉੱਤੇ ਖੋਜਿਆ ਜਾ ਰਿਹਾ ਹੈ: %2 ਵਿੱਚੋਂ %1 ਵਿਡੀਓ ਪੂਰੇ…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1134
+msgid "For the file: %1 · By title: %2 · Not found: %3"
+msgstr "ਫਾਇਲ ਲਈ: %1 · ਸਿਰਲੇਖ ਅਨੁਸਾਰ: %2 · ਨਹੀਂ ਲੱਭੇ: %3"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1137
+msgid "No answer: %1"
+msgstr "ਕੋਈ ਜਵਾਬ ਨਹੀਂ: %1"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1160
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on subtitles…"
 msgstr "ਸਬ-ਟਾਈਟਲਾਂ ਉੱਤੇ ਕੰਮ ਜਾਰੀ ਹੈ…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:907
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1165
+msgid "Searching OpenSubtitles…"
+msgstr "OpenSubtitles ਵਿੱਚ ਖੋਜਿਆ ਜਾ ਰਿਹਾ ਹੈ…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1167
+msgid "Search OpenSubtitles to see the subtitle files."
+msgstr "ਸਬ-ਟਾਈਟਲ ਫਾਇਲਾਂ ਵੇਖਣ ਲਈ OpenSubtitles ਵਿੱਚ ਖੋਜੋ।"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
+msgid "Working on audio tracks…"
+msgstr "ਆਡੀਓ ਟਰੈਕਾਂ ਉੱਤੇ ਕੰਮ ਜਾਰੀ ਹੈ…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1173
 msgid "Enter a direct link to a subtitle file above."
 msgstr "ਉੱਪਰ ਕਿਸੇ ਸਬ-ਟਾਈਟਲ ਫਾਇਲ ਦਾ ਸਿੱਧਾ ਲਿੰਕ ਦਿਓ।"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:908
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1174
 msgid "No audio file in this folder: choose another one above."
 msgstr "ਇਸ ਫੋਲਡਰ ਵਿੱਚ ਕੋਈ ਆਡੀਓ ਫਾਇਲ ਨਹੀਂ: ਉੱਪਰ ਕੋਈ ਹੋਰ ਫੋਲਡਰ ਚੁਣੋ।"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:909
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1175
 msgid "No subtitle file in this folder: choose another one above."
 msgstr "ਇਸ ਫੋਲਡਰ ਵਿੱਚ ਕੋਈ ਸਬ-ਟਾਈਟਲ ਫਾਇਲ ਨਹੀਂ: ਉੱਪਰ ਕੋਈ ਹੋਰ ਫੋਲਡਰ ਚੁਣੋ।"
 
@@ -7365,41 +7469,6 @@ msgstr "ਸਲੀਪ ਟਾਈਮਰ ਸੈੱਟ ਕਰਨ ਤੋਂ ਪਹਿ�
 msgid "Choose a duration between one second and 24 hours."
 msgstr "ਇੱਕ ਸਕਿੰਟ ਅਤੇ 24 ਘੰਟਿਆਂ ਵਿਚਕਾਰ ਸਮਾਂ ਚੁਣੋ।"
 
-#: modules/gui/qt/player/subtitle_finder.cpp:742
-msgid "This build can't search the internet."
-msgstr "ਇਹ ਬਿਲਡ ਇੰਟਰਨੈੱਟ ਉੱਤੇ ਖੋਜ ਨਹੀਂ ਕਰ ਸਕਦਾ।"
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1254
-#: modules/gui/qt/player/subtitle_finder.cpp:1512
-msgid "No connection to the internet."
-msgstr "ਇੰਟਰਨੈੱਟ ਨਾਲ ਕੋਈ ਕੁਨੈਕਸ਼ਨ ਨਹੀਂ।"
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1257
-msgid "The video couldn't be identified from its name."
-msgstr "ਵਿਡੀਓ ਦੀ ਉਸ ਦੇ ਨਾਂ ਤੋਂ ਪਛਾਣ ਨਹੀਂ ਹੋ ਸਕੀ।"
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1258
-msgid "\"%1\" wasn't found. Search for its title."
-msgstr "\"%1\" ਨਹੀਂ ਲੱਭਿਆ। ਇਸ ਦੇ ਸਿਰਲੇਖ ਨਾਲ ਖੋਜੋ।"
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1260
-msgid "No subtitles were found for %1."
-msgstr "%1 ਲਈ ਕੋਈ ਸਬ-ਟਾਈਟਲ ਨਹੀਂ ਲੱਭੇ।"
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1513
-msgid "The subtitle couldn't be downloaded (%1)."
-msgstr "ਸਬ-ਟਾਈਟਲ ਡਾਊਨਲੋਡ ਨਹੀਂ ਹੋ ਸਕਿਆ (%1)।"
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1543
-msgid "The subtitle couldn't be saved."
-msgstr "ਸਬ-ਟਾਈਟਲ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ।"
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1553
-#: modules/gui/qt/player/subtitle_providers.cpp:922
-#: modules/gui/qt/player/subtitle_providers.cpp:955
-msgid "The subtitle couldn't be unpacked."
-msgstr "ਸਬ-ਟਾਈਟਲ ਅਨਪੈਕ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।"
-
 #: modules/gui/qt/player/subtitle_providers.cpp:87
 msgid "%1 didn't answer."
 msgstr "%1 ਨੇ ਜਵਾਬ ਨਹੀਂ ਦਿੱਤਾ।"
@@ -7432,6 +7501,12 @@ msgstr "ਫ਼ਿਲਮਾਂ · ਕਈ ਭਾਸ਼ਾਵਾਂ"
 msgid "This subtitle comes as a RAR archive, which can't be opened here."
 msgstr "ਇਹ ਸਬ-ਟਾਈਟਲ RAR ਆਰਕਾਈਵ ਵਿੱਚ ਹੈ, ਜੋ ਇੱਥੇ ਖੋਲ੍ਹਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ।"
 
+#: modules/gui/qt/player/subtitle_providers.cpp:922
+#: modules/gui/qt/player/subtitle_providers.cpp:955
+#: modules/gui/qt/player/subtitle_search.cpp:1140
+msgid "The subtitle couldn't be unpacked."
+msgstr "ਸਬ-ਟਾਈਟਲ ਅਨਪੈਕ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।"
+
 #: modules/gui/qt/player/subtitle_providers.cpp:956
 msgid "The archive has no subtitle in it."
 msgstr "ਆਰਕਾਈਵ ਵਿੱਚ ਕੋਈ ਸਬ-ਟਾਈਟਲ ਨਹੀਂ ਹੈ।"
@@ -7444,6 +7519,32 @@ msgstr "OpenSubtitles ਇਹ ਸਬ-ਟਾਈਟਲ ਆਪਣੇ ਭੁਗਤਾ
 #: modules/gui/qt/player/subtitle_providers.cpp:974
 msgid "The subtitle is empty."
 msgstr "ਸਬ-ਟਾਈਟਲ ਖਾਲੀ ਹੈ।"
+
+#: modules/gui/qt/player/subtitle_search.cpp:1017
+#: modules/gui/qt/player/subtitle_search.cpp:1100
+msgid "No connection to the internet."
+msgstr "ਇੰਟਰਨੈੱਟ ਨਾਲ ਕੋਈ ਕੁਨੈਕਸ਼ਨ ਨਹੀਂ।"
+
+#: modules/gui/qt/player/subtitle_search.cpp:1020
+msgid "The video couldn't be identified from its name."
+msgstr "ਵਿਡੀਓ ਦੀ ਉਸ ਦੇ ਨਾਂ ਤੋਂ ਪਛਾਣ ਨਹੀਂ ਹੋ ਸਕੀ।"
+
+#: modules/gui/qt/player/subtitle_search.cpp:1021
+msgid "\"%1\" wasn't found. Search for its title."
+msgstr "\"%1\" ਨਹੀਂ ਲੱਭਿਆ। ਇਸ ਦੇ ਸਿਰਲੇਖ ਨਾਲ ਖੋਜੋ।"
+
+#: modules/gui/qt/player/subtitle_search.cpp:1023
+msgid "No subtitles were found for %1."
+msgstr "%1 ਲਈ ਕੋਈ ਸਬ-ਟਾਈਟਲ ਨਹੀਂ ਲੱਭੇ।"
+
+#: modules/gui/qt/player/subtitle_search.cpp:1065
+#: modules/gui/qt/player/subtitle_search.cpp:1101
+msgid "The subtitle couldn't be downloaded (%1)."
+msgstr "ਸਬ-ਟਾਈਟਲ ਡਾਊਨਲੋਡ ਨਹੀਂ ਹੋ ਸਕਿਆ (%1)।"
+
+#: modules/gui/qt/player/subtitle_search.cpp:1131
+msgid "The subtitle couldn't be saved."
+msgstr "ਸਬ-ਟਾਈਟਲ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ।"
 
 #: modules/gui/qt/player/waveform.cpp:230
 msgid "Waveform analyzer is unavailable."
@@ -7527,7 +7628,7 @@ msgid "Artist Name"
 msgstr "ਕਲਾਕਾਰ ਦਾ ਨਾਂ"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:82
-#: modules/gui/qt/player/qml/controlbarcontrols/DividerWidget.qml:21
+#: modules/gui/qt/player/qml/controlbarcontrols/DividerWidget.qml:22
 msgid "Divider"
 msgstr "ਵਿਭਾਜਕ"
 
@@ -7637,59 +7738,59 @@ msgstr "ਟੀਵੀ ਉੱਤੇ ਸਬ-ਟਾਈਟਲ: %1"
 msgid "Subtitles off on the TV"
 msgstr "ਟੀਵੀ ਉੱਤੇ ਸਬ-ਟਾਈਟਲ ਬੰਦ"
 
-#: modules/gui/qt/player/qml/Player.qml:1229
+#: modules/gui/qt/player/qml/Player.qml:1230
 msgid "Not playing on %1"
 msgstr "%1 ਉੱਤੇ ਨਹੀਂ ਚੱਲ ਰਿਹਾ"
 
-#: modules/gui/qt/player/qml/Player.qml:1231
-#: modules/gui/qt/player/qml/Player.qml:1358
+#: modules/gui/qt/player/qml/Player.qml:1232
+#: modules/gui/qt/player/qml/Player.qml:1359
 msgid "Connecting to %1…"
 msgstr "%1 ਨਾਲ ਜੁੜਿਆ ਜਾ ਰਿਹਾ ਹੈ…"
 
-#: modules/gui/qt/player/qml/Player.qml:1233
+#: modules/gui/qt/player/qml/Player.qml:1234
 msgid "Playing on %1"
 msgstr "%1 ਉੱਤੇ ਚੱਲ ਰਿਹਾ ਹੈ"
 
-#: modules/gui/qt/player/qml/Player.qml:1234
+#: modules/gui/qt/player/qml/Player.qml:1235
 msgid "The sound plays on %1"
 msgstr "ਆਵਾਜ਼ %1 ਉੱਤੇ ਚੱਲਦੀ ਹੈ"
 
-#: modules/gui/qt/player/qml/Player.qml:1259
+#: modules/gui/qt/player/qml/Player.qml:1260
 msgid "Pause, seek and change the subtitles here: the TV follows."
 msgstr "ਵਿਰਾਮ, ਸੀਕ ਅਤੇ ਸਬ-ਟਾਈਟਲ ਇੱਥੇ ਬਦਲੋ: TV ਵੀ ਨਾਲ ਬਦਲੇਗਾ।"
 
-#: modules/gui/qt/player/qml/Player.qml:1276
+#: modules/gui/qt/player/qml/Player.qml:1277
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the media."
 msgstr "Windows Firewall %1 ਨੂੰ ਮੀਡਿਆ ਪੜ੍ਹਨ ਲਈ ਇਸ ਕੰਪਿਊਟਰ ਨਾਲ ਜੁੜਨ ਨਹੀਂ ਦਿੰਦੀ।"
 
-#: modules/gui/qt/player/qml/Player.qml:1288
+#: modules/gui/qt/player/qml/Player.qml:1289
 msgid "Waiting for Windows…"
 msgstr "Windows ਦੀ ਉਡੀਕ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ…"
 
-#: modules/gui/qt/player/qml/Player.qml:1289
+#: modules/gui/qt/player/qml/Player.qml:1290
 msgid "Allow on public networks too"
 msgstr "ਪਬਲਿਕ ਨੈੱਟਵਰਕਾਂ ਉੱਤੇ ਵੀ ਇਜਾਜ਼ਤ ਦਿਓ"
 
-#: modules/gui/qt/player/qml/Player.qml:1290
+#: modules/gui/qt/player/qml/Player.qml:1291
 msgid "Allow on private networks"
 msgstr "ਪਰਾਈਵੇਟ ਨੈੱਟਵਰਕਾਂ ਉੱਤੇ ਇਜਾਜ਼ਤ ਦਿਓ"
 
-#: modules/gui/qt/player/qml/Player.qml:1302
+#: modules/gui/qt/player/qml/Player.qml:1303
 msgid "Try again"
 msgstr "ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ"
 
-#: modules/gui/qt/player/qml/Player.qml:1307
-#: modules/gui/qt/player/qml/Player.qml:1317
+#: modules/gui/qt/player/qml/Player.qml:1308
+#: modules/gui/qt/player/qml/Player.qml:1318
 msgid "Play here"
 msgstr "ਇੱਥੇ ਚਲਾਓ"
 
-#: modules/gui/qt/player/qml/Player.qml:1317
-#: modules/gui/qt/player/qml/Player.qml:1368
+#: modules/gui/qt/player/qml/Player.qml:1318
+#: modules/gui/qt/player/qml/Player.qml:1369
 msgid "Stop casting"
 msgstr "ਕਾਸਟਿੰਗ ਰੋਕੋ"
 
-#: modules/gui/qt/player/qml/Player.qml:1359
+#: modules/gui/qt/player/qml/Player.qml:1360
 msgid "Also on %1"
 msgstr "%1 ਉੱਤੇ ਵੀ"
 
@@ -7697,11 +7798,11 @@ msgstr "%1 ਉੱਤੇ ਵੀ"
 msgid "Resume dialog"
 msgstr "ਮੁੜ-ਸ਼ੁਰੂ ਡਾਈਲਾਗ"
 
-#: modules/gui/qt/player/qml/ResumeDialog.qml:136
+#: modules/gui/qt/player/qml/ResumeDialog.qml:137
 msgid "You’ve watched till %1 already."
 msgstr "ਤੁਸੀਂ ਪਹਿਲਾਂ ਹੀ %1 ਤੱਕ ਵੇਖ ਚੁੱਕੇ ਹੋ।"
 
-#: modules/gui/qt/player/qml/ResumeDialog.qml:138
+#: modules/gui/qt/player/qml/ResumeDialog.qml:139
 msgid "Continue where you left off?"
 msgstr "ਕੀ ਜਿੱਥੇ ਛੱਡਿਆ ਸੀ ਉੱਥੋਂ ਜਾਰੀ ਰੱਖਣਾ ਹੈ?"
 
@@ -7709,7 +7810,7 @@ msgstr "ਕੀ ਜਿੱਥੇ ਛੱਡਿਆ ਸੀ ਉੱਥੋਂ ਜਾਰ�
 msgid "Player topbar"
 msgstr "ਪਲੇਅਰ ਉੱਪਰਲੀ ਪੱਟੀ"
 
-#: modules/gui/qt/player/qml/TopBar.qml:439
+#: modules/gui/qt/player/qml/TopBar.qml:440
 msgid "Show %1 in the library"
 msgstr "%1 ਨੂੰ ਲਾਇਬਰੇਰੀ ਵਿੱਚ ਵੇਖਾਓ"
 
@@ -7763,7 +7864,7 @@ msgstr "ਬੁੱਕਮਾਰਕਾਂ ਲਈ ਮੀਡਿਆ ਲਾਇਬਰੇ
 msgid "Show Preferences"
 msgstr "ਪਸੰਦ ਵੇਖਾਓ"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:556
+#: modules/gui/qt/player/qml/TracksMenu.qml:557
 #: modules/gui/qt/player/qml/TracksPageAudio.qml:37
 #: modules/gui/qt/player/qml/TracksPageSubtitle.qml:37
 #: modules/gui/qt/player/qml/SubtitleSyncTimeline.qml:42
@@ -7815,7 +7916,7 @@ msgstr "ਬੋਲਾਂ ਨੂੰ ਪਲੇਅਬੈਕ ਸਥਿਤੀ ਨਾ�
 msgid "Volume %1%"
 msgstr "ਵਾਲੀਅਮ %1%"
 
-#: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:207
+#: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:211
 msgid "Play audio to select a visualization."
 msgstr "ਵਿਜ਼ੂਅਲਾਈਜ਼ੇਸ਼ਨ ਚੁਣਨ ਲਈ ਆਡੀਓ ਚਲਾਓ।"
 
@@ -8166,10 +8267,6 @@ msgstr "%1 ਵਿੱਚ ਖੋਜਿਆ ਜਾ ਰਿਹਾ ਹੈ…"
 msgid "Searching subtitles online…"
 msgstr "ਸਬ-ਟਾਈਟਲ ਆਨਲਾਈਨ ਖੋਜੇ ਜਾ ਰਹੇ ਹਨ…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:264
-msgid "Downloading…"
-msgstr "ਡਾਊਨਲੋਡ ਹੋ ਰਿਹਾ ਹੈ…"
-
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:266
 msgid "%1 · %2 found"
 msgstr "%1 · %2 ਲੱਭੇ"
@@ -8210,10 +8307,6 @@ msgstr "ਪਲੇਅਬੈਕ ਲਈ ਸਬ-ਟਾਈਟਲ ਫਾਇਲ ਲੋ�
 msgid "Title of the movie or series"
 msgstr "ਫ਼ਿਲਮ ਜਾਂ ਲੜੀਵਾਰ ਦਾ ਸਿਰਲੇਖ"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:365
-msgid "Searching…"
-msgstr "ਖੋਜਿਆ ਜਾ ਰਿਹਾ ਹੈ…"
-
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:408
 msgid "Second"
 msgstr "ਦੂਜੀ"
@@ -8222,10 +8315,6 @@ msgstr "ਦੂਜੀ"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "ਅਕਸਰ ਵਰਤੀ ਗਈ"
-
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:444
-msgid "For this file"
-msgstr "ਇਸ ਫਾਇਲ ਲਈ"
 
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:465
 msgid "Looking for subtitles…"
@@ -8270,11 +8359,11 @@ msgstr "ਛੋਟੇ ਸਬ-ਟਾਈਟਲ"
 msgid "Larger subtitles"
 msgstr "ਵੱਡੇ ਸਬ-ਟਾਈਟਲ"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:773
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:774
 msgid "HI"
 msgstr "HI"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:778
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:779
 msgid "For the hearing impaired"
 msgstr "ਘੱਟ ਸੁਣਨ ਵਾਲਿਆਂ ਲਈ"
 
@@ -8352,60 +8441,60 @@ msgstr "ਪਲੇਅ ਕਤਾਰ (%1/%2)"
 msgid "Casting to %1"
 msgstr "%1 ਉੱਤੇ ਕਾਸਟ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:128
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:134
 msgid "Cast to"
 msgstr "ਇਸ ਉੱਤੇ ਕਾਸਟ ਕਰੋ"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:153
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:160
 msgid "This computer"
 msgstr "ਇਹ ਕੰਪਿਊਟਰ"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:182
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:189
 msgid "Not playing: choose it to try again"
 msgstr "ਨਹੀਂ ਚੱਲ ਰਿਹਾ: ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰਨ ਲਈ ਇਸ ਨੂੰ ਚੁਣੋ"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:184
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:191
 msgid "Connecting…"
 msgstr "ਜੁੜਿਆ ਜਾ ਰਿਹਾ ਹੈ…"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:185
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:192
 msgid "Sound only"
 msgstr "ਸਿਰਫ਼ ਆਵਾਜ਼"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:208
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:215
 msgid "Show %1 hidden device"
 msgid_plural "Show %1 hidden devices"
 msgstr[0] "%1 ਓਹਲੇ ਕੀਤਾ ਜੰਤਰ ਵੇਖਾਓ"
 msgstr[1] "%1 ਓਹਲੇ ਕੀਤੇ ਜੰਤਰ ਵੇਖਾਓ"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:221
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:228
 msgid "Looking for TVs and Chromecasts on your network…"
 msgstr "ਤੁਹਾਡੇ ਨੈੱਟਵਰਕ ਉੱਤੇ TV ਅਤੇ Chromecast ਲੱਭੇ ਜਾ ਰਹੇ ਹਨ…"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:222
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:229
 msgid ""
 "No device found. Turn your TV or Chromecast on, on the same network as this "
 "computer."
 msgstr ""
 "ਕੋਈ ਜੰਤਰ ਨਹੀਂ ਲੱਭਿਆ। ਆਪਣਾ TV ਜਾਂ Chromecast ਇਸ ਕੰਪਿਊਟਰ ਵਾਲੇ ਨੈੱਟਵਰਕ ਉੱਤੇ ਹੀ ਚਾਲੂ ਕਰੋ।"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:236
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:251
 msgid "Show the video here too"
 msgstr "ਵਿਡੀਓ ਇੱਥੇ ਵੀ ਵੇਖਾਓ"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:286
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:301
 msgid "With a Chromecast, the video plays only there."
 msgstr "Chromecast ਨਾਲ ਵਿਡੀਓ ਸਿਰਫ਼ ਉੱਥੇ ਹੀ ਚੱਲਦੀ ਹੈ।"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:297
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:312
 msgid "The subtitles shown go to the TV with the picture."
 msgstr "ਵੇਖਾਏ ਜਾ ਰਹੇ ਸਬ-ਟਾਈਟਲ ਤਸਵੀਰ ਦੇ ਨਾਲ TV ਉੱਤੇ ਜਾਂਦੇ ਹਨ।"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:314
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:329
 msgid "Hide this device"
 msgstr "ਇਹ ਜੰਤਰ ਓਹਲੇ ਕਰੋ"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:358
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:373
 msgid "playing here"
 msgstr "ਇੱਥੇ ਚੱਲ ਰਿਹਾ ਹੈ"
 
@@ -8433,11 +8522,11 @@ msgstr "15 ਸਕਿੰਟ ਅੱਗੇ"
 msgid "%1 %"
 msgstr "%1 %"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:65
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:66
 msgid "Choose a video zoom level"
 msgstr "ਵਿਡੀਓ ਜ਼ੂਮ ਪੱਧਰ ਚੁਣੋ"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:66
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:67
 msgid "Zoom is unavailable without video"
 msgstr "ਵਿਡੀਓ ਤੋਂ ਬਿਨਾਂ ਜ਼ੂਮ ਉਪਲੱਬਧ ਨਹੀਂ"
 
@@ -8461,19 +8550,19 @@ msgstr "ਚੁਣੀਆਂ ਆਈਟਮਾਂ ਹਟਾਓ"
 msgid "Add files to the queue"
 msgstr "ਕਤਾਰ ਵਿੱਚ ਫਾਇਲਾਂ ਸ਼ਾਮਲ ਕਰੋ"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:629
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:630
 msgid "No results"
 msgstr "ਕੋਈ ਨਤੀਜਾ ਨਹੀਂ"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:630
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:631
 msgid "No content yet"
 msgstr "ਹਾਲੇ ਕੋਈ ਸਮੱਗਰੀ ਨਹੀਂ"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:646
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:647
 msgid "Drag & Drop some content here!"
 msgstr "ਕੋਈ ਸਮੱਗਰੀ ਇੱਥੇ ਘਸੀਟ ਕੇ ਛੱਡੋ!"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:711
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:712
 msgid "Play queue"
 msgstr "ਪਲੇਅ ਕਤਾਰ"
 
@@ -8481,16 +8570,16 @@ msgstr "ਪਲੇਅ ਕਤਾਰ"
 msgid "%1 elements, %2"
 msgstr "%1 ਆਈਟਮਾਂ, %2"
 
-#: modules/gui/qt/qt.cpp:175
+#: modules/gui/qt/qt.cpp:176
 msgid "Select the initial preferences view"
 msgstr "ਸ਼ੁਰੂਆਤੀ ਪਸੰਦ ਝਲਕ ਚੁਣੋ"
 
-#: modules/gui/qt/qt.cpp:176
+#: modules/gui/qt/qt.cpp:177
 msgid ""
 "Select which preferences view to show upon opening the preferences dialog."
 msgstr "ਚੁਣੋ ਕਿ ਪਸੰਦ ਡਾਈਲਾਗ ਖੋਲ੍ਹਣ ਉੱਤੇ ਕਿਹੜੀ ਪਸੰਦ ਝਲਕ ਵੇਖਾਈ ਜਾਵੇ।"
 
-#: modules/gui/qt/qt.cpp:200
+#: modules/gui/qt/qt.cpp:201
 msgid ""
 "Show a notification popup with the artist and track name when the current "
 "play queue item changes, when VLC is minimized or hidden."
@@ -8498,7 +8587,7 @@ msgstr ""
 "ਜਦੋਂ ਮੌਜੂਦਾ ਪਲੇਅ ਕਤਾਰ ਆਈਟਮ ਬਦਲੇ, ਅਤੇ VLC ਮਿਨੀਮਾਈਜ਼ ਜਾਂ ਓਹਲੇ ਹੋਵੇ, ਤਾਂ ਕਲਾਕਾਰ ਅਤੇ ਟਰੈਕ ਦੇ ਨਾਂ "
 "ਨਾਲ ਸੂਚਨਾ ਪੌਪ-ਅੱਪ ਵੇਖਾਓ।"
 
-#: modules/gui/qt/qt.cpp:204
+#: modules/gui/qt/qt.cpp:205
 msgid ""
 "Sets the windows opacity between 0.1 and 1 for main interface, play queue "
 "and extended panel. This option only works with Windows and X11 with "
@@ -8507,7 +8596,7 @@ msgstr ""
 "ਮੁੱਖ ਇੰਟਰਫੇਸ, ਪਲੇਅ ਕਤਾਰ ਅਤੇ ਵਾਧੂ ਪੈਨਲ ਲਈ ਵਿੰਡੋਆਂ ਦੀ ਅਪਾਰਦਰਸ਼ਤਾ 0.1 ਅਤੇ 1 ਵਿਚਕਾਰ ਸੈੱਟ ਕਰਦਾ "
 "ਹੈ। ਇਹ ਚੋਣ ਸਿਰਫ਼ Windows ਅਤੇ ਕੰਪੋਜ਼ਿਟ ਐਕਸਟੈਨਸ਼ਨਾਂ ਵਾਲੇ X11 ਨਾਲ ਕੰਮ ਕਰਦੀ ਹੈ।"
 
-#: modules/gui/qt/qt.cpp:210
+#: modules/gui/qt/qt.cpp:211
 msgid ""
 "Sets the fullscreen controller opacity between 0.1 and 1 for main interface, "
 "play queue and extended panel. This option only works with Windows and X11 "
@@ -8516,11 +8605,11 @@ msgstr ""
 "ਮੁੱਖ ਇੰਟਰਫੇਸ, ਪਲੇਅ ਕਤਾਰ ਅਤੇ ਵਾਧੂ ਪੈਨਲ ਲਈ ਪੂਰੀ ਸਕਰੀਨ ਕੰਟਰੋਲਰ ਦੀ ਅਪਾਰਦਰਸ਼ਤਾ 0.1 ਅਤੇ 1 "
 "ਵਿਚਕਾਰ ਸੈੱਟ ਕਰਦਾ ਹੈ। ਇਹ ਚੋਣ ਸਿਰਫ਼ Windows ਅਤੇ ਕੰਪੋਜ਼ਿਟ ਐਕਸਟੈਨਸ਼ਨਾਂ ਵਾਲੇ X11 ਨਾਲ ਕੰਮ ਕਰਦੀ ਹੈ।"
 
-#: modules/gui/qt/qt.cpp:215
+#: modules/gui/qt/qt.cpp:216
 msgid "Initial user scale factor for the interface, between 0.3 and 3.0"
 msgstr "ਇੰਟਰਫੇਸ ਲਈ ਸ਼ੁਰੂਆਤੀ ਵਰਤੋਂਕਾਰ ਸਕੇਲ ਫੈਕਟਰ, 0.3 ਅਤੇ 3.0 ਵਿਚਕਾਰ"
 
-#: modules/gui/qt/qt.cpp:218
+#: modules/gui/qt/qt.cpp:219
 msgid ""
 "Show the errors of VLC at the bottom of the window, and ask before removing "
 "media from a playlist or from the play queue, or deleting playlists. Off, "
@@ -8531,11 +8620,11 @@ msgstr ""
 "ਪਲੇਅਲਿਸਟਾਂ ਹਟਾਉਣ ਤੋਂ ਪਹਿਲਾਂ ਪੁੱਛੋ। ਬੰਦ ਹੋਣ ਉੱਤੇ, ਗਲਤੀਆਂ ਸਿਰਫ਼ VLC ਦੇ ਸੁਨੇਹਿਆਂ ਵਿੱਚ ਰੱਖੀਆਂ ਜਾਂਦੀਆਂ "
 "ਹਨ ਅਤੇ ਇਹ ਹਟਾਉਣ ਤੁਰੰਤ ਕੀਤੇ ਜਾਂਦੇ ਹਨ; ਡਿਸਕ ਤੋਂ ਫਾਇਲ ਹਟਾਉਣ ਦੀ ਪੁਸ਼ਟੀ ਹਮੇਸ਼ਾ ਮੰਗੀ ਜਾਂਦੀ ਹੈ।"
 
-#: modules/gui/qt/qt.cpp:228
+#: modules/gui/qt/qt.cpp:229
 msgid "set the options for qml debugger"
 msgstr "qml ਡੀਬੱਗਰ ਲਈ ਚੋਣਾਂ ਸੈੱਟ ਕਰੋ"
 
-#: modules/gui/qt/qt.cpp:229
+#: modules/gui/qt/qt.cpp:230
 msgid ""
 "set the options for qml debugger (see http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
@@ -8543,7 +8632,7 @@ msgstr ""
 "qml ਡੀਬੱਗਰ ਲਈ ਚੋਣਾਂ ਸੈੱਟ ਕਰੋ (ਵੇਖੋ http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
 
-#: modules/gui/qt/qt.cpp:249
+#: modules/gui/qt/qt.cpp:250
 msgid ""
 "Show the playback controls in fullscreen when the mouse moves. Off, only the "
 "keyboard shows them (the I key). The skins read it for their fullscreen "
@@ -8552,7 +8641,7 @@ msgstr ""
 "ਮਾਊਸ ਹਿੱਲਣ ਉੱਤੇ ਪੂਰੀ ਸਕਰੀਨ ਵਿੱਚ ਪਲੇਅਬੈਕ ਕੰਟਰੋਲ ਵੇਖਾਓ। ਬੰਦ ਹੋਣ ਉੱਤੇ ਸਿਰਫ਼ ਕੀਬੋਰਡ (I ਕੁੰਜੀ) ਉਹਨਾਂ "
 "ਨੂੰ ਵੇਖਾਉਂਦਾ ਹੈ। ਸਕਿਨਾਂ ਵੀ ਆਪਣੇ ਪੂਰੀ ਸਕਰੀਨ ਕੰਟਰੋਲਰ ਲਈ ਇਸ ਨੂੰ ਵਰਤਦੀਆਂ ਹਨ।"
 
-#: modules/gui/qt/qt.cpp:265
+#: modules/gui/qt/qt.cpp:266
 msgid ""
 "Display the cover art of the audio playing in the player (the cone in the "
 "compact view). Off, a plain picture takes its place, which also prevents "
@@ -8561,7 +8650,7 @@ msgstr ""
 "ਪਲੇਅਰ ਵਿੱਚ ਚੱਲ ਰਹੀ ਆਡੀਓ ਦੀ ਕਵਰ ਆਰਟ ਵੇਖਾਓ (ਸੰਖੇਪ ਝਲਕ ਵਿੱਚ ਕੋਨ)। ਬੰਦ ਹੋਣ ਉੱਤੇ ਇੱਕ ਸਾਦੀ "
 "ਤਸਵੀਰ ਉਸ ਦੀ ਥਾਂ ਲੈਂਦੀ ਹੈ, ਜੋ ਸਕਰੀਨ ਨੂੰ ਸੜਨ (ਬਰਨ-ਇਨ) ਤੋਂ ਵੀ ਬਚਾਉਂਦੀ ਹੈ।"
 
-#: modules/gui/qt/qt.cpp:289
+#: modules/gui/qt/qt.cpp:290
 msgid ""
 "This option allows the interface to be shown and raised automatically when a "
 "video/audio playback starts, or never."
@@ -8569,11 +8658,11 @@ msgstr ""
 "ਇਸ ਚੋਣ ਨਾਲ ਵਿਡੀਓ/ਆਡੀਓ ਪਲੇਅਬੈਕ ਸ਼ੁਰੂ ਹੋਣ ਉੱਤੇ ਇੰਟਰਫੇਸ ਆਪਣੇ-ਆਪ ਵੇਖਾਇਆ ਅਤੇ ਸਾਹਮਣੇ ਲਿਆਂਦਾ ਜਾ "
 "ਸਕਦਾ ਹੈ, ਜਾਂ ਕਦੇ ਨਹੀਂ।"
 
-#: modules/gui/qt/qt.cpp:292
+#: modules/gui/qt/qt.cpp:293
 msgid "Enable window titlebar"
 msgstr "ਵਿੰਡੋ ਟਾਈਟਲ ਪੱਟੀ ਚਾਲੂ ਕਰੋ"
 
-#: modules/gui/qt/qt.cpp:293
+#: modules/gui/qt/qt.cpp:294
 msgid ""
 "This option enables the title bar. Disabling it will remove the titlebar and "
 "move window buttons within the interface (Client Side Decoration)"
@@ -8581,27 +8670,27 @@ msgstr ""
 "ਇਹ ਚੋਣ ਟਾਈਟਲ ਪੱਟੀ ਚਾਲੂ ਕਰਦੀ ਹੈ। ਇਸ ਨੂੰ ਬੰਦ ਕਰਨ ਨਾਲ ਟਾਈਟਲ ਪੱਟੀ ਹਟ ਜਾਵੇਗੀ ਅਤੇ ਵਿੰਡੋ ਬਟਨ "
 "ਇੰਟਰਫੇਸ ਦੇ ਅੰਦਰ ਆ ਜਾਣਗੇ (ਕਲਾਇੰਟ ਸਾਈਡ ਡੈਕੋਰੇਸ਼ਨ)"
 
-#: modules/gui/qt/qt.cpp:297
+#: modules/gui/qt/qt.cpp:298
 msgid "Show the menu bar"
 msgstr "ਮੇਨੂ ਪੱਟੀ ਵੇਖਾਓ"
 
-#: modules/gui/qt/qt.cpp:298
+#: modules/gui/qt/qt.cpp:299
 msgid "This option displays the classic menu bar"
 msgstr "ਇਹ ਚੋਣ ਕਲਾਸਿਕ ਮੇਨੂ ਪੱਟੀ ਵੇਖਾਉਂਦੀ ਹੈ"
 
-#: modules/gui/qt/qt.cpp:300
+#: modules/gui/qt/qt.cpp:301
 msgid "Pin video controls"
 msgstr "ਵਿਡੀਓ ਕੰਟਰੋਲ ਪਿੰਨ ਕਰੋ"
 
-#: modules/gui/qt/qt.cpp:301
+#: modules/gui/qt/qt.cpp:302
 msgid "Place video controls above and below the video instead of above"
 msgstr "ਵਿਡੀਓ ਕੰਟਰੋਲਾਂ ਨੂੰ ਵਿਡੀਓ ਦੇ ਉੱਪਰ ਦੀ ਥਾਂ ਵਿਡੀਓ ਦੇ ਉੱਪਰ ਅਤੇ ਹੇਠਾਂ ਰੱਖੋ"
 
-#: modules/gui/qt/qt.cpp:304
+#: modules/gui/qt/qt.cpp:305
 msgid "Show the frame at the hovered position above the seek bar"
 msgstr "ਸੀਕ ਪੱਟੀ ਦੇ ਉੱਪਰ ਮਾਊਸ ਵਾਲੀ ਸਥਿਤੀ ਦਾ ਫਰੇਮ ਵੇਖਾਓ"
 
-#: modules/gui/qt/qt.cpp:306
+#: modules/gui/qt/qt.cpp:307
 msgid ""
 "Mark on the seek bar where the lines of the subtitle shown are, when it "
 "comes from a subtitle file"
@@ -8609,11 +8698,11 @@ msgstr ""
 "ਜਦੋਂ ਸਬ-ਟਾਈਟਲ ਕਿਸੇ ਸਬ-ਟਾਈਟਲ ਫਾਇਲ ਤੋਂ ਆਉਂਦਾ ਹੈ, ਤਾਂ ਸੀਕ ਪੱਟੀ ਉੱਤੇ ਨਿਸ਼ਾਨ ਲਾਓ ਕਿ ਵੇਖਾਏ ਜਾ "
 "ਰਹੇ ਸਬ-ਟਾਈਟਲ ਦੀਆਂ ਲਾਈਨਾਂ ਕਿੱਥੇ ਹਨ"
 
-#: modules/gui/qt/qt.cpp:311
+#: modules/gui/qt/qt.cpp:312
 msgid "Select Qt video integration backend"
 msgstr "Qt ਵਿਡੀਓ ਇੰਟੀਗਰੇਸ਼ਨ ਬੈਕ-ਐਂਡ ਚੁਣੋ"
 
-#: modules/gui/qt/qt.cpp:312
+#: modules/gui/qt/qt.cpp:313
 msgid ""
 "Select Qt video integration backend. Use with care, the interface may not "
 "start if an incompatible compositor is selected"
@@ -8621,11 +8710,11 @@ msgstr ""
 "Qt ਵਿਡੀਓ ਇੰਟੀਗਰੇਸ਼ਨ ਬੈਕ-ਐਂਡ ਚੁਣੋ। ਧਿਆਨ ਨਾਲ ਵਰਤੋ, ਜੇ ਅਸੰਗਤ ਕੰਪੋਜ਼ੀਟਰ ਚੁਣਿਆ ਗਿਆ ਤਾਂ ਇੰਟਰਫੇਸ ਸ਼ੁਰੂ "
 "ਨਹੀਂ ਵੀ ਹੋ ਸਕਦਾ"
 
-#: modules/gui/qt/qt.cpp:314
+#: modules/gui/qt/qt.cpp:315
 msgid "Use smooth scrolling in Flickable based views"
 msgstr "Flickable ਆਧਾਰਿਤ ਝਲਕਾਂ ਵਿੱਚ ਸਮੂਥ ਸਕਰੋਲਿੰਗ ਵਰਤੋ"
 
-#: modules/gui/qt/qt.cpp:315
+#: modules/gui/qt/qt.cpp:316
 msgid ""
 "Deactivating this option will disable smooth scrolling in Flickable based "
 "views (such as the Play Queue). This option is only respected with a scroll "
@@ -8634,19 +8723,19 @@ msgstr ""
 "ਇਹ ਚੋਣ ਬੰਦ ਕਰਨ ਨਾਲ Flickable ਆਧਾਰਿਤ ਝਲਕਾਂ (ਜਿਵੇਂ ਪਲੇਅ ਕਤਾਰ) ਵਿੱਚ ਸਮੂਥ ਸਕਰੋਲਿੰਗ ਬੰਦ ਹੋ "
 "ਜਾਵੇਗੀ। ਇਹ ਚੋਣ ਸਿਰਫ਼ ਸਕਰੋਲ ਹੈਂਡਲਰ ਨਾਲ ਹੀ ਮੰਨੀ ਜਾਂਦੀ ਹੈ, ਚੋਣ `qt-use-scroll-handler` ਵੇਖੋ।"
 
-#: modules/gui/qt/qt.cpp:318
+#: modules/gui/qt/qt.cpp:319
 msgid "Use Kirigami scroll handler for Flickable based views"
 msgstr "Flickable ਆਧਾਰਿਤ ਝਲਕਾਂ ਲਈ Kirigami ਸਕਰੋਲ ਹੈਂਡਲਰ ਵਰਤੋ"
 
-#: modules/gui/qt/qt.cpp:319
+#: modules/gui/qt/qt.cpp:320
 msgid "Using Kirigami scroll handler may improve scrolling behavior."
 msgstr "Kirigami ਸਕਰੋਲ ਹੈਂਡਲਰ ਵਰਤਣ ਨਾਲ ਸਕਰੋਲਿੰਗ ਬਿਹਤਰ ਹੋ ਸਕਦੀ ਹੈ।"
 
-#: modules/gui/qt/qt.cpp:321
+#: modules/gui/qt/qt.cpp:322
 msgid "Safe area for the user interface"
 msgstr "ਵਰਤੋਂਕਾਰ ਇੰਟਰਫੇਸ ਲਈ ਸੁਰੱਖਿਅਤ ਖੇਤਰ"
 
-#: modules/gui/qt/qt.cpp:322
+#: modules/gui/qt/qt.cpp:323
 msgid ""
 "Sets the safe area percentage between 0.0 and 100 when you want to ensure "
 "the visibility of the user interface on a constrained viewport"
@@ -8654,19 +8743,19 @@ msgstr ""
 "ਸੀਮਿਤ ਵਿਊਪੋਰਟ ਉੱਤੇ ਵਰਤੋਂਕਾਰ ਇੰਟਰਫੇਸ ਦਾ ਦਿਸਣਾ ਯਕੀਨੀ ਬਣਾਉਣ ਲਈ ਸੁਰੱਖਿਅਤ ਖੇਤਰ ਦਾ ਪ੍ਰਤੀਸ਼ਤ "
 "0.0 ਅਤੇ 100 ਵਿਚਕਾਰ ਸੈੱਟ ਕਰਦਾ ਹੈ"
 
-#: modules/gui/qt/qt.cpp:326
+#: modules/gui/qt/qt.cpp:327
 msgid "Print Qt's important internal messages"
 msgstr "Qt ਦੇ ਮਹੱਤਵਪੂਰਨ ਅੰਦਰੂਨੀ ਸੁਨੇਹੇ ਛਾਪੋ"
 
-#: modules/gui/qt/qt.cpp:327
+#: modules/gui/qt/qt.cpp:328
 msgid "Enable Qt's all own messaging categories except the debug category."
 msgstr "ਡੀਬੱਗ ਵਰਗ ਤੋਂ ਬਿਨਾਂ Qt ਦੇ ਆਪਣੇ ਸਾਰੇ ਸੁਨੇਹਾ ਵਰਗ ਚਾਲੂ ਕਰੋ।"
 
-#: modules/gui/qt/qt.cpp:329
+#: modules/gui/qt/qt.cpp:330
 msgid "Hide the window on close"
 msgstr "ਬੰਦ ਕਰਨ ਉੱਤੇ ਵਿੰਡੋ ਓਹਲੇ ਕਰੋ"
 
-#: modules/gui/qt/qt.cpp:330
+#: modules/gui/qt/qt.cpp:331
 msgid ""
 "Instead of closing the application, hide the window. This setting is only "
 "applicable when system tray icon is enabled."
@@ -8674,11 +8763,11 @@ msgstr ""
 "ਐਪਲੀਕੇਸ਼ਨ ਬੰਦ ਕਰਨ ਦੀ ਥਾਂ ਵਿੰਡੋ ਓਹਲੇ ਕਰੋ। ਇਹ ਸੈਟਿੰਗ ਸਿਰਫ਼ ਉਦੋਂ ਲਾਗੂ ਹੁੰਦੀ ਹੈ ਜਦੋਂ ਸਿਸਟਮ ਟਰੇ ਆਈਕਾਨ "
 "ਚਾਲੂ ਹੋਵੇ।"
 
-#: modules/gui/qt/qt.cpp:332
+#: modules/gui/qt/qt.cpp:333
 msgid "Enable backdrop blur filter for the main window if possible"
 msgstr "ਜੇ ਸੰਭਵ ਹੋਵੇ ਤਾਂ ਮੁੱਖ ਵਿੰਡੋ ਲਈ ਪਿਛੋਕੜ ਬਲੱਰ ਫਿਲਟਰ ਚਾਲੂ ਕਰੋ"
 
-#: modules/gui/qt/qt.cpp:333
+#: modules/gui/qt/qt.cpp:334
 msgid ""
 "If backdrop blur filter is available, use translucency in the backgrounds of "
 "certain parts of the user interface instead of a solid color. This setting "
@@ -8687,55 +8776,55 @@ msgstr ""
 "ਜੇ ਪਿਛੋਕੜ ਬਲੱਰ ਫਿਲਟਰ ਉਪਲੱਬਧ ਹੈ, ਤਾਂ ਵਰਤੋਂਕਾਰ ਇੰਟਰਫੇਸ ਦੇ ਕੁਝ ਹਿੱਸਿਆਂ ਦੇ ਬੈਕਗਰਾਊਂਡ ਵਿੱਚ ਠੋਸ ਰੰਗ ਦੀ "
 "ਥਾਂ ਅਰਧ-ਪਾਰਦਰਸ਼ਤਾ ਵਰਤੋ। ਇਹ ਸੈਟਿੰਗ ਟੈਕਸਟ ਨੂੰ ਪੜ੍ਹਨਾ ਔਖਾ ਬਣਾਉਂਦੀ ਹੈ।"
 
-#: modules/gui/qt/qt.cpp:336
+#: modules/gui/qt/qt.cpp:337
 msgid "Enable picture-in-picture (PiP) mode"
 msgstr "ਤਸਵੀਰ-ਵਿੱਚ-ਤਸਵੀਰ (PiP) ਮੋਡ ਚਾਲੂ ਕਰੋ"
 
-#: modules/gui/qt/qt.cpp:337
+#: modules/gui/qt/qt.cpp:338
 msgid ""
 "Picture-in-picture mode allows playing video contained in a smaller area so "
 "that the interface remains usable."
 msgstr ""
 "ਤਸਵੀਰ-ਵਿੱਚ-ਤਸਵੀਰ ਮੋਡ ਵਿਡੀਓ ਨੂੰ ਇੱਕ ਛੋਟੇ ਖੇਤਰ ਵਿੱਚ ਚਲਾਉਣ ਦਿੰਦਾ ਹੈ, ਤਾਂ ਜੋ ਇੰਟਰਫੇਸ ਵਰਤਣਯੋਗ ਰਹੇ।"
 
-#: modules/gui/qt/qt.cpp:340
+#: modules/gui/qt/qt.cpp:341
 msgid ""
 "Adjusts the accent color, special values are 'default' and 'system' "
 "(requires Qt 6.6) ."
 msgstr "ਐਕਸੈਂਟ ਰੰਗ ਬਦਲਦਾ ਹੈ, ਖਾਸ ਮੁੱਲ ਹਨ 'default' ਅਤੇ 'system' (Qt 6.6 ਲੋੜੀਂਦਾ ਹੈ)।"
 
-#: modules/gui/qt/qt.cpp:346
+#: modules/gui/qt/qt.cpp:347
 msgid "Last channel watched"
 msgstr "ਆਖਰੀ ਵਾਰ ਵੇਖਿਆ ਚੈਨਲ"
 
-#: modules/gui/qt/qt.cpp:347
+#: modules/gui/qt/qt.cpp:348
 msgid "Channel list"
 msgstr "ਚੈਨਲ ਸੂਚੀ"
 
-#: modules/gui/qt/qt.cpp:352
+#: modules/gui/qt/qt.cpp:353
 msgid "Zoom the interface in"
 msgstr "ਇੰਟਰਫੇਸ ਵੱਡਾ ਕਰੋ"
 
-#: modules/gui/qt/qt.cpp:353
+#: modules/gui/qt/qt.cpp:354
 msgid "Zoom the interface out"
 msgstr "ਇੰਟਰਫੇਸ ਛੋਟਾ ਕਰੋ"
 
-#: modules/gui/qt/qt.cpp:454
+#: modules/gui/qt/qt.cpp:455
 msgid "Check for VLC Redesign updates"
 msgstr "VLC Redesign ਅੱਪਡੇਟ ਲਈ ਜਾਂਚ ਕਰੋ"
 
-#: modules/gui/qt/qt.cpp:455
+#: modules/gui/qt/qt.cpp:456
 msgid ""
 "Look for a new release of VLC Redesign on GitHub at startup, at most once a "
 "day."
 msgstr ""
 "ਸ਼ੁਰੂ ਹੋਣ ਉੱਤੇ GitHub ਉੱਤੇ VLC Redesign ਦੀ ਨਵੀਂ ਰੀਲੀਜ਼ ਲੱਭੋ, ਦਿਨ ਵਿੱਚ ਵੱਧ ਤੋਂ ਵੱਧ ਇੱਕ ਵਾਰ।"
 
-#: modules/gui/qt/qt.cpp:459
+#: modules/gui/qt/qt.cpp:460
 msgid "Resume at"
 msgstr "ਇੱਥੋਂ ਮੁੜ ਸ਼ੁਰੂ ਕਰੋ"
 
-#: modules/gui/qt/qt.cpp:460
+#: modules/gui/qt/qt.cpp:461
 msgid ""
 "Seconds into the media of the command line where playback continues, after "
 "an update."
@@ -8787,34 +8876,34 @@ msgstr "ਮੁੜ ਬਹਾਲ ਕਰੋ"
 msgid "Don't restore"
 msgstr "ਮੁੜ ਬਹਾਲ ਨਾ ਕਰੋ"
 
-#: modules/gui/qt/util/redesign_updater.cpp:216
+#: modules/gui/qt/util/redesign_updater.cpp:221
 msgid ""
 "The update isn't signed by the publisher of this copy (%1), so it wasn't "
 "used."
 msgstr ""
 "ਇਹ ਅੱਪਡੇਟ ਇਸ ਕਾਪੀ ਦੇ ਪ੍ਰਕਾਸ਼ਕ (%1) ਵੱਲੋਂ ਦਸਤਖਤ ਕੀਤਾ ਨਹੀਂ ਹੈ, ਇਸ ਲਈ ਇਸ ਨੂੰ ਵਰਤਿਆ ਨਹੀਂ ਗਿਆ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:461
+#: modules/gui/qt/util/redesign_updater.cpp:467
 msgid "%1 (later)"
 msgstr "%1 (ਬਾਅਦ ਵਿੱਚ)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:463
+#: modules/gui/qt/util/redesign_updater.cpp:469
 msgid "%1 (soon)"
 msgstr "%1 (ਜਲਦੀ)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:643
+#: modules/gui/qt/util/redesign_updater.cpp:649
 msgid "This build cannot check for updates."
 msgstr "ਇਹ ਬਿਲਡ ਅੱਪਡੇਟ ਲਈ ਜਾਂਚ ਨਹੀਂ ਕਰ ਸਕਦਾ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:657
+#: modules/gui/qt/util/redesign_updater.cpp:663
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "GitHub ਤੱਕ ਨਹੀਂ ਪਹੁੰਚਿਆ ਜਾ ਸਕਿਆ। ਆਪਣਾ ਕੁਨੈਕਸ਼ਨ ਜਾਂਚੋ ਅਤੇ ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:674
+#: modules/gui/qt/util/redesign_updater.cpp:680
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "GitHub ਨੇ ਅਣਕਿਆਸਿਆ ਜਵਾਬ ਭੇਜਿਆ (%1)।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:792
+#: modules/gui/qt/util/redesign_updater.cpp:798
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
@@ -8822,45 +8911,45 @@ msgstr ""
 "ਇਹ ਅੱਪਡੇਟ VLC Redesign ਵੱਲੋਂ ਦਸਤਖਤ ਕੀਤਾ ਨਹੀਂ ਹੈ, ਇਸ ਲਈ ਇਸ ਦੀ ਵਰਤੋਂ ਨਹੀਂ ਕੀਤੀ ਗਈ। ਇਸ ਦੀ "
 "ਬਜਾਏ ਇਸ ਨੂੰ ਰੀਲੀਜ਼ ਪੰਨੇ ਤੋਂ ਡਾਊਨਲੋਡ ਕਰੋ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:814
-#: modules/gui/qt/util/redesign_updater.cpp:855
+#: modules/gui/qt/util/redesign_updater.cpp:820
+#: modules/gui/qt/util/redesign_updater.cpp:861
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr "ਅੱਪਡੇਟ ਦਾ ਚੈੱਕਸਮ ਗੁੰਮ ਹੈ; ਇਸ ਦੀ ਥਾਂ ਇਸ ਨੂੰ ਰੀਲੀਜ਼ ਪੰਨੇ ਤੋਂ ਡਾਊਨਲੋਡ ਕਰੋ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:829
-#: modules/gui/qt/util/redesign_updater.cpp:901
+#: modules/gui/qt/util/redesign_updater.cpp:835
+#: modules/gui/qt/util/redesign_updater.cpp:907
 msgid "The download failed. Check your connection and try again."
 msgstr "ਡਾਊਨਲੋਡ ਅਸਫ਼ਲ ਰਿਹਾ। ਆਪਣਾ ਕੁਨੈਕਸ਼ਨ ਜਾਂਚੋ ਅਤੇ ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:914
+#: modules/gui/qt/util/redesign_updater.cpp:920
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "ਅੱਪਡੇਟ ਆਪਣੇ ਚੈੱਕਸਮ ਨਾਲ ਨਹੀਂ ਮਿਲਦਾ, ਇਸ ਲਈ ਇਸ ਨੂੰ ਨਹੀਂ ਵਰਤਿਆ ਗਿਆ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:945
+#: modules/gui/qt/util/redesign_updater.cpp:951
 msgid "The update isn't in a format this version knows."
 msgstr "ਅੱਪਡੇਟ ਅਜਿਹੇ ਫਾਰਮੈਟ ਵਿੱਚ ਨਹੀਂ ਜੋ ਇਹ ਵਰਜਨ ਜਾਣਦਾ ਹੈ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:948
-#: modules/gui/qt/util/redesign_updater.cpp:972
-#: modules/gui/qt/util/redesign_updater.cpp:983
+#: modules/gui/qt/util/redesign_updater.cpp:954
+#: modules/gui/qt/util/redesign_updater.cpp:978
 #: modules/gui/qt/util/redesign_updater.cpp:989
+#: modules/gui/qt/util/redesign_updater.cpp:995
 msgid "The update is damaged."
 msgstr "ਅੱਪਡੇਟ ਖ਼ਰਾਬ ਹੈ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:953
+#: modules/gui/qt/util/redesign_updater.cpp:959
 msgid "The update isn't for this version."
 msgstr "ਇਹ ਅੱਪਡੇਟ ਇਸ ਵਰਜਨ ਲਈ ਨਹੀਂ ਹੈ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:962
-#: modules/gui/qt/util/redesign_updater.cpp:999
-#: modules/gui/qt/util/redesign_updater.cpp:1008
-#: modules/gui/qt/util/redesign_updater.cpp:1012
-#: modules/gui/qt/util/redesign_updater.cpp:1016
+#: modules/gui/qt/util/redesign_updater.cpp:968
+#: modules/gui/qt/util/redesign_updater.cpp:1005
+#: modules/gui/qt/util/redesign_updater.cpp:1014
+#: modules/gui/qt/util/redesign_updater.cpp:1018
+#: modules/gui/qt/util/redesign_updater.cpp:1022
 msgid "The update can't be written in %1."
 msgstr "ਅੱਪਡੇਟ %1 ਵਿੱਚ ਲਿਖਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:964
+#: modules/gui/qt/util/redesign_updater.cpp:970
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -8868,58 +8957,58 @@ msgstr ""
 "VLC Redesign ਦੀ ਇੱਕ ਫਾਇਲ ਇੰਸਟਾਲ ਹੋਣ ਤੋਂ ਬਾਅਦ ਬਦਲੀ ਗਈ ਸੀ, ਇਸ ਲਈ ਛੋਟਾ ਅੱਪਡੇਟ ਨਹੀਂ ਵਰਤਿਆ "
 "ਜਾ ਸਕਦਾ: ਇਸ ਦੀ ਥਾਂ ਇੰਸਟਾਲਰ ਨਾਲ ਅੱਪਡੇਟ ਕਰੋ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:994
+#: modules/gui/qt/util/redesign_updater.cpp:1000
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr "ਅੱਪਡੇਟ ਖ਼ਰਾਬ ਹੈ: ਇੱਕ ਫਾਇਲ ਆਪਣੇ ਚੈੱਕਸਮ ਨਾਲ ਨਹੀਂ ਮਿਲਦੀ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1119
+#: modules/gui/qt/util/redesign_updater.cpp:1125
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr "ਅੱਪਡੇਟ ਸ਼ੁਰੂ ਨਹੀਂ ਹੋ ਸਕਿਆ। ਅਗਲੀ ਵਾਰ ਇਸ ਦੀ ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕੀਤੀ ਜਾਵੇਗੀ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1146
+#: modules/gui/qt/util/redesign_updater.cpp:1152
 msgid "The download failed. Try again, or download it from the release page."
 msgstr "ਡਾਊਨਲੋਡ ਅਸਫ਼ਲ ਰਿਹਾ। ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ, ਜਾਂ ਇਸ ਨੂੰ ਰੀਲੀਜ਼ ਪੰਨੇ ਤੋਂ ਡਾਊਨਲੋਡ ਕਰੋ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1159
+#: modules/gui/qt/util/redesign_updater.cpp:1165
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr "ਡਾਊਨਲੋਡ ਕੀਤਾ ਇੰਸਟਾਲਰ ਆਪਣੇ ਚੈੱਕਸਮ ਨਾਲ ਨਹੀਂ ਮਿਲਦਾ, ਇਸ ਲਈ ਇਸ ਨੂੰ ਨਹੀਂ ਚਲਾਇਆ ਗਿਆ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1168
+#: modules/gui/qt/util/redesign_updater.cpp:1174
 msgid "The installer couldn't be saved to %1."
 msgstr "ਇੰਸਟਾਲਰ %1 ਵਿੱਚ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1202
+#: modules/gui/qt/util/redesign_updater.cpp:1208
 msgid "The installer couldn't be started."
 msgstr "ਇੰਸਟਾਲਰ ਸ਼ੁਰੂ ਨਹੀਂ ਹੋ ਸਕਿਆ।"
 
-#: modules/gui/qt/util/renderer_manager.cpp:891
+#: modules/gui/qt/util/renderer_manager.cpp:896
 msgid ""
 "%1 doesn't answer. Check that it's on, and on the same network as this "
 "computer."
 msgstr "%1 ਜਵਾਬ ਨਹੀਂ ਦਿੰਦਾ। ਜਾਂਚ ਕਰੋ ਕਿ ਇਹ ਚਾਲੂ ਹੈ, ਅਤੇ ਇਸ ਕੰਪਿਊਟਰ ਵਾਲੇ ਨੈੱਟਵਰਕ ਉੱਤੇ ਹੀ ਹੈ।"
 
-#: modules/gui/qt/util/renderer_manager.cpp:894
+#: modules/gui/qt/util/renderer_manager.cpp:899
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the video."
 msgstr "Windows Firewall %1 ਨੂੰ ਵਿਡੀਓ ਪੜ੍ਹਨ ਲਈ ਇਸ ਕੰਪਿਊਟਰ ਨਾਲ ਜੁੜਨ ਨਹੀਂ ਦਿੰਦੀ।"
 
-#: modules/gui/qt/util/renderer_manager.cpp:895
+#: modules/gui/qt/util/renderer_manager.cpp:900
 msgid "%1 couldn't read the video from this computer."
 msgstr "%1 ਇਸ ਕੰਪਿਊਟਰ ਤੋਂ ਵਿਡੀਓ ਪੜ੍ਹ ਨਹੀਂ ਸਕਿਆ।"
 
-#: modules/gui/qt/util/renderer_manager.cpp:897
+#: modules/gui/qt/util/renderer_manager.cpp:902
 msgid "%1 refused to play this video."
 msgstr "%1 ਨੇ ਇਹ ਵਿਡੀਓ ਚਲਾਉਣ ਤੋਂ ਇਨਕਾਰ ਕੀਤਾ।"
 
-#: modules/gui/qt/util/renderer_manager.cpp:899
+#: modules/gui/qt/util/renderer_manager.cpp:904
 msgid "%1 stopped playing."
 msgstr "%1 ਨੇ ਚਲਾਉਣਾ ਬੰਦ ਕਰ ਦਿੱਤਾ।"
 
-#: modules/gui/qt/util/renderer_manager.cpp:901
+#: modules/gui/qt/util/renderer_manager.cpp:906
 msgid "%1 is playing something else now."
 msgstr "%1 ਹੁਣ ਕੁਝ ਹੋਰ ਚਲਾ ਰਿਹਾ ਹੈ।"
 
-#: modules/gui/qt/util/renderer_manager.cpp:902
+#: modules/gui/qt/util/renderer_manager.cpp:907
 msgid "%1 couldn't play the video."
 msgstr "%1 ਵਿਡੀਓ ਨਹੀਂ ਚਲਾ ਸਕਿਆ।"
 

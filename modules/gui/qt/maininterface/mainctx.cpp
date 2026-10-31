@@ -1548,7 +1548,7 @@ bool MainCtx::wheelKeyAction(int vlcKey, const QPointF &scenePos, bool apply)
         if (step != 2)
         {
             if (apply)
-                player->stepSubtitleTextScale(step);
+                player->stepSubtitleTextScale(step, true, vlcKey);
             return true;
         }
     }
@@ -1571,7 +1571,7 @@ bool MainCtx::takeSizeKey(int vlcKey, bool playerKeys)
         const int step = subtitleScaleStep(p_intf, vlcKey);
         if (step != 2)
         {
-            player->stepSubtitleTextScale(step);
+            player->stepSubtitleTextScale(step, true, vlcKey);
             return true;
         }
     }

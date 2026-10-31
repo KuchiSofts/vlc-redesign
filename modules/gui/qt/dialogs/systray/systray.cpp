@@ -29,6 +29,7 @@
 #include "widgets/native/qvlcframe.hpp"
 
 #include "menus/redesign_menu_style.hpp"
+#include "util/redesign_version.hpp"
 using namespace vlc::playlist;
 
 VLCSystray::VLCSystray(MainCtx* ctx, QObject* parent)
@@ -49,9 +50,9 @@ VLCSystray::VLCSystray(MainCtx* ctx, QObject* parent)
     /* the name of what plays: the icon may come while a media plays ("Show
      * a system tray icon" of the settings) */
     const QString name = m_intf->p_mainPlayerController->getName();
-    setToolTip( name.isEmpty() ? qtr( "VLC media player" ) : name );
+    setToolTip( name.isEmpty() ? QStringLiteral( VLC_REDESIGN_NAME ) : name );
 
-    m_menu = std::make_unique<VLCMenu>( qtr( "VLC media player"), m_intf );
+    m_menu = std::make_unique<VLCMenu>( QStringLiteral( VLC_REDESIGN_NAME ), m_intf );
     m_menu->setIcon( iconVLC );
     setContextMenu(m_menu.get());
     update();
@@ -76,10 +77,10 @@ VLCSystray::~VLCSystray()
 
 void VLCSystray::retranslate()
 {
-    m_menu->setTitle( qtr( "VLC media player" ) );
+    m_menu->setTitle( QStringLiteral( VLC_REDESIGN_NAME ) );
     /* the name of the media playing stays (no notification again) */
     if( m_intf->p_mainPlayerController->getName().isEmpty() )
-        setToolTip( qtr( "VLC media player" ) );
+        setToolTip( QStringLiteral( VLC_REDESIGN_NAME ) );
     /* the menu is made again */
     update();
 }
@@ -134,7 +135,7 @@ void VLCSystray::updateTooltipName( const QString& name )
 {
     if( name.isEmpty() )
     {
-        setToolTip( qtr( "VLC media player" ) );
+        setToolTip( QStringLiteral( VLC_REDESIGN_NAME ) );
     }
     else
     {
@@ -149,7 +150,7 @@ void VLCSystray::updateTooltipName( const QString& name )
                 /* "Popup duration" of the settings */
                 const int duration = m_intf->mainSettings->value(
                             "redesign/notification-duration", 3000 ).toInt();
-                showMessage( qtr( "VLC media player" ), name, icon, duration );
+                showMessage( QStringLiteral( VLC_REDESIGN_NAME ), name, icon, duration );
             };
 
             assert(m_intf);
@@ -196,13 +197,13 @@ void VLCSystray::update()
     if( m_ctx->interfaceVisibility() != QWindow::Hidden )
     {
         m_menu->addAction(
-            QIcon( ":/logo/vlc.svg" ), qtr( "&Hide VLC media player in taskbar" ),
+            QIcon( ":/logo/vlc.svg" ), qtr( "&Hide %1 in taskbar" ).arg( QStringLiteral( VLC_REDESIGN_NAME ) ),
             this, &VLCSystray::hideUpdateMenu);
     }
     else
     {
         m_menu->addAction(
-            QIcon( ":/logo/vlc.svg" ), qtr( "Sho&w VLC media player" ),
+            QIcon( ":/logo/vlc.svg" ), qtr( "Sho&w %1" ).arg( QStringLiteral( VLC_REDESIGN_NAME ) ),
             this, &VLCSystray::showUpdateMenu);
     }
     m_menu->addSeparator();

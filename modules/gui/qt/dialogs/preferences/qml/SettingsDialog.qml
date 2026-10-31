@@ -606,15 +606,26 @@ Dialog {
                     }
                 }
 
-                // The device of the playing output (its default is the
-                // "Output device" option of the list): no page shows it, it
-                // is only built if one does
-                Loader {
-                    id: audioOutput
+                // The device of the playing output, where the list has no
+                // "Output device" option for it (Linux, macOS, an output
+                // other than mmdevice): the designer's device chooser
+                SettingsSectionTitle {
+                    id: outputDeviceSection
                     width: parent.width
-                    visible: false
-                    active: visible
-                    sourceComponent: SettingsAudioOutput {}
+                    readonly property string _aout: String(config.valueFor("aout") ?? "")
+                    readonly property bool _needed: !config.hasOption("mmdevice-audio-device")
+                                                    || (_aout.length > 0 && _aout !== "any" && _aout !== "mmdevice")
+                    visible: _needed && (searchField.text.length === 0
+                             ? root.selectedCategory === "audio"
+                             : root.searchMatches([qsTr("Output device"), qsTr("Current output device")]))
+                    text: qsTr("Output device")
+
+                    Loader {
+                        id: audioOutput
+                        width: parent.width
+                        active: outputDeviceSection.visible
+                        sourceComponent: SettingsAudioOutput {}
+                    }
                 }
 
                 SettingsInlineEffects {
@@ -816,7 +827,7 @@ Dialog {
             LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
             LayoutMirroring.childrenInherit: true
             text: qsTr("Reset all settings?")
-            description: qsTr("Every setting of VLC media player goes back to its default.")
+            description: qsTr("Every setting of %1 goes back to its default.").arg("VLC Media Player Redesign")
         }
     }
 

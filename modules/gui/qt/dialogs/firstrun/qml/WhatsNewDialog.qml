@@ -60,7 +60,7 @@ Widgets.RedesignDialog {
     Widgets.RedesignDialogHeading {
         LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
         LayoutMirroring.childrenInherit: true
-        text: qsTr("VLC Redesign")
+        text: "VLC Media Player Redesign" // (a name: not translated)
         suffix: root.controller ? root.controller.version : ""
         description: root.groups.length > 0
                      ? qsTr("Here is what changed in this version.")

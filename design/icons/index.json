@@ -9155,6 +9155,24 @@
     },
     {
       "set": "duo",
+      "name": "pin",
+      "states": [
+        {
+          "state": "default",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/duo/pin.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/duo/pin.svg",
+          "sha256": "14a8003247b69ef283b4ff2991da8383944e2d7792724d7079343c80ad9ab981"
+        }
+      ]
+    },
+    {
+      "set": "duo",
       "name": "play",
       "states": [
         {

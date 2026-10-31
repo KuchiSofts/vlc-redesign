@@ -4,6 +4,7 @@ nodist_libqt_plugin_la_SOURCES = \
 	player/media_details.moc.cpp \
 	player/favorite_state.moc.cpp \
 	medialibrary/mlopensubtitles.moc.cpp \
+	medialibrary/mlsubtitlebatch.moc.cpp \
 	dialogs/extended/video_effects.moc.cpp \
 	dialogs/extended/audio_effects.moc.cpp \
 	dialogs/preferences/shortcuts_model.moc.cpp \
@@ -123,6 +124,7 @@ nodist_libqt_plugin_la_SOURCES = \
 	util/redesign_accent.moc.cpp \
 	util/subtitle_preferences.moc.cpp \
 	player/subtitle_finder.moc.cpp \
+	player/subtitle_search.moc.cpp \
 	util/accessible_compat_attached.moc.cpp \
 	util/audio_device_model.moc.cpp \
 	util/workerthreadset.moc.cpp \

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-29 20:21+0000\n"
+"POT-Creation-Date: 2026-10-31 01:37+0000\n"
 "PO-Revision-Date: 2016-01-14 07:00+0000\n"
 "Last-Translator: Sajeer P <sajeerforyou@gmail.com>\n"
 "Language-Team: Malayalam (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -32,7 +32,7 @@ msgid "Play Queue"
 msgstr "പ്ലേ ക്യൂ"
 
 #: include/vlc_config_cat.h:59
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1034
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1036
 msgid "Media Library Settings"
 msgstr "മീഡിയ ലൈബ്രറി സജ്ജീകരണങ്ങൾ"
 
@@ -276,7 +276,7 @@ msgstr "മൗസ് ക്ലിക്കിലെ പോസ് എങ്ങന
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1224
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:23
-#: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:144
+#: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:145
 msgid "Disabled"
 msgstr "പ്രവർത്തനരഹിതം"
 
@@ -1519,12 +1519,12 @@ msgid "It needs Windows 10 version 1809 or later."
 msgstr "ഇതിന് Windows 10 പതിപ്പ് 1809 അല്ലെങ്കിൽ അതിനുശേഷമുള്ളത് ആവശ്യമാണ്."
 
 #: bin/winvlc.c:712 bin/winvlc.c:825
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:410
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:418
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:27
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignPluginsDialog.qml:30
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignStatisticsDialog.qml:26
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:553
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:558
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:554
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:559
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:152
 #: modules/gui/qt/dialogs/firstrun/qml/WhatsNewDialog.qml:39
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:312
@@ -1536,7 +1536,7 @@ msgstr "ഇതിന് Windows 10 പതിപ്പ് 1809 അല്ലെങ
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:32
 #: modules/gui/qt/util/csdmenu.cpp:131
 #: modules/gui/qt/util/redesign_window_frame.cpp:96
-#: modules/gui/qt/widgets/native/redesign_message_box.cpp:213
+#: modules/gui/qt/widgets/native/redesign_message_box.cpp:214
 #: modules/gui/qt/widgets/qml/RedesignDialog.qml:223
 msgid "Close"
 msgstr "അടയ്ക്കുക"
@@ -1666,13 +1666,13 @@ msgid "Please enter the new playlist name:"
 msgstr "പുതിയ പ്ലേലിസ്റ്റ് പേര് നൽകുക:"
 
 #: modules/gui/macosx/library/VLCLibraryController.m:319
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:409
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:455
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:135
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:412
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:458
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:136
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:413
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:104
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:107
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:76
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:90
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:909
 msgid "Rename"
 msgstr "പേരുമാറ്റുക"
@@ -1691,8 +1691,8 @@ msgstr "മീഡിയ ലൈബ്രറിയിലേക്ക് ചേർ�
 #: modules/gui/macosx/library/VLCLibraryMenuController.m:284
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:141
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:173
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:37
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:186
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:874
 msgid "Remove from Favorites"
 msgstr "പ്രിയപ്പെട്ടവയിൽ നിന്ന് നീക്കം ചെയ്യുക"
@@ -1832,70 +1832,65 @@ msgstr "പ്ലേലിസ്റ്റ് പേര്"
 msgid "About VLC"
 msgstr "VLC-യെക്കുറിച്ച്"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:197
-#: modules/gui/qt/dialogs/firstrun/qml/WhatsNewDialog.qml:63
-msgid "VLC Redesign"
-msgstr "VLC Redesign"
-
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:238
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:246
 msgid "Version %1 · based on VLC %2"
 msgstr "പതിപ്പ് %1 · VLC %2 അടിസ്ഥാനമാക്കിയത്"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:262
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:270
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:90
 msgid "Checking for updates…"
 msgstr "അപ്ഡേറ്റുകൾക്കായി പരിശോധിക്കുന്നു…"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:263
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:271
 msgid "You have the latest version"
 msgstr "ഏറ്റവും പുതിയ പതിപ്പാണ് നിങ്ങളുടേത്"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:264
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:272
 msgid "Version %1 is available"
 msgstr "പതിപ്പ് %1 ലഭ്യമാണ്"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:266
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:274
 msgid "Downloading the update… %1%"
 msgstr "അപ്ഡേറ്റ് ഡൗൺലോഡ് ചെയ്യുന്നു… %1%"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:267
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:275
 msgid "Preparing the update…"
 msgstr "അപ്ഡേറ്റ് തയ്യാറാക്കുന്നു…"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:268
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:276
 msgid "Version %1 is ready: restart to finish"
 msgstr "പതിപ്പ് %1 തയ്യാറാണ്: പൂർത്തിയാക്കാൻ റീസ്റ്റാർട്ട് ചെയ്യുക"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:277
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:285
 msgid "What's new in %1"
 msgstr "%1-ൽ പുതിയതെന്ത്"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:291
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:299
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:197
 msgid "Restart now"
 msgstr "ഇപ്പോൾ റീസ്റ്റാർട്ട് ചെയ്യുക"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:293
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:301
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:228
 msgid "Update now"
 msgstr "ഇപ്പോൾ അപ്ഡേറ്റ് ചെയ്യുക"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:293
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:301
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:226
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:188
 #: modules/gui/qt/network/standardpathmodel.cpp:153
 msgid "Download"
 msgstr "ഡൗൺലോഡ് ചെയ്യുക"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:294
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:302
 msgid "Check for updates"
 msgstr "അപ്ഡേറ്റുകൾക്കായി പരിശോധിക്കുക"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:330
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:338
 msgid "Interface designed by <font color=\"%1\">Juxtopposed</font>"
 msgstr "ഇന്റർഫേസ് രൂപകൽപ്പന ചെയ്തത് <font color=\"%1\">Juxtopposed</font>"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:337
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:345
 msgid ""
 "Every screen comes from the \"VLC Redesign (Community)\" Figma file, "
 "licensed under CC BY 4.0. It was adapted to Qt and its icons were redrawn."
@@ -1903,50 +1898,50 @@ msgstr ""
 "ഓരോ സ്ക്രീനും CC BY 4.0 ലൈസൻസിലുള്ള \"VLC Redesign (Community)\" Figma ഫയലിൽ "
 "നിന്നുള്ളതാണ്. ഇത് Qt-ലേക്ക് അനുരൂപമാക്കുകയും ഇതിന്റെ ഐക്കണുകൾ പുതുതായി വരയ്ക്കുകയും ചെയ്തു."
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:342
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:350
 msgid "YouTube channel"
 msgstr "YouTube ചാനൽ"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:343
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:351
 msgid "The redesign video"
 msgstr "റീഡിസൈൻ വീഡിയോ"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:344
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:352
 msgid "Figma file"
 msgstr "Figma ഫയൽ"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:346
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:354
 msgid "CC BY 4.0"
 msgstr "CC BY 4.0"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:356
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:364
 msgid "First implementation by"
 msgstr "ആദ്യ നിർവ്വഹണം നടത്തിയത്"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:361
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:369
 msgid "Built on VLC media player by"
 msgstr "ഇതിന്റെ അടിസ്ഥാനമായ VLC മീഡിയ പ്ലേയർ നിർമ്മിച്ചത്"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:362
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:370
 msgid "the VideoLAN team and contributors"
 msgstr "VideoLAN ടീമും സംഭാവകരും"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:370
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:378
 msgid "Also on: %1"
 msgstr "ഇവയിലും ലഭ്യം: %1"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:377
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:385
 #: modules/gui/qt/menus/qml/MainMenu.qml:173
 msgid "Suggest an idea"
 msgstr "ഒരു ആശയം നിർദ്ദേശിക്കുക"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:379
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:387
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:28
 #: modules/gui/qt/menus/qml/MainMenu.qml:178
 msgid "Report a problem"
 msgstr "ഒരു പ്രശ്നം റിപ്പോർട്ട് ചെയ്യുക"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:390
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:398
 msgid ""
 "An unofficial build, not affiliated with or endorsed by VideoLAN or "
 "Juxtopposed. VLC, VLC media player and the cone logo are trademarks of "
@@ -1956,11 +1951,11 @@ msgstr ""
 "അനൗദ്യോഗിക ബിൽഡ്. VLC, VLC media player എന്നിവയും കോൺ ലോഗോയും VideoLAN-ന്റെ "
 "വ്യാപാരമുദ്രകളാണ്. GNU GPL v2 അല്ലെങ്കിൽ പിന്നീടുള്ള പതിപ്പിന് കീഴിലുള്ള സ്വതന്ത്ര സോഫ്റ്റ്വെയർ."
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:400
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:408
 msgid "Licenses & authors"
 msgstr "ലൈസൻസുകളും രചയിതാക്കളും"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:404
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:412
 msgid "GitHub"
 msgstr "GitHub"
 
@@ -1970,7 +1965,7 @@ msgstr "ഫോൾഡർ വിവരങ്ങൾ"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:29
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:119
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:189
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:202
 msgid "Show in File Explorer"
 msgstr "ഫയൽ എക്സ്പ്ലോററിൽ കാണിക്കുക"
 
@@ -1993,12 +1988,12 @@ msgstr "പരിഷ്കരിച്ചത്"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:66
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:27
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:34
 #: modules/gui/qt/medialibrary/qml/VideoGroupDisplay.qml:40
 #: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:84
 #: modules/gui/qt/medialibrary/qml/VideoListDisplay.qml:90
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:81
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:198
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:237
 #: modules/gui/qt/network/standardpathmodel.cpp:152
 #: modules/gui/qt/player/qml/CompactLibrary.qml:79
 #: modules/gui/qt/player/qml/CompactLibrary.qml:198
@@ -2142,36 +2137,36 @@ msgstr "വായിച്ചത്"
 msgid "Late"
 msgstr "വൈകിയവ"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:520
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:521
 msgid "Confirm"
 msgstr "സ്ഥിരീകരിക്കുക"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:550
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:551
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:218
 msgid "Retry"
 msgstr "വീണ്ടും ശ്രമിക്കുക"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:552
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:553
 msgid "Yes to All"
 msgstr "എല്ലാത്തിനും അതെ"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:558
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:559
 msgid "No to All"
 msgstr "എല്ലാത്തിനും അല്ല"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1169
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1170
 msgid "Save play queue as..."
 msgstr "പ്ലേ ക്യൂ ഇങ്ങനെ സംരക്ഷിക്കുക..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1389
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1390
 msgid "Write error"
 msgstr "എഴുതുന്നതിൽ പിശക്"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1406
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1407
 msgid "Export playlist as..."
 msgstr "പ്ലേലിസ്റ്റ് ഇങ്ങനെ എക്സ്പോർട്ട് ചെയ്യുക..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1423
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1424
 msgid ""
 "The playlist could not be exported to %1:\n"
 "%2"
@@ -2179,17 +2174,17 @@ msgstr ""
 "പ്ലേലിസ്റ്റ് %1-ലേക്ക് എക്സ്പോർട്ട് ചെയ്യാനായില്ല:\n"
 "%2"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1425
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:49
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
 msgid "Export Playlist"
 msgstr "പ്ലേലിസ്റ്റ് എക്സ്പോർട്ട് ചെയ്യുക"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1551
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1552
 msgid "Open audio..."
 msgstr "ഓഡിയോ തുറക്കുക..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1556
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1557
 msgid "Open video..."
 msgstr "വീഡിയോ തുറക്കുക..."
 
@@ -2346,7 +2341,7 @@ msgstr "%1 ക്രോപ്പ് പിക്സലുകളിൽ"
 msgid "Link top and bottom crop"
 msgstr "മുകളിലെയും താഴത്തെയും ക്രോപ്പ് ബന്ധിപ്പിക്കുക"
 
-#: modules/gui/qt/dialogs/extended/qml/CropPanel.qml:102
+#: modules/gui/qt/dialogs/extended/qml/CropPanel.qml:103
 msgid "Link left and right crop"
 msgstr "ഇടത്തെയും വലത്തെയും ക്രോപ്പ് ബന്ധിപ്പിക്കുക"
 
@@ -2359,62 +2354,62 @@ msgstr "ഒരു മീഡിയയുടെ പ്രഭാവങ്ങൾ പ
 msgid "Effect preset: %1"
 msgstr "പ്രഭാവ പ്രീസെറ്റ്: %1"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:257
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:258
 msgid "Effect presets"
 msgstr "പ്രഭാവ പ്രീസെറ്റുകൾ"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:272
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:454
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:273
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:457
 msgid "New Preset"
 msgstr "പുതിയ പ്രീസെറ്റ്"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:289
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:290
 msgid "Chosen preset"
 msgstr "തിരഞ്ഞെടുത്ത പ്രീസെറ്റ്"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:372
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:110
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:375
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:111
 msgid "Actions of %1"
 msgstr "%1-ന്റെ പ്രവർത്തനങ്ങൾ"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:420
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:423
 msgid "Update with current effects"
 msgstr "നിലവിലെ പ്രഭാവങ്ങൾ ഉപയോഗിച്ച് അപ്ഡേറ്റ് ചെയ്യുക"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:454
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:457
 msgid "Rename Preset"
 msgstr "പ്രീസെറ്റിന്റെ പേരുമാറ്റുക"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:497
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:500
 msgid "Preset Name"
 msgstr "പ്രീസെറ്റ് പേര്"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:498
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:501
 msgid "The preset keeps its effects."
 msgstr "പ്രീസെറ്റ് അതിന്റെ പ്രഭാവങ്ങൾ നിലനിർത്തും."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:499
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:502
 msgid "The preset keeps the audio and video effects in use."
 msgstr "ഉപയോഗത്തിലുള്ള ഓഡിയോ, വീഡിയോ പ്രഭാവങ്ങൾ പ്രീസെറ്റ് സൂക്ഷിക്കും."
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:507
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:510
 msgid "e.g., Late Night Movies"
 msgstr "ഉദാ., രാത്രി വൈകിയുള്ള സിനിമകൾ"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:508
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:511
 msgid "Preset name"
 msgstr "പ്രീസെറ്റ് പേര്"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:526
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:529
 msgid "Delete Preset"
 msgstr "പ്രീസെറ്റ് മായ്ക്കുക"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:552
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:555
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:493
 msgid "Delete %1?"
 msgstr "%1 മായ്ക്കണോ?"
 
-#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:553
+#: modules/gui/qt/dialogs/extended/qml/EffectPresetField.qml:556
 msgid "The effects in use stay as they are."
 msgstr "ഉപയോഗത്തിലുള്ള പ്രഭാവങ്ങൾ അതേപടി തുടരും."
 
@@ -2481,16 +2476,16 @@ msgstr "പ്രഭാവങ്ങൾ പ്രിവ്യൂ ചെയ്യ�
 msgid "Open synchronization"
 msgstr "സമന്വയം തുറക്കുക"
 
-#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:93
+#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:94
 msgid "%1 equalizer curve"
 msgstr "%1 ഇക്വലൈസർ കർവ്"
 
-#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:160
-#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:177
+#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:163
+#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:180
 msgid "Two-pass equalizer"
 msgstr "ടു-പാസ് ഇക്വലൈസർ"
 
-#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:189
+#: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:192
 #: modules/gui/qt/dialogs/extended/qml/FilterPanel.qml:92
 #: modules/gui/qt/dialogs/extended/qml/VideoEffectsPanel.qml:149
 msgid "Reset to defaults"
@@ -2605,11 +2600,11 @@ msgstr "മോഷൻ ബ്ലർ"
 msgid "Colors of %1"
 msgstr "%1-ന്റെ നിറങ്ങൾ"
 
-#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:345
+#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:346
 msgid "Browse for %1"
 msgstr "%1 ബ്രൗസ് ചെയ്യുക"
 
-#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:348
+#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:349
 msgid "Image Files (*.png *.jpg);;All Files (*)"
 msgstr "ചിത്ര ഫയലുകൾ (*.png *.jpg);;എല്ലാ ഫയലുകളും (*)"
 
@@ -2756,16 +2751,16 @@ msgstr "ലൈറ്റ്"
 msgid "System"
 msgstr "സിസ്റ്റം"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:335
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:337
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:222
 msgid "Accent color %1"
 msgstr "ആക്സന്റ് നിറം %1"
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:54
-msgid "Welcome to VLC!"
-msgstr "VLC-ലേക്ക് സ്വാഗതം!"
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:55
+msgid "Welcome to %1!"
+msgstr "%1-ലേക്ക് സ്വാഗതം!"
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:72
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:73
 msgid ""
 "VLC is a free and open source cross-platform multimedia player and framework "
 "that plays most multimedia files as well as DVDs, Audio CDs, VCDs, and "
@@ -2775,15 +2770,15 @@ msgstr ""
 "പ്രോട്ടോക്കോളുകൾ എന്നിവയും പ്ലേ ചെയ്യുന്ന, സൗജന്യവും ഓപ്പൺ സോഴ്സുമായ ഒരു ക്രോസ്-പ്ലാറ്റ്ഫോം "
 "മൾട്ടിമീഡിയ പ്ലേയറും ഫ്രെയിംവർക്കുമാണ് VLC."
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:93
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:94
 msgid "Choose a Media Folder to get started with"
 msgstr "ആരംഭിക്കാൻ ഒരു മീഡിയ ഫോൾഡർ തിരഞ്ഞെടുക്കുക"
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:126
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:127
 msgid "No folder selected"
 msgstr "ഫോള്‍ഡര്‍ തിരഞ്ഞെടുത്തിട്ടില്ല"
 
-#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:146
+#: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:147
 msgid "Remove the folder"
 msgstr "ഫോൾഡർ നീക്കം ചെയ്യുക"
 
@@ -3151,7 +3146,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:293
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:105
-#: modules/gui/qt/qt.cpp:348
+#: modules/gui/qt/qt.cpp:349
 msgid "Channel banner"
 msgstr "ചാനൽ ബാനർ"
 
@@ -3486,7 +3481,7 @@ msgstr ""
 "%1 സജ്ജീകരണങ്ങൾക്ക് പുറത്ത് മാറ്റപ്പെട്ടു അല്ലെങ്കിൽ ലഭ്യമല്ല. നിങ്ങളുടെ മാറ്റങ്ങൾ സംരക്ഷിച്ചില്ല."
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:79
-#: modules/gui/qt/qt.cpp:357
+#: modules/gui/qt/qt.cpp:358
 msgid "Expert"
 msgstr "വിദഗ്ദ്ധ"
 
@@ -3553,17 +3548,17 @@ msgstr ""
 "കുറുക്കുവഴികൾ സംരക്ഷിക്കാനായില്ല (പിശക് %1). മാറ്റങ്ങൾ മെമ്മറിയിൽ പഴയപടിയാക്കി; "
 "കോൺഫിഗറേഷൻ ഫയൽ പരിശോധിക്കുക."
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:765
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:767
 msgid "System's default (%1)"
 msgstr "സിസ്റ്റത്തിന്റെ സ്ഥിരസ്ഥിതി (%1)"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1439
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1444
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1441
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1446
 msgid "%1 (partial)"
 msgstr "%1 (ഭാഗികം)"
 
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1839
-#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1849
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1852
+#: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1862
 msgid "Please choose an entry point folder"
 msgstr "ഒരു എൻട്രി പോയിന്റ് ഫോൾഡർ തിരഞ്ഞെടുക്കുക"
 
@@ -3578,7 +3573,7 @@ msgstr "തീം"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:192
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:428
-#: modules/gui/qt/qt.cpp:339
+#: modules/gui/qt/qt.cpp:340
 msgid "Accent color"
 msgstr "ആക്സന്റ് നിറം"
 
@@ -3621,14 +3616,15 @@ msgstr ""
 "മറ്റൊന്നുമില്ല."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:53
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:620
 msgid "Current output device"
 msgstr "നിലവിലെ ഔട്ട്പുട്ട് ഉപകരണം"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:76
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:80
 msgid "No selectable device available"
 msgstr "തിരഞ്ഞെടുക്കാവുന്ന ഉപകരണങ്ങളൊന്നും ലഭ്യമല്ല"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:141
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:164
 msgid ""
 "Device changes affect only the current audio output. Apply keeps this "
 "selection while it remains active."
@@ -3808,55 +3804,55 @@ msgstr "രണ്ടാം ഭാഷ"
 msgid "OpenSubtitles"
 msgstr "OpenSubtitles"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:647
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:658
 msgid "No matching settings"
 msgstr "പൊരുത്തപ്പെടുന്ന സജ്ജീകരണങ്ങളൊന്നുമില്ല"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:648
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:659
 msgid "No settings are available for this category on this VLC installation"
 msgstr "ഈ VLC ഇൻസ്റ്റാളേഷനിൽ ഈ വിഭാഗത്തിന് സജ്ജീകരണങ്ങളൊന്നും ലഭ്യമല്ല"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:729
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:745
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:741
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:757
 msgid "Show installed add-ons only"
 msgstr "ഇൻസ്റ്റാൾ ചെയ്ത ആഡ്-ഓണുകൾ മാത്രം കാണിക്കുക"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:761
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:773
 msgid "No advanced options on this page."
 msgstr "ഈ പേജിൽ വിപുലമായ ഓപ്ഷനുകളൊന്നുമില്ല."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:773
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:785
 msgid "Welcome setup"
 msgstr "സ്വാഗത സജ്ജീകരണം"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:787
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:799
 msgid "All VLC options"
 msgstr "എല്ലാ VLC ഓപ്ഷനുകളും"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:803
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:815
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:356
 msgid "Reset all settings"
 msgstr "എല്ലാ സജ്ജീകരണങ്ങളും റീസെറ്റ് ചെയ്യുക"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:817
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:829
 msgid "Reset all settings?"
 msgstr "എല്ലാ സജ്ജീകരണങ്ങളും റീസെറ്റ് ചെയ്യണോ?"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:818
-msgid "Every setting of VLC media player goes back to its default."
-msgstr "VLC മീഡിയ പ്ലേയറിന്റെ എല്ലാ സജ്ജീകരണങ്ങളും അവയുടെ സ്ഥിരസ്ഥിതിയിലേക്ക് മടങ്ങും."
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:830
+msgid "Every setting of %1 goes back to its default."
+msgstr "%1 മീഡിയ പ്ലേയറിന്റെ എല്ലാ സജ്ജീകരണങ്ങളും അവയുടെ സ്ഥിരസ്ഥിതിയിലേക്ക് മടങ്ങും."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:872
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:884
 msgid "Discard changes"
 msgstr "മാറ്റങ്ങൾ ഉപേക്ഷിക്കുക"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:124
-#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:117
+#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:118
 msgid "Close Equalizer"
 msgstr "ഇക്വലൈസർ അടയ്ക്കുക"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:124
-#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:98
+#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:99
 msgid "Open Equalizer"
 msgstr "ഇക്വലൈസർ തുറക്കുക"
 
@@ -4089,7 +4085,7 @@ msgstr "1 s"
 msgid "10 s"
 msgstr "10 s"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:616
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:617
 msgid "Choose a color"
 msgstr "ഒരു നിറം തിരഞ്ഞെടുക്കുക"
 
@@ -4416,7 +4412,7 @@ msgid "Seeking"
 msgstr "സീക്ക് ചെയ്യൽ"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:137
-#: modules/gui/qt/qt.cpp:303
+#: modules/gui/qt/qt.cpp:304
 msgid "Show thumbnail while scrubbing"
 msgstr "സ്ക്രബ് ചെയ്യുമ്പോൾ തംബ്നെയിൽ കാണിക്കുക"
 
@@ -4696,7 +4692,7 @@ msgid "Timing"
 msgstr "സമയക്രമം"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:273
-#: modules/gui/qt/qt.cpp:305
+#: modules/gui/qt/qt.cpp:306
 msgid "Show subtitle lines on the seek bar"
 msgstr "സീക്ക് ബാറിൽ ഉപശീർഷക വരികൾ കാണിക്കുക"
 
@@ -5173,7 +5169,7 @@ msgstr "ഗൈഡുകൾ പ്രോഗ്രാമുകൾ നൽകുന�
 
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:121
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:76
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:616
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:617
 msgid "Global Hotkey"
 msgstr "ഗ്ലോബൽ ഹോട്ട്കീ"
 
@@ -5249,11 +5245,11 @@ msgstr "%1 നീക്കം ചെയ്യുക"
 msgid "Search Keyboard Shortcuts..."
 msgstr "കീബോർഡ് കുറുക്കുവഴികൾ തിരയുക..."
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:711
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:712
 msgid "Hotkey of %1"
 msgstr "%1-ന്റെ ഹോട്ട്കീ"
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:722
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:723
 msgid "Global hotkey of %1"
 msgstr "%1-ന്റെ ഗ്ലോബൽ ഹോട്ട്കീ"
 
@@ -5272,6 +5268,14 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsResetPopup.qml:74
 msgid "Reset all"
 msgstr "എല്ലാം റീസെറ്റ് ചെയ്യുക"
+
+#: modules/gui/qt/dialogs/systray/systray.cpp:200
+msgid "&Hide %1 in taskbar"
+msgstr "ചുമതലാബാറില്‍ &മറയ്ക്കപ്പെട്ട %1 മീഡിയാപ്ലെയര്‍"
+
+#: modules/gui/qt/dialogs/systray/systray.cpp:206
+msgid "Sho&w %1"
+msgstr "%1 മീഡിയാ പ്ലെയര്‍ &കാണിക്കുക"
 
 #: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:205
 #: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:438
@@ -5354,7 +5358,7 @@ msgstr "പ്രൊഫൈൽ സജ്ജീകരണങ്ങൾ പ്രയ�
 msgid "Profile (%1)"
 msgstr "പ്രൊഫൈൽ (%1)"
 
-#: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:88
+#: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:89
 msgid "Customize player"
 msgstr "പ്ലേയർ ഇഷ്ടാനുസൃതമാക്കുക"
 
@@ -5363,11 +5367,11 @@ msgstr "പ്ലേയർ ഇഷ്ടാനുസൃതമാക്കുക"
 msgid "Sleep timer"
 msgstr "സ്ലീപ്പ് ടൈമർ"
 
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:169
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:170
 msgid "Selected profile"
 msgstr "തിരഞ്ഞെടുത്ത പ്രൊഫൈൽ"
 
-#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:236
+#: modules/gui/qt/dialogs/toolbar/qml/ProfilesMenu.qml:237
 msgid "New profile…"
 msgstr "പുതിയ പ്രൊഫൈൽ…"
 
@@ -5549,8 +5553,8 @@ msgstr "തുടക്കം മുതൽ കാണുക"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:142
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:174
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:37
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:187
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:874
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:81
 msgid "Favorite"
@@ -5608,24 +5612,24 @@ msgstr "%1-ന്റെ ചാനലുകൾ അപ്ഡേറ്റ് ചെ
 msgid "%1 could not be loaded: %2"
 msgstr "%1 ലോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല: %2"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:502
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:503
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:580
 msgid "No channel matches the search"
 msgstr "തിരയലുമായി പൊരുത്തപ്പെടുന്ന ചാനൽ ഇല്ല"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:503
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:504
 msgid "No favorite channel yet: right-click a channel to add it"
 msgstr "ഇതുവരെ പ്രിയപ്പെട്ട ചാനൽ ഇല്ല: ചേർക്കാൻ ഒരു ചാനലിൽ റൈറ്റ്-ക്ലിക്ക് ചെയ്യുക"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:504
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:505
 msgid "No channel watched yet"
 msgstr "ഇതുവരെ ഒരു ചാനലും കണ്ടിട്ടില്ല"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:505
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:506
 msgid "Loading the channels…"
 msgstr "ചാനലുകൾ ലോഡ് ചെയ്യുന്നു…"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:506
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:507
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:810
 msgid "No channels"
 msgstr "ചാനലുകളില്ല"
@@ -5648,19 +5652,19 @@ msgstr "പിന്നീട്"
 msgid "No guide for this channel"
 msgstr "ഈ ചാനലിന് ഗൈഡ് ഇല്ല"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:182
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:183
 msgid "No account with films or series"
 msgstr "സിനിമകളോ സീരീസോ ഉള്ള അക്കൗണ്ട് ഇല്ല"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:183
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:184
 msgid "Loading…"
 msgstr "ലോഡ് ചെയ്യുന്നു…"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:183
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:184
 msgid "Nothing here"
 msgstr "ഇവിടെ ഒന്നുമില്ല"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:235
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:236
 msgid "S%1 E%2"
 msgstr "S%1 E%2"
 
@@ -5727,11 +5731,11 @@ msgstr "എന്നെ ഓർമ്മിപ്പിക്കുക"
 msgid "Back to Live"
 msgstr "ലൈവിലേക്ക് മടങ്ങുക"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:618 modules/gui/qt/qt.cpp:344
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:618 modules/gui/qt/qt.cpp:345
 msgid "Next channel"
 msgstr "അടുത്ത ചാനൽ"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:623 modules/gui/qt/qt.cpp:345
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:623 modules/gui/qt/qt.cpp:346
 msgid "Previous channel"
 msgstr "മുമ്പത്തെ ചാനൽ"
 
@@ -5842,7 +5846,7 @@ msgid "Updated %1 at %2"
 msgstr "%1 %2-ന് അപ്ഡേറ്റ് ചെയ്തു"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:308
-#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:239
+#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:242
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:91
 msgid "Move up"
 msgstr "മുകളിലേക്ക് നീക്കുക"
@@ -6051,7 +6055,7 @@ msgstr "MC"
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:96
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:32
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:39
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:54
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:61
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:53
@@ -6105,14 +6109,9 @@ msgstr "കണ്ടെത്തുക"
 msgid "Local top bar"
 msgstr "ലോക്കൽ ടോപ്പ് ബാർ"
 
-#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:187
+#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:188
 msgid "Show navigation menu"
 msgstr "നാവിഗേഷൻ മെനു കാണിക്കുക"
-
-#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:250
-#: modules/gui/qt/player/qml/TopBar.qml:503
-msgid "VLC Media Player"
-msgstr "VLC മീഡിയ പ്ലേയർ"
 
 #: modules/gui/qt/maininterface/qml/MainDisplay.qml:34
 msgid "Main display"
@@ -6223,7 +6222,7 @@ msgid "Re-check"
 msgstr "വീണ്ടും പരിശോധിക്കുക"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:34
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:41
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:224
 #: modules/gui/qt/player/qml/CompactLibrary.qml:83
 #: modules/gui/qt/player/qml/CompactLibrary.qml:297
@@ -6231,13 +6230,20 @@ msgid "Recent"
 msgstr "സമീപകാലം"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:238
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:303
 msgid "Add item"
 msgstr "ഇനം ചേർക്കുക"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:121
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:132
 msgid "Edit Sidebar…"
 msgstr "സൈഡ്ബാർ തിരുത്തുക…"
+
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:131
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:137
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
+msgid "Unpin from Sidebar"
+msgstr "സൈഡ്ബാറിൽ നിന്ന് അൺപിൻ ചെയ്യുക"
 
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:34
 msgid "Reset to Default"
@@ -6259,12 +6265,12 @@ msgstr ""
 msgid "hidden"
 msgstr "മറച്ചത്"
 
-#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:251
+#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:254
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:98
 msgid "Move down"
 msgstr "താഴേക്ക് നീക്കുക"
 
-#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:262
+#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:265
 msgid "Show %1"
 msgstr "%1 കാണിക്കുക"
 
@@ -6321,6 +6327,15 @@ msgstr "OpenSubtitles ഡൗൺലോഡ് പരാജയപ്പെട്ട
 #: modules/gui/qt/medialibrary/mlopensubtitles.cpp:223
 msgid "OpenSubtitles did not return a valid subtitle download link."
 msgstr "OpenSubtitles സാധുവായ ഉപശീർഷക ഡൗൺലോഡ് ലിങ്ക് നൽകിയില്ല."
+
+#: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:188
+#: modules/gui/qt/player/subtitle_search.cpp:481
+msgid "This build can't search the internet."
+msgstr "ഈ ബിൽഡിന് ഇന്റർനെറ്റിൽ തിരയാനാകില്ല."
+
+#: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:207
+msgid "The subtitle services took too long to answer."
+msgstr "ഉപശീർഷക സേവനങ്ങൾ മറുപടി നൽകാൻ വളരെയധികം സമയമെടുത്തു."
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:121
 msgid "This media"
@@ -6398,12 +6413,12 @@ msgstr ""
 "ഉപശീർഷക ഫയലുകൾ (*.srt *.ass *.ssa *.sub *.vtt *.ttml *.smi);;എല്ലാ ഫയലുകളും (*)"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:369
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:553
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:597
 msgid "Choose the folder of the audio tracks"
 msgstr "ഓഡിയോ ട്രാക്കുകളുടെ ഫോൾഡർ തിരഞ്ഞെടുക്കുക"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:370
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:554
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:598
 msgid "Choose the folder of the subtitles"
 msgstr "ഉപശീർഷകങ്ങളുടെ ഫോൾഡർ തിരഞ്ഞെടുക്കുക"
 
@@ -6439,33 +6454,33 @@ msgstr "കുറഞ്ഞത് ഒരു ഓഡിയോ ഫയൽ തിര�
 msgid "Choose at least one subtitle file."
 msgstr "കുറഞ്ഞത് ഒരു ഉപശീർഷക ഫയൽ തിരഞ്ഞെടുക്കുക."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:477
-msgid "An audio file is missing or unreadable: %1"
-msgstr "ഒരു ഓഡിയോ ഫയൽ കാണുന്നില്ല അല്ലെങ്കിൽ വായിക്കാനാകുന്നില്ല: %1"
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:478
-msgid "A subtitle file is missing or unreadable: %1"
-msgstr "ഒരു ഉപശീർഷക ഫയൽ കാണുന്നില്ല അല്ലെങ്കിൽ വായിക്കാനാകുന്നില്ല: %1"
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:492
-msgid "The destination media could not be found in the library."
-msgstr "ലക്ഷ്യസ്ഥാന മീഡിയ ലൈബ്രറിയിൽ കണ്ടെത്താനായില്ല."
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:509
-msgid "Could not save audio track association for %1."
-msgstr "%1-നുള്ള ഓഡിയോ ട്രാക്ക് ബന്ധിപ്പിക്കൽ സംരക്ഷിക്കാനായില്ല."
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:510
-msgid "Could not save subtitle association for %1."
-msgstr "%1-നുള്ള ഉപശീർഷക ബന്ധിപ്പിക്കൽ സംരക്ഷിക്കാനായില്ല."
-
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:524
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:472
 #, c-format
 msgid ""
 " %n association(s) were saved before this error; those changes remain saved."
 msgstr ""
 " ഈ പിശകിന് മുമ്പ് %n ബന്ധിപ്പിക്കൽ(കൾ) സംരക്ഷിച്ചിരുന്നു; ആ മാറ്റങ്ങൾ സംരക്ഷിക്കപ്പെട്ടുതന്നെ "
 "തുടരും."
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:498
+msgid "An audio file is missing or unreadable: %1"
+msgstr "ഒരു ഓഡിയോ ഫയൽ കാണുന്നില്ല അല്ലെങ്കിൽ വായിക്കാനാകുന്നില്ല: %1"
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:499
+msgid "A subtitle file is missing or unreadable: %1"
+msgstr "ഒരു ഉപശീർഷക ഫയൽ കാണുന്നില്ല അല്ലെങ്കിൽ വായിക്കാനാകുന്നില്ല: %1"
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:513
+msgid "The destination media could not be found in the library."
+msgstr "ലക്ഷ്യസ്ഥാന മീഡിയ ലൈബ്രറിയിൽ കണ്ടെത്താനായില്ല."
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:529
+msgid "Could not save audio track association for %1."
+msgstr "%1-നുള്ള ഓഡിയോ ട്രാക്ക് ബന്ധിപ്പിക്കൽ സംരക്ഷിക്കാനായില്ല."
+
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:530
+msgid "Could not save subtitle association for %1."
+msgstr "%1-നുള്ള ഉപശീർഷക ബന്ധിപ്പിക്കൽ സംരക്ഷിക്കാനായില്ല."
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:47
 msgid "The subtitle filename is invalid."
@@ -6546,7 +6561,7 @@ msgstr "അജ്ഞാത ആർട്ടിസ്റ്റ്"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:96
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:228
-#: modules/gui/qt/player/qml/ResumeDialog.qml:147
+#: modules/gui/qt/player/qml/ResumeDialog.qml:148
 #: modules/gui/qt/player/qml/CompactLibrary.qml:401
 msgid "Continue Watching"
 msgstr "കാണുന്നത് തുടരുക"
@@ -6692,7 +6707,7 @@ msgid "Remove from playlist"
 msgstr "പ്ലേലിസ്റ്റിൽ നിന്ന് നീക്കം ചെയ്യുക"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:222
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:252
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:260
 msgid "Processing..."
 msgstr "പ്രോസസ്സ് ചെയ്യുന്നു..."
 
@@ -6716,15 +6731,15 @@ msgid_plural "Delete playlists"
 msgstr[0] "പ്ലേലിസ്റ്റ് മായ്ക്കുക"
 msgstr[1] "പ്ലേലിസ്റ്റുകൾ മായ്ക്കുക"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:368
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:376
 msgid "Items"
 msgstr "ഇനങ്ങൾ"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:455
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:463
 msgid "No playlists found"
 msgstr "പ്ലേലിസ്റ്റുകളൊന്നും കണ്ടെത്തിയില്ല"
 
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:456
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:464
 msgid "Create a playlist with files or add media from the library"
 msgstr ""
 "ഫയലുകൾ ഉപയോഗിച്ച് ഒരു പ്ലേലിസ്റ്റ് സൃഷ്ടിക്കുക അല്ലെങ്കിൽ ലൈബ്രറിയിൽ നിന്ന് മീഡിയ ചേർക്കുക"
@@ -6786,45 +6801,45 @@ msgid "Channel:"
 msgstr "ചാനൽ:"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:82
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:168
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:181
 msgid "Mark as Unwatched"
 msgstr "കണ്ടിട്ടില്ലെന്ന് അടയാളപ്പെടുത്തുക"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:82
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:169
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:182
 msgid "Mark as Watched"
 msgstr "കണ്ടതായി അടയാളപ്പെടുത്തുക"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:110
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:183
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:53
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:196
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:54
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:891
 msgid "Add to Queue"
 msgstr "ക്യൂവിലേക്ക് ചേർക്കുക"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:126
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:193
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:206
 msgid "Go to Source"
 msgstr "ഉറവിടത്തിലേക്ക് പോകുക"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:134
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:207
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:57
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:220
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:58
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:899
 msgid "Add Subtitle Tracks"
 msgstr "ഉപശീർഷക ട്രാക്കുകൾ ചേർക്കുക"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:140
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:209
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:62
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:75
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:222
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:63
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:93
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:903
 msgid "Add Audio Tracks"
 msgstr "ഓഡിയോ ട്രാക്കുകൾ ചേർക്കുക"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:146
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:211
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:69
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:224
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:70
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:31
 msgid "Properties & Metadata"
 msgstr "ഗുണവിശേഷങ്ങളും മെറ്റാഡാറ്റയും"
@@ -6890,27 +6905,32 @@ msgstr "ഓഡിയോ ട്രാക്കുകൾ എഡിറ്റ് ച
 msgid "Resync"
 msgstr "വീണ്ടും സമന്വയിപ്പിക്കുക"
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:546
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:138
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
+msgid "Pin to Sidebar"
+msgstr "സൈഡ്ബാറിൽ പിൻ ചെയ്യുക"
+
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:560
 msgid "No media matches the search"
 msgstr "തിരയലുമായി പൊരുത്തപ്പെടുന്ന മീഡിയയൊന്നുമില്ല"
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:547
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:561
 msgid "No media in this folder"
 msgstr "ഈ ഫോൾഡറിൽ മീഡിയയൊന്നുമില്ല"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:42
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:43
 msgid "Add folder"
 msgstr "ഫോൾഡർ ചേർക്കുക"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:45
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:46
 msgid "Add folder to media library"
 msgstr "മീഡിയ ലൈബ്രറിയിലേക്ക് ഫോൾഡർ ചേർക്കുക"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:53
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:54
 msgid "Could not add this folder to the library: %1"
 msgstr "ഈ ഫോൾഡർ ലൈബ്രറിയിലേക്ക് ചേർക്കാനായില്ല: %1"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:54
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:55
 msgid "Media library"
 msgstr "മീഡിയ ലൈബ്രറി"
 
@@ -7025,74 +7045,158 @@ msgstr[1] "%1 ഇനങ്ങൾ"
 msgid "Length"
 msgstr "ദൈർഘ്യം"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:36
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:38
 msgid "To This Folder"
 msgstr "ഈ ഫോൾഡറിലേക്ക്"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:37
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:39
 msgid "To This Playlist"
 msgstr "ഈ പ്ലേലിസ്റ്റിലേക്ക്"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:38
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:40
 msgid "To This File"
 msgstr "ഈ ഫയലിലേക്ക്"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:75
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:93
 msgid "Add Subtitles"
 msgstr "ഉപശീർഷകങ്ങൾ ചേർക്കുക"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:530
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:532
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:533
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:100
+msgid "Download %1"
+msgstr "%1 ഡൗൺലോഡ് ചെയ്യുക"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:186
+msgid "%1 linked, %2 failed."
+msgstr "%1 ബന്ധിപ്പിച്ചു, %2 പരാജയപ്പെട്ടു."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:187
+msgid "Nothing was linked: %1 failed."
+msgstr "ഒന്നും ബന്ധിപ്പിച്ചില്ല: %1 പരാജയപ്പെട്ടു."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:574
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:576
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:577
 msgid "From Computer"
 msgstr "കമ്പ്യൂട്ടറിൽ നിന്ന്"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:532
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:533
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:576
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:577
 msgid "From Link"
 msgstr "ലിങ്കിൽ നിന്ന്"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:532
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:576
 msgid "From OpenSubtitles"
 msgstr "OpenSubtitles-ൽ നിന്ന്"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:602
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:577
+msgid "From the Internet"
+msgstr "ഇന്റർനെറ്റിൽ നിന്ന്"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:646
 msgid "Direct HTTPS link to a subtitle file"
 msgstr "ഒരു ഉപശീർഷക ഫയലിലേക്കുള്ള നേരിട്ടുള്ള HTTPS ലിങ്ക്"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:617
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:661
 msgid "Title or episode"
 msgstr "തലക്കെട്ട് അല്ലെങ്കിൽ എപ്പിസോഡ്"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:784
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:692
+msgid "%1, else %2"
+msgstr "%1, അല്ലെങ്കിൽ %2"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:698
+msgid "Every subtitle service is off (Subtitles panel of the player)"
+msgstr "എല്ലാ ഉപശീർഷക സേവനങ്ങളും ഓഫാണ് (പ്ലെയറിന്റെ ഉപശീർഷക പാനൽ)"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:862
 msgid "OpenSubtitles API key"
 msgstr "OpenSubtitles API കീ"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:899
-msgid "Searching OpenSubtitles…"
-msgstr "OpenSubtitles-ൽ തിരയുന്നു…"
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1001
+msgid "Waiting…"
+msgstr "കാത്തിരിക്കുന്നു…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:901
-msgid "Search OpenSubtitles to see the subtitle files."
-msgstr "ഉപശീർഷക ഫയലുകൾ കാണാൻ OpenSubtitles-ൽ തിരയുക."
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1002
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:365
+msgid "Searching…"
+msgstr "തിരയുന്നു…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:904
-msgid "Working on audio tracks…"
-msgstr "ഓഡിയോ ട്രാക്കുകളിൽ പ്രവർത്തിക്കുന്നു…"
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1004
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:444
+msgid "For this file"
+msgstr "ഈ ഫയലിനായി"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:904
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1005
+msgid "Best guess"
+msgstr "മികച്ച ഊഹം"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1006
+msgid "Not found"
+msgstr "കണ്ടെത്തിയില്ല"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1007
+msgid "No answer"
+msgstr "മറുപടിയില്ല"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1008
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:264
+msgid "Downloading…"
+msgstr "ഡൗൺലോഡ് ചെയ്യുന്നു…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1009
+msgid "Linked"
+msgstr "ബന്ധിപ്പിച്ചു"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1108
+msgid "Don't download"
+msgstr "ഡൗൺലോഡ് ചെയ്യരുത്"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1112
+msgid "Subtitle for %1"
+msgstr "%1 നുള്ള ഉപശീർഷകം"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1131
+msgid "Downloading and linking the subtitles chosen…"
+msgstr "തിരഞ്ഞെടുത്ത ഉപശീർഷകങ്ങൾ ഡൗൺലോഡ് ചെയ്ത് ബന്ധിപ്പിക്കുന്നു…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1133
+msgid "Searching the internet: %1 of %2 videos done…"
+msgstr "ഇന്റർനെറ്റിൽ തിരയുന്നു: %2 ൽ %1 വീഡിയോകൾ പൂർത്തിയായി…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1134
+msgid "For the file: %1 · By title: %2 · Not found: %3"
+msgstr "ഫയലിനായി: %1 · ശീർഷകം വഴി: %2 · കണ്ടെത്തിയില്ല: %3"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1137
+msgid "No answer: %1"
+msgstr "മറുപടിയില്ല: %1"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1160
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on subtitles…"
 msgstr "ഉപശീർഷകങ്ങളിൽ പ്രവർത്തിക്കുന്നു…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:907
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1165
+msgid "Searching OpenSubtitles…"
+msgstr "OpenSubtitles-ൽ തിരയുന്നു…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1167
+msgid "Search OpenSubtitles to see the subtitle files."
+msgstr "ഉപശീർഷക ഫയലുകൾ കാണാൻ OpenSubtitles-ൽ തിരയുക."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
+msgid "Working on audio tracks…"
+msgstr "ഓഡിയോ ട്രാക്കുകളിൽ പ്രവർത്തിക്കുന്നു…"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1173
 msgid "Enter a direct link to a subtitle file above."
 msgstr "മുകളിൽ ഒരു ഉപശീർഷക ഫയലിലേക്കുള്ള നേരിട്ടുള്ള ലിങ്ക് നൽകുക."
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:908
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1174
 msgid "No audio file in this folder: choose another one above."
 msgstr "ഈ ഫോൾഡറിൽ ഓഡിയോ ഫയലൊന്നുമില്ല: മുകളിൽ മറ്റൊന്ന് തിരഞ്ഞെടുക്കുക."
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:909
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1175
 msgid "No subtitle file in this folder: choose another one above."
 msgstr "ഈ ഫോൾഡറിൽ ഉപശീർഷക ഫയലൊന്നുമില്ല: മുകളിൽ മറ്റൊന്ന് തിരഞ്ഞെടുക്കുക."
 
@@ -7431,41 +7535,6 @@ msgstr "സ്ലീപ്പ് ടൈമർ സജ്ജമാക്കുന�
 msgid "Choose a duration between one second and 24 hours."
 msgstr "ഒരു സെക്കൻഡിനും 24 മണിക്കൂറിനും ഇടയിലുള്ള ഒരു ദൈർഘ്യം തിരഞ്ഞെടുക്കുക."
 
-#: modules/gui/qt/player/subtitle_finder.cpp:742
-msgid "This build can't search the internet."
-msgstr "ഈ ബിൽഡിന് ഇന്റർനെറ്റിൽ തിരയാനാകില്ല."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1254
-#: modules/gui/qt/player/subtitle_finder.cpp:1512
-msgid "No connection to the internet."
-msgstr "ഇന്റർനെറ്റ് കണക്ഷനില്ല."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1257
-msgid "The video couldn't be identified from its name."
-msgstr "വീഡിയോയുടെ പേരിൽ നിന്ന് അത് തിരിച്ചറിയാനായില്ല."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1258
-msgid "\"%1\" wasn't found. Search for its title."
-msgstr "\"%1\" കണ്ടെത്തിയില്ല. അതിന്റെ തലക്കെട്ടിനായി തിരയുക."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1260
-msgid "No subtitles were found for %1."
-msgstr "%1-നായി ഉപശീർഷകങ്ങളൊന്നും കണ്ടെത്തിയില്ല."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1513
-msgid "The subtitle couldn't be downloaded (%1)."
-msgstr "ഉപശീർഷകം ഡൗൺലോഡ് ചെയ്യാനായില്ല (%1)."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1543
-msgid "The subtitle couldn't be saved."
-msgstr "ഉപശീർഷകം സംരക്ഷിക്കാനായില്ല."
-
-#: modules/gui/qt/player/subtitle_finder.cpp:1553
-#: modules/gui/qt/player/subtitle_providers.cpp:922
-#: modules/gui/qt/player/subtitle_providers.cpp:955
-msgid "The subtitle couldn't be unpacked."
-msgstr "ഉപശീർഷകം അൺപാക്ക് ചെയ്യാനായില്ല."
-
 #: modules/gui/qt/player/subtitle_providers.cpp:87
 msgid "%1 didn't answer."
 msgstr "%1 പ്രതികരിച്ചില്ല."
@@ -7498,6 +7567,12 @@ msgstr "സിനിമകൾ · നിരവധി ഭാഷകൾ"
 msgid "This subtitle comes as a RAR archive, which can't be opened here."
 msgstr "ഈ ഉപശീർഷകം ഒരു RAR ആർക്കൈവായാണ് വരുന്നത്, അത് ഇവിടെ തുറക്കാനാകില്ല."
 
+#: modules/gui/qt/player/subtitle_providers.cpp:922
+#: modules/gui/qt/player/subtitle_providers.cpp:955
+#: modules/gui/qt/player/subtitle_search.cpp:1140
+msgid "The subtitle couldn't be unpacked."
+msgstr "ഉപശീർഷകം അൺപാക്ക് ചെയ്യാനായില്ല."
+
 #: modules/gui/qt/player/subtitle_providers.cpp:956
 msgid "The archive has no subtitle in it."
 msgstr "ആർക്കൈവിൽ ഉപശീർഷകമൊന്നുമില്ല."
@@ -7511,6 +7586,32 @@ msgstr ""
 #: modules/gui/qt/player/subtitle_providers.cpp:974
 msgid "The subtitle is empty."
 msgstr "ഉപശീർഷകം ശൂന്യമാണ്."
+
+#: modules/gui/qt/player/subtitle_search.cpp:1017
+#: modules/gui/qt/player/subtitle_search.cpp:1100
+msgid "No connection to the internet."
+msgstr "ഇന്റർനെറ്റ് കണക്ഷനില്ല."
+
+#: modules/gui/qt/player/subtitle_search.cpp:1020
+msgid "The video couldn't be identified from its name."
+msgstr "വീഡിയോയുടെ പേരിൽ നിന്ന് അത് തിരിച്ചറിയാനായില്ല."
+
+#: modules/gui/qt/player/subtitle_search.cpp:1021
+msgid "\"%1\" wasn't found. Search for its title."
+msgstr "\"%1\" കണ്ടെത്തിയില്ല. അതിന്റെ തലക്കെട്ടിനായി തിരയുക."
+
+#: modules/gui/qt/player/subtitle_search.cpp:1023
+msgid "No subtitles were found for %1."
+msgstr "%1-നായി ഉപശീർഷകങ്ങളൊന്നും കണ്ടെത്തിയില്ല."
+
+#: modules/gui/qt/player/subtitle_search.cpp:1065
+#: modules/gui/qt/player/subtitle_search.cpp:1101
+msgid "The subtitle couldn't be downloaded (%1)."
+msgstr "ഉപശീർഷകം ഡൗൺലോഡ് ചെയ്യാനായില്ല (%1)."
+
+#: modules/gui/qt/player/subtitle_search.cpp:1131
+msgid "The subtitle couldn't be saved."
+msgstr "ഉപശീർഷകം സംരക്ഷിക്കാനായില്ല."
 
 #: modules/gui/qt/player/waveform.cpp:230
 msgid "Waveform analyzer is unavailable."
@@ -7594,7 +7695,7 @@ msgid "Artist Name"
 msgstr "ആർട്ടിസ്റ്റ് പേര്"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:82
-#: modules/gui/qt/player/qml/controlbarcontrols/DividerWidget.qml:21
+#: modules/gui/qt/player/qml/controlbarcontrols/DividerWidget.qml:22
 msgid "Divider"
 msgstr "ഡിവൈഡർ"
 
@@ -7704,61 +7805,61 @@ msgstr "ടിവിയിലെ ഉപശീർഷകങ്ങൾ: %1"
 msgid "Subtitles off on the TV"
 msgstr "ടിവിയിൽ ഉപശീർഷകങ്ങൾ ഓഫ്"
 
-#: modules/gui/qt/player/qml/Player.qml:1229
+#: modules/gui/qt/player/qml/Player.qml:1230
 msgid "Not playing on %1"
 msgstr "%1-ൽ പ്ലേ ചെയ്യുന്നില്ല"
 
-#: modules/gui/qt/player/qml/Player.qml:1231
-#: modules/gui/qt/player/qml/Player.qml:1358
+#: modules/gui/qt/player/qml/Player.qml:1232
+#: modules/gui/qt/player/qml/Player.qml:1359
 msgid "Connecting to %1…"
 msgstr "%1-ലേക്ക് കണക്റ്റ് ചെയ്യുന്നു…"
 
-#: modules/gui/qt/player/qml/Player.qml:1233
+#: modules/gui/qt/player/qml/Player.qml:1234
 msgid "Playing on %1"
 msgstr "%1-ൽ പ്ലേ ചെയ്യുന്നു"
 
-#: modules/gui/qt/player/qml/Player.qml:1234
+#: modules/gui/qt/player/qml/Player.qml:1235
 msgid "The sound plays on %1"
 msgstr "ശബ്ദം %1-ൽ പ്ലേ ചെയ്യുന്നു"
 
-#: modules/gui/qt/player/qml/Player.qml:1259
+#: modules/gui/qt/player/qml/Player.qml:1260
 msgid "Pause, seek and change the subtitles here: the TV follows."
 msgstr "ഇവിടെ പോസ് ചെയ്യുക, സീക്ക് ചെയ്യുക, ഉപശീർഷകങ്ങൾ മാറ്റുക: ടിവി അത് പിന്തുടരും."
 
-#: modules/gui/qt/player/qml/Player.qml:1276
+#: modules/gui/qt/player/qml/Player.qml:1277
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the media."
 msgstr ""
 "മീഡിയ വായിക്കാൻ ഈ കമ്പ്യൂട്ടറിലേക്ക് കണക്റ്റ് ചെയ്യാൻ Windows Firewall %1-നെ "
 "അനുവദിക്കുന്നില്ല."
 
-#: modules/gui/qt/player/qml/Player.qml:1288
+#: modules/gui/qt/player/qml/Player.qml:1289
 msgid "Waiting for Windows…"
 msgstr "Windows-നായി കാത്തിരിക്കുന്നു…"
 
-#: modules/gui/qt/player/qml/Player.qml:1289
+#: modules/gui/qt/player/qml/Player.qml:1290
 msgid "Allow on public networks too"
 msgstr "പൊതു നെറ്റ്വർക്കുകളിലും അനുവദിക്കുക"
 
-#: modules/gui/qt/player/qml/Player.qml:1290
+#: modules/gui/qt/player/qml/Player.qml:1291
 msgid "Allow on private networks"
 msgstr "സ്വകാര്യ നെറ്റ്വർക്കുകളിൽ അനുവദിക്കുക"
 
-#: modules/gui/qt/player/qml/Player.qml:1302
+#: modules/gui/qt/player/qml/Player.qml:1303
 msgid "Try again"
 msgstr "വീണ്ടും ശ്രമിക്കുക"
 
-#: modules/gui/qt/player/qml/Player.qml:1307
-#: modules/gui/qt/player/qml/Player.qml:1317
+#: modules/gui/qt/player/qml/Player.qml:1308
+#: modules/gui/qt/player/qml/Player.qml:1318
 msgid "Play here"
 msgstr "ഇവിടെ പ്ലേ ചെയ്യുക"
 
-#: modules/gui/qt/player/qml/Player.qml:1317
-#: modules/gui/qt/player/qml/Player.qml:1368
+#: modules/gui/qt/player/qml/Player.qml:1318
+#: modules/gui/qt/player/qml/Player.qml:1369
 msgid "Stop casting"
 msgstr "കാസ്റ്റിംഗ് നിർത്തുക"
 
-#: modules/gui/qt/player/qml/Player.qml:1359
+#: modules/gui/qt/player/qml/Player.qml:1360
 msgid "Also on %1"
 msgstr "%1-ലും"
 
@@ -7766,11 +7867,11 @@ msgstr "%1-ലും"
 msgid "Resume dialog"
 msgstr "പുനരാരംഭിക്കൽ ഡയലോഗ്"
 
-#: modules/gui/qt/player/qml/ResumeDialog.qml:136
+#: modules/gui/qt/player/qml/ResumeDialog.qml:137
 msgid "You’ve watched till %1 already."
 msgstr "നിങ്ങൾ ഇതിനകം %1 വരെ കണ്ടിട്ടുണ്ട്."
 
-#: modules/gui/qt/player/qml/ResumeDialog.qml:138
+#: modules/gui/qt/player/qml/ResumeDialog.qml:139
 msgid "Continue where you left off?"
 msgstr "നിർത്തിയിടത്തുനിന്ന് തുടരണോ?"
 
@@ -7778,7 +7879,7 @@ msgstr "നിർത്തിയിടത്തുനിന്ന് തുട�
 msgid "Player topbar"
 msgstr "പ്ലേയർ ടോപ്പ്ബാർ"
 
-#: modules/gui/qt/player/qml/TopBar.qml:439
+#: modules/gui/qt/player/qml/TopBar.qml:440
 msgid "Show %1 in the library"
 msgstr "%1 ലൈബ്രറിയിൽ കാണിക്കുക"
 
@@ -7832,7 +7933,7 @@ msgstr "ബുക്ക്മാർക്കുകൾക്ക് മീഡി�
 msgid "Show Preferences"
 msgstr "മുൻഗണനകൾ കാണിക്കുക"
 
-#: modules/gui/qt/player/qml/TracksMenu.qml:556
+#: modules/gui/qt/player/qml/TracksMenu.qml:557
 #: modules/gui/qt/player/qml/TracksPageAudio.qml:37
 #: modules/gui/qt/player/qml/TracksPageSubtitle.qml:37
 #: modules/gui/qt/player/qml/SubtitleSyncTimeline.qml:42
@@ -7884,7 +7985,7 @@ msgstr "ഗാനവരികൾ പ്ലേബാക്ക് സ്ഥാന�
 msgid "Volume %1%"
 msgstr "വോളിയം %1%"
 
-#: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:207
+#: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:211
 msgid "Play audio to select a visualization."
 msgstr "ഒരു വിഷ്വലൈസേഷൻ തിരഞ്ഞെടുക്കാൻ ഓഡിയോ പ്ലേ ചെയ്യുക."
 
@@ -8235,10 +8336,6 @@ msgstr "%1-ൽ തിരയുന്നു…"
 msgid "Searching subtitles online…"
 msgstr "ഓൺലൈനിൽ ഉപശീർഷകങ്ങൾ തിരയുന്നു…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:264
-msgid "Downloading…"
-msgstr "ഡൗൺലോഡ് ചെയ്യുന്നു…"
-
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:266
 msgid "%1 · %2 found"
 msgstr "%1 · %2 കണ്ടെത്തി"
@@ -8279,10 +8376,6 @@ msgstr "പ്ലേബാക്കിനായി ഒരു ഉപശീർഷ�
 msgid "Title of the movie or series"
 msgstr "സിനിമയുടെയോ സീരീസിന്റെയോ തലക്കെട്ട്"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:365
-msgid "Searching…"
-msgstr "തിരയുന്നു…"
-
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:408
 msgid "Second"
 msgstr "രണ്ടാമത്തേത്"
@@ -8291,10 +8384,6 @@ msgstr "രണ്ടാമത്തേത്"
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "പതിവായി ഉപയോഗിക്കുന്നത്"
-
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:444
-msgid "For this file"
-msgstr "ഈ ഫയലിനായി"
 
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:465
 msgid "Looking for subtitles…"
@@ -8339,11 +8428,11 @@ msgstr "ചെറിയ ഉപശീർഷകങ്ങൾ"
 msgid "Larger subtitles"
 msgstr "വലിയ ഉപശീർഷകങ്ങൾ"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:773
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:774
 msgid "HI"
 msgstr "HI"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:778
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:779
 msgid "For the hearing impaired"
 msgstr "ശ്രവണ വൈകല്യമുള്ളവർക്കായി"
 
@@ -8421,37 +8510,37 @@ msgstr "പ്ലേ ക്യൂ (%1/%2)"
 msgid "Casting to %1"
 msgstr "%1-ലേക്ക് കാസ്റ്റ് ചെയ്യുന്നു"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:128
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:134
 msgid "Cast to"
 msgstr "കാസ്റ്റ് ചെയ്യുക"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:153
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:160
 msgid "This computer"
 msgstr "ഈ കമ്പ്യൂട്ടർ"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:182
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:189
 msgid "Not playing: choose it to try again"
 msgstr "പ്ലേ ചെയ്യുന്നില്ല: വീണ്ടും ശ്രമിക്കാൻ ഇത് തിരഞ്ഞെടുക്കുക"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:184
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:191
 msgid "Connecting…"
 msgstr "കണക്റ്റ് ചെയ്യുന്നു…"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:185
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:192
 msgid "Sound only"
 msgstr "ശബ്ദം മാത്രം"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:208
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:215
 msgid "Show %1 hidden device"
 msgid_plural "Show %1 hidden devices"
 msgstr[0] "മറച്ച %1 ഉപകരണം കാണിക്കുക"
 msgstr[1] "മറച്ച %1 ഉപകരണങ്ങൾ കാണിക്കുക"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:221
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:228
 msgid "Looking for TVs and Chromecasts on your network…"
 msgstr "നിങ്ങളുടെ നെറ്റ്വർക്കിൽ ടിവികൾക്കും Chromecast-കൾക്കുമായി തിരയുന്നു…"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:222
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:229
 msgid ""
 "No device found. Turn your TV or Chromecast on, on the same network as this "
 "computer."
@@ -8459,23 +8548,23 @@ msgstr ""
 "ഉപകരണമൊന്നും കണ്ടെത്തിയില്ല. ഈ കമ്പ്യൂട്ടറിന്റെ അതേ നെറ്റ്വർക്കിൽ നിങ്ങളുടെ ടിവി അല്ലെങ്കിൽ "
 "Chromecast ഓണാക്കുക."
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:236
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:251
 msgid "Show the video here too"
 msgstr "വീഡിയോ ഇവിടെയും കാണിക്കുക"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:286
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:301
 msgid "With a Chromecast, the video plays only there."
 msgstr "Chromecast ഉപയോഗിക്കുമ്പോൾ, വീഡിയോ അവിടെ മാത്രമേ പ്ലേ ചെയ്യൂ."
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:297
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:312
 msgid "The subtitles shown go to the TV with the picture."
 msgstr "കാണിക്കുന്ന ഉപശീർഷകങ്ങൾ ചിത്രത്തോടൊപ്പം ടിവിയിലേക്ക് പോകും."
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:314
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:329
 msgid "Hide this device"
 msgstr "ഈ ഉപകരണം മറയ്ക്കുക"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:358
+#: modules/gui/qt/player/qml/controlbarcontrols/CastButton.qml:373
 msgid "playing here"
 msgstr "ഇവിടെ പ്ലേ ചെയ്യുന്നു"
 
@@ -8503,11 +8592,11 @@ msgstr "15 സെക്കൻഡ് മുന്നോട്ട്"
 msgid "%1 %"
 msgstr "%1 %"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:65
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:66
 msgid "Choose a video zoom level"
 msgstr "ഒരു വീഡിയോ സൂം ലെവൽ തിരഞ്ഞെടുക്കുക"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:66
+#: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:67
 msgid "Zoom is unavailable without video"
 msgstr "വീഡിയോ ഇല്ലാതെ സൂം ലഭ്യമല്ല"
 
@@ -8531,19 +8620,19 @@ msgstr "തിരഞ്ഞെടുത്ത ഇനങ്ങൾ നീക്ക�
 msgid "Add files to the queue"
 msgstr "ക്യൂവിലേക്ക് ഫയലുകൾ ചേർക്കുക"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:629
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:630
 msgid "No results"
 msgstr "ഫലങ്ങളൊന്നുമില്ല"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:630
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:631
 msgid "No content yet"
 msgstr "ഇതുവരെ ഉള്ളടക്കമൊന്നുമില്ല"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:646
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:647
 msgid "Drag & Drop some content here!"
 msgstr "എന്തെങ്കിലും ഉള്ളടക്കം ഇവിടെ വലിച്ചിടുക!"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:711
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:712
 msgid "Play queue"
 msgstr "പ്ലേ ക്യൂ"
 
@@ -8551,16 +8640,16 @@ msgstr "പ്ലേ ക്യൂ"
 msgid "%1 elements, %2"
 msgstr "%1 ഇനങ്ങൾ, %2"
 
-#: modules/gui/qt/qt.cpp:175
+#: modules/gui/qt/qt.cpp:176
 msgid "Select the initial preferences view"
 msgstr "ആരംഭ മുൻഗണനാ കാഴ്ച തിരഞ്ഞെടുക്കുക"
 
-#: modules/gui/qt/qt.cpp:176
+#: modules/gui/qt/qt.cpp:177
 msgid ""
 "Select which preferences view to show upon opening the preferences dialog."
 msgstr "മുൻഗണനാ ഡയലോഗ് തുറക്കുമ്പോൾ ഏത് മുൻഗണനാ കാഴ്ച കാണിക്കണമെന്ന് തിരഞ്ഞെടുക്കുക."
 
-#: modules/gui/qt/qt.cpp:200
+#: modules/gui/qt/qt.cpp:201
 msgid ""
 "Show a notification popup with the artist and track name when the current "
 "play queue item changes, when VLC is minimized or hidden."
@@ -8568,7 +8657,7 @@ msgstr ""
 "നിലവിലെ പ്ലേ ക്യൂ ഇനം മാറുമ്പോൾ, VLC ചെറുതാക്കിയിരിക്കുമ്പോഴോ മറച്ചിരിക്കുമ്പോഴോ, "
 "ആർട്ടിസ്റ്റിന്റെയും ട്രാക്കിന്റെയും പേരുള്ള ഒരു അറിയിപ്പ് പോപ്പ്അപ്പ് കാണിക്കുക."
 
-#: modules/gui/qt/qt.cpp:204
+#: modules/gui/qt/qt.cpp:205
 msgid ""
 "Sets the windows opacity between 0.1 and 1 for main interface, play queue "
 "and extended panel. This option only works with Windows and X11 with "
@@ -8577,7 +8666,7 @@ msgstr ""
 "പ്രധാന ഇന്റർഫേസ്, പ്ലേ ക്യൂ, എക്സ്റ്റൻഡഡ് പാനൽ എന്നിവയുടെ വിൻഡോ അതാര്യത 0.1-നും 1-നും ഇടയിൽ "
 "സജ്ജമാക്കുന്നു. ഈ ഓപ്ഷൻ Windows-ലും കോമ്പോസിറ്റ് എക്സ്റ്റൻഷനുകളുള്ള X11-ലും മാത്രമേ പ്രവർത്തിക്കൂ."
 
-#: modules/gui/qt/qt.cpp:210
+#: modules/gui/qt/qt.cpp:211
 msgid ""
 "Sets the fullscreen controller opacity between 0.1 and 1 for main interface, "
 "play queue and extended panel. This option only works with Windows and X11 "
@@ -8587,11 +8676,11 @@ msgstr ""
 "നും 1-നും ഇടയിൽ സജ്ജമാക്കുന്നു. ഈ ഓപ്ഷൻ Windows-ലും കോമ്പോസിറ്റ് എക്സ്റ്റൻഷനുകളുള്ള X11-ലും "
 "മാത്രമേ പ്രവർത്തിക്കൂ."
 
-#: modules/gui/qt/qt.cpp:215
+#: modules/gui/qt/qt.cpp:216
 msgid "Initial user scale factor for the interface, between 0.3 and 3.0"
 msgstr "ഇന്റർഫേസിനുള്ള പ്രാരംഭ ഉപയോക്തൃ സ്കെയിൽ ഘടകം, 0.3-നും 3.0-നും ഇടയിൽ"
 
-#: modules/gui/qt/qt.cpp:218
+#: modules/gui/qt/qt.cpp:219
 msgid ""
 "Show the errors of VLC at the bottom of the window, and ask before removing "
 "media from a playlist or from the play queue, or deleting playlists. Off, "
@@ -8603,11 +8692,11 @@ msgstr ""
 "VLC-യുടെ സന്ദേശങ്ങളിൽ മാത്രം സൂക്ഷിക്കുകയും ഈ നീക്കം ചെയ്യലുകൾ ഉടനടി നടത്തുകയും ചെയ്യും; "
 "ഡിസ്കിൽ നിന്ന് ഒരു ഫയൽ മായ്ക്കുന്നത് എപ്പോഴും സ്ഥിരീകരിക്കും."
 
-#: modules/gui/qt/qt.cpp:228
+#: modules/gui/qt/qt.cpp:229
 msgid "set the options for qml debugger"
 msgstr "qml ഡീബഗ്ഗറിനുള്ള ഓപ്ഷനുകൾ സജ്ജമാക്കുക"
 
-#: modules/gui/qt/qt.cpp:229
+#: modules/gui/qt/qt.cpp:230
 msgid ""
 "set the options for qml debugger (see http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
@@ -8615,7 +8704,7 @@ msgstr ""
 "qml ഡീബഗ്ഗറിനുള്ള ഓപ്ഷനുകൾ സജ്ജമാക്കുക (http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications കാണുക)"
 
-#: modules/gui/qt/qt.cpp:249
+#: modules/gui/qt/qt.cpp:250
 msgid ""
 "Show the playback controls in fullscreen when the mouse moves. Off, only the "
 "keyboard shows them (the I key). The skins read it for their fullscreen "
@@ -8624,7 +8713,7 @@ msgstr ""
 "മൗസ് നീങ്ങുമ്പോൾ മുഴുവൻ സ്ക്രീനിൽ പ്ലേബാക്ക് നിയന്ത്രണങ്ങൾ കാണിക്കുക. ഓഫാണെങ്കിൽ, കീബോർഡ് "
 "മാത്രമേ അവ കാണിക്കൂ (I കീ). സ്കിനുകളും അവയുടെ മുഴുവൻ സ്ക്രീൻ കൺട്രോളറിനായി ഇത് വായിക്കുന്നു."
 
-#: modules/gui/qt/qt.cpp:265
+#: modules/gui/qt/qt.cpp:266
 msgid ""
 "Display the cover art of the audio playing in the player (the cone in the "
 "compact view). Off, a plain picture takes its place, which also prevents "
@@ -8633,7 +8722,7 @@ msgstr ""
 "പ്ലേ ചെയ്യുന്ന ഓഡിയോയുടെ കവർ ആർട്ട് പ്ലേയറിൽ പ്രദർശിപ്പിക്കുക (കോംപാക്റ്റ് കാഴ്ചയിലെ കോൺ). "
 "ഓഫാണെങ്കിൽ, ഒരു സാധാരണ ചിത്രം അതിന്റെ സ്ഥാനത്ത് വരും, ഇത് സ്ക്രീൻ ബേൺ-ഇൻ തടയുകയും ചെയ്യുന്നു."
 
-#: modules/gui/qt/qt.cpp:289
+#: modules/gui/qt/qt.cpp:290
 msgid ""
 "This option allows the interface to be shown and raised automatically when a "
 "video/audio playback starts, or never."
@@ -8641,11 +8730,11 @@ msgstr ""
 "ഒരു വീഡിയോ/ഓഡിയോ പ്ലേബാക്ക് ആരംഭിക്കുമ്പോൾ ഇന്റർഫേസ് സ്വയമേവ കാണിക്കാനും മുന്നിലേക്ക് "
 "കൊണ്ടുവരാനും, അല്ലെങ്കിൽ ഒരിക്കലും വേണ്ടെന്ന് വയ്ക്കാനും ഈ ഓപ്ഷൻ അനുവദിക്കുന്നു."
 
-#: modules/gui/qt/qt.cpp:292
+#: modules/gui/qt/qt.cpp:293
 msgid "Enable window titlebar"
 msgstr "വിൻഡോ ടൈറ്റിൽബാർ പ്രവർത്തനക്ഷമമാക്കുക"
 
-#: modules/gui/qt/qt.cpp:293
+#: modules/gui/qt/qt.cpp:294
 msgid ""
 "This option enables the title bar. Disabling it will remove the titlebar and "
 "move window buttons within the interface (Client Side Decoration)"
@@ -8653,29 +8742,29 @@ msgstr ""
 "ഈ ഓപ്ഷൻ ടൈറ്റിൽ ബാർ പ്രവർത്തനക്ഷമമാക്കുന്നു. ഇത് പ്രവർത്തനരഹിതമാക്കിയാൽ ടൈറ്റിൽബാർ നീക്കം "
 "ചെയ്യുകയും വിൻഡോ ബട്ടണുകൾ ഇന്റർഫേസിനുള്ളിലേക്ക് മാറ്റുകയും ചെയ്യും (ക്ലയന്റ് സൈഡ് ഡെക്കറേഷൻ)"
 
-#: modules/gui/qt/qt.cpp:297
+#: modules/gui/qt/qt.cpp:298
 msgid "Show the menu bar"
 msgstr "മെനു ബാർ കാണിക്കുക"
 
-#: modules/gui/qt/qt.cpp:298
+#: modules/gui/qt/qt.cpp:299
 msgid "This option displays the classic menu bar"
 msgstr "ഈ ഓപ്ഷൻ ക്ലാസിക് മെനു ബാർ പ്രദർശിപ്പിക്കുന്നു"
 
-#: modules/gui/qt/qt.cpp:300
+#: modules/gui/qt/qt.cpp:301
 msgid "Pin video controls"
 msgstr "വീഡിയോ നിയന്ത്രണങ്ങൾ പിൻ ചെയ്യുക"
 
-#: modules/gui/qt/qt.cpp:301
+#: modules/gui/qt/qt.cpp:302
 msgid "Place video controls above and below the video instead of above"
 msgstr ""
 "വീഡിയോ നിയന്ത്രണങ്ങൾ വീഡിയോയ്ക്ക് മുകളിൽ മാത്രം വയ്ക്കുന്നതിന് പകരം അതിന് മുകളിലും താഴെയും "
 "സ്ഥാപിക്കുക"
 
-#: modules/gui/qt/qt.cpp:304
+#: modules/gui/qt/qt.cpp:305
 msgid "Show the frame at the hovered position above the seek bar"
 msgstr "സീക്ക് ബാറിന് മുകളിൽ, ഹോവർ ചെയ്ത സ്ഥാനത്തെ ഫ്രെയിം കാണിക്കുക"
 
-#: modules/gui/qt/qt.cpp:306
+#: modules/gui/qt/qt.cpp:307
 msgid ""
 "Mark on the seek bar where the lines of the subtitle shown are, when it "
 "comes from a subtitle file"
@@ -8683,11 +8772,11 @@ msgstr ""
 "ഉപശീർഷകം ഒരു ഉപശീർഷക ഫയലിൽ നിന്ന് വരുമ്പോൾ, കാണിക്കുന്ന ഉപശീർഷകത്തിന്റെ വരികൾ "
 "എവിടെയാണെന്ന് സീക്ക് ബാറിൽ അടയാളപ്പെടുത്തുക"
 
-#: modules/gui/qt/qt.cpp:311
+#: modules/gui/qt/qt.cpp:312
 msgid "Select Qt video integration backend"
 msgstr "Qt വീഡിയോ ഇന്റഗ്രേഷൻ ബാക്കെൻഡ് തിരഞ്ഞെടുക്കുക"
 
-#: modules/gui/qt/qt.cpp:312
+#: modules/gui/qt/qt.cpp:313
 msgid ""
 "Select Qt video integration backend. Use with care, the interface may not "
 "start if an incompatible compositor is selected"
@@ -8695,11 +8784,11 @@ msgstr ""
 "Qt വീഡിയോ ഇന്റഗ്രേഷൻ ബാക്കെൻഡ് തിരഞ്ഞെടുക്കുക. ശ്രദ്ധയോടെ ഉപയോഗിക്കുക, പൊരുത്തപ്പെടാത്ത ഒരു "
 "കമ്പോസിറ്റർ തിരഞ്ഞെടുത്താൽ ഇന്റർഫേസ് ആരംഭിച്ചേക്കില്ല"
 
-#: modules/gui/qt/qt.cpp:314
+#: modules/gui/qt/qt.cpp:315
 msgid "Use smooth scrolling in Flickable based views"
 msgstr "Flickable അടിസ്ഥാനമാക്കിയുള്ള കാഴ്ചകളിൽ സുഗമമായ സ്ക്രോളിംഗ് ഉപയോഗിക്കുക"
 
-#: modules/gui/qt/qt.cpp:315
+#: modules/gui/qt/qt.cpp:316
 msgid ""
 "Deactivating this option will disable smooth scrolling in Flickable based "
 "views (such as the Play Queue). This option is only respected with a scroll "
@@ -8709,19 +8798,19 @@ msgstr ""
 "സുഗമമായ സ്ക്രോളിംഗ് പ്രവർത്തനരഹിതമാക്കും. ഒരു സ്ക്രോൾ ഹാൻഡ്ലർ ഉള്ളപ്പോൾ മാത്രമേ ഈ ഓപ്ഷൻ "
 "പരിഗണിക്കൂ, `qt-use-scroll-handler` ഓപ്ഷൻ കാണുക."
 
-#: modules/gui/qt/qt.cpp:318
+#: modules/gui/qt/qt.cpp:319
 msgid "Use Kirigami scroll handler for Flickable based views"
 msgstr "Flickable അടിസ്ഥാനമാക്കിയുള്ള കാഴ്ചകൾക്കായി Kirigami സ്ക്രോൾ ഹാൻഡ്ലർ ഉപയോഗിക്കുക"
 
-#: modules/gui/qt/qt.cpp:319
+#: modules/gui/qt/qt.cpp:320
 msgid "Using Kirigami scroll handler may improve scrolling behavior."
 msgstr "Kirigami സ്ക്രോൾ ഹാൻഡ്ലർ ഉപയോഗിക്കുന്നത് സ്ക്രോളിംഗ് സ്വഭാവം മെച്ചപ്പെടുത്തിയേക്കാം."
 
-#: modules/gui/qt/qt.cpp:321
+#: modules/gui/qt/qt.cpp:322
 msgid "Safe area for the user interface"
 msgstr "ഉപയോക്തൃ ഇന്റർഫേസിനുള്ള സുരക്ഷിത ഏരിയ"
 
-#: modules/gui/qt/qt.cpp:322
+#: modules/gui/qt/qt.cpp:323
 msgid ""
 "Sets the safe area percentage between 0.0 and 100 when you want to ensure "
 "the visibility of the user interface on a constrained viewport"
@@ -8729,19 +8818,19 @@ msgstr ""
 "പരിമിതമായ ഒരു വ്യൂപോർട്ടിൽ ഉപയോക്തൃ ഇന്റർഫേസിന്റെ ദൃശ്യത ഉറപ്പാക്കാൻ ആഗ്രഹിക്കുമ്പോൾ സുരക്ഷിത "
 "ഏരിയ ശതമാനം 0.0-നും 100-നും ഇടയിൽ സജ്ജമാക്കുന്നു"
 
-#: modules/gui/qt/qt.cpp:326
+#: modules/gui/qt/qt.cpp:327
 msgid "Print Qt's important internal messages"
 msgstr "Qt-യുടെ പ്രധാന ആന്തരിക സന്ദേശങ്ങൾ പ്രിന്റ് ചെയ്യുക"
 
-#: modules/gui/qt/qt.cpp:327
+#: modules/gui/qt/qt.cpp:328
 msgid "Enable Qt's all own messaging categories except the debug category."
 msgstr "ഡീബഗ് വിഭാഗം ഒഴികെ Qt-യുടെ എല്ലാ സ്വന്തം സന്ദേശ വിഭാഗങ്ങളും പ്രവർത്തനക്ഷമമാക്കുക."
 
-#: modules/gui/qt/qt.cpp:329
+#: modules/gui/qt/qt.cpp:330
 msgid "Hide the window on close"
 msgstr "അടയ്ക്കുമ്പോൾ വിൻഡോ മറയ്ക്കുക"
 
-#: modules/gui/qt/qt.cpp:330
+#: modules/gui/qt/qt.cpp:331
 msgid ""
 "Instead of closing the application, hide the window. This setting is only "
 "applicable when system tray icon is enabled."
@@ -8749,11 +8838,11 @@ msgstr ""
 "ആപ്ലിക്കേഷൻ അടയ്ക്കുന്നതിന് പകരം വിൻഡോ മറയ്ക്കുക. സിസ്റ്റം ട്രേ ഐക്കൺ "
 "പ്രവർത്തനക്ഷമമാക്കിയിരിക്കുമ്പോൾ മാത്രമേ ഈ സജ്ജീകരണം ബാധകമാകൂ."
 
-#: modules/gui/qt/qt.cpp:332
+#: modules/gui/qt/qt.cpp:333
 msgid "Enable backdrop blur filter for the main window if possible"
 msgstr "സാധ്യമെങ്കിൽ പ്രധാന വിൻഡോയ്ക്ക് ബാക്ക്ഡ്രോപ്പ് ബ്ലർ ഫിൽട്ടർ പ്രവർത്തനക്ഷമമാക്കുക"
 
-#: modules/gui/qt/qt.cpp:333
+#: modules/gui/qt/qt.cpp:334
 msgid ""
 "If backdrop blur filter is available, use translucency in the backgrounds of "
 "certain parts of the user interface instead of a solid color. This setting "
@@ -8763,11 +8852,11 @@ msgstr ""
 "പശ്ചാത്തലത്തിൽ കട്ടിയുള്ള നിറത്തിന് പകരം അർദ്ധസുതാര്യത ഉപയോഗിക്കുക. ഈ സജ്ജീകരണം ടെക്സ്റ്റിന്റെ "
 "വായനാക്ഷമത കുറയ്ക്കുന്നു."
 
-#: modules/gui/qt/qt.cpp:336
+#: modules/gui/qt/qt.cpp:337
 msgid "Enable picture-in-picture (PiP) mode"
 msgstr "ചിത്രത്തിനുള്ളിൽ ചിത്രം (PiP) മോഡ് പ്രവർത്തനക്ഷമമാക്കുക"
 
-#: modules/gui/qt/qt.cpp:337
+#: modules/gui/qt/qt.cpp:338
 msgid ""
 "Picture-in-picture mode allows playing video contained in a smaller area so "
 "that the interface remains usable."
@@ -8775,7 +8864,7 @@ msgstr ""
 "ഇന്റർഫേസ് ഉപയോഗയോഗ്യമായി തുടരുന്നതിന്, ചിത്രത്തിനുള്ളിൽ ചിത്രം മോഡ് ഒരു ചെറിയ ഏരിയയിൽ "
 "വീഡിയോ പ്ലേ ചെയ്യാൻ അനുവദിക്കുന്നു."
 
-#: modules/gui/qt/qt.cpp:340
+#: modules/gui/qt/qt.cpp:341
 msgid ""
 "Adjusts the accent color, special values are 'default' and 'system' "
 "(requires Qt 6.6) ."
@@ -8783,27 +8872,27 @@ msgstr ""
 "ആക്സന്റ് നിറം ക്രമീകരിക്കുന്നു, പ്രത്യേക മൂല്യങ്ങൾ 'default', 'system' എന്നിവയാണ് (Qt 6.6 "
 "ആവശ്യമാണ്)."
 
-#: modules/gui/qt/qt.cpp:346
+#: modules/gui/qt/qt.cpp:347
 msgid "Last channel watched"
 msgstr "അവസാനം കണ്ട ചാനൽ"
 
-#: modules/gui/qt/qt.cpp:347
+#: modules/gui/qt/qt.cpp:348
 msgid "Channel list"
 msgstr "ചാനൽ ലിസ്റ്റ്"
 
-#: modules/gui/qt/qt.cpp:352
+#: modules/gui/qt/qt.cpp:353
 msgid "Zoom the interface in"
 msgstr "ഇന്റർഫേസ് വലുതാക്കുക"
 
-#: modules/gui/qt/qt.cpp:353
+#: modules/gui/qt/qt.cpp:354
 msgid "Zoom the interface out"
 msgstr "ഇന്റർഫേസ് ചെറുതാക്കുക"
 
-#: modules/gui/qt/qt.cpp:454
+#: modules/gui/qt/qt.cpp:455
 msgid "Check for VLC Redesign updates"
 msgstr "VLC Redesign അപ്ഡേറ്റുകൾക്കായി പരിശോധിക്കുക"
 
-#: modules/gui/qt/qt.cpp:455
+#: modules/gui/qt/qt.cpp:456
 msgid ""
 "Look for a new release of VLC Redesign on GitHub at startup, at most once a "
 "day."
@@ -8811,11 +8900,11 @@ msgstr ""
 "സ്റ്റാർട്ടപ്പിൽ, ദിവസത്തിൽ പരമാവധി ഒരിക്കൽ, GitHub-ൽ VLC Redesign-ന്റെ പുതിയ "
 "റിലീസിനായി തിരയുക."
 
-#: modules/gui/qt/qt.cpp:459
+#: modules/gui/qt/qt.cpp:460
 msgid "Resume at"
 msgstr "പുനരാരംഭിക്കേണ്ട സ്ഥാനം"
 
-#: modules/gui/qt/qt.cpp:460
+#: modules/gui/qt/qt.cpp:461
 msgid ""
 "Seconds into the media of the command line where playback continues, after "
 "an update."
@@ -8867,33 +8956,33 @@ msgstr "പുനഃസ്ഥാപിക്കുക"
 msgid "Don't restore"
 msgstr "പുനഃസ്ഥാപിക്കരുത്"
 
-#: modules/gui/qt/util/redesign_updater.cpp:216
+#: modules/gui/qt/util/redesign_updater.cpp:221
 msgid ""
 "The update isn't signed by the publisher of this copy (%1), so it wasn't "
 "used."
 msgstr "ഈ പകർപ്പിന്റെ പ്രസാധകൻ (%1) അപ്ഡേറ്റിൽ ഒപ്പിട്ടിട്ടില്ലാത്തതിനാൽ അത് ഉപയോഗിച്ചില്ല."
 
-#: modules/gui/qt/util/redesign_updater.cpp:461
+#: modules/gui/qt/util/redesign_updater.cpp:467
 msgid "%1 (later)"
 msgstr "%1 (പിന്നീട്)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:463
+#: modules/gui/qt/util/redesign_updater.cpp:469
 msgid "%1 (soon)"
 msgstr "%1 (ഉടൻ)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:643
+#: modules/gui/qt/util/redesign_updater.cpp:649
 msgid "This build cannot check for updates."
 msgstr "ഈ ബിൽഡിന് അപ്ഡേറ്റുകൾക്കായി പരിശോധിക്കാനാകില്ല."
 
-#: modules/gui/qt/util/redesign_updater.cpp:657
+#: modules/gui/qt/util/redesign_updater.cpp:663
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "GitHub-ൽ എത്താനായില്ല. നിങ്ങളുടെ കണക്ഷൻ പരിശോധിച്ച് വീണ്ടും ശ്രമിക്കുക."
 
-#: modules/gui/qt/util/redesign_updater.cpp:674
+#: modules/gui/qt/util/redesign_updater.cpp:680
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "GitHub അപ്രതീക്ഷിതമായ ഒരു മറുപടി അയച്ചു (%1)."
 
-#: modules/gui/qt/util/redesign_updater.cpp:792
+#: modules/gui/qt/util/redesign_updater.cpp:798
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
@@ -8901,45 +8990,45 @@ msgstr ""
 "ഈ അപ്ഡേറ്റ് VLC Redesign ഒപ്പിട്ടതല്ല, അതിനാൽ ഇത് ഉപയോഗിച്ചില്ല. പകരം റിലീസ് പേജിൽ "
 "നിന്ന് ഇത് ഡൗൺലോഡ് ചെയ്യുക."
 
-#: modules/gui/qt/util/redesign_updater.cpp:814
-#: modules/gui/qt/util/redesign_updater.cpp:855
+#: modules/gui/qt/util/redesign_updater.cpp:820
+#: modules/gui/qt/util/redesign_updater.cpp:861
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr "അപ്ഡേറ്റിന്റെ ചെക്ക്സം കാണുന്നില്ല; പകരം റിലീസ് പേജിൽ നിന്ന് ഡൗൺലോഡ് ചെയ്യുക."
 
-#: modules/gui/qt/util/redesign_updater.cpp:829
-#: modules/gui/qt/util/redesign_updater.cpp:901
+#: modules/gui/qt/util/redesign_updater.cpp:835
+#: modules/gui/qt/util/redesign_updater.cpp:907
 msgid "The download failed. Check your connection and try again."
 msgstr "ഡൗൺലോഡ് പരാജയപ്പെട്ടു. നിങ്ങളുടെ കണക്ഷൻ പരിശോധിച്ച് വീണ്ടും ശ്രമിക്കുക."
 
-#: modules/gui/qt/util/redesign_updater.cpp:914
+#: modules/gui/qt/util/redesign_updater.cpp:920
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "അപ്ഡേറ്റ് അതിന്റെ ചെക്ക്സവുമായി പൊരുത്തപ്പെടുന്നില്ല, അതിനാൽ അത് ഉപയോഗിച്ചില്ല."
 
-#: modules/gui/qt/util/redesign_updater.cpp:945
+#: modules/gui/qt/util/redesign_updater.cpp:951
 msgid "The update isn't in a format this version knows."
 msgstr "ഈ പതിപ്പിന് അറിയാവുന്ന ഫോർമാറ്റിലല്ല അപ്ഡേറ്റ്."
 
-#: modules/gui/qt/util/redesign_updater.cpp:948
-#: modules/gui/qt/util/redesign_updater.cpp:972
-#: modules/gui/qt/util/redesign_updater.cpp:983
+#: modules/gui/qt/util/redesign_updater.cpp:954
+#: modules/gui/qt/util/redesign_updater.cpp:978
 #: modules/gui/qt/util/redesign_updater.cpp:989
+#: modules/gui/qt/util/redesign_updater.cpp:995
 msgid "The update is damaged."
 msgstr "അപ്ഡേറ്റ് കേടായിരിക്കുന്നു."
 
-#: modules/gui/qt/util/redesign_updater.cpp:953
+#: modules/gui/qt/util/redesign_updater.cpp:959
 msgid "The update isn't for this version."
 msgstr "ഈ അപ്ഡേറ്റ് ഈ പതിപ്പിനുള്ളതല്ല."
 
-#: modules/gui/qt/util/redesign_updater.cpp:962
-#: modules/gui/qt/util/redesign_updater.cpp:999
-#: modules/gui/qt/util/redesign_updater.cpp:1008
-#: modules/gui/qt/util/redesign_updater.cpp:1012
-#: modules/gui/qt/util/redesign_updater.cpp:1016
+#: modules/gui/qt/util/redesign_updater.cpp:968
+#: modules/gui/qt/util/redesign_updater.cpp:1005
+#: modules/gui/qt/util/redesign_updater.cpp:1014
+#: modules/gui/qt/util/redesign_updater.cpp:1018
+#: modules/gui/qt/util/redesign_updater.cpp:1022
 msgid "The update can't be written in %1."
 msgstr "അപ്ഡേറ്റ് %1-ൽ എഴുതാനാകില്ല."
 
-#: modules/gui/qt/util/redesign_updater.cpp:964
+#: modules/gui/qt/util/redesign_updater.cpp:970
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -8947,64 +9036,64 @@ msgstr ""
 "ഇൻസ്റ്റാൾ ചെയ്തതിന് ശേഷം VLC Redesign-ന്റെ ഒരു ഫയൽ മാറ്റിയിട്ടുണ്ട്, അതിനാൽ ചെറിയ "
 "അപ്ഡേറ്റ് ഉപയോഗിക്കാനാകില്ല: പകരം ഇൻസ്റ്റാളർ ഉപയോഗിച്ച് അപ്ഡേറ്റ് ചെയ്യുക."
 
-#: modules/gui/qt/util/redesign_updater.cpp:994
+#: modules/gui/qt/util/redesign_updater.cpp:1000
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr "അപ്ഡേറ്റ് കേടായിരിക്കുന്നു: ഒരു ഫയൽ അതിന്റെ ചെക്ക്സവുമായി പൊരുത്തപ്പെടുന്നില്ല."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1119
+#: modules/gui/qt/util/redesign_updater.cpp:1125
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr "അപ്ഡേറ്റ് ആരംഭിക്കാനായില്ല. അടുത്ത തവണ വീണ്ടും ശ്രമിക്കും."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1146
+#: modules/gui/qt/util/redesign_updater.cpp:1152
 msgid "The download failed. Try again, or download it from the release page."
 msgstr ""
 "ഡൗൺലോഡ് പരാജയപ്പെട്ടു. വീണ്ടും ശ്രമിക്കുക, അല്ലെങ്കിൽ റിലീസ് പേജിൽ നിന്ന് ഡൗൺലോഡ് ചെയ്യുക."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1159
+#: modules/gui/qt/util/redesign_updater.cpp:1165
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr ""
 "ഡൗൺലോഡ് ചെയ്ത ഇൻസ്റ്റാളർ അതിന്റെ ചെക്ക്സവുമായി പൊരുത്തപ്പെടുന്നില്ല, അതിനാൽ അത് "
 "പ്രവർത്തിപ്പിച്ചില്ല."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1168
+#: modules/gui/qt/util/redesign_updater.cpp:1174
 msgid "The installer couldn't be saved to %1."
 msgstr "ഇൻസ്റ്റാളർ %1-ലേക്ക് സംരക്ഷിക്കാനായില്ല."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1202
+#: modules/gui/qt/util/redesign_updater.cpp:1208
 msgid "The installer couldn't be started."
 msgstr "ഇൻസ്റ്റാളർ ആരംഭിക്കാനായില്ല."
 
-#: modules/gui/qt/util/renderer_manager.cpp:891
+#: modules/gui/qt/util/renderer_manager.cpp:896
 msgid ""
 "%1 doesn't answer. Check that it's on, and on the same network as this "
 "computer."
 msgstr ""
 "%1 പ്രതികരിക്കുന്നില്ല. അത് ഓണാണെന്നും ഈ കമ്പ്യൂട്ടറിന്റെ അതേ നെറ്റ്വർക്കിലാണെന്നും പരിശോധിക്കുക."
 
-#: modules/gui/qt/util/renderer_manager.cpp:894
+#: modules/gui/qt/util/renderer_manager.cpp:899
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the video."
 msgstr ""
 "വീഡിയോ വായിക്കാൻ ഈ കമ്പ്യൂട്ടറിലേക്ക് കണക്റ്റ് ചെയ്യാൻ Windows Firewall %1-നെ "
 "അനുവദിക്കുന്നില്ല."
 
-#: modules/gui/qt/util/renderer_manager.cpp:895
+#: modules/gui/qt/util/renderer_manager.cpp:900
 msgid "%1 couldn't read the video from this computer."
 msgstr "%1-ന് ഈ കമ്പ്യൂട്ടറിൽ നിന്ന് വീഡിയോ വായിക്കാനായില്ല."
 
-#: modules/gui/qt/util/renderer_manager.cpp:897
+#: modules/gui/qt/util/renderer_manager.cpp:902
 msgid "%1 refused to play this video."
 msgstr "%1 ഈ വീഡിയോ പ്ലേ ചെയ്യാൻ വിസമ്മതിച്ചു."
 
-#: modules/gui/qt/util/renderer_manager.cpp:899
+#: modules/gui/qt/util/renderer_manager.cpp:904
 msgid "%1 stopped playing."
 msgstr "%1 പ്ലേ ചെയ്യുന്നത് നിർത്തി."
 
-#: modules/gui/qt/util/renderer_manager.cpp:901
+#: modules/gui/qt/util/renderer_manager.cpp:906
 msgid "%1 is playing something else now."
 msgstr "%1 ഇപ്പോൾ മറ്റെന്തോ പ്ലേ ചെയ്യുന്നു."
 
-#: modules/gui/qt/util/renderer_manager.cpp:902
+#: modules/gui/qt/util/renderer_manager.cpp:907
 msgid "%1 couldn't play the video."
 msgstr "%1-ന് വീഡിയോ പ്ലേ ചെയ്യാനായില്ല."
 

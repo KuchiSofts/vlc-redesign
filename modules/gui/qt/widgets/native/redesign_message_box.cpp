@@ -26,6 +26,7 @@
 #include "maininterface/compositor.hpp"
 #include "menus/redesign_menu_style.hpp"
 #include "util/redesign_icon_provider.hpp"
+#include "util/redesign_version.hpp"
 
 #include <QColor>
 #include <QFont>
@@ -151,7 +152,7 @@ RedesignMessageBox::RedesignMessageBox(qt_intf_t *intf, const RedesignMessage &m
     // the shadow of the design around the card
     setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint);
     setAttribute(Qt::WA_TranslucentBackground);
-    setWindowTitle(message.title.isEmpty() ? qtr("VLC media player") : message.title);
+    setWindowTitle(message.title.isEmpty() ? QStringLiteral(VLC_REDESIGN_NAME) : message.title);
 
     QFont font = QGuiApplication::font();
     const QString family = RedesignMenuStyle::fontFamily();

@@ -24,8 +24,19 @@ Set-Content (Join-Path $VlcDir 'portable\standalone') ''
 $result = Join-Path $work 'result.txt'
 Set-Content $result "launch test of $vlc"
 $failures = 0
-function Note([string]$text) { Add-Content $result $text; Write-Host $text }
-function Fail([string]$text) { $script:failures++; Note "FAIL: $text" }
+# On GitHub: every line in the run's summary, a failure also as an error on
+# the run's page (both visible without signing in; the log isn't)
+function Gh-Note([string]$text) {
+    if ($env:GITHUB_STEP_SUMMARY) { Add-Content $env:GITHUB_STEP_SUMMARY "- $text" }
+}
+function Gh-Fail([string]$title, [string]$text) {
+    if ($env:GITHUB_ACTIONS) {
+        $escaped = $text.Replace('%', '%25').Replace("`r", '%0D').Replace("`n", '%0A')
+        Write-Host "::error title=$title::$escaped"
+    }
+}
+function Note([string]$text) { Add-Content $result $text; Write-Host $text; Gh-Note $text }
+function Fail([string]$text) { $script:failures++; Note "FAIL: $text"; Gh-Fail 'launch test' $text }
 
 # A clip VLC reads without a decoder: 2 s of 320 x 240 YUV 4:2:0 at 25 fps
 # (Y4M), a bar moving across it

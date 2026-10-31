@@ -20,6 +20,8 @@ qt_plugin_sources = files(
     '../../medialibrary/mlsubtitleassociations_link.cpp',
     '../../medialibrary/mlopensubtitles.cpp',
     '../../medialibrary/mlopensubtitles.hpp',
+    '../../medialibrary/mlsubtitlebatch.cpp',
+    '../../medialibrary/mlsubtitlebatch.hpp',
     '../../medialibrary/opensubtitles_url.hpp',
 
     '../../dialogs/extended/video_effects.cpp',
@@ -323,6 +325,8 @@ qt_plugin_sources = files(
     '../../player/subtitle_finder.hpp',
     '../../player/subtitle_providers.cpp',
     '../../player/subtitle_providers.hpp',
+    '../../player/subtitle_search.cpp',
+    '../../player/subtitle_search.hpp',
     '../../util/redesign_version.hpp',
     '../../util/base_model.cpp',
     '../../util/base_model.hpp',

@@ -133,10 +133,23 @@ Widgets.PageExt {
         { text: qsTr("Resync"), icon: "sync",
           action: () => { if (MainCtx.mediaLibraryAvailable) MainCtx.mediaLibrary.reload() },
           enabled: () => MainCtx.mediaLibraryAvailable },
+        // a row of its own in the sidebar (the designer's pinned folders)
+        { text: (dataList) => sidebarPins.isPinnedFolder(root._folderOf(dataList)) ? qsTr("Unpin from Sidebar")
+                                                                                   : qsTr("Pin to Sidebar"),
+          icon: "pin",
+          action: (dataList) => {
+              const url = String(root._folderOf(dataList))
+              if (sidebarPins.isPinnedFolder(url))
+                  sidebarPins.unpin(sidebarPins._pinKey({ kind: "folder", url: url }))
+              else
+                  sidebarPins.pinFolder(url)
+          } },
         // what the folder holds (Folder information)
         { text: qsTr("Info"), icon: "info",
           action: (dataList) => DialogsProvider.folderInfoDialog(root._folderOf(dataList)) }
     ]
+
+    SidebarItems { id: sidebarPins }
 
     Widgets.RedesignContextMenu {
         id: folderMenu

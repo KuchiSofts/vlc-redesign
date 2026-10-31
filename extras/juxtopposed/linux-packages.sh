@@ -140,12 +140,17 @@ find "$b" -name '*.so*' \( -type f -o -type l \) -exec basename {} \; | sort -u 
 comm -23 "$stage/needed" "$stage/provided" > "$stage/system"
 glibc=$(grep -o 'GLIBC_2\.[0-9][0-9]*' "$stage/objdump" | sort -u -V | tail -n 1)
 glibcxx=$(grep -o 'GLIBCXX_3\.4\.[0-9][0-9]*' "$stage/objdump" | sort -u -V | tail -n 1)
+# (the loaders of VA-API, VDPAU and OpenCL have copies in syslib/fallback,
+# used only where the system has none: recommended, so that apt and dnf
+# install them by default, for decoding on the GPU)
+ls "$b/syslib/fallback" 2>/dev/null | sort -u > "$stage/loaders"
 echo "From the system: $(tr '\n' ' ' < "$stage/system")"
+echo "Recommended from the system: $(tr '\n' ' ' < "$stage/loaders")"
 echo "Needs $glibc${glibcxx:+, $glibcxx}"
 
 debpkg() {
     case "$1" in
-        libc.so.6|libm.so.6|libpthread.so.0|libdl.so.2|librt.so.1|libresolv.so.2|libutil.so.1|ld-linux-*) echo libc6 ;;
+        libc.so.6|libm.so.6|libmvec.so.1|libpthread.so.0|libdl.so.2|librt.so.1|libresolv.so.2|libutil.so.1|libanl.so.1|libthread_db.so.1|libBrokenLocale.so.1|libnss_*|ld-linux-*) echo libc6 ;;
         libstdc++.so.6) echo libstdc++6 ;;
         libgcc_s.so.1) echo libgcc-s1 ;;
         libGL.so.1) echo libgl1 ;;
@@ -164,6 +169,29 @@ debpkg() {
         libva-x11.so.2) echo libva-x11-2 ;;
         libva-wayland.so.2) echo libva-wayland2 ;;
         libvdpau.so.1) echo libvdpau1 ;;
+        libOpenCL.so.1) echo 'ocl-icd-libopencl1 | libopencl1' ;;
+        libX11.so.6) echo libx11-6 ;;
+        libX11-xcb.so.1) echo libx11-xcb1 ;;
+        libXau.so.6) echo libxau6 ;;
+        libXdmcp.so.6) echo libxdmcp6 ;;
+        libxcb.so.1) echo libxcb1 ;;
+        libxcb-dri2.so.0) echo libxcb-dri2-0 ;;
+        libxcb-dri3.so.0) echo libxcb-dri3-0 ;;
+        libxcb-glx.so.0) echo libxcb-glx0 ;;
+        libxcb-present.so.0) echo libxcb-present0 ;;
+        libxcb-randr.so.0) echo libxcb-randr0 ;;
+        libxcb-shm.so.0) echo libxcb-shm0 ;;
+        libxcb-sync.so.1) echo libxcb-sync1 ;;
+        libxcb-xfixes.so.0) echo libxcb-xfixes0 ;;
+        libxshmfence.so.1) echo libxshmfence1 ;;
+        libz.so.1) echo zlib1g ;;
+        libzstd.so.1) echo libzstd1 ;;
+        libexpat.so.1) echo libexpat1 ;;
+        libdbus-1.so.3) echo libdbus-1-3 ;;
+        # (renamed libasound2t64 by Ubuntu 24.04 and Debian 13)
+        libasound.so.2) echo 'libasound2t64 | libasound2' ;;
+        libfontconfig.so.1) echo libfontconfig1 ;;
+        libfreetype.so.6) echo libfreetype6 ;;
         libwayland-client.so.0) echo libwayland-client0 ;;
         libwayland-cursor.so.0) echo libwayland-cursor0 ;;
         libwayland-egl.so.1) echo libwayland-egl1 ;;
@@ -205,6 +233,13 @@ echo hicolor-icon-theme >> "$stage/rpm-depends"
     && echo "libstdc++.so.6($glibcxx)(64bit)" >> "$stage/rpm-depends"
 sort -u -o "$stage/deb-depends" "$stage/deb-depends"
 sort -u -o "$stage/rpm-depends" "$stage/rpm-depends"
+echo vlc-redesign-livetv > "$stage/deb-recommends"
+echo vlc-redesign-livetv > "$stage/rpm-recommends"
+while read -r so; do
+    p=$(debpkg "$so") || { echo "no package known for $so: add it to debpkg()" >&2; exit 1; }
+    echo "$p" >> "$stage/deb-recommends"
+    echo "$so()(64bit)" >> "$stage/rpm-recommends"
+done < "$stage/loaders"
 
 # --- desktop entry, metainfo, icons -----------------------------------------
 share="$stage/share"
@@ -338,12 +373,12 @@ EOF
     echo '    depends:'
     list "$stage/deb-depends"
     echo '    recommends:'
-    echo '      - "vlc-redesign-livetv"'
+    list "$stage/deb-recommends"
     echo '  rpm:'
     echo '    depends:'
     list "$stage/rpm-depends"
     echo '    recommends:'
-    echo '      - "vlc-redesign-livetv"'
+    list "$stage/rpm-recommends"
     cat <<EOF
 deb:
   compression: xz

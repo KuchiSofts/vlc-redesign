@@ -213,8 +213,10 @@ for path in ('modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml', 'READ
 android = os.path.join(os.path.dirname(os.path.dirname(ROOT)), 'vlc-android-redesign')
 if os.path.isdir(android):
     # a text the app shows (strings.xml), not a comment in the code
+    # (without the GIT_DIR a pre-push hook sets, which would search this repository instead)
+    env = {k: v for k, v in os.environ.items() if not k.startswith('GIT_')}
     found = subprocess.run(['git', '-C', android, 'grep', '-l', 'Juxtopposed', '--', 'application/*strings*.xml'],
-                           capture_output=True, text=True).stdout.strip()
+                           capture_output=True, text=True, env=env).stdout.strip()
     check(found, 'Designer credited: the Android app', 'Juxtopposed is not named in the Android app')
 if release:
     todo.append('The release notes start with the Juxtopposed credit header (release-notes.py)')

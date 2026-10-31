@@ -52,3 +52,6 @@ light, English, Hebrew and German) found no crash. Left before its first release
 the Linux Flatpak, and what the issues and the Android work bring back to the desktop. From Juxtopposed's video, still
 to come on the desktop: pinning a folder or a playlist to the sidebar, online subtitles for a whole folder or
 playlist, choosing the sound output device on Linux and macOS, and the on-screen message naming the shortcut used.
+
+Fixed since 0.4.1, through a pull request (no need to wait for 0.5.0): the startup volume goes up to 200 %
+([#30](https://github.com/KuchiSofts/vlc-redesign/issues/30)).

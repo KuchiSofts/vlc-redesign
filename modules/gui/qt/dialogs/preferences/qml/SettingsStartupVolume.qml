@@ -132,8 +132,9 @@ Rectangle {
                     onTextEdited: root.chosen(false)
                     onEditingFinished: {
                         const percent = parseInt(text)
+                        // up to the player's 200 % (AOUT_VOLUME_MAX), which every output keeps
                         if (!isNaN(percent))
-                            root.volumeEdited(Math.max(0, Math.min(percent, 125)) / 100)
+                            root.volumeEdited(Math.max(0, Math.min(percent, 200)) / 100)
                         text = Qt.binding(() => Math.round(root.volume * 100) + "%")
                     }
                     Accessible.name: qsTr("Startup volume")

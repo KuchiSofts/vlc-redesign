@@ -47,7 +47,8 @@ jobs:
             choco install mingw -y --no-progress
             $env:PATH = "C:\ProgramData\mingw64\mingw64\bin;$env:PATH"
           }
-          gcc -O2 -Wall -Wextra -I modules/gui/qt/util extras/juxtopposed/signing/verify-test.c -o verify-test.exe
+          # (static: the runner's MinGW runtime DLLs are not on the PATH of the next step)
+          gcc -O2 -Wall -Wextra -static -I modules/gui/qt/util extras/juxtopposed/signing/verify-test.c -o verify-test.exe
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
 
       # the signed checksums of the latest release must be good with the key
@@ -59,12 +60,14 @@ jobs:
         run: |
           $tag = gh release view --repo $env:GITHUB_REPOSITORY --json tagName --jq .tagName
           gh release download $tag --repo $env:GITHUB_REPOSITORY --pattern 'SHA256SUMS.txt*' --dir sums
-          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          if ($LASTEXITCODE) { Write-Host "::error title=update signature::the files of $($tag) could not be downloaded"; exit 1 }
           $good = ./verify-test.exe sums/SHA256SUMS.txt
+          Write-Host "verify-test on $($tag): $good (exit $LASTEXITCODE)"
           if ($LASTEXITCODE -ne 0 -or $good -ne 'good') { Write-Host "::error title=update signature::the signature of ${tag} isn't accepted ($good)"; exit 1 }
           $bytes = [IO.File]::ReadAllBytes("$PWD/sums/SHA256SUMS.txt")
           $bytes[0] = $bytes[0] -bxor 1
           [IO.File]::WriteAllBytes("$PWD/sums/changed.txt", $bytes)
           $bad = ./verify-test.exe sums/changed.txt sums/SHA256SUMS.txt.sig
+          Write-Host "verify-test on a changed copy: $bad (exit $LASTEXITCODE)"
           if ($LASTEXITCODE -eq 0 -or $bad -ne 'bad') { Write-Host "::error title=update signature::a changed SHA256SUMS.txt is accepted ($bad)"; exit 1 }
           "- the signature of ${tag}: good; a changed copy: bad" >> $env:GITHUB_STEP_SUMMARY

@@ -42,5 +42,11 @@ ENV LD_LIBRARY_PATH=/opt/qt/6.8.3/gcc_64/lib
 ENV QT_PLUGIN_PATH=/opt/qt/6.8.3/gcc_64/plugins
 ENV QML_IMPORT_PATH=/opt/qt/6.8.3/gcc_64/qml
 ENV QML2_IMPORT_PATH=/opt/qt/6.8.3/gcc_64/qml
+# patchelf: linux-bundle.sh gives every program and library of the bundle its
+# own search path (RUNPATH), so the launcher sets no LD_LIBRARY_PATH that the
+# programs VLC opens would inherit (a layer of its own: the one of Qt stays)
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends patchelf \
+    && rm -rf /var/lib/apt/lists/*
 USER ubuntu
 WORKDIR /work

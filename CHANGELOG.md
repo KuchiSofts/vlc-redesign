@@ -15,6 +15,19 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Added
+
+- **Android: the app tells you when a new version is out.** Once a day it looks at the latest release here; when
+  it is newer, *Download* gets the APK (Android installs it over the app, your settings and library stay), *What's
+  new* opens the release page, *Skip* leaves that version out. Nothing is downloaded by itself. Switch it in
+  *Settings › General* or in the welcome's privacy step. (0.5.0 has no such check: install 0.5.1 by hand once.)
+
+### Technical
+
+- The version being prepared is 0.5.1.
+- The Windows builds free disk space on GitHub's runner first (an ARM64 build ran out of it).
+- The Apple Silicon build runs on GitHub's `macos-15` (`macos-14` is retired on 2026-11-02).
+
 ## [0.5.0] · 2026-10-31
 
 ### Added
@@ -1521,7 +1534,7 @@ The fullscreen button moves to the control bar, and the control bar is easier to
 
 ### Documentation
 
-- README: [*Customize the interface*](README.md#customize-the-interface), with a 44-second video.
+- README: *Customize the interface* (now the wiki page [*Customize the player*](https://github.com/KuchiSofts/vlc-redesign/wiki/Customize-the-Player)), with a 44-second video.
 
 ---
 

@@ -12,7 +12,7 @@
 // the updater and read by extras/juxtopposed/make-release.ps1: the release
 // it is, or the one it prepares (raised once the work for it starts, so a
 // build made in between does not read as the release before).
-#define VLC_REDESIGN_VERSION "0.5.0"
+#define VLC_REDESIGN_VERSION "0.5.1"
 // The product's name where the app names itself (window title, tray, message
 // boxes, the top bars, About): VideoLAN's trademark policy allows "VLC media
 // player" for GPL redistributions, and no use of the name "VideoLAN"

@@ -58,6 +58,15 @@ jobs:
           # touched contrib/ and the packaging
           fetch-depth: 0
 
+      # GitHub's Ubuntu image keeps ~14 GB free; the build (image, contribs,
+      # objects, packages) came within bytes of it ("No space left on
+      # device" on an ARM64 run): the SDKs it never uses go first
+      - name: Free disk space
+        run: |
+          sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/.ghcup                       /opt/hostedtoolcache/CodeQL /usr/local/share/powershell /usr/share/swift
+          sudo docker image prune --all --force > /dev/null
+          df -h /
+
       - name: Build image
         run: docker build -t vlc-win64-redesign -f extras/juxtopposed/win64.Dockerfile extras/juxtopposed
 
@@ -162,6 +171,15 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0
+
+      # GitHub's Ubuntu image keeps ~14 GB free; the build (image, contribs,
+      # objects, packages) came within bytes of it ("No space left on
+      # device" on an ARM64 run): the SDKs it never uses go first
+      - name: Free disk space
+        run: |
+          sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/.ghcup                       /opt/hostedtoolcache/CodeQL /usr/local/share/powershell /usr/share/swift
+          sudo docker image prune --all --force > /dev/null
+          df -h /
 
       - name: Build image
         run: docker build -t vlc-winarm64-redesign -f extras/juxtopposed/winarm64.Dockerfile extras/juxtopposed

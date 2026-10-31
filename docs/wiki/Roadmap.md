@@ -20,40 +20,20 @@ Updated as the work moves (last: 2026-10-31).
 | **macOS** (Apple Silicon, Intel) | ✅ released 0.5.0 | ██████████ 100 % | tests on a Mac by hand |
 | **Android** (phones) | ✅ released 0.5.0 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
 | **Android** (tablets) | ✅ released 0.5.0 | █████████░ 98 % | a test on a real tablet (done on 11" and 13" emulators) |
-| **Samsung TV receiver** | 💡 researched | ░░░░░░░░░░ 0 % | after the Android release |
+| **Samsung TV receiver** | 💡 researched | ░░░░░░░░░░ 0 % | next after 0.5.1 |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
-## Next: 0.5.0 and the Android app
+## Next: 0.5.1 and after
 
-**Every idea of Juxtopposed's video now exists**, on the desktop and on Android:
+**0.5.1** is a release of fixes, made as the issues bring them (each fix is first published through a pull request,
+with a build to try). After it:
 
-- ✅ Pin a folder or a playlist to the sidebar (*Pin to Sidebar* in their menus, *Unpin* on the row; on Android in
-  the tablet sidebar and at the top of Home, moved and hidden in *Edit Sidebar*)
-- ✅ Subtitles from the internet for a whole folder, season or playlist, each episode matched on its own
-- ✅ The on-screen messages name the shortcut that made them ("Volume: 115%" · "Up")
-- ✅ Choose the sound output device on Linux and macOS too (*Settings › Audio › Output device*)
-- ✅ Android: the subtitle sync timeline, subtitle settings kept per series, frame previews on the seek bar, the
-  waveform seek bar for music kept between starts, Customize Player profiles, the last icons as the desktop's
+- 📋 Android: the TV layout (a remote control), and a test on a real tablet (the tablet layout was tested on 11" and
+  13" emulators)
+- 📋 Linux: the Flatpak on Flathub, and an updater in the app as on Windows
+- 📋 macOS and Windows on ARM64: a round by hand on a real Mac and a real ARM64 PC (both are tested on GitHub's
+  machines at every build)
+- 💡 The Samsung TV receiver (the TV side of casting, drawn in the design), then iPhone and iPad
 
-**0.5.0** also brings:
-
-- ✅ The app's name is **VLC Media Player Redesign**, as VideoLAN's trademark policy allows a free (GPL) build
-- ✅ Linux: the programs VLC opens (browser, file manager, D-Bus for the media keys and the screen saver) work on
-  newer systems; fewer bundled system libraries; the AppImage and the folder play videos on a system without VA-API;
-  tested on Ubuntu 24.04/26.04, Debian 13, Fedora 41/43, Arch and as a Flatpak
-- ✅ Windows: the firewall rule for casting runs Windows' own netsh by its full path; quitting no longer waits for
-  Windows' question about it; stricter checks of updates
-- ✅ The build and release pipeline hardened (actions pinned to commits, downloads checked against their hashes),
-  new automatic tests of the parsers and of the updates' signature
-
-**The Android app** (a fork of VLC for Android with the design) has the design's Home, library, player bar and
-Customize Player, the compact menus, casting like the desktop, effects, recording, subtitles in every script and right
-to left, Live TV, the tablet layout and the designer's credit. An automatic tour of every screen (phone and tablets,
-dark and light, English, Hebrew and German, large text) finds no crash. Left before its first release:
-
-- ✅ Its own package name, `org.kuchisofts.vlcredesign`: it installs beside VLC
-- ✅ Every text of the redesign translated in every language the app speaks
-- 📋 A test on a real phone and a tablet, then the first release: an APK on GitHub Releases (not on Google Play)
-
-Fixed since 0.4.1, through a pull request (no need to wait for 0.5.0): the startup volume goes up to 200 %
-([#30](https://github.com/KuchiSofts/vlc-redesign/issues/30)).
+What each release brought: the [roadmap](https://github.com/KuchiSofts/vlc-redesign/blob/main/ROADMAP.md#050-published-2026-10-31)
+and the [changelog](https://github.com/KuchiSofts/vlc-redesign/blob/main/CHANGELOG.md).

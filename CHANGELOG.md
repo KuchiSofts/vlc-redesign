@@ -33,6 +33,9 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Fixed
 
+- **The startup volume goes up to 200 %** ([#30](https://github.com/KuchiSofts/vlc-redesign/issues/30)). In
+  Settings › Audio › Startup volume, "Always start at" fell back to 125 % on Windows; it now keeps any value up to 200 %.
+- **AV1 closed captions** (from VideoLAN): AV1 videos decoded by dav1d show their CEA-608/708 captions again.
 - **Linux: H.264 no longer closes VLC on some Intel graphics** (seen with an Intel UHD 600 and the iHD driver). When the
   hardware could not decode the video, VLC went on in software with several threads, but tried the hardware
   again in that mode, which the system's FFmpeg refuses by stopping the program. Once the hardware failed for a

@@ -54,3 +54,6 @@ dark and light, English, Hebrew and German, large text) finds no crash. Left bef
 - ✅ Its own package name, `org.kuchisofts.vlcredesign`: it installs beside VLC
 - ✅ Every text of the redesign translated in every language the app speaks
 - 📋 A test on a real phone and a tablet, then the first release: an APK on GitHub Releases (not on Google Play)
+
+Fixed since 0.4.1, through a pull request (no need to wait for 0.5.0): the startup volume goes up to 200 %
+([#30](https://github.com/KuchiSofts/vlc-redesign/issues/30)).

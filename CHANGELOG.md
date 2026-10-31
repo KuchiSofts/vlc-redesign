@@ -25,6 +25,11 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 ### Technical
 
 - The version being prepared is 0.5.1.
+- The release notes tool writes the tables of every platform (Windows, Linux, macOS, Android) from the files of
+  the release, with an optional intro (`release-intro-X.Y.Z.md`): 0.5.0's Linux, macOS and Android tables were added by hand.
+- Checked after 0.5.0: the small update from 0.4.1 in the app (Update now, Restart now: 499 files, the folder then
+  identical to 0.5.0's, reopened by itself); the Linux AppImage plays H.264, HEVC, VP9 and AV1 on an Intel UHD 600
+  server; the menus' dialogs open and close with no QML warning.
 - The Windows builds free disk space on GitHub's runner first (an ARM64 build ran out of it).
 - The Apple Silicon build runs on GitHub's `macos-15` (`macos-14` is retired on 2026-11-02).
 

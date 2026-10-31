@@ -12,11 +12,11 @@ to the page that explains the feature in full.
 
 | Platform | In this tour | Status |
 |---|---|---|
-| **[Windows](#windows)** | 17 clips: every main feature of 0.4.0 | Released, 0.4.1 (2026-10-30) |
-| **[Linux](#linux)** | The AppImage on Arch Linux | Released, 0.4.1 (2026-10-30) |
-| **[macOS](#macos)** | A screenshot of the app | Released, 0.4.1 (2026-10-30) |
-| **[Windows on ARM64](Platforms#windows-on-arm64)** | No clips: the same app as Windows | Released, 0.4.1 (2026-10-30), new in 0.4.1 |
-| **[Android](#android-in-testing-not-part-of-040)** | 8 phone clips and 1 tablet clip | In testing, **not part of 0.4.1** |
+| **[Windows](#windows)** | 17 clips: every main feature of 0.4.0 | Released, 0.5.0 (2026-10-31) |
+| **[Linux](#linux)** | The AppImage on Arch Linux | Released, 0.5.0 (2026-10-31) |
+| **[macOS](#macos)** | A screenshot of the app | Released, 0.5.0 (2026-10-31) |
+| **[Windows on ARM64](Platforms#windows-on-arm64)** | No clips: the same app as Windows | Released, 0.5.0 (2026-10-31); the first was 0.4.1 |
+| **[Android](#android)** | 8 phone clips and 1 tablet clip | Released in **0.5.0**; recorded before it, on the emulator |
 
 Where each platform stands, with its requirements and files: [Platforms](Platforms).
 
@@ -24,7 +24,7 @@ Where each platform stands, with its requirements and files: [Platforms](Platfor
 
 | [![The Windows film](https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/films/windows.jpg)](https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/films/vlc-redesign-0.4.0-windows.mp4) | [![The Linux and macOS film](https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/films/linux-macos.jpg)](https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/films/vlc-redesign-0.4.0-linux-macos.mp4) | [![The Android film](https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/films/android.jpg)](https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/films/vlc-redesign-0.4.0-android.mp4) |
 |---|---|---|
-| **Windows**, 0.4.0: the 17 clips, 2 min 55 s (14.0 MB) | **Linux and macOS**, 0.4.0: 21 s (0.9 MB) | **Android**, in testing: 9 clips, 2 min 2 s (3.9 MB) |
+| **Windows**, 0.4.0: the 17 clips, 2 min 55 s (14.0 MB) | **Linux and macOS**, 0.4.0: 21 s (0.9 MB) | **Android**, before 0.5.0: 9 clips, 2 min 2 s (3.9 MB) |
 
 **Media in the clips:** the Blender open movies *Sintel*, *Big Buck Bunny*, *Elephants Dream*, *Tears of Steel* and
 *Caminandes* (CC BY), music by Kevin MacLeod (incompetech.com, CC BY 4.0), a made-up TV provider for the Live TV clips
@@ -204,7 +204,7 @@ In depth: [Languages](Languages) · [Right to left](Languages#right-to-left)
 
 ## Linux
 
-**Released, 0.4.1.** A .deb, an .rpm, an AppImage and a tar.xz for x86_64 and ARM64, next to the distribution's own
+**Released, 0.5.0.** A .deb, an .rpm, an AppImage, a Flatpak and a tar.xz for x86_64 and ARM64, next to the distribution's own
 VLC; a Flatpak comes next. How to install: [Install and update: Linux](Install-and-Update#linux). Requirements and
 what is tested: [Platforms: Linux](Platforms#linux).
 
@@ -217,7 +217,7 @@ In depth: [Platforms: Linux](Platforms#linux)
 
 ## macOS
 
-**Released, 0.4.1.** A disk image for Apple Silicon and one for Intel, built and tested by GitHub's Macs, signed ad
+**Released, 0.5.0.** A disk image for Apple Silicon and one for Intel, built and tested by GitHub's Macs, signed ad
 hoc (macOS asks once to open it). How to install: [Install and update: macOS](Install-and-Update#macos).
 Requirements and what is tested: [Platforms: macOS](Platforms#macos).
 
@@ -229,12 +229,12 @@ In depth: [Platforms: macOS](Platforms#macos)
 
 ---
 
-## Android (in testing, not part of 0.4.0)
+## Android
 
 > [!NOTE]
-> **The Android app is not part of 0.4.0 and has no download yet.** It is a separate app, a fork of VLC for Android
-> with its screens redrawn in the design, in its own repository, and it is in testing. These clips were recorded on
-> the Android emulator. What it is and where it stands: [Platforms: Android](Platforms#android).
+> **The Android app is released since 0.5.0** (an APK: [Install and update](Install-and-Update#android)). It is a
+> separate app, a fork of VLC for Android with its screens redrawn in the design, in its own repository. These clips
+> were recorded on the Android emulator before the release. Where it stands: [Platforms: Android](Platforms#android).
 
 Portrait phone clips (Home at 400 px wide, the others at 360 px), then the tablet clip.
 
@@ -261,7 +261,7 @@ Portrait phone clips (Home at 400 px wide, the others at 360 px), then the table
 
 <a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/android/tablet.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/android/tablet.gif" alt="Android tablet: the sidebar and list plus detail, an artist and an album beside their list, More, and the settings pages beside their list" width="960"></a>
 
-**Tablet layout** (in testing, not part of 0.4.0). The sidebar and a list with its detail beside it: an artist and
+**Tablet layout.** The sidebar and a list with its detail beside it: an artist and
 an album next to their list, *More*, and the settings pages next to their list.
 
 In depth: [Platforms: Android](Platforms#android)

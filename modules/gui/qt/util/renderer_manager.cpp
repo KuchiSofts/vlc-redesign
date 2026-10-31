@@ -366,12 +366,17 @@ public:
         var_DelCallback( VLC_OBJECT( vlc_object_instance( p_intf ) ), "renderer-state",
                          &castStateChanged, this );
 #ifdef _WIN32
-        // Windows' question still open runs the code of this module: its
-        // answer first (the process it starts is not waited for)
+        // Windows' question still open (behind other windows) is not waited
+        // for: quitting would hang until it is answered, and a file opened
+        // meanwhile would go to this hidden VLC. Its thread runs the code of
+        // this module, pinned in memory when it started (allowFirewall): it
+        // is left to end with the process.
         if (m_firewallAsking)
         {
-            m_firewallAsking->wait();
-            delete m_firewallAsking;
+            if (m_firewallAsking->isFinished())
+                delete m_firewallAsking;
+            else
+                m_firewallAsking->disconnect();
         }
         if (m_firewallProcess)
             CloseHandle(m_firewallProcess);
@@ -1136,43 +1141,82 @@ void RendererManager::allowFirewall()
     // the public ones when this computer is on one (no rule of the others
     // counts there). The rule there already is changed, not added again.
     // Windows asks for an administrator's approval (declined: nothing).
+    // The programs run as an administrator by their full path, from the
+    // system folder: a bare name is also looked for in the current folder
+    // (the one of a file opened from Explorer), where a file of the same
+    // name would be run with the approval
+    wchar_t systemBuffer[MAX_PATH];
+    const UINT systemLength = GetSystemDirectoryW(systemBuffer, MAX_PATH);
+    if (systemLength == 0 || systemLength >= MAX_PATH - 16)
+        return;
+    const std::wstring systemDir(systemBuffer);
+    const std::wstring netsh = systemDir + L"\\netsh.exe";
+
     const std::wstring name = L"name=\"" + std::wstring(firewallRuleName) + L"\" dir=in ";
     const std::wstring rule = L"action=allow program=\"" + std::wstring(path) + L"\" enable=yes profile="
                             + (d->m_firewallPublic ? L"private,domain,public" : L"private,domain");
-    std::wstring file, parameters;
+    // the commands, each with Windows' approval, one after the other
+    std::vector<std::pair<std::wstring, std::wstring>> commands;
     if (d->m_firewallBlockRule)
     {
         // A rule keeping it out (Windows' own question declined once) wins
         // over any allowing one: this program's inbound rules go, then ours
-        // comes, in one approval (cmd /S strips the outer quotes)
-        file = L"cmd.exe";
-        parameters = L"/S /C \"netsh advfirewall firewall delete rule name=all dir=in program=\""
-                   + std::wstring(path) + L"\" & netsh advfirewall firewall add rule " + name + rule + L"\"";
+        // comes, in one approval (cmd /S strips the outer quotes). cmd would
+        // expand a %name% of the path: then two approvals, without cmd.
+        const std::wstring remove = L"advfirewall firewall delete rule name=all dir=in program=\""
+                                  + std::wstring(path) + L"\"";
+        const std::wstring add = L"advfirewall firewall add rule " + name + rule;
+        if (std::wstring(path).find(L'%') == std::wstring::npos)
+            commands.emplace_back(systemDir + L"\\cmd.exe",
+                                  L"/S /C \"\"" + netsh + L"\" " + remove + L" & \"" + netsh + L"\" " + add + L"\"");
+        else
+        {
+            commands.emplace_back(netsh, remove);
+            commands.emplace_back(netsh, add);
+        }
     }
     else
     {
-        file = L"netsh.exe";
-        parameters = d->m_firewallRuleExists
+        commands.emplace_back(netsh, d->m_firewallRuleExists
             ? L"advfirewall firewall set rule " + name + L"new " + rule
-            : L"advfirewall firewall add rule " + name + rule;
+            : L"advfirewall firewall add rule " + name + rule);
     }
+
+    // The thread below runs the code of this module and may outlive the
+    // interface (quitting doesn't wait for Windows' question): the module
+    // stays in memory until the process ends
+    HMODULE pinned = nullptr;
+    GetModuleHandleExW(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_PIN,
+                       reinterpret_cast<LPCWSTR>(&firewallRuleName), &pinned);
 
     d->m_firewallAllowing = true;
     emit firewallChanged();
     // The call waits for the answer to Windows' question, which can come
     // behind other windows: on a thread of its own, the interface goes on
     auto process = std::make_shared<HANDLE>(nullptr);
-    d->m_firewallAsking = QThread::create([file, parameters, process]() {
+    d->m_firewallAsking = QThread::create([commands, systemDir, process]() {
         const HRESULT init = CoInitializeEx(nullptr, COINIT_APARTMENTTHREADED | COINIT_DISABLE_OLE1DDE);
-        SHELLEXECUTEINFOW info = {};
-        info.cbSize = sizeof(info);
-        info.fMask = SEE_MASK_NOCLOSEPROCESS;
-        info.lpVerb = L"runas";
-        info.lpFile = file.c_str();
-        info.lpParameters = parameters.c_str();
-        info.nShow = SW_HIDE;
-        if (ShellExecuteExW(&info) && info.hProcess)
-            *process = info.hProcess;
+        for (size_t i = 0; i < commands.size(); ++i)
+        {
+            SHELLEXECUTEINFOW info = {};
+            info.cbSize = sizeof(info);
+            info.fMask = SEE_MASK_NOCLOSEPROCESS;
+            info.lpVerb = L"runas";
+            info.lpFile = commands[i].first.c_str();
+            info.lpParameters = commands[i].second.c_str();
+            info.lpDirectory = systemDir.c_str();
+            info.nShow = SW_HIDE;
+            if (!ShellExecuteExW(&info) || !info.hProcess)
+                break; // declined: nothing more
+            if (i + 1 < commands.size())
+            {
+                // (the rule removed before the next one is added)
+                WaitForSingleObject(info.hProcess, 30000);
+                CloseHandle(info.hProcess);
+            }
+            else
+                *process = info.hProcess;
+        }
         if (SUCCEEDED(init))
             CoUninitialize();
     });

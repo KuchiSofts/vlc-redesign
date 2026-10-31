@@ -2,7 +2,7 @@
 
 VLC Redesign **0.4.1** is released for four platforms together: **Windows 10 (version 1809 or later) and Windows 11,
 64-bit** (x64), **Windows 11 on ARM64** (new in 0.4.1), **Linux** (x86_64 and ARM64) and **macOS** (Apple Silicon
-and Intel). The Android app is in testing as a separate app. This page gives, for each platform, its status, its version, what it needs, its files, what is tested and what is
+and Intel). The Android app is released as a separate app since 0.5.0. This page gives, for each platform, its status, its version, what it needs, its files, what is tested and what is
 missing.
 
 The status of each platform is kept in one file,
@@ -16,17 +16,17 @@ The study behind the order, with the evidence from VideoLAN's build system:
 
 | Platform | Status | Latest version | Next | Needs |
 |---|---|---|---|---|
-| **[Windows](#windows)** | **Released** | **0.4.1** (2026-10-30) | 0.5.0 | Windows 10 (1809) or 11, 64-bit |
-| **[Linux](#linux)** | **Released** | **0.4.1** (2026-10-30) | 0.5.0 | glibc 2.38 (Ubuntu 24.04, Debian 13, Fedora 39 or later), x86_64 or ARM64 |
-| **[macOS](#macos)** | **Released** | **0.4.1** (2026-10-30) | 0.5.0 | macOS 12 Monterey, Apple Silicon or Intel |
-| **[Windows on ARM64](#windows-on-arm64)** | **Released** | **0.4.1** (2026-10-30) | 0.5.0 | Windows 11 on ARM64 |
-| [Android (phones, tablets, TV)](#android) | Research (an app in testing) | none yet | | Android 8.0 or later |
+| **[Windows](#windows)** | **Released** | **0.5.0** (2026-10-31) | 0.5.1 | Windows 10 (1809) or 11, 64-bit |
+| **[Linux](#linux)** | **Released** | **0.5.0** (2026-10-31) | 0.5.1 | glibc 2.38 (Ubuntu 24.04, Debian 13, Fedora 39 or later), x86_64 or ARM64 |
+| **[macOS](#macos)** | **Released** | **0.5.0** (2026-10-31) | 0.5.1 | macOS 12 Monterey, Apple Silicon or Intel |
+| **[Windows on ARM64](#windows-on-arm64)** | **Released** | **0.5.0** (2026-10-31) | 0.5.1 | Windows 11 on ARM64 |
+| **[Android (phones, tablets, TV)](#android)** | **Released** | **0.5.0** (2026-10-31) | 0.5.1 | Android 8.0 or later |
 | [Samsung Smart TV (Tizen)](#samsung-smart-tv-tizen) | Research | none yet | | Tizen 3.0 (2017 models) or later |
 | [iPhone, iPad, Apple TV](#iphone-ipad-apple-tv) | Later | none yet | | iOS, iPadOS, tvOS |
 | Windows 32-bit, Windows 7, 8, XP | Not planned | | | See [below](#what-is-not-planned) |
 
 Linux, macOS and Windows on ARM64 are the same desktop program as Windows, from the same code, with one version
-number: 0.4.0 is the first version for Linux and macOS, 0.4.1 the first for Windows on ARM64. Android, the TV receiver and the Apple apps are separate apps, each with its own repository and its own
+number: 0.4.0 is the first version for Linux and macOS, 0.4.1 the first for Windows on ARM64, 0.5.0 the first for Android. Android, the TV receiver and the Apple apps are separate apps, each with its own repository and its own
 version from its first published build.
 
 ## Windows
@@ -153,7 +153,7 @@ Home in the light theme. Click for the MP4.</sub>
 
 | | |
 |---|---|
-| **Status** | **In testing** (phones about 97 %, tablets about 90 %): not part of 0.4.1 and no download yet; what is left is on the [Roadmap](Roadmap#next-the-android-app-and-050) |
+| **Status** | **Released** in 0.5.0: an APK on the [release page](https://github.com/KuchiSofts/vlc-redesign/releases/latest), not on Google Play; how to install: [Install and update](Install-and-Update#android) |
 | **Needs** | Android 8.0 or later |
 | **What it is** | A separate app: a fork of VLC for Android with its screens redrawn in the design, in its own repository |
 
@@ -178,8 +178,8 @@ The clips below were recorded on the Android emulator. All of them, with caption
 - **The same changes as the desktop where they apply:** the player's buttons and toggles show when what they open is
   open, and <kbd>Ctrl</kbd> + mouse wheel over the video, <kbd>Ctrl</kbd>+<kbd>0</kbd> and a *Subtitle size*
   slider with Reset in the subtitles tab change the subtitle size.
-- **Missing before a first release:** the Android TV layout (remote control), the published APK and AAB, then
-  F-Droid; Google Play only after a decision on it.
+- **Next:** the Android TV layout (remote control) and a test on a real tablet. The APK is published on GitHub only
+  (no Google Play).
 
 ## Samsung Smart TV (Tizen)
 

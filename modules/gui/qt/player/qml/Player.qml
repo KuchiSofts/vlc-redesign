@@ -959,9 +959,9 @@ FocusScope {
 
         Connections {
             target: Player
-            function onSubtitleTextScaleStepped(scale) {
+            function onSubtitleTextScaleStepped(scale, shortcut) {
                 // xgettext:no-c-format
-                subtitleSizeToast.say(qsTr("Subtitle size %1%").arg(scale))
+                subtitleSizeToast.say(qsTr("Subtitle size %1%").arg(scale), shortcut)
             }
         }
     }

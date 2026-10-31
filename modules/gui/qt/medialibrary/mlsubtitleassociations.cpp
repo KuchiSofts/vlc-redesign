@@ -448,14 +448,13 @@ void MLSubtitleAssociations::save()
         return;
     }
 
-    struct Assignment { int64_t id; QByteArray mediaMrl; QByteArray subtitleMrl; };
-    QVector<Assignment> assignments;
+    QVector<Link> links;
     for (const auto& source : m_sources)
     {
         if (source.destination < 0 || source.destination >= m_destinations.size())
             continue;
         const auto& destination = m_destinations[source.destination];
-        assignments.push_back({destination.id, coreMrl(destination.url), coreMrl(source.url)});
+        links.push_back({destination.id, coreMrl(destination.url), coreMrl(source.url)});
     }
 
     m_busy = true;
@@ -463,14 +462,36 @@ void MLSubtitleAssociations::save()
     m_error.clear();
     emit changed();
     const quint64 revision = m_revision;
-    const bool audio = m_audio;
+    link(m_ml, this, links, m_audio, [this, revision](int count, const QString& error) {
+        if (revision != m_revision)
+            return;
+        m_busy = false;
+        m_saving = false;
+        m_error = error;
+        if (!m_error.isEmpty() && count > 0)
+            m_error += tr(" %n association(s) were saved before this error; those changes remain saved.",
+                          nullptr, count);
+        emit changed();
+        if (error.isEmpty())
+            emit saved(count);
+    });
+}
+
+QByteArray MLSubtitleAssociations::mrlOf(const QUrl& url)
+{
+    return coreMrl(url);
+}
+
+void MLSubtitleAssociations::link(MediaLib* library, const QObject* context, const QVector<Link>& links, bool audio,
+                                  std::function<void(int saved, const QString& error)> done)
+{
     const int fileType = audio ? VLC_ML_FILE_TYPE_SOUNDTRACK : VLC_ML_FILE_TYPE_SUBTITLE;
     struct Context { int saved = 0; QString error; };
-    m_ml->runOnMLThread<Context>(this,
-        [assignments, audio, fileType](vlc_medialibrary_t* ml, Context& ctx) {
-            for (const auto& assignment : assignments)
+    library->runOnMLThread<Context>(context,
+        [links, audio, fileType](vlc_medialibrary_t* ml, Context& ctx) {
+            for (const auto& entry : links)
             {
-                const QUrl subtitle = QUrl::fromEncoded(assignment.subtitleMrl);
+                const QUrl subtitle = QUrl::fromEncoded(entry.fileMrl);
                 const QFileInfo file(subtitle.toLocalFile());
                 if (!subtitle.isLocalFile() || !file.isFile() || !file.isReadable())
                 {
@@ -480,13 +501,13 @@ void MLSubtitleAssociations::save()
                     return;
                 }
             }
-            for (const auto& assignment : assignments)
+            for (const auto& entry : links)
             {
-                ml_unique_ptr<vlc_ml_media_t> media(assignment.id ?
-                    vlc_ml_get_media(ml, assignment.id) :
-                    vlc_ml_get_media_by_mrl(ml, assignment.mediaMrl.constData()));
-                if (!media && !assignment.id)
-                    media.reset(vlc_ml_new_external_media(ml, assignment.mediaMrl.constData()));
+                ml_unique_ptr<vlc_ml_media_t> media(entry.mediaId ?
+                    vlc_ml_get_media(ml, entry.mediaId) :
+                    vlc_ml_get_media_by_mrl(ml, entry.mediaMrl.constData()));
+                if (!media && !entry.mediaId)
+                    media.reset(vlc_ml_new_external_media(ml, entry.mediaMrl.constData()));
                 if (!media)
                 {
                     ctx.error = QObject::tr("The destination media could not be found in the library.");
@@ -497,34 +518,21 @@ void MLSubtitleAssociations::save()
                     for (size_t i = 0; i < media->p_files->i_nb_items; ++i)
                     {
                         const auto& file = media->p_files->p_items[i];
-                        if (file.i_type == fileType && file.psz_mrl &&
-                            assignment.subtitleMrl == file.psz_mrl)
+                        if (file.i_type == fileType && file.psz_mrl && entry.fileMrl == file.psz_mrl)
                             exists = true;
                     }
                 if (exists)
                     continue;
                 if (vlc_ml_media_add_external_mrl(ml, media->i_id,
-                        assignment.subtitleMrl.constData(), fileType) != VLC_SUCCESS)
+                        entry.fileMrl.constData(), fileType) != VLC_SUCCESS)
                 {
                     ctx.error = (audio ? QObject::tr("Could not save audio track association for %1.")
                                        : QObject::tr("Could not save subtitle association for %1."))
-                                    .arg(QUrl::fromEncoded(assignment.mediaMrl).fileName());
+                                    .arg(QUrl::fromEncoded(entry.mediaMrl).fileName());
                     break;
                 }
                 ++ctx.saved;
             }
         },
-        [this, revision](quint64, Context& ctx) {
-            if (revision != m_revision)
-                return;
-            m_busy = false;
-            m_saving = false;
-            m_error = ctx.error;
-            if (!m_error.isEmpty() && ctx.saved > 0)
-                m_error += tr(" %n association(s) were saved before this error; those changes remain saved.",
-                              nullptr, ctx.saved);
-            emit changed();
-            if (ctx.error.isEmpty())
-                emit saved(ctx.saved);
-        });
+        [done](quint64, Context& ctx) { done(ctx.saved, ctx.error); });
 }

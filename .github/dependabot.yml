@@ -1,5 +1,6 @@
-# Keeps the actions used by the workflows up to date: one grouped pull request a week.
-# Only GitHub Actions: VLC's own dependencies come from VideoLAN's contribs.
+# Keeps the actions used by the workflows (pinned to commits) and the release job's
+# Python packages up to date: a pull request a week. VLC's own dependencies come from
+# VideoLAN's contribs.
 version: 2
 updates:
   - package-ecosystem: github-actions
@@ -11,6 +12,18 @@ updates:
     groups:
       github-actions:
         patterns: ["*"]
+    labels: ["dependencies", "area:ci"]
+    commit-message:
+      prefix: "ci"
+
+  # the Python packages of the release job, pinned with their hashes
+  # (extras/juxtopposed/ci/requirements-release.txt)
+  - package-ecosystem: pip
+    directory: /extras/juxtopposed/ci
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 1
     labels: ["dependencies", "area:ci"]
     commit-message:
       prefix: "ci"

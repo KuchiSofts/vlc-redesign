@@ -317,16 +317,23 @@ static HANDLE relaunch(const wchar_t *resume, const wchar_t *time)
         resume = NULL;
     if (time && wcsspn(time, L"0123456789") != wcslen(time))
         time = NULL;
+    int n = -1;
     if (resume && *resume) {
         /* not :start-time, which makes the media a clip that starts there */
         if (time && *time)
-            _snwprintf(cmd, 4 * MAX_PATH, L"\"%ls\\vlc.exe\" --redesign-resume-time=%ls \"%ls\"", app, time,
-                       resume);
+            n = _snwprintf(cmd, 4 * MAX_PATH, L"\"%ls\\vlc.exe\" --redesign-resume-time=%ls \"%ls\"", app, time,
+                           resume);
         else
-            _snwprintf(cmd, 4 * MAX_PATH, L"\"%ls\\vlc.exe\" \"%ls\"", app, resume);
-    } else {
-        _snwprintf(cmd, 4 * MAX_PATH, L"\"%ls\\vlc.exe\"", app);
+            n = _snwprintf(cmd, 4 * MAX_PATH, L"\"%ls\\vlc.exe\" \"%ls\"", app, resume);
+        /* a long URL (a deep path in another script, each letter %XX%XX)
+         * would be cut and opened as another file: VLC opens without it */
+        if (n < 0 || n >= 4 * MAX_PATH) {
+            logf_(L"the media to resume is too long for the command line: VLC Redesign opens without it");
+            n = -1;
+        }
     }
+    if (n < 0)
+        _snwprintf(cmd, 4 * MAX_PATH, L"\"%ls\\vlc.exe\"", app);
     cmd[4 * MAX_PATH - 1] = 0;
     STARTUPINFOW si;
     ZeroMemory(&si, sizeof si);
@@ -366,9 +373,10 @@ static int read_removed(wchar_t **out)
         for (wchar_t *p = line; *p; ++p)
             if (*p == L'/')
                 *p = L'\\';
-        /* never outside the app, never the user's data */
+        /* never outside the app, never the user's data, never the update's
+         * own files (as safeRelativePath of the interface) */
         if (*line && !wcsstr(line, L"..") && line[0] != L'\\' && !wcschr(line, L':')
-            && _wcsnicmp(line, L"portable", 8))
+            && _wcsnicmp(line, L"portable", 8) && _wcsnicmp(line, L".update", 7))
             out[count++] = _wcsdup(line);
     }
     fclose(f);

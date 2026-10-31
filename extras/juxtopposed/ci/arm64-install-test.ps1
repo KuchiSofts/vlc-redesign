@@ -31,8 +31,19 @@ New-Item -ItemType Directory -Force $work | Out-Null
 $result = Join-Path $work 'install-result.txt'
 Set-Content $result "install test of $Setup"
 $failures = 0
-function Note([string]$text) { Add-Content $result $text; Write-Host $text }
-function Fail([string]$text) { $script:failures++; Note "FAIL: $text" }
+# On GitHub: every line in the run's summary, a failure also as an error on
+# the run's page (both visible without signing in; the log isn't)
+function Gh-Note([string]$text) {
+    if ($env:GITHUB_STEP_SUMMARY) { Add-Content $env:GITHUB_STEP_SUMMARY "- $text" }
+}
+function Gh-Fail([string]$title, [string]$text) {
+    if ($env:GITHUB_ACTIONS) {
+        $escaped = $text.Replace('%', '%25').Replace("`r", '%0D').Replace("`n", '%0A')
+        Write-Host "::error title=$title::$escaped"
+    }
+}
+function Note([string]$text) { Add-Content $result $text; Write-Host $text; Gh-Note $text }
+function Fail([string]$text) { $script:failures++; Note "FAIL: $text"; Gh-Fail 'ARM64 install test' $text }
 
 $os = [Runtime.InteropServices.RuntimeInformation]::OSArchitecture
 if ("$os" -ne 'Arm64') { Fail "this is $os Windows: the ARM64 installer is for ARM64 Windows"; exit $failures }

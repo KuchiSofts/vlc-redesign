@@ -1,0 +1,75 @@
+# Copyright (C) 2026 VLC authors and VideoLAN
+# SPDX-License-Identifier: GPL-2.0-or-later
+#
+# The redesign's own tests that need no build of VLC: the parsers of what
+# comes from outside (Live TV's playlists, guides and Xtream answers, the
+# subtitle cues, the encodings of text subtitles) under the sanitizers, and
+# the check of the updates' signature (SHA256SUMS.txt.sig) as the app makes
+# it, against the latest release and a changed copy of it.
+name: Tests
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  parsers:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: Tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends g++ pkg-config qt6-base-dev zlib1g-dev
+
+      - name: Parsers and encodings (address and undefined-behaviour sanitizers)
+        run: sh extras/juxtopposed/ci/unit-tests.sh
+
+  update-signature:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          sparse-checkout: |
+            extras/juxtopposed/signing
+            modules/gui/qt/util
+
+      - name: Build verify-test
+        shell: pwsh
+        run: |
+          if (-not (Get-Command gcc -ErrorAction SilentlyContinue)) {
+            choco install mingw -y --no-progress
+            $env:PATH = "C:\ProgramData\mingw64\mingw64\bin;$env:PATH"
+          }
+          # (static: the runner's MinGW runtime DLLs are not on the PATH of the next step)
+          gcc -O2 -Wall -Wextra -static -I modules/gui/qt/util extras/juxtopposed/signing/verify-test.c -o verify-test.exe
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+
+      # the signed checksums of the latest release must be good with the key
+      # the app carries, and a changed copy (one byte) must not
+      - name: Check signatures
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $tag = gh release view --repo $env:GITHUB_REPOSITORY --json tagName --jq .tagName
+          gh release download $tag --repo $env:GITHUB_REPOSITORY --pattern 'SHA256SUMS.txt*' --dir sums
+          if ($LASTEXITCODE) { Write-Host "::error title=update signature::the files of $($tag) could not be downloaded"; exit 1 }
+          $good = ./verify-test.exe sums/SHA256SUMS.txt
+          Write-Host "verify-test on $($tag): $good (exit $LASTEXITCODE)"
+          if ($LASTEXITCODE -ne 0 -or $good -ne 'good') { Write-Host "::error title=update signature::the signature of ${tag} isn't accepted ($good)"; exit 1 }
+          $bytes = [IO.File]::ReadAllBytes("$PWD/sums/SHA256SUMS.txt")
+          $bytes[0] = $bytes[0] -bxor 1
+          [IO.File]::WriteAllBytes("$PWD/sums/changed.txt", $bytes)
+          $bad = ./verify-test.exe sums/changed.txt sums/SHA256SUMS.txt.sig
+          Write-Host "verify-test on a changed copy: $bad (exit $LASTEXITCODE)"
+          if ($LASTEXITCODE -eq 0 -or $bad -ne 'bad') { Write-Host "::error title=update signature::a changed SHA256SUMS.txt is accepted ($bad)"; exit 1 }
+          "- the signature of ${tag}: good; a changed copy: bad" >> $env:GITHUB_STEP_SUMMARY
+          # (the refused copy left exit code 1, which pwsh would return as the step's)
+          exit 0

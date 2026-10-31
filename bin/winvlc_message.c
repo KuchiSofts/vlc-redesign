@@ -557,7 +557,7 @@ int RedesignMessageBox(const wchar_t *title, const wchar_t *heading,
                        const wchar_t *cancel)
 {
     message_box box = { 0 };
-    box.title = title ? title : L"VLC media player";
+    box.title = title ? title : L"VLC Media Player Redesign";
     box.heading = heading ? heading : L"";
     box.text = text;
     box.accept = accept ? accept : L"OK";

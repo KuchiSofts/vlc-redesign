@@ -193,9 +193,13 @@ T.Popup {
                             id: titleText
                             Layout.fillWidth: true
                             Layout.maximumWidth: implicitWidth
+                            // the whole name on two lines rather than cut
+                            // (VLC Media Player / Redesign beside the badge)
+                            wrapMode: Text.WordWrap
+                            maximumLineCount: 2
                             elide: Text.ElideRight
                             horizontalAlignment: Text.AlignLeft
-                            text: qsTr("VLC Redesign")
+                            text: "VLC Media Player Redesign" // (a name: not translated)
                             color: root.textPrimary
                             font.family: VLCStyle.redesign.fontFamily
                             font.pixelSize: VLCStyle.dp(28, VLCStyle.scale)
@@ -205,6 +209,9 @@ T.Popup {
                         // exists for several), the one it runs on in its tooltip
                         Rectangle {
                             id: platformBadge
+                            // (beside the first line of the name)
+                            Layout.alignment: Qt.AlignTop
+                            Layout.topMargin: VLCStyle.dp(9, VLCStyle.scale)
                             Layout.minimumWidth: implicitWidth
                             implicitWidth: platformText.implicitWidth + VLCStyle.dp(16, VLCStyle.scale)
                             implicitHeight: VLCStyle.dp(20, VLCStyle.scale)

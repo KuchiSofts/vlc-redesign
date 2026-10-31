@@ -21,8 +21,19 @@ param(
 $ErrorActionPreference = 'Stop'
 $VlcDir = (Resolve-Path $VlcDir).Path
 $failures = 0
-function Note([string]$text) { Write-Host $text }
-function Fail([string]$text) { $script:failures++; Write-Host "FAIL: $text" }
+# On GitHub: every line in the run's summary, a failure also as an error on
+# the run's page (both visible without signing in; the log isn't)
+function Gh-Note([string]$text) {
+    if ($env:GITHUB_STEP_SUMMARY) { Add-Content $env:GITHUB_STEP_SUMMARY "- $text" }
+}
+function Gh-Fail([string]$title, [string]$text) {
+    if ($env:GITHUB_ACTIONS) {
+        $escaped = $text.Replace('%', '%25').Replace("`r", '%0D').Replace("`n", '%0A')
+        Write-Host "::error title=$title::$escaped"
+    }
+}
+function Note([string]$text) { Write-Host $text; Gh-Note $text }
+function Fail([string]$text) { $script:failures++; Write-Host "FAIL: $text"; Gh-Note "FAIL: $text"; Gh-Fail 'ARM64 check' $text }
 
 # 1. The PE machine of every binary
 $machines = @{ 0x8664 = 'x64'; 0xAA64 = 'ARM64'; 0xA641 = 'ARM64EC'; 0x14C = 'x86'; 0x1C4 = 'ARM' }

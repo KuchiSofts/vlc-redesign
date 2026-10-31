@@ -5,9 +5,9 @@ Changes of **VLC Redesign**, an unofficial VLC 4 build with the interface design
 For changes to VLC itself, see [NEWS](NEWS).
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
-what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `5ccc5fa83f` (2026-10-30).
+what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `c7834066e2` (2026-10-31).
 
-**Contents:** [Unreleased](#unreleased) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [Unreleased](#unreleased) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
 
@@ -15,30 +15,93 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+## [0.5.0] · 2026-10-31
+
+### Added
+
+- **The Android app, VLC Media Player Redesign for Android** (its first release, an APK on this release's page; not
+  on Google Play): VLC for Android with the design's Home, library, player bar, Customize Player, casting, effects,
+  recording, Live TV and the tablet layout, and the designer's ideas (the subtitle sync timeline, subtitle settings
+  per series, the waveform seek bar, frame previews, pins in *Edit Sidebar*). Its package
+  `org.kuchisofts.vlcredesign` installs beside VLC; its source is
+  [vlc-redesign-android](https://github.com/KuchiSofts/vlc-redesign-android).
+- **Pin a folder or a playlist to the sidebar** (proposed by Juxtopposed): *Pin to Sidebar* in the menu of a
+  folder (and of the folder page) and of a playlist. A pinned one is a row of its own, opened in one click, moved
+  or hidden in *Edit Sidebar* like the other pages; *Unpin from Sidebar* in its right-click menu.
+- **The on-screen messages name the shortcut that made them** (proposed by Juxtopposed): "Volume: 115%" with
+  "Up" under it, "Aspect ratio: 16:9" with "A", "Subtitle size 110%" with "Ctrl+Mouse Wheel Up". A change made
+  from a menu or a button shows no shortcut.
+- **Choose the audio output device on Linux and macOS too**: *Settings › Audio › Output device* lists the devices
+  of the output in use (PulseAudio, PipeWire, ALSA, Core Audio), as Windows had them.
+- **Subtitles from the internet for a whole folder, season or playlist** (proposed by Juxtopposed). *Add Subtitles →
+  From the Internet* searches every video the way the player searches the one playing, two at a time, in your
+  subtitle language (else the second one): each shows the subtitle made for that very file, or the best one for
+  its title and episode with the others in a dropdown, or that none was found. *Download* links the chosen ones to
+  their videos: they load when each one plays, shown as found online with their service.
+
 ### Fixed
 
 - **The startup volume goes up to 200 %** ([#30](https://github.com/KuchiSofts/vlc-redesign/issues/30)). In
   Settings › Audio › Startup volume, "Always start at" fell back to 125 % on Windows; it now keeps any value up to 200 %.
 - **AV1 closed captions** (from VideoLAN): AV1 videos decoded by dav1d show their CEA-608/708 captions again.
-- **Linux: no stop on H.264 with some Intel graphics** (seen with an Intel UHD 600 and the iHD driver). When the
+- **Linux: H.264 no longer closes VLC on some Intel graphics** (seen with an Intel UHD 600 and the iHD driver). When the
   hardware could not decode the video, VLC went on in software with several threads, but tried the hardware
   again in that mode, which the system's FFmpeg refuses by stopping the program. Once the hardware failed for a
   video, it is now decoded in software.
 - No warning about a missing graphics cache at the first start of a profile (`pipelines.bin`).
+- A rare stop at quit in debug builds (2 runs in 10, after the library pages): a binding gave the library's models
+  an empty library while the interface went down; it is ignored now.
 - **Linux, the AppImage and the folder: a clear message when the graphics libraries are missing.** On a system
   without them (libEGL: a server, a minimal install) VLC fell back to the terminal and said only "Error opening
   terminal"; it now says what to install (libegl1, mesa-libEGL), also in a dialog on a desktop.
+- **Windows: the firewall rule for casting runs Windows' own netsh by its full path.** It was named alone, and
+  Windows also looks for a program of that name in the current folder (the folder of a video opened from
+  Explorer), where another file of that name would have run with the administrator's approval. A folder name with
+  `%` no longer makes the rule for a wrong path.
+- **Windows: quitting no longer waits for Windows' question about the firewall** when it was left behind other
+  windows: VLC stayed open, unseen, and the next file opened went to it.
+- **Updates:** after an update, a very long address of the media to resume (a deep folder in Hebrew, for instance)
+  is no longer cut into another file's: VLC opens without it. The list of files an update removes can't name the
+  update's own folder (as the interface already checked). A signed update must come from the same publisher and
+  the same certificate authority, not only a publisher of the same name.
+
+- **The app names itself VLC Media Player Redesign**: the window and taskbar title, the top bar when nothing
+  plays, the tray icon and its menu, About, *What's new*, the title of message boxes and the welcome step said
+  *VLC media player* or *VLC* alone. VideoLAN's trademark policy allows a free (GPL) build to use VLC's marks, and
+  allows no one to use the name VideoLAN: the README says how VLC Redesign keeps to it. The texts with the name
+  keep their translations in every language; the installation's folders, keys and shortcuts keep their names.
+- **Linux: the programs VLC opens work again** (the browser, the file manager, D-Bus for the media keys and the
+  screen saver). They inherited the libraries of VLC's own folder, and on a newer system than Ubuntu 24.04 some
+  failed to start (`dbus-launch`: "version LIBDBUS_PRIVATE… not found"). VLC now finds its libraries without
+  changing the environment, and brings fewer of them: D-Bus, ALSA, fontconfig, X11 and the other libraries every
+  desktop has come from the system. The AppImage and the folder also play videos on a system without VA-API (they
+  did not decode H.264 there: no video), on the CPU.
+
+### Security
+
+- Private vulnerability reporting is turned on for the repository, as `SECURITY.md` says.
+- The workflows' actions are pinned to commits (Dependabot keeps them current), the release job's Python packages
+  and Inno Setup are checked against their hashes, and the jobs get a read-only token unless they need more.
+- Code signing, once it starts: both Windows architectures (x64 and ARM64), and a release-signing run accepts
+  only a valid signature by the expected certificate (`SIGNPATH_CERT_THUMBPRINT`).
 
 ### Technical
 
 - The version being prepared is 0.5.0.
-- Merged VLC master up to `5ccc5fa83f` (2026-10-30), 2 commits: the native macOS interface shows a no-results view
+- New workflow *Tests*: the parsers of Live TV's playlists, guides and Xtream answers, of the subtitle cues and of
+  the subtitles' encodings run under the address and undefined-behaviour sanitizers, and the updates' signature
+  check is tried against the latest release and a changed copy of it. A failed test of the Windows launch tests
+  shows its reason on the run's page.
+- The weekly VLC merge builds every platform (it built Windows only).
+- Merged VLC master up to `c7834066e2` (2026-10-31): AV1 closed captions (above); before it, up to `5ccc5fa83f`, 2 commits: the native macOS interface shows a no-results view
   for an empty group search (not used by VLC Redesign, whose macOS app draws the Qt interface), and DVD-Video
   folders and images opened with dvdread show and seek the time from the disc's timeline and time map.
 - The Linux workflow builds the Flatpak (`vlc-redesign-X.Y.Z-ARCH.flatpak`, x86_64 and ARM64) from the same tarball
   as the other packages, and its test installs it with its runtime from Flathub, prints the version and plays a clip.
 - The roadmap has the progress of each program and the Android app's next steps, and the wiki has a *Roadmap*
   page with the same; the upload check keeps the two word for word alike.
+- Android: a link to a network stream opened from another app plays without the storage permission (it opened
+  Android's *All files access* settings first).
 - A new README: download buttons for every file of the release, the tour, a grid of ten highlights, the films of
   each platform, the download table, the platforms and the roadmap, then documentation, building and credits.
 
@@ -1772,6 +1835,16 @@ the ones to watch when merging upstream, and the candidates to propose to VideoL
 | `bin/Makefile.am`, `bin/meson.build` | Build the `vlc-waveform` helper |
 | `extras/package/win32/package.mak` | Credits, changelog and font licenses in the package |
 
+[Unreleased]: https://github.com/KuchiSofts/vlc-redesign/compare/v0.4.1...main
+[0.4.1]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.4.1
+[0.4.0]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.4.0
+[0.3.1]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.3.1
+[0.3.0]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.3.0
+[0.2.6]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.2.6
+[0.2.5]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.2.5
+[0.2.4]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.2.4
+[0.2.3]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.2.3
+[0.2.2]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.2.2
 [0.2.1]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.2.1
 [0.2.0]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.2.0
 [0.1.0]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.1.0

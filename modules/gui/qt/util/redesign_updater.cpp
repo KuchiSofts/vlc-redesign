@@ -163,9 +163,14 @@ QString trustedSigner(const QString &path)
         CRYPT_PROVIDER_DATA *provider = provData(data.hWVTStateData);
         CRYPT_PROVIDER_SGNR *signer = provider ? provSigner(provider, 0, FALSE, 0) : nullptr;
         if (signer && signer->csCertChain > 0 && signer->pasCertChain[0].pCert) {
-            wchar_t buffer[256] = {};
-            if (nameOf(signer->pasCertChain[0].pCert, CERT_NAME_SIMPLE_DISPLAY_TYPE, 0, nullptr, buffer, 256) > 1)
-                name = QString::fromWCharArray(buffer);
+            // the subject and the authority that issued its certificate: a
+            // certificate of the same name from another authority is another
+            // publisher (signerDisplayName shows the subject only)
+            wchar_t subject[256] = {}, issuer[256] = {};
+            if (nameOf(signer->pasCertChain[0].pCert, CERT_NAME_SIMPLE_DISPLAY_TYPE, 0, nullptr, subject, 256) > 1
+                && nameOf(signer->pasCertChain[0].pCert, CERT_NAME_SIMPLE_DISPLAY_TYPE, CERT_NAME_ISSUER_FLAG,
+                          nullptr, issuer, 256) > 1)
+                name = QString::fromWCharArray(subject) + QChar(0x1F) + QString::fromWCharArray(issuer);
         }
     }
     data.dwStateAction = WTD_STATEACTION_CLOSE;
@@ -213,7 +218,8 @@ QString publisherMismatch(const QString &path)
     static const QString own = trustedSigner(QCoreApplication::applicationFilePath());
     if (own.isEmpty() || trustedSigner(path) == own)
         return {};
-    return qtr("The update isn't signed by the publisher of this copy (%1), so it wasn't used.").arg(own);
+    return qtr("The update isn't signed by the publisher of this copy (%1), so it wasn't used.")
+        .arg(own.section(QChar(0x1F), 0, 0));
 #else
     Q_UNUSED(path);
     return {};

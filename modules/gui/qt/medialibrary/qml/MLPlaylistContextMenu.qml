@@ -6,6 +6,7 @@
 import QtQml
 
 import VLC.Dialogs
+import VLC.MainInterface
 import VLC.MediaLibrary
 import VLC.Widgets as Widgets
 
@@ -73,6 +74,19 @@ Widgets.RedesignContextMenu {
         }, {
             "separator": true
         }, {
+            // a row of its own in the sidebar (the designer's pinned playlists)
+            "text": (dataList) => dataList.length === 1 && sidebarPins.isPinnedPlaylist(String(dataList[0].id))
+                                  ? qsTr("Unpin from Sidebar") : qsTr("Pin to Sidebar"),
+            "icon": "pin",
+            "action": (dataList) => {
+                const id = String(dataList[0].id)
+                if (sidebarPins.isPinnedPlaylist(id))
+                    sidebarPins.unpin(sidebarPins._pinKey({ kind: "playlist", id: id }))
+                else
+                    sidebarPins.pinPlaylist(id, dataList[0].name ?? dataList[0].title ?? "")
+            },
+            "visible": (dataList) => dataList.length === 1
+        }, {
             "text": qsTr("Rename"),
             "icon": "edit",
             "action": (dataList, options, indexes) => root.model.showDialogRename(indexes[0]),
@@ -99,6 +113,8 @@ Widgets.RedesignContextMenu {
     // made on the main display, not a child: it goes with the menu
     Component.onDestruction: if (_dialog) _dialog.destroy()
     property Component propertiesComponent: Component { PlaylistPropertiesDialog {} }
+
+    property SidebarItems sidebarPins: SidebarItems {}
 
     function _ids(dataList) {
         return dataList.map(data => data.id)

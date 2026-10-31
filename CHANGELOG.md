@@ -24,6 +24,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Technical
 
+- The version being prepared is 0.5.1.
+- The Windows builds free disk space on GitHub's runner first (an ARM64 build ran out of it).
 - The Apple Silicon build runs on GitHub's `macos-15` (`macos-14` is retired on 2026-11-02).
 
 ## [0.5.0] · 2026-10-31

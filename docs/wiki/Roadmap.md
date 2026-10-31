@@ -10,7 +10,7 @@ Status: ✅ done · 🔨 in progress · 📋 to do · 💡 idea
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-10-31).
+Updated as the work moves (last: 2026-11-01).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
@@ -26,7 +26,7 @@ Updated as the work moves (last: 2026-10-31).
 ## Next: 0.5.1 and after
 
 **0.5.1** is a release of fixes, made as the issues bring them (each fix is first published through a pull request,
-with a build to try). After it:
+with a build to try), and the Android app's own update check (it says when a new APK is out). After it:
 
 - 📋 Android: the TV layout (a remote control), and a test on a real tablet (the tablet layout was tested on 11" and
   13" emulators)

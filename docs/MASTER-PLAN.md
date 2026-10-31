@@ -12,6 +12,14 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-10-31):
 
+- 🟢 **Repository review checked and fixed** (2026-10-31, PR #29): firewall netsh/cmd by full path, no wait for the
+  UAC question at quit, updater checks, CI pinned/hashed/least-privilege, signing for both architectures, Tests
+  workflow (ASan/UBSan parsers, update signature), Linux RUNPATH instead of LD_LIBRARY_PATH (dbus-launch works),
+  20 system libraries out of the bundle, playback without VA-API; the name *VLC Media Player Redesign* after
+  reading VideoLAN's trademark policy; private vulnerability reporting on.
+- 🟢 **Android: the designer's 7 ideas** (sync timeline, series preset, waveform cache, seek previews, pins with
+  Edit Sidebar, profiles, last icons), every new text in every language, the name; tour 0 ANRs / 0 crashes.
+
 - 🟢 **The designer's last ideas on the desktop** (2026-10-31, branch `feature/designer-gaps`): every idea of
   Juxtopposed's video now exists: pinned folders and playlists in the sidebar, online subtitles for a whole
   folder/season/playlist (the player's finder made a per-video engine, `subtitle_search`, shared by both), the

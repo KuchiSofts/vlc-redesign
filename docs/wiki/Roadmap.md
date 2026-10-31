@@ -10,49 +10,47 @@ Status: ✅ done · 🔨 in progress · 📋 to do · 💡 idea
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-10-30).
+Updated as the work moves (last: 2026-10-31).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
-| **Windows x64** | ✅ released 0.4.1 | ██████████ 100 % | — (tests go on with every change) |
-| **Windows on ARM64** | ✅ released 0.4.1 | ██████████ 100 % | a run by hand on a real ARM64 PC; small updates in the app from 0.5.0 |
-| **Linux** (x86_64, ARM64) | ✅ released 0.4.1 | ██████████ 100 % | the Flatpak (built and tested in CI, in 0.5.0); choosing the sound output device; an updater in the app |
-| **macOS** (Apple Silicon, Intel) | ✅ released 0.4.1 | ██████████ 100 % | tests on a Mac by hand; choosing the sound output device |
-| **Android** (phones) | 🔨 in testing | █████████░ 98 % | the last fixes (below), then a test on real phones and a first release |
-| **Android** (tablets) | 🔨 in testing | █████████░ 93 % | the automatic tour of the tablets (29 of 42 cases done, no crash), then a test on a real tablet |
+| **Windows x64** | ✅ released 0.4.1 | ██████████ 100 % | — 0.5.0 is ready in testing (below) |
+| **Windows on ARM64** | ✅ released 0.4.1 | ██████████ 100 % | small updates in the app from 0.5.0; a run by hand on a real ARM64 PC |
+| **Linux** (x86_64, ARM64) | ✅ released 0.4.1 | ██████████ 100 % | 0.5.0: the Flatpak, the sound output device, the fixes below; an updater in the app later |
+| **macOS** (Apple Silicon, Intel) | ✅ released 0.4.1 | ██████████ 100 % | 0.5.0: the sound output device; tests on a Mac by hand |
+| **Android** (phones) | 🔨 in testing | █████████░ 99 % | a test on a real phone, then the first release on GitHub |
+| **Android** (tablets) | 🔨 in testing | █████████░ 98 % | a test on a real tablet |
 | **Samsung TV receiver** | 💡 researched | ░░░░░░░░░░ 0 % | after the Android release |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
-## Next: the Android app, and 0.5.0
+## Next: 0.5.0 and the Android app
 
-**The Android app** is a separate app (a fork of VLC for Android with the design), in testing on the emulator and on
-a real phone. Done: the design's Home, library, player bar and Customize Player (zones, profiles), the compact menus,
-casting like the desktop (Chromecast and DLNA TVs), effects, recording, subtitles in every script and right to left,
-Live TV (playlists, Xtream Codes, the guide, catch-up, films and series), the tablet layout (sidebar, list and
-detail), the designer's credit and *What's new*. An automatic tour of every screen (phone and tablets, dark and
-light, English, Hebrew and German) found no crash. Left before its first release:
+**Every idea of Juxtopposed's video now exists**, on the desktop and on Android:
 
-- ✅ Live TV: a guide from a server that answers in HTTP/1.0 — the failure seen once did not come back (10 loads in a
-  row); a failed download now logs where it broke
-- ✅ Live TV: the day shown above the guide on a phone (it said *Tomorrow* after *Now* late in the evening)
-- ✅ Screens kept in memory after they close: the cause (a listener added at each return to the app, never
-  removed) fixed; 50 rounds of relaunches, playback, rotations and settings keep none
-- 🔨 The light theme, the borders of the dialogs and the icons as sharp as on the desktop (parity with Windows)
-- ✅ The texts of the last rounds (About, fonts, effects, casting, recording, help, Live TV) translated in the 61
-  languages the app speaks (1,263 texts)
-- ✅ Its own package name, `org.kuchisofts.vlcredesign`: it installs beside VLC and can be published
-- ✅ No more offers of VideoLAN's nightly builds (they are VideoLAN's app, not this one)
-- 🔨 14 languages of VLC for Android that are barely translated yet (Faroese, Lao, Swahili and others)
-- 📋 A test on real phones and a tablet, then the first release: an APK on GitHub Releases (not on Google Play)
-- 📋 The designer's ideas the desktop has and the app does not yet: the subtitle sync timeline, subtitle settings
-  kept per series, the waveform seek bar for music, frame previews on the seek bar, saved Customize Player profiles,
-  folders and playlists pinned to the sidebar
-
-**0.5.0** (desktop) gathers the new features made after 0.4.x: Windows on ARM64 gets the small updates in the app,
-the Linux Flatpak, and what the issues and the Android work bring back to the desktop. Done for 0.5.0, the last ideas
-of Juxtopposed's video the desktop did not have yet:
-
-- ✅ Pin a folder or a playlist to the sidebar (*Pin to Sidebar* in their menus, *Unpin* on the row)
+- ✅ Pin a folder or a playlist to the sidebar (*Pin to Sidebar* in their menus, *Unpin* on the row; on Android in
+  the tablet sidebar and at the top of Home, moved and hidden in *Edit Sidebar*)
 - ✅ Subtitles from the internet for a whole folder, season or playlist, each episode matched on its own
 - ✅ The on-screen messages name the shortcut that made them ("Volume: 115%" · "Up")
 - ✅ Choose the sound output device on Linux and macOS too (*Settings › Audio › Output device*)
+- ✅ Android: the subtitle sync timeline, subtitle settings kept per series, frame previews on the seek bar, the
+  waveform seek bar for music kept between starts, Customize Player profiles, the last icons as the desktop's
+
+**0.5.0** also brings:
+
+- ✅ The app's name is **VLC Media Player Redesign**, as VideoLAN's trademark policy allows a free (GPL) build
+- ✅ Linux: the programs VLC opens (browser, file manager, D-Bus for the media keys and the screen saver) work on
+  newer systems; fewer bundled system libraries; the AppImage and the folder play videos on a system without VA-API;
+  tested on Ubuntu 24.04/26.04, Debian 13, Fedora 41/43, Arch and as a Flatpak
+- ✅ Windows: the firewall rule for casting runs Windows' own netsh by its full path; quitting no longer waits for
+  Windows' question about it; stricter checks of updates
+- ✅ The build and release pipeline hardened (actions pinned to commits, downloads checked against their hashes),
+  new automatic tests of the parsers and of the updates' signature
+
+**The Android app** (a fork of VLC for Android with the design) has the design's Home, library, player bar and
+Customize Player, the compact menus, casting like the desktop, effects, recording, subtitles in every script and right
+to left, Live TV, the tablet layout and the designer's credit. An automatic tour of every screen (phone and tablets,
+dark and light, English, Hebrew and German, large text) finds no crash. Left before its first release:
+
+- ✅ Its own package name, `org.kuchisofts.vlcredesign`: it installs beside VLC
+- ✅ Every text of the redesign translated in every language the app speaks
+- 📋 A test on a real phone and a tablet, then the first release: an APK on GitHub Releases (not on Google Play)

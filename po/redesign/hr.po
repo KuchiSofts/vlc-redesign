@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-30 23:06+0000\n"
+"POT-Creation-Date: 2026-10-31 01:06+0000\n"
 "PO-Revision-Date: 2015-01-06 22:30+0000\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian (http://www.transifex.com/projects/p/vlc-trans/"
@@ -1544,8 +1544,8 @@ msgstr "Potreban je Windows 10 inačice 1809 ili noviji."
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:27
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignPluginsDialog.qml:30
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignStatisticsDialog.qml:26
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:553
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:558
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:554
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:559
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:152
 #: modules/gui/qt/dialogs/firstrun/qml/WhatsNewDialog.qml:39
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:312
@@ -1557,7 +1557,7 @@ msgstr "Potreban je Windows 10 inačice 1809 ili noviji."
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:32
 #: modules/gui/qt/util/csdmenu.cpp:131
 #: modules/gui/qt/util/redesign_window_frame.cpp:96
-#: modules/gui/qt/widgets/native/redesign_message_box.cpp:213
+#: modules/gui/qt/widgets/native/redesign_message_box.cpp:214
 #: modules/gui/qt/widgets/qml/RedesignDialog.qml:223
 msgid "Close"
 msgstr "Zatvori"
@@ -2169,36 +2169,36 @@ msgstr "Pročitano"
 msgid "Late"
 msgstr "Zakašnjelo"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:520
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:521
 msgid "Confirm"
 msgstr "Potvrda"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:550
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:551
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:218
 msgid "Retry"
 msgstr "Pokušaj ponovno"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:552
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:553
 msgid "Yes to All"
 msgstr "Da za sve"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:558
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:559
 msgid "No to All"
 msgstr "Ne za sve"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1169
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1170
 msgid "Save play queue as..."
 msgstr "Spremi red izvođenja kao..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1389
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1390
 msgid "Write error"
 msgstr "Greška pisanja"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1406
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1407
 msgid "Export playlist as..."
 msgstr "Izvezi popis za izvođenje kao..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1423
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1424
 msgid ""
 "The playlist could not be exported to %1:\n"
 "%2"
@@ -2206,17 +2206,17 @@ msgstr ""
 "Popis za izvođenje nije bilo moguće izvesti u %1:\n"
 "%2"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1425
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
 msgid "Export Playlist"
 msgstr "Izvezi popis za izvođenje"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1551
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1552
 msgid "Open audio..."
 msgstr "Otvori zvuk..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1556
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1557
 msgid "Open video..."
 msgstr "Otvori video..."
 
@@ -2793,8 +2793,8 @@ msgid "Accent color %1"
 msgstr "Boja naglaska %1"
 
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:55
-msgid "Welcome to VLC!"
-msgstr "Dobro došli u VLC!"
+msgid "Welcome to %1!"
+msgstr "Dobro došli u %1!"
 
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:73
 msgid ""
@@ -3188,7 +3188,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:293
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:105
-#: modules/gui/qt/qt.cpp:348
+#: modules/gui/qt/qt.cpp:349
 msgid "Channel banner"
 msgstr "Natpis kanala"
 
@@ -3524,7 +3524,7 @@ msgstr ""
 "spremljene."
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:79
-#: modules/gui/qt/qt.cpp:357
+#: modules/gui/qt/qt.cpp:358
 msgid "Expert"
 msgstr "Stručno"
 
@@ -3618,7 +3618,7 @@ msgstr "Tema"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:192
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:428
-#: modules/gui/qt/qt.cpp:339
+#: modules/gui/qt/qt.cpp:340
 msgid "Accent color"
 msgstr "Boja naglaska"
 
@@ -3884,8 +3884,8 @@ msgid "Reset all settings?"
 msgstr "Vratiti sve postavke na zadano?"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:830
-msgid "Every setting of VLC media player goes back to its default."
-msgstr "Svaka postavka medijskog izvođača VLC vraća se na zadanu vrijednost."
+msgid "Every setting of %1 goes back to its default."
+msgstr "Svaka postavka medijskog izvođača %1 vraća se na zadanu vrijednost."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:884
 msgid "Discard changes"
@@ -4456,7 +4456,7 @@ msgid "Seeking"
 msgstr "Premotavanje"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:137
-#: modules/gui/qt/qt.cpp:303
+#: modules/gui/qt/qt.cpp:304
 msgid "Show thumbnail while scrubbing"
 msgstr "Prikaži sličicu pri pomicanju po vremenskoj traci"
 
@@ -4736,7 +4736,7 @@ msgid "Timing"
 msgstr "Usklađivanje vremena"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:273
-#: modules/gui/qt/qt.cpp:305
+#: modules/gui/qt/qt.cpp:306
 msgid "Show subtitle lines on the seek bar"
 msgstr "Prikaži retke podnaslova na traci za premotavanje"
 
@@ -5316,6 +5316,14 @@ msgstr ""
 msgid "Reset all"
 msgstr "Vrati sve"
 
+#: modules/gui/qt/dialogs/systray/systray.cpp:200
+msgid "&Hide %1 in taskbar"
+msgstr "&Sakrij izvođač medija %1 u traci zadaća"
+
+#: modules/gui/qt/dialogs/systray/systray.cpp:206
+msgid "Sho&w %1"
+msgstr "Pri&kaži izvođač medija %1"
+
 #: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:205
 #: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:438
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:425
@@ -5777,11 +5785,11 @@ msgstr "Podsjeti me"
 msgid "Back to Live"
 msgstr "Natrag na uživo"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:618 modules/gui/qt/qt.cpp:344
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:618 modules/gui/qt/qt.cpp:345
 msgid "Next channel"
 msgstr "Sljedeći kanal"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:623 modules/gui/qt/qt.cpp:345
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:623 modules/gui/qt/qt.cpp:346
 msgid "Previous channel"
 msgstr "Prethodni kanal"
 
@@ -6164,11 +6172,6 @@ msgstr "Lokalna gornja traka"
 #: modules/gui/qt/maininterface/qml/LocalTopbar.qml:188
 msgid "Show navigation menu"
 msgstr "Prikaži navigacijski izbornik"
-
-#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:251
-#: modules/gui/qt/player/qml/TopBar.qml:505
-msgid "VLC Media Player"
-msgstr "Medijski izvođač VLC"
 
 #: modules/gui/qt/maininterface/qml/MainDisplay.qml:34
 msgid "Main display"
@@ -8721,18 +8724,18 @@ msgstr "Red izvođenja"
 msgid "%1 elements, %2"
 msgstr "Elemenata: %1, %2"
 
-#: modules/gui/qt/qt.cpp:175
+#: modules/gui/qt/qt.cpp:176
 msgid "Select the initial preferences view"
 msgstr "Odaberite početni prikaz postavki"
 
-#: modules/gui/qt/qt.cpp:176
+#: modules/gui/qt/qt.cpp:177
 msgid ""
 "Select which preferences view to show upon opening the preferences dialog."
 msgstr ""
 "Odaberite koji će se prikaz postavki pokazati pri otvaranju dijaloga "
 "postavki."
 
-#: modules/gui/qt/qt.cpp:200
+#: modules/gui/qt/qt.cpp:201
 msgid ""
 "Show a notification popup with the artist and track name when the current "
 "play queue item changes, when VLC is minimized or hidden."
@@ -8740,7 +8743,7 @@ msgstr ""
 "Prikazuje skočnu obavijest s izvođačem i nazivom zapisa kada se promijeni "
 "tekuća stavka reda izvođenja, dok je VLC minimiziran ili skriven."
 
-#: modules/gui/qt/qt.cpp:204
+#: modules/gui/qt/qt.cpp:205
 msgid ""
 "Sets the windows opacity between 0.1 and 1 for main interface, play queue "
 "and extended panel. This option only works with Windows and X11 with "
@@ -8750,7 +8753,7 @@ msgstr ""
 "izvođenja i prošireni panel. Ova mogućnost radi samo na Windowsima i X11 s "
 "proširenjima za kompoziciju."
 
-#: modules/gui/qt/qt.cpp:210
+#: modules/gui/qt/qt.cpp:211
 msgid ""
 "Sets the fullscreen controller opacity between 0.1 and 1 for main interface, "
 "play queue and extended panel. This option only works with Windows and X11 "
@@ -8760,11 +8763,11 @@ msgstr ""
 "glavno sučelje, red izvođenja i prošireni panel. Ova mogućnost radi samo na "
 "Windowsima i X11 s proširenjima za kompoziciju."
 
-#: modules/gui/qt/qt.cpp:215
+#: modules/gui/qt/qt.cpp:216
 msgid "Initial user scale factor for the interface, between 0.3 and 3.0"
 msgstr "Početni korisnički faktor skaliranja sučelja, između 0,3 i 3,0"
 
-#: modules/gui/qt/qt.cpp:218
+#: modules/gui/qt/qt.cpp:219
 msgid ""
 "Show the errors of VLC at the bottom of the window, and ask before removing "
 "media from a playlist or from the play queue, or deleting playlists. Off, "
@@ -8777,11 +8780,11 @@ msgstr ""
 "VLC-a, a ta se uklanjanja obavljaju odmah; brisanje datoteke s diska uvijek "
 "se potvrđuje."
 
-#: modules/gui/qt/qt.cpp:228
+#: modules/gui/qt/qt.cpp:229
 msgid "set the options for qml debugger"
 msgstr "postavi mogućnosti za QML program za otklanjanje pogrešaka"
 
-#: modules/gui/qt/qt.cpp:229
+#: modules/gui/qt/qt.cpp:230
 msgid ""
 "set the options for qml debugger (see http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
@@ -8789,7 +8792,7 @@ msgstr ""
 "postavi mogućnosti za QML program za otklanjanje pogrešaka (pogledajte "
 "http://doc.qt.io/qt-5/qtquick-debugging.html#starting-applications)"
 
-#: modules/gui/qt/qt.cpp:249
+#: modules/gui/qt/qt.cpp:250
 msgid ""
 "Show the playback controls in fullscreen when the mouse moves. Off, only the "
 "keyboard shows them (the I key). The skins read it for their fullscreen "
@@ -8799,7 +8802,7 @@ msgstr ""
 "Kada je isključeno, prikazuje ih samo tipkovnica (tipka I). Presvlake to "
 "koriste i za svoje cjelozaslonske kontrole."
 
-#: modules/gui/qt/qt.cpp:265
+#: modules/gui/qt/qt.cpp:266
 msgid ""
 "Display the cover art of the audio playing in the player (the cone in the "
 "compact view). Off, a plain picture takes its place, which also prevents "
@@ -8809,7 +8812,7 @@ msgstr ""
 "Kada je isključeno, na njegovo mjesto dolazi jednostavna slika, što također "
 "sprječava urezivanje slike u zaslon."
 
-#: modules/gui/qt/qt.cpp:289
+#: modules/gui/qt/qt.cpp:290
 msgid ""
 "This option allows the interface to be shown and raised automatically when a "
 "video/audio playback starts, or never."
@@ -8817,11 +8820,11 @@ msgstr ""
 "Ova mogućnost omogućuje da se sučelje automatski prikaže i dovede u prvi "
 "plan kada započne izvođenje videa/zvuka, ili nikada."
 
-#: modules/gui/qt/qt.cpp:292
+#: modules/gui/qt/qt.cpp:293
 msgid "Enable window titlebar"
 msgstr "Omogući naslovnu traku prozora"
 
-#: modules/gui/qt/qt.cpp:293
+#: modules/gui/qt/qt.cpp:294
 msgid ""
 "This option enables the title bar. Disabling it will remove the titlebar and "
 "move window buttons within the interface (Client Side Decoration)"
@@ -8830,29 +8833,29 @@ msgstr ""
 "naslovna traka, a gumbi prozora premještaju se unutar sučelja (dekoracija na "
 "strani klijenta)"
 
-#: modules/gui/qt/qt.cpp:297
+#: modules/gui/qt/qt.cpp:298
 msgid "Show the menu bar"
 msgstr "Prikaži traku izbornika"
 
-#: modules/gui/qt/qt.cpp:298
+#: modules/gui/qt/qt.cpp:299
 msgid "This option displays the classic menu bar"
 msgstr "Ova mogućnost prikazuje klasičnu traku izbornika"
 
-#: modules/gui/qt/qt.cpp:300
+#: modules/gui/qt/qt.cpp:301
 msgid "Pin video controls"
 msgstr "Prikvači kontrole videa"
 
-#: modules/gui/qt/qt.cpp:301
+#: modules/gui/qt/qt.cpp:302
 msgid "Place video controls above and below the video instead of above"
 msgstr "Smješta kontrole videa iznad i ispod videa umjesto preko njega"
 
-#: modules/gui/qt/qt.cpp:304
+#: modules/gui/qt/qt.cpp:305
 msgid "Show the frame at the hovered position above the seek bar"
 msgstr ""
 "Prikazuje okvir na položaju iznad kojeg je pokazivač, iznad trake za "
 "premotavanje"
 
-#: modules/gui/qt/qt.cpp:306
+#: modules/gui/qt/qt.cpp:307
 msgid ""
 "Mark on the seek bar where the lines of the subtitle shown are, when it "
 "comes from a subtitle file"
@@ -8860,11 +8863,11 @@ msgstr ""
 "Označava na traci za premotavanje gdje su retci prikazanog podnaslova, kad "
 "on dolazi iz datoteke podnaslova"
 
-#: modules/gui/qt/qt.cpp:311
+#: modules/gui/qt/qt.cpp:312
 msgid "Select Qt video integration backend"
 msgstr "Odaberite pozadinski sustav Qt integracije videa"
 
-#: modules/gui/qt/qt.cpp:312
+#: modules/gui/qt/qt.cpp:313
 msgid ""
 "Select Qt video integration backend. Use with care, the interface may not "
 "start if an incompatible compositor is selected"
@@ -8872,11 +8875,11 @@ msgstr ""
 "Odaberite pozadinski sustav Qt integracije videa. Koristite oprezno, sučelje "
 "se možda neće pokrenuti ako se odabere nekompatibilan kompozitor"
 
-#: modules/gui/qt/qt.cpp:314
+#: modules/gui/qt/qt.cpp:315
 msgid "Use smooth scrolling in Flickable based views"
 msgstr "Koristi glatko pomicanje u prikazima temeljenim na Flickableu"
 
-#: modules/gui/qt/qt.cpp:315
+#: modules/gui/qt/qt.cpp:316
 msgid ""
 "Deactivating this option will disable smooth scrolling in Flickable based "
 "views (such as the Play Queue). This option is only respected with a scroll "
@@ -8886,22 +8889,22 @@ msgstr ""
 "temeljenim na Flickableu (poput reda izvođenja). Ova se mogućnost poštuje "
 "samo uz rukovatelj pomicanjem, pogledajte mogućnost `qt-use-scroll-handler`."
 
-#: modules/gui/qt/qt.cpp:318
+#: modules/gui/qt/qt.cpp:319
 msgid "Use Kirigami scroll handler for Flickable based views"
 msgstr ""
 "Koristi Kirigami rukovatelj pomicanjem za prikaze temeljene na Flickableu"
 
-#: modules/gui/qt/qt.cpp:319
+#: modules/gui/qt/qt.cpp:320
 msgid "Using Kirigami scroll handler may improve scrolling behavior."
 msgstr ""
 "Korištenje Kirigami rukovatelja pomicanjem može poboljšati ponašanje "
 "pomicanja."
 
-#: modules/gui/qt/qt.cpp:321
+#: modules/gui/qt/qt.cpp:322
 msgid "Safe area for the user interface"
 msgstr "Sigurno područje za korisničko sučelje"
 
-#: modules/gui/qt/qt.cpp:322
+#: modules/gui/qt/qt.cpp:323
 msgid ""
 "Sets the safe area percentage between 0.0 and 100 when you want to ensure "
 "the visibility of the user interface on a constrained viewport"
@@ -8909,21 +8912,21 @@ msgstr ""
 "Postavlja postotak sigurnog područja između 0,0 i 100 kada želite osigurati "
 "vidljivost korisničkog sučelja na ograničenom području prikaza"
 
-#: modules/gui/qt/qt.cpp:326
+#: modules/gui/qt/qt.cpp:327
 msgid "Print Qt's important internal messages"
 msgstr "Ispisuj važne interne poruke Qt-a"
 
-#: modules/gui/qt/qt.cpp:327
+#: modules/gui/qt/qt.cpp:328
 msgid "Enable Qt's all own messaging categories except the debug category."
 msgstr ""
 "Omogućuje sve Qt-ove kategorije poruka osim kategorije za otklanjanje "
 "pogrešaka."
 
-#: modules/gui/qt/qt.cpp:329
+#: modules/gui/qt/qt.cpp:330
 msgid "Hide the window on close"
 msgstr "Sakrij prozor pri zatvaranju"
 
-#: modules/gui/qt/qt.cpp:330
+#: modules/gui/qt/qt.cpp:331
 msgid ""
 "Instead of closing the application, hide the window. This setting is only "
 "applicable when system tray icon is enabled."
@@ -8931,11 +8934,11 @@ msgstr ""
 "Umjesto zatvaranja aplikacije sakriva prozor. Ova se postavka primjenjuje "
 "samo kada je omogućena ikona u ladici sustava."
 
-#: modules/gui/qt/qt.cpp:332
+#: modules/gui/qt/qt.cpp:333
 msgid "Enable backdrop blur filter for the main window if possible"
 msgstr "Omogući filtar zamućenja pozadine za glavni prozor ako je moguće"
 
-#: modules/gui/qt/qt.cpp:333
+#: modules/gui/qt/qt.cpp:334
 msgid ""
 "If backdrop blur filter is available, use translucency in the backgrounds of "
 "certain parts of the user interface instead of a solid color. This setting "
@@ -8945,11 +8948,11 @@ msgstr ""
 "pojedinih dijelova korisničkog sučelja umjesto jednobojne pozadine. Ova "
 "postavka smanjuje čitljivost teksta."
 
-#: modules/gui/qt/qt.cpp:336
+#: modules/gui/qt/qt.cpp:337
 msgid "Enable picture-in-picture (PiP) mode"
 msgstr "Omogući način slike u slici (PiP)"
 
-#: modules/gui/qt/qt.cpp:337
+#: modules/gui/qt/qt.cpp:338
 msgid ""
 "Picture-in-picture mode allows playing video contained in a smaller area so "
 "that the interface remains usable."
@@ -8957,7 +8960,7 @@ msgstr ""
 "Način slike u slici omogućuje izvođenje videa u manjem području kako bi "
 "sučelje ostalo upotrebljivo."
 
-#: modules/gui/qt/qt.cpp:340
+#: modules/gui/qt/qt.cpp:341
 msgid ""
 "Adjusts the accent color, special values are 'default' and 'system' "
 "(requires Qt 6.6) ."
@@ -8965,27 +8968,27 @@ msgstr ""
 "Prilagođava boju naglaska, posebne vrijednosti su 'default' i 'system' "
 "(zahtijeva Qt 6.6) ."
 
-#: modules/gui/qt/qt.cpp:346
+#: modules/gui/qt/qt.cpp:347
 msgid "Last channel watched"
 msgstr "Posljednji gledani kanal"
 
-#: modules/gui/qt/qt.cpp:347
+#: modules/gui/qt/qt.cpp:348
 msgid "Channel list"
 msgstr "Popis kanala"
 
-#: modules/gui/qt/qt.cpp:352
+#: modules/gui/qt/qt.cpp:353
 msgid "Zoom the interface in"
 msgstr "Povećaj sučelje"
 
-#: modules/gui/qt/qt.cpp:353
+#: modules/gui/qt/qt.cpp:354
 msgid "Zoom the interface out"
 msgstr "Smanji sučelje"
 
-#: modules/gui/qt/qt.cpp:454
+#: modules/gui/qt/qt.cpp:455
 msgid "Check for VLC Redesign updates"
 msgstr "Provjeravaj ažuriranja programa VLC Redesign"
 
-#: modules/gui/qt/qt.cpp:455
+#: modules/gui/qt/qt.cpp:456
 msgid ""
 "Look for a new release of VLC Redesign on GitHub at startup, at most once a "
 "day."
@@ -8993,11 +8996,11 @@ msgstr ""
 "Traži novo izdanje programa VLC Redesign na GitHubu pri pokretanju, najviše "
 "jednom dnevno."
 
-#: modules/gui/qt/qt.cpp:459
+#: modules/gui/qt/qt.cpp:460
 msgid "Resume at"
 msgstr "Nastavi na"
 
-#: modules/gui/qt/qt.cpp:460
+#: modules/gui/qt/qt.cpp:461
 msgid ""
 "Seconds into the media of the command line where playback continues, after "
 "an update."
@@ -9052,33 +9055,33 @@ msgstr "Vrati"
 msgid "Don't restore"
 msgstr "Nemoj vratiti"
 
-#: modules/gui/qt/util/redesign_updater.cpp:216
+#: modules/gui/qt/util/redesign_updater.cpp:221
 msgid ""
 "The update isn't signed by the publisher of this copy (%1), so it wasn't "
 "used."
 msgstr "Ažuriranje nije potpisao izdavač ove kopije (%1), pa nije korišteno."
 
-#: modules/gui/qt/util/redesign_updater.cpp:461
+#: modules/gui/qt/util/redesign_updater.cpp:467
 msgid "%1 (later)"
 msgstr "%1 (kasnije)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:463
+#: modules/gui/qt/util/redesign_updater.cpp:469
 msgid "%1 (soon)"
 msgstr "%1 (uskoro)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:643
+#: modules/gui/qt/util/redesign_updater.cpp:649
 msgid "This build cannot check for updates."
 msgstr "Ova inačica ne može provjeravati ažuriranja."
 
-#: modules/gui/qt/util/redesign_updater.cpp:657
+#: modules/gui/qt/util/redesign_updater.cpp:663
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "Nije moguće pristupiti GitHubu. Provjerite vezu i pokušajte ponovno."
 
-#: modules/gui/qt/util/redesign_updater.cpp:674
+#: modules/gui/qt/util/redesign_updater.cpp:680
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "GitHub je poslao neočekivan odgovor (%1)."
 
-#: modules/gui/qt/util/redesign_updater.cpp:792
+#: modules/gui/qt/util/redesign_updater.cpp:798
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
@@ -9086,47 +9089,47 @@ msgstr ""
 "Ovo ažuriranje nije potpisao VLC Redesign, pa nije korišteno. Umjesto toga "
 "preuzmite ga sa stranice izdanja."
 
-#: modules/gui/qt/util/redesign_updater.cpp:814
-#: modules/gui/qt/util/redesign_updater.cpp:855
+#: modules/gui/qt/util/redesign_updater.cpp:820
+#: modules/gui/qt/util/redesign_updater.cpp:861
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr ""
 "Kontrolni zbroj ažuriranja nedostaje; umjesto toga preuzmite ažuriranje sa "
 "stranice izdanja."
 
-#: modules/gui/qt/util/redesign_updater.cpp:829
-#: modules/gui/qt/util/redesign_updater.cpp:901
+#: modules/gui/qt/util/redesign_updater.cpp:835
+#: modules/gui/qt/util/redesign_updater.cpp:907
 msgid "The download failed. Check your connection and try again."
 msgstr "Preuzimanje nije uspjelo. Provjerite vezu i pokušajte ponovno."
 
-#: modules/gui/qt/util/redesign_updater.cpp:914
+#: modules/gui/qt/util/redesign_updater.cpp:920
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "Ažuriranje ne odgovara svojem kontrolnom zbroju, pa nije korišteno."
 
-#: modules/gui/qt/util/redesign_updater.cpp:945
+#: modules/gui/qt/util/redesign_updater.cpp:951
 msgid "The update isn't in a format this version knows."
 msgstr "Ažuriranje nije u formatu koji ova inačica poznaje."
 
-#: modules/gui/qt/util/redesign_updater.cpp:948
-#: modules/gui/qt/util/redesign_updater.cpp:972
-#: modules/gui/qt/util/redesign_updater.cpp:983
+#: modules/gui/qt/util/redesign_updater.cpp:954
+#: modules/gui/qt/util/redesign_updater.cpp:978
 #: modules/gui/qt/util/redesign_updater.cpp:989
+#: modules/gui/qt/util/redesign_updater.cpp:995
 msgid "The update is damaged."
 msgstr "Ažuriranje je oštećeno."
 
-#: modules/gui/qt/util/redesign_updater.cpp:953
+#: modules/gui/qt/util/redesign_updater.cpp:959
 msgid "The update isn't for this version."
 msgstr "Ažuriranje nije za ovu inačicu."
 
-#: modules/gui/qt/util/redesign_updater.cpp:962
-#: modules/gui/qt/util/redesign_updater.cpp:999
-#: modules/gui/qt/util/redesign_updater.cpp:1008
-#: modules/gui/qt/util/redesign_updater.cpp:1012
-#: modules/gui/qt/util/redesign_updater.cpp:1016
+#: modules/gui/qt/util/redesign_updater.cpp:968
+#: modules/gui/qt/util/redesign_updater.cpp:1005
+#: modules/gui/qt/util/redesign_updater.cpp:1014
+#: modules/gui/qt/util/redesign_updater.cpp:1018
+#: modules/gui/qt/util/redesign_updater.cpp:1022
 msgid "The update can't be written in %1."
 msgstr "Ažuriranje nije moguće zapisati u %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:964
+#: modules/gui/qt/util/redesign_updater.cpp:970
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -9135,67 +9138,67 @@ msgstr ""
 "se malo ažuriranje ne može koristiti: umjesto toga ažurirajte pomoću "
 "instalacijskog programa."
 
-#: modules/gui/qt/util/redesign_updater.cpp:994
+#: modules/gui/qt/util/redesign_updater.cpp:1000
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr ""
 "Ažuriranje je oštećeno: jedna datoteka ne odgovara svojem kontrolnom zbroju."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1119
+#: modules/gui/qt/util/redesign_updater.cpp:1125
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr ""
 "Ažuriranje nije bilo moguće pokrenuti. Ponovno će se pokušati sljedeći put."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1146
+#: modules/gui/qt/util/redesign_updater.cpp:1152
 msgid "The download failed. Try again, or download it from the release page."
 msgstr ""
 "Preuzimanje nije uspjelo. Pokušajte ponovno ili ga preuzmite sa stranice "
 "izdanja."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1159
+#: modules/gui/qt/util/redesign_updater.cpp:1165
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr ""
 "Preuzeti instalacijski program ne odgovara svojem kontrolnom zbroju, pa nije "
 "pokrenut."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1168
+#: modules/gui/qt/util/redesign_updater.cpp:1174
 msgid "The installer couldn't be saved to %1."
 msgstr "Instalacijski program nije bilo moguće spremiti u %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1202
+#: modules/gui/qt/util/redesign_updater.cpp:1208
 msgid "The installer couldn't be started."
 msgstr "Instalacijski program nije bilo moguće pokrenuti."
 
-#: modules/gui/qt/util/renderer_manager.cpp:891
+#: modules/gui/qt/util/renderer_manager.cpp:896
 msgid ""
 "%1 doesn't answer. Check that it's on, and on the same network as this "
 "computer."
 msgstr ""
 "%1 ne odgovara. Provjerite je li uključen i u istoj mreži kao ovo računalo."
 
-#: modules/gui/qt/util/renderer_manager.cpp:894
+#: modules/gui/qt/util/renderer_manager.cpp:899
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the video."
 msgstr ""
 "Vatrozid za Windows ne dopušta uređaju %1 da se poveže s ovim računalom radi "
 "čitanja videa."
 
-#: modules/gui/qt/util/renderer_manager.cpp:895
+#: modules/gui/qt/util/renderer_manager.cpp:900
 msgid "%1 couldn't read the video from this computer."
 msgstr "%1 nije mogao čitati video s ovog računala."
 
-#: modules/gui/qt/util/renderer_manager.cpp:897
+#: modules/gui/qt/util/renderer_manager.cpp:902
 msgid "%1 refused to play this video."
 msgstr "%1 je odbio izvesti ovaj video."
 
-#: modules/gui/qt/util/renderer_manager.cpp:899
+#: modules/gui/qt/util/renderer_manager.cpp:904
 msgid "%1 stopped playing."
 msgstr "%1 je prestao izvoditi."
 
-#: modules/gui/qt/util/renderer_manager.cpp:901
+#: modules/gui/qt/util/renderer_manager.cpp:906
 msgid "%1 is playing something else now."
 msgstr "%1 sada izvodi nešto drugo."
 
-#: modules/gui/qt/util/renderer_manager.cpp:902
+#: modules/gui/qt/util/renderer_manager.cpp:907
 msgid "%1 couldn't play the video."
 msgstr "%1 nije mogao izvesti video."
 

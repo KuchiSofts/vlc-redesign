@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 2.2.7\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-30 23:06+0000\n"
+"POT-Creation-Date: 2026-10-31 01:06+0000\n"
 "PO-Revision-Date: 2017-11-16 03:16+0100\n"
 "Last-Translator: Андрій Бандура <andriykopanytsia@gmail.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -1546,8 +1546,8 @@ msgstr "Потрібна Windows 10 версії 1809 або новіша."
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:27
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignPluginsDialog.qml:30
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignStatisticsDialog.qml:26
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:553
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:558
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:554
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:559
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:152
 #: modules/gui/qt/dialogs/firstrun/qml/WhatsNewDialog.qml:39
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:312
@@ -1559,7 +1559,7 @@ msgstr "Потрібна Windows 10 версії 1809 або новіша."
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:32
 #: modules/gui/qt/util/csdmenu.cpp:131
 #: modules/gui/qt/util/redesign_window_frame.cpp:96
-#: modules/gui/qt/widgets/native/redesign_message_box.cpp:213
+#: modules/gui/qt/widgets/native/redesign_message_box.cpp:214
 #: modules/gui/qt/widgets/qml/RedesignDialog.qml:223
 msgid "Close"
 msgstr "Закрити"
@@ -2173,36 +2173,36 @@ msgstr "Прочитано"
 msgid "Late"
 msgstr "Запізнилося"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:520
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:521
 msgid "Confirm"
 msgstr "Підтвердження"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:550
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:551
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:218
 msgid "Retry"
 msgstr "Повторити"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:552
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:553
 msgid "Yes to All"
 msgstr "Так для всіх"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:558
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:559
 msgid "No to All"
 msgstr "Ні для всіх"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1169
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1170
 msgid "Save play queue as..."
 msgstr "Зберегти чергу відтворення як..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1389
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1390
 msgid "Write error"
 msgstr "Помилка запису"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1406
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1407
 msgid "Export playlist as..."
 msgstr "Експортувати список відтворення як..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1423
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1424
 msgid ""
 "The playlist could not be exported to %1:\n"
 "%2"
@@ -2210,17 +2210,17 @@ msgstr ""
 "Не вдалося експортувати список відтворення до %1:\n"
 "%2"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1425
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
 msgid "Export Playlist"
 msgstr "Експортувати список відтворення"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1551
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1552
 msgid "Open audio..."
 msgstr "Відкрити аудіо..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1556
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1557
 msgid "Open video..."
 msgstr "Відкрити відео..."
 
@@ -2797,8 +2797,8 @@ msgid "Accent color %1"
 msgstr "Акцентний колір %1"
 
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:55
-msgid "Welcome to VLC!"
-msgstr "Ласкаво просимо до VLC!"
+msgid "Welcome to %1!"
+msgstr "Ласкаво просимо до %1!"
 
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:73
 msgid ""
@@ -3199,7 +3199,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:293
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:105
-#: modules/gui/qt/qt.cpp:348
+#: modules/gui/qt/qt.cpp:349
 msgid "Channel banner"
 msgstr "Банер каналу"
 
@@ -3536,7 +3536,7 @@ msgid ""
 msgstr "%1: змінено поза параметрами або недоступно. Ваші зміни не збережено."
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:79
-#: modules/gui/qt/qt.cpp:357
+#: modules/gui/qt/qt.cpp:358
 msgid "Expert"
 msgstr "Експертний"
 
@@ -3629,7 +3629,7 @@ msgstr "Тема"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:192
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:428
-#: modules/gui/qt/qt.cpp:339
+#: modules/gui/qt/qt.cpp:340
 msgid "Accent color"
 msgstr "Акцентний колір"
 
@@ -3896,8 +3896,8 @@ msgid "Reset all settings?"
 msgstr "Скинути всі параметри?"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:830
-msgid "Every setting of VLC media player goes back to its default."
-msgstr "Усі параметри медіапрогравача VLC повернуться до типових значень."
+msgid "Every setting of %1 goes back to its default."
+msgstr "Усі параметри медіапрогравача %1 повернуться до типових значень."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:884
 msgid "Discard changes"
@@ -4468,7 +4468,7 @@ msgid "Seeking"
 msgstr "Перемотування"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:137
-#: modules/gui/qt/qt.cpp:303
+#: modules/gui/qt/qt.cpp:304
 msgid "Show thumbnail while scrubbing"
 msgstr "Показувати мініатюру під час перемотування"
 
@@ -4748,7 +4748,7 @@ msgid "Timing"
 msgstr "Синхронізація"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:273
-#: modules/gui/qt/qt.cpp:305
+#: modules/gui/qt/qt.cpp:306
 msgid "Show subtitle lines on the seek bar"
 msgstr "Показувати рядки субтитрів на смузі перемотування"
 
@@ -5328,6 +5328,14 @@ msgstr ""
 msgid "Reset all"
 msgstr "Скинути все"
 
+#: modules/gui/qt/dialogs/systray/systray.cpp:200
+msgid "&Hide %1 in taskbar"
+msgstr "С&ховати медіаплеєр %1 панелі завдань"
+
+#: modules/gui/qt/dialogs/systray/systray.cpp:206
+msgid "Sho&w %1"
+msgstr "&Показати медіапрогравач %1"
+
 #: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:205
 #: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:438
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:425
@@ -5787,11 +5795,11 @@ msgstr "Нагадати"
 msgid "Back to Live"
 msgstr "Повернутися до прямого ефіру"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:618 modules/gui/qt/qt.cpp:344
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:618 modules/gui/qt/qt.cpp:345
 msgid "Next channel"
 msgstr "Наступний канал"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:623 modules/gui/qt/qt.cpp:345
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:623 modules/gui/qt/qt.cpp:346
 msgid "Previous channel"
 msgstr "Попередній канал"
 
@@ -6177,11 +6185,6 @@ msgstr "Локальна верхня панель"
 #: modules/gui/qt/maininterface/qml/LocalTopbar.qml:188
 msgid "Show navigation menu"
 msgstr "Показати меню навігації"
-
-#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:251
-#: modules/gui/qt/player/qml/TopBar.qml:505
-msgid "VLC Media Player"
-msgstr "Медіапрогравач VLC"
 
 #: modules/gui/qt/maininterface/qml/MainDisplay.qml:34
 msgid "Main display"
@@ -8723,18 +8726,18 @@ msgstr "Черга відтворення"
 msgid "%1 elements, %2"
 msgstr "Елементів: %1, %2"
 
-#: modules/gui/qt/qt.cpp:175
+#: modules/gui/qt/qt.cpp:176
 msgid "Select the initial preferences view"
 msgstr "Виберіть початковий вигляд параметрів"
 
-#: modules/gui/qt/qt.cpp:176
+#: modules/gui/qt/qt.cpp:177
 msgid ""
 "Select which preferences view to show upon opening the preferences dialog."
 msgstr ""
 "Виберіть, який вигляд параметрів показувати під час відкриття вікна "
 "параметрів."
 
-#: modules/gui/qt/qt.cpp:200
+#: modules/gui/qt/qt.cpp:201
 msgid ""
 "Show a notification popup with the artist and track name when the current "
 "play queue item changes, when VLC is minimized or hidden."
@@ -8743,7 +8746,7 @@ msgstr ""
 "змінюється поточний елемент черги відтворення, якщо VLC згорнуто або "
 "приховано."
 
-#: modules/gui/qt/qt.cpp:204
+#: modules/gui/qt/qt.cpp:205
 msgid ""
 "Sets the windows opacity between 0.1 and 1 for main interface, play queue "
 "and extended panel. This option only works with Windows and X11 with "
@@ -8753,7 +8756,7 @@ msgstr ""
 "відтворення та розширеної панелі. Цей параметр працює лише у Windows та X11 "
 "з розширеннями композиції."
 
-#: modules/gui/qt/qt.cpp:210
+#: modules/gui/qt/qt.cpp:211
 msgid ""
 "Sets the fullscreen controller opacity between 0.1 and 1 for main interface, "
 "play queue and extended panel. This option only works with Windows and X11 "
@@ -8763,11 +8766,11 @@ msgstr ""
 "головного інтерфейсу, черги відтворення та розширеної панелі. Цей параметр "
 "працює лише у Windows та X11 з розширеннями композиції."
 
-#: modules/gui/qt/qt.cpp:215
+#: modules/gui/qt/qt.cpp:216
 msgid "Initial user scale factor for the interface, between 0.3 and 3.0"
 msgstr "Початковий користувацький масштаб інтерфейсу, від 0,3 до 3,0"
 
-#: modules/gui/qt/qt.cpp:218
+#: modules/gui/qt/qt.cpp:219
 msgid ""
 "Show the errors of VLC at the bottom of the window, and ask before removing "
 "media from a playlist or from the play queue, or deleting playlists. Off, "
@@ -8779,11 +8782,11 @@ msgstr ""
 "Якщо вимкнено, помилки зберігаються лише в повідомленнях VLC, а вилучення "
 "виконується одразу; видалення файлу з диска завжди потребує підтвердження."
 
-#: modules/gui/qt/qt.cpp:228
+#: modules/gui/qt/qt.cpp:229
 msgid "set the options for qml debugger"
 msgstr "задати параметри налагоджувача QML"
 
-#: modules/gui/qt/qt.cpp:229
+#: modules/gui/qt/qt.cpp:230
 msgid ""
 "set the options for qml debugger (see http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
@@ -8791,7 +8794,7 @@ msgstr ""
 "задати параметри налагоджувача QML (див. http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
 
-#: modules/gui/qt/qt.cpp:249
+#: modules/gui/qt/qt.cpp:250
 msgid ""
 "Show the playback controls in fullscreen when the mouse moves. Off, only the "
 "keyboard shows them (the I key). The skins read it for their fullscreen "
@@ -8802,7 +8805,7 @@ msgstr ""
 "Оболонки також використовують цей параметр для своїх повноекранних елементів "
 "керування."
 
-#: modules/gui/qt/qt.cpp:265
+#: modules/gui/qt/qt.cpp:266
 msgid ""
 "Display the cover art of the audio playing in the player (the cone in the "
 "compact view). Off, a plain picture takes its place, which also prevents "
@@ -8812,7 +8815,7 @@ msgstr ""
 "компактному вигляді). Якщо вимкнено, замість неї показується звичайне "
 "зображення, що також запобігає вигоранню екрана."
 
-#: modules/gui/qt/qt.cpp:289
+#: modules/gui/qt/qt.cpp:290
 msgid ""
 "This option allows the interface to be shown and raised automatically when a "
 "video/audio playback starts, or never."
@@ -8820,11 +8823,11 @@ msgstr ""
 "Цей параметр дає змогу автоматично показувати й виводити на передній план "
 "інтерфейс на початку відтворення відео/аудіо або ніколи."
 
-#: modules/gui/qt/qt.cpp:292
+#: modules/gui/qt/qt.cpp:293
 msgid "Enable window titlebar"
 msgstr "Увімкнути заголовок вікна"
 
-#: modules/gui/qt/qt.cpp:293
+#: modules/gui/qt/qt.cpp:294
 msgid ""
 "This option enables the title bar. Disabling it will remove the titlebar and "
 "move window buttons within the interface (Client Side Decoration)"
@@ -8832,27 +8835,27 @@ msgstr ""
 "Цей параметр вмикає заголовок вікна. Якщо його вимкнути, заголовок зникне, а "
 "кнопки вікна перемістяться в інтерфейс (клієнтське оформлення вікна)"
 
-#: modules/gui/qt/qt.cpp:297
+#: modules/gui/qt/qt.cpp:298
 msgid "Show the menu bar"
 msgstr "Показувати панель меню"
 
-#: modules/gui/qt/qt.cpp:298
+#: modules/gui/qt/qt.cpp:299
 msgid "This option displays the classic menu bar"
 msgstr "Цей параметр показує класичну панель меню"
 
-#: modules/gui/qt/qt.cpp:300
+#: modules/gui/qt/qt.cpp:301
 msgid "Pin video controls"
 msgstr "Закріпити елементи керування відео"
 
-#: modules/gui/qt/qt.cpp:301
+#: modules/gui/qt/qt.cpp:302
 msgid "Place video controls above and below the video instead of above"
 msgstr "Розміщувати елементи керування над і під відео, а не поверх нього"
 
-#: modules/gui/qt/qt.cpp:304
+#: modules/gui/qt/qt.cpp:305
 msgid "Show the frame at the hovered position above the seek bar"
 msgstr "Показувати над смугою перемотування кадр у позиції під курсором"
 
-#: modules/gui/qt/qt.cpp:306
+#: modules/gui/qt/qt.cpp:307
 msgid ""
 "Mark on the seek bar where the lines of the subtitle shown are, when it "
 "comes from a subtitle file"
@@ -8860,11 +8863,11 @@ msgstr ""
 "Позначати на смузі перемотування, де розташовані рядки показаних субтитрів, "
 "якщо вони взяті з файлу субтитрів"
 
-#: modules/gui/qt/qt.cpp:311
+#: modules/gui/qt/qt.cpp:312
 msgid "Select Qt video integration backend"
 msgstr "Виберіть рушій інтеграції відео Qt"
 
-#: modules/gui/qt/qt.cpp:312
+#: modules/gui/qt/qt.cpp:313
 msgid ""
 "Select Qt video integration backend. Use with care, the interface may not "
 "start if an incompatible compositor is selected"
@@ -8872,11 +8875,11 @@ msgstr ""
 "Виберіть рушій інтеграції відео Qt. Будьте обережні: інтерфейс може не "
 "запуститися, якщо вибрано несумісний композитор"
 
-#: modules/gui/qt/qt.cpp:314
+#: modules/gui/qt/qt.cpp:315
 msgid "Use smooth scrolling in Flickable based views"
 msgstr "Використовувати плавне прокручування у виглядах на основі Flickable"
 
-#: modules/gui/qt/qt.cpp:315
+#: modules/gui/qt/qt.cpp:316
 msgid ""
 "Deactivating this option will disable smooth scrolling in Flickable based "
 "views (such as the Play Queue). This option is only respected with a scroll "
@@ -8886,21 +8889,21 @@ msgstr ""
 "Flickable (як-от черга відтворення) буде вимкнено. Цей параметр враховується "
 "лише з обробником прокручування, див. параметр `qt-use-scroll-handler`."
 
-#: modules/gui/qt/qt.cpp:318
+#: modules/gui/qt/qt.cpp:319
 msgid "Use Kirigami scroll handler for Flickable based views"
 msgstr ""
 "Використовувати обробник прокручування Kirigami для виглядів на основі "
 "Flickable"
 
-#: modules/gui/qt/qt.cpp:319
+#: modules/gui/qt/qt.cpp:320
 msgid "Using Kirigami scroll handler may improve scrolling behavior."
 msgstr "Обробник прокручування Kirigami може покращити прокручування."
 
-#: modules/gui/qt/qt.cpp:321
+#: modules/gui/qt/qt.cpp:322
 msgid "Safe area for the user interface"
 msgstr "Безпечна область інтерфейсу"
 
-#: modules/gui/qt/qt.cpp:322
+#: modules/gui/qt/qt.cpp:323
 msgid ""
 "Sets the safe area percentage between 0.0 and 100 when you want to ensure "
 "the visibility of the user interface on a constrained viewport"
@@ -8908,20 +8911,20 @@ msgstr ""
 "Задає відсоток безпечної області від 0,0 до 100, щоб гарантувати видимість "
 "інтерфейсу в обмеженій області перегляду"
 
-#: modules/gui/qt/qt.cpp:326
+#: modules/gui/qt/qt.cpp:327
 msgid "Print Qt's important internal messages"
 msgstr "Виводити важливі внутрішні повідомлення Qt"
 
-#: modules/gui/qt/qt.cpp:327
+#: modules/gui/qt/qt.cpp:328
 msgid "Enable Qt's all own messaging categories except the debug category."
 msgstr ""
 "Увімкнути всі власні категорії повідомлень Qt, крім категорії налагодження."
 
-#: modules/gui/qt/qt.cpp:329
+#: modules/gui/qt/qt.cpp:330
 msgid "Hide the window on close"
 msgstr "Ховати вікно під час закриття"
 
-#: modules/gui/qt/qt.cpp:330
+#: modules/gui/qt/qt.cpp:331
 msgid ""
 "Instead of closing the application, hide the window. This setting is only "
 "applicable when system tray icon is enabled."
@@ -8929,11 +8932,11 @@ msgstr ""
 "Замість закриття програми ховати вікно. Цей параметр діє, лише коли "
 "ввімкнено значок в області сповіщень."
 
-#: modules/gui/qt/qt.cpp:332
+#: modules/gui/qt/qt.cpp:333
 msgid "Enable backdrop blur filter for the main window if possible"
 msgstr "Увімкнути розмиття тла для головного вікна, якщо можливо"
 
-#: modules/gui/qt/qt.cpp:333
+#: modules/gui/qt/qt.cpp:334
 msgid ""
 "If backdrop blur filter is available, use translucency in the backgrounds of "
 "certain parts of the user interface instead of a solid color. This setting "
@@ -8943,11 +8946,11 @@ msgstr ""
 "частин інтерфейсу замість суцільного кольору. Цей параметр погіршує "
 "читабельність тексту."
 
-#: modules/gui/qt/qt.cpp:336
+#: modules/gui/qt/qt.cpp:337
 msgid "Enable picture-in-picture (PiP) mode"
 msgstr "Увімкнути режим «картинка в картинці» (PiP)"
 
-#: modules/gui/qt/qt.cpp:337
+#: modules/gui/qt/qt.cpp:338
 msgid ""
 "Picture-in-picture mode allows playing video contained in a smaller area so "
 "that the interface remains usable."
@@ -8955,7 +8958,7 @@ msgstr ""
 "Режим «картинка в картинці» дає змогу відтворювати відео в меншій області, "
 "щоб інтерфейсом можна було користуватися далі."
 
-#: modules/gui/qt/qt.cpp:340
+#: modules/gui/qt/qt.cpp:341
 msgid ""
 "Adjusts the accent color, special values are 'default' and 'system' "
 "(requires Qt 6.6) ."
@@ -8963,27 +8966,27 @@ msgstr ""
 "Налаштовує акцентний колір; спеціальні значення: 'default' і 'system' "
 "(потрібен Qt 6.6)."
 
-#: modules/gui/qt/qt.cpp:346
+#: modules/gui/qt/qt.cpp:347
 msgid "Last channel watched"
 msgstr "Останній переглянутий канал"
 
-#: modules/gui/qt/qt.cpp:347
+#: modules/gui/qt/qt.cpp:348
 msgid "Channel list"
 msgstr "Список каналів"
 
-#: modules/gui/qt/qt.cpp:352
+#: modules/gui/qt/qt.cpp:353
 msgid "Zoom the interface in"
 msgstr "Збільшити інтерфейс"
 
-#: modules/gui/qt/qt.cpp:353
+#: modules/gui/qt/qt.cpp:354
 msgid "Zoom the interface out"
 msgstr "Зменшити інтерфейс"
 
-#: modules/gui/qt/qt.cpp:454
+#: modules/gui/qt/qt.cpp:455
 msgid "Check for VLC Redesign updates"
 msgstr "Перевіряти оновлення VLC Redesign"
 
-#: modules/gui/qt/qt.cpp:455
+#: modules/gui/qt/qt.cpp:456
 msgid ""
 "Look for a new release of VLC Redesign on GitHub at startup, at most once a "
 "day."
@@ -8991,11 +8994,11 @@ msgstr ""
 "Шукати новий випуск VLC Redesign на GitHub під час запуску, не частіше ніж "
 "раз на день."
 
-#: modules/gui/qt/qt.cpp:459
+#: modules/gui/qt/qt.cpp:460
 msgid "Resume at"
 msgstr "Продовжити з"
 
-#: modules/gui/qt/qt.cpp:460
+#: modules/gui/qt/qt.cpp:461
 msgid ""
 "Seconds into the media of the command line where playback continues, after "
 "an update."
@@ -9051,7 +9054,7 @@ msgstr "Відновити"
 msgid "Don't restore"
 msgstr "Не відновлювати"
 
-#: modules/gui/qt/util/redesign_updater.cpp:216
+#: modules/gui/qt/util/redesign_updater.cpp:221
 msgid ""
 "The update isn't signed by the publisher of this copy (%1), so it wasn't "
 "used."
@@ -9059,28 +9062,28 @@ msgstr ""
 "Оновлення не підписане видавцем цієї копії (%1), тому його не було "
 "застосовано."
 
-#: modules/gui/qt/util/redesign_updater.cpp:461
+#: modules/gui/qt/util/redesign_updater.cpp:467
 msgid "%1 (later)"
 msgstr "%1 (пізніше)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:463
+#: modules/gui/qt/util/redesign_updater.cpp:469
 msgid "%1 (soon)"
 msgstr "%1 (незабаром)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:643
+#: modules/gui/qt/util/redesign_updater.cpp:649
 msgid "This build cannot check for updates."
 msgstr "Ця збірка не може перевіряти оновлення."
 
-#: modules/gui/qt/util/redesign_updater.cpp:657
+#: modules/gui/qt/util/redesign_updater.cpp:663
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr ""
 "Не вдалося зв’язатися з GitHub. Перевірте з’єднання й спробуйте ще раз."
 
-#: modules/gui/qt/util/redesign_updater.cpp:674
+#: modules/gui/qt/util/redesign_updater.cpp:680
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "GitHub надіслав неочікувану відповідь (%1)."
 
-#: modules/gui/qt/util/redesign_updater.cpp:792
+#: modules/gui/qt/util/redesign_updater.cpp:798
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
@@ -9088,47 +9091,47 @@ msgstr ""
 "Це оновлення не підписане VLC Redesign, тому його не використано. Завантажте "
 "його зі сторінки випуску."
 
-#: modules/gui/qt/util/redesign_updater.cpp:814
-#: modules/gui/qt/util/redesign_updater.cpp:855
+#: modules/gui/qt/util/redesign_updater.cpp:820
+#: modules/gui/qt/util/redesign_updater.cpp:861
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr ""
 "Контрольна сума оновлення відсутня; завантажте його зі сторінки випуску."
 
-#: modules/gui/qt/util/redesign_updater.cpp:829
-#: modules/gui/qt/util/redesign_updater.cpp:901
+#: modules/gui/qt/util/redesign_updater.cpp:835
+#: modules/gui/qt/util/redesign_updater.cpp:907
 msgid "The download failed. Check your connection and try again."
 msgstr "Не вдалося завантажити. Перевірте з’єднання й спробуйте ще раз."
 
-#: modules/gui/qt/util/redesign_updater.cpp:914
+#: modules/gui/qt/util/redesign_updater.cpp:920
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr ""
 "Оновлення не відповідає своїй контрольній сумі, тому його не використано."
 
-#: modules/gui/qt/util/redesign_updater.cpp:945
+#: modules/gui/qt/util/redesign_updater.cpp:951
 msgid "The update isn't in a format this version knows."
 msgstr "Оновлення має формат, невідомий цій версії."
 
-#: modules/gui/qt/util/redesign_updater.cpp:948
-#: modules/gui/qt/util/redesign_updater.cpp:972
-#: modules/gui/qt/util/redesign_updater.cpp:983
+#: modules/gui/qt/util/redesign_updater.cpp:954
+#: modules/gui/qt/util/redesign_updater.cpp:978
 #: modules/gui/qt/util/redesign_updater.cpp:989
+#: modules/gui/qt/util/redesign_updater.cpp:995
 msgid "The update is damaged."
 msgstr "Оновлення пошкоджено."
 
-#: modules/gui/qt/util/redesign_updater.cpp:953
+#: modules/gui/qt/util/redesign_updater.cpp:959
 msgid "The update isn't for this version."
 msgstr "Оновлення не призначене для цієї версії."
 
-#: modules/gui/qt/util/redesign_updater.cpp:962
-#: modules/gui/qt/util/redesign_updater.cpp:999
-#: modules/gui/qt/util/redesign_updater.cpp:1008
-#: modules/gui/qt/util/redesign_updater.cpp:1012
-#: modules/gui/qt/util/redesign_updater.cpp:1016
+#: modules/gui/qt/util/redesign_updater.cpp:968
+#: modules/gui/qt/util/redesign_updater.cpp:1005
+#: modules/gui/qt/util/redesign_updater.cpp:1014
+#: modules/gui/qt/util/redesign_updater.cpp:1018
+#: modules/gui/qt/util/redesign_updater.cpp:1022
 msgid "The update can't be written in %1."
 msgstr "Оновлення неможливо записати в %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:964
+#: modules/gui/qt/util/redesign_updater.cpp:970
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -9136,34 +9139,34 @@ msgstr ""
 "Файл VLC Redesign змінено після встановлення, тому мале оновлення "
 "використати неможливо: оновіться за допомогою інсталятора."
 
-#: modules/gui/qt/util/redesign_updater.cpp:994
+#: modules/gui/qt/util/redesign_updater.cpp:1000
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr "Оновлення пошкоджено: файл не відповідає своїй контрольній сумі."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1119
+#: modules/gui/qt/util/redesign_updater.cpp:1125
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr "Не вдалося запустити оновлення. Наступного разу буде нова спроба."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1146
+#: modules/gui/qt/util/redesign_updater.cpp:1152
 msgid "The download failed. Try again, or download it from the release page."
 msgstr ""
 "Не вдалося завантажити. Спробуйте ще раз або завантажте зі сторінки випуску."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1159
+#: modules/gui/qt/util/redesign_updater.cpp:1165
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr ""
 "Завантажений інсталятор не відповідає своїй контрольній сумі, тому його не "
 "запущено."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1168
+#: modules/gui/qt/util/redesign_updater.cpp:1174
 msgid "The installer couldn't be saved to %1."
 msgstr "Не вдалося зберегти інсталятор у %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1202
+#: modules/gui/qt/util/redesign_updater.cpp:1208
 msgid "The installer couldn't be started."
 msgstr "Не вдалося запустити інсталятор."
 
-#: modules/gui/qt/util/renderer_manager.cpp:891
+#: modules/gui/qt/util/renderer_manager.cpp:896
 msgid ""
 "%1 doesn't answer. Check that it's on, and on the same network as this "
 "computer."
@@ -9171,30 +9174,30 @@ msgstr ""
 "%1 не відповідає. Перевірте, чи пристрій увімкнено й чи він у тій самій "
 "мережі, що й цей комп’ютер."
 
-#: modules/gui/qt/util/renderer_manager.cpp:894
+#: modules/gui/qt/util/renderer_manager.cpp:899
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the video."
 msgstr ""
 "Брандмауер Windows не дає %1 підключитися до цього комп’ютера, щоб читати "
 "відео."
 
-#: modules/gui/qt/util/renderer_manager.cpp:895
+#: modules/gui/qt/util/renderer_manager.cpp:900
 msgid "%1 couldn't read the video from this computer."
 msgstr "%1 не вдалося прочитати відео з цього комп’ютера."
 
-#: modules/gui/qt/util/renderer_manager.cpp:897
+#: modules/gui/qt/util/renderer_manager.cpp:902
 msgid "%1 refused to play this video."
 msgstr "%1 відмовився відтворювати це відео."
 
-#: modules/gui/qt/util/renderer_manager.cpp:899
+#: modules/gui/qt/util/renderer_manager.cpp:904
 msgid "%1 stopped playing."
 msgstr "%1 припинив відтворення."
 
-#: modules/gui/qt/util/renderer_manager.cpp:901
+#: modules/gui/qt/util/renderer_manager.cpp:906
 msgid "%1 is playing something else now."
 msgstr "%1 зараз відтворює щось інше."
 
-#: modules/gui/qt/util/renderer_manager.cpp:902
+#: modules/gui/qt/util/renderer_manager.cpp:907
 msgid "%1 couldn't play the video."
 msgstr "%1 не вдалося відтворити відео."
 

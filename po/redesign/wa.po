@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-30 23:06+0000\n"
+"POT-Creation-Date: 2026-10-31 01:06+0000\n"
 "PO-Revision-Date: 2013-12-08 08:16+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Walloon (http://www.transifex.com/projects/p/vlc-trans/"
@@ -1556,8 +1556,8 @@ msgstr "I lyi fåt Windows 10 modêye 1809 ou pus nouve."
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:27
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignPluginsDialog.qml:30
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignStatisticsDialog.qml:26
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:553
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:558
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:554
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:559
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:152
 #: modules/gui/qt/dialogs/firstrun/qml/WhatsNewDialog.qml:39
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:312
@@ -1569,7 +1569,7 @@ msgstr "I lyi fåt Windows 10 modêye 1809 ou pus nouve."
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:32
 #: modules/gui/qt/util/csdmenu.cpp:131
 #: modules/gui/qt/util/redesign_window_frame.cpp:96
-#: modules/gui/qt/widgets/native/redesign_message_box.cpp:213
+#: modules/gui/qt/widgets/native/redesign_message_box.cpp:214
 #: modules/gui/qt/widgets/qml/RedesignDialog.qml:223
 msgid "Close"
 msgstr "Clôre"
@@ -2183,36 +2183,36 @@ msgstr "Lît"
 msgid "Late"
 msgstr "En ritård"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:520
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:521
 msgid "Confirm"
 msgstr "Acertiner"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:550
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:551
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:218
 msgid "Retry"
 msgstr "Rissayî"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:552
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:553
 msgid "Yes to All"
 msgstr "Oyi po tos"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:558
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:559
 msgid "No to All"
 msgstr "Neni po tos"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1169
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1170
 msgid "Save play queue as..."
 msgstr "Schaper l' rote a djouwer come..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1389
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1390
 msgid "Write error"
 msgstr "Aroke di scrijhaedje"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1406
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1407
 msgid "Export playlist as..."
 msgstr "Ebaguer l' djivêye a djouwer come..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1423
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1424
 msgid ""
 "The playlist could not be exported to %1:\n"
 "%2"
@@ -2220,17 +2220,17 @@ msgstr ""
 "Li djivêye a djouwer n' a savou esse ebaguêye viè %1:\n"
 "%2"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1425
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
 msgid "Export Playlist"
 msgstr "Ebaguer l' djivêye a djouwer"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1551
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1552
 msgid "Open audio..."
 msgstr "Drovi ene odio..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1556
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1557
 msgid "Open video..."
 msgstr "Drovi ene videyo..."
 
@@ -2814,8 +2814,8 @@ msgid "Accent color %1"
 msgstr "Coleur d' acsint %1"
 
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:55
-msgid "Welcome to VLC!"
-msgstr "Bénvnowe dins VLC!"
+msgid "Welcome to %1!"
+msgstr "Bénvnowe dins %1!"
 
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:73
 msgid ""
@@ -3218,7 +3218,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:293
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:105
-#: modules/gui/qt/qt.cpp:348
+#: modules/gui/qt/qt.cpp:349
 msgid "Channel banner"
 msgstr "Bandrole do canå"
 
@@ -3562,7 +3562,7 @@ msgstr ""
 "ont nén stî schapés."
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:79
-#: modules/gui/qt/qt.cpp:357
+#: modules/gui/qt/qt.cpp:358
 msgid "Expert"
 msgstr "Spepieus"
 
@@ -3657,7 +3657,7 @@ msgstr "Tinme"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:192
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:428
-#: modules/gui/qt/qt.cpp:339
+#: modules/gui/qt/qt.cpp:340
 msgid "Accent color"
 msgstr "Coleur d' acsint"
 
@@ -3925,10 +3925,8 @@ msgid "Reset all settings?"
 msgstr "Rimete a zero tos les apontiaedjes?"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:830
-msgid "Every setting of VLC media player goes back to its default."
-msgstr ""
-"Tos les apontiaedjes do djouweu d' media VLC rivnèt a leu prémetowe "
-"valixhance."
+msgid "Every setting of %1 goes back to its default."
+msgstr "Tos les apontiaedjes do djouweu d' media %1 rivnèt a leu prémetowe valixhance."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:884
 msgid "Discard changes"
@@ -4500,7 +4498,7 @@ msgid "Seeking"
 msgstr "Bodjaedje"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:137
-#: modules/gui/qt/qt.cpp:303
+#: modules/gui/qt/qt.cpp:304
 msgid "Show thumbnail while scrubbing"
 msgstr "Mostrer ene miniateure tins k' on bodje"
 
@@ -4780,7 +4778,7 @@ msgid "Timing"
 msgstr "Tins"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:273
-#: modules/gui/qt/qt.cpp:305
+#: modules/gui/qt/qt.cpp:306
 msgid "Show subtitle lines on the seek bar"
 msgstr "Mostrer les royes des sortites so l' bår di bodjaedje"
 
@@ -5357,6 +5355,14 @@ msgstr ""
 msgid "Reset all"
 msgstr "Rimete tot a zero"
 
+#: modules/gui/qt/dialogs/systray/systray.cpp:200
+msgid "&Hide %1 in taskbar"
+msgstr "&Catchî l' djouweu d' media %1 dins l' bår des bezognes"
+
+#: modules/gui/qt/dialogs/systray/systray.cpp:206
+msgid "Sho&w %1"
+msgstr "&Mostrer l' djouweu d' media %1"
+
 #: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:205
 #: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:438
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:425
@@ -5816,11 +5822,11 @@ msgstr "Mel rapeler"
 msgid "Back to Live"
 msgstr "Rivni å direk"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:618 modules/gui/qt/qt.cpp:344
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:618 modules/gui/qt/qt.cpp:345
 msgid "Next channel"
 msgstr "Canå shuvant"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:623 modules/gui/qt/qt.cpp:345
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:623 modules/gui/qt/qt.cpp:346
 msgid "Previous channel"
 msgstr "Canå di dvant"
 
@@ -6202,11 +6208,6 @@ msgstr "Bår locåle del copete"
 #: modules/gui/qt/maininterface/qml/LocalTopbar.qml:188
 msgid "Show navigation menu"
 msgstr "Mostrer l' dressêye di naviaedje"
-
-#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:251
-#: modules/gui/qt/player/qml/TopBar.qml:505
-msgid "VLC Media Player"
-msgstr "VLC Media Player"
 
 #: modules/gui/qt/maininterface/qml/MainDisplay.qml:34
 msgid "Main display"
@@ -8766,18 +8767,18 @@ msgstr "Rote a djouwer"
 msgid "%1 elements, %2"
 msgstr "%1 elemints, %2"
 
-#: modules/gui/qt/qt.cpp:175
+#: modules/gui/qt/qt.cpp:176
 msgid "Select the initial preferences view"
 msgstr "Tchoezi l' vuwe d' enondaedje des preferinces"
 
-#: modules/gui/qt/qt.cpp:176
+#: modules/gui/qt/qt.cpp:177
 msgid ""
 "Select which preferences view to show upon opening the preferences dialog."
 msgstr ""
 "Tchoezi kéne vuwe des preferinces mostrer cwand on drovaxhe li purnea des "
 "preferinces."
 
-#: modules/gui/qt/qt.cpp:200
+#: modules/gui/qt/qt.cpp:201
 msgid ""
 "Show a notification popup with the artist and track name when the current "
 "play queue item changes, when VLC is minimized or hidden."
@@ -8786,7 +8787,7 @@ msgstr ""
 "elemint d' asteure del rote a djouwer candje, cwand VLC est striblé ou "
 "catchî."
 
-#: modules/gui/qt/qt.cpp:204
+#: modules/gui/qt/qt.cpp:205
 msgid ""
 "Sets the windows opacity between 0.1 and 1 for main interface, play queue "
 "and extended panel. This option only works with Windows and X11 with "
@@ -8796,7 +8797,7 @@ msgstr ""
 "rote a djouwer et l' panea stindou. Ciste tchuze ci ni va k' avou Windows et "
 "X11 avou les stindaedjes composite."
 
-#: modules/gui/qt/qt.cpp:210
+#: modules/gui/qt/qt.cpp:211
 msgid ""
 "Sets the fullscreen controller opacity between 0.1 and 1 for main interface, "
 "play queue and extended panel. This option only works with Windows and X11 "
@@ -8806,11 +8807,11 @@ msgstr ""
 "eterface mwaisse, li rote a djouwer et l' panea stindou. Ciste tchuze ci ni "
 "va k' avou Windows et X11 avou les stindaedjes composite."
 
-#: modules/gui/qt/qt.cpp:215
+#: modules/gui/qt/qt.cpp:216
 msgid "Initial user scale factor for the interface, between 0.3 and 3.0"
 msgstr "Fourmeye di schåle di cminçmint po l' eterface, inte di 0.3 et 3.0"
 
-#: modules/gui/qt/qt.cpp:218
+#: modules/gui/qt/qt.cpp:219
 msgid ""
 "Show the errors of VLC at the bottom of the window, and ask before removing "
 "media from a playlist or from the play queue, or deleting playlists. Off, "
@@ -8823,11 +8824,11 @@ msgstr ""
 "dins les messaedjes di VLC et ces oistaedjes la sont fwaits tot dreut; "
 "disfacer on fitchî do plake est tofer confirmé."
 
-#: modules/gui/qt/qt.cpp:228
+#: modules/gui/qt/qt.cpp:229
 msgid "set the options for qml debugger"
 msgstr "defini les tchuzes do disbugueu qml"
 
-#: modules/gui/qt/qt.cpp:229
+#: modules/gui/qt/qt.cpp:230
 msgid ""
 "set the options for qml debugger (see http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
@@ -8835,7 +8836,7 @@ msgstr ""
 "defini les tchuzes do disbugueu qml (loukîz http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
 
-#: modules/gui/qt/qt.cpp:249
+#: modules/gui/qt/qt.cpp:250
 msgid ""
 "Show the playback controls in fullscreen when the mouse moves. Off, only the "
 "keyboard shows them (the I key). The skins read it for their fullscreen "
@@ -8845,7 +8846,7 @@ msgstr ""
 "bodje. Dismetou, seulmint l' taprece les mostere (li tape I). Les tinmes l' "
 "lijhèt ossu po leu controleu e forrimpli waitroûle."
 
-#: modules/gui/qt/qt.cpp:265
+#: modules/gui/qt/qt.cpp:266
 msgid ""
 "Display the cover art of the audio playing in the player (the cone in the "
 "compact view). Off, a plain picture takes its place, which also prevents "
@@ -8855,7 +8856,7 @@ msgstr ""
 "dins l' vuwe compake). Dismetou, ene imådje simpe prind s' plaece, çou ki "
 "tchampêye ossu d' broûler l' waitroûle."
 
-#: modules/gui/qt/qt.cpp:289
+#: modules/gui/qt/qt.cpp:290
 msgid ""
 "This option allows the interface to be shown and raised automatically when a "
 "video/audio playback starts, or never."
@@ -8863,11 +8864,11 @@ msgstr ""
 "Ciste tchuze ci permete di mostrer et d' amoenner l' eterface pa dvant "
 "otomaticmint cwand on djouwaedje videyo/odio cmince, ou måy."
 
-#: modules/gui/qt/qt.cpp:292
+#: modules/gui/qt/qt.cpp:293
 msgid "Enable window titlebar"
 msgstr "Mete en alaedje li bår do tite del finiesse"
 
-#: modules/gui/qt/qt.cpp:293
+#: modules/gui/qt/qt.cpp:294
 msgid ""
 "This option enables the title bar. Disabling it will remove the titlebar and "
 "move window buttons within the interface (Client Side Decoration)"
@@ -8876,30 +8877,30 @@ msgstr ""
 "do tite serè oistêye et les botons del finiesse seront metous dins l' "
 "eterface (gåliotaedje dins l' programe)"
 
-#: modules/gui/qt/qt.cpp:297
+#: modules/gui/qt/qt.cpp:298
 msgid "Show the menu bar"
 msgstr "Mostrer l' bår des dressêyes"
 
-#: modules/gui/qt/qt.cpp:298
+#: modules/gui/qt/qt.cpp:299
 msgid "This option displays the classic menu bar"
 msgstr "Ciste tchuze ci håyne li bår des dressêyes classike"
 
-#: modules/gui/qt/qt.cpp:300
+#: modules/gui/qt/qt.cpp:301
 msgid "Pin video controls"
 msgstr "Atetchî les controles videyo"
 
-#: modules/gui/qt/qt.cpp:301
+#: modules/gui/qt/qt.cpp:302
 msgid "Place video controls above and below the video instead of above"
 msgstr ""
 "Mete les controles videyo pa dzeu et pa dzo l' videyo al plaece di seulmint "
 "pa dzeu"
 
-#: modules/gui/qt/qt.cpp:304
+#: modules/gui/qt/qt.cpp:305
 msgid "Show the frame at the hovered position above the seek bar"
 msgstr ""
 "Mostrer l' imådje del plaece pa dzo l' sori pa dzeu l' bår di bodjaedje"
 
-#: modules/gui/qt/qt.cpp:306
+#: modules/gui/qt/qt.cpp:307
 msgid ""
 "Mark on the seek bar where the lines of the subtitle shown are, when it "
 "comes from a subtitle file"
@@ -8907,11 +8908,11 @@ msgstr ""
 "Mårker so l' bår di bodjaedje wice k' les royes do sortite mostré sont, "
 "cwand il vént d' on fitchî di sortites"
 
-#: modules/gui/qt/qt.cpp:311
+#: modules/gui/qt/qt.cpp:312
 msgid "Select Qt video integration backend"
 msgstr "Tchoezi l' moteur d' integråcion videyo Qt"
 
-#: modules/gui/qt/qt.cpp:312
+#: modules/gui/qt/qt.cpp:313
 msgid ""
 "Select Qt video integration backend. Use with care, the interface may not "
 "start if an incompatible compositor is selected"
@@ -8919,11 +8920,11 @@ msgstr ""
 "Tchoezi l' moteur d' integråcion videyo Qt. Eployîz-l avou atincion: l' "
 "eterface pout n' nén s' enonder si on compositeu nén compatibe est tchoezi"
 
-#: modules/gui/qt/qt.cpp:314
+#: modules/gui/qt/qt.cpp:315
 msgid "Use smooth scrolling in Flickable based views"
 msgstr "Eployî l' disfilaedje sins hotches dins les vuwes Flickable"
 
-#: modules/gui/qt/qt.cpp:315
+#: modules/gui/qt/qt.cpp:316
 msgid ""
 "Deactivating this option will disable smooth scrolling in Flickable based "
 "views (such as the Play Queue). This option is only respected with a scroll "
@@ -8934,21 +8935,21 @@ msgstr ""
 "shuvowe k' avou on manaedjeu d' disfilaedje, loukîz li tchuze `qt-use-scroll-"
 "handler`."
 
-#: modules/gui/qt/qt.cpp:318
+#: modules/gui/qt/qt.cpp:319
 msgid "Use Kirigami scroll handler for Flickable based views"
 msgstr "Eployî l' manaedjeu d' disfilaedje Kirigami po les vuwes Flickable"
 
-#: modules/gui/qt/qt.cpp:319
+#: modules/gui/qt/qt.cpp:320
 msgid "Using Kirigami scroll handler may improve scrolling behavior."
 msgstr ""
 "L' eployaedje do manaedjeu d' disfilaedje Kirigami pout amidrer l' "
 "disfilaedje."
 
-#: modules/gui/qt/qt.cpp:321
+#: modules/gui/qt/qt.cpp:322
 msgid "Safe area for the user interface"
 msgstr "Redjon seure po l' eterface"
 
-#: modules/gui/qt/qt.cpp:322
+#: modules/gui/qt/qt.cpp:323
 msgid ""
 "Sets the safe area percentage between 0.0 and 100 when you want to ensure "
 "the visibility of the user interface on a constrained viewport"
@@ -8956,21 +8957,21 @@ msgstr ""
 "Defini l' pourcintaedje del redjon seure inte di 0.0 et 100 cwand vos vloz "
 "esse seur ki l' eterface est veyåve so ene waitroûle limitêye"
 
-#: modules/gui/qt/qt.cpp:326
+#: modules/gui/qt/qt.cpp:327
 msgid "Print Qt's important internal messages"
 msgstr "Imprimer les messaedjes divintrins impôrtants di Qt"
 
-#: modules/gui/qt/qt.cpp:327
+#: modules/gui/qt/qt.cpp:328
 msgid "Enable Qt's all own messaging categories except the debug category."
 msgstr ""
 "Mete en alaedje totes les categoreyes di messaedjes di Qt, foû l' categoreye "
 "di disbugaedje."
 
-#: modules/gui/qt/qt.cpp:329
+#: modules/gui/qt/qt.cpp:330
 msgid "Hide the window on close"
 msgstr "Catchî l' finiesse cwand on l' clôt"
 
-#: modules/gui/qt/qt.cpp:330
+#: modules/gui/qt/qt.cpp:331
 msgid ""
 "Instead of closing the application, hide the window. This setting is only "
 "applicable when system tray icon is enabled."
@@ -8978,13 +8979,13 @@ msgstr ""
 "Al plaece di clôre li programe, catchî l' finiesse. Cist apontiaedje ci ni "
 "va k' cwand l' imådjete del boesse a imådjetes est en alaedje."
 
-#: modules/gui/qt/qt.cpp:332
+#: modules/gui/qt/qt.cpp:333
 msgid "Enable backdrop blur filter for the main window if possible"
 msgstr ""
 "Mete en alaedje li passete di flou pa drî po l' finiesse mwaisse si c' est "
 "possibe"
 
-#: modules/gui/qt/qt.cpp:333
+#: modules/gui/qt/qt.cpp:334
 msgid ""
 "If backdrop blur filter is available, use translucency in the backgrounds of "
 "certain parts of the user interface instead of a solid color. This setting "
@@ -8994,11 +8995,11 @@ msgstr ""
 "fond di sacwantès pårteyes di l' eterface al plaece d' ene coleur plinne. "
 "Cist apontiaedje ci fwait ki l' tecse est pus målåjhey a lere."
 
-#: modules/gui/qt/qt.cpp:336
+#: modules/gui/qt/qt.cpp:337
 msgid "Enable picture-in-picture (PiP) mode"
 msgstr "Mete en alaedje li môde imådje dins l' imådje (PiP)"
 
-#: modules/gui/qt/qt.cpp:337
+#: modules/gui/qt/qt.cpp:338
 msgid ""
 "Picture-in-picture mode allows playing video contained in a smaller area so "
 "that the interface remains usable."
@@ -9006,7 +9007,7 @@ msgstr ""
 "Li môde imådje dins l' imådje djowe li videyo dins ene pus ptite redjon po "
 "ki l' eterface dimeure eployåve."
 
-#: modules/gui/qt/qt.cpp:340
+#: modules/gui/qt/qt.cpp:341
 msgid ""
 "Adjusts the accent color, special values are 'default' and 'system' "
 "(requires Qt 6.6) ."
@@ -9014,27 +9015,27 @@ msgstr ""
 "Adjustêye li coleur d' acsint, les valixhances especiåles sont 'default' et "
 "'system' (dimande Qt 6.6) ."
 
-#: modules/gui/qt/qt.cpp:346
+#: modules/gui/qt/qt.cpp:347
 msgid "Last channel watched"
 msgstr "Dierin canå riwaitî"
 
-#: modules/gui/qt/qt.cpp:347
+#: modules/gui/qt/qt.cpp:348
 msgid "Channel list"
 msgstr "Djivêye des canås"
 
-#: modules/gui/qt/qt.cpp:352
+#: modules/gui/qt/qt.cpp:353
 msgid "Zoom the interface in"
 msgstr "Agrandi l' eterface"
 
-#: modules/gui/qt/qt.cpp:353
+#: modules/gui/qt/qt.cpp:354
 msgid "Zoom the interface out"
 msgstr "Rapetiti l' eterface"
 
-#: modules/gui/qt/qt.cpp:454
+#: modules/gui/qt/qt.cpp:455
 msgid "Check for VLC Redesign updates"
 msgstr "Cweri des metaedjes a djoû di VLC Redesign"
 
-#: modules/gui/qt/qt.cpp:455
+#: modules/gui/qt/qt.cpp:456
 msgid ""
 "Look for a new release of VLC Redesign on GitHub at startup, at most once a "
 "day."
@@ -9042,11 +9043,11 @@ msgstr ""
 "Cweri ene novele modêye di VLC Redesign so GitHub a l' enondaedje, pol pus "
 "ene fwès pa djoû."
 
-#: modules/gui/qt/qt.cpp:459
+#: modules/gui/qt/qt.cpp:460
 msgid "Resume at"
 msgstr "Rcomincî a"
 
-#: modules/gui/qt/qt.cpp:460
+#: modules/gui/qt/qt.cpp:461
 msgid ""
 "Seconds into the media of the command line where playback continues, after "
 "an update."
@@ -9102,7 +9103,7 @@ msgstr "Rimete"
 msgid "Don't restore"
 msgstr "Nén rimete"
 
-#: modules/gui/qt/util/redesign_updater.cpp:216
+#: modules/gui/qt/util/redesign_updater.cpp:221
 msgid ""
 "The update isn't signed by the publisher of this copy (%1), so it wasn't "
 "used."
@@ -9110,28 +9111,28 @@ msgstr ""
 "Li metaedje a djoû n' est nén siné pa l' eplaideu di cisse copeye ci (%1), "
 "dabôrd i n' a nén stî eployî."
 
-#: modules/gui/qt/util/redesign_updater.cpp:461
+#: modules/gui/qt/util/redesign_updater.cpp:467
 msgid "%1 (later)"
 msgstr "%1 (pus tård)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:463
+#: modules/gui/qt/util/redesign_updater.cpp:469
 msgid "%1 (soon)"
 msgstr "%1 (bénrade)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:643
+#: modules/gui/qt/util/redesign_updater.cpp:649
 msgid "This build cannot check for updates."
 msgstr "Ciste modêye ci n' sait nén cweri des metaedjes a djoû."
 
-#: modules/gui/qt/util/redesign_updater.cpp:657
+#: modules/gui/qt/util/redesign_updater.cpp:663
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr ""
 "Nén moyén d' esse raloyî a GitHub. Verifyîz vosse raloyaedje et rsayîz."
 
-#: modules/gui/qt/util/redesign_updater.cpp:674
+#: modules/gui/qt/util/redesign_updater.cpp:680
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "GitHub a evoyî ene response ki n' esteut nén ratindowe (%1)."
 
-#: modules/gui/qt/util/redesign_updater.cpp:792
+#: modules/gui/qt/util/redesign_updater.cpp:798
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
@@ -9139,50 +9140,50 @@ msgstr ""
 "Ci metaedje a djoû ci n' est nén siné pa VLC Redesign, dabôrd i n' a nén stî "
 "eployî. Aberwetez-l pustot dispoy li pådje del modêye."
 
-#: modules/gui/qt/util/redesign_updater.cpp:814
-#: modules/gui/qt/util/redesign_updater.cpp:855
+#: modules/gui/qt/util/redesign_updater.cpp:820
+#: modules/gui/qt/util/redesign_updater.cpp:861
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr ""
 "Li sone di controle do metaedje a djoû manke; aberwetez-l pustot dispoy li "
 "pådje del modêye."
 
-#: modules/gui/qt/util/redesign_updater.cpp:829
-#: modules/gui/qt/util/redesign_updater.cpp:901
+#: modules/gui/qt/util/redesign_updater.cpp:835
+#: modules/gui/qt/util/redesign_updater.cpp:907
 msgid "The download failed. Check your connection and try again."
 msgstr "L' aberwetaedje a fwait berwete. Verifyîz vosse raloyaedje et rsayîz."
 
-#: modules/gui/qt/util/redesign_updater.cpp:914
+#: modules/gui/qt/util/redesign_updater.cpp:920
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr ""
 "Li metaedje a djoû ni corespond nén a s' sone di controle, adon i n' a nén "
 "stî eployî."
 
-#: modules/gui/qt/util/redesign_updater.cpp:945
+#: modules/gui/qt/util/redesign_updater.cpp:951
 msgid "The update isn't in a format this version knows."
 msgstr ""
 "Li metaedje a djoû n' est nén dins ene cogne ki ciste modêye ci cnoxhe."
 
-#: modules/gui/qt/util/redesign_updater.cpp:948
-#: modules/gui/qt/util/redesign_updater.cpp:972
-#: modules/gui/qt/util/redesign_updater.cpp:983
+#: modules/gui/qt/util/redesign_updater.cpp:954
+#: modules/gui/qt/util/redesign_updater.cpp:978
 #: modules/gui/qt/util/redesign_updater.cpp:989
+#: modules/gui/qt/util/redesign_updater.cpp:995
 msgid "The update is damaged."
 msgstr "Li metaedje a djoû est crombe."
 
-#: modules/gui/qt/util/redesign_updater.cpp:953
+#: modules/gui/qt/util/redesign_updater.cpp:959
 msgid "The update isn't for this version."
 msgstr "Li metaedje a djoû n' est nén po ciste modêye ci."
 
-#: modules/gui/qt/util/redesign_updater.cpp:962
-#: modules/gui/qt/util/redesign_updater.cpp:999
-#: modules/gui/qt/util/redesign_updater.cpp:1008
-#: modules/gui/qt/util/redesign_updater.cpp:1012
-#: modules/gui/qt/util/redesign_updater.cpp:1016
+#: modules/gui/qt/util/redesign_updater.cpp:968
+#: modules/gui/qt/util/redesign_updater.cpp:1005
+#: modules/gui/qt/util/redesign_updater.cpp:1014
+#: modules/gui/qt/util/redesign_updater.cpp:1018
+#: modules/gui/qt/util/redesign_updater.cpp:1022
 msgid "The update can't be written in %1."
 msgstr "Li metaedje a djoû n' pout nén esse scrît dins %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:964
+#: modules/gui/qt/util/redesign_updater.cpp:970
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -9191,38 +9192,38 @@ msgstr ""
 "ptit metaedje a djoû n' pout nén esse eployî: metoz a djoû avou l' astaleu "
 "pustot."
 
-#: modules/gui/qt/util/redesign_updater.cpp:994
+#: modules/gui/qt/util/redesign_updater.cpp:1000
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr ""
 "Li metaedje a djoû est crombe: on fitchî n' corespond nén a s' sone di "
 "controle."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1119
+#: modules/gui/qt/util/redesign_updater.cpp:1125
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr ""
 "Li metaedje a djoû n' a savou esse enondé. I serè rsayî l' côp ki vént."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1146
+#: modules/gui/qt/util/redesign_updater.cpp:1152
 msgid "The download failed. Try again, or download it from the release page."
 msgstr ""
 "L' aberwetaedje a fwait berwete. Rissayîz, oudonbén aberwetez-l dispoy li "
 "pådje del modêye."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1159
+#: modules/gui/qt/util/redesign_updater.cpp:1165
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr ""
 "L' astaleu aberweté ni corespond nén a s' sone di controle, adon i n' a nén "
 "stî enondé."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1168
+#: modules/gui/qt/util/redesign_updater.cpp:1174
 msgid "The installer couldn't be saved to %1."
 msgstr "L' astaleu n' a savou esse schapé dins %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1202
+#: modules/gui/qt/util/redesign_updater.cpp:1208
 msgid "The installer couldn't be started."
 msgstr "L' astaleu n' a savou esse enondé."
 
-#: modules/gui/qt/util/renderer_manager.cpp:891
+#: modules/gui/qt/util/renderer_manager.cpp:896
 msgid ""
 "%1 doesn't answer. Check that it's on, and on the same network as this "
 "computer."
@@ -9230,30 +9231,30 @@ msgstr ""
 "%1 ni rsponde nén. Verifyîz k' il est alumé, et sol minme rantoele ki ç' "
 "copiutrece ci."
 
-#: modules/gui/qt/util/renderer_manager.cpp:894
+#: modules/gui/qt/util/renderer_manager.cpp:899
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the video."
 msgstr ""
 "Li parfeu Windows ni lait nén %1 si raloyî a ç' copiutrece ci po lere li "
 "videyo."
 
-#: modules/gui/qt/util/renderer_manager.cpp:895
+#: modules/gui/qt/util/renderer_manager.cpp:900
 msgid "%1 couldn't read the video from this computer."
 msgstr "%1 n' a savou lere li videyo dispoy ci copiutrece ci."
 
-#: modules/gui/qt/util/renderer_manager.cpp:897
+#: modules/gui/qt/util/renderer_manager.cpp:902
 msgid "%1 refused to play this video."
 msgstr "%1 a rfuzé d' djouwer cisse videyo ci."
 
-#: modules/gui/qt/util/renderer_manager.cpp:899
+#: modules/gui/qt/util/renderer_manager.cpp:904
 msgid "%1 stopped playing."
 msgstr "%1 a aresté d' djouwer."
 
-#: modules/gui/qt/util/renderer_manager.cpp:901
+#: modules/gui/qt/util/renderer_manager.cpp:906
 msgid "%1 is playing something else now."
 msgstr "%1 djowe ôte tchoi asteure."
 
-#: modules/gui/qt/util/renderer_manager.cpp:902
+#: modules/gui/qt/util/renderer_manager.cpp:907
 msgid "%1 couldn't play the video."
 msgstr "%1 n' a savou djouwer li videyo."
 

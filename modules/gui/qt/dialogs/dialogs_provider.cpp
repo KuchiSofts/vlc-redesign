@@ -58,6 +58,7 @@
 #include "dialogs/epg/epg.hpp"
 #include "dialogs/playlists/playlists.hpp"
 #include "dialogs/firstrun/firstrunwizard.hpp"
+#include "util/redesign_version.hpp"
 
 #include <vlc_url.h>
 #include <vlc_fs.h>
@@ -590,7 +591,7 @@ QMessageBox::StandardButton DialogsProvider::messageDialog(const QString &text,
     message.title = title;
     if (message.title.isEmpty())
         message.title = (icon == QMessageBox::Warning || icon == QMessageBox::Critical)
-                        ? qtr("Error") : qtr("VLC media player");
+                        ? qtr("Error") : QStringLiteral(VLC_REDESIGN_NAME);
     message.heading = text;
     message.defaultAccept = defaultButton == QMessageBox::NoButton || defaultButton == accept;
 

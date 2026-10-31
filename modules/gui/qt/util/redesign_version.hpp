@@ -13,5 +13,10 @@
 // it is, or the one it prepares (raised once the work for it starts, so a
 // build made in between does not read as the release before).
 #define VLC_REDESIGN_VERSION "0.5.0"
+// The product's name where the app names itself (window title, tray, message
+// boxes): not "VLC media player", VideoLAN's product, nor "VideoLAN", which
+// VideoLAN's trademark policy allows no one to use (videolan.org/legal.html).
+// Not translated: a name.
+#define VLC_REDESIGN_NAME "VLC Redesign"
 #define VLC_REDESIGN_REPO "KuchiSofts/vlc-redesign"
 #define VLC_REDESIGN_REPO_URL "https://github.com/" VLC_REDESIGN_REPO

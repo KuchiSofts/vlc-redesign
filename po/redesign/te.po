@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-30 23:06+0000\n"
+"POT-Creation-Date: 2026-10-31 01:06+0000\n"
 "PO-Revision-Date: 2014-05-01 15:57+0000\n"
 "Last-Translator: rohitharikiran <rohithharikiran@gmail.com>\n"
 "Language-Team: Telugu (http://www.transifex.com/projects/p/vlc-trans/"
@@ -1509,8 +1509,8 @@ msgstr "దీనికి Windows 10 రూపాంతరం 1809 లేదా
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:27
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignPluginsDialog.qml:30
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignStatisticsDialog.qml:26
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:553
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:558
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:554
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:559
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:152
 #: modules/gui/qt/dialogs/firstrun/qml/WhatsNewDialog.qml:39
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:312
@@ -1522,7 +1522,7 @@ msgstr "దీనికి Windows 10 రూపాంతరం 1809 లేదా
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:32
 #: modules/gui/qt/util/csdmenu.cpp:131
 #: modules/gui/qt/util/redesign_window_frame.cpp:96
-#: modules/gui/qt/widgets/native/redesign_message_box.cpp:213
+#: modules/gui/qt/widgets/native/redesign_message_box.cpp:214
 #: modules/gui/qt/widgets/qml/RedesignDialog.qml:223
 msgid "Close"
 msgstr "మూసివేయి"
@@ -2120,36 +2120,36 @@ msgstr "చదివినది"
 msgid "Late"
 msgstr "ఆలస్యమైనవి"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:520
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:521
 msgid "Confirm"
 msgstr "నిర్ధారించు"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:550
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:551
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:218
 msgid "Retry"
 msgstr "మళ్ళీ ప్రయత్నించు"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:552
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:553
 msgid "Yes to All"
 msgstr "అన్నింటికీ అవును"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:558
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:559
 msgid "No to All"
 msgstr "అన్నింటికీ కాదు"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1169
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1170
 msgid "Save play queue as..."
 msgstr "ప్రదర్శన వరుసను ఇలా భద్రపరుచు..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1389
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1390
 msgid "Write error"
 msgstr "రాయడంలో దోషం"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1406
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1407
 msgid "Export playlist as..."
 msgstr "ప్రదర్శనజాబితాను ఇలా ఎగుమతి చేయి..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1423
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1424
 msgid ""
 "The playlist could not be exported to %1:\n"
 "%2"
@@ -2157,17 +2157,17 @@ msgstr ""
 "ప్లేజాబితాను %1 కు ఎగుమతి చేయలేకపోయాం:\n"
 "%2"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1425
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
 msgid "Export Playlist"
 msgstr "ప్రదర్శనజాబితాను ఎగుమతి చేయి"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1551
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1552
 msgid "Open audio..."
 msgstr "ఆడియోను తెరువు..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1556
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1557
 msgid "Open video..."
 msgstr "వీడియోను తెరువు..."
 
@@ -2734,8 +2734,8 @@ msgid "Accent color %1"
 msgstr "యాస రంగు %1"
 
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:55
-msgid "Welcome to VLC!"
-msgstr "VLCకి స్వాగతం!"
+msgid "Welcome to %1!"
+msgstr "%1కి స్వాగతం!"
 
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:73
 msgid ""
@@ -3119,7 +3119,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:293
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:105
-#: modules/gui/qt/qt.cpp:348
+#: modules/gui/qt/qt.cpp:349
 msgid "Channel banner"
 msgstr "ఛానల్ బ్యానర్"
 
@@ -3440,7 +3440,7 @@ msgid ""
 msgstr "%1 అమరికల వెలుపల మారింది లేదా అందుబాటులో లేదు. మీ మార్పులు భద్రపరచబడలేదు."
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:79
-#: modules/gui/qt/qt.cpp:357
+#: modules/gui/qt/qt.cpp:358
 msgid "Expert"
 msgstr "నిపుణ"
 
@@ -3530,7 +3530,7 @@ msgstr "థీమ్"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:192
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:428
-#: modules/gui/qt/qt.cpp:339
+#: modules/gui/qt/qt.cpp:340
 msgid "Accent color"
 msgstr "యాస రంగు"
 
@@ -3794,8 +3794,8 @@ msgid "Reset all settings?"
 msgstr "అన్ని అమరికలను తిరిగి అమర్చాలా?"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:830
-msgid "Every setting of VLC media player goes back to its default."
-msgstr "VLC మాధ్యమ ప్రదర్శకం యొక్క ప్రతి అమరిక దాని అప్రమేయానికి తిరిగి వెళ్తుంది."
+msgid "Every setting of %1 goes back to its default."
+msgstr "%1 మాధ్యమ ప్రదర్శకం యొక్క ప్రతి అమరిక దాని అప్రమేయానికి తిరిగి వెళ్తుంది."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:884
 msgid "Discard changes"
@@ -4364,7 +4364,7 @@ msgid "Seeking"
 msgstr "జరపడం"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:137
-#: modules/gui/qt/qt.cpp:303
+#: modules/gui/qt/qt.cpp:304
 msgid "Show thumbnail while scrubbing"
 msgstr "జరుపుతున్నప్పుడు సూక్ష్మచిత్రాన్ని చూపించు"
 
@@ -4644,7 +4644,7 @@ msgid "Timing"
 msgstr "సమయం"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:273
-#: modules/gui/qt/qt.cpp:305
+#: modules/gui/qt/qt.cpp:306
 msgid "Show subtitle lines on the seek bar"
 msgstr "జరుపు పట్టీపై ఉపశీర్షిక పంక్తులను చూపించు"
 
@@ -5221,6 +5221,14 @@ msgstr ""
 msgid "Reset all"
 msgstr "అన్నీ తిరిగి అమర్చు"
 
+#: modules/gui/qt/dialogs/systray/systray.cpp:200
+msgid "&Hide %1 in taskbar"
+msgstr "%1 మాధ్యమ ప్రదర్శకాన్ని టాస్క్‌బార్‌లో దాచు (&H)"
+
+#: modules/gui/qt/dialogs/systray/systray.cpp:206
+msgid "Sho&w %1"
+msgstr "%1 మాధ్యమ ప్రదర్శకాన్ని చూపించు (&W)"
+
 #: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:205
 #: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:438
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:425
@@ -5673,11 +5681,11 @@ msgstr "నాకు గుర్తుచేయి"
 msgid "Back to Live"
 msgstr "ప్రత్యక్షానికి తిరిగి వెళ్ళు"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:618 modules/gui/qt/qt.cpp:344
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:618 modules/gui/qt/qt.cpp:345
 msgid "Next channel"
 msgstr "తదుపరి ఛానల్"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:623 modules/gui/qt/qt.cpp:345
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:623 modules/gui/qt/qt.cpp:346
 msgid "Previous channel"
 msgstr "మునుపటి ఛానల్"
 
@@ -6048,11 +6056,6 @@ msgstr "స్థానిక పై పట్టీ"
 #: modules/gui/qt/maininterface/qml/LocalTopbar.qml:188
 msgid "Show navigation menu"
 msgstr "నావిగేషన్ మెనూను చూపించు"
-
-#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:251
-#: modules/gui/qt/player/qml/TopBar.qml:505
-msgid "VLC Media Player"
-msgstr "VLC మాధ్యమ ప్రదర్శకం"
 
 #: modules/gui/qt/maininterface/qml/MainDisplay.qml:34
 msgid "Main display"
@@ -8567,16 +8570,16 @@ msgstr "ప్రదర్శన వరుస"
 msgid "%1 elements, %2"
 msgstr "%1 అంశాలు, %2"
 
-#: modules/gui/qt/qt.cpp:175
+#: modules/gui/qt/qt.cpp:176
 msgid "Select the initial preferences view"
 msgstr "ప్రారంభ ప్రాధాన్యతల వీక్షణను ఎంచుకో"
 
-#: modules/gui/qt/qt.cpp:176
+#: modules/gui/qt/qt.cpp:177
 msgid ""
 "Select which preferences view to show upon opening the preferences dialog."
 msgstr "ప్రాధాన్యతల డైలాగ్ తెరిచినప్పుడు ఏ ప్రాధాన్యతల వీక్షణను చూపించాలో ఎంచుకోండి."
 
-#: modules/gui/qt/qt.cpp:200
+#: modules/gui/qt/qt.cpp:201
 msgid ""
 "Show a notification popup with the artist and track name when the current "
 "play queue item changes, when VLC is minimized or hidden."
@@ -8584,7 +8587,7 @@ msgstr ""
 "VLC కనిష్ఠీకరించబడినప్పుడు లేదా దాచబడినప్పుడు, ప్రస్తుత ప్రదర్శన వరుస అంశం మారితే కళాకారుడు మరియు "
 "ట్రాక్ పేరుతో గమనింపు పాప్అప్‌ను చూపించు."
 
-#: modules/gui/qt/qt.cpp:204
+#: modules/gui/qt/qt.cpp:205
 msgid ""
 "Sets the windows opacity between 0.1 and 1 for main interface, play queue "
 "and extended panel. This option only works with Windows and X11 with "
@@ -8593,7 +8596,7 @@ msgstr ""
 "ప్రధాన అంతరవర్తి, ప్రదర్శన వరుస మరియు విస్తృత ప్యానెల్ కోసం కిటికీల అపారదర్శకతను 0.1 మరియు 1 మధ్య "
 "అమరుస్తుంది. ఈ ఐచ్ఛికం Windows మరియు composite పొడిగింతలు ఉన్న X11తో మాత్రమే పనిచేస్తుంది."
 
-#: modules/gui/qt/qt.cpp:210
+#: modules/gui/qt/qt.cpp:211
 msgid ""
 "Sets the fullscreen controller opacity between 0.1 and 1 for main interface, "
 "play queue and extended panel. This option only works with Windows and X11 "
@@ -8603,11 +8606,11 @@ msgstr ""
 "మరియు 1 మధ్య అమరుస్తుంది. ఈ ఐచ్ఛికం Windows మరియు composite పొడిగింతలు ఉన్న X11తో మాత్రమే "
 "పనిచేస్తుంది."
 
-#: modules/gui/qt/qt.cpp:215
+#: modules/gui/qt/qt.cpp:216
 msgid "Initial user scale factor for the interface, between 0.3 and 3.0"
 msgstr "అంతరవర్తి కోసం ప్రారంభ వాడుకరి స్కేల్ గుణకం, 0.3 మరియు 3.0 మధ్య"
 
-#: modules/gui/qt/qt.cpp:218
+#: modules/gui/qt/qt.cpp:219
 msgid ""
 "Show the errors of VLC at the bottom of the window, and ask before removing "
 "media from a playlist or from the play queue, or deleting playlists. Off, "
@@ -8619,11 +8622,11 @@ msgstr ""
 "ఉంచబడతాయి మరియు ఈ తీసివేతలు వెంటనే జరుగుతాయి; డిస్క్ నుండి దస్త్రాన్ని తొలగించడం ఎల్లప్పుడూ "
 "నిర్ధారించబడుతుంది."
 
-#: modules/gui/qt/qt.cpp:228
+#: modules/gui/qt/qt.cpp:229
 msgid "set the options for qml debugger"
 msgstr "qml డీబగ్గర్ కోసం ఐచ్ఛికాలను అమర్చు"
 
-#: modules/gui/qt/qt.cpp:229
+#: modules/gui/qt/qt.cpp:230
 msgid ""
 "set the options for qml debugger (see http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
@@ -8631,7 +8634,7 @@ msgstr ""
 "qml డీబగ్గర్ కోసం ఐచ్ఛికాలను అమర్చు (http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications చూడండి)"
 
-#: modules/gui/qt/qt.cpp:249
+#: modules/gui/qt/qt.cpp:250
 msgid ""
 "Show the playback controls in fullscreen when the mouse moves. Off, only the "
 "keyboard shows them (the I key). The skins read it for their fullscreen "
@@ -8640,7 +8643,7 @@ msgstr ""
 "మౌస్ కదిలినప్పుడు పూర్తితెరలో ప్లేబ్యాక్ నియంత్రణలను చూపించు. ఆపివేస్తే, కీబోర్డు మాత్రమే వాటిని చూపుతుంది "
 "(I మీట). తొడుగులు కూడా తమ పూర్తితెర నియంత్రకం కోసం దీన్ని చదువుతాయి."
 
-#: modules/gui/qt/qt.cpp:265
+#: modules/gui/qt/qt.cpp:266
 msgid ""
 "Display the cover art of the audio playing in the player (the cone in the "
 "compact view). Off, a plain picture takes its place, which also prevents "
@@ -8649,7 +8652,7 @@ msgstr ""
 "ప్రదర్శకంలో ఆడుతున్న ఆడియో యొక్క ముఖచిత్రాన్ని ప్రదర్శించు (సంక్షిప్త వీక్షణలో కోన్). ఆపివేస్తే, దాని "
 "స్థానంలో సాదా చిత్రం వస్తుంది, ఇది తెరపై చిత్రం ముద్రపడిపోవడాన్ని కూడా నివారిస్తుంది."
 
-#: modules/gui/qt/qt.cpp:289
+#: modules/gui/qt/qt.cpp:290
 msgid ""
 "This option allows the interface to be shown and raised automatically when a "
 "video/audio playback starts, or never."
@@ -8657,11 +8660,11 @@ msgstr ""
 "వీడియో/ఆడియో ప్లేబ్యాక్ ప్రారంభమైనప్పుడు అంతరవర్తి స్వయంచాలకంగా చూపబడి ముందుకు రావడానికి, లేదా ఎప్పటికీ "
 "రాకుండా ఉండటానికి ఈ ఐచ్ఛికం అనుమతిస్తుంది."
 
-#: modules/gui/qt/qt.cpp:292
+#: modules/gui/qt/qt.cpp:293
 msgid "Enable window titlebar"
 msgstr "కిటికీ శీర్షిక పట్టీని చేతనపరుచు"
 
-#: modules/gui/qt/qt.cpp:293
+#: modules/gui/qt/qt.cpp:294
 msgid ""
 "This option enables the title bar. Disabling it will remove the titlebar and "
 "move window buttons within the interface (Client Side Decoration)"
@@ -8669,27 +8672,27 @@ msgstr ""
 "ఈ ఐచ్ఛికం శీర్షిక పట్టీని చేతనపరుస్తుంది. దీన్ని అచేతనపరిస్తే శీర్షిక పట్టీ తీసివేయబడి కిటికీ బొత్తాలు "
 "అంతరవర్తి లోపలికి జరుగుతాయి (క్లయింట్-వైపు అలంకరణ)"
 
-#: modules/gui/qt/qt.cpp:297
+#: modules/gui/qt/qt.cpp:298
 msgid "Show the menu bar"
 msgstr "మెనూపట్టీని చూపించు"
 
-#: modules/gui/qt/qt.cpp:298
+#: modules/gui/qt/qt.cpp:299
 msgid "This option displays the classic menu bar"
 msgstr "ఈ ఐచ్ఛికం సంప్రదాయ మెనూపట్టీని ప్రదర్శిస్తుంది"
 
-#: modules/gui/qt/qt.cpp:300
+#: modules/gui/qt/qt.cpp:301
 msgid "Pin video controls"
 msgstr "వీడియో నియంత్రణలను స్థిరపరచు"
 
-#: modules/gui/qt/qt.cpp:301
+#: modules/gui/qt/qt.cpp:302
 msgid "Place video controls above and below the video instead of above"
 msgstr "వీడియో నియంత్రణలను వీడియో పైన మాత్రమే కాకుండా వీడియో పైన మరియు కింద ఉంచు"
 
-#: modules/gui/qt/qt.cpp:304
+#: modules/gui/qt/qt.cpp:305
 msgid "Show the frame at the hovered position above the seek bar"
 msgstr "జరుపు పట్టీపై కర్సర్ ఉన్న స్థానంలోని ఫ్రేమ్‌ను దాని పైన చూపించు"
 
-#: modules/gui/qt/qt.cpp:306
+#: modules/gui/qt/qt.cpp:307
 msgid ""
 "Mark on the seek bar where the lines of the subtitle shown are, when it "
 "comes from a subtitle file"
@@ -8697,11 +8700,11 @@ msgstr ""
 "ఉపశీర్షిక ఒక ఉపశీర్షిక దస్త్రం నుండి వచ్చినప్పుడు, చూపబడుతున్న ఉపశీర్షిక పంక్తులు ఎక్కడ ఉన్నాయో "
 "జరుపు పట్టీపై గుర్తించు"
 
-#: modules/gui/qt/qt.cpp:311
+#: modules/gui/qt/qt.cpp:312
 msgid "Select Qt video integration backend"
 msgstr "Qt వీడియో సమీకరణ బ్యాకెండ్‌ను ఎంచుకో"
 
-#: modules/gui/qt/qt.cpp:312
+#: modules/gui/qt/qt.cpp:313
 msgid ""
 "Select Qt video integration backend. Use with care, the interface may not "
 "start if an incompatible compositor is selected"
@@ -8709,11 +8712,11 @@ msgstr ""
 "Qt వీడియో సమీకరణ బ్యాకెండ్‌ను ఎంచుకోండి. జాగ్రత్తగా వాడండి, అననుకూల కంపోజిటర్‌ను ఎంచుకుంటే అంతరవర్తి "
 "ప్రారంభం కాకపోవచ్చు"
 
-#: modules/gui/qt/qt.cpp:314
+#: modules/gui/qt/qt.cpp:315
 msgid "Use smooth scrolling in Flickable based views"
 msgstr "Flickable ఆధారిత వీక్షణలలో సాఫీ స్క్రోలింగ్‌ను వాడు"
 
-#: modules/gui/qt/qt.cpp:315
+#: modules/gui/qt/qt.cpp:316
 msgid ""
 "Deactivating this option will disable smooth scrolling in Flickable based "
 "views (such as the Play Queue). This option is only respected with a scroll "
@@ -8723,19 +8726,19 @@ msgstr ""
 "అచేతనమవుతుంది. ఈ ఐచ్ఛికం స్క్రోల్ హ్యాండ్లర్‌తో మాత్రమే పాటించబడుతుంది, `qt-use-scroll-handler` "
 "ఐచ్ఛికాన్ని చూడండి."
 
-#: modules/gui/qt/qt.cpp:318
+#: modules/gui/qt/qt.cpp:319
 msgid "Use Kirigami scroll handler for Flickable based views"
 msgstr "Flickable ఆధారిత వీక్షణల కోసం Kirigami స్క్రోల్ హ్యాండ్లర్‌ను వాడు"
 
-#: modules/gui/qt/qt.cpp:319
+#: modules/gui/qt/qt.cpp:320
 msgid "Using Kirigami scroll handler may improve scrolling behavior."
 msgstr "Kirigami స్క్రోల్ హ్యాండ్లర్‌ను వాడటం స్క్రోలింగ్ ప్రవర్తనను మెరుగుపరచవచ్చు."
 
-#: modules/gui/qt/qt.cpp:321
+#: modules/gui/qt/qt.cpp:322
 msgid "Safe area for the user interface"
 msgstr "వాడుకరి అంతరవర్తి కోసం సురక్షిత ప్రాంతం"
 
-#: modules/gui/qt/qt.cpp:322
+#: modules/gui/qt/qt.cpp:323
 msgid ""
 "Sets the safe area percentage between 0.0 and 100 when you want to ensure "
 "the visibility of the user interface on a constrained viewport"
@@ -8743,19 +8746,19 @@ msgstr ""
 "పరిమిత వీక్షణ ప్రాంతంలో వాడుకరి అంతరవర్తి కనిపించేలా చూడాలనుకున్నప్పుడు సురక్షిత ప్రాంత శాతాన్ని 0.0 "
 "మరియు 100 మధ్య అమరుస్తుంది"
 
-#: modules/gui/qt/qt.cpp:326
+#: modules/gui/qt/qt.cpp:327
 msgid "Print Qt's important internal messages"
 msgstr "Qt యొక్క ముఖ్యమైన అంతర్గత సందేశాలను ముద్రించు"
 
-#: modules/gui/qt/qt.cpp:327
+#: modules/gui/qt/qt.cpp:328
 msgid "Enable Qt's all own messaging categories except the debug category."
 msgstr "డీబగ్ వర్గం తప్ప Qt యొక్క అన్ని సొంత సందేశ వర్గాలను చేతనపరుచు."
 
-#: modules/gui/qt/qt.cpp:329
+#: modules/gui/qt/qt.cpp:330
 msgid "Hide the window on close"
 msgstr "మూసినప్పుడు కిటికీని దాచు"
 
-#: modules/gui/qt/qt.cpp:330
+#: modules/gui/qt/qt.cpp:331
 msgid ""
 "Instead of closing the application, hide the window. This setting is only "
 "applicable when system tray icon is enabled."
@@ -8763,11 +8766,11 @@ msgstr ""
 "అనువర్తనాన్ని మూసివేసే బదులు, కిటికీని దాచు. వ్యవస్థ ట్రే ప్రతీక చేతనమై ఉన్నప్పుడు మాత్రమే ఈ అమరిక "
 "వర్తిస్తుంది."
 
-#: modules/gui/qt/qt.cpp:332
+#: modules/gui/qt/qt.cpp:333
 msgid "Enable backdrop blur filter for the main window if possible"
 msgstr "సాధ్యమైతే ప్రధాన కిటికీ కోసం నేపథ్య మసక వడబోతను చేతనపరుచు"
 
-#: modules/gui/qt/qt.cpp:333
+#: modules/gui/qt/qt.cpp:334
 msgid ""
 "If backdrop blur filter is available, use translucency in the backgrounds of "
 "certain parts of the user interface instead of a solid color. This setting "
@@ -8776,11 +8779,11 @@ msgstr ""
 "నేపథ్య మసక వడబోత అందుబాటులో ఉంటే, వాడుకరి అంతరవర్తిలోని కొన్ని భాగాల నేపథ్యాలలో ఘన రంగుకు బదులుగా "
 "అర్ధపారదర్శకతను వాడు. ఈ అమరిక పాఠ్యం చదవడాన్ని కష్టతరం చేస్తుంది."
 
-#: modules/gui/qt/qt.cpp:336
+#: modules/gui/qt/qt.cpp:337
 msgid "Enable picture-in-picture (PiP) mode"
 msgstr "చిత్రంలో-చిత్రం (PiP) విధాన్ని చేతనపరుచు"
 
-#: modules/gui/qt/qt.cpp:337
+#: modules/gui/qt/qt.cpp:338
 msgid ""
 "Picture-in-picture mode allows playing video contained in a smaller area so "
 "that the interface remains usable."
@@ -8788,7 +8791,7 @@ msgstr ""
 "చిత్రంలో-చిత్రం విధం అంతరవర్తి వాడుకకు వీలుగా ఉండేలా వీడియోను ఒక చిన్న ప్రాంతంలో ఆడించడానికి "
 "అనుమతిస్తుంది."
 
-#: modules/gui/qt/qt.cpp:340
+#: modules/gui/qt/qt.cpp:341
 msgid ""
 "Adjusts the accent color, special values are 'default' and 'system' "
 "(requires Qt 6.6) ."
@@ -8796,38 +8799,38 @@ msgstr ""
 "యాస రంగును సర్దుబాటు చేస్తుంది, ప్రత్యేక విలువలు 'default' మరియు 'system' (Qt 6.6 "
 "అవసరం) ."
 
-#: modules/gui/qt/qt.cpp:346
+#: modules/gui/qt/qt.cpp:347
 msgid "Last channel watched"
 msgstr "చివరిగా చూసిన ఛానల్"
 
-#: modules/gui/qt/qt.cpp:347
+#: modules/gui/qt/qt.cpp:348
 msgid "Channel list"
 msgstr "ఛానల్ జాబితా"
 
-#: modules/gui/qt/qt.cpp:352
+#: modules/gui/qt/qt.cpp:353
 msgid "Zoom the interface in"
 msgstr "ఇంటర్‌ఫేస్‌ను పెద్దది చేయి"
 
-#: modules/gui/qt/qt.cpp:353
+#: modules/gui/qt/qt.cpp:354
 msgid "Zoom the interface out"
 msgstr "ఇంటర్‌ఫేస్‌ను చిన్నది చేయి"
 
-#: modules/gui/qt/qt.cpp:454
+#: modules/gui/qt/qt.cpp:455
 msgid "Check for VLC Redesign updates"
 msgstr "VLC Redesign నవీకరణల కోసం తనిఖీ చేయి"
 
-#: modules/gui/qt/qt.cpp:455
+#: modules/gui/qt/qt.cpp:456
 msgid ""
 "Look for a new release of VLC Redesign on GitHub at startup, at most once a "
 "day."
 msgstr ""
 "ప్రారంభంలో, రోజుకు గరిష్ఠంగా ఒకసారి, GitHubలో VLC Redesign యొక్క కొత్త విడుదల కోసం వెతుకు."
 
-#: modules/gui/qt/qt.cpp:459
+#: modules/gui/qt/qt.cpp:460
 msgid "Resume at"
 msgstr "ఇక్కడి నుండి కొనసాగించు"
 
-#: modules/gui/qt/qt.cpp:460
+#: modules/gui/qt/qt.cpp:461
 msgid ""
 "Seconds into the media of the command line where playback continues, after "
 "an update."
@@ -8879,33 +8882,33 @@ msgstr "పునరుద్ధరించు"
 msgid "Don't restore"
 msgstr "పునరుద్ధరించవద్దు"
 
-#: modules/gui/qt/util/redesign_updater.cpp:216
+#: modules/gui/qt/util/redesign_updater.cpp:221
 msgid ""
 "The update isn't signed by the publisher of this copy (%1), so it wasn't "
 "used."
 msgstr "ఈ నవీకరణ ఈ ప్రతి యొక్క ప్రచురణకర్త (%1) సంతకం చేసినది కాదు, కాబట్టి అది ఉపయోగించబడలేదు."
 
-#: modules/gui/qt/util/redesign_updater.cpp:461
+#: modules/gui/qt/util/redesign_updater.cpp:467
 msgid "%1 (later)"
 msgstr "%1 (తర్వాత)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:463
+#: modules/gui/qt/util/redesign_updater.cpp:469
 msgid "%1 (soon)"
 msgstr "%1 (త్వరలో)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:643
+#: modules/gui/qt/util/redesign_updater.cpp:649
 msgid "This build cannot check for updates."
 msgstr "ఈ బిల్డ్ నవీకరణల కోసం తనిఖీ చేయలేదు."
 
-#: modules/gui/qt/util/redesign_updater.cpp:657
+#: modules/gui/qt/util/redesign_updater.cpp:663
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "GitHubను చేరుకోలేకపోయింది. మీ అనుసంధానాన్ని తనిఖీ చేసి మళ్ళీ ప్రయత్నించండి."
 
-#: modules/gui/qt/util/redesign_updater.cpp:674
+#: modules/gui/qt/util/redesign_updater.cpp:680
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "GitHub అనూహ్య స్పందనను పంపింది (%1)."
 
-#: modules/gui/qt/util/redesign_updater.cpp:792
+#: modules/gui/qt/util/redesign_updater.cpp:798
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
@@ -8913,45 +8916,45 @@ msgstr ""
 "ఈ నవీకరణపై VLC Redesign సంతకం లేదు, కాబట్టి ఇది ఉపయోగించబడలేదు. బదులుగా దీన్ని విడుదల పేజీ "
 "నుండి దింపుకోండి."
 
-#: modules/gui/qt/util/redesign_updater.cpp:814
-#: modules/gui/qt/util/redesign_updater.cpp:855
+#: modules/gui/qt/util/redesign_updater.cpp:820
+#: modules/gui/qt/util/redesign_updater.cpp:861
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr "నవీకరణ యొక్క చెక్‌సమ్ లేదు; బదులుగా దాన్ని విడుదల పేజీ నుండి దింపుకోండి."
 
-#: modules/gui/qt/util/redesign_updater.cpp:829
-#: modules/gui/qt/util/redesign_updater.cpp:901
+#: modules/gui/qt/util/redesign_updater.cpp:835
+#: modules/gui/qt/util/redesign_updater.cpp:907
 msgid "The download failed. Check your connection and try again."
 msgstr "దింపుకోలు విఫలమైంది. మీ అనుసంధానాన్ని తనిఖీ చేసి మళ్ళీ ప్రయత్నించండి."
 
-#: modules/gui/qt/util/redesign_updater.cpp:914
+#: modules/gui/qt/util/redesign_updater.cpp:920
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "నవీకరణ దాని చెక్‌సమ్‌కు సరిపోలలేదు, కాబట్టి అది వాడబడలేదు."
 
-#: modules/gui/qt/util/redesign_updater.cpp:945
+#: modules/gui/qt/util/redesign_updater.cpp:951
 msgid "The update isn't in a format this version knows."
 msgstr "నవీకరణ ఈ రూపాంతరానికి తెలిసిన ఆకృతిలో లేదు."
 
-#: modules/gui/qt/util/redesign_updater.cpp:948
-#: modules/gui/qt/util/redesign_updater.cpp:972
-#: modules/gui/qt/util/redesign_updater.cpp:983
+#: modules/gui/qt/util/redesign_updater.cpp:954
+#: modules/gui/qt/util/redesign_updater.cpp:978
 #: modules/gui/qt/util/redesign_updater.cpp:989
+#: modules/gui/qt/util/redesign_updater.cpp:995
 msgid "The update is damaged."
 msgstr "నవీకరణ పాడైంది."
 
-#: modules/gui/qt/util/redesign_updater.cpp:953
+#: modules/gui/qt/util/redesign_updater.cpp:959
 msgid "The update isn't for this version."
 msgstr "ఈ నవీకరణ ఈ రూపాంతరం కోసం కాదు."
 
-#: modules/gui/qt/util/redesign_updater.cpp:962
-#: modules/gui/qt/util/redesign_updater.cpp:999
-#: modules/gui/qt/util/redesign_updater.cpp:1008
-#: modules/gui/qt/util/redesign_updater.cpp:1012
-#: modules/gui/qt/util/redesign_updater.cpp:1016
+#: modules/gui/qt/util/redesign_updater.cpp:968
+#: modules/gui/qt/util/redesign_updater.cpp:1005
+#: modules/gui/qt/util/redesign_updater.cpp:1014
+#: modules/gui/qt/util/redesign_updater.cpp:1018
+#: modules/gui/qt/util/redesign_updater.cpp:1022
 msgid "The update can't be written in %1."
 msgstr "నవీకరణను %1లో రాయలేము."
 
-#: modules/gui/qt/util/redesign_updater.cpp:964
+#: modules/gui/qt/util/redesign_updater.cpp:970
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -8959,59 +8962,59 @@ msgstr ""
 "స్థాపించినప్పటి నుండి VLC Redesign యొక్క ఒక దస్త్రం మార్చబడింది, కాబట్టి చిన్న నవీకరణను వాడలేము: "
 "బదులుగా స్థాపకంతో నవీకరించండి."
 
-#: modules/gui/qt/util/redesign_updater.cpp:994
+#: modules/gui/qt/util/redesign_updater.cpp:1000
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr "నవీకరణ పాడైంది: ఒక దస్త్రం దాని చెక్‌సమ్‌కు సరిపోలడం లేదు."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1119
+#: modules/gui/qt/util/redesign_updater.cpp:1125
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr "నవీకరణను ప్రారంభించలేకపోయింది. తదుపరిసారి మళ్ళీ ప్రయత్నించబడుతుంది."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1146
+#: modules/gui/qt/util/redesign_updater.cpp:1152
 msgid "The download failed. Try again, or download it from the release page."
 msgstr "దింపుకోలు విఫలమైంది. మళ్ళీ ప్రయత్నించండి, లేదా విడుదల పేజీ నుండి దింపుకోండి."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1159
+#: modules/gui/qt/util/redesign_updater.cpp:1165
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr "దింపుకున్న స్థాపకం దాని చెక్‌సమ్‌కు సరిపోలలేదు, కాబట్టి అది నడపబడలేదు."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1168
+#: modules/gui/qt/util/redesign_updater.cpp:1174
 msgid "The installer couldn't be saved to %1."
 msgstr "స్థాపకాన్ని %1కు భద్రపరచలేకపోయింది."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1202
+#: modules/gui/qt/util/redesign_updater.cpp:1208
 msgid "The installer couldn't be started."
 msgstr "స్థాపకాన్ని ప్రారంభించలేకపోయింది."
 
-#: modules/gui/qt/util/renderer_manager.cpp:891
+#: modules/gui/qt/util/renderer_manager.cpp:896
 msgid ""
 "%1 doesn't answer. Check that it's on, and on the same network as this "
 "computer."
 msgstr "%1 స్పందించడం లేదు. అది ఆన్‌లో ఉందో, ఈ కంప్యూటర్ ఉన్న నెట్‌వర్క్‌లోనే ఉందో తనిఖీ చేయండి."
 
-#: modules/gui/qt/util/renderer_manager.cpp:894
+#: modules/gui/qt/util/renderer_manager.cpp:899
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the video."
 msgstr ""
 "వీడియోను చదవడానికి %1 ఈ కంప్యూటర్‌కు అనుసంధానం కావడానికి Windows Firewall అనుమతించడం లేదు."
 
-#: modules/gui/qt/util/renderer_manager.cpp:895
+#: modules/gui/qt/util/renderer_manager.cpp:900
 msgid "%1 couldn't read the video from this computer."
 msgstr "%1 ఈ కంప్యూటర్ నుండి వీడియోను చదవలేకపోయింది."
 
-#: modules/gui/qt/util/renderer_manager.cpp:897
+#: modules/gui/qt/util/renderer_manager.cpp:902
 msgid "%1 refused to play this video."
 msgstr "%1 ఈ వీడియోను ఆడించడానికి నిరాకరించింది."
 
-#: modules/gui/qt/util/renderer_manager.cpp:899
+#: modules/gui/qt/util/renderer_manager.cpp:904
 msgid "%1 stopped playing."
 msgstr "%1 ఆడటం ఆపివేసింది."
 
-#: modules/gui/qt/util/renderer_manager.cpp:901
+#: modules/gui/qt/util/renderer_manager.cpp:906
 msgid "%1 is playing something else now."
 msgstr "%1 ఇప్పుడు వేరేదాన్ని ఆడిస్తోంది."
 
-#: modules/gui/qt/util/renderer_manager.cpp:902
+#: modules/gui/qt/util/renderer_manager.cpp:907
 msgid "%1 couldn't play the video."
 msgstr "%1 వీడియోను ఆడించలేకపోయింది."
 

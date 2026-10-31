@@ -184,6 +184,7 @@ In the repository's Settings → Secrets and variables → Actions:
 | Secret   | `SIGNPATH_API_TOKEN`        | The CI user's API token  | <https://github.com/KuchiSofts/vlc-redesign/settings/secrets/actions> |
 | Variable | `SIGNPATH_ORGANIZATION_ID`  | The organization ID      | <https://github.com/KuchiSofts/vlc-redesign/settings/variables/actions> |
 | Variable | `SIGNPATH_PROJECT_SLUG`     | The project slug         | same page |
+| Variable | `SIGNPATH_CERT_THUMBPRINT`  | The SHA-1 thumbprint of the release certificate: a release-signing run refuses an installer signed by another one | same page |
 
 Or with `gh` (it asks for the token):
 
@@ -191,6 +192,7 @@ Or with `gh` (it asks for the token):
 gh secret set SIGNPATH_API_TOKEN --repo KuchiSofts/vlc-redesign
 gh variable set SIGNPATH_ORGANIZATION_ID --repo KuchiSofts/vlc-redesign --body '<organization id>'
 gh variable set SIGNPATH_PROJECT_SLUG --repo KuchiSofts/vlc-redesign --body '<project slug>'
+gh variable set SIGNPATH_CERT_THUMBPRINT --repo KuchiSofts/vlc-redesign --body '<thumbprint>'
 ```
 
 The policy is chosen each time the workflow is started. Until `SIGNPATH_ORGANIZATION_ID` exists, the jobs `sign` and

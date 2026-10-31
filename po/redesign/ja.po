@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 2.2.7\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-31 01:06+0000\n"
+"POT-Creation-Date: 2026-10-31 01:37+0000\n"
 "PO-Revision-Date: 2017-11-16 03:02+0100\n"
 "Last-Translator: Fumio Nakayama <fumio.n6a@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -1517,7 +1517,7 @@ msgid "It needs Windows 10 version 1809 or later."
 msgstr "Windows 10 バージョン1809以降が必要です。"
 
 #: bin/winvlc.c:712 bin/winvlc.c:825
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:411
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:418
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:27
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignPluginsDialog.qml:30
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignStatisticsDialog.qml:26
@@ -1833,70 +1833,65 @@ msgstr "プレイリスト名"
 msgid "About VLC"
 msgstr "VLCについて"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:198
-#: modules/gui/qt/dialogs/firstrun/qml/WhatsNewDialog.qml:63
-msgid "VLC Redesign"
-msgstr "VLC Redesign"
-
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:239
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:246
 msgid "Version %1 · based on VLC %2"
 msgstr "バージョン %1 · VLC %2 ベース"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:263
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:270
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:90
 msgid "Checking for updates…"
 msgstr "アップデートを確認しています…"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:264
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:271
 msgid "You have the latest version"
 msgstr "最新バージョンです"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:265
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:272
 msgid "Version %1 is available"
 msgstr "バージョン %1 が利用可能です"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:267
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:274
 msgid "Downloading the update… %1%"
 msgstr "アップデートをダウンロードしています… %1%"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:268
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:275
 msgid "Preparing the update…"
 msgstr "アップデートを準備しています…"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:269
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:276
 msgid "Version %1 is ready: restart to finish"
 msgstr "バージョン %1 の準備ができました: 再起動して完了します"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:278
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:285
 msgid "What's new in %1"
 msgstr "%1 の新機能"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:292
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:299
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:197
 msgid "Restart now"
 msgstr "今すぐ再起動"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:294
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:301
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:228
 msgid "Update now"
 msgstr "今すぐアップデート"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:294
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:301
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:226
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:188
 #: modules/gui/qt/network/standardpathmodel.cpp:153
 msgid "Download"
 msgstr "ダウンロード"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:295
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:302
 msgid "Check for updates"
 msgstr "アップデートを確認"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:331
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:338
 msgid "Interface designed by <font color=\"%1\">Juxtopposed</font>"
 msgstr "インターフェースデザイン: <font color=\"%1\">Juxtopposed</font>"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:338
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:345
 msgid ""
 "Every screen comes from the \"VLC Redesign (Community)\" Figma file, "
 "licensed under CC BY 4.0. It was adapted to Qt and its icons were redrawn."
@@ -1905,50 +1900,50 @@ msgstr ""
 "(Community)」に基づいています。Qt 向けに調整され、アイコンは描き直されていま"
 "す。"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:343
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:350
 msgid "YouTube channel"
 msgstr "YouTubeチャンネル"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:344
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:351
 msgid "The redesign video"
 msgstr "リデザイン動画"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:345
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:352
 msgid "Figma file"
 msgstr "Figmaファイル"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:347
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:354
 msgid "CC BY 4.0"
 msgstr "CC BY 4.0"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:357
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:364
 msgid "First implementation by"
 msgstr "最初の実装:"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:362
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:369
 msgid "Built on VLC media player by"
 msgstr "ベースのVLCメディアプレイヤーの開発:"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:363
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:370
 msgid "the VideoLAN team and contributors"
 msgstr "VideoLANチームと貢献者"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:371
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:378
 msgid "Also on: %1"
 msgstr "その他の対応環境: %1"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:378
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:385
 #: modules/gui/qt/menus/qml/MainMenu.qml:173
 msgid "Suggest an idea"
 msgstr "アイデアを提案"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:380
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:387
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:28
 #: modules/gui/qt/menus/qml/MainMenu.qml:178
 msgid "Report a problem"
 msgstr "問題を報告"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:391
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:398
 msgid ""
 "An unofficial build, not affiliated with or endorsed by VideoLAN or "
 "Juxtopposed. VLC, VLC media player and the cone logo are trademarks of "
@@ -1958,11 +1953,11 @@ msgstr ""
 "受けていません。VLC、VLC media player およびコーンのロゴは VideoLAN の商標で"
 "す。GNU GPL v2 以降のフリーソフトウェアです。"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:401
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:408
 msgid "Licenses & authors"
 msgstr "ライセンスと作者"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:405
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:412
 msgid "GitHub"
 msgstr "GitHub"
 

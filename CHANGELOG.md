@@ -54,11 +54,11 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   update's own folder (as the interface already checked). A signed update must come from the same publisher and
   the same certificate authority, not only a publisher of the same name.
 
-- **The app names itself VLC Redesign**: the window and taskbar title, the top bar when nothing plays, the tray icon
-  and its menu, the title of message boxes and the welcome step said *VLC media player* (VideoLAN's product name)
-  or *VLC*. VideoLAN's trademark policy allows a free (GPL) fork to use VLC's marks, and allows no one to use the
-  name VideoLAN: the README says how VLC Redesign keeps to it. The texts with the name keep their translations in
-  every language.
+- **The app names itself VLC Media Player Redesign**: the window and taskbar title, the top bar when nothing
+  plays, the tray icon and its menu, About, *What's new*, the title of message boxes and the welcome step said
+  *VLC media player* or *VLC* alone. VideoLAN's trademark policy allows a free (GPL) build to use VLC's marks, and
+  allows no one to use the name VideoLAN: the README says how VLC Redesign keeps to it. The texts with the name
+  keep their translations in every language; the installation's folders, keys and shortcuts keep their names.
 
 ### Security
 

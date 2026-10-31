@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-31 01:06+0000\n"
+"POT-Creation-Date: 2026-10-31 01:37+0000\n"
 "PO-Revision-Date: 2017-02-06 13:43+0000\n"
 "Last-Translator: Gideon Wentink <gjwentink@gmail.com>\n"
 "Language-Team: Afrikaans (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -8069,7 +8069,7 @@ msgid "It needs Windows 10 version 1809 or later."
 msgstr "Dit het Windows 10 weergawe 1809 of later nodig."
 
 #: bin/winvlc.c:712 bin/winvlc.c:825
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:411
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:418
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:27
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignPluginsDialog.qml:30
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignStatisticsDialog.qml:26
@@ -21483,70 +21483,65 @@ msgstr "Afspeellysnaam"
 msgid "About VLC"
 msgstr "Oor VLC"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:198
-#: modules/gui/qt/dialogs/firstrun/qml/WhatsNewDialog.qml:63
-msgid "VLC Redesign"
-msgstr "VLC Redesign"
-
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:239
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:246
 msgid "Version %1 · based on VLC %2"
 msgstr "Weergawe %1 · gebaseer op VLC %2"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:263
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:270
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:90
 msgid "Checking for updates…"
 msgstr "Kyk tans vir bywerkings…"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:264
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:271
 msgid "You have the latest version"
 msgstr "U het die nuutste weergawe"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:265
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:272
 msgid "Version %1 is available"
 msgstr "Weergawe %1 is beskikbaar"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:267
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:274
 msgid "Downloading the update… %1%"
 msgstr "Laai tans die bywerking af… %1%"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:268
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:275
 msgid "Preparing the update…"
 msgstr "Berei tans die bywerking voor…"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:269
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:276
 msgid "Version %1 is ready: restart to finish"
 msgstr "Weergawe %1 is gereed: herbegin om te voltooi"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:278
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:285
 msgid "What's new in %1"
 msgstr "Wat is nuut in %1"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:292
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:299
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:197
 msgid "Restart now"
 msgstr "Herbegin nou"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:294
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:301
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:228
 msgid "Update now"
 msgstr "Werk nou by"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:294
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:301
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:226
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:188
 #: modules/gui/qt/network/standardpathmodel.cpp:153
 msgid "Download"
 msgstr "Laai af"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:295
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:302
 msgid "Check for updates"
 msgstr "Kyk vir bywerkings"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:331
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:338
 msgid "Interface designed by <font color=\"%1\">Juxtopposed</font>"
 msgstr "Koppelvlak ontwerp deur <font color=\"%1\">Juxtopposed</font>"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:338
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:345
 msgid ""
 "Every screen comes from the \"VLC Redesign (Community)\" Figma file, "
 "licensed under CC BY 4.0. It was adapted to Qt and its icons were redrawn."
@@ -21554,56 +21549,56 @@ msgstr ""
 "Elke skerm kom uit die Figma-lêer \"VLC Redesign (Community)\", gelisensieer "
 "onder CC BY 4.0. Dit is na Qt aangepas en sy ikone is oorgeteken."
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:343
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:350
 msgid "YouTube channel"
 msgstr "YouTube-kanaal"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:344
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:351
 msgid "The redesign video"
 msgstr "Die herontwerp-video"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:345
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:352
 msgid "Figma file"
 msgstr "Figma-lêer"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:346
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:353
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:1171
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:1281
 msgid "Website"
 msgstr "Webwerf"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:347
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:354
 msgid "CC BY 4.0"
 msgstr "CC BY 4.0"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:357
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:364
 msgid "First implementation by"
 msgstr "Eerste implementering deur"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:362
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:369
 msgid "Built on VLC media player by"
 msgstr "Gebou op VLC-mediaspeler deur"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:363
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:370
 msgid "the VideoLAN team and contributors"
 msgstr "die VideoLAN-span en bydraers"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:371
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:378
 msgid "Also on: %1"
 msgstr "Ook op: %1"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:378
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:385
 #: modules/gui/qt/menus/qml/MainMenu.qml:173
 msgid "Suggest an idea"
 msgstr "Stel ’n idee voor"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:380
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:387
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:28
 #: modules/gui/qt/menus/qml/MainMenu.qml:178
 msgid "Report a problem"
 msgstr "Rapporteer ’n probleem"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:391
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:398
 msgid ""
 "An unofficial build, not affiliated with or endorsed by VideoLAN or "
 "Juxtopposed. VLC, VLC media player and the cone logo are trademarks of "
@@ -21613,11 +21608,11 @@ msgstr ""
 "Juxtopposed nie. VLC, VLC media player en die keël-logo is handelsmerke van "
 "VideoLAN. Vrye sagteware onder die GNU GPL v2 of later."
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:401
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:408
 msgid "Licenses & authors"
 msgstr "Lisensies & outeurs"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:405
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:412
 msgid "GitHub"
 msgstr "GitHub"
 
@@ -39131,6 +39126,9 @@ msgstr ""
 #: modules/gui/qt/dialogs/vlm/vlm.ui:193
 msgid "Media Manager List"
 msgstr ""
+
+#~ msgid "VLC Redesign"
+#~ msgstr "VLC Redesign"
 
 #~ msgid "Welcome to VLC!"
 #~ msgstr "Welkom by VLC!"

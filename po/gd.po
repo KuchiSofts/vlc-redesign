@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-31 01:06+0000\n"
+"POT-Creation-Date: 2026-10-31 01:37+0000\n"
 "PO-Revision-Date: 2015-04-10 17:25+0000\n"
 "Last-Translator: Michael Bauer\n"
 "Language-Team: Gaelic, Scottish (http://www.transifex.com/projects/p/vlc-"
@@ -8180,7 +8180,7 @@ msgid "It needs Windows 10 version 1809 or later."
 msgstr "Feumaidh e Windows 10 tionndadh 1809 no nas ùire."
 
 #: bin/winvlc.c:712 bin/winvlc.c:825
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:411
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:418
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:27
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignPluginsDialog.qml:30
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignStatisticsDialog.qml:26
@@ -21630,70 +21630,65 @@ msgstr "Ainm na liosta-chluich"
 msgid "About VLC"
 msgstr "Mu VLC"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:198
-#: modules/gui/qt/dialogs/firstrun/qml/WhatsNewDialog.qml:63
-msgid "VLC Redesign"
-msgstr "VLC Redesign"
-
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:239
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:246
 msgid "Version %1 · based on VLC %2"
 msgstr "Tionndadh %1 · stèidhichte air VLC %2"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:263
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:270
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:90
 msgid "Checking for updates…"
 msgstr "A' lorg ùrachaidhean…"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:264
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:271
 msgid "You have the latest version"
 msgstr "Tha an tionndadh as ùire agad"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:265
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:272
 msgid "Version %1 is available"
 msgstr "Tha tionndadh %1 ri fhaighinn"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:267
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:274
 msgid "Downloading the update… %1%"
 msgstr "A' luchdadh a-nuas an ùrachaidh… %1%"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:268
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:275
 msgid "Preparing the update…"
 msgstr "Ag ullachadh an ùrachaidh…"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:269
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:276
 msgid "Version %1 is ready: restart to finish"
 msgstr "Tha tionndadh %1 deiseil: ath-thòisich gus a choileanadh"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:278
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:285
 msgid "What's new in %1"
 msgstr "Na tha ùr ann an %1"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:292
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:299
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:197
 msgid "Restart now"
 msgstr "Ath-thòisich an-dràsta"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:294
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:301
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:228
 msgid "Update now"
 msgstr "Ùraich an-dràsta"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:294
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:301
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:226
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:188
 #: modules/gui/qt/network/standardpathmodel.cpp:153
 msgid "Download"
 msgstr "Luchdaich a-nuas"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:295
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:302
 msgid "Check for updates"
 msgstr "Lorg ùrachaidhean"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:331
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:338
 msgid "Interface designed by <font color=\"%1\">Juxtopposed</font>"
 msgstr "Eadar-aghaidh air a dealbhadh le <font color=\"%1\">Juxtopposed</font>"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:338
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:345
 msgid ""
 "Every screen comes from the \"VLC Redesign (Community)\" Figma file, "
 "licensed under CC BY 4.0. It was adapted to Qt and its icons were redrawn."
@@ -21702,56 +21697,56 @@ msgstr ""
 "cheadachas CC BY 4.0. Chaidh a fhreagairt ri Qt agus chaidh na h-"
 "ìomhaigheagan aige a tharraing às ùr."
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:343
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:350
 msgid "YouTube channel"
 msgstr "Seanail YouTube"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:344
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:351
 msgid "The redesign video"
 msgstr "Video an ath-dhealbhaidh"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:345
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:352
 msgid "Figma file"
 msgstr "Faidhle Figma"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:346
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:353
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:1171
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:1281
 msgid "Website"
 msgstr "Làrach-lìn"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:347
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:354
 msgid "CC BY 4.0"
 msgstr "CC BY 4.0"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:357
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:364
 msgid "First implementation by"
 msgstr "A' chiad bhuileachadh le"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:362
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:369
 msgid "Built on VLC media player by"
 msgstr "Stèidhichte air cluicheadair mheadhanan VLC le"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:363
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:370
 msgid "the VideoLAN team and contributors"
 msgstr "sgioba VideoLAN is com-pàirtichean"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:371
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:378
 msgid "Also on: %1"
 msgstr "Cuideachd air: %1"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:378
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:385
 #: modules/gui/qt/menus/qml/MainMenu.qml:173
 msgid "Suggest an idea"
 msgstr "Mol beachd"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:380
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:387
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:28
 #: modules/gui/qt/menus/qml/MainMenu.qml:178
 msgid "Report a problem"
 msgstr "Dèan aithris air duilgheadas"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:391
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:398
 msgid ""
 "An unofficial build, not affiliated with or endorsed by VideoLAN or "
 "Juxtopposed. VLC, VLC media player and the cone logo are trademarks of "
@@ -21762,11 +21757,11 @@ msgstr ""
 "cluicheadair mheadhanan VLC agus suaicheantas a' chòin. Bathar-bog saor fo "
 "GNU GPL v2 no nas ùire."
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:401
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:408
 msgid "Licenses & authors"
 msgstr "Ceadachasan & ùghdaran"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:405
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:412
 msgid "GitHub"
 msgstr "GitHub"
 
@@ -25124,7 +25119,8 @@ msgstr "A bheil thu airson gach roghainn ath-shuidheachadh?"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:830
 msgid "Every setting of %1 goes back to its default."
-msgstr "Tillidh gach roghainn aig cluicheadair mheadhanan %1 gu a bhun-roghainn."
+msgstr ""
+"Tillidh gach roghainn aig cluicheadair mheadhanan %1 gu a bhun-roghainn."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:884
 msgid "Discard changes"
@@ -39502,6 +39498,9 @@ msgstr "Uidheam-smachd an ama"
 #: modules/gui/qt/dialogs/vlm/vlm.ui:193
 msgid "Media Manager List"
 msgstr "Liosta Media Manager"
+
+#~ msgid "VLC Redesign"
+#~ msgstr "VLC Redesign"
 
 #~ msgid "Welcome to VLC!"
 #~ msgstr "Fàilte gu VLC!"

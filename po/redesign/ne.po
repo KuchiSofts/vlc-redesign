@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-31 01:06+0000\n"
+"POT-Creation-Date: 2026-10-31 01:37+0000\n"
 "PO-Revision-Date: 2017-02-06 13:43+0000\n"
 "Last-Translator: Christoph Miebach <christoph.miebach@web.de>\n"
 "Language-Team: Nepali (Nepal) (http://www.transifex.com/yaron/vlc-trans/"
@@ -1515,7 +1515,7 @@ msgid "It needs Windows 10 version 1809 or later."
 msgstr "यसका लागि Windows 10 संस्करण 1809 वा पछिको संस्करण आवश्यक छ।"
 
 #: bin/winvlc.c:712 bin/winvlc.c:825
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:411
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:418
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:27
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignPluginsDialog.qml:30
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignStatisticsDialog.qml:26
@@ -1825,70 +1825,65 @@ msgstr "बजाउने सूचीको नाम"
 msgid "About VLC"
 msgstr "VLC बारेमा"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:198
-#: modules/gui/qt/dialogs/firstrun/qml/WhatsNewDialog.qml:63
-msgid "VLC Redesign"
-msgstr "VLC Redesign"
-
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:239
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:246
 msgid "Version %1 · based on VLC %2"
 msgstr "संस्करण %1 · VLC %2 मा आधारित"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:263
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:270
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:90
 msgid "Checking for updates…"
 msgstr "अद्यावधिकहरू जाँच गर्दै…"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:264
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:271
 msgid "You have the latest version"
 msgstr "तपाईंसँग नवीनतम संस्करण छ"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:265
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:272
 msgid "Version %1 is available"
 msgstr "संस्करण %1 उपलब्ध छ"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:267
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:274
 msgid "Downloading the update… %1%"
 msgstr "अद्यावधिक डाउनलोड गर्दै… %1%"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:268
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:275
 msgid "Preparing the update…"
 msgstr "अद्यावधिक तयार गर्दै…"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:269
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:276
 msgid "Version %1 is ready: restart to finish"
 msgstr "संस्करण %1 तयार छ: पूरा गर्न पुनः सुरु गर्नुहोस्"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:278
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:285
 msgid "What's new in %1"
 msgstr "%1 मा के नयाँ छ"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:292
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:299
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:197
 msgid "Restart now"
 msgstr "अहिले पुनः सुरु गर्नुहोस्"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:294
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:301
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:228
 msgid "Update now"
 msgstr "अहिले अद्यावधिक गर्नुहोस्"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:294
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:301
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:226
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:188
 #: modules/gui/qt/network/standardpathmodel.cpp:153
 msgid "Download"
 msgstr "डाउनलोड गर्नुहोस्"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:295
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:302
 msgid "Check for updates"
 msgstr "अद्यावधिकहरू जाँच गर्नुहोस्"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:331
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:338
 msgid "Interface designed by <font color=\"%1\">Juxtopposed</font>"
 msgstr "इन्टरफेस डिजाइन: <font color=\"%1\">Juxtopposed</font>"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:338
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:345
 msgid ""
 "Every screen comes from the \"VLC Redesign (Community)\" Figma file, "
 "licensed under CC BY 4.0. It was adapted to Qt and its icons were redrawn."
@@ -1896,50 +1891,50 @@ msgstr ""
 "हरेक स्क्रिन CC BY 4.0 अन्तर्गत इजाजतप्राप्त \"VLC Redesign (Community)\" Figma "
 "फाइलबाट लिइएको हो। यसलाई Qt मा ढालिएको छ र यसका आइकनहरू पुनः कोरिएका छन्।"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:343
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:350
 msgid "YouTube channel"
 msgstr "YouTube च्यानल"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:344
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:351
 msgid "The redesign video"
 msgstr "रिडिजाइन भिडियो"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:345
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:352
 msgid "Figma file"
 msgstr "Figma फाइल"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:347
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:354
 msgid "CC BY 4.0"
 msgstr "CC BY 4.0"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:357
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:364
 msgid "First implementation by"
 msgstr "पहिलो कार्यान्वयन गर्ने"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:362
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:369
 msgid "Built on VLC media player by"
 msgstr "VLC मिडिया प्लेयरमा आधारित, निर्माण गर्ने"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:363
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:370
 msgid "the VideoLAN team and contributors"
 msgstr "VideoLAN टोली र योगदानकर्ताहरू"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:371
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:378
 msgid "Also on: %1"
 msgstr "यसमा पनि: %1"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:378
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:385
 #: modules/gui/qt/menus/qml/MainMenu.qml:173
 msgid "Suggest an idea"
 msgstr "विचार सुझाउनुहोस्"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:380
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:387
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:28
 #: modules/gui/qt/menus/qml/MainMenu.qml:178
 msgid "Report a problem"
 msgstr "समस्या रिपोर्ट गर्नुहोस्"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:391
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:398
 msgid ""
 "An unofficial build, not affiliated with or endorsed by VideoLAN or "
 "Juxtopposed. VLC, VLC media player and the cone logo are trademarks of "
@@ -1949,11 +1944,11 @@ msgstr ""
 "VLC, VLC media player र कोन लोगो VideoLAN का ट्रेडमार्क हुन्। GNU GPL v2 वा पछिको "
 "संस्करण अन्तर्गत निःशुल्क सफ्टवेयर।"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:401
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:408
 msgid "Licenses & authors"
 msgstr "इजाजतपत्र र लेखकहरू"
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:405
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignAboutDialog.qml:412
 msgid "GitHub"
 msgstr "GitHub"
 

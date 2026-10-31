@@ -44,7 +44,7 @@ Item {
         sourceSize: Qt.size(width, height)
         smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
         fillMode: Image.PreserveAspectFit
-        Accessible.name: "VLC Redesign"
+        Accessible.name: "VLC Media Player Redesign"
     }
     // Figma 1899:3055: the text box (the advance rounded up) centred on the
     // pixel at its left (417)
@@ -52,7 +52,7 @@ Item {
         x: Math.floor((parent.width - width) / 2)
         width: Math.ceil(implicitWidth - 0.05)
         y: 286
-        text: qsTr("Welcome to %1!").arg("VLC Redesign")
+        text: qsTr("Welcome to %1!").arg("VLC Media Player Redesign")
         color: VLCStyle.redesign.color("#eaeaea", "#2e2e2e")
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: 32

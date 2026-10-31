@@ -164,7 +164,9 @@ cache=
 [ -n "$ldc" ] && cache=$("$ldc" -p 2> /dev/null)
 has() { # LIBRARY.so.N
     if [ -n "$cache" ]; then
-        printf '%s\n' "$cache" | grep -q "^[[:space:]]*$1 (libc6,$abi[,)]"
+        # (not grep -q: it stops reading, and where SIGPIPE is ignored, in
+        # the Flatpak, printf said "write error: Broken pipe")
+        printf '%s\n' "$cache" | grep "^[[:space:]]*$1 (libc6,$abi[,)]" > /dev/null
     else
         for d in /usr/lib/$multiarch /lib/$multiarch /usr/lib64 /lib64 /usr/lib /lib; do
             [ -e "$d/$1" ] && return 0

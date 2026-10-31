@@ -24,9 +24,9 @@ platforms:
     name: Windows
     short: Windows
     status: released
-    version: 0.4.1
-    date: 2026-10-30
-    next: 0.5.0
+    version: 0.5.0
+    date: 2026-10-31
+    next: 0.5.1
     os: windows
     requires: Windows 10 (1809) or 11, 64-bit
     repository: KuchiSofts/vlc-redesign
@@ -42,9 +42,9 @@ platforms:
     name: Linux
     short: Linux
     status: released
-    version: 0.4.1
-    date: 2026-10-30
-    next: 0.5.0
+    version: 0.5.0
+    date: 2026-10-31
+    next: 0.5.1
     os: linux
     requires: glibc 2.38 (Ubuntu 24.04, Debian 13, Fedora 39 or later), x86_64 or ARM64
     repository: KuchiSofts/vlc-redesign
@@ -70,9 +70,9 @@ platforms:
     name: macOS
     short: macOS
     status: released
-    version: 0.4.1
-    date: 2026-10-30
-    next: 0.5.0
+    version: 0.5.0
+    date: 2026-10-31
+    next: 0.5.1
     os: macos
     requires: macOS 12 Monterey, Apple Silicon or Intel
     repository: KuchiSofts/vlc-redesign
@@ -88,9 +88,9 @@ platforms:
     name: Windows on ARM64
     short: Windows ARM64
     status: released
-    version: 0.4.1
-    date: 2026-10-30
-    next: 0.5.0
+    version: 0.5.0
+    date: 2026-10-31
+    next: 0.5.1
     os: windows-arm64
     requires: Windows 11 on ARM64
     repository: KuchiSofts/vlc-redesign
@@ -105,12 +105,18 @@ platforms:
   - id: android
     name: Android (phones, tablets, TV)
     short: Android
-    status: research
+    status: released
+    version: 0.5.0
+    date: 2026-10-31
+    next: 0.5.1
     os: android
     requires: Android 8.0 or later
-    repository: KuchiSofts/vlc-redesign-android
-    page: https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/PLATFORMS.md
-    notes: A fork of VLC for Android with the design
+    repository: KuchiSofts/vlc-redesign
+    page: https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update
+    notes: An APK for phones and tablets (ARM64, ARMv7, x86, x86_64), beside VLC; not on Google Play
+    downloads:
+      - label: APK
+        file: vlc-redesign-{version}-android.apk
 
   - id: samsung-tv
     name: Samsung Smart TV (Tizen)

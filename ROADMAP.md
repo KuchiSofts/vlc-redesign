@@ -19,12 +19,12 @@ Updated as the work moves (last: 2026-10-31).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
-| **Windows x64** | ✅ released 0.4.1 | ██████████ 100 % | — 0.5.0 is ready in testing (below) |
-| **Windows on ARM64** | ✅ released 0.4.1 | ██████████ 100 % | small updates in the app from 0.5.0; a run by hand on a real ARM64 PC |
-| **Linux** (x86_64, ARM64) | ✅ released 0.4.1 | ██████████ 100 % | 0.5.0: the Flatpak, the sound output device, the fixes below; an updater in the app later |
-| **macOS** (Apple Silicon, Intel) | ✅ released 0.4.1 | ██████████ 100 % | 0.5.0: the sound output device; tests on a Mac by hand |
-| **Android** (phones) | 🔨 in testing | █████████░ 99 % | a test on a real phone, then the first release on GitHub |
-| **Android** (tablets) | 🔨 in testing | █████████░ 98 % | a test on a real tablet |
+| **Windows x64** | ✅ released 0.5.0 | ██████████ 100 % | — 0.5.1: fixes as the issues bring them |
+| **Windows on ARM64** | ✅ released 0.5.0 | ██████████ 100 % | a run by hand on a real ARM64 PC |
+| **Linux** (x86_64, ARM64) | ✅ released 0.5.0 | ██████████ 100 % | the Flatpak on Flathub; an updater in the app later |
+| **macOS** (Apple Silicon, Intel) | ✅ released 0.5.0 | ██████████ 100 % | tests on a Mac by hand |
+| **Android** (phones) | ✅ released 0.5.0 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
+| **Android** (tablets) | ✅ released 0.5.0 | █████████░ 98 % | a test on a real tablet (done on 11" and 13" emulators) |
 | **Samsung TV receiver** | 💡 researched | ░░░░░░░░░░ 0 % | after the Android release |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
@@ -139,7 +139,7 @@ the website and the *Also on* line of the release notes and of About are made fr
 - 🔨 The design for every platform: its colours, sizes, fonts and icons in [`design/`](design/README.md)
   (`design-1.0`), with CSS, Android and Swift files made from them and a check on every pull request that the
   Windows app still uses the same values
-- 🔨 Android (phones and tablets): the app is in testing, see [Next](#next-the-android-app-and-050); Android TV after it
+- ✅ Android (phones and tablets): released with 0.5.0; Android TV after it
 - 💡 Samsung TV receiver, iPhone and iPad
 
 ## Staying close to VLC

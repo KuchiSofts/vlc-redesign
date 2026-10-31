@@ -43,6 +43,12 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - **Linux, the AppImage and the folder: a clear message when the graphics libraries are missing.** On a system
   without them (libEGL: a server, a minimal install) VLC fell back to the terminal and said only "Error opening
   terminal"; it now says what to install (libegl1, mesa-libEGL), also in a dialog on a desktop.
+- **Linux: the programs VLC opens work again** (the browser, the file manager, D-Bus for the media keys and the
+  screen saver). They inherited the libraries of VLC's own folder, and on a newer system than Ubuntu 24.04 some
+  failed to start (`dbus-launch`: "version LIBDBUS_PRIVATE… not found"). VLC now finds its libraries without
+  changing the environment, and brings fewer of them: D-Bus, ALSA, fontconfig, X11 and the other libraries every
+  desktop has come from the system. The AppImage and the folder also play videos on a system without VA-API (they
+  did not decode H.264 there: no video), on the CPU.
 
 ### Technical
 

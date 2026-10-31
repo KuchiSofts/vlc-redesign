@@ -61,10 +61,10 @@ jobs:
           gh release download $tag --repo $env:GITHUB_REPOSITORY --pattern 'SHA256SUMS.txt*' --dir sums
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
           $good = ./verify-test.exe sums/SHA256SUMS.txt
-          if ($LASTEXITCODE -ne 0 -or $good -ne 'good') { Write-Host "::error title=update signature::the signature of $tag isn't accepted ($good)"; exit 1 }
+          if ($LASTEXITCODE -ne 0 -or $good -ne 'good') { Write-Host "::error title=update signature::the signature of ${tag} isn't accepted ($good)"; exit 1 }
           $bytes = [IO.File]::ReadAllBytes("$PWD/sums/SHA256SUMS.txt")
           $bytes[0] = $bytes[0] -bxor 1
           [IO.File]::WriteAllBytes("$PWD/sums/changed.txt", $bytes)
           $bad = ./verify-test.exe sums/changed.txt sums/SHA256SUMS.txt.sig
           if ($LASTEXITCODE -eq 0 -or $bad -ne 'bad') { Write-Host "::error title=update signature::a changed SHA256SUMS.txt is accepted ($bad)"; exit 1 }
-          "- the signature of $tag: good; a changed copy: bad" >> $env:GITHUB_STEP_SUMMARY
+          "- the signature of ${tag}: good; a changed copy: bad" >> $env:GITHUB_STEP_SUMMARY

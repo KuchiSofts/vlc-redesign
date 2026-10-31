@@ -50,9 +50,9 @@ jobs:
                            || (github.event_name == 'workflow_dispatch' && inputs.arch != 'both'
                                && format('["{0}"]', inputs.arch))
                            || '["arm64", "x86_64"]') }}
-    # Apple Silicon: macos-14; Intel: macos-15-intel (GitHub retired its
-    # macos-13 image in December 2025)
-    runs-on: ${{ matrix.arch == 'arm64' && 'macos-14' || 'macos-15-intel' }}
+    # Apple Silicon: macos-15; Intel: macos-15-intel (GitHub retired its
+    # macos-13 image in December 2025 and retires macos-14 on 2026-11-02)
+    runs-on: ${{ matrix.arch == 'arm64' && 'macos-15' || 'macos-15-intel' }}
     continue-on-error: true
     timeout-minutes: ${{ github.event.repository.private && 40 || 360 }}
     env:

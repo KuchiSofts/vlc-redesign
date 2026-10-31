@@ -1521,7 +1521,7 @@ The fullscreen button moves to the control bar, and the control bar is easier to
 
 ### Documentation
 
-- README: [*Customize the interface*](README.md#customize-the-interface), with a 44-second video.
+- README: *Customize the interface* (now the wiki page [*Customize the player*](https://github.com/KuchiSofts/vlc-redesign/wiki/Customize-the-Player)), with a 44-second video.
 
 ---
 

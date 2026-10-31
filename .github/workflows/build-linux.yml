@@ -46,7 +46,7 @@ jobs:
     runs-on: ${{ matrix.runner }}
     timeout-minutes: 300
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           # the version of VLC (git describe) comes from the tags
           fetch-depth: 0
@@ -104,7 +104,7 @@ jobs:
 
       - name: Logs
         if: failure()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: linux-build-logs-${{ matrix.arch }}-${{ github.sha }}
           path: |
@@ -114,14 +114,14 @@ jobs:
           retention-days: 7
 
       - name: Upload the packages
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: vlc-redesign-linux-${{ matrix.arch }}-${{ github.sha }}
           path: build-qt68/packages
           retention-days: ${{ github.event_name == 'pull_request' && 2 || 7 }}
 
       - name: Upload the test clip
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: linux-test-clip-${{ matrix.arch }}-${{ github.sha }}
           path: test-clip/clip.mp4
@@ -145,12 +145,12 @@ jobs:
       # VLC with no window and no sound; the clip played to its end
       PLAY: --intf dummy --vout dummy --aout dummy --no-video-title-show --play-and-exit
     steps:
-      - uses: actions/download-artifact@v8
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
         with:
           name: vlc-redesign-linux-${{ matrix.arch }}-${{ github.sha }}
           path: packages
 
-      - uses: actions/download-artifact@v8
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
         with:
           name: linux-test-clip-${{ matrix.arch }}-${{ github.sha }}
           path: clip
@@ -216,7 +216,7 @@ jobs:
 
       - name: Logs
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: linux-test-logs-${{ matrix.arch }}-${{ github.sha }}
           path: '*.log'

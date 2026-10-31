@@ -1,0 +1,7 @@
+# The Python packages of the release job (build-windows.yml), at a fixed
+# version and checked against their hashes: bsdiff4 makes the small updates
+# that go into SHA256SUMS.txt, which is signed on the release PC.
+# pip install --require-hashes -r extras/juxtopposed/ci/requirements-release.txt
+bsdiff4==1.4.1 \
+    --hash=sha256:3126dd5e80fa146ea57a5798e5eb8603bb071eb8ff8581b8fb896143e4f5cf07 \
+    --hash=sha256:d66fe7d6c50ea533aa860ac76689e05cfb0a3f8c7bd6730ddf5089a948f66ac5

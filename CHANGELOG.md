@@ -15,6 +15,17 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Added
+
+- **Android: the app tells you when a new version is out.** Once a day it looks at the latest release here; when
+  it is newer, *Download* gets the APK (Android installs it over the app, your settings and library stay), *What's
+  new* opens the release page, *Skip* leaves that version out. Nothing is downloaded by itself. Switch it in
+  *Settings › General* or in the welcome's privacy step. (0.5.0 has no such check: install 0.5.1 by hand once.)
+
+### Technical
+
+- The Apple Silicon build runs on GitHub's `macos-15` (`macos-14` is retired on 2026-11-02).
+
 ## [0.5.0] · 2026-10-31
 
 ### Added

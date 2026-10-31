@@ -1643,5 +1643,5 @@ vlc_module_begin()
                              ppsz_mmdevice_passthrough_texts )
     add_string("mmdevice-audio-device", NULL, DEVICE_TEXT, DEVICE_LONGTEXT)
     add_float("mmdevice-volume", 1.f, VOLUME_TEXT, VOLUME_LONGTEXT)
-        change_float_range( 0.f, 1.25f )
+        change_float_range( 0.f, 2.f ) /* as the player's 200 % (AOUT_VOLUME_MAX) */
 vlc_module_end()

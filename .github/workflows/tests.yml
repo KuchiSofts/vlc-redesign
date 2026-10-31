@@ -71,3 +71,5 @@ jobs:
           Write-Host "verify-test on a changed copy: $bad (exit $LASTEXITCODE)"
           if ($LASTEXITCODE -eq 0 -or $bad -ne 'bad') { Write-Host "::error title=update signature::a changed SHA256SUMS.txt is accepted ($bad)"; exit 1 }
           "- the signature of ${tag}: good; a changed copy: bad" >> $env:GITHUB_STEP_SUMMARY
+          # (the refused copy left exit code 1, which pwsh would return as the step's)
+          exit 0

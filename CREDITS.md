@@ -52,6 +52,8 @@ Thank you to everyone who tested, reported and translated:
     ([#5](https://github.com/KuchiSofts/vlc-redesign/issues/5)).
   - [@Brackets124](https://github.com/Brackets124): the playback speed button
     ([#9](https://github.com/KuchiSofts/vlc-redesign/issues/9)).
+  - [@MAVIVEHICR](https://github.com/MAVIVEHICR): the startup volume stopped at 125 %
+    ([#30](https://github.com/KuchiSofts/vlc-redesign/issues/30)).
 - **Ideas:**
   - [@muhammadali-og](https://github.com/muhammadali-og): buttons that show what is open, and Ctrl + wheel for
     the subtitle size ([#10](https://github.com/KuchiSofts/vlc-redesign/issues/10)).

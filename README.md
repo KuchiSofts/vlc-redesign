@@ -42,6 +42,9 @@ The real VLC 4 engine and codecs, under a new interface built screen by screen f
 > trademarks of VideoLAN. For the official player, go to [videolan.org](https://www.videolan.org/vlc/).
 > This build is based on the VLC 4.0 development branch: please report problems
 > [here](https://github.com/KuchiSofts/vlc-redesign/issues), not to VideoLAN.
+> VLC Redesign is free software under the GPL, the use of these marks that
+> [VideoLAN's trademark policy](https://www.videolan.org/legal.html) allows; it names itself
+> *VLC Redesign*, never *VLC media player*, and never uses the name VideoLAN as its own.
 
 <p align="center">
 <a href="#-design-by-juxtopposed">Design</a> ·

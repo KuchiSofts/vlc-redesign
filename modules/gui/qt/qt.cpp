@@ -119,6 +119,7 @@ extern "C" char **environ;
 #include <QVector>
 #include "playlist/playlist_item.hpp"
 #include "util/language_change.hpp"
+#include "util/redesign_version.hpp"
 
 #include <vlc_interface.h>
 #include <vlc_plugin.h>
@@ -1500,7 +1501,8 @@ static void *Thread( void *obj )
     }
 #endif
 
-    app.setApplicationDisplayName( qtr("VLC media player") );
+    // (the window title and the taskbar: the product's own name)
+    app.setApplicationDisplayName( QStringLiteral(VLC_REDESIGN_NAME) );
     app.setApplicationVersion( QString::fromUtf8(VERSION_MESSAGE) );
 
     // the app icon (the designer's logo, as vlc.exe's icon) all year: the

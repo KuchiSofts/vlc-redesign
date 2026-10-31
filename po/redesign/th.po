@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-30 23:06+0000\n"
+"POT-Creation-Date: 2026-10-31 01:06+0000\n"
 "PO-Revision-Date: 2017-09-20 03:42+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Thai (http://www.transifex.com/yaron/vlc-trans/language/th/)\n"
@@ -1503,8 +1503,8 @@ msgstr "ต้องใช้ Windows 10 รุ่น 1809 หรือใหม
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:27
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignPluginsDialog.qml:30
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignStatisticsDialog.qml:26
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:553
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:558
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:554
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:559
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:152
 #: modules/gui/qt/dialogs/firstrun/qml/WhatsNewDialog.qml:39
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:312
@@ -1516,7 +1516,7 @@ msgstr "ต้องใช้ Windows 10 รุ่น 1809 หรือใหม
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:32
 #: modules/gui/qt/util/csdmenu.cpp:131
 #: modules/gui/qt/util/redesign_window_frame.cpp:96
-#: modules/gui/qt/widgets/native/redesign_message_box.cpp:213
+#: modules/gui/qt/widgets/native/redesign_message_box.cpp:214
 #: modules/gui/qt/widgets/qml/RedesignDialog.qml:223
 msgid "Close"
 msgstr "ปิด"
@@ -2110,36 +2110,36 @@ msgstr "อ่านแล้ว"
 msgid "Late"
 msgstr "ล่าช้า"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:520
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:521
 msgid "Confirm"
 msgstr "ยืนยัน"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:550
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:551
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:218
 msgid "Retry"
 msgstr "ลองใหม่"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:552
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:553
 msgid "Yes to All"
 msgstr "ใช่ทั้งหมด"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:558
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:559
 msgid "No to All"
 msgstr "ไม่ทั้งหมด"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1169
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1170
 msgid "Save play queue as..."
 msgstr "บันทึกคิวเล่นเป็น..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1389
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1390
 msgid "Write error"
 msgstr "การเขียนผิดพลาด"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1406
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1407
 msgid "Export playlist as..."
 msgstr "ส่งออกผังเล่นเป็น..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1423
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1424
 msgid ""
 "The playlist could not be exported to %1:\n"
 "%2"
@@ -2147,17 +2147,17 @@ msgstr ""
 "ไม่สามารถส่งออกผังเล่นไปยัง %1:\n"
 "%2"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1425
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
 msgid "Export Playlist"
 msgstr "ส่งออกผังเล่น"
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1551
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1552
 msgid "Open audio..."
 msgstr "เปิดเสียง..."
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1556
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1557
 msgid "Open video..."
 msgstr "เปิดวีดิทัศน์..."
 
@@ -2724,8 +2724,8 @@ msgid "Accent color %1"
 msgstr "สีเน้น %1"
 
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:55
-msgid "Welcome to VLC!"
-msgstr "ยินดีต้อนรับสู่ VLC!"
+msgid "Welcome to %1!"
+msgstr "ยินดีต้อนรับสู่ %1!"
 
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:73
 msgid ""
@@ -3103,7 +3103,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:293
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:105
-#: modules/gui/qt/qt.cpp:348
+#: modules/gui/qt/qt.cpp:349
 msgid "Channel banner"
 msgstr "แบนเนอร์ช่อง"
 
@@ -3424,7 +3424,7 @@ msgid ""
 msgstr "%1 ถูกเปลี่ยนจากภายนอกค่าตั้งหรือไม่พร้อมใช้งาน การเปลี่ยนแปลงของคุณไม่ได้ถูกบันทึก"
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:79
-#: modules/gui/qt/qt.cpp:357
+#: modules/gui/qt/qt.cpp:358
 msgid "Expert"
 msgstr "ผู้เชี่ยวชาญ"
 
@@ -3513,7 +3513,7 @@ msgstr "ชุดตกแต่ง"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:192
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:428
-#: modules/gui/qt/qt.cpp:339
+#: modules/gui/qt/qt.cpp:340
 msgid "Accent color"
 msgstr "สีเน้น"
 
@@ -3774,8 +3774,8 @@ msgid "Reset all settings?"
 msgstr "คืนค่าตั้งทั้งหมดหรือไม่?"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:830
-msgid "Every setting of VLC media player goes back to its default."
-msgstr "ทุกค่าตั้งของโปรแกรมเล่นสื่อ VLC จะกลับเป็นค่าปริยาย"
+msgid "Every setting of %1 goes back to its default."
+msgstr "ทุกค่าตั้งของโปรแกรมเล่นสื่อ %1 จะกลับเป็นค่าปริยาย"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:884
 msgid "Discard changes"
@@ -4345,7 +4345,7 @@ msgid "Seeking"
 msgstr "การเลื่อนตำแหน่ง"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:137
-#: modules/gui/qt/qt.cpp:303
+#: modules/gui/qt/qt.cpp:304
 msgid "Show thumbnail while scrubbing"
 msgstr "แสดงภาพตัวอย่างขณะลากแถบเวลา"
 
@@ -4625,7 +4625,7 @@ msgid "Timing"
 msgstr "จังหวะเวลา"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:273
-#: modules/gui/qt/qt.cpp:305
+#: modules/gui/qt/qt.cpp:306
 msgid "Show subtitle lines on the seek bar"
 msgstr "แสดงบรรทัดบทบรรยายบนแถบเลื่อนตำแหน่ง"
 
@@ -5198,6 +5198,14 @@ msgstr ""
 msgid "Reset all"
 msgstr "คืนค่าทั้งหมด"
 
+#: modules/gui/qt/dialogs/systray/systray.cpp:200
+msgid "&Hide %1 in taskbar"
+msgstr "ซ่อนโปรแกรม %1 จากแถบ&งาน"
+
+#: modules/gui/qt/dialogs/systray/systray.cpp:206
+msgid "Sho&w %1"
+msgstr "&แสดงโปรแกรม %1"
+
 #: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:205
 #: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:438
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:425
@@ -5646,11 +5654,11 @@ msgstr "เตือนฉัน"
 msgid "Back to Live"
 msgstr "กลับไปดูสด"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:618 modules/gui/qt/qt.cpp:344
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:618 modules/gui/qt/qt.cpp:345
 msgid "Next channel"
 msgstr "ช่องถัดไป"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:623 modules/gui/qt/qt.cpp:345
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:623 modules/gui/qt/qt.cpp:346
 msgid "Previous channel"
 msgstr "ช่องก่อนหน้า"
 
@@ -6018,11 +6026,6 @@ msgstr "แถบด้านบนเฉพาะที่"
 #: modules/gui/qt/maininterface/qml/LocalTopbar.qml:188
 msgid "Show navigation menu"
 msgstr "แสดงเมนูนำทาง"
-
-#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:251
-#: modules/gui/qt/player/qml/TopBar.qml:505
-msgid "VLC Media Player"
-msgstr "โปรแกรมเล่นสื่อ VLC"
 
 #: modules/gui/qt/maininterface/qml/MainDisplay.qml:34
 msgid "Main display"
@@ -8521,16 +8524,16 @@ msgstr "คิวเล่น"
 msgid "%1 elements, %2"
 msgstr "%1 รายการ, %2"
 
-#: modules/gui/qt/qt.cpp:175
+#: modules/gui/qt/qt.cpp:176
 msgid "Select the initial preferences view"
 msgstr "เลือกมุมมองค่าปรับแต่งเริ่มต้น"
 
-#: modules/gui/qt/qt.cpp:176
+#: modules/gui/qt/qt.cpp:177
 msgid ""
 "Select which preferences view to show upon opening the preferences dialog."
 msgstr "เลือกมุมมองค่าปรับแต่งที่จะแสดงเมื่อเปิดกล่องโต้ตอบค่าปรับแต่ง"
 
-#: modules/gui/qt/qt.cpp:200
+#: modules/gui/qt/qt.cpp:201
 msgid ""
 "Show a notification popup with the artist and track name when the current "
 "play queue item changes, when VLC is minimized or hidden."
@@ -8538,7 +8541,7 @@ msgstr ""
 "แสดงป๊อปอัปแจ้งเตือนพร้อมชื่อศิลปินและชื่อเพลง เมื่อรายการปัจจุบันในคิวเล่นเปลี่ยน ขณะที่ VLC "
 "ถูกย่อหรือซ่อนอยู่"
 
-#: modules/gui/qt/qt.cpp:204
+#: modules/gui/qt/qt.cpp:205
 msgid ""
 "Sets the windows opacity between 0.1 and 1 for main interface, play queue "
 "and extended panel. This option only works with Windows and X11 with "
@@ -8547,7 +8550,7 @@ msgstr ""
 "ตั้งความทึบของหน้าต่างระหว่าง 0.1 ถึง 1 สำหรับส่วนติดต่อหลัก คิวเล่น และแผงขยาย "
 "ตัวเลือกนี้ใช้ได้เฉพาะกับ Windows และ X11 ที่มีส่วนขยาย composite"
 
-#: modules/gui/qt/qt.cpp:210
+#: modules/gui/qt/qt.cpp:211
 msgid ""
 "Sets the fullscreen controller opacity between 0.1 and 1 for main interface, "
 "play queue and extended panel. This option only works with Windows and X11 "
@@ -8556,11 +8559,11 @@ msgstr ""
 "ตั้งความทึบของตัวควบคุมเต็มจอระหว่าง 0.1 ถึง 1 สำหรับส่วนติดต่อหลัก คิวเล่น และแผงขยาย "
 "ตัวเลือกนี้ใช้ได้เฉพาะกับ Windows และ X11 ที่มีส่วนขยาย composite"
 
-#: modules/gui/qt/qt.cpp:215
+#: modules/gui/qt/qt.cpp:216
 msgid "Initial user scale factor for the interface, between 0.3 and 3.0"
 msgstr "ตัวคูณขนาดส่วนติดต่อเริ่มต้นของผู้ใช้ ระหว่าง 0.3 ถึง 3.0"
 
-#: modules/gui/qt/qt.cpp:218
+#: modules/gui/qt/qt.cpp:219
 msgid ""
 "Show the errors of VLC at the bottom of the window, and ask before removing "
 "media from a playlist or from the play queue, or deleting playlists. Off, "
@@ -8571,11 +8574,11 @@ msgstr ""
 "หรือลบผังเล่น เมื่อปิดไว้ ข้อผิดพลาดจะเก็บไว้ในข้อความของ VLC เท่านั้น "
 "และการเอาออกเหล่านี้จะทำทันที ส่วนการลบแฟ้มออกจากดิสก์จะถามยืนยันเสมอ"
 
-#: modules/gui/qt/qt.cpp:228
+#: modules/gui/qt/qt.cpp:229
 msgid "set the options for qml debugger"
 msgstr "ตั้งตัวเลือกสำหรับตัวดีบั๊ก qml"
 
-#: modules/gui/qt/qt.cpp:229
+#: modules/gui/qt/qt.cpp:230
 msgid ""
 "set the options for qml debugger (see http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
@@ -8583,7 +8586,7 @@ msgstr ""
 "ตั้งตัวเลือกสำหรับตัวดีบั๊ก qml (ดู http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
 
-#: modules/gui/qt/qt.cpp:249
+#: modules/gui/qt/qt.cpp:250
 msgid ""
 "Show the playback controls in fullscreen when the mouse moves. Off, only the "
 "keyboard shows them (the I key). The skins read it for their fullscreen "
@@ -8592,7 +8595,7 @@ msgstr ""
 "แสดงตัวควบคุมการเล่นเมื่อเต็มจอเมื่อขยับเมาส์ เมื่อปิดไว้ จะแสดงได้ด้วยแป้นพิมพ์เท่านั้น (ปุ่ม I) "
 "หน้ากากจะอ่านค่านี้สำหรับตัวควบคุมเต็มจอของตัวเองด้วย"
 
-#: modules/gui/qt/qt.cpp:265
+#: modules/gui/qt/qt.cpp:266
 msgid ""
 "Display the cover art of the audio playing in the player (the cone in the "
 "compact view). Off, a plain picture takes its place, which also prevents "
@@ -8601,18 +8604,18 @@ msgstr ""
 "แสดงภาพปกของเสียงที่กำลังเล่นในตัวเล่น (กรวยในมุมมองกะทัดรัด) เมื่อปิดไว้ "
 "จะแสดงภาพธรรมดาแทน ซึ่งช่วยป้องกันหน้าจอไหม้ด้วย"
 
-#: modules/gui/qt/qt.cpp:289
+#: modules/gui/qt/qt.cpp:290
 msgid ""
 "This option allows the interface to be shown and raised automatically when a "
 "video/audio playback starts, or never."
 msgstr ""
 "ตัวเลือกนี้ให้ส่วนติดต่อแสดงและยกขึ้นมาด้านหน้าโดยอัตโนมัติเมื่อเริ่มเล่นวีดิทัศน์/เสียง หรือไม่ทำเลย"
 
-#: modules/gui/qt/qt.cpp:292
+#: modules/gui/qt/qt.cpp:293
 msgid "Enable window titlebar"
 msgstr "เปิดใช้แถบชื่อเรื่องของหน้าต่าง"
 
-#: modules/gui/qt/qt.cpp:293
+#: modules/gui/qt/qt.cpp:294
 msgid ""
 "This option enables the title bar. Disabling it will remove the titlebar and "
 "move window buttons within the interface (Client Side Decoration)"
@@ -8620,27 +8623,27 @@ msgstr ""
 "ตัวเลือกนี้เปิดใช้แถบชื่อเรื่อง การปิดใช้จะเอาแถบชื่อเรื่องออกและย้ายปุ่มหน้าต่างเข้าไปในส่วนติดต่อ "
 "(Client Side Decoration)"
 
-#: modules/gui/qt/qt.cpp:297
+#: modules/gui/qt/qt.cpp:298
 msgid "Show the menu bar"
 msgstr "แสดงแถบเมนู"
 
-#: modules/gui/qt/qt.cpp:298
+#: modules/gui/qt/qt.cpp:299
 msgid "This option displays the classic menu bar"
 msgstr "ตัวเลือกนี้แสดงแถบเมนูแบบคลาสสิก"
 
-#: modules/gui/qt/qt.cpp:300
+#: modules/gui/qt/qt.cpp:301
 msgid "Pin video controls"
 msgstr "ปักหมุดตัวควบคุมวีดิทัศน์"
 
-#: modules/gui/qt/qt.cpp:301
+#: modules/gui/qt/qt.cpp:302
 msgid "Place video controls above and below the video instead of above"
 msgstr "วางตัวควบคุมวีดิทัศน์ไว้ด้านบนและด้านล่างของวีดิทัศน์ แทนที่จะวางทับด้านบน"
 
-#: modules/gui/qt/qt.cpp:304
+#: modules/gui/qt/qt.cpp:305
 msgid "Show the frame at the hovered position above the seek bar"
 msgstr "แสดงเฟรมที่ตำแหน่งที่ชี้เมาส์เหนือแถบเลื่อนตำแหน่ง"
 
-#: modules/gui/qt/qt.cpp:306
+#: modules/gui/qt/qt.cpp:307
 msgid ""
 "Mark on the seek bar where the lines of the subtitle shown are, when it "
 "comes from a subtitle file"
@@ -8648,11 +8651,11 @@ msgstr ""
 "ทำเครื่องหมายบนแถบเลื่อนตำแหน่งตรงที่บรรทัดของบทบรรยายที่แสดงอยู่ "
 "เมื่อบทบรรยายมาจากแฟ้มบทบรรยาย"
 
-#: modules/gui/qt/qt.cpp:311
+#: modules/gui/qt/qt.cpp:312
 msgid "Select Qt video integration backend"
 msgstr "เลือกแบ็กเอนด์การรวมวีดิทัศน์ของ Qt"
 
-#: modules/gui/qt/qt.cpp:312
+#: modules/gui/qt/qt.cpp:313
 msgid ""
 "Select Qt video integration backend. Use with care, the interface may not "
 "start if an incompatible compositor is selected"
@@ -8660,11 +8663,11 @@ msgstr ""
 "เลือกแบ็กเอนด์การรวมวีดิทัศน์ของ Qt ใช้อย่างระมัดระวัง "
 "ส่วนติดต่ออาจไม่เริ่มทำงานหากเลือกตัวประกอบภาพที่เข้ากันไม่ได้"
 
-#: modules/gui/qt/qt.cpp:314
+#: modules/gui/qt/qt.cpp:315
 msgid "Use smooth scrolling in Flickable based views"
 msgstr "ใช้การเลื่อนแบบนุ่มนวลในมุมมองที่ใช้ Flickable"
 
-#: modules/gui/qt/qt.cpp:315
+#: modules/gui/qt/qt.cpp:316
 msgid ""
 "Deactivating this option will disable smooth scrolling in Flickable based "
 "views (such as the Play Queue). This option is only respected with a scroll "
@@ -8673,19 +8676,19 @@ msgstr ""
 "การปิดใช้ตัวเลือกนี้จะปิดการเลื่อนแบบนุ่มนวลในมุมมองที่ใช้ Flickable (เช่น คิวเล่น) "
 "ตัวเลือกนี้มีผลเฉพาะเมื่อใช้ตัวจัดการการเลื่อน ดูตัวเลือก `qt-use-scroll-handler`"
 
-#: modules/gui/qt/qt.cpp:318
+#: modules/gui/qt/qt.cpp:319
 msgid "Use Kirigami scroll handler for Flickable based views"
 msgstr "ใช้ตัวจัดการการเลื่อนของ Kirigami สำหรับมุมมองที่ใช้ Flickable"
 
-#: modules/gui/qt/qt.cpp:319
+#: modules/gui/qt/qt.cpp:320
 msgid "Using Kirigami scroll handler may improve scrolling behavior."
 msgstr "การใช้ตัวจัดการการเลื่อนของ Kirigami อาจช่วยให้การเลื่อนดีขึ้น"
 
-#: modules/gui/qt/qt.cpp:321
+#: modules/gui/qt/qt.cpp:322
 msgid "Safe area for the user interface"
 msgstr "พื้นที่ปลอดภัยสำหรับส่วนติดต่อผู้ใช้"
 
-#: modules/gui/qt/qt.cpp:322
+#: modules/gui/qt/qt.cpp:323
 msgid ""
 "Sets the safe area percentage between 0.0 and 100 when you want to ensure "
 "the visibility of the user interface on a constrained viewport"
@@ -8693,29 +8696,29 @@ msgstr ""
 "ตั้งร้อยละของพื้นที่ปลอดภัยระหว่าง 0.0 ถึง 100 "
 "เมื่อคุณต้องการให้แน่ใจว่าส่วนติดต่อผู้ใช้มองเห็นได้บนพื้นที่แสดงผลที่จำกัด"
 
-#: modules/gui/qt/qt.cpp:326
+#: modules/gui/qt/qt.cpp:327
 msgid "Print Qt's important internal messages"
 msgstr "พิมพ์ข้อความภายในที่สำคัญของ Qt"
 
-#: modules/gui/qt/qt.cpp:327
+#: modules/gui/qt/qt.cpp:328
 msgid "Enable Qt's all own messaging categories except the debug category."
 msgstr "เปิดใช้หมวดหมู่ข้อความของ Qt เองทั้งหมด ยกเว้นหมวดดีบั๊ก"
 
-#: modules/gui/qt/qt.cpp:329
+#: modules/gui/qt/qt.cpp:330
 msgid "Hide the window on close"
 msgstr "ซ่อนหน้าต่างเมื่อปิด"
 
-#: modules/gui/qt/qt.cpp:330
+#: modules/gui/qt/qt.cpp:331
 msgid ""
 "Instead of closing the application, hide the window. This setting is only "
 "applicable when system tray icon is enabled."
 msgstr "ซ่อนหน้าต่างแทนการปิดโปรแกรม ค่าตั้งนี้ใช้ได้เฉพาะเมื่อเปิดใช้ไอคอนถาดระบบ"
 
-#: modules/gui/qt/qt.cpp:332
+#: modules/gui/qt/qt.cpp:333
 msgid "Enable backdrop blur filter for the main window if possible"
 msgstr "เปิดใช้ตัวกรองเบลอฉากหลังสำหรับหน้าต่างหลักหากเป็นไปได้"
 
-#: modules/gui/qt/qt.cpp:333
+#: modules/gui/qt/qt.cpp:334
 msgid ""
 "If backdrop blur filter is available, use translucency in the backgrounds of "
 "certain parts of the user interface instead of a solid color. This setting "
@@ -8724,53 +8727,53 @@ msgstr ""
 "หากมีตัวกรองเบลอฉากหลัง จะใช้ความโปร่งแสงในพื้นหลังของบางส่วนของส่วนติดต่อผู้ใช้แทนสีทึบ "
 "ค่าตั้งนี้ทำให้อ่านข้อความได้ยากขึ้น"
 
-#: modules/gui/qt/qt.cpp:336
+#: modules/gui/qt/qt.cpp:337
 msgid "Enable picture-in-picture (PiP) mode"
 msgstr "เปิดใช้โหมดภาพซ้อนภาพ (PiP)"
 
-#: modules/gui/qt/qt.cpp:337
+#: modules/gui/qt/qt.cpp:338
 msgid ""
 "Picture-in-picture mode allows playing video contained in a smaller area so "
 "that the interface remains usable."
 msgstr "โหมดภาพซ้อนภาพช่วยให้เล่นวีดิทัศน์ในพื้นที่ที่เล็กลง เพื่อให้ยังใช้ส่วนติดต่อได้"
 
-#: modules/gui/qt/qt.cpp:340
+#: modules/gui/qt/qt.cpp:341
 msgid ""
 "Adjusts the accent color, special values are 'default' and 'system' "
 "(requires Qt 6.6) ."
 msgstr "ปรับสีเน้น ค่าพิเศษคือ 'default' และ 'system' (ต้องใช้ Qt 6.6)"
 
-#: modules/gui/qt/qt.cpp:346
+#: modules/gui/qt/qt.cpp:347
 msgid "Last channel watched"
 msgstr "ช่องที่ดูล่าสุด"
 
-#: modules/gui/qt/qt.cpp:347
+#: modules/gui/qt/qt.cpp:348
 msgid "Channel list"
 msgstr "รายชื่อช่อง"
 
-#: modules/gui/qt/qt.cpp:352
+#: modules/gui/qt/qt.cpp:353
 msgid "Zoom the interface in"
 msgstr "ขยายส่วนติดต่อ"
 
-#: modules/gui/qt/qt.cpp:353
+#: modules/gui/qt/qt.cpp:354
 msgid "Zoom the interface out"
 msgstr "ย่อส่วนติดต่อ"
 
-#: modules/gui/qt/qt.cpp:454
+#: modules/gui/qt/qt.cpp:455
 msgid "Check for VLC Redesign updates"
 msgstr "ตรวจหาการปรับปรุง VLC Redesign"
 
-#: modules/gui/qt/qt.cpp:455
+#: modules/gui/qt/qt.cpp:456
 msgid ""
 "Look for a new release of VLC Redesign on GitHub at startup, at most once a "
 "day."
 msgstr "ค้นหารุ่นใหม่ของ VLC Redesign บน GitHub เมื่อเริ่มทำงาน อย่างมากวันละครั้ง"
 
-#: modules/gui/qt/qt.cpp:459
+#: modules/gui/qt/qt.cpp:460
 msgid "Resume at"
 msgstr "เล่นต่อที่"
 
-#: modules/gui/qt/qt.cpp:460
+#: modules/gui/qt/qt.cpp:461
 msgid ""
 "Seconds into the media of the command line where playback continues, after "
 "an update."
@@ -8822,78 +8825,78 @@ msgstr "คืนค่า"
 msgid "Don't restore"
 msgstr "ไม่คืนค่า"
 
-#: modules/gui/qt/util/redesign_updater.cpp:216
+#: modules/gui/qt/util/redesign_updater.cpp:221
 msgid ""
 "The update isn't signed by the publisher of this copy (%1), so it wasn't "
 "used."
 msgstr "การปรับปรุงนี้ไม่ได้ลงนามโดยผู้เผยแพร่ของสำเนานี้ (%1) จึงไม่ได้นำมาใช้"
 
-#: modules/gui/qt/util/redesign_updater.cpp:461
+#: modules/gui/qt/util/redesign_updater.cpp:467
 msgid "%1 (later)"
 msgstr "%1 (ภายหลัง)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:463
+#: modules/gui/qt/util/redesign_updater.cpp:469
 msgid "%1 (soon)"
 msgstr "%1 (เร็ว ๆ นี้)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:643
+#: modules/gui/qt/util/redesign_updater.cpp:649
 msgid "This build cannot check for updates."
 msgstr "รุ่นนี้ไม่สามารถตรวจหาการปรับปรุงได้"
 
-#: modules/gui/qt/util/redesign_updater.cpp:657
+#: modules/gui/qt/util/redesign_updater.cpp:663
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "ไม่สามารถติดต่อ GitHub ได้ ตรวจสอบการเชื่อมต่อแล้วลองอีกครั้ง"
 
-#: modules/gui/qt/util/redesign_updater.cpp:674
+#: modules/gui/qt/util/redesign_updater.cpp:680
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "GitHub ส่งคำตอบที่ไม่คาดคิดกลับมา (%1)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:792
+#: modules/gui/qt/util/redesign_updater.cpp:798
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
 msgstr ""
 "การปรับปรุงนี้ไม่ได้ลงนามโดย VLC Redesign จึงไม่ได้ถูกใช้ ให้ดาวน์โหลดจากหน้ารุ่นเผยแพร่แทน"
 
-#: modules/gui/qt/util/redesign_updater.cpp:814
-#: modules/gui/qt/util/redesign_updater.cpp:855
+#: modules/gui/qt/util/redesign_updater.cpp:820
+#: modules/gui/qt/util/redesign_updater.cpp:861
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr "ไม่มีค่า checksum ของการปรับปรุง ให้ดาวน์โหลดจากหน้ารุ่นเผยแพร่แทน"
 
-#: modules/gui/qt/util/redesign_updater.cpp:829
-#: modules/gui/qt/util/redesign_updater.cpp:901
+#: modules/gui/qt/util/redesign_updater.cpp:835
+#: modules/gui/qt/util/redesign_updater.cpp:907
 msgid "The download failed. Check your connection and try again."
 msgstr "ดาวน์โหลดล้มเหลว ตรวจสอบการเชื่อมต่อแล้วลองอีกครั้ง"
 
-#: modules/gui/qt/util/redesign_updater.cpp:914
+#: modules/gui/qt/util/redesign_updater.cpp:920
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "การปรับปรุงไม่ตรงกับค่า checksum จึงไม่ได้นำมาใช้"
 
-#: modules/gui/qt/util/redesign_updater.cpp:945
+#: modules/gui/qt/util/redesign_updater.cpp:951
 msgid "The update isn't in a format this version knows."
 msgstr "การปรับปรุงอยู่ในรูปแบบที่รุ่นนี้ไม่รู้จัก"
 
-#: modules/gui/qt/util/redesign_updater.cpp:948
-#: modules/gui/qt/util/redesign_updater.cpp:972
-#: modules/gui/qt/util/redesign_updater.cpp:983
+#: modules/gui/qt/util/redesign_updater.cpp:954
+#: modules/gui/qt/util/redesign_updater.cpp:978
 #: modules/gui/qt/util/redesign_updater.cpp:989
+#: modules/gui/qt/util/redesign_updater.cpp:995
 msgid "The update is damaged."
 msgstr "การปรับปรุงเสียหาย"
 
-#: modules/gui/qt/util/redesign_updater.cpp:953
+#: modules/gui/qt/util/redesign_updater.cpp:959
 msgid "The update isn't for this version."
 msgstr "การปรับปรุงนี้ไม่ได้มีไว้สำหรับรุ่นนี้"
 
-#: modules/gui/qt/util/redesign_updater.cpp:962
-#: modules/gui/qt/util/redesign_updater.cpp:999
-#: modules/gui/qt/util/redesign_updater.cpp:1008
-#: modules/gui/qt/util/redesign_updater.cpp:1012
-#: modules/gui/qt/util/redesign_updater.cpp:1016
+#: modules/gui/qt/util/redesign_updater.cpp:968
+#: modules/gui/qt/util/redesign_updater.cpp:1005
+#: modules/gui/qt/util/redesign_updater.cpp:1014
+#: modules/gui/qt/util/redesign_updater.cpp:1018
+#: modules/gui/qt/util/redesign_updater.cpp:1022
 msgid "The update can't be written in %1."
 msgstr "ไม่สามารถเขียนการปรับปรุงลงใน %1 ได้"
 
-#: modules/gui/qt/util/redesign_updater.cpp:964
+#: modules/gui/qt/util/redesign_updater.cpp:970
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -8901,58 +8904,58 @@ msgstr ""
 "แฟ้มของ VLC Redesign ถูกเปลี่ยนแปลงหลังจากติดตั้ง จึงใช้การปรับปรุงขนาดเล็กไม่ได้: "
 "ให้ปรับปรุงด้วยตัวติดตั้งแทน"
 
-#: modules/gui/qt/util/redesign_updater.cpp:994
+#: modules/gui/qt/util/redesign_updater.cpp:1000
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr "การปรับปรุงเสียหาย: มีแฟ้มที่ไม่ตรงกับค่า checksum"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1119
+#: modules/gui/qt/util/redesign_updater.cpp:1125
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr "ไม่สามารถเริ่มการปรับปรุงได้ จะลองอีกครั้งในครั้งถัดไป"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1146
+#: modules/gui/qt/util/redesign_updater.cpp:1152
 msgid "The download failed. Try again, or download it from the release page."
 msgstr "ดาวน์โหลดล้มเหลว ลองอีกครั้ง หรือดาวน์โหลดจากหน้ารุ่นเผยแพร่"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1159
+#: modules/gui/qt/util/redesign_updater.cpp:1165
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr "ตัวติดตั้งที่ดาวน์โหลดมาไม่ตรงกับค่า checksum จึงไม่ได้เรียกใช้"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1168
+#: modules/gui/qt/util/redesign_updater.cpp:1174
 msgid "The installer couldn't be saved to %1."
 msgstr "ไม่สามารถบันทึกตัวติดตั้งลงใน %1 ได้"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1202
+#: modules/gui/qt/util/redesign_updater.cpp:1208
 msgid "The installer couldn't be started."
 msgstr "ไม่สามารถเริ่มตัวติดตั้งได้"
 
-#: modules/gui/qt/util/renderer_manager.cpp:891
+#: modules/gui/qt/util/renderer_manager.cpp:896
 msgid ""
 "%1 doesn't answer. Check that it's on, and on the same network as this "
 "computer."
 msgstr "%1 ไม่ตอบสนอง ตรวจสอบว่าเปิดอยู่และอยู่ในเครือข่ายเดียวกับคอมพิวเตอร์เครื่องนี้"
 
-#: modules/gui/qt/util/renderer_manager.cpp:894
+#: modules/gui/qt/util/renderer_manager.cpp:899
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the video."
 msgstr "ไฟร์วอลล์ Windows ไม่อนุญาตให้ %1 เชื่อมต่อกับคอมพิวเตอร์เครื่องนี้เพื่ออ่านวีดิทัศน์"
 
-#: modules/gui/qt/util/renderer_manager.cpp:895
+#: modules/gui/qt/util/renderer_manager.cpp:900
 msgid "%1 couldn't read the video from this computer."
 msgstr "%1 ไม่สามารถอ่านวีดิทัศน์จากคอมพิวเตอร์เครื่องนี้ได้"
 
-#: modules/gui/qt/util/renderer_manager.cpp:897
+#: modules/gui/qt/util/renderer_manager.cpp:902
 msgid "%1 refused to play this video."
 msgstr "%1 ปฏิเสธการเล่นวีดิทัศน์นี้"
 
-#: modules/gui/qt/util/renderer_manager.cpp:899
+#: modules/gui/qt/util/renderer_manager.cpp:904
 msgid "%1 stopped playing."
 msgstr "%1 หยุดเล่นแล้ว"
 
-#: modules/gui/qt/util/renderer_manager.cpp:901
+#: modules/gui/qt/util/renderer_manager.cpp:906
 msgid "%1 is playing something else now."
 msgstr "%1 กำลังเล่นอย่างอื่นอยู่"
 
-#: modules/gui/qt/util/renderer_manager.cpp:902
+#: modules/gui/qt/util/renderer_manager.cpp:907
 msgid "%1 couldn't play the video."
 msgstr "%1 ไม่สามารถเล่นวีดิทัศน์ได้"
 

@@ -12,6 +12,9 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-10-31):
 
+- 🟡 **Release 0.5.0** (2026-10-31, the owner's "upload"): Windows x64 and ARM64, Linux, macOS and the first Android
+  APK (signed with the release key, tested on a real phone without the storage permission: start, About, playback,
+  pause, seek, end; a link from another app no longer asks for *All files access*). VideoLAN merged to c7834066e2.
 - 🟢 **Repository review checked and fixed** (2026-10-31, PR #29): firewall netsh/cmd by full path, no wait for the
   UAC question at quit, updater checks, CI pinned/hashed/least-privilege, signing for both architectures, Tests
   workflow (ASan/UBSan parsers, update signature), Linux RUNPATH instead of LD_LIBRARY_PATH (dbus-launch works),

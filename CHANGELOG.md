@@ -5,9 +5,9 @@ Changes of **VLC Redesign**, an unofficial VLC 4 build with the interface design
 For changes to VLC itself, see [NEWS](NEWS).
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
-what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `5ccc5fa83f` (2026-10-30).
+what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `c7834066e2` (2026-10-31).
 
-**Contents:** [Unreleased](#unreleased) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [Unreleased](#unreleased) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
 
@@ -15,8 +15,16 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+## [0.5.0] · 2026-10-31
+
 ### Added
 
+- **The Android app, VLC Media Player Redesign for Android** (its first release, an APK on this release's page; not
+  on Google Play): VLC for Android with the design's Home, library, player bar, Customize Player, casting, effects,
+  recording, Live TV and the tablet layout, and the designer's ideas (the subtitle sync timeline, subtitle settings
+  per series, the waveform seek bar, frame previews, pins in *Edit Sidebar*). Its package
+  `org.kuchisofts.vlcredesign` installs beside VLC; its source is
+  [vlc-redesign-android](https://github.com/KuchiSofts/vlc-redesign-android).
 - **Pin a folder or a playlist to the sidebar** (proposed by Juxtopposed): *Pin to Sidebar* in the menu of a
   folder (and of the folder page) and of a playlist. A pinned one is a row of its own, opened in one click, moved
   or hidden in *Edit Sidebar* like the other pages; *Unpin from Sidebar* in its right-click menu.
@@ -85,13 +93,15 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   check is tried against the latest release and a changed copy of it. A failed test of the Windows launch tests
   shows its reason on the run's page.
 - The weekly VLC merge builds every platform (it built Windows only).
-- Merged VLC master up to `5ccc5fa83f` (2026-10-30), 2 commits: the native macOS interface shows a no-results view
+- Merged VLC master up to `c7834066e2` (2026-10-31): AV1 closed captions (above); before it, up to `5ccc5fa83f`, 2 commits: the native macOS interface shows a no-results view
   for an empty group search (not used by VLC Redesign, whose macOS app draws the Qt interface), and DVD-Video
   folders and images opened with dvdread show and seek the time from the disc's timeline and time map.
 - The Linux workflow builds the Flatpak (`vlc-redesign-X.Y.Z-ARCH.flatpak`, x86_64 and ARM64) from the same tarball
   as the other packages, and its test installs it with its runtime from Flathub, prints the version and plays a clip.
 - The roadmap has the progress of each program and the Android app's next steps, and the wiki has a *Roadmap*
   page with the same; the upload check keeps the two word for word alike.
+- Android: a link to a network stream opened from another app plays without the storage permission (it opened
+  Android's *All files access* settings first).
 - A new README: download buttons for every file of the release, the tour, a grid of ten highlights, the films of
   each platform, the download table, the platforms and the roadmap, then documentation, building and credits.
 

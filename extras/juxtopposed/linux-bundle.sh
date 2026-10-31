@@ -117,10 +117,15 @@ glibc=$(find "$root" -type f \( -name '*.so*' -o -perm -u+x \) -exec objdump -p 
 # plugin) or show its interface (Qt on X11 and Wayland, EGL), with the package
 # of Ubuntu and Debian that has each: the launcher names those missing instead
 # of the loader's "cannot open shared object file"
+# Only those a file of the bundle names itself: what a system library needs in
+# turn is the system's business (Ubuntu's libxcb needs libXdmcp, Fedora's not)
+direct=" $(find "$root" -type f \( -name '*.so*' -o -perm -u+x \) -exec objdump -p {} + 2>/dev/null \
+    | sed -n 's/^\s*NEEDED\s*\(\S*\)/\1/p' | sort -u | tr '\n' ' ')"
 needs() { # FILE...
     for f in "$@"; do env -u LD_LIBRARY_PATH ldd "$f" 2>/dev/null; done \
         | sed -n 's/^\s*\(\S*\) => \(\/\S*\) .*/\1 \2/p' | sort -u | while read -r name path; do
         echo "$name" | grep -Eq "$system" || continue
+        case "$direct" in *" $name "*) ;; *) continue ;; esac
         echo "$name" | grep -Eq '^(ld-linux|libc|libm|libmvec|libpthread|libdl|librt|libresolv|libstdc\+\+|libgcc_s)\.so' && continue
         pkg=$(dpkg -S "*/$(basename "$(readlink -f "$path")")" 2>/dev/null | sed -n '1s/[:,].*//p')
         printf '%s=%s ' "$name" "${pkg:-?}"

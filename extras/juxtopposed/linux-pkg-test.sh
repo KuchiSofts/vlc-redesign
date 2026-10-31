@@ -37,21 +37,27 @@ elif command -v dnf > /dev/null; then pm=dnf
 elif command -v pacman > /dev/null; then pm=pacman
 else fail "no package manager known"; exit 1
 fi
+tarball=
+[ "$kind" = tarball ] && tarball=1
 case $pm in
     apt) export DEBIAN_FRONTEND=noninteractive
          apt-get update -qq
          apt-get install -y -qq --no-install-recommends xvfb xdotool imagemagick dbus dbus-x11 \
              fonts-dejavu-core weston file binutils xz-utils desktop-file-utils locales \
-             ${FLATPAK:+flatpak ca-certificates} > "$out/tools.log" 2>&1
-         # (not ca-certificates: the package must bring it; flatpak itself
-         # needs them for Flathub, and the app has the runtime's)
+             ${FLATPAK:+flatpak ca-certificates} ${tarball:+ca-certificates} > "$out/tools.log" 2>&1
+         # (not ca-certificates for the .deb: the package must bring it;
+         # flatpak itself needs them for Flathub, and the app has the
+         # runtime's; the folder can't bring them, and every desktop has them:
+         # without them an "insecure site" question stayed open over the tour)
          sed -i -E 's/^# *(en_US|he_IL)(\.UTF-8 UTF-8)/\1\2/' /etc/locale.gen
          locale-gen en_US.UTF-8 he_IL.UTF-8 >> "$out/tools.log" 2>&1 ;;
     dnf) dnf install -y -q xorg-x11-server-Xvfb xdotool ImageMagick dbus-daemon dbus-x11 \
              dejavu-sans-fonts weston file binutils xz desktop-file-utils findutils procps-ng \
              glibc-langpack-en glibc-langpack-he ${FLATPAK:+flatpak} > "$out/tools.log" 2>&1 ;;
-    pacman) pacman -Sy --noconfirm --needed xorg-server-xvfb xdotool imagemagick dbus ttf-dejavu \
-             weston file binutils xz desktop-file-utils ${FLATPAK:+flatpak} > "$out/tools.log" 2>&1
+    pacman) # (alsa-lib: the AppImage takes ALSA from the system, as every
+         # desktop with sound has it; the bare image of Arch lacks it)
+         pacman -Sy --noconfirm --needed xorg-server-xvfb xdotool imagemagick dbus ttf-dejavu \
+             weston file binutils xz desktop-file-utils alsa-lib ${FLATPAK:+flatpak} > "$out/tools.log" 2>&1
          sed -i -E 's/^# *(en_US|he_IL)(\.UTF-8 UTF-8)/\1\2/' /etc/locale.gen
          locale-gen en_US.UTF-8 he_IL.UTF-8 >> "$out/tools.log" 2>&1 ;;
 esac
@@ -117,8 +123,11 @@ root=/opt/vlc-redesign
 [ "$kind" = appimage ] && { (cd /tmp && /opt/test.AppImage --appimage-extract > /dev/null); root=/tmp/squashfs-root; }
 [ "$kind" = flatpak ] && root=$(flatpak info --show-location org.kuchisofts.VLCRedesign)/files/vlc-redesign
 if [ -x "$root/bin/vlc" ]; then
-    # libraries not found (with the launcher's paths)
-    export LDP="$root/lib:$root/lib/vlc:$root/qt/lib:$root/syslib"
+    # libraries not found: each finds the bundle's by its RUNPATH, the system's
+    # in the system (the launcher sets no path, but for the loaders of VA-API,
+    # VDPAU and OpenCL the system lacks: their copies in syslib/fallback)
+    LDP=$(find "$root/syslib/fallback" -mindepth 1 -maxdepth 1 -type d 2>/dev/null | tr '\n' ':')
+    LDP=${LDP%:}
     if [ "$kind" = flatpak ]; then
         info "ldd skipped in the Flatpak (its libraries are those of the runtime)"
     else
@@ -218,6 +227,49 @@ while read -r cmd a b; do
               fi ;;
     esac
 done < /tmp/tour.txt
+# No session bus: libdbus starts one with dbus-launch, and every program VLC
+# starts (xdg-open, the browser, the file manager) gets VLC's environment.
+# With the bundle's libraries in LD_LIBRARY_PATH, dbus-launch of a newer
+# system failed: "version LIBDBUS_PRIVATE_1.16.2 not found". VLC's
+# environment must be the user's (but for the loaders of syslib/fallback),
+# and dbus-launch run in it must work.
+if [ "$kind" != flatpak ]; then
+    env -u DBUS_SESSION_BUS_ADDRESS -u DBUS_SESSION_BUS_PID LANG=en_US.UTF-8 \
+        timeout 60 "$vlc" $opts --play-and-exit --stop-time=8 "$HOME/zq7731.mp4" > "$out/vlc-nobus.log" 2>&1 &
+    nb=$!
+    p=
+    for i in $(seq 40); do
+        # (VLC's program, bin/vlc; no pgrep in Debian's image)
+        p=
+        for d in /proc/[0-9]*; do
+            case $(readlink "$d/exe" 2> /dev/null) in */bin/vlc) p=${d#/proc/} ;; esac
+        done
+        [ -n "$p" ] && [ -r "/proc/$p/environ" ] && break
+        sleep 0.5
+    done
+    sleep 3
+    if [ -n "$p" ] && tr '\0' '\n' < "/proc/$p/environ" > "$out/vlc-environ.txt" 2> /dev/null && [ -s "$out/vlc-environ.txt" ]; then
+        leak=$(grep -E '^(LD_LIBRARY_PATH|QT_PLUGIN_PATH|QML2?_IMPORT_PATH|VLC_(PLUGIN|DATA|LIB)_PATH)=' "$out/vlc-environ.txt" \
+            | grep -v -E '^LD_LIBRARY_PATH=([^:]*/syslib/fallback/[^:]*(:|$))+$')
+        [ -z "$leak" ] && echo "PASS VLC's environment is the user's (programs it starts don't get its libraries)" \
+            || echo "FAIL VLC's environment: $(echo $leak | cut -c1-200) (vlc-environ.txt)"
+        xargs -0 -a "/proc/$p/environ" sh -c 'exec env -i "$@" dbus-launch --sh-syntax' sh > "$out/dbus-launch.txt" 2>&1
+        if grep -q -E 'version .* not found|symbol lookup error|cannot open shared object' "$out/dbus-launch.txt"; then
+            echo "FAIL dbus-launch in VLC's environment: $(head -n 1 "$out/dbus-launch.txt")"
+        elif grep -q DBUS_SESSION_BUS_ADDRESS "$out/dbus-launch.txt"; then
+            echo "PASS dbus-launch in VLC's environment started a session bus"
+        else
+            echo "FAIL dbus-launch in VLC's environment (dbus-launch.txt)"
+        fi
+        bp=$(sed -n "s/^DBUS_SESSION_BUS_PID=\([0-9]*\).*/\1/p" "$out/dbus-launch.txt")
+        [ -n "$bp" ] && kill "$bp" 2> /dev/null
+    else
+        echo "FAIL no VLC process to read the environment of (vlc-nobus.log)"
+    fi
+    wait $nb
+    s=$?
+    [ $s -eq 0 ] && echo "PASS played to the end without a session bus" || echo "FAIL without a session bus: status $s (vlc-nobus.log)"
+fi
 kill $xvfb 2>/dev/null
 # Wayland: headless Weston, the clip played to 15 s, then quit
 if command -v weston > /dev/null && [ "$kind" != flatpak ]; then
@@ -254,14 +306,15 @@ fi
 EOF
 chmod 755 /tmp/run.sh
 su tester -s /bin/bash -c "/tmp/run.sh '$vlc' '$out' '$kind'" 2>&1 | tee -a "$summary"
-for log in "$out"/vlc-x11-*.log "$out"/vlc-wayland.log; do
+for log in "$out"/vlc-x11-*.log "$out"/vlc-nobus.log "$out"/vlc-wayland.log; do
     [ -f "$log" ] || continue
     grep -E '\.qml:[0-9]+|QML|qml:' "$log" | grep -v -E 'debug:' > "$log.qml" || true
     if [ -s "$log.qml" ]; then fail "QML warnings in $(basename "$log") ($(wc -l < "$log.qml"))"
     else pass "no QML warning in $(basename "$log")"; fi
     # (not the VDPAU loader looking for a driver the PC hasn't: no NVIDIA
-    # driver, VA-API or software decoding is used)
-    grep -E 'cannot open shared object|no suitable decoder|undefined symbol' "$log" \
+    # driver, VA-API or software decoding is used; a version not found: a
+    # bundled library older than the system's that loads it)
+    grep -E 'cannot open shared object|no suitable decoder|undefined symbol|version .* not found|symbol lookup error' "$log" \
         | grep -v 'Failed to open VDPAU backend' > "$log.lib" || true
     [ -s "$log.lib" ] && fail "library or decoder errors in $(basename "$log")" || pass "no library error in $(basename "$log")"
 done

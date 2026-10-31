@@ -144,6 +144,9 @@ jobs:
     env:
       # VLC with no window and no sound; the clip played to its end
       PLAY: --intf dummy --vout dummy --aout dummy --no-video-title-show --play-and-exit
+      # a library missing, or one of the bundle older than the system's that
+      # loads it
+      LIBERR: 'no suitable decoder module|cannot open shared object|version .* not found|symbol lookup error'
     steps:
       - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
         with:
@@ -176,7 +179,38 @@ jobs:
         run: |
           timeout 120 vlc-redesign $PLAY -vv clip/clip.mp4 2> play-deb.log
           grep -E 'avcodec|decoder' play-deb.log | head -n 20
-          ! grep -E 'no suitable decoder module|cannot open shared object' play-deb.log
+          ! grep -E "$LIBERR" play-deb.log
+
+      # The programs VLC starts (dbus-launch when there is no session bus,
+      # xdg-open, the browser, the file manager) get the user's environment,
+      # not the bundle's libraries: on a newer system dbus-launch failed with
+      # "version LIBDBUS_PRIVATE_... not found". The interface on Xvfb with no
+      # session bus: VLC's environment checked, dbus-launch run in it.
+      - name: .deb interface without a session bus, the environment of its programs
+        run: |
+          sudo apt-get install -y --no-install-recommends xvfb dbus-x11
+          Xvfb :99 -screen 0 1280x800x24 -nolisten tcp &
+          sleep 2
+          env -u DBUS_SESSION_BUS_ADDRESS DISPLAY=:99 QT_QPA_PLATFORM=xcb timeout 60 \
+            vlc-redesign --aout dummy --no-qt-privacy-ask -vv --play-and-exit clip/clip.mp4 2> play-gui.log &
+          vp=$!
+          for i in $(seq 40); do pid=$(pgrep -n -f '^/opt/vlc-redesign/bin/vlc') && break; sleep 0.5; done
+          sleep 2
+          tr '\0' '\n' < /proc/$pid/environ > vlc-environ.log
+          # (in LD_LIBRARY_PATH, only the copies of the GPU loaders the system
+          # lacks)
+          if grep -E '^(LD_LIBRARY_PATH|QT_PLUGIN_PATH|QML2?_IMPORT_PATH|VLC_(PLUGIN|DATA|LIB)_PATH)=' vlc-environ.log \
+               | grep -v -E '^LD_LIBRARY_PATH=([^:]*/syslib/fallback/[^:]*(:|$))+$'; then
+            echo "VLC's environment has the bundle's paths"; exit 1
+          fi
+          xargs -0 -a /proc/$pid/environ sh -c 'exec env -i "$@" dbus-launch --sh-syntax' sh > dbus-launch.log 2>&1
+          cat dbus-launch.log
+          if grep -E "$LIBERR" dbus-launch.log; then exit 1; fi
+          grep -q DBUS_SESSION_BUS_ADDRESS dbus-launch.log
+          kill "$(sed -n 's/^DBUS_SESSION_BUS_PID=\([0-9]*\).*/\1/p' dbus-launch.log)"
+          wait $vp
+          if grep -E "$LIBERR" play-gui.log; then exit 1; fi
+          ! grep -E '\.qml:[0-9]+|QML|qml:' play-gui.log | grep -v 'debug:'
 
       - name: AppImage version and playback
         run: |
@@ -184,7 +218,19 @@ jobs:
           app=$(ls packages/vlc-redesign-*-${{ matrix.arch }}.AppImage)
           "$app" --appimage-extract-and-run --version
           timeout 120 "$app" --appimage-extract-and-run $PLAY -vv clip/clip.mp4 2> play-appimage.log
-          ! grep -E 'no suitable decoder module|cannot open shared object' play-appimage.log
+          if grep -E "$LIBERR" play-appimage.log; then exit 1; fi
+          # every library found by its RUNPATH or in the system (but the GPU
+          # loaders the system lacks: the launcher adds their copies; and Qt's
+          # plugins for what VLC doesn't use)
+          "$app" --appimage-extract > /dev/null
+          fallback=$(find squashfs-root/syslib/fallback -mindepth 1 -maxdepth 1 -type d -printf '%p:')
+          find squashfs-root \( -path squashfs-root/qt/plugins -o -path squashfs-root/qt/qml \) -prune -o -type f \( -name '*.so*' -o -perm -u+x \) -print \
+            | while read -r f; do
+                file -b "$f" | grep -q '^ELF' || continue
+                LD_LIBRARY_PATH=${fallback%:} ldd "$f" 2> /dev/null | grep 'not found' | sed "s|^|$f: |"
+              done | tee ldd-missing.log
+          test ! -s ldd-missing.log
+          rm -rf squashfs-root
 
       - name: Remove the .deb
         run: |
@@ -202,7 +248,7 @@ jobs:
           docker commit fedora-rpm vlc-redesign-fedora-test
           docker run --rm --user 1000:1000 -e HOME=/tmp -v "$PWD/clip:/clip:ro" vlc-redesign-fedora-test \
             sh -c "vlc-redesign --version && timeout 120 vlc-redesign $PLAY -vv /clip/clip.mp4 2> /tmp/play.log; \
-                   s=\$?; ! grep -E 'no suitable decoder module|cannot open shared object' /tmp/play.log && exit \$s"
+                   s=\$?; ! grep -E '$LIBERR' /tmp/play.log && exit \$s"
 
       # the Flatpak as a user would install it: its runtime from Flathub
       - name: Install and run the Flatpak
@@ -212,7 +258,7 @@ jobs:
           flatpak install --user -y --noninteractive packages/vlc-redesign-*-${{ matrix.arch }}.flatpak
           flatpak run --command=vlc org.kuchisofts.VLCRedesign --version
           timeout 120 flatpak run --filesystem="$PWD/clip" --command=vlc org.kuchisofts.VLCRedesign $PLAY -vv "$PWD/clip/clip.mp4" 2> play-flatpak.log
-          ! grep -E 'no suitable decoder module|cannot open shared object' play-flatpak.log
+          ! grep -E "$LIBERR" play-flatpak.log
 
       - name: Logs
         if: always()

@@ -336,6 +336,14 @@ In a terminal, in the folder of the downloads (ARM64: the same with the ARM64 fi
 
 After a .deb or .rpm, start **VLC Redesign** from the menu, or `vlc-redesign` in a terminal.
 
+**Hardware decoding with the AppImage and the folder** uses the system's VA-API (Intel, AMD): install
+`libva2 libva-drm2 libva-x11-2 libva-wayland2` (Ubuntu, Debian), `libva` (Fedora, Arch) and the driver of your
+graphics card. Without them VLC still plays every video, decoded on the CPU (on a Wayland desktop without
+`libva-wayland2`, the VA-API decoder for Wayland is the one left out). The .deb and the .rpm recommend these packages,
+so apt and dnf install them by default. The AppImage and the folder use the libraries every desktop has (graphics,
+X11, D-Bus, ALSA, fonts) from the system; if one is missing (a server, a minimal install), VLC says which to
+install instead of starting.
+
 **Live TV is an add-on you can leave out**, as in the Windows installer. With the .deb and .rpm it is the package
 `vlc-redesign-livetv`: leave its file out of the command above, or remove it later
 (`sudo apt remove vlc-redesign-livetv`, `sudo dnf remove vlc-redesign-livetv`); VLC then has no TV page, button or

@@ -28,6 +28,8 @@ What is being worked on, updated as it changes (2026-10-31):
   9 videos searched (6 linked and loaded on play); launch test 0 failures; 20 new texts in 72 languages.
   🟡 The same ideas on Android (7: sync timeline, series preset, waveform, seek previews, pins, profiles, icons).
 
+- 🟩 **Issue #30** (2026-10-31): the startup volume stopped at 125 % (mmdevice-volume's range and the settings field);
+  both go to 200 % now, fixed through a PR. VideoLAN master merged up to c7834066e2 (AV1 captions).
 - 🟡 **Tests on real Linux PCs** (2026-10-30): the released 0.4.1 AppImage on two Intel servers (Iris Xe; UHD 600),
   as a user: version, H.264/HEVC/VP9/AV1 to the end, VA-API (iHD) for H.264/HEVC, Live TV, the Qt interface under
   Xvfb with no QML warning. Found and fixed: on the UHD 600, H.264 stopped VLC (hw_first reloaded with threads and

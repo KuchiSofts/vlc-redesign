@@ -827,7 +827,7 @@ Dialog {
             LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
             LayoutMirroring.childrenInherit: true
             text: qsTr("Reset all settings?")
-            description: qsTr("Every setting of %1 goes back to its default.").arg("VLC Redesign")
+            description: qsTr("Every setting of %1 goes back to its default.").arg("VLC Media Player Redesign")
         }
     }
 

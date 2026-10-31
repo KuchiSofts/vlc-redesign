@@ -502,7 +502,7 @@ FocusScope{
                                    : (root.showCSD ? csdDecorations.x : root.width)
         visible: root._showCenterText && !root.resumeVisible && !root._titleInBar
         enabled: visible
-        text: root.title || (Player.isStarted && Player.name.length ? Player.name : "VLC Redesign")
+        text: root.title || (Player.isStarted && Player.name.length ? Player.name : "VLC Media Player Redesign")
         Accessible.name: root.title || text
         colorContext.palette: theme.palette
 

@@ -248,7 +248,7 @@ T.ToolBar {
             height: parent.height
             // what plays (or is paused); stopped, the app's name again (the
             // player keeps the last media's title after a stop)
-            text: (Player.isStarted && Player.title) || "VLC Redesign" // (a name: not translated)
+            text: (Player.isStarted && Player.title) || "VLC Media Player Redesign" // (a name: not translated)
             color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.redesign.fontNormal

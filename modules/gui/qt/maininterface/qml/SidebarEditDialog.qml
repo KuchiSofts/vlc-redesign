@@ -260,7 +260,7 @@ Widgets.RedesignDialog {
                 anchors.right: parent.right
                 anchors.rightMargin: root.px(12)
                 anchors.verticalCenter: parent.verticalCenter
-                checked: row.shown
+                on: row.shown
                 enabled: !row.shown || root._shownCount > 1
                 Accessible.name: qsTr("Show %1").arg(row.title)
                 onSwitched: (on) => {

@@ -297,7 +297,7 @@ Item {
                 objectName: "settingToggle_" + root.settingKey
                 anchors.fill: parent
                 // OFF while it does not apply (its row dimmed), as the design
-                checked: root.available && (root.editorKind === "inttoggle" ? Number(root.settingValue) !== 0
+                on: root.available && (root.editorKind === "inttoggle" ? Number(root.settingValue) !== 0
                                                                             : !!root.settingValue)
                 onSwitched: (on) => root.commit(root.editorKind === "inttoggle" ? (on ? (Number(root.onValue) || 1) : 0) : on)
                 Accessible.name: root.accessibleLabel

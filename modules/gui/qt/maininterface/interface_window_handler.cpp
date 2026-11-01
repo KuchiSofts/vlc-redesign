@@ -157,6 +157,20 @@ InterfaceWindowHandler::InterfaceWindowHandler(qt_intf_t *_p_intf, MainCtx* main
     connect( m_window, &QWindow::yChanged, this, trackNormalGeometry );
     connect( m_window, &QWindow::widthChanged, this, trackNormalGeometry );
     connect( m_window, &QWindow::heightChanged, this, trackNormalGeometry );
+    // a window started minimized (a shortcut "Run: Minimized") is restored at the same geometry: no
+    // size or position change says when its borders can be measured (only them: the geometry of a
+    // window between two states is not its normal one)
+    const auto trackBorders = [this]()
+    {
+        QMetaObject::invokeMethod(this, [this]()
+        {
+            if (m_window->isVisible()
+                && !(m_window->windowStates() & (Qt::WindowMaximized | Qt::WindowFullScreen | Qt::WindowMinimized)))
+                m_extraBorders = extraBorders(m_window);
+        }, Qt::QueuedConnection);
+    };
+    connect( m_window, &QWindow::windowStateChanged, this, trackBorders );
+    connect( m_window, &QWindow::visibleChanged, this, trackBorders );
 
     // this needs to be called asynchronously
     // otherwise QQuickWidget won't initialize properly
@@ -280,7 +294,7 @@ InterfaceWindowHandler::~InterfaceWindowHandler()
         // maximized (or full screen, minimized): the geometry it had before,
         // to get back to once restored maximized
         const bool zoomed = m_window->windowStates() & (Qt::WindowMaximized | Qt::WindowFullScreen | Qt::WindowMinimized);
-        if (!zoomed && m_window->isVisible())
+        if (!zoomed && (m_window->isVisible() || m_extraBorders.isNull()))
             m_extraBorders = extraBorders(m_window);
         const QRect geometry = (zoomed && m_normalGeometry.isValid()) ? m_normalGeometry : m_window->geometry();
         QVLCTools::saveWindowPosition(getSettings(), m_window, geometry.marginsAdded(m_extraBorders));

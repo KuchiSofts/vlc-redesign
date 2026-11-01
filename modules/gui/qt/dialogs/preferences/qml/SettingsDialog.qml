@@ -752,7 +752,7 @@ Dialog {
                             objectName: "settingsInstalledOnly"
                             anchors.right: parent.right
                             anchors.verticalCenter: parent.verticalCenter
-                            checked: extensions.installedOnly
+                            on: extensions.installedOnly
                             onSwitched: (on) => extensions.installedOnly = on
                             Accessible.name: qsTr("Show installed add-ons only")
                         }

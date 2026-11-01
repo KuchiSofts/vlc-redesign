@@ -176,7 +176,7 @@ vlc_modules += {
         'interop_vaapi.c',
         '../../hw/vaapi/vlc_vaapi.c',
     ),
-    'dependencies' : [gl_common_dep, libva_dep, egl_dep, drm_includes],
+    'dependencies' : [gl_common_dep, libva_dep, egl_dep, drm_includes, dl_lib],
     'plugin_dir' : 'video_output',
     'enabled' : opengl_dep.found() and egl_dep.found() and libva_dep.found(),
 }

@@ -138,7 +138,7 @@ Home in the light theme. Click for the MP4.</sub>
 
 - **Native:** the redesign builds for ARM64 with VideoLAN's ARM64 toolchain and libraries, unchanged; it is not the
   x64 build under emulation. Video goes through Direct3D 11 (VideoLAN's ARM64 libraries have no OpenGL).
-- **Updates:** since 0.5.0 the app offers small updates made for ARM64 (9.2 MB from 0.4.1), and an ARM64 copy
+- **Updates:** since 0.5.0 the app offers small updates made for ARM64 (4.3 MB from 0.5.0, 9.2 MB from 0.4.1), and an ARM64 copy
   takes only the updates of its own architecture.
 - **Fixed for 0.4.1:** the ARM64 build stopped a few seconds after it started (the table of `longjmp` targets of
   Control Flow Guard, see the [changelog](https://github.com/KuchiSofts/vlc-redesign/blob/main/CHANGELOG.md)), and

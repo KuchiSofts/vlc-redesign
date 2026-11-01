@@ -28,9 +28,9 @@ The files of version 0.5.1 ([release page](https://github.com/KuchiSofts/vlc-red
 | `vlc-redesign-0.5.1-win64.zip` | 107.8 MB | **The portable copy**: unzip anywhere and run `vlc.exe`. |
 | `vlc-redesign-0.5.1-winarm64-setup.exe` | 45.8 MB | **The installer for Windows 11 on ARM64** (see [Windows on ARM64](#windows-on-arm64)). |
 | `vlc-redesign-0.5.1-winarm64.zip` | 82.2 MB | **The portable copy for Windows 11 on ARM64.** |
-| `vlc-redesign-0.5.1-delta-from-0.4.1.vrdelta` | 10.2 MB | A small update from 0.4.1, used by the app itself (see [Small updates](#small-updates)). |
-| `vlc-redesign-0.5.1-delta-from-0.4.0.vrdelta`, `...-from-0.3.1.vrdelta` | 10.2 MB and 26.2 MB | The small updates from 0.4.0 and from 0.3.1. |
-| `vlc-redesign-0.5.1-winarm64-delta-from-0.4.1.vrdelta` | 9.2 MB | The small update of Windows on ARM64 from 0.4.1. |
+| `vlc-redesign-0.5.1-delta-from-0.5.0.vrdelta` | 5.2 MB | A small update from 0.5.0, used by the app itself (see [Small updates](#small-updates)). |
+| `vlc-redesign-0.5.1-delta-from-0.4.1.vrdelta`, `...-from-0.4.0.vrdelta` | 10.2 MB and 10.2 MB | The small updates from 0.4.1 and from 0.4.0. |
+| `vlc-redesign-0.5.1-winarm64-delta-from-0.5.0.vrdelta`, `...-from-0.4.1.vrdelta` | 4.3 MB and 9.2 MB | The small updates of Windows on ARM64 from 0.5.0 and from 0.4.1. |
 | `vlc-redesign-0.5.1-source.tar.gz` | | The source code of this release. |
 | `SHA256SUMS.txt` | | The SHA-256 of every file of the release, to check a download. |
 | `SHA256SUMS.txt.sig` | | The signature of `SHA256SUMS.txt`: from 0.4.0 on, the app installs only an update whose list is signed. |
@@ -257,7 +257,7 @@ updates** in **⋯ → About VLC**. When one is out, a card offers it:
 
 | Card | Buttons |
 |---|---|
-| *VLC Redesign 0.5.1 is available* · *You have 0.5.0.* | **What's new**, **Skip**, **Update now · 4 MB** (or **Download**) |
+| *VLC Redesign 0.5.1 is available* · *You have 0.5.0.* | **What's new**, **Skip**, **Update now · 5.2 MB** (or **Download**) |
 | *Downloading VLC Redesign 0.5.1… 40%* · *Only what changed: keep watching, it's checked in the background.* | **×** (cancels) |
 | *Preparing VLC Redesign 0.5.1…* | |
 | *VLC Redesign 0.5.1 is ready* · *It takes a few seconds: restart now, or it's done when you close VLC Redesign.* | **Restart now**, **Later** |

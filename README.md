@@ -1,59 +1,74 @@
 <div align="center">
 
-<img src="share/icons/scalable/vlc.svg" alt="VLC Redesign logo" width="96">
+<img src="share/icons/scalable/vlc.svg" alt="VLC Media Player Redesign" width="112">
 
-# VLC Redesign
+<h1>VLC Media Player Redesign</h1>
 
-**An unofficial build of VLC 4 with the interface designed by [Juxtopposed](https://www.youtube.com/@juxtopposed).**<br>
-The real VLC engine and codecs under a new interface, built screen by screen from the design.
+<h3>🎨 Interface designed by <a href="https://www.youtube.com/@juxtopposed">Juxtopposed</a></h3>
 
-[![Latest release](https://img.shields.io/github/v/release/KuchiSofts/vlc-redesign?label=release&color=ff8800)](https://github.com/KuchiSofts/vlc-redesign/releases/latest)
-[![Windows build](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/build-windows.yml/badge.svg?branch=main)](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/build-windows.yml)
-[![Linux build](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/build-linux.yml/badge.svg?branch=main)](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/build-linux.yml)
-[![macOS build](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/build-macos.yml/badge.svg?branch=main)](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/build-macos.yml)
-[![Tests](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/tests.yml)
-<br>
-[![Platforms: Windows, Linux, macOS, Android](https://img.shields.io/badge/platforms-Windows%20%C2%B7%20Linux%20%C2%B7%20macOS%20%C2%B7%20Android-0b0a09)](#platforms)
-[![72 languages](https://img.shields.io/badge/languages-72-0b0a09)](https://github.com/KuchiSofts/vlc-redesign/wiki/Languages)
-[![Translation status](https://hosted.weblate.org/widget/vlc-redesign/interface/svg-badge.svg)](https://hosted.weblate.org/engage/vlc-redesign/)
-[![Downloads](https://img.shields.io/github/downloads/KuchiSofts/vlc-redesign/total?color=ff8800)](https://github.com/KuchiSofts/vlc-redesign/releases)
-[![License: GPL-2.0-or-later](https://img.shields.io/badge/license-GPL--2.0--or--later-0b0a09)](COPYING)
+The VLC you know, with a new face: the real VLC 4 engine and codecs under an interface<br>
+built screen by screen from Juxtopposed's design. Unofficial, free and open source.
 
 <br>
 
-[![Windows x64](https://img.shields.io/badge/Windows-x64-0078D4?style=for-the-badge&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0zIDNoOC41djguNUgzek0xMi41IDNIMjF2OC41aC04LjV6TTMgMTIuNWg4LjVWMjFIM3pNMTIuNSAxMi41SDIxVjIxaC04LjV6Ii8+PC9zdmc+)](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.0/vlc-redesign-0.5.0-win64-setup.exe)
-[![Windows on ARM64](https://img.shields.io/badge/Windows-ARM64-0078D4?style=for-the-badge&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0zIDNoOC41djguNUgzek0xMi41IDNIMjF2OC41aC04LjV6TTMgMTIuNWg4LjVWMjFIM3pNMTIuNSAxMi41SDIxVjIxaC04LjV6Ii8+PC9zdmc+)](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.0/vlc-redesign-0.5.0-winarm64-setup.exe)
-[![macOS Apple Silicon](https://img.shields.io/badge/macOS-Apple%20Silicon-333333?style=for-the-badge&logo=apple&logoColor=white)](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.0/vlc-redesign-0.5.0-macos-arm64.dmg)
-[![macOS Intel](https://img.shields.io/badge/macOS-Intel-333333?style=for-the-badge&logo=apple&logoColor=white)](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.0/vlc-redesign-0.5.0-macos-x86_64.dmg)
-<br>
-[![Linux AppImage](https://img.shields.io/badge/Linux-AppImage-E95420?style=for-the-badge&logo=linux&logoColor=white)](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.0/vlc-redesign-0.5.0-x86_64.AppImage)
-[![Linux .deb](https://img.shields.io/badge/Linux-.deb-E95420?style=for-the-badge&logo=linux&logoColor=white)](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.0/vlc-redesign_0.5.0_amd64.deb)
-[![Linux .rpm](https://img.shields.io/badge/Linux-.rpm-E95420?style=for-the-badge&logo=linux&logoColor=white)](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.0/vlc-redesign-0.5.0-1.x86_64.rpm)
-[![Android APK](https://img.shields.io/badge/Android-APK-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.0/vlc-redesign-0.5.0-android.apk)
-[![All downloads](https://img.shields.io/badge/All%20downloads-ff8800?style=for-the-badge&logo=github&logoColor=white)](https://github.com/KuchiSofts/vlc-redesign/releases/latest)
-
-<sub>Latest release: **0.5.0** (2026-10-31) · Next: 0.5.1 · [Changelog](CHANGELOG.md) · [Roadmap](ROADMAP.md) · [Wiki](https://github.com/KuchiSofts/vlc-redesign/wiki) · [Website](https://kuchisofts.github.io/vlc-redesign/)</sub>
+[![Latest release](https://img.shields.io/github/v/release/KuchiSofts/vlc-redesign?style=flat-square&label=release&color=ff8800)](https://github.com/KuchiSofts/vlc-redesign/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/KuchiSofts/vlc-redesign/total?style=flat-square&color=ff8800)](https://github.com/KuchiSofts/vlc-redesign/releases)
+[![Platforms](https://img.shields.io/badge/Windows%20%C2%B7%20Linux%20%C2%B7%20macOS%20%C2%B7%20Android-1f1d1b?style=flat-square)](#platforms)
+[![72 languages](https://img.shields.io/badge/72%20languages-1f1d1b?style=flat-square)](https://github.com/KuchiSofts/vlc-redesign/wiki/Languages)
+[![License](https://img.shields.io/badge/GPL--2.0--or--later-1f1d1b?style=flat-square)](COPYING)
 
 <br>
+
+<table>
+<tr>
+<td align="center" width="25%"><b>Windows</b><br><sub>10 and 11</sub></td>
+<td align="center" width="25%"><b>Linux</b><br><sub>x86_64 and ARM64</sub></td>
+<td align="center" width="25%"><b>macOS</b><br><sub>12 or later</sub></td>
+<td align="center" width="25%"><b>Android</b><br><sub>8.0 or later</sub></td>
+</tr>
+<tr>
+<td align="center" valign="top">
+<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.0/vlc-redesign-0.5.0-win64-setup.exe"><img src="https://img.shields.io/badge/Installer-x64-0078D4?style=for-the-badge" alt="Windows installer, x64"></a><br>
+<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.0/vlc-redesign-0.5.0-winarm64-setup.exe"><img src="https://img.shields.io/badge/Installer-ARM64-0078D4?style=for-the-badge" alt="Windows installer, ARM64"></a><br>
+<sub><a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.0/vlc-redesign-0.5.0-win64.zip">portable zip</a></sub>
+</td>
+<td align="center" valign="top">
+<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.0/vlc-redesign-0.5.0-x86_64.AppImage"><img src="https://img.shields.io/badge/AppImage-x86__64-E95420?style=for-the-badge&logo=linux&logoColor=white" alt="Linux AppImage, x86_64"></a><br>
+<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.0/vlc-redesign_0.5.0_amd64.deb"><img src="https://img.shields.io/badge/.deb-Ubuntu%20%C2%B7%20Debian-E95420?style=for-the-badge" alt="Linux .deb"></a><br>
+<sub><a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.0/vlc-redesign-0.5.0-1.x86_64.rpm">.rpm</a> · <a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.0/vlc-redesign-0.5.0-x86_64.flatpak">Flatpak</a> · <a href="https://github.com/KuchiSofts/vlc-redesign/releases/latest">ARM64</a></sub>
+</td>
+<td align="center" valign="top">
+<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.0/vlc-redesign-0.5.0-macos-arm64.dmg"><img src="https://img.shields.io/badge/Apple%20Silicon-333333?style=for-the-badge&logo=apple&logoColor=white" alt="macOS, Apple Silicon"></a><br>
+<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.0/vlc-redesign-0.5.0-macos-x86_64.dmg"><img src="https://img.shields.io/badge/Intel-333333?style=for-the-badge&logo=apple&logoColor=white" alt="macOS, Intel"></a>
+</td>
+<td align="center" valign="top">
+<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.0/vlc-redesign-0.5.0-android.apk"><img src="https://img.shields.io/badge/APK-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android APK"></a><br>
+<sub>phones and tablets<br>not on Google Play</sub>
+</td>
+</tr>
+</table>
+
+<sub><b>0.5.0</b> · 2026-10-31 &nbsp;·&nbsp; next: 0.5.1 &nbsp;·&nbsp; <a href="https://github.com/KuchiSofts/vlc-redesign/releases/latest">all downloads</a> · <a href="CHANGELOG.md">what's new</a> · <a href="https://github.com/KuchiSofts/vlc-redesign/wiki">wiki</a> · <a href="https://kuchisofts.github.io/vlc-redesign/">website</a></sub>
+
+<br><br>
 
 <a href="docs/media/tour/tour.mp4"><img src="docs/media/tour/tour.webp" alt="A 56-second tour of VLC Redesign: the welcome steps, Home with Continue Watching, frame previews on the seek bar, subtitles that learn your languages, moving and resizing subtitles, music with a waveform seek bar, the panels above the control bar, casting to a TV, themes, customizing the controls, 72 languages, the library" width="960"></a>
 
-<sub><a href="docs/media/tour/tour.mp4">Watch the tour in full quality</a> (MP4, 56 s). Everything shown is the real app, playing freely licensed films and music.</sub>
+<sub>▶ <a href="docs/media/tour/tour.mp4">Watch the tour in full quality</a> (56 s). Everything shown is the real app, playing freely licensed films and music.</sub>
 
-</div>
+<br><br>
 
-> [!IMPORTANT]
-> **This is an unofficial fork.** It is not made by, affiliated with, or endorsed by
-> [VideoLAN](https://www.videolan.org/). *VLC*, *VLC media player* and the cone logo are trademarks of VideoLAN.
-> For the official player, go to [videolan.org](https://www.videolan.org/vlc/).
-> This build is based on the VLC 4.0 development branch, so please report problems
-> [here](https://github.com/KuchiSofts/vlc-redesign/issues), not to VideoLAN.
-> As free software under the GPL, VLC Redesign uses these marks only as
-> [VideoLAN's trademark policy](https://www.videolan.org/legal.html) allows: the app calls itself
-> *VLC Media Player Redesign* and never uses the name VideoLAN as its own.
+<table>
+<tr>
+<td align="center" width="25%">📺<br><b>Live TV</b><br><sub>your IPTV playlist, a guide, catch-up</sub></td>
+<td align="center" width="25%">💬<br><b>Subtitles that learn</b><br><sub>any script, moved and resized live</sub></td>
+<td align="center" width="25%">📡<br><b>Cast to your TV</b><br><sub>Chromecast and DLNA</sub></td>
+<td align="center" width="25%">🔒<br><b>Private by default</b><br><sub>no telemetry, no ads, no account</sub></td>
+</tr>
+</table>
 
-<p align="center">
-<a href="#design">Design</a> ·
+<p>
+<a href="#design-by-juxtopposed">Design</a> ·
 <a href="#features">Features</a> ·
 <a href="#download-and-install">Download</a> ·
 <a href="#platforms">Platforms</a> ·
@@ -61,11 +76,21 @@ The real VLC engine and codecs under a new interface, built screen by screen fro
 <a href="#building-from-source">Building</a> ·
 <a href="#roadmap">Roadmap</a> ·
 <a href="#contributing">Contributing</a> ·
-<a href="#credits">Credits</a> ·
-<a href="#license">License</a>
+<a href="#credits">Credits</a>
 </p>
 
-## Design
+</div>
+
+> [!IMPORTANT]
+> **This is an unofficial fork.** It is not made by, affiliated with, or endorsed by
+> [VideoLAN](https://www.videolan.org/). *VLC*, *VLC media player* and the cone logo are trademarks of VideoLAN;
+> for the official player, go to [videolan.org](https://www.videolan.org/vlc/). This build is based on the VLC 4.0
+> development branch, so please report problems [here](https://github.com/KuchiSofts/vlc-redesign/issues), not to
+> VideoLAN. As free software under the GPL, it uses these marks only as
+> [VideoLAN's trademark policy](https://www.videolan.org/legal.html) allows: the app calls itself
+> *VLC Media Player Redesign* and never uses the name VideoLAN as its own.
+
+## Design by Juxtopposed
 
 <table>
 <tr>
@@ -76,10 +101,12 @@ The real VLC engine and codecs under a new interface, built screen by screen fro
 </td>
 <td>
 
-Every screen of this interface was designed by **Juxtopposed**. This project turns that design into working
+**Interface designed by Juxtopposed.**
+
+Every screen of this interface was designed by Juxtopposed; this project only turns that design into working
 software on top of VLC.
 
-[Watch the video: *I Redesigned VLC After 25 Years*](https://www.youtube.com/watch?v=ERFeOgqk324)
+▶ [Watch the video: *I Redesigned VLC After 25 Years*](https://www.youtube.com/watch?v=ERFeOgqk324)
 
 [YouTube](https://www.youtube.com/@juxtopposed) ·
 [Website](https://juxtopposed.com) ·
@@ -89,16 +116,16 @@ software on top of VLC.
 [Instagram](https://instagram.com/juxtopposed) ·
 [GitHub](https://github.com/juxtopposed)
 
-If you like the way it looks, subscribe to Juxtopposed's channel. That is where it all started.
+If you like how this looks, go subscribe to Juxtopposed's channel. That's where it all comes from.
 
 </td>
 </tr>
 </table>
 
-The design is ["VLC Redesign (Community)"](https://www.figma.com/community/file/1691465999134370980) by Juxtopposed,
-licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). It was adapted to Qt/QML for this build,
-and its icons were redrawn and modified. Juxtopposed does not endorse this project. The same credit appears in the
-app under **⋯ → About VLC**.
+> The design is **["VLC Redesign (Community)"](https://www.figma.com/community/file/1691465999134370980) by Juxtopposed**,
+> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). It was adapted to Qt/QML for this build,
+> and its icons were redrawn and modified. **Juxtopposed does not endorse this project.** The same credit is in the
+> app, under **⋯ → About VLC**.
 
 ## Features
 
@@ -311,6 +338,10 @@ The [wiki](https://github.com/KuchiSofts/vlc-redesign/wiki) covers every screen 
 
 ## Building from source
 
+<details>
+<summary><b>Build it yourself</b> (Docker, VideoLAN's own build image)</summary>
+<br>
+
 The Windows build is a cross-compile in Docker, using VideoLAN's official build image and prebuilt libraries. You
 need [Docker Desktop](https://www.docker.com/products/docker-desktop/) and Git.
 
@@ -325,6 +356,8 @@ The first build takes a while; later builds only rebuild what changed (`-Quick` 
 and instructions for the other platforms, are in
 [Building from Source](https://github.com/KuchiSofts/vlc-redesign/wiki/Building-from-Source).
 The interface code lives in [`modules/gui/qt`](modules/gui/qt).
+
+</details>
 
 ## Roadmap
 
@@ -341,6 +374,11 @@ of each platform and what comes after is tracked in [ROADMAP.md](ROADMAP.md) (mi
 - **Help and questions:** see [SUPPORT.md](SUPPORT.md).
 
 Everyone taking part is expected to follow the [code of conduct](CODE_OF_CONDUCT.md).
+
+[![Windows build](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/build-windows.yml/badge.svg?branch=main)](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/build-windows.yml)
+[![Linux build](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/build-linux.yml/badge.svg?branch=main)](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/build-linux.yml)
+[![macOS build](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/build-macos.yml/badge.svg?branch=main)](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/build-macos.yml)
+[![Tests](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/tests.yml)
 
 <a href="https://hosted.weblate.org/engage/vlc-redesign/"><img src="https://hosted.weblate.org/widget/vlc-redesign/interface/svg-badge.svg" alt="Translation status"></a>
 
@@ -360,7 +398,7 @@ media player and engine made by the VideoLAN team and a community of volunteers.
 
 ## Credits
 
-- **Design:** [Juxtopposed](https://www.youtube.com/@juxtopposed). [Video](https://www.youtube.com/watch?v=ERFeOgqk324) · [Figma file](https://www.figma.com/community/file/1691465999134370980) (CC BY 4.0)
+- **Design:** **[Juxtopposed](https://www.youtube.com/@juxtopposed)**, every screen. [Video](https://www.youtube.com/watch?v=ERFeOgqk324) · [Figma file](https://www.figma.com/community/file/1691465999134370980) (CC BY 4.0)
 - **First implementation:** [MrDouglax](https://github.com/SrDouglax/JuxtopposedVLC), whose Linux fork this project builds on
 - **VLC:** the [VideoLAN](https://www.videolan.org/) team and the VLC contributors ([AUTHORS](AUTHORS))
 - **Translators:** see [CREDITS.md](CREDITS.md); Brazilian Portuguese by [Kinglucas962](https://github.com/Kinglucas962)

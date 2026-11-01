@@ -27,7 +27,7 @@ Every feature of 0.4.0 in short clips, Windows, Linux, macOS and the Android app
 
 | | |
 |---|---|
-| **Current version** | **0.5.0**, released 2026-10-31 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.0), [changelog](https://github.com/KuchiSofts/vlc-redesign/blob/main/CHANGELOG.md)) |
+| **Current version** | **0.5.1**, released 2026-11-01 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.1), [changelog](https://github.com/KuchiSofts/vlc-redesign/blob/main/CHANGELOG.md)) |
 | **Runs on** | Windows 10 (version 1809 or later) and Windows 11, 64-bit; Windows 11 on ARM64; Linux (x86_64, ARM64; glibc 2.38 or later); macOS 12 or later (Apple Silicon, Intel); Android 8.0 or later. Other systems: [Platforms](Platforms) |
 | **Based on** | VLC 4.0 (development branch), with fixes from VideoLAN merged in regularly |
 | **Download** | Windows x64: an installer (59.5 MB, no administrator rights) or a portable zip (107.8 MB); the same two for Windows on ARM64. Linux: a .deb, an .rpm, an AppImage or a folder. macOS: a disk image for Apple Silicon or Intel. Android: an APK. All on [Install and update](Install-and-Update) |

@@ -30,7 +30,7 @@ ColumnLayout {
             id: enabledSwitch
             objectName: "settingsEqualizerEnabled"
             Accessible.name: qsTr("Equalizer")
-            checked: { root.effects.bands; return root.effects.filterEnabled("equalizer") }
+            on: { root.effects.bands; return root.effects.filterEnabled("equalizer") }
             onSwitched: (on) => root.effects.setFilterEnabled("equalizer", on)
         }
     }
@@ -206,7 +206,7 @@ ColumnLayout {
         SettingsToggle {
             id: twoPassSwitch
             Accessible.name: qsTr("Two-pass")
-            checked: root.effects.twoPass
+            on: root.effects.twoPass
             onSwitched: (on) => root.effects.setTwoPass(on)
         }
     }

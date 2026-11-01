@@ -271,7 +271,7 @@ SettingsSectionTitle {
             objectName: "settingsFollowSystemAccent"
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
-            checked: root.followSystemAccent
+            on: root.followSystemAccent
             onSwitched: (on) => root.chooseFollowSystemAccent(on)
             Accessible.name: label
         }

@@ -10,10 +10,10 @@
       "status": "released",
       "statusLabel": "released",
       "available": true,
-      "bar": "Windows 0.5.0",
-      "version": "0.5.0",
-      "date": "2026-10-31",
-      "next": "0.5.1",
+      "bar": "Windows 0.5.1",
+      "version": "0.5.1",
+      "date": "2026-11-01",
+      "next": "0.5.2",
       "os": "windows",
       "requires": "Windows 10 (1809) or 11, 64-bit",
       "notes": "Installer and portable zip; small updates in the app",
@@ -22,13 +22,13 @@
       "downloads": [
         {
           "label": "Installer",
-          "file": "vlc-redesign-0.5.0-win64-setup.exe",
-          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.0/vlc-redesign-0.5.0-win64-setup.exe"
+          "file": "vlc-redesign-0.5.1-win64-setup.exe",
+          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.1/vlc-redesign-0.5.1-win64-setup.exe"
         },
         {
           "label": "Portable",
-          "file": "vlc-redesign-0.5.0-win64.zip",
-          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.0/vlc-redesign-0.5.0-win64.zip"
+          "file": "vlc-redesign-0.5.1-win64.zip",
+          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.1/vlc-redesign-0.5.1-win64.zip"
         }
       ]
     },
@@ -39,10 +39,10 @@
       "status": "released",
       "statusLabel": "released",
       "available": true,
-      "bar": "Linux 0.5.0",
-      "version": "0.5.0",
-      "date": "2026-10-31",
-      "next": "0.5.1",
+      "bar": "Linux 0.5.1",
+      "version": "0.5.1",
+      "date": "2026-11-01",
+      "next": "0.5.2",
       "os": "linux",
       "requires": "glibc 2.38 (Ubuntu 24.04, Debian 13, Fedora 39 or later), x86_64 or ARM64",
       "notes": "AppImage, deb, rpm and tar.xz for x86_64 and ARM64, next to the distribution's own VLC; Flatpak next",
@@ -51,38 +51,38 @@
       "downloads": [
         {
           "label": "AppImage",
-          "file": "vlc-redesign-0.5.0-x86_64.AppImage",
-          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.0/vlc-redesign-0.5.0-x86_64.AppImage"
+          "file": "vlc-redesign-0.5.1-x86_64.AppImage",
+          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.1/vlc-redesign-0.5.1-x86_64.AppImage"
         },
         {
           "label": "deb",
-          "file": "vlc-redesign_0.5.0_amd64.deb",
-          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.0/vlc-redesign_0.5.0_amd64.deb"
+          "file": "vlc-redesign_0.5.1_amd64.deb",
+          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.1/vlc-redesign_0.5.1_amd64.deb"
         },
         {
           "label": "rpm",
-          "file": "vlc-redesign-0.5.0-1.x86_64.rpm",
-          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.0/vlc-redesign-0.5.0-1.x86_64.rpm"
+          "file": "vlc-redesign-0.5.1-1.x86_64.rpm",
+          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.1/vlc-redesign-0.5.1-1.x86_64.rpm"
         },
         {
           "label": "tar.xz",
-          "file": "vlc-redesign-0.5.0-linux-x86_64.tar.xz",
-          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.0/vlc-redesign-0.5.0-linux-x86_64.tar.xz"
+          "file": "vlc-redesign-0.5.1-linux-x86_64.tar.xz",
+          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.1/vlc-redesign-0.5.1-linux-x86_64.tar.xz"
         },
         {
           "label": "AppImage ARM64",
-          "file": "vlc-redesign-0.5.0-aarch64.AppImage",
-          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.0/vlc-redesign-0.5.0-aarch64.AppImage"
+          "file": "vlc-redesign-0.5.1-aarch64.AppImage",
+          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.1/vlc-redesign-0.5.1-aarch64.AppImage"
         },
         {
           "label": "deb ARM64",
-          "file": "vlc-redesign_0.5.0_arm64.deb",
-          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.0/vlc-redesign_0.5.0_arm64.deb"
+          "file": "vlc-redesign_0.5.1_arm64.deb",
+          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.1/vlc-redesign_0.5.1_arm64.deb"
         },
         {
           "label": "rpm ARM64",
-          "file": "vlc-redesign-0.5.0-1.aarch64.rpm",
-          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.0/vlc-redesign-0.5.0-1.aarch64.rpm"
+          "file": "vlc-redesign-0.5.1-1.aarch64.rpm",
+          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.1/vlc-redesign-0.5.1-1.aarch64.rpm"
         }
       ]
     },
@@ -93,10 +93,10 @@
       "status": "released",
       "statusLabel": "released",
       "available": true,
-      "bar": "macOS 0.5.0",
-      "version": "0.5.0",
-      "date": "2026-10-31",
-      "next": "0.5.1",
+      "bar": "macOS 0.5.1",
+      "version": "0.5.1",
+      "date": "2026-11-01",
+      "next": "0.5.2",
       "os": "macos",
       "requires": "macOS 12 Monterey, Apple Silicon or Intel",
       "notes": "A disk image for Apple Silicon and one for Intel, signed ad hoc (macOS asks once to open it)",
@@ -105,13 +105,13 @@
       "downloads": [
         {
           "label": "Apple Silicon",
-          "file": "vlc-redesign-0.5.0-macos-arm64.dmg",
-          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.0/vlc-redesign-0.5.0-macos-arm64.dmg"
+          "file": "vlc-redesign-0.5.1-macos-arm64.dmg",
+          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.1/vlc-redesign-0.5.1-macos-arm64.dmg"
         },
         {
           "label": "Intel",
-          "file": "vlc-redesign-0.5.0-macos-x86_64.dmg",
-          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.0/vlc-redesign-0.5.0-macos-x86_64.dmg"
+          "file": "vlc-redesign-0.5.1-macos-x86_64.dmg",
+          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.1/vlc-redesign-0.5.1-macos-x86_64.dmg"
         }
       ]
     },
@@ -122,10 +122,10 @@
       "status": "released",
       "statusLabel": "released",
       "available": true,
-      "bar": "Windows ARM64 0.5.0",
-      "version": "0.5.0",
-      "date": "2026-10-31",
-      "next": "0.5.1",
+      "bar": "Windows ARM64 0.5.1",
+      "version": "0.5.1",
+      "date": "2026-11-01",
+      "next": "0.5.2",
       "os": "windows-arm64",
       "requires": "Windows 11 on ARM64",
       "notes": "Native ARM64 (Snapdragon PCs): its own installer and portable zip",
@@ -134,13 +134,13 @@
       "downloads": [
         {
           "label": "Installer",
-          "file": "vlc-redesign-0.5.0-winarm64-setup.exe",
-          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.0/vlc-redesign-0.5.0-winarm64-setup.exe"
+          "file": "vlc-redesign-0.5.1-winarm64-setup.exe",
+          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.1/vlc-redesign-0.5.1-winarm64-setup.exe"
         },
         {
           "label": "Portable",
-          "file": "vlc-redesign-0.5.0-winarm64.zip",
-          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.0/vlc-redesign-0.5.0-winarm64.zip"
+          "file": "vlc-redesign-0.5.1-winarm64.zip",
+          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.1/vlc-redesign-0.5.1-winarm64.zip"
         }
       ]
     },
@@ -151,10 +151,10 @@
       "status": "released",
       "statusLabel": "released",
       "available": true,
-      "bar": "Android 0.5.0",
-      "version": "0.5.0",
-      "date": "2026-10-31",
-      "next": "0.5.1",
+      "bar": "Android 0.5.1",
+      "version": "0.5.1",
+      "date": "2026-11-01",
+      "next": "0.5.2",
       "os": "android",
       "requires": "Android 8.0 or later",
       "notes": "An APK for phones and tablets (ARM64, ARMv7, x86, x86_64), beside VLC; not on Google Play",
@@ -163,8 +163,8 @@
       "downloads": [
         {
           "label": "APK",
-          "file": "vlc-redesign-0.5.0-android.apk",
-          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.0/vlc-redesign-0.5.0-android.apk"
+          "file": "vlc-redesign-0.5.1-android.apk",
+          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.1/vlc-redesign-0.5.1-android.apk"
         }
       ]
     },

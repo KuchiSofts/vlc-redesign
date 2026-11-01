@@ -7,13 +7,15 @@ For changes to VLC itself, see [NEWS](NEWS).
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
 what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `c7834066e2` (2026-10-31).
 
-**Contents:** [Unreleased](#unreleased) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [Unreleased](#unreleased) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
 
 ---
 
 ## [Unreleased]
+
+## [0.5.1] · 2026-11-01
 
 ### Fixed
 
@@ -28,6 +30,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   boxes without a state and could not switch them; they now say ON or OFF and switch them (UI Automation's Toggle),
   and the choices of two or three (theme, layout direction, startup volume, the TV groups) are radio buttons. A
   change refused by VLC shows the state it kept.
+- **Android: TalkBack reads the switches of Settings** as switches, ON or OFF (they said nothing of their state).
 
 ### Added
 
@@ -38,7 +41,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Technical
 
-- The version being prepared is 0.5.1.
+- Android: VideoLAN's VLC for Android merged up to `b52bd1585` (its remote access 0.26.0); the app is 0.5.1
+  (versionCode 3070260), its *What's new* card in 62 languages.
 - The release notes tool writes the tables of every platform (Windows, Linux, macOS, Android) from the files of
   the release, with an optional intro (`release-intro-X.Y.Z.md`): 0.5.0's Linux, macOS and Android tables were added by hand.
 - A test round of 0.5.0 on Windows: 41 files of 35 formats play (first picture in about 0.3–0.5 s, a seek in

@@ -12,7 +12,11 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-11-01):
 
-- 🟡 **Linux VA-API without libEGL** (2026-11-01): the UHD 600 server (kuchi now in render) stopped with SIGSEGV in
+- 🟡 **Release 0.5.1** (2026-11-01, the owner's "upload"): every desktop platform and the Android APK (0.5.1,
+  versionCode 3070260, What's new in 62 languages); VideoLAN's vlc-android merged to b52bd1585. Next: 0.5.2 (the
+  last Android design details: Customize Player by drag and drop, real-phone checks; the designer's credit is in the
+  welcome's privacy step and in About).
+- 🟩 **Linux VA-API without libEGL** (2026-11-01, merged in PR #38): the UHD 600 server (kuchi now in render) stopped with SIGSEGV in
   glinterop_vaapi (GLX gives an address for eglGetCurrentDisplay); the interop now needs a current EGL context
   (libEGL's eglGetCurrentContext). PR fix/vaapi-glx-crash.
 - 🟩 **Thorough test round of 0.5.0** (2026-11-01): Windows (41 files / 35 formats, start 0.7–0.8 s, seek 0.2 s,
@@ -393,16 +397,17 @@ counted from this document's own tables and checklists (column *From*); ⚪ idea
 
 | Program         | Progress             | Done    | %     | From                                   |
 |-----------------|----------------------|---------|-------|----------------------------------------|
-| Windows (0.3.0) | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 91/97   | 93 %  | [§8](#8-next-release-030) checklists   |
-| Linux           | 🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ | 2/7     | 28 %  | [§9](#linux)                           |
-| macOS           | 🟩🟩🟩🟩⬜⬜⬜⬜⬜⬜ | 2/5     | 40 %  | [§9](#macos)                           |
-| Windows ARM64   | 🟩🟩🟩🟩🟩⬜⬜⬜⬜⬜ | 2/4     | 50 %  | [§9](#windows-on-arm64)                |
-| Android         | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/7     | 0 %   | [§9](#android-phones-tablets-tv)       |
+| Windows x64     | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ | 91/97   | 93 %  | [§8](#8-next-release-030) checklists   |
+| Linux           | 🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜ | 15/20   | 75 %  | [§9](#linux)                           |
+| macOS           | 🟩🟩🟩🟩🟩⬜⬜⬜⬜⬜ | 3/6     | 50 %  | [§9](#macos)                           |
+| Windows ARM64   | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 5/5     | 100 % | [§9](#windows-on-arm64)                |
+| Android         | 🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜ | 6/7     | 85 %  | [§9](#android-phones-tablets-tv)       |
 | Samsung TV      | 🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ | 2/7     | 28 %  | [§9](#samsung-smart-tv-tizen)          |
 | iPhone / iPad   | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/3     | 0 %   | [§9](#iphone-ipad-apple-tv)            |
 
-Windows 0.3.0 was released on 2026-10-25 ([v0.3.0](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.3.0));
-the bar counts the lines of section 8, the ones left need the owner (SignPath, Discussions) or hardware not here.
+Released on every desktop platform and Android: 0.5.1 on 2026-11-01 ([v0.5.1](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.1)).
+The Windows bar counts the lines of section 8 (the ones left need the owner: SignPath, Discussions); the others
+count the 🟢 among the marked lines of their part of section 9.
 
 **Areas**
 
@@ -1414,13 +1419,13 @@ Tracks with checklists; a version number comes with the first published build.
 - 🟢 X11 CSD (openbox): drag the title bar to move, resize from each edge and corner, double-click to maximize
   and restore (an earlier "moved instead of resized" was the test clicking a hidden helper window)
 - 🟡 Xvfb (no DRI3) can't show VA-API pictures directly: copied to software (1080p 84 % CPU with llvmpipe)
-- 🟡 Docker build in CI: `.github/workflows/build-linux.yml` builds on `ubuntu-24.04` (x86_64) and
+- 🟢 Docker build in CI: `.github/workflows/build-linux.yml` builds on `ubuntu-24.04` (x86_64) and
   `ubuntu-24.04-arm` (aarch64), makes the bundle and the packages, then on a clean runner installs the .deb with apt
   next to the distribution's `vlc`, runs `vlc-redesign --version` and plays a clip to its end headless (dummy
   interface, video and audio), does the same with the AppImage (`--appimage-extract-and-run`) and with the .rpm in
   Fedora 44 (dnf), and removes the .deb. Runs once the branch is pushed; `linux-qt68.Dockerfile` takes Qt's ARM64
   build (`linux_gcc_arm64`) on aarch64, `linux.sh` has `DEPS_ONLY=1`
-- 🟡 Packages (2026-10-28, branch `feature/linux-pkg`): `linux-packages.sh [--arch x86_64|aarch64]` makes from the
+- 🟢 Packages (2026-10-28, branch `feature/linux-pkg`): `linux-packages.sh [--arch x86_64|aarch64]` makes from the
   bundle `vlc-redesign-X.Y.Z-ARCH.AppImage` (+ `.zsync`), `vlc-redesign_X.Y.Z_amd64.deb`,
   `vlc-redesign-X.Y.Z-1.x86_64.rpm`, `vlc-redesign-X.Y.Z-linux-ARCH.tar.xz` and `SHA256SUMS-linux-ARCH.txt`, with
   appimagetool 1.9.1 (type2 runtime 20251108) and nfpm 2.47.0, downloaded and checked by SHA-256. The .deb and .rpm
@@ -1432,7 +1437,7 @@ Tracks with checklists; a version number comes with the first published build.
   2026-10-29 (`feature/linux-final`): Live TV is the package `vlc-redesign-livetv` (recommended, removable alone),
   ca-certificates and (rpm) hicolor-icon-theme are dependencies, libwayland comes from the system. Installed, run
   and removed in clean containers (below). 🔴 ARM64 built on GitHub (the workflow runs after the push)
-- 🟡 Flatpak: `flatpak/org.kuchisofts.VLCRedesign.yml` written by the script (KDE 6.8 runtime; libebml, libmatroska,
+- 🟢 Flatpak: `flatpak/org.kuchisofts.VLCRedesign.yml` written by the script (KDE 6.8 runtime; libebml, libmatroska,
   libdvbpsi, taglib, medialibrary of the contribs; network, Wayland/X11, PulseAudio, DRI, the video and music
   folders, `/media`, screen saver and MPRIS only). 🟢 `linux-flatpak.sh` builds the one-file bundle from the
   tarball (2026-10-29), installed and toured in a container; its plugin cache made with OSTree's file times (it
@@ -1441,11 +1446,12 @@ Tracks with checklists; a version number comes with the first published build.
 - 🟢 glibc 2.38 or later (Ubuntu 24.04, Debian 13, Fedora 39): built on Ubuntu 24.04. On Ubuntu 22.04 and Debian 12
   apt refuses the .deb (libc6 >= 2.38, libstdc++6 >= 13) and the folder and AppImage launcher says "VLC Redesign
   needs glibc 2.38 or later … This system has glibc 2.35" (checked 2026-10-29); no build on an older base planned
-- 🔴 X11, Wayland; PipeWire, PulseAudio; VA-API, VDPAU; Intel, AMD, NVIDIA
+- 🟡 X11, Wayland; PipeWire, PulseAudio; VA-API, VDPAU; Intel, AMD, NVIDIA (done: X11 and Wayland, VA-API on Intel UHD 600 and
+  Iris Xe, 2026-11-01; left: AMD, NVIDIA, VDPAU)
 - 🟡 Updates: the AppImage carries `gh-releases-zsync|KuchiSofts|vlc-redesign|latest|vlc-redesign-*-ARCH.AppImage.zsync`
   (AppImageUpdate); file associations: the desktop entry has VLC's MIME types. 🔴 The in-app updater on Linux,
   casting firewall notes
-- 🟡 Tested on Ubuntu, Fedora, Debian, Arch: 🟢 clean containers (2026-10-29, `linux-pkg-test.sh`): .deb on
+- 🟢 Tested on Ubuntu, Fedora, Debian, Arch: 🟢 clean containers (2026-10-29, `linux-pkg-test.sh`): .deb on
   Ubuntu 24.04 and 26.04 and Debian 13, .rpm on Fedora 41 and 43, the AppImage on Arch, the Flatpak; install,
   libraries, UI tour on Xvfb (borders, Pluto TV, Hebrew right to left, the *· AppImage* badge), headless Weston
   13/14/15, Live TV removed alone, nothing left after removal: every check passed
@@ -1488,7 +1494,7 @@ Started 2026-10-28 (branch `feature/macos`); the analysis, decisions and what is
 
 ### Windows on ARM64
 
-- 🔴 **Not in 0.4.0, moved to the next version**: in the 0.4.0 tests on a real ARM64 Windows runner it opened its
+- 🟢 **Fixed in 0.4.1** (released then; small updates since 0.5.0). Before:: in the 0.4.0 tests on a real ARM64 Windows runner it opened its
   window and stopped a few seconds later (a crash in the Qt interface after the media library started), and one of
   the installer's 400 binaries was not ARM64. Both to fix before a release; until then the x64 build runs on
   Windows 11 ARM64 under emulation
@@ -1497,7 +1503,7 @@ Started 2026-10-28 (branch `feature/macos`); the analysis, decisions and what is
   the prebuilt contribs of upstream's `win64-arm-llvm` job, UCRT, `-S 0x0A000006`; volume `vlc-winarm64-build`,
   package in `~\source\vlc-redesign-build-arm64`; about 9 minutes. The redesign's code needed no change; every
   binary is ARM64 (`0xAA64`). No OpenGL plugins (none in the ARM64 contribs; Direct3D 11 draws the video)
-- 🟡 Installer, zip and updates for ARM64: `make-release.ps1 -Arch aarch64` makes the files of 13.5 and
+- 🟢 Installer, zip and updates for ARM64: `make-release.ps1 -Arch aarch64` makes the files of 13.5 and
   `-winarm64-delta-from-` small updates, one `SHA256SUMS.txt` for both architectures; the `.iss` with `/DArm64`
   (`ArchitecturesAllowed=arm64`, the same AppId); the updater takes the files of its own architecture only. Not run
   on ARM64 Windows yet; the package has no plugin cache when made here (made at the first start, or by Setup for an
@@ -1505,7 +1511,7 @@ Started 2026-10-28 (branch `feature/macos`); the analysis, decisions and what is
 - 🟢 Checked statically (`ci/pe-check.py`, 2026-10-29): every binary ARM64, every import in the package or in
   Windows, Qt and its QML built in, the About badge, the Live TV add-on, the translations, the credits; the
   Windows build runs it on the ARM64 package
-- 🔴 Tested on ARM64 Windows: `ci/arm64-smoke.ps1` (binaries, plugin cache, launch test) and
+- 🟢 Tested on ARM64 Windows: `ci/arm64-smoke.ps1` (binaries, plugin cache, launch test) and
   `ci/arm64-install-test.ps1` (the installer installed, the smoke test on it, screenshots, uninstall) run in the
   Windows build workflow on `windows-11-arm`, public repository only: at the upload
 
@@ -1515,43 +1521,18 @@ A fork of [VLC for Android](https://code.videolan.org/videolan/vlc-android) (GPL
 redrawn: the desktop's Qt interface is made for a mouse and a big window. The Figma file has desktop frames only, so
 phone and TV layouts need frames of their own (decision 6).
 
-- 🔴 Build VLC for Android in Docker and reproduce its release
-- 🔴 Package `org.kuchisofts.vlcredesign`, English by default
-- 🔴 Design tokens from the hub; the player: control bar, seek previews, volume, gestures
-- 🔴 Library, queue, playlists, settings; themes; 9 accents
-- 🔴 Casting with the desktop's fixes; subtitles
-  - Reviewed 2026-10-29 (code only, no phone): the app builds against libvlc 3.7.7, so the desktop's
-    `renderer-*` variables do not exist there. To fix in the phone session, by priority:
-    1. **High**: stopping a cast never brings the video back to the phone (`PlaybackService.setRenderer()` tests
-       `wasOnRenderer && !hasRenderer()` before `setRenderer(item)`: always false).
-    2. **High**: no message when a cast fails (device off, unreachable, format refused): only the generic
-       *Invalid location* path. A cast state (connecting / playing / failed + why) with *Try again* / *Play here*.
-    3. **High**: the same TV found by two discoveries is listed twice (`RendererItem.equals` compares the native
-       object): de-duplicate by name and type in `RendererDelegate`.
-    4. **High**: discovery runs for the whole process while the network is up, in the background too, and `stop()`
-       never `release()`s the discoverers (a leak per network change): scan only while a picker or the player
-       shows, release on stop.
-    5. **Medium**: the device playing can vanish unnoticed (`ItemDeleted`, network loss) with no message.
-    6. **Medium**: the cast button is hidden until a device is found; no scanning state, no empty state.
-    7. **Medium**: no *Sound only*: `RendererItem.flags` has no getter (add `canVideo()`), DLNA TVs get the
-       "unknown" icon.
-    8. **Medium**: picker rows: highlight not reset on recycled rows, `renderers[position]` vs `dataset` size, only
-       the name clickable, *Connected* shown before any connection, one device casts at once with no picker.
-    9. **Medium** (to check on the phone): `:no-sout-chromecast-video` is added to every media in
-       `PlaylistManager`, whatever the *Audio only* setting.
-    10. **Medium**: passthrough default `false` for the instance, `true` for the media; VLC 4 builds skip the
-        casting options.
-    11. **Medium**: the casting screen (`player_remote_control.xml`) shows a cone only: no device name, no *Stop
-        casting*; volume keys change the phone's volume, not the TV's.
-    12. **Low**: subtitles blocked while casting (the Chromecast output can burn them in); hard-coded
-        *Disabled* / *Enabled* and a debug toast; left/right instead of start/end in the cast layouts;
-        `colorPrimary` instead of the accent; a fixed `minWidth="384dp"` dialog.
-  - UI parity: none yet. The phone has the old *Displays* dialog (names, a Chromecast or unknown icon, a
-    *Disconnect* button); the desktop panel (*Cast to*, scanning dot, *This computer* row, TV / music icons,
-    *Sound only*, check mark, *Connecting…*, hide device, empty states, the casting card with *Stop casting*,
-    *Try again*, *Play here*) is to be built as a redesign bottom sheet with the desktop's English texts.
-- 🔴 Android TV / Google TV layout (remote control)
-- 🔴 APK and AAB on GitHub, then F-Droid; Google Play only after decision 4
+- 🟢 **Released with 0.5.0** (2026-10-31) and **0.5.1** (2026-11-01): an APK on this repository's releases, signed
+  with the project's key; the source is [vlc-redesign-android](https://github.com/KuchiSofts/vlc-redesign-android)
+- 🟢 Built with Gradle and Android Studio's JDK on this PC; signed release (`signedRelease`, the key outside the
+  repository); VideoLAN's vlc-android merged (to `b52bd1585`)
+- 🟢 Package `org.kuchisofts.vlcredesign` (beside VLC), English by default, 62 languages
+- 🟢 The player (the desktop's control bar, seek previews, volume, gestures, Customize Player), the design's Home,
+  library, queue, playlists, settings, themes and 9 accents, the tablet layout
+- 🟢 Casting with the desktop's fixes (a redesign cast sheet, states, *Try again*, *Play here*), subtitles in every
+  script, Live TV, the app's own update check (0.5.1)
+- 🟢 Tested: the automatic tour on phone and tablet emulators, the owner's phone (0.5.0 and 0.5.1 rounds:
+  start-up, playback of 12 formats, 5.1 audio mixed down to stereo, About, links), TalkBack reads the switches
+- 🔴 Android TV / Google TV layout (remote control); a real tablet; F-Droid (Google Play: not planned, decision 4)
 
 ### Samsung Smart TV (Tizen)
 

@@ -15,7 +15,7 @@ What is being worked on, updated as it changes (2026-11-01):
 - 🟩 **Checks after 0.5.0** (2026-11-01): the in-app small update 0.4.1 → 0.5.0 end to end (499 files, identical to
   0.5.0's zip, reopened), the Linux AppImage on the UHD 600 server (H.264/HEVC/VP9/AV1 to the end; VA-API not reachable
   there without the render group), a dialog tour by UI Automation with no QML warning; release-notes.py writes every
-  platform's table. Android: its own update check (vlc-redesign-android c3e576f22), in 0.5.1.
+  platform's table; the Linux build frees the runner's disk too (a Flatpak export ran out of it). Android: its own update check (vlc-redesign-android c3e576f22), in 0.5.1.
 - 🟩 **Release 0.5.0 published** (2026-10-31, tag v0.5.0, 32 files; the next version is 0.5.1): Windows x64 and ARM64, Linux, macOS and the first Android
   APK (signed with the release key, tested on a real phone without the storage permission: start, About, playback,
   pause, seek, end; a link from another app no longer asks for *All files access*). VideoLAN merged to c7834066e2.

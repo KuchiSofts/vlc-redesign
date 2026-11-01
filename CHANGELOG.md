@@ -15,6 +15,10 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Technical
+
+- The version being prepared is 0.5.2.
+
 ## [0.5.1] · 2026-11-01
 
 ### Fixed

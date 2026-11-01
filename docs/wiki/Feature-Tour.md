@@ -12,10 +12,10 @@ to the page that explains the feature in full.
 
 | Platform | In this tour | Status |
 |---|---|---|
-| **[Windows](#windows)** | 17 clips: every main feature of 0.4.0 | Released, 0.5.0 (2026-10-31) |
-| **[Linux](#linux)** | The AppImage on Arch Linux | Released, 0.5.0 (2026-10-31) |
-| **[macOS](#macos)** | A screenshot of the app | Released, 0.5.0 (2026-10-31) |
-| **[Windows on ARM64](Platforms#windows-on-arm64)** | No clips: the same app as Windows | Released, 0.5.0 (2026-10-31); the first was 0.4.1 |
+| **[Windows](#windows)** | 17 clips: every main feature of 0.4.0 | Released, 0.5.1 (2026-11-01) |
+| **[Linux](#linux)** | The AppImage on Arch Linux | Released, 0.5.1 (2026-11-01) |
+| **[macOS](#macos)** | A screenshot of the app | Released, 0.5.1 (2026-11-01) |
+| **[Windows on ARM64](Platforms#windows-on-arm64)** | No clips: the same app as Windows | Released, 0.5.1 (2026-11-01); the first was 0.4.1 |
 | **[Android](#android)** | 8 phone clips and 1 tablet clip | Released in **0.5.0**; recorded before it, on the emulator |
 
 Where each platform stands, with its requirements and files: [Platforms](Platforms).

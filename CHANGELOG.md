@@ -17,6 +17,10 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Fixed
 
+- **Linux: no stop with hardware decoding on a system without libEGL** (a server, a minimal install, X11 through
+  GLX): VA-API's link to OpenGL called EGL functions that GLX only pretends to have, and VLC stopped at the first
+  H.264, HEVC or VP9 video. It now leaves that link out there and decodes as it can. Found on an Intel UHD 600
+  server with `--dec-dev=vaapi_drm`.
 - **Windows: the window no longer shrinks at each start when VLC is started minimized** (a shortcut set to *Run:
   Minimized*): it lost 16 × 8 px and moved 8 px every time, as its borders were never measured. Started normally it
   kept its size.

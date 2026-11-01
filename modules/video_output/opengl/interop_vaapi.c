@@ -23,6 +23,7 @@
 #endif
 
 #include <assert.h>
+#include <dlfcn.h>
 
 #include <EGL/egl.h>
 #include <EGL/eglext.h>
@@ -515,6 +516,19 @@ Open(struct vlc_gl_interop *interop)
         goto error;
 
     if (!CanAllocateTexture(interop))
+        goto error;
+
+    /* Only with an EGL context: GLX (a system without libEGL, or chosen) gives an address for any name, and
+     * the EGL functions "found" there crashed at the first call. libEGL, loaded by the EGL provider, says
+     * whether its context is the current one. */
+    void *libegl = dlopen("libEGL.so.1", RTLD_LAZY | RTLD_NOLOAD);
+    if (libegl == NULL)
+        goto error;
+    PFNEGLGETCURRENTCONTEXTPROC getCurrentContext =
+        (PFNEGLGETCURRENTCONTEXTPROC)dlsym(libegl, "eglGetCurrentContext");
+    const bool egl_current = getCurrentContext != NULL && getCurrentContext() != EGL_NO_CONTEXT;
+    dlclose(libegl);
+    if (!egl_current)
         goto error;
 
     priv->egl.getCurrentDisplay = vlc_gl_GetProcAddress(interop->gl, "eglGetCurrentDisplay");

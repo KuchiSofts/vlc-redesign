@@ -57,7 +57,9 @@ Rectangle {
                 height: parent.height
                 focusPolicy: Qt.StrongFocus
                 onClicked: root.chosen(modelData.value)
+                Accessible.role: Accessible.RadioButton
                 Accessible.name: modelData.text
+                Accessible.checkable: true
                 Accessible.checked: selected
                 // the whole name when it is cut short (a long translation)
                 T.ToolTip.visible: hovered && optionText.truncated

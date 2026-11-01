@@ -99,7 +99,7 @@ Column {
             objectName: "settingsLastfmEnabled"
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
-            checked: root.selected
+            on: root.selected
             onSwitched: (on) => {
                 if (root.settingsModel.setAudioscrobblerEnabled(on)) {
                     root.selected = on

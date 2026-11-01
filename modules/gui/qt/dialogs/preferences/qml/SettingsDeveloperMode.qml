@@ -80,7 +80,7 @@ SettingsSectionTitle {
             objectName: "settingsDeveloperMode"
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
-            checked: root.selected
+            on: root.selected
             onSwitched: (on) => root.selected = on
             Accessible.name: qsTr("Developer mode")
         }

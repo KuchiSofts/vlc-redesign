@@ -51,6 +51,15 @@ jobs:
           # the version of VLC (git describe) comes from the tags
           fetch-depth: 0
 
+      # as the Windows builds: the image keeps ~14 GB free, and the Flatpak's
+      # export stopped at Flatpak's 3 % reserve ("min-free-space-percent")
+      - name: Free disk space
+        run: |
+          sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/.ghcup \
+                      /opt/hostedtoolcache/CodeQL /usr/local/share/powershell /usr/share/swift
+          sudo docker image prune --all --force > /dev/null
+          df -h /
+
       - name: Build images
         run: |
           docker build -t vlc-redesign-linux:dev -f extras/juxtopposed/linux.Dockerfile extras/juxtopposed

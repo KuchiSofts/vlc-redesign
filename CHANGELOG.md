@@ -15,6 +15,16 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Fixed
+
+- **Windows: the window no longer shrinks at each start when VLC is started minimized** (a shortcut set to *Run:
+  Minimized*): it lost 16 × 8 px and moved 8 px every time, as its borders were never measured. Started normally it
+  kept its size.
+- **The switches of Settings are real switches for screen readers.** Narrator and other tools read them as check
+  boxes without a state and could not switch them; they now say ON or OFF and switch them (UI Automation's Toggle),
+  and the choices of two or three (theme, layout direction, startup volume, the TV groups) are radio buttons. A
+  change refused by VLC shows the state it kept.
+
 ### Added
 
 - **Android: the app tells you when a new version is out.** Once a day it looks at the latest release here; when
@@ -27,6 +37,9 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - The version being prepared is 0.5.1.
 - The release notes tool writes the tables of every platform (Windows, Linux, macOS, Android) from the files of
   the release, with an optional intro (`release-intro-X.Y.Z.md`): 0.5.0's Linux, macOS and Android tables were added by hand.
+- A test round of 0.5.0 on Windows: 41 files of 35 formats play (first picture in about 0.3–0.5 s, a seek in
+  0.2 s, 4–13 % of one core with hardware decoding), it starts in 0.7–0.8 s with 168 MB and quits in 0.2 s, the 14
+  pages of Settings show in 50–180 ms and their 83 switches switch and save.
 - Checked after 0.5.0: the small update from 0.4.1 in the app (Update now, Restart now: 499 files, the folder then
   identical to 0.5.0's, reopened by itself); the Linux AppImage plays H.264, HEVC, VP9 and AV1 on an Intel UHD 600
   server; the menus' dialogs open and close with no QML warning.

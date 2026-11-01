@@ -252,7 +252,9 @@ Widgets.PageExt {
                 height: chips.height
                 width: chipText.implicitWidth + root.px(24)
                 focusPolicy: Qt.StrongFocus
+                Accessible.role: Accessible.RadioButton
                 Accessible.name: modelData.label
+                Accessible.checkable: true
                 Accessible.checked: selected
                 onClicked: Iptv.channelModel.group = modelData.name
 

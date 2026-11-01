@@ -104,7 +104,7 @@ SettingsSectionTitle {
             objectName: "settingsSubtitleAutoSearch"
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
-            checked: root.autoSearch
+            on: root.autoSearch
             onSwitched: (on) => root.autoSearch = on
         }
     }
@@ -119,7 +119,7 @@ SettingsSectionTitle {
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
             enabled: root.secondary !== ""
-            checked: root.showBoth
+            on: root.showBoth
             onSwitched: (on) => root.showBoth = on
         }
     }
@@ -172,7 +172,7 @@ SettingsSectionTitle {
                 objectName: "settingsSubtitleService_" + modelData.id
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
-                checked: root.services[modelData.id] !== false
+                on: root.services[modelData.id] !== false
                 onSwitched: (on) => {
                     const states = Object.assign({}, root.services)
                     states[modelData.id] = on

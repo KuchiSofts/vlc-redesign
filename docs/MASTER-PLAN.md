@@ -12,6 +12,10 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-11-01):
 
+- 🟩 **Thorough test round of 0.5.0** (2026-11-01): Windows (41 files / 35 formats, start 0.7–0.8 s, seek 0.2 s,
+  every Settings page and switch), Android on the emulator (start 0.5–0.8 s cold / 0.1–0.2 s warm, onboarding, 35
+  files). Found and fixed: the window shrinking at each minimized start; the Settings switches without a state for
+  screen readers (PR fix/a11y-checkable).
 - 🟩 **Checks after 0.5.0** (2026-11-01): the in-app small update 0.4.1 → 0.5.0 end to end (499 files, identical to
   0.5.0's zip, reopened), the Linux AppImage on the UHD 600 server (H.264/HEVC/VP9/AV1 to the end; VA-API not reachable
   there without the render group), a dialog tour by UI Automation with no QML warning; release-notes.py writes every

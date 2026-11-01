@@ -11,14 +11,24 @@ import VLC.Style
 T.AbstractButton {
     id: root
 
-    // The new state asked by a click (the owner sets checked from its value)
+    // The state, set by the owner from its value; a click asks for the other one with switched
+    property bool on: false
     signal switched(bool on)
 
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
     function c(value) { return VLCStyle.redesign.color(value) }
 
-    checkable: false
-    onClicked: switched(!checked)
+    // checkable, so assistive tools get a real switch (UI Automation's Toggle: Narrator says ON or OFF;
+    // AbstractButton gives its accessible the control's own checkable). A click, Space or the
+    // accessible's toggle flip checked and say so with toggled: checked goes back to following on,
+    // which the owner changes or not (a refused change shows the state it kept)
+    checkable: true
+    checked: on
+    onToggled: {
+        const wanted = checked
+        checked = Qt.binding(() => root.on)
+        switched(wanted)
+    }
     focusPolicy: Qt.StrongFocus
     // The label of the design (33) holds ON and OFF; the longer words of
     // other languages widen it, and the toggle with it
@@ -28,6 +38,10 @@ T.AbstractButton {
     implicitHeight: px(32)
     Accessible.role: Accessible.CheckBox
     Accessible.checked: checked
+    // the accessible's toggle (Narrator, UI Automation) flips checked without toggled, and its press
+    // only says clicked: both as a click
+    Accessible.onToggleAction: { toggle(); toggled() }
+    Accessible.onPressAction: { toggle(); toggled() }
 
     // Right to left, the label and the square swap sides
     function place(x, width) { return root.mirrored ? root.width - width - x : x }

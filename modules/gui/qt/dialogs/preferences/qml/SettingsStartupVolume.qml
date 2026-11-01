@@ -79,7 +79,9 @@ Rectangle {
             onPicked: root.chosen(true)
             Accessible.role: Accessible.RadioButton
             Accessible.name: text
+            Accessible.checkable: true
             Accessible.checked: selected
+            Accessible.onPressAction: picked()
         }
 
         Option {
@@ -90,7 +92,9 @@ Rectangle {
             onPicked: { root.chosen(false); volumeInput.forceActiveFocus() }
             Accessible.role: Accessible.RadioButton
             Accessible.name: text
+            Accessible.checkable: true
             Accessible.checked: selected
+            Accessible.onPressAction: picked()
             // The field: 10 px after the label (where the design puts it, or
             // 6 px after a longer label, keeping 60 px for the value), 2 px
             // from the other sides

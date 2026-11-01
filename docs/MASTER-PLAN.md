@@ -12,6 +12,9 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-11-01):
 
+- 🟡 **Linux VA-API without libEGL** (2026-11-01): the UHD 600 server (kuchi now in render) stopped with SIGSEGV in
+  glinterop_vaapi (GLX gives an address for eglGetCurrentDisplay); the interop now needs a current EGL context
+  (libEGL's eglGetCurrentContext). PR fix/vaapi-glx-crash.
 - 🟩 **Thorough test round of 0.5.0** (2026-11-01): Windows (41 files / 35 formats, start 0.7–0.8 s, seek 0.2 s,
   every Settings page and switch), Android on the emulator (start 0.5–0.8 s cold / 0.1–0.2 s warm, onboarding, 35
   files). Found and fixed: the window shrinking at each minimized start; the Settings switches without a state for

@@ -45,6 +45,10 @@
 # include <softpub.h>
 # include "util/redesign_update_key.h"
 # include "util/redesign_update_verify.h"
+#elif defined(__linux__)
+# include <cstdio>
+# include "util/redesign_update_key.h"
+# include "util/redesign_update_verify.h"
 #endif
 
 #include "dialogs/dialogs_provider.hpp"
@@ -87,6 +91,14 @@ const char deltaInfix[] = "";
 const char ownPackageSuffix[] = "-macos-arm64.dmg";
 # else
 const char ownPackageSuffix[] = "-macos-x86_64.dmg";
+# endif
+#elif defined(__linux__)
+// Linux updates the AppImage it runs from (the release's AppImage of this
+// architecture, put in its place); the other packages open the release page
+# if defined(__aarch64__)
+const char installerSuffix[] = "-aarch64.AppImage";
+# else
+const char installerSuffix[] = "-x86_64.AppImage";
 # endif
 #endif
 
@@ -193,7 +205,7 @@ bool signatureRequired(const QString &version)
 // release PC (extras/juxtopposed/signing/release-key.ps1)
 bool goodSignature(const QByteArray &sums, const QByteArray &signature)
 {
-#ifdef _WIN32
+#if defined(_WIN32) || defined(__linux__)
     return vlc_redesign_verify_signature(vlc_redesign_update_key, sums.constData(),
                                          static_cast<size_t>(sums.size()),
                                          reinterpret_cast<const unsigned char *>(signature.constData()),
@@ -546,6 +558,14 @@ bool RedesignUpdater::isInstalledCopy() const
 #ifdef _WIN32
     // The installer leaves its uninstaller next to vlc.exe
     return QFileInfo::exists(appDir() + QStringLiteral("/unins000.exe"));
+#elif defined(__linux__)
+    // An AppImage the user can replace: the file and its folder writable
+    // (the new one is written next to it, then renamed over it)
+    const QString image = qEnvironmentVariable("APPIMAGE");
+    if (image.isEmpty())
+        return false;
+    const QFileInfo file(image);
+    return file.isFile() && file.isWritable() && QFileInfo(file.absolutePath()).isWritable();
 #else
     return false;
 #endif
@@ -724,12 +744,18 @@ void RedesignUpdater::onRelease(int status, const QByteArray &body)
             m_deltaName = name;
             m_deltaSize = size;
         }
+#elif defined(__linux__)
+        else if (name.endsWith(QLatin1String(installerSuffix), Qt::CaseInsensitive)) {
+            m_installerUrl = url;
+            m_installerName = name;
+            m_installerSize = size;
+        }
 #elif defined(__APPLE__)
         else if (name.endsWith(QLatin1String(ownPackageSuffix), Qt::CaseInsensitive))
             ownPackage = true;
 #endif
-#ifndef _WIN32
-        // (the files of Windows are never offered elsewhere)
+#if !defined(_WIN32) && !defined(__linux__)
+        // (the files of Windows and Linux are never offered elsewhere)
         Q_UNUSED(size);
 #endif
     }
@@ -1164,6 +1190,31 @@ void RedesignUpdater::downloadInstaller(const QString &expectedSha256)
             if (sha256Hex(body) != expectedSha256) {
                 saved->error = qtr("The downloaded installer doesn't match its checksum, so it wasn't run.");
             } else {
+#ifdef __linux__
+                // The new AppImage next to the one running, then renamed over
+                // it: the running copy keeps its file open, the path (menus,
+                // shortcuts) opens the new one
+                const QString image = qEnvironmentVariable("APPIMAGE");
+                const QString dir = QFileInfo(image).absolutePath();
+                const QString part = dir + QStringLiteral("/.vlc-redesign-update.AppImage");
+                QFile file(part);
+                if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate) || file.write(body) != body.size()
+                    || !file.flush()) {
+                    saved->error = qtr("The installer couldn't be saved to %1.").arg(QDir::toNativeSeparators(dir));
+                    file.close();
+                    QFile::remove(part);
+                    return;
+                }
+                file.close();
+                file.setPermissions(QFile(image).permissions() | QFileDevice::ExeOwner | QFileDevice::ReadOwner);
+                if (std::rename(QFile::encodeName(part).constData(), QFile::encodeName(image).constData()) != 0) {
+                    saved->error = qtr("The installer couldn't be saved to %1.").arg(QDir::toNativeSeparators(dir));
+                    QFile::remove(part);
+                    return;
+                }
+                saved->path = image;
+                Q_UNUSED(name);
+#else
                 const QString dir = QStandardPaths::writableLocation(QStandardPaths::TempLocation)
                                     + QStringLiteral("/vlc-redesign-update");
                 QDir().mkpath(dir);
@@ -1178,6 +1229,7 @@ void RedesignUpdater::downloadInstaller(const QString &expectedSha256)
                     if (!saved->error.isEmpty())
                         QFile::remove(saved->path);
                 }
+#endif
             }
         });
         connect(worker, &QThread::finished, this, [this, saved]() {
@@ -1193,6 +1245,29 @@ void RedesignUpdater::downloadInstaller(const QString &expectedSha256)
 
 void RedesignUpdater::launchInstaller(const QString &path)
 {
+#ifdef __linux__
+    // The new AppImage is in place: opened again once this VLC has quit (not
+    // before: a second VLC would hand the media to this one), where it was
+    QStringList args = { QStringLiteral("-c"),
+                         QStringLiteral("while kill -0 %1 2>/dev/null; do sleep 0.2; done; exec \"$0\" \"$@\"")
+                             .arg(QCoreApplication::applicationPid()),
+                         path };
+    PlayerController *player = m_intf->p_mainPlayerController;
+    const QUrl media = player ? player->getUrl() : QUrl();
+    if (media.isValid() && !media.isEmpty()) {
+        const int seconds = player->getTime().toMilliseconds() / 1000;
+        if (seconds > 0)
+            args << QStringLiteral("--redesign-resume-time=%1").arg(seconds);
+        args << media.toString(QUrl::FullyEncoded);
+    }
+    if (!QProcess::startDetached(QStringLiteral("/bin/sh"), args)) {
+        // in place already: the next start is the new version
+        setState(Failed, qtr("The installer couldn't be started."));
+        return;
+    }
+    msg_Dbg(m_intf, "update to %s: the AppImage is replaced, VLC opens again", qtu(m_latestVersion));
+    QTimer::singleShot(300, this, []() { THEDP->quit(); });
+#else
     QStringList args = { QStringLiteral("/SILENT"), QStringLiteral("/SUPPRESSMSGBOXES"),
                          QStringLiteral("/NORESTART"), QStringLiteral("/UPDATE") };
     // Reopen on what was playing, where it was
@@ -1210,4 +1285,5 @@ void RedesignUpdater::launchInstaller(const QString &path)
     }
     // The installer waits for VLC to close, then reopens it
     QTimer::singleShot(300, this, []() { THEDP->quit(); });
+#endif
 }

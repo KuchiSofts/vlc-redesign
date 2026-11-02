@@ -1449,8 +1449,9 @@ Tracks with checklists; a version number comes with the first published build.
 - 🟡 X11, Wayland; PipeWire, PulseAudio; VA-API, VDPAU; Intel, AMD, NVIDIA (done: X11 and Wayland, VA-API on Intel UHD 600 and
   Iris Xe, 2026-11-01; left: AMD, NVIDIA, VDPAU)
 - 🟡 Updates: the AppImage carries `gh-releases-zsync|KuchiSofts|vlc-redesign|latest|vlc-redesign-*-ARCH.AppImage.zsync`
-  (AppImageUpdate); file associations: the desktop entry has VLC's MIME types. 🔴 The in-app updater on Linux,
-  casting firewall notes
+  (AppImageUpdate); file associations: the desktop entry has VLC's MIME types. 🟢 The in-app updater on Linux
+  (2026-11-02, the AppImage: signed SHA256SUMS checked through GnuTLS, the file replaced, VLC reopened where it
+  was; verify-test.c passes on Linux with the 0.5.1 signature, a changed file refused). 🔴 Casting firewall notes
 - 🟢 Tested on Ubuntu, Fedora, Debian, Arch: 🟢 clean containers (2026-10-29, `linux-pkg-test.sh`): .deb on
   Ubuntu 24.04 and 26.04 and Debian 13, .rpm on Fedora 41 and 43, the AppImage on Arch, the Flatpak; install,
   libraries, UI tour on Xvfb (borders, Pluto TV, Hebrew right to left, the *· AppImage* badge), headless Weston

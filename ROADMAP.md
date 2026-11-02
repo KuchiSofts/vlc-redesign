@@ -36,7 +36,7 @@ with a build to try), and the last checks of the design on Android:
 - ✅ Android: the mini player in right-to-left languages, the long press and a mouse in the context menu (a stream's
   long press fixed), recording into the shared Movies folder, the subtitle fonts (fixed: they had no effect),
   subtitles of a video opened from Open Network Stream (fixed)
-- 📋 Android, on a real phone: the artist banner with real artwork
+- ✅ Android, on a real phone: the artist banner with real artwork, the long press of a stream (fixed) checked
 - ✅ Linux: an updater in the app for the AppImage, as on Windows
 
 After it:

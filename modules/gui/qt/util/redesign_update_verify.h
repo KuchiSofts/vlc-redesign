@@ -14,7 +14,7 @@
  * the SHA-256 of the data. bcrypt.dll is loaded here, from System32:
  * nothing else of the interface needs it, and the build links nothing more.
  * C and C++ (extras/juxtopposed/signing/verify-test.c tests it as it is).
- * Windows only: other systems have no updater. */
+ * Windows, and Linux through GnuTLS (below): macOS has no updater. */
 
 #ifdef _WIN32
 # include <stddef.h>
@@ -117,6 +117,88 @@ out:
     if (sha)
         close_alg(sha, 0);
     FreeLibrary(bcrypt);
+    return good;
+}
+#elif defined(__linux__)
+/* Linux: the same check with the system's GnuTLS (every distribution has
+ * libgnutls.so.30; VLC's own TLS uses it), loaded here: the build links
+ * nothing more. Without it nothing is checked, so nothing is installed. */
+# include <dlfcn.h>
+# include <stddef.h>
+# include <string.h>
+
+# define VLC_REDESIGN_SIGNATURE_SIZE 64
+
+typedef struct { unsigned char *data; unsigned int size; } vlc_redesign_datum;
+
+/* r or s as a DER INTEGER: leading zeros dropped, a 0 added when the top bit is set */
+static inline size_t vlc_redesign_der_int(unsigned char *out, const unsigned char *v)
+{
+    size_t skip = 0, n = 0;
+    while (skip < 31 && v[skip] == 0)
+        skip++;
+    out[n++] = 0x02;
+    out[n++] = (unsigned char)(32 - skip + (v[skip] & 0x80 ? 1 : 0));
+    if (v[skip] & 0x80)
+        out[n++] = 0;
+    memcpy(out + n, v + skip, 32 - skip);
+    return n + 32 - skip;
+}
+
+/* 1: the signature is good; 0: it isn't, or it couldn't be checked */
+static inline int vlc_redesign_verify_signature(const unsigned char key[64],
+                                                const void *data, size_t size,
+                                                const unsigned char *sig, size_t sig_size)
+{
+    typedef int (*init_fn)(void **);
+    typedef void (*deinit_fn)(void *);
+    typedef int (*import_fn)(void *, int, const vlc_redesign_datum *, const vlc_redesign_datum *);
+    typedef int (*verify_fn)(void *, int, unsigned int, const vlc_redesign_datum *,
+                             const vlc_redesign_datum *);
+    typedef int (*id_fn)(const char *);
+    unsigned char der[2 + 2 * 35];
+    vlc_redesign_datum x, y, text, signature;
+    void *gnutls, *public_key = NULL;
+    init_fn init;
+    deinit_fn deinit;
+    import_fn import_ecc;
+    verify_fn verify;
+    id_fn curve_id, sign_id;
+    size_t n;
+    int good = 0;
+
+    if (!key || (!data && size) || !sig || sig_size != VLC_REDESIGN_SIGNATURE_SIZE || size > 0xffffffffu)
+        return 0;
+    gnutls = dlopen("libgnutls.so.30", RTLD_LAZY | RTLD_LOCAL);
+    if (!gnutls)
+        return 0;
+    init = (init_fn)dlsym(gnutls, "gnutls_pubkey_init");
+    deinit = (deinit_fn)dlsym(gnutls, "gnutls_pubkey_deinit");
+    import_ecc = (import_fn)dlsym(gnutls, "gnutls_pubkey_import_ecc_raw");
+    verify = (verify_fn)dlsym(gnutls, "gnutls_pubkey_verify_data2");
+    curve_id = (id_fn)dlsym(gnutls, "gnutls_ecc_curve_get_id");
+    sign_id = (id_fn)dlsym(gnutls, "gnutls_sign_get_id");
+    if (!init || !deinit || !import_ecc || !verify || !curve_id || !sign_id || init(&public_key) < 0)
+        goto out;
+
+    x.data = (unsigned char *)key;      x.size = 32;
+    y.data = (unsigned char *)key + 32; y.size = 32;
+    if (import_ecc(public_key, curve_id("SECP256R1"), &x, &y) < 0)
+        goto out;
+    /* r then s, as the SEQUENCE GnuTLS takes */
+    n = 2;
+    n += vlc_redesign_der_int(der + n, sig);
+    n += vlc_redesign_der_int(der + n, sig + 32);
+    der[0] = 0x30;
+    der[1] = (unsigned char)(n - 2);
+    signature.data = der;               signature.size = (unsigned int)n;
+    text.data = (unsigned char *)data;  text.size = (unsigned int)size;
+    good = verify(public_key, sign_id("ECDSA-SHA256"), 0, &text, &signature) >= 0;
+
+out:
+    if (public_key)
+        deinit(public_key);
+    dlclose(gnutls);
     return good;
 }
 #endif

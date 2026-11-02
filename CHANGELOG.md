@@ -15,6 +15,25 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Added
+
+- Linux: the AppImage updates itself from the app, as on Windows: the release's AppImage of the same architecture is
+  downloaded, checked against the release's SHA256SUMS.txt (its signature checked with the system's GnuTLS, the same
+  ECDSA P-256 key as Windows), put in place of the running one, and VLC opens again where it was. The other Linux
+  packages (tar.xz, Flatpak, distribution packages) still open the release page.
+- Android TV (and Settings > TV interface): the first pass of the design: the sidebar, the page and the cards in the
+  design's dark palette, Inter, and an accent frame around the focused card (it was VLC's orange and blue).
+
+### Fixed
+
+- Android: the mini player's buttons (shuffle, previous, play, next, repeat) stay left to right in right-to-left
+  languages, as the design has them, without covering the title.
+- Android: a video file opened from Open Network Stream (or Recent streams) showed no subtitles: it started without
+  video and libvlc chose no subtitle; the player also restored a "no track" id as the subtitle track. Both fixed.
+- Android: the subtitle font of Settings (serif, monospace, casual, cursive) had no effect: libvlc finds fonts through
+  fontconfig, by their own names; the generic name is now resolved from the device's font list.
+- Android: a long press on a stream of Open Network Stream played it instead of opening its menu.
+
 ### Technical
 
 - The version being prepared is 0.5.2.

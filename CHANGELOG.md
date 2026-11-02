@@ -5,15 +5,17 @@ Changes of **VLC Redesign**, an unofficial VLC 4 build with the interface design
 For changes to VLC itself, see [NEWS](NEWS).
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
-what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `c7834066e2` (2026-10-31).
+what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `8a47770f63` (2026-11-02).
 
-**Contents:** [Unreleased](#unreleased) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [Unreleased](#unreleased) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
 
 ---
 
 ## [Unreleased]
+
+## [0.5.2] · 2026-11-02
 
 ### Added
 
@@ -36,7 +38,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Technical
 
-- The version being prepared is 0.5.2.
+- VideoLAN's VLC merged up to `8a47770f63` (2026-11-02: a check of HEIF grid offsets).
+- Android: the app is 0.5.2 (versionCode 3070270), its *What's new* card in 62 languages.
 
 ## [0.5.1] · 2026-11-01
 

@@ -10,7 +10,7 @@ Status: ✅ done · 🔨 in progress · 📋 to do · 💡 idea
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-02).
+Updated as the work moves (last: 2026-11-03).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
@@ -29,12 +29,15 @@ Updated as the work moves (last: 2026-11-02).
 **0.5.3** is a release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try), and the Android TV layout:
 
-- 🔨 Android: the TV layout (a remote control): the palette, the font and the focus are done; the player and the
-  pages under the home screen are next
+- 🔨 Android TV: the player, its controls and the pages under the home screen in the design, all with a remote
+  control (the palette, the Inter font and the accent focus are done in 0.5.2)
+- 📋 Linux: the first update of the AppImage from the app, checked from 0.5.2 to 0.5.3 on real desktops
 
 After it:
 
 - 📋 Linux: the Flatpak on Flathub
 - 📋 macOS and Windows on ARM64: a round by hand on a real Mac and a real ARM64 PC (both are tested on GitHub's
   machines at every build)
+- 📋 Windows: tests on more real PCs (Windows 10, Intel graphics, screens of different scales)
+- 📋 Code-signed Windows releases (no SmartScreen warning): waiting for SignPath's approval
 - 💡 The Samsung TV receiver (the TV side of casting, drawn in the design), then iPhone and iPad

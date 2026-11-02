@@ -10,12 +10,15 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 ## Now
 
-What is being worked on, updated as it changes (2026-11-01):
+What is being worked on, updated as it changes (2026-11-02):
 
-- 🟡 **Release 0.5.1** (2026-11-01, the owner's "upload"): every desktop platform and the Android APK (0.5.1,
-  versionCode 3070260, What's new in 62 languages); VideoLAN's vlc-android merged to b52bd1585. Next: 0.5.2 (the
-  last Android checks on a real phone; Customize Player by drag and drop works, checked on the owner's tablet 2026-11-02; the designer's credit is in the
-  welcome's privacy step and in About).
+- 🟡 **Release 0.5.2** (2026-11-02, the owner's go): every desktop platform and the Android APK (0.5.2,
+  versionCode 3070270, What's new in 62 languages); VideoLAN merged to 8a47770f63. In it: the Linux AppImage
+  updater (PR #41), the Android fixes found by the real-phone and tablet checks (subtitles from Open Network
+  Stream, the subtitle font through fontconfig names, a stream's long press, the mini player in right-to-left
+  languages) and the first pass of the Android TV layout. Next: 0.5.3 (the Android TV player and pages).
+- 🟢 **Release 0.5.1** (2026-11-01): every desktop platform and the Android APK (versionCode 3070260); Customize
+  Player by drag and drop checked on the owner's tablet 2026-11-02.
 - 🟩 **Linux VA-API without libEGL** (2026-11-01, merged in PR #38): the UHD 600 server (kuchi now in render) stopped with SIGSEGV in
   glinterop_vaapi (GLX gives an address for eglGetCurrentDisplay); the interop now needs a current EGL context
   (libEGL's eglGetCurrentContext). PR fix/vaapi-glx-crash.
@@ -401,11 +404,11 @@ counted from this document's own tables and checklists (column *From*); ⚪ idea
 | Linux           | 🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜ | 15/20   | 75 %  | [§9](#linux)                           |
 | macOS           | 🟩🟩🟩🟩🟩⬜⬜⬜⬜⬜ | 3/6     | 50 %  | [§9](#macos)                           |
 | Windows ARM64   | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 5/5     | 100 % | [§9](#windows-on-arm64)                |
-| Android         | 🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜ | 6/7     | 85 %  | [§9](#android-phones-tablets-tv)       |
+| Android         | 🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜ | 7/8     | 87 %  | [§9](#android-phones-tablets-tv)       |
 | Samsung TV      | 🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ | 2/7     | 28 %  | [§9](#samsung-smart-tv-tizen)          |
 | iPhone / iPad   | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/3     | 0 %   | [§9](#iphone-ipad-apple-tv)            |
 
-Released on every desktop platform and Android: 0.5.1 on 2026-11-01 ([v0.5.1](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.1)).
+Released on every desktop platform and Android: 0.5.2 on 2026-11-02 ([v0.5.2](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.2)).
 The Windows bar counts the lines of section 8 (the ones left need the owner: SignPath, Discussions); the others
 count the 🟢 among the marked lines of their part of section 9.
 
@@ -1522,7 +1525,7 @@ A fork of [VLC for Android](https://code.videolan.org/videolan/vlc-android) (GPL
 redrawn: the desktop's Qt interface is made for a mouse and a big window. The Figma file has desktop frames only, so
 phone and TV layouts need frames of their own (decision 6).
 
-- 🟢 **Released with 0.5.0** (2026-10-31) and **0.5.1** (2026-11-01): an APK on this repository's releases, signed
+- 🟢 **Released with 0.5.0** (2026-10-31), **0.5.1** (2026-11-01) and **0.5.2** (2026-11-02): an APK on this repository's releases, signed
   with the project's key; the source is [vlc-redesign-android](https://github.com/KuchiSofts/vlc-redesign-android)
 - 🟢 Built with Gradle and Android Studio's JDK on this PC; signed release (`signedRelease`, the key outside the
   repository); VideoLAN's vlc-android merged (to `b52bd1585`)
@@ -1533,7 +1536,10 @@ phone and TV layouts need frames of their own (decision 6).
   script, Live TV, the app's own update check (0.5.1)
 - 🟢 Tested: the automatic tour on phone and tablet emulators, the owner's phone (0.5.0 and 0.5.1 rounds:
   start-up, playback of 12 formats, 5.1 audio mixed down to stereo, About, links), TalkBack reads the switches
-- 🔴 Android TV / Google TV layout (remote control); a real tablet; F-Droid (Google Play: not planned, decision 4)
+- 🟢 A real tablet: the owner's Galaxy Tab (2026-11-02: portrait and landscape, Hebrew and English, playback,
+  every switch, Customize Player by drag and drop)
+- 🟡 Android TV / Google TV layout (remote control): the dark palette, Inter and the accent focus frame (0.5.2);
+  the player and the pages under the home screen next. F-Droid (Google Play: not planned, decision 4)
 
 ### Samsung Smart TV (Tizen)
 

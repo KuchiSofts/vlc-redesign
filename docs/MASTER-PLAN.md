@@ -14,7 +14,7 @@ What is being worked on, updated as it changes (2026-11-01):
 
 - 🟡 **Release 0.5.1** (2026-11-01, the owner's "upload"): every desktop platform and the Android APK (0.5.1,
   versionCode 3070260, What's new in 62 languages); VideoLAN's vlc-android merged to b52bd1585. Next: 0.5.2 (the
-  last Android design details: Customize Player by drag and drop, real-phone checks; the designer's credit is in the
+  last Android checks on a real phone; Customize Player by drag and drop works, checked on the owner's tablet 2026-11-02; the designer's credit is in the
   welcome's privacy step and in About).
 - 🟩 **Linux VA-API without libEGL** (2026-11-01, merged in PR #38): the UHD 600 server (kuchi now in render) stopped with SIGSEGV in
   glinterop_vaapi (GLX gives an address for eglGetCurrentDisplay); the interop now needs a current EGL context

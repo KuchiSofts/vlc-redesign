@@ -26,9 +26,8 @@ Updated as the work moves (last: 2026-11-01).
 ## Next: 0.5.2 and after
 
 **0.5.2** is a release of fixes, made as the issues bring them (each fix is first published through a pull request,
-with a build to try), and the last details of the design on Android:
+with a build to try), and the last checks of the design on Android:
 
-- 📋 Android: Customize Player by drag and drop, as on the desktop (it works by taps today)
 - 📋 Android, on a real phone: the long press and a mouse in the context menu, recording into the shared Movies
   folder, the subtitle fonts of Samsung's list, the artist banner with real artwork
 

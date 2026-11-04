@@ -3073,6 +3073,18 @@ msgstr ""
 "Hoeveel verwerkertyd die stelsel aan VLC gee in vergelyking met die ander "
 "programme."
 
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:270 modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:200
+msgid "Volume indicator"
+msgstr ""
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:271
+msgid "Where the volume shows when it changes (the wheel, the keys, mute). Automatic: on the right side, on the left in a right-to-left language."
+msgstr ""
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:273
+msgid "Automatic|Right side|Left side|Top right corner|Top left corner"
+msgstr ""
+
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:270
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
 msgid "Double click on the video"

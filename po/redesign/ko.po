@@ -3032,6 +3032,18 @@ msgid ""
 "programs."
 msgstr "시스템이 다른 프로그램에 비해 VLC에 할당하는 프로세서 시간입니다."
 
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:270 modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:200
+msgid "Volume indicator"
+msgstr "볼륨 표시기"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:271
+msgid "Where the volume shows when it changes (the wheel, the keys, mute). Automatic: on the right side, on the left in a right-to-left language."
+msgstr "볼륨이 바뀔 때(휠, 키, 음소거) 표시되는 위치입니다. 자동: 오른쪽, 오른쪽에서 왼쪽으로 쓰는 언어에서는 왼쪽."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:273
+msgid "Automatic|Right side|Left side|Top right corner|Top left corner"
+msgstr "자동|오른쪽|왼쪽|오른쪽 위 모서리|왼쪽 위 모서리"
+
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:270
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
 msgid "Double click on the video"

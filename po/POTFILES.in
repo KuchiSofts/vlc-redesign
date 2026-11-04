@@ -836,6 +836,7 @@ modules/gui/qt/maininterface/qml/UpdatePane.qml
 modules/gui/qt/maininterface/qml/SideNavigationPane.qml
 modules/gui/qt/maininterface/qml/SidebarEditDialog.qml
 modules/gui/qt/maininterface/qml/SidebarItems.qml
+modules/gui/qt/maininterface/qml/VolumeMeter.qml
 modules/gui/qt/widgets/qml/CSDWindowButtonSet.qml
 modules/gui/qt/widgets/qml/CheckButton.qml
 modules/gui/qt/widgets/qml/EmptyLabelButton.qml

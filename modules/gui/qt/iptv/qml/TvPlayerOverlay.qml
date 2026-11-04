@@ -14,12 +14,13 @@ import VLC.Style
 import VLC.Util
 import VLC.Widgets as Widgets
 
-// Live TV over the video, as a set-top box: the banner of the channel at
-// every switch (its number, its name, what is on with its progress and the
-// time left, what is next), the channel number typed, the list of the
+// Live TV over the video, as a set-top box: the information bar of the
+// channel at every switch (its number, its name, what is on with its progress
+// and the time left, what is next), the channel number typed, the list of the
 // channels (Enter) with its groups (Left, Right). The player loads it while
 // a channel plays (Player.qml) and gives it its keys first. The cards of the
-// design over the video: #191919 at 95 %, radius 14, the dark theme always.
+// design over the video: #191919 at 95 %, radius 14, the dark theme always;
+// the bar has the colour of the player's control bar.
 FocusScope {
     id: root
 
@@ -285,44 +286,55 @@ FocusScope {
     // (the clicks go through to the video)
     Item {
         id: bannerZone
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.left: parent.left
+        anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.bottomMargin: root.bottomInset
-        width: banner.width
         height: banner.height + root.px(48)
         HoverHandler { id: zoneHover }
     }
 
     // ---- the banner ----
-    // A slim bar centred over the video, above its controls: the channel
-    // (number, logo, name), what is on (its times, its title, its progress
-    // live, the time left), what is next, the marks of the channel and the
-    // buttons of the TV. The same item for every switch: its texts change,
-    // it fades and slides in (180 ms) and hides by itself.
+    // The information bar of a cable box (as on the TV): the whole width of
+    // the player, flush with the bottom of the window or sitting right on the
+    // player's control bar (its colour, no gap), a thin line on top and a
+    // soft shade above it over the picture. Three columns: the channel (its
+    // logo big, number, name, group), the programme (where it is, its title,
+    // times, progress, story, what is next), the side (the time now, the
+    // archive, what Enter does, the keys; the buttons under the pointer).
+    // The same item for every switch: its texts change, it fades and slides
+    // in (180 ms) and hides by itself.
     Rectangle {
         id: banner
 
         readonly property bool wanted: Iptv.bannerMode !== 3
                                        && (bannerTimer.running || bannerHover.hovered || zoneHover.hovered || root.browse !== 0
                                            || numberEntry.text.length > 0)
+        readonly property bool pointed: bannerHover.hovered || zoneHover.hovered
         readonly property bool _dark: VLCStyle.palette.isDark
-        function c(value) { return VLCStyle.redesign.color(value, undefined, _dark) }
+        // a colour of the TV's bar, and its own in the light theme
+        function c(value, light) { return VLCStyle.redesign.color(value, light, _dark) }
 
-        // about two thirds of the video, from a 720p window to a 4K screen
-        width: Math.max(Math.min(root.px(560), parent.width - root.px(32)),
-                        Math.min(parent.width * 0.66, root.px(1100), parent.width - root.px(32)))
-        // the slim bar, taller only for a description
-        height: Math.max(root.px(76), bannerInfo.y + bannerInfo.implicitHeight + root.px(18))
+        // the time now, while the bar shows
+        property string _clock: ""
+        Timer {
+            running: banner.visible
+            repeat: true
+            triggeredOnStart: true
+            interval: 1000
+            onTriggered: banner._clock = Iptv.timeText(Math.floor(Date.now() / 1000))
+        }
+
+        // compact (the TV's bar made 5 % lower): taller only for a
+        // description
+        height: Math.max(root.px(100), bannerHead.implicitHeight, bannerInfo.y + bannerInfo.implicitHeight + root.px(13),
+                         bannerEnd.implicitHeight) + root.px(6)
         Behavior on height { NumberAnimation { duration: 180; easing.type: Easing.OutCubic } }
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.left: parent.left
+        anchors.right: parent.right
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: root.bottomInset + root.px(24) + (wanted ? 0 : -root.px(8))
-        radius: root.px(10)
-        // the menus' card (#191919) a little translucent: readable over any
-        // video, the picture still felt behind it
-        color: Qt.alpha(c("#191919"), 0.92)
-        border.width: 1
-        border.color: c(VLCStyle.redesign.border)
+        anchors.bottomMargin: root.bottomInset + (wanted ? 0 : -root.px(8))
+        color: c(VLCStyle.redesign.playerControlBackground, "#ababaa")
         opacity: wanted ? 1 : 0
         visible: opacity > 0
 
@@ -344,132 +356,210 @@ FocusScope {
             }
         }
 
-        // the band of the channel and the buttons, the height of the slim bar
+        // the soft shade over the picture, above the bar
+        Rectangle {
+            anchors.bottom: parent.top
+            width: parent.width
+            height: root.px(90)
+            gradient: Gradient {
+                GradientStop { position: 0; color: Qt.rgba(0, 0, 0, 0) }
+                GradientStop { position: 1; color: Qt.rgba(0, 0, 0, 0.55) }
+            }
+        }
+        // the thin line on top
+        Rectangle {
+            z: 1
+            width: parent.width
+            height: 1
+            color: banner.c("#333333", "#9c9c9b")
+        }
+
+        // ---- the channel ----
         Item {
             id: bannerHead
-            width: parent.width
-            height: root.px(76)
-        }
-
-        // the channel
-        Text {
-            id: bannerNumber
             anchors.left: parent.left
-            anchors.leftMargin: root.px(16)
-            anchors.verticalCenter: bannerHead.verticalCenter
-            width: root.px(36)
-            horizontalAlignment: Text.AlignRight
-            text: root.channel.number > 0 ? root.channel.number : ""
-            color: banner.c("#969696")
-            font.family: VLCStyle.redesign.fontFamily
-            font.pixelSize: root.px(18)
-            font.weight: Font.DemiBold
-            font.features: { "tnum": 1 }
-        }
-        TvLogo {
-            id: bannerLogo
-            anchors.left: bannerNumber.right
-            anchors.leftMargin: root.px(12)
-            anchors.verticalCenter: bannerHead.verticalCenter
-            width: root.px(44)
-            height: width
-            source: root.channel.logo ?? ""
-            name: root.channel.name ?? ""
-        }
-        Text {
-            id: bannerName
-            anchors.left: bannerLogo.right
-            anchors.leftMargin: root.px(12)
-            anchors.verticalCenter: bannerHead.verticalCenter
-            width: Math.min(implicitWidth, banner.width * 0.2)
-            text: root.channel.name ?? ""
-            elide: Text.ElideRight
-            horizontalAlignment: Text.AlignLeft
-            color: banner.c(VLCStyle.redesign.textPrimary)
-            font.family: VLCStyle.redesign.fontFamily
-            font.pixelSize: root.px(15)
-            font.weight: Font.DemiBold
-        }
-        Rectangle {
-            id: bannerDivider
-            anchors.left: bannerName.right
-            anchors.leftMargin: root.px(16)
-            anchors.verticalCenter: bannerHead.verticalCenter
-            width: 1
-            height: root.px(36)
-            color: banner.c(VLCStyle.redesign.separator)
-        }
-
-        // what is on, and next; with Settings > TV, its description
-        // (the bar grows to it, smoothly, and stays slim without one)
-        Column {
-            id: bannerInfo
-            anchors.left: bannerDivider.right
-            anchors.leftMargin: root.px(16)
-            anchors.right: bannerEnd.left
-            anchors.rightMargin: root.px(16)
+            anchors.leftMargin: root.px(24)
             anchors.top: parent.top
-            anchors.topMargin: root.px(18)
-            spacing: root.px(6)
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: root.px(6)
+            width: Math.min(root.px(300), parent.width * 0.3)
+            implicitHeight: Math.max(bannerLogo.y + bannerLogo.height, bannerWho.y + bannerWho.implicitHeight) + root.px(13)
 
-            Row {
-                width: parent.width
-                spacing: root.px(10)
-                // where the programme browsed to is: +1, -2 (none on what is on)
-                Text {
-                    id: browseHint
-                    visible: root.browse !== 0
-                    anchors.verticalCenter: parent.verticalCenter
-                    text: root.browse > 0 ? "+" + root.browse : "−" + (-root.browse)
-                    color: VLCStyle.redesign.accent
-                    font.family: VLCStyle.redesign.fontFamily
-                    font.pixelSize: root.px(13)
-                    font.weight: Font.DemiBold
+            TvLogo {
+                id: bannerLogo
+                anchors.left: parent.left
+                anchors.leftMargin: root.px(18)
+                anchors.top: parent.top
+                anchors.topMargin: root.px(13)
+                width: root.px(64)
+                height: width
+                source: root.channel.logo ?? ""
+                name: root.channel.name ?? ""
+            }
+            Column {
+                id: bannerWho
+                anchors.left: bannerLogo.right
+                anchors.leftMargin: root.px(12)
+                anchors.right: parent.right
+                anchors.rightMargin: root.px(14)
+                anchors.top: parent.top
+                anchors.topMargin: root.px(19)
+                spacing: root.px(4)
+
+                Row {
+                    id: bannerNameLine
+                    width: parent.width
+                    spacing: root.px(8)
+                    Text {
+                        id: bannerNumber
+                        visible: text !== ""
+                        anchors.verticalCenter: parent.verticalCenter
+                        text: root.channel.number > 0 ? root.channel.number : ""
+                        color: banner.c("#EAEAEA", "#191919")
+                        font.family: VLCStyle.redesign.fontFamily
+                        font.pixelSize: root.px(20)
+                        font.weight: Font.Bold
+                        font.features: { "tnum": 1 }
+                    }
+                    Text {
+                        id: bannerName
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: Math.min(implicitWidth, parent.width - (bannerNumber.visible ? bannerNumber.width + parent.spacing : 0)
+                                        - (bannerStar.visible ? bannerStar.width + root.px(6) : 0))
+                        text: root.channel.name ?? ""
+                        elide: Text.ElideRight
+                        horizontalAlignment: Text.AlignLeft
+                        color: banner.c("#EAEAEA", "#191919")
+                        font.family: VLCStyle.redesign.fontFamily
+                        font.pixelSize: root.px(16)
+                        font.weight: Font.DemiBold
+                    }
+                    // a favourite: the star (6 px from the name)
+                    Image {
+                        id: bannerStar
+                        visible: Iptv.favorites.indexOf(root.channel.key ?? "") >= 0
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: root.px(16)
+                        height: width
+                        sourceSize: Qt.size(width, height)
+                        source: SVGColorImage.colorize("qrc:///redesign/duo/favorite.svg")
+                                             .color1(VLCStyle.redesign.accent).color2(VLCStyle.redesign.accent).uri()
+                        Accessible.name: qsTr("Favorite")
+                    }
                 }
                 Text {
-                    id: nowTimes
+                    width: parent.width
                     visible: text !== ""
-                    anchors.verticalCenter: parent.verticalCenter
-                    text: root._archive ? Iptv.timeText(root.catchup.start ?? 0) + " – " + Iptv.timeText(root.catchup.stop ?? 0)
-                          : root._hasNow && Iptv.bannerMode !== 2
-                            ? Iptv.timeText(root.now.start) + " – " + Iptv.timeText(root.now.stop) : ""
+                    text: root.channel.group ?? ""
+                    elide: Text.ElideRight
+                    horizontalAlignment: Text.AlignLeft
                     color: banner.c("#8F8F8F")
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: root.px(13)
-                    font.features: { "tnum": 1 }
+                }
+            }
+            // the divider, the bar's height
+            Rectangle {
+                anchors.right: parent.right
+                anchors.top: parent.top
+                anchors.topMargin: 1
+                anchors.bottom: parent.bottom
+                width: 1
+                color: banner.c("#262626", "#9c9c9b")
+            }
+        }
+
+        // ---- the programme ----
+        // what is on (or browsed to), and next; with Settings > TV, its
+        // description (the bar grows to it, smoothly)
+        Column {
+            id: bannerInfo
+            anchors.left: bannerHead.right
+            anchors.leftMargin: root.px(20)
+            anchors.right: bannerEnd.left
+            anchors.rightMargin: root.px(20)
+            anchors.top: parent.top
+            anchors.topMargin: root.px(13)
+
+            // where the programme is (Live, Earlier 2, Later, Archive) and
+            // its title
+            Row {
+                width: parent.width
+                height: root.px(26)
+                spacing: root.px(12)
+                Rectangle {
+                    id: bannerPill
+                    readonly property bool live: !root._archive && root.browse === 0
+                    readonly property string label: root._archive ? qsTr("Archive")
+                                                    : root.browse !== 0 ? (root.browse > 0 ? qsTr("Later") : qsTr("Earlier"))
+                                                                          + (Math.abs(root.browse) > 1 ? " " + Math.abs(root.browse) : "")
+                                                    : root._hasNow && Iptv.bannerMode !== 2 ? qsTr("Live") : ""
+                    visible: label !== ""
+                    anchors.verticalCenter: parent.verticalCenter
+                    width: bannerPillText.implicitWidth + root.px(16)
+                    height: root.px(22)
+                    radius: root.px(5)
+                    color: live ? VLCStyle.redesign.accent : banner.c("#373737")
+                    Text {
+                        id: bannerPillText
+                        anchors.centerIn: parent
+                        text: bannerPill.label
+                        color: bannerPill.live ? "#0E0E0E" : banner.c("#EAEAEA", "#191919")
+                        font.family: VLCStyle.redesign.fontFamily
+                        font.pixelSize: root.px(12)
+                        font.weight: Font.Bold
+                        font.capitalization: Font.AllUppercase
+                        font.letterSpacing: root.px(12) * 0.04
+                    }
                 }
                 Text {
                     anchors.verticalCenter: parent.verticalCenter
-                    width: parent.width - (nowTimes.visible ? nowTimes.width + parent.spacing : 0)
-                           - (browseHint.visible ? browseHint.width + parent.spacing : 0)
+                    width: parent.width - (bannerPill.visible ? bannerPill.width + parent.spacing : 0)
                     text: root._archive ? (root.catchup.title || qsTr("Programme"))
                           : Iptv.bannerMode === 2 ? ""
                           : root._hasNow ? root.now.title
                           : (root.channel.hasGuide ? qsTr("Loading the guide…") : qsTr("No guide for this channel"))
                     elide: Text.ElideRight
                     horizontalAlignment: Text.AlignLeft
-                    color: banner.c("#C6C6C6")
+                    color: banner.c("#FFFFFF", "#191919")
                     font.family: VLCStyle.redesign.fontFamily
-                    font.pixelSize: root.px(16)
-                    font.weight: Font.Medium
+                    font.pixelSize: root.px(20)
+                    font.weight: Font.DemiBold
                 }
             }
 
+            // its times, the progress live and the time left (or when it
+            // was, is; the day of the archive)
             Row {
                 width: parent.width
-                spacing: root.px(10)
+                topPadding: root.px(7)
+                spacing: root.px(14)
                 visible: Iptv.bannerMode !== 2 && (root._hasNow || root._archive)
-                // the progress, live (a time axis: from the left in every
-                // language, as the seek bar)
+                Text {
+                    id: nowTimes
+                    anchors.verticalCenter: bannerLeft.verticalCenter
+                    // the start first in every language: left to right
+                    // (U+202A ... U+202C), as on the TV and Android
+                    text: "‪" + (root._archive ? Iptv.timeText(root.catchup.start ?? 0) + " – " + Iptv.timeText(root.catchup.stop ?? 0)
+                                      : Iptv.timeText(root.now.start ?? 0) + " – " + Iptv.timeText(root.now.stop ?? 0)) + "‬"
+                    color: banner.c("#EAEAEA", "#191919")
+                    font.family: VLCStyle.redesign.fontFamily
+                    font.pixelSize: root.px(15)
+                    font.weight: Font.DemiBold
+                    font.features: { "tnum": 1 }
+                }
+                // a time axis: from the left in every language, as the
+                // seek bar
                 Rectangle {
                     id: bannerProgress
                     LayoutMirroring.enabled: false
                     visible: Iptv.showProgress && root._hasNow && !root._archive && root.browse === 0
-                    anchors.verticalCenter: parent.verticalCenter
-                    width: Math.min(root.px(180), parent.width * 0.3)
-                    height: root.px(3)
-                    radius: height / 2
-                    color: banner.c("#373737")
+                    anchors.verticalCenter: bannerLeft.verticalCenter
+                    width: Math.max(root.px(80), Math.min(root.px(360), parent.width - nowTimes.width - bannerLeft.width
+                                                                         - 2 * parent.spacing))
+                    height: root.px(5)
+                    radius: root.px(3)
+                    color: banner.c("#333333", "#9c9c9b")
                     Rectangle {
                         height: parent.height
                         radius: parent.radius
@@ -482,106 +572,141 @@ FocusScope {
                 }
                 Text {
                     id: bannerLeft
-                    visible: root._hasNow && !root._archive
-                    anchors.verticalCenter: parent.verticalCenter
-                    text: root.browse === 0 ? qsTr("%1 left").arg(Iptv.durationText((root.now.stop ?? 0) - Iptv.now))
+                    height: root.px(20)
+                    verticalAlignment: Text.AlignVCenter
+                    text: root._archive ? qsTr("From the archive, %1").arg(Iptv.dayText(root.catchup.start ?? 0))
+                          : root.browse === 0 ? qsTr("%1 left").arg(Iptv.durationText((root.now.stop ?? 0) - Iptv.now))
                           : root.now.start > Iptv.now ? qsTr("in %1").arg(Iptv.durationText(root.now.start - Iptv.now))
                           : root.now.stop <= Iptv.now ? qsTr("ended %1 ago").arg(Iptv.durationText(Iptv.now - root.now.stop))
                           : qsTr("on now")
-                    color: banner.c("#6B6B6B")
+                    color: banner.c("#A6A6A6", "#404040")
                     font.family: VLCStyle.redesign.fontFamily
-                    font.pixelSize: root.px(13)
-                }
-                Text {
-                    anchors.verticalCenter: parent.verticalCenter
-                    width: parent.width - (bannerProgress.visible ? bannerProgress.width + bannerLeft.width + 2 * parent.spacing : 0)
-                    visible: root._archive || (Iptv.bannerMode === 0 && Iptv.showNext && (root.next.title ?? "") !== "")
-                    text: root._archive ? qsTr("From the archive, %1").arg(Iptv.dayText(root.catchup.start ?? 0))
-                                        : qsTr("Next: %1 · %2").arg(root.next.title ?? "").arg(Iptv.timeText(root.next.start ?? 0))
-                    elide: Text.ElideRight
-                    horizontalAlignment: Text.AlignLeft
-                    color: banner.c("#6B6B6B")
-                    font.family: VLCStyle.redesign.fontFamily
-                    font.pixelSize: root.px(13)
+                    font.pixelSize: root.px(14)
                 }
             }
 
             // Settings > TV: the episode, its category and its description
-            // (up to three lines; the whole text in the programme's details)
+            // (up to two lines; the whole text in the programme's details)
             Text {
                 readonly property string meta: [root.now.subtitle, root.now.episode, root.now.category]
                                                 .filter(t => !!t).join("  ·  ")
                 width: parent.width
                 visible: Iptv.showDescriptions && !root._archive && Iptv.bannerMode !== 2 && meta !== ""
-                topPadding: root.px(4)
+                topPadding: root.px(10)
                 text: meta
                 elide: Text.ElideRight
                 horizontalAlignment: Text.AlignLeft
-                color: banner.c("#8F8F8F")
+                lineHeight: root.px(18)
+                lineHeightMode: Text.FixedHeight
+                color: banner.c("#A6A6A6", "#404040")
                 font.family: VLCStyle.redesign.fontFamily
-                font.pixelSize: root.px(13)
+                font.pixelSize: root.px(14)
             }
             Text {
                 width: parent.width
                 visible: Iptv.showDescriptions && !root._archive && Iptv.bannerMode !== 2
                          && (root.browse === 0 ? (root.now.description ?? "") : root._browseDescription) !== ""
+                topPadding: root.px(6)
                 text: (root.browse === 0 ? (root.now.description ?? "") : root._browseDescription).replace(/\s+/g, " ")
                 wrapMode: Text.WordWrap
-                maximumLineCount: 3
+                maximumLineCount: 2
                 elide: Text.ElideRight
-                lineHeight: 1.35
+                lineHeight: root.px(20)
+                lineHeightMode: Text.FixedHeight
                 horizontalAlignment: Text.AlignLeft
                 color: banner.c("#8F8F8F")
                 font.family: VLCStyle.redesign.fontFamily
-                font.pixelSize: root.px(13)
+                font.pixelSize: root.px(14)
+            }
+
+            // what is next: its time and its title
+            Row {
+                width: parent.width
+                topPadding: root.px(10)
+                spacing: root.px(10)
+                visible: !root._archive && Iptv.bannerMode === 0 && Iptv.showNext && (root.next.title ?? "") !== ""
+                Rectangle {
+                    id: bannerNextKey
+                    anchors.verticalCenter: bannerNextText.verticalCenter
+                    width: bannerNextLabel.implicitWidth + root.px(14)
+                    height: root.px(20)
+                    radius: root.px(4)
+                    color: "transparent"
+                    border.width: 1
+                    border.color: banner.c("#404040")
+                    Text {
+                        id: bannerNextLabel
+                        anchors.centerIn: parent
+                        text: qsTr("Next")
+                        color: banner.c("#C6C6C6")
+                        font.family: VLCStyle.redesign.fontFamily
+                        font.pixelSize: root.px(11)
+                        font.weight: Font.Bold
+                        font.capitalization: Font.AllUppercase
+                        font.letterSpacing: root.px(11) * 0.04
+                    }
+                }
+                Text {
+                    id: bannerNextText
+                    width: parent.width - bannerNextKey.width - parent.spacing
+                    height: root.px(20)
+                    verticalAlignment: Text.AlignVCenter
+                    text: Iptv.timeText(root.next.start ?? 0) + "  " + (root.next.title ?? "")
+                    elide: Text.ElideRight
+                    horizontalAlignment: Text.AlignLeft
+                    color: banner.c("#A6A6A6", "#404040")
+                    font.family: VLCStyle.redesign.fontFamily
+                    font.pixelSize: root.px(14)
+                }
             }
         }
 
-        // the marks of the channel and the buttons of the TV
-        Row {
+        // ---- the side ----
+        // the time now; the archive of the channel and what Enter does on
+        // the programme shown; the keys (the buttons under the pointer)
+        Item {
             id: bannerEnd
             anchors.right: parent.right
-            anchors.rightMargin: root.px(14)
-            anchors.verticalCenter: bannerHead.verticalCenter
-            spacing: root.px(6)
+            anchors.rightMargin: root.px(24 + 18)
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: root.px(6)
+            width: Math.max(root.px(150), bannerMarks.implicitWidth, bannerKeys.implicitWidth, bannerButtons.implicitWidth)
+            implicitHeight: root.px(12) + bannerClock.height + (bannerMarks.implicitWidth > 0 ? root.px(8) + bannerMarks.height : 0)
+                            + root.px(8) + Math.max(bannerKeys.implicitHeight, bannerButtons.implicitHeight) + root.px(12)
 
-            TvBadge {
-                anchors.verticalCenter: parent.verticalCenter
-                visible: root._archive
-                accent: true
-                icon: "recent"
-                text: qsTr("Archive")
+            Text {
+                id: bannerClock
+                anchors.right: parent.right
+                anchors.top: parent.top
+                anchors.topMargin: root.px(12)
+                text: banner._clock
+                lineHeight: root.px(30)
+                lineHeightMode: Text.FixedHeight
+                color: banner.c("#EAEAEA", "#191919")
+                font.family: VLCStyle.redesign.fontFamily
+                font.pixelSize: root.px(26)
+                font.weight: Font.DemiBold
+                font.features: { "tnum": 1 }
             }
-            TvBadge {
-                anchors.verticalCenter: parent.verticalCenter
-                visible: !root._archive && (root.channel.catchupDays ?? 0) > 0
-                icon: "recent"
-                text: qsTr("%1 d", "%1 d", root.channel.catchupDays ?? 0).arg(root.channel.catchupDays ?? 0)
-                tip: qsTr("Catch-up: the past %1 day", "Catch-up: the past %1 days", root.channel.catchupDays ?? 0)
-                         .arg(root.channel.catchupDays ?? 0)
-            }
-            BarButton {
-                visible: root.canBrowse
-                glyph: LayoutMirroring.enabled ? "›" : "‹"
-                tip: qsTr("Programme before")
-                onClicked: root.browseBy(-1)
-            }
-            BarButton {
-                visible: root.canBrowse
-                glyph: LayoutMirroring.enabled ? "‹" : "›"
-                tip: qsTr("Programme after")
-                onClicked: root.browseBy(1)
-            }
-            // the action of the programme shown, in a place of its own: the
-            // buttons around it never move while browsing
-            Item {
-                anchors.verticalCenter: parent.verticalCenter
-                width: root.px(124)
-                height: root.px(30)
 
+            Row {
+                id: bannerMarks
+                anchors.right: parent.right
+                anchors.top: bannerClock.bottom
+                anchors.topMargin: root.px(8)
+                spacing: root.px(8)
+
+                TvBadge {
+                    anchors.verticalCenter: parent.verticalCenter
+                    visible: !root._archive && (root.channel.catchupDays ?? 0) > 0
+                    icon: "recent"
+                    text: qsTr("%1 d", "%1 d", root.channel.catchupDays ?? 0).arg(root.channel.catchupDays ?? 0)
+                    tip: qsTr("Catch-up: the past %1 day", "Catch-up: the past %1 days", root.channel.catchupDays ?? 0)
+                             .arg(root.channel.catchupDays ?? 0)
+                }
                 // what is on: from its start (the archive)
                 BarButton {
-                    anchors.right: parent.right
                     visible: !root._archive && (root.channel.catchupDays ?? 0) > 0 && root._hasNow && root.browse === 0
                     iconName: "recent"
                     tip: qsTr("Watch from the Start")
@@ -590,11 +715,10 @@ FocusScope {
                 // a programme browsed to: watch it from the archive, or a
                 // reminder for it
                 Widgets.RedesignButton {
-                    anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
                     visible: (root.browse < 0 && !!root.now.archived) || root.browse > 0
                     accent: root.browse < 0
-                    implicitWidth: Math.min(parent.width, Math.max(root.px(90), implicitContentWidth + root.px(24)))
+                    implicitWidth: Math.min(root.px(160), Math.max(root.px(90), implicitContentWidth + root.px(24)))
                     implicitHeight: root.px(28)
                     text: root.browse < 0 ? qsTr("Watch")
                           : (Iptv.reminders.length >= 0 && Iptv.hasReminder(root.channel.key ?? "", root.now.start ?? 0))
@@ -603,31 +727,80 @@ FocusScope {
                 }
                 // a programme of the archive plays
                 Widgets.RedesignButton {
-                    anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
                     visible: root._archive
                     accent: true
-                    implicitWidth: Math.min(parent.width, Math.max(root.px(90), implicitContentWidth + root.px(24)))
+                    implicitWidth: Math.min(root.px(160), Math.max(root.px(90), implicitContentWidth + root.px(24)))
                     implicitHeight: root.px(28)
                     text: qsTr("Back to Live")
                     onClicked: Iptv.backToLive()
                 }
             }
-            BarButton {
-                glyph: "▲"
-                tip: qsTr("Next channel")
-                onClicked: Iptv.channelUp()
+
+            // the keys of the bar (as the remote's on the TV); under the
+            // pointer, the buttons that do the same
+            Column {
+                id: bannerKeys
+                anchors.right: parent.right
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: root.px(12)
+                visible: !banner.pointed
+                readonly property string _up: MainCtx.tvKeyText("channel-up")
+                readonly property string _down: MainCtx.tvKeyText("channel-down")
+                Repeater {
+                    model: [root.canBrowse ? "←  →   " + qsTr("Programs") : "",
+                            bannerKeys._up !== "" || bannerKeys._down !== ""
+                            ? [bannerKeys._up, bannerKeys._down].filter(k => k !== "").join(" / ") + "   " + qsTr("Channels") : ""]
+                    Text {
+                        required property string modelData
+                        anchors.right: parent.right
+                        visible: modelData !== ""
+                        text: modelData
+                        color: banner.c("#6B6B6B")
+                        font.family: VLCStyle.redesign.fontFamily
+                        font.pixelSize: root.px(12)
+                        lineHeight: root.px(16)
+                        lineHeightMode: Text.FixedHeight
+                    }
+                }
             }
-            BarButton {
-                glyph: "▼"
-                tip: qsTr("Previous channel")
-                onClicked: Iptv.channelDown()
-            }
-            BarButton {
-                iconName: "lists"
-                tip: qsTr("Channels")
-                active: root.listOpen
-                onClicked: root.openList()
+            Row {
+                id: bannerButtons
+                anchors.right: parent.right
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: root.px(9)
+                height: root.px(30)
+                spacing: root.px(4)
+                visible: banner.pointed
+
+                BarButton {
+                    visible: root.canBrowse
+                    glyph: LayoutMirroring.enabled ? "›" : "‹"
+                    tip: qsTr("Programme before")
+                    onClicked: root.browseBy(-1)
+                }
+                BarButton {
+                    visible: root.canBrowse
+                    glyph: LayoutMirroring.enabled ? "‹" : "›"
+                    tip: qsTr("Programme after")
+                    onClicked: root.browseBy(1)
+                }
+                BarButton {
+                    glyph: "▲"
+                    tip: qsTr("Next channel")
+                    onClicked: Iptv.channelUp()
+                }
+                BarButton {
+                    glyph: "▼"
+                    tip: qsTr("Previous channel")
+                    onClicked: Iptv.channelDown()
+                }
+                BarButton {
+                    iconName: "lists"
+                    tip: qsTr("Channels")
+                    active: root.listOpen
+                    onClicked: root.openList()
+                }
             }
         }
     }

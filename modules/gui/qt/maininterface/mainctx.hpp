@@ -166,6 +166,10 @@ class MainCtx : public QObject
     Q_PROPERTY(bool playlistTree READ playlistTree NOTIFY playlistTreeChanged FINAL)
     // "Double click on the video" of the settings: 0 nothing, 1 fullscreen
     Q_PROPERTY(int doubleClickAction READ doubleClickAction NOTIFY doubleClickActionChanged FINAL)
+    Q_PROPERTY(int volumeMeterPosition READ volumeMeterPosition NOTIFY volumeMeterPositionChanged FINAL)
+    // a volume slider in sight is used (under the pointer, dragged): it shows
+    // the volume itself, the meter (VolumeMeter.qml) does not
+    Q_PROPERTY(bool volumeSliderActive MEMBER m_volumeSliderActive NOTIFY volumeSliderActiveChanged FINAL)
     // "Single click on the video" is not Nothing (where QML takes the click:
     // the picture of a cast)
     Q_PROPERTY(bool clickPauses READ clickPauses NOTIFY clickPausesChanged FINAL)
@@ -349,6 +353,9 @@ public:
     bool fullscreenControls() const { return m_fullscreenControls; }
     bool playlistTree() const { return m_playlistTree; }
     int doubleClickAction() const { return m_doubleClickAction; }
+    // where the volume meter shows: 0 by the direction of the language,
+    // 1 right side, 2 left side, 3 top right corner, 4 top left corner
+    int volumeMeterPosition() const { return m_volumeMeterPosition; }
     bool clickPauses() const { return m_clickPauses; }
     bool showErrorDialogs() const { return m_showErrorDialogs; }
     bool alwaysShowPlayerBar() const { return m_alwaysShowPlayerBar; }
@@ -366,6 +373,9 @@ public:
     // The action of live TV the key has in the shortcuts ("channel-up",
     // "channel-down", "previous", "list", "info"), "" none
     Q_INVOKABLE QString tvKeyAction(Qt::Key key, Qt::KeyboardModifiers modifiers) const;
+    // The name of the first key the shortcuts give to an action of live TV
+    // (as tvKeyAction names them), in the interface's language; "" none
+    Q_INVOKABLE QString tvKeyText(const QString &action) const;
     // The wheel's key (a VLC key: modifiers and a wheel direction) at a point
     // of the window: the subtitles' size over the video, the interface's
     // zoom elsewhere; true: it is one of them (apply: done)
@@ -658,6 +668,8 @@ protected:
     bool m_fullscreenControls = true;
     bool m_playlistTree = false;
     int m_doubleClickAction = 1;
+    int m_volumeMeterPosition = 0;
+    bool m_volumeSliderActive = false;
     bool m_clickPauses = true;
     bool m_showErrorDialogs = true;
     bool m_alwaysShowPlayerBar = false;
@@ -825,6 +837,8 @@ signals:
     void fullscreenControlsChanged();
     void playlistTreeChanged();
     void doubleClickActionChanged();
+    void volumeMeterPositionChanged();
+    void volumeSliderActiveChanged();
     void clickPausesChanged();
     void showErrorDialogsChanged();
     void alwaysShowPlayerBarChanged();

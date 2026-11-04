@@ -23,6 +23,7 @@ missing from the installation is not shown. See [how the Settings window works](
 | **Maximum volume** | Slider, 100 % to 300 %, ticks every 25 %, labels 100 %, 200 %, 300 %. Default: 200 %. | The highest volume the volume slider, the mouse wheel and the volume keys reach. Above 100 % VLC amplifies the sound itself, which can distort it. | `qt-max-volume` |
 | **Startup volume** | Two choices: *Remember last volume*, or *Always starts at:* with a percentage field (0 % to 125 %; a value outside is brought into that range). Default: *Remember last volume* (the field shows 100 %). | Whether VLC starts at the volume it had when it was closed, or always at the same volume. Clicking or typing in the field picks *Always starts at*. | `volume-save` (Remember = on), `mmdevice-volume` (the starting volume, 1.0 = 100 %) |
 | **Volume step** | Number field, in percent, 0.4 to 100. Default: 5. | How much one volume-up or volume-down step (a key, a wheel notch) changes the volume. | `volume-step` (in 256ths: 5 % = 12.8) |
+| **Volume indicator** | Dropdown: *Automatic* / *Right side* / *Left side* / *Top right corner* / *Top left corner*. Default: *Automatic*. | Where the volume shows when it changes (the wheel, the keys, mute, the bar's slider while the bar is hidden): a card with the speaker of the level, the bar's volume wedge and the percentage, for 1.5 s. *Automatic* puts it on the right side, on the left in a right-to-left language. It replaces the "Volume" message on the video. | `redesign/volume-meter-position` (interface setting, 0 to 4) |
 
 ## Loudness
 

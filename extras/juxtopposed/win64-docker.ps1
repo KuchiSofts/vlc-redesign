@@ -13,8 +13,12 @@ param(
     [string]$Cache = "$env:USERPROFILE\source\vlc-cache",
     # Only rebuild what changed in an already configured tree
     [switch]$Quick,
-    # Only run qmllint on the QML files changed in the working tree
+    # Only run qmllint: on the QML files of -LintFiles (paths from the
+    # repository's root), else on the ones changed since -LintBase (default
+    # HEAD, the working tree's changes; main: everything a branch changed)
     [switch]$Lint,
+    [string]$LintBase = 'HEAD',
+    [string[]]$LintFiles,
     # Docker volume holding the build tree; use another one for a release
     # build so the debug tree stays configured
     [string]$Volume,
@@ -54,9 +58,11 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 if ($Lint) {
-    $qml = @(git -C $root diff --name-only HEAD) + @(git -C $root ls-files --others --exclude-standard) |
-        Where-Object { $_ -like '*.qml' } | Sort-Object -Unique
-    if (-not $qml) { Write-Host 'No changed QML file'; return }
+    # Always an array: one file alone would be splatted letter by letter
+    $names = if ($LintFiles) { $LintFiles -replace '\\', '/' }
+             else { @(git -C $root diff --name-only $LintBase) + @(git -C $root ls-files --others --exclude-standard) }
+    $qml = @($names | Where-Object { $_ -like '*.qml' } | Sort-Object -Unique)
+    if ($qml.Count -eq 0) { Write-Host 'No changed QML file'; return }
     docker run --rm -v "${root}:/src:ro" -v "${Volume}:/build:ro" $image `
         sh /src/extras/juxtopposed/qmllint-docker.sh @qml
     return

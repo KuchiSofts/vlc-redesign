@@ -366,6 +366,9 @@ public:
     // The action of live TV the key has in the shortcuts ("channel-up",
     // "channel-down", "previous", "list", "info"), "" none
     Q_INVOKABLE QString tvKeyAction(Qt::Key key, Qt::KeyboardModifiers modifiers) const;
+    // The name of the first key the shortcuts give to an action of live TV
+    // (as tvKeyAction names them), in the interface's language; "" none
+    Q_INVOKABLE QString tvKeyText(const QString &action) const;
     // The wheel's key (a VLC key: modifiers and a wheel direction) at a point
     // of the window: the subtitles' size over the video, the interface's
     // zoom elsewhere; true: it is one of them (apply: done)

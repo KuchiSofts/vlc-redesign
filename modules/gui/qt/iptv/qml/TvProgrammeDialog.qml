@@ -91,9 +91,11 @@ Widgets.RedesignDialog {
         }
         Widgets.RedesignInfoRow {
             label: qsTr("Time")
-            value: Iptv.dayText(root.programme.start ?? 0) + ", " + Iptv.timeText(root.programme.start ?? 0)
-                   + " – " + Iptv.timeText(root.programme.stop ?? 0)
-                   + "  (" + Iptv.durationText((root.programme.stop ?? 0) - (root.programme.start ?? 0)) + ")"
+            // the hours start first in every language: left to right
+            // (U+202A ... U+202C), as on the TV and Android
+            value: Iptv.dayText(root.programme.start ?? 0) + ", ‪" + Iptv.timeText(root.programme.start ?? 0)
+                   + " – " + Iptv.timeText(root.programme.stop ?? 0) + "‬"
+                   + "  ("+ Iptv.durationText((root.programme.stop ?? 0) - (root.programme.start ?? 0)) + ")"
         }
         Widgets.RedesignInfoRow {
             visible: root._onNow

@@ -252,6 +252,12 @@ MainCtx::MainCtx(qt_intf_t *_p_intf)
     loadPrefs(false);
     loadFromSettingsImpl(false);
 
+    /* the volume shows in the window's meter (VolumeMeter.qml), not as a
+     * message on the video (src/player/osd.c) */
+    vlc_object_t *instance = VLC_OBJECT(vlc_object_instance(p_intf));
+    var_Create(instance, "intf-volume-meter", VLC_VAR_BOOL);
+    var_SetBool(instance, "intf-volume-meter", true);
+
     /* Get the available interfaces */
     m_extraInterfaces = new VLCVarChoiceModel(VLC_OBJECT(p_intf->intf), "intf-add", this);
 
@@ -384,6 +390,9 @@ MainCtx::MainCtx(qt_intf_t *_p_intf)
 
 MainCtx::~MainCtx()
 {
+    /* no meter any more: the volume's message on the video again */
+    var_SetBool(VLC_OBJECT(vlc_object_instance(p_intf)), "intf-volume-meter", false);
+
     /* The hotkeys left are dropped; an action still running ends first (as
      * the callbacks it may call go below) */
     m_hotkeysClosed->store(true);
@@ -665,6 +674,16 @@ void MainCtx::loadPrefs(const bool callSignals)
         m_increaseContrast = increaseContrast;
         if( callSignals )
             emit increaseContrastChanged();
+    }
+
+    /* "Volume indicator" of the settings: 0 by the direction of the
+     * language, 1 right side, 2 left side, 3 top right, 4 top left */
+    const int volumeMeter = std::clamp( getSettings()->value( "redesign/volume-meter-position", 0 ).toInt(), 0, 4 );
+    if( volumeMeter != m_volumeMeterPosition )
+    {
+        m_volumeMeterPosition = volumeMeter;
+        if( callSignals )
+            emit volumeMeterPositionChanged();
     }
 
     /* "Double click on the video" of the settings */

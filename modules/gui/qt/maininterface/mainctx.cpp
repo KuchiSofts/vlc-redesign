@@ -1452,6 +1452,25 @@ QString MainCtx::tvKeyAction(Qt::Key key, Qt::KeyboardModifiers modifiers) const
     return {};
 }
 
+QString MainCtx::tvKeyText(const QString &action) const
+{
+    const QByteArray name = QByteArrayLiteral("qt-key-tv-") + action.toLatin1();
+    char *keys = var_InheritString(p_intf, name.constData());
+    QString text;
+    char *buf;
+    const char *first = keys ? strtok_r(keys, "\t", &buf) : nullptr;
+    const uint_fast32_t code = first ? vlc_str2keycode(first) : KEY_UNSET;
+    if (code != KEY_UNSET)
+    {
+        char *str = vlc_keycode2str(code, true);
+        if (str)
+            text = qfu(str);
+        free(str);
+    }
+    free(keys);
+    return text;
+}
+
 void MainCtx::setSubtitleWheelArea(QObject *item)
 {
     if (m_subtitleWheelArea == item)

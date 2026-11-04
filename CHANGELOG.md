@@ -21,6 +21,12 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   every 2.4 s, its right ear twitches every 9 s. In whole blocks, as it is drawn (still sharp), and only while the
   scene is on screen: nothing runs when it is hidden or the window minimized.
 
+- The volume shows in a meter of its own when it changes (the wheel, the keys, mute, the bar's slider while the
+  bar is hidden): a card with the speaker of the level, the design's volume wedge and the percentage, at the side
+  of the window for 1.5 s, sliding in and out. It replaces the "Volume" message and the key name ("Mouse Wheel
+  Up") on the video. Settings > Audio > Volume indicator: Automatic (the right side, the left in a right-to-left
+  language), Right side, Left side, Top right corner or Top left corner. Translated in the 20 complete languages.
+
 ### Changed
 
 - Live TV: the channel banner is the TV's information bar, like a cable box's: the whole width of the player, flush
@@ -38,6 +44,12 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Technical
 
+- Volume meter: `maininterface/qml/VolumeMeter.qml` (over the whole window: player, fullscreen, library with
+  the mini player), `redesign/volume-meter-position` (0 to 4, `MainCtx.volumeMeterPosition`). The interface sets
+  `intf-volume-meter` on the instance and `vlc_player_osd_Volume()` (src/player/osd.c) then draws nothing on the
+  video; `MainCtx.volumeSliderActive` (a bar's slider under the pointer or dragged) keeps the meter away while
+  the slider shows the value itself. The wheel's volume steps still come from whole notches (120 units summed):
+  a touchpad's smooth scrolling makes no jumps.
 - `MainCtx.tvKeyText(action)`: the name of the first key the shortcuts give to an action of live TV, for the bar's
   key hints. `IdleScene.qml`: three timers (no animation runs between two steps).
 - `win64-docker.ps1 -Lint`: one changed QML file was splatted letter by letter ("not part of any QML module"); new

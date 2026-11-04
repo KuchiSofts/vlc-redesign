@@ -17,6 +17,10 @@ What is being worked on, updated as it changes (2026-11-02):
   the Live TV banner is the TV's information bar (full width on the control bar or the window's bottom, channel ·
   programme · side; right to left mirrored; the hours start first in Hebrew). Built and checked on Windows with the
   demo provider, LTR and Hebrew, dark and light; waits for review and the other platforms.
+- 🟡 **The volume meter** (2026-11-05, same branch, the owner's request): the volume's changes show in a card at
+  the side of the window (speaker of the level, the bar's wedge, the percentage; 1.5 s) instead of "Volume: n %"
+  and "Mouse Wheel Up" on the video; Settings > Audio > Volume indicator (Automatic = right, left in RTL; right
+  side, left side, top right, top left). Translated in the 20 complete languages (po/redesign exported).
 - 🟡 **Release 0.5.2** (2026-11-02, the owner's go): every desktop platform and the Android APK (0.5.2,
   versionCode 3070270, What's new in 62 languages); VideoLAN merged to 8a47770f63. In it: the Linux AppImage
   updater (PR #41), the Android fixes found by the real-phone and tablet checks (subtitles from Open Network
@@ -830,6 +834,7 @@ are listed disabled, with the reason under the pointer (Windows offers no way fo
 | Sleep timer, subtitle series presets                            | SleepTimerMenu.qml, SubtitleSeriesPreset.qml | 🟢 |
 | Idle player: the pixel cat (it blinks, its tail and ear move)   | IdleScene.qml                           | 🟢     |
 | Live TV information bar (the TV's, like a cable box)            | TvPlayerOverlay.qml                     | 🟢     |
+| Volume meter (the wheel, the keys, mute)                        | VolumeMeter.qml                         | 🟢     |
 | Player bar with nothing playing (*Always show the player bar*)  | ControlBar.qml, SettingsPresentation.qml | 🟢    |
 | Installer: Welcome, Options, installing, Done                   | `extras/juxtopposed/installer/`         | 🟢     |
 | Classic dialogs (Open Media, Convert, Media Information…)        | redesign_widget_theme.cpp, qvlcframe.cpp | 🟢 §8.6 |

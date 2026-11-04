@@ -196,6 +196,8 @@ readonly property var items: ({
         "jack-gain": [qsTr("Volume"), qsTr("Startup volume"), "", null, { hidden: true }],
         // in percent, written without the unit as the design does
         "volume-step": [qsTr("Volume"), qsTr("Volume step"), "volumepercent", null, { info: true, rowHeight: 53, controlTop: 11 }],
+        // where the meter of the volume shows (VolumeMeter.qml)
+        "redesign/volume-meter-position": [qsTr("Volume"), qsTr("Volume indicator"), "", null, { info: true }],
         "x-filter:normvol": [qsTr("Loudness"), qsTr("Normalize loudness"), "", null, { info: true, rowHeight: 42, controlTop: 5 }],
         "norm-max-level": [qsTr("Loudness"), qsTr("Target level"), "", null, { info: true, rowHeight: 46, controlTop: 6 }],
         "x-night-mode": [qsTr("Loudness"), qsTr("Night mode"), "", null, { info: true, rowHeight: 44, controlTop: 7 }],

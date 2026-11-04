@@ -16,6 +16,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
  *****************************************************************************/
 import QtQuick
+import QtQuick.Window
 
 // The player with nothing to show: the picture of Figma's "Player" frames
 // (their video.png, 1920 x 1080), the white pixel cat sitting on the floor
@@ -77,6 +78,43 @@ Item {
         }
     }
 
+    // the cat lives, in whole blocks as it is drawn (as on the TV): its
+    // eyes blink every 6 s, its tail goes up a block and back every 2.4 s,
+    // its right ear twitches every 9 s. Timers, not animations: nothing runs
+    // between two steps, and nothing at all while the scene is hidden.
+    readonly property bool _live: visible && Window.visibility !== Window.Minimized
+                                  && Window.visibility !== Window.Hidden
+    property bool _blink: false
+    property bool _tailUp: false
+    property bool _earUp: false
+
+    // the eyes: closed (as light as the face) for 3 % of the cycle
+    Timer {
+        running: root._live
+        repeat: true
+        interval: root._blink ? 180 : 6000 - 180
+        onTriggered: root._blink = !root._blink
+        onRunningChanged: if (!running) root._blink = false
+    }
+
+    // the tail: up for half of the cycle
+    Timer {
+        running: root._live
+        repeat: true
+        interval: 1200
+        onTriggered: root._tailUp = !root._tailUp
+        onRunningChanged: if (!running) root._tailUp = false
+    }
+
+    // the right ear: up for 5 % of the cycle
+    Timer {
+        running: root._live
+        repeat: true
+        interval: root._earUp ? 450 : 9000 - 450
+        onTriggered: root._earUp = !root._earUp
+        onRunningChanged: if (!running) root._earUp = false
+    }
+
     // the cat, its feet on the floor, in the middle of the scene
     Item {
         id: cat
@@ -92,11 +130,20 @@ Item {
             Rectangle {
                 required property var modelData
 
+                // the tail (its runs right of the body, from row 9) and the
+                // right ear (the top two rows from column 11) move a whole
+                // block up; the eyes are the single black blocks of row 4
+                readonly property bool _tail: modelData[1] >= 9 && modelData[0] >= 14
+                readonly property bool _ear: modelData[1] <= 1 && modelData[0] >= 11
+                readonly property bool _eye: modelData[1] === 4 && modelData[2] === 1
+                                             && modelData[3] === "#000000"
+                                             && (modelData[0] === 3 || modelData[0] === 8)
+
                 x: modelData[0] * root._block
-                y: modelData[1] * root._block
+                y: (modelData[1] - ((_tail && root._tailUp) || (_ear && root._earUp) ? 1 : 0)) * root._block
                 width: modelData[2] * root._block
                 height: root._block
-                color: modelData[3]
+                color: _eye && root._blink ? "#e0e0e0" : modelData[3]
                 antialiasing: false
             }
         }

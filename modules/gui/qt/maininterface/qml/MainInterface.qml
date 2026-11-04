@@ -100,6 +100,14 @@ Item {
                                  ? VLCStyle.dp(64, VLCStyle.scale) : 0)
     }
 
+    // the volume as it changes, at a side of the window (Settings > Audio)
+    VolumeMeter {
+        z: 18
+        area: g_mainInterface
+        // the corners under the top bar, but in fullscreen
+        topInset: MainCtx.intfMainWindow.visibility === Window.FullScreen ? 0 : VLCStyle.redesign.topbarHeight
+    }
+
     Item {
         id: g_mainInterface
 

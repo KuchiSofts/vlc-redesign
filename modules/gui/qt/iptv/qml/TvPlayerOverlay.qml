@@ -538,8 +538,10 @@ FocusScope {
                 Text {
                     id: nowTimes
                     anchors.verticalCenter: bannerLeft.verticalCenter
-                    text: root._archive ? Iptv.timeText(root.catchup.start ?? 0) + " – " + Iptv.timeText(root.catchup.stop ?? 0)
-                          : Iptv.timeText(root.now.start ?? 0) + " – " + Iptv.timeText(root.now.stop ?? 0)
+                    // the start first in every language: left to right
+                    // (U+202A ... U+202C), as on the TV and Android
+                    text: "‪" + (root._archive ? Iptv.timeText(root.catchup.start ?? 0) + " – " + Iptv.timeText(root.catchup.stop ?? 0)
+                                      : Iptv.timeText(root.now.start ?? 0) + " – " + Iptv.timeText(root.now.stop ?? 0)) + "‬"
                     color: banner.c("#EAEAEA", "#191919")
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: root.px(15)

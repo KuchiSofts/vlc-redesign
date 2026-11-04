@@ -15,6 +15,34 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Added
+
+- The idle screen's cat lives, as on the Samsung TV: its eyes blink every 6 s, its tail goes up a block and back
+  every 2.4 s, its right ear twitches every 9 s. In whole blocks, as it is drawn (still sharp), and only while the
+  scene is on screen: nothing runs when it is hidden or the window minimized.
+
+### Changed
+
+- Live TV: the channel banner is the TV's information bar, like a cable box's: the whole width of the player, flush
+  with the bottom of the window or sitting right on the control bar (its colour, a thin line on top, a soft shade
+  above it over the picture), in three columns: the channel (its logo big, number, name, a star for a favourite, its
+  group), the programme (Live, Earlier, Later or Archive; its title; its hours, progress and time left; the episode
+  and category; two lines of its description; what is next) and the side (the time now, the catch-up days, Watch,
+  Remind Me or Back to Live, the keys of the shortcuts; under the pointer, the buttons that do the same). Mirrored
+  in right-to-left languages; the banner modes and the description, progress and next settings work as before.
+
+### Fixed
+
+- Live TV: in right-to-left languages the hours of a programme read from its start ("22:00 – 23:30") in the banner
+  and in the programme's details (they could show the end first next to Hebrew or Arabic text).
+
+### Technical
+
+- `MainCtx.tvKeyText(action)`: the name of the first key the shortcuts give to an action of live TV, for the bar's
+  key hints. `IdleScene.qml`: three timers (no animation runs between two steps).
+- `win64-docker.ps1 -Lint`: one changed QML file was splatted letter by letter ("not part of any QML module"); new
+  `-LintFiles` (the files to lint) and `-LintBase` (lint what changed since a revision, such as `main`).
+
 ## [0.5.2] · 2026-11-02
 
 ### Added

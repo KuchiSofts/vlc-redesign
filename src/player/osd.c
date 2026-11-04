@@ -155,6 +155,14 @@ vlc_player_osd_Position(vlc_player_t *player,
 void
 vlc_player_osd_Volume(vlc_player_t *player, bool mute_action)
 {
+    /* VLC Redesign: an interface that shows the volume itself (the Qt
+     * interface's meter) sets "intf-volume-meter" on the instance: no
+     * message, no slider and no key name on the video then */
+    vlc_object_t *libvlc = VLC_OBJECT(vlc_object_instance(player));
+    if (var_Type(libvlc, "intf-volume-meter") != 0
+     && var_GetBool(libvlc, "intf-volume-meter"))
+        return;
+
     size_t count;
     vout_thread_t **vouts = vlc_player_osd_HoldAll(player, &count);
 

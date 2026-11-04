@@ -23689,6 +23689,18 @@ msgid ""
 "programs."
 msgstr "כמה זמן מעבד המערכת מקצה ל־VLC לעומת שאר התוכנות."
 
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:270 modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:200
+msgid "Volume indicator"
+msgstr "מחוון עוצמת השמע"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:271
+msgid "Where the volume shows when it changes (the wheel, the keys, mute). Automatic: on the right side, on the left in a right-to-left language."
+msgstr "היכן מוצגת עוצמת השמע כשהיא משתנה (הגלגלת, המקשים, השתקה). אוטומטי: בצד ימין, ובשפה הנכתבת מימין לשמאל בצד שמאל."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:273
+msgid "Automatic|Right side|Left side|Top right corner|Top left corner"
+msgstr "אוטומטי|צד ימין|צד שמאל|פינה ימנית עליונה|פינה שמאלית עליונה"
+
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:270
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
 msgid "Double click on the video"

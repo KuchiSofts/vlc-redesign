@@ -1124,7 +1124,14 @@
                          counter:(size_t (^)(void))counter
                           loader:(NSArray *(^)(void))loader
 {
+    // Stop media-library callbacks after lazy construction and drain submitted work.
+    (void)self.model;
     [self stopModelCallback];
+    XCTestExpectation * const settled = [self expectationWithDescription:@"Media-library callbacks settled before filtered count query"];
+    [self.model finishPendingQueriesWithCompletion:^{
+        [settled fulfill];
+    }];
+    [self waitForExpectations:@[ settled ] timeout:10.];
     const struct {
         SEL getter;
         __unsafe_unretained NSNotificationName notification;
@@ -1377,7 +1384,10 @@
             [notification.object libraryID] != libraryID)
             return NO;
         XCTAssertTrue(NSThread.isMainThread);
-        XCTAssertEqual(notification.object, previous);
+        VLCMediaLibraryMediaItem * const deletedItem = notification.object;
+        // Media-library callbacks may replace the snapshot before deletion arrives.
+        XCTAssertEqual(deletedItem.libraryID, previous.libraryID);
+        XCTAssertEqual(deletedItem.mediaType, type);
         NSArray * const cache = audio
             ? self.model.listOfRecentAudioMedia
             : self.model.listOfRecentMedia;

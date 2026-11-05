@@ -5,30 +5,34 @@ Changes of **VLC Redesign**, an unofficial VLC 4 build with the interface design
 For changes to VLC itself, see [NEWS](NEWS).
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
-what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `c6d1df39c7` (2026-11-05).
+what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `1e8e165eb6` (2026-11-05).
 
-**Contents:** [Unreleased](#unreleased) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [0.5.3](#053--2026-11-05) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
 
 ---
 
-## [Unreleased]
+## [0.5.3] · 2026-11-05
 
-### Fixed
-
-- Restoring a fullscreen window keeps the native frame in sync, avoiding right and bottom strips after reopening VLC. F and Escape also leave a restored fullscreen window when a video is playing.
-- A slow graphics-driver warmup no longer holds the interface thread before video starts on Windows.
-### Changed
-
-- Settings only enumerates subtitle fonts and optical drives when their editors are needed, so unrelated pages open with less work.
+**Everything together:** the desktop, Android on phones, tablets and **Android TV in the design**, and the first
+**Samsung TV app** (*Redesign Player for TV*).
 
 ### Added
 
+- **Samsung TV: Redesign Player for TV**, a media player for Samsung TVs (Tizen 3.0 and later) in Juxtopposed's
+  design, driven by the remote: the library, the player, Live TV (M3U and Xtream Codes, the guide, catch-up, films and
+  series), 17 languages, right to left, the colour keys and the designer's cat. The TV's own player plays the video,
+  so the app has none of VLC's code and does not carry VLC's name or cone: its mark is the designer's pixel cat. Its
+  source is attached to the release with a step-by-step guide to install it from a computer (developer mode and a
+  free Samsung certificate; it is not in Samsung's store).
+- Android TV: every page in the design, with the remote: the welcome steps, Settings, the video player's bar and
+  its focus, the music player (the large cover, the title under it and the player's bar at the bottom; the queue on
+  demand), details, search, the folder and playlist pages, the dialogs and About (every row of it is reachable). The
+  language row of Settings is called *Interface language*.
 - The idle screen's cat lives, as on the Samsung TV: its eyes blink every 6 s, its tail goes up a block and back
   every 2.4 s, its right ear twitches every 9 s. In whole blocks, as it is drawn (still sharp), and only while the
   scene is on screen: nothing runs when it is hidden or the window minimized.
-
 - The volume shows in a meter of its own when it changes (the wheel, the keys, mute, the bar's slider while the
   bar is hidden): a card with the speaker of the level, the design's volume wedge and the percentage, at the side
   of the window for 1.5 s, sliding in and out. It replaces the "Volume" message and the key name ("Mouse Wheel
@@ -47,14 +51,31 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - Settings > Video as the design: the Picture rows (hue, brightness, contrast, saturation, gamma, Reset) are there
   without a video too, set on the saved values ("Play video to adjust and preview the picture" before); "Stop the
   screensaver during playback" is a toggle (on: always, off: never).
+- Settings opens faster: the subtitle fonts and the optical drives are listed only when their rows ask for them
+  (by [@SHR1F](https://github.com/SHR1F), [#51](https://github.com/KuchiSofts/vlc-redesign/pull/51)).
+- Windows: a video no longer waits for the graphics driver's warm-up (started while the interface loads) before it
+  starts ([@SHR1F](https://github.com/SHR1F), [#50](https://github.com/KuchiSofts/vlc-redesign/pull/50)).
 
 ### Fixed
 
+- **Windows: grey strips on the right, left and bottom of the window, and no window buttons, after VLC was closed
+  in full screen** ([#48](https://github.com/KuchiSofts/vlc-redesign/issues/48)): a window closed in the interface's
+  full screen (F11, a double click on the video) opened in full screen again without the full screen being held, so
+  the window's frame kept the room of its resize borders inside the screen. The restored full screen is now held from
+  the start: it fills the screen, and Escape, F or F11 leave it with the title bar and its three buttons. Reported and
+  fixed by [@SHR1F](https://github.com/SHR1F) ([#49](https://github.com/KuchiSofts/vlc-redesign/pull/49)).
 - Live TV: in right-to-left languages the hours of a programme read from its start ("22:00 – 23:30") in the banner
   and in the programme's details (they could show the end first next to Hebrew or Arabic text).
+- Android: back from a video in a light theme, the library's cards keep their light colours (the player's night
+  mode changed the resources the whole app shares).
+- Android: a folder's card counts its contents with the design's folder icon, read out in words by screen readers
+  (a placeholder was read aloud).
 
 ### Technical
 
+- VideoLAN's VLC merged up to `1e8e165eb6` (2026-11-05: the list models' limit and offset, a medialibrary option to
+  turn network discovery off, which the redesign's own rule now respects: discovery only with a folder on the
+  network and never with the option off).
 - Volume meter: `maininterface/qml/VolumeMeter.qml` (over the whole window: player, fullscreen, library with
   the mini player), `redesign/volume-meter-position` (0 to 4, `MainCtx.volumeMeterPosition`). The interface sets
   `intf-volume-meter` on the instance and `vlc_player_osd_Volume()` (src/player/osd.c) then draws nothing on the
@@ -65,6 +86,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   key hints. `IdleScene.qml`: three timers (no animation runs between two steps).
 - `win64-docker.ps1 -Lint`: one changed QML file was splatted letter by letter ("not part of any QML module"); new
   `-LintFiles` (the files to lint) and `-LintBase` (lint what changed since a revision, such as `main`).
+- Android: the app is 0.5.3, its *What's new* card in 62 languages. Samsung TV: Redesign Player for TV 0.1.0
+  (`Redesign-Player-for-TV-0.1.0-source.zip`; the app's update check reads this project's releases).
 
 ## [0.5.2] · 2026-11-02
 

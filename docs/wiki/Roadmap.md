@@ -10,34 +10,28 @@ Status: ✅ done · 🔨 in progress · 📋 to do · 💡 idea
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-03).
+Updated as the work moves (last: 2026-11-05).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
-| **Windows x64** | ✅ released 0.5.2 | ██████████ 100 % | — 0.5.3: fixes as the issues bring them |
-| **Windows on ARM64** | ✅ released 0.5.2 | ██████████ 100 % | a run by hand on a real ARM64 PC |
-| **Linux** (x86_64, ARM64) | ✅ released 0.5.2 | ██████████ 100 % | the Flatpak on Flathub |
-| **macOS** (Apple Silicon, Intel) | ✅ released 0.5.2 | ██████████ 100 % | tests on a Mac by hand |
-| **Android** (phones) | ✅ released 0.5.2 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
-| **Android** (tablets) | ✅ released 0.5.2 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
-| **Android TV** | 🔨 in progress | ████░░░░░░ 40 % | the player and the pages under the home screen in the design |
-| **Samsung TV receiver** | 💡 researched | ░░░░░░░░░░ 0 % | after the Android TV layout |
+| **Windows x64** | ✅ released 0.5.3 | ██████████ 100 % | — fixes as the issues bring them |
+| **Windows on ARM64** | ✅ released 0.5.3 | ██████████ 100 % | a run by hand on a real ARM64 PC |
+| **Linux** (x86_64, ARM64) | ✅ released 0.5.3 | ██████████ 100 % | the Flatpak on Flathub |
+| **macOS** (Apple Silicon, Intel) | ✅ released 0.5.3 | ██████████ 100 % | tests on a Mac by hand |
+| **Android** (phones) | ✅ released 0.5.3 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
+| **Android** (tablets) | ✅ released 0.5.3 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
+| **Android TV** | ✅ released 0.5.3 | ██████████ 100 % | — every page in the design with a remote; tests on more TV boxes |
+| **Samsung TV** (*Redesign Player for TV*) | ✅ released 0.5.3 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
-## Next: 0.5.3 and after
+## Next: 0.5.4 and after
 
-**0.5.3** is a release of fixes, made as the issues bring them (each fix is first published through a pull request,
-with a build to try), and the Android TV layout:
+**0.5.4** is a release of fixes, made as the issues bring them (each fix is first published through a pull request,
+with a build to try):
 
-- 🔨 Android TV: the player, its controls and the pages under the home screen in the design, all with a remote
-  control (the palette, the Inter font and the accent focus are done in 0.5.2)
-- 📋 Linux: the first update of the AppImage from the app, checked from 0.5.2 to 0.5.3 on real desktops
-- ✅ The designer's cat lives on the idle screen (its eyes blink, its tail swings, an ear twitches), on every
-  version
-- ✅ Live TV: the channel banner is an information bar like a cable box's, flush with the player
-- ✅ The volume shows in a meter at the side of the window (Settings > Audio > Volume indicator), not as text
-- ✅ Settings > Video as the design: the picture sliders without a video, the screensaver a toggle
-- ✅ Android: back from a video in a light theme, the library's cards keep their light colours
+- 📋 Linux: the first update of the AppImage from the app, checked from 0.5.3 to 0.5.4 on real desktops
+- 📋 Samsung TV: a USB drive played on a real TV (the folders of the TV's own storage are checked)
+- 📋 Android TV: tests on more TV boxes (Google TV, Fire TV)
 
 After it:
 
@@ -46,4 +40,4 @@ After it:
   machines at every build)
 - 📋 Windows: tests on more real PCs (Windows 10, Intel graphics, screens of different scales)
 - 📋 Code-signed Windows releases (no SmartScreen warning): waiting for SignPath's approval
-- 💡 The Samsung TV receiver (the TV side of casting, drawn in the design), then iPhone and iPad
+- 💡 The Samsung TV app in Samsung's store; the TV side of casting (drawn in the design); then iPhone and iPad

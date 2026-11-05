@@ -38,11 +38,21 @@ ColumnLayout {
         }
     }
 
+    // the picture is set with a video (seen at once) or without one (on the
+    // saved values, as Figma 3073:14187 shows the page): begun again when a
+    // video starts or stops, while nothing was changed
     function beginForCurrentCategory() {
         starting = true
-        if (category === "video" && !videoEffects.transactionActive && videoEffects.activeVideo)
+        if (category === "video" && !videoEffects.transactionActive)
             videoEffects.begin()
         starting = false
+    }
+    readonly property bool _video: videoEffects.activeVideo
+    on_VideoChanged: {
+        if (category !== "video" || !videoEffects.transactionActive || videoEffects.modified())
+            return
+        videoEffects.cancel()
+        beginForCurrentCategory()
     }
 
     function cancel() {
@@ -73,7 +83,7 @@ ColumnLayout {
     Text {
         Layout.fillWidth: true
         visible: (root.category === "audio" && !audioEffects.transactionActive)
-                 || (root.category === "video" && !videoEffects.transactionActive)
+                 || (root.category === "video" && !videoEffects.transactionActive && !videoEffects.available)
         text: root.category === "audio"
               ? qsTr("Play audio to adjust and preview sound effects.")
               : qsTr("Play video to adjust and preview the picture.")

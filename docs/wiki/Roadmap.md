@@ -32,6 +32,12 @@ with a build to try), and the Android TV layout:
 - 🔨 Android TV: the player, its controls and the pages under the home screen in the design, all with a remote
   control (the palette, the Inter font and the accent focus are done in 0.5.2)
 - 📋 Linux: the first update of the AppImage from the app, checked from 0.5.2 to 0.5.3 on real desktops
+- ✅ The designer's cat lives on the idle screen (its eyes blink, its tail swings, an ear twitches), on every
+  version
+- ✅ Live TV: the channel banner is an information bar like a cable box's, flush with the player
+- ✅ The volume shows in a meter at the side of the window (Settings > Audio > Volume indicator), not as text
+- ✅ Settings > Video as the design: the picture sliders without a video, the screensaver a toggle
+- ✅ Android: back from a video in a light theme, the library's cards keep their light colours
 
 After it:
 

@@ -153,9 +153,10 @@ readonly property var items: ({
         // Video page of the design
         "video": [qsTr("Output"), qsTr("Enable video"), "", null, { info: true }],
         "fullscreen": [qsTr("Output"), qsTr("Start videos in fullscreen"), "", null, { info: true }],
-        // a list, not a toggle: VLC has a third value, "When fullscreen",
-        // that a toggle showed as on and lost when switched
-        "disable-screensaver": [qsTr("Output"), qsTr("Stop the screensaver during playback"), "", null, { info: true }],
+        // a toggle as the design draws it (Figma 3073:14187): on is "Always"
+        // (the default), off "Never"; VLC's third value, "When fullscreen"
+        // (set by its command line), shows as on until it is switched
+        "disable-screensaver": [qsTr("Output"), qsTr("Stop the screensaver during playback"), "inttoggle", null, { info: true }],
         "video-wallpaper": [qsTr("Output"), qsTr("Play video as desktop wallpaper"), "", null, { info: true }],
         "deinterlace": [qsTr("Deinterlacing"), qsTr("Deinterlacing"), "",
                         { "-1": qsTr("Automatic"), 0: qsTr("Off"), 1: qsTr("On") }, { info: true }],
@@ -196,6 +197,8 @@ readonly property var items: ({
         "jack-gain": [qsTr("Volume"), qsTr("Startup volume"), "", null, { hidden: true }],
         // in percent, written without the unit as the design does
         "volume-step": [qsTr("Volume"), qsTr("Volume step"), "volumepercent", null, { info: true, rowHeight: 53, controlTop: 11 }],
+        // where the meter of the volume shows (VolumeMeter.qml)
+        "redesign/volume-meter-position": [qsTr("Volume"), qsTr("Volume indicator"), "", null, { info: true }],
         "x-filter:normvol": [qsTr("Loudness"), qsTr("Normalize loudness"), "", null, { info: true, rowHeight: 42, controlTop: 5 }],
         "norm-max-level": [qsTr("Loudness"), qsTr("Target level"), "", null, { info: true, rowHeight: 46, controlTop: 6 }],
         "x-night-mode": [qsTr("Loudness"), qsTr("Night mode"), "", null, { info: true, rowHeight: 44, controlTop: 7 }],

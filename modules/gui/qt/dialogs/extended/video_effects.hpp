@@ -42,6 +42,8 @@ public:
     int revision() const { return m_revision; }
 
     Q_INVOKABLE bool begin();
+    // a value or the filter chain set since begin()
+    Q_INVOKABLE bool modified() const;
     Q_INVOKABLE bool cancel();
     Q_INVOKABLE bool save();
     bool prepareConfiguration(QHash<QString, QVariant>& values, QHash<QString, QVariant>& expected);
@@ -91,5 +93,10 @@ private:
     QHash<QString, QVariant> m_snapshotValues;
     QHash<QString, QVariant> m_configSnapshot;
     QHash<QString, int> m_snapshotCrop;
+    // Without a video (Settings > Video, Figma 3073:14187): the picture is
+    // set on the saved values, kept here until save() or cancel()
+    bool m_offline = false;
+    QHash<QString, QVariant> m_offlineValues;
+    QString m_offlineChain;
 };
 #endif

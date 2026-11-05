@@ -10,6 +10,7 @@ import QtQuick
 import QtQuick.Templates as T
 
 import VLC.MainInterface
+import VLC.Player
 import VLC.Style
 import VLC.Util
 import VLC.Widgets as Widgets
@@ -307,9 +308,11 @@ FocusScope {
     Rectangle {
         id: banner
 
+        // (the pointer brings it back while something plays: the channel
+        // stopped, still the current item, shows the idle player alone)
         readonly property bool wanted: Iptv.bannerMode !== 3
-                                       && (bannerTimer.running || bannerHover.hovered || zoneHover.hovered || root.browse !== 0
-                                           || numberEntry.text.length > 0)
+                                       && (bannerTimer.running || (Player.isStarted && (bannerHover.hovered || zoneHover.hovered))
+                                           || root.browse !== 0 || numberEntry.text.length > 0)
         readonly property bool pointed: bannerHover.hovered || zoneHover.hovered
         readonly property bool _dark: VLCStyle.palette.isDark
         // a colour of the TV's bar, and its own in the light theme

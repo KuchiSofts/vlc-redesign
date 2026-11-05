@@ -10,7 +10,12 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 ## Now
 
-What is being worked on, updated as it changes (2026-11-02):
+What is being worked on, updated as it changes (2026-11-03):
+
+- 🟢 **Roadmap rewritten** (2026-11-03): ROADMAP.md in order (where each program stands, Next, each platform, the
+  released versions newest first); 0.4.0's old "in progress" items that shipped folded into its entry, the open
+  ones (signing, real-hardware tests) under Next; the README's roadmap paragraph at 0.5.2 / next 0.5.3. Merged
+  branches cleaned on GitHub (22), the redundant upstream-sync PR #43 closed (its commit was in 0.5.2).
 
 - 🟡 **The TV's cat and information bar on the desktop** (2026-11-04, branch `feature/cat-anim-infobar`): the idle
   cat lives as on the Samsung TV (eyes, tail, right ear, in whole blocks; timers that run only while it shows) and

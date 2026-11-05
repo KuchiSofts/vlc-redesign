@@ -18,6 +18,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 ### Fixed
 
 - Restoring a fullscreen window keeps the native frame in sync, avoiding right and bottom strips after reopening VLC. F and Escape also leave a restored fullscreen window when a video is playing.
+- A slow graphics-driver warmup no longer holds the interface thread before video starts on Windows.
 
 ### Added
 

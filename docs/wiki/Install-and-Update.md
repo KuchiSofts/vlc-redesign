@@ -27,13 +27,13 @@ The files of version 0.5.3 ([release page](https://github.com/KuchiSofts/vlc-red
 
 | File | Size | What it is |
 |---|---|---|
-| `vlc-redesign-0.5.3-win64-setup.exe` | 59.5 MB | **The installer.** Recommended: no administrator rights, a Start menu entry, file types, small updates. |
-| `vlc-redesign-0.5.3-win64.zip` | 107.8 MB | **The portable copy**: unzip anywhere and run `vlc.exe`. |
-| `vlc-redesign-0.5.3-winarm64-setup.exe` | 45.8 MB | **The installer for Windows 11 on ARM64** (see [Windows on ARM64](#windows-on-arm64)). |
-| `vlc-redesign-0.5.3-winarm64.zip` | 82.2 MB | **The portable copy for Windows 11 on ARM64.** |
-| `vlc-redesign-0.5.3-delta-from-0.5.2.vrdelta` | 3.6 MB | A small update from 0.5.2, used by the app itself (see [Small updates](#small-updates)). |
-| `vlc-redesign-0.5.3-delta-from-0.5.1.vrdelta`, `...-from-0.5.0.vrdelta` | 5.1 MB and 10.2 MB | The small updates from 0.5.1 and from 0.5.0. |
-| `vlc-redesign-0.5.3-winarm64-delta-from-0.5.2.vrdelta`, `...-from-0.5.1.vrdelta` | 3.8 MB and 4.3 MB | The small updates of Windows on ARM64 from 0.5.2 and from 0.5.1. |
+| `vlc-redesign-0.5.3-win64-setup.exe` | 59.6 MB | **The installer.** Recommended: no administrator rights, a Start menu entry, file types, small updates. |
+| `vlc-redesign-0.5.3-win64.zip` | 107.9 MB | **The portable copy**: unzip anywhere and run `vlc.exe`. |
+| `vlc-redesign-0.5.3-winarm64-setup.exe` | 47.4 MB | **The installer for Windows 11 on ARM64** (see [Windows on ARM64](#windows-on-arm64)). |
+| `vlc-redesign-0.5.3-winarm64.zip` | 84.0 MB | **The portable copy for Windows 11 on ARM64.** |
+| `vlc-redesign-0.5.3-delta-from-0.5.2.vrdelta` | 7.7 MB | A small update from 0.5.2, used by the app itself (see [Small updates](#small-updates)). |
+| `vlc-redesign-0.5.3-delta-from-0.5.1.vrdelta`, `...-from-0.5.0.vrdelta` | 7.7 MB each | The small updates from 0.5.1 and from 0.5.0. |
+| `vlc-redesign-0.5.3-winarm64-delta-from-0.5.2.vrdelta`, `...-from-0.5.1.vrdelta` | 15.3 MB each | The small updates of Windows on ARM64 from 0.5.2 and from 0.5.1 (and `...-from-0.5.0.vrdelta`). |
 | `vlc-redesign-0.5.3-source.tar.gz` | | The source code of this release. |
 | `SHA256SUMS.txt` | | The SHA-256 of every file of the release, to check a download. |
 | `SHA256SUMS.txt.sig` | | The signature of `SHA256SUMS.txt`: from 0.4.0 on, the app installs only an update whose list is signed. |
@@ -52,13 +52,13 @@ PC.
 
 | File | Size | What it is |
 |---|---|---|
-| `vlc-redesign_0.5.3_amd64.deb` | 161 MB | **For Ubuntu 24.04 and later and Debian 13.** Installs in `/opt/vlc-redesign`, the command `vlc-redesign`. |
+| `vlc-redesign_0.5.3_amd64.deb` | 154 MB | **For Ubuntu 24.04 and later and Debian 13.** Installs in `/opt/vlc-redesign`, the command `vlc-redesign`. |
 | `vlc-redesign-livetv_0.5.3_amd64.deb` | | The Live TV add-on for the .deb (optional). |
-| `vlc-redesign-0.5.3-1.x86_64.rpm` | 161 MB | **For Fedora 39 and later.** Installs in `/opt/vlc-redesign`, the command `vlc-redesign`. |
+| `vlc-redesign-0.5.3-1.x86_64.rpm` | 155 MB | **For Fedora 39 and later.** Installs in `/opt/vlc-redesign`, the command `vlc-redesign`. |
 | `vlc-redesign-livetv-0.5.3-1.x86_64.rpm` | | The Live TV add-on for the .rpm (optional). |
-| `vlc-redesign-0.5.3-x86_64.AppImage` | 172 MB | **One file for any distribution with glibc 2.38 or later** (Arch among them), with its `.zsync`. |
-| `vlc-redesign-0.5.3-linux-x86_64.tar.xz` | 130 MB | A folder to run from, nothing installed. |
-| `vlc-redesign-0.5.3-x86_64.flatpak` | 133 MB | **A Flatpak** (its runtime comes from Flathub): `flatpak install --user vlc-redesign-0.5.3-x86_64.flatpak`. |
+| `vlc-redesign-0.5.3-x86_64.AppImage` | 165 MB | **One file for any distribution with glibc 2.38 or later** (Arch among them), with its `.zsync`. |
+| `vlc-redesign-0.5.3-linux-x86_64.tar.xz` | 125 MB | A folder to run from, nothing installed. |
+| `vlc-redesign-0.5.3-x86_64.flatpak` | 127 MB | **A Flatpak** (its runtime comes from Flathub): `flatpak install --user vlc-redesign-0.5.3-x86_64.flatpak`. |
 | `SHA256SUMS-linux-x86_64.txt` | | The SHA-256 of the Linux files, to check a download. |
 
 **macOS** (12 Monterey or later):

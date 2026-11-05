@@ -10,7 +10,7 @@ Issues with a 👍 from many people move up this list.
 
 Status: ✅ done · 🔨 in progress · 📋 to do · 💡 idea
 
-**Contents:** [Where each program stands](#where-each-program-stands) · [Next](#next-053-and-after) ·
+**Contents:** [Where each program stands](#where-each-program-stands) · [Next](#next-054-and-after) ·
 [Each platform](#each-platform) · [Released versions](#released-versions) · [Staying close to VLC](#staying-close-to-vlc)
 
 The full plan, with every Figma frame, its status and the design tokens, is the
@@ -18,34 +18,28 @@ The full plan, with every Figma frame, its status and the design tokens, is the
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-03).
+Updated as the work moves (last: 2026-11-05).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
-| **Windows x64** | ✅ released 0.5.2 | ██████████ 100 % | — 0.5.3: fixes as the issues bring them |
-| **Windows on ARM64** | ✅ released 0.5.2 | ██████████ 100 % | a run by hand on a real ARM64 PC |
-| **Linux** (x86_64, ARM64) | ✅ released 0.5.2 | ██████████ 100 % | the Flatpak on Flathub |
-| **macOS** (Apple Silicon, Intel) | ✅ released 0.5.2 | ██████████ 100 % | tests on a Mac by hand |
-| **Android** (phones) | ✅ released 0.5.2 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
-| **Android** (tablets) | ✅ released 0.5.2 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
-| **Android TV** | 🔨 in progress | ████░░░░░░ 40 % | the player and the pages under the home screen in the design |
-| **Samsung TV receiver** | 💡 researched | ░░░░░░░░░░ 0 % | after the Android TV layout |
+| **Windows x64** | ✅ released 0.5.3 | ██████████ 100 % | — fixes as the issues bring them |
+| **Windows on ARM64** | ✅ released 0.5.3 | ██████████ 100 % | a run by hand on a real ARM64 PC |
+| **Linux** (x86_64, ARM64) | ✅ released 0.5.3 | ██████████ 100 % | the Flatpak on Flathub |
+| **macOS** (Apple Silicon, Intel) | ✅ released 0.5.3 | ██████████ 100 % | tests on a Mac by hand |
+| **Android** (phones) | ✅ released 0.5.3 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
+| **Android** (tablets) | ✅ released 0.5.3 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
+| **Android TV** | ✅ released 0.5.3 | ██████████ 100 % | — every page in the design with a remote; tests on more TV boxes |
+| **Samsung TV** (*Redesign Player for TV*) | ✅ released 0.5.3 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
-## Next: 0.5.3 and after
+## Next: 0.5.4 and after
 
-**0.5.3** is a release of fixes, made as the issues bring them (each fix is first published through a pull request,
-with a build to try), and the Android TV layout:
+**0.5.4** is a release of fixes, made as the issues bring them (each fix is first published through a pull request,
+with a build to try):
 
-- 🔨 Android TV: the player, its controls and the pages under the home screen in the design, all with a remote
-  control (the palette, the Inter font and the accent focus are done in 0.5.2)
-- 📋 Linux: the first update of the AppImage from the app, checked from 0.5.2 to 0.5.3 on real desktops
-- ✅ The designer's cat lives on the idle screen (its eyes blink, its tail swings, an ear twitches), on every
-  version
-- ✅ Live TV: the channel banner is an information bar like a cable box's, flush with the player
-- ✅ The volume shows in a meter at the side of the window (Settings > Audio > Volume indicator), not as text
-- ✅ Settings > Video as the design: the picture sliders without a video, the screensaver a toggle
-- ✅ Android: back from a video in a light theme, the library's cards keep their light colours
+- 📋 Linux: the first update of the AppImage from the app, checked from 0.5.3 to 0.5.4 on real desktops
+- 📋 Samsung TV: a USB drive played on a real TV (the folders of the TV's own storage are checked)
+- 📋 Android TV: tests on more TV boxes (Google TV, Fire TV)
 
 After it:
 
@@ -54,7 +48,7 @@ After it:
   machines at every build)
 - 📋 Windows: tests on more real PCs (Windows 10, Intel graphics, screens of different scales)
 - 📋 Code-signed Windows releases (no SmartScreen warning): waiting for SignPath's approval
-- 💡 The Samsung TV receiver (the TV side of casting, drawn in the design), then iPhone and iPad
+- 💡 The Samsung TV app in Samsung's store; the TV side of casting (drawn in the design); then iPhone and iPad
 
 ## Each platform
 
@@ -83,21 +77,43 @@ Android and Swift files made from them and a check on every pull request that th
 - ✅ A disk image for each, built and tested by GitHub's Macs, signed ad hoc (macOS asks once to open it)
 - 📋 Tests on a Mac by hand; signing by Apple (it needs a developer account); an updater in the app
 
-**Android** (phones and tablets since 0.5.0, TV in progress)
+**Android** (phones and tablets since 0.5.0, TV since 0.5.3)
 
 - ✅ Its own app (`org.kuchisofts.vlcredesign`, beside VLC): the design's Home, library, player and Customize
   Player, casting, effects, recording, subtitles in every script and right to left, Live TV, the tablet layout
 - ✅ An APK on the [release page](https://github.com/KuchiSofts/vlc-redesign/releases/latest) (not on Google Play);
   the app says when a new version is out
-- 🔨 Android TV: the first pass of the design is done (0.5.2); the player and the pages are next
+- ✅ Android TV: every page in the design with the remote (0.5.3): the welcome, Settings, the video and music
+  players, details, search, the folder and playlist pages, About
+
+**Samsung TV** (since 0.5.3)
+
+- ✅ *Redesign Player for TV*: the design's own player for Samsung TVs (Tizen 3.0 and later): the library, the player,
+  Live TV, 17 languages, right to left, the colour keys of the remote; the TV's own player plays the video
+- ✅ Installed from a computer (developer mode, a free Samsung certificate), with a step-by-step guide; not in the store
+- 📋 A USB drive played on a real TV; the Samsung store
 
 **Later**
 
-- 💡 Samsung TV receiver, iPhone and iPad
+- 💡 iPhone and iPad
 
 ## Released versions
 
 Newest first. Every change is in the [changelog](CHANGELOG.md).
+
+### 0.5.3 (2026-11-05)
+
+**Everything together:** Android TV in the design, the first Samsung TV app, and fixes on the desktop:
+
+- ✅ Android TV: every page in the design with the remote (the welcome, Settings, the players, details, search)
+- ✅ Samsung TV: *Redesign Player for TV*, the design's own player, installed from a computer
+- ✅ The designer's cat lives on the idle screen (its eyes blink, its tail swings, an ear twitches), on every
+  version; Live TV's channel banner is an information bar like a cable box's
+- ✅ The volume shows in a meter at the side of the window (Settings > Audio > Volume indicator)
+- ✅ Windows: no grey strips after a restart in full screen ([#48](https://github.com/KuchiSofts/vlc-redesign/issues/48));
+  video starts without waiting for the graphics driver; Settings opens faster (by @SHR1F)
+
+See the [changelog](CHANGELOG.md#053--2026-11-05).
 
 ### 0.5.2 (2026-11-02)
 

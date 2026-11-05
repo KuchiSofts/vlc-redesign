@@ -24,9 +24,9 @@ platforms:
     name: Windows
     short: Windows
     status: released
-    version: 0.5.2
-    date: 2026-11-02
-    next: 0.5.3
+    version: 0.5.3
+    date: 2026-11-05
+    next: 0.5.4
     os: windows
     requires: Windows 10 (1809) or 11, 64-bit
     repository: KuchiSofts/vlc-redesign
@@ -42,9 +42,9 @@ platforms:
     name: Linux
     short: Linux
     status: released
-    version: 0.5.2
-    date: 2026-11-02
-    next: 0.5.3
+    version: 0.5.3
+    date: 2026-11-05
+    next: 0.5.4
     os: linux
     requires: glibc 2.38 (Ubuntu 24.04, Debian 13, Fedora 39 or later), x86_64 or ARM64
     repository: KuchiSofts/vlc-redesign
@@ -70,9 +70,9 @@ platforms:
     name: macOS
     short: macOS
     status: released
-    version: 0.5.2
-    date: 2026-11-02
-    next: 0.5.3
+    version: 0.5.3
+    date: 2026-11-05
+    next: 0.5.4
     os: macos
     requires: macOS 12 Monterey, Apple Silicon or Intel
     repository: KuchiSofts/vlc-redesign
@@ -88,9 +88,9 @@ platforms:
     name: Windows on ARM64
     short: Windows ARM64
     status: released
-    version: 0.5.2
-    date: 2026-11-02
-    next: 0.5.3
+    version: 0.5.3
+    date: 2026-11-05
+    next: 0.5.4
     os: windows-arm64
     requires: Windows 11 on ARM64
     repository: KuchiSofts/vlc-redesign
@@ -106,27 +106,33 @@ platforms:
     name: Android (phones, tablets, TV)
     short: Android
     status: released
-    version: 0.5.2
-    date: 2026-11-02
-    next: 0.5.3
+    version: 0.5.3
+    date: 2026-11-05
+    next: 0.5.4
     os: android
     requires: Android 8.0 or later
     repository: KuchiSofts/vlc-redesign
     page: https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update
-    notes: An APK for phones and tablets (ARM64, ARMv7, x86, x86_64), beside VLC; not on Google Play
+    notes: One APK for phones, tablets and Android TV (ARM64, ARMv7, x86, x86_64), beside VLC; not on Google Play
     downloads:
       - label: APK
         file: vlc-redesign-{version}-android.apk
 
   - id: samsung-tv
-    name: Samsung Smart TV (Tizen)
+    name: Samsung Smart TV (Tizen): Redesign Player for TV
     short: Samsung TV
-    status: research
+    status: released
+    version: 0.5.3
+    date: 2026-11-05
+    next: 0.5.4
     os: tizen
-    requires: Tizen 3.0 (2017 models) or later
-    repository: KuchiSofts/vlc-redesign-tv
-    page: https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/PLATFORMS.md
-    notes: The TV side of casting, drawn in the design
+    requires: Tizen 3.0 (2017 models) or later, installed from a computer in developer mode
+    repository: KuchiSofts/vlc-redesign
+    page: https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#samsung-tv
+    notes: Its own player in the design (the TV plays the video); the source with a step-by-step install guide
+    downloads:
+      - label: Source and guide
+        file: Redesign-Player-for-TV-{version}-source.zip
 
   - id: ios
     name: iPhone, iPad, Apple TV

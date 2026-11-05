@@ -54,6 +54,13 @@ Thank you to everyone who tested, reported and translated:
     ([#9](https://github.com/KuchiSofts/vlc-redesign/issues/9)).
   - [@MAVIVEHICR](https://github.com/MAVIVEHICR): the startup volume stopped at 125 %
     ([#30](https://github.com/KuchiSofts/vlc-redesign/issues/30)).
+  - [@SHR1F](https://github.com/SHR1F): the grey strips after a restart in full screen
+    ([#48](https://github.com/KuchiSofts/vlc-redesign/issues/48)).
+- **Code:**
+  - [@SHR1F](https://github.com/SHR1F): the restored full screen held from the start
+    ([#49](https://github.com/KuchiSofts/vlc-redesign/pull/49)), video without waiting for the graphics driver's warm-up
+    ([#50](https://github.com/KuchiSofts/vlc-redesign/pull/50)) and Settings that lists fonts and drives only when
+    asked ([#51](https://github.com/KuchiSofts/vlc-redesign/pull/51)).
 - **Ideas:**
   - [@muhammadali-og](https://github.com/muhammadali-og): buttons that show what is open, and Ctrl + wheel for
     the subtitle size ([#10](https://github.com/KuchiSofts/vlc-redesign/issues/10)).

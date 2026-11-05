@@ -10,23 +10,32 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 ## Now
 
-What is being worked on, updated as it changes (2026-11-03):
+What is being worked on, updated as it changes (2026-11-05):
 
+- 🟢 **Release 0.5.3** (2026-11-05, everything together, the owner's plan): the desktop on every platform, Android
+  with the TV layout in the design (the welcome, Settings, the video and music players, details, search, the folder
+  and playlist pages, About), and the first Samsung TV app, *Redesign Player for TV* (no VLC code, so its own name
+  and the designer's cat as its mark; the source and an install guide on the release). In it: the living cat and
+  the TV-style information bar on every version, the volume meter, Settings > Video as the design, and three
+  pull requests by @SHR1F (#49 the restored full screen held from the start, fixing #48; #50 video without waiting
+  for the driver warm-up; #51 Settings lists fonts and drives only when asked), each checked on Windows (the #48
+  strips reproduced on 0.5.2 and gone with #49; 35/35 formats; the Settings sweep unchanged). VideoLAN merged to
+  1e8e165eb6. Next: 0.5.4 (fixes).
 - 🟢 **Roadmap rewritten** (2026-11-03): ROADMAP.md in order (where each program stands, Next, each platform, the
   released versions newest first); 0.4.0's old "in progress" items that shipped folded into its entry, the open
   ones (signing, real-hardware tests) under Next; the README's roadmap paragraph at 0.5.2 / next 0.5.3. Merged
   branches cleaned on GitHub (22), the redundant upstream-sync PR #43 closed (its commit was in 0.5.2).
 
-- 🟡 **The TV's cat and information bar on the desktop** (2026-11-04, branch `feature/cat-anim-infobar`): the idle
+- 🟢 **The TV's cat and information bar on the desktop** (2026-11-04, in 0.5.3): the idle
   cat lives as on the Samsung TV (eyes, tail, right ear, in whole blocks; timers that run only while it shows) and
   the Live TV banner is the TV's information bar (full width on the control bar or the window's bottom, channel ·
   programme · side; right to left mirrored; the hours start first in Hebrew). Built and checked on Windows with the
-  demo provider, LTR and Hebrew, dark and light; waits for review and the other platforms.
-- 🟡 **The volume meter** (2026-11-05, same branch, the owner's request): the volume's changes show in a card at
+  demo provider, LTR and Hebrew, dark and light.
+- 🟢 **The volume meter** (2026-11-05, in 0.5.3, the owner's request): the volume's changes show in a card at
   the side of the window (speaker of the level, the bar's wedge, the percentage; 1.5 s) instead of "Volume: n %"
   and "Mouse Wheel Up" on the video; Settings > Audio > Volume indicator (Automatic = right, left in RTL; right
   side, left side, top right, top left). Translated in the 20 complete languages (po/redesign exported).
-- 🟡 **Release 0.5.2** (2026-11-02, the owner's go): every desktop platform and the Android APK (0.5.2,
+- 🟢 **Release 0.5.2** (2026-11-02, the owner's go): every desktop platform and the Android APK (0.5.2,
   versionCode 3070270, What's new in 62 languages); VideoLAN merged to 8a47770f63. In it: the Linux AppImage
   updater (PR #41), the Android fixes found by the real-phone and tablet checks (subtitles from Open Network
   Stream, the subtitle font through fontconfig names, a stream's long press, the mini player in right-to-left
@@ -418,11 +427,11 @@ counted from this document's own tables and checklists (column *From*); ⚪ idea
 | Linux           | 🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜ | 15/20   | 75 %  | [§9](#linux)                           |
 | macOS           | 🟩🟩🟩🟩🟩⬜⬜⬜⬜⬜ | 3/6     | 50 %  | [§9](#macos)                           |
 | Windows ARM64   | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 5/5     | 100 % | [§9](#windows-on-arm64)                |
-| Android         | 🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜ | 7/8     | 87 %  | [§9](#android-phones-tablets-tv)       |
-| Samsung TV      | 🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ | 2/7     | 28 %  | [§9](#samsung-smart-tv-tizen)          |
+| Android         | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 | 8/8     | 100 % | [§9](#android-phones-tablets-tv)       |
+| Samsung TV      | 🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜ | 7/9     | 77 %  | [§9](#samsung-smart-tv-tizen)          |
 | iPhone / iPad   | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/3     | 0 %   | [§9](#iphone-ipad-apple-tv)            |
 
-Released on every desktop platform and Android: 0.5.2 on 2026-11-02 ([v0.5.2](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.2)).
+Released on every desktop platform, Android (with TV) and Samsung TV: 0.5.3 on 2026-11-05 ([v0.5.3](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.3)).
 The Windows bar counts the lines of section 8 (the ones left need the owner: SignPath, Discussions); the others
 count the 🟢 among the marked lines of their part of section 9.
 
@@ -1557,8 +1566,9 @@ phone and TV layouts need frames of their own (decision 6).
   start-up, playback of 12 formats, 5.1 audio mixed down to stereo, About, links), TalkBack reads the switches
 - 🟢 A real tablet: a tablet (2026-11-02: portrait and landscape, Hebrew and English, playback,
   every switch, Customize Player by drag and drop)
-- 🟡 Android TV / Google TV layout (remote control): the dark palette, Inter and the accent focus frame (0.5.2);
-  the player and the pages under the home screen next. F-Droid (Google Play: not planned, decision 4)
+- 🟢 Android TV / Google TV layout (remote control): the dark palette, Inter and the accent focus frame (0.5.2);
+  every page in the design with the remote (0.5.3): the welcome, Settings, the video and music players, details,
+  search, the folder and playlist pages, About. F-Droid (Google Play: not planned, decision 4)
 
 ### Samsung Smart TV (Tizen)
 
@@ -1567,10 +1577,18 @@ on the TV. A Samsung Galaxy phone is Android (track above).
 
 - 🟢 Casting from the PC (DLNA) works on the UE55MU8000: pause kept, as-is in MPEG-TS, converted when stopped
 - 🟢 Developer mode is on on the test TV, but bound to 127.0.0.1
-- 🔴 Developer mode set to the PC's address (only at the TV: Apps → 1 2 3 4 5) (decision 5)
-- 🔴 Tizen Studio, a Samsung certificate tied to the TV, a hello-world web app installed
-- 🔴 Receiver app: plays a URL from the desktop with the TV's player (AVPlay), the redesign's controls, remote keys
-- 🔴 The desktop finds the receiver and uses it instead of DLNA (seek, subtitles as text, tracks)
+- 🟢 Developer mode set to the PC's address (only at the TV: Apps → 1 2 3 4 5) (decision 5)
+- 🟢 Tizen Studio, a Samsung certificate tied to the TV, the app installed and debugged through its web inspector
+- 🟢 **Redesign Player for TV** (0.5.3): a stand-alone player in the design, played by the TV's player (AVPlay): the
+  library, the player and its panels, Live TV (M3U, Xtream Codes, the guide, catch-up, films and series), 17
+  languages, right to left, the colour keys; every screen compared with its Figma frame (32 scenes, 1.16 % mean)
+- 🟢 Its own name and mark (no VLC code: VideoLAN's trademark policy): the designer's pixel cat; About credits
+  Juxtopposed, VideoLAN's VLC and its authors
+- 🟢 Published as source with a step-by-step install guide (developer mode, a free Samsung certificate)
+- 🟢 Tested on the UE55MU8000 (2017, Tizen 3.0): the whole-app round, every language, focus, right to left, every
+  player button, every Settings control
+- 🔴 A USB drive played on a real TV (no drive at hand)
+- 🔴 The desktop finds the TV app and casts to it instead of DLNA (seek, subtitles as text, tracks)
 - 🔴 Samsung store submission, if wanted (seller account and review)
 
 ### iPhone, iPad, Apple TV

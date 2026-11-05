@@ -153,9 +153,10 @@ readonly property var items: ({
         // Video page of the design
         "video": [qsTr("Output"), qsTr("Enable video"), "", null, { info: true }],
         "fullscreen": [qsTr("Output"), qsTr("Start videos in fullscreen"), "", null, { info: true }],
-        // a list, not a toggle: VLC has a third value, "When fullscreen",
-        // that a toggle showed as on and lost when switched
-        "disable-screensaver": [qsTr("Output"), qsTr("Stop the screensaver during playback"), "", null, { info: true }],
+        // a toggle as the design draws it (Figma 3073:14187): on is "Always"
+        // (the default), off "Never"; VLC's third value, "When fullscreen"
+        // (set by its command line), shows as on until it is switched
+        "disable-screensaver": [qsTr("Output"), qsTr("Stop the screensaver during playback"), "inttoggle", null, { info: true }],
         "video-wallpaper": [qsTr("Output"), qsTr("Play video as desktop wallpaper"), "", null, { info: true }],
         "deinterlace": [qsTr("Deinterlacing"), qsTr("Deinterlacing"), "",
                         { "-1": qsTr("Automatic"), 0: qsTr("Off"), 1: qsTr("On") }, { info: true }],

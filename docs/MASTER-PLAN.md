@@ -10,9 +10,9 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 ## Now
 
-What is being worked on, updated as it changes (2026-11-05):
+What is being worked on, updated as it changes (2026-11-06):
 
-- 🟢 **Release 0.5.3** (2026-11-05, everything together, the owner's plan): the desktop on every platform, Android
+- 🟢 **Release 0.5.3** (2026-11-06, everything together, the owner's plan): the desktop on every platform, Android
   with the TV layout in the design (the welcome, Settings, the video and music players, details, search, the folder
   and playlist pages, About), and the first Samsung TV app, *Redesign Player for TV* (no VLC code, so its own name
   and the designer's cat as its mark; the source and an install guide on the release). In it: the living cat and
@@ -431,7 +431,7 @@ counted from this document's own tables and checklists (column *From*); ⚪ idea
 | Samsung TV      | 🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜ | 7/9     | 77 %  | [§9](#samsung-smart-tv-tizen)          |
 | iPhone / iPad   | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/3     | 0 %   | [§9](#iphone-ipad-apple-tv)            |
 
-Released on every desktop platform, Android (with TV) and Samsung TV: 0.5.3 on 2026-11-05 ([v0.5.3](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.3)).
+Released on every desktop platform, Android (with TV) and Samsung TV: 0.5.3 on 2026-11-06 ([v0.5.3](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.3)).
 The Windows bar counts the lines of section 8 (the ones left need the owner: SignPath, Discussions); the others
 count the 🟢 among the marked lines of their part of section 9.
 

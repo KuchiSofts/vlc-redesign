@@ -18,7 +18,7 @@ The full plan, with every Figma frame, its status and the design tokens, is the
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-05).
+Updated as the work moves (last: 2026-11-06).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
@@ -101,7 +101,7 @@ Android and Swift files made from them and a check on every pull request that th
 
 Newest first. Every change is in the [changelog](CHANGELOG.md).
 
-### 0.5.3 (2026-11-05)
+### 0.5.3 (2026-11-06)
 
 **Everything together:** Android TV in the design, the first Samsung TV app, and fixes on the desktop:
 
@@ -113,7 +113,7 @@ Newest first. Every change is in the [changelog](CHANGELOG.md).
 - ✅ Windows: no grey strips after a restart in full screen ([#48](https://github.com/KuchiSofts/vlc-redesign/issues/48));
   video starts without waiting for the graphics driver; Settings opens faster (by @SHR1F)
 
-See the [changelog](CHANGELOG.md#053--2026-11-05).
+See the [changelog](CHANGELOG.md#053--2026-11-06).
 
 ### 0.5.2 (2026-11-02)
 

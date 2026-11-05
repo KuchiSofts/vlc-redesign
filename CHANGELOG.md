@@ -36,6 +36,9 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   and category; two lines of its description; what is next) and the side (the time now, the catch-up days, Watch,
   Remind Me or Back to Live, the keys of the shortcuts; under the pointer, the buttons that do the same). Mirrored
   in right-to-left languages; the banner modes and the description, progress and next settings work as before.
+- Settings > Video as the design: the Picture rows (hue, brightness, contrast, saturation, gamma, Reset) are there
+  without a video too, set on the saved values ("Play video to adjust and preview the picture" before); "Stop the
+  screensaver during playback" is a toggle (on: always, off: never).
 
 ### Fixed
 

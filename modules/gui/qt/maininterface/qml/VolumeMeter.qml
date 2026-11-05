@@ -122,7 +122,7 @@ Item {
         radius: root.dp(14)
         color: Qt.alpha(VLCStyle.redesign.color("#191919", "#ababaa", root._dark), 0.95)
         border.width: VLCStyle.dp(1, VLCStyle.scale)
-        border.color: VLCStyle.redesign.color(VLCStyle.redesign.border, "#929291", root._dark)
+        border.color: VLCStyle.redesign.color(VLCStyle.redesign.border, "#8E8E8D", root._dark)
 
         Grid {
             id: content
@@ -138,7 +138,7 @@ Item {
                 height: width
                 sourceSize: Qt.size(width, height)
                 color: root.muted ? VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e", root._dark)
-                                  : VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#191919", root._dark)
+                                  : VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2E2E2E", root._dark)
                 source: "qrc:///redesign/volume-" + root.level + ".svg"
             }
 
@@ -187,7 +187,7 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
                 text: Player.muted ? qsTr("Mute") : qsTr("%1 %").arg(Math.max(0, Math.round(root.volume * 100)))
                 elide: Text.ElideRight
-                color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#191919", root._dark)
+                color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2E2E2E", root._dark)
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: root.dp(13)
                 font.weight: Font.DemiBold

@@ -48,7 +48,7 @@ built screen by screen from Juxtopposed's design. Unofficial, free and open sour
 </tr>
 </table>
 
-<sub><b>0.5.3</b> · 2026-11-05 &nbsp;·&nbsp; next: 0.5.4 &nbsp;·&nbsp; <a href="https://github.com/KuchiSofts/vlc-redesign/releases/latest">all downloads</a> · <a href="CHANGELOG.md">what's new</a> · <a href="https://github.com/KuchiSofts/vlc-redesign/wiki">wiki</a> · <a href="https://kuchisofts.github.io/vlc-redesign/">website</a></sub>
+<sub><b>0.5.3</b> · 2026-11-06 &nbsp;·&nbsp; next: 0.5.4 &nbsp;·&nbsp; <a href="https://github.com/KuchiSofts/vlc-redesign/releases/latest">all downloads</a> · <a href="CHANGELOG.md">what's new</a> · <a href="https://github.com/KuchiSofts/vlc-redesign/wiki">wiki</a> · <a href="https://kuchisofts.github.io/vlc-redesign/">website</a></sub>
 
 <br><br>
 
@@ -300,12 +300,12 @@ Linux and macOS have no in-app updates yet: install the new package or disk imag
 
 | Platform | Status | Latest | Get it |
 |---|---|---|---|
-| Windows | 🟢 released | 0.5.3 · 2026-11-05 | [installer](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.3/vlc-redesign-0.5.3-win64-setup.exe) · [portable](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.3/vlc-redesign-0.5.3-win64.zip) |
-| Linux | 🟢 released | 0.5.3 · 2026-11-05 | [appimage](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.3/vlc-redesign-0.5.3-x86_64.AppImage) · [deb](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.3/vlc-redesign_0.5.3_amd64.deb) · [rpm](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.3/vlc-redesign-0.5.3-1.x86_64.rpm) · [tar.xz](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.3/vlc-redesign-0.5.3-linux-x86_64.tar.xz) · [appimage arm64](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.3/vlc-redesign-0.5.3-aarch64.AppImage) · [deb arm64](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.3/vlc-redesign_0.5.3_arm64.deb) · [rpm arm64](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.3/vlc-redesign-0.5.3-1.aarch64.rpm) |
-| macOS | 🟢 released | 0.5.3 · 2026-11-05 | [apple silicon](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.3/vlc-redesign-0.5.3-macos-arm64.dmg) · [intel](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.3/vlc-redesign-0.5.3-macos-x86_64.dmg) |
-| Windows ARM64 | 🟢 released | 0.5.3 · 2026-11-05 | [installer](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.3/vlc-redesign-0.5.3-winarm64-setup.exe) · [portable](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.3/vlc-redesign-0.5.3-winarm64.zip) |
-| Android | 🟢 released | 0.5.3 · 2026-11-05 | [apk](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.3/vlc-redesign-0.5.3-android.apk) |
-| Samsung TV | 🟢 released | 0.5.3 · 2026-11-05 | [source and guide](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.3/Redesign-Player-for-TV-0.5.3-source.zip) |
+| Windows | 🟢 released | 0.5.3 · 2026-11-06 | [installer](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.3/vlc-redesign-0.5.3-win64-setup.exe) · [portable](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.3/vlc-redesign-0.5.3-win64.zip) |
+| Linux | 🟢 released | 0.5.3 · 2026-11-06 | [appimage](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.3/vlc-redesign-0.5.3-x86_64.AppImage) · [deb](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.3/vlc-redesign_0.5.3_amd64.deb) · [rpm](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.3/vlc-redesign-0.5.3-1.x86_64.rpm) · [tar.xz](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.3/vlc-redesign-0.5.3-linux-x86_64.tar.xz) · [appimage arm64](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.3/vlc-redesign-0.5.3-aarch64.AppImage) · [deb arm64](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.3/vlc-redesign_0.5.3_arm64.deb) · [rpm arm64](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.3/vlc-redesign-0.5.3-1.aarch64.rpm) |
+| macOS | 🟢 released | 0.5.3 · 2026-11-06 | [apple silicon](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.3/vlc-redesign-0.5.3-macos-arm64.dmg) · [intel](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.3/vlc-redesign-0.5.3-macos-x86_64.dmg) |
+| Windows ARM64 | 🟢 released | 0.5.3 · 2026-11-06 | [installer](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.3/vlc-redesign-0.5.3-winarm64-setup.exe) · [portable](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.3/vlc-redesign-0.5.3-winarm64.zip) |
+| Android | 🟢 released | 0.5.3 · 2026-11-06 | [apk](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.3/vlc-redesign-0.5.3-android.apk) |
+| Samsung TV | 🟢 released | 0.5.3 · 2026-11-06 | [source and guide](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.3/Redesign-Player-for-TV-0.5.3-source.zip) |
 | iPhone/iPad | ⚪ later | — | coming soon |
 
 <sub>From [`platforms.yml`](platforms.yml) · [every platform on the website](https://kuchisofts.github.io/vlc-redesign/).</sub>

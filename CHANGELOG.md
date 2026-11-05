@@ -15,6 +15,10 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Changed
+
+- Settings only enumerates subtitle fonts and optical drives when their editors are needed, so unrelated pages open with less work.
+
 ### Added
 
 - The idle screen's cat lives, as on the Samsung TV: its eyes blink every 6 s, its tail goes up a block and back

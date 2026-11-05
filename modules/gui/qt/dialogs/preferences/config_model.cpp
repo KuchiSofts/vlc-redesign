@@ -472,7 +472,7 @@ QVariant ConfigModel::data(const QModelIndex &index, int role) const
     case DefaultRole: return entry.original;
     case MinimumRole: return entry.minimum;
     case MaximumRole: return entry.maximum;
-    case ChoicesRole: return entry.choices;
+    case ChoicesRole: return choicesFor(entry);
     case DirtyRole: return entry.staged != entry.current;
     case PendingRestartRole: return entry.staged != runningValue(entry);
     default: return {};
@@ -659,6 +659,22 @@ QVariant ConfigModel::readValue(const Entry &entry)
     return result;
 }
 
+const QVariantList &ConfigModel::choicesFor(const Entry &entry)
+{
+    if (!entry.choicesLoaded) {
+        // Opening General should not enumerate fonts or drives for hidden
+        // pages. Cache their choices only when an editor (or validation)
+        // actually needs them.
+        if (entry.key == QLatin1String("dvd"))
+            entry.choices = opticalDriveChoices(entry.current.toString());
+        else
+            entry.choices = fontChoices(entry.current.toString(),
+                                       entry.key == QLatin1String("freetype-monofont"));
+        entry.choicesLoaded = true;
+    }
+    return entry.choices;
+}
+
 bool ConfigModel::normalize(const Entry &entry, const QVariant &value,
                             QVariant *normalized)
 {
@@ -690,9 +706,10 @@ bool ConfigModel::normalize(const Entry &entry, const QVariant &value,
     } else {
         *normalized = value.toString();
     }
-    if (!entry.choices.isEmpty()) {
+    const QVariantList &choices = choicesFor(entry);
+    if (!choices.isEmpty()) {
         bool found = false;
-        for (const QVariant &choice : entry.choices)
+        for (const QVariant &choice : choices)
             if (choice.toMap().value(QStringLiteral("value")) == *normalized) {
                 found = true;
                 break;
@@ -1593,10 +1610,9 @@ void ConfigModel::buildEntries()
         // Colors of the subtitles: any color (a field of the design)
         else if (entry.key.startsWith(QLatin1String("freetype-")) && entry.key.endsWith(QLatin1String("color")))
             entry.choices = {};
-        else if (entry.key == QLatin1String("freetype-font") || entry.key == QLatin1String("freetype-monofont"))
-            entry.choices = fontChoices(entry.current.toString(), entry.key == QLatin1String("freetype-monofont"));
-        else if (entry.key == QLatin1String("dvd"))
-            entry.choices = opticalDriveChoices(entry.current.toString());
+        else if (entry.key == QLatin1String("freetype-font") || entry.key == QLatin1String("freetype-monofont")
+                 || entry.key == QLatin1String("dvd"))
+            entry.choicesLoaded = false;
         else if (entry.key == QLatin1String("qt-fullscreen-screennumber"))
         {
             // -1: the screen of the window; then the screens by number
@@ -1674,6 +1690,7 @@ void ConfigModel::retranslate()
         entry.label = fresh.label;
         entry.help = fresh.help;
         entry.choices = fresh.choices;
+        entry.choicesLoaded = fresh.choicesLoaded;
     }
     m_entries.swap(entries);
     m_rows = rows;

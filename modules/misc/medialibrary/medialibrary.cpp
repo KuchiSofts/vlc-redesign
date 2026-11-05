@@ -503,8 +503,10 @@ bool MediaLibrary::Init()
      * UPnP) to see SMB shares: sockets listening at every start, and on a
      * new PC Windows asked for a firewall rule as the first file played.
      * Only when a folder of the library may be on the network (one added
-     * later turns it on). The network page has its own discovery. */
-    if ( hasNetworkRoots() )
+     * later turns it on), and never when VideoLAN's ml-network-discovery
+     * option is off. The network page has its own discovery. */
+    if ( var_InheritBool( VLC_OBJECT( m_vlc_ml ), "ml-network-discovery" )
+         && hasNetworkRoots() )
         m_ml->setDiscoverNetworkEnabled( true );
 
     m_initialized = true;
@@ -599,7 +601,8 @@ int MediaLibrary::Control( int query, va_list args )
                 case VLC_ML_ADD_FOLDER:
                     if ( strncmp( mrl, "file://", 7 ) != 0 )
                     {
-                        m_ml->setDiscoverNetworkEnabled( true );
+                        if ( var_InheritBool( VLC_OBJECT( m_vlc_ml ), "ml-network-discovery" ) )
+                            m_ml->setDiscoverNetworkEnabled( true );
                         const std::string marker = networkRootsMarker();
                         FILE *f = marker.empty() ? nullptr : vlc_fopen( marker.c_str(), "wb" );
                         if ( f != nullptr )
@@ -2752,6 +2755,7 @@ static void Close( vlc_object_t* obj )
                               "media from" )
 
 #define ML_VERBOSE _( "Extra verbose media library logs" )
+#define ML_NETWORK_DISCOVERY N_( "Discover network shares" )
 
 vlc_module_begin()
     set_shortname(N_("media library"))
@@ -2760,4 +2764,5 @@ vlc_module_begin()
     set_capability("medialibrary", 100)
     set_callbacks(Open, Close)
     add_bool( "ml-verbose", false, ML_VERBOSE, nullptr )
+    add_bool( "ml-network-discovery", true, ML_NETWORK_DISCOVERY, nullptr )
 vlc_module_end()

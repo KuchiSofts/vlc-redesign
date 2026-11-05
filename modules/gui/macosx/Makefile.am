@@ -270,6 +270,8 @@ libmacosx_plugin_la_SOURCES = \
 	gui/macosx/library/home-library/VLCLibraryHomeViewAudioCarouselContainerView.m \
 	gui/macosx/library/home-library/VLCLibraryHomeViewBaseCarouselContainerView.h \
 	gui/macosx/library/home-library/VLCLibraryHomeViewBaseCarouselContainerView.m \
+	gui/macosx/library/home-library/VLCLibraryHomeViewRecentlyAddedCarouselContainerView.h \
+	gui/macosx/library/home-library/VLCLibraryHomeViewRecentlyAddedCarouselContainerView.m \
 	gui/macosx/library/home-library/VLCLibraryHomeViewSectionHeaderView.h \
 	gui/macosx/library/home-library/VLCLibraryHomeViewSectionHeaderView.m \
 	gui/macosx/library/home-library/VLCLibraryHomeViewBrowseCarouselContainerView.h \
@@ -290,8 +292,8 @@ libmacosx_plugin_la_SOURCES = \
 	gui/macosx/library/home-library/VLCLibraryHomeViewVideoContainerView.h \
 	gui/macosx/library/home-library/VLCLibraryHomeViewVideoCarouselContainerView.h \
 	gui/macosx/library/home-library/VLCLibraryHomeViewVideoCarouselContainerView.m \
-    gui/macosx/library/home-library/VLCLibraryHomeViewVideoContainerViewDataSource.h \
-    gui/macosx/library/home-library/VLCLibraryHomeViewVideoContainerViewDataSource.m \
+    gui/macosx/library/home-library/VLCLibraryHomeViewMediaContainerViewDataSource.h \
+    gui/macosx/library/home-library/VLCLibraryHomeViewMediaContainerViewDataSource.m \
 	gui/macosx/library/home-library/VLCLibraryHomeViewVideoGridContainerView.h \
     gui/macosx/library/home-library/VLCLibraryHomeViewVideoGridContainerView.m \
 	gui/macosx/library/video-library/VLCLibraryMoviesDataSource.h \
@@ -302,8 +304,8 @@ libmacosx_plugin_la_SOURCES = \
 	gui/macosx/library/video-library/VLCLibraryShowsDataSource.m \
 	gui/macosx/library/video-library/VLCLibraryVideoViewController.h \
 	gui/macosx/library/video-library/VLCLibraryVideoViewController.m \
-	gui/macosx/library/video-library/VLCLibraryVideoGroupDescriptor.h \
-	gui/macosx/library/video-library/VLCLibraryVideoGroupDescriptor.m \
+	gui/macosx/library/VLCLibraryMediaGroupDescriptor.h \
+	gui/macosx/library/VLCLibraryMediaGroupDescriptor.m \
 	gui/macosx/library/video-library/VLCLibraryVideoDataSource.h \
 	gui/macosx/library/video-library/VLCLibraryVideoDataSource.m \
 	gui/macosx/library/video-library/VLCLibraryVideoTableViewDelegate.h \

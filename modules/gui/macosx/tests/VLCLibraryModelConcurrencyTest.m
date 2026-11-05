@@ -929,6 +929,405 @@ typedef NS_ENUM(NSUInteger, VLCLibraryModelSupersedingAction) {
     [self assertResetNotificationWaitsForWriteForCacheKind:VLCLibraryModelTestRecentAudioCache];
 }
 
+- (void)assertRecentlyAddedInsertionOrderAndSearchForKind:(VLCLibraryModelTestCacheKind)kind
+{
+    [self prepareCacheKind:kind];
+    VLCLibraryModelTestOverlapFixture * const fixture = self.fixture;
+    const int64_t firstID = fixture.pendingItem.libraryID;
+    const int64_t secondID = fixture.changedItem.libraryID;
+    XCTAssertTrue([fixture renameItemWithID:firstID to:@"Recently Added Alpha"]);
+    XCTAssertTrue([fixture renameItemWithID:secondID to:@"Recently Added Zulu"]);
+    XCTAssertTrue(VLCLibraryDataTypesIntegrationSetMediaInsertionDate(firstID,
+        [NSDate dateWithTimeIntervalSince1970:100]));
+    XCTAssertTrue(VLCLibraryDataTypesIntegrationSetMediaInsertionDate(secondID,
+        [NSDate dateWithTimeIntervalSince1970:200]));
+    [fixture.model sortByCriteria:VLC_ML_SORTING_ALPHA andDescending:NO];
+    fixture.model.filterString = @"Recently Added";
+    const VLCMediaLibraryParentGroupType parentType = kind == VLCLibraryModelTestRecentlyAddedVideoCache
+        ? VLCMediaLibraryParentGroupTypeRecentlyAddedVideos : VLCMediaLibraryParentGroupTypeRecentlyAddedAudios;
+    XCTestExpectation * const loaded = [self expectationForNotification:fixture.changeNotifications.firstObject
+                                                                 object:fixture.model
+                                                                handler:nil];
+    (void)[fixture.model listOfLibraryItemsOfParentType:parentType];
+    [self waitForExpectations:@[ loaded ] timeout:5.];
+    XCTAssertEqualObjects([self orderedIDs:fixture.cachedItems], (@[ @(secondID), @(firstID) ]));
+    XCTAssertEqualObjects([fixture.model listOfLibraryItemsOfParentType:parentType], fixture.cachedItems);
+    const vlc_ml_media_type_t type = kind == VLCLibraryModelTestRecentlyAddedVideoCache
+        ? VLC_ML_MEDIA_TYPE_VIDEO : VLC_ML_MEDIA_TYPE_AUDIO;
+    for (VLCMediaLibraryMediaItem * const item in fixture.cachedItems)
+        XCTAssertEqual(item.mediaType, type);
+}
+
+- (void)assertRecentlyAddedColdEventsAndMatchingAdditionForKind:(VLCLibraryModelTestCacheKind)kind
+{
+    [self prepareCacheKind:kind];
+    VLCLibraryModelTestOverlapFixture * const fixture = self.fixture;
+    [fixture.model dropCaches];
+    XCTAssertNil(fixture.cachedItems);
+    const NSUInteger initialQueries = [fixture.model queryCountForGetter:fixture.cacheGetter];
+    XCTAssertTrue([fixture updateChangedItem]);
+    [fixture deliverUpdateEvent];
+    XCTAssertTrue([fixture deleteChangedItem]);
+    [fixture deliverDeletionEvent];
+    XCTAssertNil(fixture.cachedItems);
+    XCTAssertEqual([fixture.model queryCountForGetter:fixture.cacheGetter], initialQueries);
+
+    XCTestExpectation * const added = [self expectationForNotification:fixture.changeNotifications.firstObject
+                                                                object:fixture.model
+                                                               handler:nil];
+    [fixture deliverRefreshEvent];
+    [self waitForExpectations:@[ added ] timeout:5.];
+    XCTAssertNotNil(fixture.cachedItems);
+    XCTAssertEqualObjects([self orderedIDs:fixture.cachedItems], [self orderedIDs:fixture.libraryItems]);
+    XCTAssertGreaterThan([fixture.model queryCountForGetter:fixture.cacheGetter], initialQueries);
+    NSArray * const otherCache = kind == VLCLibraryModelTestRecentlyAddedVideoCache
+        ? fixture.model.cachedRecentlyAddedAudioMedia : fixture.model.cachedRecentlyAddedVideoMedia;
+    XCTAssertNil(otherCache);
+}
+
+- (void)assertRecentlyAddedMutationsWithOtherCachesUnloadedForKind:(VLCLibraryModelTestCacheKind)kind
+{
+    [self prepareCacheKind:kind];
+    VLCLibraryModelTestOverlapFixture * const fixture = self.fixture;
+    XCTAssertNil(fixture.model.cachedAudioMedia);
+    XCTAssertNil(fixture.model.cachedVideoMedia);
+    XCTAssertGreaterThan(fixture.cachedItems.count, (NSUInteger)0);
+    XCTAssertLessThan(fixture.cachedItems.count, (NSUInteger)20);
+    XCTestExpectation * const updated = [self expectationForNotification:fixture.changeNotifications.firstObject
+                                                                  object:fixture.model
+                                                                 handler:nil];
+    XCTAssertTrue([fixture updateChangedItem]);
+    [fixture deliverUpdateEvent];
+    [self waitForExpectations:@[ updated ] timeout:5.];
+    VLCMediaLibraryMediaItem * const changed = (id)[self itemWithID:fixture.changedItem.libraryID
+                                                            inItems:fixture.cachedItems];
+    XCTAssertTrue(changed.favorited);
+    XCTAssertNil(fixture.model.cachedAudioMedia);
+    XCTAssertNil(fixture.model.cachedVideoMedia);
+    XCTestExpectation * const deleted = [self expectationForNotification:fixture.changeNotifications.firstObject
+                                                                  object:fixture.model
+                                                                 handler:nil];
+    XCTAssertTrue([fixture deleteChangedItem]);
+    [fixture deliverDeletionEvent];
+    [self waitForExpectations:@[ deleted ] timeout:5.];
+    XCTAssertEqualObjects([self orderedIDs:fixture.cachedItems], [self orderedIDs:fixture.libraryItems]);
+    XCTAssertNil([self itemWithID:fixture.changedItem.libraryID inItems:fixture.cachedItems]);
+    XCTAssertNil(fixture.model.cachedAudioMedia);
+    XCTAssertNil(fixture.model.cachedVideoMedia);
+}
+
+- (void)assertRecentlyAddedSearchMembershipAndPresenceForKind:(VLCLibraryModelTestCacheKind)kind
+{
+    [self prepareCacheKind:kind];
+    VLCLibraryModelTestOverlapFixture * const fixture = self.fixture;
+    const int64_t firstID = fixture.changedItem.libraryID;
+    const int64_t secondID = fixture.pendingItem.libraryID;
+    XCTAssertTrue([fixture renameItemWithID:firstID to:@"TypedCache Needle First"]);
+    XCTAssertTrue([fixture renameItemWithID:secondID to:@"TypedCache Other Second"]);
+    fixture.model.filterString = @"TypedCache Needle";
+    [fixture seedCacheWithItems:fixture.libraryItems];
+    XCTAssertEqualObjects([self orderedIDs:fixture.cachedItems], (@[ @(firstID) ]));
+    XCTAssertNil(fixture.model.cachedAudioMedia);
+    XCTAssertNil(fixture.model.cachedVideoMedia);
+
+    XCTAssertTrue([fixture renameItemWithID:firstID to:@"TypedCache Other First"]);
+    XCTAssertTrue([fixture renameItemWithID:secondID to:@"TypedCache Needle Second"]);
+    XCTestExpectation * const membershipChanged = [self expectationForNotification:fixture.changeNotifications.firstObject
+                                                                            object:fixture.model
+                                                                           handler:nil];
+    // The update is for an item absent from the cached search results.
+    [fixture deliverUpdateEventForID:secondID];
+    [self waitForExpectations:@[ membershipChanged ] timeout:5.];
+    XCTAssertEqualObjects([self orderedIDs:fixture.cachedItems], (@[ @(secondID) ]));
+
+    XCTAssertTrue(VLCLibraryDataTypesIntegrationSetMediaPresent(secondID, NO));
+    XCTestExpectation * const missing = [self expectationForNotification:fixture.changeNotifications.firstObject
+                                                                  object:fixture.model
+                                                                 handler:nil];
+    [fixture deliverUpdateEventForID:secondID];
+    [self waitForExpectations:@[ missing ] timeout:5.];
+    XCTAssertEqual(fixture.cachedItems.count, (NSUInteger)0);
+    XCTAssertNil(fixture.model.cachedAudioMedia);
+    XCTAssertNil(fixture.model.cachedVideoMedia);
+}
+
+- (void)assertColdRecentlyAddedQueryForKind:(VLCLibraryModelTestCacheKind)kind
+                               deletingItem:(BOOL)deletingItem
+{
+    [self prepareCacheKind:kind];
+    VLCLibraryModelTestOverlapFixture * const fixture = self.fixture;
+    VLCLibraryModelTestQueryGate * const model = fixture.model;
+    [fixture seedCacheWithItems:nil];
+    XCTAssertNil(fixture.cachedItems);
+    XCTestExpectation * const captured = [self expectationWithDescription:@"First recently added snapshot held"];
+    XCTestExpectation * const processed = [self expectationWithDescription:@"First recently added write processed"];
+    [model holdNextQueryResultForGetter:fixture.cacheGetter
+                                handler:^{ [captured fulfill]; }
+                      completionHandler:^{ [processed fulfill]; }];
+    [self addTeardownBlock:^{ [model releaseQuery]; }];
+    [fixture refreshCache];
+    [self waitForExpectations:@[ captured ] timeout:5.];
+    XCTAssertNil(fixture.cachedItems);
+
+    XCTestExpectation * const reconciled = [self expectationForNotification:fixture.changeNotifications.firstObject
+                                                                     object:model
+                                                                    handler:nil];
+    if (deletingItem) {
+        XCTAssertTrue([fixture deleteChangedItem]);
+        [fixture deliverDeletionEvent];
+    } else {
+        XCTAssertTrue([fixture updateChangedItem]);
+        [fixture deliverUpdateEvent];
+    }
+    [self waitForExpectations:@[ reconciled ] timeout:5.];
+    [model releaseQuery];
+    [self waitForExpectations:@[ processed ] timeout:5.];
+    XCTAssertEqualObjects([self orderedIDs:fixture.cachedItems], [self orderedIDs:fixture.libraryItems]);
+    VLCMediaLibraryMediaItem * const changed = (id)[self itemWithID:fixture.changedItem.libraryID
+                                                            inItems:fixture.cachedItems];
+    if (deletingItem)
+        XCTAssertNil(changed);
+    else
+        XCTAssertTrue(changed.favorited);
+    XCTAssertNil(model.cachedAudioMedia);
+    XCTAssertNil(model.cachedVideoMedia);
+}
+
+- (void)assertRecentlyAddedIndependentLimitAndBackfillForKind:(VLCLibraryModelTestCacheKind)kind
+{
+    [self prepareCacheKind:kind];
+    VLCLibraryModelTestOverlapFixture * const fixture = self.fixture;
+    vlc_medialibrary_t * const library = VLCLibraryDataTypesIntegrationMediaLibrary();
+    const BOOL video = kind == VLCLibraryModelTestRecentlyAddedVideoCache;
+    const vlc_ml_media_type_t type = video ? VLC_ML_MEDIA_TYPE_VIDEO : VLC_ML_MEDIA_TYPE_AUDIO;
+    XCTestExpectation * const populated = [self expectationWithDescription:@"Typed catalog exceeds recently added limit"];
+    __block BOOL created = YES;
+    dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
+        for (NSUInteger index = 0; index < 22; ++index) {
+            const size_t count = video ? vlc_ml_count_video_media(library, NULL) : vlc_ml_count_audio_media(library, NULL);
+            if (count >= 22)
+                break;
+            NSString * const name = [NSString stringWithFormat:@"Recently Added Backfill %lu", (unsigned long)index];
+            if (VLCLibraryDataTypesIntegrationCreateScannedMedia(name, type) == 0) {
+                created = NO;
+                break;
+            }
+        }
+        [populated fulfill];
+    });
+    [self waitForExpectations:@[ populated ] timeout:90.];
+    XCTAssertTrue(created);
+    vlc_ml_media_list_t * const allMedia = video
+        ? vlc_ml_list_video_media(library, NULL) : vlc_ml_list_audio_media(library, NULL);
+    XCTAssertNotEqual(allMedia, NULL);
+    NSMutableArray<NSNumber *> * const allIDs = NSMutableArray.array;
+    for (size_t index = 0; index < allMedia->i_nb_items; ++index) {
+        const int64_t mediaID = allMedia->p_items[index].i_id;
+        [allIDs addObject:@(mediaID)];
+        XCTAssertTrue(VLCLibraryDataTypesIntegrationSetMediaInsertionDate(mediaID,
+            [NSDate dateWithTimeIntervalSince1970:1000 + index]));
+    }
+    vlc_ml_media_list_release(allMedia);
+    XCTAssertGreaterThanOrEqual(allIDs.count, (NSUInteger)22);
+    // Make the other type newer than every target item. Filtering a shared
+    // mixed top-20 result would now return fewer than 20 matching items.
+    vlc_ml_media_list_t * const otherMedia = video
+        ? vlc_ml_list_audio_media(library, NULL) : vlc_ml_list_video_media(library, NULL);
+    XCTAssertNotEqual(otherMedia, NULL);
+    XCTAssertGreaterThan(otherMedia->i_nb_items, (size_t)0);
+    for (size_t index = 0; index < otherMedia->i_nb_items; ++index) {
+        XCTAssertTrue(VLCLibraryDataTypesIntegrationSetMediaInsertionDate(otherMedia->p_items[index].i_id,
+            [NSDate dateWithTimeIntervalSince1970:100000 + index]));
+    }
+    vlc_ml_media_list_release(otherMedia);
+    [fixture seedCacheWithItems:fixture.libraryItems];
+    NSArray<NSNumber *> * const initialIDs = [self orderedIDs:fixture.cachedItems];
+    XCTAssertEqual(initialIDs.count, (NSUInteger)20);
+    NSMutableArray<NSNumber *> * const excludedIDs = allIDs.mutableCopy;
+    [excludedIDs removeObjectsInArray:initialIDs];
+    XCTAssertGreaterThanOrEqual(excludedIDs.count, (NSUInteger)2);
+    const NSUInteger initialQueries = [fixture.model queryCountForGetter:fixture.cacheGetter];
+
+    const int64_t excludedID = excludedIDs.firstObject.longLongValue;
+    XCTAssertTrue(VLCLibraryDataTypesIntegrationDeleteEntity(VLC_ML_EVENT_MEDIA_DELETED, excludedID));
+    [fixture deliverDeletionEventForID:excludedID];
+    // The private getter drains the owning queue without lazily loading it.
+    XCTAssertEqualObjects([self orderedIDs:fixture.cachedItems], initialIDs);
+    XCTAssertEqual([fixture.model queryCountForGetter:fixture.cacheGetter], initialQueries);
+
+    const int64_t cachedID = initialIDs.firstObject.longLongValue;
+    XCTAssertTrue(VLCLibraryDataTypesIntegrationDeleteEntity(VLC_ML_EVENT_MEDIA_DELETED, cachedID));
+    XCTestExpectation * const backfilled = [self expectationForNotification:fixture.changeNotifications.firstObject
+                                                                     object:fixture.model
+                                                                    handler:^BOOL(NSNotification * __unused notification) {
+        NSArray * const media = fixture.cachedItems;
+        return media.count == 20 && [self itemWithID:cachedID inItems:media] == nil;
+    }];
+    [fixture deliverDeletionEventForID:cachedID];
+    [self waitForExpectations:@[ backfilled ] timeout:5.];
+    NSArray<NSNumber *> * const finalIDs = [self orderedIDs:fixture.cachedItems];
+    XCTAssertEqual(finalIDs.count, (NSUInteger)20);
+    XCTAssertEqualObjects(finalIDs, [self orderedIDs:fixture.libraryItems]);
+    XCTAssertFalse([finalIDs containsObject:@(cachedID)]);
+    for (VLCMediaLibraryMediaItem * const item in fixture.cachedItems)
+        XCTAssertEqual(item.mediaType, type);
+    NSMutableSet<NSNumber *> * const backfilledIDs = [NSMutableSet setWithArray:finalIDs];
+    [backfilledIDs minusSet:[NSSet setWithArray:initialIDs]];
+    XCTAssertEqual(backfilledIDs.count, (NSUInteger)1);
+    XCTAssertEqual([fixture.model queryCountForGetter:fixture.cacheGetter], initialQueries + 1);
+}
+
+- (void)assertRecentlyAddedThumbnailPreservesCacheForKind:(VLCLibraryModelTestCacheKind)kind
+{
+    [self prepareCacheKind:kind];
+    VLCLibraryModelTestOverlapFixture * const fixture = self.fixture;
+    NSArray * const cachedMedia = fixture.cachedItems;
+    const NSUInteger initialQueries = [fixture.model queryCountForGetter:fixture.cacheGetter];
+    XCTestExpectation * const thumbnailReady = [self expectationForNotification:VLCLibraryModelMediaItemThumbnailGenerated
+                                                                         object:fixture.changedItem
+                                                                        handler:nil];
+    [fixture.model mediaItemThumbnailGenerated:(id)fixture.changedItem];
+    [self waitForExpectations:@[ thumbnailReady ] timeout:5.];
+    XCTAssertEqual(fixture.cachedItems, cachedMedia);
+    XCTAssertEqual([fixture.model queryCountForGetter:fixture.cacheGetter], initialQueries);
+}
+
+- (void)testRecentlyAddedVideoOlderResultIsRejectedAfterNewerReset
+{
+    [self assertSupersededResultForCacheKind:VLCLibraryModelTestRecentlyAddedVideoCache
+                                      action:VLCLibraryModelSupersedingReset
+                                 queuedWrite:NO];
+}
+
+- (void)testRecentlyAddedVideoAlreadyQueuedWriteIsRejectedAfterDrop
+{
+    [self assertSupersededResultForCacheKind:VLCLibraryModelTestRecentlyAddedVideoCache
+                                      action:VLCLibraryModelSupersedingDrop
+                                 queuedWrite:YES];
+}
+
+- (void)testRecentlyAddedVideoOlderResultIsRejectedAfterFilterChanges
+{
+    [self assertSupersededResultForCacheKind:VLCLibraryModelTestRecentlyAddedVideoCache
+                                      action:VLCLibraryModelSupersedingFilter
+                                 queuedWrite:NO];
+}
+
+- (void)testRecentlyAddedVideoResetNotificationWaitsForItsWrite
+{
+    [self assertResetNotificationWaitsForWriteForCacheKind:VLCLibraryModelTestRecentlyAddedVideoCache];
+}
+
+- (void)testRecentlyAddedVideoContainsOnlyItsTypeInInsertionOrderFollowingSearch
+{
+    [self assertRecentlyAddedInsertionOrderAndSearchForKind:VLCLibraryModelTestRecentlyAddedVideoCache];
+}
+
+- (void)testRecentlyAddedVideoStaysUnloadedForUpdatesAndDeletionsButMatchingAdditionLoadsIt
+{
+    [self assertRecentlyAddedColdEventsAndMatchingAdditionForKind:VLCLibraryModelTestRecentlyAddedVideoCache];
+}
+
+- (void)testRecentlyAddedVideoUpdatesAndDeletionsWithOtherMediaCachesUnloaded
+{
+    [self assertRecentlyAddedMutationsWithOtherCachesUnloadedForKind:VLCLibraryModelTestRecentlyAddedVideoCache];
+}
+
+- (void)testRecentlyAddedVideoUpdateReconcilesSearchMembershipAndMissingMedia
+{
+    [self assertRecentlyAddedSearchMembershipAndPresenceForKind:VLCLibraryModelTestRecentlyAddedVideoCache];
+}
+
+- (void)testRecentlyAddedVideoColdPendingQueryPreservesLaterUpdate
+{
+    [self assertColdRecentlyAddedQueryForKind:VLCLibraryModelTestRecentlyAddedVideoCache
+                                 deletingItem:NO];
+}
+
+- (void)testRecentlyAddedVideoColdPendingQueryDoesNotRestoreDeletedItem
+{
+    [self assertColdRecentlyAddedQueryForKind:VLCLibraryModelTestRecentlyAddedVideoCache
+                                 deletingItem:YES];
+}
+
+- (void)testRecentlyAddedVideoHasIndependentLimitAndRefillsAfterCachedDeletion
+{
+    [self assertRecentlyAddedIndependentLimitAndBackfillForKind:VLCLibraryModelTestRecentlyAddedVideoCache];
+}
+
+- (void)testRecentlyAddedVideoThumbnailGenerationPreservesCacheAndNotification
+{
+    [self assertRecentlyAddedThumbnailPreservesCacheForKind:VLCLibraryModelTestRecentlyAddedVideoCache];
+}
+
+- (void)testRecentlyAddedAudioOlderResultIsRejectedAfterNewerReset
+{
+    [self assertSupersededResultForCacheKind:VLCLibraryModelTestRecentlyAddedAudioCache
+                                      action:VLCLibraryModelSupersedingReset
+                                 queuedWrite:NO];
+}
+
+- (void)testRecentlyAddedAudioAlreadyQueuedWriteIsRejectedAfterDrop
+{
+    [self assertSupersededResultForCacheKind:VLCLibraryModelTestRecentlyAddedAudioCache
+                                      action:VLCLibraryModelSupersedingDrop
+                                 queuedWrite:YES];
+}
+
+- (void)testRecentlyAddedAudioOlderResultIsRejectedAfterFilterChanges
+{
+    [self assertSupersededResultForCacheKind:VLCLibraryModelTestRecentlyAddedAudioCache
+                                      action:VLCLibraryModelSupersedingFilter
+                                 queuedWrite:NO];
+}
+
+- (void)testRecentlyAddedAudioResetNotificationWaitsForItsWrite
+{
+    [self assertResetNotificationWaitsForWriteForCacheKind:VLCLibraryModelTestRecentlyAddedAudioCache];
+}
+
+- (void)testRecentlyAddedAudioContainsOnlyItsTypeInInsertionOrderFollowingSearch
+{
+    [self assertRecentlyAddedInsertionOrderAndSearchForKind:VLCLibraryModelTestRecentlyAddedAudioCache];
+}
+
+- (void)testRecentlyAddedAudioStaysUnloadedForUpdatesAndDeletionsButMatchingAdditionLoadsIt
+{
+    [self assertRecentlyAddedColdEventsAndMatchingAdditionForKind:VLCLibraryModelTestRecentlyAddedAudioCache];
+}
+
+- (void)testRecentlyAddedAudioUpdatesAndDeletionsWithOtherMediaCachesUnloaded
+{
+    [self assertRecentlyAddedMutationsWithOtherCachesUnloadedForKind:VLCLibraryModelTestRecentlyAddedAudioCache];
+}
+
+- (void)testRecentlyAddedAudioUpdateReconcilesSearchMembershipAndMissingMedia
+{
+    [self assertRecentlyAddedSearchMembershipAndPresenceForKind:VLCLibraryModelTestRecentlyAddedAudioCache];
+}
+
+- (void)testRecentlyAddedAudioColdPendingQueryPreservesLaterUpdate
+{
+    [self assertColdRecentlyAddedQueryForKind:VLCLibraryModelTestRecentlyAddedAudioCache
+                                 deletingItem:NO];
+}
+
+- (void)testRecentlyAddedAudioColdPendingQueryDoesNotRestoreDeletedItem
+{
+    [self assertColdRecentlyAddedQueryForKind:VLCLibraryModelTestRecentlyAddedAudioCache
+                                 deletingItem:YES];
+}
+
+- (void)testRecentlyAddedAudioHasIndependentLimitAndRefillsAfterCachedDeletion
+{
+    [self assertRecentlyAddedIndependentLimitAndBackfillForKind:VLCLibraryModelTestRecentlyAddedAudioCache];
+}
+
+- (void)testRecentlyAddedAudioThumbnailGenerationPreservesCacheAndNotification
+{
+    [self assertRecentlyAddedThumbnailPreservesCacheForKind:VLCLibraryModelTestRecentlyAddedAudioCache];
+}
+
 - (void)testRecentVideoOlderResultIsRejectedAfterNewerReset
 {
     [self assertSupersededResultForCacheKind:VLCLibraryModelTestRecentVideoCache
@@ -1046,13 +1445,16 @@ typedef NS_ENUM(NSUInteger, VLCLibraryModelOverlapChange) {
 
     XCTestExpectation * const captured = [self expectationWithDescription:@"Full refresh result captured"];
     XCTestExpectation * const processed = [self expectationWithDescription:@"Held refresh write processed"];
-    [model holdNextQueryResultForGetter:fixture.cacheGetter
-                                handler:^{
-        [captured fulfill];
+    if (kind == VLCLibraryModelTestRecentlyAddedVideoCache ||
+        kind == VLCLibraryModelTestRecentlyAddedAudioCache) {
+        [model holdNextCacheRefreshForGetter:fixture.cacheGetter
+                                     handler:^{ [captured fulfill]; }
+                           completionHandler:^{ [processed fulfill]; }];
+    } else {
+        [model holdNextQueryResultForGetter:fixture.cacheGetter
+                                    handler:^{ [captured fulfill]; }
+                          completionHandler:^{ [processed fulfill]; }];
     }
-                      completionHandler:^{
-        [processed fulfill];
-    }];
     [self addTeardownBlock:^{
         [model releaseQuery];
     }];
@@ -1597,6 +1999,42 @@ typedef NS_ENUM(NSUInteger, VLCLibraryModelOverlapChange) {
     XCTAssertEqualObjects([self libraryIDsForItems:fixture.cachedItems], [self libraryIDsForItems:movies]);
     XCTAssertEqual([fixture.model queryCountForGetter:fixture.cacheGetter], queryCount);
     XCTAssertEqualObjects([self libraryIDsForItems:fixture.libraryItems], [self libraryIDsForItems:movies]);
+}
+
+- (void)testRecentlyAddedVideoRefreshDoesNotRestoreDeletedUncachedItem
+{
+    [self assertRefreshForCacheKind:VLCLibraryModelTestRecentlyAddedVideoCache
+                  overlappingChange:VLCLibraryModelOverlapPendingItemDeletion];
+}
+
+- (void)testRecentlyAddedVideoRefreshSurvivesLaterUpdate
+{
+    [self assertRefreshForCacheKind:VLCLibraryModelTestRecentlyAddedVideoCache
+                  overlappingChange:VLCLibraryModelOverlapUpdate];
+}
+
+- (void)testRecentlyAddedVideoRefreshSurvivesLaterDeletion
+{
+    [self assertRefreshForCacheKind:VLCLibraryModelTestRecentlyAddedVideoCache
+                  overlappingChange:VLCLibraryModelOverlapDeletion];
+}
+
+- (void)testRecentlyAddedAudioRefreshDoesNotRestoreDeletedUncachedItem
+{
+    [self assertRefreshForCacheKind:VLCLibraryModelTestRecentlyAddedAudioCache
+                  overlappingChange:VLCLibraryModelOverlapPendingItemDeletion];
+}
+
+- (void)testRecentlyAddedAudioRefreshSurvivesLaterUpdate
+{
+    [self assertRefreshForCacheKind:VLCLibraryModelTestRecentlyAddedAudioCache
+                  overlappingChange:VLCLibraryModelOverlapUpdate];
+}
+
+- (void)testRecentlyAddedAudioRefreshSurvivesLaterDeletion
+{
+    [self assertRefreshForCacheKind:VLCLibraryModelTestRecentlyAddedAudioCache
+                  overlappingChange:VLCLibraryModelOverlapDeletion];
 }
 
 - (void)testAudioAdditionRefreshDoesNotRestoreDeletedUncachedItem

@@ -386,8 +386,18 @@ bool CompositorDirectComposition::makeMainInterface(MainCtx* mainCtx, std::funct
             &QQuickWindow::frameSwapped, // At this stage, we can be sure that QRhi and QRhiSwapChain are valid.
             this,
             [this]() {
-                // the window has its own device now
-                endGraphicsDriverWarmUp();
+                // The window has its own device now. A slow driver may still
+                // be creating the speculative one: do not wait for it on
+                // the interface thread before allowing video setup.
+                if (m_driverWarmUpThread)
+                {
+                    connect(m_driverWarmUpThread, &QThread::finished, this,
+                            &CompositorDirectComposition::endGraphicsDriverWarmUp,
+                            Qt::QueuedConnection);
+                    // Connecting first also covers a worker finishing here.
+                    if (m_driverWarmUpThread->isFinished())
+                        endGraphicsDriverWarmUp();
+                }
                 if (!setup())
                 {
                     // Similar to `QQuickWindow::sceneGraphError()` handling:

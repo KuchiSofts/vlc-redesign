@@ -15,6 +15,10 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Fixed
+
+- A slow graphics-driver warmup no longer holds the interface thread before video starts on Windows.
+
 ### Added
 
 - The idle screen's cat lives, as on the Samsung TV: its eyes blink every 6 s, its tail goes up a block and back

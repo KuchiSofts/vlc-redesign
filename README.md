@@ -153,8 +153,9 @@ If you like how this looks, go subscribe to Juxtopposed's channel. That's where 
 </table>
 
 Also included: frame previews on the seek bar, a waveform seek bar for music, effects that apply live, small signed
-in-app updates on Windows, a sleep timer, A-B loop, picture-in-picture, a mini player, volume up to 200 %, and
-bookmarks and chapters. Every option is documented in the [wiki](https://github.com/KuchiSofts/vlc-redesign/wiki).
+in-app updates on Windows, a sleep timer, A-B loop, picture-in-picture, a mini player, volume up to 200 % with a
+meter at the side of the window, the designer's cat living on the idle screen, a cable-box information bar on Live
+TV, and bookmarks and chapters. Every option is documented in the [wiki](https://github.com/KuchiSofts/vlc-redesign/wiki).
 
 <details>
 <summary><b>More screenshots</b></summary>

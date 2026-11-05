@@ -361,8 +361,9 @@ The interface code lives in [`modules/gui/qt`](modules/gui/qt).
 
 ## Roadmap
 
-The next release is **0.5.2**, a bug-fix release, followed by testing the Android app on real tablets. The status
-of each platform and what comes after is tracked in [ROADMAP.md](ROADMAP.md) (mirrored on the
+The current release is **0.5.2**; the next, **0.5.3**, brings fixes as the issues bring them and the Android TV
+layout (the player and the pages with a remote control). The status of each platform and what comes after is
+tracked in [ROADMAP.md](ROADMAP.md) (mirrored on the
 [wiki](https://github.com/KuchiSofts/vlc-redesign/wiki/Roadmap)). Past releases are in [CHANGELOG.md](CHANGELOG.md).
 
 ## Contributing

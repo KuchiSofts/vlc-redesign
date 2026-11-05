@@ -136,6 +136,12 @@ InterfaceWindowHandler::InterfaceWindowHandler(qt_intf_t *_p_intf, MainCtx* main
         m_window->setGeometry( QRect( available.center() - QPoint( defaultSize.width() / 2,
                                                                    defaultSize.height() / 2 ),
                                       defaultSize ) );
+
+    // The native CSD handler is constructed next and can recalculate the
+    // client area before the window is visible. Seed its fullscreen hold
+    // from the restored state now: visibility() is still Hidden here.
+    WindowStateHolder::holdFullscreen(m_window, WindowStateHolder::INTERFACE,
+                                     m_window->windowStates().testFlag(Qt::WindowFullScreen));
     /* The geometry to save when the window is closed maximized (or full
      * screen): the one it had before (not shown yet, the window has the
      * restored one even when it is to show maximized) */
@@ -177,7 +183,6 @@ InterfaceWindowHandler::InterfaceWindowHandler(qt_intf_t *_p_intf, MainCtx* main
     QMetaObject::invokeMethod(this, [this]()
     {
         WindowStateHolder::holdOnTop( m_window,  WindowStateHolder::INTERFACE, m_mainCtx->isInterfaceAlwaysOnTop() );
-        WindowStateHolder::holdFullscreen( m_window,  WindowStateHolder::INTERFACE, m_window->visibility() == QWindow::FullScreen );
 
         if (m_mainCtx->isHideAfterCreation())
             m_window->hide();
@@ -431,7 +436,7 @@ bool InterfaceWindowHandler::eventFilter(QObject*, QEvent* event)
         // a focused item takes the keys: "f" or Esc in the search are its own.
         if (m_mainCtx->getUseGlobalShortcuts()
             && m_window && m_window->visibility() == QWindow::FullScreen
-            && !(p_intf->p_mainPlayerController && p_intf->p_mainPlayerController->hasVideoOutput())
+            && !(p_intf->p_mainPlayerController && p_intf->p_mainPlayerController->isFullscreen())
             && !focusedItemTakesKeys()
             && isFullscreenKey(VLC_OBJECT(p_intf), qtEventToVLCKey(keyEvent)))
         {

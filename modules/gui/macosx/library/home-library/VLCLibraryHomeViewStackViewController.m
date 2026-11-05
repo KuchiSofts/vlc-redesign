@@ -36,12 +36,13 @@
 #import "library/home-library/VLCLibraryHomeViewAudioCarouselContainerView.h"
 #import "library/home-library/VLCLibraryHomeViewBrowseCarouselContainerView.h"
 #import "library/home-library/VLCLibraryHomeViewContainerView.h"
+#import "library/home-library/VLCLibraryHomeViewRecentlyAddedCarouselContainerView.h"
 #import "library/home-library/VLCLibraryHomeViewVideoCarouselContainerView.h"
 #import "library/home-library/VLCLibraryHomeViewVideoContainerView.h"
-#import "library/home-library/VLCLibraryHomeViewVideoContainerViewDataSource.h"
+#import "library/home-library/VLCLibraryHomeViewMediaContainerViewDataSource.h"
 #import "library/home-library/VLCLibraryHomeViewVideoGridContainerView.h"
 
-#import "library/video-library/VLCLibraryVideoGroupDescriptor.h"
+#import "library/VLCLibraryMediaGroupDescriptor.h"
 
 #import "main/VLCMain.h"
 
@@ -108,11 +109,22 @@
 {
     _actionsView = [VLCLibraryHomeViewActionsView fromNibWithOwner:self];
     _heroView = [VLCLibraryHeroView fromNibWithOwner:self];
-    _leadingViews = @[self.actionsView, self.heroView];
+    _leadingViews = @[
+        self.actionsView,
+        self.heroView
+    ];
 
     [self addCustomContainerViews];
     [self recentsChanged:nil];
     [self audioRecentsChanged:nil];
+    _recentlyAddedVideosView = [[VLCLibraryHomeViewRecentlyAddedCarouselContainerView alloc]
+        initWithGroup:VLCMediaLibraryParentGroupTypeRecentlyAddedVideos];
+    [_containers addObject:self.recentlyAddedVideosView];
+    [self addContainerView:self.recentlyAddedVideosView toStackView:self.collectionsStackView];
+    _recentlyAddedAudioView = [[VLCLibraryHomeViewRecentlyAddedCarouselContainerView alloc]
+        initWithGroup:VLCMediaLibraryParentGroupTypeRecentlyAddedAudios];
+    [_containers addObject:self.recentlyAddedAudioView];
+    [self addContainerView:self.recentlyAddedAudioView toStackView:self.collectionsStackView];
     _browseView = [[VLCLibraryHomeViewBrowseCarouselContainerView alloc] init];
     [_containers addObject:self.browseView];
     [self addContainerView:self.browseView toStackView:self.collectionsStackView];

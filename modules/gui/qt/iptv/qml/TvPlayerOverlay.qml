@@ -10,7 +10,6 @@ import QtQuick
 import QtQuick.Templates as T
 
 import VLC.MainInterface
-import VLC.Player
 import VLC.Style
 import VLC.Util
 import VLC.Widgets as Widgets
@@ -27,6 +26,8 @@ FocusScope {
 
     // room kept at the bottom (the control bar when shown)
     property real bottomInset: 0
+    // the player shows its idle picture: nothing plays (Player.qml)
+    property bool idle: false
     // the item the keyboard goes back to when the list closes
     property Item restoreFocus: null
 
@@ -308,11 +309,11 @@ FocusScope {
     Rectangle {
         id: banner
 
-        // (the pointer brings it back while something plays: the channel
-        // stopped, still the current item, shows the idle player alone)
-        readonly property bool wanted: Iptv.bannerMode !== 3
-                                       && (bannerTimer.running || (Player.isStarted && (bannerHover.hovered || zoneHover.hovered))
-                                           || root.browse !== 0 || numberEntry.text.length > 0)
+        // (none over the idle player: a channel stopped stays the current
+        // item, and Customize Player shows the player with nothing playing)
+        readonly property bool wanted: Iptv.bannerMode !== 3 && !root.idle
+                                       && (bannerTimer.running || bannerHover.hovered || zoneHover.hovered || root.browse !== 0
+                                           || numberEntry.text.length > 0)
         readonly property bool pointed: bannerHover.hovered || zoneHover.hovered
         readonly property bool _dark: VLCStyle.palette.isDark
         // a colour of the TV's bar, and its own in the light theme

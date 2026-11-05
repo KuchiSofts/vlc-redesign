@@ -15,6 +15,10 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Fixed
+
+- Restoring a fullscreen window keeps the native frame in sync, avoiding right and bottom strips after reopening VLC. F and Escape also leave a restored fullscreen window when a video is playing.
+
 ### Added
 
 - The idle screen's cat lives, as on the Samsung TV: its eyes blink every 6 s, its tail goes up a block and back

@@ -340,6 +340,11 @@ T.Pane {
                 enabled: !root.paintOnly && (volControl.hovered || volControl.activeFocus || volControl.pressed)
                 function onVolumeChanged() { valueTimer.restart() }
             }
+            // used in sight (under the pointer, dragged): this slider shows
+            // the volume, the window's meter (VolumeMeter.qml) does not
+            readonly property bool _inUse: !root.paintOnly && (volControl.hovered || volControl.pressed)
+            on_InUseChanged: MainCtx.volumeSliderActive = _inUse
+            Component.onDestruction: if (_inUse) MainCtx.volumeSliderActive = false
 
             // Figma "audio value" (2245:9805): 121 x 37, #0F0F0F, "100 %"
             // (14 px, #969696) centred; 8 above the slider, centred on it

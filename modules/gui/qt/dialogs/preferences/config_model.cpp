@@ -267,6 +267,10 @@ const QtSettingOption qtSettingOptions[] = {
       N_("How long the popup of the track changes stays on the screen.") },
     { "redesign/process-priority", 'i', 0, -2, 2, N_("Process priority"),
       N_("How much processor time the system gives VLC compared with the other programs.") },
+    { "redesign/volume-meter-position", 'i', 0, 0, 4, N_("Volume indicator"),
+      N_("Where the volume shows when it changes (the wheel, the keys, mute). Automatic: on the right side, "
+         "on the left in a right-to-left language."),
+      N_("Automatic|Right side|Left side|Top right corner|Top left corner") },
     { "redesign/double-click-action", 'i', 1, 0, 1, N_("Double click on the video"),
       N_("What a double click on the video does."), N_("Nothing|Toggle fullscreen") },
     { "redesign/subtitle-size-mode", 'i', 0, 0, 1, N_("Size values"),

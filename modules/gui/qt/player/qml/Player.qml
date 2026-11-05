@@ -945,6 +945,7 @@ FocusScope {
         onLoaded: {
             item.restoreFocus = rootPlayer
             item.bottomInset = Qt.binding(() => controlBar.state === "visible" ? rootPlayer.height - controlBar.y : 0)
+            item.idle = Qt.binding(() => rootPlayer._nothingPlays)
         }
     }
 

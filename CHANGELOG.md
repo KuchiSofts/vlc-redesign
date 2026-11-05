@@ -5,7 +5,7 @@ Changes of **VLC Redesign**, an unofficial VLC 4 build with the interface design
 For changes to VLC itself, see [NEWS](NEWS).
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
-what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `8a47770f63` (2026-11-02).
+what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `c6d1df39c7` (2026-11-05).
 
 **Contents:** [Unreleased](#unreleased) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
@@ -14,6 +14,49 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 ---
 
 ## [Unreleased]
+
+### Added
+
+- The idle screen's cat lives, as on the Samsung TV: its eyes blink every 6 s, its tail goes up a block and back
+  every 2.4 s, its right ear twitches every 9 s. In whole blocks, as it is drawn (still sharp), and only while the
+  scene is on screen: nothing runs when it is hidden or the window minimized.
+
+- The volume shows in a meter of its own when it changes (the wheel, the keys, mute, the bar's slider while the
+  bar is hidden): a card with the speaker of the level, the design's volume wedge and the percentage, at the side
+  of the window for 1.5 s, sliding in and out. It replaces the "Volume" message and the key name ("Mouse Wheel
+  Up") on the video. Settings > Audio > Volume indicator: Automatic (the right side, the left in a right-to-left
+  language), Right side, Left side, Top right corner or Top left corner. Translated in the 20 complete languages.
+
+### Changed
+
+- Live TV: the channel banner is the TV's information bar, like a cable box's: the whole width of the player, flush
+  with the bottom of the window or sitting right on the control bar (its colour, a thin line on top, a soft shade
+  above it over the picture), in three columns: the channel (its logo big, number, name, a star for a favourite, its
+  group), the programme (Live, Earlier, Later or Archive; its title; its hours, progress and time left; the episode
+  and category; two lines of its description; what is next) and the side (the time now, the catch-up days, Watch,
+  Remind Me or Back to Live, the keys of the shortcuts; under the pointer, the buttons that do the same). Mirrored
+  in right-to-left languages; the banner modes and the description, progress and next settings work as before.
+- Settings > Video as the design: the Picture rows (hue, brightness, contrast, saturation, gamma, Reset) are there
+  without a video too, set on the saved values ("Play video to adjust and preview the picture" before); "Stop the
+  screensaver during playback" is a toggle (on: always, off: never).
+
+### Fixed
+
+- Live TV: in right-to-left languages the hours of a programme read from its start ("22:00 – 23:30") in the banner
+  and in the programme's details (they could show the end first next to Hebrew or Arabic text).
+
+### Technical
+
+- Volume meter: `maininterface/qml/VolumeMeter.qml` (over the whole window: player, fullscreen, library with
+  the mini player), `redesign/volume-meter-position` (0 to 4, `MainCtx.volumeMeterPosition`). The interface sets
+  `intf-volume-meter` on the instance and `vlc_player_osd_Volume()` (src/player/osd.c) then draws nothing on the
+  video; `MainCtx.volumeSliderActive` (a bar's slider under the pointer or dragged) keeps the meter away while
+  the slider shows the value itself. The wheel's volume steps still come from whole notches (120 units summed):
+  a touchpad's smooth scrolling makes no jumps.
+- `MainCtx.tvKeyText(action)`: the name of the first key the shortcuts give to an action of live TV, for the bar's
+  key hints. `IdleScene.qml`: three timers (no animation runs between two steps).
+- `win64-docker.ps1 -Lint`: one changed QML file was splatted letter by letter ("not part of any QML module"); new
+  `-LintFiles` (the files to lint) and `-LintBase` (lint what changed since a revision, such as `main`).
 
 ## [0.5.2] · 2026-11-02
 

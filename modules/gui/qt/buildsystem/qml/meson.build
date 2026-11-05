@@ -102,6 +102,7 @@ qml_modules += {
         '../../maininterface/qml/MenuTopbar.qml',
         '../../maininterface/qml/MainInterface.qml',
         '../../maininterface/qml/RedesignUpdateBanner.qml',
+        '../../maininterface/qml/VolumeMeter.qml',
         '../../maininterface/qml/MainViewLoader.qml',
         '../../maininterface/qml/MainDisplay.qml',
         '../../maininterface/qml/NoMedialibHome.qml',

@@ -177,6 +177,7 @@ bool VideoEffects::filterAvailable(const QString& filter) const
 QString VideoEffects::filterChain(const char* chain) const
 {
     if (!available()) return {};
+    if (m_offline) return qstrcmp(chain, "video-filter") == 0 ? m_offlineChain : QString();
     vout_thread_t* vout = vlc_player_vout_Hold(m_ctx->getIntf()->p_player);
     if (!vout) return {};
     const QString value = own(var_GetString(vout, chain));
@@ -217,6 +218,7 @@ QVariant VideoEffects::defaultValue(const QString& name)
 QVariant VideoEffects::readValue(const QString& name) const
 {
     if (!available() || !validOption(name)) return {};
+    if (m_offline) return m_offlineValues.contains(name) ? m_offlineValues.value(name) : getConfig(name);
     const QByteArray id = name.toUtf8();
     const int type = config_GetType(id.constData());
     vout_thread_t* vout = vlc_player_vout_Hold(m_ctx->getIntf()->p_player);
@@ -316,13 +318,32 @@ void VideoEffects::changed() { ++m_revision; emit stateChanged(); }
 bool VideoEffects::requirePreview()
 {
     if (!m_transactionActive) return fail(tr("Open video effects before changing them."));
+    if (m_offline) return true;
     if (!activeVideo()) return fail(tr("No active video output is available."));
     if (voutToken() != m_snapshotVout) return fail(tr("Video output changed during the preview."));
     return true;
 }
 bool VideoEffects::begin()
 {
-    if (!activeVideo()) return fail(tr("No active video output is available."));
+    if (m_transactionActive && m_offline) return true;
+    if (!activeVideo()) {
+        // no video: the picture of the frames all the same, on the saved
+        // values (the adjustment only: the other filters need a video)
+        if (!available()) return fail(tr("No active video output is available."));
+        m_offline = true;
+        m_offlineValues.clear();
+        m_configSnapshot.clear();
+        for (const QString& name : optionNames(savedFilter)) {
+            const QVariant value = getConfig(name);
+            if (value.isValid()) { m_offlineValues.insert(name, value); m_configSnapshot.insert(name, value); }
+        }
+        m_offlineChain = getConfig("video-filter").toString();
+        m_configSnapshot.insert("video-filter", m_offlineChain);
+        m_snapshotVout = 0;
+        m_transactionActive = true;
+        clearError(); changed();
+        return true;
+    }
     if (m_transactionActive && voutToken() == m_snapshotVout) return true;
     m_snapshotVout = voutToken();
     m_snapshotChain = filterChain("video-filter");
@@ -346,12 +367,49 @@ bool VideoEffects::begin()
     clearError(); changed();
     return true;
 }
+bool VideoEffects::modified() const
+{
+    if (!m_transactionActive) return false;
+    if (m_offline) {
+        if (m_offlineChain != m_configSnapshot.value("video-filter").toString()) return true;
+        for (auto it = m_offlineValues.cbegin(); it != m_offlineValues.cend(); ++it)
+            if (it.value() != m_configSnapshot.value(it.key())) return true;
+        return false;
+    }
+    if (filterChain("video-filter") != m_snapshotChain) return true;
+    for (auto it = m_snapshotValues.cbegin(); it != m_snapshotValues.cend(); ++it)
+        if (it.value().isValid() && it.value() != readValue(it.key())) return true;
+    return false;
+}
 bool VideoEffects::writeValue(const QString& name, const QVariant& value)
 {
     if (!requirePreview() || !validOption(name)) return false;
     const QByteArray id = name.toUtf8();
     const module_config_t* option = config_FindConfig(id.constData());
     if (!option) return fail(tr("Video effect option is unavailable."));
+    if (m_offline) {
+        // kept for save(), in the bounds a video would take
+        if (!m_offlineValues.contains(name)) return fail(tr("The video effect value could not be applied."));
+        const auto cls = CONFIG_CLASS(option->i_type);
+        double minimum = 0., maximum = 0.;
+        if (cls == CONFIG_ITEM_FLOAT || cls == CONFIG_ITEM_INTEGER)
+            optionBounds(option, &minimum, &maximum);
+        QVariant stored;
+        if (cls == CONFIG_ITEM_FLOAT) {
+            const double number = value.toDouble();
+            if (std::isfinite(number) && number >= minimum && number <= maximum) stored = number;
+        } else if (cls == CONFIG_ITEM_BOOL)
+            stored = value.toBool();
+        else if (cls == CONFIG_ITEM_INTEGER) {
+            bool ok = false;
+            const qlonglong number = value.toLongLong(&ok);
+            if (ok && double(number) >= minimum && double(number) <= maximum) stored = number;
+        }
+        if (!stored.isValid()) return fail(tr("The video effect value could not be applied."));
+        m_offlineValues.insert(name, stored);
+        clearError(); changed();
+        return true;
+    }
     const int type = config_GetType(id.constData());
     vout_thread_t* vout = vlc_player_vout_Hold(m_ctx->getIntf()->p_player);
     if (!vout) return fail(tr("No active video output is available."));
@@ -416,6 +474,12 @@ bool VideoEffects::setFilterEnabled(const QString& filter, bool enabled)
     QStringList chain = filterChain(name).split(':', Qt::SkipEmptyParts);
     if (enabled) chain << filter;
     else chain.removeAll(filter);
+    if (m_offline) {
+        if (filter != savedFilter) return fail(tr("The video filter could not be applied."));
+        m_offlineChain = chain.join(':');
+        clearError(); changed();
+        return true;
+    }
     const QByteArray value = chain.join(':').toUtf8();
     vout_thread_t* vout = vlc_player_vout_Hold(m_ctx->getIntf()->p_player);
     if (!vout) return fail(tr("No active video output is available."));
@@ -454,6 +518,13 @@ bool VideoEffects::resetDefaults(const QString& filter)
 bool VideoEffects::cancel()
 {
     if (!m_transactionActive) return true;
+    if (m_offline) {
+        // nothing reached a video: the kept values are dropped
+        m_offline = false; m_offlineValues.clear(); m_offlineChain.clear();
+        m_transactionActive = false; m_configSnapshot.clear();
+        clearError(); changed();
+        return true;
+    }
     if (!activeVideo() || voutToken() != m_snapshotVout) {
         m_transactionActive = false; m_snapshotValues.clear(); m_snapshotCrop.clear();
         m_configSnapshot.clear(); changed();
@@ -515,6 +586,7 @@ void VideoEffects::finalizeConfiguration()
 {
     m_transactionActive = false; m_snapshotValues.clear(); m_snapshotCrop.clear();
     m_configSnapshot.clear();
+    m_offline = false; m_offlineValues.clear(); m_offlineChain.clear();
     clearError(); changed();
 }
 

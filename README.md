@@ -363,7 +363,7 @@ The interface code lives in [`modules/gui/qt`](modules/gui/qt).
 
 ## Roadmap
 
-The current release is **0.5.3**: the desktop, Android with the TV layout in the design, and the first Samsung TV
+The current release is **0.5.3** (2026-11-06): the desktop, Android with the TV layout in the design, and the first Samsung TV
 app; the next, **0.5.4**, brings fixes as the issues bring them. The status of each platform and what comes after is
 tracked in [ROADMAP.md](ROADMAP.md) (mirrored on the
 [wiki](https://github.com/KuchiSofts/vlc-redesign/wiki/Roadmap)). Past releases are in [CHANGELOG.md](CHANGELOG.md).

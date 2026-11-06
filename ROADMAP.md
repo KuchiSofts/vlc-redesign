@@ -113,7 +113,8 @@ Newest first. Every change is in the [changelog](CHANGELOG.md).
 - ✅ Windows: no grey strips after a restart in full screen ([#48](https://github.com/KuchiSofts/vlc-redesign/issues/48));
   video starts without waiting for the graphics driver; Settings opens faster (by @SHR1F)
 
-See the [changelog](CHANGELOG.md#053--2026-11-06).
+The small update in the app is 7.7 MB from 0.5.2 on Windows x64 (15.3 MB on ARM64). See the
+[changelog](CHANGELOG.md#053--2026-11-06).
 
 ### 0.5.2 (2026-11-02)
 

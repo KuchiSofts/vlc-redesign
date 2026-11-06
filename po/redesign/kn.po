@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-06 20:50+0000\n"
+"POT-Creation-Date: 2026-11-06 21:05+0000\n"
 "PO-Revision-Date: 2017-10-06 11:13+0000\n"
 "Last-Translator: Vikas Hegde <vikashegde82@gmail.com>\n"
 "Language-Team: Kannada (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -8983,34 +8983,34 @@ msgstr "ಮರುಸ್ಥಾಪಿಸಿ"
 msgid "Don't restore"
 msgstr "ಮರುಸ್ಥಾಪಿಸಬೇಡಿ"
 
-#: modules/gui/qt/util/redesign_updater.cpp:233
+#: modules/gui/qt/util/redesign_updater.cpp:250
 msgid ""
 "The update isn't signed by the publisher of this copy (%1), so it wasn't "
 "used."
 msgstr "ಈ ನವೀಕರಣಕ್ಕೆ ಈ ಪ್ರತಿಯ ಪ್ರಕಾಶಕರು (%1) ಸಹಿ ಮಾಡಿಲ್ಲ, ಆದ್ದರಿಂದ ಅದನ್ನು ಬಳಸಲಾಗಿಲ್ಲ."
 
-#: modules/gui/qt/util/redesign_updater.cpp:479
+#: modules/gui/qt/util/redesign_updater.cpp:496
 msgid "%1 (later)"
 msgstr "%1 (ನಂತರ)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:481
+#: modules/gui/qt/util/redesign_updater.cpp:498
 msgid "%1 (soon)"
 msgstr "%1 (ಶೀಘ್ರದಲ್ಲೇ)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:669
+#: modules/gui/qt/util/redesign_updater.cpp:694
 msgid "This build cannot check for updates."
 msgstr "ಈ ಬಿಲ್ಡ್ ನವೀಕರಣಗಳಿಗಾಗಿ ಪರಿಶೀಲಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ."
 
-#: modules/gui/qt/util/redesign_updater.cpp:683
+#: modules/gui/qt/util/redesign_updater.cpp:708
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr ""
 "GitHub ಅನ್ನು ತಲುಪಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
 
-#: modules/gui/qt/util/redesign_updater.cpp:700
+#: modules/gui/qt/util/redesign_updater.cpp:725
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "GitHub ಅನಿರೀಕ್ಷಿತ ಉತ್ತರವನ್ನು ಕಳುಹಿಸಿದೆ (%1)."
 
-#: modules/gui/qt/util/redesign_updater.cpp:824
+#: modules/gui/qt/util/redesign_updater.cpp:853
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
@@ -9018,45 +9018,48 @@ msgstr ""
 "ಈ ನವೀಕರಣಕ್ಕೆ VLC Redesign ಸಹಿ ಮಾಡಿಲ್ಲ, ಆದ್ದರಿಂದ ಇದನ್ನು ಬಳಸಲಾಗಿಲ್ಲ. ಬದಲಿಗೆ ಬಿಡುಗಡೆ "
 "ಪುಟದಿಂದ ಇದನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ."
 
-#: modules/gui/qt/util/redesign_updater.cpp:846
-#: modules/gui/qt/util/redesign_updater.cpp:887
+#: modules/gui/qt/util/redesign_updater.cpp:875
+#: modules/gui/qt/util/redesign_updater.cpp:916
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr "ನವೀಕರಣದ ಚೆಕ್‌ಸಮ್ ಕಾಣೆಯಾಗಿದೆ; ಬದಲಿಗೆ ಅದನ್ನು ಬಿಡುಗಡೆ ಪುಟದಿಂದ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ."
 
-#: modules/gui/qt/util/redesign_updater.cpp:861
-#: modules/gui/qt/util/redesign_updater.cpp:933
+#: modules/gui/qt/util/redesign_updater.cpp:890
+#: modules/gui/qt/util/redesign_updater.cpp:962
 msgid "The download failed. Check your connection and try again."
 msgstr "ಡೌನ್‌ಲೋಡ್ ವಿಫಲವಾಗಿದೆ. ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
 
-#: modules/gui/qt/util/redesign_updater.cpp:946
+#: modules/gui/qt/util/redesign_updater.cpp:975
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "ನವೀಕರಣವು ಅದರ ಚೆಕ್‌ಸಮ್‌ಗೆ ಹೊಂದುತ್ತಿಲ್ಲ, ಆದ್ದರಿಂದ ಅದನ್ನು ಬಳಸಲಾಗಿಲ್ಲ."
 
-#: modules/gui/qt/util/redesign_updater.cpp:977
+#: modules/gui/qt/util/redesign_updater.cpp:1006
 msgid "The update isn't in a format this version knows."
 msgstr "ನವೀಕರಣವು ಈ ಆವೃತ್ತಿಗೆ ತಿಳಿದಿರುವ ಸ್ವರೂಪದಲ್ಲಿಲ್ಲ."
 
-#: modules/gui/qt/util/redesign_updater.cpp:980
-#: modules/gui/qt/util/redesign_updater.cpp:1004
-#: modules/gui/qt/util/redesign_updater.cpp:1015
-#: modules/gui/qt/util/redesign_updater.cpp:1021
+#: modules/gui/qt/util/redesign_updater.cpp:1009
+#: modules/gui/qt/util/redesign_updater.cpp:1033
+#: modules/gui/qt/util/redesign_updater.cpp:1044
+#: modules/gui/qt/util/redesign_updater.cpp:1050
+#: modules/gui/qt/util/redesign_updater.cpp:1284
 msgid "The update is damaged."
 msgstr "ನವೀಕರಣ ಹಾನಿಗೊಳಗಾಗಿದೆ."
 
-#: modules/gui/qt/util/redesign_updater.cpp:985
+#: modules/gui/qt/util/redesign_updater.cpp:1014
+#: modules/gui/qt/util/redesign_updater.cpp:1281
 msgid "The update isn't for this version."
 msgstr "ನವೀಕರಣವು ಈ ಆವೃತ್ತಿಗಾಗಿ ಅಲ್ಲ."
 
-#: modules/gui/qt/util/redesign_updater.cpp:994
-#: modules/gui/qt/util/redesign_updater.cpp:1031
-#: modules/gui/qt/util/redesign_updater.cpp:1040
-#: modules/gui/qt/util/redesign_updater.cpp:1044
-#: modules/gui/qt/util/redesign_updater.cpp:1048
+#: modules/gui/qt/util/redesign_updater.cpp:1023
+#: modules/gui/qt/util/redesign_updater.cpp:1060
+#: modules/gui/qt/util/redesign_updater.cpp:1069
+#: modules/gui/qt/util/redesign_updater.cpp:1073
+#: modules/gui/qt/util/redesign_updater.cpp:1077
+#: modules/gui/qt/util/redesign_updater.cpp:1277
 msgid "The update can't be written in %1."
 msgstr "ನವೀಕರಣವನ್ನು %1 ನಲ್ಲಿ ಬರೆಯಲು ಸಾಧ್ಯವಿಲ್ಲ."
 
-#: modules/gui/qt/util/redesign_updater.cpp:996
+#: modules/gui/qt/util/redesign_updater.cpp:1025
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -9064,32 +9067,33 @@ msgstr ""
 "VLC Redesign ನ ಒಂದು ಕಡತವನ್ನು ಸ್ಥಾಪಿಸಿದ ನಂತರ ಬದಲಾಯಿಸಲಾಗಿದೆ, ಆದ್ದರಿಂದ ಸಣ್ಣ "
 "ನವೀಕರಣವನ್ನು ಬಳಸಲು ಸಾಧ್ಯವಿಲ್ಲ: ಬದಲಿಗೆ ಸ್ಥಾಪಕದೊಂದಿಗೆ ನವೀಕರಿಸಿ."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1026
+#: modules/gui/qt/util/redesign_updater.cpp:1055
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr "ನವೀಕರಣ ಹಾನಿಗೊಳಗಾಗಿದೆ: ಒಂದು ಕಡತ ಅದರ ಚೆಕ್‌ಸಮ್‌ಗೆ ಹೊಂದುತ್ತಿಲ್ಲ."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1151
+#: modules/gui/qt/util/redesign_updater.cpp:1180
+#: modules/gui/qt/util/redesign_updater.cpp:1345
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr "ನವೀಕರಣವನ್ನು ಪ್ರಾರಂಭಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ಮುಂದಿನ ಬಾರಿ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಲಾಗುತ್ತದೆ."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1178
+#: modules/gui/qt/util/redesign_updater.cpp:1207
 msgid "The download failed. Try again, or download it from the release page."
 msgstr ""
 "ಡೌನ್‌ಲೋಡ್ ವಿಫಲವಾಗಿದೆ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ, ಅಥವಾ ಅದನ್ನು ಬಿಡುಗಡೆ ಪುಟದಿಂದ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1191
+#: modules/gui/qt/util/redesign_updater.cpp:1220
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr ""
 "ಡೌನ್‌ಲೋಡ್ ಮಾಡಿದ ಸ್ಥಾಪಕವು ಅದರ ಚೆಕ್‌ಸಮ್‌ಗೆ ಹೊಂದುತ್ತಿಲ್ಲ, ಆದ್ದರಿಂದ ಅದನ್ನು ಚಲಾಯಿಸಲಾಗಿಲ್ಲ."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1203
-#: modules/gui/qt/util/redesign_updater.cpp:1211
-#: modules/gui/qt/util/redesign_updater.cpp:1225
+#: modules/gui/qt/util/redesign_updater.cpp:1232
+#: modules/gui/qt/util/redesign_updater.cpp:1240
+#: modules/gui/qt/util/redesign_updater.cpp:1254
 msgid "The installer couldn't be saved to %1."
 msgstr "ಸ್ಥಾಪಕವನ್ನು %1 ಗೆ ಉಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1265
-#: modules/gui/qt/util/redesign_updater.cpp:1283
+#: modules/gui/qt/util/redesign_updater.cpp:1325
+#: modules/gui/qt/util/redesign_updater.cpp:1363
 msgid "The installer couldn't be started."
 msgstr "ಸ್ಥಾಪಕವನ್ನು ಪ್ರಾರಂಭಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ."
 

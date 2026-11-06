@@ -429,20 +429,22 @@ FocusScope {
                 // Each pass of the blur effect also suffers from the border neighbour pixel issue mentioned
                 // above, making all the borders problematic, to a less considerable extent. For that reason,
                 // we extend both the top and the bottom edges and use viewport to prevent overdraw:
-                effectRect: Qt.rect(-stackView.x,
-                                    stackView.height - stackViewParent.edgeExtension,
-                                    stackViewParent.width + 2 * stackViewParent.edgeExtension,
-                                    loaderUpdatePane.height + miniPlayer.height + 2 * stackViewParent.edgeExtension)
+                // (upstream's PartialEffect takes a list of areas since da8cf042aa: one area here)
+                effectRects: [Qt.rect(-stackView.x,
+                                      stackView.height - stackViewParent.edgeExtension,
+                                      stackViewParent.width + 2 * stackViewParent.edgeExtension,
+                                      loaderUpdatePane.height + miniPlayer.height + 2 * stackViewParent.edgeExtension)]
 
                 // WARNING: We are not using `sourceVisualRect` because it is not trivial to guarantee that
                 //          the visual (`ShaderEffect`) scene graph sizing and sub-texturing are synchronized.
                 //          This can cause the visual to deviate from 1:1 representation of the texture
                 //          momentarily, leading to sizing glitches during initialization and animations.
 
-                effect: frostedGlassEffect
-
-                Widgets.FrostedGlassEffect {
+                // NOTE: This is a `Component`, the effect item is instantiated by `PartialEffect`:
+                effect: Widgets.FrostedGlassEffect {
                     id: frostedGlassEffect
+
+                    required property int index
 
                     ColorContext {
                         id: frostedTheme

@@ -27417,8 +27417,8 @@ msgstr "Järgmine kell %1"
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:671
 msgid "%1 d"
 msgid_plural "%1 d"
-msgstr[0] "%1 p"
-msgstr[1] "%1 p"
+msgstr[0] "%1 pv"
+msgstr[1] "%1 pv"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:220
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:560
@@ -27731,8 +27731,8 @@ msgstr[1] "%1 kanalil on telekava"
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:275
 msgid "Catch-up %1 d"
 msgid_plural "Catch-up %1 d"
-msgstr[0] "Järelvaatamine %1 p"
-msgstr[1] "Järelvaatamine %1 p"
+msgstr[0] "Järelvaatamine %1 pv"
+msgstr[1] "Järelvaatamine %1 pv"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:284
 msgid "Updating the guide… %1 MB"
@@ -27833,7 +27833,7 @@ msgstr "Allika jaoks"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:446
 msgid "Its channels are matched by their guide id, then by their name."
-msgstr "Selle kanalid seotakse telekava ID, seejärel nime järgi."
+msgstr "Selle kanalid seotakse telekava tunnuse, seejärel nime järgi."
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:447
 msgid "Add a source first."

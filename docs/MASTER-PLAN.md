@@ -12,6 +12,14 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-11-06):
 
+- 🟢 **Release 0.5.4** (2026-11-06, the owner's "upload"): Android TV 1:1 with the Figma frames, checked frame by
+  frame on a 1920×1080 TV emulator and a real Android TV 11 image (the window 0.9–2.0 % off, Settings 3.4 %, the
+  players 1.3–1.8 %, Open Network Stream 0.91 %, New Playlist 1.94 %, the playlist menu's layout 1 px off), the
+  design's menus and dialogs, the playlist and album pages in the window, the list rows, the remote's long OK for
+  menus; phones and tablets checked unchanged. VideoLAN merged to da8cf042aa (32 commits; the player page renamed
+  PlayerView.qml upstream, the redesign's own panes kept). Weblate PR #53 (Estonian) merged. One version on every
+  platform: the Samsung app 0.5.4 too (unchanged). The Android release counter is at its last step on upstream
+  3.7.2: the next Android release needs an upstream merge. Next: 0.5.5 (fixes).
 - 🟢 **Release 0.5.3** (2026-11-06, everything together, the owner's plan): the desktop on every platform, Android
   with the TV layout in the design (the welcome, Settings, the video and music players, details, search, the folder
   and playlist pages, About), and the first Samsung TV app, *Redesign Player for TV* (no VLC code, so its own name
@@ -433,7 +441,7 @@ counted from this document's own tables and checklists (column *From*); ⚪ idea
 | Samsung TV      | 🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜ | 7/9     | 77 %  | [§9](#samsung-smart-tv-tizen)          |
 | iPhone / iPad   | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ | 0/3     | 0 %   | [§9](#iphone-ipad-apple-tv)            |
 
-Released on every desktop platform, Android (with TV) and Samsung TV: 0.5.3 on 2026-11-06 ([v0.5.3](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.3)).
+Released on every desktop platform, Android (with TV) and Samsung TV: 0.5.4 on 2026-11-06 ([v0.5.4](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.4)).
 The Windows bar counts the lines of section 8 (the ones left need the owner: SignPath, Discussions); the others
 count the 🟢 among the marked lines of their part of section 9.
 

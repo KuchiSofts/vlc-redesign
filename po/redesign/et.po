@@ -15,15 +15,16 @@ msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
 "POT-Creation-Date: 2026-10-31 01:37+0000\n"
-"PO-Revision-Date: 2014-07-12 17:35+0000\n"
-"Last-Translator: Joel Limberg <joel@stuudium.com>\n"
-"Language-Team: Estonian (http://www.transifex.com/projects/p/vlc-trans/"
-"language/et/)\n"
+"PO-Revision-Date: 2026-11-06 15:51+0000\n"
+"Last-Translator: Priit Jõerüüt <jrthwlate@users.noreply.hosted.weblate.org>\n"
+"Language-Team: Estonian <https://hosted.weblate.org/projects/vlc-redesign/"
+"interface/et/>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2026.11.2.dev0\n"
 
 #: include/vlc_config_cat.h:43 src/libvlc-module.c:2181
 #: modules/gui/qt/menus/menus.cpp:910
@@ -3064,15 +3065,18 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:270 modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:200
 msgid "Volume indicator"
-msgstr ""
+msgstr "Helivaljuse näidik"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:271
 msgid "Where the volume shows when it changes (the wheel, the keys, mute). Automatic: on the right side, on the left in a right-to-left language."
 msgstr ""
+"Kus kuvatakse helitugevuse muutumine (rattake, klahvid, vaigistamine). "
+"Automaatne: paremal pool, paremalt-vasakule kirjutatava keele puhul vasakul "
+"pool."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:273
 msgid "Automatic|Right side|Left side|Top right corner|Top left corner"
-msgstr ""
+msgstr "Automaatne|Paremal|Vasakul|Paremal ülanurgas|Vasakul ülanurgas"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:270
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
@@ -5551,8 +5555,8 @@ msgstr "Järgmine kell %1"
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:671
 msgid "%1 d"
 msgid_plural "%1 d"
-msgstr[0] "%1 p"
-msgstr[1] "%1 p"
+msgstr[0] "%1 pv"
+msgstr[1] "%1 pv"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:220
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:560
@@ -5865,8 +5869,8 @@ msgstr[1] "%1 kanalil on telekava"
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:275
 msgid "Catch-up %1 d"
 msgid_plural "Catch-up %1 d"
-msgstr[0] "Järelvaatamine %1 p"
-msgstr[1] "Järelvaatamine %1 p"
+msgstr[0] "Järelvaatamine %1 pv"
+msgstr[1] "Järelvaatamine %1 pv"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:284
 msgid "Updating the guide… %1 MB"
@@ -5967,7 +5971,7 @@ msgstr "Allika jaoks"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:446
 msgid "Its channels are matched by their guide id, then by their name."
-msgstr "Selle kanalid seotakse telekava ID, seejärel nime järgi."
+msgstr "Selle kanalid seotakse telekava tunnuse, seejärel nime järgi."
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:447
 msgid "Add a source first."

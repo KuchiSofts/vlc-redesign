@@ -867,6 +867,13 @@ referenceSizeForHeaderInSection:(NSInteger)section
 - (void)reloadData
 {
     [self updateTableViewItems];
+    id<NSTableViewDataSource, NSCollectionViewDataSource> const currentDataSource =
+        self.childDataSource ?: self;
+    if (self.tableView.dataSource != currentDataSource ||
+        self.collectionView.dataSource != currentDataSource) {
+        return;
+    }
+
     if (self.viewMode == VLCLibraryGridViewModeSegment) {
         [self.collectionView reloadData];
     } else if (self.childDataSource != nil) {
@@ -884,6 +891,10 @@ referenceSizeForHeaderInSection:(NSInteger)section
 
 - (void)browseFolderByMrl:(NSString *)mrl
 {
+    if ([self.childDataSource.nodeToDisplay.inputItem.MRL isEqualToString:mrl]) {
+        return;
+    }
+
     vlc_preparser_t *p_preparser = getNetworkPreparser();
     NSURL * const folderURL = [NSURL URLWithString:mrl];
     VLCMediaSource * const mediaSource = folderURL.isFileURL

@@ -300,6 +300,8 @@ libmacosx_plugin_la_SOURCES = \
 	gui/macosx/library/video-library/VLCLibraryMoviesDataSource.m \
 	gui/macosx/library/video-library/VLCLibraryShowEpisodeTableViewDelegate.h \
 	gui/macosx/library/video-library/VLCLibraryShowEpisodeTableViewDelegate.m \
+	gui/macosx/library/video-library/VLCLibraryShowsMasterTableViewDelegate.h \
+	gui/macosx/library/video-library/VLCLibraryShowsMasterTableViewDelegate.m \
 	gui/macosx/library/video-library/VLCLibraryShowsDataSource.h \
 	gui/macosx/library/video-library/VLCLibraryShowsDataSource.m \
 	gui/macosx/library/video-library/VLCLibraryVideoViewController.h \
@@ -470,6 +472,8 @@ libmacosx_plugin_la_SOURCES = \
 	gui/macosx/playqueue/VLCPlayQueueTableView.m \
 	gui/macosx/preferences/VLCHotkeyChangeWindow.h \
 	gui/macosx/preferences/VLCHotkeyChangeWindow.m \
+	gui/macosx/preferences/VLCMediaLibraryFolderManagementController.h \
+	gui/macosx/preferences/VLCMediaLibraryFolderManagementController.m \
 	gui/macosx/preferences/VLCSimplePrefsController.h \
 	gui/macosx/preferences/VLCSimplePrefsController.m \
 	gui/macosx/preferences/VLCSimplePrefsWindow.h \

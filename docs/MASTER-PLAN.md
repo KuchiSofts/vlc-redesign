@@ -12,6 +12,12 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-11-06):
 
+- 🟢 **Translations refreshed** (2026-11-06, toward 0.5.5): po/vlc.pot made again from the source (no text lost, 3
+  new from VideoLAN, 237 references updated, among them Player.qml -> PlayerView.qml), all 110 catalogs merged
+  (89 had stayed on the 10-29/10-31 template), Weblate's translations put back over the merged entries (52), every
+  catalog passes msgfmt -c, and po/redesign exported for Weblate (147,022 strings: the volume meter's texts and the
+  newer ones are now offered in every language; only "Next: %1 · %2", no longer used, leaves). The Estonian
+  translations of #53 kept.
 - 🟢 **Release 0.5.4** (2026-11-06, the owner's "upload"): Android TV 1:1 with the Figma frames, checked frame by
   frame on a 1920×1080 TV emulator and a real Android TV 11 image (the window 0.9–2.0 % off, Settings 3.4 %, the
   players 1.3–1.8 %, Open Network Stream 0.91 %, New Playlist 1.94 %, the playlist menu's layout 1 px off), the

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-06 20:50+0000\n"
+"POT-Creation-Date: 2026-11-06 21:05+0000\n"
 "PO-Revision-Date: 2017-02-06 13:43+0000\n"
 "Last-Translator: Christoph Miebach <christoph.miebach@web.de>\n"
 "Language-Team: Panjabi (Punjabi) (http://www.transifex.com/yaron/vlc-trans/"
@@ -30957,34 +30957,34 @@ msgstr "ਮੁੜ ਬਹਾਲ ਕਰੋ"
 msgid "Don't restore"
 msgstr "ਮੁੜ ਬਹਾਲ ਨਾ ਕਰੋ"
 
-#: modules/gui/qt/util/redesign_updater.cpp:233
+#: modules/gui/qt/util/redesign_updater.cpp:250
 msgid ""
 "The update isn't signed by the publisher of this copy (%1), so it wasn't "
 "used."
 msgstr ""
 "ਇਹ ਅੱਪਡੇਟ ਇਸ ਕਾਪੀ ਦੇ ਪ੍ਰਕਾਸ਼ਕ (%1) ਵੱਲੋਂ ਦਸਤਖਤ ਕੀਤਾ ਨਹੀਂ ਹੈ, ਇਸ ਲਈ ਇਸ ਨੂੰ ਵਰਤਿਆ ਨਹੀਂ ਗਿਆ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:479
+#: modules/gui/qt/util/redesign_updater.cpp:496
 msgid "%1 (later)"
 msgstr "%1 (ਬਾਅਦ ਵਿੱਚ)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:481
+#: modules/gui/qt/util/redesign_updater.cpp:498
 msgid "%1 (soon)"
 msgstr "%1 (ਜਲਦੀ)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:669
+#: modules/gui/qt/util/redesign_updater.cpp:694
 msgid "This build cannot check for updates."
 msgstr "ਇਹ ਬਿਲਡ ਅੱਪਡੇਟ ਲਈ ਜਾਂਚ ਨਹੀਂ ਕਰ ਸਕਦਾ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:683
+#: modules/gui/qt/util/redesign_updater.cpp:708
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "GitHub ਤੱਕ ਨਹੀਂ ਪਹੁੰਚਿਆ ਜਾ ਸਕਿਆ। ਆਪਣਾ ਕੁਨੈਕਸ਼ਨ ਜਾਂਚੋ ਅਤੇ ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:700
+#: modules/gui/qt/util/redesign_updater.cpp:725
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "GitHub ਨੇ ਅਣਕਿਆਸਿਆ ਜਵਾਬ ਭੇਜਿਆ (%1)।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:824
+#: modules/gui/qt/util/redesign_updater.cpp:853
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
@@ -30992,45 +30992,48 @@ msgstr ""
 "ਇਹ ਅੱਪਡੇਟ VLC Redesign ਵੱਲੋਂ ਦਸਤਖਤ ਕੀਤਾ ਨਹੀਂ ਹੈ, ਇਸ ਲਈ ਇਸ ਦੀ ਵਰਤੋਂ ਨਹੀਂ ਕੀਤੀ ਗਈ। ਇਸ ਦੀ "
 "ਬਜਾਏ ਇਸ ਨੂੰ ਰੀਲੀਜ਼ ਪੰਨੇ ਤੋਂ ਡਾਊਨਲੋਡ ਕਰੋ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:846
-#: modules/gui/qt/util/redesign_updater.cpp:887
+#: modules/gui/qt/util/redesign_updater.cpp:875
+#: modules/gui/qt/util/redesign_updater.cpp:916
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr "ਅੱਪਡੇਟ ਦਾ ਚੈੱਕਸਮ ਗੁੰਮ ਹੈ; ਇਸ ਦੀ ਥਾਂ ਇਸ ਨੂੰ ਰੀਲੀਜ਼ ਪੰਨੇ ਤੋਂ ਡਾਊਨਲੋਡ ਕਰੋ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:861
-#: modules/gui/qt/util/redesign_updater.cpp:933
+#: modules/gui/qt/util/redesign_updater.cpp:890
+#: modules/gui/qt/util/redesign_updater.cpp:962
 msgid "The download failed. Check your connection and try again."
 msgstr "ਡਾਊਨਲੋਡ ਅਸਫ਼ਲ ਰਿਹਾ। ਆਪਣਾ ਕੁਨੈਕਸ਼ਨ ਜਾਂਚੋ ਅਤੇ ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:946
+#: modules/gui/qt/util/redesign_updater.cpp:975
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "ਅੱਪਡੇਟ ਆਪਣੇ ਚੈੱਕਸਮ ਨਾਲ ਨਹੀਂ ਮਿਲਦਾ, ਇਸ ਲਈ ਇਸ ਨੂੰ ਨਹੀਂ ਵਰਤਿਆ ਗਿਆ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:977
+#: modules/gui/qt/util/redesign_updater.cpp:1006
 msgid "The update isn't in a format this version knows."
 msgstr "ਅੱਪਡੇਟ ਅਜਿਹੇ ਫਾਰਮੈਟ ਵਿੱਚ ਨਹੀਂ ਜੋ ਇਹ ਵਰਜਨ ਜਾਣਦਾ ਹੈ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:980
-#: modules/gui/qt/util/redesign_updater.cpp:1004
-#: modules/gui/qt/util/redesign_updater.cpp:1015
-#: modules/gui/qt/util/redesign_updater.cpp:1021
+#: modules/gui/qt/util/redesign_updater.cpp:1009
+#: modules/gui/qt/util/redesign_updater.cpp:1033
+#: modules/gui/qt/util/redesign_updater.cpp:1044
+#: modules/gui/qt/util/redesign_updater.cpp:1050
+#: modules/gui/qt/util/redesign_updater.cpp:1284
 msgid "The update is damaged."
 msgstr "ਅੱਪਡੇਟ ਖ਼ਰਾਬ ਹੈ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:985
+#: modules/gui/qt/util/redesign_updater.cpp:1014
+#: modules/gui/qt/util/redesign_updater.cpp:1281
 msgid "The update isn't for this version."
 msgstr "ਇਹ ਅੱਪਡੇਟ ਇਸ ਵਰਜਨ ਲਈ ਨਹੀਂ ਹੈ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:994
-#: modules/gui/qt/util/redesign_updater.cpp:1031
-#: modules/gui/qt/util/redesign_updater.cpp:1040
-#: modules/gui/qt/util/redesign_updater.cpp:1044
-#: modules/gui/qt/util/redesign_updater.cpp:1048
+#: modules/gui/qt/util/redesign_updater.cpp:1023
+#: modules/gui/qt/util/redesign_updater.cpp:1060
+#: modules/gui/qt/util/redesign_updater.cpp:1069
+#: modules/gui/qt/util/redesign_updater.cpp:1073
+#: modules/gui/qt/util/redesign_updater.cpp:1077
+#: modules/gui/qt/util/redesign_updater.cpp:1277
 msgid "The update can't be written in %1."
 msgstr "ਅੱਪਡੇਟ %1 ਵਿੱਚ ਲਿਖਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:996
+#: modules/gui/qt/util/redesign_updater.cpp:1025
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -31038,30 +31041,31 @@ msgstr ""
 "VLC Redesign ਦੀ ਇੱਕ ਫਾਇਲ ਇੰਸਟਾਲ ਹੋਣ ਤੋਂ ਬਾਅਦ ਬਦਲੀ ਗਈ ਸੀ, ਇਸ ਲਈ ਛੋਟਾ ਅੱਪਡੇਟ ਨਹੀਂ ਵਰਤਿਆ "
 "ਜਾ ਸਕਦਾ: ਇਸ ਦੀ ਥਾਂ ਇੰਸਟਾਲਰ ਨਾਲ ਅੱਪਡੇਟ ਕਰੋ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1026
+#: modules/gui/qt/util/redesign_updater.cpp:1055
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr "ਅੱਪਡੇਟ ਖ਼ਰਾਬ ਹੈ: ਇੱਕ ਫਾਇਲ ਆਪਣੇ ਚੈੱਕਸਮ ਨਾਲ ਨਹੀਂ ਮਿਲਦੀ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1151
+#: modules/gui/qt/util/redesign_updater.cpp:1180
+#: modules/gui/qt/util/redesign_updater.cpp:1345
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr "ਅੱਪਡੇਟ ਸ਼ੁਰੂ ਨਹੀਂ ਹੋ ਸਕਿਆ। ਅਗਲੀ ਵਾਰ ਇਸ ਦੀ ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕੀਤੀ ਜਾਵੇਗੀ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1178
+#: modules/gui/qt/util/redesign_updater.cpp:1207
 msgid "The download failed. Try again, or download it from the release page."
 msgstr "ਡਾਊਨਲੋਡ ਅਸਫ਼ਲ ਰਿਹਾ। ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ, ਜਾਂ ਇਸ ਨੂੰ ਰੀਲੀਜ਼ ਪੰਨੇ ਤੋਂ ਡਾਊਨਲੋਡ ਕਰੋ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1191
+#: modules/gui/qt/util/redesign_updater.cpp:1220
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr "ਡਾਊਨਲੋਡ ਕੀਤਾ ਇੰਸਟਾਲਰ ਆਪਣੇ ਚੈੱਕਸਮ ਨਾਲ ਨਹੀਂ ਮਿਲਦਾ, ਇਸ ਲਈ ਇਸ ਨੂੰ ਨਹੀਂ ਚਲਾਇਆ ਗਿਆ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1203
-#: modules/gui/qt/util/redesign_updater.cpp:1211
-#: modules/gui/qt/util/redesign_updater.cpp:1225
+#: modules/gui/qt/util/redesign_updater.cpp:1232
+#: modules/gui/qt/util/redesign_updater.cpp:1240
+#: modules/gui/qt/util/redesign_updater.cpp:1254
 msgid "The installer couldn't be saved to %1."
 msgstr "ਇੰਸਟਾਲਰ %1 ਵਿੱਚ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1265
-#: modules/gui/qt/util/redesign_updater.cpp:1283
+#: modules/gui/qt/util/redesign_updater.cpp:1325
+#: modules/gui/qt/util/redesign_updater.cpp:1363
 msgid "The installer couldn't be started."
 msgstr "ਇੰਸਟਾਲਰ ਸ਼ੁਰੂ ਨਹੀਂ ਹੋ ਸਕਿਆ।"
 

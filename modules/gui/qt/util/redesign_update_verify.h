@@ -14,7 +14,7 @@
  * the SHA-256 of the data. bcrypt.dll is loaded here, from System32:
  * nothing else of the interface needs it, and the build links nothing more.
  * C and C++ (extras/juxtopposed/signing/verify-test.c tests it as it is).
- * Windows, and Linux through GnuTLS (below): macOS has no updater. */
+ * Windows; Linux through GnuTLS and macOS through its Security framework (below). */
 
 #ifdef _WIN32
 # include <stddef.h>
@@ -145,6 +145,7 @@ static inline size_t vlc_redesign_der_int(unsigned char *out, const unsigned cha
     return n + 32 - skip;
 }
 
+
 /* 1: the signature is good; 0: it isn't, or it couldn't be checked */
 static inline int vlc_redesign_verify_signature(const unsigned char key[64],
                                                 const void *data, size_t size,
@@ -199,6 +200,118 @@ out:
     if (public_key)
         deinit(public_key);
     dlclose(gnutls);
+    return good;
+}
+#elif defined(__APPLE__)
+/* macOS: the same check with the system's Security framework
+ * (SecKeyVerifySignature, ECDSA over SHA-256 of the message, X9.62 DER), it
+ * and CoreFoundation loaded here: the build links nothing more. */
+# include <dlfcn.h>
+# include <stddef.h>
+# include <string.h>
+# include <CoreFoundation/CoreFoundation.h>
+# include <Security/Security.h>
+
+# define VLC_REDESIGN_SIGNATURE_SIZE 64
+
+/* r or s as a DER INTEGER: leading zeros dropped, a 0 added when the top bit is set */
+static inline size_t vlc_redesign_der_int(unsigned char *out, const unsigned char *v)
+{
+    size_t skip = 0, n = 0;
+    while (skip < 31 && v[skip] == 0)
+        skip++;
+    out[n++] = 0x02;
+    out[n++] = (unsigned char)(32 - skip + (v[skip] & 0x80 ? 1 : 0));
+    if (v[skip] & 0x80)
+        out[n++] = 0;
+    memcpy(out + n, v + skip, 32 - skip);
+    return n + 32 - skip;
+}
+
+/* 1: the signature is good; 0: it isn't, or it couldn't be checked */
+static inline int vlc_redesign_verify_signature(const unsigned char key[64],
+                                                const void *data, size_t size,
+                                                const unsigned char *sig, size_t sig_size)
+{
+    typedef CFDataRef (*data_create_fn)(CFAllocatorRef, const UInt8 *, CFIndex);
+    typedef CFDictionaryRef (*dict_create_fn)(CFAllocatorRef, const void **, const void **, CFIndex,
+                                              const CFDictionaryKeyCallBacks *,
+                                              const CFDictionaryValueCallBacks *);
+    typedef void (*release_fn)(CFTypeRef);
+    typedef SecKeyRef (*key_create_fn)(CFDataRef, CFDictionaryRef, CFErrorRef *);
+    typedef Boolean (*verify_fn)(SecKeyRef, SecKeyAlgorithm, CFDataRef, CFDataRef, CFErrorRef *);
+    unsigned char point[65], der[2 + 2 * 35];
+    void *cf, *sec;
+    data_create_fn data_create;
+    dict_create_fn dict_create;
+    release_fn release;
+    key_create_fn key_create;
+    verify_fn verify;
+    const CFDictionaryKeyCallBacks *key_callbacks;
+    const CFDictionaryValueCallBacks *value_callbacks;
+    const CFStringRef *attr_type, *type_ec, *attr_class, *class_public, *algorithm;
+    CFDataRef key_data = NULL, text = NULL, signature = NULL;
+    CFDictionaryRef attributes = NULL;
+    SecKeyRef public_key = NULL;
+    const void *keys[2], *values[2];
+    size_t n;
+    int good = 0;
+
+    if (!key || (!data && size) || !sig || sig_size != VLC_REDESIGN_SIGNATURE_SIZE || size > 0x7fffffffu)
+        return 0;
+    cf = dlopen("/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation", RTLD_LAZY | RTLD_LOCAL);
+    sec = dlopen("/System/Library/Frameworks/Security.framework/Security", RTLD_LAZY | RTLD_LOCAL);
+    if (!cf || !sec)
+        goto out;
+    data_create = (data_create_fn)dlsym(cf, "CFDataCreate");
+    dict_create = (dict_create_fn)dlsym(cf, "CFDictionaryCreate");
+    release = (release_fn)dlsym(cf, "CFRelease");
+    key_callbacks = (const CFDictionaryKeyCallBacks *)dlsym(cf, "kCFTypeDictionaryKeyCallBacks");
+    value_callbacks = (const CFDictionaryValueCallBacks *)dlsym(cf, "kCFTypeDictionaryValueCallBacks");
+    key_create = (key_create_fn)dlsym(sec, "SecKeyCreateWithData");
+    verify = (verify_fn)dlsym(sec, "SecKeyVerifySignature");
+    attr_type = (const CFStringRef *)dlsym(sec, "kSecAttrKeyType");
+    type_ec = (const CFStringRef *)dlsym(sec, "kSecAttrKeyTypeECSECPrimeRandom");
+    attr_class = (const CFStringRef *)dlsym(sec, "kSecAttrKeyClass");
+    class_public = (const CFStringRef *)dlsym(sec, "kSecAttrKeyClassPublic");
+    algorithm = (const CFStringRef *)dlsym(sec, "kSecKeyAlgorithmECDSASignatureMessageX962SHA256");
+    if (!data_create || !dict_create || !release || !key_callbacks || !value_callbacks || !key_create
+        || !verify || !attr_type || !type_ec || !attr_class || !class_public || !algorithm)
+        goto out;
+
+    /* the public key as an uncompressed point: 04, X, Y */
+    point[0] = 0x04;
+    memcpy(point + 1, key, 64);
+    keys[0] = *attr_type;  values[0] = *type_ec;
+    keys[1] = *attr_class; values[1] = *class_public;
+    attributes = dict_create(NULL, keys, values, 2, key_callbacks, value_callbacks);
+    key_data = data_create(NULL, point, sizeof point);
+    if (!attributes || !key_data)
+        goto out;
+    public_key = key_create(key_data, attributes, NULL);
+    if (!public_key)
+        goto out;
+    /* r then s, as the SEQUENCE the framework takes */
+    n = 2;
+    n += vlc_redesign_der_int(der + n, sig);
+    n += vlc_redesign_der_int(der + n, sig + 32);
+    der[0] = 0x30;
+    der[1] = (unsigned char)(n - 2);
+    signature = data_create(NULL, der, (CFIndex)n);
+    text = data_create(NULL, (const UInt8 *)data, (CFIndex)size);
+    if (signature && text)
+        good = verify(public_key, *algorithm, text, signature, NULL) ? 1 : 0;
+
+out:
+    if (release) {
+        if (text) release(text);
+        if (signature) release(signature);
+        if (public_key) release(public_key);
+        if (key_data) release(key_data);
+        if (attributes) release(attributes);
+    }
+    if (sec) dlclose(sec);
+    if (cf) dlclose(cf);
     return good;
 }
 #endif

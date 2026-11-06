@@ -15,6 +15,16 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Added
+
+- macOS: VLC Redesign updates itself, as on Windows and the Linux AppImage. When a new version is out the app offers
+  it (*Update now*, with its size): the release's disk image for this Mac (Apple Silicon or Intel) is downloaded,
+  checked against the release's signed `SHA256SUMS.txt` (now checked on macOS too, with the system's Security
+  framework), its app copied next to this one and its code signature checked, then the two are swapped once VLC
+  Redesign closes, and it opens again on what was playing, where it was. An app that can't be replaced (run from
+  its disk image, or in a folder you can't write to) opens the release page, as before. The first version with it
+  is 0.5.5: install it from its disk image once.
+
 ### Fixed
 
 - Translations: every catalog follows the interface's current texts again. 89 languages had been left on an older

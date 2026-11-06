@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-06 20:50+0000\n"
+"POT-Creation-Date: 2026-11-06 21:05+0000\n"
 "PO-Revision-Date: 2017-02-06 13:43+0000\n"
 "Last-Translator: Christoph Miebach <christoph.miebach@web.de>\n"
 "Language-Team: Tamil (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -31126,7 +31126,7 @@ msgstr "மீட்டமை"
 msgid "Don't restore"
 msgstr "மீட்டமைக்க வேண்டாம்"
 
-#: modules/gui/qt/util/redesign_updater.cpp:233
+#: modules/gui/qt/util/redesign_updater.cpp:250
 msgid ""
 "The update isn't signed by the publisher of this copy (%1), so it wasn't "
 "used."
@@ -31134,27 +31134,27 @@ msgstr ""
 "இந்தப் புதுப்பிப்பு இந்தப் பிரதியின் வெளியீட்டாளரால் (%1) கையொப்பமிடப்படவில்லை, எனவே அது "
 "பயன்படுத்தப்படவில்லை."
 
-#: modules/gui/qt/util/redesign_updater.cpp:479
+#: modules/gui/qt/util/redesign_updater.cpp:496
 msgid "%1 (later)"
 msgstr "%1 (பின்னர்)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:481
+#: modules/gui/qt/util/redesign_updater.cpp:498
 msgid "%1 (soon)"
 msgstr "%1 (விரைவில்)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:669
+#: modules/gui/qt/util/redesign_updater.cpp:694
 msgid "This build cannot check for updates."
 msgstr "இந்த உருவாக்கத்தால் புதுப்பிப்புகளைச் சரிபார்க்க முடியாது."
 
-#: modules/gui/qt/util/redesign_updater.cpp:683
+#: modules/gui/qt/util/redesign_updater.cpp:708
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "GitHub-ஐ அடைய முடியவில்லை. உங்கள் இணைப்பைச் சரிபார்த்து மீண்டும் முயலவும்."
 
-#: modules/gui/qt/util/redesign_updater.cpp:700
+#: modules/gui/qt/util/redesign_updater.cpp:725
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "GitHub எதிர்பாராத பதிலை அனுப்பியது (%1)."
 
-#: modules/gui/qt/util/redesign_updater.cpp:824
+#: modules/gui/qt/util/redesign_updater.cpp:853
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
@@ -31162,48 +31162,51 @@ msgstr ""
 "இந்தப் புதுப்பிப்பு VLC Redesign-ஆல் கையொப்பமிடப்படவில்லை, எனவே இது "
 "பயன்படுத்தப்படவில்லை. அதற்குப் பதிலாக வெளியீட்டுப் பக்கத்திலிருந்து இதைப் பதிவிறக்கு."
 
-#: modules/gui/qt/util/redesign_updater.cpp:846
-#: modules/gui/qt/util/redesign_updater.cpp:887
+#: modules/gui/qt/util/redesign_updater.cpp:875
+#: modules/gui/qt/util/redesign_updater.cpp:916
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr ""
 "புதுப்பிப்பின் சரிபார்ப்புத் தொகை இல்லை; அதற்குப் பதிலாக வெளியீட்டுப் பக்கத்திலிருந்து "
 "பதிவிறக்கவும்."
 
-#: modules/gui/qt/util/redesign_updater.cpp:861
-#: modules/gui/qt/util/redesign_updater.cpp:933
+#: modules/gui/qt/util/redesign_updater.cpp:890
+#: modules/gui/qt/util/redesign_updater.cpp:962
 msgid "The download failed. Check your connection and try again."
 msgstr "பதிவிறக்கம் தோல்வியடைந்தது. உங்கள் இணைப்பைச் சரிபார்த்து மீண்டும் முயலவும்."
 
-#: modules/gui/qt/util/redesign_updater.cpp:946
+#: modules/gui/qt/util/redesign_updater.cpp:975
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr ""
 "புதுப்பிப்பு அதன் சரிபார்ப்புத் தொகையுடன் பொருந்தவில்லை, எனவே அது பயன்படுத்தப்படவில்லை."
 
-#: modules/gui/qt/util/redesign_updater.cpp:977
+#: modules/gui/qt/util/redesign_updater.cpp:1006
 msgid "The update isn't in a format this version knows."
 msgstr "புதுப்பிப்பு இந்தப் பதிப்புக்குத் தெரிந்த வடிவத்தில் இல்லை."
 
-#: modules/gui/qt/util/redesign_updater.cpp:980
-#: modules/gui/qt/util/redesign_updater.cpp:1004
-#: modules/gui/qt/util/redesign_updater.cpp:1015
-#: modules/gui/qt/util/redesign_updater.cpp:1021
+#: modules/gui/qt/util/redesign_updater.cpp:1009
+#: modules/gui/qt/util/redesign_updater.cpp:1033
+#: modules/gui/qt/util/redesign_updater.cpp:1044
+#: modules/gui/qt/util/redesign_updater.cpp:1050
+#: modules/gui/qt/util/redesign_updater.cpp:1284
 msgid "The update is damaged."
 msgstr "புதுப்பிப்பு சேதமடைந்துள்ளது."
 
-#: modules/gui/qt/util/redesign_updater.cpp:985
+#: modules/gui/qt/util/redesign_updater.cpp:1014
+#: modules/gui/qt/util/redesign_updater.cpp:1281
 msgid "The update isn't for this version."
 msgstr "புதுப்பிப்பு இந்தப் பதிப்புக்கானது அல்ல."
 
-#: modules/gui/qt/util/redesign_updater.cpp:994
-#: modules/gui/qt/util/redesign_updater.cpp:1031
-#: modules/gui/qt/util/redesign_updater.cpp:1040
-#: modules/gui/qt/util/redesign_updater.cpp:1044
-#: modules/gui/qt/util/redesign_updater.cpp:1048
+#: modules/gui/qt/util/redesign_updater.cpp:1023
+#: modules/gui/qt/util/redesign_updater.cpp:1060
+#: modules/gui/qt/util/redesign_updater.cpp:1069
+#: modules/gui/qt/util/redesign_updater.cpp:1073
+#: modules/gui/qt/util/redesign_updater.cpp:1077
+#: modules/gui/qt/util/redesign_updater.cpp:1277
 msgid "The update can't be written in %1."
 msgstr "புதுப்பிப்பை %1-இல் எழுத முடியாது."
 
-#: modules/gui/qt/util/redesign_updater.cpp:996
+#: modules/gui/qt/util/redesign_updater.cpp:1025
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -31211,34 +31214,35 @@ msgstr ""
 "VLC Redesign-இன் ஒரு கோப்பு நிறுவப்பட்டதிலிருந்து மாற்றப்பட்டுள்ளது, எனவே சிறிய "
 "புதுப்பிப்பைப் பயன்படுத்த முடியாது: அதற்குப் பதிலாக நிறுவியைக் கொண்டு புதுப்பிக்கவும்."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1026
+#: modules/gui/qt/util/redesign_updater.cpp:1055
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr ""
 "புதுப்பிப்பு சேதமடைந்துள்ளது: ஒரு கோப்பு அதன் சரிபார்ப்புத் தொகையுடன் பொருந்தவில்லை."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1151
+#: modules/gui/qt/util/redesign_updater.cpp:1180
+#: modules/gui/qt/util/redesign_updater.cpp:1345
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr "புதுப்பிப்பைத் தொடங்க முடியவில்லை. அடுத்த முறை மீண்டும் முயற்சிக்கப்படும்."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1178
+#: modules/gui/qt/util/redesign_updater.cpp:1207
 msgid "The download failed. Try again, or download it from the release page."
 msgstr ""
 "பதிவிறக்கம் தோல்வியடைந்தது. மீண்டும் முயலவும், அல்லது வெளியீட்டுப் பக்கத்திலிருந்து "
 "பதிவிறக்கவும்."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1191
+#: modules/gui/qt/util/redesign_updater.cpp:1220
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr ""
 "பதிவிறக்கிய நிறுவி அதன் சரிபார்ப்புத் தொகையுடன் பொருந்தவில்லை, எனவே அது இயக்கப்படவில்லை."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1203
-#: modules/gui/qt/util/redesign_updater.cpp:1211
-#: modules/gui/qt/util/redesign_updater.cpp:1225
+#: modules/gui/qt/util/redesign_updater.cpp:1232
+#: modules/gui/qt/util/redesign_updater.cpp:1240
+#: modules/gui/qt/util/redesign_updater.cpp:1254
 msgid "The installer couldn't be saved to %1."
 msgstr "நிறுவியை %1-இல் சேமிக்க முடியவில்லை."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1265
-#: modules/gui/qt/util/redesign_updater.cpp:1283
+#: modules/gui/qt/util/redesign_updater.cpp:1325
+#: modules/gui/qt/util/redesign_updater.cpp:1363
 msgid "The installer couldn't be started."
 msgstr "நிறுவியைத் தொடங்க முடியவில்லை."
 

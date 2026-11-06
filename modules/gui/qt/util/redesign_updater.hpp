@@ -31,7 +31,10 @@
 // thread. vlc-redesign-update.exe then puts them in place once VLC has
 // quit, either now (Restart) or when it closes, and opens VLC again where
 // it was. Otherwise an installed copy downloads and runs the installer, and
-// a portable one opens the release page.
+// a portable one opens the release page. Linux replaces the AppImage it runs
+// from; macOS replaces its application with the one of the release's disk
+// image (extras/juxtopposed/macos/vlc-redesign-update.sh), both checked
+// against the signed SHA256SUMS.txt and opened again where they were.
 class RedesignUpdater : public QObject
 {
     Q_OBJECT

@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-06 20:50+0000\n"
+"POT-Creation-Date: 2026-11-06 21:05+0000\n"
 "PO-Revision-Date: 2017-02-06 13:43+0000\n"
 "Last-Translator: Christoph Miebach <christoph.miebach@web.de>\n"
 "Language-Team: Finnish (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -9053,7 +9053,7 @@ msgstr "Palauta"
 msgid "Don't restore"
 msgstr "Älä palauta"
 
-#: modules/gui/qt/util/redesign_updater.cpp:233
+#: modules/gui/qt/util/redesign_updater.cpp:250
 msgid ""
 "The update isn't signed by the publisher of this copy (%1), so it wasn't "
 "used."
@@ -9061,27 +9061,27 @@ msgstr ""
 "Päivitystä ei ole allekirjoittanut tämän kopion julkaisija (%1), joten sitä "
 "ei käytetty."
 
-#: modules/gui/qt/util/redesign_updater.cpp:479
+#: modules/gui/qt/util/redesign_updater.cpp:496
 msgid "%1 (later)"
 msgstr "%1 (myöhemmin)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:481
+#: modules/gui/qt/util/redesign_updater.cpp:498
 msgid "%1 (soon)"
 msgstr "%1 (pian)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:669
+#: modules/gui/qt/util/redesign_updater.cpp:694
 msgid "This build cannot check for updates."
 msgstr "Tämä koontiversio ei voi tarkistaa päivityksiä."
 
-#: modules/gui/qt/util/redesign_updater.cpp:683
+#: modules/gui/qt/util/redesign_updater.cpp:708
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "GitHubiin ei saatu yhteyttä. Tarkista yhteys ja yritä uudelleen."
 
-#: modules/gui/qt/util/redesign_updater.cpp:700
+#: modules/gui/qt/util/redesign_updater.cpp:725
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "GitHub lähetti odottamattoman vastauksen (%1)."
 
-#: modules/gui/qt/util/redesign_updater.cpp:824
+#: modules/gui/qt/util/redesign_updater.cpp:853
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
@@ -9089,46 +9089,49 @@ msgstr ""
 "VLC Redesign ei ole allekirjoittanut tätä päivitystä, joten sitä ei "
 "käytetty. Lataa se sen sijaan julkaisusivulta."
 
-#: modules/gui/qt/util/redesign_updater.cpp:846
-#: modules/gui/qt/util/redesign_updater.cpp:887
+#: modules/gui/qt/util/redesign_updater.cpp:875
+#: modules/gui/qt/util/redesign_updater.cpp:916
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr ""
 "Päivityksen tarkistussumma puuttuu; lataa se sen sijaan julkaisusivulta."
 
-#: modules/gui/qt/util/redesign_updater.cpp:861
-#: modules/gui/qt/util/redesign_updater.cpp:933
+#: modules/gui/qt/util/redesign_updater.cpp:890
+#: modules/gui/qt/util/redesign_updater.cpp:962
 msgid "The download failed. Check your connection and try again."
 msgstr "Lataus epäonnistui. Tarkista yhteys ja yritä uudelleen."
 
-#: modules/gui/qt/util/redesign_updater.cpp:946
+#: modules/gui/qt/util/redesign_updater.cpp:975
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "Päivitys ei vastaa tarkistussummaansa, joten sitä ei käytetty."
 
-#: modules/gui/qt/util/redesign_updater.cpp:977
+#: modules/gui/qt/util/redesign_updater.cpp:1006
 msgid "The update isn't in a format this version knows."
 msgstr "Päivitys ei ole muodossa, jonka tämä versio tuntee."
 
-#: modules/gui/qt/util/redesign_updater.cpp:980
-#: modules/gui/qt/util/redesign_updater.cpp:1004
-#: modules/gui/qt/util/redesign_updater.cpp:1015
-#: modules/gui/qt/util/redesign_updater.cpp:1021
+#: modules/gui/qt/util/redesign_updater.cpp:1009
+#: modules/gui/qt/util/redesign_updater.cpp:1033
+#: modules/gui/qt/util/redesign_updater.cpp:1044
+#: modules/gui/qt/util/redesign_updater.cpp:1050
+#: modules/gui/qt/util/redesign_updater.cpp:1284
 msgid "The update is damaged."
 msgstr "Päivitys on vahingoittunut."
 
-#: modules/gui/qt/util/redesign_updater.cpp:985
+#: modules/gui/qt/util/redesign_updater.cpp:1014
+#: modules/gui/qt/util/redesign_updater.cpp:1281
 msgid "The update isn't for this version."
 msgstr "Päivitys ei ole tälle versiolle."
 
-#: modules/gui/qt/util/redesign_updater.cpp:994
-#: modules/gui/qt/util/redesign_updater.cpp:1031
-#: modules/gui/qt/util/redesign_updater.cpp:1040
-#: modules/gui/qt/util/redesign_updater.cpp:1044
-#: modules/gui/qt/util/redesign_updater.cpp:1048
+#: modules/gui/qt/util/redesign_updater.cpp:1023
+#: modules/gui/qt/util/redesign_updater.cpp:1060
+#: modules/gui/qt/util/redesign_updater.cpp:1069
+#: modules/gui/qt/util/redesign_updater.cpp:1073
+#: modules/gui/qt/util/redesign_updater.cpp:1077
+#: modules/gui/qt/util/redesign_updater.cpp:1277
 msgid "The update can't be written in %1."
 msgstr "Päivitystä ei voi kirjoittaa kohteeseen %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:996
+#: modules/gui/qt/util/redesign_updater.cpp:1025
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -9136,33 +9139,34 @@ msgstr ""
 "VLC Redesignin tiedostoa on muutettu asennuksen jälkeen, joten pientä "
 "päivitystä ei voi käyttää: päivitä sen sijaan asennusohjelmalla."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1026
+#: modules/gui/qt/util/redesign_updater.cpp:1055
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr "Päivitys on vahingoittunut: tiedosto ei vastaa tarkistussummaansa."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1151
+#: modules/gui/qt/util/redesign_updater.cpp:1180
+#: modules/gui/qt/util/redesign_updater.cpp:1345
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr ""
 "Päivitystä ei voitu käynnistää. Sitä yritetään uudelleen ensi kerralla."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1178
+#: modules/gui/qt/util/redesign_updater.cpp:1207
 msgid "The download failed. Try again, or download it from the release page."
 msgstr "Lataus epäonnistui. Yritä uudelleen tai lataa se julkaisusivulta."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1191
+#: modules/gui/qt/util/redesign_updater.cpp:1220
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr ""
 "Ladattu asennusohjelma ei vastaa tarkistussummaansa, joten sitä ei "
 "suoritettu."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1203
-#: modules/gui/qt/util/redesign_updater.cpp:1211
-#: modules/gui/qt/util/redesign_updater.cpp:1225
+#: modules/gui/qt/util/redesign_updater.cpp:1232
+#: modules/gui/qt/util/redesign_updater.cpp:1240
+#: modules/gui/qt/util/redesign_updater.cpp:1254
 msgid "The installer couldn't be saved to %1."
 msgstr "Asennusohjelmaa ei voitu tallentaa kohteeseen %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1265
-#: modules/gui/qt/util/redesign_updater.cpp:1283
+#: modules/gui/qt/util/redesign_updater.cpp:1325
+#: modules/gui/qt/util/redesign_updater.cpp:1363
 msgid "The installer couldn't be started."
 msgstr "Asennusohjelmaa ei voitu käynnistää."
 

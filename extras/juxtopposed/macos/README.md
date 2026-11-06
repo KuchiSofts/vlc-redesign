@@ -177,9 +177,14 @@ checked for syntax with their guards forced, as no Mac is at hand):
 - **Fonts**: Inter is in the interface's resources on every system. The fallback fonts of the CJK languages follow
   the interface language (PingFang SC/TC, Hiragino Sans, Apple SD Gothic Neo), as on Windows; Core Text finds the
   other scripts.
-- **Updater**: it never takes a Windows installer or small update outside Windows, and on macOS a release counts as
-  an update only when it has this Mac's disk image; *Download* opens the release page (nothing is installed from
-  the app; Sparkle or an in-app installer later).
+- **Updater** (from 0.5.5): it never takes a Windows installer or small update outside Windows. On macOS a release
+  counts as an update only when it has this Mac's disk image, and the app updates itself with it: the image is
+  downloaded and checked against the signed `SHA256SUMS.txt` (the signature with the Security framework,
+  `redesign_update_verify.h`), then `Contents/Resources/vlc-redesign-update.sh stage` copies its app next to this
+  one (`.vlc-redesign-update.app`, the same volume), checks its code signature (`codesign --verify --deep
+  --strict`) and its bundle identifier; `apply` swaps the two once VLC has quit and opens the app again where it
+  was. An app that can't be replaced (run from its disk image, a folder not writable) opens the release page. The
+  launch test (`ci/macos-smoke.sh`, step 5) checks the signature on a real Mac and stages and swaps the built image.
 
 Checked, nothing to change:
 
@@ -203,7 +208,7 @@ Checked, nothing to change:
 - 🔴 The video in the window (CompositorPlatform's `NSView`), VideoToolbox decoding, HDR, AirPlay audio, the
   audio devices of `auhal`.
 - 🔴 The dock menu, opening files from Finder while running (`QFileOpenEvent`), drag and drop on the dock icon.
-- 🔴 Signed and notarized releases (decision 3), Sparkle or an in-app update.
+- 🔴 Signed and notarized releases (decision 3). (The in-app update is done, from 0.5.5: above.)
 - 🔴 Pixel check of every frame (Retina: the 2× assets), dark and light with the system appearance (the smoke
   test's screenshots `main-light.png`, `main-dark.png`, `about.png` are the first look).
 

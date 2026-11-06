@@ -14,24 +14,26 @@ Updated as the work moves (last: 2026-11-06).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
-| **Windows x64** | ✅ released 0.5.3 | ██████████ 100 % | — fixes as the issues bring them |
-| **Windows on ARM64** | ✅ released 0.5.3 | ██████████ 100 % | a run by hand on a real ARM64 PC |
-| **Linux** (x86_64, ARM64) | ✅ released 0.5.3 | ██████████ 100 % | the Flatpak on Flathub |
-| **macOS** (Apple Silicon, Intel) | ✅ released 0.5.3 | ██████████ 100 % | tests on a Mac by hand |
-| **Android** (phones) | ✅ released 0.5.3 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
-| **Android** (tablets) | ✅ released 0.5.3 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
-| **Android TV** | ✅ released 0.5.3 | ██████████ 100 % | — every page in the design with a remote; tests on more TV boxes |
-| **Samsung TV** (*Redesign Player for TV*) | ✅ released 0.5.3 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
+| **Windows x64** | ✅ released 0.5.4 | ██████████ 100 % | — fixes as the issues bring them |
+| **Windows on ARM64** | ✅ released 0.5.4 | ██████████ 100 % | a run by hand on a real ARM64 PC |
+| **Linux** (x86_64, ARM64) | ✅ released 0.5.4 | ██████████ 100 % | the Flatpak on Flathub |
+| **macOS** (Apple Silicon, Intel) | ✅ released 0.5.4 | ██████████ 100 % | tests on a Mac by hand |
+| **Android** (phones) | ✅ released 0.5.4 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
+| **Android** (tablets) | ✅ released 0.5.4 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
+| **Android TV** | ✅ released 0.5.4 | ██████████ 100 % | — 1:1 with the Figma frames, with a remote; tests on more TV boxes |
+| **Samsung TV** (*Redesign Player for TV*) | ✅ released 0.5.4 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
-## Next: 0.5.4 and after
+## Next: 0.5.5 and after
 
-**0.5.4** is a release of fixes, made as the issues bring them (each fix is first published through a pull request,
+**0.5.5** is a release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try):
 
 - 📋 Linux: the first update of the AppImage from the app, checked from 0.5.3 to 0.5.4 on real desktops
 - 📋 Samsung TV: a USB drive played on a real TV (the folders of the TV's own storage are checked)
 - 📋 Android TV: tests on more TV boxes (Google TV, Fire TV)
+- 📋 Android: an upstream merge before the next Android release (the version code's release counter is at its last
+  step on the current base)
 
 After it:
 

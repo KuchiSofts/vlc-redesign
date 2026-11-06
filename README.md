@@ -364,7 +364,7 @@ The interface code lives in [`modules/gui/qt`](modules/gui/qt).
 ## Roadmap
 
 The current release is **0.5.4** (2026-11-06): Android TV 1:1 with the design (the window, the pages, the menus
-and the dialogs at the frames' sizes) and VideoLAN's latest fixes (its files and checksums on the [release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.4)); the next, **0.5.5**, brings fixes as the issues bring them. The status of each platform and what comes after is
+and the dialogs at the frames' sizes) and VideoLAN's latest fixes; on Windows a 3.6 MB small update from 0.5.3 (its files and checksums on the [release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.4)); the next, **0.5.5**, brings fixes as the issues bring them. The status of each platform and what comes after is
 tracked in [ROADMAP.md](ROADMAP.md) (mirrored on the
 [wiki](https://github.com/KuchiSofts/vlc-redesign/wiki/Roadmap)). Past releases are in [CHANGELOG.md](CHANGELOG.md).
 

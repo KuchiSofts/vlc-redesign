@@ -19,7 +19,13 @@ What is being worked on, updated as it changes (2026-11-06):
   menus; phones and tablets checked unchanged. VideoLAN merged to da8cf042aa (32 commits; the player page renamed
   PlayerView.qml upstream, the redesign's own panes kept). Weblate PR #53 (Estonian) merged. One version on every
   platform: the Samsung app 0.5.4 too (unchanged). The Android release counter is at its last step on upstream
-  3.7.2: the next Android release needs an upstream merge. Next: 0.5.5 (fixes).
+  3.7.2: the next Android release needs an upstream merge. Published 2026-11-06
+  ([v0.5.4](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.4)): 35 files, the small updates 3.6 MB (x64)
+  and 4.0 MB (ARM64) from 0.5.3; Windows ARM64 package check, macOS (both, signed ad hoc, 0 failures) and Linux
+  builds green; the release smoke test caught upstream's PartialEffect change (effectRect -> effectRects), fixed
+  before the tag. The Android source tagged v0.5.4. Weblate: not exported this time: po/et.po lacks the volume
+  meter's texts, and an export would remove the three Estonian translations of #53 from Weblate; next: msgmerge the
+  catalogs (et first), then export. Next: 0.5.5 (fixes).
 - 🟢 **Release 0.5.3** (2026-11-06, everything together, the owner's plan): the desktop on every platform, Android
   with the TV layout in the design (the welcome, Settings, the video and music players, details, search, the folder
   and playlist pages, About), and the first Samsung TV app, *Redesign Player for TV* (no VLC code, so its own name

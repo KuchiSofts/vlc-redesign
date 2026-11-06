@@ -112,6 +112,7 @@ Newest first. Every change is in the [changelog](CHANGELOG.md).
   mini player, checked against the Figma frames
 - ✅ Android TV: New Playlist and Open Network Stream as the design's dialogs; hold OK (or Menu) for an item's menu
 - ✅ VideoLAN master merged to `da8cf042aa`; Estonian corrected (#53)
+- ✅ On Windows the app updates itself from 0.5.3 with a 3.6 MB small update (ARM64: 4.0 MB)
 
 ### 0.5.3 (2026-11-06)
 

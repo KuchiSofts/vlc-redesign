@@ -49,6 +49,9 @@
 # include <cstdio>
 # include "util/redesign_update_key.h"
 # include "util/redesign_update_verify.h"
+#elif defined(__APPLE__)
+# include "util/redesign_update_key.h"
+# include "util/redesign_update_verify.h"
 #endif
 
 #include "dialogs/dialogs_provider.hpp"
@@ -84,14 +87,28 @@ const char deltaInfix[] = "-winarm64";
 const char installerSuffix[] = "-win64-setup.exe";
 const char deltaInfix[] = "";
 #elif defined(__APPLE__)
-// macOS installs nothing from here (no installer, no small update): the
-// release page, and only for a release that has the disk image of this
-// Mac's architecture
+// macOS updates the application it runs from with the release's disk image
+// of this Mac's architecture (extras/juxtopposed/macos/vlc-redesign-update.sh
+// copies its application next to this one, then swaps them once VLC has
+// quit); a release without that image is not an update of this Mac
 # if defined(__aarch64__) || defined(__arm64__)
 const char ownPackageSuffix[] = "-macos-arm64.dmg";
 # else
 const char ownPackageSuffix[] = "-macos-x86_64.dmg";
 # endif
+
+// The application bundle this VLC runs from (…/VLC Redesign.app), empty when
+// it doesn't run from one
+QString ownBundle()
+{
+    const QString bundle = QDir(QCoreApplication::applicationDirPath() + QStringLiteral("/../..")).canonicalPath();
+    return bundle.endsWith(QLatin1String(".app"), Qt::CaseInsensitive) ? bundle : QString();
+}
+
+QString updateScript()
+{
+    return QCoreApplication::applicationDirPath() + QStringLiteral("/../Resources/vlc-redesign-update.sh");
+}
 #elif defined(__linux__)
 // Linux updates the AppImage it runs from (the release's AppImage of this
 // architecture, put in its place); the other packages open the release page
@@ -205,7 +222,7 @@ bool signatureRequired(const QString &version)
 // release PC (extras/juxtopposed/signing/release-key.ps1)
 bool goodSignature(const QByteArray &sums, const QByteArray &signature)
 {
-#if defined(_WIN32) || defined(__linux__)
+#if defined(_WIN32) || defined(__linux__) || defined(__APPLE__)
     return vlc_redesign_verify_signature(vlc_redesign_update_key, sums.constData(),
                                          static_cast<size_t>(sums.size()),
                                          reinterpret_cast<const unsigned char *>(signature.constData()),
@@ -566,6 +583,14 @@ bool RedesignUpdater::isInstalledCopy() const
         return false;
     const QFileInfo file(image);
     return file.isFile() && file.isWritable() && QFileInfo(file.absolutePath()).isWritable();
+#elif defined(__APPLE__)
+    // An application the user can replace, not one run from its disk image
+    // (or another read-only volume): the bundle and its folder writable, the
+    // helper in it
+    const QString bundle = ownBundle();
+    if (bundle.isEmpty() || bundle.startsWith(QLatin1String("/Volumes/")) || !QFileInfo::exists(updateScript()))
+        return false;
+    return QFileInfo(bundle).isWritable() && QFileInfo(QFileInfo(bundle).absolutePath()).isWritable();
 #else
     return false;
 #endif
@@ -751,10 +776,14 @@ void RedesignUpdater::onRelease(int status, const QByteArray &body)
             m_installerSize = size;
         }
 #elif defined(__APPLE__)
-        else if (name.endsWith(QLatin1String(ownPackageSuffix), Qt::CaseInsensitive))
+        else if (name.endsWith(QLatin1String(ownPackageSuffix), Qt::CaseInsensitive)) {
             ownPackage = true;
+            m_installerUrl = url;
+            m_installerName = name;
+            m_installerSize = size;
+        }
 #endif
-#if !defined(_WIN32) && !defined(__linux__)
+#if !defined(_WIN32) && !defined(__linux__) && !defined(__APPLE__)
         // (the files of Windows and Linux are never offered elsewhere)
         Q_UNUSED(size);
 #endif
@@ -1229,6 +1258,37 @@ void RedesignUpdater::downloadInstaller(const QString &expectedSha256)
                     if (!saved->error.isEmpty())
                         QFile::remove(saved->path);
                 }
+#ifdef __APPLE__
+                // The image's application copied next to this one and checked
+                // (vlc-redesign-update.sh stage): saved->path is that copy
+                if (saved->error.isEmpty()) {
+                    const QString image = saved->path;
+                    const QString bundle = ownBundle();
+                    QProcess stage;
+                    stage.start(QStringLiteral("/bin/sh"), { updateScript(), QStringLiteral("stage"), image, bundle });
+                    const bool done = stage.waitForFinished(10 * 60 * 1000);
+                    QFile::remove(image);
+                    const QString staged = QString::fromUtf8(stage.readAllStandardOutput()).trimmed();
+                    if (!done || stage.exitStatus() != QProcess::NormalExit || stage.exitCode() != 0 || staged.isEmpty()) {
+                        if (!done)
+                            stage.kill();
+                        switch (done ? stage.exitCode() : 0) {
+                        case 3:
+                            saved->error = qtr("The update can't be written in %1.")
+                                               .arg(QDir::toNativeSeparators(QFileInfo(bundle).absolutePath()));
+                            break;
+                        case 5:
+                            saved->error = qtr("The update isn't for this version.");
+                            break;
+                        default:
+                            saved->error = qtr("The update is damaged.");
+                            break;
+                        }
+                    } else {
+                        saved->path = staged;
+                    }
+                }
+#endif
 #endif
             }
         });
@@ -1266,6 +1326,26 @@ void RedesignUpdater::launchInstaller(const QString &path)
         return;
     }
     msg_Dbg(m_intf, "update to %s: the AppImage is replaced, VLC opens again", qtu(m_latestVersion));
+    QTimer::singleShot(300, this, []() { THEDP->quit(); });
+#elif defined(__APPLE__)
+    // The new application waits next to this one: swapped in once this VLC
+    // has quit, then opened where it was (vlc-redesign-update.sh apply)
+    QStringList args = { updateScript(), QStringLiteral("apply"),
+                         QString::number(QCoreApplication::applicationPid()), path, ownBundle() };
+    PlayerController *player = m_intf->p_mainPlayerController;
+    const QUrl media = player ? player->getUrl() : QUrl();
+    if (media.isValid() && !media.isEmpty()) {
+        const int seconds = player->getTime().toMilliseconds() / 1000;
+        if (seconds > 0)
+            args << QStringLiteral("--redesign-resume-time=%1").arg(seconds);
+        args << media.toString(QUrl::FullyEncoded);
+    }
+    if (!QProcess::startDetached(QStringLiteral("/bin/sh"), args)) {
+        QDir(path).removeRecursively();
+        setState(Failed, qtr("The update couldn't be started. It will be tried again next time."));
+        return;
+    }
+    msg_Dbg(m_intf, "update to %s: the application is replaced once VLC quits, then opens again", qtu(m_latestVersion));
     QTimer::singleShot(300, this, []() { THEDP->quit(); });
 #else
     QStringList args = { QStringLiteral("/SILENT"), QStringLiteral("/SUPPRESSMSGBOXES"),

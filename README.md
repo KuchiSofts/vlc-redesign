@@ -263,7 +263,8 @@ available, a card offers **Update now**:
 - **The full installer** is used when no small update applies (more than three releases behind, or installed for
   all users). It is downloaded, verified and run without prompts.
 
-Linux and macOS have no in-app updates yet: install the new package or disk image.
+On Linux the AppImage, and on macOS the app (from 0.5.5), update themselves the same way with the release's full
+file, checked against the signed `SHA256SUMS.txt`; the other Linux packages update by installing the new package.
 
 </details>
 

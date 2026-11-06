@@ -75,7 +75,8 @@ PC.
 | `vlc-redesign-0.5.4-android.apk` (125 MB) | **For phones, tablets and Android TV** (ARM64, ARMv7, x86 and x86_64 in one file). |
 
 `SHA256SUMS.txt`, signed by the project, lists every file of the release (Windows, Linux, macOS and Android). The small
-updates in the app are for Windows only: on Linux and macOS, install the new version's file to update.
+updates in the app are for Windows; the AppImage on Linux and the app on macOS update themselves from the app with the
+release's full file (from 0.5.5); the other Linux packages are updated by installing the new version's file.
 
 **Samsung TV** (Tizen 3.0 or later):
 
@@ -410,8 +411,15 @@ Live TV (IPTV) add-on* turns it off.
 
 ### Updating
 
-There is no update in the app on macOS. To update, download the new version's disk image and drag VLC Redesign to
-Applications again, replacing the old one; the settings stay.
+From 0.5.5, VLC Redesign updates itself on macOS: when a new version is out, the app offers it (**Update now**, with
+its size). It downloads the release's disk image for your Mac (Apple Silicon or Intel), checks it against the
+release's signed `SHA256SUMS.txt`, copies the new app next to the old one and checks its code signature, then swaps
+them once VLC Redesign closes and opens again on what was playing, where it was. Your settings and library stay.
+
+The update in the app needs an app you can replace: VLC Redesign in **Applications** (or another folder you can
+write to), not run from its disk image. Otherwise *Update now* opens the release page: download the disk image and
+drag VLC Redesign to Applications, replacing the old one. Versions before 0.5.5 have no update in the app: install
+0.5.5 that way once.
 
 ### Uninstalling
 

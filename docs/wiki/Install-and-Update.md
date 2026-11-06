@@ -445,9 +445,10 @@ TV's home screen.
 
 ## Samsung TV
 
-**Redesign Player for TV** is the design's own player for Samsung TVs (Tizen 3.0, the 2017 models, and later): the
+**Redesign Player for TV** is a player of its own for Samsung TVs (Tizen 3.0, the 2017 models, and later), **inspired by
+VLC** and in the design, not VLC itself: the
 library, the player, Live TV, 17 languages, driven by the remote. The TV's own player plays the video, so it has
-none of VLC's code, and it is called by its own name (its mark is the designer's pixel cat).
+none of VLC's code (it has features like VLC's), and it is called by its own name (its mark is the designer's pixel cat).
 
 Samsung TVs install apps from Samsung's store, or from a computer when the TV is in developer mode. The app is
 not in the store, so it is installed from a computer, once (about 20 minutes):

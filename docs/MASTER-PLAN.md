@@ -1581,7 +1581,7 @@ on the TV. A Samsung Galaxy phone is Android (track above).
 - 🟢 Developer mode is on on the test TV, but bound to 127.0.0.1
 - 🟢 Developer mode set to the PC's address (only at the TV: Apps → 1 2 3 4 5) (decision 5)
 - 🟢 Tizen Studio, a Samsung certificate tied to the TV, the app installed and debugged through its web inspector
-- 🟢 **Redesign Player for TV** (0.5.3): a stand-alone player in the design, played by the TV's player (AVPlay): the
+- 🟢 **Redesign Player for TV** (0.5.3): a stand-alone player inspired by VLC (not VLC), in the design, played by the TV's player (AVPlay): the
   library, the player and its panels, Live TV (M3U, Xtream Codes, the guide, catch-up, films and series), 17
   languages, right to left, the colour keys; every screen compared with its Figma frame (32 scenes, 1.16 % mean)
 - 🟢 Its own name and mark (no VLC code: VideoLAN's trademark policy): the designer's pixel cat; About credits

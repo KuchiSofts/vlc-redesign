@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 2.2.7\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-31 01:37+0000\n"
+"POT-Creation-Date: 2026-11-06 20:50+0000\n"
 "PO-Revision-Date: 2017-11-16 03:02+0100\n"
 "Last-Translator: Fumio Nakayama <fumio.n6a@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -36,7 +36,7 @@ msgid "Media Library Settings"
 msgstr "メディアライブラリの設定"
 
 #: src/audio_output/output.c:337
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1226
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1247
 msgid "Waveform"
 msgstr "波形"
 
@@ -273,8 +273,8 @@ msgstr "マウスクリックによる一時停止の扱い方を設定します
 #: src/libvlc-module.c:552 modules/access/rist.h:85
 #: modules/audio_output/mmdevice.c:1621
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:181
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1224
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1245
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:345
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:23
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:145
 msgid "Disabled"
@@ -639,7 +639,7 @@ msgid "Automatically start playing the play queue content once it's loaded."
 msgstr "再生キューの内容が読み込まれたら、自動的に再生を開始します。"
 
 #: src/libvlc-module.c:1317
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
 msgid "Use the media library"
 msgstr "メディアライブラリを使用"
 
@@ -886,20 +886,20 @@ msgstr "入力アクセスとコーデック"
 msgid "Startup"
 msgstr "起動"
 
-#: src/libvlc-module.c:2860
+#: src/libvlc-module.c:2862
 msgid "print help for VLC (can be combined with --help-verbose)"
 msgstr "VLCのヘルプを表示(--help-verbose と組み合わせ可能)"
 
-#: src/libvlc-module.c:2862
+#: src/libvlc-module.c:2864
 msgid ""
 "print help for VLC and all its modules (can be combined with --help-verbose)"
 msgstr "VLCとすべてのモジュールのヘルプを表示(--help-verbose と組み合わせ可能)"
 
-#: src/libvlc-module.c:2865
+#: src/libvlc-module.c:2867
 msgid "print complete help (same as --longhelp --help-verbose)"
 msgstr "完全なヘルプを表示(--longhelp --help-verbose と同じ)"
 
-#: src/libvlc-module.c:2873
+#: src/libvlc-module.c:2875
 msgid ""
 "print help on a specific module (can be combined with --help-verbose). "
 "Prefix the module name with = for strict matches."
@@ -1357,66 +1357,66 @@ msgctxt "key"
 msgid "Zoom Out"
 msgstr "ズームアウト"
 
-#: src/player/osd.c:169
+#: src/player/osd.c:177
 #, c-format
 msgid "Volume: %ld%%"
 msgstr "音量: %ld%%"
 
-#: src/player/osd.c:184
+#: src/player/osd.c:192
 #, c-format
 msgid "Video tracks: %s"
 msgstr "ビデオトラック: %s"
 
-#: src/player/osd.c:185
+#: src/player/osd.c:193
 #, c-format
 msgid "Video track: %s"
 msgstr "ビデオトラック: %s"
 
-#: src/player/osd.c:188
+#: src/player/osd.c:196
 #, c-format
 msgid "Audio tracks: %s"
 msgstr "オーディオトラック: %s"
 
-#: src/player/osd.c:192
+#: src/player/osd.c:200
 #, c-format
 msgid "Subtitle tracks: %s"
 msgstr "字幕トラック: %s"
 
-#: src/player/osd.c:313
+#: src/player/osd.c:321
 msgid "Original size"
 msgstr "元のサイズ"
 
-#: src/player/osd.c:320
+#: src/player/osd.c:328
 #, c-format
 msgid "Bottom crop: %d px"
 msgstr "下のクロッピング: %d ピクセル"
 
-#: src/player/osd.c:323
+#: src/player/osd.c:331
 #, c-format
 msgid "Top crop: %d px"
 msgstr "上のクロッピング: %d ピクセル"
 
-#: src/player/osd.c:326
+#: src/player/osd.c:334
 #, c-format
 msgid "Left crop: %d px"
 msgstr "左のクロッピング: %d ピクセル"
 
-#: src/player/osd.c:329
+#: src/player/osd.c:337
 #, c-format
 msgid "Right crop: %d px"
 msgstr "右のクロッピング: %d ピクセル"
 
-#: src/player/osd.c:339
+#: src/player/osd.c:347
 #, c-format
 msgid "Deinterlace %s (%s)"
 msgstr "デインターレース %s (%s)"
 
-#: src/player/osd.c:349
+#: src/player/osd.c:357
 #, c-format
 msgid "Secondary subtitle position %d px"
 msgstr "第2字幕の位置 %d ピクセル"
 
-#: src/player/osd.c:363
+#: src/player/osd.c:371
 #, c-format
 msgid "Zoom: x%.2f"
 msgstr "拡大: x%.2f"
@@ -1614,7 +1614,7 @@ msgid "Additional fonts directory"
 msgstr "追加フォントディレクトリ"
 
 #: modules/codec/vpx.c:62
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
 #: modules/video_output/xcb/render.c:764
 msgid "Best"
 msgstr "最高"
@@ -1698,8 +1698,8 @@ msgstr "メディアライブラリに追加"
 msgid "Remove from Favorites"
 msgstr "お気に入りから削除"
 
-#: modules/gui/macosx/library/VLCLibraryTableCellView.m:147
-#: modules/gui/macosx/library/video-library/VLCLibraryVideoGroupDescriptor.m:47
+#: modules/gui/macosx/library/VLCLibraryTableCellView.m:188
+#: modules/gui/macosx/library/VLCLibraryMediaGroupDescriptor.m:57
 #: modules/gui/macosx/library/video-library/VLCLibraryVideoDataSource.m:536
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:28
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:89
@@ -1728,7 +1728,7 @@ msgstr "不連続"
 msgid "Disc Number"
 msgstr "ディスク番号"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1604
+#: modules/gui/macosx/preferences/VLCMediaLibraryFolderManagementController.m:99
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:126
 msgid "Add Folder"
 msgstr "フォルダーを追加"
@@ -2004,7 +2004,7 @@ msgid "Videos"
 msgstr "ビデオ"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:69
-#: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:212
+#: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:210
 msgid "Folders"
 msgstr "フォルダー"
 
@@ -2260,7 +2260,7 @@ msgid "Audio effect settings could not be saved (error %1)."
 msgstr "オーディオエフェクトの設定を保存できませんでした (エラー %1)。"
 
 #: modules/gui/qt/dialogs/extended/audio_effects.cpp:525
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:529
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:601
 msgid "The setting \"%1\" changed outside this dialog."
 msgstr "設定「%1」がこのダイアログの外で変更されました。"
 
@@ -2276,64 +2276,67 @@ msgstr "第1字幕トラック:"
 msgid "Secondary subtitle track:"
 msgstr "第2字幕トラック:"
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:318
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:320
 msgid "Open video effects before changing them."
 msgstr "変更する前にビデオエフェクトを開いてください。"
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:319
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:325
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:357
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:421
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:435
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:472
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:322
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:332
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:415
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:485
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:499
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:543
 msgid "No active video output is available."
 msgstr "有効なビデオ出力がありません。"
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:320
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:323
 msgid "Video output changed during the preview."
 msgstr "プレビュー中にビデオ出力が変更されました。"
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:354
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:389
 msgid "Video effect option is unavailable."
 msgstr "ビデオエフェクトのオプションは利用できません。"
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:364
-msgid "The video effect value could not be prepared."
-msgstr "ビデオエフェクトの値を準備できませんでした。"
-
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:405
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:392
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:408
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:463
 msgid "The video effect value could not be applied."
 msgstr "ビデオエフェクトの値を適用できませんでした。"
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:412
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:422
+msgid "The video effect value could not be prepared."
+msgstr "ビデオエフェクトの値を準備できませんでした。"
+
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:470
 msgid "Video filter is unavailable."
 msgstr "ビデオフィルターは利用できません。"
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:425
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:478
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:489
 msgid "The video filter could not be applied."
 msgstr "ビデオフィルターを適用できませんでした。"
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:431
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:495
 msgid "Invalid crop value."
 msgstr "クロッピングの値が無効です。"
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:443
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:507
 msgid "Crop could not be applied to every video output."
 msgstr "一部のビデオ出力にクロッピングを適用できませんでした。"
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:460
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:531
 msgid "Video output changed; the previous preview can no longer be restored."
 msgstr "ビデオ出力が変更されたため、以前のプレビューを復元できなくなりました。"
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:484
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:555
 msgid "Video preview could not be restored."
 msgstr "ビデオのプレビューを復元できませんでした。"
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:497
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:568
 msgid "A video effect value is unavailable."
 msgstr "ビデオエフェクトの値を取得できません。"
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:528
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:600
 msgid "Video effect settings could not be saved (error %1)."
 msgstr "ビデオエフェクトの設定を保存できませんでした (エラー %1)。"
 
@@ -2984,7 +2987,7 @@ msgstr ""
 "すべての変更履歴へのリンクとともに表示します。ノートは英語です。"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:256
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:359
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:362
 msgid "Discover cast devices"
 msgstr "キャストデバイスを検出"
 
@@ -3040,7 +3043,7 @@ msgid "How long the popup of the track changes stays on the screen."
 msgstr "トラックが変わったときのポップアップを画面に表示する時間です。"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:268
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:351
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:354
 msgid "Process priority"
 msgstr "プロセスの優先度"
 
@@ -3051,48 +3054,53 @@ msgid ""
 msgstr ""
 "ほかのプログラムと比べて、システムがVLCに割り当てるプロセッサー時間の量です。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:270 modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:200
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:270
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:201
 msgid "Volume indicator"
 msgstr "音量インジケーター"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:271
-msgid "Where the volume shows when it changes (the wheel, the keys, mute). Automatic: on the right side, on the left in a right-to-left language."
-msgstr "音量が変わったとき（ホイール、キー、ミュート）に表示する場所。自動: 右側。右から左に書く言語では左側。"
+msgid ""
+"Where the volume shows when it changes (the wheel, the keys, mute). "
+"Automatic: on the right side, on the left in a right-to-left language."
+msgstr ""
+"音量が変わったとき（ホイール、キー、ミュート）に表示する場所。自動: 右側。右"
+"から左に書く言語では左側。"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:273
 msgid "Automatic|Right side|Left side|Top right corner|Top left corner"
 msgstr "自動|右側|左側|右上隅|左上隅"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:270
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:274
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
 msgid "Double click on the video"
 msgstr "ビデオのダブルクリック"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:271
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:275
 msgid "What a double click on the video does."
 msgstr "ビデオをダブルクリックしたときの動作です。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:271
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:275
 msgid "Nothing|Toggle fullscreen"
 msgstr "何もしない|全画面表示の切り替え"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:272
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:250
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:276
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
 msgid "Size values"
 msgstr "サイズの指定方法"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:273
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:277
 msgid ""
 "Choose the size of the subtitles by name (relative to the picture), or in "
 "pixels."
 msgstr ""
 "字幕のサイズを名前 (画像に対する相対サイズ) またはピクセルで選択します。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:274
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:278
 msgid "Relative|Pixels"
 msgstr "相対|ピクセル"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:276
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:280
 msgid ""
 "How opaque the box behind the subtitles is when there is one (kept while "
 "there is none)."
@@ -3100,12 +3108,12 @@ msgstr ""
 "字幕の背後にボックスがある場合の不透明度です (ボックスがない間も値は保持され"
 "ます)。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:277
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:281
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:95
 msgid "Never remember items matching"
 msgstr "次に一致する項目を記憶しない"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:278
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:282
 msgid ""
 "A regular expression: the items whose address or name matches it are not "
 "saved in the history, nor their playback position."
@@ -3113,12 +3121,12 @@ msgstr ""
 "正規表現です: アドレスまたは名前が一致する項目は、履歴にも再生位置にも保存さ"
 "れません。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:281
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:285
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:98
 msgid "Update the channels and the guide"
 msgstr "チャンネルとガイドの更新"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:282
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:286
 msgid ""
 "How often the playlists and the programme guides are downloaded again, in "
 "the background. Update in the sources does it at once."
@@ -3126,16 +3134,16 @@ msgstr ""
 "プレイリストとプログラムガイドをバックグラウンドで再ダウンロードする頻度で"
 "す。ソースで更新するとすぐに実行されます。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:284
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:288
 msgid "Never|Every 6 hours|Every 12 hours|Every day|Every week"
 msgstr "しない|6 時間ごと|12 時間ごと|毎日|毎週"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:285
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:289
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:99
 msgid "Days of the guide kept"
 msgstr "ガイドの保持日数"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:286
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:290
 msgid ""
 "How many days of programmes are kept before and after today. Fewer use less "
 "memory with a large guide; the archives of the channels reach back as far as "
@@ -3144,21 +3152,21 @@ msgstr ""
 "今日の前後何日分の番組を保持するかです。大きなガイドでは日数を減らすとメモリ"
 "使用量が減ります。チャンネルのアーカイブもこの日数分までさかのぼります。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:288
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:292
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:101
 msgid "Hours across the guide"
 msgstr "ガイドの表示時間幅"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:289
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:293
 msgid "The time the guide shows across its width."
 msgstr "ガイドの横幅全体に表示する時間です。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:290
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:294
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
 msgid "Guide languages"
 msgstr "ガイドの言語"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:291
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:295
 msgid ""
 "Keeps only the programmes in these languages when a guide gives several "
 "(codes such as en, he, fr, separated by commas). Empty: every language."
@@ -3166,276 +3174,276 @@ msgstr ""
 "ガイドに複数の言語がある場合、これらの言語の番組のみを残します (en, he, fr な"
 "どのコードをカンマ区切りで指定)。空欄: すべての言語。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:293
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:297
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:105
 #: modules/gui/qt/qt.cpp:349
 msgid "Channel banner"
 msgstr "チャンネルバナー"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:294
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:298
 msgid "What the banner shows over the video when the channel changes."
 msgstr "チャンネルが変わったときにビデオの上のバナーに表示する内容です。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:295
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:299
 msgid "Channel, now and next|Channel and now|Channel only|Nothing"
 msgstr "チャンネル、現在と次|チャンネルと現在|チャンネルのみ|なし"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:296
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:300
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:107
 msgid "Show programme descriptions"
 msgstr "番組の説明を表示"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:297
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:301
 msgid ""
 "Shows the description of what is on in the channel lists and the banner."
 msgstr "チャンネルリストとバナーに放送中の番組の説明を表示します。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:298
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:302
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:108
 msgid "Show the progress of what is on"
 msgstr "放送中の番組の進行状況を表示"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:299
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:303
 msgid ""
 "A bar of how much of the programme has played, from its start and end in the "
 "guide."
 msgstr "ガイドの開始・終了時刻をもとに、番組がどれだけ進んだかを示すバーです。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:300
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:304
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:109
 msgid "Show what is next"
 msgstr "次の番組を表示"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:301
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:305
 msgid "Shows the next programme in the channel lists and the banner."
 msgstr "チャンネルリストとバナーに次の番組を表示します。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:302
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:306
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:106
 msgid "Start on the last channel"
 msgstr "最後のチャンネルで開始"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:303
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:307
 msgid "When VLC opens with nothing to play, the channel watched last plays."
 msgstr ""
 "再生するものがない状態で VLC を開くと、最後に視聴したチャンネルを再生します。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:304
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:308
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:110
 msgid "Show adult channels"
 msgstr "アダルトチャンネルを表示"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:305
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:309
 msgid "Lists the channels whose group or name says they are for adults."
 msgstr ""
 "グループ名またはチャンネル名から成人向けとわかるチャンネルを一覧に表示しま"
 "す。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:318
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:288
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:322
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:291
 msgid "System monospace"
 msgstr "システムの等幅フォント"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:318
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:249
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:322
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:252
 msgid "System, sans-serif"
 msgstr "システム、サンセリフ"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:371
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:375
 msgid "Ultra fast"
 msgstr "ウルトラ高速"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:371
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:375
 msgid "Super fast"
 msgstr "スーパー高速"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:372
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:376
 msgid "Very fast"
 msgstr "非常に高速"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:374
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:378
 msgid "Very slow"
 msgstr "非常に低速"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:374
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:378
 msgid "Placebo"
 msgstr "プラシーボ"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:376
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:380
 msgid "Film"
 msgstr "フィルム"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:377
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:381
 msgid "Still image"
 msgstr "静止画"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:378
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:382
 msgid "Fast decoding"
 msgstr "高速デコード"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:378
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:382
 msgid "Zero latency"
 msgstr "ゼロレイテンシー"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:945
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:966
 msgid "%1: this value can not be used."
 msgstr "%1: この値は使用できません。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1008
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1037
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1029
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1058
 msgid "%1 is not available in this VLC installation."
 msgstr "%1はこのVLCのインストールでは利用できません。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1022
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1043
 msgid "This setting"
 msgstr "この設定"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1032
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1053
 msgid "%1: choose a folder of this computer."
 msgstr "%1: このコンピューター上のフォルダーを選択してください。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1061
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1082
 msgid "Select a category to reset."
 msgstr "リセットするカテゴリーを選択してください。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1123
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1144
 msgid "Repeat the current item (One) or the whole play queue (All)."
 msgstr "現在の項目 (1つ) または再生キュー全体 (すべて) をリピートします。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1131
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1152
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:135
 msgid "When playback finishes"
 msgstr "再生終了時"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1132
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1153
 msgid "Stop, or quit VLC at the end of the play queue."
 msgstr "再生キューの最後で停止するか、VLCを終了します。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1140
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1161
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:47
 msgid "Use a custom skin"
 msgstr "カスタムスキンを使用"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1141
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1162
 msgid "Starts VLC with the skin chosen below instead of this interface."
 msgstr "このインターフェースの代わりに、下で選択したスキンでVLCを起動します。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1157
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1178
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:94
 msgid "Remember the playback position"
 msgstr "再生位置を記憶"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1158
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1179
 msgid "Lets VLC continue the media where you left off."
 msgstr "前回停止した位置からメディアを再開できるようにします。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1172
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1193
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
 msgid "Reverse scroll direction"
 msgstr "スクロール方向を反転"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1173
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1194
 msgid "The wheels that seek go backwards when turned forwards."
 msgstr "シークに使うホイールを前に回すと、後ろに戻ります。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1188
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1209
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
 msgid "Web remote control"
 msgstr "Webリモートコントロール"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1189
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1210
 msgid ""
 "Lets a web browser control VLC. Set its password in the Advanced Options."
 msgstr ""
 "WebブラウザーからVLCを操作できるようにします。パスワードは詳細設定オプション"
 "で設定します。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1207
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:343
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1228
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:346
 msgid "Video post-processing"
 msgstr "ビデオの後処理"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1208
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1229
 msgid ""
 "Improves the picture of poorly encoded videos, at the cost of processing "
 "power."
 msgstr ""
 "処理能力を消費しますが、品質の低いエンコードのビデオの画質を改善します。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1257
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1278
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:233
 msgid "Visualization size"
 msgstr "視覚化のサイズ"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1258
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1279
 msgid "The size the visualizations are drawn at."
 msgstr "視覚化を描画するサイズです。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1259
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1280
 msgid "Match window"
 msgstr "ウィンドウに合わせる"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1300
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1321
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:136
 msgid "Seek precisely"
 msgstr "正確にシーク"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1301
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1322
 msgid ""
 "Seek to the exact time asked, slower than seeking to the nearest key frame."
 msgstr ""
 "指定した正確な時間にシークします。最も近いキーフレームへのシークより低速で"
 "す。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1402
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1423
 msgid "From the file only"
 msgstr "ファイルからのみ"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1404
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1425
 msgid "From the file and the internet"
 msgstr "ファイルとインターネットから"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1421
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1442
 msgid "Box"
 msgstr "ボックス"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1481
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1502
 msgid "Above normal"
 msgstr "通常以上"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1482
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1503
 msgid "Below normal"
 msgstr "通常以下"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1482
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1503
 msgid "Idle"
 msgstr "低"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1601
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1621
 msgid "Current screen"
 msgstr "現在の画面"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1606
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1626
 msgid "Screen %1 (%2)"
 msgstr "画面 %1 (%2)"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1612
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1632
 msgid "Screen %1"
 msgstr "画面 %1"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1621
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1641
 msgid "Any title"
 msgstr "任意のタイトル"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1621
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1641
 msgid "Contains title"
 msgstr "タイトルを含む"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1622
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1642
 msgid "Title with extra characters"
 msgstr "余分な文字を含むタイトル"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1622
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1642
 msgid "Exact title match"
 msgstr "タイトルと完全一致"
 
@@ -3888,7 +3896,7 @@ msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:205
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:208
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:209
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:212
 msgid "Two-pass"
 msgstr "2パス"
 
@@ -3956,22 +3964,22 @@ msgstr "インストール済みのアドオンを選択"
 msgid "Load add-ons on startup"
 msgstr "起動時にアドオンを読み込む"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:78
+#: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:88
 msgid "Play audio to adjust and preview sound effects."
 msgstr ""
 "オーディオを再生すると、サウンドエフェクトを調整してプレビューできます。"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:79
+#: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:89
 msgid "Play video to adjust and preview the picture."
 msgstr "ビデオを再生すると、画像を調整してプレビューできます。"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:114
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:210
+#: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:124
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:213
 msgid "Spatial audio"
 msgstr "空間オーディオ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:122
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:213
+#: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:132
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:216
 msgid "Stereo widening"
 msgstr "ステレオ拡張"
 
@@ -3996,7 +4004,7 @@ msgid "The address the played tracks are sent to."
 msgstr "再生したトラックの送信先アドレスです。"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:216
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:300
 msgid "Nothing"
 msgstr "何もしない"
 
@@ -4323,7 +4331,7 @@ msgstr "ライブ TV (IPTV) アドオン"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:101
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:82
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:774
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:951
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:582
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:667
 msgid "Guide"
@@ -4381,8 +4389,8 @@ msgstr "他のアプリがオーディオを使用するときに一時停止"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:128
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:130
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:131
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:218
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:219
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:222
 msgctxt "media streams"
 msgid "Tracks"
 msgstr "トラック"
@@ -4485,589 +4493,589 @@ msgstr "前回の再生状態を再開 (トラック、速度...)"
 msgid "Start videos in fullscreen"
 msgstr "ビデオを全画面表示で開始"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:158
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:159
 msgid "Stop the screensaver during playback"
 msgstr "再生中はスクリーンセーバーを停止"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:159
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:160
 msgid "Play video as desktop wallpaper"
 msgstr "ビデオをデスクトップの壁紙として再生"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:162
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:163
 msgid "Method"
 msgstr "方式"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:163
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:164
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:165
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:166
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:167
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:176
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:178
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:180
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:400
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:168
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:177
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:179
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:181
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:403
 msgid "Framing"
 msgstr "フレーミング"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:165
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:166
 msgid "Scale video to the window"
 msgstr "ビデオをウィンドウに合わせて拡大縮小"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:167
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:168
 msgid "Position in the window"
 msgstr "ウィンドウ内の位置"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:168
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:169
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:170
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:172
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:171
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:173
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:174
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:183
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:175
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
 msgid "Snapshots"
 msgstr "スナップショット"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:168
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:169
 msgid "Save to"
 msgstr "保存先"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:169
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:170
 msgid "File name prefix"
 msgstr "ファイル名のプレフィックス"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:173
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:174
 msgid "Number files sequentially"
 msgstr "ファイルに連番を付ける"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:174
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:175
 msgid "Show a preview after capture"
 msgstr "キャプチャー後にプレビューを表示"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:176
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:177
 msgid "Custom aspect ratios"
 msgstr "カスタムのアスペクト比"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:178
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:179
 msgid "Custom crop ratios"
 msgstr "カスタムのクロッピング比率"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:183
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
 msgid "Snapshot height (0: proportional, -1: original)"
 msgstr "スナップショットの高さ (0: 縦横比を維持、-1: 元のサイズ)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:185
 msgid "Deinterlacing filter"
 msgstr "デインターレースフィルター"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:188
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
 msgid "Speaker setup"
 msgstr "スピーカーの構成"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:190
 msgid "Maximum volume"
 msgstr "最大音量"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:191
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:192
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:193
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:194
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:195
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:196
-#: modules/gui/qt/dialogs/preferences/qml/SettingsStartupVolume.qml:139
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsStartupVolume.qml:144
 msgid "Startup volume"
 msgstr "起動時の音量"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:198
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:199
 msgid "Volume step"
 msgstr "音量の変化幅"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:199
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:200
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:201
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:202
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
 msgid "Loudness"
 msgstr "ラウドネス"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:199
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:202
 msgid "Normalize loudness"
 msgstr "ラウドネスを正規化"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:200
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
 msgid "Target level"
 msgstr "目標レベル"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:201
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:204
 msgid "Night mode"
 msgstr "ナイトモード"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
 msgid "Replay gain preamp"
 msgstr "再生ゲインのプリアンプ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:211
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:214
 msgid "Spatial audio mode"
 msgstr "空間オーディオのモード"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:215
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:218
 msgid "Pitch shift"
 msgstr "ピッチシフト"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:216
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:219
 msgid "Chorus/flanger"
 msgstr "コーラス/フランジャー"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:218
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
 msgid "Preferred audio language"
 msgstr "優先するオーディオの言語"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:219
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:222
 #: modules/gui/qt/player/qml/TracksMenu.qml:282
 msgid "Audio delay"
 msgstr "オーディオ遅延"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:223
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:226
 msgid "Pass compressed audio to the receiver"
 msgstr "圧縮オーディオをレシーバーにパススルー"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
 msgid "Detect Dolby Surround"
 msgstr "ドルビーサラウンドを検出"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
 msgid "Fastest"
 msgstr "最速"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
 msgid "Balanced"
 msgstr "バランス"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:232
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:235
 msgid "Output gain"
 msgstr "出力ゲイン"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:233
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:236
 msgid "Keep the pitch when changing the speed"
 msgstr "速度の変更時にピッチを維持"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:234
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:237
 msgid "Equalizer preamp"
 msgstr "イコライザーのプリアンプ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:236
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:239
 msgid "Compressor ratio"
 msgstr "圧縮の比率"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:237
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:240
 msgid "Compressor threshold"
 msgstr "圧縮の閾値"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:238
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:241
 msgid "Compressor makeup gain"
 msgstr "圧縮のメイクアップゲイン"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:240
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:243
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:244
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:246
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:247
 msgid "Tracks & Languages"
 msgstr "トラックと言語"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:243
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:246
 msgid "Preferred language"
 msgstr "優先する言語"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:244
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:247
 msgid "Text encoding"
 msgstr "テキストのエンコード"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:245
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:246
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:279
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:248
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:249
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
 msgid "Loading Subtitles"
 msgstr "字幕の読み込み"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:245
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:248
 msgid "Load subtitle files automatically"
 msgstr "字幕ファイルを自動的に読み込む"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:246
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:249
 msgid "File name matching"
 msgstr "ファイル名の一致"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:255
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
 msgid "Bold"
 msgstr "太字"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:256
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:259
 msgid "Text color"
 msgstr "文字の色"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:270
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:273
 msgid "Vertical position"
 msgstr "垂直位置"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:271
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:273
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:274
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:276
 msgid "Timing"
 msgstr "タイミング"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:273
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:276
 #: modules/gui/qt/qt.cpp:306
 msgid "Show subtitle lines on the seek bar"
 msgstr "シークバーに字幕の行を表示"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:274
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:275
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:276
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:277
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:290
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:279
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:280
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:293
 msgid "On-Screen Messages"
 msgstr "オンスクリーンメッセージ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:274
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:277
 msgid "Show feedback for shortcuts"
 msgstr "ショートカットのフィードバックを表示"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:275
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
 msgid "Show feedback for"
 msgstr "フィードバックの表示時間"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:276
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:279
 msgid "Show filename when a video starts"
 msgstr "ビデオの開始時にファイル名を表示"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:277
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:280
 msgid "Show filename for"
 msgstr "ファイル名の表示時間"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:279
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
 msgid "Load subtitles from these folders"
 msgstr "これらのフォルダーから字幕を読み込む"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:287
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:290
 msgid "Monospace font"
 msgstr "等幅フォント"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:289
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:292
 msgid "Text alignment"
 msgstr "文字の配置"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:290
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:293
 msgid "Position of the filename"
 msgstr "ファイル名の位置"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:292
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:293
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:294
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
 msgid "Skip Amounts"
 msgstr "スキップの幅"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:292
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
 msgid "Very short skip"
 msgstr "ごく短いスキップ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:293
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
 msgid "Short skip"
 msgstr "短いスキップ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:294
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
 msgid "Medium skip"
 msgstr "中程度のスキップ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
 msgid "Long skip"
 msgstr "長いスキップ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:300
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:307
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
 msgid "Mouse"
 msgstr "マウス"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
 msgid "Single click on the video"
 msgstr "ビデオのシングルクリック"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:300
 msgid "Play / Pause"
 msgstr "再生 / 一時停止"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
 msgid "Play / Pause on release"
 msgstr "離したときに再生 / 一時停止"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:300
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
 msgid "Scroll wheel"
 msgstr "スクロールホイール"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
 msgid "Horizontal scroll"
 msgstr "水平スクロール"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:306
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:401
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:312
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:404
 msgid "Remotes"
 msgstr "リモート"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:307
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Handle mouse clicks in the video"
 msgstr "ビデオ内のマウスクリックを処理"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
 msgid "Web remote password"
 msgstr "Webリモートのパスワード"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:312
 msgid "Web remote address"
 msgstr "Webリモートのアドレス"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
 msgid "Ignore the volume keys of the keyboard"
 msgstr "キーボードの音量キーを無視"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:312
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:323
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
 msgid "Opening Files"
 msgstr "ファイルを開くとき"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:312
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
 msgid "Only allow one VLC window"
 msgstr "VLCのウィンドウを1つだけ許可"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
 msgid "Apply to files opened from the file manager"
 msgstr "ファイルマネージャーから開いたファイルにも適用"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
 msgid "Add to the playlist instead of replacing it"
 msgstr "置き換えずにプレイリストに追加"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
 msgid "When opening a folder"
 msgstr "フォルダーを開くとき"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
 msgid "Only this folder"
 msgstr "このフォルダーのみ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
 msgid "Include subfolders"
 msgstr "サブフォルダーを含める"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:320
 msgid "Include and expand subfolders"
 msgstr "サブフォルダーを含めて展開"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
 msgid "Metadata & Artwork"
 msgstr "メタデータとアートワーク"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
 msgid "Fetch titles and artwork"
 msgstr "タイトルとアートワークを取得"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
 msgid "Read media information automatically"
 msgstr "メディア情報を自動的に読み込む"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:323
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
 msgid "Ignored file extensions"
 msgstr "無視するファイル拡張子"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:327
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:328
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
 msgid "Buffering"
 msgstr "バッファリング"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
 msgid "Local files"
 msgstr "ローカルファイル"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:328
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
 msgid "Network streams"
 msgstr "ネットワークストリーム"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
 msgid "Live capture"
 msgstr "ライブキャプチャー"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
 msgid "Proxy"
 msgstr "プロキシー"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
 msgid "System proxy"
 msgstr "システムのプロキシー"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:336
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
 msgid "Security"
 msgstr "セキュリティ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
 msgid "Verify certificates against the system trust store"
 msgstr "システムの信頼ストアで証明書を検証"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:336
 msgid "Cipher preference"
 msgstr "暗号の優先設定"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
 msgid "Secure (128-bit)"
 msgstr "安全 (128ビット)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
 msgid "Most secure (256-bit)"
 msgstr "最も安全 (256ビット)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:340
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
 msgid "Connections"
 msgstr "接続"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:340
 msgid "Connection timeout"
 msgstr "接続のタイムアウト"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
 msgid "HTTP user agent"
 msgstr "HTTPユーザーエージェント"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
 msgid "Trusted certificates folder"
 msgstr "信頼された証明書のフォルダー"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
 msgid "Post-processing quality"
 msgstr "後処理の品質"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:345
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:348
 msgid "Skip the H.264 loop filter"
 msgstr "H.264のループフィルターをスキップ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:346
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:349
 msgid "Non-reference frames"
 msgstr "非参照フレーム"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:346
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:349
 msgid "Bidirectional frames"
 msgstr "双方向フレーム"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:350
 msgid "Non-key frames"
 msgstr "非キーフレーム"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:348
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:351
 msgid "Decoding threads"
 msgstr "デコードのスレッド数"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:349
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:350
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:351
-msgid "Smooth Playback"
-msgstr "スムーズな再生"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:349
-msgid "Drop frames when the system can't keep up"
-msgstr "システムが追いつかないときにフレームを破棄"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:352
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:353
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:354
+msgid "Smooth Playback"
+msgstr "スムーズな再生"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:352
+msgid "Drop frames when the system can't keep up"
+msgstr "システムが追いつかないときにフレームを破棄"
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:355
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:356
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:357
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:358
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:359
 msgid "Developer"
 msgstr "開発者"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:353
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:356
 msgid "Decoder"
 msgstr "デコーダー"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:356
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:359
 msgid "Clock reference averaging"
 msgstr "クロックリファレンスの平均化"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:357
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:360
 msgid "Save recordings to"
 msgstr "レコーディングの保存先"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:358
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:361
 msgid "Record without re-encoding when possible"
 msgstr "可能な場合は再エンコードせずにレコーディング"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:359
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:362
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:371
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:372
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:365
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:374
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:375
 msgid "Casting"
 msgstr "キャスト"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:362
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:365
 msgid "Cast quality"
 msgstr "キャストの品質"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:363
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:366
 msgid "Low CPU"
 msgstr "低CPU負荷"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:365
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:368
 msgid "Play locally while streaming"
 msgstr "ストリーミング中にローカルでも再生"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:366
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:369
 msgid "Include audio"
 msgstr "オーディオを含める"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:367
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:370
 msgid "Include video"
 msgstr "ビデオを含める"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:368
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:371
 msgid "Include subtitles"
 msgstr "字幕を含む"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:369
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:372
 msgid "Encoding preset"
 msgstr "エンコードのプリセット"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:370
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:373
 msgid "Tuning"
 msgstr "チューニング"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:371
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:374
 msgid "Send Dolby audio as is"
 msgstr "ドルビーオーディオをそのまま送信"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:372
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:375
 msgid "Cast HTTP port"
 msgstr "キャストのHTTPポート"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:373
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:376
 msgid "Keep the stream output open between items"
 msgstr "項目間でストリーム出力を開いたままにする"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:419
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:422
 #: modules/gui/qt/widgets/qml/SplitButton.qml:142
 msgid "More options"
 msgstr "その他のオプション"
@@ -5115,18 +5123,18 @@ msgstr "パフォーマンス"
 msgid "Remember last volume"
 msgstr "前回の音量を記憶"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsStartupVolume.qml:89
+#: modules/gui/qt/dialogs/preferences/qml/SettingsStartupVolume.qml:91
 msgid "Always starts at:"
 msgstr "常に次の音量で開始:"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsToggle.qml:39
-#: modules/gui/qt/dialogs/preferences/qml/SettingsToggle.qml:74
+#: modules/gui/qt/dialogs/preferences/qml/SettingsToggle.qml:53
+#: modules/gui/qt/dialogs/preferences/qml/SettingsToggle.qml:88
 #: modules/gui/qt/widgets/qml/CheckButton.qml:106
 msgid "ON"
 msgstr "オン"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsToggle.qml:45
-#: modules/gui/qt/dialogs/preferences/qml/SettingsToggle.qml:74
+#: modules/gui/qt/dialogs/preferences/qml/SettingsToggle.qml:59
+#: modules/gui/qt/dialogs/preferences/qml/SettingsToggle.qml:88
 #: modules/gui/qt/widgets/qml/CheckButton.qml:106
 msgid "OFF"
 msgstr "オフ"
@@ -5527,15 +5535,15 @@ msgid "Next at %1"
 msgstr "次は %1 から"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:219
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:431
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:559
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:433
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:708
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:671
 msgid "%1 d"
 msgid_plural "%1 d"
 msgstr[0] "%1 日"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:220
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:560
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:709
 msgid "Catch-up: the past %1 day"
 msgid_plural "Catch-up: the past %1 days"
 msgstr[0] "見逃し視聴: 過去 %1 日間"
@@ -5554,7 +5562,7 @@ msgid "Series"
 msgstr "シリーズ"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:132
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:599
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:727
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:48
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:49
 #: modules/gui/qt/iptv/qml/TvToast.qml:75
@@ -5566,6 +5574,7 @@ msgid "Watch from the start"
 msgstr "最初から視聴"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:142
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:451
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:187
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
@@ -5602,51 +5611,51 @@ msgid "Add a Link"
 msgstr "リンクを追加"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:244
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:747
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:924
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:146
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:508
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:510
 #: modules/gui/qt/player/qml/CompactLibrary.qml:404
 msgid "Favorites"
 msgstr "お気に入り"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:245
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:748
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:925
 msgid "Recently Watched"
 msgstr "最近視聴したチャンネル"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:305
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:307
 msgid "Updating the guide of %1… %2 MB"
 msgstr "%1 のガイドを更新中… %2 MB"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:306
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:308
 msgid "Updating the channels of %1…"
 msgstr "%1 のチャンネルを更新中…"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:309
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:311
 msgid "%1 could not be loaded: %2"
 msgstr "%1 を読み込めませんでした: %2"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:503
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:505
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:580
 msgid "No channel matches the search"
 msgstr "検索に一致するチャンネルはありません"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:504
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:506
 msgid "No favorite channel yet: right-click a channel to add it"
 msgstr ""
 "お気に入りのチャンネルはまだありません: チャンネルを右クリックして追加してく"
 "ださい"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:505
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:507
 msgid "No channel watched yet"
 msgstr "まだチャンネルを視聴していません"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:506
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:508
 msgid "Loading the channels…"
 msgstr "チャンネルを読み込み中…"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:507
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:810
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:509
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:987
 msgid "No channels"
 msgstr "チャンネルがありません"
 
@@ -5655,16 +5664,18 @@ msgid "Now"
 msgstr "現在"
 
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:142
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:498
 msgid "Earlier"
 msgstr "前へ"
 
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:147
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:498
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:191
 msgid "Later"
 msgstr "後で"
 
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:420
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:448
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:525
 msgid "No guide for this channel"
 msgstr "このチャンネルのガイドはありません"
 
@@ -5684,86 +5695,82 @@ msgstr "ここには何もありません"
 msgid "S%1 E%2"
 msgstr "S%1 E%2"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:445
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:497
+msgid "Archive"
+msgstr "アーカイブ"
+
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:522
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:45
 msgid "Programme"
 msgstr "番組"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:448
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:525
 msgid "Loading the guide…"
 msgstr "ガイドを読み込み中…"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:487
-msgid "%1 left"
-msgstr "残り %1"
-
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:488
-msgid "in %1"
-msgstr "%1 後"
-
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:489
-msgid "ended %1 ago"
-msgstr "%1 前に終了"
-
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:490
-msgid "on now"
-msgstr "放送中"
-
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:499
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:581
 msgid "From the archive, %1"
 msgstr "アーカイブから、%1"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:500
-msgid "Next: %1 · %2"
-msgstr "次: %1 · %2"
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:582
+msgid "%1 left"
+msgstr "残り %1"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:553
-msgid "Archive"
-msgstr "アーカイブ"
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:583
+msgid "in %1"
+msgstr "%1 後"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:566
-msgid "Programme before"
-msgstr "前の番組"
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:584
+msgid "ended %1 ago"
+msgstr "%1 前に終了"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:572
-msgid "Programme after"
-msgstr "次の番組"
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:585
+msgid "on now"
+msgstr "放送中"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:587
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:716
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:53
 msgid "Watch from the Start"
 msgstr "最初から視聴"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:601
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:729
 msgid "Reminder Set"
 msgstr "リマインダー設定済み"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:601
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:729
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:50
 msgid "Remind Me"
 msgstr "リマインダーを設定"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:612
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:739
 msgid "Back to Live"
 msgstr "ライブに戻る"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:618 modules/gui/qt/qt.cpp:345
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:783
+msgid "Programme before"
+msgstr "前の番組"
+
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:789
+msgid "Programme after"
+msgstr "次の番組"
+
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:794 modules/gui/qt/qt.cpp:345
 msgid "Next channel"
 msgstr "次のチャンネル"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:623 modules/gui/qt/qt.cpp:346
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:799 modules/gui/qt/qt.cpp:346
 msgid "Previous channel"
 msgstr "前のチャンネル"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:737
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:914
 msgid "Previous group"
 msgstr "前のグループ"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:746
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:923
 msgid "All Channels"
 msgstr "すべてのチャンネル"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:761
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:938
 msgid "Next group"
 msgstr "次のグループ"
 
@@ -5779,12 +5786,12 @@ msgstr "この番組は終了しており、チャンネルはアーカイブを
 msgid "Channel"
 msgstr "チャンネル"
 
-#: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:109
+#: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:111
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:583
 msgid "Catch-up"
 msgstr "見逃し視聴"
 
-#: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:112
+#: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:114
 msgid "The past %1 day"
 msgid_plural "The past %1 days"
 msgstr[0] "過去 %1 日間"
@@ -6035,15 +6042,15 @@ msgstr "サービスを提案"
 msgid "%1 starts now on %2"
 msgstr "%1 が %2 で始まります"
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1289
+#: modules/gui/qt/maininterface/mainctx.cpp:1308
 msgid "Paste from clipboard"
 msgstr "クリップボードから貼り付け"
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1290
+#: modules/gui/qt/maininterface/mainctx.cpp:1309
 msgid "Do you want to enqueue the following URLs into the play queue?"
 msgstr "次のURLを再生キューに追加しますか?"
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1291
+#: modules/gui/qt/maininterface/mainctx.cpp:1310
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:184
 #: modules/gui/qt/medialibrary/qml/VideoInfoExpandPanel.qml:156
 #: modules/gui/qt/medialibrary/qml/MusicAlbumSectionDelegate.qml:223
@@ -6057,7 +6064,7 @@ msgstr "キューに追加"
 #. * right to left (Arabic, Hebrew, Persian, Urdu...), else "LTR". Choosing
 #. * the language lays the interface out in that direction (the user can
 #. * change it under the language).
-#: modules/gui/qt/maininterface/mainctx.cpp:1635
+#: modules/gui/qt/maininterface/mainctx.cpp:1673
 msgctxt "layout direction"
 msgid "LTR"
 msgstr "LTR"
@@ -6289,6 +6296,11 @@ msgstr "下へ移動"
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:265
 msgid "Show %1"
 msgstr "%1 を表示"
+
+#: modules/gui/qt/maininterface/qml/VolumeMeter.qml:188
+#: modules/gui/qt/player/qml/controlbarcontrols/VolumeWidget.qml:62
+msgid "%1 %"
+msgstr "%1 %"
 
 #: modules/gui/qt/widgets/qml/CSDWindowButtonSet.qml:86
 #: modules/gui/qt/util/csdmenu.cpp:111
@@ -6592,19 +6604,19 @@ msgid "Continue Watching"
 msgstr "続きを見る"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:180
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:589
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:593
 #: modules/gui/qt/player/qml/CompactLibrary.qml:405
 msgid "New Videos"
 msgstr "新着ビデオ"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:254
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:310
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:312
 #: modules/gui/qt/player/qml/CompactLibrary.qml:402
 msgid "Listen Again"
 msgstr "もう一度聴く"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:287
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:671
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:677
 #: modules/gui/qt/player/qml/CompactLibrary.qml:406
 msgid "New Music"
 msgstr "新着ミュージック"
@@ -6623,7 +6635,7 @@ msgstr "新着ミュージック"
 msgid "Alphabetic"
 msgstr "名前順"
 
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:381
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:383
 #: modules/gui/qt/player/qml/CompactLibrary.qml:403
 msgid "Frequently Visited Folders"
 msgstr "よく使うフォルダー"
@@ -6691,7 +6703,7 @@ msgstr "リリース年"
 msgid "Album Title"
 msgstr "アルバムのタイトル"
 
-#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:203
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:187
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:75
 msgid "%1 Track"
 msgid_plural "%1 Tracks"
@@ -6766,12 +6778,12 @@ msgstr ""
 "い"
 
 #: modules/gui/qt/medialibrary/qml/UrlListDisplay.qml:58
-#: modules/gui/qt/network/qml/BrowseDeviceView.qml:273
+#: modules/gui/qt/network/qml/BrowseDeviceView.qml:275
 #: modules/gui/qt/network/qml/BrowseDisplay.qml:109
 #: modules/gui/qt/network/qml/BrowseDisplay.qml:148
 #: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:50
 #: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:78
-#: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:264
+#: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:266
 msgid "Url"
 msgstr "URL"
 
@@ -7462,7 +7474,7 @@ msgstr "ドキュメント"
 msgid "No network shares found"
 msgstr "ネットワーク共有が見つかりません"
 
-#: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:239
+#: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:237
 msgid "Computer"
 msgstr "コンピューター"
 
@@ -7480,7 +7492,7 @@ msgstr "更新日時"
 msgid "Unknown Share"
 msgstr "不明な共有"
 
-#: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:342
+#: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:344
 msgid "Nothing to see here, go back."
 msgstr "ここには何もありません。戻ってください。"
 
@@ -7810,78 +7822,78 @@ msgstr "4.00"
 msgid "Presets:"
 msgstr "プリセット:"
 
-#: modules/gui/qt/player/qml/Player.qml:129
+#: modules/gui/qt/player/qml/PlayerView.qml:129
 msgid "Player"
 msgstr "プレイヤー"
 
-#: modules/gui/qt/player/qml/Player.qml:964
+#: modules/gui/qt/player/qml/PlayerView.qml:965
 #, no-c-format
 msgid "Subtitle size %1%"
 msgstr "字幕のサイズ %1%"
 
-#: modules/gui/qt/player/qml/Player.qml:1119
+#: modules/gui/qt/player/qml/PlayerView.qml:1120
 msgid "Subtitles on the TV: %1"
 msgstr "テレビの字幕: %1"
 
-#: modules/gui/qt/player/qml/Player.qml:1119
+#: modules/gui/qt/player/qml/PlayerView.qml:1120
 msgid "Subtitles off on the TV"
 msgstr "テレビの字幕: オフ"
 
-#: modules/gui/qt/player/qml/Player.qml:1230
+#: modules/gui/qt/player/qml/PlayerView.qml:1231
 msgid "Not playing on %1"
 msgstr "%1で再生していません"
 
-#: modules/gui/qt/player/qml/Player.qml:1232
-#: modules/gui/qt/player/qml/Player.qml:1359
+#: modules/gui/qt/player/qml/PlayerView.qml:1233
+#: modules/gui/qt/player/qml/PlayerView.qml:1360
 msgid "Connecting to %1…"
 msgstr "%1に接続しています…"
 
-#: modules/gui/qt/player/qml/Player.qml:1234
+#: modules/gui/qt/player/qml/PlayerView.qml:1235
 msgid "Playing on %1"
 msgstr "%1で再生中"
 
-#: modules/gui/qt/player/qml/Player.qml:1235
+#: modules/gui/qt/player/qml/PlayerView.qml:1236
 msgid "The sound plays on %1"
 msgstr "音声は%1で再生されます"
 
-#: modules/gui/qt/player/qml/Player.qml:1260
+#: modules/gui/qt/player/qml/PlayerView.qml:1261
 msgid "Pause, seek and change the subtitles here: the TV follows."
 msgstr "一時停止、シーク、字幕の変更はここで行えます: テレビも連動します。"
 
-#: modules/gui/qt/player/qml/Player.qml:1277
+#: modules/gui/qt/player/qml/PlayerView.qml:1278
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the media."
 msgstr ""
 "Windows ファイアウォールにより、%1がメディアを読み込むためにこのコンピュー"
 "ターへ接続できません。"
 
-#: modules/gui/qt/player/qml/Player.qml:1289
+#: modules/gui/qt/player/qml/PlayerView.qml:1290
 msgid "Waiting for Windows…"
 msgstr "Windowsを待っています…"
 
-#: modules/gui/qt/player/qml/Player.qml:1290
+#: modules/gui/qt/player/qml/PlayerView.qml:1291
 msgid "Allow on public networks too"
 msgstr "パブリックネットワークでも許可"
 
-#: modules/gui/qt/player/qml/Player.qml:1291
+#: modules/gui/qt/player/qml/PlayerView.qml:1292
 msgid "Allow on private networks"
 msgstr "プライベートネットワークで許可"
 
-#: modules/gui/qt/player/qml/Player.qml:1303
+#: modules/gui/qt/player/qml/PlayerView.qml:1304
 msgid "Try again"
 msgstr "再試行"
 
-#: modules/gui/qt/player/qml/Player.qml:1308
-#: modules/gui/qt/player/qml/Player.qml:1318
+#: modules/gui/qt/player/qml/PlayerView.qml:1309
+#: modules/gui/qt/player/qml/PlayerView.qml:1319
 msgid "Play here"
 msgstr "ここで再生"
 
-#: modules/gui/qt/player/qml/Player.qml:1318
-#: modules/gui/qt/player/qml/Player.qml:1369
+#: modules/gui/qt/player/qml/PlayerView.qml:1319
+#: modules/gui/qt/player/qml/PlayerView.qml:1370
 msgid "Stop casting"
 msgstr "キャストを停止"
 
-#: modules/gui/qt/player/qml/Player.qml:1360
+#: modules/gui/qt/player/qml/PlayerView.qml:1361
 msgid "Also on %1"
 msgstr "%1でも再生中"
 
@@ -8613,10 +8625,6 @@ msgstr "10秒進む"
 msgid "Forward 15 seconds"
 msgstr "15秒進む"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/VolumeWidget.qml:62
-msgid "%1 %"
-msgstr "%1 %"
-
 #: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:66
 msgid "Choose a video zoom level"
 msgstr "ビデオの拡大率を選択"
@@ -8987,7 +8995,7 @@ msgstr "復元する"
 msgid "Don't restore"
 msgstr "復元しない"
 
-#: modules/gui/qt/util/redesign_updater.cpp:221
+#: modules/gui/qt/util/redesign_updater.cpp:233
 msgid ""
 "The update isn't signed by the publisher of this copy (%1), so it wasn't "
 "used."
@@ -8995,27 +9003,27 @@ msgstr ""
 "このアップデートはこのコピーの発行元(%1)による署名がないため、使用されません"
 "でした。"
 
-#: modules/gui/qt/util/redesign_updater.cpp:467
+#: modules/gui/qt/util/redesign_updater.cpp:479
 msgid "%1 (later)"
 msgstr "%1 (今後対応)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:469
+#: modules/gui/qt/util/redesign_updater.cpp:481
 msgid "%1 (soon)"
 msgstr "%1 (近日対応)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:649
+#: modules/gui/qt/util/redesign_updater.cpp:669
 msgid "This build cannot check for updates."
 msgstr "このビルドではアップデートを確認できません。"
 
-#: modules/gui/qt/util/redesign_updater.cpp:663
+#: modules/gui/qt/util/redesign_updater.cpp:683
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "GitHubに接続できませんでした。接続を確認して、もう一度お試しください。"
 
-#: modules/gui/qt/util/redesign_updater.cpp:680
+#: modules/gui/qt/util/redesign_updater.cpp:700
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "GitHubから予期しない応答がありました (%1)。"
 
-#: modules/gui/qt/util/redesign_updater.cpp:798
+#: modules/gui/qt/util/redesign_updater.cpp:824
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
@@ -9023,47 +9031,47 @@ msgstr ""
 "この更新はVLC Redesignによって署名されていないため、使用されませんでした。代"
 "わりにリリースページからダウンロードしてください。"
 
-#: modules/gui/qt/util/redesign_updater.cpp:820
-#: modules/gui/qt/util/redesign_updater.cpp:861
+#: modules/gui/qt/util/redesign_updater.cpp:846
+#: modules/gui/qt/util/redesign_updater.cpp:887
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr ""
 "アップデートのチェックサムがありません。代わりにリリースページからダウンロー"
 "ドしてください。"
 
-#: modules/gui/qt/util/redesign_updater.cpp:835
-#: modules/gui/qt/util/redesign_updater.cpp:907
+#: modules/gui/qt/util/redesign_updater.cpp:861
+#: modules/gui/qt/util/redesign_updater.cpp:933
 msgid "The download failed. Check your connection and try again."
 msgstr "ダウンロードに失敗しました。接続を確認して、もう一度お試しください。"
 
-#: modules/gui/qt/util/redesign_updater.cpp:920
+#: modules/gui/qt/util/redesign_updater.cpp:946
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "アップデートがチェックサムと一致しないため、使用されませんでした。"
 
-#: modules/gui/qt/util/redesign_updater.cpp:951
+#: modules/gui/qt/util/redesign_updater.cpp:977
 msgid "The update isn't in a format this version knows."
 msgstr "このバージョンでは認識できない形式のアップデートです。"
 
-#: modules/gui/qt/util/redesign_updater.cpp:954
-#: modules/gui/qt/util/redesign_updater.cpp:978
-#: modules/gui/qt/util/redesign_updater.cpp:989
-#: modules/gui/qt/util/redesign_updater.cpp:995
+#: modules/gui/qt/util/redesign_updater.cpp:980
+#: modules/gui/qt/util/redesign_updater.cpp:1004
+#: modules/gui/qt/util/redesign_updater.cpp:1015
+#: modules/gui/qt/util/redesign_updater.cpp:1021
 msgid "The update is damaged."
 msgstr "アップデートが破損しています。"
 
-#: modules/gui/qt/util/redesign_updater.cpp:959
+#: modules/gui/qt/util/redesign_updater.cpp:985
 msgid "The update isn't for this version."
 msgstr "このバージョン用のアップデートではありません。"
 
-#: modules/gui/qt/util/redesign_updater.cpp:968
-#: modules/gui/qt/util/redesign_updater.cpp:1005
-#: modules/gui/qt/util/redesign_updater.cpp:1014
-#: modules/gui/qt/util/redesign_updater.cpp:1018
-#: modules/gui/qt/util/redesign_updater.cpp:1022
+#: modules/gui/qt/util/redesign_updater.cpp:994
+#: modules/gui/qt/util/redesign_updater.cpp:1031
+#: modules/gui/qt/util/redesign_updater.cpp:1040
+#: modules/gui/qt/util/redesign_updater.cpp:1044
+#: modules/gui/qt/util/redesign_updater.cpp:1048
 msgid "The update can't be written in %1."
 msgstr "%1にアップデートを書き込めません。"
 
-#: modules/gui/qt/util/redesign_updater.cpp:970
+#: modules/gui/qt/util/redesign_updater.cpp:996
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -9071,31 +9079,34 @@ msgstr ""
 "インストール後にVLC Redesignのファイルが変更されたため、差分アップデートを使"
 "用できません: 代わりにインストーラーでアップデートしてください。"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1000
+#: modules/gui/qt/util/redesign_updater.cpp:1026
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr "アップデートが破損しています: ファイルがチェックサムと一致しません。"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1125
+#: modules/gui/qt/util/redesign_updater.cpp:1151
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr "アップデートを開始できませんでした。次回もう一度試行されます。"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1152
+#: modules/gui/qt/util/redesign_updater.cpp:1178
 msgid "The download failed. Try again, or download it from the release page."
 msgstr ""
 "ダウンロードに失敗しました。もう一度試すか、リリースページからダウンロードし"
 "てください。"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1165
+#: modules/gui/qt/util/redesign_updater.cpp:1191
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr ""
 "ダウンロードしたインストーラーがチェックサムと一致しないため、実行されません"
 "でした。"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1174
+#: modules/gui/qt/util/redesign_updater.cpp:1203
+#: modules/gui/qt/util/redesign_updater.cpp:1211
+#: modules/gui/qt/util/redesign_updater.cpp:1225
 msgid "The installer couldn't be saved to %1."
 msgstr "インストーラーを%1に保存できませんでした。"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1208
+#: modules/gui/qt/util/redesign_updater.cpp:1265
+#: modules/gui/qt/util/redesign_updater.cpp:1283
 msgid "The installer couldn't be started."
 msgstr "インストーラーを起動できませんでした。"
 
@@ -9318,23 +9329,28 @@ msgstr "再作成"
 msgid "Media database corrupted"
 msgstr "メディアデータベースが破損しています"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2750
+#: modules/misc/medialibrary/medialibrary.cpp:2753
 msgid "Folders discovered by the media library"
 msgstr "メディアライブラリが検出するフォルダー"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2751
+#: modules/misc/medialibrary/medialibrary.cpp:2754
 msgid "Semicolon separated list of folders to discover media from"
 msgstr "メディアを検出するフォルダーのセミコロン区切りのリスト"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2754
+#: modules/misc/medialibrary/medialibrary.cpp:2757
 msgid "Extra verbose media library logs"
 msgstr "メディアライブラリの詳細なログ"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2757
+#: modules/misc/medialibrary/medialibrary.cpp:2758
+#, fuzzy
+msgid "Discover network shares"
+msgstr "ネットワーク共有が見つかりません"
+
+#: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"
 msgstr "メディアライブラリ"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2758
+#: modules/misc/medialibrary/medialibrary.cpp:2762
 msgid "Organize your media"
 msgstr "メディアを整理"
 

@@ -88,7 +88,7 @@ Android and Swift files made from them and a check on every pull request that th
 
 **Samsung TV** (since 0.5.3)
 
-- ✅ *Redesign Player for TV*: the design's own player for Samsung TVs (Tizen 3.0 and later): the library, the player,
+- ✅ *Redesign Player for TV*: a player of its own for Samsung TVs (Tizen 3.0 and later), inspired by VLC, in the design: the library, the player,
   Live TV, 17 languages, right to left, the colour keys of the remote; the TV's own player plays the video
 - ✅ Installed from a computer (developer mode, a free Samsung certificate), with a step-by-step guide; not in the store
 - 📋 A USB drive played on a real TV; the Samsung store

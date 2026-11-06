@@ -129,7 +129,7 @@ platforms:
     requires: Tizen 3.0 (2017 models) or later, installed from a computer in developer mode
     repository: KuchiSofts/vlc-redesign
     page: https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#samsung-tv
-    notes: Its own player in the design (the TV plays the video); the source with a step-by-step install guide
+    notes: A player of its own inspired by VLC, in the design (the TV plays the video); the source with an install guide
     downloads:
       - label: Source and guide
         file: Redesign-Player-for-TV-{version}-source.zip

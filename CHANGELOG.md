@@ -20,10 +20,11 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Added
 
-- **Samsung TV: Redesign Player for TV**, a media player for Samsung TVs (Tizen 3.0 and later) in Juxtopposed's
-  design, driven by the remote: the library, the player, Live TV (M3U and Xtream Codes, the guide, catch-up, films and
+- **Samsung TV: Redesign Player for TV**, a media player for Samsung TVs (Tizen 3.0 and later) **inspired by VLC**, in
+  Juxtopposed's design, driven by the remote: the library, the player, Live TV (M3U and Xtream Codes, the guide, catch-up, films and
   series), 17 languages, right to left, the colour keys and the designer's cat. The TV's own player plays the video,
-  so the app has none of VLC's code and does not carry VLC's name or cone: its mark is the designer's pixel cat. Its
+  so the app has none of VLC's code: it is a player of its own with features like VLC's, not VLC, and does not carry
+  VLC's name or cone: its mark is the designer's pixel cat. Its
   source is attached to the release with a step-by-step guide to install it from a computer (developer mode and a
   free Samsung certificate; it is not in Samsung's store).
 - Android TV: every page in the design, with the remote: the welcome steps, Settings, the video player's bar and

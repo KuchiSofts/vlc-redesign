@@ -265,10 +265,10 @@ out. The dark theme is unchanged in every row.
 | `player/qml/HdrOutputDialog.qml:63` | `"#8F8F8F"` (`#8F8F8F`) | `"#4d4d4d"` | `#2E2E2E` |
 | `player/qml/HdrOutputDialog.qml:144` | `"#8F8F8F"` (`#8F8F8F`) | `"#4d4d4d"` | `#2E2E2E` |
 | `player/qml/HdrOutputDialog.qml:164` | `"#6B6B6B"` (`#6B6B6B`) | `"#4d4d4d"` | `#6B6B6B` |
-| `player/qml/Player.qml:1130` | `"#8F8F8F"` (`#8F8F8F`) | `"#4d4d4d"` | `#2E2E2E` |
-| `player/qml/Player.qml:1154` | `textPrimary` (`#EAEAEA`) | `"#1e1e1e"` | `#2E2E2E` |
-| `player/qml/Player.qml:1178` | `"#8F8F8F"` (`#8F8F8F`) | `"#4d4d4d"` | `#2E2E2E` |
-| `player/qml/Player.qml:1278` | `textPrimary` (`#EAEAEA`) | `"#1e1e1e"` | `#2E2E2E` |
+| `player/qml/PlayerView.qml:1130` | `"#8F8F8F"` (`#8F8F8F`) | `"#4d4d4d"` | `#2E2E2E` |
+| `player/qml/PlayerView.qml:1154` | `textPrimary` (`#EAEAEA`) | `"#1e1e1e"` | `#2E2E2E` |
+| `player/qml/PlayerView.qml:1178` | `"#8F8F8F"` (`#8F8F8F`) | `"#4d4d4d"` | `#2E2E2E` |
+| `player/qml/PlayerView.qml:1278` | `textPrimary` (`#EAEAEA`) | `"#1e1e1e"` | `#2E2E2E` |
 | `player/qml/PlayerControlLayout.qml:311` | `"#6B6B6B"` (`#6B6B6B`) | `"#5a5a59"` | `#6B6B6B` |
 | `player/qml/QueueCard.qml:117` | `textMuted` (`#8F8F8F`) | `"#5a5a59"` | `#2E2E2E` |
 | `player/qml/QueueCard.qml:183` | `textMuted` (`#8F8F8F`) | `"#5a5a59"` | `#2E2E2E` |

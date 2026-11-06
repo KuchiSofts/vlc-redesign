@@ -1,6 +1,6 @@
 # Install and update
 
-VLC Redesign 0.5.3 is released for **Windows**, **Linux**, **macOS**, **Android** (phones, tablets and TV) and **Samsung TVs**,
+VLC Redesign 0.5.4 is released for **Windows**, **Linux**, **macOS**, **Android** (phones, tablets and TV) and **Samsung TVs**,
 every file on the
 [latest release](https://github.com/KuchiSofts/vlc-redesign/releases/latest).
 
@@ -21,20 +21,20 @@ updates and uninstalling, then Linux, macOS, Android and Samsung TVs.
 
 ## The release files
 
-The files of version 0.5.3 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.3)).
+The files of version 0.5.4 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.4)).
 
 **Windows** (x64, and ARM64 for Snapdragon PCs):
 
 | File | Size | What it is |
 |---|---|---|
-| `vlc-redesign-0.5.3-win64-setup.exe` | 59.6 MB | **The installer.** Recommended: no administrator rights, a Start menu entry, file types, small updates. |
-| `vlc-redesign-0.5.3-win64.zip` | 107.9 MB | **The portable copy**: unzip anywhere and run `vlc.exe`. |
-| `vlc-redesign-0.5.3-winarm64-setup.exe` | 47.4 MB | **The installer for Windows 11 on ARM64** (see [Windows on ARM64](#windows-on-arm64)). |
-| `vlc-redesign-0.5.3-winarm64.zip` | 84.0 MB | **The portable copy for Windows 11 on ARM64.** |
-| `vlc-redesign-0.5.3-delta-from-0.5.2.vrdelta` | 7.7 MB | A small update from 0.5.2, used by the app itself (see [Small updates](#small-updates)). |
-| `vlc-redesign-0.5.3-delta-from-0.5.1.vrdelta`, `...-from-0.5.0.vrdelta` | 7.7 MB each | The small updates from 0.5.1 and from 0.5.0. |
-| `vlc-redesign-0.5.3-winarm64-delta-from-0.5.2.vrdelta`, `...-from-0.5.1.vrdelta` | 15.3 MB each | The small updates of Windows on ARM64 from 0.5.2 and from 0.5.1 (and `...-from-0.5.0.vrdelta`). |
-| `vlc-redesign-0.5.3-source.tar.gz` | | The source code of this release. |
+| `vlc-redesign-0.5.4-win64-setup.exe` | 59.6 MB | **The installer.** Recommended: no administrator rights, a Start menu entry, file types, small updates. |
+| `vlc-redesign-0.5.4-win64.zip` | 107.9 MB | **The portable copy**: unzip anywhere and run `vlc.exe`. |
+| `vlc-redesign-0.5.4-winarm64-setup.exe` | 47.4 MB | **The installer for Windows 11 on ARM64** (see [Windows on ARM64](#windows-on-arm64)). |
+| `vlc-redesign-0.5.4-winarm64.zip` | 84.0 MB | **The portable copy for Windows 11 on ARM64.** |
+| `vlc-redesign-0.5.4-delta-from-0.5.3.vrdelta` | DELTA_X64 | A small update from 0.5.3, used by the app itself (see [Small updates](#small-updates)). |
+| `vlc-redesign-0.5.4-delta-from-0.5.2.vrdelta`, `...-from-0.5.1.vrdelta` | DELTA_X64 each | The small updates from 0.5.2 and from 0.5.1. |
+| `vlc-redesign-0.5.4-winarm64-delta-from-0.5.3.vrdelta`, `...-from-0.5.2.vrdelta` | DELTA_ARM each | The small updates of Windows on ARM64 from 0.5.3 and from 0.5.2 (and `...-from-0.5.1.vrdelta`). |
+| `vlc-redesign-0.5.4-source.tar.gz` | | The source code of this release. |
 | `SHA256SUMS.txt` | | The SHA-256 of every file of the release, to check a download. |
 | `SHA256SUMS.txt.sig` | | The signature of `SHA256SUMS.txt`: from 0.4.0 on, the app installs only an update whose list is signed. |
 
@@ -42,8 +42,8 @@ You never need to download a `.vrdelta` file yourself: the app picks the one for
 
 ### Windows on ARM64
 
-On a Windows 11 PC with an ARM64 processor (Snapdragon), take `vlc-redesign-0.5.3-winarm64-setup.exe` (or the
-portable `vlc-redesign-0.5.3-winarm64.zip`): a native ARM64 build, not the x64 one run in emulation. It installs and
+On a Windows 11 PC with an ARM64 processor (Snapdragon), take `vlc-redesign-0.5.4-winarm64-setup.exe` (or the
+portable `vlc-redesign-0.5.4-winarm64.zip`): a native ARM64 build, not the x64 one run in emulation. It installs and
 works like the x64 build. Its first release was 0.4.1; from 0.5.1 on, the app updates it with small updates as on x64. It was tested on GitHub's ARM64 Windows runner (the window
 opens, a clip plays to its end, the installer installs, starts, plays and uninstalls), not yet by hand on an ARM64
 PC.
@@ -52,27 +52,27 @@ PC.
 
 | File | Size | What it is |
 |---|---|---|
-| `vlc-redesign_0.5.3_amd64.deb` | 154 MB | **For Ubuntu 24.04 and later and Debian 13.** Installs in `/opt/vlc-redesign`, the command `vlc-redesign`. |
-| `vlc-redesign-livetv_0.5.3_amd64.deb` | | The Live TV add-on for the .deb (optional). |
-| `vlc-redesign-0.5.3-1.x86_64.rpm` | 155 MB | **For Fedora 39 and later.** Installs in `/opt/vlc-redesign`, the command `vlc-redesign`. |
-| `vlc-redesign-livetv-0.5.3-1.x86_64.rpm` | | The Live TV add-on for the .rpm (optional). |
-| `vlc-redesign-0.5.3-x86_64.AppImage` | 165 MB | **One file for any distribution with glibc 2.38 or later** (Arch among them), with its `.zsync`. |
-| `vlc-redesign-0.5.3-linux-x86_64.tar.xz` | 125 MB | A folder to run from, nothing installed. |
-| `vlc-redesign-0.5.3-x86_64.flatpak` | 127 MB | **A Flatpak** (its runtime comes from Flathub): `flatpak install --user vlc-redesign-0.5.3-x86_64.flatpak`. |
+| `vlc-redesign_0.5.4_amd64.deb` | 154 MB | **For Ubuntu 24.04 and later and Debian 13.** Installs in `/opt/vlc-redesign`, the command `vlc-redesign`. |
+| `vlc-redesign-livetv_0.5.4_amd64.deb` | | The Live TV add-on for the .deb (optional). |
+| `vlc-redesign-0.5.4-1.x86_64.rpm` | 155 MB | **For Fedora 39 and later.** Installs in `/opt/vlc-redesign`, the command `vlc-redesign`. |
+| `vlc-redesign-livetv-0.5.4-1.x86_64.rpm` | | The Live TV add-on for the .rpm (optional). |
+| `vlc-redesign-0.5.4-x86_64.AppImage` | 165 MB | **One file for any distribution with glibc 2.38 or later** (Arch among them), with its `.zsync`. |
+| `vlc-redesign-0.5.4-linux-x86_64.tar.xz` | 125 MB | A folder to run from, nothing installed. |
+| `vlc-redesign-0.5.4-x86_64.flatpak` | 127 MB | **A Flatpak** (its runtime comes from Flathub): `flatpak install --user vlc-redesign-0.5.4-x86_64.flatpak`. |
 | `SHA256SUMS-linux-x86_64.txt` | | The SHA-256 of the Linux files, to check a download. |
 
 **macOS** (12 Monterey or later):
 
 | File | What it is |
 |---|---|
-| `vlc-redesign-0.5.3-macos-arm64.dmg` | **For a Mac with Apple Silicon.** |
-| `vlc-redesign-0.5.3-macos-x86_64.dmg` | **For a Mac with an Intel processor.** |
+| `vlc-redesign-0.5.4-macos-arm64.dmg` | **For a Mac with Apple Silicon.** |
+| `vlc-redesign-0.5.4-macos-x86_64.dmg` | **For a Mac with an Intel processor.** |
 
 **Android** (8.0 or later):
 
 | File | What it is |
 |---|---|
-| `vlc-redesign-0.5.3-android.apk` (125 MB) | **For phones, tablets and Android TV** (ARM64, ARMv7, x86 and x86_64 in one file). |
+| `vlc-redesign-0.5.4-android.apk` (125 MB) | **For phones, tablets and Android TV** (ARM64, ARMv7, x86 and x86_64 in one file). |
 
 `SHA256SUMS.txt`, signed by the project, lists every file of the release (Windows, Linux, macOS and Android). The small
 updates in the app are for Windows only: on Linux and macOS, install the new version's file to update.
@@ -81,12 +81,12 @@ updates in the app are for Windows only: on Linux and macOS, install the new ver
 
 | File | What it is |
 |---|---|
-| `Redesign-Player-for-TV-0.5.3-source.zip` | **Redesign Player for TV**: the app's source and its install guide (see [Samsung TV](#samsung-tv)). |
+| `Redesign-Player-for-TV-0.5.4-source.zip` | **Redesign Player for TV**: the app's source and its install guide (see [Samsung TV](#samsung-tv)). |
 
 > **Good to know.** Windows SmartScreen may warn about an unknown publisher the first time, because the releases are
 > not code-signed yet: see
 > [Troubleshooting and FAQ](Troubleshooting-and-FAQ#windows-protected-your-pc-smartscreen). To check a download, in
-> PowerShell: `Get-FileHash .\vlc-redesign-0.5.3-win64-setup.exe`, and compare with `SHA256SUMS.txt`.
+> PowerShell: `Get-FileHash .\vlc-redesign-0.5.4-win64-setup.exe`, and compare with `SHA256SUMS.txt`.
 
 ## The installer
 
@@ -116,7 +116,7 @@ minute.*
 - The notice: *An unofficial build, not made or endorsed by VideoLAN. VLC and the cone logo are trademarks of
   VideoLAN. It installs next to an official VLC without touching it.*
 - Links to **Notice and licenses** (shown in the installer) and **Source code**.
-- *Version 0.5.3 · free software under the GNU GPL v2 or later.*
+- *Version 0.5.4 · free software under the GNU GPL v2 or later.*
 
 ### Options
 
@@ -232,8 +232,8 @@ that already has settings keeps them. These switches change that:
 Examples:
 
 ```
-vlc-redesign-0.5.3-win64-setup.exe /VERYSILENT /UILANG=he /SUBLANG=en
-vlc-redesign-0.5.3-win64-setup.exe /VERYSILENT /ALLUSERS /NOUPDATECHECK /NOONLINESUBS
+vlc-redesign-0.5.4-win64-setup.exe /VERYSILENT /UILANG=he /SUBLANG=en
+vlc-redesign-0.5.4-win64-setup.exe /VERYSILENT /ALLUSERS /NOUPDATECHECK /NOONLINESUBS
 ```
 
 On a Setup that shows its pages, `/UILANG=` and `/SUBLANG=` preselect the lists, `/LEFTTORIGHT` starts the
@@ -266,10 +266,10 @@ updates** in **⋯ → About VLC**. When one is out, a card offers it:
 
 | Card | Buttons |
 |---|---|
-| *VLC Redesign 0.5.3 is available* · *You have 0.5.1.* | **What's new**, **Skip**, **Update now · 3.6 MB** (or **Download**) |
-| *Downloading VLC Redesign 0.5.3… 40%* · *Only what changed: keep watching, it's checked in the background.* | **×** (cancels) |
-| *Preparing VLC Redesign 0.5.3…* | |
-| *VLC Redesign 0.5.3 is ready* · *It takes a few seconds: restart now, or it's done when you close VLC Redesign.* | **Restart now**, **Later** |
+| *VLC Redesign 0.5.4 is available* · *You have 0.5.1.* | **What's new**, **Skip**, **Update now · 3.6 MB** (or **Download**) |
+| *Downloading VLC Redesign 0.5.4… 40%* · *Only what changed: keep watching, it's checked in the background.* | **×** (cancels) |
+| *Preparing VLC Redesign 0.5.4…* | |
+| *VLC Redesign 0.5.4 is ready* · *It takes a few seconds: restart now, or it's done when you close VLC Redesign.* | **Restart now**, **Later** |
 | *Couldn't update* and why | **Retry**, **Release page** |
 
 **Skip** hides that version from the daily check; a newer one, or **Check for updates** by hand, shows it again.
@@ -330,10 +330,10 @@ program goes in `/opt/vlc-redesign`, the command is `vlc-redesign`, and the menu
 
 | Your system | x86_64 (most PCs) | ARM64 |
 |---|---|---|
-| Ubuntu 24.04 or later, Debian 13 | `vlc-redesign_0.5.3_amd64.deb` (+ `vlc-redesign-livetv_0.5.3_amd64.deb`) | `vlc-redesign_0.5.3_arm64.deb` (+ `vlc-redesign-livetv_0.5.3_arm64.deb`) |
-| Fedora 39 or later | `vlc-redesign-0.5.3-1.x86_64.rpm` (+ `vlc-redesign-livetv-0.5.3-1.x86_64.rpm`) | `vlc-redesign-0.5.3-1.aarch64.rpm` (+ `vlc-redesign-livetv-0.5.3-1.aarch64.rpm`) |
-| Any other distribution with glibc 2.38 or later (Arch…) | `vlc-redesign-0.5.3-x86_64.AppImage` | `vlc-redesign-0.5.3-aarch64.AppImage` |
-| A folder to run from, nothing installed | `vlc-redesign-0.5.3-linux-x86_64.tar.xz` | `vlc-redesign-0.5.3-linux-aarch64.tar.xz` |
+| Ubuntu 24.04 or later, Debian 13 | `vlc-redesign_0.5.4_amd64.deb` (+ `vlc-redesign-livetv_0.5.4_amd64.deb`) | `vlc-redesign_0.5.4_arm64.deb` (+ `vlc-redesign-livetv_0.5.4_arm64.deb`) |
+| Fedora 39 or later | `vlc-redesign-0.5.4-1.x86_64.rpm` (+ `vlc-redesign-livetv-0.5.4-1.x86_64.rpm`) | `vlc-redesign-0.5.4-1.aarch64.rpm` (+ `vlc-redesign-livetv-0.5.4-1.aarch64.rpm`) |
+| Any other distribution with glibc 2.38 or later (Arch…) | `vlc-redesign-0.5.4-x86_64.AppImage` | `vlc-redesign-0.5.4-aarch64.AppImage` |
+| A folder to run from, nothing installed | `vlc-redesign-0.5.4-linux-x86_64.tar.xz` | `vlc-redesign-0.5.4-linux-aarch64.tar.xz` |
 | Checksums | `SHA256SUMS-linux-x86_64.txt` | `SHA256SUMS-linux-aarch64.txt` |
 
 The ARM64 files are about the same size as the x86_64 ones. To check a download, in the folder of the files:
@@ -344,12 +344,12 @@ The ARM64 files are about the same size as the x86_64 ones. To check a download,
 In a terminal, in the folder of the downloads (ARM64: the same with the ARM64 file names):
 
 - **Ubuntu, Debian:**
-  `sudo apt install ./vlc-redesign_0.5.3_amd64.deb ./vlc-redesign-livetv_0.5.3_amd64.deb`
+  `sudo apt install ./vlc-redesign_0.5.4_amd64.deb ./vlc-redesign-livetv_0.5.4_amd64.deb`
 - **Fedora:**
-  `sudo dnf install ./vlc-redesign-0.5.3-1.x86_64.rpm ./vlc-redesign-livetv-0.5.3-1.x86_64.rpm`
-- **The AppImage:** `chmod +x vlc-redesign-0.5.3-x86_64.AppImage`, then run it
-  (`./vlc-redesign-0.5.3-x86_64.AppImage`).
-- **The folder:** `tar -xf vlc-redesign-0.5.3-linux-x86_64.tar.xz`, then run `vlc-redesign/vlc`.
+  `sudo dnf install ./vlc-redesign-0.5.4-1.x86_64.rpm ./vlc-redesign-livetv-0.5.4-1.x86_64.rpm`
+- **The AppImage:** `chmod +x vlc-redesign-0.5.4-x86_64.AppImage`, then run it
+  (`./vlc-redesign-0.5.4-x86_64.AppImage`).
+- **The folder:** `tar -xf vlc-redesign-0.5.4-linux-x86_64.tar.xz`, then run `vlc-redesign/vlc`.
 
 After a .deb or .rpm, start **VLC Redesign** from the menu, or `vlc-redesign` in a terminal.
 
@@ -386,8 +386,8 @@ This Mac* shows its chip or processor):
 
 | Your Mac | File |
 |---|---|
-| Apple Silicon | `vlc-redesign-0.5.3-macos-arm64.dmg` |
-| Intel | `vlc-redesign-0.5.3-macos-x86_64.dmg` |
+| Apple Silicon | `vlc-redesign-0.5.4-macos-arm64.dmg` |
+| Intel | `vlc-redesign-0.5.4-macos-x86_64.dmg` |
 
 ### Installing
 
@@ -428,7 +428,7 @@ delete those too to remove everything.
 VLC Media Player Redesign for Android is a separate app: VLC for Android with the design
 ([source](https://github.com/KuchiSofts/vlc-redesign-android)). It is not on Google Play.
 
-1. On the phone, download `vlc-redesign-0.5.3-android.apk` from the
+1. On the phone, download `vlc-redesign-0.5.4-android.apk` from the
    [latest release](https://github.com/KuchiSofts/vlc-redesign/releases/latest).
 2. Open it. Android asks once to allow installing apps from your browser (or file manager): allow it, then *Install*.
 3. The app is *VLC Media Player Redesign* (package `org.kuchisofts.vlcredesign`). It installs **beside** VLC from
@@ -439,8 +439,8 @@ so Android accepts it as an update. Uninstall it like any app.
 
 **Android TV and Google TV.** The same APK has the TV layout, driven by the remote. A TV has no browser to download
 it: install a file manager or the *Downloader* app from the TV's store, open the APK's link there (the latest
-release's `vlc-redesign-0.5.3-android.apk`) and install it, allowing installs from that app once. From a computer
-with the TV in developer mode, `adb install vlc-redesign-0.5.3-android.apk` does the same. The app shows on the
+release's `vlc-redesign-0.5.4-android.apk`) and install it, allowing installs from that app once. From a computer
+with the TV in developer mode, `adb install vlc-redesign-0.5.4-android.apk` does the same. The app shows on the
 TV's home screen.
 
 ## Samsung TV
@@ -453,7 +453,7 @@ none of VLC's code (it has features like VLC's), and it is called by its own nam
 Samsung TVs install apps from Samsung's store, or from a computer when the TV is in developer mode. The app is
 not in the store, so it is installed from a computer, once (about 20 minutes):
 
-1. Download `Redesign-Player-for-TV-0.5.3-source.zip` from the
+1. Download `Redesign-Player-for-TV-0.5.4-source.zip` from the
    [latest release](https://github.com/KuchiSofts/vlc-redesign/releases/latest) and unzip it.
 2. Install [Tizen Studio](https://developer.tizen.org/development/tizen-studio/download) and, in its Package
    Manager (*Extension SDK*), **Samsung Certificate Extension** and **TV Extensions**.

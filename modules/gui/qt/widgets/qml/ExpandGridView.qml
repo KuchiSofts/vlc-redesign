@@ -763,7 +763,7 @@ FocusScope {
         if (activeFocus && currentIndex === item.index && expandIndex === -1)
             item.forceActiveFocus(_currentFocusReason)
         else
-            item.focus = false
+            item.focus = (!activeFocus && currentIndex === item.index && expandIndex === -1)
     }
 
     function _refreshData( iMin, iMax ) {

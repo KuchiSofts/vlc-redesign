@@ -5,13 +5,48 @@ Changes of **VLC Redesign**, an unofficial VLC 4 build with the interface design
 For changes to VLC itself, see [NEWS](NEWS).
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
-what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `1e8e165eb6` (2026-11-05).
+what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `da8cf042aa` (2026-11-06).
 
-**Contents:** [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
 
 ---
+
+## [0.5.4] · 2026-11-06
+
+**Android TV, 1:1 with the design:** the TV layout now draws the desktop's window at the design's size, page by page,
+checked against the Figma frames (most within 1–3 %). Desktop, Linux and macOS: VideoLAN's latest fixes and the
+Estonian translation.
+
+### Changed
+
+- Android TV: the library is the design's window at its real size: the title bar (the cone, the main menu, the
+  title, the clock), the sidebar with the design's icons (Home, Videos, Music, Network, Playlists, TV, Recent, Add
+  item) and the header (back, the address, the item count, sort, view, search, ⋯), as in the Figma frames.
+- Android TV: Home, the Videos grid and its folders, Music, Network and Playlists in the design's cards and rows;
+  the list view is the design's four columns of rows. A playlist's, an album's or an artist's page opens inside the
+  window with its address (*Playlists › name*), not as a page of its own. No letter headers (A, B, C) on the TV.
+- Android TV: the design's menus everywhere (items, sort, the page's ⋯, the main menu): a panel of 265, rows of 48,
+  the two-colour icons. Hold OK (or press Menu) on an item to open its menu; OK opens or plays it. The view button
+  switches between the grid and the rows at once, the sort button opens the design's Sorting Options.
+- Android TV: Settings is the design's dialog over the library; the video player's top bar and control bar (the
+  volume wedge, the equalizer, the queue) and the music player's bar (its waveform, 15 s jumps, the folder in the top
+  bar) are the frames'; the mini player is the design's card.
+
+### Added
+
+- Android TV: **New Playlist** (Figma *new playlist*): the name, the files chosen with the TV's file picker, the first
+  file's picture as the thumbnail. In the Playlists page's ⋯.
+- Android TV: **Open Network Stream** as the design's dialog (several links, a playlist name to keep them), from the
+  title bar's menu and the sidebar's *Add item*.
+- Estonian: the Live TV's day abbreviation and the guide's matching text corrected (Weblate, Priit Jõerüüt, [#53](https://github.com/KuchiSofts/vlc-redesign/pull/53)).
+
+### Upstream
+
+- VideoLAN master merged up to `da8cf042aa` (32 commits): audio filters no longer output empty blocks, the grid
+  views' initial focus, dav1d's multi-message closed captions, Android's native window released on close, macOS
+  fixes. The player page's file is now `PlayerView.qml`.
 
 ## [0.5.3] · 2026-11-06
 

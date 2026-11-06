@@ -12,6 +12,13 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-11-06):
 
+- 🟢 **macOS updates itself** (2026-11-06, toward 0.5.5, the owner's request with the rule "updates, not releases"):
+  the updater takes the release's disk image of this Mac's architecture, checks SHA256SUMS.txt's signature with the
+  Security framework (redesign_update_verify.h, loaded at run time like GnuTLS on Linux), and
+  Contents/Resources/vlc-redesign-update.sh stages the image's app next to this one (codesign --verify --deep
+  --strict, the same bundle identifier) and swaps it in once VLC has quit, then reopens where it was. No new texts
+  (the updater's existing ones). The macOS launch test checks the signature on a real Mac (good / changed: bad) and
+  stages and swaps the built image. Reaches users from 0.5.5 (0.5.4 and older have no updater on macOS).
 - 🟢 **Translations refreshed** (2026-11-06, toward 0.5.5): po/vlc.pot made again from the source (no text lost, 3
   new from VideoLAN, 237 references updated, among them Player.qml -> PlayerView.qml), all 110 catalogs merged
   (89 had stayed on the 10-29/10-31 template), Weblate's translations put back over the merged entries (52), every

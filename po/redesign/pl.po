@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 2.2.7\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-06 20:50+0000\n"
+"POT-Creation-Date: 2026-11-06 21:05+0000\n"
 "PO-Revision-Date: 2017-11-15 17:38+0100\n"
 "Last-Translator: Michał Trzebiatowski <michtrz@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -9096,7 +9096,7 @@ msgstr "Przywróć"
 msgid "Don't restore"
 msgstr "Nie przywracaj"
 
-#: modules/gui/qt/util/redesign_updater.cpp:233
+#: modules/gui/qt/util/redesign_updater.cpp:250
 msgid ""
 "The update isn't signed by the publisher of this copy (%1), so it wasn't "
 "used."
@@ -9104,28 +9104,28 @@ msgstr ""
 "Aktualizacja nie jest podpisana przez wydawcę tej kopii (%1), więc nie "
 "została użyta."
 
-#: modules/gui/qt/util/redesign_updater.cpp:479
+#: modules/gui/qt/util/redesign_updater.cpp:496
 msgid "%1 (later)"
 msgstr "%1 (później)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:481
+#: modules/gui/qt/util/redesign_updater.cpp:498
 msgid "%1 (soon)"
 msgstr "%1 (wkrótce)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:669
+#: modules/gui/qt/util/redesign_updater.cpp:694
 msgid "This build cannot check for updates."
 msgstr "Ta kompilacja nie może sprawdzać aktualizacji."
 
-#: modules/gui/qt/util/redesign_updater.cpp:683
+#: modules/gui/qt/util/redesign_updater.cpp:708
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr ""
 "Nie można połączyć się z GitHub. Sprawdź połączenie i spróbuj ponownie."
 
-#: modules/gui/qt/util/redesign_updater.cpp:700
+#: modules/gui/qt/util/redesign_updater.cpp:725
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "GitHub zwrócił nieoczekiwaną odpowiedź (%1)."
 
-#: modules/gui/qt/util/redesign_updater.cpp:824
+#: modules/gui/qt/util/redesign_updater.cpp:853
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
@@ -9133,45 +9133,48 @@ msgstr ""
 "Ta aktualizacja nie jest podpisana przez VLC Redesign, więc nie została "
 "użyta. Pobierz ją ze strony wydania."
 
-#: modules/gui/qt/util/redesign_updater.cpp:846
-#: modules/gui/qt/util/redesign_updater.cpp:887
+#: modules/gui/qt/util/redesign_updater.cpp:875
+#: modules/gui/qt/util/redesign_updater.cpp:916
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr "Brak sumy kontrolnej aktualizacji; pobierz ją ze strony wydania."
 
-#: modules/gui/qt/util/redesign_updater.cpp:861
-#: modules/gui/qt/util/redesign_updater.cpp:933
+#: modules/gui/qt/util/redesign_updater.cpp:890
+#: modules/gui/qt/util/redesign_updater.cpp:962
 msgid "The download failed. Check your connection and try again."
 msgstr "Pobieranie nie powiodło się. Sprawdź połączenie i spróbuj ponownie."
 
-#: modules/gui/qt/util/redesign_updater.cpp:946
+#: modules/gui/qt/util/redesign_updater.cpp:975
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "Aktualizacja nie zgadza się z sumą kontrolną, więc jej nie użyto."
 
-#: modules/gui/qt/util/redesign_updater.cpp:977
+#: modules/gui/qt/util/redesign_updater.cpp:1006
 msgid "The update isn't in a format this version knows."
 msgstr "Aktualizacja ma format nieznany tej wersji."
 
-#: modules/gui/qt/util/redesign_updater.cpp:980
-#: modules/gui/qt/util/redesign_updater.cpp:1004
-#: modules/gui/qt/util/redesign_updater.cpp:1015
-#: modules/gui/qt/util/redesign_updater.cpp:1021
+#: modules/gui/qt/util/redesign_updater.cpp:1009
+#: modules/gui/qt/util/redesign_updater.cpp:1033
+#: modules/gui/qt/util/redesign_updater.cpp:1044
+#: modules/gui/qt/util/redesign_updater.cpp:1050
+#: modules/gui/qt/util/redesign_updater.cpp:1284
 msgid "The update is damaged."
 msgstr "Aktualizacja jest uszkodzona."
 
-#: modules/gui/qt/util/redesign_updater.cpp:985
+#: modules/gui/qt/util/redesign_updater.cpp:1014
+#: modules/gui/qt/util/redesign_updater.cpp:1281
 msgid "The update isn't for this version."
 msgstr "Ta aktualizacja nie jest przeznaczona dla tej wersji."
 
-#: modules/gui/qt/util/redesign_updater.cpp:994
-#: modules/gui/qt/util/redesign_updater.cpp:1031
-#: modules/gui/qt/util/redesign_updater.cpp:1040
-#: modules/gui/qt/util/redesign_updater.cpp:1044
-#: modules/gui/qt/util/redesign_updater.cpp:1048
+#: modules/gui/qt/util/redesign_updater.cpp:1023
+#: modules/gui/qt/util/redesign_updater.cpp:1060
+#: modules/gui/qt/util/redesign_updater.cpp:1069
+#: modules/gui/qt/util/redesign_updater.cpp:1073
+#: modules/gui/qt/util/redesign_updater.cpp:1077
+#: modules/gui/qt/util/redesign_updater.cpp:1277
 msgid "The update can't be written in %1."
 msgstr "Nie można zapisać aktualizacji w %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:996
+#: modules/gui/qt/util/redesign_updater.cpp:1025
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -9179,34 +9182,35 @@ msgstr ""
 "Plik VLC Redesign został zmieniony od czasu instalacji, więc nie można użyć "
 "małej aktualizacji: zaktualizuj za pomocą instalatora."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1026
+#: modules/gui/qt/util/redesign_updater.cpp:1055
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr "Aktualizacja jest uszkodzona: plik nie zgadza się z sumą kontrolną."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1151
+#: modules/gui/qt/util/redesign_updater.cpp:1180
+#: modules/gui/qt/util/redesign_updater.cpp:1345
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr ""
 "Nie udało się rozpocząć aktualizacji. Zostanie ponowiona następnym razem."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1178
+#: modules/gui/qt/util/redesign_updater.cpp:1207
 msgid "The download failed. Try again, or download it from the release page."
 msgstr ""
 "Pobieranie nie powiodło się. Spróbuj ponownie lub pobierz ją ze strony "
 "wydania."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1191
+#: modules/gui/qt/util/redesign_updater.cpp:1220
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr ""
 "Pobrany instalator nie zgadza się z sumą kontrolną, więc go nie uruchomiono."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1203
-#: modules/gui/qt/util/redesign_updater.cpp:1211
-#: modules/gui/qt/util/redesign_updater.cpp:1225
+#: modules/gui/qt/util/redesign_updater.cpp:1232
+#: modules/gui/qt/util/redesign_updater.cpp:1240
+#: modules/gui/qt/util/redesign_updater.cpp:1254
 msgid "The installer couldn't be saved to %1."
 msgstr "Nie udało się zapisać instalatora w %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1265
-#: modules/gui/qt/util/redesign_updater.cpp:1283
+#: modules/gui/qt/util/redesign_updater.cpp:1325
+#: modules/gui/qt/util/redesign_updater.cpp:1363
 msgid "The installer couldn't be started."
 msgstr "Nie udało się uruchomić instalatora."
 

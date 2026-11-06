@@ -31,9 +31,9 @@ The files of version 0.5.4 ([release page](https://github.com/KuchiSofts/vlc-red
 | `vlc-redesign-0.5.4-win64.zip` | 107.9 MB | **The portable copy**: unzip anywhere and run `vlc.exe`. |
 | `vlc-redesign-0.5.4-winarm64-setup.exe` | 47.4 MB | **The installer for Windows 11 on ARM64** (see [Windows on ARM64](#windows-on-arm64)). |
 | `vlc-redesign-0.5.4-winarm64.zip` | 84.0 MB | **The portable copy for Windows 11 on ARM64.** |
-| `vlc-redesign-0.5.4-delta-from-0.5.3.vrdelta` | DELTA_X64 | A small update from 0.5.3, used by the app itself (see [Small updates](#small-updates)). |
-| `vlc-redesign-0.5.4-delta-from-0.5.2.vrdelta`, `...-from-0.5.1.vrdelta` | DELTA_X64 each | The small updates from 0.5.2 and from 0.5.1. |
-| `vlc-redesign-0.5.4-winarm64-delta-from-0.5.3.vrdelta`, `...-from-0.5.2.vrdelta` | DELTA_ARM each | The small updates of Windows on ARM64 from 0.5.3 and from 0.5.2 (and `...-from-0.5.1.vrdelta`). |
+| `vlc-redesign-0.5.4-delta-from-0.5.3.vrdelta` | 3.6 MB | A small update from 0.5.3, used by the app itself (see [Small updates](#small-updates)). |
+| `vlc-redesign-0.5.4-delta-from-0.5.2.vrdelta`, `...-from-0.5.1.vrdelta` | 7.8 MB, 7.7 MB | The small updates from 0.5.2 and from 0.5.1. |
+| `vlc-redesign-0.5.4-winarm64-delta-from-0.5.3.vrdelta`, `...-from-0.5.2.vrdelta` | 4.0 MB, 15.3 MB | The small updates of Windows on ARM64 from 0.5.3 and from 0.5.2 (and `...-from-0.5.1.vrdelta`, 15.3 MB). |
 | `vlc-redesign-0.5.4-source.tar.gz` | | The source code of this release. |
 | `SHA256SUMS.txt` | | The SHA-256 of every file of the release, to check a download. |
 | `SHA256SUMS.txt.sig` | | The signature of `SHA256SUMS.txt`: from 0.4.0 on, the app installs only an update whose list is signed. |

@@ -86,8 +86,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   key hints. `IdleScene.qml`: three timers (no animation runs between two steps).
 - `win64-docker.ps1 -Lint`: one changed QML file was splatted letter by letter ("not part of any QML module"); new
   `-LintFiles` (the files to lint) and `-LintBase` (lint what changed since a revision, such as `main`).
-- Android: the app is 0.5.3, its *What's new* card in 62 languages. Samsung TV: Redesign Player for TV 0.1.0
-  (`Redesign-Player-for-TV-0.1.0-source.zip`; the app's update check reads this project's releases).
+- Android: the app is 0.5.3, its *What's new* card in 62 languages. Samsung TV: Redesign Player for TV 0.5.3
+  (`Redesign-Player-for-TV-0.5.3-source.zip`; the app's update check reads this project's releases).
 
 ## [0.5.2] · 2026-11-02
 

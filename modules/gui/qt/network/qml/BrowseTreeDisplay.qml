@@ -156,6 +156,8 @@ Widgets.PageExt {
             Widgets.ExpandGridItemView {
                 id: gridView
 
+                focus: true
+
                 basePictureWidth: VLCStyle.gridCover_network_width
                 basePictureHeight: VLCStyle.gridCover_network_height
                 subtitleHeight: 0

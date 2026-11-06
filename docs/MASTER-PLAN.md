@@ -20,7 +20,8 @@ What is being worked on, updated as it changes (2026-11-06):
   pull requests by @SHR1F (#49 the restored full screen held from the start, fixing #48; #50 video without waiting
   for the driver warm-up; #51 Settings lists fonts and drives only when asked), each checked on Windows (the #48
   strips reproduced on 0.5.2 and gone with #49; 35/35 formats; the Settings sweep unchanged). VideoLAN merged to
-  1e8e165eb6. Next: 0.5.4 (fixes).
+  1e8e165eb6. Published 2026-11-06 ([v0.5.3](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.3)): 33 files,
+  the small updates 7.7 MB (x64) and 15.3 MB (ARM64) from 0.5.0, 0.5.1 and 0.5.2. Next: 0.5.4 (fixes).
 - 🟢 **Roadmap rewritten** (2026-11-03): ROADMAP.md in order (where each program stands, Next, each platform, the
   released versions newest first); 0.4.0's old "in progress" items that shipped folded into its entry, the open
   ones (signing, real-hardware tests) under Next; the README's roadmap paragraph at 0.5.2 / next 0.5.3. Merged

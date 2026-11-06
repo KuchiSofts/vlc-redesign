@@ -291,6 +291,10 @@ mkdir -p "$docs/licenses"
 cp "$root/modules/gui/qt/pixmaps/fonts/LICENSE.txt" "$docs/licenses/Inter-OFL.txt"
 cp "$root/modules/gui/qt/pixmaps/fonts/DMMono-OFL.txt" "$docs/licenses/DMMono-OFL.txt"
 grep -q Juxtopposed "$docs/CREDITS.txt" || die "CREDITS.md does not credit the designer"
+# The update in place (modules/gui/qt/util/redesign_updater.cpp): the release's
+# disk image staged next to the app, swapped in once VLC has quit
+cp "$root/extras/juxtopposed/macos/vlc-redesign-update.sh" "$contents/Resources/vlc-redesign-update.sh"
+chmod 755 "$contents/Resources/vlc-redesign-update.sh"
 
 python3 "$root/extras/juxtopposed/macos/make-info-plist.py" \
     --template "$root/share/Info.plist.in" --version "$version" --vlc-version "$vlc_version" \

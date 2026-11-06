@@ -40,6 +40,8 @@ with a build to try):
 - 📋 Linux: the first update of the AppImage from the app, checked from 0.5.3 to 0.5.4 on real desktops
 - 📋 Samsung TV: a USB drive played on a real TV (the folders of the TV's own storage are checked)
 - 📋 Android TV: tests on more TV boxes (Google TV, Fire TV)
+- ✅ macOS: the app updates itself (the release's disk image, checked against the signed checksums, swapped in on
+  quit); from 0.5.5
 - ✅ Translations: every catalog on the current texts again, Weblate offering the newest ones in every language
 - 📋 Android: an upstream merge before the next Android release (the version code's release counter is at its last
   step on the current base)

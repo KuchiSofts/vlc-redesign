@@ -18,6 +18,11 @@
 #      the light and the dark appearance of macOS (the System theme follows
 #      it), and About opened from the application menu (System Events: the
 #      runner may refuse the accessibility).
+#   5. the update in place (with a disk image): the release's checksums
+#      checked with the key the app carries (verify-test.c with this Mac's
+#      Security framework: good, and bad once changed), then the image's app
+#      staged next to a copy and swapped in by the app's own
+#      Resources/vlc-redesign-update.sh, as the updater does.
 # A crash report of the app (~/Library/Logs/DiagnosticReports) fails it.
 # NO_IPTV=1: a build made without the Live TV add-on (macos-build.sh -t).
 #
@@ -88,6 +93,47 @@ note "bundle: $(plist CFBundleIdentifier) $(plist CFBundleShortVersionString), m
 # the translations (po/, as in the Windows package)
 translations=$(find "$contents/Resources/share/locale" -name 'vlc.mo' 2>/dev/null | wc -l | tr -d ' ')
 [ "$translations" -ge 20 ] && note "ok: $translations translations" || fail "only $translations translations in Resources/share/locale"
+
+# 5. the update in place (redesign_updater.cpp, macos/vlc-redesign-update.sh)
+updater=$app/Contents/Resources/vlc-redesign-update.sh
+[ -x "$updater" ] && note "ok: the updater's helper is in the app" || fail "no Resources/vlc-redesign-update.sh"
+root=$(cd "$(dirname "$0")/../../.." && pwd)
+if [ -f "$root/extras/juxtopposed/signing/verify-test.c" ]     && clang -O2 -Wall -Wextra -I "$root/modules/gui/qt/util" "$root/extras/juxtopposed/signing/verify-test.c"         -o "$work/verify-test" > "$work/verify-test-build.log" 2>&1; then
+    latest=https://github.com/KuchiSofts/vlc-redesign/releases/latest/download
+    if curl -fsSL --retry 2 -o "$work/SHA256SUMS.txt" "$latest/SHA256SUMS.txt"         && curl -fsSL --retry 2 -o "$work/SHA256SUMS.txt.sig" "$latest/SHA256SUMS.txt.sig"; then
+        good=$("$work/verify-test" "$work/SHA256SUMS.txt")
+        [ "$good" = good ] && note "ok: the latest release's signature is good (Security framework)"             || fail "the latest release's signature is not accepted on macOS ($good)"
+        { printf 'x'; cat "$work/SHA256SUMS.txt"; } > "$work/changed.txt"
+        bad=$("$work/verify-test" "$work/changed.txt" "$work/SHA256SUMS.txt.sig")
+        [ "$bad" = bad ] && note "ok: a changed SHA256SUMS.txt is refused" || fail "a changed SHA256SUMS.txt is accepted ($bad)"
+    else
+        note "note: the latest release's checksums could not be downloaded (signature not checked)"
+    fi
+else
+    fail "verify-test.c does not build on macOS (see verify-test-build.log)"
+fi
+case $target in
+    *.dmg)
+        if [ -x "$updater" ]; then
+            mkdir -p "$work/update"
+            installed="$work/update/$(basename "$app")"
+            cp -R "$app" "$installed"
+            staged=$(/bin/sh "$updater" stage "$target" "$installed" 2> "$work/update-stage.log")
+            if [ $? = 0 ] && [ -d "$staged" ] && codesign --verify --deep --strict "$staged" 2>/dev/null; then
+                note "ok: the update is staged next to the app, its signature intact"
+                true & gone=$!; wait $gone
+                if VLC_REDESIGN_UPDATE_NO_OPEN=1 /bin/sh "$updater" apply "$gone" "$staged" "$installed" 2> "$work/update-apply.log"                     && [ ! -e "$staged" ] && [ ! -e "$work/update/.vlc-redesign-old.app" ]                     && codesign --verify --deep --strict "$installed" 2>/dev/null; then
+                    note "ok: the update is swapped in (the old app removed, the new one's signature intact)"
+                else
+                    fail "the update was not swapped in (see update-apply.log)"
+                fi
+            else
+                fail "the update could not be staged (see update-stage.log)"
+            fi
+            rm -rf "$work/update"
+        fi
+        ;;
+esac
 # the About badge of this processor, in the interface (a UTF-16 string of Qt)
 case $(uname -m) in
     arm64) badge="macOS Apple Silicon"; other="macOS Intel" ;;

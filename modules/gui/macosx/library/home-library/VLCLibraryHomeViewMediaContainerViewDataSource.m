@@ -1,5 +1,5 @@
 /*****************************************************************************
- * VLCLibraryHomeViewVideoContainerViewDataSource.m: MacOS X interface module
+ * VLCLibraryHomeViewMediaContainerViewDataSource.m: MacOS X interface module
  *****************************************************************************
  * Copyright (C) 2022 VLC authors and VideoLAN
  *
@@ -20,7 +20,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
  *****************************************************************************/
 
-#import "VLCLibraryHomeViewVideoContainerViewDataSource.h"
+#import "VLCLibraryHomeViewMediaContainerViewDataSource.h"
 
 #import "extensions/NSView+VLCAdditions.h"
 
@@ -36,25 +36,26 @@
 #import "library/home-library/VLCLibraryHomeViewVideoCarouselContainerView.h"
 #import "library/home-library/VLCLibraryHomeViewVideoGridContainerView.h"
 
-#import "library/video-library/VLCLibraryVideoGroupDescriptor.h"
+#import "library/VLCLibraryMediaGroupDescriptor.h"
 
 #import "main/VLCMain.h"
 
 #import "views/VLCUIUnits.h"
 
-NSString * const VLCLibraryVideoCollectionViewDataSourceDisplayedCollectionChangedNotification = @"VLCLibraryVideoCollectionViewDataSourceDisplayedCollectionChangedNotification";
+NSString * const VLCLibraryMediaCollectionViewDataSourceDisplayedCollectionChangedNotification = @"VLCLibraryMediaCollectionViewDataSourceDisplayedCollectionChangedNotification";
 
-@interface VLCLibraryHomeViewVideoContainerViewDataSource ()
+@interface VLCLibraryHomeViewMediaContainerViewDataSource ()
 {
     VLCLibraryCollectionViewFlowLayout *_collectionViewFlowLayout;
     VLCLibraryModel *_libraryModel;
+    NSUInteger _reloadGeneration;
 }
 
 @property (readwrite, atomic) NSMutableArray *collectionArray;
 
 @end
 
-@implementation VLCLibraryHomeViewVideoContainerViewDataSource
+@implementation VLCLibraryHomeViewMediaContainerViewDataSource
 
 - (instancetype)init
 {
@@ -180,24 +181,68 @@ NSString * const VLCLibraryVideoCollectionViewDataSourceDisplayedCollectionChang
                                name:VLCLibraryModelRecentsMediaItemDeleted
                              object:nil];
 
+    [notificationCenter addObserver:self
+                           selector:@selector(libraryModelRecentlyAddedListReset:)
+                               name:VLCLibraryModelRecentlyAddedVideoMediaListReset
+                             object:nil];
+    [notificationCenter addObserver:self
+                           selector:@selector(libraryModelRecentlyAddedListReset:)
+                               name:VLCLibraryModelRecentlyAddedAudioMediaListReset
+                             object:nil];
+    [notificationCenter addObserver:self
+                           selector:@selector(libraryModelRecentlyAddedListReset:)
+                               name:VLCLibraryModelAllCachesDropped
+                             object:nil];
+
     [self reloadData];
+}
+
+- (void)libraryModelRecentlyAddedListReset:(NSNotification *)notification
+{
+    const VLCMediaLibraryParentGroupType group = self.groupDescriptor.group;
+    const BOOL resetVideos = group == VLCMediaLibraryParentGroupTypeRecentlyAddedVideos &&
+        [notification.name isEqualToString:VLCLibraryModelRecentlyAddedVideoMediaListReset];
+    const BOOL resetAudio = group == VLCMediaLibraryParentGroupTypeRecentlyAddedAudios &&
+        [notification.name isEqualToString:VLCLibraryModelRecentlyAddedAudioMediaListReset];
+    const BOOL dropAll = [notification.name isEqualToString:VLCLibraryModelAllCachesDropped] &&
+        (group == VLCMediaLibraryParentGroupTypeRecentlyAddedVideos ||
+         group == VLCMediaLibraryParentGroupTypeRecentlyAddedAudios);
+    if (resetVideos || resetAudio || dropAll) {
+        [self reloadData];
+    }
 }
 
 - (void)disconnect
 {
+    ++_reloadGeneration;
     [NSNotificationCenter.defaultCenter removeObserver:self];
 }
 
 - (void)reloadData
 {
-    if(self.collectionView == nil || !_groupDescriptor) {
-        NSLog(@"Null collection view or video group descriptor");
+    if (!NSThread.isMainThread) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self reloadData];
+        });
         return;
     }
 
+    if(self.collectionView == nil || !_groupDescriptor) {
+        NSLog(@"Null collection view or group descriptor");
+        return;
+    }
+
+    const NSUInteger generation = ++_reloadGeneration;
+    const VLCMediaLibraryParentGroupType group = self.groupDescriptor.group;
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
         NSArray *newCollectionArray = nil;
-        switch(self->_groupDescriptor.group) {
+        switch(group) {
+            case VLCMediaLibraryParentGroupTypeRecentlyAddedVideos:
+                newCollectionArray = self->_libraryModel.listOfRecentlyAddedVideoMedia;
+                break;
+            case VLCMediaLibraryParentGroupTypeRecentlyAddedAudios:
+                newCollectionArray = self->_libraryModel.listOfRecentlyAddedAudioMedia;
+                break;
             case VLCMediaLibraryParentGroupTypeVideoLibrary:
                 newCollectionArray = self->_libraryModel.listOfVideoMedia;
                 break;
@@ -209,9 +254,12 @@ NSString * const VLCLibraryVideoCollectionViewDataSourceDisplayedCollectionChang
         }
 
         dispatch_async(dispatch_get_main_queue(), ^{
+            if (generation != self->_reloadGeneration) {
+                return;
+            }
             self.collectionArray = [newCollectionArray mutableCopy];
             [self.collectionView reloadData];
-            [NSNotificationCenter.defaultCenter postNotificationName:VLCLibraryVideoCollectionViewDataSourceDisplayedCollectionChangedNotification
+            [NSNotificationCenter.defaultCenter postNotificationName:VLCLibraryMediaCollectionViewDataSourceDisplayedCollectionChangedNotification
                                                               object:self];
         });
     });
@@ -228,7 +276,7 @@ NSString * const VLCLibraryVideoCollectionViewDataSourceDisplayedCollectionChang
 
     NSIndexPath * const indexPath = [NSIndexPath indexPathForItem:mediaItemIndex inSection:0];
     [self.collectionView reloadItemsAtIndexPaths:[NSSet setWithObject:indexPath]];
-    [NSNotificationCenter.defaultCenter postNotificationName:VLCLibraryVideoCollectionViewDataSourceDisplayedCollectionChangedNotification
+    [NSNotificationCenter.defaultCenter postNotificationName:VLCLibraryMediaCollectionViewDataSourceDisplayedCollectionChangedNotification
                                                       object:self];
 }
 
@@ -243,11 +291,11 @@ NSString * const VLCLibraryVideoCollectionViewDataSourceDisplayedCollectionChang
 
     NSIndexPath * const indexPath = [NSIndexPath indexPathForItem:mediaItemIndex inSection:0];
     [self.collectionView deleteItemsAtIndexPaths:[NSSet setWithObject:indexPath]];
-    [NSNotificationCenter.defaultCenter postNotificationName:VLCLibraryVideoCollectionViewDataSourceDisplayedCollectionChangedNotification
+    [NSNotificationCenter.defaultCenter postNotificationName:VLCLibraryMediaCollectionViewDataSourceDisplayedCollectionChangedNotification
                                                       object:self];
 }
 
-- (void)setGroupDescriptor:(VLCLibraryVideoCollectionViewGroupDescriptor *)groupDescriptor
+- (void)setGroupDescriptor:(VLCLibraryMediaCollectionViewGroupDescriptor *)groupDescriptor
 {
     if(!groupDescriptor) {
         NSLog(@"Invalid group descriptor");

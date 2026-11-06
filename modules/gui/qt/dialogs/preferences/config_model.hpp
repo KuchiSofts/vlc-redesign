@@ -121,7 +121,8 @@ private:
     struct Entry {
         QString key, category, label, help, type;
         QVariant current, staged, original, minimum, maximum;
-        QVariantList choices;
+        mutable QVariantList choices;
+        mutable bool choicesLoaded = true;
         bool bounded = false;
         // Kept in the settings of the interface (QSettings), not by VLC
         bool qtSetting = false;
@@ -187,6 +188,7 @@ private:
     static QHash<QString, QVariant> &startValues();
     void notifyEntry(int entryIndex);
     static bool normalize(const Entry &entry, const QVariant &value, QVariant *normalized);
+    static const QVariantList &choicesFor(const Entry &entry);
     static QVariant readValue(const Entry &entry);
 
     QPointer<MainCtx> m_ctx;

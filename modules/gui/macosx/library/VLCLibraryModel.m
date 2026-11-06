@@ -46,6 +46,8 @@ NSString * const VLCLibraryModelFavoriteArtistsListReset = @"VLCLibraryModelFavo
 NSString * const VLCLibraryModelFavoriteGenresListReset = @"VLCLibraryModelFavoriteGenresListReset";
 NSString * const VLCLibraryModelRecentsMediaListReset = @"VLCLibraryModelRecentsMediaListReset";
 NSString * const VLCLibraryModelRecentAudioMediaListReset = @"VLCLibraryModelRecentAudioMediaListReset";
+NSString * const VLCLibraryModelRecentlyAddedVideoMediaListReset = @"VLCLibraryModelRecentlyAddedVideoMediaListReset";
+NSString * const VLCLibraryModelRecentlyAddedAudioMediaListReset = @"VLCLibraryModelRecentlyAddedAudioMediaListReset";
 NSString * const VLCLibraryModelListOfShowsReset = @"VLCLibraryModelListOfShowsReset";
 NSString * const VLCLibraryModelListOfMoviesReset = @"VLCLibraryModelListOfMoviesReset";
 NSString * const VLCLibraryModelListOfGroupsReset = @"VLCLibraryModelListOfGroupsReset";
@@ -135,12 +137,16 @@ NSString * const VLCLibraryModelDiscoveryFailed = @"VLCLibraryModelDiscoveryFail
 @property (readwrite, nonatomic) NSArray<VLCMediaLibraryGroup *> *cachedListOfGroups;
 @property (readwrite, nonatomic) NSArray<VLCMediaLibraryMediaItem *> *cachedRecentMedia;
 @property (readwrite, nonatomic) NSArray<VLCMediaLibraryMediaItem *> *cachedRecentAudioMedia;
+@property (readwrite, nonatomic) NSArray<VLCMediaLibraryMediaItem *> *cachedRecentlyAddedVideoMedia;
+@property (readwrite, nonatomic) NSArray<VLCMediaLibraryMediaItem *> *cachedRecentlyAddedAudioMedia;
 @property (readwrite, nonatomic) NSArray<VLCMediaLibraryEntryPoint *> *cachedListOfMonitoredFolders;
 @property (readwrite, nonatomic) NSArray<NSString *> *cachedMediaTitles;
 
 - (instancetype)initWithoutMediaLibrary;
 - (void)resetCachedListOfRecentMedia;
 - (void)resetCachedListOfRecentAudioMedia;
+- (void)resetCachedListOfRecentlyAddedVideoMedia;
+- (void)resetCachedListOfRecentlyAddedAudioMedia;
 - (void)resetCachedListOfArtists;
 - (void)resetCachedListOfAlbums;
 - (void)resetCachedListOfGenres;
@@ -306,6 +312,8 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
 @synthesize cachedVideoMedia = _cachedVideoMedia;
 @synthesize cachedRecentMedia = _cachedRecentMedia;
 @synthesize cachedRecentAudioMedia = _cachedRecentAudioMedia;
+@synthesize cachedRecentlyAddedVideoMedia = _cachedRecentlyAddedVideoMedia;
+@synthesize cachedRecentlyAddedAudioMedia = _cachedRecentlyAddedAudioMedia;
 @synthesize cachedListOfShows = _cachedListOfShows;
 @synthesize cachedListOfMovies = _cachedListOfMovies;
 @synthesize cachedListOfMonitoredFolders = _cachedListOfMonitoredFolders;
@@ -445,6 +453,22 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
     }];
 }
 
+- (NSArray<VLCMediaLibraryMediaItem *> *)cachedRecentlyAddedVideoMedia
+{
+    return [self readCacheOnQueue:_mediaItemCacheModificationQueue
+                        withBlock:^NSArray *{
+        return self->_cachedRecentlyAddedVideoMedia;
+    }];
+}
+
+- (NSArray<VLCMediaLibraryMediaItem *> *)cachedRecentlyAddedAudioMedia
+{
+    return [self readCacheOnQueue:_mediaItemCacheModificationQueue
+                        withBlock:^NSArray *{
+        return self->_cachedRecentlyAddedAudioMedia;
+    }];
+}
+
 - (NSArray<VLCMediaLibraryShow *> *)cachedListOfShows
 {
     return [self readCacheOnQueue:_mediaItemCacheModificationQueue withBlock:^NSArray *{
@@ -538,6 +562,22 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
     [self invalidateCacheUpdateForGetter:@selector(cachedRecentAudioMedia)];
     dispatch_barrier_async(_mediaItemCacheModificationQueue, ^{
         self->_cachedRecentAudioMedia = [cachedRecentAudioMedia copy];
+    });
+}
+
+- (void)setCachedRecentlyAddedVideoMedia:(NSArray *)cachedRecentlyAddedVideoMedia
+{
+    [self invalidateCacheUpdateForGetter:@selector(cachedRecentlyAddedVideoMedia)];
+    dispatch_barrier_async(_mediaItemCacheModificationQueue, ^{
+        self->_cachedRecentlyAddedVideoMedia = [cachedRecentlyAddedVideoMedia copy];
+    });
+}
+
+- (void)setCachedRecentlyAddedAudioMedia:(NSArray *)cachedRecentlyAddedAudioMedia
+{
+    [self invalidateCacheUpdateForGetter:@selector(cachedRecentlyAddedAudioMedia)];
+    dispatch_barrier_async(_mediaItemCacheModificationQueue, ^{
+        self->_cachedRecentlyAddedAudioMedia = [cachedRecentlyAddedAudioMedia copy];
     });
 }
 
@@ -746,6 +786,10 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
                 [self resetCachedListOfRecentAudioMedia];
             else if (getter == @selector(cachedRecentMedia))
                 [self resetCachedListOfRecentMedia];
+            else if (getter == @selector(cachedRecentlyAddedVideoMedia))
+                [self resetCachedListOfRecentlyAddedVideoMedia];
+            else if (getter == @selector(cachedRecentlyAddedAudioMedia))
+                [self resetCachedListOfRecentlyAddedAudioMedia];
             else if (getter == @selector(cachedArtists))
                 [self resetCachedListOfArtists];
             else if (getter == @selector(cachedAlbums))
@@ -1272,6 +1316,88 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
     return cache;
 }
 
+- (void)resetCachedListOfRecentlyAddedVideoMedia
+{
+    [self resetCachedListOfRecentlyAddedMediaOfType:VLC_ML_MEDIA_TYPE_VIDEO];
+}
+
+- (void)resetCachedListOfRecentlyAddedAudioMedia
+{
+    [self resetCachedListOfRecentlyAddedMediaOfType:VLC_ML_MEDIA_TYPE_AUDIO];
+}
+
+- (void)resetCachedListOfRecentlyAddedMediaOfType:(vlc_ml_media_type_t)type
+{
+    const BOOL audio = type == VLC_ML_MEDIA_TYPE_AUDIO;
+    SEL const getter = audio ? @selector(cachedRecentlyAddedAudioMedia) : @selector(cachedRecentlyAddedVideoMedia);
+    NSNotificationName const notification = audio
+        ? VLCLibraryModelRecentlyAddedAudioMediaListReset
+        : VLCLibraryModelRecentlyAddedVideoMediaListReset;
+    const NSUInteger generation = self.cacheGeneration;
+    NSObject * const token = [self beginCacheUpdateForGetter:getter];
+    NSString * const filterString = [self.filterString copy];
+    dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0), ^{
+        vlc_ml_query_params_t queryParams = vlc_ml_query_params_create();
+        queryParams.i_sort = VLC_ML_SORTING_INSERTIONDATE;
+        queryParams.b_desc = true;
+        queryParams.i_nbResults = 20;
+        queryParams.psz_pattern = filterString.length > 0 ? filterString.UTF8String : NULL;
+        vlc_ml_media_list_t * const mediaList = audio
+            ? vlc_ml_list_audio_media(self->_p_mediaLibrary, &queryParams)
+            : vlc_ml_list_video_media(self->_p_mediaLibrary, &queryParams);
+        NSArray * const media = [NSArray arrayFromVlcMediaList:mediaList];
+        if (media == nil) {
+            @synchronized (self->_cacheUpdateTokens) {
+                if ([self isCurrentCacheUpdate:token forGetter:getter]) {
+                    [self invalidateCacheUpdateForGetter:getter];
+                }
+            }
+            return;
+        }
+        vlc_ml_media_list_release(mediaList);
+        [self performCacheWriteForGeneration:generation
+                                       token:token
+                                      getter:getter
+                                     onQueue:self->_mediaItemCacheModificationQueue
+                                       block:^{
+            if (audio)
+                self->_cachedRecentlyAddedAudioMedia = media;
+            else
+                self->_cachedRecentlyAddedVideoMedia = media;
+            [self performAfterCacheWritesOnQueue:self->_mediaItemCacheModificationQueue
+                                           block:^{
+                [self.changeDelegate notifyChange:notification withObject:self];
+            }];
+        }];
+    });
+}
+
+- (NSArray<VLCMediaLibraryMediaItem *> *)listOfRecentlyAddedVideoMedia
+{
+    NSArray<VLCMediaLibraryMediaItem *> * const cache = self.cachedRecentlyAddedVideoMedia;
+    if (cache == nil) {
+        @synchronized (_cacheUpdateTokens) {
+            if (![_pendingCacheUpdates containsObject:[NSValue valueWithPointer:@selector(cachedRecentlyAddedVideoMedia)]]) {
+                [self resetCachedListOfRecentlyAddedVideoMedia];
+            }
+        }
+    }
+    return cache;
+}
+
+- (NSArray<VLCMediaLibraryMediaItem *> *)listOfRecentlyAddedAudioMedia
+{
+    NSArray<VLCMediaLibraryMediaItem *> * const cache = self.cachedRecentlyAddedAudioMedia;
+    if (cache == nil) {
+        @synchronized (_cacheUpdateTokens) {
+            if (![_pendingCacheUpdates containsObject:[NSValue valueWithPointer:@selector(cachedRecentlyAddedAudioMedia)]]) {
+                [self resetCachedListOfRecentlyAddedAudioMedia];
+            }
+        }
+    }
+    return cache;
+}
+
 - (void)resetCachedListOfShows
 {
     const NSUInteger generation = self.cacheGeneration;
@@ -1531,10 +1657,12 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
 
     if (p_media->i_type == VLC_ML_MEDIA_TYPE_AUDIO || p_media->i_type == VLC_ML_MEDIA_TYPE_UNKNOWN) {
         [self resetCachedListOfAudioMedia];
+        [self resetCachedListOfRecentlyAddedAudioMedia];
     }
 
     if (p_media->i_type == VLC_ML_MEDIA_TYPE_VIDEO || p_media->i_type == VLC_ML_MEDIA_TYPE_UNKNOWN) {
         [self resetCachedListOfVideoMedia];
+        [self resetCachedListOfRecentlyAddedVideoMedia];
 
         if (p_media->i_subtype == VLC_ML_MEDIA_SUBTYPE_SHOW_EPISODE) {
             [self resetCachedListOfShows];
@@ -1676,6 +1804,10 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
         return self.listOfVideoMedia;
     case VLCMediaLibraryParentGroupTypeRecentVideos:
         return self.listOfRecentMedia;
+    case VLCMediaLibraryParentGroupTypeRecentlyAddedVideos:
+        return self.listOfRecentlyAddedVideoMedia;
+    case VLCMediaLibraryParentGroupTypeRecentlyAddedAudios:
+        return self.listOfRecentlyAddedAudioMedia;
     case VLCMediaLibraryParentGroupTypeUnknown:
     default:
         return nil;
@@ -1742,6 +1874,8 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
     self.cachedAudioMedia = nil;
     self.cachedRecentMedia = nil;
     self.cachedRecentAudioMedia = nil;
+    self.cachedRecentlyAddedVideoMedia = nil;
+    self.cachedRecentlyAddedAudioMedia = nil;
     self.cachedListOfShows = nil;
     self.cachedListOfMovies = nil;
     self.cachedListOfMonitoredFolders = nil;
@@ -1769,6 +1903,10 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
                                     NSMutableArray * const,
                                     const NSUInteger,
                                     NSMutableArray * const,
+                                    const NSUInteger,
+                                    NSMutableArray * const,
+                                    const NSUInteger,
+                                    NSMutableArray * const,
                                     const NSUInteger
                                  ))action
 {
@@ -1780,7 +1918,16 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
         BOOL (^idCheckBlock)(VLCMediaLibraryMediaItem * const, const NSUInteger, BOOL * const) = ^BOOL(VLCMediaLibraryMediaItem * const mediaItem, const NSUInteger __unused idx, BOOL * const __unused stop) {
             NSAssert(mediaItem != nil, @"Cache list should not contain nil media items");
             return mediaItem.libraryID == libraryId;
-       };
+        };
+
+        NSArray<VLCMediaLibraryMediaItem *> * const cachedRecentlyAddedVideos = self->_cachedRecentlyAddedVideoMedia;
+        const NSUInteger recentlyAddedVideoIndex = cachedRecentlyAddedVideos
+            ? [cachedRecentlyAddedVideos indexOfObjectPassingTest:idCheckBlock] : NSNotFound;
+        NSMutableArray<VLCMediaLibraryMediaItem *> * const recentlyAddedVideosMutable = cachedRecentlyAddedVideos.mutableCopy;
+        NSArray<VLCMediaLibraryMediaItem *> * const cachedRecentlyAddedAudios = self->_cachedRecentlyAddedAudioMedia;
+        const NSUInteger recentlyAddedAudioIndex = cachedRecentlyAddedAudios
+            ? [cachedRecentlyAddedAudios indexOfObjectPassingTest:idCheckBlock] : NSNotFound;
+        NSMutableArray<VLCMediaLibraryMediaItem *> * const recentlyAddedAudiosMutable = cachedRecentlyAddedAudios.mutableCopy;
 
         NSArray<VLCMediaLibraryMediaItem *> * const cachedRecents = self->_cachedRecentMedia;
         NSArray<VLCMediaLibraryMediaItem *> * const cachedVideos = self->_cachedVideoMedia;
@@ -1793,12 +1940,28 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
             NSMutableArray<VLCMediaLibraryMediaItem *> * const recentsMutable = cachedRecents.mutableCopy;
             NSMutableArray<VLCMediaLibraryMediaItem *> * const videoMutable = cachedVideos.mutableCopy;
 
-            SEL const getters[] = { @selector(cachedVideoMedia), @selector(cachedRecentMedia) };
-            [self performCacheMutationForGetters:getters count:2 block:^{
-                action(videoMutable, videoIndex, recentsMutable, recentsIndex);
+            SEL const getters[] = {
+                @selector(cachedVideoMedia),
+                @selector(cachedRecentMedia),
+                @selector(cachedRecentlyAddedVideoMedia),
+                @selector(cachedRecentlyAddedAudioMedia),
+            };
+            [self performCacheMutationForGetters:getters
+                                           count:4
+                                           block:^{
+                action(videoMutable,
+                       videoIndex,
+                       recentsMutable,
+                       recentsIndex,
+                       recentlyAddedVideosMutable,
+                       recentlyAddedVideoIndex,
+                       recentlyAddedAudiosMutable,
+                       recentlyAddedAudioIndex);
                 // Item handlers adjust title counts individually inside this barrier.
                 self->_cachedVideoMedia = videoMutable.copy;
                 self->_cachedRecentMedia = recentsMutable.copy;
+                self->_cachedRecentlyAddedVideoMedia = recentlyAddedVideosMutable.copy;
+                self->_cachedRecentlyAddedAudioMedia = recentlyAddedAudiosMutable.copy;
             }];
             return;
         }
@@ -1815,11 +1978,27 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
             NSMutableArray<VLCMediaLibraryMediaItem *> * const recentAudiosMutable = cachedRecentAudios.mutableCopy;
             NSMutableArray<VLCMediaLibraryMediaItem *> * const audioMutable = cachedAudios.mutableCopy;
 
-            SEL const getters[] = { @selector(cachedAudioMedia), @selector(cachedRecentAudioMedia) };
-            [self performCacheMutationForGetters:getters count:2 block:^{
-                action(audioMutable, audioIndex, recentAudiosMutable, recentAudiosIndex);
+            SEL const getters[] = {
+                @selector(cachedAudioMedia),
+                @selector(cachedRecentAudioMedia),
+                @selector(cachedRecentlyAddedVideoMedia),
+                @selector(cachedRecentlyAddedAudioMedia),
+            };
+            [self performCacheMutationForGetters:getters
+                                           count:4
+                                           block:^{
+                action(audioMutable,
+                       audioIndex,
+                       recentAudiosMutable,
+                       recentAudiosIndex,
+                       recentlyAddedVideosMutable,
+                       recentlyAddedVideoIndex,
+                       recentlyAddedAudiosMutable,
+                       recentlyAddedAudioIndex);
                 self->_cachedAudioMedia = audioMutable.copy;
                 self->_cachedRecentAudioMedia = recentAudiosMutable.copy;
+                self->_cachedRecentlyAddedVideoMedia = recentlyAddedVideosMutable.copy;
+                self->_cachedRecentlyAddedAudioMedia = recentlyAddedAudiosMutable.copy;
             }];
             return;
         }
@@ -1827,16 +2006,29 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
         // An ongoing medialibrary fetch may have retrieved this item without
         // writing it to the cache yet. Restart pending fetches so an outdated
         // result cannot restore a deleted item or overwrite an updated one.
-        // Its media type is unknown here, so check all four caches, but only
-        // restart fetches already in progress
+        // Its media type is unknown here, so reconcile all media caches.
+        // Either Recently Added cache can contain this item on its own.
         const SEL getters[] = {
             @selector(cachedAudioMedia),
             @selector(cachedRecentAudioMedia),
             @selector(cachedVideoMedia),
             @selector(cachedRecentMedia),
+            @selector(cachedRecentlyAddedVideoMedia),
+            @selector(cachedRecentlyAddedAudioMedia),
         };
-        [self performCacheMutationForGetters:getters count:4 block:^{
-            action(nil, NSNotFound, nil, NSNotFound);
+        [self performCacheMutationForGetters:getters
+                                       count:6
+                                       block:^{
+            action(nil,
+                   NSNotFound,
+                   nil,
+                   NSNotFound,
+                   recentlyAddedVideosMutable,
+                   recentlyAddedVideoIndex,
+                   recentlyAddedAudiosMutable,
+                   recentlyAddedAudioIndex);
+            self->_cachedRecentlyAddedVideoMedia = recentlyAddedVideosMutable.copy;
+            self->_cachedRecentlyAddedAudioMedia = recentlyAddedAudiosMutable.copy;
         }];
     });
 }
@@ -1940,13 +2132,25 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
         [self resetCachedListOfMovies];
     }
 
-    [self performActionOnMediaItemInCache:itemId action:^(
+    [self performActionOnMediaItemInCache:itemId
+                                   action:^(
         NSMutableArray * const cachedMediaArray,
         const NSUInteger cachedMediaIndex,
         NSMutableArray * const recentMediaArray,
-        const NSUInteger recentMediaIndex
+        const NSUInteger recentMediaIndex,
+        NSMutableArray * const recentlyAddedVideos,
+        const NSUInteger __unused recentlyAddedVideoIndex,
+        NSMutableArray * const recentlyAddedAudios,
+        const NSUInteger __unused recentlyAddedAudioIndex
     ) {
         [self refreshCachedShowForEpisodeID:itemId];
+        // Search, presence, or type changes can alter these bounded queries.
+        const BOOL reloadRecentlyAddedVideos = recentlyAddedVideos != nil;
+        const BOOL reloadRecentlyAddedAudios = recentlyAddedAudios != nil;
+        if (reloadRecentlyAddedVideos)
+            [self resetCachedListOfRecentlyAddedVideoMedia];
+        if (reloadRecentlyAddedAudios)
+            [self resetCachedListOfRecentlyAddedAudioMedia];
         id<VLCMediaLibraryItemProtocol> const previousItem =
             cachedMediaIndex == NSNotFound ? nil : cachedMediaArray[cachedMediaIndex];
         const BOOL audio = mediaItem.mediaType == VLC_ML_MEDIA_TYPE_AUDIO;
@@ -1972,7 +2176,7 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
                 [self resetCachedListOfRecentMedia];
         }
         if (cachedMediaIndex == NSNotFound && recentMediaIndex == NSNotFound) {
-            if (!reloadMain && !reloadRecent)
+            if (!reloadMain && !reloadRecent && !reloadRecentlyAddedVideos && !reloadRecentlyAddedAudios)
                 NSLog(@"Could not handle update for media library item with id %lld in model", itemId);
             return;
         }
@@ -2047,14 +2251,36 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
         }];
     });
 
-    [self performActionOnMediaItemInCache:itemId action:^(
+    [self performActionOnMediaItemInCache:itemId
+                                   action:^(
         NSMutableArray * const cachedMediaArray,
         const NSUInteger cachedMediaIndex,
         NSMutableArray * const recentMediaArray,
-        const NSUInteger recentMediaIndex
+        const NSUInteger recentMediaIndex,
+        NSMutableArray * const recentlyAddedVideos,
+        const NSUInteger recentlyAddedVideoIndex,
+        NSMutableArray * const recentlyAddedAudios,
+        const NSUInteger recentlyAddedAudioIndex
     ) {
         [self refreshCachedShowForEpisodeID:itemId];
         [self->_showIDsByEpisodeID removeObjectForKey:@(itemId)];
+
+        if (recentlyAddedVideoIndex != NSNotFound) {
+            [recentlyAddedVideos removeObjectAtIndex:recentlyAddedVideoIndex];
+            [self performAfterCacheWritesOnQueue:self->_mediaItemCacheModificationQueue
+                                           block:^{
+                [self.changeDelegate notifyChange:VLCLibraryModelRecentlyAddedVideoMediaListReset withObject:self];
+            }];
+            [self resetCachedListOfRecentlyAddedVideoMedia];
+        }
+        if (recentlyAddedAudioIndex != NSNotFound) {
+            [recentlyAddedAudios removeObjectAtIndex:recentlyAddedAudioIndex];
+            [self performAfterCacheWritesOnQueue:self->_mediaItemCacheModificationQueue
+                                           block:^{
+                [self.changeDelegate notifyChange:VLCLibraryModelRecentlyAddedAudioMediaListReset withObject:self];
+            }];
+            [self resetCachedListOfRecentlyAddedAudioMedia];
+        }
 
         // A deletion also supersedes any snapshot fetched before it. Preserve
         // pending membership/order changes by querying the latest state again.
@@ -2064,7 +2290,8 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
             [self resetCachedListOfVideoMedia];
 
         if (cachedMediaIndex == NSNotFound && recentMediaIndex == NSNotFound) {
-            NSLog(@"Could not handle deletion for media library item with id %lld in model", itemId);
+            if (recentlyAddedVideoIndex == NSNotFound && recentlyAddedAudioIndex == NSNotFound)
+                NSLog(@"Could not handle deletion for media library item with id %lld in model", itemId);
             return;
         }
 
